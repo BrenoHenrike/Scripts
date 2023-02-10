@@ -112,6 +112,7 @@ public class ArmyLR
         Legion.JoinLegion();
         Legion.LegionRound4Medal();
         Seraph.SeraphicWar_Questline();
+        DarkCasterCheck();
         /*
         ********************************************************************************
         ********************************PREFARM ZONE************************************
@@ -148,36 +149,6 @@ public class ArmyLR
         if (Core.CheckInventory("Revenant's Spellscroll", quant) && !Bot.Config.Get<bool>("sellToSync"))
             return;
 
-        bool hasDarkCaster = false;
-        if (Core.CheckInventory(new[] { "Love Caster", "Legion Revenant" }, any: true))
-            hasDarkCaster = true;
-        else
-        {
-            List<InventoryItem> InventoryData = Bot.Inventory.Items;
-            foreach (InventoryItem Item in InventoryData)
-            {
-                if (Item.Name.Contains("Dark Caster") && Item.Category == ItemCategory.Class)
-                {
-                    hasDarkCaster = true;
-                    break;
-                }
-            }
-            if (!hasDarkCaster)
-            {
-                List<InventoryItem> BankData = Bot.Bank.Items;
-                foreach (InventoryItem Item in BankData)
-                {
-                    if (Item.Name.Contains("Dark Caster") && Item.Category == ItemCategory.Class)
-                    {
-                        hasDarkCaster = true;
-                        Core.Unbank(Item.Name);
-                        break;
-                    }
-                }
-            }
-        }
-        if (!hasDarkCaster)
-            ILDC.GetILDC(false);
 
         Core.AddDrop("Legion Token");
         Core.AddDrop(LRMaterials);
@@ -310,7 +281,7 @@ public class ArmyLR
         Adv.BestGear(GearBoost.gold);
 
         Core.RegisterQuests(4742);
-        ArmyHunt("shadowblast", new[] {"shadowblast", "Carnage", "Shadowrise Guard"}, "Eblem of Dage", ClassType.Farm, isTemp: false, quant);
+        ArmyHunt("shadowblast", new[] { "shadowblast", "Carnage", "Shadowrise Guard" }, "Eblem of Dage", ClassType.Farm, isTemp: false, quant);
     }
 
     public void ArmyDiamondTokenOfDage(int quant = 300)
@@ -431,5 +402,39 @@ public class ArmyLR
             Bot.Combat.Attack("*");
 
         Core.JumpWait();
+    }
+    
+    void DarkCasterCheck()
+    {
+        bool hasDarkCaster = false;
+        if (Core.CheckInventory(new[] { "Love Caster", "Legion Revenant" }, any: true))
+            hasDarkCaster = true;
+        else
+        {
+            List<InventoryItem> InventoryData = Bot.Inventory.Items;
+            foreach (InventoryItem Item in InventoryData)
+            {
+                if (Item.Name.Contains("Dark Caster") && Item.Category == ItemCategory.Class)
+                {
+                    hasDarkCaster = true;
+                    break;
+                }
+            }
+            if (!hasDarkCaster)
+            {
+                List<InventoryItem> BankData = Bot.Bank.Items;
+                foreach (InventoryItem Item in BankData)
+                {
+                    if (Item.Name.Contains("Dark Caster") && Item.Category == ItemCategory.Class)
+                    {
+                        hasDarkCaster = true;
+                        Core.Unbank(Item.Name);
+                        break;
+                    }
+                }
+            }
+        }
+        if (!hasDarkCaster)
+            ILDC.GetILDC(false);
     }
 }
