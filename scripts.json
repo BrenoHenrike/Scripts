@@ -12109,13 +12109,17 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/CoreBLOD.cs"
   },
   {
-    "name": "SpiritOrbs",
-    "description": "null",
+    "name": "Spirit Orbs",
+    "description": "This script farms the max quantity of Spirit Orbs.",
     "tags": [
-      "null"
+      "spirit orbs",
+      "blod",
+      "bliding light of destiny",
+      "farm",
+      "good"
     ],
     "path": "Good/BLoD/SpiritOrbs.cs",
-    "size": 640,
+    "size": 734,
     "fileName": "SpiritOrbs.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/SpiritOrbs.cs"
   },
