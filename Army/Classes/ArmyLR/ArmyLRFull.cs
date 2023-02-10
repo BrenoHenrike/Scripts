@@ -145,7 +145,7 @@ public class ArmyLR
 
     public void ArmyLF1(int quant = 20)
     {
-        if (Core.CheckInventory("Revenant's Spellscroll", quant))
+        if (!Core.CheckInventory("Revenant's Spellscroll", quant) && !Bot.Config.Get<bool>("sellToSync"))
             return;
 
         bool hasDarkCaster = false;
@@ -213,7 +213,7 @@ public class ArmyLR
 
     public void ArmyFL2(int quant = 6)
     {
-        if (Core.CheckInventory("Conquest Wreath", quant))
+        if (!Core.CheckInventory("Conquest Wreath", quant) && !Bot.Config.Get<bool>("sellToSync"))
             return;
 
         Core.AddDrop(LF2);
@@ -225,25 +225,15 @@ public class ArmyLR
         while (!Bot.ShouldExit && !Core.CheckInventory("Conquest Wreath", quant))
         {
             ArmyHunt("doomvault", new[] { "Grim Soldier" }, "Grim Cohort Conquered", ClassType.Farm, false, 500);
-
             ArmyHunt("mummies", new[] { "Mummy" }, "Ancient Cohort Conquered", ClassType.Farm, false, 500);
-
             ArmyHunt("wrath", new[] { "Undead Pirate", "Mutineer", "Dark Fire", "Fishbones" }, "Pirate Cohort Conquered", ClassType.Farm, false, 500);
-
             ArmyHunt("doomwar", new[] { "Zombie", "Zombie Knight" }, "Battleon Cohort Conquered", ClassType.Farm, false, 500);
-
             ArmyHunt("overworld", new[] { "Undead Minion", "Undead Mage", "Undead Bruiser" }, "Mirror Cohort Conquered", ClassType.Farm, false, 500);
-
             ArmyHunt("deathpits", new[] { "Ghastly Darkblood", "Rotting Darkblood", "Sundered Darkblood" }, "Darkblood Cohort Conquered", ClassType.Farm, false, 500);
-
             ArmyHunt("maxius", new[] { "Ghoul Minion", "Vampire Minion" }, "Vampire Cohort Conquered", ClassType.Farm, false, 500);
-
             ArmyHunt("curseshore", new[] { "Escaped Ghostly Zardman", "Escaped Wendighost", "Escaped Dai Tenghost" }, "Spirit Cohort Conquered", ClassType.Farm, false, 500);
-
             ArmyHunt("dragonbone", new[] { "Bone Dragonling", "Dark Fire", }, "Dragon Cohort Conquered", ClassType.Farm, false, 500);
-
             ArmyHunt("doomwood", new[] { "Doomwood Soldier", "Doomwood Bonemuncher", "Doomwood Ectomancer", "Undead Paladin", "Doomwood Treeant" }, "Doomwood Cohort Conquered", ClassType.Farm, false, 500);
-
             Bot.Wait.ForPickup("Conquest Wreath");
         }
         Core.CancelRegisteredQuests();
@@ -251,6 +241,9 @@ public class ArmyLR
 
     public void ArmyLF3(int quant = 10)
     {
+        if (!Core.CheckInventory("Exalted Crown", quant) && !Bot.Config.Get<bool>("sellToSync"))
+            return;
+
         Core.FarmingLogger("Exalted Crown", quant);
         Core.RegisterQuests(6899);
         Core.AddDrop(LF3);
@@ -314,13 +307,16 @@ public class ArmyLR
 
     public void ArmyDageFavor(int quant = 3000)
     {
+        if (!Core.CheckInventory("Dage's Favor", quant) && !Bot.Config.Get<bool>("sellToSync"))
+            return;
+
         ArmyHunt("evilwarnul", new[] { "Skeletal Warrior", "Skull Warrior" }, "Dage's Favor", ClassType.Farm, false, quant);
     }
 
     public void ArmyEmblemOfDage(int quant = 500)
     {
-        Core.PrivateRooms = true;
-        Core.PrivateRoomNumber = Army.getRoomNr();
+        if (!Core.CheckInventory("Dark Token", quant) && !Bot.Config.Get<bool>("sellToSync"))
+            return;
 
         Core.FarmingLogger("Emblem of Dage", quant);
         Core.AddDrop("Emblem of Dage", "Legion Seal", "Gem of Mastery");
@@ -339,6 +335,9 @@ public class ArmyLR
 
     public void ArmyDiamondTokenOfDage(int quant = 300)
     {
+        if (!Core.CheckInventory("Diamond Token of Dage", quant) && !Bot.Config.Get<bool>("sellToSync"))
+            return;
+
         ArmyLTs(50);
         /*Sell any existing Defeated Makai to sync up army before farming bosses, log in SellItem*/
 
@@ -408,6 +407,9 @@ public class ArmyLR
 
     public void ArmyDarkTokenOfDage(int quant = 600)
     {
+        if (!Core.CheckInventory("Dark Token", quant) && !Bot.Config.Get<bool>("sellToSync"))
+            return;
+
         Core.FarmingLogger("Dark Token", quant);
         Core.AddDrop("Dark Token");
         Adv.BestGear(GearBoost.Human);
