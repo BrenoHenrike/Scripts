@@ -425,9 +425,9 @@ public class ArmyLR
             return;
         Adv.BestGear(GearBoost.Human);
         Core.RegisterQuests(4849);
-        ArmyHunt("dreadrock", new[] { "Fallen Hero", "Hollow Wraith", "Legion Sentinel", "Shadowknight", "Void Mercenary" }, "Legion Token", ClassType.Farm, false, quant);
+        while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
+            ArmyHuntNoSell("dreadrock", new[] { "Fallen Hero", "Hollow Wraith", "Legion Sentinel", "Shadowknight", "Void Mercenary" }, "Legion Token", ClassType.Farm, false, quant);
         Core.CancelRegisteredQuests();
-        Army.AggroMonStop(true);
     }
 
     void ArmyHunt(string map, string[] monsters, string item, ClassType classType, bool isTemp = false, int quant = 1)
@@ -437,6 +437,25 @@ public class ArmyLR
 
         if (Bot.Config.Get<bool>("sellToSync"))
             Army.SellToSync(item, quant);
+
+        Core.AddDrop(item);
+
+        Army.waitForParty(map, item);
+        Core.FarmingLogger(item, quant);
+
+        Army.SmartAggroMonStart(map, monsters);
+
+        while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
+            Bot.Combat.Attack("*");
+
+        Army.AggroMonStop(true);
+        Core.JumpWait();
+    }
+    
+    void ArmyHuntNoSell(string map, string[] monsters, string item, ClassType classType, bool isTemp = false, int quant = 1)
+    {
+        Core.PrivateRooms = true;
+        Core.PrivateRoomNumber = Army.getRoomNr();
 
         Core.AddDrop(item);
 
