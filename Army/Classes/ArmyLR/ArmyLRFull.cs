@@ -13,6 +13,7 @@ tags: legion, legion reventant, class, army
 //cs_include Scripts/Legion/InfiniteLegionDarkCaster.cs
 //cs_include Scripts/Story/Legion/SeraphicWar.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Monsters;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
 using System.Linq;
@@ -107,8 +108,6 @@ public class ArmyLR
     public void LR(bool sellToSYnc = true)
     {
         Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
-        
-        Army.SellToSyncOn = sellToSYnc;
 
         Legion.JoinLegion();
         Legion.LegionRound4Medal();
@@ -192,22 +191,18 @@ public class ArmyLR
         {
             Adv.BestGear(GearBoost.Undead);
             /*Sells non-full stacks to keep in sync for each LF1 quest item*/
-            Army.SellToSync("Aeacus Empowered", 50);
             ArmyHunt("judgement", new[] { "Ultra Aeacus" }, "Aeacus Empowered", ClassType.Solo, false, 50);
 
             Adv.BestGear(GearBoost.dmgAll);
-            Army.SellToSync("Tethered Soul", 300);
             //if (Army.Players().Count() > 3)
             //    Core.KillMonster("revenant-999999", "r2", "Left", "*", "Tethered Soul", 300, false); //Temp fix for players > 3
             //else
             ArmyHunt("revenant", new[] { "Forgotten Soul" }, "Tethered Soul", ClassType.Farm, false, 300);
 
-            Army.SellToSync("Darkened Essence", 500);
             ArmyHunt("shadowrealmpast", new[] { "Pure Shadowscythe, Shadow Guardian, Shadow Warrior" }, "Darkened Essence", ClassType.Farm, false, 500);
 
             Bot.Quests.UpdateQuest(2061);
             Adv.BestGear(GearBoost.Undead);
-            Army.SellToSync("Dracolich Contract", 1000);
             ArmyHunt("necrodungeon", new[] { "5 Headed Dracolich" }, "Dracolich Contract", ClassType.Farm, false, 1000);
 
             Bot.Wait.ForPickup("Revenant's Spellscroll");
@@ -229,34 +224,24 @@ public class ArmyLR
 
         while (!Bot.ShouldExit && !Core.CheckInventory("Conquest Wreath", quant))
         {
-            Army.SellToSync("Grim Cohort Conquered", 500);
             ArmyHunt("doomvault", new[] { "Grim Soldier" }, "Grim Cohort Conquered", ClassType.Farm, false, 500);
 
-            Army.SellToSync("Ancient Cohort Conquered", 500);
             ArmyHunt("mummies", new[] { "Mummy" }, "Ancient Cohort Conquered", ClassType.Farm, false, 500);
 
-            Army.SellToSync("Pirate Cohort Conquered", 500);
             ArmyHunt("wrath", new[] { "Undead Pirate", "Mutineer", "Dark Fire", "Fishbones" }, "Pirate Cohort Conquered", ClassType.Farm, false, 500);
 
-            Army.SellToSync("Battleon Cohort Conquered", 500);
             ArmyHunt("doomwar", new[] { "Zombie", "Zombie Knight" }, "Battleon Cohort Conquered", ClassType.Farm, false, 500);
 
-            Army.SellToSync("Mirror Cohort Conquered", 500);
             ArmyHunt("overworld", new[] { "Undead Minion", "Undead Mage", "Undead Bruiser" }, "Mirror Cohort Conquered", ClassType.Farm, false, 500);
 
-            Army.SellToSync("Darkblood Cohort Conquered", 500);
             ArmyHunt("deathpits", new[] { "Ghastly Darkblood", "Rotting Darkblood", "Sundered Darkblood" }, "Darkblood Cohort Conquered", ClassType.Farm, false, 500);
 
-            Army.SellToSync("Vampire Cohort Conquered", 500);
             ArmyHunt("maxius", new[] { "Ghoul Minion", "Vampire Minion" }, "Vampire Cohort Conquered", ClassType.Farm, false, 500);
 
-            Army.SellToSync("Dracolich Contract", 500);
             ArmyHunt("curseshore", new[] { "Escaped Ghostly Zardman", "Escaped Wendighost", "Escaped Dai Tenghost" }, "Spirit Cohort Conquered", ClassType.Farm, false, 500);
 
-            Army.SellToSync("Dragon Cohort Conquered", 500);
             ArmyHunt("dragonbone", new[] { "Bone Dragonling", "Dark Fire", }, "Dragon Cohort Conquered", ClassType.Farm, false, 500);
 
-            Army.SellToSync("Doomwood Cohort Conquered", 500);
             ArmyHunt("doomwood", new[] { "Doomwood Soldier", "Doomwood Bonemuncher", "Doomwood Ectomancer", "Undead Paladin", "Doomwood Treeant" }, "Doomwood Cohort Conquered", ClassType.Farm, false, 500);
 
             Bot.Wait.ForPickup("Conquest Wreath");
@@ -329,16 +314,11 @@ public class ArmyLR
 
     public void ArmyDageFavor(int quant = 3000)
     {
-        if (Army.SellToSync("Dage's Favor", quant))
-            return;
         ArmyHunt("evilwarnul", new[] { "Skeletal Warrior", "Skull Warrior" }, "Dage's Favor", ClassType.Farm, false, quant);
     }
 
     public void ArmyEmblemOfDage(int quant = 500)
     {
-        if (Army.SellToSync("Emblem of Dage", quant))
-            return;
-
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
 
@@ -359,12 +339,8 @@ public class ArmyLR
 
     public void ArmyDiamondTokenOfDage(int quant = 300)
     {
-        if (Army.SellToSync("Diamond Token of Dage", quant))
-            return;
-
         ArmyLTs(50);
         /*Sell any existing Defeated Makai to sync up army before farming bosses, log in SellItem*/
-        Army.SellToSync("Defeated Makai", quant);
 
         Core.FarmingLogger("Diamond Token of Dage", quant);
         Core.AddDrop("Diamond Token of Dage", "Legion Token");
@@ -432,9 +408,6 @@ public class ArmyLR
 
     public void ArmyDarkTokenOfDage(int quant = 600)
     {
-        if (Army.SellToSync("Dark Token", quant))
-            return;
-
         Core.FarmingLogger("Dark Token", quant);
         Core.AddDrop("Dark Token");
         Adv.BestGear(GearBoost.Human);
@@ -448,14 +421,9 @@ public class ArmyLR
     {
         if (Core.CheckInventory("Legion Token", quant))
             return;
-        Core.FarmingLogger("Legion Token", quant);
-        Core.AddDrop("Legion Token");
-        Core.EquipClass(ClassType.Farm);
         Adv.BestGear(GearBoost.Human);
         Core.RegisterQuests(4849);
-        Army.SmartAggroMonStart("dreadrock", new[] { "Fallen Hero", "Hollow Wraith", "Legion Sentinel", "Shadowknight", "Void Mercenary" });
-        while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
-            Bot.Combat.Attack("*");
+        ArmyHunt("dreadrock", new[] { "Fallen Hero", "Hollow Wraith", "Legion Sentinel", "Shadowknight", "Void Mercenary" }, "Legion Token", ClassType.Farm, false, quant);
         Core.CancelRegisteredQuests();
         Army.AggroMonStop(true);
     }
@@ -465,13 +433,41 @@ public class ArmyLR
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
 
-        Core.EquipClass(classType);
+        if (Bot.Config.Get<bool>("sellToSync"))
+            Army.SellToSync(item, quant);
+
         Core.AddDrop(item);
 
         Army.waitForParty(map, item);
         Core.FarmingLogger(item, quant);
 
         Army.SmartAggroMonStart(map, monsters);
+
+        while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
+            Bot.Combat.Attack("*");
+
+        Army.AggroMonStop(true);
+        Core.JumpWait();
+    }
+
+    void ArmyHunt(string map, int monsterID, string item, ClassType classType, bool isTemp = false, int quant = 1)
+    {
+        Core.PrivateRooms = true;
+        Core.PrivateRoomNumber = Army.getRoomNr();
+
+        Monster monster = Bot.Monsters.CurrentMonsters?.Find(m => m.ID == monsterID);
+
+        Adv._RaceGear(monsterID);
+
+        if (Bot.Config.Get<bool>("sellToSync"))
+            Army.SellToSync(item, quant);
+
+        Core.AddDrop(item);
+
+        Army.waitForParty(map, item);
+        Core.FarmingLogger(item, quant);
+
+        Army.SmartAggroMonStart(map, monster.ToString());
 
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
             Bot.Combat.Attack("*");
