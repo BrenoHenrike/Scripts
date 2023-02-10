@@ -367,8 +367,9 @@ public class ArmyLR
         Core.PrivateRoomNumber = Army.getRoomNr();
 
         Core.AddDrop(item);
-
-        Army.waitForParty(map, item);
+        if (map == "revenant")
+            Army.waitForParty("revenant-100000", item);
+        else Army.waitForParty(map, item);
         Core.FarmingLogger(item, quant);
 
         Army.SmartAggroMonStart(map, monsters);
@@ -393,7 +394,9 @@ public class ArmyLR
 
         Core.AddDrop(item);
 
-        Army.waitForParty(map, item);
+        if (map == "revenant")
+            Army.waitForParty("revenant-100000", item);
+        else Army.waitForParty(map, item);
         Core.FarmingLogger(item, quant);
 
         Army.SmartAggroMonStart(map, monster.ToString());
@@ -403,7 +406,7 @@ public class ArmyLR
 
         Core.JumpWait();
     }
-    
+
     void DarkCasterCheck()
     {
         bool hasDarkCaster = false;
