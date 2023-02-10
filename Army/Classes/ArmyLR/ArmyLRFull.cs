@@ -145,7 +145,7 @@ public class ArmyLR
 
     public void ArmyLF1(int quant = 20)
     {
-        if (!Core.CheckInventory("Revenant's Spellscroll", quant) && !Bot.Config.Get<bool>("sellToSync"))
+        if (Core.CheckInventory("Revenant's Spellscroll", quant) && !Bot.Config.Get<bool>("sellToSync"))
             return;
 
         bool hasDarkCaster = false;
@@ -184,36 +184,25 @@ public class ArmyLR
         Core.AddDrop(LF1);
 
         Core.FarmingLogger("Revenant's Spellscroll", quant);
-        Bot.Quests.UpdateQuest(2060);
+        Bot.Quests.UpdateQuest(2061);
         Core.RegisterQuests(6897);
-        int i = 1;
         while (!Bot.ShouldExit && !Core.CheckInventory("Revenant's Spellscroll", quant))
         {
             Adv.BestGear(GearBoost.Undead);
             /*Sells non-full stacks to keep in sync for each LF1 quest item*/
             ArmyHunt("judgement", new[] { "Ultra Aeacus" }, "Aeacus Empowered", ClassType.Solo, false, 50);
-
-            Adv.BestGear(GearBoost.dmgAll);
-            //if (Army.Players().Count() > 3)
-            //    Core.KillMonster("revenant-999999", "r2", "Left", "*", "Tethered Soul", 300, false); //Temp fix for players > 3
-            //else
             ArmyHunt("revenant", new[] { "Forgotten Soul" }, "Tethered Soul", ClassType.Farm, false, 300);
-
             ArmyHunt("shadowrealmpast", new[] { "Pure Shadowscythe, Shadow Guardian, Shadow Warrior" }, "Darkened Essence", ClassType.Farm, false, 500);
-
-            Bot.Quests.UpdateQuest(2061);
-            Adv.BestGear(GearBoost.Undead);
             ArmyHunt("necrodungeon", new[] { "5 Headed Dracolich" }, "Dracolich Contract", ClassType.Farm, false, 1000);
 
             Bot.Wait.ForPickup("Revenant's Spellscroll");
-            Core.Logger($"Completed x{i++}");
         }
         Core.CancelRegisteredQuests();
     }
 
     public void ArmyFL2(int quant = 6)
     {
-        if (!Core.CheckInventory("Conquest Wreath", quant) && !Bot.Config.Get<bool>("sellToSync"))
+        if (Core.CheckInventory("Conquest Wreath", quant) && !Bot.Config.Get<bool>("sellToSync"))
             return;
 
         Core.AddDrop(LF2);
@@ -241,7 +230,7 @@ public class ArmyLR
 
     public void ArmyLF3(int quant = 10)
     {
-        if (!Core.CheckInventory("Exalted Crown", quant) && !Bot.Config.Get<bool>("sellToSync"))
+        if (Core.CheckInventory("Exalted Crown", quant) && !Bot.Config.Get<bool>("sellToSync"))
             return;
 
         Core.FarmingLogger("Exalted Crown", quant);
@@ -250,7 +239,6 @@ public class ArmyLR
         while (!Bot.ShouldExit && !Core.CheckInventory("Exalted Crown", quant))
         {
             Core.BuyItem("underworld", 216, "Hooded Legion Cowl");
-            /*This is the only not prefarmed item left to get*/
             ArmyDarkTokenOfDage(100);
             ArmyLTs(4000);
             Bot.Wait.ForPickup("Exalted Crown");
@@ -283,8 +271,7 @@ public class ArmyLR
             return;
 
         Farm.ToggleBoost(BoostType.Reputation);
-        Core.RegisterQuests(367, 372); //Bone-afide 367, Tomb with a View 372
-                                       //ArmyHunt("castleundead", new[] {"Skeletal Viking", "Skeletal Warrior"}, 372, new[] {"Chaorrupted Skull"}, true, 5);
+        Core.RegisterQuests(367, 372);
         while (!Bot.ShouldExit && (Farm.FactionRank("Good") < 10 && Farm.FactionRank("Evil") < 10))
             ArmyHunt("castleundead", new[] { "Skeletal Viking", "Skeletal Warrior" }, "Replacement Tibia", ClassType.Farm, true, 6);
         Core.CancelRegisteredQuests();
@@ -300,14 +287,13 @@ public class ArmyLR
         Core.RegisterQuests(3991, 3992);
         while (!Bot.ShouldExit && Bot.Player.Gold < quant)
             ArmyHunt("battlegrounde", new[] { "Living Ice", "Ice Lord", "Ice Demon", "Glacial Horror", "Icy Dragon", "Permafrost Pummeler", "Icy Banshee", "Frozen Deserter" }, "Battleground E Opponent Defeated", ClassType.Farm, true, 10);
-        /*Farms 500k extra just to be safe with enhancement costs*/
         Farm.ToggleBoost(BoostType.Gold, false);
         Core.CancelRegisteredQuests();
     }
 
     public void ArmyDageFavor(int quant = 3000)
     {
-        if (!Core.CheckInventory("Dage's Favor", quant) && !Bot.Config.Get<bool>("sellToSync"))
+        if (Core.CheckInventory("Dage's Favor", quant) && !Bot.Config.Get<bool>("sellToSync"))
             return;
 
         ArmyHunt("evilwarnul", new[] { "Skeletal Warrior", "Skull Warrior" }, "Dage's Favor", ClassType.Farm, false, quant);
@@ -315,31 +301,24 @@ public class ArmyLR
 
     public void ArmyEmblemOfDage(int quant = 500)
     {
-        if (!Core.CheckInventory("Dark Token", quant) && !Bot.Config.Get<bool>("sellToSync"))
+        if (Core.CheckInventory("Eblem of Dage", quant) && !Bot.Config.Get<bool>("sellToSync"))
             return;
 
         Core.FarmingLogger("Emblem of Dage", quant);
         Core.AddDrop("Emblem of Dage", "Legion Seal", "Gem of Mastery");
         Core.EquipClass(ClassType.Farm);
         Adv.BestGear(GearBoost.gold);
-        Army.waitForParty("shadowblast");
 
         Core.RegisterQuests(4742);
-        Army.SmartAggroMonStart("shadowblast", "Carnage", "Shadowrise Guard");
-        while (!Bot.ShouldExit && !Core.CheckInventory("Emblem of Dage", quant))
-            Bot.Combat.Attack("*");
-        Army.AggroMonStop(true);
-        Core.CancelRegisteredQuests();
-        Core.JumpWait();
+        ArmyHunt("shadowblast", new[] {"shadowblast", "Carnage", "Shadowrise Guard"}, "Eblem of Dage", ClassType.Farm, isTemp: false, quant);
     }
 
     public void ArmyDiamondTokenOfDage(int quant = 300)
     {
-        if (!Core.CheckInventory("Diamond Token of Dage", quant) && !Bot.Config.Get<bool>("sellToSync"))
+        if (Core.CheckInventory("Diamond Token of Dage", quant) && !Bot.Config.Get<bool>("sellToSync"))
             return;
 
         ArmyLTs(50);
-        /*Sell any existing Defeated Makai to sync up army before farming bosses, log in SellItem*/
 
         Core.FarmingLogger("Diamond Token of Dage", quant);
         Core.AddDrop("Diamond Token of Dage", "Legion Token");
@@ -348,7 +327,6 @@ public class ArmyLR
         Core.RegisterQuests(4743);
         while (!Bot.ShouldExit && !Core.CheckInventory("Diamond Token of Dage", quant))
         {
-            //Core.KillMonster("tercessuinotlim-999999", "m2", "Spawn", "Dark Makai", "Defeated Makai", 25, false, false, false);
             ArmyHunt("tercessuinotlim", new[] { "Dark Makai" }, "Defeated Makai", ClassType.Farm, false, 25);
 
             Adv.BestGear(GearBoost.Chaos);
@@ -357,7 +335,7 @@ public class ArmyLR
             ArmyHunt("dflesson", new[] { "Fluffy the Dracolich" }, "Fluffy's Bones", ClassType.Solo, true, 1);
 
             Adv.BestGear(GearBoost.Dragonkin);
-            ArmyHunt("lair", new[] { "Red Dragon" }, "Red Dragon's Fang", ClassType.Solo, true, 1);
+            ArmyHunt("lair", new[] { "Red Dragon" }, "Red Dragon's Fang", ClassType.Solo, true);
 
             Adv.BestGear(GearBoost.Human);
             ArmyHunt("bloodtitan", new[] { "Blood Titan" }, "Blood Titan's Blade", ClassType.Solo, true, 1);
@@ -365,49 +343,9 @@ public class ArmyLR
         Core.CancelRegisteredQuests();
     }
 
-    // public void ArmyLegionRound4Medal()
-    // {
-    //     if (Core.CheckInventory("Legion Round 4 Medal"))
-    //         return;
-
-    //     Core.AddDrop(legionMedals);
-    //     Core.Logger("Farming Legion Round 4 Medal");
-
-    //     /*Sell existing medals to sync up army. Not sure how to implement foreach to replace this mess*/
-    //     foreach (string item in legionMedals)
-    //         Core.SellItem(item, 0, true);
-
-    //     Core.RegisterQuests(4738, 4739, 4740, 4741);
-    //     if (!Core.CheckInventory("Legion Round 1 Medal"))
-    //     {
-    //         ArmyHunt("shadowblast", new[] { "Caesaristhedark" }, "Nation Rookie Defeated", ClassType.Farm, true, 5);
-    //         ArmyHunt("shadowblast", new[] { "Shadowrise Guard" }, "Shadowscythe Rookie Defeated", ClassType.Farm, true, 5);
-    //         Bot.Wait.ForDrop("Legion Round 1 Medal");
-    //         Core.Logger("Medal 1 acquired");
-    //     }
-    //     if (!Core.CheckInventory("Legion Round 2 Medal"))
-    //     {
-    //         ArmyHunt("shadowblast", new[] { "Carnage" }, "Nation Veteran Defeated", ClassType.Farm, true, 7);
-    //         ArmyHunt("shadowblast", new[] { "Doombringer" }, "Shadowscythe Veteran Defeated", ClassType.Farm, true, 7);
-    //         Bot.Wait.ForDrop("Legion Round 2 Medal");
-    //         Core.Logger("Medal 2 acquired");
-    //     }
-    //     if (!Core.CheckInventory("Legion Round 3 Medal"))
-    //     {
-    //         ArmyHunt("shadowblast", new[] { "Minotaurofwar" }, "Nation Elite Defeated", ClassType.Farm, true, 10);
-    //         ArmyHunt("shadowblast", new[] { "Draconic Doomknight" }, "Shadowscythe Elite Defeated", ClassType.Farm, true, 10);
-    //         Bot.Wait.ForDrop("Legion Round 3 Medal");
-    //         Core.Logger("Medal 3 acquired");
-    //     }
-    //     ArmyHunt("shadowblast", new[] { "Thanatos" }, "Thanatos Vanquished", ClassType.Solo, true, 1);
-    //     Bot.Wait.ForDrop("Legion Round 4 Medal");
-    //     Core.Logger("Medal 4 acquired");
-    //     Core.CancelRegisteredQuests();
-    // }
-
     public void ArmyDarkTokenOfDage(int quant = 600)
     {
-        if (!Core.CheckInventory("Dark Token", quant) && !Bot.Config.Get<bool>("sellToSync"))
+        if (Core.CheckInventory("Dark Token", quant) && !Bot.Config.Get<bool>("sellToSync"))
             return;
 
         Core.FarmingLogger("Dark Token", quant);
@@ -421,8 +359,9 @@ public class ArmyLR
 
     public void ArmyLTs(int quant = 25000)
     {
-        if (Core.CheckInventory("Legion Token", quant))
+        if (Core.CheckInventory("Legion Token", quant) && !Bot.Config.Get<bool>("sellToSync"))
             return;
+
         Adv.BestGear(GearBoost.Human);
         Core.RegisterQuests(4849);
         while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
@@ -448,10 +387,9 @@ public class ArmyLR
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
             Bot.Combat.Attack("*");
 
-        Army.AggroMonStop(true);
         Core.JumpWait();
     }
-    
+
     void ArmyHuntNoSell(string map, string[] monsters, string item, ClassType classType, bool isTemp = false, int quant = 1)
     {
         Core.PrivateRooms = true;
@@ -467,7 +405,6 @@ public class ArmyLR
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
             Bot.Combat.Attack("*");
 
-        Army.AggroMonStop(true);
         Core.JumpWait();
     }
 
@@ -493,7 +430,6 @@ public class ArmyLR
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
             Bot.Combat.Attack("*");
 
-        Army.AggroMonStop(true);
         Core.JumpWait();
     }
 }
