@@ -2323,6 +2323,20 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ThirdSpell.cs"
   },
   {
+    "name": "Friendship",
+    "description": "This will complete the Friendship story quest.",
+    "tags": [
+      "friendship",
+      "story",
+      "greyguard",
+      "battleodium"
+    ],
+    "path": "Story/Friendship.cs",
+    "size": 2544,
+    "fileName": "Friendship.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Friendship.cs"
+  },
+  {
     "name": "UnderGround Lab Story",
     "description": "This will finish the UnderGround Lab Story.",
     "tags": [
@@ -6964,6 +6978,22 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/BlazeBeardStory.cs"
   },
   {
+    "name": "Wubbles",
+    "description": "This will complete the Wubbles story quest.",
+    "tags": [
+      "wubbles",
+      "seasonal",
+      "heros-heart-day",
+      "heart",
+      "hero",
+      "story"
+    ],
+    "path": "Seasonal/HerosHeartDay/Wubbles.cs",
+    "size": 1974,
+    "fileName": "Wubbles.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HerosHeartDay/Wubbles.cs"
+  },
+  {
     "name": "Fezzini Story",
     "description": "This will complete the Fezzini story quest.",
     "tags": [
@@ -6978,6 +7008,22 @@
     "size": 1936,
     "fileName": "Fezzini.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HerosHeartDay/Fezzini.cs"
+  },
+  {
+    "name": "Swaggy's Chateau",
+    "description": "This will complete the Swaggy's Chateau story quest.",
+    "tags": [
+      "swaggys-chateau",
+      "seasonal",
+      "heros-heart-day",
+      "heart",
+      "hero",
+      "story"
+    ],
+    "path": "Seasonal/HerosHeartDay/SwaggysChateau.cs",
+    "size": 2159,
+    "fileName": "SwaggysChateau.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HerosHeartDay/SwaggysChateau.cs"
   },
   {
     "name": "Love Spell Story",
@@ -7017,6 +7063,37 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HerosHeartDay/LoveSpellMerge(PinkestDyeEver!!!).cs"
   },
   {
+    "name": "Love Lockdown",
+    "description": "This will complete the Love Lockdown story quest.",
+    "tags": [
+      "love-lockdown",
+      "seasonal",
+      "hero",
+      "heart",
+      "story"
+    ],
+    "path": "Seasonal/HerosHeartDay/LoveLockdown.cs",
+    "size": 3736,
+    "fileName": "LoveLockdown.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HerosHeartDay/LoveLockdown.cs"
+  },
+  {
+    "name": "Necromance",
+    "description": "This will complete the Necromance story quest.",
+    "tags": [
+      "necromance",
+      "seasonal",
+      "heros-heart-day",
+      "heart",
+      "hero",
+      "story"
+    ],
+    "path": "Seasonal/HerosHeartDay/Necromance.cs",
+    "size": 3321,
+    "fileName": "Necromance.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HerosHeartDay/Necromance.cs"
+  },
+  {
     "name": "Wheel of Love Story",
     "description": "This will complete the Wheel of Love story quest.",
     "tags": [
@@ -7049,6 +7126,22 @@
     "size": 2077,
     "fileName": "LovesCurse.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HerosHeartDay/LovesCurse.cs"
+  },
+  {
+    "name": "Love",
+    "description": "This will complete the Love story quest.",
+    "tags": [
+      "love",
+      "seasonal",
+      "heros-heart-day",
+      "heart",
+      "hero",
+      "story"
+    ],
+    "path": "Seasonal/HerosHeartDay/Love.cs",
+    "size": 1423,
+    "fileName": "Love.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HerosHeartDay/Love.cs"
   },
   {
     "name": "Painted Butterfly (Arcadia Merge)",
