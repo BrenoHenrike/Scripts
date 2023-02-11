@@ -55,7 +55,7 @@ public class SwaggysChateau
             Core.HuntMonster("chateau", "Hopeless Romantic", "Pretty Flowers", 6, log: false);
             Core.HuntMonster("chateau", "Barista", "\"Hot Drink\"", 5, log: false);
             Core.HuntMonster("chateau", "Stray Foam", "Floor Cleaned", 6, log: false);
-            Core.GetMapItem(5627, 3, "chateaue");
+            Core.GetMapItem(5627, 3, "chateau");
             Core.EnsureComplete(6193, 6194, 6195, 6192);
         }
 
