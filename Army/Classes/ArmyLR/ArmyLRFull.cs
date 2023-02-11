@@ -271,7 +271,7 @@ public class ArmyLR
 
     public void ArmyEmblemOfDage(int quant = 500)
     {
-        if (Core.CheckInventory("Eblem of Dage", quant) && !Bot.Config.Get<bool>("sellToSync"))
+        if (Core.CheckInventory("Emblem of Dage", quant) && !Bot.Config.Get<bool>("sellToSync"))
             return;
 
         Core.FarmingLogger("Emblem of Dage", quant);
@@ -280,7 +280,7 @@ public class ArmyLR
         Adv.BestGear(GearBoost.gold);
 
         Core.RegisterQuests(4742);
-        ArmyHunt("shadowblast", new[] { "shadowblast", "Carnage", "Shadowrise Guard" }, "Eblem of Dage", ClassType.Farm, isTemp: false, quant);
+        ArmyHunt("shadowblast", new[] { "shadowblast", "Carnage", "Shadowrise Guard" }, "Emblem of Dage", ClassType.Farm, isTemp: false, quant);
     }
 
     public void ArmyDiamondTokenOfDage(int quant = 300)
