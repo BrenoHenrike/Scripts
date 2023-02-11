@@ -2323,6 +2323,20 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ThirdSpell.cs"
   },
   {
+    "name": "Friendship",
+    "description": "This will complete the Friendship story quest.",
+    "tags": [
+      "friendship",
+      "story",
+      "greyguard",
+      "battleodium"
+    ],
+    "path": "Story/Friendship.cs",
+    "size": 2544,
+    "fileName": "Friendship.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Friendship.cs"
+  },
+  {
     "name": "UnderGround Lab Story",
     "description": "This will finish the UnderGround Lab Story.",
     "tags": [
