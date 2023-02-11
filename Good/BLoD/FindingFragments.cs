@@ -1,7 +1,7 @@
 /*
 name: FindingFragments
-description: null
-tags: null
+description: Does the "finding fragments with blinding [insert] of destiny for the quest rewards.
+tags: finding fragments, blinding light fragments, spirit orb, loyal spirit orb, bright Aura, brilliant aura, blinding aura
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -57,7 +57,6 @@ public class FindingFragments_Any
                 while (!Bot.ShouldExit && !Core.CheckInventory(item.Name, item.MaxStack))
                     BLOD.FindingFragments((int)Bot.Config.Get<FindingFragmentsIDs>("questID"), item.Name, item.MaxStack);
                 Core.Logger($"{item.Name} has reached max stack {item.Quantity}/{item.MaxStack}");
-
             }
         }
         else
