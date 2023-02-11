@@ -2396,6 +2396,10 @@ public class CoreBots
                 SimpleQuestBypass((182, 7));
                 break;
 
+            case "ultratyndarius":
+                SimpleQuestBypass((412, 22));
+                break;
+
             case "towerofdoom1":
             case "towerofdoom2":
             case "towerofdoom3":
@@ -3245,6 +3249,20 @@ public class CoreBots
     }
 
     private List<string> CBOList = new();
+
+    public void OneTimeMessage(string internalName, string message, bool messageBox = true, bool forcedMessageBox = false)
+    {
+        string path = Path.Combine(ClientFileSources.SkuaDIR, "OneTimeMessages.txt");
+        if (File.Exists(path) && File.ReadAllLines(path).Any(l => l == internalName))
+            return;
+
+        message = "Please make sure you read this as it will only be shown once:\n\n" + message;
+        Logger(message, "One Time-Only Message", messageBox && !forcedMessageBox);
+        if (messageBox && forcedMessageBox)
+            Bot.ShowMessageBox(message, "One Time-Only Message");
+
+        WriteFile(path, File.Exists(path) ? File.ReadAllLines(path).Append(internalName).ToArray() : new[] { internalName });
+    }
 
     #endregion
 }

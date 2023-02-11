@@ -1,7 +1,7 @@
 /*
 name: Garden Merge
 description: Garden Merge
-tags: Darkon, garden, merge, mergeshop
+tags: darkon, garden, merge, mergeshop
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

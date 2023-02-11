@@ -1,5 +1,5 @@
 /*
-name: Sunken Treasure 
+name: Sunken Treasure
 description: Farms "All Drops" From Quest: "Sunken Treasure?".
 tags: sunken treasure, drops
 */

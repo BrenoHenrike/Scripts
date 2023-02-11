@@ -1,5 +1,5 @@
 /*
-name: null
+name: GoldFarm
 description: null
 tags: null
 */

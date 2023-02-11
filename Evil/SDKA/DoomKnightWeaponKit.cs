@@ -1,5 +1,5 @@
 /*
-name: null
+name: DoomKnightWeaponKit
 description: null
 tags: null
 */

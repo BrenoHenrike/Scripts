@@ -1,6 +1,6 @@
 /*
 name: Army Spirit Orbs
-description: null
+description: Farms Spirit Orbs using your army.
 tags: army, spirit orb
 */
 //cs_include Scripts/CoreBots.cs
@@ -50,6 +50,8 @@ public class ArmySpiritOrb
     {
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
+
+        Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
 
         Core.AddDrop(Loot);
         Core.EquipClass(ClassType.Farm);

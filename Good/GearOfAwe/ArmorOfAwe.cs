@@ -1,5 +1,5 @@
 /*
-name: null
+name: ArmorOfAwe
 description: null
 tags: null
 */

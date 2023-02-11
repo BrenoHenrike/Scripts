@@ -1,5 +1,5 @@
 /*
-name: null
+name: GuardianOfSpiritsBlade
 description: null
 tags: null
 */

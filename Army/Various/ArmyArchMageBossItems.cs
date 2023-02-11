@@ -17,12 +17,20 @@ public class ArchMageMatsArmy
     public CoreFarms Farm = new();
     private CoreArmyLite Army = new();
 
+    private static CoreArmyLite sArmy = new();
 
     public bool DontPreconfigure = true;
     public string OptionsStorage = "BossDrops";
     public List<IOption> Options = new List<IOption>()
     {
-        new Option<int>("armysize","Number of Accounts", "Input the number of players that it will be waiting for", 4),
+        sArmy.player1,
+        sArmy.player2,
+        sArmy.player3,
+        sArmy.player4,
+        sArmy.player5,
+        sArmy.player6,
+        sArmy.player7,
+        sArmy.packetDelay,
         CoreBots.Instance.SkipOptions
     };
 
@@ -43,7 +51,7 @@ public class ArchMageMatsArmy
     {
         Core.BankingBlackList.AddRange(Drops);
         Core.SetOptions(disableClassSwap: true);
-        
+
         WaitingRoom();
 
         Core.SetOptions(false);
@@ -51,22 +59,14 @@ public class ArchMageMatsArmy
 
     public void WaitingRoom()
     {
-        Bot.Events.PlayerAFK += PlayerAFK;
-        Core.Unbank(Drops);
-        Core.Logger($"We have {Bot.Config.Get<int>("armysize")} passenger/s signed up, lets hope this works LFMAO");
-        Bot.Sleep(2500);
-        GetmBois();
-    }
+        Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
 
-    // public void WtfAmIDoing()
-    // {
-    //     while (Bot.Map.PlayerNames.Count < Bot.Config.Get<int>("armysize"))
-    //     {
-    //         Core.Logger($"Less than {Bot.Config.Get<int>("armysize")} players found");
-    //         Bot.Sleep(Core.ActionDelay);
-    //     }
-    //     RetrieveVoidAuras(7500);
-    // }
+        Bot.Events.PlayerAFK += PlayerAFK;
+
+        GetmBois();
+
+        Bot.Events.PlayerAFK += PlayerAFK;
+    }
 
     public void GetmBois()
     {
@@ -117,42 +117,65 @@ public class ArchMageMatsArmy
     /// <param name="log">Whether it will log that it is killing the monster</param>
     public void ArmyKillMonster(string map, string cell, string pad, string monster, string item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
     {
-
         if (item != null && isTemp ? Bot.TempInv.Contains(item, quant) : Core.CheckInventory(item, quant))
             return;
+
+        Bot.Events.PlayerAFK += PlayerAFK;
+
         if (!isTemp && item != null)
             Core.AddDrop(item);
+
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
-        Core.Join(map, cell, pad);
-        Core.Jump(cell, pad);
-        while ((cell != null && Bot.Map.CellPlayers.Count() > 0 ? Bot.Map.CellPlayers.Count() : Bot.Map.PlayerCount) < Bot.Config.Get<int>("armysize"))
+
+        if (Bot.Config.Get<bool>("sellToSync"))
+            Army.SellToSync(item, quant);
+
+        Army.waitForParty(map, item);
+        Core.FarmingLogger(item, quant);
+        Army.SmartAggroMonStart(map, monster);
+
+        if (Bot.Map.Name == "darkcarnax")
         {
-            Core.Logger($"[{Bot.Map.PlayerNames.Count}/{Bot.Config.Get<int>("armysize")}] Waiting For The Squad!");
-            Bot.Sleep(1500);
-        }
-        if (item == null)
-        {
-            if (log)
-                Core.Logger($"Killing {monster}");
-            Bot.Kill.Monster(monster);
-            Core.Rest();
+            Bot.Options.AttackWithoutTarget = true;
+            Bot.Events.RunToArea += DarkCarnaxMove;
+
+            while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
+                Bot.Combat.Attack("*");
+
+            Bot.Options.AttackWithoutTarget = false;
+            Bot.Events.RunToArea -= DarkCarnaxMove;
         }
         else
         {
-            if (Bot.Map.Name == "darkcarnax")
-            {
-                Bot.Options.AttackWithoutTarget = true;
-                Bot.Events.RunToArea += DarkCarnaxMove;
-                Core._KillForItem(monster, item, quant, isTemp, log: log);
-                Bot.Options.AttackWithoutTarget = false;
-                Bot.Events.RunToArea -= DarkCarnaxMove;
-            }
-            else
-            {
-                Core._KillForItem(monster, item, quant, isTemp, log: log);
-            }
+            while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
+                Bot.Combat.Attack("*");
         }
+        Army.AggroMonStop(true);
+        Core.JumpWait();
+    }
+
+
+    void ArmyHunt(string map, string[] monsters, string item, ClassType classType, bool isTemp = false, int quant = 1)
+    {
+        Core.PrivateRooms = true;
+        Core.PrivateRoomNumber = Army.getRoomNr();
+
+        if (Bot.Config.Get<bool>("sellToSync"))
+            Army.SellToSync(item, quant);
+
+        Core.AddDrop(item);
+
+        Army.waitForParty(map, item);
+        Core.FarmingLogger(item, quant);
+
+        Army.SmartAggroMonStart(map, monsters);
+
+        while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
+            Bot.Combat.Attack("*");
+
+        Army.AggroMonStop(true);
+        Core.JumpWait();
     }
 
     public void PlayerAFK()
@@ -164,53 +187,25 @@ public class ArchMageMatsArmy
 
     void DarkCarnaxMove(string zone)
     {
+        Bot.Sleep(Core.ActionDelay);
         switch (zone.ToLower())
         {
             case "a":
                 //Move to the right
+                Bot.Sleep(1500);
                 Bot.Player.WalkTo(Bot.Random.Next(600, 930), Bot.Random.Next(380, 475));
                 break;
             case "b":
                 //Move to the left
+                Bot.Sleep(1500);
                 Bot.Player.WalkTo(Bot.Random.Next(25, 325), Bot.Random.Next(380, 475));
                 break;
             default:
                 //Move to the center
+                Bot.Sleep(1500);
                 Bot.Player.WalkTo(Bot.Random.Next(325, 600), Bot.Random.Next(380, 475));
                 break;
         }
     }
 
 }
-
-// Learning materials
-
-// public void AFKCheck(IScriptInterface bot)
-// {
-//     Bot.Sleep(2000);
-//     Bot.Events.PlayerAFK += (IScriptInterface bot) => Bot.Send.Packet("%xt%zm%afk%1%false%");
-// }
-
-// public void waitForParty(string? cell = null, string? pad = null)
-// {
-//     int i = 0;
-//     if (cell != null)
-//         Core.Jump(cell, pad != null ? pad : "Left");
-//     while (!Bot.ShouldExit && (cell != null && Bot.Map.CellPlayers.Count() > 0 ? Bot.Map.CellPlayers.Count() : Bot.Map.PlayerCount) != PartySize)
-//     {
-//         Bot.Sleep(1000);
-//         i++;
-
-//         if (i == 15)
-//         {
-//             if (cell != null && Bot.Map.CellPlayers.Count() > 0)
-//                 Core.Logger($"[{Bot.Map.CellPlayers.Count()}/{PartySize}] " +
-//                 "Waiting for " + String.Join(" &", PartyMembers.Where(x => !Bot.Map.CellPlayers.Select(x => x.Name).Contains(x)).ToList()));
-//             else if (Bot.Map.PlayerNames.Count() > 0)
-//                 Core.Logger($"[{Bot.Map.PlayerNames.Count()}/{PartySize}] " +
-//                 "Waiting for " + String.Join(" &", PartyMembers.Where(x => !Bot.Map.PlayerNames.Contains(x)).ToList()));
-//             else
-//                 Core.Logger($"[{Bot.Map.PlayerCount}/{PartySize}] Waiting for the rest of the party");
-//             i = 0;
-//         }
-//     }

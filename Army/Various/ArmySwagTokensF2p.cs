@@ -47,6 +47,8 @@ public class ArmySwagTokensF2p
         if (Core.CheckInventory("Super-Fan Swag Token A", quant))
             return;
 
+        Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
+        
         Core.AddDrop("Super-Fan Swag Token A", "Super-Fan Swag Token B", "Super-Fan Swag Token C", "Super-Fan Swag Token D");
         Core.FarmingLogger($"Super-Fan Swag Token A", quant);
         Core.EquipClass(ClassType.Farm);

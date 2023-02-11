@@ -1,7 +1,7 @@
 /*
 name: Eridani merge
 description: Eridani merge
-tags: Eridani, merge, mergeshop
+tags: eridani, merge, mergeshop
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

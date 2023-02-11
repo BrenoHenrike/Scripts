@@ -1,7 +1,7 @@
 /*
 name: First Observatory Merge
 description: First Observatory Merge
-tags: FirstObservatory, merge, mergeshop
+tags: firstobservatory, merge, mergeshop
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

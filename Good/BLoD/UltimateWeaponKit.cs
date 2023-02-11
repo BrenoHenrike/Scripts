@@ -1,5 +1,5 @@
 /*
-name: null
+name: UltimateWeaponKit
 description: null
 tags: null
 */

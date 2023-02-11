@@ -1,5 +1,5 @@
 /*
-name: null
+name: JoinLegion
 description: null
 tags: null
 */

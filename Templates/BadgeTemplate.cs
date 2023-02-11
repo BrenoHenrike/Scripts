@@ -1,5 +1,5 @@
 /*
-name: null
+name: BadgeTemplate
 description: null
 tags: null
 */

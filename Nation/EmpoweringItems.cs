@@ -1,5 +1,5 @@
 /*
-name: null
+name: EmpoweringItems
 description: null
 tags: null
 */

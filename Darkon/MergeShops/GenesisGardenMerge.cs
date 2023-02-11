@@ -1,7 +1,7 @@
 /*
 name: Genesis Garden Merge
 description: Genesis Garden Merge
-tags: darkon, GenesisGarden, merge, mergeshop
+tags: darkon, genesisgarden, merge, mergeshop
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

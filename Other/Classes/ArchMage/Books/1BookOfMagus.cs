@@ -1,5 +1,5 @@
 /*
-name: null
+name: 1BookOfMagus
 description: null
 tags: null
 */

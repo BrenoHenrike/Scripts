@@ -56,6 +56,8 @@ public class ArmyDarkToken
         if (Core.CheckInventory("Dark Token", quant))
             return;
 
+        Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
+
         Core.FarmingLogger("Dark Token", quant);
         Core.AddDrop("Dark Token");
 

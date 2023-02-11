@@ -1,5 +1,5 @@
 /*
-name: null
+name: MazeMerge
 description: null
 tags: null
 */

@@ -210,6 +210,8 @@ public class DoTArmy
         if ((!doExtra && Core.CheckInventory("Dragon of Time")) || (doExtra && Core.CheckInventory(QuestRewards)))
             return;
 
+        Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
+
         Bot.Events.PlayerAFK += PlayerAFK;
         /*
         ********************************************************************************
@@ -600,13 +602,12 @@ public class DoTArmy
     //               ▓▓▓▓████████░░░░░░░░░░░░░░░░░░░░░░░░████████░░          
     //               ░░░░▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░░░   
 
-    void ArmyHunt(string map, string[] monsters, string item, ClassType classType, bool isTemp = false, int quant = 1, bool sellToSYnc = true)
+    void ArmyHunt(string map, string[] monsters, string item, ClassType classType, bool isTemp = false, int quant = 1)
     {
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
 
-        Army.SellToSyncOn = sellToSYnc;
-        if (sellToSYnc)
+        if (Bot.Config.Get<bool>("sellToSync"))
             Army.SellToSync(item, quant);
 
         Core.AddDrop(item);

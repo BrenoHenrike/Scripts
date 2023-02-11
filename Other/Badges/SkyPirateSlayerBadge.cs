@@ -1,5 +1,5 @@
 /*
-name: null
+name: SkyPirateSlayerBadge
 description: null
 tags: null
 */

@@ -1,7 +1,7 @@
 /*
 name: Astravia Past Merge
 description: Astravia Past Merge
-tags: Astravia Past, merge, mergeshop
+tags: astravia past, merge, mergeshop
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

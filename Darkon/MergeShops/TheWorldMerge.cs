@@ -1,7 +1,7 @@
 /*
 name: The World Merge
 description: The World Merge
-tags: Darkon, theworld, Song Rivale, merge, mergeshop
+tags: darkon, theworld, song rivale, merge, mergeshop
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
