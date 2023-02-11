@@ -12190,17 +12190,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/FindingFragments.cs"
   },
   {
-    "name": "UltimateWeaponKit",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Good/BLoD/UltimateWeaponKit.cs",
-    "size": 670,
-    "fileName": "UltimateWeaponKit.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/UltimateWeaponKit.cs"
-  },
-  {
     "name": "SoulSearching",
     "description": "null",
     "tags": [
@@ -15055,7 +15044,7 @@
       "army"
     ],
     "path": "Army/Classes/ArmyLR/ArmyLRFull.cs",
-    "size": 16621,
+    "size": 16623,
     "fileName": "ArmyLRFull.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Classes/ArmyLR/ArmyLRFull.cs"
   },
@@ -15127,6 +15116,39 @@
     "size": 2096,
     "fileName": "ArmyDarkToken.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Classes/ArmyLR/ArmyDarkToken.cs"
+  },
+  {
+    "name": "UltimateWeaponKit",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Good/BLoD/WeaponKits/UltimateWeaponKit.cs",
+    "size": 670,
+    "fileName": "UltimateWeaponKit.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/WeaponKits/UltimateWeaponKit.cs"
+  },
+  {
+    "name": "AdvancedWeaponKit",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Good/BLoD/WeaponKits/AdvancedWeaponKit.cs",
+    "size": 654,
+    "fileName": "AdvancedWeaponKit.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/WeaponKits/AdvancedWeaponKit.cs"
+  },
+  {
+    "name": "BasicWeaponKits",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Good/BLoD/WeaponKits/BasicWeaponKits.cs",
+    "size": 647,
+    "fileName": "BasicWeaponKits.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/WeaponKits/BasicWeaponKits.cs"
   },
   {
     "name": "Darkons Third Errand",
