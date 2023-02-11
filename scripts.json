@@ -39,7 +39,7 @@
       "null"
     ],
     "path": "CoreDailies.cs",
-    "size": 27594,
+    "size": 38234,
     "fileName": "CoreDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreDailies.cs"
   },
@@ -2324,7 +2324,7 @@
   },
   {
     "name": "Friendship",
-    "description": "This will complete the Friendship story quest.",
+    "description": "This will complete the Friendship storyline.",
     "tags": [
       "friendship",
       "story",
@@ -2332,7 +2332,7 @@
       "battleodium"
     ],
     "path": "Story/Friendship.cs",
-    "size": 2544,
+    "size": 3552,
     "fileName": "Friendship.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Friendship.cs"
   },
@@ -3028,6 +3028,21 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/CyserosSuperHammer.cs"
   },
   {
+    "name": "Friendship Dailies",
+    "description": "This bot does all the friendship based dailies in battleodium and greyguard",
+    "tags": [
+      "daily",
+      "dailies",
+      "friendship",
+      "battleodium",
+      "greyguard"
+    ],
+    "path": "Dailies/FriendshipDailies.cs",
+    "size": 882,
+    "fileName": "FriendshipDailies.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/FriendshipDailies.cs"
+  },
+  {
     "name": "Mad Weapon Smith Daily",
     "description": "Mad Weapon Smith",
     "tags": [
@@ -3062,7 +3077,7 @@
       "all"
     ],
     "path": "Dailies/0AllDailies.cs",
-    "size": 2512,
+    "size": 2655,
     "fileName": "0AllDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/0AllDailies.cs"
   },
