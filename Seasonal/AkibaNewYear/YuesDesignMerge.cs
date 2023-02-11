@@ -69,8 +69,8 @@ public class YuesDesignMerge
                     Core.RegisterQuests(9094);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.KillMonster("guardiantree", "r3a", "Left", "Blossoming Treeant", "Fresh Blossoms", 8);
-                        Core.KillMonster("guardiantree", "r3a", "Left", "Seed Spitter", "Fresh Seeds", 8);
+                        Core.HuntMonster("guardiantree", "Blossoming Treeant", "Fresh Blossoms", 8);
+                        Core.HuntMonster("guardiantree", "Seed Spitter", "Fresh Seeds", 8);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
