@@ -7010,8 +7010,8 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HerosHeartDay/Fezzini.cs"
   },
   {
-    "name": "Swaggys Chateau",
-    "description": "This will complete the Swaggys Chateau story quest.",
+    "name": "Swaggy's Chateau",
+    "description": "This will complete the Swaggy's Chateau story quest.",
     "tags": [
       "swaggys-chateau",
       "seasonal",
@@ -7021,7 +7021,7 @@
       "story"
     ],
     "path": "Seasonal/HerosHeartDay/SwaggysChateau.cs",
-    "size": 2157,
+    "size": 2159,
     "fileName": "SwaggysChateau.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HerosHeartDay/SwaggysChateau.cs"
   },
