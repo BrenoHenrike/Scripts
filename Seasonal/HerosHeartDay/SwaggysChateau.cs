@@ -1,6 +1,6 @@
 /*
-name: Swaggys Chateau
-description: This will complete the Swaggys Chateau story quest.
+name: Swaggy's Chateau
+description: This will complete the Swaggy's Chateau story quest.
 tags: swaggys-chateau, seasonal, heros-heart-day, heart, hero, story
 */
 //cs_include Scripts/CoreBots.cs
