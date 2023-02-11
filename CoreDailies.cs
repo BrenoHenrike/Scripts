@@ -7,6 +7,7 @@ tags: null
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Models.Quests;
+using Newtonsoft.Json;
 
 public class CoreDailies
 {
@@ -731,6 +732,283 @@ public class CoreDailies
                 break;
         }
     }
+#nullable enable
+    #region Friendship
+    public void Friendships()
+    {
+        bool waitForPacket = false;
+        string? _friendshipInfo = null;
+        Bot.Events.ExtensionPacketReceived += friendshipPacketReader;
+
+        if (!RefreshFriendshipData(out var friends))
+            return;
+        if (friends.All(f => !f.CanGift && (!f.CanTalk || f.NPC == "Linus")))
+        {
+            Core.Logger($"All the friendship dailies have already been completed today.");
+            return;
+        }
+
+        Bot.Drops.Add(frGiftIDs);
+        Core.AddDrop(frRewards);
+
+        // Battleodium
+        handleFriendship("Twig", frGift.Melons);
+        handleFriendship("Twilly", frGift.Apples, frGift.Orchids);
+        handleFriendship("Maya", frGift.Chrysanthemums, frGift.Apples);
+        handleFriendship("Yulgar", frGift.Turqoise, frGift.Orchids, frGift.Melons);
+        handleFriendship("Mi", frGift.Sapphires, frGift.Lilies);
+        handleFriendship("Lord Brentan", frGift.Oranges, frGift.Rubies);
+        handleFriendship("Warlic", frGift.Sapphires, frGift.Sunflowers);
+        handleFriendship("Zorbak", frGift.Apples);
+        handleFriendship("Smoglin", frGift.Turqoise, frGift.Apples);
+
+        // Greyguard
+        handleFriendship("Drakath", frGift.Chaos_Diemond);
+        handleFriendship("Xang", frGift.Emeralds, frGift.Grapes);
+        handleFriendship("Linus", frGift.A_Fish);
+        handleFriendship("Sally", frGift.Emeralds, frGift.Tulips);
+        handleFriendship("Xing", frGift.Opals, frGift.Bananas);
+
+        Bot.Events.ExtensionPacketReceived -= friendshipPacketReader;
+        Core.ToBank(frGiftIDs);
+        Core.ToBank(frRewards[3..]);
+
+        #region Local methods
+        void handleFriendship(string npc, params frGift[] gifts)
+        {
+            if (!friends.Any(f => f.NPC.ToLower() == npc.ToLower()))
+            {
+                Core.Logger($"NPC \"{npc}\" not found. Check for typos");
+                return;
+            }
+            FriendshipInfo friend = friends.First(f => f.NPC.ToLower() == npc.ToLower());
+
+            if ((!friend.CanTalk || friend.NPC == "Linus") && !friend.CanGift)
+            {
+                Core.Logger($"Friendship dail{(friend.NPC == "Linus" ? "y" : "ies")} unavailable: {friend.NPC}");
+                return;
+            }
+            else Core.Logger($"Daily: Friendship ({friend.NPC})");
+
+            Core.Join(friend.Map);
+            SendWaitedPacket($"%xt%zm%friendshipInfo%{Bot.Map.RoomID}%{friend.NPC}%");
+
+            if (friend.CanTalk && friend.NPC != "Linus")
+            {
+                SendWaitedPacket($"%xt%zm%friendshipTalk%{Bot.Map.RoomID}%");
+                SendWaitedPacket($"%xt%zm%friendshipChoice%{Bot.Map.RoomID}%1%");
+                InformLogger($"Talked to {friend.NPC}. Through the bot this has a 50% chance of giving hearts.", ref friend);
+            }
+            if (friend.CanGift)
+            {
+                int[] _gifts = gifts.Select(x => (int)x).ToArray();
+                if (!Core.CheckInventory(_gifts, any: true))
+                {
+                    if (gifts.Count() == 1)
+                        Core.FarmingLogger(gifts[0].ToString().Replace('_', ' '), 1);
+                    else Core.Logger("Farming for one of the following items: " + String.Join(" | ", gifts.Select(x => x.ToString().Replace('_', ' ')).ToArray()));
+
+                    switch (gifts[0])
+                    {
+                        case frGift.Chrysanthemums:
+                        case frGift.Orchids:
+                        case frGift.Roses:
+                        case frGift.Sunflowers:
+                        case frGift.Tulips:
+                            Core.EquipClass(ClassType.Farm);
+                            while (!Bot.ShouldExit && !Core.CheckInventory(_gifts, any: true))
+                                Core.HuntMonster("battleodium", "Widowing", log: false);
+                            break;
+
+                        case frGift.Lilies:
+                            Core.EquipClass(ClassType.Farm);
+                            while (!Bot.ShouldExit && !Core.CheckInventory(_gifts, any: true))
+                                Core.HuntMonster("greyguard", "Gloombloom", log: false);
+                            break;
+
+                        case frGift.Chaos_Diemond:
+                            Core.EquipClass(ClassType.Farm);
+                            Core.KillMonster("battleodium", "r6", "Left", "*", "Grapes", 1, false, false);
+                            Core.KillMonster("battleodium", "r6", "Left", "*", "Diamonds", 1, false, false);
+                            Core.BuyItem("battleodium", 2236, "Chaos Diemond");
+                            break;
+
+                        case frGift.A_Fish:
+                            if (!Bot.Quests.IsUnlocked(9107))
+                            {
+                                Core.EquipClass(ClassType.Solo);
+                                Core.HuntMonster("greyguard", "Odium", "A Fish", 1, false, false);
+                            }
+                            else
+                            {
+                                Core.EquipClass(ClassType.Farm);
+                                Core.HuntMonster("battleodium", "Widowing", "Roses", 1, false, false);
+                                Core.KillMonster("battleodium", "r6", "Left", "*", "Strawberries", 1, false, false);
+                                Core.KillMonster("battleodium", "r6", "Left", "*", "Rubies", 1, false, false);
+                                Core.ChainComplete(9107);
+                                Bot.Wait.ForPickup((int)gifts[0]);
+                            }
+                            break;
+
+                        default:
+                            Core.EquipClass(ClassType.Farm);
+                            while (!Bot.ShouldExit && !Core.CheckInventory(_gifts, any: true))
+                                Core.KillMonster("battleodium", "r6", "Left", "*", log: false);
+                            break;
+                    }
+                }
+
+                Core.JumpWait();
+                InventoryItem selectedGift = Bot.Inventory.Items.First(x => _gifts.Contains(x.ID));
+                SendWaitedPacket($"%xt%zm%friendshipGift%{Bot.Map.RoomID}%{selectedGift.ID}%{selectedGift.CharItemID}%");
+                InformLogger($"Gifted {selectedGift.Name} to {friend.NPC}.", ref friend);
+            }
+        }
+
+        void friendshipPacketReader(dynamic packet)
+        {
+            string type = packet["params"].type;
+            dynamic data = packet["params"].dataObj;
+            if (type is not null and "json")
+            {
+                string cmd = data.cmd.ToString();
+                switch (cmd)
+                {
+                    case "friendshipInfo":
+                    case "friendshipTalk":
+                    case "friendshipChoice":
+                        waitForPacket = true;
+                        break;
+
+                    case "friendshipStats":
+                        _friendshipInfo = data.friendships.ToString();
+                        break;
+                }
+            }
+        }
+
+        bool RefreshFriendshipData(out List<FriendshipInfo> friends)
+        {
+            _friendshipInfo = null;
+            Bot.Send.Packet($"%xt%zm%friendshipStats%{Bot.Map.RoomID}%");
+            Bot.Wait.ForTrue(() => _friendshipInfo != null, 30);
+            if (_friendshipInfo == null)
+            {
+                Core.Logger("Something went wrong, friendshipInfo is null");
+                friends = new();
+                return false;
+            }
+            friends = JsonConvert.DeserializeObject<List<FriendshipInfo>>(_friendshipInfo)!;
+            return friends.Count > 0;
+        }
+
+        void InformLogger(string text, ref FriendshipInfo info)
+        {
+            float oldNum = info.DisplayHearts;
+            bool refreshed = RefreshFriendshipData(out friends);
+            string npc = info.NPC;
+            info = friends.First(f => f.NPC == npc);
+            float addNum = info.DisplayHearts - oldNum;
+
+            Core.Logger(text +
+                (refreshed ?
+                    $" You gained {addNum} heart{(addNum > 1 ? "s" : String.Empty)}" :
+                    String.Empty)
+            );
+        }
+
+        void SendWaitedPacket(string packet)
+        {
+            waitForPacket = false;
+            Bot.Send.Packet(packet);
+            Bot.Wait.ForTrue(() => waitForPacket, 30);
+        }
+        #endregion
+    }
+
+    public int[] frGiftIDs = ((frGift[])Enum.GetValues(typeof(frGift))).Select(x => (int)x).ToArray();
+    public string[] frGiftNames = ((frGift[])Enum.GetValues(typeof(frGift))).Select(x => x.ToString()).ToArray();
+    public string[] frRewards =
+    {
+        "Gold Voucher 25k",
+        "Gold Voucher 100",
+        "Gold Voucher 500k",
+        "Combat Trophy",
+        "Super Swag Token A",
+        "Super Swag Token B",
+        "Dragon Runestone",
+        "Faded Pigment",
+        "GOLD Boost! (20 Min)",
+        "XP Boost! (20 min)",
+        "REP Boost! (20 Min)",
+        "Arcane Quill",
+        "Spirit Orb"
+    };
+
+    private enum frGift
+    {
+        Roses = 76272,
+        Lilies = 76273,
+        Tulips = 76274,
+        Sunflowers = 76275,
+        Chrysanthemums = 76276,
+        Orchids = 76277,
+        Apples = 76278,
+        Oranges = 76279,
+        Bananas = 76280,
+        Strawberries = 76281,
+        Grapes = 76282,
+        Melons = 76283,
+        Diamonds = 76284,
+        Emeralds = 76285,
+        Rubies = 76286,
+        Sapphires = 76287,
+        Opals = 76288,
+        Turqoise = 76289,
+        Chaos_Diemond = 76355,
+        A_Fish = 76322
+    };
+
+    private class FriendshipInfo
+    {
+        [JsonProperty("strName")]
+        public string NPC { get; set; } = String.Empty;
+
+        [JsonProperty("iHearts")]
+        public int Hearts { get; set; }
+        [JsonIgnore]
+        public float DisplayHearts
+        {
+            get
+            {
+                return (float)Hearts / (float)4;
+            }
+        }
+
+        [JsonProperty("strLocation")]
+        public string Map { get; set; } = String.Empty;
+
+        [JsonProperty("bTalk")]
+        public bool CanTalk { get; set; }
+
+        [JsonProperty("iGifts")]
+        public int GiftCount { get; set; }
+        [JsonIgnore]
+        public bool CanGift
+        {
+            get
+            {
+                return GiftCount == 0;
+            }
+        }
+
+        public override string ToString()
+        {
+            return $"{NPC}: {DisplayHearts} Hearts | Talked = {!CanTalk} | Gifted = {!CanGift}";
+        }
+    }
+    #endregion
+
 }
 
 public enum MineCraftingMetalsEnum
