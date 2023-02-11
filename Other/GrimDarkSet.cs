@@ -28,6 +28,10 @@ public class GrimDarkSet
 
     public void GetAll()
     {
+        if (!Bot.Quests.IsUnlocked(7049)) {
+            Cave.Storyline();
+        }
+
         List<ItemBase> RewardOptions = Core.EnsureLoad(7049).Rewards;
 
         foreach (ItemBase item in RewardOptions)
