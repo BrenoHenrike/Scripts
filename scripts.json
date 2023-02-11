@@ -12159,12 +12159,18 @@
   },
   {
     "name": "FindingFragments",
-    "description": "null",
+    "description": "Does the \"finding fragments with blinding [insert] of destiny for the quest rewards.",
     "tags": [
-      "null"
+      "finding fragments",
+      "blinding light fragments",
+      "spirit orb",
+      "loyal spirit orb",
+      "bright aura",
+      "brilliant aura",
+      "blinding aura"
     ],
     "path": "Good/BLoD/FindingFragments.cs",
-    "size": 2909,
+    "size": 3101,
     "fileName": "FindingFragments.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/FindingFragments.cs"
   },
