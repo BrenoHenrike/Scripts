@@ -2327,16 +2327,18 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ThirdSpell.cs"
   },
   {
-    "name": "Friendship",
+    "name": "Friendship Story",
     "description": "This will complete the Friendship storyline.",
     "tags": [
-      "friendship",
       "story",
+      "quest",
+      "friendship",
       "greyguard",
-      "battleodium"
+      "battleodium",
+      "NPC"
     ],
     "path": "Story/Friendship.cs",
-    "size": 3552,
+    "size": 3570,
     "fileName": "Friendship.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Friendship.cs"
   },
