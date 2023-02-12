@@ -486,12 +486,16 @@
     "name": "Grim Dark Set",
     "description": "farms the \"Grim Dark\" set from Quest",
     "tags": [
-      "doom regin doom’s reward",
-      "grim dark",
+      "doom",
+      "region",
+      "doom",
+      "reward",
+      "grim",
+      "dark",
       "set"
     ],
     "path": "Other/GrimDarkSet.cs",
-    "size": 1772,
+    "size": 1773,
     "fileName": "GrimDarkSet.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/GrimDarkSet.cs"
   },
