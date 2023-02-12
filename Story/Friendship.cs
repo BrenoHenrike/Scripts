@@ -1,7 +1,7 @@
 /*
-name: Friendship
+name: Friendship Story
 description: This will complete the Friendship storyline.
-tags: friendship, story, greyguard, battleodium
+tags: story, quest, friendship, greyguard, battleodium, NPC
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
