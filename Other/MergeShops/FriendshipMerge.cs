@@ -30,7 +30,7 @@ public class FriendshipMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Faded Pigment" });
+        Core.BankingBlackList.AddRange(new[] { "Faded Pigment", "Grapes", "Diamonds" });
         Core.SetOptions();
 
         BuyAllMerge();
