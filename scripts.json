@@ -5167,6 +5167,19 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/VokunMerge.cs"
   },
   {
+    "name": "Friendship Merge",
+    "description": "This script will farm materials to buy items from the Friendship Merge shop.",
+    "tags": [
+      "friendship",
+      "merge",
+      "battleodium"
+    ],
+    "path": "Other/MergeShops/FriendshipMerge.cs",
+    "size": 6818,
+    "fileName": "FriendshipMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/FriendshipMerge.cs"
+  },
+  {
     "name": "ShipWreckMerge[non-ac]",
     "description": "null",
     "tags": [
