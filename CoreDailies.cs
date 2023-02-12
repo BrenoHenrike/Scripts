@@ -844,7 +844,8 @@ public class CoreDailies
                                 Core.EquipClass(ClassType.Farm);
                                 Core.HuntMonster("battleodium", "Widowing", "Roses", 1, false, false);
                                 Core.KillMonster("battleodium", "r6", "Left", "*", "Strawberries", 1, false, false);
-                                Core.KillMonster("battleodium", "r6", "Left", "*", "Rubies", 1, false, false);
+                                while (!Bot.ShouldExit && !Core.CheckInventory(76286)) ///multiple items with name "Rubies"
+                                    Core.KillMonster("battleodium", "r6", "Left", "*", log: false);
                                 Core.ChainComplete(9107);
                                 Bot.Wait.ForPickup((int)gifts[0]);
                             }
