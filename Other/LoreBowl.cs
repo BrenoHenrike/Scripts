@@ -57,7 +57,7 @@ public class LoreBowl
         if (Core.CheckInventory(LoreBowlItems, toInv: false))
             return;
 
-        while (!Bot.ShouldExit && Core.CheckInventory(LoreBowlItems, toInv: false))
+        while (!Bot.ShouldExit && !Core.CheckInventory(LoreBowlItems, toInv: false))
             Core.HuntMonster("punt", "*", isTemp: false);
     }
 
