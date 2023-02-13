@@ -2453,7 +2453,7 @@
       "null"
     ],
     "path": "Army/CoreArmyLite.cs",
-    "size": 38460,
+    "size": 35839,
     "fileName": "CoreArmyLite.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/CoreArmyLite.cs"
   },
@@ -12083,7 +12083,7 @@
       "thefamily"
     ],
     "path": "Army/OneClient/AllDailies.cs",
-    "size": 1570,
+    "size": 1611,
     "fileName": "AllDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/OneClient/AllDailies.cs"
   },
