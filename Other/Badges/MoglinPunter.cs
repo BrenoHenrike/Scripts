@@ -36,7 +36,10 @@ public class MoglinPunter
         while (!Bot.ShouldExit && !Core.HasWebBadge(badge))
         {
             Core.Jump("Enter", "Spawn");
+            Bot.Sleep(Core.ActionDelay);
             Bot.Send.Packet("%xt%zm%ia%1%rval%btnPuntting%%");
+            Bot.Wait.ForCellChange("Punt");
+            Bot.Sleep(Core.ActionDelay);
         }
     }
 
