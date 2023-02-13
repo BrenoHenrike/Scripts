@@ -1,5 +1,5 @@
 /*
-name: null
+name: CtrlAltDelMemberBadge
 description: null
 tags: null
 */

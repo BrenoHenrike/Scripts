@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Nythera Saga Story
+description: This will finish the Nythera Saga Story.
+tags: story, quest, nythera
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

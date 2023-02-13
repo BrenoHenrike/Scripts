@@ -1,5 +1,5 @@
 /*
-name: null
+name: InventoryEnhancer
 description: null
 tags: null
 */

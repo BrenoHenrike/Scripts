@@ -1,5 +1,5 @@
 /*
-name: null
+name: EmpoweredBladeMasterQuestRewards
 description: null
 tags: null
 */

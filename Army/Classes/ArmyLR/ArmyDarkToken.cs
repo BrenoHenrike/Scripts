@@ -1,6 +1,6 @@
 /*
-name:  Army Dark Token
-description:  uses an army to farm dark tokens
+name: Army Dark Token
+description: uses an army to farm dark tokens
 tags: dark token, army, seraphicwardage
 */
 //cs_include Scripts/CoreBots.cs
@@ -55,6 +55,8 @@ public class ArmyDarkToken
     {
         if (Core.CheckInventory("Dark Token", quant))
             return;
+
+        Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
 
         Core.FarmingLogger("Dark Token", quant);
         Core.AddDrop("Dark Token");

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: (Ziri) Bacon Cat Fortress Story
+description: This will finish the Bacon Cat Fortress story.
+tags: bacon, cat, fortress, farm, story, ziri, throne, darkness
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

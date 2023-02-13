@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Luna Cove Merge
+description: This will farm the Luna Cove items.
+tags: farm, merge, shop, luna-cove, summer-break
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

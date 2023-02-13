@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Magic Thief Story
+description: This will finish the Magic Thief Story.
+tags: story, quest, magic-thief
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

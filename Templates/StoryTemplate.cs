@@ -1,5 +1,5 @@
 /*
-name: null
+name: StoryTemplate
 description: null
 tags: null
 */

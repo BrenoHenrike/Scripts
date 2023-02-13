@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Chaos Amulet
+description: This will finish the Chaos Amulet quest.
+tags: story, quest, shadow-chaos, chaos-amulet
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

@@ -1,6 +1,6 @@
 /*
-name:  Pyromancer Daily
-description:  Pyromancer
+name: Pyromancer Daily
+description: Pyromancer
 tags: daily, insertthinghere, class
 */
 //cs_include Scripts/CoreBots.cs

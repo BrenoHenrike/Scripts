@@ -1,5 +1,5 @@
 /*
-name: null
+name: AdvancedWeaponKit
 description: null
 tags: null
 */
@@ -10,7 +10,7 @@ tags: null
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
 using Skua.Core.Interfaces;
 
-public class UltimateWeaponKit
+public class AdvancedWeaponKit
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
@@ -20,7 +20,7 @@ public class UltimateWeaponKit
     {
         Core.SetOptions();
 
-        BLOD.UltimateWK("Bright Aura", 10000);
+        BLOD.AdvancedWK(1000);
 
         Core.SetOptions(false);
     }

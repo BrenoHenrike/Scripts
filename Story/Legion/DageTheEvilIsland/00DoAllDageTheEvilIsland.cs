@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Complete Dage The Evil Island Story
+description: This will complete the Dage The Evil Island story.
+tags: story, quest, legion, dage-the-evil-island, complete, all
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

@@ -1,6 +1,6 @@
 /*
-name:  Crypto Token Daily
-description:  Crypto Token
+name: Crypto Token Daily
+description: Crypto Token
 tags: daily, crypto token
 */
 //cs_include Scripts/CoreBots.cs

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Ship Wreck Story
+description: This will finish the Ship Wreck Story.
+tags: story, quest, shipwreck
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

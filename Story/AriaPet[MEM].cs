@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Aria Pet Story (Member)
+description: This will finish the Aria Pet quest.
+tags: story, quest, aria, pet, member
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

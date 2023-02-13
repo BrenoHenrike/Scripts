@@ -6,6 +6,7 @@ tags: kaos, chaosripjaw, aggro monster, army, reader, custom
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/Army/CoreArmyLite.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models;
 using CommunityToolkit.Mvvm.DependencyInjection;
 
 public class AggroMonReader
@@ -47,7 +48,7 @@ public class AggroMonReader
         #region Gathering Data
         // Finding file
         _fileDialog = Ioc.Default.GetRequiredService<IFileDialogService>();
-        string? path = _fileDialog.OpenFile(CoreBots.ScriptsPath, "Aggromon File (*.txt)|*.txt");
+        string? path = _fileDialog.OpenFile(ClientFileSources.SkuaScriptsDIR, "Aggromon File (*.txt)|*.txt");
         if (path == null)
             return;
         string[] file = File.ReadAllLines(path);

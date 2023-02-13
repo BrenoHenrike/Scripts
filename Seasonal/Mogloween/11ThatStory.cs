@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: That Story
+description: This will complete the That story quest.
+tags: story, quest, mogloween, seasonal, that
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

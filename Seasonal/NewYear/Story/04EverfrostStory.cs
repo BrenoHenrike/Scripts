@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Everfrost Story
+description: This will complete the Everfrost story.
+tags: story, quest, seasonal, new-year, everfrost
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

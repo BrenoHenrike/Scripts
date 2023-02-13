@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Shadow Vault Story
+description: This will finish the Shadow Vault Story.
+tags: story, quest, shadow-vault
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

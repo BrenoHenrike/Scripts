@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Ghost Nexus
+description: This will finish the Ghost Nexus quest.
+tags: story, quest, shadow-war, ghost-nexus
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

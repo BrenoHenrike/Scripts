@@ -1,5 +1,5 @@
 /*
-name: null
+name: RankUpEquippedClass
 description: null
 tags: null
 */

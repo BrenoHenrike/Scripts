@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Pooka's Gifts Merge
+description: This will merge Pooka's Gifts.
+tags: farm, merge, pooka, seasonal, lucky, shop, gift
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Dark War Nation Merge
+description: This will complete the Dark War Nation story and farm Nation Defender Medals.
+tags: story, quest, nation, dark, war, merge, staff, birthday
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

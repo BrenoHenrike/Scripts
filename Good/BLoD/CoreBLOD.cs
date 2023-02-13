@@ -8,6 +8,8 @@ tags: null
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreAdvanced.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Quests;
+using Skua.Core.Models.Items;
 
 public class CoreBLOD
 {
@@ -522,18 +524,11 @@ public class CoreBLOD
         if (Core.CheckInventory("Blinding Light of Destiny"))
             return;
 
-        Core.AddDrop(BLoDItems);
-
         Core.Logger("Final part");
         FindingFragmentsBroadSword(500, 125);
         FindingFragmentsMace(75);
         FindingFragmentsBlade(0, 250);
-        Core.Logger(Core.CheckInventory("Blinding Aura") ? "Blinding Aura found." : "Farming for Blinding Aura");
-        while (!Bot.ShouldExit && !Core.CheckInventory("Blinding Aura"))
-        {
-            FindingFragments(Core.CheckInventory("Blinding Scythe of Destiny") ? 2177 : 2174);
-            Bot.Drops.Pickup("Blinding Aura");
-        }
+        FindingFragments(Core.CheckInventory("Blinding Scythe of Destiny") ? 2177 : 2174, "Blinding Aura");
         UltimateWK();
         Core.ChainComplete(2180);
         Bot.Drops.Pickup("Get Your Blinding Light of Destiny");
@@ -546,35 +541,18 @@ public class CoreBLOD
         if (!Core.CheckInventory("Blinding Mace of Destiny"))
             BlindingMace();
 
-        Core.AddDrop(BLoDItems);
-
-        Core.EquipClass(ClassType.Farm);
-        Core.FarmingLogger("Brilliant Aura", quant);
-
-        while (!Bot.ShouldExit && !Core.CheckInventory("Brilliant Aura", quant))
-        {
-            FindingFragments(2176);
-            Bot.Drops.Pickup("Brilliant Aura");
-        }
+        FindingFragments(2176, "Brilliant Aura", quant);
     }
 
     public void FindingFragmentsBow(int quant = 1)
     {
         if (Core.CheckInventory("Bright Aura", quant))
             return;
+            
         if (!Core.CheckInventory("Blinding Bow of Destiny"))
             BlindingBow();
 
-        Core.AddDrop(BLoDItems);
-
-        Core.EquipClass(ClassType.Farm);
-        Core.FarmingLogger("Bright Aura", quant);
-
-        while (!Bot.ShouldExit && !Core.CheckInventory("Bright Aura", quant))
-        {
-            FindingFragments(2174);
-            Bot.Drops.Pickup("Bright Aura");
-        }
+        FindingFragments(2174, "Bright Aura", quant);
     }
 
     public void FindingFragmentsBlade(int quantSO, int quantLSO)
@@ -584,15 +562,8 @@ public class CoreBLOD
         if (!Core.CheckInventory("Blinding Blade of Destiny"))
             BlindingBlade();
 
-        Core.AddDrop(BLoDItems);
-
-        Core.EquipClass(ClassType.Farm);
-        Core.Logger($"Farming {quantSO} SOs and {quantLSO} LSOs");
-        while (!Bot.ShouldExit && !Core.CheckInventory("Spirit Orb", quantSO) || !Core.CheckInventory("Loyal Spirit Orb", quantLSO))
-        {
-            FindingFragments(2179);
-            Bot.Drops.Pickup("Spirit Orb", "Loyal Spirit Orb");
-        }
+        FindingFragments(2179, "Spirit Orb", quantSO);
+        FindingFragments(2179, "Loyal Spirit Orb", quantLSO);
     }
 
     public void FindingFragmentsBroadSword(int quantSO, int quantBA)
@@ -602,23 +573,28 @@ public class CoreBLOD
         if (!Core.CheckInventory("Blinding Scythe of Destiny"))
             BlindingBroadsword();
 
-        Core.AddDrop(BLoDItems);
-
-        Core.EquipClass(ClassType.Farm);
-        Core.Logger($"Farming {quantSO} SOs and {quantBA} BAs");
-        while (!Bot.ShouldExit && !Core.CheckInventory("Spirit Orb", quantSO) || !Core.CheckInventory("Bright Aura", quantBA))
-        {
-            FindingFragments(2178);
-            Bot.Drops.Pickup("Spirit Orb", "Bright Aura");
-        }
+        FindingFragments(2178, "Spirit Orb", quantSO);
+        FindingFragments(2178, "Bright Aura", quantBA);
     }
 
-    public void FindingFragments(int quest)
+    public void FindingFragments(int quest = 0000, string item = null, int quant = 1)
     {
-        Core.AddDrop("Bone Dust", "Undead Essence", "Undead Energy", "Blinding Light Fragments", "Spirit Orb", "Loyal Spirit Orb", "Bright Aura", "Brilliant Aura", "Blinding Aura");
+        if (Core.CheckInventory(item, quant) || item == null)
+            return;
+
+        Quest QuestData = Core.EnsureLoad(quest);
+        ItemBase[] RequiredItems = QuestData.Requirements.ToArray();
+        ItemBase[] QuestReward = QuestData.Rewards.ToArray();
+
+        foreach (ItemBase Item in RequiredItems.Concat(QuestReward))
+            Bot.Drops.Add(Item.ID);
+
+        Core.FarmingLogger(item, quant);
+        Core.EquipClass(ClassType.Farm);
 
         Core.RegisterQuests(quest);
-        Farm.BattleUnderB("Blinding Light Fragments", 10);
+        while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
+            Core.KillMonster("battleunderb", "Enter", "Spawn", "*", "Blinding Light Fragments", 10, isTemp: false, log: false);
         Core.CancelRegisteredQuests();
     }
 

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Complete Celestial Realm
+description: This will complete the Celestial Realm story arc.
+tags: story, quest, queen-of-monsters, celestial-realm-at-theft-of-light
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

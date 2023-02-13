@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Laken
+description: This will finish the Laken quest.
+tags: story, quest, legion, dage-the-evil-island, laken
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

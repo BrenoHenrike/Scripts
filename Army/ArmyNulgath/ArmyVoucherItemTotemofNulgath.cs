@@ -1,6 +1,6 @@
 /*
-name:  Army Totem And Gem
-description:  uses an army to farm Totems Of Nulgath or Gem of Nulgath from "voucher item totem of nulgath"
+name: Army Totem And Gem
+description: uses an army to farm Totems Of Nulgath or Gem of Nulgath from "voucher item totem of nulgath"
 tags: totems of nulgath, gem of nulgath, army, voucher item totem of nulgath
 */
 //cs_include Scripts/CoreBots.cs
@@ -49,10 +49,12 @@ public class ArmyTotemAndGem
 
     public void Setup(Rewards reward)
     {
-        Nation.FarmVoucher(false);
-
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
+
+       Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
+
+        Nation.FarmVoucher(false);
 
         Core.AddDrop(Loot);
         Core.EquipClass(ClassType.Farm);

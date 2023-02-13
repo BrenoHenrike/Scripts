@@ -1,6 +1,6 @@
 /*
-name:  Elders Blood Daily
-description:  Elders Blood
+name: Elders Blood Daily
+description: Elders Blood
 tags: daily, elders blood, nulgath, roentgenium
 */
 //cs_include Scripts/CoreBots.cs

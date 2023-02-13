@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Chromafection Story
+description: This will complete the Chromafection story quest.
+tags: story, quest, mogloween, seasonal, chromafection
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: (Badge) Celestial Champion
+description: This will get the Celestial Champion badge.
+tags: badge, celestial, arena, champion
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

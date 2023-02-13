@@ -1,5 +1,5 @@
 /*
-name: null
+name: AvatarOfDeathsScythe
 description: null
 tags: null
 */

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Avast Badge (Member)
+description: This will finish the quest line of Avast and get Avast Badge.
+tags: story, quest, avast, badge, pirate, member
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

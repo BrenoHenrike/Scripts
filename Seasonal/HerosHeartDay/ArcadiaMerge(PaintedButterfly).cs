@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Painted Butterfly (Arcadia Merge)
+description: This will complete the Painted Butterfly quest.
+tags: farm, merge, quest, arcadia, seasonal, painted, butterfly, hero, heart
 */
 //cs_include Scripts/CoreBots.cs
 // Must Have Completed Arcadia Storyline Up To: "Seperation Anxiety": http://aqwwiki.wikidot.com/big-daddy-s-quests#ArcadiaFarm

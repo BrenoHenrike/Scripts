@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Shadowlord Keep
+description: This is the second part of the Shadow War story arc. It will take you to the Shadowlord Keep area and start the quest.
+tags: story, quest, shadow-war, shadowlord-keep
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

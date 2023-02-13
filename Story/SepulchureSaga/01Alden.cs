@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Alden
+description: This will finish the Alden quest.
+tags: story, quest, sepulchure-saga, alden
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

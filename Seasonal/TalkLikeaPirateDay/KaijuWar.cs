@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Kaiju War
+description: This will farm the Kaiju War items.
+tags: farm, pirate, kaiju, war
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

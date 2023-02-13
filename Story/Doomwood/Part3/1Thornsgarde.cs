@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Thorns Garde
+description: This will finish the Thorns Garde quest.
+tags: story, quest, doomwood, thornsgarde, part3
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

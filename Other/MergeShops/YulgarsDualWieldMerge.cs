@@ -1,5 +1,5 @@
 /*
-name: null
+name: YulgarsDualWieldMerge
 description: null
 tags: null
 */

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Masquerade Story
+description: This will complete the Masquerade story quest.
+tags: story, quest, mogloween, seasonal, masquerade
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

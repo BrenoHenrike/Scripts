@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Blazebeard Merge
+description: This will farm the Blazebeard Merge items.
+tags: farm, blazebeard, merge, pirate
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

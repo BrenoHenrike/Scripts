@@ -8,6 +8,7 @@ tags: null
 
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
+using Skua.Core.Models.Quests;
 
 public class CoreNation
 {
@@ -142,14 +143,6 @@ public class CoreNation
             Core.HuntMonster("faerie", "Aracara", "Aracara's Fang", 1, false, log: false);
             Core.HuntMonster("hydra", "Hydra Head", "Hydra Scale", 1, false, log: false);
             Core.KillVath("Strand of Vath's Hair", 1, false, false);
-            // if (!Core.CheckInventory("Strand of Vath's Hair"))
-            // {
-            //     Core.Join("stalagbite", "r2", "Left");
-            //     Bot.Kill.Monster("Vath");
-            //     Core.JumpWait();
-            //     if (Bot.Drops.Exists("Strand of Vath's Hair"))
-            //         Bot.Drops.Pickup("Strand of Vath's Hair");
-            // }
             Core.HuntMonster("yokaiwar", "O-Dokuro's Head", "O-dokuro's Tooth", 1, false, log: false);
             Core.KillEscherion("Escherion's Chain", publicRoom: true);
             if (!Core.CheckInventory("Defeated Makai", 50))
@@ -486,30 +479,48 @@ public class CoreNation
     /// </summary>
     /// <param name=item>Desired item name</param>
     /// <param name="quant">Desired item quantity</param>
-    public void NulgathLarvae(string item = "Any", int quant = 1)
+    public void NulgathLarvae(string item = null, int quant = 1)
     {
-        if (Core.CheckInventory(item, quant))
+        if (Core.CheckInventory(item, quant) && item != null)
             return;
 
-        Core.AddDrop("Mana Energy for Nulgath");
-        if (item != "Any")
-            Core.AddDrop(item);
-        else
-            Core.AddDrop(bagDrops);
-        Core.FarmingLogger(item, quant);
+        Bot.Drops.Add(bagDrops);
+        Bot.Drops.Add("Mana Energy for Nulgath");
         Bot.Quests.UpdateQuest(847);
-        Core.RegisterQuests(2566);
-        while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
+        Core.DebugLogger(this);
+        if (item == null)
         {
-            Core.EquipClass(ClassType.Solo);
-            Core.HuntMonsterMapID("elemental", 7, "Mana Energy for Nulgath", isTemp: false, log: false);
-            Core.EquipClass(ClassType.Farm);
-            Core.KillMonster("elemental", "r3", "Down", "*", "Charged Mana Energy for Nulgath", 5, log: false);
-            Bot.Drops.Pickup(item);
-            if (Bot.Inventory.IsMaxStack(item))
-                Core.Logger("Max Stack Hit.");
-            else Core.Logger($"{item}: {Bot.Inventory.GetQuantity(item)}/{quant}");
+            foreach (string Drop in bagDrops)
+            {
+                Core.FarmingLogger(Drop, Bot.Inventory.GetItem(Drop).MaxStack);
+                Core.RegisterQuests(2566);
+                while (!Bot.ShouldExit && !Bot.Inventory.IsMaxStack(item))
+                {
+                    Core.EquipClass(ClassType.Solo);
+                    Core.HuntMonster("elemental", "Mana Golem", "Mana Energy for Nulgath", isTemp: false, log: false);
+                    Core.EquipClass(ClassType.Farm);
+                    Core.KillMonster("elemental", "r3", "Down", "*", "Charged Mana Energy for Nulgath", 5, log: false);
+                    Bot.Wait.ForPickup("*");
+                }
+                Core.CancelRegisteredQuests();
+            }
         }
+        else
+        {
+            Core.DebugLogger(this);
+            Core.FarmingLogger(item, quant);
+            while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
+            {
+                Core.EnsureAccept(2566);
+                Core.EquipClass(ClassType.Solo);
+                Core.HuntMonster("elemental", "Mana Golem", "Mana Energy for Nulgath", isTemp: false, log: false);
+                Core.EquipClass(ClassType.Farm);
+                Core.KillMonster("elemental", "r3", "Down", "*", "Charged Mana Energy for Nulgath", 5, log: false);
+                Core.EnsureCompleteMulti(2566);
+                Bot.Wait.ForPickup("*");
+            }
+        }
+
     }
 
     /// <summary>
@@ -952,6 +963,7 @@ public class CoreNation
         if (Core.CheckInventory(CragName))
             while (!Bot.ShouldExit && !Core.CheckInventory("Unidentified 13", quant))
                 DiamondExchange();
+        NewWorldsNewOpportunities("Unidentified 13", quant); //1minute turning  = 1x guaranteed
         VoidKightSwordQuest("Unidentified 13", quant);
         NulgathLarvae("Unidentified 13", quant);
     }
@@ -981,8 +993,8 @@ public class CoreNation
             return;
 
         Core.AddDrop("Dark Crystal Shard");
-        VoidKightSwordQuest("Dark Crystal Shard", quant);
         NewWorldsNewOpportunities("Fiend Token", quant); //1minute turning  = 1x guaranteed
+        VoidKightSwordQuest("Dark Crystal Shard", quant);
         EssenceofDefeatReagent(quant);
         Supplies("Dark Crystal Shard", quant); //xx:xx time turnin = 10% chance
     }
@@ -1012,7 +1024,6 @@ public class CoreNation
         VoidKightSwordQuest("Fiend Token", quant);
         AssistingDrudgen("Fiend Token", quant);
         FeedtheFiend("Fiend Token", quant);
-        NewWorldsNewOpportunities("Fiend Token", quant);
     }
 
 
@@ -1043,8 +1054,9 @@ public class CoreNation
         Core.AddDrop("Blood Gem of the Archfiend");
 
         if (Core.CheckInventory("Drudgen the Assistant"))
-            // while (!Bot.ShouldExit && !Core.CheckInventory("Blood Gem of the Archfiend", quant))
-            ContractExchange(ChooseReward.BloodGemoftheArchfiend, quant);
+            while (!Bot.ShouldExit && !Core.CheckInventory("Blood Gem of the Archfiend", quant))
+                ContractExchange(ChooseReward.BloodGemoftheArchfiend, quant);
+        NewWorldsNewOpportunities("Blood Gem of the Archfiend", quant);
         VoidKightSwordQuest("Blood Gem of the Archfiend", quant);
         BloodyChaos(quant, true);
         KisstheVoid(quant);
@@ -1109,13 +1121,15 @@ public class CoreNation
 
         Core.AddDrop("Totem of Nulgath");
 
+        NewWorldsNewOpportunities("Totem of Nulgath", quant);
         VoidKightSwordQuest("Totem of Nulgath", quant);
         while (!Bot.ShouldExit && !Core.CheckInventory("Totem of Nulgath", quant))
+        {
             VoucherItemTotemofNulgath(ChooseReward.TotemofNulgath);
-        if (Bot.Inventory.IsMaxStack("Totem of Nulgath"))
-            Core.Logger("Max Stack Hit.");
-        else Core.Logger($"Totem of Nulgath: {Bot.Inventory.GetQuantity("Totem of Nulgath")}/{quant}");
-        // NewWorldsNewOpportunities("Totem of Nulgath", quant);
+            if (Bot.Inventory.IsMaxStack("Totem of Nulgath"))
+                Core.Logger("Max Stack Hit.");
+            else Core.Logger($"Totem of Nulgath: {Bot.Inventory.GetQuantity("Totem of Nulgath")}/{quant}");
+        }
     }
 
     /// <summary>
@@ -1130,6 +1144,7 @@ public class CoreNation
         Core.AddDrop(member ? "Voucher of Nulgath" : "Voucher of Nulgath (non-mem)");
 
         BambloozevsDrudgen(member ? "Voucher of Nulgath" : "Voucher of Nulgath (non-mem)");
+        NewWorldsNewOpportunities(member ? "Voucher of Nulgath" : "Voucher of Nulgath (non-mem)");
         VoidKightSwordQuest(member ? "Voucher of Nulgath" : "Voucher of Nulgath (non-mem)");
         Supplies(member ? "Voucher of Nulgath" : "Voucher of Nulgath (non-mem)");
     }
@@ -1518,7 +1533,7 @@ public class CoreNation
 
     public void HireNulgathLarvae()
     {
-        if (Core.CheckInventory("Nulgath Larvae"))
+        if (Core.CheckInventory("Nulgath Larvae") || !Core.IsMember)
             return;
 
         Core.AddDrop("Nulgath Larvae");

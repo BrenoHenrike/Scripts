@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Undervoid Story
+description: This will complete the Undervoid story.
+tags: story, quest, void, nation, legion, underworld, staff, birthday
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

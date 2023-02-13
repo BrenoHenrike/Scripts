@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Stone Wood
+description: This will finish the Stone Wood quest.
+tags: story, quest, doomwood, stonewood, part3
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

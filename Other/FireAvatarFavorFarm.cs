@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Fire Avatar Favor
+description: Farms "Fire Avatar's Favor" From Mob: "fireavatar".
+tags: fire avatar's favor, fire avatar, drops
 */
 //cs_include Scripts/CoreBots.cs
 

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Shadowed War Mage Set
+description: Farms "All Drops" From Mob: "ShadowKnight Gar".
+tags: shadowknight gar, set
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

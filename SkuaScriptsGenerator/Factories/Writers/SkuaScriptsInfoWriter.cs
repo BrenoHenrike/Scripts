@@ -10,7 +10,7 @@ namespace SkuaScriptsGenerator.Writers
     {
         public void Write()
         {
-            foreach(var script in Directory.EnumerateFiles(".\\", "*.cs", SearchOption.AllDirectories))
+            foreach(var script in Directory.EnumerateFiles("./", "*.cs", SearchOption.AllDirectories))
             {
                 // if the directory is SkuaScriptsGenerator, skip
                 if (script.Contains("SkuaScriptsGenerator"))

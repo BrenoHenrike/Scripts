@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Mysterious Egg
+description: if you own the manticore cub pet, this will farm the Mysterious Egg
+tags: mysterious egg, manticore cub pet, egg
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

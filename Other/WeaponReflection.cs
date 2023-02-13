@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Weapon Reflection
+description: Farms "Weapon Reflection" From Quest: "Dual Wield Forge".
+tags: weapon reflection, dual wield forge, golden 8th birthday candle
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

@@ -1,6 +1,6 @@
 /*
-name:  Las Gratitude
-description:  Las Gratitude
+name: Las Gratitude
+description: Las Gratitude
 tags: darkon, las gratitude
 */
 //cs_include Scripts/CoreBots.cs

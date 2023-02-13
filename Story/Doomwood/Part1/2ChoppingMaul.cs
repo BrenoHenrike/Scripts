@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Chopping Maul
+description: This will finish the Chopping Maul quest.
+tags: story, quest, doomwood, chopping-maul, part1
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Bright Forest
+description: This will finish the Bright Forest quest.
+tags: story, quest, shadow-chaos, bright-forest
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

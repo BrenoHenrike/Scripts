@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Volley Baller
+description: This will finish the Volley Baller Quest and farm items.
+tags: farm, quest, volley-baller, summer-break
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

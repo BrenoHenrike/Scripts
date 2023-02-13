@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Chroma Candy Merge
+description: This will buy all the chroma candy and merge them.
+tags: merge, mogloween, seasonal, candy, chroma
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

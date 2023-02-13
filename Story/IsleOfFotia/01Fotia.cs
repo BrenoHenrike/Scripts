@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Fotia
+description: This will finish the Fotia quest.
+tags: story, quest, isle-of-fotia, fotia
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

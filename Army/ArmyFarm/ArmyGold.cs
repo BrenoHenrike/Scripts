@@ -56,6 +56,8 @@ public class ArmyGold
 
     public void Setup(Method mapname)
     {
+        Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
+        
         Core.EquipClass(ClassType.Farm);
         Adv.BestGear(GearBoost.gold);
         Farm.ToggleBoost(BoostType.Gold);

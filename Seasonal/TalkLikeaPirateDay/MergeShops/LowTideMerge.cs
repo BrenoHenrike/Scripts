@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Low Tide Merge
+description: This will farm and buy all items of Low Tide Merge Shop.
+tags: farm, merge, low-tide, pirate
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

@@ -1,5 +1,5 @@
 /*
-name: null
+name: BloodMoonVampireMerge
 description: null
 tags: null
 */

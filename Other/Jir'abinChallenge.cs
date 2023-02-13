@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Jirabin Challenge Quests
+description: Does the Jirabin Challenge Quests
+tags: jirabin challenge, runedwoods, dethertombs, xiex, voidbattle, jir'abin
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

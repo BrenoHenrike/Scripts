@@ -1,5 +1,5 @@
 /*
-name: null
+name: DualChainSawKatanas
 description: null
 tags: null
 */

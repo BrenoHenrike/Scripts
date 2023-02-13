@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Junkhoard
+description: This will finish the Junkhoard quest.
+tags: story, quest, shadow-war, junkhoard
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

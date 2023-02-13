@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Shadowflame War Medal
+description: farms "Item" from uest: "shadow medals, mega shadow medals".
+tags: shadowflame war medal, shadow medal, mega shadow medal
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

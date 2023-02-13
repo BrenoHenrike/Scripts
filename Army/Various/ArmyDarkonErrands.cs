@@ -1,6 +1,6 @@
 /*
-name:  Army Darkon Errands
-description:  uses an army to farm the various Darkon errands
+name: Army Darkon Errands
+description: uses an army to farm the various Darkon errands
 tags: darkon, darkon errands, darkon's receipt, first errand, second errand, third errand
 */
 //cs_include Scripts/CoreBots.cs
@@ -46,46 +46,58 @@ public class ArmyDarkonErrands
 
     public void Setup(Method Method, int quant = 222)
     {
+        Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
+
         Core.EquipClass(ClassType.Solo);
         if (Method.ToString() == "Third_Errands")
-            GetItem("tercessuinotlim", new[] { "Nulgath" }, 7326, "Darkon's Receipt", quant);
+            ArmyHunt("tercessuinotlim", new[] { "Nulgath" }, "Darkon's Receipt", ClassType.Solo, false, quant, Method.Third_Errands);
 
         else if (Method.ToString() == "Second_Errands")
-            GetItem("doomvault", new[] { "Binky" }, 7325, "Darkon's Receipt", quant);
+            ArmyHunt("doomvault", new[] { "Binky" }, "Darkon's Receipt", ClassType.Solo, false, quant, Method.Second_Errands);
 
         else if (Method.ToString() == "First_Errands_Strong_Team")
         {
-            Core.EquipClass(ClassType.Farm);
-            Bot.Quests.UpdateQuest(3481);
-            GetItem("towerofdoom7", new[] { "Dread Gorillaphant" }, 7324, "Darkon's Receipt", quant);
+            ArmyHunt("towerofdoom7", new[] { "Dread Gorillaphant" }, "Darkon's Receipt", ClassType.Farm, false, quant, Method.First_Errands_Strong_Team);
         }
         else
         {
-            Core.EquipClass(ClassType.Farm);
-            GetItem("arcangrove", new[] { "Gorillaphant" }, 7324, "Darkon's Receipt", quant);
+            ArmyHunt("maparcangrove", new[] { "Gorillaphant" }, "Darkon's Receipt", ClassType.Farm, false, quant, Method.First_Errands_Weak_Team);
         }
     }
 
-    public void GetItem(string map = null, string[] monsters = null, int questID = 000, string item = null, int quant = 0)
+    void ArmyHunt(string map, string[] monsters, string item, ClassType classType, bool isTemp = false, int quant = 1, Method Method = Method.None)
     {
+        if (!Bot.Config.Get<bool>("sellToSync") && Core.CheckInventory(item, quant))
+            return;
+
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
 
-        Quest QuestData = Core.EnsureLoad(questID);
-        ItemBase[] RequiredItems = QuestData.Requirements.ToArray();
-        ItemBase[] QuestReward = QuestData.Rewards.ToArray();
+        if (Bot.Config.Get<bool>("sellToSync"))
+            Army.SellToSync(item, quant);
 
         Core.AddDrop(item);
-        Core.RegisterQuests(questID);
 
-        foreach (string monster in monsters)
-            Army.SmartAggroMonStart(map, monster);
+        Army.waitForParty(map, item);
+        Core.FarmingLogger(item, quant);
+
+        if (Method.ToString() == "First_Errands_Strong_Team")
+            Core.RegisterQuests(7324);
+        else if (Method.ToString() == "First_Errands_Weak_Team")
+            Core.RegisterQuests(7324);
+        else if (Method.ToString() == "Second_Errands")
+            Core.RegisterQuests(7325);
+        else if (Method.ToString() == "Third_Errands")
+            Core.RegisterQuests(7326);
+
+        Army.SmartAggroMonStart(map, monsters);
 
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
             Bot.Combat.Attack("*");
 
-        Army.AggroMonStop(true);
         Core.CancelRegisteredQuests();
+        Army.AggroMonStop(true);
+        Core.JumpWait();
     }
 
     public enum Method
@@ -94,5 +106,6 @@ public class ArmyDarkonErrands
         First_Errands_Strong_Team = 1,
         Second_Errands = 2,
         Third_Errands = 3,
+        None = 4
     }
 }

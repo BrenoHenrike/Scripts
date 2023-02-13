@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Nation War Chest Merge
+description: This will complete the Nation War Chest story and farm Nation Defender Medals.
+tags: story, quest, nation, war, chest, merge, staff, birthday
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

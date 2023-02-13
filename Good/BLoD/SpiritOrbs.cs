@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Spirit Orbs
+description: This script farms the max quantity of Spirit Orbs.
+tags: spirit orbs,blod,bliding light of destiny,farm,good
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -20,7 +20,7 @@ public class SpiritOrbs
     {
         Core.SetOptions();
 
-        BLOD.SpiritOrb(10500);
+        BLOD.SpiritOrb(65000);
 
         Core.SetOptions(false);
     }

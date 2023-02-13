@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: AQW Zombies
+description: This will finish the AQW Zombies quest.
+tags: story, quest, doomwood, aqw-zombies
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

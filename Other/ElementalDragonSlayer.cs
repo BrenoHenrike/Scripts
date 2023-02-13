@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Elementa Dragon Slayer set
+description: farms the "Elemental Dragon Slayer" set from Quest: "Mysterious Chest".
+tags: elemental dragon slayer, set
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

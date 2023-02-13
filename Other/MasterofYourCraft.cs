@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Master of Your Craft
+description: Farms "All Drops" From Quest: "Master of Your Craft".
+tags: master of your craft, drops
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

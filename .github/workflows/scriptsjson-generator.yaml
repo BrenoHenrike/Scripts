@@ -8,8 +8,6 @@ on:
         - Skua
         - dev
         - 'feature/*'
-  pull_request:
-    types: [closed]
 
 jobs:
   run-csharp-file:
@@ -17,9 +15,7 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
-      with:
-        ref: ${{ github.head_ref }}
+      uses: actions/checkout@v3
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v2

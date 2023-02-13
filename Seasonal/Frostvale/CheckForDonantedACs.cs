@@ -32,7 +32,7 @@ public class CheckForDonatedACs
 
     public void CheckACs()
     {
-        string logPath = Path.Combine(CoreBots.OptionsPath, "FrostvaleDonationLog.txt");
+        string logPath = Path.Combine(ClientFileSources.SkuaOptionsDIR, "FrostvaleDonationLog.txt");
         bool firstTime = !File.Exists(logPath);
         List<string> ACs = new();
         List<string> oldACs = new();
@@ -97,7 +97,7 @@ public class CheckForDonatedACs
             if (!writeACs.Any(x => x.StartsWith(name)))
                 writeACs.Add(p);
         }
-        File.WriteAllLines(logPath, writeACs);
+        Core.WriteFile(logPath, writeACs);
 
         if (newACs.Count() == 0)
             Bot.ShowMessageBox($"We checked {Army.doForAllAccountDetails.Count() / 2} accounts, but none of them have gained any {(firstTime ? "ACs" : "more ACs since last time")}." +

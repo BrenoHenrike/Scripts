@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Tower Story (Member)
+description: This will finish the Tower Story.
+tags: story, quest, tower, member
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

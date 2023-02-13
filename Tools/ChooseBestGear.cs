@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Choose Best Gear
+description: Select a boost type you want to optimize for, and the bot will find and equip the best combination of gear for that boost.
+tags: best, gear, boost, damage, dmg, dps, exp, gold, reputation, class points
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

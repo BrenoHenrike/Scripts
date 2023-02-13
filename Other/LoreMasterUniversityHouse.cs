@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Lore Master University
+description: does the Lore Master University Quests for House Items
+tags: lore master university, house
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

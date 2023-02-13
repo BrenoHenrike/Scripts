@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Zorbas Palace Merge
+description: This will merge Furry Egg and Woopee.
+tags: farm, merge, shop, seasonal, may-the-4th, zorbas, palace, furry, egg, woopee
 */
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Complete 7 Deadly Dragons
+description: This will complete the 7 Deadly Dragons story.
+tags: story, quest, 7-deadly-dragons, complete, all
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

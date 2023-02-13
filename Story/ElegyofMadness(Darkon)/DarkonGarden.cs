@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Darkon Garden
+description: This will finish the Darkon Garden quest.
+tags: story, quest, elegy-of-madness, darkon, garden
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

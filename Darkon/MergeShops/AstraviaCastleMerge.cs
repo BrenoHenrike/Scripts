@@ -1,6 +1,6 @@
 /*
-name:  Astravia Castle Merge
-description:  Astravia Castle Merge
+name: Astravia Castle Merge
+description: Astravia Castle Merge
 tags: astravia castle, merge, mergeshop
 */
 //cs_include Scripts/CoreBots.cs

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Aozora Hills
+description: This will finish the Aozora Hills quest.
+tags: story, quest, shadow-war, aozora-hills
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

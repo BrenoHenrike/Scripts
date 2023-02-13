@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Mad Weapon Crafting
+description: Farms "All Drops" From Quest: "Mad Weapon Crafting".
+tags: mad weapon crafting, drops
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

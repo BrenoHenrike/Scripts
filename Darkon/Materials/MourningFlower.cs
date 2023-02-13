@@ -1,6 +1,6 @@
 /*
-name:  Mouring Flower
-description:  Mouring Flower
+name: Mouring Flower
+description: Mouring Flower
 tags: darkon, mouring flower
 */
 //cs_include Scripts/CoreBots.cs

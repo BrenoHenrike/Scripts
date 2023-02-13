@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Poison Forest Story
+description: This will finish the Poison Forest Story.
+tags: story, quest, poison-forest
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

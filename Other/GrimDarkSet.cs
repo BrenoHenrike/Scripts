@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Grim Dark Set
+description: farms the "Grim Dark" set from Quest: "Doom Regin Doom’s Reward".
+tags: doom, region, doom, reward, grim, dark, set
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -28,6 +28,10 @@ public class GrimDarkSet
 
     public void GetAll()
     {
+        if (!Bot.Quests.IsUnlocked(7049)) {
+            Cave.Storyline();
+        }
+
         List<ItemBase> RewardOptions = Core.EnsureLoad(7049).Rewards;
 
         foreach (ItemBase item in RewardOptions)

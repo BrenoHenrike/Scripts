@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Laguna
+description: This will finish the Laguna quest.
+tags: story, quest, shadow-chaos, laguna
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

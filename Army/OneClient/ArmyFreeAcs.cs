@@ -1,6 +1,6 @@
 /*
-name:  Army Free 500 accs
-description:  the 500 free acs quest 
+name: Army Free 500 accs
+description: the 500 free acs quest
 tags: acs, free, thefamily, army.
 */
 //cs_include Scripts/CoreBots.cs
@@ -29,6 +29,8 @@ public class ArmyFreeAcs
 
     public void FreeAcs()
     {
+        Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
+        
         while (Army.doForAll())
         {
             Farm.Experience(20);

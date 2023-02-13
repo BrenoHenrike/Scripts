@@ -1,6 +1,6 @@
 /*
-name:  Dages Scroll Fragment Daily
-description:  Dages Scroll Fragment
+name: Dages Scroll Fragment Daily
+description: Dages Scroll Fragment
 tags: daily, dages scroll fragment
 */
 //cs_include Scripts/CoreBots.cs

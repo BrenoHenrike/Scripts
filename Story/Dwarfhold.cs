@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Dwarfhold story
+description: This will finish the Dwarfhold story.
+tags: story, quest, dwarfhold
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

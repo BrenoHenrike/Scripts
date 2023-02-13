@@ -1,5 +1,5 @@
 /*
-name: null
+name: PaladinTreasureHunterMerge
 description: null
 tags: null
 */

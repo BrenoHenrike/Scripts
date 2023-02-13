@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Garden Merge
+description: Garden Merge
+tags: darkon, garden, merge, mergeshop
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

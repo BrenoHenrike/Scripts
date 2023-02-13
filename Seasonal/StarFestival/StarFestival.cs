@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Star Festival Story
+description: This script will complete the Star Festival story quests.
+tags: story, quest, star-festival
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

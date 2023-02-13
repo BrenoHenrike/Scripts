@@ -1,5 +1,5 @@
 /*
-name: null
+name: VoidBattleMageSet
 description: null
 tags: null
 */

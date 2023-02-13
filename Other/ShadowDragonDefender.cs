@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Shadow Dragon Defender
+description: if "Manticore Cub Pet" is owned, it will buy "Shadow Dragon Defender"
+tags: shadow dragon defender, manticore cub pet, armor
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

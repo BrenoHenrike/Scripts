@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Buy Out Shops
+description: This bot will buy all items in one or multiple shops and follow the logic of the by you selected mode.
+tags: shops, items, buy, modes
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: (Pax) Death Pit Story
+description: This will finish the Death Pit story.
+tags: death, pit, farm, story, pax, throne, darkness
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

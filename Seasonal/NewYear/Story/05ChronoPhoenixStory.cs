@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Chrono Phoenix Story
+description: This will complete the Chrono Phoenix story.
+tags: story, quest, seasonal, new-year, chrono-phoenix
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

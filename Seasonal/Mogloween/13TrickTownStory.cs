@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Trick Town Story
+description: This will complete the Trick Town story quest.
+tags: story, quest, mogloween, seasonal, trick, town
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

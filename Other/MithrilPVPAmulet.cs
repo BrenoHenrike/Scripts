@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Mithril PvP Amulet
+description: Farms "Mithril PvP Amulet" From Mob: "Reaper".
+tags: mitril pvp amulet, diamoind pvp amulet, pvp, amulet
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

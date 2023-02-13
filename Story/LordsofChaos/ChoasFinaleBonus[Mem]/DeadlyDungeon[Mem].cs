@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: (Chaos Finale Bonus) Deadly Dungeon
+description: This will finish the Deadly Dungeon quest.
+tags: story, quest, chaos-saga, 13-lords-of-chaos, chaos-finale, deadly-dungeon, member
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

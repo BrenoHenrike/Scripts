@@ -8,7 +8,11 @@ using Skua.Core.Interfaces;
 using Skua.Core.Models.Monsters;
 using Skua.Core.Models.Players;
 using Skua.Core.Options;
+using Skua.Core.Models;
 using Skua.Core.ViewModels;
+using System.Xml;
+using System.Diagnostics;
+using Newtonsoft.Json;
 using CommunityToolkit.Mvvm.DependencyInjection;
 
 public class CoreArmyLite
@@ -293,7 +297,7 @@ public class CoreArmyLite
         string Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         string combinedDigits = "";
 
-        foreach (char c in (CoreBots.SkuaPath ?? Bot.Config!.Get<string>(player1)!).ToUpper())
+        foreach (char c in (ClientFileSources.SkuaDIR))
         {
             if (char.IsDigit(c))
                 combinedDigits += c;
@@ -448,13 +452,13 @@ public class CoreArmyLite
         if (Bot.ShouldExit)
             return false;
 
-        doForAllAccountDetails = doForAllAccountDetails ?? fileSetup();
-        if (_doForAllIndex >= doForAllAccountDetails.Length)
+        doForAllAccountDetails = doForAllAccountDetails ?? readManager();
+        if (_doForAllIndex >= doForAllAccountDetails.Count())
             return false;
 
         Bot.Options.AutoRelogin = false;
-        string name = doForAllAccountDetails[_doForAllIndex++];
-        string pass = doForAllAccountDetails[_doForAllIndex++];
+        string name = doForAllAccountDetails[_doForAllIndex].Item1;
+        string pass = doForAllAccountDetails[_doForAllIndex++].Item2;
 
         if (Core.Username() != name)
         {
@@ -478,70 +482,69 @@ public class CoreArmyLite
 
         return true;
 
-        string[] fileSetup()
+        (string, string)[] readManager()
         {
-            string path = Path.Combine(CoreBots.OptionsPath, "TheFamily.txt");
-            if (File.Exists(path))
-                return File.ReadAllLines(path);
+            string[]? dirs = Directory.GetDirectories(
+                Path.Combine(
+                    Environment.GetFolderPath(
+                        Environment.SpecialFolder.LocalApplicationData),
+                    "Skua.Manager"
+                ),
+                Bot.Version.ToString(),
+                SearchOption.AllDirectories
+            );
 
-            Bot.ShowMessageBox("Your login details will be saved locally on your own device. We will not receive them.", "A heads up");
-
-            int i = 1;
-            string title = $"Please provide the login details for account #";
-            string data = string.Empty;
-            Dictionary<string, string> redo = new();
-
-            while (!Bot.ShouldExit)
+            if (dirs == null || dirs.Length == 0)
             {
-                bool goRedo = redo.Count() != 0;
-
-                var name = new InputDialogViewModel(title + i, "Account Name", false);
-                if (goRedo)
-                    name.DialogTextInput = redo.First().Key;
-                if (isInvalid(name))
-                    break;
-
-                var pass = new InputDialogViewModel(title + i, "Account Password:", false);
-                if (goRedo)
-                    pass.DialogTextInput = redo.First().Value;
-                if (isInvalid(pass))
-                    break;
-
-                var res = Bot.ShowMessageBox(
-                    "Is this correct?\n\n" +
-                    "Name:\t\t" + name.DialogTextInput + "\n" +
-                    "Password:\t" + pass.DialogTextInput,
-                    "Confirm that these are correct",
-                    $"Yes, go to account #{i + 1}", "Yes, I am now done", "No"
-                );
-
-                redo = new();
-                if (res.Text == "No")
-                    redo.Add(name.DialogTextInput, pass.DialogTextInput);
-                else
-                {
-                    data += $"{name.DialogTextInput}\n{pass.DialogTextInput}\n";
-                    if (!res.Text.StartsWith("Yes, go"))
-                        break;
-                    i++;
-                }
+                Core.Logger($"There were no (sub-)folders named {Bot.Version} found in AppData/Local/Skua.Manager. Please set up your accounts in the Account tab in the Skua.Manager.exe", "AccountManager", true, true);
+                return Array.Empty<(string, string)>();
+            }
+            if (dirs.Length > 1)
+            {
+                Core.Logger($"Two or more (sub-)folders named {Bot.Version} were found in AppData/Local/Skua.Manager. Clean up AppData/Local/Skua and add your accounts to the account manager.", "AccountManager", true, true);
+                return Array.Empty<(string, string)>();
             }
 
-            if (String.IsNullOrEmpty(data))
-                Core.Logger("No input provided, stopping the bot.", messageBox: true, stopBot: true);
+            var xml = new XmlDocument();
+            xml.Load(Path.Combine(dirs[0], "user.config"));
 
-            File.WriteAllText(path, data[..^1]);
-            Bot.Handlers.RegisterOnce(1, Bot => Bot.ShowMessageBox($"If you ever wish to edit things, the file can be found at:\n{CoreBots.SkuaPath + "/" + path}", "File path"));
-            return data[..^1].Split('\n');
+            var dyn = JsonConvert.DeserializeObject<dynamic[]>(
+                JsonConvert.DeserializeObject<dynamic>(
+                    JsonConvert.SerializeXmlNode(xml)
+                )!
+                .configuration
+                .userSettings
+                ["Skua.Manager.Properties.Settings"]
+                .setting
+                .ToString()
+            );
 
-            bool isInvalid(InputDialogViewModel input) =>
-                Ioc.Default.GetRequiredService<IDialogService>().ShowDialog(input) != true ||
-                String.IsNullOrEmpty(input.DialogTextInput) ||
-                String.IsNullOrWhiteSpace(input.DialogTextInput);
+            List<(string, string)> toReturn = new();
+            foreach (var d in dyn)
+            {
+                if (d["@name"] == "ManagedAccounts" && d["value"].ArrayOfString["string"] != null)
+                {
+                    string[] accs = JsonConvert.DeserializeObject<string[]>(d["value"].ArrayOfString["string"].ToString());
+                    foreach (string acc in accs)
+                    {
+                        string[] info = acc.Split("{=}");
+                        toReturn.Add((info[1], info[2]));
+                    }
+                    break;
+                }
+            }
+            if (toReturn.Count == 0)
+            {
+                Core.Logger($"No accounts were found in the Skua.Manager's Account Manager. Please set up your accounts in the Skua.Manager and start up the bot again.", "AccountManager", true);
+                Process.Start(Path.Combine(AppContext.BaseDirectory, "Skua.Manager.exe"));
+                Bot.Stop(true);
+                return Array.Empty<(string, string)>();
+            }
+            return toReturn.ToArray();
         }
     }
     private int _doForAllIndex = 0;
-    public string[]? doForAllAccountDetails;
+    public (string, string)[]? doForAllAccountDetails;
     private string[] BlacklistedServers =
     {
         "artix",
@@ -552,7 +555,7 @@ public class CoreArmyLite
         "class test realm"
     };
     #endregion
-
+    #region Butler
     public void Butler(string playerName, bool LockedMaps = true, ClassType classType = ClassType.Farm, bool CopyWalk = false, int roomNr = 1, bool rejectDrops = true, string? attackPriority = null)
     {
         // Double checking the playername and assigning it so all functions can read it
@@ -645,7 +648,7 @@ public class CoreArmyLite
             if (b_breakOnMap != null && b_breakOnMap == Bot.Map.Name)
             {
                 b_breakOnMap = null;
-                return;
+                break;
             }
 
             // Attack any monster that is alive.
@@ -654,6 +657,7 @@ public class CoreArmyLite
             Core.Rest();
             Bot.Sleep(Core.ActionDelay);
         }
+        ButlerStop();
     }
     private string? b_playerName = null;
     private bool b_doLockedMaps = true;
@@ -994,6 +998,12 @@ public class CoreArmyLite
 
     private bool ScriptStopping(Exception? e)
     {
+        ButlerStop();
+        return true;
+    }
+
+    private void ButlerStop()
+    {
         // Removing listeners
         Bot.Events.MapChanged -= MapNumberParses;
         Bot.Events.ExtensionPacketReceived -= LockedZoneListener;
@@ -1002,10 +1012,9 @@ public class CoreArmyLite
         // Delete communication files
         if (File.Exists(commFile()))
             File.Delete(commFile());
-
-        return true;
     }
 
     private string commFile() => Path.Combine(CoreBots.ButlerLogDir, $"{Core.Username().ToLower()}~!{b_playerName}.txt");
     public string? b_breakOnMap = null;
+    #endregion
 }

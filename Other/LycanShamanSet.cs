@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Lycan Shaman Set
+description: farms the "Lycan Shaman" set from Quest: "Blood Rage".
+tags: blood rage, lycan shaman, set
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

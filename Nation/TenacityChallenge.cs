@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Tenacity Challenge
+description: Farms the quest Tenacity Challenge to get Tainte Gems, Dark Crystal Shards and Blood Gem of the Archfiend (Requiers Nulgath Challenge Pet)
+tags: nation, tainted gem, dark crystal shard, blood gem of the archfiend, nulgath challenge pet
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -9,47 +9,41 @@ using Skua.Core.Interfaces;
 
 public class TenacityChallenge
 {
-    public IScriptInterface Bot => IScriptInterface.Instance;
-    public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new();
+    private IScriptInterface Bot => IScriptInterface.Instance;
+    private CoreBots Core => CoreBots.Instance;
+    private CoreFarms Farm = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
         QuestFarming();
-
-        Core.SetOptions(false);
     }
 
     public void QuestFarming()
     {
-        if (Core.CheckInventory("Nulgath Challenge Pet"))
+        if (!Core.CheckInventory("Nulgath Challenge Pet"))
         {
             Core.Logger("You Don't Have \"Nulgath Challenge Pet\". Pet is required for doing the quests.");
             return;
         }
 
-        string[] Rewards = { "Tainted Gem", "Dark Crystal Shard", "Blood Gem of the Archfiend" };
-        Core.AddDrop(Rewards);
+        string[] rewards = { "Tainted Gem", "Dark Crystal Shard", "Blood Gem of the Archfiend" };
+        Core.AddDrop(rewards);
 
-        for (int i = 0; i < Rewards.Length; i++)
+        Core.RegisterQuests(3319);
+        foreach (string reward in rewards)
         {
-            if (Bot.Inventory.IsMaxStack(Rewards[i]))
-                Core.Logger($"\"{Rewards[i]}\" is max stack Checking next item in the \"Tenacity Challenge\" Quest's Rewards");
-            else
+            Core.Logger($"Checking for item: \"reward\"");
+            while (!Bot.Inventory.IsMaxStack(reward))
             {
-                while (!Bot.Inventory.IsMaxStack(Rewards[i]))
-                {
-                    //Tenacity Challenge 3319
-                    Core.EnsureAccept(3319);
+                Core.HuntMonster("deathpits", "Ghastly Darkblood", "Dark Runes", 6);
+                Core.HuntMonster("evilwardage", "Bloodfiend", "Blood Runes", 7);
 
-                    Core.HuntMonster("deathpits", "Ghastly Darkblood", "Dark Runes", 6);
-                    Core.HuntMonster("evilwardage", "Bloodfiend", "Blood Runes", 7);
-
-                    Core.EnsureCompleteChoose(3319, new[] { Rewards[i] });
-                }
+                Bot.Wait.ForPickup(reward);
             }
+            Core.Logger($"\"{reward}\" is max stack.");
         }
+        Core.CancelRegisteredQuests();
     }
 }

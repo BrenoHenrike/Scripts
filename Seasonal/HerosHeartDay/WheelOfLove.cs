@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Wheel of Love Story
+description: This will complete the Wheel of Love story quest.
+tags: story, quest, wheel, love, seasonal, hero, heart
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
@@ -52,16 +52,7 @@ public class WheeleOfLove
         Story.KillQuest(5687, "wheeloflove", "Undead Cherub");
 
         // Get a Bullseye
-        if (!Story.QuestProgression(5688))
-        {
-            Core.EnsureAccept(5688);
-            Core.Join("wheeloflove", "r6", "Left");
-            while (!Bot.ShouldExit && !Bot.Quests.CanComplete(5688))
-            {
-                Core.SendPackets("%xt%zm%ia%1%rval%game%%");
-            }
-            Core.EnsureComplete(5688);
-        }
+        Story.MapItemQuest(5688, "wheeloflove", 5148);
 
         // And They Called it Puppy Love
         Story.KillQuest(5689, "wheeloflove", "Puppy Love");

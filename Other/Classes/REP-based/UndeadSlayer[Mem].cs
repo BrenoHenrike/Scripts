@@ -1,5 +1,5 @@
 /*
-name: null
+name: UndeadSlayer[Mem]
 description: null
 tags: null
 */

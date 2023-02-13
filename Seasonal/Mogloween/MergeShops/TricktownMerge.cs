@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Tricktown Merge
+description: This will buy all the Tricktown merge items and merge them.
+tags: merge, mogloween, seasonal, trick, town
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Temple Siege Merge
+description: Merges all the items needed for the Temple Siege storyline.
+tags: merge, mats, quest, temple, siege, nulgath, seasonal, staff, birthday
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

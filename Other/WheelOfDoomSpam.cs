@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Wheel Of Doom Spam
+description: wastes (with a warning) your extra ACs on wheel of doom spins
+tags: wheel of doom, spin, waste acs
 */
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;

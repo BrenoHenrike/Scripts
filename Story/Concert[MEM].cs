@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Concert Story (Member)
+description: This will finish the Concert quest.
+tags: story, quest, concert, member
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

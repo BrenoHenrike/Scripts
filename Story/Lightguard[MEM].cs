@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Lightguard Story
+description: This will finish the Lightguard Story.
+tags: story, quest, light-guard
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

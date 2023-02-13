@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: (Badge) BattleCon VIP
+description: This will get the BattleCon VIP badge.
+tags: badge, underground, lab, battle, con, vip
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

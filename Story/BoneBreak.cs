@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Bone Break Story
+description: This will complete the Bone Break Story.
+tags: story, quest, bone-break
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

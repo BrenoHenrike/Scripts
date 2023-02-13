@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Free AC Gift
+description: This script will kill the Frogzard in Battleon Town to get a free AC Giftbox.
+tags: free, ac, gift, box, frogzard, battleon, town
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Ruined Crown
+description: This will finish the Ruined Crown quest.
+tags: story, quest, shadow-war, ruined-crown
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

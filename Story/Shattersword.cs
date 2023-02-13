@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Shatter Sword Story
+description: This will finish the Shatter Sword Story.
+tags: story, quest, shatter-sword
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

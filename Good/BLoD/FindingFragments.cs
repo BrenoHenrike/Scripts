@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: FindingFragments
+description: Does the "finding fragments with blinding [insert] of destiny for the quest rewards.
+tags: finding fragments, blinding light fragments, spirit orb, loyal spirit orb, bright Aura, brilliant aura, blinding aura
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -10,6 +10,8 @@ tags: null
 //cs_include Scripts/CoreStory.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
+using Skua.Core.Models.Quests;
+using Skua.Core.Models.Items;
 
 public class FindingFragments_Any
 {
@@ -21,11 +23,19 @@ public class FindingFragments_Any
     public string OptionStorage = "Finding_Fragments";
     public List<IOption> Options = new List<IOption>()
     {
+        new Option<bool>("MaxAllQuestRewards", "Max all Quest Rewards", "Does the \"Best\" quest for each drop until its maxed, else For specific weapon's quest. If enabled ignore the other option", false),
         new Option<FindingFragmentsIDs>("questID", "Quest ID", "ID of the desired Finding Fragments quest to do.", FindingFragmentsIDs.Blade)
     };
 
     public void ScriptMain(IScriptInterface bot)
     {
+        Core.BankingBlackList.AddRange(new[] {
+        "Blinding Light Fragments",
+        "Spirit Orb",
+        "Loyal Spirit Orb",
+        "Bright Aura",
+        "Brilliant Aura",
+        "Blinding Aura"});
         Core.SetOptions();
 
         FindingFragments();
@@ -35,13 +45,32 @@ public class FindingFragments_Any
 
     public void FindingFragments()
     {
-        Core.EquipClass(ClassType.Farm);
-        int i = 1;
-        int questID = (int)Bot.Config.Get<FindingFragmentsIDs>("questID");
-        while (!Bot.ShouldExit)
+
+        if (!Bot.Config.Get<bool>("MaxAllQuestRewards"))
         {
-            BLOD.FindingFragments(questID);
-            Core.Logger($"Completed x{i++}");
+            Quest QuestData = Core.EnsureLoad((int)Bot.Config.Get<FindingFragmentsIDs>("questID"));
+            ItemBase[] RequiredItems = QuestData.Requirements.ToArray();
+            ItemBase[] QuestReward = QuestData.Rewards.ToArray();
+
+            foreach (ItemBase item in QuestReward)
+            {
+                while (!Bot.ShouldExit && !Core.CheckInventory(item.Name, item.MaxStack))
+                    BLOD.FindingFragments((int)Bot.Config.Get<FindingFragmentsIDs>("questID"), item.Name, item.MaxStack);
+                Core.Logger($"{item.Name} has reached max stack {item.Quantity}/{item.MaxStack}");
+            }
+        }
+        else
+        {
+            foreach (Quest q in Core.EnsureLoad(2174, 2175, 2176, 2177, 2178, 2179))
+            {
+                foreach (ItemBase item in q.Rewards)
+                {
+                    Core.AddDrop(q.Rewards.Select(x => x.ID).ToArray());
+                    while (!Bot.ShouldExit && !Core.CheckInventory(item.ID, item.MaxStack))
+                        BLOD.FindingFragments(q.ID, item.Name, item.MaxStack);
+                    Core.Logger($"{item.Name} has reached max stack {item.Quantity}/{item.MaxStack}");
+                }
+            }
         }
     }
 }

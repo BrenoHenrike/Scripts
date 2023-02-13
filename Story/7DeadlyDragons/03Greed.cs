@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Greed
+description: This will finish the Greed quest.
+tags: story, quest, 7-deadly-dragons, greed
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

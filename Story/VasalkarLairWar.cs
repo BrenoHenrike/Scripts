@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Vasalkar Lair War Story
+description: This will finish the Vasalkar Lair War Story.
+tags: story, quest, vasalkar, lair, war
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

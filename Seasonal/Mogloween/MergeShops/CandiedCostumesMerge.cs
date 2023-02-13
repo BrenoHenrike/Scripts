@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Candied Costumes Merge
+description: This will buy all the Candied Costumes and merge them.
+tags: merge, mogloween, seasonal, candied, costumes
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

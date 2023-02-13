@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Blazing Beach Story
+description: This will finish the Blazing Beach Story Line.
+tags: story, quest, blazing-beach, summer-break
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

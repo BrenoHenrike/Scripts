@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Complete Elegy of Madness Story
+description: This will complete the Astravia story.
+tags: story, quest, elegy-of-madness, darkon, complete, all
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

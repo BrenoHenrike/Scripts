@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Moist Critical Event Drops
+description: Gets the drops from the Moist Critical Event
+tags: moist critical, event, shroom
 */
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Castle Tunnels Story
+description: This will complete the Castle Tunnels story.
+tags: story, quest, castle-tunnels
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

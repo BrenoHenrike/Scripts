@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: coin collector set
+description: Farms the coin collector set from hollowhalls
+tags: coin collector, set
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

@@ -1,5 +1,5 @@
 /*
-name: null
+name: MergeTemplate
 description: null
 tags: null
 */

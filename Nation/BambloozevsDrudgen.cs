@@ -1,5 +1,5 @@
 /*
-name: null
+name: BambloozevsDrudgen
 description: null
 tags: null
 */
@@ -32,15 +32,14 @@ public class BambloozevsDrudgen
         {
             Core.Logger("Missing: Drudgen the Assistant pet.", stopBot: true);
         }
-
         while (!Bot.ShouldExit && !Core.CheckInventory("Tainted Gem", 1000))
-            Nation.ContractExchange(ChooseReward.TaintedGem);
+            Nation.ContractExchange(ChooseReward.TaintedGem, 1000);
         while (!Bot.ShouldExit && !Core.CheckInventory("Dark Crystal Shard", 1000))
-            Nation.ContractExchange(ChooseReward.DarkCrystalShard);
-        while (!Bot.ShouldExit && !Core.CheckInventory("Gem of Nulgath", 300))
-            Nation.ContractExchange(ChooseReward.GemofNulgath);
+            Nation.ContractExchange(ChooseReward.DarkCrystalShard, 1000);
+        while (!Bot.ShouldExit && !Core.CheckInventory("Gem of Nulgath", 1000))
+            Nation.ContractExchange(ChooseReward.GemofNulgath, 1000);
         while (!Bot.ShouldExit && !Core.CheckInventory("Blood Gem of the Archfiend", 100))
-            Nation.ContractExchange(ChooseReward.BloodGemoftheArchfiend);
+            Nation.ContractExchange(ChooseReward.BloodGemoftheArchfiend, 100);
 
     }
 }

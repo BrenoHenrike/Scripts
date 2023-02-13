@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Second First Mate
+description: Farms "All Drops" From Quest: "A Second First Mate".
+tags: a second first mate, set, pirate
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

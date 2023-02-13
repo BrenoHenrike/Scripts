@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Blood Moon
+description: This will complete the Blood Moon story.
+tags: story, quest, blood-moon
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

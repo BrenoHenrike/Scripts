@@ -1,6 +1,6 @@
 /*
-name:  Army Emblem Of Nulgath
-description:  uses an army to farm Emblem of Nulgath
+name: Army Emblem Of Nulgath
+description: uses an army to farm Emblem of Nulgath
 tags: emblem of nulgah, army, nation round 4 medal
 */
 //cs_include Scripts/CoreBots.cs
@@ -36,7 +36,7 @@ public class ArmyEmblemOfNulgath
     };
 
     public void ScriptMain(IScriptInterface bot)
-    {
+    {       
         Core.BankingBlackList.AddRange(Loot);
 
         Core.SetOptions(disableClassSwap: true);
@@ -50,6 +50,8 @@ public class ArmyEmblemOfNulgath
     {
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
+        
+        Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
 
         if (!Core.CheckInventory("Nation Round 4 Medal"))
         {

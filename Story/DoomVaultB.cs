@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Doom Vault (B) Story
+description: This will finish the Doom Vault (B) Story.
+tags: story, quest, doom-vault-b
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
@@ -123,4 +123,24 @@ public class DoomVaultB
             Core.EnsureComplete(3004);
         }
     }
+
+    /*
+    //will probably be needing this in the future...
+    void InitFix(string cell, string pad = "Left")
+    {
+        Bot.Sleep(2500);
+        if (Bot.Player.Cell != "init")
+            return;
+
+        Core.Logger("looks like the cutscene broke again, initiating cell fix");
+        if (Bot.Map.Name != "doomvault")
+            Core.Join("doomvaultb", cell, pad);
+        while (!Bot.ShouldExit && Bot.Player.Cell != cell)
+        {
+            Core.Jump(cell);
+            Bot.Sleep(Core.ActionDelay);
+        }
+        Core.Logger($"{Bot.Player.Cell} Fixed.");
+    }
+    */
 }

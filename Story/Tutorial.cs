@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Tutorial Story
+description: This will finish the Tutorial Story.
+tags: story, quest, tutorial
 */
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Super Death Story
+description: This will finish the Super Death Story.
+tags: story, quest, superdeath
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

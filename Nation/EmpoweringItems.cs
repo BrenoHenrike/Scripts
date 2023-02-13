@@ -1,5 +1,5 @@
 /*
-name: null
+name: EmpoweringItems
 description: null
 tags: null
 */
@@ -39,6 +39,14 @@ public class EmpoweringItems
         Core.EnsureAccept(558);
         Nation.FarmUni13();
         Nation.FarmDiamondofNulgath(10);
+        if (!Core.CheckInventory(4867))
+        {
+            Core.EnsureAccept(623);
+            Nation.FarmUni13(1);
+            Core.HuntMonster("willowcreek", "Hidden Spy", "The Secret 1", isTemp: false);
+            Core.EnsureComplete(623);
+            Bot.Wait.ForPickup(4867);
+        }
         Core.HuntMonster("underworld", "Undead Bruiser", "Undead Bruiser Sigil");
         Core.EnsureComplete(558);
         Bot.Wait.ForPickup("Death Scythe of Nulgath");

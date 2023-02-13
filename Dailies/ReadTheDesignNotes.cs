@@ -1,6 +1,6 @@
 /*
-name:  Design Notes Daily
-description:  Design Notes
+name: Design Notes Daily
+description: Design Notes
 tags: daily, design notes
 */
 //cs_include Scripts/CoreBots.cs

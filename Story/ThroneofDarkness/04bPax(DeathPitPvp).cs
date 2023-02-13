@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: (Pax) Death Pit PvP
+description: This will finish the Death Pit PvP story.
+tags: death, pit, pvp, farm, story, pax, throne, darkness
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

@@ -1,6 +1,6 @@
 /*
-name:  Army time for Spring Cleaning
-description:  uses an army to farm the "time for spring cleaning quest".
+name: Army time for Spring Cleaning
+description: uses an army to farm the "time for spring cleaning quest".
 tags: time for spring cleaning quest, army, legion, legion tokens
 */
 //cs_include Scripts/CoreBots.cs
@@ -39,6 +39,8 @@ public class Generated_ArmyTimeforspringCleaningLT
 
     public void ArmyTimeforspringCleaningLT()
     {
+        Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
+        
         if (Core.CheckInventory("Shogun Paragon Pet"))
             questIDs = new() { 5755 };
         else if (Core.CheckInventory("Shogun Dage Pet"))

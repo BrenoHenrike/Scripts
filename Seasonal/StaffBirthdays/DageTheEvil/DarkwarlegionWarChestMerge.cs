@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: (Darkwarlegion War) Chest Merge
+description: This will complete the Darkwarlegion War Chest story and farm Dark Victory Seals.
+tags: story, quest, dark, legion, war, chest, legion, dark-victory-seal, merge, staff, birthday
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

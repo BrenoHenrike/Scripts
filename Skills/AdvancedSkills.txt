@@ -270,4 +270,4 @@ Base = Warrior = 1 | 2 | 3 | 4 = Use if Available
 Base = Warrior (Rare) = 1 | 2 | 3 | 4 = Use if Available
 Base = WarriorScythe General = 1 | 2 | 3 | 4 = Use if Available
 Base = Witch = 1 | 2 | 3 | 4 = Use if Available
-Solo = Yami no Ronin = 4 | 2 | 1 | 4  Use if Available
+Solo = Yami no Ronin = 2 | 1 | 1 | 4 | 1 | 1 | 4 = 250

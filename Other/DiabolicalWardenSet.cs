@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Diabolical Warden Set
+description: farms the "Diabolical Warden" set from Quest: "Summoning and Sealing".
+tags: diabolical warden, set
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

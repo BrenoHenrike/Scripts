@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Arcangrove Story
+description: This will finish the Arcangrove story.
+tags: story, quest, arcangrove, 13-lords-of-chaos
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

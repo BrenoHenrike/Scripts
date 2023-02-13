@@ -1,7 +1,7 @@
 /*
 name: Temple Delve Merge
 description: This will get all or selected items on this merge shop.
-tags: temple-delve-merge, templedelve-merge, seasonal, nulgath-birthday
+tags: temple. delve, merge, seasonal, nulgath, staff, birthday
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

@@ -1,5 +1,5 @@
 /*
-name: null
+name: RandomWeaponOfNulgath
 description: null
 tags: null
 */

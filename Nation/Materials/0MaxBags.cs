@@ -1,5 +1,5 @@
 /*
-name: null
+name: 0MaxBags
 description: null
 tags: null
 */

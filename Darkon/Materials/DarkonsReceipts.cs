@@ -1,6 +1,6 @@
 /*
-name:  Darkons Receipt
-description:  Darkons Receipt
+name: Darkons Receipt
+description: Darkons Receipt
 tags: darkon, darkons receipt
 */
 //cs_include Scripts/CoreBots.cs

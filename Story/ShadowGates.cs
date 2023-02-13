@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Shadow Gates Story
+description: This will finish the Shadow Gates Story.
+tags: story, quest, shadowgates
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

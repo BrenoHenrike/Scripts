@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Pride
+description: This will finish the Pride quest.
+tags: story, quest, 7-deadly-dragons, pride
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

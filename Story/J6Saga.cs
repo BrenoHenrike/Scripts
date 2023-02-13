@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: J6 Saga Story
+description: This will finish the J6 Saga Story.
+tags: story, quest, j6-saga
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

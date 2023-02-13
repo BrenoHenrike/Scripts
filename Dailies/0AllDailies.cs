@@ -1,6 +1,6 @@
 /*
-name:  All Dailies
-description:  Does all the avaiable dailies.
+name: All Dailies
+description: Does all the avaiable dailies.
 tags: all dailies, dailies, daily, all
 */
 //cs_include Scripts/CoreBots.cs
@@ -15,18 +15,20 @@ tags: all dailies, dailies, daily, all
 //cs_include Scripts/Dailies/LordOfOrder.cs
 //cs_include Scripts/Story/Glacera.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
+//cs_include Scripts/Story/Friendship.cs
 using Skua.Core.Interfaces;
 
 public class FarmAllDailies
 {
-    public IScriptInterface Bot => IScriptInterface.Instance;
-    public CoreBots Core => CoreBots.Instance;
-    public CoreDailies Daily = new();
-    public LordOfOrder LOO = new();
-    public GlaceraStory Glac = new();
-    public CoreBLOD BLOD = new();
+    private IScriptInterface Bot => IScriptInterface.Instance;
+    private CoreBots Core => CoreBots.Instance;
+    private CoreDailies Daily = new();
+    private LordOfOrder LOO = new();
+    private GlaceraStory Glac = new();
+    private CoreBLOD BLOD = new();
+    private Friendship FR = new();
 
-    public void ScriptMain(IScriptInterface bot)
+    public void ScriptMain(IScriptInterface Bot)
     {
         Core.SetOptions();
 
@@ -46,7 +48,6 @@ public class FarmAllDailies
         Daily.MadWeaponSmith();
         Daily.CyserosSuperHammer();
         Daily.BrightKnightArmor();
-        Glac.FrozenTower();
         Daily.Pyromancer();
         Daily.DeathKnightLord();
         Daily.ShadowScytheClass();
@@ -61,7 +62,10 @@ public class FarmAllDailies
         // Daily.NSoDDaily();
 
         //With farm class
+        FR.CompleteStory();
+        Daily.Friendships();
         Daily.CollectorClass();
+        Glac.FrozenTower();
         Daily.Cryomancer();
         Daily.EldersBlood();
         Daily.SparrowsBlood();

@@ -1,7 +1,7 @@
 /*
-name:  Supplies Wheel Army
-description:  uses an army to farm the "supplies to spin the wheen of chance" quest. 
-tags: nulgath, supplies to spin teh wheels, army, reagents
+name: Supplies Wheel Army
+description: uses an army to farm the "supplies to spin the wheen of chance" quest.
+tags: nulgath, supplies to spin the wheels, army, reagents
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -9,6 +9,7 @@ tags: nulgath, supplies to spin teh wheels, army, reagents
 //cs_include Scripts/Nation/CoreNation.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
+using Skua.Core.Models.Quests;
 using Skua.Core.Options;
 
 public class SuppliesWheelArmy
@@ -26,7 +27,13 @@ public class SuppliesWheelArmy
 
     public List<IOption> Options = new List<IOption>()
     {
-        new Option<int>("armysize","Players", "Input the minimum of players to wait for", 1),
+        sArmy.player1,
+        sArmy.player2,
+        sArmy.player3,
+        sArmy.player4,
+        sArmy.player5,
+        sArmy.player6,
+        sArmy.player7,
         sArmy.packetDelay,
         CoreBots.Instance.SkipOptions
     };
@@ -48,33 +55,45 @@ public class SuppliesWheelArmy
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
 
+        Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
+
+        Quest QuestData = Core.EnsureLoad(2857);
+        ItemBase[] RequiredItems = QuestData.Requirements.ToArray();
+        ItemBase[] QuestReward = QuestData.Rewards.ToArray();
+
         Core.AddDrop(Nation.bagDrops);
         Core.AddDrop("Relic of Chaos");
-        Core.EquipClass(ClassType.Farm);
 
-        Core.RegisterQuests(2857);
-        Core.ConfigureAggro();
-        while (!Bot.ShouldExit && !Core.CheckInventory("Relic of Chaos", 13))
-            ArmyHydra90("hydrachallenge", "h90", "Left");
-        Core.CancelRegisteredQuests();
-        Core.ConfigureAggro(false);
-    }
-
-    public void ArmyHydra90(string map, string cell, string pad)
-    {
-        Core.Join(map, cell, pad);
-        while ((cell != null && Bot.Map.CellPlayers.Count() > 0 ? Bot.Map.CellPlayers.Count() : Bot.Map.PlayerCount) < Bot.Config.Get<int>("armysize"))
+        foreach (string item in Nation.bagDrops)
         {
-            if (Bot.Player.Cell != "Enter")
-                Core.Jump("Enter");
-            Core.Logger($"Waiting for the squad. [{Bot.Map.PlayerNames.Count}/{Bot.Config.Get<int>("armysize")}]");
-            Bot.Sleep(2000);
+            Core.FarmingLogger(item, Bot.Inventory.GetItem(item).MaxStack);
+            Core.RegisterQuests(2857);
+            Core.ConfigureAggro();
+            while (!Bot.ShouldExit && !Core.CheckInventory(item, Bot.Inventory.GetItem(item).MaxStack))
+                ArmyHunt("hydrachallenge", new[] { "Hydra Head 90" }, "Relic of Chaos", ClassType.Solo, false, 99);
+            Core.CancelRegisteredQuests();
         }
 
-        if (Bot.Player.Cell != cell)
-            Core.Jump(cell, pad);
+        void ArmyHunt(string map, string[] monsters, string item, ClassType classType, bool isTemp = false, int quant = 1)
+        {
+            Core.PrivateRooms = true;
+            Core.PrivateRoomNumber = Army.getRoomNr();
 
-        while (!Core.CheckInventory("Relic of Chaos", 13))
-            Bot.Combat.Attack("*");
+            if (Bot.Config.Get<bool>("sellToSync"))
+                Army.SellToSync(item, quant);
+
+            Core.AddDrop(item);
+
+            Army.waitForParty(map, item);
+            Core.FarmingLogger(item, quant);
+
+            Army.SmartAggroMonStart(map, monsters);
+
+            while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
+                Bot.Combat.Attack("*");
+
+            Army.AggroMonStop(true);
+            Core.JumpWait();
+        }
     }
 }

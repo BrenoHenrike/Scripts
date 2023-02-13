@@ -1,4 +1,4 @@
-/*
+﻿/*
 name: null
 description: null
 tags: null
@@ -57,6 +57,7 @@ public class CoreBots
     public bool ShouldRest { get; set; } = false;
     // [Can Change] Whether the bot should attempt to clean your inventory by banking Misc. AC Items before starting the bot
     public bool BankMiscAC { get; set; } = false;
+    public bool BankUnenhancedACGear { get; set; } = false;
     // [Can Change] Whether you want anti lag features (lag killer, invisible monsters, set to 10 FPS)
     public bool AntiLag { get; set; } = true;
     // [Can Change] Name of your soloing class
@@ -95,7 +96,7 @@ public class CoreBots
         if (changeTo)
         {
             Bot.Events.ScriptStopping += CrashDetector;
-            SkuaVersionChecker("1.1.4.0");
+            SkuaVersionChecker("1.2");
 
             if (Bot.Config != null && Bot.Config.Options.Contains(SkipOptions) && !Bot.Config.Get<bool>(SkipOptions))
                 Bot.Config.Configure();
@@ -203,6 +204,8 @@ public class CoreBots
             Bot.Bank.Loaded = true;
             if (BankMiscAC)
                 BankACMisc();
+            if (BankUnenhancedACGear)
+                BankACUnenhancedGear();
 
             foreach (InventoryItem item in Bot.Inventory.Items.Where(i => i.Equipped))
                 EquipmentBeforeBot.Add(item.Name);
@@ -812,7 +815,7 @@ public class CoreBots
         string? questName = Bot.Flash.GetGameObject<List<dynamic>>("world.shopinfo.items")?.Find(d => d.ItemID == item.ID)?.sQuest;
         if (!String.IsNullOrEmpty(questName))
         {
-            var v = JsonConvert.DeserializeObject<dynamic[]>(File.ReadAllText(Path.Combine(SkuaPath, "Quests.txt")));
+            var v = JsonConvert.DeserializeObject<dynamic[]>(File.ReadAllText(ClientFileSources.SkuaQuestsFile));
             if (v != null)
             {
                 List<int> ids = v.Where(x => x.Name == questName).Select(q => (int)q.ID).ToList();
@@ -1337,7 +1340,7 @@ public class CoreBots
 
     public List<Quest> EnsureLoad(params int[] questIDs)
     {
-        List<Quest> quests = Bot.Quests.Tree.Where(x => questIDs.Contains(x.ID)).ToList();
+        List<Quest>? quests = Bot.Quests.Tree.Where(x => questIDs.Contains(x.ID)).ToList();
         if (quests.Count == questIDs.Length)
             return quests;
         List<int> missing = questIDs.Where(x => !quests.Any(y => y.ID == x)).ToList();
@@ -1348,7 +1351,7 @@ public class CoreBots
             Bot.Quests.Load(missing.ToArray()[i..(missing.Count > i ? missing.Count : i + 30)]);
             Bot.Sleep(1500);
         }
-        var toReturn = Bot.Quests.Tree.Where(x => questIDs.Contains(x.ID)).ToList();
+        List<Quest>? toReturn = Bot.Quests.Tree.Where(x => questIDs.Contains(x.ID)).ToList();
         if (toReturn.Count() <= 0 || toReturn == null)
         {
             Logger($"Failed to get the Quest Object for questIDs {String.Join(" | ", questIDs)}" + reinstallCleanFlash, messageBox: true, stopBot: true);
@@ -1359,9 +1362,12 @@ public class CoreBots
 
     public void AbandonQuest(params int[] questIDs)
     {
+        if (questIDs == null || questIDs.Length == 0)
+            return;
+
         foreach (var q in EnsureLoad(questIDs))
         {
-            if (!q.Active)
+            if (q == null || !q.Active)
                 continue;
             Bot.Flash.CallGameFunction("world.abandonQuest", q.ID);
             Bot.Wait.ForTrue(() => !EnsureLoad(q.ID).Active, 20);
@@ -1790,7 +1796,7 @@ public class CoreBots
         {
             foreach (string cs in currentScript.Where(x => x.StartsWith("//cs_include")).ToArray())
             {
-                List<string> pathParts = new() { SkuaPath };
+                List<string> pathParts = new() { ClientFileSources.SkuaDIR };
                 pathParts.AddRange(cs.Replace("//cs_include ", "").Replace("\\", "/").Split('/'));
                 includedScript = File.ReadAllLines(Path.Combine(pathParts.ToArray()));
 
@@ -2168,6 +2174,20 @@ public class CoreBots
         ToBank(MiscForBank.ToArray());
     }
 
+    public void BankACUnenhancedGear()
+    {
+        List<string> Whitelisted = new() { "Class", "Helm", "Cape" };
+        ToBank(Bot.Inventory.Items.Where(i =>
+            (Whitelisted.Contains(i.CategoryString) ||
+            i.ItemGroup == "Weapon") &&
+            i.Coins &&
+            i.EnhancementLevel == 0 &&
+            !i.Equipped &&
+            !SoloGear.Contains(i.Name) &&
+            !FarmGear.Contains(i.Name)
+        ).Select(i => i.Name).ToArray());
+    }
+
     public Option<bool> SkipOptions = new Option<bool>("SkipOption", "Skip this window next time", "You will be able to return to this screen via [Scripts] -> [Edit Script Options] if you wish to change anything.", false);
     public bool DontPreconfigure = true;
 
@@ -2316,64 +2336,68 @@ public class CoreBots
 
             #region Simple Quest Bypasses
             case "maloth":
-                SimpleQuestBypass(6005);
+                SimpleQuestBypass((246, 23));
                 break;
 
             case "lycan":
-                SimpleQuestBypass(598);
+                SimpleQuestBypass((26, 23));
                 break;
 
             case "mummies":
-                SimpleQuestBypass(4616);
+                SimpleQuestBypass((97, 16));
                 break;
 
             case "doomvault":
-                SimpleQuestBypass(3008);
+                SimpleQuestBypass((126, 18));
                 break;
 
             case "ultradrakath":
-                SimpleQuestBypass(3879);
+                SimpleQuestBypass((182, 5));
                 break;
 
             case "backroom":
-                SimpleQuestBypass(8059);
+                SimpleQuestBypass((402, 12));
                 break;
 
             case "venomvaults":
-                SimpleQuestBypass(2804);
+                SimpleQuestBypass((117, 7));
                 break;
 
             case "chaoscave":
             case "lycanwar":
-                SimpleQuestBypass(567);
+                SimpleQuestBypass((26, 22));
                 break;
 
             case "timespace":
-                SimpleQuestBypass(2518);
+                SimpleQuestBypass((100, 14));
                 break;
 
             case "transformation":
-                SimpleQuestBypass(8094);
+                SimpleQuestBypass((405, 12));
                 break;
 
             case "ebilcorphq":
-                SimpleQuestBypass(8406);
+                SimpleQuestBypass((431, 9));
                 break;
 
             case "necrodungeon":
-                SimpleQuestBypass(2061);
+                SimpleQuestBypass((77, 18));
                 break;
 
             case "oddities":
-                SimpleQuestBypass(8667);
+                SimpleQuestBypass((456, 13));
                 break;
 
             case "stormtemple":
-                SimpleQuestBypass(2814);
+                SimpleQuestBypass((117, 17));
                 break;
 
             case "championdrakath":
-                SimpleQuestBypass(3881);
+                SimpleQuestBypass((182, 7));
+                break;
+
+            case "ultratyndarius":
+                SimpleQuestBypass((412, 22));
                 break;
 
             case "towerofdoom1":
@@ -2386,7 +2410,7 @@ public class CoreBots
             case "towerofdoom8":
             case "towerofdoom9":
             case "towerofdoom10":
-                SimpleQuestBypass(3484);
+                SimpleQuestBypass((159, 10));
                 break;
             #endregion
 
@@ -2394,20 +2418,20 @@ public class CoreBots
             case "celestialarenab":
             case "celestialarenac":
             case "celestialarenad":
-                PrivateSimpleQuestBypass(6032);
+                PrivateSimpleQuestBypass((249, 20));
                 break;
 
             case "titandrakath":
-                PrivateSimpleQuestBypass(8776);
+                PrivateSimpleQuestBypass((470, 18));
                 break;
 
             case "confrontation":
             case "shadowattack":
-                PrivateSimpleQuestBypass(3799);
+                PrivateSimpleQuestBypass((175, 20));
                 break;
 
             case "finalshowdown":
-                PrivateSimpleQuestBypass(3880);
+                PrivateSimpleQuestBypass((182, 6));
                 break;
             #endregion
 
@@ -2419,7 +2443,7 @@ public class CoreBots
 
             case "doomvaultb":
                 SetAchievement(18);
-                SimpleQuestBypass(3004, 3008);
+                SimpleQuestBypass((127, 26), (126, 18)); //3004 + 3008
                 break;
 
             case "prison":
@@ -2513,7 +2537,7 @@ public class CoreBots
                     "voidnightbane"
                 };
                 if (lockedMaps.Contains(strippedMap))
-                    File.WriteAllText(ButlerLogPath(), Bot.Map.FullName);
+                    WriteFile(ButlerLogPath(), Bot.Map.FullName);
             }
 
             Jump(cell, pad);
@@ -2566,19 +2590,17 @@ public class CoreBots
                 }
             }
         }
-
-        void SimpleQuestBypass(params int[] questIDs)
+        void SimpleQuestBypass(params (int, int)[] slotValues)
         {
-            JumpWait();
-            foreach (int id in questIDs)
-                Bot.Quests.UpdateQuest(id);
+            foreach ((int, int) sV in slotValues)
+                Bot.Quests.UpdateQuest(sV.Item2, sV.Item1);
             tryJoin();
         }
 
-        void PrivateSimpleQuestBypass(params int[] questIDs)
+        void PrivateSimpleQuestBypass(params (int, int)[] slotValues)
         {
             map = strippedMap + "-999999";
-            SimpleQuestBypass(questIDs);
+            SimpleQuestBypass(slotValues);
         }
     }
 
@@ -2729,25 +2751,7 @@ public class CoreBots
     #endregion
 
     #region Using Local Files
-    /// <summary>
-    /// Returns the file path of the Skua folder in the user's Documents
-    /// </summary>
-    public static string SkuaPath
-    {
-        get
-        {
-            string appPath = Path.GetDirectoryName(AppContext.BaseDirectory)!;
-            if (appPath.Contains("Program Files"))
-                return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Skua");
-            else
-                return appPath;
-        }
-    }
-
-    public static string ScriptsPath = Path.Combine(SkuaPath, "Scripts");
-    public static string OptionsPath = Path.Combine(SkuaPath, "options");
-
-    public static string ButlerLogDir = Path.Combine(SkuaPath, "options", "Butler");
+    public static string ButlerLogDir = Path.Combine(ClientFileSources.SkuaOptionsDIR, "Butler");
     private string ButlerLogPath() => Path.Combine(ButlerLogDir, Username().ToLower() + ".txt");
     public bool ButlerOnMe()
     {
@@ -2758,9 +2762,44 @@ public class CoreBots
         return files.Count() > 0 && files.Any(x => x.Contains("~!") && (x.Split("~!").Last() == (Username().ToLower() + ".txt")));
     }
 
+    public void WriteFile(string path, IEnumerable<string> content)
+    {
+        try
+        {
+            File.WriteAllLines(path, content);
+        }
+        catch (Exception e)
+        {
+            WriteFail(path, e);
+        }
+    }
+    public void WriteFile(string path, string[] content)
+    {
+        try
+        {
+            File.WriteAllLines(path, content);
+        }
+        catch (Exception e)
+        {
+            WriteFail(path, e);
+        }
+    }
+    public void WriteFile(string path, string content)
+    {
+        try
+        {
+            File.WriteAllText(path, content);
+        }
+        catch (Exception e)
+        {
+            WriteFail(path, e);
+        }
+    }
+    private void WriteFail(string path, Exception e) => Logger($"Skua just tried to write to \"{path}\" but got an exception:\n{e.InnerException}\n\nPlease restart Skua in Admin-Mode just this once.", "Failed at writing file", true, true);
+
     private void ReadMe()
     {
-        string readMePath = Path.Combine(SkuaPath, "ReadMeV1.txt");
+        string readMePath = Path.Combine(ClientFileSources.SkuaDIR, "ReadMeV1.txt");
         if (File.Exists(readMePath))
             return;
 
@@ -2860,7 +2899,7 @@ public class CoreBots
                     "Thanks to you, for reading this far down. ReadMe's are usually a drag so I tried to keep it to the point.",
                     "And thanks to everyone who has put time and effort RBot/Skua and the Master Bots! ~ Exelot",
         };
-        File.WriteAllLines(readMePath, ReadMe);
+        WriteFile(readMePath, ReadMe);
 
         // Opening ReadMe.txt
         if (result.Text == "OK")
@@ -2953,7 +2992,7 @@ public class CoreBots
 
         void FileSetup()
         {
-            string path = Path.Combine(SkuaPath, "DataCollectionSettings.txt");
+            string path = Path.Combine(ClientFileSources.SkuaDIR, "DataCollectionSettings.txt");
             if (!File.Exists(path))
             {
                 DialogResult consent = Bot.ShowMessageBox(
@@ -3044,7 +3083,7 @@ public class CoreBots
                     $"stopTimeConsent: {stopTimeData}"
                 };
 
-                File.WriteAllLines(path, fileContent);
+                WriteFile(path, fileContent);
 
                 Bot.ShowMessageBox(
                     "If you wish to change these settings, you can easily modify them in the following file:\n" +
@@ -3087,6 +3126,8 @@ public class CoreBots
             PublicDifficult = _PublicDifficult;
         if (CBOBool("BankMiscAC", out bool _BankMiscAC))
             BankMiscAC = _BankMiscAC;
+        if (CBOBool("BankUnenhancedACGear", out bool _BankUnenhGear))
+            BankUnenhancedACGear = _BankUnenhGear;
         if (CBOBool("LoggerInChat", out bool _LoggerInChat))
             LoggerInChat = _LoggerInChat;
 
@@ -3173,7 +3214,7 @@ public class CoreBots
             FarmGear = bestSet.Concat(new[] { _GroundItem2 }).ToArray();
     }
 
-    public string CBO_Path() => Path.Combine(OptionsPath, $"CBO_Storage({Username()}).txt");
+    public string CBO_Path() => Path.Combine(ClientFileSources.SkuaOptionsDIR, $"CBO_Storage({Username()}).txt");
     public bool CBO_Active() => File.Exists(CBO_Path());
 
     public bool CBOString(string Name, out string output)
@@ -3208,6 +3249,20 @@ public class CoreBots
     }
 
     private List<string> CBOList = new();
+
+    public void OneTimeMessage(string internalName, string message, bool messageBox = true, bool forcedMessageBox = false)
+    {
+        string path = Path.Combine(ClientFileSources.SkuaDIR, "OneTimeMessages.txt");
+        if (File.Exists(path) && File.ReadAllLines(path).Any(l => l == internalName))
+            return;
+
+        message = "Please make sure you read this as it will only be shown once:\n\n" + message;
+        Logger(message, "One Time-Only Message", messageBox && !forcedMessageBox);
+        if (messageBox && forcedMessageBox)
+            Bot.ShowMessageBox(message, "One Time-Only Message");
+
+        WriteFile(path, File.Exists(path) ? File.ReadAllLines(path).Append(internalName).ToArray() : new[] { internalName });
+    }
 
     #endregion
 }

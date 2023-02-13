@@ -1,6 +1,6 @@
 /*
-name:  Army Bloody Chaos
-description:  uses an army to farm Blood Gem of the Archfiend
+name: Army Bloody Chaos
+description: uses an army to farm Blood Gem of the Archfiend
 tags: blood gem of the archfiend, army
 */
 //cs_include Scripts/CoreBots.cs
@@ -46,6 +46,8 @@ public class ArmyBloodyChaos
     {
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
+
+        Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
 
         Core.AddDrop(Loot);
         Core.EquipClass(ClassType.Farm);

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Queen Battle (Extra)
+description: This will finish the Queen Battle quest.
+tags: story, quest, queen-of-monsters, queen-battle, extra
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

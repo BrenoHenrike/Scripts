@@ -1,5 +1,5 @@
 /*
-name: null
+name: CombatTrophy
 description: null
 tags: null
 */

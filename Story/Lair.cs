@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Lair Story
+description: This will finish the Lair Story.
+tags: story, quest, lair
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

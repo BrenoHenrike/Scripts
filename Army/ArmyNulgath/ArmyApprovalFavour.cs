@@ -1,6 +1,6 @@
 /*
-name:  Army Approval Favour
-description:  Uses army to Farm Archfiend's Favor and Nulgath's Approval.
+name: Army Approval Favour
+description: Uses army to Farm Archfiend's Favor and Nulgath's Approval.
 tags: archfiend's favor, nulgath's approval, army
 */
 //cs_include Scripts/CoreBots.cs
@@ -50,6 +50,8 @@ public class ArmyApprovalFavour
     {
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
+
+        Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
 
         Core.AddDrop(Loot);
         Core.EquipClass(ClassType.Farm);

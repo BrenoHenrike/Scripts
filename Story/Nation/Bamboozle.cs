@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Bamboozle
+description: This will finish the Bamboozle quest line.
+tags: story, quest, bamboozle, nation
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

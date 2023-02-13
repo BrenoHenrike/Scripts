@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Shadow Slayer
+description: This will finish the Shadow Slayer Story.
+tags: story, quest, shadow-slayer
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

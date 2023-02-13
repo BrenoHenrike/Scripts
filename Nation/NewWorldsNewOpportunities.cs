@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: New Worlds, New Opportunities
+description: Farms the resources of nation so instantly. Note that you must have Bounty Hunter's Drone Pet.
+tags: bounty-hunters-pet, pet, nation-farm, farm-resources
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

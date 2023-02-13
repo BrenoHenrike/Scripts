@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Judgement
+description: This will finish the Judgement quest.
+tags: story, quest, isle-of-fotia, judgement
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

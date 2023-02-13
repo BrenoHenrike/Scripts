@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Ubear Story
+description: This will finish the Ubear Story.
+tags: story, quest, ubear
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

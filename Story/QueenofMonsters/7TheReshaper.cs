@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: The Reshaper
+description: This will finish the The Reshaper quest.
+tags: story, quest, queen-of-monsters, the-reshaper
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

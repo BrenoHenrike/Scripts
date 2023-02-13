@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Exaltia Tower Story
+description: This will finish the Exaltia Tower story.
+tags: story, quest, exaltia-tower
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Necro Tower
+description: This will complete the Necro Tower quest.
+tags: story, quest, doomwood, necro-tower, part1
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Cetoleon War Story
+description: This will finish the Cetoleon War Story Line.
+tags: story, quest, cetoleon, war, pirate
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
