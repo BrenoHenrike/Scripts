@@ -860,7 +860,19 @@ public class CoreDailies
                 }
 
                 Core.JumpWait();
-                InventoryItem selectedGift = Bot.Inventory.Items.First(x => _gifts.Contains(x.ID));
+                InventoryItem? selectedGift = null;
+                Bot.Wait.ForTrue(() =>
+                {
+                    selectedGift = Bot.Inventory.Items.Find(x => _gifts.Contains(x.ID));
+                    return selectedGift != null;
+                }, 30);
+                if (selectedGift == null)
+                {
+                    if (gifts.Count() > 1)
+                        Core.Logger("Failed to parse any of the following items from your inventory: " + String.Join(" | ", gifts.Select(x => x.ToString())).Replace('_', ' '));
+                    else Core.Logger($"Failed to find \"{gifts[0].ToString().Replace('_', ' ')}\" in your inventory.");
+                    return;
+                }
                 SendWaitedPacket($"%xt%zm%friendshipGift%{Bot.Map.RoomID}%{selectedGift.ID}%{selectedGift.CharItemID}%");
                 InformLogger($"Gifted {selectedGift.Name} to {friend.NPC}.", ref friend);
             }
