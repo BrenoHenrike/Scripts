@@ -38,6 +38,7 @@ namespace SkuaScriptsGenerator.Generators
                     scriptInfo.Path = script.Replace("./", "");
                     scriptInfo.FileName = script.Split('/').Last();
                     scriptInfo.DownloadUrl = rawScriptsURL+scriptInfo.Path;
+                    scriptInfo.LastModified = File.GetLastWriteTime(script);
 
                     var scriptB = File.ReadAllBytes(script);
                     // remove zero width no-break space
@@ -75,6 +76,8 @@ namespace SkuaScriptsGenerator.Generators
             public string? FileName { get; set; }
             [JsonProperty("downloadUrl")]
             public string? DownloadUrl { get; set; }
+            [JsonProperty("LastModified")]
+            public DateTime? LastModified { get; set; }
         }
     }
 }
