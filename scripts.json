@@ -700,6 +700,20 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/SecondFirstMate.cs"
   },
   {
+    "name": "Lorebowl",
+    "description": "Kills the mob in /punt for its drops",
+    "tags": [
+      "lorebowl",
+      "drops",
+      "punt",
+      "twilly"
+    ],
+    "path": "Other/LoreBowl.cs",
+    "size": 1429,
+    "fileName": "LoreBowl.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/LoreBowl.cs"
+  },
+  {
     "name": "celestial starmage set",
     "description": "farms the starmage set from \"Star Light, Star Bright\"",
     "tags": [
@@ -3955,7 +3969,7 @@
       "null"
     ],
     "path": "Other/Badges/MoglinPunter.cs",
-    "size": 1018,
+    "size": 1144,
     "fileName": "MoglinPunter.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Badges/MoglinPunter.cs"
   },
