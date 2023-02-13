@@ -15,7 +15,7 @@ public class LoreBowl
 
     string[] LoreBowlItems =
     {
-   "Broncolich Pennant",
+    "Broncolich Pennant",
     "Chaos Pennant",
     "Cheer Lover",
     "Cheer Lover's Hair",
@@ -39,7 +39,6 @@ public class LoreBowl
     "Saints Pennant",
     "Satyrs Pennant",
     "Tigers Pennant",
-    "Treasure Chest (Misc)",
     "Void Nation Cheerleader",
 };
 
@@ -63,7 +62,7 @@ public class LoreBowl
         {
             Core.FarmingLogger(item, 1);
             while (!Bot.ShouldExit && !Core.CheckInventory(item, toInv: false))
-                Core.HuntMonster("punt", "*", item, isTemp: false, log: false);
+                Core.HuntMonster("punt", "*", isTemp: false, log: false);
             Core.ToBank(LoreBowlItems);
         }
 
