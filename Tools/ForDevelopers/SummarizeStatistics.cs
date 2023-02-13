@@ -49,14 +49,15 @@ public class SummarizeStats
 
         Bot.Log("Basic Statistics\n");
         Bot.Log("Dataset size:\t\t" + data.Count());
+        Bot.Log("Last datapoint:\t\t" + lastItem.TimeStamp);
         Bot.Log("User Count (Total):\t" + data.DistinctBy(x => x.UserID).Count());
         Bot.Log("User Count (31 Days):\t" + days31.DistinctBy(x => x.UserID).Count());
         Bot.Log("User Count (7 Days):\t" + days7.DistinctBy(x => x.UserID).Count());
         Bot.Log("User Count (24h):\t\t" + hours24.DistinctBy(x => x.UserID).Count());
-        Bot.Log("Amount of bots started (Total):\t" + data.Select(x => x.Start).Count());
-        Bot.Log("Amount of bots started (31 Days):\t" + days31.Select(x => x.Start).Count());
-        Bot.Log("Amount of bots started (7 Days):\t" + days7.Select(x => x.Start).Count());
-        Bot.Log("Amount of bots started (24h):\t" + hours24.Select(x => x.Start).Count());
+        Bot.Log("Amount of bots started (Total):\t" + data.Where(x => x.Start == true).Count());
+        Bot.Log("Amount of bots started (31 Days):\t" + days31.Where(x => x.Start == true).Count());
+        Bot.Log("Amount of bots started (7 Days):\t" + days7.Where(x => x.Start == true).Count());
+        Bot.Log("Amount of bots started (24h):\t" + hours24.Where(x => x.Start == true).Count());
 
         int cTop = Bot.Config!.Get<int>("topAll");
         Bot.Log($"\nTop {cTop} scripts (All Time)");
@@ -83,7 +84,7 @@ public class SummarizeStats
         public DateTime TimeStamp { get; set; }
         public int UserID { get; set; }
         public string? ScriptPath { get; set; }
-        public bool Start { get; set; }
+        public bool? Start { get; set; }
         public int? InstanceID { get; set; }
 
         public DataObject(string[] input)
@@ -97,7 +98,12 @@ public class SummarizeStats
 
             UserID = Int32.Parse(input[1]);
             ScriptPath = String.IsNullOrEmpty(input[2]) ? null : input[2];
-            Start = input[3] == "Start";
+            Start = (input[3]) switch
+            {
+                "Start" => true,
+                "Stop" => false,
+                _ => null
+            };
             InstanceID = String.IsNullOrEmpty(input[4]) ? null : Int32.Parse(input[4]);
         }
     }
