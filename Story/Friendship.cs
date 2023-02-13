@@ -1,7 +1,7 @@
 /*
-name: Friendship
-description: This will complete the Friendship story quest.
-tags: friendship, story, greyguard, battleodium
+name: Friendship Story
+description: This will complete the Friendship storyline.
+tags: story, quest, friendship, greyguard, battleodium, NPC
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
@@ -18,7 +18,6 @@ public class Friendship
         Core.SetOptions();
 
         CompleteStory();
-        Core.SetOptions(false);
     }
 
     public void CompleteStory()
@@ -38,38 +37,43 @@ public class Friendship
         Story.MapItemQuest(9101, "battleodium", 11203, 3);
 
         // Befriend a Friend (9102)
+        bool waitForPacket = false;
         if (!Story.QuestProgression(9102))
         {
             Core.EnsureAccept(9102);
-            while(!Bot.TempInv.Contains("Friendship Formed"))
+            Bot.Events.ExtensionPacketReceived += friendshipPacketReader;
+            Core.JumpWait();
+
+            while (!Bot.TempInv.Contains("Friendship Formed"))
             {
-                Bot.Send.Packet("%xt%zm%friendshipInfo%12681%Maya%");
-                Bot.Sleep(1000);
-                Bot.Send.Packet("%xt%zm%friendshipTalk%12681%");
-                Bot.Sleep(1000);
-                Bot.Send.Packet("%xt%zm%friendshipChoice%12681%1%");
-                Bot.Sleep(1000);
+                SendWaitedPacket($"%xt%zm%friendshipInfo%{Bot.Map.RoomID}%Maya%");
+                SendWaitedPacket($"%xt%zm%friendshipTalk%{Bot.Map.RoomID}%");
+                SendWaitedPacket($"%xt%zm%friendshipChoice%{Bot.Map.RoomID}%1%");
             }
+
+            Bot.Events.ExtensionPacketReceived -= friendshipPacketReader;
             Core.EnsureComplete(9102);
         }
 
         // Darkness Distress (9103)
         Story.MapItemQuest(9103, "greyguard", 11205);
-        Story.KillQuest(9103, "greyguard", new[] {"Fearweaver", "Darkbark", "Twilighteeth", "Maulignant", "Gloombloom", "Carcass Creeper"});
+        Story.KillQuest(9103, "greyguard", new[] { "Fearweaver", "Darkbark", "Twilighteeth", "Maulignant", "Gloombloom", "Carcass Creeper" });
 
         // Your New FF (9104)
         if (!Story.QuestProgression(9104))
         {
             Core.EnsureAccept(9104);
-            while(!Bot.TempInv.Contains("Greyguard Friendship Formed"))
+            Bot.Events.ExtensionPacketReceived += friendshipPacketReader;
+            Core.JumpWait();
+
+            while (!Bot.TempInv.Contains("Greyguard Friendship Formed"))
             {
-                Bot.Send.Packet("%xt%zm%friendshipInfo%13359%Xing%");
-                Bot.Sleep(1000);
-                Bot.Send.Packet("%xt%zm%friendshipTalk%13359%");
-                Bot.Sleep(1000);
-                Bot.Send.Packet("%xt%zm%friendshipChoice%13359%1%");
-                Bot.Sleep(1000);
+                SendWaitedPacket($"%xt%zm%friendshipInfo%{Bot.Map.RoomID}%Xing%");
+                SendWaitedPacket($"%xt%zm%friendshipTalk%{Bot.Map.RoomID}%");
+                SendWaitedPacket($"%xt%zm%friendshipChoice%{Bot.Map.RoomID}%1%");
             }
+
+            Bot.Events.ExtensionPacketReceived -= friendshipPacketReader;
             Core.EnsureComplete(9104);
         }
 
@@ -78,5 +82,30 @@ public class Friendship
 
         // Not all is Well (9106)
         Story.KillQuest(9106, "greyguard", "Odium");
+
+        void friendshipPacketReader(dynamic packet)
+        {
+            string type = packet["params"].type;
+            dynamic data = packet["params"].dataObj;
+            if (type is not null and "json")
+            {
+                string cmd = data.cmd.ToString();
+                switch (cmd)
+                {
+                    case "friendshipInfo":
+                    case "friendshipTalk":
+                    case "friendshipChoice":
+                        waitForPacket = true;
+                        break;
+                }
+            }
+        }
+
+        void SendWaitedPacket(string packet)
+        {
+            waitForPacket = false;
+            Bot.Send.Packet(packet);
+            Bot.Wait.ForTrue(() => waitForPacket, 30);
+        }
     }
 }

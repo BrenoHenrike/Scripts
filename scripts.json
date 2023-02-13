@@ -39,7 +39,7 @@
       "null"
     ],
     "path": "CoreDailies.cs",
-    "size": 27594,
+    "size": 38347,
     "fileName": "CoreDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreDailies.cs"
   },
@@ -486,12 +486,16 @@
     "name": "Grim Dark Set",
     "description": "farms the \"Grim Dark\" set from Quest",
     "tags": [
-      "doom regin doom’s reward",
-      "grim dark",
+      "doom",
+      "region",
+      "doom",
+      "reward",
+      "grim",
+      "dark",
       "set"
     ],
     "path": "Other/GrimDarkSet.cs",
-    "size": 1772,
+    "size": 1773,
     "fileName": "GrimDarkSet.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/GrimDarkSet.cs"
   },
@@ -2323,16 +2327,18 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ThirdSpell.cs"
   },
   {
-    "name": "Friendship",
-    "description": "This will complete the Friendship story quest.",
+    "name": "Friendship Story",
+    "description": "This will complete the Friendship storyline.",
     "tags": [
-      "friendship",
       "story",
+      "quest",
+      "friendship",
       "greyguard",
-      "battleodium"
+      "battleodium",
+      "NPC"
     ],
     "path": "Story/Friendship.cs",
-    "size": 2544,
+    "size": 3570,
     "fileName": "Friendship.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Friendship.cs"
   },
@@ -3028,6 +3034,21 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/CyserosSuperHammer.cs"
   },
   {
+    "name": "Friendship Dailies",
+    "description": "This bot does all the friendship based dailies in battleodium and greyguard",
+    "tags": [
+      "daily",
+      "dailies",
+      "friendship",
+      "battleodium",
+      "greyguard"
+    ],
+    "path": "Dailies/FriendshipDailies.cs",
+    "size": 882,
+    "fileName": "FriendshipDailies.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/FriendshipDailies.cs"
+  },
+  {
     "name": "Mad Weapon Smith Daily",
     "description": "Mad Weapon Smith",
     "tags": [
@@ -3062,7 +3083,7 @@
       "all"
     ],
     "path": "Dailies/0AllDailies.cs",
-    "size": 2512,
+    "size": 2655,
     "fileName": "0AllDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/0AllDailies.cs"
   },
@@ -5144,6 +5165,19 @@
     "size": 5242,
     "fileName": "VokunMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/VokunMerge.cs"
+  },
+  {
+    "name": "Friendship Merge",
+    "description": "This script will farm materials to buy items from the Friendship Merge shop.",
+    "tags": [
+      "friendship",
+      "merge",
+      "battleodium"
+    ],
+    "path": "Other/MergeShops/FriendshipMerge.cs",
+    "size": 6840,
+    "fileName": "FriendshipMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/FriendshipMerge.cs"
   },
   {
     "name": "ShipWreckMerge[non-ac]",
@@ -12175,17 +12209,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/FindingFragments.cs"
   },
   {
-    "name": "UltimateWeaponKit",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Good/BLoD/UltimateWeaponKit.cs",
-    "size": 670,
-    "fileName": "UltimateWeaponKit.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/UltimateWeaponKit.cs"
-  },
-  {
     "name": "SoulSearching",
     "description": "null",
     "tags": [
@@ -15040,7 +15063,7 @@
       "army"
     ],
     "path": "Army/Classes/ArmyLR/ArmyLRFull.cs",
-    "size": 16621,
+    "size": 16623,
     "fileName": "ArmyLRFull.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Classes/ArmyLR/ArmyLRFull.cs"
   },
@@ -15112,6 +15135,39 @@
     "size": 2096,
     "fileName": "ArmyDarkToken.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Classes/ArmyLR/ArmyDarkToken.cs"
+  },
+  {
+    "name": "UltimateWeaponKit",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Good/BLoD/WeaponKits/UltimateWeaponKit.cs",
+    "size": 670,
+    "fileName": "UltimateWeaponKit.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/WeaponKits/UltimateWeaponKit.cs"
+  },
+  {
+    "name": "AdvancedWeaponKit",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Good/BLoD/WeaponKits/AdvancedWeaponKit.cs",
+    "size": 654,
+    "fileName": "AdvancedWeaponKit.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/WeaponKits/AdvancedWeaponKit.cs"
+  },
+  {
+    "name": "BasicWeaponKits",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Good/BLoD/WeaponKits/BasicWeaponKits.cs",
+    "size": 647,
+    "fileName": "BasicWeaponKits.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/WeaponKits/BasicWeaponKits.cs"
   },
   {
     "name": "Darkons Third Errand",

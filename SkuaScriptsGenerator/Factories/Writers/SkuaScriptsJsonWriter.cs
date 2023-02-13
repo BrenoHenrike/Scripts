@@ -55,7 +55,7 @@ namespace SkuaScriptsGenerator.Generators
 
         private void RemoveAllZeroWidth(ref byte[] scriptB)
         {
-            var scriptS = Regex.Replace(Encoding.UTF8.GetString(scriptB), @"\u200B|\u200C|\u200D|\uFEFF", "");
+            var scriptS = Regex.Replace(Encoding.UTF8.GetString(scriptB), @"\u200B|\uFEFF", "");
             scriptB = Encoding.UTF8.GetBytes(scriptS);
         }
         
