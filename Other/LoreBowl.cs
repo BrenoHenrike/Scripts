@@ -57,11 +57,16 @@ public class LoreBowl
         if (Core.CheckInventory(LoreBowlItems, toInv: false))
             return;
 
+        Bot.Drops.Add(LoreBowlItems);
         Core.EquipClass(ClassType.Solo);
-        while (!Bot.ShouldExit && !Core.CheckInventory(LoreBowlItems, toInv: false))
-            Core.HuntMonster("punt", "*", isTemp: false, log: false);
+        foreach (string item in LoreBowlItems)
+        {
+            Core.FarmingLogger(item, 1);
+            while (!Bot.ShouldExit && !Core.CheckInventory(item, toInv: false))
+                Core.HuntMonster("punt", "*", item, isTemp: false, log: false);
+            Core.ToBank(LoreBowlItems);
+        }
 
-        Core.ToBank(LoreBowlItems);
     }
 
 }
