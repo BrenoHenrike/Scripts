@@ -482,68 +482,6 @@ public class CoreArmyLite
 
         return true;
 
-        //string[] fileSetup()
-        //{
-        //    string path = Path.Combine(ClientFileSources.SkuaOptionsDIR, "TheFamily.txt");
-        //    if (File.Exists(path))
-        //        return File.ReadAllLines(path);
-
-        //    Bot.ShowMessageBox("Your login details will be saved locally on your own device. We will not receive them.", "A heads up");
-
-        //    int i = 1;
-        //    string title = $"Please provide the login details for account #";
-        //    string data = string.Empty;
-        //    Dictionary<string, string> redo = new();
-
-        //    while (!Bot.ShouldExit)
-        //    {
-        //        bool goRedo = redo.Count() != 0;
-
-        //        var name = new InputDialogViewModel(title + i, "Account Name", false);
-        //        if (goRedo)
-        //            name.DialogTextInput = redo.First().Key;
-        //        if (isInvalid(name))
-        //            break;
-
-        //        var pass = new InputDialogViewModel(title + i, "Account Password:", false);
-        //        if (goRedo)
-        //            pass.DialogTextInput = redo.First().Value;
-        //        if (isInvalid(pass))
-        //            break;
-
-        //        var res = Bot.ShowMessageBox(
-        //            "Is this correct?\n\n" +
-        //            "Name:\t\t" + name.DialogTextInput + "\n" +
-        //            "Password:\t" + pass.DialogTextInput,
-        //            "Confirm that these are correct",
-        //            $"Yes, go to account #{i + 1}", "Yes, I am now done", "No"
-        //        );
-
-        //        redo = new();
-        //        if (res.Text == "No")
-        //            redo.Add(name.DialogTextInput, pass.DialogTextInput);
-        //        else
-        //        {
-        //            data += $"{name.DialogTextInput}\n{pass.DialogTextInput}\n";
-        //            if (!res.Text.StartsWith("Yes, go"))
-        //                break;
-        //            i++;
-        //        }
-        //    }
-
-        //    if (String.IsNullOrEmpty(data))
-        //        Core.Logger("No input provided, stopping the bot.", messageBox: true, stopBot: true);
-
-        //    Core.WriteFile(path, data[..^1]);
-        //    Bot.Handlers.RegisterOnce(1, Bot => Bot.ShowMessageBox($"If you ever wish to edit things, the file can be found at:\n{path}", "File path"));
-        //    return data[..^1].Split('\n');
-
-        //    bool isInvalid(InputDialogViewModel input) =>
-        //        Ioc.Default.GetRequiredService<IDialogService>().ShowDialog(input) != true ||
-        //        String.IsNullOrEmpty(input.DialogTextInput) ||
-        //        String.IsNullOrWhiteSpace(input.DialogTextInput);
-        //}
-
         (string, string)[] readManager()
         {
             string[]? dirs = Directory.GetDirectories(
@@ -584,7 +522,7 @@ public class CoreArmyLite
             List<(string, string)> toReturn = new();
             foreach (var d in dyn)
             {
-                if (d["@name"] == "ManagedAccounts")
+                if (d["@name"] == "ManagedAccounts" && d["value"].ArrayOfString["string"] != null)
                 {
                     string[] accs = JsonConvert.DeserializeObject<string[]>(d["value"].ArrayOfString["string"].ToString());
                     foreach (string acc in accs)
@@ -597,8 +535,9 @@ public class CoreArmyLite
             }
             if (toReturn.Count == 0)
             {
-                Core.Logger($"No accounts were found in the Skua.Manager's Account Manager. Please set up your accounts in the Skua.Manager and start up the bot again.", "AccountManager", true, true);
+                Core.Logger($"No accounts were found in the Skua.Manager's Account Manager. Please set up your accounts in the Skua.Manager and start up the bot again.", "AccountManager", true);
                 Process.Start(Path.Combine(AppContext.BaseDirectory, "Skua.Manager.exe"));
+                Bot.Stop(true);
                 return Array.Empty<(string, string)>();
             }
             return toReturn.ToArray();
