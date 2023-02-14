@@ -136,7 +136,7 @@ public class CoreBots
         // Common Options
         Bot.Options.PrivateRooms = false;
         Bot.Options.SafeTimings = changeTo;
-        Bot.Options.RestPackets = changeTo;
+        Bot.Options.RestPackets = changeTo && ShouldRest;
         Bot.Options.AutoRelogin = changeTo;
         Bot.Options.InfiniteRange = changeTo;
         Bot.Options.SkipCutscenes = changeTo;
