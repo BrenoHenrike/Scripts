@@ -24,6 +24,10 @@ public class BankAllItems
         blackListedItems.AddRange(Core.SoloGear);
         blackListedItems.AddRange(Core.FarmGear);
 
+        Bot.Wait.ForMapLoad("battleon");
+        Bot.Sleep(Core.ActionDelay);
+        Bot.Send.Packet($"%xt%zm%house%1%{Username()}%");
+        
         foreach (InventoryItem item in Bot.Inventory.Items)
         {
             if (item.Equipped || blackListedItems.Contains(item.Name))
@@ -33,13 +37,26 @@ public class BankAllItems
             {
                 if (!logged)
                 {
-                    Core.Logger($"Bank is full");
+                    Core.Logger($" {Username}'s Bank is full");
                     logged = true;
                 }
                 continue;
             }
-
             Core.ToBank(item.ID);
+            Bot.Sleep(Core.ActionDelay);
         }
     }
+
+    public string Username()
+    {
+        try
+        {
+            return Bot.Flash.GetGameObject("sfc.myUserName")![1..^1];
+        }
+        catch
+        {
+            return Bot.Player.Username;
+        }
+    }
+
 }
