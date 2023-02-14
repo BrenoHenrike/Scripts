@@ -39,7 +39,7 @@
       "null"
     ],
     "path": "CoreDailies.cs",
-    "size": 38347,
+    "size": 38964,
     "fileName": "CoreDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreDailies.cs"
   },
@@ -698,6 +698,20 @@
     "size": 1408,
     "fileName": "SecondFirstMate.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/SecondFirstMate.cs"
+  },
+  {
+    "name": "Lorebowl",
+    "description": "Kills the mob in /punt for its drops",
+    "tags": [
+      "lorebowl",
+      "drops",
+      "punt",
+      "twilly"
+    ],
+    "path": "Other/LoreBowl.cs",
+    "size": 1641,
+    "fileName": "LoreBowl.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/LoreBowl.cs"
   },
   {
     "name": "celestial starmage set",
@@ -1546,7 +1560,7 @@
       "doom-vault-a"
     ],
     "path": "Story/DoomVault.cs",
-    "size": 2902,
+    "size": 6398,
     "fileName": "DoomVault.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/DoomVault.cs"
   },
@@ -2059,7 +2073,7 @@
       "doom-vault-b"
     ],
     "path": "Story/DoomVaultB.cs",
-    "size": 3742,
+    "size": 4327,
     "fileName": "DoomVaultB.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/DoomVaultB.cs"
   },
@@ -2453,7 +2467,7 @@
       "null"
     ],
     "path": "Army/CoreArmyLite.cs",
-    "size": 38460,
+    "size": 35839,
     "fileName": "CoreArmyLite.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/CoreArmyLite.cs"
   },
@@ -3765,6 +3779,17 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/ForDevelopers/GenerateQuestFiles.cs"
   },
   {
+    "name": "null",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Tools/ForDevelopers/SummarizeStatistics.cs",
+    "size": 4470,
+    "fileName": "SummarizeStatistics.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/ForDevelopers/SummarizeStatistics.cs"
+  },
+  {
     "name": "ShadowVaultChampion",
     "description": "null",
     "tags": [
@@ -3955,7 +3980,7 @@
       "null"
     ],
     "path": "Other/Badges/MoglinPunter.cs",
-    "size": 1018,
+    "size": 1144,
     "fileName": "MoglinPunter.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Badges/MoglinPunter.cs"
   },
@@ -12083,7 +12108,7 @@
       "thefamily"
     ],
     "path": "Army/OneClient/AllDailies.cs",
-    "size": 1570,
+    "size": 1611,
     "fileName": "AllDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/OneClient/AllDailies.cs"
   },
