@@ -512,7 +512,7 @@ public class CoreBots
 
         JumpWait();
 
-        if (Bot.Flash.GetGameObject("ui.mcPopup.currentLabel") != "Bank")
+        if (Bot.Flash.GetGameObject("ui.mcPopup.currentLabel") != "\"Bank\"")
             Bot.Bank.Open();
 
         foreach (string item in items)
@@ -544,7 +544,7 @@ public class CoreBots
 
         JumpWait();
 
-        if (Bot.Flash.GetGameObject("ui.mcPopup.currentLabel") != "Bank")
+        if (Bot.Flash.GetGameObject("ui.mcPopup.currentLabel") != "\"Bank\"")
             Bot.Bank.Open();
 
         foreach (int item in items)
@@ -576,7 +576,7 @@ public class CoreBots
 
         JumpWait();
 
-        if (Bot.Flash.GetGameObject("ui.mcPopup.currentLabel") != "Bank")
+        if (Bot.Flash.GetGameObject("ui.mcPopup.currentLabel") != "\"Bank\"")
             Bot.Bank.Open();
 
         foreach (string item in items)
@@ -609,7 +609,7 @@ public class CoreBots
 
         JumpWait();
 
-        if (Bot.Flash.GetGameObject("ui.mcPopup.currentLabel") != "Bank")
+        if (Bot.Flash.GetGameObject("ui.mcPopup.currentLabel") != "\"Bank\"")
             Bot.Bank.Open();
 
         foreach (int item in items)
