@@ -44,6 +44,7 @@ tags: null
 //cs_include Scripts/Story/Yokai.cs
 //cs_include Scripts/Other\FarmJoeKits\CoreFarmerJoe.cs
 //cs_include Scripts/Farm\BankAllItems.cs
+//cs_include Scripts/Story/Friendship.cs
 using Skua.Core.Interfaces;
 
 public class FarmerJoeLeveling
