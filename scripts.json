@@ -2501,7 +2501,7 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/0CustomAggroMon.cs"
   },
   {
-    "name": "Arch Paladin",
+    "name": "ArchPaladin",
     "description": "This bot farms the ArchPaladin class for you.",
     "tags": [
       "class",
@@ -2516,7 +2516,7 @@
       "undead"
     ],
     "path": "Good/ArchPaladin.cs",
-    "size": 10465,
+    "size": 10464,
     "fileName": "ArchPaladin.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/ArchPaladin.cs"
   },
@@ -4437,7 +4437,7 @@
       "null"
     ],
     "path": "Other/FarmJoeKits/CoreFarmerJoe.cs",
-    "size": 13352,
+    "size": 13351,
     "fileName": "CoreFarmerJoe.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/CoreFarmerJoe.cs"
   },
