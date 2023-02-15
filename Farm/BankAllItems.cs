@@ -26,7 +26,7 @@ public class BankAllItems
 
         Bot.Wait.ForMapLoad("battleon");
         Bot.Sleep(Core.ActionDelay);
-        Bot.Send.Packet($"%xt%zm%house%1%{Username()}%");
+        Bot.Send.Packet($"%xt%zm%house%1%{Bot.Player.Username}%");
         
         foreach (InventoryItem item in Bot.Inventory.Items)
         {
@@ -37,25 +37,13 @@ public class BankAllItems
             {
                 if (!logged)
                 {
-                    Core.Logger($" {Username}'s Bank is full");
+                    Core.Logger($"{Bot.Player.Username}'s Bank is full");
                     logged = true;
                 }
                 continue;
             }
             Core.ToBank(item.ID);
             Bot.Sleep(Core.ActionDelay);
-        }
-    }
-
-    public string Username()
-    {
-        try
-        {
-            return Bot.Flash.GetGameObject("sfc.myUserName")![1..^1];
-        }
-        catch
-        {
-            return Bot.Player.Username;
         }
     }
 
