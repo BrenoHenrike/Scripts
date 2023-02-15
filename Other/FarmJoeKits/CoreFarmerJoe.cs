@@ -230,7 +230,7 @@ public class CoreFarmerJoe
                 AP.GetAP();
                 EI.GetEI();
 
-                Core.SoloClass = "Arch Paladin";
+                Core.SoloClass = "ArchPaladin";
                 Core.FarmClass = "Eternal Inversionist";
 
                 Core.EquipClass(ClassType.Farm);
