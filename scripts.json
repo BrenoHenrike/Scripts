@@ -108,7 +108,7 @@
       "null"
     ],
     "path": "Farm/BankAllItems.cs",
-    "size": 1527,
+    "size": 1328,
     "fileName": "BankAllItems.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/BankAllItems.cs"
   },
@@ -2837,7 +2837,7 @@
       "LOO"
     ],
     "path": "Dailies/LordOfOrder.cs",
-    "size": 11127,
+    "size": 11568,
     "fileName": "LordOfOrder.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/LordOfOrder.cs"
   },
