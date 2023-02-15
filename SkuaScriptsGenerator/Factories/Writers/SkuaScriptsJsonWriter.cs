@@ -44,9 +44,7 @@ namespace SkuaScriptsGenerator.Generators
                     // remove zero width no-break space
                     RemoveAllZeroWidth(ref scriptB);
                     scriptInfo.Size = scriptB.Length;
-                    
-                    if(scriptInfo.FileName.Contains("CoreBots"))
-                        scripts.Add(scriptInfo);     
+                    scripts.Add(scriptInfo);     
                 }
             }
 
