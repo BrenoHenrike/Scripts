@@ -45,7 +45,8 @@ namespace SkuaScriptsGenerator.Generators
                     RemoveAllZeroWidth(ref scriptB);
                     scriptInfo.Size = scriptB.Length;
                     
-                    scripts.Add(scriptInfo);     
+                    if(scriptInfo.FileName.Contains("CoreBots"))
+                        scripts.Add(scriptInfo);     
                 }
             }
 
@@ -76,7 +77,7 @@ namespace SkuaScriptsGenerator.Generators
             public string? FileName { get; set; }
             [JsonProperty("downloadUrl")]
             public string? DownloadUrl { get; set; }
-            [JsonProperty("LastModified")]
+            [JsonProperty("lastModified")]
             public DateTime? LastModified { get; set; }
         }
     }
