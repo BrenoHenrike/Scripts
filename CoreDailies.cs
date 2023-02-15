@@ -243,7 +243,7 @@ public class CoreDailies
             Core.Logger("Skipped");
             return;
         }
-        if (!Core.CheckInventory("Mad Weaponsmith"))
+        if (!Core.CheckInventory("Mad Weaponsmith", toInv: false))
         {
             Core.Logger("You don't own Mad Weaponsmith yet. Skipped");
             return;
