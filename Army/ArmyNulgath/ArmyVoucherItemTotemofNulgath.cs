@@ -92,7 +92,7 @@ public class ArmyTotemAndGem
         else Slave();
     }
 
-    void Gems(int quant = 300)
+    void Gems(int quant = 1000)
     {
         if (Core.CheckInventory("Gem of Nulgath", quant))
             Totems();
