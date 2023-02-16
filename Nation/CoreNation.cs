@@ -993,7 +993,7 @@ public class CoreNation
             return;
 
         Core.AddDrop("Dark Crystal Shard");
-        NewWorldsNewOpportunities("Fiend Token", quant); //1minute turning  = 1x guaranteed
+        NewWorldsNewOpportunities("Dark Crystal Shard", quant); //1minute turning  = 1x guaranteed
         VoidKightSwordQuest("Dark Crystal Shard", quant);
         EssenceofDefeatReagent(quant);
         Supplies("Dark Crystal Shard", quant); //xx:xx time turnin = 10% chance
