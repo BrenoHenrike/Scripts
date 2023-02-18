@@ -3065,112 +3065,112 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/0AggroMonReader.cs"
   },
   {
-    "name": "TokenStoryTemplate",
+    "name": "null",
     "description": "null",
     "tags": [
       "null"
     ],
     "path": "Templates/TokenStoryTemplate.cs",
-    "size": 3221,
+    "size": 3207,
     "fileName": "TokenStoryTemplate.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Templates/TokenStoryTemplate.cs"
   },
   {
-    "name": "MultiQuestAggromonTemplate",
+    "name": "null",
     "description": "null",
     "tags": [
       "null"
     ],
     "path": "Templates/MultiQuestAggromonTemplate.cs",
-    "size": 3884,
+    "size": 3857,
     "fileName": "MultiQuestAggromonTemplate.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Templates/MultiQuestAggromonTemplate.cs"
   },
   {
-    "name": "BadgeTemplate",
+    "name": "null",
     "description": "null",
     "tags": [
       "null"
     ],
     "path": "Templates/BadgeTemplate.cs",
-    "size": 673,
+    "size": 664,
     "fileName": "BadgeTemplate.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Templates/BadgeTemplate.cs"
   },
   {
-    "name": "DefaultTemplate",
+    "name": "null",
     "description": "null",
     "tags": [
       "null"
     ],
     "path": "Templates/DefaultTemplate.cs",
-    "size": 538,
+    "size": 527,
     "fileName": "DefaultTemplate.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Templates/DefaultTemplate.cs"
   },
   {
-    "name": "MergeTemplate",
+    "name": "null",
     "description": "null",
     "tags": [
       "null"
     ],
     "path": "Templates/MergeTemplate.cs",
-    "size": 3076,
+    "size": 3067,
     "fileName": "MergeTemplate.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Templates/MergeTemplate.cs"
   },
   {
-    "name": "ArmyRepTemplate",
+    "name": "null",
     "description": "null",
     "tags": [
       "null"
     ],
     "path": "Templates/ArmyRepTemplate.cs",
-    "size": 1818,
+    "size": 1807,
     "fileName": "ArmyRepTemplate.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Templates/ArmyRepTemplate.cs"
   },
   {
-    "name": "QuestRewardTemplate",
+    "name": "null",
     "description": "null",
     "tags": [
       "null"
     ],
     "path": "Templates/QuestRewardTemplate.cs",
-    "size": 6146,
+    "size": 6125,
     "fileName": "QuestRewardTemplate.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Templates/QuestRewardTemplate.cs"
   },
   {
-    "name": "CustomAggroMonTemplate",
+    "name": "null",
     "description": "null",
     "tags": [
       "null"
     ],
     "path": "Templates/CustomAggroMonTemplate.cs",
-    "size": 1301,
+    "size": 1283,
     "fileName": "CustomAggroMonTemplate.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Templates/CustomAggroMonTemplate.cs"
   },
   {
-    "name": "ArmyTemplatev2",
+    "name": "null",
     "description": "null",
     "tags": [
       "null"
     ],
     "path": "Templates/ArmyTemplatev2.cs",
-    "size": 5634,
+    "size": 5624,
     "fileName": "ArmyTemplatev2.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Templates/ArmyTemplatev2.cs"
   },
   {
-    "name": "StoryTemplate",
+    "name": "null",
     "description": "null",
     "tags": [
       "null"
     ],
     "path": "Templates/StoryTemplate.cs",
-    "size": 892,
+    "size": 883,
     "fileName": "StoryTemplate.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Templates/StoryTemplate.cs"
   },
@@ -3566,7 +3566,7 @@
       "data"
     ],
     "path": "Tools/ForDevelopers/UpdateTags.cs",
-    "size": 10040,
+    "size": 10061,
     "fileName": "UpdateTags.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/ForDevelopers/UpdateTags.cs"
   },
