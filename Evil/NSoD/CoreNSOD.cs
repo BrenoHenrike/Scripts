@@ -180,17 +180,19 @@ public class CoreNSOD
         int Essencequant = Bot.Config.Get<bool>("MaxStack") ? 100 : 20;
 
         Farm.EvilREP();
-        Core.EquipClass(ClassType.Solo);
         Core.AddDrop("Void Aura");
         Core.AddDrop(Essences);
-        if (!Core.CheckInventory("Necromancer", toInv: false) && !Core.CheckInventory("Creature Shard", toInv: false))
-            Core.AddDrop("Creature Shard");
+        if (!Core.CheckInventory("Necromancer", toInv: false))
+            Bot.Drops.Add("Creature Shard");
         Core.Logger($"Gathering {quant} Void Aura's with Non-Mem/Non-SDKA Method");
 
         Core.RegisterQuests(4432);
         while (!Bot.ShouldExit && !Core.CheckInventory("Void Aura", quant))
         {
+            Core.EquipClass(ClassType.Farm);
             Core.HuntMonster("timespace", "Astral Ephemerite", "Astral Ephemerite Essence", Essencequant, false, log: false);
+
+            Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("citadel", "Belrot the Fiend", "Belrot the Fiend Essence", Essencequant, false, publicRoom: true, log: false);
             Core.KillMonster("greenguardwest", "BKWest15", "Down", "Black Knight", "Black Knight Essence", Essencequant, false, publicRoom: true, log: false);
             Core.KillMonster("mudluk", "Boss", "Down", "Tiger Leech", "Tiger Leech Essence", Essencequant, false, publicRoom: true, log: false);
