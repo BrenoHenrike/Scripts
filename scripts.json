@@ -3756,12 +3756,12 @@
     "tags": [
       "legion",
       "castle",
-      "cquest",
+      "quest",
       "token",
       "loyal"
     ],
     "path": "Legion/Various/LegionCastleQuest.cs",
-    "size": 1330,
+    "size": 1329,
     "fileName": "LegionCastleQuest.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/Various/LegionCastleQuest.cs"
   },
@@ -10696,6 +10696,21 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Badges/Goal.cs"
   },
   {
+    "name": "Gravelyn's Warrior Badge",
+    "description": "Kills 100 skeletons to get you the Gravelyn's Warrior Badge",
+    "tags": [
+      "gravelyn",
+      "warrior",
+      "badge",
+      "skeletons",
+      "shadowfall"
+    ],
+    "path": "Other/Badges/GravelynsWarrior.cs",
+    "size": 923,
+    "fileName": "GravelynsWarrior.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Badges/GravelynsWarrior.cs"
+  },
+  {
     "name": "DesolichFreed",
     "description": "null",
     "tags": [
@@ -10726,7 +10741,7 @@
       "all"
     ],
     "path": "Other/Badges/AllBadges.cs",
-    "size": 4828,
+    "size": 4938,
     "fileName": "AllBadges.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Badges/AllBadges.cs"
   },
