@@ -1,5 +1,5 @@
 /*
-name: QuestRewardTemplate
+name: null
 description: null
 tags: null
 */
@@ -34,7 +34,7 @@ public class QuestRewardTemplate
 
         QuestsIfNeeded(); //fillin below
         RequiredItems("item", "item"); // Replace these
-        
+
         // RandomReward(0000, 1);//-----|
         // SelectReward(0000, 1);//-----| Pick one
         // AutoReward(0000, 1);  //-----|
@@ -112,9 +112,9 @@ public class QuestRewardTemplate
         {
             while (!Bot.ShouldExit && !Core.CheckInventory(item.ID, quant))
             {
-               Core.EnsureAccept(questID);
+                Core.EnsureAccept(questID);
                 //Questing stuff here --
-               Core.EnsureComplete(questID, item.ID);
+                Core.EnsureComplete(questID, item.ID);
             }
         }
     }

@@ -254,6 +254,7 @@ public class UpdateTags
         "plugins",
         "Skills",
         "SkuaScriptsGenerator",
+        "Templates",
         "WIP",
         "Army/UltraBosses",
         "Army/Generated",
