@@ -65,9 +65,8 @@ public class SepulchuresOriginalHelm
             Core.Relogin();
             Core.BuyItem(Bot.Map.Name, 993, "Lore's Champion Seal");
         }
-        Core.EnsureAccept(6555);
-        Core.EnsureComplete(6555);
-        Bot.Wait.ForDrop("Sepulchure's Original Helm");
+        Core.ChainComplete(6555);
+        Bot.Wait.ForPickup("Sepulchure's Original Helm");
         Core.SellItem("Royal ShadowScythe Blade");
     }
 
