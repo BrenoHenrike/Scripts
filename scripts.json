@@ -3751,6 +3751,21 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/Various/NecroticBladeoftheUnderworld.cs"
   },
   {
+    "name": "Legion Castle Quest",
+    "description": "Farms the \"Legion Castle Quest\" untill all drops are obtained. Requiers \"Legion Castle\". Will also farm Legion Tokens",
+    "tags": [
+      "legion",
+      "castle",
+      "cquest",
+      "token",
+      "loyal"
+    ],
+    "path": "Legion/Various/LegionCastleQuest.cs",
+    "size": 1330,
+    "fileName": "LegionCastleQuest.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/Various/LegionCastleQuest.cs"
+  },
+  {
     "name": "ThanatostheDestroyer",
     "description": "null",
     "tags": [
