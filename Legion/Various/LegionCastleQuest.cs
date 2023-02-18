@@ -1,7 +1,7 @@
 /*
 name: Legion Castle Quest
 description: Farms the "Legion Castle Quest" untill all drops are obtained. Requiers "Legion Castle". Will also farm Legion Tokens
-tags: legion, castle, cquest, token, loyal
+tags: legion, castle, quest, token, loyal
 */
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;
