@@ -26,16 +26,22 @@ public class AAWithMove
         {
             case "darkcarnax":
                 Core.AddDrop("Synthetic Viscera");
+                Core.Jump("Boss", "Left");
+                Bot.Player.SetSpawnPoint();
                 Core.RegisterQuests(8872);
                 Bot.Options.AttackWithoutTarget = true;
                 Bot.Events.RunToArea += moveNightmareCarnax;
+
                 break;
 
             case "ultradage":
                 Core.AddDrop("Dage the Evil Insignia");
+                Core.Jump("Boss", "Right");
+                Bot.Player.SetSpawnPoint();
                 Bot.Events.RunToArea += moveUltraDage;
                 break;
         }
+
 
         while (!Bot.ShouldExit)
             Bot.Combat.Attack("*");
