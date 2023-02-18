@@ -12558,15 +12558,18 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/OneClient/ArmyFreeAcs.cs"
   },
   {
-    "name": "Army All Dailies",
-    "description": "One-client version of All Dailies",
+    "name": "The Wheel of Doom (Army)",
+    "description": "One-client version of the Wheel of Doom",
     "tags": [
-      "alldailies",
+      "daily",
+      "dailies",
       "army",
-      "thefamily"
+      "wheel",
+      "doom",
+      "oneclient"
     ],
     "path": "Army/OneClient/WheelOfDoom.cs",
-    "size": 1101,
+    "size": 1132,
     "fileName": "WheelOfDoom.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/OneClient/WheelOfDoom.cs"
   },
