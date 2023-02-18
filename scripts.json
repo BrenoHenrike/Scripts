@@ -12558,6 +12558,19 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/OneClient/ArmyFreeAcs.cs"
   },
   {
+    "name": "Army All Dailies",
+    "description": "One-client version of All Dailies",
+    "tags": [
+      "alldailies",
+      "army",
+      "thefamily"
+    ],
+    "path": "Army/OneClient/WheelOfDoom.cs",
+    "size": 1101,
+    "fileName": "WheelOfDoom.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/OneClient/WheelOfDoom.cs"
+  },
+  {
     "name": "Army Penny for Your Thoughts",
     "description": "Farms Dark Spirit Orbs from Penny for Your Thoughts quest using your army.",
     "tags": [
