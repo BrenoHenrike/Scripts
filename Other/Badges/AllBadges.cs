@@ -34,6 +34,7 @@ tags: badge, complete, all
 //cs_include Scripts/Other/Badges/DerpMoosefishBadge.cs
 //cs_include Scripts/Other/Badges/DesolichFreed.cs
 //cs_include Scripts/Other/Badges/GoldenLaurel.cs
+//cs_include Scripts/Other/Badges/GravelynsWarrior.cs
 //cs_include Scripts/Other/Badges/HordeZombieSLAYER.cs
 //cs_include Scripts/Other/Badges/LordOfTheWeddingRing.cs
 //cs_include Scripts/Other/Badges/MoglinPunter.cs
@@ -77,6 +78,7 @@ public class AllBadges
     public ConZombieSlayer CZS = new();
     public DesolichFreed DF = new();
     public GoldenLaurel GL = new();
+    public GravelynsWarrior GW = new();
     public HordeZombieSLAYER HZS = new();
     public LordOfTheWeddingRing LOTWR = new();
     public MummySlayerAndCruxShadowsDefender MSACSD = new();
@@ -100,7 +102,7 @@ public class AllBadges
 
         Core.SetOptions(false);
     }
-    
+
     public void DoAll()
     {
         CRB.Badge();
@@ -116,6 +118,7 @@ public class AllBadges
         CZS.Badge();
         DF.Badge();
         GL.Badge();
+        GW.Badge();
         HZS.Badge();
         LOTWR.Badge();
         MSACSD.Badge();
