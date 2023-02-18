@@ -1,7 +1,7 @@
 /*
-name: UnlockForgeEnhancements
+name: Unlock Forge Enhancements
 description: null
-tags: null
+tags: lacerate, smite, herosvaliance, arcanasconcerto, elysium, acheron, absolution, vainglory, avarice, penitence, lament, vim, examen, anima, pneuma
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
