@@ -3031,7 +3031,7 @@
       "null"
     ],
     "path": "Army/CoreArmyLite.cs",
-    "size": 35839,
+    "size": 35952,
     "fileName": "CoreArmyLite.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/CoreArmyLite.cs"
   },
@@ -14767,16 +14767,17 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Classes/ArmyLR/ArmyDarkToken.cs"
   },
   {
-    "name": "Army LR Full",
-    "description": "uses an army to to do the entirely of the legion revenant grind together",
+    "name": "Legion Revenant (Army)",
+    "description": "Uses an army to to do the entirely of the legion revenant grind together",
     "tags": [
       "legion",
-      "legion reventant",
+      "reventant",
       "class",
-      "army"
+      "army",
+      "fealty"
     ],
     "path": "Army/Classes/ArmyLR/ArmyLRFull.cs",
-    "size": 16623,
+    "size": 15947,
     "fileName": "ArmyLRFull.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Classes/ArmyLR/ArmyLRFull.cs"
   },
