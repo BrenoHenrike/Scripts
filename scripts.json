@@ -195,7 +195,7 @@
       "goto"
     ],
     "path": "Tools/Butler.cs",
-    "size": 10456,
+    "size": 10694,
     "fileName": "Butler.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/Butler.cs"
   },
@@ -12811,7 +12811,7 @@
       "army"
     ],
     "path": "Army/Classes/DragonofTimeArmy.cs",
-    "size": 29810,
+    "size": 29816,
     "fileName": "DragonofTimeArmy.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Classes/DragonofTimeArmy.cs"
   },
