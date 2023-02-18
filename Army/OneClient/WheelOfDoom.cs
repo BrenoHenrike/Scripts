@@ -1,7 +1,7 @@
 /*
-name: Army All Dailies
-description: One-client version of All Dailies
-tags: alldailies, army, thefamily
+name: The Wheel of Doom (Army)
+description: One-client version of the Wheel of Doom
+tags: daily, dailies, army, wheel, doom, oneclient
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreDailies.cs
