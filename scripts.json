@@ -3014,13 +3014,27 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Enhancement/SmartEnhance.cs"
   },
   {
-    "name": "UnlockForgeEnhancements",
+    "name": "Unlock Forge Enhancements",
     "description": "null",
     "tags": [
-      "null"
+      "lacerate",
+      "smite",
+      "herosvaliance",
+      "arcanasconcerto",
+      "elysium",
+      "acheron",
+      "absolution",
+      "vainglory",
+      "avarice",
+      "penitence",
+      "lament",
+      "vim",
+      "examen",
+      "anima",
+      "pneuma"
     ],
     "path": "Enhancement/UnlockForgeEnhancements.cs",
-    "size": 31127,
+    "size": 31269,
     "fileName": "UnlockForgeEnhancements.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Enhancement/UnlockForgeEnhancements.cs"
   },
