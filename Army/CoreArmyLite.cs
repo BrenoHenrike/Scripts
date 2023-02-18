@@ -387,7 +387,7 @@ public class CoreArmyLite
         return players.ToArray();
     }
 
-    public void waitForParty(string map, string? item = null)
+    public void waitForParty(string map, string? item = null, int playerMax = -1)
     {
         string[] players = Players();
         int partySize = players.Count();
@@ -399,8 +399,9 @@ public class CoreArmyLite
         bool hasWaited = false;
 
         Core.Join(map);
+        int dynamicPartySize = playerMax == -1 ? partySize : playerMax;
 
-        while (playerCount < partySize)
+        while (playerCount < dynamicPartySize)
         {
             if (Bot.Map.PlayerNames != null)
                 foreach (var name in Bot.Map.PlayerNames)
@@ -411,13 +412,13 @@ public class CoreArmyLite
             logCount++;
             if (logCount == 15)
             {
-                Core.Logger($"Waiting for the party{(item == null ? String.Empty : (" to farm " + item))} [{playerCount}/{partySize}]");
+                Core.Logger($"Waiting for the party{(item == null ? String.Empty : (" to farm " + item))} [{playerCount}/{dynamicPartySize}]");
                 hasWaited = true;
                 logCount = 0;
             }
             Bot.Sleep(1000);
 
-            if (playersWhoHaveBeenHere.Count() == (partySize - 1))
+            if (playersWhoHaveBeenHere.Count() == (dynamicPartySize - 1))
                 butlerTimer++;
             if (butlerTimer >= 30)
             {

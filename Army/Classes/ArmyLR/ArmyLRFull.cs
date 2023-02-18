@@ -1,7 +1,7 @@
 /*
-name: Army LR Full
-description: uses an army to to do the entirely of the legion revenant grind together
-tags: legion, legion reventant, class, army
+name: Legion Revenant (Army)
+description: Uses an army to to do the entirely of the legion revenant grind together
+tags: legion, reventant, class, army, fealty
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -148,7 +148,6 @@ public class ArmyLR
     {
         if (Core.CheckInventory("Revenant's Spellscroll", quant) && !Bot.Config.Get<bool>("sellToSync"))
             return;
-
 
         Core.AddDrop("Legion Token");
         Core.AddDrop(LRMaterials);
@@ -349,7 +348,13 @@ public class ArmyLR
 
         Core.AddDrop(item);
 
-        Army.waitForParty(map, item);
+        if (map == "revenant")
+        {
+            map = Array.IndexOf(Army.Players(), Core.Username()) > 2 ? "revenant" : "revenant-" + (Army.getRoomNr() + 1);
+            Army.waitForParty(map, item, 3);
+        }
+        else Army.waitForParty(map, item);
+
         Core.FarmingLogger(item, quant);
 
         Army.SmartAggroMonStart(map, monsters);
@@ -366,39 +371,10 @@ public class ArmyLR
         Core.PrivateRoomNumber = Army.getRoomNr();
 
         Core.AddDrop(item);
-        if (map == "revenant")
-            Army.waitForParty("revenant-100000", item);
-        else Army.waitForParty(map, item);
+        Army.waitForParty(map, item);
         Core.FarmingLogger(item, quant);
 
         Army.SmartAggroMonStart(map, monsters);
-
-        while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
-            Bot.Combat.Attack("*");
-
-        Core.JumpWait();
-    }
-
-    void ArmyHunt(string map, int monsterID, string item, ClassType classType, bool isTemp = false, int quant = 1)
-    {
-        Core.PrivateRooms = true;
-        Core.PrivateRoomNumber = Army.getRoomNr();
-
-        Monster monster = Bot.Monsters.CurrentMonsters?.Find(m => m.ID == monsterID);
-
-        Adv._RaceGear(monsterID);
-
-        if (Bot.Config.Get<bool>("sellToSync"))
-            Army.SellToSync(item, quant);
-
-        Core.AddDrop(item);
-
-        if (map == "revenant")
-            Army.waitForParty("revenant-100000", item);
-        else Army.waitForParty(map, item);
-        Core.FarmingLogger(item, quant);
-
-        Army.SmartAggroMonStart(map, monster.ToString());
 
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
             Bot.Combat.Attack("*");
