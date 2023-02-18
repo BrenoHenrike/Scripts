@@ -27,12 +27,18 @@ public class Butler
         new Option<ClassType>("classType", "Class Type", "This uses the farm or solo class set in [Options] > [CoreBots]", ClassType.Farm),
         new Option<string>("attackPriority", "Attack Priority", "Fill in the monsters that the bot should prioritize (in order), split with a , (comma)."),
         new Option<bool>("copyWalk", "Copy Walk", "Set to true if you want to move to the same position of the player you follow.", false),
-        new Option<int>("roomNumber", "Room Number", "Insert the room number which will be used when looking through Locked Zones.", 999999),
+        new Option<string>("roomNumber", "Room Number", "Insert the room number which will be used when looking through Locked Zones.", "999999"),
         new Option<bool>("rejectDrops", "Reject Drops", "Do you wish for the Butler to reject all drops? If false, your drop screen will fill up.", true),
     };
 
     public void ScriptMain(IScriptInterface bot)
     {
+        if (!Int32.TryParse(Bot.Config.Get<string>("roomNumber"), out int roomNr) && Bot.Config.Get<bool>("lockedMaps"))
+        {
+            Core.Logger("Please provide a room number for the bot to use whilst searching locked zones", messageBox: true);
+            Bot.Config.Configure();
+            Bot.Stop(false);
+        }
         Core.SetOptions(disableClassSwap: true);
 
         Army.Butler(
@@ -40,7 +46,7 @@ public class Butler
             Bot.Config.Get<bool>("lockedMaps"),
             Bot.Config.Get<ClassType>("classType"),
             Bot.Config.Get<bool>("copyWalk"),
-            Bot.Config.Get<int>("roomNumber"),
+            roomNr,
             Bot.Config.Get<bool>("rejectDrops"),
             Bot.Config.Get<string>("attackPriority")
         );
