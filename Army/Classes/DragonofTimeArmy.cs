@@ -383,8 +383,8 @@ public class DoTArmy
         Army.SellToSync("Brutal Slash Studied", 10);
         ArmyHunt("bosschallenge", new[] { "Grievous Inbunche" }, "Brutal Slash Studied", ClassType.Solo, false, 10);
 
-        Army.SellToSync("Epic Hydra Fang", 123);
-        ArmyHunt("hydrachallenge", new[] { "Hydra Head 90" }, "Epic Hydra Fang", ClassType.Solo, false, 123);
+        Army.SellToSync("Epic Hydra Fang", 125);
+        ArmyHunt("hydrachallenge", new[] { "Hydra Head 90" }, "Epic Hydra Fang", ClassType.Solo, false, 125);
         Core.EnsureComplete(7720);
         Core.Logger($"Quest 5: 🖕");
         Bot.Wait.ForPickup("*");
@@ -449,8 +449,8 @@ public class DoTArmy
         Army.SellToSync("Unyielding Slime", 300);
         ArmyHunt("moonlab", new[] { "Slime Mold" }, "Unyielding Slime", ClassType.Farm, false, 300);
 
-        Army.SellToSync("Omnipotent rs", 20);
-        ArmyHunt("bosschallenge", new[] { "Mutated Void Dragon" }, "Omnipotent rs", ClassType.Solo, false, 20);
+        Army.SellToSync("Omnipotent Cells", 20);
+        ArmyHunt("bosschallenge", new[] { "Mutated Void Dragon" }, "Omnipotent Cells", ClassType.Solo, false, 20);
 
         Army.SellToSync("Dragon's Plasma", 20);
         ArmyHunt("underlair", new[] { "ArchFiend Dragonlord" }, "Dragon's Plasma", ClassType.Solo, false, 20);
