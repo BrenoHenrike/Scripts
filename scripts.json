@@ -7493,6 +7493,22 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HerosHeartDay/LovesCurse.cs"
   },
   {
+    "name": "Arcadia",
+    "description": "This will complete the Arcadia story quest.",
+    "tags": [
+      "arcadia",
+      "seasonal",
+      "heros-heart-day",
+      "heart",
+      "hero",
+      "story"
+    ],
+    "path": "Seasonal/HerosHeartDay/Arcadia.cs",
+    "size": 2654,
+    "fileName": "Arcadia.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HerosHeartDay/Arcadia.cs"
+  },
+  {
     "name": "Swaggy's Chateau",
     "description": "This will complete the Swaggy's Chateau story quest.",
     "tags": [
@@ -9723,7 +9739,7 @@
       "null"
     ],
     "path": "Good/BLoD/CoreBLOD.cs",
-    "size": 25786,
+    "size": 25556,
     "fileName": "CoreBLOD.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/CoreBLOD.cs"
   },
