@@ -34,7 +34,11 @@ public class Butler
     public void ScriptMain(IScriptInterface bot)
     {
         if (!Int32.TryParse(Bot.Config.Get<string>("roomNumber"), out int roomNr) && Bot.Config.Get<bool>("lockedMaps"))
-            Core.Logger("Please provide a room number for the bot to use whilst searching locked zones", messageBox: true, stopBot: true);
+        {
+            Core.Logger("Please provide a room number for the bot to use whilst searching locked zones", messageBox: true);
+            Bot.Config.Configure();
+            Bot.Stop(false);
+        }
         Core.SetOptions(disableClassSwap: true);
 
         Army.Butler(
