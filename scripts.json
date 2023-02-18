@@ -12141,6 +12141,22 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/Adam1a1Merge(VariousMaterials).cs"
   },
   {
+    "name": "Fishing Gear Merge",
+    "description": "This bot will farm all/selected/allAC items or materials for the Fishing Gear Merge shop in /greenguardwest",
+    "tags": [
+      "fishing",
+      "chips",
+      "gear",
+      "greenguard",
+      "west",
+      "merge"
+    ],
+    "path": "Other/MergeShops/FishingGearMerge.cs",
+    "size": 8860,
+    "fileName": "FishingGearMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/FishingGearMerge.cs"
+  },
+  {
     "name": "ExtraCreditMerge[non-ac]",
     "description": "null",
     "tags": [
