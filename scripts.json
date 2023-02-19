@@ -805,19 +805,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Extinction.cs"
   },
   {
-    "name": "SambasFlag Story",
-    "description": "This will finish the SambasFlag Story.",
-    "tags": [
-      "story",
-      "quest",
-      "sambasflag"
-    ],
-    "path": "Story/SambaFlag.cs",
-    "size": 1539,
-    "fileName": "SambaFlag.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/SambaFlag.cs"
-  },
-  {
     "name": "Quibble Hunt Story",
     "description": "This will finish the Quibble Hunt Story.",
     "tags": [
@@ -9047,6 +9034,30 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StarFestival/StarFestival.cs"
   },
   {
+    "name": "SambasFlagMerge",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Seasonal/Carnaval/SambasFlagMerge.cs",
+    "size": 5045,
+    "fileName": "SambasFlagMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Carnaval/SambasFlagMerge.cs"
+  },
+  {
+    "name": "SambasFlag Story",
+    "description": "This will finish the SambasFlag Story.",
+    "tags": [
+      "story",
+      "quest",
+      "sambasflag"
+    ],
+    "path": "Seasonal/Carnaval/SambaFlag.cs",
+    "size": 1604,
+    "fileName": "SambaFlag.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Carnaval/SambaFlag.cs"
+  },
+  {
     "name": "Vegetable Token Farm",
     "description": "Farms the max vegetable token quantity.",
     "tags": [
@@ -11462,17 +11473,6 @@
     "size": 7022,
     "fileName": "WorldsCoreMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/WorldsCoreMerge.cs"
-  },
-  {
-    "name": "null",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Other/MergeShops/SambasFlagMerge.cs",
-    "size": 4949,
-    "fileName": "SambasFlagMerge.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/SambasFlagMerge.cs"
   },
   {
     "name": "ShadowofChaosMerge",
