@@ -70,7 +70,7 @@ public class GenQueueScript
         foreach (var script in scripts)
         {
             // CS Includes
-            foreach (var line in script.TakeWhile(l => l.StartsWith("//cs_include")))
+            foreach (var line in script.SkipWhile(l => !l.StartsWith("//cs_include")).TakeWhile(l => l.StartsWith("//cs_include")))
             {
                 if (!csIncludes.Contains(line))
                 {
