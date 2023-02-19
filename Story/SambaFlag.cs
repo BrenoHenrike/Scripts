@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: SambasFlag Story
+description: This will finish the SambasFlag Story.
+tags: story, quest, SambasFlag
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
