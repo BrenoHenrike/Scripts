@@ -805,13 +805,15 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Extinction.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "SambasFlag Story",
+    "description": "This will finish the SambasFlag Story.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "sambasflag"
     ],
     "path": "Story/SambaFlag.cs",
-    "size": 1473,
+    "size": 1539,
     "fileName": "SambaFlag.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/SambaFlag.cs"
   },
