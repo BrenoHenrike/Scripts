@@ -135,6 +135,7 @@ public class CoreBots
 
         // Common Options
         Bot.Options.PrivateRooms = false;
+        Bot.Options.AttackWithoutTarget = false;
         Bot.Options.SafeTimings = changeTo;
         Bot.Options.RestPackets = changeTo && ShouldRest;
         Bot.Options.AutoRelogin = changeTo;
