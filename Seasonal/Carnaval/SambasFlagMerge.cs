@@ -77,7 +77,7 @@ public class SambasFlagMerge
                         Core.EquipClass(ClassType.Farm);
                         Core.HuntMonster("sambaflag", "Flag Bearer", "Flag Standard");
                         Core.EquipClass(ClassType.Solo);
-                        Core.HuntMonster("sambaflag", "Master Of Ceremonies", "Ceremony Feathe");
+                        Core.HuntMonster("sambaflag", "Master Of Ceremonies", "Ceremony Feather");
                         Core.Logger("This item is not setup yet");
                         Bot.Wait.ForPickup(req.Name);
                     }
