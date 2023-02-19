@@ -1,5 +1,5 @@
 /*
-name: null
+name: SambasFlagMerge
 description: null
 tags: null
 */
@@ -7,7 +7,7 @@ tags: null
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Story/SambaFlag.cs
+//cs_include Scripts/Seasonal/Carnaval/SambaFlag.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
@@ -39,6 +39,9 @@ public class SambasFlagMerge
 
     public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
+        if (!Core.isSeasonalMapActive("Sambaflag"))
+            return;
+
         //story for materials quest.
         SF.StoryLine();
 

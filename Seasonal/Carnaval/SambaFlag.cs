@@ -18,13 +18,16 @@ public class SambasFlag
         Core.SetOptions();
 
         StoryLine();
-        
+
         Core.SetOptions(false);
     }
 
     public void StoryLine()
     {
         if (Core.isCompletedBefore(9115))
+            return;
+
+        if (!Core.isSeasonalMapActive("Sambaflag"))
             return;
 
         Story.PreLoad(this);
