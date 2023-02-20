@@ -69,7 +69,6 @@ public class SambasFlagMerge
                 #endregion
 
                 case "Ceremonial Standard":
-                case "Costume Piece":
                     Core.FarmingLogger(req.Name, quant);
                     Core.RegisterQuests(9115);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
@@ -78,6 +77,20 @@ public class SambasFlagMerge
                         Core.HuntMonster("sambaflag", "Flag Bearer", "Flag Standard");
                         Core.EquipClass(ClassType.Solo);
                         Core.HuntMonster("sambaflag", "Master Of Ceremonies", "Ceremony Feather");
+                        Bot.Wait.ForPickup(req.Name);
+                    }
+                    Core.CancelRegisteredQuests();
+                    break;
+                    
+                case "Costume Piece":
+                    Core.FarmingLogger(req.Name, quant);
+                    Core.RegisterQuests(9110);
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
+                    {
+                        Core.EquipClass(ClassType.Farm);
+                        Core.HuntMonster("bloodtusk", "Jungle Vulture", "Vulture Feathers", 8);
+                        Core.EquipClass(ClassType.Solo);
+                        Core.HuntMonster("bloodtusk", "Rhison", "Rhison Fur", 8);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
