@@ -7881,6 +7881,22 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/MayThe4th/MurderMoonStory.cs"
   },
   {
+    "name": "Lady Lua's Merge",
+    "description": "Farms the materials needed for Lady Lua's Merge.",
+    "tags": [
+      "yokai",
+      "lady lua",
+      "seasonal",
+      "akibacny",
+      "akiba new year",
+      "merge shop"
+    ],
+    "path": "Seasonal/AkibaNewYear/LadyLuasMerge.cs",
+    "size": 8943,
+    "fileName": "LadyLuasMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AkibaNewYear/LadyLuasMerge.cs"
+  },
+  {
     "name": "Yue's Design Merge",
     "description": "Farms all of the items from Yue's Design Merge.",
     "tags": [
@@ -7910,6 +7926,37 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AkibaNewYear/EtokounMerge.cs"
   },
   {
+    "name": "Bingwen's Quests",
+    "description": "Completes Bingwen's Quests in akibacny.",
+    "tags": [
+      "seasonal",
+      "yokai",
+      "akibacny",
+      "akiba new year",
+      "story",
+      "bingwen"
+    ],
+    "path": "Seasonal/AkibaNewYear/Bingwen.cs",
+    "size": 1976,
+    "fileName": "Bingwen.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AkibaNewYear/Bingwen.cs"
+  },
+  {
+    "name": "Lady Lua's Quests",
+    "description": "Completes Lady Lua's quests in akibacny",
+    "tags": [
+      "yokai",
+      "seasonal",
+      "akiba new year",
+      "akibacny",
+      "story"
+    ],
+    "path": "Seasonal/AkibaNewYear/LadyLua.cs",
+    "size": 2728,
+    "fileName": "LadyLua.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AkibaNewYear/LadyLua.cs"
+  },
+  {
     "name": "Yokai Hunt",
     "description": "Completes the quests in yokaihunt.",
     "tags": [
@@ -7923,6 +7970,22 @@
     "size": 2657,
     "fileName": "YokaiHunt.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AkibaNewYear/YokaiHunt.cs"
+  },
+  {
+    "name": "Zhu's Quests",
+    "description": "Completes Zhu's Quests in zhu.",
+    "tags": [
+      "seasonal",
+      "yokai",
+      "akiba new year",
+      "zhu",
+      "akibacny",
+      "story"
+    ],
+    "path": "Seasonal/AkibaNewYear/Zhu.cs",
+    "size": 1764,
+    "fileName": "Zhu.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AkibaNewYear/Zhu.cs"
   },
   {
     "name": "Time Retaliate Merge",
