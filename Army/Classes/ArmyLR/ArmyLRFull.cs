@@ -348,6 +348,7 @@ public class ArmyLR
 
         Core.AddDrop(item);
 
+            Core.EquipClass(classType);
         if (map == "revenant")
         {
             map = Array.IndexOf(Army.Players(), Core.Username()) > 2 ? "revenant" : "revenant-" + (Army.getRoomNr() + 1);

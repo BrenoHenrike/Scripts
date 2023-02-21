@@ -166,6 +166,7 @@ public class ArchMageMatsArmy
 
         Core.AddDrop(item);
 
+            Core.EquipClass(classType);
         Army.waitForParty(map, item);
         Core.FarmingLogger(item, quant);
 
