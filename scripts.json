@@ -1729,7 +1729,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 62208,
+    "size": 60918,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -14956,7 +14956,7 @@
       "fealty"
     ],
     "path": "Army/Classes/ArmyLR/ArmyLRFull.cs",
-    "size": 15987,
+    "size": 16011,
     "fileName": "ArmyLRFull.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Classes/ArmyLR/ArmyLRFull.cs"
   },
