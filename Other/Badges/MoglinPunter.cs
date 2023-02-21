@@ -24,24 +24,28 @@ public class MoglinPunter
 
     public void Badge()
     {
+        Bot.Options.LagKiller = false;
         if (Core.HasWebBadge(badge) || !Core.isSeasonalMapActive("punt"))
         {
             Core.Logger($"Already have the {badge} badge, or the map is not available.");
             return;
         }
+        Core.OneTimeMessage("Minigame Explanation", "This minigame works off of a \"value\" system for ponts, so 9999 is 99, for the quest so youll need to get a value of 10000 points which may take a while.", forcedMessageBox: true);
 
         Core.Logger($"Doing quest for {badge} badge");
-
         Core.Join("punt");
+        int Punt = 0;
         while (!Bot.ShouldExit && !Core.HasWebBadge(badge))
         {
-            Core.Jump("Enter", "Spawn");
+            Core.Jump("Enter", "Right");
             Bot.Sleep(Core.ActionDelay);
             Bot.Send.Packet("%xt%zm%ia%1%rval%btnPuntting%%");
             Bot.Wait.ForCellChange("Punt");
-            Bot.Sleep(Core.ActionDelay);
+            Punt++;
         }
+        Core.Logger($"Punts to get the badge: {Punt}");
     }
 
     private string badge = "Moglin Punter";
+
 }
