@@ -73,7 +73,7 @@ public class SuppliesWheelArmy
             Core.FarmingLogger(item, Bot.Inventory.GetItem(item).MaxStack);
             Core.RegisterQuests(2857);
             while (!Bot.ShouldExit && !Core.CheckInventory(item, Bot.Inventory.GetItem(item).MaxStack))
-                ArmyHunt("hydrachallenge", new[] { "Hydra Head 90" }, "Relic of Chaos", ClassType.Solo, false, 99);
+                ArmyHunt("hydrachallenge", new[] { "Hydra Head 90" }, "Relic of Chaos", ClassType.Farm, false, 99);
             Core.CancelRegisteredQuests();
         }
 
