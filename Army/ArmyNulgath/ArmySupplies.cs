@@ -53,23 +53,19 @@ public class SuppliesWheelArmy
 
     public void ArmySupplies()
     {
-        Core.DL_Enable();
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
         Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
 
-        Core.DebugLogger(this);
         Quest QuestData = Core.EnsureLoad(2857);
         ItemBase[] RequiredItems = QuestData.Requirements.ToArray();
         ItemBase[] QuestReward = QuestData.Rewards.ToArray();
 
-        Core.DebugLogger(this);
         Core.AddDrop(Nation.bagDrops);
         Core.AddDrop("Relic of Chaos");
 
         foreach (string item in Nation.bagDrops)
         {
-            Core.DebugLogger(this);
             Core.FarmingLogger(item, Bot.Inventory.GetItem(item).MaxStack);
             Core.RegisterQuests(2857);
             while (!Bot.ShouldExit && !Core.CheckInventory(item, Bot.Inventory.GetItem(item).MaxStack))
@@ -82,11 +78,9 @@ public class SuppliesWheelArmy
             Core.PrivateRooms = true;
             Core.PrivateRoomNumber = Army.getRoomNr();
 
-            Core.DebugLogger(this);
             if (Bot.Config.Get<bool>("sellToSync"))
                 Army.SellToSync(item, quant);
 
-            Core.DebugLogger(this);
             Core.AddDrop(item);
 
             Core.EquipClass(classType);
