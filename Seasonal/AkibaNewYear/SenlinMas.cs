@@ -19,12 +19,12 @@ public class SenlinMas
     {
         Core.SetOptions();
 
-        akibacny();
+        Storyline();
 
         Core.SetOptions(false);
     }
 
-    public void akibacny()
+    public void Storyline()
     {
         if (Core.isCompletedBefore(3335))
             return;

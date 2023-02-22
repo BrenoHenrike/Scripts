@@ -17,12 +17,12 @@ public class Parades
     {
         Core.SetOptions();
 
-        Part1();
+        Storyline();
 
         Core.SetOptions(false);
     }
 
-    public void Part1()
+    public void Storyline()
     {
         if (Core.CheckInventory("Parades Token XI"))
             return;
