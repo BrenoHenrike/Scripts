@@ -7937,6 +7937,17 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AkibaNewYear/EtokounMerge.cs"
   },
   {
+    "name": "null",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Seasonal/AkibaNewYear/Parades.cs",
+    "size": 4150,
+    "fileName": "Parades.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AkibaNewYear/Parades.cs"
+  },
+  {
     "name": "Bingwen's Quests",
     "description": "Completes Bingwen's Quests in akibacny.",
     "tags": [
