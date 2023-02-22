@@ -7881,13 +7881,18 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/MayThe4th/MurderMoonStory.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Senlin-Mas's Quests",
+    "description": "Completes Senlin-Mas's Quests in akibacny.",
     "tags": [
-      "null"
+      "seasonal",
+      "yokai",
+      "akibacny",
+      "akiba new year",
+      "story",
+      "senlin-mas"
     ],
     "path": "Seasonal/AkibaNewYear/SenlinMas.cs",
-    "size": 2954,
+    "size": 3065,
     "fileName": "SenlinMas.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AkibaNewYear/SenlinMas.cs"
   },
@@ -7937,13 +7942,19 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AkibaNewYear/EtokounMerge.cs"
   },
   {
-    "name": "null",
+    "name": "Fausto's and Lengjin's Quests",
     "description": "null",
     "tags": [
-      "null"
+      "seasonal",
+      "yokai",
+      "akibacny",
+      "akiba new year",
+      "story",
+      "fausto",
+      "lengjin"
     ],
     "path": "Seasonal/AkibaNewYear/Parades.cs",
-    "size": 4150,
+    "size": 4245,
     "fileName": "Parades.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AkibaNewYear/Parades.cs"
   },
@@ -8008,6 +8019,28 @@
     "size": 1764,
     "fileName": "Zhu.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AkibaNewYear/Zhu.cs"
+  },
+  {
+    "name": "Akiba New Year DoAll",
+    "description": "Completes all of the akiba new year quests",
+    "tags": [
+      "seasonal",
+      "yokai",
+      "akibacny",
+      "akiba new year",
+      "story",
+      "bingwen",
+      "fausto",
+      "lengjing",
+      "senlin-mas",
+      "zhu",
+      "yokaihunt",
+      "ladyluna"
+    ],
+    "path": "Seasonal/AkibaNewYear/AkibaNewYear0DoAll.cs",
+    "size": 1418,
+    "fileName": "AkibaNewYear0DoAll.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AkibaNewYear/AkibaNewYear0DoAll.cs"
   },
   {
     "name": "Time Retaliate Merge",
