@@ -32,20 +32,25 @@ public class MoglinPunter
         }
         Core.OneTimeMessage("Minigame Explanation", "This minigame works off of a \"value\" system for ponts, so 9999 is 99, for the quest so youll need to get a value of 10000 points which may take a while.", forcedMessageBox: true);
 
-        Core.Logger($"Doing quest for {badge} badge");
+        Core.Logger($"Doing quest for {badge} badge, Purely Rng based, good luck");
         Core.Join("punt");
         int Punt = 0;
         while (!Bot.ShouldExit && !Core.HasWebBadge(badge))
         {
-            Core.Jump("Enter", "Right");
+            Core.Jump("Enter", "Spawn");
             Bot.Sleep(Core.ActionDelay);
-            Bot.Send.Packet("%xt%zm%ia%1%rval%btnPuntting%%");
+            Core.SendPackets("%xt%zm%ia%1%rval%btnPuntting%%");
             Bot.Wait.ForCellChange("Punt");
-            Punt++;
+            Bot.Sleep(4000);
+            if (Core.CheckInventory("Twilly Be Punted"))
+            {
+                Core.ChainComplete(8532);
+                Core.Logger($"Punts to get the badge: {Punt}");
+                return;
+            }
+            else Core.Logger($"Punt# {Punt++}");
         }
-        Core.Logger($"Punts to get the badge: {Punt}");
     }
 
     private string badge = "Moglin Punter";
-
 }
