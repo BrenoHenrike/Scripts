@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Senlin-Mas's Quests
+description: Completes Senlin-Mas's Quests in akibacny.
+tags: seasonal, yokai, akibacny, akiba new year, story, senlin-Mas
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

@@ -1,7 +1,7 @@
 /*
-name: null
+name: Fausto's and Lengjin's Quests
 description: null
-tags: null
+tags: seasonal, yokai, akibacny, akiba new year, story, Fausto, Lengjin 
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
