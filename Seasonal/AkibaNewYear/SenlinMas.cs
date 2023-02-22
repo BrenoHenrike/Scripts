@@ -26,10 +26,7 @@ public class SenlinMas
 
     public void Storyline()
     {
-        if (Core.isCompletedBefore(3335))
-            return;
-
-        if (!Core.isSeasonalMapActive("akibacny"))
+        if (Core.isCompletedBefore(3335) || !Core.isSeasonalMapActive("akibacny"))
             return;
 
         Story.PreLoad(this);

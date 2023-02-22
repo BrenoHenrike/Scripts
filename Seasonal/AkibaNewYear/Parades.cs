@@ -24,10 +24,7 @@ public class Parades
 
     public void Storyline()
     {
-        if (Core.CheckInventory("Parades Token XI"))
-            return;
-
-        if (!Core.isSeasonalMapActive("parades"))
+        if (Core.CheckInventory("Parades Token XI") || !Core.isSeasonalMapActive("parades"))
             return;
 
         Core.EquipClass(ClassType.Farm);

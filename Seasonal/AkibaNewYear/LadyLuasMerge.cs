@@ -76,7 +76,7 @@ public class LadyLuasMerge
                 case "Lady Lua's Fan":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster("akibacny", "Umitora", req.Name, isTemp: false);
+                    Core.HuntMonster("akibacny", "Umitora", req.Name, isTemp: false, log: false);
                     Bot.Wait.ForPickup(req.Name);
                     break;
 
@@ -87,7 +87,7 @@ public class LadyLuasMerge
                     Core.RegisterQuests(8506);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("akibacny", "Umitora", req.Name, quant);
+                        Core.HuntMonster("akibacny", "Umitora", req.Name, quant, log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();

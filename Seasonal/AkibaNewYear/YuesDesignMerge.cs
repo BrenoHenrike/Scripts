@@ -69,8 +69,8 @@ public class YuesDesignMerge
                     Core.RegisterQuests(9094);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("guardiantree", "Blossoming Treeant", "Fresh Blossoms", 8);
-                        Core.HuntMonster("guardiantree", "Seed Spitter", "Fresh Seeds", 8);
+                        Core.HuntMonster("guardiantree", "Blossoming Treeant", "Fresh Blossoms", 8, log: false);
+                        Core.HuntMonster("guardiantree", "Seed Spitter", "Fresh Seeds", 8, log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
@@ -82,7 +82,7 @@ public class YuesDesignMerge
                     Core.RegisterQuests(9097);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.KillMonster("yokaihunt", "r6a", "Left", "*", "Etokoun Wrangled");
+                        Core.KillMonster("yokaihunt", "r6a", "Left", "*", "Etokoun Wrangled", log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
