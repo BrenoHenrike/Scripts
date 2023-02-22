@@ -28,6 +28,7 @@ public class SuppliesWheelArmy
     public List<IOption> Options = new List<IOption>()
     {
         new Option<bool>("sellToSync", "Sell to Sync", "Sell items to make sure the army stays syncronized.\nIf off, there is a higher chance your army might desyncornize", false),
+        new Option<bool>("SwindlesReturnDuring", "Do swindles Return", "Accepts the Swindles Returns items, and goes to kill a makai for the rune, during the quest.", false),
         sArmy.player1,
         sArmy.player2,
         sArmy.player3,
@@ -61,39 +62,55 @@ public class SuppliesWheelArmy
         ItemBase[] RequiredItems = QuestData.Requirements.ToArray();
         ItemBase[] QuestReward = QuestData.Rewards.ToArray();
 
+        if (Bot.Config.Get<bool>("SwindlesReturnDuring"))
+            Core.AddDrop(Nation.SwindlesReturn);
         Core.AddDrop(Nation.bagDrops);
         Core.AddDrop("Relic of Chaos");
 
         foreach (string item in Nation.bagDrops)
         {
-            Core.FarmingLogger(item, Bot.Inventory.GetItem(item).MaxStack);
-            Core.RegisterQuests(2857);
-            while (!Bot.ShouldExit && !Core.CheckInventory(item, Bot.Inventory.GetItem(item).MaxStack))
-                ArmyHunt("hydrachallenge", new[] { "Hydra Head 90" }, "Relic of Chaos", ClassType.Farm, false, 99);
-            Core.CancelRegisteredQuests();
+            if (Bot.Config.Get<bool>("SwindlesReturnDuring"))
+            {
+                Core.RegisterQuests(2857, 7551);
+                Core.FarmingLogger(item, Bot.Inventory.GetItem(item).MaxStack);
+                while (!Bot.ShouldExit && !Core.CheckInventory(item, Bot.Inventory.GetItem(item).MaxStack))
+                {
+                    ArmyHunt("hydrachallenge", new[] { "Hydra Head 90" }, "Relic of Chaos", ClassType.Farm, false, 13);
+                    if (Bot.Config.Get<bool>("SwindlesReturnDuring") && Core.CheckInventory(Nation.SwindlesReturn))
+                        Core.HuntMonster(Core.IsMember ? "nulgath" : "evilmarsh", "Dark Makai", "Dark Makai Rune", 1);
+                }
+            }
+            else
+            {
+                Core.RegisterQuests(2857);
+                Core.FarmingLogger(item, Bot.Inventory.GetItem(item).MaxStack);
+                while (!Bot.ShouldExit && !Core.CheckInventory(item, Bot.Inventory.GetItem(item).MaxStack))
+                    ArmyHunt("hydrachallenge", new[] { "Hydra Head 90" }, "Relic of Chaos", ClassType.Farm, false, 99);
+            }
         }
+        Core.CancelRegisteredQuests();
+    }
 
-        void ArmyHunt(string map, string[] monsters, string item, ClassType classType, bool isTemp = false, int quant = 1)
-        {
-            Core.PrivateRooms = true;
-            Core.PrivateRoomNumber = Army.getRoomNr();
+    void ArmyHunt(string map, string[] monsters, string item, ClassType classType, bool isTemp = false, int quant = 1)
+    {
+        Core.PrivateRooms = true;
+        Core.PrivateRoomNumber = Army.getRoomNr();
 
-            if (Bot.Config.Get<bool>("sellToSync"))
-                Army.SellToSync(item, quant);
+        if (Bot.Config.Get<bool>("sellToSync"))
+            Army.SellToSync(item, quant);
 
-            Core.AddDrop(item);
+        Core.AddDrop(item);
 
-            Core.EquipClass(classType);
-            Army.waitForParty(map, item);
-            Core.FarmingLogger(item, quant);
+        Core.EquipClass(classType);
+        Army.waitForParty(map, item);
+        Core.FarmingLogger(item, quant);
 
-            Army.SmartAggroMonStart(map, monsters);
+        Army.SmartAggroMonStart(map, monsters);
 
-            while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
-                Bot.Combat.Attack("*");
+        while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
+            Bot.Combat.Attack("*");
 
-            Army.AggroMonStop(true);
-            Core.JumpWait();
-        }
+        Army.AggroMonStop(true);
+        Core.JumpWait();
     }
 }

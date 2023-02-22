@@ -119,6 +119,15 @@ public class CoreNation
         "Relic of Chaos"
     };
 
+    public string[] SwindlesReturn =
+    {
+        "Unidentified 1",
+        "Unidentified 6",
+        "Unidentified 9",
+        "Unidentified 16",
+        "Unidentified 20",
+    };
+
     public string Uni(int nr)
         => $"Unidentified {nr}";
 
