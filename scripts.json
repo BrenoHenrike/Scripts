@@ -7881,6 +7881,17 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/MayThe4th/MurderMoonStory.cs"
   },
   {
+    "name": "null",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Seasonal/AkibaNewYear/SenlinMas.cs",
+    "size": 2954,
+    "fileName": "SenlinMas.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AkibaNewYear/SenlinMas.cs"
+  },
+  {
     "name": "Lady Lua's Merge",
     "description": "Farms the materials needed for Lady Lua's Merge.",
     "tags": [
