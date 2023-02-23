@@ -12786,6 +12786,22 @@
       "doom",
       "oneclient"
     ],
+    "path": "Army/OneClient/EldersBlood.cs",
+    "size": 1132,
+    "fileName": "EldersBlood.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/OneClient/EldersBlood.cs"
+  },
+  {
+    "name": "The Wheel of Doom (Army)",
+    "description": "One-client version of the Wheel of Doom",
+    "tags": [
+      "daily",
+      "dailies",
+      "army",
+      "wheel",
+      "doom",
+      "oneclient"
+    ],
     "path": "Army/OneClient/WheelOfDoom.cs",
     "size": 1132,
     "fileName": "WheelOfDoom.cs",
