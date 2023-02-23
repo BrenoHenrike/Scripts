@@ -18,11 +18,15 @@ public class CorruptedGemBlade
         Core.SetOptions();
 
         DrudgentheSalesman();
+
         Core.SetOptions(false);
     }
 
     public void DrudgentheSalesman()
     {
+        if (Core.CheckInventory("Corrupted Gem Blade") || !Core.CheckInventory("Drudgen the Assistant"))
+            return;
+
         Core.AddDrop(Nation.bagDrops);
         Core.AddDrop("Corrupted Gem Blade");
 
