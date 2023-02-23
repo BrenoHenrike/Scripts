@@ -1,7 +1,7 @@
 /*
-name: The Wheel of Doom (Army)
-description: One-client version of the Wheel of Doom
-tags: daily, dailies, army, wheel, doom, oneclient
+name: Elders Blood (Army)
+description: One-client version of the Elders' Blood daily
+tags: daily, dailies, army, elders, blood, vhl, void highlord, oneclient
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreDailies.cs
