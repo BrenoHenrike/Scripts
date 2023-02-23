@@ -2627,13 +2627,15 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/GrimDarkSet.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Blood Guardian Set",
+    "description": "does the 'Blackened Incense' Quest for the blood guardian set.",
     "tags": [
-      "null"
+      "blood guardian set",
+      "blackened incense",
+      "set"
     ],
     "path": "Other/BloodGuardianSet.cs",
-    "size": 1274,
+    "size": 1384,
     "fileName": "BloodGuardianSet.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/BloodGuardianSet.cs"
   },
@@ -11227,6 +11229,20 @@
     "size": 731,
     "fileName": "MalacodaNecroment.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Weapons/MalacodaNecroment.cs"
+  },
+  {
+    "name": "Corrupted Gem Blade",
+    "description": "does 'Drudgen the Salesman' for \"Corrupted Gem Blade\"",
+    "tags": [
+      "corrupted gem blade",
+      "nation",
+      "drudgen the assistant",
+      "drudgen the salesman"
+    ],
+    "path": "Other/Weapons/CorruptedGemBlade.cs",
+    "size": 1283,
+    "fileName": "CorruptedGemBlade.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Weapons/CorruptedGemBlade.cs"
   },
   {
     "name": "PinkBladeofDestruction",
