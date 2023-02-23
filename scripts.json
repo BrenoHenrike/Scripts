@@ -12776,18 +12776,20 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/OneClient/ArmyFreeAcs.cs"
   },
   {
-    "name": "The Wheel of Doom (Army)",
-    "description": "One-client version of the Wheel of Doom",
+    "name": "Elders Blood (Army)",
+    "description": "One-client version of the Elders' Blood daily",
     "tags": [
       "daily",
       "dailies",
       "army",
-      "wheel",
-      "doom",
+      "elders",
+      "blood",
+      "vhl",
+      "void highlord",
       "oneclient"
     ],
     "path": "Army/OneClient/EldersBlood.cs",
-    "size": 1132,
+    "size": 1155,
     "fileName": "EldersBlood.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/OneClient/EldersBlood.cs"
   },
