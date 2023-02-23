@@ -2627,6 +2627,17 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/GrimDarkSet.cs"
   },
   {
+    "name": "null",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Other/BloodGuardianSet.cs",
+    "size": 1274,
+    "fileName": "BloodGuardianSet.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/BloodGuardianSet.cs"
+  },
+  {
     "name": "Jirabin Challenge Quests",
     "description": "Does the Jirabin Challenge Quests",
     "tags": [
