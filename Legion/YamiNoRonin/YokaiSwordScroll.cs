@@ -1,7 +1,7 @@
 /*
-name: YokaiSwordScroll
-description: null
-tags: null
+name: Yokai Sword Scroll
+description: This bot will farm the Yokai Sword Scroll, used in Yami no Ronin.
+tags: yami, no, ronin, YNR, legion, yokai sword scroll
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

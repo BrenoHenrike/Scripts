@@ -1,7 +1,7 @@
 /*
-name: 0YamiNoRoninNonLegion
-description: null
-tags: null
+name: Yami no Ronin Full (Non-Legion Variant)
+description: This bot will farm and rank up Yami no Ronin for you, fully. But can be used whilst not being in Legion (longer farm)
+tags: yami, no, ronin, YNR, legion, yokai sword scroll, blademaster sword scroll, folded steel, flame-forged metal
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

@@ -1,7 +1,7 @@
 /*
-name: BlademasterSwordScroll
-description: null
-tags: null
+name: Blademaster Sword Scroll
+description: This bot will farm the Blademaster Sword Scroll, used in Yami no Ronin.
+tags: yami, no, ronin, YNR, legion, blademaster sword scroll
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
