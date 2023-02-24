@@ -669,7 +669,7 @@
       "blood-moon"
     ],
     "path": "Story/BloodMoon.cs",
-    "size": 4776,
+    "size": 4572,
     "fileName": "BloodMoon.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/BloodMoon.cs"
   },
@@ -2625,6 +2625,19 @@
     "size": 1773,
     "fileName": "GrimDarkSet.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/GrimDarkSet.cs"
+  },
+  {
+    "name": "Blood Guardian Set",
+    "description": "does the 'Blackened Incense' Quest for the blood guardian set.",
+    "tags": [
+      "blood guardian set",
+      "blackened incense",
+      "set"
+    ],
+    "path": "Other/BloodGuardianSet.cs",
+    "size": 1663,
+    "fileName": "BloodGuardianSet.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/BloodGuardianSet.cs"
   },
   {
     "name": "Jirabin Challenge Quests",
@@ -7426,6 +7439,21 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HerosHeartDay/WheelOfLove.cs"
   },
   {
+    "name": "Wubbles Merge Shop",
+    "description": "This script farms the items from Wubbles Merge Shop.",
+    "tags": [
+      "seasonal",
+      "love",
+      "wubbles",
+      "merge",
+      "heros heart day"
+    ],
+    "path": "Seasonal/HerosHeartDay/WubblesMerge.cs",
+    "size": 4803,
+    "fileName": "WubblesMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HerosHeartDay/WubblesMerge.cs"
+  },
+  {
     "name": "Painted Butterfly (Arcadia Merge)",
     "description": "This will complete the Painted Butterfly quest.",
     "tags": [
@@ -7443,6 +7471,22 @@
     "size": 1257,
     "fileName": "ArcadiaMerge(PaintedButterfly).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HerosHeartDay/ArcadiaMerge(PaintedButterfly).cs"
+  },
+  {
+    "name": "Gems of Love Merge Shop",
+    "description": "This script farms the items from Gems of Love Merge Shop.",
+    "tags": [
+      "seasonal",
+      "love",
+      "merge",
+      "gemsoflove",
+      "heros heart day",
+      "beleen"
+    ],
+    "path": "Seasonal/HerosHeartDay/GemsofLoveMerge.cs",
+    "size": 8981,
+    "fileName": "GemsofLoveMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HerosHeartDay/GemsofLoveMerge.cs"
   },
   {
     "name": "Necromance",
@@ -7559,6 +7603,21 @@
     "size": 1483,
     "fileName": "LoveSpellMerge(PinkestDyeEver!!!).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HerosHeartDay/LoveSpellMerge(PinkestDyeEver!!!).cs"
+  },
+  {
+    "name": "Love Locked Merge",
+    "description": "This script farms the items from Love Locked Merge Shop.",
+    "tags": [
+      "seasonal",
+      "love",
+      "merge",
+      "love locked merge",
+      "heros heart day"
+    ],
+    "path": "Seasonal/HerosHeartDay/LoveLockedMerge.cs",
+    "size": 3786,
+    "fileName": "LoveLockedMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HerosHeartDay/LoveLockedMerge.cs"
   },
   {
     "name": "Love Spell Story",
@@ -7881,6 +7940,21 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/MayThe4th/MurderMoonStory.cs"
   },
   {
+    "name": "Gong Ji Zhanshi Set",
+    "description": "Farms the Gong Ji Zhanshi set from Red Envelope Hunt quest.",
+    "tags": [
+      "seasonal",
+      "akiba new year",
+      "gong ji zhanshi",
+      "red envelope hunt",
+      "akibacny"
+    ],
+    "path": "Seasonal/AkibaNewYear/GongJiZhanshiSet.cs",
+    "size": 2074,
+    "fileName": "GongJiZhanshiSet.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AkibaNewYear/GongJiZhanshiSet.cs"
+  },
+  {
     "name": "Senlin-Mas's Quests",
     "description": "Completes Senlin-Mas's Quests in akibacny.",
     "tags": [
@@ -7988,6 +8062,21 @@
     "size": 2824,
     "fileName": "LadyLua.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AkibaNewYear/LadyLua.cs"
+  },
+  {
+    "name": "Yokai New Year Shop",
+    "description": "Farms the materials needed for Yokai New Year Shop.",
+    "tags": [
+      "yokai new year",
+      "akibacny",
+      "seasonal",
+      "akiba new year",
+      "merge shop"
+    ],
+    "path": "Seasonal/AkibaNewYear/YokaiNewYearMerge.cs",
+    "size": 17785,
+    "fileName": "YokaiNewYearMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AkibaNewYear/YokaiNewYearMerge.cs"
   },
   {
     "name": "Yokai Hunt",
@@ -11218,6 +11307,20 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Weapons/MalacodaNecroment.cs"
   },
   {
+    "name": "Corrupted Gem Blade",
+    "description": "does 'Drudgen the Salesman' for \"Corrupted Gem Blade\"",
+    "tags": [
+      "corrupted gem blade",
+      "nation",
+      "drudgen the assistant",
+      "drudgen the salesman"
+    ],
+    "path": "Other/Weapons/CorruptedGemBlade.cs",
+    "size": 1410,
+    "fileName": "CorruptedGemBlade.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Weapons/CorruptedGemBlade.cs"
+  },
+  {
     "name": "PinkBladeofDestruction",
     "description": "null",
     "tags": [
@@ -12776,18 +12879,20 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/OneClient/ArmyFreeAcs.cs"
   },
   {
-    "name": "The Wheel of Doom (Army)",
-    "description": "One-client version of the Wheel of Doom",
+    "name": "Elders Blood (Army)",
+    "description": "One-client version of the Elders' Blood daily",
     "tags": [
       "daily",
       "dailies",
       "army",
-      "wheel",
-      "doom",
+      "elders",
+      "blood",
+      "vhl",
+      "void highlord",
       "oneclient"
     ],
     "path": "Army/OneClient/EldersBlood.cs",
-    "size": 1132,
+    "size": 1155,
     "fileName": "EldersBlood.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/OneClient/EldersBlood.cs"
   },
