@@ -669,7 +669,7 @@
       "blood-moon"
     ],
     "path": "Story/BloodMoon.cs",
-    "size": 4776,
+    "size": 4572,
     "fileName": "BloodMoon.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/BloodMoon.cs"
   },
@@ -2635,7 +2635,7 @@
       "set"
     ],
     "path": "Other/BloodGuardianSet.cs",
-    "size": 1384,
+    "size": 1663,
     "fileName": "BloodGuardianSet.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/BloodGuardianSet.cs"
   },
