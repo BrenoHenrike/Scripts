@@ -37,9 +37,14 @@ public class BloodGuardianSet
 
         BloodMoon.BloodMoonSaga();
 
+        //This is required... or so we think.
+        Core.KillMonster("bloodwarvamp", "r2", "Right", "*", "Mega Lycan Medal", 3);
+        Core.ChainComplete(6068);
+        Core.KillMonster("bloodwarvamp", "r2", "Right", "*", "Lycan Medal", 5);
+        Core.ChainComplete(6069);
+
         Core.AddDrop(Set);
         Core.EquipClass(ClassType.Solo);
-
         Core.RegisterQuests(6072);
         foreach (string item in Set)
         {

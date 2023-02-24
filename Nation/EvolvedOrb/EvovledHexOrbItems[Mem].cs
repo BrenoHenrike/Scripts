@@ -55,7 +55,7 @@ public class EvovledHexOrbItems
         if (!Core.CheckInventory("Platinum Coin of Nulgath: 2500") || !Core.CheckInventory(33197))
             return;
 
-        Adv.BuyItem("classhalla", 759, "Oracle");
+        Adv.BuyItem(Bot.Map.Name, 299, "Oracle");
         Adv.rankUpClass("Oracle");
 
         #endregion
