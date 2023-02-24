@@ -7439,6 +7439,21 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HerosHeartDay/WheelOfLove.cs"
   },
   {
+    "name": "Wubbles Merge Shop",
+    "description": "This script farms the items from Wubbles Merge Shop.",
+    "tags": [
+      "seasonal",
+      "love",
+      "wubbles",
+      "merge",
+      "heros heart day"
+    ],
+    "path": "Seasonal/HerosHeartDay/WubblesMerge.cs",
+    "size": 4803,
+    "fileName": "WubblesMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HerosHeartDay/WubblesMerge.cs"
+  },
+  {
     "name": "Painted Butterfly (Arcadia Merge)",
     "description": "This will complete the Painted Butterfly quest.",
     "tags": [
@@ -7456,6 +7471,22 @@
     "size": 1257,
     "fileName": "ArcadiaMerge(PaintedButterfly).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HerosHeartDay/ArcadiaMerge(PaintedButterfly).cs"
+  },
+  {
+    "name": "Gems of Love Merge Shop",
+    "description": "This script farms the items from Gems of Love Merge Shop.",
+    "tags": [
+      "seasonal",
+      "love",
+      "merge",
+      "gemsoflove",
+      "heros heart day",
+      "beleen"
+    ],
+    "path": "Seasonal/HerosHeartDay/GemsofLoveMerge.cs",
+    "size": 8981,
+    "fileName": "GemsofLoveMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HerosHeartDay/GemsofLoveMerge.cs"
   },
   {
     "name": "Necromance",
@@ -7572,6 +7603,21 @@
     "size": 1483,
     "fileName": "LoveSpellMerge(PinkestDyeEver!!!).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HerosHeartDay/LoveSpellMerge(PinkestDyeEver!!!).cs"
+  },
+  {
+    "name": "Love Locked Merge",
+    "description": "This script farms the items from Love Locked Merge Shop.",
+    "tags": [
+      "seasonal",
+      "love",
+      "merge",
+      "love locked merge",
+      "heros heart day"
+    ],
+    "path": "Seasonal/HerosHeartDay/LoveLockedMerge.cs",
+    "size": 3786,
+    "fileName": "LoveLockedMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HerosHeartDay/LoveLockedMerge.cs"
   },
   {
     "name": "Love Spell Story",
@@ -7894,6 +7940,21 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/MayThe4th/MurderMoonStory.cs"
   },
   {
+    "name": "Gong Ji Zhanshi Set",
+    "description": "Farms the Gong Ji Zhanshi set from Red Envelope Hunt quest.",
+    "tags": [
+      "seasonal",
+      "akiba new year",
+      "gong ji zhanshi",
+      "red envelope hunt",
+      "akibacny"
+    ],
+    "path": "Seasonal/AkibaNewYear/GongJiZhanshiSet.cs",
+    "size": 2074,
+    "fileName": "GongJiZhanshiSet.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AkibaNewYear/GongJiZhanshiSet.cs"
+  },
+  {
     "name": "Senlin-Mas's Quests",
     "description": "Completes Senlin-Mas's Quests in akibacny.",
     "tags": [
@@ -8001,6 +8062,21 @@
     "size": 2824,
     "fileName": "LadyLua.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AkibaNewYear/LadyLua.cs"
+  },
+  {
+    "name": "Yokai New Year Shop",
+    "description": "Farms the materials needed for Yokai New Year Shop.",
+    "tags": [
+      "yokai new year",
+      "akibacny",
+      "seasonal",
+      "akiba new year",
+      "merge shop"
+    ],
+    "path": "Seasonal/AkibaNewYear/YokaiNewYearMerge.cs",
+    "size": 17785,
+    "fileName": "YokaiNewYearMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AkibaNewYear/YokaiNewYearMerge.cs"
   },
   {
     "name": "Yokai Hunt",
