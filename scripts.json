@@ -3655,46 +3655,72 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/ForDevelopers/GenerateQuestFiles.cs"
   },
   {
-    "name": "BlademasterSwordScroll",
-    "description": "null",
+    "name": "Blademaster Sword Scroll",
+    "description": "This bot will farm the Blademaster Sword Scroll, used in Yami no Ronin.",
     "tags": [
-      "null"
+      "yami",
+      "no",
+      "ronin",
+      "YNR",
+      "legion",
+      "blademaster sword scroll"
     ],
     "path": "Legion/YamiNoRonin/BlademasterSwordScroll.cs",
-    "size": 760,
+    "size": 879,
     "fileName": "BlademasterSwordScroll.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/YamiNoRonin/BlademasterSwordScroll.cs"
   },
   {
-    "name": "0YamiNoRonin",
-    "description": "null",
+    "name": "Yami no Ronin Full",
+    "description": "This bot will farm and rank up Yami no Ronin for you, fully.",
     "tags": [
-      "null"
+      "yami",
+      "no",
+      "ronin",
+      "YNR",
+      "legion",
+      "yokai sword scroll",
+      "blademaster sword scroll",
+      "folded steel",
+      "flame-forged metal"
     ],
     "path": "Legion/YamiNoRonin/0YamiNoRonin.cs",
-    "size": 723,
+    "size": 889,
     "fileName": "0YamiNoRonin.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/YamiNoRonin/0YamiNoRonin.cs"
   },
   {
-    "name": "YokaiSwordScroll",
-    "description": "null",
+    "name": "Yokai Sword Scroll",
+    "description": "This bot will farm the Yokai Sword Scroll, used in Yami no Ronin.",
     "tags": [
-      "null"
+      "yami",
+      "no",
+      "ronin",
+      "YNR",
+      "legion",
+      "yokai sword scroll"
     ],
     "path": "Legion/YamiNoRonin/YokaiSwordScroll.cs",
-    "size": 742,
+    "size": 849,
     "fileName": "YokaiSwordScroll.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/YamiNoRonin/YokaiSwordScroll.cs"
   },
   {
-    "name": "0YamiNoRoninNonLegion",
-    "description": "null",
+    "name": "Yami no Ronin Full (Non-Legion Variant)",
+    "description": "This bot will farm and rank up Yami no Ronin for you, fully. But can be used whilst not being in Legion (longer farm)",
     "tags": [
-      "null"
+      "yami",
+      "no",
+      "ronin",
+      "YNR",
+      "legion",
+      "yokai sword scroll",
+      "blademaster sword scroll",
+      "folded steel",
+      "flame-forged metal"
     ],
     "path": "Legion/YamiNoRonin/0YamiNoRoninNonLegion.cs",
-    "size": 741,
+    "size": 976,
     "fileName": "0YamiNoRoninNonLegion.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/YamiNoRonin/0YamiNoRoninNonLegion.cs"
   },
