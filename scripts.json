@@ -5194,7 +5194,7 @@
       "null"
     ],
     "path": "Story/ShadowsOfWar/CoreSoW.cs",
-    "size": 35523,
+    "size": 35878,
     "fileName": "CoreSoW.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfWar/CoreSoW.cs"
   },
@@ -12845,6 +12845,17 @@
     "size": 840,
     "fileName": "DarknessShard.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Materials/DarknessShard.cs"
+  },
+  {
+    "name": "Malgors Armor Set",
+    "description": "completes the quest \"build malgor's armor Set\" for the set.",
+    "tags": [
+      "null"
+    ],
+    "path": "Other/Armor/MalgorsArmorSet.cs",
+    "size": 2358,
+    "fileName": "MalgorsArmorSet.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Armor/MalgorsArmorSet.cs"
   },
   {
     "name": "Fiend of Light",
