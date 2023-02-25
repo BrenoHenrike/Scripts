@@ -5194,9 +5194,23 @@
       "null"
     ],
     "path": "Story/ShadowsOfWar/CoreSoW.cs",
-    "size": 33499,
+    "size": 35523,
     "fileName": "CoreSoW.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfWar/CoreSoW.cs"
+  },
+  {
+    "name": "Mana Cradle",
+    "description": "This will finish the Mana Cradle quests.",
+    "tags": [
+      "story",
+      "quest",
+      "shadow-war",
+      "mana cradle"
+    ],
+    "path": "Story/ShadowsOfWar/21ManaCradle.cs",
+    "size": 658,
+    "fileName": "21ManaCradle.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfWar/21ManaCradle.cs"
   },
   {
     "name": "Blacksea Keep",
@@ -12640,6 +12654,17 @@
     "size": 6246,
     "fileName": "TachyonMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/TachyonMerge.cs"
+  },
+  {
+    "name": "ManaCradleMerge",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Other/MergeShops/ManaCradleMerge.cs",
+    "size": 9224,
+    "fileName": "ManaCradleMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/ManaCradleMerge.cs"
   },
   {
     "name": "BoneTowersMerge",
