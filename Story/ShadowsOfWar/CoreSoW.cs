@@ -8,6 +8,7 @@ tags: null
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Skills;
 
 public class CoreSoW
 {
@@ -43,6 +44,7 @@ public class CoreSoW
         TimestreamWar();
         DeadLines();
         ShadowFlame();
+        ManaCradle();
     }
 
     public void ShadowWar()
@@ -1048,5 +1050,60 @@ public class CoreSoW
 
         // Rippling Heartbeat 8965
         Story.KillQuest(8965, "worldscore", "Mask of Tranquility");
+    }
+
+    public void ManaCradle()
+    {
+        if (Core.isCompletedBefore(9124))
+            return;
+
+        Story.PreLoad(this);
+
+        Core.EquipClass(ClassType.Solo);
+        Adv.BestGear(GearBoost.Elemental);
+
+        // Stunted Growth 9116
+        Story.KillQuest(9116, "manacradle", "Elemental Attempt");
+
+        // Tossing and Turning 9117
+        Story.KillQuest(9117, "manacradle", "Crystalized Mana");
+
+        // Dark Intruder 9118
+        Story.MapItemQuest(9118, "manacradle", 11268, 3);
+        Story.MapItemQuest(9118, "manacradle", 11269, 3);
+
+        // Doggy Paddle 9119
+        Story.KillQuest(9119, "manacradle", new[] { "Crystalized Mana", "Elemental Attempt" });
+
+        // Amethyst Memories 9120
+        Story.KillQuest(9120, "manacradle", "Dark Tainted Mana");
+
+        // Crawling Darkness 9121
+        Story.KillQuest(9121, "manacradle", "Darkness Elemental");
+
+        // Raised Veins 9122
+        Story.MapItemQuest(9122, "manacradle", 11270, 5);
+
+        // In The Eye 9123
+        Story.KillQuest(9123, "manacradle", new[] { "Dark Tainted Mana", "Darkness Elemental" });
+        Story.MapItemQuest(9123, "manacradle", 11271);
+
+        if (Core.CheckInventory("Yami no Ronin") || Core.CheckInventory("Dragon of Time"))
+        {
+            Bot.Skills.StartAdvanced(Core.CheckInventory("Yami no Ronin") ? "Yami no Ronin" : "Dragon of Time", true, ClassUseMode.Solo);
+
+            // Cognitive Dissonance 9124
+            Story.KillQuest(9124, "manacradle", "Malgor");
+
+            // Your Hero 9125
+            Story.KillQuest(9125, "manacradle", "The Mainyu");
+        }
+        else Core.Logger("Cant do these last quests as they require YNR/DoT(solo) or a *realy good* dodge class... or for you todo it manualy with an group/army(this quest isnt required afaik.)");
+
+        #region GroupBoss Quest
+        // These 2 arent needed.
+        // Once Upon Another Time 9126
+        // Build Malgor's Armor Set 9127
+        #endregion
     }
 }
