@@ -17,6 +17,10 @@ public class CoreSoW
     public CoreStory Story = new();
     public CoreAdvanced Adv = new();
 
+    string[] MainyuDrops = { "Mainyu Tail", "Mainyu Wings", "ShadowFlame Eviscerator Greatsword", "ShadowFlame Eviscerator Greatswords" };
+    //update this when wiki is updated. vvvv
+    string[] MalgorDrops = { "", "", "", "", "", "", "", "" };
+
     public void ScriptMain(IScriptInterface bot)
     {
         Core.RunCore();
@@ -1090,6 +1094,7 @@ public class CoreSoW
 
         if (Core.CheckInventory("Yami no Ronin") || Core.CheckInventory("Dragon of Time"))
         {
+            Core.AddDrop(MainyuDrops.Concat(MalgorDrops).ToArray());
             Bot.Skills.StartAdvanced(Core.CheckInventory("Yami no Ronin") ? "Yami no Ronin" : "Dragon of Time", true, ClassUseMode.Solo);
 
             // Cognitive Dissonance 9124
@@ -1097,6 +1102,7 @@ public class CoreSoW
 
             // Your Hero 9125
             Story.KillQuest(9125, "manacradle", "The Mainyu");
+            Core.ToBank(MainyuDrops);
         }
         else Core.Logger("Cant do these last quests as they require YNR/DoT(solo) or a *realy good* dodge class... or for you todo it manualy with an group/army(this quest isnt required afaik.)");
 
