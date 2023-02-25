@@ -139,7 +139,7 @@ public class ManaCradleMerge
                 case "Elemental Core":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
-                    Core.RegisterQuests(9124);
+                    Core.RegisterQuests(9126);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.HuntMonster("manacradle", "Dark Tainted Mana", "Elemental Tear", 8);
