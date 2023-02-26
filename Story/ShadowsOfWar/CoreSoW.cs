@@ -1066,7 +1066,7 @@ public class CoreSoW
 
         Core.EquipClass(ClassType.Solo);
         Adv.BestGear(GearBoost.Elemental);
-        Adv.SmartEnhance(Bot.Player.CurrentClass.ToString());
+        Adv.SmartEnhance(Bot.Player.CurrentClass.Name);
 
         // Stunted Growth 9116
         Story.KillQuest(9116, "manacradle", "Elemental Attempt");

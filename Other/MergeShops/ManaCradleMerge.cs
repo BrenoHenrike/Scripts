@@ -108,13 +108,12 @@ public class ManaCradleMerge
                 case "Unbound Thread":
                     Core.FarmingLogger(req.Name, quant);
                     Core.RegisterQuests(8869);
+                        Core.EquipClass(ClassType.Solo);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         // Fallen Branches 8869
-                        Core.EquipClass(ClassType.Farm);
-                        Core.HuntMonster("DeadLines", "Frenzied Mana", "Captured Mana", 8);
                         Core.HuntMonster("DeadLines", "Shadowfall Warrior", "Armor Scrap", 8);
-                        Core.EquipClass(ClassType.Solo);
+                        Core.HuntMonster("DeadLines", "Frenzied Mana", "Captured Mana", 8);
                         Core.HuntMonster("DeadLines", "Eternal Dragon", "Eternal Dragon Scale");
                         Bot.Wait.ForPickup(req.Name);
                     }
@@ -124,9 +123,9 @@ public class ManaCradleMerge
                 case "Acquiescence":
                     Core.FarmingLogger(req.Name, quant);
                     Core.RegisterQuests(8966);
+                        Core.EquipClass(ClassType.Solo);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.EquipClass(ClassType.Solo);
                         Core.HuntMonster("worldscore", "Elemental Attempt", "Cracked Elemental Stone", 8);
                         Core.HuntMonster("worldscore", "Crystalized Mana", "Crystalized Tooth", 8);
                         Core.HuntMonster("worldscore", "Mask of Tranquility", "Creator's Favor", 1);

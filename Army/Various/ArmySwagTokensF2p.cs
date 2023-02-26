@@ -53,7 +53,7 @@ public class ArmySwagTokensF2p
         Core.FarmingLogger($"Super-Fan Swag Token A", quant);
         Core.EquipClass(ClassType.Farm);
         Adv.BestGear(GearBoost.dmgAll);
-        Adv.SmartEnhance(Bot.Player.CurrentClass.ToString());
+        Adv.SmartEnhance(Bot.Player.CurrentClass.Name);
         Core.RegisterQuests(1304, 1307);
         while (!Bot.ShouldExit && !Core.CheckInventory("Super-Fan Swag Token A", quant))
         {
