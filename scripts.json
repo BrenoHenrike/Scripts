@@ -5194,7 +5194,7 @@
       "null"
     ],
     "path": "Story/ShadowsOfWar/CoreSoW.cs",
-    "size": 35523,
+    "size": 35878,
     "fileName": "CoreSoW.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfWar/CoreSoW.cs"
   },
@@ -9281,6 +9281,35 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StarFestival/StarFestival.cs"
   },
   {
+    "name": "Dark Festa Merge",
+    "description": "This script farms the materials needed for Dark Festa Merge.",
+    "tags": [
+      "seasonal",
+      "dark festa",
+      "carnaval",
+      "merge"
+    ],
+    "path": "Seasonal/Carnaval/DarkFestaMerge.cs",
+    "size": 4760,
+    "fileName": "DarkFestaMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Carnaval/DarkFestaMerge.cs"
+  },
+  {
+    "name": "Dark Festa",
+    "description": "Completes Batista's Quests in darkfesta.",
+    "tags": [
+      "dark festa",
+      "batista",
+      "carnaval",
+      "seasonal",
+      "story"
+    ],
+    "path": "Seasonal/Carnaval/DarkFesta.cs",
+    "size": 2172,
+    "fileName": "DarkFesta.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Carnaval/DarkFesta.cs"
+  },
+  {
     "name": "SambasFlagMerge",
     "description": "null",
     "tags": [
@@ -9290,6 +9319,21 @@
     "size": 5657,
     "fileName": "SambasFlagMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Carnaval/SambasFlagMerge.cs"
+  },
+  {
+    "name": "Terra de Festa",
+    "description": "Completes Frevo's Quests in terradefesta.",
+    "tags": [
+      "freva",
+      "terra de festa",
+      "seasonal",
+      "carnaval",
+      "story"
+    ],
+    "path": "Seasonal/Carnaval/TerraDeFesta.cs",
+    "size": 2154,
+    "fileName": "TerraDeFesta.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Carnaval/TerraDeFesta.cs"
   },
   {
     "name": "SambasFlag Story",
@@ -9303,6 +9347,65 @@
     "size": 1604,
     "fileName": "SambaFlag.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Carnaval/SambaFlag.cs"
+  },
+  {
+    "name": "Dance Guru Merge",
+    "description": "This script farms all the materials for Dance Guru Merge.",
+    "tags": [
+      "dance guru",
+      "merge",
+      "seasonal",
+      "carnaval"
+    ],
+    "path": "Seasonal/Carnaval/DanceGuruMerge.cs",
+    "size": 5059,
+    "fileName": "DanceGuruMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Carnaval/DanceGuruMerge.cs"
+  },
+  {
+    "name": "Batista's Quests",
+    "description": "This script does Batista's Quests in carnaval.",
+    "tags": [
+      "batista",
+      "carnaval",
+      "seasonal",
+      "story"
+    ],
+    "path": "Seasonal/Carnaval/Batista.cs",
+    "size": 1504,
+    "fileName": "Batista.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Carnaval/Batista.cs"
+  },
+  {
+    "name": "Firebird",
+    "description": "Completes Fausto's Quests in firebird.",
+    "tags": [
+      "carnaval",
+      "firebird",
+      "fausto",
+      "seasonal",
+      "story"
+    ],
+    "path": "Seasonal/Carnaval/Firebird.cs",
+    "size": 1956,
+    "fileName": "Firebird.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Carnaval/Firebird.cs"
+  },
+  {
+    "name": "Dance Guru",
+    "description": "This script farms Diego's and Batista's Quests in danceguru.",
+    "tags": [
+      "dance guru",
+      "carnaval",
+      "seasonal",
+      "storyline",
+      "batista",
+      "diego"
+    ],
+    "path": "Seasonal/Carnaval/DanceGuru.cs",
+    "size": 2109,
+    "fileName": "DanceGuru.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Carnaval/DanceGuru.cs"
   },
   {
     "name": "Vegetable Token Farm",
@@ -12845,6 +12948,17 @@
     "size": 840,
     "fileName": "DarknessShard.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Materials/DarknessShard.cs"
+  },
+  {
+    "name": "Malgors Armor Set",
+    "description": "completes the quest \"build malgor's armor Set\" for the set.",
+    "tags": [
+      "null"
+    ],
+    "path": "Other/Armor/MalgorsArmorSet.cs",
+    "size": 2643,
+    "fileName": "MalgorsArmorSet.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Armor/MalgorsArmorSet.cs"
   },
   {
     "name": "Fiend of Light",
