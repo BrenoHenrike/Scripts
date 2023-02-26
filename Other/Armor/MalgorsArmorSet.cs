@@ -43,6 +43,16 @@ public class MalgorsArmorSet
     "ShadowLord's Helm"
     };
 
+    string[] QuestItems =
+    {
+    "Timestream Ravager",
+    "ShadowFlame Defender",
+    "Mana Guardian",
+    "Dark Dragon Slayer",
+    "Mystical Devotee of Mana",
+    "Dragon's Tear"
+    };
+
     public void ScriptMain(IScriptInterface Bot)
     {
         Core.SetOptions();
@@ -61,21 +71,14 @@ public class MalgorsArmorSet
 
         while (!Bot.ShouldExit && !Core.CheckInventory(Set))
         {
-            Adv.BuyItem("alchemyacademy", 395, "Gold Voucher 500k", 30);
             DeadLinesMerge.BuyAllMerge(buyOnlyThis: "Timestream Ravager");
             RuinedCrownMerge.BuyAllMerge(buyOnlyThis: "ShadowFlame Defender");
             TimekeepMerge.BuyAllMerge(buyOnlyThis: "Mana Guardian");
             StreamwarMerge.BuyAllMerge(buyOnlyThis: "Dark Dragon Slayer");
             WorldsCoreMerge.BuyAllMerge(buyOnlyThis: "Mystical Devotee of Mana");
             ManaCradleMerge.BuyAllMerge(buyOnlyThis: "Dragon's Tear");
-            Core.Unbank(new string[] {
-                "Timestream Ravager", 
-                "ShadowFlame Defender", 
-                "Mana Guardian", 
-                "Dark Dragon Slayer", 
-                "Mystical Devotee of Mana", 
-                "Dragon's Tear"
-            });
+            Adv.BuyItem("alchemyacademy", 395, "Gold Voucher 500k", 30);
+            Core.Unbank(QuestItems);
             Core.ChainComplete(9127);
         }
     }
