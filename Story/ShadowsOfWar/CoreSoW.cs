@@ -17,9 +17,9 @@ public class CoreSoW
     public CoreStory Story = new();
     public CoreAdvanced Adv = new();
 
-    string[] MainyuDrops = { "Mainyu Tail", "Mainyu Wings", "ShadowFlame Eviscerator Greatsword", "ShadowFlame Eviscerator Greatswords" };
+    public string[] MainyuDrops = { "Mainyu Tail", "Mainyu Wings", "ShadowFlame Eviscerator Greatsword", "ShadowFlame Eviscerator Greatswords" };
     //update this when wiki is updated. vvvv
-    string[] MalgorDrops = { "", "", "", "", "", "", "", "" };
+    public string[] MalgorDrops = { "", "", "", "", "", "", "", "" };
 
     public void ScriptMain(IScriptInterface bot)
     {
