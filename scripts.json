@@ -5194,7 +5194,7 @@
       "null"
     ],
     "path": "Story/ShadowsOfWar/CoreSoW.cs",
-    "size": 35995,
+    "size": 35989,
     "fileName": "CoreSoW.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfWar/CoreSoW.cs"
   },
@@ -10810,7 +10810,7 @@
       "null"
     ],
     "path": "Other/FarmJoeKits/CoreFarmerJoe.cs",
-    "size": 13351,
+    "size": 13345,
     "fileName": "CoreFarmerJoe.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/CoreFarmerJoe.cs"
   },
@@ -12765,7 +12765,7 @@
       "null"
     ],
     "path": "Other/MergeShops/ManaCradleMerge.cs",
-    "size": 9941,
+    "size": 9884,
     "fileName": "ManaCradleMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/ManaCradleMerge.cs"
   },
@@ -13182,7 +13182,7 @@
       "f2p"
     ],
     "path": "Army/Various/ArmySwagTokensF2p.cs",
-    "size": 3270,
+    "size": 3264,
     "fileName": "ArmySwagTokensF2p.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmySwagTokensF2p.cs"
   },
