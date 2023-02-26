@@ -1576,7 +1576,6 @@ public class Core13LoC
         Story.KillQuest(2510, "mqlesson", "Chaos Shadowscythe");
 
         //Mysterious!
-        Story.KillQuest(2511, "mqlesson", new[] { "Chaos Shadowscythe", "Chaos Shadowscythe" });
         if (!Story.QuestProgression(2511))
         {
             Core.EnsureAccept(2511);
