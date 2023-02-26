@@ -1007,6 +1007,7 @@ public class CoreSoW
         Story.KillQuest(8867, "DeadLines", "Frenzied Mana");
 
         //Nigh Invincible 8868
+        Core.EquipClass(ClassType.Solo);
         Story.KillQuest(8868, "DeadLines", "Eternal Dragon");
     }
 
@@ -1065,6 +1066,7 @@ public class CoreSoW
 
         Core.EquipClass(ClassType.Solo);
         Adv.BestGear(GearBoost.Elemental);
+        Adv.SmartEnhance(Bot.Player.CurrentClass.ToString());
 
         // Stunted Growth 9116
         Story.KillQuest(9116, "manacradle", "Elemental Attempt");
