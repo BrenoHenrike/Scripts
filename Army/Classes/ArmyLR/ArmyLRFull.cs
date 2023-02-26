@@ -253,19 +253,21 @@ public class ArmyLR
             return;
 
         Farm.ToggleBoost(BoostType.Gold);
-        Core.RegisterQuests(3991, 3992);
+        Core.RegisterQuests(8578, 8579, 8580, 8581); //Legion Badges, Mega Legion Badges, Doomed Legion Warriors, Undead Legion Dread        
         while (!Bot.ShouldExit && Bot.Player.Gold < quant)
-            ArmyHunt("battlegrounde", new[] { "Living Ice", "Ice Lord", "Ice Demon", "Glacial Horror", "Icy Dragon", "Permafrost Pummeler", "Icy Banshee", "Frozen Deserter" }, "Battleground E Opponent Defeated", ClassType.Farm, true, 10);
+            ArmyHunt("darkwarnation", new[] { "High Legion Inquisitor", "Legion Doomknight", "Legion Dread Knight", "Legion Dreadmarch", "Legion Fiend Rider" }, "Legion Badges", ClassType.Farm, true, 999);
+        // ArmyHunt("battlegrounde", new[] { "Living Ice", "Ice Lord", "Ice Demon", "Glacial Horror", "Icy Dragon", "Permafrost Pummeler", "Icy Banshee", "Frozen Deserter" }, "Battleground E Opponent Defeated", ClassType.Farm, true, 10);
         Farm.ToggleBoost(BoostType.Gold, false);
         Core.CancelRegisteredQuests();
+        Core.TrashCan("Nation Defender Medal");
     }
 
     public void ArmyDageFavor(int quant = 3000)
     {
         if (Core.CheckInventory("Dage's Favor", quant) && !Bot.Config.Get<bool>("sellToSync"))
             return;
-
-        ArmyHunt("evilwarnul", new[] { "Skeletal Warrior", "Skull Warrior" }, "Dage's Favor", ClassType.Farm, false, quant);
+        while (!Bot.ShouldExit && !Core.CheckInventory("Dage's Favor", quant))
+            ArmyHunt("evilwarnul", new[] { "Skeletal Warrior", "Skull Warrior" }, "Dage's Favor", ClassType.Farm, false, quant);
     }
 
     public void ArmyEmblemOfDage(int quant = 500)
@@ -274,12 +276,16 @@ public class ArmyLR
             return;
 
         Core.FarmingLogger("Emblem of Dage", quant);
-        Core.AddDrop("Emblem of Dage", "Legion Seal", "Gem of Mastery");
         Core.EquipClass(ClassType.Farm);
         // Adv.BestGear(GearBoost.gold);
 
         Core.RegisterQuests(4742);
-        ArmyHunt("shadowblast", new[] { "shadowblast", "Carnage", "Shadowrise Guard" }, "Emblem of Dage", ClassType.Farm, isTemp: false, quant);
+        while (!Bot.ShouldExit && !Core.CheckInventory("Emblem of Dage", quant))
+        {
+            ArmyHunt("shadowblast", new[] { "Shadowrise Guard", "Doombringer", "DoomKnight Prime", "Draconic DoomKnight" }, "Legion Seal", ClassType.Farm, isTemp: false, 25);
+            ArmyHunt("shadowblast", new[] { "Minotaurofwar", "Carnage", "CaesarisTheDark" }, "Gem of Mastery", ClassType.Farm);
+        }
+        Core.CancelRegisteredQuests();
     }
 
     public void ArmyDiamondTokenOfDage(int quant = 300)
@@ -348,7 +354,7 @@ public class ArmyLR
 
         Core.AddDrop(item);
 
-            Core.EquipClass(classType);
+        Core.EquipClass(classType);
         if (map == "revenant")
         {
             map = Array.IndexOf(Army.Players(), Core.Username()) > 2 ? "revenant" : "revenant-" + (Army.getRoomNr() + 1);
