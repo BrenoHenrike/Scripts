@@ -10,6 +10,7 @@ tags: null
 //cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
+using Skua.Core.Models.Skills;
 using Skua.Core.Options;
 
 public class ManaCradleMerge
@@ -107,11 +108,11 @@ public class ManaCradleMerge
                 case "Unbound Thread":
                     Core.FarmingLogger(req.Name, quant);
                     Core.RegisterQuests(8869);
+                    Core.AddDrop(req.Name);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         // Fallen Branches 8869
                         Core.EquipClass(ClassType.Farm);
-                        Core.AddDrop(req.Name);
                         Core.HuntMonster("DeadLines", "Frenzied Mana", "Captured Mana", 8);
                         Core.HuntMonster("DeadLines", "Shadowfall Warrior", "Armor Scrap", 8);
                         Core.EquipClass(ClassType.Solo);
@@ -127,7 +128,6 @@ public class ManaCradleMerge
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.EquipClass(ClassType.Solo);
-                        Core.AddDrop(req.Name);
                         Core.HuntMonster("worldscore", "Elemental Attempt", "Cracked Elemental Stone", 8);
                         Core.HuntMonster("worldscore", "Crystalized Mana", "Crystalized Tooth", 8);
                         Core.HuntMonster("worldscore", "Mask of Tranquility", "Creator's Favor", 1);
@@ -138,7 +138,12 @@ public class ManaCradleMerge
 
                 case "Elemental Core":
                     Core.FarmingLogger(req.Name, quant);
-                    Core.EquipClass(ClassType.Solo);
+                    if (Core.CheckInventory("Yami no Ronin") || Core.CheckInventory("Dragon of Time"))
+                    {
+                        Core.AddDrop(SoW.MalgorDrops.Concat(SoW.MainyuDrops).ToArray());
+                        Bot.Skills.StartAdvanced(Core.CheckInventory("Yami no Ronin") ? "Yami no Ronin" : "Dragon of Time", true, ClassUseMode.Solo);
+                    }
+                    else Core.EquipClass(ClassType.Solo);
                     Core.RegisterQuests(9126);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
@@ -154,7 +159,12 @@ public class ManaCradleMerge
                 case "Mainyu Wings":
                 case "Mainyu Tail":
                     Core.FarmingLogger(req.Name, quant);
-                    Core.EquipClass(ClassType.Solo);
+                    if (Core.CheckInventory("Yami no Ronin") || Core.CheckInventory("Dragon of Time"))
+                    {
+                        Core.AddDrop(SoW.MalgorDrops.Concat(SoW.MainyuDrops).ToArray());
+                        Bot.Skills.StartAdvanced(Core.CheckInventory("Yami no Ronin") ? "Yami no Ronin" : "Dragon of Time", true, ClassUseMode.Solo);
+                    }
+                    else Core.EquipClass(ClassType.Solo);
                     Core.HuntMonster("manacradle", "The Mainyu", req.Name);
                     break;
 
