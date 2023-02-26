@@ -108,7 +108,7 @@ public class ManaCradleMerge
                 case "Unbound Thread":
                     Core.FarmingLogger(req.Name, quant);
                     Core.RegisterQuests(8869);
-                        Core.EquipClass(ClassType.Solo);
+                    Core.EquipClass(ClassType.Solo);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         // Fallen Branches 8869
@@ -123,7 +123,7 @@ public class ManaCradleMerge
                 case "Acquiescence":
                     Core.FarmingLogger(req.Name, quant);
                     Core.RegisterQuests(8966);
-                        Core.EquipClass(ClassType.Solo);
+                    Core.EquipClass(ClassType.Solo);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.HuntMonster("worldscore", "Elemental Attempt", "Cracked Elemental Stone", 8);
@@ -146,7 +146,7 @@ public class ManaCradleMerge
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.HuntMonster("manacradle", "Dark Tainted Mana", "Elemental Tear", 8);
-                        Core.HuntMonster("manacradle", "Malgor", "Weathered Armor Shard", 5);
+                        Core.HuntMonster("manacradle", "Malgor", "Weathered Armor Shard");
                         Core.HuntMonster("manacradle", "The Mainyu", "Licorice Scale");
                         Bot.Wait.ForPickup(req.Name);
                     }
