@@ -108,7 +108,6 @@ public class ManaCradleMerge
                 case "Unbound Thread":
                     Core.FarmingLogger(req.Name, quant);
                     Core.RegisterQuests(8869);
-                    Core.AddDrop(req.Name);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         // Fallen Branches 8869
