@@ -68,6 +68,14 @@ public class MalgorsArmorSet
             StreamwarMerge.BuyAllMerge(buyOnlyThis: "Dark Dragon Slayer");
             WorldsCoreMerge.BuyAllMerge(buyOnlyThis: "Mystical Devotee of Mana");
             ManaCradleMerge.BuyAllMerge(buyOnlyThis: "Dragon's Tear");
+            Core.Unbank(new string[] {
+                "Timestream Ravager", 
+                "ShadowFlame Defender", 
+                "Mana Guardian", 
+                "Dark Dragon Slayer", 
+                "Mystical Devotee of Mana", 
+                "Dragon's Tear"
+            });
             Core.ChainComplete(9127);
         }
     }
