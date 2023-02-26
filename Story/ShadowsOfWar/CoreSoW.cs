@@ -1059,14 +1059,14 @@ public class CoreSoW
 
     public void ManaCradle()
     {
-        if (Core.isCompletedBefore(9124))
+        if (Core.isCompletedBefore(9126))
             return;
 
         Story.PreLoad(this);
 
         Core.EquipClass(ClassType.Solo);
         Adv.BestGear(GearBoost.Elemental);
-        Adv.SmartEnhance(Bot.Player.CurrentClass.Name);
+        // Adv.SmartEnhance(Bot.Player.CurrentClass.Name);
 
         // Stunted Growth 9116
         Story.KillQuest(9116, "manacradle", "Elemental Attempt");
@@ -1104,7 +1104,7 @@ public class CoreSoW
 
             // Your Hero 9125
             Story.KillQuest(9125, "manacradle", "The Mainyu");
-            Core.ToBank(MainyuDrops);
+            Core.ToBank(MainyuDrops.Concat(MalgorDrops).ToArray());
         }
         else Core.Logger("Cant do these last quests as they require YNR/DoT(solo) or a *realy good* dodge class... or for you todo it manualy with an group/army(this quest isnt required afaik.)");
 
