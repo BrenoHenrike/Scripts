@@ -2035,11 +2035,17 @@ public class CoreBots
 
             if (!Bot.Inventory.IsEquipped(item))
             {
-                if (CheckInventory(item) && Bot.Inventory.TryGetItem(item, out var _item) && _item != null)
+                if (!CheckInventory(item))
                 {
-                    _Equip(_item);
+                    Logger($"Equipping Failed: \"{item}\" not found in Inventory or Bank");
+                    continue;
                 }
-                else Logger($"\"{item}\" not found");
+                if (!Bot.Inventory.TryGetItem(item, out var _item))
+                {
+                    Logger($"Equipping Failed: Could not parse \"{item}\" from your inventory");
+                    continue;
+                }
+                _Equip(_item);
             }
         }
     }
@@ -2058,17 +2064,29 @@ public class CoreBots
 
             if (!Bot.Inventory.IsEquipped(item))
             {
-                if (CheckInventory(item) && Bot.Inventory.TryGetItem(item, out var _item) && _item != null)
+                if (!CheckInventory(item))
                 {
-                    _Equip(_item);
+                    Logger($"Equipping Failed: \"{item}\" not found in Inventory or Bank");
+                    continue;
                 }
-                else Logger($"\"{item}\" not found");
+                if (!Bot.Inventory.TryGetItem(item, out var _item))
+                {
+                    Logger($"Equipping Failed: Could not parse \"{item}\" from your inventory");
+                    continue;
+                }
+                _Equip(_item);
             }
         }
     }
 
-    private void _Equip(InventoryItem item)
+    private void _Equip(InventoryItem? item)
     {
+        if (item == null)
+        {
+            Logger($"Equipping Failed: Parsed object for \"{item}\" is null");
+            return;
+        }
+
         switch (item.CategoryString.ToLower())
         {
             case "item": // Consumables
