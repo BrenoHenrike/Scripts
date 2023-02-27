@@ -179,6 +179,8 @@ public class CoreFarmerJoe
         Core.Equip(wep);
         #endregion Obtain the Silver Victory Blade
 
+        Core.SellItem("Battle Oracle Battlestaff");
+
         #region Dual Chainsaw Katanas
         DCSK.GetWep();
         #endregion Dual Chainsaw Katanas
@@ -189,46 +191,95 @@ public class CoreFarmerJoe
         Core.FarmClass = "Oracle";
         Core.EquipClass(ClassType.Farm);
         Adv.BestGear(GearBoost.dmgAll);
-        foreach (int level in new int[] { 30, 45, 50, 55, 60, 65, 70, 75 })
+
+        foreach (int Level in new int[] { 30, 45, 50, 55, 60, 65, 70, 75 })
         {
-            if (Bot.Player.Level >= 60)
+            while (!Bot.ShouldExit && Bot.Player.Level < Level)
             {
-                DS.GetDSS();
-                Core.Equip("DragonSoul Shinobi");
-                Core.SoloClass = "DragonSoul Shinobi";
-                SS.GetSSorc();
-                Core.FarmClass = "Scarlet Sorceress";
-
+                Core.Logger($"Level Goal: {Level}");
                 Core.EquipClass(ClassType.Farm);
-                Adv.SmartEnhance(Core.FarmClass);
-                Farm.IcestormArena(level);
-            }
-            if (Bot.Player.Level >= 65)
-            {
-                AP.GetAP();
-                Core.SoloClass = "ArchPaladin";
-                Core.FarmClass = "ArchPaladin";
-                EI.GetEI();
-                Farm.BladeofAweREP(6, true);
-                Core.ToBank("Blade of Awe");
-
-                Core.SoloClass = "ArchPaladin";
-                Core.FarmClass = "Eternal Inversionist";
-
-                Core.EquipClass(ClassType.Farm);
-                Adv.SmartEnhance(Core.FarmClass);
-                Farm.IcestormArena(level);
-            }
-            if (Bot.Player.Level < level)
-            {
-                if (Bot.Player.Level < 60)
+                Adv.SmartEnhance(Bot.Player.CurrentClass.Name);
+                switch (Level)
                 {
-                    Core.EquipClass(ClassType.Farm);
-                    while (Bot.ShouldExit && Bot.Player.Level < 60)
-                        Core.KillMonster("underlair", "r5", "Left", "Void Draconian");
+                    case 30:
+                    case 45:
+                    case 70:
+                    case 75:
+                        Farm.IcestormArena(Level);
+                        break;
+                    case 50:
+                    case 55:
+                        while (!Bot.ShouldExit && Bot.Player.Level < Level)
+                            Core.KillMonster("underlair", "r5", "Left", "Void Draconian", log: false);
+                        break;
+                    case 60:
+                        Farm.IcestormArena(Level);
+                        DS.GetDSS();
+                        Core.Equip("DragonSoul Shinobi");
+                        Core.SoloClass = "DragonSoul Shinobi";
+                        SS.GetSSorc();
+                        Core.FarmClass = "Scarlet Sorceress";
+
+                        Core.EquipClass(ClassType.Farm);
+                        Adv.SmartEnhance(Core.FarmClass);
+                        break;
+                    case 65:
+                        Farm.IcestormArena(Level);
+                        AP.GetAP();
+                        Core.SoloClass = "ArchPaladin";
+                        Core.FarmClass = "ArchPaladin";
+                        EI.GetEI();
+                        Farm.BladeofAweREP(6, true);
+                        Core.ToBank("Blade of Awe");
+
+                        Core.SoloClass = "ArchPaladin";
+                        Core.FarmClass = "Eternal Inversionist";
+
+                        Core.EquipClass(ClassType.Farm);
+                        break;
                 }
-                else Farm.IcestormArena(level);
             }
+
+
+
+            // while (!Bot.ShouldExit && Bot.Player.Level < Level)
+            // {
+            //     if (Level == 60)
+            //     {
+            //         Farm.IcestormArena(Level);
+            //         DS.GetDSS();
+            //         Core.Equip("DragonSoul Shinobi");
+            //         Core.SoloClass = "DragonSoul Shinobi";
+            //         SS.GetSSorc();
+            //         Core.FarmClass = "Scarlet Sorceress";
+
+            //         Core.EquipClass(ClassType.Farm);
+            //         Adv.SmartEnhance(Core.FarmClass);
+            //     }
+            //     if (Level == 75)
+            //     {
+            //         Farm.IcestormArena(Level);
+            //         AP.GetAP();
+            //         Core.SoloClass = "ArchPaladin";
+            //         Core.FarmClass = "ArchPaladin";
+            //         EI.GetEI();
+            //         Farm.BladeofAweREP(6, true);
+            //         Core.ToBank("Blade of Awe");
+
+            //         Core.SoloClass = "ArchPaladin";
+            //         Core.FarmClass = "Eternal Inversionist";
+
+            //         Core.EquipClass(ClassType.Farm);
+            //         Adv.SmartEnhance(Core.FarmClass);
+            //     }
+            // }
+            // while (!Bot.ShouldExit && Bot.Player.Level < Level)
+            // {
+            //     if (Bot.Player.Level < 60)
+            //         while (Bot.ShouldExit && Bot.Player.Level < 60)
+            //             Core.KillMonster("underlair", "r5", "Left", "Void Draconian");
+            //     else Farm.IcestormArena(Level);
+            // }
         }
         #endregion Level to 75
     }
@@ -240,6 +291,8 @@ public class CoreFarmerJoe
         Core.Logger("P1: Healer for xiang, Buying & Ranking Healer\n" +
         "class to prep for xiang (Skipped if you have Dragon of Time.");
 
+        Core.EquipClass(ClassType.Solo);
+
         ///Prep class for 13LoC
         if (!Core.CheckInventory("Dragon of Time"))
         {
@@ -249,6 +302,11 @@ public class CoreFarmerJoe
                 Adv.rankUpClass("Healer (Rare)");
             else Adv.rankUpClass("Healer");
         }
+
+        Core.SoloClass = "ArchPaladin";
+        Core.FarmClass = "Eternal Inversionist";
+
+        Core.EquipClass(ClassType.Solo);
 
         //P2 Chaos Shenanagins
         Core.Logger("P2: Chaos Shenanagins");
