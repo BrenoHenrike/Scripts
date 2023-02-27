@@ -25,6 +25,7 @@ using Skua.Core.Models.Quests;
 using Skua.Core.Models.Servers;
 using Skua.Core.Models.Shops;
 using Skua.Core.Models.Skills;
+using Skua.Core.Models.Auras;
 using Skua.Core.Options;
 using Skua.Core.Utils;
 
@@ -3290,6 +3291,34 @@ public class CoreBots
     }
 
     #endregion
+
+    #region Auras (will be deleted next version)
+
+    public bool TryGetSelfAura(string auraName, out Aura? aura)
+    {
+        if (Bot.Self.HasActiveAura(auraName))
+        {
+            aura = Bot.Self.GetAura(auraName);
+            return true;
+        }
+        aura = null;
+        return false;
+    }
+    public bool TryGetTargetAura(string auraName, out Aura? aura)
+    {
+        if (Bot.Target.HasActiveAura(auraName))
+        {
+            aura = Bot.Target.GetAura(auraName);
+            return true;
+        }
+        aura = null;
+        return false;
+    }
+
+    public int AuraSecondsRemaining(Aura aura)
+        => (aura == null || aura.ExpiresAt == null) ? 0 : (int)(((DateTime)aura.ExpiresAt) - DateTime.Now).TotalSeconds;
+
+    #endregion
 }
 
 public enum Alignment
@@ -3304,100 +3333,4 @@ public enum ClassType
     Solo,
     Farm,
     None
-}
-
-public enum AuraSubject
-{
-    Player = 0,
-    Target = 1
-}
-
-public class Aura
-{
-    public int? Index { get; set; }
-    public string? Name { get; set; }
-    public AuraSubject? Subject { get; set; }
-
-    public string? stringValue { get; set; }
-    public int? intValue { get; set; }
-
-    public string? Icon { get; set; }
-    public bool Passive { get; set; }
-    public string? PotionType { get; set; }
-
-    public int? Duration { get; set; }
-    public DateTime? TimeStamp { get; set; }
-    public DateTime? ExpiresAt { get; set; }
-
-    public string? cat { get; set; }
-    public string? t { get; set; }
-    public string? s { get; set; }
-    public string? fx { get; set; }
-
-    public string? animOn { get; set; }
-    public string? animOff { get; set; }
-    public string? msgOn { get; set; }
-    public bool isNew { get; set; }
-
-    public static AuraSubject Player = AuraSubject.Player;
-    public static AuraSubject Target = AuraSubject.Target;
-
-    public Aura(AuraSubject subject, string auraName = "", int index = -1)
-    {
-        string _subject = (int)subject == 0 ? "Self" : "";
-        dynamic? _aura = null;
-        if (!String.IsNullOrEmpty(auraName))
-        {
-            _aura = JsonConvert.DeserializeObject<dynamic>(IScriptInterface.Instance.Flash.Call("getAuraByName", _subject, auraName)!)!;
-        }
-        else if (index > -1)
-        {
-            _aura = JsonConvert.DeserializeObject<dynamic>(IScriptInterface.Instance.Flash.Call("getAuraByIndex", _subject, index)!)!;
-        }
-        else return;
-        if (_aura == null)
-        {
-            return;
-        }
-
-        IScriptInterface.Instance.Log("a");
-        Index = index > -1 ? index : _aura.index;
-        Name = !String.IsNullOrEmpty(auraName) ? auraName : _aura.nam;
-        Subject = subject;
-
-        IScriptInterface.Instance.Log("b");
-        stringValue = _aura.val;
-        if (stringValue != null && Int32.TryParse(stringValue, out int o))
-            intValue = o;
-
-        IScriptInterface.Instance.Log("c");
-        Icon = _aura.icon;
-        Passive = _aura.passive;
-        PotionType = _aura.potionType;
-
-        IScriptInterface.Instance.Log("d");
-        string? _duration = _aura.dur;
-        if (_duration != null && Int32.TryParse(_duration, out int d))
-            Duration = d;
-        long? _timestamp = _aura.ts;
-        if (_timestamp != null)
-            TimeStamp = DateTimeOffset.FromUnixTimeMilliseconds((long)_timestamp).DateTime.AddHours(DateTimeOffset.Now.Offset.Hours);
-        if (TimeStamp != null && Duration != null)
-            ExpiresAt = ((DateTime)TimeStamp).AddSeconds((double)Duration);
-
-        IScriptInterface.Instance.Log("e");
-        cat = _aura.cat;
-        t = _aura.t;
-        s = _aura.s;
-        fx = _aura.fx;
-
-        IScriptInterface.Instance.Log("f");
-        animOn = _aura.animOn;
-        animOff = _aura.animOff;
-        msgOn = _aura.msgOn;
-        isNew = _aura.isNew;
-    }
-
-    public int SecondsRemaining()
-        => (this == null || ExpiresAt == null) ? 0 : (int)(((DateTime)ExpiresAt) - DateTime.Now).TotalSeconds;
 }
