@@ -2030,7 +2030,7 @@ public class CoreBots
 
         foreach (string item in gear)
         {
-            while (!Bot.Inventory.IsEquipped(item))
+            if (!Bot.Inventory.IsEquipped(item))
             {
                 if (CheckInventory(item) && Bot.Inventory.TryGetItem(item, out var _item) && _item != null)
                 {
@@ -2050,7 +2050,7 @@ public class CoreBots
 
         foreach (int item in gear)
         {
-            while (!Bot.Inventory.IsEquipped(item))
+            if (!Bot.Inventory.IsEquipped(item))
             {
                 if (CheckInventory(item) && Bot.Inventory.TryGetItem(item, out var _item) && _item != null)
                 {
