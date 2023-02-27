@@ -207,7 +207,7 @@ public class CoreFarmerJoe
                 Core.FarmClass = "Scarlet Sorceress";
 
                 Core.EquipClass(ClassType.Farm);
-                Farm.Experience(level);
+                Farm.IcestormArena(level, true);
                 InvEn.EnhanceInventory();
             }
             if (Bot.Player.Level >= 65)
@@ -222,13 +222,13 @@ public class CoreFarmerJoe
                 Core.FarmClass = "Eternal Inversionist";
 
                 Core.EquipClass(ClassType.Farm);
-                Farm.Experience(level);
+                Farm.IcestormArena(level, true);
                 InvEn.EnhanceInventory();
             }
             if (Bot.Player.Level < level)
             {
                 Core.EquipClass(ClassType.Farm);
-                Farm.Experience(level);
+                Farm.IcestormArena(level, true);
                 Adv.SmartEnhance(Bot.Player.CurrentClass.Name);
             }
         }
@@ -292,7 +292,7 @@ public class CoreFarmerJoe
 
         #region Leveling to 100
         Core.Logger("P4 Leveling to 100");
-        Farm.Experience();
+        Farm.IcestormArena();
         InvEn.EnhanceInventory();
         #endregion Leveling to 100}
     }
