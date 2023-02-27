@@ -165,6 +165,9 @@ public class CoreFarmerJoe
 
     public void Level30to75()
     {
+        Core.SoloClass = "Oracle";
+        Core.FarmClass = "Oracle";
+
         #region Obtain the Enchanted Victory Blade
         //Arcane Blade of Glory / Shadow Blade of Dispair (+20% xp)
         Core.Logger("Arcane Blade of Glory / Shadow Blade of Dispair (+20% xp)");
@@ -178,23 +181,23 @@ public class CoreFarmerJoe
         else if (Core.CheckInventory("Shadow Blade of Dispair"))
             wep = "Shadow Blade of Dispair";
         Core.Equip(wep);
-        InvEn.EnhanceInventory();
+        Adv.SmartEnhance(wep);
         #endregion Obtain the Silver Victory Blade
 
         #region Dual Chainsaw Katanas
         DCSK.GetWep();
-        InvEn.EnhanceInventory();
+        Adv.SmartEnhance("Dual Chainsaw Katanas");
         #endregion Dual Chainsaw Katanas
 
         #region Leve30 to 75
         Core.Logger("Level to 75");
         Core.EquipClass(ClassType.Farm);
-        foreach (int level in new int[] { 45, 50, 55, 60, 65, 70, 75 })
+        foreach (int level in new int[] { 30, 45, 50, 55, 60, 65, 70, 75 })
         {
-            while (Bot.ShouldExit && Bot.Player.Level < 50)
+            while (Bot.ShouldExit && Bot.Player.Level < 60)
                 Core.KillMonster("underlair", "r5", "Left", "Void Draconian");
 
-            if (Bot.Player.Level >= 50)
+            if (Bot.Player.Level >= 60)
             {
                 DS.GetDSS();
                 Core.Equip("DragonSoul Shinobi");
@@ -213,6 +216,7 @@ public class CoreFarmerJoe
                 AP.GetAP();
                 EI.GetEI();
                 Farm.BladeofAweREP(6, true);
+                Core.ToBank("Blade of Awe");
 
                 Core.SoloClass = "ArchPaladin";
                 Core.FarmClass = "Eternal Inversionist";
@@ -223,10 +227,9 @@ public class CoreFarmerJoe
             }
             if (Bot.Player.Level < level)
             {
-                Core.ToBank("Blade of Awe");
                 Core.EquipClass(ClassType.Farm);
                 Farm.Experience(level);
-                InvEn.EnhanceInventory();
+                Adv.SmartEnhance(Bot.Player.CurrentClass.Name);
             }
         }
         #endregion Level to 75
@@ -239,6 +242,7 @@ public class CoreFarmerJoe
         Core.Logger("P1: Healer for xiang, Buying & Ranking Healer\n" +
         "class to prep for xiang (Skipped if you have Dragon of Time.");
 
+        ///Prep class for 13LoC
         if (!Core.CheckInventory("Dragon of Time"))
         {
             if (!Core.CheckInventory(new[] { "Healer", "Healer (Rare)" }))
@@ -278,8 +282,11 @@ public class CoreFarmerJoe
 
         Core.Logger("P3 - 4: Improving Efficiency, and more Classes");
         Shaman.GetShaman();
+        Core.FarmClass = "Shaman";
         GB.GetGB();
+        Core.SoloClass = "Glacial Berserker";
         SC.GetSC();
+        Core.SoloClass = "StoneCrusher";
         #endregion Prepare for Lvl100
 
 
