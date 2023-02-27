@@ -2239,38 +2239,7 @@ public class CoreBots
         Bot.Player.SetSpawnPoint(cell, pad);
         if (!ignoreCheck && Bot.Player.Cell == cell)
             return;
-        Bot.Map.Jump(cell, pad);
-        Bot.Sleep(200);
-        if (Bot.Player.X != 480 || Bot.Player.Y != 275 || !inPublicRoom())
-            return;
-
-        if (cell.Contains("Enter"))
-        {
-            Bot.Map.Jump(cell, "Spawn");
-            return;
-        }
-
-        string[] pads =
-        {
-            "Left",
-            "Right",
-            "Top",
-            "Bottom",
-            "Spawn",
-            "Up",
-            "Down",
-            "Center"
-        };
-
-        foreach (string _pad in pads)
-        {
-            if (_pad == pad)
-                continue;
-            Bot.Map.Jump(cell, _pad);
-            Bot.Sleep(200);
-            if (Bot.Player.X != 480 || Bot.Player.Y != 275)
-                break;
-        }
+        Bot.Map.Jump(cell, pad, false);
     }
 
     /// <summary>
@@ -2577,6 +2546,8 @@ public class CoreBots
             Random rnd = new();
             for (int i = 0; i < 20; i++)
             {
+                if (Bot.Options.SafeTimings)
+                    Bot.Wait.ForActionCooldown(GameActions.Transfer);
                 if (hasMapNumber)
                     Bot.Map.Join(map, cell, pad, ignoreCheck);
                 else
@@ -2588,11 +2559,22 @@ public class CoreBots
 
                 string? currentMap = Bot.Map.Name;
                 if (!String.IsNullOrEmpty(currentMap) && currentMap.ToLower() == strippedMap)
+                {
+                    if (Bot.Options.SafeTimings)
+                    {
+                        if (!Bot.Wait.ForMapLoad(map, 20) && !Bot.ShouldExit)
+                            Bot.Map.Jump(Bot.Player.Cell, Bot.Player.Pad, false);
+                        else
+                            Bot.Map.Jump(cell, pad, false);
+                        Bot.Sleep(Bot.Options.ActionDelay);
+                    }
                     break;
+                }
 
                 if (i == 19)
                     Logger($"Failed to join {map}");
             }
+
             Bot.Events.ExtensionPacketReceived -= MapIsMemberLocked;
 
             void MapIsMemberLocked(dynamic packet)
