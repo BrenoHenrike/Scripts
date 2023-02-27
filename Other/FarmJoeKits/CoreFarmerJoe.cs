@@ -165,8 +165,6 @@ public class CoreFarmerJoe
 
     public void Level30to75()
     {
-        Core.SoloClass = "Oracle";
-        Core.FarmClass = "Oracle";
 
         #region Obtain the Enchanted Victory Blade
         //Arcane Blade of Glory / Shadow Blade of Dispair (+20% xp)
@@ -174,46 +172,42 @@ public class CoreFarmerJoe
         EVBW.GetWeapon(VictoryBladeStyles.Smart);
 
         string wep = "";
-        if (Core.CheckInventory("Enchanted Victory Blade"))
-            wep = "Enchanted Victory Blade";
-        else if (Core.CheckInventory("Arcane Blade of Glory"))
+        if (Core.CheckInventory("Arcane Blade of Glory"))
             wep = "Arcane Blade of Glory";
         else if (Core.CheckInventory("Shadow Blade of Dispair"))
             wep = "Shadow Blade of Dispair";
         Core.Equip(wep);
-        Adv.SmartEnhance(wep);
         #endregion Obtain the Silver Victory Blade
 
         #region Dual Chainsaw Katanas
         DCSK.GetWep();
-        Adv.SmartEnhance("Dual Chainsaw Katanas");
         #endregion Dual Chainsaw Katanas
 
         #region Leve30 to 75
         Core.Logger("Level to 75");
+        Core.SoloClass = "Oracle";
+        Core.FarmClass = "Oracle";
         Core.EquipClass(ClassType.Farm);
+        Adv.BestGear(GearBoost.dmgAll);
         foreach (int level in new int[] { 30, 45, 50, 55, 60, 65, 70, 75 })
         {
-            while (Bot.ShouldExit && Bot.Player.Level < 60)
-                Core.KillMonster("underlair", "r5", "Left", "Void Draconian");
-
             if (Bot.Player.Level >= 60)
             {
                 DS.GetDSS();
                 Core.Equip("DragonSoul Shinobi");
-                SS.GetSSorc();
-
                 Core.SoloClass = "DragonSoul Shinobi";
+                SS.GetSSorc();
                 Core.FarmClass = "Scarlet Sorceress";
 
                 Core.EquipClass(ClassType.Farm);
-                Farm.IcestormArena(level, true);
-                InvEn.EnhanceInventory();
+                Adv.SmartEnhance(Core.FarmClass);
+                Farm.IcestormArena(level);
             }
             if (Bot.Player.Level >= 65)
             {
-                InvEn.EnhanceInventory();
                 AP.GetAP();
+                Core.SoloClass = "ArchPaladin";
+                Core.FarmClass = "ArchPaladin";
                 EI.GetEI();
                 Farm.BladeofAweREP(6, true);
                 Core.ToBank("Blade of Awe");
@@ -222,14 +216,18 @@ public class CoreFarmerJoe
                 Core.FarmClass = "Eternal Inversionist";
 
                 Core.EquipClass(ClassType.Farm);
-                Farm.IcestormArena(level, true);
-                InvEn.EnhanceInventory();
+                Adv.SmartEnhance(Core.FarmClass);
+                Farm.IcestormArena(level);
             }
             if (Bot.Player.Level < level)
             {
-                Core.EquipClass(ClassType.Farm);
-                Farm.IcestormArena(level, true);
-                Adv.SmartEnhance(Bot.Player.CurrentClass.Name);
+                if (Bot.Player.Level < 60)
+                {
+                    Core.EquipClass(ClassType.Farm);
+                    while (Bot.ShouldExit && Bot.Player.Level < 60)
+                        Core.KillMonster("underlair", "r5", "Left", "Void Draconian");
+                }
+                else Farm.IcestormArena(level);
             }
         }
         #endregion Level to 75
@@ -292,8 +290,9 @@ public class CoreFarmerJoe
 
         #region Leveling to 100
         Core.Logger("P4 Leveling to 100");
-        Farm.IcestormArena();
+        Farm.IcestormArena(75);
         InvEn.EnhanceInventory();
+        Farm.IcestormArena();
         #endregion Leveling to 100}
     }
 
