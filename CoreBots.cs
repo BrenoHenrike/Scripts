@@ -2030,9 +2030,6 @@ public class CoreBots
 
         foreach (string item in gear)
         {
-            if (String.IsNullOrEmpty(item) || String.IsNullOrWhiteSpace(item))
-                continue;
-
             if (!Bot.Inventory.IsEquipped(item))
             {
                 if (CheckInventory(item) && Bot.Inventory.TryGetItem(item, out var _item) && _item != null)
@@ -2053,9 +2050,6 @@ public class CoreBots
 
         foreach (int item in gear)
         {
-            if (item <= 0)
-                continue;
-
             if (!Bot.Inventory.IsEquipped(item))
             {
                 if (CheckInventory(item) && Bot.Inventory.TryGetItem(item, out var _item) && _item != null)
@@ -2096,7 +2090,7 @@ public class CoreBots
         Bot.Wait.ForItemEquip(item.ID);
         Bot.Sleep((int)(ActionDelay * 1.5));
         if (logEquip)
-            Logger($"Equipping {(Bot.Inventory.IsEquipped(item.ID) ? String.Empty : "failed: ")}{item.Name}", "Equip");
+            Logger($"Equipping {(Bot.Inventory.IsEquipped(item.ID) ? String.Empty : "failed: ")} {item.Name}", "Equip");
     }
 
     public void EquipCached()
