@@ -87,6 +87,7 @@ public class CoreFarmerJoe
     public Tutorial Tutorial = new();
 
 
+
     public string OptionsStorage = "FarmerJoePet";
     public bool DontPreconfigure = true;
     public List<IOption> Options = new List<IOption>()
@@ -104,6 +105,9 @@ public class CoreFarmerJoe
 
     public void DoAll()
     {
+        string SoloClassHolder = Core.SoloClass;
+        string FarmClassHolder = Core.FarmClass;
+
         Level1to30();
         Level30to75();
         Level75to100();
@@ -111,6 +115,10 @@ public class CoreFarmerJoe
         Outfit();
         Pets(PetChoice.HotMama);
         Pets(PetChoice.Akriloth);
+
+        //Restore (is this needed?)
+        Core.SoloClass = SoloClassHolder;
+        Core.SoloClass = FarmClassHolder;
     }
 
 
@@ -138,7 +146,7 @@ public class CoreFarmerJoe
         Core.Equip("Battle Oracle Battlestaff", "Battle Oracle Hood", "Battle Oracle Wings");
 
         Core.SoloClass = "Oracle";
-        Core.EquipClass(ClassType.Solo);
+        Core.Equip(Core.SoloClass);
 
         Core.RegisterQuests(4007);
         while (!Bot.ShouldExit && Bot.Player.Level < 10)
@@ -189,7 +197,7 @@ public class CoreFarmerJoe
         Core.Logger("Level to 75");
         Core.SoloClass = "Oracle";
         Core.FarmClass = "Oracle";
-        Core.EquipClass(ClassType.Farm);
+        Core.Equip(Core.FarmClass);
         Adv.BestGear(GearBoost.dmgAll);
 
         foreach (int Level in new int[] { 30, 45, 50, 55, 60, 65, 70, 75 })
@@ -197,7 +205,7 @@ public class CoreFarmerJoe
             while (!Bot.ShouldExit && Bot.Player.Level < Level)
             {
                 Core.Logger($"Level Goal: {Level}");
-                Core.EquipClass(ClassType.Farm);
+                Core.Equip(Core.FarmClass);
                 Adv.SmartEnhance(Bot.Player.CurrentClass.Name);
                 switch (Level)
                 {
@@ -220,7 +228,7 @@ public class CoreFarmerJoe
                         SS.GetSSorc();
                         Core.FarmClass = "Scarlet Sorceress";
 
-                        Core.EquipClass(ClassType.Farm);
+                        Core.Equip(Core.FarmClass);
                         Adv.SmartEnhance(Core.FarmClass);
                         break;
                     case 65:
@@ -235,51 +243,10 @@ public class CoreFarmerJoe
                         Core.SoloClass = "ArchPaladin";
                         Core.FarmClass = "Eternal Inversionist";
 
-                        Core.EquipClass(ClassType.Farm);
+                        Core.Equip(Core.FarmClass);
                         break;
                 }
             }
-
-
-
-            // while (!Bot.ShouldExit && Bot.Player.Level < Level)
-            // {
-            //     if (Level == 60)
-            //     {
-            //         Farm.IcestormArena(Level);
-            //         DS.GetDSS();
-            //         Core.Equip("DragonSoul Shinobi");
-            //         Core.SoloClass = "DragonSoul Shinobi";
-            //         SS.GetSSorc();
-            //         Core.FarmClass = "Scarlet Sorceress";
-
-            //         Core.EquipClass(ClassType.Farm);
-            //         Adv.SmartEnhance(Core.FarmClass);
-            //     }
-            //     if (Level == 75)
-            //     {
-            //         Farm.IcestormArena(Level);
-            //         AP.GetAP();
-            //         Core.SoloClass = "ArchPaladin";
-            //         Core.FarmClass = "ArchPaladin";
-            //         EI.GetEI();
-            //         Farm.BladeofAweREP(6, true);
-            //         Core.ToBank("Blade of Awe");
-
-            //         Core.SoloClass = "ArchPaladin";
-            //         Core.FarmClass = "Eternal Inversionist";
-
-            //         Core.EquipClass(ClassType.Farm);
-            //         Adv.SmartEnhance(Core.FarmClass);
-            //     }
-            // }
-            // while (!Bot.ShouldExit && Bot.Player.Level < Level)
-            // {
-            //     if (Bot.Player.Level < 60)
-            //         while (Bot.ShouldExit && Bot.Player.Level < 60)
-            //             Core.KillMonster("underlair", "r5", "Left", "Void Draconian");
-            //     else Farm.IcestormArena(Level);
-            // }
         }
         #endregion Level to 75
     }
@@ -291,7 +258,7 @@ public class CoreFarmerJoe
         Core.Logger("P1: Healer for xiang, Buying & Ranking Healer\n" +
         "class to prep for xiang (Skipped if you have Dragon of Time.");
 
-        Core.EquipClass(ClassType.Solo);
+        Core.Equip(Core.SoloClass);
 
         ///Prep class for 13LoC
         if (!Core.CheckInventory("Dragon of Time"))
@@ -306,7 +273,7 @@ public class CoreFarmerJoe
         Core.SoloClass = "ArchPaladin";
         Core.FarmClass = "Eternal Inversionist";
 
-        Core.EquipClass(ClassType.Solo);
+        Core.Equip(Core.SoloClass);
 
         //P2 Chaos Shenanagins
         Core.Logger("P2: Chaos Shenanagins");
