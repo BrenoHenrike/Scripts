@@ -59,6 +59,7 @@ public class CoreFarmerJoe
     public CoreBots Core => CoreBots.Instance;
     public CoreAdvanced Adv = new();
     public CoreFarms Farm = new();
+    public CoreStory Story = new();
     public CapeOfAwe COA = new();
     public Core13LoC LOC => new Core13LoC();
     public CoreDailies Daily = new();
@@ -115,69 +116,51 @@ public class CoreFarmerJoe
 
     public void Level1to30()
     {
+        if (Bot.Player.Level >= 30)
+        {
+            Core.Logger("Level is 30+, grabbing oracle, ranking it, then continuing");
+            Core.BuyItem("classhalla", 299, "Oracle");
+            Adv.rankUpClass("Oracle");
+            return;
+        }
+
         #region starting out the acc
         //starting out the acc
-        Core.Logger("starting out the acc");
+        Core.Logger("starting out the acc with the tutorial badges to make it a bit more convincing");
         Tutorial.Badges();
 
-        Core.Logger("Getting Starting Cash and Levels");
+        Core.Logger("Getting Starting Levels/Equipment");
 
-        if (Bot.Player.Level < 10)
-        {
-            Core.SoloClass = "Oracle";
-            Core.FarmClass = "Mage";
+        Core.BuyItem("classhalla", 299, "Oracle");
+        Core.BuyItem("classhalla", 299, "Battle Oracle Wings");
+        Core.BuyItem("classhalla", 299, "Battle Oracle Battlestaff");
+        Core.BuyItem("classhalla", 299, "Battle Oracle Hood");
+        Core.Equip("Battle Oracle Battlestaff", "Battle Oracle Hood", "Battle Oracle Wings");
 
-            Core.RegisterQuests(4007);
-            Adv.BuyItem("classhalla", 174, "Mage");
-            Adv.BuyItem("classhalla", 759, "Oracle");
-            Adv.rankUpClass("Mage");
-            Adv.rankUpClass("Oracle");
-            Core.EquipClass(ClassType.Solo);
-            while (!Bot.ShouldExit && Bot.Player.Level < 10)
-            {
-                if (Bot.Player.Level >= 5 && !Core.CheckInventory(new[] { "Healer's Staff", "Greenguard Knight", "Greenguard Knight Sheathed Blades" }))
-                {
-                    Bot.Drops.Add("Greenguard Knight", "Greenguard Knight Sheathed Blades");
-                    Core.BuyItem("oaklore", 1576, "Healer's Staff");
-                    Core.Equip("Healer's Staff");
-                    Core.EnsureAccept(6257);
-                    Core.KillMonster("oaklore", "r4Up", "Right", "*", "Training Monster Slain", 5);
-                    Core.EnsureComplete(6257);
-                    Core.Equip("Greenguard Knight", "Greenguard Knight Sheathed Blades");
-                }
-                Core.HuntMonster("oaklore", "Bone Berserker");
-            }
-            Core.CancelRegisteredQuests();
-        }
+        Core.SoloClass = "Oracle";
+        Core.EquipClass(ClassType.Solo);
 
-        if (Bot.Player.Level < 20)
-        {
-            Core.SoloClass = "Oracle";
-            Core.FarmClass = "Mage";
+        Core.RegisterQuests(4007);
+        while (!Bot.ShouldExit && Bot.Player.Level < 10)
+            Core.HuntMonster("oaklore", "Bone Berserker");
+        Core.CancelRegisteredQuests();
 
-            Adv.BuyItem("classhalla", 174, "Mage");
-            Adv.BuyItem("classhalla", 759, "Oracle");
-            Adv.BuyItem("classhalla", 174, "Mage's Hood");
-            Adv.BuyItem("classhalla", 176, "White Feather Wings");
-            Core.Equip("White Feather Wings");
-            Core.Equip("Mage's Hood");
-            Adv.rankUpClass("Mage");
-            Adv.rankUpClass("Oracle");
-            Farm.IcestormArena(20, true);
-            Core.SoloClass = "Oracle";
-            Core.FarmClass = "Mage";
-            InvEn.EnhanceInventory();
-        }
+        Core.RegisterQuests(178);
+        while (!Bot.ShouldExit && Bot.Player.Level < 28)
+            Core.HuntMonster("swordhavenundead", "Undead Giant");
+        Core.CancelRegisteredQuests();
 
-        if (Bot.Player.Level < 30)
-        {
-            Core.SoloClass = "Oracle";
-            Core.FarmClass = "Mage";
+        Story.KillQuest(176, "swordhavenundead", "Skeletal Soldier", false);
+        Story.KillQuest(177, "swordhavenundead", "Skeletal Ice Mage", false);
 
-            InvEn.EnhanceInventory();
-            Farm.IcestormArena(30, true);
-        }
+        Core.RegisterQuests(6294);
+        while (!Bot.ShouldExit && Bot.Player.Level < 30)
+            Core.HuntMonster("firewar", "Fire Drakel");
+        Core.CancelRegisteredQuests();
+        Adv.rankUpClass("Oracle");
     }
+
+
     #endregion starting out the acc
 
     public void Level30to75()
@@ -199,10 +182,6 @@ public class CoreFarmerJoe
         #endregion Obtain the Silver Victory Blade
 
         #region Dual Chainsaw Katanas
-        Adv.BuyItem("classhalla", 174, "Mage");
-        Adv.rankUpClass("Mage");
-        Adv.BuyItem("classhalla", 759, "Oracle");
-        Adv.rankUpClass("Oracle", false);
         DCSK.GetWep();
         InvEn.EnhanceInventory();
         #endregion Dual Chainsaw Katanas
@@ -212,6 +191,9 @@ public class CoreFarmerJoe
         Core.EquipClass(ClassType.Farm);
         foreach (int level in new int[] { 45, 50, 55, 60, 65, 70, 75 })
         {
+            while (Bot.ShouldExit && Bot.Player.Level < 50)
+                Core.KillMonster("underlair", "r5", "Left", "Void Draconian");
+
             if (Bot.Player.Level >= 50)
             {
                 DS.GetDSS();
@@ -221,6 +203,7 @@ public class CoreFarmerJoe
                 Core.SoloClass = "DragonSoul Shinobi";
                 Core.FarmClass = "Scarlet Sorceress";
 
+                Core.EquipClass(ClassType.Farm);
                 Farm.Experience(level);
                 InvEn.EnhanceInventory();
             }
@@ -229,6 +212,7 @@ public class CoreFarmerJoe
                 InvEn.EnhanceInventory();
                 AP.GetAP();
                 EI.GetEI();
+                Farm.BladeofAweREP(6, true);
 
                 Core.SoloClass = "ArchPaladin";
                 Core.FarmClass = "Eternal Inversionist";
@@ -239,6 +223,8 @@ public class CoreFarmerJoe
             }
             if (Bot.Player.Level < level)
             {
+                Core.ToBank("Blade of Awe");
+                Core.EquipClass(ClassType.Farm);
                 Farm.Experience(level);
                 InvEn.EnhanceInventory();
             }
@@ -385,7 +371,6 @@ public class CoreFarmerJoe
         Bot.Wait.ForPickup("The Server is Down");
         Core.Equip("The Server is Down");
     }
-
     public enum PetChoice
     {
         None,
