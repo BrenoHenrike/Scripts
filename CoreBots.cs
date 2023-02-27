@@ -2030,6 +2030,8 @@ public class CoreBots
 
         foreach (string item in gear)
         {
+            if (String.IsNullOrEmpty(item) || String.IsNullOrWhiteSpace(item))
+                continue;
             if (!Bot.Inventory.IsEquipped(item))
             {
                 if (CheckInventory(item) && Bot.Inventory.TryGetItem(item, out var _item) && _item != null)
@@ -2050,6 +2052,8 @@ public class CoreBots
 
         foreach (int item in gear)
         {
+            if (item <= 0)
+                continue;
             if (!Bot.Inventory.IsEquipped(item))
             {
                 if (CheckInventory(item) && Bot.Inventory.TryGetItem(item, out var _item) && _item != null)
