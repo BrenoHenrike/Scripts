@@ -223,6 +223,7 @@ public class CoreFarmerJoe
                     case 75:
                         if (Bot.Player.Level > 45)
                             MR.GetMR();
+                        Core.FarmClass = "Master Ranger";
                         Farm.IcestormArena(Level);
                         break;
                     case 50:
