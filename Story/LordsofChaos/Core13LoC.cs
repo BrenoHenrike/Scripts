@@ -2301,30 +2301,45 @@ public class Core13LoC
         // Defeat Drakath!
         if (!Story.QuestProgression(3876))
         {
-            Bot.Events.CellChanged += CutSceneFixer;
+            while (!Bot.ShouldExit && Bot.Player.Cell != "r1")
+            {
+                Bot.Sleep(Core.ActionDelay);
+                Core.Jump("r1");
+            }
+            // Bot.Events.CellChanged += CutSceneFixer;
             Core.EnsureAccept(3876);
-            if (!Bot.Quests.CanComplete(3876))
-                Core.HuntMonsterMapID("finalbattle", 1);
+            while (!Bot.ShouldExit && !Bot.Quests.CanComplete(3876))
+                Core.KillMonster("finalbattle", "r1", "Left", "Drakath", "Drakath Defeated");
             Core.EnsureComplete(3876);
         }
 
         //Defeat Drakath.. again!
         if (!Story.QuestProgression(3877))
         {
-            Bot.Events.CellChanged += CutSceneFixer;
+            while (!Bot.ShouldExit && Bot.Player.Cell != "r4")
+            {
+                Bot.Sleep(Core.ActionDelay);
+                Core.Jump("r4");
+            }
+            // Bot.Events.CellChanged += CutSceneFixer;
             Core.EnsureAccept(3877);
-            if (!Bot.Quests.CanComplete(3877))
-                Core.HuntMonsterMapID("finalbattle", 1);
+            while (!Bot.ShouldExit && !Bot.Quests.CanComplete(3877))
+                Core.KillMonster("finalbattle", "r4", "Left", "Drakath", "Drakath Defeated");
             Core.EnsureComplete(3877);
         }
 
         //Defeat Drakath!   
         if (!Story.QuestProgression(3878))
         {
-            Bot.Events.CellChanged += CutSceneFixer;
+            while (!Bot.ShouldExit && Bot.Player.Cell != "r9")
+            {
+                Bot.Sleep(Core.ActionDelay);
+                Core.Jump("r9");
+            }
+            // Bot.Events.CellChanged += CutSceneFixer;
             Core.EnsureAccept(3878);
-            if (!Bot.Quests.CanComplete(3878))
-                Core.HuntMonsterMapID("finalbattle", 23);
+            while (!Bot.ShouldExit && !Bot.Quests.CanComplete(3878))
+                Core.KillMonster("finalbattle", "r9", "Left", "Drakath", "Drakath Defeated");
             Core.EnsureComplete(3878);
         }
 
