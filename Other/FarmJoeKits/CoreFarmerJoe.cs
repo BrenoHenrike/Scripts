@@ -3,34 +3,39 @@ name: null
 description: null
 tags: null
 */
-//cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Dailies/0AllDailies.cs
-//cs_include Scripts/Dailies/LordOfOrder.cs
-//cs_include Scripts/Enhancement/InventoryEnhancer.cs
-//cs_include Scripts/Good/ArchPaladin.cs
-//cs_include Scripts/Good/BLoD/CoreBLOD.cs
-//cs_include Scripts/Good/GearOfAwe/CapeOfAwe.cs
-//cs_include Scripts/Good/GearOfAwe/CoreAwe.cs
-//cs_include Scripts/Good/Paladin.cs
-//cs_include Scripts/Hollowborn/HollowbornReapersScythe.cs
-//cs_include Scripts/Nation/AssistingCragAndBamboozle[Mem].cs
+//cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Nation/CoreNation.cs
 //cs_include Scripts/Nation/VHL/CoreVHL.cs
-//cs_include Scripts/Other/Classes/DragonShinobi.cs
+//cs_include Scripts/Good/GearOfAwe/CoreAwe.cs
+//cs_include Scripts/Good/BLoD/CoreBLOD.cs
+
+//cs_include Scripts/Dailies/0AllDailies.cs
+//cs_include Scripts/Good/GearOfAwe/CapeOfAwe.cs
+//cs_include Scripts/Good/Paladin.cs
+//cs_include Scripts/Nation/AssistingCragAndBamboozle[Mem].cs
+//cs_include Scripts/Other/FreeBoostsQuest(10mns).cs
+//cs_include Scripts/Enhancement/InventoryEnhancer.cs
+
+//cs_include Scripts/Other/Classes/REP-based/MasterRanger.cs
 //cs_include Scripts/Other/Classes/REP-based/EternalInversionist.cs
 //cs_include Scripts/Other/Classes/REP-based/GlacialBerserker.cs
 //cs_include Scripts/Other/Classes/REP-based/Shaman.cs
 //cs_include Scripts/Other/Classes/REP-based/StoneCrusher.cs
 //cs_include Scripts/Other/Classes/ScarletSorceress.cs
 //cs_include Scripts/Other/Classes/BloodSorceress.cs
-//cs_include Scripts/Other/FreeBoostsQuest(10mns).cs
+//cs_include Scripts/Other/Classes/DragonShinobi.cs
+//cs_include Scripts/Good/ArchPaladin.cs
+//cs_include Scripts/Dailies/LordOfOrder.cs
+
 //cs_include Scripts/Other/Weapons/BurningBlade.cs
 //cs_include Scripts/Other/Weapons/DualChainSawKatanas.cs
 //cs_include Scripts/Other/Weapons/EnchantedVictoryBladeWeapons.cs
+//cs_include Scripts/Hollowborn/HollowbornReapersScythe.cs
+
 //cs_include Scripts/Story/DragonFableOrigins.cs
 //cs_include Scripts/Story/Glacera.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
@@ -43,6 +48,7 @@ tags: null
 //cs_include Scripts/Story/XansLair.cs
 //cs_include Scripts/Story/Yokai.cs
 //cs_include Scripts/Story/Friendship.cs
+
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
 
@@ -53,7 +59,6 @@ public class CoreFarmerJoe
     public FreeBoosts Boosts = new();
     public FarmAllDailies FAD = new();
     public InventoryEnhancer InvEn = new();
-
 
     //Cores
     public CoreBots Core => CoreBots.Instance;
@@ -67,6 +72,7 @@ public class CoreFarmerJoe
     public CoreNation Nation = new();
 
     //Classes
+    public MasterRanger MR = new();
     public Shaman Shaman = new();
     public GlacialBerserker GB = new();
     public StoneCrusher SC = new();
@@ -105,6 +111,7 @@ public class CoreFarmerJoe
 
     public void DoAll()
     {
+        //Farm and Solo class holders for those doing this on non-starter accs
         string SoloClassHolder = Core.SoloClass;
         string FarmClassHolder = Core.FarmClass;
 
@@ -153,13 +160,14 @@ public class CoreFarmerJoe
             Core.HuntMonster("oaklore", "Bone Berserker");
         Core.CancelRegisteredQuests();
 
+        Story.KillQuest(176, "swordhavenundead", "Skeletal Soldier", false);
+        Story.KillQuest(177, "swordhavenundead", "Skeletal Ice Mage", false);
+
         Core.RegisterQuests(178);
         while (!Bot.ShouldExit && Bot.Player.Level < 28)
             Core.HuntMonster("swordhavenundead", "Undead Giant");
         Core.CancelRegisteredQuests();
 
-        Story.KillQuest(176, "swordhavenundead", "Skeletal Soldier", false);
-        Story.KillQuest(177, "swordhavenundead", "Skeletal Ice Mage", false);
 
         Core.RegisterQuests(6294);
         while (!Bot.ShouldExit && Bot.Player.Level < 30)
@@ -213,6 +221,8 @@ public class CoreFarmerJoe
                     case 45:
                     case 70:
                     case 75:
+                        if (Bot.Player.Level > 45)
+                            MR.GetMR();
                         Farm.IcestormArena(Level);
                         break;
                     case 50:
