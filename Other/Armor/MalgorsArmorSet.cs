@@ -67,6 +67,8 @@ public class MalgorsArmorSet
         if (Core.CheckInventory(Set))
             return;
 
+
+        Core.OneTimeMessage("why get YNR?","YNR is for Soloing the 2 last quest bosses for the merge items in ManaCradle, the bot *cannot* get the armor without it / you manualing it yourself.", forcedMessageBox: true);
         YNR.GetYnR();
 
         while (!Bot.ShouldExit && !Core.CheckInventory(Set))
