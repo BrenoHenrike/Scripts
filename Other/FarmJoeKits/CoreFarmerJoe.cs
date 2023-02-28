@@ -136,6 +136,7 @@ public class CoreFarmerJoe
             Core.Logger("Level is 30+, grabbing oracle, ranking it, then continuing");
             Core.BuyItem("classhalla", 299, "Oracle");
             Adv.rankUpClass("Oracle");
+            Farm.BladeofAweREP(6, true);
             return;
         }
 
@@ -174,6 +175,7 @@ public class CoreFarmerJoe
             Core.HuntMonster("firewar", "Fire Drakel");
         Core.CancelRegisteredQuests();
         Adv.rankUpClass("Oracle");
+        Farm.BladeofAweREP(6, true);
     }
 
 
@@ -264,6 +266,7 @@ public class CoreFarmerJoe
 
     public void Level75to100()
     {
+        InvEn.EnhanceInventory();
         #region Prepare for Lvl100
         // P1: Healer for xiang
         Core.Logger("P1: Healer for xiang, Buying & Ranking Healer\n" +

@@ -162,7 +162,9 @@ Base = Lycan = 4 | 3 | 2 | 1 | 2 | 1 = 250
 Base = Mage = 2 | 1 | 3 | 4 = Use if Available
 Base = Mage (Rare) = 2 | 1 | 3 | 4 = Use if Available
 Base = Master of Moglins = 2 | 2 | 3 | 1 | 4 = Use if Available
-Base = Master Ranger = 1 | 2 | 3 | 4 = Use if Available
+Farm = Master Ranger = 1 | 2 | 3 | 4 H<50s = 250
+Solo = Master Ranger = 1 | 1 | 1 | 1 | 1 | 1 | 2 = 250
+Base = Master Ranger = 1 | 1 | 1 | 1 | 1 | 1 | 4 = 250
 Base = MechaJouster = 1 | 2 | 3 | 4 = Use if Available
 Base = MindBreaker = 1 | 2 | 3 | 4 = Use if Available
 Base = Mystical Dark Caster = 1 | 2 | 3 | 4 = Use if Available
