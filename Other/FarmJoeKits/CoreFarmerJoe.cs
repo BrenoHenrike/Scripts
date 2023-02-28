@@ -50,6 +50,7 @@ tags: null
 //cs_include Scripts/Story/Friendship.cs
 
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
 using Skua.Core.Options;
 
 public class CoreFarmerJoe
@@ -200,9 +201,9 @@ public class CoreFarmerJoe
         #endregion Obtain Boost Weapon
 
 
-        #region Temporary Farmclass for your level
+        #region Temporary Farm class till level 45
         MR.GetMR();
-        #endregion Temporary Farmclass for your level
+        #endregion emporary Farmc class till level 45
 
 
         #region Leve30 to 75
@@ -211,56 +212,71 @@ public class CoreFarmerJoe
         Core.FarmClass = "Master Ranger";
         Core.Equip(Core.FarmClass);
         Adv.BestGear(GearBoost.dmgAll);
-
+        Farm.ToggleBoost(BoostType.Experience);
         foreach (int Level in new int[] { 30, 45, 50, 55, 60, 65, 70, 75 })
         {
-            while (!Bot.ShouldExit && Bot.Player.Level < Level)
+            Core.Logger($"Level Goal: {Level}");
+            Core.Equip(Core.FarmClass);
+            Adv.SmartEnhance(Bot.Player.CurrentClass.Name);
+            switch (Level)
             {
-                Core.Logger($"Level Goal: {Level}");
-                Core.Equip(Core.FarmClass);
-                Adv.SmartEnhance(Bot.Player.CurrentClass.Name);
-                switch (Level)
-                {
-                    //Classes
-                    case 45:
+                //Classes
+                case 45:
+                    while (!Bot.ShouldExit && Bot.Player.Level < Level || !Core.CheckInventory("Eternal Inversionist"))
+                    {
+                        Farm.IcestormArena(Level);
+                        ///EI will last us till 50
                         EI.GetEI();
                         Core.FarmClass = "Eternal Inversionist";
-                        break;
-                    case 50:
+                    }
+                    break;
+                case 50:
+                    while (!Bot.ShouldExit && Bot.Player.Level < Level || !Core.CheckInventory("Scarlet Sorceress"))
+                    {
                         Farm.IcestormArena(Level);
+                        //50 is the lowest level to get scarlet sorceress
                         SS.GetSSorc();
                         Core.FarmClass = "Scarlet Sorceress";
-                        break;
-                    case 55:
-                        while (!Bot.ShouldExit && Bot.Player.Level < Level)
-                            Core.KillMonster("underlair", "r5", "Left", "Void Draconian", log: false);
-                        break;
-                    case 60:
+                    }
+                    break;
+
+                case 55:
+                    while (!Bot.ShouldExit && Bot.Player.Level < Level)
+                        Core.KillMonster("underlair", "r5", "Left", "Void Draconian", log: false);
+                    break;
+
+                case 60:
+                    while (!Bot.ShouldExit && Bot.Player.Level < Level || !Core.CheckInventory("DragonSoul Shinobi"))
+                    {
                         Farm.IcestormArena(Level);
                         DS.GetDSS();
                         Core.Equip("DragonSoul Shinobi");
                         Core.SoloClass = "DragonSoul Shinobi";
-
                         Core.Equip(Core.FarmClass);
-                        break;
-                    case 65:
+                    }
+                    break;
+
+                case 65:
+                    while (!Bot.ShouldExit && Bot.Player.Level < Level || !Core.CheckInventory(new[] { "ArchPaladin", "Blade of Awe" }))
+                    {
                         Farm.IcestormArena(Level);
                         AP.GetAP();
                         Core.SoloClass = "ArchPaladin";
                         Farm.BladeofAweREP(6, true);
                         Core.ToBank("Blade of Awe");
                         Core.Equip(Core.FarmClass);
-                        break;
+                    }
+                    break;
 
-                    //Just Leveling
-                    case 30:
-                    case 70:
-                    case 75:
-                        Farm.IcestormArena(Level);
-                        break;
-                }
+                //Just Leveling
+                case 30:
+                case 70:
+                case 75:
+                    Farm.IcestormArena(Level);
+                    break;
             }
         }
+        Farm.ToggleBoost(BoostType.Experience, false);
         #endregion Level to 75
     }
 
