@@ -5952,7 +5952,7 @@
       "null"
     ],
     "path": "Story/LordsofChaos/Core13LoC.cs",
-    "size": 75344,
+    "size": 77351,
     "fileName": "Core13LoC.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/LordsofChaos/Core13LoC.cs"
   },
@@ -6082,21 +6082,6 @@
     "size": 793,
     "fileName": "14Hero(ChaosFinale).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/LordsofChaos/14Hero(ChaosFinale).cs"
-  },
-  {
-    "name": "Mount Doom Skull",
-    "description": "This will finish the Mount Doom Skull quest.",
-    "tags": [
-      "story",
-      "quest",
-      "chaos-saga",
-      "13-lords-of-chaos",
-      "mount-doom-skull"
-    ],
-    "path": "Story/LordsofChaos/MountDoomSkull.cs",
-    "size": 2490,
-    "fileName": "MountDoomSkull.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/LordsofChaos/MountDoomSkull.cs"
   },
   {
     "name": "(Arcangrove) Ledgermayne",
@@ -10843,7 +10828,7 @@
       "null"
     ],
     "path": "Other/FarmJoeKits/FarmerJoeLeveling.cs",
-    "size": 2735,
+    "size": 2677,
     "fileName": "FarmerJoeLeveling.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/FarmerJoeLeveling.cs"
   },
@@ -10854,7 +10839,7 @@
       "null"
     ],
     "path": "Other/FarmJoeKits/CoreFarmerJoe.cs",
-    "size": 15067,
+    "size": 14970,
     "fileName": "CoreFarmerJoe.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/CoreFarmerJoe.cs"
   },
@@ -10865,7 +10850,7 @@
       "null"
     ],
     "path": "Other/FarmJoeKits/FarmerJoeEndGame[WIP].cs",
-    "size": 2777,
+    "size": 2719,
     "fileName": "FarmerJoeEndGame[WIP].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/FarmerJoeEndGame[WIP].cs"
   },
@@ -10876,7 +10861,7 @@
       "null"
     ],
     "path": "Other/FarmJoeKits/FarmerJoeKitClasses[WIP].cs",
-    "size": 3402,
+    "size": 3344,
     "fileName": "FarmerJoeKitClasses[WIP].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/FarmerJoeKitClasses[WIP].cs"
   },
@@ -10887,7 +10872,7 @@
       "null"
     ],
     "path": "Other/FarmJoeKits/FarmerJoeOutfitandPet.cs",
-    "size": 2773,
+    "size": 2715,
     "fileName": "FarmerJoeOutfitandPet.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/FarmerJoeOutfitandPet.cs"
   },
@@ -10898,7 +10883,7 @@
       "null"
     ],
     "path": "Other/FarmJoeKits/FarmerJoeKit0DoAll.cs",
-    "size": 2662,
+    "size": 2604,
     "fileName": "FarmerJoeKit0DoAll.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/FarmerJoeKit0DoAll.cs"
   },
