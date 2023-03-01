@@ -484,7 +484,7 @@ public class CoreArchMage
                         Adv.KillUltra("darkcarnax", "Boss", "Right", "Nightmare Carnax", "Calamitous Ruin", isTemp: false);
                         Bot.Events.RunToArea -= DarkCarnaxMove;
                     }
-                    else Item("tercessuinotlim", "Nulgath", item, quant);
+                    else Item("darkcarnax", "Nightmare Carnax", item, quant);
                     break;
 
                 case "The Mortal Coil":
