@@ -35,7 +35,7 @@ public class TenacityChallenge
         foreach (string reward in rewards)
         {
             Core.Logger($"Checking for item: \"reward\"");
-            while (!Bot.Inventory.IsMaxStack(reward))
+            while (!Bot.ShouldExit && !Bot.Inventory.IsMaxStack(reward))
             {
                 Core.HuntMonster("deathpits", "Ghastly Darkblood", "Dark Runes", 6);
                 Core.HuntMonster("evilwardage", "Bloodfiend", "Blood Runes", 7);
