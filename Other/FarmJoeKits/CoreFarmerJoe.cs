@@ -190,9 +190,10 @@ public class CoreFarmerJoe
         EVBW.GetWeapon(VictoryBladeStyles.Smart);
         Adv.EnhanceItem(Core.CheckInventory("Arcane Blade of Glory") ? "Arcane Blade of Glory" : "Shadow Blade of Dispair", EnhancementType.Lucky);
         Core.Equip(Core.CheckInventory("Arcane Blade of Glory") ? "Arcane Blade of Glory" : "Shadow Blade of Dispair");
-        Core.ToBank("Battle Oracle Battlestaff");
-        Core.SellItem("Default Staff");
         DCSK.GetWep();
+        Core.ToBank("Blade of Awe", "Dual ChainSaw Katanas", "Battle Oracle Battlestaff");
+        Core.SellItem("Default Staff");
+
         #endregion Obtain Boost Weapon
 
         #region Leve30 to 75
@@ -216,14 +217,17 @@ public class CoreFarmerJoe
                 case 45:
                     while (!Bot.ShouldExit && Bot.Player.Level < Level || !Core.CheckInventory("Eternal Inversionist"))
                     {
+                        Farm.IcestormArena(Level);
                         EI.GetEI();
                         ///EI will last us till 50
                         Core.FarmClass = "Eternal Inversionist";
                         Core.ToBank("Master Ranger");
-                        Farm.IcestormArena(Level);
+                        InvEn.EnhanceInventory();
                     }
                     break;
+                    
                 case 50:
+                case 55:
                     while (!Bot.ShouldExit && Bot.Player.Level < Level || !Core.CheckInventory("Scarlet Sorceress"))
                     {
                         Farm.IcestormArena(Level);
@@ -231,11 +235,6 @@ public class CoreFarmerJoe
                         SS.GetSSorc();
                         Core.FarmClass = "Scarlet Sorceress";
                     }
-                    break;
-
-                case 55:
-                    while (!Bot.ShouldExit && Bot.Player.Level < Level)
-                        Core.KillMonster("underlair", "r5", "Left", "Void Draconian", log: false);
                     break;
 
                 case 60:
