@@ -838,15 +838,18 @@ public class CoreToD
         Story.PreLoad(this);
 
         // Eye for an Eye of the Old Gods
+        Core.EquipClass(ClassType.Solo);
         Story.KillQuest(5189, "fourdpyramid", "Sekt");
 
         // Hounded by History
+        Core.EquipClass(ClassType.Farm);
         Story.KillQuest(5190, "fourdpyramid", "Negastri Hound");
 
         // Stand and De-Lever
         Story.MapItemQuest(5191, "fourdpyramid", 4556, 1);
 
         // Yo Mummy
+        Core.EquipClass(ClassType.Solo);
         Story.KillQuest(5192, "fourdpyramid", "Sekt's Mummy");
         Story.MapItemQuest(5192, "fourdpyramid", 4557, 1);
 
@@ -854,6 +857,7 @@ public class CoreToD
         Story.MapItemQuest(5193, "fourdpyramid", 4558, 1);
 
         // Gauze in 60 Seconds
+        Core.EquipClass(ClassType.Farm);
         Story.KillQuest(5194, "fourdpyramid", "Nega Mummy");
 
         // De-Lever-ence
@@ -902,7 +906,7 @@ public class CoreToD
         // Stone Sphynx Gems
         Story.KillQuest(5208, "fourdpyramid", new[] { "Stone Sphynx", "Stone Sphynx" });
 
-        // Beam Me Up Scotty
+        // Beam Me Up Scotty;
         Story.MapItemQuest(5209, "fourdpyramid", 4571, 4);
         Story.MapItemQuest(5209, "fourdpyramid", 4572, 1);
 
@@ -910,6 +914,7 @@ public class CoreToD
         Story.MapItemQuest(5210, "fourdpyramid", 4573, 1);
 
         // The Black Plague
+        Core.EquipClass(ClassType.Solo);
         Story.KillQuest(5211, "fourdpyramid", "Black Plague");
 
         // The Hero's Doom
