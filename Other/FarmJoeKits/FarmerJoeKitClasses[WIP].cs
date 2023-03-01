@@ -34,7 +34,6 @@ tags: null
 //cs_include Scripts/Story/DragonFableOrigins.cs
 //cs_include Scripts/Story/Glacera.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
-//cs_include Scripts/Story/LordsofChaos/MountDoomSkull.cs
 //cs_include Scripts/Story/Nation/CitadelRuins.cs
 //cs_include Scripts/Story/QueenofMonsters/Extra/BrightOak.cs
 //cs_include Scripts/Story/QueenofMonsters/Extra/LivingDungeon.cs
