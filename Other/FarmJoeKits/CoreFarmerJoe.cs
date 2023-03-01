@@ -184,32 +184,20 @@ public class CoreFarmerJoe
 
     public void Level30to75()
     {
-
         #region Obtain Boost Weapons
         //Arcane Blade of Glory / Shadow Blade of Dispair (+20% xp)
         Core.Logger("Arcane Blade of Glory / Shadow Blade of Dispair (+20% xp)");
         EVBW.GetWeapon(VictoryBladeStyles.Smart);
-
-        string wep = "";
-        if (Core.CheckInventory("Arcane Blade of Glory"))
-            wep = "Arcane Blade of Glory";
-        else if (Core.CheckInventory("Shadow Blade of Dispair"))
-            wep = "Shadow Blade of Dispair";
-        Core.Equip(wep);
-        Core.SellItem("Battle Oracle Battlestaff");
+        Adv.EnhanceItem(Core.CheckInventory("Arcane Blade of Glory") ? "Arcane Blade of Glory" : "Shadow Blade of Dispair", EnhancementType.Lucky);
+        Core.Equip(Core.CheckInventory("Arcane Blade of Glory") ? "Arcane Blade of Glory" : "Shadow Blade of Dispair");
+        Core.ToBank("Battle Oracle Battlestaff");
+        Core.SellItem("Default Staff");
         DCSK.GetWep();
         #endregion Obtain Boost Weapon
-
-
-        #region Temporary Farm class till level 45
-        MR.GetMR();
-        #endregion emporary Farmc class till level 45
-
 
         #region Leve30 to 75
         Core.Logger("Level to 75");
         Core.SoloClass = "Oracle";
-        Core.FarmClass = "Master Ranger";
         Core.Equip(Core.FarmClass);
         Adv.BestGear(GearBoost.dmgAll);
         Farm.ToggleBoost(BoostType.Experience);
@@ -220,6 +208,10 @@ public class CoreFarmerJoe
             Adv.SmartEnhance(Bot.Player.CurrentClass.Name);
             switch (Level)
             {
+                case 30:
+                    MR.GetMR();
+                    Core.FarmClass = "Master Ranger";
+                    break;
                 //Classes
                 case 45:
                     while (!Bot.ShouldExit && Bot.Player.Level < Level || !Core.CheckInventory("Eternal Inversionist"))
@@ -228,6 +220,7 @@ public class CoreFarmerJoe
                         ///EI will last us till 50
                         EI.GetEI();
                         Core.FarmClass = "Eternal Inversionist";
+                        Core.ToBank("Master Ranger");
                     }
                     break;
                 case 50:
@@ -269,7 +262,6 @@ public class CoreFarmerJoe
                     break;
 
                 //Just Leveling
-                case 30:
                 case 70:
                 case 75:
                     Farm.IcestormArena(Level);
