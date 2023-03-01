@@ -1,7 +1,7 @@
 /*
-name: 6PesistingMayhem
-description: null
-tags: null
+name: Hollowborn Chaos Envoy - Pesisting Mayhem
+description: does the 'pesisting mayhem' part of hollowborn chaos envoy
+tags: hollowborn chaos envy, hollowborn, pesisting mayhem
 */
 //cs_include Scripts/Chaos/ChaosAvengerPreReqs.cs
 //cs_include Scripts/Chaos/DrakathsArmor.cs

@@ -1,7 +1,7 @@
 /*
-name: 5ShadowOfDisdain
-description: null
-tags: null
+name: Hollowborn Chaos Envoy - Shadow Of Disdain
+description: does the 'shadow of disdain' part of hollowborn chaos envoy
+tags: hollowborn chaos envy, hollowborn, shadow of disdain
 */
 //cs_include Scripts/Chaos/ChaosAvengerPreReqs.cs
 //cs_include Scripts/Chaos/DrakathsArmor.cs

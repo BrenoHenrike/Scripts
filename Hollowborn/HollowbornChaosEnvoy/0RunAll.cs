@@ -1,7 +1,7 @@
 /*
-name: 0RunAll
-description: null
-tags: null
+name: Hollowborn Chaos Envy Run all
+description: does all of hollowborn chaos envy
+tags: hollowborn chaos envy, hollowborn
 */
 //cs_include Scripts/Chaos/ChaosAvengerPreReqs.cs
 //cs_include Scripts/Chaos/DrakathsArmor.cs

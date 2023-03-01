@@ -1,7 +1,7 @@
 /*
-name: 3UniqueQuarry
-description: null
-tags: null
+name: Hollowborn Chaos Envoy - Unique Quarry
+description: does the 'unique quarry' part of hollowborn chaos envoy
+tags: hollowborn chaos envy, hollowborn, unique quarry
 */
 //cs_include Scripts/Chaos/ChaosAvengerPreReqs.cs
 //cs_include Scripts/Chaos/DrakathsArmor.cs

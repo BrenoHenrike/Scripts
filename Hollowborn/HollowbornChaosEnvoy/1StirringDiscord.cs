@@ -1,7 +1,7 @@
 /*
-name: 1StirringDiscord
-description: null
-tags: null
+name: Hollowborn Chaos Envoy - Stirring Discord
+description: does the 'stirring discord' part of hollowborn chaos envoy
+tags: hollowborn chaos envy, hollowborn, stirring discord
 */
 //cs_include Scripts/Chaos/ChaosAvengerPreReqs.cs
 //cs_include Scripts/Chaos/DrakathsArmor.cs
