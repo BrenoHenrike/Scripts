@@ -1,7 +1,7 @@
 /*
-name: ENNH
-description: null
-tags: null
+name: Enchanted Nulgath Nation House
+description: gets the enchanted nulgath nation house
+tags: enchanted nulgath nation house, ennh, nulgath
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
