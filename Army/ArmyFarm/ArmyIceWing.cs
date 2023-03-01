@@ -53,7 +53,7 @@ public class IceWingLevelingArmy
 
         Core.RegisterQuests(Core.IsMember ? 6635 : 6632);
         while (!Bot.ShouldExit)
-            ArmyHunt("icestormarena", new[] {"Icewing"}, "Warlord Icewing Defeated", ClassType.Solo, true, 99);
+            ArmyHunt("icestormarena", new[] { "Warlord Icewing" }, "Warlord Icewing Defeated", ClassType.Solo, true);
         Core.CancelRegisteredQuests();
     }
 
@@ -61,46 +61,21 @@ public class IceWingLevelingArmy
     {
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
-
-        if (Bot.Config.Get<bool>("sellToSync"))
-            Army.SellToSync(item, quant);
-
-        Core.AddDrop(item);
+        
+        PlayerAFK();
+        if (!isTemp)
+            Core.AddDrop(item);
 
         Core.EquipClass(classType);
         Army.waitForParty(map, item);
         Core.FarmingLogger(item, quant);
-
-        Army.SmartAggroMonStart(map, monsters);
-
-        while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
-            Bot.Combat.Attack("*");
-
-        Army.AggroMonStop(true);
-        Core.JumpWait();
-    }
-
-    void ArmyHunt(string map, int monsterID, string item, ClassType classType, bool isTemp = false, int quant = 1)
-    {
-        Core.PrivateRooms = true;
-        Core.PrivateRoomNumber = Army.getRoomNr();
-
-        Monster monster = Bot.Monsters.CurrentMonsters?.Find(m => m.ID == monsterID);
-
-        if (Bot.Config.Get<bool>("sellToSync"))
-            Army.SellToSync(item, quant);
-
-        Core.AddDrop(item);
-
-        Army.waitForParty(map, item);
-        Core.FarmingLogger(item, quant);
-
-        Army.SmartAggroMonStart(map, monster.ToString());
+        
+        Core.Jump("r23");
+        Bot.Player.SetSpawnPoint();
 
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
-            Bot.Combat.Attack("*");
+            Bot.Combat.Attack("Warlord Icewing");
 
-        Army.AggroMonStop(true);
         Core.JumpWait();
     }
 
