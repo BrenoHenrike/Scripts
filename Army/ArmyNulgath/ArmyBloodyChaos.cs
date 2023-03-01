@@ -9,6 +9,7 @@ tags: blood gem of the archfiend, army
 //cs_include Scripts/Army/CoreArmyLite.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
+using Skua.Core.Models.Monsters;
 
 public class ArmyBloodyChaos
 {
@@ -25,7 +26,12 @@ public class ArmyBloodyChaos
     public bool DontPreconfigure = true;
     public List<IOption> Options = new List<IOption>()
     {
-        new Option<int>("armysize","Players", "Input the minimum of players to wait for", 1),
+        sArmy.player1,
+        sArmy.player2,
+        sArmy.player3,
+        sArmy.player4,
+        sArmy.player5,
+        sArmy.player6,
         new Option<Cell>("mob", "h90 or h85", "h90 for more relic turn ins, but more chance of getting stuck due to deaths - h85 for just Relics from Escherion", Cell.h90),
         sArmy.packetDelay,
         CoreBots.Instance.SkipOptions
@@ -51,63 +57,73 @@ public class ArmyBloodyChaos
 
         Core.AddDrop(Loot);
         Core.EquipClass(ClassType.Farm);
-        
+
         Core.RegisterQuests(2857); //Supplies to Spin the Wheel
         Bot.Quests.UpdateQuest(363);
 
-        Core.Logger("Selling items to sync up your army");
-        Core.SellItem("Hydra Scale Piece", all: true);
-        Core.SellItem("Shattered Legendary Sword of Dragon Control");
-        Core.SellItem("Escherion's Helm");
+        Army.SellToSync("Hydra Scale Piece", Bot.Inventory.GetQuantity("Hydra Scale Piece"));
+        Army.SellToSync("Shattered Legendary Sword of Dragon Control", 1);
+        Army.SellToSync("Escherion's Helm", 1);
 
+        //Bloody Chaos
+        Core.RegisterQuests(7816);
         while (!Bot.ShouldExit && !Core.CheckInventory("Blood Gem of the Archfiend", quant))
         {
-            Core.EnsureAccept(7816); //Bloody Chaos
-            Core.Join("hydrachallenge", mob.ToString(), "Left");
-            WaitCheck();
-            Bot.Sleep(2000);
-            Army.AggroMonCells(mob.ToString());
-            Army.AggroMonStart("hydrachallenge");
-            while (!Bot.ShouldExit && !Core.CheckInventory("Hydra Scale Piece", 200))
-                Bot.Combat.Attack("*");
-            Army.AggroMonStop(true);
-            Core.Join("stalagbite");
-            Core.Jump("r2", "Right");
-            WaitCheck();
-            Bot.Sleep(2000);
-            Army.AggroMonCells("r2");
-            Army.AggroMonStart("stalagbite");
-            while (!Bot.ShouldExit && !Core.CheckInventory("Shattered Legendary Sword of Dragon Control"))
+            ArmyHunt("hydrachallenge", new[] { mob.ToString() }, "Hydra Scale Piece", ClassType.Solo, true, 200);
+            ArmyHunt("stalagbite", new[] { "vath" }, "Shattered Legendary Sword of Dragon Control", ClassType.Solo, false);
+            ArmyHunt("escherion", new[] { "Escherion" }, "Escherion's Helm", ClassType.Solo, false);
+        }
+        Core.CancelRegisteredQuests();
+    }
+
+
+    void ArmyHunt(string map = null, string[] monsters = null, string item = null, ClassType classType = ClassType.Solo, bool isTemp = false, int quant = 1)
+    {
+        Core.PrivateRooms = true;
+        Core.PrivateRoomNumber = Army.getRoomNr();
+
+        if (Bot.Config.Get<bool>("sellToSync"))
+            Army.SellToSync(item, quant);
+
+        Core.AddDrop(item);
+
+        Core.EquipClass(classType);
+        Army.waitForParty(map, item);
+        Core.FarmingLogger(item, quant);
+
+        Army.SmartAggroMonStart(map, monsters);
+
+        while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
+        {
+            if (Bot.Map.Name == "Vath")
             {
                 if (Bot.Monsters.MapMonsters?.FirstOrDefault(m => m.Name == "Stalagbite")?.Alive ?? false)
+                {
                     Bot.Kill.Monster("Stalagbite");
-                Bot.Combat.Attack("Vath");
+                    Bot.Combat.Attack("Vath");
+                }
             }
-            Army.AggroMonStop(true);
-            Core.Join("escherion");
-            Core.Jump("Boss", "Left");
-            WaitCheck();
-            Bot.Sleep(2000);
-            Army.AggroMonCells("Boss");
-            Army.AggroMonStart("escherion");
-            while (!Bot.ShouldExit && !Core.CheckInventory("Escherion's Helm"))
+            else if (Bot.Map.Name == "escherion")
             {
-                if (Bot.Monsters.MapMonsters?.FirstOrDefault(m => m.Name == "Staff of Inversion")?.Alive ?? false)
-                    Bot.Kill.Monster("Staff of Inversion");
-                Bot.Combat.Attack("Escherion");
+                while (!Bot.ShouldExit && !Core.CheckInventory("Escherion's Helm"))
+                {
+                    if (Bot.Monsters.MapMonsters?.FirstOrDefault(m => m.Name == "Staff of Inversion")?.Alive ?? false)
+                        Bot.Kill.Monster("Staff of Inversion");
+                    Bot.Combat.Attack("Escherion");
+                }
             }
-            Army.AggroMonStop(true);
-            Core.EnsureComplete(7816);
+            else Bot.Combat.Attack("*");
         }
+        Army.AggroMonStop(true);
+        Core.JumpWait();
+    }
 
-        void WaitCheck()
-        {
-            while (Bot.Map.PlayerCount < Bot.Config.Get<int>("armysize"))
-            {
-                Core.Logger($"Waiting for the squad. [{Bot.Map.PlayerNames.Count}/{Bot.Config.Get<int>("armysize")}]");
-                Bot.Sleep(2000);
-            }
-        };
+
+    public void PlayerAFK()
+    {
+        Core.Logger("Anti-AFK engaged");
+        Bot.Sleep(1500);
+        Bot.Send.Packet("%xt%zm%afk%1%false%");
     }
 
     private string[] Loot =
