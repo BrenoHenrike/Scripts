@@ -198,6 +198,7 @@ public class CoreFarmerJoe
         #region Leve30 to 75
         Core.Logger("Level to 75");
         Core.SoloClass = "Oracle";
+        Core.FarmClass = "Master Ranger";
         Core.Equip(Core.FarmClass);
         Adv.BestGear(GearBoost.dmgAll);
         Farm.ToggleBoost(BoostType.Experience);
@@ -210,17 +211,16 @@ public class CoreFarmerJoe
             {
                 case 30:
                     MR.GetMR();
-                    Core.FarmClass = "Master Ranger";
                     break;
                 //Classes
                 case 45:
                     while (!Bot.ShouldExit && Bot.Player.Level < Level || !Core.CheckInventory("Eternal Inversionist"))
                     {
-                        Farm.IcestormArena(Level);
-                        ///EI will last us till 50
                         EI.GetEI();
+                        ///EI will last us till 50
                         Core.FarmClass = "Eternal Inversionist";
                         Core.ToBank("Master Ranger");
+                        Farm.IcestormArena(Level);
                     }
                     break;
                 case 50:
