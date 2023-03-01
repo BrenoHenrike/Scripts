@@ -1,7 +1,7 @@
 /*
-name: TheDarkSacrifice
-description: null
-tags: null
+name: HBP - The Dark Sacrifice
+description: does the 'the dark sacrifice' part of hollowborn doomKnight
+tags: hollowborn paladin, hollowborn, the dark sacrifice
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

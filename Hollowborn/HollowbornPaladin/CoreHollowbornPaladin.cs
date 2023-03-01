@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: HBP - inserthere
+description: does the 'inserthere' part of hollowborn doomKnight
+tags: hollowborn paladin, hollowborn, inserthere
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

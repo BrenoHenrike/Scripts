@@ -1,7 +1,7 @@
 /*
-name: LetsGetYouASuit
-description: null
-tags: null
+name: HBP - Lets Get You A Suit
+description: does the 'lets get you a suit' part of hollowborn doomKnight
+tags: hollowborn paladin, hollowborn, lets get you a suit
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

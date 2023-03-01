@@ -1,7 +1,7 @@
 /*
 name: Hollowborn Chaos Envoy - Shadow Of Disdain
 description: does the 'shadow of disdain' part of hollowborn chaos envoy
-tags: hollowborn chaos envy, hollowborn, shadow of disdain
+tags: hollowborn chaos envy, hollowborn, shadow of disdain, hollowborn envoy of chaos character page badge
 */
 //cs_include Scripts/Chaos/ChaosAvengerPreReqs.cs
 //cs_include Scripts/Chaos/DrakathsArmor.cs

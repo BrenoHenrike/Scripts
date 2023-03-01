@@ -1,7 +1,7 @@
 /*
-name: IGotYourBackAndYourTop
-description: null
-tags: null
+name: HBP - I Got Your Back And Your Top
+description: does the 'i got your back and your top' part of hollowborn doomKnight
+tags: hollowborn paladin, hollowborn, i got your back and your top
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

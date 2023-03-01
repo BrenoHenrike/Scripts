@@ -1,7 +1,7 @@
 /*
 name: HBDK - A Dark Knight
-description: does the 'a dark knight' part of Hollowborn doomKnight
-tags: hollowborn, a dark knight
+description: does the 'a dark knight' part of hollowborn doomKnight
+tags: hollowborn, a dark knight, hollowborn doomknight
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

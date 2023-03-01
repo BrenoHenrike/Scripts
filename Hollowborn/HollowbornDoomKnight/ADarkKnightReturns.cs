@@ -1,7 +1,7 @@
 /*
 name: HBDK - A Dark Knight Returns
-description: does the 'a dark knight returns' part of Hollowborn doomKnight
-tags: hollowborn, a dark knight returns, hollowborn doomknight, Hollowborn Sword of Doom
+description: does the 'a dark knight returns' part of hollowborn doomKnight
+tags: hollowborn, a dark knight returns, hollowborn doomknight, hollowborn sword of doom, hollowborn doomknight character page badge
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

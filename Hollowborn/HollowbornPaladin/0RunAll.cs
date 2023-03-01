@@ -1,7 +1,7 @@
 /*
-name: 0RunAll
-description: null
-tags: null
+name: Hollowborn DoomKnight - Do all
+description: does all of hollowborn doomKnight and hollowborn paladin
+tags: hollowborn, hollowborn paladin, do all
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

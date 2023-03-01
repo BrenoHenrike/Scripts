@@ -1,7 +1,7 @@
 /*
-name: ThePostSummoning
-description: null
-tags: null
+name: HBP - The Post Summoning
+description: does the 'the post summoning' part of hollowborn doomKnight
+tags: hollowborn paladin, hollowborn, the post summoning, hollowborn paladin character page badge
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
