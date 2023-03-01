@@ -1,7 +1,7 @@
 /*
-name: ADarkKnightReturns
-description: null
-tags: null
+name: HBDK - A Dark Knight Returns
+description: does the 'a dark knight returns' part of Hollowborn doomKnight
+tags: hollowborn, a dark knight returns, hollowborn doomknight, Hollowborn Sword of Doom
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

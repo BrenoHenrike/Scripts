@@ -1,7 +1,7 @@
 /*
-name: ADarkKnightRises
-description: null
-tags: null
+name: HBDK - A Dark Knight Rises
+description: does the 'a dark knight rises' part of Hollowborn doomKnight
+tags: hollowborn, a dark knight rises
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
