@@ -8,6 +8,7 @@ tags: army, warlord icewing, experience, gold, icestorm arena
 //cs_include Scripts/Army/CoreArmyLite.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
+using Skua.Core.Models.Monsters;
 
 public class IceWingLevelingArmy
 {
@@ -16,11 +17,19 @@ public class IceWingLevelingArmy
     public CoreFarms Farm = new();
     public CoreArmyLite Army = new();
 
+    private static CoreBots sCore = new();
+    private static CoreArmyLite sArmy = new();
+
     public bool DontPreconfigure = true;
     public string OptionsStorage = "ArmyIceWing";
     public List<IOption> Options = new List<IOption>()
     {
-        new Option<int>("armysize","Players", "Input the minimum of players to wait for", 1),
+        sArmy.player1,
+        sArmy.player2,
+        sArmy.player3,
+        sArmy.player4,
+        sArmy.player5,
+        sArmy.player6,
         CoreBots.Instance.SkipOptions,
     };
 
@@ -44,26 +53,62 @@ public class IceWingLevelingArmy
 
         Core.RegisterQuests(Core.IsMember ? 6635 : 6632);
         while (!Bot.ShouldExit)
-            KillIceWing("icestormarena", "r23", "Left", "*");
+            ArmyHunt("icestormarena", new[] {"Icewing"}, "Warlord Icewing Defeated", ClassType.Solo, true, 99);
         Core.CancelRegisteredQuests();
     }
 
-    public void KillIceWing(string map, string cell, string pad, string monster)
+    void ArmyHunt(string map, string[] monsters, string item, ClassType classType, bool isTemp = false, int quant = 1)
     {
-        Core.Join(map, cell, pad);
-        if (Bot.Player.Cell != cell)
-        {
-            if (Bot.Player.Level < level)
-                Bot.Send.ClientPacket("{\"t\":\"xt\",\"b\":{\"r\":-1,\"o\":{\"cmd\":\"levelUp\",\"intExpToLevel\":\"0\",\"intLevel\":100}}}", "json");
-            Bot.Sleep(500);
-            Core.Jump(cell, pad);
-        }
-        //while (!Bot.Map.PlayerExists((Bot.Config.Get<string>("playerName"))) || Bot.Map.GetPlayer((Bot.Config.Get<string>("playerName"))).Cell != Bot.Player.Cell)
-        while ((cell != null && Bot.Map.CellPlayers.Count() > 0 ? Bot.Map.CellPlayers.Count() : Bot.Map.PlayerCount) < Bot.Config.Get<int>("armysize"))
-        {
-            Core.Logger($"Waiting for the squad. [{Bot.Map.PlayerNames.Count}/{Bot.Config.Get<int>("armysize")}]");
-            Bot.Sleep(2000);
-        }
-        Bot.Kill.Monster(monster);
+        Core.PrivateRooms = true;
+        Core.PrivateRoomNumber = Army.getRoomNr();
+
+        if (Bot.Config.Get<bool>("sellToSync"))
+            Army.SellToSync(item, quant);
+
+        Core.AddDrop(item);
+
+        Core.EquipClass(classType);
+        Army.waitForParty(map, item);
+        Core.FarmingLogger(item, quant);
+
+        Army.SmartAggroMonStart(map, monsters);
+
+        while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
+            Bot.Combat.Attack("*");
+
+        Army.AggroMonStop(true);
+        Core.JumpWait();
+    }
+
+    void ArmyHunt(string map, int monsterID, string item, ClassType classType, bool isTemp = false, int quant = 1)
+    {
+        Core.PrivateRooms = true;
+        Core.PrivateRoomNumber = Army.getRoomNr();
+
+        Monster monster = Bot.Monsters.CurrentMonsters?.Find(m => m.ID == monsterID);
+
+        if (Bot.Config.Get<bool>("sellToSync"))
+            Army.SellToSync(item, quant);
+
+        Core.AddDrop(item);
+
+        Army.waitForParty(map, item);
+        Core.FarmingLogger(item, quant);
+
+        Army.SmartAggroMonStart(map, monster.ToString());
+
+        while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
+            Bot.Combat.Attack("*");
+
+        Army.AggroMonStop(true);
+        Core.JumpWait();
+    }
+
+
+    public void PlayerAFK()
+    {
+        Core.Logger("Anti-AFK engaged");
+        Bot.Sleep(1500);
+        Bot.Send.Packet("%xt%zm%afk%1%false%");
     }
 }
