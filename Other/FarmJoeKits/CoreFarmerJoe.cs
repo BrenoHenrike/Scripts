@@ -175,6 +175,7 @@ public class CoreFarmerJoe
         Core.CancelRegisteredQuests();
         Adv.rankUpClass("Oracle");
         Farm.BladeofAweREP(6, true);
+        Core.ToBank("Blade of Awe");
     }
 
 
@@ -196,72 +197,80 @@ public class CoreFarmerJoe
 
         #region Leve30 to 75
         Core.Logger("Level to 75");
-        Core.SoloClass = "Oracle";
-        Core.FarmClass = "Master Ranger";
-        Core.Equip(Core.FarmClass);
         Adv.BestGear(GearBoost.dmgAll);
         Farm.ToggleBoost(BoostType.Experience);
         foreach (int Level in new int[] { 30, 45, 50, 55, 60, 65, 70, 75 })
         {
             Core.Logger($"Level Goal: {Level}");
-            Core.Equip(Core.FarmClass);
-            Adv.SmartEnhance(Bot.Player.CurrentClass.Name);
+
             switch (Level)
             {
                 case 30:
+                    Core.SoloClass = "Oracle";
+                    InvEn.EnhanceInventory();
                     MR.GetMR();
                     break;
-                //Classes
+
                 case 45:
                     while (!Bot.ShouldExit && Bot.Player.Level < Level || !Core.CheckInventory("Eternal Inversionist"))
                     {
+                        Core.SoloClass = "Oracle";
+                        Core.FarmClass = "Master Ranger";
+
                         Farm.IcestormArena(Level);
-                        EI.GetEI();
-                        ///EI will last us till 50
-                        Core.FarmClass = "Eternal Inversionist";
-                        Core.ToBank("Master Ranger");
                         InvEn.EnhanceInventory();
-                    }
-                    break;
-                    
-                case 50:
-                case 55:
-                    while (!Bot.ShouldExit && Bot.Player.Level < Level || !Core.CheckInventory("Scarlet Sorceress"))
-                    {
-                        Farm.IcestormArena(Level);
-                        //50 is the lowest level to get scarlet sorceress
-                        SS.GetSSorc();
-                        Core.FarmClass = "Scarlet Sorceress";
+                        EI.GetEI();
                     }
                     break;
 
+                case 50:
+                case 55:
                 case 60:
-                    while (!Bot.ShouldExit && Bot.Player.Level < Level || !Core.CheckInventory("DragonSoul Shinobi"))
+
+                    while (!Bot.ShouldExit && Bot.Player.Level < Level || !Core.CheckInventory(new[] { "Scarlet Sorceress", "DragonSoul Shinobi" }))
                     {
+                        if (Core.CheckInventory("DragonSoul Shinobi"))
+                            Core.FarmClass = "DragonSoul Shinobi";
+                        else
+                            Core.FarmClass = "Eternal Inversionist";
+                        Core.SoloClass = "Oracle";
+
+                        if (Core.CheckInventory("Scarlet Sorceress"))
+                            Core.FarmClass = "Scarlet Sorceress";
+                        else
+                            Core.FarmClass = "Eternal Inversionist";
+
                         Farm.IcestormArena(Level);
+                        InvEn.EnhanceInventory();
+                        SS.GetSSorc();
                         DS.GetDSS();
-                        Core.Equip("DragonSoul Shinobi");
-                        Core.SoloClass = "DragonSoul Shinobi";
-                        Core.Equip(Core.FarmClass);
                     }
                     break;
 
                 case 65:
+
                     while (!Bot.ShouldExit && Bot.Player.Level < Level || !Core.CheckInventory(new[] { "ArchPaladin", "Blade of Awe" }))
                     {
+                        Core.SoloClass = "DragonSoul Shinobi";
+                        Core.FarmClass = "Scarlet Sorceress";
+
                         Farm.IcestormArena(Level);
+                        InvEn.EnhanceInventory();
                         AP.GetAP();
-                        Core.SoloClass = "ArchPaladin";
-                        Farm.BladeofAweREP(6, true);
-                        Core.ToBank("Blade of Awe");
-                        Core.Equip(Core.FarmClass);
                     }
                     break;
 
                 //Just Leveling
                 case 70:
                 case 75:
-                    Farm.IcestormArena(Level);
+                    while (!Bot.ShouldExit && Bot.Player.Level < Level)
+                    {
+                        Core.SoloClass = "ArchPaladin";
+                        Core.FarmClass = "Scarlet Sorceress";
+
+                        Farm.IcestormArena(Level);
+                        InvEn.EnhanceInventory();
+                    }
                     break;
             }
         }
