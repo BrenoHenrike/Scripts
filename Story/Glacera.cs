@@ -105,7 +105,7 @@ public class GlaceraStory
         Story.KillQuest(3925, "frozentower", new[] { "Arctic Eel", "Frostwyrm" });
 
         // Retrieve the Light StarStone
-        Story.MapItemQuest(3926, "frozentower", 3021, 4);
+        Story.MapItemQuest(3926, "frozentower", 3021);
 
         // The Future is Bright
         Story.MapItemQuest(3927, "frozentower", 3014, 7);
