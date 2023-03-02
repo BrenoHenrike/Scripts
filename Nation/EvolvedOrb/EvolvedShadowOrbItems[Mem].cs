@@ -63,7 +63,7 @@ public class EvolvedShadowOrbItems
         Nation.FarmUni13(3);
         Adv.BuyItem("tercessuinotlim", 1951, "Unidentified 25");
         Nation.FarmVoucher(true);
-        if (!Core.CheckInventory("Bahemoth Blade of shadow"))
+        if (!Core.CheckInventory("Behemoth Blade of shadow"))
         {
             Core.EquipClass(ClassType.Solo);
             if (!Core.CheckInventory("Basic War Sword"))
@@ -77,7 +77,7 @@ public class EvolvedShadowOrbItems
                 Core.BuyItem("battleon", 222, "Steel Afterlife");
             }
             Farm.BludrutBrawlBoss(quant: 500);
-            Core.BuyItem("battleon", 222, "Bahemoth Blade of shadow");
+            Core.BuyItem("battleon", 222, "Behemoth Blade of shadow");
         }
         Core.EquipClass(ClassType.Farm);
         Nation.ApprovalAndFavor(1, 0);
