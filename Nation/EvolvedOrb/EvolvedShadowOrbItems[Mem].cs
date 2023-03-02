@@ -42,9 +42,8 @@ public class EvolvedShadowOrbItems
             return;
 
         ESO.GetEvolvedShadowOrb();
-        if (Core.CheckInventory("Evolved Shadow Orb")) //recheck
-            return;
 
+        Core.Unbank("Evolved Shadow Orb");
         RebornDarkSide();
         VoidEmotions();
         ShapeNothingness();
@@ -56,14 +55,16 @@ public class EvolvedShadowOrbItems
     public void RebornDarkSide()
     {
         // Reborn in the Dark Side 4771
-        Core.AddDrop("Evolved Shadow of Nulgath");
-        if (!Core.CheckInventory("Platinum Coin of Nulgath: 2500") || !Core.CheckInventory(33360))
+        if (!Core.CheckInventory("Platinum Coin of Nulgath: 2500") || !Core.CheckInventory("Evolved Shadow of Nulgath"))
             return;
+
+        Core.AddDrop("Evolved Shadow of Nulgath");
         Bard.GetBard(false);
         Nation.FarmUni13(3);
         Adv.BuyItem("tercessuinotlim", 1951, "Unidentified 25");
         Nation.FarmVoucher(true);
-        if (!Core.CheckInventory("Behemoth Blade of shadow"))
+
+        if (!Core.CheckInventory("Behemoth Blade of Shadow"))
         {
             Core.EquipClass(ClassType.Solo);
             if (!Core.CheckInventory("Basic War Sword"))
@@ -76,9 +77,13 @@ public class EvolvedShadowOrbItems
                 Farm.BludrutBrawlBoss(quant: 100);
                 Core.BuyItem("battleon", 222, "Steel Afterlife");
             }
-            Farm.BludrutBrawlBoss(quant: 500);
-            Core.BuyItem("battleon", 222, "Behemoth Blade of shadow");
+            if (!Core.CheckInventory("Behemoth Blade of Shadow"))
+            {
+                Farm.BludrutBrawlBoss(quant: 500);
+                Core.BuyItem("battleon", 222, "Behemoth Blade of Shadow");
+            }
         }
+        
         Core.EquipClass(ClassType.Farm);
         Nation.ApprovalAndFavor(1, 0);
         Nation.FarmFiendToken(30);
@@ -89,8 +94,10 @@ public class EvolvedShadowOrbItems
     public void VoidEmotions()
     {
         //Void Emotion 4774
-        if (!Core.CheckInventory("Platinum Coin of Nulgath: 300") || !Core.CheckInventory(33361))
+        if (!Core.CheckInventory("Platinum Coin of Nulgath: 300") || !Core.CheckInventory("Evolved Shadow Helm"))
             return;
+
+        Core.AddDrop("Evolved Shadow Helm");
         Core.EnsureAccept(4774);
         Core.EquipClass(ClassType.Farm);
         Nation.FarmDarkCrystalShard(10);
@@ -105,6 +112,9 @@ public class EvolvedShadowOrbItems
 
     public void ShapeNothingness()
     {
+        if (!Core.CheckInventory("Platinum Coin of Nulgath: 2500") || !Core.CheckInventory("Evolved Shadow Spear of Nulgath"))
+            return;
+
         // Shape your Nothingness 4775
         Core.AddDrop("Unidentified 29", "Random Weapon of Nulgath", "Evolved Shadow Spear of Nulgath");
         Core.EnsureAccept(4775);
