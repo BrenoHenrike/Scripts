@@ -1,7 +1,7 @@
 /*
 name: Dark Birthday Token Merge
-description: This will complete the Dark War Legion story and farm Dark War Legion Medals.
-tags: story, quest, legion, dark, war, merge, staff, birthday
+description: This bot will farm materials in /darkbirthday and buy items from the merge shop
+tags: legion, merge, staff, birthday, dage, evil, seasonal, event, darkbirthday
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
