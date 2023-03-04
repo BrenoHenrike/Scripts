@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreDailies.cs",
-    "size": 38978,
+    "size": 39011,
     "fileName": "CoreDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreDailies.cs"
   },
@@ -50,7 +50,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 128858,
+    "size": 128886,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -1825,7 +1825,7 @@
       "all"
     ],
     "path": "Dailies/0AllDailies.cs",
-    "size": 2655,
+    "size": 2783,
     "fileName": "0AllDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/0AllDailies.cs"
   },
@@ -4550,6 +4550,23 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Legion/SeraphicWar.cs"
   },
   {
+    "name": "Dage Recruit Story",
+    "description": "This will complete the Dage Recruit story.",
+    "tags": [
+      "story",
+      "quest",
+      "dage",
+      "recruit",
+      "legion",
+      "staff",
+      "birthday"
+    ],
+    "path": "Story/Legion/DageRecruit.cs",
+    "size": 2812,
+    "fileName": "DageRecruit.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Legion/DageRecruit.cs"
+  },
+  {
     "name": "World Soul",
     "description": "This will finish the World Soul quest.",
     "tags": [
@@ -6640,7 +6657,7 @@
       "null"
     ],
     "path": "Nation/Various/ArchfiendDeathLord.cs",
-    "size": 1891,
+    "size": 3130,
     "fileName": "ArchfiendDeathLord.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/ArchfiendDeathLord.cs"
   },
@@ -10828,7 +10845,7 @@
       "null"
     ],
     "path": "Other/FarmJoeKits/FarmerJoeLeveling.cs",
-    "size": 2677,
+    "size": 2720,
     "fileName": "FarmerJoeLeveling.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/FarmerJoeLeveling.cs"
   },
@@ -10839,7 +10856,7 @@
       "null"
     ],
     "path": "Other/FarmJoeKits/CoreFarmerJoe.cs",
-    "size": 15091,
+    "size": 15134,
     "fileName": "CoreFarmerJoe.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/CoreFarmerJoe.cs"
   },
@@ -10850,7 +10867,7 @@
       "null"
     ],
     "path": "Other/FarmJoeKits/FarmerJoeEndGame[WIP].cs",
-    "size": 2719,
+    "size": 2762,
     "fileName": "FarmerJoeEndGame[WIP].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/FarmerJoeEndGame[WIP].cs"
   },
@@ -10861,7 +10878,7 @@
       "null"
     ],
     "path": "Other/FarmJoeKits/FarmerJoeKitClasses[WIP].cs",
-    "size": 3344,
+    "size": 3387,
     "fileName": "FarmerJoeKitClasses[WIP].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/FarmerJoeKitClasses[WIP].cs"
   },
@@ -10872,7 +10889,7 @@
       "null"
     ],
     "path": "Other/FarmJoeKits/FarmerJoeOutfitandPet.cs",
-    "size": 2715,
+    "size": 2758,
     "fileName": "FarmerJoeOutfitandPet.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/FarmerJoeOutfitandPet.cs"
   },
@@ -10883,7 +10900,7 @@
       "null"
     ],
     "path": "Other/FarmJoeKits/FarmerJoeKit0DoAll.cs",
-    "size": 2604,
+    "size": 2647,
     "fileName": "FarmerJoeKit0DoAll.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/FarmerJoeKit0DoAll.cs"
   },
@@ -11846,13 +11863,21 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/WarTrainingMerge.cs"
   },
   {
-    "name": "DageRecruitMerge",
-    "description": "null",
+    "name": "Dage Recruit Merge",
+    "description": "This will complete the Dage Recruit story and farm Dark Victory Seals.",
     "tags": [
-      "null"
+      "story",
+      "quest",
+      "dage",
+      "recruit",
+      "legion",
+      "dark-victory-seal",
+      "merge",
+      "staff",
+      "birthday"
     ],
     "path": "Other/MergeShops/DageRecruitMerge.cs",
-    "size": 11098,
+    "size": 11236,
     "fileName": "DageRecruitMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/DageRecruitMerge.cs"
   },
@@ -13054,7 +13079,7 @@
       "thefamily"
     ],
     "path": "Army/OneClient/AllDailies.cs",
-    "size": 1611,
+    "size": 1654,
     "fileName": "AllDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/OneClient/AllDailies.cs"
   },
@@ -14705,6 +14730,52 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/Nulgath/BeetleWarlordPet.cs"
   },
   {
+    "name": "Abyssal Merge",
+    "description": "This bot will farm materials in /abysslair and buy items from the merge shop",
+    "tags": [
+      "legion",
+      "merge",
+      "staff",
+      "birthday",
+      "dage",
+      "evil",
+      "seasonal",
+      "event",
+      "darkbirthday",
+      "abysslair",
+      "abyssal",
+      "medalion",
+      "scale",
+      "coldfire",
+      "gem"
+    ],
+    "path": "Seasonal/StaffBirthdays/DageTheEvil/AbyssalMerge.cs",
+    "size": 8693,
+    "fileName": "AbyssalMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/AbyssalMerge.cs"
+  },
+  {
+    "name": "Rand's Merge",
+    "description": "This bot will farm Rand's Approval in /seraph and buy items from the merge shop",
+    "tags": [
+      "legion",
+      "merge",
+      "staff",
+      "birthday",
+      "rands",
+      "approval",
+      "dage",
+      "evil",
+      "seasonal",
+      "event",
+      "darkbirthday"
+    ],
+    "path": "Seasonal/StaffBirthdays/DageTheEvil/RandsMerge.cs",
+    "size": 5073,
+    "fileName": "RandsMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/RandsMerge.cs"
+  },
+  {
     "name": "(Darkwarlegion War) Chest Merge",
     "description": "This will complete the Darkwarlegion War Chest story and farm Dark Victory Seals.",
     "tags": [
@@ -14726,6 +14797,20 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/DarkwarlegionWarChestMerge.cs"
   },
   {
+    "name": "Legion Sword Master Assassin",
+    "description": "farms the required materials for the class",
+    "tags": [
+      "legion",
+      "class",
+      "darkbirthday",
+      "legion swordmaster assassin"
+    ],
+    "path": "Seasonal/StaffBirthdays/DageTheEvil/LegionSwordMasterAssassin.cs",
+    "size": 1579,
+    "fileName": "LegionSwordMasterAssassin.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/LegionSwordMasterAssassin.cs"
+  },
+  {
     "name": "Dark War Nation Merge",
     "description": "This will complete the Dark War Nation story and farm Nation Defender Medals.",
     "tags": [
@@ -14742,6 +14827,25 @@
     "size": 8245,
     "fileName": "DarkWarNationMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/DarkWarNationMerge.cs"
+  },
+  {
+    "name": "Dark Birthday Token Merge",
+    "description": "This bot will farm materials in /darkbirthday and buy items from the merge shop",
+    "tags": [
+      "legion",
+      "merge",
+      "staff",
+      "birthday",
+      "dage",
+      "evil",
+      "seasonal",
+      "event",
+      "darkbirthday"
+    ],
+    "path": "Seasonal/StaffBirthdays/DageTheEvil/DarkBirthdayTokenMerge.cs",
+    "size": 11853,
+    "fileName": "DarkBirthdayTokenMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/DarkBirthdayTokenMerge.cs"
   },
   {
     "name": "(Dark War Legion) Dark War Legion Merge",
@@ -14780,6 +14884,23 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/Undervoid.cs"
   },
   {
+    "name": "Future Legion Story",
+    "description": "This will complete the Future Legion story.",
+    "tags": [
+      "story",
+      "quest",
+      "future",
+      "legion",
+      "legion",
+      "staff",
+      "birthday"
+    ],
+    "path": "Seasonal/StaffBirthdays/DageTheEvil/FutureLegion.cs",
+    "size": 2372,
+    "fileName": "FutureLegion.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/FutureLegion.cs"
+  },
+  {
     "name": "Nation War Chest Merge",
     "description": "This will complete the Nation War Chest story and farm Nation Defender Medals.",
     "tags": [
@@ -14796,42 +14917,6 @@
     "size": 3947,
     "fileName": "NationWarChestMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/NationWarChestMerge.cs"
-  },
-  {
-    "name": "Dage Recruit Story",
-    "description": "This will complete the Dage Recruit story.",
-    "tags": [
-      "story",
-      "quest",
-      "dage",
-      "recruit",
-      "legion",
-      "staff",
-      "birthday"
-    ],
-    "path": "Seasonal/StaffBirthdays/DageTheEvil/DageRecruit.cs",
-    "size": 2812,
-    "fileName": "DageRecruit.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/DageRecruit.cs"
-  },
-  {
-    "name": "(Dark Victory Seal) Dage Recruit Merge",
-    "description": "This will complete the Dage Recruit story and farm Dark Victory Seals.",
-    "tags": [
-      "story",
-      "quest",
-      "dage",
-      "recruit",
-      "legion",
-      "dark-victory-seal",
-      "merge",
-      "staff",
-      "birthday"
-    ],
-    "path": "Seasonal/StaffBirthdays/DageTheEvil/DageRecruitMerge(DarkVictorySeal).cs",
-    "size": 1537,
-    "fileName": "DageRecruitMerge(DarkVictorySeal).cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/DageRecruitMerge(DarkVictorySeal).cs"
   },
   {
     "name": "Ebil Corp HQ Merge",

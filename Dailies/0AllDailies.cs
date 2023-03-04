@@ -16,6 +16,7 @@ tags: all dailies, dailies, daily, all
 //cs_include Scripts/Story/Glacera.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
 //cs_include Scripts/Story/Friendship.cs
+//cs_include Scripts/Evil/SDKA/CoreSDKA.cs
 using Skua.Core.Interfaces;
 
 public class FarmAllDailies
@@ -27,6 +28,7 @@ public class FarmAllDailies
     private GlaceraStory Glac = new();
     private CoreBLOD BLOD = new();
     private Friendship FR = new();
+    private CoreSDKA CSDKA = new();
 
     public void ScriptMain(IScriptInterface Bot)
     {
@@ -74,10 +76,15 @@ public class FarmAllDailies
         Daily.BeastMasterChallenge();
         Daily.FungiforaFunGuy();
         Daily.MineCrafting(new[] { "Aluminum", "Barium", "Gold", "Iron", "Copper", "Silver", "Platinum" }, 10, ToBank: true);
+        CSDKA.UnlockHardCoreMetals();
         Daily.HardCoreMetals(new[] { "Arsenic", "Beryllium", "Chromium", "Palladium", "Rhodium", "Rhodium", "Thorium", "Mercury" }, 10, ToBank: true);
         Daily.CryptoToken();
         Daily.GoldenInquisitor();
 
         Core.Logger("All dailies are completed");
     }
+
+
+
+
 }
