@@ -3830,6 +3830,17 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/Various/ThanatostheDestroyer.cs"
   },
   {
+    "name": "LetitBurn(SoulEssence)",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Legion/Various/LegionSwordMasterAssassin.cs",
+    "size": 1452,
+    "fileName": "LegionSwordMasterAssassin.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/Various/LegionSwordMasterAssassin.cs"
+  },
+  {
     "name": "SoulSand",
     "description": "null",
     "tags": [
@@ -14813,6 +14824,24 @@
     "size": 8245,
     "fileName": "DarkWarNationMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/DarkWarNationMerge.cs"
+  },
+  {
+    "name": "Dark Birthday Token Merge",
+    "description": "This will complete the Dark War Legion story and farm Dark War Legion Medals.",
+    "tags": [
+      "story",
+      "quest",
+      "legion",
+      "dark",
+      "war",
+      "merge",
+      "staff",
+      "birthday"
+    ],
+    "path": "Seasonal/StaffBirthdays/DageTheEvil/DarkBirthdayTokenMerge.cs",
+    "size": 11833,
+    "fileName": "DarkBirthdayTokenMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/DarkBirthdayTokenMerge.cs"
   },
   {
     "name": "(Dark War Legion) Dark War Legion Merge",
