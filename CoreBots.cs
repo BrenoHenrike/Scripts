@@ -754,7 +754,7 @@ public class CoreBots
 
     private void _CheckInventorySpace()
     {
-        if (Bot.Inventory.FreeSlots <= 0)
+        if (Bot.Inventory.Slots != 0 && Bot.Inventory.FreeSlots <= 0)
         {
             int prefCount = Bot.Inventory.UsedSlots;
             Logger($"Your inventory is very full [{prefCount}/{Bot.Inventory.Slots}], the bot will now clean it a bit before continueing.", "BuyItem");
