@@ -12,6 +12,7 @@ tags: null
 //cs_include Scripts/Nation/VHL/CoreVHL.cs
 //cs_include Scripts/Good/GearOfAwe/CoreAwe.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
+//cs_include Scripts/Evil/SDKA/CoreSDKA.cs
 
 //cs_include Scripts/Dailies/0AllDailies.cs
 //cs_include Scripts/Good/GearOfAwe/CapeOfAwe.cs
