@@ -3830,17 +3830,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/Various/ThanatostheDestroyer.cs"
   },
   {
-    "name": "LetitBurn(SoulEssence)",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Legion/Various/LegionSwordMasterAssassin.cs",
-    "size": 1452,
-    "fileName": "LegionSwordMasterAssassin.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/Various/LegionSwordMasterAssassin.cs"
-  },
-  {
     "name": "SoulSand",
     "description": "null",
     "tags": [
@@ -14761,7 +14750,7 @@
       "gem"
     ],
     "path": "Seasonal/StaffBirthdays/DageTheEvil/AbyssalMerge.cs",
-    "size": 8659,
+    "size": 8693,
     "fileName": "AbyssalMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/AbyssalMerge.cs"
   },
@@ -14806,6 +14795,17 @@
     "size": 4063,
     "fileName": "DarkwarlegionWarChestMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/DarkwarlegionWarChestMerge.cs"
+  },
+  {
+    "name": "LetitBurn(SoulEssence)",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Seasonal/StaffBirthdays/DageTheEvil/LegionSwordMasterAssassin.cs",
+    "size": 1452,
+    "fileName": "LegionSwordMasterAssassin.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/LegionSwordMasterAssassin.cs"
   },
   {
     "name": "Dark War Nation Merge",
