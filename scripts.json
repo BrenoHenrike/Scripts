@@ -14780,6 +14780,23 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/Undervoid.cs"
   },
   {
+    "name": "Future Legion Story",
+    "description": "This will complete the Future Legion story.",
+    "tags": [
+      "story",
+      "quest",
+      "future",
+      "legion",
+      "legion",
+      "staff",
+      "birthday"
+    ],
+    "path": "Seasonal/StaffBirthdays/DageTheEvil/FutureLegion.cs",
+    "size": 2372,
+    "fileName": "FutureLegion.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/FutureLegion.cs"
+  },
+  {
     "name": "Nation War Chest Merge",
     "description": "This will complete the Nation War Chest story and farm Nation Defender Medals.",
     "tags": [
