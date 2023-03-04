@@ -1,7 +1,7 @@
 /*
-name: LetitBurn(SoulEssence)
-description: null
-tags: null
+name: Legion Sword Master Assassin
+description: farms the required materials for the class: "legion swordmaster assassin"
+tags: legion, class, darkbirthday, legion swordmaster assassin
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
