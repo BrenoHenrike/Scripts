@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreDailies.cs",
-    "size": 40251,
+    "size": 40253,
     "fileName": "CoreDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreDailies.cs"
   },
@@ -7679,6 +7679,21 @@
     "size": 1633,
     "fileName": "LoveSpellStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HerosHeartDay/LoveSpellStory.cs"
+  },
+  {
+    "name": "Beleen's Gifts",
+    "description": "Farms the materials needed for Beleen's Gifts Merge in canalshore.",
+    "tags": [
+      "beleen's gifts",
+      "merge",
+      "love",
+      "canalshore",
+      "seasonal"
+    ],
+    "path": "Seasonal/HerosHeartDay/BeleensGiftsMerge.cs",
+    "size": 7376,
+    "fileName": "BeleensGiftsMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HerosHeartDay/BeleensGiftsMerge.cs"
   },
   {
     "name": "Fezzini Story",
