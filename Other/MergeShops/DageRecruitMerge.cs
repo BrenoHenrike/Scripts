@@ -1,7 +1,7 @@
 /*
-name: DageRecruitMerge
-description: null
-tags: null
+name: Dage Recruit Merge
+description: This will complete the Dage Recruit story and farm Dark Victory Seals.
+tags: story, quest, dage, recruit, legion, dark-victory-seal, merge, staff, birthday
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -10,21 +10,20 @@ tags: null
 //cs_include Scripts/Legion/CoreLegion.cs
 //cs_include Scripts/Story/Legion/DarkWarLegionandNation.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
-
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
 
 public class DageRecruitMerge
 {
-    public IScriptInterface Bot => IScriptInterface.Instance;
-    public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new();
-    public CoreStory Story = new();
-    public CoreAdvanced Adv = new();
-    public CoreLegion Legion = new CoreLegion();
-    public DarkWarLegionandNation DWLaN = new();
-    public static CoreAdvanced sAdv = new();
+    private IScriptInterface Bot => IScriptInterface.Instance;
+    private CoreBots Core => CoreBots.Instance;
+    private CoreFarms Farm = new();
+    private CoreStory Story = new();
+    private CoreAdvanced Adv = new();
+    private CoreLegion Legion = new();
+    private DarkWarLegionandNation DWLaN = new();
+    private static CoreAdvanced sAdv = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
     public string[] MultiOptions = { "Generic", "Select" };
