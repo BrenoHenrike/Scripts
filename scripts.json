@@ -8418,6 +8418,22 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/LuckyDay/Pooka.cs"
   },
   {
+    "name": "Daibh's Merge",
+    "description": "Farms the materials needed for Daibh's Merge in luck.",
+    "tags": [
+      "luck",
+      "seasonal",
+      "daibh's merge",
+      "shamrock",
+      "fair",
+      "merge"
+    ],
+    "path": "Seasonal/LuckyDay/DaibhsMerge.cs",
+    "size": 4857,
+    "fileName": "DaibhsMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/LuckyDay/DaibhsMerge.cs"
+  },
+  {
     "name": "Pooka's Gifts Merge",
     "description": "This will merge Pooka's Gifts.",
     "tags": [
