@@ -752,6 +752,10 @@ public class CoreDailies
         Core.AddDrop(frRewards);
 
         // Battleodium
+        if (Core.isCompletedBefore(793))
+            handleFriendship("Dage the Evil", frGift.Crached_Opal);
+        handleFriendship("Gravelyn", frGift.Blood_Roseberry);
+        handleFriendship("Nulgath", frGift.Apples);
         handleFriendship("Twig", frGift.Melons);
         handleFriendship("Twilly", frGift.Apples, frGift.Orchids);
         handleFriendship("Maya", frGift.Chrysanthemums, frGift.Apples);
@@ -766,7 +770,7 @@ public class CoreDailies
         handleFriendship("Drakath", frGift.Chaos_Diemond);
         handleFriendship("Xang", frGift.Emeralds, frGift.Grapes);
         handleFriendship("Linus", frGift.A_Fish);
-        handleFriendship("Sally", frGift.Emeralds, frGift.Tulips);
+        handleFriendship("Sally", frGift.Rubies, frGift.Tulips);
         handleFriendship("Xing", frGift.Opals, frGift.Bananas);
 
         Bot.Events.ExtensionPacketReceived -= friendshipPacketReader;
@@ -831,6 +835,20 @@ public class CoreDailies
                             Core.KillMonster("battleodium", "r6", "Left", "*", "Grapes", 1, false, false);
                             Core.KillMonster("battleodium", "r6", "Left", "*", "Diamonds", 1, false, false);
                             Core.BuyItem("battleodium", 2236, "Chaos Diemond");
+                            break;
+
+                        case frGift.Crached_Opal:
+                            Core.EquipClass(ClassType.Farm);
+                            Core.KillMonster("battleodium", "r6", "Left", "*", "Melon", 1, false, false);
+                            Core.KillMonster("battleodium", "r6", "Left", "*", "Opal", 1, false, false);
+                            Core.BuyItem("battleodium", 2236, "Cracked Opal");
+                            break;
+
+                        case frGift.Blood_Roseberry:
+                            Core.EquipClass(ClassType.Farm);
+                            Core.HuntMonster("battleodium", "Widowing", "Roses", 1, false, false);
+                            Core.KillMonster("battleodium", "r6", "Left", "*", "Strawberries", 1, false, false);
+                            Core.BuyItem("battleodium", 2236, "Blood Roseberry");
                             break;
 
                         case frGift.A_Fish:
@@ -946,6 +964,7 @@ public class CoreDailies
         "Gold Voucher 25k",
         "Gold Voucher 100",
         "Gold Voucher 500k",
+
         "Combat Trophy",
         "Super Swag Token A",
         "Super Swag Token B",
@@ -955,7 +974,10 @@ public class CoreDailies
         "XP Boost! (20 min)",
         "REP Boost! (20 Min)",
         "Arcane Quill",
-        "Spirit Orb"
+        "Spirit Orb",
+        "Legion Token",
+        "Void Aura",
+        "Unidentified 10",
     };
 
     private enum frGift
@@ -979,7 +1001,9 @@ public class CoreDailies
         Opals = 76288,
         Turqoise = 76289,
         Chaos_Diemond = 76355,
-        A_Fish = 76322
+        A_Fish = 76322,
+        Crached_Opal = 76657,
+        Blood_Roseberry = 76658,
     };
 
     private class FriendshipInfo
