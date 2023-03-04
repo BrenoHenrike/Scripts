@@ -14797,13 +14797,16 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/DarkwarlegionWarChestMerge.cs"
   },
   {
-    "name": "LetitBurn(SoulEssence)",
-    "description": "null",
+    "name": "Legion Sword Master Assassin",
+    "description": "farms the required materials for the class",
     "tags": [
-      "null"
+      "legion",
+      "class",
+      "darkbirthday",
+      "legion swordmaster assassin"
     ],
     "path": "Seasonal/StaffBirthdays/DageTheEvil/LegionSwordMasterAssassin.cs",
-    "size": 1452,
+    "size": 1579,
     "fileName": "LegionSwordMasterAssassin.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/LegionSwordMasterAssassin.cs"
   },
@@ -14827,19 +14830,20 @@
   },
   {
     "name": "Dark Birthday Token Merge",
-    "description": "This will complete the Dark War Legion story and farm Dark War Legion Medals.",
+    "description": "This bot will farm materials in /darkbirthday and buy items from the merge shop",
     "tags": [
-      "story",
-      "quest",
       "legion",
-      "dark",
-      "war",
       "merge",
       "staff",
-      "birthday"
+      "birthday",
+      "dage",
+      "evil",
+      "seasonal",
+      "event",
+      "darkbirthday"
     ],
     "path": "Seasonal/StaffBirthdays/DageTheEvil/DarkBirthdayTokenMerge.cs",
-    "size": 11833,
+    "size": 11853,
     "fileName": "DarkBirthdayTokenMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/DarkBirthdayTokenMerge.cs"
   },
