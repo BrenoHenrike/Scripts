@@ -105,6 +105,8 @@ public class CoreSDKA
 
     public void UnlockHardCoreMetals()
     {
+        if (!Core.IsMember)
+            return;
         if (Bot.Quests.IsUnlocked(2098))
         {
             Core.Logger("Hard Core Metals already unlocked, skipping.");
