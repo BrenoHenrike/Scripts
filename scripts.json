@@ -1915,14 +1915,20 @@
   },
   {
     "name": "Necrotic Sword of Doom Daily",
-    "description": "null",
+    "description": "This bot will do the Encroaching Shadows quest plus Glimpse Into the Dark if you're member.",
     "tags": [
       "daily",
-      "nsod",
-      "necrotic sword of doom"
+      "NSOD",
+      "necrotic",
+      "sword",
+      "doom",
+      "encroaching",
+      "shadows",
+      "void",
+      "aura"
     ],
     "path": "Dailies/NSoDDaily.cs",
-    "size": 528,
+    "size": 645,
     "fileName": "NSoDDaily.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/NSoDDaily.cs"
   },
