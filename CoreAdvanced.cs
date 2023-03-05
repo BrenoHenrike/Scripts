@@ -147,6 +147,9 @@ public class CoreAdvanced
 
         if (items.Count == 0)
         {
+            if (buyOnlyThis != null)
+                return;
+
             switch (mode)
             {
                 case 0: // all

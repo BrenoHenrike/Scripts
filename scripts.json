@@ -6,7 +6,7 @@
       "null"
     ],
     "path": "CoreAdvanced.cs",
-    "size": 90638,
+    "size": 90700,
     "fileName": "CoreAdvanced.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreAdvanced.cs"
   },
@@ -17,7 +17,7 @@
       "null"
     ],
     "path": "CoreStory.cs",
-    "size": 26733,
+    "size": 28925,
     "fileName": "CoreStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreStory.cs"
   },
@@ -1915,14 +1915,20 @@
   },
   {
     "name": "Necrotic Sword of Doom Daily",
-    "description": "null",
+    "description": "This bot will do the Encroaching Shadows quest plus Glimpse Into the Dark if you're member.",
     "tags": [
       "daily",
-      "nsod",
-      "necrotic sword of doom"
+      "NSOD",
+      "necrotic",
+      "sword",
+      "doom",
+      "encroaching",
+      "shadows",
+      "void",
+      "aura"
     ],
     "path": "Dailies/NSoDDaily.cs",
-    "size": 528,
+    "size": 645,
     "fileName": "NSoDDaily.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/NSoDDaily.cs"
   },
@@ -3604,7 +3610,7 @@
       "null"
     ],
     "path": "Tools/ForDevelopers/SummarizeStatistics.cs",
-    "size": 4470,
+    "size": 4536,
     "fileName": "SummarizeStatistics.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/ForDevelopers/SummarizeStatistics.cs"
   },
@@ -8397,27 +8403,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/SummerBreak/VolleyBaller.cs"
   },
   {
-    "name": "Evolved Leprechaun Merge",
-    "description": "This will merge Rainbow Shard and Golden Ticket.",
-    "tags": [
-      "farm",
-      "merge",
-      "shop",
-      "seasonal",
-      "lucky",
-      "evolved",
-      "leprechaun",
-      "rainbow",
-      "shard",
-      "golden",
-      "ticket"
-    ],
-    "path": "Seasonal/LuckyDay/EvolvedLeprechaunMerge.cs",
-    "size": 2000,
-    "fileName": "EvolvedLeprechaunMerge.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/LuckyDay/EvolvedLeprechaunMerge.cs"
-  },
-  {
     "name": "Pooka Story",
     "description": "This will complete the Pooka story quest.",
     "tags": [
@@ -8487,7 +8472,7 @@
       "null"
     ],
     "path": "Seasonal/LuckyDay/LuckyDayShamrockFairMerge.cs",
-    "size": 12612,
+    "size": 12611,
     "fileName": "LuckyDayShamrockFairMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/LuckyDay/LuckyDayShamrockFairMerge.cs"
   },

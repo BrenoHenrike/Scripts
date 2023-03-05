@@ -216,7 +216,6 @@ public class CoreStory
         }
 
         Quest QuestData = Core.EnsureLoad(QuestID);
-        ItemBase[] Rewards = QuestData.Rewards.ToArray();
 
         int timeout = 0;
         while (!Bot.Quests.IsUnlocked(QuestID))
@@ -227,9 +226,35 @@ public class CoreStory
             if (timeout > 15)
             {
                 int currentValue = Bot.Flash.CallGameFunction<int>("world.getQuestValue", QuestData.Slot);
+                Quest prevQuest = Bot.Quests.Tree.Find(q => q.Slot == QuestData.Slot && q.Value == (currentValue + 1));
+
+                prevQuestReq ??=
+                    prevQuest == null && prevQuest.Requirements.All(r => Core.CheckInventory(r.ID, r.Quantity)) ?
+                        null :
+                        String.Join(',', prevQuest.Requirements.Where(r => !Core.CheckInventory(r.ID, r.Quantity)).Select(i => i.Name));
+                prevQuestAReq ??=
+                    prevQuest == null && prevQuest.AcceptRequirements.All(r => Core.CheckInventory(r.ID, r.Quantity)) ?
+                        null :
+                        String.Join(',', prevQuest.Requirements.Where(r => !Core.CheckInventory(r.ID, r.Quantity)).Select(i => i.Name));
+                prevQuestExplain ??=
+                    prevQuest == null ?
+                        "NULL|" :
+                        $"Quest \"{prevQuest.Name}\" [{prevQuest.ID}] appears to have failed to turn in somehow.|" +
+                        (prevQuestReq == null ?
+                            String.Empty :
+                            $"Missing QuestItems: {prevQuestReq}|") +
+                        (prevQuestAReq == null ?
+                            String.Empty :
+                            $"Missing AcceptRequirements: {prevQuestAReq}|");
+
                 if (lastFailedQuestID != QuestData.ID)
                 {
-                    if (QuestData.Value - currentValue <= 2)
+                    if (prevQuest.Status == "c")
+                    {
+                        TryComplete(prevQuest, true);
+                        timeout = 0;
+                    }
+                    else if (QuestData.Value - currentValue <= 2)
                     {
                         Core.Logger("A server/client desync happened (common) for your quest progress, the bot will now restart");
                         lastFailedQuestID = QuestData.ID;
@@ -241,20 +266,38 @@ public class CoreStory
                 {
                     string message2 = $"Quest \"{QuestData.Name}\" [{QuestID}] is not unlocked.|" +
                                      $"Expected value = [{QuestData.Value - 1}/{QuestData.Slot}], recieved = [{currentValue}/{QuestData.Slot}]|" +
+                                      prevQuestExplain +
                                       "Please fill in the Skua Scripts Form to report this.|" +
                                       "Do you wish to be brought to the form?";
                     Core.Logger(message2.Replace("|", " "));
                     if (Bot.ShowMessageBox(message2.Replace("|", "\n"), "Quest not unlocked", true) == true)
                     {
-                        string path = Core.loadedBot;
-                        Process.Start("explorer", $"\"https://docs.google.com/forms/d/e/1FAIpQLSeI_S99Q7BSKoUCY2O6o04KXF1Yh2uZtLp0ykVKsFD1bwAXUg/viewform?usp=pp_url&" +
-                                                     "entry.2118425091=Bug+Report&" +
-                                                    $"entry.290078150={path}&" +
-                                                     "entry.1803231651=I+got+a+popup+saying+a+quest+was+not+unlocked&" +
-                                                    $"entry.1918245848={QuestData.ID}&" +
-                                                    $"entry.1809007115={QuestData.Value - 1}/{QuestData.Slot}&" +
-                                                    $"entry.493943632={currentValue}/{QuestData.Slot}&" +
-                                                    $"entry.148016785={QuestData.Name}\"");
+                        string url =
+                            $"\"https://docs.google.com/forms/d/e/1FAIpQLSeI_S99Q7BSKoUCY2O6o04KXF1Yh2uZtLp0ykVKsFD1bwAXUg/viewform?usp=pp_url&" +
+
+                            "entry.209396189=Skua&" +
+                            "entry.2118425091=Bug+Report&" +
+                            $"entry.290078150={Core.loadedBot}&" +
+                            "entry.1803231651=I+got+a+popup+saying+a+quest+was+not+unlocked&" +
+
+                            $"entry.1918245848={QuestData.ID}&" +
+                            $"entry.1809007115={QuestData.Value - 1}/{QuestData.Slot}&" +
+                            $"entry.493943632={currentValue}/{QuestData.Slot}&" +
+                            $"entry.148016785={QuestData.Name}";
+
+                        if (prevQuest != null)
+                            url +=
+                                $"&entry.77289389={prevQuest.ID}&" +
+                                $"entry.2130921787={prevQuest.Name}&" +
+                                $"entry.1966808403={prevQuestReq ?? String.Empty}&" +
+                                $"entry.914792808={prevQuestAReq ?? String.Empty}";
+                        url += "\"";
+
+                        Process p = new();
+                        p.StartInfo.FileName = "rundll32";
+                        p.StartInfo.Arguments = "url,OpenURL " + url;
+                        p.StartInfo.WorkingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.System).Split('\\').First() + "\\";
+                        p.Start();
                     }
                     Bot.Stop(true);
                 }
@@ -282,9 +325,7 @@ public class CoreStory
                 }
                 Core.AddDrop(Reward);
             }
-            else
-                foreach (ItemBase Item in Rewards)
-                    Core.AddDrop(Item.Name);
+            else Core.AddDrop(Core.QuestRewards(QuestID));
         }
 
         Core.Logger($"Doing Quest: [{QuestID}] - \"{QuestData.Name}\"");
@@ -294,6 +335,9 @@ public class CoreStory
     }
     private bool CBO_Checked = false;
     private int lastFailedQuestID = 0;
+    private string prevQuestExplain;
+    private string prevQuestReq;
+    private string prevQuestAReq;
 
     public void LegacyQuestManager(Action questLogic, params int[] questIDs)
     {

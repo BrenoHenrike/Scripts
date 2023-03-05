@@ -1,7 +1,7 @@
 /*
 name: Necrotic Sword of Doom Daily
-description: null
-tags: daily, nsod, necrotic sword of doom
+description: This bot will do the Encroaching Shadows quest plus Glimpse Into the Dark if you're member.
+tags: daily, NSOD, necrotic, sword, doom, encroaching, shadows, void, aura
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreDailies.cs
@@ -22,5 +22,3 @@ public class NSODDaily
         Core.SetOptions(false);
     }
 }
-
-

@@ -49,6 +49,7 @@ public class SummarizeStats
 
         Bot.Log("Basic Statistics\n");
         Bot.Log("Dataset size:\t\t" + data.Count());
+        Bot.Log("First datapoint:\t\t" + data.First().TimeStamp);
         Bot.Log("Last datapoint:\t\t" + lastItem.TimeStamp);
         Bot.Log("User Count (Total):\t" + data.DistinctBy(x => x.UserID).Count());
         Bot.Log("User Count (31 Days):\t" + days31.DistinctBy(x => x.UserID).Count());

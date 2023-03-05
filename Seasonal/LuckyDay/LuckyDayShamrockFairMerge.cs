@@ -79,7 +79,7 @@ public class LuckyDayShamrockFairMerge
                     Core.RegisterQuests(1759);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("rainbow", "Lucky Harms", "Clover Leaves", 20);
+                        Core.HuntMonster("rainbow", "Lucky Harms", "Clover Leaves", 1);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
