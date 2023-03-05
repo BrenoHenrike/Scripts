@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreDailies.cs",
-    "size": 39011,
+    "size": 40253,
     "fileName": "CoreDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreDailies.cs"
   },
@@ -7681,6 +7681,21 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HerosHeartDay/LoveSpellStory.cs"
   },
   {
+    "name": "Beleen's Gifts",
+    "description": "Farms the materials needed for Beleen's Gifts Merge in canalshore.",
+    "tags": [
+      "beleen's gifts",
+      "merge",
+      "love",
+      "canalshore",
+      "seasonal"
+    ],
+    "path": "Seasonal/HerosHeartDay/BeleensGiftsMerge.cs",
+    "size": 7376,
+    "fileName": "BeleensGiftsMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HerosHeartDay/BeleensGiftsMerge.cs"
+  },
+  {
     "name": "Fezzini Story",
     "description": "This will complete the Fezzini story quest.",
     "tags": [
@@ -8464,6 +8479,17 @@
     "size": 497,
     "fileName": "FaerieCourtREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/LuckyDay/FaerieCourtREP.cs"
+  },
+  {
+    "name": "null",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Seasonal/LuckyDay/LuckyDayShamrockFairMerge.cs",
+    "size": 12612,
+    "fileName": "LuckyDayShamrockFairMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/LuckyDay/LuckyDayShamrockFairMerge.cs"
   },
   {
     "name": "(Water Drop) Water War Merge",
