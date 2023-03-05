@@ -8403,27 +8403,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/SummerBreak/VolleyBaller.cs"
   },
   {
-    "name": "Evolved Leprechaun Merge",
-    "description": "This will merge Rainbow Shard and Golden Ticket.",
-    "tags": [
-      "farm",
-      "merge",
-      "shop",
-      "seasonal",
-      "lucky",
-      "evolved",
-      "leprechaun",
-      "rainbow",
-      "shard",
-      "golden",
-      "ticket"
-    ],
-    "path": "Seasonal/LuckyDay/EvolvedLeprechaunMerge.cs",
-    "size": 2000,
-    "fileName": "EvolvedLeprechaunMerge.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/LuckyDay/EvolvedLeprechaunMerge.cs"
-  },
-  {
     "name": "Pooka Story",
     "description": "This will complete the Pooka story quest.",
     "tags": [
@@ -8493,7 +8472,7 @@
       "null"
     ],
     "path": "Seasonal/LuckyDay/LuckyDayShamrockFairMerge.cs",
-    "size": 12612,
+    "size": 12611,
     "fileName": "LuckyDayShamrockFairMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/LuckyDay/LuckyDayShamrockFairMerge.cs"
   },
