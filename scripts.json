@@ -14932,16 +14932,18 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/Undervoid.cs"
   },
   {
-    "name": "(Badge) Battle Babysitter",
-    "description": "This will get the Battle Babysitter badge.",
+    "name": "(Badge) UnderVoid Badges",
+    "description": "This will get all 4 bades in undervoid",
     "tags": [
       "badge",
-      "doomwood",
-      "battle",
-      "baby-sitter"
+      "undervoid",
+      "conquest victor",
+      "war victor",
+      "famine vitor",
+      "death victor"
     ],
     "path": "Seasonal/StaffBirthdays/DageTheEvil/UnderVoidBadgesAll.cs",
-    "size": 3765,
+    "size": 3797,
     "fileName": "UnderVoidBadgesAll.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/UnderVoidBadgesAll.cs"
   },
