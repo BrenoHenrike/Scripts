@@ -9,6 +9,7 @@ tags: donated-acs-checker, seasonal, frostvale
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/Seasonal/Frostvale/ChillysParticipation.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models;
 using Skua.Core.ViewModels;
 using CommunityToolkit.Mvvm.DependencyInjection;
 
