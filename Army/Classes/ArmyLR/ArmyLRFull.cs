@@ -372,6 +372,7 @@ public class ArmyLR
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
             Bot.Combat.Attack("*");
 
+        Army.AggroMonStop();
         Core.JumpWait();
     }
 
@@ -389,6 +390,7 @@ public class ArmyLR
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
             Bot.Combat.Attack("*");
 
+        Army.AggroMonStop();
         Core.JumpWait();
     }
 
