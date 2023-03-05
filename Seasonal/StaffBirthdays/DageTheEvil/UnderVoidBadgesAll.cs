@@ -73,7 +73,7 @@ public class UnderVoidBadgesAll
             Core.Logger($"Already have the {badge2} badge");
             return;
         }
-        else if (Daily.CheckDaily(0000))
+        else if (Daily.CheckDaily(3412))
         {
             Core.Logger($"Doing UnderVoid Quest for {badge2} badge");
             Core.EnsureAccept(3412);
