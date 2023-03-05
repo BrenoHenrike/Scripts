@@ -2803,7 +2803,7 @@ public class CoreBots
             WriteFail(path, e);
         }
     }
-    private void WriteFail(string path, Exception e) => Logger($"Skua just tried to write to \"{path}\" but got an exception:\n{e.InnerException}\n\nPlease restart Skua in Admin-Mode just this once.", "Failed at writing file", true, true);
+    private void WriteFail(string path, Exception e) => Logger($"Skua just tried to write to \"{path}\" but got an exception:\n{e}\n\nPlease restart Skua in Admin-Mode just this once.", "Failed at writing file", true, true);
 
     private void ReadMe()
     {
