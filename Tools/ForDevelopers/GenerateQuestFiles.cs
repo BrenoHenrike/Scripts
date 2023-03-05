@@ -45,8 +45,8 @@ public class GetQuests
         }
 
         Core.Logger("Writing files.");
-        Core.WriteFile("Scripts/WIP/QuestIds.txt", r);
-        Core.WriteFile("Scripts/WIP/QuestData.csv", d);
+        Core.WriteFile(Path.Combine(ClientFileSources.SkuaScriptsDIR, "WIP", "QuestIds.txt"), r);
+        Core.WriteFile(Path.Combine(ClientFileSources.SkuaScriptsDIR, "WIP", "QuestData.csv"), d);
 
         Core.Logger("Files made:");
         Core.Logger(" - \"Scripts/WIP/QuestIds.txt\"");
