@@ -61,8 +61,11 @@ public class UnderVoidBadgesAll
 
     public void WarVictor()
     {
-        if (!Core.isSeasonalMapActive("undervoid"))
+        if (!Core.isSeasonalMapActive("undervoid") || !Core.isCompletedBefore(3412))
+        {
+            Core.Logger(!Core.isSeasonalMapActive("undervoid") ? $"Map not Avaiable" : $"Quest Not Unlocked Yet. each Daily takes 7x the previou (wtf i know right)");
             return;
+        }
 
         UndervoidStory.CompleteUnderVoid();
         Core.EquipClass(ClassType.Solo);
@@ -84,8 +87,11 @@ public class UnderVoidBadgesAll
 
     public void FamineVitor()
     {
-        if (!Core.isSeasonalMapActive("undervoid"))
+        if (!Core.isSeasonalMapActive("undervoid") || !Core.isCompletedBefore(3413))
+        {
+            Core.Logger(!Core.isSeasonalMapActive("undervoid") ? $"Map not Avaiable" : $"Quest Not Unlocked Yet. each Daily takes 7x the previou (wtf i know right)");
             return;
+        }
 
         UndervoidStory.CompleteUnderVoid();
         Core.EquipClass(ClassType.Solo);
@@ -107,8 +113,11 @@ public class UnderVoidBadgesAll
 
     public void DeathVictor()
     {
-        if (!Core.isSeasonalMapActive("undervoid"))
+        if (!Core.isSeasonalMapActive("undervoid") || !Core.isCompletedBefore(3414))
+        {
+            Core.Logger(!Core.isSeasonalMapActive("undervoid") ? $"Map not Avaiable" : $"Quest Not Unlocked Yet. each Daily takes 7x the previou (wtf i know right)");
             return;
+        }
 
         UndervoidStory.CompleteUnderVoid();
         Core.EquipClass(ClassType.Solo);
