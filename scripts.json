@@ -14932,6 +14932,20 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/Undervoid.cs"
   },
   {
+    "name": "(Badge) Battle Babysitter",
+    "description": "This will get the Battle Babysitter badge.",
+    "tags": [
+      "badge",
+      "doomwood",
+      "battle",
+      "baby-sitter"
+    ],
+    "path": "Seasonal/StaffBirthdays/DageTheEvil/UnderVoidBadgesAll.cs",
+    "size": 3765,
+    "fileName": "UnderVoidBadgesAll.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/UnderVoidBadgesAll.cs"
+  },
+  {
     "name": "Future Legion Story",
     "description": "This will complete the Future Legion story.",
     "tags": [
