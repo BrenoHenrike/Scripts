@@ -8403,6 +8403,27 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/SummerBreak/VolleyBaller.cs"
   },
   {
+    "name": "Evolved Leprechaun Merge",
+    "description": "This will merge Rainbow Shard and Golden Ticket.",
+    "tags": [
+      "farm",
+      "merge",
+      "shop",
+      "seasonal",
+      "lucky",
+      "evolved",
+      "leprechaun",
+      "rainbow",
+      "shard",
+      "golden",
+      "ticket"
+    ],
+    "path": "Seasonal/LuckyDay/EvolvedLeprechaunMerge.cs",
+    "size": 2065,
+    "fileName": "EvolvedLeprechaunMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/LuckyDay/EvolvedLeprechaunMerge.cs"
+  },
+  {
     "name": "Pooka Story",
     "description": "This will complete the Pooka story quest.",
     "tags": [
@@ -14944,6 +14965,17 @@
     "size": 3947,
     "fileName": "NationWarChestMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/NationWarChestMerge.cs"
+  },
+  {
+    "name": "null",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Seasonal/StaffBirthdays/DageTheEvil/FutureWarMerge.cs",
+    "size": 6374,
+    "fileName": "FutureWarMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/FutureWarMerge.cs"
   },
   {
     "name": "Ebil Corp HQ Merge",
