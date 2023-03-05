@@ -28,12 +28,13 @@ public class EvolvedLeprechaun
             return;
 
         Core.AddDrop("Lucky Clover", "Rainbow Shard", "Golden Ticket");
+        Core.EquipClass(ClassType.Farm);
 
         //Rainbow Shard
         while (!Bot.ShouldExit && !Core.CheckInventory("Rainbow Shard", 20))
         {
             Core.EnsureAccept(1758);
-            Core.HuntMonster("rainbow", "Rainbow Rat", "Prismatic Rainbow Fur", 5);
+            Core.HuntMonster("rainbow", "Rainbow Rat", "Prismatic Rainbow Fur", 5, log: false);
             Core.EnsureComplete(1758);
         }
 
@@ -46,7 +47,7 @@ public class EvolvedLeprechaun
             if (!Bot.Quests.IsDailyComplete(1759))
             {
                 Core.EnsureAccept(1759);
-                Core.HuntMonster("rainbow", "Lucky Harms", "Clover Leaves", 20);
+                Core.HuntMonster("rainbow", "Lucky Harms", "Clover Leaves", 20, log: false);
                 Core.EnsureComplete(1759);
             }
 
