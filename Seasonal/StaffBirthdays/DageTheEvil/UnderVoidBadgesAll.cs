@@ -1,7 +1,7 @@
 /*
-name: (Badge) Battle Babysitter
-description: This will get the Battle Babysitter badge.
-tags: badge, doomwood, battle, baby-sitter
+name: (Badge) UnderVoid Badges
+description: This will get all 4 bades in undervoid
+tags: badge, undervoid, conquest victor, war victor, famine vitor, death victor
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
