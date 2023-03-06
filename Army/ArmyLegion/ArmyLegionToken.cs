@@ -57,32 +57,34 @@ public class ArmyLegionToken
         switch (Method.ToString())
         {
             case "Dreadrock":
-                Core.BuyItem("underworld", 216, "Undead Champion");
-                Core.EquipClass(ClassType.Farm);
+                Adv.BuyItem("underworld", 216, "Undead Champion");
 
-                GetItem("dreadrock", new[] { "Fallen Hero", "Hollow Wraith", "Legion Sentinel", "Shadowknight", "Void Mercenary" }, 4849, "Legion Token", quant);
+                Core.EquipClass(ClassType.Farm);
+                Core.RegisterQuests(4849);
+                GetItem("dreadrock", "Fallen Hero", "Legion Token", quant);
                 break;
 
             case "Shogun_Paragon_Pet":
                 if (!Core.CheckInventory("Shogun Paragon Pet"))
                     Core.Logger("Pet not owned, stopping", stopBot: true);
 
-                if (Core.CheckInventory("Infernal Caladbolg"))
-                    Core.RegisterQuests(3722);
 
                 Core.EquipClass(ClassType.Farm);
                 Adv.BestGear(GearBoost.dmgAll);
 
+                if (Core.CheckInventory("Infernal Caladbolg"))
+                    Core.RegisterQuests(3722, 5755);
+                else Core.RegisterQuests(3722);
                 while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
                 {
-                    GetItem("fotia", new[] { "Fotia Elemental", "Fotia Spirit" }, 5755, "Nothing Heard", 10);
-                    GetItem("fotia", new[] { "Fotia Elemental", "Fotia Spirit" }, 5755, "Nothing to See", 10);
-                    GetItem("fotia", new[] { "Fotia Elemental", "Fotia Spirit" }, 5755, "Area Secured and Quiet", 10);
+                    GetItem("fotia", "Fotia Elemental", "Nothing Heard", 10);
+                    GetItem("fotia", "Fotia Elemental", "Nothing to See", 10);
+                    GetItem("fotia", "Fotia Elemental", "Area Secured and Quiet", 10);
 
                     if (Core.CheckInventory("Infernal Caladbolg"))
                     {
-                        GetItem("fotia", new[] { "Fotia Elemental" }, 3722, "Betrayer Extinguished", 5);
-                        GetItem("evilwardage", new[] { "Dreadfiend of Nulgath" }, 3722, "Fiend Felled", 2);
+                        GetItem("fotia", "Fotia Elemental", "Betrayer Extinguished", 5);
+                        GetItem("evilwardage", "Dreadfiend of Nulgath", "Fiend Felled", 2);
                     }
                 }
                 break;
@@ -94,7 +96,8 @@ public class ArmyLegionToken
                 Core.EquipClass(ClassType.Solo);
                 Adv.BestGear(GearBoost.Dragonkin);
 
-                GetItem("dragonheart", new[] { "Zombie Dragon" }, 4100, "Legion Token", quant);
+                Core.RegisterQuests(4100);
+                GetItem("dragonheart", "Zombie Dragon", "Legion Token", quant);
                 break;
 
             case "Bright_Paragon_Pet":
@@ -104,7 +107,8 @@ public class ArmyLegionToken
                 Core.EquipClass(ClassType.Farm);
                 Adv.BestGear(GearBoost.dmgAll);
 
-                GetItem("brightfortress", "r3", "Right", new[] { "*" }, 4704, "Legion Token", quant);
+                Core.RegisterQuests(4704);
+                GetItem("brightfortress", "Brightscythe Reaver", "Legion Token", quant);
                 break;
 
             case "Arcane_Paragon_Pet":
@@ -114,12 +118,13 @@ public class ArmyLegionToken
                 Core.EquipClass(ClassType.Farm);
                 Adv.BestGear(GearBoost.dmgAll);
 
+                Core.RegisterQuests(4896);
                 while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
                 {
-                    GetItem("dragonheart", new[] { "Granite Dracolich" }, 4896, "Granite Dracolich Soul", 4, isTemp: false);
-                    GetItem("dragonheart", new[] { "Tempest Dracolich" }, 4896, "Tempest Dracolich Soul", 4, isTemp: false);
-                    GetItem("dragonheart", new[] { "Inferno Dracolich" }, 4896, "Inferno Dracolich Soul", 4, isTemp: false);
-                    GetItem("dragonheart", new[] { "Deluge Dracolich" }, 4896, "Deluge Dracolich Soul", 4, isTemp: false);
+                    GetItem("dragonheart", "Granite Dracolich", "Granite Dracolich Soul", 4, isTemp: false);
+                    GetItem("dragonheart", "Tempest Dracolich", "Tempest Dracolich Soul", 4, isTemp: false);
+                    GetItem("dragonheart", "Inferno Dracolich", "Inferno Dracolich Soul", 4, isTemp: false);
+                    GetItem("dragonheart", "Deluge Dracolich", "Deluge Dracolich Soul", 4, isTemp: false);
                 }
                 break;
 
@@ -130,11 +135,12 @@ public class ArmyLegionToken
                 Core.EquipClass(ClassType.Farm);
                 Adv.BestGear(GearBoost.dmgAll);
 
+                Core.RegisterQuests(5741);
                 while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
                 {
-                    GetItem("laken", new[] { "Augmented Guard" }, 5741, "Stolen Guard", 5);
-                    GetItem("laken", new[] { "Cyborg Dog" }, 5741, "Stolen Dog", 6);
-                    GetItem("laken", new[] { "Mad Scientist" }, 5741, "Taken Axe", 10);
+                    GetItem("laken", "Augmented Guard", "Stolen Guard", 5);
+                    GetItem("laken", "Cyborg Dog", "Stolen Dog", 6);
+                    GetItem("laken", "Mad Scientist", "Taken Axe", 10);
                 }
                 break;
 
@@ -145,7 +151,8 @@ public class ArmyLegionToken
                 Core.EquipClass(ClassType.Farm);
                 Adv.BestGear(GearBoost.dmgAll);
 
-                GetItem("frozentower", new[] { "Ice Wolf" }, 5604, "Legion Token", quant);
+                Core.RegisterQuests(5604);
+                GetItem("frozentower", "Ice Wolf", "Legion Token", quant);
                 break;
 
             case "Ascended_Paragon_Pet":
@@ -155,13 +162,14 @@ public class ArmyLegionToken
                 Core.EquipClass(ClassType.Solo);
                 Adv.BestGear(GearBoost.dmgAll);
 
+                Core.RegisterQuests(2747);
                 while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
                 {
-                    GetItem("tournament", new[] { "Lord Brentan" }, 2747, "Lord Brentan's Regal Blade");
-                    GetItem("tournament", new[] { "Roderick" }, 2747, "Roderick's Chaotic Bane");
-                    GetItem("tournament", new[] { "Knight of Thorns" }, 2747, "Knight of Thorns' Sword");
-                    GetItem("tournament", new[] { "Johann Wryce" }, 2747, "Platinum of Johann Wryce");
-                    GetItem("tournament", new[] { "Khai Kaldun" }, 2747, "Khai Kaldun's Scimitar");
+                    GetItem("tournament", "Lord Brentan", "Lord Brentan's Regal Blade", 1);
+                    GetItem("tournament", "Roderick", "Roderick's Chaotic Bane", 1);
+                    GetItem("tournament", "Knight of Thorns", "Knight of Thorns' Sword", 1);
+                    GetItem("tournament", "Johann Wryce", "Platinum of Johann Wryce", 1);
+                    GetItem("tournament", "Khai Kaldun", "Khai Kaldun's Scimitar", 1);
                 }
                 break;
 
@@ -174,7 +182,8 @@ public class ArmyLegionToken
                 Core.EquipClass(ClassType.Solo);
                 Adv.BestGear(GearBoost.dmgAll);
 
-                GetItem("frozenruins", new[] { "Frost Fangbeast" }, 3969, "Legion Token", quant);
+                Core.RegisterQuests(3969);
+                GetItem("frozenruins", "Frost Fangbeast", "Legion Token", quant);
                 break;
 
             case "Holiday_Paragon_Pet":
@@ -184,11 +193,12 @@ public class ArmyLegionToken
                 Core.EquipClass(ClassType.Farm);
                 Adv.BestGear(GearBoost.dmgAll);
 
+                Core.RegisterQuests(3256);
                 while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
                 {
-                    GetItem("prison", new[] { "King Alteon's Knight" }, 3256, "Spirit of Loyalty", 6);
-                    GetItem("battlewedding", new[] { "Silver Knight" }, 3256, "Spirit of Love", 6);
-                    GetItem("lycan", new[] { "Lycan Knight" }, 3256, "Spirit of Love", 6);
+                    GetItem("prison", "King Alteon's Knight", "Spirit of Loyalty", 6);
+                    GetItem("battlewedding", "Silver Knight", "Spirit of Love", 6);
+                    GetItem("lycan", "Lycan Knight", "Spirit of Love", 6);
                 }
                 break;
 
@@ -198,8 +208,8 @@ public class ArmyLegionToken
 
                 Core.EquipClass(ClassType.Farm);
                 Adv.BestGear(GearBoost.dmgAll);
-
-                GetItem("underworld", new[] { "Bloodfiend" }, 5738, "Legion Token", quant);
+                Core.RegisterQuests(5738);
+                GetItem("underworld", "Bloodfiend", "Legion Token", quant);
                 break;
 
             case "Infernal_Caladbolg":
@@ -210,61 +220,60 @@ public class ArmyLegionToken
                 Adv.BestGear(GearBoost.dmgAll);
 
                 if (Core.CheckInventory("Shogun Paragon Pet"))
-                    Core.RegisterQuests(3722);
+                    Core.RegisterQuests(3722, 5755);
+                else Core.RegisterQuests(3722);
+
                 while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
                 {
                     if (Core.CheckInventory("Shogun Paragon Pet"))
                     {
-                        GetItem("fotia", new[] { "Fotia Elemental", "Fotia Spirit" }, 5755, "Nothing Heard", 10);
-                        GetItem("fotia", new[] { "Fotia Elemental", "Fotia Spirit" }, 5755, "Nothing to See", 10);
-                        GetItem("fotia", new[] { "Fotia Elemental", "Fotia Spirit" }, 5755, "Area Secured and Quiet", 10);
+                        GetItem("fotia", "Fotia Elemental", "Nothing Heard", 10);
+                        GetItem("fotia", "Fotia Elemental", "Nothing to See", 10);
+                        GetItem("fotia", "Fotia Elemental", "Area Secured and Quiet", 10);
                     }
 
-                    GetItem("fotia", new[] { "Fotia Elemental" }, 3722, "Betrayer Extinguished", 5);
-                    GetItem("evilwardage", new[] { "Dreadfiend of Nulgath" }, 3722, "Fiend Felled", 2);
+                    GetItem("fotia", "Fotia Elemental", "Betrayer Extinguished", 5);
+                    GetItem("evilwardage", "Dreadfiend of Nulgath", "Fiend Felled", 2);
                 }
                 break;
 
             case "Hardcore_Paragon_Pet":
-
                 if (!Core.CheckInventory("Hardcore Paragon Pet"))
                     Core.Logger("Pet not owned, stopping", stopBot: true);
 
                 Core.EquipClass(ClassType.Solo);
                 Adv.BestGear(GearBoost.dmgAll);
 
-                if (!Bot.Quests.IsUnlocked(793))
-                    GetItem("doomvault", new[] { "Binky" }, 3393, "Legion Token", quant);
-                else
-                    GetItem("chaosboss", new[] { "Ultra Chaos Warlord" }, 3394, "Legion Token", quant);
+                Core.RegisterQuests(!Bot.Quests.IsUnlocked(793) ? 3393 : 3394);
+                GetItem(!Bot.Quests.IsUnlocked(793) ? "doomvault" : "chaosboss", !Bot.Quests.IsUnlocked(793) ? "Binky" : "Ultra Chaos Warlord", "Legion Token", quant);
                 break;
 
             default:
                 Core.EquipClass(ClassType.Solo);
-                GetItem("legionarena", new[] { "Legion Fiend Rider" }, 6743, "Legion Token", quant);
+                Core.RegisterQuests(0000);
+                GetItem("legionarena", "Legion Fiend Rider", "Legion Token", quant);
                 break;
         }
     }
 
-    public void GetItem(string map = null, string[] monsters = null, int questID = 0000, string item = null, int quant = 0, bool isTemp = true)
+    public void GetItem(string map = null, string monster = null, string item = null, int quant = 1, bool isTemp = true)
     {
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
 
-        Quest QuestData = Core.EnsureLoad(questID);
-        ItemBase[] RequiredItems = QuestData.Requirements.ToArray();
-        ItemBase[] QuestReward = QuestData.Rewards.ToArray();
+        // Quest QuestData = Core.EnsureLoad(questID);
+        // ItemBase[] RequiredItems = QuestData.Requirements.ToArray();
+        // ItemBase[] QuestReward = QuestData.Rewards.ToArray();
 
         Core.AddDrop(item);
-        if (!Bot.Quests.Active.Contains(QuestData))
-            Core.RegisterQuests(questID);
+        // if (!Bot.Quests.Active.Contains(QuestData))
+        //     Core.RegisterQuests(questID);
 
-        foreach (string monster in monsters)
-            Army.SmartAggroMonStart(map, monster);
+        Army.SmartAggroMonStart(map, monster);
 
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
         {
-            if (monsters == new[] { "Binky" })
+            if (monster == "Binky")
                 Core.HuntMonster("Doomvault", "Binky");
             else Bot.Combat.Attack("*");
         }
@@ -273,18 +282,18 @@ public class ArmyLegionToken
         Core.CancelRegisteredQuests();
     }
 
-    public void GetItem(string map = null, string cell = null, string pad = null, string[] monsters = null, int questID = 0000, string item = null, int quant = 0, bool isTemp = true)
+    public void GetItem(string map = null, string cell = null, string pad = null, string[] monsters = null, string item = null, int quant = 0, bool isTemp = true)
     {
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
 
-        Quest QuestData = Core.EnsureLoad(questID);
-        ItemBase[] RequiredItems = QuestData.Requirements.ToArray();
-        ItemBase[] QuestReward = QuestData.Rewards.ToArray();
+        // Quest QuestData = Core.EnsureLoad(questID);
+        // ItemBase[] RequiredItems = QuestData.Requirements.ToArray();
+        // ItemBase[] QuestReward = QuestData.Rewards.ToArray();
 
         Core.AddDrop(item);
-        if (!Bot.Quests.Active.Contains(QuestData))
-            Core.RegisterQuests(questID);
+        // if (!Bot.Quests.Active.Contains(QuestData))
+        //     Core.RegisterQuests(questID);
 
         foreach (string monster in monsters)
             Army.SmartAggroMonStart(map, monster);

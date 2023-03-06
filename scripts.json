@@ -2880,7 +2880,7 @@
       "rare-items"
     ],
     "path": "Other/0CurrentDailyGifts.cs",
-    "size": 14249,
+    "size": 14563,
     "fileName": "0CurrentDailyGifts.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/0CurrentDailyGifts.cs"
   },
@@ -3053,7 +3053,7 @@
       "pneuma"
     ],
     "path": "Enhancement/UnlockForgeEnhancements.cs",
-    "size": 31269,
+    "size": 31293,
     "fileName": "UnlockForgeEnhancements.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Enhancement/UnlockForgeEnhancements.cs"
   },
@@ -13333,6 +13333,75 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyMerge/ArmyLowTideMergeReqs.cs"
   },
   {
+    "name": "Army Dark Token",
+    "description": "uses an army to farm dark tokens",
+    "tags": [
+      "dark token",
+      "army",
+      "seraphicwardage"
+    ],
+    "path": "Army/ArmyLegion/ArmyDarkToken.cs",
+    "size": 2096,
+    "fileName": "ArmyDarkToken.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyLegion/ArmyDarkToken.cs"
+  },
+  {
+    "name": "Legion Revenant (Army)",
+    "description": "Uses an army to to do the entirely of the legion revenant grind together",
+    "tags": [
+      "legion",
+      "reventant",
+      "class",
+      "army",
+      "fealty"
+    ],
+    "path": "Army/ArmyLegion/ArmyLRFull.cs",
+    "size": 16834,
+    "fileName": "ArmyLRFull.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyLegion/ArmyLRFull.cs"
+  },
+  {
+    "name": "Obsidian Rock",
+    "description": "Aggromon for obsidian rock, up to 8 ppl.",
+    "tags": [
+      "obsidian rock",
+      "legion",
+      "army"
+    ],
+    "path": "Army/ArmyLegion/ArmyObsidianRock.cs",
+    "size": 1393,
+    "fileName": "ArmyObsidianRock.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyLegion/ArmyObsidianRock.cs"
+  },
+  {
+    "name": "Army Legion Token",
+    "description": "Uses an army, and method select to farm Legion tokens",
+    "tags": [
+      "army",
+      "legion",
+      "legion tokens",
+      "dreadrock",
+      "pet",
+      "bright paragon pet",
+      "shogun paragon pet",
+      "thanatos paragon pet",
+      "arcane paragon pet",
+      "paragon dreadnaught pet",
+      "munted paragon pet",
+      "ascended paragon pet",
+      "festive paragon dracolich rider",
+      "holiday paragon pet",
+      "uw3017 pet",
+      "infernal caladbolg",
+      "hardcore paragon pet",
+      "legion arena"
+    ],
+    "path": "Army/ArmyLegion/ArmyLegionToken.cs",
+    "size": 13151,
+    "fileName": "ArmyLegionToken.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyLegion/ArmyLegionToken.cs"
+  },
+  {
     "name": "Dragon of Time Army",
     "description": "sues an army to get the dragon of time class",
     "tags": [
@@ -13388,33 +13457,6 @@
     "size": 5329,
     "fileName": "ArmyGold.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/ArmyGold.cs"
-  },
-  {
-    "name": "Obsidian Rock",
-    "description": "Aggromon for Obsidian Rock, up to 8 ppl.",
-    "tags": [
-      "obsidian rock"
-    ],
-    "path": "Army/ArmyFarm/ArmyObsidianRock.cs",
-    "size": 1379,
-    "fileName": "ArmyObsidianRock.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/ArmyObsidianRock.cs"
-  },
-  {
-    "name": "Army Shogun Paragon Tokens",
-    "description": "Aggromon farm for the Fotia monsters handing in the Clear a Path and Time for Some Spring Cleaning quests for Legion Tokens. ***Note*** Stop the 6th account and jump to cell r5, Spawn and start it again. That way the 2 10k HP monsters get killed by 2 accounts at a time.",
-    "tags": [
-      "legion",
-      "army",
-      "tokens",
-      "token",
-      "shogun",
-      "aggromon"
-    ],
-    "path": "Army/ArmyFarm/ArmyShogunParagonTokens.cs",
-    "size": 1637,
-    "fileName": "ArmyShogunParagonTokens.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/ArmyShogunParagonTokens.cs"
   },
   {
     "name": "Army Totem And Gem",
@@ -15460,90 +15502,6 @@
     "size": 1206,
     "fileName": "Acolyte[Mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/Members-CLasses/Acolyte[Mem].cs"
-  },
-  {
-    "name": "Army DreadRock LT",
-    "description": "Uses an army to farm legion tokens at dreadrock",
-    "tags": [
-      "army",
-      "legion",
-      "dreadrock",
-      "legion tokens"
-    ],
-    "path": "Army/Classes/ArmyLR/ArmyDreadRockLT.cs",
-    "size": 1810,
-    "fileName": "ArmyDreadRockLT.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Classes/ArmyLR/ArmyDreadRockLT.cs"
-  },
-  {
-    "name": "Army time for Spring Cleaning",
-    "description": "uses an army to farm the \"time for spring cleaning quest\".",
-    "tags": [
-      "time for spring cleaning quest",
-      "army",
-      "legion",
-      "legion tokens"
-    ],
-    "path": "Army/Classes/ArmyLR/ArmyTimeforspringCleaningLT.cs",
-    "size": 2206,
-    "fileName": "ArmyTimeforspringCleaningLT.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Classes/ArmyLR/ArmyTimeforspringCleaningLT.cs"
-  },
-  {
-    "name": "Army Dark Token",
-    "description": "uses an army to farm dark tokens",
-    "tags": [
-      "dark token",
-      "army",
-      "seraphicwardage"
-    ],
-    "path": "Army/Classes/ArmyLR/ArmyDarkToken.cs",
-    "size": 2096,
-    "fileName": "ArmyDarkToken.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Classes/ArmyLR/ArmyDarkToken.cs"
-  },
-  {
-    "name": "Legion Revenant (Army)",
-    "description": "Uses an army to to do the entirely of the legion revenant grind together",
-    "tags": [
-      "legion",
-      "reventant",
-      "class",
-      "army",
-      "fealty"
-    ],
-    "path": "Army/Classes/ArmyLR/ArmyLRFull.cs",
-    "size": 16834,
-    "fileName": "ArmyLRFull.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Classes/ArmyLR/ArmyLRFull.cs"
-  },
-  {
-    "name": "Army Legion Token",
-    "description": "Uses an army, and method select to farm Legion tokens",
-    "tags": [
-      "army",
-      "legion",
-      "legion tokens",
-      "dreadrock",
-      "pet",
-      "bright paragon pet",
-      "shogun paragon pet",
-      "thanatos paragon pet",
-      "arcane paragon pet",
-      "paragon dreadnaught pet",
-      "munted paragon pet",
-      "ascended paragon pet",
-      "festive paragon dracolich rider",
-      "holiday paragon pet",
-      "uw3017 pet",
-      "infernal caladbolg",
-      "hardcore paragon pet",
-      "legion arena"
-    ],
-    "path": "Army/Classes/ArmyLR/ArmyLegionToken.cs",
-    "size": 13321,
-    "fileName": "ArmyLegionToken.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Classes/ArmyLR/ArmyLegionToken.cs"
   },
   {
     "name": "Army Aegis Rep",

@@ -1,7 +1,7 @@
 /*
 name: Obsidian Rock
-description: Aggromon for Obsidian Rock, up to 8 ppl.
-tags: Obsidian Rock
+description: Aggromon for obsidian rock, up to 8 ppl.
+tags: obsidian rock, legion, army
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/Army/CoreArmyLite.cs
