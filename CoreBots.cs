@@ -1378,8 +1378,15 @@ public class CoreBots
 
     public string[] QuestRewards(params int[] questIDs)
     {
+        if (questIDs.Length == 0)
+            return Array.Empty<string>();
         List<string> toReturn = new();
-        EnsureLoad(questIDs).Select(q => q.Rewards).ForEach(r => toReturn.AddRange(r.Select(i => i.Name)));
+        foreach (var q in EnsureLoad(questIDs))
+        {
+            if (q.Rewards == null || q.Rewards.Count() == 0)
+                continue;
+            toReturn.AddRange(q.Rewards.Select(i => i.Name));
+        }
         return toReturn.ToArray();
     }
 
