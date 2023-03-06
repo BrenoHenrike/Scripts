@@ -42,6 +42,6 @@ public class Generated_ArmyObsidianRock
     private List<int> questIDs = new() { 2742 };
     private List<string> monNames = new() { "Living Fire", "Sulfur Imp", "Firestorm Hatchling" };
     private List<string> drops = new() { "Obsidian Rock" };
-    private string map = "firestorm-6969";
+    private string map = "firestorm";
     private ClassType classtype = ClassType.Farm;
 }
