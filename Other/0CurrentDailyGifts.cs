@@ -111,6 +111,12 @@ public class CurrentDailyGifts
             GetGift(AvailableUntil(28, 2), "brokenwoods", "Eldritch Amalgamation", "Diabolical Banner", "Diabolical Bed", "Diabolical BookShelf", "Diabolical Carpet", "Diabolical Couch", "Diabolical Eye Lamp", "Diabolical Fountain", "Diabolical Throne", "Diabolical Torch", "Diabolical Work Desk");
             GetGift(AvailableUntil(28, 2), "yokaihunt", "Elixir Etokoun", "Lunarian Blasters", "Lunarian Blaster", "Lunarian Gohei", "Lunarian Cresent");
             #endregion
+
+            #region Febuari 2023
+            //Fix this its not perm.. i just dont have a date atm...
+            GetGift(Permanent, "undervoid", "Conquest", "Dark Birthday Party Guests I", "Dark Birthday Party Guests II", "Evil Birthday Party Guest", "Hungry Dark Birthday Party Guest");
+
+            #endregion
             //GetGift(AvailableUntil(1, 1), "map", "monster", "");
             //GetGift(Permanent, "map", "monster", "");
 
