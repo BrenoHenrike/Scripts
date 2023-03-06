@@ -1,8 +1,6 @@
 /*
 name: Army Shogun Paragon Tokens
-description: Aggromon farm for the Fotia monsters handing in the Clear a Path and Time for Some Spring Cleaning quests for Legion Tokens. 
-
-***Note*** Stop the 6th account and jump to cell r5, Spawn and start it again. That way the 2 10k HP monsters get killed by 2 accounts at a time.
+description: Aggromon farm for the Fotia monsters handing in the Clear a Path and Time for Some Spring Cleaning quests for Legion Tokens. ***Note*** Stop the 6th account and jump to cell r5, Spawn and start it again. That way the 2 10k HP monsters get killed by 2 accounts at a time.
 tags: Legion, Army, Tokens, Token, Shogun, Aggromon
 */
 //cs_include Scripts/CoreBots.cs
