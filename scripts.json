@@ -13333,6 +13333,75 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyMerge/ArmyLowTideMergeReqs.cs"
   },
   {
+    "name": "Army Dark Token",
+    "description": "uses an army to farm dark tokens",
+    "tags": [
+      "dark token",
+      "army",
+      "seraphicwardage"
+    ],
+    "path": "Army/ArmyLegion/ArmyDarkToken.cs",
+    "size": 2096,
+    "fileName": "ArmyDarkToken.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyLegion/ArmyDarkToken.cs"
+  },
+  {
+    "name": "Legion Revenant (Army)",
+    "description": "Uses an army to to do the entirely of the legion revenant grind together",
+    "tags": [
+      "legion",
+      "reventant",
+      "class",
+      "army",
+      "fealty"
+    ],
+    "path": "Army/ArmyLegion/ArmyLRFull.cs",
+    "size": 16834,
+    "fileName": "ArmyLRFull.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyLegion/ArmyLRFull.cs"
+  },
+  {
+    "name": "Obsidian Rock",
+    "description": "Aggromon for obsidian rock, up to 8 ppl.",
+    "tags": [
+      "obsidian rock",
+      "legion",
+      "army"
+    ],
+    "path": "Army/ArmyLegion/ArmyObsidianRock.cs",
+    "size": 1393,
+    "fileName": "ArmyObsidianRock.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyLegion/ArmyObsidianRock.cs"
+  },
+  {
+    "name": "Army Legion Token",
+    "description": "Uses an army, and method select to farm Legion tokens",
+    "tags": [
+      "army",
+      "legion",
+      "legion tokens",
+      "dreadrock",
+      "pet",
+      "bright paragon pet",
+      "shogun paragon pet",
+      "thanatos paragon pet",
+      "arcane paragon pet",
+      "paragon dreadnaught pet",
+      "munted paragon pet",
+      "ascended paragon pet",
+      "festive paragon dracolich rider",
+      "holiday paragon pet",
+      "uw3017 pet",
+      "infernal caladbolg",
+      "hardcore paragon pet",
+      "legion arena"
+    ],
+    "path": "Army/ArmyLegion/ArmyLegionToken.cs",
+    "size": 12756,
+    "fileName": "ArmyLegionToken.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyLegion/ArmyLegionToken.cs"
+  },
+  {
     "name": "Dragon of Time Army",
     "description": "sues an army to get the dragon of time class",
     "tags": [
@@ -15433,73 +15502,6 @@
     "size": 1206,
     "fileName": "Acolyte[Mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/Members-CLasses/Acolyte[Mem].cs"
-  },
-  {
-    "name": "Army Dark Token",
-    "description": "uses an army to farm dark tokens",
-    "tags": [
-      "dark token",
-      "army",
-      "seraphicwardage"
-    ],
-    "path": "Army/Classes/ArmyLR/ArmyDarkToken.cs",
-    "size": 2096,
-    "fileName": "ArmyDarkToken.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Classes/ArmyLR/ArmyDarkToken.cs"
-  },
-  {
-    "name": "Legion Revenant (Army)",
-    "description": "Uses an army to to do the entirely of the legion revenant grind together",
-    "tags": [
-      "legion",
-      "reventant",
-      "class",
-      "army",
-      "fealty"
-    ],
-    "path": "Army/Classes/ArmyLR/ArmyLRFull.cs",
-    "size": 16834,
-    "fileName": "ArmyLRFull.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Classes/ArmyLR/ArmyLRFull.cs"
-  },
-  {
-    "name": "Obsidian Rock",
-    "description": "Aggromon for Obsidian Rock, up to 8 ppl.",
-    "tags": [
-      "obsidian rock"
-    ],
-    "path": "Army/Classes/ArmyLR/ArmyObsidianRock.cs",
-    "size": 1379,
-    "fileName": "ArmyObsidianRock.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Classes/ArmyLR/ArmyObsidianRock.cs"
-  },
-  {
-    "name": "Army Legion Token",
-    "description": "Uses an army, and method select to farm Legion tokens",
-    "tags": [
-      "army",
-      "legion",
-      "legion tokens",
-      "dreadrock",
-      "pet",
-      "bright paragon pet",
-      "shogun paragon pet",
-      "thanatos paragon pet",
-      "arcane paragon pet",
-      "paragon dreadnaught pet",
-      "munted paragon pet",
-      "ascended paragon pet",
-      "festive paragon dracolich rider",
-      "holiday paragon pet",
-      "uw3017 pet",
-      "infernal caladbolg",
-      "hardcore paragon pet",
-      "legion arena"
-    ],
-    "path": "Army/Classes/ArmyLR/ArmyLegionToken.cs",
-    "size": 12756,
-    "fileName": "ArmyLegionToken.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Classes/ArmyLR/ArmyLegionToken.cs"
   },
   {
     "name": "Army Aegis Rep",
