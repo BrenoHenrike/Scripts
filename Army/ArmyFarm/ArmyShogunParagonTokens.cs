@@ -42,6 +42,6 @@ public class Generated_ArmyShogunParagonTokens
     private List<int> questIDs = new() { 5755, 5753 };
     private List<string> monNames = new() { "Fotia Elemental", "Fotia Spirit", "Femme Cult Worshiper" };
     private List<string> drops = new() { "Legion Token" };
-    private string map = "fotia-6969";
+    private string map = "fotia";
     private ClassType classtype = ClassType.Farm;
 }
