@@ -58,7 +58,7 @@ public class ArmyLegionToken
         {
             case "Dreadrock":
                 Adv.BuyItem("underworld", 216, "Undead Champion");
-                
+
                 Core.EquipClass(ClassType.Farm);
                 Core.RegisterQuests(4849);
                 GetItem("dreadrock", "Fallen Hero", "Legion Token", quant);
@@ -72,7 +72,9 @@ public class ArmyLegionToken
                 Core.EquipClass(ClassType.Farm);
                 Adv.BestGear(GearBoost.dmgAll);
 
-                Core.RegisterQuests(3722, 5755);
+                if (Core.CheckInventory("Infernal Caladbolg"))
+                    Core.RegisterQuests(3722, 5755);
+                else Core.RegisterQuests(3722);
                 while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
                 {
                     GetItem("fotia", "Fotia Elemental", "Nothing Heard", 10);
@@ -217,7 +219,10 @@ public class ArmyLegionToken
                 Core.EquipClass(ClassType.Farm);
                 Adv.BestGear(GearBoost.dmgAll);
 
-                Core.RegisterQuests(3722, 5755);
+                if (Core.CheckInventory("Shogun Paragon Pet"))
+                    Core.RegisterQuests(3722, 5755);
+                else Core.RegisterQuests(3722);
+
                 while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
                 {
                     if (Core.CheckInventory("Shogun Paragon Pet"))
