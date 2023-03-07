@@ -380,7 +380,7 @@
       "null"
     ],
     "path": "Legion/HeadOfTheLegionBeast.cs",
-    "size": 6623,
+    "size": 6563,
     "fileName": "HeadOfTheLegionBeast.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/HeadOfTheLegionBeast.cs"
   },
@@ -8418,6 +8418,17 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/LuckyDay/Pooka.cs"
   },
   {
+    "name": "null",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Seasonal/LuckyDay/LuckdragonMerge.cs",
+    "size": 3791,
+    "fileName": "LuckdragonMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/LuckyDay/LuckdragonMerge.cs"
+  },
+  {
     "name": "Daibh's Merge",
     "description": "Farms the materials needed for Daibh's Merge in luck.",
     "tags": [
@@ -12013,6 +12024,17 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/DreadspaceReplicatorMerge.cs"
   },
   {
+    "name": "null",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Other/MergeShops/SevenCirclesMerge.cs",
+    "size": 6403,
+    "fileName": "SevenCirclesMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/SevenCirclesMerge.cs"
+  },
+  {
     "name": "BidoBirthdayMerge",
     "description": "null",
     "tags": [
@@ -12275,6 +12297,17 @@
     "size": 3200,
     "fileName": "4DPyramidHouseMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/4DPyramidHouseMerge.cs"
+  },
+  {
+    "name": "null",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Other/MergeShops/SevenCirclesWarMerge.cs",
+    "size": 7463,
+    "fileName": "SevenCirclesWarMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/SevenCirclesWarMerge.cs"
   },
   {
     "name": "ShadowScytheGeneralMerge",
@@ -14949,6 +14982,17 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/DarkPath.cs"
   },
   {
+    "name": "null",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Seasonal/StaffBirthdays/DageTheEvil/DagesBirthdayMerge.cs",
+    "size": 5877,
+    "fileName": "DagesBirthdayMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/DagesBirthdayMerge.cs"
+  },
+  {
     "name": "Dark War Nation Merge",
     "description": "This will complete the Dark War Nation story and farm Nation Defender Medals.",
     "tags": [
@@ -15022,6 +15066,17 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/Undervoid.cs"
   },
   {
+    "name": "null",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Seasonal/StaffBirthdays/DageTheEvil/UnderworldTeamMerge.cs",
+    "size": 5400,
+    "fileName": "UnderworldTeamMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/UnderworldTeamMerge.cs"
+  },
+  {
     "name": "(Badge) UnderVoid Badges",
     "description": "This will get all 4 bades in undervoid",
     "tags": [
@@ -15082,6 +15137,28 @@
     "size": 6374,
     "fileName": "FutureWarMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/FutureWarMerge.cs"
+  },
+  {
+    "name": "null",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Seasonal/StaffBirthdays/DageTheEvil/BattleGemsGameGearMerge.cs",
+    "size": 5310,
+    "fileName": "BattleGemsGameGearMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/BattleGemsGameGearMerge.cs"
+  },
+  {
+    "name": "null",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Seasonal/StaffBirthdays/DageTheEvil/DageWar50Merge.cs",
+    "size": 3138,
+    "fileName": "DageWar50Merge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/DageWar50Merge.cs"
   },
   {
     "name": "Ebil Corp HQ Merge",
