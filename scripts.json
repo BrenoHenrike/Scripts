@@ -14934,6 +14934,21 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/LegionSwordMasterAssassin.cs"
   },
   {
+    "name": "Dark Path Story",
+    "description": "This script completes the storyline in darkpath and voidvault.",
+    "tags": [
+      "darkpath",
+      "voidvault",
+      "seasonal",
+      "dage",
+      "story"
+    ],
+    "path": "Seasonal/StaffBirthdays/DageTheEvil/DarkPath.cs",
+    "size": 2301,
+    "fileName": "DarkPath.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/DarkPath.cs"
+  },
+  {
     "name": "Dark War Nation Merge",
     "description": "This will complete the Dark War Nation story and farm Nation Defender Medals.",
     "tags": [
