@@ -8434,6 +8434,22 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/LuckyDay/DaibhsMerge.cs"
   },
   {
+    "name": "Posty Mc Nobbins Quest Rewards",
+    "description": "gest the quest rewards from all 4 quest from mc nobbins.",
+    "tags": [
+      "mc nobbins",
+      "quest reward",
+      "farm",
+      "lucky day",
+      "luck",
+      "seasonal"
+    ],
+    "path": "Seasonal/LuckyDay/PostyMcNobbinsQuestRewards.cs",
+    "size": 1918,
+    "fileName": "PostyMcNobbinsQuestRewards.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/LuckyDay/PostyMcNobbinsQuestRewards.cs"
+  },
+  {
     "name": "Pooka's Gifts Merge",
     "description": "This will merge Pooka's Gifts.",
     "tags": [
