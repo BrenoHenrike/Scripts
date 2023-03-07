@@ -117,9 +117,7 @@ public class HeadoftheLegionBeast
 
         Core.RegisterQuests(7979);
         while (!Bot.ShouldExit && !Core.CheckInventory("Essence of Wrath", quant))
-        {
             Core.KillMonster("sevencircleswar", "Enter", "Spawn", "Wrath Guard", "Wrath Guards Defeated", 12);
-        }
         Core.CancelRegisteredQuests();
     }
 
@@ -134,9 +132,7 @@ public class HeadoftheLegionBeast
 
         Core.RegisterQuests(7985);
         while (!Bot.ShouldExit && !Core.CheckInventory("Essence of Violence", quant))
-        {
             Core.KillMonster("sevencircleswar", "r9", "Left", "Violence Guard", log: false);
-        }
         Core.CancelRegisteredQuests();
     }
 
@@ -151,9 +147,7 @@ public class HeadoftheLegionBeast
 
         Core.RegisterQuests(7988);
         while (!Bot.ShouldExit && !Core.CheckInventory("Essence of Treachery", quant))
-        {
             Core.KillMonster("sevencircleswar", "r13", "Left", "Treachery Guard", log: false);
-        }
         Core.CancelRegisteredQuests();
     }
 
