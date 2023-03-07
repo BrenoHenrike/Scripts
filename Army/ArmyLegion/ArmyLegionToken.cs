@@ -11,6 +11,7 @@ tags: army, legion, legion tokens, dreadrock, pet, bright paragon pet, shogun pa
 //cs_include Scripts/CoreStory.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
+using Skua.Core.Models.Monsters;
 using Skua.Core.Models.Quests;
 using Skua.Core.Options;
 
@@ -45,6 +46,8 @@ public class ArmyLegionToken
         Core.SetOptions(disableClassSwap: false);
 
         Setup(Bot.Config.Get<Method>("Method"), 25001);
+
+        Core.SetOptions(false);
     }
 
 
@@ -59,9 +62,8 @@ public class ArmyLegionToken
             case "Dreadrock":
                 Adv.BuyItem("underworld", 216, "Undead Champion");
 
-                Core.EquipClass(ClassType.Farm);
                 Core.RegisterQuests(4849);
-                GetItem("dreadrock", "Fallen Hero", "Legion Token", quant);
+                GetItemMultiMon("dreadrock", "Legion Token", quant, false, new[] { "Void Mercenary", "Fallen Hero", "Hollow Wraith", "Shadowknight", "Legion Sentinel" });
                 break;
 
             case "Shogun_Paragon_Pet":
@@ -72,9 +74,9 @@ public class ArmyLegionToken
                 Core.EquipClass(ClassType.Farm);
                 Adv.BestGear(GearBoost.dmgAll);
 
-                if (Core.CheckInventory("Infernal Caladbolg"))
+                if (Core.CheckInventory("Infernal Caladbolg", toInv: false))
                     Core.RegisterQuests(3722, 5755);
-                else Core.RegisterQuests(3722);
+                else Core.RegisterQuests(5755);
                 while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
                 {
                     GetItem("fotia", "Fotia Elemental", "Nothing Heard", 10);
@@ -260,6 +262,7 @@ public class ArmyLegionToken
     {
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
+        Bot.Events.PlayerAFK += PlayerAFK;
 
         // Quest QuestData = Core.EnsureLoad(questID);
         // ItemBase[] RequiredItems = QuestData.Requirements.ToArray();
@@ -268,7 +271,6 @@ public class ArmyLegionToken
         Core.AddDrop(item);
         // if (!Bot.Quests.Active.Contains(QuestData))
         //     Core.RegisterQuests(questID);
-
         Army.SmartAggroMonStart(map, monster);
 
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
@@ -280,13 +282,39 @@ public class ArmyLegionToken
 
         Army.AggroMonStop(true);
         Core.CancelRegisteredQuests();
+        Bot.Events.PlayerAFK -= PlayerAFK;
+    }
+
+    public void GetItemMultiMon(string map = null, string item = null, int quant = 1, bool isTemp = true, params string[] monsters)
+    {
+        Core.PrivateRooms = true;
+        Core.PrivateRoomNumber = Army.getRoomNr();
+        Bot.Events.PlayerAFK += PlayerAFK;
+
+        Core.AddDrop(item);
+
+        foreach (string monster in monsters)
+            Army.SmartAggroMonStart(map, monster);
+
+        while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
+        {
+            if (monsters == new[] { "Binky" })
+                Core.HuntMonster("Doomvault", "Binky");
+            else
+                foreach (string monster in monsters)
+                    Bot.Combat.Attack("*");
+        }
+
+        Army.AggroMonStop(true);
+        Core.CancelRegisteredQuests();
+        Bot.Events.PlayerAFK -= PlayerAFK;
     }
 
     public void GetItem(string map = null, string cell = null, string pad = null, string[] monsters = null, string item = null, int quant = 0, bool isTemp = true)
     {
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
-
+        Bot.Events.PlayerAFK += PlayerAFK;
         // Quest QuestData = Core.EnsureLoad(questID);
         // ItemBase[] RequiredItems = QuestData.Requirements.ToArray();
         // ItemBase[] QuestReward = QuestData.Rewards.ToArray();
@@ -307,6 +335,42 @@ public class ArmyLegionToken
 
         Army.AggroMonStop(true);
         Core.CancelRegisteredQuests();
+        Bot.Events.PlayerAFK -= PlayerAFK;
+    }
+
+    // void ArmyHunt(string map, string[] monsters, string item, ClassType classType, bool isTemp = false, int quant = 1)
+    // {
+    //     Core.PrivateRooms = true;
+    //     Core.PrivateRoomNumber = Army.getRoomNr();
+    //     Bot.Events.PlayerAFK += PlayerAFK;
+
+    //     if (!isTemp && item != null)
+    //         Core.AddDrop(item);
+
+    //     if (Bot.Config.Get<bool>("sellToSync"))
+    //         Army.SellToSync(item, quant);
+
+    //     Core.AddDrop(item);
+
+    //     Core.EquipClass(classType);
+    //     Core.FarmingLogger(item, quant);
+
+    //     Army.SmartAggroMonStart(map, monsters);
+
+    //     while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
+    //         foreach (string monster in monsters)
+    //             Bot.Combat.Attack("*");
+
+    //     Army.AggroMonStop(true);
+    //     Core.JumpWait();
+    //     Bot.Events.PlayerAFK -= PlayerAFK;
+    // }
+
+    public void PlayerAFK()
+    {
+        Core.Logger("Anti-AFK engaged");
+        Bot.Sleep(1500);
+        Bot.Send.Packet("%xt%zm%afk%1%false%");
     }
 
     public enum Method
