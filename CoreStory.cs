@@ -229,16 +229,16 @@ public class CoreStory
                 Quest prevQuest = Bot.Quests.Tree.Find(q => q.Slot == QuestData.Slot && q.Value == (currentValue + 1));
 
                 prevQuestReq ??=
-                    prevQuest == null && prevQuest.Requirements.All(r => Core.CheckInventory(r.ID, r.Quantity)) ?
+                    prevQuest == null || prevQuest.Requirements.All(r => Core.CheckInventory(r.ID, r.Quantity)) ?
                         null :
                         String.Join(',', prevQuest.Requirements.Where(r => !Core.CheckInventory(r.ID, r.Quantity)).Select(i => i.Name));
                 prevQuestAReq ??=
-                    prevQuest == null && prevQuest.AcceptRequirements.All(r => Core.CheckInventory(r.ID, r.Quantity)) ?
+                    prevQuest == null || prevQuest.AcceptRequirements.All(r => Core.CheckInventory(r.ID, r.Quantity)) ?
                         null :
                         String.Join(',', prevQuest.Requirements.Where(r => !Core.CheckInventory(r.ID, r.Quantity)).Select(i => i.Name));
                 prevQuestExplain ??=
                     prevQuest == null ?
-                        "NULL|" :
+                        String.Empty :
                         $"Quest \"{prevQuest.Name}\" [{prevQuest.ID}] appears to have failed to turn in somehow.|" +
                         (prevQuestReq == null ?
                             String.Empty :
