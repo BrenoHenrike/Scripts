@@ -58,7 +58,7 @@ public class PostyMcNobbinsQuestRewards
         Core.EquipClass(ClassType.Farm);
 
         Core.RegisterQuests(5758, 5759, 5760, 5761);
-        while (!Bot.ShouldExit && !Core.CheckInventory(AllRewards))
+        while (!Bot.ShouldExit && !Core.CheckInventory(AllRewards, toInv: false))
             Core.HuntMonster("luck", "Pot O' Gold", log: false);
         Core.CancelRegisteredQuests();
         Core.ToBank(AllRewards);
