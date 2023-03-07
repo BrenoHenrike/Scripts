@@ -52,13 +52,13 @@ public class PostyMcNobbinsQuestRewards
         Adv.SmartEnhance(Core.SoloClass);
         Adv.BestGear(GearBoost.dmgAll);
 
-        Core.AddDrop(AllRewards);
-        Core.AddDrop(PotDrops);
+        Bot.Drops.Add(AllRewards);
+        Bot.Drops.Add(PotDrops);
 
         Core.EquipClass(ClassType.Farm);
 
         Core.RegisterQuests(5758, 5759, 5760, 5761);
-        while (!Bot.ShouldExit && !Core.CheckInventory(AllRewards))
+        while (!Bot.ShouldExit && !Core.CheckInventory(AllRewards, toInv: false))
             Core.HuntMonster("luck", "Pot O' Gold", log: false);
         Core.CancelRegisteredQuests();
         Core.ToBank(AllRewards);
