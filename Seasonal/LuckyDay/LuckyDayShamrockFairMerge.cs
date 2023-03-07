@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Lucky Day Shamrock Fair Merge
+description: This will merge Rainbow Shard, Golden Ticket and Lucky Clovers.
+tags: farm, merge, shop, seasonal, lucky, evolved, leprechaun, rainbow, shard, golden, ticket, clover
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
