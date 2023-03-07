@@ -50,75 +50,86 @@ public class ArmyLegionToken
         Core.SetOptions(false);
     }
 
-
     public void Setup(Method Method, int quant = 25000)
     {
         Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
 
         Legion.JoinLegion();
 
+
         switch (Method.ToString())
         {
             case "Dreadrock":
                 Adv.BuyItem("underworld", 216, "Undead Champion");
 
-                Core.RegisterQuests(4849);
-                GetItemMultiMon("dreadrock", "Legion Token", quant, false, new[] { "Void Mercenary", "Fallen Hero", "Hollow Wraith", "Shadowknight", "Legion Sentinel" });
+                questIDs = new() { 4849 };
+                monNames = new() { "Void Mercenary", "Fallen Hero", "Hollow Wraith", "Shadowknight", "Legion Sentinel" };
+                drops = new() { "Legion Token" };
+                map = "dreadrock";
+                classType = ClassType.Farm;
+
+                while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
+                    Army.RunGeneratedAggroMon(map, monNames, questIDs, classType, drops);
                 break;
 
             case "Shogun_Paragon_Pet":
                 if (!Core.CheckInventory("Shogun Paragon Pet"))
                     Core.Logger("Pet not owned, stopping", stopBot: true);
 
+                Adv.BestGear(GearBoost.Elemental);
 
-                Core.EquipClass(ClassType.Farm);
-                Adv.BestGear(GearBoost.dmgAll);
+                if (Core.CheckInventory("Infernal Caladbolg"))
+                    questIDs = new() { 3722, 5755 };
+                else questIDs = new() { 5755 };
+                monNames = new() { "Fotia Elemental", "Fotia Spirit" };
+                drops = new() { "Legion Token" };
+                map = "fotia";
+                classType = ClassType.Farm;
+                Adv.SmartEnhance(Core.FarmClass);
 
-                if (Core.CheckInventory("Infernal Caladbolg", toInv: false))
-                    Core.RegisterQuests(3722, 5755);
-                else Core.RegisterQuests(5755);
                 while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
-                {
-                    GetItem("fotia", "Fotia Elemental", "Nothing Heard", 10);
-                    GetItem("fotia", "Fotia Elemental", "Nothing to See", 10);
-                    GetItem("fotia", "Fotia Elemental", "Area Secured and Quiet", 10);
-
-                    if (Core.CheckInventory("Infernal Caladbolg"))
-                    {
-                        GetItem("fotia", "Fotia Elemental", "Betrayer Extinguished", 5);
-                        GetItem("evilwardage", "Dreadfiend of Nulgath", "Fiend Felled", 2);
-                    }
-                }
+                    Army.RunGeneratedAggroMon(map, monNames, questIDs, classType, drops);
                 break;
 
             case "Thanatos_Paragon_Pet":
                 if (!Core.CheckInventory("Thanatos Paragon Pet"))
                     Core.Logger("Pet not owned, stopping", stopBot: true);
 
-                Core.EquipClass(ClassType.Solo);
                 Adv.BestGear(GearBoost.Dragonkin);
+                questIDs = new() { 4100 };
+                monNames = new() { "Zombie Dragon" };
+                drops = new() { "Legion Token" };
+                map = "dragonheart";
+                classType = ClassType.Farm;
+                Adv.SmartEnhance(Core.FarmClass);
 
-                Core.RegisterQuests(4100);
-                GetItem("dragonheart", "Zombie Dragon", "Legion Token", quant);
+                while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
+                    Army.RunGeneratedAggroMon(map, monNames, questIDs, classType, drops);
                 break;
 
             case "Bright_Paragon_Pet":
                 if (!Core.CheckInventory("Bright Paragon Pet"))
                     Core.Logger("Pet not owned, stopping", stopBot: true);
 
-                Core.EquipClass(ClassType.Farm);
                 Adv.BestGear(GearBoost.dmgAll);
+                questIDs = new() { 4704 };
+                monNames = new() { "Skeletal Ice mage" };
+                drops = new() { "Legion Token" };
+                map = "brightfortress";
+                classType = ClassType.Farm;
+                Adv.SmartEnhance(Core.FarmClass);
 
-                Core.RegisterQuests(4704);
-                GetItem("brightfortress", "Brightscythe Reaver", "Legion Token", quant);
+                while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
+                    Army.RunGeneratedAggroMon(map, monNames, questIDs, classType, drops);
                 break;
 
             case "Arcane_Paragon_Pet":
                 if (!Core.CheckInventory("Arcane Paragon Pet"))
                     Core.Logger("Pet not owned, stopping", stopBot: true);
 
+                Adv.BestGear(GearBoost.Dragonkin);
                 Core.EquipClass(ClassType.Farm);
-                Adv.BestGear(GearBoost.dmgAll);
+                Adv.SmartEnhance(Core.FarmClass);
 
                 Core.RegisterQuests(4896);
                 while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
@@ -134,8 +145,9 @@ public class ArmyLegionToken
                 if (!Core.CheckInventory("Paragon Dreadnaught Pet"))
                     Core.Logger("Pet not owned, stopping", stopBot: true);
 
-                Core.EquipClass(ClassType.Farm);
                 Adv.BestGear(GearBoost.dmgAll);
+                Core.EquipClass(ClassType.Farm);
+                Adv.SmartEnhance(Core.FarmClass);
 
                 Core.RegisterQuests(5741);
                 while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
@@ -150,19 +162,25 @@ public class ArmyLegionToken
                 if (!Core.CheckInventory("Mounted Paragon Pet"))
                     Core.Logger("Pet not owned, stopping", stopBot: true);
 
-                Core.EquipClass(ClassType.Farm);
                 Adv.BestGear(GearBoost.dmgAll);
+                questIDs = new() { 5604 };
+                monNames = new() { "Ice Wolf" };
+                drops = new() { "Legion Token" };
+                map = "frozentower";
+                classType = ClassType.Farm;
+                Adv.SmartEnhance(Core.FarmClass);
 
-                Core.RegisterQuests(5604);
-                GetItem("frozentower", "Ice Wolf", "Legion Token", quant);
+                while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
+                    Army.RunGeneratedAggroMon(map, monNames, questIDs, classType, drops);
                 break;
 
             case "Ascended_Paragon_Pet":
                 if (!Core.CheckInventory("Ascended Paragon Pet"))
                     Core.Logger("Pet not owned, stopping", stopBot: true);
 
-                Core.EquipClass(ClassType.Solo);
                 Adv.BestGear(GearBoost.dmgAll);
+                Core.EquipClass(ClassType.Solo);
+                Adv.SmartEnhance(Core.SoloClass);
 
                 Core.RegisterQuests(2747);
                 while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
@@ -176,24 +194,28 @@ public class ArmyLegionToken
                 break;
 
             case "Festive_Paragon_Dracolich_Rider":
-                if (!Core.CheckInventory("Festive Paragon Dracolich Rider"))
-                    Core.Logger("Pet not owned, stopping", stopBot: true);
-                if (!Core.isSeasonalMapActive("frozenruins"))
-                    return;
+                if (!Core.CheckInventory("Festive Paragon Dracolich Rider") || !Core.isSeasonalMapActive("frozenruins"))
+                    Core.Logger("Pet not owned / Seasonal Map not active, stopping", stopBot: true);
 
-                Core.EquipClass(ClassType.Solo);
                 Adv.BestGear(GearBoost.dmgAll);
+                questIDs = new() { 3969 };
+                monNames = new() { "Frost Fangbeast" };
+                drops = new() { "Legion Token" };
+                map = "frozenruins";
+                classType = ClassType.Solo;
+                Adv.SmartEnhance(Core.SoloClass);
 
-                Core.RegisterQuests(3969);
-                GetItem("frozenruins", "Frost Fangbeast", "Legion Token", quant);
+                while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
+                    Army.RunGeneratedAggroMon(map, monNames, questIDs, classType, drops);
                 break;
 
             case "Holiday_Paragon_Pet":
                 if (!Core.CheckInventory("Holiday Paragon Pet"))
                     Core.Logger("Pet not owned, stopping", stopBot: true);
 
-                Core.EquipClass(ClassType.Farm);
                 Adv.BestGear(GearBoost.dmgAll);
+                Core.EquipClass(ClassType.Farm);
+                Adv.SmartEnhance(Core.FarmClass);
 
                 Core.RegisterQuests(3256);
                 while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
@@ -208,22 +230,29 @@ public class ArmyLegionToken
                 if (!Core.CheckInventory("UW3017 Pet"))
                     Core.Logger("Pet not owned, stopping", stopBot: true);
 
-                Core.EquipClass(ClassType.Farm);
-                Adv.BestGear(GearBoost.dmgAll);
-                Core.RegisterQuests(5738);
-                GetItem("underworld", "Bloodfiend", "Legion Token", quant);
+                Adv.BestGear(GearBoost.None);
+                questIDs = new() { 5738 };
+                monNames = new() { "Bloodfiend" };
+                drops = new() { "Legion Token" };
+                map = "underworld";
+                classType = ClassType.Farm;
+                Adv.SmartEnhance(Core.FarmClass);
+
+                RunAggro();
                 break;
 
             case "Infernal_Caladbolg":
                 if (!Core.CheckInventory("Infernal Caladbolg"))
                     Core.Logger("Sword not owned, stopping", stopBot: true);
 
+                Adv.BestGear(GearBoost.Elemental);
                 Core.EquipClass(ClassType.Farm);
-                Adv.BestGear(GearBoost.dmgAll);
+                Adv.SmartEnhance(Core.FarmClass);
 
                 if (Core.CheckInventory("Shogun Paragon Pet"))
-                    Core.RegisterQuests(3722, 5755);
-                else Core.RegisterQuests(3722);
+                    questIDs = new() { 3722, 5755 };
+                else questIDs = new() { 3722 };
+
 
                 while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
                 {
@@ -243,49 +272,40 @@ public class ArmyLegionToken
                 if (!Core.CheckInventory("Hardcore Paragon Pet"))
                     Core.Logger("Pet not owned, stopping", stopBot: true);
 
-                Core.EquipClass(ClassType.Solo);
-                Adv.BestGear(GearBoost.dmgAll);
+                Adv.BestGear(!Bot.Quests.IsUnlocked(793) ? GearBoost.Undead : GearBoost.Chaos);
+                questIDs = new() { !Bot.Quests.IsUnlocked(793) ? 3393 : 3394 };
+                monNames = new() { !Bot.Quests.IsUnlocked(793) ? "Binky" : "Ultra Chaos Warlord" };
+                drops = new() { "Legion Token" };
+                map = !Bot.Quests.IsUnlocked(793) ? "doomvault" : "chaosboss";
+                classType = ClassType.Solo;
+                Adv.SmartEnhance(Core.SoloClass);
 
-                Core.RegisterQuests(!Bot.Quests.IsUnlocked(793) ? 3393 : 3394);
-                GetItem(!Bot.Quests.IsUnlocked(793) ? "doomvault" : "chaosboss", !Bot.Quests.IsUnlocked(793) ? "Binky" : "Ultra Chaos Warlord", "Legion Token", quant);
+                while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
+                {
+                    if (!Bot.Quests.IsUnlocked(793))
+                        RunAggro(true);
+                    else RunAggro();
+                }
                 break;
 
             default:
-                Core.EquipClass(ClassType.Solo);
-                Core.RegisterQuests(0000);
-                GetItem("legionarena", "Legion Fiend Rider", "Legion Token", quant);
+                Adv.BestGear(GearBoost.Undead);
+                questIDs = new() { 6742, 6743 };
+                monNames = new() { "Legion Fiend Rider" };
+                drops = new() { "Legion Token", "Bone Sigil" };
+                map = "legionarena";
+                classType = ClassType.Solo;
+                Adv.SmartEnhance(Core.SoloClass);
+
+                Adv.BuyItem("underworld", 216, "Undead Champion");
+
+                while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
+                    Army.RunGeneratedAggroMon(map, monNames, questIDs, classType, drops);
                 break;
         }
     }
 
-    public void GetItem(string map = null, string monster = null, string item = null, int quant = 1, bool isTemp = true)
-    {
-        Core.PrivateRooms = true;
-        Core.PrivateRoomNumber = Army.getRoomNr();
-        Bot.Events.PlayerAFK += PlayerAFK;
-
-        // Quest QuestData = Core.EnsureLoad(questID);
-        // ItemBase[] RequiredItems = QuestData.Requirements.ToArray();
-        // ItemBase[] QuestReward = QuestData.Rewards.ToArray();
-
-        Core.AddDrop(item);
-        // if (!Bot.Quests.Active.Contains(QuestData))
-        //     Core.RegisterQuests(questID);
-        Army.SmartAggroMonStart(map, monster);
-
-        while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
-        {
-            if (monster == "Binky")
-                Core.HuntMonster("Doomvault", "Binky");
-            else Bot.Combat.Attack("*");
-        }
-
-        Army.AggroMonStop(true);
-        Core.CancelRegisteredQuests();
-        Bot.Events.PlayerAFK -= PlayerAFK;
-    }
-
-    public void GetItemMultiMon(string map = null, string item = null, int quant = 1, bool isTemp = true, params string[] monsters)
+    public void GetItem(string map = null, string monster = null, string item = null, int quant = 1, bool isTemp = true, bool Binky = false)
     {
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
@@ -293,85 +313,26 @@ public class ArmyLegionToken
 
         Core.AddDrop(item);
 
-        foreach (string monster in monsters)
-            Army.SmartAggroMonStart(map, monster);
-
-        while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
+        while (!Bot.ShouldExit && !Binky && !Core.CheckInventory(item, quant))
         {
-            if (monsters == new[] { "Binky" })
-                Core.HuntMonster("Doomvault", "Binky");
-            else
-                foreach (string monster in monsters)
-                    Bot.Combat.Attack("*");
+            if (Binky)
+                Core.HuntMonster("Doomvault", "Binky", item);
+            else Army.RunGeneratedAggroMon(map, monNames, questIDs, classType, drops);
         }
 
         Army.AggroMonStop(true);
         Core.CancelRegisteredQuests();
         Bot.Events.PlayerAFK -= PlayerAFK;
-    }
 
-    public void GetItem(string map = null, string cell = null, string pad = null, string[] monsters = null, string item = null, int quant = 0, bool isTemp = true)
-    {
-        Core.PrivateRooms = true;
-        Core.PrivateRoomNumber = Army.getRoomNr();
-        Bot.Events.PlayerAFK += PlayerAFK;
-        // Quest QuestData = Core.EnsureLoad(questID);
-        // ItemBase[] RequiredItems = QuestData.Requirements.ToArray();
-        // ItemBase[] QuestReward = QuestData.Rewards.ToArray();
-
-        Core.AddDrop(item);
-        // if (!Bot.Quests.Active.Contains(QuestData))
-        //     Core.RegisterQuests(questID);
-
-        foreach (string monster in monsters)
-            Army.SmartAggroMonStart(map, monster);
-
-        while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
+        void PlayerAFK()
         {
-            if (monsters == new[] { "Binky" })
-                Core.HuntMonster("Doomvault", "Binky");
-            else Bot.Combat.Attack("*");
+            Core.Logger("Anti-AFK engaged");
+            Bot.Sleep(1500);
+            Bot.Send.Packet("%xt%zm%afk%1%false%");
         }
-
-        Army.AggroMonStop(true);
-        Core.CancelRegisteredQuests();
-        Bot.Events.PlayerAFK -= PlayerAFK;
     }
 
-    // void ArmyHunt(string map, string[] monsters, string item, ClassType classType, bool isTemp = false, int quant = 1)
-    // {
-    //     Core.PrivateRooms = true;
-    //     Core.PrivateRoomNumber = Army.getRoomNr();
-    //     Bot.Events.PlayerAFK += PlayerAFK;
-
-    //     if (!isTemp && item != null)
-    //         Core.AddDrop(item);
-
-    //     if (Bot.Config.Get<bool>("sellToSync"))
-    //         Army.SellToSync(item, quant);
-
-    //     Core.AddDrop(item);
-
-    //     Core.EquipClass(classType);
-    //     Core.FarmingLogger(item, quant);
-
-    //     Army.SmartAggroMonStart(map, monsters);
-
-    //     while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
-    //         foreach (string monster in monsters)
-    //             Bot.Combat.Attack("*");
-
-    //     Army.AggroMonStop(true);
-    //     Core.JumpWait();
-    //     Bot.Events.PlayerAFK -= PlayerAFK;
-    // }
-
-    public void PlayerAFK()
-    {
-        Core.Logger("Anti-AFK engaged");
-        Bot.Sleep(1500);
-        Bot.Send.Packet("%xt%zm%afk%1%false%");
-    }
+    private void RunAggro(bool Binky = false) => GetItem();
 
     public enum Method
     {
@@ -390,4 +351,10 @@ public class ArmyLegionToken
         Hardcore_Paragon_Pet = 12,
         Legion_Arena = 13,
     }
+
+    private List<int> questIDs = new() { };
+    private List<string> monNames = new() { };
+    private List<string> drops = new() { };
+    private string map = "";
+    private ClassType classType;
 }
