@@ -46,13 +46,13 @@ public class PostyMcNobbinsQuestRewards
         if (!Core.isSeasonalMapActive("luck"))
             return;
 
-        string[] AllRewards = (Core.EnsureLoad(5758).Rewards.Select(i => i.Name)).Concat(Core.EnsureLoad(5759).Rewards.Select(i => i.Name)).Concat(Core.EnsureLoad(5760).Rewards.Select(i => i.Name)).Concat(Core.EnsureLoad(5761).Rewards.Select(i => i.Name)).ToArray();
+        string[] AllRewards = (Core.EnsureLoad(5758).Rewards.Select(i => i.Name)).Concat(Core.EnsureLoad(5759).Rewards.Select(i => i.Name)).Concat(Core.EnsureLoad(5760).Rewards.Select(i => i.Name)).Concat(Core.EnsureLoad(5761).Rewards.Select(i => i.Name)).Concat(PotDrops).ToArray();
 
         Core.EquipClass(ClassType.Solo);
         Adv.SmartEnhance(Core.SoloClass);
         Adv.BestGear(GearBoost.dmgAll);
 
-        Bot.Drops.Add(AllRewards.Concat(PotDrops).ToArray());
+        Bot.Drops.Add(AllRewards);
 
         Core.EquipClass(ClassType.Farm);
 
