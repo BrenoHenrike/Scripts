@@ -52,8 +52,7 @@ public class PostyMcNobbinsQuestRewards
         Adv.SmartEnhance(Core.SoloClass);
         Adv.BestGear(GearBoost.dmgAll);
 
-        Bot.Drops.Add(AllRewards);
-        Bot.Drops.Add(PotDrops);
+        Bot.Drops.Add(AllRewards.Concat(PotDrops).ToArray());
 
         Core.EquipClass(ClassType.Farm);
 
