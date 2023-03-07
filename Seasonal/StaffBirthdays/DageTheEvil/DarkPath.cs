@@ -39,7 +39,12 @@ public class DarkPath
         Story.MapItemQuest(6222, "darkpath", 5664);
 
         //We Need a Guide (6223)
-        Story.KillQuest(6223, "darkpath", "Void Makai");
+        if (!Story.QuestProgression(6223))
+        {
+            Core.EnsureAccept(6223);
+            Core.HuntMonster("darkpath", "Void Makai", "Void Energy", isTemp: true, log: false);
+            Core.EnsureComplete(6223);
+        }
 
         //Darkness is Energy (6224)
         Story.KillQuest(6224, "darkpath", "Void Elemental");
