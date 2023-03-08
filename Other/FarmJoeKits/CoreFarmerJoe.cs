@@ -137,6 +137,7 @@ public class CoreFarmerJoe
             Core.BuyItem("classhalla", 299, "Oracle");
             Adv.rankUpClass("Oracle");
             Farm.BladeofAweREP(6, true);
+            Core.ToBank("Blade of Awe");
             return;
         }
 
@@ -163,6 +164,7 @@ public class CoreFarmerJoe
 
         Story.KillQuest(176, "swordhavenundead", "Skeletal Soldier", false);
         Story.KillQuest(177, "swordhavenundead", "Skeletal Ice Mage", false);
+        Story.KillQuest(178, "swordhavenundead", "Undead Giant");
 
         Core.RegisterQuests(178);
         while (!Bot.ShouldExit && Bot.Player.Level < 28)
@@ -250,7 +252,7 @@ public class CoreFarmerJoe
 
                 case 65:
 
-                    while (!Bot.ShouldExit && Bot.Player.Level < Level || !Core.CheckInventory(new[] { "ArchPaladin", "Blade of Awe" }))
+                    while (!Bot.ShouldExit && Bot.Player.Level < Level || !Core.CheckInventory("ArchPaladin"))
                     {
                         Core.SoloClass = "DragonSoul Shinobi";
                         Core.FarmClass = "Scarlet Sorceress";

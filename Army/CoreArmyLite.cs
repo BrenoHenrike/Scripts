@@ -766,6 +766,7 @@ public class CoreArmyLite
             "shadowrealm",
             "confrontation",
             "darkoviaforest",
+            "ledgermayne",
             "hollowdeep",
             "hyperium",
             "willowcreek",
