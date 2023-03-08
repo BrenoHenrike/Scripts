@@ -137,7 +137,8 @@ public class CoreBots
             Task.Run(() =>
             {
                 if (OneTimeMessage("discordServerV10",
-                    "Our Discord server was recently deleted [24 Feb 2023]. We quickly restored it. Press \"Yes\" if you wish to join and open the new server."))
+                    "Our Discord server was recently deleted [24 Feb 2023]. We quickly restored it. Press \"Yes\" if you wish to join and open the new server.",
+                    true, true, true))
                     Process.Start("explorer", DiscordLink);
             });
         }
