@@ -11642,6 +11642,17 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Pets/SerpentineLarvae.cs"
   },
   {
+    "name": "null",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Other/Various/DarkScavngerHuntClue.cs",
+    "size": 734,
+    "fileName": "DarkScavngerHuntClue.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Various/DarkScavngerHuntClue.cs"
+  },
+  {
     "name": "ShadowslayerSummoningRitual",
     "description": "null",
     "tags": [
