@@ -34,9 +34,10 @@ public class PostyMcNobbinsQuestRewards
 
     public void ScriptMain(IScriptInterface bot)
     {
+        Core.BankingBlackList.AddRange(new[] { "Platinum Coin", "Rainbow Coin" });
         Core.SetOptions();
 
-        AllRewards();
+        test1();
 
         Core.SetOptions(false);
     }
@@ -54,12 +55,54 @@ public class PostyMcNobbinsQuestRewards
 
         Bot.Drops.Add(AllRewards);
 
-        Core.EquipClass(ClassType.Farm);
-
         Core.RegisterQuests(5758, 5759, 5760, 5761);
         while (!Bot.ShouldExit && !Core.CheckInventory(AllRewards, toInv: false))
             Core.HuntMonster("luck", "Pot O' Gold", log: false);
         Core.CancelRegisteredQuests();
         Core.ToBank(AllRewards);
+    }
+
+
+    void test1()
+    {
+        Core.OneTimeMessage("ReadMe", "plese ignore the \"item cannot be added inventory\" message ingame just means you already have the item in the bank, should only be doing this for the drops from the pot.", true, true);
+
+        var rewards1 = Core.QuestRewards(5758);
+        var rewards2 = Core.QuestRewards(5759);
+        var rewards3 = Core.QuestRewards(5760);
+        var rewards4 = Core.QuestRewards(5761);
+
+        // Core.EquipClass(ClassType.Solo);
+        // Adv.SmartEnhance(Core.SoloClass);
+        // Adv.BestGear(GearBoost.dmgAll);
+        
+        string[] AllDrops = rewards1.Concat(rewards2).Concat(rewards3).Concat(rewards4).Concat(PotDrops).ToArray();
+
+        foreach (string item in AllDrops)
+        {
+            if (!Core.CheckInventory(item, toInv: false))
+                Bot.Drops.Add(item);
+        }
+        Core.AddDrop("Platinum Coin", "Rainbow Coin");
+
+        Core.RegisterQuests(5758, 5759, 5760, 5761);
+        while (!Bot.ShouldExit && !Core.CheckInventory(AllDrops, toInv: false))
+        {
+            foreach (string item in AllDrops)
+            {
+                if (Core.CheckInventory(item, toInv: false))
+                {
+                    Core.Logger($"{item} already exists in Inventory/Bank");
+                    Bot.Drops.Remove(item);
+                    return;
+                }
+
+                Core.FarmingLogger(item, 1);
+                Core.HuntMonster("luck", "Pot O' Gold", item, isTemp: false, log: false);
+                Bot.Drops.Remove(item);
+                Core.ToBank(item);
+            }
+            Core.CancelRegisteredQuests();
+        }
     }
 }
