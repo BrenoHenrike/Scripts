@@ -27,7 +27,6 @@ public class Leveling
     public void DoLeveling()
     {
         Adv.BestGear(GearBoost.exp);
-        //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Experience, true);
         Farm.Experience();
     }
 }
