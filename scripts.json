@@ -6,7 +6,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 93383,
+    "size": 93720,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -2232,7 +2232,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 61101,
+    "size": 60423,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -2347,7 +2347,7 @@
       "null"
     ],
     "path": "Nation/SwindlesReturnPolicy.cs",
-    "size": 1767,
+    "size": 3640,
     "fileName": "SwindlesReturnPolicy.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/SwindlesReturnPolicy.cs"
   },
@@ -10494,7 +10494,7 @@
       "null"
     ],
     "path": "Nation/VHL/CoreVHL.cs",
-    "size": 5960,
+    "size": 5993,
     "fileName": "CoreVHL.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/VHL/CoreVHL.cs"
   },
