@@ -115,7 +115,7 @@ public class CurrentDailyGifts
             #region Febuari 2023
             //Fix this its not perm.. i just dont have a date atm...
             GetGift(Permanent, "undervoid", "Conquest", "Dark Birthday Party Guests I", "Dark Birthday Party Guests II", "Evil Birthday Party Guest", "Hungry Dark Birthday Party Guest");
-
+            GetGift(Permanent, "shadowrealmpast", "*", "Shadow Warrior Sword");
             #endregion
             //GetGift(AvailableUntil(1, 1), "map", "monster", "");
             //GetGift(Permanent, "map", "monster", "");

@@ -84,6 +84,8 @@ public class CoreBots
     public static CoreBots Instance => _instance ??= new CoreBots();
     private IScriptInterface Bot => IScriptInterface.Instance;
 
+    private const string DiscordLink = "https://discord.gg/pearlharbor";
+
     #endregion
 
     #region Start/Stop
@@ -132,6 +134,13 @@ public class CoreBots
             IsMember = Bot.Player.IsMember;
 
             ReadMe();
+            Task.Run(() =>
+            {
+                if (OneTimeMessage("discordServerV10",
+                    "Our Discord server was recently deleted [24 Feb 2023]. We quickly restored it. Press \"Yes\" if you wish to join and open the new server.",
+                    true, true, true))
+                    Process.Start("explorer", DiscordLink);
+            });
         }
 
         // Common Options
@@ -2812,11 +2821,11 @@ public class CoreBots
     }
     private void WriteFail(string path, Exception e) => Logger($"Skua just tried to write to \"{path}\" but got an exception:\n{e}\n\nPlease restart Skua in Admin-Mode just this once.", "Failed at writing file", true, true);
 
-    private void ReadMe()
+    private bool ReadMe()
     {
         string readMePath = Path.Combine(ClientFileSources.SkuaDIR, "ReadMeV1.txt");
         if (File.Exists(readMePath))
-            return;
+            return true;
 
         // Popup
         var result = Bot.ShowMessageBox(
@@ -2888,29 +2897,19 @@ public class CoreBots
                     "Thanks for reading, I hope it wasn't too much of a bore!",
                     "",
                 "== Contact ==",
-                    "If you wish to contact us, you can find us on our discord server: https://discord.io/AQWBots/",
+                    "If you wish to contact us, you can find us on our discord server: " + DiscordLink,
                     "",
                 "== Credits ==",
-                    "Active:",
-                        "· BrenoHenrike\t- He took over Skua development when Rodit disappeared. Breno also build the framework that these Master Bots now use.",
+                        "· Breno_Henrike\t- Skua Creator. Breno also build the framework that these Master Bots now use.",
                         "· Lord Exelot\t- Lead Developer/Head of the Skua Master Bot team. Expanded the framework and spearheaded the development of the Master Bots.",
                         "· Tato\t\t\t- Major contributor to the Master Bots and a lot of bug fixes.",
+                        "· Delfina\t\t\t- Skua Developer",
+                        "· Vladimir\t\t- Major contributor to the Master Bots and bug fixes.",
                         "· Bogajl\t\t- Major contributor to the Master Bots.",
-                        "· Hao\t\t\t- Considerable contributor to the Master Bots.",
-                        "· [S] Elune\t\t- Contributor to the Master Bots, bug fixes and primary bug hunter.",
-                        "· SunnyD\t\t- Contributor to the Master Bots.",
-                        "· Novar\t\t\t- Minor Contributor to the Master Bots.",
-                        "· FishingKing\t- Minor Contributor the the Master Bots",
-                    "Inactive:",
+                        "· Shokry\t\t- Major contributor to the Master Bots.",
+                        "· Shaun.\t\t- Major contributor to the Master Bots.",
                         "· Rodit\t\t\t- Creator of RBot.",
                         "· Purple\t\t- Contributor to RBot.",
-                        "· Vladimir\t\t- Major contributor to the Master Bots and bug fixes.",
-                        "· usuckshit\t\t- Considerable contributor to the Master Bots.",
-                        "· Hadmos\t\t- Considerable contributor to the Master Bots.",
-                        "· Eso\t\t\t- Minor bug fixes to the Master Bots.",
-                        "· .Richie\t\t- Minor contributor to the Master Bots.",
-                        "· ToxlcChain\t- Minor contributor to the Master Bots.",
-                        "· Ferdy\t\t\t- Minor contributor to the Master Bots.",
                     "Thanks to you, for reading this far down. ReadMe's are usually a drag so I tried to keep it to the point.",
                     "And thanks to everyone who has put time and effort RBot/Skua and the Master Bots! ~ Exelot",
         };
@@ -2920,8 +2919,9 @@ public class CoreBots
         if (result.Text == "OK")
             Process.Start("explorer", readMePath);
 
-        if (Bot.ShowMessageBox("If you have discord, consider joining our Discord server (https://discord.gg/pearlharbor).\nHere you can talk to other botters, ask questions, and get notified on new bots!\nDo you wish to join?", "Join our Discord", true) == true)
-            Process.Start("explorer", "https://discord.gg/pearlharbor");
+        if (Bot.ShowMessageBox($"If you have discord, consider joining our Discord server ({DiscordLink}).\nHere you can talk to other botters, ask questions, and get notified on new bots!\nDo you wish to join?", "Join our Discord", true) == true)
+            Process.Start("explorer", DiscordLink);
+        return false;
     }
 
     private void CollectData(bool onStartup)
@@ -3265,18 +3265,20 @@ public class CoreBots
 
     private List<string> CBOList = new();
 
-    public void OneTimeMessage(string internalName, string message, bool messageBox = true, bool forcedMessageBox = false)
+    public bool OneTimeMessage(string internalName, string message, bool messageBox = true, bool forcedMessageBox = false, bool yesAndNo = false)
     {
         string path = Path.Combine(ClientFileSources.SkuaDIR, "OneTimeMessages.txt");
         if (File.Exists(path) && File.ReadAllLines(path).Any(l => l == internalName))
-            return;
+            return false;
 
         message = "Please make sure you read this as it will only be shown once:\n\n" + message;
         Logger(message, "One Time-Only Message", messageBox && !forcedMessageBox);
+        bool? toReturn = null;
         if (messageBox && forcedMessageBox)
-            Bot.ShowMessageBox(message, "One Time-Only Message");
+            toReturn = Bot.ShowMessageBox(message, "One Time-Only Message", yesAndNo);
 
         WriteFile(path, File.Exists(path) ? File.ReadAllLines(path).Append(internalName).ToArray() : new[] { internalName });
+        return yesAndNo && toReturn == true;
     }
 
     #endregion
