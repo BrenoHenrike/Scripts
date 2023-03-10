@@ -94,9 +94,9 @@ public class CoreFireIsland
         if (!Story.QuestProgression(4076))
         {
             Core.EnsureAccept(4076);
-            Core.HuntMonster("Pyrewatch", "Coal Creeper", "Kindling", 3, log: false);
-            Core.HuntMonster("Pyrewatch", "Lavazard", "Flint and Steel", log: false);
-            Core.HuntMonster("Pyrewatch", "Caustocrush", "Coal", 6, log: false);
+            Core.HuntMonster("Pyrewatch", "Lavazard", "Kindling", 3, log: false);
+            Core.HuntMonster("Pyrewatch", "Caustocrush", "Flint and Steel", log: false);
+            Core.HuntMonster("Pyrewatch", "Coal Creeper", "Coal", 6, log: false);
             Core.EnsureComplete(4076);
         }
 
