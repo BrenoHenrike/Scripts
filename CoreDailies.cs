@@ -243,7 +243,12 @@ public class CoreDailies
             Core.Logger("Skipped");
             return;
         }
-        if (!Core.CheckInventory("Mad Weaponsmith", toInv: false))
+        if (!Core.CheckInventory("Cysero's SUPER Hammer", toInv: false) && Core.CheckInventory("C-Hammer Token", 90))
+        {
+            Core.BuyItem("deadmoor", 500, "Cysero's SUPER Hammer");
+            return;
+        }
+        if (!Core.CheckInventory("Mad Weaponsmith"))
         {
             Core.Logger("You don't own Mad Weaponsmith yet. Skipped");
             return;
@@ -256,7 +261,7 @@ public class CoreDailies
         DailyRoutine(4310, "deadmoor", "Geist", "Geist's Chain Link");
         if (Core.IsMember)
             DailyRoutine(4311, "deadmoor", "Geist", "Geist's Pocket Lint");
-        Core.ToBank("C-Hammer Token");
+        Core.ToBank("C-Hammer Token", "Mad Weaponsmith", "Cysero's SUPER Hammer");
     }
 
     public void MadWeaponSmith()
@@ -970,9 +975,9 @@ public class CoreDailies
         "Super Swag Token B",
         "Dragon Runestone",
         "Faded Pigment",
-        "GOLD Boost! (20 Min)",
-        "XP Boost! (20 min)",
-        "REP Boost! (20 Min)",
+        "Daily Login Gold Boost! (20 Min)",
+        "Daily Login XP Boost! (20 min)",
+        "Daily Login Rep Boost! (20 Min)",
         "Arcane Quill",
         "Spirit Orb",
         "Legion Token",
