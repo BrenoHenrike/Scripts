@@ -205,13 +205,20 @@ public class CoreSDKA
         }
         else Core.Logger($"Farming {quant} DSOs");
 
-        Core.RegisterQuests(2089);
+        Core.RegisterQuests(2089, 2065);
         while (!Bot.ShouldExit && (!Core.CheckInventory("Dark Spirit Orb", quant)))
         {
             Core.KillMonster("maul", "r7", "Left", "*", "DoomCoin", oneTime ? 20 : 80, false);
-            Bot.Drops.Pickup("Dark Spirit Orb");
+
             if (oneTime)
                 break;
+
+            if (Core.CheckInventory("Shadow Creeper Enchant"))
+            {
+                Core.HuntMonster("bludrut4", "Shadow Serpent", "Shadow Serpent Scythe", isTemp: false);
+                Core.HuntMonster("ruins", "Dark Witch", "Shadow Whiskers", 6);
+            }
+            Bot.Drops.Pickup("Dark Spirit Orb");
         }
         Core.CancelRegisteredQuests();
     }
@@ -221,7 +228,7 @@ public class CoreSDKA
         if (Core.CheckInventory("Dark Spirit Orb", quant))
             return;
 
-        Core.AddDrop("Dark Spirit Orb", "Shadow Creeper Enchant", "Shadow Serpent Scythe");
+        Core.AddDrop("Dark Spirit Orb", "Shadow Creeper Enchant", "Shadow Serpent Scythe", "Dark Energy");
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} DSOs");
         Core.RegisterQuests(2065);
