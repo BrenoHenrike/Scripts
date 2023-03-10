@@ -7,6 +7,7 @@ tags: null
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/Nation/CoreNation.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
 using Skua.Core.Options;
 
 public class SwindlesReturnPolicy
@@ -15,46 +16,92 @@ public class SwindlesReturnPolicy
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public CoreNation Nation = new();
-    
 
     public string OptionsStorage = "SwindlesReturnPolicy";
     public bool DontPreconfigure = true;
     public List<IOption> Options = new List<IOption>()
     {
         CoreBots.Instance.SkipOptions,
-        new Option<SwindleReturnItems>("ItemChoice", "Item Choice", "Choose your Desired Item from the list.", SwindleReturnItems.Tainted_Gem),
+        new Option<RewardsSelection>("RewardSelect", "Choose Your Quest Reward", "Select Your Quest Reward for Swindle's Return Policy.", RewardsSelection.All)
     };
 
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
-        
+        Core.BankingBlackList.AddRange(Nation.Receipt);
         DoSwindlesReturnPolicy();
 
         Core.SetOptions(false);
     }
 
-    public void DoSwindlesReturnPolicy()
+    public void DoSwindlesReturnPolicy(RewardsSelection reward = new(), bool getAll = false)
     {
-        if (Bot.Config.Get<SwindleReturnItems>("ItemChoice") != SwindleReturnItems.All)
-            Nation.SwindleReturn(Bot.Config.Get<SwindleReturnItems>("ItemChoice").ToString());
-        else
+        Core.Logger($"Reward set to {Bot.Config.Get<RewardsSelection>("RewardSelect").ToString()}");
+
+        if ((int)Bot.Config.Get<RewardsSelection>("RewardSelect") == 9999)
+            getAll = true;
+        ItemBase item = Core.EnsureLoad(7551).Rewards.Find(x => x.ID == (int)Bot.Config.Get<RewardsSelection>("RewardSelect"));
+
+        if (!getAll)
         {
-            Nation.SwindleReturn("Dark Crystal Shard");
-            Nation.SwindleReturn("Diamond of Nulgath");
-            Nation.SwindleReturn("Gem of Nulgath");
-            Nation.SwindleReturn("Blood Gem of the Archfiend");
-            Nation.SwindleReturn("Tainted Gem");
-        }        
+            item = Core.EnsureLoad(7551).Rewards.Find(x => x.ID == (int)Bot.Config.Get<RewardsSelection>("RewardSelect"));
+            Core.AddDrop(item.ID);
+            if (item == null)
+            {
+                Core.Logger($"{item.Name} not found in Quest Rewards");
+                return;
+            }
+            if (Core.CheckInventory(item.Name, item.MaxStack))
+                return;
+            Core.FarmingLogger(item.Name, item.MaxStack);
+            Nation.SwindleReturn(item.Name);
+        }
+        else if (getAll)
+        {
+            foreach (ItemBase Thing in Core.EnsureLoad(7551).Rewards)
+            {
+                Core.AddDrop(Thing.ID);
+                if (Core.CheckInventory(Thing.Name, Thing.MaxStack))
+                    return;
+                Core.FarmingLogger(Thing.Name, Thing.MaxStack);
+                Nation.SwindleReturn(Thing.Name);
+            }
+        }
     }
 
-    private enum SwindleReturnItems
+    // bool getAll = false;
+    // var RewardOptions = Core.EnsureLoad(7551).Rewards.Select(x => x.Name).ToArray();
+    // Core.AddDrop(RewardOptions);
+
+    // if ((int)Bot.Config.Get<RewardsSelection>("RewardSelect") == 9999)
+    //     getAll = true;
+
+    // ItemBase item = Core.EnsureLoad(7551).Rewards.Find(x => x.ID == (int)Bot.Config.Get<RewardsSelection>("RewardSelect"));
+
+    // if (!getAll && !Core.CheckInventory(item.Name, item.MaxStack))
+    // {
+    //     if (Core.CheckInventory(item.Name, item.MaxStack))
+    //         return;
+    //     else Nation.SwindleReturn(item, item.MaxStack);
+    // }
+    // else if (getAll && !Core.CheckInventory(item.Name, item.MaxStack))
+    // {
+    //     foreach (ItemBase Item in Core.EnsureLoad(7551).Rewards)
+    //     {
+    //         if (Core.CheckInventory(item.Name, item.MaxStack))
+    //             break;
+    //         Nation.SwindleReturn(Item, item.MaxStack);
+    //     }
+    // }
+    // }
+
+    public enum RewardsSelection
     {
         Dark_Crystal_Shard = 4770,
         Diamond_of_Nulgath = 4771,
         Gem_of_Nulgath = 6136,
         Blood_Gem_of_the_Archfiend = 22332,
         Tainted_Gem = 4769,
-        All
+        All = 9999
     };
 }

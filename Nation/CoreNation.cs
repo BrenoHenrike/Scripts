@@ -280,21 +280,19 @@ public class CoreNation
     /// </summary>
     /// <param name="quant">Desired Item quantity</param>
     /// <param name=item>Desired Item</param>
-    public void SwindleReturn(string item = "Any", int quant = 1000)
+    public void SwindleReturn(string item = null, int quant = 1000)
     {
-        if (Core.CheckInventory(item, quant))
+        ItemBase Item = Core.EnsureLoad(7551).Rewards.Find(x => x.Name == item);
+
+        if (Core.CheckInventory(Item.Name, quant))
             return;
 
-        if (item != "Any")
-            Core.AddDrop(item);
-        else
-            Core.AddDrop(bagDrops);
         Core.AddDrop(Receipt);
 
         if (Core.CBOBool("Nation_SellMemVoucher", out bool _sellMemVoucher))
             sellMemVoucher = _sellMemVoucher;
-
-        while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
+        Core.FarmingLogger(Item.Name, quant);
+        while (!Bot.ShouldExit && !Core.CheckInventory(Item.Name, quant))
         {
             Core.EnsureAccept(7551);
             Supplies("Unidentified 1");
@@ -303,29 +301,12 @@ public class CoreNation
             Supplies("Unidentified 16");
             Supplies("Unidentified 20");
             Core.HuntMonster(Core.IsMember ? "nulgath" : "evilmarsh", "Dark Makai", "Dark Makai Rune");
-            switch (item)
-            {
-                case "Dark Crystal Shard":
-                    Core.EnsureComplete(7551, 4770);
-                    break;
-                case "Diamond of Nulgath":
-                    Core.EnsureComplete(7551, 4771);
-                    break;
-                case "Gem of Nulgath":
-                    Core.EnsureComplete(7551, 6136);
-                    break;
-                case "Blood Gem of the Archfiend":
-                    Core.EnsureComplete(7551, 22332);
-                    break;
-                default: //Tainted Gem
-                    Core.EnsureComplete(7551, 4769);
-                    break;
-            }
-            if (item != "Voucher of Nulgath" && sellMemVoucher)
+            Core.EnsureComplete(7551, Item.ID);
+            if (Item.Name != "Voucher of Nulgath" && sellMemVoucher)
                 Core.SellItem("Voucher of Nulgath", all: true);
-            if (Bot.Inventory.IsMaxStack(item))
+            if (Bot.Inventory.IsMaxStack(Item.Name))
                 Core.Logger("Max Stack Hit.");
-            else Core.Logger($"{item}: {Bot.Inventory.GetQuantity(item)}/{quant}");
+            else Core.Logger($"{Item.Name}: {Bot.Inventory.GetQuantity(Item.Name)}/{quant}");
         }
     }
 
@@ -1540,11 +1521,6 @@ public class CoreNation
 
 
 
-    }
-
-    internal void SwindleReturn(object value)
-    {
-        throw new NotImplementedException();
     }
 }
 public enum ChooseReward

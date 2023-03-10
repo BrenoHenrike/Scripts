@@ -11,6 +11,7 @@ tags: null
 //cs_include Scripts/Nation/AssistingCragAndBamboozle[Mem].cs
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
+using Skua.Core.Models.Items;
 
 public class CoreVHL
 {
@@ -142,13 +143,13 @@ public class CoreVHL
 
         Core.Logger("Sparrow Method is enabled, the bot will now max out Totems, BloodGems, Uni19 and Vouchers in order to get another Elders' Blood. This may take a while");
 
+        ItemBase item = Core.EnsureLoad(7551).Rewards.Find(x => x.ID == 57446);
         Core.AddDrop("Totem of Nulgath", "Blood Gem of Nulgath", "Voucher of Nulgath", "Voucher of Nulgath (non-mem)");
         Nation.FarmTotemofNulgath();
         Nation.FarmBloodGem();
         if (!Core.CheckInventory("Unidentified 19"))
         {
-            while (!Bot.ShouldExit && !Core.CheckInventory("Receipt of Swindle", 6))
-                Nation.SwindleReturn();
+            Nation.SwindleReturn(item.Name, 6);
             Core.BuyItem("tercessuinotlim", 1951, "Unidentified 19");
         }
         Nation.FarmVoucher(false);

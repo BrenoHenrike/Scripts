@@ -223,7 +223,18 @@ public class CoreFarms
 
         ToggleBoost(BoostType.Experience);
 
-        FireWarxp(level);
+        Core.RegisterQuests(178);
+        while (!Bot.ShouldExit && Bot.Player.Level < 28)
+            Core.HuntMonster("swordhavenundead", "Undead Giant");
+        Core.CancelRegisteredQuests();
+
+        IcestormArena(20);
+
+        FireWarxp(40);
+
+        while (Bot.Player.Level < 60)
+            Core.KillMonster("underlair", "r5", "Left", "Void Draconian");
+
         IcestormArena(level);
 
         ToggleBoost(BoostType.Experience, false);
