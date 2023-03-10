@@ -161,7 +161,7 @@ public class CoreSDKA
             if (!Core.CheckInventory("Elders' Blood"))
                 Core.Logger($"Not enough \"Elders' Blood\", please do the daily at a later date", messageBox: true, stopBot: true);
 
-            Core.HuntMonster("battleundera", "Bone Terror", "Shadow Terror Axe", 1, false);
+            Core.HuntMonster("battleundera", "Bone Terror", "Shadow Terror Axe", isTemp: false);
             Core.ChainComplete(2088);
             Core.ToBank("Elders' Blood");
         }
@@ -177,7 +177,7 @@ public class CoreSDKA
             Core.Logger("Quest: Dark Spirit Donation [2090]");
             Core.EnsureAccept(2090);
             DSO(100);
-            Core.HuntMonster("necrocavern", "Shadow Imp", "Dark Skull", 1, false);
+            Core.HuntMonster("necrocavern", "Shadow Imp", "Dark Skull", isTemp: false);
             Core.EnsureComplete(2090);
         }
     }
@@ -208,7 +208,7 @@ public class CoreSDKA
         Core.RegisterQuests(2089, 2065);
         while (!Bot.ShouldExit && (!Core.CheckInventory("Dark Spirit Orb", quant)))
         {
-            Core.KillMonster("maul", "r7", "Left", "*", "DoomCoin", oneTime ? 20 : 80, false);
+            Core.KillMonster("maul", "r7", "Left", "*", "DoomCoin", oneTime ? 20 : 80, false, log: false);
 
             if (oneTime)
                 break;
@@ -234,8 +234,8 @@ public class CoreSDKA
         Core.RegisterQuests(2065);
         while (!Bot.ShouldExit && (!Core.CheckInventory("Dark Spirit Orb", quant)))
         {
-            Core.HuntMonster("bludrut2", "Shadow Creeper", "Shadow Creeper Enchant", 1, false);
-            Core.HuntMonster("bludrut4", "Shadow Serpent", "Shadow Serpent Scythe", 1, false);
+            Core.HuntMonster("bludrut2", "Shadow Creeper", "Shadow Creeper Enchant", isTemp: false);
+            Core.HuntMonster("bludrut4", "Shadow Serpent", "Shadow Serpent Scythe", isTemp: false);
             Core.HuntMonster("ruins", "Dark Witch", "Shadow Whiskers", 6);
 
             if (Core.CheckInventory("Dark Energy", 5000))
@@ -259,9 +259,9 @@ public class CoreSDKA
         {
             Core.BuyItem("swordhaven", 179, "Iron Hammer");
 
-            Core.KillMonster("sandcastle", "r5", "Left", "War Mummy", "War Mummy Wrap", 1, false);
-            Core.KillMonster("noobshire", "North", "Left", "Horc Noob", "Noob Blade Oil");
-            Core.KillMonster("farm", "Crop1", "Right", "Scarecrow", "Burlap Cloth", 4);
+            Core.KillMonster("sandcastle", "r5", "Left", "War Mummy", "War Mummy Wrap", isTemp: false, log: false);
+            Core.KillMonster("noobshire", "North", "Left", "Horc Noob", "Noob Blade Oil", log: false);
+            Core.KillMonster("farm", "Crop1", "Right", "Scarecrow", "Burlap Cloth", 4, log: false);
 
             Core.HuntMonster("lair", "Bronze Draconian", "Bronze Brush");
             Core.HuntMonster("bludrut", "Rock Elemental", "Elemental Stone Sharpener");
@@ -282,16 +282,16 @@ public class CoreSDKA
         while (!Bot.ShouldExit && (!Core.CheckInventory("DoomSoldier Weapon Kit", quant)))
         {
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("cornelis", "Stone Golem", "Stone Hammer", 1, false);
+            Core.HuntMonster("cornelis", "Stone Golem", "Stone Hammer", isTemp: false);
             Core.HuntMonster("hachiko", "Dai Tengu", "Superior Blade Oil", publicRoom: true);
             Core.HuntMonster("vordredboss", "Shadow Vordred", "Shadow Lacquer Finish", publicRoom: true);
             Core.HuntMonster("anders", "Copper Sky Pirate", "Copper Awl");
             Core.HuntMonster("necrocavern", "Shadow Imp", "Shadowstone Sharpener");
 
             Core.EquipClass(ClassType.Farm);
-            Core.KillMonster("lycan", "r4", "Left", "Chaos Vampire Knight", "Silver Brush");
-            Core.KillMonster("sandport", "r3", "Right", "Tomb Robber", "Leather Case");
-            Core.KillMonster("pines", "Path1", "Left", "Leatherwing", "Leatherwing Hide", 10);
+            Core.KillMonster("lycan", "r4", "Left", "Chaos Vampire Knight", "Silver Brush", log: false);
+            Core.KillMonster("sandport", "r3", "Right", "Tomb Robber", "Leather Case", log: false);
+            Core.KillMonster("pines", "Path1", "Left", "Leatherwing", "Leatherwing Hide", 10, log: false);
 
             Bot.Drops.Pickup("DoomSoldier Weapon Kit");
         }
@@ -309,14 +309,14 @@ public class CoreSDKA
         Core.RegisterQuests(2165);
         while (!Bot.ShouldExit && (!Core.CheckInventory(item, quant)))
         {
-            Core.KillMonster("boxes", "Boss", "Left", "Sneeviltron", "Grumpy Warhammer", 1, false);
-            Core.KillMonster("kitsune", "Boss", "Left", "Kitsune", "No. 1337 Blade Oil", publicRoom: true);
-            Core.KillMonster("sandcastle", "r7", "Left", "Chaos Sphinx", "Gold Brush", publicRoom: true);
-            Core.KillMonster("crashsite", "Boss", "Left", "ProtoSartorium", "Non-abrasive Power Powder");
-            Core.KillMonster("necrocavern", "r13", "Left", "Shadow Dragon", "ShadowDragon Hide", 3);
-            Core.KillMonster("dragonplane", "r9", "Left", "Moganth", "Moganth's Stone Sharpener");
-            Core.KillMonster("akiba", "cave4boss", "Left", "Shadow Nukemichi", "Doom Lacquer Finish");
-            Core.KillMonster("dreamnexus", "r6", "Left", "Dark Wyvern", "Dark Wyvern Hide Travel Case");
+            Core.KillMonster("boxes", "Boss", "Left", "Sneeviltron", "Grumpy Warhammer", isTemp: false, log: false);
+            Core.KillMonster("kitsune", "Boss", "Left", "Kitsune", "No. 1337 Blade Oil", publicRoom: true, log: false);
+            Core.KillMonster("sandcastle", "r7", "Left", "Chaos Sphinx", "Gold Brush", publicRoom: true, log: false);
+            Core.KillMonster("crashsite", "Boss", "Left", "ProtoSartorium", "Non-abrasive Power Powder", log: false);
+            Core.KillMonster("necrocavern", "r13", "Left", "Shadow Dragon", "ShadowDragon Hide", 3, log: false);
+            Core.KillMonster("dragonplane", "r9", "Left", "Moganth", "Moganth's Stone Sharpener", log: false);
+            Core.KillMonster("akiba", "cave4boss", "Left", "Shadow Nukemichi", "Doom Lacquer Finish", log: false);
+            Core.KillMonster("dreamnexus", "r6", "Left", "Dark Wyvern", "Dark Wyvern Hide Travel Case", log: false);
 
             Bot.Drops.Pickup(item);
         }
@@ -379,7 +379,7 @@ public class CoreSDKA
             {
                 Core.Logger("Unlocking Weapon Kit quests");
                 Core.EnsureAccept(2137);
-                Core.KillMonster("dwarfhold", "Enter", "Spawn", "Albino Bat", "Forge Key", 1, false);
+                Core.KillMonster("dwarfhold", "Enter", "Spawn", "Albino Bat", "Forge Key", isTemp: false, log: false);
                 Core.EnsureComplete(2137);
             }
             Core.Logger("Farming for Daggers of Destruction");
@@ -616,7 +616,7 @@ public class CoreSDKA
         Core.AddDrop("Dark Energy", "Dark Spirit Orb", "Corrupt Spirit Orb", "Ominous Aura", "Diabolical Aura", "Doom Aura");
 
         Core.EnsureAccept(quest);
-        Core.KillMonster("lycan", "r4", "Left", "*", "DoomKnight Armor Piece", 10);
+        Core.KillMonster("lycan", "r4", "Left", "*", "DoomKnight Armor Piece", 10, log: false);
         Core.EnsureComplete(quest);
     }
 }
