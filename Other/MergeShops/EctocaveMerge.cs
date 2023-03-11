@@ -66,7 +66,7 @@ public class EctocaveMerge
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.HuntMonster("ectocave", "Ichor Dracolich", "Uncut Emerald", 9, log: false);
-                        Core.HuntMonster("ectocave", "Ektorax", "Brilliant Diamond", quant, log: false);
+                        Core.HuntMonster("ectocave", "Ektorax", "Brilliant Diamond", log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
@@ -80,7 +80,7 @@ public class EctocaveMerge
                     Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("ectocave", "Ektorax", "Ichorus Egg", quant, log: false);
+                        Core.HuntMonster("ectocave", "Ektorax", "Ichorus Egg", log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     break;
