@@ -1522,7 +1522,9 @@ public class CoreBots
         {
             if (log)
                 Logger($"Hunting {monster}");
-            Bot.Hunt.Monster(monster);
+            if ((huntFixed ??= Bot.Version == null && Version.Parse("1.2.1").CompareTo(Bot.Version) <= 1) == true)
+                Bot.Hunt.Monster(monster);
+            else huntFix(monster);
             Rest();
         }
         else
@@ -1535,12 +1537,51 @@ public class CoreBots
             while (!Bot.ShouldExit && (isTemp ? !Bot.TempInv.Contains(item, quant) : !CheckInventory(item, quant)))
             {
                 if (!Bot.Combat.StopAttacking)
-                    Bot.Hunt.Monster(monster);
+                {
+                    if ((huntFixed ??= Bot.Version == null && Version.Parse("1.2.1").CompareTo(Bot.Version) <= 1) == true)
+                        Bot.Hunt.Monster(monster);
+                    else huntFix(monster);
+                }
                 Bot.Sleep(ActionDelay);
                 Rest();
             }
         }
+
+        void huntFix(string monster)
+        {
+            string[] names = monster.Split('|');
+            while ((!token?.IsCancellationRequested ?? true) && !Bot.ShouldExit)
+            {
+                List<string> cells = names.SelectMany(n => Bot.Monsters.GetMonsterCells(n)).Distinct().ToList();
+                foreach (string cell in cells)
+                {
+                    if (token?.IsCancellationRequested ?? false)
+                        break;
+                    if (!cells.Contains(Bot.Player.Cell) && (!token?.IsCancellationRequested ?? true))
+                    {
+                        if (Environment.TickCount - _lastHuntTick < Bot.Options.HuntDelay)
+                            Thread.Sleep(Bot.Options.HuntDelay - Environment.TickCount + _lastHuntTick);
+                        Bot.Map.Jump(cell, "Left");
+                        _lastHuntTick = Environment.TickCount;
+                    }
+                    foreach (string mon in names)
+                    {
+                        if (token?.IsCancellationRequested ?? false)
+                            break;
+                        if (Bot.Monsters.Exists(mon) && (!token?.IsCancellationRequested ?? true))
+                        {
+                            Bot.Kill.Monster(mon, token);
+                            return;
+                        }
+                    }
+                    Thread.Sleep(200);
+                }
+            }
+        }
     }
+    private bool? huntFixed = null;
+    private int _lastHuntTick;
+    private CancellationToken? token = null;
 
     /// <summary>
     /// Kills a monster using it's MapID
