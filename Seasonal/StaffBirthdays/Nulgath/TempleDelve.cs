@@ -25,7 +25,7 @@ public class TempleDelve
 
     public void Storyline()
     {
-        if (Core.isCompletedBefore(9089) || !Core.isSeasonalMapActive("templedelve"))
+        if (Core.isCompletedBefore(9144) || !Core.isSeasonalMapActive("templedelve"))
             return;
 
         TS.CompleteTempleSiege();
