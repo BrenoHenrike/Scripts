@@ -6574,6 +6574,17 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/NightmareCarnaxMerge.cs"
   },
   {
+    "name": "null",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Other/MergeShops/ShakazsMerge.cs",
+    "size": 5849,
+    "fileName": "ShakazsMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/ShakazsMerge.cs"
+  },
+  {
     "name": "IceDungeonMerge",
     "description": "null",
     "tags": [
@@ -14446,7 +14457,7 @@
       "birthday"
     ],
     "path": "Seasonal/StaffBirthdays/Nulgath/TempleDelve.cs",
-    "size": 2315,
+    "size": 3743,
     "fileName": "TempleDelve.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/Nulgath/TempleDelve.cs"
   },
