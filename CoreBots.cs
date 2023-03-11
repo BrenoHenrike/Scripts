@@ -1568,7 +1568,7 @@ public class CoreBots
                     {
                         if (token?.IsCancellationRequested ?? false)
                             break;
-                        if (Bot.Monsters.Exists(mon) && (!token?.IsCancellationRequested ?? true))
+                        if (Bot.Monsters.MapMonsters.Any(m => monster == "*" || (m.Name.Trim() == monster.Trim() && (!token?.IsCancellationRequested ?? true))))
                         {
                             Bot.Kill.Monster(mon, token);
                             return;
@@ -1582,6 +1582,15 @@ public class CoreBots
     private bool? huntFixed = null;
     private int _lastHuntTick;
     private CancellationToken? token = null;
+    private bool huntFixIsMonsterAlive(string monster)
+    {
+        List<Monster>? mons =
+            Bot.Monsters.MapMonsters
+                .FindAll(x => x.Name.ToLower().Trim() == monster.ToLower().Trim())
+                .Where(m => m.Name == "").ToList();
+        return true;
+
+    }
 
     /// <summary>
     /// Kills a monster using it's MapID
