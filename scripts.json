@@ -6519,6 +6519,17 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/BrightForestMerge.cs"
   },
   {
+    "name": "Ectocave Mergeshop",
+    "description": "Gets any item you want in the Ectocave Mergeshop",
+    "tags": [
+      "null"
+    ],
+    "path": "Other/MergeShops/EctocaveMerge.cs",
+    "size": 7054,
+    "fileName": "EctocaveMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/EctocaveMerge.cs"
+  },
+  {
     "name": "KagesMerge[mem-non-ac]",
     "description": "null",
     "tags": [
