@@ -27,7 +27,7 @@ public class EctocaveMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Ichorus Scythe Piece", "Ichorus Egg", "Pure Ichor Gem", "Slime", "Dragon Rogue", "Dragon Rogue Klinge", "Dragon Rogue Hood", "Dragon Rogue Twin Klinge Cape", "Piece of Fabric", "Bone"});
+        Core.BankingBlackList.AddRange(new[] { "Ichorus Scythe Piece", "Ichorus Egg", "Pure Ichor Gem", "Slime", "Dragon Rogue", "Dragon Rogue Klinge", "Dragon Rogue Hood", "Dragon Rogue Twin Klinge Cape", "Piece of Fabric", "Bone" });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -78,11 +78,8 @@ public class EctocaveMerge
 
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster("ectocave", "Ektorax");
-                        Bot.Wait.ForPickup(req.Name);
-                    }
+                    Core.HuntMonster("ectocave", "Ektorax", req.Name, quant, log: false);
+                    Bot.Wait.ForPickup(req.Name);
                     break;
 
                 case "Pure Ichor Gem":
@@ -103,13 +100,10 @@ public class EctocaveMerge
                 case "Slime":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster("ectocave", "Swamp Lurker");
-                        Bot.Wait.ForPickup(req.Name);
-                    }
+                    Core.HuntMonster("ectocave", "Swamp Lurker", req.Name, quant, log: false);
+                    Bot.Wait.ForPickup(req.Name);
                     break;
-    
+
                 case "Dragon Rogue Klinge":
                 case "Dragon Rogue":
                 case "Dragon Rogue Hood":
@@ -118,7 +112,7 @@ public class EctocaveMerge
                     Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("ectocave", "Ektorax");
+                        Core.HuntMonster("ectocave", "Ektorax", req.Name, quant, log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     break;
@@ -127,13 +121,10 @@ public class EctocaveMerge
                 case "Bone":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster("ectocave", "Ichor Draconian");
-                        Bot.Wait.ForPickup(req.Name);
-                    }
+                    Core.HuntMonster("ectocave", "Ichor Draconian", req.Name, quant, log: false);
+                    Bot.Wait.ForPickup(req.Name);
                     break;
-                    
+
             }
         }
     }
