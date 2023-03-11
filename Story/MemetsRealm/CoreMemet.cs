@@ -383,7 +383,7 @@ public class MemetsRealm
         Story.MapItemQuest(7528, "byrodax", 7397, 10);
 
         //Gather Samples (7529)
-        Story.KillQuest(7529, "byrodax", "Mutated Critter|Mutated Treeant");
+        Story.KillQuest(7529, "byrodax", "Mutated Treeant");
 
         //Parts for a Machine (7530)
         Story.KillQuest(7530, "byrodax", "Security Droid");
@@ -396,7 +396,7 @@ public class MemetsRealm
         Story.MapItemQuest(7532, "byrodax", 7399, 10);
 
         //Cleaning Time (7533)
-        Story.KillQuest(7533, "byrodax", new[] { "Mutated Critter|Mutated Treeant", "Space Goop" });
+        Story.KillQuest(7533, "byrodax", new[] { "Mutated Treeant", "Space Goop" });
 
         //Chop Chop Fizz Fizz (7534)
         Story.MapItemQuest(7534, "byrodax", 7400);
