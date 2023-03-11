@@ -14196,13 +14196,16 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/UnderVoidBadgesAll.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Shakazs Merge",
+    "description": "This bot will farm the required items from /siegefortress, do the story, and buy items from the merge shop",
     "tags": [
-      "null"
+      "siegefortress",
+      "merge",
+      "dage",
+      "staff birthday"
     ],
     "path": "Seasonal/StaffBirthdays/DageTheEvil/ShakazsMerge.cs",
-    "size": 5849,
+    "size": 5998,
     "fileName": "ShakazsMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/ShakazsMerge.cs"
   },
@@ -14451,13 +14454,14 @@
       "quest",
       "temple",
       "delve",
+      "siegefortress",
       "nulgath",
       "seasonal",
       "staff",
       "birthday"
     ],
     "path": "Seasonal/StaffBirthdays/Nulgath/TempleDelve.cs",
-    "size": 3617,
+    "size": 3632,
     "fileName": "TempleDelve.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/Nulgath/TempleDelve.cs"
   },
