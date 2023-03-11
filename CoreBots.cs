@@ -1550,31 +1550,48 @@ public class CoreBots
         void huntFix(string monster)
         {
             string[] names = monster.Split('|');
+            DebugLogger(this);
             while ((!token?.IsCancellationRequested ?? true) && !Bot.ShouldExit)
             {
+                DebugLogger(this);
                 List<string> cells = names.SelectMany(n => Bot.Monsters.GetMonsterCells(n)).Distinct().ToList();
+                DebugLogger(this);
                 foreach (string cell in cells)
                 {
+                    DebugLogger(this);
                     if (token?.IsCancellationRequested ?? false)
                         break;
+                    DebugLogger(this);
                     if (!cells.Contains(Bot.Player.Cell) && (!token?.IsCancellationRequested ?? true))
                     {
+                        DebugLogger(this);
                         if (Environment.TickCount - _lastHuntTick < Bot.Options.HuntDelay)
                             Thread.Sleep(Bot.Options.HuntDelay - Environment.TickCount + _lastHuntTick);
+                        DebugLogger(this);
                         Bot.Map.Jump(cell, "Left");
+                        DebugLogger(this);
                         _lastHuntTick = Environment.TickCount;
+                        DebugLogger(this);
                     }
+                    DebugLogger(this);
                     foreach (string mon in names)
                     {
+                        DebugLogger(this);
                         if (token?.IsCancellationRequested ?? false)
                             break;
-                        if (Bot.Monsters.MapMonsters.Any(m => monster == "*" || (m.Name.Trim() == monster.Trim() && (!token?.IsCancellationRequested ?? true))))
+                        DebugLogger(this);
+                        if (Bot.Monsters.MapMonsters.Any(m => monster == "*" || (m.Name.Trim().ToLower() == monster.Trim().ToLower() && (!token?.IsCancellationRequested ?? true))))
                         {
+                            DebugLogger(this);
                             Bot.Kill.Monster(mon, token);
+                            DebugLogger(this);
                             return;
                         }
+                        DebugLogger(this);
                     }
+                    DebugLogger(this);
                     Thread.Sleep(200);
+                    DebugLogger(this);
                 }
             }
         }
@@ -1589,7 +1606,6 @@ public class CoreBots
                 .FindAll(x => x.Name.ToLower().Trim() == monster.ToLower().Trim())
                 .Where(m => m.Name == "").ToList();
         return true;
-
     }
 
     /// <summary>
