@@ -25,7 +25,7 @@ public class TempleDelve
 
     public void Storyline()
     {
-        if (Core.isCompletedBefore(9144) || !Core.isSeasonalMapActive("templedelve"))
+        if (Core.isCompletedBefore(9143) || !Core.isSeasonalMapActive("templedelve"))
             return;
 
         TS.CompleteTempleSiege();
@@ -101,8 +101,5 @@ public class TempleDelve
 
         // Evil of Humanity 9143
         Story.KillQuest(9143, "siegefortress", "Dage the Evil");
-
-        // Funeral Asters 9144    
-        Story.KillQuest(9144, "siegefortress", new[] { "Shadow Traitor", "Enslaved Elemental", "Enslaved Astero" });
     }
 }
