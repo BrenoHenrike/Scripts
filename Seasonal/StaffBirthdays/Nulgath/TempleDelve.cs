@@ -86,7 +86,7 @@ public class TempleDelve
 
         // Anatomical Example 9139
         Story.KillQuest(9139, "siegefortress", "Shadow Traitor");
-        Story.MapItemQuest(9139, "siegefortress", 11314);
+        Story.MapItemQuest(9139, "siegefortress", 11314, 4);
 
         // Bloodless Daisy 9140
         Story.KillQuest(9140, "siegefortress", new[] { "General Rand", "Enslaved Elemental" });
