@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Shakazs Merge
+description: This bot will farm the required items from /siegefortress, do the story, and buy items from the merge shop
+tags: siegefortress, merge, dage, staff birthday
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

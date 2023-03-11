@@ -1,7 +1,7 @@
 /*
 name: Temple Delve
 description: Completes the Temple Delve storyline.
-tags: story, quest, temple, delve, nulgath, seasonal, staff, birthday
+tags: story, quest, temple, delve, siegefortress, nulgath, seasonal, staff, birthday
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
