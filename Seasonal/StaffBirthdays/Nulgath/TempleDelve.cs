@@ -90,7 +90,7 @@ public class TempleDelve
 
         // Bloodless Daisy 9140
         Story.MapItemQuest(9140, "siegefortress", 11315);
-        Story.KillQuest(9139, "siegefortress", "Enslaved Elemental");
+        Story.KillQuest(9140, "siegefortress", "Enslaved Elemental");
 
         // Shadows of Espionage 9141
         Story.KillQuest(9141, "siegefortress", new[] { "Shadow Traitor", "Enslaved Elemental" });
