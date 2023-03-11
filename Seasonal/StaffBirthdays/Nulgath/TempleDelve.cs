@@ -70,7 +70,7 @@ public class TempleDelve
 
         // Vile Vanguard 9134
         Story.KillQuest(9134, "siegefortress", "Legion Dreadmarch");
-        
+
         // Fell Fealty 9135
         Story.KillQuest(9135, "siegefortress", "Legion Dread Knight");
 
