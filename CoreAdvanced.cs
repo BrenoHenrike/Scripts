@@ -45,7 +45,7 @@ public class CoreAdvanced
             return;
 
         Core.Join(map);
-        ShopItem item = Core.parseShopItem(Core.GetShopItems(map, shopID).Where(x => shopItemID == 0 ? x.Name.ToLower() == itemName.ToLower() : x.ShopItemID == shopItemID).ToList(), shopID, itemName);
+        ShopItem? item = Core.parseShopItem(Core.GetShopItems(map, shopID).Where(x => shopItemID == 0 ? x.Name.ToLower() == itemName.ToLower() : x.ShopItemID == shopItemID).ToList(), shopID, itemName);
         if (item == null)
             return;
 
@@ -67,7 +67,7 @@ public class CoreAdvanced
             return;
 
         Core.Join(map);
-        ShopItem item = Core.parseShopItem(Core.GetShopItems(map, shopID).Where(x => shopItemID == 0 ? x.ID == itemID : x.ShopItemID == shopItemID).ToList(), shopID, itemID.ToString());
+        ShopItem? item = Core.parseShopItem(Core.GetShopItems(map, shopID).Where(x => shopItemID == 0 ? x.ID == itemID : x.ShopItemID == shopItemID).ToList(), shopID, itemID.ToString());
         if (item == null)
             return;
 
@@ -99,10 +99,10 @@ public class CoreAdvanced
     /// <param name="map">The map where the shop can be loaded from</param>
     /// <param name="shopID">The shop ID to load the shopdata</param>
     /// <param name="findIngredients">A switch nested in a void that will explain this function where to get items</param>
-    public void StartBuyAllMerge(string map, int shopID, Action findIngredients, string buyOnlyThis = null, string[] itemBlackList = null, mergeOptionsEnum? buyMode = null)
+    public void StartBuyAllMerge(string map, int shopID, Action findIngredients, string? buyOnlyThis = null, string[]? itemBlackList = null, mergeOptionsEnum? buyMode = null)
     {
         if (buyOnlyThis == null && buyMode == null)
-            Bot.Config.Configure();
+            Bot.Config!.Configure();
 
         int mode = 0;
         if (buyOnlyThis != null)
@@ -130,7 +130,7 @@ public class CoreAdvanced
             {
                 if (mode == 3)
                 {
-                    if (Bot.Config.Get<bool>("Select", $"{item.ID}"))
+                    if (Bot.Config!.Get<bool>("Select", $"{item.ID}"))
                         items.Add(item);
                 }
                 else if (mode != 1)
@@ -138,7 +138,7 @@ public class CoreAdvanced
                 else if (item.Coins)
                     items.Add(item);
             }
-            else if (mode == 3 && Bot.Config.Get<bool>("Select", $"{item.ID}"))
+            else if (mode == 3 && Bot.Config!.Get<bool>("Select", $"{item.ID}"))
             {
                 Core.Logger($"\"{item.Name}\" will be skipped, as you aren't member.");
                 memSkipped = true;
@@ -279,7 +279,7 @@ public class CoreAdvanced
     {
         faction = faction.Replace(" ", "");
         Type farmClass = Farm.GetType();
-        MethodInfo theMethod = farmClass.GetMethod(faction + "REP");
+        MethodInfo? theMethod = farmClass.GetMethod(faction + "REP");
         if (theMethod == null)
         {
             Core.Logger("Failed to find " + faction + "REP. Make sure you have the correct name and capitalization.");

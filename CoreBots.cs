@@ -80,7 +80,7 @@ public class CoreBots
     // [Can Change] Some Sagas use the hero alignment to give extra reputation, change to your desired rep (Alignment.Evil or Alignment.Good).
     public int HeroAlignment { get; set; } = (int)Alignment.Evil;
 
-    private static CoreBots _instance;
+    private static CoreBots? _instance;
     public static CoreBots Instance => _instance ??= new CoreBots();
     private IScriptInterface Bot => IScriptInterface.Instance;
 
@@ -274,7 +274,7 @@ public class CoreBots
                 {
                     if (Bot.House.Items.Count(h => h.Equipped) > 0)
                     {
-                        string toSend = null;
+                        string? toSend = null;
                         Bot.Events.ExtensionPacketReceived += modifyPacket;
                         Bot.Send.Packet($"%xt%zm%house%1%{Username()}%");
                         Bot.Wait.ForMapLoad("house");
@@ -313,7 +313,7 @@ public class CoreBots
         }
 
         Bot.Options.CustomName = Username().ToUpper();
-        string guild = Bot.Flash.GetGameObject<string>("world.myAvatar.objData.guild.Name");
+        string? guild = Bot.Flash.GetGameObject<string>("world.myAvatar.objData.guild.Name");
         Bot.Options.CustomGuild = guild != null ? $"< {guild} >" : "";
 
         if (File.Exists(ButlerLogPath()))
@@ -330,13 +330,13 @@ public class CoreBots
     }
     private bool scriptFinished = true;
 
-    private bool StopBotEvent(Exception e)
+    private bool StopBotEvent(Exception? e)
     {
         SetOptions(false);
         return StopBot(e != null);
     }
 
-    private bool CrashDetector(Exception e)
+    private bool CrashDetector(Exception? e)
     {
         if (e == null)
             return scriptFinished;
@@ -1765,7 +1765,7 @@ public class CoreBots
             "Legion Revenant",
         };
 
-        if (!DOTClasses.Any(c => CheckInventory(c, toInv: false)))
+        if (!DOTClasses.Any(c => CheckInventory(c)))
         {
             Logger("--------------------------------");
             Logger("Possible classes for DoomKitten:");
@@ -1775,7 +1775,13 @@ public class CoreBots
             Logger($"\'Damage over Time\' class / VHL not found. See the logs to see suggestions. Please get one and run the bot agian. Stopping.", messageBox: true, stopBot: true);
         }
 
-        Bot.Skills.StartAdvanced(DOTClasses.First(c => CheckInventory(c)), true, ClassUseMode.Base);
+        string? _class = DOTClasses.ToList().Find(c => CheckInventory(c));
+        if (_class == null)
+        {
+            Bot.Stop(true);
+            return;
+        }
+        Bot.Skills.StartAdvanced(_class, true, ClassUseMode.Base);
 
         HuntMonster("doomkitten", "Doomkitten", item, quant, isTemp, log, publicRoom);
     }
@@ -2414,7 +2420,7 @@ public class CoreBots
                 break;
 
             #region Simple Quest Bypasses
-            
+
             case "stalagbite":
                 SimpleQuestBypass((22, 35));
                 break;
