@@ -6,7 +6,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 93720,
+    "size": 93685,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -17,7 +17,7 @@
       "null"
     ],
     "path": "CoreAdvanced.cs",
-    "size": 90700,
+    "size": 90708,
     "fileName": "CoreAdvanced.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreAdvanced.cs"
   },
@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreDailies.cs",
-    "size": 40576,
+    "size": 40583,
     "fileName": "CoreDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreDailies.cs"
   },
@@ -50,7 +50,7 @@
       "null"
     ],
     "path": "CoreStory.cs",
-    "size": 29210,
+    "size": 29435,
     "fileName": "CoreStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreStory.cs"
   },
@@ -12300,7 +12300,7 @@
       "reagents"
     ],
     "path": "Army/ArmyNulgath/ArmySupplies.cs",
-    "size": 4243,
+    "size": 4163,
     "fileName": "ArmySupplies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyNulgath/ArmySupplies.cs"
   },
