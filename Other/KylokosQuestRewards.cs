@@ -24,29 +24,26 @@ public class KylokosQuest
 
     public void GetRewards()
     {
-
         List<ItemBase> RewardOptions = Core.EnsureLoad(9145).Rewards;
 
         foreach (ItemBase item in RewardOptions)
-            Core.AddDrop(item.Name);
+            Core.AddDrop(item.ID);
 
         Core.EquipClass(ClassType.Farm);
-
         foreach (ItemBase Reward in RewardOptions)
         {
-            if (Core.CheckInventory(Reward.Name, toInv: false))
-                return;
+            if (Core.CheckInventory(Reward.Name))
+                Core.Logger($"{Reward.Name} obtained.");
+            else Core.FarmingLogger(Reward.Name, 1);
 
-            Core.FarmingLogger(Reward.Name, 1);
             while (!Bot.ShouldExit && !Core.CheckInventory(Reward.Name))
             {
                 Core.EnsureAccept(9145);
-                Core.HuntMonster("natatorium", "Anglerfish", "Anglerfish Star Shard", 10, isTemp: false, log: false);
-                Core.HuntMonster("natatorium", "Merdraconian", "Merdraconian Star Shard", 10, isTemp: false, log: false);
+                Core.KillMonster("natatorium", "r5", "Left", "Anglerfish", "Anglerfish Star Shard", 10, isTemp: false, log: false);
+                Core.KillMonster("natatorium", "r2", "Left", "Merdraconian", "Merdraconian Star Shard", 10, isTemp: false, log: false);
                 Core.EnsureComplete(9145, Reward.ID);
+                Core.ToBank(Reward.ID);
             }
-            Core.JumpWait();
-            Core.ToBank(Reward.Name);
         }
         Core.Logger("all rewards gathered.");
     }
