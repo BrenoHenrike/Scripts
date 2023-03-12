@@ -1125,7 +1125,6 @@ public class CoreNation
             Core.AddDrop(BloodyChaosSupplies);
         Core.FarmingLogger($"Blood Gem Of The Archfiend", quant);
         Core.RegisterQuests(Relic ? new[] { 7816, 2857 } : new[] { 7816 });
-        Bot.Quests.UpdateQuest(363);
         while (!Bot.ShouldExit && !Core.CheckInventory("Blood Gem Of The Archfiend", quant))
         {
             Core.EquipClass(ClassType.Solo);

@@ -2414,6 +2414,11 @@ public class CoreBots
                 break;
 
             #region Simple Quest Bypasses
+            
+            case "stalagbite":
+                SimpleQuestBypass((22, 35));
+                break;
+
             case "maloth":
                 SimpleQuestBypass((246, 23));
                 break;

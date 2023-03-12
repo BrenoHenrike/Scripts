@@ -1,7 +1,7 @@
 /*
 name: Temple Delve
 description: Completes the Temple Delve storyline.
-tags: story, quest, temple, delve, nulgath, seasonal, staff, birthday
+tags: story, quest, temple, delve, siegefortress, nulgath, seasonal, staff, birthday
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
@@ -25,7 +25,7 @@ public class TempleDelve
 
     public void Storyline()
     {
-        if (Core.isCompletedBefore(9089) || !Core.isSeasonalMapActive("templedelve"))
+        if (Core.isCompletedBefore(9143) || !Core.isSeasonalMapActive("templedelve"))
             return;
 
         TS.CompleteTempleSiege();
@@ -67,5 +67,39 @@ public class TempleDelve
         //Feeding Time (9089)
         Core.EquipClass(ClassType.Solo);
         Story.KillQuest(9089, "templedelve", "Doomed Fiend");
+
+        // Vile Vanguard 9134
+        Story.KillQuest(9134, "siegefortress", "Legion Dreadmarch");
+
+        // Fell Fealty 9135
+        Story.KillQuest(9135, "siegefortress", "Legion Dread Knight");
+
+        // Infestation Signs 9136
+        Story.MapItemQuest(9136, "siegefortress", 11312, 4);
+        Story.MapItemQuest(9136, "siegefortress", 11313);
+
+        // Banal Barage 9137
+        Story.KillQuest(9137, "siegefortress", new[] { "Legion Dread Knight", "Legion Dreadmarch" });
+
+        // Bluebirds 9138
+        Story.KillQuest(9138, "siegefortress", "Shadow Traitor");
+
+        // Anatomical Example 9139
+        Story.KillQuest(9139, "siegefortress", "Shadow Traitor");
+        Story.MapItemQuest(9139, "siegefortress", 11314, 4);
+
+        // Bloodless Daisy 9140
+        Story.MapItemQuest(9140, "siegefortress", 11315);
+        Story.KillQuest(9140, "siegefortress", "Enslaved Elemental");
+
+        // Shadows of Espionage 9141
+        Story.KillQuest(9141, "siegefortress", new[] { "Shadow Traitor", "Enslaved Elemental" });
+        Story.MapItemQuest(9141, "siegefortress", 11316, 2);
+
+        // Foul Duke of Light 9142
+        Story.KillQuest(9142, "siegefortress", "Enslaved Astero");
+
+        // Evil of Humanity 9143
+        Story.KillQuest(9143, "siegefortress", "Dage the Evil");
     }
 }

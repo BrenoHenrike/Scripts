@@ -39,7 +39,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 131062,
+    "size": 131885,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -50,7 +50,7 @@
       "null"
     ],
     "path": "CoreStory.cs",
-    "size": 28930,
+    "size": 29189,
     "fileName": "CoreStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreStory.cs"
   },
@@ -2232,7 +2232,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 60423,
+    "size": 60386,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -6519,6 +6519,17 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/BrightForestMerge.cs"
   },
   {
+    "name": "Ectocave Mergeshop",
+    "description": "Gets any item you want in the Ectocave Mergeshop",
+    "tags": [
+      "null"
+    ],
+    "path": "Other/MergeShops/EctocaveMerge.cs",
+    "size": 6331,
+    "fileName": "EctocaveMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/EctocaveMerge.cs"
+  },
+  {
     "name": "KagesMerge[mem-non-ac]",
     "description": "null",
     "tags": [
@@ -7918,7 +7929,7 @@
       "null"
     ],
     "path": "Story/MemetsRealm/CoreMemet.cs",
-    "size": 12298,
+    "size": 12266,
     "fileName": "CoreMemet.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/MemetsRealm/CoreMemet.cs"
   },
@@ -14196,6 +14207,20 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/UnderVoidBadgesAll.cs"
   },
   {
+    "name": "Shakazs Merge",
+    "description": "This bot will farm the required items from /siegefortress, do the story, and buy items from the merge shop",
+    "tags": [
+      "siegefortress",
+      "merge",
+      "dage",
+      "staff birthday"
+    ],
+    "path": "Seasonal/StaffBirthdays/DageTheEvil/ShakazsMerge.cs",
+    "size": 5998,
+    "fileName": "ShakazsMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/ShakazsMerge.cs"
+  },
+  {
     "name": "Rand's Merge",
     "description": "This bot will farm Rand's Approval in /seraph and buy items from the merge shop",
     "tags": [
@@ -14440,13 +14465,14 @@
       "quest",
       "temple",
       "delve",
+      "siegefortress",
       "nulgath",
       "seasonal",
       "staff",
       "birthday"
     ],
     "path": "Seasonal/StaffBirthdays/Nulgath/TempleDelve.cs",
-    "size": 2315,
+    "size": 3632,
     "fileName": "TempleDelve.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/Nulgath/TempleDelve.cs"
   },
