@@ -552,6 +552,20 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/LoreBowl.cs"
   },
   {
+    "name": "Kylokos Quest Rewards",
+    "description": "farms quest rewards from Pisces Venaris Mater` in /natatorium",
+    "tags": [
+      "natatorium",
+      "quest reward",
+      "kyloko",
+      ""
+    ],
+    "path": "Other/KylokosQuestRewards.cs",
+    "size": 1400,
+    "fileName": "KylokosQuestRewards.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/KylokosQuestRewards.cs"
+  },
+  {
     "name": "Wheel Of Doom Spam",
     "description": "wastes (with a warning) your extra ACs on wheel of doom spins",
     "tags": [
@@ -12300,7 +12314,7 @@
       "reagents"
     ],
     "path": "Army/ArmyNulgath/ArmySupplies.cs",
-    "size": 4163,
+    "size": 4165,
     "fileName": "ArmySupplies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyNulgath/ArmySupplies.cs"
   },
@@ -12991,6 +13005,87 @@
     "size": 3911,
     "fileName": "AstraviaJudgementMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/MergeShops/AstraviaJudgementMerge.cs"
+  },
+  {
+    "name": "null",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Templates/Examples/OptionsExample.cs",
+    "size": 3610,
+    "fileName": "OptionsExample.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Templates/Examples/OptionsExample.cs"
+  },
+  {
+    "name": "questgivername Quest Rewards",
+    "description": "farms quest rewards from `quest name here` in /mapname",
+    "tags": [
+      "mapname",
+      "questgivername",
+      "quest rewards"
+    ],
+    "path": "Templates/Examples/QuestRewardSelectTemplate.cs",
+    "size": 2247,
+    "fileName": "QuestRewardSelectTemplate.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Templates/Examples/QuestRewardSelectTemplate.cs"
+  },
+  {
+    "name": "questgivername Quest Rewards",
+    "description": "farms quest rewards from `quest name here` in /mapname",
+    "tags": [
+      "mapname",
+      "questgivername",
+      "quest rewards"
+    ],
+    "path": "Templates/Examples/QuestRewardRandomTemplate.cs",
+    "size": 1891,
+    "fileName": "QuestRewardRandomTemplate.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Templates/Examples/QuestRewardRandomTemplate.cs"
+  },
+  {
+    "name": "Iten Farm Name",
+    "description": "farms \"itemname\", until you have the desired amount",
+    "tags": [
+      "itemname",
+      "tag",
+      "tag",
+      "tag",
+      "tag",
+      "tag",
+      "tag",
+      "tag",
+      "tag"
+    ],
+    "path": "Templates/Examples/SimpeItemFarm.cs",
+    "size": 1935,
+    "fileName": "SimpeItemFarm.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Templates/Examples/SimpeItemFarm.cs"
+  },
+  {
+    "name": "Blaze Beard Story",
+    "description": "This will finish the Blaze Beard Story Quest.",
+    "tags": [
+      "story",
+      "quest",
+      "blaze-beard",
+      "pirate"
+    ],
+    "path": "Templates/Examples/LegacyTemplate.cs",
+    "size": 2153,
+    "fileName": "LegacyTemplate.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Templates/Examples/LegacyTemplate.cs"
+  },
+  {
+    "name": "null",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Templates/Examples/MergeExample.cs",
+    "size": 4676,
+    "fileName": "MergeExample.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Templates/Examples/MergeExample.cs"
   },
   {
     "name": "FestiveParagonDracolichRider",
