@@ -1765,7 +1765,7 @@ public class CoreBots
             "Legion Revenant",
         };
 
-        if (!DOTClasses.Any(c => CheckInventory(c, toInv: false)))
+        if (!DOTClasses.Any(c => CheckInventory(c)))
         {
             Logger("--------------------------------");
             Logger("Possible classes for DoomKitten:");
@@ -1775,7 +1775,13 @@ public class CoreBots
             Logger($"\'Damage over Time\' class / VHL not found. See the logs to see suggestions. Please get one and run the bot agian. Stopping.", messageBox: true, stopBot: true);
         }
 
-        Bot.Skills.StartAdvanced(DOTClasses.First(c => CheckInventory(c)), true, ClassUseMode.Base);
+        string? _class = DOTClasses.ToList().Find(c => CheckInventory(c));
+        if (_class == null)
+        {
+            Bot.Stop(true);
+            return;
+        }
+        Bot.Skills.StartAdvanced(_class, true, ClassUseMode.Base);
 
         HuntMonster("doomkitten", "Doomkitten", item, quant, isTemp, log, publicRoom);
     }
