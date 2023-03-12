@@ -632,27 +632,8 @@ public class CoreFarms
             AlchemyREP(rank);
 
         // Core.Join("Alchemy");
-        InventoryItem reagentid1 = Bot.Inventory.GetItem(reagent1);
-        InventoryItem reagentid2 = Bot.Inventory.GetItem(reagent2);
-
-        void Packet()
-        {
-            if (!P2w)
-                Bot.Sleep(3500);
-            else Bot.Sleep(Core.ActionDelay);
-            if (P2w && Core.CheckInventory("Dragon Runestone"))
-                Bot.Send.Packet($"%xt%zm%crafting%1%getAlchWait%{reagentid1.ID}%{reagentid2.ID}%true%Ready to Mix%{reagent1}%{reagent2}%{rune}%{trait}%");
-            else if (!P2w)
-                Bot.Send.Packet($"%xt%zm%crafting%1%getAlchWait%{reagentid1.ID}%{reagentid2.ID}%false%Ready to Mix%{reagent1}%{reagent2}%{rune}%{modifier}%");
-            if (P2w)
-                Bot.Sleep(2500);
-            else Bot.Sleep(11000);
-            if (P2w && Core.CheckInventory("Dragon Runestone"))
-                Bot.Send.Packet($"%xt%zm%crafting%1%checkAlchComplete%{reagentid1.ID}%{reagentid2.ID}%true%Mix Complete%{reagent1}%{reagent2}%{rune}%{trait}%");
-
-            else if (!P2w)
-                Bot.Send.Packet($"%xt%zm%crafting%1%checkAlchComplete%{reagentid1.ID}%{reagentid2.ID}%false%Mix Complete%{reagent1}%{reagent2}%{rune}%{modifier}%");
-        }
+        int reagentid1 = Bot.Inventory.GetItem(reagent1)!.ID;
+        int reagentid2 = Bot.Inventory.GetItem(reagent2)!.ID;
 
         Core.Logger($"Reagents: [{reagent1}], [{reagent2}].");
         Core.Logger($"Rune: {rune}.");
@@ -670,6 +651,26 @@ public class CoreFarms
         }
         else Packet();
         //Times alchemy was fixed: TO FUCKING MANY I HATE ARTIX
+
+        void Packet()
+        {
+            if (!P2w)
+                Bot.Sleep(3500);
+            else Bot.Sleep(Core.ActionDelay);
+            if (P2w && Core.CheckInventory("Dragon Runestone"))
+                Bot.Send.Packet($"%xt%zm%crafting%1%getAlchWait%{reagentid1}%{reagentid2}%true%Ready to Mix%{reagent1}%{reagent2}%{rune}%{trait}%");
+            else if (!P2w)
+                Bot.Send.Packet($"%xt%zm%crafting%1%getAlchWait%{reagentid1}%{reagentid2}%false%Ready to Mix%{reagent1}%{reagent2}%{rune}%{modifier}%");
+            if (P2w)
+                Bot.Sleep(2500);
+            else Bot.Sleep(11000);
+            if (P2w && Core.CheckInventory("Dragon Runestone"))
+                Bot.Send.Packet($"%xt%zm%crafting%1%checkAlchComplete%{reagentid1}%{reagentid2}%true%Mix Complete%{reagent1}%{reagent2}%{rune}%{trait}%");
+
+            else if (!P2w)
+                Bot.Send.Packet($"%xt%zm%crafting%1%checkAlchComplete%{reagentid1}%{reagentid2}%false%Mix Complete%{reagent1}%{reagent2}%{rune}%{modifier}%");
+        }
+
     }
 
 

@@ -226,7 +226,7 @@ public class CoreStory
             if (timeout > 15)
             {
                 int currentValue = Bot.Flash.CallGameFunction<int>("world.getQuestValue", QuestData.Slot);
-                Quest prevQuest = Bot.Quests.Tree.Find(q => q.Slot == QuestData.Slot && q.Value == (currentValue + 1));
+                Quest? prevQuest = Bot.Quests.Tree.Find(q => q.Slot == QuestData.Slot && q.Value == (currentValue + 1));
 
                 prevQuestReq ??=
                     prevQuest == null || prevQuest.Requirements.All(r => Core.CheckInventory(r.ID, r.Quantity)) ?
@@ -335,9 +335,9 @@ public class CoreStory
     }
     private bool CBO_Checked = false;
     private int lastFailedQuestID = 0;
-    private string prevQuestExplain;
-    private string prevQuestReq;
-    private string prevQuestAReq;
+    private string? prevQuestExplain;
+    private string? prevQuestReq;
+    private string? prevQuestAReq;
 
     public void LegacyQuestManager(Action questLogic, params int[] questIDs)
     {
@@ -349,16 +349,16 @@ public class CoreStory
         foreach (Quest quest in questData)
         {
             List<ItemBase> desiredQuestReward = quest.Rewards.Where(r => questData.Any(q => q.AcceptRequirements.Any(a => a.ID == r.ID || a.Name == r.Name))).ToList();
-            int requiredQuestID = questData.Find((q => q.Rewards.Any(r => quest.AcceptRequirements.Any(a => a.ID == r.ID || a.Name == r.Name))))?.ID ?? 0;
-            List<ItemBase> requiredQuestReward = quest.AcceptRequirements?.Where(r => questData.Any(q => q.Rewards.Any(a => a.ID == r.ID || a.Name == r.Name)))?.ToList();
+            int requiredQuestID = questData.Find((q => q.Rewards.Any(r => quest.AcceptRequirements != null && quest.AcceptRequirements.Any(a => a.ID == r.ID || a.Name == r.Name))))?.ID ?? 0;
+            List<ItemBase>? requiredQuestReward = quest.AcceptRequirements?.Where(r => questData.Any(q => q.Rewards.Any(a => a.ID == r.ID || a.Name == r.Name)))?.ToList();
 
             Core.DebugLogger(this, $"{quest.ID}\t\t");
             Core.DebugLogger(this, $"{desiredQuestReward.FirstOrDefault()?.Name}\t");
             Core.DebugLogger(this, $"{requiredQuestID}\t\t");
-            Core.DebugLogger(this, $"{requiredQuestReward.FirstOrDefault()?.Name}\t");
+            Core.DebugLogger(this, $"{requiredQuestReward?.FirstOrDefault()?.Name}\t");
             Core.DebugLogger(this, "-------------\t");
 
-            if (requiredQuestReward.Count() == 0 && quest.AcceptRequirements.Count() > 0)
+            if (requiredQuestReward?.Count() == 0 && quest.AcceptRequirements?.Count() > 0)
             {
                 Core.Logger("The managed failed to find the location of \"" +
                 String.Join("\" + \"", quest.AcceptRequirements.Select(a => a.Name)) +
@@ -378,24 +378,24 @@ public class CoreStory
             return;
         }
 
-        int finalItemQuestID = whereToGet.Find(x => x.desiredQuestReward.Count == 0).desiredQuestID;
-        if (finalItemQuestID <= 0)
+        var finalItemQuest = whereToGet.Find(x => x.desiredQuestReward.Count == 0);
+        if (finalItemQuest == null || finalItemQuest.desiredQuestID <= 0)
         {
             Core.Logger("Could not find the Quest ID of the last quest in the item chain");
             return;
         }
 
-        Core.Logger($"Final quest in Legacy Quest Chain: [{finalItemQuestID}] \"{Core.EnsureLoad(finalItemQuestID).Name}\"");
+        Core.Logger($"Final quest in Legacy Quest Chain: [{finalItemQuest.desiredQuestID}] \"{Core.EnsureLoad(finalItemQuest.desiredQuestID).Name}\"");
 
-        runQuest(finalItemQuestID);
+        runQuest(finalItemQuest.desiredQuestID);
 
         foreach (LegacyQuestObject l in whereToGet)
-            Core.ToBank(l.requiredQuestReward.Select(i => i.ID).ToArray());
+            if (l.requiredQuestReward != null)
+                Core.ToBank(l.requiredQuestReward.Select(i => i.ID).ToArray());
 
         void runQuest(int questID)
         {
-            LegacyQuestObject runQuestData = whereToGet.Find(d => d.desiredQuestID == questID);
-            Quest questData = Core.EnsureLoad(questID);
+            LegacyQuestObject? runQuestData = whereToGet.Find(d => d.desiredQuestID == questID);
 
             Core.DebugLogger(this);
             if (runQuestData == null)
@@ -403,11 +403,12 @@ public class CoreStory
                 Core.Logger("runQuestData is NULL");
                 return;
             }
+            Quest questData = Core.EnsureLoad(questID);
             Core.DebugLogger(this);
 
-            int[] requiredReward = runQuestData.requiredQuestReward.Select(i => i.ID).ToArray();
+            int[] requiredReward = runQuestData.requiredQuestReward!.Select(i => i.ID).ToArray();
             Core.DebugLogger(this);
-            if (runQuestData.desiredQuestReward.Count == 0 && questID != finalItemQuestID)
+            if (runQuestData.desiredQuestReward.Count == 0 && questID != finalItemQuest.desiredQuestID)
             {
                 if (!Core.CheckInventory(requiredReward))
                     runQuest(runQuestData.requiredQuestID);
@@ -416,7 +417,7 @@ public class CoreStory
 
             Core.DebugLogger(this);
             int[] desiredReward = runQuestData.desiredQuestReward.Select(i => i.ID).ToArray();
-            if (questID != finalItemQuestID ? Core.CheckInventory(desiredReward) : Core.CheckInventory(Core.EnsureLoad(finalItemQuestID).Rewards.Select(x => x.ID).ToArray()))
+            if (questID != finalItemQuest.desiredQuestID ? Core.CheckInventory(desiredReward) : Core.CheckInventory(Core.EnsureLoad(finalItemQuest.desiredQuestID).Rewards.Select(x => x.ID).ToArray()))
             {
                 Core.Logger($"Already Completed: [{questID}] - \"{questData.Name}\"", "QuestProgression");
                 return;
@@ -444,8 +445,8 @@ public class CoreStory
             foreach (int i in desiredReward)
                 Bot.Wait.ForPickup(i);
             Core.DebugLogger(this);
-            if (questID == finalItemQuestID)
-                Bot.Drops.Pickup(Core.EnsureLoad(finalItemQuestID).Rewards.Select(x => x.ID).ToArray());
+            if (questID == finalItemQuest.desiredQuestID)
+                Bot.Drops.Pickup(Core.EnsureLoad(finalItemQuest.desiredQuestID).Rewards.Select(x => x.ID).ToArray());
             Core.DebugLogger(this);
 
             LegacyQuestAutoComplete = true;
@@ -456,9 +457,9 @@ public class CoreStory
         public int desiredQuestID { get; set; } // In order to do ....
         public List<ItemBase> desiredQuestReward { get; set; } // And obtain ...
         public int requiredQuestID { get; set; } // You must do ...
-        public List<ItemBase> requiredQuestReward { get; set; } // And obtain ...
+        public List<ItemBase>? requiredQuestReward { get; set; } // And obtain ...
 
-        public LegacyQuestObject(int desiredQuestID, List<ItemBase> desiredQuestReward, int requiredQuestID, List<ItemBase> requiredQuestReward)
+        public LegacyQuestObject(int desiredQuestID, List<ItemBase> desiredQuestReward, int requiredQuestID, List<ItemBase>? requiredQuestReward)
         {
             this.desiredQuestID = desiredQuestID;
             this.desiredQuestReward = desiredQuestReward;

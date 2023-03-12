@@ -37,7 +37,7 @@ public class CoreDailies
     /// <param name="isTemp">Whether it is temporary</param>
     /// <param name="cell">Cell where the monster is (optional)</param>
     /// <param name="pad">Pad where the monster is</param>
-    public void DailyRoutine(int quest, string map, string monster, string item, int quant = 1, bool isTemp = true, string cell = null, string pad = "Left", bool publicRoom = false)
+    public void DailyRoutine(int quest, string map, string monster, string item, int quant = 1, bool isTemp = true, string? cell = null, string pad = "Left", bool publicRoom = false)
     {
         if (Bot.Quests.IsDailyComplete(quest))
             return;
@@ -75,7 +75,7 @@ public class CoreDailies
             {
                 foreach (string item in items)
                 {
-                    InventoryItem _item = invBank.Find(x => x.Name == item);
+                    InventoryItem? _item = invBank.Find(x => x.Name == item);
                     if (_item == null)
                         continue;
 
@@ -90,7 +90,7 @@ public class CoreDailies
             {
                 foreach (string item in items)
                 {
-                    InventoryItem _item = invBank.Find(x => x.Name == item);
+                    InventoryItem? _item = invBank.Find(x => x.Name == item);
                     if (_item == null)
                         continue;
 
@@ -119,7 +119,7 @@ public class CoreDailies
     /// </summary>
     /// <param name="metals">Metals you want to be collected</param>
     /// <param name="quant">Quantity you want of the metals</param>
-    public void MineCrafting(string[] metals = null, int quant = 2, bool ToBank = false)
+    public void MineCrafting(string[]? metals = null, int quant = 2, bool ToBank = false)
     {
         if (metals == null)
             metals = MineCraftingMetalsArray;
@@ -161,7 +161,7 @@ public class CoreDailies
     /// </summary>
     /// <param name="metals">Metals you want to be collected</param>
     /// <param name="quant">Quantity you want of the metals</param>
-    public void HardCoreMetals(string[] metals = null, int quant = 1, bool ToBank = false)
+    public void HardCoreMetals(string[]? metals = null, int quant = 1, bool ToBank = false)
     {
         if (!Core.IsMember || !Core.isCompletedBefore(2098))
             return;
@@ -623,8 +623,8 @@ public class CoreDailies
         {
             if (item.ID == 27552 && Bot.Player.Level == 100)
                 continue;
-            if (Core.CheckInventory(item.ID) && Bot.Inventory.TryGetItem(item.ID, out InventoryItem _item))
-                CompareDict.Add(item, _item.Quantity);
+            if (Core.CheckInventory(item.ID) && Bot.Inventory.TryGetItem(item.ID, out InventoryItem? _item))
+                CompareDict.Add(item, _item!.Quantity);
             else CompareDict.Add(item, 0);
         }
         // IWLQ = ItemWithLowestQuant
