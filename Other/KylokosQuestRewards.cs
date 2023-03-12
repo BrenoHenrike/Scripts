@@ -38,13 +38,16 @@ public class KylokosQuest
                 return;
 
             Core.FarmingLogger(Reward.Name, 1);
-
-            Core.EnsureAccept(9145);
-            Core.HuntMonster("natatorium", "Anglerfish", "Anglerfish Star Shard", 10, isTemp: false, log: false);
-            Core.HuntMonster("natatorium", "Merdraconian", "Merdraconian Star Shard", 10, isTemp: false, log: false);
-            Core.EnsureComplete(9145, Reward.ID);
+            while (!Bot.ShouldExit && !Core.CheckInventory(Reward.Name))
+            {
+                Core.EnsureAccept(9145);
+                Core.HuntMonster("natatorium", "Anglerfish", "Anglerfish Star Shard", 10, isTemp: false, log: false);
+                Core.HuntMonster("natatorium", "Merdraconian", "Merdraconian Star Shard", 10, isTemp: false, log: false);
+                Core.EnsureComplete(9145, Reward.ID);
+            }
             Core.JumpWait();
             Core.ToBank(Reward.Name);
         }
+        Core.Logger("all rewards gathered.");
     }
 }
