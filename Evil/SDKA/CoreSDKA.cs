@@ -259,13 +259,13 @@ public class CoreSDKA
         {
             Core.BuyItem("swordhaven", 179, "Iron Hammer");
 
-            Core.KillMonster("sandcastle", "r5", "Left", "War Mummy", "War Mummy Wrap", isTemp: false, log: false);
-            Core.KillMonster("noobshire", "North", "Left", "Horc Noob", "Noob Blade Oil", log: false);
-            Core.KillMonster("farm", "Crop1", "Right", "Scarecrow", "Burlap Cloth", 4, log: false);
+            Core.HuntMonster("sandcastle", "War Mummy", "War Mummy Wrap", isTemp: false, log: false);
+            Core.HuntMonster("noobshire", "Horc Noob", "Noob Blade Oil", log: false);
+            Core.HuntMonster("farm", "Scarecrow", "Burlap Cloth", 4, log: false);
 
-            Core.HuntMonster("lair", "Bronze Draconian", "Bronze Brush");
-            Core.HuntMonster("bludrut", "Rock Elemental", "Elemental Stone Sharpener");
-            Core.HuntMonster("nulgath", "Dark Makai", "Dark Makai Lacquer Finish");
+            Core.HuntMonster("lair", "Bronze Draconian", "Bronze Brush", log: false);
+            Core.HuntMonster("bludrut", "Rock Elemental", "Elemental Stone Sharpener", log: false);
+            Core.HuntMonster("nulgath", "Dark Makai", "Dark Makai Lacquer Finish", log: false);
 
             Bot.Drops.Pickup("DoomSquire Weapon Kit");
         }
