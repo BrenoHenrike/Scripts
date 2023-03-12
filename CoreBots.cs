@@ -518,7 +518,7 @@ public class CoreBots
     /// <param name="items">Items to move</param>
     public void Unbank(params string[] items)
     {
-        if (items == null)
+        if (items == null || items.Length == 0)
             return;
 
         JumpWait();
@@ -1039,6 +1039,8 @@ public class CoreBots
     /// <param name="items">Items to add</param>
     public void AddDrop(params string[] items)
     {
+        if (items == null || items.Length == 0)
+            return;
         Unbank(items);
         Bot.Drops.Add(items);
     }

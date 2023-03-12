@@ -249,7 +249,7 @@ public class CoreStory
 
                 if (lastFailedQuestID != QuestData.ID)
                 {
-                    if (prevQuest.Status == "c")
+                    if (prevQuest != null && prevQuest.Status == "c")
                     {
                         TryComplete(prevQuest, true);
                         timeout = 0;
