@@ -32,7 +32,7 @@ public class KylokosQuest
         Core.EquipClass(ClassType.Farm);
         foreach (ItemBase Reward in RewardOptions)
         {
-            if (Core.CheckInventory(Reward.Name))
+            if (Core.CheckInventory(Reward.Name, toInv: false))
                 Core.Logger($"{Reward.Name} obtained.");
             else Core.FarmingLogger(Reward.Name, 1);
 
