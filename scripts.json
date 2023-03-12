@@ -2232,7 +2232,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 60386,
+    "size": 60585,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -2292,7 +2292,7 @@
       "diamond badge of nulgath"
     ],
     "path": "Nation/NationLoyaltyRewarded.cs",
-    "size": 2681,
+    "size": 2651,
     "fileName": "NationLoyaltyRewarded.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/NationLoyaltyRewarded.cs"
   },
@@ -2453,7 +2453,7 @@
       "null"
     ],
     "path": "Farm/BuyScrolls.cs",
-    "size": 5187,
+    "size": 5189,
     "fileName": "BuyScrolls.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/BuyScrolls.cs"
   },
