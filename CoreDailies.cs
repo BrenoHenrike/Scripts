@@ -943,7 +943,8 @@ public class CoreDailies
             float oldNum = info.DisplayHearts;
             bool refreshed = RefreshFriendshipData(out friends);
             string npc = info.NPC;
-            info = friends.First(f => f.NPC == npc);
+            if (refreshed)
+                info = friends.First(f => f.NPC == npc);
             float addNum = info.DisplayHearts - oldNum;
 
             Core.Logger(text +
