@@ -6632,17 +6632,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/DeadLinesMerge.cs"
   },
   {
-    "name": "DarkHandMerge",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Other/MergeShops/DarkHandMerge.cs",
-    "size": 6878,
-    "fileName": "DarkHandMerge.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/DarkHandMerge.cs"
-  },
-  {
     "name": "AprilFools2019WarMerge",
     "description": "null",
     "tags": [
@@ -13311,6 +13300,17 @@
     "size": 946,
     "fileName": "LegionBonfire.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/Various/LegionBonfire.cs"
+  },
+  {
+    "name": "DarkHandMerge",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Legion/Various/DarkHandMerge.cs",
+    "size": 6742,
+    "fileName": "DarkHandMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/Various/DarkHandMerge.cs"
   },
   {
     "name": "WorthyOfTheBlade",
