@@ -44,7 +44,7 @@ public class NationLoyaltyRewarded
                 Core.Logger($"{item.Name} is max stack Checking next item in the \"Time is Money\" Quest's Rewards");
             else
             {
-                Core.FarmingLogger(item.Name, Bot.Inventory.GetItem(item.ID).MaxStack);
+                Core.FarmingLogger(item.Name, item.MaxStack);
                 Core.RegisterQuests(4749);
                 while (!Bot.ShouldExit && !Bot.Inventory.IsMaxStack(item.ID))
                 {
@@ -62,7 +62,7 @@ public class NationLoyaltyRewarded
                     Core.KillMonster("tercessuinotlim", "m2", "Bottom", "Dark Makai", "Defeated Makai", 25, false, false);
                 }
             }
-                Core.CancelRegisteredQuests();
+            Core.CancelRegisteredQuests();
         }
     }
 }

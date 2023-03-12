@@ -61,7 +61,7 @@ public class SuppliesWheelArmy
         List<ItemBase> RewardOptions1 = Core.EnsureLoad(2857).Rewards;
         List<ItemBase> RewardOptions2 = Core.EnsureLoad(7551).Rewards;
 
-        if (Bot.Config.Get<bool>("SwindlesReturnDuring"))
+        if (Bot.Config!.Get<bool>("SwindlesReturnDuring"))
             Core.AddDrop(Nation.SwindlesReturn);
         Core.AddDrop(Nation.bagDrops);
         Core.AddDrop("Relic of Chaos");
@@ -95,7 +95,7 @@ public class SuppliesWheelArmy
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
 
-        if (Bot.Config.Get<bool>("sellToSync"))
+        if (Bot.Config!.Get<bool>("sellToSync"))
             Army.SellToSync(item, quant);
 
         Core.AddDrop(item);

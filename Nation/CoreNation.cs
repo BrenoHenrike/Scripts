@@ -280,11 +280,11 @@ public class CoreNation
     /// </summary>
     /// <param name="quant">Desired Item quantity</param>
     /// <param name=item>Desired Item</param>
-    public void SwindleReturn(string item = null, int quant = 1000)
+    public void SwindleReturn(string? item = null, int quant = 1000)
     {
-        ItemBase Item = Core.EnsureLoad(7551).Rewards.Find(x => x.Name == item);
+        ItemBase? Item = Core.EnsureLoad(7551).Rewards.Find(x => x.Name == item);
 
-        if (Core.CheckInventory(Item.Name, quant))
+        if (Item == null || Core.CheckInventory(Item.Name, quant))
             return;
 
         Core.AddDrop(Receipt);
@@ -469,22 +469,28 @@ public class CoreNation
     /// </summary>
     /// <param name=item>Desired item name</param>
     /// <param name="quant">Desired item quantity</param>
-    public void NulgathLarvae(string item = null, int quant = 1)
+    public void NulgathLarvae(string? item = null, int quant = 1)
     {
-        if (Core.CheckInventory(item, quant) && item != null)
+        if (item != null && Core.CheckInventory(item, quant))
             return;
 
         Bot.Drops.Add(bagDrops);
         Bot.Drops.Add("Mana Energy for Nulgath");
+
         Bot.Quests.UpdateQuest(847);
+
         Core.DebugLogger(this);
         if (item == null)
         {
+            Quest questData = Core.EnsureLoad(847);
             foreach (string Drop in bagDrops)
             {
-                Core.FarmingLogger(Drop, Bot.Inventory.GetItem(Drop).MaxStack);
+                ItemBase? drop = questData.Rewards.Find(x => x.Name == Drop);
+                if (drop == null)
+                    continue;
+                Core.FarmingLogger(Drop, drop.MaxStack);
                 Core.RegisterQuests(2566);
-                while (!Bot.ShouldExit && !Bot.Inventory.IsMaxStack(item))
+                while (!Bot.ShouldExit && !Bot.Inventory.IsMaxStack(drop.ID))
                 {
                     Core.EquipClass(ClassType.Solo);
                     Core.HuntMonster("elemental", "Mana Golem", "Mana Energy for Nulgath", isTemp: false, log: false);
@@ -550,7 +556,7 @@ public class CoreNation
 
             if (Core.CBOBool("Nation_ReturnPolicyDuringSupplies", out bool _returnSupplies))
                 returnPolicyDuringSupplies = _returnSupplies;
-            string[] rPDSuni = null;
+            string[]? rPDSuni = null;
             if (returnPolicyDuringSupplies)
             {
                 rPDSuni = new[] { Uni(1), Uni(6), Uni(9), Uni(16), Uni(20) };
@@ -577,7 +583,7 @@ public class CoreNation
 
                 if (Bot.Inventory.IsMaxStack(item))
                 {
-                    Core.Logger($"Max-Stack for {item} has been reached ({Bot.Inventory.GetItem(item).MaxStack})");
+                    Core.Logger($"Max-Stack for {item} has been reached ({Bot.Inventory.GetItem(item)!.MaxStack})");
                     break;
                 }
             }
@@ -669,7 +675,7 @@ public class CoreNation
         if (OBoNPet || Core.CheckInventory("Oblivion Blade of Nulgath Pet (Rare)"))
             Core.AddDrop("Tainted Soul");
 
-        string[] rPDSuni = null;
+        string[]? rPDSuni = null;
         if (returnPolicyDuringSupplies)
         {
             rPDSuni = new[]
@@ -717,7 +723,7 @@ public class CoreNation
             if (Core.CheckInventory("Voucher of Nulgath") && item != "Voucher of Nulgath" && sellMemVoucher)
                 Core.SellItem("Voucher of Nulgath", all: true);
 
-            if (returnPolicyDuringSupplies && Core.CheckInventory(rPDSuni))
+            if (returnPolicyDuringSupplies && Core.CheckInventory(rPDSuni!))
             {
                 Core.EquipClass(ClassType.Farm);
                 Core.EnsureAccept(7551);

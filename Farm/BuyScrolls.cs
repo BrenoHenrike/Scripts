@@ -27,7 +27,7 @@ public class BuyScrolls
     {
         Core.SetOptions();
 
-        BuyScroll(Bot.Config.Get<Scrolls>("scrollSelect"), Bot.Config.Get<int>("scrollAmount"));
+        BuyScroll(Bot.Config!.Get<Scrolls>("scrollSelect"), Bot.Config.Get<int>("scrollAmount"));
 
         Core.SetOptions(false);
     }
@@ -48,7 +48,7 @@ public class BuyScrolls
 
         Farm.SpellCraftingREP(5);
 
-        if (!Bot.Config.Get<bool>("UseMysticParchment"))
+        if (!Bot.Config!.Get<bool>("UseMysticParchment"))
         {
             while (!Bot.ShouldExit && !Core.CheckInventory(_scroll, quant))
             {
