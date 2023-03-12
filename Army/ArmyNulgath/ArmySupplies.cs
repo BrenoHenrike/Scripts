@@ -58,22 +58,21 @@ public class SuppliesWheelArmy
         Core.PrivateRoomNumber = Army.getRoomNr();
         Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
 
-        Quest QuestData = Core.EnsureLoad(2857);
-        ItemBase[] RequiredItems = QuestData.Requirements.ToArray();
-        ItemBase[] QuestReward = QuestData.Rewards.ToArray();
+        List<ItemBase> RewardOptions1 = Core.EnsureLoad(2857).Rewards;
+        List<ItemBase> RewardOptions2 = Core.EnsureLoad(7551).Rewards;
 
         if (Bot.Config.Get<bool>("SwindlesReturnDuring"))
             Core.AddDrop(Nation.SwindlesReturn);
         Core.AddDrop(Nation.bagDrops);
         Core.AddDrop("Relic of Chaos");
 
-        foreach (string item in Nation.bagDrops)
+        foreach (ItemBase item in RewardOptions1.Concat(RewardOptions2).ToArray())
         {
             if (Bot.Config.Get<bool>("SwindlesReturnDuring"))
             {
                 Core.RegisterQuests(2857, 7551);
-                Core.FarmingLogger(item, Bot.Inventory.GetItem(item).MaxStack);
-                while (!Bot.ShouldExit && !Core.CheckInventory(item, Bot.Inventory.GetItem(item).MaxStack))
+                Core.FarmingLogger(item.Name, item.MaxStack);
+                while (!Bot.ShouldExit && !Core.CheckInventory(item.ID, item.MaxStack))
                 {
                     ArmyHunt("hydrachallenge", new[] { "Hydra Head 90" }, "Relic of Chaos", ClassType.Farm, false, 13);
                     if (Bot.Config.Get<bool>("SwindlesReturnDuring") && Core.CheckInventory(Nation.SwindlesReturn))
@@ -83,8 +82,8 @@ public class SuppliesWheelArmy
             else
             {
                 Core.RegisterQuests(2857);
-                Core.FarmingLogger(item, Bot.Inventory.GetItem(item).MaxStack);
-                while (!Bot.ShouldExit && !Core.CheckInventory(item, Bot.Inventory.GetItem(item).MaxStack))
+                Core.FarmingLogger(item.Name, item.MaxStack);
+                while (!Bot.ShouldExit && !Core.CheckInventory(item.ID, item.MaxStack))
                     ArmyHunt("hydrachallenge", new[] { "Hydra Head 90" }, "Relic of Chaos", ClassType.Farm, false, 99);
             }
         }
