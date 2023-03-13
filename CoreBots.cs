@@ -1551,12 +1551,20 @@ public class CoreBots
 
         void huntFix(string monster)
         {
-            string[] names = monster.Split('|');
+            string[] names = monster.Split('|', StringSplitOptions.TrimEntries);
             DebugLogger(this);
             while ((!token?.IsCancellationRequested ?? true) && !Bot.ShouldExit)
             {
                 DebugLogger(this);
-                List<string> cells = names.SelectMany(n => Bot.Monsters.GetMonsterCells(n)).Distinct().ToList();
+                List<string> cells =
+                    names.SelectMany(n =>
+                        Bot.Monsters.MapMonsters.Where(m =>
+                            m.Alive && (n == "*" || m.Name.Trim() == n.Trim()))
+                        .Select(m => m.Cell)
+                        .Distinct()
+                        .ToList())
+                    .Distinct()
+                    .ToList();
                 DebugLogger(this);
                 foreach (string cell in cells)
                 {
