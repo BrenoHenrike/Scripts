@@ -6,6 +6,7 @@ tags: null
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
+using Skua.Core.Models.Monsters;
 
 public class CoreFarms
 {
@@ -456,7 +457,6 @@ public class CoreFarms
         Core.EquipClass(ClassType.Solo);
         Core.Logger($"Farming {quant} {item}. SoloBoss = {canSoloBoss}");
         Core.ConfigureAggro(false);
-
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
         {
             Core.AddDrop(item);
@@ -471,21 +471,22 @@ public class CoreFarms
             {
                 Core.PvPMove(14, "Crossupper", 528, 255);
                 Core.PvPMove(18, "Resource1A");
-
                 Bot.Kill.Monster("(B) Defensive Restorer");
+                Bot.Sleep(2500);
                 Bot.Kill.Monster("(B) Defensive Restorer");
 
                 Core.PvPMove(20, "Resource1B");
 
                 Bot.Kill.Monster("(B) Defensive Restorer");
+                Bot.Sleep(2500);
                 Bot.Kill.Monster("(B) Defensive Restorer");
 
                 Core.PvPMove(21, "Resource1A", 124);
                 Core.PvPMove(19, "Crossupper", 124);
                 Core.PvPMove(17, "Crosslower", 488, 483);
             }
-            Core.PvPMove(15, "Morale1A");
 
+            Core.PvPMove(15, "Morale1A");
             if (!canSoloBoss)
                 Bot.Kill.Monster("(B) Brawler");
             Core.PvPMove(23, "Morale1B");
