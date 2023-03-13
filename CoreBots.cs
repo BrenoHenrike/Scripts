@@ -1559,7 +1559,7 @@ public class CoreBots
                 List<string> cells =
                     names.SelectMany(n =>
                         Bot.Monsters.MapMonsters.Where(m =>
-                            m.Alive && (n == "*" || m.Name.Trim() == n.Trim()))
+                        (n == "*" || m.Name.Trim() == n.Trim()))
                         .Select(m => m.Cell)
                         .Distinct()
                         .ToList())
