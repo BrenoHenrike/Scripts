@@ -497,14 +497,14 @@ public class CoreFarms
             Core.PvPMove(28, "Captain1", 528, 255);
 
             Bot.Kill.Monster("Team B Captain");
-            Bot.Wait.ForDrop(item);
-            Bot.Sleep(Core.ActionDelay);
+            while (!Bot.ShouldExit && !Bot.Drops.Exists(item))
+                Bot.Wait.ForDrop(item);
             Bot.Wait.ForPickup(item);
 
             Core.Logger("Delaying exit");
             Bot.Sleep(7500);
 
-            while (Bot.Map.Name != "battleon")
+            while (!Bot.ShouldExit && Bot.Map.Name != "battleon")
             {
                 int i = 0;
                 Core.Logger($"Attemping Exit {i++}.");
