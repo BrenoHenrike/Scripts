@@ -122,7 +122,7 @@ public class CoreSoW
         Story.MapItemQuest(6859, "shadowlordkeep", 6391);
 
         //Fight the Shadows (6860)
-        Story.KillQuest(6860, "shadowlordkeep", "Shadow Imp|Shadow Locust");
+        Story.KillQuest(6860, "shadowlordkeep", "Shadow Imp");
 
         //Magical Potion (6861)
         Story.KillQuest(6861, "shadowlordkeep", "Shadow Mage");
@@ -174,7 +174,7 @@ public class CoreSoW
         Story.MapItemQuest(6875, "granitecove", new[] { 6434, 6435, 6436 });
 
         //Find the Missing Pages (6876)
-        Story.KillQuest(6876, "granitecove", "Blacksea Pirate|Jungle Treeant|Island Monkey");
+        Story.KillQuest(6876, "granitecove", "Jungle Treeant");
 
         //Collect the Beans (6877)
         Story.KillQuest(6877, "granitecove", "Island Monkey");
@@ -222,7 +222,7 @@ public class CoreSoW
         Story.MapItemQuest(6890, "blackseakeep", 6448);
 
         //Kick that Booty! (6891)
-        Story.KillQuest(6891, "blackseakeep", "Blacksea Pirate Mage|Blacksea Privateer|Blacksea Scallywag");
+        Story.KillQuest(6891, "blackseakeep", "Blacksea Privateer");
 
         //We Need a Spell (6892)
         Story.KillQuest(6892, "blackseakeep", new[] { "Blacksea Pirate Mage", "Blacksea Pirate Mage" });
@@ -311,7 +311,7 @@ public class CoreSoW
         Story.KillQuest(6965, "junkheap", "Shadowflame Scout");
 
         //Afraid of Shadows (6966)
-        Story.KillQuest(6966, "junkheap", "Shadow Imp|Shadowflame Scout");
+        Story.KillQuest(6966, "junkheap", "Shadow Imp");
 
         //Wood for Splints (6967)
         Story.KillQuest(6967, "junkheap", "Dark Treeant");
