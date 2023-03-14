@@ -110,7 +110,7 @@ public class CoreSoW
 
         //Defeat the Minions (6856)
         Story.MapItemQuest(6856, "shadowlordkeep", 6390);
-        Story.KillQuest(6856, "shadowlordkeep", "Shadow Gunner|Shadow Mage");
+        Story.KillQuest(6856, "shadowlordkeep", "Shadow Gunner");
 
         //Gather the Gunpowder (6857)
         Story.KillQuest(6857, "shadowlordkeep", "Shadow Gunner");
