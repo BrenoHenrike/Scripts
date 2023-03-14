@@ -387,7 +387,7 @@ public class CoreFarms
         Core.HuntMonster("well", "Gell Oh No", "Black Knight Leg Piece");
         Core.HuntMonster("greendragon", "Greenguard Dragon", "Black Knight Chest Piece");
         Core.HuntMonster("deathgazer", "Deathgazer", "Black Knight Shoulder Piece");
-        Core.HuntMonster("trunk", "Greenguard Basilisk", "Black Knight Arm Piece");
+        Core.HuntMonster("trunk", "GreenGuard Basilisk", "Black Knight Arm Piece");
 
         Core.EnsureComplete(318);
         Bot.Drops.Pickup("Black Knight Orb");
