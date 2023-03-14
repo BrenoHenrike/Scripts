@@ -1143,6 +1143,17 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/BattleUnder.cs"
   },
   {
+    "name": "null",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Story/StoryTemplate.cs",
+    "size": 1935,
+    "fileName": "StoryTemplate.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/StoryTemplate.cs"
+  },
+  {
     "name": "Blood Moon",
     "description": "This will complete the Blood Moon story.",
     "tags": [
