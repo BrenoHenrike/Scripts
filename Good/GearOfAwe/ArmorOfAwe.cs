@@ -57,7 +57,7 @@ public class ArmorOfAwe
 
         Awe.GetAweRelic("Breastplate", 4163, 10, 10, "aqlesson", "Carnax");
         Awe.GetAweRelic("Vambrace", 4166, 15, 15, "bloodtitan", "Ultra Blood Titan");
-        Awe.GetAweRelic("Gauntlet", 4169, 25, 5, "alteonbattle", "Ultra Alteon");
+        Awe.GetAweRelic("Gauntlet", 4169, 25, 5, "alteonbattle", "ULTRA Alteon");
         Awe.GetAweRelic("Greaves", 4172, 10, 15, "bosschallenge", "Mutated Void Dragon");
         Core.BuyItem("museum", 1129, "Armor of Awe");
 

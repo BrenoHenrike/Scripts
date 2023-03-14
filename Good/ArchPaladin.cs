@@ -144,7 +144,7 @@ public class ArchPaladin
             Core.EnsureAccept(5468);
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("poisonforest", "Xavier Lionfang", "Divine Elixir", isTemp: false);
-            Core.HuntMonster("ultraalteon", "Ultra Alteon", "Prayer of Salvation", isTemp: false, publicRoom: true);
+            Core.HuntMonster("ultraalteon", "ULTRA Alteon", "Prayer of Salvation", isTemp: false, publicRoom: true);
             Core.EquipClass(ClassType.Farm);
             Core.HuntMonster("newfinale", "Chaos Healer", "Acolyte's Braille", isTemp: false);
             Core.HuntMonster("skytower", "Dove", "Innocence", 25, false);
