@@ -601,12 +601,12 @@ public class Core13LoC
             Core.EnsureComplete(566);
         }
 
-        //Dracowerepyre
+        //DracoWerePyre
         if (!Story.QuestProgression(567))
         {
             Bot.Quests.UpdateQuest(567);
             Core.EnsureAccept(567);
-            Core.KillMonster("chaoscave", "r5", "Left", "Dracowerepyre", "Dracowerepyre Defeated");
+            Core.KillMonster("chaoscave", "r5", "Left", "DracoWerePyre", "DracoWerePyre Defeated");
             Core.EnsureComplete(567);
             Bot.Quests.UpdateQuest(597);
         }
