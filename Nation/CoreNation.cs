@@ -390,7 +390,7 @@ public class CoreNation
                 !Core.CheckInventory("Nation Round 3 Medal"))
             {
                 Core.EnsureAccept(4744);
-                Core.HuntMonster("shadowblast", "Legion Airstrike", "Legion Rookie Defeated", 5, true, log: false);
+                Core.HuntMonster("shadowblast", "Legion AirStrike", "Legion Rookie Defeated", 5, true, log: false);
                 Core.HuntMonster("shadowblast", "Shadowrise Guard", "Shadowscythe Rookie Defeated", 5, true, log: false);
                 Core.EnsureComplete(4744);
                 Bot.Drops.Pickup("Nation Round 1 Medal");
@@ -411,7 +411,7 @@ public class CoreNation
             {
                 Core.EnsureAccept(4746);
                 Core.HuntMonster("shadowblast", "Legion Cannon", "Legion Elite Defeated", 10, true, log: false);
-                Core.HuntMonster("shadowblast", "Draconic Doomknight", "Shadowscythe Elite Defeated", 10, true, log: false);
+                Core.HuntMonster("shadowblast", "Draconic DoomKnight", "Shadowscythe Elite Defeated", 10, true, log: false);
                 Core.EnsureComplete(4746);
                 Bot.Drops.Pickup("Nation Round 3 Medal");
                 Core.Logger("Medal 3 acquired");
