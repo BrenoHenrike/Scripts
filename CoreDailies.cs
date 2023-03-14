@@ -300,7 +300,7 @@ public class CoreDailies
         if (CheckDaily(3826, true, "Seal of Light"))
         {
             Core.EquipClass(ClassType.Solo);
-            DailyRoutine(3826, "alteonbattle", "Ultra Alteon", "Alteon Defeated");
+            DailyRoutine(3826, "alteonbattle", "ULTRA Alteon", "Alteon Defeated");
         }
         if (CheckDaily(3825, true, "Seal of Darkness"))
         {
