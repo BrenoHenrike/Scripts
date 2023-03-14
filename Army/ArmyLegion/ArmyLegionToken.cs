@@ -258,9 +258,9 @@ public class ArmyLegionToken
                 {
                     if (Core.CheckInventory("Shogun Paragon Pet"))
                     {
-                        GetItem("fotia", "Fotia Elemental", "Nothing Heard", 10);
-                        GetItem("fotia", "Fotia Elemental", "Nothing to See", 10);
-                        GetItem("fotia", "Fotia Elemental", "Area Secured and Quiet", 10);
+                        GetItem("fotia", "*", "Nothing Heard", 10);
+                        GetItem("fotia", "*", "Nothing to See", 10);
+                        GetItem("fotia", "*", "Area Secured and Quiet", 10);
                     }
 
                     GetItem("fotia", "Fotia Elemental", "Betrayer Extinguished", 5);
