@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Chaoslab Story
+description: Finishes the story of chaos lab
+tags: story, questline, chaos, alina, artix, cysero, beleen, dage, hamster
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
