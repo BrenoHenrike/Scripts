@@ -12372,6 +12372,21 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyNulgath/ArmyBloodyChaos.cs"
   },
   {
+    "name": "Army Necrotic Sword of Doom Daily",
+    "description": "uses an army to farm enroaching shadows daily.",
+    "tags": [
+      "nsod",
+      "nsod daily",
+      "daily",
+      "army",
+      "enroaching shadows"
+    ],
+    "path": "Army/Quests/ArmyNSODDaily.cs",
+    "size": 2639,
+    "fileName": "ArmyNSODDaily.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Quests/ArmyNSODDaily.cs"
+  },
+  {
     "name": "Army Unique Quarry",
     "description": "uses an army to farm the queust rewards from \"unique quarry\"",
     "tags": [
