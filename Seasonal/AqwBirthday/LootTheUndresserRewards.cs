@@ -43,7 +43,7 @@ public class LootTheUndresser
             while (!Bot.ShouldExit && !Core.CheckInventory(Reward.Name))
             {
                 Core.EnsureAccept(5435);
-                Core.KillMonster("cursedshop", "UnDresser", "Dressered Down", 10, isTemp: false, log: false);
+                Core.KillMonster("cursedshop", "UnDresser", "Dressered Down", log: false);
                 Core.EnsureComplete(5435, Reward.ID);
                 Core.ToBank(Reward.ID);
             }
