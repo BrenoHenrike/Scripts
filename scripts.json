@@ -3622,6 +3622,20 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AqwBirthday/TwillyTreasurePile.cs"
   },
   {
+    "name": "LootTheUndresser Quest Rewards",
+    "description": "farms quest rewards from 'Loot the UnDresser` in /cursedshop",
+    "tags": [
+      "loottheundresser",
+      "quest reward",
+      "cursed antique shop",
+      "cursed bust"
+    ],
+    "path": "Seasonal/AqwBirthday/LootTheUndresserRewards.cs",
+    "size": 1576,
+    "fileName": "LootTheUndresserRewards.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AqwBirthday/LootTheUndresserRewards.cs"
+  },
+  {
     "name": "Mermaid Sushi Merge",
     "description": "This will get all or selected items on this merge shop.",
     "tags": [
