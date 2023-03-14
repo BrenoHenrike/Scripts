@@ -1143,17 +1143,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/BattleUnder.cs"
   },
   {
-    "name": "null",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Story/StoryTemplate.cs",
-    "size": 1935,
-    "fileName": "StoryTemplate.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/StoryTemplate.cs"
-  },
-  {
     "name": "Blood Moon",
     "description": "This will complete the Blood Moon story.",
     "tags": [
@@ -1693,6 +1682,25 @@
     "size": 3719,
     "fileName": "Artixpointe.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Artixpointe.cs"
+  },
+  {
+    "name": "Chaoslab Story",
+    "description": "Finishes the story of chaos lab",
+    "tags": [
+      "story",
+      "questline",
+      "chaos",
+      "alina",
+      "artix",
+      "cysero",
+      "beleen",
+      "dage",
+      "hamster"
+    ],
+    "path": "Story/ChaosLab.cs",
+    "size": 2036,
+    "fileName": "ChaosLab.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ChaosLab.cs"
   },
   {
     "name": "Ravenloss Saga Story",
