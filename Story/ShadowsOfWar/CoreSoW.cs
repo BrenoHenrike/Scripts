@@ -349,13 +349,13 @@ public class CoreSoW
         Story.KillQuest(6993, "shadowgrove", "Shadow Dragonlord");
 
         //Dragonscale Powder (6994)
-        Story.KillQuest(6994, "shadowgrove", "Shadow Wyvern|ShadowFlame Dragon");
+        Story.KillQuest(6994, "shadowgrove", "Shadow Wyvern");
 
         //Mega Dragonlord Medals (6995)
         Story.KillQuest(6995, "shadowgrove", "Shadow Dragonlord");
 
         //Dragon Oil (6996)
-        Story.KillQuest(6996, "shadowgrove", "Shadow Wyvern|ShadowFlame Dragon");
+        Story.KillQuest(6996, "shadowgrove", "Shadow Wyvern");
 
         //Head of a Dragon (6997)
         Story.KillQuest(6997, "shadowgrove", "Mutant Shadow Dragon");
@@ -438,7 +438,7 @@ public class CoreSoW
         Story.MapItemQuest(7106, "ghostnexus", 6700);
 
         //Goat Gone Wild (7107)
-        Story.KillQuest(7107, "ghostnexus", "Chaos Goat|Chaos Wolf");
+        Story.KillQuest(7107, "ghostnexus", "Chaos Goat");
 
         //Creepy Eyes (7108)
         Story.KillQuest(7108, "ghostnexus", "Chaos Sp-eye");
@@ -456,7 +456,7 @@ public class CoreSoW
         Story.KillQuest(7112, "ghostnexus", "Infernal Knight");
 
         //Calm the Yokai (7113)
-        Story.KillQuest(7113, "ghostnexus", "Abumi Guchi|Tsukumogami");
+        Story.KillQuest(7113, "ghostnexus", "Abumi Guchi");
 
         //Get the Supplies (7114)
         Story.KillQuest(7114, "ghostnexus", new[] { "Abumi Guchi", "Infernal Knight" });
@@ -616,7 +616,7 @@ public class CoreSoW
         Story.PreLoad(this);
 
         //Gather the Shadows (7461)
-        Story.KillQuest(7461, "innershadows", "Infected Minion|Shadowcrow");
+        Story.KillQuest(7461, "innershadows", "Infected Minion");
 
         //Dusty Boost (7462)
         Story.KillQuest(7462, "innershadows", "Infected Minion");
