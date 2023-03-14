@@ -99,7 +99,7 @@ public class CoreBots
         if (changeTo)
         {
             Bot.Events.ScriptStopping += CrashDetector;
-            SkuaVersionChecker("1.2");
+            SkuaVersionChecker("1.2.2");
 
             if (Bot.Config != null && Bot.Config.Options.Contains(SkipOptions) && !Bot.Config.Get<bool>(SkipOptions))
                 Bot.Config.Configure();
