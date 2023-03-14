@@ -6,6 +6,7 @@ tags: LootTheUndresser, quest reward, Cursed Antique Shop, Cursed Bust
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 
