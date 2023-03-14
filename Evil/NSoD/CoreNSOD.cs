@@ -75,12 +75,12 @@ public class CoreNSOD
                 BladeEssence(2);
                 CHourglass(31);
                 ScrollDarkArts(4);
-                Core.HuntMonster("sepulchurebattle", "Ultra Sepulchure", "Doom Heart", isTemp: false, publicRoom: true, log: false);
+                Core.HuntMonster("sepulchurebattle", "ULTRA Sepulchure", "Doom Heart", isTemp: false, publicRoom: true, log: false);
             }
             NSBlade();
             NSHilt();
             NSAura();
-            Core.HuntMonster("sepulchurebattle", "Ultra Sepulchure", "Doom Heart", isTemp: false, publicRoom: true, log: false);
+            Core.HuntMonster("sepulchurebattle", "ULTRA Sepulchure", "Doom Heart", isTemp: false, publicRoom: true, log: false);
             VoidAuras(800);
 
             Core.BuyItem("shadowfall", 793, "Necrotic Sword of Doom");

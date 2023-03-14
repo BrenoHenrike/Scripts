@@ -305,7 +305,7 @@ public class CoreDailies
         if (CheckDaily(3825, true, "Seal of Darkness"))
         {
             Core.EquipClass(ClassType.Solo);
-            DailyRoutine(3825, "sepulchurebattle", "Ultra Sepulchure", "Sepulchure Defeated");
+            DailyRoutine(3825, "sepulchurebattle", "ULTRA Sepulchure", "Sepulchure Defeated");
         }
         Core.JumpWait();
     }

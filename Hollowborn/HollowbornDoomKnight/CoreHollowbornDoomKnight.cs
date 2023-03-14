@@ -217,7 +217,7 @@ public class CoreHollowbornDoomKnight
         Core.EquipClass(ClassType.Solo);
         Adv.BoostHuntMonster("epicvordred", "Ultra Vordred", "(Necro) Scroll of Dark Arts", 3, false, publicRoom: true);
         NSoD.BonesVoidRealm(1);
-        Adv.BoostHuntMonster("sepulchurebattle", "Ultra Sepulchure", "Doom Heart", 1, false);
+        Adv.BoostHuntMonster("sepulchurebattle", "ULTRA Sepulchure", "Doom Heart", 1, false);
         Bot.Quests.UpdateQuest(3008);
         Core.SetAchievement(18);
         Bot.Quests.UpdateQuest(3004);

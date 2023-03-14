@@ -668,7 +668,7 @@ public class UnlockForgeEnhancements
 
         Core.EquipClass(ClassType.Solo);
         Core.EnsureAccept(8823);
-        Core.HuntMonster("sepulchurebattle", "Ultra Sepulchure", "Doom Heart", isTemp: false);
+        Core.HuntMonster("sepulchurebattle", "ULTRA Sepulchure", "Doom Heart", isTemp: false);
         if (!Core.CheckInventory("Heart of the Sun"))
             TSS.StoryLine(true); //sun heart thing
         Core.HuntMonster("ashfallcamp", "Smoldur", "Flame Heart", 10, isTemp: false);
