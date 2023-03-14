@@ -149,10 +149,10 @@ public class CoreNation
         {
             Core.EquipClass(ClassType.Solo);
             Core.EnsureAccept(570);
-            Core.HuntMonster("faerie", "Aracara", "Aracara's Fang", 1, false, log: false);
-            Core.HuntMonster("hydra", "Hydra Head", "Hydra Scale", 1, false, log: false);
+            Core.HuntMonster("faerie", "Aracara", "Aracara's Fang", isTemp: false, log: false);
+            Core.HuntMonster("hydra", "Hydra Head", "Hydra Scale", isTemp: false, log: false);
             Core.KillVath("Strand of Vath's Hair", 1, false, false);
-            Core.HuntMonster("yokaiwar", "O-Dokuro's Head", "O-dokuro's Tooth", 1, false, log: false);
+            Core.HuntMonster("yokaiwar", "O-dokuro's Head", "O-dokuro's Tooth", isTemp: false, log: false);
             Core.KillEscherion("Escherion's Chain", publicRoom: true);
             if (!Core.CheckInventory("Defeated Makai", 50))
             {
@@ -231,7 +231,7 @@ public class CoreNation
                 Core.EnsureAccept(2221);
             else
                 Core.EnsureAccept(2219);
-            Core.KillMonster("evilwarnul", "r2", "Down", "*", "Legion Blade", 1, false, log: false);
+            Core.KillMonster("evilwarnul", "r2", "Down", "*", "Legion Blade", isTemp: false, log: false);
             Core.KillMonster("evilwarnul", "r2", "Down", "*", "Dessicated Heart", 22, false, log: false);
             Core.KillMonster("evilwarnul", "r2", "Down", "*", "Legion Helm", 5, log: false);
             Core.KillMonster("evilwarnul", "r2", "Down", "*", "Undead Skull", 3, log: false);
@@ -360,7 +360,7 @@ public class CoreNation
         while (!Bot.ShouldExit && !Core.CheckInventory("Emblem of Nulgath", quant))
         {
             Core.EnsureAccept(4748);
-            Core.KillMonster("shadowblast", "r13", "Left", "*", "Gem of Domination", 1, false, log: false);
+            Core.KillMonster("shadowblast", "r13", "Left", "*", "Gem of Domination", isTemp: false, log: false);
             Core.KillMonster("shadowblast", "r13", "Left", "*", "Fiend Seal", 25, false, log: false);
             Core.EnsureComplete(4748);
             Bot.Drops.Pickup("Emblem of Nulgath");
@@ -898,7 +898,7 @@ public class CoreNation
             Core.KillEscherion("Emerald Pickaxe", publicRoom: true);
 
         if (!Core.CheckInventory("Seraphic Grave Digger Spade"))
-            Core.KillMonster("legioncrypt", "r1", "Top", "Gravedigger", "Seraphic Grave Digger Spade", 1, false, log: false);
+            Core.KillMonster("legioncrypt", "r1", "Top", "Gravedigger", "Seraphic Grave Digger Spade", isTemp: false, log: false);
         Core.EquipClass(ClassType.Solo);
         int i = 1;
         while (!Bot.ShouldExit && !Core.CheckInventory("Unidentified 10", quant))
@@ -1161,7 +1161,7 @@ public class CoreNation
             Core.EnsureAccept(3743);
             if (!Core.CheckInventory("Tendurrr The Assistant"))
             {
-                Core.KillMonster("tercessuinotlim", "m2", "Bottom", "Dark Makai", "Tendurrr The Assistant", 1, false, log: false);
+                Core.KillMonster("tercessuinotlim", "m2", "Bottom", "Dark Makai", "Tendurrr The Assistant", isTemp: false, log: false);
                 Core.JumpWait();
             }
             Core.HuntMonster("lair", "Water Draconian", "Fragment of Chaos", 80, false, log: false);
