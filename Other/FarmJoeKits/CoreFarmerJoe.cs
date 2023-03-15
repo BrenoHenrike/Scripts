@@ -144,41 +144,69 @@ public class CoreFarmerJoe
         #region starting out the acc
         //starting out the acc
         Core.Logger("starting out the acc with the tutorial badges to make it a bit more convincing");
-        Tutorial.Badges();
+        if (Bot.Player.Level < 10)
+        {
+            Tutorial.Badges();
 
-        Core.Logger("Getting Starting Levels/Equipment");
+            Core.Logger("Getting Starting Levels/Equipment");
 
-        Core.BuyItem("classhalla", 299, "Oracle");
-        Core.BuyItem("classhalla", 299, "Battle Oracle Wings");
-        Core.BuyItem("classhalla", 299, "Battle Oracle Battlestaff");
-        Core.BuyItem("classhalla", 299, "Battle Oracle Hood");
-        Core.Equip("Battle Oracle Battlestaff", "Battle Oracle Hood", "Battle Oracle Wings");
+            Core.BuyItem("classhalla", 299, "Oracle");
+            Core.BuyItem("classhalla", 299, "Battle Oracle Wings");
+            Core.BuyItem("classhalla", 299, "Battle Oracle Battlestaff");
+            Core.BuyItem("classhalla", 299, "Battle Oracle Hood");
+            Core.Equip("Battle Oracle Battlestaff", "Battle Oracle Hood", "Battle Oracle Wings");
 
-        Core.SoloClass = "Oracle";
-        Core.Equip(Core.SoloClass);
+            ItemBase DefaultWep = Bot.Inventory.Items.Find(x => x.Name.StartsWith("Default"));
+            if (DefaultWep != null && Core.CheckInventory(DefaultWep.Name))
+                Core.SellItem(DefaultWep.Name);
 
-        Core.RegisterQuests(4007);
-        while (!Bot.ShouldExit && Bot.Player.Level < 10)
-            Core.HuntMonster("oaklore", "Bone Berserker");
-        Core.CancelRegisteredQuests();
+            Core.SoloClass = "Oracle";
+            Core.Equip(Core.SoloClass);
 
-        Story.KillQuest(176, "swordhavenundead", "Skeletal Soldier", false);
-        Story.KillQuest(177, "swordhavenundead", "Skeletal Ice Mage", false);
-        Story.KillQuest(178, "swordhavenundead", "Undead Giant");
+            //Temporary Weapon #2
+            Core.HuntMonster("oaklore", "Bone Berserker", "Venom Head", isTemp: false, log: false);
+            Bot.Wait.ForPickup("Venom Head");
+            Core.Equip("Venom Head");
+            Bot.Wait.ForItemEquip("Venom Head");
+            Core.SellItem("Battle Oracle Battlestaff");
 
-        Core.RegisterQuests(178);
-        while (!Bot.ShouldExit && Bot.Player.Level < 28)
-            Core.HuntMonster("swordhavenundead", "Undead Giant");
-        Core.CancelRegisteredQuests();
+            Core.Logger("Leveling to 10 in tutorial Area");
+            Core.RegisterQuests(4007);
+            while (!Bot.ShouldExit && Bot.Player.Level < 10)
+                Core.HuntMonster("oaklore", "Bone Berserker", log: false);
+            Core.CancelRegisteredQuests();
+        }
+
+        Core.Logger("Checking if farming quest is unlocked.");
+        if (Core.isCompletedBefore(178))
+        {
+            Story.KillQuest(183, "portalundead", "Skeletal Fire Mage");
+            Story.KillQuest(176, "swordhavenundead", "Skeletal Soldier", false);
+            Story.KillQuest(177, "swordhavenundead", "Skeletal Ice Mage", false);
+        }
+
+        if (Bot.Player.Level < 28)
+        {
+            InvEn.EnhanceInventory(EnhancementType.Wizard);
+            Core.RegisterQuests(178);
+            while (!Bot.ShouldExit && Bot.Player.Level < 28)
+                Core.HuntMonster("swordhavenundead", "Undead Giant", log: false);
+            Core.CancelRegisteredQuests();
+        }
+        Farm.BladeofAweREP(6);
+        Core.Equip("Blade of Awe");
 
 
-        Core.RegisterQuests(6294);
-        while (!Bot.ShouldExit && Bot.Player.Level < 30)
-            Core.HuntMonster("firewar", "Fire Drakel");
-        Core.CancelRegisteredQuests();
+        if (Bot.Player.Level < 30)
+        {
+            InvEn.EnhanceInventory(EnhancementType.Wizard);
+            Core.RegisterQuests(6294);
+            while (!Bot.ShouldExit && Bot.Player.Level < 30)
+                Core.HuntMonster("firewar", "Fire Drakel", log: false);
+            Core.CancelRegisteredQuests();
+        }
+        InvEn.EnhanceInventory(EnhancementType.Wizard);
         Adv.rankUpClass("Oracle");
-        Farm.BladeofAweREP(6, true);
-        Core.ToBank("Blade of Awe");
     }
 
 
@@ -402,7 +430,7 @@ public class CoreFarmerJoe
 
         if (Bot.Config.Get<PetChoice>("Pets") == PetChoice.Akriloth && !Core.CheckInventory("Akriloth Pet"))
         {
-            Core.HuntMonster("gravestrike", "Ultra Akriloth", "Akriloth Pet", isTemp: false);
+            Core.HuntMonster("gravestrike", "Ultra Akriloth", "Akriloth Pet", isTemp: false, log: false);
             Bot.Wait.ForPickup("Akriloth Pet");
             Core.Equip("Akriloth Pet");
         }
@@ -429,7 +457,7 @@ public class CoreFarmerJoe
             return;
 
         Core.Logger("Farming Servers Are Down Sign");
-        Core.HuntMonster("undergroundlabb", "Rabid Server Hamster", "The Server is Down", isTemp: false);
+        Core.HuntMonster("undergroundlabb", "Rabid Server Hamster", "The Server is Down", isTemp: false, log: false);
         Bot.Wait.ForPickup("The Server is Down");
         Core.Equip("The Server is Down");
     }
