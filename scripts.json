@@ -1684,6 +1684,25 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Artixpointe.cs"
   },
   {
+    "name": "Chaoslab Story",
+    "description": "Finishes the story of chaos lab",
+    "tags": [
+      "story",
+      "questline",
+      "chaos",
+      "alina",
+      "artix",
+      "cysero",
+      "beleen",
+      "dage",
+      "hamster"
+    ],
+    "path": "Story/ChaosLab.cs",
+    "size": 2036,
+    "fileName": "ChaosLab.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ChaosLab.cs"
+  },
+  {
     "name": "Ravenloss Saga Story",
     "description": "This will finish the Ravenloss Saga Story.",
     "tags": [
