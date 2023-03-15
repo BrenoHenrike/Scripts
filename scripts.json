@@ -6,7 +6,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 93685,
+    "size": 93782,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -39,7 +39,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 132392,
+    "size": 132415,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -977,7 +977,7 @@
       "rare-items"
     ],
     "path": "Other/0CurrentDailyGifts.cs",
-    "size": 14642,
+    "size": 15034,
     "fileName": "0CurrentDailyGifts.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/0CurrentDailyGifts.cs"
   },
@@ -2246,7 +2246,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 60585,
+    "size": 60620,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -3162,7 +3162,7 @@
       "null"
     ],
     "path": "Legion/CoreLegion.cs",
-    "size": 28351,
+    "size": 28047,
     "fileName": "CoreLegion.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/CoreLegion.cs"
   },
@@ -3620,6 +3620,20 @@
     "size": 2221,
     "fileName": "TwillyTreasurePile.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AqwBirthday/TwillyTreasurePile.cs"
+  },
+  {
+    "name": "LootTheUndresser Quest Rewards",
+    "description": "farms quest rewards from 'Loot the UnDresser` in /cursedshop",
+    "tags": [
+      "loottheundresser",
+      "quest reward",
+      "cursed antique shop",
+      "cursed bust"
+    ],
+    "path": "Seasonal/AqwBirthday/LootTheUndresserRewards.cs",
+    "size": 1612,
+    "fileName": "LootTheUndresserRewards.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AqwBirthday/LootTheUndresserRewards.cs"
   },
   {
     "name": "Mermaid Sushi Merge",
@@ -9858,7 +9872,7 @@
       "null"
     ],
     "path": "Story/ShadowsOfWar/CoreSoW.cs",
-    "size": 36022,
+    "size": 35836,
     "fileName": "CoreSoW.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfWar/CoreSoW.cs"
   },
@@ -12358,6 +12372,21 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyNulgath/ArmyBloodyChaos.cs"
   },
   {
+    "name": "Army Necrotic Sword of Doom Daily",
+    "description": "uses an army to farm enroaching shadows daily.",
+    "tags": [
+      "nsod",
+      "nsod daily",
+      "daily",
+      "army",
+      "enroaching shadows"
+    ],
+    "path": "Army/Quests/ArmyNSODDaily.cs",
+    "size": 2639,
+    "fileName": "ArmyNSODDaily.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Quests/ArmyNSODDaily.cs"
+  },
+  {
     "name": "Army Unique Quarry",
     "description": "uses an army to farm the queust rewards from \"unique quarry\"",
     "tags": [
@@ -12665,7 +12694,7 @@
       "legion arena"
     ],
     "path": "Army/ArmyLegion/ArmyLegionToken.cs",
-    "size": 14824,
+    "size": 14782,
     "fileName": "ArmyLegionToken.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyLegion/ArmyLegionToken.cs"
   },
@@ -14834,7 +14863,7 @@
       "null"
     ],
     "path": "Other/Classes/ArchMage/CoreArchMage.cs",
-    "size": 21779,
+    "size": 21853,
     "fileName": "CoreArchMage.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/ArchMage/CoreArchMage.cs"
   },

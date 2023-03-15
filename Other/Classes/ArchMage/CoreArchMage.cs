@@ -432,7 +432,8 @@ public class CoreArchMage
         while (!Bot.ShouldExit && !Core.CheckInventory("Unbound Tome", quant))
         {
             Core.EnsureAccept(8912);
-            Adv.BuyItem("alchemyacademy", 395, "Dragon Runestone", 30, 8845);
+            Core.BuyItem("alchemyacademy", 395, "Gold Voucher 100k", 30);
+            Adv.BuyItem("alchemyacademy", 395, "Dragon Runestone", 30, 8844);
             Adv.BuyItem("darkthronehub", 1308, "Exalted Paladin Seal");
             Adv.BuyItem("shadowfall", 89, "Forsaken Doom Seal");
 

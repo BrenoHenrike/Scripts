@@ -110,7 +110,7 @@ public class CoreSoW
 
         //Defeat the Minions (6856)
         Story.MapItemQuest(6856, "shadowlordkeep", 6390);
-        Story.KillQuest(6856, "shadowlordkeep", "Shadow Gunner|Shadow Mage");
+        Story.KillQuest(6856, "shadowlordkeep", "Shadow Gunner");
 
         //Gather the Gunpowder (6857)
         Story.KillQuest(6857, "shadowlordkeep", "Shadow Gunner");
@@ -122,7 +122,7 @@ public class CoreSoW
         Story.MapItemQuest(6859, "shadowlordkeep", 6391);
 
         //Fight the Shadows (6860)
-        Story.KillQuest(6860, "shadowlordkeep", "Shadow Imp|Shadow Locust");
+        Story.KillQuest(6860, "shadowlordkeep", "Shadow Imp");
 
         //Magical Potion (6861)
         Story.KillQuest(6861, "shadowlordkeep", "Shadow Mage");
@@ -174,7 +174,7 @@ public class CoreSoW
         Story.MapItemQuest(6875, "granitecove", new[] { 6434, 6435, 6436 });
 
         //Find the Missing Pages (6876)
-        Story.KillQuest(6876, "granitecove", "Blacksea Pirate|Jungle Treeant|Island Monkey");
+        Story.KillQuest(6876, "granitecove", "Jungle Treeant");
 
         //Collect the Beans (6877)
         Story.KillQuest(6877, "granitecove", "Island Monkey");
@@ -222,7 +222,7 @@ public class CoreSoW
         Story.MapItemQuest(6890, "blackseakeep", 6448);
 
         //Kick that Booty! (6891)
-        Story.KillQuest(6891, "blackseakeep", "Blacksea Pirate Mage|Blacksea Privateer|Blacksea Scallywag");
+        Story.KillQuest(6891, "blackseakeep", "Blacksea Privateer");
 
         //We Need a Spell (6892)
         Story.KillQuest(6892, "blackseakeep", new[] { "Blacksea Pirate Mage", "Blacksea Pirate Mage" });
@@ -311,7 +311,7 @@ public class CoreSoW
         Story.KillQuest(6965, "junkheap", "Shadowflame Scout");
 
         //Afraid of Shadows (6966)
-        Story.KillQuest(6966, "junkheap", "Shadow Imp|Shadowflame Scout");
+        Story.KillQuest(6966, "junkheap", "Shadow Imp");
 
         //Wood for Splints (6967)
         Story.KillQuest(6967, "junkheap", "Dark Treeant");
@@ -349,13 +349,13 @@ public class CoreSoW
         Story.KillQuest(6993, "shadowgrove", "Shadow Dragonlord");
 
         //Dragonscale Powder (6994)
-        Story.KillQuest(6994, "shadowgrove", "Shadow Wyvern|ShadowFlame Dragon");
+        Story.KillQuest(6994, "shadowgrove", "Shadow Wyvern");
 
         //Mega Dragonlord Medals (6995)
         Story.KillQuest(6995, "shadowgrove", "Shadow Dragonlord");
 
         //Dragon Oil (6996)
-        Story.KillQuest(6996, "shadowgrove", "Shadow Wyvern|ShadowFlame Dragon");
+        Story.KillQuest(6996, "shadowgrove", "Shadow Wyvern");
 
         //Head of a Dragon (6997)
         Story.KillQuest(6997, "shadowgrove", "Mutant Shadow Dragon");
@@ -438,7 +438,7 @@ public class CoreSoW
         Story.MapItemQuest(7106, "ghostnexus", 6700);
 
         //Goat Gone Wild (7107)
-        Story.KillQuest(7107, "ghostnexus", "Chaos Goat|Chaos Wolf");
+        Story.KillQuest(7107, "ghostnexus", "Chaos Goat");
 
         //Creepy Eyes (7108)
         Story.KillQuest(7108, "ghostnexus", "Chaos Sp-eye");
@@ -456,7 +456,7 @@ public class CoreSoW
         Story.KillQuest(7112, "ghostnexus", "Infernal Knight");
 
         //Calm the Yokai (7113)
-        Story.KillQuest(7113, "ghostnexus", "Abumi Guchi|Tsukumogami");
+        Story.KillQuest(7113, "ghostnexus", "Abumi Guchi");
 
         //Get the Supplies (7114)
         Story.KillQuest(7114, "ghostnexus", new[] { "Abumi Guchi", "Infernal Knight" });
@@ -616,7 +616,7 @@ public class CoreSoW
         Story.PreLoad(this);
 
         //Gather the Shadows (7461)
-        Story.KillQuest(7461, "innershadows", "Infected Minion|Shadowcrow");
+        Story.KillQuest(7461, "innershadows", "Infected Minion");
 
         //Dusty Boost (7462)
         Story.KillQuest(7462, "innershadows", "Infected Minion");

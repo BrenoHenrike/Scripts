@@ -157,7 +157,7 @@ public class ArchDoomKnight
 
         Core.EquipClass(ClassType.Solo);
         Core.HuntMonster("epicvordred", "Ultra Vordred", "(Necro) Scroll of Dark Arts", 2, isTemp: false, publicRoom: true);
-        Core.HuntMonster("sepulchurebattle", "Ultra Sepulchure", "Doom Heart", isTemp: false, publicRoom: true);
+        Core.HuntMonster("sepulchurebattle", "ULTRA Sepulchure", "Doom Heart", isTemp: false, publicRoom: true);
         Core.HuntMonster("sepulchure", "Dark Sepulchure", "Dread Knight Cleaver", isTemp: false, publicRoom: true);
         Core.HuntMonster("thevoid", "Reaper", "Reaper's Soul", 1, isTemp: false, publicRoom: true);
         Core.HuntMonster("Desolich", "Desolich", "Desolich's Undead Eye", 2, isTemp: false, publicRoom: true);

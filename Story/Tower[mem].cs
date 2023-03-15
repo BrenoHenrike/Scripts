@@ -36,7 +36,7 @@ public class Tower
         Story.PreLoad(this);
 
         // Stone Cold Monster 1603
-        Story.KillQuest(1603, "trunk", "Greenguard Basilisk");
+        Story.KillQuest(1603, "trunk", "GreenGuard Basilisk");
 
         // Interview The Troops 1604
         Story.MapItemQuest(1604, "tower", 836, 4);

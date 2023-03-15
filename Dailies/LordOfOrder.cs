@@ -232,7 +232,7 @@ public class LordOfOrder
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("elfhame", "Guardian Spirit", "Law of Nature", isTemp: false, log: false);
             Core.HuntMonster("deepchaos", "Kathool", "Law of Time", isTemp: false, log: false);
-            Core.HuntMonster("necrocavern", "Shadowstone Support", "Law of Gravity", isTemp: false, log: false);
+            Core.HuntMonster("necrocavern", "ShadowStone Support", "Law of Gravity", isTemp: false, log: false);
             Core.HuntMonster("blackholesun", "Reflecteract", "Law of Relativity", isTemp: false, log: false);
             Core.HuntMonster("thunderfang", "Tonitru", "Law of Conservation of Energy", isTemp: false, log: false);
             Core.HuntMonster("lair", "Red Dragon", "Law of Low Drop Rates", 100, false, log: false);

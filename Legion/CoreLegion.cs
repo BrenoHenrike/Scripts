@@ -289,7 +289,7 @@ public class CoreLegion
         Core.RegisterQuests(Core.CheckInventory("Shogun Paragon Pet") ? new[] { 3722, 5755 } : new[] { 3722 });
         while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
         {
-            Core.HuntMonster("fotia", "Fotia Elemental", "Betrayer Extinguished", 5);
+            Core.HuntMonster("fotia", "*", "Betrayer Extinguished", 5);
             Core.HuntMonster("evilwardage", "Dreadfiend of Nulgath", "Fiend Felled", 2);
         }
         Core.CancelRegisteredQuests();
@@ -417,12 +417,7 @@ public class CoreLegion
         Core.AddDrop("Legion Token");
         Core.RegisterQuests(QuestID);
         while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
-        {
-            Core.HuntMonster("fotia", "Fotia Elemental", log: false);
-            // Core.HuntMonster("fotia", "Fotia Elemental", "Nothing Heard", 10);
-            // Core.HuntMonster("fotia", "Fotia Elemental", "Nothing To See", 10);
-            // Core.HuntMonster("fotia", "Fotia Elemental", "Area Secured and Quiet", 10);
-        }
+            Core.HuntMonster("fotia", "*", log: false);
         Core.CancelRegisteredQuests();
     }
 
