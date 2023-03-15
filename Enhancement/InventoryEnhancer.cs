@@ -25,7 +25,7 @@ public class InventoryEnhancer
     /// <summary>
     /// Enhances all non-leveled/non-user-level level enhanced items
     /// </summary>
-    public void EnhanceInventory()
+    public void EnhanceInventory(EnhancementType type = EnhancementType.Lucky)
     {
         if (Core.CBOBool("DisableAutoEnhance", out bool _disableAutoEnhance) && _disableAutoEnhance)
             return;
@@ -34,7 +34,6 @@ public class InventoryEnhancer
 
         if (InventoryItems.Count == 0)
             Core.Logger("The bot couldn't find any items in your inventory that need enhancing.");
-
-        Adv.EnhanceItem(InventoryItems.ToArray(), EnhancementType.Lucky);
+        Adv.EnhanceItem(InventoryItems.ToArray(), type);
     }
 }
