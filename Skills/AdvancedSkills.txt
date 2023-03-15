@@ -177,7 +177,7 @@ Base = Ninja Warrior = 1 | 2 | 3 | 4 = Use if Available
 Base = Northlands Monk = 1 | 2 | 3 | 4 = Use if Available
 Base = NOT A MOD = 1 | 2 | 3 | 4 = Use if Available
 Base = Nu Metal Necro = 1 | 2 | 3 | 4 = Use if Available
-Base = Oracle = 1 | 2 | 3 | 4 = Use if Available
+Base = Oracle = 1 | 3 | 4 | 2 M<50S = Use if Available
 Base = Overworld Chronomancer = 5 | 2 | 3 | 1 | 1 | 1 | 3 | 1 | 4 | 3 | 1 | 1 | 1 | 3 | 1 | 4 = 250
 Base = Paladin = 1 | 2 | 3 | 4 = Use if Available
 Solo = Paladin Chronomancer = 1 | 1 | 1 | 1 | 1 | 3 | 1 | 4WW8250 = 250
