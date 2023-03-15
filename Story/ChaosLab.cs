@@ -40,28 +40,28 @@ public class ChaosLabStory
         Story.KillQuest(3558,"chaoslab", "Chaorrupted Moglin");
 
         //Cleanse Alina 3559
-        Story.KillQuest(3559, "chaoslab", "Chaorrupted Alina");
+        Story.KillQuest(3559, "chaoslab", "Chaos Alina");
 
         //Gather More Cystals 3560
-        Story.KillQuest(3560, "chaoslab", "Chaorrupted Moglin");
+        Story.KillQuest(3560, "chaoslab", "Chaos Moglin");
 
         //Cleanse Beleen 3561
-        Story.KillQuest(3561, "chaoslab", "Chaorrupted Beleen");
+        Story.KillQuest(3561, "chaoslab", "Chaos Beleen");
 
         //Cleanse Cysero 3562
-        Story.KillQuest(3562, "chaoslab", "Chaorrupted Cysero");
+        Story.KillQuest(3562, "chaoslab", "Chaos Cysero");
 
         //Cleanse Artix 3563
-        Story.KillQuest(3563, "chaoslab", "Chaorrupted Artix");
+        Story.KillQuest(3563, "chaoslab", "Chaos Artix");
 
         //Ficus Your Powers 3564
-        Story.KillQuest(3564, "chaoslab", "Chaorrupted Ficus");
+        Story.MapItemQuest(3564, "chaoslab", "2705");
         
         //Face the Hamster 3565
-        Story.KillQuest(3565, "chaoslab", "Chaorrupted Server Hamster");
+        Story.KillQuest(3565, "chaoslab", "Chaotic Server Hamster");
 
         //Cleaning Up 3566
-        Story.KillQuest(3566, "chaoslab", new[] { "Chaorrupted Alina", "Chaoruppted Beleen", "Chaorrupted Cysero", "Chaorrupter Artix"});
+        Story.KillQuest(3566, "chaoslab", new[] { "Chaos Alina", "Chaos Beleen", "Chaos Cysero", "Chaos Artix"});
         
         //MORE HAMSTER? 3567
         Story.KillQuest(3560, "chaoslab", "Ultra Chaotic Server Hamster");
