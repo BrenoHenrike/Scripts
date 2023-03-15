@@ -2017,7 +2017,6 @@ public class CoreAdvanced
                     case "no class":
                     case "nu metal necro":
                     case "obsidian no class":
-                    case "oracle":
                     case "protosartorium":
                     case "shadow dragon shinobi":
                     case "shadow ripper":
@@ -2121,6 +2120,13 @@ public class CoreAdvanced
                     case "the collector":
                         type = EnhancementType.Wizard;
                         wSpecial = WeaponSpecial.Health_Vamp;
+                        break;
+                    #endregion
+
+                    #region Wizard - None - Mana Vamp
+                    case "oracle":
+                        type = EnhancementType.Wizard;
+                        wSpecial = WeaponSpecial.Mana_Vamp;
                         break;
                     #endregion
 
