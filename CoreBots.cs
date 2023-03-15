@@ -1524,9 +1524,7 @@ public class CoreBots
         {
             if (log)
                 Logger($"Hunting {monster}");
-            if ((huntFixed ??= Bot.Version == null && Version.Parse("1.2.1").CompareTo(Bot.Version) <= 1) == true)
-                Bot.Hunt.Monster(monster);
-            else huntFix(monster);
+            Bot.Hunt.Monster(monster);
             Rest();
         }
         else
@@ -1540,9 +1538,7 @@ public class CoreBots
             {
                 if (!Bot.Combat.StopAttacking)
                 {
-                    if ((huntFixed ??= Bot.Version == null && Version.Parse("1.2.1").CompareTo(Bot.Version) <= 1) == true)
-                        Bot.Hunt.Monster(monster);
-                    else huntFix(monster);
+                    Bot.Hunt.Monster(monster);
                 }
                 Bot.Sleep(ActionDelay);
                 Rest();
@@ -1609,14 +1605,6 @@ public class CoreBots
     private bool? huntFixed = null;
     private int _lastHuntTick;
     private CancellationToken? token = null;
-    private bool huntFixIsMonsterAlive(string monster)
-    {
-        List<Monster>? mons =
-            Bot.Monsters.MapMonsters
-                .FindAll(x => x.Name.ToLower().Trim() == monster.ToLower().Trim())
-                .Where(m => m.Name == "").ToList();
-        return true;
-    }
 
     /// <summary>
     /// Kills a monster using it's MapID
