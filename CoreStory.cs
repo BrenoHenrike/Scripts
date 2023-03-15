@@ -609,8 +609,7 @@ public class CoreStory
             if (!repeat)
                 break;
 
-            Core.HuntMonster(Bot.Map.Name, monster, log: false);
-            // Bot.Hunt.Monster(monster); //Fix here for ae's fucked update @LordExelot
+            Bot.Hunt.Monster(monster);
             Bot.Drops.Pickup(CurrentRequirements.Where(item => !item.Temp).Select(item => item.Name).ToArray());
             Bot.Sleep(Core.ActionDelay);
         }
@@ -618,8 +617,7 @@ public class CoreStory
     private List<ItemBase> CurrentRequirements = new();
     private void _MonsterHunt(ref bool shouldRepeat, string monster, string itemName, int quantity, bool isTemp, int index)
     {
-        Core.HuntMonster(Bot.Map.Name, monster, itemName, quant: quantity, isTemp, log: false);
-        // Bot.Hunt.ForItem(monster, itemName, quantity, isTemp); //Fix here for ae's fucked update @LordExelot
+        Bot.Hunt.ForItem(monster, itemName, quantity, isTemp);
         CurrentRequirements.RemoveAt(index);
         shouldRepeat = false;
     }
