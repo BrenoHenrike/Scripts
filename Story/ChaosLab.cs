@@ -43,7 +43,7 @@ public class ChaosLabStory
         Story.KillQuest(3559, "chaoslab", "Chaos Alina");
 
         //Gather More Cystals 3560
-        Story.KillQuest(3560, "chaoslab", "Chaos Moglin");
+        Story.KillQuest(3560, "chaoslab", "Chaorrupted Moglin");
 
         //Cleanse Beleen 3561
         Story.KillQuest(3561, "chaoslab", "Chaos Beleen");
@@ -64,6 +64,6 @@ public class ChaosLabStory
         Story.KillQuest(3566, "chaoslab", new[] { "Chaos Alina", "Chaos Beleen", "Chaos Cysero", "Chaos Artix"});
         
         //MORE HAMSTER? 3567
-        Story.KillQuest(3560, "chaoslab", "Ultra Chaotic Server Hamster");
+        Story.KillQuest(3567, "chaoslab", "Ultra Chaotic Server Hamster");
     }
 }
