@@ -55,7 +55,7 @@ public class ChaosLabStory
         Story.KillQuest(3563, "chaoslab", "Chaos Artix");
 
         //Ficus Your Powers 3564
-        Story.MapItemQuest(3564, "chaoslab", "2705");
+        Story.MapItemQuest(3564, "chaoslab", 2705);
         
         //Face the Hamster 3565
         Story.KillQuest(3565, "chaoslab", "Chaotic Server Hamster");
