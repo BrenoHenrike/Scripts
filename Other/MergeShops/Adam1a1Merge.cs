@@ -9,7 +9,7 @@ tags: merge, mergeshop
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/Story/Banished.cs
-//cs_include Scripts/Other/Various/Adam1a1Quests.cs
+//cs_include Scripts/Story/Adam1a1Quests.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
