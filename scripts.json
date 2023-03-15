@@ -17,7 +17,7 @@
       "null"
     ],
     "path": "CoreAdvanced.cs",
-    "size": 90708,
+    "size": 90940,
     "fileName": "CoreAdvanced.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreAdvanced.cs"
   },
@@ -2623,7 +2623,7 @@
       "null"
     ],
     "path": "Enhancement/InventoryEnhancer.cs",
-    "size": 1312,
+    "size": 1337,
     "fileName": "InventoryEnhancer.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Enhancement/InventoryEnhancer.cs"
   },
