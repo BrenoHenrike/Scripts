@@ -10712,13 +10712,26 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/BlackHoleSunMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "ChaosLab Mergeshop",
+    "description": "Gets any item you want in ChaosLab mergeshop",
     "tags": [
-      "null"
+      "chaoslab",
+      "dage",
+      "alina",
+      "cysero",
+      "artix",
+      "beleen",
+      "mergeshop",
+      "daimyo",
+      "moglin",
+      "hamster",
+      "chaos",
+      "necropolis",
+      "bots",
+      ""
     ],
     "path": "Other/MergeShops/ChaosLabMerge.cs",
-    "size": 4560,
+    "size": 4716,
     "fileName": "ChaosLabMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/ChaosLabMerge.cs"
   },
