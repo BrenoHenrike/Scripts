@@ -64,9 +64,6 @@ public class ChaosLabMerge
                 #endregion
 
                 case "Chaorrupted Hamster":
-                    if (!Bot.Player.IsMember)
-                    break;
-                                     
                     Core.EquipClass(ClassType.Farm);
                     Core.HuntMonster("chaoslab", "Chaotic Server Hamster", req.name, isTemp: false, log: false);
                     break;
