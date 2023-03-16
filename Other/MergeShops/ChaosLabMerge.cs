@@ -66,25 +66,18 @@ public class ChaosLabMerge
                 case "Chaorrupted Hamster":
                     if (!Bot.Player.IsMember)
                     break;
-                 
-                    Core.FarmingLogger(req.Name, quant);
+                                     
                     Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.HuntMonster("chaoslab", "Chaotic Server Hamster");
-                        Bot.Wait.ForPickup(req.Name);
                     }
                     break;
 
                 case "Crystallized Chaos":
-                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.HuntMonster("chaoslab", "Chaorrupted Moglin", "Crystallized Chaos", 2460, log: false);
-                        Bot.Wait.ForPickup(req.Name);
                     }
-                    Core.CancelRegisteredQuests();
                     break;
 
                 case "Daimyo":
