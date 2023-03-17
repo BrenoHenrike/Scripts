@@ -892,17 +892,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Arcangrove.cs"
   },
   {
-    "name": "PockeyMogs Story",
-    "description": "Compeletes the PockeyMogs Story",
-    "tags": [
-      "null"
-    ],
-    "path": "Story/StoryTemplate.cs",
-    "size": 1728,
-    "fileName": "StoryTemplate.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/StoryTemplate.cs"
-  },
-  {
     "name": "Beleen's Dream Story",
     "description": "This will complete the Beleen's Dream story.",
     "tags": [
@@ -914,6 +903,19 @@
     "size": 2207,
     "fileName": "BeleensDream.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/BeleensDream.cs"
+  },
+  {
+    "name": "PockeyMogs Story",
+    "description": "Compeletes the PockeyMogs Story",
+    "tags": [
+      "lim",
+      "pockeymogs",
+      ""
+    ],
+    "path": "Story/PockeymogsStory.cs",
+    "size": 1741,
+    "fileName": "PockeymogsStory.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/PockeymogsStory.cs"
   },
   {
     "name": "StarSinc Story",
