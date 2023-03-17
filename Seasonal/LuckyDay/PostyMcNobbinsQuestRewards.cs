@@ -72,10 +72,6 @@ public class PostyMcNobbinsQuestRewards
         var rewards3 = Core.QuestRewards(5760);
         var rewards4 = Core.QuestRewards(5761);
 
-        // Core.EquipClass(ClassType.Solo);
-        // Adv.SmartEnhance(Core.SoloClass);
-        // Adv.BestGear(GearBoost.dmgAll);
-        
         string[] AllDrops = rewards1.Concat(rewards2).Concat(rewards3).Concat(rewards4).Concat(PotDrops).ToArray();
 
         foreach (string item in AllDrops)
@@ -84,11 +80,10 @@ public class PostyMcNobbinsQuestRewards
                 Bot.Drops.Add(item);
         }
         Core.AddDrop("Platinum Coin", "Rainbow Coin");
-
         Core.RegisterQuests(5758, 5759, 5760, 5761);
-        while (!Bot.ShouldExit && !Core.CheckInventory(AllDrops, toInv: false))
+        foreach (string item in AllDrops)
         {
-            foreach (string item in AllDrops)
+            while (!Bot.ShouldExit && !Core.CheckInventory(AllDrops, toInv: false))
             {
                 if (Core.CheckInventory(item, toInv: false))
                 {
@@ -102,7 +97,7 @@ public class PostyMcNobbinsQuestRewards
                 Bot.Drops.Remove(item);
                 Core.ToBank(item);
             }
-            Core.CancelRegisteredQuests();
         }
+        Core.CancelRegisteredQuests();
     }
 }
