@@ -31,21 +31,31 @@ public class Originul_Story
 
         // Inquisite the Inquisitors
         Story.KillQuest(7881, "Originul", "Inquisitor Guard");
+
         // Captains Capped
         Story.KillQuest(7882, "Originul", "Inquisitor Captain");
+
         // Grand Defeat
         Story.KillQuest(7883, "Originul", "Grand Inquisitor");
+
         // Portal Unlocked
         Story.KillQuest(7884, "Originul", new[] { "Inquisitor Guard", "Inquisitor Captain", "Grand Inquisitor" });
+
         // Fiend Training
         Story.KillQuest(7885, "Originul", "Bloodfiend");
+
         // Failed Fiend Shards
         Story.KillQuest(7886, "Originul", "Bloodfiend");
+        
         // Executed Tasks
         Story.KillQuest(7887, "Originul", "Dreadfiend");
+
         // Champion Usurper
+        Core.EquipClass(ClassType.Solo);
         Story.KillQuest(7888, "Originul", "Fiend Champion");
+
         // Break their Muti-kneecaps
+        Core.EquipClass(ClassType.Farm);
         if (!Story.QuestProgression(7889))
         {
             Core.EnsureAccept(7889);
