@@ -38,7 +38,7 @@ public class DagesBirthdayMerge
     {
         if (!Core.isSeasonalMapActive("undervoid"))
             return;
-            
+
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("undervoid", 839, findIngredients, buyOnlyThis, buyMode: buyMode);
 
@@ -68,15 +68,8 @@ public class DagesBirthdayMerge
                 case "Weapon Shard":
                 case "Cape Piece":
                 case "Helm Piece":
-                    Core.FarmingLogger(req.Name, quant);
-                    Core.EquipClass(ClassType.Farm);
-                    Core.RegisterQuests(0000);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster("undervoid", "Conquest", req.Name, quant, isTemp: false, log: false);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    Core.CancelRegisteredQuests();
+                    Core.EquipClass(ClassType.Solo);
+                    Core.HuntMonster("undervoid", "Conquest", req.Name, quant, isTemp: false);
                     break;
 
                     // case "Death's Scythe":
