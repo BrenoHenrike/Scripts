@@ -15352,6 +15352,23 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/RandsMerge.cs"
   },
   {
+    "name": "Fortress Delve Story",
+    "description": "This will complete the Fortress Delve story.",
+    "tags": [
+      "story",
+      "quest",
+      "fortress",
+      "delve",
+      "legion",
+      "staff",
+      "birthday"
+    ],
+    "path": "Seasonal/StaffBirthdays/DageTheEvil/FortressDelve.cs",
+    "size": 2486,
+    "fileName": "FortressDelve.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/FortressDelve.cs"
+  },
+  {
     "name": "Nation War Chest Merge",
     "description": "This will complete the Nation War Chest story and farm Nation Defender Medals.",
     "tags": [
@@ -15454,6 +15471,21 @@
     "size": 1579,
     "fileName": "LegionSwordMasterAssassin.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/LegionSwordMasterAssassin.cs"
+  },
+  {
+    "name": "Fortress Delve Merge",
+    "description": "This bot will farm the required items from /fortressdelve, do the story, and buy items from the merge shop",
+    "tags": [
+      "fortressdelve",
+      "merge",
+      "dage",
+      "staff",
+      "birthday"
+    ],
+    "path": "Seasonal/StaffBirthdays/DageTheEvil/FortressDelveMerge.cs",
+    "size": 6663,
+    "fileName": "FortressDelveMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/FortressDelveMerge.cs"
   },
   {
     "name": "Shakazs Merge",
