@@ -65,8 +65,8 @@ public class Fiendshard_Story
         if (!Core.isCompletedBefore(7898))
         {
             Core.EnsureAccept(7898);
-            Core.KillMonster("fiendshard", "r9", "Left", "Nulgath's Fiend Shard", "Nulgath's Fiend Shard Destroyed");
-            Core.KillMonster("fiendshard", "r9", "Left", "Paladin Fiend", "Fiends Fended Off", 15);
+            Core.HuntMonsterMapID("fiendshard", 15, "Nulgath's Fiend Shard Destroyed");
+            Core.HuntMonsterMapID("fiendshard", 14, "Fiends Fended Off", 15);
             Core.EnsureComplete(7898);
             Bot.Events.CellChanged -= CutSceneFixer;
         }
