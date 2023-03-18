@@ -15473,6 +15473,21 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/LegionSwordMasterAssassin.cs"
   },
   {
+    "name": "Fortress Delve Merge",
+    "description": "This bot will farm the required items from /fortressdelve, do the story, and buy items from the merge shop",
+    "tags": [
+      "fortressdelve",
+      "merge",
+      "dage",
+      "staff",
+      "birthday"
+    ],
+    "path": "Seasonal/StaffBirthdays/DageTheEvil/FortressDelveMerge.cs",
+    "size": 6663,
+    "fileName": "FortressDelveMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/FortressDelveMerge.cs"
+  },
+  {
     "name": "Shakazs Merge",
     "description": "This bot will farm the required items from /siegefortress, do the story, and buy items from the merge shop",
     "tags": [
