@@ -33,22 +33,38 @@ public class Fiendshard_Story
 
         Originul.Originul_Questline();
 
+        //used quest progs for mobs/room optimization
+
         // Sneak Attack
-        Story.KillQuest(7892, "Fiendshard", "Rogue Fiend");
-        Story.MapItemQuest(7892, "Fiendshard", 7983);
+        if (!Core.isCompletedBefore(7892))
+        {
+            Core.EnsureAccept(7892);
+            Core.KillMonster("Fiendshard", "r2", "Left", "Rogue Fiend");
+            Story.MapItemQuest(7892, "Fiendshard", 7983);
+        }
 
         // Fiend-terrogation
-        Story.KillQuest(7893, "Fiendshard", "Paladin Fiend");
+        if (!Core.isCompletedBefore(7893))
+        {
+            Core.EnsureAccept(7893);
+            Core.KillMonster("Fiendshard", "r2", "Left", "Rogue Fiend");
+            Core.EnsureComplete(7893);
+        }
 
         // Key Difference Between Human and Fiend
-        Story.KillQuest(7894, "Fiendshard", "Paladin Fiend");
+        if (!Core.isCompletedBefore(7894))
+        {
+            Core.EnsureAccept(7894);
+            Core.KillMonster("Fiendshard", "r2", "Left", "Rogue Fiend");
+            Core.EnsureComplete(7894);
+        }
 
         // Unlock the Door
         if (!Core.isCompletedBefore(7895))
         {
             Core.EnsureAccept(7895);
-            Core.HuntMonster("fiendshard", "Rogue Fiend", "Rogue Fiend Defeated", 5);
-            Core.HuntMonster("fiendshard", "Paladin Fiend", "Paladin Fiend Defeated", 5);
+            Core.KillMonster("fiendshard", "r2", "Left", "Rogue Fiend", "Rogue Fiend Defeated", 5);
+            Core.KillMonster("fiendshard", "r5", "Left", "Paladin Fiend", "Paladin Fiend Defeated", 5);
             Core.HuntMonster("fiendshard", "Void Knight", "Void Knight Defeated", 3);
             Story.MapItemQuest(7895, "Fiendshard", 7984);
         }
@@ -68,7 +84,6 @@ public class Fiendshard_Story
             Core.HuntMonsterMapID("fiendshard", 15, "Nulgath's Fiend Shard Destroyed");
             Core.HuntMonsterMapID("fiendshard", 14, "Fiends Fended Off", 15);
             Core.EnsureComplete(7898);
-            Bot.Events.CellChanged -= CutSceneFixer;
         }
     }
 
@@ -77,6 +92,7 @@ public class Fiendshard_Story
     {
         if (map == "fiendshard" && cell != "r9")
         {
+            Core.JumpWait();
             while (!Bot.ShouldExit && Bot.Player.Cell != "r9")
             {
                 Bot.Sleep(2500);
@@ -84,5 +100,6 @@ public class Fiendshard_Story
                 Bot.Sleep(2500);
             }
         }
+        Bot.Events.CellChanged -= CutSceneFixer;
     }
 }
