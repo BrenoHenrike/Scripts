@@ -2425,6 +2425,11 @@ public class CoreBots
                 SimpleQuestBypass((246, 23));
                 break;
 
+            case "originul":
+            case "fiendshard":
+                SimpleQuestBypass((387, 16));
+                break;
+
             case "lycan":
                 SimpleQuestBypass((26, 23));
                 break;
