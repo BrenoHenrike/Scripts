@@ -78,10 +78,12 @@ public class DrakathArmorBot
         Core.EquipClass(ClassType.Solo);
         Core.KillMonster("ultradrakath", "r1", "Left", "Champion of Chaos", "Face of Chaos", isTemp: false, publicRoom: true);
         Core.Relogin();
-        Daily.DagesScrollFragment();
-
         if (!Core.CheckInventory("Dage's Scroll Fragment", 13))
-            Core.Logger($"You own \"Dage's Scroll Fragment\" ({Bot.Inventory.GetQuantity("Dage's Scroll Fragment")}/13) [Daily Quest]. Bot can not continue.", messageBox: true, stopBot: true);
-        else Core.EnsureComplete(3882);
+        {
+            Daily.DagesScrollFragment();
+            if (!Core.CheckInventory("Dage's Scroll Fragment", 13))
+                Core.Logger($"You own \"Dage's Scroll Fragment\" ({Bot.Inventory.GetQuantity("Dage's Scroll Fragment")}/13) [Daily Quest]. Bot can not continue.", messageBox: true, stopBot: true);
+            else Core.EnsureComplete(3882);
+        }
     }
 }
