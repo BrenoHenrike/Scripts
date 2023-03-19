@@ -2430,10 +2430,6 @@ public class CoreBots
                 SimpleQuestBypass((387, 16));
                 break;
 
-            case "lycan":
-                SimpleQuestBypass((26, 23));
-                break;
-
             case "mummies":
                 SimpleQuestBypass((97, 16));
                 break;
@@ -2536,6 +2532,12 @@ public class CoreBots
             case "tercessuinotlim":
                 Bot.Map.Jump("m22", "Left");
                 tryJoin();
+                break;
+
+            case "darkoviaforest":
+            case "lycan":
+            case "safiria":
+                SimpleQuestBypass((26, 23));
                 break;
 
             case "doomvaultb":
