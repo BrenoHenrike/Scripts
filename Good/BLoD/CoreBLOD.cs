@@ -168,6 +168,7 @@ public class CoreBLOD
         Core.EquipClass(ClassType.Farm);
         Core.FarmingLogger("Basic Wepon Kit", quant);
 
+        Core.AddDrop("Basic Weapon Kit", "Zardman's StoneHammer");
         Core.RegisterQuests(2136);
         while (!Bot.ShouldExit && !Core.CheckInventory("Basic Weapon Kit", quant))
         {
@@ -190,17 +191,16 @@ public class CoreBLOD
     {
         if (Core.CheckInventory("Advanced Weapon Kit", quant))
             return;
-        Bot.Quests.UpdateQuest(567);
         Core.FarmingLogger("Advanced Weapon Kit", quant);
 
+        Core.AddDrop("WolfClaw Hammer", "Advanced Weapon Kit");
         Core.RegisterQuests(2162);
         while (!Bot.ShouldExit && !Core.CheckInventory("Advanced Weapon Kit", quant))
         {
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("hachiko", "Dai Tengu", "Superior Blade Oil", publicRoom: true);
+            Core.HuntMonster("hachiko", "Dai Tengu", "Superior Blade Oil");
             Core.HuntMonster("airstorm", "Lightning Ball", "Shining Lacquer Finish");
             Core.HuntMonster("faerie", "Cyclops Warlord", "Brass Awl");
-            Bot.Quests.UpdateQuest(597);
             Core.HuntMonster("darkoviaforest", "Lich of the Stone", "Slate Stone Sharpener");
 
             Core.EquipClass(ClassType.Farm);
@@ -532,7 +532,7 @@ public class CoreBLOD
     {
         if (Core.CheckInventory("Bright Aura", quant))
             return;
-            
+
         if (!Core.CheckInventory("Blinding Bow of Destiny"))
             BlindingBow();
 
