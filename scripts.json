@@ -2867,7 +2867,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 60620,
+    "size": 60848,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -6189,7 +6189,7 @@
       "reagents"
     ],
     "path": "Army/ArmyNulgath/ArmySupplies.cs",
-    "size": 4165,
+    "size": 4117,
     "fileName": "ArmySupplies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyNulgath/ArmySupplies.cs"
   },
