@@ -566,7 +566,12 @@ public class CoreNation
 
             Core.FarmingLogger(item, quant);
 
-            Core.RegisterQuests(returnPolicyDuringSupplies ? new[] { 2857, 7551 } : new[] { 2857 });
+            // Core.RegisterQuests(returnPolicyDuringSupplies ? new[] { 2857, 7551 } : new[] { 2857 });
+            //[ https://imgur.com/VF1uGRI ] <- error example, hopefully this fixed it 
+            if (returnPolicyDuringSupplies)
+                Core.RegisterQuests(2857, 7551);
+            else Core.RegisterQuests(2857);
+
             while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
             {
                 if (returnPolicyDuringSupplies && !Core.CheckInventory("Dark Makai Rune"))

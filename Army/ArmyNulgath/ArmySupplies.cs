@@ -75,7 +75,7 @@ public class SuppliesWheelArmy
                 while (!Bot.ShouldExit && !Core.CheckInventory(item.ID, item.MaxStack))
                 {
                     ArmyHunt("hydrachallenge", new[] { "Hydra Head 90" }, "Relic of Chaos", ClassType.Farm, false, 13);
-                    if (Bot.Config.Get<bool>("SwindlesReturnDuring") && Core.CheckInventory(Nation.SwindlesReturn))
+                    if (Core.CheckInventory(Nation.SwindlesReturn))
                         Core.HuntMonster(Core.IsMember ? "nulgath" : "evilmarsh", "Dark Makai", "Dark Makai Rune", 1);
                 }
             }
