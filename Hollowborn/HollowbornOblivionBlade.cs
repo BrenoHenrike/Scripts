@@ -46,10 +46,9 @@ public class HollowbornOblivionBlade
         Nation.DiamondEvilWar(500);
         if (!Core.CheckInventory("Unidentified 25"))
         {
-            Farm.Gold(15000000);
-            Core.BuyItem("tercessuinotlim", 1951, "Unmoulded Fiend Essence");
+            Adv.BuyItem("tercessuinotlim", 1951, "Unmoulded Fiend Essence");
             Bot.Wait.ForPickup("Unmoulded Fiend Essence");
-            Core.BuyItem("tercessuinotlim", 1951, "Unidentified 25");
+            Adv.BuyItem("tercessuinotlim", 1951, "Unidentified 25");
         }
         Nation.ApprovalAndFavor(0, 1000);
         Nation.FarmBloodGem(50);
