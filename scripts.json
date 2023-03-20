@@ -2085,7 +2085,7 @@
       "null"
     ],
     "path": "Hollowborn/HollowbornOblivionBlade.cs",
-    "size": 3142,
+    "size": 3107,
     "fileName": "HollowbornOblivionBlade.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/HollowbornOblivionBlade.cs"
   },
@@ -12632,6 +12632,26 @@
     "size": 2800,
     "fileName": "TheRefreshingDeal.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/TheRefreshingDeal.cs"
+  },
+  {
+    "name": "Empowered Weapons of Nulgath",
+    "description": "pick an empowered weapon, if you own teh requirements and 25 insignias, itll farm the empowered ver.",
+    "tags": [
+      "empowered",
+      "nulgath",
+      "reavers",
+      "bloodletter",
+      "overfiend blade",
+      "shadow spear",
+      "prismatic manslayers",
+      "legacy of nulgath",
+      "worshipper of nulgath",
+      "evovled void armor"
+    ],
+    "path": "Nation/Various/EmpoweredNationItem.cs",
+    "size": 9274,
+    "fileName": "EmpoweredNationItem.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/EmpoweredNationItem.cs"
   },
   {
     "name": "ArchfiendDragonEgg[Mem]",
