@@ -11186,7 +11186,7 @@
       "null"
     ],
     "path": "Other/MergeShops/LegionPyromancerMerge.cs",
-    "size": 8170,
+    "size": 7476,
     "fileName": "LegionPyromancerMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/LegionPyromancerMerge.cs"
   },
@@ -12323,7 +12323,7 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/NulgathsCombatStyles/SoulReaperofNulgath.cs"
   },
   {
-    "name": "(Class) Void Highlord",
+    "name": "Void Highlord (Class)",
     "description": "This will farm all requirements for the Void Highlord class to obtain.",
     "tags": [
       "farm",
