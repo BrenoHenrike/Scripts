@@ -1,5 +1,5 @@
 /*
-name: (Class) Void Highlord
+name: Void Highlord (Class)
 description: This will farm all requirements for the Void Highlord class to obtain.
 tags: farm, class, nation, VHL, void, highlord, roentgenium, void-crystal-a, void-crystal-b
 */
