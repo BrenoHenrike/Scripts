@@ -419,8 +419,13 @@ public class CoreQOM
         Story.KillQuest(5584, "CastleInvasion", new[] { "Infernal Imp", "Underworld Hound" });
 
         //It's Baaaaack!
-        Story.KillQuest(5585, "CastleInvasion", "Giant Worm of Teeth");
-
+        if (!Story.QuestProgression(5578))
+        {
+            Core.EnsureAccept(5585);
+            Core.HuntMonsterMapID("CastleInvasion", 16, "Giant Worm of Teeth Defeated... Again!");
+            Core.EnsureComplete(5585);
+        }
+        
         //Him Again???
         Core.EquipClass(ClassType.Solo);
         Story.KillQuest(5586, "CastleInvasion", "Lord Balax'el");
