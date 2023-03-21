@@ -2523,9 +2523,13 @@ public class CoreBots
                 PrivateSimpleQuestBypass((175, 20));
                 break;
 
-            case "finalshowdown":
-                PrivateSimpleQuestBypass((182, 6));
-                break;
+            // case "finalshowdown":
+            //     PrivateSimpleQuestBypass((182, 8));
+            //     break;
+
+            // case "finalbattle":
+            //     PrivateSimpleQuestBypass((182, 5));
+            //     break;
             #endregion
 
             #region Special Cases
@@ -2570,18 +2574,19 @@ public class CoreBots
             case "dagepvp":
             case "deathpitbrawl":
             // Room Limit: 1
+            case "finalbattle":
             case "treetitanbattle":
             case "chaosrealm":
             case "vordredboss":
             case "trickortreat":
             case "drakathfight":
-            case "finalbattle":
             case "dragonfire":
             case "darkthronehub":
             case "malgor":
             case "chaosbattle":
             case "baconcatyou":
             case "herotournament":
+            case "finalshowdown":
             case "dragonkoi":
             case "chaoslord":
             case "ravenscar":
