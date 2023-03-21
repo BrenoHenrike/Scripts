@@ -12436,6 +12436,22 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/MergeShops/NulgathWarMerge.cs"
   },
   {
+    "name": "Dirtlicker's Merge Shop",
+    "description": "This script farms all the materials needed for Dirtlicker's Merge Shop in archportal.",
+    "tags": [
+      "dirtlicker",
+      "archportal",
+      "merge",
+      "nulgath",
+      "ennh",
+      "enchanted nulgath nation house"
+    ],
+    "path": "Nation/MergeShops/DirtlickersMerge.cs",
+    "size": 9257,
+    "fileName": "DirtlickersMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/MergeShops/DirtlickersMerge.cs"
+  },
+  {
     "name": "DilligasMerge",
     "description": "null",
     "tags": [
