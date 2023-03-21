@@ -972,8 +972,8 @@ public class CoreDailies
         "Gold Voucher 500k",
 
         "Combat Trophy",
-        "Super Swag Token A",
-        "Super Swag Token B",
+        "Super-Fan Swag Token A",
+        "Super-Fan Swag Token B",
         "Dragon Runestone",
         "Faded Pigment",
         "Daily Login Gold Boost! (20 Min)",
