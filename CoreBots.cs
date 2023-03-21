@@ -2588,15 +2588,25 @@ public class CoreBots
             case "baconcat":
             case "tlapd":
                 // Special
-                //case "fearhouse":
                 JumpWait();
                 map = strippedMap + "-999999";
                 tryJoin();
                 break;
             #endregion
 
-            #region Maps that cant be private
-            //buyhouse
+            #region Maps that cant be private and you must do yourself. (thanks AE)
+            case "fearhouse":
+            case "buyhouse":
+                if (publicRoom == false)
+                    Logger("Unfortunitaly AE forgot to make these maps private-able, and public botting is to risky. (yw)", stopBot: true);
+                else
+                {
+                    Logger("You've Chosen to bot publicly... good luck in this *public only* map.");
+                    JumpWait();
+                    Bot.Map.Join(map);
+                    Bot.Wait.ForMapLoad(map);
+                }
+                break;
             #endregion
 
             #region Bypass Banned
