@@ -2522,14 +2522,6 @@ public class CoreBots
             case "shadowattack":
                 PrivateSimpleQuestBypass((175, 20));
                 break;
-
-            // case "finalshowdown":
-            //     PrivateSimpleQuestBypass((182, 8));
-            //     break;
-
-            // case "finalbattle":
-            //     PrivateSimpleQuestBypass((182, 5));
-            //     break;
             #endregion
 
             #region Special Cases
@@ -2601,6 +2593,10 @@ public class CoreBots
                 map = strippedMap + "-999999";
                 tryJoin();
                 break;
+            #endregion
+
+            #region Maps that cant be private
+            //buyhouse
             #endregion
 
             #region Bypass Banned
