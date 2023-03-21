@@ -1773,15 +1773,9 @@ public class CoreFarms
         while (!Bot.ShouldExit && FactionRank("Good") < rank)
         {
             if (!Core.IsMember)
-            {
-                Core.KillMonster("castleundead", "Enter", "Spawn", "*", "Chaorrupted Skull", 5, log: false);
-                Bot.Wait.ForQuestComplete(372);
-            }
+                Core.KillMonster("castleundead", "Enter", "Spawn", "*", log: false);
             else
-            {
                 Core.HuntMonster("sewer", "Grumble", "Grumble's Fang", log: false);
-                Bot.Wait.ForQuestComplete(371);
-            }
         }
         Core.CancelRegisteredQuests();
         ToggleBoost(BoostType.Reputation, false);
