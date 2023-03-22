@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Crag's Gem Merge
+description: This script farms all the materials needed for Crag's Gem Merge in tercessuinotlim.
+tags: crag, nulgath, merge, gem, empowered voidstone
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
