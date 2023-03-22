@@ -12414,13 +12414,17 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/MergeShops/FiendshardMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Crag's Gem Merge",
+    "description": "This script farms all the materials needed for Crag's Gem Merge in tercessuinotlim.",
     "tags": [
-      "null"
+      "crag",
+      "nulgath",
+      "merge",
+      "gem",
+      "empowered voidstone"
     ],
     "path": "Nation/MergeShops/CragsGemMerge.cs",
-    "size": 9253,
+    "size": 9386,
     "fileName": "CragsGemMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/MergeShops/CragsGemMerge.cs"
   },
