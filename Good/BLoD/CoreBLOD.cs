@@ -6,7 +6,6 @@ tags: null
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreDailies.cs
-//cs_include Scripts/CoreAdvanced.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Quests;
 using Skua.Core.Models.Items;
@@ -241,11 +240,6 @@ public class CoreBLOD
         }
     }
 
-    public void LightMerge(string item, int quant = 1) => Core.BuyItem("necropolis", 422, item, quant);
-    // {
-    //     Core.BuyItem("necropolis", 422, item, quant);
-    // }
-
     public void BlindingMace()
     {
         if (Core.CheckInventory("Blinding Mace of Destiny"))
@@ -256,26 +250,6 @@ public class CoreBLOD
 
         if (!Core.CheckInventory(new[] { "Mace of Destiny", "Bright Mace of Destiny", "Blinding Mace of Destiny" }, any: true))
         {
-            if (!Core.CheckInventory(new[] { "Celestial Copper of Destiny", "Celestial Copper" }, any: true)
-                && !Core.CheckInventory("Bright Aura", 2))
-            {
-                int SOQuantity = 10500 - (Bot.Inventory.GetQuantity("Loyal Spirit Orb") * 100) - (Bot.Inventory.GetQuantity("Bright Aura") * 5000);
-                SpiritOrb(SOQuantity);
-            }
-
-            if (!Core.CheckInventory(new[] { "Celestial Copper of Destiny", "Celestial Copper" }, any: true)
-                && !Core.CheckInventory("Bright Aura", 2))
-            {
-                int LSOQuantity = 105 - (Bot.Inventory.GetQuantity("Bright Aura") * 50);
-                if ((LSOQuantity * 100) > Bot.Inventory.GetQuantity("Spirit Orb"))
-                    SpiritOrb(LSOQuantity * 100);
-                LightMerge("Loyal Spirit Orb", LSOQuantity);
-            }
-
-            if (!Core.CheckInventory(new[] { "Celestial Copper of Destiny", "Celestial Copper" }, any: true)
-                && !Core.CheckInventory("Bright Aura", 2))
-                LightMerge("Bright Aura", 2);
-
             if (!Core.CheckInventory("Celestial Copper of Destiny"))
             {
                 if (!Core.CheckInventory("Celestial Copper"))
@@ -291,17 +265,21 @@ public class CoreBLOD
                     Core.EnsureComplete(2107);
                     Bot.Wait.ForPickup("Celestial Copper");
                 }
+
+                BrightAuraMerge(2);
+                LoyalSpiritOrbMerge(5);
                 Core.BuyItem("dwarfhold", 434, "Celestial Copper of Destiny");
                 Bot.Wait.ForPickup("Celestial Copper of Destiny");
             }
 
-            if (!Bot.Quests.IsUnlocked(2136))
+            if (!Core.isCompletedBefore(2136))
             {
                 Core.Logger("Unlocking Weapon Kit quests");
                 Core.EnsureAccept(2133);
-                Core.KillMonster("dwarfhold", "Enter", "Spawn", "Albino Bat", "Forge Key", 1, false);
+                Core.KillMonster("dwarfhold", "Enter", "Spawn", "Albino Bat", "Forge Key", isTemp: false);
                 Core.EnsureComplete(2133);
             }
+
             Core.Logger("Farming for Mace of Destiny");
             Farm.BattleUnderB("Undead Energy", 7);
             BasicWK();
@@ -581,27 +559,7 @@ public class CoreBLOD
             Core.KillMonster("battleunderb", "Enter", "Spawn", "*", "Blinding Light Fragments", 10, isTemp: false, log: false);
         Core.CancelRegisteredQuests();
     }
-
-    //public void SpiritOrbs(int quant = 65000)
-    //{
-
-    //}
-
-    //public void LoyalSpiritOrbs(int quant = 10000)
-    //{
-
-    //}
-
-    //public void BrightAura(int quant = 10000)
-    //{
-
-    //}
-
-    //public void BlindingAura()
-    //{
-
-    //}
-
+    
     // ------------------------------------------------------------------------------------------------------------------------------ //
     // Blinding Light of Destiny Extras Below
     // ------------------------------------------------------------------------------------------------------------------------------ //
@@ -684,5 +642,46 @@ public class CoreBLOD
         Core.HuntMonster("Extinction", "Cyworg", "Refined Metal", 5);
 
         Core.EnsureComplete(8112);
+    }
+
+    void LightMerge(string item, int quant = 1) => Core.BuyItem("necropolis", 422, item, quant);
+
+    public void LoyalSpiritOrbMerge(int quant)
+    {
+        if (Core.CheckInventory("Loyal Spirit Orb", quant))
+            return;
+
+        Core.FarmingLogger("Loyal Spirit Orb", quant);
+        while (!Bot.ShouldExit && !Core.CheckInventory("Loyal Spirit Orb", quant))
+        {
+            SpiritOrb(100 * quant);
+            Core.BuyItem("necropolis", 422, "Loyal Spirit Orb", quant);
+        }
+    }
+
+    public void BrightAuraMerge(int quant)
+    {
+        if (Core.CheckInventory("Bright Aura", quant))
+            return;
+
+        Core.FarmingLogger("Bright Aura", quant);
+        while (!Bot.ShouldExit && !Core.CheckInventory("Bright Aura", quant))
+        {
+            LoyalSpiritOrbMerge(50 * quant);
+            Core.BuyItem("necropolis", 422, "Bright Aura", quant);
+        }
+    }
+
+    public void BrilliantAuraMerge(int quant)
+    {
+        if (Core.CheckInventory("Brilliant Aura", quant))
+            return;
+
+        Core.FarmingLogger("Brilliant Aura", quant);
+        while (!Bot.ShouldExit && !Core.CheckInventory("Brilliant Aura", quant))
+        {
+            BrightAuraMerge(25 * quant);
+            Core.BuyItem("necropolis", 422, "Brilliant Aura", quant);
+        }
     }
 }
