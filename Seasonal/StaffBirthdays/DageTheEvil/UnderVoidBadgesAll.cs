@@ -44,6 +44,7 @@ public class UnderVoidBadgesAll
         UndervoidStory.CompleteUnderVoid();
         Core.EquipClass(ClassType.Solo);
         Adv.BestGear(GearBoost.Undead);
+        Core.AddDrop("Conquest's Pride");
 
         if (Core.HasWebBadge(badge1))
         {
@@ -56,12 +57,14 @@ public class UnderVoidBadgesAll
             Core.EnsureAccept(3411);
             Core.HuntMonster("undervoid", "Conquest", "Conquest Defeated");
             Core.EnsureComplete(3411);
+            if (Core.CheckInventory("Conquest's Pride", 7))
+                Core.ChainComplete(3415);
         }
     }
 
     public void WarVictor()
     {
-        if (!Core.isSeasonalMapActive("undervoid") || !Core.isCompletedBefore(3412))
+        if (!Core.isSeasonalMapActive("undervoid") || !Core.isCompletedBefore(3415))
         {
             Core.Logger(!Core.isSeasonalMapActive("undervoid") ? $"Map not Avaiable" : $"Quest Not Unlocked Yet. each Daily takes 7x the previou (wtf i know right)");
             return;
@@ -70,6 +73,8 @@ public class UnderVoidBadgesAll
         UndervoidStory.CompleteUnderVoid();
         Core.EquipClass(ClassType.Solo);
         Adv.BestGear(GearBoost.Undead);
+        Core.AddDrop("War's Pride");
+
 
         if (Core.HasWebBadge(badge2))
         {
@@ -82,12 +87,15 @@ public class UnderVoidBadgesAll
             Core.EnsureAccept(3412);
             Core.HuntMonster("undervoid", "War", "War Defeated");
             Core.EnsureComplete(3412);
+
+            if (Core.CheckInventory("War's Pride", 7))
+                Core.ChainComplete(3416);
         }
     }
 
     public void FamineVitor()
     {
-        if (!Core.isSeasonalMapActive("undervoid") || !Core.isCompletedBefore(3413))
+        if (!Core.isSeasonalMapActive("undervoid") || !Core.isCompletedBefore(3416))
         {
             Core.Logger(!Core.isSeasonalMapActive("undervoid") ? $"Map not Avaiable" : $"Quest Not Unlocked Yet. each Daily takes 7x the previou (wtf i know right)");
             return;
@@ -96,24 +104,29 @@ public class UnderVoidBadgesAll
         UndervoidStory.CompleteUnderVoid();
         Core.EquipClass(ClassType.Solo);
         Adv.BestGear(GearBoost.Undead);
+        Core.AddDrop("Famine's Pride");
 
         if (Core.HasWebBadge(badge3))
         {
             Core.Logger($"Already have the {badge3} badge");
             return;
         }
+
         else if (Daily.CheckDaily(3413))
         {
             Core.Logger($"Doing UnderVoid Quest for {badge3} badge");
             Core.EnsureAccept(3413);
             Core.HuntMonster("undervoid", "Famine", "Famine Defeated");
             Core.EnsureComplete(3413);
+
+            if (Core.CheckInventory("Famine's Pride", 7))
+                Core.ChainComplete(3417);
         }
     }
 
     public void DeathVictor()
     {
-        if (!Core.isSeasonalMapActive("undervoid") || !Core.isCompletedBefore(3414))
+        if (!Core.isSeasonalMapActive("undervoid") || !Core.isCompletedBefore(3417))
         {
             Core.Logger(!Core.isSeasonalMapActive("undervoid") ? $"Map not Avaiable" : $"Quest Not Unlocked Yet. each Daily takes 7x the previou (wtf i know right)");
             return;
@@ -122,6 +135,7 @@ public class UnderVoidBadgesAll
         UndervoidStory.CompleteUnderVoid();
         Core.EquipClass(ClassType.Solo);
         Adv.BestGear(GearBoost.Undead);
+        Core.AddDrop("Death's Pride");
 
         if (Core.HasWebBadge(badge4))
         {
@@ -134,6 +148,9 @@ public class UnderVoidBadgesAll
             Core.EnsureAccept(3414);
             Core.HuntMonster("undervoid", "Death", "Death Defeated");
             Core.EnsureComplete(3414);
+
+            if (Core.CheckInventory("Death's Pride", 7))
+                Core.ChainComplete(3418);
         }
     }
     private string badge1 = "Conquest Victor";
