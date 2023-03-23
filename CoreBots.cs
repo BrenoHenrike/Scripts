@@ -1544,67 +1544,7 @@ public class CoreBots
                 Rest();
             }
         }
-
-        void huntFix(string monster)
-        {
-            string[] names = monster.Split('|', StringSplitOptions.TrimEntries);
-            DebugLogger(this);
-            while ((!token?.IsCancellationRequested ?? true) && !Bot.ShouldExit)
-            {
-                DebugLogger(this);
-                List<string> cells =
-                    names.SelectMany(n =>
-                        Bot.Monsters.MapMonsters.Where(m =>
-                        (n == "*" || m.Name.Trim().ToLower() == n.Trim().ToLower()))
-                        .Select(m => m.Cell)
-                        .Distinct()
-                        .ToList())
-                    .Distinct()
-                    .ToList();
-                DebugLogger(this);
-                foreach (string cell in cells)
-                {
-                    DebugLogger(this);
-                    if (token?.IsCancellationRequested ?? false)
-                        break;
-                    DebugLogger(this);
-                    if (!cells.Contains(Bot.Player.Cell) && (!token?.IsCancellationRequested ?? true))
-                    {
-                        DebugLogger(this);
-                        if (Environment.TickCount - _lastHuntTick < Bot.Options.HuntDelay)
-                            Thread.Sleep(Bot.Options.HuntDelay - Environment.TickCount + _lastHuntTick);
-                        DebugLogger(this);
-                        Bot.Map.Jump(cell, "Left");
-                        DebugLogger(this);
-                        _lastHuntTick = Environment.TickCount;
-                        DebugLogger(this);
-                    }
-                    DebugLogger(this);
-                    foreach (string mon in names)
-                    {
-                        DebugLogger(this);
-                        if (token?.IsCancellationRequested ?? false)
-                            break;
-                        DebugLogger(this);
-                        if (Bot.Monsters.MapMonsters.Any(m => monster == "*" || (m.Name.Trim().ToLower() == monster.Trim().ToLower() && (!token?.IsCancellationRequested ?? true))))
-                        {
-                            DebugLogger(this);
-                            Bot.Kill.Monster(mon, token);
-                            DebugLogger(this);
-                            return;
-                        }
-                        DebugLogger(this);
-                    }
-                    DebugLogger(this);
-                    Thread.Sleep(200);
-                    DebugLogger(this);
-                }
-            }
-        }
     }
-    private bool? huntFixed = null;
-    private int _lastHuntTick;
-    private CancellationToken? token = null;
 
     /// <summary>
     /// Kills a monster using it's MapID
