@@ -276,7 +276,7 @@ public class CoreBLOD
             {
                 Core.Logger("Unlocking Weapon Kit quests");
                 Core.EnsureAccept(2133);
-                Core.KillMonster("dwarfhold", "Enter", "Spawn", "Albino Bat", "Forge Key", isTemp: false);
+                Core.HuntMonster("dwarfhold", "Albino Bat", "Forge Key", isTemp: false);
                 Core.EnsureComplete(2133);
             }
 
@@ -559,7 +559,7 @@ public class CoreBLOD
             Core.KillMonster("battleunderb", "Enter", "Spawn", "*", "Blinding Light Fragments", 10, isTemp: false, log: false);
         Core.CancelRegisteredQuests();
     }
-    
+
     // ------------------------------------------------------------------------------------------------------------------------------ //
     // Blinding Light of Destiny Extras Below
     // ------------------------------------------------------------------------------------------------------------------------------ //
