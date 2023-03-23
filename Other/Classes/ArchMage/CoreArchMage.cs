@@ -382,6 +382,7 @@ public class CoreArchMage
             Core.HuntMonsterMapID("shadowattack", 68, "Mortal Ether", isTemp: false, log: false);
             Core.HuntMonster("gaiazor", "Gaiazor", "Vital Ether", isTemp: false, log: false);
             Core.HuntMonsterMapID("fiendshard", 15, "Infernal Ether", isTemp: false, log: false);
+            Core.JumpWait(); //<- fiendshard room is aggro, it will get stuck (according to skillisue havers)
 
             Core.EnsureComplete(8910);
             Bot.Wait.ForPickup("Prismatic Ether");
