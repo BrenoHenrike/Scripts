@@ -471,20 +471,23 @@ public class CoreNation
     /// <param name="quant">Desired item quantity</param>
     public void NulgathLarvae(string? item = null, int quant = 1)
     {
+        // Core.DL_Enable();
         if (item != null && Core.CheckInventory(item, quant))
             return;
 
         Bot.Drops.Add(bagDrops);
         Bot.Drops.Add("Mana Energy for Nulgath");
 
-        Bot.Quests.UpdateQuest(847);
+        Bot.Quests.UpdateQuest(32, 35);
 
         Core.DebugLogger(this);
         if (item == null)
         {
-            Quest questData = Core.EnsureLoad(847);
+            Core.DebugLogger(this);
+            Quest questData = Core.EnsureLoad(2566);
             foreach (string Drop in bagDrops)
             {
+                Core.DebugLogger(this);
                 ItemBase? drop = questData.Rewards.Find(x => x.Name == Drop);
                 if (drop == null)
                     continue;
