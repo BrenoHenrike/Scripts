@@ -498,9 +498,9 @@ public class CoreFarms
             Core.PvPMove(28, "Captain1", 528, 255);
 
             Bot.Kill.Monster("Team B Captain");
-            Bot.Wait.ForDrop(item);
+            Bot.Wait.ForDrop(item, 10000);
             Bot.Sleep(Core.ActionDelay);
-            Bot.Wait.ForPickup(item);
+            Bot.Wait.ForPickup(item, 10000);
 
             Core.Logger("Delaying exit");
             Bot.Sleep(7500);

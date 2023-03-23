@@ -735,7 +735,7 @@ public class CoreLegion
 
             Bot.Kill.Monster("Dage the Evil");
             Bot.Sleep(5000);
-            Bot.Wait.ForDrop("Legion Combat Trophy");
+            Bot.Wait.ForDrop("Legion Combat Trophy", 10000);
 
             Core.Logger("Delaying exit");
             Bot.Sleep(7500);
