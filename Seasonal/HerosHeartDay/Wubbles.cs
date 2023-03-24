@@ -25,7 +25,7 @@ public class Wubbles
     {
         if (Core.isCompletedBefore(6737))
             return;
-            
+
         if (!Core.isSeasonalMapActive("wubbles"))
             return;
 
@@ -38,19 +38,24 @@ public class Wubbles
         Story.KillQuest(6728, "catacombs", "Scorpion Cultist");
 
         // Best Smell EVER! (6729)
-        Story.KillQuest(6729, "wanders", "Lotus Spider");
+        if (!Story.QuestProgression(6729))
+        {
+            Core.EnsureAccept(6729);
+            Core.KillMonster("wanders", "r2", "Down", "Lotus Spider", "Lotus Pollen", 8);
+            Core.EnsureComplete(6729);
+        }
 
         // Shimmer and Shine! (6730)
         Story.KillQuest(6730, "dreamnexus", "Aether Serpent");
 
         // Feel the WUB! (6731)
-        Story.MapItemQuest(6731, "battleontown", new[] {6212, 6213, 6214, 6215, 6216, 6217, 6218});
+        Story.MapItemQuest(6731, "battleontown", new[] { 6212, 6213, 6214, 6215, 6216, 6217, 6218 });
 
         // The Cult of WUB (6732)
         Story.KillQuest(6732, "wubblevania", "Charmed Cultist");
 
         // Get the Wub Charms! (6733)
-        Story.KillQuest(6733, "wubblevania", new[] {"Charmed Cysero", "Charmed Bev", "Charmed Alina", "Charmed Warlic", "Charmed Lim", "Charmed Niamara", "Charmed Murp"});
+        Story.KillQuest(6733, "wubblevania", new[] { "Charmed Cysero", "Charmed Bev", "Charmed Alina", "Charmed Warlic", "Charmed Lim", "Charmed Niamara", "Charmed Murp" });
 
         // Squishies! (6734)
         Story.KillQuest(6734, "wubblevania", "Wubwub");

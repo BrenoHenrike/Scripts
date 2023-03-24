@@ -17,7 +17,7 @@
       "null"
     ],
     "path": "CoreDailies.cs",
-    "size": 40591,
+    "size": 40593,
     "fileName": "CoreDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreDailies.cs"
   },
@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 93620,
+    "size": 93607,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -715,7 +715,7 @@
       "etherstorm-wastes"
     ],
     "path": "Story/EtherstormWastes.cs",
-    "size": 14975,
+    "size": 15216,
     "fileName": "EtherstormWastes.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/EtherstormWastes.cs"
   },
@@ -5314,7 +5314,7 @@
       "null"
     ],
     "path": "Story/LordsofChaos/Core13LoC.cs",
-    "size": 77666,
+    "size": 78693,
     "fileName": "Core13LoC.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/LordsofChaos/Core13LoC.cs"
   },
@@ -5630,7 +5630,7 @@
       "nation"
     ],
     "path": "Story/Nation/Bamboozle.cs",
-    "size": 4673,
+    "size": 4687,
     "fileName": "Bamboozle.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Nation/Bamboozle.cs"
   },
@@ -7907,7 +7907,7 @@
       "merge shop"
     ],
     "path": "Seasonal/AkibaNewYear/YokaiNewYearMerge.cs",
-    "size": 17785,
+    "size": 17798,
     "fileName": "YokaiNewYearMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AkibaNewYear/YokaiNewYearMerge.cs"
   },
@@ -7922,7 +7922,7 @@
       "story"
     ],
     "path": "Seasonal/AkibaNewYear/YokaiHunt.cs",
-    "size": 2681,
+    "size": 2695,
     "fileName": "YokaiHunt.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AkibaNewYear/YokaiHunt.cs"
   },
@@ -8968,7 +8968,7 @@
       "story"
     ],
     "path": "Seasonal/HerosHeartDay/Wubbles.cs",
-    "size": 1974,
+    "size": 2137,
     "fileName": "Wubbles.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HerosHeartDay/Wubbles.cs"
   },
@@ -10588,7 +10588,7 @@
       "mergeshop"
     ],
     "path": "Other/MergeShops/Adam1a1Merge.cs",
-    "size": 11719,
+    "size": 11733,
     "fileName": "Adam1a1Merge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/Adam1a1Merge.cs"
   },
@@ -10928,7 +10928,7 @@
       "null"
     ],
     "path": "Other/MergeShops/CraggleRockMerge.cs",
-    "size": 9319,
+    "size": 9333,
     "fileName": "CraggleRockMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/CraggleRockMerge.cs"
   },
@@ -10999,7 +10999,7 @@
       "null"
     ],
     "path": "Other/MergeShops/BeleensMerge.cs",
-    "size": 20626,
+    "size": 20640,
     "fileName": "BeleensMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/BeleensMerge.cs"
   },
@@ -12424,7 +12424,7 @@
       "empowered voidstone"
     ],
     "path": "Nation/MergeShops/CragsGemMerge.cs",
-    "size": 9386,
+    "size": 9400,
     "fileName": "CragsGemMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/MergeShops/CragsGemMerge.cs"
   },
@@ -14392,7 +14392,7 @@
       "craggle rock"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyCraggleRockRep.cs",
-    "size": 1876,
+    "size": 2325,
     "fileName": "ArmyCraggleRockRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyCraggleRockRep.cs"
   },

@@ -66,7 +66,7 @@ public class CragsGemMerge
                     Core.RegisterQuests(7277);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("wanders", "Kalestri Worshiper", log: false);
+                        Core.KillMonster("wanders", "r2", "Down", "Kalestri Worshiper", log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();

@@ -919,23 +919,55 @@ public class Core13LoC
         //Confront Duat
         Story.MapItemQuest(971, "pyramid", 304);
 
+        Bot.Quests.UpdateQuest(3773);
+
         //They've Gone Dark
-        Story.KillQuest(972, "wanders", "Kalestri Worshiper");
+        if (!Story.QuestProgression(972))
+        {
+            Core.EnsureAccept(972);
+            Core.KillMonster("wanders", "r2", "Right", "Kalestri Worshiper", "Dark Medallion", 8);
+            Core.EnsureComplete(972);
+        }
 
         //Bad Doggies
-        Story.KillQuest(973, "wanders", "Kalestri Hound");
+        if (!Story.QuestProgression(973))
+        {
+            Core.EnsureAccept(973);
+            Core.KillMonster("wanders", "r3", "Right", "Kalestri Hound", "Hound Defeated", 10);
+            Core.EnsureComplete(973);
+        }
 
         //Essentially Evil
-        Story.KillQuest(974, "wanders", "Kalestri Hound");
+        if (!Story.QuestProgression(974))
+        {
+            Core.EnsureAccept(974);
+            Core.KillMonster("wanders", "r3", "Right", "Kalestri Hound", "Evil Essence", 10);
+            Core.EnsureComplete(974);
+        }
 
         //Loose Threads
-        Story.KillQuest(975, "wanders", "Lotus Spider");
+        if (!Story.QuestProgression(975))
+        {
+            Core.EnsureAccept(975);
+            Core.KillMonster("wanders", "r2", "Right", "Lotus Spider", "Spider Defeated", 6);
+            Core.EnsureComplete(975);
+        }
 
         //Seek The Treasure
-        Story.MapItemQuest(976, "wanders", 306);
+        if (!Story.QuestProgression(976))
+        {
+            Core.EnsureAccept(976);
+            Core.GetMapItem(306, 1, "wanders");
+            Core.EnsureComplete(976);
+        }
 
         //Dreamsand
-        Story.KillQuest(977, "wanders", "Lotus Spider");
+        if (!Story.QuestProgression(977))
+        {
+            Core.EnsureAccept(977);
+            Core.KillMonster("wanders", "r2", "Right", "Lotus Spider", "Dreamsand");
+            Core.EnsureComplete(977);
+        }
 
         //I Dream Of...
         if (!Story.QuestProgression(978))

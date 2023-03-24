@@ -70,7 +70,7 @@ public class YokaiHunt
         if (!Story.QuestProgression(9093))
         {
             Core.EnsureAccept(9093);
-            Core.HuntMonster("wanders", "Lotus Spider", "Lotus Seeds", 10, log: false);
+            Core.KillMonster("wanders", "r2", "Down", "Lotus Spider", "Lotus Seeds", 10, log: false);
             Core.HuntMonster("battlefowl", "ChickenCow", "Chickencow Egg", 3, log: false);
             Core.EnsureComplete(9093);
         }
