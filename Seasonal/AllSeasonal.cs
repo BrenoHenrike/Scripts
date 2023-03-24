@@ -44,6 +44,7 @@ tags: seasonal, story, complete, all
 //cs_include Scripts/Seasonal/TalkLikeaPirateDay/AluteaNursery.cs
 //cs_include Scripts/Seasonal/TalkLikeaPirateDay/BlazeBeardStory.cs
 //cs_include Scripts/Seasonal/TalkLikeaPirateDay/LowTideStory.cs
+//cs_include Scripts/Story/Legion/DageRecruit.cs
 using Skua.Core.Interfaces;
 
 public class AllSeasonal
