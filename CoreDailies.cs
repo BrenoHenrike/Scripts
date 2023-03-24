@@ -507,7 +507,7 @@ public class CoreDailies
         if (!CheckDaily(6187, true, "Crypto Token"))
             return;
         Core.EquipClass(ClassType.Farm);
-        DailyRoutine(6187, "boxes", "Sneevil", "Metal Ore", cell: "Enter", pad: "Spawn");
+        DailyRoutine(6187, "boxes", "Sneevil", "Metal Ore", cell: "Closet", pad: "Center");
         Core.ToBank("Crypto Token");
     }
 
