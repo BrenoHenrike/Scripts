@@ -38,7 +38,7 @@ public class Bamboozle
         {
             Bot.Quests.UpdateQuest(976);
             Core.EnsureAccept(7277);
-            Core.HuntMonster("wanders", "Kalestri Worshiper", "Star of the Sandsea");
+            Core.KillMonster("wanders", "r2", "Down", "Kalestri Worshiper", "Star of the Sandsea");
             Core.EnsureComplete(7277);
         }
 

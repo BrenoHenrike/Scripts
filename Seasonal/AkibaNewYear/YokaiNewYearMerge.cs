@@ -158,7 +158,7 @@ public class YokaiNewYearMerge
                         while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                         {
                             Core.HuntMonster("sandsea", "Cactus Creeper", "Fandango Flower", 5);
-                            Core.HuntMonster("wanders", "Lotus Spider", "Lotus Flower", 4);
+                            Core.KillMonster("wanders","r2", "Down", "Lotus Spider", "Lotus Flower", 4);
                             Bot.Wait.ForPickup(req.Name);
                         }
                     }

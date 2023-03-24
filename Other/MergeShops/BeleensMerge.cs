@@ -102,7 +102,7 @@ public class BeleensMerge
                         {
                             //Flowers for the Pink Gal 1489
                             Core.HuntMonster("Sandsea", "Cactus Creeper", "Fandango Flower", 5);
-                            Core.HuntMonster("Wanders", "Lotus Spider", "Lotus Flower", 4);
+                            Core.KillMonster("Wanders", "r2", "Down", "Lotus Spider", "Lotus Flower", 4);
                         }
                         Core.CancelRegisteredQuests();
                     }

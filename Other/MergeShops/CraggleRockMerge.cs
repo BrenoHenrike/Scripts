@@ -67,7 +67,7 @@ public class CraggleRockMerge
                     Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("wanders", "Kalestri Worshiper", "Star of the Sandsea");
+                        Core.KillMonster("wanders", "r2", "Down", "Kalestri Worshiper", "Star of the Sandsea");
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
