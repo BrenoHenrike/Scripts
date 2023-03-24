@@ -53,7 +53,6 @@ public class ArmyCraggleRockRep
 
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
-        Bot.Options.LagKiller = false;
         Core.EquipClass(ClassType.Solo);
         Core.RegisterQuests(7277); //Star of the Sandsea 7277
         Farm.ToggleBoost(BoostType.Reputation);
