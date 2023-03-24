@@ -1604,7 +1604,7 @@ public class CoreFarms
         while (Bot.Map.Name != "deathpitbrawl")
         {
             Core.Logger("Joining Brawl");
-            Bot.Map.Join("DeathPitbrawl", "Enter0", "Spawn");
+            Core.Join("DeathPitbrawl", "Enter0", "Spawn");
             Bot.Sleep(Core.ActionDelay);
         }
 
