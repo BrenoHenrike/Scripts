@@ -147,7 +147,7 @@ public class CoreBots
 
             Bot.Options.HuntDelay = HuntDelay;
 
-            Bot.Bank.Load(false);
+            Bot.Bank.Open();
             Bot.Bank.Loaded = true;
             if (BankMiscAC)
                 BankACMisc();
