@@ -915,6 +915,8 @@ public enum ForgeQuestWeapon
     ArcanasConcertoWIP,
     Acheron,
     Elysium,
+    Praxis,
+    DauntLess,
     None,
     All
 };
