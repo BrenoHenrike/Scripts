@@ -1487,7 +1487,7 @@
       "null"
     ],
     "path": "Army/CoreArmyLite.cs",
-    "size": 36951,
+    "size": 36996,
     "fileName": "CoreArmyLite.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/CoreArmyLite.cs"
   },
@@ -2143,7 +2143,7 @@
       "pneuma"
     ],
     "path": "Enhancement/UnlockForgeEnhancements.cs",
-    "size": 31293,
+    "size": 35437,
     "fileName": "UnlockForgeEnhancements.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Enhancement/UnlockForgeEnhancements.cs"
   },
@@ -3273,7 +3273,7 @@
       "null"
     ],
     "path": "Legion/YamiNoRonin/CoreYnR.cs",
-    "size": 8017,
+    "size": 8041,
     "fileName": "CoreYnR.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/YamiNoRonin/CoreYnR.cs"
   },
@@ -9892,7 +9892,7 @@
       "null"
     ],
     "path": "Other/FarmJoeKits/CoreFarmerJoe.cs",
-    "size": 16435,
+    "size": 16369,
     "fileName": "CoreFarmerJoe.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/CoreFarmerJoe.cs"
   },
@@ -10723,6 +10723,20 @@
     "size": 4240,
     "fileName": "BlackHoleSunMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/BlackHoleSunMerge.cs"
+  },
+  {
+    "name": "Inevitabilis Merge",
+    "description": "Farms the required materials and buys the selected item/mode from the merge shop in /timeinn",
+    "tags": [
+      "timeinn",
+      "merge",
+      "eternal scale",
+      "shop"
+    ],
+    "path": "Other/MergeShops/InevitabilisMerge.cs",
+    "size": 6951,
+    "fileName": "InevitabilisMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/InevitabilisMerge.cs"
   },
   {
     "name": "ChaosLab Mergeshop",
@@ -15596,7 +15610,7 @@
       "death victor"
     ],
     "path": "Seasonal/StaffBirthdays/DageTheEvil/UnderVoidBadgesAll.cs",
-    "size": 5018,
+    "size": 5022,
     "fileName": "UnderVoidBadgesAll.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/UnderVoidBadgesAll.cs"
   },

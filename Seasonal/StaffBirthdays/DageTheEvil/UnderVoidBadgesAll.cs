@@ -43,7 +43,6 @@ public class UnderVoidBadgesAll
 
         UndervoidStory.CompleteUnderVoid();
         Core.EquipClass(ClassType.Solo);
-        Adv.BestGear(GearBoost.Undead);
         Core.AddDrop("Conquest's Pride");
 
         if (Core.HasWebBadge(badge1))
@@ -54,6 +53,7 @@ public class UnderVoidBadgesAll
         else if (Daily.CheckDaily(3411))
         {
             Core.Logger($"Doing UnderVoid Quest for {badge1} badge");
+            Adv.BestGear(GearBoost.Undead);
             Core.EnsureAccept(3411);
             Core.HuntMonster("undervoid", "Conquest", "Conquest Defeated");
             Core.EnsureComplete(3411);
