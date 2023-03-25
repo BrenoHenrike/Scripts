@@ -17,7 +17,7 @@
       "null"
     ],
     "path": "CoreDailies.cs",
-    "size": 40583,
+    "size": 40593,
     "fileName": "CoreDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreDailies.cs"
   },
@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 93782,
+    "size": 93607,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -39,7 +39,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 132147,
+    "size": 130987,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -149,7 +149,7 @@
       "null"
     ],
     "path": "Legion/CoreLegion.cs",
-    "size": 28047,
+    "size": 28054,
     "fileName": "CoreLegion.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/CoreLegion.cs"
   },
@@ -715,7 +715,7 @@
       "etherstorm-wastes"
     ],
     "path": "Story/EtherstormWastes.cs",
-    "size": 14975,
+    "size": 15216,
     "fileName": "EtherstormWastes.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/EtherstormWastes.cs"
   },
@@ -1487,7 +1487,7 @@
       "null"
     ],
     "path": "Army/CoreArmyLite.cs",
-    "size": 35979,
+    "size": 36951,
     "fileName": "CoreArmyLite.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/CoreArmyLite.cs"
   },
@@ -1623,7 +1623,7 @@
       "all"
     ],
     "path": "Seasonal/AllSeasonal.cs",
-    "size": 9517,
+    "size": 9566,
     "fileName": "AllSeasonal.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AllSeasonal.cs"
   },
@@ -2867,7 +2867,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 60848,
+    "size": 60957,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -4948,7 +4948,7 @@
       "null"
     ],
     "path": "Story/QueenofMonsters/CoreQOM.cs",
-    "size": 31504,
+    "size": 31678,
     "fileName": "CoreQOM.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/QueenofMonsters/CoreQOM.cs"
   },
@@ -5314,7 +5314,7 @@
       "null"
     ],
     "path": "Story/LordsofChaos/Core13LoC.cs",
-    "size": 77351,
+    "size": 78693,
     "fileName": "Core13LoC.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/LordsofChaos/Core13LoC.cs"
   },
@@ -5630,7 +5630,7 @@
       "nation"
     ],
     "path": "Story/Nation/Bamboozle.cs",
-    "size": 4673,
+    "size": 4687,
     "fileName": "Bamboozle.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Nation/Bamboozle.cs"
   },
@@ -7907,7 +7907,7 @@
       "merge shop"
     ],
     "path": "Seasonal/AkibaNewYear/YokaiNewYearMerge.cs",
-    "size": 17785,
+    "size": 17798,
     "fileName": "YokaiNewYearMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AkibaNewYear/YokaiNewYearMerge.cs"
   },
@@ -7922,7 +7922,7 @@
       "story"
     ],
     "path": "Seasonal/AkibaNewYear/YokaiHunt.cs",
-    "size": 2681,
+    "size": 2695,
     "fileName": "YokaiHunt.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AkibaNewYear/YokaiHunt.cs"
   },
@@ -8968,7 +8968,7 @@
       "story"
     ],
     "path": "Seasonal/HerosHeartDay/Wubbles.cs",
-    "size": 1974,
+    "size": 2137,
     "fileName": "Wubbles.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HerosHeartDay/Wubbles.cs"
   },
@@ -10588,7 +10588,7 @@
       "mergeshop"
     ],
     "path": "Other/MergeShops/Adam1a1Merge.cs",
-    "size": 11719,
+    "size": 11733,
     "fileName": "Adam1a1Merge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/Adam1a1Merge.cs"
   },
@@ -10928,7 +10928,7 @@
       "null"
     ],
     "path": "Other/MergeShops/CraggleRockMerge.cs",
-    "size": 9319,
+    "size": 9333,
     "fileName": "CraggleRockMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/CraggleRockMerge.cs"
   },
@@ -10999,7 +10999,7 @@
       "null"
     ],
     "path": "Other/MergeShops/BeleensMerge.cs",
-    "size": 20626,
+    "size": 20640,
     "fileName": "BeleensMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/BeleensMerge.cs"
   },
@@ -11186,7 +11186,7 @@
       "null"
     ],
     "path": "Other/MergeShops/LegionPyromancerMerge.cs",
-    "size": 8170,
+    "size": 7476,
     "fileName": "LegionPyromancerMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/LegionPyromancerMerge.cs"
   },
@@ -12323,7 +12323,7 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/NulgathsCombatStyles/SoulReaperofNulgath.cs"
   },
   {
-    "name": "(Class) Void Highlord",
+    "name": "Void Highlord (Class)",
     "description": "This will farm all requirements for the Void Highlord class to obtain.",
     "tags": [
       "farm",
@@ -12414,6 +12414,21 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/MergeShops/FiendshardMerge.cs"
   },
   {
+    "name": "Crag's Gem Merge",
+    "description": "This script farms all the materials needed for Crag's Gem Merge in tercessuinotlim.",
+    "tags": [
+      "crag",
+      "nulgath",
+      "merge",
+      "gem",
+      "empowered voidstone"
+    ],
+    "path": "Nation/MergeShops/CragsGemMerge.cs",
+    "size": 9400,
+    "fileName": "CragsGemMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/MergeShops/CragsGemMerge.cs"
+  },
+  {
     "name": "NulgathDiamondMerge",
     "description": "null",
     "tags": [
@@ -12434,6 +12449,22 @@
     "size": 7942,
     "fileName": "NulgathWarMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/MergeShops/NulgathWarMerge.cs"
+  },
+  {
+    "name": "Dirtlicker's Merge Shop",
+    "description": "This script farms all the materials needed for Dirtlicker's Merge Shop in archportal.",
+    "tags": [
+      "dirtlicker",
+      "archportal",
+      "merge",
+      "nulgath",
+      "ennh",
+      "enchanted nulgath nation house"
+    ],
+    "path": "Nation/MergeShops/DirtlickersMerge.cs",
+    "size": 9257,
+    "fileName": "DirtlickersMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/MergeShops/DirtlickersMerge.cs"
   },
   {
     "name": "DilligasMerge",
@@ -13098,7 +13129,7 @@
       "null"
     ],
     "path": "Good/BLoD/CoreBLOD.cs",
-    "size": 25579,
+    "size": 25394,
     "fileName": "CoreBLOD.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/CoreBLOD.cs"
   },
@@ -14361,7 +14392,7 @@
       "craggle rock"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyCraggleRockRep.cs",
-    "size": 1876,
+    "size": 2325,
     "fileName": "ArmyCraggleRockRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyCraggleRockRep.cs"
   },
@@ -15565,7 +15596,7 @@
       "death victor"
     ],
     "path": "Seasonal/StaffBirthdays/DageTheEvil/UnderVoidBadgesAll.cs",
-    "size": 4457,
+    "size": 5018,
     "fileName": "UnderVoidBadgesAll.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/UnderVoidBadgesAll.cs"
   },
@@ -16037,7 +16068,7 @@
       "null"
     ],
     "path": "Other/Classes/ArchMage/CoreArchMage.cs",
-    "size": 21837,
+    "size": 21984,
     "fileName": "CoreArchMage.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/ArchMage/CoreArchMage.cs"
   },

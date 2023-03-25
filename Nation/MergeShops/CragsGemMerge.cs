@@ -1,24 +1,22 @@
 /*
-name: CraggleRockMerge
-description: null
-tags: null
+name: Crag's Gem Merge
+description: This script farms all the materials needed for Crag's Gem Merge in tercessuinotlim.
+tags: crag, nulgath, merge, gem, empowered voidstone
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
 
-public class CraggleRockMerge
+public class CragsGemMerge
 {
-    public IScriptInterface Bot => IScriptInterface.Instance;
-    public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new();
-    public CoreStory Story = new();
-    public CoreAdvanced Adv = new();
-    public static CoreAdvanced sAdv = new();
+    private IScriptInterface Bot => IScriptInterface.Instance;
+    private CoreBots Core => CoreBots.Instance;
+    private CoreFarms Farm = new();
+    private CoreAdvanced Adv = new();
+    private static CoreAdvanced sAdv = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
     public string[] MultiOptions = { "Generic", "Select" };
@@ -27,19 +25,20 @@ public class CraggleRockMerge
     //              If true, it will not stop the script if the default case triggers and the user chose to only get mats
     private bool dontStopMissingIng = false;
 
-    public void ScriptMain(IScriptInterface bot)
+    public void ScriptMain(IScriptInterface Bot)
     {
+        Core.BankingBlackList.AddRange(new[] { "Empowered Voidstone", "Ice Diamond", "Dark Bloodstone", "Butterfly Sapphire", "Understone", "Rainbow Moonstone" });
         Core.SetOptions();
 
         BuyAllMerge();
-
         Core.SetOptions(false);
     }
 
     public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
+        Farm.CraggleRockREP();
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("cragglerock", 1819, findIngredients, buyOnlyThis, buyMode: buyMode);
+        Adv.StartBuyAllMerge("tercessuinotlim", 1819, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()
@@ -62,80 +61,80 @@ public class CraggleRockMerge
                 #endregion
 
                 case "Empowered Voidstone":
-                    Core.RegisterQuests(7277);
-                    Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
+                    Core.RegisterQuests(7277);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.KillMonster("wanders", "r2", "Down", "Kalestri Worshiper", "Star of the Sandsea");
+                        Core.KillMonster("wanders", "r2", "Down", "Kalestri Worshiper", log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
                     break;
 
                 case "Ice Diamond":
-                    Core.RegisterQuests(7279);
-                    Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
+                    Core.RegisterQuests(7279);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("kingcoal", "Snow Golem", "Frozen Coal", 10);
+                        Core.HuntMonster("kingcoal", "Snow Golem", log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
                     break;
 
                 case "Dark Bloodstone":
-                    Core.RegisterQuests(7281);
-                    Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
+                    Core.RegisterQuests(7281);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("safiria", "Blood Maggot", "Blood Gem", 10);
+                        Core.HuntMonster("safiria", "Blood Maggot", log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
                     break;
 
                 case "Butterfly Sapphire":
-                    Core.RegisterQuests(7287);
-                    Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
+                    Core.RegisterQuests(7287);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("bloodtusk", "Trollola Plant", "Butterfly Bloom", 15);
+                        Core.HuntMonster("bloodtusk", "Trollola Plant", log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
                     break;
 
                 case "Understone":
-                    Bot.Quests.UpdateQuest(939);
-                    Core.RegisterQuests(7289);
-                    Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
+                    Core.RegisterQuests(7289);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.KillMonster("battleunderc", "Enter", "Spawn", "*", "Fluorite Shard", 10);
+                        Core.HuntMonster("battleunderc", "Blue Crystalized Undead", log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
                     break;
 
                 case "Rainbow Moonstone":
-                    Core.RegisterQuests(7291);
-                    Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
+                    Core.RegisterQuests(7291);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("earthstorm", "Diamond Golem", "Chip of Diamond");
-                        Core.HuntMonster("earthstorm", "Emerald Golem", "Chip of Emerald");
-                        Core.HuntMonster("earthstorm", "Ruby Golem", "Chip of Ruby");
-                        Core.HuntMonster("earthstorm", "Sapphire Golem", "Chip of Sapphire");
+                        Core.HuntMonster("earthstorm", "Diamond Golem", "Chip of Diamond", log: false);
+                        Core.HuntMonster("earthstorm", "Emerald Golem", "Chip of Emerald", log: false);
+                        Core.HuntMonster("earthstorm", "Ruby Golem", "Chip of Ruby", log: false);
+                        Core.HuntMonster("earthstorm", "Sapphire Golem", "Chip of Sapphire", log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
                     break;
+
             }
         }
     }

@@ -82,42 +82,26 @@ public class LegionPyromancerMerge
 
                 case "Legion Token":
                     Core.FarmingLogger($"{req.Name}", quant);
-                    Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Legion.FarmLegionToken(quant);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    Core.CancelRegisteredQuests();
+                    Legion.FarmLegionToken(quant);
                     break;
 
                 case "Flaming Skull":
-                    Core.FarmingLogger($"{req.Name}", quant);
-                    Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster("underworld", "Frozen Pyromancer", req.Name, quant);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    Core.CancelRegisteredQuests();
+                    Core.EquipClass(ClassType.Solo);
+                    Core.HuntMonster("underworld", "Frozen Pyromancer", req.Name, quant, isTemp: false);
                     break;
 
                 case "Darkness Shard":
                     Core.FarmingLogger($"{req.Name}", quant);
-                    Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        DShard.GetShard(quant);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    Core.CancelRegisteredQuests();
+                    DShard.GetShard(quant);
+                    if (!Core.CheckInventory(req.Name, quant))
+                        Core.Logger("Not enough Darkness Shards (Daily) try again tomarrow.", stopBot: true);
                     break;
 
                 case "Flame-Forged Metal":
                     if (!Bot.Quests.IsAvailable(793))
                         return;
                     Core.FarmingLogger($"{req.Name}", quant);
-                    Core.EquipClass(ClassType.Farm);
+                    Core.EquipClass(ClassType.Solo);
                     Core.RegisterQuests(6975);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
@@ -131,7 +115,7 @@ public class LegionPyromancerMerge
                     if (!Bot.Quests.IsAvailable(793))
                         return;
                     Core.FarmingLogger($"{req.Name}", quant);
-                    Core.EquipClass(ClassType.Farm);
+                    Core.EquipClass(ClassType.Solo);
                     Core.RegisterQuests(6977);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {

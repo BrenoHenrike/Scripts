@@ -381,7 +381,10 @@ public class CoreArchMage
             Core.HuntMonster("eternalchaos", "Eternal Drakath", "Chaotic Ether", isTemp: false, log: false);
             Core.HuntMonsterMapID("shadowattack", 68, "Mortal Ether", isTemp: false, log: false);
             Core.HuntMonster("gaiazor", "Gaiazor", "Vital Ether", isTemp: false, log: false);
-            Core.HuntMonsterMapID("fiendshard", 15, "Infernal Ether", isTemp: false, log: false);
+            //gotta use a while else it just teleports away from the fiend shard.. idk y
+            while (!Bot.ShouldExit && !Core.CheckInventory("Infernal Ether"))
+                Core.HuntMonster("fiendshard", "Nulgath's Fiend Shard", isTemp: false, log: false);
+            Core.JumpWait(); //<- fiendshard room is aggro, it will get stuck (according to skillisue havers)
 
             Core.EnsureComplete(8910);
             Bot.Wait.ForPickup("Prismatic Ether");
@@ -425,9 +428,9 @@ public class CoreArchMage
         Core.FarmingLogger("Unbound Tome", quant);
         Core.AddDrop("Unbound Tome");
 
-        MysticScribingKit(quant - Bot.Inventory.GetQuantity("Unbound Tome"));
-        PrismaticEther(quant - Bot.Inventory.GetQuantity("Unbound Tome"));
-        ArcaneLocus(quant - Bot.Inventory.GetQuantity("Unbound Tome"));
+        MysticScribingKit(quant);
+        PrismaticEther(quant);
+        ArcaneLocus(quant);
 
         while (!Bot.ShouldExit && !Core.CheckInventory("Unbound Tome", quant))
         {

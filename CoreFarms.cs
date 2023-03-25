@@ -498,7 +498,7 @@ public class CoreFarms
             Core.PvPMove(28, "Captain1", 528, 255);
 
             Bot.Kill.Monster("Team B Captain");
-            Bot.Wait.ForDrop(item);
+            Bot.Wait.ForDrop(item, 40);
             Bot.Sleep(Core.ActionDelay);
             Bot.Wait.ForPickup(item);
 
@@ -1604,7 +1604,7 @@ public class CoreFarms
         while (Bot.Map.Name != "deathpitbrawl")
         {
             Core.Logger("Joining Brawl");
-            Bot.Map.Join("DeathPitbrawl", "Enter0", "Spawn");
+            Core.Join("DeathPitbrawl", "Enter0", "Spawn");
             Bot.Sleep(Core.ActionDelay);
         }
 
@@ -1773,15 +1773,9 @@ public class CoreFarms
         while (!Bot.ShouldExit && FactionRank("Good") < rank)
         {
             if (!Core.IsMember)
-            {
-                Core.KillMonster("castleundead", "Enter", "Spawn", "*", "Chaorrupted Skull", 5, log: false);
-                Bot.Wait.ForQuestComplete(372);
-            }
+                Core.KillMonster("castleundead", "Enter", "Spawn", "*", log: false);
             else
-            {
                 Core.HuntMonster("sewer", "Grumble", "Grumble's Fang", log: false);
-                Bot.Wait.ForQuestComplete(371);
-            }
         }
         Core.CancelRegisteredQuests();
         ToggleBoost(BoostType.Reputation, false);

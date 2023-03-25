@@ -366,7 +366,13 @@ public class EtherStormWastes
         Story.KillQuest(3503, "Natatorium", "Merdraconian");
 
         //Must Be All Those Limbs 3504
-        Story.KillQuest(3504, "wanders", new[] { "Lotus Spider", "Kalestri Worshiper" });
+        if (!Story.QuestProgression(3504))
+        {
+            Core.EnsureAccept(3504);
+            Core.KillMonster("wanders", "r2", "Down", "Lotus Spider", "Lotus Petal", 5);
+            Core.KillMonster("wanders", "r2", "Down", "Kalestri Worshiper", "Talisman of Renewal", 5);
+            Core.EnsureComplete(3504);
+        }
 
         //What We Need Is More Mages 3505
         Story.MapItemQuest(3505, "dragonrune", new[] { 2649, 2650, 2651, 2652, 2653 });

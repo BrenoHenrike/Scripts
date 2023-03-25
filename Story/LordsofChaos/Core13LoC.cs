@@ -919,23 +919,55 @@ public class Core13LoC
         //Confront Duat
         Story.MapItemQuest(971, "pyramid", 304);
 
+        Bot.Quests.UpdateQuest(3773);
+
         //They've Gone Dark
-        Story.KillQuest(972, "wanders", "Kalestri Worshiper");
+        if (!Story.QuestProgression(972))
+        {
+            Core.EnsureAccept(972);
+            Core.KillMonster("wanders", "r2", "Right", "Kalestri Worshiper", "Dark Medallion", 8);
+            Core.EnsureComplete(972);
+        }
 
         //Bad Doggies
-        Story.KillQuest(973, "wanders", "Kalestri Hound");
+        if (!Story.QuestProgression(973))
+        {
+            Core.EnsureAccept(973);
+            Core.KillMonster("wanders", "r3", "Right", "Kalestri Hound", "Hound Defeated", 10);
+            Core.EnsureComplete(973);
+        }
 
         //Essentially Evil
-        Story.KillQuest(974, "wanders", "Kalestri Hound");
+        if (!Story.QuestProgression(974))
+        {
+            Core.EnsureAccept(974);
+            Core.KillMonster("wanders", "r3", "Right", "Kalestri Hound", "Evil Essence", 10);
+            Core.EnsureComplete(974);
+        }
 
         //Loose Threads
-        Story.KillQuest(975, "wanders", "Lotus Spider");
+        if (!Story.QuestProgression(975))
+        {
+            Core.EnsureAccept(975);
+            Core.KillMonster("wanders", "r2", "Right", "Lotus Spider", "Spider Defeated", 6);
+            Core.EnsureComplete(975);
+        }
 
         //Seek The Treasure
-        Story.MapItemQuest(976, "wanders", 306);
+        if (!Story.QuestProgression(976))
+        {
+            Core.EnsureAccept(976);
+            Core.GetMapItem(306, 1, "wanders");
+            Core.EnsureComplete(976);
+        }
 
         //Dreamsand
-        Story.KillQuest(977, "wanders", "Lotus Spider");
+        if (!Story.QuestProgression(977))
+        {
+            Core.EnsureAccept(977);
+            Core.KillMonster("wanders", "r2", "Right", "Lotus Spider", "Dreamsand");
+            Core.EnsureComplete(977);
+        }
 
         //I Dream Of...
         if (!Story.QuestProgression(978))
@@ -2295,24 +2327,28 @@ public class Core13LoC
         Story.KillQuest(3799, "shadowattack", "Death");
 
         //Enter Confrontation
-        Core.Join("confrontation");
-        Story.ChainQuest(3875);
-
-        Bot.Quests.UpdateQuest(182, 4);
+        if (!Core.isCompletedBefore(3876))
+        {
+            Core.EnsureAccept(3875);
+            Core.Join("confrontation");
+            Core.EnsureComplete(3875);
+        }
 
         // Defeat Drakath!
         if (!Story.QuestProgression(3876))
         {
             Core.EnsureAccept(3876);
-            Core.HuntMonsterMapID("finalbattle", 1);
+            while (!Bot.ShouldExit && !Core.CheckInventory(26875))
+                Core.HuntMonsterMapID("finalbattle", 1);
             Core.EnsureComplete(3876);
         }
 
         //Defeat Drakath.. again!
         if (!Story.QuestProgression(3877))
         {
-            Core.EnsureComplete(3877);
-            Core.HuntMonsterMapID("finalbattle", 14);
+            Core.EnsureAccept(3877);
+            while (!Bot.ShouldExit && !Core.CheckInventory(26876))
+                Core.HuntMonsterMapID("finalbattle", 14);
             Core.EnsureComplete(3877);
         }
 
@@ -2320,32 +2356,35 @@ public class Core13LoC
         if (!Story.QuestProgression(3878))
         {
             Core.EnsureAccept(3878);
-            Core.HuntMonsterMapID("finalbattle", 23);
+            while (!Bot.ShouldExit && !Core.CheckInventory(26877))
+                Core.HuntMonsterMapID("finalbattle", 23);
             Core.EnsureComplete(3878);
+            Bot.Wait.ForMapLoad("confrontation");
         }
 
         //Defeat the 12 Lords of Chaos!
         if (!Story.QuestProgression(3879))
         {
             Core.EnsureAccept(3879);
-            Core.KillMonster("chaosrealm", "r24", "Left", "Alteon", "Chaos Lord Alteon Defeated");
+            Core.HuntMonsterMapID("chaosrealm", 13, "Chaos Lord Alteon Defeated");
             Core.EnsureComplete(3879);
+            Bot.Wait.ForMapLoad("confrontation");
         }
 
         //Defeat the 13th Lord of Chaos
         if (!Story.QuestProgression(3880))
         {
             Core.EnsureAccept(3880);
-            Core.KillMonster($"chaoslord", "r2", "Left", "*", "13th Lord of Chaos Defeated");
+            Core.HuntMonsterMapID("finalbattle", 1, "13th Lord of Chaos Defeated");
             Core.EnsureComplete(3880);
+            Bot.Wait.ForMapLoad("confrontation");
         }
 
         //The Final Showdown!
         if (!Story.QuestProgression(3881))
         {
             Core.EnsureAccept(3881);
-            Core.Join("finalshowdown"); // for the updatequestbit
-            Core.KillMonster("finalshowdown", "r2", "Left", "Prince Drakath", "Prince Drakath Defeated");
+            Core.HuntMonsterMapID("finalshowdown", 1, "Prince Drakath Defeated");
             Core.EnsureComplete(3881);
         }
     }

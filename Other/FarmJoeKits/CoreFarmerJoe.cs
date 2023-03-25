@@ -215,11 +215,11 @@ public class CoreFarmerJoe
     public void Level30to75()
     {
         #region Obtain Boost Weapons
-        //Arcane Blade of Glory / Shadow Blade of Dispair (+20% xp)
-        Core.Logger("Arcane Blade of Glory / Shadow Blade of Dispair (+20% xp)");
+        //Arcane Blade of Glory / Shadow Blade of Despair (+20% xp)
+        Core.Logger("Arcane Blade of Glory / Shadow Blade of Despair (+20% xp)");
         EVBW.GetWeapon(VictoryBladeStyles.Smart);
-        Adv.EnhanceItem(Core.CheckInventory("Arcane Blade of Glory") ? "Arcane Blade of Glory" : "Shadow Blade of Dispair", EnhancementType.Lucky);
-        Core.Equip(Core.CheckInventory("Arcane Blade of Glory") ? "Arcane Blade of Glory" : "Shadow Blade of Dispair");
+        Adv.EnhanceItem(Core.CheckInventory("Arcane Blade of Glory") ? "Arcane Blade of Glory" : "Shadow Blade of Despair", EnhancementType.Lucky);
+        Core.Equip(Core.CheckInventory("Arcane Blade of Glory") ? "Arcane Blade of Glory" : "Shadow Blade of Despair");
         DCSK.GetWep();
         Core.ToBank("Blade of Awe", "Dual ChainSaw Katanas", "Battle Oracle Battlestaff");
         Core.SellItem("Default Staff");

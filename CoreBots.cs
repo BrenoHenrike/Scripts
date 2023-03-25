@@ -96,28 +96,14 @@ public class CoreBots
     /// <param name="changeTo">Value the options will be changed to</param>
     public void SetOptions(bool changeTo = true, bool disableClassSwap = false)
     {
+        // These things need to be set and checked before anything else
         if (changeTo)
         {
             Bot.Events.ScriptStopping += CrashDetector;
             SkuaVersionChecker("1.2.2.1");
 
-            if (Bot.Config != null && Bot.Config.Options.Contains(SkipOptions) && !Bot.Config.Get<bool>(SkipOptions))
-                Bot.Config.Configure();
-
-            ReadCBO();
-
             loadedBot = Bot.Manager.LoadedScript.Replace("\\", "/").Split("/Scripts/").Last().Replace(".cs", "");
             Logger($"Bot Started [{loadedBot}]");
-
-            if (Directory.Exists(ButlerLogDir))
-            {
-                if (File.Exists(ButlerLogPath()))
-                    File.Delete(ButlerLogPath());
-
-                string[] files = Directory.GetFiles(ButlerLogDir);
-                if (files.Any(x => x.Contains("~!") && x.Split("~!").First() == Username().ToLower()))
-                    File.Delete(files.First(x => x.Contains("~!") && x.Split("~!").First() == Username().ToLower()));
-            }
 
             if (!Bot.Player.LoggedIn)
             {
@@ -131,16 +117,10 @@ public class CoreBots
                 else Logger("Please log-in before starting the bot.\nIf you are already logged in but are receiving this message regardless, please re-install CleanFlash", messageBox: true, stopBot: true);
             }
 
-            IsMember = Bot.Player.IsMember;
+            if (Bot.Config != null && Bot.Config.Options.Contains(SkipOptions) && !Bot.Config.Get<bool>(SkipOptions))
+                Bot.Config.Configure();
 
-            ReadMe();
-            Task.Run(() =>
-            {
-                if (OneTimeMessage("discordServerV10",
-                    "Our Discord server was recently deleted [24 Feb 2023]. We quickly restored it. Press \"Yes\" if you wish to join and open the new server.",
-                    true, true, true))
-                    Process.Start("explorer", DiscordLink);
-            });
+            ReadCBO();
         }
 
         // Common Options
@@ -160,89 +140,118 @@ public class CoreBots
 
         CollectData(changeTo);
 
+        // These things need to be taken care of too, but less priority
         if (changeTo)
         {
+            SetOptionsAsync();
+
             Bot.Options.HuntDelay = HuntDelay;
-            Bot.Events.ScriptStopping += StopBotEvent;
 
-            Bot.Send.Packet("%xt%zm%afk%1%false%");
-            Bot.Sleep(ActionDelay);
-            bool TimerRunning = false;
-            Bot.Handlers.RegisterHandler(5000, b =>
-            {
-                if (b.Player.AFK && !TimerRunning)
-                {
-                    TimerRunning = true;
-                    Bot.Sleep(300000);
-                    if (b.Player.AFK)
-                    {
-                        b.Options.AutoRelogin = true;
-                        b.Servers.Logout();
-                    }
-                    TimerRunning = false;
-                }
-            }, "AFK Handler");
-
-            Bot.Handlers.RegisterHandler(3000, b =>
-            {
-                if (Bot.Quests.Tree.Count() > LoadedQuestLimit)
-                {
-                    Bot.Flash.SetGameObject("world.questTree", new ExpandoObject());
-                }
-            }, "Quest-Limit Handler");
-
-            if (loadedBot.Replace("\\", "/") != "Tools/Butler")
-            {
-                Bot.Events.MapChanged += PrisonDetector;
-                void PrisonDetector(string map)
-                {
-                    if (map.ToLower() == "prison" && !joinedPrison && !prisonListernerActive)
-                    {
-                        prisonListernerActive = true;
-                        Bot.Options.AutoRelogin = false;
-                        Bot.Servers.Logout();
-                        string message = "You were teleported to /prison by someone other than the bot. We disconnected you and stopped the bot out of precaution.\n" +
-                                         "Be ware that you might have received a ban, as this is a method moderators use to see if you're botting." +
-                                         (!PrivateRooms || PrivateRoomNumber < 1000 || PublicDifficult ? "\nGuess you should have stayed out of public rooms!" : String.Empty);
-                        Logger(message);
-                        Bot.ShowMessageBox(message, "Unauthorized joining of /prison detected!", "Oh fuck!");
-                        Bot.Stop(true);
-                    }
-                }
-            }
-
-            Bot.Bank.Load();
+            Bot.Bank.Open();
             Bot.Bank.Loaded = true;
             if (BankMiscAC)
                 BankACMisc();
             if (BankUnenhancedACGear)
                 BankACUnenhancedGear();
 
-            foreach (InventoryItem item in Bot.Inventory.Items.Where(i => i.Equipped))
-                EquipmentBeforeBot.Add(item.Name);
-
+            EquipmentBeforeBot.AddRange(Bot.Inventory.Items.Where(i => i.Equipped).Select(x => x.Name));
             currentClass = ClassType.None;
             usingSoloGeneric = SoloClass.ToLower() == "generic";
             usingFarmGeneric = FarmClass.ToLower() == "generic";
             EquipClass(disableClassSwap ? ClassType.None : ClassType.Solo);
 
-            // Anti-lag option
-            if (AntiLag)
-            {
-                Bot.Options.LagKiller = true;
-                Bot.Flash.SetGameObject("stage.frameRate", 10);
-                if (!Bot.Flash.GetGameObject<bool>("ui.monsterIcon.redX.visible"))
-                    Bot.Flash.CallGameFunction("world.toggleMonsters");
-            }
-
-            Bot.Options.CustomName = "SKUA BOT";
-            Bot.Options.CustomGuild = "HTTPS://AUQW.TK/";
-
+            Bot.Events.ScriptStopping += StopBotEvent;
             Bot.Drops.Start();
 
             Logger("Bot Configured");
+
+            // Bunch of things that are done in the background and you dont need the bot to wait for 
+            void SetOptionsAsync()
+            {
+                Task.Run(() =>
+                {
+                    // Butler directory cleaning
+                    if (Directory.Exists(ButlerLogDir))
+                    {
+                        if (File.Exists(ButlerLogPath()))
+                            File.Delete(ButlerLogPath());
+
+                        string[] files = Directory.GetFiles(ButlerLogDir);
+                        if (files.Any(x => x.Contains("~!") && x.Split("~!").First() == Username().ToLower()))
+                            File.Delete(files.First(x => x.Contains("~!") && x.Split("~!").First() == Username().ToLower()));
+                    }
+
+                    // Making sure its set and wont change
+                    IsMember = Bot.Player.IsMember;
+
+                    // AFK Handler
+                    Bot.Send.Packet("%xt%zm%afk%1%false%");
+                    Bot.Sleep(ActionDelay);
+                    bool TimerRunning = false;
+                    Bot.Handlers.RegisterHandler(5000, b =>
+                    {
+                        if (b.Player.AFK && !TimerRunning)
+                        {
+                            TimerRunning = true;
+                            Bot.Sleep(300000);
+                            if (b.Player.AFK)
+                            {
+                                b.Options.AutoRelogin = true;
+                                b.Servers.Logout();
+                            }
+                            TimerRunning = false;
+                        }
+                    }, "AFK Handler");
+
+                    // Settin Loaded Quest Limiter
+                    Bot.Handlers.RegisterHandler(3000, b =>
+                    {
+                        if (Bot.Quests.Tree.Count() > LoadedQuestLimit)
+                        {
+                            Bot.Flash.SetGameObject("world.questTree", new ExpandoObject());
+                        }
+                    }, "Quest-Limit Handler");
+
+                    // Prison Detector
+                    if (loadedBot.Replace("\\", "/") != "Tools/Butler")
+                    {
+                        Bot.Events.MapChanged += PrisonDetector;
+                        void PrisonDetector(string map)
+                        {
+                            if (map.ToLower() == "prison" && !joinedPrison && !prisonListernerActive)
+                            {
+                                prisonListernerActive = true;
+                                Bot.Options.AutoRelogin = false;
+                                Bot.Servers.Logout();
+                                string message = "You were teleported to /prison by someone other than the bot. We disconnected you and stopped the bot out of precaution.\n" +
+                                                 "Be ware that you might have received a ban, as this is a method moderators use to see if you're botting." +
+                                                 (!PrivateRooms || PrivateRoomNumber < 1000 || PublicDifficult ? "\nGuess you should have stayed out of public rooms!" : String.Empty);
+                                Logger(message);
+                                Bot.ShowMessageBox(message, "Unauthorized joining of /prison detected!", "Oh fuck!");
+                                Bot.Stop(true);
+                            }
+                        }
+                    }
+
+
+                    // Anti-lag option
+                    if (AntiLag)
+                    {
+                        Bot.Options.LagKiller = true;
+                        Bot.Flash.SetGameObject("stage.frameRate", 10);
+                        if (!Bot.Flash.GetGameObject<bool>("ui.monsterIcon.redX.visible"))
+                            Bot.Flash.CallGameFunction("world.toggleMonsters");
+                    }
+
+                    // Identity Protection
+                    Bot.Options.CustomName = "SKUA BOT";
+                    Bot.Options.CustomGuild = "HTTPS://AUQW.TK/";
+
+                });
+            }
         }
     }
+
     public List<string> BankingBlackList = new();
     private List<string> EquipmentBeforeBot = new();
     private bool joinedPrison = false;
@@ -582,7 +591,7 @@ public class CoreBots
     /// <param name="items">Items to move</param>
     public void ToBank(params string[] items)
     {
-        if (items == null)
+        if (items == null || !items.Any())
             return;
 
         JumpWait();
@@ -615,7 +624,7 @@ public class CoreBots
     /// <param name="items">Items to move</param>
     public void ToBank(params int[] items)
     {
-        if (items == null)
+        if (items == null || !items.Any())
             return;
 
         JumpWait();
@@ -632,7 +641,7 @@ public class CoreBots
             }
             if (Bot.Inventory.Contains(item))
             {
-                string name = Bot.Inventory.GetItem(item)!.Name;
+                string name = Bot.Inventory.GetItem(item)?.Name ?? $"[{item}]";
                 if (!Bot.Inventory.EnsureToBank(item))
                 {
                     Logger($"Failed to bank {name}, skipping it");
@@ -1544,67 +1553,7 @@ public class CoreBots
                 Rest();
             }
         }
-
-        void huntFix(string monster)
-        {
-            string[] names = monster.Split('|', StringSplitOptions.TrimEntries);
-            DebugLogger(this);
-            while ((!token?.IsCancellationRequested ?? true) && !Bot.ShouldExit)
-            {
-                DebugLogger(this);
-                List<string> cells =
-                    names.SelectMany(n =>
-                        Bot.Monsters.MapMonsters.Where(m =>
-                        (n == "*" || m.Name.Trim().ToLower() == n.Trim().ToLower()))
-                        .Select(m => m.Cell)
-                        .Distinct()
-                        .ToList())
-                    .Distinct()
-                    .ToList();
-                DebugLogger(this);
-                foreach (string cell in cells)
-                {
-                    DebugLogger(this);
-                    if (token?.IsCancellationRequested ?? false)
-                        break;
-                    DebugLogger(this);
-                    if (!cells.Contains(Bot.Player.Cell) && (!token?.IsCancellationRequested ?? true))
-                    {
-                        DebugLogger(this);
-                        if (Environment.TickCount - _lastHuntTick < Bot.Options.HuntDelay)
-                            Thread.Sleep(Bot.Options.HuntDelay - Environment.TickCount + _lastHuntTick);
-                        DebugLogger(this);
-                        Bot.Map.Jump(cell, "Left");
-                        DebugLogger(this);
-                        _lastHuntTick = Environment.TickCount;
-                        DebugLogger(this);
-                    }
-                    DebugLogger(this);
-                    foreach (string mon in names)
-                    {
-                        DebugLogger(this);
-                        if (token?.IsCancellationRequested ?? false)
-                            break;
-                        DebugLogger(this);
-                        if (Bot.Monsters.MapMonsters.Any(m => monster == "*" || (m.Name.Trim().ToLower() == monster.Trim().ToLower() && (!token?.IsCancellationRequested ?? true))))
-                        {
-                            DebugLogger(this);
-                            Bot.Kill.Monster(mon, token);
-                            DebugLogger(this);
-                            return;
-                        }
-                        DebugLogger(this);
-                    }
-                    DebugLogger(this);
-                    Thread.Sleep(200);
-                    DebugLogger(this);
-                }
-            }
-        }
     }
-    private bool? huntFixed = null;
-    private int _lastHuntTick;
-    private CancellationToken? token = null;
 
     /// <summary>
     /// Kills a monster using it's MapID
@@ -2266,38 +2215,34 @@ public class CoreBots
 
     public void BankACMisc()
     {
-        List<string> Whitelisted = new() { "Note", "Item", "Resource", "QuestItem" };
-        List<string> WhitelistedSU = new() { "Note", "Item", "Resource", "QuestItem", "ServerUse" };
-        List<string> MiscForBank = new();
+        List<ItemCategory> whiteList = new() { ItemCategory.Note, ItemCategory.Item, ItemCategory.Resource, ItemCategory.QuestItem };
+        // If boosts are not enabled, bank those too
+        if (!Bot.Boosts.Enabled && (CBO_Active() ||
+                !new[] { "doGoldBoost", "doClassBoost", "doRepBoost", "doExpBoost" }.Any(b => CBOBool(b, out bool o) && o)))
+            whiteList.Add(ItemCategory.ServerUse);
 
-        bool boostsEnabled = Bot.Boosts.Enabled || (CBO_Active() && (
-                            (CBOBool("doGoldBoost", out bool _doGoldBoost) && _doGoldBoost) ||
-                            (CBOBool("doClassBoost", out bool _doClassBoost) && _doClassBoost) ||
-                            (CBOBool("doRepBoost", out bool _doRepBoost) && _doRepBoost) ||
-                            (CBOBool("doExpBoost", out bool _doExpBoost) && _doExpBoost)));
-
-        foreach (var item in Bot.Inventory.Items)
-        {
-            if (boostsEnabled ? !Whitelisted.Contains(item.Category.ToString()) : !WhitelistedSU.Contains(item.Category.ToString()))
-                continue;
-            if (item.Name != "Treasure Potion" && !BankingBlackList.Contains(item.Name) && item.Coins)
-                MiscForBank.Add(item.Name);
-        }
-        ToBank(MiscForBank.ToArray());
+        // Bank AC items based on whitelist, excempt blacklist and treasure potion
+        ToBank(Bot.Inventory.Items.Where(x =>
+            whiteList.Contains(x.Category) &&
+            x.Coins &&
+            !BankingBlackList.Contains(x.Name) &&
+            // 18927 is Treasure Potion
+            x.ID != 18927
+        ).Select(x => x.ID).ToArray());
     }
 
     public void BankACUnenhancedGear()
     {
-        List<string> Whitelisted = new() { "Class", "Helm", "Cape" };
+        List<ItemCategory> Whitelisted = new() { ItemCategory.Class, ItemCategory.Helm, ItemCategory.Cape };
         ToBank(Bot.Inventory.Items.Where(i =>
-            (Whitelisted.Contains(i.CategoryString) ||
+            (Whitelisted.Contains(i.Category) ||
             i.ItemGroup == "Weapon") &&
             i.Coins &&
             i.EnhancementLevel == 0 &&
             !i.Equipped &&
             !SoloGear.Contains(i.Name) &&
             !FarmGear.Contains(i.Name)
-        ).Select(i => i.Name).ToArray());
+        ).Select(i => i.ID).ToArray());
     }
 
     public Option<bool> SkipOptions = new Option<bool>("SkipOption", "Skip this window next time", "You will be able to return to this screen via [Scripts] -> [Edit Script Options] if you wish to change anything.", false);
@@ -2336,50 +2281,37 @@ public class CoreBots
         if (!Bot.Player.InCombat)
             return;
 
-        ToggleAggro(false);
-        List<string> MonsterCells = Bot.Monsters.MapMonsters.Select(monster => monster.Cell).ToList();
-
-        if (!MonsterCells.Contains(Bot.Player.Cell))
+        List<string> blackListedCells = Bot.Monsters.MapMonsters.Select(monster => monster.Cell).ToList();
+        if (!blackListedCells.Contains(Bot.Player.Cell))
             return;
-        string[] blankCells = new[] { "wait", "blank" };
-        string cell = string.Empty;
-        string pad = string.Empty;
-        bool jumpTwice = false;
 
-        if (!MonsterCells.Contains("Enter"))
-        {
-            cell = "Enter";
-            pad = "Spawn";
-        }
+        ToggleAggro(false);
+
+        (string?, string) cellPad = (null, "Left");
+        int jumpCount = 1;
+
+        if (!blackListedCells.Contains("Enter"))
+            cellPad = ("Enter", "Spawn");
         else
         {
-            foreach (string _cell in Bot.Map.Cells)
+            blackListedCells.AddRange(new List<string>() { "Wait", "Blank" });
+            var viableCells = Bot.Map.Cells.Except(blackListedCells);
+            if (viableCells.Any())
+                cellPad.Item1 = viableCells.First();
+            else
             {
-                if (_cell == Bot.Player.Cell || blankCells.Contains(_cell.ToLower()) || _cell.ToLower().Contains("cut"))
-                    continue;
-                if (!MonsterCells.Contains(cell))
-                {
-                    cell = _cell;
-                    pad = "Left";
-                    break;
-                }
+                cellPad = (Bot.Player.Cell, Bot.Player.Pad);
+                jumpCount = 2;
             }
         }
 
-        if (string.IsNullOrEmpty(cell) || string.IsNullOrEmpty(pad))
+        if (lastMapJW != Bot.Map.Name || lastCellPadJW != cellPad)
         {
-            cell = Bot.Player.Cell;
-            pad = Bot.Player.Pad;
-            jumpTwice = true;
-        }
+            for (int i = 0; i < jumpCount; i++)
+                Jump(cellPad!.Item1, cellPad.Item2, true);
 
-        if (lastJumpWait != $"{Bot.Map.Name} | {cell} | {pad}" || Bot.Player.InCombat)
-        {
-            Jump(cell, pad, true);
-            if (jumpTwice)
-                Jump(cell, pad, true);
-
-            lastJumpWait = $"{Bot.Map.Name} | {cell} | {pad}";
+            lastMapJW = Bot.Map.Name;
+            lastCellPadJW = cellPad!;
 
             Bot.Sleep(ExitCombatDelay < 200 ? ExitCombatDelay : ExitCombatDelay - 200);
             Bot.Wait.ForCombatExit();
@@ -2387,7 +2319,8 @@ public class CoreBots
         Bot.Combat.Exit();
         Bot.Wait.ForCombatExit();
     }
-    private string lastJumpWait = "";
+    private string lastMapJW = String.Empty;
+    private (string, string) lastCellPadJW = (String.Empty, String.Empty);
 
     /// <summary>
     /// Joins a map and does bonus steps for said map if needed
@@ -2522,10 +2455,6 @@ public class CoreBots
             case "shadowattack":
                 PrivateSimpleQuestBypass((175, 20));
                 break;
-
-            case "finalshowdown":
-                PrivateSimpleQuestBypass((182, 6));
-                break;
             #endregion
 
             #region Special Cases
@@ -2570,18 +2499,19 @@ public class CoreBots
             case "dagepvp":
             case "deathpitbrawl":
             // Room Limit: 1
+            case "finalbattle":
             case "treetitanbattle":
             case "chaosrealm":
             case "vordredboss":
             case "trickortreat":
             case "drakathfight":
-            case "finalbattle":
             case "dragonfire":
             case "darkthronehub":
             case "malgor":
             case "chaosbattle":
             case "baconcatyou":
             case "herotournament":
+            case "finalshowdown":
             case "dragonkoi":
             case "chaoslord":
             case "ravenscar":
@@ -2591,10 +2521,24 @@ public class CoreBots
             case "baconcat":
             case "tlapd":
                 // Special
-                //case "fearhouse":
                 JumpWait();
                 map = strippedMap + "-999999";
                 tryJoin();
+                break;
+            #endregion
+
+            #region Maps that cant be private and you must do yourself. (thanks AE)
+            case "fearhouse":
+            case "buyhouse":
+                if (publicRoom == false)
+                    Logger("Unfortunitaly AE forgot to make these maps private-able, and public botting is to risky. (yw)", stopBot: true);
+                else
+                {
+                    Logger("You've Chosen to bot publicly... good luck in this *public only* map.");
+                    JumpWait();
+                    Bot.Map.Join(map);
+                    Bot.Wait.ForMapLoad(map);
+                }
                 break;
             #endregion
 
@@ -3014,202 +2958,206 @@ public class CoreBots
 
     private void CollectData(bool onStartup)
     {
-        string UserID = "null";
-        bool genericData = false;
-        bool scriptNameData = false;
-        bool stopTimeData = false;
-        FileSetup();
-
-        if (!genericData || UserID == "null")
-            return;
-
-        // If on stop and it's not allowed, return
-        if (!onStartup && !stopTimeData)
-            return;
-
-        // Init HttpClient to send the request
-        HttpClient client = new HttpClient();
-
-        // Build the Field Ids and Answers dictionary object
-        var bodyValues = new Dictionary<string, string>
+        Task.Run(() =>
         {
-            {"entry.1700030786", UserID},
-            {"entry.942504290", onStartup ? "Start" : "Stop"},
-        };
+            string UserID = "null";
+            bool genericData = false;
+            bool scriptNameData = false;
+            bool stopTimeData = false;
+            FileSetup();
 
-        // If allowed, send scriptNameData
-        if (scriptNameData)
-        {
-            string botPath = Bot.Manager.LoadedScript.Split("Scripts").Last().Replace('/', '\\').Substring(1);
+            if (!genericData || UserID == "null")
+                return;
 
-            if (botPath.StartsWith("Nulgath\\"))
-                botPath.Replace("Nulgath\\", "Nation\\");
+            // If on stop and it's not allowed, return
+            if (!onStartup && !stopTimeData)
+                return;
 
-            string[] allowedPathStarters =
+            // Init HttpClient to send the request
+            HttpClient client = new HttpClient();
+
+            // Build the Field Ids and Answers dictionary object
+            var bodyValues = new Dictionary<string, string>
             {
-                "Army",
-                "Chaos",
-                "Dailies",
-                "Darkon",
-                "Enhancement",
-                "Evil",
-                "Farm",
-                "Good",
-                "Hollowborn",
-                "Legion",
-                "Nation",
-                "Other",
-                "Prototypes",
-                "Seasonal",
-                "Story",
-                "Templates",
-                "Tools",
-                "WIP"
+                {"entry.1700030786", UserID},
+                {"entry.942504290", onStartup ? "Start" : "Stop"},
             };
 
-            if (!allowedPathStarters.Any(x => botPath.StartsWith(x)))
-                botPath = "CustomPath\\" + botPath.Split("\\").Last();
-
-            bodyValues.Add("entry.1597948191", botPath);
-        }
-
-        // If allowed, send scriptInstanceData
-        if (stopTimeData)
-        {
-            if (ScriptInstanceID == 0)
-                ScriptInstanceID = Bot.Random.Next(1, Int32.MaxValue);
-
-            bodyValues.Add("entry.1361306892", ScriptInstanceID.ToString());
-        }
-
-        // Encode object to application/x-www-form-urlencoded MIME type
-        var content = new FormUrlEncodedContent(bodyValues);
-
-        // Post the request
-        // https://docs.google.com/forms/u/0/d/e/1FAIpQLSe7nkDQSKL55-g1MQQ-31jqbpVh8g65jMEJCMw7wbdjQugbVg/formResponse
-        client.PostAsync(
-            "https://docs.google.com/forms/d/e/" +
-            "1FAIpQLSe7nkDQSKL55-g1MQQ-31jqbpVh8g65jMEJCMw7wbdjQugbVg" +
-            "/formResponse",
-            content);
-
-        void FileSetup()
-        {
-            string path = Path.Combine(ClientFileSources.SkuaDIR, "DataCollectionSettings.txt");
-            if (!File.Exists(path))
+            // If allowed, send scriptNameData
+            if (scriptNameData)
             {
-                DialogResult consent = Bot.ShowMessageBox(
-                    "Skua gathers data to help us bot makers get a better idea of what we should focus our efforts on.\n\n" +
-                    "The following information will be observed and collected:\n" +
-                    "· An anonymous user ID, which is generated for you by Skua, to help us estimate the active user count.\n" +
-                    "· How long it takes to start a script.\n" +
-                    "· What scripts are used and how often.\n" +
-                    "· How long it takes to stop a script.\n" +
-                    "· A Script Instance ID, to help us match start- and stoptime.\n\n" +
-                    "However, we require your consent for the same. " +
-                    "You can select what information the developers are allowed to collect from your instance here:\n\n" +
-                    "Select \"Full\" to give full consent to the developers collecting all the aforementioned information.\n" +
-                    "Select \"Partial\" if you would like to choose what information you are comfortable sharing with the developers.\n" +
-                    "Select \"None\" if you would prefer that none of your data is collected.",
+                string botPath = Bot.Manager.LoadedScript.Split("Scripts").Last().Replace('/', '\\').Substring(1);
 
-                    "Data Collection",
-                    "Full", "Partial", "None"
-                );
-                if (consent.Text == "Full")
-                {
-                    genericData = true;
-                    scriptNameData = true;
-                    stopTimeData = true;
-                }
-                else if (consent.Text is "Cancel" or "None")
-                {
-                    genericData = false;
-                    scriptNameData = false;
-                    stopTimeData = false;
-                }
-                else if (consent.Text == "Partial")
-                {
-                    DialogResult nonOptional = Bot.ShowMessageBox(
-                        "The following two points are not optional:\n" +
-                        "· An anon userID we generate which will allows us to know our active user count.\n" +
-                        "· Start time of scripts.\n\n" +
-                        "If you accept this, select \"Yes\".\n" +
-                        "If you dont accept this, select \"No\", and we will not gather data whatsoever.",
+                if (botPath.StartsWith("Nulgath\\"))
+                    botPath.Replace("Nulgath\\", "Nation\\");
 
-                        "Non-Optional Data",
-                        "Yes", "No"
+                string[] allowedPathStarters =
+                {
+                    "Army",
+                    "Chaos",
+                    "Dailies",
+                    "Darkon",
+                    "Enhancement",
+                    "Evil",
+                    "Farm",
+                    "Good",
+                    "Hollowborn",
+                    "Legion",
+                    "Nation",
+                    "Other",
+                    "Prototypes",
+                    "Seasonal",
+                    "Story",
+                    "Templates",
+                    "Tools",
+                    "WIP"
+                };
+
+                if (!allowedPathStarters.Any(x => botPath.StartsWith(x)))
+                    botPath = "CustomPath\\" + botPath.Split("\\").Last();
+
+                bodyValues.Add("entry.1597948191", botPath);
+            }
+
+            // If allowed, send scriptInstanceData
+            if (stopTimeData)
+            {
+                if (ScriptInstanceID == 0)
+                    ScriptInstanceID = Bot.Random.Next(1, Int32.MaxValue);
+
+                bodyValues.Add("entry.1361306892", ScriptInstanceID.ToString());
+            }
+
+            // Encode object to application/x-www-form-urlencoded MIME type
+            var content = new FormUrlEncodedContent(bodyValues);
+
+            // Post the request
+            // https://docs.google.com/forms/u/0/d/e/1FAIpQLSe7nkDQSKL55-g1MQQ-31jqbpVh8g65jMEJCMw7wbdjQugbVg/formResponse
+            client.PostAsync(
+                "https://docs.google.com/forms/d/e/" +
+                "1FAIpQLSe7nkDQSKL55-g1MQQ-31jqbpVh8g65jMEJCMw7wbdjQugbVg" +
+                "/formResponse",
+                content);
+
+            void FileSetup()
+            {
+                string path = Path.Combine(ClientFileSources.SkuaDIR, "DataCollectionSettings.txt");
+                if (!File.Exists(path))
+                {
+                    DialogResult consent = Bot.ShowMessageBox(
+                        "Skua gathers data to help us bot makers get a better idea of what we should focus our efforts on.\n\n" +
+                        "The following information will be observed and collected:\n" +
+                        "· An anonymous user ID, which is generated for you by Skua, to help us estimate the active user count.\n" +
+                        "· How long it takes to start a script.\n" +
+                        "· What scripts are used and how often.\n" +
+                        "· How long it takes to stop a script.\n" +
+                        "· A Script Instance ID, to help us match start- and stoptime.\n\n" +
+                        "However, we require your consent for the same. " +
+                        "You can select what information the developers are allowed to collect from your instance here:\n\n" +
+                        "Select \"Full\" to give full consent to the developers collecting all the aforementioned information.\n" +
+                        "Select \"Partial\" if you would like to choose what information you are comfortable sharing with the developers.\n" +
+                        "Select \"None\" if you would prefer that none of your data is collected.",
+
+                        "Data Collection",
+                        "Full", "Partial", "None"
                     );
-
-                    if (nonOptional.Text == "No")
+                    if (consent.Text == "Full")
+                    {
+                        genericData = true;
+                        scriptNameData = true;
+                        stopTimeData = true;
+                    }
+                    else if (consent.Text is "Cancel" or "None")
                     {
                         genericData = false;
                         scriptNameData = false;
                         stopTimeData = false;
                     }
-                    else if (nonOptional.Text == "Yes")
+                    else if (consent.Text == "Partial")
                     {
-                        DialogResult scriptName = Bot.ShowMessageBox(
-                            "Do you give consent to send us the following data-point:\n" +
-                            "· What script is being run.\n\n" +
-                            "This allows us to know what scripts are populair",
+                        DialogResult nonOptional = Bot.ShowMessageBox(
+                            "The following two points are not optional:\n" +
+                            "· An anon userID we generate which will allows us to know our active user count.\n" +
+                            "· Start time of scripts.\n\n" +
+                            "If you accept this, select \"Yes\".\n" +
+                            "If you dont accept this, select \"No\", and we will not gather data whatsoever.",
 
-                            "Script Name",
+                            "Non-Optional Data",
                             "Yes", "No"
                         );
 
-                        DialogResult stopTime = Bot.ShowMessageBox(
-                            "Do you give consent to send us the following data-points:\n" +
-                            "· Stop time of scripts, this would be paired with the point below" +
-                            "· Script Instance ID, a random number that allows us to match start- and stoptime.\n\n" +
-                            "Allowing us to have this data means we'll know how long a script has been running.",
+                        if (nonOptional.Text == "No")
+                        {
+                            genericData = false;
+                            scriptNameData = false;
+                            stopTimeData = false;
+                        }
+                        else if (nonOptional.Text == "Yes")
+                        {
+                            DialogResult scriptName = Bot.ShowMessageBox(
+                                "Do you give consent to send us the following data-point:\n" +
+                                "· What script is being run.\n\n" +
+                                "This allows us to know what scripts are populair",
 
-                            "Stop Time & Script Instance ID",
-                            "Yes", "No"
-                        );
+                                "Script Name",
+                                "Yes", "No"
+                            );
 
-                        genericData = true;
-                        scriptNameData = scriptName.Text == "Yes";
-                        stopTimeData = stopTime.Text == "Yes";
+                            DialogResult stopTime = Bot.ShowMessageBox(
+                                "Do you give consent to send us the following data-points:\n" +
+                                "· Stop time of scripts, this would be paired with the point below" +
+                                "· Script Instance ID, a random number that allows us to match start- and stoptime.\n\n" +
+                                "Allowing us to have this data means we'll know how long a script has been running.",
+
+                                "Stop Time & Script Instance ID",
+                                "Yes", "No"
+                            );
+
+                            genericData = true;
+                            scriptNameData = scriptName.Text == "Yes";
+                            stopTimeData = stopTime.Text == "Yes";
+                        }
                     }
-                }
 
-                if (genericData)
-                {
-                    UserID = Bot.Random.Next(100000001, Int32.MaxValue).ToString();
-                }
+                    if (genericData)
+                    {
+                        UserID = Bot.Random.Next(100000001, Int32.MaxValue).ToString();
+                    }
 
-                string[] fileContent =
-                {
+                    string[] fileContent =
+                    {
                     $"UserID: {UserID}",
                     $"genericDataConsent: {genericData}",
                     $"scriptNameConsent: {scriptNameData}",
                     $"stopTimeConsent: {stopTimeData}"
                 };
 
-                WriteFile(path, fileContent);
+                    WriteFile(path, fileContent);
 
-                Bot.ShowMessageBox(
-                    "If you wish to change these settings, you can easily modify them in the following file:\n" +
-                    $"[{path}]",
+                    Bot.ShowMessageBox(
+                        "If you wish to change these settings, you can easily modify them in the following file:\n" +
+                        $"[{path}]",
 
-                    "File Location"
-                );
+                        "File Location"
+                    );
+                }
+                else
+                {
+                    string[] savedSettings = File.ReadAllLines(path);
+
+                    UserID = ConsentString("UserID");
+                    genericData = ConsentBool("genericDataConsent");
+                    scriptNameData = ConsentBool("scriptNameConsent");
+                    stopTimeData = ConsentBool("stopTimeConsent");
+
+                    string ConsentString(string input)
+                        => (savedSettings.FirstOrDefault(x => x.StartsWith(input)) ?? $"{input}: ").Split(": ").Last();
+                    bool ConsentBool(string input)
+                        => ConsentString(input) == "True";
+                }
             }
-            else
-            {
-                string[] savedSettings = File.ReadAllLines(path);
 
-                UserID = ConsentString("UserID");
-                genericData = ConsentBool("genericDataConsent");
-                scriptNameData = ConsentBool("scriptNameConsent");
-                stopTimeData = ConsentBool("stopTimeConsent");
-
-                string ConsentString(string input)
-                    => (savedSettings.FirstOrDefault(x => x.StartsWith(input)) ?? $"{input}: ").Split(": ").Last();
-                bool ConsentBool(string input)
-                    => ConsentString(input) == "True";
-            }
-        }
+        });
     }
     private int ScriptInstanceID = 0;
 
