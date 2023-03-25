@@ -194,6 +194,8 @@ public class UnlockForgeEnhancements
                     ArcanasConcertoWIP();
                     Acheron();
                     Elysium();
+                    Praxis();
+                    DauntLess();
                     break;
             }
         }
