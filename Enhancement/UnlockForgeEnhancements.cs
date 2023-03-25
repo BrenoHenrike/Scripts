@@ -63,13 +63,22 @@ tags: lacerate, smite, herosvaliance, arcanasconcerto, elysium, acheron, absolut
 //cs_include Scripts/Story/DjinnGate.cs
 //cs_include Scripts/Story/ThirdSpell.cs
 //cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
+//cs_include Scripts/Story/Yokai.cs
 //cs_include Scripts/Legion/SwordMaster.cs
 //cs_include Scripts/Dailies/LordOfOrder.cs
 //cs_include Scripts/Story/Nation/CitadelRuins.cs
 //cs_include Scripts/Story/QueenofMonsters/Extra/LivingDungeon.cs
 //cs_include Scripts/Story/DragonFableOrigins.cs
+//cs_include Scripts/Other\Armor\MalgorsArmorSet.cs
+//cs_include Scripts/Other/MergeShops/DeadLinesMerge.cs
+//cs_include Scripts/Other/MergeShops/RuinedCrownMerge.cs
+//cs_include Scripts/Other/MergeShops/TimekeepMerge.cs
+//cs_include Scripts/Other/MergeShops/StreamwarMerge.cs
+//cs_include Scripts/Other/MergeShops/WorldsCoreMerge.cs
+//cs_include Scripts/Other/MergeShops/ManaCradleMerge.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
+using Skua.Core.Models.Skills;
 using Skua.Core.Options;
 
 public class UnlockForgeEnhancements
@@ -104,6 +113,8 @@ public class UnlockForgeEnhancements
     public ThirdSpell TSS = new();
     public LordOfOrder LOO = new();
     public SevenCircles Circles = new();
+    public YokaiQuests Yokai = new();
+    public MalgorsArmorSet MAS = new();
 
     public string OptionsStorage = "Forge Ehn Unlocks";
     public bool DontPreconfigure = true;
@@ -150,6 +161,10 @@ public class UnlockForgeEnhancements
                     Smite();
                     break;
 
+                case "Praxis":
+                    Praxis();
+                    break;
+
                 case "HerosValiance":
                     HerosValiance();
                     break;
@@ -162,9 +177,12 @@ public class UnlockForgeEnhancements
                     Elysium();
                     break;
 
-
                 case "Acheron":
                     Acheron();
+                    break;
+
+                case "Dauntless":
+                    DauntLess();
                     break;
 
                 case "All":
@@ -529,6 +547,63 @@ public class UnlockForgeEnhancements
         }
         Core.EnsureComplete(8821);
         Core.Logger("Enhancement Unlocked: Elysium");
+    }
+
+    public void DauntLess()
+    {
+        string[] DauntlessItems = { "ShadowLord's Helm", "Malgor the ShadowLord", "Malgor's ShadowFlame Blade", "Infernal Flame Pyromancer" };
+        if (!Core.CheckInventory(new[] { "ShadowLord's Helm", "Malgor the ShadowLord", "Malgor's ShadowFlame Blade", "Infernal Flame Pyromancer" }) && !Core.CheckInventory("Malgor Insignia", 5) && !Core.CheckInventory("Avatar Tyndarius Insignia", 10))
+        {
+            Core.Logger("only items i cna get you are these: \"Malgor the ShadowLord\", and \"ShadowLord's Helm\".");
+            SoW.CompleteCoreSoW();
+            MAS.GetSet();
+            Bot.Quests.UpdateQuest(6999);
+            Core.HuntMonster("shadowgrove", "Titan Shadow Dragonlord", "ShadowFlame Dragon Blade", isTemp: false);
+
+            if (Core.CheckInventory("Yami no Ronin") || Core.CheckInventory("Dragon of Time"))
+            {
+                Core.AddDrop(SoW.MalgorDrops.Concat(SoW.MainyuDrops).ToArray());
+                Bot.Skills.StartAdvanced(Core.CheckInventory("Yami no Ronin") ? "Yami no Ronin" : "Dragon of Time", true, ClassUseMode.Solo);
+            }
+            else Core.EquipClass(ClassType.Solo);
+            Core.RegisterQuests(9126);
+            while (!Bot.ShouldExit && !Core.CheckInventory("Elemental Core", 20))
+            {
+                Core.HuntMonster("manacradle", "Dark Tainted Mana", "Elemental Tear", 8);
+                Core.HuntMonster("manacradle", "Malgor", "Weathered Armor Shard");
+                Core.HuntMonster("manacradle", "The Mainyu", "Licorice Scale");
+                Bot.Wait.ForPickup("Elemental Core");
+            }
+            Core.CancelRegisteredQuests();
+
+            Core.Logger("Items still needed(the bot cannot farm these):");
+            foreach (string item in DauntlessItems)
+                Core.Logger($"missing {item}");
+            if (!Core.CheckInventory("Avatar Tyndarius Insignia", 10))
+                Core.Logger("\"Avatar Tyndarius Insignia\", x10");
+            if (!Core.CheckInventory("Malgor Insignia", 5))
+                Core.Logger("\"Malgor Insignia\", x5");
+        }
+        else if (Core.CheckInventory(new[] { "ShadowLord's Helm", "Malgor the ShadowLord", "Malgor's ShadowFlame Blade", "Infernal Flame Pyromancer" }) && Core.CheckInventory("Malgor Insignia", 5) && Core.CheckInventory("Avatar Tyndarius Insignia", 10))
+            Core.ChainComplete(9172);
+    }
+
+    public void Praxis()
+    {
+        Adv.BuyItem("thespan", 439, "Thief of Hours Armor");
+        Adv.BuyItem("yulgar", 69, "Hashashin Armor");
+        Adv.BuyItem("dragonkoiz", 95, "Imperial Chunin Clone");
+        Core.EquipClass(ClassType.Solo);
+        Core.HuntMonster("ectocave", "Ektorax", "Dragon Rogue", isTemp: false);
+        YNR.Yami(3);
+        Core.EquipClass(ClassType.Farm);
+        Yokai.Quests();
+        Core.RegisterQuests(7924);
+        while (!Bot.ShouldExit && !Core.CheckInventory("Dragon Shinobi Token", 100))
+            Core.HuntMonster("shadowfortress", "1st Head Of Orochi", "Perfect Orochi Scales", 10, isTemp: false);
+        Core.CancelRegisteredQuests();
+        Adv.BuyItem("shadowfortress", 95, 59465, shopItemID: 8079);
+        Core.ChainComplete(9171);
     }
 
     public void ForgeCapeEnhancement()
