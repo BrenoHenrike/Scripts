@@ -257,14 +257,12 @@ public class CoreFarmerJoe
                 case 50:
                 case 55:
                 case 60:
-
                     while (!Bot.ShouldExit && Bot.Player.Level < Level || !Core.CheckInventory(new[] { "Scarlet Sorceress", "DragonSoul Shinobi" }))
                     {
                         if (Core.CheckInventory("DragonSoul Shinobi"))
-                            Core.FarmClass = "DragonSoul Shinobi";
+                            Core.SoloClass = "DragonSoul Shinobi";
                         else
-                            Core.FarmClass = "Eternal Inversionist";
-                        Core.SoloClass = "Oracle";
+                            Core.SoloClass = "Oracle";
 
                         if (Core.CheckInventory("Scarlet Sorceress"))
                             Core.FarmClass = "Scarlet Sorceress";
