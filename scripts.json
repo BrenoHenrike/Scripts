@@ -2143,7 +2143,7 @@
       "pneuma"
     ],
     "path": "Enhancement/UnlockForgeEnhancements.cs",
-    "size": 31293,
+    "size": 35296,
     "fileName": "UnlockForgeEnhancements.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Enhancement/UnlockForgeEnhancements.cs"
   },
@@ -3273,7 +3273,7 @@
       "null"
     ],
     "path": "Legion/YamiNoRonin/CoreYnR.cs",
-    "size": 8017,
+    "size": 8041,
     "fileName": "CoreYnR.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/YamiNoRonin/CoreYnR.cs"
   },
