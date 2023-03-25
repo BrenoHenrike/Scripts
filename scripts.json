@@ -2143,7 +2143,7 @@
       "pneuma"
     ],
     "path": "Enhancement/UnlockForgeEnhancements.cs",
-    "size": 31293,
+    "size": 35390,
     "fileName": "UnlockForgeEnhancements.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Enhancement/UnlockForgeEnhancements.cs"
   },
@@ -3273,7 +3273,7 @@
       "null"
     ],
     "path": "Legion/YamiNoRonin/CoreYnR.cs",
-    "size": 8017,
+    "size": 8041,
     "fileName": "CoreYnR.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/YamiNoRonin/CoreYnR.cs"
   },
@@ -10723,6 +10723,20 @@
     "size": 4240,
     "fileName": "BlackHoleSunMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/BlackHoleSunMerge.cs"
+  },
+  {
+    "name": "Inevitabilis Merge",
+    "description": "Farms the required materials and buys the selected item/mode from the merge shop in /timeinn",
+    "tags": [
+      "timeinn",
+      "merge",
+      "eternal scale",
+      "shop"
+    ],
+    "path": "Other/MergeShops/InevitabilisMerge.cs",
+    "size": 6951,
+    "fileName": "InevitabilisMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/InevitabilisMerge.cs"
   },
   {
     "name": "ChaosLab Mergeshop",
