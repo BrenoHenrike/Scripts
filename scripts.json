@@ -10725,6 +10725,20 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/BlackHoleSunMerge.cs"
   },
   {
+    "name": "Inevitabilis Merge",
+    "description": "Farms the required materials and buys the selected item/mode from the merge shop in /timeinn",
+    "tags": [
+      "timeinn",
+      "merge",
+      "eternal scale",
+      "shop"
+    ],
+    "path": "Other/MergeShops/InevitabilisMerge.cs",
+    "size": 6951,
+    "fileName": "InevitabilisMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/InevitabilisMerge.cs"
+  },
+  {
     "name": "ChaosLab Mergeshop",
     "description": "Gets any item you want in ChaosLab mergeshop",
     "tags": [
