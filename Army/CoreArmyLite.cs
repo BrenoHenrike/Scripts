@@ -480,6 +480,7 @@ public class CoreArmyLite
         else Core.Join("battleon-999999");
 
         Core.ReadCBO();
+        Core.IsMember = Bot.Player.IsMember;
 
         return true;
 
