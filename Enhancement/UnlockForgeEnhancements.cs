@@ -600,6 +600,7 @@ public class UnlockForgeEnhancements
         YNR.Yami(3);
         Core.EquipClass(ClassType.Farm);
         Yokai.Quests();
+        Core.AddDrop("Dragon Shinobi Token");
         Core.RegisterQuests(7924);
         while (!Bot.ShouldExit && !Core.CheckInventory("Dragon Shinobi Token", 100))
             Core.HuntMonster("shadowfortress", "1st Head Of Orochi", "Perfect Orochi Scales", 10, isTemp: false);
