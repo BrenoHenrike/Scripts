@@ -80,6 +80,7 @@ public class CoreYnR
         if (Core.CheckInventory("Yami", quant))
             return;
 
+        SOW.DarkAlly();
         Core.FarmingLogger("Yami", quant);
         Core.AddDrop("Yami");
         Core.EquipClass(ClassType.Solo);
