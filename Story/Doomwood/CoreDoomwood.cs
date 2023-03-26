@@ -676,29 +676,40 @@ public class CoreDoomwood
         Story.PreLoad(this);
 
         //7623    Cat Ears?
-        Story.MapItemQuest(7623, "stonewooddeep", 7528, 1);
+        if (!Story.QuestProgression(7623))
+        {
+            Core.EnsureAccept(7623);
+            Core.GetMapItem(7528, 1, "stonewooddeep");
+            Core.EnsureComplete(7623);
+            Core.Logger("Cutscene > Wait > Jump > Continue");
+            Bot.Wait.ForCellChange("Cut2");
+            Bot.Sleep(2500);
+            Core.JumpWait();
+        }
 
         //7624    EN GARDE!
         if (!Story.QuestProgression(7624))
         {
-            Bot.Quests.UpdateQuest(7623); //dunno it makes dood apear :shrug:
-            Bot.Options.AttackWithoutTarget = true;
+            Core.EquipClass(ClassType.Solo);
             Core.EnsureAccept(7624);
-            Core.KillMonster("stonewooddeep", "r2", "Left", "Asherion", "Defeat Asherion");
-            Bot.Options.AttackWithoutTarget = false;
+            Core.Join("stonewooddeep", "r2", "Left");
+            Core.HuntMonster("stonewooddeep", "Asherion", "Defeat Asherion");
             Core.EnsureComplete(7624);
+            Core.EquipClass(ClassType.Farm);
         }
 
         //7625    The Light Of Destiny
         Story.MapItemQuest(7625, "stonewooddeep", 7529);
+        Core.Logger("Cutscene > Wait > Jump > Continue");
+        Bot.Wait.ForCellChange("Cut2");
+        Bot.Sleep(2500);
+        Core.JumpWait();
 
         //7626    Stuff for Dummies
         if (!Story.QuestProgression(7626))
         {
-            Bot.Options.AttackWithoutTarget = true;
             Core.EnsureAccept(7626);
             Core.KillMonster("stonewooddeep", "r2", "Right", "Doomwood Treeant", "Sturdy Wood", 8);
-            Bot.Options.AttackWithoutTarget = false;
             Story.MapItemQuest(7626, "stonewooddeep", 7530, 8);
         }
 
@@ -706,53 +717,46 @@ public class CoreDoomwood
         if (!Story.QuestProgression(7627))
         {
             Core.EnsureAccept(7627);
-            Bot.Options.AttackWithoutTarget = true;
             Core.KillMonster("stonewooddeep", "r3", "Right", "Doomwood Treeant", "Area Cleared", 10);
-            Bot.Options.AttackWithoutTarget = false;
             Core.GetMapItem(7531, 6, "stonewooddeep");
             Core.EnsureComplete(7627);
+            Core.Jump("r2");
+            Bot.Sleep(2500);
+            Core.Jump("r3");
         }
 
         //7628    Battle the Dummies
         if (!Story.QuestProgression(7628))
         {
-            Core.Logger("trying to fix this broke map.");
-            Bot.Map.Reload();
-            Bot.Options.AttackWithoutTarget = true;
+            // Core.Logger("Updatin the map because dummys are dumb");
+            // Core.Join("whitemap");
             Core.EnsureAccept(7628);
-            Core.HuntMonsterMapID("stonewooddeep", 5, "Target Dummy Slain", 6);
-            Bot.Options.AttackWithoutTarget = false;
+            Core.KillMonster("stonewooddeep", "r3", "Left", "Target Dummy", "Target Dummy Slain", 6);
             Core.EnsureComplete(7628);
         }
 
         //7629    Lesson 1: Bravery
         if (!Story.QuestProgression(7629))
         {
-            Bot.Options.AttackWithoutTarget = true;
             Core.EnsureAccept(7629);
             Core.KillMonster("stonewooddeep", "r3", "Right", "Doomwood Slime", "Slime Slain", 10);
-            Bot.Options.AttackWithoutTarget = false;
             Core.EnsureComplete(7629);
         }
 
         //7630    Lesson 2: Armor
         if (!Story.QuestProgression(7630))
         {
-            Bot.Options.AttackWithoutTarget = true;
             Core.EnsureAccept(7630);
             Core.KillMonster("stonewooddeep", "r3", "Right", "Doomwood Slime", "Stolen Armor", 7);
-            Bot.Options.AttackWithoutTarget = false;
             Core.EnsureComplete(7630);
         }
 
         //7631    Lesson 3: Protection
         if (!Story.QuestProgression(7631))
         {
-            Bot.Options.AttackWithoutTarget = true;
             Core.EnsureAccept(7631);
-            Core.HuntMonster("stonewooddeep", "CryptHacker", "Crypthacker Slain", 10);
-            Core.HuntMonster("stonewooddeep", "CryptHacker", "Unidentified Clue");
-            Bot.Options.AttackWithoutTarget = false;
+            Core.KillMonster("stonewooddeep", "r7", "Left", "CryptHacker", "Crypthacker Slain", 10);
+            Core.KillMonster("stonewooddeep", "r7", "Left", "CryptHacker", "Unidentified Clue");
             Core.EnsureComplete(7631);
         }
 
@@ -772,9 +776,17 @@ public class CoreDoomwood
         Story.MapItemQuest(7634, "stonewooddeep", 7532);
 
         //7635    Get the Axe
-        Story.MapItemQuest(7635, "stonewooddeep", 7533);
+        if (!Story.QuestProgression(7633))
+        {
+            Story.MapItemQuest(7635, "stonewooddeep", 7533);
+            Core.Logger("Cutscene > Wait > Jump > Continue");
+            Bot.Wait.ForCellChange("Cut2");
+            Bot.Sleep(2500);
+            Core.JumpWait();
+        }
 
         //7636    Never Give Up
+        Core.EquipClass(ClassType.Solo);
         Story.KillQuest(7636, "stonewooddeep", "Sir Kut");
     }
 

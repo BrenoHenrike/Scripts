@@ -62,14 +62,35 @@ public class DagesBirthdayMerge
                     break;
                 #endregion
 
+
+                case "Shard of Armor":
+                case "Helm Piece":
                 case "Leg Pieces":
                 case "Arm Pieces":
-                case "Shard of Armor":
+                    //3408 requires you to join the legion (1200acs) added a method for non-legions
+                    if (Core.isCompletedBefore(793))
+                    {
+                        Core.FarmingLogger(req.Name, quant);
+                        Core.EquipClass(ClassType.Farm);
+                        Core.RegisterQuests(3408);
+                        while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
+                        {
+                            Core.KillMonster("underworld", "r8", "left", "*", "Dread Head", 20, log: false);
+                            Bot.Wait.ForPickup(req.Name);
+                        }
+                        Core.CancelRegisteredQuests();
+                    }
+                    else
+                    {
+                        Core.EquipClass(ClassType.Solo);
+                        Core.HuntMonster("undervoid", "Conquest", req.Name, quant, false);
+                    }
+                    break;
+
                 case "Weapon Shard":
                 case "Cape Piece":
-                case "Helm Piece":
                     Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster("undervoid", "Conquest", req.Name, quant, isTemp: false);
+                    Core.HuntMonster("undervoid", "Conquest", req.Name, quant, false);
                     break;
 
                     // case "Death's Scythe":
@@ -106,6 +127,6 @@ public class DagesBirthdayMerge
         new Option<bool>("23066", "Obsidian Underguard", "Mode: [select] only\nShould the bot buy \"Obsidian Underguard\" ?", false),
         new Option<bool>("23117", "War's Helm", "Mode: [select] only\nShould the bot buy \"War's Helm\" ?", false),
         //Requires 300acs
-        new Option<bool>("23122", "Death's Grimmer Scythe", "Mode: [select] only\nShould the bot buy \"Death's Grimmer Scythe\" ?", false),
+        // new Option<bool>("23122", "Death's Grimmer Scythe", "Mode: [select] only\nShould the bot buy \"Death's Grimmer Scythe\" ?", false),
     };
 }
