@@ -2295,6 +2295,7 @@ public class CoreBots
         else
         {
             blackListedCells.AddRange(new List<string>() { "Wait", "Blank" });
+            blackListedCells.AddRange(Bot.Map.Cells.Where(x => x.StartsWith("Cut")));
             var viableCells = Bot.Map.Cells.Except(blackListedCells);
             if (viableCells.Any())
                 cellPad.Item1 = viableCells.First();
