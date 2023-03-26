@@ -676,18 +676,34 @@ public class CoreDoomwood
         Story.PreLoad(this);
 
         //7623    Cat Ears?
-        Story.MapItemQuest(7623, "stonewooddeep", 7528, 1);
+        if (!Story.QuestProgression(7623))
+        {
+            Core.EnsureAccept(7623);
+            Core.GetMapItem(7528, 1, "stonewooddeep");
+            Core.EnsureComplete(7623);
+            Core.Logger("Cutscene > Wait > Jump > Continue");
+            Bot.Wait.ForCellChange("Cut2");
+            Bot.Sleep(2500);
+            Core.JumpWait();
+        }
 
         //7624    EN GARDE!
         if (!Story.QuestProgression(7624))
         {
+            Core.EquipClass(ClassType.Solo);
             Core.EnsureAccept(7624);
-            Core.KillMonster("stonewooddeep", "r2", "Left", "Asherion", "Defeat Asherion");
+            Core.Join("stonewooddeep", "r2", "Left");
+            Core.HuntMonster("stonewooddeep", "Asherion", "Defeat Asherion");
             Core.EnsureComplete(7624);
+            Core.EquipClass(ClassType.Farm);
         }
 
         //7625    The Light Of Destiny
         Story.MapItemQuest(7625, "stonewooddeep", 7529);
+        Core.Logger("Cutscene > Wait > Jump > Continue");
+        Bot.Wait.ForCellChange("Cut2");
+        Bot.Sleep(2500);
+        Core.JumpWait();
 
         //7626    Stuff for Dummies
         if (!Story.QuestProgression(7626))
@@ -704,11 +720,16 @@ public class CoreDoomwood
             Core.KillMonster("stonewooddeep", "r3", "Right", "Doomwood Treeant", "Area Cleared", 10);
             Core.GetMapItem(7531, 6, "stonewooddeep");
             Core.EnsureComplete(7627);
+            Core.Jump("r2");
+            Bot.Sleep(2500);
+            Core.Jump("r3");
         }
 
         //7628    Battle the Dummies
         if (!Story.QuestProgression(7628))
         {
+            // Core.Logger("Updatin the map because dummys are dumb");
+            // Core.Join("whitemap");
             Core.EnsureAccept(7628);
             Core.KillMonster("stonewooddeep", "r3", "Left", "Target Dummy", "Target Dummy Slain", 6);
             Core.EnsureComplete(7628);
@@ -758,6 +779,7 @@ public class CoreDoomwood
         Story.MapItemQuest(7635, "stonewooddeep", 7533);
 
         //7636    Never Give Up
+        Core.EquipClass(ClassType.Solo);
         Story.KillQuest(7636, "stonewooddeep", "Sir Kut");
     }
 
