@@ -8,6 +8,7 @@ tags: legion, merge, staff, birthday, dage, evil, seasonal, event, darkbirthday
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Legion/CoreLegion.cs
+//cs_include Scripts/Seasonal/StaffBirthdays/DageTheEvil/Undervoid.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
@@ -19,6 +20,7 @@ public class DarkBirthdayTokenMerge
     private CoreFarms Farm = new();
     private CoreAdvanced Adv = new();
     public CoreLegion Legion = new CoreLegion();
+    public UndervoidStory UV = new();
     private static CoreAdvanced sAdv = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
@@ -30,7 +32,7 @@ public class DarkBirthdayTokenMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Legion Token", "Obsidian Rock" });
+        Core.BankingBlackList.AddRange(new[] { "Legion Token", "Obsidian Rock", "Shard of Armor", "Helm Piece", "Leg Pieces", "Arm Pieces", "Cape Piece", "Weapon Shard"});
         Core.SetOptions();
 
         BuyAllMerge();
@@ -41,6 +43,11 @@ public class DarkBirthdayTokenMerge
     {
         if (!Core.isSeasonalMapActive("darkbirthday"))
             return;
+            
+        UV.CompleteUnderVoid();
+
+        if (!Core.CheckInventory("Undead Champion"))
+            Adv.BuyItem("underworld", 216, "Undead Champion");
 
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("darkbirthday", 1697, findIngredients, buyOnlyThis, buyMode: buyMode);
@@ -73,6 +80,26 @@ public class DarkBirthdayTokenMerge
                     Legion.ObsidianRock(quant);
                     break;
 
+                case "Shard of Armor":
+                case "Helm Piece":
+                case "Leg Pieces":
+                case "Arm Pieces":
+                    Core.FarmingLogger(req.Name, quant);
+                    Core.EquipClass(ClassType.Farm);
+                    Core.RegisterQuests(3408);
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
+                    {
+                        Core.KillMonster("underworld", "r8", "left", "*", "Dread Head", 20, log: false);
+                        Bot.Wait.ForPickup(req.Name);
+                    }
+                    Core.CancelRegisteredQuests();
+                    break;
+
+                case "Weapon Shard":
+                case "Cape Piece":
+                    Core.EquipClass(ClassType.Solo);
+                    Core.HuntMonster("undervoid", "Conquest", req.Name, quant, false);
+                    break;
             }
         }
     }
@@ -143,5 +170,18 @@ public class DarkBirthdayTokenMerge
         new Option<bool>("59729", "Operative's Shadow", "Mode: [select] only\nShould the bot buy \"Operative's Shadow\" ?", false),
         new Option<bool>("59730", "Legion Operative's Gun", "Mode: [select] only\nShould the bot buy \"Legion Operative's Gun\" ?", false),
         new Option<bool>("59731", "Dual Legion Operative's Guns", "Mode: [select] only\nShould the bot buy \"Dual Legion Operative's Guns\" ?", false),
+        new Option<bool>("76960", "Proto Legion Dark Caster Visage", "Mode: [select] only\nShould the bot buy \"Proto Legion Dark Caster Visage\" ?", false),
+        new Option<bool>("76959", "Proto Legion Dark Caster Hair", "Mode: [select] only\nShould the bot buy \"Proto Legion Dark Caster Hair\" ?", false),
+        new Option<bool>("76958", "Proto Legion Dark Caster", "Mode: [select] only\nShould the bot buy \"Proto Legion Dark Caster\" ?", false),
+        new Option<bool>("76726", "Proto Dark Caster Ancient Rune", "Mode: [select] only\nShould the bot buy \"Proto Dark Caster Ancient Rune\" ?", false),
+        new Option<bool>("76729", "Proto Legion Dark Caster Focus Rune", "Mode: [select] only\nShould the bot buy \"Proto Legion Dark Caster Focus Rune\" ?", false),
+        new Option<bool>("77004", "Mortal Painsaw Man", "Mode: [select] only\nShould the bot buy \"Mortal Painsaw Man\" ?", false),
+        new Option<bool>("77005", "Underworld Painsaw Man", "Mode: [select] only\nShould the bot buy \"Underworld Painsaw Man\" ?", false),
+        new Option<bool>("77006", "Mask of Pain", "Mode: [select] only\nShould the bot buy \"Mask of Pain\" ?", false),
+        new Option<bool>("77007", "Chainsaw Mask of Pain", "Mode: [select] only\nShould the bot buy \"Chainsaw Mask of Pain\" ?", false),
+        new Option<bool>("77008", "Chainsaw Mask of Pain", "Mode: [select] only\nShould the bot buy \"Chainsaw Mask of Pain\" ?", false),
+        new Option<bool>("77009", "Underworld Painsaw Gauntlet", "Mode: [select] only\nShould the bot buy \"Underworld Painsaw Gauntlet\" ?", false),
+        new Option<bool>("77010", "Underworld Painsaw Gauntlets", "Mode: [select] only\nShould the bot buy \"Underworld Painsaw Gauntlets\" ?", false),
+        new Option<bool>("76977", "Dage's Devastation Paragon Helmet", "Mode: [select] only\nShould the bot buy \"Dage's Devastation Paragon Helmet\" ?", false),
     };
 }
