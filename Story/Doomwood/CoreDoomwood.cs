@@ -776,7 +776,14 @@ public class CoreDoomwood
         Story.MapItemQuest(7634, "stonewooddeep", 7532);
 
         //7635    Get the Axe
-        Story.MapItemQuest(7635, "stonewooddeep", 7533);
+        if (!Story.QuestProgression(7633))
+        {
+            Story.MapItemQuest(7635, "stonewooddeep", 7533);
+            Core.Logger("Cutscene > Wait > Jump > Continue");
+            Bot.Wait.ForCellChange("Cut2");
+            Bot.Sleep(2500);
+            Core.JumpWait();
+        }
 
         //7636    Never Give Up
         Core.EquipClass(ClassType.Solo);
