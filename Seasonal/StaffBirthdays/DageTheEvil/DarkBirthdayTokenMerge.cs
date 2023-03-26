@@ -32,7 +32,7 @@ public class DarkBirthdayTokenMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Legion Token", "Obsidian Rock", "Shard of Armor", "Helm Piece", "Leg Pieces", "Arm Pieces", "Cape Piece", "Weapon Shard"});
+        Core.BankingBlackList.AddRange(new[] { "Legion Token", "Obsidian Rock", "Shard of Armor", "Helm Piece", "Leg Pieces", "Arm Pieces", "Cape Piece", "Weapon Shard" });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -43,7 +43,7 @@ public class DarkBirthdayTokenMerge
     {
         if (!Core.isSeasonalMapActive("darkbirthday"))
             return;
-            
+
         UV.CompleteUnderVoid();
 
         if (!Core.CheckInventory("Undead Champion"))
@@ -84,15 +84,24 @@ public class DarkBirthdayTokenMerge
                 case "Helm Piece":
                 case "Leg Pieces":
                 case "Arm Pieces":
-                    Core.FarmingLogger(req.Name, quant);
-                    Core.EquipClass(ClassType.Farm);
-                    Core.RegisterQuests(3408);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
+                    //3408 requires you to join the legion (1200acs) added a method for non-legions
+                    if (Core.isCompletedBefore(793))
                     {
-                        Core.KillMonster("underworld", "r8", "left", "*", "Dread Head", 20, log: false);
-                        Bot.Wait.ForPickup(req.Name);
+                        Core.FarmingLogger(req.Name, quant);
+                        Core.EquipClass(ClassType.Farm);
+                        Core.RegisterQuests(3408);
+                        while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
+                        {
+                            Core.KillMonster("underworld", "r8", "left", "*", "Dread Head", 20, log: false);
+                            Bot.Wait.ForPickup(req.Name);
+                        }
+                        Core.CancelRegisteredQuests();
                     }
-                    Core.CancelRegisteredQuests();
+                    else
+                    {
+                        Core.EquipClass(ClassType.Solo);
+                        Core.HuntMonster("undervoid", "Conquest", req.Name, quant, false);
+                    }
                     break;
 
                 case "Weapon Shard":
