@@ -681,11 +681,8 @@ public class CoreDoomwood
         //7624    EN GARDE!
         if (!Story.QuestProgression(7624))
         {
-            Bot.Quests.UpdateQuest(7623); //dunno it makes dood apear :shrug:
-            Bot.Options.AttackWithoutTarget = true;
             Core.EnsureAccept(7624);
             Core.KillMonster("stonewooddeep", "r2", "Left", "Asherion", "Defeat Asherion");
-            Bot.Options.AttackWithoutTarget = false;
             Core.EnsureComplete(7624);
         }
 
@@ -695,10 +692,8 @@ public class CoreDoomwood
         //7626    Stuff for Dummies
         if (!Story.QuestProgression(7626))
         {
-            Bot.Options.AttackWithoutTarget = true;
             Core.EnsureAccept(7626);
             Core.KillMonster("stonewooddeep", "r2", "Right", "Doomwood Treeant", "Sturdy Wood", 8);
-            Bot.Options.AttackWithoutTarget = false;
             Story.MapItemQuest(7626, "stonewooddeep", 7530, 8);
         }
 
@@ -706,9 +701,7 @@ public class CoreDoomwood
         if (!Story.QuestProgression(7627))
         {
             Core.EnsureAccept(7627);
-            Bot.Options.AttackWithoutTarget = true;
             Core.KillMonster("stonewooddeep", "r3", "Right", "Doomwood Treeant", "Area Cleared", 10);
-            Bot.Options.AttackWithoutTarget = false;
             Core.GetMapItem(7531, 6, "stonewooddeep");
             Core.EnsureComplete(7627);
         }
@@ -716,43 +709,33 @@ public class CoreDoomwood
         //7628    Battle the Dummies
         if (!Story.QuestProgression(7628))
         {
-            Core.Logger("trying to fix this broke map.");
-            Bot.Map.Reload();
-            Bot.Options.AttackWithoutTarget = true;
             Core.EnsureAccept(7628);
-            Core.HuntMonsterMapID("stonewooddeep", 5, "Target Dummy Slain", 6);
-            Bot.Options.AttackWithoutTarget = false;
+            Core.KillMonster("stonewooddeep", "r3", "Left", "Target Dummy", "Target Dummy Slain", 6);
             Core.EnsureComplete(7628);
         }
 
         //7629    Lesson 1: Bravery
         if (!Story.QuestProgression(7629))
         {
-            Bot.Options.AttackWithoutTarget = true;
             Core.EnsureAccept(7629);
             Core.KillMonster("stonewooddeep", "r3", "Right", "Doomwood Slime", "Slime Slain", 10);
-            Bot.Options.AttackWithoutTarget = false;
             Core.EnsureComplete(7629);
         }
 
         //7630    Lesson 2: Armor
         if (!Story.QuestProgression(7630))
         {
-            Bot.Options.AttackWithoutTarget = true;
             Core.EnsureAccept(7630);
             Core.KillMonster("stonewooddeep", "r3", "Right", "Doomwood Slime", "Stolen Armor", 7);
-            Bot.Options.AttackWithoutTarget = false;
             Core.EnsureComplete(7630);
         }
 
         //7631    Lesson 3: Protection
         if (!Story.QuestProgression(7631))
         {
-            Bot.Options.AttackWithoutTarget = true;
             Core.EnsureAccept(7631);
-            Core.HuntMonster("stonewooddeep", "CryptHacker", "Crypthacker Slain", 10);
-            Core.HuntMonster("stonewooddeep", "CryptHacker", "Unidentified Clue");
-            Bot.Options.AttackWithoutTarget = false;
+            Core.KillMonster("stonewooddeep", "r7", "Left", "CryptHacker", "Crypthacker Slain", 10);
+            Core.KillMonster("stonewooddeep", "r7", "Left", "CryptHacker", "Unidentified Clue");
             Core.EnsureComplete(7631);
         }
 

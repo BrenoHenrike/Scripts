@@ -2438,6 +2438,32 @@ public class CoreBots
             case "towerofdoom10":
                 SimpleQuestBypass((159, 10));
                 break;
+
+            case "stonewooddeep":
+                if (Bot.Player.Cell != cell && cell != "r2")
+                {
+                    Logger("Resetting map for required quest update so it doesn't get stuck.");
+                    Join("whitemap");
+                    SimpleQuestBypass((363, 14));
+                }
+                else if (cell == "r2" && Bot.Player.Cell != "r2")
+                {
+                    //Asherion
+                    Logger("Resetting map for next quest update.");
+                    Logger("Updating for \"Asherion's\" cell");
+                    SimpleQuestBypass((363, 1));
+                    tryJoin();
+                }
+                else
+                    SimpleQuestBypass((363, 1));
+                break;
+
+            case "darkoviaforest":
+            case "lycan":
+            case "safiria":
+                SimpleQuestBypass((26, 23));
+                break;
+
             #endregion
 
             #region Private Simple Quest Bypasses
@@ -2461,12 +2487,6 @@ public class CoreBots
             case "tercessuinotlim":
                 Bot.Map.Jump("m22", "Left");
                 tryJoin();
-                break;
-
-            case "darkoviaforest":
-            case "lycan":
-            case "safiria":
-                SimpleQuestBypass((26, 23));
                 break;
 
             case "doomvaultb":
