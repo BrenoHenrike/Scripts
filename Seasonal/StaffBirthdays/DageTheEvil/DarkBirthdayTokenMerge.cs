@@ -73,6 +73,17 @@ public class DarkBirthdayTokenMerge
                     Legion.ObsidianRock(quant);
                     break;
 
+
+                case "Leg Pieces":
+                case "Arm Pieces":
+                case "Shard of Armor":
+                case "Weapon Shard":
+                case "Cape Piece":
+                case "Helm Piece":
+                    Core.EquipClass(ClassType.Solo);
+                    Core.HuntMonster("undervoid", "Conquest", req.Name, quant, isTemp: false);
+                    break;
+
             }
         }
     }
