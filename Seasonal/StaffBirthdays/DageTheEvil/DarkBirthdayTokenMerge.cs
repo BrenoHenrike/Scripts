@@ -41,10 +41,10 @@ public class DarkBirthdayTokenMerge
 
     public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
-        UV.CompleteUnderVoid();
-
         if (!Core.isSeasonalMapActive("darkbirthday"))
             return;
+            
+        UV.CompleteUnderVoid();
 
         if (!Core.CheckInventory("Undead Champion"))
             Adv.BuyItem("underworld", 216, "Undead Champion");
@@ -99,7 +99,6 @@ public class DarkBirthdayTokenMerge
                 case "Cape Piece":
                     Core.EquipClass(ClassType.Solo);
                     Core.HuntMonster("undervoid", "Conquest", req.Name, quant, false);
-                    Bot.Wait.ForPickup(req.Name);
                     break;
             }
         }
