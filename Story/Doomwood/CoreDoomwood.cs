@@ -776,7 +776,7 @@ public class CoreDoomwood
         Story.MapItemQuest(7634, "stonewooddeep", 7532);
 
         //7635    Get the Axe
-        if (!Story.QuestProgression(7633))
+        if (!Story.QuestProgression(7635))
         {
             Story.MapItemQuest(7635, "stonewooddeep", 7533);
             Core.Logger("Cutscene > Wait > Jump > Continue");
