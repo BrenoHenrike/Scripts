@@ -346,11 +346,7 @@ public class CoreFarmerJoe
         LOO.GetLoO();
         Core.ToBank(Core.EnsureLoad(7156).Rewards.Select(i => i.Name).ToArray());
 
-        Core.Logger("P3-1: Dailies for Classes");
-        FAD.DoAllDailies();
-
         Core.Logger("P3 - 2: Blade and Cape of Awe");
-        Farm.BladeofAweREP(6, true);
         Core.ToBank("Blade of Awe");
         Adv.BuyItem("museum", 631, "Awethur's Accoutrements");
         Core.Equip("Awethur's Accoutrements");
@@ -372,7 +368,6 @@ public class CoreFarmerJoe
 
         #region Leveling to 100
         Core.Logger("P4 Leveling to 100");
-        Farm.IcestormArena(75);
         InvEn.EnhanceInventory();
         Farm.IcestormArena();
         #endregion Leveling to 100}
