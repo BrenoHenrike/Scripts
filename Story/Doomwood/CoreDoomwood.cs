@@ -692,18 +692,23 @@ public class CoreDoomwood
         {
             Core.EquipClass(ClassType.Solo);
             Core.EnsureAccept(7624);
-            Core.Join("stonewooddeep", "r2", "Left");
-            Core.HuntMonster("stonewooddeep", "Asherion", "Defeat Asherion");
+            // Core.Join("stonewooddeep", "r2", "Left");
+            Core.KillMonster("stonewooddeep", "r2", "Right", "Asherion", "Defeat Asherion");
             Core.EnsureComplete(7624);
-            Core.EquipClass(ClassType.Farm);
         }
 
         //7625    The Light Of Destiny
-        Story.MapItemQuest(7625, "stonewooddeep", 7529);
-        Core.Logger("Cutscene > Wait > Jump > Continue");
-        Bot.Wait.ForCellChange("Cut2");
-        Bot.Sleep(2500);
-        Core.JumpWait();
+        if (!Story.QuestProgression(7625))
+        {
+            Core.EquipClass(ClassType.Farm);
+            Core.EnsureAccept(7625);
+            Core.GetMapItem(7529, 1, "stonewooddeep");
+            Core.EnsureComplete(7625);
+            Core.Logger("Cutscene > Wait > Jump > Continue");
+            Bot.Wait.ForCellChange("Cut2");
+            Bot.Sleep(2500);
+            Core.JumpWait();
+        }
 
         //7626    Stuff for Dummies
         if (!Story.QuestProgression(7626))
