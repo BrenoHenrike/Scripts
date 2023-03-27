@@ -72,7 +72,6 @@ public class UnderVoidBadgesAll
 
         UndervoidStory.CompleteUnderVoid();
         Core.EquipClass(ClassType.Solo);
-        Adv.BestGear(GearBoost.Undead);
         Core.AddDrop("War's Pride");
 
 
@@ -103,7 +102,6 @@ public class UnderVoidBadgesAll
 
         UndervoidStory.CompleteUnderVoid();
         Core.EquipClass(ClassType.Solo);
-        Adv.BestGear(GearBoost.Undead);
         Core.AddDrop("Famine's Pride");
 
         if (Core.HasWebBadge(badge3))
@@ -134,7 +132,6 @@ public class UnderVoidBadgesAll
 
         UndervoidStory.CompleteUnderVoid();
         Core.EquipClass(ClassType.Solo);
-        Adv.BestGear(GearBoost.Undead);
         Core.AddDrop("Death's Pride");
 
         if (Core.HasWebBadge(badge4))
