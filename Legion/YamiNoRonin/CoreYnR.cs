@@ -83,7 +83,7 @@ public class CoreYnR
         SOW.DarkAlly();
         Core.FarmingLogger("Yami", quant);
         Core.AddDrop("Yami");
-        Core.EquipClass(ClassType.Solo);
+        Core.EquipClass(ClassType.Farm);
         Core.RegisterQuests(7409);
         while (!Bot.ShouldExit && !Core.CheckInventory("Yami", quant))
         {

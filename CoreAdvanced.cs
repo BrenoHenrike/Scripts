@@ -1477,6 +1477,8 @@ public class CoreAdvanced
     private bool uExamen() => Core.isCompletedBefore(8825);
     private bool uAnima() => Core.isCompletedBefore(8826);
     private bool uPneuma() => Core.isCompletedBefore(8827);
+    private bool DauntLess() => Core.isCompletedBefore(9172);
+    private bool uPraxis() => Core.isCompletedBefore(9171);
 
     #endregion
 
@@ -1728,12 +1730,14 @@ public class CoreAdvanced
 
             #region Lucky - Vainglory - Lacerate - Vim
             case "yami no ronin":
-                if (!uVainglory() || !uLacerate() || !uVim())
+                if ((!uVainglory() || !uLacerate() || !uVim()) || !uPraxis())
                     goto default;
 
                 type = EnhancementType.Lucky;
                 cSpecial = CapeSpecial.Vainglory;
-                wSpecial = WeaponSpecial.Lacerate;
+                if (uLacerate())
+                    wSpecial = WeaponSpecial.Lacerate;
+                else wSpecial = WeaponSpecial.Praxis;
                 hSpecial = HelmSpecial.Vim;
                 break;
             #endregion
@@ -2224,6 +2228,8 @@ public enum WeaponSpecial // Proc ID
     Arcanas_Concerto = 10,
     Elysium = 12,
     Acheron = 11,
+    Praxis = 13,
+    Dauntless = 14
 }
 
 public enum HelmSpecial //Enhancement Pattern ID
