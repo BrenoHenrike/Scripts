@@ -171,6 +171,40 @@ public class CoreNation
         }
     }
 
+     public void NationLoyaltyRewarded(int quant = 1000)
+    {
+        if(Core.CheckInventory("Dark Crystal Shard", quant))
+            return;
+
+        Core.AddDrop(tercessBags);
+        Core.AddDrop(bagDrops);
+        int i = 1;
+        Core.Logger($"Farming {quant} Dark Crystal Shard");
+
+        while (!Bot.ShouldExit && !Core.CheckInventory("Dark Crystal Shard", quant))
+        {
+            Core.EnsureAccept(4749);
+            if(!Core.CheckInventory("Defeated Makai", 25))
+            {
+                Core.EquipClass(ClassType.Farm);
+                Core.KillMonster("tercessuinotlim", "m2", "Bottom", "Dark Makai", "Defeated Makai", 25, false, log: false);
+                Core.JumpWait();
+            }
+            Core.EquipClass(ClassType.Solo);
+            Core.HuntMonster("aqlesson", "Carnax", "Carnax Eye", isTemp: true, log: false);
+            Core.HuntMonster("deepchaos", "Kathool", "Kathool Tentacle", isTemp: true, log: false);
+            Core.HuntMonster("lair", "Red Dragon", "Red Dragon's Fang", isTemp: true, log: false);
+            Core.HuntMonster("dflesson", "Fluffy The Dracolich", "Fluffy's Bones", isTemp: true, log: false);
+            Core.HuntMonster("bloodtitan", "Blood Titan", "Blood Titan's Blade", isTemp: true, log: false);
+            Core.EnsureComplete(4749);
+            Bot.Wait.ForPickup("Dark Crystal Shard");
+            Core.Logger($"Completed x{i++}");
+            if (Bot.Inventory.IsMaxStack("Dark Crystal Shard"))
+                Core.Logger("Max Stack Hit.");
+            else Core.Logger($"Dark Crystal Shard: {Bot.Inventory.GetQuantity("Dark Crystal Shard")}/{quant}");
+        }
+    }
+
     /// <summary>
     /// Does NWNO from Nulgath's Birthday Gift/Bounty Hunter's Drone Pet
     /// </summary>
@@ -971,7 +1005,8 @@ public class CoreNation
         Core.AddDrop("Dark Crystal Shard");
         NewWorldsNewOpportunities("Dark Crystal Shard", quant); //1minute turning  = 1x guaranteed
         VoidKightSwordQuest("Dark Crystal Shard", quant);
-        EssenceofDefeatReagent(quant);
+        NationLoyaltyRewarded(quant);
+        // EssenceofDefeatReagent(quant);
         Supplies("Dark Crystal Shard", quant); //xx:xx time turnin = 10% chance
     }
 
