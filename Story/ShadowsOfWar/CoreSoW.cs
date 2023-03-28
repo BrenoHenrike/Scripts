@@ -1016,6 +1016,8 @@ public class CoreSoW
         if (Core.isCompletedBefore(8965))
             return;
 
+        DeadLines();
+
         Story.PreLoad(this);
 
         // Lies in Peace 8956
@@ -1062,11 +1064,11 @@ public class CoreSoW
         if (Core.isCompletedBefore(9126))
             return;
 
+        ShadowFlame();
+
         Story.PreLoad(this);
 
         Core.EquipClass(ClassType.Solo);
-        Adv.BestGear(GearBoost.Elemental);
-        // Adv.SmartEnhance(Bot.Player.CurrentClass.Name);
 
         // Stunted Growth 9116
         Story.KillQuest(9116, "manacradle", "Elemental Attempt");
