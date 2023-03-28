@@ -61,9 +61,9 @@ public class HollowbornScythe
             Core.EquipClass(ClassType.Solo);
             Core.KillMonster("shadowattack", "Boss", "Left", "Death", "Death's Oversight", 5, false, publicRoom: true);
 
-            Core.Logger("Incarnation of Glitches Scythe (stop to buy back, ignore to farm)");
-            Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("cathedral", "Incarnation of Time", "Incarnation of Glitches Scythe", isTemp: false, publicRoom: true);
+            // Core.Logger("Incarnation of Glitches Scythe (stop to buy back, ignore to farm)");
+            // Core.EquipClass(ClassType.Solo);
+            // Core.HuntMonster("cathedral", "Incarnation of Time", "Incarnation of Glitches Scythe", isTemp: false, publicRoom: true);
 
             Adv.BuyItem("tercessuinotlim", 1951, 57447);
             Adv.BuyItem("shadowrealm", 1889, item);

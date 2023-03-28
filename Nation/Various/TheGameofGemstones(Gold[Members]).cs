@@ -31,7 +31,8 @@ public class TheGameofGemstones
             return;
 
         Nation.FarmUni13();
-        Core.HuntMonster("tercessuinotlim", "Dark Makai", "Tendurrr The Assistant", isTemp: false);
+        if (!Core.CheckInventory("Tendurrr The Assistant"))
+            Core.HuntMonster("tercessuinotlim", "Dark Makai", "Tendurrr The Assistant", isTemp: false);
 
         Bot.Quests.UpdateQuest(597);
         Core.RegisterQuests(5815);

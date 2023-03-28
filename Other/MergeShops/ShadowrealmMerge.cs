@@ -86,12 +86,12 @@ public class ShadowrealmMerge
                         Core.KillMonster("shadowattack", "Boss", "Left", "Death", req.Name, quant, false);
                     break;
 
-                case "Incarnation of Glitches Scythe":
-                    Core.FarmingLogger($"{req.Name}", quant);
-                    Core.EquipClass(ClassType.Solo);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                        Core.HuntMonster("cathedral", "Incarnation of Time", req.Name, isTemp: false);
-                    break;
+                // case "Incarnation of Glitches Scythe":
+                //     Core.FarmingLogger($"{req.Name}", quant);
+                //     Core.EquipClass(ClassType.Solo);
+                //     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
+                //         Core.HuntMonster("cathedral", "Incarnation of Time", req.Name, isTemp: false);
+                //     break;
 
                 case "Unmoulded Fiend Essence":
                     Core.FarmingLogger($"{req.Name}", quant);
