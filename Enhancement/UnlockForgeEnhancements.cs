@@ -605,7 +605,7 @@ public class UnlockForgeEnhancements
         while (!Bot.ShouldExit && !Core.CheckInventory("Dragon Shinobi Token", 100))
             Core.HuntMonster("shadowfortress", "1st Head Of Orochi", "Perfect Orochi Scales", 10, isTemp: false);
         Core.CancelRegisteredQuests();
-        Adv.BuyItem("shadowfortress", 95, 59465, shopItemID: 8079);
+        Adv.BuyItem("shadowfortress", 1968, 59465, shopItemID: 8079);
         Core.ChainComplete(9171);
     }
 
