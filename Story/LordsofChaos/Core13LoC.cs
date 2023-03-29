@@ -2375,7 +2375,7 @@ public class Core13LoC
         if (!Story.QuestProgression(3880))
         {
             Core.EnsureAccept(3880);
-            Core.HuntMonsterMapID("finalbattle", 1, "13th Lord of Chaos Defeated");
+            Core.HuntMonsterMapID("chaoslord", 1, "13th Lord of Chaos Defeated");
             Core.EnsureComplete(3880);
             Bot.Wait.ForMapLoad("confrontation");
         }
