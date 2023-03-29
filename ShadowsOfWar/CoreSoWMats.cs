@@ -10,6 +10,7 @@ tags: null
 //cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
+using Skua.Core.Models.Skills;
 
 public class CoreSoWMats
 {
