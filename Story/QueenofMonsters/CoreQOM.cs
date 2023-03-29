@@ -400,35 +400,35 @@ public class CoreQOM
         }
 
         //Arm the Armored!
-        Story.MapItemQuest(5579, "CastleInvasion", 5055, 5);
-        Story.MapItemQuest(5579, "CastleInvasion", 5056);
+        Story.MapItemQuest(5579, "castleinvasion", 5055, 5);
+        Story.MapItemQuest(5579, "castleinvasion", 5056);
 
         //Save the Citizens
-        Story.MapItemQuest(5580, "CastleInvasion", 5058, 5);
+        Story.MapItemQuest(5580, "castleinvasion", 5058, 5);
 
         //Destroy the Infernals
-        Story.KillQuest(5581, "CastleInvasion", new[] { "Infernal Knight", "Fallen Knight", "Nethermage" });
+        Story.KillQuest(5581, "castleinvasion", new[] { "Infernal Knight", "Fallen Knight", "Nethermage" });
 
         //What is THAT??
-        Story.KillQuest(5582, "CastleInvasion", "Giant Worm of Teeth");
+        Story.KillQuest(5582, "castleinvasion", "Giant Worm of Teeth");
 
         //Arm the Civilians
-        Story.MapItemQuest(5583, "CastleInvasion", 5057, 4);
+        Story.MapItemQuest(5583, "castleinvasion", 5057, 4);
 
         //Get Those Beasts
-        Story.KillQuest(5584, "CastleInvasion", new[] { "Infernal Imp", "Underworld Hound" });
+        Story.KillQuest(5584, "castleinvasion", new[] { "Infernal Imp", "Underworld Hound" });
 
         //It's Baaaaack!
-        if (!Story.QuestProgression(5578))
+        if (!Story.QuestProgression(5585))
         {
             Core.EnsureAccept(5585);
-            Core.HuntMonsterMapID("CastleInvasion", 16, "Giant Worm of Teeth Defeated... Again!");
+            Core.HuntMonsterMapID("castleinvasion", 16, "Giant Worm of Teeth Defeated... Again!");
             Core.EnsureComplete(5585);
         }
         
         //Him Again???
         Core.EquipClass(ClassType.Solo);
-        Story.KillQuest(5586, "CastleInvasion", "Lord Balax'el");
+        Story.KillQuest(5586, "castleinvasion", "Lord Balax'el");
     }
 
     public void TheDestroyer()
