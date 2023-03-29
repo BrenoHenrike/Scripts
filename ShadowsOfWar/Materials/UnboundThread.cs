@@ -7,7 +7,7 @@ tags: unbound thread, shadows of war
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/ShadowsOfWar/CoreSOfWar.cs
+//cs_include Scripts/ShadowsOfWar/CoreSoWMats.cs
 //cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
 using Skua.Core.Interfaces;
 
@@ -15,7 +15,7 @@ public class UnboundThread
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreSOfWar SOfWar = new CoreSOfWar();
+    public CoreSoWMats SOWM = new CoreSoWMats();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -23,7 +23,7 @@ public class UnboundThread
 
         Core.SetOptions();
 
-        SOfWar.UnboundThread();
+        SOWM.UnboundThread();
 
         Core.SetOptions(false);
     }

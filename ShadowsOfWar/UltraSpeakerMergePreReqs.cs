@@ -8,7 +8,7 @@ tags: ultra speaker merge, ultra malgor merge
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
-//cs_include Scripts/ShadowsOfWar/CoreSOfWar.cs
+//cs_include Scripts/ShadowsOfWar/CoreSoWMats.cs
 using Skua.Core.Interfaces;
 
 public class UltraSpeakerMergePreReqs
@@ -16,7 +16,7 @@ public class UltraSpeakerMergePreReqs
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreSoW SoW = new();
-    public CoreSOfWar SOfWar = new();
+    public CoreSoWMats SOWM = new();
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
@@ -30,9 +30,9 @@ public class UltraSpeakerMergePreReqs
     {
         SoW.CompleteCoreSoW();
 
-        SOfWar.DragonsTear();
-        SOfWar.Acquiescence(60);
-        SOfWar.ElementalCore(81);
+        SOWM.DragonsTear();
+        SOWM.Acquiescence(60);
+        SOWM.ElementalCore(81);
         //50 Brilliant Aura
         //1 Blinding Aura
         //250 Enchanted Scale

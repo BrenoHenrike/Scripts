@@ -76,7 +76,7 @@ tags: lacerate, smite, herosvaliance, arcanasconcerto, elysium, acheron, absolut
 //cs_include Scripts/Other/MergeShops/StreamwarMerge.cs
 //cs_include Scripts/Other/MergeShops/WorldsCoreMerge.cs
 //cs_include Scripts/Other/MergeShops/ManaCradleMerge.cs
-//cs_include Scripts/ShadowsOfWar/CoreSOfWar.cs
+//cs_include Scripts/ShadowsOfWar/CoreSoWMats.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Models.Skills;
@@ -92,7 +92,7 @@ public class UnlockForgeEnhancements
     public CoreNation Nation = new();
     public CoreLegion Legion = new();
     public CoreDarkon Darkon = new();
-    public CoreSOfWar SOfWar = new();
+    public CoreSoWMats SOWM = new();
     public CoreAwe Awe = new();
     public Core13LoC LOC => new();
     public CoreNSOD CorNSOD = new();
@@ -570,7 +570,7 @@ public class UnlockForgeEnhancements
                 Bot.Skills.StartAdvanced(Core.CheckInventory("Yami no Ronin") ? "Yami no Ronin" : "Dragon of Time", true, ClassUseMode.Solo);
             }
             else Core.EquipClass(ClassType.Solo);
-            SOfWar.ElementalCore(20);
+            SOWM.ElementalCore(20);
 
             Core.Logger("Items still needed(the bot cannot farm these):");
             foreach (string item in DauntlessItems)

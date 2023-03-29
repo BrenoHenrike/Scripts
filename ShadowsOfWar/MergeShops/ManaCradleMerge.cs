@@ -7,7 +7,7 @@ tags: null
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/ShadowsOfWar/CoreSOfWar.cs
+//cs_include Scripts/ShadowsOfWar/CoreSoWMats.cs
 //cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
@@ -21,7 +21,7 @@ public class ManaCradleMerge
     private CoreFarms Farm = new();
     private CoreAdvanced Adv = new();
     private static CoreAdvanced sAdv = new();
-    private CoreSOfWar SofWar = new();
+    private CoreSoWMats SOWM = new();
     private CoreSoW SoW = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
@@ -69,27 +69,27 @@ public class ManaCradleMerge
 
                 case "Willpower":
                     Core.AddDrop("ShadowFlame Healer", "ShadowFlame Mage");
-                    SofWar.Willpower(quant);
+                    SOWM.Willpower(quant);
                     break;
 
                 case "Garish Remnant":
-                    SofWar.GarishRemnant(quant);
+                    SOWM.GarishRemnant(quant);
                     break;
 
                 case "Prismatic Seams":
-                    SofWar.PrismaticSeams(quant);
+                    SOWM.PrismaticSeams(quant);
                     break;
 
                 case "Unbound Thread":
-                    SofWar.UnboundThread(quant);
+                    SOWM.UnboundThread(quant);
                     break;
 
                 case "Acquiescence":
-                    SofWar.Acquiescence(quant);
+                    SOWM.Acquiescence(quant);
                     break;
 
                 case "Elemental Core":
-                    SofWar.ElementalCore(quant);
+                    SOWM.ElementalCore(quant);
                     break;
 
                 case "Mainyu Rune":

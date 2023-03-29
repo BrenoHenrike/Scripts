@@ -8,7 +8,7 @@ tags: null
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/ShadowsOfWar/CoreSOfWar.cs
+//cs_include Scripts/ShadowsOfWar/CoreSoWMats.cs
 //cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
@@ -22,7 +22,7 @@ public class RuinedCrownMerge
     public CoreStory Story = new();
     public CoreAdvanced Adv = new();
     public static CoreAdvanced sAdv = new();
-    private CoreSOfWar SofWar = new();
+    private CoreSoWMats SOWM = new();
     public CoreSoW SoW = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
@@ -68,7 +68,7 @@ public class RuinedCrownMerge
                 #endregion
 
                 case "Willpower":
-                    SofWar.Willpower();
+                    SOWM.Willpower();
                     break;
 
                 case "ShadowFlame Warrior":

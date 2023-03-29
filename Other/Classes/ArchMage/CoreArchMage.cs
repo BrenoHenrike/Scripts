@@ -12,7 +12,7 @@ tags: null
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
 //cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
 //cs_include Scripts/Story/QueenofMonsters/CoreQOM.cs
-//cs_include Scripts/ShadowsOfWar/CoreSOfWar.cs
+//cs_include Scripts/ShadowsOfWar/CoreSoWMats.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Skills;
 using Skua.Core.Options;
@@ -27,7 +27,7 @@ public class CoreArchMage
     private CoreBLOD BLOD = new();
     private CoreQOM QOM = new();
     private CoreSoW SoW = new();
-    private CoreSOfWar SOfWar = new();
+    private CoreSoWMats SOWM = new();
 
     public bool DontPreconfigure = true;
     public string OptionsStorage = "ArchMage";
@@ -151,7 +151,7 @@ public class CoreArchMage
         BossItemCheck(2500, "Elemental Binding");
 
         Core.EquipClass(ClassType.Farm);
-        SOfWar.PrismaticSeams();
+        SOWM.PrismaticSeams();
 
         Core.FarmingLogger("Unbound Thread", 100);
         //Fallen Branches 8869

@@ -11,7 +11,7 @@ tags: null
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 
-public class CoreSOfWar
+public class CoreSoWMats
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
