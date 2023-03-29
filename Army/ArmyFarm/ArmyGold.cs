@@ -74,6 +74,7 @@ public class ArmyGold
 
     public void BGE(Method mapname)
     {
+        // 1 = bge, 0 = HH
         if ((int)mapname == 0 && Bot.Player.Level <= 60)
             Core.Logger("Minimum level 61 required for this map", messageBox: true, stopBot: true);
 
@@ -83,14 +84,13 @@ public class ArmyGold
         if (((int)mapname == 0 && Core.IsMember))
             Core.RegisterQuests(3991, 3992, 3993);
         else if (((int)mapname == 1))
-            Core.RegisterQuests(3992, 3993);
-        else
             Core.RegisterQuests(3991, 3992);
+            
         Army.AggroMonMIDs(1, 2, 3, 4, 5, 6);
         Army.AggroMonStart(mapname.ToString());
 
         if ((int)mapname == 0)
-            Army.DivideOnCells("r5", "r4", "r3", "r2");
+            Army.DivideOnCells("r4", "r3", "r2", "r1");
         else Army.DivideOnCells("r4", "r3", "r2", "r1");
 
         while (!Bot.ShouldExit)// && Bot.Player.Gold < 100000000)
