@@ -690,9 +690,10 @@ public class CoreBots
         _BuyItem(map, shopID, item, quant);
     }
 
-    private void _BuyItem(string map, int shopID, ShopItem? item, int quant)
+    public void _BuyItem(string map, int shopID, ShopItem? item, int quant)
     {
         int buy_quant;
+
         if (item == null || (buy_quant = _CalcBuyQuantity(item, quant)) == 0 || !_canBuy(shopID, item, buy_quant))
             return;
 
@@ -768,6 +769,144 @@ public class CoreBots
             Logger($"Failed to find the shopItemData for itemID {itemID} in {shopID}" + reinstallCleanFlash, "BuyItem");
             return null!;
         }
+
+        bool _canBuy(int shopID, ShopItem? item, int buy_quant)
+        {
+            if (item == null)
+                return false;
+
+            //Achievement Check
+            int achievementID = Bot.Flash.GetGameObject<int>("world.shopinfo.iIndex");
+            string? io = Bot.Flash.GetGameObject<string>("world.shopinfo.sField");
+            if (achievementID > 0 && io != null && !HasAchievement(achievementID, io))
+            {
+                Logger($"Cannot buy {item.Name} from {shopID} because you dont have achievement {achievementID} of category {io}.", "CanBuy");
+                return false;
+            }
+
+            //Member Check
+            if (item.Upgrade && !IsMember)
+            {
+                Logger($"Cannot buy {item.Name} from {shopID} because you aren't a member.", "CanBuy");
+                return false;
+            }
+
+            //Required-Item Check
+            int reqItemID = Bot.Flash.GetGameObject<int>("world.shopinfo.reqItems");
+            if (reqItemID > 0 && !CheckInventory(reqItemID))
+            {
+                Logger($"Cannot buy {item.Name} from {shopID} because you dont have the requiered item needed to buy stuff from the shop, itemID: {reqItemID}", "CanBuy");
+                return false;
+            }
+
+            //Quest Check
+            string? questName = Bot.Flash.GetGameObject<List<dynamic>>("world.shopinfo.items")?.Find(d => d.ItemID == item.ID)?.sQuest;
+            if (!String.IsNullOrEmpty(questName))
+            {
+                var v = JsonConvert.DeserializeObject<dynamic[]>(File.ReadAllText(ClientFileSources.SkuaQuestsFile));
+                if (v != null)
+                {
+                    List<int> ids = v.Where(x => x.Name == questName).Select(q => (int)q.ID).ToList();
+                    if (ids.Count > 0)
+                    {
+                        List<Quest> quests = EnsureLoad(ids.Where(q => !isCompletedBefore(q)).ToArray());
+                        if (quests.Count > 0)
+                        {
+                            string s = String.Empty;
+                            quests.ForEach(q => s += $"[{q.ID}] |");
+                            bool one = quests.Count == 1;
+                            Logger($"Cannot buy {item.Name} from {shopID} because you havn't completed the {(one ? "" : "one of ")}following quest{(one ? "" : "s")}: \"{questName}\" {s[..^2]}", "CanBuy");
+                            return false;
+                        }
+                    }
+                }
+            }
+
+            //Rep check
+            if (!String.IsNullOrEmpty(item.Faction) && item.Faction != "None")
+            {
+                int reqRank = RepCPLevel.First(x => x.Key == item.RequiredReputation).Value;
+                if (reqRank > Bot.Reputation.GetRank(item.Faction))
+                {
+                    Logger($"Cannot buy {item.Name} from {shopID} because you dont have rank {reqRank} {item.Faction}.", "CanBuy");
+                    return false;
+                }
+            }
+
+            //Merge item check
+            int itemCount = item.Quantity == 0 ? 1 : item.Quantity;
+            int buy_count = (int)Math.Ceiling((decimal)buy_quant / (decimal)(itemCount));
+            if (item.Requirements.Any())
+            {
+                foreach (ItemBase req in item.Requirements)
+                {
+                    if (CheckInventory(req.ID, req.Quantity))
+                        continue;
+
+                    Bot.Drops.Pickup(req.ID);
+                    Bot.Wait.ForPickup(req.ID);
+
+                    int total_quant = buy_count * req.Quantity;
+
+                    if (GetShopItems(map, shopID).Any(x => req.ID == x.ID))
+                        BuyItem(map, shopID, req.ID, total_quant);
+
+                    if (!CheckInventory(req.ID, total_quant))
+                    {
+                        if (CheckInventory(req.ID))
+                        {
+                            Logger($"Cannot buy {item.Name} from {shopID}.", "CanBuy");
+                            Logger($"You own {Bot.Inventory.GetQuantity(req.ID)}x {req.Name}.", "CanBuy");
+                            Logger($"You need {total_quant}.", "CanBuy");
+
+                            return false;
+                        }
+                        Logger($"Cannot buy {item.Name} from {shopID} because {req.Name} is missing.", "CanBuy");
+                        return false;
+                    }
+                }
+            }
+
+            //Gold check
+            if (!item.Coins && item.Cost > 0)
+            {
+                int total_gold_cost = buy_count * item.Cost;
+                if (total_gold_cost > 100000000)
+                {
+                    Logger($"Cannot buy more than 100 mil worth of items.", "CanBuy");
+                    return false;
+                }
+                else if (total_gold_cost > Bot.Player.Gold)
+                {
+                    Logger($"Cannot buy {item.Name} from {shopID}.", "CanBuy");
+                    Logger($"You own {Bot.Inventory.GetQuantity(item.ID)}x {item.Name}.", "CanBuy");
+                    Logger($"You need {Bot.Inventory.GetQuantity(item.ID) + buy_count}.", "CanBuy");
+                    Logger($"You are missing {total_gold_cost - Bot.Player.Gold} gold to buy enough.", "CanBuy");
+                    return false;
+                }
+            }
+
+            //AC costing check
+            if (item.Coins && item.Cost > 0)
+            {
+                int total_ac_cost = buy_count * item.Cost;
+                if (Bot.ShowMessageBox(
+                        $"The bot is about to buy \"{item.Name}\" {buy_count} times, which costs {total_ac_cost} AC, do you accept this?",
+                        "Warning: Costs AC!", true)
+                        != true)
+                {
+                    Logger($"Cannot buy {item.Name} from {shopID} because you didn't allow the bot to buy the item", "CanBuy");
+                    return false;
+                }
+                else if (Bot.Flash.GetGameObject<int>("world.myAvatar.objData.intCoins") < total_ac_cost)
+                {
+                    Logger($"Cannot buy {item.Name} from {shopID} because you are missing {Bot.Flash.GetGameObject<int>("world.myAvatar.objData.intCoins") - total_ac_cost} ACs", "CanBuy");
+                    return false;
+                }
+            }
+
+            return true;
+        }
     }
 
     private void _CheckInventorySpace()
@@ -802,136 +941,7 @@ public class CoreBots
         return buy_quant;
     }
 
-    private bool _canBuy(int shopID, ShopItem? item, int buy_quant)
-    {
-        if (item == null)
-            return false;
-
-        //Achievement Check
-        int achievementID = Bot.Flash.GetGameObject<int>("world.shopinfo.iIndex");
-        string? io = Bot.Flash.GetGameObject<string>("world.shopinfo.sField");
-        if (achievementID > 0 && io != null && !HasAchievement(achievementID, io))
-        {
-            Logger($"Cannot buy {item.Name} from {shopID} because you dont have achievement {achievementID} of category {io}.", "CanBuy");
-            return false;
-        }
-
-        //Member Check
-        if (item.Upgrade && !IsMember)
-        {
-            Logger($"Cannot buy {item.Name} from {shopID} because you aren't a member.", "CanBuy");
-            return false;
-        }
-
-        //Required-Item Check
-        int reqItemID = Bot.Flash.GetGameObject<int>("world.shopinfo.reqItems");
-        if (reqItemID > 0 && !CheckInventory(reqItemID))
-        {
-            Logger($"Cannot buy {item.Name} from {shopID} because you dont have the requiered item needed to buy stuff from the shop, itemID: {reqItemID}", "CanBuy");
-            return false;
-        }
-
-        //Quest Check
-        string? questName = Bot.Flash.GetGameObject<List<dynamic>>("world.shopinfo.items")?.Find(d => d.ItemID == item.ID)?.sQuest;
-        if (!String.IsNullOrEmpty(questName))
-        {
-            var v = JsonConvert.DeserializeObject<dynamic[]>(File.ReadAllText(ClientFileSources.SkuaQuestsFile));
-            if (v != null)
-            {
-                List<int> ids = v.Where(x => x.Name == questName).Select(q => (int)q.ID).ToList();
-                if (ids.Count > 0)
-                {
-                    List<Quest> quests = EnsureLoad(ids.Where(q => !isCompletedBefore(q)).ToArray());
-                    if (quests.Count > 0)
-                    {
-                        string s = String.Empty;
-                        quests.ForEach(q => s += $"[{q.ID}] |");
-                        bool one = quests.Count == 1;
-                        Logger($"Cannot buy {item.Name} from {shopID} because you havn't completed the {(one ? "" : "one of ")}following quest{(one ? "" : "s")}: \"{questName}\" {s[..^2]}", "CanBuy");
-                        return false;
-                    }
-                }
-            }
-        }
-
-        //Rep check
-        if (!String.IsNullOrEmpty(item.Faction) && item.Faction != "None")
-        {
-            int reqRank = RepCPLevel.First(x => x.Key == item.RequiredReputation).Value;
-            if (reqRank > Bot.Reputation.GetRank(item.Faction))
-            {
-                Logger($"Cannot buy {item.Name} from {shopID} because you dont have rank {reqRank} {item.Faction}.", "CanBuy");
-                return false;
-            }
-        }
-
-        //Merge item check
-        int itemCount = item.Quantity == 0 ? 1 : item.Quantity;
-        int buy_count = (int)Math.Ceiling((decimal)buy_quant / (decimal)(itemCount));
-        if (item.Requirements != null)
-        {
-            foreach (ItemBase req in item.Requirements)
-            {
-                Bot.Drops.Pickup(req.ID);
-                Bot.Wait.ForPickup(req.ID);
-
-                int total_quant = buy_count * req.Quantity;
-                if (!CheckInventory(req.ID, total_quant))
-                {
-                    if (CheckInventory(req.ID))
-                    {
-                        Logger($"Cannot buy {item.Name} from {shopID}.", "CanBuy");
-                        Logger($"You own {Bot.Inventory.GetQuantity(req.ID)}x {req.Name}.", "CanBuy");
-                        Logger($"You need {total_quant}.", "CanBuy");
-
-                        return false;
-                    }
-                    Logger($"Cannot buy {item.Name} from {shopID} because {req.Name} is missing.", "CanBuy");
-                    return false;
-                }
-            }
-        }
-
-        //Gold check
-        if (!item.Coins && item.Cost > 0)
-        {
-            int total_gold_cost = buy_count * item.Cost;
-            if (total_gold_cost > 100000000)
-            {
-                Logger($"Cannot buy more than 100 mil worth of items.", "CanBuy");
-                return false;
-            }
-            else if (total_gold_cost > Bot.Player.Gold)
-            {
-                Logger($"Cannot buy {item.Name} from {shopID}.", "CanBuy");
-                Logger($"You own {Bot.Inventory.GetQuantity(item.ID)}x {item.Name}.", "CanBuy");
-                Logger($"You need {Bot.Inventory.GetQuantity(item.ID) + buy_count}.", "CanBuy");
-                Logger($"You are missing {total_gold_cost - Bot.Player.Gold} gold to buy enough.", "CanBuy");
-                return false;
-            }
-        }
-
-        //AC costing check
-        if (item.Coins && item.Cost > 0)
-        {
-            int total_ac_cost = buy_count * item.Cost;
-            if (Bot.ShowMessageBox(
-                    $"The bot is about to buy \"{item.Name}\" {buy_count} times, which costs {total_ac_cost} AC, do you accept this?",
-                    "Warning: Costs AC!", true)
-                    != true)
-            {
-                Logger($"Cannot buy {item.Name} from {shopID} because you didn't allow the bot to buy the item", "CanBuy");
-                return false;
-            }
-            else if (Bot.Flash.GetGameObject<int>("world.myAvatar.objData.intCoins") < total_ac_cost)
-            {
-                Logger($"Cannot buy {item.Name} from {shopID} because you are missing {Bot.Flash.GetGameObject<int>("world.myAvatar.objData.intCoins") - total_ac_cost} ACs", "CanBuy");
-                return false;
-            }
-        }
-
-        return true;
-    }
+    
     public Dictionary<int, int> RepCPLevel = new()
     {
         { 0, 1 },

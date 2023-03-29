@@ -259,8 +259,7 @@ public class PotionBuyer
                         break;
 
                     case "Fish Oil":
-                        if (!Core.CheckInventory(11467, ingreQuant))
-                            Adv.BuyItem("alchemyacademy", 397, 11467, ingreQuant);
+                        Adv.BuyItem("alchemyacademy", 397, 11467, ingreQuant);
                         break;
 
                     case "Doomatter":

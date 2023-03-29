@@ -49,7 +49,7 @@ public class CoreAdvanced
         if (item == null)
             return;
 
-        _BuyItem(map, shopID, item, quant, shopItemID);
+        _BuyItem(map, shopID, item, quant);
     }
 
     /// <summary>
@@ -71,26 +71,13 @@ public class CoreAdvanced
         if (item == null)
             return;
 
-        _BuyItem(map, shopID, item, quant, shopItemID);
+        _BuyItem(map, shopID, item, quant);
     }
 
-    private void _BuyItem(string map, int shopID, ShopItem item, int quant = 1, int shopItemID = 0)
+    private void _BuyItem(string map, int shopID, ShopItem item, int quant = 1)
     {
         GetItemReq(item);
-
-        if (item.Requirements != null)
-        {
-            foreach (ItemBase req in item.Requirements)
-            {
-                if (Core.CheckInventory(req.ID, req.Quantity))
-                    continue;
-
-                if (Core.GetShopItems(map, shopID).Any(x => req.ID == x.ID))
-                    BuyItem(map, shopID, req.ID, req.Quantity * quant);
-            }
-        }
-
-        Core.BuyItem(map, shopID, item.Name, quant, shopItemID);
+        Core._BuyItem(map, shopID, item, quant);
     }
 
     /// <summary>
