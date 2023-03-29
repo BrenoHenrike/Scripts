@@ -23,7 +23,6 @@ public class ArmyLowTideMergeReqs
 
     public string OptionsStorage = "ArmyLowTideMergeReqs";
     public bool DontPreconfigure = true;
-    CancellationTokenSource cts = new();
     public List<IOption> Options = new List<IOption>()
     {
         sArmy.player1,
@@ -53,8 +52,8 @@ public class ArmyLowTideMergeReqs
         Core.PrivateRoomNumber = Army.getRoomNr();
 
         Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
-        
-        Army.AggroMonPacketDelay = Bot.Config.Get<int>("PacketDelay");
+
+        Army.AggroMonPacketDelay = Bot.Config!.Get<int>("PacketDelay");
 
         Core.AddDrop(Loot);
         Core.EquipClass(ClassType.Farm);

@@ -26,7 +26,7 @@ public class CurrentDailyGifts
     {
         Core.SetOptions();
 
-        GetAllGifts(Bot.Config.Get<DailyGiftsMode>("mode"));
+        GetAllGifts(Bot.Config!.Get<DailyGiftsMode>("mode"));
 
         Core.SetOptions(false);
     }

@@ -347,7 +347,7 @@ public class CoreBots
 
     private bool CrashDetector(Exception? e)
     {
-        if (e == null)
+        if (e == null || (Bot.ShouldExit && e is OperationCanceledException))
             return scriptFinished;
 
         string eSlice = e.Message + "\n" + e.InnerException;
