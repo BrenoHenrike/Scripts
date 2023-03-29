@@ -2440,7 +2440,7 @@ public class CoreFarms
 
             Core.RegisterQuests(1310, 1312, 1313, 1314);
             while (!Bot.ShouldExit && !Core.CheckInventory("Super-Fan Swag Token C", 200))
-                Core.KillMonster("collectorlab", "r2", "Right", "*", "Doppelganger Documents", log: false);
+                Core.KillMonster("collectorlab", "r2", "Right", "*", log: false);
             Core.CancelRegisteredQuests();
 
             Core.Join("Collection", "Begin", "Spawn");
