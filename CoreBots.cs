@@ -84,7 +84,7 @@ public class CoreBots
     public static CoreBots Instance => _instance ??= new CoreBots();
     private IScriptInterface Bot => IScriptInterface.Instance;
 
-    private const string DiscordLink = "https://discord.gg/pearlharbor";
+    private const string DiscordLink = "https://discord.gg/CKKbk2zr3p";
 
     #endregion
 
@@ -170,6 +170,14 @@ public class CoreBots
             {
                 Task.Run(() =>
                 {
+                    Task.Run(() => 
+                    {
+                        if (OneTimeMessage("discordV11", 
+                                "Our discord server was recently deleted again (March 29th 2023), click yes if you wish to (re-)join the server", 
+                                true, true, true))
+                            Process.Start("explorer", DiscordLink);
+                    });
+
                     // Butler directory cleaning
                     if (Directory.Exists(ButlerLogDir))
                     {
