@@ -7,6 +7,7 @@ tags: null
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreStory.cs
+//cs_include Scripts/ShadowsOfWar/CoreSOfWar.cs
 //cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
@@ -20,6 +21,7 @@ public class ManaCradleMerge
     private CoreFarms Farm = new();
     private CoreAdvanced Adv = new();
     private static CoreAdvanced sAdv = new();
+    private CoreSOfWar SofWar = new();
     private CoreSoW SoW = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
@@ -67,90 +69,27 @@ public class ManaCradleMerge
 
                 case "Willpower":
                     Core.AddDrop("ShadowFlame Healer", "ShadowFlame Mage");
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.EnsureAccept(8788);
-                        Core.EquipClass(ClassType.Solo);
-                        Core.HuntMonster($"ruinedcrown", "Calamitous Warlic", "Warlic’s Favor");
-                        Core.EquipClass(ClassType.Farm);
-                        Core.HuntMonster("ruinedcrown", "Frenzied Mana", "Mana Residue", 8);
-                        Core.HuntMonster($"ruinedcrown", "Mana-Burdened Mage", "Mage’s Blood Sample", 8);
-                        Core.EnsureComplete(8788);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    Core.CancelRegisteredQuests();
+                    SofWar.Willpower(quant);
                     break;
 
                 case "Garish Remnant":
-                    Core.FarmingLogger($"{req.Name}", quant);
-                    Core.RegisterQuests(8813);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.EquipClass(ClassType.Solo);
-                        Core.HuntMonster("Timekeep", "Mal-formed Gar", "Gar's Resignation Letter");
-                        Core.EquipClass(ClassType.Farm);
-                        Core.HuntMonster("Timekeep", "Mumbler", "Mumbler Drool", 8);
-                        Core.HuntMonster("Timekeep", "Decaying Locust", "Locust Wings", 8);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    Core.CancelRegisteredQuests();
+                    SofWar.GarishRemnant(quant);
                     break;
 
                 case "Prismatic Seams":
-                    Core.FarmingLogger($"{req.Name}", quant);
-                    Core.EquipClass(ClassType.Farm);
-                    Core.RegisterQuests(8814, 8815);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                        Core.KillMonster("Streamwar", "r3a", "Left", "*", log: false);
-                    Core.CancelRegisteredQuests();
+                    SofWar.PrismaticSeams(quant);
                     break;
 
                 case "Unbound Thread":
-                    Core.FarmingLogger(req.Name, quant);
-                    Core.RegisterQuests(8869);
-                    Core.EquipClass(ClassType.Solo);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        // Fallen Branches 8869
-                        Core.HuntMonster("DeadLines", "Shadowfall Warrior", "Armor Scrap", 8);
-                        Core.HuntMonster("DeadLines", "Frenzied Mana", "Captured Mana", 8);
-                        Core.HuntMonster("DeadLines", "Eternal Dragon", "Eternal Dragon Scale");
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    Core.CancelRegisteredQuests();
+                    SofWar.UnboundThread(quant);
                     break;
 
                 case "Acquiescence":
-                    Core.FarmingLogger(req.Name, quant);
-                    Core.RegisterQuests(8966);
-                    Core.EquipClass(ClassType.Solo);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster("worldscore", "Elemental Attempt", "Cracked Elemental Stone", 8);
-                        Core.HuntMonster("worldscore", "Crystalized Mana", "Crystalized Tooth", 8);
-                        Core.HuntMonster("worldscore", "Mask of Tranquility", "Creator's Favor", 1);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    Core.CancelRegisteredQuests();
+                    SofWar.Acquiescence(quant);
                     break;
 
                 case "Elemental Core":
-                    Core.FarmingLogger(req.Name, quant);
-                    if (Core.CheckInventory("Yami no Ronin") || Core.CheckInventory("Dragon of Time"))
-                    {
-                        Core.AddDrop(SoW.MalgorDrops.Concat(SoW.MainyuDrops).ToArray());
-                        Bot.Skills.StartAdvanced(Core.CheckInventory("Yami no Ronin") ? "Yami no Ronin" : "Dragon of Time", true, ClassUseMode.Solo);
-                    }
-                    else Core.EquipClass(ClassType.Solo);
-                    Core.RegisterQuests(9126);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster("manacradle", "Dark Tainted Mana", "Elemental Tear", 8);
-                        Core.HuntMonster("manacradle", "Malgor", "Weathered Armor Shard");
-                        Core.HuntMonster("manacradle", "The Mainyu", "Licorice Scale");
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    Core.CancelRegisteredQuests();
+                    SofWar.ElementalCore(quant);
                     break;
 
                 case "Mainyu Rune":

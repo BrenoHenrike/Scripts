@@ -7,6 +7,7 @@ tags: null
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/ShadowsOfWar/CoreSOfWar.cs
 //cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
@@ -20,6 +21,7 @@ public class DeadLinesMerge
     public CoreStory Story = new();
     public CoreAdvanced Adv = new();
     public static CoreAdvanced sAdv = new();
+    private CoreSOfWar SofWar = new();
     public CoreSoW SoW = new();
 
 
@@ -66,20 +68,7 @@ public class DeadLinesMerge
                 #endregion
 
                 case "Unbound Thread":
-                    SoW.DeadLines();
-                    Core.FarmingLogger(req.Name, quant);
-                    Core.RegisterQuests(8869);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        //Fallen Branches 8869
-                        Core.EquipClass(ClassType.Farm);
-                        Core.HuntMonster("DeadLines", "Frenzied Mana", "Captured Mana", 8);
-                        Core.HuntMonster("DeadLines", "Shadowfall Warrior", "Armor Scrap", 8);
-                        Core.EquipClass(ClassType.Solo);
-                        Core.HuntMonster("DeadLines", "Eternal Dragon", "Eternal Dragon Scale");
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    Core.CancelRegisteredQuests();
+                    SofWar.UnboundThread(quant);
                     break;
 
             }

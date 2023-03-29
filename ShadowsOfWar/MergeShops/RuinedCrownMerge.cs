@@ -8,6 +8,7 @@ tags: null
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/ShadowsOfWar/CoreSOfWar.cs
 //cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
@@ -21,6 +22,7 @@ public class RuinedCrownMerge
     public CoreStory Story = new();
     public CoreAdvanced Adv = new();
     public static CoreAdvanced sAdv = new();
+    private CoreSOfWar SofWar = new();
     public CoreSoW SoW = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
@@ -66,19 +68,7 @@ public class RuinedCrownMerge
                 #endregion
 
                 case "Willpower":
-                    Core.AddDrop("ShadowFlame Healer", "ShadowFlame Mage");
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.EnsureAccept(8788);
-                        Core.EquipClass(ClassType.Solo);
-                        Core.HuntMonster($"ruinedcrown", "Calamitous Warlic", "Warlic’s Favor");
-                        Core.EquipClass(ClassType.Farm);
-                        Core.HuntMonster("ruinedcrown", "Frenzied Mana", "Mana Residue", 8);
-                        Core.HuntMonster($"ruinedcrown", "Mana-Burdened Mage", "Mage’s Blood Sample", 8);
-                        Core.EnsureComplete(8788);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    Core.CancelRegisteredQuests();
+                    SofWar.Willpower();
                     break;
 
                 case "ShadowFlame Warrior":
