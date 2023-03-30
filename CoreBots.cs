@@ -2477,6 +2477,11 @@ public class CoreBots
                     SimpleQuestBypass((363, 1));
                 break;
 
+            case "shadowattack":
+                SimpleQuestBypass((175, 20));
+                break;
+            #endregion
+
             case "darkoviaforest":
             case "lycan":
             case "safiria":
@@ -2497,7 +2502,6 @@ public class CoreBots
                 break;
 
             case "confrontation":
-            case "shadowattack":
                 PrivateSimpleQuestBypass((175, 20));
                 break;
             #endregion
