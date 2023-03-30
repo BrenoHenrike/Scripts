@@ -2480,7 +2480,6 @@ public class CoreBots
             case "shadowattack":
                 SimpleQuestBypass((175, 20));
                 break;
-            #endregion
 
             case "darkoviaforest":
             case "lycan":
