@@ -114,12 +114,14 @@ public class CoreSoWMats
             return;
 
         Core.FarmingLogger(Material, Quantity);
+        Core.AddDrop(Material);
         Core.RegisterQuests(questIDs);
         while (!Bot.ShouldExit && !Core.CheckInventory(Material, Quantity))
         {
             Kill();
             Bot.Wait.ForPickup(Material);
         }
+        Core.RemoveDrop(Material);
         Core.CancelRegisteredQuests();
     }
 }

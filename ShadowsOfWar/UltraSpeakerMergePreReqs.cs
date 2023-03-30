@@ -29,6 +29,7 @@ tags: ultra speaker merge, ultra malgor merge
 //cs_include Scripts/Story/Doomwood/CoreDoomwood.cs
 //cs_include Scripts/Story/DragonFableOrigins.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
+//cs_include Scripts/Story/ShadowsOfChaos/CoreSoC.cs
 //cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
 //cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
 //cs_include Scripts/Story/TowerOfDoom.cs
@@ -42,6 +43,7 @@ public class UltraSpeakerMergePreReqs
     private AscendedDrakathGear ADG = new();
     private CoreBLOD BLOD = new();
     private CoreHollowbornDoomKnight HDK = new();
+    private CoreSoC SoC = new();
     private CoreSoW SoW = new();
     private CoreSoWMats SOWM = new();
     private DragonFableOrigins DFO = new();
@@ -67,7 +69,6 @@ public class UltraSpeakerMergePreReqs
         int AcquiescenceCount = 0;
         int ElementalCoreCount = 0;
 
-
         // War Blade/s of Courage
         if (!Core.CheckInventory("War Blade of Courage", toInv: false))
         {
@@ -92,8 +93,10 @@ public class UltraSpeakerMergePreReqs
             else
             {
                 DSG.EnchantedScaleandClaw(250, 0);
+                Core.AddDrop(11475);
                 while (!Bot.ShouldExit && !Core.CheckInventory(11475, 30))
                     Core.KillMonster("lair", "Hole", "Center", "*", isTemp: false, log: false);
+                Core.RemoveDrop(11475);
                 AcquiescenceCount += 10;
             }
         }
@@ -106,6 +109,7 @@ public class UltraSpeakerMergePreReqs
             else
             {
                 Core.HuntMonster("shadowfallwar", "Skeletal Fire Mage", "Ultimate Darkness Gem", 50, isTemp: false);
+                Core.EquipClass(ClassType.Solo);
                 Core.KillMonster("shadowattack", "Boss", "Left", "Death", "Death's Oversight", 5, false);
                 AcquiescenceCount += 10;
             }
@@ -134,8 +138,9 @@ public class UltraSpeakerMergePreReqs
             else
             {
                 Core.HuntMonster("transformation", "Queen of Monsters", "Fragment of the Queen", 13, false);
-                Core.EquipClass(ClassType.Farm);
 
+                SoC.LagunaBeach();
+                Core.EquipClass(ClassType.Farm);
                 SOWM.FarmReq(() =>
                 {
                     Core.HuntMonster("lagunabeach", "Flying Fisheye|ShadowChaos Brigand", "Chaos-ShadowFlame Sample", 15);
