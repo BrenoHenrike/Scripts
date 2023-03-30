@@ -170,10 +170,10 @@ public class CoreBots
             {
                 Task.Run(() =>
                 {
-                    Task.Run(() => 
+                    Task.Run(() =>
                     {
-                        if (OneTimeMessage("discordV11", 
-                                "Our discord server was recently deleted again (March 29th 2023), click yes if you wish to (re-)join the server", 
+                        if (OneTimeMessage("discordV11",
+                                "Our discord server was recently deleted again (March 29th 2023), click yes if you wish to (re-)join the server",
                                 true, true, true))
                             Process.Start("explorer", DiscordLink);
                     });
@@ -949,7 +949,7 @@ public class CoreBots
         return buy_quant;
     }
 
-    
+
     public Dictionary<int, int> RepCPLevel = new()
     {
         { 0, 1 },
@@ -2848,7 +2848,7 @@ public class CoreBots
 
     #endregion
 
-    #region Using Local Files
+    #region Using  Local Files
     public static string ButlerLogDir = Path.Combine(ClientFileSources.SkuaOptionsDIR, "Butler");
     private string ButlerLogPath() => Path.Combine(ButlerLogDir, Username().ToLower() + ".txt");
     public bool ButlerOnMe()
