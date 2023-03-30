@@ -1645,9 +1645,13 @@ public class CoreFarms
         Core.PvPMove(28, "Captain1", 943, 404);
         Core.Logger($"Move: {Move++}, General Velm (B)");
         Bot.Kill.Monster("General Velm (B)");
-        Bot.Wait.ForCombatExit();
+        Bot.Sleep(5000);
 
-        Core.Logger("Delaying exit(5s, bugs otherwise)");
+        Bot.Wait.ForDrop("*", 40);
+        Bot.Sleep(Core.ActionDelay);
+        Bot.Wait.ForPickup("*");
+
+        Core.Logger("Delaying exit");
         Bot.Sleep(7500);
 
         while (Bot.Map.Name != "battleon")
@@ -1655,7 +1659,7 @@ public class CoreFarms
             int i = 0;
             Core.Logger($"Attemping Exit {i++}.");
             Bot.Map.Join("battleon-999999");
-            Bot.Sleep(Core.ActionDelay);
+            Bot.Sleep(1500);
         }
     }
 
