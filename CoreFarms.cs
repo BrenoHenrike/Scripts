@@ -510,7 +510,7 @@ public class CoreFarms
                 int i = 0;
                 Core.Logger($"Attemping Exit {i++}.");
                 Bot.Map.Join("battleon-999999");
-                Bot.Sleep(Core.ActionDelay);
+                Bot.Sleep(1500);
             }
         }
     }

@@ -688,6 +688,7 @@ public class CoreLegion
                 Core.Logger($"Fragment: {Bot.Inventory.GetQuantity("Sword Scroll Fragment")} / {ScrollQuant}");
 
             Core.Join("dagepvp", "Enter0", "Spawn", ignoreCheck: true);
+            Bot.Sleep(2500);
 
             Core.PvPMove(1, "r2", 475, 269);
             Core.PvPMove(4, "r4", 963, 351);
@@ -735,7 +736,10 @@ public class CoreLegion
 
             Bot.Kill.Monster("Dage the Evil");
             Bot.Sleep(5000);
-            Bot.Wait.ForDrop("Legion Combat Trophy", 10000);
+
+            Bot.Wait.ForDrop("Legion Combat Trophy", 40);
+            Bot.Sleep(Core.ActionDelay);
+            Bot.Wait.ForPickup("Legion Combat Trophy");
 
             Core.Logger("Delaying exit");
             Bot.Sleep(7500);
@@ -745,7 +749,7 @@ public class CoreLegion
                 int i = 0;
                 Core.Logger($"Attemping Exit {i++}.");
                 Bot.Map.Join("battleon-999999");
-                Bot.Sleep(Core.ActionDelay);
+                Bot.Sleep(1500);
             }
         }
     }
