@@ -89,6 +89,7 @@ public class CoreBLOD
         BlindingMace();
         BlindingBow();
         BlindingBlade();
+        BlindingScythe();
         TheBlindingLightofDestiny();
 
         Core.BuyItem("battleon", 1415, "Blinding Light of Destiny");
@@ -480,7 +481,62 @@ public class CoreBLOD
         }
     }
 
+    public void BlindingScythe()
+    {
+        if (Core.CheckInventory("Blinding Scythe of Destiny"))
+        {
+            Core.Logger("Scythe found, skipping.");
+            return;
+        }
 
+        if (!Core.CheckInventory("Blinding Bow of Destiny"))
+            BlindingBow();
+
+        if (!Core.CheckInventory(new[] { "Blinding Scythe of Destiny", "Bright Scythe of Destiny", "Scythe of Destiny" }, any: true))
+        {
+            if (!Core.CheckInventory("Immortal Iron of Destiny"))
+            {
+                if (!Core.CheckInventory("Immortal Iron"))
+                {
+                    Core.FarmingLogger("Immortal Iron", 1);
+                    Core.EnsureAccept(2106);
+                    Farm.BattleUnderB("Undead Energy", 25);
+                    Daily.MineCrafting(new[] { "Iron" });
+                    if (!Core.CheckInventory("Iron"))
+                        Core.Logger("Can't complete Immortal Iron Enchantment (Missing Iron).", messageBox: true, stopBot: true);
+                    UltimateWK("Spirit Orb", 5);
+                    Core.HuntMonster("arcangrove", "Seed Spitter", "Paladaffodil", 25);
+                    Core.EnsureComplete(2106);
+                    Bot.Wait.ForPickup("Immortal Iron");
+                }
+                Core.FarmingLogger("Immortal Iron of Destiny", 1);
+                FindingFragmentsBow(2);
+                UltimateWK("Loyal Spirit Orb", 5);
+                Core.BuyItem("dwarfhold", 434, "Immortal Iron of Destiny");
+                Bot.Wait.ForPickup("Immortal Iron of Destiny");
+            }
+            Core.FarmingLogger("Scythe of Destiny", 1);
+            UltimateWK("Loyal Spirit Orb", 2);
+            UltimateWK("Spirit Orb", 10);
+            BasicWK();
+            LightMerge("Scythe of Destiny");
+        }
+
+        if (Core.CheckInventory("Scythe of Destiny"))
+        {
+            Core.FarmingLogger("Bright Scythe of Destiny", 1);
+            FindingFragmentsMace(2);
+            AdvancedWK();
+            LightMerge("Bright Scythe of Destiny");
+        }
+
+        if (Core.CheckInventory("Bright Scythe of Destiny"))
+        {
+            Core.FarmingLogger("Blinding Scythe of Destiny", 1);
+            UltimateWK();
+            LightMerge("Blinding Scythe of Destiny");
+        }
+    }
     public void TheBlindingLightofDestiny()
     {
         if (Core.CheckInventory("Blinding Light of Destiny"))
