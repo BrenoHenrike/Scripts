@@ -64,11 +64,25 @@ public class UltraSpeakerMergePreReqs
     {
         SoW.CompleteCoreSoW();
 
-        SOWM.DragonsTear();
-
         int AcquiescenceCount = 0;
         int ElementalCoreCount = 0;
 
+        // Armors
+        if (!Core.CheckInventory("Goddess Of War", toInv: false))
+        {
+            SOWM.DragonsTear();
+            UBLOD.PurifiedUndeadDragonEssence(3);
+            ADG.AscendedGear("Ascended Blade of Awe");
+            DFO.DragonFableOriginsAll();
+            Core.EquipClass(ClassType.Solo);
+            SOWM.FarmReq(() =>
+            {
+                Core.HuntMonster("northmountain", "Izotz", "Ice Crystal");
+            }, "Ice Shard", 50, 6311);
+            HDK.ADKFalls();
+        }
+
+        // Weapons
         // War Blade/s of Courage
         if (!Core.CheckInventory("War Blade of Courage", toInv: false))
         {
@@ -161,26 +175,8 @@ public class UltraSpeakerMergePreReqs
         }
         if (!Core.CheckInventory("Goddess of War Gauntlets", toInv: false))
         {
-            WFE.WarfuryEmblemFarm(50);
             ElementalCoreCount += 3;
         }
-
-        // Armors
-        if (!Core.CheckInventory("Goddess Of War", toInv: false))
-        {
-            SOWM.DragonsTear();
-            UBLOD.PurifiedUndeadDragonEssence(3);
-            ADG.AscendedGear("Ascended Blade of Awe");
-            DFO.DragonFableOriginsAll();
-            Core.EquipClass(ClassType.Solo);
-            SOWM.FarmReq(() =>
-            {
-                Core.HuntMonster("northmountain", "Izotz", "Ice Crystal");
-            }, "Ice Shard", 50, 6311);
-            HDK.ADKFalls();
-        }
-
-        //Hollowborn Doomblade
 
         // Back Items
         if (!Core.CheckInventory("Goddess Of War Prestige Cloak") && !Core.CheckInventory("Goddess of War Cloak"))
