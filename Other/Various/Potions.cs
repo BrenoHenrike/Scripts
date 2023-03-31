@@ -133,25 +133,11 @@ public class PotionBuyer
                     break;
 
                 case "Felicitous Philtre": // No Farm method
-                    if (potionQuant > 150)
-                    {
-                        Core.Logger($"{potion}, {potionQuant} is annoying to make so doing 150 as its the max in once shot. buy more yourself.");
-                        potionQuant = 150;
-                    }
-                    if (Bot.Inventory.FreeSlots == 0)
-                        Core.Logger("Your inventory is full, please clean it and restart the bot", messageBox: true, stopBot: true);
-                    Adv.BuyItem("alchemyacademy", 2036, "Felicitous Philtre", potionQuant > 150 ? 150 : potionQuant);
+                    Adv.BuyItem("alchemyacademy", 2036, "Felicitous Philtre", potionQuant);
                     break;
 
                 case "Endurance Draught": // No Farm method
-                    if (potionQuant > 150)
-                    {
-                        Core.Logger($"{potion}, {potionQuant} is annoying to make so doing 150 as its the max in once shot. buy more yourself.");
-                        potionQuant = 150;
-                    }
-                    if (Bot.Inventory.FreeSlots == 0)
-                        Core.Logger("Your inventory is full, please clean it and restart the bot", messageBox: true, stopBot: true);
-                    Adv.BuyItem("alchemyacademy", 2036, "Endurance Draught", potionQuant > 150 ? 150 : potionQuant);
+                    Adv.BuyItem("alchemyacademy", 2036, "Endurance Draught", potionQuant);
                     break;
 
                 case "Potent Destruction Elixir":
