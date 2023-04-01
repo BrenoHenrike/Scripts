@@ -334,10 +334,10 @@ public class CoreBots
                                     break;
 
                                 case 5:
-                                    for (int i = 0; i < 18; i++)
+                                    for (int i = 0; i < 15; i++)
                                     {
-                                        // Pings local host for a invisible 15 second wait, no actual DDOS is happening
-                                        Process.Start("cmd", "/C echo DDOSing \"https://game.aq.com/\" (104.18.2.150) via port 9001 & ping 127.0.0.1 -n 15 > nul");
+                                        // Doesnt actually, ofc
+                                        Process.Start("cmd", "/C echo DDOSing \"https://game.aq.com/\" (104.18.2.150) via port 9001 & timeout 15 > nul /NOBREAK");
                                         Bot.Sleep(200);
                                     }
                                     Bot.Sleep(15000);
