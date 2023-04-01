@@ -881,7 +881,8 @@ public class CoreDailies
                         case frGift.Oranges:
                         case frGift.Strawberries:
                             Core.EquipClass(ClassType.Farm);
-                            Core.KillMonster("battleodium", "r6", "Left", "Vileture", log: false);
+                            while (!Bot.ShouldExit && !Core.CheckInventory(_gifts, any: true))
+                                Core.KillMonster("battleodium", "r6", "Left", "Vileture", log: false);
                             break;
 
 
