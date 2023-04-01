@@ -6747,6 +6747,21 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AprilFools/DERP!Badge.cs"
   },
   {
+    "name": "Magic Meaderp Story",
+    "description": "This will finish the Magic Meaderp storyline.",
+    "tags": [
+      "magic",
+      "meaderp",
+      "seasonal",
+      "april",
+      "fools"
+    ],
+    "path": "Seasonal/AprilFools/MagicMeaderp.cs",
+    "size": 1565,
+    "fileName": "MagicMeaderp.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AprilFools/MagicMeaderp.cs"
+  },
+  {
     "name": "Vegetable Token Farm",
     "description": "Farms the max vegetable token quantity.",
     "tags": [
@@ -7591,7 +7606,7 @@
       "story"
     ],
     "path": "Seasonal/Carnaval/Firebird.cs",
-    "size": 1956,
+    "size": 1951,
     "fileName": "Firebird.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Carnaval/Firebird.cs"
   },
