@@ -17,7 +17,7 @@
       "null"
     ],
     "path": "CoreDailies.cs",
-    "size": 40606,
+    "size": 41180,
     "fileName": "CoreDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreDailies.cs"
   },
@@ -39,7 +39,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 133067,
+    "size": 140093,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -2101,6 +2101,29 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/TradingandStuff(single).cs"
   },
   {
+    "name": "Ultra Speaker Merge PreReqs",
+    "description": "Gets the prerequisites for the Ultra Speaker merge.",
+    "tags": [
+      "ultra speaker merge",
+      "ultra malgor merge"
+    ],
+    "path": "ShadowsOfWar/UltraSpeakerMergePreReqs.cs",
+    "size": 7687,
+    "fileName": "UltraSpeakerMergePreReqs.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/ShadowsOfWar/UltraSpeakerMergePreReqs.cs"
+  },
+  {
+    "name": "null",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "ShadowsOfWar/CoreSoWMats.cs",
+    "size": 4477,
+    "fileName": "CoreSoWMats.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/ShadowsOfWar/CoreSoWMats.cs"
+  },
+  {
     "name": "EnhanceEquipped[Selectable]",
     "description": "null",
     "tags": [
@@ -2143,7 +2166,7 @@
       "pneuma"
     ],
     "path": "Enhancement/UnlockForgeEnhancements.cs",
-    "size": 35439,
+    "size": 35056,
     "fileName": "UnlockForgeEnhancements.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Enhancement/UnlockForgeEnhancements.cs"
   },
@@ -6724,6 +6747,21 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AprilFools/DERP!Badge.cs"
   },
   {
+    "name": "Magic Meaderp Story",
+    "description": "This will finish the Magic Meaderp storyline.",
+    "tags": [
+      "magic",
+      "meaderp",
+      "seasonal",
+      "april",
+      "fools"
+    ],
+    "path": "Seasonal/AprilFools/MagicMeaderp.cs",
+    "size": 1565,
+    "fileName": "MagicMeaderp.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AprilFools/MagicMeaderp.cs"
+  },
+  {
     "name": "Vegetable Token Farm",
     "description": "Farms the max vegetable token quantity.",
     "tags": [
@@ -7568,7 +7606,7 @@
       "story"
     ],
     "path": "Seasonal/Carnaval/Firebird.cs",
-    "size": 1956,
+    "size": 1951,
     "fileName": "Firebird.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Carnaval/Firebird.cs"
   },
@@ -9686,6 +9724,144 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/HollowbornChaosEnvoy/4WaveringIllusions.cs"
   },
   {
+    "name": "Farms Garish Remnant",
+    "description": "Farms the Garish Remnant from Shadows of War",
+    "tags": [
+      "garish remnant",
+      "shadows of war"
+    ],
+    "path": "ShadowsOfWar/Materials/GarishRemnant.cs",
+    "size": 791,
+    "fileName": "GarishRemnant.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/ShadowsOfWar/Materials/GarishRemnant.cs"
+  },
+  {
+    "name": "Farms Prismatic Seams",
+    "description": "Farms the Prismatic Seams from Shadows of War",
+    "tags": [
+      "prismatic seams",
+      "shadows of war"
+    ],
+    "path": "ShadowsOfWar/Materials/PrismaticSeams.cs",
+    "size": 796,
+    "fileName": "PrismaticSeams.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/ShadowsOfWar/Materials/PrismaticSeams.cs"
+  },
+  {
+    "name": "Farms Acquiescence",
+    "description": "Farms the Acquiescence from Shadows of War",
+    "tags": [
+      "acquiescence",
+      "shadows of war"
+    ],
+    "path": "ShadowsOfWar/Materials/Acquiescence.cs",
+    "size": 781,
+    "fileName": "Acquiescence.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/ShadowsOfWar/Materials/Acquiescence.cs"
+  },
+  {
+    "name": "Farms Willpower",
+    "description": "Farms the Willpower from Shadows of War",
+    "tags": [
+      "willpower",
+      "shadows of war"
+    ],
+    "path": "ShadowsOfWar/Materials/Willpower.cs",
+    "size": 767,
+    "fileName": "Willpower.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/ShadowsOfWar/Materials/Willpower.cs"
+  },
+  {
+    "name": "Farms Elemental Core",
+    "description": "Farms the Elemental Core from Shadows of War",
+    "tags": [
+      "elemental core",
+      "shadows of war"
+    ],
+    "path": "ShadowsOfWar/Materials/ElementalCore.cs",
+    "size": 791,
+    "fileName": "ElementalCore.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/ShadowsOfWar/Materials/ElementalCore.cs"
+  },
+  {
+    "name": "Farms Unbound Thread",
+    "description": "Farms the Unbound Thread from Shadows of War",
+    "tags": [
+      "unbound thread",
+      "shadows of war"
+    ],
+    "path": "ShadowsOfWar/Materials/UnboundThread.cs",
+    "size": 791,
+    "fileName": "UnboundThread.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/ShadowsOfWar/Materials/UnboundThread.cs"
+  },
+  {
+    "name": "WorldsCoreMerge",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "ShadowsOfWar/MergeShops/WorldsCoreMerge.cs",
+    "size": 5062,
+    "fileName": "WorldsCoreMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/ShadowsOfWar/MergeShops/WorldsCoreMerge.cs"
+  },
+  {
+    "name": "ManaCradleMerge",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "ShadowsOfWar/MergeShops/ManaCradleMerge.cs",
+    "size": 5884,
+    "fileName": "ManaCradleMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/ShadowsOfWar/MergeShops/ManaCradleMerge.cs"
+  },
+  {
+    "name": "StreamwarMerge",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "ShadowsOfWar/MergeShops/StreamwarMerge.cs",
+    "size": 6941,
+    "fileName": "StreamwarMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/ShadowsOfWar/MergeShops/StreamwarMerge.cs"
+  },
+  {
+    "name": "DeadLinesMerge",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "ShadowsOfWar/MergeShops/DeadLinesMerge.cs",
+    "size": 4555,
+    "fileName": "DeadLinesMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/ShadowsOfWar/MergeShops/DeadLinesMerge.cs"
+  },
+  {
+    "name": "TimekeepMerge",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "ShadowsOfWar/MergeShops/TimekeepMerge.cs",
+    "size": 3771,
+    "fileName": "TimekeepMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/ShadowsOfWar/MergeShops/TimekeepMerge.cs"
+  },
+  {
+    "name": "RuinedCrownMerge",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "ShadowsOfWar/MergeShops/RuinedCrownMerge.cs",
+    "size": 5994,
+    "fileName": "RuinedCrownMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/ShadowsOfWar/MergeShops/RuinedCrownMerge.cs"
+  },
+  {
     "name": "null",
     "description": "null",
     "tags": [
@@ -10218,17 +10394,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/TrickstersGiftsMerge.cs"
   },
   {
-    "name": "WorldsCoreMerge",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Other/MergeShops/WorldsCoreMerge.cs",
-    "size": 7022,
-    "fileName": "WorldsCoreMerge.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/WorldsCoreMerge.cs"
-  },
-  {
     "name": "DwobosMerge",
     "description": "null",
     "tags": [
@@ -10427,17 +10592,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/QueensReignMerge.cs"
   },
   {
-    "name": "ManaCradleMerge",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Other/MergeShops/ManaCradleMerge.cs",
-    "size": 9873,
-    "fileName": "ManaCradleMerge.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/ManaCradleMerge.cs"
-  },
-  {
     "name": "EternalChaosMerge",
     "description": "null",
     "tags": [
@@ -10458,17 +10612,6 @@
     "size": 10741,
     "fileName": "DreadForestMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/DreadForestMerge.cs"
-  },
-  {
-    "name": "StreamwarMerge",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Other/MergeShops/StreamwarMerge.cs",
-    "size": 8689,
-    "fileName": "StreamwarMerge.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/StreamwarMerge.cs"
   },
   {
     "name": "WarTrainingMerge",
@@ -10557,17 +10700,6 @@
     "size": 7643,
     "fileName": "DeathPitArenaRepMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/DeathPitArenaRepMerge.cs"
-  },
-  {
-    "name": "DeadLinesMerge",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Other/MergeShops/DeadLinesMerge.cs",
-    "size": 5241,
-    "fileName": "DeadLinesMerge.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/DeadLinesMerge.cs"
   },
   {
     "name": "OriginulMerge",
@@ -10826,17 +10958,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/DageRecruitMerge.cs"
   },
   {
-    "name": "TimekeepMerge",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Other/MergeShops/TimekeepMerge.cs",
-    "size": 4410,
-    "fileName": "TimekeepMerge.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/TimekeepMerge.cs"
-  },
-  {
     "name": "SpoilsofLightMerge",
     "description": "null",
     "tags": [
@@ -11093,17 +11214,6 @@
     "size": 4757,
     "fileName": "ShadowFirePlaneMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/ShadowFirePlaneMerge.cs"
-  },
-  {
-    "name": "RuinedCrownMerge",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Other/MergeShops/RuinedCrownMerge.cs",
-    "size": 6693,
-    "fileName": "RuinedCrownMerge.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/RuinedCrownMerge.cs"
   },
   {
     "name": "ByrodaxMerge",
@@ -11921,7 +12031,7 @@
       "null"
     ],
     "path": "Other/Various/Potions.cs",
-    "size": 15054,
+    "size": 14076,
     "fileName": "Potions.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Various/Potions.cs"
   },
@@ -13132,7 +13242,7 @@
       "null"
     ],
     "path": "Good/BLoD/2UltimateBlindingLightofDestiny.cs",
-    "size": 3733,
+    "size": 3916,
     "fileName": "2UltimateBlindingLightofDestiny.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/2UltimateBlindingLightofDestiny.cs"
   },
@@ -13143,7 +13253,7 @@
       "null"
     ],
     "path": "Good/BLoD/CoreBLOD.cs",
-    "size": 25394,
+    "size": 27747,
     "fileName": "CoreBLOD.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/CoreBLOD.cs"
   },
@@ -16082,7 +16192,7 @@
       "null"
     ],
     "path": "Other/Classes/ArchMage/CoreArchMage.cs",
-    "size": 21984,
+    "size": 21835,
     "fileName": "CoreArchMage.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/ArchMage/CoreArchMage.cs"
   },
@@ -16093,7 +16203,7 @@
       "null"
     ],
     "path": "Other/Classes/ArchMage/0ArchMage.cs",
-    "size": 819,
+    "size": 868,
     "fileName": "0ArchMage.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/ArchMage/0ArchMage.cs"
   },
