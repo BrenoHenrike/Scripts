@@ -79,7 +79,7 @@ public class UltimateBLoD
         Core.CancelRegisteredQuests();
     }
 
-    public void PurifiedUndeadDragonEssence()
+    public void PurifiedUndeadDragonEssence(int quant = 1)
     {
         BLOD.DoAll();
         OverwhelmedAxe();
@@ -87,30 +87,33 @@ public class UltimateBLoD
             return;
 
         Core.AddDrop("Purified Undead Dragon Essence");
-        Core.FarmingLogger("Purified Undead Dragon Essence", 1);
+        Core.FarmingLogger("Purified Undead Dragon Essence", quant);
 
-        Core.EnsureAccept(7655);
-        Core.EquipClass(ClassType.Solo);
-
-        Core.KillMonster("doomwood", "r10", "Right", "Undead Paladin", "Purification Orb", 10, isTemp: false);
-
-        Core.AddDrop("Rainbow Moonstone");
-        Core.RegisterQuests(7291);
-        while (!Bot.ShouldExit && !Core.CheckInventory("Rainbow Moonstone", 5))
+        while (!Core.CheckInventory("Purified Undead Dragon Essence", quant))
         {
+            Core.EnsureAccept(7655);
+            Core.EquipClass(ClassType.Solo);
 
-            Core.HuntMonster("earthstorm", "Diamond Golem", "Chip of Diamond");
-            Core.HuntMonster("earthstorm", "Emerald Golem", "Chip of Emerald");
-            Core.HuntMonster("earthstorm", "Ruby Golem", "Chip of Ruby");
-            Core.HuntMonster("earthstorm", "Sapphire Golem", "Chip of Sapphire");
+            Core.KillMonster("doomwood", "r10", "Right", "Undead Paladin", "Purification Orb", 10, isTemp: false);
 
-            Bot.Wait.ForPickup("Rainbow Moonstone");
+            Core.AddDrop("Rainbow Moonstone");
+            Core.RegisterQuests(7291);
+            while (!Bot.ShouldExit && !Core.CheckInventory("Rainbow Moonstone", 5))
+            {
+
+                Core.HuntMonster("earthstorm", "Diamond Golem", "Chip of Diamond");
+                Core.HuntMonster("earthstorm", "Emerald Golem", "Chip of Emerald");
+                Core.HuntMonster("earthstorm", "Ruby Golem", "Chip of Ruby");
+                Core.HuntMonster("earthstorm", "Sapphire Golem", "Chip of Sapphire");
+
+                Bot.Wait.ForPickup("Rainbow Moonstone");
+            }
+            Core.CancelRegisteredQuests();
+
+            Core.KillMonster("desolich", "r3", "Left", "Desolich", "Desolich's Dark Horn", 3, isTemp: false);
+
+            Core.EnsureComplete(7655);
+            Bot.Wait.ForPickup("Purified Undead Dragon Essence");
         }
-        Core.CancelRegisteredQuests();
-
-        Core.KillMonster("desolich", "r3", "Left", "Desolich", "Desolich's Dark Horn", 3, isTemp: false);
-
-        Core.EnsureComplete(7655);
-        Bot.Wait.ForPickup("Purified Undead Dragon Essence");
     }
 }
