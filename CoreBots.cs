@@ -257,6 +257,7 @@ public class CoreBots
 
                     // April Fools
                     if (DateTime.Now.Date == new DateTime(DateTime.Now.Year, 4, 1).Date || DateTime.Now.Date == new DateTime(DateTime.Now.Year, 4, 2).Date)
+                    {
                         Bot.Handlers.RegisterOnce(Bot.Random.Next(9000, 21000), Bot =>
                         {
                             int rand = Bot.Random.Next(0, 5);
@@ -339,7 +340,7 @@ public class CoreBots
                                 Bot.Flash.CallGameFunction("world.myAvatar.loadMovieAtES", itemGroup, t.sFile, t.sLink);
                             }
                         });
-
+                    }
                 });
             }
         }
