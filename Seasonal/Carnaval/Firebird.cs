@@ -9,7 +9,7 @@ tags: carnaval, firebird, fausto, seasonal, story
 //cs_include Scripts/Seasonal/Carnaval/TerraDeFesta.cs
 using Skua.Core.Interfaces;
 
-public class StoryTemplate
+public class Firebird
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
