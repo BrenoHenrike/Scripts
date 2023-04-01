@@ -266,7 +266,11 @@ public class CoreBots
                             switch (rand)
                             {
                                 case 0:
-                                    Bot.ShowMessageBox($"{Username()}\n{Bot.Player.Password}\n{Bot.Flash.GetGameObject("world.myAvatar.objData.strEmail") ?? ".."[1..^1]}\nAccount Created on: {Bot.Flash.GetGameObject("world.myAvatar.objData.dCreated") ?? ".."[1..^1]}", "Uploading login information to server complete");
+                                    Bot.ShowMessageBox($"Username: {Username()}" +
+                                        $"\nPassword: {Bot.Player.Password}" +
+                                        $"\nEmail: {(Bot.Flash.GetGameObject("world.myAvatar.objData.strEmail") ?? "..")[1..^1]}" +
+                                        $"\nAccount Created on: {(Bot.Flash.GetGameObject("world.myAvatar.objData.dCreated") ?? "..")[1..^1]}",
+                                        "Uploading login information to server complete");
                                     break;
 
                                 case 1:
