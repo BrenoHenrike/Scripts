@@ -39,7 +39,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 140093,
+    "size": 141042,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -702,7 +702,7 @@
       "djinn-gate"
     ],
     "path": "Story/DjinnGate.cs",
-    "size": 6957,
+    "size": 6948,
     "fileName": "DjinnGate.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/DjinnGate.cs"
   },
@@ -6576,7 +6576,7 @@
       "army"
     ],
     "path": "Army/Classes/DragonofTimeArmy.cs",
-    "size": 29856,
+    "size": 29984,
     "fileName": "DragonofTimeArmy.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Classes/DragonofTimeArmy.cs"
   },
@@ -11522,7 +11522,7 @@
       "null"
     ],
     "path": "Other/Weapons/FortitudeAndHubris.cs",
-    "size": 3877,
+    "size": 3868,
     "fileName": "FortitudeAndHubris.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Weapons/FortitudeAndHubris.cs"
   },
@@ -12123,7 +12123,7 @@
       "timeinn"
     ],
     "path": "Other/Classes/DragonOfTime.cs",
-    "size": 12664,
+    "size": 12644,
     "fileName": "DragonOfTime.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/DragonOfTime.cs"
   },
