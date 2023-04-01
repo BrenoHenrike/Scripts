@@ -1702,6 +1702,32 @@ public class CoreBots
     }
 
     /// <summary>
+    /// Kill Vath for the desired item
+    /// </summary>
+    /// <param name="item">Item name</param>
+    /// <param name="quant">Desired quantity</param>
+    /// <param name="isTemp">Whether the item is temporary</param>
+    /// <param name="Phase">Which phase of the boss to kill>
+    public void KillTrigoras(string item, int quant = 1, int Phase = 1, bool isTemp = false, bool log = true, bool publicRoom = false)
+    {
+        if (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant))
+            return;
+
+        EquipClass(ClassType.Solo);
+        Join("trigoras");
+
+        while (!Bot.ShouldExit && !CheckInventory(item, quant))
+        {
+            Jump(Phase == 1 ? "r4" : "r4a", "Left");
+            Bot.Combat.Attack("trigoras");
+            Bot.Wait.ForCellChange(Phase == 1 ? "r4a" : "Enter");
+        }
+        Bot.Wait.ForCellChange(Phase == 1 ? "r4a" : "Enter");
+        JumpWait();
+    }
+
+
+    /// <summary>
     /// Kill DoomKitten for the desired item
     /// </summary>
     /// <param name="item">Item name</param>

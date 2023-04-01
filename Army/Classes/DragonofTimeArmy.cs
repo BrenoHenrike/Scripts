@@ -612,15 +612,18 @@ public class DoTArmy
 
         Core.AddDrop(item);
 
-            Core.EquipClass(classType);
+        Core.EquipClass(classType);
         Army.waitForParty(map, item);
         Core.FarmingLogger(item, quant);
 
         Army.SmartAggroMonStart(map, monsters);
 
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
-            Bot.Combat.Attack("*");
-
+        {
+            if (monsters == new[] { "Tigoras" })
+                Core.KillTrigoras(item, quant, 1, isTemp);
+            else Bot.Combat.Attack("*");
+        }
         Army.AggroMonStop(true);
         Core.JumpWait();
     }

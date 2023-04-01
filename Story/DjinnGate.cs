@@ -113,7 +113,7 @@ public class DjinnGateStory
             Core.EquipClass(ClassType.Solo);
             Core.KillMonster("doomkitten", "Enter", "Spawn", "*", "Potent DoomKitten Mana");
             Core.KillMonster("bloodtitan", "Ultra", "Left", "*", "Potent Blood Titan Mana");
-            Core.HuntMonster("trigoras", "Trigoras", "Potent Trigoras Mana");
+            Core.KillTrigoras("Potent Trigoras Mana", isTemp: true);
             Core.KillMonster("phoenixrise", "r8", "Left", "*", "Potent CinderClaw Mana");
             Core.KillMonster("thevoid", "r16", "Left", "*", "Potent Reaper Mana");
             Core.EnsureComplete(6158);

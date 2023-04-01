@@ -97,7 +97,7 @@ public class DragonOfTime
 
             Core.HuntMonster("darkplane", "Victorious", "Victorious's Dignity", isTemp: false);
 
-            Core.HuntMonster("trigoras", "Trigoras", "Trigoras's Tenacity", 3, false);
+            Core.KillTrigoras("Trigoras's Tenacity", 3, Phase: 2);
 
             Story.ChainQuest(7717);
             Bot.Wait.ForPickup("*");
