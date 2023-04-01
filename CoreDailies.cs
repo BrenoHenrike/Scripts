@@ -874,10 +874,21 @@ public class CoreDailies
                             }
                             break;
 
+                        case frGift.Apples:
+                        case frGift.Bananas:
+                        case frGift.Grapes:
+                        case frGift.Melons:
+                        case frGift.Oranges:
+                        case frGift.Strawberries:
+                            Core.EquipClass(ClassType.Farm);
+                            Core.KillMonster("battleodium", "r6", "Left", "Vileture", log: false);
+                            break;
+
+
                         default:
                             Core.EquipClass(ClassType.Farm);
                             while (!Bot.ShouldExit && !Core.CheckInventory(_gifts, any: true))
-                                Core.KillMonster("battleodium", "r6", "Left", "*", log: false);
+                                Core.KillMonster("battleodium", "r6", "Left", "Diemond", log: false);
                             break;
                     }
                 }
