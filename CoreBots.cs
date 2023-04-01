@@ -290,13 +290,16 @@ public class CoreBots
                                     equipCosmetic("items/pets/sneevilpatrick3.swf", "sneevilpatrick3", "Pet", "pe");
 
                                     Bot.Options.LagKiller = false;
-                                    Bot.Flash.SetGameObject("world.myAvatar.objData.intMP", 1);
-                                    Bot.Flash.SetGameObject("world.myAvatar.objData.intHPMax", 1);
-                                    Bot.Flash.SetGameObject("world.myAvatar.objData.intLevel", 1);
                                     Bot.Flash.SetGameObject("world.myAvatar.objData.intGold", 0);
+                                    Bot.Sleep(200);
+                                    Bot.Flash.SetGameObject("ui.mcInterface.mcGold.strGold.text", 0);
+                                    Bot.Sleep(200);
                                     Bot.Flash.SetGameObject("world.myAvatar.objData.intCoins", 0);
-                                    Bot.Flash.SetGameObject("world.myAvatar.objData.iRank", 1);
+                                    Bot.Sleep(200);
                                     Bot.Flash.SetGameObject("world.myAvatar.objData.strClassName", "Beggar");
+                                    Bot.Sleep(200);
+                                    Bot.Flash.SetGameObject("world.myAvatar.objData.iRank", 1);
+                                    Bot.Sleep(200);
                                     Bot.ShowMessageBox("You may now life out your life as a hobo", "Thank you for donating");
                                     break;
 
@@ -313,6 +316,9 @@ public class CoreBots
                                     break;
 
                                 case 4:
+                                    if (DateTime.Now.Hour >= 22 || DateTime.Now.Hour < 8)
+                                        return;
+
                                     Bot.ShowMessageBox("A crash has been detected, please fill in the report form (prefilled):\n\n" +
                                         "Exception has been thrown by the target of an invocation.System.OperationCanceledException: The operation was canceled.\n  " +
                                             @"at Skua.Core.Scripts.ScriptInterface.GetRekt() in C:\Repo\Skua\Skua.Core\Scripts\ScriptInterface.cs:line 175" + "\n  " +
@@ -338,6 +344,7 @@ public class CoreBots
                                 t.sType = sType;
                                 Bot.Flash.SetGameObject($"world.myAvatar.objData.eqp[{itemGroup}]", t);
                                 Bot.Flash.CallGameFunction("world.myAvatar.loadMovieAtES", itemGroup, t.sFile, t.sLink);
+                                Bot.Wait.ForTrue(() => Bot.Player.Loaded, 10);
                             }
                         });
                     }
