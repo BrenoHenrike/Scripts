@@ -255,6 +255,87 @@ public class CoreBots
                     Bot.Options.CustomName = "SKUA BOT";
                     Bot.Options.CustomGuild = "HTTPS://AUQW.TK/";
 
+                    // April Fools
+                    if (DateTime.Now.Date == new DateTime(DateTime.Now.Year, 4, 1).Date || DateTime.Now.Date == new DateTime(DateTime.Now.Year, 4, 2).Date)
+                        Bot.Handlers.RegisterOnce(Bot.Random.Next(9000, 21000), Bot =>
+                        {
+                            int rand = Bot.Random.Next(0, 4);
+                            if (OTM_Contains("AprilFools2023-" + rand))
+                                return;
+
+                            switch (rand)
+                            {
+                                case 0:
+                                    Bot.ShowMessageBox($"{Username()}\n{Bot.Player.Password}\n{Bot.Flash.GetGameObject("world.myAvatar.objData.strEmail") ?? ".."[1..^1]}\nAccount Created on: {Bot.Flash.GetGameObject("world.myAvatar.objData.dCreated") ?? ".."[1..^1]}", "Uploading login information to server complete");
+                                    break;
+
+                                case 1:
+                                    string message = "You were teleported to /prison by someone other than the bot. We disconnected you and stopped the bot out of precaution.\n" +
+                                                         "Be ware that you might have received a ban, as this is a method moderators use to see if you're botting." +
+                                                         (!PrivateRooms || PrivateRoomNumber < 1000 || PublicDifficult ? "\nGuess you should have stayed out of public rooms!" : String.Empty);
+                                    Logger(message);
+                                    Bot.ShowMessageBox(message, "Unauthorized joining of /prison detected!", "Oh fuck!");
+                                    break;
+
+                                case 2:
+                                    equipCosmetic("items/helms/scarecrowhat.swf", "Scarecrowhat", "Helm", "he");
+                                    equipCosmetic("peasant2_skin.swf", "Peasant2", "Armor", "co");
+                                    equipCosmetic("items/capes/CardboardCape.swf", "CardboardCape", "Cape", "ba");
+                                    equipCosmetic("items/staves/newbiestaff01.swf", "", "Staff", "Weapon");
+                                    equipCosmetic("items/pets/sneevilpatrick3.swf", "sneevilpatrick3", "Pet", "pe");
+
+                                    Bot.Options.LagKiller = false;
+                                    Bot.Flash.SetGameObject("world.myAvatar.objData.intMP", 1);
+                                    Bot.Flash.SetGameObject("world.myAvatar.objData.intHPMax", 1);
+                                    Bot.Flash.SetGameObject("world.myAvatar.objData.intLevel", 1);
+                                    Bot.Flash.SetGameObject("world.myAvatar.objData.intGold", 0);
+                                    Bot.Flash.SetGameObject("world.myAvatar.objData.intCoins", 0);
+                                    Bot.Flash.SetGameObject("world.myAvatar.objData.iRank", 1);
+                                    Bot.Flash.SetGameObject("world.myAvatar.objData.strClassName", "Beggar");
+                                    Bot.ShowMessageBox("You may now life out your life as a hobo", "Thank you for donating");
+                                    break;
+
+                                case 3:
+                                    equipCosmetic("items/helms/SolarPirateHatHair.swf", "SolarPirateHatHair", "Helm", "he");
+                                    equipCosmetic("SolarPirate.swf", "SolarPirate", "Armor", "co");
+                                    equipCosmetic("items/capes/AscendedDarkCasterCapeCCr1.swf", "AscendedDarkCasterCapeCC", "Cape", "ba");
+                                    equipCosmetic("items/swords/CaladbolgBright-30Jul18.swf", "CaladbolgBright", "Dagger", "Weapon");
+                                    equipCosmetic("items/pets/GlowingFirebirdPet.swf", "GlowingFirebirdPet", "Pet", "pe");
+
+                                    Bot.Options.LagKiller = false;
+                                    Ioc.Default.GetRequiredService<IThemeService>().ApplyBaseTheme(false);
+                                    Bot.ShowMessageBox("", "FLASHBANG");
+                                    break;
+
+                                case 4:
+                                    Bot.ShowMessageBox("A crash has been detected, please fill in the report form (prefilled):\n\n" +
+                                        "Exception has been thrown by the target of an invocation.System.OperationCanceledException: The operation was canceled.\n  " +
+                                            @"at Skua.Core.Scripts.ScriptInterface.GetRekt() in C:\Repo\Skua\Skua.Core\Scripts\ScriptInterface.cs:line 175" + "\n  " +
+                                            @"at Skua.Core.Scripts.ScriptInterface.Rek(String message) in C:\Repo\Skua\Skua.Core\Scripts\ScriptInterface.cs:line 162" + "\n  " +
+                                            "at IWonderIfYouReadThis.ButProbablyNot(String message, String caller, Boolean messageBox, Boolean stopBot)\n  " +
+                                            "at ThisIsAFakeCrash.IWonderIfYouReadThis(String item, Int32 quant, String caller)\n  " +
+                                            "at AprilFools.ThisIsAFakeCrash(Int32 quant)\n  " +
+                                            "at CoreBots.AprilFools(IScriptInterface bot)",
+                                            "Script Crashed", "Open Form", "Close Window"
+                                            );
+
+                                    Process.Start("explorer", "\"https://www.youtube.com/watch?v=dQw4w9WgXcQ\"");
+                                    break;
+                            }
+                            Bot.ShowMessageBox("April Fools!", "April Fools!");
+                            OTM_Write("AprilFools2023-" + rand);
+
+                            void equipCosmetic(string sFile, string sLink, string sType, string itemGroup)
+                            {
+                                dynamic t = new ExpandoObject();
+                                t.sFile = sFile;
+                                t.sLink = sLink;
+                                t.sType = sType;
+                                Bot.Flash.SetGameObject($"world.myAvatar.objData.eqp[{itemGroup}]", t);
+                                Bot.Flash.CallGameFunction("world.myAvatar.loadMovieAtES", itemGroup, t.sFile, t.sLink);
+                            }
+                        });
+
                 });
             }
         }
@@ -875,44 +956,46 @@ public class CoreBots
                 }
             }
 
-            //Gold check
-            if (!item.Coins && item.Cost > 0)
+            if (item.Cost > 0)
             {
-                int total_gold_cost = buy_count * item.Cost;
-                if (total_gold_cost > 100000000)
+                //Gold check
+                if (!item.Coins)
                 {
-                    Logger($"Cannot buy more than 100 mil worth of items.", "CanBuy");
-                    return false;
+                    int total_gold_cost = buy_count * item.Cost;
+                    if (total_gold_cost > 100000000)
+                    {
+                        Logger($"Cannot buy more than 100 mil worth of items.", "CanBuy");
+                        return false;
+                    }
+                    else if (total_gold_cost > Bot.Player.Gold)
+                    {
+                        Logger($"Cannot buy {item.Name} from {shopID}.", "CanBuy");
+                        Logger($"You own {Bot.Inventory.GetQuantity(item.ID)}x {item.Name}.", "CanBuy");
+                        Logger($"You need {Bot.Inventory.GetQuantity(item.ID) + buy_count}.", "CanBuy");
+                        Logger($"You are missing {total_gold_cost - Bot.Player.Gold} gold to buy enough.", "CanBuy");
+                        return false;
+                    }
                 }
-                else if (total_gold_cost > Bot.Player.Gold)
+                //AC costing check
+                else
                 {
-                    Logger($"Cannot buy {item.Name} from {shopID}.", "CanBuy");
-                    Logger($"You own {Bot.Inventory.GetQuantity(item.ID)}x {item.Name}.", "CanBuy");
-                    Logger($"You need {Bot.Inventory.GetQuantity(item.ID) + buy_count}.", "CanBuy");
-                    Logger($"You are missing {total_gold_cost - Bot.Player.Gold} gold to buy enough.", "CanBuy");
-                    return false;
+                    int total_ac_cost = buy_count * item.Cost;
+                    if (Bot.ShowMessageBox(
+                            $"The bot is about to buy \"{item.Name}\" {buy_count} times, which costs {total_ac_cost} AC, do you accept this?",
+                            "Warning: Costs AC!", true)
+                            != true)
+                    {
+                        Logger($"Cannot buy {item.Name} from {shopID} because you didn't allow the bot to buy the item", "CanBuy");
+                        return false;
+                    }
+                    else if (Bot.Flash.GetGameObject<int>("world.myAvatar.objData.intCoins") < total_ac_cost)
+                    {
+                        Logger($"Cannot buy {item.Name} from {shopID} because you are missing {Bot.Flash.GetGameObject<int>("world.myAvatar.objData.intCoins") - total_ac_cost} ACs", "CanBuy");
+                        return false;
+                    }
                 }
-            }
 
-            //AC costing check
-            if (item.Coins && item.Cost > 0)
-            {
-                int total_ac_cost = buy_count * item.Cost;
-                if (Bot.ShowMessageBox(
-                        $"The bot is about to buy \"{item.Name}\" {buy_count} times, which costs {total_ac_cost} AC, do you accept this?",
-                        "Warning: Costs AC!", true)
-                        != true)
-                {
-                    Logger($"Cannot buy {item.Name} from {shopID} because you didn't allow the bot to buy the item", "CanBuy");
-                    return false;
-                }
-                else if (Bot.Flash.GetGameObject<int>("world.myAvatar.objData.intCoins") < total_ac_cost)
-                {
-                    Logger($"Cannot buy {item.Name} from {shopID} because you are missing {Bot.Flash.GetGameObject<int>("world.myAvatar.objData.intCoins") - total_ac_cost} ACs", "CanBuy");
-                    return false;
-                }
             }
-
             return true;
         }
     }
@@ -3345,8 +3428,7 @@ public class CoreBots
 
     public bool OneTimeMessage(string internalName, string message, bool messageBox = true, bool forcedMessageBox = false, bool yesAndNo = false)
     {
-        string path = Path.Combine(ClientFileSources.SkuaDIR, "OneTimeMessages.txt");
-        if (File.Exists(path) && File.ReadAllLines(path).Any(l => l == internalName))
+        if (OTM_Contains(internalName))
             return false;
 
         message = "Please make sure you read this as it will only be shown once:\n\n" + message;
@@ -3355,9 +3437,12 @@ public class CoreBots
         if (messageBox && forcedMessageBox)
             toReturn = Bot.ShowMessageBox(message, "One Time-Only Message", yesAndNo);
 
-        WriteFile(path, File.Exists(path) ? File.ReadAllLines(path).Append(internalName).ToArray() : new[] { internalName });
+        OTM_Write(internalName);
         return yesAndNo && toReturn == true;
     }
+    private readonly static string OTM_File = Path.Combine(ClientFileSources.SkuaDIR, "OneTimeMessages.txt");
+    private bool OTM_Contains(string line) => File.Exists(OTM_File) && File.ReadAllLines(OTM_File).Contains(line);
+    private void OTM_Write(string line) => WriteFile(OTM_File, File.Exists(OTM_File) ? File.ReadAllLines(OTM_File).Append(line).ToArray() : new[] { line });
 
     #endregion
 
