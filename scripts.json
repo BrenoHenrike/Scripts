@@ -6788,6 +6788,21 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AprilFools/Mmmm,Meaty(or)(MeatyShard).cs"
   },
   {
+    "name": "NeighBeleen Merge",
+    "description": "This script farms all the materials needed for NeighBeleen Merge in magicmeaderp.",
+    "tags": [
+      "seasonal",
+      "april fools",
+      "magicmeaderp",
+      "neighbeleen",
+      "merge"
+    ],
+    "path": "Seasonal/AprilFools/NeighBeleenMerge.cs",
+    "size": 15920,
+    "fileName": "NeighBeleenMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AprilFools/NeighBeleenMerge.cs"
+  },
+  {
     "name": "Unoriginal Recipe Farm",
     "description": "Farms the max Unoriginal Recipe quantity.",
     "tags": [
