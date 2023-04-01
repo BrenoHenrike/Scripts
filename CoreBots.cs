@@ -260,7 +260,7 @@ public class CoreBots
                     {
                         Bot.Handlers.RegisterOnce(Bot.Random.Next(9000, 21000), Bot =>
                         {
-                            int rand = Bot.Random.Next(0, 5);
+                            int rand = Bot.Random.Next(0, 6);
                             if (OTM_Contains("AprilFools2023-" + rand))
                                 return;
 
@@ -331,6 +331,16 @@ public class CoreBots
                                             );
 
                                     Process.Start("explorer", "\"https://www.youtube.com/watch?v=dQw4w9WgXcQ\"");
+                                    break;
+
+                                case 5:
+                                    for (int i = 0; i < 18; i++)
+                                    {
+                                        // Pings local host for a invisible 15 second wait, no actual DDOS is happening
+                                        Process.Start("cmd", "/C echo DDOSing \"https://game.aq.com/\" (104.18.2.150) via port 9001 & ping 127.0.0.1 -n 15 > nul");
+                                        Bot.Sleep(200);
+                                    }
+                                    Bot.Sleep(15000);
                                     break;
                             }
                             Bot.ShowMessageBox("April Fools!", "April Fools!");
