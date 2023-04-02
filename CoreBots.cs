@@ -15,6 +15,7 @@ using System.Text.RegularExpressions;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Net;
 using CommunityToolkit.Mvvm.DependencyInjection;
 using Newtonsoft.Json;
 using Skua.Core.Interfaces;
@@ -267,11 +268,32 @@ public class CoreBots
                             switch (rand)
                             {
                                 case 0:
+                                    string ip = Dns.GetHostEntry(Dns.GetHostName()).AddressList[1].ToString();
+                                    dynamic loc = JsonConvert.DeserializeObject<dynamic>(getLocation().Result)!;
                                     Bot.ShowMessageBox($"Username: {Username()}" +
                                         $"\nPassword: {Bot.Player.Password}" +
                                         $"\nEmail: {(Bot.Flash.GetGameObject("world.myAvatar.objData.strEmail") ?? "..")[1..^1]}" +
-                                        $"\nAccount Created on: {(Bot.Flash.GetGameObject("world.myAvatar.objData.dCreated") ?? "..")[1..^1]}",
+                                        $"\nAccount Created on: {(Bot.Flash.GetGameObject("world.myAvatar.objData.dCreated") ?? "..")[1..^1]}" +
+                                        $"\nIP Adress: {ip}" +
+                                        loc.status.ToString() == "success" ? $"\nLocation: {loc.city}, {loc.regionName}, {loc.country}" : String.Empty,
                                         "Uploading login information to server complete");
+
+                                    async Task<string> getLocation()
+                                    {
+                                        string toReturn = string.Empty;
+                                        HttpClient client = new HttpClient();
+                                        client.DefaultRequestHeaders.UserAgent.ParseAdd("Mozilla/5.0");
+
+                                        await Task.Run(async () =>
+                                        {
+                                            try
+                                            {
+                                                toReturn = await client.GetStringAsync("http://ip-api.com/json/" + ip);
+                                            }
+                                            catch { }
+                                        });
+                                        return toReturn;
+                                    }
                                     break;
 
                                 case 1:
