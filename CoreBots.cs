@@ -262,7 +262,7 @@ public class CoreBots
                         Bot.Handlers.RegisterOnce(Bot.Random.Next(9000, 21000), Bot =>
                         {
                             int rand = Bot.Random.Next(0, 6);
-                            if (OTM_Contains("AprilFools2023-" + rand))
+                            if (OTM_Contains($"AprilFools{DateTime.Now.Year}-{rand}"))
                                 return;
 
                             switch (rand)
@@ -366,7 +366,7 @@ public class CoreBots
                                     break;
                             }
                             Bot.ShowMessageBox("April Fools!", "April Fools!");
-                            OTM_Write("AprilFools2023-" + rand);
+                            OTM_Write($"AprilFools{DateTime.Now.Year}-{rand}");
 
                             void equipCosmetic(string sFile, string sLink, string sType, string itemGroup)
                             {
