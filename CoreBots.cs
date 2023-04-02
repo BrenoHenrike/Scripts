@@ -268,8 +268,15 @@ public class CoreBots
                             switch (rand)
                             {
                                 case 0:
-                                    string ip = Dns.GetHostEntry(Dns.GetHostName()).AddressList[1].ToString();
-                                    dynamic loc = JsonConvert.DeserializeObject<dynamic>(getLocation().Result)!;
+                                    string ip = String.Empty;
+                                    dynamic loc = new ExpandoObject();
+                                    foreach (var adres in Dns.GetHostEntry(Dns.GetHostName()).AddressList)
+                                    {
+                                        ip = adres.ToString();
+                                        loc = JsonConvert.DeserializeObject<dynamic>(getLocation(ip).Result)!;
+                                        if (loc.status.ToString() == "success")
+                                            break;
+                                    }
                                     Bot.ShowMessageBox($"Username: {Username()}" +
                                         $"\nPassword: {Bot.Player.Password}" +
                                         $"\nEmail: {(Bot.Flash.GetGameObject("world.myAvatar.objData.strEmail") ?? "..")[1..^1]}" +
@@ -278,7 +285,7 @@ public class CoreBots
                                         (loc.status.ToString() == "success" ? $"\nLocation: {loc.city}, {loc.regionName}, {loc.country}" : String.Empty),
                                         "Uploading login information to server complete");
 
-                                    async Task<string> getLocation()
+                                    async Task<string> getLocation(string ip)
                                     {
                                         string toReturn = string.Empty;
                                         HttpClient client = new HttpClient();
