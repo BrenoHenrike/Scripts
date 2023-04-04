@@ -11,7 +11,7 @@ tags: Prismatic Seams, shadows of war
 //cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
 using Skua.Core.Interfaces;
 
-public class UnboundThread
+public class PrismaticSeams
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;

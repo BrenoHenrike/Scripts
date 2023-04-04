@@ -11,7 +11,7 @@ tags: Willpower, shadows of war
 //cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
 using Skua.Core.Interfaces;
 
-public class UnboundThread
+public class Willpower
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
