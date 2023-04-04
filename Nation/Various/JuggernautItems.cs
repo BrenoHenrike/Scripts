@@ -109,7 +109,7 @@ public class JuggernautItemsofNulgath
     {
         Oblivion_of_Nulgath = 2232,
         Ungodly_Reavers_of_Nulgath = 4939,
-        Warlor_dof_Nulgath = 5527,
+        Warlord_of_Nulgath = 5527,
         Arcane_of_Nulgath = 5530,
         Dimensional_Championof_Nulgath = 5531,
         Crystal_Phoenix_Blade_of_Nulgath = 6137,
