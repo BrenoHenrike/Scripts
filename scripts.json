@@ -39,7 +39,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 143754,
+    "size": 142201,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -9758,7 +9758,7 @@
       "shadows of war"
     ],
     "path": "ShadowsOfWar/Materials/PrismaticSeams.cs",
-    "size": 796,
+    "size": 797,
     "fileName": "PrismaticSeams.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/ShadowsOfWar/Materials/PrismaticSeams.cs"
   },
@@ -9782,7 +9782,7 @@
       "shadows of war"
     ],
     "path": "ShadowsOfWar/Materials/Willpower.cs",
-    "size": 767,
+    "size": 763,
     "fileName": "Willpower.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/ShadowsOfWar/Materials/Willpower.cs"
   },
@@ -16229,7 +16229,7 @@
       "null"
     ],
     "path": "Other/Classes/ArchMage/LuminaElementi.cs",
-    "size": 843,
+    "size": 892,
     "fileName": "LuminaElementi.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/ArchMage/LuminaElementi.cs"
   },
@@ -16240,7 +16240,7 @@
       "null"
     ],
     "path": "Other/Classes/ArchMage/UnboundTome.cs",
-    "size": 832,
+    "size": 881,
     "fileName": "UnboundTome.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/ArchMage/UnboundTome.cs"
   },
