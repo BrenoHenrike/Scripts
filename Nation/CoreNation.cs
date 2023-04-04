@@ -354,20 +354,13 @@ public class CoreNation
         Core.AddDrop("Fiend Seal", "Gem of Domination", "Emblem of Nulgath");
         Core.AddDrop(bagDrops);
         Core.EquipClass(ClassType.Farm);
-        Core.Logger($"Farming {quant} Emblems");
+        Core.FarmingLogger("Emblem of Nulgath", quant);
 
-        int i = 1;
+        Core.RegisterQuests(4748);
         while (!Bot.ShouldExit && !Core.CheckInventory("Emblem of Nulgath", quant))
         {
-            Core.EnsureAccept(4748);
-            Core.KillMonster("shadowblast", "r13", "Left", "*", "Gem of Domination", isTemp: false, log: false);
-            Core.KillMonster("shadowblast", "r13", "Left", "*", "Fiend Seal", 25, false, log: false);
-            Core.EnsureComplete(4748);
-            Bot.Drops.Pickup("Emblem of Nulgath");
-            Core.Logger($"Completed x{i++}");
-            if (Bot.Inventory.IsMaxStack("Emblem of Nulgath"))
-                Core.Logger("Max Stack Hit.");
-            else Core.Logger($"Emblem of Nulgath: {Bot.Inventory.GetQuantity("Emblem of Nulgath")}/{quant}");
+            Core.HuntMonster("shadowblast", "Shadowrise Guard", "Gem of Domination", 1, false, false);
+            Core.HuntMonster("shadowblast", "Legion Fenrir", "Fiend Seal", 25, false, false);
         }
     }
 
