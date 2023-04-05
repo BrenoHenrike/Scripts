@@ -449,12 +449,14 @@ public class CoreBLOD
                     UltimateWK("Spirit Orb", 5);
                     Core.HuntMonster("arcangrove", "Seed Spitter", "Paladaffodil", 25);
                     Core.EnsureComplete(2105);
+                    Bot.Wait.ForDrop("Glorious Gold", 40);
                     Bot.Wait.ForPickup("Glorious Gold");
                 }
                 Core.FarmingLogger("Glorious Gold of Destiny", 1);
                 FindingFragmentsBow(2);
                 UltimateWK("Loyal Spirit Orb", 5);
                 Core.BuyItem("dwarfhold", 434, "Glorious Gold of Destiny");
+                Bot.Wait.ForDrop("Glorious Gold of Destiny", 40);
                 Bot.Wait.ForPickup("Glorious Gold of Destiny");
             }
             Core.FarmingLogger("Broadsword of Destiny", 1);
@@ -700,7 +702,15 @@ public class CoreBLOD
         Core.EnsureComplete(8112);
     }
 
-    void LightMerge(string item, int quant = 1) => Core.BuyItem("necropolis", 422, item, quant);
+    void LightMerge(string item, int quant = 1)
+    {
+        if (Core.CheckInventory(item))
+            return;
+
+        Core.BuyItem("necropolis", 422, item, quant);
+        Bot.Wait.ForDrop(item);
+        Bot.Wait.ForPickup(item);
+    }
 
     public void LoyalSpiritOrbMerge(int quant)
     {
