@@ -588,7 +588,7 @@ public class CoreBLOD
     {
         if (Core.CheckInventory("Spirit Orb", quantSO) && Core.CheckInventory("Bright Aura", quantBA))
             return;
-        if (!Core.CheckInventory("Blinding Scythe of Destiny"))
+        if (!Core.CheckInventory("Blinding Broadsword of Destiny"))
             BlindingBroadsword();
 
         FindingFragments(2178, "Spirit Orb", quantSO);
