@@ -120,12 +120,14 @@ public class CurrentDailyGifts
             #endregion
 
             #region April 2023
-            //Dark scavenger clue
+            //Dark Scavenger Clue
             GetGift(AvailableUntil(3, 4), "fireplanewar", "ShadowClaw", "Trident of Destruction");
-            //Shadowy scavenger clue
-            GetGift(AvailableUntil(3, 4), "manacradle", "The Mainyu", "ShadowFlame Eviscerator Pistol", "ShadowFlame Eviscerator Pistols", "ShadowFlame Eviscerator Revolver", "ShadowFlame Eviscerator Revolvers", "ShadowFlame Annihilator Rifle", "ShadowFlame Devastator");
-            //Undead scavenger clue
-            GetGift(AvailableUntil(3, 4), "dragontown", "Chaos Fluffy", "Dracosaster", "Dracotastrophe");
+            //Shadowy Scavenger Clue
+            GetGift(AvailableUntil(27, 3), "manacradle", "The Mainyu", "ShadowFlame Eviscerator Pistol", "ShadowFlame Eviscerator Pistols", "ShadowFlame Eviscerator Revolver", "ShadowFlame Eviscerator Revolvers", "ShadowFlame Annihilator Rifle", "ShadowFlame Devastator");
+            //Undead Scavenger Clue
+            GetGift(AvailableUntil(10, 4), "dragontown", "Chaos Fluffy", "Dracosaster", "Dracotastrophe");
+            //O_o Scavenger Clue
+            GetGift(AvailableUntil(17, 4), "andre", "Giant Fist", "Navel Top Hat");
             #endregion
             //GetGift(AvailableUntil(1, 1), "map", "monster", "");
             //GetGift(Permanent, "map", "monster", "");
