@@ -338,9 +338,13 @@ public class CoreFarms
         Core.EquipClass(ClassType.Farm);
         Core.SavedState();
         Core.Logger($"Farming {gold} gold using SCW Method");
-        
-        ToggleBoost(BoostType.Gold);
-        ToggleBoost(BoostType.Experience);
+           
+        if (Bot.Player.Gold < gold) {
+            ToggleBoost(BoostType.Gold);
+        }
+        if (Bot.Player.Level < 100) {
+            ToggleBoost(BoostType.Experience);
+        }
 
         Core.RegisterQuests(7979, 7980, 7981);
         while (!Bot.ShouldExit && Bot.Player.Level < level || Bot.Player.Gold < gold)
