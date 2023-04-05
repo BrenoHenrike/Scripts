@@ -257,7 +257,7 @@ public class CoreDarkon
             Core.HuntMonster("firstobservatory", "Ancient Creature", "Creature Samples", 6);
             Core.HuntMonster("firstobservatory", "Ancient Turret", "Turret Pieces", 12);
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("firstobservatory", "Empress’ Finger", "Alprecha Observed");
+            Core.HuntMonster($"firstobservatory", "Empress’ Finger", "Alprecha Observed");
             Bot.Wait.ForPickup("Ancient Remnant");
         }
         Core.CancelRegisteredQuests();
