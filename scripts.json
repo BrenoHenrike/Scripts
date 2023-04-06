@@ -6,7 +6,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 142299,
+    "size": 143381,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -916,7 +916,7 @@
       "null"
     ],
     "path": "Army/CoreArmyLite.cs",
-    "size": 36996,
+    "size": 37041,
     "fileName": "CoreArmyLite.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/CoreArmyLite.cs"
   },
@@ -8894,7 +8894,7 @@
       "army"
     ],
     "path": "Army/ArmyNulgath/ArmyBloodyChaos.cs",
-    "size": 4828,
+    "size": 4245,
     "fileName": "ArmyBloodyChaos.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyNulgath/ArmyBloodyChaos.cs"
   },
