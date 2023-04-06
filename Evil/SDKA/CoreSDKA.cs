@@ -594,7 +594,7 @@ public class CoreSDKA
 
     public void PinpointBow(int quantDSO, int quantCSO)
     {
-        if (Core.CheckInventory("Dark Spirit Orb", quantDSO) && Core.CheckInventory("Corrupt Spirit Orb", quantDSO))
+        if (Core.CheckInventory("Dark Spirit Orb", quantDSO) && Core.CheckInventory("Corrupt Spirit Orb", quantCSO))
             return;
 
         if (!Core.CheckInventory("Necrotic Bow of the Shadow"))
@@ -603,7 +603,7 @@ public class CoreSDKA
         int i = 1;
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quantDSO} DSOs and {quantCSO} CSOs");
-        while (!Bot.ShouldExit && (!Core.CheckInventory("Dark Spirit Orb", quantDSO)) || (!Core.CheckInventory("Corrupt Spirit Orb", quantDSO)))
+        while (!Bot.ShouldExit && (!Core.CheckInventory("Dark Spirit Orb", quantDSO)) || (!Core.CheckInventory("Corrupt Spirit Orb", quantCSO)))
         {
             PinpointthePieces(2186);
             Bot.Drops.Pickup("Dark Spirit Orb", "Corrupt Spirit Orb");
