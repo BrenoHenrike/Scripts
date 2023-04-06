@@ -1729,30 +1729,11 @@ public class CoreFarms
         Core.Logger($"Farming rank {rank}");
 
         Core.RegisterQuests(5597, 5598, 5599, 5600);
-        Bot.Events.CellChanged += CutSceneFixer;
-
         while (!Bot.ShouldExit && FactionRank("Glacera") < rank)
-        {
-            Core.KillMonster("icewindwar", "r2", "Left", "*", "World Ender Medal", 10, log: false);
-            Bot.Wait.ForQuestComplete(5597);
-            Bot.Events.CellChanged -= CutSceneFixer;
-        }
+            Core.KillMonster("icewindwar", "r2", "Left", "*");
         Core.CancelRegisteredQuests();
         ToggleBoost(BoostType.Reputation, false);
         Core.SavedState(false);
-
-        void CutSceneFixer(string map, string cell, string pad)
-        {
-            if (map == "icewindwar" && cell != "r2")
-            {
-                while (!Bot.ShouldExit && Bot.Player.Cell != "r2")
-                {
-                    Bot.Sleep(2500);
-                    Core.Jump("r2", "Left");
-                    Bot.Sleep(2500);
-                }
-            }
-        }
     }
 
     public void GoodREP(int rank = 10)
