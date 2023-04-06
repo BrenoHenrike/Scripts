@@ -2473,6 +2473,10 @@ public class CoreBots
                 SimpleQuestBypass((182, 7));
                 break;
 
+            case "glacera":
+                SimpleQuestBypass((225, 21));
+                break;
+
             case "ultratyndarius":
                 SimpleQuestBypass((412, 22));
                 break;
