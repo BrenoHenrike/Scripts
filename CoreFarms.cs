@@ -1730,7 +1730,7 @@ public class CoreFarms
 
         Core.RegisterQuests(5597, 5598, 5599, 5600);
         while (!Bot.ShouldExit && FactionRank("Glacera") < rank)
-            Core.KillMonster("icewindwar", "r2", "Left", "*");
+            Core.KillMonster("icewindwar", "r2", "Left", "*", log: false);
         Core.CancelRegisteredQuests();
         ToggleBoost(BoostType.Reputation, false);
         Core.SavedState(false);
