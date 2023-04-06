@@ -138,6 +138,7 @@ public class ArchDoomKnight
         Core.HuntMonster("swordhavenfalls", "Chaos Lord Alteon", "Shorn Chaos King Crown", isTemp: false, publicRoom: true);
         Core.KillXiang("Xiang Chaos", isTemp: false, publicRoom: true);
         Core.HuntMonster("ultradrakath", "Champion of Chaos", "Drakath's Sword", isTemp: false, publicRoom: true);
+        Core.HuntMonster("mqlesson", "Dragonoid", "Dragonoid of Hours", isTemp: false);
         Core.HuntMonster("timespace", "Chaos Lord Iadoa", "Chaorrupted Hourglass", isTemp: false);
         Core.EnsureComplete(6797);
         Core.ToBank(Q3items);

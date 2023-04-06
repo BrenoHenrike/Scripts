@@ -134,6 +134,7 @@ public class ChaosAvengerClass
             Core.HuntMonster("dreamnexus", "Khasaanda", "Soul of Chaos Armor", isTemp: false, publicRoom: true);
 
             //Iadoa (Armor)
+                Core.HuntMonster("mqlesson", "Dragonoid", "Dragonoid of Hours", isTemp: false);
             Core.HuntMonster("timespace", "Chaos Lord Iadoa", "Iadoa", isTemp: false, publicRoom: true);
 
             //Chaos Lionfang Armor
