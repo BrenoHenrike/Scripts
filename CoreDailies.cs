@@ -980,7 +980,7 @@ public class CoreDailies
     public string[] frRewards =
     {
         "Gold Voucher 25k",
-        "Gold Voucher 100",
+        "Gold Voucher 100k",
         "Gold Voucher 500k",
 
         "Combat Trophy",
