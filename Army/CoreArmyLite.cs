@@ -681,7 +681,7 @@ public class CoreArmyLite
             }
 
             // Attack any monster that is alive.
-            if (!Bot.Combat.StopAttacking && Bot.Monsters.CurrentMonsters.Count(m => m.Alive) > 0)
+            if (!Bot.Combat.StopAttacking && Bot.Monsters.CurrentMonsters.Count(m => Core.IsMonsterAlive(m)) > 0)
                 PriorityAttack("*");
             Core.Rest();
             Bot.Sleep(Core.ActionDelay);
@@ -904,7 +904,7 @@ public class CoreArmyLite
 
         void _killTheUltra(string cell)
         {
-            if (Bot.Player.Cell == cell && Bot.Monsters.CurrentMonsters.Count(m => m.Alive) > 0)
+            if (Bot.Player.Cell == cell && Bot.Monsters.CurrentMonsters.Count(m => Core.IsMonsterAlive(m)) > 0)
             {
                 Monster? Target = Bot.Monsters.CurrentMonsters.MaxBy(x => x.MaxHP);
                 if (Target == null)
@@ -927,7 +927,7 @@ public class CoreArmyLite
 
         foreach (string mon in _attackPriority)
         {
-            var _mon = Bot.Monsters.CurrentMonsters.Find(m => m.Name.Trim().ToLower() == mon.ToLower() && m.Alive);
+            var _mon = Bot.Monsters.CurrentMonsters.Find(m => m.Name.Trim().ToLower() == mon.ToLower() && Core.IsMonsterAlive(m));
             if (_mon != null)
             {
                 Bot.Combat.Attack(_mon);

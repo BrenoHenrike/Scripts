@@ -162,6 +162,13 @@ public class CoreBots
             EquipClass(disableClassSwap ? ClassType.None : ClassType.Solo);
 
             Bot.Events.ScriptStopping += StopBotEvent;
+
+            // Alive Check handling
+            Bot.Events.MapChanged += CleanKilledMonstersList;
+            Bot.Events.MonsterKilled += KilledMonsterListener;
+            Bot.Events.ExtensionPacketReceived += RespawnListener;
+
+
             Bot.Drops.Start();
 
             Logger("Bot Configured");
@@ -1646,7 +1653,7 @@ public class CoreBots
         {
             if (log)
                 Logger("Killing Escherion");
-            while (!Bot.ShouldExit && Bot.Monsters.MapMonsters.First(m => m.Name == "Escherion").Alive)
+            while (!Bot.ShouldExit && IsMonsterAlive("Escherion"))
                 _killEscherion();
         }
         else
@@ -1661,8 +1668,8 @@ public class CoreBots
 
         void _killEscherion()
         {
-            if (Bot.Monsters.MapMonsters?.FirstOrDefault(m => m.Name == "Staff of Inversion")?.Alive ?? false)
-                Bot.Hunt.Monster("Staff of Inversion");
+            if (IsMonsterAlive("Staff of Inversion"))
+                Bot.Kill.Monster("Staff of Inversion");
             Bot.Combat.Attack("Escherion");
             Bot.Sleep(1000);
         }
@@ -1685,7 +1692,7 @@ public class CoreBots
         {
             if (log)
                 Logger("Killing Vath");
-            while (!Bot.ShouldExit && Bot.Monsters.MapMonsters.First(m => m.Name == "Vath").Alive)
+            while (!Bot.ShouldExit && IsMonsterAlive("Vath"))
                 _killVath();
         }
         else
@@ -1700,7 +1707,7 @@ public class CoreBots
 
         void _killVath()
         {
-            if (Bot.Monsters.MapMonsters?.FirstOrDefault(m => m.Name == "Stalagbite")?.Alive ?? false)
+            if (IsMonsterAlive("Stalagbite"))
                 Bot.Kill.Monster("Stalagbite");
             Bot.Combat.Attack("Vath");
             Bot.Sleep(1000);
@@ -1732,7 +1739,6 @@ public class CoreBots
         JumpWait();
     }
 
-
     /// <summary>
     /// Kill DoomKitten for the desired item
     /// </summary>
@@ -1762,22 +1768,15 @@ public class CoreBots
 
         if (!DOTClasses.Any(c => CheckInventory(c)))
         {
-            Logger("--------------------------------");
+            Bot.Log("--------------------------------");
             Logger("Possible classes for DoomKitten:");
             DOTClasses.ForEach(l => Logger(l));
-            Logger("--------------------------------");
+            Bot.Log("--------------------------------");
 
             Logger($"\'Damage over Time\' class / VHL not found. See the logs to see suggestions. Please get one and run the bot agian. Stopping.", messageBox: true, stopBot: true);
         }
 
-        string? _class = DOTClasses.ToList().Find(c => CheckInventory(c));
-        if (_class == null)
-        {
-            Bot.Stop(true);
-            return;
-        }
-        Bot.Skills.StartAdvanced(_class, true, ClassUseMode.Base);
-
+        Bot.Skills.StartAdvanced(DOTClasses.ToList().First(c => Bot.Inventory.Contains(c)), true, ClassUseMode.Base);
         HuntMonster("doomkitten", "Doomkitten", item, quant, isTemp, log, publicRoom);
     }
 
@@ -1823,6 +1822,35 @@ public class CoreBots
         Bot.Sleep(ActionDelay);
         Rest();
     }
+
+    public bool IsMonsterAlive(Monster? mon)
+        => mon != null && (mon.Alive || !KilledMonsters.Contains(mon.MapID));
+    public bool IsMonsterAlive(string monsterName)
+        => Bot.Monsters.CurrentMonsters.Where(m => m.Name == monsterName).Any(m => IsMonsterAlive(m));
+    public bool IsMonsterAlive(int monsterID)
+        => Bot.Monsters.CurrentMonsters.Where(m => m.ID == monsterID).Any(m => IsMonsterAlive(m));
+
+    private List<int> KilledMonsters = new();
+    private void CleanKilledMonstersList(string map)
+        => KilledMonsters.Clear();
+    private void KilledMonsterListener(int monsterMapID)
+        => KilledMonsters.Add(monsterMapID);
+    private void RespawnListener(dynamic packet)
+    { //%xt%respawnMon%-1%12% (monster map ID is 12 in this example)
+        string type = packet["params"].type;
+        dynamic data = packet["params"].dataObj;
+        if (type is not null and "str")
+        {
+            string cmd = data[0];
+            switch (cmd)
+            {
+                case "respawnMon":
+                    KilledMonsters.RemoveAll(id => id == (int)data[2]);
+                    break;
+            }
+        }
+    }
+
 
     #endregion
 
@@ -2705,7 +2733,6 @@ public class CoreBots
 
             void MapIsMemberLocked(dynamic packet)
             { //%xt%warning%-1%"artixhome" is an Membership-Only Map.%
-
                 string type = packet["params"].type;
                 dynamic data = packet["params"].dataObj;
                 if (type is not null and "str")
