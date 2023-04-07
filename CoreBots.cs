@@ -1656,8 +1656,8 @@ public class CoreBots
             while (!Bot.ShouldExit && IsMonsterAlive("Escherion"))
             {
                 if (IsMonsterAlive("Staff of Inversion"))
-                    Bot.Hunt.Monster("Staff of Inversion");
-                Bot.Hunt.Monster("Escherion");
+                    Bot.Kill.Monster("Staff of Inversion");
+                Bot.Combat.Attack("Escherion");
                 Bot.Sleep(1000);
             }
         }
@@ -1670,22 +1670,12 @@ public class CoreBots
             while (!Bot.ShouldExit && !CheckInventory(item, quant))
             {
                 if (IsMonsterAlive("Staff of Inversion"))
-                    Bot.Hunt.Monster("Staff of Inversion");
-                Bot.Hunt.Monster("Escherion");
+                    Bot.Kill.Monster("Staff of Inversion");
+                Bot.Combat.Attack("Escherion");
                 Bot.Sleep(1000);
             }
         }
     }
-
-    //     void _killEscherion()
-    //     {
-    //         if (IsMonsterAlive("Staff of Inversion"))
-    //             Bot.Hunt.Monster("Staff of Inversion");
-    //         Bot.Hunt.Monster("Escherion");
-    //         Bot.Sleep(1000);
-
-    //     }
-    // }
 
     /// <summary>
     /// Kill Vath for the desired item
@@ -1720,8 +1710,8 @@ public class CoreBots
         void _killVath()
         {
             if (IsMonsterAlive("Stalagbite"))
-                Bot.Hunt.Monster("Stalagbite");
-            Bot.Hunt.Monster("Vath");
+                Bot.Kill.Monster("Stalagbite");
+            Bot.Combat.Attack("Vath");
             Bot.Sleep(1000);
         }
     }
