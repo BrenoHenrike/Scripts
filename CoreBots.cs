@@ -1654,7 +1654,12 @@ public class CoreBots
             if (log)
                 Logger("Killing Escherion");
             while (!Bot.ShouldExit && IsMonsterAlive("Escherion"))
-                _killEscherion();
+            {
+                if (IsMonsterAlive("Staff of Inversion"))
+                    Bot.Hunt.Monster("Staff of Inversion");
+                Bot.Hunt.Monster("Escherion");
+                Bot.Sleep(1000);
+            }
         }
         else
         {
@@ -1663,17 +1668,24 @@ public class CoreBots
             if (log)
                 Logger($"Killing Escherion for {item} ({dynamicQuant(item, isTemp)}/{quant}) [Temp = {isTemp}]");
             while (!Bot.ShouldExit && !CheckInventory(item, quant))
-                _killEscherion();
-        }
-
-        void _killEscherion()
-        {
-            if (IsMonsterAlive("Staff of Inversion"))
-                Bot.Kill.Monster("Staff of Inversion");
-            Bot.Combat.Attack("Escherion");
-            Bot.Sleep(1000);
+            {
+                if (IsMonsterAlive("Staff of Inversion"))
+                    Bot.Hunt.Monster("Staff of Inversion");
+                Bot.Hunt.Monster("Escherion");
+                Bot.Sleep(1000);
+            }
         }
     }
+
+    //     void _killEscherion()
+    //     {
+    //         if (IsMonsterAlive("Staff of Inversion"))
+    //             Bot.Hunt.Monster("Staff of Inversion");
+    //         Bot.Hunt.Monster("Escherion");
+    //         Bot.Sleep(1000);
+
+    //     }
+    // }
 
     /// <summary>
     /// Kill Vath for the desired item

@@ -69,32 +69,6 @@ public class SwindlesReturnPolicy
         }
     }
 
-    // bool getAll = false;
-    // var RewardOptions = Core.EnsureLoad(7551).Rewards.Select(x => x.Name).ToArray();
-    // Core.AddDrop(RewardOptions);
-
-    // if ((int)Bot.Config.Get<RewardsSelection>("RewardSelect") == 9999)
-    //     getAll = true;
-
-    // ItemBase item = Core.EnsureLoad(7551).Rewards.Find(x => x.ID == (int)Bot.Config.Get<RewardsSelection>("RewardSelect"));
-
-    // if (!getAll && !Core.CheckInventory(item.Name, item.MaxStack))
-    // {
-    //     if (Core.CheckInventory(item.Name, item.MaxStack))
-    //         return;
-    //     else Nation.SwindleReturn(item, item.MaxStack);
-    // }
-    // else if (getAll && !Core.CheckInventory(item.Name, item.MaxStack))
-    // {
-    //     foreach (ItemBase Item in Core.EnsureLoad(7551).Rewards)
-    //     {
-    //         if (Core.CheckInventory(item.Name, item.MaxStack))
-    //             break;
-    //         Nation.SwindleReturn(Item, item.MaxStack);
-    //     }
-    // }
-    // }
-
     public enum RewardsSelection
     {
         Dark_Crystal_Shard = 4770,

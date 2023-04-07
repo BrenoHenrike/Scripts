@@ -6,7 +6,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 143381,
+    "size": 143795,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -1416,7 +1416,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 60569,
+    "size": 61878,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -1615,7 +1615,7 @@
       "null"
     ],
     "path": "Nation/SwindlesReturnPolicy.cs",
-    "size": 3640,
+    "size": 2680,
     "fileName": "SwindlesReturnPolicy.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/SwindlesReturnPolicy.cs"
   },
