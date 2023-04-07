@@ -1720,8 +1720,8 @@ public class CoreBots
         void _killVath()
         {
             if (IsMonsterAlive("Stalagbite"))
-                Bot.Kill.Monster("Stalagbite");
-            Bot.Combat.Attack("Vath");
+                Bot.Hunt.Monster("Stalagbite");
+            Bot.Hunt.Monster("Vath");
             Bot.Sleep(1000);
         }
     }
