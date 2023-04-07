@@ -6,7 +6,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 143381,
+    "size": 143795,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -1416,7 +1416,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 60569,
+    "size": 61878,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -1615,7 +1615,7 @@
       "null"
     ],
     "path": "Nation/SwindlesReturnPolicy.cs",
-    "size": 3640,
+    "size": 2680,
     "fileName": "SwindlesReturnPolicy.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/SwindlesReturnPolicy.cs"
   },
@@ -3693,6 +3693,22 @@
     "size": 1385,
     "fileName": "SuperSLAYIN'Badge(GardenQuest).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AprilFools/SuperSLAYIN'Badge(GardenQuest).cs"
+  },
+  {
+    "name": "3D Battleon Storyline",
+    "description": "This script will complete Cysero's quests in aqw3d.",
+    "tags": [
+      "april fools",
+      "seasonal",
+      "3d battleon",
+      "aqw3d",
+      "cysero",
+      "story"
+    ],
+    "path": "Seasonal/AprilFools/3DBattleon.cs",
+    "size": 3056,
+    "fileName": "3DBattleon.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AprilFools/3DBattleon.cs"
   },
   {
     "name": "NeighBeleen Merge",
