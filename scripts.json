@@ -3695,6 +3695,22 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AprilFools/SuperSLAYIN'Badge(GardenQuest).cs"
   },
   {
+    "name": "3D Battleon Storyline",
+    "description": "This script will complete Cysero's quests in aqw3d.",
+    "tags": [
+      "april fools",
+      "seasonal",
+      "3d battleon",
+      "aqw3d",
+      "cysero",
+      "story"
+    ],
+    "path": "Seasonal/AprilFools/3DBattleon.cs",
+    "size": 3056,
+    "fileName": "3DBattleon.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AprilFools/3DBattleon.cs"
+  },
+  {
     "name": "NeighBeleen Merge",
     "description": "This script farms all the materials needed for NeighBeleen Merge in magicmeaderp.",
     "tags": [
