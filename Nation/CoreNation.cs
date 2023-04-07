@@ -562,8 +562,6 @@ public class CoreNation
 
             Core.FarmingLogger(item, quant);
 
-            // Core.RegisterQuests(returnPolicyDuringSupplies ? new[] { 2857, 7551 } : new[] { 2857 });
-            //[ https://imgur.com/VF1uGRI ] <- error example, hopefully this fixed it 
             if (returnPolicyDuringSupplies)
                 Core.RegisterQuests(2857, 7551);
             else Core.RegisterQuests(2857);
@@ -582,6 +580,9 @@ public class CoreNation
                     Core.SellItem("Voucher of Nulgath", all: true);
                 }
 
+                if (Bot.Player.Cell != "Boss")
+                    Core.Jump("Boss", "Left");
+
                 if (Bot.Inventory.IsMaxStack(item))
                 {
                     Core.Logger($"Max-Stack for {item} has been reached ({Bot.Inventory.GetItem(item)!.MaxStack})");
@@ -598,60 +599,93 @@ public class CoreNation
     /// <param name=item>Desired item name</param>
     /// <param name="quant">Desired item quantity</param>
     /// <param name="farmGold"></param>
-    public void TheAssistant(string item = "Any", int quant = 1, bool farmGold = true)
+    public void TheAssistant(string item = null, int quant = 1000, bool farmGold = true)
     {
         if (Core.CheckInventory(item, quant))
             return;
-
-        if (item != "Any")
-            Core.AddDrop(item);
-        else
+        if (item == null)
             Core.AddDrop(bagDrops);
-        int i = 1;
+        Core.AddDrop(item);
 
-        void AssistantLoop()
+        //CBO Ops Setup
+        if (Core.CBOBool("Nation_SellMemVoucher", out bool _sellMemVoucher))
+            sellMemVoucher = _sellMemVoucher;
+        if (Core.CBOBool("Nation_ReturnPolicyDuringSupplies", out bool _returnSupplies))
+            returnPolicyDuringSupplies = _returnSupplies;
+
+        Core.Logger(returnPolicyDuringSupplies ? "return Policy During Supplies: true" : "return Policy During Supplies: false");
+        Core.Logger(sellMemVoucher ? "Sell Voucher of Nulgath: true" : "Sell Voucher of Nulgath: false");
+        //-------
+
+        string[]? rPDSuni = null;
+        if (returnPolicyDuringSupplies)
         {
-            if (!Core.CheckInventory("War-Torn Memorabilia"))
-            {
-                Core.Join("yulgar");
-                while (!Bot.ShouldExit && Bot.Player.Gold >= 100000 && !Core.CheckInventory("War-Torn Memorabilia", 5))
-                {
-                    Bot.Shops.BuyItem(41, "War-Torn Memorabilia");
-                    Bot.Wait.ForItemBuy();
-                }
-            }
-            Core.EnsureAccept(2859);
-            while (!Bot.ShouldExit && Core.CheckInventory("War-Torn Memorabilia") && !Core.CheckInventory(item, quant))
-            {
-                Core.ChainComplete(2859);
-                Bot.Drops.Pickup(bagDrops);
-                Core.Logger($"Completed x{i++}");
-                if (Bot.Inventory.IsMaxStack(item))
-                    Core.Logger($"Max Stack Hit for {item}.");
-                else Core.Logger($"{item}: {Bot.Inventory.GetQuantity(item)}/{quant}");
-            }
+            rPDSuni = new[] { Uni(1), Uni(6), Uni(9), Uni(16), Uni(20) };
+            Core.AddDrop(rPDSuni);
+            Core.AddDrop("Blood Gem of Nulgath");
         }
 
-        Core.FarmingLogger(item, quant);
-        if (farmGold)
+        if (item == null)
+        {
+            Core.RegisterQuests(7551);
+            foreach (string Thing in bagDrops[..^11])
+            {
+                var rewards = Core.EnsureLoad(2859).Rewards;
+                ItemBase Item = rewards.Find(x => x.Name == Thing);
+
+                while (!Bot.ShouldExit && !Core.CheckInventory(Item.Name, Item.MaxStack))
+                {
+                    LogItemQuant2(Item, Item.MaxStack);
+                    Farm.Gold(1000000);
+                    Core.BuyItem("yulgar", 41, "War-Torn Memorabilia", 10);
+                    Core.EnsureCompleteMulti(2859);
+                    Bot.Wait.ForItemBuy();
+                    if (Core.CheckInventory(rPDSuni) && _returnSupplies == true)
+                        Core.HuntMonster(Core.IsMember ? "nulgath" : "evilmarsh", "Dark Makai", "Dark Makai Rune");
+                }
+            }
+            Core.CancelRegisteredQuests();
+        }
+        else
         {
             while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
             {
-                AssistantLoop();
-                if (Bot.Player.Gold < 100000 && !Core.CheckInventory(item, quant))
-                    Farm.Gold(1000000);
-                if (Bot.Inventory.IsMaxStack(item))
-                    Core.Logger("Max Stack Hit.");
-                else Core.Logger($"{item}: {Bot.Inventory.GetQuantity(item)}/{quant}");
+                LogItemQuant(item, quant);
+                Farm.Gold(1000000);
+                Core.BuyItem("yulgar", 41, "War-Torn Memorabilia", 10);
+                Bot.Wait.ForItemBuy();
+                Core.EnsureCompleteMulti(2859);
+                if (Core.CheckInventory(rPDSuni) && _returnSupplies == true)
+                    Core.HuntMonster(Core.IsMember ? "nulgath" : "evilmarsh", "Dark Makai", "Dark Makai Rune");
             }
         }
-        else
-        {
-            while (!Bot.ShouldExit && Bot.Player.Gold > 100000)
-                AssistantLoop();
 
-            if (!Core.CheckInventory(item, quant))
-                Core.Logger($"Couldn't get {item}({quant})");
+        void LogItemQuant(string Item, int quant)
+        {
+            if (!Core.CheckInventory(Item))
+                return;
+
+            int StartQuant = Bot.Inventory.GetQuantity(Item);
+            if (Bot.Inventory.GetQuantity(Item) != StartQuant || Bot.Inventory.GetQuantity(Item) > StartQuant)
+            {
+                Core.FarmingLogger(Item, quant);
+                StartQuant = Bot.Inventory.GetQuantity(Item);
+                Bot.Sleep(1500);
+            }
+        }
+
+        void LogItemQuant2(ItemBase Item, int quant)
+        {
+            if (!Core.CheckInventory(Item.Name))
+                return;
+
+            int StartQuant = Item.Quantity;
+            if (Item.Quantity > StartQuant)
+            {
+                Core.FarmingLogger(Item.Name, Item.MaxStack);
+                StartQuant = Item.Quantity;
+                Bot.Sleep(1500);
+            }
         }
     }
 
