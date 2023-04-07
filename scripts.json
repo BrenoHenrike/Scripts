@@ -6,7 +6,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 143795,
+    "size": 143794,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -16509,7 +16509,7 @@
       "null"
     ],
     "path": "Other/Classes/ArchMage/Books/5BookOfArcana.cs",
-    "size": 1232,
+    "size": 1281,
     "fileName": "5BookOfArcana.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/ArchMage/Books/5BookOfArcana.cs"
   },
@@ -16520,7 +16520,7 @@
       "null"
     ],
     "path": "Other/Classes/ArchMage/Books/1BookOfMagus.cs",
-    "size": 1229,
+    "size": 1278,
     "fileName": "1BookOfMagus.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/ArchMage/Books/1BookOfMagus.cs"
   },
@@ -16531,7 +16531,7 @@
       "null"
     ],
     "path": "Other/Classes/ArchMage/Books/3BookOfIce.cs",
-    "size": 1223,
+    "size": 1272,
     "fileName": "3BookOfIce.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/ArchMage/Books/3BookOfIce.cs"
   },
@@ -16542,7 +16542,7 @@
       "null"
     ],
     "path": "Other/Classes/ArchMage/Books/4BookOfAether.cs",
-    "size": 1232,
+    "size": 1281,
     "fileName": "4BookOfAether.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/ArchMage/Books/4BookOfAether.cs"
   },
@@ -16553,7 +16553,7 @@
       "null"
     ],
     "path": "Other/Classes/ArchMage/Books/2BookOfFire.cs",
-    "size": 1226,
+    "size": 1275,
     "fileName": "2BookOfFire.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/ArchMage/Books/2BookOfFire.cs"
   }
