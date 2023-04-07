@@ -13,6 +13,7 @@ tags: null
 //cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
 //cs_include Scripts/Story/QueenofMonsters/CoreQOM.cs
 //cs_include Scripts/Other/Classes/ArchMage/CoreArchMage.cs
+//cs_include Scripts/ShadowsOfWar/CoreSoWMats.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
 
