@@ -1307,7 +1307,7 @@ public class CoreFarms
 
         Core.RegisterQuests(3049); //Help Professor Maedoc 3049
         while (!Bot.ShouldExit && FactionRank("Druid Grove") < rank)
-            Core.HuntMonster("bloodtusk", "Crystal-Rock", "Geode", 5, log: false);
+            Core.HuntMonster("bloodtusk", "Crystal-Rock", "Geode", 25, log: false);
         Bot.Wait.ForQuestComplete(3049);
         Core.CancelRegisteredQuests();
         ToggleBoost(BoostType.Reputation, false);
