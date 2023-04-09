@@ -67,7 +67,7 @@ public class UnderworldTeamMerge
                     break;
 
                 case "1v1 Legion PvP Trophy":
-                    Core.Logger("Cannot Get Item, Requires Manaul pvp.");
+                    Core.Logger("Cannot Get Item, Requires Manual pvp.");
                     break;
             }
         }
