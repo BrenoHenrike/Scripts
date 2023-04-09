@@ -115,15 +115,16 @@ public class CoreNSOD
 
     #region Void Auras
 
-    public void VoidAuras(int quant = 7500, bool getSDKA = false)
+    public void VoidAuras(int quant = 7500)
     {
         if (Core.CheckInventory("Void Aura", quant))
             return;
 
-        if (getSDKA)
+        if (Bot.Config.Get<bool>("GetSDKA") && Core.IsMember)
             SDKA.DoAll();
-        CommandingShadowEssences(quant);
+
         GatheringUnstableEssences(quant);
+        CommandingShadowEssences(quant);
         RetrieveVoidAuras(quant);
     }
 
