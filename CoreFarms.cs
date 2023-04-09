@@ -1307,7 +1307,7 @@ public class CoreFarms
 
         Core.RegisterQuests(3049); //Help Professor Maedoc 3049
         while (!Bot.ShouldExit && FactionRank("Druid Grove") < rank)
-            Core.HuntMonster("bloodtusk", "Crystal-Rock", "Geode", 5, log: false);
+            Core.HuntMonster("bloodtusk", "Crystal-Rock", "Geode", 25, log: false);
         Bot.Wait.ForQuestComplete(3049);
         Core.CancelRegisteredQuests();
         ToggleBoost(BoostType.Reputation, false);
@@ -1350,14 +1350,23 @@ public class CoreFarms
         ToggleBoost(BoostType.Reputation);
         Core.Logger($"Farming rank {rank}");
 
-        Core.RegisterQuests(3050, 3298); //Help Professor Warlic 3050, Elements of Research 3298
+        if (!Core.isCompletedBefore(3052))
+        {
+            Core.EnsureAccept(3052);
+            Core.GetMapItem(1921, 1, "dragonrune");
+            Core.GetMapItem(1922, 1, "dragonrune");
+            Core.GetMapItem(1923, 1, "dragonrune");
+            Core.GetMapItem(1924, 1, "dragonrune");
+            Core.EnsureComplete(3052);
+        }
+
+        Core.RegisterQuests(3298); //Help Professor Warlic 3050
         while (!Bot.ShouldExit && FactionRank("Elemental Master") < rank)
         {
-            Core.HuntMonster("gilead", "Water Elemental", "Water Core", log: false);
-            Core.HuntMonster("gilead", "Fire Elemental", "Fire Core", log: false);
-            Core.HuntMonster("gilead", "Wind Elemental", "Air Core", log: false);
-            Core.HuntMonster("gilead", "Earth Elemental", "Earth Core", log: false);
-            Core.HuntMonster("gilead", "Mana Elemental", "Mana Core", log: false);
+            Core.HuntMonster("gilead", "Water Elemental", "Water Drop", 5, log: false);
+            Core.HuntMonster("gilead", "Fire Elemental", "Flame", 5, log: false);
+            Core.HuntMonster("gilead", "Wind Elemental", "Breeze", 5, log: false);
+            Core.HuntMonster("gilead", "Earth Elemental", "Stone", 5, log: false);
         }
         Core.CancelRegisteredQuests();
         ToggleBoost(BoostType.Reputation, false);

@@ -434,9 +434,18 @@ public class CoreFarmerJoe
         if (Core.CheckInventory("Peasant Rags") | Core.CheckInventory("Scarecrow Hat"))
             return;
 
-        Core.Logger("Farming Rags & Hat");
+        Core.Logger("Farming Shirt & Hat");
 
-        Adv.BuyItem("yulgar", 41, "Peasant Rags");
+        if (!Core.CheckInventory("NO BOTS Armor"))
+        {
+            Bot.Drops.Add("Synderes' Souvenir");
+            Core.EnsureAccept(4247);
+            Core.KillMonster("enemyforest", "Enter", "Spawn", "*", "Forest Denien Slain", 5);
+            Core.EnsureComplete(4247);
+            Bot.Wait.ForDrop("Synderes' Souvenir", 40);
+            Adv.BuyItem("enemyforest", 332, "NO BOTS Armor");
+        }
+
         Bot.Wait.ForPickup("Peasant Rags");
         Core.Equip("Peasant Rags");
         Adv.BuyItem("yulgar", 16, "Scarecrow Hat");
