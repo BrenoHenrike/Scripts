@@ -680,9 +680,11 @@ public class AllStories
         HuntersMoon.StoryLine();
         Core.Logger($"Story: Hunter's Moon - Complete");
 
-
-        Gamehaven.Storyline();
-        Core.Logger($"Story: Game Haven - Complete");
+        if (Core.PrivateRooms == true)
+        {
+            Gamehaven.Storyline();
+            Core.Logger($"Story: Game Haven - Complete");
+        }
 
         GiantTaleStory.DoAll();
         Core.Logger($"Story: Giant Tale - Complete");
