@@ -2639,10 +2639,17 @@ public class CoreBots
             case "fearhouse":
             case "buyhouse":
             case "warehouse":
-                if (publicRoom == false)
-                    Logger("Unfortunitaly AE forgot to make these maps private-able\n" +
-                    "if you realy must, swap your CoreBot `\"PrivateRooms\"`\n" +
-                    "option to false for the needed story, and then back on", stopBot: true);
+
+                DialogResult ForcePublic = Bot.ShowMessageBox(
+                                    $"Do you want to join the Following map: \"{map}\"\n" +
+                                    "using a public room?\n" +
+                                    "(Bot will stop otherwise)", "PublicRoom Only",
+                                    "Yes", "No"
+                                );
+
+                if (ForcePublic.Value == 1)
+                    Logger("Unfortunitaly AE forgot to make these maps public only\n" +
+                    "to continue \"yes\" must be selcted, otherwise for `allstories` just comment it out with 2 /'s", stopBot: true);
                 else
                 {
                     Logger("You've Chosen to bot publicly... good luck in this *public only* map.");
