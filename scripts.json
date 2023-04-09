@@ -5202,6 +5202,21 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Grenwog(Easter)/BringmetheGREENEggs!(Helms).cs"
   },
   {
+    "name": "Elixir Grenwog Merge",
+    "description": "This script will farm all the materials needed for Elixir Grenwog Merge in elixirgrenwog.",
+    "tags": [
+      "elixir",
+      "seasonal",
+      "easter",
+      "grenwog",
+      "merge"
+    ],
+    "path": "Seasonal/Grenwog(Easter)/ElixirGrenwogMerge.cs",
+    "size": 6267,
+    "fileName": "ElixirGrenwogMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Grenwog(Easter)/ElixirGrenwogMerge.cs"
+  },
+  {
     "name": "Berserker Bunny Armor",
     "description": "This will finish the quest to obtain the Berserker Bunny Armor.",
     "tags": [
