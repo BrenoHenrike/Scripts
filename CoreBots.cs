@@ -2638,8 +2638,11 @@ public class CoreBots
             #region Maps that cant be private and you must do yourself. (thanks AE)
             case "fearhouse":
             case "buyhouse":
+            case "warehouse":
                 if (publicRoom == false)
-                    Logger("Unfortunitaly AE forgot to make these maps private-able, and public botting is to risky. (yw)", stopBot: true);
+                    Logger("Unfortunitaly AE forgot to make these maps private-able\n" +
+                    "if you realy must, swap your CoreBot `\"PrivateRooms\"`\n" +
+                    "option to false for the needed story, and then back on", stopBot: true);
                 else
                 {
                     Logger("You've Chosen to bot publicly... good luck in this *public only* map.");
@@ -2652,7 +2655,8 @@ public class CoreBots
 
             #region Bypass Banned
             // This doesn't mean that you cant do a bypass inside the boat itself, it just can't be in Join because it fucks up CanBuy
-            // Write the ID that can be used for the bypass in a comment after it, so people can easily fetch it if they are gonna used a banned map
+            // Write the ID that can be used for the bypass in a comment after it, so people can easily
+            // fetch it if they are gonna used a banned map
             case "downbelow": // 8107
                 goto default;
                 #endregion
@@ -2692,7 +2696,7 @@ public class CoreBots
             }
 
             Jump(cell, pad);
-            Bot.Sleep(200);
+            Bot.Sleep(1500);
         }
 
         void tryJoin()
