@@ -3419,12 +3419,13 @@
   },
   {
     "name": "SambasFlagMerge",
-    "description": "null",
+    "description": "Farms the requirements & buys the items from Sambaflag merge",
     "tags": [
-      "null"
+      "sambaflag",
+      "merge"
     ],
     "path": "Seasonal/Carnaval/SambasFlagMerge.cs",
-    "size": 5657,
+    "size": 5725,
     "fileName": "SambasFlagMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Carnaval/SambasFlagMerge.cs"
   },
@@ -3706,7 +3707,7 @@
       "story"
     ],
     "path": "Seasonal/AprilFools/3DBattleon.cs",
-    "size": 3056,
+    "size": 3059,
     "fileName": "3DBattleon.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AprilFools/3DBattleon.cs"
   },
@@ -3737,7 +3738,7 @@
       "merge"
     ],
     "path": "Seasonal/AprilFools/MeateorShardMerge.cs",
-    "size": 7727,
+    "size": 7732,
     "fileName": "MeateorShardMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AprilFools/MeateorShardMerge.cs"
   },
@@ -3837,7 +3838,7 @@
       "merge shop"
     ],
     "path": "Seasonal/AkibaNewYear/LadyLuasMerge.cs",
-    "size": 8967,
+    "size": 8971,
     "fileName": "LadyLuasMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AkibaNewYear/LadyLuasMerge.cs"
   },
@@ -3904,7 +3905,7 @@
       "ladyluna"
     ],
     "path": "Seasonal/AkibaNewYear/AkibaNewYear0DoAll.cs",
-    "size": 1418,
+    "size": 1417,
     "fileName": "AkibaNewYear0DoAll.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AkibaNewYear/AkibaNewYear0DoAll.cs"
   },
@@ -3949,7 +3950,7 @@
       "merge shop"
     ],
     "path": "Seasonal/AkibaNewYear/YokaiNewYearMerge.cs",
-    "size": 17798,
+    "size": 17801,
     "fileName": "YokaiNewYearMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AkibaNewYear/YokaiNewYearMerge.cs"
   },
@@ -3980,13 +3981,13 @@
       "akibacny"
     ],
     "path": "Seasonal/AkibaNewYear/GongJiZhanshiSet.cs",
-    "size": 2074,
+    "size": 2077,
     "fileName": "GongJiZhanshiSet.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AkibaNewYear/GongJiZhanshiSet.cs"
   },
   {
     "name": "Fausto's and Lengjin's Quests",
-    "description": "null",
+    "description": "Storyline for the map",
     "tags": [
       "seasonal",
       "yokai",
@@ -3997,7 +3998,7 @@
       "lengjin"
     ],
     "path": "Seasonal/AkibaNewYear/Parades.cs",
-    "size": 4214,
+    "size": 4241,
     "fileName": "Parades.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AkibaNewYear/Parades.cs"
   },
@@ -4582,7 +4583,7 @@
       "story"
     ],
     "path": "Seasonal/HerosHeartDay/Arcadia.cs",
-    "size": 2654,
+    "size": 2655,
     "fileName": "Arcadia.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HerosHeartDay/Arcadia.cs"
   },
@@ -4682,7 +4683,7 @@
       "beleen"
     ],
     "path": "Seasonal/HerosHeartDay/GemsofLoveMerge.cs",
-    "size": 8981,
+    "size": 8983,
     "fileName": "GemsofLoveMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HerosHeartDay/GemsofLoveMerge.cs"
   },
@@ -5186,7 +5187,7 @@
       "seasonal"
     ],
     "path": "Seasonal/Grenwog(Easter)/VorpalBunnyQuestRewards.cs",
-    "size": 2273,
+    "size": 2274,
     "fileName": "VorpalBunnyQuestRewards.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Grenwog(Easter)/VorpalBunnyQuestRewards.cs"
   },
@@ -5205,35 +5206,41 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Grenwog(Easter)/BringmetheBLUEEggs!(Weapons).cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "EvolvedBunnyItemsMerge",
+    "description": "Farms materials and buys the items from the EvolvedBunnyItems mergeshop",
     "tags": [
-      "null"
+      "grenwog",
+      "evolved",
+      "bunny",
+      "merge"
     ],
     "path": "Seasonal/Grenwog(Easter)/EvolvedBunnyItemsMerge.cs",
-    "size": 3830,
+    "size": 3941,
     "fileName": "EvolvedBunnyItemsMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Grenwog(Easter)/EvolvedBunnyItemsMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "GrenstoryMerge",
+    "description": "Farms \"Grenstory Token\" and buys Items from the Grenstory mergeshop",
     "tags": [
-      "null"
+      "grenstory token",
+      "grenstory",
+      "merge"
     ],
     "path": "Seasonal/Grenwog(Easter)/GrenstoryMerge.cs",
-    "size": 3612,
+    "size": 3714,
     "fileName": "GrenstoryMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Grenwog(Easter)/GrenstoryMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "CandyShellMerge",
+    "description": "Farms materials and items from the candyshell mergeshop",
     "tags": [
-      "null"
+      "merge",
+      "grenwog"
     ],
     "path": "Seasonal/Grenwog(Easter)/CandyshellMerge.cs",
-    "size": 7692,
+    "size": 7764,
     "fileName": "CandyshellMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Grenwog(Easter)/CandyshellMerge.cs"
   },
@@ -5323,24 +5330,24 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Grenwog(Easter)/BringmethePURPLEEggs!(Armor).cs"
   },
   {
-    "name": "null",
+    "name": "WaterWarMerge",
     "description": "null",
     "tags": [
       "null"
     ],
     "path": "Seasonal/SolarNewYear/WaterWarMerge.cs",
-    "size": 4422,
+    "size": 4431,
     "fileName": "WaterWarMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/SolarNewYear/WaterWarMerge.cs"
   },
   {
-    "name": "null",
+    "name": "WaterWar",
     "description": "null",
     "tags": [
       "null"
     ],
     "path": "Seasonal/SolarNewYear/WaterWar.cs",
-    "size": 1332,
+    "size": 1337,
     "fileName": "WaterWar.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/SolarNewYear/WaterWar.cs"
   },
@@ -5358,6 +5365,20 @@
     "size": 1169,
     "fileName": "EvenNaughtierMonkeys.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/SolarNewYear/EvenNaughtierMonkeys.cs"
+  },
+  {
+    "name": "CaptainLoresQuests",
+    "description": "CaptainLores Questline",
+    "tags": [
+      "storyline",
+      "captainlore",
+      "pollution",
+      "totengeldfactory"
+    ],
+    "path": "Seasonal/EarthDay/CaptainLoresQuests.cs",
+    "size": 2644,
+    "fileName": "CaptainLoresQuests.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/EarthDay/CaptainLoresQuests.cs"
   },
   {
     "name": "Time Retaliate Merge",
@@ -5486,13 +5507,13 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/LuckyDay/Pooka.cs"
   },
   {
-    "name": "null",
+    "name": "LuckyDragonMerge",
     "description": "null",
     "tags": [
       "null"
     ],
     "path": "Seasonal/LuckyDay/LuckdragonMerge.cs",
-    "size": 3791,
+    "size": 3803,
     "fileName": "LuckdragonMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/LuckyDay/LuckdragonMerge.cs"
   },
@@ -5551,13 +5572,16 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/LuckyDay/FaerieCourtREP.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "BattleGemsGameGearMerge",
+    "description": "Farms \"Golden Ticket\" in /luck to buy items in the BattleGamesGameGearMerge",
     "tags": [
-      "null"
+      "merge",
+      "luck",
+      "battlegamesgamegear",
+      "merge"
     ],
     "path": "Seasonal/LuckyDay/BattleGemsGameGearMerge.cs",
-    "size": 5310,
+    "size": 5435,
     "fileName": "BattleGemsGameGearMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/LuckyDay/BattleGemsGameGearMerge.cs"
   },
@@ -5573,7 +5597,7 @@
       "merge"
     ],
     "path": "Seasonal/LuckyDay/DaibhsMerge.cs",
-    "size": 4857,
+    "size": 4859,
     "fileName": "DaibhsMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/LuckyDay/DaibhsMerge.cs"
   },
@@ -5589,7 +5613,7 @@
       "seasonal"
     ],
     "path": "Seasonal/LuckyDay/PostyMcNobbinsQuestRewards.cs",
-    "size": 3456,
+    "size": 3457,
     "fileName": "PostyMcNobbinsQuestRewards.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/LuckyDay/PostyMcNobbinsQuestRewards.cs"
   },
@@ -14287,24 +14311,24 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/NationWarChestMerge.cs"
   },
   {
-    "name": "null",
+    "name": "DageWar50Merge",
     "description": "null",
     "tags": [
       "null"
     ],
     "path": "Seasonal/StaffBirthdays/DageTheEvil/DageWar50Merge.cs",
-    "size": 3142,
+    "size": 3152,
     "fileName": "DageWar50Merge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/DageWar50Merge.cs"
   },
   {
-    "name": "null",
+    "name": "UnderworldTeamMerge",
     "description": "null",
     "tags": [
       "null"
     ],
     "path": "Seasonal/StaffBirthdays/DageTheEvil/UnderworldTeamMerge.cs",
-    "size": 5400,
+    "size": 5415,
     "fileName": "UnderworldTeamMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/UnderworldTeamMerge.cs"
   },
@@ -14389,29 +14413,29 @@
       "death victor"
     ],
     "path": "Seasonal/StaffBirthdays/DageTheEvil/UnderVoidBadgesAll.cs",
-    "size": 4902,
+    "size": 4903,
     "fileName": "UnderVoidBadgesAll.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/UnderVoidBadgesAll.cs"
   },
   {
-    "name": "null",
+    "name": "DagesBirthdayMerge",
     "description": "null",
     "tags": [
       "null"
     ],
     "path": "Seasonal/StaffBirthdays/DageTheEvil/DagesBirthdayMerge.cs",
-    "size": 6481,
+    "size": 6495,
     "fileName": "DagesBirthdayMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/DagesBirthdayMerge.cs"
   },
   {
-    "name": "null",
+    "name": "FutureWarMerge",
     "description": "null",
     "tags": [
       "null"
     ],
     "path": "Seasonal/StaffBirthdays/DageTheEvil/FutureWarMerge.cs",
-    "size": 6374,
+    "size": 6384,
     "fileName": "FutureWarMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/FutureWarMerge.cs"
   },
