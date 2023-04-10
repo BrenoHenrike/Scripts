@@ -173,7 +173,7 @@ public class CoreFarms
     /// Farms Gold by selling Berserker Bunny
     /// </summary>
     /// <param name="goldQuant">How much gold to farm</param>
-    public void BerserkerBunny(int goldQuant = 100000000)
+    public void BerserkerBunny(int goldQuant = 100000000, bool sell = true)
     {
         if (Bot.Player.Gold >= goldQuant)
             return;
@@ -187,9 +187,11 @@ public class CoreFarms
         while (!Bot.ShouldExit && Bot.Player.Gold < goldQuant && Bot.Player.Gold <= 100000000)
         {
             Core.HuntMonster("greenguardwest", "Big Bad Boar", "Were Egg", log: false);
-            Bot.Drops.Pickup("Berserker Bunny");
+            Bot.Wait.ForDrop("Berserker Bunny", 40);
+            if (!sell)
+                return;
             Bot.Sleep(Core.ActionDelay);
-            Bot.Shops.SellItem("Berserker Bunny");
+            Core.SellItem("Berserker Bunny");
         }
         Core.CancelRegisteredQuests();
         Core.SavedState(false);
