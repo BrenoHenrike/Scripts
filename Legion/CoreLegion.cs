@@ -421,7 +421,7 @@ public class CoreLegion
         Core.CancelRegisteredQuests();
     }
 
-    public void LTFirstClassEntertainment(int quant = 25000, bool onlyWithParty = false, int partySize = 4)
+    public void LTFirstClassEntertainment(int quant = 25000, bool onlyWithParty = false, int partySize = 4, bool ReturnIfNoPeople = false)
     {
         if (Core.CheckInventory("Legion Token", quant))
             return;
@@ -433,7 +433,7 @@ public class CoreLegion
         {
             Core.Join("legionarena", ignoreCheck: true, publicRoom: true);
             while (Bot.Map.PlayerCount < partySize)
-                Bot.Sleep(5000);
+                return;
             Core.Logger($"Party gathered [{Bot.Map.PlayerNames.Count}/{partySize}]");
         }
 
