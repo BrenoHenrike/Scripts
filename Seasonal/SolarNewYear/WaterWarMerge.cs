@@ -7,6 +7,7 @@ tags: null
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreStory.cs
+//cs_include Scripts/Seasonal/SolarNewYear/WaterWar.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
@@ -18,6 +19,7 @@ public class WaterWarMerge
     private CoreFarms Farm = new();
     private CoreAdvanced Adv = new();
     public CoreStory Story = new CoreStory();
+    private WaterWar WW = new();
     private static CoreAdvanced sAdv = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
@@ -38,8 +40,7 @@ public class WaterWarMerge
 
     public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
-        if (!Bot.Quests.IsUnlocked(6816))
-            Story.KillQuest(6814, "WaterWar", "Solar Elemental");
+        WW.StoryLine();
 
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("waterwar", 1711, findIngredients, buyOnlyThis, buyMode: buyMode);
