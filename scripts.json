@@ -5175,6 +5175,22 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Mogloween/13TrickTownStory.cs"
   },
   {
+    "name": "Posty Mc Nobbins Quest Rewards",
+    "description": "gest the quest rewards from all 4 quest from mc nobbins.",
+    "tags": [
+      "mc nobbins",
+      "quest reward",
+      "farm",
+      "lucky day",
+      "luck",
+      "seasonal"
+    ],
+    "path": "Seasonal/Grenwog(Easter)/VorpalBunnyQuestRewards.cs",
+    "size": 2273,
+    "fileName": "VorpalBunnyQuestRewards.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Grenwog(Easter)/VorpalBunnyQuestRewards.cs"
+  },
+  {
     "name": "Steampunk Weapons",
     "description": "This will finish the Bring me the BLUE Eggs quest to obtain all of the steampunk weapons.",
     "tags": [
@@ -5195,7 +5211,7 @@
       "null"
     ],
     "path": "Seasonal/Grenwog(Easter)/EvolvedBunnyItemsMerge.cs",
-    "size": 3760,
+    "size": 3830,
     "fileName": "EvolvedBunnyItemsMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Grenwog(Easter)/EvolvedBunnyItemsMerge.cs"
   },
@@ -5217,7 +5233,7 @@
       "null"
     ],
     "path": "Seasonal/Grenwog(Easter)/CandyshellMerge.cs",
-    "size": 7689,
+    "size": 7692,
     "fileName": "CandyshellMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Grenwog(Easter)/CandyshellMerge.cs"
   },
