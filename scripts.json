@@ -5329,9 +5329,35 @@
       "null"
     ],
     "path": "Seasonal/SolarNewYear/WaterWarMerge.cs",
-    "size": 4418,
+    "size": 4422,
     "fileName": "WaterWarMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/SolarNewYear/WaterWarMerge.cs"
+  },
+  {
+    "name": "null",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Seasonal/SolarNewYear/WaterWar.cs",
+    "size": 1332,
+    "fileName": "WaterWar.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/SolarNewYear/WaterWar.cs"
+  },
+  {
+    "name": "Hanzo Orb Quests",
+    "description": "Does the quests from either the Astral Orb Pet, or the Crimson Orb Pet",
+    "tags": [
+      "astral",
+      "crimson",
+      "orb",
+      "pet",
+      "quests"
+    ],
+    "path": "Seasonal/SolarNewYear/EvenNaughtierMonkeys.cs",
+    "size": 1206,
+    "fileName": "EvenNaughtierMonkeys.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/SolarNewYear/EvenNaughtierMonkeys.cs"
   },
   {
     "name": "Time Retaliate Merge",
