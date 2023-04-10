@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: BattleGemsGameGearMerge
+description: Farms "Golden Ticket" in /luck to buy items in the BattleGamesGameGearMerge
+tags: merge, luck, battlegamesgamegear, merge
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

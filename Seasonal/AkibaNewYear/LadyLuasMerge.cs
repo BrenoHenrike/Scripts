@@ -1,7 +1,7 @@
 /*
 name: Lady Lua's Merge
 description: Farms the materials needed for Lady Lua's Merge.
-tags: yokai,lady lua,seasonal,akibacny,akiba new year, merge shop
+tags: yokai, lady lua, seasonal, akibacny, akiba new year, merge shop
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

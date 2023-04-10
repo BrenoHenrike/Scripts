@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: CandyShellMerge
+description: Farms materials and items from the candyshell mergeshop
+tags: merge, grenwog
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

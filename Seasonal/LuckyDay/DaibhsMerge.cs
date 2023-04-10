@@ -1,7 +1,7 @@
 /*
 name: Daibh's Merge
 description: Farms the materials needed for Daibh's Merge in luck.
-tags: luck, seasonal, daibh's merge, shamrock,fair,merge
+tags: luck, seasonal, daibh's merge, shamrock, fair, merge
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

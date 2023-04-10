@@ -1,7 +1,7 @@
 /*
 name: Gong Ji Zhanshi Set
 description: Farms the Gong Ji Zhanshi set from Red Envelope Hunt quest.
-tags: seasonal,akiba new year,gong ji zhanshi, red envelope hunt,akibacny
+tags: seasonal, akiba new year, gong ji zhanshi, red envelope hunt, akibacny
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

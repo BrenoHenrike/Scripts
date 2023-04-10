@@ -1,7 +1,7 @@
 /*
 name: Meateor Shard Merge
 description: This script farms all the materials needed for Meateor Shard Merge in meateortown.
-tags: meateor,meateortown,shard,seasonal,april fools,merge
+tags: meateor, meateortown, shard, seasonal, april fools, merge
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

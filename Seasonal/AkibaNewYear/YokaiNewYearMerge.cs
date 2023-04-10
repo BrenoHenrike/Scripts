@@ -1,7 +1,7 @@
 /*
 name: Yokai New Year Shop
 description: Farms the materials needed for Yokai New Year Shop.
-tags: yokai new year,akibacny,seasonal,akiba new year, merge shop
+tags: yokai new year, akibacny, seasonal, akiba new year, merge shop
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

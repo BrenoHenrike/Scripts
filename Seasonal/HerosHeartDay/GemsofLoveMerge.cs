@@ -1,7 +1,7 @@
 /*
 name: Gems of Love Merge Shop
 description: This script farms the items from Gems of Love Merge Shop.
-tags: seasonal, love, merge, gemsoflove,heros heart day,beleen
+tags: seasonal, love, merge, gemsoflove, heros heart day, beleen
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

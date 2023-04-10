@@ -1,7 +1,7 @@
 /*
 name: Arcadia
 description: This will complete the Arcadia story quest.
-tags: Arcadia, seasonal, heros-heart-day, heart, hero, story
+tags: arcadia, seasonal, heros-heart-day, heart, hero, story
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

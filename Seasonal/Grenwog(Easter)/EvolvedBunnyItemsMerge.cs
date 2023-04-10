@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: EvolvedBunnyItemsMerge
+description: Farms materials and buys the items from the EvolvedBunnyItems mergeshop
+tags: grenwog, evolved, bunny, merge
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

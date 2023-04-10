@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: CaptainLoresQuests
+description: CaptainLores Questline
+tags: storyline, captainlore, pollution, totengeldfactory
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

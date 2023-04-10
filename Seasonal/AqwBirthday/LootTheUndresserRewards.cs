@@ -1,7 +1,7 @@
 /*
 name: LootTheUndresser Quest Rewards
 description: farms quest rewards from 'Loot the UnDresser` in /cursedshop
-tags: LootTheUndresser, quest reward, Cursed Antique Shop, Cursed Bust
+tags: loottheundresser, quest reward, cursed antique shop, cursed bust
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

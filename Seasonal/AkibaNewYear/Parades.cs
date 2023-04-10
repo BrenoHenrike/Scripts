@@ -1,7 +1,7 @@
 /*
 name: Fausto's and Lengjin's Quests
-description: null
-tags: seasonal, yokai, akibacny, akiba new year, story, Fausto, Lengjin 
+description: Storyline for the map: "Parades"
+tags: seasonal, yokai, akibacny, akiba new year, story, fausto, lengjin
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

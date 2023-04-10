@@ -1,7 +1,7 @@
 /*
 name: SambasFlagMerge
-description: null
-tags: null
+description: Farms the requirements & buys the items from Sambaflag merge
+tags: sambaflag, merge
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

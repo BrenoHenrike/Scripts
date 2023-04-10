@@ -1,7 +1,7 @@
 /*
 name: Wubbles
 description: This will complete the Wubbles story quest.
-tags: Wubbles, seasonal, heros-heart-day, heart, hero, story
+tags: wubbles, seasonal, heros-heart-day, heart, hero, story
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

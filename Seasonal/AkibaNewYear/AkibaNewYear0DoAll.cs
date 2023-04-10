@@ -3,7 +3,6 @@ name: Akiba New Year DoAll
 description: Completes all of the akiba new year quests
 tags: seasonal, yokai, akibacny, akiba new year, story, bingwen, fausto, lengjing, senlin-mas, zhu, yokaihunt, ladyluna
 */
-
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs

@@ -1,7 +1,7 @@
 /*
 name: 3D Battleon Storyline
 description: This script will complete Cysero's quests in aqw3d.
-tags: april fools, seasonal, 3d battleon,aqw3d,cysero,story
+tags: april fools, seasonal, 3d battleon, aqw3d, cysero, story
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

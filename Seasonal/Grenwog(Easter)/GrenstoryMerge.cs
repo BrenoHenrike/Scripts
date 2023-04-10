@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: GrenstoryMerge
+description: Farms "Grenstory Token" and buys Items from the Grenstory mergeshop
+tags: grenstory token, grenstory, merge
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
