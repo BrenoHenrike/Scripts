@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 93321,
+    "size": 93385,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -5189,19 +5189,37 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Grenwog(Easter)/BringmetheBLUEEggs!(Weapons).cs"
   },
   {
-    "name": "Candyshell Merge Materials",
-    "description": "Farms all of the candyshell materials at max quantity.",
+    "name": "null",
+    "description": "null",
     "tags": [
-      "candyshell-merge",
-      "seasonal",
-      "easter",
-      "materials",
-      "mats"
+      "null"
     ],
-    "path": "Seasonal/Grenwog(Easter)/CandyshellMerge(VariousItems).cs",
-    "size": 3268,
-    "fileName": "CandyshellMerge(VariousItems).cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Grenwog(Easter)/CandyshellMerge(VariousItems).cs"
+    "path": "Seasonal/Grenwog(Easter)/EvolvedBunnyItemsMerge.cs",
+    "size": 3760,
+    "fileName": "EvolvedBunnyItemsMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Grenwog(Easter)/EvolvedBunnyItemsMerge.cs"
+  },
+  {
+    "name": "null",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Seasonal/Grenwog(Easter)/GrenstoryMerge.cs",
+    "size": 3612,
+    "fileName": "GrenstoryMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Grenwog(Easter)/GrenstoryMerge.cs"
+  },
+  {
+    "name": "null",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Seasonal/Grenwog(Easter)/CandyshellMerge.cs",
+    "size": 7689,
+    "fileName": "CandyshellMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Grenwog(Easter)/CandyshellMerge.cs"
   },
   {
     "name": "Eggsplorer Helmets",
@@ -5289,21 +5307,15 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Grenwog(Easter)/BringmethePURPLEEggs!(Armor).cs"
   },
   {
-    "name": "(Water Drop) Water War Merge",
-    "description": "This will complete the Water War story and farm Water Drops.",
+    "name": "null",
+    "description": "null",
     "tags": [
-      "story",
-      "quest",
-      "war",
-      "water-drop",
-      "merge",
-      "seasonal",
-      "solar-new-year"
+      "null"
     ],
-    "path": "Seasonal/SolarNewYear/WaterWarMerge(VariousMaterials).cs",
-    "size": 1697,
-    "fileName": "WaterWarMerge(VariousMaterials).cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/SolarNewYear/WaterWarMerge(VariousMaterials).cs"
+    "path": "Seasonal/SolarNewYear/WaterWarMerge.cs",
+    "size": 4418,
+    "fileName": "WaterWarMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/SolarNewYear/WaterWarMerge.cs"
   },
   {
     "name": "Time Retaliate Merge",
