@@ -60,9 +60,8 @@ public class ElixirGrenwogMerge
                 #endregion
 
                 case "Longevity Egg":
-                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster("elixirgrenwog", "Elixir Grenwog", req.Name, quant, false, false);
+                    Core.HuntMonster("elixirgrenwog", "Elixir Grenwog", req.Name, quant, false);
                     break;
 
             }
