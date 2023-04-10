@@ -1739,6 +1739,10 @@ public class CoreFarms
         ToggleBoost(BoostType.Reputation);
         Core.Logger($"Farming rank {rank}");
 
+        if (Core.FarmClass == "Generic")
+            Core.Logger("FarmClass not set in CBO (options > corebot > tab 2),/n" +
+            "so you'll be getting *very* low Rep Rates without a multi-target class.");
+
         Core.RegisterQuests(5597, 5598, 5599, 5600);
         while (!Bot.ShouldExit && FactionRank("Glacera") < rank)
             Core.KillMonster("icewindwar", "r2", "Left", "*", log: false);
