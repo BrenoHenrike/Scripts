@@ -3726,6 +3726,22 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AprilFools/NeighBeleenMerge.cs"
   },
   {
+    "name": "Meateor Shard Merge",
+    "description": "This script farms all the materials needed for Meateor Shard Merge in meateortown.",
+    "tags": [
+      "meateor",
+      "meateortown",
+      "shard",
+      "seasonal",
+      "april fools",
+      "merge"
+    ],
+    "path": "Seasonal/AprilFools/MeateorShardMerge.cs",
+    "size": 7727,
+    "fileName": "MeateorShardMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AprilFools/MeateorShardMerge.cs"
+  },
+  {
     "name": "Vegetable Token Farm",
     "description": "Farms the max vegetable token quantity.",
     "tags": [
