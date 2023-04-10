@@ -67,13 +67,13 @@ public class EvolvedBunnyItemsMerge
                     break;
 
                 case "Gold-foil Chocolate Bunny":
-                    Core.EquipClass(ClassType.Farm);
+                    Core.EquipClass(ClassType.Solo);
                     Core.HuntMonster("greendragon", "Greenguard Dragon", req.Name, quant, isTemp: false);
 
                     break;
 
                 case "Basketful of Dyed Eggs":
-                    Core.EquipClass(ClassType.Farm);
+                    Core.EquipClass(ClassType.Solo);
                     Core.HuntMonster("trunk", "Greenguard Basilisk", req.Name, quant, isTemp: false);
 
                     break;
