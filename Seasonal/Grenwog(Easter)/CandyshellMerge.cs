@@ -36,9 +36,8 @@ public class CandyshellMerge
 
     public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
-        /* 
-        insert storys here @PUNK3DAF (boji)
-        */
+        if (!Core.isSeasonalMapActive("grenwog"))
+            return;
 
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("grenwog", 1873, findIngredients, buyOnlyThis, buyMode: buyMode);

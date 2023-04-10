@@ -36,6 +36,8 @@ public class EvolvedBunnyItemsMerge
 
     public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
+        if (!Core.isSeasonalMapActive("grenwog"))
+            return;
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("grenwog", 269, findIngredients, buyOnlyThis, buyMode: buyMode);
 
