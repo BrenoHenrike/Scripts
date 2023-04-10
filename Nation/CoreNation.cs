@@ -1515,21 +1515,20 @@ public class CoreNation
 
     public void leeryExchangeGold(int quant = 100000000)
     {
-        if ((!Bot.Player.IsMember) || Bot.Player.Gold >= quant)
+        if (!Core.IsMember || Bot.Player.Gold >= quant)
             return;
 
         Core.AddDrop("Unidentified 13");
         Farm.ToggleBoost(BoostType.Gold);
-
+        Core.RegisterQuests(554);
         while (!Bot.ShouldExit && Bot.Player.Gold < quant)
         {
             FarmUni13(13);
 
-            Core.RegisterQuests(554);
             while (Core.CheckInventory("Unidentified 13"))
                 Core.HuntMonster("underworld", "Undead Legend", "Undead Legend Rune", log: false);
-            Core.CancelRegisteredQuests();
         }
+        Core.CancelRegisteredQuests();
         Farm.ToggleBoost(BoostType.Gold, false);
     }
 
