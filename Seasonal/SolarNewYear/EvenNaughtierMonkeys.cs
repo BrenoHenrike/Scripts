@@ -37,7 +37,7 @@ public class EvenNaughtierMonkeys
         Core.RegisterQuests(6821);
         foreach (string item in rewards)
         {
-            while (!Bot.ShouldExit && (!Core.CheckInventory(item) || !Bot.Inventory.IsMaxStack(item)))
+            while (!Bot.ShouldExit && !Core.CheckInventory(item))
                 Core.HuntMonster("waterwar", "Temple Gibbon", "Clean Rag", 7);
         }
         Core.CancelRegisteredQuests();
