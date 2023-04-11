@@ -32,11 +32,11 @@ public class WaterWar
         //Sploosh Some Solars! 6814
         Story.KillQuest(6814, "waterwar", "Solar Elemental");
 
-        //Curious Monkeys 6815
-        Story.KillQuest(6815, "waterwar", "Solar Elemental");
-
         //Sploosh Some Bigger Solars! 6816
         Story.KillQuest(6816, "waterwar", "Temple Gibbon");
+
+        //Curious Monkeys 6815
+        Story.KillQuest(6815, "waterwar", "Solar Elemental");
 
         //Owwie! 6817
         Story.KillQuest(6817, "waterwar", "Aloe");
