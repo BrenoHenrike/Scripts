@@ -2303,16 +2303,22 @@ public class CoreFarms
                 Core.Logger("Quest not avaible for farm, do ThunderForge saga till Deathpits [The Chaos Eye of Vestis]");
                 return;
             }
-            Core.EquipClass(ClassType.Solo);
             Core.SavedState();
             ToggleBoost(BoostType.Reputation);
             Core.Logger($"Farming rank {rank}");
-
-            Core.RegisterQuests(2733);
-            while (!Bot.ShouldExit && FactionRank("ThunderForge") < rank)
+            if (!Core.IsMember)
             {
-                Core.HuntMonster("deathpits", "Wrathful Vestis", "Vestis's Chaos Eye");
-                Bot.Wait.ForQuestComplete(2733);
+                Core.EquipClass(ClassType.Solo);
+                Core.RegisterQuests(2733,2734);
+                while (!Bot.ShouldExit && FactionRank("ThunderForge") < rank)
+                    Core.HuntMonster("deathpits", "Wrathful Vestis", "Vestis's Chaos Eye");
+            }
+            else
+            {
+                Core.EquipClass(ClassType.Farm);
+                Core.RegisterQuests(2734, 2735, 2736, 2737);
+                while (!Bot.ShouldExit && FactionRank("ThunderForge") < rank)
+                    Core.HuntMonster("deathpits", "Rotting Darkblood");
             }
             Core.CancelRegisteredQuests();
             ToggleBoost(BoostType.Reputation, false);
