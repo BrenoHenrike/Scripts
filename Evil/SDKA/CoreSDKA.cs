@@ -89,11 +89,18 @@ public class CoreSDKA
 
     public void DoAll()
     {
-        if (Core.CheckInventory("Sepulchure's DoomKnight Armor") || !Core.IsMember)
+        if (!Core.IsMember)
         {
-            Core.Logger("Player is either not member, or already owns the armor.");
+            Core.Logger("Player is non-Member, membership is requireed for SDKA");
             return;
         }
+
+        if (Core.CheckInventory("Sepulchure's DoomKnight Armor"))
+        {
+            Core.Logger("Player already owns the armor");
+            return;
+        }
+        
         Core.AddDrop(SDKAItems);
 
         UnlockHardCoreMetals();
