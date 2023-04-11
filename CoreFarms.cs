@@ -1362,13 +1362,14 @@ public class CoreFarms
             Core.EnsureComplete(3052);
         }
 
-        Core.RegisterQuests(3298); //Help Professor Warlic 3050
+        Core.RegisterQuests(3298, 3050);
         while (!Bot.ShouldExit && FactionRank("Elemental Master") < rank)
         {
             Core.HuntMonster("gilead", "Water Elemental", "Water Drop", 5, log: false);
             Core.HuntMonster("gilead", "Fire Elemental", "Flame", 5, log: false);
             Core.HuntMonster("gilead", "Wind Elemental", "Breeze", 5, log: false);
             Core.HuntMonster("gilead", "Earth Elemental", "Stone", 5, log: false);
+            Core.HuntMonster("gilead", "Mana Elemental", "Mana Core", log: false);
         }
         Core.CancelRegisteredQuests();
         ToggleBoost(BoostType.Reputation, false);
@@ -2309,7 +2310,7 @@ public class CoreFarms
             if (!Core.IsMember)
             {
                 Core.EquipClass(ClassType.Solo);
-                Core.RegisterQuests(2733,2734);
+                Core.RegisterQuests(2733, 2734);
                 while (!Bot.ShouldExit && FactionRank("ThunderForge") < rank)
                     Core.HuntMonster("deathpits", "Wrathful Vestis", "Vestis's Chaos Eye");
             }

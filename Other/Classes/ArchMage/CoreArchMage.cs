@@ -340,15 +340,27 @@ public class CoreArchMage
                 Core.GetMapItem(1924, 1, "dragonrune");
                 Core.EnsureComplete(3052);
             }
-
-            Core.RegisterQuests(3298);
+            Core.RegisterQuests(3050);
             while (!Bot.ShouldExit && !Core.CheckInventory(new[] { "Mystic Shards", "Mystic Quills" }, 49))
             {
-                Core.HuntMonster("gilead", "Water Elemental", "Water Drop", 5, log: false);
-                Core.HuntMonster("gilead", "Fire Elemental", "Flame", 5, log: false);
-                Core.HuntMonster("gilead", "Wind Elemental", "Breeze", 5, log: false);
-                Core.HuntMonster("gilead", "Earth Elemental", "Stone", 5, log: false);
+                Core.KillMonster("gilead", "r3", "Left", "Water Elemental", "Water Core", log: false);
+                Core.KillMonster("gilead", "r4", "Left", "Fire Elemental", "Fire Core", log: false);
+                Core.KillMonster("gilead", "r4", "Left", "Wind Elemental", "Air Core", log: false);
+                Core.KillMonster("gilead", "r3", "Left", "Earth Elemental", "Earth Core", log: false);
+                Core.KillMonster("gilead", "r8", "Left", "Mana Elemental", "Mana Core", log: false);
             }
+
+            //Incase they swap it back again:
+
+            // Core.RegisterQuests(3298);
+            // while (!Bot.ShouldExit && !Core.CheckInventory(new[] { "Mystic Shards", "Mystic Quills" }, 49))
+            // {
+            //     Core.HuntMonster("gilead", "Water Elemental", "Water Drop", 5, log: false);
+            //     Core.HuntMonster("gilead", "Fire Elemental", "Flame", 5, log: false);
+            //     Core.HuntMonster("gilead", "Wind Elemental", "Breeze", 5, log: false);
+            //     Core.HuntMonster("gilead", "Earth Elemental", "Stone", 5, log: false);
+            // }
+
             Core.CancelRegisteredQuests();
 
             Core.EquipClass(ClassType.Solo);
