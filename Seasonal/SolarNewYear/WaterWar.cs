@@ -24,7 +24,7 @@ public class WaterWar
 
     public void StoryLine()
     {
-        if (Core.isCompletedBefore(6819))
+        if (Core.isCompletedBefore(6821))
             return;
 
         Story.PreLoad(this);
