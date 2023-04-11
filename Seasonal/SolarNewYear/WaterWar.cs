@@ -48,9 +48,9 @@ public class WaterWar
         Story.KillQuest(6819, "waterwar", "Solar Flare");
 
         // Ow, The Blisters 6820
-        Story.KillQuest(6820, "mapname", "Aloe");
+        Story.KillQuest(6820, "waterwar", "Aloe");
 
         // Even Naughtier Monkeys 6821
-        Story.KillQuest(6821, "mapname", "Temple Gibbon");
+        Story.KillQuest(6821, "waterwar", "Temple Gibbon");
     }
 }
