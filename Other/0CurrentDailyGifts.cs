@@ -127,7 +127,7 @@ public class CurrentDailyGifts
             //Undead Scavenger Clue
             GetGift(AvailableUntil(10, 4), "dragontown", "Chaos Fluffy", "Dracosaster", "Dracotastrophe");
             //O_o Scavenger Clue
-            GetGift(AvailableUntil(17, 4), "andre", "Giant Fist", "Navel Top Hat");
+            GetGift(AvailableUntil(24, 4), "andre", "Giant Fist", "Navel Top Hat");
             #endregion
             //GetGift(AvailableUntil(1, 1), "map", "monster", "");
             //GetGift(Permanent, "map", "monster", "");
