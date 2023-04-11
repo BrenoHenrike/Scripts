@@ -108,10 +108,7 @@ public class CoreFarmerJoe
         new Option<PetChoice>("PetChoice", "Choose Your Pet", "Extra stuff to choose, if you have any suggestions -form in disc, and put it under request. or dm Tato(the retarded one on disc)", PetChoice.None),
     };
 
-    public void ScriptMain(IScriptInterface bot)
-    {
-        Core.RunCore();
-    }
+    public void ScriptMain(IScriptInterface bot) => Core.RunCore();
 
     public void DoAll()
     {
@@ -127,7 +124,7 @@ public class CoreFarmerJoe
 
     public void Level1to30()
     {
-        if (Bot.Player.Level >= 30 || (Core.FarmClass == "Generic" && Core.SoloClass == "Generic"))
+        if (Bot.Player.Level >= 30)
         {
             if (Core.SoloClass == "Generic")
             {
