@@ -13,6 +13,8 @@ tags: null
 //cs_include Scripts/Good/GearOfAwe/CoreAwe.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
 //cs_include Scripts/Evil/SDKA/CoreSDKA.cs
+//cs_inlucde Scripts/Legion/YamiNoRonin/CoreYnR.cs
+//cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
 
 //cs_include Scripts/Dailies/0AllDailies.cs
 //cs_include Scripts/Good/GearOfAwe/CapeOfAwe.cs
@@ -36,6 +38,7 @@ tags: null
 //cs_include Scripts/Other/Weapons/DualChainSawKatanas.cs
 //cs_include Scripts/Other/Weapons/EnchantedVictoryBladeWeapons.cs
 //cs_include Scripts/Hollowborn/HollowbornReapersScythe.cs
+//cs_include Scripts/Legion/SwordMaster.cs
 
 //cs_include Scripts/Story/DragonFableOrigins.cs
 //cs_include Scripts/Story/Glacera.cs
@@ -82,7 +85,7 @@ public class CoreFarmerJoe
     public LordOfOrder LOO = new();
     public ScarletSorceress SS = new();
     public EternalInversionist EI = new();
-
+    public CoreYnR YNR = new();
     //Weapons
     public DualChainSawKatanas DCSK = new();
     public BurningBlade BB = new();
@@ -355,6 +358,7 @@ public class CoreFarmerJoe
 
         Core.Logger("P3 - 3: Burning Blade");
         BB.GetBurningBlade();
+        Core.Equip("Burning Blade");
 
         Core.Logger("P3 - 4: Improving Efficiency, and more Classes");
         Shaman.GetShaman();
@@ -364,7 +368,6 @@ public class CoreFarmerJoe
         SC.GetSC();
         Core.SoloClass = "StoneCrusher";
         #endregion Prepare for Lvl100
-
 
         #region Leveling to 100
         Core.Logger("P4 Leveling to 100");
@@ -381,17 +384,16 @@ public class CoreFarmerJoe
             Outfit();
 
         Scythe.GetHBReapersScythe();
+        YNR.GetYnR();
         //Add more eventualy >.> please?
 
         #endregion Ending & Extras
     }
 
-
-
     public void Outfit()
     {
         //Easy Difficulty Stuff
-        RagsandHat();
+        ShirtandHat();
         ServersAreDown();
         Adv.SmartEnhance(Bot.Player.CurrentClass.Name);
 
@@ -400,7 +402,7 @@ public class CoreFarmerJoe
 
         if (Bot.Config.Get<bool>("EquipOutfit"))
         {
-            Core.Equip(new[] { "Peasant Rags", "Scarecrow Hat", "The Server is Down", "Hollowborn Reaper's Scythe" });
+            Core.Equip(new[] { "NO BOTS Armor", "Scarecrow Hat", "The Server is Down", "Hollowborn Reaper's Scythe" });
             Core.Equip(Bot.Config.Get<PetChoice>("PetChoice").ToString());
         }
 
@@ -429,9 +431,9 @@ public class CoreFarmerJoe
         }
     }
 
-    public void RagsandHat()
+    public void ShirtandHat()
     {
-        if (Core.CheckInventory("Peasant Rags") | Core.CheckInventory("Scarecrow Hat"))
+        if (Core.CheckInventory("NO BOTS Armor") | Core.CheckInventory("Scarecrow Hat"))
             return;
 
         Core.Logger("Farming Shirt & Hat");
@@ -446,8 +448,8 @@ public class CoreFarmerJoe
             Adv.BuyItem("enemyforest", 332, "NO BOTS Armor");
         }
 
-        Bot.Wait.ForPickup("Peasant Rags");
-        Core.Equip("Peasant Rags");
+        Bot.Wait.ForPickup("NO BOTS Armor");
+        Core.Equip("NO BOTS Armor");
         Adv.BuyItem("yulgar", 16, "Scarecrow Hat");
         Bot.Wait.ForPickup("Scarecrow Hat");
         Core.Equip("Scarecrow Hat");
