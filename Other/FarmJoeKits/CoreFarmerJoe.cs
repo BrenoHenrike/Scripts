@@ -115,10 +115,6 @@ public class CoreFarmerJoe
 
     public void DoAll()
     {
-        //Farm and Solo class holders for those doing this on non-starter accs
-        string SoloClassHolder = Core.SoloClass;
-        string FarmClassHolder = Core.FarmClass;
-
         Level1to30();
         Level30to75();
         Level75to100();
@@ -126,20 +122,19 @@ public class CoreFarmerJoe
         Outfit();
         Pets(PetChoice.HotMama);
         Pets(PetChoice.Akriloth);
-
-        //Restore (is this needed?)
-        Core.SoloClass = SoloClassHolder;
-        Core.SoloClass = FarmClassHolder;
     }
 
 
     public void Level1to30()
     {
-        if (Bot.Player.Level >= 30)
+        if (Bot.Player.Level >= 30 || (Core.FarmClass == "Generic" && Core.SoloClass == "Generic"))
         {
-            Core.Logger("Level is 30+, grabbing oracle, ranking it, then continuing");
-            Core.BuyItem("classhalla", 299, "Oracle");
-            Adv.rankUpClass("Oracle");
+            if (Core.SoloClass == "Generic")
+            {
+                Core.Logger("grabbing oracle, ranking it, then continuing");
+                Core.BuyItem("classhalla", 299, "Oracle");
+                Adv.rankUpClass("Oracle");
+            }
             Farm.BladeofAweREP(6, true);
             Core.ToBank("Blade of Awe");
             return;
@@ -164,7 +159,8 @@ public class CoreFarmerJoe
             if (DefaultWep != null && Core.CheckInventory(DefaultWep.Name))
                 Core.SellItem(DefaultWep.Name);
 
-            Core.SoloClass = "Oracle";
+            if (Core.SoloClass == "Generic")
+                Core.SoloClass = "Oracle";
             Core.Equip(Core.SoloClass);
 
             //Temporary Weapon #2
@@ -210,7 +206,6 @@ public class CoreFarmerJoe
             Core.CancelRegisteredQuests();
         }
         InvEn.EnhanceInventory(EnhancementType.Wizard);
-        Adv.rankUpClass("Oracle");
     }
 
 
@@ -240,7 +235,8 @@ public class CoreFarmerJoe
             switch (Level)
             {
                 case 30:
-                    Core.SoloClass = "Oracle";
+                    if (Core.SoloClass == "Generic")
+                        Core.SoloClass = "Oracle";
                     InvEn.EnhanceInventory();
                     MR.GetMR();
                     break;
@@ -248,45 +244,51 @@ public class CoreFarmerJoe
                 case 45:
                     while (!Bot.ShouldExit && Bot.Player.Level < Level || !Core.CheckInventory("Eternal Inversionist"))
                     {
-                        Core.SoloClass = "Oracle";
-                        Core.FarmClass = "Master Ranger";
+                        if (Core.SoloClass == "Generic")
+                            Core.SoloClass = "Oracle";
+                        if (Core.FarmClass == "Generic")
+                            Core.FarmClass = "Master Ranger";
 
-                        Farm.IcestormArena(Level);
+                        Farm.Experience(Level);
                         InvEn.EnhanceInventory();
                         EI.GetEI();
+                        if (Core.FarmClass == "Generic")
+                            Core.FarmClass = "Eternal Inversionist";
                     }
                     break;
 
                 case 50:
+                    if (Core.FarmClass == "Generic")
+                        Core.FarmClass = "Eternal Inversionist";
+
+                    DS.GetDSS();
+                    if (Core.FarmClass == "Generic")
+                        Core.SoloClass = "DragonSoul Shinobi";
+                    break;
+
                 case 55:
                 case 60:
-                    while (!Bot.ShouldExit && Bot.Player.Level < Level || !Core.CheckInventory(new[] { "Scarlet Sorceress", "DragonSoul Shinobi" }))
+                    while (!Bot.ShouldExit && Bot.Player.Level < Level)
                     {
-                        if (Core.CheckInventory("DragonSoul Shinobi"))
+                        if (Core.SoloClass == "Generic")
                             Core.SoloClass = "DragonSoul Shinobi";
-                        else
-                            Core.SoloClass = "Oracle";
-
-                        if (Core.CheckInventory("Scarlet Sorceress"))
-                            Core.FarmClass = "Scarlet Sorceress";
-                        else
+                        if (Core.FarmClass == "Generic")
                             Core.FarmClass = "Eternal Inversionist";
 
-                        Farm.IcestormArena(Level);
+                        Farm.Experience(Level);
                         InvEn.EnhanceInventory();
-                        SS.GetSSorc();
-                        DS.GetDSS();
                     }
                     break;
 
                 case 65:
-
                     while (!Bot.ShouldExit && Bot.Player.Level < Level || !Core.CheckInventory("ArchPaladin"))
                     {
-                        Core.SoloClass = "DragonSoul Shinobi";
-                        Core.FarmClass = "Scarlet Sorceress";
+                        if (Core.SoloClass == "Generic")
+                            Core.SoloClass = "DragonSoul Shinobi";
+                        if (Core.FarmClass == "Generic")
+                            Core.FarmClass = "Eternal Inversionist";
 
-                        Farm.IcestormArena(Level);
+                        Farm.Experience(Level);
                         InvEn.EnhanceInventory();
                         AP.GetAP();
                     }
@@ -297,10 +299,12 @@ public class CoreFarmerJoe
                 case 75:
                     while (!Bot.ShouldExit && Bot.Player.Level < Level)
                     {
-                        Core.SoloClass = "ArchPaladin";
-                        Core.FarmClass = "Scarlet Sorceress";
+                        if (Core.SoloClass == "Generic")
+                            Core.SoloClass = "ArchPaladin";
+                        if (Core.FarmClass == "Generic")
+                            Core.FarmClass = "Eternal Inversionist";
 
-                        Farm.IcestormArena(Level);
+                        Farm.Experience(Level);
                         InvEn.EnhanceInventory();
                     }
                     break;
@@ -332,19 +336,21 @@ public class CoreFarmerJoe
             Adv.rankUpClass("Dragon of Time");
         }
 
-        Core.SoloClass = "ArchPaladin";
-        Core.FarmClass = "Eternal Inversionist";
+        if (Core.SoloClass == "Generic")
+            Core.SoloClass = "ArchPaladin";
+        if (Core.FarmClass == "Generic")
+            Core.FarmClass = "Eternal Inversionist";
 
 
         //P2 Chaos Shenanagins
         Core.Logger("P2: Chaos Shenanagins");
 
-        if (!Core.isCompletedBefore(3765))
-            LOC.Complete13LOC();
-        Farm.ChaosREP();
-        Adv.BuyItem("confrontation", 891, "Chaos Slayer Berserker");
-        Adv.rankUpClass("Chaos Slayer Berserker");
-        Core.Equip("Chaos Slayer Berserker");
+        // if (!Core.isCompletedBefore(3765))
+        LOC.Complete13LOC();
+        // Farm.ChaosREP();
+        // Adv.BuyItem("confrontation", 891, "Chaos Slayer Berserker");
+        // Adv.rankUpClass("Chaos Slayer Berserker");
+        // Core.Equip("Chaos Slayer Berserker");
 
         //Step 2 Solo Class:
         Core.Logger("P3: Solo Classes & Weapon");
@@ -367,11 +373,14 @@ public class CoreFarmerJoe
 
         Core.Logger("P3 - 4: Improving Efficiency, and more Classes");
         Shaman.GetShaman();
-        Core.FarmClass = "Shaman";
+        if (Core.FarmClass == "Generic")
+            Core.FarmClass = "Shaman";
         GB.GetGB();
-        Core.SoloClass = "Glacial Berserker";
+        if (Core.SoloClass == "Generic")
+            Core.SoloClass = "Glacial Berserker";
         SC.GetSC();
-        Core.SoloClass = "StoneCrusher";
+        if (Core.SoloClass == "Generic")
+            Core.SoloClass = "StoneCrusher";
         #endregion Prepare for Lvl100
         InvEn.EnhanceInventory();
 
@@ -386,6 +395,11 @@ public class CoreFarmerJoe
     public void EndGame()
     {
         #region Ending & Extras 
+
+        if (Core.SoloClass == "Generic")
+            Core.SoloClass = "StoneCrusher";
+        if (Core.FarmClass == "Generic")
+            Core.FarmClass = "Shaman";
 
         if (Bot.Config.Get<bool>("OutFit"))
             Outfit();
