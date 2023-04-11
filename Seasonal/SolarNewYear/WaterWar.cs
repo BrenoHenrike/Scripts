@@ -18,7 +18,7 @@ public class WaterWar
         Core.SetOptions();
 
         StoryLine();
-        
+
         Core.SetOptions(false);
     }
 
@@ -33,10 +33,10 @@ public class WaterWar
         Story.KillQuest(6814, "waterwar", "Solar Elemental");
 
         //Sploosh Some Bigger Solars! 6816
-        Story.KillQuest(6816, "waterwar", "Temple Gibbon");
+        Story.KillQuest(6816, "waterwar", "Solar Elemental");
 
         //Curious Monkeys 6815
-        Story.KillQuest(6815, "waterwar", "Solar Elemental");
+        Story.KillQuest(6815, "waterwar", "Temple Gibbon");
 
         //Owwie! 6817
         Story.KillQuest(6817, "waterwar", "Aloe");
