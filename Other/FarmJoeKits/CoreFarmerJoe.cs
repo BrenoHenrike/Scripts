@@ -324,22 +324,25 @@ public class CoreFarmerJoe
         if (!Core.CheckInventory("Dragon of Time"))
         {
             if (!Core.CheckInventory(new[] { "Healer", "Healer (Rare)" }))
-                Adv.BuyItem("classhalla", 176, "Healer");
-            if (Core.CheckInventory("Healer (Rare)"))
-                Adv.rankUpClass("Healer (Rare)");
-            else Adv.rankUpClass("Healer");
+            {
+                if (!Core.CheckInventory("Healer (Rare)"))
+                    Adv.BuyItem("classhalla", 176, "Healer");
+                Adv.rankUpClass(Core.CheckInventory("Healer (Rare)") ? "Healer (Rare)" : "Healer");
+            }
+            Adv.rankUpClass("Dragon of Time");
         }
 
         Core.SoloClass = "ArchPaladin";
         Core.FarmClass = "Eternal Inversionist";
 
-        Core.Equip(Core.SoloClass);
 
         //P2 Chaos Shenanagins
         Core.Logger("P2: Chaos Shenanagins");
-        LOC.Complete13LOC();
+
+        if (!Core.isCompletedBefore(3765))
+            LOC.Complete13LOC();
         Farm.ChaosREP();
-        Adv.BuyItem("confrontation", 891, "Chaos Slayer Berserker", shopItemID: 15402);
+        Adv.BuyItem("confrontation", 891, "Chaos Slayer Berserker");
         Adv.rankUpClass("Chaos Slayer Berserker");
         Core.Equip("Chaos Slayer Berserker");
 
