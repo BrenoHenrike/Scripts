@@ -13,6 +13,7 @@ tags: null
 //cs_include Scripts/Good/GearOfAwe/CoreAwe.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
 //cs_include Scripts/Evil/SDKA/CoreSDKA.cs
+//cs_include Scripts/Legion/CoreLegion.cs
 //cs_include Scripts/Legion/YamiNoRonin/CoreYnR.cs
 //cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
 

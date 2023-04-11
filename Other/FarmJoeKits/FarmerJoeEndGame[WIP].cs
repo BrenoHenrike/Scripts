@@ -46,6 +46,10 @@ tags: null
 //cs_include Scripts/Story/Friendship.cs
 //cs_include Scripts/Other/Classes/REP-based/MasterRanger.cs
 //cs_include Scripts/Evil/SDKA/CoreSDKA.cs
+//cs_include Scripts/Legion/SwordMaster.cs
+//cs_include Scripts/Legion/YamiNoRonin/CoreYnR.cs
+//cs_include Scripts/Legion/CoreLegion.cs
+//cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
 using Skua.Core.Interfaces;
 
 public class FarmerJoeEndGame
