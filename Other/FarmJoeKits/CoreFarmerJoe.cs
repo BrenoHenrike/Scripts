@@ -226,12 +226,11 @@ public class CoreFarmerJoe
         DCSK.GetWep();
         Core.ToBank("Blade of Awe", "Dual ChainSaw Katanas", "Battle Oracle Battlestaff");
         Core.SellItem("Default Staff");
-
         #endregion Obtain Boost Weapon
 
         #region Leve30 to 75
         Core.Logger("Level to 75");
-        Adv.BestGear(GearBoost.dmgAll);
+        Adv.BestGear(GearBoost.exp);
         Farm.ToggleBoost(BoostType.Experience);
         foreach (int Level in new int[] { 30, 45, 50, 55, 60, 65, 70, 75 })
         {
@@ -354,11 +353,13 @@ public class CoreFarmerJoe
         Adv.BuyItem("museum", 631, "Awethur's Accoutrements");
         Core.Equip("Awethur's Accoutrements");
         COA.GetCoA();
+        Adv.BestGear(GearBoost.dmgAll);
         InvEn.EnhanceInventory();
 
         Core.Logger("P3 - 3: Burning Blade");
         BB.GetBurningBlade();
         Core.Equip("Burning Blade");
+        Adv.BestGear(GearBoost.dmgAll);
 
         Core.Logger("P3 - 4: Improving Efficiency, and more Classes");
         Shaman.GetShaman();
@@ -368,11 +369,13 @@ public class CoreFarmerJoe
         SC.GetSC();
         Core.SoloClass = "StoneCrusher";
         #endregion Prepare for Lvl100
+        InvEn.EnhanceInventory();
 
         #region Leveling to 100
         Core.Logger("P4 Leveling to 100");
-        InvEn.EnhanceInventory();
+        Adv.BestGear(GearBoost.dmgAll);
         Farm.IcestormArena();
+        InvEn.EnhanceInventory();
         #endregion Leveling to 100}
     }
 
