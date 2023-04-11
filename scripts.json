@@ -3707,7 +3707,7 @@
       "story"
     ],
     "path": "Seasonal/AprilFools/3DBattleon.cs",
-    "size": 3059,
+    "size": 2839,
     "fileName": "3DBattleon.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AprilFools/3DBattleon.cs"
   },
@@ -5206,6 +5206,20 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Grenwog(Easter)/BringmetheBLUEEggs!(Weapons).cs"
   },
   {
+    "name": "Grenstory",
+    "description": "This script will complete the questline in grenstory.",
+    "tags": [
+      "grenstory",
+      "seasonal",
+      "grenwog",
+      "easter"
+    ],
+    "path": "Seasonal/Grenwog(Easter)/Grenstory.cs",
+    "size": 2193,
+    "fileName": "Grenstory.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Grenwog(Easter)/Grenstory.cs"
+  },
+  {
     "name": "EvolvedBunnyItemsMerge",
     "description": "Farms materials and buys the items from the EvolvedBunnyItems mergeshop",
     "tags": [
@@ -5347,7 +5361,7 @@
       "null"
     ],
     "path": "Seasonal/SolarNewYear/WaterWar.cs",
-    "size": 1337,
+    "size": 1331,
     "fileName": "WaterWar.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/SolarNewYear/WaterWar.cs"
   },
