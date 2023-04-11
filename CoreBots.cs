@@ -2524,6 +2524,10 @@ public class CoreBots
                 SimpleQuestBypass((159, 10));
                 break;
 
+            case "manacradle":
+                SimpleQuestBypass((488, 20));
+                break;
+
             case "stonewooddeep":
                 if (Bot.Player.Cell != cell && cell != "r2")
                 {
