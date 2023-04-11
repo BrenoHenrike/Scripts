@@ -13,7 +13,7 @@ tags: null
 //cs_include Scripts/Good/GearOfAwe/CoreAwe.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
 //cs_include Scripts/Evil/SDKA/CoreSDKA.cs
-//cs_inlucde Scripts/Legion/YamiNoRonin/CoreYnR.cs
+//cs_include Scripts/Legion/YamiNoRonin/CoreYnR.cs
 //cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
 
 //cs_include Scripts/Dailies/0AllDailies.cs
@@ -74,6 +74,7 @@ public class CoreFarmerJoe
     public CoreDailies Daily = new();
     public CoreVHL VHL = new CoreVHL();
     public CoreNation Nation = new();
+    public CoreYnR YNR = new();
 
     //Classes
     public MasterRanger MR = new();
@@ -85,7 +86,6 @@ public class CoreFarmerJoe
     public LordOfOrder LOO = new();
     public ScarletSorceress SS = new();
     public EternalInversionist EI = new();
-    public CoreYnR YNR = new();
     //Weapons
     public DualChainSawKatanas DCSK = new();
     public BurningBlade BB = new();
