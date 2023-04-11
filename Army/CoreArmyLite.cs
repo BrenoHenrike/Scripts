@@ -620,7 +620,8 @@ public class CoreArmyLite
             3484,   // towerofdoom
             3799,   // shadowattack
             4616,   // mummies
-            8107    // downbelow
+            8107,    // downbelow
+            9126    // manacradle
         };
         Bot.Quests.Load(bypasses);
         foreach (int questId in bypasses)
