@@ -1647,14 +1647,17 @@ public class CoreBots
         if (item != null && (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
             return;
 
+        DebugLogger(this);
         Join("escherion", "Boss", "Left", publicRoom: publicRoom);
 
         if (item == null)
         {
+            DebugLogger(this);
             if (log)
                 Logger("Killing Escherion");
             while (!Bot.ShouldExit && IsMonsterAlive("Escherion"))
             {
+                DebugLogger(this);
                 if (IsMonsterAlive("Staff of Inversion"))
                     Bot.Kill.Monster("Staff of Inversion");
                 Bot.Combat.Attack("Escherion");
@@ -1669,11 +1672,19 @@ public class CoreBots
                 Logger($"Killing Escherion for {item} ({dynamicQuant(item, isTemp)}/{quant}) [Temp = {isTemp}]");
             while (!Bot.ShouldExit && !CheckInventory(item, quant))
             {
+                while (!Bot.ShouldExit && Bot.Player.Cell != "Boss")
+                {
+                    DebugLogger(this);
+                    Jump("Boss", "Left");
+                    Bot.Sleep(ActionDelay);
+                }
+                DebugLogger(this);
                 if (IsMonsterAlive("Staff of Inversion"))
                     Bot.Kill.Monster("Staff of Inversion");
                 Bot.Combat.Attack("Escherion");
                 Bot.Sleep(1000);
             }
+            DebugLogger(this);
         }
     }
 

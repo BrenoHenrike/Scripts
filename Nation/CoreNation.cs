@@ -523,7 +523,7 @@ public class CoreNation
     {
         if (Core.CheckInventory(item, quant))
             return;
-
+        // Core.DL_Enable();
         /*Core.AddDrop("Wicked Edge Cape", "ArchFiend's Spikes", "ArchFiend's Vampragon",
         * "Unidentified 14", "Unidentified 15", "Unidentified 16", "Unidentified 17", 
         * "Unidentified 18", "Unidentified 2", "Unidentified 1", "Unidentified 12", 
@@ -567,23 +567,28 @@ public class CoreNation
 
             while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
             {
+                Core.DebugLogger(this);
                 if (returnPolicyDuringSupplies && !Core.CheckInventory("Dark Makai Rune"))
+                {
+                    Core.DebugLogger(this);
+                    Core.Logger("returnPolicyDuringSupplies part");
                     Core.HuntMonster(Core.IsMember ? "nulgath" : "evilmarsh", "Dark Makai", "Dark Makai Rune");
-
+                }
+                Core.DebugLogger(this);
                 Core.KillEscherion("Relic of Chaos", publicRoom: true, log: false);
-                Bot.Drops.Pickup(item);
+                Bot.Wait.ForDrop(item, 40);
 
                 if (item != "Voucher of Nulgath" && sellMemVoucher && Core.CheckInventory("Voucher of Nulgath") && !voucherNeeded)
                 {
+                    Core.DebugLogger(this);
                     Bot.Drops.Pickup("Voucher of Nulgath");
                     Core.SellItem("Voucher of Nulgath", all: true);
+                    Bot.Wait.ForItemSell(40);
                 }
-
-                if (Bot.Player.Cell != "Boss")
-                    Core.Jump("Boss", "Left");
 
                 if (Bot.Inventory.IsMaxStack(item))
                 {
+                    Core.DebugLogger(this);
                     Core.Logger($"Max-Stack for {item} has been reached ({Bot.Inventory.GetItem(item)!.MaxStack})");
                     break;
                 }
