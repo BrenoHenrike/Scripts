@@ -32,6 +32,7 @@ tags: null
 //cs_include Scripts/Other/Classes/ScarletSorceress.cs
 //cs_include Scripts/Other/Classes/BloodSorceress.cs
 //cs_include Scripts/Other/Classes/DragonShinobi.cs
+//cs_include Scripts/Other\MergeShops\SynderesMerge.cs
 //cs_include Scripts/Good/ArchPaladin.cs
 //cs_include Scripts/Dailies/LordOfOrder.cs
 
@@ -64,6 +65,7 @@ public class CoreFarmerJoe
     public FreeBoosts Boosts = new();
     public FarmAllDailies FAD = new();
     public InventoryEnhancer InvEn = new();
+    public SynderesMerge SM = new();
 
     //Cores
     public CoreBots Core => CoreBots.Instance;
@@ -455,22 +457,8 @@ public class CoreFarmerJoe
             return;
 
         Core.Logger("Farming Shirt & Hat");
-
-        if (!Core.CheckInventory("NO BOTS Armor"))
-        {
-            Bot.Drops.Add("Synderes' Souvenir");
-            Core.EnsureAccept(4247);
-            Core.KillMonster("enemyforest", "Enter", "Spawn", "*", "Forest Denien Slain", 5);
-            Core.EnsureComplete(4247);
-            Bot.Wait.ForDrop("Synderes' Souvenir", 40);
-            Adv.BuyItem("enemyforest", 332, "NO BOTS Armor");
-        }
-
-        Bot.Wait.ForPickup("NO BOTS Armor");
-        Core.Equip("NO BOTS Armor");
+        SM.BuyAllMerge(buyOnlyThis: "NO BOTS Armor");
         Adv.BuyItem("yulgar", 16, "Scarecrow Hat");
-        Bot.Wait.ForPickup("Scarecrow Hat");
-        Core.Equip("Scarecrow Hat");
     }
 
     public void ServersAreDown()
