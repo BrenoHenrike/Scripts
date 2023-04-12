@@ -123,8 +123,8 @@ public class CoreNSOD
         if (Bot.Config.Get<bool>("GetSDKA") && Core.IsMember)
             SDKA.DoAll();
 
-        GatheringUnstableEssences(quant);
         CommandingShadowEssences(quant);
+        GatheringUnstableEssences(quant);
         RetrieveVoidAuras(quant);
     }
 
