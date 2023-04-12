@@ -871,7 +871,6 @@ public class CoreFarms
         Core.SavedState();
         ToggleBoost(BoostType.Reputation);
         Core.Logger($"Farming rank {rank}");
-        Bot.Quests.UpdateQuest(4614);
 
         Core.RegisterQuests(3757);
         while (!Bot.ShouldExit && FactionRank("BeastMaster") < rank)
@@ -923,7 +922,6 @@ public class CoreFarms
         }
         Core.CancelRegisteredQuests();
 
-        Bot.Quests.UpdateQuest(3484);
         Core.RegisterQuests(8736);
         while (!Bot.ShouldExit && FactionRank("Blacksmithing") < rank && !UseGold)
         {
@@ -1207,7 +1205,6 @@ public class CoreFarms
         if (FactionRank("Diabolical") >= rank)
             return;
 
-        Bot.Quests.UpdateQuest(3428);
         if (!Bot.Quests.IsUnlocked(7877))
         {
             Core.EnsureAccept(7875, 7876);
@@ -2420,7 +2417,6 @@ public class CoreFarms
             ToggleBoost(BoostType.Reputation);
             Core.SavedState();
             Core.Logger($"Farming rank {rank}");
-            Bot.Quests.UpdateQuest(488);
 
             Core.RegisterQuests(383);
             while (!Bot.ShouldExit && FactionRank("Yokai") < rank)

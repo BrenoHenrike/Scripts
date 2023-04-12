@@ -130,7 +130,6 @@ public class CyseroItemUpgrade
 
         Core.AddDrop("Toxic Plague Spear");
 
-        Bot.Quests.UpdateQuest(3484);
         while (!Bot.ShouldExit && !Core.CheckInventory("Toxic Plague Spear"))
         {
             //Upgrade the Plague Spear 7064

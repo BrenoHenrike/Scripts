@@ -38,7 +38,6 @@ public class SnowballAmberarms
         Core.AddDrop(Loot);
         Core.EquipClass(ClassType.Solo);
         Core.RegisterQuests(3508);
-        Bot.Quests.UpdateQuest(3484);
         while (!Bot.ShouldExit && (!Core.CheckInventory(Loot)))
         {
             Core.HuntMonster("bosschallenge", "Mutated Void Dragon", "Dread Talon", isTemp: false);

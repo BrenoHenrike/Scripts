@@ -2438,9 +2438,29 @@ public class CoreBots
             default:
                 JumpWait();
                 tryJoin();
-                break;
+                break;                
+
+            // case "map":
+            //     SimpleQuestBypass((000, 000));
+            //     break;
 
             #region Simple Quest Bypasses
+
+            case "twilightedge":
+                SimpleQuestBypass((156, 1));
+                break;
+
+            case "dragonkoiz":
+                SimpleQuestBypass((25, 22));
+                break;
+
+            case "xancave":
+                SimpleQuestBypass((53, 35));
+                break;
+
+            case "shadowgrove":
+                SimpleQuestBypass((315, 7));
+                break;
 
             case "stalagbite":
                 SimpleQuestBypass((22, 35));
@@ -2533,6 +2553,10 @@ public class CoreBots
             case "towerofdoom9":
             case "towerofdoom10":
                 SimpleQuestBypass((159, 10));
+                break;
+
+            case "wolfwing":
+                SimpleQuestBypass((26, 23));
                 break;
 
             case "manacradle":

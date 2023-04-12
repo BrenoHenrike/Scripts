@@ -157,7 +157,6 @@ public class ArmyLR
         Core.AddDrop(LF1);
 
         Core.FarmingLogger("Revenant's Spellscroll", quant);
-        Bot.Quests.UpdateQuest(2061);
         Core.RegisterQuests(6897);
         while (!Bot.ShouldExit && !Core.CheckInventory("Revenant's Spellscroll", quant))
         {

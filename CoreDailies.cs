@@ -373,7 +373,6 @@ public class CoreDailies
             Core.Logger("You already own Pryomancer, Skipped");
             return;
         }
-        Bot.Quests.UpdateQuest(2157);
         if (Core.IsMember && CheckDaily(2210, true, "Shurpu Blaze Token"))
         {
             Core.EquipClass(ClassType.Solo);
