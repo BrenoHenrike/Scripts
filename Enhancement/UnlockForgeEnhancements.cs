@@ -303,7 +303,6 @@ public class UnlockForgeEnhancements
         Core.KillEscherion("1st Lord Of Chaos Helm");
         Core.KillVath("Chaos Dragonlord Helm");
         Core.HuntMonster("kitsune", "Kitsune", "Chaos Shogun Helmet", isTemp: false);
-        Bot.Quests.UpdateQuest(597);
         Core.HuntMonster("wolfwing", "Wolfwing", "Wolfwing Mask", isTemp: false);
 
         Core.EnsureComplete(8738);
@@ -431,7 +430,6 @@ public class UnlockForgeEnhancements
             Core.EquipClass(ClassType.Solo);
             Core.AddDrop("Eternity Blade");
             Core.EnsureAccept(3485);
-            Bot.Quests.UpdateQuest(3484);
             Core.HuntMonster("towerofdoom10", "Slugbutter", "Eternity Blade");
             Core.EnsureComplete(3485);
             Bot.Wait.ForPickup(23689);
@@ -561,7 +559,6 @@ public class UnlockForgeEnhancements
             Core.Logger("only items i cna get you are these: \"Malgor the ShadowLord\", and \"ShadowLord's Helm\".");
             SoW.CompleteCoreSoW();
             MAS.GetSet();
-            Bot.Quests.UpdateQuest(6999);
             Core.HuntMonster("shadowgrove", "Titan Shadow Dragonlord", "ShadowFlame Dragon Blade", isTemp: false);
 
             if (Core.CheckInventory("Yami no Ronin") || Core.CheckInventory("Dragon of Time"))
@@ -715,7 +712,6 @@ public class UnlockForgeEnhancements
             return;
 
         Core.EnsureAccept(8822);
-        Bot.Quests.UpdateQuest(3008);
         Core.AddDrop("Night Mare Scythe");
         Core.EquipClass(ClassType.Solo);
         while (!Bot.ShouldExit && !Core.CheckInventory("Night Mare Scythe"))
@@ -776,11 +772,12 @@ public class UnlockForgeEnhancements
         if (Core.isCompletedBefore(8824))
             return;
 
+        Adv.GearStore();
         Core.EnsureAccept(8824);
         Core.BuyItem("Classhalla", 172, "Rogue");
         Adv.rankUpClass("Rogue");
+        Adv.GearStore(true);
         Core.EquipClass(ClassType.Farm);
-        Bot.Quests.UpdateQuest(3484);
         Core.HuntMonster("Towerofdoom10", "*", "Ethereal Essence", 250, isTemp: false);
         Core.EnsureComplete(8824);
         Core.Logger("Enhancement Unlocked: Vim");
@@ -793,11 +790,12 @@ public class UnlockForgeEnhancements
         if (Core.isCompletedBefore(8825))
             return;
 
+        Adv.GearStore();
         Core.EnsureAccept(8825);
         Core.BuyItem("Classhalla", 176, "Healer");
         Adv.rankUpClass("Healer");
+        Adv.GearStore(true);
         Core.EquipClass(ClassType.Farm);
-        Bot.Quests.UpdateQuest(3484);
         Core.HuntMonster("Towerofdoom10", "*", "Ethereal Essence", 250, isTemp: false);
         Core.EnsureComplete(8825);
         Core.Logger("Enhancement Unlocked: Examen");
@@ -809,12 +807,12 @@ public class UnlockForgeEnhancements
 
         if (Core.isCompletedBefore(8826))
             return;
-
+        Adv.GearStore();
         Core.EnsureAccept(8826);
         Core.BuyItem("Classhalla", 170, "Warrior");
         Adv.rankUpClass("Warrior");
+        Adv.GearStore(true);
         Core.EquipClass(ClassType.Farm);
-        Bot.Quests.UpdateQuest(3484);
         Core.HuntMonster("Towerofdoom10", "*", "Ethereal Essence", 650, isTemp: false);
         Core.EnsureComplete(8826);
         Core.Logger("Enhancement Unlocked: Anima");
@@ -827,11 +825,12 @@ public class UnlockForgeEnhancements
         if (Core.isCompletedBefore(8827))
             return;
 
+        Adv.GearStore();
         Core.EnsureAccept(8827);
         Core.BuyItem("Classhalla", 174, "Mage");
         Adv.rankUpClass("Mage");
+        Adv.GearStore(true);
         Core.EquipClass(ClassType.Farm);
-        Bot.Quests.UpdateQuest(3484);
         Core.HuntMonster("Towerofdoom10", "*", "Ethereal Essence", 650, isTemp: false);
         Core.EnsureComplete(8827);
         Core.Logger("Enhancement Unlocked: Pneuma");
