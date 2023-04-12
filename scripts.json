@@ -6,7 +6,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 144541,
+    "size": 145159,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -17,7 +17,7 @@
       "null"
     ],
     "path": "CoreDailies.cs",
-    "size": 41181,
+    "size": 41143,
     "fileName": "CoreDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreDailies.cs"
   },
@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 93968,
+    "size": 93813,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -537,7 +537,7 @@
       "drops"
     ],
     "path": "Other/SnowballAmberarms.cs",
-    "size": 1291,
+    "size": 1253,
     "fileName": "SnowballAmberarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/SnowballAmberarms.cs"
   },
@@ -1416,7 +1416,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 62146,
+    "size": 62104,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -7486,7 +7486,7 @@
       "null"
     ],
     "path": "Other/MergeShops/YulgarsDualWieldMerge.cs",
-    "size": 35216,
+    "size": 35166,
     "fileName": "YulgarsDualWieldMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/YulgarsDualWieldMerge.cs"
   },
@@ -7813,7 +7813,7 @@
       "null"
     ],
     "path": "Other/Weapons/CyseroItemUpgradeQuests.cs",
-    "size": 10293,
+    "size": 10255,
     "fileName": "CyseroItemUpgradeQuests.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Weapons/CyseroItemUpgradeQuests.cs"
   },
@@ -9088,7 +9088,7 @@
       "fealty"
     ],
     "path": "Army/ArmyLegion/ArmyLRFull.cs",
-    "size": 16834,
+    "size": 16796,
     "fileName": "ArmyLRFull.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyLegion/ArmyLRFull.cs"
   },
