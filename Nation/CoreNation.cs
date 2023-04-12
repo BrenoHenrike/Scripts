@@ -461,7 +461,7 @@ public class CoreNation
     /// </summary>
     /// <param name=item>Desired item name</param>
     /// <param name="quant">Desired item quantity</param>
-    public void NulgathLarvae(string? item = null, int quant = 1)
+    public void NulgathLarvae(string item = null, int quant = 1)
     {
         // Core.DL_Enable();
         if (item != null && Core.CheckInventory(item, quant))
@@ -470,48 +470,41 @@ public class CoreNation
         Bot.Drops.Add(bagDrops);
         Bot.Drops.Add("Mana Energy for Nulgath");
 
-        Bot.Quests.UpdateQuest(32, 35);
-
         Core.DebugLogger(this);
-        if (item == null)
         {
             Core.DebugLogger(this);
-            Quest questData = Core.EnsureLoad(2566);
-            foreach (string Drop in bagDrops)
+            if (item == null)
             {
-                Core.DebugLogger(this);
-                ItemBase? drop = questData.Rewards.Find(x => x.Name == Drop);
-                if (drop == null)
-                    continue;
-                Core.FarmingLogger(Drop, drop.MaxStack);
+                foreach (string Drop in bagDrops)
+                {
+                    ItemBase drop = Core.EnsureLoad(2566).Rewards.Find(x => x.Name == Drop);
+                    Core.FarmingLogger(Drop, drop.MaxStack);
+                    Core.RegisterQuests(2566);
+                    while (!Bot.ShouldExit && !Core.CheckInventory(drop.Name, drop.MaxStack))
+                    {
+                        Core.EquipClass(ClassType.Solo);
+                        Core.HuntMonster("elemental", "Mana Golem", "Mana Energy for Nulgath", isTemp: false, log: false);
+                        Core.EquipClass(ClassType.Farm);
+                        Core.HuntMonster("elemental", "Mana Falcon", "Charged Mana Energy for Nulgath", 5, log: false);
+                    }
+                    Core.CancelRegisteredQuests();
+                }
+            }
+            else
+            {
+                Core.FarmingLogger(item, quant);
                 Core.RegisterQuests(2566);
-                while (!Bot.ShouldExit && !Bot.Inventory.IsMaxStack(drop.ID))
+                while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
                 {
                     Core.EquipClass(ClassType.Solo);
                     Core.HuntMonster("elemental", "Mana Golem", "Mana Energy for Nulgath", isTemp: false, log: false);
                     Core.EquipClass(ClassType.Farm);
                     Core.HuntMonster("elemental", "Mana Falcon", "Charged Mana Energy for Nulgath", 5, log: false);
-                    Bot.Wait.ForPickup("*");
+                    Bot.Wait.ForDrop(item, 40);
                 }
                 Core.CancelRegisteredQuests();
             }
         }
-        else
-        {
-            Core.DebugLogger(this);
-            Core.FarmingLogger(item, quant);
-            while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
-            {
-                Core.EnsureAccept(2566);
-                Core.EquipClass(ClassType.Solo);
-                Core.HuntMonster("elemental", "Mana Golem", "Mana Energy for Nulgath", isTemp: false, log: false);
-                Core.EquipClass(ClassType.Farm);
-                Core.HuntMonster("elemental", "Mana Falcon", "Charged Mana Energy for Nulgath", 5, log: false);
-                Core.EnsureCompleteMulti(2566);
-                Bot.Wait.ForPickup("*");
-            }
-        }
-
     }
 
     /// <summary>
