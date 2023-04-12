@@ -85,6 +85,10 @@ public class CaptainLoresQuests
         Story.KillQuest(3473, "totengeld", "Horc Minion");
 
         // Defeat CEO Totengeld 3474
-        Story.KillQuest(3474, "totengeld", "Mecha Totengeld");
+        if (!Core.isCompletedBefore(3474))
+        {
+            Core.HuntMonster("totengeld", "CEO Totengeld", log: false);
+            Story.KillQuest(3474, "totengeld", "Mecha Totengeld");
+        }
     }
 }
