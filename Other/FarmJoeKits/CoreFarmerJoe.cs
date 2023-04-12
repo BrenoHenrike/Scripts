@@ -32,7 +32,7 @@ tags: null
 //cs_include Scripts/Other/Classes/ScarletSorceress.cs
 //cs_include Scripts/Other/Classes/BloodSorceress.cs
 //cs_include Scripts/Other/Classes/DragonShinobi.cs
-//cs_include Scripts/Other\MergeShops\SynderesMerge.cs
+//cs_include Scripts/Other/MergeShops/SynderesMerge.cs
 //cs_include Scripts/Good/ArchPaladin.cs
 //cs_include Scripts/Dailies/LordOfOrder.cs
 

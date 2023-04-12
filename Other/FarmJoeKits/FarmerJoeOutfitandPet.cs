@@ -50,6 +50,7 @@ tags: null
 //cs_include Scripts/Legion/YamiNoRonin/CoreYnR.cs
 //cs_include Scripts/Legion/CoreLegion.cs
 //cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
+//cs_include Scripts/Other/MergeShops/SynderesMerge.cs
 using Skua.Core.Interfaces;
 
 public class FarmerJoeOutfitandPet
