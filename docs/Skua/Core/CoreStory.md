@@ -24,7 +24,7 @@ As with any [property](#properties) or [method](#methods) from the `CoreStory.cs
                 <span style="color:lightgray">
                     &emsp;&emsp;bool&nbsp;GetReward&nbsp;=&nbsp;true,<br>
                     &emsp;&emsp;string&nbsp;Reward&nbsp;=&nbsp;"All",<br>
-                    &emsp;bool&nbsp;AutoCompleteQuest&nbsp;=&nbsp;true<br>
+                    bool&nbsp;AutoCompleteQuest&nbsp;=&nbsp;true<br>
                 </span>
                 )
             </code>
@@ -45,7 +45,7 @@ As with any [property](#properties) or [method](#methods) from the `CoreStory.cs
                 <span style="color:lightgray">
                     &emsp;&emsp;bool&nbsp;GetReward&nbsp;=&nbsp;true,<br>
                     &emsp;&emsp;string&nbsp;Reward&nbsp;=&nbsp;"All",<br>
-                    &emsp;bool&nbsp;AutoCompleteQuest&nbsp;=&nbsp;true<br>
+                    bool&nbsp;AutoCompleteQuest&nbsp;=&nbsp;true<br>
                 </span>
                 )
             </code>
