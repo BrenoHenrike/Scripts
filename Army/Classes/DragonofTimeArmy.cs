@@ -207,7 +207,7 @@ public class DoTArmy
 
     public void DoT(bool rankUpClass = true, bool doExtra = true)
     {
-        if ((!doExtra && Core.CheckInventory("Dragon of Time")) || (doExtra && Core.CheckInventory(QuestRewards)))
+        if ((!doExtra && Core.CheckInventory("Dragon of Time")) || (doExtra && Core.CheckInventory(QuestRewards, toInv: false)))
             return;
 
         Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
