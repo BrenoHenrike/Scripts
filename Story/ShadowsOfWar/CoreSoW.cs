@@ -116,14 +116,13 @@ public class CoreSoW
         Story.KillQuest(6857, "shadowlordkeep", "Shadow Gunner");
 
         //Build a Bomb (6858)
-        Story.KillQuest(6858, "shadowlordkeep", new[] { "Shadow Mage",  "Shadow Mage"});
-        // if (!Story.QuestProgression(6858))
-        // {
-        //     Core.EnsureAccept(6858);
-        //     while (!Bot.ShouldExit && (!Core.CheckInventory(48347) & !Core.CheckInventory(48348, 8))) //Torch && Scrap of Cloth
-        //         Core.HuntMonster("shadowlordkeep", "Shadow Mage", log: false);
-        //     Core.EnsureComplete(6858);
-        // }
+        if (!Story.QuestProgression(6858))
+        {
+            Core.EnsureAccept(6858);
+            while (!Bot.ShouldExit && (!Core.CheckInventory(48347) || !Core.CheckInventory(48348, 8))) //Torch && Scrap of Cloth
+                Core.HuntMonster("shadowlordkeep", "Shadow Mage", log: false);
+            Core.EnsureComplete(6858);
+        }
 
         //Light 'em Up! (6859)
         Story.MapItemQuest(6859, "shadowlordkeep", 6391);
