@@ -24,7 +24,7 @@ As with any [property](#properties) or [method](#methods) from the `CoreStory.cs
                 <span style="color:lightgray">
                     &emsp;&emsp;bool&nbsp;GetReward&nbsp;=&nbsp;true,<br>
                     &emsp;&emsp;string&nbsp;Reward&nbsp;=&nbsp;"All",<br>
-                    &emsp;&emsp;bool&nbsp;AutoCompleteQuest&nbsp;=&nbsp;true<br>
+                    &emsp;bool&nbsp;AutoCompleteQuest&nbsp;=&nbsp;true<br>
                 </span>
                 )
             </code>
@@ -42,10 +42,10 @@ As with any [property](#properties) or [method](#methods) from the `CoreStory.cs
                 &emsp;&emsp;int&nbsp;QuestID,<br>
                 &emsp;&emsp;string&nbsp;MapName,<br>
                 &emsp;&emsp;string[]&nbsp;MonsterNames,<br>
-                <span style="color:white">
+                <span style="color:lightgray">
                     &emsp;&emsp;bool&nbsp;GetReward&nbsp;=&nbsp;true,<br>
                     &emsp;&emsp;string&nbsp;Reward&nbsp;=&nbsp;"All",<br>
-                    &emsp;&emsp;bool&nbsp;AutoCompleteQuest&nbsp;=&nbsp;true<br>
+                    &emsp;bool&nbsp;AutoCompleteQuest&nbsp;=&nbsp;true<br>
                 </span>
                 )
             </code>
@@ -63,11 +63,11 @@ As with any [property](#properties) or [method](#methods) from the `CoreStory.cs
                 &emsp;&emsp;int&nbsp;QuestID,<br>
                 &emsp;&emsp;string&nbsp;MapName,<br>
                 &emsp;&emsp;int&nbsp;MapItemID, <br>
-                <span style="color:gray">
+                <span style="color:lightgray">
                     &emsp;&emsp;int&nbsp;Amount&nbsp&nbsp;1,<br>
                     &emsp;&emsp;bool&nbsp;GetReward&nbsp;=&nbsp;true,<br>
                     &emsp;&emsp;string&nbsp;Reward&nbsp;=&nbsp;"All",<br>
-                    &emsp;&emsp;bool&nbsp;AutoCompleteQuest&nbsp;=&nbsp;true<br>
+                    &emsp;bool&nbsp;AutoCompleteQuest&nbsp;=&nbsp;true<br>
                 </span>
                 )
             </code>
@@ -85,10 +85,11 @@ As with any [property](#properties) or [method](#methods) from the `CoreStory.cs
                 &emsp;&emsp;int&nbsp;QuestID,<br>
                 &emsp;&emsp;string&nbsp;MapName,<br>
                 &emsp;&emsp;int[]&nbsp;MapItemIDs,<br>
-                <span style="color:gray">int&nbsp;Amount&nbsp;=&nbsp;1,<br>
+                <span style="color:lightgray">
+                    &emsp;&emsp;int&nbsp;Amount&nbsp;=&nbsp;1,<br>
                     &emsp;&emsp;bool&nbsp;GetReward&nbsp;=&nbsp;true,<br>
                     &emsp;&emsp;string&nbsp;Reward&nbsp;"All",<br>
-                    &emsp;&emsp;bool&nbsp;AutoCompleteQuest&nbsp;=&nbsp;true<br>
+                    &emsp;bool&nbsp;AutoCompleteQuest&nbsp;=&nbsp;true<br>
                 </span>
                 )
             </code>
@@ -107,11 +108,11 @@ As with any [property](#properties) or [method](#methods) from the `CoreStory.cs
                 &emsp;&emsp;string&nbsp;MapName,<br>
                 &emsp;&emsp;int&nbsp;ShopID,<br>
                 &emsp;&emsp;string&nbsp;ItemName,<br>
-                <span style="color:gray">
+                <span style="color:lightgray">
                     &emsp;&emsp;int&nbsp;Amount&nbsp;=&nbsp;1,<br>
                     &emsp;&emsp;bool GetReward = true,<br>
                     &emsp;&emsp;string&nbsp;Reward&nbsp&nbsp;"All",<br>
-                    &emsp;&emsp;bool&nbsp;AutoCompleteQuest&nbsp;=&nbsp;true<br>
+                    &emsp;bool&nbsp;AutoCompleteQuest&nbsp;=&nbsp;true<br>
                 </span>
                 )
             </code>
@@ -127,7 +128,7 @@ As with any [property](#properties) or [method](#methods) from the `CoreStory.cs
             <code>
                 QuestProgression(<br>
                 &emsp;&emsp;int QuestID,<br>
-                <span style="color:gray">
+                <span style="color:lightgray">
                     &emsp;&emsp;bool GetReward&nbsp;=&nbsp;true,<br>
                     &emsp;&emsp;string&nbsp;Reward&nbsp;=&nbsp;"All"<br>
                 </span>
