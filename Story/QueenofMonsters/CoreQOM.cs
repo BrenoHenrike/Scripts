@@ -90,7 +90,7 @@ public class CoreQOM
             Farm.FishingREP(2);
             if (!Core.CheckInventory("Holy Oil"))
                 Core.BuyItem("fishing", 356, "Holy Oil");
-            Core.HuntMonster("lostruins", "Fallen Knight", "Cage Key");
+            Core.HuntMonsterMapID("lostruins", 8, "Cage Key");
             Core.EnsureComplete(4503);
         }
 
