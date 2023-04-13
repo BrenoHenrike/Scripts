@@ -3783,6 +3783,20 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AprilFools/Mmmm,Meaty(or)(MeatyShard).cs"
   },
   {
+    "name": "Aries Chrysomallus Rewards",
+    "description": "does the \"aries chrysomallus\" quest for the rewards.",
+    "tags": [
+      "aries chrysomallus",
+      "quest rewards",
+      "darkblood starshard",
+      "kolyaban"
+    ],
+    "path": "Seasonal/AprilFools/AriesChrysomallusRewards.cs",
+    "size": 1737,
+    "fileName": "AriesChrysomallusRewards.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AprilFools/AriesChrysomallusRewards.cs"
+  },
+  {
     "name": "Magic Meaderp Story",
     "description": "This will finish the Magic Meaderp storyline.",
     "tags": [
@@ -11930,7 +11944,7 @@
       "null"
     ],
     "path": "Story/QueenofMonsters/CoreQOM.cs",
-    "size": 31689,
+    "size": 31680,
     "fileName": "CoreQOM.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/QueenofMonsters/CoreQOM.cs"
   },
