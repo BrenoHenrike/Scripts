@@ -261,6 +261,7 @@ public class BrightOak
         Story.MapItemQuest(4699, "Darkheart", 4056);
 
         // Defeat the Gaiazor
+        Core.EquipClass(ClassType.Solo);
         Story.KillQuest(4700, "Darkheart", "Gaiazor");
     }
 
