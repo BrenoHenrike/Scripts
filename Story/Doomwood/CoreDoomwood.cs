@@ -226,7 +226,7 @@ public class CoreDoomwood
             return;
 
         Story.PreLoad(this);
-
+        Core.EquipClass(ClassType.Farm);
         //1123    Level 1
         if (!Story.QuestProgression(1123))
         {
@@ -325,6 +325,7 @@ public class CoreDoomwood
         //1146    Recover the Pages
         Story.KillQuest(1146, "temple", "Doomwood Bonemuncher");
 
+        Core.EquipClass(ClassType.Solo);
         //1147    Reconstruct the Codex
         Story.KillQuest(1147, "temple", "Cryptkeeper Lich");
 
