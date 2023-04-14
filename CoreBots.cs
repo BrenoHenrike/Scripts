@@ -2444,6 +2444,10 @@ public class CoreBots
             //     SimpleQuestBypass((000, 000));
             //     break;
 
+            case "temple":
+                SimpleQuestBypass((49, 25));
+                break;
+
             #region Simple Quest Bypasses
 
             case "elemental":
