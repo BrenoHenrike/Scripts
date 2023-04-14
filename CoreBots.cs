@@ -2591,6 +2591,7 @@ public class CoreBots
                 break;
 
             case "shadowattack":
+            case "dreadhaven":
                 SimpleQuestBypass((175, 20));
                 break;
 
