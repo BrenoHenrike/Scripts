@@ -31,7 +31,7 @@ public class BlacksmithingREP
     {
         Core.SetOptions();
 
-        Farm.BlacksmithingREP(10, Bot.Config.Get<bool>("UseGold"), Bot.Config.Get<bool>("CanSolo"));
+        Farm.BlacksmithingREP(10, Bot.Config.Get<bool>("UseGold")? true : false, Bot.Config.Get<bool>("CanSolo")? true : false);
 
         Core.SetOptions(false);
     }
