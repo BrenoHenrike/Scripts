@@ -211,9 +211,7 @@ public class DragonOfTime
             }
 
             Coll.Collector();
-            Core.BuyItem("collection", 325, "Collectible Collector");
-            Bot.Wait.ForPickup("Collectible Collector");
-
+            Adv.BuyItem("collection", 325, "Collectible Collector");
             Story.ChainQuest(7721);
 
             Bot.Wait.ForPickup("*");
