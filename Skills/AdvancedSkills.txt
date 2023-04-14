@@ -92,7 +92,7 @@ Base = Dragon Shinobi = 1 | 2 | 3 | 4 = Use if Available
 Base = Dragonlord = 1 | 2 | 3 | 4 = Use if Available
 Base = Dragonslayer = 1 | 2 | 3 | 4 = Use if Available
 Base = Dragonslayer General = 1 | 2 | 3 | 4 = Use if Available
-Base = DragonSoul Shinobi = 1 | 2H<50S | 3M<10S| 4 = Use if Available
+Base = DragonSoul Shinobi = 1 | 2H<50S  | 4 = Use if Available
 Base = Drakel Warlord = 1 | 2 | 3 | 4 = Use if Available
 Base = Elemental Dracomancer = 3 | 4 | 2 | 1 = Use if Available
 Base = Empyrean Chronomancer = 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 2 | 3 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 1 | 2 | 3 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 2 | 3 = 250
