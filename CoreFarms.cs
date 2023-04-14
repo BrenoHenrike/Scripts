@@ -228,7 +228,7 @@ public class CoreFarms
 
         Core.RegisterQuests(178);
         while (!Bot.ShouldExit && Bot.Player.Level < 28)
-            Core.HuntMonster("swordhavenundead", "Undead Giant", log :false);
+            Core.HuntMonster("swordhavenundead", "Undead Giant", log: false);
         Core.CancelRegisteredQuests();
 
         IcestormArena(20);
@@ -236,7 +236,7 @@ public class CoreFarms
         FireWarxp(40);
 
         while (Bot.Player.Level < 60)
-            Core.KillMonster("underlair", "r5", "Left", "Void Draconian", log :false);
+            Core.KillMonster("underlair", "r5", "Left", "Void Draconian", log: false);
 
         IcestormArena(level);
 
@@ -2013,27 +2013,27 @@ public class CoreFarms
         // if (Core.IsMember)
         //     MembershipDues(MemberShipsIDS.Mythsong, rank);
         // else
-        {
-            if (!Bot.Quests.IsUnlocked(4829))
-            {
-                Core.Logger("Can't do farming quest [Sugar, Sugar] (/beehive)", messageBox: true);
-                return;
-            }
-            Core.EquipClass(ClassType.Solo);
-            Core.SavedState();
-            ToggleBoost(BoostType.Reputation);
-            Core.Logger($"Farming rank {rank}");
 
-            Core.RegisterQuests(4829); //Sugar, Sugar 4829
-            while (!Bot.ShouldExit && FactionRank("Mythsong") < rank)
-            {
-                Core.HuntMonster("beehive", "Stinger", "Honey Gathered", 10, log: false);
-                Bot.Wait.ForQuestComplete(4829);
-            }
-            Core.CancelRegisteredQuests();
-            ToggleBoost(BoostType.Reputation, false);
-            Core.SavedState(false);
+        if (!Bot.Quests.IsUnlocked(4829))
+        {
+            Core.Logger("Can't do farming quest (Do Lord of Chaos Kimberly)", messageBox: true);
+            return;
         }
+
+        Core.EquipClass(ClassType.Solo);
+        Core.SavedState();
+        ToggleBoost(BoostType.Reputation);
+        Core.Logger($"Farming rank {rank}");
+
+        Core.RegisterQuests(4829); //Sugar, Sugar 4829
+        while (!Bot.ShouldExit && FactionRank("Mythsong") < rank)
+        {
+            Core.HuntMonster("beehive", "Stinger", "Honey Gathered", 10, log: false);
+            Bot.Wait.ForQuestComplete(4829);
+        }
+        Core.CancelRegisteredQuests();
+        ToggleBoost(BoostType.Reputation, false);
+        Core.SavedState(false);
     }
 
     public void NecroCryptREP(int rank = 10)
