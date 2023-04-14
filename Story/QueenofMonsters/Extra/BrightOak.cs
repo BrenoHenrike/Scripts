@@ -248,15 +248,14 @@ public class BrightOak
         Story.KillQuest(4697, "Brightoak", "Brightpool Guardian");
 
         // Cleanse the Grove
-        Story.KillQuest(4698, "Darkheart", new[] { "Tainted Earth", "Toxic Grove Spider", "Mutated Leech" });
-        // if (!Story.QuestProgression(4698))
-        // {
-        //     Core.EnsureAccept(4698);
-        //     Core.KillMonster("Darkheart", "Enter", "Spawn", "Tainted Earth", "Tainted Earth Removed", 8);
-        //     Core.KillMonster("Darkheart", "r2", "Left", "Toxic Grove Spider", "Toxic Grove Spider Dispatched", 5);
-        //     Core.KillMonster("Darkheart", "Enter", "Spawn", "Mutated Leech", "Mutated Leech Slain", 6);
-        //     Core.EnsureComplete(4698);
-        // }
+        if (!Story.QuestProgression(4698))
+        {
+            Core.EnsureAccept(4698);
+            Core.KillMonster("Darkheart", "Enter", "Spawn", "Tainted Earth", "Tainted Earth Removed", 8);
+            Core.KillMonster("Darkheart", "r2", "Left", "Toxic Grove Spider", "Toxic Grove Spider Dispatched", 5);
+            Core.KillMonster("Darkheart", "Enter", "Spawn", "Mutated Leech", "Mutated Leech Slain", 6);
+            Core.EnsureComplete(4698);
+        }
 
         // X Marks the Spot
         Story.MapItemQuest(4699, "Darkheart", 4056);
