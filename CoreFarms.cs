@@ -228,7 +228,7 @@ public class CoreFarms
 
         Core.RegisterQuests(178);
         while (!Bot.ShouldExit && Bot.Player.Level < 28)
-            Core.HuntMonster("swordhavenundead", "Undead Giant");
+            Core.HuntMonster("swordhavenundead", "Undead Giant", log :false);
         Core.CancelRegisteredQuests();
 
         IcestormArena(20);
@@ -236,7 +236,7 @@ public class CoreFarms
         FireWarxp(40);
 
         while (Bot.Player.Level < 60)
-            Core.KillMonster("underlair", "r5", "Left", "Void Draconian");
+            Core.KillMonster("underlair", "r5", "Left", "Void Draconian", log :false);
 
         IcestormArena(level);
 
