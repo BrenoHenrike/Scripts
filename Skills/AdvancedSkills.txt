@@ -33,12 +33,12 @@ Base = Blood Titan = 2 | 4 | 3 | 2 = 250
 Base = CardClasher = 4 | 3 | 1 | 2 = 250
 Base = Chaos Avenger = 4 | 3 | 1 | 2 = Use if Available
 Base = Chaos Avenger Member Preview = 4 | 3 | 1 | 2 = 250
-Base = Chaos Champion Prime = 2 | 4 | 1 | 3 = 250
+Base = Chaos Champion Prime = 1 | 3 | 2 = 250
 Base = Chaos Shaper = 2 | 1 | 3 | 4 = 250
-Base = Chaos Slayer Berserker = 2 | 4 | 1 | 3 = 250
-Base = Chaos Slayer Cleric = 2 | 4 | 1 | 3 = 250
-Base = Chaos Slayer Mystic = 2 | 4 | 1 | 3 = 250
-Base = Chaos Slayer Thief = 2 | 4 | 1 | 3 = 250
+Base = Chaos Slayer Berserker = 1 | 3 | 2 = 250
+Base = Chaos Slayer Cleric = 1 | 3 | 2 = 250
+Base = Chaos Slayer Mystic = 1 | 3 | 2 = 250
+Base = Chaos Slayer Thief = 1 | 3 | 2 = 250
 Solo = Corrupted Chronomancer = 5 | 2 | 3 | 1 | 1 | 1 | 3 | 1 | 4 = 250
 Farm = Corrupted Chronomancer = 5 | 3 | 1 | 1 | 3 | 1 | 1 | 3 | 1 | 4 | 2 = 250
 Base = Chrono Assassin = 4 | 1 | 2 | 3 | 1 | 2 | 3 | 1 | 2 | 3 | 1 | 2 | 3 | 1 | 2 | 3 | 3 | 2 | 1 | 2 = 250
@@ -70,7 +70,7 @@ Base = Cryomancer Mini Pet Coming Soon = 3 | 1 | 2 | 4 | 1 | 2 | 1 | 2 = 250
 Farm = Daimon = 1 | 3 | 2H<50S = Use if Available
 Base = Dark BattleMage = 2 | 3 | 4 | 2 | 3 | 4 = 250
 Base = Dark Caster = 1 | 2 | 3 | 4 = Use if Available
-Base = Dark Chaos Berserker = 4 | 3 | 1 | 2 = 250
+Base = Dark Chaos Berserker = 1 | 3 | 2 = 250
 Base = Dark Cryomancer = 3 | 1 | 2 | 4 | 1 | 2 | 1 | 2 = 250
 Base = Dark Harbinger = 1 | 2 | 3 | 4 = Use if Available
 Base = Dark Legendary Hero = 1 | 4H>50S | 2 | 3 | 2 = 250
@@ -92,7 +92,7 @@ Base = Dragon Shinobi = 1 | 2 | 3 | 4 = Use if Available
 Base = Dragonlord = 1 | 2 | 3 | 4 = Use if Available
 Base = Dragonslayer = 1 | 2 | 3 | 4 = Use if Available
 Base = Dragonslayer General = 1 | 2 | 3 | 4 = Use if Available
-Base = DragonSoul Shinobi = 1 | 2H<50S | 3M<10S| 4 = Use if Available
+Base = DragonSoul Shinobi = 1 | 2H<50S  | 4 = Use if Available
 Base = Drakel Warlord = 1 | 2 | 3 | 4 = Use if Available
 Base = Elemental Dracomancer = 3 | 4 | 2 | 1 = Use if Available
 Base = Empyrean Chronomancer = 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 2 | 3 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 1 | 2 | 3 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 2 | 3 = 250

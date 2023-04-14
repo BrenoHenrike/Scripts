@@ -2438,13 +2438,21 @@ public class CoreBots
             default:
                 JumpWait();
                 tryJoin();
-                break;                
+                break;
 
             // case "map":
             //     SimpleQuestBypass((000, 000));
             //     break;
 
+            case "temple":
+                SimpleQuestBypass((49, 25));
+                break;
+
             #region Simple Quest Bypasses
+
+            case "elemental":
+                SimpleQuestBypass((32, 35));
+                break;
 
             case "twilightedge":
                 SimpleQuestBypass((156, 1));
@@ -2583,6 +2591,7 @@ public class CoreBots
                 break;
 
             case "shadowattack":
+            case "dreadhaven":
                 SimpleQuestBypass((175, 20));
                 break;
 

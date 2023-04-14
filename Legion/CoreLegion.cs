@@ -47,7 +47,7 @@ public class CoreLegion
         Core.RegisterQuests(4742);
         while (!Bot.ShouldExit && !Core.CheckInventory("Emblem of Dage", quant))
         {
-            Core.KillMonster("shadowblast", "r10", "Left", "*", "Gem of Mastery", 1, false);
+            Core.HuntMonster("shadowblast", "Carnage", "Gem of Mastery", 1, false, false);
             Core.KillMonster("shadowblast", "r10", "Left", "*", "Legion Seal", 25, false);
             Bot.Wait.ForPickup("Emblem of Dage");
         }

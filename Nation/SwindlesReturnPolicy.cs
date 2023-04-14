@@ -27,14 +27,15 @@ public class SwindlesReturnPolicy
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.SetOptions();
         Core.BankingBlackList.AddRange(Nation.Receipt);
-        DoSwindlesReturnPolicy();
+        Core.SetOptions();
+
+        DoSwindlesReturnPolicy(Bot.Config.Get<RewardsSelection>("RewardSelect"));
 
         Core.SetOptions(false);
     }
 
-    public void DoSwindlesReturnPolicy(RewardsSelection reward = new(), bool getAll = false)
+    public void DoSwindlesReturnPolicy(RewardsSelection reward, bool getAll = false)
     {
         Core.Logger($"Reward set to {Bot.Config.Get<RewardsSelection>("RewardSelect").ToString()}");
 
@@ -53,8 +54,7 @@ public class SwindlesReturnPolicy
             }
             if (Core.CheckInventory(item.Name, item.MaxStack))
                 return;
-            Core.FarmingLogger(item.Name, item.MaxStack);
-            Nation.SwindleReturn(item.Name);
+            Nation.SwindleReturn(item.Name, item.MaxStack);
         }
         else if (getAll)
         {
@@ -63,8 +63,7 @@ public class SwindlesReturnPolicy
                 Core.AddDrop(Thing.ID);
                 if (Core.CheckInventory(Thing.Name, Thing.MaxStack))
                     return;
-                Core.FarmingLogger(Thing.Name, Thing.MaxStack);
-                Nation.SwindleReturn(Thing.Name);
+                Nation.SwindleReturn(Thing.Name, Thing.MaxStack);
             }
         }
     }

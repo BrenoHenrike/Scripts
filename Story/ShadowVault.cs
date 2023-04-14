@@ -67,7 +67,14 @@ public class ShadowVault
         Story.KillQuest(6793, "ShadowVault", "Ancient Doomknight");
 
         //… Did we forget some guards? 6794
-        Story.KillQuest(6794, "ShadowVault", "Shadowscythe Guard");
+        if (!Story.QuestProgression(6794))
+        {
+            Core.EquipClass(ClassType.Farm);
+            Core.EnsureAccept(6794);
+            Core.HuntMonsterMapID("ShadowVault", 22, "Guard Slain", 100);
+            Core.EnsureComplete(6794);
+            Core.JumpWait();
+        }
 
     }
 }

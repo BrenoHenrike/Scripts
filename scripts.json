@@ -6,7 +6,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 145159,
+    "size": 145369,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 93813,
+    "size": 93838,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -219,7 +219,7 @@
       "null"
     ],
     "path": "Legion/CoreLegion.cs",
-    "size": 28188,
+    "size": 28186,
     "fileName": "CoreLegion.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/CoreLegion.cs"
   },
@@ -589,7 +589,7 @@
       "rare-items"
     ],
     "path": "Other/0CurrentDailyGifts.cs",
-    "size": 16051,
+    "size": 16053,
     "fileName": "0CurrentDailyGifts.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/0CurrentDailyGifts.cs"
   },
@@ -1416,7 +1416,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 62104,
+    "size": 61986,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -1615,7 +1615,7 @@
       "null"
     ],
     "path": "Nation/SwindlesReturnPolicy.cs",
-    "size": 2680,
+    "size": 2630,
     "fileName": "SwindlesReturnPolicy.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/SwindlesReturnPolicy.cs"
   },
@@ -1646,7 +1646,7 @@
       "undead"
     ],
     "path": "Good/ArchPaladin.cs",
-    "size": 10464,
+    "size": 10417,
     "fileName": "ArchPaladin.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/ArchPaladin.cs"
   },
@@ -2523,7 +2523,7 @@
       "shadow-vault"
     ],
     "path": "Story/ShadowVault.cs",
-    "size": 2160,
+    "size": 2379,
     "fileName": "ShadowVault.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowVault.cs"
   },
@@ -3781,6 +3781,20 @@
     "size": 1772,
     "fileName": "Mmmm,Meaty(or)(MeatyShard).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AprilFools/Mmmm,Meaty(or)(MeatyShard).cs"
+  },
+  {
+    "name": "Aries Chrysomallus Rewards",
+    "description": "does the \"aries chrysomallus\" quest for the rewards.",
+    "tags": [
+      "aries chrysomallus",
+      "quest rewards",
+      "darkblood starshard",
+      "kolyaban"
+    ],
+    "path": "Seasonal/AprilFools/AriesChrysomallusRewards.cs",
+    "size": 1737,
+    "fileName": "AriesChrysomallusRewards.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AprilFools/AriesChrysomallusRewards.cs"
   },
   {
     "name": "Magic Meaderp Story",
@@ -8618,7 +8632,7 @@
       "timeinn"
     ],
     "path": "Other/Classes/DragonOfTime.cs",
-    "size": 12644,
+    "size": 12585,
     "fileName": "DragonOfTime.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/DragonOfTime.cs"
   },
@@ -8982,7 +8996,7 @@
       "army"
     ],
     "path": "Army/Classes/DragonofTimeArmy.cs",
-    "size": 29984,
+    "size": 29998,
     "fileName": "DragonofTimeArmy.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Classes/DragonofTimeArmy.cs"
   },
@@ -11930,7 +11944,7 @@
       "null"
     ],
     "path": "Story/QueenofMonsters/CoreQOM.cs",
-    "size": 31689,
+    "size": 31680,
     "fileName": "CoreQOM.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/QueenofMonsters/CoreQOM.cs"
   },
@@ -12107,7 +12121,7 @@
       "null"
     ],
     "path": "Story/Doomwood/CoreDoomwood.cs",
-    "size": 29410,
+    "size": 29491,
     "fileName": "CoreDoomwood.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Doomwood/CoreDoomwood.cs"
   },
@@ -12588,7 +12602,7 @@
       "null"
     ],
     "path": "Story/ShadowsOfWar/CoreSoW.cs",
-    "size": 35780,
+    "size": 36036,
     "fileName": "CoreSoW.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfWar/CoreSoW.cs"
   },
@@ -13864,7 +13878,7 @@
       "null"
     ],
     "path": "Farm/REP/BlacksmithingREP.cs",
-    "size": 1134,
+    "size": 1162,
     "fileName": "BlacksmithingREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/BlacksmithingREP.cs"
   },

@@ -57,7 +57,7 @@ public class CurrentDailyGifts
             GetGift(Permanent, "garden", "Creature 72", "Chibi Darkon's Pillow", "Chibi Drago's Pillow", "Chibi Fa's Pillow", "Chibi La's Pillow", "Chibi Mi's Pillow", "Chibi Re's Pillow", "Chibi So's Pillow", "Chibi Suki's Pillow", "Chibi Ti's Pillow");
             GetGift(Permanent, "falcontower", "Alteon", "Alteon's Dragon Sword", "Alteon's Polished Dragon Sword");
             GetGift(Permanent, "aqlesson", "Carnax", "Guardian Blade Evolution", "Sanctified Guardian Blade");
-            GetGift(Permanent, "superdeath", "Super Death", "HeroSmash Demolicious Guard", "HeroSmash Electina Guard", "HeroSmash General Smash Guard", "HeroSmash Hottica Guard", "HeroSmash Rider Guard", "HeroSmash Ultimate Good Guard");
+            GetGift(Permanent, "superdeath", "Super Death", "HeroSmash Electina Guard", "HeroSmash General Smash Guard", "HeroSmash Hottica Guard", "HeroSmash Rider Guard", "HeroSmash Ultimate Good Guard", "HeroSmash Ultimate Evil Guard");
             GetGift(Permanent, "sepulchure", "Dark Sepulchure", "Gravelyn's Champion Wings", "Gravelyn's Purified DoomBlade");
             GetGift(Permanent, "dflesson", "Fluffy the Dracolich", "Zurvana's Blessing", "Zurvana's Wrath", "Zurvana's Wrath", "Zurvana's Pity", "Zurvana's Pity");
             GetGift(Permanent, "mqlesson", "Dragonoid", "Dragonoid Edge", "Dragonoid Edges");
