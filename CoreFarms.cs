@@ -2049,7 +2049,7 @@ public class CoreFarms
         Core.RegisterQuests(3048); //Help Professor Mueran 3048
         while (!Bot.ShouldExit && FactionRank("Necro Crypt") < rank)
         {
-            Core.HuntMonster("castleundead", "Skeletal Viking", "Old Bone", 5, log: false);
+            Core.HuntMonster("castleundead", "Skeletal Viking", "Old Bone", 25, log: false);
             Bot.Wait.ForQuestComplete(3048);
         }
         Core.CancelRegisteredQuests();
