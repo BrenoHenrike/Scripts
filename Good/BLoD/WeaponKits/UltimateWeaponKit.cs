@@ -7,6 +7,7 @@ tags: null
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreStory.cs
+//cs_include Scripts/Story/BattleUnder.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
 using Skua.Core.Interfaces;
 
@@ -20,7 +21,7 @@ public class UltimateWeaponKit
     {
         Core.SetOptions();
 
-        BLOD.UltimateWK("Bright Aura", 10000);
+        BLOD.UltimateWK(quant: 10000);
 
         Core.SetOptions(false);
     }

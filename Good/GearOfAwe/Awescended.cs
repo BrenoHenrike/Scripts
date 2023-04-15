@@ -16,6 +16,7 @@ tags: null
 //cs_include Scripts/Good/SilverExaltedPaladin.cs
 //cs_include Scripts/Other/Weapons/FortitudeAndHubris.cs
 //cs_include Scripts/Other/Weapons/ShadowReaperOfDoom.cs
+//cs_include Scripts/Story/BattleUnder.cs
 //cs_include Scripts/Story/J6Saga.cs
 //cs_include Scripts/Story/BattleUnder.cs
 //cs_include Scripts/Story/Nation/Bamboozle.cs

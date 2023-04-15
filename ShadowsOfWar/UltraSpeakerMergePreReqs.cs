@@ -90,8 +90,8 @@ public class UltraSpeakerMergePreReqs
                 Core.Logger("Buyback War Blade of Courage smh");
             else
             {
-                BLOD.FindingFragmentsMace(50);
-                BLOD.FindingFragments(Core.CheckInventory("Blinding Scythe of Destiny") ? 2177 : 2174, "Blinding Aura");
+                BLOD.BrilliantAura(50);
+                BLOD.BlindingAura(1);
                 AcquiescenceCount += 10;
             }
         }

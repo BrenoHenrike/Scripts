@@ -19,17 +19,17 @@ public class CoreNSOD
 {
     private bool OptimizeInv = true;
 
-    public IScriptInterface Bot => IScriptInterface.Instance;
-    public CoreBots Core => CoreBots.Instance;
+    private IScriptInterface Bot => IScriptInterface.Instance;
+    private CoreBots Core => CoreBots.Instance;
 
-    public CoreFarms Farm = new();
-    public CoreAdvanced Adv = new();
-    public CoreDailies Daily = new();
+    private CoreFarms Farm = new();
+    private CoreAdvanced Adv = new();
+    private CoreDailies Daily = new();
 
-    public CoreBLOD BLOD = new();
-    public CoreSDKA SDKA = new();
-    public Necromancer Necro = new();
-    public BattleUnder BattleUnder = new();
+    private CoreBLOD BLOD = new();
+    private CoreSDKA SDKA = new();
+    private Necromancer Necro = new();
+    private BattleUnder BattleUnder = new();
 
     public string OptionsStorage = "NecroticSwordOfDoomOptions";
     public bool DontPreconfigure = true;
@@ -396,24 +396,7 @@ public class CoreNSOD
 
     public void CavernCelestite(int quant)
     {
-        if (Core.CheckInventory("Cavern Celestite", quant))
-            return;
-
-        Core.AddDrop("Cavern Celestite");
-        if (!Bot.Quests.IsUnlocked(939))
-            BattleUnder.BattleUnderC();
-        Core.FarmingLogger("Cavern Celestite", quant);
-
-        Core.RegisterQuests(939);
-        while (!Bot.ShouldExit && !Core.CheckInventory("Cavern Celestite", quant))
-        {
-            Core.HuntMonster("battleundera", "Bone Terror", "Bone Terror Soul", log: false);
-            Core.HuntMonster("battleunderb", "Undead Champion", "Undead Champion Soul", log: false);
-            Core.HuntMonster("battleunderc", "Crystalized Jellyfish", "Jellyfish Soul", log: false);
-
-            Bot.Wait.ForPickup("Cavern Celestite");
-        }
-        Core.CancelRegisteredQuests();
+        BLOD.SoulSearching("Cavern Celestite", quant, false);
     }
 
     public void PrimarchHilt(int quant)

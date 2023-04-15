@@ -31,6 +31,7 @@ tags: null
 //cs_include Scripts/Other/Weapons/BurningBlade.cs
 //cs_include Scripts/Other/Weapons/DualChainSawKatanas.cs
 //cs_include Scripts/Other/Weapons/EnchantedVictoryBladeWeapons.cs
+//cs_include Scripts/Story/BattleUnder.cs
 //cs_include Scripts/Story/DragonFableOrigins.cs
 //cs_include Scripts/Story/Glacera.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs

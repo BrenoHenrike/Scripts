@@ -10,6 +10,7 @@ tags: drakath, drakath armor, original drakath armor
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
 //cs_include Scripts/Nation/CoreNation.cs
+//cs_include Scripts/Story/BattleUnder.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 using Skua.Core.Interfaces;
 
@@ -69,7 +70,7 @@ public class DrakathArmorBot
         Core.EnsureAccept(3882);
 
         Farm.BladeofAweREP(6, farmBoA: true);
-        BLOD.DoAll();
+        BLOD.BlindingLightOfDestiny();
         Nation.FarmUni13(3);
         Farm.Gold(3750000);
         Core.BuyItem("hyperspace", 194, "Le Chocolat");

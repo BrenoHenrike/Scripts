@@ -13,6 +13,7 @@ tags: hollowborn, hollowborn paladin, do all
 //cs_include Scripts/Chaos/DrakathsArmor.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Chaos/AscendedDrakathGear.cs
+//cs_include Scripts/Story/BattleUnder.cs
 //cs_include Scripts/Story/TowerOfDoom.cs
 //cs_include Scripts/Nation/CoreNation.cs
 //cs_include Scripts/Story/Artixpointe.cs

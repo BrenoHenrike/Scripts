@@ -13,6 +13,7 @@ tags: hollowborn paladin, hollowborn, inserthere
 //cs_include Scripts/Chaos/DrakathsArmor.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Chaos/AscendedDrakathGear.cs
+//cs_include Scripts/Story/BattleUnder.cs
 //cs_include Scripts/Story/TowerOfDoom.cs
 //cs_include Scripts/Nation/CoreNation.cs
 //cs_include Scripts/Story/Artixpointe.cs
@@ -91,7 +92,7 @@ public class CoreHollowbornPaladin
             Core.HuntMonster("Arcangrove", "Seed Spitter", "Doom Dirt", 12);
             Core.EnsureComplete(803);
         }
-        BLOD.FindingFragmentsMace();
+        BLOD.BrilliantAura(1);
         Farm.DoomWoodREP(3);
         Core.BuyItem("lightguard", 277, "Dark Arts Scholar");
         Core.EquipClass(ClassType.Farm);

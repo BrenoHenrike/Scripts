@@ -11,6 +11,7 @@ tags: ascended drakath, set, drakath, ascended blade of awe, ascended light of d
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Nation/CoreNation.cs
 //cs_include Scripts/Chaos/DrakathsArmor.cs
+//cs_include Scripts/Story/BattleUnder.cs
 //cs_include Scripts/Story/TowerOfDoom.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 using Skua.Core.Interfaces;

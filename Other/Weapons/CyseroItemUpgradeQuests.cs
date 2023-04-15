@@ -10,6 +10,7 @@ tags: null
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 //cs_include Scripts/Good/BLOD/CoreBLOD.cs
+//cs_include Scripts/Story/BattleUnder.cs
 //cs_include Scripts/Evil/SepulchuresOriginalHelm.cs
 //cs_include Scripts/Other/Materials/DarknessShard.cs
 //cs_include Scripts/Story/Doomwood/CoreDoomwood.cs
@@ -101,7 +102,7 @@ public class CyseroItemUpgrade
         if (Core.CheckInventory("Polished Blinding Light of Destiny", toInv: false))
             return;
 
-        BLOD.DoAll();
+        BLOD.BlindingLightOfDestiny();
 
         Core.AddDrop("Polished Blinding Light of Destiny");
 

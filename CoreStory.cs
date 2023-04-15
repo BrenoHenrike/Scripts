@@ -183,6 +183,8 @@ public class CoreStory
         Bot.Sleep(Core.ActionDelay);
     }
 
+    public void QuestComplete(int questID) => TryComplete(Core.EnsureLoad(questID), true);
+
     private void TryComplete(Quest QuestData, bool AutoCompleteQuest)
     {
         if (!Bot.Quests.CanComplete(QuestData.ID))

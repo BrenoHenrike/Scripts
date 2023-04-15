@@ -9,6 +9,7 @@ tags: null
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
+//cs_include Scripts/Story/BattleUnder.cs
 //cs_include Scripts/Story/Doomwood/CoreDoomwood.cs
 //cs_include Scripts/Other/Weapons/PinkBladeofDestruction.cs
 using Skua.Core.Interfaces;
@@ -44,7 +45,7 @@ public class TechfortressWarMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
+    public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("techfortress", 1902, findIngredients, buyOnlyThis, buyMode: buyMode);
@@ -98,48 +99,24 @@ public class TechfortressWarMerge
                     break;
 
                 case "Loyal Spirit Orb":
-                    BLOD.FindingFragmentsBlade(0, quant);
+                    BLOD.LoyalSpiritOrb(quant);
                     break;
 
                 case "Blinding Aura":
-                    Core.FarmingLogger($"{req.Name}", quant);
-                    Core.EquipClass(ClassType.Farm);
-                    if (!Core.CheckInventory("Blinding Bow of Destiny"))
-                        BLOD.BlindingBow();
-                    while (!Bot.ShouldExit && !Core.CheckInventory("Blinding Aura"))
-                    {
-                        BLOD.FindingFragments(2174);
-                        Bot.Wait.ForPickup("Blinding Aura");
-                    }
+                    BLOD.BlindingAura(quant);
                     break;
 
                 case "Sanctified Silver of Destiny":
-                    Core.FarmingLogger($"{req.Name}", quant);
-                    if (!Core.CheckInventory("Sanctified Silver"))
-                    {
-                        Core.FarmingLogger("Sanctified Silver", 1);
-                        Core.EnsureAccept(2108);
-                        Farm.BattleUnderB("Undead Energy", 25);
-                        Dailies.MineCrafting(new[] { "Silver" });
-                        if (!Core.CheckInventory("Silver"))
-                            Core.Logger("Can't complete Sanctified Silver Enchantment (Missing Silver).", messageBox: true, stopBot: true);
-                        BLOD.UltimateWK("Spirit Orb", 5);
-                        Core.HuntMonster("arcangrove", "Seed Spitter", "Paladaffodil", 25);
-                        Core.EnsureComplete(2108);
-                    }
-                    Core.Logger("Farming for Sanctified Silver of Destiny");
-                    BLOD.UltimateWK("Loyal Spirit Orb", 5);
-                    BLOD.UltimateWK("Bright Aura", 2);
-                    Core.BuyItem("dwarfhold", 434, "Sanctified Silver of Destiny");
+                    BLOD.UpgradeMetal(MineCraftingMetalsEnum.Silver);
                     break;
 
                 case "Brilliant Aura":
-                    BLOD.FindingFragmentsBow(quant);
+                    BLOD.BrilliantAura(quant);
                     break;
 
                 case "Shard of An Orb":
                     Core.FarmingLogger($"{req.Name}", quant);
-                    BLOD.DoAll();
+                    BLOD.BlindingLightOfDestiny();
                     Core.EquipClass(ClassType.Solo);
                     Core.RegisterQuests(7654);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))

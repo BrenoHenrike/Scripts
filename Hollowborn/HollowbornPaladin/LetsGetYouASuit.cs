@@ -13,6 +13,7 @@ tags: hollowborn paladin, hollowborn, lets get you a suit
 //cs_include Scripts/Chaos/DrakathsArmor.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Chaos/AscendedDrakathGear.cs
+//cs_include Scripts/Story/BattleUnder.cs
 //cs_include Scripts/Story/TowerOfDoom.cs
 //cs_include Scripts/Nation/CoreNation.cs
 //cs_include Scripts/Story/Artixpointe.cs

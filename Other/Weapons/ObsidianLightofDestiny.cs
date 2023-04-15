@@ -9,8 +9,8 @@ tags: null
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
+//cs_include Scripts/Story/BattleUnder.cs
 //cs_include Scripts/Story/Doomwood/CoreDoomwood.cs
-
 using Skua.Core.Interfaces;
 
 public class ObsidianLightofDestiny
@@ -35,11 +35,10 @@ public class ObsidianLightofDestiny
 
     public void Axe()
     {
-        DW.DoomwoodPart3();
-        
         if (Core.CheckInventory("Obsidian Light of Destiny"))
             return;
 
+        DW.DoomwoodPart3();
         Core.AddDrop("Obsidian Light of Destiny");
 
         //The Edge of Destiny
@@ -54,18 +53,16 @@ public class ObsidianLightofDestiny
                 Bot.Wait.ForPickup("Blinding Edge of Obsidian");
             }
 
-            BLOD.BlindingMace();
-            BLOD.BlindingBow();
-            BLOD.BlindingBlade();
+            BLOD.GetBlindingWeapon(WeaponOfDestiny.Mace);
+            BLOD.GetBlindingWeapon(WeaponOfDestiny.Bow);
+            BLOD.GetBlindingWeapon(WeaponOfDestiny.Blade);
 
-            BLOD.FindingFragmentsMace(40); //Brilliant Aura x40
-            BLOD.FindingFragmentsBow(120); //Bright Aura x120
-            BLOD.FindingFragments(2174); //Blinding Aura 
+            BLOD.BrilliantAura(40); //Brilliant Aura x40
+            BLOD.BrightAura(120); //Bright Aura x120
+            BLOD.BlindingAura(1); //Blinding Aura 
+            BLOD.LoyalSpiritOrb(750); //Spirit Orb (Misc) x5,000 
+            BLOD.SpiritOrb(5000); //Loyal Spirit Orb x750 
 
-            while (!Bot.ShouldExit && !Core.CheckInventory("Spirit Orb", 5000)) //Spirit Orb (Misc) x5,000 
-                BLOD.FindingFragments(2179);
-            while (!Bot.ShouldExit && !Core.CheckInventory("Loyal Spirit Orb", 750))
-                BLOD.FindingFragments(2179);
             Core.EnsureComplete(7648);
             Bot.Wait.ForPickup("Obsidian Light of Destiny");
         }

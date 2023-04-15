@@ -35,6 +35,7 @@ tags: lacerate, smite, herosvaliance, arcanasconcerto, elysium, acheron, absolut
 //cs_include Scripts/Other/Armor/FireChampionsArmor.cs
 //cs_include Scripts/Other/Classes/DragonOfTime.cs
 //cs_include Scripts/Prototypes/PrinceDarkonsPoleaxePreReqs.cs
+//cs_include Scripts/Story/BattleUnder.cs
 //cs_include Scripts/Story/ElegyofMadness(Darkon)/CoreAstravia.cs
 //cs_include Scripts/Story/Doomwood/CoreDoomwood.cs
 //cs_include Scripts/Story/Legion/SevenCircles(War).cs

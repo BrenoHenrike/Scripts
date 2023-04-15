@@ -9,6 +9,7 @@ tags: class, dot, damage over time, dragon of time, timeinn
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
+//cs_include Scripts/Story/BattleUnder.cs
 //cs_include Scripts/Darkon/CoreDarkon.cs
 //cs_include Scripts/Other/Weapons/GoldenBladeOfFate.cs
 //cs_include Scripts/Other/Weapons/PinkBladeofDestruction.cs

@@ -7,6 +7,7 @@ tags: enchanted nulgath nation house, ennh, nulgath
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreStory.cs
+//cs_include Scripts/Story/BattleUnder.cs
 //cs_include Scripts/Nation/CoreNation.cs
 //cs_include Scripts/Good/BLOD/CoreBLOD.cs
 using Skua.Core.Interfaces;

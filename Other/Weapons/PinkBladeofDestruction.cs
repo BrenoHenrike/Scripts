@@ -8,6 +8,7 @@ tags: null
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
+//cs_include Scripts/Story/BattleUnder.cs
 //cs_include Scripts/Story/Doomwood/CoreDoomwood.cs
 using Skua.Core.Interfaces;
 

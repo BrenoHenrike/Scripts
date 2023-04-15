@@ -39,6 +39,7 @@ tags: null
 //cs_include Scripts/Story/QueenofMonsters/Extra/LivingDungeon.cs
 //cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
 //cs_include Scripts/Story/Tutorial.cs
+//cs_include Scripts/Story/BattleUnder.cs
 //cs_include Scripts/Story/XansLair.cs
 //cs_include Scripts/Story/Yokai.cs
 //cs_include Scripts/Other\FarmJoeKits\CoreFarmerJoe.cs
@@ -65,7 +66,7 @@ public class FarmerJoeLeveling
         Core.SetOptions();
 
         FJLeveling();
-        
+
         Core.SetOptions(false);
     }
 

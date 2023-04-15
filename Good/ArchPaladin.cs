@@ -10,6 +10,7 @@ tags: class, good, tank, hp, templar, support, survivability, figher, healer, un
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/Good/Paladin.cs
+//cs_include Scripts/Story/BattleUnder.cs
 //cs_include Scripts/Story/XansLair.cs
 using Skua.Core.Interfaces;
 

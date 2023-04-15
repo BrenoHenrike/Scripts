@@ -10,6 +10,7 @@ tags: eternal drakath set, drakath, set
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
 //cs_include Scripts/Chaos/DrakathsArmor.cs
+//cs_include Scripts/Story/BattleUnder.cs
 //cs_include Scripts/Story/StarSinc.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 //cs_include Scripts/Nation/CoreNation.cs
@@ -52,7 +53,7 @@ public class EternalDrakath
 
         Core.EnsureAccept(8457);
 
-        BLOD.FindingFragmentsBlade(2000, 0);
+        BLOD.SpiritOrb(2000);
 
         Core.EquipClass(ClassType.Farm);
         Core.KillMonster("chaoslab", "r3", "Center", "Chaorrupted Moglin", "Crystallized Chaos", 800, false);

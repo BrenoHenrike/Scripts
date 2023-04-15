@@ -15,6 +15,7 @@ tags: hollowborn chaos envy, hollowborn, shadow of disdain, hollowborn envoy of 
 //cs_include Scripts/Nation/CoreNation.cs
 //cs_include Scripts/Chaos/AscendedDrakathGear.cs
 //cs_include Scripts/Chaos/EternalDrakathSet.cs
+//cs_include Scripts/Story/BattleUnder.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 //cs_include Scripts/Story/QueenofMonsters/CoreQOM.cs
 //cs_include Scripts/Story/StarSinc.cs

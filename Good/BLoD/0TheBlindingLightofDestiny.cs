@@ -9,6 +9,7 @@ tags: null
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
+//cs_include Scripts/Story/BattleUnder.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 using Skua.Core.Interfaces;
 
@@ -26,7 +27,7 @@ public class TheBlindingLightofDestiny
     {
         Core.SetOptions();
 
-        BLOD.DoAll();
+        BLOD.BlindingLightOfDestiny();
 
         Core.SetOptions(false);
     }

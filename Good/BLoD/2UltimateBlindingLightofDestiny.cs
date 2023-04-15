@@ -7,6 +7,7 @@ tags: null
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/Story/BattleUnder.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
 using Skua.Core.Interfaces;
 
@@ -30,7 +31,7 @@ public class UltimateBLoD
         if (Core.CheckInventory("Ultimate Blinding Light of Destiny"))
             return;
 
-        BLOD.DoAll();
+        BLOD.BlindingLightOfDestiny();
 
         OverwhelmedAxe();
         ShardOfAnOrb();
@@ -47,12 +48,10 @@ public class UltimateBLoD
         Core.AddDrop("Overwhelmed Axe");
         Core.FarmingLogger("Overwhelmed Axe", 1);
 
-        BLOD.FindingFragmentsBlade(250, 100);
-        BLOD.FindingFragmentsMace(10);
-
-        Core.Logger(Core.CheckInventory("Blinding Aura") ? "Blinding Aura found." : "Farming for Blinding Aura");
-        while (!Bot.ShouldExit && !Core.CheckInventory("Blinding Aura"))
-            BLOD.FindingFragments(2174);
+        BLOD.SpiritOrb(250);
+        BLOD.LoyalSpiritOrb(100);
+        BLOD.BrilliantAura(10);
+        BLOD.BlindingAura(1);
 
         Core.BuyItem("techfortress", 1902, "Overwhelmed Axe", shopItemID: 7588);
     }
@@ -81,10 +80,11 @@ public class UltimateBLoD
 
     public void PurifiedUndeadDragonEssence(int quant = 1)
     {
-        BLOD.DoAll();
-        OverwhelmedAxe();
         if (Core.CheckInventory("Purified Undead Dragon Essence"))
             return;
+
+        BLOD.BlindingLightOfDestiny();
+        OverwhelmedAxe();
 
         Core.AddDrop("Purified Undead Dragon Essence");
         Core.FarmingLogger("Purified Undead Dragon Essence", quant);
