@@ -39,7 +39,7 @@
       "null"
     ],
     "path": "CoreStory.cs",
-    "size": 29176,
+    "size": 29268,
     "fileName": "CoreStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreStory.cs"
   },
@@ -63,7 +63,7 @@
       "original drakath armor"
     ],
     "path": "Chaos/DrakathsArmor.cs",
-    "size": 2954,
+    "size": 3014,
     "fileName": "DrakathsArmor.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Chaos/DrakathsArmor.cs"
   },
@@ -89,7 +89,7 @@
       "set"
     ],
     "path": "Chaos/EternalDrakathSet.cs",
-    "size": 3185,
+    "size": 3213,
     "fileName": "EternalDrakathSet.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Chaos/EternalDrakathSet.cs"
   },
@@ -105,7 +105,7 @@
       "ascended face of chaos"
     ],
     "path": "Chaos/AscendedDrakathGear.cs",
-    "size": 2057,
+    "size": 2100,
     "fileName": "AscendedDrakathGear.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Chaos/AscendedDrakathGear.cs"
   },
@@ -1269,7 +1269,7 @@
       "metal"
     ],
     "path": "Dailies/MineCrafting.cs",
-    "size": 1083,
+    "size": 1126,
     "fileName": "MineCrafting.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/MineCrafting.cs"
   },
@@ -1349,7 +1349,7 @@
       "all"
     ],
     "path": "Dailies/0AllDailies.cs",
-    "size": 2783,
+    "size": 2826,
     "fileName": "0AllDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/0AllDailies.cs"
   },
@@ -1646,7 +1646,7 @@
       "undead"
     ],
     "path": "Good/ArchPaladin.cs",
-    "size": 10417,
+    "size": 10460,
     "fileName": "ArchPaladin.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/ArchPaladin.cs"
   },
@@ -3141,7 +3141,7 @@
       "pneuma"
     ],
     "path": "Enhancement/UnlockForgeEnhancements.cs",
-    "size": 35001,
+    "size": 35044,
     "fileName": "UnlockForgeEnhancements.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Enhancement/UnlockForgeEnhancements.cs"
   },
@@ -3164,7 +3164,7 @@
       "ultra malgor merge"
     ],
     "path": "ShadowsOfWar/UltraSpeakerMergePreReqs.cs",
-    "size": 7687,
+    "size": 7597,
     "fileName": "UltraSpeakerMergePreReqs.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/ShadowsOfWar/UltraSpeakerMergePreReqs.cs"
   },
@@ -7311,7 +7311,7 @@
       "null"
     ],
     "path": "Other/MergeShops/TechfortressWarMerge.cs",
-    "size": 11215,
+    "size": 9803,
     "fileName": "TechfortressWarMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/TechfortressWarMerge.cs"
   },
@@ -7827,7 +7827,7 @@
       "null"
     ],
     "path": "Other/Weapons/CyseroItemUpgradeQuests.cs",
-    "size": 10255,
+    "size": 10314,
     "fileName": "CyseroItemUpgradeQuests.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Weapons/CyseroItemUpgradeQuests.cs"
   },
@@ -7893,7 +7893,7 @@
       "null"
     ],
     "path": "Other/Weapons/PinkBladeofDestruction.cs",
-    "size": 2205,
+    "size": 2247,
     "fileName": "PinkBladeofDestruction.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Weapons/PinkBladeofDestruction.cs"
   },
@@ -7937,7 +7937,7 @@
       "null"
     ],
     "path": "Other/Weapons/ObsidianLightofDestiny.cs",
-    "size": 2185,
+    "size": 2111,
     "fileName": "ObsidianLightofDestiny.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Weapons/ObsidianLightofDestiny.cs"
   },
@@ -8016,7 +8016,7 @@
       "null"
     ],
     "path": "Other/FarmJoeKits/FarmerJoeLeveling.cs",
-    "size": 2962,
+    "size": 2996,
     "fileName": "FarmerJoeLeveling.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/FarmerJoeLeveling.cs"
   },
@@ -8027,7 +8027,7 @@
       "null"
     ],
     "path": "Other/FarmJoeKits/FarmerJoeKitClasses[WIP].cs",
-    "size": 3629,
+    "size": 3671,
     "fileName": "FarmerJoeKitClasses[WIP].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/FarmerJoeKitClasses[WIP].cs"
   },
@@ -8038,7 +8038,7 @@
       "null"
     ],
     "path": "Other/FarmJoeKits/FarmerJoeEndGame[WIP].cs",
-    "size": 3004,
+    "size": 3046,
     "fileName": "FarmerJoeEndGame[WIP].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/FarmerJoeEndGame[WIP].cs"
   },
@@ -8060,7 +8060,7 @@
       "null"
     ],
     "path": "Other/FarmJoeKits/FarmerJoeOutfitandPet.cs",
-    "size": 3000,
+    "size": 3042,
     "fileName": "FarmerJoeOutfitandPet.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/FarmerJoeOutfitandPet.cs"
   },
@@ -8071,7 +8071,7 @@
       "null"
     ],
     "path": "Other/FarmJoeKits/FarmerJoeKit0DoAll.cs",
-    "size": 2889,
+    "size": 2931,
     "fileName": "FarmerJoeKit0DoAll.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/FarmerJoeKit0DoAll.cs"
   },
@@ -8632,7 +8632,7 @@
       "timeinn"
     ],
     "path": "Other/Classes/DragonOfTime.cs",
-    "size": 12585,
+    "size": 12627,
     "fileName": "DragonOfTime.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/DragonOfTime.cs"
   },
@@ -8965,7 +8965,7 @@
       "thefamily"
     ],
     "path": "Army/OneClient/AllDailies.cs",
-    "size": 1654,
+    "size": 1696,
     "fileName": "AllDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/OneClient/AllDailies.cs"
   },
@@ -8996,7 +8996,7 @@
       "army"
     ],
     "path": "Army/Classes/DragonofTimeArmy.cs",
-    "size": 29998,
+    "size": 30040,
     "fileName": "DragonofTimeArmy.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Classes/DragonofTimeArmy.cs"
   },
@@ -9269,7 +9269,7 @@
       "stirring discord"
     ],
     "path": "Hollowborn/HollowbornChaosEnvoy/1StirringDiscord.cs",
-    "size": 1716,
+    "size": 1758,
     "fileName": "1StirringDiscord.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/HollowbornChaosEnvoy/1StirringDiscord.cs"
   },
@@ -9282,7 +9282,7 @@
       "wavering illusions"
     ],
     "path": "Hollowborn/HollowbornChaosEnvoy/4WaveringIllusions.cs",
-    "size": 1724,
+    "size": 1766,
     "fileName": "4WaveringIllusions.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/HollowbornChaosEnvoy/4WaveringIllusions.cs"
   },
@@ -9296,7 +9296,7 @@
       "hollowborn envoy of chaos character page badge"
     ],
     "path": "Hollowborn/HollowbornChaosEnvoy/5ShadowOfDisdain.cs",
-    "size": 1589,
+    "size": 1631,
     "fileName": "5ShadowOfDisdain.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/HollowbornChaosEnvoy/5ShadowOfDisdain.cs"
   },
@@ -9309,7 +9309,7 @@
       "unique quarry"
     ],
     "path": "Hollowborn/HollowbornChaosEnvoy/3UniqueQuarry.cs",
-    "size": 1704,
+    "size": 1746,
     "fileName": "3UniqueQuarry.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/HollowbornChaosEnvoy/3UniqueQuarry.cs"
   },
@@ -9322,7 +9322,7 @@
       "do all"
     ],
     "path": "Hollowborn/HollowbornChaosEnvoy/0RunAll.cs",
-    "size": 1660,
+    "size": 1702,
     "fileName": "0RunAll.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/HollowbornChaosEnvoy/0RunAll.cs"
   },
@@ -9333,7 +9333,7 @@
       "null"
     ],
     "path": "Hollowborn/HollowbornChaosEnvoy/CoreHollowbornChaosEnvoy.cs",
-    "size": 11067,
+    "size": 11109,
     "fileName": "CoreHollowbornChaosEnvoy.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/HollowbornChaosEnvoy/CoreHollowbornChaosEnvoy.cs"
   },
@@ -9346,7 +9346,7 @@
       "pesisting mayhem"
     ],
     "path": "Hollowborn/HollowbornChaosEnvoy/6PesistingMayhem.cs",
-    "size": 1538,
+    "size": 1580,
     "fileName": "6PesistingMayhem.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/HollowbornChaosEnvoy/6PesistingMayhem.cs"
   },
@@ -9359,7 +9359,7 @@
       "beasts shadow"
     ],
     "path": "Hollowborn/HollowbornChaosEnvoy/2InTheBeastsShadow.cs",
-    "size": 1716,
+    "size": 1758,
     "fileName": "2InTheBeastsShadow.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/HollowbornChaosEnvoy/2InTheBeastsShadow.cs"
   },
@@ -9372,7 +9372,7 @@
       "lets get you a suit"
     ],
     "path": "Hollowborn/HollowbornPaladin/LetsGetYouASuit.cs",
-    "size": 1364,
+    "size": 1406,
     "fileName": "LetsGetYouASuit.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/HollowbornPaladin/LetsGetYouASuit.cs"
   },
@@ -9385,7 +9385,7 @@
       "i got your back and your top"
     ],
     "path": "Hollowborn/HollowbornPaladin/IGotYourBackAndYourTop.cs",
-    "size": 1361,
+    "size": 1403,
     "fileName": "IGotYourBackAndYourTop.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/HollowbornPaladin/IGotYourBackAndYourTop.cs"
   },
@@ -9398,7 +9398,7 @@
       "inserthere"
     ],
     "path": "Hollowborn/HollowbornPaladin/CoreHollowbornPaladin.cs",
-    "size": 6746,
+    "size": 6782,
     "fileName": "CoreHollowbornPaladin.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/HollowbornPaladin/CoreHollowbornPaladin.cs"
   },
@@ -9411,7 +9411,7 @@
       "do all"
     ],
     "path": "Hollowborn/HollowbornPaladin/0RunAll.cs",
-    "size": 1254,
+    "size": 1296,
     "fileName": "0RunAll.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/HollowbornPaladin/0RunAll.cs"
   },
@@ -9425,7 +9425,7 @@
       "hollowborn paladin character page badge"
     ],
     "path": "Hollowborn/HollowbornPaladin/ThePostSummoning.cs",
-    "size": 1357,
+    "size": 1399,
     "fileName": "ThePostSummoning.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/HollowbornPaladin/ThePostSummoning.cs"
   },
@@ -9438,7 +9438,7 @@
       "the dark sacrifice"
     ],
     "path": "Hollowborn/HollowbornPaladin/TheDarkSacrifice.cs",
-    "size": 1517,
+    "size": 1559,
     "fileName": "TheDarkSacrifice.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/HollowbornPaladin/TheDarkSacrifice.cs"
   },
@@ -9725,7 +9725,7 @@
       "enchanted nulgath nation house"
     ],
     "path": "Nation/MergeShops/DirtlickersMerge.cs",
-    "size": 9257,
+    "size": 9299,
     "fileName": "DirtlickersMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/MergeShops/DirtlickersMerge.cs"
   },
@@ -9751,7 +9751,7 @@
       "null"
     ],
     "path": "Nation/MergeShops/NulgathDiamondMerge.cs",
-    "size": 10988,
+    "size": 11030,
     "fileName": "NulgathDiamondMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/MergeShops/NulgathDiamondMerge.cs"
   },
@@ -10104,7 +10104,7 @@
       "nulgath"
     ],
     "path": "Nation/Various/EnchantedNulgathNationHouse.cs",
-    "size": 2496,
+    "size": 2538,
     "fileName": "EnchantedNulgathNationHouse.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/EnchantedNulgathNationHouse.cs"
   },
@@ -10729,7 +10729,7 @@
       "null"
     ],
     "path": "Good/GearOfAwe/Awescended.cs",
-    "size": 9776,
+    "size": 9818,
     "fileName": "Awescended.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/GearOfAwe/Awescended.cs"
   },
@@ -10784,13 +10784,13 @@
       "null"
     ],
     "path": "Good/BLoD/UnlockMineCrafting[Artix-Quests].cs",
-    "size": 1150,
+    "size": 1192,
     "fileName": "UnlockMineCrafting[Artix-Quests].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/UnlockMineCrafting[Artix-Quests].cs"
   },
   {
     "name": "FindingFragments",
-    "description": "Does the \"finding fragments with blinding [insert] of destiny for the quest rewards.",
+    "description": "Does the \"Finding Fragments with Blinding [weapon] of Destiny\" for the quest rewards.",
     "tags": [
       "finding fragments",
       "blinding light fragments",
@@ -10801,7 +10801,7 @@
       "blinding aura"
     ],
     "path": "Good/BLoD/FindingFragments.cs",
-    "size": 3101,
+    "size": 1694,
     "fileName": "FindingFragments.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/FindingFragments.cs"
   },
@@ -10812,7 +10812,7 @@
       "null"
     ],
     "path": "Good/BLoD/1SanctifiedLightofDestiny.cs",
-    "size": 853,
+    "size": 1533,
     "fileName": "1SanctifiedLightofDestiny.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/1SanctifiedLightofDestiny.cs"
   },
@@ -10823,7 +10823,7 @@
       "null"
     ],
     "path": "Good/BLoD/2UltimateBlindingLightofDestiny.cs",
-    "size": 3916,
+    "size": 3804,
     "fileName": "2UltimateBlindingLightofDestiny.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/2UltimateBlindingLightofDestiny.cs"
   },
@@ -10834,7 +10834,7 @@
       "null"
     ],
     "path": "Good/BLoD/SoulSearching.cs",
-    "size": 1577,
+    "size": 656,
     "fileName": "SoulSearching.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/SoulSearching.cs"
   },
@@ -10845,7 +10845,7 @@
       "null"
     ],
     "path": "Good/BLoD/CoreBLOD.cs",
-    "size": 28029,
+    "size": 20568,
     "fileName": "CoreBLOD.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/CoreBLOD.cs"
   },
@@ -10856,7 +10856,7 @@
       "null"
     ],
     "path": "Good/BLoD/0TheBlindingLightofDestiny.cs",
-    "size": 836,
+    "size": 895,
     "fileName": "0TheBlindingLightofDestiny.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/0TheBlindingLightofDestiny.cs"
   },
@@ -10871,7 +10871,7 @@
       "good"
     ],
     "path": "Good/BLoD/SpiritOrbs.cs",
-    "size": 734,
+    "size": 776,
     "fileName": "SpiritOrbs.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/SpiritOrbs.cs"
   },
@@ -10904,7 +10904,7 @@
       "null"
     ],
     "path": "Evil/NSoD/CoreNSOD.cs",
-    "size": 16458,
+    "size": 15728,
     "fileName": "CoreNSOD.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/NSoD/CoreNSOD.cs"
   },
@@ -15462,7 +15462,7 @@
       "null"
     ],
     "path": "Other/Classes/ArchMage/CoreArchMage.cs",
-    "size": 22819,
+    "size": 22854,
     "fileName": "CoreArchMage.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/ArchMage/CoreArchMage.cs"
   },
@@ -15473,7 +15473,7 @@
       "null"
     ],
     "path": "Other/Classes/ArchMage/UnboundTome.cs",
-    "size": 881,
+    "size": 923,
     "fileName": "UnboundTome.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/ArchMage/UnboundTome.cs"
   },
@@ -15484,7 +15484,7 @@
       "null"
     ],
     "path": "Other/Classes/ArchMage/0ArchMage.cs",
-    "size": 868,
+    "size": 910,
     "fileName": "0ArchMage.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/ArchMage/0ArchMage.cs"
   },
@@ -15495,7 +15495,7 @@
       "null"
     ],
     "path": "Other/Classes/ArchMage/LuminaElementi.cs",
-    "size": 892,
+    "size": 934,
     "fileName": "LuminaElementi.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/ArchMage/LuminaElementi.cs"
   },
@@ -16054,7 +16054,7 @@
       "null"
     ],
     "path": "Good/BLoD/WeaponKits/BasicWeaponKits.cs",
-    "size": 647,
+    "size": 689,
     "fileName": "BasicWeaponKits.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/WeaponKits/BasicWeaponKits.cs"
   },
@@ -16065,7 +16065,7 @@
       "null"
     ],
     "path": "Good/BLoD/WeaponKits/AdvancedWeaponKit.cs",
-    "size": 654,
+    "size": 696,
     "fileName": "AdvancedWeaponKit.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/WeaponKits/AdvancedWeaponKit.cs"
   },
@@ -16076,7 +16076,7 @@
       "null"
     ],
     "path": "Good/BLoD/WeaponKits/UltimateWeaponKit.cs",
-    "size": 670,
+    "size": 704,
     "fileName": "UltimateWeaponKit.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/WeaponKits/UltimateWeaponKit.cs"
   },
@@ -16646,7 +16646,7 @@
       "null"
     ],
     "path": "Other/Classes/ArchMage/Books/5BookOfArcana.cs",
-    "size": 1281,
+    "size": 1323,
     "fileName": "5BookOfArcana.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/ArchMage/Books/5BookOfArcana.cs"
   },
@@ -16657,7 +16657,7 @@
       "null"
     ],
     "path": "Other/Classes/ArchMage/Books/1BookOfMagus.cs",
-    "size": 1278,
+    "size": 1320,
     "fileName": "1BookOfMagus.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/ArchMage/Books/1BookOfMagus.cs"
   },
@@ -16668,7 +16668,7 @@
       "null"
     ],
     "path": "Other/Classes/ArchMage/Books/3BookOfIce.cs",
-    "size": 1272,
+    "size": 1314,
     "fileName": "3BookOfIce.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/ArchMage/Books/3BookOfIce.cs"
   },
@@ -16679,7 +16679,7 @@
       "null"
     ],
     "path": "Other/Classes/ArchMage/Books/4BookOfAether.cs",
-    "size": 1281,
+    "size": 1323,
     "fileName": "4BookOfAether.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/ArchMage/Books/4BookOfAether.cs"
   },
@@ -16690,7 +16690,7 @@
       "null"
     ],
     "path": "Other/Classes/ArchMage/Books/2BookOfFire.cs",
-    "size": 1275,
+    "size": 1317,
     "fileName": "2BookOfFire.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/ArchMage/Books/2BookOfFire.cs"
   }
