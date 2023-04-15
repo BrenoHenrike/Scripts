@@ -185,8 +185,6 @@ public class CoreBots
                             Process.Start("explorer", DiscordLink);
                     });
 
-                    Bot.Drops.CurrentDropInfos.First().File
-
                     // Butler directory cleaning
                     if (Directory.Exists(ButlerLogDir))
                     {
