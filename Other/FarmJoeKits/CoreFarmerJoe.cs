@@ -163,21 +163,21 @@ public class CoreFarmerJoe
             Core.Equip(Core.SoloClass);
 
             //Temporary Weapon #2
+            Core.RegisterQuests(4007);
             Core.HuntMonster("oaklore", "Bone Berserker", "Venom Head", isTemp: false, log: false);
             Bot.Wait.ForPickup("Venom Head");
             Core.Equip("Venom Head");
-            Bot.Wait.ForItemEquip("Venom Head");
+            Bot.Wait.ForItemEquip("Venom Head", 40);
             Core.SellItem("Battle Oracle Battlestaff");
 
             Core.Logger("Leveling to 10 in tutorial Area");
-            Core.RegisterQuests(4007);
             while (!Bot.ShouldExit && Bot.Player.Level < 10)
                 Core.HuntMonster("oaklore", "Bone Berserker", log: false);
             Core.CancelRegisteredQuests();
         }
 
         Core.Logger("Checking if farming quest is unlocked.");
-        if (Core.isCompletedBefore(178))
+        if (!Core.isCompletedBefore(178))
         {
             Story.KillQuest(183, "portalundead", "Skeletal Fire Mage");
             Story.KillQuest(176, "swordhavenundead", "Skeletal Soldier", false);
@@ -194,7 +194,6 @@ public class CoreFarmerJoe
         }
         Farm.BladeofAweREP(6);
         Core.Equip("Blade of Awe");
-
 
         if (Bot.Player.Level < 30)
         {
