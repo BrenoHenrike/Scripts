@@ -64,7 +64,7 @@ public class CoreNSOD
         if (!Core.CheckInventory("Necrotic Sword of Doom"))
         {
             Barium();
-            if (Bot.Config.Get<bool>("PreFarm"))
+            if (Bot.Config!.Get<bool>("PreFarm"))
             {
                 VoidAuras(7500);
                 CavernCelestite(1600);
@@ -120,7 +120,7 @@ public class CoreNSOD
         if (Core.CheckInventory("Void Aura", quant))
             return;
 
-        if (Bot.Config.Get<bool>("GetSDKA") && Core.IsMember)
+        if (Bot.Config!.Get<bool>("GetSDKA") && Core.IsMember)
             SDKA.DoAll();
 
         CommandingShadowEssences(quant);
@@ -178,7 +178,7 @@ public class CoreNSOD
         if (Core.CheckInventory("Void Aura", quant))
             return;
 
-        int Essencequant = Bot.Config.Get<bool>("MaxStack") ? 100 : 20;
+        int Essencequant = Bot.Config!.Get<bool>("MaxStack") ? 100 : 20;
 
         Farm.EvilREP();
         Core.AddDrop("Void Aura");
