@@ -168,7 +168,6 @@ public class CoreBots
             Bot.Events.MonsterKilled += KilledMonsterListener;
             Bot.Events.ExtensionPacketReceived += RespawnListener;
 
-
             Bot.Drops.Start();
 
             Logger("Bot Configured");
@@ -185,6 +184,8 @@ public class CoreBots
                                 true, true, true))
                             Process.Start("explorer", DiscordLink);
                     });
+
+                    Bot.Drops.CurrentDropInfos.First().File
 
                     // Butler directory cleaning
                     if (Directory.Exists(ButlerLogDir))
@@ -1396,16 +1397,12 @@ public class CoreBots
         List<Quest>? quests = Bot.Quests.Tree.Where(x => questIDs.Contains(x.ID)).ToList();
         if (quests.Count == questIDs.Length)
             return quests;
-        List<int> missing = questIDs.Where(x => !quests.Any(y => y.ID == x)).ToList();
 
-        Bot.Sleep(ActionDelay);
-        for (int i = 0; i < missing.Count; i = i + 30)
-        {
-            Bot.Quests.Load(missing.ToArray()[i..(missing.Count > i ? missing.Count : i + 30)]);
-            Bot.Sleep(1500);
-        }
+        List<int> missing = questIDs.Where(x => !quests.Any(y => y.ID == x)).ToList();
+        Bot.Quests.Load(missing.ToArray());
+
         List<Quest>? toReturn = Bot.Quests.Tree.Where(x => questIDs.Contains(x.ID)).ToList();
-        if (toReturn.Count() <= 0 || toReturn == null)
+        if (toReturn == null || !toReturn.Any())
         {
             Logger($"Failed to get the Quest Object for questIDs {String.Join(" | ", questIDs)}" + reinstallCleanFlash, messageBox: true, stopBot: true);
             return new();
