@@ -602,7 +602,7 @@ public class CoreBots
 
                 if (!Bot.Bank.EnsureToInventory(item))
                 {
-                    Logger($"Failed to unbank {item}, skipping it", messageBox: true);
+                    Logger($"Failed to unbank {Bot.Bank.GetItem(item)?.Name ?? item.ToString()}, skipping it", messageBox: true);
                     continue;
                 }
                 Logger($"{Bot.Inventory.GetItem(item)?.Name ?? item.ToString()} moved from bank");
