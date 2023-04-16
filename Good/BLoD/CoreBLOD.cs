@@ -291,9 +291,10 @@ public class CoreBLOD
 
         Core.AddDrop(Core.QuestRewards(quest).Append("Blinding Light Fragments").ToArray());
         Core.EquipClass(ClassType.Farm);
+        Core.FarmingLogger(item, quant);
 
         Core.RegisterQuests(quest);
-        Core.KillMonster("battleunderb", "Enter", "Spawn", "*", item, quant, isTemp: false);
+        Core.KillMonster("battleunderb", "Enter", "Spawn", "*", item, quant, log: false, isTemp: false);
         Core.CancelRegisteredQuests();
     }
 
