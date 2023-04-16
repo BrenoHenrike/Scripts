@@ -3141,7 +3141,7 @@
       "pneuma"
     ],
     "path": "Enhancement/UnlockForgeEnhancements.cs",
-    "size": 35044,
+    "size": 35001,
     "fileName": "UnlockForgeEnhancements.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Enhancement/UnlockForgeEnhancements.cs"
   },
@@ -8049,7 +8049,7 @@
       "null"
     ],
     "path": "Other/FarmJoeKits/CoreFarmerJoe.cs",
-    "size": 17319,
+    "size": 17323,
     "fileName": "CoreFarmerJoe.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/CoreFarmerJoe.cs"
   },
@@ -10801,7 +10801,7 @@
       "blinding aura"
     ],
     "path": "Good/BLoD/FindingFragments.cs",
-    "size": 1694,
+    "size": 1697,
     "fileName": "FindingFragments.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/FindingFragments.cs"
   },

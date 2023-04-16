@@ -20,7 +20,7 @@ public class FindingFragments_Any
     private CoreBLOD BLOD = new();
     private CoreStory Story = new();
 
-    public string OptionStorage = "Finding_Fragments";
+    public string OptionStorage = "Finding_FragmentsV2";
     public List<IOption> Options = new()
     {
         new Option<WeaponOfDestiny>("questID", "Weapon Type", "Select which quest variant you want to do", WeaponOfDestiny.Blade)

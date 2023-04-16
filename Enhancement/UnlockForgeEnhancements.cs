@@ -50,7 +50,6 @@ tags: lacerate, smite, herosvaliance, arcanasconcerto, elysium, acheron, absolut
 //cs_include Scripts/Other/Classes/Necromancer.cs
 //cs_include Scripts/Nation/Various/GoldenHanzoVoid.cs
 //cs_include Scripts/Nation/AFDL/WillpowerExtraction.cs
-//cs_include Scripts/Story/BattleUnder.cs
 //cs_include Scripts/Good/GearOfAwe/ArmorOfAwe.cs
 //cs_include Scripts/Good/GearOfAwe/HelmOfAwe.cs
 //cs_include Scripts/Good/SilverExaltedPaladin.cs
