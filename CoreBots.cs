@@ -1406,11 +1406,12 @@ public class CoreBots
         List<int> missing = questIDs.Where(x => !quests.Any(y => y.ID == x)).ToList();
         Bot.Quests.Load(missing.ToArray());
         Bot.Sleep(1500);
+        Bot.Wait.ForTrue(() => questIDs.All(id => Bot.Quests.Tree.Any(q => q.ID == id)), 20);
 
         List<Quest>? toReturn = Bot.Quests.Tree.Where(x => questIDs.Contains(x.ID)).ToList();
         if (toReturn == null || !toReturn.Any())
         {
-            Logger($"Failed to get the Quest Object for questIDs {String.Join(" | ", questIDs)}" + reinstallCleanFlash, "EnsureLoad B.2", messageBox: true, stopBot: true);
+            Logger($"Failed to get the Quest Object for questIDs {String.Join(" | ", questIDs)}" + reinstallCleanFlash, "EnsureLoad B.3", messageBox: true, stopBot: true);
             return new();
         }
 
@@ -1429,7 +1430,7 @@ public class CoreBots
     //        return toReturn;
 
     //    // Otherwise try file on Github
-    //    toReturn = (OnlineQuestsFile ??= JsonConvert.DeserializeObject<List<Quest>?>(GetGithubQuestFile().Result))?
+    //    toReturn = (OnlineQuestsFile ??= JsonConvert.DeserializeObject<List<QuestData>?>(GetGithubQuestFile().Result))?
     //                .Where(q => questIDs.Contains(q.ID)).ToList();
     //    if (toReturn != null && toReturn.Any() && questIDs.All(q => toReturn.Any(x => x.ID == q)))
     //        return toReturn;
@@ -1456,6 +1457,7 @@ public class CoreBots
     //        });
     //        return toReturn;
     //    }
+
 
     //}
     //private List<QuestData>? LocalQuestsFile;
@@ -3721,4 +3723,36 @@ public enum ClassType
     Solo,
     Farm,
     None
+}
+
+public static class QuestUtils
+{
+    static Quest toQuest(this QuestData data)
+    {
+        return new Quest()
+        {
+            ID = data.ID,
+            Slot = data.Slot,
+            Value = data.Value,
+            Name = data.Name,
+            Description = String.Empty, // Not found in QuestData
+            EndText = String.Empty, // Not found in QuestData
+            Once = data.Once,
+            Field = data.Field,
+            Index = data.Index,
+            Upgrade = data.Upgrade,
+            Level = data.Level,
+            RequiredClassID = data.RequiredClassID,
+            RequiredClassPoints = data.RequiredClassPoints,
+            RequiredFactionId = data.RequiredFactionId,
+            RequiredFactionRep = data.RequiredFactionRep,
+            Gold = data.Gold,
+            XP = data.XP,
+            Status = null!, // Not found in QuestData
+            //Active is based on Status being NULL or not
+            AcceptRequirements = data.AcceptRequirements,
+            //Requirements cant be writen to
+            Rewards = data.Rewards
+        };
+    }
 }
