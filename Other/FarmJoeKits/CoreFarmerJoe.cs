@@ -159,15 +159,7 @@ public class CoreFarmerJoe
                 Core.SellItem(DefaultWep.Name);
 
             if (Core.SoloClass == "Generic")
-            {
                 Core.SoloClass = "Oracle";
-                Core.FarmClass = "Oracle";
-            }
-            else
-            {
-                Core.SoloClass = Core.SoloClass;
-                Core.FarmClass = Core.FarmClass;
-            }
 
             Core.Equip(Core.SoloClass);
 
@@ -185,6 +177,9 @@ public class CoreFarmerJoe
             Core.CancelRegisteredQuests();
             InvEn.EnhanceInventory(EnhancementType.Wizard);
         }
+
+        if (Core.SoloClass == "Generic")
+            Core.SoloClass = "Oracle";
 
         Core.Logger("Checking if farming quest is unlocked.");
         if (!Core.isCompletedBefore(178))
@@ -224,6 +219,9 @@ public class CoreFarmerJoe
 
     public void Level30to75()
     {
+        if (Core.SoloClass == "Generic")
+            Core.SoloClass = "Oracle";
+
         #region Obtain Boost Weapons
         //Arcane Blade of Glory / Shadow Blade of Despair (+20% xp)
         Core.Logger("Arcane Blade of Glory / Shadow Blade of Despair (+20% xp)");
@@ -327,6 +325,11 @@ public class CoreFarmerJoe
 
     public void Level75to100()
     {
+        if (Core.SoloClass == "Generic")
+            Core.SoloClass = "ArchPaladin";
+        if (Core.FarmClass == "Generic")
+            Core.FarmClass = "Eternal Inversionist";
+
         InvEn.EnhanceInventory();
         #region Prepare for Lvl100
         // P1: Healer for xiang
@@ -347,12 +350,6 @@ public class CoreFarmerJoe
             Adv.rankUpClass("Dragon of Time");
         }
 
-        if (Core.SoloClass == "Generic")
-            Core.SoloClass = "ArchPaladin";
-        if (Core.FarmClass == "Generic")
-            Core.FarmClass = "Eternal Inversionist";
-
-
         //P2 Chaos Shenanagins
         Core.Logger("P2: Chaos Shenanagins");
 
@@ -372,7 +369,6 @@ public class CoreFarmerJoe
         Core.Logger("P3 - 2: Blade and Cape of Awe");
         Core.ToBank("Blade of Awe");
         Adv.BuyItem("museum", 631, "Awethur's Accoutrements");
-        Core.Equip("Awethur's Accoutrements");
         COA.GetCoA();
         Adv.BestGear(GearBoost.dmgAll);
         InvEn.EnhanceInventory();
