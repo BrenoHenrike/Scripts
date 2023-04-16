@@ -828,14 +828,14 @@ public class CoreBots
             string? questName = Bot.Flash.GetGameObject<List<dynamic>>("world.shopinfo.items")?.Find(d => d.ItemID == item.ID)?.sQuest;
             if (!String.IsNullOrEmpty(questName))
             {
-                var v = JsonConvert.DeserializeObject<dynamic[]>(File.ReadAllText(ClientFileSources.SkuaQuestsFile));
+                var v = JsonConvert.DeserializeObject<List<QuestData>?>(File.ReadAllText(ClientFileSources.SkuaQuestsFile));
                 if (v != null)
                 {
-                    List<int> ids = v.Where(x => x.Name == questName).Select(q => (int)q.ID).ToList();
-                    if (ids.Count > 0)
+                    List<int> ids = v.Where(x => x.Name == questName).Select(q => q.ID).ToList();
+                    if (ids.Any())
                     {
                         List<Quest> quests = EnsureLoad(ids.Where(q => !isCompletedBefore(q)).ToArray());
-                        if (quests.Count > 0)
+                        if (quests.Any())
                         {
                             string s = String.Empty;
                             quests.ForEach(q => s += $"[{q.ID}] |");
@@ -1405,15 +1405,61 @@ public class CoreBots
 
         List<int> missing = questIDs.Where(x => !quests.Any(y => y.ID == x)).ToList();
         Bot.Quests.Load(missing.ToArray());
+        Bot.Sleep(1500);
 
         List<Quest>? toReturn = Bot.Quests.Tree.Where(x => questIDs.Contains(x.ID)).ToList();
         if (toReturn == null || !toReturn.Any())
         {
-            Logger($"[{(toReturn == null ? 1 : 0)}{(toReturn != null && !toReturn.Any() ? 1 : 0)}{(toReturn?.Count())}] Failed to get the Quest Object for questIDs {String.Join(" | ", questIDs)}" + reinstallCleanFlash, "EnsureLoad B.1", messageBox: true, stopBot: true);
+            Logger($"Failed to get the Quest Object for questIDs {String.Join(" | ", questIDs)}" + reinstallCleanFlash, "EnsureLoad B.2", messageBox: true, stopBot: true);
             return new();
         }
+
         return toReturn;
     }
+
+    //public List<Quest> EnsureLoadFromFile(params int[] questIDs)
+    //{
+    //    List<Quest>? toReturn;
+    //    // First try local Quest.txt file
+    //    toReturn = (LocalQuestsFile ??= JsonConvert.DeserializeObject<List<QuestData>?>(File.ReadAllText(ClientFileSources.SkuaQuestsFile)))?
+    //        .Where(q => questIDs.Contains(q.ID)).Select(x => new Quest() { ID = x.ID, }).ToList();
+    //    Bot.Log(LocalQuestsFile.Select(x => x.ID.ToString()).Join('\n'));
+    //    Bot.Log(LocalQuestsFile.Count().ToString());
+    //    if (toReturn != null && toReturn.Any() && questIDs.All(q => toReturn.Any(x => x.ID == q)))
+    //        return toReturn;
+
+    //    // Otherwise try file on Github
+    //    toReturn = (OnlineQuestsFile ??= JsonConvert.DeserializeObject<List<Quest>?>(GetGithubQuestFile().Result))?
+    //                .Where(q => questIDs.Contains(q.ID)).ToList();
+    //    if (toReturn != null && toReturn.Any() && questIDs.All(q => toReturn.Any(x => x.ID == q)))
+    //        return toReturn;
+
+    //    Bot.Log(OnlineQuestsFile.Count().ToString());
+    //    Bot.Log(OnlineQuestsFile.Count().ToString());
+    //    // Failure
+    //    Logger($"[{(toReturn == null ? 1 : 0)}{(toReturn != null && !toReturn.Any() ? 1 : 0)}{(toReturn?.Count())}] Failed to get the Quest Object for questIDs {String.Join(" | ", questIDs)}", "EnsureLoad C.0", messageBox: true, stopBot: true);
+    //    return new();
+
+    //    async Task<string> GetGithubQuestFile()
+    //    {
+    //        string toReturn = string.Empty;
+    //        HttpClient client = new HttpClient();
+    //        client.DefaultRequestHeaders.UserAgent.ParseAdd("Mozilla/5.0");
+
+    //        await Task.Run(async () =>
+    //        {
+    //            try
+    //            {
+    //                toReturn = await client.GetStringAsync("https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/QuestData.json");
+    //            }
+    //            catch { }
+    //        });
+    //        return toReturn;
+    //    }
+
+    //}
+    //private List<QuestData>? LocalQuestsFile;
+    //private List<QuestData>? OnlineQuestsFile;
 
     public void AbandonQuest(params int[] questIDs)
     {
