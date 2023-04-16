@@ -38,7 +38,17 @@ public class FindingFragments_Any
 
     public void FindingFragments()
     {
-        foreach (ItemBase item in Core.EnsureLoad((int)Bot.Config!.Get<WeaponOfDestiny>("questID")).Rewards)
+        int quest = (Bot.Config!.Get<WeaponOfDestiny>("questID")) switch
+        {
+            WeaponOfDestiny.Bow => 2174,
+            WeaponOfDestiny.Daggers => 2175,
+            WeaponOfDestiny.Mace => 2176,
+            WeaponOfDestiny.Scythe => 2177,
+            WeaponOfDestiny.Broadsword => 2178,
+            WeaponOfDestiny.Blade => 2179,
+            _ => 0,
+        };
+        foreach (ItemBase item in Core.EnsureLoad(quest).Rewards)
         {
             BLOD.FindingFragments(Bot.Config.Get<WeaponOfDestiny>("questID"), item.Name, item.MaxStack);
             Core.Logger($"{item.Name} has reached max stack ({item.MaxStack})");
