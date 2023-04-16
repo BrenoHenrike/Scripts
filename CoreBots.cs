@@ -1409,7 +1409,7 @@ public class CoreBots
         List<Quest>? toReturn = Bot.Quests.Tree.Where(x => questIDs.Contains(x.ID)).ToList();
         if (toReturn == null || !toReturn.Any())
         {
-            Logger($"Failed to get the Quest Object for questIDs {String.Join(" | ", questIDs)}" + reinstallCleanFlash, "EnsureLoad B.0", messageBox: true, stopBot: true);
+            Logger($"[{(toReturn == null ? 1 : 0)}{(toReturn != null && !toReturn.Any() ? 1 : 0)}{(toReturn?.Count())}] Failed to get the Quest Object for questIDs {String.Join(" | ", questIDs)}" + reinstallCleanFlash, "EnsureLoad B.1", messageBox: true, stopBot: true);
             return new();
         }
         return toReturn;
