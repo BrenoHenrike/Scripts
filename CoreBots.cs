@@ -565,8 +565,8 @@ public class CoreBots
             if (Bot.Bank.Contains(item))
             {
                 Bot.Sleep(ActionDelay);
-                if (Bot.Inventory.FreeSlots == 0)
-                    Logger("Your inventory is full, please clean it and restart the bot", messageBox: true, stopBot: true);
+                if (Bot.Inventory.FreeSlots == 0 && Bot.Inventory.Slots != 0 && Bot.Inventory.UsedSlots <= Bot.Inventory.Slots)
+                    Logger($"Your inventory is full ({Bot.Inventory.UsedSlots}/{Bot.Inventory.Slots}), please clean it and restart the bot", messageBox: true, stopBot: true);
 
                 if (!Bot.Bank.EnsureToInventory(item))
                 {
@@ -597,8 +597,8 @@ public class CoreBots
             if (Bot.Bank.Contains(item))
             {
                 Bot.Sleep(ActionDelay);
-                if (Bot.Inventory.FreeSlots == 0)
-                    Logger("Your inventory is full, please clean it and restart the bot", messageBox: true, stopBot: true);
+                if (Bot.Inventory.FreeSlots == 0 && Bot.Inventory.Slots != 0 && Bot.Inventory.UsedSlots <= Bot.Inventory.Slots)
+                    Logger($"Your inventory is full ({Bot.Inventory.UsedSlots}/{Bot.Inventory.Slots}), please clean it and restart the bot", messageBox: true, stopBot: true);
 
                 if (!Bot.Bank.EnsureToInventory(item))
                 {
