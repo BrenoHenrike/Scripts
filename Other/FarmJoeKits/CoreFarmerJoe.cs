@@ -187,17 +187,21 @@ public class CoreFarmerJoe
 
         if (Bot.Player.Level < 28)
         {
+            InvEn.EnhanceInventory(EnhancementType.Wizard);
             Core.RegisterQuests(178);
             while (!Bot.ShouldExit && Bot.Player.Level < 28)
                 Core.HuntMonster("swordhavenundead", "Undead Giant", log: false);
             Core.CancelRegisteredQuests();
-            InvEn.EnhanceInventory(EnhancementType.Wizard);
         }
+        InvEn.EnhanceInventory(EnhancementType.Wizard);
+        Adv.rankUpClass("Oracle");
+        Core.ToBank("Healer");
         Farm.BladeofAweREP(6);
         Core.Equip("Blade of Awe");
 
         if (Bot.Player.Level < 30)
         {
+            InvEn.EnhanceInventory(EnhancementType.Wizard);
             Core.RegisterQuests(6294);
             while (!Bot.ShouldExit && Bot.Player.Level < 30)
                 Core.HuntMonster("firewar", "Fire Drakel", log: false);
