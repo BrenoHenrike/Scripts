@@ -1404,64 +1404,97 @@ public class CoreBots
             return quests;
 
         List<int> missing = questIDs.Where(x => !quests.Any(y => y.ID == x)).ToList();
-        Bot.Quests.Load(missing.ToArray());
-        Bot.Sleep(1500);
+        Bot.Sleep(ActionDelay);
+        for (int i = 0; i < missing.Count; i = i + 30)
+        {
+            Bot.Quests.Load(missing.ToArray()[i..(missing.Count > i ? missing.Count : i + 30)]);
+            Bot.Sleep(1500);
+        }
         Bot.Wait.ForTrue(() => questIDs.All(id => Bot.Quests.Tree.Any(q => q.ID == id)), 20);
 
         List<Quest>? toReturn = Bot.Quests.Tree.Where(x => questIDs.Contains(x.ID)).ToList();
         if (toReturn == null || !toReturn.Any())
         {
-            Logger($"Failed to get the Quest Object for questIDs {String.Join(" | ", questIDs)}" + reinstallCleanFlash, "EnsureLoad B.3", messageBox: true, stopBot: true);
+            Logger($"Failed to get the Quest Object for questIDs {String.Join(" | ", questIDs)}" + reinstallCleanFlash, "EnsureLoad B.4", messageBox: true, stopBot: true);
             return new();
         }
 
         return toReturn;
     }
 
-    //public List<Quest> EnsureLoadFromFile(params int[] questIDs)
-    //{
-    //    List<Quest>? toReturn;
-    //    // First try local Quest.txt file
-    //    toReturn = (LocalQuestsFile ??= JsonConvert.DeserializeObject<List<QuestData>?>(File.ReadAllText(ClientFileSources.SkuaQuestsFile)))?
-    //        .Where(q => questIDs.Contains(q.ID)).Select(x => new Quest() { ID = x.ID, }).ToList();
-    //    Bot.Log(LocalQuestsFile.Select(x => x.ID.ToString()).Join('\n'));
-    //    Bot.Log(LocalQuestsFile.Count().ToString());
-    //    if (toReturn != null && toReturn.Any() && questIDs.All(q => toReturn.Any(x => x.ID == q)))
-    //        return toReturn;
+    public List<Quest> EnsureLoadFromFile(params int[] questIDs)
+    {
+        List<Quest>? toReturn;
+        // First try local Quest.txt file (if its not too old)
+        if (File.GetLastWriteTime(ClientFileSources.SkuaQuestsFile).Subtract(DateTime.Now).TotalDays < 14 && LoadLocal())
+            return toReturn!;
 
-    //    // Otherwise try file on Github
-    //    toReturn = (OnlineQuestsFile ??= JsonConvert.DeserializeObject<List<QuestData>?>(GetGithubQuestFile().Result))?
-    //                .Where(q => questIDs.Contains(q.ID)).ToList();
-    //    if (toReturn != null && toReturn.Any() && questIDs.All(q => toReturn.Any(x => x.ID == q)))
-    //        return toReturn;
+        // Otherwise try file on Github
+        toReturn = (OnlineQuestsFile ??= JsonConvert.DeserializeObject<List<QuestData>?>(GetGithubQuestFile().Result))?
+                    .Where(q => questIDs.Contains(q.ID)).Select(q => toQuest(q)).ToList();
+        if (toReturn != null && toReturn.Any() && questIDs.All(q => toReturn.Any(x => x.ID == q)))
+            return toReturn;
 
-    //    Bot.Log(OnlineQuestsFile.Count().ToString());
-    //    Bot.Log(OnlineQuestsFile.Count().ToString());
-    //    // Failure
-    //    Logger($"[{(toReturn == null ? 1 : 0)}{(toReturn != null && !toReturn.Any() ? 1 : 0)}{(toReturn?.Count())}] Failed to get the Quest Object for questIDs {String.Join(" | ", questIDs)}", "EnsureLoad C.0", messageBox: true, stopBot: true);
-    //    return new();
+        // Failure
+        Logger($"[{(toReturn == null ? 1 : 0)}{(toReturn != null && !toReturn.Any() ? 1 : 0)}{(toReturn?.Count())}] Failed to get the Quest Object for questIDs {String.Join(" | ", questIDs)}", "EnsureLoad C.0", messageBox: true, stopBot: true);
+        return new();
 
-    //    async Task<string> GetGithubQuestFile()
-    //    {
-    //        string toReturn = string.Empty;
-    //        HttpClient client = new HttpClient();
-    //        client.DefaultRequestHeaders.UserAgent.ParseAdd("Mozilla/5.0");
+        bool LoadLocal()
+        {
+            toReturn = (LocalQuestsFile ??= JsonConvert.DeserializeObject<List<QuestData>?>(File.ReadAllText(ClientFileSources.SkuaQuestsFile)))?
+                .Where(q => questIDs.Contains(q.ID)).Select(q => toQuest(q)).ToList();
+            return !(toReturn != null && toReturn.Any() && questIDs.All(q => toReturn.Any(x => x.ID == q)));
+        }
 
-    //        await Task.Run(async () =>
-    //        {
-    //            try
-    //            {
-    //                toReturn = await client.GetStringAsync("https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/QuestData.json");
-    //            }
-    //            catch { }
-    //        });
-    //        return toReturn;
-    //    }
+        async Task<string> GetGithubQuestFile()
+        {
+            string toReturn = string.Empty;
+            HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.UserAgent.ParseAdd("Mozilla/5.0");
 
+            await Task.Run(async () =>
+            {
+                try
+                {
+                    toReturn = await client.GetStringAsync("https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/QuestData.json");
+                }
+                catch { }
+            });
+            return toReturn;
+        }
 
-    //}
-    //private List<QuestData>? LocalQuestsFile;
-    //private List<QuestData>? OnlineQuestsFile;
+        Quest toQuest(QuestData data)
+        {
+            return new Quest()
+            {
+                ID = data.ID,
+                Slot = data.Slot,
+                Value = data.Value,
+                Name = data.Name,
+                Description = String.Empty, // Not found in QuestData
+                EndText = String.Empty, // Not found in QuestData
+                Once = data.Once,
+                Field = data.Field,
+                Index = data.Index,
+                Upgrade = data.Upgrade,
+                Level = data.Level,
+                RequiredClassID = data.RequiredClassID,
+                RequiredClassPoints = data.RequiredClassPoints,
+                RequiredFactionId = data.RequiredFactionId,
+                RequiredFactionRep = data.RequiredFactionRep,
+                Gold = data.Gold,
+                XP = data.XP,
+                Status = null!, // Not found in QuestData
+                //Active is based on Status being NULL or not
+                AcceptRequirements = data.AcceptRequirements,
+                //Requirements cant be writen to
+                Rewards = data.Rewards,
+                SimpleRewards = data.SimpleRewards,
+            };
+        }
+    }
+    private List<QuestData>? LocalQuestsFile;
+    private List<QuestData>? OnlineQuestsFile;
 
     public void AbandonQuest(params int[] questIDs)
     {
@@ -3723,36 +3756,4 @@ public enum ClassType
     Solo,
     Farm,
     None
-}
-
-public static class QuestUtils
-{
-    static Quest toQuest(this QuestData data)
-    {
-        return new Quest()
-        {
-            ID = data.ID,
-            Slot = data.Slot,
-            Value = data.Value,
-            Name = data.Name,
-            Description = String.Empty, // Not found in QuestData
-            EndText = String.Empty, // Not found in QuestData
-            Once = data.Once,
-            Field = data.Field,
-            Index = data.Index,
-            Upgrade = data.Upgrade,
-            Level = data.Level,
-            RequiredClassID = data.RequiredClassID,
-            RequiredClassPoints = data.RequiredClassPoints,
-            RequiredFactionId = data.RequiredFactionId,
-            RequiredFactionRep = data.RequiredFactionRep,
-            Gold = data.Gold,
-            XP = data.XP,
-            Status = null!, // Not found in QuestData
-            //Active is based on Status being NULL or not
-            AcceptRequirements = data.AcceptRequirements,
-            //Requirements cant be writen to
-            Rewards = data.Rewards
-        };
-    }
 }
