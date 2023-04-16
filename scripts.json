@@ -6,7 +6,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 150008,
+    "size": 150051,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -10778,65 +10778,74 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/GearOfAwe/ArmorOfAwe.cs"
   },
   {
-    "name": "UnlockMineCrafting[Artix-Quests]",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Good/BLoD/UnlockMineCrafting[Artix-Quests].cs",
-    "size": 1192,
-    "fileName": "UnlockMineCrafting[Artix-Quests].cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/UnlockMineCrafting[Artix-Quests].cs"
-  },
-  {
-    "name": "FindingFragments",
+    "name": "Finding Fragments",
     "description": "Does the \"Finding Fragments with Blinding [weapon] of Destiny\" for the quest rewards.",
     "tags": [
       "finding fragments",
       "blinding light fragments",
-      "spirit orb",
-      "loyal spirit orb",
-      "bright aura",
-      "brilliant aura",
-      "blinding aura"
+      "spirit",
+      "orb",
+      "loyal",
+      "bright",
+      "brilliant",
+      "blinding",
+      "aura"
     ],
     "path": "Good/BLoD/FindingFragments.cs",
-    "size": 1697,
+    "size": 1679,
     "fileName": "FindingFragments.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/FindingFragments.cs"
   },
   {
-    "name": "1SanctifiedLightofDestiny",
-    "description": "null",
+    "name": "Sanctified Light of Destiny",
+    "description": "This bot will do the entire farm for the Sanctified Light of Destiny. Note",
     "tags": [
-      "null"
+      "BLOD",
+      "SLOD",
+      "blinding",
+      "sanctified",
+      "light",
+      "destiny",
+      "undead",
+      "75",
+      "damage",
+      "good"
     ],
     "path": "Good/BLoD/1SanctifiedLightofDestiny.cs",
-    "size": 1533,
+    "size": 1464,
     "fileName": "1SanctifiedLightofDestiny.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/1SanctifiedLightofDestiny.cs"
   },
   {
-    "name": "2UltimateBlindingLightofDestiny",
+    "name": "UnlockMineCrafting",
     "description": "null",
     "tags": [
       "null"
     ],
-    "path": "Good/BLoD/2UltimateBlindingLightofDestiny.cs",
-    "size": 3804,
-    "fileName": "2UltimateBlindingLightofDestiny.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/2UltimateBlindingLightofDestiny.cs"
+    "path": "Good/BLoD/UnlockMineCrafting.cs",
+    "size": 1167,
+    "fileName": "UnlockMineCrafting.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/UnlockMineCrafting.cs"
   },
   {
-    "name": "SoulSearching",
-    "description": "null",
+    "name": "Ultimate Light of Destiny",
+    "description": "This bot will do the entire farm for the Sanctified Light of Destiny. Note",
     "tags": [
-      "null"
+      "BLOD",
+      "ULOD",
+      "blinding",
+      "ultimate",
+      "light",
+      "destiny",
+      "undead",
+      "75",
+      "damage",
+      "good"
     ],
-    "path": "Good/BLoD/SoulSearching.cs",
-    "size": 656,
-    "fileName": "SoulSearching.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/SoulSearching.cs"
+    "path": "Good/BLoD/2UltimateBlindingLightofDestiny.cs",
+    "size": 3965,
+    "fileName": "2UltimateBlindingLightofDestiny.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/2UltimateBlindingLightofDestiny.cs"
   },
   {
     "name": "null",
@@ -10845,18 +10854,40 @@
       "null"
     ],
     "path": "Good/BLoD/CoreBLOD.cs",
-    "size": 20568,
+    "size": 21148,
     "fileName": "CoreBLOD.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/CoreBLOD.cs"
   },
   {
-    "name": "0TheBlindingLightofDestiny",
-    "description": "null",
+    "name": "Blinding Light of Destiny (Full)",
+    "description": "This bot will do the entire farm for the Blinding Light of Destiny. Note",
     "tags": [
-      "null"
+      "BLOD",
+      "blinding",
+      "light",
+      "destiny",
+      "undead",
+      "75",
+      "damage",
+      "good",
+      "soul searching",
+      "minecrafting",
+      "metals",
+      "spirit orb",
+      "aura",
+      "loyal",
+      "blinding",
+      "bright",
+      "brilliant",
+      "weapon kit",
+      "finding fragments",
+      "bone some dust",
+      "essential essences",
+      "light merge",
+      "blinding light fragments"
     ],
     "path": "Good/BLoD/0TheBlindingLightofDestiny.cs",
-    "size": 895,
+    "size": 1543,
     "fileName": "0TheBlindingLightofDestiny.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/0TheBlindingLightofDestiny.cs"
   },
@@ -10864,14 +10895,17 @@
     "name": "Spirit Orbs",
     "description": "This script farms the max quantity of Spirit Orbs.",
     "tags": [
-      "spirit orbs",
-      "blod",
-      "bliding light of destiny",
-      "farm",
-      "good"
+      "spirit",
+      "orbs",
+      "BLOD",
+      "blinding",
+      "light",
+      "destiny",
+      "good",
+      "soul searching"
     ],
     "path": "Good/BLoD/SpiritOrbs.cs",
-    "size": 776,
+    "size": 791,
     "fileName": "SpiritOrbs.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/SpiritOrbs.cs"
   },
@@ -16048,35 +16082,53 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/Materials/Errands/SecondErrand.cs"
   },
   {
-    "name": "BasicWeaponKits",
-    "description": "null",
+    "name": "Basic Weapon Kit",
+    "description": "This script farms the max quantity of Basic Weapon Kits.",
     "tags": [
-      "null"
+      "basic",
+      "weapon",
+      "kit",
+      "BLOD",
+      "blinding",
+      "light",
+      "destiny"
     ],
     "path": "Good/BLoD/WeaponKits/BasicWeaponKits.cs",
-    "size": 689,
+    "size": 788,
     "fileName": "BasicWeaponKits.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/WeaponKits/BasicWeaponKits.cs"
   },
   {
-    "name": "AdvancedWeaponKit",
-    "description": "null",
+    "name": "Advanced Weapon Kit",
+    "description": "This script farms the max quantity of Advanced Weapon Kits.",
     "tags": [
-      "null"
+      "advanced",
+      "weapon",
+      "kit",
+      "BLOD",
+      "blinding",
+      "light",
+      "destiny"
     ],
     "path": "Good/BLoD/WeaponKits/AdvancedWeaponKit.cs",
-    "size": 696,
+    "size": 802,
     "fileName": "AdvancedWeaponKit.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/WeaponKits/AdvancedWeaponKit.cs"
   },
   {
-    "name": "UltimateWeaponKit",
-    "description": "null",
+    "name": "Ultimate Weapon Kit",
+    "description": "This script farms the max quantity of Ultimate Weapon Kits.",
     "tags": [
-      "null"
+      "ultimate",
+      "weapon",
+      "kit",
+      "BLOD",
+      "blinding",
+      "light",
+      "destiny"
     ],
     "path": "Good/BLoD/WeaponKits/UltimateWeaponKit.cs",
-    "size": 704,
+    "size": 810,
     "fileName": "UltimateWeaponKit.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/WeaponKits/UltimateWeaponKit.cs"
   },
