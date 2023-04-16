@@ -159,7 +159,16 @@ public class CoreFarmerJoe
                 Core.SellItem(DefaultWep.Name);
 
             if (Core.SoloClass == "Generic")
+            {
                 Core.SoloClass = "Oracle";
+                Core.FarmClass = "Oracle";
+            }
+            else
+            {
+                Core.SoloClass = Core.SoloClass;
+                Core.FarmClass = Core.FarmClass;
+            }
+
             Core.Equip(Core.SoloClass);
 
             //Temporary Weapon #2
