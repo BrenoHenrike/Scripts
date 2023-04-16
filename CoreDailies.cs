@@ -851,7 +851,7 @@ public class CoreDailies
                         case frGift.Blood_Roseberry:
                             Core.EquipClass(ClassType.Farm);
                             Core.HuntMonster("battleodium", "Widowing", "Roses", 1, false, false);
-                            Core.KillMonster("battleodium", "r6", "Left", "*", "Strawberries", 1, false, false);
+                            Core.KillMonster("battleodium", "r6", "Left", "Vileture", "Strawberries", 1, false, false);
                             Core.BuyItem("battleodium", 2236, "Blood Roseberry");
                             break;
 
