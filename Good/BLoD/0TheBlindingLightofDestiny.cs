@@ -23,9 +23,9 @@ public class TheBlindingLightofDestiny
     public List<IOption> Options = new()
     {
         new Option<BLODMethod>("BLODMethod", "Method", "Which method do you want the bot to farm BLOD?" +
-            "\nFewest Dailies: Blinding Blade of Destiny" +
-            "\nOptimized: Blinding Daggers & Mace of Destiny" +
-            "\nFewest Hours: Blinding Mace, Bow & Blade of Destiny", BLODMethod.Optimized),
+            "\nFewest Dailies:\tBlinding Blade of Destiny" +
+            "\nOptimized:\tBlinding Daggers & Mace of Destiny" +
+            "\nFewest Hours:\tBlinding Mace, Bow & Blade of Destiny", BLODMethod.Optimized),
         CoreBots.Instance.SkipOptions
     };
 
