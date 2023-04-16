@@ -108,12 +108,19 @@ public class CoreBots
 
             if (!Bot.Player.LoggedIn)
             {
-                if (Bot.Servers.CachedServers.Count() > 0)
+                if (Bot.Servers.CachedServers.Any())
                 {
                     Logger("Auto Login triggered");
-                    if (!Bot.Servers.EnsureRelogin(Bot.Options.ReloginServer ?? Bot.Servers.CachedServers[0].Name))
+                    try
+                    {
+                        if (!Bot.Servers.EnsureRelogin(Bot.Options.ReloginServer ?? Bot.Servers.CachedServers[0].Name))
+                            Logger("Please log-in before starting the bot.\nIf you are already logged in but are receiving this message regardless, please re-install CleanFlash", messageBox: true, stopBot: true);
+                        Bot.Sleep(5000);
+                    }
+                    catch
+                    {
                         Logger("Please log-in before starting the bot.\nIf you are already logged in but are receiving this message regardless, please re-install CleanFlash", messageBox: true, stopBot: true);
-                    Bot.Sleep(5000);
+                    }
                 }
                 else Logger("Please log-in before starting the bot.\nIf you are already logged in but are receiving this message regardless, please re-install CleanFlash", messageBox: true, stopBot: true);
             }
