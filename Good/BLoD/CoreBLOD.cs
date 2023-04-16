@@ -199,7 +199,7 @@ public class CoreBLOD
         if (Core.CheckInventory("Brilliant Aura", quant))
             return;
 
-        farmFindingFrag(WeaponOfDestiny.Bow, "Brilliant Aura", quant);
+        farmFindingFrag(WeaponOfDestiny.Mace, "Brilliant Aura", quant);
 
         // Default
         if (!Core.CheckInventory("Brilliant Aura", quant))
