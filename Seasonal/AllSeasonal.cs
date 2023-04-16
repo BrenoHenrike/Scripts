@@ -23,7 +23,6 @@ tags: seasonal, story, complete, all
 //cs_include Scripts/Seasonal/MayThe4th/MurderMoonMerge[CyberCrystal].cs
 //cs_include Scripts/Story/MemetsRealm/CoreMemet.cs
 //cs_include Scripts/Seasonal/Mogloween/VampireLord(Class).cs
-//cs_include Scripts/Seasonal/StaffBirthdays/DageTheEvil/DageRecruit.cs
 //cs_include Scripts/Seasonal/StaffBirthdays/DageTheEvil/Undervoid.cs
 //cs_include Scripts/Seasonal/StarFestival/StarFestival.cs
 //cs_include Scripts/Seasonal/SummerBreak/BeachPartyTokenItems.cs
