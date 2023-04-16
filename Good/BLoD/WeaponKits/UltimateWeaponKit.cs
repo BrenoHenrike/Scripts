@@ -1,7 +1,7 @@
 /*
-name: UltimateWeaponKit
-description: null
-tags: null
+name: Ultimate Weapon Kit
+description: This script farms the max quantity of Ultimate Weapon Kits.
+tags: ultimate, weapon, kit, BLOD, blinding, light, destiny
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

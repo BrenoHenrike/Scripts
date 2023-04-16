@@ -1,7 +1,7 @@
 /*
-name: FindingFragments
+name: Finding Fragments
 description: Does the "Finding Fragments with Blinding [weapon] of Destiny" for the quest rewards.
-tags: finding fragments, blinding light fragments, spirit orb, loyal spirit orb, bright Aura, brilliant aura, blinding aura
+tags: finding fragments, blinding light fragments, spirit, orb, loyal, bright, brilliant, blinding, aura
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

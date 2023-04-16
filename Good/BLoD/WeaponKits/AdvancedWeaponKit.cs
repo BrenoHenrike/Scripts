@@ -1,7 +1,7 @@
 /*
-name: AdvancedWeaponKit
-description: null
-tags: null
+name: Advanced Weapon Kit
+description: This script farms the max quantity of Advanced Weapon Kits.
+tags: advanced, weapon, kit, BLOD, blinding, light, destiny
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

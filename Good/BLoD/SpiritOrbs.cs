@@ -1,7 +1,7 @@
 /*
 name: Spirit Orbs
 description: This script farms the max quantity of Spirit Orbs.
-tags: spirit orbs,blod,bliding light of destiny,farm,good
+tags: spirit, orbs, BLOD, blinding, light, destiny, good, soul searching
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

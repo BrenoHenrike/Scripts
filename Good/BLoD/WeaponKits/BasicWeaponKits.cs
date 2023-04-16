@@ -1,7 +1,7 @@
 /*
-name: BasicWeaponKits
-description: null
-tags: null
+name: Basic Weapon Kit
+description: This script farms the max quantity of Basic Weapon Kits.
+tags: basic, weapon, kit, BLOD, blinding, light, destiny
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

@@ -9,7 +9,6 @@ tags: null
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/BattleUnder.cs
 using Skua.Core.Interfaces;
-using Skua.Core.Models.Quests;
 using Skua.Core.Models.Shops;
 using Skua.Core.Models.Items;
 using Skua.Core.Utils;
@@ -72,7 +71,7 @@ public class CoreBLOD
         "Blinding Aura",
     };
 
-    public void BlindingLightOfDestiny()
+    public void BlindingLightOfDestiny(BLODMethod method = BLODMethod.Optimized)
     {
         if (Core.CheckInventory("Blinding Light of Destiny"))
             return;
@@ -82,9 +81,21 @@ public class CoreBLOD
             Bot.Drops.Add(BLoDItems);
 
             UnlockMineCrafting();
-            GetBlindingWeapon(WeaponOfDestiny.Mace);
-            GetBlindingWeapon(WeaponOfDestiny.Bow);
-            GetBlindingWeapon(WeaponOfDestiny.Blade);
+            switch ((int)method)
+            {
+                case 0: // Fewest Dailies
+                    GetBlindingWeapon(WeaponOfDestiny.Blade);
+                    break;
+                case 1: // Optimized
+                    GetBlindingWeapon(WeaponOfDestiny.Daggers);
+                    GetBlindingWeapon(WeaponOfDestiny.Mace);
+                    break;
+                case 2: // Fewest Hours
+                    GetBlindingWeapon(WeaponOfDestiny.Mace);
+                    GetBlindingWeapon(WeaponOfDestiny.Bow);
+                    GetBlindingWeapon(WeaponOfDestiny.Blade);
+                    break;
+            }
 
             BrilliantAura(75);
             BrightAura(125);
@@ -568,4 +579,11 @@ public enum WeaponOfDestiny
     Scythe,
     Broadsword,
     Blade,
+}
+
+public enum BLODMethod
+{
+    Fewest_Dailies,
+    Optimized,
+    Fewest_Hours,
 }

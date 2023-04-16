@@ -1,16 +1,14 @@
 /*
-name: 1SanctifiedLightofDestiny
-description: null
-tags: null
+name: Sanctified Light of Destiny
+description: This bot will do the entire farm for the Sanctified Light of Destiny. Note: it uses dailies due to BLOD
+tags: BLOD, SLOD, blinding, sanctified, light, destiny, undead, 75, damage, good
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
 //cs_include Scripts/Story/BattleUnder.cs
-//cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 using Skua.Core.Interfaces;
 
 public class SanctifiedLightofDestiny
@@ -18,11 +16,7 @@ public class SanctifiedLightofDestiny
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
     private CoreFarms Farm = new();
-    private CoreDailies Daily = new();
     private CoreBLOD BLOD = new();
-    private CoreStory Story = new();
-    private CoreAdvanced Adv = new();
-    private Core13LoC LOC => new();
 
     public void ScriptMain(IScriptInterface bot)
     {
