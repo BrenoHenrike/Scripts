@@ -126,6 +126,13 @@ public class CoreBLOD
         Story.BuyQuest(2067, "doomwood", 276, "Bonegrinder Medal");
 
         // 2082 - Essential Essences
+        if (!Story.QuestProgression(2082))
+        {
+            Core.Logger("Doing Quest: [2082] \"Essential Essences\"");
+            Core.EnsureAccept(2082);
+            Farm.BattleUnderB("Undead Essence", 25);
+            Story.QuestComplete(2082);
+        }
         Story.KillQuest(2082, "battleunderb", "Undead Warrior");
 
         // 2083 - Bust some Dust
