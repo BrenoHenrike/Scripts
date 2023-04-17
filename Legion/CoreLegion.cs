@@ -217,8 +217,9 @@ public class CoreLegion
         Core.AddDrop("SoulForge Hammer");
         Core.EnsureAccept(2741);
         Core.HuntMonster("forest", "Zardman Grunt", "Zardman's StoneHammer", isTemp: false);
-        // Core.HuntMonster("shadowfall", "Skeletal Warrior", "Iron Hammer", isTemp: false);
-        Core.BuyItem("swordhaven", 179, "Iron Hammer");
+        if (Core.CheckInventory(319))
+            Core.BuyItem("swordhaven", 179, "Iron Hammer");
+        else Core.HuntMonster("shadowfall", "Skeletal Warrior", "Iron Hammer", isTemp: false);
         Core.HuntMonster("bludrut", "Rock Elemental", "Elemental Rock Hammer", isTemp: false);
         Core.EnsureComplete(2741);
         Bot.Wait.ForPickup("SoulForge Hammer");
