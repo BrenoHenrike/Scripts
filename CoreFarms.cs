@@ -1504,7 +1504,7 @@ public class CoreFarms
 
         Core.AddDrop("Fishing Bait", "Fishing Dynamite");
         Core.EquipClass(ClassType.Farm);
-        ToggleBoost(BoostType.Reputation);
+        // ToggleBoost(BoostType.Reputation);
         Core.SavedState();
         Core.Logger($"Farming rank {rank}");
         int z = 1;
@@ -1543,7 +1543,7 @@ public class CoreFarms
             }
         }
         Core.TrashCan(new[] { "Fishing Bait", "Fishing Dynamite" });
-        ToggleBoost(BoostType.Reputation, false);
+        // ToggleBoost(BoostType.Reputation, false);
         Core.SavedState(false);
 
         void GetBaitandDynamite(int FishingBaitQuant, int FishingDynamiteQuant)
