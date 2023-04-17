@@ -6,7 +6,7 @@ As with any [property](#properties) or [method](#methods) from the `CoreBots.cs`
   - [Properties](#properties)
   - [Methods](#methods)
 
-### Properties
+## Properties
 
 | Property  |   Type   | Description                                        |
 | --------- | :------: | -------------------------------------------------- |
