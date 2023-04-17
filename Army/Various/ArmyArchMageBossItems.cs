@@ -9,6 +9,8 @@ tags: archmage, army, boss items
 //cs_include Scripts/Army/CoreArmyLite.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
+using System.Collections;
+using System.Collections.Specialized;
 
 public class ArchMageMatsArmy
 {
@@ -34,23 +36,33 @@ public class ArchMageMatsArmy
         CoreBots.Instance.SkipOptions
     };
 
-    public string[] Drops =
-    {
-        "Calamitous Ruin",
-        "Vital Exanima",
-        "Everlight Flame",
-        "The Mortal Coil",
-        "Undying Resolve",
-        "The Divine Will",
-        "Insatiable Hunger",
-        "Void Essentia",
-        "Elemental Binding",
-    };
+    public ListDictionary Drops = new ListDictionary();
+    // {
+    //     "Calamitous Ruin",
+    //     "Vital Exanima",
+    //     "Everlight Flame",
+    //     "The Mortal Coil",
+    //     "Undying Resolve",
+    //     "The Divine Will",
+    //     "Insatiable Hunger",
+    //     "Void Essentia",
+    //     "Elemental Binding",
+    // };
 
     public void ScriptMain(IScriptInterface bot)
     {
         Core.BankingBlackList.AddRange(Drops);
         Core.SetOptions(disableClassSwap: true);
+        
+        Drops.Add("Calamitous Ruin", "1");
+        Drops.Add("Vital Exanima", "1");
+        Drops.Add("Everlight Flame", "1");
+        Drops.Add("The Mortal Coil", "1");
+        Drops.Add("Undying Resolve", "1");
+        Drops.Add("The Divine Will", "1");
+        Drops.Add("Insatiable Hunger", "1");
+        Drops.Add("Void Essentia", "1");
+        Drops.Add("Elemental Binding", "250");
 
         WaitingRoom();
 
@@ -70,25 +82,33 @@ public class ArchMageMatsArmy
 
     public void GetmBois()
     {
-        if (Core.CheckInventory(Drops))
+        // this is to make a drop list without the quantity part.
+        string[] LocalDrops = new string[Drops.Count];
+        Drops.Keys.CopyTo(LocalDrops, 0);
+
+        if (Core.CheckInventory(LocalDrops))
             return;
 
         Core.EquipClass(ClassType.Solo);
 
-        foreach (string item in Drops)
+        foreach (DictionaryEntry drop in Drops)
         {
-            if (!Core.CheckInventory(item, toInv: false))
+            string itemName = drop.Key.ToString();
+            int itemQuant = int.Parse(drop.Value.ToString());
+
+            if (!Core.CheckInventory(itemName, quant: itemQuant,toInv: false))
             {
-                Bot.Drops.Add(item);
-                Core.FarmingLogger(item, 1);
+                Bot.Drops.Add(itemName);
+                Core.FarmingLogger(itemName, itemQuant);
             }
-            else Core.Logger($"{item} Found.");
+            else Core.Logger($"{itemName} Found.");
         }
 
         Bot.Quests.UpdateQuest(8732);
         Core.ConfigureAggro();
+        
 
-        while (!Bot.ShouldExit && !Core.CheckInventory(Drops))
+        while (!Bot.ShouldExit && !Core.CheckInventory(LocalDrops))
         {
             ArmyKillMonster("voidflibbi", "Enter", "Spawn", "Flibbitiestgibbet", "Void Essentia", isTemp: false, log: false);
             ArmyKillMonster("voidnightbane", "Enter", "Spawn", "Nightbane", "Insatiable Hunger", isTemp: false, log: false);
