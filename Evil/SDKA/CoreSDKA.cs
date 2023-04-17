@@ -266,7 +266,7 @@ public class CoreSDKA
         {
             if (Core.CheckInventory(319))
                 Core.BuyItem("swordhaven", 179, "Iron Hammer");
-            else Core.HuntMonster("battleunder", "Skeletal Warrior", "Iron Hammer", isTemp: false);
+            else Core.HuntMonster("battleundera", "Skeletal Warrior", "Iron Hammer", isTemp: false);
 
             Core.HuntMonster("sandcastle", "War Mummy", "War Mummy Wrap", isTemp: false, log: false);
             Core.HuntMonster("noobshire", "Horc Noob", "Noob Blade Oil", log: false);
