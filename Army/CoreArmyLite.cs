@@ -450,11 +450,7 @@ public class CoreArmyLite
 
     public bool doForAll(bool randomServers = true)
     {
-        if (Bot.ShouldExit)
-            return false;
-
-        doForAllAccountDetails = doForAllAccountDetails ?? readManager();
-        if (_doForAllIndex >= doForAllAccountDetails.Count())
+        if (Bot.ShouldExit || _doForAllIndex >= (doForAllAccountDetails ??= readManager()).Count())
             return false;
 
         Bot.Options.AutoRelogin = false;
@@ -522,7 +518,6 @@ public class CoreArmyLite
                 );
             }
 
-
             if (dirs == null || dirs.Length == 0)
             {
                 Core.Logger($"There were no (sub-)folders named {Bot.Version} found in AppData/Local/Skua.Manager. Please set up your accounts in the Account tab in the Skua.Manager.exe", "AccountManager", true, true);
@@ -537,17 +532,25 @@ public class CoreArmyLite
             var xml = new XmlDocument();
             xml.Load(Path.Combine(dirs[0], "user.config"));
 
-            var dyn = JsonConvert.DeserializeObject<dynamic[]>(
-                JsonConvert.DeserializeObject<dynamic>(
-                    JsonConvert.SerializeXmlNode(xml)
-                )!
-                .configuration
-                .userSettings
-                ["Skua.Manager.Properties.Settings"]
-                .setting
-                .ToString()
-            );
-
+            dynamic[] dyn;
+            try
+            {
+                dyn = JsonConvert.DeserializeObject<dynamic[]>(
+                    JsonConvert.DeserializeObject<dynamic>(
+                        JsonConvert.SerializeXmlNode(xml)
+                    )!
+                    .configuration
+                    .userSettings
+                    ["Skua.Manager.Properties.Settings"]
+                    .setting
+                    .ToString()
+                );
+            }
+            catch
+            {
+                Core.Logger($"Failed to parse account information from AppData/Local/Skua.Manager. Clean up AppData/Local/Skua and add your accounts to the account manager.", "AccountManager", true, true);
+                return Array.Empty<(string, string)>(); ;
+            }
             List<(string, string)> toReturn = new();
             foreach (var d in dyn)
             {
