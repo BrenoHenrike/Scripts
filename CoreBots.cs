@@ -298,7 +298,7 @@ public class CoreBots
             JumpWait();
             Bot.Sleep(ActionDelay);
 
-            if (EquipmentBeforeBot.Count() > 0)
+            if (EquipmentBeforeBot.Any())
                 Equip(EquipmentBeforeBot.ToArray());
 
             if (!string.IsNullOrWhiteSpace(CustomStopLocation))
@@ -2267,12 +2267,14 @@ public class CoreBots
             {
                 if (!CheckInventory(item))
                 {
-                    Logger($"Equipping Failed: \"{item}\" not found in Inventory or Bank");
+                    if (!Bot.ShouldExit)
+                        Logger($"Equipping Failed: \"{item}\" not found in Inventory or Bank");
                     continue;
                 }
                 if (!Bot.Inventory.TryGetItem(item, out var _item))
                 {
-                    Logger($"Equipping Failed: Could not parse \"{item}\" from your inventory");
+                    if (!Bot.ShouldExit)
+                        Logger($"Equipping Failed: Could not parse \"{item}\" from your inventory");
                     continue;
                 }
                 _Equip(_item);
