@@ -100,7 +100,7 @@ public class CoreSDKA
             Core.Logger("Player is non-Member, membership is requireed for SDKA");
             return;
         }
-        
+
         Core.AddDrop(SDKAItems);
 
         UnlockHardCoreMetals();
@@ -264,7 +264,9 @@ public class CoreSDKA
         Core.RegisterQuests(2144);
         while (!Bot.ShouldExit && (!Core.CheckInventory("DoomSquire Weapon Kit", quant)))
         {
-            Core.BuyItem("swordhaven", 179, "Iron Hammer");
+            if (Core.CheckInventory(319))
+                Core.BuyItem("swordhaven", 179, "Iron Hammer");
+            else Core.HuntMonster("battleunder", "Skeletal Warrior", "Iron Hammer", isTemp: false);
 
             Core.HuntMonster("sandcastle", "War Mummy", "War Mummy Wrap", isTemp: false, log: false);
             Core.HuntMonster("noobshire", "Horc Noob", "Noob Blade Oil", log: false);
