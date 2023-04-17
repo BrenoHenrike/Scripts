@@ -74,7 +74,7 @@ public class BrightForestMerge
                         Core.EquipClass(ClassType.Farm);
                         Core.HuntMonster("BrightForest", "Shadowflame Scout", "ShadowFlame Troops \"Informed\"", 30);
                         Core.EquipClass(ClassType.Solo);
-                        Core.HuntMonster("BrightForest", "ShadowFlame Dragon", "ShadowFlame Dragon \"Informed\"", 30);
+                        Core.HuntMonster("BrightForest", "ShadowFlame Dragon", "ShadowFlame Dragon \"Informed\"");
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
