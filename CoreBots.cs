@@ -455,7 +455,7 @@ public class CoreBots
     /// <summary>
     /// Checks the Bank and Inventory for the item with it's ID
     /// </summary>
-    /// <param name="itemID">ID of the item to verify</param>
+    /// <param name="itemID">ID of the item to be checked</param>
     /// <param name="quant">Desired quantity</param>
     /// <param name="toInv">Whether or not send the item to Inventory</param>
     /// <returns>Returns whether the item exists in the desired quantity in the Bank and Inventory</returns>
@@ -486,9 +486,10 @@ public class CoreBots
     /// <summary>
     /// Check if the Bank/Inventory has at least 1 of all listed items
     /// </summary>
-    /// <param name="itemNames">Array of names of the items to be check</param>
-    /// <param name="toInv">Whether or not send the item to Inventory</param>
+    /// <param name="itemNames">Array of names of the items to be checked</param>
+    /// <param name="quant">Desired quantity</param>
     /// <param name="any">If any of the items exist, returns true</param>
+    /// <param name="toInv">Whether or not send the item to Inventory</param>
     /// <returns>Returns whether all the items exist in the Bank or Inventory</returns>
     public bool CheckInventory(string[] itemNames, int quant = 1, bool any = false, bool toInv = true)
     {
@@ -512,6 +513,14 @@ public class CoreBots
         return !any;
     }
 
+    /// <summary>
+    /// Checks the Bank and Inventory for the item with it's ID
+    /// </summary>
+    /// <param name="itemIDs">Array of IDs of the items to be checked</param>
+    /// <param name="quant">Desired quantity</param>
+    /// <param name="any">If any of the items exist, returns true</param>
+    /// <param name="toInv">Whether or not send the item to Inventory</param>
+    /// <returns>Returns whether the item exists in the desired quantity in the Bank and Inventory</returns>
     public bool CheckInventory(int[] itemIDs, int quant = 1, bool any = false, bool toInv = true)
     {
         if (itemIDs == null)
@@ -850,7 +859,7 @@ public class CoreBots
             //Rep check
             if (!String.IsNullOrEmpty(item.Faction) && item.Faction != "None")
             {
-                int reqRank = RepCPLevel.First(x => x.Key == item.RequiredReputation).Value;
+                int reqRank = PointsToLevel(item.RequiredReputation);
                 if (reqRank > Bot.Reputation.GetRank(item.Faction))
                 {
                     Logger($"Cannot buy {item.Name} from {shopID} because you dont have rank {reqRank} {item.Faction}.", "CanBuy");
@@ -969,18 +978,20 @@ public class CoreBots
     }
 
 
-    public Dictionary<int, int> RepCPLevel = new()
+    public int PointsToLevel(int points) => RepCPLevel.First(kvp => points <= kvp.Value).Key;
+
+    private Dictionary<int, int> RepCPLevel = new()
     {
-        { 0, 1 },
-        { 900, 2 },
-        { 3600, 3 },
-        { 10000, 4 },
-        { 22500, 5 },
-        { 44100, 6 },
-        { 78400, 7 },
-        { 129600, 8 },
-        { 202500, 9 },
-        { 302500, 10 }
+        { 1, 0 },
+        { 2, 900 },
+        { 3, 3600 },
+        { 4, 10000 },
+        { 5, 22500 },
+        { 6, 44100 },
+        { 7, 78400 },
+        { 8, 129600 },
+        { 9, 202500 },
+        { 10, 302500 },
     };
 
     /// <summary>
@@ -1055,9 +1066,9 @@ public class CoreBots
     }
 
     /// <summary>
-    /// <param name="items">Items to Trash/Bank</param>
-    /// Removes the Specific {items} from Players Inv (Banks Coin{ac} items)
+    /// Removes the specified items from players inventory (Banks AC items)
     /// </summary>
+    /// <param name="items">Items to Trash/Bank</param>
     public void TrashCan(params string[] items)
     {
         JumpWait();
