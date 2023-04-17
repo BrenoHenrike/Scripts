@@ -9,6 +9,7 @@ tags: BLOD, ULOD, blinding, ultimate, light, destiny, undead, 75, damage, good
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Story/BattleUnder.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
+//cs_include Scripts/CoreStory.cs
 using Skua.Core.Interfaces;
 
 public class UltimateBLoD

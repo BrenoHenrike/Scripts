@@ -191,7 +191,7 @@ public class CoreArchMage
         Core.EquipClass(ClassType.Farm);
         Core.RegisterQuests(8814, 8815);
         while (!Bot.ShouldExit && !Core.CheckInventory("Prismatic Seams", 250))
-            Core.HuntMonster("Streamwar", "Decaying Locust", "Timestream Medal", 5, log: false);
+            Core.HuntMonster("Streamwar", "Decaying Locust", "Timestream Medal", 5);
         Core.CancelRegisteredQuests();
 
         Core.HuntMonster("noxustower", "Lightguard Caster", "Mortal Essence", 100, false);
@@ -252,7 +252,7 @@ public class CoreArchMage
         while (!Bot.ShouldExit && !Core.CheckInventory("Ice Diamond", 100))
         {
             Core.EnsureAccept(7279);
-            Core.HuntMonster("kingcoal", "Snow Golem", "Frozen Coal", 10, log: false);
+            Core.HuntMonster("kingcoal", "Snow Golem", "Frozen Coal", 10);
             Core.EnsureComplete(7279);
             Bot.Wait.ForPickup("Ice Diamond");
         }
@@ -344,11 +344,11 @@ public class CoreArchMage
             Core.RegisterQuests(3050);
             while (!Bot.ShouldExit && !Core.CheckInventory(new[] { "Mystic Shards", "Mystic Quills" }, 49))
             {
-                Core.KillMonster("gilead", "r3", "Left", "Water Elemental", "Water Core", log: false);
-                Core.KillMonster("gilead", "r4", "Left", "Fire Elemental", "Fire Core", log: false);
-                Core.KillMonster("gilead", "r4", "Left", "Wind Elemental", "Air Core", log: false);
-                Core.KillMonster("gilead", "r3", "Left", "Earth Elemental", "Earth Core", log: false);
-                Core.KillMonster("gilead", "r8", "Left", "Mana Elemental", "Mana Core", log: false);
+                Core.KillMonster("gilead", "r3", "Left", "Water Elemental", "Water Core");
+                Core.KillMonster("gilead", "r4", "Left", "Fire Elemental", "Fire Core");
+                Core.KillMonster("gilead", "r4", "Left", "Wind Elemental", "Air Core");
+                Core.KillMonster("gilead", "r3", "Left", "Earth Elemental", "Earth Core");
+                Core.KillMonster("gilead", "r8", "Left", "Mana Elemental", "Mana Core");
             }
 
             //Incase they swap it back again:
@@ -356,10 +356,10 @@ public class CoreArchMage
             // Core.RegisterQuests(3298);
             // while (!Bot.ShouldExit && !Core.CheckInventory(new[] { "Mystic Shards", "Mystic Quills" }, 49))
             // {
-            //     Core.HuntMonster("gilead", "Water Elemental", "Water Drop", 5, log: false);
-            //     Core.HuntMonster("gilead", "Fire Elemental", "Flame", 5, log: false);
-            //     Core.HuntMonster("gilead", "Wind Elemental", "Breeze", 5, log: false);
-            //     Core.HuntMonster("gilead", "Earth Elemental", "Stone", 5, log: false);
+            //     Core.HuntMonster("gilead", "Water Elemental", "Water Drop", 5);
+            //     Core.HuntMonster("gilead", "Fire Elemental", "Flame", 5);
+            //     Core.HuntMonster("gilead", "Wind Elemental", "Breeze", 5);
+            //     Core.HuntMonster("gilead", "Earth Elemental", "Stone", 5);
             // }
 
             Core.CancelRegisteredQuests();
@@ -391,18 +391,17 @@ public class CoreArchMage
         Core.FarmingLogger("Prismatic Ether", quant);
         Core.AddDrop("Prismatic Ether");
         Core.EquipClass(ClassType.Solo);
-        Bot.Quests.UpdateQuest(6042);
 
         while (!Bot.ShouldExit && !Core.CheckInventory("Prismatic Ether", quant))
         {
             Core.EnsureAccept(8910);
-            Core.HuntMonster("celestialarenad", "Aranx", "Celestial Ether", isTemp: false, log: false);
-            Core.HuntMonster("eternalchaos", "Eternal Drakath", "Chaotic Ether", isTemp: false, log: false);
-            Core.HuntMonsterMapID("shadowattack", 68, "Mortal Ether", isTemp: false, log: false);
-            Core.HuntMonster("gaiazor", "Gaiazor", "Vital Ether", isTemp: false, log: false);
+            Core.HuntMonster("celestialarenad", "Aranx", "Celestial Ether", isTemp: false);
+            Core.HuntMonster("eternalchaos", "Eternal Drakath", "Chaotic Ether", isTemp: false);
+            Core.HuntMonsterMapID("shadowattack", 68, "Mortal Ether", isTemp: false);
+            Core.HuntMonster("gaiazor", "Gaiazor", "Vital Ether", isTemp: false);
             //gotta use a while else it just teleports away from the fiend shard.. idk y
             while (!Bot.ShouldExit && !Core.CheckInventory("Infernal Ether"))
-                Core.HuntMonster("fiendshard", "Nulgath's Fiend Shard", isTemp: false, log: false);
+                Core.HuntMonster("fiendshard", "Nulgath's Fiend Shard", isTemp: false);
             Core.JumpWait(); //<- fiendshard room is aggro, it will get stuck (according to skillisue havers)
 
             Core.EnsureComplete(8910);
@@ -420,16 +419,19 @@ public class CoreArchMage
 
         Core.FarmingLogger("Arcane Locus", quant);
         Core.AddDrop(73339);
-        Core.EquipClass(ClassType.Farm);
+        Core.EquipClass(ClassType.Solo);
 
         while (!Bot.ShouldExit && !Core.CheckInventory(73339, quant))
         {
             Core.EnsureAccept(8911);
-            Core.KillMonster("skytower", "r13", "Bottom", "*", "Sky Locus", isTemp: false, log: false);
-            Core.HuntMonster("natatorium", "*", "Sea Locus", isTemp: false, log: false);
-            Core.HuntMonster("ectocave", "Ektorax", "Earth Locus", isTemp: false, log: false);
-            Core.HuntMonster("drakonnan", "Drakonnan", "Fire Locus", isTemp: false, log: false);
-            Core.HuntMonster("elemental", "Mana Golem", "Prime Locus Attunement", 30, isTemp: false, log: false);
+            Core.EquipClass(ClassType.Farm);
+            Core.HuntMonster("natatorium", "*", "Sea Locus", isTemp: false);
+            Core.EquipClass(ClassType.Solo);
+            Core.KillMonster("skytower", "r13", "Bottom", "*", "Sky Locus", isTemp: false);
+            Core.HuntMonster("elemental", "Mana Golem", "Prime Locus Attunement", 30, isTemp: false);
+            Core.HuntMonster("ectocave", "Ektorax", "Earth Locus", isTemp: false);
+            Core.Logger("cutscene happens when joining Drakonnan, give the bot a sec to realise its not broke:P");
+            Core.HuntMonster("drakonnan", "Drakonnan", "Fire Locus", isTemp: false);
 
             Core.EnsureComplete(8911);
             Bot.Wait.ForPickup(73339);
@@ -454,8 +456,9 @@ public class CoreArchMage
         while (!Bot.ShouldExit && !Core.CheckInventory("Unbound Tome", quant))
         {
             Core.EnsureAccept(8912);
-            Core.BuyItem("alchemyacademy", 395, "Gold Voucher 100k", 30);
-            Adv.BuyItem("alchemyacademy", 395, "Dragon Runestone", 30, 8844);
+            //line 460 is require else it tries to do the 500ks and it absolutely refuses todo so.
+            Adv.BuyItem("alchemyacademy", 395, "Gold Voucher 100k", 30);
+            Core.BuyItem("alchemyacademy", 395, "Dragon Runestone", 30, 8844);
             Adv.BuyItem("darkthronehub", 1308, "Exalted Paladin Seal");
             Adv.BuyItem("shadowfall", 89, "Forsaken Doom Seal");
 

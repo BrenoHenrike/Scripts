@@ -257,7 +257,7 @@ public class CoreAdvanced
     public void GetItemReq(ShopItem item)
     {
         if (item.Faction != null && item.Faction != "None" && item.RequiredReputation > 0)
-            runRep(item.Faction, Core.RepCPLevel.First(x => x.Key == item.RequiredReputation).Value);
+            runRep(item.Faction, Core.PointsToLevel(item.RequiredReputation));
         Farm.Experience(item.Level);
         Farm.Gold(item.Cost);
     }

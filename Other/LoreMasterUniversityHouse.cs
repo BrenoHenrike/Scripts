@@ -73,7 +73,7 @@ public class LoreMasterUniversity
     {
         Core.AddDrop("Loremaster " + type);
         Core.FarmingLogger("Loremaster " + type, 1);
-        Farm.LoremasterREP(Core.RepCPLevel.First(x => x.Key == Core.EnsureLoad(quest).RequiredFactionRep).Value);
+        Farm.LoremasterREP(Core.PointsToLevel(Core.EnsureLoad(quest).RequiredFactionRep));
         Core.EnsureAccept(quest);
         Mats(fabric, board, nail, paint, varnish);
         Core.EnsureComplete(quest);

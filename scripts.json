@@ -6,7 +6,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 150051,
+    "size": 150676,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -17,7 +17,7 @@
       "null"
     ],
     "path": "CoreDailies.cs",
-    "size": 41143,
+    "size": 41176,
     "fileName": "CoreDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreDailies.cs"
   },
@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 93750,
+    "size": 93756,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -50,7 +50,7 @@
       "null"
     ],
     "path": "CoreAdvanced.cs",
-    "size": 90757,
+    "size": 90734,
     "fileName": "CoreAdvanced.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreAdvanced.cs"
   },
@@ -705,7 +705,7 @@
       "house"
     ],
     "path": "Other/LoreMasterUniversityHouse.cs",
-    "size": 2598,
+    "size": 2575,
     "fileName": "LoreMasterUniversityHouse.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/LoreMasterUniversityHouse.cs"
   },
@@ -10792,7 +10792,7 @@
       "aura"
     ],
     "path": "Good/BLoD/FindingFragments.cs",
-    "size": 1679,
+    "size": 2013,
     "fileName": "FindingFragments.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/FindingFragments.cs"
   },
@@ -10843,7 +10843,7 @@
       "good"
     ],
     "path": "Good/BLoD/2UltimateBlindingLightofDestiny.cs",
-    "size": 3965,
+    "size": 3999,
     "fileName": "2UltimateBlindingLightofDestiny.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/2UltimateBlindingLightofDestiny.cs"
   },
@@ -15496,7 +15496,7 @@
       "null"
     ],
     "path": "Other/Classes/ArchMage/CoreArchMage.cs",
-    "size": 22854,
+    "size": 22868,
     "fileName": "CoreArchMage.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/ArchMage/CoreArchMage.cs"
   },
