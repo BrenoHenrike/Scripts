@@ -534,12 +534,13 @@ public class CoreBLOD
         if (Core.CheckInventory(fullMetalName))
             return;
 
-        Core.FarmingLogger(fullMetalName, 1);
         string upgradeMetalName = fullMetalName.Split(' ')[..2].Join(' ');
+        Core.FarmingLogger(fullMetalName, 1);
 
         // Getting the partially upgraded metal
         if (!Core.CheckInventory(upgradeMetalName))
         {
+            Core.AddDrop(upgradeMetalName);
             Core.FarmingLogger(upgradeMetalName, 1);
             Core.EnsureAccept(upgradeMetalQuest);
 
@@ -554,21 +555,27 @@ public class CoreBLOD
             Core.HuntMonster("arcangrove", "Seed Spitter", "Paladaffodil", 25);
 
             Core.EnsureComplete(upgradeMetalQuest);
-            Bot.Wait.ForPickup("Celestial Copper");
+            Bot.Wait.ForPickup(upgradeMetalName);
         }
+
 
         // Unlocking "Forge Metal"-shop [434] and "Basic Weapon Kit Construction"-quest [2136]
         if (!Core.isCompletedBefore(forgeKeyQuest))
         {
+            Core.AddDrop(fullMetalName);
             Core.EnsureAccept(forgeKeyQuest);
-            Core.HuntMonster("dwarfhold", "Albino Bat", "Forge Key", isTemp: false);
-            Core.EnsureComplete(forgeKeyQuest);
-        }
 
-        // Getting the fully upgraded metal
-        BrightAura(2);
-        LoyalSpiritOrb(5);
-        Core.BuyItem("dwarfhold", 434, fullMetalName);
+            // Getting the fully upgraded metal to complete forgeKeyQuest
+            BrightAura(2);
+            LoyalSpiritOrb(5);
+            Core.BuyItem("dwarfhold", 434, fullMetalName);
+
+            //Getting the Forge key for the Quest
+            Core.HuntMonster("dwarfhold", "Albino Bat", "Forge Key", isTemp: false);
+
+            Core.EnsureComplete(forgeKeyQuest);
+            Bot.Wait.ForPickup(fullMetalName);
+        }
     }
 
     #endregion
