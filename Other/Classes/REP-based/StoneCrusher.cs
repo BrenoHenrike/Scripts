@@ -38,6 +38,7 @@ public class StoneCrusher
 
         LOC.Kimberly();
         Oak.doall();
+        Farm.MythsongREP();
         Adv.BuyItem("Gaiazor", 1210, "StoneCrusher");
 
         if (rankUpClass)
