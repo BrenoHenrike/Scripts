@@ -381,7 +381,7 @@ public class CoreQOM
         Story.PreLoad(this);
 
         //Stand for Swordhaven
-        Story.KillQuest(5575, "LycanInvasion", new[] { "Fallen Knight", "Infernal Knight" });
+        Story.KillQuest(5575, "safiriainvasion", new[] { "Fallen Knight", "Infernal Knight" });
 
         //Use Their Energy Against Them
         Story.KillQuest(5576, "ShadowfallInvasion", "Nethermage");
