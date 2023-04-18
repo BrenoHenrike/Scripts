@@ -558,22 +558,19 @@ public class CoreBLOD
             Bot.Wait.ForPickup(upgradeMetalName);
         }
 
+        // Getting the fully upgraded metal
+        BrightAura(2);
+        LoyalSpiritOrb(5);
+        Core.BuyItem("dwarfhold", 434, fullMetalName);
 
-        // Unlocking "Forge Metal"-shop [434] and "Basic Weapon Kit Construction"-quest [2136]
+        // Unlocking "Basic Weapon Kit Construction" [Quest ID 2136]
         if (!Core.isCompletedBefore(forgeKeyQuest))
         {
             Core.AddDrop(fullMetalName);
             Core.EnsureAccept(forgeKeyQuest);
-
-            // Getting the fully upgraded metal to complete forgeKeyQuest
-            BrightAura(2);
-            LoyalSpiritOrb(5);
-            Core.BuyItem("dwarfhold", 434, fullMetalName);
-
-            //Getting the Forge key for the Quest
             Core.HuntMonster("dwarfhold", "Albino Bat", "Forge Key", isTemp: false);
             Core.EnsureComplete(forgeKeyQuest);
-            Bot.Wait.ForPickup(fullMetalName);            
+            Bot.Wait.ForPickup(fullMetalName);
         }
     }
 
