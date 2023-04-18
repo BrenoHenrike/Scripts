@@ -9338,7 +9338,7 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/HollowbornChaosEnvoy/CoreHollowbornChaosEnvoy.cs"
   },
   {
-    "name": "Hollowborn Chaos Envoy - Pesisting Mayhem",
+    "name": "Hollowborn Chaos Envoy - Persisting Mayhem",
     "description": "does the 'pesisting mayhem' part of hollowborn chaos envoy",
     "tags": [
       "hollowborn chaos envy",
@@ -9346,7 +9346,7 @@
       "pesisting mayhem"
     ],
     "path": "Hollowborn/HollowbornChaosEnvoy/6PesistingMayhem.cs",
-    "size": 1580,
+    "size": 1581,
     "fileName": "6PesistingMayhem.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/HollowbornChaosEnvoy/6PesistingMayhem.cs"
   },
