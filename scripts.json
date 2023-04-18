@@ -1573,7 +1573,7 @@
   },
   {
     "name": "Tenacity Challenge",
-    "description": "Farms the quest Tenacity Challenge to get Tainte Gems, Dark Crystal Shards and Blood Gem of the Archfiend (Requiers Nulgath Challenge Pet)",
+    "description": "Farms the quest Tenacity Challenge to get Tainte Gems, Dark Crystal Shards and Blood Gem of the Archfiend (requires Nulgath Challenge Pet)",
     "tags": [
       "nation",
       "tainted gem",
@@ -5944,7 +5944,7 @@
   },
   {
     "name": "Legion Castle Quest",
-    "description": "Farms the \"Legion Castle Quest\" untill all drops are obtained. Requiers \"Legion Castle\". Will also farm Legion Tokens",
+    "description": "Farms the \"Legion Castle Quest\" untill all drops are obtained. Requires \"Legion Castle\". Will also farm Legion Tokens",
     "tags": [
       "legion",
       "castle",
@@ -10854,7 +10854,7 @@
       "null"
     ],
     "path": "Good/BLoD/CoreBLOD.cs",
-    "size": 21705,
+    "size": 21715,
     "fileName": "CoreBLOD.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/CoreBLOD.cs"
   },
