@@ -76,8 +76,66 @@ public class CoreAdvanced
 
     private void _BuyItem(string map, int shopID, ShopItem item, int quant = 1)
     {
+        if (item.Requirements != null)
+        {
+            foreach (ItemBase req in item.Requirements)
+            {
+                if (Core.CheckInventory(req.ID, req.Quantity))
+                    continue;
+
+                if (Core.GetShopItems(map, shopID).Any(x => req.ID == x.ID))
+                    BuyItem(map, shopID, req.ID, req.Quantity * quant);
+            }
+        }
+
         GetItemReq(item);
         Core._BuyItem(map, shopID, item, quant);
+    }
+
+    /// <summary>
+    /// Will make sure you have every requierment (XP, Rep and Gold) to buy the item.
+    /// </summary>
+    /// <param name="item">The ShopItem object containing all the information</param>
+    public void GetItemReq(ShopItem item)
+    {
+        if (String.IsNullOrEmpty(item.Faction) && item.Faction != "None" && item.RequiredReputation > 0)
+            runRep(item.Faction, Core.PointsToLevel(item.RequiredReputation));
+        Farm.Experience(item.Level);
+        if (!item.Coins)
+            Farm.Gold(item.Cost);
+    }
+
+    private void runRep(string faction, int rank)
+    {
+        faction = faction.Replace(" ", "");
+        Type farmClass = Farm.GetType();
+        MethodInfo? theMethod = farmClass.GetMethod(faction + "REP");
+        if (theMethod == null)
+        {
+            Core.Logger("Failed to find " + faction + "REP. Make sure you have the correct name and capitalization.");
+            return;
+        }
+
+        try
+        {
+            switch (faction.ToLower())
+            {
+                case "alchemy":
+                case "blacksmith":
+                    theMethod.Invoke(Farm, new object[] { rank, true });
+                    break;
+                case "bladeofawe":
+                    theMethod.Invoke(Farm, new object[] { rank, false });
+                    break;
+                default:
+                    theMethod.Invoke(Farm, new object[] { rank });
+                    break;
+            }
+        }
+        catch
+        {
+            Core.Logger($"Faction {faction} has invalid paramaters, please report", messageBox: true, stopBot: true);
+        }
     }
 
     /// <summary>
@@ -249,51 +307,6 @@ public class CoreAdvanced
     public bool matsOnly = false;
     public List<string> MaxStackOneItems = new();
     public List<string> AltFarmItems = new();
-
-    /// <summary>
-    /// Will make sure you have every requierment (XP, Rep and Gold) to buy the item.
-    /// </summary>
-    /// <param name="item">The ShopItem object containing all the information</param>
-    public void GetItemReq(ShopItem item)
-    {
-        if (item.Faction != null && item.Faction != "None" && item.RequiredReputation > 0)
-            runRep(item.Faction, Core.PointsToLevel(item.RequiredReputation));
-        Farm.Experience(item.Level);
-        Farm.Gold(item.Cost);
-    }
-
-    private void runRep(string faction, int rank)
-    {
-        faction = faction.Replace(" ", "");
-        Type farmClass = Farm.GetType();
-        MethodInfo? theMethod = farmClass.GetMethod(faction + "REP");
-        if (theMethod == null)
-        {
-            Core.Logger("Failed to find " + faction + "REP. Make sure you have the correct name and capitalization.");
-            return;
-        }
-
-        try
-        {
-            switch (faction.ToLower())
-            {
-                case "alchemy":
-                case "blacksmith":
-                    theMethod.Invoke(Farm, new object[] { rank, true });
-                    break;
-                case "bladeofawe":
-                    theMethod.Invoke(Farm, new object[] { rank, false });
-                    break;
-                default:
-                    theMethod.Invoke(Farm, new object[] { rank });
-                    break;
-            }
-        }
-        catch
-        {
-            Core.Logger($"Faction {faction} has invalid paramaters, please report", messageBox: true, stopBot: true);
-        }
-    }
 
     /// <summary>
     /// The list of ScriptOptions for any merge script.

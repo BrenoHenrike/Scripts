@@ -2212,52 +2212,47 @@ public class CoreBots
             return;
 
         currentClass = classToUse;
-        logEquip = false;
 
         switch (classToUse)
         {
             case ClassType.Farm:
-                if (!usingFarmGeneric)
-                {
-                    if (!CheckInventory(FarmClass) || !Bot.Inventory.TryGetItem(FarmClass, out var item) || item == null)
-                    {
-                        Logger("You do not own " + SoloClass);
-                        break;
-                    }
-                    if (FarmGearOn)
-                    {
-                        Bot.Sleep((int)(ActionDelay * 1.5));
-                        Equip(FarmGear);
-                    }
-
-                    Equip(Bot.Inventory.Items.First(x => x.Name.ToLower() == FarmClass.Trim().ToLower() && x.CategoryString == "Class").ID);
-                    Bot.Skills.StartAdvanced(FarmClass, false, FarmUseMode);
-                    logEquip = true;
+                if (_equipClass(usingFarmGeneric, FarmClass, FarmUseMode, FarmGearOn, FarmGear))
                     return;
-                }
                 break;
 
             case ClassType.Solo:
-                if (!usingSoloGeneric)
-                {
-                    if (!CheckInventory(SoloClass))
-                    {
-                        Logger("You do not own " + SoloClass);
-                        break;
-                    }
-                    if (SoloGearOn)
-                    {
-                        Bot.Sleep((int)(ActionDelay * 1.5));
-                        Equip(SoloGear);
-                    }
-                    Equip(Bot.Inventory.Items.First(x => x.Name.ToLower() == SoloClass.Trim().ToLower() && x.CategoryString == "Class").ID);
-                    Bot.Skills.StartAdvanced(SoloClass, false, SoloUseMode);
-                    logEquip = true;
+                if (_equipClass(usingSoloGeneric, SoloClass, SoloUseMode, SoloGearOn, SoloGear))
                     return;
-                }
                 break;
         }
         Bot.Skills.StartAdvanced(Bot.Player.CurrentClass?.Name ?? "generic", false);
+
+        bool _equipClass(bool usingGeneric, string className, ClassUseMode classMode, bool useEquipment, string[] equipment)
+        {
+            if (usingGeneric)
+                return false;
+            
+            if (!CheckInventory(className))
+            {
+                Logger("You do not own " + className);
+                return false;
+            }
+
+            if (useEquipment && equipment.Any())
+            {
+                Bot.Sleep((int)(ActionDelay * 1.5));
+                Equip(equipment);
+            }
+
+            className = className.Trim().ToLower();
+
+            logEquip = false;
+            Equip(Bot.Inventory.Items.First(x => x.Name.ToLower() == className && x.Category == ItemCategory.Class).ID);
+            logEquip = true;
+
+            Bot.Skills.StartAdvanced(className, false, classMode);
+            return true;
+        }
     }
     private bool logEquip = true;
 
