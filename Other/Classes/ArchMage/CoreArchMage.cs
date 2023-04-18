@@ -183,7 +183,7 @@ public class CoreArchMage
         Core.FarmingLogger("Book of Magus", 1);
         UnboundTome(1);
         Core.EnsureAccept(8913);
-
+        BLOD.GetBlindingWeapon(WeaponOfDestiny.Mace);
         BLOD.BrilliantAura(200);
 
         Scroll.BuyScroll(Scrolls.Mystify, 50);
