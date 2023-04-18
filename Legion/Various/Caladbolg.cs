@@ -41,7 +41,7 @@ public class Caladbolg
 
         if (!Core.CheckInventory("Altar Of Caladbolg"))
         {
-            Core.Logger("This bot requiers you to have a \"Altar Of Caladbolg\". Stopping the bot.", messageBox: true);
+            Core.Logger("This bot requires you to have a \"Altar Of Caladbolg\". Stopping the bot.", messageBox: true);
             return;
         }
 
@@ -49,7 +49,7 @@ public class Caladbolg
         {
             if (!Core.CheckInventory("Essence of the Undead Legend"))
             {
-                Core.Logger("This bot requiers you to have a \"Essence of the Undead Legend\" (Seasonal - March). Stopping the bot.", messageBox: true);
+                Core.Logger("This bot requires you to have a \"Essence of the Undead Legend\" (Seasonal - March). Stopping the bot.", messageBox: true);
                 return;
             }
             if (!Core.CheckInventory("Undead Legend"))

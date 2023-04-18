@@ -548,7 +548,7 @@ public class CoreBLOD
                 Daily.MineCrafting(new[] { metal.ToString() });
             if (!Core.CheckInventory((int)metal))
                 Core.Logger($"Can't complete {fullMetalName.Split(' ')[..2].Join(' ')} Enchantment (missing {metal}).\n" +
-                            "This requiers a daily, please run the bot again after the daily reset has occurred.", messageBox: true, stopBot: true);
+                            "This requires a daily, please run the bot again after the daily reset has occurred.", messageBox: true, stopBot: true);
 
             Farm.BattleUnderB("Undead Energy", 25);
             SpiritOrb(5);
@@ -572,9 +572,8 @@ public class CoreBLOD
 
             //Getting the Forge key for the Quest
             Core.HuntMonster("dwarfhold", "Albino Bat", "Forge Key", isTemp: false);
-
             Core.EnsureComplete(forgeKeyQuest);
-            Bot.Wait.ForPickup(fullMetalName);
+            Bot.Wait.ForPickup(fullMetalName);            
         }
     }
 

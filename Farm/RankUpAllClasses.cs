@@ -46,7 +46,7 @@ public class RankUpAll
         }
 
         if (Core.CBOBool("DisableAutoEnhance", out bool _disableAutoEnhance) && _disableAutoEnhance)
-            Core.Logger("This bot requiers Smart Enhance to work properly, please modify your CBO settings", messageBox: true, stopBot: true);
+            Core.Logger("This bot requires Smart Enhance to work properly, please modify your CBO settings", messageBox: true, stopBot: true);
 
         Adv.GearStore();
 

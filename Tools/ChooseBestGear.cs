@@ -44,10 +44,10 @@ public class ChooseBestGear
     public void ChooseItem(GearBoost gearBoost = GearBoost.dmgAll, bool EnhanceEquipment = true)
     {
         if (Core.CBOBool("DisableBestGear", out bool _DisableBestGear) && _DisableBestGear)
-            Core.Logger("This bot requiers you to have Best Gear enabled, please enable it in Options > CoreBots", messageBox: true, stopBot: true);
+            Core.Logger("This bot requires you to have Best Gear enabled, please enable it in Options > CoreBots", messageBox: true, stopBot: true);
 
         if (EnhanceEquipment && Core.CBOBool("DisableAutoEnhance", out bool _disableAutoEnhance) && _disableAutoEnhance)
-            Core.Logger("This bot requiers you to have Auto-Enhance enabled, please enable it in Options > CoreBots", messageBox: true, stopBot: true);
+            Core.Logger("This bot requires you to have Auto-Enhance enabled, please enable it in Options > CoreBots", messageBox: true, stopBot: true);
 
         string[] GearBoostItems = Adv.BestGear(Bot.Config.Get<GearBoost>("RacialGearBoost"));
         Core.Equip(GearBoostItems);

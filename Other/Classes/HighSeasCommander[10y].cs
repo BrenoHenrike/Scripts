@@ -32,7 +32,7 @@ public class HighSeasCommander
 
         if (!Core.HasAchievement(27, "ip14"))
         {
-            Core.Logger("This bot requiers you to have an account of 10 years or older.", messageBox: true);
+            Core.Logger("This bot requires you to have an account of 10 years or older.", messageBox: true);
             return;
         }
 
