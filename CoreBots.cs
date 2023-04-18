@@ -105,6 +105,8 @@ public class CoreBots
 
             loadedBot = Bot.Manager.LoadedScript.Replace("\\", "/").Split("/Scripts/").Last().Replace(".cs", "");
             Logger($"Bot Started [{loadedBot}]");
+            if (Bot.Config != null && Bot.Config.Options.Contains(SkipOptions) && !Bot.Config.Get<bool>(SkipOptions))
+                Bot.Config.Configure();
 
             if (!Bot.Player.LoggedIn)
             {
@@ -124,9 +126,6 @@ public class CoreBots
                 }
                 else Logger("Please log-in before starting the bot.\nIf you are already logged in but are receiving this message regardless, please re-install CleanFlash", messageBox: true, stopBot: true);
             }
-
-            if (Bot.Config != null && Bot.Config.Options.Contains(SkipOptions) && !Bot.Config.Get<bool>(SkipOptions))
-                Bot.Config.Configure();
 
             ReadCBO();
         }
