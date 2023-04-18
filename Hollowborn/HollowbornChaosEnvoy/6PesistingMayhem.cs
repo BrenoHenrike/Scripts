@@ -1,5 +1,5 @@
 /*
-name: Hollowborn Chaos Envoy - Pesisting Mayhem
+name: Hollowborn Chaos Envoy - Persisting Mayhem
 description: does the 'pesisting mayhem' part of hollowborn chaos envoy
 tags: hollowborn chaos envy, hollowborn, pesisting mayhem
 */
