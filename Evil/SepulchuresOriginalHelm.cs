@@ -62,7 +62,6 @@ public class SepulchuresOriginalHelm
         {
             GravelynsDoomFireToken();
             RoyalShadowScytheBlade();
-            Core.Relogin();
             Core.BuyItem(Bot.Map.Name, 993, "Lore's Champion Seal");
         }
         Core.ChainComplete(6555);
