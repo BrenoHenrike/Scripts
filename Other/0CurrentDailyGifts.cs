@@ -7,6 +7,7 @@ tags: daily-gifts, rare-items
 using System.Globalization;
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
+using Skua.Core.Models.Monsters;
 
 public class CurrentDailyGifts
 {
@@ -130,6 +131,8 @@ public class CurrentDailyGifts
             GetGift(AvailableUntil(17, 4), "andre", "Giant Fist", "Navel Top Hat");
             //GigaWUT Scavenger Clue
             GetGift(AvailableUntil(24, 4), "dvg", "Munthor", "Giga Twilly");
+            //Golden Treasure Hunt clue
+            GetGift(AvailableUntil(1, 5), "dvg", 48, "Golden Spear of Light");
 
             // Fortunate Grenwog Garb
             // GetGift(AvailableUntil(30, 4), "elixirgrenwog", "Elixir Grenwog", "Fortunate Grenwog Garb");
@@ -201,6 +204,67 @@ public class CurrentDailyGifts
         foreach (string item in items)
         {
             Core.HuntMonster(map, monster, item, 1, false, log: false);
+            Core.ToBank(item);
+        }
+    }
+    /// <summary>
+    /// Checks if the items have expired yet, and if not it farms it
+    /// </summary>
+    private void GetGift(DateTime expiresAt, string map, int monsterMapID, params string[] items)
+    {
+        Monster? monster = Bot.Monsters.MapMonsters?.Find(m => m.MapID == monsterMapID);
+
+        if (expiresAt == Permanent)
+        {
+            switch (mode)
+            {
+                case DailyGiftsMode.Permanent_first_then_Rare:
+                    if (secondHalf)
+                        return;
+                    break;
+                case DailyGiftsMode.Rare_first_then_Permanent:
+                    if (!secondHalf)
+                        return;
+                    break;
+                case DailyGiftsMode.Rare_only:
+                    return; ;
+            }
+        }
+        else
+        {
+            if (expiresAt.AddDays(1) < DateTime.Now)
+                return;
+
+            switch (mode)
+            {
+                case DailyGiftsMode.Permanent_first_then_Rare:
+                    if (!secondHalf)
+                        return;
+                    break;
+                case DailyGiftsMode.Rare_first_then_Permanent:
+                    if (secondHalf)
+                        return;
+                    break;
+                case DailyGiftsMode.Permanent_only:
+                    return;
+            }
+        }
+
+        if (!Core.isSeasonalMapActive(map))
+            return;
+
+        if (Core.CheckInventory(items, toInv: false))
+            return;
+
+        Bot.Drops.Add(items);
+        Core.Logger($"Daily Gift from {monster.Name} in /{map.ToLower()}, " +
+            (expiresAt == Permanent ? "they're permanent. " :
+            $"available untill {expiresAt.ToString(formatInfo)[..10]}. ") +
+            $"This monster drops the following items:\n[{DateTime.Now:HH:mm:ss}] (GetGift) \"" + String.Join("\" | \"", items) + "\"");
+
+        foreach (string item in items)
+        {
+            Core.HuntMonsterMapID(map, monster.ID, item, 1, false, log: false);
             Core.ToBank(item);
         }
     }
