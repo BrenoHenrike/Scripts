@@ -1812,6 +1812,19 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/DjinnGuard.cs"
   },
   {
+    "name": "Thunderfang Story",
+    "description": "does the quest from dragonmaster stormscythe in /thunderfang",
+    "tags": [
+      "story",
+      "thunderfang",
+      "stormcachemerge"
+    ],
+    "path": "Story/ThunderFang.cs",
+    "size": 1463,
+    "fileName": "ThunderFang.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ThunderFang.cs"
+  },
+  {
     "name": "Safiria Story (Member)",
     "description": "This will finish the Safiria Story.",
     "tags": [
@@ -7404,6 +7417,17 @@
     "size": 4188,
     "fileName": "GachaponMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/GachaponMerge.cs"
+  },
+  {
+    "name": "null",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Other/MergeShops/StormCacheMerge.cs",
+    "size": 3731,
+    "fileName": "StormCacheMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/StormCacheMerge.cs"
   },
   {
     "name": "WorldCoreMerge",
