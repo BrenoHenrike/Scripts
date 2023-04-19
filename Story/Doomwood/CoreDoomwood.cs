@@ -892,17 +892,16 @@ public class CoreDoomwood
         Story.KillQuest(2125, "doomwar", "Zombie Dragon");
 
         //2126    Defeat Your Fallen Friends
+        Core.EquipClass(ClassType.Farm);
         if (!Story.QuestProgression(2126))
         {
             Core.EnsureAccept(2126);
-            Core.KillMonster("doomwar", "r5", "left", "Cyzerombie");
-            Core.KillMonster("doomwar", "r7", "left", "Zombie Warlic");
-            Core.KillMonster("doomwar", "r9", "left", "Zombie Galanoth");
-            Core.KillMonster("doomwar", "r3", "left", "Zhoombie");
+            Core.KillMonster("doomwar", "r5", "left", "*", "Fallen Friend Defeated", 4);
             Core.EnsureComplete(2126);
         }
 
         //2127    Long Unlive the King!
+        Core.EquipClass(ClassType.Solo);
         Story.KillQuest(2127, "doomwar", "Zombie King Alteon");
 
         //2128    Dark Sepulchure Must be Slain!
