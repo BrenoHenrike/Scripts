@@ -103,7 +103,7 @@ public class BidoBirthdayMerge
                 case "Unknown Alloy":
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Adv.BuyItem("alchemyacademy", 2114, "Gold Voucher 100k", quant);
+                        Adv.BuyItem("alchemyacademy", 2036, 62749, quant, 1, 8777);
                         Adv.BuyItem("alchemyacademy", 2114, req.Name, quant);
                     }
                     Core.Join("akiba", "r1", "Right", false);
