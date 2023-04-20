@@ -517,6 +517,11 @@ public class CoreAstravia
         Story.KillQuest(8732, "theworld", "Darkon");
 
         //8733|The World
-        Story.KillQuest(8733, "theworld", "Encore Darkon");
+        if (!Story.QuestProgression(8733))
+        {
+            Core.EnsureAccept(8733);
+            Core.HuntMonsterMapID("theworld", 12, "Encore Darkon Defeated");
+            Core.EnsureComplete(8733);
+        }
     }
 }
