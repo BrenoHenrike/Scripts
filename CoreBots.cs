@@ -302,10 +302,11 @@ public class CoreBots
 
             if (!string.IsNullOrWhiteSpace(CustomStopLocation))
             {
+                string _stopLoc = CustomStopLocation.Trim().ToLower();
                 if (new[] { "home", "house" }
-                        .Any(m => CustomStopLocation.Trim().ToLower() == m))
+                        .Any(m => _stopLoc == m))
                 {
-                    if (Bot.House.Items.Count(h => h.Equipped) > 0)
+                    if (Bot.House.Items.Any(h => h.Equipped))
                     {
                         string? toSend = null;
                         Bot.Events.ExtensionPacketReceived += modifyPacket;
@@ -331,11 +332,13 @@ public class CoreBots
                     else
                         SendPackets($"%xt%zm%cmd%1%tfer%{Username()}%whitemap-{PrivateRoomNumber}%");
                 }
-
-                else if (new[] { "off", "disabled", "disable", "stop", "same", "currentmap", "bot.map.currentmap", String.Empty }
-                                .Any(m => m.ToLower() == CustomStopLocation.ToLower())) { }
+                else if (!new[] { "off", "disabled", "disable", "stop", "same", "currentmap", "bot.map.currentmap", String.Empty }
+                                .Any(m => m == _stopLoc))
+                {
+                    // Nothing happens
+                }
                 else
-                    Bot.Send.Packet($"%xt%zm%cmd%1%tfer%{Username()}%{CustomStopLocation.ToLower()}-{PrivateRoomNumber}%");
+                    Bot.Send.Packet($"%xt%zm%cmd%1%tfer%{Username()}%{_stopLoc}-{PrivateRoomNumber}%");
             }
         }
         if (AntiLag)
