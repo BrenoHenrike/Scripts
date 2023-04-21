@@ -636,8 +636,18 @@ public class CoreFarms
             AlchemyREP(rank);
 
         // Core.Join("Alchemy");
-        int reagentid1 = Bot.Inventory.GetItem(reagent1)!.ID;
-        int reagentid2 = Bot.Inventory.GetItem(reagent2)!.ID;
+        if (!Core.CheckInventory(reagent1) || !Bot.Inventory.TryGetItem(reagent1, out var reg1))
+        {
+            Core.Logger("Something went wrong, you do not own " + reagent1, messageBox: true, stopBot: true);
+            return;
+        }
+        if (!Core.CheckInventory(reagent2) || !Bot.Inventory.TryGetItem(reagent1, out var reg2))
+        {
+            Core.Logger("Something went wrong, you do not own " + reagent2, messageBox: true, stopBot: true);
+            return;
+        }
+        int reagentid1 = reg1!.ID;
+        int reagentid2 = reg2!.ID;
 
         Core.Logger($"Reagents: [{reagent1}], [{reagent2}].");
         Core.Logger($"Rune: {rune}.");
