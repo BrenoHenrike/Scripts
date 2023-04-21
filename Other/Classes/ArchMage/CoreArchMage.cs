@@ -546,8 +546,7 @@ public class CoreArchMage
         {
             if (army)
                 Core.HuntMonster(map, monster, item, quant, isTemp: false);
-            else if (!Core.CheckInventory(item, quant))
-                Core.Logger($"{item} x{quant} not found, it can be farmed (with an army) from \"{monster}\" in /{map.ToLower()}", stopBot: true);
+            else Core.Logger($"{item} x{quant} not found, it can be farmed (with an army) from \"{monster}\" in /{map.ToLower()}", stopBot: true);
         }
     }
 
