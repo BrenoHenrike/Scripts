@@ -234,7 +234,7 @@ public class PotionBuyer
                             Core.HuntMonster("twig", "Sweetish Fish", ingredient, ingreQuant, isTemp: false);
                         else
                         {
-                            Adv.BuyItem("alchemyacademy", 395, "Dragon Runestone", ingreQuant, 8844);
+                            Adv.BuyItem("alchemyacademy", 395, 7132, ingreQuant, 1, 8844);
                             Adv.BuyItem("alchemyacademy", 397, 11472, ingreQuant, 2, 1229);
                         }
                         break;
