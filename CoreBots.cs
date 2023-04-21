@@ -360,7 +360,6 @@ public class CoreBots
 
                 if (AntiLag)
                 {
-                    Bot.Flash.SetGameObject("stage.frameRate", 60);
                     Bot.Options.SetFPS = 60;
                     if (Bot.Flash.GetGameObject<bool>("ui.monsterIcon.redX.visible"))
                         Bot.Flash.CallGameFunction("world.toggleMonsters");
