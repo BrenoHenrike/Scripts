@@ -228,6 +228,16 @@ public class PotionBuyer
 
                 switch (ingredient)
                 {
+
+                    case "Moglin Tears":
+                        if (Bot.Player.IsMember)
+                            Core.HuntMonster("twig", "Sweetish Fish", ingredient, ingreQuant, isTemp: false);
+                        else
+                        {
+                            Adv.BuyItem("alchemyacademy", 395, "Dragon Runestone", ingreQuant, 8844);
+                            Adv.BuyItem("alchemyacademy", 397, 11472, ingreQuant, 2, 1229);
+                        }
+                        break;
                     case "Lemurphant Tears":
                         Core.HuntMonster("ravinetemple", "Lemurphant", ingredient, ingreQuant, isTemp: false);
                         break;
