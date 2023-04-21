@@ -143,7 +143,8 @@ public class CoreBots
         Bot.Lite.UntargetDead = changeTo;
         Bot.Lite.UntargetSelf = changeTo;
         Bot.Lite.ReacceptQuest = false;
-        Bot.Lite.Set("dOptions[\"disRed\"]", true);
+        Bot.Lite.DisableRedWarning = true;
+        Bot.Lite.CharacterSelectScreen = false;
 
         CollectData(changeTo);
 
@@ -289,7 +290,7 @@ public class CoreBots
     {
         CancelRegisteredQuests();
         AbandonQuest(Bot.Quests.Active.Select(x => x.ID).ToArray());
-        SavedState(false);
+        StopBotAsync();
         Bot.Handlers.Clear();
 
         if (Bot.Player.LoggedIn)
@@ -297,26 +298,25 @@ public class CoreBots
             JumpWait();
             Bot.Sleep(ActionDelay);
 
-            if (EquipmentBeforeBot.Any())
-                Equip(EquipmentBeforeBot.ToArray());
-
             if (!string.IsNullOrWhiteSpace(CustomStopLocation))
             {
                 string _stopLoc = CustomStopLocation.Trim().ToLower();
-                if (new[] { "home", "house" }
-                        .Any(m => _stopLoc == m))
+                if (new[] { "home", "house" }.Contains(_stopLoc))
                 {
                     if (Bot.House.Items.Any(h => h.Equipped))
                     {
                         string? toSend = null;
                         Bot.Events.ExtensionPacketReceived += modifyPacket;
                         Bot.Send.Packet($"%xt%zm%house%1%{Username()}%");
-                        Bot.Wait.ForMapLoad("house");
-                        if (toSend != null)
-                            Bot.Send.ClientPacket(toSend, "json");
-                        Bot.Events.ExtensionPacketReceived -= modifyPacket;
-                        for (int i = 0; i < 7; i++)
-                            Bot.Send.ClientServer(" ", "");
+                        Task.Run(() =>
+                        {
+                            Bot.Wait.ForMapLoad("house");
+                            if (Bot.Wait.ForTrue(() => toSend != null, 20))
+                                Bot.Send.ClientPacket(toSend!, "json");
+                            Bot.Events.ExtensionPacketReceived -= modifyPacket;
+                            for (int i = 0; i < 7; i++)
+                                Bot.Send.ClientServer(" ", "");
+                        });
 
                         void modifyPacket(dynamic packet)
                         {
@@ -329,40 +329,51 @@ public class CoreBots
                             }
                         }
                     }
-                    else
-                        SendPackets($"%xt%zm%cmd%1%tfer%{Username()}%whitemap-{PrivateRoomNumber}%");
+                    else Bot.Send.Packet($"%xt%zm%cmd%1%tfer%{Username()}%whitemap-{PrivateRoomNumber}%");
                 }
-                else if (!new[] { "off", "disabled", "disable", "stop", "same", "currentmap", "bot.map.currentmap", String.Empty }
-                                .Any(m => m == _stopLoc))
+                else if (new[] { "off", "disabled", "disable", "stop", "same", "currentmap", "bot.map.currentmap", String.Empty }
+                    .Any(m => m == _stopLoc))
                 {
                     // Nothing happens
                 }
-                else
-                    Bot.Send.Packet($"%xt%zm%cmd%1%tfer%{Username()}%{_stopLoc}-{PrivateRoomNumber}%");
+                else Bot.Send.Packet($"%xt%zm%cmd%1%tfer%{Username()}%{_stopLoc}-{PrivateRoomNumber}%");
+
+                if (EquipmentBeforeBot.Any())
+                    Equip(EquipmentBeforeBot.ToArray());
             }
         }
-        if (AntiLag)
-        {
-            Bot.Flash.SetGameObject("stage.frameRate", 60);
-            if (Bot.Flash.GetGameObject<bool>("ui.monsterIcon.redX.visible"))
-                Bot.Flash.CallGameFunction("world.toggleMonsters");
-        }
-
-        Bot.Options.CustomName = Username().ToUpper();
-        string? guild = Bot.Flash.GetGameObject<string>("world.myAvatar.objData.guild.Name");
-        Bot.Options.CustomGuild = guild != null ? $"< {guild} >" : "";
-
-        if (File.Exists(ButlerLogPath()))
-            File.Delete(ButlerLogPath());
 
         if (crashed)
-            Logger("Bot Stopped due to crash.");
+            Logger("Bot stopped due to a crash.");
         else if (!Bot.Player.LoggedIn)
-            Logger("Auto Relogin appears to have failed.");
-        else Logger("Bot Stopped Successfully.");
+            Logger("Bot stopped due to Auto-Relogin failure.");
+        else Logger("Bot stopped successfully.");
 
         GC.KeepAlive(Instance);
         return scriptFinished;
+
+        void StopBotAsync()
+        {
+            Task.Run(() =>
+            {
+                SavedState(false);
+
+                if (AntiLag)
+                {
+                    Bot.Flash.SetGameObject("stage.frameRate", 60);
+                    Bot.Options.SetFPS = 60;
+                    if (Bot.Flash.GetGameObject<bool>("ui.monsterIcon.redX.visible"))
+                        Bot.Flash.CallGameFunction("world.toggleMonsters");
+                }
+
+                Bot.Options.CustomName = Username().ToUpper();
+                string? guild = Bot.Flash.GetGameObject<string>("world.myAvatar.objData.guild.Name");
+                Bot.Options.CustomGuild = guild != null ? $"< {guild} >" : String.Empty;
+
+                if (File.Exists(ButlerLogPath()))
+                    File.Delete(ButlerLogPath());
+            });
+        }
     }
     private bool scriptFinished = true;
 
@@ -2234,7 +2245,7 @@ public class CoreBots
         {
             if (usingGeneric)
                 return false;
-            
+
             if (!CheckInventory(className))
             {
                 Logger("You do not own " + className);
