@@ -7,17 +7,18 @@ tags: null
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
-
+//cs_include Scripts/ShadowsOfWar/CoreSoWMats.cs
 //cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
-//cs_include Scripts/Legion/YamiNoRonin/CoreYnR.cs
-//cs_include Scripts/Other/MergeShops/DeadLinesMerge.cs
-//cs_include Scripts/Other/MergeShops/RuinedCrownMerge.cs
-//cs_include Scripts/Other/MergeShops/TimekeepMerge.cs
-//cs_include Scripts/Other/MergeShops/StreamwarMerge.cs
-//cs_include Scripts/Other/MergeShops/WorldsCoreMerge.cs
-//cs_include Scripts/Other/MergeShops/ManaCradleMerge.cs
-
 //cs_include Scripts/Legion/CoreLegion.cs
+
+//cs_include Scripts/Legion/YamiNoRonin/CoreYnR.cs
+//cs_include Scripts/ShadowsOfWar/MergeShops/DeadLinesMerge.cs
+//cs_include Scripts/ShadowsOfWar/MergeShops/RuinedCrownMerge.cs
+//cs_include Scripts/ShadowsOfWar/MergeShops/TimekeepMerge.cs
+//cs_include Scripts/ShadowsOfWar/MergeShops/StreamwarMerge.cs
+//cs_include Scripts/ShadowsOfWar/MergeShops/WorldsCoreMerge.cs
+//cs_include Scripts/ShadowsOfWar/MergeShops/ManaCradleMerge.cs
+
 //cs_include Scripts/Legion/SwordMaster.cs
 
 using Skua.Core.Interfaces;
