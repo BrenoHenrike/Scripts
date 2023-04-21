@@ -212,8 +212,6 @@ public class CurrentDailyGifts
     /// </summary>
     private void GetGift(DateTime expiresAt, string map, int monsterMapID, params string[] items)
     {
-        Monster? monster = Bot.Monsters.MapMonsters?.Find(m => m.MapID == monsterMapID);
-
         if (expiresAt == Permanent)
         {
             switch (mode)
@@ -253,6 +251,13 @@ public class CurrentDailyGifts
         if (!Core.isSeasonalMapActive(map))
             return;
 
+        Monster? monster = Bot.Monsters.MapMonsters.Find(m => m.MapID == monsterMapID);
+        if (monster == null)
+        {
+            Core.Logger($"Something went wrong, the bot could not find any monster by the MapID of {monsterMapID} in {map}. Please report.");
+            return;
+        }
+
         if (Core.CheckInventory(items, toInv: false))
             return;
 
@@ -264,7 +269,7 @@ public class CurrentDailyGifts
 
         foreach (string item in items)
         {
-            Core.HuntMonsterMapID(map, monster.ID, item, 1, false, log: false);
+            Core.HuntMonsterMapID(map, monster.MapID, item, 1, false, log: false);
             Core.ToBank(item);
         }
     }
