@@ -88,7 +88,7 @@ public class CoreAdvanced
             }
         }
 
-        GetItemReq(item);
+        GetItemReq(item, quant);
         Core._BuyItem(map, shopID, item, quant);
     }
 
@@ -96,13 +96,13 @@ public class CoreAdvanced
     /// Will make sure you have every requierment (XP, Rep and Gold) to buy the item.
     /// </summary>
     /// <param name="item">The ShopItem object containing all the information</param>
-    public void GetItemReq(ShopItem item)
+    public void GetItemReq(ShopItem item, int quant = 1)
     {
         if (!String.IsNullOrEmpty(item.Faction) && item.Faction != "None" && item.RequiredReputation > 0)
             runRep(item.Faction, Core.PointsToLevel(item.RequiredReputation));
         Farm.Experience(item.Level);
         if (!item.Coins)
-            Farm.Gold(item.Cost);
+            Farm.Gold(item.Cost * quant);
     }
 
     private void runRep(string faction, int rank)
