@@ -7,6 +7,7 @@ tags: null
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
 
 public class RankUpEquippedClass
 {
@@ -24,7 +25,5 @@ public class RankUpEquippedClass
         Core.SetOptions(false);
     }
 
-    public void DoRankUpEquippedClass() => Adv.rankUpClass(Bot.Player.CurrentClass.Name);
-
-
+    public void DoRankUpEquippedClass() => Adv.rankUpClass(Bot.Player.CurrentClass?.Name ?? Bot.Inventory.Items.Find(x => x.Equipped && x.Category == ItemCategory.Class)?.Name ?? "NoEquippedClass");
 }

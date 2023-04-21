@@ -98,7 +98,7 @@ public class CoreAdvanced
     /// <param name="item">The ShopItem object containing all the information</param>
     public void GetItemReq(ShopItem item)
     {
-        if (String.IsNullOrEmpty(item.Faction) && item.Faction != "None" && item.RequiredReputation > 0)
+        if (!String.IsNullOrEmpty(item.Faction) && item.Faction != "None" && item.RequiredReputation > 0)
             runRep(item.Faction, Core.PointsToLevel(item.RequiredReputation));
         Farm.Experience(item.Level);
         if (!item.Coins)
