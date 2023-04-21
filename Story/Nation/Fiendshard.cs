@@ -26,7 +26,7 @@ public class Fiendshard_Story
 
     public void Fiendshard_Questline()
     {
-        if (Core.isCompletedBefore(7898))
+        if (Core.isCompletedBefore(7900))
             return;
 
         Story.PreLoad(this);
@@ -36,31 +36,31 @@ public class Fiendshard_Story
         //used quest progs for mobs/room optimization
 
         // Sneak Attack
-        if (!Core.isCompletedBefore(7892))
+        if (!Story.QuestProgression(7892))
         {
             Core.EnsureAccept(7892);
-            Core.KillMonster("Fiendshard", "r2", "Left", "Rogue Fiend");
+            Core.KillMonster("Fiendshard", "r2", "Left", "Rogue Fiend", "Rogue Fiends Defeated", 4);
             Story.MapItemQuest(7892, "Fiendshard", 7983);
         }
 
         // Fiend-terrogation
-        if (!Core.isCompletedBefore(7893))
+        if (!Story.QuestProgression(7893))
         {
             Core.EnsureAccept(7893);
-            Core.KillMonster("Fiendshard", "r2", "Left", "Rogue Fiend");
+            Core.KillMonster("Fiendshard", "r2", "Left", "Rogue Fiend", "Fiends Interrogated", 3);
             Core.EnsureComplete(7893);
         }
 
         // Key Difference Between Human and Fiend
-        if (!Core.isCompletedBefore(7894))
+        if (!Story.QuestProgression(7894))
         {
             Core.EnsureAccept(7894);
-            Core.KillMonster("Fiendshard", "r2", "Left", "Rogue Fiend");
+            Core.KillMonster("Fiendshard", "r2", "Left", "Rogue Fiend", "Key Fragments Located", 4);
             Core.EnsureComplete(7894);
         }
 
         // Unlock the Door
-        if (!Core.isCompletedBefore(7895))
+        if (!Story.QuestProgression(7895))
         {
             Core.EnsureAccept(7895);
             Core.KillMonster("fiendshard", "r2", "Left", "Rogue Fiend", "Rogue Fiend Defeated", 5);
@@ -77,9 +77,9 @@ public class Fiendshard_Story
 
         // Destroy the Fiend Shard
         // Archfiend DeathLord quests can be done without finishing this quest.
-        Bot.Events.CellChanged += CutSceneFixer;
-        if (!Core.isCompletedBefore(7898))
+        if (!Story.QuestProgression(7898))
         {
+            Bot.Events.CellChanged += CutSceneFixer;
             Core.EnsureAccept(7898);
             Core.HuntMonsterMapID("fiendshard", 15, "Nulgath's Fiend Shard Destroyed");
             Core.HuntMonsterMapID("fiendshard", 14, "Fiends Fended Off", 15);
@@ -90,13 +90,13 @@ public class Fiendshard_Story
 
     void CutSceneFixer(string map, string cell, string pad)
     {
-        if (map == "fiendshard" && cell != "r9")
+        while (map == "fiendshard" && cell != "r9")
         {
             Core.JumpWait();
-            while (!Bot.ShouldExit && Bot.Player.Cell != "r9")
+            if (Bot.Player.Cell != "r9")
             {
                 Bot.Sleep(2500);
-                Core.Jump("r9", "Left");
+                Core.Jump("r9");
                 Bot.Sleep(2500);
             }
         }
