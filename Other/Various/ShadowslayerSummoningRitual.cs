@@ -67,7 +67,7 @@ public class ShadowslayerSummoningRitual
                 {
                     Core.AddDrop("Meat Ration");
                     Core.EnsureAccept(8263);
-                    Core.KillMonster("cellar", "Sewer1", "Left", "GreenRat", "Green Mystery Meat", 10);
+                    Core.HuntMonster("cellar", "GreenRat", "Green Mystery Meat", 10);
                     Core.EnsureComplete(8263);
                     Bot.Wait.ForPickup("Meat Ration");
                 }
