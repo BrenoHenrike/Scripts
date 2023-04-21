@@ -56,7 +56,6 @@ public class AscendedDrakathGear
         Core.RegisterQuests(3767);
         while (!Bot.ShouldExit && !Core.CheckInventory(Target))
         {
-            Bot.Quests.UpdateQuest(159, 4);
             Core.HuntMonster("towerofdoom4", "Dread Stranglerfish", "Holy Wasabi");
             Bot.Wait.ForPickup(Target);
         }
