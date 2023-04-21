@@ -90,16 +90,16 @@ public class Fiendshard_Story
 
     void CutSceneFixer(string map, string cell, string pad)
     {
-        while (map == "fiendshard" && cell != "r9")
+        if (map == "fiendshard" && cell == "Cut3")
         {
-            Core.JumpWait();
-            if (Bot.Player.Cell != "r9")
+            Bot.Sleep(2500);
+            while (Bot.Player.Cell != "r9")
             {
                 Bot.Sleep(2500);
                 Core.Jump("r9");
                 Bot.Sleep(2500);
             }
         }
-        Bot.Events.CellChanged -= CutSceneFixer;
+            Bot.Events.CellChanged -= CutSceneFixer;
     }
 }
