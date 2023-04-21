@@ -87,12 +87,7 @@ public class Banished
         if (!Story.QuestProgression(8462))
         {
             Core.EnsureAccept(8462);
-            if (!Core.CheckInventory("Vial of Antitoxins"))
-            {
-                Farm.Gold(100000);
-                Core.BuyItem("alchemyacademy", 395, "Gold Voucher 100k");
-                Core.BuyItem("alchemyacademy", 2114, "Vial of Antitoxins");
-            }
+            Adv.BuyItem("alchemyacademy", 2114, "Vial of Antitoxins");
             Core.EnsureComplete(8462);
         }
 
