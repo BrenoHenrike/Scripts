@@ -79,7 +79,13 @@ public class Fiendshard_Story
         // Archfiend DeathLord quests can be done without finishing this quest.
         if (!Story.QuestProgression(7898))
         {
-            Bot.Events.CellChanged += CutSceneFixer;
+            // Bot.Events.CellChanged += CutSceneFixer;
+            Core.Join("fiendshard", "r9");
+            while (!Bot.ShouldExit && Bot.Player.Cell != "r9")
+            {
+                Bot.Sleep(2500);
+                Core.Jump("r9");
+            }
             Core.EnsureAccept(7898);
             Core.HuntMonsterMapID("fiendshard", 15, "Nulgath's Fiend Shard Destroyed");
             Core.HuntMonsterMapID("fiendshard", 14, "Fiends Fended Off", 15);
@@ -88,18 +94,18 @@ public class Fiendshard_Story
     }
 
 
-    void CutSceneFixer(string map, string cell, string pad)
-    {
-        if (map == "fiendshard" && cell == "Cut3")
-        {
-            Bot.Sleep(2500);
-            while (Bot.Player.Cell != "r9")
-            {
-                Bot.Sleep(2500);
-                Core.Jump("r9");
-                Bot.Sleep(2500);
-            }
-        }
-            Bot.Events.CellChanged -= CutSceneFixer;
-    }
+    // void CutSceneFixer(string map, string cell, string pad)
+    // {
+    //     Bot.Wait.ForCellChange("Cut3");
+    //     if (map == "fiendshard" && cell == "Cut3")
+    //     {
+    //         while (Bot.Player.Cell != "r9")
+    //         {
+    //             Bot.Sleep(2500);
+    //             Core.Jump("r9");
+    //             Bot.Sleep(2500);
+    //         }
+    //     }
+    //     Bot.Events.CellChanged -= CutSceneFixer;
+    // }
 }
