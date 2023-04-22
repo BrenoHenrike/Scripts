@@ -1,5 +1,5 @@
 /*
-name: Generate OneClient Queued Script
+name: Generate Queued OneClient Script
 description: Pick multiple scripts that you want to run in sequence of one another, and the script will generate a new file that does exactly those bots for you. It will run it as a OneClient bot.
 tags: generator, queud, script, follow-up, choose, army, oneclient
 */
@@ -10,18 +10,18 @@ using Skua.Core.Models;
 using System.IO;
 using CommunityToolkit.Mvvm.DependencyInjection;
 
-public class GenOneClientQueuedScript
+public class GenQueuedOneClientScript
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        GenerateOneClientQueuedScript();
+        GenerateQueuedOneClientScript();
     }
 #nullable enable
 
-    public void GenerateOneClientQueuedScript()
+    public void GenerateQueuedOneClientScript()
     {
         IFileDialogService? _fileDialog;
         List<string[]> scripts = new();
