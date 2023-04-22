@@ -52,6 +52,7 @@ tags: null
 //cs_include Scripts/Legion/CoreLegion.cs
 //cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
 //cs_include Scripts/Other/MergeShops/SynderesMerge.cs
+//cs_include Scripts/Other/Classes/REP-based/DarkbloodStormKing.cs
 using Skua.Core.Interfaces;
 
 public class FarmerJoeOutfitandPet

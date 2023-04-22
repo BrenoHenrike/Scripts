@@ -52,6 +52,7 @@ tags: null
 //cs_include Scripts/Legion/CoreLegion.cs
 //cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
 //cs_include Scripts/Other/MergeShops/SynderesMerge.cs
+//cs_include Scripts/Other/Classes/REP-based/DarkbloodStormKing.cs
 using Skua.Core.Interfaces;
 
 public class FarmerJoeKitClasses
@@ -70,6 +71,7 @@ public class FarmerJoeKitClasses
     public LordOfOrder LordOfOrder = new();
     public ScarletSorceress ScarletSorceress = new();
     public EternalInversionist EternalInversionist = new();
+    public DarkbloodStormKing DBSK = new();
 
     public void ScriptMain(IScriptInterface Bot)
     {
@@ -88,6 +90,7 @@ public class FarmerJoeKitClasses
         DragonShinobi.GetDSS();
         StoneCrusher.GetSC();
         EternalInversionist.GetEI();
+        DBSK.GetDSK();
 
         //Story Classes
         GlacialBerserker.GetGB();
