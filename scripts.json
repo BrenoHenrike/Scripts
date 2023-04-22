@@ -50,7 +50,7 @@
       "null"
     ],
     "path": "CoreAdvanced.cs",
-    "size": 91195,
+    "size": 98574,
     "fileName": "CoreAdvanced.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreAdvanced.cs"
   },
@@ -76,7 +76,7 @@
       "prerequisites"
     ],
     "path": "Chaos/ChaosAvengerPreReqs.cs",
-    "size": 6089,
+    "size": 6097,
     "fileName": "ChaosAvengerPreReqs.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Chaos/ChaosAvengerPreReqs.cs"
   },
@@ -186,7 +186,7 @@
       "null"
     ],
     "path": "Legion/DagePvP.cs",
-    "size": 905,
+    "size": 911,
     "fileName": "DagePvP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/DagePvP.cs"
   },
@@ -219,7 +219,7 @@
       "null"
     ],
     "path": "Legion/CoreLegion.cs",
-    "size": 28232,
+    "size": 28389,
     "fileName": "CoreLegion.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/CoreLegion.cs"
   },
@@ -230,7 +230,7 @@
       "null"
     ],
     "path": "Legion/HeadOfTheLegionBeast.cs",
-    "size": 6563,
+    "size": 6569,
     "fileName": "HeadOfTheLegionBeast.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/HeadOfTheLegionBeast.cs"
   },
@@ -471,7 +471,7 @@
       "warfury emblem"
     ],
     "path": "Other/WarFuryEmblem.cs",
-    "size": 1376,
+    "size": 1382,
     "fileName": "WarFuryEmblem.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/WarFuryEmblem.cs"
   },
@@ -965,7 +965,7 @@
       "null"
     ],
     "path": "Hollowborn/HollowbornReapersScythe.cs",
-    "size": 3055,
+    "size": 3079,
     "fileName": "HollowbornReapersScythe.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/HollowbornReapersScythe.cs"
   },
@@ -1432,7 +1432,7 @@
       "diamond badge of nulgath"
     ],
     "path": "Nation/NationLoyaltyRewarded.cs",
-    "size": 2651,
+    "size": 2669,
     "fileName": "NationLoyaltyRewarded.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/NationLoyaltyRewarded.cs"
   },
@@ -1683,7 +1683,7 @@
       "null"
     ],
     "path": "Evil/VordredsArmor.cs",
-    "size": 7234,
+    "size": 7252,
     "fileName": "VordredsArmor.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/VordredsArmor.cs"
   },
@@ -2368,7 +2368,7 @@
       "titan-attack"
     ],
     "path": "Story/TitanAttack.cs",
-    "size": 4271,
+    "size": 4277,
     "fileName": "TitanAttack.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/TitanAttack.cs"
   },
@@ -2983,7 +2983,7 @@
       "banished"
     ],
     "path": "Story/Banished.cs",
-    "size": 5128,
+    "size": 5142,
     "fileName": "Banished.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Banished.cs"
   },
@@ -2994,7 +2994,7 @@
       "null"
     ],
     "path": "Farm/SevenCirclesWarXP+Gold.cs",
-    "size": 1022,
+    "size": 1028,
     "fileName": "SevenCirclesWarXP+Gold.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/SevenCirclesWarXP+Gold.cs"
   },
@@ -3052,7 +3052,7 @@
       "null"
     ],
     "path": "Farm/IcestormArenaXP[1-100].cs",
-    "size": 772,
+    "size": 779,
     "fileName": "IcestormArenaXP[1-100].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/IcestormArenaXP[1-100].cs"
   },
@@ -3074,7 +3074,7 @@
       "null"
     ],
     "path": "Farm/GoldFarm.cs",
-    "size": 762,
+    "size": 769,
     "fileName": "GoldFarm.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/GoldFarm.cs"
   },
@@ -3085,7 +3085,7 @@
       "null"
     ],
     "path": "Farm/DarkWarLegionGold.cs",
-    "size": 772,
+    "size": 779,
     "fileName": "DarkWarLegionGold.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/DarkWarLegionGold.cs"
   },
@@ -3096,7 +3096,7 @@
       "null"
     ],
     "path": "Farm/CombatTrophy.cs",
-    "size": 698,
+    "size": 705,
     "fileName": "CombatTrophy.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/CombatTrophy.cs"
   },
@@ -3107,7 +3107,7 @@
       "null"
     ],
     "path": "Farm/Leveling.cs",
-    "size": 673,
+    "size": 680,
     "fileName": "Leveling.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/Leveling.cs"
   },
@@ -5654,7 +5654,7 @@
       "seasonal"
     ],
     "path": "Seasonal/LuckyDay/PostyMcNobbinsQuestRewards.cs",
-    "size": 3457,
+    "size": 3464,
     "fileName": "PostyMcNobbinsQuestRewards.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/LuckyDay/PostyMcNobbinsQuestRewards.cs"
   },
@@ -5760,7 +5760,7 @@
       "frostvale"
     ],
     "path": "Seasonal/Frostvale/WinterHorrorWarRewardsMerge.cs",
-    "size": 4776,
+    "size": 4782,
     "fileName": "WinterHorrorWarRewardsMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/WinterHorrorWarRewardsMerge.cs"
   },
@@ -6065,7 +6065,7 @@
       "null"
     ],
     "path": "Legion/Various/ThanatostheDestroyer.cs",
-    "size": 2041,
+    "size": 2047,
     "fileName": "ThanatostheDestroyer.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/Various/ThanatostheDestroyer.cs"
   },
@@ -6098,7 +6098,7 @@
       "null"
     ],
     "path": "Legion/Various/DageChallengeMerge.cs",
-    "size": 6318,
+    "size": 6324,
     "fileName": "DageChallengeMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/Various/DageChallengeMerge.cs"
   },
@@ -6144,7 +6144,7 @@
       "null"
     ],
     "path": "Legion/Revenant/CoreLR.cs",
-    "size": 7825,
+    "size": 7874,
     "fileName": "CoreLR.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/Revenant/CoreLR.cs"
   },
@@ -7107,7 +7107,7 @@
       "null"
     ],
     "path": "Other/MergeShops/SevenCirclesWarMerge.cs",
-    "size": 7463,
+    "size": 7469,
     "fileName": "SevenCirclesWarMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/SevenCirclesWarMerge.cs"
   },
@@ -8087,7 +8087,7 @@
       "null"
     ],
     "path": "Other/FarmJoeKits/CoreFarmerJoe.cs",
-    "size": 17931,
+    "size": 17959,
     "fileName": "CoreFarmerJoe.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/CoreFarmerJoe.cs"
   },
@@ -8186,7 +8186,7 @@
       "null"
     ],
     "path": "Other/Various/KillYoshinoBoss.cs",
-    "size": 1218,
+    "size": 1232,
     "fileName": "KillYoshinoBoss.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Various/KillYoshinoBoss.cs"
   },
@@ -8198,7 +8198,7 @@
       "set"
     ],
     "path": "Other/Pets/SerpentineLarvae.cs",
-    "size": 2204,
+    "size": 2210,
     "fileName": "SerpentineLarvae.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Pets/SerpentineLarvae.cs"
   },
@@ -8698,7 +8698,7 @@
       "hero-s-valiance"
     ],
     "path": "Other/Armor/FireChampionsArmor.cs",
-    "size": 3067,
+    "size": 3079,
     "fileName": "FireChampionsArmor.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Armor/FireChampionsArmor.cs"
   },
@@ -8750,7 +8750,7 @@
       "seven circles war"
     ],
     "path": "Army/ArmyFarm/ArmyGold.cs",
-    "size": 5315,
+    "size": 5310,
     "fileName": "ArmyGold.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/ArmyGold.cs"
   },
@@ -8848,7 +8848,7 @@
       "f2p"
     ],
     "path": "Army/Various/ArmySwagTokensF2p.cs",
-    "size": 3264,
+    "size": 3263,
     "fileName": "ArmySwagTokensF2p.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmySwagTokensF2p.cs"
   },
@@ -9140,7 +9140,7 @@
       "fealty"
     ],
     "path": "Army/ArmyLegion/ArmyLRFull.cs",
-    "size": 16796,
+    "size": 16845,
     "fileName": "ArmyLRFull.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyLegion/ArmyLRFull.cs"
   },
@@ -9153,7 +9153,7 @@
       "seraphicwardage"
     ],
     "path": "Army/ArmyLegion/ArmyDarkToken.cs",
-    "size": 2096,
+    "size": 2102,
     "fileName": "ArmyDarkToken.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyLegion/ArmyDarkToken.cs"
   },
@@ -9181,7 +9181,7 @@
       "legion arena"
     ],
     "path": "Army/ArmyLegion/ArmyLegionToken.cs",
-    "size": 14782,
+    "size": 14854,
     "fileName": "ArmyLegionToken.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyLegion/ArmyLegionToken.cs"
   },
@@ -10767,7 +10767,7 @@
       "null"
     ],
     "path": "Good/GearOfAwe/Awescended.cs",
-    "size": 9776,
+    "size": 9783,
     "fileName": "Awescended.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/GearOfAwe/Awescended.cs"
   },
@@ -12674,7 +12674,7 @@
       "null"
     ],
     "path": "Story/ShadowsOfWar/CoreSoW.cs",
-    "size": 36036,
+    "size": 36042,
     "fileName": "CoreSoW.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfWar/CoreSoW.cs"
   },
@@ -14513,7 +14513,7 @@
       "death victor"
     ],
     "path": "Seasonal/StaffBirthdays/DageTheEvil/UnderVoidBadgesAll.cs",
-    "size": 4903,
+    "size": 4909,
     "fileName": "UnderVoidBadgesAll.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/UnderVoidBadgesAll.cs"
   },
@@ -15446,7 +15446,7 @@
       "null"
     ],
     "path": "Other/Classes/REP-based/GlacialBerserker.cs",
-    "size": 1053,
+    "size": 1060,
     "fileName": "GlacialBerserker.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/REP-based/GlacialBerserker.cs"
   },
@@ -16440,7 +16440,7 @@
       "celestial-arena"
     ],
     "path": "Story/QueenofMonsters/Extra/CelestialArena.cs",
-    "size": 3596,
+    "size": 3617,
     "fileName": "CelestialArena.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/QueenofMonsters/Extra/CelestialArena.cs"
   },
