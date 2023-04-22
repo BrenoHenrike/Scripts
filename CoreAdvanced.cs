@@ -497,7 +497,7 @@ public class CoreAdvanced
     }
 
     /// <summary>
-e    // Do not use this variant
+    /// Do not use this variant
     /// </summary>
     private void BestGear()
     {
