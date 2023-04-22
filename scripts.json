@@ -50,7 +50,7 @@
       "null"
     ],
     "path": "CoreAdvanced.cs",
-    "size": 98574,
+    "size": 99119,
     "fileName": "CoreAdvanced.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreAdvanced.cs"
   },
@@ -309,6 +309,32 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/Butler.cs"
   },
   {
+    "name": "Choose Best Gear (Racial)",
+    "description": "Select a boost type you want to optimize for, and the bot will find and equip the best combination of gear for that boost.",
+    "tags": [
+      "best",
+      "gear",
+      "boost",
+      "damage",
+      "dmg",
+      "dps",
+      "race",
+      "racial",
+      "racist",
+      "chaos",
+      "dragonkin",
+      "drakath",
+      "elemental",
+      "human",
+      "orc",
+      "undead"
+    ],
+    "path": "Tools/ChooseBestGear(Racial).cs",
+    "size": 2169,
+    "fileName": "ChooseBestGear(Racial).cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/ChooseBestGear(Racial).cs"
+  },
+  {
     "name": "Auto Attack with Auto Movement",
     "description": "This bot will automatically move to the right locations for Nightmare Carnax and Ultra Dage",
     "tags": [
@@ -325,6 +351,26 @@
     "size": 2613,
     "fileName": "AutoAttackWithMove.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/AutoAttackWithMove.cs"
+  },
+  {
+    "name": "Choose Best Gear",
+    "description": "Select a boost type you want to optimize for, and the bot will find and equip the best combination of gear for that boost.",
+    "tags": [
+      "best",
+      "gear",
+      "boost",
+      "damage",
+      "dmg",
+      "dps",
+      "exp",
+      "gold",
+      "reputation",
+      "class points"
+    ],
+    "path": "Tools/ChooseBestGear(Generic).cs",
+    "size": 2132,
+    "fileName": "ChooseBestGear(Generic).cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/ChooseBestGear(Generic).cs"
   },
   {
     "name": "Generate Queued Script",
@@ -354,26 +400,6 @@
     "size": 4454,
     "fileName": "BuyOut.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/BuyOut.cs"
-  },
-  {
-    "name": "Choose Best Gear",
-    "description": "Select a boost type you want to optimize for, and the bot will find and equip the best combination of gear for that boost.",
-    "tags": [
-      "best",
-      "gear",
-      "boost",
-      "damage",
-      "dmg",
-      "dps",
-      "exp",
-      "gold",
-      "reputation",
-      "class points"
-    ],
-    "path": "Tools/ChooseBestGear.cs",
-    "size": 2227,
-    "fileName": "ChooseBestGear.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/ChooseBestGear.cs"
   },
   {
     "name": "Shadowflame War Medal",
@@ -9181,7 +9207,7 @@
       "legion arena"
     ],
     "path": "Army/ArmyLegion/ArmyLegionToken.cs",
-    "size": 14854,
+    "size": 14875,
     "fileName": "ArmyLegionToken.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyLegion/ArmyLegionToken.cs"
   },
