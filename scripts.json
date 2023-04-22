@@ -6834,6 +6834,20 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/ShadowfallDefenseMerge.cs"
   },
   {
+    "name": "Diplomat Merge",
+    "description": "farms the materials and gets teh items from the diplomat merge in /castle",
+    "tags": [
+      "diplomate merge",
+      "castle",
+      "swordhavenrep",
+      ""
+    ],
+    "path": "Other/MergeShops/DiplomatMerge.cs",
+    "size": 5889,
+    "fileName": "DiplomatMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/DiplomatMerge.cs"
+  },
+  {
     "name": "TitanGearMerge",
     "description": "null",
     "tags": [
