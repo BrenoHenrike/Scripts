@@ -646,8 +646,12 @@ public class CoreFarms
             Core.Logger("Something went wrong, you do not own " + reagent2, messageBox: true, stopBot: true);
             return;
         }
+
         int reagentid1 = reg1!.ID;
         int reagentid2 = reg2!.ID;
+
+        if (reagent1 == "Dragon Scale")
+            reg1!.ID = 11478;
 
         Core.Logger($"Reagents: [{reagent1}], [{reagent2}].");
         Core.Logger($"Rune: {rune}.");
@@ -737,15 +741,15 @@ public class CoreFarms
         if (!Bot.Reputation.FactionList.Exists(f => f.Name == "Alchemy"))
         {
             Core.Logger("Getting Pre-Ranking XP");
-            if (!Core.CheckInventory(new[] { "Ice Vapor", "Dragon Runestone" }) || !Core.CheckInventory(11475)) //there are 2 dagon scales.
+            if (!Core.CheckInventory(new[] { 11478, 11475, 7132 }))
             {
                 if (!Core.CheckInventory("Dragon Runestone", 10))
                 {
                     Gold(1000000);
                     Core.BuyItem("alchemyacademy", 395, "Gold Voucher 500k", 2);
                 }
-                Core.BuyItem("alchemyacademy", 395, 7132, 10, 8845);
-                Core.BuyItem("alchemyacademy", 397, 11475, 1, 1232);
+                Core.BuyItem("alchemyacademy", 395, 7132, 1, 8845);
+                Core.BuyItem("alchemyacademy", 397, 11475, 2, 1232);
                 Core.BuyItem("alchemyacademy", 397, 11478, 1, 1235);
 
                 AlchemyPacket("Dragon Scale", "Ice Vapor", AlchemyRunes.Jera, loop: false, trait: CoreFarms.AlchemyTraits.hOu, P2w: true);
@@ -762,15 +766,12 @@ public class CoreFarms
         {
             if (goldMethod)
             {
-                if (!Core.CheckInventory(new[] { "Ice Vapor", "Dragon Runestone" }) || !Core.CheckInventory(11475)) //there are 2 dagon scales.
+                if (!Core.CheckInventory(new[] { 11478, 11475, 7132 }))
                 {
-                    if (!Core.CheckInventory("Dragon Runestone", 10))
-                    {
-                        Gold(1000000);
-                        Core.BuyItem("alchemyacademy", 395, "Gold Voucher 500k", 2);
-                    }
-                    Core.BuyItem("alchemyacademy", 395, 7132, 10, 8845);
-                    Core.BuyItem("alchemyacademy", 397, 11475, 10, 1232);
+                    Gold(2000000); //(2mil)
+                    Core.BuyItem("alchemyacademy", 395, "Gold Voucher 100k", 25);
+                    Core.BuyItem("alchemyacademy", 395, 7132, 25, 8844);
+                    Core.BuyItem("alchemyacademy", 397, 11475, 20, 1232);
                     Core.BuyItem("alchemyacademy", 397, 11478, 10, 1235);
                 }
 
