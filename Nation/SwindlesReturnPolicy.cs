@@ -62,7 +62,7 @@ public class SwindlesReturnPolicy
             {
                 Core.AddDrop(Thing.ID);
                 if (Core.CheckInventory(Thing.Name, Thing.MaxStack))
-                    return;
+                    continue;
                 Nation.SwindleReturn(Thing.Name, Thing.MaxStack);
             }
         }
