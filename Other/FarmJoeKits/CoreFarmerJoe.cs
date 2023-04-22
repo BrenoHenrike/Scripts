@@ -29,6 +29,7 @@ tags: null
 //cs_include Scripts/Other/Classes/REP-based/GlacialBerserker.cs
 //cs_include Scripts/Other/Classes/REP-based/Shaman.cs
 //cs_include Scripts/Other/Classes/REP-based/StoneCrusher.cs
+//cs_include Scripts/Other/Classes/REP-based/DarkbloodStormKing.cs
 //cs_include Scripts/Other/Classes/ScarletSorceress.cs
 //cs_include Scripts/Other/Classes/BloodSorceress.cs
 //cs_include Scripts/Other/Classes/DragonShinobi.cs
@@ -89,6 +90,8 @@ public class CoreFarmerJoe
     public LordOfOrder LOO = new();
     public ScarletSorceress SS = new();
     public EternalInversionist EI = new();
+    public DarkbloodStormKing DBSK = new();
+
     //Weapons
     public DualChainSawKatanas DCSK = new();
     public BurningBlade BB = new();
@@ -270,9 +273,10 @@ public class CoreFarmerJoe
                     if (Core.FarmClass == "Generic")
                         Core.FarmClass = "Eternal Inversionist";
 
-                    DS.GetDSS();
+                    DBSK.GetDSK();
+                    Adv.SmartEnhance("Darkblood StormKing");
                     if (Core.FarmClass == "Generic")
-                        Core.SoloClass = "DragonSoul Shinobi";
+                        Core.SoloClass = "Darkblood StormKing";
                     break;
 
                 case 55:
@@ -280,7 +284,7 @@ public class CoreFarmerJoe
                     while (!Bot.ShouldExit && Bot.Player.Level < Level)
                     {
                         if (Core.SoloClass == "Generic")
-                            Core.SoloClass = "DragonSoul Shinobi";
+                            Core.SoloClass = "Darkblood StormKing";
                         if (Core.FarmClass == "Generic")
                             Core.FarmClass = "Eternal Inversionist";
 
@@ -293,7 +297,7 @@ public class CoreFarmerJoe
                     while (!Bot.ShouldExit && Bot.Player.Level < Level || !Core.CheckInventory("ArchPaladin"))
                     {
                         if (Core.SoloClass == "Generic")
-                            Core.SoloClass = "DragonSoul Shinobi";
+                            Core.SoloClass = "Darkblood StormKing";
                         if (Core.FarmClass == "Generic")
                             Core.FarmClass = "Eternal Inversionist";
 
@@ -371,12 +375,11 @@ public class CoreFarmerJoe
         Adv.BuyItem("museum", 631, "Awethur's Accoutrements");
         COA.GetCoA();
         Adv.BestGear(GearBoost.dmgAll);
-        InvEn.EnhanceInventory();
 
         Core.Logger("P3 - 3: Burning Blade");
         BB.GetBurningBlade();
-        Core.Equip("Burning Blade");
         Adv.BestGear(GearBoost.dmgAll);
+        InvEn.EnhanceInventory();
 
         Core.Logger("P3 - 4: Improving Efficiency, and more Classes");
         Shaman.GetShaman();
