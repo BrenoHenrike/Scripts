@@ -33,9 +33,8 @@ public class DarkbloodStormKing
             return;
 
         LOC.Lionfang();
-        Farm.ThunderForgeREP();
 
-        Core.BuyItem("stormtemple", 544, "Darkblood StormKing", shopItemID :8079);
+        Adv.BuyItem("stormtemple", 544, 16780, 10412);
 
         if (rankUpClass)
             Adv.rankUpClass("Darkblood StormKing");
