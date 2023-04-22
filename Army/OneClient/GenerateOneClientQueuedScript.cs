@@ -1,7 +1,7 @@
 /*
-name: Generate Queued Script
-description: Pick multiple scripts that you want to run in sequence of one another, and the script will generate a new file that does exactly those bots for you
-tags: generator, queud, script, follow-up, choose
+name: Generate OneClient Queued Script
+description: Pick multiple scripts that you want to run in sequence of one another, and the script will generate a new file that does exactly those bots for you. It will run it as a OneClient bot.
+tags: generator, queud, script, follow-up, choose, army, oneclient
 */
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;
