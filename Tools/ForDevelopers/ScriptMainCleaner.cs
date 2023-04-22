@@ -21,7 +21,7 @@ public class ScriptMainCleaner
     {
         Cleaner();
     }
-
+ 
 #nullable enable
     private void Cleaner()
     {
