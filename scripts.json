@@ -9017,23 +9017,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/OneClient/WheelOfDoom.cs"
   },
   {
-    "name": "Generate OneClient Queued Script",
-    "description": "Pick multiple scripts that you want to run in sequence of one another, and the script will generate a new file that does exactly those bots for you. It will run it as a OneClient bot.",
-    "tags": [
-      "generator",
-      "queud",
-      "script",
-      "follow-up",
-      "choose",
-      "army",
-      "oneclient"
-    ],
-    "path": "Army/OneClient/GenerateOneClientQueuedScript.cs",
-    "size": 11186,
-    "fileName": "GenerateOneClientQueuedScript.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/OneClient/GenerateOneClientQueuedScript.cs"
-  },
-  {
     "name": "All accs bank all",
     "description": "banks all items on all accs in the \"thefamily.txt\" file.",
     "tags": [
@@ -9059,6 +9042,23 @@
     "size": 1216,
     "fileName": "ArmyFreeAcs.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/OneClient/ArmyFreeAcs.cs"
+  },
+  {
+    "name": "Generate Queued OneClient Script",
+    "description": "Pick multiple scripts that you want to run in sequence of one another, and the script will generate a new file that does exactly those bots for you. It will run it as a OneClient bot.",
+    "tags": [
+      "generator",
+      "queud",
+      "script",
+      "follow-up",
+      "choose",
+      "army",
+      "oneclient"
+    ],
+    "path": "Army/OneClient/GenerateQueuedOneClientScript.cs",
+    "size": 11186,
+    "fileName": "GenerateQueuedOneClientScript.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/OneClient/GenerateQueuedOneClientScript.cs"
   },
   {
     "name": "Army All Dailies",
