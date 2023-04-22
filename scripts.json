@@ -6129,37 +6129,53 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/Various/DageChallengeMerge.cs"
   },
   {
-    "name": "LegionFealty3",
-    "description": "null",
+    "name": "Legion Fealty 3",
+    "description": "Does the Legion Fealty 3 quest for Legion Revenant untill you have 10 Exalted Crowns",
     "tags": [
-      "null"
+      "legion",
+      "revenant",
+      "fealty",
+      "three",
+      "3",
+      "LR",
+      "exalted",
+      "crown"
     ],
     "path": "Legion/Revenant/LegionFealty3.cs",
-    "size": 681,
+    "size": 808,
     "fileName": "LegionFealty3.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/Revenant/LegionFealty3.cs"
   },
   {
-    "name": "Legion Revenant Full",
-    "description": "does the entirety of the legion revenant class arming from a-z",
+    "name": "Legion Revenant (Full)",
+    "description": "Does the entirety of the Legion Tevenant class garming from A to Z",
     "tags": [
-      "legion revenant",
+      "legion",
+      "revenant",
+      "fealty",
       "class",
-      "legion"
+      "LR",
+      ""
     ],
     "path": "Legion/Revenant/0LegionRevenant.cs",
-    "size": 770,
+    "size": 777,
     "fileName": "0LegionRevenant.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/Revenant/0LegionRevenant.cs"
   },
   {
-    "name": "LegionFealty1",
-    "description": "null",
+    "name": "Legion Fealty 1",
+    "description": "Does the Legion Fealty 1 quest for Legion Revenant untill you have 20 Revenant Spellscrolls",
     "tags": [
-      "null"
+      "legion",
+      "revenant",
+      "fealty",
+      "three",
+      "1",
+      "LR",
+      "spellscroll"
     ],
     "path": "Legion/Revenant/LegionFealty1.cs",
-    "size": 688,
+    "size": 820,
     "fileName": "LegionFealty1.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/Revenant/LegionFealty1.cs"
   },
@@ -6175,13 +6191,20 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/Revenant/CoreLR.cs"
   },
   {
-    "name": "LegionFealty2",
-    "description": "null",
+    "name": "Legion Fealty 2",
+    "description": "Does the Legion Fealty 2 quest for Legion Revenant untill you have 6 Conquest Wraths",
     "tags": [
-      "null"
+      "legion",
+      "revenant",
+      "fealty",
+      "three",
+      "2",
+      "LR",
+      "conquest",
+      "wreath"
     ],
     "path": "Legion/Revenant/LegionFealty2.cs",
-    "size": 683,
+    "size": 812,
     "fileName": "LegionFealty2.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/Revenant/LegionFealty2.cs"
   },
