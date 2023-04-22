@@ -1,7 +1,7 @@
 /*
-name: LegionFealty1
-description: null
-tags: null
+name: Legion Fealty 1
+description: Does the Legion Fealty 1 quest for Legion Revenant untill you have 20 Revenant Spellscrolls
+tags: legion, revenant, fealty, three, 1, LR, spellscroll 
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -15,8 +15,8 @@ using Skua.Core.Interfaces;
 
 public class LegionFealty1
 {
-    public CoreBots Core => CoreBots.Instance;
-    public CoreLR LR = new CoreLR();
+    private CoreBots Core => CoreBots.Instance;
+    private CoreLR LR = new();
 
     public void ScriptMain(IScriptInterface bot)
     {

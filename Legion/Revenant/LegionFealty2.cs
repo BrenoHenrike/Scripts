@@ -1,7 +1,7 @@
 /*
-name: LegionFealty2
-description: null
-tags: null
+name: Legion Fealty 2
+description: Does the Legion Fealty 2 quest for Legion Revenant untill you have 6 Conquest Wraths
+tags: legion, revenant, fealty, three, 2, LR, conquest, wreath
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -15,8 +15,8 @@ using Skua.Core.Interfaces;
 
 public class LegionFealty2
 {
-    public CoreBots Core => CoreBots.Instance;
-    public CoreLR LR = new CoreLR();
+    private CoreBots Core => CoreBots.Instance;
+    private CoreLR LR = new();
 
     public void ScriptMain(IScriptInterface bot)
     {

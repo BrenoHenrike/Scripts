@@ -1,7 +1,7 @@
 /*
-name: LegionFealty3
-description: null
-tags: null
+name: Legion Fealty 3
+description: Does the Legion Fealty 3 quest for Legion Revenant untill you have 10 Exalted Crowns
+tags: legion, revenant, fealty, three, 3, LR, exalted, crown
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -15,8 +15,8 @@ using Skua.Core.Interfaces;
 
 public class LegionFealty3
 {
-    public CoreBots Core => CoreBots.Instance;
-    public CoreLR LR = new CoreLR();
+    private CoreBots Core => CoreBots.Instance;
+    private CoreLR LR = new();
 
     public void ScriptMain(IScriptInterface bot)
     {

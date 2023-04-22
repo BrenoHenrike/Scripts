@@ -1,7 +1,7 @@
 /*
-name: Legion Revenant Full
-description: does the entirety of the legion revenant class arming from a-z
-tags: legion revenant, class, legion
+name: Legion Revenant (Full)
+description: Does the entirety of the Legion Tevenant class garming from A to Z
+tags: legion, revenant, fealty, class, LR, 
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -15,8 +15,8 @@ using Skua.Core.Interfaces;
 
 public class LegionFealty4
 {
-    public CoreBots Core => CoreBots.Instance;
-    public CoreLR LR = new CoreLR();
+    private CoreBots Core => CoreBots.Instance;
+    private CoreLR LR = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -27,4 +27,3 @@ public class LegionFealty4
         Core.SetOptions(false);
     }
 }
-
