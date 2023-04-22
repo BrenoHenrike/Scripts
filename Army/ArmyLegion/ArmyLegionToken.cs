@@ -230,7 +230,7 @@ public class ArmyLegionToken
                 if (!Core.CheckInventory("UW3017 Pet"))
                     Core.Logger("Pet not owned, stopping", stopBot: true);
 
-                Adv.BestGear(GearBoost.None);
+                Adv.BestGear(GenericGearBoost.dmgAll);
                 questIDs = new() { 5738 };
                 monNames = new() { "Bloodfiend" };
                 drops = new() { "Legion Token" };
@@ -272,7 +272,7 @@ public class ArmyLegionToken
                 if (!Core.CheckInventory("Hardcore Paragon Pet"))
                     Core.Logger("Pet not owned, stopping", stopBot: true);
 
-                Adv.BestGear(!Bot.Quests.IsUnlocked(793) ? GearBoost.Undead : GearBoost.Chaos);
+                Adv.BestGear(!Bot.Quests.IsUnlocked(793) ? RacialGearBoost.Undead : RacialGearBoost.Chaos);
                 questIDs = new() { !Bot.Quests.IsUnlocked(793) ? 3393 : 3394 };
                 monNames = new() { !Bot.Quests.IsUnlocked(793) ? "Binky" : "Ultra Chaos Warlord" };
                 drops = new() { "Legion Token" };
