@@ -37,7 +37,7 @@ public class GenQueueScript
         {
             // Selecting all files
             _fileDialog = Ioc.Default.GetRequiredService<IFileDialogService>();
-            string _scriptPath = _scriptPath = ClientFileSources.SkuaDIR;
+            string _scriptPath = ClientFileSources.SkuaDIR;
             string? path = _fileDialog.OpenFile(_scriptPath, "Skua Script (*.cs)|*.cs");
             if (path == null)
                 break;
@@ -172,7 +172,7 @@ public class GenQueueScript
                 if (!lineBlackList.Any(l => line.ToLower().Contains(l)) && !String.IsNullOrEmpty(line) && !String.IsNullOrWhiteSpace(line) && !line.Trim().StartsWith("//"))
                 {
                     methods.Add($"        {(line.Contains('.') ? "" : className + ".")}{line.Trim()}");
-                    if (line.Contains('.'))
+                    if (line.Contains('.') && !line.Contains("Core"))
                     {
                         string? _otherClass = Array.Find(script, l =>
                                                     (l.Contains("private") || l.Contains("public") &&
