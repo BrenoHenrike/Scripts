@@ -32,9 +32,9 @@ public class DarkbloodStormKing
         if (Core.CheckInventory("Darkblood StormKing"))
             return;
 
-        LOC.Lionfang();
+        // LOC.Lionfang();
 
-        Adv.BuyItem("stormtemple", 544, 16780, 10412);
+        Adv.BuyItem("stormtemple", 544, "Darkblood StormKing", shopItemID: 10412);
 
         if (rankUpClass)
             Adv.rankUpClass("Darkblood StormKing");
