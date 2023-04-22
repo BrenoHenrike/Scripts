@@ -226,13 +226,20 @@ public class CoreFarmerJoe
             Core.SoloClass = "Oracle";
 
         #region Obtain Boost Weapons
-        //Arcane Blade of Glory / Shadow Blade of Despair (+20% xp)
-        Core.Logger("Arcane Blade of Glory / Shadow Blade of Despair (+20% xp)");
-        EVBW.GetWeapon(VictoryBladeStyles.Smart);
-        Adv.EnhanceItem(Core.CheckInventory("Arcane Blade of Glory") ? "Arcane Blade of Glory" : "Shadow Blade of Despair", EnhancementType.Lucky);
-        // Core.Equip(Core.CheckInventory("Arcane Blade of Glory") ? "Arcane Blade of Glory" : "Shadow Blade of Despair");
-        DCSK.GetWep();
-        Core.ToBank("Blade of Awe", "Dual ChainSaw Katanas", "Battle Oracle Battlestaff");
+
+        if (!Adv.HasMinimalBoost(GenericGearBoost.exp, 20))
+        {
+            //Arcane Blade of Glory / Shadow Blade of Despair (+20% xp)
+            Core.Logger("Arcane Blade of Glory / Shadow Blade of Despair (+20% xp)");
+            EVBW.GetWeapon(VictoryBladeStyles.Smart);
+            Adv.EnhanceItem(Core.CheckInventory("Arcane Blade of Glory") ? "Arcane Blade of Glory" : "Shadow Blade of Despair", EnhancementType.Lucky);
+            Core.Equip(Core.CheckInventory("Arcane Blade of Glory") ? "Arcane Blade of Glory" : "Shadow Blade of Despair");
+        }
+
+        if (!Adv.HasMinimalBoost(GenericGearBoost.dmgAll, 25))
+            DCSK.GetWep();
+        Adv.BestGear(GenericGearBoost.dmgAll);
+
         ItemBase DefaultWep = Bot.Inventory.Items.Find(x => x.Name.StartsWith("Default"));
         if (DefaultWep != null && Core.CheckInventory(DefaultWep.Name))
             Core.SellItem(DefaultWep.Name);
