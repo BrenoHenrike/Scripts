@@ -9017,17 +9017,19 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/OneClient/WheelOfDoom.cs"
   },
   {
-    "name": "Generate Queued Script",
-    "description": "Pick multiple scripts that you want to run in sequence of one another, and the script will generate a new file that does exactly those bots for you",
+    "name": "Generate OneClient Queued Script",
+    "description": "Pick multiple scripts that you want to run in sequence of one another, and the script will generate a new file that does exactly those bots for you. It will run it as a OneClient bot.",
     "tags": [
       "generator",
       "queud",
       "script",
       "follow-up",
-      "choose"
+      "choose",
+      "army",
+      "oneclient"
     ],
     "path": "Army/OneClient/GenerateOneClientQueuedScript.cs",
-    "size": 11123,
+    "size": 11186,
     "fileName": "GenerateOneClientQueuedScript.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/OneClient/GenerateOneClientQueuedScript.cs"
   },
