@@ -42,7 +42,7 @@ public class SerpentineLarvae
             Core.AddDrop(item.ID);
 
         Core.EquipClass(ClassType.Solo);
-        Adv.BestGear(GearBoost.Dragonkin);
+        Adv.BestGear(RacialGearBoost.Dragonkin);
         foreach (ItemBase item in RewardOptions)
         {
             if (!Core.CheckInventory(item.ID))

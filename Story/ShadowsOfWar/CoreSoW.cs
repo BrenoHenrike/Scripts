@@ -666,7 +666,7 @@ public class CoreSoW
 
         InnerShadows();
 
-        Adv.BestGear(GearBoost.Human);
+        Adv.BestGear(RacialGearBoost.Human);
 
         //War Medals
         Story.KillQuest(8125, "fireplanewar", "Shadowflame Soldier");

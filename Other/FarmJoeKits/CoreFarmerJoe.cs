@@ -240,7 +240,7 @@ public class CoreFarmerJoe
 
         #region Leve30 to 75
         Core.Logger("Level to 75");
-        Adv.BestGear(GearBoost.exp);
+        Adv.BestGear(GenericGearBoost.exp);
         Farm.ToggleBoost(BoostType.Experience);
         foreach (int Level in new int[] { 30, 45, 50, 55, 60, 65, 70, 75 })
         {
@@ -376,11 +376,11 @@ public class CoreFarmerJoe
         Core.ToBank("Blade of Awe");
         Adv.BuyItem("museum", 631, "Awethur's Accoutrements");
         COA.GetCoA();
-        Adv.BestGear(GearBoost.dmgAll);
+        Adv.BestGear(GenericGearBoost.dmgAll);
 
         Core.Logger("P3 - 3: Burning Blade");
         BB.GetBurningBlade();
-        Adv.BestGear(GearBoost.dmgAll);
+        Adv.BestGear(GenericGearBoost.dmgAll);
         InvEn.EnhanceInventory();
 
         Core.Logger("P3 - 4: Improving Efficiency, and more Classes");
@@ -398,7 +398,7 @@ public class CoreFarmerJoe
 
         #region Leveling to 100
         Core.Logger("P4 Leveling to 100");
-        Adv.BestGear(GearBoost.dmgAll);
+        Adv.BestGear(GenericGearBoost.dmgAll);
         Farm.IcestormArena();
         InvEn.EnhanceInventory();
         #endregion Leveling to 100}

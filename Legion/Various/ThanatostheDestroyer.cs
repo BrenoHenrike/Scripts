@@ -43,7 +43,7 @@ public class ThanatostheDestroyer
         Bot.Drops.Add(QuestRewards);
 
         Core.EquipClass(ClassType.Solo);
-        Adv.BestGear(GearBoost.Undead);
+        Adv.BestGear(RacialGearBoost.Undead);
         Core.RegisterQuests(4101);
         foreach (ItemBase Reward in RewardOptions)
         {

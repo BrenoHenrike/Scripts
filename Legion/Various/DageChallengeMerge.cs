@@ -54,7 +54,7 @@ public class DageChallengeMerge
 
     public void MergePrep()
     {
-        Adv.BestGear(GearBoost.Undead, true);
+        Adv.BestGear(RacialGearBoost.Undead, true);
         Legion.SoulForgeHammer();
         Circles.CirclesWar(); //Required to turnin & accept the SoH quests
         DageChallenge.DageChallengeQuests(); //to unlock mergeshop

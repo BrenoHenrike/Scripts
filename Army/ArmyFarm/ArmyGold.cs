@@ -59,7 +59,7 @@ public class ArmyGold
         Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
 
         Core.EquipClass(ClassType.Farm);
-        Adv.BestGear(GearBoost.gold);
+        Adv.BestGear(GenericGearBoost.gold);
         Farm.ToggleBoost(BoostType.Gold);
 
         if (((int)mapname == 0) || ((int)mapname == 1))
@@ -85,7 +85,7 @@ public class ArmyGold
             Core.RegisterQuests(3991, 3992, 3993);
         else if (((int)mapname == 1))
             Core.RegisterQuests(3991, 3992);
-            
+
         Army.AggroMonMIDs(1, 2, 3, 4, 5, 6);
         Army.AggroMonStart(mapname.ToString());
 

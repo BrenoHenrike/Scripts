@@ -48,11 +48,11 @@ public class ArmySwagTokensF2p
             return;
 
         Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
-        
+
         Core.AddDrop("Super-Fan Swag Token A", "Super-Fan Swag Token B", "Super-Fan Swag Token C", "Super-Fan Swag Token D");
         Core.FarmingLogger($"Super-Fan Swag Token A", quant);
         Core.EquipClass(ClassType.Farm);
-        Adv.BestGear(GearBoost.dmgAll);
+        Adv.BestGear(GenericGearBoost.dmgAll);
         Adv.SmartEnhance(Bot.Player.CurrentClass.Name);
         Core.RegisterQuests(1304, 1307);
         while (!Bot.ShouldExit && !Core.CheckInventory("Super-Fan Swag Token A", quant))

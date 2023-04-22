@@ -34,7 +34,7 @@ public class WarfuryEmblem
         SoW.Tyndarius();
 
         Core.AddDrop("Warfury Emblem");
-        Adv.BestGear(GearBoost.Human);
+        Adv.BestGear(RacialGearBoost.Human);
         Core.EquipClass(ClassType.Farm);
         Core.RegisterQuests(8204);
         Core.Logger($"Farming for {EmblemQuant} Warfury Emblems");

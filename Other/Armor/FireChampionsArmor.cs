@@ -70,7 +70,7 @@ public class FireChampionsArmor
         if (Core.CheckInventory("Flame-Forged Metal", Metalquant))
             return;
 
-        Adv.BestGear(GearBoost.Undead);
+        Adv.BestGear(RacialGearBoost.Undead);
         Core.EquipClass(ClassType.Solo);
         Core.AddDrop("Flame-Forged Metal");
 
@@ -87,7 +87,7 @@ public class FireChampionsArmor
         if (Core.CheckInventory("Void Scale", VoidScaleQuant))
             return;
 
-        Adv.BestGear(GearBoost.Chaos);
+        Adv.BestGear(RacialGearBoost.Chaos);
         Core.EquipClass(ClassType.Solo);
         Bot.Skills.StartAdvanced(Core.SoloClass, true, Skua.Core.Models.Skills.ClassUseMode.Def);
 

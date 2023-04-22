@@ -217,7 +217,7 @@ public class Awescended
 
             Core.Unbank($"GOLD Boost! (60 min)", "Doom GOLD Boost! (60 min)", "GOLD Boost! (20 min)");
             Bot.Boosts.UseGoldBoost = true;
-            Adv.BestGear(GearBoost.gold);
+            Adv.BestGear(GenericGearBoost.gold);
 
             Core.EnsureComplete(8042);
             Bot.Boosts.UseGoldBoost = false;

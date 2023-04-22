@@ -26,7 +26,7 @@ public class Leveling
 
     public void DoLeveling()
     {
-        Adv.BestGear(GearBoost.exp);
+        Adv.BestGear(GenericGearBoost.exp);
         Farm.Experience();
     }
 }

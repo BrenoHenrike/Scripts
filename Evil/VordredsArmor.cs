@@ -42,7 +42,7 @@ public class VordredArmor
 
         DW.DoomwoodPart3();
         Farm.Experience(60);
-        Adv.BestGear(GearBoost.Undead);
+        Adv.BestGear(RacialGearBoost.Undead);
 
         if (!Story.QuestProgression(8376))
         {
@@ -122,7 +122,7 @@ public class VordredArmor
         // Empower Vordred's Armor - 8381
         if (!Story.QuestProgression(8381))
         {
-            Adv.BestGear(GearBoost.Undead);
+            Adv.BestGear(RacialGearBoost.Undead);
             Core.EquipClass(ClassType.Solo);
             Core.EnsureAccept(8381);
             if (!Core.CheckInventory("Sepulchure's DoomKnight Armor"))
@@ -144,7 +144,7 @@ public class VordredArmor
             return;
 
         Core.AddDrop("Especially Unbroken Skull");
-        Adv.BestGear(GearBoost.Undead);
+        Adv.BestGear(RacialGearBoost.Undead);
         Core.EquipClass(ClassType.Farm);
 
         // UNBROKEN SKULLS (Mem) - 8342

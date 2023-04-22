@@ -45,7 +45,7 @@ public class Banished
             return;
 
         Core.EquipClass(ClassType.Solo);
-        Adv.BestGear(GearBoost.dmgAll);
+        Adv.BestGear(GenericGearBoost.dmgAll);
 
         // he First Task
         Story.KillQuest(7875, "timevoid", "Unending Avatar");
@@ -103,7 +103,7 @@ public class Banished
         if (Core.isCompletedBefore(2027))
             return;
 
-        Adv.BestGear(GearBoost.dmgAll);
+        Adv.BestGear(GenericGearBoost.dmgAll);
 
         // Knave1's Route to the Void
         Story.MapItemQuest(2022, "northlands", 979);

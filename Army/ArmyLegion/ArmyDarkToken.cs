@@ -62,7 +62,7 @@ public class ArmyDarkToken
         Core.AddDrop("Dark Token");
 
         Core.EquipClass(ClassType.Farm);
-        Adv.BestGear(GearBoost.Human);
+        Adv.BestGear(RacialGearBoost.Human);
 
         Core.RegisterQuests(6248, 6249, 6251);
         Army.SmartAggroMonStart("seraphicwardage", new[] { "Seraphic Commander, Seraphic Soldier" });

@@ -112,7 +112,7 @@ public class TitanAttackStory
 
         // The BIG Finish 8777
         Adv.EnhanceItem("Heroic Titan's Greatsword", EnhancementType.Lucky, CapeSpecial.None, HelmSpecial.None, WeaponSpecial.Spiral_Carve);
-        Adv.BestGear(GearBoost.Drakath);
+        Adv.BestGear(RacialGearBoost.Drakath);
 
         Story.KillQuest(8777, "titandrakath", "Titan Drakath");
     }

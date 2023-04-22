@@ -86,7 +86,7 @@ public class SevenCirclesWarMerge
                 case "Beast Soul":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
-                    Adv.BestGear(GearBoost.Undead);
+                    Adv.BestGear(RacialGearBoost.Undead);
                     Adv.SmartEnhance(Core.SoloClass);
                     Core.HuntMonster("sevencircleswar", "The Beast", req.Name, quant, isTemp: false, publicRoom: true);
                     break;

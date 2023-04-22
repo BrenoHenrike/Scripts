@@ -26,7 +26,7 @@ public class IcestormArenaXP
 
     public void DoIcestormArenaXP()
     {
-        Adv.BestGear(GearBoost.exp);
+        Adv.BestGear(GenericGearBoost.exp);
         //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Experience, true);
         Farm.IcestormArena();
     }

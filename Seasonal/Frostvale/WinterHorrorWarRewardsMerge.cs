@@ -68,7 +68,7 @@ public class WinterHorrorWarRewardsMerge
                 case "Grief Medal":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
-                    Adv.BestGear(GearBoost.Elemental);
+                    Adv.BestGear(RacialGearBoost.Elemental);
                     Core.RegisterQuests(7856, 7857);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {

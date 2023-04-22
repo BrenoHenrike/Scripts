@@ -53,7 +53,7 @@ public class UnderVoidBadgesAll
         else if (Daily.CheckDaily(3411))
         {
             Core.Logger($"Doing UnderVoid Quest for {badge1} badge");
-            Adv.BestGear(GearBoost.Undead);
+            Adv.BestGear(RacialGearBoost.Undead);
             Core.EnsureAccept(3411);
             Core.HuntMonster("undervoid", "Conquest", "Conquest Defeated");
             Core.EnsureComplete(3411);

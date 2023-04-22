@@ -26,7 +26,7 @@ public class CombatTrophy
 
     public void DoCombatTrophy()
     {
-        Adv.BestGear(GearBoost.dmgAll);
+        Adv.BestGear(GenericGearBoost.dmgAll);
         Farm.BludrutBrawlBoss();
     }
 }

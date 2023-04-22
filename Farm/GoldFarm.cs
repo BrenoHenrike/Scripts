@@ -27,7 +27,7 @@ public class GoldFarm
     public void DoFarmGold()
     {
         Core.EquipClass(ClassType.Farm);
-        Adv.BestGear(GearBoost.gold);
+        Adv.BestGear(GenericGearBoost.gold);
         Bot.Drops.Start();
 
         Farm.Gold();

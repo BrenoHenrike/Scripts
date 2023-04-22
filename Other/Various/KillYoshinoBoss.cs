@@ -30,14 +30,14 @@ public class KillYoshinoBoss
             return;
 
         Core.EquipClass(ClassType.Solo);
-        Adv.BestGear(GearBoost.dmgAll);
+        Adv.BestGear(GenericGearBoost.dmgAll);
 
         Core.AddDrop("Limited Event Coin");
 
         Core.EnsureAccept(5720);
         Core.KillMonster("yoshino", "r1", "Right", "*", "Limited Event Monster Proof");
         Core.JumpWait();
-        Adv.BestGear(GearBoost.gold);
+        Adv.BestGear(GenericGearBoost.gold);
         Farm.ToggleBoost(BoostType.Gold);
         Bot.Sleep(Core.ActionDelay);
         Core.EnsureComplete(5720);
