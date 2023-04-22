@@ -497,10 +497,8 @@ public class CoreAdvanced
     }
 
     /// <summary>
-    /// Equips the best gear available in a player's inventory/bank by checking what item has the highest boost value of the given type. Also works with damage stacking for monsters with a Race
+e    // Do not use this variant
     /// </summary>
-    /// <param name="BoostType">Type "GearBoost." and then the boost of your choice in order to determine and equip the best available boosting gear</param>
-    /// <param name="EquipItem">To Equip the found item(s) or not</param>
     private void BestGear()
     {
         // Just here so I can read the other things I had planned
@@ -581,6 +579,11 @@ public class CoreAdvanced
         //}
     }
 
+    /// <summary>
+    /// Equips the best gear available in a player's inventory/bank by checking what item has the highest boost value of the given type. Also works with damage stacking for monsters with a Race
+    /// </summary>
+    /// <param name="BoostType">Type "GenericGearBoost." and then the boost of your choice in order to determine and equip the best available boosting gear</param>
+    /// <param name="EquipItem">To Equip the found item(s) or not</param>
     public string BestGear(GenericGearBoost boostType, bool equipItem = true)
     {
         try
@@ -722,6 +725,12 @@ public class CoreAdvanced
             return String.Empty;
         }
     }
+
+    /// <summary>
+    /// Equips the best gear available in a player's inventory/bank by checking what item has the highest boost value of the given type. Also works with damage stacking for monsters with a Race
+    /// </summary>
+    /// <param name="BoostType">Type "RacialGearBoost." and then the boost of your choice in order to determine and equip the best available boosting gear</param>
+    /// <param name="EquipItem">To Equip the found item(s) or not</param>
     public string[] BestGear(RacialGearBoost boostType, bool equipItem = true)
     {
         try
