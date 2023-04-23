@@ -130,7 +130,7 @@ Base = HighSeas Commander = 1 | 3 | 1 | 4 | 2 | 1 | 1 = 250
 Base = Hobo Highlord = 1 = Use if Available
 Base = Horc Evader = 1 | 2 | 3 | 4 = Use if Available
 Base = Immortal Dark Caster = 1 | 2 | 3 | 2 | 1 | 2 | 1 | 3 | 4 = 250
-Base = Immortal Chronomancer = 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 2 | 3 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 1 | 2 | 3 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 2 | 3 = 250
+Base = Immortal Chronomancer = 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 2 | 3 = 250
 Base = Imperial Chunin = 1 | 2 | 3 | 4 = Use if Available
 Base = Infinite Dark Caster = 1 | 2 | 3 | 4 = Use if Available
 Base = Infinite Legion Dark Caster = 1 | 2 | 3 | 4 = Use if Available
