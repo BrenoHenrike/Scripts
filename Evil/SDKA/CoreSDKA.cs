@@ -97,7 +97,7 @@ public class CoreSDKA
 
         if (!Core.IsMember)
         {
-            Core.Logger("Player is non-Member, membership is requireed for SDKA");
+            Core.Logger(!Core.CheckInventory("Sepulchure's DoomKnight Armor") ? "Player is non-Member, membership is required for SDKA" : "Player doesn't own SDKA and is non-Member, membership is required for SDKA");
             return;
         }
 
