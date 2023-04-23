@@ -88,7 +88,7 @@ public class ArchMageMatsArmy
         Bot.Quests.UpdateQuest(8732);
         Core.ConfigureAggro();
 
-        while (!Bot.ShouldExit && !Core.CheckInventory(Drops))
+        while (!Bot.ShouldExit)
         {
             ArmyKillMonster("voidflibbi", "Enter", "Spawn", "Flibbitiestgibbet", "Void Essentia", isTemp: false, log: false);
             ArmyKillMonster("voidnightbane", "Enter", "Spawn", "Nightbane", "Insatiable Hunger", isTemp: false, log: false);
