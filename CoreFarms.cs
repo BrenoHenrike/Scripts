@@ -46,7 +46,7 @@ public class CoreFarms
             switch (type)
             {
                 case BoostType.Gold:
-                    if (!doGoldBoost || Bot.Boosts.UseGoldBoost)
+                    if (!doGoldBoost || Bot.Boosts.UseGoldBoost || Bot.Player.Gold >= 100000000)
                         return;
                     Bot.Boosts.SetGoldBoostID();
                     Bot.Boosts.UseGoldBoost = true;
@@ -67,7 +67,7 @@ public class CoreFarms
                     break;
 
                 case BoostType.Experience:
-                    if (!doExpBoost || Bot.Boosts.UseExperienceBoost)
+                    if (!doExpBoost || Bot.Boosts.UseExperienceBoost || Bot.Player.Level == 100)
                         return;
                     Bot.Boosts.SetExperienceBoostID();
                     Bot.Boosts.UseExperienceBoost = true;
