@@ -106,7 +106,7 @@ Base = Evolved Dark Caster = 4 | 5 | 3 | 2 = 250
 Base = Evolved Leprechaun = 5 | 4 | 2 | 3 = 250
 Base = Evolved Pumpkin Lord = 3 | 4 | 2 | 1 = 250
 Base = Evolved Shaman = 3 | 4 | 2 | 1 = 250
-Base = Exalted Harbinger = 4 | 4 | 4 | 3 | 1 | 2H<30S = 250
+Base = Exalted Harbinger = 4 | 5 | 2 | 3 | 5 | 2 | 3 | 5 | 2 | 3 | 4 | 5 | = 250
 Base = Exalted Soul Cleaver = 2 | 3 | 2 | 2 | 3 = 250
 Base = FireLord Summoner = 3 | 2 | 1 | 4 = 250
 Base = Flame Dragon Warrior = 1 | 2 | 3 | 4 = Use if Available
