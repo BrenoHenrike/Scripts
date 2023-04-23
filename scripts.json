@@ -8884,7 +8884,7 @@
       "boss items"
     ],
     "path": "Army/Various/ArmyArchMageBossItems.cs",
-    "size": 7113,
+    "size": 7082,
     "fileName": "ArmyArchMageBossItems.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmyArchMageBossItems.cs"
   },
@@ -11075,7 +11075,7 @@
       "null"
     ],
     "path": "Evil/SDKA/CoreSDKA.cs",
-    "size": 25053,
+    "size": 25187,
     "fileName": "CoreSDKA.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/SDKA/CoreSDKA.cs"
   },
