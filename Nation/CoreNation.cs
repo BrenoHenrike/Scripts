@@ -461,7 +461,7 @@ public class CoreNation
     /// </summary>
     /// <param name=item>Desired item name</param>
     /// <param name="quant">Desired item quantity</param>
-    public void NulgathLarvae(string item = null, int quant = 1)
+    public void NulgathLarvae(string? item = null, int quant = 1)
     {
         // Core.DL_Enable();
         if (item != null && Core.CheckInventory(item, quant))
@@ -477,7 +477,10 @@ public class CoreNation
             {
                 foreach (string Drop in bagDrops)
                 {
-                    ItemBase drop = Core.EnsureLoad(2566).Rewards.Find(x => x.Name == Drop);
+                    ItemBase? drop = Core.EnsureLoad(2566).Rewards.Find(x => x.Name == Drop);
+                    if (drop == null)
+                        continue;
+
                     Core.FarmingLogger(Drop, drop.MaxStack);
                     Core.RegisterQuests(2566);
                     while (!Bot.ShouldExit && !Core.CheckInventory(drop.Name, drop.MaxStack))
@@ -596,13 +599,13 @@ public class CoreNation
     /// <param name=item>Desired item name</param>
     /// <param name="quant">Desired item quantity</param>
     /// <param name="farmGold"></param>
-    public void TheAssistant(string item = null, int quant = 1000, bool farmGold = true)
+    public void TheAssistant(string? item = null, int quant = 1000, bool farmGold = true)
     {
         if (Core.CheckInventory(item, quant))
             return;
         if (item == null)
             Core.AddDrop(bagDrops);
-        Core.AddDrop(item);
+        else Core.AddDrop(item);
 
         //CBO Ops Setup
         if (Core.CBOBool("Nation_SellMemVoucher", out bool _sellMemVoucher))
@@ -628,7 +631,9 @@ public class CoreNation
             foreach (string Thing in bagDrops[..^11])
             {
                 var rewards = Core.EnsureLoad(2859).Rewards;
-                ItemBase Item = rewards.Find(x => x.Name == Thing);
+                ItemBase? Item = rewards.Find(x => x.Name == Thing);
+                if (Item == null)
+                    continue;
 
                 while (!Bot.ShouldExit && !Core.CheckInventory(Item.Name, Item.MaxStack))
                 {

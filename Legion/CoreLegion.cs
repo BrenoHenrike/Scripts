@@ -403,9 +403,9 @@ public class CoreLegion
             QuestID = 5756;
         else if (Core.CheckInventory("Paragon Fiend Quest Pet"))
         {
-            if (Bot.Inventory.GetItem("Paragon Fiend Quest Pet").ID == 47578)
+            if (Bot.Inventory.GetItem("Paragon Fiend Quest Pet")!.ID == 47578)
                 QuestID = 6750;
-            else if (Bot.Inventory.GetItem("Paragon Fiend Quest Pet").ID == 47614)
+            else if (Bot.Inventory.GetItem("Paragon Fiend Quest Pet")!.ID == 47614)
                 QuestID = 6756;
         }
         else if (Core.CheckInventory("Paragon Ringbearer"))
@@ -433,9 +433,8 @@ public class CoreLegion
         if (Bot.Map.PlayerCount < partySize && onlyWithParty)
         {
             Core.Join("legionarena", ignoreCheck: true, publicRoom: true);
-            while (Bot.Map.PlayerCount < partySize)
-                return;
-            Core.Logger($"Party gathered [{Bot.Map.PlayerNames.Count}/{partySize}]");
+            while (!Bot.ShouldExit && Bot.Map.PlayerCount < partySize) { }
+            Core.Logger($"Party gathered [{Bot.Map.PlayerNames!.Count}/{partySize}]");
         }
 
         Core.EquipClass(ClassType.Solo);
