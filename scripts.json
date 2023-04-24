@@ -3324,7 +3324,7 @@
       "null"
     ],
     "path": "Templates/MergeTemplate.cs",
-    "size": 3067,
+    "size": 3068,
     "fileName": "MergeTemplate.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Templates/MergeTemplate.cs"
   },
@@ -5949,6 +5949,73 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/SnowviewMerge.cs"
   },
   {
+    "name": "LegionPyromancerMerge",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Legion/MergeShops/LegionPyromancerMerge.cs",
+    "size": 7401,
+    "fileName": "LegionPyromancerMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/MergeShops/LegionPyromancerMerge.cs"
+  },
+  {
+    "name": "Dage Recruit Merge",
+    "description": "This will complete the Dage Recruit story and farm Dark Victory Seals.",
+    "tags": [
+      "story",
+      "quest",
+      "dage",
+      "recruit",
+      "legion",
+      "dark-victory-seal",
+      "merge",
+      "staff",
+      "birthday"
+    ],
+    "path": "Legion/MergeShops/DageRecruitMerge.cs",
+    "size": 11237,
+    "fileName": "DageRecruitMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/MergeShops/DageRecruitMerge.cs"
+  },
+  {
+    "name": "Dark Alliance Merge",
+    "description": "This bot will farm the items from the Dark Alliance Merge shop in /darkalliance",
+    "tags": [
+      "dark",
+      "alliance",
+      "merge",
+      "legion",
+      "shadow",
+      "orb",
+      "dark",
+      "spirit",
+      "mana",
+      "gem",
+      "shadow",
+      "flame",
+      "underworld",
+      "horror",
+      "shadowscythe",
+      "warlock"
+    ],
+    "path": "Legion/MergeShops/DarkAllianceMerge.cs",
+    "size": 6343,
+    "fileName": "DarkAllianceMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/MergeShops/DarkAllianceMerge.cs"
+  },
+  {
+    "name": "DarkPalaceMerge",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Legion/MergeShops/DarkPalaceMerge.cs",
+    "size": 5186,
+    "fileName": "DarkPalaceMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/MergeShops/DarkPalaceMerge.cs"
+  },
+  {
     "name": "LegionDBoN",
     "description": "null",
     "tags": [
@@ -6666,17 +6733,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/MazeMerge.cs"
   },
   {
-    "name": "LegionPyromancerMerge",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Other/MergeShops/LegionPyromancerMerge.cs",
-    "size": 7476,
-    "fileName": "LegionPyromancerMerge.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/LegionPyromancerMerge.cs"
-  },
-  {
     "name": "TrickstersGiftsMerge",
     "description": "null",
     "tags": [
@@ -6686,25 +6742,6 @@
     "size": 10625,
     "fileName": "TrickstersGiftsMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/TrickstersGiftsMerge.cs"
-  },
-  {
-    "name": "Dage Recruit Merge",
-    "description": "This will complete the Dage Recruit story and farm Dark Victory Seals.",
-    "tags": [
-      "story",
-      "quest",
-      "dage",
-      "recruit",
-      "legion",
-      "dark-victory-seal",
-      "merge",
-      "staff",
-      "birthday"
-    ],
-    "path": "Other/MergeShops/DageRecruitMerge.cs",
-    "size": 11236,
-    "fileName": "DageRecruitMerge.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/DageRecruitMerge.cs"
   },
   {
     "name": "ShadowScytheGeneralMerge",
@@ -7126,17 +7163,6 @@
     "size": 6825,
     "fileName": "EternalChaosMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/EternalChaosMerge.cs"
-  },
-  {
-    "name": "DarkPalaceMerge",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Other/MergeShops/DarkPalaceMerge.cs",
-    "size": 5260,
-    "fileName": "DarkPalaceMerge.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/DarkPalaceMerge.cs"
   },
   {
     "name": "OriginulMerge",
@@ -14112,7 +14138,7 @@
       "null"
     ],
     "path": "ShadowsOfWar/MergeShops/RuinedCrownMerge.cs",
-    "size": 5994,
+    "size": 5417,
     "fileName": "RuinedCrownMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/ShadowsOfWar/MergeShops/RuinedCrownMerge.cs"
   },
@@ -14137,6 +14163,27 @@
     "size": 5062,
     "fileName": "WorldsCoreMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/ShadowsOfWar/MergeShops/WorldsCoreMerge.cs"
+  },
+  {
+    "name": "Fire Invasion Merge",
+    "description": "This bot will farm the items from the Fire Invasion Merge shop in /fireinvasion",
+    "tags": [
+      "fire",
+      "invasion",
+      "merge",
+      "shadow",
+      "fire",
+      "trophy",
+      "tyndarius",
+      "ruby",
+      "sapphire",
+      "spellblade",
+      "fighting"
+    ],
+    "path": "ShadowsOfWar/MergeShops/FireInvasionMerge.cs",
+    "size": 5437,
+    "fileName": "FireInvasionMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/ShadowsOfWar/MergeShops/FireInvasionMerge.cs"
   },
   {
     "name": "Farms Willpower",
