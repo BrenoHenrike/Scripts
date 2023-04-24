@@ -23,12 +23,12 @@ public class StarFestivalGift
     public void GetGifts()
     {
         string[] rewards = Core.QuestRewards(6449);
-        if (Core.CheckInventory(rewards, toInv: false))
+        if (Core.CheckInventory(rewards))
             return;
 
         Core.AddDrop(rewards);
         Core.RegisterQuests(6449);
-        while (!Bot.ShouldExit && !Core.CheckInventory(rewards, toInv: false))
+        while (!Bot.ShouldExit && !Core.CheckInventory(rewards))
             Core.HuntMonster("starfestival", "Fallen Star", "Fallen Star", 7, log: false);
         Core.CancelRegisteredQuests();
     }
