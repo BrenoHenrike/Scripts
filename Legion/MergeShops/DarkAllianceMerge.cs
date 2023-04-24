@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Dark Alliance Merge
+description: This bot will farm the items from the Dark Alliance Merge shop in /darkalliance
+tags: dark, alliance, merge, legion, shadow, orb, dark, spirit, mana, gem, shadow, flame, underworld, horror, shadowscythe, warlock
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

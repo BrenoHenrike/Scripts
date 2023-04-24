@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Fire Invasion Merge
+description: This bot will farm the items from the Fire Invasion Merge shop in /fireinvasion
+tags: fire, invasion, merge, shadow, fire, trophy, tyndarius, ruby, sapphire, spellblade, fighting
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
