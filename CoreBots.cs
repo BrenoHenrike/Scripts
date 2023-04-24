@@ -423,7 +423,7 @@ public class CoreBots
         return false;
     }
 
-    public void ScriptMain(IScriptInterface bot)
+    public void ScriptMain(IScriptInterface Bot)
     {
         RunCore();
     }

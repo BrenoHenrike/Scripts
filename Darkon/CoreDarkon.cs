@@ -13,14 +13,12 @@ using Skua.Core.Models.Items;
 
 public class CoreDarkon
 {
-    public IScriptInterface Bot => IScriptInterface.Instance;
-    public CoreBots Core => CoreBots.Instance;
-    public CoreAdvanced Adv = new();
-    public CoreStory Story = new();
-    public CoreFarms Farm = new();
-    public CoreAstravia Astravia => new();
+    private IScriptInterface Bot => IScriptInterface.Instance;
+    private CoreBots Core => CoreBots.Instance;
+    private CoreAdvanced Adv = new();
+    private CoreAstravia Astravia => new();
 
-    public void ScriptMain(IScriptInterface bot)
+    public void ScriptMain(IScriptInterface Bot)
     {
         Core.RunCore();
     }

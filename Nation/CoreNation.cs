@@ -12,16 +12,16 @@ using Skua.Core.Models.Quests;
 
 public class CoreNation
 {
-    public IScriptInterface Bot => IScriptInterface.Instance;
-    public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new();
+    private IScriptInterface Bot => IScriptInterface.Instance;
+    private CoreBots Core => CoreBots.Instance;
+    private CoreFarms Farm = new();
 
     //CanChange: If enabled will sell the "Voucher of Nulgath" item during farms if it's not needed.
     bool sellMemVoucher = true;
     //CanChange: If enabled will do "Swindles Return Policy" passively during "Supplies To Spin The Wheels of Fate".
     bool returnPolicyDuringSupplies = true;
 
-    public void ScriptMain(IScriptInterface bot)
+    public void ScriptMain(IScriptInterface Bot)
     {
         Core.RunCore();
     }

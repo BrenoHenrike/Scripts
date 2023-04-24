@@ -9,20 +9,16 @@ tags: null
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
 using Skua.Core.Interfaces;
-using Skua.Core.Models.Items;
 using Skua.Core.Models.Skills;
 
 public class CoreSoWMats
 {
-    public IScriptInterface Bot => IScriptInterface.Instance;
-    public CoreBots Core => CoreBots.Instance;
-    public CoreAdvanced Adv = new();
-    public CoreStory Story = new();
-    public CoreFarms Farm = new();
+    private IScriptInterface Bot => IScriptInterface.Instance;
+    private CoreBots Core => CoreBots.Instance;
+    private CoreAdvanced Adv = new();
     private CoreSoW SoW = new();
 
-
-    public void ScriptMain(IScriptInterface bot)
+    public void ScriptMain(IScriptInterface Bot)
     {
         Core.RunCore();
     }
@@ -31,7 +27,8 @@ public class CoreSoWMats
     {
         SoW.ShadowFlame();
         Core.EquipClass(ClassType.Solo);
-        FarmReq(() => {
+        FarmReq(() =>
+        {
             Core.HuntMonster("worldscore", "Elemental Attempt", "Cracked Elemental Stone", 8);
             Core.HuntMonster("worldscore", "Crystalized Mana", "Crystalized Tooth", 8);
             Core.HuntMonster("worldscore", "Mask of Tranquility", "Creator's Favor", 1);
@@ -48,7 +45,7 @@ public class CoreSoWMats
         PrismaticSeams(100);
         UnboundThread(30);
         Acquiescence(25);
-        ElementalCore(40);   
+        ElementalCore(40);
         Adv.BuyItem("manacradle", 2242, "Dragon's Tear");
     }
     public void ElementalCore(int Quantity = 1000)
@@ -60,7 +57,8 @@ public class CoreSoWMats
         }
         else Core.EquipClass(ClassType.Solo);
 
-        FarmReq(() => {
+        FarmReq(() =>
+        {
             Core.HuntMonster("manacradle", "Dark Tainted Mana", "Elemental Tear", 8);
             Core.HuntMonster("manacradle", "Malgor", "Weathered Armor Shard");
             Core.HuntMonster("manacradle", "The Mainyu", "Licorice Scale");
@@ -69,7 +67,8 @@ public class CoreSoWMats
     public void GarishRemnant(int Quantity = 1000)
     {
         SoW.Timekeep();
-        FarmReq(() => {
+        FarmReq(() =>
+        {
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("Timekeep", "Mal-formed Gar", "Gar's Resignation Letter");
             Core.EquipClass(ClassType.Farm);
@@ -81,7 +80,8 @@ public class CoreSoWMats
     {
         SoW.TimestreamWar();
         Core.EquipClass(ClassType.Farm);
-        FarmReq(() =>{
+        FarmReq(() =>
+        {
             Core.KillMonster("Streamwar", "r3a", "Left", "*", log: false);
         }, "Prismatic Seams", Quantity, 8814, 8815);
     }
@@ -89,7 +89,8 @@ public class CoreSoWMats
     {
         SoW.DeadLines();
         Core.EquipClass(ClassType.Solo);
-        FarmReq(() =>{
+        FarmReq(() =>
+        {
             Core.HuntMonster("DeadLines", "Shadowfall Warrior", "Armor Scrap", 8);
             Core.HuntMonster("DeadLines", "Frenzied Mana", "Captured Mana", 8);
             Core.HuntMonster("DeadLines", "Eternal Dragon", "Eternal Dragon Scale");
@@ -98,7 +99,8 @@ public class CoreSoWMats
     public void Willpower(int Quantity = 1000)
     {
         SoW.RuinedCrown();
-        FarmReq(() =>{
+        FarmReq(() =>
+        {
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster($"ruinedcrown", "Calamitous Warlic", "Warlic’s Favor");
             Core.EquipClass(ClassType.Farm);
