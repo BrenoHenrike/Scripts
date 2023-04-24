@@ -150,7 +150,7 @@ public class CoreDoomwood
         }
 
         //1088    The Ego and the ID
-        Story.KillQuest(1088, "necrotower", new[] { "DoomWood Soldier", "DoomWood Soldier" });
+        Story.KillQuest(1088, "necrotower", new[] { "Doomwood Soldier", "Doomwood Soldier" });
 
         //1090    An IDeal Seal
         Story.KillQuest(1090, "necrotower", "DoomWood Bonemuncher");
