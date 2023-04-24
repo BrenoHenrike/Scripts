@@ -8240,6 +8240,25 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Various/KillYoshinoBoss.cs"
   },
   {
+    "name": "Star Festival Gift",
+    "description": "This bot will get you all the rewards from the quest for the 'Star Festival Gift' quest in /starfestival",
+    "tags": [
+      "star",
+      "festival",
+      "gift",
+      "yokai",
+      "river",
+      "fallen",
+      "moon",
+      "bow",
+      "ninja"
+    ],
+    "path": "Other/Various/StarFestivalGift.cs",
+    "size": 981,
+    "fileName": "StarFestivalGift.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Various/StarFestivalGift.cs"
+  },
+  {
     "name": "serpentine larvae set",
     "description": "gets pet, does quest, gets set",
     "tags": [
