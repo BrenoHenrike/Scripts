@@ -1,7 +1,7 @@
 /*
 name: Blood Moon
 description: This will complete the Blood Moon story.
-tags: story, quest, blood-moon
+tags: story, quest, blood, moon, maxius
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
@@ -9,9 +9,9 @@ using Skua.Core.Interfaces;
 
 public class BloodMoon
 {
-    public IScriptInterface Bot => IScriptInterface.Instance;
-    public CoreBots Core => CoreBots.Instance;
-    public CoreStory Story = new CoreStory();
+    private IScriptInterface Bot => IScriptInterface.Instance;
+    private CoreBots Core => CoreBots.Instance;
+    private CoreStory Story = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -38,20 +38,12 @@ public class BloodMoon
 
         Story.PreLoad(this);
 
-        Core.EquipClass(ClassType.Farm);
-
         //Get Out! 6048
         Story.MapItemQuest(6048, "bloodmoon", 5451);
         Story.KillQuest(6048, "bloodmoon", "Darkness");
 
-
         //The Court of The King 6049
-        if (!Story.QuestProgression(6049))
-        {
-            Core.EquipClass(ClassType.Solo);
-            Story.KillQuest(6049, "bloodmoon", "Constantin");
-            Core.EquipClass(ClassType.Farm);
-        }
+        Story.KillQuest(6049, "bloodmoon", "Constantin");
 
         //Hungry like the ... Lycan? 6050
         Story.MapItemQuest(6050, "bloodmoon", 5452);
@@ -75,31 +67,25 @@ public class BloodMoon
         Story.MapItemQuest(6056, "bloodmoon", 5458);
 
         //No Surprise 6057
-        if (!Story.QuestProgression(6057))
-        {
-            Core.EquipClass(ClassType.Solo);
-            Story.KillQuest(6057, "bloodmoon", "Black Unicorn");
-        }
+        Story.KillQuest(6057, "bloodmoon", "Black Unicorn");
 
         //Killer Kitty 6058 
-        if (!Story.QuestProgression(6058))
-        {
-            Core.EquipClass(ClassType.Solo);
-            Story.KillQuest(6058, "bloodmoon", "Bubble");
-        }
+        Story.KillQuest(6058, "bloodmoon", "Bubble");
     }
 
     public void Maxius()
     {
-        Core.EquipClass(ClassType.Farm);
+        if (Core.isCompletedBefore(6067))
+            return;
+
+        Story.PreLoad(this);
 
         // //Ghoul, Ghoul, Ghoul 6063
-        // Story.KillQuest(6063, "maxius", "Ghoul Minion");
+        Story.KillQuest(6063, "maxius", "Ghoul Minion");
 
         //Get Him! 6064
         if (!Story.QuestProgression(6064))
         {
-            Core.EquipClass(ClassType.Solo);
             // Bot.Events.CellChanged += CutSceneFixer;
             Core.EnsureAccept(6064);
             Core.HuntMonsterMapID("maxius", 6, "Count Maxius Defeated");
@@ -107,13 +93,11 @@ public class BloodMoon
         }
 
         // //Minions Everywhere 6065
-        // Core.EquipClass(ClassType.Farm);
-        // Story.KillQuest(6065, "maxius", "Vampire Minion");
+        Story.KillQuest(6065, "maxius", "Vampire Minion");
 
         //Get Barnabus! 6066
         if (!Story.QuestProgression(6066))
         {
-            Core.EquipClass(ClassType.Solo);
             // Bot.Events.CellChanged += CutSceneFixer;
             Core.EnsureAccept(6066);
             Core.HuntMonster("maxius", "Barnabus", "Barnabus Defeated");
@@ -124,7 +108,6 @@ public class BloodMoon
         if (!Story.QuestProgression(6067))
         {
             Bot.Wait.ForCellChange("Cut5");
-            Core.EquipClass(ClassType.Solo);
             // Bot.Events.CellChanged += CutSceneFixer;
             Core.EnsureAccept(6067);
             Core.Jump("r6");
