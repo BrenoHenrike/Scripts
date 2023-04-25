@@ -43,9 +43,14 @@ public class QueenReign
         Story.KillQuest(8303, "queenreign", "Shadow Samurai");
 
         //Constructing the Portal
-        Story.MapItemQuest(8304, "queenreign", 9120);
-        Story.KillQuest(8304, "queenreign", new[] { "Samurai Nopperabo", "Shadow Samurai" });
-
+        if (!Story.QuestProgression(8304))
+        {
+            Core.EnsureAccept(8304);
+            Core.HuntMonster("queenreign", "Samurai Nopperabo", "Yokai Energy", 3);
+            Core.HuntMonster("queenreign", "Shadow Samurai", "Shadow Energy", 3);
+            Story.MapItemQuest(8304, "queenreign", 9120);
+        }
+        
         //Into the Yokai Realm
         Story.KillQuest(8305, "queenreign", "Tsukumo-Gami");
 
