@@ -2365,10 +2365,12 @@
     "tags": [
       "story",
       "quest",
-      "blood-moon"
+      "blood",
+      "moon",
+      "maxius"
     ],
     "path": "Story/BloodMoon.cs",
-    "size": 4572,
+    "size": 4016,
     "fileName": "BloodMoon.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/BloodMoon.cs"
   },
