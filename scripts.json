@@ -2866,7 +2866,7 @@
       "starsinc"
     ],
     "path": "Story/StarSinc.cs",
-    "size": 3443,
+    "size": 3517,
     "fileName": "StarSinc.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/StarSinc.cs"
   },
@@ -8644,6 +8644,22 @@
     "size": 841,
     "fileName": "ShadowVaultChampion.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Badges/ShadowVaultChampion.cs"
+  },
+  {
+    "name": "Dragonslayer Class",
+    "description": "This script farms the Dragonslayer Class",
+    "tags": [
+      "galanoth",
+      "class",
+      "lair",
+      "dsg",
+      "general",
+      "slayer"
+    ],
+    "path": "Other/Classes/Dragonslayer.cs",
+    "size": 976,
+    "fileName": "Dragonslayer.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/Dragonslayer.cs"
   },
   {
     "name": "LevelAllClasses",
@@ -15727,6 +15743,19 @@
     "size": 934,
     "fileName": "LuminaElementi.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/ArchMage/LuminaElementi.cs"
+  },
+  {
+    "name": "Blood Ancient (Member) Class",
+    "description": "This script farms the Blood Ancient class.",
+    "tags": [
+      "ancient",
+      "class",
+      "vitae"
+    ],
+    "path": "Other/Classes/Members-CLasses/BloodAncient[Mem].cs",
+    "size": 1190,
+    "fileName": "BloodAncient[Mem].cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/Members-CLasses/BloodAncient[Mem].cs"
   },
   {
     "name": "BloodTitan[Mem]",
