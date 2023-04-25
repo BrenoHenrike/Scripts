@@ -8893,75 +8893,85 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Quests/ArmyNSODDaily.cs"
   },
   {
-    "name": "Army Darkon Errands",
-    "description": "uses an army to farm the various Darkon errands",
+    "name": "Darkon Errands (Army)",
+    "description": "Uses an army to farm the various Darkon errands",
     "tags": [
       "darkon",
-      "darkon errands",
-      "darkon's receipt",
-      "first errand",
-      "second errand",
-      "third errand"
+      "receipt",
+      "first",
+      "second",
+      "third",
+      "errands"
     ],
     "path": "Army/Various/ArmyDarkonErrands.cs",
-    "size": 3757,
+    "size": 3722,
     "fileName": "ArmyDarkonErrands.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmyDarkonErrands.cs"
   },
   {
-    "name": "Army Prismatic Seams",
+    "name": "Prismatic Seams (Army)",
     "description": "Farms Prismatic Seams using your army.",
     "tags": [
       "army",
       "prismatic seams"
     ],
     "path": "Army/Various/ArmyPrismaticSeams.cs",
-    "size": 1789,
+    "size": 1783,
     "fileName": "ArmyPrismaticSeams.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmyPrismaticSeams.cs"
   },
   {
-    "name": "Army ArchMage Boss Items",
-    "description": "uses an army to help farm the required boss items for archmage.",
+    "name": "ArchMage Boss Items (Army)",
+    "description": "Uses an army to help farm the required boss items for Archmage.",
     "tags": [
-      "archmage",
+      "arch",
+      "mage",
       "army",
-      "boss items"
+      "boss",
+      "items"
     ],
     "path": "Army/Various/ArmyArchMageBossItems.cs",
-    "size": 7082,
+    "size": 7083,
     "fileName": "ArmyArchMageBossItems.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmyArchMageBossItems.cs"
   },
   {
-    "name": "Army superfan swag token a",
-    "description": "farms super-fan swag token a with f2p method",
+    "name": "Super-Fan Swag Token A (Army)",
+    "description": "Farms Super-Fan Wwag Token A with f2p method",
     "tags": [
-      "\"super-fan swag token a\"",
+      "super",
+      "fan",
+      "swag",
+      "toke",
+      "a",
       "army",
-      "f2p"
+      "f2p",
+      "rep"
     ],
     "path": "Army/Various/ArmySwagTokensF2p.cs",
-    "size": 3263,
+    "size": 3272,
     "fileName": "ArmySwagTokensF2p.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmySwagTokensF2p.cs"
   },
   {
-    "name": "army blood moon tokens",
-    "description": "uses an army to farm blood moon tokens",
+    "name": "Blood Moon Tokens (Army)",
+    "description": "Uses an army to farm Blood Moon Tokens",
     "tags": [
-      "blood moon tokens",
+      "blood",
+      "moon",
+      "tokens",
       "army",
       "seasonal",
-      "bloodmoon"
+      "pumpkin",
+      "lord"
     ],
     "path": "Army/Various/ArmyBloodMoonToken.cs",
-    "size": 1820,
+    "size": 1827,
     "fileName": "ArmyBloodMoonToken.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmyBloodMoonToken.cs"
   },
   {
-    "name": "Army Penny for Your Thoughts",
+    "name": "Penny for Your Thoughts (Army)",
     "description": "Farms Dark Spirit Orbs from Penny for Your Thoughts quest using your army.",
     "tags": [
       "army",
@@ -8970,64 +8980,77 @@
       "dso"
     ],
     "path": "Army/Various/ArmyPennyForYourThoughts.cs",
-    "size": 1939,
+    "size": 1941,
     "fileName": "ArmyPennyForYourThoughts.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmyPennyForYourThoughts.cs"
   },
   {
-    "name": "Army Smart Void Auras",
+    "name": "Smart Void Auras (Army)",
     "description": "Farms Void Auras with the best method available using your army.",
     "tags": [
       "army",
-      "void aura",
-      "methods",
+      "void",
+      "aura",
       "smart",
-      "va"
+      "VA",
+      "NSOD",
+      "necrotic",
+      "sword",
+      "doom"
     ],
     "path": "Army/Various/ArmySmartVoidAuas.cs",
-    "size": 5786,
+    "size": 5805,
     "fileName": "ArmySmartVoidAuas.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmySmartVoidAuas.cs"
   },
   {
-    "name": "Army Spirit Orbs",
+    "name": "Spirit Orbs (Army)",
     "description": "Farms Spirit Orbs using your army.",
     "tags": [
       "army",
-      "spirit orb"
+      "spirit",
+      "orb",
+      "BLOD",
+      "blinding",
+      "light",
+      "destiny",
+      "good",
+      "undead"
     ],
     "path": "Army/Various/ArmySpiritOrb.cs",
-    "size": 2125,
+    "size": 2174,
     "fileName": "ArmySpiritOrb.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmySpiritOrb.cs"
   },
   {
-    "name": "Army Light Caster",
+    "name": "Light Caster (Army)",
     "description": "Farms LightCaster class using your army.",
     "tags": [
       "army",
-      "lightcaster",
-      "lightmage",
+      "light",
+      "caster",
+      "mage",
       "class",
-      "0file",
       "doall"
     ],
     "path": "Army/Various/ArmyLightCasterFull.cs",
-    "size": 4697,
+    "size": 4685,
     "fileName": "ArmyLightCasterFull.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmyLightCasterFull.cs"
   },
   {
-    "name": "Army Mirror Realm Tokens",
+    "name": "Mirror Realm Tokens (Army)",
     "description": "Farms Mirror Realm Tokens using your army.",
     "tags": [
       "army",
-      "mirror realm token",
+      "mirror",
+      "realm",
       "token",
-      "mirror realm"
+      "mirror",
+      "realm"
     ],
     "path": "Army/Various/ArmyMirrorRealmToken.cs",
-    "size": 2229,
+    "size": 2227,
     "fileName": "ArmyMirrorRealmToken.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmyMirrorRealmToken.cs"
   },
