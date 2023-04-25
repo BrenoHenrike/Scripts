@@ -422,12 +422,11 @@ public class CoreQOM
         if (!Story.QuestProgression(5585))
         {
             Core.EnsureAccept(5585);
-            Core.HuntMonsterMapID("castleinvasion", 16, "Giant Worm of Teeth Defeated... Again!");
+            Core.KillMonster("castleinvasion", "r6a", "Left", "Giant Worm of Teeth", "Giant Worm of Teeth Defeated... Again!");
             Core.EnsureComplete(5585);
         }
-        
+
         //Him Again???
-        Core.EquipClass(ClassType.Solo);
         Story.KillQuest(5586, "castleinvasion", "Lord Balax'el");
     }
 
