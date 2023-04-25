@@ -6281,10 +6281,11 @@
     "name": "ThanatosParagon",
     "description": "null",
     "tags": [
-      "null"
+      "legion",
+      "legion token"
     ],
     "path": "Legion/LegionTokens/ThanatosParagon.cs",
-    "size": 607,
+    "size": 623,
     "fileName": "ThanatosParagon.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/LegionTokens/ThanatosParagon.cs"
   },
@@ -6292,10 +6293,11 @@
     "name": "HolidayParagon",
     "description": "null",
     "tags": [
-      "null"
+      "legion",
+      "legion token"
     ],
     "path": "Legion/LegionTokens/HolidayParagon.cs",
-    "size": 604,
+    "size": 620,
     "fileName": "HolidayParagon.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/LegionTokens/HolidayParagon.cs"
   },
@@ -6303,10 +6305,11 @@
     "name": "ArcaneParagon",
     "description": "null",
     "tags": [
-      "null"
+      "legion",
+      "legion token"
     ],
     "path": "Legion/LegionTokens/ArcaneParagon.cs",
-    "size": 577,
+    "size": 593,
     "fileName": "ArcaneParagon.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/LegionTokens/ArcaneParagon.cs"
   },
@@ -6314,10 +6317,11 @@
     "name": "TimeforSomeSpringCleaning[AnyPet]",
     "description": "null",
     "tags": [
-      "null"
+      "legion",
+      "legion token"
     ],
     "path": "Legion/LegionTokens/TimeforSomeSpringCleaning[AnyPet].cs",
-    "size": 637,
+    "size": 653,
     "fileName": "TimeforSomeSpringCleaning[AnyPet].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/LegionTokens/TimeforSomeSpringCleaning[AnyPet].cs"
   },
@@ -6325,10 +6329,11 @@
     "name": "DreadnaughtParagon",
     "description": "null",
     "tags": [
-      "null"
+      "legion",
+      "legion token"
     ],
     "path": "Legion/LegionTokens/DreadnaughtParagon.cs",
-    "size": 613,
+    "size": 629,
     "fileName": "DreadnaughtParagon.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/LegionTokens/DreadnaughtParagon.cs"
   },
@@ -6336,10 +6341,11 @@
     "name": "HardCoreParagon",
     "description": "null",
     "tags": [
-      "null"
+      "legion",
+      "legion token"
     ],
     "path": "Legion/LegionTokens/HardCoreParagon.cs",
-    "size": 583,
+    "size": 599,
     "fileName": "HardCoreParagon.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/LegionTokens/HardCoreParagon.cs"
   },
@@ -6347,10 +6353,11 @@
     "name": "BrightParagonLightvsDark",
     "description": "null",
     "tags": [
-      "null"
+      "legion",
+      "legion token"
     ],
     "path": "Legion/LegionTokens/BrightParagonLightvsDark.cs",
-    "size": 620,
+    "size": 636,
     "fileName": "BrightParagonLightvsDark.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/LegionTokens/BrightParagonLightvsDark.cs"
   },
@@ -6358,10 +6365,12 @@
     "name": "FirstClassEntertainment",
     "description": "null",
     "tags": [
-      "null"
+      "legion",
+      "legion token",
+      "solo"
     ],
     "path": "Legion/LegionTokens/FirstClassEntertainment.cs",
-    "size": 689,
+    "size": 711,
     "fileName": "FirstClassEntertainment.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/LegionTokens/FirstClassEntertainment.cs"
   },
@@ -6381,10 +6390,11 @@
     "name": "InfernalLegionBetrayal",
     "description": "null",
     "tags": [
-      "null"
+      "legion",
+      "legion token"
     ],
     "path": "Legion/LegionTokens/InfernalLegionBetrayal.cs",
-    "size": 686,
+    "size": 702,
     "fileName": "InfernalLegionBetrayal.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/LegionTokens/InfernalLegionBetrayal.cs"
   },
@@ -6392,10 +6402,11 @@
     "name": "DreadrockLegionToken",
     "description": "null",
     "tags": [
-      "null"
+      "legion",
+      "legion token"
     ],
     "path": "Legion/LegionTokens/DreadrockLegionToken.cs",
-    "size": 608,
+    "size": 624,
     "fileName": "DreadrockLegionToken.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/LegionTokens/DreadrockLegionToken.cs"
   },
@@ -6403,10 +6414,11 @@
     "name": "UW3017",
     "description": "null",
     "tags": [
-      "null"
+      "legion",
+      "legion token"
     ],
     "path": "Legion/LegionTokens/UW3017.cs",
-    "size": 556,
+    "size": 572,
     "fileName": "UW3017.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/LegionTokens/UW3017.cs"
   },
@@ -6414,10 +6426,11 @@
     "name": "FestiveParagonDracolichRider",
     "description": "null",
     "tags": [
-      "null"
+      "legion",
+      "legion token"
     ],
     "path": "Legion/LegionTokens/FestiveParagonDracolichRider.cs",
-    "size": 621,
+    "size": 637,
     "fileName": "FestiveParagonDracolichRider.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/LegionTokens/FestiveParagonDracolichRider.cs"
   },
@@ -12826,7 +12839,7 @@
       "null"
     ],
     "path": "Story/ShadowsOfWar/CoreSoW.cs",
-    "size": 36108,
+    "size": 36358,
     "fileName": "CoreSoW.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfWar/CoreSoW.cs"
   },
