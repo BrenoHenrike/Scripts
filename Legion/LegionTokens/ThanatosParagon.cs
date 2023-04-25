@@ -1,7 +1,7 @@
 /*
 name: ThanatosParagon
 description: null
-tags: null
+tags: legion, legion token
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
