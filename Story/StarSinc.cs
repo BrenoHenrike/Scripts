@@ -78,7 +78,7 @@ public class StarSinc
                 case 4409: // Defeat the Prime Dominus
                     Story.LegacyQuestAutoComplete = false;
                     Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster("starsinc", "Prime Dominus", "Prime Defeated");
+                    Core.HuntMonster("starsinc", "Prime Dominus", "Prime Defeated", isTemp: false);
                     break;
 
                 case 4410: // Place the Beacons
@@ -86,6 +86,7 @@ public class StarSinc
                     break;
 
                 case 4412: // Retrieve the Core
+                    Story.LegacyQuestAutoComplete = false;
                     Core.HuntMonster("starsinc", "Final", "Final Defeated");
                     break;
             }
