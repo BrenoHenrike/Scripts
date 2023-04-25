@@ -6279,98 +6279,98 @@
   },
   {
     "name": "ThanatosParagon",
-    "description": "null",
+    "description": "Uses the appropriate pet to farm Legion Tokens",
     "tags": [
       "legion",
       "legion token"
     ],
     "path": "Legion/LegionTokens/ThanatosParagon.cs",
-    "size": 623,
+    "size": 665,
     "fileName": "ThanatosParagon.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/LegionTokens/ThanatosParagon.cs"
   },
   {
     "name": "HolidayParagon",
-    "description": "null",
+    "description": "Uses the appropriate pet to farm Legion Tokens",
     "tags": [
       "legion",
       "legion token"
     ],
     "path": "Legion/LegionTokens/HolidayParagon.cs",
-    "size": 620,
+    "size": 662,
     "fileName": "HolidayParagon.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/LegionTokens/HolidayParagon.cs"
   },
   {
     "name": "ArcaneParagon",
-    "description": "null",
+    "description": "Uses the appropriate pet to farm Legion Tokens",
     "tags": [
       "legion",
       "legion token"
     ],
     "path": "Legion/LegionTokens/ArcaneParagon.cs",
-    "size": 593,
+    "size": 635,
     "fileName": "ArcaneParagon.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/LegionTokens/ArcaneParagon.cs"
   },
   {
     "name": "TimeforSomeSpringCleaning[AnyPet]",
-    "description": "null",
+    "description": "Uses the appropriate pet to farm Legion Tokens",
     "tags": [
       "legion",
       "legion token"
     ],
     "path": "Legion/LegionTokens/TimeforSomeSpringCleaning[AnyPet].cs",
-    "size": 653,
+    "size": 695,
     "fileName": "TimeforSomeSpringCleaning[AnyPet].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/LegionTokens/TimeforSomeSpringCleaning[AnyPet].cs"
   },
   {
     "name": "DreadnaughtParagon",
-    "description": "null",
+    "description": "Uses the appropriate pet to farm Legion Tokens",
     "tags": [
       "legion",
       "legion token"
     ],
     "path": "Legion/LegionTokens/DreadnaughtParagon.cs",
-    "size": 629,
+    "size": 671,
     "fileName": "DreadnaughtParagon.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/LegionTokens/DreadnaughtParagon.cs"
   },
   {
     "name": "HardCoreParagon",
-    "description": "null",
+    "description": "Uses the appropriate pet to farm Legion Tokens",
     "tags": [
       "legion",
       "legion token"
     ],
     "path": "Legion/LegionTokens/HardCoreParagon.cs",
-    "size": 599,
+    "size": 641,
     "fileName": "HardCoreParagon.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/LegionTokens/HardCoreParagon.cs"
   },
   {
     "name": "BrightParagonLightvsDark",
-    "description": "null",
+    "description": "Uses the appropriate pet to farm Legion Tokens",
     "tags": [
       "legion",
       "legion token"
     ],
     "path": "Legion/LegionTokens/BrightParagonLightvsDark.cs",
-    "size": 636,
+    "size": 678,
     "fileName": "BrightParagonLightvsDark.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/LegionTokens/BrightParagonLightvsDark.cs"
   },
   {
     "name": "FirstClassEntertainment",
-    "description": "null",
+    "description": "Uses the appropriate pet to farm Legion Tokens",
     "tags": [
       "legion",
       "legion token",
       "solo"
     ],
     "path": "Legion/LegionTokens/FirstClassEntertainment.cs",
-    "size": 711,
+    "size": 753,
     "fileName": "FirstClassEntertainment.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/LegionTokens/FirstClassEntertainment.cs"
   },
@@ -6388,25 +6388,25 @@
   },
   {
     "name": "InfernalLegionBetrayal",
-    "description": "null",
+    "description": "Uses the appropriate pet to farm Legion Tokens",
     "tags": [
       "legion",
       "legion token"
     ],
     "path": "Legion/LegionTokens/InfernalLegionBetrayal.cs",
-    "size": 702,
+    "size": 744,
     "fileName": "InfernalLegionBetrayal.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/LegionTokens/InfernalLegionBetrayal.cs"
   },
   {
     "name": "DreadrockLegionToken",
-    "description": "null",
+    "description": "Uses the appropriate pet to farm Legion Tokens",
     "tags": [
       "legion",
       "legion token"
     ],
     "path": "Legion/LegionTokens/DreadrockLegionToken.cs",
-    "size": 624,
+    "size": 666,
     "fileName": "DreadrockLegionToken.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/LegionTokens/DreadrockLegionToken.cs"
   },
@@ -6424,13 +6424,13 @@
   },
   {
     "name": "FestiveParagonDracolichRider",
-    "description": "null",
+    "description": "Uses the appropriate pet to farm Legion Tokens",
     "tags": [
       "legion",
       "legion token"
     ],
     "path": "Legion/LegionTokens/FestiveParagonDracolichRider.cs",
-    "size": 637,
+    "size": 679,
     "fileName": "FestiveParagonDracolichRider.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/LegionTokens/FestiveParagonDracolichRider.cs"
   },
