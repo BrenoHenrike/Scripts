@@ -19,10 +19,11 @@ public class CoreStory
     // Recommended: false
     // Used for testing bots, dont toggle this as a user
     public bool TestBot { get; set; } = false;
-    public IScriptInterface Bot => IScriptInterface.Instance;
-    public CoreBots Core => CoreBots.Instance;
 
-    public void ScriptMain(IScriptInterface bot)
+    private IScriptInterface Bot => IScriptInterface.Instance;
+    private CoreBots Core => CoreBots.Instance;
+
+    public void ScriptMain(IScriptInterface Bot)
     {
         Core.RunCore();
     }

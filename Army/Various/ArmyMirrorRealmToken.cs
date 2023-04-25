@@ -1,7 +1,7 @@
 /*
-name: Army Mirror Realm Tokens
+name: Mirror Realm Tokens (Army)
 description: Farms Mirror Realm Tokens using your army.
-tags: army, mirror realm token, token, mirror realm
+tags: army, mirror, realm, token, mirror, realm
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/Army/CoreArmyLite.cs

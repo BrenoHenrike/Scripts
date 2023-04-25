@@ -423,7 +423,7 @@ public class CoreBots
         return false;
     }
 
-    public void ScriptMain(IScriptInterface bot)
+    public void ScriptMain(IScriptInterface Bot)
     {
         RunCore();
     }
@@ -440,8 +440,11 @@ public class CoreBots
     /// <param name="quant">Desired quantity</param>
     /// <param name="toInv">Whether or not send the item to Inventory</param>
     /// <returns>Returns whether the item exists in the desired quantity in the bank and inventory</returns>
-    public bool CheckInventory(string item, int quant = 1, bool toInv = true)
+    public bool CheckInventory(string? item, int quant = 1, bool toInv = true)
     {
+        if (item == null)
+            return true;
+
         if (Bot.TempInv.Contains(item, quant))
             return true;
 
@@ -471,25 +474,29 @@ public class CoreBots
     /// <param name="quant">Desired quantity</param>
     /// <param name="toInv">Whether or not send the item to Inventory</param>
     /// <returns>Returns whether the item exists in the desired quantity in the Bank and Inventory</returns>
-    public bool CheckInventory(int itemID, int quant = 1, bool toInv = true)
+    public bool CheckInventory(int? itemID, int quant = 1, bool toInv = true)
     {
-        if (Bot.TempInv.Contains(itemID, quant))
+        if (itemID == null)
+            return true;
+        int _itemID = (int)itemID;
+
+        if (Bot.TempInv.Contains(_itemID, quant))
             return true;
 
-        if (Bot.Inventory.Contains(itemID, quant))
+        if (Bot.Inventory.Contains(_itemID, quant))
             return true;
 
-        if (Bot.Bank.Contains(itemID))
+        if (Bot.Bank.Contains(_itemID))
         {
             if (toInv)
-                Unbank(itemID);
+                Unbank(_itemID);
 
-            if ((toInv && Bot.Inventory.GetQuantity(itemID) >= quant) ||
-               (!toInv && Bot.Bank.TryGetItem(itemID, out InventoryItem? _item) && _item != null && _item.Quantity >= quant))
+            if ((toInv && Bot.Inventory.GetQuantity(_itemID) >= quant) ||
+               (!toInv && Bot.Bank.TryGetItem(_itemID, out InventoryItem? _item) && _item != null && _item.Quantity >= quant))
                 return true;
         }
 
-        if (Bot.House.Contains(itemID))
+        if (Bot.House.Contains(_itemID))
             return true;
 
         return false;
@@ -503,9 +510,9 @@ public class CoreBots
     /// <param name="any">If any of the items exist, returns true</param>
     /// <param name="toInv">Whether or not send the item to Inventory</param>
     /// <returns>Returns whether all the items exist in the Bank or Inventory</returns>
-    public bool CheckInventory(string[] itemNames, int quant = 1, bool any = false, bool toInv = true)
+    public bool CheckInventory(string[]? itemNames, int quant = 1, bool any = false, bool toInv = true)
     {
-        if (itemNames == null)
+        if (itemNames == null || !itemNames.Any())
             return true;
 
         foreach (string name in itemNames)
@@ -533,9 +540,9 @@ public class CoreBots
     /// <param name="any">If any of the items exist, returns true</param>
     /// <param name="toInv">Whether or not send the item to Inventory</param>
     /// <returns>Returns whether the item exists in the desired quantity in the Bank and Inventory</returns>
-    public bool CheckInventory(int[] itemIDs, int quant = 1, bool any = false, bool toInv = true)
+    public bool CheckInventory(int[]? itemIDs, int quant = 1, bool any = false, bool toInv = true)
     {
-        if (itemIDs == null)
+        if (itemIDs == null || !itemIDs.Any())
             return true;
 
         foreach (int id in itemIDs)

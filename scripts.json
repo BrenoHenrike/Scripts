@@ -6,7 +6,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 150710,
+    "size": 150900,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -17,7 +17,7 @@
       "null"
     ],
     "path": "CoreDailies.cs",
-    "size": 41176,
+    "size": 41178,
     "fileName": "CoreDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreDailies.cs"
   },
@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 94070,
+    "size": 94072,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -39,7 +39,7 @@
       "null"
     ],
     "path": "CoreStory.cs",
-    "size": 29268,
+    "size": 29271,
     "fileName": "CoreStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreStory.cs"
   },
@@ -219,7 +219,7 @@
       "null"
     ],
     "path": "Legion/CoreLegion.cs",
-    "size": 28389,
+    "size": 28363,
     "fileName": "CoreLegion.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/CoreLegion.cs"
   },
@@ -1013,7 +1013,7 @@
       "null"
     ],
     "path": "Hollowborn/CoreHollowborn.cs",
-    "size": 2137,
+    "size": 2129,
     "fileName": "CoreHollowborn.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/CoreHollowborn.cs"
   },
@@ -1431,7 +1431,7 @@
       "null"
     ],
     "path": "Darkon/CoreDarkon.cs",
-    "size": 11038,
+    "size": 10969,
     "fileName": "CoreDarkon.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/CoreDarkon.cs"
   },
@@ -1442,7 +1442,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 61986,
+    "size": 62135,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -2365,10 +2365,12 @@
     "tags": [
       "story",
       "quest",
-      "blood-moon"
+      "blood",
+      "moon",
+      "maxius"
     ],
     "path": "Story/BloodMoon.cs",
-    "size": 4572,
+    "size": 4016,
     "fileName": "BloodMoon.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/BloodMoon.cs"
   },
@@ -3214,7 +3216,7 @@
       "null"
     ],
     "path": "ShadowsOfWar/CoreSoWMats.cs",
-    "size": 4477,
+    "size": 4426,
     "fileName": "CoreSoWMats.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/ShadowsOfWar/CoreSoWMats.cs"
   },
@@ -3324,7 +3326,7 @@
       "null"
     ],
     "path": "Templates/MergeTemplate.cs",
-    "size": 3067,
+    "size": 3068,
     "fileName": "MergeTemplate.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Templates/MergeTemplate.cs"
   },
@@ -5949,6 +5951,73 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/SnowviewMerge.cs"
   },
   {
+    "name": "LegionPyromancerMerge",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Legion/MergeShops/LegionPyromancerMerge.cs",
+    "size": 7401,
+    "fileName": "LegionPyromancerMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/MergeShops/LegionPyromancerMerge.cs"
+  },
+  {
+    "name": "Dage Recruit Merge",
+    "description": "This will complete the Dage Recruit story and farm Dark Victory Seals.",
+    "tags": [
+      "story",
+      "quest",
+      "dage",
+      "recruit",
+      "legion",
+      "dark-victory-seal",
+      "merge",
+      "staff",
+      "birthday"
+    ],
+    "path": "Legion/MergeShops/DageRecruitMerge.cs",
+    "size": 11237,
+    "fileName": "DageRecruitMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/MergeShops/DageRecruitMerge.cs"
+  },
+  {
+    "name": "Dark Alliance Merge",
+    "description": "This bot will farm the items from the Dark Alliance Merge shop in /darkalliance",
+    "tags": [
+      "dark",
+      "alliance",
+      "merge",
+      "legion",
+      "shadow",
+      "orb",
+      "dark",
+      "spirit",
+      "mana",
+      "gem",
+      "shadow",
+      "flame",
+      "underworld",
+      "horror",
+      "shadowscythe",
+      "warlock"
+    ],
+    "path": "Legion/MergeShops/DarkAllianceMerge.cs",
+    "size": 6343,
+    "fileName": "DarkAllianceMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/MergeShops/DarkAllianceMerge.cs"
+  },
+  {
+    "name": "DarkPalaceMerge",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Legion/MergeShops/DarkPalaceMerge.cs",
+    "size": 5186,
+    "fileName": "DarkPalaceMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/MergeShops/DarkPalaceMerge.cs"
+  },
+  {
     "name": "LegionDBoN",
     "description": "null",
     "tags": [
@@ -6666,17 +6735,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/MazeMerge.cs"
   },
   {
-    "name": "LegionPyromancerMerge",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Other/MergeShops/LegionPyromancerMerge.cs",
-    "size": 7476,
-    "fileName": "LegionPyromancerMerge.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/LegionPyromancerMerge.cs"
-  },
-  {
     "name": "TrickstersGiftsMerge",
     "description": "null",
     "tags": [
@@ -6686,25 +6744,6 @@
     "size": 10625,
     "fileName": "TrickstersGiftsMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/TrickstersGiftsMerge.cs"
-  },
-  {
-    "name": "Dage Recruit Merge",
-    "description": "This will complete the Dage Recruit story and farm Dark Victory Seals.",
-    "tags": [
-      "story",
-      "quest",
-      "dage",
-      "recruit",
-      "legion",
-      "dark-victory-seal",
-      "merge",
-      "staff",
-      "birthday"
-    ],
-    "path": "Other/MergeShops/DageRecruitMerge.cs",
-    "size": 11236,
-    "fileName": "DageRecruitMerge.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/DageRecruitMerge.cs"
   },
   {
     "name": "ShadowScytheGeneralMerge",
@@ -7126,17 +7165,6 @@
     "size": 6825,
     "fileName": "EternalChaosMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/EternalChaosMerge.cs"
-  },
-  {
-    "name": "DarkPalaceMerge",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Other/MergeShops/DarkPalaceMerge.cs",
-    "size": 5260,
-    "fileName": "DarkPalaceMerge.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/DarkPalaceMerge.cs"
   },
   {
     "name": "OriginulMerge",
@@ -8240,6 +8268,25 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Various/KillYoshinoBoss.cs"
   },
   {
+    "name": "Star Festival Gift",
+    "description": "This bot will get you all the rewards from the quest for the 'Star Festival Gift' quest in /starfestival",
+    "tags": [
+      "star",
+      "festival",
+      "gift",
+      "yokai",
+      "river",
+      "fallen",
+      "moon",
+      "bow",
+      "ninja"
+    ],
+    "path": "Other/Various/StarFestivalGift.cs",
+    "size": 981,
+    "fileName": "StarFestivalGift.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Various/StarFestivalGift.cs"
+  },
+  {
     "name": "serpentine larvae set",
     "description": "gets pet, does quest, gets set",
     "tags": [
@@ -8848,75 +8895,85 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Quests/ArmyNSODDaily.cs"
   },
   {
-    "name": "Army Darkon Errands",
-    "description": "uses an army to farm the various Darkon errands",
+    "name": "Darkon Errands (Army)",
+    "description": "Uses an army to farm the various Darkon errands",
     "tags": [
       "darkon",
-      "darkon errands",
-      "darkon's receipt",
-      "first errand",
-      "second errand",
-      "third errand"
+      "receipt",
+      "first",
+      "second",
+      "third",
+      "errands"
     ],
     "path": "Army/Various/ArmyDarkonErrands.cs",
-    "size": 3757,
+    "size": 3722,
     "fileName": "ArmyDarkonErrands.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmyDarkonErrands.cs"
   },
   {
-    "name": "Army Prismatic Seams",
+    "name": "Prismatic Seams (Army)",
     "description": "Farms Prismatic Seams using your army.",
     "tags": [
       "army",
       "prismatic seams"
     ],
     "path": "Army/Various/ArmyPrismaticSeams.cs",
-    "size": 1789,
+    "size": 1783,
     "fileName": "ArmyPrismaticSeams.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmyPrismaticSeams.cs"
   },
   {
-    "name": "Army ArchMage Boss Items",
-    "description": "uses an army to help farm the required boss items for archmage.",
+    "name": "ArchMage Boss Items (Army)",
+    "description": "Uses an army to help farm the required boss items for Archmage.",
     "tags": [
-      "archmage",
+      "arch",
+      "mage",
       "army",
-      "boss items"
+      "boss",
+      "items"
     ],
     "path": "Army/Various/ArmyArchMageBossItems.cs",
-    "size": 7082,
+    "size": 7083,
     "fileName": "ArmyArchMageBossItems.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmyArchMageBossItems.cs"
   },
   {
-    "name": "Army superfan swag token a",
-    "description": "farms super-fan swag token a with f2p method",
+    "name": "Super-Fan Swag Token A (Army)",
+    "description": "Farms Super-Fan Wwag Token A with f2p method",
     "tags": [
-      "\"super-fan swag token a\"",
+      "super",
+      "fan",
+      "swag",
+      "toke",
+      "a",
       "army",
-      "f2p"
+      "f2p",
+      "rep"
     ],
     "path": "Army/Various/ArmySwagTokensF2p.cs",
-    "size": 3263,
+    "size": 3272,
     "fileName": "ArmySwagTokensF2p.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmySwagTokensF2p.cs"
   },
   {
-    "name": "army blood moon tokens",
-    "description": "uses an army to farm blood moon tokens",
+    "name": "Blood Moon Tokens (Army)",
+    "description": "Uses an army to farm Blood Moon Tokens",
     "tags": [
-      "blood moon tokens",
+      "blood",
+      "moon",
+      "tokens",
       "army",
       "seasonal",
-      "bloodmoon"
+      "pumpkin",
+      "lord"
     ],
     "path": "Army/Various/ArmyBloodMoonToken.cs",
-    "size": 1820,
+    "size": 1827,
     "fileName": "ArmyBloodMoonToken.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmyBloodMoonToken.cs"
   },
   {
-    "name": "Army Penny for Your Thoughts",
+    "name": "Penny for Your Thoughts (Army)",
     "description": "Farms Dark Spirit Orbs from Penny for Your Thoughts quest using your army.",
     "tags": [
       "army",
@@ -8925,64 +8982,77 @@
       "dso"
     ],
     "path": "Army/Various/ArmyPennyForYourThoughts.cs",
-    "size": 1939,
+    "size": 1941,
     "fileName": "ArmyPennyForYourThoughts.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmyPennyForYourThoughts.cs"
   },
   {
-    "name": "Army Smart Void Auras",
+    "name": "Smart Void Auras (Army)",
     "description": "Farms Void Auras with the best method available using your army.",
     "tags": [
       "army",
-      "void aura",
-      "methods",
+      "void",
+      "aura",
       "smart",
-      "va"
+      "VA",
+      "NSOD",
+      "necrotic",
+      "sword",
+      "doom"
     ],
     "path": "Army/Various/ArmySmartVoidAuas.cs",
-    "size": 5786,
+    "size": 5805,
     "fileName": "ArmySmartVoidAuas.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmySmartVoidAuas.cs"
   },
   {
-    "name": "Army Spirit Orbs",
+    "name": "Spirit Orbs (Army)",
     "description": "Farms Spirit Orbs using your army.",
     "tags": [
       "army",
-      "spirit orb"
+      "spirit",
+      "orb",
+      "BLOD",
+      "blinding",
+      "light",
+      "destiny",
+      "good",
+      "undead"
     ],
     "path": "Army/Various/ArmySpiritOrb.cs",
-    "size": 2125,
+    "size": 2174,
     "fileName": "ArmySpiritOrb.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmySpiritOrb.cs"
   },
   {
-    "name": "Army Light Caster",
+    "name": "Light Caster (Army)",
     "description": "Farms LightCaster class using your army.",
     "tags": [
       "army",
-      "lightcaster",
-      "lightmage",
+      "light",
+      "caster",
+      "mage",
       "class",
-      "0file",
       "doall"
     ],
     "path": "Army/Various/ArmyLightCasterFull.cs",
-    "size": 4697,
+    "size": 4685,
     "fileName": "ArmyLightCasterFull.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmyLightCasterFull.cs"
   },
   {
-    "name": "Army Mirror Realm Tokens",
+    "name": "Mirror Realm Tokens (Army)",
     "description": "Farms Mirror Realm Tokens using your army.",
     "tags": [
       "army",
-      "mirror realm token",
+      "mirror",
+      "realm",
       "token",
-      "mirror realm"
+      "mirror",
+      "realm"
     ],
     "path": "Army/Various/ArmyMirrorRealmToken.cs",
-    "size": 2229,
+    "size": 2227,
     "fileName": "ArmyMirrorRealmToken.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmyMirrorRealmToken.cs"
   },
@@ -12082,7 +12152,7 @@
       "null"
     ],
     "path": "Story/QueenofMonsters/CoreQOM.cs",
-    "size": 31682,
+    "size": 31662,
     "fileName": "CoreQOM.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/QueenofMonsters/CoreQOM.cs"
   },
@@ -12740,7 +12810,7 @@
       "null"
     ],
     "path": "Story/ShadowsOfWar/CoreSoW.cs",
-    "size": 36042,
+    "size": 36108,
     "fileName": "CoreSoW.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfWar/CoreSoW.cs"
   },
@@ -14093,7 +14163,7 @@
       "null"
     ],
     "path": "ShadowsOfWar/MergeShops/RuinedCrownMerge.cs",
-    "size": 5994,
+    "size": 5417,
     "fileName": "RuinedCrownMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/ShadowsOfWar/MergeShops/RuinedCrownMerge.cs"
   },
@@ -14118,6 +14188,27 @@
     "size": 5062,
     "fileName": "WorldsCoreMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/ShadowsOfWar/MergeShops/WorldsCoreMerge.cs"
+  },
+  {
+    "name": "Fire Invasion Merge",
+    "description": "This bot will farm the items from the Fire Invasion Merge shop in /fireinvasion",
+    "tags": [
+      "fire",
+      "invasion",
+      "merge",
+      "shadow",
+      "fire",
+      "trophy",
+      "tyndarius",
+      "ruby",
+      "sapphire",
+      "spellblade",
+      "fighting"
+    ],
+    "path": "ShadowsOfWar/MergeShops/FireInvasionMerge.cs",
+    "size": 5437,
+    "fileName": "FireInvasionMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/ShadowsOfWar/MergeShops/FireInvasionMerge.cs"
   },
   {
     "name": "Farms Willpower",

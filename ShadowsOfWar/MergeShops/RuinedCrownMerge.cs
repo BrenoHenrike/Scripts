@@ -68,24 +68,14 @@ public class RuinedCrownMerge
                 #endregion
 
                 case "Willpower":
-                    SOWM.Willpower();
+                    SOWM.Willpower(quant);
                     break;
 
                 case "ShadowFlame Warrior":
-                    Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster("ruinedcrown", "Mana-Burdened Knight", req.Name, isTemp: false);
-                    }
-                    break;
-
                 case "ShadowFlame Mage":
                 case "ShadowFlame Healer":
                     Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster("ruinedcrown", "Mana-Burdened Mage", req.Name, isTemp: false);
-                    }
+                    Core.HuntMonster("ruinedcrown", "Mana-Burdened Mage", req.Name, isTemp: false);
                     break;
 
                 case "ShadowFlame Rogue":
@@ -93,10 +83,7 @@ public class RuinedCrownMerge
                 case "ShadowFlame Rogue’s Mortal Locks":
                 case "ShadowFlame Rogue’s Locks":
                     Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster("ruinedcrown", "Mana-Burdened Minion", req.Name, isTemp: false);
-                    }
+                    Core.HuntMonster("ruinedcrown", "Mana-Burdened Minion", req.Name, isTemp: false);
                     break;
 
             }

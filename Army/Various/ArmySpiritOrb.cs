@@ -1,7 +1,7 @@
 /*
-name: Army Spirit Orbs
+name: Spirit Orbs (Army)
 description: Farms Spirit Orbs using your army.
-tags: army, spirit orb
+tags: army, spirit, orb, BLOD, blinding, light, destiny, good, undead
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

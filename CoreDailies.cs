@@ -18,10 +18,10 @@ public class CoreDailies
     // [Can Change] Skip daily if you own max stack of reward
     public bool SkipOnMaxStack = true;
 
-    public IScriptInterface Bot => IScriptInterface.Instance;
-    public CoreBots Core => CoreBots.Instance;
+    private IScriptInterface Bot => IScriptInterface.Instance;
+    private CoreBots Core => CoreBots.Instance;
 
-    public void ScriptMain(IScriptInterface bot)
+    public void ScriptMain(IScriptInterface Bot)
     {
         Core.RunCore();
     }

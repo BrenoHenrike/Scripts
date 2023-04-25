@@ -9,12 +9,11 @@ using Skua.Core.Interfaces;
 
 public class CoreHollowborn
 {
-    public IScriptInterface Bot => IScriptInterface.Instance;
+    private IScriptInterface Bot => IScriptInterface.Instance;
+    private CoreBots Core => CoreBots.Instance;
+    private CoreFarms Farm = new();
 
-    public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
-
-    public void ScriptMain(IScriptInterface bot)
+    public void ScriptMain(IScriptInterface Bot)
     {
         Core.RunCore();
     }

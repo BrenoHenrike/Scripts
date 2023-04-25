@@ -1,7 +1,7 @@
 /*
-name: army blood moon tokens
-description: uses an army to farm blood moon tokens
-tags: blood moon tokens, army, seasonal, bloodmoon
+name: Blood Moon Tokens (Army)
+description: Uses an army to farm Blood Moon Tokens
+tags: blood, moon, tokens, army, seasonal, pumpkin, lord
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/Army/CoreArmyLite.cs
@@ -33,7 +33,6 @@ public class ArmyBloodMoonToken
     public void ScriptMain(IScriptInterface bot)
     {
         Core.BankingBlackList.AddRange(Loot);
-
         Core.SetOptions(disableClassSwap: true);
 
         Setup();

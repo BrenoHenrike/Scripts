@@ -24,7 +24,7 @@ public class CoreAdvanced
     private CoreBots Core => CoreBots.Instance;
     private CoreFarms Farm = new();
 
-    public void ScriptMain(IScriptInterface bot)
+    public void ScriptMain(IScriptInterface Bot)
     {
         Core.RunCore();
     }
