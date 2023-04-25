@@ -1,6 +1,6 @@
 /*
 name: ThanatosParagon
-description: null
+description: Uses the appropriate pet to farm Legion Tokens
 tags: legion, legion token
 */
 //cs_include Scripts/CoreBots.cs
