@@ -328,9 +328,7 @@ public class CoreAstravia
         if (!Core.isCompletedBefore(8529))
         {
             Core.EnsureAccept(8529);
-            Core.Join("eridanipast");
-            Core.Jump("r10", "Left");
-            Bot.Kill.Monster("*");
+            Core.HuntMonsterMapID("eridanipast", 18, "Paladin Dueled");
             Core.EnsureComplete(8529);
         }
 
@@ -338,9 +336,8 @@ public class CoreAstravia
         if (!Story.QuestProgression(8530))
         {
             Core.EnsureAccept(8530);
-            Story.MapItemQuest(8530, "eridanipast", 9680);
             Core.HuntMonster("eridanipast", "Bandit", "Bandit Remnants", 7);
-            Core.EnsureComplete(8530);
+            Story.MapItemQuest(8530, "eridanipast", 9680);
         }
     }
 
