@@ -584,16 +584,22 @@ public class CoreLegion
         if (Core.isCompletedBefore(793))
             return;
 
+        if (!Core.isCompletedBefore(792))
+            Farm.BludrutBrawlBoss(quant: 200);
+
         Core.BuyItem("underworld", 215, "Undead Warrior");
         var SellUW = Bot.ShowMessageBox(
-                                "Do you want the bot to sell the \"Undead Warrior\" armor after it has succesfully joined the legion. This will return 1080 AC to you",
-                                "Sell \"Undead Warrior\"?",
-                                true);
-
-        Core.AddDrop("Ravaged Champion Soul");
+            "Do you want the bot to sell the \"Undead Warrior\" armor after it has succesfully joined the legion. This will return 1080 AC to you",
+            "Sell \"Undead Warrior\"?",
+            true);
 
         // Undead Champion Initiation
-        Story.KillQuest(789, "greenguardwest", "Black Knight");
+        if (!Story.QuestProgression(789))
+        {
+            Core.EnsureAccept(789);
+            Core.HuntMonster("greenguardwest", "Black Knight", "Black Knight's Eternal Contract", isTemp: false, log: false);
+            Core.EnsureComplete(789);
+        }
 
         // Mourn the Soldiers
         if (!Story.QuestProgression(790))
@@ -615,12 +621,7 @@ public class CoreLegion
         }
 
         // Player vs Power
-        if (!Story.QuestProgression(792))
-        {
-            if (!Core.CheckInventory("Combat Trophy", 200))
-                Farm.BludrutBrawlBoss(quant: 200);
-            Story.ChainQuest(792);
-        }
+        Story.ChainQuest(792);
 
         // Fail to the King
         Story.KillQuest(793, "prison", "King Alteon's Knight");
