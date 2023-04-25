@@ -1,7 +1,7 @@
 /*
-name: Army Light Caster
+name: Light Caster (Army)
 description: Farms LightCaster class using your army.
-tags: army, lightcaster, lightmage, class, 0file, doall
+tags: army, light, caster, mage, class, doall
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -103,7 +103,7 @@ public class ArmyLightCaster
 
         Core.AddDrop(item);
 
-            Core.EquipClass(classType);
+        Core.EquipClass(classType);
         Army.waitForParty(map, item);
         Core.FarmingLogger(item, quant);
 

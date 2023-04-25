@@ -1,5 +1,5 @@
 /*
-name: Army Penny for Your Thoughts
+name: Penny for Your Thoughts (Army)
 description: Farms Dark Spirit Orbs from Penny for Your Thoughts quest using your army.
 tags: army, penny for your thoughts, dark spirit orb, dso
 */

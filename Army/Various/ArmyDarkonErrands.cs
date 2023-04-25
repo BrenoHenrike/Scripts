@@ -1,7 +1,7 @@
 /*
-name: Army Darkon Errands
-description: uses an army to farm the various Darkon errands
-tags: darkon, darkon errands, darkon's receipt, first errand, second errand, third errand
+name: Darkon Errands (Army)
+description: Uses an army to farm the various Darkon errands
+tags: darkon, receipt, first, second, third, errands
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/Army/CoreArmyLite.cs

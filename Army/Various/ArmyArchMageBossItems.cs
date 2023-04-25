@@ -1,7 +1,7 @@
 /*
-name: Army ArchMage Boss Items
-description: uses an army to help farm the required boss items for archmage.
-tags: archmage, army, boss items
+name: ArchMage Boss Items (Army)
+description: Uses an army to help farm the required boss items for Archmage.
+tags: arch, mage, army, boss, items
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -166,7 +166,7 @@ public class ArchMageMatsArmy
 
         Core.AddDrop(item);
 
-            Core.EquipClass(classType);
+        Core.EquipClass(classType);
         Army.waitForParty(map, item);
         Core.FarmingLogger(item, quant);
 

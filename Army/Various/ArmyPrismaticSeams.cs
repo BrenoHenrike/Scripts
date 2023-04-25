@@ -1,5 +1,5 @@
 /*
-name: Army Prismatic Seams
+name: Prismatic Seams (Army)
 description: Farms Prismatic Seams using your army.
 tags: army, prismatic seams
 */
@@ -46,7 +46,7 @@ public class ArmyPrimaticSeams
     private void Dothething()
     {
         Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
-        
+
         SoW.CompleteCoreSoW();
         ArmyPS();
     }

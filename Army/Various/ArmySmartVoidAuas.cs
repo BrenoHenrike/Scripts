@@ -1,7 +1,7 @@
 /*
-name: Army Smart Void Auras
+name: Smart Void Auras (Army)
 description: Farms Void Auras with the best method available using your army.
-tags: army, void aura, methods, smart, va
+tags: army, void, aura, smart, VA, NSOD, necrotic, sword, doom
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -144,7 +144,7 @@ public class ArmySmartVoidAuras
 
         Core.AddDrop(item);
 
-            Core.EquipClass(classType);
+        Core.EquipClass(classType);
         Army.waitForParty(map, item);
         Core.FarmingLogger(item, quant);
 
