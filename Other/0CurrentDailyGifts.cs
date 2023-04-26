@@ -132,7 +132,7 @@ public class CurrentDailyGifts
             //GigaWUT Scavenger Clue
             GetGift(AvailableUntil(24, 4), "dvg", "Munthor", "Giga Twilly");
             //Golden Treasure Hunt clue
-            GetGift(AvailableUntil(1, 5), "dvg", 48, "Golden Spear of Light");
+            GetGift(AvailableUntil(1, 5), "necrodungeon", 48, "Golden Spear of Light");
 
             // Fortunate Grenwog Garb
             // GetGift(AvailableUntil(30, 4), "elixirgrenwog", "Elixir Grenwog", "Fortunate Grenwog Garb");
