@@ -636,6 +636,7 @@ public class CoreFarms
                     Core.Logger("Team B Captain killed, moving on.");
                     break;
                 }
+                break;
             }
 
             Core.DebugLogger(this);
