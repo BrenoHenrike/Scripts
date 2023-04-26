@@ -672,7 +672,7 @@ public class CoreLegion
             canSoloBoss = !_canSoloBoss;
 
         // Bot.Options.RestPackets = true;
-        Bot.Events.PlayerDeath += PVPDeath;
+        // Bot.Events.PlayerDeath += PVPDeath;
 
         Core.AddDrop("Legion Combat Trophy", "Technique Observed", "Sword Scroll Fragment");
         Core.EquipClass(ClassType.Solo);
@@ -817,18 +817,29 @@ public class CoreLegion
                 Bot.Sleep(1500);
             }
         }
-
-        void PVPDeath()
-        {
-            Core.Logger("Player Died in PvP, resetting");
-            while (!Bot.ShouldExit && !Bot.Player.Alive)
-            {
-                Bot.Wait.ForCellChange("Enter0");
-                Core.Join("battleon-999999");
-                Bot.Sleep(2500);
-            }
-            Bot.Events.PlayerDeath -= PVPDeath;
-            DagePvP(TrophyQuant, TechniqueQuant, ScrollQuant, canSoloBoss);
-        }
     }
+    // Bot.Events.PlayerDeath -= PVPDeath;
+
+
+    // private void PVPDeath()
+    // {
+    //     Core.DebugLogger(this);
+    //     Bot.Wait.ForCellChange("Enter0");
+    //     Core.DebugLogger(this);
+
+    //     Core.Logger("Player Died in PvP, resetting");
+    //     Core.DebugLogger(this);
+    //     while (!Bot.ShouldExit && !Bot.Player.Alive)
+    //     {
+    //         Core.DebugLogger(this);
+    //         Bot.Wait.ForTrue(() => Bot.Player.Alive, 20);
+    //     }
+    //     Core.DebugLogger(this);
+    //     Bot.Sleep(2500);
+    //     Core.DebugLogger(this);
+    //     Bot.Map.Join("battleon-999999");
+    //     Core.DebugLogger(this);
+    //     BludrutBrawlBoss();
+    //     Core.DebugLogger(this);
+    // }
 }

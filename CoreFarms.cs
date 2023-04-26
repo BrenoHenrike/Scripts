@@ -450,39 +450,64 @@ public class CoreFarms
     {
         if (Core.CheckInventory(item, quant))
             return;
+        // Core.DL_Enable();
+
+        Core.DebugLogger(this);
 
         if (Core.CBOBool("PvP_SoloPvPBoss", out bool _canSoloBoss))
             canSoloBoss = !_canSoloBoss;
+        Core.DebugLogger(this);
 
         Core.AddDrop(item);
+        Core.DebugLogger(this);
 
         Core.EquipClass(ClassType.Solo);
+        Core.DebugLogger(this);
         Core.Logger($"Farming {quant} {item}. SoloBoss = {canSoloBoss}");
+        Core.DebugLogger(this);
         Core.ConfigureAggro(false);
+        Core.DebugLogger(this);
 
-        Bot.Events.PlayerDeath += PVPDeath;
+        // Bot.Events.PlayerDeath += PVPDeath;
+        Core.DebugLogger(this);
 
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
         {
-            Core.AddDrop(item);
+            Core.DebugLogger(this);
             Core.Join("bludrutbrawl", "Enter0", "Spawn");
+            Core.DebugLogger(this);
             Bot.Sleep(2500);
+
+            Core.DebugLogger(this);
             Core.PvPMove(5, "Morale0C");
+            Core.DebugLogger(this);
             Core.PvPMove(4, "Morale0B");
+            Core.DebugLogger(this);
             Core.PvPMove(7, "Morale0A");
+            Core.DebugLogger(this);
             Core.PvPMove(9, "Crosslower");
+            Core.DebugLogger(this);
 
             if (!canSoloBoss)
             {
+                Core.DebugLogger(this);
                 Core.PvPMove(14, "Crossupper", 528, 255);
+                Core.DebugLogger(this);
                 Core.PvPMove(18, "Resource1A");
 
                 while (!Bot.ShouldExit)
                 {
+                    Core.DebugLogger(this);
                     Bot.Kill.Monster(9);
+                    Bot.Combat.CancelTarget();
+                    Core.DebugLogger(this);
                     Bot.Wait.ForCombatExit();
+                    Core.DebugLogger(this);
                     Bot.Kill.Monster(10);
+                    Core.DebugLogger(this);
                     Bot.Wait.ForCombatExit();
+                    Core.DebugLogger(this);
+                    Core.DebugLogger(this);
                     if (!Core.IsMonsterAlive("(B) Defensive Restorer"))
                     {
                         Bot.Combat.CancelTarget();
@@ -491,14 +516,23 @@ public class CoreFarms
                     }
                 }
 
+                Core.DebugLogger(this);
                 Core.PvPMove(20, "Resource1B");
+                Core.DebugLogger(this);
 
                 while (!Bot.ShouldExit)
                 {
+                    Core.DebugLogger(this);
                     Bot.Kill.Monster(11);
+                    Core.DebugLogger(this);
                     Bot.Wait.ForCombatExit();
+                    Core.DebugLogger(this);
                     Bot.Kill.Monster(12);
+                    Core.DebugLogger(this);
+                    Bot.Combat.CancelTarget();
+                    Core.DebugLogger(this);
                     Bot.Wait.ForCombatExit();
+                    Core.DebugLogger(this);
                     if (!Core.IsMonsterAlive("(B) Defensive Restorer"))
                     {
                         Bot.Combat.CancelTarget();
@@ -508,18 +542,27 @@ public class CoreFarms
                 }
 
                 Core.PvPMove(21, "Resource1A", 124);
+                Core.DebugLogger(this);
                 Core.PvPMove(19, "Crossupper", 124);
+                Core.DebugLogger(this);
                 Core.PvPMove(17, "Crosslower", 488, 483);
+                Core.DebugLogger(this);
             }
-
-            Core.PvPMove(15, "Morale1A");
+            Core.PvPMove(15, "Morale1A", 862, 268);
 
             if (!canSoloBoss)
             {
+                Core.DebugLogger(this);
                 while (!Bot.ShouldExit)
                 {
+                    Core.DebugLogger(this);
                     Bot.Kill.Monster(13);
+                    Core.DebugLogger(this);
+                    Core.DebugLogger(this);
+                    Bot.Combat.CancelTarget();
+                    Core.DebugLogger(this);
                     Bot.Wait.ForCombatExit();
+                    Core.DebugLogger(this);
                     if (!Core.IsMonsterAlive("(B) Brawler"))
                     {
                         Bot.Combat.CancelTarget();
@@ -529,14 +572,20 @@ public class CoreFarms
                 }
             }
 
-            Core.PvPMove(23, "Morale1B");
+            Core.PvPMove(23, "Morale1B", 860, 267);
 
             if (!canSoloBoss)
             {
+                Core.DebugLogger(this);
                 while (!Bot.ShouldExit)
                 {
+                    Core.DebugLogger(this);
                     Bot.Kill.Monster(14);
+                    Core.DebugLogger(this);
+                    Bot.Combat.CancelTarget();
+                    Core.DebugLogger(this);
                     Bot.Wait.ForCombatExit();
+                    Core.DebugLogger(this);
                     if (!Core.IsMonsterAlive("(B) Brawler"))
                     {
                         Bot.Combat.CancelTarget();
@@ -546,14 +595,21 @@ public class CoreFarms
                 }
             }
 
-            Core.PvPMove(25, "Morale1C");
+            Core.PvPMove(25, "Morale1C", 857, 267);
 
             if (!canSoloBoss)
             {
+                Core.DebugLogger(this);
                 while (!Bot.ShouldExit)
                 {
+                    Core.DebugLogger(this);
                     Bot.Kill.Monster(15);
+                    Core.DebugLogger(this);
+                    Core.DebugLogger(this);
+                    Bot.Combat.CancelTarget();
+                    Core.DebugLogger(this);
                     Bot.Wait.ForCombatExit();
+                    Core.DebugLogger(this);
                     if (!Core.IsMonsterAlive("(B) Brawler"))
                     {
                         Bot.Combat.CancelTarget();
@@ -567,8 +623,13 @@ public class CoreFarms
 
             while (!Bot.ShouldExit)
             {
+                Core.DebugLogger(this);
                 Bot.Kill.Monster(16);
+                Core.DebugLogger(this);
+                Bot.Combat.CancelTarget();
+                Core.DebugLogger(this);
                 Bot.Wait.ForCombatExit();
+                Core.DebugLogger(this);
                 if (!Core.IsMonsterAlive("Team B Captain"))
                 {
                     Bot.Combat.CancelTarget();
@@ -576,35 +637,60 @@ public class CoreFarms
                     break;
                 }
             }
+
+            Core.DebugLogger(this);
             Bot.Wait.ForDrop(item, 40);
+            Core.DebugLogger(this);
             Bot.Sleep(1500);
+            Core.DebugLogger(this);
             Bot.Wait.ForPickup(item, 40);
 
+            Core.DebugLogger(this);
             Core.Logger("Delaying exit");
+            Core.DebugLogger(this);
             Bot.Sleep(7500);
 
             while (Bot.Map.Name != "battleon")
             {
+                Core.DebugLogger(this);
                 int i = 1;
+                Core.DebugLogger(this);
                 Core.Logger($"Attemping Exit {i++}.");
+                Core.DebugLogger(this);
                 Bot.Map.Join("battleon-999999");
+                Core.DebugLogger(this);
                 Bot.Sleep(1500);
+                Core.DebugLogger(this);
             }
+
+            // Core.DebugLogger(this);
+            // Bot.Events.PlayerDeath -= PVPDeath;
+            // Core.DebugLogger(this);
         }
     }
 
-    void PVPDeath()
-    {
-        Core.Logger("Player Died in PvP, resetting");
-        while (!Bot.ShouldExit && !Bot.Player.Alive)
-        {
-            Bot.Wait.ForCellChange("Enter0");
-            Core.Join("battleon-999999");
-            Bot.Sleep(2500);
-        }
-        Bot.Events.PlayerDeath -= PVPDeath;
-        BludrutBrawlBoss();
-    }
+    // private void PVPDeath()
+    // {
+    //     Core.DebugLogger(this);
+    //     Bot.Wait.ForCellChange("Enter0");
+    //     Core.DebugLogger(this);
+
+    //     Core.Logger("Player Died in PvP, resetting");
+    //     Core.DebugLogger(this);
+    //     while (!Bot.ShouldExit && !Bot.Player.Alive)
+    //     {
+    //         Core.DebugLogger(this);
+    //         Bot.Wait.ForTrue(() => Bot.Player.Alive, 20);
+    //     }
+    //     Core.DebugLogger(this);
+    //     Bot.Sleep(2500);
+    //     Core.DebugLogger(this);
+    //     Bot.Map.Join("battleon-999999");
+    //     Core.DebugLogger(this);
+    //     BludrutBrawlBoss();
+    //     Core.DebugLogger(this);
+    // }
+
 
 
     public void BattleUnderB(string item = "Bone Dust", int quant = 1)
