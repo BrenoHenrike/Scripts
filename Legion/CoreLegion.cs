@@ -661,16 +661,18 @@ public class CoreLegion
         Core.CancelRegisteredQuests();
     }
 
-    public void DagePvP(int TrophyQuant, int TechniqueQuant, int ScrollQuant)
+    public void DagePvP(int TrophyQuant, int TechniqueQuant, int ScrollQuant, bool canSoloBoss = true)
     {
         if (Core.CheckInventory("Legion Combat Trophy", TrophyQuant) &&
             Core.CheckInventory("Technique Observed", TechniqueQuant) &&
             Core.CheckInventory("Sword Scroll Fragment", ScrollQuant))
             return;
 
-        bool canSoloBoss = true;
-        if (Core.CBOBool("PVP_SoloPvPBoss", out bool _canSoloBoss))
+        if (Core.CBOBool("PvP_SoloPvPBoss", out bool _canSoloBoss))
             canSoloBoss = !_canSoloBoss;
+
+        // Bot.Options.RestPackets = true;
+        Bot.Events.PlayerDeath += PVPDeath;
 
         Core.AddDrop("Legion Combat Trophy", "Technique Observed", "Sword Scroll Fragment");
         Core.EquipClass(ClassType.Solo);
@@ -698,45 +700,107 @@ public class CoreLegion
 
             if (!Core.CheckInventory("Sword Scroll Fragment", ScrollQuant))
             {
-                Core.FarmingLogger("Sword Scroll Fragment", ScrollQuant);
-
                 Core.PvPMove(11, "r7", 513, 286);
                 Core.PvPMove(15, "r10", 832, 347);
 
-                Bot.Kill.Monster("Blade Master");
-                Bot.Kill.Monster("Blade Master");
+                Core.FarmingLogger("Sword Scroll Fragment", ScrollQuant);
+
+                while (!Bot.ShouldExit)
+                {
+                    Bot.Kill.Monster(17);
+                    Bot.Wait.ForCombatExit();
+                    Bot.Kill.Monster(18);
+                    Bot.Wait.ForCombatExit();
+                    if (!Core.IsMonsterAlive("Blade Master"))
+                    {
+                        Bot.Combat.CancelTarget();
+                        Core.Logger("Blade Masters killed, moving on.");
+                        break;
+                    }
+                }
 
                 Core.PvPMove(20, "r11", 943, 391);
 
-                Bot.Kill.Monster("Blade Master");
-                Bot.Kill.Monster("Blade Master");
+                while (!Bot.ShouldExit)
+                {
+                    Bot.Kill.Monster(19);
+                    Bot.Wait.ForCombatExit();
+                    Bot.Kill.Monster(20);
+                    Bot.Wait.ForCombatExit();
+                    if (!Core.IsMonsterAlive("Blade Master"))
+                    {
+                        Bot.Combat.CancelTarget();
+                        Core.Logger("Blade Masters killed, moving on.");
+                        break;
+                    }
+                }
 
                 Core.PvPMove(21, "r10", 9, 397);
                 Core.PvPMove(19, "r7", 7, 392);
                 Core.PvPMove(14, "r6", 482, 483);
             }
+
             Core.PvPMove(12, "r12", 758, 338);
-            if (!canSoloBoss)
+
+            while (!Bot.ShouldExit && !canSoloBoss)
             {
-                Bot.Kill.Monster("Legion Guard");
-                Bot.Kill.Monster("Legion Guard");
+                Bot.Kill.Monster(21);
+                Bot.Wait.ForCombatExit();
+                Bot.Kill.Monster(22);
+                Bot.Wait.ForCombatExit();
+                if (!Core.IsMonsterAlive("Legion Guard"))
+                {
+                    Bot.Combat.CancelTarget();
+                    Core.Logger("Blade Masters killed, moving on.");
+                    break;
+                }
             }
+
             Core.PvPMove(23, "r13", 933, 394);
-            if (!canSoloBoss)
+
+            while (!Bot.ShouldExit && !canSoloBoss)
             {
-                Bot.Kill.Monster("Legion Guard");
-                Bot.Kill.Monster("Legion Guard");
+                Bot.Kill.Monster(23);
+                Bot.Wait.ForCombatExit();
+                Bot.Kill.Monster(24);
+                Bot.Wait.ForCombatExit();
+                if (!Core.IsMonsterAlive("Legion Guard"))
+                {
+                    Bot.Combat.CancelTarget();
+                    Core.Logger("Legion Guards killed, moving on.");
+                    break;
+                }
             }
+
             Core.PvPMove(25, "r14", 846, 181);
-            if (!canSoloBoss)
+
+            while (!Bot.ShouldExit && !canSoloBoss)
             {
-                Bot.Kill.Monster("Legion Guard");
-                Bot.Kill.Monster("Legion Guard");
+                Bot.Kill.Monster(25);
+                Bot.Wait.ForCombatExit();
+                Bot.Kill.Monster(26);
+                Bot.Wait.ForCombatExit();
+                if (!Core.IsMonsterAlive("Legion Guard"))
+                {
+                    Bot.Combat.CancelTarget();
+                    Core.Logger("Legion Guards killed, moving on.");
+                    break;
+                }
             }
+
             Core.PvPMove(28, "r15", 941, 348);
 
-            Bot.Kill.Monster("Dage the Evil");
-            Bot.Sleep(5000);
+            while (!Bot.ShouldExit)
+            {
+                Bot.Kill.Monster(27);
+                Bot.Wait.ForCombatExit();
+                if (!Core.IsMonsterAlive("Dage the Evil"))
+                {
+                    Bot.Combat.CancelTarget();
+                    Core.Logger("Dage the Evil, getting trophies.");
+                    break;
+                }
+            }
 
             Bot.Wait.ForDrop("Legion Combat Trophy", 40);
             Bot.Sleep(Core.ActionDelay);
@@ -747,11 +811,24 @@ public class CoreLegion
 
             while (Bot.Map.Name != "battleon")
             {
-                int i = 0;
+                int i = 1;
                 Core.Logger($"Attemping Exit {i++}.");
-                Bot.Map.Join("battleon-999999");
+                Core.Join("battleon-999999");
                 Bot.Sleep(1500);
             }
+        }
+
+        void PVPDeath()
+        {
+            Core.Logger("Player Died in PvP, resetting");
+            while (!Bot.ShouldExit && !Bot.Player.Alive)
+            {
+                Bot.Wait.ForCellChange("Enter0");
+                Core.Join("battleon-999999");
+                Bot.Sleep(2500);
+            }
+            Bot.Events.PlayerDeath -= PVPDeath;
+            DagePvP(TrophyQuant, TechniqueQuant, ScrollQuant, canSoloBoss);
         }
     }
 }
