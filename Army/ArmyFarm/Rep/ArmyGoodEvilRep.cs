@@ -48,10 +48,10 @@ public class ArmyGoodEvilREP
         Core.EquipClass(ClassType.Farm);
         Farm.ToggleBoost(BoostType.Reputation);
 
-        if (Farm.FactionRank("Evil") < 4 && Farm.FactionRank("Good") < 4)
+        if (Farm.FactionRank("Evil") < 4 || Farm.FactionRank("Good") < 4)
             rank4();
 
-        if (Farm.FactionRank("Good") < 10 && Farm.FactionRank("Evil") < 10)
+        if (Farm.FactionRank("Good") < 10 || Farm.FactionRank("Evil") < 10)
             rankMAX();
 
         Farm.ToggleBoost(BoostType.Reputation, false);
