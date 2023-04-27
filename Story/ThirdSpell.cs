@@ -116,6 +116,8 @@ public class ThirdSpell
                     Core.HuntMonster("thirdspell", "Solar Incarnation", "Heart of the Sun Received");
                     if (HoTS)
                     {
+                        Bot.Wait.ForDrop("Heart of the Sun", 40);
+                        Bot.Wait.ForPickup("Heart of the Sun");
                         Core.ToBank("Sun Token VI");
                         Story.LegacyQuestStop();
                     }
