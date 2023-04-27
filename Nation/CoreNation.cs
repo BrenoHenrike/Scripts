@@ -128,6 +128,16 @@ public class CoreNation
         "Unidentified 20",
     };
 
+    public string[] SwindlesReturnRewards =
+    {
+        "Tainted Gem",
+        "Dark Crystal Shard",
+        "Diamond of Nulgath",
+        "Gem of Nulgath",
+        "Blood Gem of the Archfiend",
+        "Receipt of Swindle"
+    };
+
     public string Uni(int nr)
         => $"Unidentified {nr}";
 
@@ -599,14 +609,15 @@ public class CoreNation
     /// <param name=item>Desired item name</param>
     /// <param name="quant">Desired item quantity</param>
     /// <param name="farmGold"></param>
-    public void TheAssistant(string? item = null, int quant = 1000, bool farmGold = true)
+    public void TheAssistant(string? item = null, int quant = 1000, bool farmGold = true, SwindlesReturnReward Reward = SwindlesReturnReward.None)
     {
-        if (Core.CheckInventory(item, quant))
+        if (item != null && Core.CheckInventory(item, quant))
             return;
         if (item == null)
             Core.AddDrop(bagDrops);
         else Core.AddDrop(item);
 
+        // Core.DL_Enable();
         //CBO Ops Setup
         if (Core.CBOBool("Nation_SellMemVoucher", out bool _sellMemVoucher))
             sellMemVoucher = _sellMemVoucher;
@@ -625,71 +636,104 @@ public class CoreNation
             Core.AddDrop("Blood Gem of Nulgath");
         }
 
+        if (_returnSupplies == true && Reward == SwindlesReturnReward.None)
+            Core.RegisterQuests(7551);
         if (item == null)
         {
-            Core.RegisterQuests(7551);
+            Core.Logger("null method");
             foreach (string Thing in bagDrops[..^11])
             {
                 var rewards = Core.EnsureLoad(2859).Rewards;
-                ItemBase? Item = rewards.Find(x => x.Name == Thing);
-                if (Item == null)
-                    continue;
+                ItemBase Item = rewards.Find(x => x.Name == Thing);
 
                 while (!Bot.ShouldExit && !Core.CheckInventory(Item.Name, Item.MaxStack))
                 {
                     LogItemQuant2(Item, Item.MaxStack);
                     Farm.Gold(1000000);
+                    Core.EnsureAccept(2859);
                     Core.BuyItem("yulgar", 41, "War-Torn Memorabilia", 10);
                     Core.EnsureCompleteMulti(2859);
-                    Bot.Wait.ForItemBuy();
                     if (Core.CheckInventory(rPDSuni) && _returnSupplies == true)
+                    {
+                        var rewards2 = Core.EnsureLoad(7551).Rewards;
+                        Core.DebugLogger(this);
+                        ItemBase Item2 = rewards2.Find(x => x.ID == Item.ID);
+                        Core.DebugLogger(this);
+
+                        Core.FarmingLogger(Item2.Name, Item2.MaxStack);
+                        Core.DebugLogger(this);
+                        Core.EnsureAccept(7551);
+                        Core.DebugLogger(this);
                         Core.HuntMonster(Core.IsMember ? "nulgath" : "evilmarsh", "Dark Makai", "Dark Makai Rune");
+                        if (Reward != SwindlesReturnReward.None)
+                        {
+                            Core.DebugLogger(this);
+                            Core.EnsureComplete(7551, Item2.ID);
+                        }
+                        Core.DebugLogger(this);
+                    }
+                    Core.DebugLogger(this);
                 }
+                Core.DebugLogger(this);
             }
             Core.CancelRegisteredQuests();
+            Core.DebugLogger(this);
         }
         else
         {
+            Core.Logger("non-null method");
             while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
             {
                 LogItemQuant(item, quant);
                 Farm.Gold(1000000);
+                Core.EnsureAccept(2859);
                 Core.BuyItem("yulgar", 41, "War-Torn Memorabilia", 10);
-                Bot.Wait.ForItemBuy();
+                Bot.Wait.ForItemBuy(40);
                 Core.EnsureCompleteMulti(2859);
                 if (Core.CheckInventory(rPDSuni) && _returnSupplies == true)
+                {
+                    var rewards2 = Core.EnsureLoad(7551).Rewards;
+                    ItemBase Item2 = rewards2.Find(x => x.ID == (int)Reward);
+
+                    Core.FarmingLogger(Item2.Name, Item2.MaxStack);
+                    Core.EnsureAccept(7551);
                     Core.HuntMonster(Core.IsMember ? "nulgath" : "evilmarsh", "Dark Makai", "Dark Makai Rune");
-            }
-        }
-
-        void LogItemQuant(string Item, int quant)
-        {
-            if (!Core.CheckInventory(Item))
-                return;
-
-            int StartQuant = Bot.Inventory.GetQuantity(Item);
-            if (Bot.Inventory.GetQuantity(Item) != StartQuant || Bot.Inventory.GetQuantity(Item) > StartQuant)
-            {
-                Core.FarmingLogger(Item, quant);
-                StartQuant = Bot.Inventory.GetQuantity(Item);
-                Bot.Sleep(1500);
-            }
-        }
-
-        void LogItemQuant2(ItemBase Item, int quant)
-        {
-            if (!Core.CheckInventory(Item.Name))
-                return;
-
-            int StartQuant = Item.Quantity;
-            if (Item.Quantity > StartQuant)
-            {
-                Core.FarmingLogger(Item.Name, Item.MaxStack);
-                StartQuant = Item.Quantity;
-                Bot.Sleep(1500);
+                    if (Reward != SwindlesReturnReward.None)
+                        Core.EnsureComplete(7551,(int)Reward);
+                }
             }
         }
     }
+
+    void LogItemQuant(string Item, int quant)
+    {
+        if (!Core.CheckInventory(Item))
+            return;
+
+        int StartQuant = Bot.Inventory.GetQuantity(Item);
+        if (Bot.Inventory.GetQuantity(Item) != StartQuant || Bot.Inventory.GetQuantity(Item) > StartQuant)
+        {
+            Core.FarmingLogger(Item, quant);
+            StartQuant = Bot.Inventory.GetQuantity(Item);
+            Bot.Sleep(1500);
+        }
+    }
+
+    void LogItemQuant2(ItemBase Item, int quant)
+    {
+        if (!Core.CheckInventory(Item.Name))
+            return;
+
+        int StartQuant = Item.Quantity;
+        if (Item.Quantity > StartQuant)
+        {
+            Core.FarmingLogger(Item.Name, Item.MaxStack);
+            StartQuant = Item.Quantity;
+            Bot.Sleep(1500);
+        }
+    }
+
+
 
     /// <summary>
     /// Does Bamblooze vs Drudgen quest for the desired item
@@ -1572,3 +1616,13 @@ public enum ChooseReward
     BloodGemoftheArchfiend = 22332,
     TotemofNulgath = 5357
 }
+
+public enum SwindlesReturnReward
+{
+    Tainted_Gem = 4769,
+    Dark_Crystal_Shard = 4770,
+    Diamond_of_Nulgath = 4771,
+    Gem_of_Nulgath = 6136,
+    Blood_Gem_of_the_Archfiend = 22332,
+    None = 0
+};
