@@ -2709,6 +2709,22 @@ public class CoreBots
                 SimpleQuestBypass((159, 10));
                 break;
 
+            case "onslaughttower":
+                tryJoin();
+                if (!CheckInventory(2047))
+                {
+                    SendPackets("%xt%zm%getMapItem%169031%67%");
+                    Bot.Sleep(2500);
+                    SendPackets("%xt%zm%equipItem%169031%2047%");
+                }
+                else
+                {
+                    JumpWait();
+                    SendPackets("%xt%zm%equipItem%169031%2047%");
+                }
+                break;
+
+
             case "wolfwing":
                 SimpleQuestBypass((26, 23));
                 break;
