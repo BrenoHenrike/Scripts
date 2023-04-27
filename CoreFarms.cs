@@ -1754,7 +1754,7 @@ public class CoreFarms
         }
     }
 
-    public void DeathPitBrawlREP(int rank = 10)
+    public void DeathPitBrawlREP(int rank = 11)
     {
         if (FactionRank("Death Pit Brawl") >= rank)
             return;
@@ -1796,7 +1796,7 @@ public class CoreFarms
         Core.ToggleAggro(true);
     }
 
-    void RunDeathPitBrawl()
+    void RunDeathPitBrawl(string item = "Death Pit Token")
     {
         while (Bot.Map.Name != "deathpitbrawl")
         {
@@ -1818,12 +1818,43 @@ public class CoreFarms
         Core.Logger($"Move: {Move++}");
         Core.PvPMove(18, "Resource1A", 482, 295);
         Core.Logger($"Move: {Move++}, Restorers");
-        Bot.Kill.Monster("Velm's Restorer");
-        Bot.Kill.Monster("Velm's Restorer");
+
+        while (!Bot.ShouldExit)
+        {
+            Bot.Kill.Monster(9);
+            Bot.Combat.CancelTarget();
+            Bot.Wait.ForCombatExit(20);
+            Bot.Kill.Monster(10);
+            Bot.Wait.ForCombatExit(20);
+            Bot.Combat.CancelTarget();
+            if (!Core.IsMonsterAlive("Velm's Restorer"))
+            {
+                Bot.Combat.CancelTarget();
+                Core.Logger("Velm's Restorers killed.");
+                break;
+            }
+        }
+
         Core.PvPMove(20, "Resource1B", 938, 400);
         Core.Logger($"Move: {Move++}, Restorers");
-        Bot.Kill.Monster("Velm's Restorer");
-        Bot.Kill.Monster("Velm's Restorer");
+
+        while (!Bot.ShouldExit)
+        {
+            Bot.Kill.Monster(11);
+            Bot.Combat.CancelTarget();
+            Bot.Wait.ForCombatExit(20);
+            Bot.Kill.Monster(12);
+            Bot.Wait.ForCombatExit(20);
+            Bot.Combat.CancelTarget();
+            if (!Core.IsMonsterAlive("Velm's Restorer"))
+            {
+                Bot.Combat.CancelTarget();
+                Core.Logger("Velm's Restorers killed.");
+                break;
+            }
+        }
+
+
         Core.PvPMove(21, "Resource1A", 9, 435);
         Core.Logger($"Move: {Move++}");
         Core.PvPMove(19, "Crossupper", 461, 315);
@@ -1832,21 +1863,75 @@ public class CoreFarms
         Core.Logger($"Move: {Move++}");
         Core.PvPMove(15, "Morale1A", 522, 286);
         Core.Logger($"Move: {Move++}, Velm's Brawler");
-        Bot.Kill.Monster("Velm's Brawler");
+
+        while (!Bot.ShouldExit)
+        {
+            Bot.Kill.Monster(13);
+            Bot.Combat.CancelTarget();
+            Bot.Wait.ForCombatExit(20);
+            if (!Core.IsMonsterAlive("Velm's Brawler"))
+            {
+                Bot.Combat.CancelTarget();
+                Core.Logger("Velm's Brawlers killed.");
+                break;
+            }
+        }
+
+
         Core.PvPMove(23, "Morale1B", 948, 403);
         Core.Logger($"Move: {Move++}, Velm's Brawler");
-        Bot.Kill.Monster("Velm's Brawler");
+
+        while (!Bot.ShouldExit)
+        {
+            Bot.Kill.Monster(14);
+            Bot.Combat.CancelTarget();
+            Bot.Wait.ForCombatExit(20);
+            if (!Core.IsMonsterAlive("Velm's Brawler"))
+            {
+                Bot.Combat.CancelTarget();
+                Core.Logger("Velm's Brawlers killed.");
+                break;
+            }
+        }
+
+
         Core.PvPMove(25, "Morale1C", 945, 397);
         Core.Logger($"Move: {Move++}, Velm's Brawler");
-        Bot.Kill.Monster("Velm's Brawler");
+
+        while (!Bot.ShouldExit)
+        {
+            Bot.Kill.Monster(15);
+            Bot.Combat.CancelTarget();
+            Bot.Wait.ForCombatExit(20);
+            if (!Core.IsMonsterAlive("Velm's Brawler"))
+            {
+                Bot.Combat.CancelTarget();
+                Core.Logger("Velm's Brawlers killed.");
+                break;
+            }
+        }
+
+
         Core.PvPMove(28, "Captain1", 943, 404);
         Core.Logger($"Move: {Move++}, General Velm (B)");
-        Bot.Kill.Monster("General Velm (B)");
+
+        while (!Bot.ShouldExit)
+        {
+            Bot.Kill.Monster(16);
+            Bot.Combat.CancelTarget();
+            Bot.Wait.ForCombatExit();
+            if (!Core.IsMonsterAlive("General Velm (B)"))
+            {
+                Bot.Combat.CancelTarget();
+                Core.Logger("General Velm (B) killed.");
+                break;
+            }
+        }
+
         Bot.Sleep(5000);
 
-        Bot.Wait.ForDrop("*", 40);
-        Bot.Sleep(Core.ActionDelay);
-        Bot.Wait.ForPickup("*");
+        Bot.Wait.ForDrop(item, 40);
+        Bot.Wait.ForPickup(item);
 
         Core.Logger("Delaying exit");
         Bot.Sleep(7500);
