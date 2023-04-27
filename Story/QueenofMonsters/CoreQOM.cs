@@ -313,62 +313,64 @@ public class CoreQOM
         if (Core.isCompletedBefore(5557))
             return;
 
+        DarkoviaDarkDiaspora();
+
         //Preload Quests
         Story.PreLoad(this);
 
         //Commander Tibias
-        Story.MapItemQuest(5543, "ShadowfallInvasion", 5024);
+        Story.MapItemQuest(5543, "shadowfallinvasion", 5024);
 
         //Clear the Walls
-        Story.KillQuest(5544, "ShadowfallInvasion", new[] { "Infernal Imp", "Infernal Knight" });
+        Story.KillQuest(5544, "shadowfallinvasion", new[] { "Infernal Imp", "Infernal Knight" });
 
         //Load the Ballistas
-        Story.MapItemQuest(5545, "ShadowfallInvasion", 5025, 4);
-        Story.MapItemQuest(5545, "ShadowfallInvasion", 5026, 4);
+        Story.MapItemQuest(5545, "shadowfallinvasion", 5025, 4);
+        Story.MapItemQuest(5545, "shadowfallinvasion", 5026, 4);
 
         //Arm the Archers
-        Story.KillQuest(5546, "ShadowfallInvasion", "Infernal Imp");
+        Story.KillQuest(5546, "shadowfallinvasion", "Infernal Imp");
 
         //Reinforce the Walls
-        Story.MapItemQuest(5547, "ShadowfallInvasion", 5027, 5);
+        Story.MapItemQuest(5547, "shadowfallinvasion", 5027, 5);
 
         //Work Done!
-        Story.MapItemQuest(5548, "ShadowfallInvasion", 5028);
+        Story.MapItemQuest(5548, "shadowfallinvasion", 5028);
 
         //Clear the Tower
-        Story.KillQuest(5549, "ShadowfallInvasion", "Bone Creeper");
+        Story.KillQuest(5549, "shadowfallinvasion", "Bone Creeper");
 
         //Find the Passage
-        Story.MapItemQuest(5550, "ShadowfallInvasion", 5029);
+        Story.MapItemQuest(5550, "shadowfallinvasion", 5029);
 
         //Go Through That Door
-        Story.KillQuest(5551, "ShadowfallInvasion", new[] { "Bone Guardian", "Bone Guardian" });
+        Story.KillQuest(5551, "shadowfallinvasion", new[] { "Bone Guardian", "Bone Guardian" });
 
         //Infernal Attack
         if (!Story.QuestProgression(5552))
         {
             Core.EnsureAccept(5552);
-            Core.HuntMonster("ShadowfallInvasion", "Nethermage", "Nethermage Slain", 4);
-            Core.HuntMonster("ShadowfallInvasion", "Diabolical Scryer", "Diabolical Scryer Slain", 4);
-            Core.HuntMonster("ShadowfallInvasion", "Fallen Knight", "Fallen Knight Slain", 4);
+            Core.HuntMonster("shadowfallinvasion", "Nethermage", "Nethermage Slain", 4);
+            Core.HuntMonster("shadowfallinvasion", "Diabolical Scryer", "Diabolical Scryer Slain", 4);
+            Core.HuntMonster("shadowfallinvasion", "Fallen Knight", "Fallen Knight Slain", 4);
             Core.EnsureComplete(5552);
         }
 
         //Here's A Hammer, Get To Work
-        Story.MapItemQuest(5553, "ShadowfallInvasion", 5030, 9);
+        Story.MapItemQuest(5553, "shadowfallinvasion", 5030, 9);
 
         //The Next Step
-        Story.MapItemQuest(5554, "ShadowfallInvasion", 5031);
+        Story.MapItemQuest(5554, "shadowfallinvasion", 5031);
 
         //Soul Fuel
-        Story.MapItemQuest(5555, "ShadowfallInvasion", 5032);
-        Story.KillQuest(5555, "ShadowfallInvasion", "Diabolical Scryer");
+        Story.MapItemQuest(5555, "shadowfallinvasion", 5032);
+        Story.KillQuest(5555, "shadowfallinvasion", "Diabolical Scryer");
 
         //Time to Fly
-        Story.MapItemQuest(5556, "ShadowfallInvasion", 5033);
+        Story.MapItemQuest(5556, "shadowfallinvasion", 5033);
 
         //YOU again!
-        Story.KillQuest(5557, "ShadowfallInvasion", "Lord Balax'el");
+        Story.KillQuest(5557, "shadowfallinvasion", "Lord Balax'el");
     }
 
     public void SwordhavenTheNewWorld()
@@ -384,10 +386,10 @@ public class CoreQOM
         Story.KillQuest(5575, "safiriainvasion", new[] { "Fallen Knight", "Infernal Knight" });
 
         //Use Their Energy Against Them
-        Story.KillQuest(5576, "ShadowfallInvasion", "Nethermage");
+        Story.KillQuest(5576, "shadowfallinvasion", "Nethermage");
 
         //Scry this!
-        Story.KillQuest(5577, "ShadowfallInvasion", "Diabolical Scryer");
+        Story.KillQuest(5577, "shadowfallinvasion", "Diabolical Scryer");
 
         //Recalibration
         if (!Story.QuestProgression(5578))
@@ -395,7 +397,7 @@ public class CoreQOM
             Core.EnsureAccept(5578);
             Core.KillMonster("DoomPally", "r3", "Right", "*", "Doomwood Invaders Fought", 4);
             Core.KillMonster("DarkoviaInvasion", "Enter", "Spawn", "*", "Darkovia Invaders Fought", 4);
-            Core.KillMonster("ShadowfallInvasion", "r4", "Left", "*", "Shadowfall Invaders Fought", 4);
+            Core.KillMonster("shadowfallinvasion", "r4", "Left", "*", "Shadowfall Invaders Fought", 4);
             Core.EnsureComplete(5578);
         }
 
