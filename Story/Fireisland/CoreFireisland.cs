@@ -73,16 +73,16 @@ public class CoreFireIsland
         Story.MapItemQuest(4072, "pyrewatch", 3159, 12);
 
         //Push on to Pyrewatch
-        Story.KillQuest(4073, "pyrewatch", new[] { "Firestorm Knight", "Firestorm Knight" }); 
+        Story.KillQuest(4073, "pyrewatch", new[] { "Firestorm Knight", "Firestorm Knight" });
 
         //Friends of Pyrewatch Peak
         if (!Story.QuestProgression(4074))
         {
             Core.EnsureAccept(4074);
-            Core.HuntMonster("Pyrewatch", "Caustocrush", "Caustocrush Slain", 3, log: false);
-            Core.HuntMonster("Pyrewatch", "Fire Pikeman", "Pikeman Slain", 3, log: false);
-            Core.HuntMonster("Pyrewatch", "Flame Soldier", "lame Soldier Slain", 3, log: false);
-            Core.HuntMonster("Pyrewatch", "Storm Scout", "Firestorm Helm", 6, log: false);
+            Core.HuntMonster("Pyrewatch", "Fire Pikeman", "Pikeman Slain", 3);
+            Core.HuntMonster("Pyrewatch", "Fire Pikeman", "Firestorm Helm", 6);
+            Core.HuntMonster("Pyrewatch", "Flame Soldier", "Flame Soldier Slain", 3);
+            Core.HuntMonster("Pyrewatch", "Caustocrush", "Caustocrush Slain", 3);
             Core.EnsureComplete(4074);
         }
 
@@ -94,9 +94,13 @@ public class CoreFireIsland
         if (!Story.QuestProgression(4076))
         {
             Core.EnsureAccept(4076);
-            Core.HuntMonster("Pyrewatch", "Lavazard", "Kindling", 3, log: false);
-            Core.HuntMonster("Pyrewatch", "Caustocrush", "Flint and Steel", log: false);
-            Core.HuntMonster("Pyrewatch", "Coal Creeper", "Coal", 6, log: false);
+            Core.HuntMonster("Pyrewatch", "Lavazard", "Kindling", 3);
+            Core.HuntMonster("Pyrewatch", "Caustocrush", "Flint and Steel");
+
+            //multiple items with name "coal" will wig out otherwise
+            while (!Bot.ShouldExit && !Core.CheckInventory(28565, 6))
+                Core.HuntMonster("Pyrewatch", "Coal Creeper", "Coal", 6);
+
             Core.EnsureComplete(4076);
         }
 
@@ -104,9 +108,9 @@ public class CoreFireIsland
         if (!Story.QuestProgression(4077))
         {
             Core.EnsureAccept(4077);
-            Core.HuntMonster("Pyrewatch", "Lavazard", "Wickskin Root", 3, log: false);
-            Core.HuntMonster("Pyrewatch", "Lavazard", "Zard Marrow", 3, log: false);
-            Core.HuntMonster("Pyrewatch", "Living Lava", "Living Lava Blood", 2, log: false);
+            Core.HuntMonster("Pyrewatch", "Lavazard", "Wickskin Root", 3);
+            Core.HuntMonster("Pyrewatch", "Lavazard", "Zard Marrow", 3);
+            Core.HuntMonster("Pyrewatch", "Living Lava", "Living Lava Blood", 2);
             Story.MapItemQuest(4077, "Pyrewatch", 3161, 5);
         }
 
@@ -117,10 +121,10 @@ public class CoreFireIsland
         if (!Story.QuestProgression(4079))
         {
             Core.EnsureAccept(4079);
-            Core.HuntMonster("Pyrewatch", "Storm Scout", "Polish", log: false);
-            Core.HuntMonster("Pyrewatch", "Flame Soldier", "Cloth", log: false);
-            Core.HuntMonster("Pyrewatch", "Flame Soldier", "Stand Legs", 8, log: false);
-            Core.HuntMonster("Pyrewatch", "Fyreborn Tiger", "Reflectors", 4, log: false);
+            Core.HuntMonster("Pyrewatch", "Storm Scout", "Polish");
+            Core.HuntMonster("Pyrewatch", "Flame Soldier", "Cloth");
+            Core.HuntMonster("Pyrewatch", "Flame Soldier", "Stand Legs", 8);
+            Core.HuntMonster("Pyrewatch", "Fyreborn Tiger", "Reflectors", 4);
             Core.EnsureComplete(4079);
         }
 
@@ -325,11 +329,11 @@ public class CoreFireIsland
         if (!Story.QuestProgression(4110))
         {
             Core.EnsureAccept(4110);
-            Core.HuntMonster("Brimstone", "Brimstone Marauder", "Marauders slain", 3, log: false);
-            Core.HuntMonster("Brimstone", "Fyreborn Tiger", "Fyreborn Tigers slain", 5, log: false);
-            Core.HuntMonster("Brimstone", "Fyresyn", "Fyresyn slain", 5, log: false);
-            Core.HuntMonster("Brimstone", "Brimstone Looter", "Looters slain", 3, log: false);
-            Core.HuntMonster("Brimstone", "Brimstone Bandit", "Bandits slain", 3, log: false);
+            Core.HuntMonster("Brimstone", "Brimstone Marauder", "Marauders slain", 3);
+            Core.HuntMonster("Brimstone", "Fyreborn Tiger", "Fyreborn Tigers slain", 5);
+            Core.HuntMonster("Brimstone", "Fyresyn", "Fyresyn slain", 5);
+            Core.HuntMonster("Brimstone", "Brimstone Looter", "Looters slain", 3);
+            Core.HuntMonster("Brimstone", "Brimstone Bandit", "Bandits slain", 3);
             Core.EnsureComplete(4110);
         }
 
