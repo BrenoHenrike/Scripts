@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 151615,
+    "size": 152104,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -39,7 +39,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 100092,
+    "size": 102202,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -1697,7 +1697,7 @@
       "thirdspell"
     ],
     "path": "Story/ThirdSpell.cs",
-    "size": 5525,
+    "size": 5655,
     "fileName": "ThirdSpell.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ThirdSpell.cs"
   },
