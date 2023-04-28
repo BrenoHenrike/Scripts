@@ -2714,9 +2714,17 @@ public class CoreFarms
         {
             Core.FarmingLogger($"Super-Fan Swag Token A", quant);
 
+            /*
+            //uncomment after 1.2.4 release:
+             while (!Bot.ShouldExit && !Core.CheckInventory("Super-Fan Swag Token C", 200))
+              Core.KillMonster("collectorlab", "r2", "Right", "*", log: false);
+            */
+
+            //Leave this for 1.2.3 till 1.2.4 comes out.
             Core.RegisterQuests(1310, 1312, 1313, 1314);
+            Core.Logger("without a farm class / multi-target class some mobs may not be killed --sorry");
             while (!Bot.ShouldExit && !Core.CheckInventory("Super-Fan Swag Token C", 200))
-                Core.KillMonster("collectorlab", "r2", "Right", "*", log: false);
+                Core.KillMonster("collectorlab", "r2", "Left", "*", log: false);
             Core.CancelRegisteredQuests();
 
             Core.Join("Collection", "Begin", "Spawn");
@@ -2724,6 +2732,7 @@ public class CoreFarms
             Bot.Shops.Load(325);
             Bot.Shops.BuyItem("Super-Fan Swag Token A");
         }
+        Core.CancelRegisteredQuests();
     }
 
     public void SwagTokenAF2p(int quant = 100)
@@ -2738,7 +2747,7 @@ public class CoreFarms
         Core.FarmingLogger($"Super-Fan Swag Token A", quant);
         while (!Bot.ShouldExit && !Core.CheckInventory("Super-Fan Swag Token A", quant))
         {
-            Core.KillMonster("terrarium", "r3", "Right", "*", "Super-Fan Swag Token D", 500, isTemp: false, log: false);
+            Core.HuntMonster("terrarium", "Dustbunny of Doom", "Super-Fan Swag Token D", 500, isTemp: false, log: false);
 
             //Check if shop is loaded into Cache
             Core.Join("Collection", "Begin", "Spawn");
