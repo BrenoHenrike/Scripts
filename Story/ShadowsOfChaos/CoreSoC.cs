@@ -356,7 +356,12 @@ public class CoreSoC
         Story.KillQuest(7763, "BrightForestPast", new[] { "Undead Minion", "Twisted Treeant" });
 
         //So Twisted 7764
-        Story.KillQuest(7764, "BrightForestPast", "Twisted Treeant");
+        if (!Story.QuestProgression(7764))
+        {
+            Core.EnsureAccept(7764);
+            Core.KillMonster("BrightForestPast", "r8", "Left", 4631, "Twisted Treeant Slain", 10);
+            Core.EnsureComplete(7764);
+        }
 
         //Purifying Flames 7765
         Story.MapItemQuest(7765, "BrightForestPast", 7757);
