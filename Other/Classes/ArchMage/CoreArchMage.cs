@@ -399,11 +399,7 @@ public class CoreArchMage
             Core.HuntMonster("eternalchaos", "Eternal Drakath", "Chaotic Ether", isTemp: false);
             Core.HuntMonsterMapID("shadowattack", 68, "Mortal Ether", isTemp: false);
             Core.HuntMonster("gaiazor", "Gaiazor", "Vital Ether", isTemp: false);
-            //gotta use a while else it just teleports away from the fiend shard.. idk y
-            while (!Bot.ShouldExit && !Core.CheckInventory("Infernal Ether"))
-                Core.HuntMonster("fiendshard", "Nulgath's Fiend Shard", isTemp: false);
-            Core.JumpWait(); //<- fiendshard room is aggro, it will get stuck (according to skillisue havers)
-
+            Core.HuntMonster("fiendshard", "Nulgath's Fiend Shard", "Infernal Ether", isTemp: false);
             Core.EnsureComplete(8910);
             Bot.Wait.ForPickup("Prismatic Ether");
         }
