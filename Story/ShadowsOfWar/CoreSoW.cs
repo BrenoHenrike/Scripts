@@ -49,6 +49,7 @@ public class CoreSoW
         DeadLines();
         ShadowFlame();
         ManaCradle();
+        TerminaTemple();
     }
 
     public void ShadowWar()
@@ -1122,5 +1123,23 @@ public class CoreSoW
         // Once Upon Another Time 9126
         // Build Malgor's Armor Set 9127
         #endregion
+    }
+
+    public void TerminaTemple()
+    {
+        if (Core.isCompletedBefore(9214))
+            return;
+
+        ManaCradle();
+
+        Story.PreLoad(this);
+
+        // Familiar Faces (9213)
+        Story.KillQuest(9213, "terminatemple", "Termina Defender");
+        Story.MapItemQuest(9213, "terminatemple", new[] { 11625, 11626, 11627 });
+
+        // Loaded Resume (9214)
+        Story.KillQuest(9214, "terminatemple", "Clandestine Guard");
+        Story.MapItemQuest(9214, "terminatemple", new[] { 11628, 11629, 11630 });
     }
 }
