@@ -11,7 +11,6 @@ tags: all dailies, dailies, daily, all
 //cs_include Scripts/Nation/CoreNation.cs
 //cs_include Scripts/Story/BattleUnder.cs
 //cs_include Scripts/Story/Nation/CitadelRuins.cs
-//cs_include Scripts/Story/QueenofMonsters/Extra/LivingDungeon.cs
 //cs_include Scripts/Story/DragonFableOrigins.cs
 //cs_include Scripts/Dailies/LordOfOrder.cs
 //cs_include Scripts/Story/Glacera.cs

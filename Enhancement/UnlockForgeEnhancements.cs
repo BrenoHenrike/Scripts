@@ -67,7 +67,6 @@ tags: lacerate, smite, herosvaliance, arcanasconcerto, elysium, acheron, absolut
 //cs_include Scripts/Legion/SwordMaster.cs
 //cs_include Scripts/Dailies/LordOfOrder.cs
 //cs_include Scripts/Story/Nation/CitadelRuins.cs
-//cs_include Scripts/Story/QueenofMonsters/Extra/LivingDungeon.cs
 //cs_include Scripts/Story/DragonFableOrigins.cs
 //cs_include Scripts/Other\Armor\MalgorsArmorSet.cs
 //cs_include Scripts/ShadowsOfWar/MergeShops/DeadLinesMerge.cs
@@ -413,7 +412,7 @@ public class UnlockForgeEnhancements
     public void Praxis()
     {
         Farm.BlacksmithingREP(6, Bot.Config.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
-        
+
         Adv.BuyItem("thespan", 439, "Thief of Hours Armor");
         Adv.BuyItem("yulgar", 69, "Hashashin Armor");
         Adv.BuyItem("dragonkoiz", 95, "Imperial Chunin Clone");
@@ -430,7 +429,7 @@ public class UnlockForgeEnhancements
         Adv.BuyItem("shadowfortress", 1968, 59465, shopItemID: 8079);
         Core.ChainComplete(9171);
     }
-   
+
     public void HerosValiance()
     {
         if (Core.isCompletedBefore(8741))
@@ -578,9 +577,9 @@ public class UnlockForgeEnhancements
     public void DauntLess()
     {
         Farm.BlacksmithingREP(10, Bot.Config.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
-      
+
         string[] DauntlessItems = { "ShadowLord's Helm", "Malgor the ShadowLord", "Malgor's ShadowFlame Blade", "Infernal Flame Pyromancer" };
-      
+
         if (!Core.CheckInventory(new[] { "ShadowLord's Helm", "Malgor the ShadowLord", "Malgor's ShadowFlame Blade", "Infernal Flame Pyromancer" }) && !Core.CheckInventory("Malgor Insignia", 5) && !Core.CheckInventory("Avatar Tyndarius Insignia", 10))
         {
             Core.Logger("only items i cna get you are these: \"Malgor the ShadowLord\", and \"ShadowLord's Helm\".");
@@ -668,7 +667,7 @@ public class UnlockForgeEnhancements
         Core.EnsureAccept(8744);
 
         Farm.BlacksmithingREP(9, Bot.Config.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
-        
+
         if (Core.IsMember)
         {
             if (!Core.CheckInventory("Pauldron Relic"))
@@ -725,7 +724,7 @@ public class UnlockForgeEnhancements
             return;
 
         Farm.BlacksmithingREP(9, Bot.Config.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
-        
+
         Core.EnsureAccept(8822);
         Core.AddDrop("Night Mare Scythe");
         Core.EquipClass(ClassType.Solo);
@@ -750,7 +749,7 @@ public class UnlockForgeEnhancements
             return;
 
         Farm.BlacksmithingREP(9, Bot.Config.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
-        
+
         Core.EquipClass(ClassType.Solo);
         Core.EnsureAccept(8823);
         Core.HuntMonster("sepulchurebattle", "ULTRA Sepulchure", "Doom Heart", isTemp: false);
