@@ -157,7 +157,7 @@ public class CoreFarmerJoe
             Core.BuyItem("classhalla", 299, "Battle Oracle Hood");
             Core.Equip("Battle Oracle Battlestaff", "Battle Oracle Hood", "Battle Oracle Wings");
 
-            ItemBase DefaultWep = Bot.Inventory.Items.Find(x => x.Name.StartsWith("Default"));
+            ItemBase? DefaultWep = Bot.Inventory.Items.Find(x => x.Name.StartsWith("Default"));
             if (DefaultWep != null && Core.CheckInventory(DefaultWep.Name))
                 Core.SellItem(DefaultWep.Name);
 
@@ -240,7 +240,7 @@ public class CoreFarmerJoe
             DCSK.GetWep();
         Adv.BestGear(GenericGearBoost.dmgAll);
 
-        ItemBase DefaultWep = Bot.Inventory.Items.Find(x => x.Name.StartsWith("Default"));
+        ItemBase? DefaultWep = Bot.Inventory.Items.Find(x => x.Name.StartsWith("Default"));
         if (DefaultWep != null && Core.CheckInventory(DefaultWep.Name))
             Core.SellItem(DefaultWep.Name);
         #endregion Obtain Boost Weapon
@@ -420,7 +420,7 @@ public class CoreFarmerJoe
         if (Core.FarmClass == "Generic")
             Core.FarmClass = "Shaman";
 
-        if (Bot.Config.Get<bool>("OutFit"))
+        if (Bot.Config!.Get<bool>("OutFit"))
             Outfit();
 
         Scythe.GetHBReapersScythe();
@@ -435,12 +435,12 @@ public class CoreFarmerJoe
         //Easy Difficulty Stuff
         ShirtandHat();
         ServersAreDown();
-        Adv.SmartEnhance(Bot.Player.CurrentClass.Name);
+        Adv.SmartEnhance(Bot.Player.CurrentClass?.Name ?? String.Empty);
 
         //Extra Stuff
         Pets(PetChoice.None);
 
-        if (Bot.Config.Get<bool>("EquipOutfit"))
+        if (Bot.Config!.Get<bool>("EquipOutfit"))
         {
             Core.Equip(new[] { "NO BOTS Armor", "Scarecrow Hat", "The Server is Down", "Hollowborn Reaper's Scythe" });
             Core.Equip(Bot.Config.Get<PetChoice>("PetChoice").ToString());
@@ -453,7 +453,7 @@ public class CoreFarmerJoe
 
     public void Pets(PetChoice PetChoice = PetChoice.None)
     {
-        if (Bot.Config.Get<PetChoice>("Pets") == PetChoice.None)
+        if (Bot.Config!.Get<PetChoice>("Pets") == PetChoice.None)
             return;
 
         if (Bot.Config.Get<PetChoice>("Pets") == PetChoice.HotMama && !Core.CheckInventory("Hot Mama"))
