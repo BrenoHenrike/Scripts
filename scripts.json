@@ -12923,13 +12923,15 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/BidoBirthdayMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Termina Temple Merge",
+    "description": "farms the materials for the merge shop in /terminatemple",
     "tags": [
-      "null"
+      "merge",
+      "terminatemple",
+      "terminatemplemerge"
     ],
     "path": "Other/MergeShops/TerminaTempleMerge.cs",
-    "size": 5513,
+    "size": 5617,
     "fileName": "TerminaTempleMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/TerminaTempleMerge.cs"
   },
