@@ -140,7 +140,7 @@ public class UnlockForgeEnhancements
 
     public void ForgeUnlocks()
     {
-        if (Bot.Config.Get<ForgeQuestCape>("ForgeQuestCape") == ForgeQuestCape.None && Bot.Config.Get<ForgeQuestWeapon>("ForgeQuestWeapon") == ForgeQuestWeapon.None && Bot.Config.Get<ForgeQuestHelm>("ForgeQuestHelm") == ForgeQuestHelm.None)
+        if (Bot.Config!.Get<ForgeQuestCape>("ForgeQuestCape") == ForgeQuestCape.None && Bot.Config.Get<ForgeQuestWeapon>("ForgeQuestWeapon") == ForgeQuestWeapon.None && Bot.Config.Get<ForgeQuestHelm>("ForgeQuestHelm") == ForgeQuestHelm.None)
             Core.Logger("all settings are set to None, no Forge Quest to do. Stopping script.", messageBox: true, stopBot: true);
 
         if (Bot.Config.Get<ForgeQuestWeapon>("ForgeQuestWeapon") != ForgeQuestWeapon.None)
@@ -291,7 +291,7 @@ public class UnlockForgeEnhancements
             return;
 
         Core.Logger("Unlocking Enhancement: Forge (Weapon)");
-        Farm.BlacksmithingREP(4, Bot.Config.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
+        Farm.BlacksmithingREP(4, Bot.Config!.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
 
         LOC.Kitsune();
         Farm.Experience(30);
@@ -338,7 +338,7 @@ public class UnlockForgeEnhancements
         }
 
         Farm.Experience(40);
-        Farm.BlacksmithingREP(5, Bot.Config.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
+        Farm.BlacksmithingREP(5, Bot.Config!.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
 
         Core.EnsureAccept(8739);
 
@@ -394,7 +394,7 @@ public class UnlockForgeEnhancements
         Core.Logger("Unlocking Enhancement: Smite");
 
         Farm.Experience(60);
-        Farm.BlacksmithingREP(6, Bot.Config.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
+        Farm.BlacksmithingREP(6, Bot.Config!.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
         CoreSS.ShadowfallRise();
 
         Core.EnsureAccept(8740);
@@ -411,7 +411,7 @@ public class UnlockForgeEnhancements
 
     public void Praxis()
     {
-        Farm.BlacksmithingREP(6, Bot.Config.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
+        Farm.BlacksmithingREP(6, Bot.Config!.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
 
         Adv.BuyItem("thespan", 439, "Thief of Hours Armor");
         Adv.BuyItem("yulgar", 69, "Hashashin Armor");
@@ -437,7 +437,7 @@ public class UnlockForgeEnhancements
 
         Farm.Experience(100);
         Core.Logger("Unlocking Enhancement: Hero's Valiance");
-        Farm.BlacksmithingREP(10, Bot.Config.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
+        Farm.BlacksmithingREP(10, Bot.Config!.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
         FCA.GetFireChampsArmor();
         DOT.GetDoT(doExtra: false);
         ED.getSet();
@@ -476,7 +476,7 @@ public class UnlockForgeEnhancements
         Core.Logger("Unlocking Enhancement: Arcana's Concerto (WIP)");
         Astravia.CompleteCoreAstravia();
         Farm.Experience(100);
-        Farm.BlacksmithingREP(10, Bot.Config.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
+        Farm.BlacksmithingREP(10, Bot.Config!.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
 
         if (!Core.isCompletedBefore(8746))
         {
@@ -525,7 +525,7 @@ public class UnlockForgeEnhancements
 
         Core.Logger("Unlocking Enhancement: Acheron");
 
-        Farm.BlacksmithingREP(8, Bot.Config.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
+        Farm.BlacksmithingREP(8, Bot.Config!.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
         Core.EnsureAccept(8820);
 
         VoidLodestone();
@@ -558,7 +558,7 @@ public class UnlockForgeEnhancements
 
         Core.Logger("Unlocking Enhancement: Elysium");
 
-        Farm.BlacksmithingREP(10, Bot.Config.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
+        Farm.BlacksmithingREP(10, Bot.Config!.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
 
         Core.EnsureAccept(8821);
         CorNSOD.BonesVoidRealm(20);
@@ -576,7 +576,7 @@ public class UnlockForgeEnhancements
 
     public void DauntLess()
     {
-        Farm.BlacksmithingREP(10, Bot.Config.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
+        Farm.BlacksmithingREP(10, Bot.Config!.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
 
         string[] DauntlessItems = { "ShadowLord's Helm", "Malgor the ShadowLord", "Malgor's ShadowFlame Blade", "Infernal Flame Pyromancer" };
 
@@ -617,7 +617,7 @@ public class UnlockForgeEnhancements
 
         LOC.Escherion();
         Farm.Experience(30);
-        Farm.BlacksmithingREP(3, Bot.Config.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
+        Farm.BlacksmithingREP(3, Bot.Config!.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
 
         Core.EquipClass(ClassType.Solo);
         Core.EnsureAccept(8758);
@@ -640,7 +640,7 @@ public class UnlockForgeEnhancements
 
         Farm.Experience(90);
         Farm.GoodREP(10);
-        Farm.BlacksmithingREP(9, Bot.Config.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
+        Farm.BlacksmithingREP(9, Bot.Config!.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
 
 
         if (!Core.CheckInventory(new[] { "Ascended Paladin", "Ascended Paladin Staff", "Ascended Paladin Sword" }))
@@ -666,7 +666,7 @@ public class UnlockForgeEnhancements
         Core.EquipClass(ClassType.Solo);
         Core.EnsureAccept(8744);
 
-        Farm.BlacksmithingREP(9, Bot.Config.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
+        Farm.BlacksmithingREP(9, Bot.Config!.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
 
         if (Core.IsMember)
         {
@@ -704,7 +704,7 @@ public class UnlockForgeEnhancements
         Vainglory();
         Core.Logger("Unlocking Enhancement: Avarice");
 
-        Farm.BlacksmithingREP(9, Bot.Config.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
+        Farm.BlacksmithingREP(9, Bot.Config!.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
 
         Core.EnsureAccept(8745);
 
@@ -723,7 +723,7 @@ public class UnlockForgeEnhancements
         if (Core.isCompletedBefore(8822))
             return;
 
-        Farm.BlacksmithingREP(9, Bot.Config.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
+        Farm.BlacksmithingREP(9, Bot.Config!.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
 
         Core.EnsureAccept(8822);
         Core.AddDrop("Night Mare Scythe");
@@ -748,7 +748,7 @@ public class UnlockForgeEnhancements
         if (Core.isCompletedBefore(8823))
             return;
 
-        Farm.BlacksmithingREP(9, Bot.Config.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
+        Farm.BlacksmithingREP(9, Bot.Config!.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
 
         Core.EquipClass(ClassType.Solo);
         Core.EnsureAccept(8823);
@@ -771,7 +771,7 @@ public class UnlockForgeEnhancements
         if (Core.isCompletedBefore(8828))
             return;
 
-        Farm.BlacksmithingREP(4, Bot.Config.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
+        Farm.BlacksmithingREP(4, Bot.Config!.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
 
         Core.EquipClass(ClassType.Solo);
         Core.EnsureAccept(8828);
@@ -790,7 +790,7 @@ public class UnlockForgeEnhancements
         if (Core.isCompletedBefore(8824))
             return;
 
-        Farm.BlacksmithingREP(7, Bot.Config.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
+        Farm.BlacksmithingREP(7, Bot.Config!.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
         Adv.GearStore();
         Core.EnsureAccept(8824);
         Core.BuyItem("Classhalla", 172, "Rogue");
@@ -894,7 +894,12 @@ public class UnlockForgeEnhancements
 
     public void TheDarkBox(int itemID, int quant = 1)
     {
-        ItemBase Reward = Core.EnsureLoad(5710).Rewards.Find(x => x.ID == itemID);
+        ItemBase? Reward = Core.EnsureLoad(5710).Rewards.Find(x => x.ID == itemID);
+        if (Reward == null)
+        {
+            Core.Logger($"ERROR: itemID {itemID} was not found in quest 5710");
+            return;
+        }
 
         Core.AddDrop("Dark Potion", Reward.Name);
 
