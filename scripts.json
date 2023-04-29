@@ -12435,6 +12435,20 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/ScarletSorceress.cs"
   },
   {
+    "name": "Enforcer Class",
+    "description": "This script farms the Enforcer class.",
+    "tags": [
+      "dwakel",
+      "mithril man",
+      "crashsite",
+      "class"
+    ],
+    "path": "Other/Classes/Enforcer.cs",
+    "size": 926,
+    "fileName": "Enforcer.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/Enforcer.cs"
+  },
+  {
     "name": "BloodSorceress",
     "description": "null",
     "tags": [
