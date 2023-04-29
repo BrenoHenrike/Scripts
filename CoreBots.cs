@@ -210,7 +210,7 @@ public class CoreBots
                     Bot.Send.Packet("%xt%zm%afk%1%false%");
                     Bot.Sleep(ActionDelay);
                     bool TimerRunning = false;
-                    int afkCount = 0;
+                    //int afkCount = 0;
                     //Bot.Events.PlayerAFK += eventAFK;
 
                     //void eventAFK()
