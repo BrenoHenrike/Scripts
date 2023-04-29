@@ -12577,7 +12577,7 @@
       "null"
     ],
     "path": "Other/MergeShops/DeathPitArenaRepMerge.cs",
-    "size": 7643,
+    "size": 7768,
     "fileName": "DeathPitArenaRepMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/DeathPitArenaRepMerge.cs"
   },
@@ -16931,6 +16931,20 @@
     "size": 1206,
     "fileName": "Acolyte[Mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/Members-CLasses/Acolyte[Mem].cs"
+  },
+  {
+    "name": "Drakel Warlord (Member) Class",
+    "description": "This script farms the Drakel Warlord class.",
+    "tags": [
+      "warlord",
+      "member",
+      "class",
+      "deathpitarena"
+    ],
+    "path": "Other/Classes/Members-CLasses/DrakelWarlord[Mem].cs",
+    "size": 860,
+    "fileName": "DrakelWarlord[Mem].cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/Members-CLasses/DrakelWarlord[Mem].cs"
   },
   {
     "name": "AlphaOmega[Mem]",
