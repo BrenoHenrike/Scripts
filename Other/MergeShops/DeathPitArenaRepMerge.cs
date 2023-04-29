@@ -143,5 +143,6 @@ public class DeathPitArenaRepMerge
         new Option<bool>("35423", "Drakel Gall Armor", "Mode: [select] only\nShould the bot buy \"Drakel Gall Armor\" ?", false),
         new Option<bool>("35424", "Drakel Gall Morph", "Mode: [select] only\nShould the bot buy \"Drakel Gall Morph\" ?", false),
         new Option<bool>("34946", "Drakel Chud Helm", "Mode: [select] only\nShould the bot buy \"Drakel Chud Helm\" ?", false),
+        new Option<bool>("35433", "Drakel Warlord", "Mode: [select] only\nShould the bot buy \"Drakel Warlord\" ?", false),
     };
 }
