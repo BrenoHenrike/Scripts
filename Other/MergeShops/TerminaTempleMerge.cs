@@ -12,6 +12,7 @@ tags: merge, terminatemple, terminatemplemerge
 //cs_include Scripts/Story/BattleUnder.cs
 //cs_include Scripts/Evil/SDKA/CoreSDKA.cs
 //cs_include Scripts/Other/Classes/Necromancer.cs
+//cs_include Scripts/Evil/NSoD/CoreNSOD.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
@@ -22,10 +23,10 @@ public class TerminaTempleMerge
     private CoreBots Core => CoreBots.Instance;
     private CoreFarms Farm = new();
     private CoreAdvanced Adv = new();
-    private static CoreAdvanced sAdv = new();
-public CoreBLOD BLOD = new();
-public CoreNSOD NSOD = new();
+    private CoreBLOD BLOD = new();
+    private CoreNSOD NSOD = new();
 
+    private static CoreAdvanced sAdv = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
     public string[] MultiOptions = { "Generic", "Select" };
@@ -36,7 +37,7 @@ public CoreNSOD NSOD = new();
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Termina Sigil", "Bright Aura", "Void Aura", "Trace of Chaos"});
+        Core.BankingBlackList.AddRange(new[] { "Termina Sigil", "Bright Aura", "Void Aura", "Trace of Chaos" });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -74,25 +75,25 @@ public CoreNSOD NSOD = new();
                     Core.RegisterQuests(9215);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                    Core.HuntMonster("terminatemple", "Termina Defender", "Defender Sparred With", 8);
+                        Core.HuntMonster("terminatemple", "Termina Defender", "Defender Sparred With", 8);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
                     break;
 
                 case "Bright Aura":
-                BLOD.BrightAura(quant);
+                    BLOD.BrightAura(quant);
                     break;
 
                 case "Void Aura":
-                NSOD.VoidAuras(quant);
+                    NSOD.VoidAuras(quant);
                     break;
 
                 case "Trace of Chaos":
                     Core.EquipClass(ClassType.Solo);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                    Core.HuntMonster("ultradrakath", "Champion of Chaos", isTemp: false);
+                        Core.HuntMonster("ultradrakath", "Champion of Chaos", isTemp: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     break;
