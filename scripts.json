@@ -4393,7 +4393,7 @@
       "null"
     ],
     "path": "Story/ShadowsOfWar/CoreSoW.cs",
-    "size": 36358,
+    "size": 36911,
     "fileName": "CoreSoW.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfWar/CoreSoW.cs"
   },
@@ -4467,6 +4467,21 @@
     "size": 689,
     "fileName": "00DoAll.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfWar/00DoAll.cs"
+  },
+  {
+    "name": "Termina Temple",
+    "description": "This will finish the Termina Temple quests.",
+    "tags": [
+      "story",
+      "quest",
+      "shadow-war",
+      "tara",
+      "age of ruin"
+    ],
+    "path": "Story/ShadowsOfWar/22TerminaTemple.cs",
+    "size": 676,
+    "fileName": "22TerminaTemple.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfWar/22TerminaTemple.cs"
   },
   {
     "name": "Timestream",
