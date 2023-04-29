@@ -155,7 +155,6 @@ public class LuckyDayShamrockFairMerge
         new Option<bool>("34307", "Sword McLuck Cape", "Mode: [select] only\nShould the bot buy \"Sword McLuck Cape\" ?", false),
         new Option<bool>("34358", "Scrooge McLuck Helm", "Mode: [select] only\nShould the bot buy \"Scrooge McLuck Helm\" ?", false),
         new Option<bool>("11460", "Evolved Leprechaun", "Mode: [select] only\nShould the bot buy \"Evolved Leprechaun\" ?", false),
-        new Option<bool>("11373", "Evolved Leprechaun", "Mode: [select] only\nShould the bot buy \"Evolved Leprechaun\" ?", false),
         new Option<bool>("34290", "Lucky Knight", "Mode: [select] only\nShould the bot buy \"Lucky Knight\" ?", false),
         new Option<bool>("34296", "Lucky Knight's Helm", "Mode: [select] only\nShould the bot buy \"Lucky Knight's Helm\" ?", false),
         new Option<bool>("34297", "Lucky Rainbow Unicorn Hat", "Mode: [select] only\nShould the bot buy \"Lucky Rainbow Unicorn Hat\" ?", false),
