@@ -10841,7 +10841,7 @@
       "clover"
     ],
     "path": "Seasonal/LuckyDay/LuckyDayShamrockFairMerge.cs",
-    "size": 12786,
+    "size": 12654,
     "fileName": "LuckyDayShamrockFairMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/LuckyDay/LuckyDayShamrockFairMerge.cs"
   },
@@ -10903,6 +10903,21 @@
     "size": 1109,
     "fileName": "Pooka.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/LuckyDay/Pooka.cs"
+  },
+  {
+    "name": "Evolved Leprechaun (Seasonal) Class",
+    "description": "This script farms the Evolved Leprechaun class.",
+    "tags": [
+      "seasonal",
+      "class",
+      "leprechaun",
+      "lucky day",
+      "shamrock"
+    ],
+    "path": "Seasonal/LuckyDay/EvolvedLeprechaun.cs",
+    "size": 1242,
+    "fileName": "EvolvedLeprechaun.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/LuckyDay/EvolvedLeprechaun.cs"
   },
   {
     "name": "Faerie Court REP",
