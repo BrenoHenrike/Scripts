@@ -112,8 +112,8 @@ public class CyseroItemUpgrade
 
         Farm.BattleUnderB("Undead Energy", 3000);
         Adv.BuyItem("alchemyacademy", 2114, "Bright Tonic", 10);
-        Core.HuntMonster("doomwoodforest", "Undead Paladin", "Purification Orb", 10, false);
-        Core.KillMonster("doomwoodforest", "r7", "Up", "*", "Shoelace of a Fallen Paladin", 3, false);
+        Core.HuntMonster("doomwood", "Undead Paladin", "Purification Orb", 10, false);
+        Core.KillMonster("doomwood", "r7", "Up", "*", "Shoelace of a Fallen Paladin", 3, false);
         Core.HuntMonster("therift", "Plague Spreader", "Slimed Sigil", 75, false);
         Core.HuntMonster("lightguardwar", "Sigrid Sunshield", "Medal of Justice", 150, false);
 

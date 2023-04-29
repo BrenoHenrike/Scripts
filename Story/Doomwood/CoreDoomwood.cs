@@ -85,7 +85,7 @@ public class CoreDoomwood
         Story.KillQuest(1068, "doomwood", "Undead Paladin");
 
         //1069    Camouflage: Skelly-Style
-        Story.KillQuest(1069, "doomwood", new[] { "Doomwood Bonemuncher", "Doomwood Ectomancer", "Doomwood Soldier" });
+        Story.KillQuest(1069, "doomwood", new[] { "Doomwood Bonemuncher", "Doomwood Ectomancer", "Doomwood Bonemuncher", "Doomwood Soldier" });
 
         //1070    De(ad)ception
         if (!Story.QuestProgression(1070))
@@ -150,7 +150,7 @@ public class CoreDoomwood
         }
 
         //1088    The Ego and the ID
-        Story.KillQuest(1088, "necrotower", new[] { "Doomwood Soldier", "Doomwood Soldier" });
+        Story.KillQuest(1088, "doomwood", new[] { "Doomwood Soldier", "Doomwood Soldier" });
 
         //1090    An IDeal Seal
         Story.KillQuest(1090, "necrotower", "DoomWood Bonemuncher");

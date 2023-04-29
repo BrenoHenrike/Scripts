@@ -2291,7 +2291,6 @@ public class CoreAdvanced
                     case "evolved shaman":
                     case "lightmage":
                     case "mindbreaker":
-                    case "shaman":
                     case "vindicator of they":
                     case "elemental dracomancer":
                     case "lightcaster test":
@@ -2307,6 +2306,7 @@ public class CoreAdvanced
 
                     #region Wizard - None - Mana Vamp
                     case "oracle":
+                    case "shaman":
                         type = EnhancementType.Wizard;
                         wSpecial = WeaponSpecial.Mana_Vamp;
                         break;
@@ -2429,3 +2429,4 @@ public enum mergeOptionsEnum
     mergeMats = 2,
     select = 3
 };
+//Test You may ignore

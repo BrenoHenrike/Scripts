@@ -210,6 +210,20 @@ public class CoreBots
                     Bot.Send.Packet("%xt%zm%afk%1%false%");
                     Bot.Sleep(ActionDelay);
                     bool TimerRunning = false;
+                    int afkCount = 0;
+                    //Bot.Events.PlayerAFK += eventAFK;
+
+                    //void eventAFK()
+                    //{
+                    //    afkCount++;
+                    //    int localCount = afkCount;
+                    //    Bot.Sleep(300000);
+                    //    if (Bot.Player.AFK && afkCount == localCount)
+                    //    {
+                    //        Bot.Options.AutoRelogin = true;
+                    //        Bot.Servers.Logout();
+                    //    }
+                    //}
                     Bot.Handlers.RegisterHandler(5000, b =>
                     {
                         if (b.Player.AFK && !TimerRunning)
@@ -1975,6 +1989,8 @@ public class CoreBots
         => Bot.Monsters.CurrentMonsters.Where(m => m.Name == monsterName).Any(m => IsMonsterAlive(m));
     public bool IsMonsterAlive(int monsterID)
         => Bot.Monsters.CurrentMonsters.Where(m => m.ID == monsterID).Any(m => IsMonsterAlive(m));
+    public bool IsMonsterAlive(int monsterMapID, bool useMapID)
+        => IsMonsterAlive(Bot.Monsters.CurrentMonsters.Find(m => m.MapID == monsterMapID));
 
     private List<int> KilledMonsters = new();
     private void CleanKilledMonstersList(string map)
@@ -2692,6 +2708,22 @@ public class CoreBots
             case "towerofdoom10":
                 SimpleQuestBypass((159, 10));
                 break;
+
+            case "onslaughttower":
+                tryJoin();
+                if (!CheckInventory(2047))
+                {
+                    SendPackets("%xt%zm%getMapItem%169031%67%");
+                    Bot.Sleep(2500);
+                    SendPackets("%xt%zm%equipItem%169031%2047%");
+                }
+                else
+                {
+                    JumpWait();
+                    SendPackets("%xt%zm%equipItem%169031%2047%");
+                }
+                break;
+
 
             case "wolfwing":
                 SimpleQuestBypass((26, 23));

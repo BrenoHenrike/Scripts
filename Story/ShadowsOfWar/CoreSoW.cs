@@ -534,6 +534,7 @@ public class CoreSoW
 
         Story.PreLoad(this);
 
+        //Shadows Encroach
         if (!Story.QuestProgression(7419))
         {
             Story.MapItemQuest(7419, "darkally", 7179, 6);
@@ -551,7 +552,7 @@ public class CoreSoW
             Core.EnsureAccept(7422);
             Core.Join("Darkally", "r2", "Left");
             while (!Bot.ShouldExit && !Core.CheckInventory(53855, 10))
-                Bot.Kill.Monster("Dark Makai");
+                Core.HuntMonster("Darkally", "Dark Makai");
             Core.EnsureComplete(7422);
         }
 
@@ -562,7 +563,13 @@ public class CoreSoW
             Core.EnsureComplete(7423);
         }
 
-        Story.KillQuest(7424, "darkally", new[] { "Legion Defector", "Legion Defector" });
+        if (!Story.QuestProgression(7424))
+        {
+            Core.EnsureAccept(7424);
+            Core.HuntMonster("Darkally", "Legion Defector", "Defectors Slain", 10);
+            Core.HuntMonster("Darkally", "Legion Defector", "Legion Soul", 5);
+            Core.EnsureComplete(7424);
+        }
 
         Story.KillQuest(7425, "darkally", "Frozen Pyromancer");
 

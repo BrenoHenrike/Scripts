@@ -14,6 +14,10 @@ public class HardCoreMetals
     public CoreBots Core => CoreBots.Instance;
     public CoreDailies Daily = new();
 
+
+    public string OptionsStorage = "HardCoreMetals[mem](Daily)";
+    public bool DontPreconfigure = true;
+
     public List<IOption> Options = new()
     {
         new Option<HardCoreMetalsEnum>("metals", "Which Metal", "Select the metal you wish to get here")

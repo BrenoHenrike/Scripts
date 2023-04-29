@@ -19,6 +19,9 @@ public class MineCrafting
     public CoreDailies Daily = new();
     public CoreBLOD BLOD = new();
 
+    public string OptionsStorage = "MineCrafting(Daily)";
+    public bool DontPreconfigure = true;
+
     public List<IOption> Options = new()
     {
         new Option<MineCraftingMetalsEnum>("metals", "Which Metal", "Select the metal you wish to get here")

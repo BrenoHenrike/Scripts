@@ -1,7 +1,7 @@
 /*
 name: InfernalLegionBetrayal
-description: null
-tags: null
+description: Uses the appropriate pet to farm Legion Tokens
+tags: legion, legion token
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

@@ -1,7 +1,7 @@
 /*
 name: FirstClassEntertainment
-description: null
-tags: null
+description: Uses the appropriate pet to farm Legion Tokens
+tags: legion, legion token, solo
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
