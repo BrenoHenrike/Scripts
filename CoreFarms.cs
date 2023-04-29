@@ -1754,7 +1754,7 @@ public class CoreFarms
         }
     }
 
-    public void DeathPitBrawlREP(int rank = 11)
+    public void DeathPitBrawlREP(int rank = 10)
     {
         if (FactionRank("Death Pit Brawl") >= rank)
             return;
