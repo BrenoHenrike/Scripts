@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Termina Temple Merge
+description: farms the materials for the merge shop in /terminatemple
+tags: merge, terminatemple, terminatemplemerge
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
