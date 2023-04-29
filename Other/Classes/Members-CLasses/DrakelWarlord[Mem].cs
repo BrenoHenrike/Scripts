@@ -14,6 +14,7 @@ public class DrakelWarlord
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
+    private CoreAdvanced Adv = new();
     private DeathPitArenaRepMerge DPARM = new();
 
     public void ScriptMain(IScriptInterface Bot)
@@ -24,11 +25,17 @@ public class DrakelWarlord
         Core.SetOptions(false);
     }
 
-    public void GetClass()
+    public void GetClass(bool rankUpClass = true)
     {
-        if (Core.CheckInventory("Drakel Warlord"))
+        if (Core.CheckInventory("Drakel Warlord") || !Core.IsMember)
+        {
+            Core.Logger(Core.CheckInventory("Drakel Warlord") ? "You already own Drakel Warlord class." : "Membership is required for this class.");
             return;
+        }
 
         DPARM.BuyAllMerge("Drakel Warlord");
+
+        if(rankUpClass)
+            Adv.rankUpClass("Drakel Warlord");
     }
 }
