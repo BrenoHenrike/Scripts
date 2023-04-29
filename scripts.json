@@ -16713,6 +16713,19 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/REP-based/Bard.cs"
   },
   {
+    "name": "Elemental Dracomancer Class",
+    "description": "This script farms the Elemental Dracomancer class.",
+    "tags": [
+      "dracomancer",
+      "class",
+      "etherstorm"
+    ],
+    "path": "Other/Classes/REP-based/ElementalDracomancer.cs",
+    "size": 964,
+    "fileName": "ElementalDracomancer.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/REP-based/ElementalDracomancer.cs"
+  },
+  {
     "name": "TrollSpellsmith",
     "description": "null",
     "tags": [
