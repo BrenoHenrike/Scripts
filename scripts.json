@@ -5820,57 +5820,88 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Fireisland/00DoAllFireisland.cs"
   },
   {
-    "name": "Awescended",
-    "description": "null",
+    "name": "Awe-scention",
+    "description": "This bot will do the entire quest line and it's prerequisites in order to get you the Awescended Gear",
     "tags": [
-      "null"
+      "awe",
+      "scension",
+      "awescended",
+      "omni",
+      "gear"
     ],
     "path": "Good/GearOfAwe/Awescended.cs",
-    "size": 9783,
+    "size": 9915,
     "fileName": "Awescended.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/GearOfAwe/Awescended.cs"
   },
   {
-    "name": "BladeOfAwe",
-    "description": "null",
+    "name": "Blade of Awe",
+    "description": "This bot will farm the Blade of Awe reputation up to rank 6 and get the Blade of Awe itself",
     "tags": [
-      "null"
+      "blade",
+      "awe",
+      "enhancements",
+      "boost",
+      "experience",
+      "reputation",
+      "class",
+      "points",
+      "gold",
+      "cp"
     ],
     "path": "Good/GearOfAwe/BladeOfAwe.cs",
-    "size": 547,
+    "size": 712,
     "fileName": "BladeOfAwe.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/GearOfAwe/BladeOfAwe.cs"
   },
   {
-    "name": "HelmOfAwe",
-    "description": "null",
+    "name": "Helm of Awe",
+    "description": "helm, awe, gear, reputation, gold, experience, class, points, cp, boost",
     "tags": [
-      "null"
+      "this bot will farm the helm of awe for you"
     ],
     "path": "Good/GearOfAwe/HelmOfAwe.cs",
-    "size": 1083,
+    "size": 1190,
     "fileName": "HelmOfAwe.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/GearOfAwe/HelmOfAwe.cs"
   },
   {
-    "name": "ArmorOfAwe",
-    "description": "null",
+    "name": "Armor of Awe",
+    "description": "This bot will farm get you the Armor of Awe",
     "tags": [
-      "null"
+      "armor",
+      "awe",
+      "good",
+      "pauldron",
+      "breastplate",
+      "vambrace",
+      "gauntlet",
+      "greaves",
+      "fragment",
+      "shard",
+      "relic"
     ],
     "path": "Good/GearOfAwe/ArmorOfAwe.cs",
-    "size": 2126,
+    "size": 2255,
     "fileName": "ArmorOfAwe.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/GearOfAwe/ArmorOfAwe.cs"
   },
   {
-    "name": "CapeOfAwe",
-    "description": "null",
+    "name": "Cape of Awe",
+    "description": "This bot will farm the Cape of Awe for you",
     "tags": [
-      "null"
+      "cape",
+      "awe",
+      "boost",
+      "experience",
+      "reputation",
+      "class",
+      "points",
+      "gold",
+      "cp"
     ],
     "path": "Good/GearOfAwe/CapeOfAwe.cs",
-    "size": 1072,
+    "size": 1173,
     "fileName": "CapeOfAwe.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/GearOfAwe/CapeOfAwe.cs"
   },
@@ -5904,13 +5935,19 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/SpiritOrbs.cs"
   },
   {
-    "name": "UnlockMineCrafting",
-    "description": "null",
+    "name": "Unlock MineCrafting",
+    "description": "This bot will unlock the Mine Crafting quest, this is needed to farm the metals needed for BLoD",
     "tags": [
-      "null"
+      "blinding",
+      "light",
+      "destiny",
+      "BLOD",
+      "mine",
+      "crafting",
+      "metals"
     ],
     "path": "Good/BLoD/UnlockMineCrafting.cs",
-    "size": 1167,
+    "size": 1309,
     "fileName": "UnlockMineCrafting.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/UnlockMineCrafting.cs"
   },
@@ -5943,7 +5980,7 @@
       "blinding light fragments"
     ],
     "path": "Good/BLoD/0TheBlindingLightofDestiny.cs",
-    "size": 1546,
+    "size": 1547,
     "fileName": "0TheBlindingLightofDestiny.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/0TheBlindingLightofDestiny.cs"
   },
