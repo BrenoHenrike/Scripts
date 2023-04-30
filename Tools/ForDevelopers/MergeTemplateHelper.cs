@@ -80,6 +80,7 @@ public class MergeTemplateHelper
         "blade",
         "wand",
         "polearm",
+        "axe",
         
 
         // misc
@@ -127,7 +128,7 @@ public class MergeTemplateHelper
                 continue;
 
             shopItemNames.Add($"        new Option<bool>(\"{item.ID}\", \"{item.Name}\", \"Mode: [select] only\\nShould the bot buy \\\"{item.Name}\\\" ?\", false),");
-            tags.AddRange(item.Name.ToLower().Split(' ').Select(x => new String(x.Where(Char.IsLetter).ToArray())).Except(tags).Except(tagsBlacklist).Except(multipliedTagsBlacklist));
+            tags.AddRange(item.Name.ToLower().Split(' ', StringSplitOptions.RemoveEmptyEntries).Select(x => new String(x.Where(Char.IsLetter).ToArray())).Except(tags).Except(tagsBlacklist).Except(multipliedTagsBlacklist));
 
             foreach (ItemBase req in item.Requirements)
             {
