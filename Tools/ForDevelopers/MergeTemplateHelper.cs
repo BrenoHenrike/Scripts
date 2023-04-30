@@ -11,6 +11,7 @@ using Skua.Core.Options;
 using Skua.Core.Models;
 using Skua.Core.Models.Shops;
 using Skua.Core.Models.Items;
+using Skua.Core.Utils;
 using System.IO;
 using System.Diagnostics;
 
@@ -38,7 +39,7 @@ public class MergeTemplateHelper
 
     public void Helper()
     {
-        string map = Bot.Config.Get<string>("mapName");
+        string? map = Bot.Config!.Get<string>("mapName")?.ToLower();
         int shopID = Bot.Config.Get<int>("shopID");
         bool genFile = Bot.Config.Get<bool>("genFile");
 
@@ -49,9 +50,18 @@ public class MergeTemplateHelper
         }
 
         List<ShopItem> shopItems = Core.GetShopItems(map, shopID);
-        string output = "";
+        string output = String.Empty;
         List<string> itemsToLearn = new();
-        string className = Bot.Shops.Name.Replace("Merge", "").Replace("merge", "").Replace("shop", "").Replace("Shop", "").Replace(" ", "").Replace("'", "");
+        string scriptName = Bot.Shops.Name.Replace("Merge", "").Replace("merge", "").Replace("shop", "").Replace("Shop", "").Replace("'", "");
+        string className = scriptName.Replace(" ", "");
+
+        string scriptInfo =
+            "/*\n" +
+            $"name: {scriptName}\n" +
+            $"description: This bot will farm the items belonging to the selected mode for the {scriptName} [{shopID}] in /{map}\n" +
+            $"tags: ";
+        List<string> tags = scriptName.ToLower().Split(' ').ToList();
+        tags.Add(map);
 
         List<string> shopItemNames = new();
         if (genFile)
@@ -60,7 +70,6 @@ public class MergeTemplateHelper
             shopItemNames.Add("    public List<IOption> Select = new()");
             shopItemNames.Add("    {");
         }
-
 
         foreach (ShopItem item in shopItems)
         {
@@ -96,6 +105,7 @@ public class MergeTemplateHelper
                         output += "                    Core.CancelRegisteredQuests();\n";
                         output += "                    break;\n";
                         itemsToLearn.Add(req.Name);
+                        tags.AddRange(req.Name.ToLower().Split(' ').Except(tags));
                     }
                 }
             }
@@ -141,7 +151,10 @@ public class MergeTemplateHelper
 
         shopItemNames.Add("    };");
 
-        string[] content = MergeTemplate[..itemsIndex]
+        scriptInfo += tags.Join(", ") + "\n*/";
+
+        string[] content = new[] { scriptInfo }
+                            .Concat(MergeTemplate[5..itemsIndex])
                             .Concat(new[] { output })
                             .Concat(MergeTemplate[(MergeTemplate.Count() - 4)..(MergeTemplate.Count() - 1)])
                             .Concat(shopItemNames.ToArray())
