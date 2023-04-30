@@ -433,6 +433,8 @@ public class CoreLegion
         if (Bot.Map.PlayerCount < partySize && onlyWithParty)
         {
             Core.Join("legionarena", ignoreCheck: true, publicRoom: true);
+            if (ReturnIfNoPeople && Bot.Map.PlayerCount < partySize)
+                return;
             while (!Bot.ShouldExit && Bot.Map.PlayerCount < partySize) { }
             Core.Logger($"Party gathered [{Bot.Map.PlayerNames!.Count}/{partySize}]");
         }
