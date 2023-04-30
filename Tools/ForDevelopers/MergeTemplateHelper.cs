@@ -37,6 +37,55 @@ public class MergeTemplateHelper
         Helper();
     }
 
+    // no caps
+    private string[] tagsBlacklist =
+    {
+        // Words
+        "the",
+        "and",
+        "of",
+        "or",
+        "dual",
+        "&amp;",
+        "&",
+
+        // helms
+        "hair",
+        "helm",
+        "hat",
+        "locks",
+        "visage",
+        "helmet",
+        "spike",
+        "spikes",
+        "hood",
+        "hooded",
+        "mask",
+
+        // other gear
+        "armor",
+        "cape",
+        "rune",
+        "aura",
+
+        // weapon types
+        // no need to add the multiplied variant of a word if its just an additional s
+        "staff",
+        "staves",
+        "dagger",
+        "sword",
+        "gauntlet",
+        "gun",
+        "revolver",
+        "blade",
+        "wand",
+        "polearm",
+        
+
+        // misc
+        "gate"
+    };
+
     public void Helper()
     {
         string? map = Bot.Config!.Get<string>("mapName")?.ToLower();
@@ -54,6 +103,7 @@ public class MergeTemplateHelper
         List<string> itemsToLearn = new();
         string scriptName = Bot.Shops.Name.Replace("Merge", "").Replace("merge", "").Replace("shop", "").Replace("Shop", "").Replace("'", "");
         string className = scriptName.Replace(" ", "");
+        string[] multipliedTagsBlacklist = tagsBlacklist.Select(x => x + 's').ToArray();
 
         string scriptInfo =
             "/*\n" +
@@ -77,6 +127,7 @@ public class MergeTemplateHelper
                 continue;
 
             shopItemNames.Add($"        new Option<bool>(\"{item.ID}\", \"{item.Name}\", \"Mode: [select] only\\nShould the bot buy \\\"{item.Name}\\\" ?\", false),");
+            tags.AddRange(item.Name.ToLower().Split(' ').Select(x => new String(x.Where(Char.IsLetter).ToArray())).Except(tags).Except(tagsBlacklist).Except(multipliedTagsBlacklist));
 
             foreach (ItemBase req in item.Requirements)
             {
@@ -105,7 +156,7 @@ public class MergeTemplateHelper
                         output += "                    Core.CancelRegisteredQuests();\n";
                         output += "                    break;\n";
                         itemsToLearn.Add(req.Name);
-                        tags.AddRange(req.Name.ToLower().Split(' ').Except(tags));
+                        //tags.AddRange(req.Name.ToLower().Split(' ').Except(tags));
                     }
                 }
             }
