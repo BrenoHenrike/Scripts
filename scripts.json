@@ -12963,17 +12963,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/CelestialChallengerMerge.cs"
   },
   {
-    "name": "null",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Other/MergeShops/SevenCirclesWarMerge.cs",
-    "size": 7469,
-    "fileName": "SevenCirclesWarMerge.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/SevenCirclesWarMerge.cs"
-  },
-  {
     "name": "BidoBirthdayMerge",
     "description": "null",
     "tags": [
@@ -12998,13 +12987,13 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/TerminaTempleMerge.cs"
   },
   {
-    "name": "null",
+    "name": "StormCacheMerge",
     "description": "null",
     "tags": [
       "null"
     ],
     "path": "Other/MergeShops/StormCacheMerge.cs",
-    "size": 3731,
+    "size": 3742,
     "fileName": "StormCacheMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/StormCacheMerge.cs"
   },
@@ -13458,17 +13447,6 @@
     "size": 5242,
     "fileName": "VokunMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/VokunMerge.cs"
-  },
-  {
-    "name": "null",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Other/MergeShops/SevenCirclesMerge.cs",
-    "size": 6403,
-    "fileName": "SevenCirclesMerge.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/SevenCirclesMerge.cs"
   },
   {
     "name": "DreadForestMerge",
@@ -14431,6 +14409,17 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/YamiNoRonin/0YamiNoRoninNonLegion.cs"
   },
   {
+    "name": "SevenCirclesWarMerge",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Legion/MergeShops/SevenCirclesWarMerge.cs",
+    "size": 7485,
+    "fileName": "SevenCirclesWarMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/MergeShops/SevenCirclesWarMerge.cs"
+  },
+  {
     "name": "LegionPyromancerMerge",
     "description": "null",
     "tags": [
@@ -14466,6 +14455,17 @@
     "size": 6343,
     "fileName": "DarkAllianceMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/MergeShops/DarkAllianceMerge.cs"
+  },
+  {
+    "name": "SevenCirclesMerge",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Legion/MergeShops/SevenCirclesMerge.cs",
+    "size": 6416,
+    "fileName": "SevenCirclesMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/MergeShops/SevenCirclesMerge.cs"
   },
   {
     "name": "Dage Recruit Merge",
