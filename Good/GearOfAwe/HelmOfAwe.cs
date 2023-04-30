@@ -1,7 +1,7 @@
 /*
-name: HelmOfAwe
-description: null
-tags: null
+name: Helm of Awe
+description: helm, awe, gear, reputation, gold, experience, class, points, cp, boost
+tags: this bot will farm the helm of awe for you
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
