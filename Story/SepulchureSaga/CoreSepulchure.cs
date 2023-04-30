@@ -425,8 +425,13 @@ public class CoreSepulchure
         Story.KillQuest(6590, "lumafortress", "Skeleton Minion");
 
         // Corrupted Light 6591
-        Core.EquipClass(ClassType.Solo);
-        Story.KillQuest(6591, "lumafortress", "Corrupted Luma");
+        if (!Story.QuestProgression(6591))
+        {
+            Core.EnsureAccept(6591);
+            Core.EquipClass(ClassType.Solo);
+            Core.KillMonster("lumafortress", "r4", "Left", "Corrupted Luma");
+            Core.EnsureComplete(6591);
+        }
 
         // Star Light Star Bright 6592
         Story.KillQuest(6592, "lumafortress", "Light Elemental");
