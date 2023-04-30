@@ -82,17 +82,6 @@ public class HollowbornMerge
                     break;
 
                 case "Druidic Soothsayer":
-                    Core.FarmingLogger(req.Name, quant);
-                    Core.EquipClass(ClassType.Farm);
-                    Core.RegisterQuests(0000);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.Logger("This item is not setup yet");
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    Core.CancelRegisteredQuests();
-                    break;
-
                 case "Druidic Soothsayer’s Antlered Skull":
                 case "Druidic Soothsayer Hood":
                 case "Druidic Soothsayer's Hooded Visage":
