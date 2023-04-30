@@ -102,13 +102,13 @@ public class MergeTemplateHelper
         List<ShopItem> shopItems = Core.GetShopItems(map, shopID);
         string output = String.Empty;
         List<string> itemsToLearn = new();
-        string scriptName = Bot.Shops.Name.Replace("Merge", "").Replace("merge", "").Replace("shop", "").Replace("Shop", "").Replace("'", "");
+        string scriptName = Bot.Shops.Name.Replace("Merge", "").Replace("merge", "").Replace("shop", "").Replace("Shop", "").Replace("'", "").Trim() + " Merge";
         string className = scriptName.Replace(" ", "");
         string[] multipliedTagsBlacklist = tagsBlacklist.Select(x => x + 's').ToArray();
 
         string scriptInfo =
             "/*\n" +
-            $"name: {scriptName}\n" +
+            $"name: {scriptName} Merge\n" +
             $"description: This bot will farm the items belonging to the selected mode for the {scriptName} [{shopID}] in /{map}\n" +
             $"tags: ";
         List<string> tags = scriptName.ToLower().Split(' ').ToList();
