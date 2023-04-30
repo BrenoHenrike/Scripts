@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Hollowborn 
+description: This bot will farm the items belonging to the selected mode for the Hollowborn  [1887] in /hbchallenge
+tags: hollowborn, , hbchallenge, adept, spirit, spite, locks, shag, blades, cleaver, executioner's, axe, druidic, soothsayer, soothsayer’s, antlered, skull, soothsayer's, hooded, visage, hood, runed, cape, runes, burning, aura, rune, gate, staff, spike, spikes, gauntlet
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
