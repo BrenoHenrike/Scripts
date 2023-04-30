@@ -7258,17 +7258,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/MergeShops/HollowbornLabMerge.cs"
   },
   {
-    "name": "HBChallengeMerge",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Hollowborn/MergeShops/HBChallengeMerge.cs",
-    "size": 4438,
-    "fileName": "HBChallengeMerge.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/MergeShops/HBChallengeMerge.cs"
-  },
-  {
     "name": "HBJudgementMerge",
     "description": "null",
     "tags": [
@@ -7278,6 +7267,17 @@
     "size": 6459,
     "fileName": "HBJudgementMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/MergeShops/HBJudgementMerge.cs"
+  },
+  {
+    "name": "null",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Hollowborn/MergeShops/HollowbornMerge.cs",
+    "size": 8419,
+    "fileName": "HollowbornMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/MergeShops/HollowbornMerge.cs"
   },
   {
     "name": "EvilREP",
