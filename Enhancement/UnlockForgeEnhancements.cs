@@ -132,7 +132,7 @@ public class UnlockForgeEnhancements
         new Option<bool>("CanSolo", "Can solo", "Solo Sluggbutter"),
     };
 
-    public void ScriptMain(IScriptInterface bot)
+    public void ScriptMain(IScriptInterface Bot)
     {
         Core.SetOptions();
 
@@ -293,6 +293,8 @@ public class UnlockForgeEnhancements
             }
         }
     }
+
+    #region Weapon Enhancements
 
     public void ForgeWeaponEnhancement()
     {
@@ -632,6 +634,8 @@ public class UnlockForgeEnhancements
         }
     }
 
+    #endregion
+    #region Forge Enhancements
 
     public void ForgeCapeEnhancement()
     {
@@ -796,6 +800,8 @@ public class UnlockForgeEnhancements
         Core.Logger("Enhancement Unlocked: Lament");
     }
 
+    #endregion
+    #region Helm Enhancements
 
     public void ForgeHelmEnhancement()
     {
@@ -973,6 +979,8 @@ public class UnlockForgeEnhancements
             Bot.Wait.ForPickup(Reward.ID);
         }
     }
+
+    #endregion
 }
 
 public enum ForgeQuestWeapon
