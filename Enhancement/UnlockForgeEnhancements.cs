@@ -299,7 +299,7 @@ public class UnlockForgeEnhancements
         Core.Logger("Unlocking Enhancement: Forge (Weapon)");
 
         Farm.BlacksmithingREP(4, Bot.Config!.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
-        LOC.Kitsune();
+        LOC.Escherion();
         Farm.Experience(30);
 
         Core.EquipClass(ClassType.Solo);
@@ -634,7 +634,7 @@ public class UnlockForgeEnhancements
 
         Core.Logger("Unlocking Enhancement: Forge (Cape)");
 
-        LOC.Escherion();
+        LOC.Kitsune();
         Farm.Experience(30);
         Farm.BlacksmithingREP(3, Bot.Config!.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
 
