@@ -2696,6 +2696,14 @@ public class CoreBots
                 SimpleQuestBypass((412, 22));
                 break;
 
+            case "Creepy":
+                tryJoin();
+                Bot.Wait.ForCellChange("Cut1");
+                JumpWait();
+                Bot.Wait.ForCellChange("Skip");
+                JumpWait();
+                break;
+
             case "towerofdoom1":
             case "towerofdoom2":
             case "towerofdoom3":
