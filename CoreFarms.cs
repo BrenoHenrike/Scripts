@@ -1075,16 +1075,9 @@ public class CoreFarms
         if (FactionRank("Blacksmithing") >= rank)
             return;
 
-        Core.EquipClass(ClassType.Farm);
         Core.SavedState();
         ToggleBoost(BoostType.Reputation);
         Core.Logger($"Farming rank {rank}");
-
-        if (!UseGold)
-        {
-            Core.Logger("Using Non-Gold Method");
-            Core.Logger($"If you can't Solo SlugButter, Either use the Gold method or Run the AP Script (Found in: Good-ArchPaladin) as it can Solo the boss 👍");
-        }
 
         if (UseGold)
         {
@@ -1099,7 +1092,13 @@ public class CoreFarms
                 Core.EnsureComplete(8737);
             }
             Core.CancelRegisteredQuests();
+            ToggleBoost(BoostType.Reputation, false);
+            Core.SavedState(false);
+            return;
         }
+
+        Core.Logger("Using Non-Gold Method");
+        Core.Logger($"If you can't Solo SlugButter, Either use the Gold method or Run the AP Script (Found in: Good-ArchPaladin) as it can Solo the boss 👍");
 
         Core.RegisterQuests(2777);
         while (!Bot.ShouldExit && FactionRank("Blacksmithing") < 4 && !UseGold)
