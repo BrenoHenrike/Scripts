@@ -3332,13 +3332,34 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/CoreLegion.cs"
   },
   {
-    "name": "HeadOfTheLegionBeast",
-    "description": "null",
+    "name": "Head of the Legion Beast",
+    "description": "This bot will farm the entire Head of the Legion Beast, including stories and bosses.",
     "tags": [
-      "null"
+      "head",
+      "legion",
+      "beast",
+      "LOTLB",
+      "seven",
+      "circles",
+      "war",
+      "penance",
+      "essence",
+      "wrath",
+      "violence",
+      "treachery",
+      "soul",
+      "heresy",
+      "indulgence",
+      "beast",
+      "helm",
+      "violence",
+      "wrath",
+      "greed",
+      "gluttony",
+      "luxuria"
     ],
     "path": "Legion/HeadOfTheLegionBeast.cs",
-    "size": 6569,
+    "size": 6825,
     "fileName": "HeadOfTheLegionBeast.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/HeadOfTheLegionBeast.cs"
   },
