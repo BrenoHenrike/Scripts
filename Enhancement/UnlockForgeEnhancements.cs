@@ -83,43 +83,46 @@ using Skua.Core.Options;
 
 public class UnlockForgeEnhancements
 {
-    public IScriptInterface Bot => IScriptInterface.Instance;
-    public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new();
-    public CoreStory Story = new();
-    public CoreAdvanced Adv = new();
-    public CoreNation Nation = new();
-    public CoreLegion Legion = new();
-    public CoreDarkon Darkon = new();
-    public CoreSoWMats SOWM = new();
-    public CoreAwe Awe = new();
-    public Core13LoC LOC => new();
-    public CoreNSOD CorNSOD = new();
-    public CoreAstravia Astravia => new();
-    public CoreDailies Daily = new();
-    public Core7DD DD = new();
-    public CoreYnR YNR = new();
+    private IScriptInterface Bot => IScriptInterface.Instance;
+    private CoreBots Core => CoreBots.Instance;
 
-    public CoreSoW SoW = new();
-    public CoreSepulchure CoreSS = new();
-    public ArchPaladin AP = new();
-    public DragonOfTime DOT = new();
-    public FireChampionsArmor FCA = new();
-    public EternalDrakath ED = new();
-    public SepulchuresOriginalHelm Seppy = new();
-    public PrinceDarkonsPoleaxePreReqs PDPPR = new();
-    public HeadoftheLegionBeast HOTLB = new();
-    public Awescended Awescended = new();
-    public NulgathDemandsWork NDW = new();
-    public ThirdSpell TSS = new();
-    public LordOfOrder LOO = new();
-    public SevenCircles Circles = new();
-    public YokaiQuests Yokai = new();
-    public MalgorsArmorSet MAS = new();
+    private CoreFarms Farm = new();
+    private CoreStory Story = new();
+    private CoreAdvanced Adv = new();
+
+    private CoreNation Nation = new();
+    private CoreLegion Legion = new();
+    private CoreDarkon Darkon = new();
+    private CoreSoWMats SOWM = new();
+    private CoreAwe Awe = new();
+
+    private Core13LoC LOC => new();
+    private CoreNSOD CorNSOD = new();
+    private CoreAstravia Astravia => new();
+    private CoreDailies Daily = new();
+    private Core7DD DD = new();
+    private CoreYnR YNR = new();
+
+    private CoreSoW SoW = new();
+    private CoreSepulchure CoreSS = new();
+    private ArchPaladin AP = new();
+    private DragonOfTime DOT = new();
+    private FireChampionsArmor FCA = new();
+    private EternalDrakath ED = new();
+    private SepulchuresOriginalHelm Seppy = new();
+    private PrinceDarkonsPoleaxePreReqs PDPPR = new();
+    private HeadoftheLegionBeast HOTLB = new();
+    private Awescended Awescended = new();
+    private NulgathDemandsWork NDW = new();
+    private ThirdSpell TSS = new();
+    private LordOfOrder LOO = new();
+    private SevenCircles Circles = new();
+    private YokaiQuests Yokai = new();
+    private MalgorsArmorSet MAS = new();
 
     public string OptionsStorage = "Forge Ehn Unlocks";
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         CoreBots.Instance.SkipOptions,
         new Option<ForgeQuestWeapon>("ForgeQuestWeapon", "Weapon Enhancement", "Forge Quests to unlock Weapon Enhancement, change to none to unselect", ForgeQuestWeapon.None),
@@ -433,6 +436,7 @@ public class UnlockForgeEnhancements
         Core.CancelRegisteredQuests();
 
         Adv.BuyItem("shadowfortress", 1968, 59465, shopItemID: 8079);
+
         Core.ChainComplete(9171);
         Core.Logger("Enhancement Unlocked: Praxis");
     }
@@ -452,11 +456,6 @@ public class UnlockForgeEnhancements
         ED.getSet();
         LOO.GetLoO();
 
-        if (!Core.isCompletedBefore(7165))
-        {
-            Core.Logger("Quest Progrestion not Available For LOO (requires last quest to be complete and these are dailies)");
-            return;
-        }
         if (!Core.CheckInventory(23689))
         {
             Core.EquipClass(ClassType.Solo);
@@ -471,6 +470,13 @@ public class UnlockForgeEnhancements
 
         Seppy.GravelynsDoomFireToken();
         AP.GetAP(false); //purely for the last quest "Sacred Magic: Eden"
+
+        if (!Core.isCompletedBefore(7165))
+        {
+            Core.Logger("Quest Progrestion not available For LoO (requires last quest to be complete and these are dailies)");
+            return;
+        }
+
         Adv.BuyItem("darkthronehub", 1303, "ArchPaladin Armor");
 
         Core.EnsureComplete(8741);
