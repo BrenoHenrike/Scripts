@@ -429,7 +429,7 @@ public class CoreSepulchure
         {
             Core.EnsureAccept(6591);
             Core.EquipClass(ClassType.Solo);
-            Core.KillMonster("lumafortress", "r4", "Left", "Corrupted Luma");
+            Core.KillMonster("lumafortress", "r4", "Left", "Corrupted Luma", "Luma Defeated");
             Core.EnsureComplete(6591);
         }
 
