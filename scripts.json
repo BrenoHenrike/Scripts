@@ -12999,13 +12999,28 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/ShinkansenMerge.cs"
   },
   {
-    "name": "AshfallCampMerge",
-    "description": "null",
+    "name": "Ashfall Camp Merge",
+    "description": "Farms the gear for your selected mode for the merge shop in /ashfallcamp",
     "tags": [
-      "null"
+      "ashfall",
+      "camp",
+      "merge",
+      "shop",
+      "iron",
+      "ore",
+      "ingot",
+      "blue",
+      "red",
+      "green",
+      "dye",
+      "fabric",
+      "dragon",
+      "scales",
+      "bile",
+      "stone"
     ],
     "path": "Other/MergeShops/AshfallCampMerge.cs",
-    "size": 10689,
+    "size": 9961,
     "fileName": "AshfallCampMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/AshfallCampMerge.cs"
   },
