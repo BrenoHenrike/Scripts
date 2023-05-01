@@ -108,7 +108,7 @@ public class MergeTemplateHelper
 
         string scriptInfo =
             "/*\n" +
-            $"name: {scriptName} Merge\n" +
+            $"name: {scriptName}\n" +
             $"description: This bot will farm the items belonging to the selected mode for the {scriptName} [{shopID}] in /{map}\n" +
             $"tags: ";
         List<string> tags = scriptName.ToLower().Split(' ').ToList();
