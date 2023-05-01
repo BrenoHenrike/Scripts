@@ -1492,6 +1492,15 @@ public class CoreAdvanced
                         if (!uAcheron())
                             Fail();
                         break;
+                    case WeaponSpecial.Praxis:
+                        if (!uPraxis())
+                            Fail();
+                        break;
+                    case WeaponSpecial.Dauntless:
+                        if (!uDauntless())
+                            Fail();
+                        break;
+
                     default:
                         Core.Logger($"Enhancement Failed:\tInvalid \"WeaponSpecial\" given, received {(int)wSpecial} | {wSpecial}");
                         return;
@@ -2444,7 +2453,6 @@ public enum EnhancementType // Enhancement Pattern ID
     SpellBreaker = 8,
     Lucky = 9,
 }
-
 public enum CapeSpecial // Enhancement Pattern ID
 {
     None = 0,
@@ -2456,7 +2464,6 @@ public enum CapeSpecial // Enhancement Pattern ID
     Lament = 30,
 
 }
-
 public enum WeaponSpecial // Proc ID
 {
     None = 0,
@@ -2476,7 +2483,6 @@ public enum WeaponSpecial // Proc ID
     Praxis = 13,
     Dauntless = 14
 }
-
 public enum HelmSpecial //Enhancement Pattern ID
 {
     None = 0,
@@ -2494,4 +2500,3 @@ public enum mergeOptionsEnum
     mergeMats = 2,
     select = 3
 };
-//Test You may ignore
