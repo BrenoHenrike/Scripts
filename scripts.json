@@ -2761,13 +2761,15 @@
   },
   {
     "name": "Warfury Emblem",
-    "description": "Farms \"Warfury Emblem\" From Quest",
+    "description": "Farms \"Warfury Emblem\" from quest",
     "tags": [
-      "warfury training",
-      "warfury emblem"
+      "war",
+      "fury",
+      "training",
+      "emblem"
     ],
     "path": "Other/WarFuryEmblem.cs",
-    "size": 1382,
+    "size": 1292,
     "fileName": "WarFuryEmblem.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/WarFuryEmblem.cs"
   },
