@@ -628,11 +628,11 @@ public class CoreAdvanced
                 List<(InventoryItem, int)> equippedItems =
                     Bot.Inventory.Items
                         .Where(x => x.Equipped)
-                        .Select(x => (x, Bot.Flash.GetGameObject<int>($"world.invTree.{x.ID}.EnhID")))
+                        .Select(x => (x, getEnhID(x)))
                         .ToList();
                 IEnumerable<(InventoryItem, int)> bestItemsEnh =
                     bestItems
-                        .Select(x => (x, Bot.Flash.GetGameObject<int>($"world.invTree.{x.ID}.EnhID")));
+                        .Select(x => (x, getEnhID(x)));
 
                 filter =
                     bestItemsEnh
@@ -1164,7 +1164,7 @@ public class CoreAdvanced
     /// <returns>Returns the equipped Enhancement Type</returns>
     public EnhancementType CurrentClassEnh()
     {
-        int? EnhPatternID = getEnhPatternID(Bot.Player.CurrentClass!);
+        int? EnhPatternID = Bot.Player.CurrentClass?.EnhancementPatternID;
         if (EnhPatternID == 1 || EnhPatternID == 23 || EnhPatternID == null)
             EnhPatternID = 9;
         return (EnhancementType)EnhPatternID;
@@ -1179,7 +1179,7 @@ public class CoreAdvanced
         InventoryItem? EquippedCape = Bot.Inventory.Items.Find(i => i.Equipped && i.Category == ItemCategory.Cape);
         if (EquippedCape == null)
             return CapeSpecial.None;
-        int pattern_id = getEnhPatternID(EquippedCape);
+        int pattern_id = EquippedCape.EnhancementPatternID;
         if (Enum.IsDefined(typeof(EnhancementType), pattern_id))
             return CapeSpecial.None;
         return (CapeSpecial)pattern_id;
@@ -1194,7 +1194,7 @@ public class CoreAdvanced
         InventoryItem? EquippedHelm = Bot.Inventory.Items.Find(i => i.Equipped && i.Category == ItemCategory.Helm);
         if (EquippedHelm == null)
             return HelmSpecial.None;
-        int pattern_id = getEnhPatternID(EquippedHelm);
+        int pattern_id = EquippedHelm.EnhancementPatternID;
         if (Enum.IsDefined(typeof(EnhancementType), pattern_id))
             return HelmSpecial.None;
         return (HelmSpecial)pattern_id;
@@ -1242,7 +1242,7 @@ public class CoreAdvanced
         // Empty check
         if (ItemList.Count == 0)
         {
-            Core.Logger("Enhancement Failed: ItemList is empty");
+            Core.Logger("Enhancement Failed:\t\"ItemList\" is empty");
             return;
         }
 
@@ -1312,7 +1312,7 @@ public class CoreAdvanced
                     shopID = Bot.Player.Level >= 50 ? 763 : 147;
                     break;
                 default:
-                    Core.Logger($"Enhancement Failed: Invalid EnhancementType given, received {(int)type} | {type}");
+                    Core.Logger($"Enhancement Failed:\tInvalid EnhancementType given, received {(int)type} | {type}");
                     return;
             }
 
@@ -1336,7 +1336,7 @@ public class CoreAdvanced
                 case CapeSpecial.Forge:
                     if (!uForgeCape())
                     {
-                        Core.Logger("Enhancement Failed: You did not unlock the Forge (Cape) Enhancement yet");
+                        Core.Logger("Enhancement Failed:\tYou did not unlock the Forge (Cape) Enhancement yet");
                         canEnhance = false;
                     }
                     break;
@@ -1361,12 +1361,12 @@ public class CoreAdvanced
                         Fail();
                     break;
                 default:
-                    Core.Logger($"Enhancement Failed: Invalid CapeSpecial given, received {(int)cSpecial} | {cSpecial}");
+                    Core.Logger($"Enhancement Failed:\tInvalid \"CapeSpecial\" given, received {(int)cSpecial} | {cSpecial}");
                     return;
 
                     void Fail()
                     {
-                        Core.Logger($"Enhancement Failed: You did not unlock the {cSpecial} Enhancement yet");
+                        Core.Logger($"Enhancement Failed:\tYou did not unlock the {cSpecial} Enhancement yet");
                         canEnhance = false;
                     }
             }
@@ -1401,12 +1401,12 @@ public class CoreAdvanced
                         Fail();
                     break;
                 default:
-                    Core.Logger($"Enhancement Failed: Invalid HelmSpecial given, received {(int)hSpecial} | {hSpecial}");
+                    Core.Logger($"Enhancement Failed:\tInvalid \"HelmSpecial\" given, received {(int)hSpecial} | {hSpecial}");
                     return;
 
                     void Fail()
                     {
-                        Core.Logger($"Enhancement Failed: You did not unlock the {hSpecial} Enhancement yet");
+                        Core.Logger($"Enhancement Failed:\tYou did not unlock the {hSpecial} Enhancement yet");
                         canEnhance = false;
                     }
             }
@@ -1449,7 +1449,7 @@ public class CoreAdvanced
                         shopID = 639;
                         break;
                     default:
-                        Core.Logger($"Enhancement Failed: Invalid EnhancementType given, received {(int)wSpecial} | {wSpecial}");
+                        Core.Logger($"Enhancement Failed:\tInvalid \"EnhancementType\" given, received {(int)wSpecial} | {wSpecial}");
                         return;
                 }
             }
@@ -1461,7 +1461,7 @@ public class CoreAdvanced
                     case WeaponSpecial.Forge:
                         if (!uForgeWeapon())
                         {
-                            Core.Logger("Enhancement Failed: You did not unlock the Forge (Weapon) Enhancement yet");
+                            Core.Logger("Enhancement Failed:\tYou did not unlock the Forge (Weapon) Enhancement yet");
                             canEnhance = false;
                         }
                         break;
@@ -1480,7 +1480,7 @@ public class CoreAdvanced
                     case WeaponSpecial.Arcanas_Concerto:
                         if (!uArcanasConcerto())
                         {
-                            Core.Logger("Enhancement Failed: You did not unlock the Arcana's Concerto Enhancement yet");
+                            Core.Logger("Enhancement Failed:\tYou did not unlock the Arcana's Concerto Enhancement yet");
                             canEnhance = false;
                         }
                         break;
@@ -1493,12 +1493,12 @@ public class CoreAdvanced
                             Fail();
                         break;
                     default:
-                        Core.Logger($"Enhancement Failed: Invalid WeaponSpecial given, received {(int)wSpecial} | {wSpecial}");
+                        Core.Logger($"Enhancement Failed:\tInvalid \"WeaponSpecial\" given, received {(int)wSpecial} | {wSpecial}");
                         return;
 
                         void Fail()
                         {
-                            Core.Logger($"Enhancement Failed: You did not unlock the {wSpecial} Enhancement yet");
+                            Core.Logger($"Enhancement Failed:\tYou did not unlock the {wSpecial} Enhancement yet");
                             canEnhance = false;
                         }
                 }
@@ -1513,7 +1513,7 @@ public class CoreAdvanced
         }
 
         if (skipCounter > 0)
-            Core.Logger($"Skipped enhancement for {skipCounter} item{(skipCounter > 1 ? 's' : null)}");
+            Core.Logger($"Enhancement Skipped:\t{skipCounter} item{(skipCounter > 1 ? 's' : null)}");
 
         void _AutoEnhance(InventoryItem item, int shopID, string? map = null)
         {
@@ -1524,7 +1524,7 @@ public class CoreAdvanced
             // Shopdata complete check
             if (!shopItems.Any(x => x.Category == ItemCategory.Enhancement) || shopItems.Count == 0)
             {
-                Core.Logger($"Enhancement Failed: Couldn't find enhancements in shop {shopID}");
+                Core.Logger($"Enhancement Failed:\tCouldn't find enhancements in shop {shopID}");
                 return;
             }
 
@@ -1535,7 +1535,7 @@ public class CoreAdvanced
                 Core.DebugLogger(this);
                 if (specialOnCape)
                 {
-                    if ((int)cSpecial == getEnhPatternID(item))
+                    if ((int)cSpecial == item.EnhancementPatternID)
                     {
                         skipCounter++;
                         return;
@@ -1544,14 +1544,14 @@ public class CoreAdvanced
                 else if (specialOnWeapon)
                 {
                     Core.DebugLogger(this);
-                    if (((int)wSpecial <= 6 ? (int)type : 10) == getEnhPatternID(item) && ((int)wSpecial == getProcID(item) || ((int)wSpecial == 99 && getProcID(item) == 0)))
+                    if (((int)wSpecial <= 6 ? (int)type : 10) == item.EnhancementPatternID && ((int)wSpecial == getProcID(item) || ((int)wSpecial == 99 && getProcID(item) == 0)))
                     {
                         Core.DebugLogger(this);
                         skipCounter++;
                         return;
                     }
                 }
-                else if ((int)type == getEnhPatternID(item))
+                else if ((int)type == item.EnhancementPatternID)
                 {
                     skipCounter++;
                     return;
@@ -1560,11 +1560,11 @@ public class CoreAdvanced
 
             // Logging
             if (specialOnCape)
-                Core.Logger($"Searching Enhancement: \tForge/{cSpecial.ToString().Replace("_", " ")} - \"{item.Name}\"");
+                Core.Logger($"Searching Enhancement:\tForge/{cSpecial.ToString().Replace("_", " ")} - \"{item.Name}\"");
             else if (specialOnWeapon)
-                Core.Logger($"Searching Enhancement: \t{((int)wSpecial <= 6 ? type : "Forge")}/{wSpecial.ToString().Replace("_", " ")} - \"{item.Name}\"");
+                Core.Logger($"Searching Enhancement:\t{((int)wSpecial <= 6 ? type : "Forge")}/{wSpecial.ToString().Replace("_", " ")} - \"{item.Name}\"");
             else
-                Core.Logger($"Searching Enhancement: \t{type} - \"{item.Name}\"");
+                Core.Logger($"Searching Enhancement:\t{type} - \"{item.Name}\"");
 
             List<ShopItem> availableEnh = new();
 
@@ -1601,7 +1601,7 @@ public class CoreAdvanced
             ShopItem? bestEnhancement = null;
             if (availableEnh.Count == 0)
             {
-                Core.Logger($"Enhancement Failed: availableEnh is empty");
+                Core.Logger($"Enhancement Failed:\t\"availableEnh\" is empty");
                 return;
             }
             else if (availableEnh.Count == 1)
@@ -1617,9 +1617,17 @@ public class CoreAdvanced
             // Null check
             if (bestEnhancement == null)
             {
-                Core.Logger($"Enhancement Failed: Could not find the best enhancement for \"{item.Name}\"");
+                Core.Logger($"Enhancement Failed:\tCould not find the best enhancement for \"{item.Name}\"");
                 return;
             }
+
+            // Compare with current enhancement
+            if (bestEnhancement.ID == getEnhID(item))
+            {
+                Core.Logger($"Enhancement Canceled:\tBest enhancement is already applied for \"{item.Name}\"");
+                return;
+            }
+
             // Enhancing the item
             Bot.Send.Packet($"%xt%zm%enhanceItemShop%{Bot.Map.RoomID}%{item.ID}%{bestEnhancement.ID}%{shopID}%");
 
@@ -1635,28 +1643,49 @@ public class CoreAdvanced
         }
     }
 
-    private int getProcID(InventoryItem item) => item == null ? 0 : Bot.Flash.GetGameObject<int>($"world.invTree.{item.ID}.ProcID");
-    private int getEnhPatternID(InventoryItem item) => item == null ? 0 : Bot.Flash.GetGameObject<int>($"world.invTree.{item.ID}.EnhPatternID");
+    private int getProcID(InventoryItem? item)
+        => item == null ? 0 : Core.GetItemProperty<int>(item, "ProcID");
+    private int getEnhID(InventoryItem? item)
+        => item == null ? 0 : Core.GetItemProperty<int>(item, "iEnh");
 
-    private bool uForgeWeapon() => Core.isCompletedBefore(8738);
-    private bool uLacerate() => Core.isCompletedBefore(8739);
-    private bool uSmite() => Core.isCompletedBefore(8740);
-    private bool uValiance() => Core.isCompletedBefore(8741);
-    private bool uArcanasConcerto() => Core.isCompletedBefore(8742);
-    private bool uAbsolution() => Core.isCompletedBefore(8743);
-    private bool uVainglory() => Core.isCompletedBefore(8744);
-    private bool uAvarice() => Core.isCompletedBefore(8745);
-    private bool uForgeCape() => Core.isCompletedBefore(8758);
-    private bool uElysium() => Core.isCompletedBefore(8821);
-    private bool uAcheron() => Core.isCompletedBefore(8820);
-    private bool uPenitence() => Core.isCompletedBefore(8822);
-    private bool uLament() => Core.isCompletedBefore(8823);
-    private bool uVim() => Core.isCompletedBefore(8824);
-    private bool uExamen() => Core.isCompletedBefore(8825);
-    private bool uAnima() => Core.isCompletedBefore(8826);
-    private bool uPneuma() => Core.isCompletedBefore(8827);
-    private bool DauntLess() => Core.isCompletedBefore(9172);
-    private bool uPraxis() => Core.isCompletedBefore(9171);
+    private bool uForgeWeapon()
+        => Core.isCompletedBefore(8738);
+    private bool uLacerate()
+        => Core.isCompletedBefore(8739);
+    private bool uSmite()
+        => Core.isCompletedBefore(8740);
+    private bool uValiance()
+        => Core.isCompletedBefore(8741);
+    private bool uArcanasConcerto()
+        => Core.isCompletedBefore(8742);
+    private bool uAbsolution()
+        => Core.isCompletedBefore(8743);
+    private bool uVainglory()
+        => Core.isCompletedBefore(8744);
+    private bool uAvarice()
+        => Core.isCompletedBefore(8745);
+    private bool uForgeCape()
+        => Core.isCompletedBefore(8758);
+    private bool uElysium()
+        => Core.isCompletedBefore(8821);
+    private bool uAcheron()
+        => Core.isCompletedBefore(8820);
+    private bool uPenitence()
+        => Core.isCompletedBefore(8822);
+    private bool uLament()
+        => Core.isCompletedBefore(8823);
+    private bool uVim()
+        => Core.isCompletedBefore(8824);
+    private bool uExamen()
+        => Core.isCompletedBefore(8825);
+    private bool uAnima()
+        => Core.isCompletedBefore(8826);
+    private bool uPneuma()
+        => Core.isCompletedBefore(8827);
+    private bool uDauntless()
+        => Core.isCompletedBefore(9172);
+    private bool uPraxis()
+        => Core.isCompletedBefore(9171);
 
     #endregion
 
