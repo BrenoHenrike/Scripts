@@ -1874,6 +1874,44 @@ public class CoreBots
         }
     }
 
+    ///// <summary>
+    ///// Kill Kitsune for the desired item
+    ///// </summary>
+    ///// <param name="item">Item name</param>
+    ///// <param name="quant">Desired quantity</param>
+    ///// <param name="isTemp">Whether the item is temporary</param>
+    //public void KillKitsune(string? item = null, int quant = 1, bool isTemp = false, bool log = true, bool publicRoom = false)
+    //{
+    //    if (item != null && (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
+    //        return;
+
+    //    Join("kitsune", "Boss", "Left");
+    //    Bot.Events.ExtensionPacketReceived += KitsuneListener;
+
+    //    if (item == null)
+    //    {
+    //        if (log)
+    //            Logger("Killing Kitsune");
+    //        while (!Bot.ShouldExit && IsMonsterAlive("Kitsune"))
+    //            Bot.Combat.Attack("Kitsune");
+    //    }
+    //    else
+    //    {
+    //        if (!isTemp)
+    //            AddDrop(item);
+    //        if (log)
+    //            Logger($"Killing Kitsune for {item} ({dynamicQuant(item, isTemp)}/{quant}) [Temp = {isTemp}]");
+    //        while (!Bot.ShouldExit && !CheckInventory(item, quant))
+    //            Bot.Combat.Attack("Kitsune");
+    //    }
+    //    Bot.Events.ExtensionPacketReceived -= KitsuneListener;
+
+    //    void KitsuneListener(dynamic packet)
+    //    {
+
+    //    }
+    //}
+
     /// <summary>
     /// Kill Vath for the desired item
     /// </summary>
@@ -3139,6 +3177,22 @@ public class CoreBots
         }
     }
 
+
+    #endregion
+
+    #region Flash-Call Assistance
+
+    public T? GetItemProperty<T>(InventoryItem item, string prop)
+    {
+        if (Bot.Inventory.Contains(item.ID))
+            return Bot.Flash.GetGameObject<T>($"world.invTree.{item.ID}.{prop}");
+        else if (Bot.Bank.Contains(item.ID)) // Also covers banked house items
+            return Bot.Flash.GetGameObject<List<dynamic>>("world.bankinfo.items")?.Find(d => d.ItemID == item.ID)?[prop];
+        else
+            return Bot.Flash.GetGameObject<List<dynamic>>("world.myAvatar.houseitems")?.Find(d => d.ItemID == item.ID)?[prop];
+    }
+    public T? GetItemProperty<T>(ShopItem item, string prop)
+        => Bot.Flash.GetGameObject<List<dynamic>>("world.shopinfo.items")?.Find(d => d.ItemID == item.ID)?[prop];
 
     #endregion
 
