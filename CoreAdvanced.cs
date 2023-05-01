@@ -1259,7 +1259,7 @@ public class CoreAdvanced
 
         // Defining helm
         InventoryItem? helm = null;
-        if (hSpecial.ToString() != "None" && ItemList.Any(i => i.Category == ItemCategory.Helm))
+        if (hSpecial != HelmSpecial.None && ItemList.Any(i => i.Category == ItemCategory.Helm))
         {
             Core.DebugLogger(this);
             helm = ItemList.Find(i => i.Category == ItemCategory.Helm);
@@ -1271,7 +1271,8 @@ public class CoreAdvanced
 
         // Defining weapon
         InventoryItem? weapon = null;
-        if (wSpecial.ToString() != "None" && ItemList.Any(i => i.ItemGroup == "Weapon"))
+        // If Awe-Enhancements aren't unlocked, enhance them with normal enhancements
+        if (wSpecial != WeaponSpecial.None && ItemList.Any(i => i.ItemGroup == "Weapon") && (uAwe() || (int)wSpecial > 6))
         {
             Core.DebugLogger(this);
             weapon = ItemList.Find(i => i.ItemGroup == "Weapon");
@@ -1657,6 +1658,8 @@ public class CoreAdvanced
     private int getEnhID(InventoryItem? item)
         => item == null ? 0 : Core.GetItemProperty<int>(item, "iEnh");
 
+    private bool uAwe()
+        => Core.isCompletedBefore(2937);
     private bool uForgeWeapon()
         => Core.isCompletedBefore(8738);
     private bool uLacerate()
