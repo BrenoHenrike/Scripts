@@ -388,7 +388,7 @@ public class CoreBLOD
             Core.KillMonster("greendragon", "Boss", "Left", "Greenguard Dragon", "Greenguard Dragon Hide", 3, log: false);
             Core.KillMonster("sandcastle", "r7", "Left", "Chaos Sphinx", "Gold Brush", publicRoom: true, log: false);
             Core.KillMonster("crashsite", "Boss", "Left", "ProtoSartorium", "Non-abrasive Power Powder", log: false);
-            Core.KillMonster("kitsune", "Boss", "Left", "Kitsune", "No. 1337 Blade Oil", publicRoom: true, log: false);
+            Core.KillKitsune("No. 1337 Blade Oil", publicRoom: true, log: false);
             Core.KillMonster("citadel", "m14", "Left", "Grand Inquisitor", "Blinding Lacquer Finish", log: false);
             Core.HuntMonster("djinn", "Harpy", "Suede Travel Case", log: false);
             Core.KillMonster("roc", "Enter", "Spawn", "Rock Roc", "Sharp Stone Sharpener", log: false);

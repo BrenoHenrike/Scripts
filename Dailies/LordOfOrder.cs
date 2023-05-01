@@ -131,7 +131,7 @@ public class LordOfOrder
             Core.EnsureAccept(7160);
 
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("kitsune", "Kitsune", "Hanzamune Dragon Koi Blade", isTemp: false, log: false);
+            Core.KillKitsune("Hanzamune Dragon Koi Blade", log: false);
             Core.HuntMonster("ledgermayne", "Ledgermayne", "The Supreme Arcane Staff", isTemp: false, log: false);
             Core.HuntMonster("mqlesson", "Dragonoid", "Dragonoid of Hours", isTemp: false, log: false);
             if (!Core.CheckInventory("Safiria's Spirit Orb"))

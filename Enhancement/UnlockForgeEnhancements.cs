@@ -303,16 +303,16 @@ public class UnlockForgeEnhancements
 
         Core.Logger("Unlocking Enhancement: Forge (Weapon)");
 
-        Farm.BlacksmithingREP(4, Bot.Config!.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
         LOC.Escherion();
         Farm.Experience(30);
+        Farm.BlacksmithingREP(4, Bot.Config!.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
 
         Core.EquipClass(ClassType.Solo);
         Core.EnsureAccept(8738);
 
         Core.KillEscherion("1st Lord Of Chaos Helm");
         Core.KillVath("Chaos Dragonlord Helm");
-        Core.HuntMonster("kitsune", "Kitsune", "Chaos Shogun Helmet", isTemp: false);
+        Core.KillKitsune("Chaos Shogun Helmet");
         Core.HuntMonster("wolfwing", "Wolfwing", "Wolfwing Mask", isTemp: false);
 
         Core.EnsureComplete(8738);
@@ -653,7 +653,7 @@ public class UnlockForgeEnhancements
 
         Core.KillEscherion("1st Lord Of Chaos Staff");
         Core.KillVath("Chaos Dragonlord Axe");
-        Core.HuntMonster("kitsune", "Kitsune", "Hanzamune Dragon Koi Blade", isTemp: false);
+        Core.KillKitsune("Hanzamune Dragon Koi Blade");
         Core.HuntMonster("wolfwing", "Wolfwing", "Wrath of the Werepyre", isTemp: false);
 
         Core.EnsureComplete(8758);

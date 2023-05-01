@@ -1874,43 +1874,67 @@ public class CoreBots
         }
     }
 
-    ///// <summary>
-    ///// Kill Kitsune for the desired item
-    ///// </summary>
-    ///// <param name="item">Item name</param>
-    ///// <param name="quant">Desired quantity</param>
-    ///// <param name="isTemp">Whether the item is temporary</param>
-    //public void KillKitsune(string? item = null, int quant = 1, bool isTemp = false, bool log = true, bool publicRoom = false)
-    //{
-    //    if (item != null && (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
-    //        return;
+    /// <summary>
+    /// Kill Kitsune for the desired item
+    /// </summary>
+    /// <param name="item">Item name</param>
+    /// <param name="quant">Desired quantity</param>
+    /// <param name="isTemp">Whether the item is temporary</param>
+    public void KillKitsune(string? item = null, int quant = 1, bool isTemp = false, bool log = true, bool publicRoom = false)
+    {
+        if (item != null && (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
+            return;
 
-    //    Join("kitsune", "Boss", "Left");
-    //    Bot.Events.ExtensionPacketReceived += KitsuneListener;
+        Join("kitsune", "Boss", "Left");
+        Bot.Events.ExtensionPacketReceived += KitsuneListener;
 
-    //    if (item == null)
-    //    {
-    //        if (log)
-    //            Logger("Killing Kitsune");
-    //        while (!Bot.ShouldExit && IsMonsterAlive("Kitsune"))
-    //            Bot.Combat.Attack("Kitsune");
-    //    }
-    //    else
-    //    {
-    //        if (!isTemp)
-    //            AddDrop(item);
-    //        if (log)
-    //            Logger($"Killing Kitsune for {item} ({dynamicQuant(item, isTemp)}/{quant}) [Temp = {isTemp}]");
-    //        while (!Bot.ShouldExit && !CheckInventory(item, quant))
-    //            Bot.Combat.Attack("Kitsune");
-    //    }
-    //    Bot.Events.ExtensionPacketReceived -= KitsuneListener;
+        if (item == null)
+        {
+            if (log)
+                Logger("Killing Kitsune");
+            while (!Bot.ShouldExit && IsMonsterAlive("Kitsune"))
+                Bot.Combat.Attack("Kitsune");
+        }
+        else
+        {
+            if (!isTemp)
+                AddDrop(item);
+            if (log)
+                Logger($"Killing Kitsune for {item} ({dynamicQuant(item, isTemp)}/{quant}) [Temp = {isTemp}]");
+            while (!Bot.ShouldExit && !CheckInventory(item, quant))
+                Bot.Combat.Attack("Kitsune");
+        }
+        Bot.Events.ExtensionPacketReceived -= KitsuneListener;
 
-    //    void KitsuneListener(dynamic packet)
-    //    {
+        void KitsuneListener(dynamic packet)
+        {
+            string type = packet["params"].type;
+            dynamic data = packet["params"].dataObj;
+            if (type is not null and "json")
+            {
+                string cmd = data.cmd.ToString();
+                switch (cmd)
+                {
+                    case "ct":
+                        if (data.a is not null)
+                        {
+                            foreach (var a in data.a)
+                            {
+                                if (a is null)
+                                    continue;
 
-    //    }
-    //}
+                                if (a.aura is not null && (string)a.aura["nam"] is "Shapeshifted")
+                                {
+                                    Bot.Combat.StopAttacking = ((string)a.cmd)[^0] == '+';
+                                    break;
+                                }
+                            }
+                        }
+                        break;
+                }
+            }
+        }
+    }
 
     /// <summary>
     /// Kill Vath for the desired item
