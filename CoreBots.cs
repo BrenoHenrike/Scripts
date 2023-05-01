@@ -1200,9 +1200,9 @@ public class CoreBots
 
             // Separating the quests into choose and non-choose
             if (q.SimpleRewards.Any(r => r.Type == 2))
-                chooseQuests.Add(q, 1);
+                chooseQuests.Add(q, 0);
             else
-                nonChooseQuests.Add(q, 1);
+                nonChooseQuests.Add(q, 0);
         }
 
         registeredQuests = questIDs;
