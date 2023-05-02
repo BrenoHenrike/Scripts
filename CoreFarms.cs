@@ -1602,8 +1602,8 @@ public class CoreFarms
         Core.RegisterQuests(5198);
         while (!Bot.ShouldExit && FactionRank("Eternal") < rank)
         {
-            Core.KillMonster("fourdpyramid", "r11", "Right", 2908, "White Gem", 2, log: false);
-            Core.KillMonster("fourdpyramid", "r11", "Right", 2909, "Black Gem", 2, log: false);
+            Core.KillMonster("fourdpyramid", "r11", "Right", 2909, "White Gem", 2, log: false);
+            Core.KillMonster("fourdpyramid", "r11", "Right", 2908, "Black Gem", 2, log: false);
         }
         Core.CancelRegisteredQuests();
         ToggleBoost(BoostType.Reputation, false);

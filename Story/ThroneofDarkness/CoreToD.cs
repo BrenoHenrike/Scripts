@@ -874,8 +874,8 @@ public class CoreToD
            if (!Story.QuestProgression(5198))
         {
             Core.EnsureAccept(5198);
-            Core.KillMonster("fourdpyramid", "r11", "Right", 2908, "White Gem", 2, log: false);
-            Core.KillMonster("fourdpyramid", "r11", "Right", 2909, "Black Gem", 2, log: false);
+            Core.KillMonster("fourdpyramid", "r11", "Right", 2909, "White Gem", 2, log: false);
+            Core.KillMonster("fourdpyramid", "r11", "Right", 2908, "Black Gem", 2, log: false);
             Core.EnsureComplete(5198);
         }    
 
