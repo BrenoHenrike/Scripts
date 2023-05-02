@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 155534,
+    "size": 155533,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -136,6 +136,24 @@
     "size": 2613,
     "fileName": "AutoAttackWithMove.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/AutoAttackWithMove.cs"
+  },
+  {
+    "name": "Auto Attack with Auto Movement",
+    "description": "This bot will automatically move to the right locations for Nightmare Carnax and Ultra Dage",
+    "tags": [
+      "nightmare",
+      "carnax",
+      "ultra",
+      "dage",
+      "auto",
+      "attack",
+      "movement",
+      "tool"
+    ],
+    "path": "Tools/EvaluateAccount.cs",
+    "size": 8974,
+    "fileName": "EvaluateAccount.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/EvaluateAccount.cs"
   },
   {
     "name": "Buy Out Shops",
