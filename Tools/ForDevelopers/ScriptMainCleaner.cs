@@ -175,7 +175,7 @@ public class ScriptMainCleaner
     };
     private string[] NoSetOptionsAllowed =
     {
-        @"Farm\BankAllItems.cs",
+        @"Tools\BankAllItems.cs",
         @"Other\WheelOfDoomSpam.cs",
         @"Tools\ForDevelopers\GenerateQuestFiles.cs",
         @"Tools\GenerateQueuedScript.cs",
