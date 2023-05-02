@@ -1421,8 +1421,13 @@ public class CoreBots
 
             if (toReturn == null)
             {
-                Logger($"Failed to get the Quest Object for questID {questID}" + reinstallCleanFlash, "EnsureLoad A.0", messageBox: true, stopBot: true);
-                return new();
+                toReturn = EnsureLoadFromFile(questID).Result?.FirstOrDefault();
+
+                if (toReturn == null)
+                {
+                    Logger($"Failed to get the Quest Object for questID {questID}" + reinstallCleanFlash, "EnsureLoad A.0", messageBox: true, stopBot: true);
+                    return new();
+                }
             }
         }
 
