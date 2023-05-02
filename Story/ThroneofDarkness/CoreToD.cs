@@ -871,7 +871,13 @@ public class CoreToD
         Story.MapItemQuest(5197, "fourdpyramid", 4561, 1);
 
         // Sphynxes are Riddled With Gems
-        Story.KillQuest(5198, "fourdpyramid", new[] { "Stone Sphynx", "Stone Sphynx" });
+           if (!Story.QuestProgression(5198))
+        {
+            Core.EnsureAccept(5198);
+            Core.KillMonster("fourdpyramid", "r11", "Right", 2908, "White Gem", 2, log: false);
+            Core.KillMonster("fourdpyramid", "r11", "Right", 2909, "Black Gem", 2, log: false);
+            Core.EnsureComplete(5198);
+        }    
 
         // 4th Dimensional Teleport
         Story.MapItemQuest(5199, "fourdpyramid", 4562, 4);

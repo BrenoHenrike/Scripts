@@ -106,7 +106,7 @@ public class ChaosAvengerClass
             Core.KillVath("Vath's Chaotic Dragonlord Armor");
 
             //Chaos Shogun Armor
-            Core.HuntMonster("kitsune", "Kitsune", "Chaos Shogun Armor", isTemp: false, publicRoom: true);
+            Core.KillKitsune("Chaos Shogun Armor", publicRoom: true);
 
             //Wolfwing Armor
             Core.HuntMonster("wolfwing", "Wolfwing", "Wolfwing Armor", isTemp: false, publicRoom: true);

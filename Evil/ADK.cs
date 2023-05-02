@@ -128,7 +128,7 @@ public class ArchDoomKnight
         Core.KillEscherion("Chaotic Power", 13, publicRoom: true);
 
         Core.KillVath("Legendary Sword of Dragon Control", isTemp: false, publicRoom: true);
-        Core.HuntMonster("Kitsune", "Kitsune", "Hanzamune Dragon Koi Blade", isTemp: false, publicRoom: true);
+        Core.KillKitsune("Hanzamune Dragon Koi Blade", publicRoom: true);
         Core.HuntMonster("Wolfwing", "Wolfwing", "Wolfwing Armor", isTemp: false);
         Core.HuntMonster("palooza", "Kimberly", "One Eyed Doll Breaker", isTemp: false);
         Core.HuntMonster("Ledgermayne", "Ledgermayne", "Ledgermayne", isTemp: false, publicRoom: true);
