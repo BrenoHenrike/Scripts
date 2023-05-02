@@ -37,8 +37,8 @@ public class DrakathArmorBot
     {
         LOC.Complete13LOC();
         DrakathArmorQuest();
-        Core.BuyItem("battleon", 994, "Original Drakath Armor");
-        Core.BuyItem("battleon", 994, "Drakath Armor");
+        Core.BuyItem(Bot.Map.Name, 994, "Original Drakath Armor");
+        Core.BuyItem(Bot.Map.Name, 994, "Drakath Armor");
     }
 
     public void DrakathArmor()
@@ -46,8 +46,9 @@ public class DrakathArmorBot
         if (Core.CheckInventory("Drakath Armor"))
             return;
 
+        LOC.Complete13LOC();
         DrakathArmorQuest();
-        Core.BuyItem("battleon", 994, "Drakath Armor");
+        Core.BuyItem(Bot.Map.Name, 994, "Drakath Armor");
     }
 
     public void DrakathOriginalArmor()
@@ -57,7 +58,7 @@ public class DrakathArmorBot
 
         LOC.Complete13LOC();
         DrakathArmorQuest();
-        Core.BuyItem("battleon", 994, "Original Drakath Armor");
+        Core.BuyItem(Bot.Map.Name, 994, "Original Drakath Armor");
     }
 
     public void DrakathArmorQuest()
