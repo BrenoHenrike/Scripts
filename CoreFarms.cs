@@ -1599,11 +1599,11 @@ public class CoreFarms
         ToggleBoost(BoostType.Reputation);
         Core.Logger($"Farming rank {rank}");
 
-        Core.RegisterQuests(5198);
+        Core.RegisterQuests(5198,5208);
         while (!Bot.ShouldExit && FactionRank("Eternal") < rank)
         {
-            Core.KillMonster("fourdpyramid", "r11", "Right", 2909, "White Gem", 2, log: false);
-            Core.KillMonster("fourdpyramid", "r11", "Right", 2908, "Black Gem", 2, log: false);
+            Core.HuntMonsterMapID("fourdpyramid", 19, "White Gem", 3, log: false);
+            Core.HuntMonsterMapID("fourdpyramid", 20, "Black Gem", 2, log: false);
         }
         Core.CancelRegisteredQuests();
         ToggleBoost(BoostType.Reputation, false);
