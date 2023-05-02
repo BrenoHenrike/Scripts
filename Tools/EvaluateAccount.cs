@@ -1,7 +1,7 @@
 /*
-name: Auto Attack with Auto Movement
-description: This bot will automatically move to the right locations for Nightmare Carnax and Ultra Dage
-tags: nightmare, carnax, ultra, dage, auto, attack, movement, tool
+name: Evaluate Account
+description: This script will give a popup telling you a bunch of information regarding your account.
+tags: tool, evaluate, account, chrono, heromart, beta, founder, badges, enhancements, rare, seasonal
 */
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;
@@ -109,7 +109,7 @@ public class EvalAcc
             importantItemCheckbox(3, "Providence") +
             importantItemCheckbox(2, "Exalted Apotheosis") +
             importantItemCheckbox(2, "Radiant Goddess of War") +
-            $"Awescened:\t\t\t{checkbox(Core.isCompletedBefore(8042))}\n\n" +
+            $"Awescended:\t\t\t{checkbox(Core.isCompletedBefore(8042))}\n\n" +
 
             $"Awe   \u200AEnhancements Unlocked:\t{checkbox(Core.isCompletedBefore(2937))}\n" +
             $"Forge Enhancements Unlocked:\t{forgeEnhIDs.Count(q => Core.isCompletedBefore(q))} out of {forgeEnhIDs.Count()}"
