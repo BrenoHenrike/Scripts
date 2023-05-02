@@ -74,7 +74,7 @@ public class EvalAcc
             (accAge != null ? $"Account Age:\t\t\t{(int)(accAge.Value.TotalDays / 365.2425)} years, {(int)(accAge.Value.TotalDays - ((int)(accAge.Value.TotalDays / 365.2425) * 365.2425)) / 30} months\n" : String.Empty) +
             (gender != null ? $"Gender:\t\t\t\t{(gender[1] == 'M' ? "Male" : "Female")}\n\n" : String.Empty) +
 
-            $"Maxed Factions:\t\t\t{Bot.Reputation.FactionList.Count(f => f.Rank == 10)} out of 51\n" +
+            $"Maxed Factions:\t\t\t{Bot.Reputation.FactionList.Count(f => f.Rank == 10)} out of 52\n" +
             $"Joined Legion:\t\t\t{checkbox(Core.isCompletedBefore(793))}\n" +
             $"Treasure Potion Count:\t\t{Bot.Inventory.GetItem(18927)?.Quantity}\n" +
             $"Badge Count:\t\t\t{JsonConvert.DeserializeObject<List<dynamic>>(Core.GetBadgeJSON().Result)?.Count}\n" +
