@@ -6,6 +6,7 @@ tags: null
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
+//cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Seasonal/HarvestDay/CoreHarvestDay.cs
 
 using Skua.Core.Interfaces;
@@ -15,6 +16,7 @@ public class BrethwrenREPFarm
     public CoreFarms Farm = new CoreFarms();
     public CoreStory Story = new();
     public CoreHarvestDay HarvestDay = new();
+    public CoreAdvanced Adv = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -27,6 +29,7 @@ public class BrethwrenREPFarm
 
     public void DoRep()
     {
+        Adv.BestGear(GenericGearBoost.dmgAll);
         HarvestDay.BirdsWithHarms();
 
         Farm.BrethwrenREP();
