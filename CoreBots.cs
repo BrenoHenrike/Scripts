@@ -2483,7 +2483,7 @@ public class CoreBots
     public bool HasWebBadge(int badgeID) => GetBadgeJSON().Result.Contains($"\"badgeID\":{badgeID}");
     public bool HasWebBadge(string badgeName) => GetBadgeJSON().Result.Contains($"\"sTitle\":\"{badgeName}\"");
 
-    private async Task<string> GetBadgeJSON()
+    public async Task<string> GetBadgeJSON()
     {
         string toReturn = string.Empty;
         int ccid = Bot.Flash.GetGameObject<int>("world.myAvatar.objData.CharID");
