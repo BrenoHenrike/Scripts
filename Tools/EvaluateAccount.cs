@@ -75,7 +75,7 @@ public class EvalAcc
             (gender != null ? $"Gender:\t\t\t\t{(gender[1] == 'M' ? "Male" : "Female")}\n\n" : String.Empty) +
 
             $"Maxed Factions:\t\t\t{Bot.Reputation.FactionList.Count(f => f.Rank == 10)} out of 51\n" +
-            $"Join Legion:\t\t\t{checkbox(Core.isCompletedBefore(793))}\n" +
+            $"Joined Legion:\t\t\t{checkbox(Core.isCompletedBefore(793))}\n" +
             $"Treasure Potion Count:\t\t{Bot.Inventory.GetItem(18927)?.Quantity}\n" +
             $"Badge Count:\t\t\t{JsonConvert.DeserializeObject<List<dynamic>>(Core.GetBadgeJSON().Result)?.Count}\n" +
 
