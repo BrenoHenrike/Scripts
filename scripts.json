@@ -12514,6 +12514,25 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Various/StarFestivalGift.cs"
   },
   {
+    "name": "Dark Scroll Treasure Hunt",
+    "description": "such a treasure hunt condensed to (by lucK) 2 minutes of your time...",
+    "tags": [
+      "dark scroll",
+      "amethyst gem",
+      "lilbro dell'inferno",
+      "amethyst inferno tome",
+      "inferno tome",
+      "burning seal",
+      "deciphered scroll",
+      "the point",
+      "the point sword"
+    ],
+    "path": "Other/Various/DarkScrollTreasureHunt.cs",
+    "size": 3288,
+    "fileName": "DarkScrollTreasureHunt.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Various/DarkScrollTreasureHunt.cs"
+  },
+  {
     "name": "TheDarkBox",
     "description": "null",
     "tags": [
