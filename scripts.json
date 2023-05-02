@@ -149,20 +149,23 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/AutoAttackWithMove.cs"
   },
   {
-    "name": "Auto Attack with Auto Movement",
-    "description": "This bot will automatically move to the right locations for Nightmare Carnax and Ultra Dage",
+    "name": "Evaluate Account",
+    "description": "This script will give a popup telling you a bunch of information regarding your account.",
     "tags": [
-      "nightmare",
-      "carnax",
-      "ultra",
-      "dage",
-      "auto",
-      "attack",
-      "movement",
-      "tool"
+      "tool",
+      "evaluate",
+      "account",
+      "chrono",
+      "heromart",
+      "beta",
+      "founder",
+      "badges",
+      "enhancements",
+      "rare",
+      "seasonal"
     ],
     "path": "Tools/EvaluateAccount.cs",
-    "size": 11381,
+    "size": 11399,
     "fileName": "EvaluateAccount.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/EvaluateAccount.cs"
   },
