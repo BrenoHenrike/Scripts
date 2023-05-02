@@ -34,6 +34,7 @@ public class EvalAcc
         int usedACs = 0;
         int equipment = 0;
         int classes = 0;
+        int hmClasses = 0;
         int miscItems = 0;
         int houseItems = 0;
 
@@ -61,6 +62,7 @@ public class EvalAcc
         var accAge = accountAge(Bot.Flash.GetGameObject("world.myAvatar.objData.dCreated"));
         var gender = Bot.Flash.GetGameObject("world.myAvatar.objData.strGender");
         int ACs = Bot.Flash.GetGameObject<int>("world.myAvatar.objData.intCoins");
+        var badges = JsonConvert.DeserializeObject<List<dynamic>>(Core.GetBadgeJSON().Result);
 
         // Joining Legion will use up at least 120 AC
         if (Core.isCompletedBefore(793))
@@ -68,27 +70,31 @@ public class EvalAcc
 
         // The actual output
         Bot.ShowMessageBox(
-            "We have found out the following things about your account:\n\n" +
-
             $"Level:\t\t\t\t{Bot.Player.Level}\n" +
             (accAge != null ? $"Account Age:\t\t\t{(int)(accAge.Value.TotalDays / 365.2425)} years, {(int)(accAge.Value.TotalDays - ((int)(accAge.Value.TotalDays / 365.2425) * 365.2425)) / 30} months\n" : String.Empty) +
-            (gender != null ? $"Gender:\t\t\t\t{(gender[1] == 'M' ? "Male" : "Female")}\n\n" : String.Empty) +
+            (badges != null ? $"Beta Tester:\t\t\t{checkbox(badges.Any(b => (int)b.badgeID == 1))}\n" : String.Empty) +
+            (badges != null ? $"Founder:\t\t\t\t{checkbox(badges.Any(b => (int)b.badgeID == 2))}\n" : String.Empty) +
+            (gender != null ? $"Gender:\t\t\t\t{(gender[1] == 'M' ? "Male" : "Female")}\n" : String.Empty) +
 
-            $"Maxed Factions:\t\t\t{Bot.Reputation.FactionList.Count(f => f.Rank == 10)} out of 52\n" +
+            $"\nMaxed Factions:\t\t\t{Bot.Reputation.FactionList.Count(f => f.Rank == 10)} out of 52\n" +
             $"Joined Legion:\t\t\t{checkbox(Core.isCompletedBefore(793))}\n" +
-            $"Treasure Potion Count:\t\t{Bot.Inventory.GetItem(18927)?.Quantity}\n" +
-            $"Badge Count:\t\t\t{JsonConvert.DeserializeObject<List<dynamic>>(Core.GetBadgeJSON().Result)?.Count}\n" +
+            $"Treasure Potion Count:\t\t{Bot.Inventory.GetItem(18927)?.Quantity}\n\n" +
 
-            $"\nCurrent Gold:\t\t\t{ToKMB(Bot.Player.Gold)}\n" +
-            $"Current ACs:\t\t\t{ToKMB((int)Math.Floor((double)ACs / 1000d) * 1000)}+\n" +
-            $"Spent ACs:\t\t\t{usedACs}\n" +
+            $"Current Gold:\t\t\t{ToKMB((int)Math.Round((double)Bot.Player.Gold / 100000d) * 100000)}\n" +
+            $"Current ACs:\t\t\t{ToKMB((int)Math.Floor((double)ACs / 1000d) * 1000)}{(ACs > 0 ? "+" : String.Empty)}\n" +
+            $"Spent ACs:\t\t\t{ToKMB((int)Math.Floor((double)usedACs / 1000d) * 1000)}{(usedACs > 0 ? "+" : String.Empty)}\n" +
             $"Extra Slots:\t\t\t{extraSlots} slots worth {extraSlots * 200} ACs\n\n" +
+
+            $"Total Badge Count:\t\t{badges?.Count}\n" +
+            $"Support Badge Count:\t\t{badges?.Count(b => (string)b.sCategory == "Support")}\n" +
+            $"HeroMart Badge Count:\t\t{badges?.Count(b => (string)b.sCategory == "HeroMart")}\n" +
+            $"Exclusive Badge Count:\t\t{badges?.Count(b => (string)b.sCategory == "Exclusive")}\n\n" +
 
             $"Equipment Count:\t\t\t{equipment}\n" +
             $"Class Count:\t\t\t{classes}\n" +
+            $"HeroMart Class Count:\t\t{hmClasses}\n" +
             $"Misc Item Count:\t\t\t{miscItems}\n" +
-            $"House Item Count:\t\t{houseItems}\n\n" +
-
+            $"House Item Count:\t\t{houseItems}\n" +
             $"Rare Item Count:\t\t\t{rareItems}\n" +
             $"Seasonal Item Count:\t\t{seasonalItems}\n" +
             $"1% Drop Item Count:\t\t{onePercentItems}\n" +
@@ -98,14 +104,14 @@ public class EvalAcc
             importantItemCheckbox(3, "Legion Revenant") +
             importantItemCheckbox(3, "ArchMage") +
             importantItemCheckbox(3, "Dragon of Time") +
-            importantItemCheckbox(3, "Lord Of Order") + "\n" +
-
+            importantItemCheckbox(3, "Lord Of Order") +
             importantItemCheckbox(2, "Necrotic Sword of Doom") +
             importantItemCheckbox(3, "Providence") +
             importantItemCheckbox(2, "Exalted Apotheosis") +
-            $"Awescened:\t\t\t{checkbox(Core.isCompletedBefore(8042))}\n" +
+            importantItemCheckbox(2, "Radiant Goddess of War") +
+            $"Awescened:\t\t\t{checkbox(Core.isCompletedBefore(8042))}\n\n" +
 
-            $"\nAwe   \u200AEnhancements Unlocked:\t{checkbox(Core.isCompletedBefore(2937))}\n" +
+            $"Awe   \u200AEnhancements Unlocked:\t{checkbox(Core.isCompletedBefore(2937))}\n" +
             $"Forge Enhancements Unlocked:\t{forgeEnhIDs.Count(q => Core.isCompletedBefore(q))} out of {forgeEnhIDs.Count()}"
 
             , "Evaluation Complete");
@@ -124,12 +130,13 @@ public class EvalAcc
                 seasonalItems += list.Count(item => (int)item.iRty == 50);
 
                 int _classes = 0;
-                classes += _classes = list.Count(item => item.sType != null && (string)item.sIcon == "iiclass");
+                classes += _classes = list.Count(item => (string)item.sIcon == "iiclass");
                 int _miscItems = 0;
                 miscItems += _miscItems = list.Count(item => (string)item.sIcon == "iibag");
                 int _houseItems = 0;
                 houseItems += _houseItems = list.Count(item => houseCat.Contains((string)item.sType));
                 equipment += list.Count() - _miscItems - _houseItems - _classes;
+                hmClasses += list.Count(item => (string)item.sIcon == "iiclass" && this.hmClasses.Contains((string)item.sName));
             }
         }
 
@@ -244,5 +251,60 @@ public class EvalAcc
         8827,
         9172,
         9171,
+    };
+
+    private string[] hmClasses =
+    {
+        "CardClasher",
+        "Chrono Chaorruptor",
+        "Chrono Commandant",
+        "Chrono DataKnight",
+        "Chrono DragonKnight",
+        "ChronoCommander",
+        "ChronoCorruptor",
+        "Chronomancer",
+        "Chronomancer Prime",
+        "Classic Defender",
+        "Classic Dragonlord",
+        "Classic Guardian",
+        "Continuum Chronomancer",
+        "Corrupted Chronomancer",
+        "Dark Master of Moglins",
+        "Defender",
+        "Dragonlord",
+        "DoomKnight OverLord",
+        "Dragon Knight",
+        "Empyrean Chronomancer",
+        "Eternal Chronomancer",
+        "Flame Dragon Warrior",
+        "Great Thief",
+        "Guardian",
+        "Heavy Metal Rockstar",
+        "Heavy Metal Necro",
+        "Immortal Chronomancer",
+        "Infinity Knight",
+        "Interstellar Knight",
+        "Legion Paladin",
+        "Master of Moglins",
+        "Nechronomancer",
+        "Necrotic Chronomancer",
+        "NOT A MOD",
+        "Nu Metal Necro",
+        "Obsidian Paladin Chronomancer",
+        "Overworld Chronomancer",
+        "Paladin Chronomancer",
+        "Paladin Highlord",
+        "PaladinSlayer",
+        "Quantum Chronomancer",
+        "ShadowStalker of Time",
+        "ShadowWalker of Time",
+        "ShadowWeaver of Time",
+        "Star Captain",
+        "StarLord",
+        "TimeKeeper",
+        "TimeKiller",
+        "Timeless Chronomancer",
+        "Underworld Chronomancer",
+        "Unchained Rocker",
     };
 }
