@@ -1754,161 +1754,6 @@ public class CoreAdvanced
         {
             switch (className)
             {
-                #region Forge Region
-
-                #region Forge - Lucky - Smite
-                case "Draconic Chronomancer":
-                    if (!uSmite() || !uForgeCape())
-                        goto default;
-
-                    type = EnhancementType.Lucky;
-                    cSpecial = CapeSpecial.Forge;
-                    wSpecial = WeaponSpecial.Smite;
-                    break;
-                #endregion
-
-                #region Forge - Lucky - Elysium
-                case "ultra omniknight":
-                case "dark ultra omninight":
-                    if (!uElysium() || !uForgeCape())
-                        goto default;
-
-                    type = EnhancementType.Lucky;
-                    cSpecial = CapeSpecial.Forge;
-                    wSpecial = WeaponSpecial.Elysium;
-                    break;
-                #endregion
-
-                #endregion
-
-                #region Wizard Region
-
-                #region Wizard - Forge - Spiral Carve
-                case "lightcaster":
-                    if (!uForgeCape())
-                        goto default;
-
-                    type = EnhancementType.Wizard;
-                    cSpecial = CapeSpecial.Forge;
-                    wSpecial = WeaponSpecial.Spiral_Carve;
-                    break;
-                #endregion
-
-                #region Wizard - Forge - Awe Blast
-                case "infinity knight":
-                    if (!uForgeCape())
-                        goto default;
-
-                    type = EnhancementType.Wizard;
-                    cSpecial = CapeSpecial.Forge;
-                    wSpecial = WeaponSpecial.Awe_Blast;
-                    break;
-                #endregion
-
-                #region Wizard - Vainglory - Valiance - Pneuma
-                case "archmage":
-                case "darklord":
-                    if (!uVainglory() || !uValiance() || !uPneuma())
-                        goto default;
-
-                    type = EnhancementType.Wizard;
-                    cSpecial = CapeSpecial.Vainglory;
-                    wSpecial = WeaponSpecial.Valiance;
-                    hSpecial = HelmSpecial.Pneuma;
-                    break;
-                #endregion
-
-                #region Wizard - Penitence - Acheron - Pneuma
-                case "master of moglins":
-                case "dark master of moglins":
-                    if (!uPenitence() || !uAcheron() || !uPneuma())
-                        goto default;
-
-                    type = EnhancementType.Wizard;
-                    cSpecial = CapeSpecial.Penitence;
-                    wSpecial = WeaponSpecial.Acheron;
-                    hSpecial = HelmSpecial.Pneuma;
-                    break;
-                #endregion
-
-                #region Wizard - Avarice - Valiance - Pneuma
-                case "legion revenant":
-                case "legion revenant (ioda)":
-                    if (!uAvarice() || !uValiance() || !uPneuma())
-                        goto default;
-
-                    type = EnhancementType.Wizard;
-                    cSpecial = CapeSpecial.Avarice;
-                    wSpecial = WeaponSpecial.Valiance;
-                    hSpecial = HelmSpecial.Pneuma;
-                    break;
-                #endregion
-
-                #region Wizard - Avarice - Elysium - Pneuma
-                case "shaman":
-                case "vampire lord":
-                case "enchanted vampire lord":
-                case "royal vampire lord":
-                    if (!uAvarice() || !uElysium() || !uPneuma())
-                        goto default;
-
-                    type = EnhancementType.Wizard;
-                    cSpecial = CapeSpecial.Avarice;
-                    wSpecial = WeaponSpecial.Elysium;
-                    hSpecial = HelmSpecial.Pneuma;
-                    break;
-                #endregion
-
-                #region Wizard - Avarice - Acheron - Pneuma
-                case "blaze binder":
-                    if (!uAvarice() || !uAcheron() || !uPneuma())
-                        goto default;
-
-                    type = EnhancementType.Wizard;
-                    cSpecial = CapeSpecial.Avarice;
-                    wSpecial = WeaponSpecial.Acheron;
-                    hSpecial = HelmSpecial.Pneuma;
-                    break;
-                #endregion
-
-                #region Wizard - Lament - Elysium - Pneuma
-                case "royal battlemage":
-                    if (!uLament() || !uElysium() || !uPneuma())
-                        goto default;
-
-                    type = EnhancementType.Wizard;
-                    cSpecial = CapeSpecial.Lament;
-                    wSpecial = WeaponSpecial.Elysium;
-                    hSpecial = HelmSpecial.Pneuma;
-                    break;
-                #endregion
-
-                #region Wizard - Lament - Valiance - Pneuma
-                case "scarlet sorceress":
-                    if (!uLament() || !uValiance() || !uPneuma())
-                        goto default;
-
-                    type = EnhancementType.Wizard;
-                    cSpecial = CapeSpecial.Lament;
-                    wSpecial = WeaponSpecial.Valiance;
-                    hSpecial = HelmSpecial.Pneuma;
-                    break;
-                #endregion
-
-                #endregion
-
-                #region Healer - Avarice - Elysium - Pneuma
-                case "dragon of time":
-                    if (!uAvarice() || !uElysium() || !uPneuma())
-                        goto default;
-
-                    type = EnhancementType.Healer;
-                    cSpecial = CapeSpecial.Avarice;
-                    wSpecial = WeaponSpecial.Elysium;
-                    hSpecial = HelmSpecial.Pneuma;
-                    break;
-                #endregion
-
                 #region Lucky Region
 
                 #region Lucky - Forge - Spiral Carve
@@ -2097,6 +1942,167 @@ public class CoreAdvanced
                 #endregion
 
                 #endregion
+
+                #region Wizard Region
+
+                #region Wizard - Forge - Spiral Carve
+                case "lightcaster":
+                    if (!uForgeCape())
+                        goto default;
+
+                    type = EnhancementType.Wizard;
+                    cSpecial = CapeSpecial.Forge;
+                    wSpecial = WeaponSpecial.Spiral_Carve;
+                    break;
+                #endregion
+
+                #region Wizard - Forge - Awe Blast
+                case "infinity knight":
+                    if (!uForgeCape())
+                        goto default;
+
+                    type = EnhancementType.Wizard;
+                    cSpecial = CapeSpecial.Forge;
+                    wSpecial = WeaponSpecial.Awe_Blast;
+                    break;
+                #endregion
+
+                #region Wizard - Vainglory - Valiance - Pneuma
+                case "archmage":
+                case "darklord":
+                    if (!uVainglory() || !uValiance() || !uPneuma())
+                        goto default;
+
+                    type = EnhancementType.Wizard;
+                    cSpecial = CapeSpecial.Vainglory;
+                    wSpecial = WeaponSpecial.Valiance;
+                    hSpecial = HelmSpecial.Pneuma;
+                    break;
+                #endregion
+
+                #region Wizard - Penitence - Acheron - Pneuma
+                case "master of moglins":
+                case "dark master of moglins":
+                    if (!uPenitence() || !uAcheron() || !uPneuma())
+                        goto default;
+
+                    type = EnhancementType.Wizard;
+                    cSpecial = CapeSpecial.Penitence;
+                    wSpecial = WeaponSpecial.Acheron;
+                    hSpecial = HelmSpecial.Pneuma;
+                    break;
+                #endregion
+
+                #region Wizard - Avarice - Valiance - Pneuma
+                case "legion revenant":
+                case "legion revenant (ioda)":
+                    if (!uAvarice() || !uValiance() || !uPneuma())
+                        goto default;
+
+                    type = EnhancementType.Wizard;
+                    cSpecial = CapeSpecial.Avarice;
+                    wSpecial = WeaponSpecial.Valiance;
+                    hSpecial = HelmSpecial.Pneuma;
+                    break;
+                #endregion
+
+                #region Wizard - Avarice - Elysium - Pneuma
+                case "shaman":
+                case "vampire lord":
+                case "enchanted vampire lord":
+                case "royal vampire lord":
+                    if (!uAvarice() || !uElysium() || !uPneuma())
+                        goto default;
+
+                    type = EnhancementType.Wizard;
+                    cSpecial = CapeSpecial.Avarice;
+                    wSpecial = WeaponSpecial.Elysium;
+                    hSpecial = HelmSpecial.Pneuma;
+                    break;
+                #endregion
+
+                #region Wizard - Avarice - Acheron - Pneuma
+                case "blaze binder":
+                    if (!uAvarice() || !uAcheron() || !uPneuma())
+                        goto default;
+
+                    type = EnhancementType.Wizard;
+                    cSpecial = CapeSpecial.Avarice;
+                    wSpecial = WeaponSpecial.Acheron;
+                    hSpecial = HelmSpecial.Pneuma;
+                    break;
+                #endregion
+
+                #region Wizard - Lament - Elysium - Pneuma
+                case "royal battlemage":
+                    if (!uLament() || !uElysium() || !uPneuma())
+                        goto default;
+
+                    type = EnhancementType.Wizard;
+                    cSpecial = CapeSpecial.Lament;
+                    wSpecial = WeaponSpecial.Elysium;
+                    hSpecial = HelmSpecial.Pneuma;
+                    break;
+                #endregion
+
+                #region Wizard - Lament - Valiance - Pneuma
+                case "scarlet sorceress":
+                    if (!uLament() || !uValiance() || !uPneuma())
+                        goto default;
+
+                    type = EnhancementType.Wizard;
+                    cSpecial = CapeSpecial.Lament;
+                    wSpecial = WeaponSpecial.Valiance;
+                    hSpecial = HelmSpecial.Pneuma;
+                    break;
+                #endregion
+
+                #endregion
+
+                #region Forge Region
+
+                #region Forge - Lucky - Smite
+                case "Draconic Chronomancer":
+                    if (!uSmite() || !uForgeCape())
+                        goto default;
+
+                    type = EnhancementType.Lucky;
+                    cSpecial = CapeSpecial.Forge;
+                    wSpecial = WeaponSpecial.Smite;
+                    break;
+                #endregion
+
+                #region Forge - Lucky - Elysium
+                case "ultra omniknight":
+                case "dark ultra omninight":
+                    if (!uElysium() || !uForgeCape())
+                        goto default;
+
+                    type = EnhancementType.Lucky;
+                    cSpecial = CapeSpecial.Forge;
+                    wSpecial = WeaponSpecial.Elysium;
+                    break;
+                #endregion
+
+                #endregion
+
+                #region Healer Region
+
+                #region Healer - Avarice - Elysium - Pneuma
+                case "dragon of time":
+                    if (!uAvarice() || !uElysium() || !uPneuma())
+                        goto default;
+
+                    type = EnhancementType.Healer;
+                    cSpecial = CapeSpecial.Avarice;
+                    wSpecial = WeaponSpecial.Elysium;
+                    hSpecial = HelmSpecial.Pneuma;
+                    break;
+                #endregion
+
+                #endregion
+
+                // This list serves as an overview of what classes dont have a Forge Enhancement yet, when adding a setup for it, remove it from here
 
                 default: // If the correct enhancement arent unlocked, or the class in question isnt in the Forge Enhancement Lib, use Awe Enhancements Lib
                     return false;
@@ -2400,12 +2406,16 @@ public class CoreAdvanced
 
                 #endregion
 
+                #region Fighter Region
+
                 #region Fighter - None - Awe Blast
                 case "deathknight":
                 case "frostval barbarian":
                     type = EnhancementType.Fighter;
                     wSpecial = WeaponSpecial.Awe_Blast;
                     break;
+                #endregion
+
                 #endregion
 
                 #region Healer - None - Health Vamp
