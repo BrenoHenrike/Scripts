@@ -297,7 +297,7 @@ public class CoreArmyLite
         string Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         string combinedDigits = "";
 
-        foreach (char c in (ClientFileSources.SkuaDIR))
+        foreach (char c in Environment.MachineName)
         {
             if (char.IsDigit(c))
                 combinedDigits += c;
