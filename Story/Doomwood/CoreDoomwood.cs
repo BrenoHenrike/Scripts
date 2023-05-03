@@ -85,7 +85,15 @@ public class CoreDoomwood
         Story.KillQuest(1068, "doomwood", "Undead Paladin");
 
         //1069    Camouflage: Skelly-Style
-        Story.KillQuest(1069, "doomwood", new[] { "Doomwood Bonemuncher", "Doomwood Ectomancer", "Doomwood Bonemuncher", "Doomwood Soldier" });
+        if(!Story.QuestProgression(1069))
+        {
+            Core.EnsureAccept(1069);
+            Core.HuntMonster("doomwood", "Doomwood Bonemuncher", "Muncher Mandibles", 5);
+            Core.HuntMonster("doomwood", "Doomwood Bonemuncher", "Stained Skulls ", 5);
+            Core.HuntMonster("doomwood", "Ectomancer", "Ecto-Coated Cloth Scraps", 10);
+            Core.HuntMonster("doomwood", "Doomwood Soldier", "Fractured Tibia", 10);
+            Core.EnsureComplete(1069);
+        }
 
         //1070    De(ad)ception
         if (!Story.QuestProgression(1070))
