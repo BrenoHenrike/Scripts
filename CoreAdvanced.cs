@@ -2372,6 +2372,7 @@ public class CoreAdvanced
                 case "overworld chronomancer":
                 case "pinkomancer":
                 case "prismatic clawsuit":
+                case "quantum chronomancer":
                 case "ranger":
                 case "renegade":
                 case "rogue":
