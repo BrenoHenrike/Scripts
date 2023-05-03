@@ -95,7 +95,7 @@ public class CurrentDailyGifts
             //GetGift(AvailableUntil(31, 1), "timeretaliate", "Retrograde Maw", "Nascent ChronoWeaver's Clock", "Polychronic Magister's Hourglasses", "Polychronic Magister's Hourglass", "Chronobound Gear", "Nascent Temporal Portal");
             //GetGift(AvailableUntil(31, 1), "timeretaliate", $"Min’et’s Corpse", "Astromancer's Shag", "Astromancer's Locks", "Astromancer's Cowl + locks", "Astromancer's Cowl", "BlackHole Shrine", "Astral Balance", "Astral Lantern");
             //GetGift(AvailableUntil(31, 1), "timeritual", "Chronocide", "Space-timeless Claws", "Space-timeless Sword", "Space-timeless Staff", "Space-timeless Daggers", "Space-timeless Axe", "Hollowborn Alchemist's Fist");
-            GetGift(Permanent, "brokenwoods", "Eldritch Amalgamation", "Diabolical Warden's Katana", "Diabolical Warden's Katanas", "Possessed Diablocal Blade", "Inflamed Diabolical Tail", "Diabolical Banner", "Diabolical Bed", "Diablocal BookShelf", "Diabolical Torch");
+            GetGift(Permanent, "brokenwoods", "Eldritch Amalgamation", "Diabolical Warden's Katana", "Diabolical Warden's Katanas", "Possessed Diabolical Blade", "Inflamed Diabolical Tail", "Diabolical Banner", "Diabolical Bed", "Diablocal BookShelf", "Diabolical Torch");
             //Bot.Quests.UpdateQuest(7874);
             //GetGift(AvailableUntil(31, 1), "dreampalace", "Zahad", "Mana Rift", "Mana Spiral", "Golden Hawk of Dreams Statue", "Golden Lion of Dreams Statue");
             //GetGift(AvailableUntil(31, 1), "tercessuinotlim", "Dark Makai", "Birthday Helm + Locks of Evil", "Birthday Helm + Locks of Good", "Birthday Helm of Evil", "Birthday Helm of Good");
@@ -103,21 +103,21 @@ public class CurrentDailyGifts
             #endregion
 
             #region Febuari 2023
-            GetGift(AvailableUntil(10, 2), "dreampalace", "Zahad", "Mana Spiral", "Mana Rift");
-            GetGift(AvailableUntil(10, 2), "tercessuinotlim", "Void Knight", "Carnage Void's Morph");
-            GetGift(AvailableUntil(10, 2), "tercessuinotlim", "Taro Blademaster", "Infernal SoulRipper", "Infernal SoulRippers");
-            GetGift(AvailableUntil(10, 2), "tercessuinotlim", "Shadow of Nulgath", "Shadow of Nulgath Guard", "Void of Nulgath Guard", "Fiend of Nulgath Guard", "GrimLord of Nulgath Guard");
-            GetGift(AvailableUntil(28, 2), "manor", "Bird of Paradise", "Bird of Coeurs Snowboard");
-            GetGift(AvailableUntil(28, 2), "worldscore", "Crystalized Mana", "Twisted Shadow Daggers");
-            GetGift(AvailableUntil(28, 2), "brokenwoods", "Eldritch Amalgamation", "Diabolical Banner", "Diabolical Bed", "Diabolical BookShelf", "Diabolical Carpet", "Diabolical Couch", "Diabolical Eye Lamp", "Diabolical Fountain", "Diabolical Throne", "Diabolical Torch", "Diabolical Work Desk");
-            GetGift(AvailableUntil(28, 2), "yokaihunt", "Elixir Etokoun", "Lunarian Blasters", "Lunarian Blaster", "Lunarian Gohei", "Lunarian Cresent");
+            //GetGift(AvailableUntil(10, 2), "dreampalace", "Zahad", "Mana Spiral", "Mana Rift");
+            //GetGift(AvailableUntil(10, 2), "tercessuinotlim", "Void Knight", "Carnage Void's Morph");
+            //GetGift(AvailableUntil(10, 2), "tercessuinotlim", "Taro Blademaster", "Infernal SoulRipper", "Infernal SoulRippers");
+            //GetGift(AvailableUntil(10, 2), "tercessuinotlim", "Shadow of Nulgath", "Shadow of Nulgath Guard", "Void of Nulgath Guard", "Fiend of Nulgath Guard", "GrimLord of Nulgath Guard");
+            //GetGift(AvailableUntil(28, 2), "manor", "Bird of Paradise", "Bird of Coeurs Snowboard");
+            //GetGift(AvailableUntil(28, 2), "worldscore", "Crystalized Mana", "Twisted Shadow Daggers");
+            //GetGift(AvailableUntil(28, 2), "brokenwoods", "Eldritch Amalgamation", "Diabolical Banner", "Diabolical Bed", "Diabolical BookShelf", "Diabolical Carpet", "Diabolical Couch", "Diabolical Eye Lamp", "Diabolical Fountain", "Diabolical Throne", "Diabolical Torch", "Diabolical Work Desk");
+            //GetGift(AvailableUntil(28, 2), "yokaihunt", "Elixir Etokoun", "Lunarian Blasters", "Lunarian Blaster", "Lunarian Gohei", "Lunarian Cresent");
             #endregion
 
             #region March 2023
             //Fix this its not perm.. i just dont have a date atm...
-            GetGift(AvailableUntil(31, 3), "undervoid", "Conquest", "Dark Birthday Party Guests I", "Dark Birthday Party Guests II", "Evil Birthday Party Guest", "Hungry Dark Birthday Party Guest");
-            GetGift(AvailableUntil(20, 3), "shadowrealmpast", "*", "Shadow Warrior Sword");
-            GetGift(AvailableUntil(27, 3), "eden", "Klawaii Machine", "Minty Fresh Gacha Orb", "Sweet Treat Gacha Orb", "Dragon Lover's Gacha Orb", "TreasureHunter's Gacha Orb", "TechFiend's Gacha Orb", "TreasureHunter's Gacha Orb Decor", "Sweet Treat Gacha Orb Decor", "Minty Fresh Gacha Orb Decor", "TechFiend's Gacha Orb Decor", "Dragon Lover's Gacha Orb Decor");
+            //GetGift(AvailableUntil(31, 3), "undervoid", "Conquest", "Dark Birthday Party Guests I", "Dark Birthday Party Guests II", "Evil Birthday Party Guest", "Hungry Dark Birthday Party Guest");
+            //GetGift(AvailableUntil(20, 3), "shadowrealmpast", "*", "Shadow Warrior Sword");
+            //GetGift(AvailableUntil(27, 3), "eden", "Klawaii Machine", "Minty Fresh Gacha Orb", "Sweet Treat Gacha Orb", "Dragon Lover's Gacha Orb", "TreasureHunter's Gacha Orb", "TechFiend's Gacha Orb", "TreasureHunter's Gacha Orb Decor", "Sweet Treat Gacha Orb Decor", "Minty Fresh Gacha Orb Decor", "TechFiend's Gacha Orb Decor", "Dragon Lover's Gacha Orb Decor");
             #endregion
 
             #region April 2023

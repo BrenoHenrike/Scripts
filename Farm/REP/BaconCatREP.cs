@@ -7,12 +7,14 @@ tags: null
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
+//cs_include Scripts/CoreAdvanced.cs
 using Skua.Core.Interfaces;
 public class BaconCatREP
 {
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
     public CoreToD TOD = new();
+    public CoreAdvanced Adv = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -25,6 +27,7 @@ public class BaconCatREP
 
     public void DoRep()
     {
+        Adv.BestGear(GenericGearBoost.dmgAll);
         TOD.BaconCatFortress();
         TOD.LaserSharkInvasion();
 

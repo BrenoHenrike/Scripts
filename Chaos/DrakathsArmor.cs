@@ -37,8 +37,8 @@ public class DrakathArmorBot
     {
         LOC.Complete13LOC();
         DrakathArmorQuest();
-        Core.BuyItem("battleon", 994, "Original Drakath Armor");
-        Core.BuyItem("battleon", 994, "Drakath Armor");
+        Core.BuyItem(Bot.Map.Name, 994, "Original Drakath Armor");
+        Core.BuyItem(Bot.Map.Name, 994, "Drakath Armor");
     }
 
     public void DrakathArmor()
@@ -46,8 +46,9 @@ public class DrakathArmorBot
         if (Core.CheckInventory("Drakath Armor"))
             return;
 
+        LOC.Complete13LOC();
         DrakathArmorQuest();
-        Core.BuyItem("battleon", 994, "Drakath Armor");
+        Core.BuyItem(Bot.Map.Name, 994, "Drakath Armor");
     }
 
     public void DrakathOriginalArmor()
@@ -57,7 +58,7 @@ public class DrakathArmorBot
 
         LOC.Complete13LOC();
         DrakathArmorQuest();
-        Core.BuyItem("battleon", 994, "Original Drakath Armor");
+        Core.BuyItem(Bot.Map.Name, 994, "Original Drakath Armor");
     }
 
     public void DrakathArmorQuest()
@@ -78,7 +79,6 @@ public class DrakathArmorBot
         Core.KillMonster("swordhavenundead", "Left", "Right", "*", "Treasure Chest", 100, false);
         Core.EquipClass(ClassType.Solo);
         Core.KillMonster("ultradrakath", "r1", "Left", "Champion of Chaos", "Face of Chaos", isTemp: false, publicRoom: true);
-        Core.Relogin();
         if (!Core.CheckInventory("Dage's Scroll Fragment", 13))
         {
             Daily.DagesScrollFragment();

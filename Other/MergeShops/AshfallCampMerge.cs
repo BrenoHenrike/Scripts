@@ -1,11 +1,10 @@
 /*
-name: AshfallCampMerge
-description: null
-tags: null
+name: Ashfall Camp Merge
+description: Farms the gear for your selected mode for the merge shop in /ashfallcamp
+tags: ashfall, camp, merge, shop, iron, ore, ingot, blue, red, green, dye, fabric, dragon, scales, bile, stone
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
@@ -13,12 +12,10 @@ using Skua.Core.Options;
 
 public class AshfallCampMerge
 {
-    public IScriptInterface Bot => IScriptInterface.Instance;
-    public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new();
-    public CoreStory Story = new();
-    public CoreAdvanced Adv = new();
-    public static CoreAdvanced sAdv = new();
+    private IScriptInterface Bot => IScriptInterface.Instance;
+    private CoreBots Core => CoreBots.Instance;
+    private CoreAdvanced Adv = new();
+    private static CoreAdvanced sAdv = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
     public string[] MultiOptions = { "Generic", "Select" };
@@ -27,7 +24,7 @@ public class AshfallCampMerge
     //              If true, it will not stop the script if the default case triggers and the user chose to only get mats
     private bool dontStopMissingIng = false;
 
-    public void ScriptMain(IScriptInterface bot)
+    public void ScriptMain(IScriptInterface Bot)
     {
         Core.BankingBlackList.AddRange(new[] { "Iron Ore", "Iron Ingot", "Bile Stone", "Molten Lava", "Fabric", "Blue Dye", "Red Dye", "Dragon Scale", "Defender Badge", "Flame Claws", "Flame Heart", "Sulphur Ore", "Venom Sac", "Venom Fangs", "Crystal Eye", "Glass Horns", "Storm Heart", "Melted Glass", "Copper Wire" });
         Core.SetOptions();
@@ -37,7 +34,7 @@ public class AshfallCampMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
+    public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("ashfallcamp", 1422, findIngredients, buyOnlyThis, buyMode: buyMode);
@@ -66,26 +63,26 @@ public class AshfallCampMerge
                 case "Blue Dye":
                 case "Red Dye":
                 case "Green Dye":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.RegisterQuests(5898);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         //QuarterMaster’s Supplies 5898
-                        Core.HuntMonster("AshfallCamp", "Lava Dragoblin", "Supply Chest", 8, log: false);
+                        Core.HuntMonster("ashfallcamp", "Lava Dragoblin", "Supply Chest", 8, log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
                     break;
 
                 case "Dragon Scales":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
                     Core.RegisterQuests(5893);
                     while (!Bot.ShouldExit && !Core.CheckInventory(40375, quant))
                     {
                         //Blackrawk Magebane 5893
-                        Core.HuntMonster("AshfallCamp", "Blackrawk", "Blackrawk Defeated", log: false);
+                        Core.HuntMonster("ashfallcamp", "Blackrawk", "Blackrawk Defeated", log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
@@ -93,64 +90,50 @@ public class AshfallCampMerge
 
                 case "Defender Badge":
                     Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster("AshfallCamp", "Blackrawk|Infernus|Smoldur", req.Name, quant, false);
+                    Core.HuntMonster("ashfallcamp", "Blackrawk|Infernus|Smoldur", req.Name, quant, false);
                     break;
 
                 case "Flame Claws":
                 case "Flame Heart":
                     Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster("AshfallCamp", "Smoldur", req.Name, quant, false);
+                    Core.HuntMonster("ashfallcamp", "Smoldur", req.Name, quant, false);
                     break;
 
                 case "Sulphur Ore":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.RegisterQuests(5899);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("AshfallCamp", "Sulphur Dracolich", "Sulphur Crystal", 10, log: false);
+                        Core.HuntMonster("ashfallcamp", "Sulphur Dracolich", "Sulphur Crystal", 10, log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
                     break;
 
                 case "Iron Ore":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                case "Bile Stone":
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     int i = 1;
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.ID, quant))
                     {
                         Core.EnsureAccept(5900);
-                        Core.HuntMonster("AshfallCamp", "Draconian Guard", "Iron Lump", 5, log: false);
-                        Core.HuntMonster("AshfallCamp", "Draconian Guard", "Bile Drops", 3, log: false);
+                        Core.HuntMonster("ashfallcamp", "Draconian Guard", "Iron Lump", 5, log: false);
+                        Core.HuntMonster("ashfallcamp", "Draconian Guard", "Bile Drops", 3, log: false);
                         Core.EnsureComplete(5900, req.ID);
                         Core.Logger($"Quest completed x{i++} times: [5900] \"Ingots and Outguts\"");
                         Bot.Wait.ForPickup(req.Name);
                     }
                     break;
 
-                case "Bile Stone":
-                    Core.FarmingLogger($"{req.Name}", quant);
-                    Core.EquipClass(ClassType.Farm);
-                    int b = 1;
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.ID, quant))
-                    {
-                        Core.EnsureAccept(5900);
-                        Core.HuntMonster("AshfallCamp", "Draconian Guard", "Iron Lump", 5, log: false);
-                        Core.HuntMonster("AshfallCamp", "Draconian Guard", "Bile Drops", 3, log: false);
-                        Core.EnsureComplete(5900, req.ID);
-                        Core.Logger($"Quest completed x{b++} times: [5900] \"Ingots and Outguts\"");
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    break;
-
                 case "Molten Lava":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.RegisterQuests(5897);
                     while (!Bot.ShouldExit && !Core.CheckInventory(40352, quant))
                     {
-                        Core.HuntMonster("AshfallCamp", "Lava Rock", "Lava Glob", 5, log: false);
+                        Core.HuntMonster("ashfallcamp", "Lava Rock", "Lava Glob", 5, log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
@@ -159,24 +142,24 @@ public class AshfallCampMerge
                 case "Venom Sac":
                 case "Venom Fangs":
                     Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster("AshfallCamp", "Infernus", req.Name, quant, false);
+                    Core.HuntMonster("ashfallcamp", "Infernus", req.Name, quant, false);
                     break;
 
                 case "Crystal Eye":
                 case "Glass Horns":
                     Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster("AshfallCamp", "Blackrawk", req.Name, quant, false);
+                    Core.HuntMonster("ashfallcamp", "Blackrawk", req.Name, quant, false);
                     break;
 
                 case "Storm Heart":
                     Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster("Pride", "Valsarian", req.Name, quant, false);
+                    Core.HuntMonster("pride", "Valsarian", req.Name, quant, false);
                     break;
 
                 case "Melted Glass":
                 case "Copper Wire":
                     Core.EquipClass(ClassType.Farm);
-                    Core.HuntMonster("Pride", "Cellar Guard|Drakel Guard|Elite Guard", req.Name, quant, false);
+                    Core.HuntMonster("pride", "Cellar Guard|Drakel Guard|Elite Guard", req.Name, quant, false);
                     break;
 
             }

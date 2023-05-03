@@ -7,6 +7,7 @@ tags: null
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
+//cs_include Scripts/CoreAdvanced.cs
 
 using Skua.Core.Interfaces;
 public class DeathPitBrawlREP
@@ -14,6 +15,7 @@ public class DeathPitBrawlREP
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public CoreToD CoreToD = new();
+    public CoreAdvanced Adv = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -26,6 +28,7 @@ public class DeathPitBrawlREP
 
     public void DoRep()
     {
+        Adv.BestGear(GenericGearBoost.dmgAll);
         CoreToD.DeathPitPVP();
         Farm.DeathPitBrawlREP();
         

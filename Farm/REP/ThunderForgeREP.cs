@@ -27,6 +27,7 @@ public class ThunderForgeREP
 
     public void DoRep()
     {
+        Adv.BestGear(GenericGearBoost.dmgAll);
         LOC.Lionfang();
         Farm.ThunderForgeREP();
 

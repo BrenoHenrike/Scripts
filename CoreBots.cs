@@ -3,32 +3,32 @@ name: null
 description: null
 tags: null
 */
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Dynamic;
-using System.IO;
-using System.Linq;
-using System.Net.Http;
-using System.Reflection;
-using System.Text.RegularExpressions;
-using System.Runtime.CompilerServices;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Net;
 using CommunityToolkit.Mvvm.DependencyInjection;
 using Newtonsoft.Json;
 using Skua.Core.Interfaces;
 using Skua.Core.Models;
+using Skua.Core.Models.Auras;
 using Skua.Core.Models.Items;
 using Skua.Core.Models.Monsters;
 using Skua.Core.Models.Quests;
 using Skua.Core.Models.Servers;
 using Skua.Core.Models.Shops;
 using Skua.Core.Models.Skills;
-using Skua.Core.Models.Auras;
 using Skua.Core.Options;
 using Skua.Core.Utils;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Dynamic;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Reflection;
+using System.Runtime.CompilerServices;
+using System.Text.RegularExpressions;
+using System.Threading;
+using System.Threading.Tasks;
 
 public class CoreBots
 {
@@ -210,7 +210,7 @@ public class CoreBots
                     Bot.Send.Packet("%xt%zm%afk%1%false%");
                     Bot.Sleep(ActionDelay);
                     bool TimerRunning = false;
-                    int afkCount = 0;
+                    //int afkCount = 0;
                     //Bot.Events.PlayerAFK += eventAFK;
 
                     //void eventAFK()
@@ -1200,9 +1200,9 @@ public class CoreBots
 
             // Separating the quests into choose and non-choose
             if (q.SimpleRewards.Any(r => r.Type == 2))
-                chooseQuests.Add(q, 1);
+                chooseQuests.Add(q, 0);
             else
-                nonChooseQuests.Add(q, 1);
+                nonChooseQuests.Add(q, 0);
         }
 
         registeredQuests = questIDs;
@@ -1421,8 +1421,13 @@ public class CoreBots
 
             if (toReturn == null)
             {
-                Logger($"Failed to get the Quest Object for questID {questID}" + reinstallCleanFlash, "EnsureLoad A.0", messageBox: true, stopBot: true);
-                return new();
+                toReturn = EnsureLoadFromFile(questID).Result?.FirstOrDefault();
+
+                if (toReturn == null)
+                {
+                    Logger($"Failed to get the Quest Object for questID {questID}" + reinstallCleanFlash, "EnsureLoad A.0", messageBox: true, stopBot: true);
+                    return new();
+                }
             }
         }
 
@@ -1871,6 +1876,68 @@ public class CoreBots
                 Bot.Kill.Monster("Stalagbite");
             Bot.Combat.Attack("Vath");
             Bot.Sleep(1000);
+        }
+    }
+
+    /// <summary>
+    /// Kill Kitsune for the desired item
+    /// </summary>
+    /// <param name="item">Item name</param>
+    /// <param name="quant">Desired quantity</param>
+    /// <param name="isTemp">Whether the item is temporary</param>
+    public void KillKitsune(string? item = null, int quant = 1, bool isTemp = false, bool log = true, bool publicRoom = false)
+    {
+        if (item != null && (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
+            return;
+
+        Join("kitsune", "Boss", "Left");
+        Bot.Events.ExtensionPacketReceived += KitsuneListener;
+
+        if (item == null)
+        {
+            if (log)
+                Logger("Killing Kitsune");
+            while (!Bot.ShouldExit && IsMonsterAlive("Kitsune"))
+                Bot.Combat.Attack("Kitsune");
+        }
+        else
+        {
+            if (!isTemp)
+                AddDrop(item);
+            if (log)
+                Logger($"Killing Kitsune for {item} ({dynamicQuant(item, isTemp)}/{quant}) [Temp = {isTemp}]");
+            while (!Bot.ShouldExit && !CheckInventory(item, quant))
+                Bot.Combat.Attack("Kitsune");
+        }
+        Bot.Events.ExtensionPacketReceived -= KitsuneListener;
+
+        void KitsuneListener(dynamic packet)
+        {
+            string type = packet["params"].type;
+            dynamic data = packet["params"].dataObj;
+            if (type is not null and "json")
+            {
+                string cmd = data.cmd.ToString();
+                switch (cmd)
+                {
+                    case "ct":
+                        if (data.a is not null)
+                        {
+                            foreach (var a in data.a)
+                            {
+                                if (a is null)
+                                    continue;
+
+                                if (a.aura is not null && (string)a.aura["nam"] is "Shapeshifted")
+                                {
+                                    Bot.Combat.StopAttacking = ((string)a.cmd)[^0] == '+';
+                                    break;
+                                }
+                            }
+                        }
+                        break;
+                }
+            }
         }
     }
 
@@ -2416,7 +2483,7 @@ public class CoreBots
     public bool HasWebBadge(int badgeID) => GetBadgeJSON().Result.Contains($"\"badgeID\":{badgeID}");
     public bool HasWebBadge(string badgeName) => GetBadgeJSON().Result.Contains($"\"sTitle\":\"{badgeName}\"");
 
-    private async Task<string> GetBadgeJSON()
+    public async Task<string> GetBadgeJSON()
     {
         string toReturn = string.Empty;
         int ccid = Bot.Flash.GetGameObject<int>("world.myAvatar.objData.CharID");
@@ -2694,6 +2761,14 @@ public class CoreBots
 
             case "ultratyndarius":
                 SimpleQuestBypass((412, 22));
+                break;
+
+            case "Creepy":
+                tryJoin();
+                Bot.Wait.ForCellChange("Cut1");
+                JumpWait();
+                Bot.Wait.ForCellChange("Skip");
+                JumpWait();
                 break;
 
             case "towerofdoom1":
@@ -3131,6 +3206,22 @@ public class CoreBots
         }
     }
 
+
+    #endregion
+
+    #region Flash-Call Assistance
+
+    public T? GetItemProperty<T>(InventoryItem item, string prop)
+    {
+        if (Bot.Inventory.Contains(item.ID))
+            return Bot.Flash.GetGameObject<T>($"world.invTree.{item.ID}.{prop}");
+        else if (Bot.Bank.Contains(item.ID)) // Also covers banked house items
+            return Bot.Flash.GetGameObject<List<dynamic>>("world.bankinfo.items")?.Find(d => d.ItemID == item.ID)?[prop];
+        else
+            return Bot.Flash.GetGameObject<List<dynamic>>("world.myAvatar.houseitems")?.Find(d => d.ItemID == item.ID)?[prop];
+    }
+    public T? GetItemProperty<T>(ShopItem item, string prop)
+        => Bot.Flash.GetGameObject<List<dynamic>>("world.shopinfo.items")?.Find(d => d.ItemID == item.ID)?[prop];
 
     #endregion
 

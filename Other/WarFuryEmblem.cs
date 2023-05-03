@@ -1,7 +1,7 @@
 /*
 name: Warfury Emblem
-description: Farms "Warfury Emblem" From Quest: "Warfury Training".
-tags: warfury training, warfury emblem
+description: Farms "Warfury Emblem" from quest: "Warfury Training".
+tags: war, fury, training, emblem
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -12,12 +12,12 @@ using Skua.Core.Interfaces;
 
 public class WarfuryEmblem
 {
-    public IScriptInterface Bot => IScriptInterface.Instance;
-    public CoreBots Core => CoreBots.Instance;
-    public CoreAdvanced Adv = new();
-    public CoreSoW SoW = new();
+    private IScriptInterface Bot => IScriptInterface.Instance;
+    private CoreBots Core => CoreBots.Instance;
+    private CoreAdvanced Adv = new();
+    private CoreSoW SoW = new();
 
-    public void ScriptMain(IScriptInterface bot)
+    public void ScriptMain(IScriptInterface Bot)
     {
         Core.SetOptions();
 
@@ -26,22 +26,21 @@ public class WarfuryEmblem
         Core.SetOptions(false);
     }
 
-    public void WarfuryEmblemFarm(int EmblemQuant = 60)
+    public void WarfuryEmblemFarm(int quant = 60)
     {
-        if (Core.CheckInventory("Warfury Emblem", EmblemQuant))
+        if (Core.CheckInventory("Warfury Emblem", quant))
             return;
 
         SoW.Tyndarius();
 
         Core.AddDrop("Warfury Emblem");
-        Adv.BestGear(RacialGearBoost.Human);
+        Core.FarmingLogger("Warfury Emblems", quant);
         Core.EquipClass(ClassType.Farm);
-        Core.RegisterQuests(8204);
-        Core.Logger($"Farming for {EmblemQuant} Warfury Emblems");
-        while (!Bot.ShouldExit && !Core.CheckInventory("Warfury Emblem", EmblemQuant))
-            Core.HuntMonster("wartraining", "Warfury Soldier", "Warfury Training", 30);
-        Bot.Wait.ForPickup("Warfury Emblem");
+        Adv.BestGear(RacialGearBoost.Human);
 
+        Core.RegisterQuests(8204);
+        while (!Bot.ShouldExit && !Core.CheckInventory("Warfury Emblem", quant))
+            Core.HuntMonster("wartraining", "Warfury Soldier", log: false);
         Core.CancelRegisteredQuests();
     }
 }

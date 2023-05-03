@@ -1,7 +1,7 @@
 /*
 name: Army All Dailies
 description: One-client version of All Dailies
-tags: alldailies, army, thefamily
+tags: all, dailies, army
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreDailies.cs
@@ -11,7 +11,6 @@ tags: alldailies, army, thefamily
 //cs_include Scripts/Nation/CoreNation.cs
 //cs_include Scripts/Story/BattleUnder.cs
 //cs_include Scripts/Story/Nation/CitadelRuins.cs
-//cs_include Scripts/Story/QueenofMonsters/Extra/LivingDungeon.cs
 //cs_include Scripts/Story/DragonFableOrigins.cs
 //cs_include Scripts/Dailies/LordOfOrder.cs
 //cs_include Scripts/Story/Glacera.cs
@@ -41,7 +40,7 @@ public class ArmyAllDailies
     {
         Core.SetOptions();
 
-        CheckACs(Bot.Config.Get<bool>("randomServers"));
+        CheckACs(Bot.Config!.Get<bool>("randomServers"));
 
         Core.SetOptions(false);
     }

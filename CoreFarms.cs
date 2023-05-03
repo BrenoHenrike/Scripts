@@ -508,7 +508,7 @@ public class CoreFarms
                     Bot.Wait.ForCombatExit();
                     Core.DebugLogger(this);
                     Core.DebugLogger(this);
-                    if (!Core.IsMonsterAlive("(B) Defensive Restorer"))
+                    if (!Core.IsMonsterAlive(313))
                     {
                         Bot.Combat.CancelTarget();
                         Core.Logger("(B) Defensive Restorers killed, moving on.");
@@ -533,7 +533,7 @@ public class CoreFarms
                     Core.DebugLogger(this);
                     Bot.Wait.ForCombatExit();
                     Core.DebugLogger(this);
-                    if (!Core.IsMonsterAlive("(B) Defensive Restorer"))
+                    if (!Core.IsMonsterAlive(313))
                     {
                         Bot.Combat.CancelTarget();
                         Core.Logger("(B) Defensive Restorers killed, moving on.");
@@ -563,7 +563,7 @@ public class CoreFarms
                     Core.DebugLogger(this);
                     Bot.Wait.ForCombatExit();
                     Core.DebugLogger(this);
-                    if (!Core.IsMonsterAlive("(B) Brawler"))
+                    if (!Core.IsMonsterAlive(311))
                     {
                         Bot.Combat.CancelTarget();
                         Core.Logger("(B) Brawlers killed, moving on.");
@@ -586,7 +586,7 @@ public class CoreFarms
                     Core.DebugLogger(this);
                     Bot.Wait.ForCombatExit();
                     Core.DebugLogger(this);
-                    if (!Core.IsMonsterAlive("(B) Brawler"))
+                    if (!Core.IsMonsterAlive(311))
                     {
                         Bot.Combat.CancelTarget();
                         Core.Logger("(B) Brawlers killed, moving on.");
@@ -610,7 +610,7 @@ public class CoreFarms
                     Core.DebugLogger(this);
                     Bot.Wait.ForCombatExit();
                     Core.DebugLogger(this);
-                    if (!Core.IsMonsterAlive("(B) Brawler"))
+                    if (!Core.IsMonsterAlive(311))
                     {
                         Bot.Combat.CancelTarget();
                         Core.Logger("(B) Brawlers killed, moving on.");
@@ -630,13 +630,12 @@ public class CoreFarms
                 Core.DebugLogger(this);
                 Bot.Wait.ForCombatExit();
                 Core.DebugLogger(this);
-                if (!Core.IsMonsterAlive("Team B Captain"))
+                if (!Core.IsMonsterAlive(309))
                 {
                     Bot.Combat.CancelTarget();
                     Core.Logger("Team B Captain killed, moving on.");
                     break;
                 }
-                break;
             }
 
             Core.DebugLogger(this);
@@ -651,10 +650,10 @@ public class CoreFarms
             Core.DebugLogger(this);
             Bot.Sleep(7500);
 
+            int i = 1;
             while (Bot.Map.Name != "battleon")
             {
                 Core.DebugLogger(this);
-                int i = 1;
                 Core.DebugLogger(this);
                 Core.Logger($"Attemping Exit {i++}.");
                 Core.DebugLogger(this);
@@ -1075,16 +1074,9 @@ public class CoreFarms
         if (FactionRank("Blacksmithing") >= rank)
             return;
 
-        Core.EquipClass(ClassType.Farm);
         Core.SavedState();
         ToggleBoost(BoostType.Reputation);
         Core.Logger($"Farming rank {rank}");
-
-        if (!UseGold)
-        {
-            Core.Logger("Using Non-Gold Method");
-            Core.Logger($"If you can't Solo SlugButter, Either use the Gold method or Run the AP Script (Found in: Good-ArchPaladin) as it can Solo the boss 👍");
-        }
 
         if (UseGold)
         {
@@ -1099,7 +1091,13 @@ public class CoreFarms
                 Core.EnsureComplete(8737);
             }
             Core.CancelRegisteredQuests();
+            ToggleBoost(BoostType.Reputation, false);
+            Core.SavedState(false);
+            return;
         }
+
+        Core.Logger("Using Non-Gold Method");
+        Core.Logger($"If you can't Solo SlugButter, Either use the Gold method or Run the AP Script (Found in: Good-ArchPaladin) as it can Solo the boss 👍");
 
         Core.RegisterQuests(2777);
         while (!Bot.ShouldExit && FactionRank("Blacksmithing") < 4 && !UseGold)
@@ -1600,11 +1598,11 @@ public class CoreFarms
         ToggleBoost(BoostType.Reputation);
         Core.Logger($"Farming rank {rank}");
 
-        Core.RegisterQuests(5198);
+        Core.RegisterQuests(5198, 5208);
         while (!Bot.ShouldExit && FactionRank("Eternal") < rank)
         {
-            Core.KillMonster("fourdpyramid", "r11", "Right", 2908, "White Gem", 2, log: false);
-            Core.KillMonster("fourdpyramid", "r11", "Right", 2909, "Black Gem", 2, log: false);
+            Core.HuntMonsterMapID("fourdpyramid", 19, "White Gem", 3, log: false);
+            Core.HuntMonsterMapID("fourdpyramid", 20, "Black Gem", 2, log: false);
         }
         Core.CancelRegisteredQuests();
         ToggleBoost(BoostType.Reputation, false);

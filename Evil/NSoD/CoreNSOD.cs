@@ -145,7 +145,7 @@ public class CoreNSOD
             Core.HuntMonster("shadowrealmpast", "Shadow Lord", "Malignant Essence", 3, false, publicRoom: true, log: false);
 
             Bot.Wait.ForPickup("Void Aura");
-            Core.Logger($"{Bot.Inventory.GetQuantity("Void Aura")}/{quant})");
+            Core.Logger($"Void Auras: ({Bot.Inventory.GetQuantity("Void Aura")}/{quant})");
         }
         Core.CancelRegisteredQuests();
     }
@@ -168,7 +168,7 @@ public class CoreNSOD
             Core.HuntMonster("doomwar", "Zombie King Alteon", "Transposed Essence", 1, false, log: false);
 
             Bot.Wait.ForPickup("Void Aura");
-            Core.Logger($"{Bot.Inventory.GetQuantity("Void Aura")}/{quant})");
+            Core.Logger($"Void Auras: ({Bot.Inventory.GetQuantity("Void Aura")}/{quant})");
         }
         Core.CancelRegisteredQuests();
     }
@@ -205,7 +205,7 @@ public class CoreNSOD
             Core.KillMonster("maul", "r3", "Down", "Creature Creation", "Creature Creation Essence", Essencequant, false, publicRoom: true, log: false);
 
             Bot.Wait.ForPickup("Void Aura");
-            Core.Logger($"{Bot.Inventory.GetQuantity("Void Aura")}/{quant})");
+            Core.Logger($"Void Auras: ({Bot.Inventory.GetQuantity("Void Aura")}/{quant})");
         }
         Core.CancelRegisteredQuests();
     }

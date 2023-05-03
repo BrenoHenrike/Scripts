@@ -871,7 +871,13 @@ public class CoreToD
         Story.MapItemQuest(5197, "fourdpyramid", 4561, 1);
 
         // Sphynxes are Riddled With Gems
-        Story.KillQuest(5198, "fourdpyramid", new[] { "Stone Sphynx", "Stone Sphynx" });
+        if (!Story.QuestProgression(5198))
+        {
+            Core.EnsureAccept(5198);
+            Core.HuntMonsterMapID("fourdpyramid", 19, "White Gem", 2);
+            Core.HuntMonsterMapID("fourdpyramid", 20, "Black Gem", 2);
+            Core.EnsureComplete(5198);
+        }
 
         // 4th Dimensional Teleport
         Story.MapItemQuest(5199, "fourdpyramid", 4562, 4);
@@ -904,7 +910,13 @@ public class CoreToD
         Story.KillQuest(5207, "fourdpyramid", "Tesseract Goblin");
 
         // Stone Sphynx Gems
-        Story.KillQuest(5208, "fourdpyramid", new[] { "Stone Sphynx", "Stone Sphynx" });
+        if (!Story.QuestProgression(5208))
+        {
+            Core.EnsureAccept(5208);
+            Core.HuntMonsterMapID("fourdpyramid", 19, "White Gem", 1);
+            Core.HuntMonsterMapID("fourdpyramid", 20, "Black Gem", 3);
+            Core.EnsureComplete(5208);
+        }
 
         // Beam Me Up Scotty;
         Story.MapItemQuest(5209, "fourdpyramid", 4571, 4);

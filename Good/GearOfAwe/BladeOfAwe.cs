@@ -1,7 +1,7 @@
 /*
-name: BladeOfAwe
-description: null
-tags: null
+name: Blade of Awe
+description: This bot will farm the Blade of Awe reputation up to rank 6 and get the Blade of Awe itself
+tags: blade, awe, enhancements, boost, experience, reputation, class, points, gold, cp
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

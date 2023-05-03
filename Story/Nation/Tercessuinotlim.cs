@@ -92,7 +92,7 @@ public class Tercessuinotlim
         {
             Core.EnsureAccept(8474);
             Core.HuntMonster("hachiko", "Dai Tengu", "101 Proof Blade Oil");
-            Core.HuntMonster("Kitsune", "Kitsune", "Private Reserve Sake");
+            Core.KillKitsune("Private Reserve Sake", 1, true);
             Core.HuntMonster("Tercessuinotlim", "Taro Blademaster", "The Tale of Taro");
             Core.EnsureComplete(8474);
         }

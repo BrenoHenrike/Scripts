@@ -32,6 +32,7 @@ public class GetAllRanks
 
     public void DoGetAllRanks()
     {
+        Adv.BestGear(GenericGearBoost.dmgAll);
         TOD.FourthDimensionalPyramid();
         TOD.BaconCatFortress();
         TOD.LaserSharkInvasion();

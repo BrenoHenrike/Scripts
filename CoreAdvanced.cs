@@ -628,11 +628,11 @@ public class CoreAdvanced
                 List<(InventoryItem, int)> equippedItems =
                     Bot.Inventory.Items
                         .Where(x => x.Equipped)
-                        .Select(x => (x, Bot.Flash.GetGameObject<int>($"world.invTree.{x.ID}.EnhID")))
+                        .Select(x => (x, getEnhID(x)))
                         .ToList();
                 IEnumerable<(InventoryItem, int)> bestItemsEnh =
                     bestItems
-                        .Select(x => (x, Bot.Flash.GetGameObject<int>($"world.invTree.{x.ID}.EnhID")));
+                        .Select(x => (x, getEnhID(x)));
 
                 filter =
                     bestItemsEnh
@@ -1164,7 +1164,7 @@ public class CoreAdvanced
     /// <returns>Returns the equipped Enhancement Type</returns>
     public EnhancementType CurrentClassEnh()
     {
-        int? EnhPatternID = getEnhPatternID(Bot.Player.CurrentClass!);
+        int? EnhPatternID = Bot.Player.CurrentClass?.EnhancementPatternID;
         if (EnhPatternID == 1 || EnhPatternID == 23 || EnhPatternID == null)
             EnhPatternID = 9;
         return (EnhancementType)EnhPatternID;
@@ -1179,7 +1179,7 @@ public class CoreAdvanced
         InventoryItem? EquippedCape = Bot.Inventory.Items.Find(i => i.Equipped && i.Category == ItemCategory.Cape);
         if (EquippedCape == null)
             return CapeSpecial.None;
-        int pattern_id = getEnhPatternID(EquippedCape);
+        int pattern_id = EquippedCape.EnhancementPatternID;
         if (Enum.IsDefined(typeof(EnhancementType), pattern_id))
             return CapeSpecial.None;
         return (CapeSpecial)pattern_id;
@@ -1194,7 +1194,7 @@ public class CoreAdvanced
         InventoryItem? EquippedHelm = Bot.Inventory.Items.Find(i => i.Equipped && i.Category == ItemCategory.Helm);
         if (EquippedHelm == null)
             return HelmSpecial.None;
-        int pattern_id = getEnhPatternID(EquippedHelm);
+        int pattern_id = EquippedHelm.EnhancementPatternID;
         if (Enum.IsDefined(typeof(EnhancementType), pattern_id))
             return HelmSpecial.None;
         return (HelmSpecial)pattern_id;
@@ -1242,7 +1242,7 @@ public class CoreAdvanced
         // Empty check
         if (ItemList.Count == 0)
         {
-            Core.Logger("Enhancement Failed: ItemList is empty");
+            Core.Logger("Enhancement Failed:\t\"ItemList\" is empty");
             return;
         }
 
@@ -1259,7 +1259,7 @@ public class CoreAdvanced
 
         // Defining helm
         InventoryItem? helm = null;
-        if (hSpecial.ToString() != "None" && ItemList.Any(i => i.Category == ItemCategory.Helm))
+        if (hSpecial != HelmSpecial.None && ItemList.Any(i => i.Category == ItemCategory.Helm))
         {
             Core.DebugLogger(this);
             helm = ItemList.Find(i => i.Category == ItemCategory.Helm);
@@ -1271,7 +1271,8 @@ public class CoreAdvanced
 
         // Defining weapon
         InventoryItem? weapon = null;
-        if (wSpecial.ToString() != "None" && ItemList.Any(i => i.ItemGroup == "Weapon"))
+        // If Awe-Enhancements aren't unlocked, enhance them with normal enhancements
+        if (wSpecial != WeaponSpecial.None && ItemList.Any(i => i.ItemGroup == "Weapon") && (uAwe() || (int)wSpecial > 6))
         {
             Core.DebugLogger(this);
             weapon = ItemList.Find(i => i.ItemGroup == "Weapon");
@@ -1312,7 +1313,7 @@ public class CoreAdvanced
                     shopID = Bot.Player.Level >= 50 ? 763 : 147;
                     break;
                 default:
-                    Core.Logger($"Enhancement Failed: Invalid EnhancementType given, received {(int)type} | {type}");
+                    Core.Logger($"Enhancement Failed:\tInvalid EnhancementType given, received {(int)type} | {type}");
                     return;
             }
 
@@ -1336,7 +1337,7 @@ public class CoreAdvanced
                 case CapeSpecial.Forge:
                     if (!uForgeCape())
                     {
-                        Core.Logger("Enhancement Failed: You did not unlock the Forge (Cape) Enhancement yet");
+                        Core.Logger("Enhancement Failed:\tYou did not unlock the Forge (Cape) Enhancement yet");
                         canEnhance = false;
                     }
                     break;
@@ -1361,12 +1362,12 @@ public class CoreAdvanced
                         Fail();
                     break;
                 default:
-                    Core.Logger($"Enhancement Failed: Invalid CapeSpecial given, received {(int)cSpecial} | {cSpecial}");
+                    Core.Logger($"Enhancement Failed:\tInvalid \"CapeSpecial\" given, received {(int)cSpecial} | {cSpecial}");
                     return;
 
                     void Fail()
                     {
-                        Core.Logger($"Enhancement Failed: You did not unlock the {cSpecial} Enhancement yet");
+                        Core.Logger($"Enhancement Failed:\tYou did not unlock the {cSpecial} Enhancement yet");
                         canEnhance = false;
                     }
             }
@@ -1401,12 +1402,12 @@ public class CoreAdvanced
                         Fail();
                     break;
                 default:
-                    Core.Logger($"Enhancement Failed: Invalid HelmSpecial given, received {(int)hSpecial} | {hSpecial}");
+                    Core.Logger($"Enhancement Failed:\tInvalid \"HelmSpecial\" given, received {(int)hSpecial} | {hSpecial}");
                     return;
 
                     void Fail()
                     {
-                        Core.Logger($"Enhancement Failed: You did not unlock the {hSpecial} Enhancement yet");
+                        Core.Logger($"Enhancement Failed:\tYou did not unlock the {hSpecial} Enhancement yet");
                         canEnhance = false;
                     }
             }
@@ -1449,7 +1450,7 @@ public class CoreAdvanced
                         shopID = 639;
                         break;
                     default:
-                        Core.Logger($"Enhancement Failed: Invalid EnhancementType given, received {(int)wSpecial} | {wSpecial}");
+                        Core.Logger($"Enhancement Failed:\tInvalid \"EnhancementType\" given, received {(int)wSpecial} | {wSpecial}");
                         return;
                 }
             }
@@ -1461,7 +1462,7 @@ public class CoreAdvanced
                     case WeaponSpecial.Forge:
                         if (!uForgeWeapon())
                         {
-                            Core.Logger("Enhancement Failed: You did not unlock the Forge (Weapon) Enhancement yet");
+                            Core.Logger("Enhancement Failed:\tYou did not unlock the Forge (Weapon) Enhancement yet");
                             canEnhance = false;
                         }
                         break;
@@ -1480,7 +1481,7 @@ public class CoreAdvanced
                     case WeaponSpecial.Arcanas_Concerto:
                         if (!uArcanasConcerto())
                         {
-                            Core.Logger("Enhancement Failed: You did not unlock the Arcana's Concerto Enhancement yet");
+                            Core.Logger("Enhancement Failed:\tYou did not unlock the Arcana's Concerto Enhancement yet");
                             canEnhance = false;
                         }
                         break;
@@ -1492,13 +1493,22 @@ public class CoreAdvanced
                         if (!uAcheron())
                             Fail();
                         break;
+                    case WeaponSpecial.Praxis:
+                        if (!uPraxis())
+                            Fail();
+                        break;
+                    case WeaponSpecial.Dauntless:
+                        if (!uDauntless())
+                            Fail();
+                        break;
+
                     default:
-                        Core.Logger($"Enhancement Failed: Invalid WeaponSpecial given, received {(int)wSpecial} | {wSpecial}");
+                        Core.Logger($"Enhancement Failed:\tInvalid \"WeaponSpecial\" given, received {(int)wSpecial} | {wSpecial}");
                         return;
 
                         void Fail()
                         {
-                            Core.Logger($"Enhancement Failed: You did not unlock the {wSpecial} Enhancement yet");
+                            Core.Logger($"Enhancement Failed:\tYou did not unlock the {wSpecial} Enhancement yet");
                             canEnhance = false;
                         }
                 }
@@ -1513,7 +1523,7 @@ public class CoreAdvanced
         }
 
         if (skipCounter > 0)
-            Core.Logger($"Skipped enhancement for {skipCounter} item{(skipCounter > 1 ? 's' : null)}");
+            Core.Logger($"Enhancement Skipped:\t{skipCounter} item{(skipCounter > 1 ? 's' : null)}");
 
         void _AutoEnhance(InventoryItem item, int shopID, string? map = null)
         {
@@ -1524,7 +1534,7 @@ public class CoreAdvanced
             // Shopdata complete check
             if (!shopItems.Any(x => x.Category == ItemCategory.Enhancement) || shopItems.Count == 0)
             {
-                Core.Logger($"Enhancement Failed: Couldn't find enhancements in shop {shopID}");
+                Core.Logger($"Enhancement Failed:\tCouldn't find enhancements in shop {shopID}");
                 return;
             }
 
@@ -1535,7 +1545,7 @@ public class CoreAdvanced
                 Core.DebugLogger(this);
                 if (specialOnCape)
                 {
-                    if ((int)cSpecial == getEnhPatternID(item))
+                    if ((int)cSpecial == item.EnhancementPatternID)
                     {
                         skipCounter++;
                         return;
@@ -1544,14 +1554,14 @@ public class CoreAdvanced
                 else if (specialOnWeapon)
                 {
                     Core.DebugLogger(this);
-                    if (((int)wSpecial <= 6 ? (int)type : 10) == getEnhPatternID(item) && ((int)wSpecial == getProcID(item) || ((int)wSpecial == 99 && getProcID(item) == 0)))
+                    if (((int)wSpecial <= 6 ? (int)type : 10) == item.EnhancementPatternID && ((int)wSpecial == getProcID(item) || ((int)wSpecial == 99 && getProcID(item) == 0)))
                     {
                         Core.DebugLogger(this);
                         skipCounter++;
                         return;
                     }
                 }
-                else if ((int)type == getEnhPatternID(item))
+                else if ((int)type == item.EnhancementPatternID)
                 {
                     skipCounter++;
                     return;
@@ -1560,11 +1570,11 @@ public class CoreAdvanced
 
             // Logging
             if (specialOnCape)
-                Core.Logger($"Searching Enhancement: \tForge/{cSpecial.ToString().Replace("_", " ")} - \"{item.Name}\"");
+                Core.Logger($"Searching Enhancement:\tForge/{cSpecial.ToString().Replace("_", " ")} - \"{item.Name}\"");
             else if (specialOnWeapon)
-                Core.Logger($"Searching Enhancement: \t{((int)wSpecial <= 6 ? type : "Forge")}/{wSpecial.ToString().Replace("_", " ")} - \"{item.Name}\"");
+                Core.Logger($"Searching Enhancement:\t{((int)wSpecial <= 6 ? type : "Forge")}/{wSpecial.ToString().Replace("_", " ")} - \"{item.Name}\"");
             else
-                Core.Logger($"Searching Enhancement: \t{type} - \"{item.Name}\"");
+                Core.Logger($"Searching Enhancement:\t{type} - \"{item.Name}\"");
 
             List<ShopItem> availableEnh = new();
 
@@ -1601,7 +1611,7 @@ public class CoreAdvanced
             ShopItem? bestEnhancement = null;
             if (availableEnh.Count == 0)
             {
-                Core.Logger($"Enhancement Failed: availableEnh is empty");
+                Core.Logger($"Enhancement Failed:\t\"availableEnh\" is empty");
                 return;
             }
             else if (availableEnh.Count == 1)
@@ -1617,9 +1627,17 @@ public class CoreAdvanced
             // Null check
             if (bestEnhancement == null)
             {
-                Core.Logger($"Enhancement Failed: Could not find the best enhancement for \"{item.Name}\"");
+                Core.Logger($"Enhancement Failed:\tCould not find the best enhancement for \"{item.Name}\"");
                 return;
             }
+
+            // Compare with current enhancement
+            if (bestEnhancement.ID == getEnhID(item))
+            {
+                Core.Logger($"Enhancement Canceled:\tBest enhancement is already applied for \"{item.Name}\"");
+                return;
+            }
+
             // Enhancing the item
             Bot.Send.Packet($"%xt%zm%enhanceItemShop%{Bot.Map.RoomID}%{item.ID}%{bestEnhancement.ID}%{shopID}%");
 
@@ -1635,28 +1653,51 @@ public class CoreAdvanced
         }
     }
 
-    private int getProcID(InventoryItem item) => item == null ? 0 : Bot.Flash.GetGameObject<int>($"world.invTree.{item.ID}.ProcID");
-    private int getEnhPatternID(InventoryItem item) => item == null ? 0 : Bot.Flash.GetGameObject<int>($"world.invTree.{item.ID}.EnhPatternID");
+    private int getProcID(InventoryItem? item)
+        => item == null ? 0 : Core.GetItemProperty<int>(item, "ProcID");
+    private int getEnhID(InventoryItem? item)
+        => item == null ? 0 : Core.GetItemProperty<int>(item, "iEnh");
 
-    private bool uForgeWeapon() => Core.isCompletedBefore(8738);
-    private bool uLacerate() => Core.isCompletedBefore(8739);
-    private bool uSmite() => Core.isCompletedBefore(8740);
-    private bool uValiance() => Core.isCompletedBefore(8741);
-    private bool uArcanasConcerto() => Core.isCompletedBefore(8742);
-    private bool uAbsolution() => Core.isCompletedBefore(8743);
-    private bool uVainglory() => Core.isCompletedBefore(8744);
-    private bool uAvarice() => Core.isCompletedBefore(8745);
-    private bool uForgeCape() => Core.isCompletedBefore(8758);
-    private bool uElysium() => Core.isCompletedBefore(8821);
-    private bool uAcheron() => Core.isCompletedBefore(8820);
-    private bool uPenitence() => Core.isCompletedBefore(8822);
-    private bool uLament() => Core.isCompletedBefore(8823);
-    private bool uVim() => Core.isCompletedBefore(8824);
-    private bool uExamen() => Core.isCompletedBefore(8825);
-    private bool uAnima() => Core.isCompletedBefore(8826);
-    private bool uPneuma() => Core.isCompletedBefore(8827);
-    private bool DauntLess() => Core.isCompletedBefore(9172);
-    private bool uPraxis() => Core.isCompletedBefore(9171);
+    private bool uAwe()
+        => Core.isCompletedBefore(2937);
+    private bool uForgeWeapon()
+        => Core.isCompletedBefore(8738);
+    private bool uLacerate()
+        => Core.isCompletedBefore(8739);
+    private bool uSmite()
+        => Core.isCompletedBefore(8740);
+    private bool uValiance()
+        => Core.isCompletedBefore(8741);
+    private bool uArcanasConcerto()
+        => Core.isCompletedBefore(8742);
+    private bool uAbsolution()
+        => Core.isCompletedBefore(8743);
+    private bool uVainglory()
+        => Core.isCompletedBefore(8744);
+    private bool uAvarice()
+        => Core.isCompletedBefore(8745);
+    private bool uForgeCape()
+        => Core.isCompletedBefore(8758);
+    private bool uElysium()
+        => Core.isCompletedBefore(8821);
+    private bool uAcheron()
+        => Core.isCompletedBefore(8820);
+    private bool uPenitence()
+        => Core.isCompletedBefore(8822);
+    private bool uLament()
+        => Core.isCompletedBefore(8823);
+    private bool uVim()
+        => Core.isCompletedBefore(8824);
+    private bool uExamen()
+        => Core.isCompletedBefore(8825);
+    private bool uAnima()
+        => Core.isCompletedBefore(8826);
+    private bool uPneuma()
+        => Core.isCompletedBefore(8827);
+    private bool uDauntless()
+        => Core.isCompletedBefore(9172);
+    private bool uPraxis()
+        => Core.isCompletedBefore(9171);
 
     #endregion
 
@@ -1665,684 +1706,917 @@ public class CoreAdvanced
     /// <summary>
     /// Automatically finds the best Enhancement for the given class and enhances all equipped gear with it too
     /// </summary>
-    /// <param name="Class">Name of the class you wish to enhance</param>
-    public void SmartEnhance(string Class)
+    /// <param name="className">Name of the class you wish to enhance</param>
+    public void SmartEnhance(string? className)
     {
-        if (!Core.CheckInventory(Class))
+        if (String.IsNullOrEmpty(className))
+            return;
+        if (!Core.CheckInventory(className))
         {
-            Core.Logger($"SmartEnhance Failed: Class {Class} was not found in inventory");
+            Core.Logger($"SmartEnhance Failed: Class {className} was not found in inventory");
             return;
         }
 
-        InventoryItem? SelectedClass = Bot.Inventory.Items.Where(i => i.Name.ToLower() == Class.ToLower() && i.Category == ItemCategory.Class).FirstOrDefault();
-
+        // Error correction
+        className = className.ToLower().Trim();
+        InventoryItem? SelectedClass = Bot.Inventory.Items.Find(i => i.Name.ToLower() == className && i.Category == ItemCategory.Class);
         if (SelectedClass == null)
         {
-            Core.Logger($"SmartEnhance Failed: Class {Class} was not found in inventory");
+            Core.Logger($"SmartEnhance Failed: Class {className} was not found in inventory");
             return;
         }
 
+        // Creating variables that can be assigned to
+        className = SelectedClass.Name.ToLower();
         EnhancementType? type = null;
         CapeSpecial cSpecial = CapeSpecial.None;
         HelmSpecial hSpecial = HelmSpecial.None;
         WeaponSpecial wSpecial = WeaponSpecial.None;
 
-        #region Forge Enhancement Library
-        switch (SelectedClass.Name.ToLower())
+        // If the item doesnt exist in the forge enh lib, or the player doesn't have the Forge enh unlocked, use Awe enh instead
+        if (!ForgeEnhancementLibrary())
+            AweEnhancementLibrary();
+
+        // Can't be too careful
+        if (type == null)
         {
-            #region Lucky - Forge - Spiral Carve
-            case "corrupted chronomancer":
-            case "underworld chronomancer":
-            case "timekeeper":
-            case "timekiller":
-            case "eternal chronomancer":
-            case "immortal chronomancer":
-            case "dark metal necro":
-            case "great thief":
-                if (!uForgeCape())
-                    goto default;
-
-                type = EnhancementType.Lucky;
-                cSpecial = CapeSpecial.Forge;
-                wSpecial = WeaponSpecial.Spiral_Carve;
-                break;
-            #endregion
-
-            #region Forge - Lucky - Smite
-            case "Draconic Chronomancer":
-                if (!uSmite() || !uForgeCape())
-                    goto default;
-
-                type = EnhancementType.Lucky;
-                cSpecial = CapeSpecial.Forge;
-                wSpecial = WeaponSpecial.Smite;
-                break;
-            #endregion
-
-            #region Forge - Lucky - Elysium
-            case "ultra omniknight":
-            case "dark ultra omninight":
-                if (!uElysium() || !uForgeCape())
-                    goto default;
-
-                type = EnhancementType.Lucky;
-                cSpecial = CapeSpecial.Forge;
-                wSpecial = WeaponSpecial.Elysium;
-                break;
-            #endregion
-
-            #region Lucky - Forge - Awe Blast
-            case "glacial berserker":
-                if (!Core.isCompletedBefore(8758))
-                    goto default;
-
-                type = EnhancementType.Lucky;
-                cSpecial = CapeSpecial.Forge;
-                wSpecial = WeaponSpecial.Awe_Blast;
-                break;
-            #endregion 
-
-            #region Lucky - Forge - Mana Vamp
-            case "legendary elemental warrior":
-            case "ultra elemental warrior":
-                if (!uForgeCape())
-                    goto default;
-
-                type = EnhancementType.Lucky;
-                cSpecial = CapeSpecial.Forge;
-                wSpecial = WeaponSpecial.Mana_Vamp;
-                break;
-            #endregion
-
-            #region Wizard - Forge - Spiral Carve
-            case "lightcaster":
-                if (!uForgeCape())
-                    goto default;
-
-                type = EnhancementType.Wizard;
-                cSpecial = CapeSpecial.Forge;
-                wSpecial = WeaponSpecial.Spiral_Carve;
-                break;
-            #endregion
-
-            #region Wizard - Forge - Awe Blast
-            case "infinity knight":
-                if (!uForgeCape())
-                    goto default;
-
-                type = EnhancementType.Wizard;
-                cSpecial = CapeSpecial.Forge;
-                wSpecial = WeaponSpecial.Awe_Blast;
-                break;
-            #endregion
-
-            #region Wizard - Vainglory - Valiance - Pneuma
-            case "archmage":
-            case "darklord":
-                if (!uVainglory() || !uValiance() || !uPneuma())
-                    goto default;
-
-                type = EnhancementType.Wizard;
-                cSpecial = CapeSpecial.Vainglory;
-                wSpecial = WeaponSpecial.Valiance;
-                hSpecial = HelmSpecial.Pneuma;
-                break;
-            #endregion
-
-            #region Wizard - Penitence - Acheron - Pneuma
-            case "master of moglins":
-            case "dark master of moglins":
-                if (!uPenitence() || !uAcheron() || !uPneuma())
-                    goto default;
-
-                type = EnhancementType.Wizard;
-                cSpecial = CapeSpecial.Penitence;
-                wSpecial = WeaponSpecial.Acheron;
-                hSpecial = HelmSpecial.Pneuma;
-                break;
-            #endregion
-
-            #region Wizard - Avarice - Valiance - Pneuma
-            case "legion revenant":
-            case "legion revenant (ioda)":
-                if (!uAvarice() || !uValiance() || !uPneuma())
-                    goto default;
-
-                type = EnhancementType.Wizard;
-                cSpecial = CapeSpecial.Avarice;
-                wSpecial = WeaponSpecial.Valiance;
-                hSpecial = HelmSpecial.Pneuma;
-                break;
-            #endregion
-
-            #region Wizard - Avarice - Elysium - Pneuma
-            case "shaman":
-            case "vampire lord":
-            case "enchanted vampire lord":
-            case "royal vampire lord":
-                if (!uAvarice() || !uElysium() || !uPneuma())
-                    goto default;
-
-                type = EnhancementType.Wizard;
-                cSpecial = CapeSpecial.Avarice;
-                wSpecial = WeaponSpecial.Elysium;
-                hSpecial = HelmSpecial.Pneuma;
-                break;
-            #endregion
-
-            #region Wizard - Avarice - Acheron - Pneuma
-            case "blaze binder":
-                if (!uAvarice() || !uAcheron() || !uPneuma())
-                    goto default;
-
-                type = EnhancementType.Wizard;
-                cSpecial = CapeSpecial.Avarice;
-                wSpecial = WeaponSpecial.Acheron;
-                hSpecial = HelmSpecial.Pneuma;
-                break;
-            #endregion
-
-            #region Wizard - Lament - Elysium - Pneuma
-            case "royal battlemage":
-                if (!uLament() || !uElysium() || !uPneuma())
-                    goto default;
-
-                type = EnhancementType.Wizard;
-                cSpecial = CapeSpecial.Lament;
-                wSpecial = WeaponSpecial.Elysium;
-                hSpecial = HelmSpecial.Pneuma;
-                break;
-            #endregion
-
-            #region Wizard - Lament - Valiance - Pneuma
-            case "scarlet sorceress":
-                if (!uLament() || !uValiance() || !uPneuma())
-                    goto default;
-
-                type = EnhancementType.Wizard;
-                cSpecial = CapeSpecial.Lament;
-                wSpecial = WeaponSpecial.Valiance;
-                hSpecial = HelmSpecial.Pneuma;
-                break;
-            #endregion
-
-            #region Healer - Avarice - Elysium - Pneuma
-            case "dragon of time":
-                if (!uAvarice() || !uElysium() || !uPneuma())
-                    goto default;
-
-                type = EnhancementType.Healer;
-                cSpecial = CapeSpecial.Avarice;
-                wSpecial = WeaponSpecial.Elysium;
-                hSpecial = HelmSpecial.Pneuma;
-                break;
-            #endregion
-
-            #region Lucky - Vainglory - Valiance - Anima
-            case "archfiend":
-            case "eternal inversionist":
-            case "dragonlord":
-                if (!uVainglory() || !uValiance() || !uAnima())
-                    goto default;
-
-                type = EnhancementType.Lucky;
-                cSpecial = CapeSpecial.Vainglory;
-                wSpecial = WeaponSpecial.Valiance;
-                hSpecial = HelmSpecial.Anima;
-                break;
-            #endregion
-
-            #region Lucky - Vainglory - Valiance - Vim
-            case "continuum chronomancer":
-            case "quantum chronomancer":
-            case "chaos avenger":
-                if (!uVainglory() || !uValiance() || !uVim())
-                    goto default;
-
-                type = EnhancementType.Lucky;
-                cSpecial = CapeSpecial.Vainglory;
-                wSpecial = WeaponSpecial.Valiance;
-                hSpecial = HelmSpecial.Vim;
-                break;
-            #endregion
-
-            #region Lucky - Vainglory - Lacerate - Vim
-            case "yami no ronin":
-                if ((!uVainglory() || !uLacerate() || !uVim()) || !uPraxis())
-                    goto default;
-
-                type = EnhancementType.Lucky;
-                cSpecial = CapeSpecial.Vainglory;
-                if (uLacerate())
-                    wSpecial = WeaponSpecial.Lacerate;
-                else wSpecial = WeaponSpecial.Praxis;
-                hSpecial = HelmSpecial.Vim;
-                break;
-            #endregion
-
-            #region Lucky - Vainglory - Valiance - Anima
-            case "nechronomancer":
-            case "necrotic chronomancer":
-                if (!uVainglory() || !uArcanasConcerto() || !uAnima())
-                    goto default;
-
-                type = EnhancementType.Lucky;
-                cSpecial = CapeSpecial.Vainglory;
-                wSpecial = WeaponSpecial.Valiance;
-                hSpecial = HelmSpecial.Anima;
-                break;
-            #endregion
-
-            #region Lucky - Vainglory - Elysium - Vim
-            case "shadowwalker of time":
-            case "shadowstalker of time":
-            case "shadowweaver of time":
-                if (!uVainglory() || !uElysium() || !uVim())
-                    goto default;
-
-                type = EnhancementType.Lucky;
-                cSpecial = CapeSpecial.Vainglory;
-                wSpecial = WeaponSpecial.Elysium;
-                hSpecial = HelmSpecial.Vim;
-                break;
-            #endregion
-
-            #region Lucky - Lament - Elysium - Pneuma
-            case "abyssal angel":
-            case "abyssal angel's shadow":
-                if (!uLament() || !uElysium() || !uPneuma())
-                    goto default;
-
-                type = EnhancementType.Lucky;
-                cSpecial = CapeSpecial.Lament;
-                wSpecial = WeaponSpecial.Elysium;
-                hSpecial = HelmSpecial.Pneuma;
-                break;
-            #endregion
-
-            #region Lucky - Lament - Valiance - Vim
-            case "void highlord":
-            case "void highlord (ioda)":
-                if (!uLament() || !uValiance() || !uVim())
-                    goto default;
-
-                type = EnhancementType.Lucky;
-                cSpecial = CapeSpecial.Lament;
-                wSpecial = WeaponSpecial.Valiance;
-                hSpecial = HelmSpecial.Vim;
-                break;
-            #endregion
-
-            #region Lucky - Avarice - Elysium - Anima
-            case "flame dragon warrior":
-            case "chaos slayer":
-            case "chaos slayer berserker":
-            case "chaos slayer cleric":
-            case "chaos slayer mystic":
-            case "chaos slayer thief":
-                if (!uAvarice() || !uElysium() || !uAnima())
-                    goto default;
-
-                type = EnhancementType.Lucky;
-                cSpecial = CapeSpecial.Avarice;
-                wSpecial = WeaponSpecial.Elysium;
-                hSpecial = HelmSpecial.Anima;
-                break;
-            #endregion
-
-            #region Lucky - Penitence - Valiance - None
-            case "archpaladin":
-                if (!uPenitence() || !uValiance())
-                    goto default;
-
-                type = EnhancementType.Lucky;
-                cSpecial = CapeSpecial.Penitence;
-                wSpecial = WeaponSpecial.Valiance;
-                break;
-            #endregion
-
-            #region Lucky - None - Valiance - None
-            case "stonecrusher":
-                if (!uValiance())
-                    goto default;
-
-                type = EnhancementType.Lucky;
-                wSpecial = WeaponSpecial.Valiance;
-                break;
-            #endregion
-
-            #region Lucky - Vainglory - Valiance - None
-            case "legion doomknight":
-                if (!uVainglory() || !uValiance())
-                    goto default;
-
-                type = EnhancementType.Lucky;
-                cSpecial = CapeSpecial.Vainglory;
-                wSpecial = WeaponSpecial.Valiance;
-                break;
-            #endregion
-
-            #endregion
-
-            #region Awe Enhancement Library
-            default:
-                switch (SelectedClass.Name.ToLower())
-                {
-                    #region Lucky - None - Spiral Carve
-                    case "abyssal angel":
-                    case "abyssal angel's shadow":
-                    case "archpaladin":
-                    case "artifact hunter":
-                    case "assassin":
-                    case "archmage":
-                    case "beastmaster":
-                    case "berserker":
-                    case "beta berserker":
-                    case "blademaster assassin":
-                    case "blademaster":
-                    case "blood titan":
-                    case "cardclasher":
-                    case "chaos avenger member preview":
-                    case "chaos champion prime":
-                    case "chaos slayer":
-                    case "chaos slayer berserker":
-                    case "chaos slayer cleric":
-                    case "chaos slayer mystic":
-                    case "chaos slayer thief":
-                    case "chrono chaorruptor":
-                    case "chrono commandant":
-                    case "chronocommander":
-                    case "chronocorrupter":
-                    case "chunin":
-                    case "classic alpha pirate":
-                    case "classic barber":
-                    case "classic doomknight":
-                    case "classic exalted soul cleaver":
-                    case "classic guardian":
-                    case "classic legion doomknight":
-                    case "classic paladin":
-                    case "classic pirate":
-                    case "classic soul cleaver":
-                    case "continuum chronomancer":
-                    case "corrupted chronomancer":
-                    case "dark chaos berserker":
-                    case "dark harbinger":
-                    case "doomknight":
-                    case "empyrean chronomancer":
-                    case "eternal chronomancer":
-                    case "evolved clawsuit":
-                    case "evolved dark caster":
-                    case "evolved leprechaun":
-                    case "exalted harbinger":
-                    case "exalted soul cleaver":
-                    case "glacial warlord":
-                    case "great thief":
-                    case "immortal chronomancer":
-                    case "imperial chunin":
-                    case "infinite dark caster":
-                    case "infinite legion dark caster":
-                    case "infinity titan":
-                    case "legion blademaster assassin":
-                    case "legion doomknight":
-                    case "legion evolved dark caster":
-                    case "legion swordmaster assassin":
-                    case "leprechaun":
-                    case "lycan":
-                    case "master ranger":
-                    case "mechajouster":
-                    case "necromancer":
-                    case "ninja":
-                    case "ninja warrior":
-                    case "not a mod":
-                    case "overworld chronomancer":
-                    case "pinkomancer":
-                    case "prismatic clawsuit":
-                    case "ranger":
-                    case "renegade":
-                    case "rogue":
-                    case "rogue (rare)":
-                    case "scarlet sorceress":
-                    case "shadowscythe general":
-                    case "skycharged grenadier":
-                    case "skyguard grenadier":
-                    case "soul cleaver":
-                    case "starlord":
-                    case "swordmaster assassin":
-                    case "swordmaster":
-                    case "timekeeper":
-                    case "timekiller":
-                    case "timeless chronomancer":
-                    case "undead goat":
-                    case "undead leperchaun":
-                    case "undeadslayer":
-                    case "underworld chronomancer":
-                    case "unlucky leperchaun":
-                    case "void highlord":
-                    case "void highlord (ioda)":
-
-                        type = EnhancementType.Lucky;
-                        wSpecial = WeaponSpecial.Spiral_Carve;
-                        break;
-                    #endregion
-
-                    #region Lucky - None - Mana Vamp
-                    case "alpha doommega":
-                    case "alpha omega":
-                    case "alpha pirate":
-                    case "beast warrior":
-                    case "blood ancient":
-                    case "chaos avenger":
-                    case "chaos shaper":
-                    case "classic defender":
-                    case "clawsuit":
-                    case "cryomancer mini pet coming soon":
-                    case "dark legendary hero":
-                    case "ultra omniknight":
-                    case "dark ultra omninight":
-                    case "doomknight overlord":
-                    case "dragonslayer general":
-                    case "drakel warlord":
-                    case "glacial berserker test":
-                    case "heroic naval commander":
-                    case "legendary elemental warrior":
-                    case "horc evader":
-                    case "legendary hero":
-                    case "legendary naval commander":
-                    case "legion doomknight tester":
-                    case "legion revenant member test":
-                    case "naval commander":
-                    case "paladin high lord":
-                    case "paladin":
-                    case "paladinslayer":
-                    case "pirate":
-                    case "pumpkin lord":
-                    case "shadowflame dragonlord":
-                    case "shadowstalker of time":
-                    case "shadowwalker of time":
-                    case "shadowweaver of time":
-                    case "silver paladin":
-                    case "thief of hours":
-                    case "ultra elemental warrior":
-                    case "void highlord tester":
-                    case "warlord":
-                    case "warrior":
-                    case "warrior (rare)":
-                    case "warriorscythe general":
-                    case "yami no ronin":
-                        type = EnhancementType.Lucky;
-                        wSpecial = WeaponSpecial.Mana_Vamp;
-                        break;
-                    #endregion
-
-                    #region Lucky - None - Awe Blast
-                    case "arachnomancer":
-                    case "bard":
-                    case "chrono assassin":
-                    case "chronomancer":
-                    case "chronomancer prime":
-                    case "dark metal necro":
-                    case "deathknight lord":
-                    case "dragon shinobi":
-                    case "dragonlord":
-                    case "evolved pumpkin lord":
-                    case "dragonsoul shinobi":
-                    case "glacial berserker":
-                    case "grunge rocker":
-                    case "guardian":
-                    case "heavy metal necro":
-                    case "heavy metal rockstar":
-                    case "hobo highlord":
-                    case "lord of order":
-                    case "nechronomancer":
-                    case "necrotic chronomancer":
-                    case "Draconic Chronomancer":
-                    case "no class":
-                    case "nu metal necro":
-                    case "obsidian no class":
-                    case "protosartorium":
-                    case "shadow dragon shinobi":
-                    case "shadow ripper":
-                    case "shadow rocker":
-                    case "star captain":
-                    case "troubador of love":
-                    case "unchained rocker":
-                    case "unchained rockstar":
-                        type = EnhancementType.Lucky;
-                        wSpecial = WeaponSpecial.Awe_Blast;
-                        break;
-                    #endregion
-
-                    #region Lucky - None - Health Vamp
-                    case "eternal inversionist":
-                    case "archfiend":
-                    case "barber":
-                    case "classic dragonlord":
-                    case "dragonslayer":
-                    case "enforcer":
-                    case "flame dragon warrior":
-                    case "rustbucket":
-                    case "sentinel":
-                    case "vampire":
-                    case "vampire lord":
-                    case "enchanted vampire lord":
-                    case "royal vampire lord":
-                        type = EnhancementType.Lucky;
-                        wSpecial = WeaponSpecial.Health_Vamp;
-                        break;
-                    #endregion
-
-                    #region Wizard - None - Awe Blast
-                    case "acolyte":
-                    case "arcane dark caster":
-                    case "battlemage":
-                    case "battlemage of love":
-                    case "blaze binder":
-                    case "blood sorceress":
-                    case "dark battlemage":
-                    case "dragon knight":
-                    case "firelord summoner":
-                    case "grim necromancer":
-                    case "healer":
-                    case "healer (rare)":
-                    case "highseas commander":
-                    case "infinity knight":
-                    case "interstellar knight":
-                    case "master of moglins":
-                    case "dark master of moglins":
-                    case "mystical dark caster":
-                    case "northlands monk":
-                    case "royal battlemage":
-                    case "timeless dark caster":
-                    case "witch":
-                    case "stonecrusher":
-                        type = EnhancementType.Wizard;
-                        wSpecial = WeaponSpecial.Awe_Blast;
-                        break;
-                    #endregion
-
-                    #region Wizard - None - Spiral Carve
-                    case "chrono dataknight":
-                    case "chrono dragonknight":
-                    case "cryomancer":
-                    case "dark caster":
-                    case "dark cryomancer":
-                    case "dark lord":
-                    case "darkblood stormking":
-                    case "darkside":
-                    case "defender":
-                    case "frost spiritreaver":
-                    case "immortal dark caster":
-                    case "legion paladin":
-                    case "legion revenant":
-                    case "legion revenant (ioda)":
-                    case "lightcaster":
-                    case "pink romancer":
-                    case "psionic mindbreaker":
-                    case "pyromancer":
-                    case "sakura cryomancer":
-                    case "troll spellsmith":
-                        type = EnhancementType.Wizard;
-                        wSpecial = WeaponSpecial.Spiral_Carve;
-                        break;
-                    #endregion
-
-                    #region Wizard - None - Health Vamp
-                    case "daimon":
-                    case "evolved shaman":
-                    case "lightmage":
-                    case "mindbreaker":
-                    case "vindicator of they":
-                    case "elemental dracomancer":
-                    case "lightcaster test":
-                    case "love caster":
-                    case "mage":
-                    case "mage (rare)":
-                    case "sorcerer":
-                    case "the collector":
-                        type = EnhancementType.Wizard;
-                        wSpecial = WeaponSpecial.Health_Vamp;
-                        break;
-                    #endregion
-
-                    #region Wizard - None - Mana Vamp
-                    case "oracle":
-                    case "shaman":
-                        type = EnhancementType.Wizard;
-                        wSpecial = WeaponSpecial.Mana_Vamp;
-                        break;
-                    #endregion
-
-                    #region Fighter - None - Awe Blast
-                    case "deathknight":
-                    case "frostval barbarian":
-                        type = EnhancementType.Fighter;
-                        wSpecial = WeaponSpecial.Awe_Blast;
-                        break;
-                    #endregion
-
-                    #region Healer - None - Health Vamp
-                    case "dragon of time":
-                        type = EnhancementType.Healer;
-                        wSpecial = WeaponSpecial.Health_Vamp;
-                        break;
-                    #endregion
-
-                    default:
-                        Core.Logger($"Class: \"{Class}\" is not found in the Smart Enhance Library, please report to Lord Exelot#9674", messageBox: true);
-                        return;
-                }
-                break;
-                #endregion
+            Core.Logger($"SmartEnhance Failed: 'type' for {className} is NULL");
+            return;
         }
 
-        if (SelectedClass.EnhancementLevel == 0 && type != null)
-            EnhanceItem(Class, (EnhancementType)type);
-        Core.Equip(SelectedClass.Name);
+        // If the class isn't enhanced yet, enhance it with the enhancement type
+        if (SelectedClass.EnhancementLevel == 0)
+            EnhanceItem(className, (EnhancementType)type);
+        Core.Equip(className);
+        EnhanceEquipped((EnhancementType)type, cSpecial, hSpecial, wSpecial);
 
-        if (type == null)
-            return;
+        bool ForgeEnhancementLibrary()
+        {
+            switch (className)
+            {
+                #region Lucky Region
 
-        EnhanceEquipped((EnhancementType)type, (CapeSpecial)cSpecial, (HelmSpecial)hSpecial, (WeaponSpecial)wSpecial);
+                #region Lucky - Forge - Spiral Carve
+                case "corrupted chronomancer":
+                case "underworld chronomancer":
+                case "timekeeper":
+                case "timekiller":
+                case "eternal chronomancer":
+                case "immortal chronomancer":
+                case "dark metal necro":
+                case "great thief":
+                    if (!uForgeCape())
+                        goto default;
+
+                    type = EnhancementType.Lucky;
+                    cSpecial = CapeSpecial.Forge;
+                    wSpecial = WeaponSpecial.Spiral_Carve;
+                    break;
+                #endregion
+
+                #region Lucky - Forge - Awe Blast
+                case "glacial berserker":
+                    if (!Core.isCompletedBefore(8758))
+                        goto default;
+
+                    type = EnhancementType.Lucky;
+                    cSpecial = CapeSpecial.Forge;
+                    wSpecial = WeaponSpecial.Awe_Blast;
+                    break;
+                #endregion
+
+                #region Lucky - Forge - Mana Vamp
+                case "legendary elemental warrior":
+                case "ultra elemental warrior":
+                    if (!uForgeCape())
+                        goto default;
+
+                    type = EnhancementType.Lucky;
+                    cSpecial = CapeSpecial.Forge;
+                    wSpecial = WeaponSpecial.Mana_Vamp;
+                    break;
+                #endregion
+
+                #region Lucky - Forge - Smite
+                case "Draconic Chronomancer":
+                    if (!uSmite() || !uForgeCape())
+                        goto default;
+
+                    type = EnhancementType.Lucky;
+                    cSpecial = CapeSpecial.Forge;
+                    wSpecial = WeaponSpecial.Smite;
+                    break;
+                #endregion
+
+                #region Lucky - Forge - Elysium
+                case "ultra omniknight":
+                case "dark ultra omninight":
+                    if (!uElysium() || !uForgeCape())
+                        goto default;
+
+                    type = EnhancementType.Lucky;
+                    cSpecial = CapeSpecial.Forge;
+                    wSpecial = WeaponSpecial.Elysium;
+                    break;
+                #endregion
+
+                #region Lucky - Vainglory - Valiance - Anima
+                case "archfiend":
+                case "eternal inversionist":
+                case "dragonlord":
+                    if (!uVainglory() || !uValiance() || !uAnima())
+                        goto default;
+
+                    type = EnhancementType.Lucky;
+                    cSpecial = CapeSpecial.Vainglory;
+                    wSpecial = WeaponSpecial.Valiance;
+                    hSpecial = HelmSpecial.Anima;
+                    break;
+                #endregion
+
+                #region Lucky - Vainglory - Valiance - Vim
+                case "continuum chronomancer":
+                case "quantum chronomancer":
+                case "chaos avenger":
+                    if (!uVainglory() || !uValiance() || !uVim())
+                        goto default;
+
+                    type = EnhancementType.Lucky;
+                    cSpecial = CapeSpecial.Vainglory;
+                    wSpecial = WeaponSpecial.Valiance;
+                    hSpecial = HelmSpecial.Vim;
+                    break;
+                #endregion
+
+                #region Lucky - Vainglory - Lacerate - Vim
+                case "yami no ronin":
+                    if ((!uVainglory() || !uLacerate() || !uVim()) || !uPraxis())
+                        goto default;
+
+                    type = EnhancementType.Lucky;
+                    cSpecial = CapeSpecial.Vainglory;
+                    if (uLacerate())
+                        wSpecial = WeaponSpecial.Lacerate;
+                    else wSpecial = WeaponSpecial.Praxis;
+                    hSpecial = HelmSpecial.Vim;
+                    break;
+                #endregion
+
+                #region Lucky - Vainglory - Valiance - Anima
+                case "nechronomancer":
+                case "necrotic chronomancer":
+                    if (!uVainglory() || !uArcanasConcerto() || !uAnima())
+                        goto default;
+
+                    type = EnhancementType.Lucky;
+                    cSpecial = CapeSpecial.Vainglory;
+                    wSpecial = WeaponSpecial.Valiance;
+                    hSpecial = HelmSpecial.Anima;
+                    break;
+                #endregion
+
+                #region Lucky - Vainglory - Elysium - Vim
+                case "shadowwalker of time":
+                case "shadowstalker of time":
+                case "shadowweaver of time":
+                    if (!uVainglory() || !uElysium() || !uVim())
+                        goto default;
+
+                    type = EnhancementType.Lucky;
+                    cSpecial = CapeSpecial.Vainglory;
+                    wSpecial = WeaponSpecial.Elysium;
+                    hSpecial = HelmSpecial.Vim;
+                    break;
+                #endregion
+
+                #region Lucky - Vainglory - Valiance - None
+                case "legion doomknight":
+                    if (!uVainglory() || !uValiance())
+                        goto default;
+
+                    type = EnhancementType.Lucky;
+                    cSpecial = CapeSpecial.Vainglory;
+                    wSpecial = WeaponSpecial.Valiance;
+                    break;
+                #endregion
+
+                #region Lucky - Lament - Elysium - Pneuma
+                case "abyssal angel":
+                case "abyssal angel's shadow":
+                    if (!uLament() || !uElysium() || !uPneuma())
+                        goto default;
+
+                    type = EnhancementType.Lucky;
+                    cSpecial = CapeSpecial.Lament;
+                    wSpecial = WeaponSpecial.Elysium;
+                    hSpecial = HelmSpecial.Pneuma;
+                    break;
+                #endregion
+
+                #region Lucky - Lament - Valiance - Vim
+                case "void highlord":
+                case "void highlord (ioda)":
+                    if (!uLament() || !uValiance() || !uVim())
+                        goto default;
+
+                    type = EnhancementType.Lucky;
+                    cSpecial = CapeSpecial.Lament;
+                    wSpecial = WeaponSpecial.Valiance;
+                    hSpecial = HelmSpecial.Vim;
+                    break;
+                #endregion
+
+                #region Lucky - Avarice - Elysium - Anima
+                case "flame dragon warrior":
+                case "chaos slayer":
+                case "chaos slayer berserker":
+                case "chaos slayer cleric":
+                case "chaos slayer mystic":
+                case "chaos slayer thief":
+                    if (!uAvarice() || !uElysium() || !uAnima())
+                        goto default;
+
+                    type = EnhancementType.Lucky;
+                    cSpecial = CapeSpecial.Avarice;
+                    wSpecial = WeaponSpecial.Elysium;
+                    hSpecial = HelmSpecial.Anima;
+                    break;
+                #endregion
+
+                #region Lucky - Penitence - Valiance - None
+                case "archpaladin":
+                    if (!uPenitence() || !uValiance())
+                        goto default;
+
+                    type = EnhancementType.Lucky;
+                    cSpecial = CapeSpecial.Penitence;
+                    wSpecial = WeaponSpecial.Valiance;
+                    break;
+                #endregion
+
+                #region Lucky - None - Valiance - None
+                case "stonecrusher":
+                    if (!uValiance())
+                        goto default;
+
+                    type = EnhancementType.Lucky;
+                    wSpecial = WeaponSpecial.Valiance;
+                    break;
+                #endregion
+
+                #endregion
+
+                #region Wizard Region
+
+                #region Wizard - Forge - Spiral Carve
+                case "lightcaster":
+                    if (!uForgeCape())
+                        goto default;
+
+                    type = EnhancementType.Wizard;
+                    cSpecial = CapeSpecial.Forge;
+                    wSpecial = WeaponSpecial.Spiral_Carve;
+                    break;
+                #endregion
+
+                #region Wizard - Forge - Awe Blast
+                case "infinity knight":
+                    if (!uForgeCape())
+                        goto default;
+
+                    type = EnhancementType.Wizard;
+                    cSpecial = CapeSpecial.Forge;
+                    wSpecial = WeaponSpecial.Awe_Blast;
+                    break;
+                #endregion
+
+                #region Wizard - Vainglory - Valiance - Pneuma
+                case "archmage":
+                case "darklord":
+                    if (!uVainglory() || !uValiance() || !uPneuma())
+                        goto default;
+
+                    type = EnhancementType.Wizard;
+                    cSpecial = CapeSpecial.Vainglory;
+                    wSpecial = WeaponSpecial.Valiance;
+                    hSpecial = HelmSpecial.Pneuma;
+                    break;
+                #endregion
+
+                #region Wizard - Penitence - Acheron - Pneuma
+                case "master of moglins":
+                case "dark master of moglins":
+                    if (!uPenitence() || !uAcheron() || !uPneuma())
+                        goto default;
+
+                    type = EnhancementType.Wizard;
+                    cSpecial = CapeSpecial.Penitence;
+                    wSpecial = WeaponSpecial.Acheron;
+                    hSpecial = HelmSpecial.Pneuma;
+                    break;
+                #endregion
+
+                #region Wizard - Avarice - Valiance - Pneuma
+                case "legion revenant":
+                case "legion revenant (ioda)":
+                    if (!uAvarice() || !uValiance() || !uPneuma())
+                        goto default;
+
+                    type = EnhancementType.Wizard;
+                    cSpecial = CapeSpecial.Avarice;
+                    wSpecial = WeaponSpecial.Valiance;
+                    hSpecial = HelmSpecial.Pneuma;
+                    break;
+                #endregion
+
+                #region Wizard - Avarice - Elysium - Pneuma
+                case "shaman":
+                case "vampire lord":
+                case "enchanted vampire lord":
+                case "royal vampire lord":
+                    if (!uAvarice() || !uElysium() || !uPneuma())
+                        goto default;
+
+                    type = EnhancementType.Wizard;
+                    cSpecial = CapeSpecial.Avarice;
+                    wSpecial = WeaponSpecial.Elysium;
+                    hSpecial = HelmSpecial.Pneuma;
+                    break;
+                #endregion
+
+                #region Wizard - Avarice - Acheron - Pneuma
+                case "blaze binder":
+                    if (!uAvarice() || !uAcheron() || !uPneuma())
+                        goto default;
+
+                    type = EnhancementType.Wizard;
+                    cSpecial = CapeSpecial.Avarice;
+                    wSpecial = WeaponSpecial.Acheron;
+                    hSpecial = HelmSpecial.Pneuma;
+                    break;
+                #endregion
+
+                #region Wizard - Lament - Elysium - Pneuma
+                case "royal battlemage":
+                    if (!uLament() || !uElysium() || !uPneuma())
+                        goto default;
+
+                    type = EnhancementType.Wizard;
+                    cSpecial = CapeSpecial.Lament;
+                    wSpecial = WeaponSpecial.Elysium;
+                    hSpecial = HelmSpecial.Pneuma;
+                    break;
+                #endregion
+
+                #region Wizard - Lament - Valiance - Pneuma
+                case "scarlet sorceress":
+                    if (!uLament() || !uValiance() || !uPneuma())
+                        goto default;
+
+                    type = EnhancementType.Wizard;
+                    cSpecial = CapeSpecial.Lament;
+                    wSpecial = WeaponSpecial.Valiance;
+                    hSpecial = HelmSpecial.Pneuma;
+                    break;
+                #endregion
+
+                #endregion
+
+                #region Healer Region
+
+                #region Healer - Avarice - Elysium - Pneuma
+                case "dragon of time":
+                    if (!uAvarice() || !uElysium() || !uPneuma())
+                        goto default;
+
+                    type = EnhancementType.Healer;
+                    cSpecial = CapeSpecial.Avarice;
+                    wSpecial = WeaponSpecial.Elysium;
+                    hSpecial = HelmSpecial.Pneuma;
+                    break;
+                #endregion
+
+                #endregion
+
+                #region Unassigned Region
+
+                // This list serves as an overview of what classes dont have a Forge Enhancement yet, when adding a setup for it, remove it from here
+                case "acolyte":
+                case "alpha doommega":
+                case "alpha omega":
+                case "alpha pirate":
+                case "arachnomancer":
+                case "arcane dark caster":
+                case "artifact hunter":
+                case "assassin":
+                case "barber":
+                case "bard":
+                case "battlemage of love":
+                case "battlemage":
+                case "beast warrior":
+                case "beastmaster":
+                case "berserker":
+                case "beta berserker":
+                case "blademaster assassin":
+                case "blademaster":
+                case "blood ancient":
+                case "blood sorceress":
+                case "blood titan":
+                case "cardclasher":
+                case "chaos avenger member preview":
+                case "chaos champion prime":
+                case "chaos shaper":
+                case "chrono assassin":
+                case "chrono chaorruptor":
+                case "chrono commandant":
+                case "chrono dataknight":
+                case "chrono dragonknight":
+                case "chronocommander":
+                case "chronocorrupter":
+                case "chronomancer prime":
+                case "chronomancer":
+                case "chunin":
+                case "classic alpha pirate":
+                case "classic barber":
+                case "classic defender":
+                case "classic doomknight":
+                case "classic dragonlord":
+                case "classic exalted soul cleaver":
+                case "classic guardian":
+                case "classic legion doomknight":
+                case "classic paladin":
+                case "classic pirate":
+                case "classic soul cleaver":
+                case "clawsuit":
+                case "cryomancer mini pet coming soon":
+                case "cryomancer":
+                case "daimon":
+                case "dark battlemage":
+                case "dark caster":
+                case "dark chaos berserker":
+                case "dark cryomancer":
+                case "dark harbinger":
+                case "dark legendary hero":
+                case "dark lord":
+                case "darkblood stormking":
+                case "darkside":
+                case "deathknight lord":
+                case "deathknight":
+                case "defender":
+                case "doomknight overlord":
+                case "doomknight":
+                case "dragon knight":
+                case "dragon shinobi":
+                case "dragonslayer general":
+                case "dragonslayer":
+                case "dragonsoul shinobi":
+                case "drakel warlord":
+                case "elemental dracomancer":
+                case "empyrean chronomancer":
+                case "enforcer":
+                case "evolved clawsuit":
+                case "evolved dark caster":
+                case "evolved leprechaun":
+                case "evolved pumpkin lord":
+                case "evolved shaman":
+                case "exalted harbinger":
+                case "exalted soul cleaver":
+                case "firelord summoner":
+                case "frost spiritreaver":
+                case "frostval barbarian":
+                case "glacial berserker test":
+                case "glacial warlord":
+                case "grim necromancer":
+                case "grunge rocker":
+                case "guardian":
+                case "healer (rare)":
+                case "healer":
+                case "heavy metal necro":
+                case "heavy metal rockstar":
+                case "heroic naval commander":
+                case "highseas commander":
+                case "hobo highlord":
+                case "horc evader":
+                case "immortal dark caster":
+                case "imperial chunin":
+                case "infinite dark caster":
+                case "infinite legion dark caster":
+                case "infinity titan":
+                case "interstellar knight":
+                case "legendary hero":
+                case "legendary naval commander":
+                case "legion blademaster assassin":
+                case "legion doomknight tester":
+                case "legion evolved dark caster":
+                case "legion paladin":
+                case "legion revenant member test":
+                case "legion swordmaster assassin":
+                case "leprechaun":
+                case "lightcaster test":
+                case "lightmage":
+                case "lord of order":
+                case "love caster":
+                case "lycan":
+                case "mage (rare)":
+                case "mage":
+                case "master ranger":
+                case "mechajouster":
+                case "mindbreaker":
+                case "mystical dark caster":
+                case "naval commander":
+                case "necromancer":
+                case "ninja warrior":
+                case "ninja":
+                case "no class":
+                case "northlands monk":
+                case "not a mod":
+                case "nu metal necro":
+                case "obsidian no class":
+                case "oracle":
+                case "overworld chronomancer":
+                case "paladin high lord":
+                case "paladin":
+                case "paladinslayer":
+                case "pink romancer":
+                case "pinkomancer":
+                case "pirate":
+                case "prismatic clawsuit":
+                case "protosartorium":
+                case "psionic mindbreaker":
+                case "pumpkin lord":
+                case "pyromancer":
+                case "ranger":
+                case "renegade":
+                case "rogue (rare)":
+                case "rogue":
+                case "rustbucket":
+                case "sakura cryomancer":
+                case "sentinel":
+                case "shadow dragon shinobi":
+                case "shadow ripper":
+                case "shadow rocker":
+                case "shadowflame dragonlord":
+                case "shadowscythe general":
+                case "silver paladin":
+                case "skycharged grenadier":
+                case "skyguard grenadier":
+                case "sorcerer":
+                case "soul cleaver":
+                case "star captain":
+                case "starlord":
+                case "swordmaster assassin":
+                case "swordmaster":
+                case "the collector":
+                case "thief of hours":
+                case "timeless chronomancer":
+                case "timeless dark caster":
+                case "troubador of love":
+                case "unchained rocker":
+                case "unchained rockstar":
+                case "undead goat":
+                case "undead leperchaun":
+                case "undeadslayer":
+                case "unlucky leperchaun":
+                case "vampire":
+                case "vindicator of they":
+                case "void highlord tester":
+                case "warlord":
+                case "warrior (rare)":
+                case "warrior":
+                case "warriorscythe general":
+                case "witch":
+                default: // If the correct enhancement arent unlocked, or the class in question isnt in the Forge Enhancement Lib, use Awe Enhancements Lib
+                    return false;
+
+                    #endregion
+            }
+            return true;
+        }
+
+        void AweEnhancementLibrary()
+        {
+            switch (className)
+            {
+                #region Lucky Region
+
+                #region Lucky - Spiral Carve
+                case "abyssal angel":
+                case "abyssal angel's shadow":
+                case "archpaladin":
+                case "artifact hunter":
+                case "assassin":
+                case "archmage":
+                case "beastmaster":
+                case "berserker":
+                case "beta berserker":
+                case "blademaster assassin":
+                case "blademaster":
+                case "blood titan":
+                case "cardclasher":
+                case "chaos avenger member preview":
+                case "chaos champion prime":
+                case "chaos slayer":
+                case "chaos slayer berserker":
+                case "chaos slayer cleric":
+                case "chaos slayer mystic":
+                case "chaos slayer thief":
+                case "chrono chaorruptor":
+                case "chrono commandant":
+                case "chronocommander":
+                case "chronocorrupter":
+                case "chunin":
+                case "classic alpha pirate":
+                case "classic barber":
+                case "classic doomknight":
+                case "classic exalted soul cleaver":
+                case "classic guardian":
+                case "classic legion doomknight":
+                case "classic paladin":
+                case "classic pirate":
+                case "classic soul cleaver":
+                case "continuum chronomancer":
+                case "corrupted chronomancer":
+                case "dark chaos berserker":
+                case "dark harbinger":
+                case "doomknight":
+                case "empyrean chronomancer":
+                case "eternal chronomancer":
+                case "evolved clawsuit":
+                case "evolved dark caster":
+                case "evolved leprechaun":
+                case "exalted harbinger":
+                case "exalted soul cleaver":
+                case "glacial warlord":
+                case "great thief":
+                case "immortal chronomancer":
+                case "imperial chunin":
+                case "infinite dark caster":
+                case "infinite legion dark caster":
+                case "infinity titan":
+                case "legion blademaster assassin":
+                case "legion doomknight":
+                case "legion evolved dark caster":
+                case "legion swordmaster assassin":
+                case "leprechaun":
+                case "lycan":
+                case "master ranger":
+                case "mechajouster":
+                case "necromancer":
+                case "ninja":
+                case "ninja warrior":
+                case "not a mod":
+                case "overworld chronomancer":
+                case "pinkomancer":
+                case "prismatic clawsuit":
+                case "quantum chronomancer":
+                case "ranger":
+                case "renegade":
+                case "rogue":
+                case "rogue (rare)":
+                case "scarlet sorceress":
+                case "shadowscythe general":
+                case "skycharged grenadier":
+                case "skyguard grenadier":
+                case "soul cleaver":
+                case "starlord":
+                case "swordmaster assassin":
+                case "swordmaster":
+                case "timekeeper":
+                case "timekiller":
+                case "timeless chronomancer":
+                case "undead goat":
+                case "undead leperchaun":
+                case "undeadslayer":
+                case "underworld chronomancer":
+                case "unlucky leperchaun":
+                case "void highlord":
+                case "void highlord (ioda)":
+                    type = EnhancementType.Lucky;
+                    wSpecial = WeaponSpecial.Spiral_Carve;
+                    break;
+                #endregion
+
+                #region Lucky - Mana Vamp
+                case "alpha doommega":
+                case "alpha omega":
+                case "alpha pirate":
+                case "beast warrior":
+                case "blood ancient":
+                case "chaos avenger":
+                case "chaos shaper":
+                case "classic defender":
+                case "clawsuit":
+                case "cryomancer mini pet coming soon":
+                case "dark legendary hero":
+                case "ultra omniknight":
+                case "dark ultra omninight":
+                case "doomknight overlord":
+                case "dragonslayer general":
+                case "drakel warlord":
+                case "glacial berserker test":
+                case "heroic naval commander":
+                case "legendary elemental warrior":
+                case "horc evader":
+                case "legendary hero":
+                case "legendary naval commander":
+                case "legion doomknight tester":
+                case "legion revenant member test":
+                case "naval commander":
+                case "paladin high lord":
+                case "paladin":
+                case "paladinslayer":
+                case "pirate":
+                case "pumpkin lord":
+                case "shadowflame dragonlord":
+                case "shadowstalker of time":
+                case "shadowwalker of time":
+                case "shadowweaver of time":
+                case "silver paladin":
+                case "thief of hours":
+                case "ultra elemental warrior":
+                case "void highlord tester":
+                case "warlord":
+                case "warrior":
+                case "warrior (rare)":
+                case "warriorscythe general":
+                case "yami no ronin":
+                    type = EnhancementType.Lucky;
+                    wSpecial = WeaponSpecial.Mana_Vamp;
+                    break;
+                #endregion
+
+                #region Lucky - Awe Blast
+                case "arachnomancer":
+                case "bard":
+                case "chrono assassin":
+                case "chronomancer":
+                case "chronomancer prime":
+                case "dark metal necro":
+                case "deathknight lord":
+                case "dragon shinobi":
+                case "dragonlord":
+                case "evolved pumpkin lord":
+                case "dragonsoul shinobi":
+                case "glacial berserker":
+                case "grunge rocker":
+                case "guardian":
+                case "heavy metal necro":
+                case "heavy metal rockstar":
+                case "hobo highlord":
+                case "lord of order":
+                case "nechronomancer":
+                case "necrotic chronomancer":
+                case "Draconic Chronomancer":
+                case "no class":
+                case "nu metal necro":
+                case "obsidian no class":
+                case "protosartorium":
+                case "shadow dragon shinobi":
+                case "shadow ripper":
+                case "shadow rocker":
+                case "star captain":
+                case "troubador of love":
+                case "unchained rocker":
+                case "unchained rockstar":
+                    type = EnhancementType.Lucky;
+                    wSpecial = WeaponSpecial.Awe_Blast;
+                    break;
+                #endregion
+
+                #region Lucky - Health Vamp
+                case "eternal inversionist":
+                case "archfiend":
+                case "barber":
+                case "classic dragonlord":
+                case "dragonslayer":
+                case "enforcer":
+                case "flame dragon warrior":
+                case "rustbucket":
+                case "sentinel":
+                case "vampire":
+                case "vampire lord":
+                case "enchanted vampire lord":
+                case "royal vampire lord":
+                    type = EnhancementType.Lucky;
+                    wSpecial = WeaponSpecial.Health_Vamp;
+                    break;
+                #endregion
+
+                #endregion
+
+                #region Wizard Region
+
+                #region Wizard - Awe Blast
+                case "acolyte":
+                case "arcane dark caster":
+                case "battlemage":
+                case "battlemage of love":
+                case "blaze binder":
+                case "blood sorceress":
+                case "dark battlemage":
+                case "dragon knight":
+                case "firelord summoner":
+                case "grim necromancer":
+                case "healer":
+                case "healer (rare)":
+                case "highseas commander":
+                case "infinity knight":
+                case "interstellar knight":
+                case "master of moglins":
+                case "dark master of moglins":
+                case "mystical dark caster":
+                case "northlands monk":
+                case "royal battlemage":
+                case "timeless dark caster":
+                case "witch":
+                case "stonecrusher":
+                    type = EnhancementType.Wizard;
+                    wSpecial = WeaponSpecial.Awe_Blast;
+                    break;
+                #endregion
+
+                #region Wizard - Spiral Carve
+                case "chrono dataknight":
+                case "chrono dragonknight":
+                case "cryomancer":
+                case "dark caster":
+                case "dark cryomancer":
+                case "dark lord":
+                case "darkblood stormking":
+                case "darkside":
+                case "defender":
+                case "frost spiritreaver":
+                case "immortal dark caster":
+                case "legion paladin":
+                case "legion revenant":
+                case "legion revenant (ioda)":
+                case "lightcaster":
+                case "pink romancer":
+                case "psionic mindbreaker":
+                case "pyromancer":
+                case "sakura cryomancer":
+                case "troll spellsmith":
+                    type = EnhancementType.Wizard;
+                    wSpecial = WeaponSpecial.Spiral_Carve;
+                    break;
+                #endregion
+
+                #region Wizard - Health Vamp
+                case "daimon":
+                case "evolved shaman":
+                case "lightmage":
+                case "mindbreaker":
+                case "vindicator of they":
+                case "elemental dracomancer":
+                case "lightcaster test":
+                case "love caster":
+                case "mage":
+                case "mage (rare)":
+                case "sorcerer":
+                case "the collector":
+                    type = EnhancementType.Wizard;
+                    wSpecial = WeaponSpecial.Health_Vamp;
+                    break;
+                #endregion
+
+                #region Wizard - Mana Vamp
+                case "oracle":
+                case "shaman":
+                    type = EnhancementType.Wizard;
+                    wSpecial = WeaponSpecial.Mana_Vamp;
+                    break;
+                #endregion
+
+                #endregion
+
+                #region Fighter Region
+
+                #region Fighter - Awe Blast
+                case "deathknight":
+                case "frostval barbarian":
+                    type = EnhancementType.Fighter;
+                    wSpecial = WeaponSpecial.Awe_Blast;
+                    break;
+                #endregion
+
+                #endregion
+
+                #region Healer Region
+
+                #region Healer - Health Vamp
+                case "dragon of time":
+                    type = EnhancementType.Healer;
+                    wSpecial = WeaponSpecial.Health_Vamp;
+                    break;
+                #endregion
+
+                #endregion
+
+                default:
+                    Core.Logger($"SmartEnhance Failed: \"{className}\" is not found in the Smart Enhance Library, please report to Lord Exelot#2728", messageBox: true);
+                    return;
+            }
+        }
     }
 
     #endregion
@@ -2379,7 +2653,6 @@ public enum EnhancementType // Enhancement Pattern ID
     SpellBreaker = 8,
     Lucky = 9,
 }
-
 public enum CapeSpecial // Enhancement Pattern ID
 {
     None = 0,
@@ -2391,7 +2664,6 @@ public enum CapeSpecial // Enhancement Pattern ID
     Lament = 30,
 
 }
-
 public enum WeaponSpecial // Proc ID
 {
     None = 0,
@@ -2411,7 +2683,6 @@ public enum WeaponSpecial // Proc ID
     Praxis = 13,
     Dauntless = 14
 }
-
 public enum HelmSpecial //Enhancement Pattern ID
 {
     None = 0,
@@ -2429,4 +2700,3 @@ public enum mergeOptionsEnum
     mergeMats = 2,
     select = 3
 };
-//Test You may ignore

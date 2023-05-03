@@ -1,7 +1,7 @@
 /*
-name: ArmorOfAwe
-description: null
-tags: null
+name: Armor of Awe
+description: This bot will farm get you the Armor of Awe
+tags: armor, awe, good, pauldron, breastplate, vambrace, gauntlet, greaves, fragment, shard, relic
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

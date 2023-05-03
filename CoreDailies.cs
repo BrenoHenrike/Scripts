@@ -4,10 +4,10 @@ description: null
 tags: null
 */
 //cs_include Scripts/CoreBots.cs
+using Newtonsoft.Json;
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Models.Quests;
-using Newtonsoft.Json;
 
 public class CoreDailies
 {
@@ -322,13 +322,13 @@ public class CoreDailies
         {
             Core.EquipClass(ClassType.Farm);
             Core.FarmingLogger("Token of Collection", 90);
-            DailyRoutine(1316, "terrarium", "*", "This Might Be A Token", 2, false, "r2", "Right");
+            DailyRoutine(1316, "terrarium", "Carnivorous Cricket", "This Might Be A Token", 2, false, "r2", "Right");
         }
         if (Core.IsMember)
         {
             Core.FarmingLogger("Token of Collection", 90);
             if (CheckDaily(1331, true, "Tokens of Collection"))
-                DailyRoutine(1331, "terrarium", "*", "This Is Definitely A Token", 2, false, "r2", "Right");
+                DailyRoutine(1331, "terrarium", "*", "This Is Definitely A Token", 2, false, "Enter", "Right");
             if (CheckDaily(1332, true, "Tokens of Collection"))
                 DailyRoutine(1332, "terrarium", "*", "This Could Be A Token", 2, false, "r2", "Right");
         }
