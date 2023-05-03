@@ -1488,14 +1488,11 @@ public class Core13LoC
         Story.MapItemQuest(2255, "timevoid", 1439, 15);
         Story.KillQuest(2255, "timevoid", new[] { "Time-Travel Fairy", "Ephemerite" });
 
-
         //Fill the Empty Hours
         Story.KillQuest(2256, "timevoid", new[] { "Void Phoenix", "Time-Travel Fairy" });
 
-
         //Clock of the Long Now
         Story.MapItemQuest(2257, "timevoid", new[] { 1440, 1441, 1442, 1443 });
-
 
         //Unending Avatar
         Story.KillQuest(2258, "timevoid", "Unending Avatar", AutoCompleteQuest: false);
@@ -1581,7 +1578,7 @@ public class Core13LoC
         Story.KillQuest(2477, "dflesson", new[] { "Fire Elemental", "Lava Golem" });
 
         //ChickenCows, Bacon, and Battle!
-        Story.KillQuest(2478, "dflesson", new[] { "Chaotic Chicken", "Chaotic Horcboar" });
+        Story.KillQuest(2478, "dflesson", new[] { "Chaotic Horcboar", "Chaotic Chicken" });
 
         //The 2nd Proto-Chaos Beast
         Story.KillQuest(2479, "dflesson", "Fluffy the Dracolich");
