@@ -8,8 +8,8 @@ using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Models.Quests;
 using System.Diagnostics;
-using System.Runtime.CompilerServices;
 using System.Dynamic;
+using System.Runtime.CompilerServices;
 
 public class CoreStory
 {
