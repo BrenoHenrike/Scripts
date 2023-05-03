@@ -31,7 +31,7 @@ public class WheelOfDoomSpam
             stopForIoDA = false;
         else stopForIoDA ??= Bot.ShowMessageBox(
             "Do you wish for the bot to stop after the Epic Item of Digital Awesomeness have been obtained?",
-            "Dark Items?", true) == true;
+            "EIoDA?", true) == true;
 
         var goForbroke = Bot.ShowMessageBox("Do you wish to use select how many tickets to use?\n" +
             "Or maybe you wanna go for broke",
@@ -106,7 +106,7 @@ public class WheelOfDoomSpam
 
             if (stopForIoDA == true && Core.CheckInventory("Epic Item of Digital Awesomeness"))
             {
-                Bot.ShowMessageBox("Dark Box and Dark Key obtained!", "Dark Items!");
+                Bot.ShowMessageBox("Epic Item of Digital Awesomeness", "EIoDA!");
                 break;
             }
 
