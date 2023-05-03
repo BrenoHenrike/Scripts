@@ -94,6 +94,24 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/Butler.cs"
   },
   {
+    "name": "Wheel Of Doom Spam",
+    "description": "Wastes (with a warning) your extra ACs on Wheel of Doom spins",
+    "tags": [
+      "wheel",
+      "doom",
+      "spin",
+      "waste",
+      "AC",
+      "treasure",
+      "potions",
+      "IODA"
+    ],
+    "path": "Tools/WheelOfDoomSpam.cs",
+    "size": 5078,
+    "fileName": "WheelOfDoomSpam.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/WheelOfDoomSpam.cs"
+  },
+  {
     "name": "BankAllItems",
     "description": "null",
     "tags": [
@@ -2806,19 +2824,6 @@
     "size": 1944,
     "fileName": "MindBreakingItIn.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MindBreakingItIn.cs"
-  },
-  {
-    "name": "Wheel Of Doom Spam",
-    "description": "wastes (with a warning) your extra ACs on wheel of doom spins",
-    "tags": [
-      "wheel of doom",
-      "spin",
-      "waste acs"
-    ],
-    "path": "Other/WheelOfDoomSpam.cs",
-    "size": 4207,
-    "fileName": "WheelOfDoomSpam.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/WheelOfDoomSpam.cs"
   },
   {
     "name": "Sunken Treasure",
@@ -6503,7 +6508,7 @@
       "fealty"
     ],
     "path": "Army/ArmyLegion/ArmyLRFull.cs",
-    "size": 16845,
+    "size": 16932,
     "fileName": "ArmyLRFull.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyLegion/ArmyLRFull.cs"
   },
