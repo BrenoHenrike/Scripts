@@ -2102,10 +2102,197 @@ public class CoreAdvanced
 
                 #endregion
 
-                // This list serves as an overview of what classes dont have a Forge Enhancement yet, when adding a setup for it, remove it from here
+                #region Unassigned Region
 
+                // This list serves as an overview of what classes dont have a Forge Enhancement yet, when adding a setup for it, remove it from here
+                case "artifact hunter":
+                case "assassin":
+                case "beastmaster":
+                case "berserker":
+                case "beta berserker":
+                case "blademaster assassin":
+                case "blademaster":
+                case "blood titan":
+                case "cardclasher":
+                case "chaos avenger member preview":
+                case "chaos champion prime":
+                case "chrono chaorruptor":
+                case "chrono commandant":
+                case "chronocommander":
+                case "chronocorrupter":
+                case "chunin":
+                case "classic alpha pirate":
+                case "classic barber":
+                case "classic doomknight":
+                case "classic exalted soul cleaver":
+                case "classic guardian":
+                case "classic legion doomknight":
+                case "classic paladin":
+                case "classic pirate":
+                case "classic soul cleaver":
+                case "dark chaos berserker":
+                case "dark harbinger":
+                case "doomknight":
+                case "empyrean chronomancer":
+                case "evolved clawsuit":
+                case "evolved dark caster":
+                case "evolved leprechaun":
+                case "exalted harbinger":
+                case "exalted soul cleaver":
+                case "glacial warlord":
+                case "imperial chunin":
+                case "infinite dark caster":
+                case "infinite legion dark caster":
+                case "infinity titan":
+                case "legion blademaster assassin":
+                case "legion evolved dark caster":
+                case "legion swordmaster assassin":
+                case "leprechaun":
+                case "lycan":
+                case "master ranger":
+                case "mechajouster":
+                case "necromancer":
+                case "ninja":
+                case "ninja warrior":
+                case "not a mod":
+                case "overworld chronomancer":
+                case "pinkomancer":
+                case "prismatic clawsuit":
+                case "ranger":
+                case "renegade":
+                case "rogue":
+                case "rogue (rare)":
+                case "shadowscythe general":
+                case "skycharged grenadier":
+                case "skyguard grenadier":
+                case "soul cleaver":
+                case "starlord":
+                case "swordmaster assassin":
+                case "swordmaster":
+                case "timeless chronomancer":
+                case "undead goat":
+                case "undead leperchaun":
+                case "undeadslayer":
+                case "unlucky leperchaun":
+                case "alpha doommega":
+                case "alpha omega":
+                case "alpha pirate":
+                case "beast warrior":
+                case "blood ancient":
+                case "chaos shaper":
+                case "classic defender":
+                case "clawsuit":
+                case "cryomancer mini pet coming soon":
+                case "dark legendary hero":
+                case "doomknight overlord":
+                case "dragonslayer general":
+                case "drakel warlord":
+                case "glacial berserker test":
+                case "heroic naval commander":
+                case "horc evader":
+                case "legendary hero":
+                case "legendary naval commander":
+                case "legion doomknight tester":
+                case "legion revenant member test":
+                case "naval commander":
+                case "paladin high lord":
+                case "paladin":
+                case "paladinslayer":
+                case "pirate":
+                case "pumpkin lord":
+                case "shadowflame dragonlord":
+                case "silver paladin":
+                case "thief of hours":
+                case "void highlord tester":
+                case "warlord":
+                case "warrior":
+                case "warrior (rare)":
+                case "warriorscythe general":
+                case "arachnomancer":
+                case "bard":
+                case "chrono assassin":
+                case "chronomancer":
+                case "chronomancer prime":
+                case "deathknight lord":
+                case "dragon shinobi":
+                case "evolved pumpkin lord":
+                case "dragonsoul shinobi":
+                case "grunge rocker":
+                case "guardian":
+                case "heavy metal necro":
+                case "heavy metal rockstar":
+                case "hobo highlord":
+                case "lord of order":
+                case "no class":
+                case "nu metal necro":
+                case "obsidian no class":
+                case "protosartorium":
+                case "shadow dragon shinobi":
+                case "shadow ripper":
+                case "shadow rocker":
+                case "star captain":
+                case "troubador of love":
+                case "unchained rocker":
+                case "unchained rockstar":
+                case "barber":
+                case "classic dragonlord":
+                case "dragonslayer":
+                case "enforcer":
+                case "rustbucket":
+                case "sentinel":
+                case "vampire":
+                case "acolyte":
+                case "arcane dark caster":
+                case "battlemage":
+                case "battlemage of love":
+                case "blood sorceress":
+                case "dark battlemage":
+                case "dragon knight":
+                case "firelord summoner":
+                case "grim necromancer":
+                case "healer":
+                case "healer (rare)":
+                case "highseas commander":
+                case "interstellar knight":
+                case "mystical dark caster":
+                case "northlands monk":
+                case "timeless dark caster":
+                case "witch":
+                case "chrono dataknight":
+                case "chrono dragonknight":
+                case "cryomancer":
+                case "dark caster":
+                case "dark cryomancer":
+                case "dark lord":
+                case "darkblood stormking":
+                case "darkside":
+                case "defender":
+                case "frost spiritreaver":
+                case "immortal dark caster":
+                case "legion paladin":
+                case "pink romancer":
+                case "psionic mindbreaker":
+                case "pyromancer":
+                case "sakura cryomancer":
+                case "daimon":
+                case "evolved shaman":
+                case "lightmage":
+                case "mindbreaker":
+                case "vindicator of they":
+                case "elemental dracomancer":
+                case "lightcaster test":
+                case "love caster":
+                case "mage":
+                case "mage (rare)":
+                case "sorcerer":
+                case "the collector":
+                case "oracle":
+                case "deathknight":
+                case "frostval barbarian":
                 default: // If the correct enhancement arent unlocked, or the class in question isnt in the Forge Enhancement Lib, use Awe Enhancements Lib
                     return false;
+
+                    #endregion
             }
             return true;
         }
@@ -2116,7 +2303,7 @@ public class CoreAdvanced
             {
                 #region Lucky Region
 
-                #region Lucky - None - Spiral Carve
+                #region Lucky - Spiral Carve
                 case "abyssal angel":
                 case "abyssal angel's shadow":
                 case "archpaladin":
@@ -2207,13 +2394,12 @@ public class CoreAdvanced
                 case "unlucky leperchaun":
                 case "void highlord":
                 case "void highlord (ioda)":
-
                     type = EnhancementType.Lucky;
                     wSpecial = WeaponSpecial.Spiral_Carve;
                     break;
                 #endregion
 
-                #region Lucky - None - Mana Vamp
+                #region Lucky - Mana Vamp
                 case "alpha doommega":
                 case "alpha omega":
                 case "alpha pirate":
@@ -2262,7 +2448,7 @@ public class CoreAdvanced
                     break;
                 #endregion
 
-                #region Lucky - None - Awe Blast
+                #region Lucky - Awe Blast
                 case "arachnomancer":
                 case "bard":
                 case "chrono assassin":
@@ -2300,7 +2486,7 @@ public class CoreAdvanced
                     break;
                 #endregion
 
-                #region Lucky - None - Health Vamp
+                #region Lucky - Health Vamp
                 case "eternal inversionist":
                 case "archfiend":
                 case "barber":
@@ -2323,7 +2509,7 @@ public class CoreAdvanced
 
                 #region Wizard Region
 
-                #region Wizard - None - Awe Blast
+                #region Wizard - Awe Blast
                 case "acolyte":
                 case "arcane dark caster":
                 case "battlemage":
@@ -2352,7 +2538,7 @@ public class CoreAdvanced
                     break;
                 #endregion
 
-                #region Wizard - None - Spiral Carve
+                #region Wizard - Spiral Carve
                 case "chrono dataknight":
                 case "chrono dragonknight":
                 case "cryomancer":
@@ -2378,7 +2564,7 @@ public class CoreAdvanced
                     break;
                 #endregion
 
-                #region Wizard - None - Health Vamp
+                #region Wizard - Health Vamp
                 case "daimon":
                 case "evolved shaman":
                 case "lightmage":
@@ -2396,7 +2582,7 @@ public class CoreAdvanced
                     break;
                 #endregion
 
-                #region Wizard - None - Mana Vamp
+                #region Wizard - Mana Vamp
                 case "oracle":
                 case "shaman":
                     type = EnhancementType.Wizard;
@@ -2408,7 +2594,7 @@ public class CoreAdvanced
 
                 #region Fighter Region
 
-                #region Fighter - None - Awe Blast
+                #region Fighter - Awe Blast
                 case "deathknight":
                 case "frostval barbarian":
                     type = EnhancementType.Fighter;
@@ -2418,11 +2604,15 @@ public class CoreAdvanced
 
                 #endregion
 
-                #region Healer - None - Health Vamp
+                #region Healer Region
+
+                #region Healer - Health Vamp
                 case "dragon of time":
                     type = EnhancementType.Healer;
                     wSpecial = WeaponSpecial.Health_Vamp;
                     break;
+                #endregion
+
                 #endregion
 
                 default:
