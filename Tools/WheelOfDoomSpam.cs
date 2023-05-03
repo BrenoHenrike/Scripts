@@ -1,7 +1,7 @@
 /*
 name: Wheel Of Doom Spam
-description: wastes (with a warning) your extra ACs on wheel of doom spins
-tags: wheel of doom, spin, waste acs
+description: Wastes (with a warning) your extra ACs on Wheel of Doom spins
+tags: wheel, doom, spin, waste, AC, treasure, potions, IODA
 */
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;
@@ -10,15 +10,15 @@ using CommunityToolkit.Mvvm.DependencyInjection;
 
 public class WheelOfDoomSpam
 {
-    public IScriptInterface Bot => IScriptInterface.Instance;
-    public CoreBots Core => CoreBots.Instance;
+    private IScriptInterface Bot => IScriptInterface.Instance;
+    private CoreBots Core => CoreBots.Instance;
 
-    public void ScriptMain(IScriptInterface bot)
+    public void ScriptMain(IScriptInterface Bot)
     {
         WhalingTime();
     }
 
-    public void WhalingTime()
+    public void WhalingTime(bool? stopForIoDA = null)
     {
         Core.Logger("Pay attention to the popup's, they are crucial to this bot");
         bool? accept = Bot.ShowMessageBox("This bot will use up a lot of your ACs (which costs real money).\n" +
@@ -27,15 +27,21 @@ public class WheelOfDoomSpam
         if (accept != true)
             return;
 
+        if (Core.CheckInventory("Epic Item of Digital Awesomeness", toInv: false))
+            stopForIoDA = false;
+        else stopForIoDA ??= Bot.ShowMessageBox(
+            "Do you wish for the bot to stop after the Epic Item of Digital Awesomeness have been obtained?",
+            "Dark Items?", true) == true;
+
         var goForbroke = Bot.ShowMessageBox("Do you wish to use select how many tickets to use?\n" +
-        "Or maybe you wanna go for broke",
-        "Mode Selector", "Select Amount", "GO FOR BROKE!");
+            "Or maybe you wanna go for broke",
+            "Mode Selector", "Select Amount", "GO FOR BROKE!");
 
         int amount = 0;
         int currentAC = Bot.Flash.GetGameObject<int>("world.myAvatar.objData.intCoins");
         if (goForbroke.Text == "Select Amount")
         {
-            InputDialogViewModel diag = new("Input Amount", "How many tickts would you like to buy and use?", true);
+            InputDialogViewModel diag = new("Input Amount", "How many tickets would you like to buy and use?", true);
             while (!Bot.ShouldExit)
             {
                 if (Ioc.Default.GetRequiredService<IDialogService>().ShowDialog(diag) == true)
@@ -79,19 +85,35 @@ public class WheelOfDoomSpam
         Core.Join("doom");
         Bot.Shops.Load(707);
         int preTicketTP = Bot.Inventory.GetQuantity("Treasure Potion");
+        var rewards = Core.QuestRewards(3074);
 
         for (int i = 0; i < amount; i++)
         {
             Bot.Shops.BuyItem(45252, 26665);
+
             Bot.Sleep(Core.ActionDelay);
             var preTicketItems = Bot.Inventory.Items;
+
             Core.ChainComplete(3074);
             Bot.Sleep(Core.ActionDelay);
+
             var newItems = Bot.Inventory.Items.Except(preTicketItems);
             foreach (var item in newItems)
             {
                 if (item.Name != "Treasure Potion")
                     Core.Logger("New Item: " + item.Name);
+            }
+
+            if (stopForIoDA == true && Core.CheckInventory("Epic Item of Digital Awesomeness"))
+            {
+                Bot.ShowMessageBox("Dark Box and Dark Key obtained!", "Dark Items!");
+                break;
+            }
+
+            if (Core.CheckInventory(rewards, toInv: false))
+            {
+                Bot.ShowMessageBox("All Wheel of Doom items obtained!", "You maxed out the Wheel of Doom");
+                break;
             }
         }
         Core.Logger($"You have earned {preTicketTP - Bot.Inventory.GetQuantity("Treasure Potion")} more Treasure Potions");
