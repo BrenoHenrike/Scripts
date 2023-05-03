@@ -4,16 +4,17 @@ description: null
 tags: null
 */
 //cs_include Scripts/CoreBots.cs
+using CommunityToolkit.Mvvm.DependencyInjection;
+using Newtonsoft.Json;
 using Skua.Core.Interfaces;
+using Skua.Core.Models;
 using Skua.Core.Models.Monsters;
 using Skua.Core.Models.Players;
 using Skua.Core.Options;
-using Skua.Core.Models;
 using Skua.Core.ViewModels;
-using System.Xml;
 using System.Diagnostics;
-using Newtonsoft.Json;
-using CommunityToolkit.Mvvm.DependencyInjection;
+using System.Text;
+using System.Xml;
 
 public class CoreArmyLite
 {
@@ -297,7 +298,7 @@ public class CoreArmyLite
         string Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         string combinedDigits = "";
 
-        foreach (char c in Environment.MachineName)
+        foreach (char c in Convert.ToHexString(Encoding.Default.GetBytes(Environment.MachineName)))
         {
             if (char.IsDigit(c))
                 combinedDigits += c;
