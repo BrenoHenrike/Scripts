@@ -38,6 +38,9 @@ public class ArmorOfAwe
         {
             if (!Core.CheckInventory("Pauldron Relic"))
             {
+                Farm.BladeofAweREP(10, false);
+                Farm.Experience(55);
+                Core.BuyItem("museum", 1130, "Armor of Awe Pass");
                 Core.AddDrop("Pauldron Fragment");
                 Core.EquipClass(ClassType.Solo);
 
