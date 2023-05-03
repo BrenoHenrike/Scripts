@@ -2614,7 +2614,7 @@
       "pneuma"
     ],
     "path": "Enhancement/UnlockForgeEnhancements.cs",
-    "size": 37440,
+    "size": 37592,
     "fileName": "UnlockForgeEnhancements.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Enhancement/UnlockForgeEnhancements.cs"
   },
@@ -5905,7 +5905,7 @@
       "relic"
     ],
     "path": "Good/GearOfAwe/ArmorOfAwe.cs",
-    "size": 2255,
+    "size": 2406,
     "fileName": "ArmorOfAwe.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/GearOfAwe/ArmorOfAwe.cs"
   },
