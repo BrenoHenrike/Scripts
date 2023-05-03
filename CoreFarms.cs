@@ -508,7 +508,7 @@ public class CoreFarms
                     Bot.Wait.ForCombatExit();
                     Core.DebugLogger(this);
                     Core.DebugLogger(this);
-                    if (!Core.IsMonsterAlive("(B) Defensive Restorer"))
+                    if (!Core.IsMonsterAlive(313))
                     {
                         Bot.Combat.CancelTarget();
                         Core.Logger("(B) Defensive Restorers killed, moving on.");
@@ -533,7 +533,7 @@ public class CoreFarms
                     Core.DebugLogger(this);
                     Bot.Wait.ForCombatExit();
                     Core.DebugLogger(this);
-                    if (!Core.IsMonsterAlive("(B) Defensive Restorer"))
+                    if (!Core.IsMonsterAlive(313))
                     {
                         Bot.Combat.CancelTarget();
                         Core.Logger("(B) Defensive Restorers killed, moving on.");
@@ -563,7 +563,7 @@ public class CoreFarms
                     Core.DebugLogger(this);
                     Bot.Wait.ForCombatExit();
                     Core.DebugLogger(this);
-                    if (!Core.IsMonsterAlive("(B) Brawler"))
+                    if (!Core.IsMonsterAlive(311))
                     {
                         Bot.Combat.CancelTarget();
                         Core.Logger("(B) Brawlers killed, moving on.");
@@ -586,7 +586,7 @@ public class CoreFarms
                     Core.DebugLogger(this);
                     Bot.Wait.ForCombatExit();
                     Core.DebugLogger(this);
-                    if (!Core.IsMonsterAlive("(B) Brawler"))
+                    if (!Core.IsMonsterAlive(311))
                     {
                         Bot.Combat.CancelTarget();
                         Core.Logger("(B) Brawlers killed, moving on.");
@@ -610,7 +610,7 @@ public class CoreFarms
                     Core.DebugLogger(this);
                     Bot.Wait.ForCombatExit();
                     Core.DebugLogger(this);
-                    if (!Core.IsMonsterAlive("(B) Brawler"))
+                    if (!Core.IsMonsterAlive(311))
                     {
                         Bot.Combat.CancelTarget();
                         Core.Logger("(B) Brawlers killed, moving on.");
@@ -630,13 +630,12 @@ public class CoreFarms
                 Core.DebugLogger(this);
                 Bot.Wait.ForCombatExit();
                 Core.DebugLogger(this);
-                if (!Core.IsMonsterAlive("Team B Captain"))
+                if (!Core.IsMonsterAlive(309))
                 {
                     Bot.Combat.CancelTarget();
                     Core.Logger("Team B Captain killed, moving on.");
                     break;
                 }
-                break;
             }
 
             Core.DebugLogger(this);
@@ -651,10 +650,10 @@ public class CoreFarms
             Core.DebugLogger(this);
             Bot.Sleep(7500);
 
+            int i = 1;
             while (Bot.Map.Name != "battleon")
             {
                 Core.DebugLogger(this);
-                int i = 1;
                 Core.DebugLogger(this);
                 Core.Logger($"Attemping Exit {i++}.");
                 Core.DebugLogger(this);
@@ -1599,7 +1598,7 @@ public class CoreFarms
         ToggleBoost(BoostType.Reputation);
         Core.Logger($"Farming rank {rank}");
 
-        Core.RegisterQuests(5198,5208);
+        Core.RegisterQuests(5198, 5208);
         while (!Bot.ShouldExit && FactionRank("Eternal") < rank)
         {
             Core.HuntMonsterMapID("fourdpyramid", 19, "White Gem", 3, log: false);
