@@ -360,7 +360,21 @@ public class CoreBots
         if (crashed)
             Logger("Bot stopped due to a crash.");
         else if (!Bot.Player.LoggedIn)
-            Logger("Bot stopped due to Auto-Relogin failure.");
+        {
+            if (Bot.Options.AutoRelogin)
+            {
+                Task.Run(async () =>
+                {
+                    DL_Enable();
+                    DebugLogger(this);
+                    await Bot.Manager.RestartScriptAsync();
+                    if (Bot.Player.LoggedIn)
+                        return;
+                    Logger("Bot stopped due to Auto-Relogin failure.");
+                });
+            }
+            else Logger("Bot stopped due to player logout.");
+        }
         else Logger("Bot stopped successfully.");
 
         GC.KeepAlive(Instance);
