@@ -3890,6 +3890,13 @@ public static class UtilExtensions
 {
     public static void Log(this IScriptInterface bot, object? obj)
         => bot.Log(obj?.ToString() ?? "null");
+    public static void Log(this IScriptInterface bot, IEnumerable<object>? obj)
+        => bot.Log(JsonConvert.SerializeObject(obj, Formatting.Indented) ?? "null");
+}
+
+public static class Badge
+{
+
 }
 
 public enum Alignment
