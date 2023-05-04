@@ -897,15 +897,13 @@ public class CoreFarms
     {
         if (Core.CheckInventory("Dragon Runestone", quant))
             return;
+
         Core.ToggleAggro(false);
-        Core.FarmingLogger("Dragon Rune", quant);
-        Core.FarmingLogger("Gold Voucher 100k", quant);
-        if (!Core.CheckInventory("Dragon Runestone", quant))
-        {
-            Gold(100000 * (quant - Bot.Inventory.GetQuantity("Dragon Runestone")));
-            Core.BuyItem("Alchemy", 395, "Gold Voucher 100k", quant);
-            Core.BuyItem("Alchemy", 395, "Dragon Runestone", quant, 8844);
-        }
+        Core.FarmingLogger("Dragon Runestone", quant);
+
+        Gold((100000 * (quant - Bot.Inventory.GetQuantity("Dragon Runestone"))) - Bot.Inventory.GetQuantity("Gold Voucher 100k"));
+        Core.BuyItem("Alchemy", 395, "Gold Voucher 100k", (quant - Bot.Inventory.GetQuantity("Dragon Runestone")));
+        Core.BuyItem("Alchemy", 395, "Dragon Runestone", quant, 8844);
     }
 
     public void AlchemyREP(int rank = 10, bool goldMethod = true)
@@ -918,12 +916,7 @@ public class CoreFarms
             Core.Logger("Getting Pre-Ranking XP");
             if (!Core.CheckInventory(new[] { 11478, 11475, 7132 }))
             {
-                if (!Core.CheckInventory("Dragon Runestone", 10))
-                {
-                    Gold(1000000);
-                    Core.BuyItem("alchemyacademy", 395, "Gold Voucher 500k", 2);
-                }
-                Core.BuyItem("alchemyacademy", 395, 7132, 1, 8845);
+                DragonRunestone(1);
                 Core.BuyItem("alchemyacademy", 397, 11475, 2, 1232);
                 Core.BuyItem("alchemyacademy", 397, 11478, 1, 1235);
 
@@ -943,9 +936,7 @@ public class CoreFarms
             {
                 if (!Core.CheckInventory(new[] { 11478, 11475, 7132 }))
                 {
-                    Gold(2000000); //(2mil)
-                    Core.BuyItem("alchemyacademy", 395, "Gold Voucher 100k", 25);
-                    Core.BuyItem("alchemyacademy", 395, 7132, 25, 8844);
+                    DragonRunestone(25);
                     Core.BuyItem("alchemyacademy", 397, 11475, 20, 1232);
                     Core.BuyItem("alchemyacademy", 397, 11478, 10, 1235);
                 }
