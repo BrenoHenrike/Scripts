@@ -18,6 +18,7 @@ public class CraggleRockREP
         Core.SetOptions();
 
         Adv.BestGear(GenericGearBoost.dmgAll);
+        Adv.BestGear(GenericGearBoost.rep);
         Farm.CraggleRockREP();
 
         Core.SetOptions(false);

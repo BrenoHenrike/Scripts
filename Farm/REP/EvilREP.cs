@@ -18,6 +18,7 @@ public class EvilREP
         Core.SetOptions();
 
         Adv.BestGear(GenericGearBoost.dmgAll);
+        Adv.BestGear(GenericGearBoost.rep);
         Farm.EvilREP();
 
         Core.SetOptions(false);

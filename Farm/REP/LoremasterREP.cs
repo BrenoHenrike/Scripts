@@ -21,6 +21,7 @@ public class LoremasterREP
         Core.SetOptions();
 
         Adv.BestGear(GenericGearBoost.dmgAll);
+        Adv.BestGear(GenericGearBoost.rep);
         Farm.LoremasterREP();
 
         Core.SetOptions(false);

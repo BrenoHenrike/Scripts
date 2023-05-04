@@ -18,6 +18,7 @@ public class AegisREP
         Core.SetOptions();
 
         Adv.BestGear(GenericGearBoost.dmgAll);
+        Adv.BestGear(GenericGearBoost.rep);
         Farm.AegisREP();
 
         Core.SetOptions(false);

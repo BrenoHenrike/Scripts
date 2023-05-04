@@ -18,6 +18,7 @@ public class DreadrockREP
         Core.SetOptions();
 
         Adv.BestGear(GenericGearBoost.dmgAll);
+        Adv.BestGear(GenericGearBoost.rep);
         Farm.DreadrockREP();
 
         Core.SetOptions(false);

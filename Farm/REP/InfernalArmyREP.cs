@@ -18,6 +18,7 @@ public class InfernalArmyREP
         Core.SetOptions();
 
         Adv.BestGear(GenericGearBoost.dmgAll);
+        Adv.BestGear(GenericGearBoost.rep);
         Farm.InfernalArmyREP();
 
         Core.SetOptions(false);

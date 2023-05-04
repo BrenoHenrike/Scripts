@@ -18,6 +18,7 @@ public class MonsterHunterREP
         Core.SetOptions();
 
         Adv.BestGear(GenericGearBoost.dmgAll);
+        Adv.BestGear(GenericGearBoost.rep);
         Farm.MonsterHunterREP();
 
         Core.SetOptions(false);

@@ -18,6 +18,7 @@ public class TrollREP
         Core.SetOptions();
 
         Adv.BestGear(GenericGearBoost.dmgAll);
+        Adv.BestGear(GenericGearBoost.rep);
         Farm.TrollREP();
 
         Core.SetOptions(false);

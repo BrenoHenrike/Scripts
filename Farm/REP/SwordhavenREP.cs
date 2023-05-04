@@ -18,6 +18,7 @@ public class SwordhavenREP
         Core.SetOptions();
 
         Adv.BestGear(GenericGearBoost.dmgAll);
+        Adv.BestGear(GenericGearBoost.rep);
         Farm.SwordhavenREP();
 
         Core.SetOptions(false);

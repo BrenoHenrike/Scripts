@@ -18,6 +18,7 @@ public class BeastMasterREP
         Core.SetOptions();
 
         Adv.BestGear(GenericGearBoost.dmgAll);
+        Adv.BestGear(GenericGearBoost.rep);
         Farm.BeastMasterREP();
 
         Core.SetOptions(false);

@@ -18,6 +18,7 @@ public class NecroCryptREP
         Core.SetOptions();
 
         Adv.BestGear(GenericGearBoost.dmgAll);
+        Adv.BestGear(GenericGearBoost.rep);
         Farm.NecroCryptREP();
 
         Core.SetOptions(false);

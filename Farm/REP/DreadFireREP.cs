@@ -18,6 +18,7 @@ public class DreadfireREP
         Core.SetOptions();
 
         Adv.BestGear(GenericGearBoost.dmgAll);
+        Adv.BestGear(GenericGearBoost.rep);
         Farm.DreadfireREP();
 
         Core.SetOptions(false);

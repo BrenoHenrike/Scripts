@@ -18,6 +18,7 @@ public class BladeofAweREP
         Core.SetOptions();
 
         Adv.BestGear(GenericGearBoost.dmgAll);
+        Adv.BestGear(GenericGearBoost.rep);
         Farm.BladeofAweREP(10, false);
 
         Core.SetOptions(false);

@@ -18,6 +18,7 @@ public class HorcREP
         Core.SetOptions();
 
         Adv.BestGear(GenericGearBoost.dmgAll);
+        Adv.BestGear(GenericGearBoost.rep);
         Farm.HorcREP();
 
         Core.SetOptions(false);
