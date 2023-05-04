@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 155533,
+    "size": 156458,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -39,7 +39,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 102553,
+    "size": 102104,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -183,7 +183,7 @@
       "seasonal"
     ],
     "path": "Tools/EvaluateAccount.cs",
-    "size": 11399,
+    "size": 11311,
     "fileName": "EvaluateAccount.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/EvaluateAccount.cs"
   },
@@ -2237,17 +2237,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/RankUpAllClasses.cs"
   },
   {
-    "name": "ArmyTaintedGem",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Prototypes/ArmyTaintedGem.cs",
-    "size": 2767,
-    "fileName": "ArmyTaintedGem.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Prototypes/ArmyTaintedGem.cs"
-  },
-  {
     "name": "PrinceDarkonsPoleaxePreReqs",
     "description": "null",
     "tags": [
@@ -2257,28 +2246,6 @@
     "size": 1986,
     "fileName": "PrinceDarkonsPoleaxePreReqs.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Prototypes/PrinceDarkonsPoleaxePreReqs.cs"
-  },
-  {
-    "name": "MemberFarm",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Prototypes/MemberFarm.cs",
-    "size": 20311,
-    "fileName": "MemberFarm.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Prototypes/MemberFarm.cs"
-  },
-  {
-    "name": "WeaponMastery(AC)",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Prototypes/WeaponMastery(AC).cs",
-    "size": 2628,
-    "fileName": "WeaponMastery(AC).cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Prototypes/WeaponMastery(AC).cs"
   },
   {
     "name": "null",
@@ -6122,6 +6089,28 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyNulgath/ArmyEmblemofDage.cs"
   },
   {
+    "name": "Tainted Gem (Army)",
+    "description": "This bot will farm Tainted Gems with your army, using the Cubes method",
+    "tags": [
+      "tainted",
+      "gem",
+      "nation",
+      "nulgath",
+      "cubes",
+      "ice",
+      "receipt",
+      "swindle",
+      "reagent",
+      "boxes",
+      "mountfrost",
+      "army"
+    ],
+    "path": "Army/ArmyNulgath/ArmyTaintedGem.cs",
+    "size": 2684,
+    "fileName": "ArmyTaintedGem.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyNulgath/ArmyTaintedGem.cs"
+  },
+  {
     "name": "Army Totem And Gem",
     "description": "uses an army to farm Totems Of Nulgath or Gem of Nulgath from \"voucher item totem of nulgath\"",
     "tags": [
@@ -8580,6 +8569,24 @@
     "size": 3130,
     "fileName": "ArchfiendDeathLord.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/ArchfiendDeathLord.cs"
+  },
+  {
+    "name": "Weapon Mastery (AC)",
+    "description": "This bot does the Weapon Mastery (AC) quest of the \"Evolved Warlord Orb\", until both the hammer and axe are obtained.",
+    "tags": [
+      "evolved",
+      "warlord",
+      "orb",
+      "hammer",
+      "axe",
+      "nation",
+      "nulgath",
+      "underfiend"
+    ],
+    "path": "Nation/Various/WeaponMastery(AC).cs",
+    "size": 2466,
+    "fileName": "WeaponMastery(AC).cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/WeaponMastery(AC).cs"
   },
   {
     "name": "TheGameofGemstones(Gold[Members])",
@@ -12013,6 +12020,20 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/FarmerJoeLeveling.cs"
   },
   {
+    "name": "Member Farms Kit",
+    "description": "This kit contains all Member farms that you can profit off after your membership expires",
+    "tags": [
+      "member",
+      "kit",
+      "expire",
+      "legend"
+    ],
+    "path": "Other/FarmJoeKits/MemberFarmsKit.cs",
+    "size": 20185,
+    "fileName": "MemberFarmsKit.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/MemberFarmsKit.cs"
+  },
+  {
     "name": "FarmerJoeEndGame[WIP]",
     "description": "null",
     "tags": [
@@ -12144,7 +12165,7 @@
       "null"
     ],
     "path": "Other/Badges/Goal.cs",
-    "size": 825,
+    "size": 841,
     "fileName": "Goal.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Badges/Goal.cs"
   },

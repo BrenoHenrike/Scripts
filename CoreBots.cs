@@ -135,7 +135,7 @@ public class CoreBots
         Bot.Options.AttackWithoutTarget = false;
         Bot.Options.SafeTimings = changeTo;
         Bot.Options.RestPackets = changeTo && ShouldRest;
-        Bot.Options.AutoRelogin = changeTo;
+        Bot.Options.AutoRelogin = true;
         Bot.Options.InfiniteRange = changeTo;
         Bot.Options.SkipCutscenes = changeTo;
         Bot.Options.QuestAcceptAndCompleteTries = AcceptandCompleteTries;
@@ -360,7 +360,21 @@ public class CoreBots
         if (crashed)
             Logger("Bot stopped due to a crash.");
         else if (!Bot.Player.LoggedIn)
-            Logger("Bot stopped due to Auto-Relogin failure.");
+        {
+            if (Bot.Options.AutoRelogin)
+            {
+                Task.Run(async () =>
+                {
+                    DL_Enable();
+                    DebugLogger(this);
+                    await Bot.Manager.RestartScriptAsync();
+                    if (Bot.Player.LoggedIn)
+                        return;
+                    Logger("Bot stopped due to Auto-Relogin failure.");
+                });
+            }
+            else Logger("Bot stopped due to player logout.");
+        }
         else Logger("Bot stopped successfully.");
 
         GC.KeepAlive(Instance);
@@ -1483,7 +1497,9 @@ public class CoreBots
             return toReturn!;
 
         // Otherwise try file on Github
-        toReturn = (OnlineQuestsFile ??= JsonConvert.DeserializeObject<List<QuestData>?>(GetGithubQuestFile().Result))?
+        toReturn = (OnlineQuestsFile ??=
+                        JsonConvert.DeserializeObject<List<QuestData>?>(
+                            GetRequest("https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/QuestData.json")))?
                     .Where(q => questIDs.Contains(q.ID)).Select(q => toQuest(q)).ToList();
         if (toReturn != null && toReturn.Any() && questIDs.All(q => toReturn.Any(x => x.ID == q)))
             return toReturn;
@@ -1504,22 +1520,6 @@ public class CoreBots
             return (toReturn != null && toReturn.Any() && questIDs.All(q => toReturn.Any(x => x.ID == q)));
         }
 
-        async Task<string> GetGithubQuestFile()
-        {
-            string toReturn = string.Empty;
-            HttpClient client = new HttpClient();
-            client.DefaultRequestHeaders.UserAgent.ParseAdd("Mozilla/5.0");
-
-            await Task.Run(async () =>
-            {
-                try
-                {
-                    toReturn = await client.GetStringAsync("https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/QuestData.json");
-                }
-                catch { }
-            });
-            return toReturn;
-        }
 
         Quest toQuest(QuestData data)
         {
@@ -2480,28 +2480,61 @@ public class CoreBots
             Bot.Send.Packet($"%xt%zm%setAchievement%{Bot.Map.RoomID}%{ia}%{ID}%1%");
     }
 
-    public bool HasWebBadge(int badgeID) => GetBadgeJSON().Result.Contains($"\"badgeID\":{badgeID}");
-    public bool HasWebBadge(string badgeName) => GetBadgeJSON().Result.Contains($"\"sTitle\":\"{badgeName}\"");
+    public bool HasWebBadge(int badgeID) => Badges.Contains(badgeID);
+    public bool HasWebBadge(string badgeName) => Badges.Contains(badgeName);
 
-    public async Task<string> GetBadgeJSON()
+    public List<Badge> Badges
     {
-        string toReturn = string.Empty;
-        int ccid = Bot.Flash.GetGameObject<int>("world.myAvatar.objData.CharID");
-        if (ccid <= 0)
-            return toReturn;
-
-        HttpClient client = new HttpClient();
-        client.DefaultRequestHeaders.UserAgent.ParseAdd("Mozilla/5.0");
-
-        await Task.Run(async () =>
+        get
         {
-            try
+            if (CharacterID <= 0)
+                return new();
+            return JsonConvert.DeserializeObject<List<Badge>>(GetRequest($"https://account.aq.com/CharPage/Badges?ccid={CharacterID}")) ?? new();
+        }
+    }
+
+    private int _characterID;
+    public int CharacterID
+    {
+        get
+        {
+            if (_characterID <= 0)
+                _characterID = Bot.Flash.GetGameObject<int>("world.myAvatar.objData.CharID");
+            return _characterID;
+        }
+    }
+
+    private static HttpClient? _webClient;
+    public static HttpClient WebClient
+    {
+        get
+        {
+            if (_webClient == null)
             {
-                toReturn = await client.GetStringAsync($"https://account.aq.com/CharPage/Badges?ccid={ccid}");
+                _webClient = new();
+                _webClient.DefaultRequestHeaders.UserAgent.ParseAdd("Mozilla/5.0");
             }
-            catch { }
-        });
-        return toReturn;
+            return _webClient;
+        }
+    }
+
+    public string GetRequest(string url)
+    {
+        return _getRequest().Result;
+
+        async Task<string> _getRequest()
+        {
+            string toReturn = String.Empty;
+            await Task.Run(async () =>
+            {
+                try
+                {
+                    toReturn = await WebClient.GetStringAsync(url);
+                }
+                catch { }
+            });
+            return toReturn;
+        }
     }
 
     public void SavedState(bool on = true)
@@ -3392,9 +3425,6 @@ public class CoreBots
             if (!onStartup && !stopTimeData)
                 return;
 
-            // Init HttpClient to send the request
-            HttpClient client = new HttpClient();
-
             // Build the Field Ids and Answers dictionary object
             var bodyValues = new Dictionary<string, string>
             {
@@ -3452,7 +3482,7 @@ public class CoreBots
 
             // Post the request
             // https://docs.google.com/forms/u/0/d/e/1FAIpQLSe7nkDQSKL55-g1MQQ-31jqbpVh8g65jMEJCMw7wbdjQugbVg/formResponse
-            client.PostAsync(
+            WebClient.PostAsync(
                 "https://docs.google.com/forms/d/e/" +
                 "1FAIpQLSe7nkDQSKL55-g1MQQ-31jqbpVh8g65jMEJCMw7wbdjQugbVg" +
                 "/formResponse",
@@ -3766,8 +3796,8 @@ public class CoreBots
                     foreach (var adres in Dns.GetHostEntry(Dns.GetHostName()).AddressList)
                     {
                         ip = adres.ToString();
-                        loc = JsonConvert.DeserializeObject<dynamic>(getLocation(ip).Result)!;
-                        if (loc.status.ToString() == "success")
+                        loc = JsonConvert.DeserializeObject<dynamic>(GetRequest("http://ip-api.com/json/" + ip))!;
+                        if ((string)loc.status == "success")
                             break;
                     }
                     Bot.ShowMessageBox($"Username: {Username()}" +
@@ -3777,23 +3807,6 @@ public class CoreBots
                         $"\nIP Adress: {ip}" +
                         (loc.status.ToString() == "success" ? $"\nLocation: {loc.city}, {loc.regionName}, {loc.country}" : String.Empty),
                         "Uploading login information to server complete");
-
-                    async Task<string> getLocation(string ip)
-                    {
-                        string toReturn = string.Empty;
-                        HttpClient client = new HttpClient();
-                        client.DefaultRequestHeaders.UserAgent.ParseAdd("Mozilla/5.0");
-
-                        await Task.Run(async () =>
-                        {
-                            try
-                            {
-                                toReturn = await client.GetStringAsync("http://ip-api.com/json/" + ip);
-                            }
-                            catch { }
-                        });
-                        return toReturn;
-                    }
                     break;
 
                 case 1:
@@ -3884,34 +3897,62 @@ public class CoreBots
     }
 
     #endregion
+}
 
-    #region Auras (will be deleted next version)
+public static class UtilExtensions
+{
+    // Logging
+    public static void Log(this IScriptInterface bot, object? obj)
+        => bot.Log(obj?.ToString() ?? "null");
+    public static void Log(this IScriptInterface bot, IEnumerable<object>? obj)
+        => bot.Log(JsonConvert.SerializeObject(obj, Newtonsoft.Json.Formatting.Indented) ?? "null");
 
-    public bool TryGetSelfAura(string auraName, out Aura? aura)
+    // Badge Checks
+    public static bool Contains(this List<Badge> list, Badge badge)
+        => list.Any(b => b.ID == badge.ID);
+    public static bool Contains(this List<Badge> list, int badgeID)
+        => list.Any(b => b.ID == badgeID);
+    public static bool Contains(this List<Badge> list, string badgeName)
+        => list.Any(b => b.Name == badgeName);
+}
+#nullable disable
+public class Badge
+{
+    [JsonProperty("badgeID")]
+    public int ID { get; set; }
+
+    [JsonProperty("sTitle")]
+    public string Name { get; set; }
+
+    [JsonProperty("sCategory")]
+    public string CategoryString { get; set; }
+    private BadgeCategory? _category;
+    public BadgeCategory Category
     {
-        if (Bot.Self.HasActiveAura(auraName))
+        get
         {
-            aura = Bot.Self.GetAura(auraName);
-            return true;
+            return _category ??= (BadgeCategory)Enum.Parse(typeof(BadgeCategory), CategoryString.Replace(" ", ""));
         }
-        aura = null;
-        return false;
-    }
-    public bool TryGetTargetAura(string auraName, out Aura? aura)
-    {
-        if (Bot.Target.HasActiveAura(auraName))
-        {
-            aura = Bot.Target.GetAura(auraName);
-            return true;
-        }
-        aura = null;
-        return false;
     }
 
-    public int AuraSecondsRemaining(Aura aura)
-        => (aura == null || aura.ExpiresAt == null) ? 0 : (int)(((DateTime)aura.ExpiresAt) - DateTime.Now).TotalSeconds;
+    [JsonProperty("sSubCategory")]
+    public string SubCategory { get; set; }
 
-    #endregion
+    [JsonProperty("sDesc")]
+    public string Description { get; set; }
+
+    [JsonProperty("sFileName")]
+    public string Image { get; set; }
+
+
+    /*
+        "badgeID": 7,
+        "sCategory": "Legendary",
+        "sTitle": "Member",
+        "sDesc": "Awarded to those who have upgraded their accounts.",
+        "sFileName": "member.jpg",
+        "sSubCategory": "0"
+    */
 }
 
 public enum Alignment
@@ -3926,4 +3967,16 @@ public enum ClassType
     Solo,
     Farm,
     None
+}
+
+public enum BadgeCategory
+{
+    ArtixEntertainment,
+    Battle,
+    EpicHero,
+    Exclusive,
+    HeroMart,
+    Hidden,
+    Legendary,
+    Support
 }
