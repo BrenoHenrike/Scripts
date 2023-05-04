@@ -2480,15 +2480,28 @@ public class CoreBots
             Bot.Send.Packet($"%xt%zm%setAchievement%{Bot.Map.RoomID}%{ia}%{ID}%1%");
     }
 
-    public bool HasWebBadge(int badgeID) => GetBadgeJSON().Any(badge => (int)badge.badgeID == badgeID);
-    public bool HasWebBadge(string badgeName) => GetBadgeJSON().Any(badge => (string)badge.sTitle == badgeName);
+    public bool HasWebBadge(int badgeID) => Badges.Contains(badgeID);
+    public bool HasWebBadge(string badgeName) => Badges.Contains(badgeName);
 
-    public List<dynamic> GetBadgeJSON()
+    public List<Badge> Badges
     {
-        int ccid = Bot.Flash.GetGameObject<int>("world.myAvatar.objData.CharID");
-        if (ccid <= 0)
-            return new();
-        return JsonConvert.DeserializeObject<List<dynamic>>(GetRequest($"https://account.aq.com/CharPage/Badges?ccid={ccid}")) ?? new();
+        get
+        {
+            if (CharacterID <= 0)
+                return new();
+            return JsonConvert.DeserializeObject<List<Badge>>(GetRequest($"https://account.aq.com/CharPage/Badges?ccid={CharacterID}")) ?? new();
+        }
+    }
+
+    private int _characterID;
+    public int CharacterID
+    {
+        get
+        {
+            if (_characterID <= 0)
+                _characterID = Bot.Flash.GetGameObject<int>("world.myAvatar.objData.CharID");
+            return _characterID;
+        }
     }
 
     private static HttpClient? _webClient;
@@ -2505,7 +2518,7 @@ public class CoreBots
         }
     }
 
-    public static string GetRequest(string url)
+    public string GetRequest(string url)
     {
         return _getRequest().Result;
 
@@ -3888,15 +3901,58 @@ public class CoreBots
 
 public static class UtilExtensions
 {
+    // Logging
     public static void Log(this IScriptInterface bot, object? obj)
         => bot.Log(obj?.ToString() ?? "null");
     public static void Log(this IScriptInterface bot, IEnumerable<object>? obj)
         => bot.Log(JsonConvert.SerializeObject(obj, Newtonsoft.Json.Formatting.Indented) ?? "null");
+
+    // Badge Checks
+    public static bool Contains(this List<Badge> list, Badge badge)
+        => list.Any(b => b.ID == badge.ID);
+    public static bool Contains(this List<Badge> list, int badgeID)
+        => list.Any(b => b.ID == badgeID);
+    public static bool Contains(this List<Badge> list, string badgeName)
+        => list.Any(b => b.Name == badgeName);
 }
-
-public static class Badge
+#nullable disable
+public class Badge
 {
+    [JsonProperty("badgeID")]
+    public int ID { get; set; }
 
+    [JsonProperty("sTitle")]
+    public string Name { get; set; }
+
+    [JsonProperty("sCategory")]
+    public string CategoryString { get; set; }
+    private BadgeCategory? _category;
+    public BadgeCategory Category
+    {
+        get
+        {
+            return _category ??= (BadgeCategory)Enum.Parse(typeof(BadgeCategory), CategoryString.Replace(" ", ""));
+        }
+    }
+
+    [JsonProperty("sSubCategory")]
+    public string SubCategory { get; set; }
+
+    [JsonProperty("sDesc")]
+    public string Description { get; set; }
+
+    [JsonProperty("sFileName")]
+    public string Image { get; set; }
+
+
+    /*
+        "badgeID": 7,
+        "sCategory": "Legendary",
+        "sTitle": "Member",
+        "sDesc": "Awarded to those who have upgraded their accounts.",
+        "sFileName": "member.jpg",
+        "sSubCategory": "0"
+    */
 }
 
 public enum Alignment
@@ -3911,4 +3967,16 @@ public enum ClassType
     Solo,
     Farm,
     None
+}
+
+public enum BadgeCategory
+{
+    ArtixEntertainment,
+    Battle,
+    EpicHero,
+    Exclusive,
+    HeroMart,
+    Hidden,
+    Legendary,
+    Support
 }

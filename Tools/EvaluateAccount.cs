@@ -62,7 +62,7 @@ public class EvalAcc
         var accAge = accountAge(Bot.Flash.GetGameObject("world.myAvatar.objData.dCreated"));
         var gender = Bot.Flash.GetGameObject("world.myAvatar.objData.strGender");
         int ACs = Bot.Flash.GetGameObject<int>("world.myAvatar.objData.intCoins");
-        var badges = JsonConvert.DeserializeObject<List<dynamic>>(Core.GetBadgeJSON().Result);
+        var badges = Core.Badges;
 
         // Joining Legion will use up at least 120 AC
         if (Core.isCompletedBefore(793))
@@ -72,8 +72,8 @@ public class EvalAcc
         Bot.ShowMessageBox(
             $"Level:\t\t\t\t{Bot.Player.Level}\n" +
             (accAge != null ? $"Account Age:\t\t\t{(int)(accAge.Value.TotalDays / 365.2425)} years, {(int)(accAge.Value.TotalDays - ((int)(accAge.Value.TotalDays / 365.2425) * 365.2425)) / 30} months\n" : String.Empty) +
-            (badges != null ? $"Beta Tester:\t\t\t{checkbox(badges.Any(b => (int)b.badgeID == 1))}\n" : String.Empty) +
-            (badges != null ? $"Founder:\t\t\t\t{checkbox(badges.Any(b => (int)b.badgeID == 2))}\n" : String.Empty) +
+            (badges != null ? $"Beta Tester:\t\t\t{checkbox(badges.Contains(1))}\n" : String.Empty) +
+            (badges != null ? $"Founder:\t\t\t\t{checkbox(badges.Contains(2))}\n" : String.Empty) +
             (gender != null ? $"Gender:\t\t\t\t{(gender[1] == 'M' ? "Male" : "Female")}\n" : String.Empty) +
 
             $"\nMaxed Factions:\t\t\t{Bot.Reputation.FactionList.Count(f => f.Rank == 10)} out of 52\n" +
@@ -86,9 +86,9 @@ public class EvalAcc
             $"Extra Slots:\t\t\t{extraSlots} slots worth {extraSlots * 200} ACs\n\n" +
 
             $"Total Badge Count:\t\t{badges?.Count}\n" +
-            $"Support Badge Count:\t\t{badges?.Count(b => (string)b.sCategory == "Support")}\n" +
-            $"HeroMart Badge Count:\t\t{badges?.Count(b => (string)b.sCategory == "HeroMart")}\n" +
-            $"Exclusive Badge Count:\t\t{badges?.Count(b => (string)b.sCategory == "Exclusive")}\n\n" +
+            $"Support Badge Count:\t\t{badges?.Count(b => b.Category == BadgeCategory.Support)}\n" +
+            $"HeroMart Badge Count:\t\t{badges?.Count(b => b.Category == BadgeCategory.HeroMart)}\n" +
+            $"Exclusive Badge Count:\t\t{badges?.Count(b => b.Category == BadgeCategory.Exclusive)}\n\n" +
 
             $"Equipment Count:\t\t\t{equipment}\n" +
             $"Class Count:\t\t\t{classes}\n" +
