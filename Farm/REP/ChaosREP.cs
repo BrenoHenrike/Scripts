@@ -18,6 +18,7 @@ public class ChaosREP
         Core.SetOptions();
 
         Adv.BestGear(GenericGearBoost.dmgAll);
+        Adv.BestGear(GenericGearBoost.rep);
         Farm.ChaosREP();
 
         Core.SetOptions(false);

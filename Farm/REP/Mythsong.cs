@@ -27,8 +27,9 @@ public class MythsongREP
 
     public void DoRep()
     {        
-        Adv.BestGear(GenericGearBoost.dmgAll);
         LOC.Kimberly();
+        Adv.BestGear(GenericGearBoost.dmgAll);
+        Adv.BestGear(GenericGearBoost.rep);
         Farm.MythsongREP();
     }
 }

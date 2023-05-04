@@ -18,6 +18,7 @@ public class EmberseaREP
         Core.SetOptions();
 
         Adv.BestGear(GenericGearBoost.dmgAll);
+        Adv.BestGear(GenericGearBoost.rep);
         Farm.EmberseaREP();
 
         Core.SetOptions(false);

@@ -18,6 +18,7 @@ public class DeathPitArenaREP
         Core.SetOptions();
 
         Adv.BestGear(GenericGearBoost.dmgAll);
+        Adv.BestGear(GenericGearBoost.rep);
         Farm.DeathPitArenaREP();
 
         Core.SetOptions(false);

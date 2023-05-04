@@ -27,8 +27,9 @@ public class VampireREP
 
     public void DoRep()
     {
-        Adv.BestGear(GenericGearBoost.dmgAll);
         LOC.Wolfwing();
+        Adv.BestGear(GenericGearBoost.dmgAll);
+        Adv.BestGear(GenericGearBoost.rep);
         Farm.VampireREP();
 
     }

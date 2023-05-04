@@ -18,6 +18,7 @@ public class SandseaREP
         Core.SetOptions();
 
         Adv.BestGear(GenericGearBoost.dmgAll);
+        Adv.BestGear(GenericGearBoost.rep);
         Farm.SandseaREP();
 
         Core.SetOptions(false);

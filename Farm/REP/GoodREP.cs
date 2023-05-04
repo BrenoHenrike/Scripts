@@ -18,6 +18,7 @@ public class GoodREP
         Core.SetOptions();
 
         Adv.BestGear(GenericGearBoost.dmgAll);
+        Adv.BestGear(GenericGearBoost.rep);
         Farm.GoodREP();
 
         Core.SetOptions(false);

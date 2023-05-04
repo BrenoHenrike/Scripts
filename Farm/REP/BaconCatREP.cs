@@ -27,10 +27,11 @@ public class BaconCatREP
 
     public void DoRep()
     {
-        Adv.BestGear(GenericGearBoost.dmgAll);
         TOD.BaconCatFortress();
         TOD.LaserSharkInvasion();
 
+        Adv.BestGear(GenericGearBoost.dmgAll);
+        Adv.BestGear(GenericGearBoost.rep);
         Farm.BaconCatREP();
 
     }

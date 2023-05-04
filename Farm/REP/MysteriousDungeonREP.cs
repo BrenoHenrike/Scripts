@@ -18,6 +18,7 @@ public class MysteriousDungeonREP
         Core.SetOptions();
 
         Adv.BestGear(GenericGearBoost.dmgAll);
+        Adv.BestGear(GenericGearBoost.rep);
         Farm.MysteriousDungeonREP();
 
         Core.SetOptions(false);

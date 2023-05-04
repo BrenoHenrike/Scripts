@@ -18,6 +18,7 @@ public class RavenlossREP
         Core.SetOptions();
 
         Adv.BestGear(GenericGearBoost.dmgAll);
+        Adv.BestGear(GenericGearBoost.rep);
         Farm.RavenlossREP();
 
         Core.SetOptions(false);

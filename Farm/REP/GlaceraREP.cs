@@ -18,6 +18,7 @@ public class GlaceraREP
         Core.SetOptions();
 
         Adv.BestGear(GenericGearBoost.dmgAll);
+        Adv.BestGear(GenericGearBoost.rep);
         Farm.GlaceraREP();
 
         Core.SetOptions(false);

@@ -18,6 +18,7 @@ public class DruidGroveREP
         Core.SetOptions();
 
         Adv.BestGear(GenericGearBoost.dmgAll);
+        Adv.BestGear(GenericGearBoost.rep);
         Farm.DruidGroveREP();
 
         Core.SetOptions(false);

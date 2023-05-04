@@ -18,6 +18,7 @@ public class SomniaREP
         Core.SetOptions();
 
         Adv.BestGear(GenericGearBoost.dmgAll);
+        Adv.BestGear(GenericGearBoost.rep);
         Farm.SomniaREP();
 
         Core.SetOptions(false);

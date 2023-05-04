@@ -36,8 +36,9 @@ public class DiabolicalREP
 
     public void DoRep()
     {
-        Adv.BestGear(GenericGearBoost.dmgAll);
         UnlockDiabolical();
+        Adv.BestGear(GenericGearBoost.dmgAll);
+        Adv.BestGear(GenericGearBoost.rep);
         Farm.DiabolicalREP();
 
     }

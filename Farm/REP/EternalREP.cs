@@ -27,8 +27,9 @@ public class EternalREP
 
     public void DoRep()
     {
-        Adv.BestGear(GenericGearBoost.dmgAll);
         TOD.FourthDimensionalPyramid();
+        Adv.BestGear(GenericGearBoost.dmgAll);
+        Adv.BestGear(GenericGearBoost.rep);
         Farm.EternalREP();
 
     }
