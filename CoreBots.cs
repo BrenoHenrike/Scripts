@@ -3884,34 +3884,6 @@ public class CoreBots
     }
 
     #endregion
-
-    #region Auras (will be deleted next version)
-
-    public bool TryGetSelfAura(string auraName, out Aura? aura)
-    {
-        if (Bot.Self.HasActiveAura(auraName))
-        {
-            aura = Bot.Self.GetAura(auraName);
-            return true;
-        }
-        aura = null;
-        return false;
-    }
-    public bool TryGetTargetAura(string auraName, out Aura? aura)
-    {
-        if (Bot.Target.HasActiveAura(auraName))
-        {
-            aura = Bot.Target.GetAura(auraName);
-            return true;
-        }
-        aura = null;
-        return false;
-    }
-
-    public int AuraSecondsRemaining(Aura aura)
-        => (aura == null || aura.ExpiresAt == null) ? 0 : (int)(((DateTime)aura.ExpiresAt) - DateTime.Now).TotalSeconds;
-
-    #endregion
 }
 
 public enum Alignment
