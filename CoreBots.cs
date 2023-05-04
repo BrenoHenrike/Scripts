@@ -135,7 +135,7 @@ public class CoreBots
         Bot.Options.AttackWithoutTarget = false;
         Bot.Options.SafeTimings = changeTo;
         Bot.Options.RestPackets = changeTo && ShouldRest;
-        Bot.Options.AutoRelogin = changeTo;
+        Bot.Options.AutoRelogin = true;
         Bot.Options.InfiniteRange = changeTo;
         Bot.Options.SkipCutscenes = changeTo;
         Bot.Options.QuestAcceptAndCompleteTries = AcceptandCompleteTries;
