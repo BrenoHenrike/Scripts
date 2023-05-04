@@ -3886,6 +3886,12 @@ public class CoreBots
     #endregion
 }
 
+public static class UtilExtensions
+{
+    public static void Log(this IScriptInterface bot, object? obj)
+        => bot.Log(obj?.ToString() ?? "null");
+}
+
 public enum Alignment
 {
     Good = 1,
