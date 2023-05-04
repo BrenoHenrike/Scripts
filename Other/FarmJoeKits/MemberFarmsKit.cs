@@ -9,7 +9,7 @@ tags: member, kit, expire, legend
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/Nation/CoreNation.cs
-//cs_include Scripts/Nation/Various/DragonBlade[mem].cs
+//cs_include Scripts/Nation\Various\DragonBlade[mem].cs
 //cs_include Scripts/Nation/Various/ArchfiendDragonEgg[Mem].cs
 //cs_include Scripts/Nation/Various/TendurrrTheAssistantQuests.cs
 //cs_include Scripts/Nation/Various/PurifiedClaymoreOfDestiny.cs

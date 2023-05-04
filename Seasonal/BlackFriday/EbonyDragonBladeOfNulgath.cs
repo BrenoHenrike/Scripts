@@ -6,7 +6,7 @@ tags: ebony-dragonblade-of-nulgath, ebony-dbon
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/Nation/CoreNation.cs
-//cs_include Scripts/Nation/Various/DragonBlade[mem}.cs
+//cs_include Scripts/Nation/Various/DragonBlade[mem].cs
 //cs_include Scripts/Nation/Materials/DiamondofNulgath.cs
 using Skua.Core.Interfaces;
 

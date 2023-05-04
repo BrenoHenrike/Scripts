@@ -12,7 +12,7 @@ tags: null
 //cs_include Scripts/Legion/CoreLegion.cs
 //cs_include Scripts/Other/WeaponReflection.cs
 //cs_include Scripts/Nation/Various/JuggernautItems.cs
-//cs_include Scripts/Nation/Various/DragonBlade[mem}.cs
+//cs_include Scripts/Nation/Various/DragonBlade[mem].cs
 //cs_include Scripts/Other/Weapons/ShadowReaperOfDoom.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 using Skua.Core.Interfaces;
