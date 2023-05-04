@@ -1,7 +1,7 @@
 /*
-name: MemberFarm
-description: null
-tags: null
+name: Member Farms Kit
+description: This kit contains all Member farms that you can profit off after your membership expires
+tags: member, kit, expire, legend
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -9,7 +9,7 @@ tags: null
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/Nation/CoreNation.cs
-//cs_include Scripts/Nation/Various/DragonBlade[mem}.cs
+//cs_include Scripts/Nation/Various/DragonBlade[mem].cs
 //cs_include Scripts/Nation/Various/ArchfiendDragonEgg[Mem].cs
 //cs_include Scripts/Nation/Various/TendurrrTheAssistantQuests.cs
 //cs_include Scripts/Nation/Various/PurifiedClaymoreOfDestiny.cs
@@ -39,35 +39,29 @@ using Skua.Core.Interfaces;
 
 public class MemberFarm
 {
-    public IScriptInterface Bot => IScriptInterface.Instance;
-    public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new();
-    public CoreAdvanced Adv = new();
-    public CoreStory Story = new();
-    public CoreNation Nation = new();
-    public CoreFriday13th C13F = new();
-    public CoreSDKA SDKA = new();
-    public TrobbolierPet Trobbolier = new();
-    public CoinCollectorSet CoinCollector = new();
-    public TheLostKnightAndBackupBlade LostKnight = new();
-    public DeadflyMerge Deadfly = new();
-    public OdditiesMerge Oddities = new();
-    public SpellRaiser SpellRaiser = new();
-    public ArchfiendDragonEgg ArchfiendDragonPet = new();
-    public DragonBladeofNulgath DBoN = new();
-    public TowersMerge DeathKnight = new();
-    public LegendaryElementalWarrior LegendaryElementalWarrior = new();
-    public ChronoAssassin ChronoAssassin = new();
-    public TachyonMerge Tachyon = new();
-    public CoreQOM QOM = new();
-    public DragonFableOrigins DFO = new();
-    public CruxShip Crux = new();
-    public TendurrrTheAssistantQuests Tendurr = new();
-    public TarosPrismaticManslayers TarosItems = new();
-    public GonnaGetchaMerge GonnaGetcha = new();
-    public EvolvedShadowOrb ShadowOrb = new();
+    private IScriptInterface Bot => IScriptInterface.Instance;
+    private CoreBots Core => CoreBots.Instance;
+    private CoreAdvanced Adv = new();
+    private CoreNation Nation = new();
+    private CoreSDKA SDKA = new();
+    private TrobbolierPet Trobbolier = new();
+    private CoinCollectorSet CoinCollector = new();
+    private TheLostKnightAndBackupBlade LostKnight = new();
+    private SpellRaiser SpellRaiser = new();
+    private ArchfiendDragonEgg ArchfiendDragonPet = new();
+    private DragonBladeofNulgath DBoN = new();
+    private TowersMerge DeathKnight = new();
+    private LegendaryElementalWarrior LegendaryElementalWarrior = new();
+    private ChronoAssassin ChronoAssassin = new();
+    private TachyonMerge Tachyon = new();
+    private CoreQOM QOM = new();
+    private DragonFableOrigins DFO = new();
+    private CruxShip Crux = new();
+    private TendurrrTheAssistantQuests Tendurr = new();
+    private TarosPrismaticManslayers TarosItems = new();
+    private EvolvedShadowOrb ShadowOrb = new();
 
-    public void ScriptMain(IScriptInterface bot)
+    public void ScriptMain(IScriptInterface Bot)
     {
         Core.SetOptions();
 
@@ -141,15 +135,11 @@ public class MemberFarm
 
     public void DragonBlade()
     {
-        if (!Core.CheckInventory("DragonBlade of Nulgath", toInv: false))
+        if (!Core.CheckInventory("DragonBlade of Nulgath", toInv: false) &&
+            Core.CheckInventory(new[] { "Ebony DragonBlade of Nulgath", "Legion DragonBlade of Nulgath", "Dual DragonBlades of Nulgath" }, 1, true, false))
         {
-            if (Core.CheckInventory("Ebony DragonBlade of Nulgath", toInv: false)
-            || Core.CheckInventory("Legion DragonBlade of Nulgath", toInv: false)
-            || Core.CheckInventory("Dual DragonBlades of Nulgath", toInv: false))
-            {
-                Core.Logger("You already have DBoN but it's not in your inventory/bank, please check your buyback menu");
-                return;
-            }
+            Core.Logger("You already have DBoN but it's not in your inventory/bank, please check your buyback menu");
+            return;
         }
 
         DBoN.GetDragonBlade();
@@ -165,14 +155,18 @@ public class MemberFarm
 
         Crux.StoryLine();
 
+        Core.AddDrop("Darkwave Khopesh");
         Core.EquipClass(ClassType.Solo);
+        Core.FarmingLogger("Darkwave Khopesh", 1);
+
+        Core.RegisterQuests(4618);
         while (!Bot.ShouldExit && (!Core.CheckInventory("Darkwave Khopesh")))
         {
-            Core.EnsureAccept(4618);
             Core.HuntMonster("cruxship", "Apephryx", "Khopesh Shard", 1, isTemp: false);
-            Core.EnsureComplete(4618);
-            Bot.Drops.Pickup("Darkwave Khopesh");
+            Bot.Wait.ForPickup("Darkwave Khopesh");
         }
+        Core.CancelRegisteredQuests();
+
         Core.ToBank("Darkwave Khopesh");
     }
 
@@ -187,17 +181,19 @@ public class MemberFarm
 
         DFO.GreatFireWar();
         Core.BuyItem("firewar", 1586, "Flame Guardian's Accoutrements");
+
         Core.EquipClass(ClassType.Solo);
         Core.HuntMonster("firewar", "Uriax", "Dragon Eye", 2, isTemp: false);
 
+        Core.AddDrop("Dragon Flame");
+        Core.FarmingLogger("Dragon Flame", 1);
+        Core.EquipClass(ClassType.Farm);
+
         while (!Bot.ShouldExit && (!Core.CheckInventory("Dragon Flame", 25)))
         {
-            Core.EquipClass(ClassType.Farm);
-            Core.AddDrop("Dragon Flame");
-            Core.EnsureAccept(6300);
             Core.HuntMonster("firewar", "Fire Dragon", "Fire Dragon Slain", 3);
             Core.KillMonster("firewar", "r8", "Left", "Inferno Dragon", "Inferno Dragon Slain", 2);
-            Core.EnsureComplete(6300);
+            Bot.Wait.ForPickup("Dragon Flame");
         }
         Core.BuyItem("firewar", 1587, "Ignited Guardian's Accoutrements");
         Core.ToBank("Ignited Guardian's Accoutrements");
