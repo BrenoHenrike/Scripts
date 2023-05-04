@@ -1483,7 +1483,9 @@ public class CoreBots
             return toReturn!;
 
         // Otherwise try file on Github
-        toReturn = (OnlineQuestsFile ??= JsonConvert.DeserializeObject<List<QuestData>?>(GetGithubQuestFile().Result))?
+        toReturn = (OnlineQuestsFile ??=
+                        JsonConvert.DeserializeObject<List<QuestData>?>(
+                            GetRequest("https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/QuestData.json")))?
                     .Where(q => questIDs.Contains(q.ID)).Select(q => toQuest(q)).ToList();
         if (toReturn != null && toReturn.Any() && questIDs.All(q => toReturn.Any(x => x.ID == q)))
             return toReturn;
@@ -1504,22 +1506,6 @@ public class CoreBots
             return (toReturn != null && toReturn.Any() && questIDs.All(q => toReturn.Any(x => x.ID == q)));
         }
 
-        async Task<string> GetGithubQuestFile()
-        {
-            string toReturn = string.Empty;
-            HttpClient client = new HttpClient();
-            client.DefaultRequestHeaders.UserAgent.ParseAdd("Mozilla/5.0");
-
-            await Task.Run(async () =>
-            {
-                try
-                {
-                    toReturn = await client.GetStringAsync("https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/QuestData.json");
-                }
-                catch { }
-            });
-            return toReturn;
-        }
 
         Quest toQuest(QuestData data)
         {
@@ -2480,28 +2466,48 @@ public class CoreBots
             Bot.Send.Packet($"%xt%zm%setAchievement%{Bot.Map.RoomID}%{ia}%{ID}%1%");
     }
 
-    public bool HasWebBadge(int badgeID) => GetBadgeJSON().Result.Contains($"\"badgeID\":{badgeID}");
-    public bool HasWebBadge(string badgeName) => GetBadgeJSON().Result.Contains($"\"sTitle\":\"{badgeName}\"");
+    public bool HasWebBadge(int badgeID) => GetBadgeJSON().Any(badge => (int)badge.badgeID == badgeID);
+    public bool HasWebBadge(string badgeName) => GetBadgeJSON().Any(badge => (string)badge.sTitle == badgeName);
 
-    public async Task<string> GetBadgeJSON()
+    public List<dynamic> GetBadgeJSON()
     {
-        string toReturn = string.Empty;
         int ccid = Bot.Flash.GetGameObject<int>("world.myAvatar.objData.CharID");
         if (ccid <= 0)
-            return toReturn;
+            return new();
+        return JsonConvert.DeserializeObject<List<dynamic>>(GetRequest($"https://account.aq.com/CharPage/Badges?ccid={ccid}")) ?? new();
+    }
 
-        HttpClient client = new HttpClient();
-        client.DefaultRequestHeaders.UserAgent.ParseAdd("Mozilla/5.0");
-
-        await Task.Run(async () =>
+    private static HttpClient? _webClient;
+    public static HttpClient WebClient
+    {
+        get
         {
-            try
+            if (_webClient == null)
             {
-                toReturn = await client.GetStringAsync($"https://account.aq.com/CharPage/Badges?ccid={ccid}");
+                _webClient = new();
+                _webClient.DefaultRequestHeaders.UserAgent.ParseAdd("Mozilla/5.0");
             }
-            catch { }
-        });
-        return toReturn;
+            return _webClient;
+        }
+    }
+
+    public static string GetRequest(string url)
+    {
+        return _getRequest().Result;
+
+        async Task<string> _getRequest()
+        {
+            string toReturn = String.Empty;
+            await Task.Run(async () =>
+            {
+                try
+                {
+                    toReturn = await WebClient.GetStringAsync(url);
+                }
+                catch { }
+            });
+            return toReturn;
+        }
     }
 
     public void SavedState(bool on = true)
@@ -3392,9 +3398,6 @@ public class CoreBots
             if (!onStartup && !stopTimeData)
                 return;
 
-            // Init HttpClient to send the request
-            HttpClient client = new HttpClient();
-
             // Build the Field Ids and Answers dictionary object
             var bodyValues = new Dictionary<string, string>
             {
@@ -3452,7 +3455,7 @@ public class CoreBots
 
             // Post the request
             // https://docs.google.com/forms/u/0/d/e/1FAIpQLSe7nkDQSKL55-g1MQQ-31jqbpVh8g65jMEJCMw7wbdjQugbVg/formResponse
-            client.PostAsync(
+            WebClient.PostAsync(
                 "https://docs.google.com/forms/d/e/" +
                 "1FAIpQLSe7nkDQSKL55-g1MQQ-31jqbpVh8g65jMEJCMw7wbdjQugbVg" +
                 "/formResponse",
@@ -3766,8 +3769,8 @@ public class CoreBots
                     foreach (var adres in Dns.GetHostEntry(Dns.GetHostName()).AddressList)
                     {
                         ip = adres.ToString();
-                        loc = JsonConvert.DeserializeObject<dynamic>(getLocation(ip).Result)!;
-                        if (loc.status.ToString() == "success")
+                        loc = JsonConvert.DeserializeObject<dynamic>(GetRequest("http://ip-api.com/json/" + ip))!;
+                        if ((string)loc.status == "success")
                             break;
                     }
                     Bot.ShowMessageBox($"Username: {Username()}" +
@@ -3777,23 +3780,6 @@ public class CoreBots
                         $"\nIP Adress: {ip}" +
                         (loc.status.ToString() == "success" ? $"\nLocation: {loc.city}, {loc.regionName}, {loc.country}" : String.Empty),
                         "Uploading login information to server complete");
-
-                    async Task<string> getLocation(string ip)
-                    {
-                        string toReturn = string.Empty;
-                        HttpClient client = new HttpClient();
-                        client.DefaultRequestHeaders.UserAgent.ParseAdd("Mozilla/5.0");
-
-                        await Task.Run(async () =>
-                        {
-                            try
-                            {
-                                toReturn = await client.GetStringAsync("http://ip-api.com/json/" + ip);
-                            }
-                            catch { }
-                        });
-                        return toReturn;
-                    }
                     break;
 
                 case 1:
