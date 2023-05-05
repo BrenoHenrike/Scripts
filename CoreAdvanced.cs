@@ -586,7 +586,6 @@ public class CoreAdvanced
     /// <param name="EquipItem">To Equip the found item(s) or not</param>
     public string BestGear(GenericGearBoost boostType, bool equipItem = true)
     {
-        Core.DL_Enable();
         try
         {
             // If CBO settings disable bestgear, dont do anything
@@ -641,28 +640,19 @@ public class CoreAdvanced
                             x.Item2 == equippedItems.Find(e => e.Item1.ItemGroup == x.Item1.ItemGroup).Item2)
                         .Select(b => b.Item1);
                 // Should always return true if its two pets or armors or ground runes
-                Core.DebugLogger(this);
+
                 if (filter != null && filter.Any(x => x != null))
-                {
-                    Core.DebugLogger(this);
                     setToReturn(filter);
-                    Core.DebugLogger(this);
-                }
                 else
                 {
-                    Core.DebugLogger(this);
                     // If none of the enhancement IDs match, prioritize items that are enhanced in general
                     filter = bestItemsEnh.Where(x => x.Item2 != 0).Select(b => b.Item1);
-                    Core.DebugLogger(this);
                     if (filter != null && filter.Any(x => x != null))
                         setToReturn(filter);
                     // If no items are enhanced, just pick the item (based on category ofc)
                     else setToReturn(bestItems);
-                    Core.DebugLogger(this);
                 }
-                Core.DebugLogger(this);
             }
-            Core.DebugLogger(this);
 
             if (toReturn == null)
             {
@@ -671,7 +661,6 @@ public class CoreAdvanced
                 return String.Empty;
             }
             else Core.Logger($"Best gear for {boostString} found: {toReturn.Name} ({(BestBoostValue - 1).ToString("+0.##%")})");
-            Core.DebugLogger(this);
 
             LastGenericBestGear = toReturn.Name;
             if (equipItem)
@@ -726,11 +715,9 @@ public class CoreAdvanced
 
             void setToReturn(IEnumerable<InventoryItem> combos)
             {
-                Core.DebugLogger(this);
                 toReturn =
                     combos.OrderBy(c => getPriority(bestGearData.First(r => r.Item1.ID == c.ID).Item1))
                     .First();
-                Core.DebugLogger(this);
             }
         }
         catch (Exception e)
