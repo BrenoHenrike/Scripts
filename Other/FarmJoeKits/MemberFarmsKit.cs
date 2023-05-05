@@ -85,10 +85,6 @@ public class MemberFarm
         DragonBlade();
         Core.ToBank("DragonBlade of Nulgath", "Legion DragonBlade of Nulgath", "Ebony DragonBlade of Nulgath", "Dual DragonBlades of Nulgath");
 
-        //Class
-        ChronoAssassin.GetChronoAss();
-        Core.ToBank("Chrono Assassin");
-
         LegendaryElementalWarrior.GetLEW();
         Core.ToBank("Legendary Elemental Warrior");
 
@@ -126,6 +122,10 @@ public class MemberFarm
         //MergeShops - not working until find efficient method
         TachyonMerge();
         BoneTowerMerge();
+
+        //Class
+        ChronoAssassin.GetChronoAss();
+        Core.ToBank("Chrono Assassin");
 
         //Deadfly.BuyAllMerge();
         //GonnaGetcha.BuyAllMerge();
