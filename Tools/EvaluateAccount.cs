@@ -4,6 +4,8 @@ description: This script will give a popup telling you a bunch of information re
 tags: tool, evaluate, account, chrono, heromart, beta, founder, badges, enhancements, rare, seasonal
 */
 //cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreAdvanced.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using System.Globalization;
@@ -37,6 +39,8 @@ public class EvalAcc
         int hmClasses = 0;
         int miscItems = 0;
         int houseItems = 0;
+        int dmgAll51Items = 0;
+        (RacialGearBoost, bool)[] racial75Items = racialGears.Select(x => (x, false)).ToArray();
 
         int onePercentItems = 0;
         int rareItems = 0;
@@ -104,12 +108,12 @@ public class EvalAcc
             importantItemCheckbox(3, "Legion Revenant") +
             importantItemCheckbox(3, "ArchMage") +
             importantItemCheckbox(3, "Dragon of Time") +
-            importantItemCheckbox(3, "Lord Of Order") +
-            importantItemCheckbox(2, "Necrotic Sword of Doom") +
-            importantItemCheckbox(3, "Providence") +
-            importantItemCheckbox(2, "Exalted Apotheosis") +
+            importantItemCheckbox(3, "Lord Of Order") + '\n' +
+
             importantItemCheckbox(2, "Radiant Goddess of War") +
-            $"Awescended:\t\t\t{checkbox(Core.isCompletedBefore(8042))}\n\n" +
+            $"Awescended:\t\t\t{checkbox(Core.isCompletedBefore(8042))}\n" +
+            $"75% Race DMG Weapons:\t\t{racial75Items.Count(x => x.Item2)} of the 5 Races\n" +
+            $"51% DMG All Weapons:\t\t{dmgAll51Items} out of 14\n\n" +
 
             $"Awe   \u200AEnhancements Unlocked:\t{checkbox(Core.isCompletedBefore(2937))}\n" +
             $"Forge Enhancements Unlocked:\t{forgeEnhIDs.Count(q => Core.isCompletedBefore(q))} out of {forgeEnhIDs.Count()}"
@@ -137,6 +141,16 @@ public class EvalAcc
                 houseItems += _houseItems = list.Count(item => houseCat.Contains((string)item.sType));
                 equipment += list.Count() - _miscItems - _houseItems - _classes;
                 hmClasses += list.Count(item => (string)item.sIcon == "iiclass" && this.hmClasses.Contains((string)item.sName));
+
+                for (int i = 0; i < racial75Items.Length; i++)
+                {
+                    if (!racial75Items[i].Item2 &&
+                        list.Any(item =>
+                            item.sMeta != null &&
+                            ((string)item.sMeta).Contains($"{racial75Items[i].Item1}:1.75")))
+                        racial75Items[i].Item2 = true;
+                }
+                dmgAll51Items += list.Count(item => item.sMeta != null && ((string)item.sMeta).Contains("dmgAll:1.51"));
             }
         }
 
@@ -307,4 +321,9 @@ public class EvalAcc
         "Underworld Chronomancer",
         "Unchained Rocker",
     };
+
+    private RacialGearBoost[] racialGears = 
+        Enum.GetValues<RacialGearBoost>()
+            .Except(new[] { RacialGearBoost.None, RacialGearBoost.Drakath, RacialGearBoost.Orc })
+            .ToArray();
 }
