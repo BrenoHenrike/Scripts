@@ -1,7 +1,7 @@
 /*
 name: Murder Moon Merge
 description: This bot will farm the items belonging to the selected mode for the Murder Moon Merge [1998] in /murdermoon
-tags: murder, moon, merge, murdermoon, paladorian, apprentice, , antenna, paladu, paladurian, backbeam, riffle, jetpack, beam, rifle, dark, lord, lords, masked, underworld, cloak, laserblade, double, battle, droid, crimson, tempest, soldier, blaster, pet
+tags: murder, moon, merge, murdermoon, paladorian, apprentice, seasonal, shop, may-the-4th, antenna, paladu, paladurian, backbeam, riffle, jetpack, beam, rifle, dark, lord, lords, masked, underworld, cloak, laserblade, double, battle, droid, crimson, tempest, soldier, blaster, pet
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
