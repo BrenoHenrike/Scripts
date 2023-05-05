@@ -39,7 +39,7 @@ public class MurderMoonMerge
         Core.AddDrop("Cyber Crystal");
         Core.RegisterQuests(8065);
         while (!Bot.ShouldExit && !Core.CheckInventory("Cyber Crystal", quant))
-            Core.KillMonster("murdermoon", "r2", "Left", "*");
+            Core.KillMonster("murdermoon", "r2", "Left", "*", log: false);
         Bot.Wait.ForPickup("Cyber Crystal");
         Core.CancelRegisteredQuests();
     }
