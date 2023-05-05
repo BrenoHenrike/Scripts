@@ -17,7 +17,7 @@
       "null"
     ],
     "path": "CoreDailies.cs",
-    "size": 41199,
+    "size": 41310,
     "fileName": "CoreDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreDailies.cs"
   },
@@ -110,6 +110,23 @@
     "size": 5078,
     "fileName": "WheelOfDoomSpam.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/WheelOfDoomSpam.cs"
+  },
+  {
+    "name": "Treasure Chest Spam",
+    "description": "Wastes (with a warning) your extra ACs on opening Treasure Chests",
+    "tags": [
+      "treasure",
+      "chest",
+      "key",
+      "dark",
+      "box",
+      "waste",
+      "AC"
+    ],
+    "path": "Tools/TreasureChestSpam.cs",
+    "size": 6282,
+    "fileName": "TreasureChestSpam.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/TreasureChestSpam.cs"
   },
   {
     "name": "BankAllItems",
@@ -306,7 +323,7 @@
       "all"
     ],
     "path": "Dailies/0AllDailies.cs",
-    "size": 2759,
+    "size": 3200,
     "fileName": "0AllDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/0AllDailies.cs"
   },
