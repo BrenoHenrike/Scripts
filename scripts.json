@@ -10479,7 +10479,9 @@
       "murdermoon",
       "paladorian",
       "apprentice",
-      "",
+      "seasonal",
+      "shop",
+      "may-the-4th",
       "antenna",
       "paladu",
       "paladurian",
@@ -10505,7 +10507,7 @@
       "pet"
     ],
     "path": "Seasonal/MayThe4th/MurderMoonMerge.cs",
-    "size": 10719,
+    "size": 10746,
     "fileName": "MurderMoonMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/MayThe4th/MurderMoonMerge.cs"
   },
