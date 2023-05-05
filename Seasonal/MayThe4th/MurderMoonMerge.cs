@@ -82,14 +82,14 @@ public class MurderMoonMergeMerge
                 case "S Ring":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster("murdermoon", "Fifth Sepulchure", req.Name, quant, log: false);
+                    Core.HuntMonster("murdermoon", "Fifth Sepulchure", req.Name, quant, false, false);
                     break;
 
                 case "Dotty":
                 case "Dark Helmet":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster("zorbaspalace", "Zorba the Bakk", req.Name, quant, log: false);
+                    Core.HuntMonster("zorbaspalace", "Zorba the Bakk", req.Name, quant, false, false);
                     break;
 
                 case "Dark Tempest Soldier":
@@ -101,7 +101,7 @@ public class MurderMoonMergeMerge
                 case "Dark Tempest Soldier Mask":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
-                    Core.HuntMonster("murdermoon", "Tempest Soldier", req.Name, quant, log: false);
+                    Core.HuntMonster("murdermoon", "Tempest Soldier", req.Name, quant, false, false);
                     break;
 
             }
