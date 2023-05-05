@@ -39,7 +39,7 @@ public class DarkLord
             return;
         }
 
-        Core.AddDrop("Cyber Crystal", "S Ring", "Fifth Lord’s Filtrinator", "Dark Helmet", "Dotty");
+        Core.AddDrop($"Cyber Crystal", "S Ring", "Fifth Lord’s Filtrinator", "Dark Helmet", "Dotty");
 
         //Cyber Crystal x66
         Merge.CyberCrystal(66);
