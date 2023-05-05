@@ -1235,7 +1235,7 @@ public class CoreBots
                     {
                         if (!Bot.Quests.IsInProgress(kvp.Key.ID))
                             EnsureAccept(kvp.Key.ID);
-                        if (Bot.Quests.CanComplete(kvp.Key.ID))
+                        if (Bot.Quests.CanCompleteFullCheck(kvp.Key.ID))
                         {
                             int amountTurnedIn = EnsureCompleteMulti(kvp.Key.ID);
                             if (amountTurnedIn == 0)
@@ -1253,7 +1253,7 @@ public class CoreBots
                         if (!Bot.Quests.IsInProgress(kvp.Key.ID))
                             EnsureAccept(kvp.Key.ID);
 
-                        if (Bot.Quests.CanComplete(kvp.Key.ID))
+                        if (Bot.Quests.CanCompleteFullCheck(kvp.Key.ID))
                         {
                             // Finding the list of items you dont have yet.
                             List<SimpleReward> simpleRewards =
@@ -1283,7 +1283,10 @@ public class CoreBots
                         }
                     }
                 }
-                catch { }
+                catch
+                {
+
+                }
             }
             questCTS = null;
         });
