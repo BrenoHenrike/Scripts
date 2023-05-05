@@ -113,7 +113,7 @@ public class EvalAcc
             importantItemCheckbox(2, "Radiant Goddess of War") +
             $"Awescended:\t\t\t{checkbox(Core.isCompletedBefore(8042))}\n" +
             $"75% Race DMG Weapons:\t\t{racial75Items.Count(x => x.Item2)} of the 5 Races\n" +
-            $"51% DMG All Weapons:\t\t{dmgAll51Items} out of 14\n\n" +
+            $"51% DMG All Weapons:\t\t{dmgAll51Items} out of 22\n\n" +
 
             $"Awe   \u200AEnhancements Unlocked:\t{checkbox(Core.isCompletedBefore(2937))}\n" +
             $"Forge Enhancements Unlocked:\t{forgeEnhIDs.Count(q => Core.isCompletedBefore(q))} out of {forgeEnhIDs.Count()}"
@@ -322,7 +322,7 @@ public class EvalAcc
         "Unchained Rocker",
     };
 
-    private RacialGearBoost[] racialGears = 
+    private RacialGearBoost[] racialGears =
         Enum.GetValues<RacialGearBoost>()
             .Except(new[] { RacialGearBoost.None, RacialGearBoost.Drakath, RacialGearBoost.Orc })
             .ToArray();
