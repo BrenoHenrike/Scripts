@@ -1605,10 +1605,10 @@ public class CoreFarms
         // Core.RegisterQuests(5198, 5208);
         while (!Bot.ShouldExit && FactionRank("Eternal") < rank)
         {
-            Core.EnsureAccept(5198, 5208);
-            Core.HuntMonsterMapID("fourdpyramid", 19, "White Gem", 3, log: false);
+            Core.EnsureAccept(5198);
+            Core.HuntMonsterMapID("fourdpyramid", 19, "White Gem", 2, log: false);
             Core.HuntMonsterMapID("fourdpyramid", 20, "Black Gem", 2, log: false);
-            Core.EnsureComplete(5198, 5208);
+            Core.EnsureComplete(5198);
         }
         // Core.CancelRegisteredQuests();
         ToggleBoost(BoostType.Reputation, false);
