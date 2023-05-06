@@ -10576,6 +10576,23 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/MayThe4th/MawasStandMerge.cs"
   },
   {
+    "name": "Zoda's Quests",
+    "description": "This script will complete Zoda's Quests in /zorbaspalace.",
+    "tags": [
+      "zodas",
+      "zorbas",
+      "palace",
+      "seasonal",
+      "story",
+      "quests",
+      "may4th"
+    ],
+    "path": "Seasonal/MayThe4th/Zoda.cs",
+    "size": 2712,
+    "fileName": "Zoda.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/MayThe4th/Zoda.cs"
+  },
+  {
     "name": "(Class) Dark Lord",
     "description": "This will merge Cyber Crystals and get the Dark Lord class.",
     "tags": [
