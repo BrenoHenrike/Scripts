@@ -619,7 +619,7 @@ public class CoreAdvanced
 
             // Prioritize an item that is already equipped
             IEnumerable<InventoryItem> filter = bestItems.Where(x => x.Equipped);
-            if (filter.Any())
+            if (filter != null && filter.Any(x => x != null))
                 setToReturn(filter);
             else
             {
@@ -640,13 +640,14 @@ public class CoreAdvanced
                             x.Item2 == equippedItems.Find(e => e.Item1.ItemGroup == x.Item1.ItemGroup).Item2)
                         .Select(b => b.Item1);
                 // Should always return true if its two pets or armors or ground runes
-                if (filter.Any())
+
+                if (filter != null && filter.Any(x => x != null))
                     setToReturn(filter);
                 else
                 {
                     // If none of the enhancement IDs match, prioritize items that are enhanced in general
                     filter = bestItemsEnh.Where(x => x.Item2 != 0).Select(b => b.Item1);
-                    if (filter.Any())
+                    if (filter != null && filter.Any(x => x != null))
                         setToReturn(filter);
                     // If no items are enhanced, just pick the item (based on category ofc)
                     else setToReturn(bestItems);
@@ -796,13 +797,13 @@ public class CoreAdvanced
 
             // Prioritize a combination where both items of any of the optimal set are already equipped
             IEnumerable<RacialBestGearData> filter = bestCombos.Where(x => x.Item1.Equipped && (x.Item2 == null || x.Item2.Equipped));
-            if (filter.Any())
+            if (filter != null && filter.Any(x => x != null))
                 setToReturn(filter);
             else
             {
                 // Prioritize a combination where one items in the optimal sets is equipped
                 filter = bestCombos.Where(x => x.Item1.Equipped || (x.Item2 != null && x.Item2.Equipped));
-                if (filter.Any())
+                if (filter != null && filter.Any(x => x != null))
                     setToReturn(filter);
                 // If it gets here, that means none of the optimal items are equipped
                 // Supporting enhancement consideration for racial items is overly complex and unneccessary
@@ -1144,6 +1145,8 @@ public class CoreAdvanced
 
     private void AdvCrash(Exception e, [CallerMemberName] string? caller = null)
     {
+        if (e == null || (Bot.ShouldExit && e is OperationCanceledException))
+            return;
         List<string> logs = Ioc.Default.GetRequiredService<ILogService>().GetLogs(LogType.Script);
         logs = logs.Skip(logs.Count() > 5 ? (logs.Count() - 5) : logs.Count()).ToList();
         Bot.Handlers.RegisterOnce(1, Bot => Bot.ShowMessageBox($"{caller} has crashed. Please fill in the Skua Bug Report/Request for under the topic: Crashed\n" +

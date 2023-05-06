@@ -284,8 +284,6 @@ public class CoreFarmerJoe
 
                     DBSK.GetDSK();
                     Adv.SmartEnhance("Darkblood StormKing");
-                    if (Core.SoloClass == "Generic")
-                        Core.SoloClass = "Darkblood StormKing";
                     break;
 
                 case 55:

@@ -39,7 +39,7 @@ public class DarkLord
             return;
         }
 
-        Core.AddDrop("Cyber Crystal", "S Ring", "Fifth Lord’s Filtrinator", "Dark Helmet", "Dotty");
+        Core.AddDrop($"Cyber Crystal", "S Ring", "Fifth Lord’s Filtrinator", "Dark Helmet", "Dotty");
 
         //Cyber Crystal x66
         Merge.CyberCrystal(66);
@@ -49,7 +49,7 @@ public class DarkLord
         Core.HuntMonster("murdermoon", "Fifth Sepulchure", "S Ring", 15, false);
 
         //Fifth Lord's Filtrinator x15
-        Core.HuntMonster("murdermoon", "Fifth Sepulchure", "Fifth Lord’s Filtrinator", 15, false);
+        Core.HuntMonster($"murdermoon", "Fifth Sepulchure", "Fifth Lord’s Filtrinator", 15, false);
 
         //Dark Helmet x1
         Bot.Quests.UpdateQuest(7484);

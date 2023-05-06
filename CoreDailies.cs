@@ -442,6 +442,7 @@ public class CoreDailies
                 Core.BuyItem("shadowfall", 1644, "ShadowScythe General");
         }
         Core.Jump("Cut1", "Left");
+        Core.ToBank("Shadow Shield");
     }
 
     public void GrumbleGrumble()
@@ -452,6 +453,7 @@ public class CoreDailies
         if (!CheckDaily(592, false, new[] { "Diamond of Nulgath", "Blood Gem of the Archfiend" }))
             return;
         Core.ChainComplete(592);
+        Core.ToBank("Diamond of Nulgath", "Blood Gem of the Archfiend");
     }
 
     public void EldersBlood()

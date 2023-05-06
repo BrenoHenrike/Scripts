@@ -6,7 +6,7 @@
       "null"
     ],
     "path": "CoreAdvanced.cs",
-    "size": 108612,
+    "size": 108871,
     "fileName": "CoreAdvanced.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreAdvanced.cs"
   },
@@ -17,7 +17,7 @@
       "null"
     ],
     "path": "CoreDailies.cs",
-    "size": 41199,
+    "size": 41310,
     "fileName": "CoreDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreDailies.cs"
   },
@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 156458,
+    "size": 156509,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -112,6 +112,23 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/WheelOfDoomSpam.cs"
   },
   {
+    "name": "Treasure Chest Spam",
+    "description": "Wastes (with a warning) your extra ACs on opening Treasure Chests",
+    "tags": [
+      "treasure",
+      "chest",
+      "key",
+      "dark",
+      "box",
+      "waste",
+      "AC"
+    ],
+    "path": "Tools/TreasureChestSpam.cs",
+    "size": 6282,
+    "fileName": "TreasureChestSpam.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/TreasureChestSpam.cs"
+  },
+  {
     "name": "BankAllItems",
     "description": "null",
     "tags": [
@@ -183,7 +200,7 @@
       "seasonal"
     ],
     "path": "Tools/EvaluateAccount.cs",
-    "size": 11311,
+    "size": 12224,
     "fileName": "EvaluateAccount.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/EvaluateAccount.cs"
   },
@@ -306,7 +323,7 @@
       "all"
     ],
     "path": "Dailies/0AllDailies.cs",
-    "size": 2759,
+    "size": 3200,
     "fileName": "0AllDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/0AllDailies.cs"
   },
@@ -10471,7 +10488,7 @@
   },
   {
     "name": "Murder Moon Merge",
-    "description": "This bot will farm the items belonging to the selected mode for the Murder Moon Merge [1998] in /murdermoon",
+    "description": "This will farm the cybercrystals for merge items.",
     "tags": [
       "farm",
       "merge",
@@ -10480,10 +10497,10 @@
       "dark",
       "may-the-4th"
     ],
-    "path": "Seasonal/MayThe4th/MurderMoonMerge.cs",
-    "size": 10526,
-    "fileName": "MurderMoonMerge.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/MayThe4th/MurderMoonMerge.cs"
+    "path": "Seasonal/MayThe4th/MurderMoonMerge[CyberCrystal].cs",
+    "size": 1368,
+    "fileName": "MurderMoonMerge[CyberCrystal].cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/MayThe4th/MurderMoonMerge[CyberCrystal].cs"
   },
   {
     "name": "Murder Moon Story",
@@ -10497,29 +10514,125 @@
       "may-the-4th"
     ],
     "path": "Seasonal/MayThe4th/MurderMoonStory.cs",
-    "size": 1080,
+    "size": 1402,
     "fileName": "MurderMoonStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/MayThe4th/MurderMoonStory.cs"
   },
   {
-    "name": "Zorbas Palace Merge",
-    "description": "This will merge Furry Egg and Woopee.",
+    "name": "Twiggus Gear Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Twiggus Gear Merge [2272] in /murdermoon",
     "tags": [
-      "farm",
+      "twiggus",
+      "gear",
       "merge",
-      "shop",
-      "seasonal",
-      "may-the-4th",
+      "murdermoon",
+      "astravian",
+      "enforcer",
+      "cap",
+      "flapped",
+      "enforce",
+      "cloaked",
+      "complete",
+      "halo",
+      "mace",
+      "sickle",
+      "sickles",
+      "backhand"
+    ],
+    "path": "Seasonal/MayThe4th/TwiggusGearMerge.cs",
+    "size": 5775,
+    "fileName": "TwiggusGearMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/MayThe4th/TwiggusGearMerge.cs"
+  },
+  {
+    "name": "Zoda's Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Zoda's Merge [2133] in /zorbaspalace",
+    "tags": [
+      "zodas",
+      "merge",
+      "zorbaspalace",
+      "augmented",
+      "light",
+      "rebellion",
+      "dark",
+      "fifth",
+      "chaos",
+      "imperium",
+      "aulorian",
+      "opened",
+      "",
+      "spear",
+      "mace",
+      "pistol",
+      "pistols",
+      "golden",
+      "armaments",
+      "lorosian",
+      "hunter",
+      "hunters",
+      "saber",
+      "sabers",
+      "blaster",
+      "handgun",
+      "handguns",
+      "armblade",
+      "armblades",
+      "set",
+      "pangalactic",
+      "double"
+    ],
+    "path": "Seasonal/MayThe4th/ZodasMerge.cs",
+    "size": 9948,
+    "fileName": "ZodasMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/MayThe4th/ZodasMerge.cs"
+  },
+  {
+    "name": "Mawa's Stand Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Mawa's Stand Merge [1874] in /zorbaspalace",
+    "tags": [
+      "mawas",
+      "stand",
+      "merge",
+      "zorbaspalace",
+      "galactic",
+      "shadow",
+      "trooper",
+      "twicket",
+      "twig",
+      "fortuna",
+      "twillek",
+      "starcrasher",
+      "",
+      "scarf",
+      "backblades",
+      "lightblade",
+      "lightblades",
+      "parodian",
+      "guard",
+      "guards",
+      "sheathed"
+    ],
+    "path": "Seasonal/MayThe4th/MawasStandMerge.cs",
+    "size": 5528,
+    "fileName": "MawasStandMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/MayThe4th/MawasStandMerge.cs"
+  },
+  {
+    "name": "Zoda's Quests",
+    "description": "This script will complete Zoda's Quests in /zorbaspalace.",
+    "tags": [
+      "zodas",
       "zorbas",
       "palace",
-      "furry",
-      "egg",
-      "woopee"
+      "seasonal",
+      "story",
+      "quests",
+      "may4th"
     ],
-    "path": "Seasonal/MayThe4th/ZorbasPalaceMerge[FurryEgg+Woopee].cs",
-    "size": 973,
-    "fileName": "ZorbasPalaceMerge[FurryEgg+Woopee].cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/MayThe4th/ZorbasPalaceMerge[FurryEgg+Woopee].cs"
+    "path": "Seasonal/MayThe4th/Zoda.cs",
+    "size": 2712,
+    "fileName": "Zoda.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/MayThe4th/Zoda.cs"
   },
   {
     "name": "(Class) Dark Lord",
@@ -10533,7 +10646,7 @@
       "class"
     ],
     "path": "Seasonal/MayThe4th/DarkLord.cs",
-    "size": 2123,
+    "size": 2125,
     "fileName": "DarkLord.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/MayThe4th/DarkLord.cs"
   },
@@ -12051,7 +12164,7 @@
       "null"
     ],
     "path": "Other/FarmJoeKits/CoreFarmerJoe.cs",
-    "size": 18080,
+    "size": 17963,
     "fileName": "CoreFarmerJoe.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/CoreFarmerJoe.cs"
   },

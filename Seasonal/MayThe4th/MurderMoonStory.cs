@@ -30,12 +30,21 @@ public class MurderMoon
             return;
 
         //That Is The Way
-        Story.KillQuest(8062, "murdermoon", "Tempest Soldier");
+        if (!Story.QuestProgression(8062))
+        {
+            Core.EnsureAccept(8062);
+            Core.KillMonster("murdermoon", "r2", "Left", "Tempest Soldier", "Soldiers Defeated", 6);
+            Core.EnsureComplete(8062);
+        }
 
         //Murder Moon Plans
-        Story.KillQuest(8063, "murdermoon", "Tempest Soldier");
-        Story.MapItemQuest(8063, "murdermoon", 8373, 5);
-
+        if (!Story.QuestProgression(8063))
+        {
+            Core.EnsureAccept(8063);
+            Core.KillMonster("murdermoon", "r2", "Left", "Tempest Soldier", "Murder Moon Plans");
+            Story.MapItemQuest(8063, "murdermoon", 8373, 5);
+        }
+        
         //Revenge of the Fifth
         Story.KillQuest(8064, "murdermoon", "Fifth Sepulchure");
     }
