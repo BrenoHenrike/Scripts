@@ -10519,6 +10519,32 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/MayThe4th/MurderMoonStory.cs"
   },
   {
+    "name": "Twiggus Gear Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Twiggus Gear Merge [2272] in /murdermoon",
+    "tags": [
+      "twiggus",
+      "gear",
+      "merge",
+      "murdermoon",
+      "astravian",
+      "enforcer",
+      "cap",
+      "flapped",
+      "enforce",
+      "cloaked",
+      "complete",
+      "halo",
+      "mace",
+      "sickle",
+      "sickles",
+      "backhand"
+    ],
+    "path": "Seasonal/MayThe4th/TwiggusGearMerge.cs",
+    "size": 5780,
+    "fileName": "TwiggusGearMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/MayThe4th/TwiggusGearMerge.cs"
+  },
+  {
     "name": "Zorbas Palace Merge",
     "description": "This will merge Furry Egg and Woopee.",
     "tags": [
