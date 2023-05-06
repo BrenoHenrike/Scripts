@@ -6,7 +6,7 @@
       "null"
     ],
     "path": "CoreAdvanced.cs",
-    "size": 108612,
+    "size": 108871,
     "fileName": "CoreAdvanced.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreAdvanced.cs"
   },
@@ -17,7 +17,7 @@
       "null"
     ],
     "path": "CoreDailies.cs",
-    "size": 41199,
+    "size": 41310,
     "fileName": "CoreDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreDailies.cs"
   },
@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 156458,
+    "size": 156509,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -112,6 +112,23 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/WheelOfDoomSpam.cs"
   },
   {
+    "name": "Treasure Chest Spam",
+    "description": "Wastes (with a warning) your extra ACs on opening Treasure Chests",
+    "tags": [
+      "treasure",
+      "chest",
+      "key",
+      "dark",
+      "box",
+      "waste",
+      "AC"
+    ],
+    "path": "Tools/TreasureChestSpam.cs",
+    "size": 6282,
+    "fileName": "TreasureChestSpam.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/TreasureChestSpam.cs"
+  },
+  {
     "name": "BankAllItems",
     "description": "null",
     "tags": [
@@ -183,7 +200,7 @@
       "seasonal"
     ],
     "path": "Tools/EvaluateAccount.cs",
-    "size": 11311,
+    "size": 12224,
     "fileName": "EvaluateAccount.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/EvaluateAccount.cs"
   },
@@ -306,7 +323,7 @@
       "all"
     ],
     "path": "Dailies/0AllDailies.cs",
-    "size": 2759,
+    "size": 3200,
     "fileName": "0AllDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/0AllDailies.cs"
   },
@@ -10481,7 +10498,7 @@
       "may-the-4th"
     ],
     "path": "Seasonal/MayThe4th/MurderMoonMerge[CyberCrystal].cs",
-    "size": 1420,
+    "size": 1368,
     "fileName": "MurderMoonMerge[CyberCrystal].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/MayThe4th/MurderMoonMerge[CyberCrystal].cs"
   },
@@ -10497,7 +10514,7 @@
       "may-the-4th"
     ],
     "path": "Seasonal/MayThe4th/MurderMoonStory.cs",
-    "size": 1080,
+    "size": 1402,
     "fileName": "MurderMoonStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/MayThe4th/MurderMoonStory.cs"
   },
@@ -10533,7 +10550,7 @@
       "class"
     ],
     "path": "Seasonal/MayThe4th/DarkLord.cs",
-    "size": 2123,
+    "size": 2125,
     "fileName": "DarkLord.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/MayThe4th/DarkLord.cs"
   },
@@ -12051,7 +12068,7 @@
       "null"
     ],
     "path": "Other/FarmJoeKits/CoreFarmerJoe.cs",
-    "size": 18080,
+    "size": 17963,
     "fileName": "CoreFarmerJoe.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/CoreFarmerJoe.cs"
   },

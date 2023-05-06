@@ -17,6 +17,7 @@ tags: all dailies, dailies, daily, all
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
 //cs_include Scripts/Story/Friendship.cs
 //cs_include Scripts/Evil/SDKA/CoreSDKA.cs
+//cs_include Scripts/Tools\BankAllItems.cs
 using Skua.Core.Interfaces;
 
 public class FarmAllDailies
@@ -29,6 +30,7 @@ public class FarmAllDailies
     private CoreBLOD BLOD = new();
     private Friendship FR = new();
     private CoreSDKA CSDKA = new();
+    private BankAllItems BAI = new();
 
     public void ScriptMain(IScriptInterface Bot)
     {
@@ -63,9 +65,17 @@ public class FarmAllDailies
         Daily.MoglinPets();
         // Daily.NSoDDaily();
 
-        //With farm class
+        Core.Logger("Doing a quick Bankall Incase somethig was missed n/" +
+        "*Will not bank non-ac items*");
+        BAI.BankAll();
+
+        //Friendships (alota inv spaces)
         FR.CompleteStory();
         Daily.Friendships();
+        Core.Logger("Trashing/Banking all Frienship gifts to save inv space");
+        Core.TrashCan(Daily.frGiftNames);
+
+        //With farm class
         Daily.CollectorClass();
         Glac.FrozenTower();
         Daily.Cryomancer();
@@ -81,7 +91,8 @@ public class FarmAllDailies
         Daily.CryptoToken();
         Daily.GoldenInquisitor();
 
-        Core.Logger("All dailies are completed");
+        Core.Logger("All dailies are completed. Doing a last Bankall");
+        BAI.BankAll();
     }
 
 
