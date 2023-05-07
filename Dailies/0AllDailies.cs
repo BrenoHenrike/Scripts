@@ -30,7 +30,7 @@ public class FarmAllDailies
     private CoreBLOD BLOD = new();
     private Friendship FR = new();
     private CoreSDKA CSDKA = new();
-    private BankAllItems BAI = new();
+    //private BankAllItems BAI = new();
 
     public void ScriptMain(IScriptInterface Bot)
     {
