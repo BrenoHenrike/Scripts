@@ -64,16 +64,11 @@ public class FarmAllDailies
         Daily.DesignNotes();
         Daily.MoglinPets();
         // Daily.NSoDDaily();
-
-        // Core.Logger("Doing a quick Bankall Incase somethig was missed n/" +
-        // "*Will not bank non-ac items*");
-        // BAI.BankAll();
-
+        
         //Friendships (alota inv spaces)
         FR.CompleteStory();
         Daily.Friendships();
-        Core.Logger("Trashing/Banking all Frienship gifts to save inv space");
-        // Core.TrashCan(Daily.frGiftNames);
+        Core.ToBank(Daily.frGiftIDs);
 
         //With farm class
         Daily.CollectorClass();
