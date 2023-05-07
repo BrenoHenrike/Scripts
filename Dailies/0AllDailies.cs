@@ -65,15 +65,15 @@ public class FarmAllDailies
         Daily.MoglinPets();
         // Daily.NSoDDaily();
 
-        Core.Logger("Doing a quick Bankall Incase somethig was missed n/" +
-        "*Will not bank non-ac items*");
-        BAI.BankAll();
+        // Core.Logger("Doing a quick Bankall Incase somethig was missed n/" +
+        // "*Will not bank non-ac items*");
+        // BAI.BankAll();
 
         //Friendships (alota inv spaces)
         FR.CompleteStory();
         Daily.Friendships();
         Core.Logger("Trashing/Banking all Frienship gifts to save inv space");
-        Core.TrashCan(Daily.frGiftNames);
+        // Core.TrashCan(Daily.frGiftNames);
 
         //With farm class
         Daily.CollectorClass();
@@ -91,8 +91,8 @@ public class FarmAllDailies
         Daily.CryptoToken();
         Daily.GoldenInquisitor();
 
-        Core.Logger("All dailies are completed. Doing a last Bankall");
-        BAI.BankAll();
+        // Core.Logger("All dailies are completed. Doing a last Bankall");
+        // BAI.BankAll();
     }
 
 
