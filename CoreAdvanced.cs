@@ -1751,6 +1751,7 @@ public class CoreAdvanced
         if (SelectedClass.EnhancementLevel == 0)
             EnhanceItem(className, (EnhancementType)type);
         Core.Equip(className);
+        Bot.Wait.ForTrue(() => Bot.Player.CurrentClass?.Name == className, 40);
         EnhanceEquipped((EnhancementType)type, cSpecial, hSpecial, wSpecial);
 
         bool ForgeEnhancementLibrary()
