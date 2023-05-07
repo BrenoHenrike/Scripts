@@ -68,7 +68,6 @@ public class FarmAllDailies
         //Friendships (alota inv spaces)
         FR.CompleteStory();
         Daily.Friendships();
-        Core.ToBank(Daily.frGiftIDs);
 
         //With farm class
         Daily.CollectorClass();
