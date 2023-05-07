@@ -2983,6 +2983,21 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/WeaponReflection.cs"
   },
   {
+    "name": "Astravian Oracle Set",
+    "description": "does the follow quests to get the astravian oracle set",
+    "tags": [
+      "mourning cygnus",
+      "extinguished eridanus",
+      "quest",
+      "reward",
+      "astravian oracle set"
+    ],
+    "path": "Other/AstravianOracleSet.cs",
+    "size": 2333,
+    "fileName": "AstravianOracleSet.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/AstravianOracleSet.cs"
+  },
+  {
     "name": "corrupt draconic paragon",
     "description": "farms the corrupt draconic paragon set from Quest",
     "tags": [
@@ -8260,6 +8275,18 @@
     "size": 453,
     "fileName": "BloodGem.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Materials/BloodGem.cs"
+  },
+  {
+    "name": "Impossible Empowered Items of Nulgath",
+    "description": "does the 'Impossible, Empowered Items of Nulgath' quest for \"soulreaper of nulgath\"",
+    "tags": [
+      "soulreaper of nulgath",
+      "member"
+    ],
+    "path": "Nation/Various/ImpossibleEmpoweredItemsofNulgath.cs",
+    "size": 1655,
+    "fileName": "ImpossibleEmpoweredItemsofNulgath.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/ImpossibleEmpoweredItemsofNulgath.cs"
   },
   {
     "name": "YulgathsInn",
