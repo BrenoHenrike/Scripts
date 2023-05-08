@@ -18,6 +18,7 @@ public class DarkLord
     public CoreFarms Farm = new();
     public CoreAdvanced Adv = new();
     public MurderMoonMerge Merge = new();
+    public MurderMoon MMS = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -38,6 +39,8 @@ public class DarkLord
                 Adv.rankUpClass("Dark Lord");
             return;
         }
+
+        MMS.MurderMoonStory();
 
         Core.AddDrop($"Cyber Crystal", "S Ring", "Fifth Lord’s Filtrinator", "Dark Helmet", "Dotty");
 
