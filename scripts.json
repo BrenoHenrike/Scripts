@@ -9108,23 +9108,31 @@
   },
   {
     "name": "0NecroticSwordOfDoom",
-    "description": "null",
+    "description": "Does the entirety of and to farm \"necrotic sword of doom\"",
     "tags": [
-      "null"
+      "nsod",
+      "necrotic",
+      "sword",
+      "doom",
+      "necrotic sword of doom"
     ],
     "path": "Evil/NSoD/0NecroticSwordOfDoom.cs",
-    "size": 1436,
+    "size": 1536,
     "fileName": "0NecroticSwordOfDoom.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/NSoD/0NecroticSwordOfDoom.cs"
   },
   {
     "name": "1NecroticBladeOfDoom",
-    "description": "null",
+    "description": "Does the entirety of and to farm \"necrotic blade of doom\"",
     "tags": [
-      "null"
+      "nsod",
+      "necrotic",
+      "blade",
+      "doom",
+      "necrotic blade of doom"
     ],
     "path": "Evil/NSoD/1NecroticBladeOfDoom.cs",
-    "size": 1388,
+    "size": 1488,
     "fileName": "1NecroticBladeOfDoom.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/NSoD/1NecroticBladeOfDoom.cs"
   },
