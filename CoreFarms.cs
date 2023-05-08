@@ -226,10 +226,27 @@ public class CoreFarms
 
         ToggleBoost(BoostType.Experience);
 
-        Core.RegisterQuests(178);
-        while (!Bot.ShouldExit && Bot.Player.Level < 28)
-            Core.HuntMonster("swordhavenundead", "Undead Giant", log: false);
-        Core.CancelRegisteredQuests();
+        if (Bot.Player.Level < 28)
+        {
+            Core.Logger("Checking if farming quest is unlocked.");
+            if (!Core.isCompletedBefore(178))
+            {
+                Core.EnsureAccept(183);
+                Core.HuntMonster("portalundead", "Skeletal Fire Mage", "Defeated Fire Mage", 4);
+                Core.EnsureComplete(183);
+                Core.EnsureAccept(176);
+                Core.HuntMonster("swordhavenundead", "Skeletal Soldier", "Slain Skeletal Soldier", 10);
+                Core.EnsureComplete(176);
+                Core.EnsureAccept(177);
+                Core.HuntMonster("swordhavenundead", "Skeletal Ice Mage", "rozen Boneheads", 8);
+                Core.EnsureComplete(177);
+            }
+
+            Core.RegisterQuests(178);
+            while (!Bot.ShouldExit && Bot.Player.Level < 28)
+                Core.HuntMonster("swordhavenundead", "Undead Giant", log: false);
+            Core.CancelRegisteredQuests();
+        }
 
         IcestormArena(20);
 
