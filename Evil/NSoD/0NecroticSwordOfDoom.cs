@@ -1,7 +1,7 @@
 /*
 name: 0NecroticSwordOfDoom
-description: null
-tags: null
+description: Does the entirety of and to farm "necrotic sword of doom"
+tags: nsod, necrotic, sword, doom, necrotic sword of doom
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
