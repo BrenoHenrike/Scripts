@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 156780,
+    "size": 156785,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -200,7 +200,7 @@
       "seasonal"
     ],
     "path": "Tools/EvaluateAccount.cs",
-    "size": 12224,
+    "size": 12178,
     "fileName": "EvaluateAccount.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/EvaluateAccount.cs"
   },
