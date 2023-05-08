@@ -670,9 +670,9 @@ public class CoreBots
     /// Move items from inventory to bank
     /// </summary>
     /// <param name="items">Items to move</param>
-    public void ToBank(params string[] items)
+    public void ToBank(params string?[]? items)
     {
-        if (items == null || !items.Any())
+        if (items == null || !items.Any(x => x != null))
             return;
 
         JumpWait();
@@ -680,8 +680,10 @@ public class CoreBots
         if (Bot.Flash.GetGameObject("ui.mcPopup.currentLabel") != "\"Bank\"")
             Bot.Bank.Open();
 
-        foreach (string item in items)
+        foreach (string? item in items)
         {
+            if (item == null)
+                continue;
             if (Bot.Inventory.IsEquipped(item))
             {
                 Logger("Can't bank an equipped item");
@@ -703,7 +705,7 @@ public class CoreBots
     /// Move items from inventory to bank
     /// </summary>
     /// <param name="items">Items to move</param>
-    public void ToBank(params int[] items)
+    public void ToBank(params int[]? items)
     {
         if (items == null || !items.Any())
             return;
@@ -715,6 +717,8 @@ public class CoreBots
 
         foreach (int item in items)
         {
+            if (item == 0)
+                continue;
             if (Bot.Inventory.IsEquipped(item))
             {
                 Logger("Can't bank an equipped item");
@@ -3917,6 +3921,13 @@ public static class UtilExtensions
         => list.Any(b => b.ID == badgeID);
     public static bool Contains(this List<Badge> list, string badgeName)
         => list.Any(b => b.Name == badgeName);
+
+    // List management
+    public static T?[] Remove<T>(this IEnumerable<T?> source, T obj)
+    {
+        source.Remove(obj);
+        return source.ToArray();
+    }
 }
 #nullable disable
 public class Badge
