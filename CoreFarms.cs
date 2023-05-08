@@ -1602,7 +1602,7 @@ public class CoreFarms
         ToggleBoost(BoostType.Reputation);
         Core.Logger($"Farming rank {rank}");
 
-        // Core.RegisterQuests(5198, 5208);
+        // Core.RegisterQuests(5198);
         while (!Bot.ShouldExit && FactionRank("Eternal") < rank)
         {
             Core.EnsureAccept(5198);
