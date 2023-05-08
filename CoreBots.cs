@@ -3923,9 +3923,8 @@ public static class UtilExtensions
         => list.Any(b => b.Name == badgeName);
 
     // List management
-    public static T?[] Except<T>(this IEnumerable<T?> source, params T[] obj)
-        => source.Except(obj).ToArray();
-
+    public static T[] Except<T>(this IEnumerable<T> source, params T[] obj)
+        => source.Except(second: obj).ToArray();
 }
 #nullable disable
 public class Badge

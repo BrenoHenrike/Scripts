@@ -323,7 +323,5 @@ public class EvalAcc
     };
 
     private RacialGearBoost[] racialGears =
-        Enum.GetValues<RacialGearBoost>()
-            .Except(new[] { RacialGearBoost.None, RacialGearBoost.Drakath, RacialGearBoost.Orc })
-            .ToArray();
+        Enum.GetValues<RacialGearBoost>().Except(RacialGearBoost.None, RacialGearBoost.Drakath, RacialGearBoost.Orc);
 }
