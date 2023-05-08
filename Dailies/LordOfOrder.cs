@@ -248,7 +248,7 @@ public class LordOfOrder
         else
         {
             Core.EnsureCompleteChoose(7165);
-            Core.ToBank(Core.QuestRewards(7165).Remove("Lord Of Order"));
+            Core.ToBank(Core.QuestRewards(7165).Except("Lord Of Order"));
         }
     }
 }
