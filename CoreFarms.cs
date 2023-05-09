@@ -1433,28 +1433,17 @@ public class CoreFarms
         if (FactionRank("DoomWood") >= rank)
             return;
 
-        // if (Core.IsMember)
-        //     MembershipDues(MemberShipsIDS.DoomWood, rank);
-        // else
-        {
-            Core.AddDrop("Dark Tower Sword");
             Core.EquipClass(ClassType.Farm);
             Core.SavedState();
             ToggleBoost(BoostType.Reputation);
             Core.Logger($"Farming rank {rank}");
 
-            // Core.RegisterQuests(1151, 1152, 1153); //Minion Morale 1151, Shadowfall is DOOMed 1152, Grave-lyn Danger, 1153
+            Core.RegisterQuests(1151, 1152, 1153); //Minion Morale 1151, Shadowfall is DOOMed 1152, Grave-lyn Danger, 1153
             while (!Bot.ShouldExit && FactionRank("DoomWood") < rank)
-            {
-                Core.EnsureAccept(1151, 1152, 1153); //Minion Morale 1151, Shadowfall is DOOMed 1152, Grave-lyn Danger, 1153
-                Core.HuntMonster("shadowfallwar", "*", "To Do List of Doom", log: false);
-                Core.HuntMonster("shadowfallwar", "*", "Skeleton Key", log: false);
-                Core.EnsureComplete(1151, 1152, 1153); //Minion Morale 1151, Shadowfall is DOOMed 1152, Grave-lyn Danger, 1153
-            }
-            // Core.CancelRegisteredQuests();
+                Core.KillMonster("shadowfallwar", "Garden1", "Left", "*");
+            Core.CancelRegisteredQuests();
             ToggleBoost(BoostType.Reputation, false);
             Core.SavedState(false);
-        }
     }
 
     public void DreadfireREP(int rank = 10)
