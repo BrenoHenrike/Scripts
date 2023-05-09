@@ -431,7 +431,15 @@ public class CoreToD
         Story.KillQuest(5093, "baconcat", new[] { "Creepy Clown", "Creepy Clown", "Creepy Clown" });
 
         // Life's a Beach
-        Story.MapItemQuest(5094, "baconcat", 4468, 9);
+        if (!Story.QuestProgression(5094))
+        {
+            Core.EnsureAccept(5094);
+            Core.HuntMonsterMapID("baconcat", 2781, "Honking Clown Nose", 3);
+            Core.HuntMonsterMapID("baconcat", 2780, "Scary Face Paint!", 10);
+            Core.HuntMonsterMapID("baconcat", 2781, "Rainbow Wig", 3);
+            Core.EnsureComplete(5094);
+        }
+        // Story.MapItemQuest(5094, "baconcat", 4468, 9);
 
         // Not all Sand is Cat Litter
         Story.KillQuest(5095, "baconcat", new[] { "Fart Elemental", "Litter Elemental" });
