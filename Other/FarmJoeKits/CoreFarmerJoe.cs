@@ -40,7 +40,8 @@ tags: null
 //cs_include Scripts/Other/Weapons/BurningBlade.cs
 //cs_include Scripts/Other/Weapons/DualChainSawKatanas.cs
 //cs_include Scripts/Other/Weapons/EnchantedVictoryBladeWeapons.cs
-//cs_include Scripts/Hollowborn/HollowbornReapersScythe.cs
+//cs_include Scripts/Other/MergeShops/ShadowrealmMerge.cs
+
 //cs_include Scripts/Legion/SwordMaster.cs
 
 //cs_include Scripts/Story/DragonFableOrigins.cs
@@ -96,7 +97,7 @@ public class CoreFarmerJoe
     public DualChainSawKatanas DCSK = new();
     public BurningBlade BB = new();
     public EnchantedVictoryBladeWeapons EVBW = new();
-    public HollowbornScythe Scythe = new();
+    public ShadowrealmMerge SRM = new();
 
     //Story
     public Tutorial Tutorial = new();
@@ -421,7 +422,7 @@ public class CoreFarmerJoe
         if (Bot.Config!.Get<bool>("OutFit"))
             Outfit();
 
-        Scythe.GetHBReapersScythe();
+        SRM.BuyAllMerge("Hollowborn Reaper's Scythe");
         YNR.GetYnR();
         //Add more eventualy >.> please?
 

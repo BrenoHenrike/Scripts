@@ -16,7 +16,8 @@ tags: null
 //cs_include Scripts/Good/GearOfAwe/CapeOfAwe.cs
 //cs_include Scripts/Good/GearOfAwe/CoreAwe.cs
 //cs_include Scripts/Good/Paladin.cs
-//cs_include Scripts/Hollowborn/HollowbornReapersScythe.cs
+//cs_include Scripts/Other/MergeShops/ShadowrealmMerge.cs
+
 //cs_include Scripts/Nation/AssistingCragAndBamboozle[Mem].cs
 //cs_include Scripts/Nation/CoreNation.cs
 //cs_include Scripts/Nation/VHL/CoreVHL.cs
