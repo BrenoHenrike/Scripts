@@ -108,7 +108,8 @@ public class EvalAcc
             importantItemCheckbox(3, "Legion Revenant") +
             importantItemCheckbox(3, "ArchMage") +
             importantItemCheckbox(3, "Dragon of Time") +
-            importantItemCheckbox(3, "Lord Of Order") + '\n' +
+            importantItemCheckbox(3, "Lord Of Order") +
+            importantItemCheckbox(3, "ArchPaladin") + '\n' +
 
             importantItemCheckbox(2, "Radiant Goddess of War") +
             $"Awescended:\t\t\t{checkbox(Core.isCompletedBefore(8042))}\n" +
@@ -323,7 +324,5 @@ public class EvalAcc
     };
 
     private RacialGearBoost[] racialGears =
-        Enum.GetValues<RacialGearBoost>()
-            .Except(new[] { RacialGearBoost.None, RacialGearBoost.Drakath, RacialGearBoost.Orc })
-            .ToArray();
+        Enum.GetValues<RacialGearBoost>().Except(RacialGearBoost.None, RacialGearBoost.Drakath, RacialGearBoost.Orc);
 }

@@ -6,7 +6,7 @@
       "null"
     ],
     "path": "CoreAdvanced.cs",
-    "size": 108871,
+    "size": 108955,
     "fileName": "CoreAdvanced.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreAdvanced.cs"
   },
@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 156509,
+    "size": 156785,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -39,7 +39,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 104166,
+    "size": 104905,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -200,7 +200,7 @@
       "seasonal"
     ],
     "path": "Tools/EvaluateAccount.cs",
-    "size": 12224,
+    "size": 12232,
     "fileName": "EvaluateAccount.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/EvaluateAccount.cs"
   },
@@ -294,7 +294,7 @@
       "khasaanda"
     ],
     "path": "Dailies/LordOfOrder.cs",
-    "size": 10452,
+    "size": 10476,
     "fileName": "LordOfOrder.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/LordOfOrder.cs"
   },
@@ -323,7 +323,7 @@
       "all"
     ],
     "path": "Dailies/0AllDailies.cs",
-    "size": 3200,
+    "size": 2948,
     "fileName": "0AllDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/0AllDailies.cs"
   },
@@ -2981,6 +2981,21 @@
     "size": 1734,
     "fileName": "WeaponReflection.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/WeaponReflection.cs"
+  },
+  {
+    "name": "Astravian Oracle Set",
+    "description": "does the follow quests to get the astravian oracle set",
+    "tags": [
+      "mourning cygnus",
+      "extinguished eridanus",
+      "quest",
+      "reward",
+      "astravian oracle set"
+    ],
+    "path": "Other/AstravianOracleSet.cs",
+    "size": 2333,
+    "fileName": "AstravianOracleSet.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/AstravianOracleSet.cs"
   },
   {
     "name": "corrupt draconic paragon",
@@ -8262,6 +8277,18 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Materials/BloodGem.cs"
   },
   {
+    "name": "Impossible Empowered Items of Nulgath",
+    "description": "does the 'Impossible, Empowered Items of Nulgath' quest for \"soulreaper of nulgath\"",
+    "tags": [
+      "soulreaper of nulgath",
+      "member"
+    ],
+    "path": "Nation/Various/ImpossibleEmpoweredItemsofNulgath.cs",
+    "size": 1655,
+    "fileName": "ImpossibleEmpoweredItemsofNulgath.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/ImpossibleEmpoweredItemsofNulgath.cs"
+  },
+  {
     "name": "YulgathsInn",
     "description": "null",
     "tags": [
@@ -9081,23 +9108,31 @@
   },
   {
     "name": "0NecroticSwordOfDoom",
-    "description": "null",
+    "description": "Does the entirety of and to farm \"necrotic sword of doom\"",
     "tags": [
-      "null"
+      "nsod",
+      "necrotic",
+      "sword",
+      "doom",
+      "necrotic sword of doom"
     ],
     "path": "Evil/NSoD/0NecroticSwordOfDoom.cs",
-    "size": 1436,
+    "size": 1536,
     "fileName": "0NecroticSwordOfDoom.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/NSoD/0NecroticSwordOfDoom.cs"
   },
   {
     "name": "1NecroticBladeOfDoom",
-    "description": "null",
+    "description": "Does the entirety of and to farm \"necrotic blade of doom\"",
     "tags": [
-      "null"
+      "nsod",
+      "necrotic",
+      "blade",
+      "doom",
+      "necrotic blade of doom"
     ],
     "path": "Evil/NSoD/1NecroticBladeOfDoom.cs",
-    "size": 1388,
+    "size": 1488,
     "fileName": "1NecroticBladeOfDoom.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/NSoD/1NecroticBladeOfDoom.cs"
   },
@@ -10498,7 +10533,7 @@
       "may-the-4th"
     ],
     "path": "Seasonal/MayThe4th/MurderMoonMerge.cs",
-    "size": 10526,
+    "size": 10479,
     "fileName": "MurderMoonMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/MayThe4th/MurderMoonMerge.cs"
   },
@@ -10646,7 +10681,7 @@
       "class"
     ],
     "path": "Seasonal/MayThe4th/DarkLord.cs",
-    "size": 2125,
+    "size": 2455,
     "fileName": "DarkLord.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/MayThe4th/DarkLord.cs"
   },
@@ -14364,7 +14399,7 @@
       "null"
     ],
     "path": "Legion/Revenant/CoreLR.cs",
-    "size": 7874,
+    "size": 7927,
     "fileName": "CoreLR.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/Revenant/CoreLR.cs"
   },
