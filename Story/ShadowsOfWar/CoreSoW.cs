@@ -855,10 +855,22 @@ public class CoreSoW
         Story.KillQuest(8240, "fireavatar", "Shadefire Elemental");
 
         //Well That’s New 8241
-        Story.KillQuest(8241, "fireavatar", "Shadow Lava");
+        if (!Story.QuestProgression(8241))
+        {
+            Core.EnsureAccept(8241);
+            Core.KillMonster("fireavatar", "r8", "Left", "Shadow Lava", "Shadow Lava Defeated", 8);
+            Core.EnsureComplete(8241);
+
+        }
 
         //Thermal Energy 8242
-        Story.KillQuest(8242, "fireavatar", "Shadow Lava");
+        if (!Story.QuestProgression(8242))
+        {
+            Core.EnsureAccept(8242);
+            Core.KillMonster("fireavatar", "r7", "Left", "Living Shadowflame", "Power Restored", 10);
+            Core.EnsureComplete(8242);
+
+        }
 
         //Avatar of Fire 8243
         Story.KillQuest(8243, "fireavatar", new[] { "Avatar Tyndarius", "Fire Orb" });
