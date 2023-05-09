@@ -1440,7 +1440,7 @@ public class CoreFarms
 
             Core.RegisterQuests(1151, 1152, 1153); //Minion Morale 1151, Shadowfall is DOOMed 1152, Grave-lyn Danger, 1153
             while (!Bot.ShouldExit && FactionRank("DoomWood") < rank)
-                Core.KillMonster("shadowfallwar", "Garden1", "Left", "*");
+                Core.KillMonster("shadowfallwar", "Garden1", "Left", "*", log: false);
             Core.CancelRegisteredQuests();
             ToggleBoost(BoostType.Reputation, false);
             Core.SavedState(false);
