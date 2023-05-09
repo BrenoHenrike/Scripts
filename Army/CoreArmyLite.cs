@@ -822,9 +822,38 @@ public class CoreArmyLite
             "superlowe"
         };
 
+        string[] EventMaps = 
+        {
+            "yoshino"
+        };
+
         int maptry = 1;
         int mapCount = Core.IsMember ? (NonMemMaps.Count() + MemMaps.Count()) : NonMemMaps.Count();
 
+        foreach (string map in EventMaps)
+        {
+            if (!Core.isSeasonalMapActive(map))
+                continue;
+
+            Core.Logger($"[{(maptry.ToString().Length == 1 ? "0" : "")}{maptry++}/{mapCount}] Searching for {b_playerName} in /{map}", "LockedZoneHandler");
+            Core.Join(map);
+
+            if (!Bot.Map.PlayerExists(b_playerName!))
+                continue;
+
+            tryGoto(b_playerName!);
+            Core.Logger($"[{((maptry - 1).ToString().Length == 1 ? "0" : "")}{maptry - 1}/{mapCount}] Found {b_playerName} in /{map}", "LockedZoneHandler");
+
+            switch (map.ToLower())
+            {
+                case "binky":
+                    _killTheUltra("binky");
+                    break;
+            }
+            PriorityAttack("*");
+            return;
+        }
+        
         foreach (string map in NonMemMaps)
         {
             Core.Logger($"[{(maptry.ToString().Length == 1 ? "0" : "")}{maptry++}/{mapCount}] Searching for {b_playerName} in /{map}", "LockedZoneHandler");
