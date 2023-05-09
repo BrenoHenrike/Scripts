@@ -112,6 +112,17 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/WheelOfDoomSpam.cs"
   },
   {
+    "name": "RankUpEquippedClass",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Tools/RankUpEquippedClass.cs",
+    "size": 842,
+    "fileName": "RankUpEquippedClass.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/RankUpEquippedClass.cs"
+  },
+  {
     "name": "Treasure Chest Spam",
     "description": "Wastes (with a warning) your extra ACs on opening Treasure Chests",
     "tags": [
@@ -217,6 +228,17 @@
     "size": 4454,
     "fileName": "BuyOut.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/BuyOut.cs"
+  },
+  {
+    "name": "RankUpAllClasses",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Tools/RankUpAllClasses.cs",
+    "size": 1939,
+    "fileName": "RankUpAllClasses.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/RankUpAllClasses.cs"
   },
   {
     "name": "Generate Queued Script",
@@ -2155,17 +2177,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/SwagTokenA.cs"
   },
   {
-    "name": "RankUpEquippedClass",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Farm/RankUpEquippedClass.cs",
-    "size": 842,
-    "fileName": "RankUpEquippedClass.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/RankUpEquippedClass.cs"
-  },
-  {
     "name": "BuyScrolls",
     "description": "null",
     "tags": [
@@ -2241,17 +2252,6 @@
     "size": 779,
     "fileName": "DarkWarLegionGold.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/DarkWarLegionGold.cs"
-  },
-  {
-    "name": "RankUpAllClasses",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Farm/RankUpAllClasses.cs",
-    "size": 2003,
-    "fileName": "RankUpAllClasses.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/RankUpAllClasses.cs"
   },
   {
     "name": "PrinceDarkonsPoleaxePreReqs",
