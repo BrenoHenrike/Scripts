@@ -439,7 +439,6 @@ public class CoreToD
             Core.HuntMonsterMapID("baconcat", 2781, "Rainbow Wig", 3);
             Core.EnsureComplete(5094);
         }
-        // Story.MapItemQuest(5094, "baconcat", 4468, 9);
 
         // Not all Sand is Cat Litter
         Story.KillQuest(5095, "baconcat", new[] { "Fart Elemental", "Litter Elemental" });
