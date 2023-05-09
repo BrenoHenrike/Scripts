@@ -428,13 +428,13 @@ public class CoreToD
         Story.KillQuest(5092, "baconcat", new[] { "Baconcatzard", "Pizzacatzard" });
 
         // No More Clowns!
-        if (!Story.QuestProgression(5094))
+        if (!Story.QuestProgression(5093))
         {
-            Core.EnsureAccept(5094);
+            Core.EnsureAccept(5093);
             Core.HuntMonsterMapID("baconcat", 2781, "Honking Clown Nose", 3);
             Core.HuntMonsterMapID("baconcat", 2780, "Scary Face Paint!", 10);
             Core.HuntMonsterMapID("baconcat", 2781, "Rainbow Wig", 3);
-            Core.EnsureComplete(5094);
+            Core.EnsureComplete(5093);
         }
 
         // Life's a Beach
