@@ -40,7 +40,7 @@ tags: null
 //cs_include Scripts/Other/Weapons/BurningBlade.cs
 //cs_include Scripts/Other/Weapons/DualChainSawKatanas.cs
 //cs_include Scripts/Other/Weapons/EnchantedVictoryBladeWeapons.cs
-//cs_include Scripts/Other/MergeShops/ShadowrealmMerge.cs
+//cs_include Scripts/Hollowborn/MergeShops/ShadowrealmMerge.cs
 
 //cs_include Scripts/Legion/SwordMaster.cs
 
