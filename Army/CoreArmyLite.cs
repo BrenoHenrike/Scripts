@@ -844,16 +844,10 @@ public class CoreArmyLite
             tryGoto(b_playerName!);
             Core.Logger($"[{((maptry - 1).ToString().Length == 1 ? "0" : "")}{maptry - 1}/{mapCount}] Found {b_playerName} in /{map}", "LockedZoneHandler");
 
-            switch (map.ToLower())
-            {
-                case "binky":
-                    _killTheUltra("binky");
-                    break;
-            }
             PriorityAttack("*");
             return;
         }
-        
+
         foreach (string map in NonMemMaps)
         {
             Core.Logger($"[{(maptry.ToString().Length == 1 ? "0" : "")}{maptry++}/{mapCount}] Searching for {b_playerName} in /{map}", "LockedZoneHandler");
