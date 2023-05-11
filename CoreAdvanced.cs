@@ -505,6 +505,9 @@ public class CoreAdvanced
             GearStore(true);
     }
 
+    // Temp here cuz name change is fucky on auto update for some reason
+    public void rankUpClass(string ClassName, bool GearRestore = true) => RankUpClass(ClassName, GearRestore);
+
     /// <summary>
     /// Do not use this variant
     /// </summary>
