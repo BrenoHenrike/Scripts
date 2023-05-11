@@ -243,7 +243,7 @@ public class LordOfOrder
             Bot.Wait.ForPickup(50741);
 
             if (rankUpClass)
-                Adv.RankUpClass("Lord Of Order");
+                Adv.rankUpClass("Lord Of Order");
         }
         else
         {

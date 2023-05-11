@@ -46,6 +46,6 @@ public class LegendaryElementalWarrior
         Core.BuyItem("Curio", 809, "Legendary Elemental Warrior", shopItemID: 2412);
 
         if (rankUpClass)
-            Adv.RankUpClass("Legendary Elemental Warrior");
+            Adv.rankUpClass("Legendary Elemental Warrior");
     }
 }

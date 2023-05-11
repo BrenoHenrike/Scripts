@@ -35,7 +35,7 @@ public class EvolvedLeprechaun
         LDSFM.BuyAllMerge("Evolved Leprechaun");
 
         if (rankUpClass)
-            Adv.RankUpClass("Evolved Leprechaun");
+            Adv.rankUpClass("Evolved Leprechaun");
 
     }
 }

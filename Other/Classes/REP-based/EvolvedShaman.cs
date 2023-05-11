@@ -34,6 +34,6 @@ public class EvolvedShaman
         Core.BuyItem("arcangrove", 214, "Evolved Shaman", shopItemID: 6396);
 
         if (rankUpClass)
-            Adv.RankUpClass("Evolved Shaman");
+            Adv.rankUpClass("Evolved Shaman");
     }
 }

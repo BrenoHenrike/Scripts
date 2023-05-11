@@ -38,6 +38,6 @@ public class Bard
         Core.BuyItem("mythsong", 186, "Bard");
 
         if (rankUpClass)
-            Adv.RankUpClass("Bard");
+            Adv.rankUpClass("Bard");
     }
 }

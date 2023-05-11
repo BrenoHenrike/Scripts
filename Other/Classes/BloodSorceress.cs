@@ -32,6 +32,6 @@ public class BloodSorceress
         Core.EquipClass(ClassType.Solo);
         Core.HuntMonster("towerofmirrors", "Scarletta", "Blood Sorceress", isTemp: false);
         if (rankUpClass)
-            Adv.RankUpClass("Blood Sorceress");
+            Adv.rankUpClass("Blood Sorceress");
     }
 }

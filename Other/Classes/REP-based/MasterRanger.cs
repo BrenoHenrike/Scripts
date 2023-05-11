@@ -34,6 +34,6 @@ public class MasterRanger
         Core.BuyItem("sandsea", 242, "Master Ranger");
 
         if (rankUpClass)
-            Adv.RankUpClass("Master Ranger");
+            Adv.rankUpClass("Master Ranger");
     }
 }

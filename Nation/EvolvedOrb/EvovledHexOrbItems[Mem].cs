@@ -56,7 +56,7 @@ public class EvovledHexOrbItems
             return;
 
         Adv.BuyItem(Bot.Map.Name, 299, "Oracle");
-        Adv.RankUpClass("Oracle");
+        Adv.rankUpClass("Oracle");
 
         #endregion
 
@@ -105,7 +105,7 @@ public class EvovledHexOrbItems
         Nation.FarmTotemofNulgath(10);
         Nation.Supplies("Unidentified 29");
         Potion.INeedYourStrongestPotions(new[] { "Bright Tonic" }, potionQuant: 10);
-
+        
         Core.EnsureComplete(4783);
 
 

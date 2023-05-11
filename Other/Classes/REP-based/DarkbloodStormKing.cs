@@ -37,6 +37,6 @@ public class DarkbloodStormKing
         Adv.BuyItem("stormtemple", 544, "Darkblood StormKing", shopItemID: 10412);
 
         if (rankUpClass)
-            Adv.RankUpClass("Darkblood StormKing");
+            Adv.rankUpClass("Darkblood StormKing");
     }
 }

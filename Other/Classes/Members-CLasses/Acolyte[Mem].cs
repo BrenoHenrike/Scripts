@@ -40,10 +40,10 @@ public class Acolyte
         if (Core.CheckInventory("Healer"))
         {
             Core.BuyItem("trainers", 176, "Healer");
-            Adv.RankUpClass("Healer");
+            Adv.rankUpClass("Healer");
             Core.BuyItem("trainers", 177, "Acolyte");
             if (rankUpClass)
-                Adv.RankUpClass("Acolyte");
+                Adv.rankUpClass("Acolyte");
         }
     }
 }

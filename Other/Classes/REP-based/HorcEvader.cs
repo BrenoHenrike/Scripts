@@ -32,6 +32,6 @@ public class HorcEvader
         Adv.BuyItem("bloodtusk", 308, "Horc Evader");
 
         if (rankUpClass)
-            Adv.RankUpClass("Horc Evader");
+            Adv.rankUpClass("Horc Evader");
     }
 }

@@ -138,14 +138,14 @@ public class CoreSDKA
                 Core.Logger("You don't have the DoomKnight Class, Getting it for you. (+warrior/Healer if those aren't R10)");
 
                 Core.BuyItem("trainers", 176, "Healer");
-                Adv.RankUpClass("Healer", false);
+                Adv.rankUpClass("Healer", false);
 
                 Core.BuyItem("trainers", 170, "Warrior");
-                Adv.RankUpClass("Warrior", false);
+                Adv.rankUpClass("Warrior", false);
 
                 Adv.BuyItem("shadowfall", 100, "DoomKnight", shopItemID: 6309);
             }
-            Adv.RankUpClass("DoomKnight", false);
+            Adv.rankUpClass("DoomKnight", false);
 
             Adv.GearStore(true);
             Core.EquipClass(ClassType.Solo);

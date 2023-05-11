@@ -57,6 +57,6 @@ public class VampireLord
         Core.BuyItem("mogloween", 1477, "Vampire Lord", shopItemID: 5459);
 
         if (rankUpClass)
-            Adv.RankUpClass("Vampire Lord");
+            Adv.rankUpClass("Vampire Lord");
     }
 }

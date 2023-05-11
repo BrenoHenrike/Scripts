@@ -44,7 +44,7 @@ public class ArchFiend
 
         Core.BuyItem("tercessuinotlim", 695, "ArchFiend");
         if (rankUp)
-            Adv.RankUpClass("ArchFiend");
+            Adv.rankUpClass("ArchFiend");
     }
 
     public void AbyssalContract()
