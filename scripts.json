@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreAdvanced.cs",
-    "size": 108955,
+    "size": 109203,
     "fileName": "CoreAdvanced.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreAdvanced.cs"
   },
@@ -13534,13 +13534,23 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/AFDL/EnoughDOOMforanArchfiend.cs"
   },
   {
-    "name": "NulgathDemandsWork",
-    "description": "null",
+    "name": "Nulgath Demands Work",
+    "description": "This bot will do the Nulgath Demands Work quest untill you have a uni35 and the equipment.",
     "tags": [
-      "null"
+      "archfiend",
+      "doomlord",
+      "ADFL",
+      "nulgath",
+      "demands",
+      "work",
+      "unidentified",
+      "uni",
+      "35",
+      "essence",
+      "fragment"
     ],
     "path": "Nation/AFDL/NulgathDemandsWork.cs",
-    "size": 3846,
+    "size": 3914,
     "fileName": "NulgathDemandsWork.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/AFDL/NulgathDemandsWork.cs"
   },
@@ -14422,7 +14432,7 @@
       "null"
     ],
     "path": "Nation/EvolvedOrb/EvovledHexOrbItems[Mem].cs",
-    "size": 3416,
+    "size": 3408,
     "fileName": "EvovledHexOrbItems[Mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/EvolvedOrb/EvovledHexOrbItems[Mem].cs"
   },
@@ -17297,7 +17307,7 @@
       "deathpitarena"
     ],
     "path": "Other/Classes/Members-CLasses/DrakelWarlord[Mem].cs",
-    "size": 1180,
+    "size": 1181,
     "fileName": "DrakelWarlord[Mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/Members-CLasses/DrakelWarlord[Mem].cs"
   },
@@ -17330,7 +17340,7 @@
       "null"
     ],
     "path": "Other/Classes/Members-CLasses/AlphaOmega[Mem].cs",
-    "size": 1151,
+    "size": 1150,
     "fileName": "AlphaOmega[Mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/Members-CLasses/AlphaOmega[Mem].cs"
   },
