@@ -56,7 +56,7 @@ public class EvovledHexOrbItems
             return;
 
         Adv.BuyItem(Bot.Map.Name, 299, "Oracle");
-        Adv.RankUpClass("Oracle");
+        Adv.rankUpClass("Oracle");
 
         #endregion
 

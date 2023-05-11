@@ -141,7 +141,7 @@ public class CoreOblivionBladeofNulgath
 
         PetCheck(601, 2562);
 
-        Adv.RankUpClass("Warlord");
+        Adv.rankUpClass("Warlord");
         Core.AddDrop("Champion Blade of Nulgath");
 
         Nation.Supplies("Voucher of Nulgath", voucherNeeded: true);

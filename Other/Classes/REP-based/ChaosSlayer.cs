@@ -46,7 +46,7 @@ public class ChaosSlayer
         Adv.BuyItem("newfinale", 891, $"Chaos Slayer {variant}", shopItemID: (int)variant);
 
         if (rankUpClass)
-            Adv.RankUpClass($"Chaos Slayer {variant}");
+            Adv.rankUpClass($"Chaos Slayer {variant}");
     }
 }
 

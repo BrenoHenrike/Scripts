@@ -34,6 +34,6 @@ public class Shaman
         Core.BuyItem("arcangrove", 214, "Shaman");
 
         if (rankUpClass)
-            Adv.RankUpClass("Shaman");
+            Adv.rankUpClass("Shaman");
     }
 }

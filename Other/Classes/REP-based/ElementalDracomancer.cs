@@ -33,6 +33,6 @@ public class ElementalDracomancer
         Adv.BuyItem("dragontown", 1285, 11272);
 
         if (rankUpClass)
-            Adv.RankUpClass("Elemental Dracomancer");
+            Adv.rankUpClass("Elemental Dracomancer");
     }
 }

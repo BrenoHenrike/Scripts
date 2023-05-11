@@ -87,7 +87,7 @@ public class ArmyLightCaster
             Adv.BoostHuntMonster("celestialarenad", "Aranx", "Aranx's Pure Light", isTemp: false);
             Core.EnsureComplete(6495);
             Bot.Wait.ForPickup("LightCaster");
-            Adv.RankUpClass("LightCaster");
+            Adv.rankUpClass("LightCaster");
         }
         Bot.Events.PlayerAFK -= PlayerAFK;
     }

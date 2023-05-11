@@ -53,7 +53,7 @@ public class RankUpAll
         foreach (string Class in SelectedClasses)
         {
             if (Core.CheckInventory(Class))
-                Adv.RankUpClass(Class, false);
+                Adv.rankUpClass(Class, false);
 
             if (BankClasses.Contains(Class))
                 Core.ToBank(Class);

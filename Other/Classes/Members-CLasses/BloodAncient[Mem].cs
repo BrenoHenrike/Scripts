@@ -37,6 +37,6 @@ public class BloodAncient
         BAM.BuyAllMerge("Blood Ancient");
 
         if (rankUpClass)
-            Adv.RankUpClass("Blood Ancient");
+            Adv.rankUpClass("Blood Ancient");
     }
 }

@@ -36,6 +36,6 @@ public class UndeadSlayer
         Core.BuyItem("necropolis", 408, "UndeadSlayer");
 
         if (rankUpClass)
-            Adv.RankUpClass("UndeadSlayer");
+            Adv.rankUpClass("UndeadSlayer");
     }
 }

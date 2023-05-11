@@ -65,7 +65,7 @@ public class EvolvedBloodOrbItems
             Core.EnsureComplete(126);
             Bot.Wait.ForPickup("RustBucket");
         }
-        Adv.RankUpClass("RustBucket");
+        Adv.rankUpClass("RustBucket");
 
         #endregion
 

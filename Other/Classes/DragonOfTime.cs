@@ -292,7 +292,7 @@ public class DragonOfTime
         }
 
         if (rankUpClass)
-            Adv.RankUpClass("Dragon of Time");
+            Adv.rankUpClass("Dragon of Time");
 
         // I'm Loving It My Way 7725
         if (doExtra)
