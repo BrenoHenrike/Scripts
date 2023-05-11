@@ -2557,7 +2557,6 @@ public class CoreAdvanced
                 case "cryomancer":
                 case "dark caster":
                 case "dark cryomancer":
-                case "dark lord":
                 case "darkblood stormking":
                 case "darkside":
                 case "defender":
@@ -2579,6 +2578,7 @@ public class CoreAdvanced
 
                 #region Wizard - Health Vamp
                 case "daimon":
+                case "dark lord":
                 case "evolved shaman":
                 case "lightmage":
                 case "mindbreaker":
