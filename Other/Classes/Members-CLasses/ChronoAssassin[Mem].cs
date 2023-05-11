@@ -31,7 +31,7 @@ public class ChronoAssassin
     {
         if (Core.CheckInventory("Chrono Assassin"))
         {
-            Adv.tempNameHere("Chrono Assassin");
+            Adv.RankUpClass("Chrono Assassin");
             return;
         }
         if (!Core.IsMember)
@@ -42,7 +42,7 @@ public class ChronoAssassin
 
         Bot.Wait.ForPickup("Chrono Assassin");
         Adv.GearStore();
-        Adv.tempNameHere("Chrono Assassin");
+        Adv.RankUpClass("Chrono Assassin");
         Adv.GearStore(true);
     }
     public void SaeculumGem(int GemQuant)

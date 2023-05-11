@@ -43,6 +43,6 @@ public class LegionDoomKnight
         Core.BuyItem("battleon", 1106, "Legion DoomKnight");
 
         if (rankUpClass)
-            Adv.tempNameHere("Legion DoomKnight");
+            Adv.RankUpClass("Legion DoomKnight");
     }
 }

@@ -32,14 +32,14 @@ public class Paladin
         Core.BuyItem("necropolis", 26, "Warrior");
         Core.BuyItem("necropolis", 26, "Healer");
 
-        Adv.tempNameHere("Warrior");
-        Adv.tempNameHere("Healer");
+        Adv.RankUpClass("Warrior");
+        Adv.RankUpClass("Healer");
 
         Farm.GoodREP(5);
 
         Core.BuyItem("necropolis", 26, "Paladin");
 
         if (rankUpClass)
-            Adv.tempNameHere("Paladin");
+            Adv.RankUpClass("Paladin");
     }
 }

@@ -36,7 +36,7 @@ public class DarkLord
         if (Core.CheckInventory("Dark Lord"))
         {
             if (rankUpClass)
-                Adv.tempNameHere("Dark Lord");
+                Adv.RankUpClass("Dark Lord");
             return;
         }
 
@@ -73,7 +73,7 @@ public class DarkLord
         Bot.Wait.ForItemBuy();
 
         if (rankUpClass)
-            Adv.tempNameHere("Dark Lord");
+            Adv.RankUpClass("Dark Lord");
     }
 
 

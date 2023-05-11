@@ -40,7 +40,7 @@ public class MindBreakingItIn
         {
             //Member Bonus 12k AC Shop will check if the player have the achievment
             Adv.BuyItem("Battleon", 373, "MindBreaker");
-            Adv.tempNameHere("MindBreaker");
+            Adv.RankUpClass("MindBreaker");
         }
 
         for (int i = 0; i < Rewards.Count(); i++)

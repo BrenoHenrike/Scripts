@@ -36,6 +36,6 @@ public class BloodTitan
         Core.BuyItem("classhalla", 617, "Blood Titan");
 
         if (rankUpClass)
-            Adv.tempNameHere("Blood Titan");
+            Adv.RankUpClass("Blood Titan");
     }
 }

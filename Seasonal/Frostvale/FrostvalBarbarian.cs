@@ -99,6 +99,6 @@ public class FrostvalBarbarian
 
         Bot.Wait.ForPickup("Frostval Barbarian");
         if (rankUpClass)
-            Adv.tempNameHere("Frostval Barbarian");
+            Adv.RankUpClass("Frostval Barbarian");
     }
 }

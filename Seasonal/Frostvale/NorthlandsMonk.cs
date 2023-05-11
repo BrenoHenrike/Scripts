@@ -32,7 +32,7 @@ public class NorthlandsMonk
 
         if (Core.CheckInventory(52413))
         {
-            Adv.tempNameHere("Northlands Monk");
+            Adv.RankUpClass("Northlands Monk");
             return;
         }
 
@@ -45,7 +45,7 @@ public class NorthlandsMonk
         if (rankUpClass)
         {
             Adv.GearStore();
-            Adv.tempNameHere("Northlands Monk");
+            Adv.RankUpClass("Northlands Monk");
             Adv.GearStore(true);
         }
     }

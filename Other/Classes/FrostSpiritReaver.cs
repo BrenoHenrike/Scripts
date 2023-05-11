@@ -59,7 +59,7 @@ public class FrostSpiritReaver
         Bot.Wait.ForPickup("Frost SpiritReaver");
 
         if (rankUpClass)
-            Adv.tempNameHere("Frost SpititReaver");
+            Adv.RankUpClass("Frost SpititReaver");
     }
 
     public void IceNinth(int quant)

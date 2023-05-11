@@ -33,6 +33,6 @@ public class Enforcer
         Core.HuntMonster("crashsite", "Mithril Man", "Enforcer", isTemp: false);
 
         if (rankUpClass)
-            Adv.tempNameHere("Enforcer");
+            Adv.RankUpClass("Enforcer");
     }
 }

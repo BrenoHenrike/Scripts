@@ -59,6 +59,6 @@ public class LightCaster
         Bot.Wait.ForPickup("LightCaster");
 
         if (rankUpClass)
-            Adv.tempNameHere("LightCaster");
+            Adv.RankUpClass("LightCaster");
     }
 }

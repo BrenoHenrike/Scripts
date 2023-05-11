@@ -42,6 +42,6 @@ public class AlphaPirate
         Core.BuyItem("blazebeard", 108, "Alpha Pirate");
 
         if (rankUpClass)
-            Adv.tempNameHere("Alpha Pirate");
+            Adv.RankUpClass("Alpha Pirate");
     }
 }

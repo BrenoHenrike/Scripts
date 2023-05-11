@@ -88,7 +88,7 @@ public class CoreLR
         Bot.Wait.ForDrop("Legion Revenant", 20);
         Bot.Wait.ForPickup("Legion Revenant", 20);
         if (rankUpClass)
-            Adv.tempNameHere("Legion Revenant");
+            Adv.RankUpClass("Legion Revenant");
     }
 
     //Legion Fealty 1

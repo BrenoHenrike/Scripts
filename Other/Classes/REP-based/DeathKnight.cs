@@ -34,6 +34,6 @@ public class DeathKnight
         Core.BuyItem("necropolis", 408, "DeathKnight", shopItemID: 8079);
 
         if (rankUpClass)
-            Adv.tempNameHere("DeathKnight");
+            Adv.RankUpClass("DeathKnight");
     }
 }

@@ -32,6 +32,6 @@ public class BeastMaster
         Adv.BuyItem("northpointe", 976, "BeastMaster", shopItemID: 16031);
 
         if (rankUpClass)
-            Adv.tempNameHere("BeastMaster");
+            Adv.RankUpClass("BeastMaster");
     }
 }

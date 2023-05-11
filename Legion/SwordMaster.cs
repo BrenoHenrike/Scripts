@@ -38,7 +38,7 @@ public class SwordMaster
         if (rankUpClass)
         {
             Adv.EnhanceItem("SwordMaster", EnhancementType.Lucky);
-            Adv.tempNameHere("SwordMaster");
+            Adv.RankUpClass("SwordMaster");
         }
     }
 }

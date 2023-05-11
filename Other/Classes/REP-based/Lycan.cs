@@ -38,6 +38,6 @@ public class Lycan
         Core.BuyItem("lycan", 161, "Lycan");
 
         if (rankUpClass)
-            Adv.tempNameHere("Lycan");
+            Adv.RankUpClass("Lycan");
     }
 }
