@@ -14471,7 +14471,7 @@
   },
   {
     "name": "Evolved Shadow Orb Items (Member)",
-    "description": "Requires active membership + Evolved Shadow Orb.\\nWill do all quests to get all items from the orb",
+    "description": "Requires active membership + Evolved Shadow Orb.\\\\nWill do all quests to get all items from the orb",
     "tags": [
       "evolved",
       "shadow",
@@ -14489,7 +14489,7 @@
       "nothingness"
     ],
     "path": "Nation/EvolvedOrb/EvolvedShadowOrbItems[Mem].cs",
-    "size": 5105,
+    "size": 5106,
     "fileName": "EvolvedShadowOrbItems[Mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/EvolvedOrb/EvolvedShadowOrbItems[Mem].cs"
   },
