@@ -76,8 +76,8 @@ public class EvalAcc
         Bot.ShowMessageBox(
             $"Level:\t\t\t\t{Bot.Player.Level}\n" +
             (accAge != null ? $"Account Age:\t\t\t{(int)(accAge.Value.TotalDays / 365.2425)} years, {(int)(accAge.Value.TotalDays - ((int)(accAge.Value.TotalDays / 365.2425) * 365.2425)) / 30} months\n" : String.Empty) +
-            (badges != null ? $"Beta Tester:\t\t\t{checkbox(badges.Contains(1))}\n" : String.Empty) +
-            (badges != null ? $"Founder:\t\t\t\t{checkbox(badges.Contains(2))}\n" : String.Empty) +
+            (badges != null ? $"Beta Tester:\t\t\t{checkbox(badges.Contains(2))}\n" : String.Empty) +
+            (badges != null ? $"Founder:\t\t\t\t{checkbox(badges.Contains(1))}\n" : String.Empty) +
             (gender != null ? $"Gender:\t\t\t\t{(gender[1] == 'M' ? "Male" : "Female")}\n" : String.Empty) +
 
             $"\nMaxed Factions:\t\t\t{Bot.Reputation.FactionList.Count(f => f.Rank == 10)} out of 52\n" +
