@@ -476,11 +476,11 @@ public class CoreAdvanced
             Core.Logger($"\"{itemInv.Name}\" is already Rank 10");
             return;
         }
-        // if (itemInv.MaxStack == 1)
-        // {
-        //     Core.Logger($"\"{itemInv.Name}\" cannot be leveled past Rank 1");
-        //     return;
-        // }
+        if (ClassName.Equals("Hobo Highlord") || ClassName.Equals("No Class") || ClassName.Equals("Obsidian No Class"))
+        {
+            Core.Logger($"\"{itemInv.Name}\" cannot be leveled past Rank 1");
+            return;
+        }
 
         if (GearRestore)
             GearStore();
