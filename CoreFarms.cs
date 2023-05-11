@@ -1126,13 +1126,7 @@ public class CoreFarms
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("hydrachallenge", "Hydra Head 25", "Hydra Scale Piece", 75, isTemp: false, log: false);
             Core.HuntMonster("maul", "Creature Creation", "Creature Shard", isTemp: false, log: false);
-            if (CanSolo)
-                Core.HuntMonster("towerofdoom10", "Slugbutter", "Monster Trophy", 15, isTemp: false, log: false);
-            else
-            {
-                Core.EquipClass(ClassType.Farm);
-                Core.KillMonster("towerofdoom10", "Enter", "Spawn", "*", "Monster Trophy", 15, isTemp: false, log: false);
-            }
+            Core.HuntMonster("towerofdoom", "Dread Klunk", "Monster Trophy", 15, isTemp: false, log: false);
             Core.EnsureComplete(8736);
         }
         // Core.CancelRegisteredQuests();
@@ -1433,17 +1427,17 @@ public class CoreFarms
         if (FactionRank("DoomWood") >= rank)
             return;
 
-            Core.EquipClass(ClassType.Farm);
-            Core.SavedState();
-            ToggleBoost(BoostType.Reputation);
-            Core.Logger($"Farming rank {rank}");
+        Core.EquipClass(ClassType.Farm);
+        Core.SavedState();
+        ToggleBoost(BoostType.Reputation);
+        Core.Logger($"Farming rank {rank}");
 
-            Core.RegisterQuests(1151, 1152, 1153); //Minion Morale 1151, Shadowfall is DOOMed 1152, Grave-lyn Danger, 1153
-            while (!Bot.ShouldExit && FactionRank("DoomWood") < rank)
-                Core.KillMonster("shadowfallwar", "Garden1", "Left", "*", log: false);
-            Core.CancelRegisteredQuests();
-            ToggleBoost(BoostType.Reputation, false);
-            Core.SavedState(false);
+        Core.RegisterQuests(1151, 1152, 1153); //Minion Morale 1151, Shadowfall is DOOMed 1152, Grave-lyn Danger, 1153
+        while (!Bot.ShouldExit && FactionRank("DoomWood") < rank)
+            Core.KillMonster("shadowfallwar", "Garden1", "Left", "*", log: false);
+        Core.CancelRegisteredQuests();
+        ToggleBoost(BoostType.Reputation, false);
+        Core.SavedState(false);
     }
 
     public void DreadfireREP(int rank = 10)
