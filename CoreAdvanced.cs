@@ -456,7 +456,7 @@ public class CoreAdvanced
     /// Ranks up your class
     /// </summary>
     /// <param name="ClassName">Name of the class you want it to rank up</param>
-    public void rankUpClass(string ClassName, bool GearRestore = true)
+    public void RankUpClass(string ClassName, bool GearRestore = true)
     {
         Bot.Wait.ForPickup(ClassName, 20);
 

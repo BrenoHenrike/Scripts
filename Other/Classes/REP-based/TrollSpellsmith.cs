@@ -32,6 +32,6 @@ public class TrollSpellsmith
         Adv.BuyItem("bloodtusk", 306, "Troll Spellsmith");
 
         if (rankUpClass)
-            Adv.rankUpClass("Troll Spellsmith");
+            Adv.RankUpClass("Troll Spellsmith");
     }
 }

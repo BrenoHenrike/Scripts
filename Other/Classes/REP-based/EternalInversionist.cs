@@ -40,7 +40,7 @@ public class EternalInversionist
         {
             Adv.GearStore();
             Core.Equip("Eternal Inversionist");
-            Adv.rankUpClass("Eternal Inversionist");
+            Adv.RankUpClass("Eternal Inversionist");
             Adv.GearStore(true);
         }
 

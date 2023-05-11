@@ -40,6 +40,6 @@ public class GlacialBerserker
         Core.BuyItem("icewindpass", 1339, 38084);
 
         if (rankUpClass)
-            Adv.rankUpClass("Glacial Berserker");
+            Adv.RankUpClass("Glacial Berserker");
     }
 }

@@ -127,7 +127,7 @@ public class CoreArchMage
             Core.ToBank(Cosmetics);
 
             if (rankUpClass)
-                Adv.rankUpClass("ArchMage");
+                Adv.RankUpClass("ArchMage");
         }
 
         if (lumina)

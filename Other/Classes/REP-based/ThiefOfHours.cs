@@ -34,6 +34,6 @@ public class ThiefOfHours
         Core.BuyItem("thespan", 439, "Thief of Hours");
 
         if (rankUpClass)
-            Adv.rankUpClass("Thief of Hours");
+            Adv.RankUpClass("Thief of Hours");
     }
 }
