@@ -470,9 +470,15 @@ public class CoreAdvanced
         }
         if (itemInv == null)
             return;
+
         if (itemInv.Quantity == 302500)
         {
             Core.Logger($"\"{itemInv.Name}\" is already Rank 10");
+            return;
+        }
+        if (itemInv.MaxStack == 1)
+        {
+            Core.Logger($"\"{itemInv.Name}\" cannot be leveled past Rank 1");
             return;
         }
 
@@ -489,9 +495,12 @@ public class CoreAdvanced
         string CPBoost = BestGear(GenericGearBoost.cp, false);
         EnhanceItem(CPBoost, CurrentClassEnh(), CurrentCapeSpecial(), CurrentHelmSpecial(), CurrentWeaponSpecial());
         Core.Equip(CPBoost);
+        Farm.ToggleBoost(BoostType.Class);
 
         Farm.IcestormArena(Bot.Player.Level, true);
         Core.Logger($"\"{itemInv.Name}\" is now Rank 10");
+
+        Farm.ToggleBoost(BoostType.Class, false);
         if (GearRestore)
             GearStore(true);
     }
