@@ -1,7 +1,7 @@
 /*
-name: EvolvedShadowOrbItems[Mem]
-description: null
-tags: null
+name: Evolved Shadow Orb Items (Member)
+description: Requieres active membership + Evolved Shadow Orb. Will do all quests to get all items from the orb
+tags: evolved, shadow, orb, member, nulgath, helm, spear, reborn, dark, side, void, emotions, shape, nothingness
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -38,8 +38,16 @@ public class EvolvedShadowOrbItems
 
     public void GetItems()
     {
-        if (!Core.IsMember || Core.CheckInventory(Rewards, toInv: false))
+        if (!Core.IsMember)
+        {
+            Core.Logger("This bot requiers membership.");
             return;
+        }
+        if (Core.CheckInventory(Rewards, toInv: false))
+        {
+            Core.Logger("You already own all Evolved Shadow Orb quest items.");
+            return;
+        }
 
         ESO.GetEvolvedShadowOrb();
 
@@ -83,7 +91,7 @@ public class EvolvedShadowOrbItems
                 Core.BuyItem("battleon", 222, "Behemoth Blade of Shadow");
             }
         }
-        
+
         Core.EquipClass(ClassType.Farm);
         Nation.ApprovalAndFavor(1, 0);
         Nation.FarmFiendToken(30);
