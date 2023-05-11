@@ -476,7 +476,7 @@ public class CoreAdvanced
             Core.Logger($"\"{itemInv.Name}\" is already Rank 10");
             return;
         }
-        if (ClassName.Equals("Hobo Highlord") || ClassName.Equals("No Class") || ClassName.Equals("Obsidian No Class"))
+        if (itemInv.Name.Equals("Hobo Highlord") || itemInv.Name.Equals("No Class") || itemInv.Name.Equals("Obsidian No Class"))
         {
             Core.Logger($"\"{itemInv.Name}\" cannot be leveled past Rank 1");
             return;
