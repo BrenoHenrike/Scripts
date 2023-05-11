@@ -9,7 +9,7 @@ tags: bank, army, all
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/Army/CoreArmyLite.cs
-//cs_include Scripts/Farm/BankAllItems.cs
+//cs_include Scripts/Tools/BankAllItems.cs
 using Skua.Core.Interfaces;
 
 public class ArmyBankAllItems
