@@ -14470,13 +14470,26 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/EvolvedOrb/EvolvedBloodOrb.cs"
   },
   {
-    "name": "EvolvedShadowOrbItems[Mem]",
-    "description": "null",
+    "name": "Evolved Shadow Orb Items (Member)",
+    "description": "Requieres active membership + Evolved Shadow Orb. Will do all quests to get all items from the orb",
     "tags": [
-      "null"
+      "evolved",
+      "shadow",
+      "orb",
+      "member",
+      "nulgath",
+      "helm",
+      "spear",
+      "reborn",
+      "dark",
+      "side",
+      "void",
+      "emotions",
+      "shape",
+      "nothingness"
     ],
     "path": "Nation/EvolvedOrb/EvolvedShadowOrbItems[Mem].cs",
-    "size": 4702,
+    "size": 5105,
     "fileName": "EvolvedShadowOrbItems[Mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/EvolvedOrb/EvolvedShadowOrbItems[Mem].cs"
   },
