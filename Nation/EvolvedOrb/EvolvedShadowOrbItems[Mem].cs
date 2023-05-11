@@ -1,6 +1,6 @@
 /*
 name: Evolved Shadow Orb Items (Member)
-description: Requieres active membership + Evolved Shadow Orb. Will do all quests to get all items from the orb
+description: Requires active membership + Evolved Shadow Orb.\nWill do all quests to get all items from the orb
 tags: evolved, shadow, orb, member, nulgath, helm, spear, reborn, dark, side, void, emotions, shape, nothingness
 */
 //cs_include Scripts/CoreBots.cs
