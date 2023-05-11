@@ -3925,6 +3925,10 @@ public static class UtilExtensions
     // List management
     public static T[] Except<T>(this IEnumerable<T> source, params T[] obj)
         => source.Except(second: obj).ToArray();
+    public static T? Find<T>(this IEnumerable<T> source, Predicate<T> Match)
+        => source.ToList().Find(match: Match);
+    public static bool TryFind<T>(this IEnumerable<T> source, Predicate<T> Match, out T? toReturn)
+        => (toReturn = source.Find(Match)) != null;
 }
 #nullable disable
 public class Badge
