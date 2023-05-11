@@ -34,6 +34,6 @@ public class InfiniteLegionDC
         Core.BuyItem("underworld", 238, "Infinite Legion Dark Caster");
 
         if (rankUpClass)
-            Adv.rankUpClass("Infinite Legion Dark Caster");
+            Adv.tempNameHere("Infinite Legion Dark Caster");
     }
 }

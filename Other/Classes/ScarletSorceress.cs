@@ -44,6 +44,6 @@ public class ScarletSorceress
         Bot.Wait.ForPickup("Scarlet Sorceress");
 
         if (rankUpClass)
-            Adv.rankUpClass("Scarlet Sorceress");
+            Adv.tempNameHere("Scarlet Sorceress");
     }
 }

@@ -58,7 +58,7 @@ public class CoreVHL
         Core.BuyItem("tercessuinotlim", 1355, "Void Highlord");
 
         if (rankUpClass)
-            Adv.rankUpClass("Void Highlord");
+            Adv.tempNameHere("Void Highlord");
     }
 
     public void VHLChallenge(int quant)

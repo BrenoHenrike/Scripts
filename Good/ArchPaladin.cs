@@ -217,7 +217,7 @@ public class ArchPaladin
         {
             Adv.GearStore();
             Core.Equip("ArchPaladin");
-            Adv.rankUpClass("ArchPaladin");
+            Adv.tempNameHere("ArchPaladin");
             Adv.GearStore(true);
         }
     }

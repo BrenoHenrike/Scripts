@@ -103,7 +103,7 @@ public class BlazeBeardMerge
                         Core.EnsureAccept(31);
                         Core.HuntMonster("Pirates", "Fishwing", "Map Fragment", 5);
                         Core.EnsureComplete(31);
-                        Adv.rankUpClass("Classic Pirate");
+                        Adv.tempNameHere("Classic Pirate");
                     }
                     Core.RegisterQuests(4551);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))

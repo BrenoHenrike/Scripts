@@ -32,6 +32,6 @@ public class LightMage
         Core.BuyItem("celestialrealm", 1612, "LightMage", shopItemID: 5987);
 
         if (rankUpClass)
-            Adv.rankUpClass("LightMage");
+            Adv.tempNameHere("LightMage");
     }
 }

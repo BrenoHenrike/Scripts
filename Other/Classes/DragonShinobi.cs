@@ -32,7 +32,7 @@ public class DragonShinobi
     {
         if (Core.CheckInventory(59476))
         {
-            Adv.rankUpClass("DragonSoul Shinobi");
+            Adv.tempNameHere("DragonSoul Shinobi");
             return;
         }
 
@@ -50,7 +50,7 @@ public class DragonShinobi
         {
             Adv.GearStore();
             Core.Equip("DragonSoul Shinobi");
-            Adv.rankUpClass("DragonSoul Shinobi");
+            Adv.tempNameHere("DragonSoul Shinobi");
             Adv.GearStore(true);
         }
     }

@@ -39,6 +39,6 @@ public class Arachnomancer
         Core.BuyItem("ravenloss", 850, "Arachnomancer", shopItemID: 23292);
 
         if (rankUpClass)
-            Adv.rankUpClass("Arachnomancer");
+            Adv.tempNameHere("Arachnomancer");
     }
 }

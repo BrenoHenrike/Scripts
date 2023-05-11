@@ -520,7 +520,7 @@ public class DoTArmy
         Core.EnsureComplete(7724);
         Core.Logger($"Quest 9: 🖕");
         Bot.Wait.ForPickup("Dragon of Time");
-        Adv.RankUpClass("Dragon of Time");
+        Adv.tempNameHere("Dragon of Time");
     }
 
     public void DoQuest10()

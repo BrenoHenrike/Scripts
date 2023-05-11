@@ -34,6 +34,6 @@ public class ImperialChunin
         Core.BuyItem("dragonkoiz", 95, "Imperial Chunin");
 
         if (rankUpClass)
-            Adv.rankUpClass("Imperial Chunin");
+            Adv.tempNameHere("Imperial Chunin");
     }
 }

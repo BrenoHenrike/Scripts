@@ -32,6 +32,6 @@ public class RoyalBattleMage
         Adv.BuyItem("castle", 702, "Royal BattleMage");
 
         if (rankUpClass)
-            Adv.rankUpClass("Royal BattleMage");
+            Adv.tempNameHere("Royal BattleMage");
     }
 }

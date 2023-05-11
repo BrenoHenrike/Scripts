@@ -42,6 +42,6 @@ public class StoneCrusher
         Adv.BuyItem("Gaiazor", 1210, "StoneCrusher");
 
         if (rankUpClass)
-            Adv.rankUpClass("StoneCrusher");
+            Adv.tempNameHere("StoneCrusher");
     }
 }

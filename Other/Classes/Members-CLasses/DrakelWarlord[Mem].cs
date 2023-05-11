@@ -36,6 +36,6 @@ public class DrakelWarlord
         DPARM.BuyAllMerge("Drakel Warlord");
 
         if (rankUpClass)
-            Adv.rankUpClass("Drakel Warlord");
+            Adv.tempNameHere("Drakel Warlord");
     }
 }

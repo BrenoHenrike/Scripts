@@ -60,7 +60,7 @@ public class HighSeasCommander
         Bot.Wait.ForPickup("HighSeas Commander");
 
         if (rankUpClass)
-            Adv.rankUpClass("HighSeas Commander");
+            Adv.tempNameHere("HighSeas Commander");
     }
 
     public void UnlockFarm()

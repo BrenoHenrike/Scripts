@@ -292,7 +292,7 @@ public class DragonOfTime
         }
 
         if (rankUpClass)
-            Adv.rankUpClass("Dragon of Time");
+            Adv.tempNameHere("Dragon of Time");
 
         // I'm Loving It My Way 7725
         if (doExtra)

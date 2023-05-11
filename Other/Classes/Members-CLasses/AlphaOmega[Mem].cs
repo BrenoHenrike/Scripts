@@ -40,6 +40,6 @@ public class AlphaOmega
         Core.BuyItem("digitalmain", 561, "Alpha Omega");
 
         if (rankUpClass)
-            Adv.rankUpClass("Alpha Omega");
+            Adv.tempNameHere("Alpha Omega");
     }
 }

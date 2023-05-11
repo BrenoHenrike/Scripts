@@ -33,6 +33,6 @@ public class Dragonslayer
         Lair.Galanoth();
         Core.BuyItem("lair", 38, "Dragonslayer");
         if (rankUpClass)
-            Adv.rankUpClass("Dragonslayer");
+            Adv.tempNameHere("Dragonslayer");
     }
 }

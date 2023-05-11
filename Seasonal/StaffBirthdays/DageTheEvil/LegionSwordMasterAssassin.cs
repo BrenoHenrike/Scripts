@@ -46,6 +46,6 @@ public class LegionSwordMasterAssassin
         Adv.BuyItem("darkbirthday", 1697, "Legion SwordMaster Assassin");
 
         if (rankUpClass)
-            Adv.rankUpClass("Legion SwordMaster Assassin");
+            Adv.tempNameHere("Legion SwordMaster Assassin");
     }
 }
