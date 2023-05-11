@@ -335,6 +335,7 @@ public class GlaceraStory
         if (!Bot.Quests.IsUnlocked(5601))
         {
             Core.EnsureAccept(new[] { 5597, 5598, 5599, 5600 });
+            Core.EquipClass(ClassType.Farm);
             Core.KillMonster("icewindwar", "r3", "Left", "*", "FrostSpawn Medal", 10);
             Core.KillMonster("icewindwar", "r3", "Left", "*", "Mega Frostspawn Medal", 5);
             Core.KillMonster("icewindwar", "r3", "Left", "*", "World Ender Medal", 10);
