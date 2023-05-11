@@ -36,6 +36,6 @@ public class Necromancer
         Core.BuyItem("necrotower", 285, "Necromancer");
 
         if (rankUpClass)
-            Adv.rankUpClass("Necromancer");
+            Adv.RankUpClass("Necromancer");
     }
 }

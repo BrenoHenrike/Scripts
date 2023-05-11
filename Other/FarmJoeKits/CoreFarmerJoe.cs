@@ -136,7 +136,7 @@ public class CoreFarmerJoe
             {
                 Core.Logger("grabbing oracle, ranking it, then continuing");
                 Core.BuyItem("classhalla", 299, "Oracle");
-                Adv.rankUpClass("Oracle");
+                Adv.RankUpClass("Oracle");
             }
             Farm.BladeofAweREP(6, true);
             Core.ToBank("Blade of Awe");
@@ -202,7 +202,7 @@ public class CoreFarmerJoe
             Core.CancelRegisteredQuests();
         }
         InvEn.EnhanceInventory(EnhancementType.Wizard);
-        Adv.rankUpClass("Oracle");
+        Adv.RankUpClass("Oracle");
         Core.ToBank("Healer");
         Farm.BladeofAweREP(6);
         Core.Equip("Blade of Awe");
@@ -357,9 +357,9 @@ public class CoreFarmerJoe
             {
                 if (!Core.CheckInventory("Healer (Rare)"))
                     Adv.BuyItem("classhalla", 176, "Healer");
-                Adv.rankUpClass(Core.CheckInventory("Healer (Rare)") ? "Healer (Rare)" : "Healer");
+                Adv.RankUpClass(Core.CheckInventory("Healer (Rare)") ? "Healer (Rare)" : "Healer");
             }
-            Adv.rankUpClass("Dragon of Time");
+            Adv.RankUpClass("Dragon of Time");
         }
 
         //P2 Chaos Shenanagins
@@ -369,7 +369,7 @@ public class CoreFarmerJoe
         LOC.Complete13LOC();
         // Farm.ChaosREP();
         // Adv.BuyItem("confrontation", 891, "Chaos Slayer Berserker");
-        // Adv.rankUpClass("Chaos Slayer Berserker");
+        // Adv.RankUpClass("Chaos Slayer Berserker");
         // Core.Equip("Chaos Slayer Berserker");
 
         //Step 2 Solo Class:

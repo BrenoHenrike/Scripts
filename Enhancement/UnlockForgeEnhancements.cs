@@ -838,7 +838,7 @@ public class UnlockForgeEnhancements
         Core.EnsureAccept(8824);
 
         Core.BuyItem("Classhalla", 172, "Rogue");
-        Adv.rankUpClass("Rogue");
+        Adv.RankUpClass("Rogue");
         Adv.GearStore(true);
 
         Core.EquipClass(ClassType.Farm);
@@ -859,7 +859,7 @@ public class UnlockForgeEnhancements
         Adv.GearStore();
         Core.EnsureAccept(8825);
         Core.BuyItem("Classhalla", 176, "Healer");
-        Adv.rankUpClass("Healer");
+        Adv.RankUpClass("Healer");
         Adv.GearStore(true);
 
         Core.EquipClass(ClassType.Farm);
@@ -881,7 +881,7 @@ public class UnlockForgeEnhancements
         Core.EnsureAccept(8826);
 
         Core.BuyItem("Classhalla", 170, "Warrior");
-        Adv.rankUpClass("Warrior");
+        Adv.RankUpClass("Warrior");
         Adv.GearStore(true);
 
         Core.EquipClass(ClassType.Farm);
@@ -903,7 +903,7 @@ public class UnlockForgeEnhancements
         Core.EnsureAccept(8827);
 
         Core.BuyItem("Classhalla", 174, "Mage");
-        Adv.rankUpClass("Mage");
+        Adv.RankUpClass("Mage");
         Adv.GearStore(true);
 
         Core.EquipClass(ClassType.Farm);

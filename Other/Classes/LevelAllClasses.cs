@@ -29,7 +29,7 @@ public class CoreClass
         foreach (InventoryItem item in itemInv)
         {
             Core.Logger($"Leveling {item.Name} class");
-            Adv.rankUpClass(item.Name);
+            Adv.RankUpClass(item.Name);
         }
     }
 }

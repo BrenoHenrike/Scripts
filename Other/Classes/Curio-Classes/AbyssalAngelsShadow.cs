@@ -39,10 +39,10 @@ public class AbyssalAngelsShadow
             return;
         }
 
-        Adv.rankUpClass("Abyssal Angel");
+        Adv.RankUpClass("Abyssal Angel");
         Core.BuyItem("curio", 1245, "Abyssal Angel Shadow");
 
         if (rankUpClass)
-            Adv.rankUpClass("Abyssal Angel Shadow");
+            Adv.RankUpClass("Abyssal Angel Shadow");
     }
 }

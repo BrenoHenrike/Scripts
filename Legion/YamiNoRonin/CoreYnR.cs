@@ -43,7 +43,7 @@ public class CoreYnR
         Bot.Wait.ForPickup("Yami no Ronin");
 
         if (rankUpClass)
-            Adv.rankUpClass("Yami no Ronin");
+            Adv.RankUpClass("Yami no Ronin");
     }
 
     public void YokaiSwordScroll()
@@ -193,21 +193,21 @@ public class CoreYnR
                     // BM LT
                     Core.Logger("Using LT BladeMaster for Meditation");
                     m_questID = 7412;
-                    Adv.rankUpClass("BladeMaster");
+                    Adv.RankUpClass("BladeMaster");
                 }
                 else if (Core.CheckInventory(22859))
                 {
                     // BM AC
                     Core.Logger("Using AC BladeMaster for Meditation");
                     m_questID = 7411;
-                    Adv.rankUpClass("BladeMaster");
+                    Adv.RankUpClass("BladeMaster");
                 }
                 else if (Core.CheckInventory(53836))
                 {
                     // SM AC
                     Core.Logger("Using AC SwordMaster for Meditation");
                     m_questID = 7413;
-                    Adv.rankUpClass("SwordMaster");
+                    Adv.RankUpClass("SwordMaster");
                 }
                 else
                 {
@@ -218,7 +218,7 @@ public class CoreYnR
                         SM.GetSwordMaster();
                     }
                     m_questID = 7414;
-                    Adv.rankUpClass("SwordMaster");
+                    Adv.RankUpClass("SwordMaster");
                 }
                 Core.EquipClass(ClassType.Solo);
 
