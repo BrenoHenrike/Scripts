@@ -6220,6 +6220,24 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/YamiNoRonin/0YamiNoRonin.cs"
   },
   {
+    "name": "Exalted Soul Cleaver",
+    "description": "This scripts farms the Exalted Soul Cleaver class.",
+    "tags": [
+      "exalted",
+      "soul",
+      "cleaver",
+      "legion",
+      "class",
+      "esc",
+      "dage",
+      "undead legion merge"
+    ],
+    "path": "Legion/Various/ExaltedSoulCleaver.cs",
+    "size": 1576,
+    "fileName": "ExaltedSoulCleaver.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/Various/ExaltedSoulCleaver.cs"
+  },
+  {
     "name": "VulcarsMerge",
     "description": "null",
     "tags": [
