@@ -1,5 +1,5 @@
 /*
-name: Arch DoomKnight
+name: Arch DoomKnight (ADK)
 description: This script farms the Arch DoomKnight Armor.
 tags: adk,archdoomknight,doomknight,a means to an end,armor,boost,evil,shadowvault,shadow vault,gathering power,death's door, chaotic lords
 */
