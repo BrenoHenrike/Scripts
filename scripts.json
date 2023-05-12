@@ -55,13 +55,24 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
   {
-    "name": "ADK",
-    "description": "null",
+    "name": "Arch DoomKnight (ADK)",
+    "description": "This script farms the Arch DoomKnight Armor.",
     "tags": [
-      "null"
+      "adk",
+      "archdoomknight",
+      "doomknight",
+      "a means to an end",
+      "armor",
+      "boost",
+      "evil",
+      "shadowvault",
+      "shadow vault",
+      "gathering power",
+      "death's door",
+      "chaotic lords"
     ],
     "path": "Evil/ADK.cs",
-    "size": 6322,
+    "size": 6509,
     "fileName": "ADK.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/ADK.cs"
   },
