@@ -1,7 +1,7 @@
 /*
-name: ADK
-description: null
-tags: null
+name: Arch DoomKnight
+description: This script farms the Arch DoomKnight Armor.
+tags: adk,archdoomknight,doomknight,a means to an end,armor,boost,evil,shadowvault,shadow vault,gathering power,death's door, chaotic lords
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
