@@ -3755,6 +3755,70 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/0TheBlindingLightofDestiny.cs"
   },
   {
+    "name": "Age Of Ruin (All)",
+    "description": "This script completes the full Age Of Ruin saga.",
+    "tags": [
+      "age",
+      "ruin",
+      "saga",
+      "story",
+      "quest",
+      "termina temple",
+      "ashray village"
+    ],
+    "path": "Story/AgeOfRuin/00DoAll.cs",
+    "size": 737,
+    "fileName": "00DoAll.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/00DoAll.cs"
+  },
+  {
+    "name": "null",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Story/AgeOfRuin/CoreAOR.cs",
+    "size": 2555,
+    "fileName": "CoreAOR.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/CoreAOR.cs"
+  },
+  {
+    "name": "Ashray Village",
+    "description": "This script completes the storyline in /ashray.",
+    "tags": [
+      "age",
+      "of",
+      "ruin",
+      "saga",
+      "story",
+      "quest",
+      "termina",
+      "temple"
+    ],
+    "path": "Story/AgeOfRuin/02AshrayVillage.cs",
+    "size": 730,
+    "fileName": "02AshrayVillage.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/02AshrayVillage.cs"
+  },
+  {
+    "name": "Termina Temple",
+    "description": "This script completes the storyline in /terminatemple.",
+    "tags": [
+      "age",
+      "of",
+      "ruin",
+      "saga",
+      "story",
+      "quest",
+      "termina",
+      "temple"
+    ],
+    "path": "Story/AgeOfRuin/01TerminaTemple.cs",
+    "size": 737,
+    "fileName": "01TerminaTemple.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/01TerminaTemple.cs"
+  },
+  {
     "name": "(Troll) Khasaanda",
     "description": "This will finish the Khasaanda quest.",
     "tags": [
@@ -4930,21 +4994,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfWar/10GhostNexus.cs"
   },
   {
-    "name": "Termina Temple",
-    "description": "This will finish the Termina Temple quests.",
-    "tags": [
-      "story",
-      "quest",
-      "shadow-war",
-      "tara",
-      "age of ruin"
-    ],
-    "path": "Story/ShadowsOfWar/22TerminaTemple.cs",
-    "size": 676,
-    "fileName": "22TerminaTemple.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfWar/22TerminaTemple.cs"
-  },
-  {
     "name": "Blacksea Keep",
     "description": "This will finish the Blacksea Keep quest.",
     "tags": [
@@ -4993,7 +5042,7 @@
       "null"
     ],
     "path": "Story/ShadowsOfWar/CoreSoW.cs",
-    "size": 37273,
+    "size": 36720,
     "fileName": "CoreSoW.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfWar/CoreSoW.cs"
   },
@@ -11937,6 +11986,41 @@
     "size": 9126,
     "fileName": "BrightshadowMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/BrightshadowMerge.cs"
+  },
+  {
+    "name": "Seaview Souvenirs Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Seaview Souvenirs Merge [2273] in /ashray",
+    "tags": [
+      "seaview",
+      "souvenirs",
+      "merge",
+      "ashray",
+      "villager",
+      "goldtrimmed",
+      "tricorn",
+      "lass",
+      "gemme",
+      "numari",
+      "bandana",
+      "stingray",
+      "leather",
+      "sheathed",
+      "inn",
+      "mug",
+      "mugs",
+      "pyromancer",
+      "merchant",
+      "mariner",
+      "mariners",
+      "blazing",
+      "parrot",
+      "pal",
+      "hook"
+    ],
+    "path": "Other/MergeShops/SeaviewSouvenirsMerge.cs",
+    "size": 5758,
+    "fileName": "SeaviewSouvenirsMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/SeaviewSouvenirsMerge.cs"
   },
   {
     "name": "OrbHuntMerge",
