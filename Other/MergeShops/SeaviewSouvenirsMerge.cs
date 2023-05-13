@@ -67,7 +67,7 @@ public class SeaviewSouvenirsMerge
                 case "Treasure Chest":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
-                    Core.KillMonster("doomwood", "r6", "Right", "*", req.Name, quant, false, false);
+                    Core.KillMonster("finalbattle", "r2", "Left", "*", req.Name, quant, false, false);
                     break;
 
                 case "Sur-gion Token":
