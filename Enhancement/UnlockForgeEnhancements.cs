@@ -594,7 +594,7 @@ public class UnlockForgeEnhancements
 
     public void DauntLess()
     {
-        if (Core.isCompletedBefore(8821))
+        if (Core.isCompletedBefore(9172))
             return;
 
         Core.Logger("Unlocking Enhancement: Dauntless");
