@@ -1116,6 +1116,62 @@ public class CoreBots
         return shopItem.First();
     }
 
+    public void GhostItem(int ID, string name = "Ghost Item", int quantity = 1, bool temp = false, ItemCategory category = ItemCategory.Unknown, string? description = null, int level = 1, dynamic? extraInfo = null)
+    {
+        dynamic item = extraInfo == null ? new ExpandoObject() : extraInfo;
+
+        item.ItemID = ID;
+        item.sName = name;
+        item.sDesc = description == null ? "Ghost Item that mimics Item ID " + ID : description;
+
+        item.iLvl = level;
+        if (quantity != 0) // This allows for ghost items without taking up slots, but it'll not work for bypasses
+        {
+            item.iQty = quantity;
+            item.iStk = quantity > 0 ? quantity : 1;
+        }
+
+        item.sType = category == ItemCategory.Unknown ? "Item" : category.ToString();
+        item.sIcon = (category) switch
+        {
+            ItemCategory.Sword => "iwsword",
+            ItemCategory.Axe => "iwaxe",
+            ItemCategory.Dagger => "iwdagger",
+            ItemCategory.Gun or ItemCategory.HandGun or ItemCategory.Rifle or ItemCategory.Whip => "iwgun",
+            ItemCategory.Bow => "iwbow",
+            ItemCategory.Mace => "iwmace",
+            ItemCategory.Gauntlet => "iwclaws",
+            ItemCategory.Polearm => "iwpolearm",
+            ItemCategory.Staff => "iwstaff",
+            ItemCategory.Wand => "iwwand",
+
+            ItemCategory.Class => "iiclass",
+            ItemCategory.Armor => "iwarmor",
+            ItemCategory.Helm => "iihelm",
+            ItemCategory.Cape => "iicape",
+            ItemCategory.Pet => "iipet",
+
+            ItemCategory.Amulet or ItemCategory.Necklace => "iin1",
+            // Ground Rune
+            ItemCategory.Misc => "imr2",
+
+            ItemCategory.House => "ihhouse",
+            ItemCategory.WallItem => "ihwall",
+            ItemCategory.FloorItem => "ihfloor",
+
+            ItemCategory.Enhancement => "none",
+
+            //Default (Unknown, Note, Resource, Item, ServerUse)
+            _ => "iibag",
+        };
+        // Add enhancements property for enhancable equipment
+
+        item.bEquip = 0;
+        item.bStaff = 0;
+
+        Bot.Flash.CallGameFunction("world.myAvatar.addItem", item);
+    }
+
     /// <summary>
     /// Removes the specified items from players inventory (Banks AC items)
     /// </summary>
