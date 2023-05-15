@@ -200,11 +200,11 @@ public class UnlockForgeEnhancements
                     ForgeWeaponEnhancement();
                     Lacerate();
                     Smite();
-                    HerosValiance();
-                    ArcanasConcertoWIP();
-                    Acheron();
-                    Elysium();
                     Praxis();
+                    Acheron();
+                    HerosValiance();
+                    Elysium();
+                    ArcanasConcertoWIP();
                     DauntLess();
                     break;
             }
@@ -990,11 +990,11 @@ public enum ForgeQuestWeapon
     ForgeWeaponEnhancement,
     Lacerate,
     Smite,
-    HerosValiance,
-    ArcanasConcertoWIP,
-    Acheron,
-    Elysium,
     Praxis,
+    Acheron,
+    HerosValiance,
+    Elysium,
+    ArcanasConcertoWIP,
     DauntLess,
     None,
     All
