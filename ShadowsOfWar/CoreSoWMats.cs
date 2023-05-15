@@ -36,6 +36,9 @@ public class CoreSoWMats
 
     public void Acquiescence(int Quantity = 1000)
     {
+        if (Core.CheckInventory("Acquiescence", Quantity))
+            return;
+            
         SoW.ShadowFlame();
         Core.EquipClass(ClassType.Solo);
         Core.RegisterQuests(8966);
@@ -50,6 +53,9 @@ public class CoreSoWMats
 
     public void ElementalCore(int Quantity = 1000)
     {
+        if (Core.CheckInventory("Elemental Core", Quantity))
+            return;
+            
         SoW.ManaCradle();
         if (Core.CheckInventory("Yami no Ronin") || Core.CheckInventory("Dragon of Time"))
         {
@@ -69,6 +75,9 @@ public class CoreSoWMats
 
     public void GarishRemnant(int Quantity = 1000)
     {
+        if (Core.CheckInventory("Garish Remnant", Quantity))
+            return;
+            
         SoW.Timekeep();
         Core.RegisterQuests(8813);
         while (!Bot.ShouldExit && !Core.CheckInventory("Garish Remnant", Quantity))
@@ -84,6 +93,9 @@ public class CoreSoWMats
 
     public void PrismaticSeams(int Quantity = 2000)
     {
+        if (Core.CheckInventory("Prismatic Seams", Quantity))
+            return;
+            
         SoW.TimestreamWar();
         Core.EquipClass(ClassType.Farm);
         Core.RegisterQuests(8814, 8815);
@@ -94,10 +106,13 @@ public class CoreSoWMats
 
     public void UnboundThread(int Quantity = 1000)
     {
+        if (Core.CheckInventory("Unbound Thread", Quantity))
+            return;
+
         SoW.DeadLines();
         Core.EquipClass(ClassType.Solo);
         Core.RegisterQuests(8869);
-        while (!Bot.ShouldExit && !Core.CheckInventory("UnboundThread", Quantity))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Unbound Thread", Quantity))
         {
             Core.HuntMonster("DeadLines", "Shadowfall Warrior", "Armor Scrap", 8);
             Core.HuntMonster("DeadLines", "Frenzied Mana", "Captured Mana", 8);
@@ -108,6 +123,9 @@ public class CoreSoWMats
 
     public void Willpower(int Quantity = 1000)
     {
+        if (Core.CheckInventory("Willpower", Quantity))
+            return;
+
         SoW.RuinedCrown();
         Core.RegisterQuests(8788);
         while (!Bot.ShouldExit && !Core.CheckInventory("Willpower", Quantity))

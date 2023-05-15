@@ -101,7 +101,6 @@ public class UltimateBLoD
             Core.RegisterQuests(7291);
             while (!Bot.ShouldExit && !Core.CheckInventory("Rainbow Moonstone", 5))
             {
-
                 Core.HuntMonster("earthstorm", "Diamond Golem", "Chip of Diamond");
                 Core.HuntMonster("earthstorm", "Emerald Golem", "Chip of Emerald");
                 Core.HuntMonster("earthstorm", "Ruby Golem", "Chip of Ruby");
