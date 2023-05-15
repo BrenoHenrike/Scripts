@@ -75,10 +75,9 @@ public class UltraSpeakerMergePreReqs
             ADG.AscendedGear("Ascended Blade of Awe");
             DFO.DragonFableOriginsAll();
             Core.EquipClass(ClassType.Solo);
-            SOWM.FarmReq(() =>
-            {
+            Core.RegisterQuests(6311);
+            while (!Bot.ShouldExit && !Core.CheckInventory("Ice Shard", 50))
                 Core.HuntMonster("northmountain", "Izotz", "Ice Crystal");
-            }, "Ice Shard", 50, 6311);
             HDK.ADKFalls();
         }
 
@@ -155,11 +154,10 @@ public class UltraSpeakerMergePreReqs
 
                 SoC.LagunaBeach();
                 Core.EquipClass(ClassType.Farm);
-                SOWM.FarmReq(() =>
-                {
-                    Core.HuntMonster("lagunabeach", "Flying Fisheye|ShadowChaos Brigand", "Chaos-ShadowFlame Sample", 15);
-                }, "ShadowChaos Mote", 250, 7700);
-                AcquiescenceCount += 10;
+                Core.RegisterQuests(7700);
+                while (!Bot.ShouldExit && !Core.CheckInventory("ShadowChaos Mote", 250))
+                    Core.HuntMonster("lagunabeach", "ShadowChaos Brigand", "Chaos-ShadowFlame Sample", 15);
+                    AcquiescenceCount += 10;
             }
         }
 

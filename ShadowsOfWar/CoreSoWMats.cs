@@ -18,22 +18,7 @@ public class CoreSoWMats
     private CoreAdvanced Adv = new();
     private CoreSoW SoW = new();
 
-    public void ScriptMain(IScriptInterface Bot)
-    {
-        Core.RunCore();
-    }
-
-    public void Acquiescence(int Quantity = 1000)
-    {
-        SoW.ShadowFlame();
-        Core.EquipClass(ClassType.Solo);
-        FarmReq(() =>
-        {
-            Core.HuntMonster("worldscore", "Elemental Attempt", "Cracked Elemental Stone", 8);
-            Core.HuntMonster("worldscore", "Crystalized Mana", "Crystalized Tooth", 8);
-            Core.HuntMonster("worldscore", "Mask of Tranquility", "Creator's Favor", 1);
-        }, "Acquiescence", Quantity, 8966);
-    }
+    public void ScriptMain(IScriptInterface Bot) => Core.RunCore();
 
     public void DragonsTear(int Quantity = 1)
     {
@@ -48,6 +33,21 @@ public class CoreSoWMats
         ElementalCore(40);
         Adv.BuyItem("manacradle", 2242, "Dragon's Tear");
     }
+
+    public void Acquiescence(int Quantity = 1000)
+    {
+        SoW.ShadowFlame();
+        Core.EquipClass(ClassType.Solo);
+        Core.RegisterQuests(8966);
+        while (!Bot.ShouldExit && !Core.CheckInventory("Acquiescence", Quantity))
+        {
+            Core.HuntMonster("worldscore", "Elemental Attempt", "Cracked Elemental Stone", 8);
+            Core.HuntMonster("worldscore", "Crystalized Mana", "Crystalized Tooth", 8);
+            Core.HuntMonster("worldscore", "Mask of Tranquility", "Creator's Favor", 1);
+        }
+        Core.CancelRegisteredQuests();
+    }
+
     public void ElementalCore(int Quantity = 1000)
     {
         SoW.ManaCradle();
@@ -57,73 +57,67 @@ public class CoreSoWMats
         }
         else Core.EquipClass(ClassType.Solo);
 
-        FarmReq(() =>
+        Core.RegisterQuests(9126);
+        while (!Bot.ShouldExit && !Core.CheckInventory("Elemental Core", Quantity))
         {
             Core.HuntMonster("manacradle", "Dark Tainted Mana", "Elemental Tear", 8);
             Core.HuntMonster("manacradle", "Malgor", "Weathered Armor Shard");
             Core.HuntMonster("manacradle", "The Mainyu", "Licorice Scale");
-        }, "Elemental Core", Quantity, 9126);
+        }
+        Core.CancelRegisteredQuests();
     }
+
     public void GarishRemnant(int Quantity = 1000)
     {
         SoW.Timekeep();
-        FarmReq(() =>
+        Core.RegisterQuests(8813);
+        while (!Bot.ShouldExit && !Core.CheckInventory("Garish Remnant", Quantity))
         {
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("Timekeep", "Mal-formed Gar", "Gar's Resignation Letter");
             Core.EquipClass(ClassType.Farm);
             Core.HuntMonster("Timekeep", "Mumbler", "Mumbler Drool", 8);
             Core.HuntMonster("Timekeep", "Decaying Locust", "Locust Wings", 8);
-        }, "Garish Remnant", Quantity, 8813);
+        }
+        Core.CancelRegisteredQuests();
     }
+
     public void PrismaticSeams(int Quantity = 2000)
     {
         SoW.TimestreamWar();
         Core.EquipClass(ClassType.Farm);
-        FarmReq(() =>
-        {
+        Core.RegisterQuests(8814, 8815);
+        while (!Bot.ShouldExit && !Core.CheckInventory("Prismatic Seams", Quantity))
             Core.KillMonster("Streamwar", "r3a", "Left", "*", log: false);
-        }, "Prismatic Seams", Quantity, 8814, 8815);
+        Core.CancelRegisteredQuests();
     }
+
     public void UnboundThread(int Quantity = 1000)
     {
         SoW.DeadLines();
         Core.EquipClass(ClassType.Solo);
-        FarmReq(() =>
+        Core.RegisterQuests(8869);
+        while (!Bot.ShouldExit && !Core.CheckInventory("UnboundThread", Quantity))
         {
             Core.HuntMonster("DeadLines", "Shadowfall Warrior", "Armor Scrap", 8);
             Core.HuntMonster("DeadLines", "Frenzied Mana", "Captured Mana", 8);
             Core.HuntMonster("DeadLines", "Eternal Dragon", "Eternal Dragon Scale");
-        }, "Unbound Thread", Quantity, 8869);
+        }
+        Core.CancelRegisteredQuests();
     }
+
     public void Willpower(int Quantity = 1000)
     {
         SoW.RuinedCrown();
-        FarmReq(() =>
+        Core.RegisterQuests(8788);
+        while (!Bot.ShouldExit && !Core.CheckInventory("Willpower", Quantity))
         {
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster($"ruinedcrown", "Calamitous Warlic", "Warlic’s Favor");
             Core.EquipClass(ClassType.Farm);
             Core.HuntMonster("ruinedcrown", "Frenzied Mana", "Mana Residue", 8);
             Core.HuntMonster($"ruinedcrown", "Mana-Burdened Mage", "Mage’s Blood Sample", 8);
-        }, "Willpower", Quantity, 8788);
-    }
-
-    // UTILITIES
-    public void FarmReq(Action Kill, string Material, int Quantity, params int[] questIDs)
-    {
-        if (Core.CheckInventory(Material, Quantity))
-            return;
-
-        Core.FarmingLogger(Material, Quantity);
-        Core.AddDrop(Material);
-        Core.RegisterQuests(questIDs);
-        while (!Bot.ShouldExit && !Core.CheckInventory(Material, Quantity))
-        {
-            Kill();
-            Bot.Wait.ForPickup(Material);
         }
-        Core.RemoveDrop(Material);
         Core.CancelRegisteredQuests();
     }
 }
