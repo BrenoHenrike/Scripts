@@ -1086,6 +1086,7 @@ public class CoreFarms
 
         Core.SavedState();
         ToggleBoost(BoostType.Reputation);
+        Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming rank {rank}");
 
         if (UseGold)

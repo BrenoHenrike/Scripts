@@ -2875,7 +2875,7 @@ public class CoreBots
                 JumpWait();
                 break;
 
-            case "towerofdoom1":
+            case "towerofdoom":
             case "towerofdoom2":
             case "towerofdoom3":
             case "towerofdoom4":
