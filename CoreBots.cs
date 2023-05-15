@@ -1116,13 +1116,13 @@ public class CoreBots
         return shopItem.First();
     }
 
-    public void GhostItem(int ID, string name = "Ghost Item", int quantity = 1, bool temp = false, ItemCategory category = ItemCategory.Unknown, string? description = null, int level = 1, dynamic? extraInfo = null)
+    public void GhostItem(int ID, string name = "Ghost Item", int quantity = 1, bool temp = false, ItemCategory category = ItemCategory.Unknown, string? description = null, int level = 1, params (string, object)[] extraInfo)
     {
-        dynamic item = extraInfo == null ? new ExpandoObject() : extraInfo;
+        dynamic item = new ExpandoObject();
 
         item.ItemID = ID;
         item.sName = name;
-        item.sDesc = description == null ? "Ghost Item that mimics Item ID " + ID : description;
+        item.sDesc = description == null ? "A Ghost Item that mimics Item ID: " + ID : description;
 
         item.iLvl = level;
         if (quantity != 0) // This allows for ghost items without taking up slots, but it'll not work for bypasses
@@ -1132,6 +1132,7 @@ public class CoreBots
         }
 
         item.sType = category == ItemCategory.Unknown ? "Item" : category.ToString();
+        #region icon switch
         item.sIcon = (category) switch
         {
             ItemCategory.Sword => "iwsword",
@@ -1164,11 +1165,18 @@ public class CoreBots
             //Default (Unknown, Note, Resource, Item, ServerUse)
             _ => "iibag",
         };
+        #endregion
         // Add enhancements property for enhancable equipment
 
         item.bEquip = 0;
         item.bStaff = 0;
 
+        // Adding / modifying based on extra info
+        var _item = item as IDictionary<string, object>;
+        foreach (var info in extraInfo)
+            _item![info.Item1] = info.Item2;
+
+        // Yes it needs to call 'item', not '_item', they are linked in memory
         Bot.Flash.CallGameFunction("world.myAvatar.addItem", item);
     }
 
