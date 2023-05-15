@@ -81,7 +81,7 @@ public class UltimateBLoD
 
     public void PurifiedUndeadDragonEssence(int quant = 1)
     {
-        if (Core.CheckInventory("Purified Undead Dragon Essence"))
+        if (Core.CheckInventory("Purified Undead Dragon Essence", quant))
             return;
 
         BLOD.BlindingLightOfDestiny();
