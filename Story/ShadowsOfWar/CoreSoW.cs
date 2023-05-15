@@ -491,7 +491,7 @@ public class CoreSoW
         if (!Bot.Quests.IsUnlocked(7341))
         {
             Core.EnsureAccept(7340);
-            while (!Bot.ShouldExit && !Core.CheckInventory(7340, 5))
+            while (!Bot.ShouldExit && !Core.CheckInventory(53063, 5))
                 Core.HuntMonster("shadowsong", "Shadowflame Troll", log: false);
             Core.EnsureComplete(7340);
         }
