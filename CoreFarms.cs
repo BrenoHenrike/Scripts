@@ -710,15 +710,16 @@ public class CoreFarms
 
 
 
-    public void BattleUnderB(string item = "Bone Dust", int quant = 1)
+    public void BattleUnderB(string item = "Bone Dust", int quant = 1, bool isTemp = false)
     {
         if (Core.CheckInventory(item, quant))
             return;
 
         Core.AddDrop(item);
+        Core.FarmingLogger(item, quant);
         Core.EquipClass(ClassType.Farm);
         Core.ConfigureAggro();
-        Core.KillMonster("battleunderb", "Enter", "Spawn", "*", item, quant, isTemp: false, log: false);
+        Core.KillMonster("battleunderb", "Enter", "Spawn", "*", item, quant, isTemp, log: false);
         Core.ConfigureAggro(false);
         Core.JumpWait();
     }
