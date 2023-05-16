@@ -412,7 +412,7 @@ public class CoreBots
 
     private bool CrashDetector(Exception? e)
     {
-        if (e == null || (e is OperationCanceledException && (Bot.ShouldExit || GetLogs().ToArray()[..^5].Any(x => x.ToLower().Contains("relogin")))))
+        if (e == null || e is OperationCanceledException)
             return scriptFinished;
 
         string eSlice = e.Message + "\n" + e.InnerException;
