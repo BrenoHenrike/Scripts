@@ -412,7 +412,7 @@ public class CoreBots
 
     private bool CrashDetector(Exception? e)
     {
-        if (e == null || (Bot.ShouldExit && e is OperationCanceledException))
+        if (e == null || (e is OperationCanceledException && (Bot.ShouldExit || GetLogs().ToArray()[..^5].Any(x => x.ToLower().Contains("relogin")))))
             return scriptFinished;
 
         string eSlice = e.Message + "\n" + e.InnerException;
@@ -450,6 +450,10 @@ public class CoreBots
 
         return false;
     }
+
+    public List<string> GetLogs(LogType type = LogType.Script)
+        => (_logService ??= Ioc.Default.GetRequiredService<ILogService>()).GetLogs(LogType.Script);
+    private ILogService? _logService;
 
     public void ScriptMain(IScriptInterface Bot)
     {
