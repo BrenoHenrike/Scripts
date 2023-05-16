@@ -1179,6 +1179,8 @@ public class CoreBots
         var _item = item as IDictionary<string, object>;
         foreach (var info in extraInfo)
             _item![info.Item1] = info.Item2;
+        if (item.sLink is not null && item.sFile is not null)
+            item.bSCP = false;
 
         // Yes it needs to call 'item', not '_item', they are linked in memory
         Bot.Flash.CallGameFunction("world.myAvatar.addItem", item);
