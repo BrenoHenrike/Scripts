@@ -4175,6 +4175,20 @@ public class CoreBots
     }
 
     #endregion
+
+    #region Messing with players
+
+    private void UserSpecificMessages()
+    {
+        switch (Username().ToLower())
+        {
+            case "flamerking1223":
+                OneTimeMessage("flamerking1223reddit", "Hey FlamerKing1223 (yes you specifically). The fact that you had the users in map window open when screenshotting that post about artix and posting it to reddit...\nYeh that was a dumb move.\n\nCheers, Skua Staff\nP.S.: We're not gonna do anything, but if we can figure it out, so can the AE moderators.");
+                break;
+        }
+    }
+
+    #endregion
 }
 
 public static class UtilExtensionsS
