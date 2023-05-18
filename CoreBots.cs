@@ -285,6 +285,8 @@ public class CoreBots
                     // Holiday Handlers
                     AprilFools();
 
+                    //Fucking with specific people
+                    UserSpecificMessages();
                 });
             }
         }
