@@ -3196,8 +3196,10 @@ public class CoreBots
     {
         Join(map, ignoreCheck: ignoreCheck);
         Bot.Flash.CallGameFunction("world.loadMap", swfPath);
+
         Bot.Wait.ForMapLoad(map);
         Bot.Sleep(ActionDelay);
+
         Jump(cell, pad);
     }
 
