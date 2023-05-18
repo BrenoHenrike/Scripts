@@ -5,7 +5,9 @@ tags: story, quest, shadow-chaos, chaos-amulet
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
+//cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Story/ShadowsOfChaos/CoreSoC.cs
+//cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
 
 using Skua.Core.Interfaces;
 
