@@ -152,6 +152,7 @@ public class UltraSpeakerMergePreReqs
             {
                 Core.HuntMonster("transformation", "Queen of Monsters", "Fragment of the Queen", 13, false);
 
+                SoW.ShadowWar();
                 SoC.LagunaBeach();
                 Core.EquipClass(ClassType.Farm);
                 Core.RegisterQuests(7700);
