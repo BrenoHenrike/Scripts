@@ -20,7 +20,7 @@ public class CoreSoWMats
 
     public void ScriptMain(IScriptInterface Bot) => Core.RunCore();
 
-    public void DragonsTear(int Quantity = 1)
+    public void DragonsTear()
     {
         if (Core.CheckInventory("Dragon's Tear"))
             return;
@@ -38,9 +38,13 @@ public class CoreSoWMats
     {
         if (Core.CheckInventory("Acquiescence", Quantity))
             return;
-            
+
         SoW.ShadowFlame();
+
+        Core.FarmingLogger("Acquiescence", Quantity);
+        Core.AddDrop("Acquiescence");
         Core.EquipClass(ClassType.Solo);
+
         Core.RegisterQuests(8966);
         while (!Bot.ShouldExit && !Core.CheckInventory("Acquiescence", Quantity))
         {
@@ -55,8 +59,11 @@ public class CoreSoWMats
     {
         if (Core.CheckInventory("Elemental Core", Quantity))
             return;
-            
+
         SoW.ManaCradle();
+
+        Core.FarmingLogger("Elemental Core", Quantity);
+        Core.AddDrop("Elemental Core");
         if (Core.CheckInventory("Yami no Ronin") || Core.CheckInventory("Dragon of Time"))
         {
             Bot.Skills.StartAdvanced(Core.CheckInventory("Yami no Ronin") ? "Yami no Ronin" : "Dragon of Time", true, ClassUseMode.Solo);
@@ -77,8 +84,12 @@ public class CoreSoWMats
     {
         if (Core.CheckInventory("Garish Remnant", Quantity))
             return;
-            
+
         SoW.Timekeep();
+
+        Core.FarmingLogger("Garish Remnant", Quantity);
+        Core.AddDrop("Garish Remnant");
+
         Core.RegisterQuests(8813);
         while (!Bot.ShouldExit && !Core.CheckInventory("Garish Remnant", Quantity))
         {
@@ -95,9 +106,13 @@ public class CoreSoWMats
     {
         if (Core.CheckInventory("Prismatic Seams", Quantity))
             return;
-            
+
         SoW.TimestreamWar();
+
+        Core.FarmingLogger("Prismatic Seams", Quantity);
+        Core.AddDrop("Prismatic Seams");
         Core.EquipClass(ClassType.Farm);
+
         Core.RegisterQuests(8814, 8815);
         while (!Bot.ShouldExit && !Core.CheckInventory("Prismatic Seams", Quantity))
             Core.KillMonster("Streamwar", "r3a", "Left", "*", log: false);
@@ -110,7 +125,11 @@ public class CoreSoWMats
             return;
 
         SoW.DeadLines();
+
+        Core.FarmingLogger("Unbound Thread", Quantity);
+        Core.AddDrop("Unbound Thread");
         Core.EquipClass(ClassType.Solo);
+
         Core.RegisterQuests(8869);
         while (!Bot.ShouldExit && !Core.CheckInventory("Unbound Thread", Quantity))
         {
@@ -127,6 +146,10 @@ public class CoreSoWMats
             return;
 
         SoW.RuinedCrown();
+
+        Core.FarmingLogger("Willpower", Quantity);
+        Core.AddDrop("Willpower");
+
         Core.RegisterQuests(8788);
         while (!Bot.ShouldExit && !Core.CheckInventory("Willpower", Quantity))
         {
