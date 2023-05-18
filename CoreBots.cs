@@ -364,7 +364,7 @@ public class CoreBots
             {
                 Task.Run(async () =>
                 {
-                    DL_Enable();
+                    //DL_Enable();
                     DebugLogger(this);
                     await Bot.Manager.RestartScriptAsync();
                     if (Bot.Player.LoggedIn)
