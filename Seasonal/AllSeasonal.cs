@@ -20,7 +20,7 @@ tags: seasonal, story, complete, all
 //cs_include Scripts/Seasonal/LuckyDay/Pooka.cs
 //cs_include Scripts/Seasonal/MayThe4th/DarkLord.cs
 //cs_include Scripts/Seasonal/MayThe4th/MurderMoonStory.cs
-//cs_include Scripts/Seasonal/MayThe4th/MurderMoonMerge[CyberCrystal].cs
+//cs_include Scripts/Seasonal/MayThe4th/MurderMoonMerge.cs
 //cs_include Scripts/Story/MemetsRealm/CoreMemet.cs
 //cs_include Scripts/Seasonal/Mogloween/VampireLord(Class).cs
 //cs_include Scripts/Seasonal/StaffBirthdays/DageTheEvil/Undervoid.cs

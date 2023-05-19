@@ -50,7 +50,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 159816,
+    "size": 168679,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -2202,7 +2202,7 @@
       "all"
     ],
     "path": "Seasonal/AllSeasonal.cs",
-    "size": 9494,
+    "size": 9480,
     "fileName": "AllSeasonal.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AllSeasonal.cs"
   },
@@ -2738,7 +2738,7 @@
       "null"
     ],
     "path": "ShadowsOfWar/CoreSoWMats.cs",
-    "size": 4982,
+    "size": 5493,
     "fileName": "CoreSoWMats.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/ShadowsOfWar/CoreSoWMats.cs"
   },
@@ -2750,7 +2750,7 @@
       "ultra malgor merge"
     ],
     "path": "ShadowsOfWar/UltraSpeakerMergePreReqs.cs",
-    "size": 7646,
+    "size": 7679,
     "fileName": "UltraSpeakerMergePreReqs.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/ShadowsOfWar/UltraSpeakerMergePreReqs.cs"
   },
@@ -5729,7 +5729,7 @@
       "bright-shadow"
     ],
     "path": "Story/ShadowsOfChaos/06BrightShadow.cs",
-    "size": 609,
+    "size": 697,
     "fileName": "06BrightShadow.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfChaos/06BrightShadow.cs"
   },
@@ -5743,7 +5743,7 @@
       "bright-forest"
     ],
     "path": "Story/ShadowsOfChaos/08BrightForest.cs",
-    "size": 609,
+    "size": 697,
     "fileName": "08BrightForest.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfChaos/08BrightForest.cs"
   },
@@ -5757,7 +5757,7 @@
       "laguna"
     ],
     "path": "Story/ShadowsOfChaos/04Laguna.cs",
-    "size": 576,
+    "size": 664,
     "fileName": "04Laguna.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfChaos/04Laguna.cs"
   },
@@ -5771,7 +5771,7 @@
       "chaos-amulet"
     ],
     "path": "Story/ShadowsOfChaos/02ChaosAmulet.cs",
-    "size": 604,
+    "size": 692,
     "fileName": "02ChaosAmulet.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfChaos/02ChaosAmulet.cs"
   },
@@ -5785,7 +5785,7 @@
       "laguna-beach"
     ],
     "path": "Story/ShadowsOfChaos/03LagunaBeach.cs",
-    "size": 604,
+    "size": 692,
     "fileName": "03LagunaBeach.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfChaos/03LagunaBeach.cs"
   },
@@ -5796,7 +5796,7 @@
       "null"
     ],
     "path": "Story/ShadowsOfChaos/CoreSoC.cs",
-    "size": 11678,
+    "size": 11867,
     "fileName": "CoreSoC.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfChaos/CoreSoC.cs"
   },
@@ -5810,7 +5810,7 @@
       "bright-chaos"
     ],
     "path": "Story/ShadowsOfChaos/07BrightChaos.cs",
-    "size": 604,
+    "size": 692,
     "fileName": "07BrightChaos.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfChaos/07BrightChaos.cs"
   },
@@ -5824,7 +5824,7 @@
       "bright-forest-past"
     ],
     "path": "Story/ShadowsOfChaos/09BrightForestPast.cs",
-    "size": 632,
+    "size": 720,
     "fileName": "09BrightForestPast.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfChaos/09BrightForestPast.cs"
   },
@@ -5838,7 +5838,7 @@
       "shadow-off"
     ],
     "path": "Story/ShadowsOfChaos/05ShadowOff.cs",
-    "size": 594,
+    "size": 682,
     "fileName": "05ShadowOff.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfChaos/05ShadowOff.cs"
   },
@@ -5852,7 +5852,7 @@
       "dual-plane"
     ],
     "path": "Story/ShadowsOfChaos/01DualPlane.cs",
-    "size": 594,
+    "size": 682,
     "fileName": "01DualPlane.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfChaos/01DualPlane.cs"
   },
@@ -5866,7 +5866,7 @@
       "bright-forest-extra"
     ],
     "path": "Story/ShadowsOfChaos/10BrightForestExtra.cs",
-    "size": 637,
+    "size": 725,
     "fileName": "10BrightForestExtra.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfChaos/10BrightForestExtra.cs"
   },
@@ -5881,7 +5881,7 @@
       "all"
     ],
     "path": "Story/ShadowsOfChaos/00DoAllSoC.cs",
-    "size": 638,
+    "size": 760,
     "fileName": "00DoAllSoC.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfChaos/00DoAllSoC.cs"
   },
@@ -11319,7 +11319,7 @@
       "null"
     ],
     "path": "Other/MergeShops/ShadowofChaosMerge.cs",
-    "size": 5536,
+    "size": 5587,
     "fileName": "ShadowofChaosMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/ShadowofChaosMerge.cs"
   },
@@ -11972,7 +11972,7 @@
       "null"
     ],
     "path": "Other/MergeShops/BrightForestMerge.cs",
-    "size": 5169,
+    "size": 5220,
     "fileName": "BrightForestMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/BrightForestMerge.cs"
   },
@@ -11983,7 +11983,7 @@
       "null"
     ],
     "path": "Other/MergeShops/BrightshadowMerge.cs",
-    "size": 9126,
+    "size": 9177,
     "fileName": "BrightshadowMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/BrightshadowMerge.cs"
   },
@@ -14624,7 +14624,7 @@
       "farm",
       "class",
       "nation",
-      "VHL",
+      "vhl",
       "void",
       "highlord",
       "roentgenium",
