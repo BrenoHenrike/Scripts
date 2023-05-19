@@ -163,7 +163,7 @@ public class CoreDailies
     /// <param name="quant">Quantity you want of the metals</param>
     public void HardCoreMetals(string[]? metals = null, int quant = 1, bool ToBank = false)
     {
-        if (!Core.IsMember)
+        if (!Core.IsMember || !Core.isCompletedBefore(2090))
             return;
         if (metals == null)
             metals = HardCoreMetalsMetalsArray;
