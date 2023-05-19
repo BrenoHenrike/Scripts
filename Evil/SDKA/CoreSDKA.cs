@@ -209,7 +209,7 @@ public class CoreSDKA
         Core.RegisterQuests(2089, 2065);
         while (!Bot.ShouldExit && (!Core.CheckInventory("Dark Spirit Orb", quant)))
         {
-            Core.KillMonster("maul", "r7", "Left", "*", "DoomCoin", oneTime ? 20 : 80, false, log: false);
+            Core.KillMonster("maul", "r7", "Left", "*", "DoomCoin", 20, false, log: false);
 
             if (oneTime)
                 break;
