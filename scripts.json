@@ -10352,11 +10352,15 @@
     "name": "Fiend of Light",
     "description": "This script will obtain the items from Fiend of Light set that you choose.",
     "tags": [
-      "learn-from-the-past",
-      "fiend-of-light"
+      "learn",
+      "from",
+      "the",
+      "past",
+      "fiend",
+      "light"
     ],
     "path": "Other/Armor/FiendofLight.cs",
-    "size": 2441,
+    "size": 2442,
     "fileName": "FiendofLight.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Armor/FiendofLight.cs"
   },
