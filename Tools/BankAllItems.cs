@@ -19,6 +19,7 @@ public class BankAllItems
     public List<IOption> Options = new()
     {
         new Option<string>("BlackList", "BlackList Items", "Fill in the items teh bot *shouldn't* bank, split with a , (comma)."),
+        new Option<bool>("BanknonAc", "BanknonAc","Bank non-AC items", false),
         new Option<bool>("Inventory", "InventoryACBank","Bank all Ac Inventory Items", true),
         new Option<bool>("House", "HouseACBank","Bank all Ac House Items", true)
     };
@@ -58,7 +59,11 @@ public class BankAllItems
                 }
                 continue;
             }
-            Core.ToBank(item.ID);
+            if (Bot.Config.Get<bool>("BanknonAc") && !item.Coins)
+                Core.ToBank(item.Name);
+            else if (item.Coins)
+                Core.ToBank(item.Name);
+
             Bot.Sleep(Core.ActionDelay);
         }
 
@@ -79,7 +84,10 @@ public class BankAllItems
                 }
                 continue;
             }
-            Core.ToHouseBank(item.Name);
+            if (Bot.Config.Get<bool>("BanknonAc") && !item.Coins)
+                Core.ToHouseBank(item.Name);
+            else if (item.Coins)
+                Core.ToHouseBank(item.Name);
             Bot.Sleep(Core.ActionDelay);
         }
 
