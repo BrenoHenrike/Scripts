@@ -98,22 +98,20 @@ public class QuestRewardTemplate
             //Insert hunt/kill from quest heres
             Core.EnsureComplete(questID, item.ID);
         }
-        Core.CancelRegisteredQuests();
     }
 
     public void AutoReward(int questID = 0000, int quant = 1)
     {
         List<ItemBase> RewardOptions = Core.EnsureLoad(questID).Rewards;
 
-        foreach (ItemBase item in RewardOptions)
-            Core.AddDrop(item.Name);
+        Bot.Drops.Add(Core.QuestRewards(questID));
 
         foreach (ItemBase item in RewardOptions)
         {
-            while (!Bot.ShouldExit && !Core.CheckInventory(item.ID, quant))
+            while (!Bot.ShouldExit && !Core.CheckInventory(item.ID))
             {
                 Core.EnsureAccept(questID);
-                //Questing stuff here --
+                //Insert hunt/kill from quest heres
                 Core.EnsureComplete(questID, item.ID);
             }
         }
