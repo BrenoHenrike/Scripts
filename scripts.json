@@ -50,7 +50,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 170358,
+    "size": 170441,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -941,7 +941,7 @@
       "member"
     ],
     "path": "Story/Safiria[Member].cs",
-    "size": 1883,
+    "size": 3058,
     "fileName": "Safiria[Member].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Safiria[Member].cs"
   },
@@ -2103,7 +2103,7 @@
       "null"
     ],
     "path": "Templates/QuestRewardTemplate.cs",
-    "size": 6125,
+    "size": 6055,
     "fileName": "QuestRewardTemplate.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Templates/QuestRewardTemplate.cs"
   },
@@ -8088,7 +8088,7 @@
       "akibacny"
     ],
     "path": "Seasonal/AkibaNewYear/GongJiZhanshiSet.cs",
-    "size": 2077,
+    "size": 2074,
     "fileName": "GongJiZhanshiSet.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AkibaNewYear/GongJiZhanshiSet.cs"
   },
