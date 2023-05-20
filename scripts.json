@@ -10347,6 +10347,19 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Armor/MalgorsArmorSet.cs"
   },
   {
+    "name": "AureateAegisSet",
+    "description": "Does the `The Empty Mountains Cold` quest for the rewards",
+    "tags": [
+      "the empty mountains cold",
+      "gole den",
+      "aureate aegis set"
+    ],
+    "path": "Other/Armor/AureateAegisSet.cs",
+    "size": 1556,
+    "fileName": "AureateAegisSet.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Armor/AureateAegisSet.cs"
+  },
+  {
     "name": "Fiend of Light",
     "description": "This script will obtain the items from Fiend of Light set that you choose.",
     "tags": [
