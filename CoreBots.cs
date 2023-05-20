@@ -706,6 +706,70 @@ public class CoreBots
         }
     }
 
+    public void ToHouseBank(params string?[]? items)
+    {
+        if (items == null || !items.Any(x => x != null))
+            return;
+
+        JumpWait();
+
+        if (Bot.Flash.GetGameObject("ui.mcPopup.currentLabel") != "\"Bank\"")
+            Bot.Bank.Open();
+
+        foreach (string? item in items)
+        {
+            if (item == null)
+                continue;
+            if (Bot.House.IsEquipped(item))
+            {
+                Logger("Can't bank an equipped item");
+                continue;
+            }
+
+            if (Bot.House.Contains(item))
+            {
+                if (!Bot.House.EnsureToBank(item))
+                {
+                    Logger($"Failed to bank {item}, skipping it");
+                    continue;
+                }
+                Logger($"{item} moved to house bank");
+            }
+        }
+    }
+
+    public void ToHouseBank(params int[]? items)
+    {
+        if (items == null || !items.Any())
+            return;
+
+        JumpWait();
+
+        if (Bot.Flash.GetGameObject("ui.mcPopup.currentLabel") != "\"Bank\"")
+            Bot.Bank.Open();
+
+        foreach (int item in items)
+        {
+            if (item == 0)
+                continue;
+            if (Bot.House.IsEquipped(item))
+            {
+                Logger("Can't bank an equipped item");
+                continue;
+            }
+
+            if (Bot.House.Contains(item))
+            {
+                if (!Bot.House.EnsureToBank(item))
+                {
+                    Logger($"Failed to bank {item}, skipping it");
+                    continue;
+                }
+                Logger($"{item} moved to house bank");
+            }
+        }
+    }
+
     /// <summary>
     /// Move items from inventory to bank
     /// </summary>
