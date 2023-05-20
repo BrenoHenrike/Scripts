@@ -11692,6 +11692,34 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/ArtixWeddingMerge.cs"
   },
   {
+    "name": "Dwarfhold Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Dwarfhold Merge [2286] in /dwarfhold",
+    "tags": [
+      "dwarfhold",
+      "merge",
+      "dwarfhold",
+      "armored",
+      "prospector",
+      "prospectors",
+      "braided",
+      "beard",
+      "spectacles",
+      "spectacled",
+      "practical",
+      "rucksack",
+      "geometric",
+      "silver",
+      "gilded",
+      "goggles",
+      "versatile",
+      "honored"
+    ],
+    "path": "Other/MergeShops/DwarfholdMerge.cs",
+    "size": 6052,
+    "fileName": "DwarfholdMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/DwarfholdMerge.cs"
+  },
+  {
     "name": "Ashfall Camp Merge",
     "description": "Farms the gear for your selected mode for the merge shop in /ashfallcamp",
     "tags": [
