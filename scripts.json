@@ -2015,7 +2015,7 @@
       "pneuma"
     ],
     "path": "Enhancement/UnlockForgeEnhancements.cs",
-    "size": 37592,
+    "size": 37596,
     "fileName": "UnlockForgeEnhancements.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Enhancement/UnlockForgeEnhancements.cs"
   },
@@ -2168,17 +2168,6 @@
     "size": 10364,
     "fileName": "0CustomAggroMon.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/0CustomAggroMon.cs"
-  },
-  {
-    "name": "PrinceDarkonsPoleaxePreReqs",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Prototypes/PrinceDarkonsPoleaxePreReqs.cs",
-    "size": 1986,
-    "fileName": "PrinceDarkonsPoleaxePreReqs.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Prototypes/PrinceDarkonsPoleaxePreReqs.cs"
   },
   {
     "name": "Iara Story",
@@ -14837,6 +14826,17 @@
     "size": 723,
     "fileName": "MourningFlower.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/Materials/MourningFlower.cs"
+  },
+  {
+    "name": "PrinceDarkonsPoleaxePreReqs",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Darkon/Various/PrinceDarkonsPoleaxePreReqs.cs",
+    "size": 1986,
+    "fileName": "PrinceDarkonsPoleaxePreReqs.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/Various/PrinceDarkonsPoleaxePreReqs.cs"
   },
   {
     "name": "First Observatory Merge",
