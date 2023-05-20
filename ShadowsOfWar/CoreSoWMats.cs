@@ -48,9 +48,9 @@ public class CoreSoWMats
         Core.RegisterQuests(8966);
         while (!Bot.ShouldExit && !Core.CheckInventory("Acquiescence", Quantity))
         {
-            Core.HuntMonster("worldscore", "Elemental Attempt", "Cracked Elemental Stone", 8);
-            Core.HuntMonster("worldscore", "Crystalized Mana", "Crystalized Tooth", 8);
-            Core.HuntMonster("worldscore", "Mask of Tranquility", "Creator's Favor", 1);
+            Core.HuntMonster("worldscore", "Elemental Attempt", "Cracked Elemental Stone", 8, log: false);
+            Core.HuntMonster("worldscore", "Crystalized Mana", "Crystalized Tooth", 8, log: false);
+            Core.HuntMonster("worldscore", "Mask of Tranquility", "Creator's Favor", 1, log: false);
         }
         Core.CancelRegisteredQuests();
     }
@@ -73,9 +73,9 @@ public class CoreSoWMats
         Core.RegisterQuests(9126);
         while (!Bot.ShouldExit && !Core.CheckInventory("Elemental Core", Quantity))
         {
-            Core.HuntMonster("manacradle", "Dark Tainted Mana", "Elemental Tear", 8);
-            Core.HuntMonster("manacradle", "Malgor", "Weathered Armor Shard");
-            Core.HuntMonster("manacradle", "The Mainyu", "Licorice Scale");
+            Core.HuntMonster("manacradle", "Dark Tainted Mana", "Elemental Tear", 8, log: false);
+            Core.HuntMonster("manacradle", "Malgor", "Weathered Armor Shard", log: false);
+            Core.HuntMonster("manacradle", "The Mainyu", "Licorice Scale", log: false);
         }
         Core.CancelRegisteredQuests();
     }
@@ -94,10 +94,10 @@ public class CoreSoWMats
         while (!Bot.ShouldExit && !Core.CheckInventory("Garish Remnant", Quantity))
         {
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("Timekeep", "Mal-formed Gar", "Gar's Resignation Letter");
+            Core.HuntMonster("Timekeep", "Mal-formed Gar", "Gar's Resignation Letter", log: false);
             Core.EquipClass(ClassType.Farm);
-            Core.HuntMonster("Timekeep", "Mumbler", "Mumbler Drool", 8);
-            Core.HuntMonster("Timekeep", "Decaying Locust", "Locust Wings", 8);
+            Core.HuntMonster("Timekeep", "Mumbler", "Mumbler Drool", 8, log: false);
+            Core.HuntMonster("Timekeep", "Decaying Locust", "Locust Wings", 8, log: false);
         }
         Core.CancelRegisteredQuests();
     }
@@ -133,9 +133,9 @@ public class CoreSoWMats
         Core.RegisterQuests(8869);
         while (!Bot.ShouldExit && !Core.CheckInventory("Unbound Thread", Quantity))
         {
-            Core.HuntMonster("DeadLines", "Shadowfall Warrior", "Armor Scrap", 8);
-            Core.HuntMonster("DeadLines", "Frenzied Mana", "Captured Mana", 8);
-            Core.HuntMonster("DeadLines", "Eternal Dragon", "Eternal Dragon Scale");
+            Core.HuntMonster("DeadLines", "Shadowfall Warrior", "Armor Scrap", 8, log: false);
+            Core.HuntMonster("DeadLines", "Frenzied Mana", "Captured Mana", 8, log: false);
+            Core.HuntMonster("DeadLines", "Eternal Dragon", "Eternal Dragon Scale", log: false);
         }
         Core.CancelRegisteredQuests();
     }
@@ -154,10 +154,10 @@ public class CoreSoWMats
         while (!Bot.ShouldExit && !Core.CheckInventory("Willpower", Quantity))
         {
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster($"ruinedcrown", "Calamitous Warlic", "Warlic’s Favor");
+            Core.HuntMonster($"ruinedcrown", "Calamitous Warlic", "Warlic’s Favor", log: false);
             Core.EquipClass(ClassType.Farm);
-            Core.HuntMonster("ruinedcrown", "Frenzied Mana", "Mana Residue", 8);
-            Core.HuntMonster($"ruinedcrown", "Mana-Burdened Mage", "Mage’s Blood Sample", 8);
+            Core.HuntMonster("ruinedcrown", "Frenzied Mana", "Mana Residue", 8, log: false);
+            Core.HuntMonster($"ruinedcrown", "Mana-Burdened Mage", "Mage’s Blood Sample", 8, log: false);
         }
         Core.CancelRegisteredQuests();
     }
