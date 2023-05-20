@@ -24,16 +24,18 @@ public class Safiria
 
     public void StoryLine()
     {
+        if (Core.isCompletedBefore(1947))
+            return;
+
         if (!Core.IsMember)
         {
             Core.Logger("Safiria Storyline Is Member Only. Skipping this Script");
             return;
         }
 
-        if (Core.isCompletedBefore(1947))
-            return;
-
         Story.PreLoad(this);
+        Core.AddDrop(new[] { "Djinn's Magic Trace", "Chronomancer's Magic Trace", "Darkblood's Magic Trace", "Dragon's Magic Trace", "Safiria's Blood Sample" });
+
 
         //The Stolen Ritual 1939
         Story.KillQuest(1939, "Safiria", "Chaos Lycan");
@@ -47,19 +49,20 @@ public class Safiria
         //Phinding Phylacteries 1942
         Story.MapItemQuest(1942, "Safiria", 962, 4);
 
-        //Bats Blood Rune 1943
-        Story.KillQuest(1943, "Safiria", "Albino Bat");
+        //The First Phylactery 1943
+        Core.EquipClass(ClassType.Solo);
+        Story.KillQuest(1943, "djinn", "Ultra-Tibicenas");
 
-        //Maggots Blood Rune 1944
-        Story.KillQuest(1944, "Safiria", "Blood Maggot");
+        //The Second Phylactery 1944
+        Story.KillQuest(1944, "ultravoid", "Ultra Iadoa");
 
-        //Lycans Blood Rune 1945
-        Story.KillQuest(1945, "Safiria", "Chaos Lycan");
+        //The Third Phylactery 1945
+        Story.KillQuest(1945, "ultralionfang", "Ultra Lionfang");
 
-        //Twisted Paw's Blood Rune 1946
-        Story.KillQuest(1946, "Safiria", "Twisted Paw");
+        //The Final Phylactery 1946
+        Story.KillQuest(1946, "ancienttrigoras", "Ancient Trigoras");
 
         //Ancient Vitae 1947
-        Story.KillQuest(1947, "Safiria", "Chaos Lycan");
+        Story.KillQuest(1947, "battledoom", "Shadow Safiria");
     }
 }
