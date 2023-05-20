@@ -30,7 +30,7 @@ public class FrostBladeMaster
             
             return;
         }
-        Story.PreLoad();
+        Story.PreLoad(this);
 
         //Decorations - Paper Lanterns 6982
         Story.KillQuest(6982, "junkyard", "Tsukumo-Gami");
