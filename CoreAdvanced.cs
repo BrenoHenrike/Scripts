@@ -1254,6 +1254,10 @@ public class CoreAdvanced
 
     private void AutoEnhance(List<InventoryItem> ItemList, EnhancementType type, CapeSpecial cSpecial, HelmSpecial hSpecial, WeaponSpecial wSpecial)
     {
+        // In case the 'CurrentEnhancement()' failed and returned 0
+        if ((int)type == 0)
+            return;
+
         // Empty check
         if (ItemList.Count == 0)
         {
