@@ -684,10 +684,9 @@ public class CoreBots
 
         if (Bot.Flash.GetGameObject("ui.mcPopup.currentLabel") != "\"Bank\"")
             Bot.Bank.Open();
-
         foreach (string? item in items)
         {
-            if (item == null)
+            if (item == null || item == SoloClass || item == FarmClass)
                 continue;
             if (Bot.Inventory.IsEquipped(item))
             {
@@ -718,7 +717,7 @@ public class CoreBots
 
         foreach (string? item in items)
         {
-            if (item == null)
+            if (item == null || item == SoloClass || item == FarmClass)
                 continue;
             if (Bot.House.IsEquipped(item))
             {
