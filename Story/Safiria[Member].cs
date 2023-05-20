@@ -50,17 +50,45 @@ public class Safiria
         Story.MapItemQuest(1942, "Safiria", 962, 4);
 
         //The First Phylactery 1943
-        Core.EquipClass(ClassType.Solo);
-        Story.KillQuest(1943, "djinn", "Ultra-Tibicenas");
+        if (!Story.QuestProgression(1943))
+        {
+            if (Core.CheckInventory("Legion Revenant"))
+                Core.Equip("Legion Revenant");
+            else Core.EquipClass(ClassType.Solo);
+            Core.EnsureAccept(1943);
+            Core.HuntMonster("djinn", "Ultra-Tibicenas", "Djinn's Magic Trace", 5, isTemp: false);
+            Core.EnsureComplete(1943);
+        }
 
         //The Second Phylactery 1944
-        Story.KillQuest(1944, "ultravoid", "Ultra Iadoa");
+        if (!Story.QuestProgression(1944))
+        {
+            Core.EquipClass(ClassType.Solo);
+            Core.EnsureAccept(1944);
+            Core.HuntMonster("mqlesson", "Dragonoid", "Dragonoid of Hours", isTemp: false);
+            Core.HuntMonster("ultravoid", "Ultra Iadoa", "Chronomancer's Magic Trace", 5, isTemp: false);
+            Core.EnsureComplete(1944);
+        }
 
         //The Third Phylactery 1945
-        Story.KillQuest(1945, "ultralionfang", "Ultra Lionfang");
+        if (!Story.QuestProgression(1945))
+        {
+            Core.EquipClass(ClassType.Solo);
+            Core.EnsureAccept(1945);
+            Core.HuntMonster("ultralionfang", "Ultra Lionfang", "Darkblood's Magic Trace", 5, isTemp: false);
+            Core.EnsureComplete(1945);
+        }
 
         //The Final Phylactery 1946
-        Story.KillQuest(1946, "ancienttrigoras", "Ancient Trigoras");
+        if (!Story.QuestProgression(1946))
+        {
+            if (Core.CheckInventory("Legion Revenant"))
+                Core.Equip("Legion Revenant");
+            else Core.EquipClass(ClassType.Solo);
+            Core.EnsureAccept(1946);
+            Core.HuntMonster("ancienttrigoras", "Ancient Trigoras", "Dragon's Magic Trace", 5, isTemp: false);
+            Core.EnsureComplete(1946);
+        }
 
         //Ancient Vitae 1947
         Story.KillQuest(1947, "battledoom", "Shadow Safiria");
