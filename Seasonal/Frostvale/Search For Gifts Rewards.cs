@@ -3,6 +3,7 @@ name: Search For Gifts Quest Rewards
 description: This script will get all the rewards of search for gifts quest.
 tags: search, for, gifts, rewards, seasonal, akibalight, ai no miko
 */
+//cs_include Scripts/Seasonal/Frostvale/frostblademaster- ai no miko.cs
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;
 
