@@ -1,3 +1,4 @@
+using System.Net.Cache;
 /*
 name: Fable Forest Merge
 description: This bot will farm the items belonging to the selected mode for the Fable Forest Merge [815] in /fableforest
@@ -132,17 +133,7 @@ public class FableForestMergeMerge
                 case "Dreadspider Abdomen":
                 case "Red Dragon Morph":
                 case "Faerie Botanis Sword":
-                    Core.FarmingLogger(req.Name, quant);
-                        Adv.BuyItem("fableforest", 814, "Faerie Botanis Sword");
-                        Adv.BuyItem("fableforest", 814, "Red Dragon Morph");
-                        Adv.BuyItem("fableforest", 814, "Dreadspider Abdomen");
-                        Adv.BuyItem("fableforest", 814, "Dreadspider Cape");
-                        Adv.BuyItem("fableforest", 814, "Hydra Cape");
-                        Adv.BuyItem("fableforest", 814, "Not Quite Dread Shape");
-                        Adv.BuyItem("fableforest", 814, "Not Quite Dread Mask");
-                        Adv.BuyItem("fableforest", 814, "OakHeart ArmBlades");
-                        Adv.BuyItem("fableforest", 814, "OakHeart Helm");
-                        Adv.BuyItem("fableforest", 814, "Plain Dragon Tail");
+                        Adv.BuyItem("fableforest", 814, Req.Name);
                     break;
 
             }
