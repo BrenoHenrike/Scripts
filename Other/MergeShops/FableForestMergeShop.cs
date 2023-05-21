@@ -60,13 +60,6 @@ public class FableForestMergeMerge
                     break;
                 #endregion
 
-                case "Plain Dragon Tail":
-                    Core.FarmingLogger(req.Name, quant);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.BuyItem("fableforest", 814, "Plain Dragon Tail", 1);
-                    }
-                    break;
 
                 case "Wind Stone":
                     Core.FarmingLogger(req.Name, quant);
@@ -93,15 +86,6 @@ public class FableForestMergeMerge
                     Core.CancelRegisteredQuests();
                     break;
 
-                case "OakHeart Helm":
-                    Core.FarmingLogger(req.Name, quant);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.BuyItem("fableforest", 814, "OakHeart Helm", 1);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    break;
-
                 case "Fire Stone":
                     Core.FarmingLogger(req.Name, quant);
                     Core.RegisterQuests(3314);
@@ -126,80 +110,39 @@ public class FableForestMergeMerge
                     Core.CancelRegisteredQuests();
                     break;
 
-                case "OakHeart ArmBlades":
-                    Core.FarmingLogger(req.Name, quant);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.BuyItem("fableforest", 814, "OakHeart ArmBlades", 1);
-                    }
-                    break;
-
                 case "Chaos Stone":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
                     Core.RegisterQuests(3318);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("fableforest", "Forest Guardian", "Chaos Aura", 1);
+                        Core.HuntMonster("fableforest", "Forest Guardian", "Chaos Aura");
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
                     break;
 
+                case "Plain Dragon Tail":
+                case "OakHeart Helm":
+                case "OakHeart ArmBlades":
                 case "Not Quite Dread Mask":
-                    Core.FarmingLogger(req.Name, quant);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.BuyItem("fableforest", 814, "Not Quite Dread Mask", 1);
-                    }
-                    break;
-
                 case "Not Quite Dread Shape":
-                    Core.FarmingLogger(req.Name, quant);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.BuyItem("fableforest", 814, "Not Quite Dread Shape", 1);
-                    }
-                    break;
-
                 case "Hydra Cape":
-                    Core.FarmingLogger(req.Name, quant);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.BuyItem("fableforest", 814, "Hydra Cape", 1);
-                    }
-                    break;
-
                 case "Dreadspider Cape":
-                    Core.FarmingLogger(req.Name, quant);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.BuyItem("fableforest", 814, "Dreadspider Cape", 1);
-                    }
-                    break;
-
                 case "Dreadspider Abdomen":
-                    Core.FarmingLogger(req.Name, quant);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.BuyItem("fableforest", 814, "Dreadspider Abdomen", 1);
-                    }
-                    break;
-
                 case "Red Dragon Morph":
-                    Core.FarmingLogger(req.Name, quant);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.BuyItem("fableforest", 814, "Red Dragon Morph", 1);
-                    }
-                    break;
-
                 case "Faerie Botanis Sword":
                     Core.FarmingLogger(req.Name, quant);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.BuyItem("fableforest", 814, "Faerie Botanis Sword", 1);
-                    }
+                        Adv.BuyItem("fableforest", 814, "Faerie Botanis Sword");
+                        Adv.BuyItem("fableforest", 814, "Red Dragon Morph");
+                        Adv.BuyItem("fableforest", 814, "Dreadspider Abdomen");
+                        Adv.BuyItem("fableforest", 814, "Dreadspider Cape");
+                        Adv.BuyItem("fableforest", 814, "Hydra Cape");
+                        Adv.BuyItem("fableforest", 814, "Not Quite Dread Shape");
+                        Adv.BuyItem("fableforest", 814, "Not Quite Dread Mask");
+                        Adv.BuyItem("fableforest", 814, "OakHeart ArmBlades");
+                        Adv.BuyItem("fableforest", 814, "OakHeart Helm");
+                        Adv.BuyItem("fableforest", 814, "Plain Dragon Tail");
                     break;
 
             }
