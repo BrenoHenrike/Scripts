@@ -38,9 +38,9 @@ public class AureateAegisSet
         {
             Core.EnsureAccept(9241);
             Core.HuntMonster("darkheart", "Toxic Grove Spider", "Cavern Gold", 1000, isTemp: false);
-            Core.HuntMonster($"templedelve", "Doomed Troll", "Troll’s Gold", 1000, isTemp: false);
-            Core.HuntMonster($"greed", "Sneevil Looter", "Looter’s Gold", 1000, isTemp: false);
-            Core.HuntMonster($"greed", "Goregold", "Goregold’s Gold", 250, isTemp: false);
+            Core.HuntMonster($"templedelve", "Doomed Troll", "Troll's Gold", 1000, isTemp: false);
+            Core.HuntMonster($"greed", "Sneevil Looter", "Looter's Gold", 1000, isTemp: false);
+            Core.HuntMonster($"greed", "Goregold", "Goregold's Gold", 250, isTemp: false);
             Adv.BuyItem("alchemyacademy", 2115, "Gold Voucher 500k", 60);
 
             Core.EnsureComplete(9241);
