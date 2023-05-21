@@ -9142,6 +9142,23 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/FrozenSoulMerge.cs"
   },
   {
+    "name": "Search For Gifts Quest Rewards",
+    "description": "This script will get all the rewards of search for gifts quest.",
+    "tags": [
+      "search",
+      "for",
+      "gifts",
+      "rewards",
+      "seasonal",
+      "akibalight",
+      "ai no miko"
+    ],
+    "path": "Seasonal/Frostvale/SearchForGiftsRewards.cs",
+    "size": 1070,
+    "fileName": "SearchForGiftsRewards.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/SearchForGiftsRewards.cs"
+  },
+  {
     "name": "Bow Jangles Merge",
     "description": "This will get all or selected items on this merge shop.",
     "tags": [
@@ -9166,6 +9183,22 @@
     "size": 5432,
     "fileName": "HelsgroveMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/HelsgroveMerge.cs"
+  },
+  {
+    "name": "Frost Blade Master",
+    "description": "Does the seasonal quests of frostblademaster in /akibalight",
+    "tags": [
+      "frost",
+      "blade",
+      "master",
+      "seasonal",
+      "akiba",
+      "light"
+    ],
+    "path": "Seasonal/Frostvale/frostblademaster.cs",
+    "size": 1896,
+    "fileName": "frostblademaster.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/frostblademaster.cs"
   },
   {
     "name": "Frostvale All Stories",
