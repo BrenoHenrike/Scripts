@@ -22,6 +22,9 @@ public class SearchForGiftsRewards
 
     public void SearchForGifts()
     {
+        if (!Core.isSeasonalMapActive("akibalight"))
+            return;
+            
         string[] rewards = Core.QuestRewards(6992);
         if (Core.CheckInventory(rewards, toInv: false))
             return;
@@ -31,7 +34,7 @@ public class SearchForGiftsRewards
         Core.RegisterQuests(6992);
         while (!Bot.ShouldExit && !Core.CheckInventory(rewards))
             Core.HuntMonster("bamboo", "Bamboo Wisp", "Red-Wrapped Gift", 5);
-            Core.CancelRegisteredQuests();
-            Core.ToBank(rewards);
+        Core.CancelRegisteredQuests();
+        Core.ToBank(rewards);
     }
 }
