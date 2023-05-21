@@ -16,11 +16,11 @@ public class SearchForGiftsRewards
     {
         Core.SetOptions();
 
-        SearchForGiftsRewards();
+        SearchForGifts();
         Core.SetOptions(false);
     }
 
-    public void SearchForGiftsRewards()
+    public void SearchForGifts()
     {
         string[] rewards = Core.QuestRewards(6992);
         if (Core.CheckInventory(rewards, toInv: false))
@@ -28,7 +28,7 @@ public class SearchForGiftsRewards
 
         Core.AddDrop(rewards);
 
-        Core.RegisterQuest(6992);
+        Core.RegisterQuests(6992);
         while (!Bot.ShouldExit && !Core.CheckInventory(rewards))
             Core.HuntMonster("bamboo", "Bamboo Wisp", "Red-Wrapped Gift", 5);
             Core.CancelRegisteredQuests();
