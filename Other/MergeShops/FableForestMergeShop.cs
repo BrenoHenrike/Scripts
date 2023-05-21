@@ -1,10 +1,9 @@
-using System.Net.Cache;
 /*
 name: Fable Forest Merge
 description: This bot will farm the items belonging to the selected mode for the Fable Forest Merge [815] in /fableforest
 tags: fable, forest, merge, fableforest, wind, dragon, tail, oakheart, back, shield, magic, armblades, guardian, not, quite, chaos, shape, shadowscythe, morph, ultra, hydra, dreadspider, combo, dwakel, tech, fire, water, nature, prismatic, faerie, botanis, elements
 */
-//cs_include Scripts\Story\FableForest.cs
+//cs_include Scripts/Story/FableForest.cs
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
@@ -133,7 +132,7 @@ public class FableForestMergeMerge
                 case "Dreadspider Abdomen":
                 case "Red Dragon Morph":
                 case "Faerie Botanis Sword":
-                        Adv.BuyItem("fableforest", 814, Req.Name);
+                        Adv.BuyItem("fableforest", 814, req.Name);
                     break;
 
             }
