@@ -813,7 +813,8 @@ public class CoreArmyLite
             "ultratyndarius",
             "ultranulgath",
             "ultradrago",
-            "ultradarkon"
+            "ultradarkon",
+            "ultraspeaker"
         };
         string[] MemMaps =
         {
