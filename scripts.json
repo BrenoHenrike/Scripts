@@ -11528,7 +11528,7 @@
       "elements"
     ],
     "path": "Other/MergeShops/FableForestMergeShop[Mem].cs",
-    "size": 8773,
+    "size": 8768,
     "fileName": "FableForestMergeShop[Mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/FableForestMergeShop[Mem].cs"
   },
@@ -12338,6 +12338,25 @@
     "size": 9755,
     "fileName": "DreadspaceReplicatorMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/DreadspaceReplicatorMerge.cs"
+  },
+  {
+    "name": "Bonebreaker Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Bonebreaker Merge [1051] in /bonebreak",
+    "tags": [
+      "bonebreaker",
+      "merge",
+      "bonebreak",
+      "outcast",
+      "boneshattering",
+      "brokenbone",
+      "skull",
+      "bonepiercer",
+      "membership"
+    ],
+    "path": "Other/MergeShops/BoneBreakerMergeShop[MEM].cs",
+    "size": 3860,
+    "fileName": "BoneBreakerMergeShop[MEM].cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/BoneBreakerMergeShop[MEM].cs"
   },
   {
     "name": "CelestialSpoilsMerge",
