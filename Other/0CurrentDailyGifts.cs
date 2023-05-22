@@ -18,7 +18,7 @@ public class CurrentDailyGifts
     private CoreBots Core => CoreBots.Instance;
     private static CoreBots sCore = new();
     private CoreAdvanced Adv = new();
-    private TwiggusGearMergeMerge TGM = new();
+    private TwiggusGearMerge TGM = new();
 
     public string OptionsStorage = "CurrentDailyGifts";
     public bool DontPreconfigure = true;
