@@ -721,7 +721,7 @@ public class UnlockForgeEnhancements
         Awe.GetAweRelic("Breastplate", 4163, 10, 10, "aqlesson", "Carnax");
         Awe.GetAweRelic("Vambrace", 4166, 15, 15, "bloodtitan", "Ultra Blood Titan");
         Awe.GetAweRelic("Gauntlet", 4169, 25, 5, "alteonbattle", "ULTRA Alteon");
-        Awe.GetAweRelic("Greaves", 4172, 10, 15, "bosschallenge", "Mutated Void Dragon");
+        Awe.GetAweRelic("Greaves", 4172, 10, 10, "bosschallenge", "Mutated Void Dragon");
 
         Core.EnsureComplete(8744);
         Core.Logger("Enhancement Unlocked: Vainglory");

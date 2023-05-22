@@ -29,11 +29,12 @@ public class Butler
         new Option<bool>("copyWalk", "Copy Walk", "Set to true if you want to move to the same position of the player you follow.", false),
         new Option<string>("roomNumber", "Room Number", "Insert the room number which will be used when looking through Locked Zones.", "999999"),
         new Option<bool>("rejectDrops", "Reject Drops", "Do you wish for the Butler to reject all drops? If false, your drop screen will fill up.", true),
+        new Option<int>("hibernationTimer", "Hibernate Timer", "How many seconds should the bot wait before trying to /goto again?\nIf set to 0, it will not hibernate at all.", 60),
     };
 
     public void ScriptMain(IScriptInterface bot)
     {
-        if (!Int32.TryParse(Bot.Config.Get<string>("roomNumber"), out int roomNr) && Bot.Config.Get<bool>("lockedMaps"))
+        if (!Int32.TryParse(Bot.Config!.Get<string>("roomNumber"), out int roomNr) && Bot.Config.Get<bool>("lockedMaps"))
         {
             Core.Logger("Please provide a room number for the bot to use whilst searching locked zones", messageBox: true);
             Bot.Config.Configure();
@@ -42,13 +43,14 @@ public class Butler
         Core.SetOptions(disableClassSwap: true);
 
         Army.Butler(
-            Bot.Config.Get<string>("playerName"),
+            Bot.Config!.Get<string>("playerName")!,
             Bot.Config.Get<bool>("lockedMaps"),
             Bot.Config.Get<ClassType>("classType"),
             Bot.Config.Get<bool>("copyWalk"),
             roomNr,
             Bot.Config.Get<bool>("rejectDrops"),
-            Bot.Config.Get<string>("attackPriority")
+            Bot.Config.Get<string>("attackPriority"),
+            Bot.Config.Get<int>("hibernationTimer")
         );
     }
 }
