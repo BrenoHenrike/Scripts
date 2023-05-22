@@ -10,7 +10,7 @@ using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
 
-public class TwiggusGearMergeMerge
+public class TwiggusGearMerge
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
@@ -27,7 +27,7 @@ public class TwiggusGearMergeMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Fwog Egg", "Astravian Enforcer Crescent Halo", "Large Hoverpram Shard", "Hoverpram Fragments"});
+        Core.BankingBlackList.AddRange(new[] { "Fwog Egg", "Astravian Enforcer Crescent Halo", "Large Hoverpram Shard", "Hoverpram Fragments" });
         Core.SetOptions();
 
         BuyAllMerge();
