@@ -10,7 +10,7 @@ using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
 
-public class TwiggusGearMergeMerge
+public class TwiggusGearMerge
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;

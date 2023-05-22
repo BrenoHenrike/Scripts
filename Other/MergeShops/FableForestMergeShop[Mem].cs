@@ -11,7 +11,7 @@ using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
 
-public class FableForestMergeMerge
+public class FableForestMerge
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;

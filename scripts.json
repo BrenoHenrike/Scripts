@@ -8581,7 +8581,7 @@
       "pet"
     ],
     "path": "Seasonal/MayThe4th/TwiggusGearMerge.cs",
-    "size": 6449,
+    "size": 6445,
     "fileName": "TwiggusGearMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/MayThe4th/TwiggusGearMerge.cs"
   },
@@ -11528,7 +11528,7 @@
       "elements"
     ],
     "path": "Other/MergeShops/FableForestMergeShop[Mem].cs",
-    "size": 8773,
+    "size": 8768,
     "fileName": "FableForestMergeShop[Mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/FableForestMergeShop[Mem].cs"
   },
@@ -12338,6 +12338,25 @@
     "size": 9755,
     "fileName": "DreadspaceReplicatorMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/DreadspaceReplicatorMerge.cs"
+  },
+  {
+    "name": "Bonebreaker Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Bonebreaker Merge [1051] in /bonebreak",
+    "tags": [
+      "bonebreaker",
+      "merge",
+      "bonebreak",
+      "outcast",
+      "boneshattering",
+      "brokenbone",
+      "skull",
+      "bonepiercer",
+      "membership"
+    ],
+    "path": "Other/MergeShops/BoneBreakerMergeShop[MEM].cs",
+    "size": 3860,
+    "fileName": "BoneBreakerMergeShop[MEM].cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/BoneBreakerMergeShop[MEM].cs"
   },
   {
     "name": "CelestialSpoilsMerge",
@@ -14150,6 +14169,23 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/TheGameofGemstones(Gold[Members]).cs"
   },
   {
+    "name": "Tainted Claymore",
+    "description": "This script farms the Tainted Claymore weapon.",
+    "tags": [
+      "claymore",
+      "nulgath",
+      "skew",
+      "warrior",
+      "blade",
+      "enchant",
+      "poisonous deal"
+    ],
+    "path": "Nation/Various/TaintedClaymore.cs",
+    "size": 1606,
+    "fileName": "TaintedClaymore.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/TaintedClaymore.cs"
+  },
+  {
     "name": "DragonBlade[mem]",
     "description": "null",
     "tags": [
@@ -14368,7 +14404,7 @@
       "quest"
     ],
     "path": "Nation/Various/TheRefreshingDeal.cs",
-    "size": 2808,
+    "size": 2841,
     "fileName": "TheRefreshingDeal.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/TheRefreshingDeal.cs"
   },
@@ -14415,6 +14451,29 @@
     "size": 1532,
     "fileName": "TarosPrismaticManslayers.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/TarosPrismaticManslayers.cs"
+  },
+  {
+    "name": "The Poisonous Deal",
+    "description": "This script farms Tainted Gems and Dark Crystal Shards using \"The Poisonous Deal\" Quest.",
+    "tags": [
+      "poisonous",
+      "deal",
+      "dark",
+      "crystal",
+      "shard",
+      "tainted",
+      "gem",
+      "nulgath",
+      "nation",
+      "crag",
+      "bamboozle",
+      "quest",
+      "claymore"
+    ],
+    "path": "Nation/Various/ThePoisonousDeal.cs",
+    "size": 2855,
+    "fileName": "ThePoisonousDeal.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/ThePoisonousDeal.cs"
   },
   {
     "name": "PurifiedClaymoreOfDestiny",
