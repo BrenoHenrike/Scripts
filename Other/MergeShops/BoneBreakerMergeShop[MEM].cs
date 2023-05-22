@@ -1,11 +1,7 @@
-using System.Runtime.ExceptionServices;
-using System.Runtime.InteropServices;
-using System.Diagnostics;
-using System.Reflection.PortableExecutable;
 /*
 name: Bonebreaker Merge
 description: This bot will farm the items belonging to the selected mode for the Bonebreaker Merge [1051] in /bonebreak
-tags: bonebreaker, merge, bonebreak, outcast, boneshattering, brokenbone, skull, bonepiercer, membership, dailies, daily
+tags: bonebreaker, merge, bonebreak, outcast, boneshattering, brokenbone, skull, bonepiercer, Membership
 */
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreBots.cs
@@ -22,6 +18,7 @@ public class BonebreakerMergeMerge
     private CoreFarms Farm = new();
     private CoreAdvanced Adv = new();
     private static CoreAdvanced sAdv = new();
+    private CoreDailies Daily = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
     public string[] MultiOptions = { "Generic", "Select" };
@@ -75,7 +72,7 @@ public class BonebreakerMergeMerge
                     {
                         Core.EnsureAccept(3898);
                         Core.HuntMonster("bonebreaker", "Undead Berserker", "Warrior Defeated", 5);
-                        CorHeader.EnsureComplete(3898);
+                        Cor.EnsureComplete(3898);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.ToBank(Core.QuestRewards(3898));
