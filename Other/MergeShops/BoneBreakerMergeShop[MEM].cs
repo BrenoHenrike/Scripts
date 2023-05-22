@@ -11,7 +11,7 @@ using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
 
-public class BonebreakerMergeMerge
+public class BonebreakerMerge
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
@@ -29,7 +29,7 @@ public class BonebreakerMergeMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "BoneBreaker Medallion"});
+        Core.BankingBlackList.AddRange(new[] { "BoneBreaker Medallion" });
         Core.SetOptions();
 
         BuyAllMerge();
