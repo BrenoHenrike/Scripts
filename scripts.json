@@ -941,7 +941,7 @@
       "member"
     ],
     "path": "Story/Safiria[Member].cs",
-    "size": 3058,
+    "size": 3110,
     "fileName": "Safiria[Member].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Safiria[Member].cs"
   },
@@ -8572,10 +8572,16 @@
       "mace",
       "sickle",
       "sickles",
-      "backhand"
+      "backhand",
+      "lil",
+      "twiggu",
+      "guest",
+      "baby",
+      "pod",
+      "pet"
     ],
     "path": "Seasonal/MayThe4th/TwiggusGearMerge.cs",
-    "size": 5775,
+    "size": 6449,
     "fileName": "TwiggusGearMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/MayThe4th/TwiggusGearMerge.cs"
   },
