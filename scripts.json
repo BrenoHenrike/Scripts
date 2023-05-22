@@ -14169,6 +14169,23 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/TheGameofGemstones(Gold[Members]).cs"
   },
   {
+    "name": "Tainted Claymore",
+    "description": "This script farms the Tainted Claymore weapon.",
+    "tags": [
+      "claymore",
+      "nulgath",
+      "skew",
+      "warrior",
+      "blade",
+      "enchant",
+      "poisonous deal"
+    ],
+    "path": "Nation/Various/TaintedClaymore.cs",
+    "size": 1606,
+    "fileName": "TaintedClaymore.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/TaintedClaymore.cs"
+  },
+  {
     "name": "DragonBlade[mem]",
     "description": "null",
     "tags": [
@@ -14387,7 +14404,7 @@
       "quest"
     ],
     "path": "Nation/Various/TheRefreshingDeal.cs",
-    "size": 2808,
+    "size": 2841,
     "fileName": "TheRefreshingDeal.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/TheRefreshingDeal.cs"
   },
@@ -14434,6 +14451,29 @@
     "size": 1532,
     "fileName": "TarosPrismaticManslayers.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/TarosPrismaticManslayers.cs"
+  },
+  {
+    "name": "The Poisonous Deal",
+    "description": "This script farms Tainted Gems and Dark Crystal Shards using \"The Poisonous Deal\" Quest.",
+    "tags": [
+      "poisonous",
+      "deal",
+      "dark",
+      "crystal",
+      "shard",
+      "tainted",
+      "gem",
+      "nulgath",
+      "nation",
+      "crag",
+      "bamboozle",
+      "quest",
+      "claymore"
+    ],
+    "path": "Nation/Various/ThePoisonousDeal.cs",
+    "size": 2855,
+    "fileName": "ThePoisonousDeal.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/ThePoisonousDeal.cs"
   },
   {
     "name": "PurifiedClaymoreOfDestiny",
