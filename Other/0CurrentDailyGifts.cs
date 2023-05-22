@@ -140,6 +140,7 @@ public class CurrentDailyGifts
             GetGift(AvailableUntil(1, 5), "necrodungeon", 48, "Golden Spear of Light");
             //Message Capsule Clue
             TGM.BuyAllMerge("L'il Twiggu Guest");
+            TGM.BuyAllMerge("Baby Twiggu's Pod Pet");
 
             GetGift(AvailableUntil(16, 6), "garden", "Creature 35", "Dark Astravian General Lance");
 
