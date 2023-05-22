@@ -27,7 +27,7 @@ public class TwiggusGearMergeMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Fwog Egg", "Astravian Enforcer Crescent Halo", "Large Hoverpram Shard", "Hoverpram Fragments"});
+        Core.BankingBlackList.AddRange(new[] { "Fwog Egg", "Astravian Enforcer Crescent Halo", "Large Hoverpram Shard", "Hoverpram Fragments" });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -36,6 +36,9 @@ public class TwiggusGearMergeMerge
 
     public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
+        if (!Core.isSeasonalMapActive("murdermoon"))
+            return;
+
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("murdermoon", 2272, findIngredients, buyOnlyThis, buyMode: buyMode);
 
