@@ -72,7 +72,7 @@ public class BonebreakerMergeMerge
                     {
                         Core.EnsureAccept(3898);
                         Core.HuntMonster("bonebreaker", "Undead Berserker", "Warrior Defeated", 5);
-                        Cor.EnsureComplete(3898);
+                        Core.EnsureComplete(3898);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.ToBank(Core.QuestRewards(3898));
