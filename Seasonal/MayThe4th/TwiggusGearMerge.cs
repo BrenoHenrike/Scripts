@@ -1,7 +1,7 @@
 /*
 name: Twiggus Gear Merge
 description: This bot will farm the items belonging to the selected mode for the Twiggus Gear Merge [2272] in /murdermoon
-tags: twiggus, gear, merge, murdermoon, astravian, enforcer, cap, flapped, enforce, cloaked, complete, halo, mace, sickle, sickles, backhand
+tags: twiggus, gear, merge, murdermoon, astravian, enforcer, cap, flapped, enforce, cloaked, complete, halo, mace, sickle, sickles, backhand, lil, twiggu, guest, baby, pod, pet
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -10,7 +10,7 @@ using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
 
-public class TwiggusGearMerge
+public class TwiggusGearMergeMerge
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
@@ -27,7 +27,7 @@ public class TwiggusGearMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Fwog Egg", "Astravian Enforcer Crescent Halo" });
+        Core.BankingBlackList.AddRange(new[] { "Fwog Egg", "Astravian Enforcer Crescent Halo", "Large Hoverpram Shard", "Hoverpram Fragments"});
         Core.SetOptions();
 
         BuyAllMerge();
@@ -77,6 +77,13 @@ public class TwiggusGearMerge
                     Core.HuntMonster("murdermoon", "Fifth Sepulchure", req.Name, quant, false, false);
                     break;
 
+                case "Large Hoverpram Shard":
+                case "Hoverpram Fragments":
+                    Core.FarmingLogger(req.Name, quant);
+                    Core.EquipClass(ClassType.Solo);
+                    Core.HuntMonster("zorbaspit", "Zorblatt", req.Name, quant, req.Temp);
+                    break;
+
             }
         }
     }
@@ -99,5 +106,7 @@ public class TwiggusGearMerge
         new Option<bool>("77692", "Astravian Enforcer Sickles", "Mode: [select] only\nShould the bot buy \"Astravian Enforcer Sickles\" ?", false),
         new Option<bool>("77693", "Astravian Enforcer Backhand Sickle", "Mode: [select] only\nShould the bot buy \"Astravian Enforcer Backhand Sickle\" ?", false),
         new Option<bool>("77694", "Astravian Enforcer Backhand Sickles", "Mode: [select] only\nShould the bot buy \"Astravian Enforcer Backhand Sickles\" ?", false),
+        new Option<bool>("77738", "L'il Twiggu Guest", "Mode: [select] only\nShould the bot buy \"L'il Twiggu Guest\" ?", false),
+        new Option<bool>("77737", "Baby Twiggu's Pod Pet", "Mode: [select] only\nShould the bot buy \"Baby Twiggu's Pod Pet\" ?", false),
     };
 }
