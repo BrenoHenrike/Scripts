@@ -14348,13 +14348,21 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/VoidWarlock.cs"
   },
   {
-    "name": "TheRefreshingDeal",
-    "description": "null",
+    "name": "The Refreshing Deal",
+    "description": "This script farms Gems and Totems of Nulgath using \"The Refreshing Deal\" Quest.",
     "tags": [
-      "null"
+      "refreshing",
+      "deal",
+      "gem",
+      "totem",
+      "nulgath",
+      "nation",
+      "crag",
+      "bamboozle",
+      "quest"
     ],
     "path": "Nation/Various/TheRefreshingDeal.cs",
-    "size": 2800,
+    "size": 2808,
     "fileName": "TheRefreshingDeal.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/TheRefreshingDeal.cs"
   },
