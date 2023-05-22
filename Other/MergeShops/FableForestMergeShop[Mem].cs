@@ -28,7 +28,7 @@ public class FableForestMergeMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Plain Dragon Tail", "Wind Stone", "Earth Stone", "OakHeart Helm", "Fire Stone", "Water Stone", "OakHeart ArmBlades", "Chaos Stone", "Not Quite Dread Mask", "Not Quite Dread Shape", "Hydra Cape", "Dreadspider Cape", "Dreadspider Abdomen", "Red Dragon Morph", "Faerie Botanis Sword"});
+        Core.BankingBlackList.AddRange(new[] { "Plain Dragon Tail", "Wind Stone", "Earth Stone", "OakHeart Helm", "Fire Stone", "Water Stone", "OakHeart ArmBlades", "Chaos Stone", "Not Quite Dread Mask", "Not Quite Dread Shape", "Hydra Cape", "Dreadspider Cape", "Dreadspider Abdomen", "Red Dragon Morph", "Faerie Botanis Sword" });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -37,6 +37,11 @@ public class FableForestMergeMerge
 
     public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
+        if (!Core.IsMember)
+        {
+            Core.Logger("Membership Required.");
+            return;
+        }
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("fableforest", 815, findIngredients, buyOnlyThis, buyMode: buyMode);
 
@@ -132,7 +137,7 @@ public class FableForestMergeMerge
                 case "Dreadspider Abdomen":
                 case "Red Dragon Morph":
                 case "Faerie Botanis Sword":
-                        Adv.BuyItem("fableforest", 814, req.Name);
+                    Adv.BuyItem("fableforest", 814, req.Name);
                     break;
 
             }
