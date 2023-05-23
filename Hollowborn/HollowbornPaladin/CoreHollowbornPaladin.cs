@@ -136,6 +136,7 @@ public class CoreHollowbornPaladin
                     Core.HuntMonster("graveyard", "Skeletal Warrior", "Unseeing Eye", 3);
                     Core.HuntMonster("graveyard", "Big Jack Sprat", "Shard of Diamond Blade", 5);
                     Core.EnsureComplete(4811);
+                    Bot.Wait.ForPickup("Enchantment Rune");
                 }
                 Core.BuyItem("river", 1213, "Enchanted Victory Blade");
             }
@@ -146,7 +147,6 @@ public class CoreHollowbornPaladin
         }
         Core.EquipClass(ClassType.Solo);
         Core.HuntMonster("necrocavern", "Shadow Dragon", "Shadow Dragon Soul", 1, false);
-        Bot.Quests.UpdateQuest(1144);
         Core.HuntMonster("temple", "Cryptkeeper Lich", "Cryptkeeper Lich's Head");
         HB.HumanSoul(200);
         Core.EnsureComplete(7558);
