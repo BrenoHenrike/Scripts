@@ -11468,6 +11468,25 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/DeepTunnelMerge.cs"
   },
   {
+    "name": "Samba Armor Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Samba Armor Merge [302] in /bloodtusk",
+    "tags": [
+      "samba",
+      "armor",
+      "merge",
+      "bloodtusk",
+      "dancin",
+      "green",
+      "dance",
+      "feathers",
+      "purple"
+    ],
+    "path": "Other/MergeShops/SambaArmorMerge.cs",
+    "size": 4401,
+    "fileName": "SambaArmorMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/SambaArmorMerge.cs"
+  },
+  {
     "name": "QueensReignMerge",
     "description": "null",
     "tags": [
