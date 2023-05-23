@@ -213,7 +213,7 @@ public class MergeTemplateHelper
                             .Concat(new[] { "}" })
                             .ToArray();
 
-        string path = Path.Combine(ClientFileSources.SkuaScriptsDIR, "WIP", className + "Merge.cs");
+        string path = Path.Combine(ClientFileSources.SkuaScriptsDIR, "WIP", className + ".cs");
         Directory.CreateDirectory(Path.Combine(ClientFileSources.SkuaScriptsDIR, "WIP"));
         Core.WriteFile(path, content);
         if (Bot.ShowMessageBox($"File has been generated. Path is {path}\n\nPress OK to open the file",
