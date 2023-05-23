@@ -32,7 +32,7 @@ public class DragonFableOrigins
 
     public void GreatFireWar()
     {
-        if (Core.isCompletedBefore(6300))
+        if (Core.isCompletedBefore(6299))
             return;
 
         Story.PreLoad(this);
@@ -66,14 +66,15 @@ public class DragonFableOrigins
         // Confront Akriloth
         Story.KillQuest(6299, "firewar", "Akriloth");
 
-        // Clear out the Dragons
-        if (!Story.QuestProgression(6300))
-        {
-            Core.EnsureAccept(6300);
-            Core.HuntMonster("firewar", "Fire Dragon", "Fire Dragon Slain", 3);
-            Core.KillMonster("firewar", "r8", "Left", "Inferno Dragon", "Inferno Dragon Slain", 2);
-            Core.EnsureComplete(6300);
-        }
+        //Quest not required!
+        // // Clear out the Dragons
+        // if (!Story.QuestProgression(6300))
+        // {
+        //     Core.EnsureAccept(6300);
+        //     Core.HuntMonster("firewar", "Fire Dragon", "Fire Dragon Slain", 3);
+        //     Core.KillMonster("firewar", "r8", "Left", "Inferno Dragon", "Inferno Dragon Slain", 2);
+        //     Core.EnsureComplete(6300);
+        // }
     }
 
     public void NorthMountain()
