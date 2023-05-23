@@ -67,7 +67,7 @@ public class DragonFableOrigins
         Story.KillQuest(6299, "firewar", "Akriloth");
 
         // Clear out the Dragons
-        if (!Core.isCompletedBefore(6300))
+        if (!Story.QuestProgression(6300))
         {
             Core.EnsureAccept(6300);
             Core.HuntMonster("firewar", "Fire Dragon", "Fire Dragon Slain", 3);

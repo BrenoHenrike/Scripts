@@ -1407,7 +1407,7 @@ public class CoreFarms
             Core.EnsureAccept(7875);
             Core.HuntMonster("timevoid", "Unending Avatar", "Everlasting Scale", log: false);
             Core.EnsureComplete(7875);
-            
+
             Core.EnsureAccept(7876);
             Core.HuntMonster($"twilightedge", "ChaosWeaver Warrior", "Chaotic Arachnid’s Flesh", log: false);
             Core.EnsureComplete(7876);
@@ -1420,7 +1420,7 @@ public class CoreFarms
 
         Core.RegisterQuests(7877);
         while (!Bot.ShouldExit && FactionRank("Diabolical") < rank)
-            Core.HuntMonster("mudluk", "Tiger Leech");
+            Core.HuntMonster("mudluk", "Tiger Leech", log: false);
         Bot.Wait.ForQuestComplete(7877);
         Core.CancelRegisteredQuests();
         ToggleBoost(BoostType.Reputation, false);
