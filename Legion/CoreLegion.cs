@@ -43,7 +43,7 @@ public class CoreLegion
         Adv.BestGear(GenericGearBoost.gold);
 
         Core.FarmingLogger("Emblem of Dage", quant);
-        Core.AddDrop("Legion Seal", "Gem of Mastery");
+        Core.AddDrop("Legion Seal", "Gem of Mastery", "Emblem of Dage");
         Core.RegisterQuests(4742);
         while (!Bot.ShouldExit && !Core.CheckInventory("Emblem of Dage", quant))
         {
