@@ -25,18 +25,12 @@ public class DiabolicalREP
         Core.SetOptions(false);
     }
 
-    private void UnlockDiabolical()
-    {
-        if (!Bot.Quests.IsUnlocked(7877))
-        {
-            Story.KillQuest(7875, "timevoid", "Unending Avatar");
-            Story.KillQuest(7876, "twilightedge", "ChaosWeaver Warrior");
-        }
-    }
-
     public void DoRep()
     {
-        UnlockDiabolical();
+
+        Story.KillQuest(7875, "timevoid", "Unending Avatar");
+        Story.KillQuest(7876, "twilightedge", "ChaosWeaver Warrior");
+
         Adv.BestGear(GenericGearBoost.dmgAll);
         Adv.BestGear(GenericGearBoost.rep);
         Farm.DiabolicalREP();
