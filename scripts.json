@@ -15160,45 +15160,63 @@
   },
   {
     "name": "CommandingShadowEssences",
-    "description": "null",
+    "description": "farms void auras via the \"commanding shadow essences\" quest.",
     "tags": [
-      "null"
+      "commanding",
+      "shadow",
+      "essences",
+      "void",
+      "aura"
     ],
     "path": "Evil/NSoD/VoidAuras/CommandingShadowEssences.cs",
-    "size": 1221,
+    "size": 1313,
     "fileName": "CommandingShadowEssences.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/NSoD/VoidAuras/CommandingShadowEssences.cs"
   },
   {
     "name": "RetreiveVoidAuras",
-    "description": "null",
+    "description": "farms void auras via the \"retrieve void auras\" quest.",
     "tags": [
-      "null"
+      "retrieve",
+      "void",
+      "auras"
     ],
     "path": "Evil/NSoD/VoidAuras/RetreiveVoidAuras.cs",
-    "size": 1257,
+    "size": 1323,
     "fileName": "RetreiveVoidAuras.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/NSoD/VoidAuras/RetreiveVoidAuras.cs"
   },
   {
     "name": "0SmartVoidAuras",
-    "description": "null",
+    "description": "farms void auras via what ever the current best method you have to farm them..",
     "tags": [
-      "null"
+      "smart",
+      "gathering",
+      "unstable",
+      "essences",
+      "commanding",
+      "shadow",
+      "essences",
+      "retrieve",
+      "void",
+      "auras"
     ],
     "path": "Evil/NSoD/VoidAuras/0SmartVoidAuras.cs",
-    "size": 1453,
+    "size": 1612,
     "fileName": "0SmartVoidAuras.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/NSoD/VoidAuras/0SmartVoidAuras.cs"
   },
   {
     "name": "GatheringUnstableEssences",
-    "description": "null",
+    "description": "farms void auras via the \"gathering unstable essences\" quest.",
     "tags": [
-      "null"
+      "gathering",
+      "unstable",
+      "essences",
+      "void aura"
     ],
     "path": "Evil/NSoD/VoidAuras/GatheringUnstableEssences.cs",
-    "size": 874,
+    "size": 967,
     "fileName": "GatheringUnstableEssences.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/NSoD/VoidAuras/GatheringUnstableEssences.cs"
   },
