@@ -1,7 +1,7 @@
 /*
 name: GatheringUnstableEssences
-description: null
-tags: null
+description: farms void auras via the "gathering unstable essences" quest.
+tags: gathering, unstable, essences, void aura
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
