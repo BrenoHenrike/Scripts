@@ -5676,7 +5676,7 @@
       "nation"
     ],
     "path": "Story/Nation/Tercessuinotlim.cs",
-    "size": 4027,
+    "size": 4000,
     "fileName": "Tercessuinotlim.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Nation/Tercessuinotlim.cs"
   },
@@ -14687,7 +14687,7 @@
       "null"
     ],
     "path": "Nation/MergeShops/FiendshardMerge.cs",
-    "size": 5404,
+    "size": 5388,
     "fileName": "FiendshardMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/MergeShops/FiendshardMerge.cs"
   },
@@ -17352,7 +17352,7 @@
       "null"
     ],
     "path": "Other/Classes/ArchMage/CoreArchMage.cs",
-    "size": 22517,
+    "size": 22501,
     "fileName": "CoreArchMage.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/ArchMage/CoreArchMage.cs"
   },
