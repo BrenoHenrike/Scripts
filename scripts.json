@@ -11908,6 +11908,28 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/IceDungeonMerge.cs"
   },
   {
+    "name": "Molten Forge Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Molten Forge Merge [1428] in /battleundere",
+    "tags": [
+      "molten",
+      "forge",
+      "merge",
+      "battleundere",
+      "lavamorphosis",
+      "lavamorph",
+      "eyes",
+      "visor",
+      "wings",
+      "stinger",
+      "venom",
+      "banes"
+    ],
+    "path": "Other/MergeShops/MoltenForgeMerge.cs",
+    "size": 4974,
+    "fileName": "MoltenForgeMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/MoltenForgeMerge.cs"
+  },
+  {
     "name": "UbearMerge",
     "description": "null",
     "tags": [
