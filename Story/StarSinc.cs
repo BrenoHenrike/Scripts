@@ -90,7 +90,6 @@ public class StarSinc
                     Core.Logger("Nova Badge 10");
                     Core.EquipClass(ClassType.Solo);
                     Core.HuntMonster("starsinc", "Prime Dominus", "Prime Defeated", isTemp: false, log: false);
-                    Bot.Wait.ForQuestComplete(4409);
                     break;
 
                 case 4410: // Place the Beacons
@@ -101,7 +100,6 @@ public class StarSinc
                 case 4412: // Retrieve the Core
                     Core.Logger("SuperNova Badge");
                     Core.HuntMonster("starsinc", "Final", "Final Defeated", log: false);
-                    Bot.Wait.ForQuestComplete(4412);
                     break;
             }
         }
