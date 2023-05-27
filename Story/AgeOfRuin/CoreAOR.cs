@@ -26,6 +26,7 @@ public class CoreAOR
     {
         TerminaTemple();
         AshrayVillage();
+        SunlightZone();
     }
 
     public void TerminaTemple()
@@ -89,5 +90,50 @@ public class CoreAOR
 
         // Faces in the Foam (9234)
         Story.KillQuest(9234, "ashray", "Seafoam Elemental");
+    }
+
+    public void SunlightZone()
+    {
+        if (Core.isCompletedBefore(9251))
+            return;
+
+        AshrayVillage();
+
+        Story.PreLoad(this);
+
+        // Detergent Shortage (9242)
+        Story.KillQuest(9242, "sunlightzone", "Blighted Water");
+
+        // Ghost in the Machine (9243)
+        Story.KillQuest(9243, "sunlightzone", "Spectral Jellyfish");
+
+        // Efficient Division (9244)
+        Story.KillQuest(9244, "sunlightzone", "Blighted Water");
+        Story.MapItemQuest(9244, "sunlightzone", new[] { 11705, 11706 });
+
+        // Tech Illiterate (9245)
+        Story.KillQuest(9245, "sunlightzone", "Spectral Jellyfish");
+        Story.MapItemQuest(9245, "sunlightzone", 11707, 3);
+
+        // Plugging Leaks (9246)
+        Story.KillQuest(9246, "sunlightzone", new[] { "Spectral Jellyfish", "Blighted Water" });
+
+        // Shared History (9247)
+        Story.MapItemQuest(9247, "sunlightzone", new[] { 11708, 11709, 11710 });
+
+        // Flat Scares (9248)
+        Story.KillQuest(9248, "sunlightzone", "Astravian Illusion");
+        Story.MapItemQuest(9248, "sunlightzone", 11711);
+
+        // Fishy Bully (9249)
+        Story.KillQuest(9249, "sunlightzone", "Infernal Illusion");
+        Story.MapItemQuest(9249, "sunlightzone", 11712, 5);
+
+        // Faint Howls (9250)
+        Story.MapItemQuest(9250, "sunlightzone", 11713);
+        Story.KillQuest(9250, "sunlightzone", "Seraphic Illusion");
+
+        // Down the Digestive Tract (9251)
+        Story.KillQuest(9251, "sunlightzone", "Marine Snow");
     }
 }
