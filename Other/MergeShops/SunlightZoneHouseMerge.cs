@@ -20,8 +20,6 @@ public class SunlightZoneHouseMerge
     private CoreAdvanced Adv = new();
     private static CoreAdvanced sAdv = new();
 
-    private CoreSoW SoW = new();
-
     public CoreAOR AOR = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
@@ -68,14 +66,10 @@ public class SunlightZoneHouseMerge
 
                 case "Sun Zone Chit":
                     Core.FarmingLogger(req.Name, quant);
-                    Core.RegisterQuests(9251);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster("sunlightzone", "Marine Snow", "Marine Sample");
-                        Core.HuntMonster("sunlightzone", "Infernal Illusion", "Infernal Sample", 10);
-                        Core.HuntMonster("sunlightzone", "Seraphic Illusion", "Seraphic Sample", 10);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
+                    Core.RegisterQuests(9252);
+                        Core.HuntMonster("sunlightzone", "Marine Snow", "Marine Sample", log:false);
+                        Core.HuntMonster("sunlightzone", "Infernal Illusion", "Infernal Sample", 10, log:false);
+                        Core.HuntMonster("sunlightzone", "Seraphic Illusion", "Seraphic Sample", 10, log:false);
                     Core.CancelRegisteredQuests();
                     break;
 
