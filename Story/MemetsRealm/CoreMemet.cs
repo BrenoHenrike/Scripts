@@ -32,7 +32,7 @@ public class MemetsRealm
 
     public void BeachParty()
     {
-        if (Core.isCompletedBefore(7010))
+        if (Core.isCompletedBefore(7009))
             return;
 
         Story.PreLoad(this);
@@ -70,13 +70,14 @@ public class MemetsRealm
         //7009 | Chill Out!
         Story.KillQuest(7009, "beachparty", "Steaming Dragon");
 
-        //7010 | Find Tokens! Win A Prize!
-        if (Story.QuestProgression(7010))
-        {
-            Core.EnsureAccept(7010);
-            Core.KillMonster("beachparty", "r3", "Left", "*", "Tiki Tokens", 5, false);
-            Core.EnsureComplete(7010);
-        }
+        //Quest not required -- Farming Quest
+        // //7010 | Find Tokens! Win A Prize!
+        // if (!Story.QuestProgression(7010))
+        // {
+        //     Core.EnsureAccept(7010);
+        //     Core.KillMonster("beachparty", "r3", "Left", "*", "Tiki Tokens", 5, false);
+        //     Core.EnsureComplete(7010);
+        // }
     }
 
     public void FreakiTiki()
@@ -100,14 +101,15 @@ public class MemetsRealm
         Story.MapItemQuest(5561, "freakitiki", 5035, 5);
 
         //5562 | Needs a Little Kick
-        if (Story.QuestProgression(5562))
-        {
-            Core.EnsureAccept(5562);
-            Core.HuntMonster("pirates", "Undead Pirate", "Pirate Spice", 5);
-            Core.HuntMonster("pirates", "Undead Pirate", "Bone Powder", 5);
-            Core.EnsureComplete(5562);
-        }
-        
+        Story.KillQuest(5562, "pirates", new[] { "Undead Pirate", "Undead Pirate" });
+        // if (!Story.QuestProgression(5562))
+        // {
+        //     Core.EnsureAccept(5562);
+        //     Core.HuntMonster("pirates", "Undead Pirate", "Pirate Spice", 5);
+        //     Core.HuntMonster("pirates", "Undead Pirate", "Bone Powder", 5);
+        //     Core.EnsureComplete(5562);
+        // }
+
         //5563 | Mix an El Captain Rhubarb
         Story.MapItemQuest(5563, "freakitiki", 5039);
 

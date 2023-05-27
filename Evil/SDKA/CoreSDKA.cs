@@ -138,14 +138,14 @@ public class CoreSDKA
                 Core.Logger("You don't have the DoomKnight Class, Getting it for you. (+warrior/Healer if those aren't R10)");
 
                 Core.BuyItem("trainers", 176, "Healer");
-                Adv.rankUpClass("Healer", false);
+                Adv.RankUpClass("Healer", false);
 
                 Core.BuyItem("trainers", 170, "Warrior");
-                Adv.rankUpClass("Warrior", false);
+                Adv.RankUpClass("Warrior", false);
 
                 Adv.BuyItem("shadowfall", 100, "DoomKnight", shopItemID: 6309);
             }
-            Adv.rankUpClass("DoomKnight", false);
+            Adv.RankUpClass("DoomKnight", false);
 
             Adv.GearStore(true);
             Core.EquipClass(ClassType.Solo);
@@ -209,7 +209,7 @@ public class CoreSDKA
         Core.RegisterQuests(2089, 2065);
         while (!Bot.ShouldExit && (!Core.CheckInventory("Dark Spirit Orb", quant)))
         {
-            Core.KillMonster("maul", "r7", "Left", "*", "DoomCoin", oneTime ? 20 : 80, false, log: false);
+            Core.KillMonster("maul", "r7", "Left", "*", "DoomCoin", 20, false, log: false);
 
             if (oneTime)
                 break;
@@ -313,7 +313,7 @@ public class CoreSDKA
         while (!Bot.ShouldExit && (!Core.CheckInventory(item, quant)))
         {
             Core.KillMonster("boxes", "Boss", "Left", "Sneeviltron", "Grumpy Warhammer", isTemp: false, log: false);
-            Core.KillMonster("kitsune", "Boss", "Left", "Kitsune", "No. 1337 Blade Oil", publicRoom: true, log: false);
+            Core.KillKitsune("No. 1337 Blade Oil", publicRoom: true, log: false);
             Core.KillMonster("sandcastle", "r7", "Left", "Chaos Sphinx", "Gold Brush", publicRoom: true, log: false);
             Core.KillMonster("crashsite", "Boss", "Left", "ProtoSartorium", "Non-abrasive Power Powder", log: false);
             Core.KillMonster("necrocavern", "r13", "Left", "Shadow Dragon", "ShadowDragon Hide", 3, log: false);

@@ -16,6 +16,7 @@ public class BrightoakREP
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public BrightOak BrightOak = new();
+    public CoreAdvanced Adv = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -28,6 +29,8 @@ public class BrightoakREP
 
     public void DoRep()
     {
+        Adv.BestGear(GenericGearBoost.dmgAll);
+        Adv.BestGear(GenericGearBoost.rep);
 
         BrightOak.doall();
         Farm.BrightoakREP();

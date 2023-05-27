@@ -15,6 +15,8 @@ tags: story, quest, complete, all
 //cs_include Scripts/Other/MysteriousEgg.cs
 //cs_include Scripts/Other/ShadowDragonDefender.cs
 
+//cs_include Scripts/Story\AgeOfRuin\CoreAOR.cs
+
 //cs_include Scripts/Story/Doomwood/CoreDoomwood.cs
 
 //cs_include Scripts/Story/ElegyofMadness(Darkon)/CoreAstravia.cs
@@ -193,6 +195,9 @@ public class AllStories
     public Core7DD DD = new();
     public HatchTheEgg Egg = new();
     public GetSDD SDD = new();
+
+    // Age Of Ruin
+    public CoreAOR AOR = new();
 
     // Doomwood (all parts)
     public CoreDoomwood DW = new();
@@ -414,6 +419,11 @@ public class AllStories
 
         Egg.Hatch();
         Core.Logger($"Saga: 7 Deadly Dragons (Extra) - Complete");
+        #endregion
+
+        #region AOR
+        AOR.DoAll();
+        Core.Logger($"Saga: Age Of Ruin - Complete");
         #endregion
 
         #region Doomwood

@@ -362,7 +362,11 @@ public class ArmyLR
             map = Array.IndexOf(Army.Players(), Core.Username()) > 2 ? "revenant" : "revenant-" + (Army.getRoomNr() + 1);
             Army.waitForParty(map, item, 3);
         }
-        else Army.waitForParty(map, item);
+        else
+        {
+            Core.PrivateRoomNumber = Army.getRoomNr();
+            Army.waitForParty(map, item);
+        }
 
         Core.FarmingLogger(item, quant);
 

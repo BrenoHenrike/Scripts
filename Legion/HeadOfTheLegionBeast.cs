@@ -1,7 +1,7 @@
 /*
-name: HeadOfTheLegionBeast
-description: null
-tags: null
+name: Head of the Legion Beast
+description: This bot will farm the entire Head of the Legion Beast, including stories and bosses.
+tags: head, legion, beast, LOTLB, seven, circles, war, penance, essence, wrath, violence, treachery, soul, heresy, indulgence, beast, helm, violence, wrath, greed, gluttony, luxuria
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

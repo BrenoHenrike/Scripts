@@ -9,7 +9,7 @@ tags: merge, mats, quest, temple, siege, nulgath, seasonal, staff, birthday
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Nation/CoreNation.cs
 //cs_include Scripts/Seasonal/StaffBirthdays/Nulgath/TempleSiege.cs
-//cs_include Scripts/Nation/Various/DragonBlade[mem}.cs
+//cs_include Scripts/Nation/Various/DragonBlade[mem].cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;

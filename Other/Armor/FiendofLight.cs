@@ -1,7 +1,7 @@
 /*
 name: Fiend of Light
 description: This script will obtain the items from Fiend of Light set that you choose.
-tags: learn-from-the-past, fiend-of-light
+tags: learn, from, the, past, fiend, light
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
@@ -14,90 +14,46 @@ using Skua.Core.Options;
 
 public class FiendofLight
 {
-    public IScriptInterface Bot => IScriptInterface.Instance;
-    public CoreBots Core => CoreBots.Instance;
-    public CoreStory Story = new();
-    public CoreFarms Farm = new();
-    public CoreAdvanced Adv => new();
-    public CoreSepulchure CoreSS = new();
+    private IScriptInterface Bot => IScriptInterface.Instance;
+    private CoreBots Core => CoreBots.Instance;
+    private CoreAdvanced Adv => new();
+    private CoreSepulchure CoreSS = new();
 
     public bool DontPreconfigure = true;
-
-    public string OptionsStorage = "RewardsSelect";
-
-    public List<IOption> Options = new List<IOption>()
+    public string OptionsStorage = "FiendOfLight";
+    public List<IOption> Options = new()
     {
         CoreBots.Instance.SkipOptions,
-        new Option<bool>("SelectReward", "Choose the Reward?", "Select the Reward the Bot will Get, then stop.", false),
-        new Option<bool>("AutoRewardChoice", "Let the bot do it?", "does the quest till you have all the rewards possible.", false),
-        new Option<RewardsSelection>("RewardSelect", "Choose Your Reward", "", RewardsSelection.All)
+        new Option<RewardsSelection>("selectReward", "Choose Your Reward", "", RewardsSelection.All)
     };
 
-    public void ScriptMain(IScriptInterface bot)
+    public void ScriptMain(IScriptInterface Bot)
     {
         Core.SetOptions();
 
-        DoFiendofLight();
+        FiendOfLight();
 
         Core.SetOptions(false);
     }
 
-    public void DoFiendofLight()
+    public void FiendOfLight()
     {
+        RewardsSelection reward = Bot.Config!.Get<RewardsSelection>("RewardSelect");
+        string[] chosenReward =
+            reward == RewardsSelection.All ?
+                Core.QuestRewards(6408) :
+                new[] { Core.QuestRewards(6408).First(x => x == reward.ToString().ToLower().Replace('_', ' ')) };
+
+        if (Core.CheckInventory(chosenReward))
+            return;
+
         CoreSS.SepulchuresRise();
-        if (!Bot.Config.Get<bool>("SelectReward"))
-            ForeachSelect(6408);
-        else OptionsSelect(Bot.Config.Get<RewardsSelection>("RewardSelect"), 6408);
 
-    }
-
-    public void OptionsSelect(RewardsSelection reward = new(), int questID = 000)
-    {
-        List<ItemBase> RewardOptions = Core.EnsureLoad(questID).Rewards;
-        List<string> RewardsList = new List<string>();
-        foreach (ItemBase Item in RewardOptions)
-            RewardsList.Add(Item.Name);
-
-        ItemBase item = Core.EnsureLoad(questID).Rewards.Find(x => x.ID == (int)Bot.Config.Get<RewardsSelection>("RewardSelect"));
-
-        if (item == null)
+        while (!Bot.ShouldExit && !Core.CheckInventory(chosenReward))
         {
-            Core.Logger($"{item.Name} not found in Quest Rewards");
-            return;
-        }
-
-        if (Core.CheckInventory(item.Name))
-            return;
-
-        while (!Core.CheckInventory(item.Name))
-        {
-            Core.EnsureAccept(questID);
-            if (Bot.Config.Get<RewardsSelection>("RewardsSelection") != RewardsSelection.All)
-                Core.EnsureComplete(questID, item.ID);
-            else Core.EnsureComplete(questID);
-        }
-    }
-
-    public void ForeachSelect(int questID)
-    {
-        List<ItemBase> RewardOptions = Core.EnsureLoad(questID).Rewards;
-        List<string> RewardsList = new List<string>();
-        foreach (ItemBase Item in RewardOptions)
-            RewardsList.Add(Item.Name);
-
-        string[] Rewards = RewardsList.ToArray();
-
-        Core.AddDrop(Rewards);
-
-        Core.RegisterQuests(questID);
-        foreach (string item in Rewards)
-        {
-            while (!Bot.ShouldExit && !Core.CheckInventory(item))
-            {
-                while (!Bot.ShouldExit && !Core.CheckInventory(Rewards))
-                    Core.HuntMonster("darkplane", "*", "Crystallized Memory", 10);
-            }
-            Core.CancelRegisteredQuests();
+            Core.EnsureAccept(6408);
+            Core.HuntMonster("darkplane", "*", "Crystallized Memory", 10);
+            Core.EnsureCompleteChoose(6408, chosenReward);
         }
     }
 

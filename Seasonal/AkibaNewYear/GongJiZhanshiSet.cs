@@ -9,7 +9,7 @@ using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 
 
-public class QuestRewardTemplate
+public class GongJiZhanshiSet
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;

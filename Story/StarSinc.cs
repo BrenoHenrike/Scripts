@@ -32,6 +32,8 @@ public class StarSinc
         if (Core.CheckInventory("SuperNova Badge"))
             return;
 
+        Core.EquipClass(ClassType.Farm);
+
         Story.LegacyQuestManager(QuestLogic, 4400, 4401, 4402, 4403, 4404, 4405, 4406, 4407, 4408, 4409, 4410, 4412);
 
         void QuestLogic()
@@ -39,55 +41,65 @@ public class StarSinc
             switch (Story.LegacyQuestID)
             {
                 case 4400: // Weaken his Powers
-                    Core.HuntMonster("starsinc", "Star Sprites", "Stardust", 15);
+                    Core.Logger("Nova Badge 1");
+                    Core.HuntMonster("starsinc", "Star Sprites", "Stardust", 15, log: false);
                     break;
 
                 case 4401: // Light and Dark
-                    Core.HuntMonster("starsinc", "Star Sprites", "Sprite Magic Essence", 7);
+                    Core.Logger("Nova Badge 2");
+                    Core.HuntMonster("starsinc", "Star Sprites", "Sprite Magic Essence", 7, log: false);
                     break;
 
                 case 4402: // Paintings Give Him Strength
+                    Core.Logger("Nova Badge 3");
                     Core.GetMapItem(3607, 4, "starsinc");
                     break;
 
                 case 4403: // Learning the Land
+                    Core.Logger("Nova Badge 4");
                     Core.GetMapItem(3608, 1, "starsinc");
                     break;
 
                 case 4404: // Slay the Light and Dark
-                    Core.HuntMonster("starsinc", "Infernal Imp", "Darkness Fragment", 5);
-                    Core.HuntMonster("starsinc", "Living Star", "Light Fragment", 5);
+                    Core.Logger("Nova Badge 5");
+                    Core.HuntMonster("starsinc", "Infernal Imp", "Darkness Fragment", 5, log: false);
+                    Core.HuntMonster("starsinc", "Living Star", "Light Fragment", 5, log: false);
                     break;
 
                 case 4405: // Chaos Fragments
-                    Core.KillMonster("watchtower", "Frame2", "Left", "Chaos Spider", "Chaos Fragment", 10);
+                    Core.Logger("Nova Badge 6");
+                    Core.KillMonster("watchtower", "Frame2", "Left", "Chaos Spider", "Chaos Fragment", 10, log: false);
                     break;
 
                 case 4406: // Kill Them All
-                    Core.HuntMonster("starsinc", "Star Sprites", "Monster Killed", 15);
+                    Core.Logger("Nova Badge 7");
+                    Core.HuntMonster("starsinc", "Star Sprites", "Monster Killed", 15, log: false);
                     break;
 
                 case 4407: // Get Rid of Those Guards
-                    Core.HuntMonster("starsinc", "Fortress Guard", "Guard Slain", 5);
+                    Core.Logger("Nova Badge 8");
+                    Core.HuntMonster("starsinc", "Fortress Guard", "Guard Slain", 5, log: false);
                     break;
 
                 case 4408: // Breach the Gate
-                    Core.HuntMonster("starsinc", "Fortress Guard", "Guard's Key");
+                    Core.Logger("Nova Badge 9");
+                    Core.HuntMonster("starsinc", "Fortress Guard", "Guard's Key", log: false);
                     break;
 
                 case 4409: // Defeat the Prime Dominus
-                    Story.LegacyQuestAutoComplete = false;
+                    Core.Logger("Nova Badge 10");
                     Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster("starsinc", "Prime Dominus", "Prime Defeated", isTemp: false);
+                    Core.HuntMonster("starsinc", "Prime Dominus", "Prime Defeated", isTemp: false, log: false);
                     break;
 
                 case 4410: // Place the Beacons
+                    Core.Logger("Nova Badge 11");
                     Core.GetMapItem(3609, 6, "starsinc");
                     break;
 
                 case 4412: // Retrieve the Core
-                    Story.LegacyQuestAutoComplete = false;
-                    Core.HuntMonster("starsinc", "Final", "Final Defeated");
+                    Core.Logger("SuperNova Badge");
+                    Core.HuntMonster("starsinc", "Final", "Final Defeated", log: false);
                     break;
             }
         }

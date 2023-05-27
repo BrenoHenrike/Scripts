@@ -30,7 +30,7 @@ public class DragonslayerGeneral
         Adv.GearStore();
         if (Core.CheckInventory(35996))
         {
-            Adv.rankUpClass("Dragonslayer General");
+            Adv.RankUpClass("Dragonslayer General");
             return;
         }
 
@@ -38,7 +38,7 @@ public class DragonslayerGeneral
         EnchantedScaleandClaw(75, 100);
         Core.BuyItem("dragontown", 1286, 35996, shopItemID: 4644);
         Bot.Wait.ForItemBuy();
-        Adv.rankUpClass("Dragonslayer General");
+        Adv.RankUpClass("Dragonslayer General");
         Adv.GearStore(true);
     }
 
@@ -46,7 +46,7 @@ public class DragonslayerGeneral
     {
         if (!Core.CheckInventory(582))
             Core.BuyItem("lair", 38, "Dragonslayer");
-        Adv.rankUpClass("Dragonslayer");
+        Adv.RankUpClass("Dragonslayer");
 
         Core.EquipClass(ClassType.Farm);
 

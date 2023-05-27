@@ -9,7 +9,7 @@ tags: quest, beetle, general, pet, staff, birthday, nulgath
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Nation/CoreNation.cs
 //cs_include Scripts/Seasonal/StaffBirthdays/Nulgath/TempleSiege.cs
-//cs_include Scripts/Nation/Various/DragonBlade[mem}.cs
+//cs_include Scripts/Nation/Various/DragonBlade[mem].cs
 //cs_include Scripts/Seasonal/StaffBirthdays/Nulgath/TempleSiegeMerge.cs
 //cs_include Scripts/Hollowborn/CoreHollowborn.cs
 using Skua.Core.Interfaces;

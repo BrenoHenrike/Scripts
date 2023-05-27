@@ -79,8 +79,7 @@ public class ArmyTemplate
         Core.EquipClass(ClassType.Farm);
         Core.FarmingLogger(item, quant);
 
-        Core.Join(map);
-        WaitCheck();
+        Army.waitForParty(map, item);
         AggroSetup(map);
 
         foreach (string monster in monsters)
@@ -93,15 +92,6 @@ public class ArmyTemplate
         Core.JumpWait();
         Bot.Wait.ForPickup(item);
 
-        void WaitCheck()
-        {
-            while (Bot.Map.PlayerCount < Bot.Config.Get<int>("armysize"))
-            {
-                Core.Logger($"Waiting for the squad. [{Bot.Map.PlayerNames.Count}/{Bot.Config.Get<int>("armysize")}]");
-                Bot.Sleep(5000);
-            }
-            Core.Logger($"Squad All Gathered [{Bot.Map.PlayerNames.Count}/{Bot.Config.Get<int>("armysize")}]");
-        }
     }
 
     void AggroSetup(string map = null)

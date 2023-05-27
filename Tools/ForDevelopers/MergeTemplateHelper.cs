@@ -11,6 +11,7 @@ using Skua.Core.Options;
 using Skua.Core.Models;
 using Skua.Core.Models.Shops;
 using Skua.Core.Models.Items;
+using Skua.Core.Utils;
 using System.IO;
 using System.Diagnostics;
 
@@ -36,9 +37,59 @@ public class MergeTemplateHelper
         Helper();
     }
 
+    // no caps
+    private string[] tagsBlacklist =
+    {
+        // Words
+        "the",
+        "and",
+        "of",
+        "or",
+        "dual",
+        "&amp;",
+        "&",
+
+        // helms
+        "hair",
+        "helm",
+        "hat",
+        "locks",
+        "visage",
+        "helmet",
+        "spike",
+        "spikes",
+        "hood",
+        "hooded",
+        "mask",
+
+        // other gear
+        "armor",
+        "cape",
+        "rune",
+        "aura",
+
+        // weapon types
+        // no need to add the multiplied variant of a word if its just an additional s
+        "staff",
+        "staves",
+        "dagger",
+        "sword",
+        "gauntlet",
+        "gun",
+        "revolver",
+        "blade",
+        "wand",
+        "polearm",
+        "axe",
+        
+
+        // misc
+        "gate"
+    };
+
     public void Helper()
     {
-        string map = Bot.Config.Get<string>("mapName");
+        string? map = Bot.Config!.Get<string>("mapName")?.ToLower();
         int shopID = Bot.Config.Get<int>("shopID");
         bool genFile = Bot.Config.Get<bool>("genFile");
 
@@ -49,9 +100,19 @@ public class MergeTemplateHelper
         }
 
         List<ShopItem> shopItems = Core.GetShopItems(map, shopID);
-        string output = "";
+        string output = String.Empty;
         List<string> itemsToLearn = new();
-        string className = Bot.Shops.Name.Replace("Merge", "").Replace("merge", "").Replace("shop", "").Replace("Shop", "").Replace(" ", "").Replace("'", "");
+        string scriptName = Bot.Shops.Name.Replace("Merge", "").Replace("merge", "").Replace("shop", "").Replace("Shop", "").Replace("'", "").Trim() + " Merge";
+        string className = scriptName.Replace(" ", "");
+        string[] multipliedTagsBlacklist = tagsBlacklist.Select(x => x + 's').ToArray();
+
+        string scriptInfo =
+            "/*\n" +
+            $"name: {scriptName}\n" +
+            $"description: This bot will farm the items belonging to the selected mode for the {scriptName} [{shopID}] in /{map}\n" +
+            $"tags: ";
+        List<string> tags = scriptName.ToLower().Split(' ').ToList();
+        tags.Add(map);
 
         List<string> shopItemNames = new();
         if (genFile)
@@ -61,13 +122,13 @@ public class MergeTemplateHelper
             shopItemNames.Add("    {");
         }
 
-
         foreach (ShopItem item in shopItems)
         {
             if (Adv.miscCatagories.Contains(item.Category) || item.Requirements == null)
                 continue;
 
             shopItemNames.Add($"        new Option<bool>(\"{item.ID}\", \"{item.Name}\", \"Mode: [select] only\\nShould the bot buy \\\"{item.Name}\\\" ?\", false),");
+            tags.AddRange(item.Name.ToLower().Split(' ', StringSplitOptions.RemoveEmptyEntries).Select(x => new String(x.Where(Char.IsLetter).ToArray())).Except(tags).Except(tagsBlacklist).Except(multipliedTagsBlacklist));
 
             foreach (ItemBase req in item.Requirements)
             {
@@ -96,6 +157,7 @@ public class MergeTemplateHelper
                         output += "                    Core.CancelRegisteredQuests();\n";
                         output += "                    break;\n";
                         itemsToLearn.Add(req.Name);
+                        //tags.AddRange(req.Name.ToLower().Split(' ').Except(tags));
                     }
                 }
             }
@@ -121,7 +183,7 @@ public class MergeTemplateHelper
             Core.Logger("Failed to find classIndex");
             return;
         }
-        MergeTemplate[classIndex] = $"public class {className}Merge";
+        MergeTemplate[classIndex] = $"public class {className}";
 
         int blackListIndex = Array.IndexOf(MergeTemplate, "        Core.BankingBlackList.AddRange(new[] { \"\" });");
         if (blackListIndex < 0)
@@ -141,14 +203,17 @@ public class MergeTemplateHelper
 
         shopItemNames.Add("    };");
 
-        string[] content = MergeTemplate[..itemsIndex]
+        scriptInfo += tags.Join(", ") + "\n*/";
+
+        string[] content = new[] { scriptInfo }
+                            .Concat(MergeTemplate[5..itemsIndex])
                             .Concat(new[] { output })
                             .Concat(MergeTemplate[(MergeTemplate.Count() - 4)..(MergeTemplate.Count() - 1)])
                             .Concat(shopItemNames.ToArray())
                             .Concat(new[] { "}" })
                             .ToArray();
 
-        string path = Path.Combine(ClientFileSources.SkuaScriptsDIR, "WIP", className + "Merge.cs");
+        string path = Path.Combine(ClientFileSources.SkuaScriptsDIR, "WIP", className + ".cs");
         Directory.CreateDirectory(Path.Combine(ClientFileSources.SkuaScriptsDIR, "WIP"));
         Core.WriteFile(path, content);
         if (Bot.ShowMessageBox($"File has been generated. Path is {path}\n\nPress OK to open the file",

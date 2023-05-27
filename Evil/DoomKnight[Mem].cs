@@ -32,14 +32,14 @@ public class DoomKnight
         Core.BuyItem("necropolis", 26, "Warrior");
         Core.BuyItem("necropolis", 26, "Healer");
 
-        Adv.rankUpClass("Warrior");
-        Adv.rankUpClass("Healer");
+        Adv.RankUpClass("Warrior");
+        Adv.RankUpClass("Healer");
 
         Farm.EvilREP(5);
 
         Core.BuyItem("shadowfall", 100, "DoomKnight", shopItemID: 6309);
 
         if (rankUpClass)
-            Adv.rankUpClass("DoomKnight");
+            Adv.RankUpClass("DoomKnight");
     }
 }

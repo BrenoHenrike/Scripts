@@ -63,11 +63,13 @@ public class ArmyTotemAndGem
         {
             Core.Logger("Totems Of Nulgath selected, farming max Totems first - then Gems");
             Totems();
+            Gems();
         }
         else if (reward.ToString() == "GemofNulgath")
         {
             Core.Logger("Gems Of Nulgath selected, farming max Gems first - then Totems");
             Gems();
+            Totems();
         }
     }
 
@@ -75,7 +77,7 @@ public class ArmyTotemAndGem
     {
         if (Core.CheckInventory("Totem of Nulgath", quant))
             Gems();
-        else if (Core.CheckInventory("Gem of Nulgath", 300))
+        else if (Core.CheckInventory("Gem of Nulgath", 1000))
             Slave();
 
         Core.FarmingLogger("Totem of Nulgath", quant);
@@ -87,7 +89,7 @@ public class ArmyTotemAndGem
                 Core.EnsureComplete(4778, (int)Rewards.TotemofNulgath);
         }
         Core.Jump(Bot.Player.Cell);
-        if (!Core.CheckInventory("Gem of Nulgath", 300))
+        if (!Core.CheckInventory("Gem of Nulgath", quant))
             Gems();
         else Slave();
     }
@@ -96,7 +98,7 @@ public class ArmyTotemAndGem
     {
         if (Core.CheckInventory("Gem of Nulgath", quant))
             Totems();
-        else if (Core.CheckInventory("Totem of Nulgath", 100))
+        else if (Core.CheckInventory("Gem of Nulgath", quant))
             Slave();
 
         Core.FarmingLogger("Gem of Nulgath", quant);

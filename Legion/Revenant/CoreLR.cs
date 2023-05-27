@@ -85,9 +85,10 @@ public class CoreLR
         ExaltedCrown();
 
         Core.ChainComplete(6900);
-        Bot.Wait.ForPickup("Legion Revenant");
+        Bot.Wait.ForDrop("Legion Revenant", 20);
+        Bot.Wait.ForPickup("Legion Revenant", 20);
         if (rankUpClass)
-            Adv.rankUpClass("Legion Revenant");
+            Adv.RankUpClass("Legion Revenant");
     }
 
     //Legion Fealty 1

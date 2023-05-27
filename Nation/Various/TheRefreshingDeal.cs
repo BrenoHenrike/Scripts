@@ -1,7 +1,7 @@
 /*
-name: TheRefreshingDeal
-description: null
-tags: null
+name: The Refreshing Deal
+description: This script farms Gems and Totems of Nulgath using "The Refreshing Deal" Quest.
+tags: refreshing,deal,gem,totem,nulgath,nation,crag,bamboozle,quest
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -24,7 +24,8 @@ public class TheRefreshingDeal
     public List<IOption> Options = new List<IOption>()
     {
         CoreBots.Instance.SkipOptions,
-        new Option<QuestReward>("RewardChoice", "Choose Your Reward", "Gems or Totems)", QuestReward.None),
+        new Option<int>("GemQuantity", "How many Gems of Nulgath?","Max Stack is 1000" ,0),
+        new Option<int>("TotemQuantity", "How many Totems of Nulgath?","Max Stack is 100", 0),
         new Option<bool>("BankItems", "Bank nation items at the end", "true/false", false),
     };
 
@@ -33,12 +34,12 @@ public class TheRefreshingDeal
         Core.BankingBlackList.AddRange(Nation.bagDrops);
         Core.SetOptions();
 
-        Deal();
+        Deal(Bot.Config.Get<int>("GemQuantity"), Bot.Config.Get<int>("TotemQuantity"));
 
         Core.SetOptions(false);
     }
 
-    public void Deal(string item = null, int quant = 1)
+    public void Deal(int GemQuant, int TotemQuant)
     {
         if (!Core.CheckInventory(Nation.CragName))
         {
@@ -50,37 +51,33 @@ public class TheRefreshingDeal
         PCoD.GetPCoD();
 
         Core.AddDrop("Gem of Nulgath", "Totem of Nulgath");
-        Core.Logger($"Mode Selected: {Bot.Config.Get<QuestReward>("RewardChoice").ToString()} ");
-        while (!Core.CheckInventory(item, quant))
+
+        Core.FarmingLogger("Gem of Nulgath", GemQuant);
+
+        while (!Bot.ShouldExit && !Core.CheckInventory("Gem of Nulgath", GemQuant))
         {
             Core.EnsureAccept(4777);
             Core.HuntMonster("graveyard", "Big Jack Sprat", "Bone Axe", isTemp: false);
             Nation.FarmBloodGem(2);
             Nation.FarmUni10(30);
-
-            if (Bot.Config.Get<QuestReward>("RewardChoice") == QuestReward.Both)
-            {
-                if (!Bot.Inventory.IsMaxStack("Gem of Nulgath"))
-                    Core.EnsureComplete(4777, 6136);
-                else if (!Bot.Inventory.IsMaxStack("Totem of Nulgath"))
-                    Core.EnsureComplete(4777, 5357);
-                Bot.Wait.ForPickup(item);
-            }
-            else if (Bot.Config.Get<QuestReward>("RewardChoice") == QuestReward.Gems)
-                Core.EnsureComplete(4777, 6136);
-            else if (Bot.Config.Get<QuestReward>("RewardChoice") == QuestReward.Totems)
-                Core.EnsureComplete(4777, 5357);
-            Bot.Wait.ForPickup(item);
+            Core.EnsureComplete(4777, 6136);
+            Bot.Wait.ForPickup("Gem of Nulgath");
         }
-        Core.CancelRegisteredQuests();
-        Core.ToBank(Nation.bagDrops);
-    }
 
-    private enum QuestReward
-    {
-        Gems,
-        Totems,
-        Both,
-        None
+        Core.FarmingLogger("Totem of Nulgath", TotemQuant);
+
+        while (!Bot.ShouldExit && !Core.CheckInventory("Totem of Nulgath", TotemQuant))
+        {
+            Core.EnsureAccept(4777);
+            Core.HuntMonster("graveyard", "Big Jack Sprat", "Bone Axe", isTemp: false);
+            Nation.FarmBloodGem(2);
+            Nation.FarmUni10(30);
+            Core.EnsureComplete(4777, 5357);
+            Bot.Wait.ForPickup("Totem of Nulgath");
+        }
+
+        if (Bot.Config.Get<bool>("BankItems"))
+            Core.ToBank(Nation.bagDrops);
     }
 }
+

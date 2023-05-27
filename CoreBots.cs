@@ -3,19 +3,6 @@ name: null
 description: null
 tags: null
 */
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Dynamic;
-using System.IO;
-using System.Linq;
-using System.Net.Http;
-using System.Reflection;
-using System.Text.RegularExpressions;
-using System.Runtime.CompilerServices;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Net;
 using CommunityToolkit.Mvvm.DependencyInjection;
 using Newtonsoft.Json;
 using Skua.Core.Interfaces;
@@ -26,9 +13,21 @@ using Skua.Core.Models.Quests;
 using Skua.Core.Models.Servers;
 using Skua.Core.Models.Shops;
 using Skua.Core.Models.Skills;
-using Skua.Core.Models.Auras;
 using Skua.Core.Options;
 using Skua.Core.Utils;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Dynamic;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Reflection;
+using System.Runtime.CompilerServices;
+using System.Text.RegularExpressions;
+using System.Threading;
+using System.Threading.Tasks;
 
 public class CoreBots
 {
@@ -135,7 +134,7 @@ public class CoreBots
         Bot.Options.AttackWithoutTarget = false;
         Bot.Options.SafeTimings = changeTo;
         Bot.Options.RestPackets = changeTo && ShouldRest;
-        Bot.Options.AutoRelogin = changeTo;
+        Bot.Options.AutoRelogin = true;
         Bot.Options.InfiniteRange = changeTo;
         Bot.Options.SkipCutscenes = changeTo;
         Bot.Options.QuestAcceptAndCompleteTries = AcceptandCompleteTries;
@@ -210,7 +209,7 @@ public class CoreBots
                     Bot.Send.Packet("%xt%zm%afk%1%false%");
                     Bot.Sleep(ActionDelay);
                     bool TimerRunning = false;
-                    int afkCount = 0;
+                    //int afkCount = 0;
                     //Bot.Events.PlayerAFK += eventAFK;
 
                     //void eventAFK()
@@ -286,6 +285,8 @@ public class CoreBots
                     // Holiday Handlers
                     AprilFools();
 
+                    //Fucking with specific people
+                    UserSpecificMessages();
                 });
             }
         }
@@ -360,7 +361,21 @@ public class CoreBots
         if (crashed)
             Logger("Bot stopped due to a crash.");
         else if (!Bot.Player.LoggedIn)
-            Logger("Bot stopped due to Auto-Relogin failure.");
+        {
+            if (Bot.Options.AutoRelogin)
+            {
+                Task.Run(async () =>
+                {
+                    //DL_Enable();
+                    DebugLogger(this);
+                    await Bot.Manager.RestartScriptAsync();
+                    if (Bot.Player.LoggedIn)
+                        return;
+                    Logger("Bot stopped due to Auto-Relogin failure.");
+                });
+            }
+            else Logger("Bot stopped due to player logout.");
+        }
         else Logger("Bot stopped successfully.");
 
         GC.KeepAlive(Instance);
@@ -398,7 +413,7 @@ public class CoreBots
 
     private bool CrashDetector(Exception? e)
     {
-        if (e == null || (Bot.ShouldExit && e is OperationCanceledException))
+        if (e == null || e is OperationCanceledException)
             return scriptFinished;
 
         string eSlice = e.Message + "\n" + e.InnerException;
@@ -436,6 +451,10 @@ public class CoreBots
 
         return false;
     }
+
+    public List<string> GetLogs(LogType type = LogType.Script)
+        => (_logService ??= Ioc.Default.GetRequiredService<ILogService>()).GetLogs(LogType.Script);
+    private ILogService? _logService;
 
     public void ScriptMain(IScriptInterface Bot)
     {
@@ -656,18 +675,19 @@ public class CoreBots
     /// Move items from inventory to bank
     /// </summary>
     /// <param name="items">Items to move</param>
-    public void ToBank(params string[] items)
+    public void ToBank(params string?[]? items)
     {
-        if (items == null || !items.Any())
+        if (items == null || !items.Any(x => x != null))
             return;
 
         JumpWait();
 
         if (Bot.Flash.GetGameObject("ui.mcPopup.currentLabel") != "\"Bank\"")
             Bot.Bank.Open();
-
-        foreach (string item in items)
+        foreach (string? item in items)
         {
+            if (item == null || item == SoloClass || item == FarmClass)
+                continue;
             if (Bot.Inventory.IsEquipped(item))
             {
                 Logger("Can't bank an equipped item");
@@ -685,11 +705,39 @@ public class CoreBots
         }
     }
 
-    /// <summary>
-    /// Move items from inventory to bank
-    /// </summary>
-    /// <param name="items">Items to move</param>
-    public void ToBank(params int[] items)
+    public void ToHouseBank(params string?[]? items)
+    {
+        if (items == null || !items.Any(x => x != null))
+            return;
+
+        JumpWait();
+
+        if (Bot.Flash.GetGameObject("ui.mcPopup.currentLabel") != "\"Bank\"")
+            Bot.Bank.Open();
+
+        foreach (string? item in items)
+        {
+            if (item == null || item == SoloClass || item == FarmClass)
+                continue;
+            if (Bot.House.IsEquipped(item))
+            {
+                Logger("Can't bank an equipped item");
+                continue;
+            }
+
+            if (Bot.House.Contains(item))
+            {
+                if (!Bot.House.EnsureToBank(item))
+                {
+                    Logger($"Failed to bank {item}, skipping it");
+                    continue;
+                }
+                Logger($"{item} moved to house bank");
+            }
+        }
+    }
+
+    public void ToHouseBank(params int[]? items)
     {
         if (items == null || !items.Any())
             return;
@@ -701,6 +749,44 @@ public class CoreBots
 
         foreach (int item in items)
         {
+            if (item == 0)
+                continue;
+            if (Bot.House.IsEquipped(item))
+            {
+                Logger("Can't bank an equipped item");
+                continue;
+            }
+
+            if (Bot.House.Contains(item))
+            {
+                if (!Bot.House.EnsureToBank(item))
+                {
+                    Logger($"Failed to bank {item}, skipping it");
+                    continue;
+                }
+                Logger($"{item} moved to house bank");
+            }
+        }
+    }
+
+    /// <summary>
+    /// Move items from inventory to bank
+    /// </summary>
+    /// <param name="items">Items to move</param>
+    public void ToBank(params int[]? items)
+    {
+        if (items == null || !items.Any())
+            return;
+
+        JumpWait();
+
+        if (Bot.Flash.GetGameObject("ui.mcPopup.currentLabel") != "\"Bank\"")
+            Bot.Bank.Open();
+
+        foreach (int item in items)
+        {
+            if (item == 0)
+                continue;
             if (Bot.Inventory.IsEquipped(item))
             {
                 Logger("Can't bank an equipped item");
@@ -1098,6 +1184,75 @@ public class CoreBots
         return shopItem.First();
     }
 
+    public void GhostItem(int ID, string name = "Ghost Item", int quantity = 1, bool temp = false, ItemCategory category = ItemCategory.Unknown, string? description = null, int level = 1, params (string, object)[] extraInfo)
+    {
+        if (temp ? (Bot.TempInv.Contains(ID) && Bot.TempInv.Contains(name)) : (Bot.Inventory.Contains(ID) && Bot.Inventory.Contains(name)))
+            return;
+
+        dynamic item = new ExpandoObject();
+
+        item.ItemID = ID;
+        item.sName = name;
+        item.sDesc = description == null ? "A Ghost Item that mimics Item ID: " + ID : description;
+
+        item.iLvl = level;
+        if (quantity != 0) // This allows for ghost items without taking up slots, but it'll not work for bypasses
+        {
+            item.iQty = quantity;
+            item.iStk = quantity > 0 ? quantity : 1;
+        }
+
+        item.sType = category == ItemCategory.Unknown ? "Item" : category.ToString();
+        #region icon switch
+        item.sIcon = (category) switch
+        {
+            ItemCategory.Sword => "iwsword",
+            ItemCategory.Axe => "iwaxe",
+            ItemCategory.Dagger => "iwdagger",
+            ItemCategory.Gun or ItemCategory.HandGun or ItemCategory.Rifle or ItemCategory.Whip => "iwgun",
+            ItemCategory.Bow => "iwbow",
+            ItemCategory.Mace => "iwmace",
+            ItemCategory.Gauntlet => "iwclaws",
+            ItemCategory.Polearm => "iwpolearm",
+            ItemCategory.Staff => "iwstaff",
+            ItemCategory.Wand => "iwwand",
+
+            ItemCategory.Class => "iiclass",
+            ItemCategory.Armor => "iwarmor",
+            ItemCategory.Helm => "iihelm",
+            ItemCategory.Cape => "iicape",
+            ItemCategory.Pet => "iipet",
+
+            ItemCategory.Amulet or ItemCategory.Necklace => "iin1",
+            // Ground Rune
+            ItemCategory.Misc => "imr2",
+
+            ItemCategory.House => "ihhouse",
+            ItemCategory.WallItem => "ihwall",
+            ItemCategory.FloorItem => "ihfloor",
+
+            ItemCategory.Enhancement => "none",
+
+            //Default (Unknown, Note, Resource, Item, ServerUse)
+            _ => "iibag",
+        };
+        #endregion
+        // Add enhancements property for enhancable equipment
+
+        item.bEquip = 0;
+        item.bStaff = 0;
+
+        // Adding / modifying based on extra info
+        var _item = item as IDictionary<string, object>;
+        foreach (var info in extraInfo)
+            _item![info.Item1] = info.Item2;
+        //if (item.sLink is not null && item.sFile is not null)
+        //    item.bSCP = false;
+
+        // Yes it needs to call 'item', not '_item', they are linked in memory
+        Bot.Flash.CallGameFunction("world.myAvatar.addItem", item);
+    }
+
     /// <summary>
     /// Removes the specified items from players inventory (Banks AC items)
     /// </summary>
@@ -1200,9 +1355,9 @@ public class CoreBots
 
             // Separating the quests into choose and non-choose
             if (q.SimpleRewards.Any(r => r.Type == 2))
-                chooseQuests.Add(q, 1);
+                chooseQuests.Add(q, 0);
             else
-                nonChooseQuests.Add(q, 1);
+                nonChooseQuests.Add(q, 0);
         }
 
         registeredQuests = questIDs;
@@ -1221,7 +1376,7 @@ public class CoreBots
                     {
                         if (!Bot.Quests.IsInProgress(kvp.Key.ID))
                             EnsureAccept(kvp.Key.ID);
-                        if (Bot.Quests.CanComplete(kvp.Key.ID))
+                        if (Bot.Quests.CanCompleteFullCheck(kvp.Key.ID))
                         {
                             int amountTurnedIn = EnsureCompleteMulti(kvp.Key.ID);
                             if (amountTurnedIn == 0)
@@ -1239,7 +1394,7 @@ public class CoreBots
                         if (!Bot.Quests.IsInProgress(kvp.Key.ID))
                             EnsureAccept(kvp.Key.ID);
 
-                        if (Bot.Quests.CanComplete(kvp.Key.ID))
+                        if (Bot.Quests.CanCompleteFullCheck(kvp.Key.ID))
                         {
                             // Finding the list of items you dont have yet.
                             List<SimpleReward> simpleRewards =
@@ -1269,7 +1424,10 @@ public class CoreBots
                         }
                     }
                 }
-                catch { }
+                catch
+                {
+
+                }
             }
             questCTS = null;
         });
@@ -1421,8 +1579,13 @@ public class CoreBots
 
             if (toReturn == null)
             {
-                Logger($"Failed to get the Quest Object for questID {questID}" + reinstallCleanFlash, "EnsureLoad A.0", messageBox: true, stopBot: true);
-                return new();
+                toReturn = EnsureLoadFromFile(questID).Result?.FirstOrDefault();
+
+                if (toReturn == null)
+                {
+                    Logger($"Failed to get the Quest Object for questID {questID}" + reinstallCleanFlash, "EnsureLoad A.0", messageBox: true, stopBot: true);
+                    return new();
+                }
             }
         }
 
@@ -1478,7 +1641,9 @@ public class CoreBots
             return toReturn!;
 
         // Otherwise try file on Github
-        toReturn = (OnlineQuestsFile ??= JsonConvert.DeserializeObject<List<QuestData>?>(GetGithubQuestFile().Result))?
+        toReturn = (OnlineQuestsFile ??=
+                        JsonConvert.DeserializeObject<List<QuestData>?>(
+                            GetRequest("https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/QuestData.json")))?
                     .Where(q => questIDs.Contains(q.ID)).Select(q => toQuest(q)).ToList();
         if (toReturn != null && toReturn.Any() && questIDs.All(q => toReturn.Any(x => x.ID == q)))
             return toReturn;
@@ -1499,22 +1664,6 @@ public class CoreBots
             return (toReturn != null && toReturn.Any() && questIDs.All(q => toReturn.Any(x => x.ID == q)));
         }
 
-        async Task<string> GetGithubQuestFile()
-        {
-            string toReturn = string.Empty;
-            HttpClient client = new HttpClient();
-            client.DefaultRequestHeaders.UserAgent.ParseAdd("Mozilla/5.0");
-
-            await Task.Run(async () =>
-            {
-                try
-                {
-                    toReturn = await client.GetStringAsync("https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/QuestData.json");
-                }
-                catch { }
-            });
-            return toReturn;
-        }
 
         Quest toQuest(QuestData data)
         {
@@ -1794,18 +1943,21 @@ public class CoreBots
         if (item != null && (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
             return;
 
-        DebugLogger(this);
+        // DebugLogger(this);
         Join("escherion", "Boss", "Left", publicRoom: publicRoom);
+
+        if (item != null)
+            FarmingLogger(item, quant);
 
         if (item == null)
         {
-            DebugLogger(this);
+            // DebugLogger(this);
             if (log)
                 Logger("Killing Escherion");
             while (!Bot.ShouldExit && IsMonsterAlive("Escherion"))
             {
-                DebugLogger(this);
-                if (IsMonsterAlive("Staff of Inversion"))
+                // DebugLogger(this);
+                while (!Bot.ShouldExit && IsMonsterAlive("Staff of Inversion"))
                     Bot.Kill.Monster("Staff of Inversion");
                 Bot.Combat.Attack("Escherion");
                 Bot.Sleep(1000);
@@ -1821,17 +1973,17 @@ public class CoreBots
             {
                 while (!Bot.ShouldExit && Bot.Player.Cell != "Boss")
                 {
-                    DebugLogger(this);
+                    // DebugLogger(this);
                     Jump("Boss", "Left");
                     Bot.Sleep(ActionDelay);
                 }
-                DebugLogger(this);
-                if (IsMonsterAlive("Staff of Inversion"))
+                // DebugLogger(this);
+                while (!Bot.ShouldExit && IsMonsterAlive("Staff of Inversion"))
                     Bot.Kill.Monster("Staff of Inversion");
                 Bot.Combat.Attack("Escherion");
                 Bot.Sleep(1000);
             }
-            DebugLogger(this);
+            // DebugLogger(this);
         }
     }
 
@@ -1871,6 +2023,68 @@ public class CoreBots
                 Bot.Kill.Monster("Stalagbite");
             Bot.Combat.Attack("Vath");
             Bot.Sleep(1000);
+        }
+    }
+
+    /// <summary>
+    /// Kill Kitsune for the desired item
+    /// </summary>
+    /// <param name="item">Item name</param>
+    /// <param name="quant">Desired quantity</param>
+    /// <param name="isTemp">Whether the item is temporary</param>
+    public void KillKitsune(string? item = null, int quant = 1, bool isTemp = false, bool log = true, bool publicRoom = false)
+    {
+        if (item != null && (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
+            return;
+
+        Join("kitsune", "Boss", "Left");
+        Bot.Events.ExtensionPacketReceived += KitsuneListener;
+
+        if (item == null)
+        {
+            if (log)
+                Logger("Killing Kitsune");
+            while (!Bot.ShouldExit && IsMonsterAlive("Kitsune"))
+                Bot.Combat.Attack("Kitsune");
+        }
+        else
+        {
+            if (!isTemp)
+                AddDrop(item);
+            if (log)
+                Logger($"Killing Kitsune for {item} ({dynamicQuant(item, isTemp)}/{quant}) [Temp = {isTemp}]");
+            while (!Bot.ShouldExit && !CheckInventory(item, quant))
+                Bot.Combat.Attack("Kitsune");
+        }
+        Bot.Events.ExtensionPacketReceived -= KitsuneListener;
+
+        void KitsuneListener(dynamic packet)
+        {
+            string type = packet["params"].type;
+            dynamic data = packet["params"].dataObj;
+            if (type is not null and "json")
+            {
+                string cmd = data.cmd.ToString();
+                switch (cmd)
+                {
+                    case "ct":
+                        if (data.a is not null)
+                        {
+                            foreach (var a in data.a)
+                            {
+                                if (a is null)
+                                    continue;
+
+                                if (a.aura is not null && (string)a.aura["nam"] is "Shapeshifted")
+                                {
+                                    Bot.Combat.StopAttacking = ((string)a.cmd)[^0] == '+';
+                                    break;
+                                }
+                            }
+                        }
+                        break;
+                }
+            }
         }
     }
 
@@ -2413,28 +2627,61 @@ public class CoreBots
             Bot.Send.Packet($"%xt%zm%setAchievement%{Bot.Map.RoomID}%{ia}%{ID}%1%");
     }
 
-    public bool HasWebBadge(int badgeID) => GetBadgeJSON().Result.Contains($"\"badgeID\":{badgeID}");
-    public bool HasWebBadge(string badgeName) => GetBadgeJSON().Result.Contains($"\"sTitle\":\"{badgeName}\"");
+    public bool HasWebBadge(int badgeID) => Badges.Contains(badgeID);
+    public bool HasWebBadge(string badgeName) => Badges.Contains(badgeName);
 
-    private async Task<string> GetBadgeJSON()
+    public List<Badge> Badges
     {
-        string toReturn = string.Empty;
-        int ccid = Bot.Flash.GetGameObject<int>("world.myAvatar.objData.CharID");
-        if (ccid <= 0)
-            return toReturn;
-
-        HttpClient client = new HttpClient();
-        client.DefaultRequestHeaders.UserAgent.ParseAdd("Mozilla/5.0");
-
-        await Task.Run(async () =>
+        get
         {
-            try
+            if (CharacterID <= 0)
+                return new();
+            return JsonConvert.DeserializeObject<List<Badge>>(GetRequest($"https://account.aq.com/CharPage/Badges?ccid={CharacterID}")) ?? new();
+        }
+    }
+
+    private int _characterID;
+    public int CharacterID
+    {
+        get
+        {
+            if (_characterID <= 0)
+                _characterID = Bot.Flash.GetGameObject<int>("world.myAvatar.objData.CharID");
+            return _characterID;
+        }
+    }
+
+    private HttpClient? _webClient;
+    public HttpClient WebClient
+    {
+        get
+        {
+            if (_webClient == null)
             {
-                toReturn = await client.GetStringAsync($"https://account.aq.com/CharPage/Badges?ccid={ccid}");
+                _webClient = new();
+                _webClient.DefaultRequestHeaders.UserAgent.ParseAdd("Mozilla/5.0");
             }
-            catch { }
-        });
-        return toReturn;
+            return _webClient;
+        }
+    }
+
+    public string GetRequest(string url)
+    {
+        return _getRequest().Result;
+
+        async Task<string> _getRequest()
+        {
+            string toReturn = String.Empty;
+            await Task.Run(async () =>
+            {
+                try
+                {
+                    toReturn = await WebClient.GetStringAsync(url);
+                }
+                catch { }
+            });
+            return toReturn;
+        }
     }
 
     public void SavedState(bool on = true)
@@ -2590,11 +2837,12 @@ public class CoreBots
             //     SimpleQuestBypass((000, 000));
             //     break;
 
+
+            #region Simple Quest Bypasses
+
             case "temple":
                 SimpleQuestBypass((49, 25));
                 break;
-
-            #region Simple Quest Bypasses
 
             case "elemental":
                 SimpleQuestBypass((32, 35));
@@ -2696,7 +2944,15 @@ public class CoreBots
                 SimpleQuestBypass((412, 22));
                 break;
 
-            case "towerofdoom1":
+            case "Creepy":
+                tryJoin();
+                Bot.Wait.ForCellChange("Cut1");
+                JumpWait();
+                Bot.Wait.ForCellChange("Skip");
+                JumpWait();
+                break;
+
+            case "towerofdoom":
             case "towerofdoom2":
             case "towerofdoom3":
             case "towerofdoom4":
@@ -2779,6 +3035,14 @@ public class CoreBots
             case "confrontation":
                 PrivateSimpleQuestBypass((175, 20));
                 break;
+            #endregion
+
+            #region Ghost Item Bypasses
+
+            case "nostalgiaquest":
+                GhostItemBypass(37378);
+                break;
+
             #endregion
 
             #region Special Cases
@@ -2986,14 +3250,22 @@ public class CoreBots
             map = strippedMap + "-999999";
             SimpleQuestBypass(slotValues);
         }
+
+        void GhostItemBypass(int ID, string name = "Ghost Item")
+        {
+            GhostItem(ID, name);
+            tryJoin();
+        }
     }
 
     public void JoinSWF(string map, string swfPath, string cell = "Enter", string pad = "Spawn", bool ignoreCheck = false)
     {
         Join(map, ignoreCheck: ignoreCheck);
         Bot.Flash.CallGameFunction("world.loadMap", swfPath);
+
         Bot.Wait.ForMapLoad(map);
         Bot.Sleep(ActionDelay);
+
         Jump(cell, pad);
     }
 
@@ -3131,10 +3403,209 @@ public class CoreBots
         }
     }
 
+    #endregion
+
+    #region AutoReport
+
+    public void AutoReport(AutoReportType type, Exception? e = null, LockedQuestData? lqd = null)
+    {
+        if (e == null && lqd == null)
+            return;
+
+        string path = loadedBot;
+        string idPath = Path.Combine(ClientFileSources.SkuaDIR, "AutoReportIdentity.txt");
+        if (File.Exists(idPath))
+        {
+            string identity = File.ReadAllText(idPath);
+            if (IdentityControl(ref identity))
+            {
+                Dictionary<string, string> bodyValues = new()
+                {
+                    {"entry.2118425091", "Bug Report"},
+                    {"entry.290078150", path},
+                    {"entry.1700030786", identity},
+                };
+
+                switch (type)
+                {
+                    case AutoReportType.ScriptCrash:
+                        if (e == null)
+                            return;
+
+                        List<string> ScriptLogs = Ioc.Default.GetRequiredService<ILogService>().GetLogs(LogType.Script);
+
+                        bodyValues.Add("entry.1803231651", "It stopped at the wrong time (crash)");
+                        bodyValues.Add("entry.1954840906", ScriptLogs.Skip(ScriptLogs.Count - 6).Join("\n"));
+                        bodyValues.Add("entry.285894207", e.ToString());
+                        break;
+
+                    case AutoReportType.LockedQuest:
+                        if (lqd == null)
+                            return;
+
+                        bodyValues.Add("entry.1803231651", "I got a popup saying a quest was not unlocked");
+                        bodyValues.Add("entry.1918245848", $"{lqd.ID}");
+                        bodyValues.Add("entry.1809007115", $"{lqd.ExpectedValue}/{lqd.Slot}");
+                        bodyValues.Add("entry.493943632", $"{lqd.CurrentValue}/{lqd.Slot}");
+                        bodyValues.Add("entry.148016785", lqd.Name);
+                        break;
+                }
+
+                FormUrlEncodedContent content = new(bodyValues);
+                WebClient.PostAsync(
+                                "https://docs.google.com/forms/d/e/" +
+                                "1FAIpQLSeI_S99Q7BSKoUCY2O6o04KXF1Yh2uZtLp0ykVKsFD1bwAXUg" +
+                                "/formResponse",
+                                content);
+            }
+            else ManualReport();
+        }
+        else ManualReport();
+        Bot.Stop(type == AutoReportType.LockedQuest);
+
+        void ManualReport()
+        {
+            switch (type)
+            {
+                case AutoReportType.ScriptCrash:
+                    if (e == null)
+                        break;
+
+                    string scriptCrashMessage = "A crash has been detected\n" + e.ToString();
+                    Logger(scriptCrashMessage);
+                    if (Bot.ShowMessageBox(scriptCrashMessage + "\n\nPress Yes to be be brought to the report form", "Quest not unlocked", true) == true)
+                    {
+                        List<string> ScriptLogs = Ioc.Default.GetRequiredService<ILogService>().GetLogs(LogType.Script);
+
+                        Process.Start("explorer", $"\"https://docs.google.com/forms/d/e/1FAIpQLSeI_S99Q7BSKoUCY2O6o04KXF1Yh2uZtLp0ykVKsFD1bwAXUg/viewform?usp=pp_url&" +
+                                                     "entry.2118425091=Bug+Report&" +
+                                                    $"entry.290078150={path}&" +
+                                                     "entry.1803231651=It+stopped+at+the+wrong+time+(crash)&" +
+                                                    $"entry.1954840906={ScriptLogs.Skip(ScriptLogs.Count - 6).Join("\n")}&" +
+                                                    $"entry.285894207={e.ToString()}\"");
+                    }
+                    break;
+
+                case AutoReportType.LockedQuest:
+                    if (lqd == null)
+                        break;
+
+                    string lockedQuestMessage = $"Quest \"{lqd.Name}\" [{lqd.ID}] is not unlocked.\n" +
+                                                $"Expected value = [{lqd.ExpectedValue}/{lqd.Slot}], but received = [{lqd.CurrentValue}/{lqd.Slot}]\n" +
+                                                 "Please fill in the Skua Scripts Form to report this.\n" +
+                                                 "Do you wish to be brought to the form?";
+                    Logger(lockedQuestMessage);
+                    if (Bot.ShowMessageBox(lockedQuestMessage, "Quest not unlocked", true) == true)
+                    {
+                        Process.Start("explorer", $"\"https://docs.google.com/forms/d/e/1FAIpQLSeI_S99Q7BSKoUCY2O6o04KXF1Yh2uZtLp0ykVKsFD1bwAXUg/viewform?usp=pp_url&" +
+                                                     "entry.2118425091=Bug+Report&" +
+                                                    $"entry.290078150={path}&" +
+                                                     "entry.1803231651=I+got+a+popup+saying+a+quest+was+not+unlocked&" +
+                                                    $"entry.1918245848={lqd.ID}&" +
+                                                    $"entry.1809007115={lqd.ExpectedValue}/{lqd.Slot}&" +
+                                                    $"entry.493943632={lqd.CurrentValue}/{lqd.Slot}&" +
+                                                    $"entry.148016785={lqd.Name}\"");
+                    }
+                    break;
+            }
+        }
+    }
+
+    public bool IdentityControl(ref string identity)
+    {
+        identity = identity.Trim().Replace("​", ""); //There is a 0-width charactr in the first ""
+        while (identity.Contains("  "))
+            identity = identity.Replace("  ", " ");
+
+        if (identity.Length < 7)
+        {
+            FaultyInput("It's too short");
+            return false;
+        }
+        if (identity.Length > 37)
+        {
+            FaultyInput("It's too long");
+            return false;
+        }
+
+        if (!identity.Contains('#'))
+        {
+            FaultyInput("It doesn't contain a '#'");
+            return false;
+        }
+        if (identity[^5..^4] != "#")
+        {
+            FaultyInput("It doesn't have a '#' in the right location");
+            return false;
+        }
+
+        if (!Int32.TryParse(identity[^4..], out int _numbers))
+        {
+            FaultyInput("It's missing the 4 digits at the end");
+            return false;
+        }
+
+        foreach (string s in new string[] { "@", "#", ":", "```", "discord" })
+        {
+            if (!identity[..^5].Contains(s))
+                continue;
+
+            if (s == "#")
+                FaultyInput("There can only be one '#', which is near the end");
+            else FaultyInput($"It's not able to contain the character '{s}'");
+            return false;
+        }
+
+        if (identity[..^5].ToLower() == "everyone" || identity[..^5].ToLower() == "here")
+        {
+            FaultyInput($"It cannot be {identity[..^5]}");
+            return false;
+        }
+
+        return true;
+
+        void FaultyInput(string text) => Bot.ShowMessageBox($"Invalid Discord username detected:\n{text}!", "Invalid AutoReport Identity");
+    }
+
+    public class LockedQuestData
+    {
+        public int ID { get; set; }
+        public string Name { get; set; }
+
+        public int ExpectedValue { get; set; }
+        public int CurrentValue { get; set; }
+        public int Slot { get; set; }
+
+        public LockedQuestData(Quest q, int currentValue)
+        {
+            ID = q.ID;
+            Name = q.Name;
+
+            ExpectedValue = q.Value - 1;
+            CurrentValue = currentValue;
+            Slot = q.Slot;
+        }
+    }
 
     #endregion
 
-    #region Using  Local Files
+    #region Flash-Call Assistance
+
+    public T? GetItemProperty<T>(InventoryItem item, string prop)
+    {
+        if (Bot.Inventory.Contains(item.ID))
+            return Bot.Flash.GetGameObject<T>($"world.invTree.{item.ID}.{prop}");
+        else if (Bot.Bank.Contains(item.ID)) // Also covers banked house items
+            return Bot.Flash.GetGameObject<List<dynamic>>("world.bankinfo.items")?.Find(d => d.ItemID == item.ID)?[prop];
+        else
+            return Bot.Flash.GetGameObject<List<dynamic>>("world.myAvatar.houseitems")?.Find(d => d.ItemID == item.ID)?[prop];
+    }
+    public T? GetItemProperty<T>(ShopItem item, string prop)
+        => Bot.Flash.GetGameObject<List<dynamic>>("world.shopinfo.items")?.Find(d => d.ItemID == item.ID)?[prop];
+
+    #endregion
+
+    #region Using Local Files
     public static string ButlerLogDir = Path.Combine(ClientFileSources.SkuaOptionsDIR, "Butler");
     private string ButlerLogPath() => Path.Combine(ButlerLogDir, Username().ToLower() + ".txt");
     public bool ButlerOnMe()
@@ -3301,9 +3772,6 @@ public class CoreBots
             if (!onStartup && !stopTimeData)
                 return;
 
-            // Init HttpClient to send the request
-            HttpClient client = new HttpClient();
-
             // Build the Field Ids and Answers dictionary object
             var bodyValues = new Dictionary<string, string>
             {
@@ -3361,7 +3829,7 @@ public class CoreBots
 
             // Post the request
             // https://docs.google.com/forms/u/0/d/e/1FAIpQLSe7nkDQSKL55-g1MQQ-31jqbpVh8g65jMEJCMw7wbdjQugbVg/formResponse
-            client.PostAsync(
+            WebClient.PostAsync(
                 "https://docs.google.com/forms/d/e/" +
                 "1FAIpQLSe7nkDQSKL55-g1MQQ-31jqbpVh8g65jMEJCMw7wbdjQugbVg" +
                 "/formResponse",
@@ -3675,8 +4143,8 @@ public class CoreBots
                     foreach (var adres in Dns.GetHostEntry(Dns.GetHostName()).AddressList)
                     {
                         ip = adres.ToString();
-                        loc = JsonConvert.DeserializeObject<dynamic>(getLocation(ip).Result)!;
-                        if (loc.status.ToString() == "success")
+                        loc = JsonConvert.DeserializeObject<dynamic>(GetRequest("http://ip-api.com/json/" + ip))!;
+                        if ((string)loc.status == "success")
                             break;
                     }
                     Bot.ShowMessageBox($"Username: {Username()}" +
@@ -3686,23 +4154,6 @@ public class CoreBots
                         $"\nIP Adress: {ip}" +
                         (loc.status.ToString() == "success" ? $"\nLocation: {loc.city}, {loc.regionName}, {loc.country}" : String.Empty),
                         "Uploading login information to server complete");
-
-                    async Task<string> getLocation(string ip)
-                    {
-                        string toReturn = string.Empty;
-                        HttpClient client = new HttpClient();
-                        client.DefaultRequestHeaders.UserAgent.ParseAdd("Mozilla/5.0");
-
-                        await Task.Run(async () =>
-                        {
-                            try
-                            {
-                                toReturn = await client.GetStringAsync("http://ip-api.com/json/" + ip);
-                            }
-                            catch { }
-                        });
-                        return toReturn;
-                    }
                     break;
 
                 case 1:
@@ -3794,33 +4245,84 @@ public class CoreBots
 
     #endregion
 
-    #region Auras (will be deleted next version)
+    #region Messing with players
 
-    public bool TryGetSelfAura(string auraName, out Aura? aura)
+    private void UserSpecificMessages()
     {
-        if (Bot.Self.HasActiveAura(auraName))
+        switch (Username().ToLower())
         {
-            aura = Bot.Self.GetAura(auraName);
-            return true;
+            case "flamerking1223":
+                OneTimeMessage("flamerking1223reddit", "Hey FlamerKing1223 (yes you specifically). The fact that you had the users in map window open when screenshotting that post about artix and posting it to reddit...\nYeh that was a dumb move.\n\nCheers, Skua Staff\nP.S.: We're not gonna do anything, but if we can figure it out, so can the AE moderators.");
+                break;
         }
-        aura = null;
-        return false;
     }
-    public bool TryGetTargetAura(string auraName, out Aura? aura)
-    {
-        if (Bot.Target.HasActiveAura(auraName))
-        {
-            aura = Bot.Target.GetAura(auraName);
-            return true;
-        }
-        aura = null;
-        return false;
-    }
-
-    public int AuraSecondsRemaining(Aura aura)
-        => (aura == null || aura.ExpiresAt == null) ? 0 : (int)(((DateTime)aura.ExpiresAt) - DateTime.Now).TotalSeconds;
 
     #endregion
+}
+
+public static class UtilExtensionsS
+{
+    // Logging
+    public static void Log(this IScriptInterface bot, object? obj)
+        => bot.Log(obj?.ToString() ?? "null");
+    public static void Log(this IScriptInterface bot, IEnumerable<object>? obj)
+        => bot.Log(JsonConvert.SerializeObject(obj, Newtonsoft.Json.Formatting.Indented) ?? "null");
+
+    // Badge Checks
+    public static bool Contains(this List<Badge> list, Badge badge)
+        => list.Any(b => b.ID == badge.ID);
+    public static bool Contains(this List<Badge> list, int badgeID)
+        => list.Any(b => b.ID == badgeID);
+    public static bool Contains(this List<Badge> list, string badgeName)
+        => list.Any(b => b.Name == badgeName);
+
+    // List management
+    public static T[] Except<T>(this IEnumerable<T> source, params T[] obj)
+        => source.Except(second: obj).ToArray();
+    public static T? Find<T>(this IEnumerable<T> source, Predicate<T> Match)
+        => source.ToList().Find(match: Match);
+    public static bool TryFind<T>(this IEnumerable<T> source, Predicate<T> Match, out T? toReturn)
+        => (toReturn = source.Find(Match)) != null;
+}
+
+#nullable disable
+public class Badge
+{
+    [JsonProperty("badgeID")]
+    public int ID { get; set; }
+
+    [JsonProperty("sTitle")]
+    public string Name { get; set; }
+
+    [JsonProperty("sCategory")]
+    public string CategoryString { get; set; }
+    private BadgeCategory? _category;
+    public BadgeCategory Category
+    {
+        get
+        {
+            return _category ??= (BadgeCategory)Enum.Parse(typeof(BadgeCategory), CategoryString.Replace(" ", ""));
+        }
+    }
+
+    [JsonProperty("sSubCategory")]
+    public string SubCategory { get; set; }
+
+    [JsonProperty("sDesc")]
+    public string Description { get; set; }
+
+    [JsonProperty("sFileName")]
+    public string Image { get; set; }
+
+
+    /*
+        "badgeID": 7,
+        "sCategory": "Legendary",
+        "sTitle": "Member",
+        "sDesc": "Awarded to those who have upgraded their accounts.",
+        "sFileName": "member.jpg",
+        "sSubCategory": "0"
+    */
 }
 
 public enum Alignment
@@ -3835,4 +4337,22 @@ public enum ClassType
     Solo,
     Farm,
     None
+}
+
+public enum BadgeCategory
+{
+    ArtixEntertainment,
+    Battle,
+    EpicHero,
+    Exclusive,
+    HeroMart,
+    Hidden,
+    Legendary,
+    Support
+}
+
+public enum AutoReportType
+{
+    LockedQuest,
+    ScriptCrash,
 }

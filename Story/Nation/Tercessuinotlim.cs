@@ -82,7 +82,7 @@ public class Tercessuinotlim
         {
             Core.EnsureAccept(8473);
             Core.HuntMonster($"Fiendshard", "Fiend Shard", "Dirtlicker’s Shard Shaving", 3);
-            Core.HuntMonster($"Fiendshard", "Nulgath's Fiend Shard", "Nulgath’s Shard Shaving", 3);
+            Core.HuntMonsterMapID("Fiendshard", 15, "Piece of the Shard");
             Core.HuntMonster("QuibbleHunt", "RogueFiend", "Roguefiend Crystal Shaving", 5);
             Core.EnsureComplete(8473);
         }
@@ -92,7 +92,7 @@ public class Tercessuinotlim
         {
             Core.EnsureAccept(8474);
             Core.HuntMonster("hachiko", "Dai Tengu", "101 Proof Blade Oil");
-            Core.HuntMonster("Kitsune", "Kitsune", "Private Reserve Sake");
+            Core.KillKitsune("Private Reserve Sake", 1, true);
             Core.HuntMonster("Tercessuinotlim", "Taro Blademaster", "The Tale of Taro");
             Core.EnsureComplete(8474);
         }

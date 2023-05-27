@@ -1,7 +1,7 @@
 /*
-name: NulgathDemandsWork
-description: null
-tags: null
+name: Nulgath Demands Work
+description: This bot will do the Nulgath Demands Work quest untill you have a uni35 and the equipment.
+tags: archfiend, doomlord, ADFL, nulgath, demands, work, unidentified, uni, 35, essence, fragment
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -42,7 +42,7 @@ public class NulgathDemandsWork
 
     public void DoNulgathDemandsWork()
     {
-        NDWQuest(new[] { "Unidentified 35" });
+        NDWQuest(new[] { "Unidentified 35" }, 300);
         NDWQuest(NDWItems);
     }
 
@@ -51,7 +51,7 @@ public class NulgathDemandsWork
     /// <param name="string[] items">The List of items to Get from the Quest</param>
     /// <param name="quant">Amount of the "item" [Mostly the Archfiend Ess and Uni 35]</param>
     /// </summary>
-    public void NDWQuest(string[] items = null, int quant = 1)
+    public void NDWQuest(string[]? items = null, int quant = 1)
     {
         if (items == null)
             items = NDWItems;
@@ -68,16 +68,8 @@ public class NulgathDemandsWork
         {
             if (Core.CheckInventory(item, quant))
                 continue;
-
-            int itemID = 0;
-            try
-            {
-                itemID = rewards.First(x => x.Name.ToLower() == item.ToLower()).ID;
-            }
-            catch
-            {
+            if (!rewards.TryFind(x => x.Name.ToLower() == item.ToLower(), out var _item))
                 continue;
-            }
 
             Core.FarmingLogger(item, quant);
 
@@ -103,10 +95,10 @@ public class NulgathDemandsWork
                         Core.BuyItem("tercessuinotlim", 1951, 35770);
                     else Core.EnsureComplete(5259);
                 }
-                Core.EnsureComplete(5259, itemID);
+                Core.EnsureComplete(5259, _item!.ID);
                 Core.ToBank(item);
 
-                Core.Logger($"Completed x{i}");
+                Core.Logger($"Completed x{++i}");
                 i++;
             }
         }

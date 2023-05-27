@@ -43,7 +43,7 @@ public class CoreLegion
         Adv.BestGear(GenericGearBoost.gold);
 
         Core.FarmingLogger("Emblem of Dage", quant);
-        Core.AddDrop("Legion Seal", "Gem of Mastery");
+        Core.AddDrop("Legion Seal", "Gem of Mastery", "Emblem of Dage");
         Core.RegisterQuests(4742);
         while (!Bot.ShouldExit && !Core.CheckInventory("Emblem of Dage", quant))
         {
@@ -433,6 +433,8 @@ public class CoreLegion
         if (Bot.Map.PlayerCount < partySize && onlyWithParty)
         {
             Core.Join("legionarena", ignoreCheck: true, publicRoom: true);
+            if (ReturnIfNoPeople && Bot.Map.PlayerCount < partySize)
+                return;
             while (!Bot.ShouldExit && Bot.Map.PlayerCount < partySize) { }
             Core.Logger($"Party gathered [{Bot.Map.PlayerNames!.Count}/{partySize}]");
         }

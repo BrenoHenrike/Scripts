@@ -4,16 +4,17 @@ description: null
 tags: null
 */
 //cs_include Scripts/CoreBots.cs
+using CommunityToolkit.Mvvm.DependencyInjection;
+using Newtonsoft.Json;
 using Skua.Core.Interfaces;
+using Skua.Core.Models;
 using Skua.Core.Models.Monsters;
 using Skua.Core.Models.Players;
 using Skua.Core.Options;
-using Skua.Core.Models;
 using Skua.Core.ViewModels;
-using System.Xml;
 using System.Diagnostics;
-using Newtonsoft.Json;
-using CommunityToolkit.Mvvm.DependencyInjection;
+using System.Text;
+using System.Xml;
 
 public class CoreArmyLite
 {
@@ -297,7 +298,7 @@ public class CoreArmyLite
         string Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         string combinedDigits = "";
 
-        foreach (char c in (ClientFileSources.SkuaDIR))
+        foreach (char c in Convert.ToHexString(Encoding.Default.GetBytes(Environment.MachineName)))
         {
             if (char.IsDigit(c))
                 combinedDigits += c;
@@ -588,7 +589,7 @@ public class CoreArmyLite
     };
     #endregion
     #region Butler
-    public void Butler(string playerName, bool LockedMaps = true, ClassType classType = ClassType.Farm, bool CopyWalk = false, int roomNr = 1, bool rejectDrops = true, string? attackPriority = null)
+    public void Butler(string playerName, bool LockedMaps = true, ClassType classType = ClassType.Farm, bool CopyWalk = false, int roomNr = 1, bool rejectDrops = true, string? attackPriority = null, int hibernateTimer = 0)
     {
         // Double checking the playername and assigning it so all functions can read it
         if (playerName == "Insert Name" || String.IsNullOrEmpty(playerName))
@@ -599,6 +600,8 @@ public class CoreArmyLite
         // Assigning params to private objects.
         b_doLockedMaps = LockedMaps;
         b_doCopyWalk = CopyWalk;
+        b_hibernationTimer = hibernateTimer;
+        b_shouldHibernate = b_hibernationTimer > 0;
 
         if (!String.IsNullOrEmpty(attackPriority))
             _attackPriority.AddRange(attackPriority.Split(',', StringSplitOptions.TrimEntries));
@@ -644,6 +647,7 @@ public class CoreArmyLite
         if (!rejectDrops)
             Bot.Drops.Stop();
 
+
         while (!Bot.ShouldExit)
         {
             // Try to go to the followed player
@@ -652,17 +656,21 @@ public class CoreArmyLite
                 // Do these things if that fails
                 Core.Join("whitemap");
                 Core.Logger($"Could not find {playerName}. Check if \"{playerName}\" is in the same server with you.", "tryGoto");
-                Core.Logger($"The bot will now hibernate and try to /goto to {playerName} every 60 seconds.", "tryGoto");
+                if (b_shouldHibernate)
+                    Core.Logger($"The bot will now hibernate and try to /goto to {playerName} every {hibernateTimer} seconds.", "tryGoto");
 
                 int min = 1;
                 while (!Bot.ShouldExit)
                 {
-                    // Wait 60 seconds
-                    for (int t = 0; t < 60; t++)
+                    // Wait {hibernateTimer} seconds
+                    if (b_shouldHibernate)
                     {
-                        Bot.Sleep(1000);
-                        if (Bot.ShouldExit)
-                            break;
+                        for (int t = 0; t < hibernateTimer; t++)
+                        {
+                            Bot.Sleep(1000);
+                            if (Bot.ShouldExit)
+                                break;
+                        }
                     }
 
                     // Try again
@@ -671,11 +679,14 @@ public class CoreArmyLite
                         Core.Logger(playerName + " found!");
                         break;
                     }
-                    min++;
+                    min += hibernateTimer;
 
                     // Log every 5 minutes
-                    if (min % 5 == 0)
-                        Core.Logger($"The bot has been hibernating for {min} minutes");
+                    if (min >= 300)
+                    {
+                        Core.Logger($"The bot has been hibernating for {min / 300} minutes");
+                        min = 0;
+                    }
                 }
             }
             if (b_breakOnMap != null && b_breakOnMap == Bot.Map.Name)
@@ -695,6 +706,8 @@ public class CoreArmyLite
     private string? b_playerName = null;
     private bool b_doLockedMaps = true;
     private bool b_doCopyWalk = false;
+    private int b_hibernationTimer = 0;
+    private bool b_shouldHibernate = true;
     private List<string> _attackPriority = new();
 
     private bool tryGoto(string userName)
@@ -812,7 +825,8 @@ public class CoreArmyLite
             "ultratyndarius",
             "ultranulgath",
             "ultradrago",
-            "ultradarkon"
+            "ultradarkon",
+            "ultraspeaker"
         };
         string[] MemMaps =
         {
@@ -821,8 +835,31 @@ public class CoreArmyLite
             "superlowe"
         };
 
+        string[] EventMaps =
+        {
+            "yoshino"
+        };
+
         int maptry = 1;
         int mapCount = Core.IsMember ? (NonMemMaps.Count() + MemMaps.Count()) : NonMemMaps.Count();
+
+        foreach (string map in EventMaps)
+        {
+            if (!Core.isSeasonalMapActive(map))
+                continue;
+
+            Core.Logger($"[{(maptry.ToString().Length == 1 ? "0" : "")}{maptry++}/{mapCount}] Searching for {b_playerName} in /{map}", "LockedZoneHandler");
+            Core.Join(map);
+
+            if (!Bot.Map.PlayerExists(b_playerName!))
+                continue;
+
+            tryGoto(b_playerName!);
+            Core.Logger($"[{((maptry - 1).ToString().Length == 1 ? "0" : "")}{maptry - 1}/{mapCount}] Found {b_playerName} in /{map}", "LockedZoneHandler");
+
+            PriorityAttack("*");
+            return;
+        }
 
         foreach (string map in NonMemMaps)
         {
@@ -883,26 +920,33 @@ public class CoreArmyLite
 
         Core.Join("whitemap");
         Core.Logger($"Could not find {b_playerName} in any of the maps within the LockedZoneHandler.", "LockedZoneHandler");
-        Core.Logger($"The bot will now hibernate and try to /goto to {b_playerName} every 60 seconds", "LockedZoneHandler");
+        if (b_shouldHibernate)
+            Core.Logger($"The bot will now hibernate and try to /goto to {b_playerName} every {b_hibernationTimer} seconds", "LockedZoneHandler");
 
         int min = 1;
         while (!Bot.ShouldExit)
         {
-            for (int t = 0; t < 60; t++)
+            if (b_shouldHibernate)
             {
-                Bot.Sleep(1000);
-                if (Bot.ShouldExit)
-                    break;
+                for (int t = 0; t < b_hibernationTimer; t++)
+                {
+                    Bot.Sleep(1000);
+                    if (Bot.ShouldExit)
+                        break;
+                }
             }
             if (tryGoto(b_playerName!))
             {
                 Core.Logger(b_playerName + " found!");
                 return;
             }
-            min++;
+            min += b_hibernationTimer;
 
-            if (min % 5 == 0)
-                Core.Logger($"The bot is has been hibernating for {min} minutes");
+            if (min >= 300)
+            {
+                Core.Logger($"The bot is has been hibernating for {min / 300} minutes");
+                min = 0;
+            }
         }
         return;
 

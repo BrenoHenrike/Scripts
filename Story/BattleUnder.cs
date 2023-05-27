@@ -40,7 +40,7 @@ public class BattleUnder
 
         Core.EquipClass(ClassType.Farm);
         Story.KillQuest(374, "battleundera", "Skeletal Warrior");
-        Story.KillQuest(375, "battleundera", "Skeletal Warrior");
+        Story.KillQuest(375, "battleundera", new[] { "Skeletal Warrior", "Skeletal Warrior" });
         Core.EquipClass(ClassType.Solo);
         Story.KillQuest(376, "battleundera", "Bone Terror");
         Core.EquipClass(ClassType.Farm);

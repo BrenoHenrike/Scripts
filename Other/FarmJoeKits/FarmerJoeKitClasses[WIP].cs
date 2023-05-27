@@ -16,7 +16,8 @@ tags: null
 //cs_include Scripts/Good/GearOfAwe/CapeOfAwe.cs
 //cs_include Scripts/Good/GearOfAwe/CoreAwe.cs
 //cs_include Scripts/Good/Paladin.cs
-//cs_include Scripts/Hollowborn/HollowbornReapersScythe.cs
+//cs_include Scripts/Hollowborn/MergeShops/ShadowrealmMerge.cs
+
 //cs_include Scripts/Nation/AssistingCragAndBamboozle[Mem].cs
 //cs_include Scripts/Nation/CoreNation.cs
 //cs_include Scripts/Nation/VHL/CoreVHL.cs
@@ -36,14 +37,13 @@ tags: null
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 //cs_include Scripts/Story/Nation/CitadelRuins.cs
 //cs_include Scripts/Story/QueenofMonsters/Extra/BrightOak.cs
-//cs_include Scripts/Story/QueenofMonsters/Extra/LivingDungeon.cs
 //cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
 //cs_include Scripts/Story/Tutorial.cs
 //cs_include Scripts/Story/BattleUnder.cs
 //cs_include Scripts/Story/XansLair.cs
 //cs_include Scripts/Story/Yokai.cs
 //cs_include Scripts/Other\FarmJoeKits\CoreFarmerJoe.cs
-//cs_include Scripts/Farm\BankAllItems.cs
+//cs_include Scripts/Tools\BankAllItems.cs
 //cs_include Scripts/Story/Friendship.cs
 //cs_include Scripts/Other/Classes/REP-based/MasterRanger.cs
 //cs_include Scripts/Evil/SDKA/CoreSDKA.cs

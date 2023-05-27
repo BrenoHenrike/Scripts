@@ -207,12 +207,15 @@ public class PotionBuyer
             {
                 while (!Bot.ShouldExit && !Core.CheckInventory(potion, potionQuant))
                 {
-                    if (!Core.CheckInventory(reagent1, 1) || !Core.CheckInventory(reagent2, 1) || !Core.CheckInventory("Dragon Runestone", 1))
-                    {
-                        GetIngredient(reagent1);
-                        GetIngredient(reagent2);
-                        Adv.BuyItem("alchemy", 395, "Dragon Runestone", 30, 8844);
-                    }
+                    // if (!Core.CheckInventory(reagent1, 1) || !Core.CheckInventory(reagent2, 1) || !Core.CheckInventory("Dragon Runestone", 30))
+                    // {
+                    GetIngredient(reagent1);
+                    GetIngredient(reagent2);
+                    // if(Bot.Shops.LoadedCache.Find(X=> X.ID == 395))
+                    Adv.BuyItem("alchemyacademy", 395, 62749, 30, 1, 8777);
+                    Core.BuyItem("alchemyacademy", 395, "Dragon Runestone", 30, 8844);
+                    // Adv.BuyItem("alchemyacademy", 395, "Dragon Runestone", 30, 8844);
+                    // }
                     Core.ToggleAggro(false);
                     Farm.AlchemyPacket(reagent1, reagent2, trait: currTrait, P2w: true);
                 }
@@ -234,7 +237,9 @@ public class PotionBuyer
                             Core.HuntMonster("twig", "Sweetish Fish", ingredient, ingreQuant, isTemp: false);
                         else
                         {
-                            Adv.BuyItem("alchemyacademy", 395, 7132, ingreQuant, 1, 8844);
+                            // Adv.BuyItem("alchemyacademy", 395, 7132, ingreQuant, 1, 8844);
+                            Adv.BuyItem("alchemyacademy", 395, 62749, 1, 1, 8777);
+                            Core.BuyItem("alchemyacademy", 395, "Dragon Runestone", 1, 8844);
                             Adv.BuyItem("alchemyacademy", 397, 11472, ingreQuant, 2, 1229);
                         }
                         break;

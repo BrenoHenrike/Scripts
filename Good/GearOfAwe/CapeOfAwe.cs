@@ -1,7 +1,7 @@
 /*
-name: CapeOfAwe
-description: null
-tags: null
+name: Cape of Awe
+description: This bot will farm the Cape of Awe for you
+tags: cape, awe, boost, experience, reputation, class, points, gold, cp
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

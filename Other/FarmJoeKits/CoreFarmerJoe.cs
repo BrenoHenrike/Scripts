@@ -40,7 +40,8 @@ tags: null
 //cs_include Scripts/Other/Weapons/BurningBlade.cs
 //cs_include Scripts/Other/Weapons/DualChainSawKatanas.cs
 //cs_include Scripts/Other/Weapons/EnchantedVictoryBladeWeapons.cs
-//cs_include Scripts/Hollowborn/HollowbornReapersScythe.cs
+//cs_include Scripts/Hollowborn/MergeShops/ShadowrealmMerge.cs
+
 //cs_include Scripts/Legion/SwordMaster.cs
 
 //cs_include Scripts/Story/DragonFableOrigins.cs
@@ -48,8 +49,8 @@ tags: null
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 //cs_include Scripts/Story/Nation/CitadelRuins.cs
 //cs_include Scripts/Story/QueenofMonsters/Extra/BrightOak.cs
-//cs_include Scripts/Story/QueenofMonsters/Extra/LivingDungeon.cs
 //cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
+//cs_include Scripts/Story/BattleUnder.cs
 //cs_include Scripts/Story/Tutorial.cs
 //cs_include Scripts/Story/XansLair.cs
 //cs_include Scripts/Story/Yokai.cs
@@ -96,7 +97,7 @@ public class CoreFarmerJoe
     public DualChainSawKatanas DCSK = new();
     public BurningBlade BB = new();
     public EnchantedVictoryBladeWeapons EVBW = new();
-    public HollowbornScythe Scythe = new();
+    public ShadowrealmMerge SRM = new();
 
     //Story
     public Tutorial Tutorial = new();
@@ -135,7 +136,7 @@ public class CoreFarmerJoe
             {
                 Core.Logger("grabbing oracle, ranking it, then continuing");
                 Core.BuyItem("classhalla", 299, "Oracle");
-                Adv.rankUpClass("Oracle");
+                Adv.RankUpClass("Oracle");
             }
             Farm.BladeofAweREP(6, true);
             Core.ToBank("Blade of Awe");
@@ -157,7 +158,7 @@ public class CoreFarmerJoe
             Core.BuyItem("classhalla", 299, "Battle Oracle Hood");
             Core.Equip("Battle Oracle Battlestaff", "Battle Oracle Hood", "Battle Oracle Wings");
 
-            ItemBase DefaultWep = Bot.Inventory.Items.Find(x => x.Name.StartsWith("Default"));
+            ItemBase? DefaultWep = Bot.Inventory.Items.Find(x => x.Name.StartsWith("Default"));
             if (DefaultWep != null && Core.CheckInventory(DefaultWep.Name))
                 Core.SellItem(DefaultWep.Name);
 
@@ -201,7 +202,7 @@ public class CoreFarmerJoe
             Core.CancelRegisteredQuests();
         }
         InvEn.EnhanceInventory(EnhancementType.Wizard);
-        Adv.rankUpClass("Oracle");
+        Adv.RankUpClass("Oracle");
         Core.ToBank("Healer");
         Farm.BladeofAweREP(6);
         Core.Equip("Blade of Awe");
@@ -240,7 +241,7 @@ public class CoreFarmerJoe
             DCSK.GetWep();
         Adv.BestGear(GenericGearBoost.dmgAll);
 
-        ItemBase DefaultWep = Bot.Inventory.Items.Find(x => x.Name.StartsWith("Default"));
+        ItemBase? DefaultWep = Bot.Inventory.Items.Find(x => x.Name.StartsWith("Default"));
         if (DefaultWep != null && Core.CheckInventory(DefaultWep.Name))
             Core.SellItem(DefaultWep.Name);
         #endregion Obtain Boost Weapon
@@ -284,8 +285,6 @@ public class CoreFarmerJoe
 
                     DBSK.GetDSK();
                     Adv.SmartEnhance("Darkblood StormKing");
-                    if (Core.FarmClass == "Generic")
-                        Core.SoloClass = "Darkblood StormKing";
                     break;
 
                 case 55:
@@ -358,9 +357,9 @@ public class CoreFarmerJoe
             {
                 if (!Core.CheckInventory("Healer (Rare)"))
                     Adv.BuyItem("classhalla", 176, "Healer");
-                Adv.rankUpClass(Core.CheckInventory("Healer (Rare)") ? "Healer (Rare)" : "Healer");
+                Adv.RankUpClass(Core.CheckInventory("Healer (Rare)") ? "Healer (Rare)" : "Healer");
             }
-            Adv.rankUpClass("Dragon of Time");
+            Adv.RankUpClass("Dragon of Time");
         }
 
         //P2 Chaos Shenanagins
@@ -370,7 +369,7 @@ public class CoreFarmerJoe
         LOC.Complete13LOC();
         // Farm.ChaosREP();
         // Adv.BuyItem("confrontation", 891, "Chaos Slayer Berserker");
-        // Adv.rankUpClass("Chaos Slayer Berserker");
+        // Adv.RankUpClass("Chaos Slayer Berserker");
         // Core.Equip("Chaos Slayer Berserker");
 
         //Step 2 Solo Class:
@@ -420,10 +419,10 @@ public class CoreFarmerJoe
         if (Core.FarmClass == "Generic")
             Core.FarmClass = "Shaman";
 
-        if (Bot.Config.Get<bool>("OutFit"))
+        if (Bot.Config!.Get<bool>("OutFit"))
             Outfit();
 
-        Scythe.GetHBReapersScythe();
+        SRM.BuyAllMerge("Hollowborn Reaper's Scythe");
         YNR.GetYnR();
         //Add more eventualy >.> please?
 
@@ -435,12 +434,12 @@ public class CoreFarmerJoe
         //Easy Difficulty Stuff
         ShirtandHat();
         ServersAreDown();
-        Adv.SmartEnhance(Bot.Player.CurrentClass.Name);
+        Adv.SmartEnhance(Bot.Player.CurrentClass?.Name ?? String.Empty);
 
         //Extra Stuff
         Pets(PetChoice.None);
 
-        if (Bot.Config.Get<bool>("EquipOutfit"))
+        if (Bot.Config!.Get<bool>("EquipOutfit"))
         {
             Core.Equip(new[] { "NO BOTS Armor", "Scarecrow Hat", "The Server is Down", "Hollowborn Reaper's Scythe" });
             Core.Equip(Bot.Config.Get<PetChoice>("PetChoice").ToString());
@@ -453,7 +452,7 @@ public class CoreFarmerJoe
 
     public void Pets(PetChoice PetChoice = PetChoice.None)
     {
-        if (Bot.Config.Get<PetChoice>("Pets") == PetChoice.None)
+        if (Bot.Config!.Get<PetChoice>("Pets") == PetChoice.None)
             return;
 
         if (Bot.Config.Get<PetChoice>("Pets") == PetChoice.HotMama && !Core.CheckInventory("Hot Mama"))

@@ -36,5 +36,5 @@ public class GoalBadge
         Core.EnsureComplete(8543);
     }
 
-    private string badge = "GOAL!";
+    private string badge = "You /Chute, You Score";
 }

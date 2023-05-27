@@ -8,7 +8,7 @@ tags: merge, seasonal, may-the-4th, dark, lord, class
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Seasonal/MayThe4th/MurderMoonStory.cs
-//cs_include Scripts/Seasonal/MayThe4th/MurderMoonMerge[CyberCrystal].cs
+//cs_include Scripts/Seasonal/MayThe4th/MurderMoonMerge.cs
 using Skua.Core.Interfaces;
 
 public class DarkLord
@@ -18,6 +18,7 @@ public class DarkLord
     public CoreFarms Farm = new();
     public CoreAdvanced Adv = new();
     public MurderMoonMerge Merge = new();
+    public MurderMoon MMS = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -35,21 +36,27 @@ public class DarkLord
         if (Core.CheckInventory("Dark Lord"))
         {
             if (rankUpClass)
-                Adv.rankUpClass("Dark Lord");
+                Adv.RankUpClass("Dark Lord");
             return;
         }
 
-        Core.AddDrop("Cyber Crystal", "S Ring", "Fifth Lord’s Filtrinator", "Dark Helmet", "Dotty");
+        MMS.MurderMoonStory();
+
+        Core.AddDrop($"Cyber Crystal", "S Ring", "Fifth Lord’s Filtrinator", "Dark Helmet", "Dotty");
 
         //Cyber Crystal x66
-        Merge.CyberCrystal(66);
+        Core.EquipClass(ClassType.Farm);
+        Core.RegisterQuests(8065);
+        while (!Bot.ShouldExit && !Core.CheckInventory("Cyber Crystal", 66))
+            Core.KillMonster("murdermoon", "r2", "Left", "Tempest Soldier", "Tempest Soldier Badge", 5, log: false);
+        Core.CancelRegisteredQuests();
 
         //S Ring x15
         Core.EquipClass(ClassType.Solo);
         Core.HuntMonster("murdermoon", "Fifth Sepulchure", "S Ring", 15, false);
 
         //Fifth Lord's Filtrinator x15
-        Core.HuntMonster("murdermoon", "Fifth Sepulchure", "Fifth Lord’s Filtrinator", 15, false);
+        Core.HuntMonster($"murdermoon", "Fifth Sepulchure", "Fifth Lord’s Filtrinator", 15, false);
 
         //Dark Helmet x1
         Bot.Quests.UpdateQuest(7484);
@@ -66,7 +73,7 @@ public class DarkLord
         Bot.Wait.ForItemBuy();
 
         if (rankUpClass)
-            Adv.rankUpClass("Dark Lord");
+            Adv.RankUpClass("Dark Lord");
     }
 
 

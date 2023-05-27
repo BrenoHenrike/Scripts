@@ -1,7 +1,7 @@
 /*
-name: UnlockMineCrafting
-description: null
-tags: null
+name: Unlock MineCrafting
+description: This bot will unlock the Mine Crafting quest, this is needed to farm the metals needed for BLoD
+tags: blinding, light, destiny, BLOD, mine, crafting, metals
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

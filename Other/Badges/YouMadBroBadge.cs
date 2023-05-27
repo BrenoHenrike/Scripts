@@ -42,7 +42,9 @@ public class YouMadBroBadge
             while (!Core.CheckInventory(11475, 30) || !Core.CheckInventory("Ice Vapor", 30))
                 Core.KillMonster("lair", "Enter", "Spawn", "*", isTemp: false, log: false);
 
-            Adv.BuyItem("alchemyacademy", 395, 7132, 100, 1, 8844);
+            // Adv.BuyItem("alchemyacademy", 395, 7132, 100, 1, 8844);
+            Adv.BuyItem("alchemyacademy", 395, 62749, 30, 1, 8777);
+            Core.BuyItem("alchemyacademy", 395, "Dragon Runestone", 30, 8844);
 
             Core.Join("alchemy"); //maybe you have to be here to get the badge?
 

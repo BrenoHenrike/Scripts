@@ -29,6 +29,8 @@ public class LycanREP
     {
 
         LOC.Wolfwing();
+        Adv.BestGear(GenericGearBoost.dmgAll);
+        Adv.BestGear(GenericGearBoost.rep);
         Farm.LycanREP();
     }
 }

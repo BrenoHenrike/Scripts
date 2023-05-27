@@ -1,7 +1,7 @@
 /*
-name: Awescended
-description: null
-tags: null
+name: Awe-scention
+description: This bot will do the entire quest line and it's prerequisites in order to get you the Awescended Gear
+tags: awe, scension, awescended, omni, gear
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

@@ -11,13 +11,13 @@ tags: all dailies, dailies, daily, all
 //cs_include Scripts/Nation/CoreNation.cs
 //cs_include Scripts/Story/BattleUnder.cs
 //cs_include Scripts/Story/Nation/CitadelRuins.cs
-//cs_include Scripts/Story/QueenofMonsters/Extra/LivingDungeon.cs
 //cs_include Scripts/Story/DragonFableOrigins.cs
 //cs_include Scripts/Dailies/LordOfOrder.cs
 //cs_include Scripts/Story/Glacera.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
 //cs_include Scripts/Story/Friendship.cs
 //cs_include Scripts/Evil/SDKA/CoreSDKA.cs
+//cs_include Scripts/Tools\BankAllItems.cs
 using Skua.Core.Interfaces;
 
 public class FarmAllDailies
@@ -30,6 +30,7 @@ public class FarmAllDailies
     private CoreBLOD BLOD = new();
     private Friendship FR = new();
     private CoreSDKA CSDKA = new();
+    //private BankAllItems BAI = new();
 
     public void ScriptMain(IScriptInterface Bot)
     {
@@ -63,10 +64,12 @@ public class FarmAllDailies
         Daily.DesignNotes();
         Daily.MoglinPets();
         // Daily.NSoDDaily();
-
-        //With farm class
+        
+        //Friendships (alota inv spaces)
         FR.CompleteStory();
         Daily.Friendships();
+
+        //With farm class
         Daily.CollectorClass();
         Glac.FrozenTower();
         Daily.Cryomancer();
@@ -82,7 +85,8 @@ public class FarmAllDailies
         Daily.CryptoToken();
         Daily.GoldenInquisitor();
 
-        Core.Logger("All dailies are completed");
+        // Core.Logger("All dailies are completed. Doing a last Bankall");
+        // BAI.BankAll();
     }
 
 

@@ -1,7 +1,7 @@
 /*
-name: ADK
-description: null
-tags: null
+name: Arch DoomKnight (ADK)
+description: This script farms the Arch DoomKnight Armor.
+tags: adk,archdoomknight,doomknight,a means to an end,armor,boost,evil,shadowvault,shadow vault,gathering power,death's door, chaotic lords
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -128,7 +128,7 @@ public class ArchDoomKnight
         Core.KillEscherion("Chaotic Power", 13, publicRoom: true);
 
         Core.KillVath("Legendary Sword of Dragon Control", isTemp: false, publicRoom: true);
-        Core.HuntMonster("Kitsune", "Kitsune", "Hanzamune Dragon Koi Blade", isTemp: false, publicRoom: true);
+        Core.KillKitsune("Hanzamune Dragon Koi Blade", publicRoom: true);
         Core.HuntMonster("Wolfwing", "Wolfwing", "Wolfwing Armor", isTemp: false);
         Core.HuntMonster("palooza", "Kimberly", "One Eyed Doll Breaker", isTemp: false);
         Core.HuntMonster("Ledgermayne", "Ledgermayne", "Ledgermayne", isTemp: false, publicRoom: true);

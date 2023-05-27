@@ -1,5 +1,5 @@
 /*
-name: DragonBlade[mem}
+name: DragonBlade[mem]
 description: null
 tags: null
 */

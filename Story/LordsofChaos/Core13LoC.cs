@@ -1488,14 +1488,11 @@ public class Core13LoC
         Story.MapItemQuest(2255, "timevoid", 1439, 15);
         Story.KillQuest(2255, "timevoid", new[] { "Time-Travel Fairy", "Ephemerite" });
 
-
         //Fill the Empty Hours
         Story.KillQuest(2256, "timevoid", new[] { "Void Phoenix", "Time-Travel Fairy" });
 
-
         //Clock of the Long Now
         Story.MapItemQuest(2257, "timevoid", new[] { 1440, 1441, 1442, 1443 });
-
 
         //Unending Avatar
         Story.KillQuest(2258, "timevoid", "Unending Avatar", AutoCompleteQuest: false);
@@ -1581,7 +1578,7 @@ public class Core13LoC
         Story.KillQuest(2477, "dflesson", new[] { "Fire Elemental", "Lava Golem" });
 
         //ChickenCows, Bacon, and Battle!
-        Story.KillQuest(2478, "dflesson", new[] { "Chaotic Chicken", "Chaotic Horcboar" });
+        Story.KillQuest(2478, "dflesson", new[] { "Chaotic Horcboar", "Chaotic Chicken" });
 
         //The 2nd Proto-Chaos Beast
         Story.KillQuest(2479, "dflesson", "Fluffy the Dracolich");
@@ -2248,7 +2245,12 @@ public class Core13LoC
         Story.KillQuest(3783, "newfinale", "Chaotic Virago");
 
         //Beat Chaorrupted Lycan Hunter
-        Story.KillQuest(3789, "newfinale", "Chaorrupted Lycan Hunter");
+        if (!Story.QuestProgression(3789))
+        {
+            Core.EnsureAccept(3789);
+            Core.HuntMonster("newfinale", "Chaorrupted Lycan Hunter", "Chaorrupted Lycan Hunter Defeated");
+            Core.EnsureAccept(3789);
+        }
 
         //Battle for Chaos in Darkovia!
         Story.KillQuest(3785, "newfinale", "Shadow Slayer");
@@ -2408,22 +2410,52 @@ public class Core13LoC
         Story.ChainQuest(3814);
 
         //Up the Mountain
-        Story.KillQuest(3815, "falcontower", "Lady Knight");
+        if (!Story.QuestProgression(3815))
+        {
+            Core.EnsureAccept(3815);
+            Core.KillMonster("falcontower", "Spawn", "Enter", "*", "Enemy Defeated", 3);
+            Core.EnsureComplete(3815);
+        }
 
         //Higher Up
-        Story.KillQuest(3816, "falcontower", "Lady Knight");
+        if (!Story.QuestProgression(3816))
+        {
+            Core.EnsureAccept(3816);
+            Core.KillMonster("falcontower", "Spawn", "Enter", "*", "Enemy Defeated", 3);
+            Core.EnsureComplete(3816);
+        }
 
         //Even Higher
-        Story.KillQuest(3817, "falcontower", "Lady Knight");
+        if (!Story.QuestProgression(3817))
+        {
+            Core.EnsureAccept(3817);
+            Core.KillMonster("falcontower", "Spawn", "Enter", "*", "Enemy Defeated", 3);
+            Core.EnsureComplete(3817);
+        }
 
         //Falconreach Tower
-        Story.KillQuest(3818, "falcontower", "Lady Knight");
+        if (!Story.QuestProgression(3818))
+        {
+            Core.EnsureAccept(3818);
+            Core.KillMonster("falcontower", "Spawn", "Enter", "*", "Enemy Defeated", 3);
+            Core.EnsureComplete(3818);
+        }
 
         //Climb the Tower
-        Story.KillQuest(3819, "falcontower", "Lady Knight");
+        if (!Story.QuestProgression(3819))
+        {
+            Core.EnsureAccept(3819);
+            Core.KillMonster("falcontower", "Spawn", "Enter", "*", "Enemy Defeated", 2);
+            Core.EnsureComplete(3819);
+        }
 
         //To the Dragonlord
-        Story.KillQuest(3820, "falcontower", "Lady Knight");
+        if (!Story.QuestProgression(3820))
+        {
+            Core.EnsureAccept(3820);
+            Core.KillMonster("falcontower", "Spawn", "Enter", "*", "Enemy Defeated", 5);
+            Core.EnsureComplete(3820);
+        }
 
         //Defeat the Dragonlord
         Story.KillQuest(3821, "falcontower", "DragonLord");

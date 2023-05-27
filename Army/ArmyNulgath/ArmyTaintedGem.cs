@@ -1,7 +1,7 @@
 /*
-name: ArmyTaintedGem
-description: null
-tags: null
+name: Tainted Gem (Army)
+description: This bot will farm Tainted Gems with your army, using the Cubes method
+tags: tainted, gem, nation, nulgath, cubes, ice, receipt, swindle, reagent, boxes, mountfrost, army
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -13,20 +13,15 @@ using Skua.Core.Options;
 
 public class ArmyTaintedGem
 {
-    public IScriptInterface Bot => IScriptInterface.Instance;
-    public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new();
-    public CoreAdvanced Adv = new CoreAdvanced();
-    public CoreArmyLite Army = new();
-    CancellationTokenSource cts = new();
-
-    public static CoreBots sCore = new();
-    public static CoreArmyLite sArmy = new();
+    private IScriptInterface Bot => IScriptInterface.Instance;
+    private CoreBots Core => CoreBots.Instance;
+    private CoreArmyLite Army = new();
+    private static CoreArmyLite sArmy = new();
 
     public string OptionsStorage = "ArmyTaintedGem";
     public int q = 0;
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         sArmy.player1,
         sArmy.player2,
@@ -62,21 +57,20 @@ public class ArmyTaintedGem
             return;
 
         Core.AddDrop(Loot);
-        Core.EquipClass(ClassType.Farm);
         Core.FarmingLogger($"Tainted Gem", quant);
+        Core.EquipClass(ClassType.Farm);
+
+        Core.RegisterQuests(7817);
         while (!Bot.ShouldExit && !Core.CheckInventory("Tainted Gem", quant))
         {
-            Core.EnsureAccept(7817);
-            boxes();
-            mountfrost();
-            Bot.Sleep(1500);
-            Core.EnsureComplete(7817);
-            q++;
-            Core.Logger($"Quest completed x{q} times");
+            Cubes();
+            IceCube();
+            Bot.Wait.ForPickup("Tained Gem");
         }
+        Core.CancelRegisteredQuests();
     }
 
-    public void boxes()
+    public void Cubes()
     {
         Core.Join("boxes");
         Army.AggroMonCells("Fort2", "Closet", "Fort1", "Boss");
@@ -86,11 +80,12 @@ public class ArmyTaintedGem
         while (!Bot.ShouldExit && (!Core.CheckInventory("Cubes", 500)))
             Bot.Combat.Attack("*");
         Army.AggroMonStop(true);
+
         Core.JumpWait();
         Bot.Sleep(2000);
     }
 
-    public void mountfrost()
+    public void IceCube()
     {
         Core.Join("mountfrost");
         Army.AggroMonCells("War");
@@ -100,8 +95,8 @@ public class ArmyTaintedGem
         while (!Bot.ShouldExit && (!Core.CheckInventory("Ice Cubes", 6)))
             Bot.Combat.Attack("*");
         Army.AggroMonStop(true);
+
         Core.JumpWait();
         Bot.Sleep(2000);
     }
-
 }

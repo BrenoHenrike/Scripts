@@ -1,7 +1,7 @@
 /*
-name: Lord Of Order Daily
-description: Lord Of Order
-tags: daily, lord of order, LOO
+name: Lord Of Order (Daily)
+description: This bot will do the dailies for the Lord Of Order, after that is done it will get the remainder rewards
+tags: daily, lord, order, LOO, mirror, realm, support, xing, xang, kitsune, alteon, vath, wolfwing, ledgermayne, khasaanda
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
@@ -9,56 +9,23 @@ tags: daily, lord of order, LOO
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/Nation/CoreNation.cs
 //cs_include Scripts/Story/Nation/CitadelRuins.cs
-//cs_include Scripts/Story/QueenofMonsters/Extra/LivingDungeon.cs
 //cs_include Scripts/Story/DragonFableOrigins.cs
 using Skua.Core.Interfaces;
-using Skua.Core.Models.Items;
 
 public class LordOfOrder
 {
-    public IScriptInterface Bot => IScriptInterface.Instance;
-    public CoreBots Core => CoreBots.Instance;
-    public CoreAdvanced Adv = new();
-    public CoreFarms Farm = new();
-    public CoreStory Story = new();
-    public CitadelRuins CR = new();
-    public LivingDungeon LD = new();
-    public DragonFableOrigins DFO = new();
-    private string[] LoODrops = new string[]{
-        "Lord of Order Wrap",
-        "Lord of Order Bladed Wrap",
-        "Lord of Order Wings",
-        "Lord of Order Wings + Wrap",
-        "Lord of Order Double Wings + Wrap",
-        "Lord of Order Helm",
-        "Lord of Order Horns",
-        "High Lord of Order Helm",
-        "Lord of Order Blade",
-        "Lord of Order Polearm",
-        "Lord of Order Armor",
-        // "Lord of Order",
-        "Lord of Order Xing",
-        "Lord of Order Xing's Morph",
-        "Lord of Order Xang",
-        "Lord of Order Xang's Morph",
-        "Lord of Order Kitsune",
-        "Lord of Order Kitsune's Morph",
-        "Lord of Order Alteon",
-        "Lord of Order Alteon's Morph",
-        "Lord of Order Alteon's Crown",
-        "Lord of Order Vath",
-        "Lord of Order Wolfwing",
-        "Lord of Order Wolfwing's Morph",
-        "Lord of Order Wolfwing's Wings",
-        "Lord of Order Wolfwing's Claw",
-        "Lord of Order Ledgermayne",
-        "Lord of Order Khasaanda",
-        "Lord of Order Khasaanda's Morph"
-    };
+    private IScriptInterface Bot => IScriptInterface.Instance;
+    private CoreBots Core => CoreBots.Instance;
+    private CoreAdvanced Adv = new();
+    private CoreFarms Farm = new();
+    private CoreStory Story = new();
+    private CitadelRuins CR = new();
+    private DragonFableOrigins DFO = new();
+
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
-        
+
         GetLoO();
 
         Core.SetOptions(false);
@@ -66,7 +33,7 @@ public class LordOfOrder
 
     public void GetLoO(bool rankUpClass = true, bool getExtras = true)
     {
-        if (Core.CheckInventory(50741, toInv: false) && (getExtras ? !Core.CheckInventory(Core.EnsureLoad(7156).Rewards.Select(i => i.Name).ToArray(), toInv: false) : true))
+        if (Core.CheckInventory(50741, toInv: false) && (getExtras ? !Core.CheckInventory(Core.QuestRewards(7156), toInv: false) : true))
             return;
 
         Core.Logger("Daily: Lord Of Order Class");
@@ -99,7 +66,7 @@ public class LordOfOrder
             Core.BuyItem("ravenscar", 614, "Ravenscar's Truth");
 
             Core.EnsureComplete(7156);
-            Core.ToBank(LoODrops);
+            Core.ToBank(Core.QuestRewards(7156));
             return;
         }
 
@@ -115,7 +82,7 @@ public class LordOfOrder
             Core.HuntMonster("dreammaster", "Calico Cobby", "Calico Cobby Crushed", isTemp: false, log: false);
 
             Core.EnsureComplete(7157);
-            Core.ToBank(LoODrops);
+            Core.ToBank(Core.QuestRewards(7157));
             return;
         }
 
@@ -137,7 +104,7 @@ public class LordOfOrder
             Core.HuntMonster("stormtemple", "Chaos Lord Lionfang", "Purified Raindrop", 45, false, publicRoom: true, log: false);
 
             Core.EnsureComplete(7158);
-            Core.ToBank(LoODrops);
+            Core.ToBank(Core.QuestRewards(7158));
             return;
         }
 
@@ -154,7 +121,7 @@ public class LordOfOrder
             Core.HuntMonster("desolich", "Desolich", "Desolich's Skull", isTemp: false, publicRoom: true, log: false);
 
             Core.EnsureComplete(7159);
-            Core.ToBank(LoODrops);
+            Core.ToBank(Core.QuestRewards(7159));
             return;
         }
 
@@ -164,7 +131,7 @@ public class LordOfOrder
             Core.EnsureAccept(7160);
 
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("kitsune", "Kitsune", "Hanzamune Dragon Koi Blade", isTemp: false, log: false);
+            Core.KillKitsune("Hanzamune Dragon Koi Blade", log: false);
             Core.HuntMonster("ledgermayne", "Ledgermayne", "The Supreme Arcane Staff", isTemp: false, log: false);
             Core.HuntMonster("mqlesson", "Dragonoid", "Dragonoid of Hours", isTemp: false, log: false);
             if (!Core.CheckInventory("Safiria's Spirit Orb"))
@@ -183,7 +150,7 @@ public class LordOfOrder
                 Core.EnsureComplete(6319);
             }
             Core.EnsureComplete(7160);
-            Core.ToBank(LoODrops);
+            Core.ToBank(Core.QuestRewards(7160));
             return;
         }
 
@@ -201,7 +168,7 @@ public class LordOfOrder
             Core.HuntMonster("goose", "Queen's ArchSage", "Scroll of Enchantment", isTemp: false, log: false);
 
             Core.EnsureComplete(7161);
-            Core.ToBank(LoODrops);
+            Core.ToBank(Core.QuestRewards(7161));
             return;
         }
 
@@ -220,7 +187,7 @@ public class LordOfOrder
             Core.HuntMonster("extriki", "Extriki", "Strength of Resilience", isTemp: false, log: false);
 
             Core.EnsureComplete(7162);
-            Core.ToBank(LoODrops);
+            Core.ToBank(Core.QuestRewards(7162));
             return;
         }
 
@@ -238,7 +205,7 @@ public class LordOfOrder
             Core.HuntMonster("lair", "Red Dragon", "Law of Low Drop Rates", 100, false, log: false);
 
             Core.EnsureComplete(7163);
-            Core.ToBank(LoODrops);
+            Core.ToBank(Core.QuestRewards(7163));
             return;
         }
 
@@ -246,10 +213,6 @@ public class LordOfOrder
         if (!Story.QuestProgression(7164))
         {
             Core.EnsureAccept(7164);
-
-            Bot.Quests.UpdateQuest(3008);
-            Core.SetAchievement(18);
-            Bot.Quests.UpdateQuest(3004);
 
             Core.EquipClass(ClassType.Solo);
             Adv.KillUltra("doomvaultb", "r26", "Left", "Undead Raxgore", "Weapon Imprint", 15, false, log: false);
@@ -262,13 +225,13 @@ public class LordOfOrder
             Core.HuntMonster("yasaris", "Serepthys", "Inversion Infusion", 5, false, log: false);
 
             Core.EnsureComplete(7164);
-            Core.ToBank(LoODrops);
+            Core.ToBank(Core.QuestRewards(7164));
             return;
         }
 
         // The Final Challenge
         if (getExtras)
-            Bot.Drops.Add(Core.EnsureLoad(7165).Rewards.Select(x => x.ID).ToArray());
+            Bot.Drops.Add(Core.QuestRewards(7165));
 
         Core.EnsureAccept(7165);
         Core.EquipClass(ClassType.Solo);
@@ -277,15 +240,15 @@ public class LordOfOrder
         {
             Bot.Drops.Add(50741);
             Core.EnsureComplete(7165, 50741);
-            Bot.Wait.ForPickup("Lord Of Order");
+            Bot.Wait.ForPickup(50741);
 
             if (rankUpClass)
-                Adv.rankUpClass("Lord Of Order");
+                Adv.RankUpClass("Lord Of Order");
         }
         else
         {
             Core.EnsureCompleteChoose(7165);
-            Core.ToBank(LoODrops);
+            Core.ToBank(Core.QuestRewards(7165).Except("Lord Of Order"));
         }
     }
 }

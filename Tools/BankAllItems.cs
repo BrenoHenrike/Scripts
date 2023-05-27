@@ -19,6 +19,9 @@ public class BankAllItems
     public List<IOption> Options = new()
     {
         new Option<string>("BlackList", "BlackList Items", "Fill in the items teh bot *shouldn't* bank, split with a , (comma)."),
+        new Option<bool>("BanknonAc", "BanknonAc","Bank non-AC items", false),
+        new Option<bool>("Inventory", "InventoryACBank","Bank all Ac Inventory Items", true),
+        new Option<bool>("House", "HouseACBank","Bank all Ac House Items", true)
     };
 
 
@@ -41,7 +44,7 @@ public class BankAllItems
         Bot.Sleep(Core.ActionDelay);
         Bot.Send.Packet($"%xt%zm%house%1%{Bot.Player.Username}%");
 
-
+        Core.Logger("Currently Banking: Inventory Items");
         foreach (InventoryItem item in Bot.Inventory.Items)
         {
             if (item.Equipped || blackListedItems.Contains(item.Name))
@@ -54,11 +57,40 @@ public class BankAllItems
                     Core.Logger($"{Bot.Player.Username}'s Bank is full");
                     logged = true;
                 }
-               continue;
+                continue;
             }
-            Core.ToBank(item.ID);
+            if (Bot.Config.Get<bool>("BanknonAc") && !item.Coins)
+                Core.ToBank(item.Name);
+            else if (item.Coins)
+                Core.ToBank(item.Name);
+
             Bot.Sleep(Core.ActionDelay);
         }
+
+        Core.Logger("Finished inventory items, onto house items.");
+
+        Core.Logger("Currently Banking: House Items");
+        foreach (InventoryItem item in Bot.House.Items)
+        {
+            if (Bot.House.IsEquipped(item.ID) || blackListedItems.Contains(item.Name))
+                continue;
+
+            if (Bot.Bank.FreeSlots == 0 && !item.Coins)
+            {
+                if (!logged)
+                {
+                    Core.Logger($"{Bot.Player.Username}'s Bank is full");
+                    logged = true;
+                }
+                continue;
+            }
+            if (Bot.Config.Get<bool>("BanknonAc") && !item.Coins)
+                Core.ToHouseBank(item.Name);
+            else if (item.Coins)
+                Core.ToHouseBank(item.Name);
+            Bot.Sleep(Core.ActionDelay);
+        }
+
     }
 }
 

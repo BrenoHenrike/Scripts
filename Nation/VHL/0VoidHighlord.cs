@@ -1,7 +1,7 @@
 /*
 name: Void Highlord (Class)
 description: This will farm all requirements for the Void Highlord class to obtain.
-tags: farm, class, nation, VHL, void, highlord, roentgenium, void-crystal-a, void-crystal-b
+tags: farm, class, nation, vhl, void, highlord, roentgenium, void-crystal-a, void-crystal-b
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

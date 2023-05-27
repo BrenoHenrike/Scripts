@@ -67,12 +67,13 @@ public class BloodAncientMerge
                 case "Ancient Vitae":
                     Safiria.StoryLine();
                     Core.FarmingLogger(req.Name, quant);
-                    Core.EquipClass(ClassType.Farm);
+                    Core.EquipClass(ClassType.Solo);
+                    Core.AddDrop("Safiria's Blood Sample");
                     Core.RegisterQuests(1947);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         //Ancient Vitae 1947
-                        Core.HuntMonster("Safiria", "Chaos Lycan", "Legacy Vitae", 10);
+                        Core.HuntMonster("battledoom", "Shadow Safiria", log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();

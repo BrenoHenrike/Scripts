@@ -12,7 +12,7 @@ tags: null
 //cs_include Scripts/Legion/CoreLegion.cs
 //cs_include Scripts/Other/WeaponReflection.cs
 //cs_include Scripts/Nation/Various/JuggernautItems.cs
-//cs_include Scripts/Nation/Various/DragonBlade[mem}.cs
+//cs_include Scripts/Nation/Various/DragonBlade[mem].cs
 //cs_include Scripts/Other/Weapons/ShadowReaperOfDoom.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 using Skua.Core.Interfaces;
@@ -256,7 +256,7 @@ public class YulgarsDualWieldMerge
 
                 case "Hanzamune Dragon Koi Blade":
                     Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster("kitsune", "Kitsune", req.Name, isTemp: false);
+                    Core.KillKitsune(req.Name);
                     break;
 
                 case "Ugly Stick":

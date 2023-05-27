@@ -49,7 +49,6 @@ public class CoreSoW
         DeadLines();
         ShadowFlame();
         ManaCradle();
-        TerminaTemple();
     }
 
     public void ShadowWar()
@@ -492,7 +491,7 @@ public class CoreSoW
         if (!Bot.Quests.IsUnlocked(7341))
         {
             Core.EnsureAccept(7340);
-            while (!Bot.ShouldExit && !Core.CheckInventory(7340, 5))
+            while (!Bot.ShouldExit && !Core.CheckInventory(53063, 5))
                 Core.HuntMonster("shadowsong", "Shadowflame Troll", log: false);
             Core.EnsureComplete(7340);
         }
@@ -855,10 +854,22 @@ public class CoreSoW
         Story.KillQuest(8240, "fireavatar", "Shadefire Elemental");
 
         //Well That’s New 8241
-        Story.KillQuest(8241, "fireavatar", "Shadow Lava");
+        if (!Story.QuestProgression(8241))
+        {
+            Core.EnsureAccept(8241);
+            Core.KillMonster("fireavatar", "r8", "Left", "Shadow Lava", "Shadow Lava Defeated", 8);
+            Core.EnsureComplete(8241);
+
+        }
 
         //Thermal Energy 8242
-        Story.KillQuest(8242, "fireavatar", "Shadow Lava");
+        if (!Story.QuestProgression(8242))
+        {
+            Core.EnsureAccept(8242);
+            Core.KillMonster("fireavatar", "r7", "Left", "Living Shadowflame", "Power Restored", 10);
+            Core.EnsureComplete(8242);
+
+        }
 
         //Avatar of Fire 8243
         Story.KillQuest(8243, "fireavatar", new[] { "Avatar Tyndarius", "Fire Orb" });
@@ -1130,23 +1141,5 @@ public class CoreSoW
         // Once Upon Another Time 9126
         // Build Malgor's Armor Set 9127
         #endregion
-    }
-
-    public void TerminaTemple()
-    {
-        if (Core.isCompletedBefore(9214))
-            return;
-
-        ManaCradle();
-
-        Story.PreLoad(this);
-
-        // Familiar Faces (9213)
-        Story.KillQuest(9213, "terminatemple", "Termina Defender");
-        Story.MapItemQuest(9213, "terminatemple", new[] { 11625, 11626, 11627 });
-
-        // Loaded Resume (9214)
-        Story.KillQuest(9214, "terminatemple", "Clandestine Guard");
-        Story.MapItemQuest(9214, "terminatemple", new[] { 11628, 11629, 11630 });
     }
 }

@@ -17,6 +17,8 @@ public class FishingREP
     {
         Core.SetOptions();
         
+        Adv.BestGear(GenericGearBoost.dmgAll);
+        Adv.BestGear(GenericGearBoost.rep);
         Farm.FishingREP();
 
         Core.SetOptions(false);

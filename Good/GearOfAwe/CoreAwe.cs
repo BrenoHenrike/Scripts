@@ -10,11 +10,10 @@ using Skua.Core.Interfaces;
 
 public class CoreAwe
 {
-    public IScriptInterface Bot => IScriptInterface.Instance;
-    public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new();
-    public CoreAdvanced Adv = new();
-    private int QuestID;
+    private IScriptInterface Bot => IScriptInterface.Instance;
+    private CoreBots Core => CoreBots.Instance;
+    private CoreFarms Farm = new();
+    private CoreAdvanced Adv = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -26,8 +25,7 @@ public class CoreAwe
         if (Core.CheckInventory($"{Item} Relic"))
             return;
 
-        Core.AddDrop($"{Item} Fragment");
-
+        int QuestID;
         if (Bot.Flash.GetGameObject<int>("world.myAvatar.objData.intAQ") > 0)
         {
             Farm.BladeofAweREP(5, false);
@@ -47,15 +45,17 @@ public class CoreAwe
         }
 
         Core.EquipClass(ClassType.Solo);
+        Core.AddDrop($"{Item} Shard", $"{Item} Fragment");
+        Core.FarmingLogger($"{Item} Fragment", FragmentAmount);
+
+        Core.RegisterQuests(QuestID);
         while (!Bot.ShouldExit && !Core.CheckInventory($"{Item} Fragment", FragmentAmount))
         {
-            Core.EnsureAccept(QuestID);
             if (Map.ToLower() == "doomvault" || Map.ToLower() == "doomvaultb")
                 Adv.KillUltra(Map, Map.ToLower().EndsWith('b') ? "r26" : "r5", "Left", Monster, $"{Item} Shard", ShardAmount, false);
             else Adv.BoostHuntMonster(Map, Monster, $"{Item} Shard", ShardAmount, false);
-            Core.EnsureComplete(QuestID);
-            Bot.Wait.ForPickup($"{Item} Fragment");
         }
+        Core.CancelRegisteredQuests();
 
         Core.BuyItem("museum", 1129, $"{Item} Relic");
     }
