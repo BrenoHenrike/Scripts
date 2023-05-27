@@ -41,7 +41,14 @@ public class TowersMerge
 
     public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
+        
         TOD.BoneTowerAll();
+        
+        if (buyMode == mergeOptionsEnum.acOnly || buyMode == mergeOptionsEnum.all)
+        {    
+            BuyAllMerge(buyOnlyThis: "Silver DeathKnight Lord");
+            BuyAllMerge(buyOnlyThis: "Golden DeathKnight Lord");
+        }
 
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("towersilver", 1243, findIngredients, buyOnlyThis, buyMode: buyMode);
