@@ -3,6 +3,7 @@ name: Undine Commissary Merge
 description: This bot will farm the items belonging to the selected mode for the Undine Commissary Merge [2288] in /sunlightzone
 tags: undine, commissary, merge, sunlightzone, fas, casual, ensemble, mis, doctor, defence, director, researcher, clean, bob, cut, horn, songs, high, ponytail, glasses
 */
+//cs_iinclude Scripts/Story/AgeofRuin/CoreAOR.cs
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
@@ -17,6 +18,7 @@ public class UndineCommissaryMerge
     private CoreFarms Farm = new();
     private CoreAdvanced Adv = new();
     private static CoreAdvanced sAdv = new();
+    Private CoreAOR AOR = new();
     
 
     public List<IOption> Generic = sAdv.MergeOptions;
@@ -37,6 +39,7 @@ public class UndineCommissaryMerge
 
     public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
+        AOR.sunlightzone();
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("sunlightzone", 2288, findIngredients, buyOnlyThis, buyMode: buyMode);
 
