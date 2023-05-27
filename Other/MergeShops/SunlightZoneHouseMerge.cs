@@ -79,7 +79,7 @@ public class SunlightZoneHouseMerge
 
                 case "Undine Visitor Badge":
                     Core.FarmingLogger(req.Name, quant);
-                        Core.HuntMonster("sunlightzone", "Spectral Jellyfish", req.Name, quant);
+                        Core.HuntMonster("sunlightzone", "Spectral Jellyfish", req.Name, quant, false, false);
                     break;
 
             }
