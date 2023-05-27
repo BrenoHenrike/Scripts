@@ -62,20 +62,19 @@ public class UndineCommissaryMerge
 
                 case "Undine Base Scrip":
                     Core.FarmingLogger(req.Name, quant);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
                         Core.HuntMonster("sunlightzone", "Marine Snow", req.Name, quant);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
                     break;
 
                 case "Sun Zone Chit":
                     Core.FarmingLogger(req.Name, quant);
                     Core.RegisterQuests(9252);
-                        Core.HuntMonster("sunlightzone", "Marine Snow", "Marine Sample");
-                        Core.HuntMonster("sunlightzone", "Infernal Illusion", "Infernal Sample", 10);
-                        Core.HuntMonster("sunlightzone", "Seraphic Illusion", "Seraphic Sample", 10);
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
+                    {
+                        Core.HuntMonster("sunlightzone", "Marine Snow", "Marine Sample", log:false);
+                        Core.HuntMonster("sunlightzone", "Infernal Illusion", "Infernal Sample", 10, log:false);
+                        Core.HuntMonster("sunlightzone", "Seraphic Illusion", "Seraphic Sample", 10, log:false);
                         Bot.Wait.ForPickup(req.Name);
+                    }
                     Core.CancelRegisteredQuests();
                     break;
 
