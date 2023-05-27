@@ -62,7 +62,7 @@ public class UndineCommissaryMerge
 
                 case "Undine Base Scrip":
                     Core.FarmingLogger(req.Name, quant);
-                        Core.HuntMonster("sunlightzone", "Marine Snow", req.Name, quant);
+                        Core.HuntMonster("sunlightzone", "Marine Snow", req.Name, quant, false, false);
                     break;
 
                 case "Sun Zone Chit":
