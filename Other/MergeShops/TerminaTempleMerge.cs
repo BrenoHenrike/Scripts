@@ -1,7 +1,7 @@
 /*
 name: Termina Temple Merge
-description: farms the materials for the merge shop in /terminatemple
-tags: merge, terminatemple, terminatemplemerge
+description: This bot will farm the items belonging to the selected mode for the Termina Temple Merge [2259] in /terminatemple
+tags: termina, temple, merge, terminatemple, dragonlord, good, golden, dragonlords, royal, wrap, evil, tyrannical, doomblade, chaos, chaorrupted, dragonblade, battle, cleric, dragon, clerics, bright, cloak, accoutrements
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -25,7 +25,6 @@ public class TerminaTempleMerge
     private CoreAdvanced Adv = new();
     private CoreBLOD BLOD = new();
     private CoreNSOD NSOD = new();
-
     private static CoreAdvanced sAdv = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
@@ -37,7 +36,7 @@ public class TerminaTempleMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Termina Sigil", "Bright Aura", "Void Aura", "Trace of Chaos" });
+        Core.BankingBlackList.AddRange(new[] { "Termina Sigil", "Bright Aura", "Void Aura", "Trace of Chaos", "DragonGuard Badge", "Battle Cleric's Draconic Spear", "Bright Dragon Shield" });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -69,6 +68,9 @@ public class TerminaTempleMerge
                     break;
                 #endregion
 
+                case "Bright Dragon Shield":
+                case "Battle Cleric's Draconic Spear":
+                case "DragonGuard Badge":
                 case "Termina Sigil":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
@@ -116,5 +118,9 @@ public class TerminaTempleMerge
         new Option<bool>("77412", "Chaorrupted Dragonlord's Helmet", "Mode: [select] only\nShould the bot buy \"Chaorrupted Dragonlord's Helmet\" ?", false),
         new Option<bool>("77413", "Chaorrupted Dragonlord's Wrap", "Mode: [select] only\nShould the bot buy \"Chaorrupted Dragonlord's Wrap\" ?", false),
         new Option<bool>("77414", "Chaorrupted Dragonblade", "Mode: [select] only\nShould the bot buy \"Chaorrupted Dragonblade\" ?", false),
+        new Option<bool>("77668", "Battle Cleric of the Dragon", "Mode: [select] only\nShould the bot buy \"Battle Cleric of the Dragon\" ?", false),
+        new Option<bool>("77669", "Battle Cleric's Helm", "Mode: [select] only\nShould the bot buy \"Battle Cleric's Helm\" ?", false),
+        new Option<bool>("77670", "Battle Cleric's Bright Cloak", "Mode: [select] only\nShould the bot buy \"Battle Cleric's Bright Cloak\" ?", false),
+        new Option<bool>("77673", "Battle Cleric's Bright Accoutrements", "Mode: [select] only\nShould the bot buy \"Battle Cleric's Bright Accoutrements\" ?", false),
     };
 }
