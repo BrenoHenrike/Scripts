@@ -121,7 +121,7 @@ public class UltraSpeakerMergePreReqs
                 Core.Logger("Buyback War Blade of Speed smh");
             else
             {
-                Core.HuntMonster("shadowfallwar", "Skeletal Fire Mage", "Ultimate Darkness Gem", 50, isTemp: false);
+                Core.HuntMonster("shadowfallwar", "Skeletal Fire Mage", "Ultimate Darkness Gem", 75, isTemp: false);
                 Core.EquipClass(ClassType.Solo);
                 Core.KillMonster("shadowattack", "Boss", "Left", "Death", "Death's Oversight", 5, false);
                 AcquiescenceCount += 10;
