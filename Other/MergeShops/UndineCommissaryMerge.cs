@@ -3,8 +3,6 @@ name: Undine Commissary Merge
 description: This bot will farm the items belonging to the selected mode for the Undine Commissary Merge [2288] in /sunlightzone
 tags: undine, commissary, merge, sunlightzone, fas, casual, ensemble, mis, doctor, defence, director, researcher, clean, bob, cut, horn, songs, high, ponytail, glasses
 */
-//cs_include Story/AgeOfRuin/CoreAOR.cs
-//cs_include Scripts/Story\ShadowsOfWar\CoreSoW.cs
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
@@ -20,9 +18,6 @@ public class UndineCommissaryMerge
     private CoreAdvanced Adv = new();
     private static CoreAdvanced sAdv = new();
     
-    private CoreSoW SoW = new();
-
-    public CoreAOR AOR = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
     public string[] MultiOptions = { "Generic", "Select" };
@@ -42,7 +37,6 @@ public class UndineCommissaryMerge
 
     public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
-        AOR.SunlightZone();
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("sunlightzone", 2288, findIngredients, buyOnlyThis, buyMode: buyMode);
 
@@ -77,14 +71,11 @@ public class UndineCommissaryMerge
 
                 case "Sun Zone Chit":
                     Core.FarmingLogger(req.Name, quant);
-                    Core.RegisterQuests(9251);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
+                    Core.RegisterQuests(9252);
                         Core.HuntMonster("sunlightzone", "Marine Snow", "Marine Sample");
                         Core.HuntMonster("sunlightzone", "Infernal Illusion", "Infernal Sample", 10);
                         Core.HuntMonster("sunlightzone", "Seraphic Illusion", "Seraphic Sample", 10);
                         Bot.Wait.ForPickup(req.Name);
-                    }
                     Core.CancelRegisteredQuests();
                     break;
 
