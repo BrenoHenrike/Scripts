@@ -5,6 +5,7 @@ tags: sunlight, zone, house, merge, sunlightzone, stern, song, guest, taras, tem
 */
 //cs_include Scripts/Story/AgeOfRuin/CoreAOR.cs
 //cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
+//cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
