@@ -3,8 +3,8 @@ name: Sunlight Zone House Merge
 description: This bot will farm the items belonging to the selected mode for the Sunlight Zone House Merge [2289] in /sunlightzone
 tags: sunlight, zone, house, merge, sunlightzone, stern, song, guest, taras, temporary, rest, disgruntled, mi
 */
-//cs_include Story/AgeOfRuin/CoreAOR.cs
-//cs_include Scripts/Story\ShadowsOfWar\CoreSoW.cs
+//cs_include Scripts/Story/AgeOfRuin/CoreAOR.cs
+//cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
@@ -67,19 +67,19 @@ public class SunlightZoneHouseMerge
                 case "Sun Zone Chit":
                     Core.FarmingLogger(req.Name, quant);
                     Core.RegisterQuests(9252);
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
+                    {
                         Core.HuntMonster("sunlightzone", "Marine Snow", "Marine Sample", log:false);
                         Core.HuntMonster("sunlightzone", "Infernal Illusion", "Infernal Sample", 10, log:false);
                         Core.HuntMonster("sunlightzone", "Seraphic Illusion", "Seraphic Sample", 10, log:false);
+                        Bot.Wait.ForPickup(req.Name);
+                    }
                     Core.CancelRegisteredQuests();
                     break;
 
                 case "Undine Visitor Badge":
                     Core.FarmingLogger(req.Name, quant);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
                         Core.HuntMonster("sunlightzone", "Spectral Jellyfish", req.Name, quant);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
                     break;
 
             }
