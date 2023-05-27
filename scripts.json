@@ -11636,6 +11636,36 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/BattleConGearMerge.cs"
   },
   {
+    "name": "Undine Commissary Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Undine Commissary Merge [2288] in /sunlightzone",
+    "tags": [
+      "undine",
+      "commissary",
+      "merge",
+      "sunlightzone",
+      "fas",
+      "casual",
+      "ensemble",
+      "mis",
+      "doctor",
+      "defence",
+      "director",
+      "researcher",
+      "clean",
+      "bob",
+      "cut",
+      "horn",
+      "songs",
+      "high",
+      "ponytail",
+      "glasses"
+    ],
+    "path": "Other/MergeShops/UndineCommissaryMerge.cs",
+    "size": 4831,
+    "fileName": "UndineCommissaryMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/UndineCommissaryMerge.cs"
+  },
+  {
     "name": "TachyonMerge",
     "description": "null",
     "tags": [
@@ -12149,6 +12179,29 @@
     "size": 5220,
     "fileName": "BrightForestMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/BrightForestMerge.cs"
+  },
+  {
+    "name": "Sunlight Zone House Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Sunlight Zone House Merge [2289] in /sunlightzone",
+    "tags": [
+      "sunlight",
+      "zone",
+      "house",
+      "merge",
+      "sunlightzone",
+      "stern",
+      "song",
+      "guest",
+      "taras",
+      "temporary",
+      "rest",
+      "disgruntled",
+      "mi"
+    ],
+    "path": "Other/MergeShops/SunlightZoneHouseMerge.cs",
+    "size": 4297,
+    "fileName": "SunlightZoneHouseMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/SunlightZoneHouseMerge.cs"
   },
   {
     "name": "BrightshadowMerge",
