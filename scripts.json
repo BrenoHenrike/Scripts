@@ -3767,9 +3767,27 @@
       "null"
     ],
     "path": "Story/AgeOfRuin/CoreAOR.cs",
-    "size": 2555,
+    "size": 4118,
     "fileName": "CoreAOR.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/CoreAOR.cs"
+  },
+  {
+    "name": "Sunlight Zone",
+    "description": "This script completes the storyline in /sunlightzone.",
+    "tags": [
+      "age",
+      "of",
+      "ruin",
+      "saga",
+      "story",
+      "quest",
+      "zone",
+      "sunlight"
+    ],
+    "path": "Story/AgeOfRuin/03SunlightZone.cs",
+    "size": 732,
+    "fileName": "03SunlightZone.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/03SunlightZone.cs"
   },
   {
     "name": "Ashray Village",
