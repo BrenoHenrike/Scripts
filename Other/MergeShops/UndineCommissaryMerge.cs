@@ -3,7 +3,9 @@ name: Undine Commissary Merge
 description: This bot will farm the items belonging to the selected mode for the Undine Commissary Merge [2288] in /sunlightzone
 tags: undine, commissary, merge, sunlightzone, fas, casual, ensemble, mis, doctor, defence, director, researcher, clean, bob, cut, horn, songs, high, ponytail, glasses
 */
-//cs_iinclude Scripts/Story/AgeofRuin/CoreAOR.cs
+//cs_include Scripts/CoreStory.cs
+//cs_include Scripts/Story/AgeofRuin/CoreAOR.cs
+//cs_include Scripts/Story\ShadowsOfWar\CoreSoW.cs
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
