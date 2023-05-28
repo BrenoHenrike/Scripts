@@ -67,23 +67,9 @@ public class GenesisGardenMerge
                     break;
                 #endregion
 
-                case "Mourning Flower":
-                    Darkon.MourningFlower(quant);
-                    break;
-
                 case "Jus Divinum Scale":
-                    Core.FarmingLogger(req.Name, quant);
-                    Core.RegisterQuests(8688);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.EquipClass(ClassType.Farm);
-                        Core.HuntMonster("genesisgarden", "Long-eared Beast", "Beast Subject", 7, log: false);
-                        Core.HuntMonster("genesisgarden", "Undead Humanoid", "Humanoid Subject", 7, log: false);
-                        Core.EquipClass(ClassType.Solo);
-                        Core.HuntMonster("genesisgarden", "Ancient Mecha", "Replacement Parts", 7, log: false);
-                    }
-                    Core.CancelRegisteredQuests();
-                    Bot.Wait.ForPickup(req.Name);
+                case "Mourning Flower":
+                    Darkon.WheelofFortune(quant);
                     break;
             }
         }

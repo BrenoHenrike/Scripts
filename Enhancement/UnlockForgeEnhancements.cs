@@ -514,7 +514,7 @@ public class UnlockForgeEnhancements
             Darkon.BanditsCorrespondence(22);
             Darkon.SukisPrestiege(22);
             Darkon.AncientRemnant(22);
-            Darkon.MourningFlower(22);
+            Darkon.WheelofFortune(22);
             if (!Core.CheckInventory("Darkon Insignia", 20))
             {
                 Core.Logger(" x20 \"Darkon Insignia\" is Required to continue quest, our Bots cannot *currently* kill this mob Untill CoreArmy is Released and a script is made.", messageBox: true);

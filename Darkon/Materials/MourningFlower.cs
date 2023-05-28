@@ -21,7 +21,7 @@ public class MourningFlower
     {
         Core.SetOptions();
 
-        Darkon.MourningFlower();
+        Darkon.WheelofFortune();
 
         Core.SetOptions(false);
     }
