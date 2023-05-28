@@ -266,7 +266,7 @@ public class CoreDarkon
         if (Core.CheckInventory("Mourning Flower", Quantity))
             return;
 
-        Core.AddDrop("Mourning Flower");
+        Core.AddDrop("Mourning Flower", "Jus Divinum Scale");
 
         Astravia.GenesisGarden();
 
