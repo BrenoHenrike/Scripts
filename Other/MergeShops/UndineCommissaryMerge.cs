@@ -3,6 +3,9 @@ name: Undine Commissary Merge
 description: This bot will farm the items belonging to the selected mode for the Undine Commissary Merge [2288] in /sunlightzone
 tags: undine, commissary, merge, sunlightzone, fas, casual, ensemble, mis, doctor, defence, director, researcher, clean, bob, cut, horn, songs, high, ponytail, glasses
 */
+//cs_include Scripts/CoreStory.cs
+//cs_include Scripts/Story/AgeofRuin/CoreAOR.cs
+//cs_include Scripts/Story\ShadowsOfWar\CoreSoW.cs
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
@@ -17,7 +20,8 @@ public class UndineCommissaryMerge
     private CoreFarms Farm = new();
     private CoreAdvanced Adv = new();
     private static CoreAdvanced sAdv = new();
-    
+    private CoreAOR AOR = new();
+
 
     public List<IOption> Generic = sAdv.MergeOptions;
     public string[] MultiOptions = { "Generic", "Select" };
@@ -28,7 +32,7 @@ public class UndineCommissaryMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Undine Base Scrip", "Sun Zone Chit"});
+        Core.BankingBlackList.AddRange(new[] { "Undine Base Scrip", "Sun Zone Chit" });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -37,6 +41,7 @@ public class UndineCommissaryMerge
 
     public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
+        AOR.SunlightZone();
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("sunlightzone", 2288, findIngredients, buyOnlyThis, buyMode: buyMode);
 
@@ -62,7 +67,7 @@ public class UndineCommissaryMerge
 
                 case "Undine Base Scrip":
                     Core.FarmingLogger(req.Name, quant);
-                        Core.HuntMonster("sunlightzone", "Marine Snow", req.Name, quant, false, false);
+                    Core.HuntMonster("sunlightzone", "Marine Snow", req.Name, quant, false, false);
                     break;
 
                 case "Sun Zone Chit":
@@ -70,9 +75,9 @@ public class UndineCommissaryMerge
                     Core.RegisterQuests(9252);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("sunlightzone", "Marine Snow", "Marine Sample", log:false);
-                        Core.HuntMonster("sunlightzone", "Infernal Illusion", "Infernal Sample", 10, log:false);
-                        Core.HuntMonster("sunlightzone", "Seraphic Illusion", "Seraphic Sample", 10, log:false);
+                        Core.HuntMonster("sunlightzone", "Marine Snow", "Marine Sample", log: false);
+                        Core.HuntMonster("sunlightzone", "Infernal Illusion", "Infernal Sample", 10, log: false);
+                        Core.HuntMonster("sunlightzone", "Seraphic Illusion", "Seraphic Sample", 10, log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
