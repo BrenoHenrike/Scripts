@@ -3,11 +3,12 @@ name: Sunlight Zone House Merge
 description: This bot will farm the items belonging to the selected mode for the Sunlight Zone House Merge [2289] in /sunlightzone
 tags: sunlight, zone, house, merge, sunlightzone, stern, song, guest, taras, temporary, rest, disgruntled, mi
 */
-//cs_include Scripts/Story/AgeOfRuin/CoreAOR.cs
-//cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/CoreStory.cs
+//cs_include Scripts/Story/AgeOfRuin/CoreAOR.cs
+//cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;

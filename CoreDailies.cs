@@ -514,7 +514,7 @@ public class CoreDailies
 
     public void MonthlyTreasureChestKeys()
     {
-        if (!Core.IsMember)
+        if (!Core.IsMember || !Core.CheckInventory("Treasure Chest"))
             return;
 
         Core.Logger("Montly: Treasure Chest Keys");
