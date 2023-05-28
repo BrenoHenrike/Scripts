@@ -3331,7 +3331,7 @@
       "null"
     ],
     "path": "Darkon/CoreDarkon.cs",
-    "size": 10969,
+    "size": 10989,
     "fileName": "CoreDarkon.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/CoreDarkon.cs"
   },
@@ -15160,7 +15160,7 @@
       "mergeshop"
     ],
     "path": "Darkon/MergeShops/GenesisGardenMerge.cs",
-    "size": 5464,
+    "size": 4638,
     "fileName": "GenesisGardenMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/MergeShops/GenesisGardenMerge.cs"
   },
