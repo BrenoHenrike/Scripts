@@ -91,6 +91,7 @@ tags: story, quest, complete, all
 //cs_include Scripts/Story/CruxShip.cs
 
 //cs_include Scripts/Story/DarkCarnax.cs
+//cs_include Scripts/Story/DarkDungeon.cs
 //cs_include Scripts/Story/DeerHunt.cs
 //cs_include Scripts/Story/DjinnGate.cs
 //cs_include Scripts/Story/DjinnGuard.cs
@@ -292,6 +293,7 @@ public class AllStories
     public CruxShip CruxShip = new();
 
     public DarkCarnaxStory DarkCarnax = new();
+    public DarkDungeon DarkDungeon = new();
     public DeerHunt DeerHunt = new();
     public DjinnGateStory DjinnGateStory = new();
     public DjinnGuard DjinnGuard = new();
@@ -624,6 +626,10 @@ public class AllStories
 
         // DarkCarnax.Storyline();
         // Core.Logger($"Story: Nightmare Carnax - Complete");
+
+        DarkDungeon.Storyline();
+        Core.Logger($"Story: Dark Dungeon - Complete");
+
 
         if (Core.IsMember)
         {

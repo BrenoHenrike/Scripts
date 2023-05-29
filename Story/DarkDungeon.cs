@@ -24,7 +24,7 @@ public class DarkDungeon
 
     public void Storyline()
     {
-        if (Core.isCompletedBefore(3545))
+        if (Core.isCompletedBefore(3543))
             return;
 
         Story.PreLoad(this);
