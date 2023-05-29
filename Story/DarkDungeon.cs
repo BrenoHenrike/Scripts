@@ -18,11 +18,11 @@ public class DarkDungeon
     {
         Core.SetOptions();
 
-        storyline();
+        Storyline();
         Core.SetOptions(false);
     }
 
-    public void storyline()
+    public void Storyline()
     {
         if (Core.isCompletedBefore(3545))
             return;
