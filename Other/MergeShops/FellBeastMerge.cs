@@ -40,7 +40,7 @@ public class FellBeastMerge
 
     public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
-        Dark.storyline();
+        Dark.Storyline();
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("darkdungeon", 879, findIngredients, buyOnlyThis, buyMode: buyMode);
 
@@ -65,8 +65,8 @@ public class FellBeastMerge
                 #endregion
 
                 case "Dungeon Token":
-                    Core.EquipClass(ClassType.Solo);
                     Core.FarmingLogger(req.Name, quant);
+                    Core.EquipClass(ClassType.Solo);
                     Core.KillMonster("darkdungeon", "r9", "Left", "Cockatrice", req.Name, quant, false, false);
                     break;
 
