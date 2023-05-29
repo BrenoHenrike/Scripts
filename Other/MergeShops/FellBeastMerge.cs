@@ -65,6 +65,7 @@ public class FellBeastMerge
                 #endregion
 
                 case "Dungeon Token":
+                    Core.EquipClass(ClassType.Solo);
                     Core.FarmingLogger(req.Name, quant);
                     Core.KillMonster("darkdungeon", "r9", "Left", "Cockatrice", req.Name, quant, false, false);
                     break;
