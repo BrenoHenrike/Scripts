@@ -82,7 +82,7 @@ public class Tercessuinotlim
         {
             Core.EnsureAccept(8473);
             Core.HuntMonster($"Fiendshard", "Fiend Shard", "Dirtlicker’s Shard Shaving", 3);
-            Core.HuntMonster($"Fiendshard", "Nulgath's Fiend Shard", "Nulgath’s Shard Shaving", 3);
+            Core.HuntMonsterMapID("Fiendshard", 15, "Piece of the Shard");
             Core.HuntMonster("QuibbleHunt", "RogueFiend", "Roguefiend Crystal Shaving", 5);
             Core.EnsureComplete(8473);
         }

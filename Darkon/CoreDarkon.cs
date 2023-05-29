@@ -261,25 +261,25 @@ public class CoreDarkon
         Core.CancelRegisteredQuests();
     }
 
-    public void MourningFlower(int Quantity = 1000)
+    public void WheelofFortune(int Quantity = 1000)
     {
         if (Core.CheckInventory("Mourning Flower", Quantity))
             return;
 
-        Core.AddDrop("Mourning Flower");
+        Core.AddDrop("Mourning Flower", "Jus Divinum Scale");
 
         Astravia.GenesisGarden();
 
         Core.FarmingLogger("Mourning Flower", Quantity);
-        Core.EquipClass(ClassType.Solo);
 
         Core.RegisterQuests(8688);
         while (!Bot.ShouldExit && !Core.CheckInventory("Mourning Flower", Quantity))
         {
-            Core.KillMonster("genesisgarden", "r6", "Left", "*", "Beast Subject", 7);
-            Core.KillMonster("genesisgarden", "r9", "Left", "*", "Humanoid Subject", 7);
-            Core.KillMonster("genesisgarden", "r11", "Left", "Ancient Mecha", "Replacement Parts", 7);
-            Bot.Wait.ForPickup("Mourning Flower");
+            Core.EquipClass(ClassType.Farm);
+            Core.HuntMonster("genesisgarden", "Long-eared Beast", "Beast Subject", 7, log: false);
+            Core.HuntMonster("genesisgarden", "Undead Humanoid", "Humanoid Subject", 7, log: false);
+            Core.EquipClass(ClassType.Solo);
+            Core.HuntMonster("genesisgarden", "Ancient Mecha", "Replacement Parts", 7, log: false);
         }
         Core.CancelRegisteredQuests();
     }

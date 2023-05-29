@@ -1,7 +1,7 @@
 /*
 name: CommandingShadowEssences
-description: null
-tags: null
+description: farms void auras via the "commanding shadow essences" quest.
+tags: commanding, shadow, essences, void, aura
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

@@ -183,7 +183,7 @@ public class MergeTemplateHelper
             Core.Logger("Failed to find classIndex");
             return;
         }
-        MergeTemplate[classIndex] = $"public class {className}Merge";
+        MergeTemplate[classIndex] = $"public class {className}";
 
         int blackListIndex = Array.IndexOf(MergeTemplate, "        Core.BankingBlackList.AddRange(new[] { \"\" });");
         if (blackListIndex < 0)
@@ -213,7 +213,7 @@ public class MergeTemplateHelper
                             .Concat(new[] { "}" })
                             .ToArray();
 
-        string path = Path.Combine(ClientFileSources.SkuaScriptsDIR, "WIP", className + "Merge.cs");
+        string path = Path.Combine(ClientFileSources.SkuaScriptsDIR, "WIP", className + ".cs");
         Directory.CreateDirectory(Path.Combine(ClientFileSources.SkuaScriptsDIR, "WIP"));
         Core.WriteFile(path, content);
         if (Bot.ShowMessageBox($"File has been generated. Path is {path}\n\nPress OK to open the file",

@@ -4,6 +4,9 @@ description: This will get all of the available gifts upto this date.
 tags: daily-gifts, rare-items
 */
 //cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/Seasonal/MayThe4th/TwiggusGearMerge.cs
 using System.Globalization;
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
@@ -14,6 +17,8 @@ public class CurrentDailyGifts
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
     private static CoreBots sCore = new();
+    private CoreAdvanced Adv = new();
+    private TwiggusGearMerge TGM = new();
 
     public string OptionsStorage = "CurrentDailyGifts";
     public bool DontPreconfigure = true;
@@ -133,6 +138,11 @@ public class CurrentDailyGifts
             GetGift(AvailableUntil(24, 4), "dvg", "Munthor", "Giga Twilly");
             //Golden Treasure Hunt clue
             GetGift(AvailableUntil(1, 5), "necrodungeon", 48, "Golden Spear of Light");
+            //Message Capsule Clue
+            TGM.BuyAllMerge("L'il Twiggu Guest");
+            TGM.BuyAllMerge("Baby Twiggu's Pod Pet");
+
+            GetGift(AvailableUntil(16, 6), "garden", "Creature 35", "Dark Astravian General Lance");
 
             // Fortunate Grenwog Garb
             // GetGift(AvailableUntil(30, 4), "elixirgrenwog", "Elixir Grenwog", "Fortunate Grenwog Garb");

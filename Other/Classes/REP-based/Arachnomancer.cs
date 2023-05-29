@@ -36,7 +36,7 @@ public class Arachnomancer
         RavenlossSaga.DoAll();
         Farm.RavenlossREP();
 
-        Core.BuyItem("ravenloss", 850, "Arachnomancer", shopItemID: 23292);
+        Core.BuyItem("ravenloss", 850, "Arachnomancer", shopItemID: 14837);
 
         if (rankUpClass)
             Adv.RankUpClass("Arachnomancer");

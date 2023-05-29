@@ -431,9 +431,9 @@ public class CoreToD
         if (!Story.QuestProgression(5093))
         {
             Core.EnsureAccept(5093);
-            Core.HuntMonsterMapID("baconcat", 2781, "Honking Clown Nose", 3);
-            Core.HuntMonsterMapID("baconcat", 2780, "Scary Face Paint!", 10);
-            Core.HuntMonsterMapID("baconcat", 2781, "Rainbow Wig", 3);
+            Core.HuntMonsterMapID("baconcat", 26, "Scary Face Paint!", 10);
+            Core.HuntMonsterMapID("baconcat", 26, "Honking Clown Nose", 3);
+            Core.HuntMonsterMapID("baconcat", 26, "Rainbow Wig", 3);
             Core.EnsureComplete(5093);
         }
 
@@ -453,10 +453,10 @@ public class CoreToD
         if (!Story.QuestProgression(5098))
         {
             Core.EnsureAccept(5098);
-            Core.KillMonster("baconcat", "r11a", "Left", "Oopy", "Oopy Defeated");
-            Core.KillMonster("baconcat", "r11a", "Left", "Bloopy", "Bloopy Defeated");
-            Core.KillMonster("baconcat", "r11a", "Left", "Hoopy", "Hoopy Defeated");
-            Core.KillMonster("baconcat", "r11a", "Left", "Frood", "Frood Defeated");
+            Core.HuntMonsterMapID("baconcat", 40, "Oopy Defeated");
+            Core.HuntMonsterMapID("baconcat", 41, "Bloopy Defeated");
+            Core.HuntMonsterMapID("baconcat", 42, "Hoopy Defeated");
+            Core.HuntMonsterMapID("baconcat", 43, "Frood Defeated");
             Core.EnsureComplete(5098);
         }
 
@@ -552,8 +552,8 @@ public class CoreToD
         {
             Core.EnsureAccept(5118);
             Core.HuntMonster("baconcatlair", "Cat Clothed Shark", "Kittarian Clothes", 6);
-            Core.HuntMonster("baconcatlair", "Cat Clothed Shark", "Kittarian Spoon", 4);
-            Core.HuntMonster("baconcatlair", "Cat Clothed Shark", "Kittarian Fork", 4);
+            Core.HuntMonsterMapID("baconcatlair", 14, "Kittarian Spoon", 4);
+            Core.HuntMonsterMapID("baconcatlair", 13, "Kittarian Fork", 4);
             Core.EnsureComplete(5118);
         }
 

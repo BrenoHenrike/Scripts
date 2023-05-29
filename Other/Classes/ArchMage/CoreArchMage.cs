@@ -399,7 +399,7 @@ public class CoreArchMage
             Core.HuntMonster("eternalchaos", "Eternal Drakath", "Chaotic Ether", isTemp: false);
             Core.HuntMonsterMapID("shadowattack", 68, "Mortal Ether", isTemp: false);
             Core.HuntMonster("gaiazor", "Gaiazor", "Vital Ether", isTemp: false);
-            Core.HuntMonster("fiendshard", "Nulgath's Fiend Shard", "Infernal Ether", isTemp: false);
+            Core.HuntMonsterMapID("fiendshard", 15, "Infernal Ether", isTemp: false);
             Core.EnsureComplete(8910);
             Bot.Wait.ForPickup("Prismatic Ether");
         }
@@ -453,7 +453,9 @@ public class CoreArchMage
         {
             Core.EnsureAccept(8912);
             //line 460 is require else it tries to do the 500ks and it absolutely refuses todo so.
-            Adv.BuyItem("alchemyacademy", 395, 7132, 30, 1, 8844);
+            // Adv.BuyItem("alchemyacademy", 395, 7132, 30, 1, 8844);
+            Adv.BuyItem("alchemyacademy", 395, 62749, 30, 1, 8777);
+            Core.BuyItem("alchemyacademy", 395, "Dragon Runestone", 30, 8844);
             Adv.BuyItem("darkthronehub", 1308, "Exalted Paladin Seal");
             Adv.BuyItem("shadowfall", 89, "Forsaken Doom Seal");
 

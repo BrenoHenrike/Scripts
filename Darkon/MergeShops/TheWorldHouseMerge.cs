@@ -95,7 +95,7 @@ public class TheWorldHouseMerge
                     break;
 
                 case "Mourning Flower":
-                    Darkon.MourningFlower(quant);
+                    Darkon.WheelofFortune(quant);
                     break;
 
                 case "Unfinished Musical Score":

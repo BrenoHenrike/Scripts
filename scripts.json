@@ -6,7 +6,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 104167,
+    "size": 104244,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -17,7 +17,7 @@
       "null"
     ],
     "path": "CoreDailies.cs",
-    "size": 41310,
+    "size": 41352,
     "fileName": "CoreDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreDailies.cs"
   },
@@ -50,7 +50,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 170441,
+    "size": 170570,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -337,7 +337,7 @@
       "dragon-fable-origins"
     ],
     "path": "Story/DragonFableOrigins.cs",
-    "size": 5046,
+    "size": 5100,
     "fileName": "DragonFableOrigins.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/DragonFableOrigins.cs"
   },
@@ -941,7 +941,7 @@
       "member"
     ],
     "path": "Story/Safiria[Member].cs",
-    "size": 3058,
+    "size": 3110,
     "fileName": "Safiria[Member].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Safiria[Member].cs"
   },
@@ -1023,7 +1023,7 @@
       "starsinc"
     ],
     "path": "Story/StarSinc.cs",
-    "size": 3517,
+    "size": 4154,
     "fileName": "StarSinc.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/StarSinc.cs"
   },
@@ -1496,7 +1496,7 @@
       "null"
     ],
     "path": "Legion/CoreLegion.cs",
-    "size": 31361,
+    "size": 31379,
     "fileName": "CoreLegion.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/CoreLegion.cs"
   },
@@ -2015,7 +2015,7 @@
       "pneuma"
     ],
     "path": "Enhancement/UnlockForgeEnhancements.cs",
-    "size": 37596,
+    "size": 38106,
     "fileName": "UnlockForgeEnhancements.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Enhancement/UnlockForgeEnhancements.cs"
   },
@@ -2037,7 +2037,7 @@
       "null"
     ],
     "path": "Templates/ArmyTemplatev2.cs",
-    "size": 5624,
+    "size": 5205,
     "fileName": "ArmyTemplatev2.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Templates/ArmyTemplatev2.cs"
   },
@@ -2136,7 +2136,7 @@
       "null"
     ],
     "path": "Army/CoreArmyLite.cs",
-    "size": 38189,
+    "size": 38945,
     "fileName": "CoreArmyLite.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/CoreArmyLite.cs"
   },
@@ -2352,7 +2352,7 @@
       "rare-items"
     ],
     "path": "Other/0CurrentDailyGifts.cs",
-    "size": 18516,
+    "size": 18968,
     "fileName": "0CurrentDailyGifts.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/0CurrentDailyGifts.cs"
   },
@@ -3016,7 +3016,7 @@
       "goto"
     ],
     "path": "Tools/Butler.cs",
-    "size": 10764,
+    "size": 11002,
     "fileName": "Butler.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/Butler.cs"
   },
@@ -3331,7 +3331,7 @@
       "null"
     ],
     "path": "Darkon/CoreDarkon.cs",
-    "size": 10969,
+    "size": 11010,
     "fileName": "CoreDarkon.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/CoreDarkon.cs"
   },
@@ -3551,7 +3551,7 @@
       "null"
     ],
     "path": "Good/GearOfAwe/CoreAwe.cs",
-    "size": 1837,
+    "size": 1978,
     "fileName": "CoreAwe.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/GearOfAwe/CoreAwe.cs"
   },
@@ -3767,9 +3767,27 @@
       "null"
     ],
     "path": "Story/AgeOfRuin/CoreAOR.cs",
-    "size": 2555,
+    "size": 4118,
     "fileName": "CoreAOR.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/CoreAOR.cs"
+  },
+  {
+    "name": "Sunlight Zone",
+    "description": "This script completes the storyline in /sunlightzone.",
+    "tags": [
+      "age",
+      "of",
+      "ruin",
+      "saga",
+      "story",
+      "quest",
+      "zone",
+      "sunlight"
+    ],
+    "path": "Story/AgeOfRuin/03SunlightZone.cs",
+    "size": 732,
+    "fileName": "03SunlightZone.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/03SunlightZone.cs"
   },
   {
     "name": "Ashray Village",
@@ -4183,7 +4201,7 @@
       "null"
     ],
     "path": "Story/MemetsRealm/CoreMemet.cs",
-    "size": 12506,
+    "size": 12674,
     "fileName": "CoreMemet.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/MemetsRealm/CoreMemet.cs"
   },
@@ -5107,7 +5125,7 @@
       "null"
     ],
     "path": "Story/ThroneofDarkness/CoreToD.cs",
-    "size": 42570,
+    "size": 42476,
     "fileName": "CoreToD.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ThroneofDarkness/CoreToD.cs"
   },
@@ -5676,7 +5694,7 @@
       "nation"
     ],
     "path": "Story/Nation/Tercessuinotlim.cs",
-    "size": 4027,
+    "size": 4000,
     "fileName": "Tercessuinotlim.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Nation/Tercessuinotlim.cs"
   },
@@ -6943,7 +6961,7 @@
       "voucher item totem of nulgath"
     ],
     "path": "Army/ArmyNulgath/ArmyVoucherItemTotemofNulgath.cs",
-    "size": 4202,
+    "size": 4247,
     "fileName": "ArmyVoucherItemTotemofNulgath.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyNulgath/ArmyVoucherItemTotemofNulgath.cs"
   },
@@ -8572,10 +8590,16 @@
       "mace",
       "sickle",
       "sickles",
-      "backhand"
+      "backhand",
+      "lil",
+      "twiggu",
+      "guest",
+      "baby",
+      "pod",
+      "pet"
     ],
     "path": "Seasonal/MayThe4th/TwiggusGearMerge.cs",
-    "size": 5775,
+    "size": 6519,
     "fileName": "TwiggusGearMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/MayThe4th/TwiggusGearMerge.cs"
   },
@@ -9142,6 +9166,23 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/FrozenSoulMerge.cs"
   },
   {
+    "name": "Search For Gifts Quest Rewards",
+    "description": "This script will get all the rewards of search for gifts quest.",
+    "tags": [
+      "search",
+      "for",
+      "gifts",
+      "rewards",
+      "seasonal",
+      "akibalight",
+      "ai no miko"
+    ],
+    "path": "Seasonal/Frostvale/SearchForGiftsRewards.cs",
+    "size": 1148,
+    "fileName": "SearchForGiftsRewards.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/SearchForGiftsRewards.cs"
+  },
+  {
     "name": "Bow Jangles Merge",
     "description": "This will get all or selected items on this merge shop.",
     "tags": [
@@ -9166,6 +9207,22 @@
     "size": 5432,
     "fileName": "HelsgroveMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/HelsgroveMerge.cs"
+  },
+  {
+    "name": "Frost Blade Master",
+    "description": "Does the seasonal quests of frostblademaster in /akibalight",
+    "tags": [
+      "frost",
+      "blade",
+      "master",
+      "seasonal",
+      "akiba",
+      "light"
+    ],
+    "path": "Seasonal/Frostvale/frostblademaster.cs",
+    "size": 1938,
+    "fileName": "frostblademaster.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/frostblademaster.cs"
   },
   {
     "name": "Frostvale All Stories",
@@ -10344,7 +10401,7 @@
       "aureate aegis set"
     ],
     "path": "Other/Armor/AureateAegisSet.cs",
-    "size": 1566,
+    "size": 1564,
     "fileName": "AureateAegisSet.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Armor/AureateAegisSet.cs"
   },
@@ -10462,7 +10519,7 @@
       "null"
     ],
     "path": "Other/Badges/YouMadBroBadge.cs",
-    "size": 1854,
+    "size": 2004,
     "fileName": "YouMadBroBadge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Badges/YouMadBroBadge.cs"
   },
@@ -11024,7 +11081,7 @@
       "null"
     ],
     "path": "Other/Various/Potions.cs",
-    "size": 14572,
+    "size": 14994,
     "fileName": "Potions.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Various/Potions.cs"
   },
@@ -11429,6 +11486,25 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/DeepTunnelMerge.cs"
   },
   {
+    "name": "Samba Armor Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Samba Armor Merge [302] in /bloodtusk",
+    "tags": [
+      "samba",
+      "armor",
+      "merge",
+      "bloodtusk",
+      "dancin",
+      "green",
+      "dance",
+      "feathers",
+      "purple"
+    ],
+    "path": "Other/MergeShops/SambaArmorMerge.cs",
+    "size": 4401,
+    "fileName": "SambaArmorMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/SambaArmorMerge.cs"
+  },
+  {
     "name": "QueensReignMerge",
     "description": "null",
     "tags": [
@@ -11450,6 +11526,48 @@
     "size": 11733,
     "fileName": "Adam1a1Merge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/Adam1a1Merge.cs"
+  },
+  {
+    "name": "Fable Forest Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Fable Forest Merge [815] in /fableforest",
+    "tags": [
+      "fable",
+      "forest",
+      "merge",
+      "fableforest",
+      "wind",
+      "dragon",
+      "tail",
+      "oakheart",
+      "back",
+      "shield",
+      "magic",
+      "armblades",
+      "guardian",
+      "not",
+      "quite",
+      "chaos",
+      "shape",
+      "shadowscythe",
+      "morph",
+      "ultra",
+      "hydra",
+      "dreadspider",
+      "combo",
+      "dwakel",
+      "tech",
+      "fire",
+      "water",
+      "nature",
+      "prismatic",
+      "faerie",
+      "botanis",
+      "elements"
+    ],
+    "path": "Other/MergeShops/FableForestMergeShop[Mem].cs",
+    "size": 8768,
+    "fileName": "FableForestMergeShop[Mem].cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/FableForestMergeShop[Mem].cs"
   },
   {
     "name": "MazeMerge",
@@ -11516,6 +11634,36 @@
     "size": 4260,
     "fileName": "BattleConGearMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/BattleConGearMerge.cs"
+  },
+  {
+    "name": "Undine Commissary Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Undine Commissary Merge [2288] in /sunlightzone",
+    "tags": [
+      "undine",
+      "commissary",
+      "merge",
+      "sunlightzone",
+      "fas",
+      "casual",
+      "ensemble",
+      "mis",
+      "doctor",
+      "defence",
+      "director",
+      "researcher",
+      "clean",
+      "bob",
+      "cut",
+      "horn",
+      "songs",
+      "high",
+      "ponytail",
+      "glasses"
+    ],
+    "path": "Other/MergeShops/UndineCommissaryMerge.cs",
+    "size": 5026,
+    "fileName": "UndineCommissaryMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/UndineCommissaryMerge.cs"
   },
   {
     "name": "TachyonMerge",
@@ -11808,6 +11956,28 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/IceDungeonMerge.cs"
   },
   {
+    "name": "Molten Forge Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Molten Forge Merge [1428] in /battleundere",
+    "tags": [
+      "molten",
+      "forge",
+      "merge",
+      "battleundere",
+      "lavamorphosis",
+      "lavamorph",
+      "eyes",
+      "visor",
+      "wings",
+      "stinger",
+      "venom",
+      "banes"
+    ],
+    "path": "Other/MergeShops/MoltenForgeMerge.cs",
+    "size": 4974,
+    "fileName": "MoltenForgeMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/MoltenForgeMerge.cs"
+  },
+  {
     "name": "UbearMerge",
     "description": "null",
     "tags": [
@@ -12009,6 +12179,29 @@
     "size": 5220,
     "fileName": "BrightForestMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/BrightForestMerge.cs"
+  },
+  {
+    "name": "Sunlight Zone House Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Sunlight Zone House Merge [2289] in /sunlightzone",
+    "tags": [
+      "sunlight",
+      "zone",
+      "house",
+      "merge",
+      "sunlightzone",
+      "stern",
+      "song",
+      "guest",
+      "taras",
+      "temporary",
+      "rest",
+      "disgruntled",
+      "mi"
+    ],
+    "path": "Other/MergeShops/SunlightZoneHouseMerge.cs",
+    "size": 4332,
+    "fileName": "SunlightZoneHouseMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/SunlightZoneHouseMerge.cs"
   },
   {
     "name": "BrightshadowMerge",
@@ -12225,14 +12418,34 @@
   },
   {
     "name": "Termina Temple Merge",
-    "description": "farms the materials for the merge shop in /terminatemple",
+    "description": "This bot will farm the items belonging to the selected mode for the Termina Temple Merge [2259] in /terminatemple",
     "tags": [
+      "termina",
+      "temple",
       "merge",
       "terminatemple",
-      "terminatemplemerge"
+      "dragonlord",
+      "good",
+      "golden",
+      "dragonlords",
+      "royal",
+      "wrap",
+      "evil",
+      "tyrannical",
+      "doomblade",
+      "chaos",
+      "chaorrupted",
+      "dragonblade",
+      "battle",
+      "cleric",
+      "dragon",
+      "clerics",
+      "bright",
+      "cloak",
+      "accoutrements"
     ],
     "path": "Other/MergeShops/TerminaTempleMerge.cs",
-    "size": 5687,
+    "size": 6744,
     "fileName": "TerminaTempleMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/TerminaTempleMerge.cs"
   },
@@ -12257,6 +12470,25 @@
     "size": 9755,
     "fileName": "DreadspaceReplicatorMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/DreadspaceReplicatorMerge.cs"
+  },
+  {
+    "name": "Bonebreaker Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Bonebreaker Merge [1051] in /bonebreak",
+    "tags": [
+      "bonebreaker",
+      "merge",
+      "bonebreak",
+      "outcast",
+      "boneshattering",
+      "brokenbone",
+      "skull",
+      "bonepiercer",
+      "membership"
+    ],
+    "path": "Other/MergeShops/BoneBreakerMergeShop[MEM].cs",
+    "size": 3856,
+    "fileName": "BoneBreakerMergeShop[MEM].cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/BoneBreakerMergeShop[MEM].cs"
   },
   {
     "name": "CelestialSpoilsMerge",
@@ -12681,7 +12913,7 @@
       "inserthere"
     ],
     "path": "Hollowborn/HollowbornPaladin/CoreHollowbornPaladin.cs",
-    "size": 6782,
+    "size": 6804,
     "fileName": "CoreHollowbornPaladin.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/HollowbornPaladin/CoreHollowbornPaladin.cs"
   },
@@ -13197,7 +13429,7 @@
       "null"
     ],
     "path": "Farm/REP/DiabolicalREP.cs",
-    "size": 1047,
+    "size": 902,
     "fileName": "DiabolicalREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/DiabolicalREP.cs"
   },
@@ -13643,7 +13875,7 @@
       "developer"
     ],
     "path": "Tools/ForDevelopers/MergeTemplateHelper.cs",
-    "size": 8605,
+    "size": 8595,
     "fileName": "MergeTemplateHelper.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/ForDevelopers/MergeTemplateHelper.cs"
   },
@@ -13665,7 +13897,7 @@
       "null"
     ],
     "path": "Nation/AFDL/WillpowerExtraction.cs",
-    "size": 4402,
+    "size": 4400,
     "fileName": "WillpowerExtraction.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/AFDL/WillpowerExtraction.cs"
   },
@@ -13697,7 +13929,7 @@
       "fragment"
     ],
     "path": "Nation/AFDL/NulgathDemandsWork.cs",
-    "size": 3914,
+    "size": 3919,
     "fileName": "NulgathDemandsWork.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/AFDL/NulgathDemandsWork.cs"
   },
@@ -14069,6 +14301,23 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/TheGameofGemstones(Gold[Members]).cs"
   },
   {
+    "name": "Tainted Claymore",
+    "description": "This script farms the Tainted Claymore weapon.",
+    "tags": [
+      "claymore",
+      "nulgath",
+      "skew",
+      "warrior",
+      "blade",
+      "enchant",
+      "poisonous deal"
+    ],
+    "path": "Nation/Various/TaintedClaymore.cs",
+    "size": 1606,
+    "fileName": "TaintedClaymore.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/TaintedClaymore.cs"
+  },
+  {
     "name": "DragonBlade[mem]",
     "description": "null",
     "tags": [
@@ -14273,13 +14522,21 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/VoidWarlock.cs"
   },
   {
-    "name": "TheRefreshingDeal",
-    "description": "null",
+    "name": "The Refreshing Deal",
+    "description": "This script farms Gems and Totems of Nulgath using \"The Refreshing Deal\" Quest.",
     "tags": [
-      "null"
+      "refreshing",
+      "deal",
+      "gem",
+      "totem",
+      "nulgath",
+      "nation",
+      "crag",
+      "bamboozle",
+      "quest"
     ],
     "path": "Nation/Various/TheRefreshingDeal.cs",
-    "size": 2800,
+    "size": 2841,
     "fileName": "TheRefreshingDeal.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/TheRefreshingDeal.cs"
   },
@@ -14326,6 +14583,29 @@
     "size": 1532,
     "fileName": "TarosPrismaticManslayers.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/TarosPrismaticManslayers.cs"
+  },
+  {
+    "name": "The Poisonous Deal",
+    "description": "This script farms Tainted Gems and Dark Crystal Shards using \"The Poisonous Deal\" Quest.",
+    "tags": [
+      "poisonous",
+      "deal",
+      "dark",
+      "crystal",
+      "shard",
+      "tainted",
+      "gem",
+      "nulgath",
+      "nation",
+      "crag",
+      "bamboozle",
+      "quest",
+      "claymore"
+    ],
+    "path": "Nation/Various/ThePoisonousDeal.cs",
+    "size": 2855,
+    "fileName": "ThePoisonousDeal.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/ThePoisonousDeal.cs"
   },
   {
     "name": "PurifiedClaymoreOfDestiny",
@@ -14520,7 +14800,7 @@
       "null"
     ],
     "path": "Nation/MergeShops/FiendshardMerge.cs",
-    "size": 5404,
+    "size": 5388,
     "fileName": "FiendshardMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/MergeShops/FiendshardMerge.cs"
   },
@@ -14880,7 +15160,7 @@
       "mergeshop"
     ],
     "path": "Darkon/MergeShops/GenesisGardenMerge.cs",
-    "size": 4066,
+    "size": 4638,
     "fileName": "GenesisGardenMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/MergeShops/GenesisGardenMerge.cs"
   },
@@ -14993,45 +15273,63 @@
   },
   {
     "name": "CommandingShadowEssences",
-    "description": "null",
+    "description": "farms void auras via the \"commanding shadow essences\" quest.",
     "tags": [
-      "null"
+      "commanding",
+      "shadow",
+      "essences",
+      "void",
+      "aura"
     ],
     "path": "Evil/NSoD/VoidAuras/CommandingShadowEssences.cs",
-    "size": 1221,
+    "size": 1313,
     "fileName": "CommandingShadowEssences.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/NSoD/VoidAuras/CommandingShadowEssences.cs"
   },
   {
     "name": "RetreiveVoidAuras",
-    "description": "null",
+    "description": "farms void auras via the \"retrieve void auras\" quest.",
     "tags": [
-      "null"
+      "retrieve",
+      "void",
+      "auras"
     ],
     "path": "Evil/NSoD/VoidAuras/RetreiveVoidAuras.cs",
-    "size": 1257,
+    "size": 1323,
     "fileName": "RetreiveVoidAuras.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/NSoD/VoidAuras/RetreiveVoidAuras.cs"
   },
   {
     "name": "0SmartVoidAuras",
-    "description": "null",
+    "description": "farms void auras via what ever the current best method you have to farm them..",
     "tags": [
-      "null"
+      "smart",
+      "gathering",
+      "unstable",
+      "essences",
+      "commanding",
+      "shadow",
+      "essences",
+      "retrieve",
+      "void",
+      "auras"
     ],
     "path": "Evil/NSoD/VoidAuras/0SmartVoidAuras.cs",
-    "size": 1453,
+    "size": 1612,
     "fileName": "0SmartVoidAuras.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/NSoD/VoidAuras/0SmartVoidAuras.cs"
   },
   {
     "name": "GatheringUnstableEssences",
-    "description": "null",
+    "description": "farms void auras via the \"gathering unstable essences\" quest.",
     "tags": [
-      "null"
+      "gathering",
+      "unstable",
+      "essences",
+      "void aura"
     ],
     "path": "Evil/NSoD/VoidAuras/GatheringUnstableEssences.cs",
-    "size": 874,
+    "size": 967,
     "fileName": "GatheringUnstableEssences.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/NSoD/VoidAuras/GatheringUnstableEssences.cs"
   },
@@ -17185,7 +17483,7 @@
       "null"
     ],
     "path": "Other/Classes/ArchMage/CoreArchMage.cs",
-    "size": 22517,
+    "size": 22651,
     "fileName": "CoreArchMage.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/ArchMage/CoreArchMage.cs"
   },

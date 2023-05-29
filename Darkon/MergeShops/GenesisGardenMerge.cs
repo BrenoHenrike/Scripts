@@ -22,6 +22,7 @@ public class GenesisGardenMerge
     public CoreAdvanced Adv = new();
     public static CoreAdvanced sAdv = new();
     public CoreDarkon Darkon = new();
+    public CoreAstravia CAstravia = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
     public string[] MultiOptions = { "Generic", "Select" };
@@ -41,6 +42,8 @@ public class GenesisGardenMerge
 
     public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
+        CAstravia.GenesisGarden();
+
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("genesisgarden", 2136, findIngredients, buyOnlyThis, buyMode: buyMode);
 
@@ -64,8 +67,9 @@ public class GenesisGardenMerge
                     break;
                 #endregion
 
+                case "Jus Divinum Scale":
                 case "Mourning Flower":
-                    Darkon.MourningFlower(quant);
+                    Darkon.WheelofFortune(quant);
                     break;
             }
         }
@@ -83,5 +87,8 @@ public class GenesisGardenMerge
         new Option<bool>("70361", "Jus Divinum Major", "Mode: [select] only\nShould the bot buy \"Jus Divinum Major\" ?", false),
         new Option<bool>("70362", "Jus Divinum Major Helmet", "Mode: [select] only\nShould the bot buy \"Jus Divinum Major Helmet\" ?", false),
         new Option<bool>("70363", "Jus Divinum Major Cape", "Mode: [select] only\nShould the bot buy \"Jus Divinum Major Cape\" ?", false),
+        new Option<bool>("77884", "Jus Divinum Lieutenant", "Mode: [select] only\nShould the bot buy \"Jus Divinum Lieutenant\" ?", false),
+        new Option<bool>("77885", "Jus Divinum Lieutenant Armet", "Mode: [select] only\nShould the bot buy \"Jus Divinum Lieutenant Armet\" ?", false),
+        new Option<bool>("77886", "Jus Divinum Lieutenant Cloak", "Mode: [select] only\nShould the bot buy \"Jus Divinum Lieutenant Cloak\" ?", false),
     };
 }

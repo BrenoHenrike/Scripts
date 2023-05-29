@@ -26,7 +26,7 @@ public class WillpowerExtraction
             "King Klunk's Crown", "Golden Shadow Breaker", "Shadow Terror Axe"});
         Core.SetOptions();
 
-        Unidentified34(90);
+        Unidentified34();
 
         Core.SetOptions(false);
     }
