@@ -606,6 +606,22 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Mazumi.cs"
   },
   {
+    "name": "DarkDungeon",
+    "description": "This script finish all dark dungeon quests storyline in /darkdungeon",
+    "tags": [
+      "dark",
+      "dungeon",
+      "story",
+      "line",
+      "mirror",
+      "drakath"
+    ],
+    "path": "Story/DarkDungeon.cs",
+    "size": 1351,
+    "fileName": "DarkDungeon.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/DarkDungeon.cs"
+  },
+  {
     "name": "Nukemichi Story (Member)",
     "description": "This will finish the Nukemichi Story.",
     "tags": [
@@ -12643,6 +12659,32 @@
     "size": 8445,
     "fileName": "NightmareCarnaxMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/NightmareCarnaxMerge.cs"
+  },
+  {
+    "name": "Fell Beast Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Fell Beast Merge [879] in /darkdungeon",
+    "tags": [
+      "fell",
+      "beast",
+      "merge",
+      "darkdungeon",
+      "lumenomancer",
+      "righteous",
+      "deliverance",
+      "lumenomancers",
+      "gift",
+      "woe",
+      "undead",
+      "th",
+      "egg",
+      "pet",
+      "cockatrice",
+      "hatchling"
+    ],
+    "path": "Other/MergeShops/FellBeastMerge.cs",
+    "size": 4210,
+    "fileName": "FellBeastMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/FellBeastMerge.cs"
   },
   {
     "name": "Crownsreach50ChestMerge",
