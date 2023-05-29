@@ -28,18 +28,6 @@ public class DarkDungeon
             return;
 
         Story.PreLoad(this);
-        //Bright Idea 2909
-        Story.MapItemQuest(2909, "battleoff", 17375);
-
-        //Spare Parts 2910
-        Story.MapItemQuest(2910, "battleoff", 1780, 8);
-
-        //Power It Up 2911
-        Story.KillQuest(2911, "battleoff", "Evil Moglin");
-
-        //Filthy Creatures 2912
-        Story.KillQuest(2912, "battleoff", "Evil Moglin");
-
         //Quiz the Locals 3538
         Story.MapItemQuest(3538, "darkdungeon", new[] { 2671, 2672, 2673 });
 
@@ -49,13 +37,14 @@ public class DarkDungeon
         //Free the Fallen 3540
         Story.KillQuest(3540, "darkdungeon", "Dungeon Paladin");
 
+        //Shining a Light 3541
+        Story.MapItemQuest(3541, "darkdungeon", 2674, 4);
+        Story.KillQuest(3541, "darkdungeon", "Shadow Imp");
+
         //Break the Doors Down 3542
         Story.MapItemQuest(3542, "darkdungeon", 2679, 5);
 
         //The Best vs The Beast 3543
         Story.KillQuest(3543, "darkdungeon", "Cockatrice");
-
-        //Go To Sleep 3545
-        Story.KillQuest(3545, "darkdungeon", new[] { "Dungeon Minion", "Dungeon Paladin" });
     }
 }
