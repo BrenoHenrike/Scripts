@@ -11805,6 +11805,30 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/BloodAncientMerge.cs"
   },
   {
+    "name": "Djinn Gate Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Djinn Gate Merge [1511] in /djinngate",
+    "tags": [
+      "djinn",
+      "gate",
+      "merge",
+      "djinngate",
+      "jafar",
+      "valthos",
+      "zulars",
+      "circlet",
+      "sigil",
+      "aya",
+      "ayas",
+      "tails",
+      "agares",
+      "morph"
+    ],
+    "path": "Other/MergeShops/DjinnGateMerge.cs",
+    "size": 5197,
+    "fileName": "DjinnGateMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/DjinnGateMerge.cs"
+  },
+  {
     "name": "DarkbloodWarMerge",
     "description": "null",
     "tags": [
@@ -11825,6 +11849,29 @@
     "size": 10741,
     "fileName": "DreadForestMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/DreadForestMerge.cs"
+  },
+  {
+    "name": "Elfhame Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Elfhame Merge [1188] in /elfhame",
+    "tags": [
+      "elfhame",
+      "merge",
+      "elfhame",
+      "ruin",
+      "stalker",
+      "pet",
+      "guardian",
+      "spirit",
+      "morph",
+      "twisted",
+      "deer",
+      "ratawampus",
+      "toxic"
+    ],
+    "path": "Other/MergeShops/ElfhameMerge.cs",
+    "size": 4758,
+    "fileName": "ElfhameMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/ElfhameMerge.cs"
   },
   {
     "name": "CelestialRealmMerge",
