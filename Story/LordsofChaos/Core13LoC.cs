@@ -178,7 +178,12 @@ public class Core13LoC
         Story.KillQuest(264, "mobius", "Cyclops Raider");
 
         //To-go box
-        Story.KillQuest(265, "faerie", "Chainsaw Sneevil");
+          if (!Story.QuestProgression(265))
+        {
+            Core.EnsureAccept(265);
+            Core.HuntMonster("faerie", "Chainsaw Sneevil", "Cardboard Box", 4);
+            Core.EnsureComplete(265);
+        }
 
         //Find the Key! (Part One)
         Story.KillQuest(268, "relativity", "Cyclops Raider");
