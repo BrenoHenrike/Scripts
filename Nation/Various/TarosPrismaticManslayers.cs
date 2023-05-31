@@ -30,8 +30,11 @@ public class TarosPrismaticManslayers
 
     public void TemptationTest()
     {
-        if (Core.CheckInventory(Rewards))
+        if (Core.CheckInventory(Rewards) || !Core.IsMember)
+        {
+            Core.Logger(!Core.IsMember ? "Membership required for the quest `A Test of Temptation`" : "Rewards already in inventory");
             return;
+        }
 
         Core.AddDrop(Rewards);
 
