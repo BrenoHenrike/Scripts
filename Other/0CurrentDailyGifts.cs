@@ -142,6 +142,7 @@ public class CurrentDailyGifts
             TGM.BuyAllMerge("L'il Twiggu Guest");
             TGM.BuyAllMerge("Baby Twiggu's Pod Pet");
 
+            GetGift(AvailableUntil(10, 6), "ashray", "Ashray Fisherman", "Twig's Totally FUN-ctional Ride");
             GetGift(AvailableUntil(16, 6), "garden", "Creature 35", "Dark Astravian General Lance");
 
             // Fortunate Grenwog Garb
