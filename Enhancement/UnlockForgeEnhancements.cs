@@ -362,7 +362,7 @@ public class UnlockForgeEnhancements
         {
             Core.AddDrop("Massive Horc Cleaver");
             Core.EnsureAccept(279);
-            Core.HuntMonster("warhorc", "General Drox", "Boss Prize");
+            Core.HuntMonster("warhorc", "Horc Master", "Boss Prize");
             Core.EnsureComplete(279);
         }
         if (!Core.CheckInventory("Sword in the Stone"))
