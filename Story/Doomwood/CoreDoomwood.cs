@@ -89,8 +89,8 @@ public class CoreDoomwood
         {
             Core.EnsureAccept(1069);
             Core.HuntMonster("doomwood", "Doomwood Bonemuncher", "Muncher Mandibles", 5);
-            Core.HuntMonster("doomwood", "Doomwood Bonemuncher", "Stained Skulls ", 5);
-            Core.HuntMonster("doomwood", "Ectomancer", "Ecto-Coated Cloth Scraps", 10);
+            Core.HuntMonster("doomwood", "Doomwood Bonemuncher", "Stained Skulls", 5);
+            Core.HuntMonster("doomwood", "Doomwood Ectomancer", "Ecto-Coated Cloth Scraps", 10);
             Core.HuntMonster("doomwood", "Doomwood Soldier", "Fractured Tibia", 10);
             Core.EnsureComplete(1069);
         }
