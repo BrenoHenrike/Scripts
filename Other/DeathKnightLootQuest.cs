@@ -45,7 +45,7 @@ public class DeathKnightLootChestQuest
 
     }
 
-    private void RandomReward(int questID = 6509, int quant = 5)
+    private void RandomReward(int questID = 6509)
     {
         List<ItemBase> RewardOptions = Core.EnsureLoad(questID).Rewards;
 
@@ -64,7 +64,7 @@ public class DeathKnightLootChestQuest
             else
             {
                 Core.FarmingLogger(Reward.Name, 1);
-                while (!Bot.ShouldExit && !Core.CheckInventory(Reward.Name, quant, toInv: false))
+                while (!Bot.ShouldExit && !Core.CheckInventory(Reward.Name, toInv: false))
                 {
                     Core.HuntMonster("ivoliss", "ivoliss", "Loot Key", 6, true, false);
                 }
