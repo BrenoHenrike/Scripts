@@ -2531,6 +2531,22 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MysteriousEgg.cs"
   },
   {
+    "name": "DeathKnightLootQuest",
+    "description": "This script will farm everything in DeathKnightLootChestQuest id",
+    "tags": [
+      "death",
+      "knight",
+      "loot",
+      "chest",
+      "fallendeathknight",
+      "accoutrements"
+    ],
+    "path": "Other/DeathKnightLootQuest.cs",
+    "size": 2211,
+    "fileName": "DeathKnightLootQuest.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/DeathKnightLootQuest.cs"
+  },
+  {
     "name": "Gachapon Machine",
     "description": "does either \"I heard you like Gacha\" or \"Kotapon II",
     "tags": [
