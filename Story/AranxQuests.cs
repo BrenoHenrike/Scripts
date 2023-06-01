@@ -34,36 +34,31 @@ public class AranxQuests
         Story.MapItemQuest(6497, "pocketdimension", 5988, 3);
 
         //Explore the Ice Dimension 6498
+        Story.MapItemQuest(6498, "icedimension", 5989);
         Story.KillQuest(6498, "icedimension", "Ice Spitter");
-        Core.Jump("r5", "Left");
-        Core.EnsureComplete(6498);
 
         //Open the Next Dimension 6499
         Story.MapItemQuest(6499, "icedimension", 5990, 5);
         Story.KillQuest(6499, "icedimension", "Ice Elemental");
 
         //Explore the Sand Dimension 6500
+        Story.MapItemQuest(6500, "sanddimension", 5991);
         Story.KillQuest(6500, "sanddimension", "Lotus Spider");
-        Core.Jump("r5", "Right");
-        Core.EnsureComplete(6500);
 
         //Open the 3rd Dimension 6501
         Story.MapItemQuest(6501, "sanddimension", 5992, 5);
         Story.KillQuest(6501, "sanddimension", "Lotus Spider");
 
         //Explore the Dark Dimension 6502
+        Story.MapItemQuest(6502, "darkdimesion", 5993);
         Story.KillQuest(6502, "darkdimension", "Void Phoenix");
-        Core.Jump("r5", "Left");
-        Core.EnsureComplete(6502);
 
         //Open the 4th Dimension 6503
         Story.MapItemQuest(6503, "darkdimension", 5994, 5);
         Story.KillQuest(6503, "darkdimension", "Void Phoenix");
 
         //Find Arthelyn 6504
-        Core.EnsureAccept(6504);
-        Core.Join("ivoliss", "r11", "Left");
-        Core.EnsureComplete(6504);
+        Story.MapItemQuest(6504, "ivoliss", 5995);
 
         //Get the Key 6505
         Core.EquipClass(ClassType.Solo);
@@ -71,13 +66,9 @@ public class AranxQuests
 
         //Free Arthelyn 6506
         Story.MapItemQuest(6506, "ivoliss", 5998);
-        Core.Jump("r12", "Left");
-        Core.EnsureComplete(6506);
 
         //Reach Arthelyn 6507
-        Core.EnsureAccept(6507);
-        Core.Join("ivoliss", "r16", "Left");
-        Core.EnsureComplete(6507);
+        Story.MapItemQuest(6507, "ivoliss", 5997);
 
         //Defeat Arthelyn 6508
         Story.KillQuest(6508, "ivoliss", "Arthelyn");
