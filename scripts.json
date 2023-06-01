@@ -363,7 +363,7 @@
       "poison-forest"
     ],
     "path": "Story/Adam1a1Quests.cs",
-    "size": 1980,
+    "size": 1917,
     "fileName": "Adam1a1Quests.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Adam1a1Quests.cs"
   },
@@ -456,7 +456,7 @@
       "all"
     ],
     "path": "Story/0AllStories.cs",
-    "size": 26187,
+    "size": 26532,
     "fileName": "0AllStories.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/0AllStories.cs"
   },
@@ -818,7 +818,7 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/WillowCreek.cs"
   },
   {
-    "name": "AranxQuests",
+    "name": "Aranx Quests",
     "description": "This script will do all quests of aranx in /darkdimension, /icedimension, /Ivoliss, /Pocketdimension and /sanddimension",
     "tags": [
       "aranx",
@@ -829,7 +829,7 @@
       "sanddimension"
     ],
     "path": "Story/AranxQuests.cs",
-    "size": 2454,
+    "size": 2455,
     "fileName": "AranxQuests.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AranxQuests.cs"
   },
@@ -11571,7 +11571,7 @@
       "mergeshop"
     ],
     "path": "Other/MergeShops/Adam1a1Merge.cs",
-    "size": 11733,
+    "size": 11736,
     "fileName": "Adam1a1Merge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/Adam1a1Merge.cs"
   },
