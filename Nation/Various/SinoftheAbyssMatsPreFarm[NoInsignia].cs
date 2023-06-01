@@ -31,7 +31,7 @@ public class SofAPreFarm
             return;
 
         Nation.SwindleBulk(300);
-        Nation.FarmDarkCrystalShard(500);
+        Nation.FarmDarkCrystalShard(200);
         Nation.FarmDiamondofNulgath(500);
         Nation.FarmTotemofNulgath(50);
         Nation.FarmGemofNulgath(150);
