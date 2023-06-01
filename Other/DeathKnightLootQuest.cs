@@ -16,8 +16,7 @@ public class DeathKnightLootChestQuest
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-
-    private CoreStory Story = new();
+    
     private AranxQuests AR = new();
 
     private CoreAdvanced Adv = new();
@@ -25,7 +24,6 @@ public class DeathKnightLootChestQuest
     private CoreFarms Cf = new();
 
     int questID = 6509;
-    int quant = 5;
 
 
     public void ScriptMain(IScriptInterface Bot)
@@ -33,7 +31,7 @@ public class DeathKnightLootChestQuest
         Core.SetOptions();
 
         DoQuest();
-        RandomReward(6509, 5);
+        RandomReward(6509);
 
         Core.SetOptions(true);
     }
