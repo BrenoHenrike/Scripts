@@ -67,6 +67,8 @@ tags: story, quest, complete, all
 
 //cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
 
+//cs_include Scripts/Story/Adam1a1Quest.cs
+//cs_include Scripts/Story/AranxQuests.cs
 //cs_include Scripts/Story/Arcangrove.cs
 //cs_include Scripts/Story/AriaPet[MEM].cs
 //cs_include Scripts/Story/Artixpointe.cs
@@ -269,6 +271,8 @@ public class AllStories
     #endregion
 
     #region Standalone (sorted alphabetically)
+    public Adam1a1Quest Adam1A1Quest = new();
+    public AranxQuests AranxQuests = new();
     public Arcangrove Arcangrove = new();
     public AriaPet AriaPet = new();
     public Artixpointe Artixpointe = new();
@@ -549,6 +553,13 @@ public class AllStories
         #endregion
 
         #region Standalone
+        Adam1A1Quest.Storyline();
+        Core.Logger($"Story: Adam1a1 - Complete");
+
+
+        AranxQuests.StoryLine();
+        Core.Logger($"Story: Aranx - Complete");
+
         Arcangrove.GravelynandVictoria();
         Core.Logger($"Story: Arcangrove - Complete");
 

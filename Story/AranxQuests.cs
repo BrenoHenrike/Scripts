@@ -1,5 +1,5 @@
 /*
-name: AranxQuests
+name: Aranx Quests
 description: This script will do all quests of aranx in /darkdimension, /icedimension, /Ivoliss, /Pocketdimension and /sanddimension
 tags: aranx, darkdimension, icedimension, ivoliss, pocketdimension, sanddimension
 */

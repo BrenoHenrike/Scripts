@@ -5,8 +5,6 @@ tags: story, quest, poison-forest
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/CoreFarms.cs
 
 using Skua.Core.Interfaces;
 
@@ -20,12 +18,12 @@ public class Adam1a1Quest
     {
         Core.SetOptions();
 
-        doall();
+        Storyline();
 
         Core.SetOptions(false);
     }
 
-    public void doall()
+    public void Storyline()
     {
         if (Core.isCompletedBefore(8014))
             return;

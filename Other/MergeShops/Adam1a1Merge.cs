@@ -44,7 +44,7 @@ public class Adam1a1Merge
     {
         //Only edit the map and shopID here
         Banished.HikarisQuests();
-        Adam1a1Quest.doall();
+        Adam1a1Quest.Storyline();
         Farm.BladeofAweREP(10, false);
         Adv.StartBuyAllMerge("battleunderb", 1990, findIngredients, buyOnlyThis, buyMode: buyMode);
         #region Dont edit this part
@@ -146,7 +146,7 @@ public class Adam1a1Merge
                             Adv.BuyItem("battlewedding", 788, "Red Rose");
                         }
                         // Bangin' Bongo Cat Hair
-                        if (!Core.CheckInventory("Bangin' Bongo Cat Hair")) 
+                        if (!Core.CheckInventory("Bangin' Bongo Cat Hair"))
                             Adv.BuyItem("battleontown", 907, "Bangin' Bongo Cat Hair");
                         // Pink Rose
                         if (!Core.CheckInventory("Pink Rose"))
