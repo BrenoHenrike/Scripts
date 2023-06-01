@@ -50,7 +50,7 @@ public class AranxQuests
         Story.KillQuest(6501, "sanddimension", "Lotus Spider");
 
         //Explore the Dark Dimension 6502
-        Story.MapItemQuest(6502, "darkdimesion", 5993);
+        Story.MapItemQuest(6502, "darkdimension", 5993);
         Story.KillQuest(6502, "darkdimension", "Void Phoenix");
 
         //Open the 4th Dimension 6503
