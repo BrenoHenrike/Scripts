@@ -65,6 +65,7 @@ public class AranxQuests
         Story.KillQuest(6505, "ivoliss", "ivoliss");
 
         //Free Arthelyn 6506
+        Story.MapItemQuest(6506, "ivoliss", 5996);
         Story.MapItemQuest(6506, "ivoliss", 5998);
 
         //Reach Arthelyn 6507
