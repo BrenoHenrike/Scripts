@@ -47,8 +47,6 @@ public class DeathKnightLootChestQuest
 
     private void RandomReward(int questID = 6509, int quant = 5)
     {
-        int i = 0;
-
         List<ItemBase> RewardOptions = Core.EnsureLoad(questID).Rewards;
 
         foreach (ItemBase item in RewardOptions)
