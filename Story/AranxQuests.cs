@@ -50,7 +50,7 @@ public class AranxQuests
         Story.KillQuest(6501, "sanddimension", "Lotus Spider");
 
         //Explore the Dark Dimension 6502
-        Story.MapItemQuest(6502, "darkdimesion", 5993);
+        Story.MapItemQuest(6502, "darkdimension", 5993);
         Story.KillQuest(6502, "darkdimension", "Void Phoenix");
 
         //Open the 4th Dimension 6503
@@ -65,6 +65,7 @@ public class AranxQuests
         Story.KillQuest(6505, "ivoliss", "ivoliss");
 
         //Free Arthelyn 6506
+        Story.MapItemQuest(6506, "ivoliss", 5996);
         Story.MapItemQuest(6506, "ivoliss", 5998);
 
         //Reach Arthelyn 6507
