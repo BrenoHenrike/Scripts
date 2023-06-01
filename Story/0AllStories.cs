@@ -67,7 +67,7 @@ tags: story, quest, complete, all
 
 //cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
 
-//cs_include Scripts/Story/Adam1a1Quest.cs
+//cs_include Scripts/Story/Adam1a1Quests.cs
 //cs_include Scripts/Story/AranxQuests.cs
 //cs_include Scripts/Story/Arcangrove.cs
 //cs_include Scripts/Story/AriaPet[MEM].cs
