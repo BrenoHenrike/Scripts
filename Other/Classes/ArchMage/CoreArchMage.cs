@@ -397,9 +397,9 @@ public class CoreArchMage
             Core.EnsureAccept(8910);
             Core.HuntMonster("celestialarenad", "Aranx", "Celestial Ether", isTemp: false);
             Core.HuntMonster("eternalchaos", "Eternal Drakath", "Chaotic Ether", isTemp: false);
-            Core.HuntMonsterMapID("shadowattack", 68, "Mortal Ether", isTemp: false);
+            Core.KillMonster("shadowattack", "Boss", "Left", "Death", "Mortal Ether", isTemp: false);
             Core.HuntMonster("gaiazor", "Gaiazor", "Vital Ether", isTemp: false);
-            Core.HuntMonsterMapID("fiendshard", 15, "Infernal Ether", isTemp: false);
+            Core.KillMonster("fiendshard", "r9", "Left", "Nulgath's Fiend Shard", "Infernal Ether", isTemp: false);
             Core.EnsureComplete(8910);
             Bot.Wait.ForPickup("Prismatic Ether");
         }
@@ -421,12 +421,14 @@ public class CoreArchMage
         {
             Core.EnsureAccept(8911);
             Core.EquipClass(ClassType.Farm);
-            Core.HuntMonster("natatorium", "*", "Sea Locus", isTemp: false);
+            Core.HuntMonster("natatorium", "Anglerfish", "Sea Locus", isTemp: false);
             Core.EquipClass(ClassType.Solo);
+            Bot.Sleep(2500);
+            Core.Logger("cutscene happens when joining some maps, give the bot a sec to realise its not broke :P");
+            Bot.Sleep(2500);
             Core.KillMonster("skytower", "r13", "Bottom", "*", "Sky Locus", isTemp: false);
             Core.HuntMonster("elemental", "Mana Golem", "Prime Locus Attunement", 30, isTemp: false);
             Core.HuntMonster("ectocave", "Ektorax", "Earth Locus", isTemp: false);
-            Core.Logger("cutscene happens when joining Drakonnan, give the bot a sec to realise its not broke:P");
             Core.HuntMonster("drakonnan", "Drakonnan", "Fire Locus", isTemp: false);
 
             Core.EnsureComplete(8911);
