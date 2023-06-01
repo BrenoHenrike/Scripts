@@ -57,6 +57,7 @@ public class DeathKnightLootChestQuest
         string[] QuestRewards = RewardOptions.Select(x => x.Name).ToArray();
 
         Core.EquipClass(ClassType.Solo);
+        Adv.BestGear(RacialGearBoost.Elemental);
         Core.RegisterQuests(questID);
         foreach (ItemBase Reward in RewardOptions)
         {
@@ -67,17 +68,7 @@ public class DeathKnightLootChestQuest
                 Core.FarmingLogger(Reward.Name, 1);
                 while (!Bot.ShouldExit && !Core.CheckInventory(Reward.Name, quant, toInv: false))
                 {
-                    Adv.BestGear(RacialGearBoost.Elemental);
-
                     Core.HuntMonster("ivoliss", "ivoliss", "Loot Key", 6, true, false);
-
-                    i++;
-
-                    if (i % 5 == 0)
-                    {
-                        Core.JumpWait();
-                        Core.ToBank(QuestRewards);
-                    }
                 }
             }
         }
