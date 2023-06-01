@@ -47,11 +47,13 @@ public class CelestialPirateCommander
 
     public void GetCPC(bool PetOnly = true)
     {
-        if (PetOnly && Core.CheckInventory("Polly Roger"))
+
+        if ((PetOnly && Core.CheckInventory("Polly Roger")) || !Core.isSeasonalMapActive("lowtide"))
         {
-            Core.Logger($"You already have Polly Roger");
+            Core.Logger(!Core.isSeasonalMapActive("lowtide") ? "Not the right season ya dummy" : "You already have Polly Roger");
             return;
         }
+
         int i = 1;
         Core.AddDrop(Rewards);
         Core.EquipClass(ClassType.Solo);
