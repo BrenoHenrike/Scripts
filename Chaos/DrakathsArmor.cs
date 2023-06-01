@@ -86,5 +86,6 @@ public class DrakathArmorBot
                 Core.Logger($"You own \"Dage's Scroll Fragment\" ({Bot.Inventory.GetQuantity("Dage's Scroll Fragment")}/13) [Daily Quest]. Bot can not continue.", messageBox: true, stopBot: true);
             else Core.EnsureComplete(3882);
         }
+        else Core.EnsureComplete(3882);
     }
 }
