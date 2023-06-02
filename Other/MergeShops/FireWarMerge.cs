@@ -1,3 +1,4 @@
+using System.Net.Cache;
 /*
 name: Fire War Merge
 description: This bot will farm the items belonging to the selected mode for the Fire War Merge [1587] in /firewar
@@ -64,10 +65,15 @@ public class FireWarMerge
                     Core.Logger($"The bot hasn't been taught how to get {req.Name}." + (shouldStop ? " Please report the issue." : " Skipping"), messageBox: shouldStop, stopBot: shouldStop);
                     break;
                 #endregion
-
+                
                 case "Flame Guardian":
+                case "Flame Guardian Helm":
+                case "Flame Guardian's Wrap":
+                case "Flame Guardian's Blade":
+                case "Flame Guardian's Lance":
+                case "Flame Guardian's Blade + Shield":
                     Core.FarmingLogger(req.Name, quant);
-                    Core.BuyItem("firewar", 1586, "Flame Guardian");
+                    Adv.BuyItem("firewar", 1586, req.Name);
                     break;
 
                 case "Dragon Flame":
@@ -89,39 +95,12 @@ public class FireWarMerge
                     Bot.Wait.ForPickup(req.Name);
                     break;
 
-                case "Flame Guardian Helm":
-                    Core.FarmingLogger(req.Name, quant);
-                    Core.BuyItem("firewar", 1586, "Flame Guardian Helm");
-                    break;
-
-                case "Flame Guardian's Wrap":
-                    Core.FarmingLogger(req.Name, quant);
-                    Core.BuyItem("firewar", 1586, "Flame Guardian's Wrap");
-                    break;
-
-                case "Flame Guardian's Blade":
-                    Core.FarmingLogger(req.Name, quant);
-                    Core.BuyItem("firewar", 1586, "Flame Guardian's Blade");
-                    break;
-
-                case "Flame Guardian's Lance":
-                    Core.FarmingLogger(req.Name, quant);
-                    Core.BuyItem("firewar", 1586, "Flame Guardian's Lance");
-                    break;
-
-                case "Flame Guardian's Blade + Shield":
-                    Core.FarmingLogger(req.Name, quant);
-                    Core.BuyItem("firewar", 1586, "Flame Guardian's Blade + Shield");
-                    break;
-
                 case "Flame Guardian's Accoutrements":
                     Core.FarmingLogger(req.Name, quant);
-                    if(Core.IsMember){
-                        Core.BuyItem("firewar", 1586, "Flame Guardian's Accoutrements");
-                    }
-                    else{
+                    if(Core.IsMember)
+                        Adv.BuyItem("firewar", 1586, "Flame Guardian's Accoutrements");
+                    else
                         Core.Logger("Membership is required.");
-                    }
                     
                     break;
 
