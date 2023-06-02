@@ -67,14 +67,14 @@ public class DragonFableOrigins
         Story.KillQuest(6299, "firewar", "Akriloth");
 
         //Quest not required!
-        // // Clear out the Dragons
-        // if (!Story.QuestProgression(6300))
-        // {
-        //     Core.EnsureAccept(6300);
-        //     Core.HuntMonster("firewar", "Fire Dragon", "Fire Dragon Slain", 3);
-        //     Core.KillMonster("firewar", "r8", "Left", "Inferno Dragon", "Inferno Dragon Slain", 2);
-        //     Core.EnsureComplete(6300);
-        // }
+        // Clear out the Dragons
+        if (!Story.QuestProgression(6300))
+        {
+             Core.EnsureAccept(6300);
+            Core.HuntMonster("firewar", "Fire Dragon", "Fire Dragon Slain", 3);
+             Core.KillMonster("firewar", "r8", "Left", "Inferno Dragon", "Inferno Dragon Slain", 2);
+            Core.EnsureComplete(6300);
+        }
     }
 
     public void NorthMountain()
