@@ -12378,6 +12378,33 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/ShipWreckMerge[non-ac].cs"
   },
   {
+    "name": "Fire War Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Fire War Merge [1587] in /firewar",
+    "tags": [
+      "fire",
+      "war",
+      "merge",
+      "firewar",
+      "ignited",
+      "flame",
+      "guardian",
+      "guardians",
+      "wrap",
+      "runed",
+      "lance",
+      "",
+      "shield",
+      "accoutrements",
+      "dragonslayer",
+      "twilly",
+      "bank"
+    ],
+    "path": "Other/MergeShops/FireWarMerge.cs",
+    "size": 6053,
+    "fileName": "FireWarMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/FireWarMerge.cs"
+  },
+  {
     "name": "SuperDeathMerge",
     "description": "null",
     "tags": [
