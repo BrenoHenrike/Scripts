@@ -35,7 +35,7 @@ public class CapeOfAwe
             return;
 
         Awe.GetAweRelic("Cape", 4178, 1, 1, "doomvault", "Binky");
-        Core.BuyItem("museum", 1129, "Cape of Awe");
+        Adv.BuyItem("museum", 1129, "Cape of Awe");
 
         Core.ToBank("Legendary Awe Pass", "Guardian Awe Pass", "Armor of Awe Pass");
     }
