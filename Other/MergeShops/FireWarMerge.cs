@@ -1,4 +1,3 @@
-using System.Net.Cache;
 /*
 name: Fire War Merge
 description: This bot will farm the items belonging to the selected mode for the Fire War Merge [1587] in /firewar
