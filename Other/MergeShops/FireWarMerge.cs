@@ -19,7 +19,6 @@ public class FireWarMerge
     private CoreFarms Farm = new();
     private CoreAdvanced Adv = new();
     private static CoreAdvanced sAdv = new();
-    private CoreStory CS = new();
     private DragonFableOrigins DFO = new();
 
 
@@ -32,7 +31,7 @@ public class FireWarMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Flame Guardian", "Dragon Flame", "Dragon Eye", "Flame Guardian Helm", "Flame Guardian's Wrap", "Flame Guardian's Blade", "Flame Guardian's Lance", "Flame Guardian's Blade + Shield", "Flame Guardian's Accoutrements"});
+        Core.BankingBlackList.AddRange(new[] { "Flame Guardian", "Dragon Flame", "Dragon Eye", "Flame Guardian Helm", "Flame Guardian's Wrap", "Flame Guardian's Blade", "Flame Guardian's Lance", "Flame Guardian's Blade + Shield", "Flame Guardian's Accoutrements" });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -64,7 +63,7 @@ public class FireWarMerge
                     Core.Logger($"The bot hasn't been taught how to get {req.Name}." + (shouldStop ? " Please report the issue." : " Skipping"), messageBox: shouldStop, stopBot: shouldStop);
                     break;
                 #endregion
-                
+
                 case "Flame Guardian":
                 case "Flame Guardian Helm":
                 case "Flame Guardian's Wrap":
@@ -96,11 +95,11 @@ public class FireWarMerge
 
                 case "Flame Guardian's Accoutrements":
                     Core.FarmingLogger(req.Name, quant);
-                    if(Core.IsMember)
+                    if (Core.IsMember)
                         Adv.BuyItem("firewar", 1586, "Flame Guardian's Accoutrements");
                     else
                         Core.Logger("Membership is required.");
-                    
+
                     break;
 
             }
