@@ -95,7 +95,7 @@ public class NulgathDemandsWork
                         Core.BuyItem("tercessuinotlim", 1951, 35770);
                     else Core.EnsureComplete(5259);
                 }
-                Core.EnsureComplete(5259, _item!.ID);
+                else Core.EnsureComplete(5259, _item!.ID);
                 Core.ToBank(item);
 
                 Core.Logger($"Completed x{++i}");
