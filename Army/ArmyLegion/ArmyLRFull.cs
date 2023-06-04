@@ -276,7 +276,8 @@ public class ArmyLR
     {
         if (Core.CheckInventory("Emblem of Dage", quant) && !Bot.Config.Get<bool>("sellToSync"))
             return;
-
+            
+        Core.AddDrop("Emblem of Dage");
         Core.FarmingLogger("Emblem of Dage", quant);
         Core.EquipClass(ClassType.Farm);
         // Adv.BestGear(GenericGearBoost.gold);
