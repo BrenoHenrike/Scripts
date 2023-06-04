@@ -14191,6 +14191,33 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/SummerBreak/LunaCoveMerge.cs"
   },
   {
+    "name": "Lavarock Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Lavarock Merge [2292] in /lavarockbay",
+    "tags": [
+      "lavarock",
+      "merge",
+      "lavarockbay",
+      "fiery",
+      "fissure",
+      "scythe",
+      "molten",
+      "lava",
+      "orb",
+      "orbs",
+      "guardian",
+      "frilled",
+      "horned",
+      "sheathed",
+      "kalayos",
+      "oath",
+      "oaths"
+    ],
+    "path": "Seasonal/SummerBreak/LavarockMerge.cs",
+    "size": 4117,
+    "fileName": "LavarockMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/SummerBreak/LavarockMerge.cs"
+  },
+  {
     "name": "GrenstoryMerge",
     "description": "Farms \"Grenstory Token\" and buys Items from the Grenstory mergeshop",
     "tags": [
