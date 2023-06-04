@@ -14130,6 +14130,28 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/SummerBreak/BeachPartyTokenItems.cs"
   },
   {
+    "name": "Lavarock Forge Pre Reqs",
+    "description": "This script will farm the pre reqs for the Lavarock Forge Set.",
+    "tags": [
+      "molten",
+      "heart",
+      "blaze",
+      "blazing",
+      "burning",
+      "anina",
+      "lavarock",
+      "seasonal",
+      "summer break",
+      "forge",
+      "quest",
+      "pre reqs"
+    ],
+    "path": "Seasonal/SummerBreak/LavarockForgePreReqs.cs",
+    "size": 2792,
+    "fileName": "LavarockForgePreReqs.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/SummerBreak/LavarockForgePreReqs.cs"
+  },
+  {
     "name": "Extra Credit AC Items",
     "description": "This will farm the Extra Credit AC Items.",
     "tags": [
