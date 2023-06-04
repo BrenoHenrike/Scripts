@@ -380,7 +380,8 @@ public class ArmyLR
 
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
             Bot.Combat.Attack("*");
-        Army.AggroMonStop();
+        
+        Army.AggroMonStop(true);
         Core.JumpWait();
     }
 
