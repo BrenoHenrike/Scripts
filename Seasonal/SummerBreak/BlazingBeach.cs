@@ -38,7 +38,7 @@ public class BlazingBeachStory
         Story.KillQuest(8702, "blazingbeach", "Burning Bombadier");
 
         // Piracy for Pyromancers
-        Story.KillQuest(8703, "blazingbeach", new[] { "Burning Bombadier", "Magma Pirate", "Red-Hot Raider" });
+        Story.KillQuest(8703, "blazingbeach", new[] { "Magma Pirate", "Magma Pirate", "Scalding Shooter" });
 
         // Canned Heat
         Story.KillQuest(8704, "blazingbeach", "Burning Bombadier");

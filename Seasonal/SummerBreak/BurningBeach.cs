@@ -42,9 +42,9 @@ public class BurningBeachStory
         Story.KillQuest(7575, "lavarun", "Phedra");
 
         //7576 | In Lava with Maladrite
-        Story.KillQuest(7576, "lavarun", "Lava Guardian");
+        Story.KillQuest(7576, "burningbeach", "Lava Guardian");
 
         //7577 | Fahrenheit FEAR - 51
-        Story.KillQuest(7577, "lavarun", "Maladrite");
+        Story.KillQuest(7577, "burningbeach", "Maladrite");
     }
 }
