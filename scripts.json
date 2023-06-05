@@ -15856,6 +15856,17 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyDreadrockRep.cs"
   },
   {
+    "name": "ArmyPetTamerRep",
+    "description": "Farms reputation for the Pet Tamer faction",
+    "tags": [
+      "army pet tamer reputation"
+    ],
+    "path": "Army/ArmyFarm/Rep/ArmyPetTamerRep.cs",
+    "size": 1533,
+    "fileName": "ArmyPetTamerRep.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyPetTamerRep.cs"
+  },
+  {
     "name": "Army Brethwren Rep",
     "description": "Farm reputation with your army. Faction",
     "tags": [
