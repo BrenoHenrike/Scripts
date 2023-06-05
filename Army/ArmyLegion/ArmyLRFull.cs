@@ -277,6 +277,7 @@ public class ArmyLR
         if (Core.CheckInventory("Emblem of Dage", quant) && !Bot.Config.Get<bool>("sellToSync"))
             return;
 
+        Core.AddDrop("Emblem of Dage");
         Core.FarmingLogger("Emblem of Dage", quant);
         Core.EquipClass(ClassType.Farm);
         // Adv.BestGear(GenericGearBoost.gold);
@@ -300,7 +301,6 @@ public class ArmyLR
         Core.FarmingLogger("Diamond Token of Dage", quant);
         Core.AddDrop("Diamond Token of Dage", "Legion Token");
 
-        Bot.Player.SetSpawnPoint();
         Core.RegisterQuests(4743);
         while (!Bot.ShouldExit && !Core.CheckInventory("Diamond Token of Dage", quant))
         {
@@ -370,12 +370,18 @@ public class ArmyLR
 
         Core.FarmingLogger(item, quant);
 
-        Army.SmartAggroMonStart(map, monsters);
+        if (Bot.Map.Name == "tercessuinotlim")
+        {
+            Army.DivideOnCells("m1", "m2");
+            Army.AggroMonMIDs(2, 3, 4, 5);
+            Army.AggroMonStart("tercessuinotlim");
+        }
+        else Army.SmartAggroMonStart(map, monsters);
 
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
             Bot.Combat.Attack("*");
-
-        Army.AggroMonStop();
+        
+        Army.AggroMonStop(true);
         Core.JumpWait();
     }
 
