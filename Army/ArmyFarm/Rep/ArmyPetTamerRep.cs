@@ -46,5 +46,5 @@ public class Generated_ArmyPetTamerRep
     private List<string> monNames = new() { "Moglurker", "Zaplin", "Blood Moggot", "Flamog", "Vizally", "Toglin" };
     private List<string> drops = new() { "" };
     private string map = "pockeymogs";
-    private ClassType classtype = ClassType.Farm;
+    private ClassType classtype = ClassType.Solo;
 }
