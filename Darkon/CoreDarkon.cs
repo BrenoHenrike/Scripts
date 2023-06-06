@@ -261,25 +261,32 @@ public class CoreDarkon
         Core.CancelRegisteredQuests();
     }
 
-    public void WheelofFortune(int Quantity = 1000)
+    public void WheelofFortune(int FlowerQuantity = 1000, int ScaleQuantity = 1000)
     {
-        if (Core.CheckInventory("Mourning Flower", Quantity))
+        if (Core.CheckInventory("Mourning Flower", FlowerQuantity) && Core.CheckInventory("Jus Divinum Scale", ScaleQuantity))
             return;
+
+        bool shouldLog = true;
+        if (FlowerQuantity > 0 && ScaleQuantity > 0)
+        {
+            Core.Logger($"Farming Mourning Flower ({Bot.Inventory.GetQuantity("Mourning Flower")}/{FlowerQuantity}) " +
+                            $"and Jus Divinum Scale ({Bot.Inventory.GetQuantity("Jus Divinum Scale")}/{ScaleQuantity})");
+            shouldLog = false;
+        }
 
         Core.AddDrop("Mourning Flower", "Jus Divinum Scale");
 
         Astravia.GenesisGarden();
 
-        Core.FarmingLogger("Mourning Flower", Quantity);
-
         Core.RegisterQuests(8688);
-        while (!Bot.ShouldExit && !Core.CheckInventory("Mourning Flower", Quantity))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Mourning Flower", FlowerQuantity)
+        || !Core.CheckInventory("Jus Divinum Scale", ScaleQuantity))
         {
             Core.EquipClass(ClassType.Farm);
-            Core.HuntMonster("genesisgarden", "Long-eared Beast", "Beast Subject", 7, log: false);
-            Core.HuntMonster("genesisgarden", "Undead Humanoid", "Humanoid Subject", 7, log: false);
+            Core.HuntMonster("genesisgarden", "Long-eared Beast", "Beast Subject", 7, shouldLog);
+            Core.HuntMonster("genesisgarden", "Undead Humanoid", "Humanoid Subject", 7, shouldLog);
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("genesisgarden", "Ancient Mecha", "Replacement Parts", 7, log: false);
+            Core.HuntMonster("genesisgarden", "Ancient Mecha", "Replacement Parts", 7, shouldLog);
         }
         Core.CancelRegisteredQuests();
     }
