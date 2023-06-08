@@ -399,7 +399,9 @@ public class CoreArchMage
             Core.HuntMonster("eternalchaos", "Eternal Drakath", "Chaotic Ether", isTemp: false);
             Core.KillMonster("shadowattack", "Boss", "Left", "Death", "Mortal Ether", isTemp: false);
             Core.HuntMonster("gaiazor", "Gaiazor", "Vital Ether", isTemp: false);
-            Core.KillMonster("fiendshard", "r9", "Left", "Nulgath's Fiend Shard", "Infernal Ether", isTemp: false);
+            Core.HuntMonsterMapID("fiendshard", 15, "Infernal Ether", isTemp: false);
+            Core.JumpWait();
+            Bot.Wait.ForCombatExit(20);
             Core.EnsureComplete(8910);
             Bot.Wait.ForPickup("Prismatic Ether");
         }

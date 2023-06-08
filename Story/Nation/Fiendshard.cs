@@ -88,6 +88,7 @@ public class Fiendshard_Story
             }
             Core.EnsureAccept(7898);
             Core.HuntMonsterMapID("fiendshard", 15, "Nulgath's Fiend Shard Destroyed");
+            Core.JumpWait();
             Core.HuntMonsterMapID("fiendshard", 14, "Fiends Fended Off", 15);
             Core.EnsureComplete(7898);
         }
