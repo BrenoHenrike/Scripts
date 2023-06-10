@@ -50,7 +50,7 @@
       "null"
     ],
     "path": "CoreDailies.cs",
-    "size": 41352,
+    "size": 42322,
     "fileName": "CoreDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreDailies.cs"
   },
@@ -538,6 +538,18 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/DeathKnightLord[Mem].cs"
   },
   {
+    "name": "Break Into the Hoard Daily",
+    "description": "does the quest `break into the hoard` for the rewards",
+    "tags": [
+      "daily",
+      "break into the hoard"
+    ],
+    "path": "Dailies/BreakIntotheHoard.cs",
+    "size": 734,
+    "fileName": "BreakIntotheHoard.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/BreakIntotheHoard.cs"
+  },
+  {
     "name": "Wheel of Doom Daily",
     "description": "Wheel of Doom",
     "tags": [
@@ -572,7 +584,7 @@
       "all"
     ],
     "path": "Dailies/0AllDailies.cs",
-    "size": 2948,
+    "size": 2996,
     "fileName": "0AllDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/0AllDailies.cs"
   },
@@ -2918,7 +2930,7 @@
       "prerequisites"
     ],
     "path": "Darkon/DarkonDebris2ReconstructedPrerequisites.cs",
-    "size": 1794,
+    "size": 1797,
     "fileName": "DarkonDebris2ReconstructedPrerequisites.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/DarkonDebris2ReconstructedPrerequisites.cs"
   },
@@ -2929,7 +2941,7 @@
       "null"
     ],
     "path": "Darkon/CoreDarkon.cs",
-    "size": 11010,
+    "size": 12196,
     "fileName": "CoreDarkon.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/CoreDarkon.cs"
   },
@@ -3086,7 +3098,7 @@
       "pneuma"
     ],
     "path": "Enhancement/UnlockForgeEnhancements.cs",
-    "size": 38105,
+    "size": 38108,
     "fileName": "UnlockForgeEnhancements.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Enhancement/UnlockForgeEnhancements.cs"
   },
@@ -3574,7 +3586,7 @@
       "null"
     ],
     "path": "Nation/MergeShops/FiendshardMerge.cs",
-    "size": 5388,
+    "size": 5511,
     "fileName": "FiendshardMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/MergeShops/FiendshardMerge.cs"
   },
@@ -4720,7 +4732,7 @@
       "fealty"
     ],
     "path": "Army/ArmyLegion/ArmyLRFull.cs",
-    "size": 17158,
+    "size": 17157,
     "fileName": "ArmyLRFull.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyLegion/ArmyLRFull.cs"
   },
@@ -5374,7 +5386,7 @@
       "nation"
     ],
     "path": "Story/Nation/Tercessuinotlim.cs",
-    "size": 4000,
+    "size": 4043,
     "fileName": "Tercessuinotlim.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Nation/Tercessuinotlim.cs"
   },
@@ -5402,7 +5414,7 @@
       "fiendshard"
     ],
     "path": "Story/Nation/Fiendshard.cs",
-    "size": 3547,
+    "size": 3724,
     "fileName": "Fiendshard.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Nation/Fiendshard.cs"
   },
@@ -11926,7 +11938,7 @@
       "mergeshop"
     ],
     "path": "Darkon/MergeShops/GenesisGardenMerge.cs",
-    "size": 4638,
+    "size": 4723,
     "fileName": "GenesisGardenMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/MergeShops/GenesisGardenMerge.cs"
   },
@@ -11993,7 +12005,7 @@
       "mergeshop"
     ],
     "path": "Darkon/MergeShops/TheWorldHouseMerge.cs",
-    "size": 4700,
+    "size": 4703,
     "fileName": "TheWorldHouseMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/MergeShops/TheWorldHouseMerge.cs"
   },
@@ -15856,6 +15868,17 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyDreadrockRep.cs"
   },
   {
+    "name": "ArmyPetTamerRep",
+    "description": "Farms reputation for the Pet Tamer faction",
+    "tags": [
+      "army pet tamer reputation"
+    ],
+    "path": "Army/ArmyFarm/Rep/ArmyPetTamerRep.cs",
+    "size": 1533,
+    "fileName": "ArmyPetTamerRep.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyPetTamerRep.cs"
+  },
+  {
     "name": "Army Brethwren Rep",
     "description": "Farm reputation with your army. Faction",
     "tags": [
@@ -16539,7 +16562,7 @@
       "null"
     ],
     "path": "Other/Classes/ArchMage/CoreArchMage.cs",
-    "size": 22765,
+    "size": 22834,
     "fileName": "CoreArchMage.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/ArchMage/CoreArchMage.cs"
   },

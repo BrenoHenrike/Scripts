@@ -73,7 +73,9 @@ public class FiendshardMerge
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         //De-shard the Shard 7901
-                        Core.HuntMonsterMapID("fiendshard", 15, "Piece of the Shard");
+                        Core.KillMonster("fiendshard", "r9", "Left", "Nulgath's Fiend Shard", "Piece of the Shard");
+                        Core.JumpWait();
+                        Bot.Wait.ForCombatExit(20);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();

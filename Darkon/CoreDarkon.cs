@@ -33,14 +33,31 @@ public class CoreDarkon
         if (Core.CheckInventory("Darkon's Receipt", Quantity))
             return;
 
+        bool EnoughPeople = false;
         Core.AddDrop("Darkon's Receipt");
         Core.FarmingLogger("Darkon's Receipt", Quantity);
         Core.EquipClass(ClassType.Farm);
+        Core.Join("towerofdoom7", "r2", "Left");
 
         Core.RegisterQuests(7324);
         while (!Bot.ShouldExit && !Core.CheckInventory("Darkon's Receipt", Quantity))
         {
-            Core.KillMonster("arcangrove", "Right", "Left", "*", "Banana", 22, false, log: false);
+            if (Bot.Map.Name.ToLower() == "towerofdoom7")
+            {
+                while (!Bot.ShouldExit && Bot.Player.Cell != "r2")
+                {
+                    Core.Jump("r2", "Left");
+                    Bot.Sleep(5000);
+                }
+                if (Bot.Map.PlayerCount >= 3)
+                    EnoughPeople = true;
+                else EnoughPeople = false;
+            }
+
+            else EnoughPeople = false;
+            if (!EnoughPeople)
+                Core.KillMonster("arcangrove", "Right", "Left", "*", "Banana", 22, false, log: false);
+            else Core.KillMonster("towerofdoom7", "r2", "Left", "Dread Gorillaphant", "Banana", 22, false, log: false);
             Bot.Wait.ForPickup("Darkon's Receipt");
         }
         Core.CancelRegisteredQuests();
@@ -56,7 +73,7 @@ public class CoreDarkon
         Core.FarmingLogger("Darkon's Receipt", Quantity);
         Core.EquipClass(ClassType.Solo);
         Bot.Quests.UpdateQuest(2954);
-        Core.Join("doomvault", "r5", "Left", true);
+        Core.Join("doomvault", "r5", "Left");
 
         Core.RegisterQuests(7325);
         while (!Bot.ShouldExit && !Core.CheckInventory("Darkon's Receipt", Quantity))
@@ -261,25 +278,32 @@ public class CoreDarkon
         Core.CancelRegisteredQuests();
     }
 
-    public void WheelofFortune(int Quantity = 1000)
+    public void WheelofFortune(int FlowerQuantity = 1000, int ScaleQuantity = 1000)
     {
-        if (Core.CheckInventory("Mourning Flower", Quantity))
+        if (Core.CheckInventory("Mourning Flower", FlowerQuantity) && Core.CheckInventory("Jus Divinum Scale", ScaleQuantity))
             return;
+
+        bool shouldLog = true;
+        if (FlowerQuantity > 0 && ScaleQuantity > 0)
+        {
+            Core.Logger($"Farming Mourning Flower ({Bot.Inventory.GetQuantity("Mourning Flower")}/{FlowerQuantity}) " +
+                            $"and Jus Divinum Scale ({Bot.Inventory.GetQuantity("Jus Divinum Scale")}/{ScaleQuantity})");
+            shouldLog = false;
+        }
 
         Core.AddDrop("Mourning Flower", "Jus Divinum Scale");
 
         Astravia.GenesisGarden();
 
-        Core.FarmingLogger("Mourning Flower", Quantity);
-
         Core.RegisterQuests(8688);
-        while (!Bot.ShouldExit && !Core.CheckInventory("Mourning Flower", Quantity))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Mourning Flower", FlowerQuantity)
+        || !Core.CheckInventory("Jus Divinum Scale", ScaleQuantity))
         {
             Core.EquipClass(ClassType.Farm);
-            Core.HuntMonster("genesisgarden", "Long-eared Beast", "Beast Subject", 7, log: false);
-            Core.HuntMonster("genesisgarden", "Undead Humanoid", "Humanoid Subject", 7, log: false);
+            Core.HuntMonster("genesisgarden", "Long-eared Beast", "Beast Subject", 7, shouldLog);
+            Core.HuntMonster("genesisgarden", "Undead Humanoid", "Humanoid Subject", 7, shouldLog);
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("genesisgarden", "Ancient Mecha", "Replacement Parts", 7, log: false);
+            Core.HuntMonster("genesisgarden", "Ancient Mecha", "Replacement Parts", 7, shouldLog);
         }
         Core.CancelRegisteredQuests();
     }

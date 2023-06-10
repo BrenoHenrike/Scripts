@@ -209,7 +209,7 @@ public class ArmyLR
         Core.AddDrop(LF3);
         while (!Bot.ShouldExit && !Core.CheckInventory("Exalted Crown", quant))
         {
-            Core.BuyItem("underworld", 216, "Hooded Legion Cowl");
+            Adv.BuyItem("underworld", 216, "Hooded Legion Cowl");
             ArmyDarkTokenOfDage(100);
             ArmyLTs(4000);
             Bot.Wait.ForPickup("Exalted Crown");

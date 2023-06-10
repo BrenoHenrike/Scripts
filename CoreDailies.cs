@@ -738,6 +738,36 @@ public class CoreDailies
                 break;
         }
     }
+
+
+    public void BreakIntotheHoard(bool KeepReward = false, bool bank = false)
+    {
+        if (!Bot.Quests.IsUnlocked(3897))
+        {
+            Core.Logger("Quest requires completion of `Defeat Braddock Bonebreaker`.(run the standalone daily...)");
+            return;
+        }
+        if (!Core.CheckInventory("BoneBreaker Fortress Map") || !CheckDaily(3898))
+            return;
+
+        ItemBase[] QuestReward = Core.EnsureLoad(3898).Rewards.ToArray();
+
+        if (KeepReward)
+            Core.AddDrop("BoneBreaker Medallion");
+
+        //Break Into the Hoard
+        Core.EnsureAccept(3898);
+        Core.HuntMonster("bonebreak", "Undead Berserker", "Warrior Defeated", 5, log: false);
+        Core.EnsureComplete(3898);
+        Bot.Wait.ForPickup("BoneBreaker Medallion");
+
+        if (bank)
+            foreach (ItemBase item in QuestReward)
+                if (Core.CheckInventory(item.ID, toInv: false))
+                    Core.ToBank(item.ID);
+    }
+
+
 #nullable enable
     #region Friendship
     public void Friendships()
