@@ -5459,11 +5459,16 @@
       "saga",
       "story",
       "quest",
-      "termina temple",
-      "ashray village"
+      "termina",
+      "temple",
+      "ashray",
+      "village",
+      "sunlight",
+      "twilight",
+      "zone"
     ],
     "path": "Story/AgeOfRuin/00DoAll.cs",
-    "size": 737,
+    "size": 760,
     "fileName": "00DoAll.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/00DoAll.cs"
   },
@@ -5474,9 +5479,27 @@
       "null"
     ],
     "path": "Story/AgeOfRuin/CoreAOR.cs",
-    "size": 4118,
+    "size": 5548,
     "fileName": "CoreAOR.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/CoreAOR.cs"
+  },
+  {
+    "name": "Twilight Zone",
+    "description": "This script completes the storyline in /twilightzone.",
+    "tags": [
+      "age",
+      "of",
+      "ruin",
+      "saga",
+      "story",
+      "quest",
+      "zone",
+      "twilight"
+    ],
+    "path": "Story/AgeOfRuin/04TwilightZone.cs",
+    "size": 732,
+    "fileName": "04TwilightZone.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/04TwilightZone.cs"
   },
   {
     "name": "Sunlight Zone",
