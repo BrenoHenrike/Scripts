@@ -27,6 +27,7 @@ public class CoreAOR
         TerminaTemple();
         AshrayVillage();
         SunlightZone();
+        TwilightZone();
     }
 
     public void TerminaTemple()
@@ -135,5 +136,49 @@ public class CoreAOR
 
         // Down the Digestive Tract (9251)
         Story.KillQuest(9251, "sunlightzone", "Marine Snow");
+    }
+
+    public void TwilightZone()
+    {
+        if (Core.isCompletedBefore(9268))
+            return;
+
+        SunlightZone();
+
+        Story.PreLoad(this);
+
+        // Marshmallows With Bite (9258)
+        Story.KillQuest(9258, "twilightzone", "Whale Louse");
+
+        // Meaty Cold Spaghetti (9259)
+        Story.KillQuest(9259, "twilightzone", "Polymelia Lamprey");
+
+        // Songs in the Seams (9260)
+        Story.MapItemQuest(9260, "twilightzone", 11749);
+        Story.MapItemQuest(9260, "twilightzone", 11750, 4);
+
+        // Parched Throats (9261)
+        Story.KillQuest(9261, "twilightzone", new[] { "Whale Louse", "Polymelia Lamprey" });
+
+        // Morning Stretches (9262)
+        Story.MapItemQuest(9262, "twilightzone", new[] { 11751, 11752 });
+
+        // Natural Empathy (9263)
+        Story.KillQuest(9263, "twilightzone", "Decay Spirit");
+
+        // Comfort Blanket of Snow (9264)
+        Story.KillQuest(9264, "twilightzone", "Ice Guardian");
+
+        // Whale Watching (9265)
+        Story.MapItemQuest(9265, "twilightzone", new[] { 11753, 11754, 11755 });
+
+        // Exhausted Spirits (9266)
+        Story.KillQuest(9266, "twilightzone", new[] { "Decay Spirit", "Ice Guardian" });
+
+        // Singing to Whales (9267)
+        Story.KillQuest(9267, "twilightzone", "Leviathan");
+
+        // The Sea's Commitment (9268)
+        Story.MapItemQuest(9268, "twilightzone", 11756);
     }
 }
