@@ -1080,7 +1080,7 @@ public class CoreFarms
         Core.SavedState(false);
     }
 
-    public void BlacksmithingREP(int rank = 10, bool UseGold = false, bool CanSolo = false)
+    public void BlacksmithingREP(int rank = 10, bool UseGold = false)
     {
         if (FactionRank("Blacksmithing") >= rank)
             return;
@@ -1127,7 +1127,7 @@ public class CoreFarms
             Core.EnsureAccept(8736);
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("hydrachallenge", "Hydra Head 25", "Hydra Scale Piece", 75, isTemp: false, log: false);
-            Core.HuntMonster("maul", "Creature Creation", "Creature Shard", isTemp: false, log: false);
+            Core.HuntMonster("maul", "Creature Creation", "Creature Shard", isTemp: false, log: false);            
             Core.HuntMonster("towerofdoom", "Dread Klunk", "Monster Trophy", 15, isTemp: false, log: false);
             Core.EnsureComplete(8736);
         }
