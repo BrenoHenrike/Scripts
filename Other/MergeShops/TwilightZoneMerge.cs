@@ -113,4 +113,3 @@ public class TwilightZoneMerge
         new Option<bool>("78054", "Eldritch Twilight Daggers", "Mode: [select] only\nShould the bot buy \"Eldritch Twilight Daggers\" ?", false),
     };
 }
-}
