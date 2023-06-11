@@ -8772,29 +8772,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/ArtixWeddingMerge.cs"
   },
   {
-    "name": "Sunlight Zone House Merge",
-    "description": "This bot will farm the items belonging to the selected mode for the Sunlight Zone House Merge [2289] in /sunlightzone",
-    "tags": [
-      "sunlight",
-      "zone",
-      "house",
-      "merge",
-      "sunlightzone",
-      "stern",
-      "song",
-      "guest",
-      "taras",
-      "temporary",
-      "rest",
-      "disgruntled",
-      "mi"
-    ],
-    "path": "Other/MergeShops/SunlightZoneHouseMerge.cs",
-    "size": 4332,
-    "fileName": "SunlightZoneHouseMerge.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/SunlightZoneHouseMerge.cs"
-  },
-  {
     "name": "SynderesMerge",
     "description": "null",
     "tags": [
