@@ -42,7 +42,7 @@ public class ArmyBlackSmithRep
     {
         Core.BankingBlackList.AddRange(new[] { "Creature Shard", "Monster Trophy", "Hydra Scale Piece" });
 
-        Core.OneTimeMessage("Please Make sure your goto is on in ingame settings so the buttlering system works properly [turn it back off after your done armying please.]", "Urgent", forcedMessageBox: true);
+        Core.OneTimeMessage("Urgent", "Please Make sure your goto is on in ingame settings so the buttlering system works properly [turn it back off after your done armying please.]", forcedMessageBox: true);
         
         Core.SetOptions();
 
