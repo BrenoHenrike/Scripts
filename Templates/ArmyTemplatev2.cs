@@ -28,7 +28,6 @@ public class ArmyTemplate
     public bool DontPreconfigure = true;
     public List<IOption> Options = new List<IOption>()
     {
-        new Option<int>("armysize","Players", "Input the minimum of players to wait for", 1),
         sArmy.player1,
         sArmy.player2,
         sArmy.player3,
@@ -54,6 +53,7 @@ public class ArmyTemplate
         Core.EquipClass(ClassType.Farm);
         // Core.EquipClass(ClassType.Solo);
         Core.AddDrop("item");
+
 
         while (!Bot.ShouldExit && !Core.CheckInventory("item", 1))
         {
