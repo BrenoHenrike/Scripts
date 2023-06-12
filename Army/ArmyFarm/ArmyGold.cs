@@ -137,7 +137,7 @@ public class ArmyGold
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
 
-        SC.CirclesWar();
+        SC.CirclesWar(true);
 
         Core.RegisterQuests(7979, 7980, 7981);
         Army.SmartAggroMonStart("sevencircleswar", "Wrath Guard", "Heresy Guard", "Violence Guard", "Treachery Guard");
