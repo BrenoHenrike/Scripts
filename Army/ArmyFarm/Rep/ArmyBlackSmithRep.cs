@@ -55,7 +55,7 @@ public class ArmyBlackSmithRep
     {
         Core.AddDrop("Creature Shard", "Monster Trophy", "Hydra Scale Piece");
         Core.RegisterQuests(8736);
-        while (!Bot.ShouldExit && Farm.FactionRank("Blacksmithing") < 11)
+        while (!Bot.ShouldExit && Farm.FactionRank("Blacksmithing") < 10)
         {
             Core.EquipClass(ClassType.Solo);
             Armykill("maul", new[] { "Creature Creation" }, "Creature Shard", isTemp: false, 1);
