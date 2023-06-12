@@ -3164,7 +3164,7 @@
       "null"
     ],
     "path": "Templates/ArmyTemplatev2.cs",
-    "size": 5205,
+    "size": 5112,
     "fileName": "ArmyTemplatev2.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Templates/ArmyTemplatev2.cs"
   },
@@ -5185,7 +5185,7 @@
       "seven circles war"
     ],
     "path": "Army/ArmyFarm/ArmyGold.cs",
-    "size": 5310,
+    "size": 5314,
     "fileName": "ArmyGold.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/ArmyGold.cs"
   },
@@ -16003,6 +16003,19 @@
     "size": 2386,
     "fileName": "ArmyGoodEvilRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyGoodEvilRep.cs"
+  },
+  {
+    "name": "Army Blacksmithing Rep",
+    "description": "Farm reputation with your army. Faction",
+    "tags": [
+      "army",
+      "reputation",
+      "blacksmithing"
+    ],
+    "path": "Army/ArmyFarm/Rep/ArmyBlackSmithRep.cs",
+    "size": 5707,
+    "fileName": "ArmyBlackSmithRep.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyBlackSmithRep.cs"
   },
   {
     "name": "Army DruidGrove Rep",
