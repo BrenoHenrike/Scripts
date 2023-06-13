@@ -612,11 +612,9 @@ public class UnlockForgeEnhancements
             MAS.GetSet();
             Core.HuntMonster("shadowgrove", "Titan Shadow Dragonlord", "ShadowFlame Dragon Blade", isTemp: false);
 
-            if (Core.CheckInventory("Yami no Ronin") || Core.CheckInventory("Dragon of Time"))
-            {
-                Core.AddDrop(SoW.MalgorDrops.Concat(SoW.MainyuDrops).ToArray());
-                Bot.Skills.StartAdvanced(Core.CheckInventory("Yami no Ronin") ? "Yami no Ronin" : "Dragon of Time", true, ClassUseMode.Solo);
-            }
+            Core.AddDrop(SoW.MalgorDrops.Concat(SoW.MainyuDrops).ToArray());
+            if (Core.CheckInventory("Yami no Ronin"))
+                Bot.Skills.StartAdvanced("Yami no Ronin", true, ClassUseMode.Solo);
             else Core.EquipClass(ClassType.Solo);
             SOWM.ElementalCore(20);
 
