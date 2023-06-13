@@ -1,6 +1,6 @@
 /*
 name: Owl Merge
-description: This bot will farm the items belonging to the selected mode for the Owl Merge [1180, 1179, 1178] in /rivensylth
+description: This bot will farm the items belonging to the selected mode for the Owl Merge [1180] in /rivensylth
 tags: owl, merge, rivensylth, wise, suit, wings
 */
 //cs_include Scripts/CoreBots.cs
@@ -44,8 +44,6 @@ public class OwlMerge
         BO.Ælfred();
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("rivensylth", 1180, findIngredients, buyOnlyThis, buyMode: buyMode);
-        Adv.StartBuyAllMerge("rivensylth", 1179, findIngredients, buyOnlyThis, buyMode: buyMode);
-        Adv.StartBuyAllMerge("rivensylth", 1178, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()
