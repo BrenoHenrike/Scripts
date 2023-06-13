@@ -136,7 +136,7 @@ public class CoreArchMage
 
     public void LuminaElementi(bool standalone = false)
     {
-        if (standalone || Bot.Config.Get<bool>("cosmetics") ?
+        if (standalone || Bot.Config!.Get<bool>("cosmetics") ?
                 Core.CheckInventory(Core.EnsureLoad(8919).Rewards.Select(x => x.ID).ToArray(), toInv: false) :
                 Core.CheckInventory("Providence", toInv: false))
             return;
@@ -157,6 +157,7 @@ public class CoreArchMage
         Core.FarmingLogger("Unbound Thread", 100);
         //Fallen Branches 8869
         Core.RegisterQuests(8869);
+        Core.AddDrop("Unbound Thread", "Providence");
         while (!Bot.ShouldExit && !Core.CheckInventory("Unbound Thread", 100))
         {
             Core.EquipClass(ClassType.Farm);
@@ -400,8 +401,8 @@ public class CoreArchMage
             Core.KillMonster("shadowattack", "Boss", "Left", "Death", "Mortal Ether", isTemp: false);
             Core.HuntMonster("gaiazor", "Gaiazor", "Vital Ether", isTemp: false);
             Core.KillMonster("fiendshard", "r9", "Left", "Nulgath's Fiend Shard", "Infernal Ether", isTemp: false);
-            Core.JumpWait();
-            Bot.Wait.ForCombatExit(20);
+            Core.Jump("Enter", "Spawn");
+            Bot.Wait.ForCombatExit();
             Core.EnsureComplete(8910);
             Bot.Wait.ForPickup("Prismatic Ether");
         }
