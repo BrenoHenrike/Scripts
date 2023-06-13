@@ -44,12 +44,12 @@ public class FrostSpiritReaver
                 Core.HuntMonster("icedungeon", "Shade of Kyanos", "Warrior of Kyanos", isTemp: false);
                 Tokens(25, 15, 10, 5);
 
-                Core.BuyItem("icedungeon", 1948, "Favored of Kyanos");
+                Adv.BuyItem("icedungeon", 1948, "Favored of Kyanos");
             }
             Core.Logger("Farming the requirements to buy \"Envoy of Kyanos\"");
             Tokens(50, 30, 20, 10);
 
-            Core.BuyItem("icedungeon", 1948, "Envoy of Kyanos");
+            Adv.BuyItem("icedungeon", 1948, "Envoy of Kyanos");
         }
 
         IceNinth(9);
@@ -62,6 +62,7 @@ public class FrostSpiritReaver
             Adv.RankUpClass("Frost SpititReaver");
     }
 
+    //Cold Hearted
     public void IceNinth(int quant)
     {
         if (Core.CheckInventory("Ice-Ninth", quant))
@@ -70,15 +71,14 @@ public class FrostSpiritReaver
         Core.AddDrop("Ice-Ninth", "Ice Diamond");
         Core.FarmingLogger("Ice-Ninth", quant);
 
+        //Quest Prereqs.
+        //////////////////////////////////////////////
         if (!Core.CheckInventory("Fallen Scythe of Vengeance"))
         {
             Core.Logger("Getting the quest item requirements for \"Cold Hearted\"");
             Core.AddDrop("Flame of Courage");
-
-            Core.RegisterQuests(3955);
-            while (!Bot.ShouldExit && !Core.CheckInventory("Flame of Courage", 25))
-                Core.HuntMonster("frozenruins", "Frost Invader", "Spark of Courage");
-            Core.CancelRegisteredQuests();
+            //Frost Sigil
+            Core.BuyItem("icedungeon", 2295, 25464, shopItemID: 25464);
 
             Core.HuntMonster("Northstar", "Karok the Fallen", "Karok's Glaceran Gem", isTemp: false);
             Adv.BuyItem("Glacera", 1055, "Scythe of Vengeance");
@@ -86,6 +86,7 @@ public class FrostSpiritReaver
             Adv.BuyItem("Glacera", 1055, "Frigid Scythe of Vengeance");
             Adv.BuyItem("Glacera", 1055, "Fallen Scythe of Vengeance");
         }
+        //////////////////////////////////////////////
 
         Core.RegisterQuests(7920);
         while (!Bot.ShouldExit && !Core.CheckInventory("Ice-Ninth", quant))
@@ -104,22 +105,26 @@ public class FrostSpiritReaver
         Core.CancelRegisteredQuests();
     }
 
+    //Cold Blooded
     public void GlaceranAttunement(int quant)
     {
         if (Core.CheckInventory("Glaceran Attunement", quant))
             return;
 
+        if (!Core.CheckInventory(new[] { 38915, 39011 }))
+        {
+            //IceBreaker Mage & FrostSlayer
+            Core.Logger("Getting the quest item requirements for \"Cold Blooded\"");
+            Core.AddDrop(38915, 39011);
+            Core.EquipClass(ClassType.Solo);
+            while (!Bot.ShouldExit && !Core.CheckInventory(new[] { 38915, 39011 }))
+                Core.HuntMonster("iceplane", "Enfield", isTemp: false, log: false);
+        }
+
+        else Core.Logger("Got the requirements for \"Cold Blooded\"");
+
         Core.AddDrop("Glaceran Attunement");
         Core.FarmingLogger("Glaceran Attunement", quant);
-
-        Core.Logger("Getting the quest item requirements for \"Cold Blooded\"");
-        Core.AddDrop(38915, 39011);
-        Core.EquipClass(ClassType.Solo);
-        while (!Bot.ShouldExit && !Core.CheckInventory(new[] { 38915, 39011 }))
-            Core.HuntMonster("iceplane", "Enfield", isTemp: false, log: false);
-        Core.Logger("Got the requirements for \"Cold Blooded\"");
-
-
         Core.RegisterQuests(7921);
         while (!Bot.ShouldExit && !Core.CheckInventory("Glaceran Attunement", quant))
         {
