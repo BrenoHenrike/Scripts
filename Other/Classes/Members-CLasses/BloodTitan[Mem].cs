@@ -37,7 +37,7 @@ public class BloodTitan
             Core.KillMonster("bloodtitan", "Enter", "Spawn", "Blood Titan", "Blood Titan's Phial", isTemp: false);
             Core.KillMonster("titandrakath", "Enter", "Spawn", "Titan Drakath", "Titanic Drakath's Blood", isTemp: false);
             Core.KillMonster("Desoloth", "Enter", "Spawn", "Desoloth", "Desoloth's Blood", isTemp: false);
-            Core.KillMonster("ultracarnax", "Frame9", "Right", "Ultra Carnax", "Ultra Carnax's Blood", isTemp: false);
+            Core.KillMonster("ultracarnax", "Frame9", "Right", "Ultra-Carnax", "Ultra Carnax's Blood", isTemp: false);
             Core.EnsureComplete(2908);
 
             // Blood Titan's Challenge 9253
