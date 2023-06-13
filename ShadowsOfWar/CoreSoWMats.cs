@@ -64,10 +64,9 @@ public class CoreSoWMats
 
         Core.FarmingLogger("Elemental Core", Quantity);
         Core.AddDrop("Elemental Core");
-        if (Core.CheckInventory("Yami no Ronin") || Core.CheckInventory("Dragon of Time"))
-        {
-            Bot.Skills.StartAdvanced(Core.CheckInventory("Yami no Ronin") ? "Yami no Ronin" : "Dragon of Time", true, ClassUseMode.Solo);
-        }
+
+        if (Core.CheckInventory("Yami no Ronin"))
+            Bot.Skills.StartAdvanced("Yami no Ronin", true, ClassUseMode.Solo);
         else Core.EquipClass(ClassType.Solo);
 
         Core.RegisterQuests(9126);

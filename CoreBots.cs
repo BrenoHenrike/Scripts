@@ -2856,6 +2856,14 @@ public class CoreBots
                 SimpleQuestBypass((25, 22));
                 break;
 
+            case "titandrakath":
+                SimpleQuestBypass((470, 18));
+                break;
+
+            case "desoloth":
+                SimpleQuestBypass((56, 35));
+                break;
+
             case "xancave":
                 SimpleQuestBypass((53, 35));
                 break;
@@ -3026,10 +3034,6 @@ public class CoreBots
             case "celestialarenac":
             case "celestialarenad":
                 PrivateSimpleQuestBypass((249, 20));
-                break;
-
-            case "titandrakath":
-                PrivateSimpleQuestBypass((470, 18));
                 break;
 
             case "confrontation":
