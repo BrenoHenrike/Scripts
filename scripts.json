@@ -3586,7 +3586,7 @@
       "null"
     ],
     "path": "Nation/MergeShops/FiendshardMerge.cs",
-    "size": 5511,
+    "size": 5497,
     "fileName": "FiendshardMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/MergeShops/FiendshardMerge.cs"
   },
@@ -5386,7 +5386,7 @@
       "nation"
     ],
     "path": "Story/Nation/Tercessuinotlim.cs",
-    "size": 4043,
+    "size": 4122,
     "fileName": "Tercessuinotlim.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Nation/Tercessuinotlim.cs"
   },
@@ -5414,7 +5414,7 @@
       "fiendshard"
     ],
     "path": "Story/Nation/Fiendshard.cs",
-    "size": 3724,
+    "size": 3665,
     "fileName": "Fiendshard.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Nation/Fiendshard.cs"
   },
@@ -5810,7 +5810,7 @@
       "null"
     ],
     "path": "Story/ShadowsOfWar/CoreSoW.cs",
-    "size": 36906,
+    "size": 36997,
     "fileName": "CoreSoW.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfWar/CoreSoW.cs"
   },
@@ -8531,6 +8531,22 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/BeleensMerge.cs"
   },
   {
+    "name": "Fox Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Fox Merge [1179] in /rivensylth",
+    "tags": [
+      "fox",
+      "merge",
+      "rivensylth",
+      "sly",
+      "suit",
+      "tail"
+    ],
+    "path": "Other/MergeShops/FoxMerge[MEM].cs",
+    "size": 3638,
+    "fileName": "FoxMerge[MEM].cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/FoxMerge[MEM].cs"
+  },
+  {
     "name": "ShinkansenMerge",
     "description": "null",
     "tags": [
@@ -9479,6 +9495,22 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/ShadowFirePlaneMerge.cs"
   },
   {
+    "name": "Owl Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Owl Merge [1180] in /rivensylth",
+    "tags": [
+      "owl",
+      "merge",
+      "rivensylth",
+      "wise",
+      "suit",
+      "wings"
+    ],
+    "path": "Other/MergeShops/OwlMerge.cs",
+    "size": 3526,
+    "fileName": "OwlMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/OwlMerge.cs"
+  },
+  {
     "name": "FirePlaneWarMerge",
     "description": "null",
     "tags": [
@@ -9697,6 +9729,23 @@
     "size": 3906,
     "fileName": "BarricadeDefenseMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/BarricadeDefenseMerge.cs"
+  },
+  {
+    "name": "Rabbit Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Rabbit Merge [1178] in /rivensylth",
+    "tags": [
+      "rabbit",
+      "merge",
+      "rivensylth",
+      "speedy",
+      "hare",
+      "suit",
+      "tail"
+    ],
+    "path": "Other/MergeShops/RabbitMerge.cs",
+    "size": 3561,
+    "fileName": "RabbitMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/RabbitMerge.cs"
   },
   {
     "name": "Termina Temple Merge",
@@ -16661,7 +16710,7 @@
       "null"
     ],
     "path": "Other/Classes/ArchMage/CoreArchMage.cs",
-    "size": 22834,
+    "size": 22899,
     "fileName": "CoreArchMage.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/ArchMage/CoreArchMage.cs"
   },

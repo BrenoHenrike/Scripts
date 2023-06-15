@@ -919,8 +919,12 @@ public class CoreSoW
 
         // 8788 Em-pathetic Connection (Merge Shop Quest)
         Core.EnsureAccept(8788);
+       
+        Core.EquipClass(ClassType.Farm);
         Core.HuntMonster("ruinedcrown", "Frenzied Mana", "Mana Residue", 8);
         Core.HuntMonster($"ruinedcrown", "Mana-Burdened Mage", "Mage’s Blood Sample", 8);
+
+        Core.EquipClass(ClassType.Solo);
         Core.HuntMonster($"ruinedcrown", "Calamitous Warlic", "Warlic’s Favor");
         Core.EnsureComplete(8788);
     }
