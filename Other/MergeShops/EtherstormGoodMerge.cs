@@ -27,7 +27,7 @@ public class EtherstormGoodMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Water Defender Token", "Fire Defender Token", "Earth Defender Token", "Air Defender Token"});
+        Core.BankingBlackList.AddRange(new[] { "Water Defender Token", "Fire Defender Token", "Earth Defender Token", "Air Defender Token" });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -63,32 +63,35 @@ public class EtherstormGoodMerge
                 case "Fire Defender Token":
                 case "Earth Defender Token":
                 case "Air Defender Token":
-                    if(Core.IsMember){
-                    Core.FarmingLogger(req.Name, quant);
-                    Core.RegisterQuests(1716, 1717);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
+                    if (Core.IsMember)
                     {
-                        Core.HuntMonster("etherwargood", "Tainted Emu", "Twisted Emu Feather", 6, true, false);
-                        Core.HuntMonster("etherwargood", "Tainted Pelican", "Twisted Pelican Feather", 6, true, false);
-                        Core.HuntMonster("etherwargood", "Tainted Hummingbird", "Twisted Hummingbird Feather", 6, true, false);
-                        Core.HuntMonster("etherwargood", "Tainted Phoenix", "Twisted Phoenix Feather", 6, true, false);
-                        Bot.Wait.ForPickup(req.Name);
+                        Core.FarmingLogger(req.Name, quant);
+                        Core.RegisterQuests(1716, 1717);
+                        while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
+                        {
+                            Core.HuntMonster("etherwargood", "Tainted Emu", "Twisted Emu Feather", 6, true, false);
+                            Core.HuntMonster("etherwargood", "Tainted Pelican", "Twisted Pelican Feather", 6, true, false);
+                            Core.HuntMonster("etherwargood", "Tainted Hummingbird", "Twisted Hummingbird Feather", 6, true, false);
+                            Core.HuntMonster("etherwargood", "Tainted Phoenix", "Twisted Phoenix Feather", 6, true, false);
+                            Bot.Wait.ForPickup(req.Name);
+                        }
+                        Core.CancelRegisteredQuests();
                     }
-                    Core.CancelRegisteredQuests();
-                    }else{
+                    else
+                    {
                         Core.FarmingLogger(req.Name, quant);
                         Core.RegisterQuests(1717);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster("etherwargood", "Tainted Emu", "Twisted Emu Feather", 3, true, false);
-                        Core.HuntMonster("etherwargood", "Tainted Pelican", "Twisted Pelican Feather", 3, true, false);
-                        Core.HuntMonster("etherwargood", "Tainted Hummingbird", "Twisted Hummingbird Feather", 3, true, false);
-                        Core.HuntMonster("etherwargood", "Tainted Phoenix", "Twisted Phoenix Feather", 3, true, false);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    Core.CancelRegisteredQuests();
+                        while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
+                        {
+                            Core.HuntMonster("etherwargood", "Tainted Emu", "Twisted Emu Feather", 3, true, false);
+                            Core.HuntMonster("etherwargood", "Tainted Pelican", "Twisted Pelican Feather", 3, true, false);
+                            Core.HuntMonster("etherwargood", "Tainted Hummingbird", "Twisted Hummingbird Feather", 3, true, false);
+                            Core.HuntMonster("etherwargood", "Tainted Phoenix", "Twisted Phoenix Feather", 3, true, false);
+                            Bot.Wait.ForPickup(req.Name);
                         }
-                break;
+                        Core.CancelRegisteredQuests();
+                    }
+                    break;
 
             }
         }
