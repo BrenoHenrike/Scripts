@@ -132,9 +132,11 @@ public class CoreSoWMats
         Core.RegisterQuests(8869);
         while (!Bot.ShouldExit && !Core.CheckInventory("Unbound Thread", Quantity))
         {
-            Core.HuntMonster("DeadLines", "Shadowfall Warrior", "Armor Scrap", 8, log: false);
-            Core.HuntMonster("DeadLines", "Frenzied Mana", "Captured Mana", 8, log: false);
-            Core.HuntMonster("DeadLines", "Eternal Dragon", "Eternal Dragon Scale", log: false);
+            Core.EquipClass(ClassType.Farm);
+            Core.HuntMonster("DeadLines", "Frenzied Mana", "Captured Mana", 8);
+            Core.HuntMonster("DeadLines", "Shadowfall Warrior", "Armor Scrap", 8);
+            Core.EquipClass(ClassType.Solo);
+            Core.HuntMonster("DeadLines", "Eternal Dragon", "Eternal Dragon Scale");
         }
         Core.CancelRegisteredQuests();
     }
