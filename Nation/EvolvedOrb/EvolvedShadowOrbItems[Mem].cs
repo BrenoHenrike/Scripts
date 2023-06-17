@@ -67,7 +67,7 @@ public class EvolvedShadowOrbItems
             return;
 
         Core.AddDrop("Evolved Shadow of Nulgath");
-        Bard.GetBard(false);
+        Bard.GetBard(true);
         Nation.FarmUni13(3);
         Adv.BuyItem("tercessuinotlim", 1951, "Unidentified 25");
         Nation.FarmVoucher(true);
