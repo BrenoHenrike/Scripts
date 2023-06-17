@@ -19,7 +19,13 @@ public class CoreSoW
 
     public string[] MainyuDrops = { "Mainyu Tail", "Mainyu Wings", "ShadowFlame Eviscerator Greatsword", "ShadowFlame Eviscerator Greatswords" };
     //update this when wiki is updated. vvvv
-    public string[] MalgorDrops = { "", "", "", "", "", "", "", "" };
+
+    public string[] MalgorDrops =
+    {
+        "Shadowflame Vanguard Spear", "Shadowflame Vanguard Armet Locks", "Shadowflame Vanguard Armet",
+        "Shadowflame Shroud", "ShadowFlame Dragon Blade", "Shadowflame Devastation", "Shadow Dragonscale Blade",
+        "Shadow DragonMaster's Tail + Blades", "Shadow DragonMaster's Helm", "Shadow DragonMaster"
+    };
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -913,8 +919,12 @@ public class CoreSoW
 
         // 8788 Em-pathetic Connection (Merge Shop Quest)
         Core.EnsureAccept(8788);
+       
+        Core.EquipClass(ClassType.Farm);
         Core.HuntMonster("ruinedcrown", "Frenzied Mana", "Mana Residue", 8);
         Core.HuntMonster($"ruinedcrown", "Mana-Burdened Mage", "Mage’s Blood Sample", 8);
+
+        Core.EquipClass(ClassType.Solo);
         Core.HuntMonster($"ruinedcrown", "Calamitous Warlic", "Warlic’s Favor");
         Core.EnsureComplete(8788);
     }
@@ -1122,10 +1132,10 @@ public class CoreSoW
         Story.KillQuest(9123, "manacradle", new[] { "Dark Tainted Mana", "Darkness Elemental" });
         Story.MapItemQuest(9123, "manacradle", 11271);
 
-        if (Core.CheckInventory("Yami no Ronin") || Core.CheckInventory("Dragon of Time"))
+        if (Core.CheckInventory("Yami no Ronin"))
         {
             Core.AddDrop(MainyuDrops.Concat(MalgorDrops).ToArray());
-            Bot.Skills.StartAdvanced(Core.CheckInventory("Yami no Ronin") ? "Yami no Ronin" : "Dragon of Time", true, ClassUseMode.Solo);
+            Bot.Skills.StartAdvanced("Yami no Ronin", true, ClassUseMode.Solo);
 
             // Cognitive Dissonance 9124
             Story.KillQuest(9124, "manacradle", "Malgor");
@@ -1134,7 +1144,7 @@ public class CoreSoW
             Story.KillQuest(9125, "manacradle", "The Mainyu");
             Core.ToBank(MainyuDrops.Concat(MalgorDrops).ToArray());
         }
-        else Core.Logger("Cant do these last quests as they require YNR/DoT(solo) or a *realy good* dodge class... or for you todo it manualy with an group/army(this quest isnt required afaik.)");
+        else Core.Logger("Cant do these last quests as they require YNR or a *realy good* dodge class... or for you todo it manualy with an group/army(this quest isnt required afaik.)");
 
         #region GroupBoss Quest
         // These 2 arent needed.

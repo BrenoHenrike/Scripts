@@ -75,6 +75,7 @@ public class UltraSpeakerMergePreReqs
             ADG.AscendedGear("Ascended Blade of Awe");
             DFO.DragonFableOriginsAll();
             Core.EquipClass(ClassType.Solo);
+            Core.AddDrop("Ice Shard");
             Core.RegisterQuests(6311);
             while (!Bot.ShouldExit && !Core.CheckInventory("Ice Shard", 50))
                 Core.HuntMonster("northmountain", "Izotz", "Ice Crystal");
