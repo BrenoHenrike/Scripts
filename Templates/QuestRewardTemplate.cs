@@ -49,7 +49,7 @@ public class QuestRewardTemplate
 
     //Basicly when making Set/simple quest reward scripts... pick one of these // the rest in scriptmain 👍
 
-    private void RandomReward(int questID = 0000)
+    private void RandomReward(int questID = 0000, int quant = 1)
     {
         int i = 0;
 
@@ -88,7 +88,7 @@ public class QuestRewardTemplate
         }
     }
 
-    public void SelectReward(int questID = 0000)
+    public void SelectReward(int questID = 0000, int quant = 1)
     {
         ItemBase item = Core.EnsureLoad(questID).Rewards.Find(x => x.ID == itemID); //<-- replace 0000 with the itemID
 
