@@ -23,7 +23,7 @@ public class HoratioQuests
 
     public void Horatio()
     {
-        if (Core.isCompletedBefore(000))
+        if (Core.isCompletedBefore(6947))
             return;
 
         Story.PreLoad(this);
@@ -67,7 +67,7 @@ public class HoratioQuests
         //Gleeble the Garble! (6947)
         Story.KillQuest(6947, "nursery", "GleebleGlarble");
 
-        
+
 
 
 
