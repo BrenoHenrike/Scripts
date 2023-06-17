@@ -28,6 +28,7 @@ public class CoreAOR
         AshrayVillage();
         SunlightZone();
         TwilightZone();
+        YulgarAria();
     }
 
     public void TerminaTemple()
@@ -180,5 +181,30 @@ public class CoreAOR
 
         // The Sea's Commitment (9268)
         Story.MapItemQuest(9268, "twilightzone", 11756);
+    }
+
+    public void YulgarAria()
+    {
+        if (Core.isCompletedBefore(9274))
+            return;
+
+        AOR.TwilightZone();
+
+        Story.PreLoad(this);
+
+        //Octotree (9270)
+        Story.KillQuest(9270, "twilightzone", "Polymelia Lamprey");
+
+        //Thirsty Roots (9271)
+        Story.KillQuest(9271, "sunlightzone", "Blighted Water");
+
+        //Dollar Store Mogloween Costume (9272)
+        Story.KillQuest(9272, "sunlightzone", new[] { "Astravian Illusion", "Infernal Illusion" });
+
+        //Sea Snow Angels (9273)
+        Story.KillQuest(9273, "sunlightzone", "Marine Snow");
+
+        //Ten Klicks (9274)
+        Story.KillQuest(9274, "twilightzone", "Leviathan");
     }
 }

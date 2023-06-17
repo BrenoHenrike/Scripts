@@ -3610,6 +3610,31 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/ShadowsOfWar/Materials/GarishRemnant.cs"
   },
   {
+    "name": "Yulgar + Aria",
+    "description": "This script completes the Yulgar's storyline in /sunlightzone.",
+    "tags": [
+      "age",
+      "of",
+      "ruin",
+      "saga",
+      "story",
+      "quest",
+      "yulgar",
+      "aria",
+      "sunlight",
+      "twilight",
+      "zone",
+      "father",
+      "day",
+      "venomous",
+      "rose"
+    ],
+    "path": "Story/AgeOfRuin/05YulgarAria.cs",
+    "size": 783,
+    "fileName": "05YulgarAria.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/05YulgarAria.cs"
+  },
+  {
     "name": "Sunlight Zone",
     "description": "This script completes the storyline in /sunlightzone.",
     "tags": [
@@ -3688,7 +3713,7 @@
       "null"
     ],
     "path": "Story/AgeOfRuin/CoreAOR.cs",
-    "size": 5548,
+    "size": 6259,
     "fileName": "CoreAOR.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/CoreAOR.cs"
   },
