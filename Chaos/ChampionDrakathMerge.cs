@@ -109,7 +109,7 @@ public class ChampionDrakathMerge
                 case "Legendary Sword of Dragon Control":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
-                    Core.KillVath();
+                    Core.KillVath(req.Name, quant);
                     Bot.Wait.ForPickup(req.Name);
                     break;
 
