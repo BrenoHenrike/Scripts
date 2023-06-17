@@ -5,7 +5,7 @@ tags: horstio, rewards, one, last, task
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/WIP/FathersDay/HoratioQuests.cs
+//cs_include Scripts/Seasonal/FathersDay/HoratioQuests.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
