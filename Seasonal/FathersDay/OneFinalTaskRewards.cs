@@ -1,7 +1,7 @@
 /*
-name: OneLastTaskRewards.cs
-description: this script will farm all rewards from quest OneLastTask in /nursery
-tags: horstio, rewards, one, last, task
+name: OneFinalTaskRewards.cs
+description: this script will farm all rewards from quest OneFinalTask in /nursery
+tags: horstio, rewards, one, final, task
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
@@ -10,7 +10,7 @@ using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
 
-public class OneLastTask
+public class OneFinaltTask
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
