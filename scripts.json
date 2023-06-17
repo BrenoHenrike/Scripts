@@ -3713,7 +3713,7 @@
       "null"
     ],
     "path": "Story/AgeOfRuin/CoreAOR.cs",
-    "size": 6259,
+    "size": 6255,
     "fileName": "CoreAOR.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/CoreAOR.cs"
   },
@@ -3732,10 +3732,12 @@
       "village",
       "sunlight",
       "twilight",
-      "zone"
+      "zone",
+      "yulgar",
+      "aria"
     ],
     "path": "Story/AgeOfRuin/00DoAll.cs",
-    "size": 760,
+    "size": 772,
     "fileName": "00DoAll.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/00DoAll.cs"
   },
