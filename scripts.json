@@ -10430,6 +10430,37 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/YulgarsDualWieldMerge.cs"
   },
   {
+    "name": "Yulgars Undine Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Yulgars Undine Merge [2297] in /sunlightzone",
+    "tags": [
+      "yulgars",
+      "undine",
+      "merge",
+      "sunlightzone",
+      "poisonous",
+      "rogue",
+      "nightshade",
+      "thorn",
+      "assasasin",
+      "reversed",
+      "thorns",
+      "envenomed",
+      "whip",
+      "agony",
+      "elven",
+      "assassins",
+      "scarf",
+      "",
+      "assassin",
+      "guardian",
+      "wreath"
+    ],
+    "path": "Other/MergeShops/YulgarsUndineMerge.cs",
+    "size": 5281,
+    "fileName": "YulgarsUndineMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/YulgarsUndineMerge.cs"
+  },
+  {
     "name": "CharonsPurgeMerge",
     "description": "null",
     "tags": [
