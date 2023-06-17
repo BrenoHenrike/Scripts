@@ -66,15 +66,5 @@ public class HoratioQuests
 
         //Gleeble the Garble! (6947)
         Story.KillQuest(6947, "nursery", "GleebleGlarble");
-
-
-
-
-
-        Story.KillQuest(000, "mapname", "MonsterName");
-        Story.KillQuest(000, "mapname", new[] { "Monstername", "Monstername" });
-        Story.MapItemQuest(000, "mapname", 1, 1);
-        Story.MapItemQuest(000, "mapname", new[] { 000, 000, 000, });
-        Story.ChainQuest(000);
     }
 }
