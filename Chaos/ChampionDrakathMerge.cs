@@ -121,12 +121,6 @@ public class ChampionDrakathMerge
                     break;
 
                 case "Discordia Rose of Chaos":
-                    Core.FarmingLogger(req.Name, quant);
-                    Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster("palooza", "Chaos Lord Discordia", req.Name, quant, false, false);
-                    Bot.Wait.ForPickup(req.Name);
-                    break;
-
                 case "Chaos Rose":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
