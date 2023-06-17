@@ -14744,6 +14744,24 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AkibaNewYear/Zhu.cs"
   },
   {
+    "name": "Nursery",
+    "description": "This script will complete Horatio's quests in /nursery.",
+    "tags": [
+      "horatio",
+      "quests",
+      "clatter",
+      "tidy",
+      "snackies",
+      "seasonal",
+      "father",
+      "day"
+    ],
+    "path": "Seasonal/FathersDay/Nursery.cs",
+    "size": 2049,
+    "fileName": "Nursery.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/FathersDay/Nursery.cs"
+  },
+  {
     "name": "LootTheUndresser Quest Rewards",
     "description": "farms quest rewards from 'Loot the UnDresser` in /cursedshop",
     "tags": [
