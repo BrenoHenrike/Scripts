@@ -1,7 +1,7 @@
 /*
 name: Yulgar + Ari
 description: This script completes the Yulgar's storyline in /sunlightzone.
-tags: age,of,ruin,saga,story,quest,zone,twilight
+tags: age,of,ruin,saga,story,quest,yulgar,ari,sunlight,twilight,zone,father,day,venomous,rose
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
