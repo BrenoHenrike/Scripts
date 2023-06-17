@@ -3619,11 +3619,18 @@
       "saga",
       "story",
       "quest",
+      "yulgar",
+      "ari",
+      "sunlight",
+      "twilight",
       "zone",
-      "twilight"
+      "father",
+      "day",
+      "venomous",
+      "rose"
     ],
     "path": "Story/AgeOfRuin/05YulgarAri.cs",
-    "size": 734,
+    "size": 779,
     "fileName": "05YulgarAri.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/05YulgarAri.cs"
   },
