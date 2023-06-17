@@ -15,9 +15,9 @@ public class QuestRewardTemplate
 
     //Insert Reward ID(load quest then -> tools > grabber > quests > grab > 
     //click the quest, and on the right scroll down to \"Rewards\", click the ... to the Right, and the ids are beside the names
+    // if Using SelectReward(); edit the itemID to the item (use the grabber), otherwise leave it be
     int itemID = 0000;
     int questID = 0000;
-    int quant = 0;
     //Please fillin the above^
 
     public void ScriptMain(IScriptInterface Bot)
@@ -49,7 +49,7 @@ public class QuestRewardTemplate
 
     //Basicly when making Set/simple quest reward scripts... pick one of these // the rest in scriptmain 👍
 
-    private void RandomReward(int questID = 0000, int quant = 1)
+    private void RandomReward(int questID = 0000)
     {
         int i = 0;
 
@@ -72,7 +72,9 @@ public class QuestRewardTemplate
                 while (!Bot.ShouldExit && !Core.CheckInventory(Reward.Name, quant, toInv: false))
                 {
 
-                    //kill/Hunt Goes here.
+                    //Edit the Hunt Below\add more if needed
+                    Core.HuntMonster("map", "mob", "item", 1, isTemp: false, log: false);
+
 
                     i++;
 
@@ -86,7 +88,7 @@ public class QuestRewardTemplate
         }
     }
 
-    public void SelectReward(int questID = 0000, int quant = 1)
+    public void SelectReward(int questID = 0000)
     {
         ItemBase item = Core.EnsureLoad(questID).Rewards.Find(x => x.ID == itemID); //<-- replace 0000 with the itemID
 
@@ -95,12 +97,15 @@ public class QuestRewardTemplate
         while (!Bot.ShouldExit && !Core.CheckInventory(item.ID, quant))
         {
             Core.EnsureAccept(questID);
-            //Insert hunt/kill from quest heres
+
+            //Edit the Hunt Below\add more if needed
+            Core.HuntMonster("map", "mob", "item", 1, isTemp: false, log: false);
+
             Core.EnsureComplete(questID, item.ID);
         }
     }
 
-    public void AutoReward(int questID = 0000, int quant = 1)
+    public void AutoReward(int questID = 0000)
     {
         List<ItemBase> RewardOptions = Core.EnsureLoad(questID).Rewards;
 
@@ -111,7 +116,10 @@ public class QuestRewardTemplate
             while (!Bot.ShouldExit && !Core.CheckInventory(item.ID))
             {
                 Core.EnsureAccept(questID);
-                //Insert hunt/kill from quest heres
+
+                //Edit the Hunt Below\add more if needed
+                Core.HuntMonster("map", "mob", "item", 1, isTemp: false, log: false);
+
                 Core.EnsureComplete(questID, item.ID);
             }
         }
