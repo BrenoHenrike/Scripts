@@ -1,7 +1,7 @@
 /*
-name: Yulgar + Ari
+name: Yulgar + Aria
 description: This script completes the Yulgar's storyline in /sunlightzone.
-tags: age,of,ruin,saga,story,quest,yulgar,ari,sunlight,twilight,zone,father,day,venomous,rose
+tags: age,of,ruin,saga,story,quest,yulgar,aria,sunlight,twilight,zone,father,day,venomous,rose
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
@@ -11,7 +11,7 @@ tags: age,of,ruin,saga,story,quest,yulgar,ari,sunlight,twilight,zone,father,day,
 //cs_include Scripts/Story\AgeOfRuin\CoreAOR.cs
 using Skua.Core.Interfaces;
 
-public class YulgarAri
+public class YulgarAria
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
@@ -21,7 +21,7 @@ public class YulgarAri
     {
         Core.SetOptions();
 
-        AOR.YulgarAri();
+        AOR.YulgarAria();
         Core.SetOptions(false);
     }
 }

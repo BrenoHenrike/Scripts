@@ -28,7 +28,7 @@ public class CoreAOR
         AshrayVillage();
         SunlightZone();
         TwilightZone();
-        YulgarAri();
+        YulgarAria();
     }
 
     public void TerminaTemple()
@@ -183,7 +183,7 @@ public class CoreAOR
         Story.MapItemQuest(9268, "twilightzone", 11756);
     }
 
-    public void YulgarAri()
+    public void YulgarAria()
     {
         if (Core.isCompletedBefore(9274))
             return;
