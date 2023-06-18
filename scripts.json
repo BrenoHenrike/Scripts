@@ -11217,6 +11217,30 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/QueensReignMerge.cs"
   },
   {
+    "name": "Dradens Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Dradens Merge [1137] in /phoenixrise",
+    "tags": [
+      "dradens",
+      "merge",
+      "phoenixrise",
+      "phoenix",
+      "tempest",
+      "general",
+      "firestorm",
+      "banner",
+      "fyreborn",
+      "mauler",
+      "corundum",
+      "carver",
+      "cavernous",
+      "horned"
+    ],
+    "path": "Other/MergeShops/DradensMerge.cs",
+    "size": 5496,
+    "fileName": "DradensMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/DradensMerge.cs"
+  },
+  {
     "name": "FiendPastMerge",
     "description": "null",
     "tags": [
