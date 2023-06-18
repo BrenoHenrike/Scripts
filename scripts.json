@@ -2109,6 +2109,34 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Chaos/AscendedDrakathGear.cs"
   },
   {
+    "name": "Champion Drakath Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Champion Drakath Merge [2055] in /championdrakath",
+    "tags": [
+      "champion",
+      "drakath",
+      "merge",
+      "championdrakath",
+      "empowered",
+      "original",
+      "chaos",
+      "avengers",
+      "greatsword",
+      "avenger",
+      "polished",
+      "dragon",
+      "control",
+      "supreme",
+      "arcane",
+      "colorful",
+      "rose",
+      "royal"
+    ],
+    "path": "Chaos/ChampionDrakathMerge.cs",
+    "size": 7183,
+    "fileName": "ChampionDrakathMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Chaos/ChampionDrakathMerge.cs"
+  },
+  {
     "name": "Chaos Avenger Class",
     "description": "Gets the prerequisites for the Chaos avengers class besides the insignias.",
     "tags": [
@@ -2870,6 +2898,37 @@
     "size": 1292,
     "fileName": "WarFuryEmblem.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/WarFuryEmblem.cs"
+  },
+  {
+    "name": "Yulgars Undine Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Yulgars Undine Merge [2297] in /sunlightzone",
+    "tags": [
+      "yulgars",
+      "undine",
+      "merge",
+      "sunlightzone",
+      "poisonous",
+      "rogue",
+      "nightshade",
+      "thorn",
+      "assasasin",
+      "reversed",
+      "thorns",
+      "envenomed",
+      "whip",
+      "agony",
+      "elven",
+      "assassins",
+      "scarf",
+      "",
+      "assassin",
+      "guardian",
+      "wreath"
+    ],
+    "path": "Other/YulgarsUndineMerge.cs",
+    "size": 5468,
+    "fileName": "YulgarsUndineMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/YulgarsUndineMerge.cs"
   },
   {
     "name": "Lycan Shaman Set",
@@ -10456,7 +10515,7 @@
       "wreath"
     ],
     "path": "Other/MergeShops/YulgarsUndineMerge.cs",
-    "size": 5281,
+    "size": 5386,
     "fileName": "YulgarsUndineMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/YulgarsUndineMerge.cs"
   },
@@ -14744,6 +14803,93 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AkibaNewYear/Zhu.cs"
   },
   {
+    "name": "OneFinalTaskRewards.cs",
+    "description": "this script will farm all rewards from quest OneFinalTask in /nursery",
+    "tags": [
+      "horstio",
+      "rewards",
+      "one",
+      "final",
+      "task"
+    ],
+    "path": "Seasonal/FathersDay/OneFinalTaskRewards.cs",
+    "size": 1448,
+    "fileName": "OneFinalTaskRewards.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/FathersDay/OneFinalTaskRewards.cs"
+  },
+  {
+    "name": "Gravelyns Gift Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Gravelyns Gift Merge [2299] in /nursery",
+    "tags": [
+      "gravelyns",
+      "gift",
+      "merge",
+      "nursery",
+      "doom",
+      "harried",
+      "legacy",
+      "furious",
+      "furred",
+      "shoulder",
+      "dark"
+    ],
+    "path": "Seasonal/FathersDay/GravelynsGiftMerge.cs",
+    "size": 4343,
+    "fileName": "GravelynsGiftMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/FathersDay/GravelynsGiftMerge.cs"
+  },
+  {
+    "name": "Shadowscythe House Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Shadowscythe House Merge [1731] in /nursery",
+    "tags": [
+      "shadowscythe",
+      "house",
+      "merge",
+      "nursery",
+      "sepulchures",
+      "wing",
+      "shadow",
+      "family",
+      "quarters",
+      "moglinster",
+      "rug",
+      "desk",
+      "doom",
+      "crib",
+      "world",
+      "domination",
+      "globe",
+      "totally",
+      "dead",
+      "plant",
+      "experiments",
+      "toxic",
+      "cauldron",
+      "scattered",
+      "legows",
+      "bone",
+      "blocks",
+      "phone",
+      "chattering",
+      "teeth",
+      "pyramid",
+      "jackinthebox",
+      "green",
+      "floor",
+      "sludge",
+      "side",
+      "table",
+      "bottles",
+      "l",
+      "r",
+      "kitchen"
+    ],
+    "path": "Seasonal/FathersDay/ShadowscytheHouseMerge.cs",
+    "size": 6304,
+    "fileName": "ShadowscytheHouseMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/FathersDay/ShadowscytheHouseMerge.cs"
+  },
+  {
     "name": "Nursery",
     "description": "This script will complete Horatio's quests in /nursery.",
     "tags": [
@@ -14760,6 +14906,21 @@
     "size": 2049,
     "fileName": "Nursery.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/FathersDay/Nursery.cs"
+  },
+  {
+    "name": "HoratioQuests.cs",
+    "description": "This Script Will Finish All Quests in /nursery",
+    "tags": [
+      "hotario",
+      "quests",
+      "clatter",
+      "tidy",
+      "snackies"
+    ],
+    "path": "Seasonal/FathersDay/HoratioQuests.cs",
+    "size": 2047,
+    "fileName": "HoratioQuests.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/FathersDay/HoratioQuests.cs"
   },
   {
     "name": "LootTheUndresser Quest Rewards",
