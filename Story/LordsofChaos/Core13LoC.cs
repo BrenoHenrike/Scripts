@@ -178,7 +178,7 @@ public class Core13LoC
         Story.KillQuest(264, "mobius", "Cyclops Raider");
 
         //To-go box
-          if (!Story.QuestProgression(265))
+        if (!Story.QuestProgression(265))
         {
             Core.EnsureAccept(265);
             Core.HuntMonster("faerie", "Chainsaw Sneevil", "Cardboard Box", 4);
@@ -2414,11 +2414,19 @@ public class Core13LoC
         //Kill Bandit Drakath in Dreadhaven
         Story.ChainQuest(3814);
 
+        //Equips drakaths armor(temp) upon joining map, delays quest accept
+        Adv.GearStore();
+        Core.Join("falcontower");
+        Bot.Wait.ForItemEquip(25005);
+        Bot.Sleep(2500);
+        Adv.GearStore(true);
+
         //Up the Mountain
+        Core.EquipClass(ClassType.Farm);
         if (!Story.QuestProgression(3815))
         {
             Core.EnsureAccept(3815);
-            Core.KillMonster("falcontower", "Spawn", "Enter", "*", "Enemy Defeated", 3);
+            Core.KillMonster("falcontower", "Spawn", "Enter", "Sir Knight", "Enemy Defeated", 3);
             Core.EnsureComplete(3815);
         }
 
@@ -2426,7 +2434,7 @@ public class Core13LoC
         if (!Story.QuestProgression(3816))
         {
             Core.EnsureAccept(3816);
-            Core.KillMonster("falcontower", "Spawn", "Enter", "*", "Enemy Defeated", 3);
+            Core.KillMonster("falcontower", "Spawn", "Enter", "Sir Knight", "Enemy Defeated", 3);
             Core.EnsureComplete(3816);
         }
 
@@ -2434,7 +2442,7 @@ public class Core13LoC
         if (!Story.QuestProgression(3817))
         {
             Core.EnsureAccept(3817);
-            Core.KillMonster("falcontower", "Spawn", "Enter", "*", "Enemy Defeated", 3);
+            Core.KillMonster("falcontower", "Spawn", "Enter", "Sir Knight", "Enemy Defeated", 3);
             Core.EnsureComplete(3817);
         }
 
@@ -2442,7 +2450,7 @@ public class Core13LoC
         if (!Story.QuestProgression(3818))
         {
             Core.EnsureAccept(3818);
-            Core.KillMonster("falcontower", "Spawn", "Enter", "*", "Enemy Defeated", 3);
+            Core.KillMonster("falcontower", "Spawn", "Enter", "Sir Knight", "Enemy Defeated", 3);
             Core.EnsureComplete(3818);
         }
 
@@ -2450,7 +2458,7 @@ public class Core13LoC
         if (!Story.QuestProgression(3819))
         {
             Core.EnsureAccept(3819);
-            Core.KillMonster("falcontower", "Spawn", "Enter", "*", "Enemy Defeated", 2);
+            Core.KillMonster("falcontower", "Spawn", "Enter", "Sir Knight", "Enemy Defeated", 2);
             Core.EnsureComplete(3819);
         }
 
@@ -2458,11 +2466,12 @@ public class Core13LoC
         if (!Story.QuestProgression(3820))
         {
             Core.EnsureAccept(3820);
-            Core.KillMonster("falcontower", "Spawn", "Enter", "*", "Enemy Defeated", 5);
+            Core.KillMonster("falcontower", "Spawn", "Enter", "Sir Knight", "Enemy Defeated", 5);
             Core.EnsureComplete(3820);
         }
 
         //Defeat the Dragonlord
+        Core.EquipClass(ClassType.Solo);
         Story.KillQuest(3821, "falcontower", "DragonLord");
 
         //Defeat Dragon Drakath
