@@ -21,7 +21,6 @@ public class YulgarsUndineMerge
     private CoreAdvanced Adv = new();
     private static CoreAdvanced sAdv = new();
     private CoreAOR AoR = new();
-    private YulgarVenemousRoseQuests YVR = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
     public string[] MultiOptions = { "Generic", "Select" };
@@ -41,7 +40,6 @@ public class YulgarsUndineMerge
 
     public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
-        AoR.SunlightZone();
         AoR.YulgarAria();
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("sunlightzone", 2297, findIngredients, buyOnlyThis, buyMode: buyMode);
@@ -72,7 +70,7 @@ public class YulgarsUndineMerge
                     Core.RegisterQuests(9274);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("twilightzone", "Leviathan", req.Name, quant);
+                        Core.HuntMonster("twilightzone", "Leviathan", log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
@@ -80,8 +78,8 @@ public class YulgarsUndineMerge
 
                 case "Undine Visitor Badge":
                     Core.FarmingLogger(req.Name, quant);
+                    Core.EquipClass(ClassType.Farm);
                     Core.HuntMonster("sunlightzone", "Astravian Illusion", req.Name, quant, false, false);
-                    Bot.Wait.ForPickup(req.Name);
                     break;
 
             }

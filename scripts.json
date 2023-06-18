@@ -1957,7 +1957,7 @@
       "null"
     ],
     "path": "Templates/QuestRewardTemplate.cs",
-    "size": 6055,
+    "size": 6413,
     "fileName": "QuestRewardTemplate.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Templates/QuestRewardTemplate.cs"
   },
@@ -3713,7 +3713,7 @@
       "null"
     ],
     "path": "Story/AgeOfRuin/CoreAOR.cs",
-    "size": 6259,
+    "size": 6255,
     "fileName": "CoreAOR.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/CoreAOR.cs"
   },
@@ -3732,10 +3732,12 @@
       "village",
       "sunlight",
       "twilight",
-      "zone"
+      "zone",
+      "yulgar",
+      "aria"
     ],
     "path": "Story/AgeOfRuin/00DoAll.cs",
-    "size": 760,
+    "size": 772,
     "fileName": "00DoAll.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/00DoAll.cs"
   },
@@ -10428,6 +10430,37 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/YulgarsDualWieldMerge.cs"
   },
   {
+    "name": "Yulgars Undine Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Yulgars Undine Merge [2297] in /sunlightzone",
+    "tags": [
+      "yulgars",
+      "undine",
+      "merge",
+      "sunlightzone",
+      "poisonous",
+      "rogue",
+      "nightshade",
+      "thorn",
+      "assasasin",
+      "reversed",
+      "thorns",
+      "envenomed",
+      "whip",
+      "agony",
+      "elven",
+      "assassins",
+      "scarf",
+      "",
+      "assassin",
+      "guardian",
+      "wreath"
+    ],
+    "path": "Other/MergeShops/YulgarsUndineMerge.cs",
+    "size": 5281,
+    "fileName": "YulgarsUndineMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/YulgarsUndineMerge.cs"
+  },
+  {
     "name": "CharonsPurgeMerge",
     "description": "null",
     "tags": [
@@ -14709,6 +14742,24 @@
     "size": 1764,
     "fileName": "Zhu.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AkibaNewYear/Zhu.cs"
+  },
+  {
+    "name": "Nursery",
+    "description": "This script will complete Horatio's quests in /nursery.",
+    "tags": [
+      "horatio",
+      "quests",
+      "clatter",
+      "tidy",
+      "snackies",
+      "seasonal",
+      "father",
+      "day"
+    ],
+    "path": "Seasonal/FathersDay/Nursery.cs",
+    "size": 2049,
+    "fileName": "Nursery.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/FathersDay/Nursery.cs"
   },
   {
     "name": "LootTheUndresser Quest Rewards",

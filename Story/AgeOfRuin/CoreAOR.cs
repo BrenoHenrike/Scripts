@@ -188,7 +188,7 @@ public class CoreAOR
         if (Core.isCompletedBefore(9274))
             return;
 
-        AOR.TwilightZone();
+        TwilightZone();
 
         Story.PreLoad(this);
 
