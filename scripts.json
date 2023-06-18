@@ -2900,37 +2900,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/WarFuryEmblem.cs"
   },
   {
-    "name": "Yulgars Undine Merge",
-    "description": "This bot will farm the items belonging to the selected mode for the Yulgars Undine Merge [2297] in /sunlightzone",
-    "tags": [
-      "yulgars",
-      "undine",
-      "merge",
-      "sunlightzone",
-      "poisonous",
-      "rogue",
-      "nightshade",
-      "thorn",
-      "assasasin",
-      "reversed",
-      "thorns",
-      "envenomed",
-      "whip",
-      "agony",
-      "elven",
-      "assassins",
-      "scarf",
-      "",
-      "assassin",
-      "guardian",
-      "wreath"
-    ],
-    "path": "Other/YulgarsUndineMerge.cs",
-    "size": 5468,
-    "fileName": "YulgarsUndineMerge.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/YulgarsUndineMerge.cs"
-  },
-  {
     "name": "Lycan Shaman Set",
     "description": "farms the \"Lycan Shaman\" set from Quest",
     "tags": [
