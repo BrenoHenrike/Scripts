@@ -9,7 +9,6 @@ tags: champion, drakath, merge, championdrakath, empowered, original, chaos, ave
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 //cs_include Scripts/Chaos/DrakathsArmor.cs
-//cs_include Scripts/Chaos/ChaosAvengerPreReqs.cs
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/Nation/CoreNation.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
@@ -27,7 +26,6 @@ public class ChampionDrakathMerge
     private static CoreAdvanced sAdv = new();
     public Core13LoC LOC => new();
     private DrakathArmorBot DAB = new();
-    private ChaosAvengerClass CAV = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
     public string[] MultiOptions = { "Generic", "Select" };
@@ -48,7 +46,7 @@ public class ChampionDrakathMerge
     public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         LOC.Hero();
-        if (Core.isCompletedBefore(8301))
+        if (!Core.isCompletedBefore(8301))
             return;
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("championdrakath", 2055, findIngredients, buyOnlyThis, buyMode: buyMode);
@@ -98,10 +96,6 @@ public class ChampionDrakathMerge
                     break;
 
                 case "Chaos Avenger's Greatsword":
-                case "Chaos Avenger Armor":
-                    Core.FarmingLogger(req.Name, quant);
-
-                    CAV.GetClass();
                     Core.EquipClass(ClassType.Solo);
                     Adv.BuyItem("championdrakath", 2056, req.Name);
                     break;
@@ -121,6 +115,12 @@ public class ChampionDrakathMerge
                     break;
 
                 case "Discordia Rose of Chaos":
+                    Core.FarmingLogger(req.Name, quant);
+                    Core.EquipClass(ClassType.Solo);
+                    Core.HuntMonster("palooza", "Chaos Lord Discordia", req.Name, quant, false, false);
+                    Bot.Wait.ForPickup(req.Name);
+                    break;
+
                 case "Chaos Rose":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
