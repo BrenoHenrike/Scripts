@@ -45,9 +45,12 @@ public class ChampionDrakathMerge
 
     public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
-        LOC.Hero();
         if (!Core.isCompletedBefore(8301))
+        {
+            Core.Logger("Quest \"Chaos Avenger Class\" required, gl.. it requires an army");
             return;
+        }
+        LOC.Hero();
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("championdrakath", 2055, findIngredients, buyOnlyThis, buyMode: buyMode);
 
