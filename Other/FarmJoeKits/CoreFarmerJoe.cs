@@ -223,9 +223,6 @@ public class CoreFarmerJoe
 
     public void Level30to75()
     {
-        if (Core.SoloClass == "Generic")
-            Core.SoloClass = "Oracle";
-
         #region Obtain Boost Weapons
 
         if (!Adv.HasMinimalBoost(GenericGearBoost.exp, 20))
