@@ -699,7 +699,7 @@ public class CoreNation
                     Core.EnsureAccept(7551);
                     Core.HuntMonster(Core.IsMember ? "nulgath" : "evilmarsh", "Dark Makai", "Dark Makai Rune");
                     if (Reward != SwindlesReturnReward.None)
-                        Core.EnsureComplete(7551,(int)Reward);
+                        Core.EnsureComplete(7551, (int)Reward);
                 }
             }
         }
@@ -872,7 +872,7 @@ public class CoreNation
         }
     }
 
-    public void FeedtheFiend(string item = "Any", int quant = 1)
+    public void FeedtheFiend(string item = "Fiend Token", int quant = 30)
     {
 
         if (Core.CheckInventory(item, quant) || !Core.IsMember)
@@ -883,8 +883,8 @@ public class CoreNation
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
         {
             FarmDiamondofNulgath(1);
-            Core.HuntMonster("lair", "Red Dragon", "Dragon Fiend Gem", isTemp: false, log: false);
-            Core.HuntMonster("battleunderd", "Glacial Horror", "Dragon Fiend Gem", isTemp: false, log: false);
+            Core.HuntMonster("lair", "Red Dragon", "Dragon Fiend Gem", 13, isTemp: false, log: false);
+            Core.HuntMonster("battleunderd", "Glacial Horror", "Glacial Bones", 3, isTemp: false, log: false);
             Core.HuntMonster("dreammaze", "Screamfeeder", "Screamfeeder Heart", isTemp: false, log: false);
         }
         Bot.Wait.ForPickup(item);
