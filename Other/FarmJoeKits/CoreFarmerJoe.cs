@@ -302,7 +302,7 @@ public class CoreFarmerJoe
                     if (Bot.Player.Level >= Level)
                         break;
 
-                    while (!Bot.ShouldExit && Bot.Player.Level < Level)
+                    while (!Bot.ShouldExit && Bot.Player.Level < Level || !Core.CheckInventory(new[] {"DragonSoul Shinobi", "Shadow Dragon Shinobi"}, any: true))
                     {
                         if (Core.SoloClass == "Generic")
                             Core.SoloClass = "Darkblood StormKing";
