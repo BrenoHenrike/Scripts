@@ -308,7 +308,8 @@ public class CoreFarmerJoe
                             Core.SoloClass = "Darkblood StormKing";
                         if (Core.FarmClass == "Generic")
                             Core.FarmClass = "Eternal Inversionist";
-
+                        Core.Logger("Getting DSS for DoomKittem(ArchPaladin)");
+                        DS.GetDSS();
                         Farm.Experience(Level);
                         InvEn.EnhanceInventory();
                     }
@@ -318,7 +319,7 @@ public class CoreFarmerJoe
                     if (Bot.Player.Level >= Level && Core.CheckInventory("ArchPaladin"))
                         break;
 
-                        
+
                     while (!Bot.ShouldExit && Bot.Player.Level < Level || !Core.CheckInventory("ArchPaladin"))
                     {
                         if (Core.SoloClass == "Generic")
