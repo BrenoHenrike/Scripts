@@ -1071,7 +1071,7 @@ public class CoreNation
 
         VoidKightSwordQuest("Fiend Token", quant);
         AssistingDrudgen("Fiend Token", quant);
-        FeedtheFiend("Fiend Token", quant);
+        FeedtheFiend();
     }
 
 
