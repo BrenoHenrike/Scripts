@@ -2521,7 +2521,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 64048,
+    "size": 64062,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -9604,7 +9604,7 @@
       "nothingness"
     ],
     "path": "Nation/EvolvedOrb/EvolvedShadowOrbItems[Mem].cs",
-    "size": 5102,
+    "size": 5219,
     "fileName": "EvolvedShadowOrbItems[Mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/EvolvedOrb/EvolvedShadowOrbItems[Mem].cs"
   },
