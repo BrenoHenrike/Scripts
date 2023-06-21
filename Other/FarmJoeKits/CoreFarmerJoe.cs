@@ -162,7 +162,7 @@ public class CoreFarmerJoe
             if (DefaultWep != null && Core.CheckInventory(DefaultWep.Name))
                 Core.SellItem(DefaultWep.Name);
 
-            if (Core.SoloClass == "Generic")
+            if (Core.SoloClass == "Generic" && Bot.Player.Level < 5)
                 Core.SoloClass = "Oracle";
 
             Core.Equip(Core.SoloClass);
@@ -182,7 +182,7 @@ public class CoreFarmerJoe
             InvEn.EnhanceInventory(EnhancementType.Wizard);
         }
 
-        if (Core.SoloClass == "Generic")
+        if (Core.SoloClass == "Generic" && Bot.Player.Level < 28)
             Core.SoloClass = "Oracle";
 
         Core.Logger("Checking if farming quest is unlocked.");
