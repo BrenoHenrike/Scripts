@@ -152,7 +152,7 @@ public class GlaceraStory
         // FrozenRuins
 
         // FangBeast Bash-up
-        Story.KillQuest(3941, "frozentower", "Frost Fangbeast");
+        Story.KillQuest(3941, "frozenruins", "Frost Fangbeast");
 
         // Ravage the Reapers
         Story.KillQuest(3942, "frozenruins", "Frost Reaper");
