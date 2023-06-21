@@ -37,7 +37,7 @@ public class GlaceraStory
 
     public void FrozenTower()
     {
-        if (Core.isCompletedBefore(3941))
+        if (Core.isCompletedBefore(3937))
             return;
 
         Story.PreLoad(this);
@@ -140,9 +140,6 @@ public class GlaceraStory
 
         // Defeat the FrostSpawn Invaders
         Story.KillQuest(3937, "frozentower", "Frost Fangbeast");
-
-        // FangBeast Bash-up
-        Story.KillQuest(3941, "frozentower", "Frost Fangbeast");
     }
 
     public void FrozenRuins()
@@ -153,6 +150,9 @@ public class GlaceraStory
         Story.PreLoad(this);
 
         // FrozenRuins
+
+        // FangBeast Bash-up
+        Story.KillQuest(3941, "frozentower", "Frost Fangbeast");
 
         // Ravage the Reapers
         Story.KillQuest(3942, "frozenruins", "Frost Reaper");
