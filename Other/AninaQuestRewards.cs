@@ -48,50 +48,36 @@ public class AninaQuestReward
 
     public void Weapon(WeaponChoice WeaponChoice = WeaponChoice.None)
     {
-        Core.OneTimeMessage(
-            "Skua Cannot do this",
-            "Bot Cannot Get \"Volcanic Essence\", as it Requires you to kill an ultra, and skua cannot do this.",
-            true,
-            true
-        );
+        Core.OneTimeMessage("Skua Cannot do this", "Bot Cannot Get \"Volcanic Essence\", as it Requires you to kill an ultra, and skua cannot do this.", true, true);
 
         if (Bot.Config!.Get<WeaponChoice>("WeaponChoice") == WeaponChoice.None)
             return;
 
-        if (Bot.Config.Get<WeaponChoice>("WeaponChoice") == WeaponChoice.Burning_Sword_of_Doom || Bot.Config.Get<WeaponChoice>("WeaponChoice") == WeaponChoice.All)
 
-            if (
-                Bot.Config.Get<WeaponChoice>("WeaponChoice") == WeaponChoice.Blaze_of_Awe
-                && !Core.CheckInventory("Blaze of Awe")
-            )
+        if (Bot.Config.Get<WeaponChoice>("WeaponChoice") == WeaponChoice.Blaze_of_Awe || Bot.Config.Get<WeaponChoice>("WeaponChoice") == WeaponChoice.All && !Core.CheckInventory("Blaze of Awe"))
+        {
+            BOA.GetBoA();
+
+            Core.EnsureAccept(9255);
+            Scroll.BuyScroll(Scrolls.ScorchedSteel, 99);
+            Core.HuntMonster("shadowstrike", "Sepulchuroth", "Akriloth's Scale", 500, false, false);
+            Core.HuntMonster("battleundere", "Lava Guard", "Molten Core", 50, false, false);
+            Bot.Wait.ForPickup("Molten Core");
+
+            if (!Core.CheckInventory("Volcanic Essence", 10))
             {
-                BOA.GetBoA();
+                Core.Logger("Bot Cannot Get \"Volcanic Essence\", as it Requires you to kill an ultra, and skua cannot do this.");
 
-                Core.RegisterQuests(9255);
-                Scroll.BuyScroll(Scrolls.ScorchedSteel, 99);
-                Core.HuntMonster("shadowstrike", "Sepulchuroth", "Akriloth's Scale", 500, false, false);
-                Core.HuntMonster("battleundere", "Lava Guard", "Molten Core", 50, false, false);
-                Bot.Wait.ForPickup("Molten Core");
-
-                if (!Core.CheckInventory("Volcanic Essence", 10))
-                {
-                    Core.Logger(
-                        "Bot Cannot Get \"Volcanic Essence\", as it Requires you to kill an ultra, and skua cannot do this."
-                    );
-
-                    Core.CancelRegisteredQuests();
-                    return;
-                }
+                Core.EnsureComplete(9255);
+                return;
             }
+        }
 
-        if (
-            Bot.Config.Get<WeaponChoice>("WeaponChoice") == WeaponChoice.Blazing_Light_of_Destiny || Bot.Config.Get<WeaponChoice>("WeaponChoice") == WeaponChoice.All
-            && !Core.CheckInventory("Blazing Light of Destiny")
-        )
+        if (Bot.Config.Get<WeaponChoice>("WeaponChoice") == WeaponChoice.Blazing_Light_of_Destiny || Bot.Config.Get<WeaponChoice>("WeaponChoice") == WeaponChoice.All && !Core.CheckInventory("Blazing Light of Destiny"))
         {
             BLOD.BlindingLightOfDestiny();
 
-            Core.RegisterQuests(9256);
+            Core.EnsureAccept(9256);
             Scroll.BuyScroll(Scrolls.ScorchedSteel, 99);
             Core.HuntMonster("shadowstrike", "Sepulchuroth", "Akriloth's Scale", 1000, false, false);
             Core.HuntMonster("battleundere", "Lava Guard", "Molten Core", 100, false, false);
@@ -99,23 +85,18 @@ public class AninaQuestReward
 
             if (!Core.CheckInventory("Volcanic Essence", 10))
             {
-                Core.Logger(
-                    "Bot Cannot Get \"Volcanic Essence\", as it Requires you to kill an ultra, and skua cannot do this."
-                );
+                Core.Logger("Bot Cannot Get \"Volcanic Essence\", as it Requires you to kill an ultra, and skua cannot do this.");
 
-                Core.CancelRegisteredQuests();
+                Core.EnsureComplete(9256);
                 return;
             }
         }
 
-        if (
-            Bot.Config.Get<WeaponChoice>("WeaponChoice") == WeaponChoice.Burning_Sword_of_Doom || Bot.Config.Get<WeaponChoice>("WeaponChoice") == WeaponChoice.All
-            && !Core.CheckInventory("Burning Sword of Doom")
-        )
+        if (Bot.Config.Get<WeaponChoice>("WeaponChoice") == WeaponChoice.Burning_Sword_of_Doom || Bot.Config.Get<WeaponChoice>("WeaponChoice") == WeaponChoice.All && !Core.CheckInventory("Burning Sword of Doom"))
         {
             NSOD.GetNSOD();
 
-            Core.RegisterQuests(9257);
+            Core.EnsureAccept(9257);
             Scroll.BuyScroll(Scrolls.ScorchedSteel, 99);
             Core.HuntMonster("shadowstrike", "Sepulchuroth", "Akriloth's Scale", 1500, false, false);
             Core.HuntMonster("battleundere", "Lava Guard", "Molten Core", 150, false, false);
@@ -124,11 +105,9 @@ public class AninaQuestReward
 
             if (!Core.CheckInventory("Volcanic Essence", 10))
             {
-                Core.Logger(
-                    "Bot Cannot Get \"Volcanic Essence\", as it Requires you to kill an ultra, and skua cannot do this."
-                );
+                Core.Logger("Bot Cannot Get \"Volcanic Essence\", as it Requires you to kill an ultra, and skua cannot do this.");
 
-                Core.CancelRegisteredQuests();
+                Core.EnsureComplete(9257);
                 return;
             }
         }
