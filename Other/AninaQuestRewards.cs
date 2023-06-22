@@ -58,7 +58,7 @@ public class AninaQuestReward
         if (Bot.Config!.Get<WeaponChoice>("WeaponChoice") == WeaponChoice.None)
             return;
 
-        if (Bot.Config.Get<WeaponChoice>("WeaponChoice") == WeaponChoice.Burning_Sword_of_Doom || Bot.Config.Get<WeaponChoice>("WeaponChoice") == WeaponChoice.All && !Core.CheckInventory("Burning Sword of Doom"))
+        if (Bot.Config.Get<WeaponChoice>("WeaponChoice") == WeaponChoice.Burning_Sword_of_Doom || Bot.Config.Get<WeaponChoice>("WeaponChoice") == WeaponChoice.All)
 
             if (
                 Bot.Config.Get<WeaponChoice>("WeaponChoice") == WeaponChoice.Blaze_of_Awe
@@ -85,7 +85,7 @@ public class AninaQuestReward
             }
 
         if (
-            Bot.Config.Get<WeaponChoice>("WeaponChoice") == WeaponChoice.Blazing_Light_of_Destiny
+            Bot.Config.Get<WeaponChoice>("WeaponChoice") == WeaponChoice.Blazing_Light_of_Destiny || Bot.Config.Get<WeaponChoice>("WeaponChoice") == WeaponChoice.All
             && !Core.CheckInventory("Blazing Light of Destiny")
         )
         {
@@ -109,11 +109,11 @@ public class AninaQuestReward
         }
 
         if (
-            Bot.Config.Get<WeaponChoice>("WeaponChoice") == WeaponChoice.Burning_Sword_of_Doom
+            Bot.Config.Get<WeaponChoice>("WeaponChoice") == WeaponChoice.Burning_Sword_of_Doom || Bot.Config.Get<WeaponChoice>("WeaponChoice") == WeaponChoice.All
             && !Core.CheckInventory("Burning Sword of Doom")
         )
         {
-                NSOD.GetNSOD();
+            NSOD.GetNSOD();
 
             Core.RegisterQuests(9257);
             Scroll.BuyScroll(Scrolls.ScorchedSteel, 99);
