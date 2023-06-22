@@ -3096,6 +3096,24 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FreeBoostsQuest(10mns).cs"
   },
   {
+    "name": "AninaQuestRewards",
+    "description": "This Script will farm all the items in /lavarockshore from the NPC Anina",
+    "tags": [
+      "forge",
+      "blaze",
+      "awe",
+      "blazelight",
+      "molten",
+      "core",
+      "burning",
+      "doom"
+    ],
+    "path": "Other/AninaQuestRewards.cs",
+    "size": 4931,
+    "fileName": "AninaQuestRewards.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/AninaQuestRewards.cs"
+  },
+  {
     "name": "Lore Master University",
     "description": "does the Lore Master University Quests for House Items",
     "tags": [
@@ -14050,6 +14068,33 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/BeleensChaosFuzzyMerge.cs"
   },
   {
+    "name": "Cysero Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Cysero Merge [668] in /battleontown",
+    "tags": [
+      "cysero",
+      "merge",
+      "battleontown",
+      "mad",
+      "magic",
+      "manawalker",
+      "mana",
+      "green",
+      "sockatana",
+      "living",
+      "yogurt",
+      "warrior",
+      "berry",
+      "tasty",
+      "gilded",
+      "rainbow",
+      "wrap"
+    ],
+    "path": "Other/MergeShops/CyseroMerge.cs",
+    "size": 3954,
+    "fileName": "CyseroMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/CyseroMerge.cs"
+  },
+  {
     "name": "ShipWreckMerge[non-ac]",
     "description": "null",
     "tags": [
@@ -14059,6 +14104,47 @@
     "size": 6285,
     "fileName": "ShipWreckMerge[non-ac].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/ShipWreckMerge[non-ac].cs"
+  },
+  {
+    "name": "Faction Banners Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Faction Banners Merge [1717] in /snowmore",
+    "tags": [
+      "faction",
+      "banners",
+      "merge",
+      "snowmore",
+      "alchemy",
+      "banner",
+      "i",
+      "left",
+      "ii",
+      "arcangrove",
+      "chaos",
+      "chronospan",
+      "crystallis",
+      "doomwood",
+      "dwarfhold",
+      "evil",
+      "good",
+      "hollowborn",
+      "horc",
+      "legion",
+      "lycan",
+      "nation",
+      "ravenloss",
+      "seraphic",
+      "seraph",
+      "troll",
+      "vampire",
+      "blight",
+      "kings",
+      "winter",
+      "throne"
+    ],
+    "path": "Other/MergeShops/FactionBannersMerge.cs",
+    "size": 9582,
+    "fileName": "FactionBannersMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/FactionBannersMerge.cs"
   },
   {
     "name": "DeepTunnelMerge",
