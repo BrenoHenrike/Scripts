@@ -67,10 +67,9 @@ public class AninaQuestReward
             if (!Core.CheckInventory("Volcanic Essence", 10))
             {
                 Core.Logger("Bot Cannot Get \"Volcanic Essence\", as it Requires you to kill an ultra, and skua cannot do this.");
-
-                Core.EnsureComplete(9255);
                 return;
             }
+            Core.EnsureComplete(9255);
         }
 
         if (Bot.Config.Get<WeaponChoice>("WeaponChoice") == WeaponChoice.Blazing_Light_of_Destiny || Bot.Config.Get<WeaponChoice>("WeaponChoice") == WeaponChoice.All && !Core.CheckInventory("Blazing Light of Destiny"))
@@ -86,10 +85,9 @@ public class AninaQuestReward
             if (!Core.CheckInventory("Volcanic Essence", 10))
             {
                 Core.Logger("Bot Cannot Get \"Volcanic Essence\", as it Requires you to kill an ultra, and skua cannot do this.");
-
-                Core.EnsureComplete(9256);
                 return;
             }
+            Core.EnsureComplete(9256);
         }
 
         if (Bot.Config.Get<WeaponChoice>("WeaponChoice") == WeaponChoice.Burning_Sword_of_Doom || Bot.Config.Get<WeaponChoice>("WeaponChoice") == WeaponChoice.All && !Core.CheckInventory("Burning Sword of Doom"))
@@ -106,19 +104,18 @@ public class AninaQuestReward
             if (!Core.CheckInventory("Volcanic Essence", 10))
             {
                 Core.Logger("Bot Cannot Get \"Volcanic Essence\", as it Requires you to kill an ultra, and skua cannot do this.");
-
-                Core.EnsureComplete(9257);
                 return;
             }
+            Core.EnsureComplete(9257);
         }
     }
 
     public enum WeaponChoice
     {
+        None,
+        All,
         Blaze_of_Awe = 78094,
         Blazing_Light_of_Destiny = 78096,
         Burning_Sword_of_Doom = 78095,
-        None,
-        All
     };
 }
