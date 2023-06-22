@@ -3096,24 +3096,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FreeBoostsQuest(10mns).cs"
   },
   {
-    "name": "AninaQuestRewards",
-    "description": "This Script will farm all the items in /lavarockshore from the NPC Anina",
-    "tags": [
-      "forge",
-      "blaze",
-      "awe",
-      "blazelight",
-      "molten",
-      "core",
-      "burning",
-      "doom"
-    ],
-    "path": "Other/AninaQuestRewards.cs",
-    "size": 4914,
-    "fileName": "AninaQuestRewards.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/AninaQuestRewards.cs"
-  },
-  {
     "name": "Lore Master University",
     "description": "does the Lore Master University Quests for House Items",
     "tags": [
@@ -12617,7 +12599,7 @@
       "reagents"
     ],
     "path": "Army/ArmyNulgath/ArmySupplies.cs",
-    "size": 4117,
+    "size": 4129,
     "fileName": "ArmySupplies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyNulgath/ArmySupplies.cs"
   },
