@@ -2825,7 +2825,7 @@ public class CoreBots
     /// <param name="ignoreCheck">If set to true, the bot will not check if the player is already in the given room</param>
     public void Join(string map, string cell = "Enter", string pad = "Spawn", bool publicRoom = false, bool ignoreCheck = false)
     {
-        map = map.Replace(" ", "").Replace('İ', 'i');
+        map = map.Replace(" ", "").Replace('I', 'i');
         map = map.ToLower() == "tercess" ? "tercessuinotlim" : map.ToLower();
         string strippedMap = map.Contains('-') ? map.Split('-').First() : map;
 
