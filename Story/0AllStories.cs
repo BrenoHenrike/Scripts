@@ -211,6 +211,7 @@ public class AllStories
     //Fire Island
     public CoreFireIsland FI = new();
 
+    //Hollowborn
     public CoreHollowbornStory HB = new();
 
     //Friday 13th
@@ -764,7 +765,7 @@ public class AllStories
         MustyCave.Storyline();
         Core.Logger($"Story: MustyCave - Complete");
 
-        
+
         Noobshire.doAll();
         Core.Logger($"Story: Noobshire - Complete");
 
