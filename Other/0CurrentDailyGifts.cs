@@ -63,7 +63,7 @@ public class CurrentDailyGifts
             GetGift(Permanent, "eden", "Klawaii Machine", "Apa's Tour Guide Morph", "Crystallis Megaphone", "Eden City Tour Flag", "Eden Tour Guide's Vest", "Eta's Tour Guide Morph", "Furled Eden City Umbrella", "Key to Eden City", "Keys to Eden City", "Rainy Day Tour Guide");
             GetGift(Permanent, "garden", "Creature 83", "Chibi Darkon's Shag", "Chibi Darkon's Twintails", "Chibi Drago's Shag", "Chibi Drago's Twintails", "Chibi Fa's Shag", "Chibi Fa's Twintails", "Chibi La's Shag", "Chibi La's Twintails", "Chibi Mi's Shag", "Chibi Mi's Twintails", "Chibi Re's Shag", "Chibi Re's Twintails", "Chibi So's Shag", "Chibi So's Twintails", "Chibi Suki's Shag", "Chibi Suki's Twintails", "Chibi Ti's Shag", "Chibi Ti's Twintails");
             GetGift(Permanent, "garden", "Creature 72", "Chibi Darkon's Pillow", "Chibi Drago's Pillow", "Chibi Fa's Pillow", "Chibi La's Pillow", "Chibi Mi's Pillow", "Chibi Re's Pillow", "Chibi So's Pillow", "Chibi Suki's Pillow", "Chibi Ti's Pillow");
-            GetGift(Permanent, "eridani", 4643, "Malevolent Hourglass");
+            GetGift(Permanent, "eridani", 25, "Malevolent Hourglass");
             GetGift(Permanent, "falcontower", "Alteon", "Alteon's Dragon Sword", "Alteon's Polished Dragon Sword");
             GetGift(Permanent, "aqlesson", "Carnax", "Guardian Blade Evolution", "Sanctified Guardian Blade");
             GetGift(Permanent, "superdeath", "Super Death", "HeroSmash Electina Guard", "HeroSmash General Smash Guard", "HeroSmash Hottica Guard", "HeroSmash Rider Guard", "HeroSmash Ultimate Good Guard", "HeroSmash Ultimate Evil Guard");
