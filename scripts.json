@@ -905,7 +905,7 @@
       "all"
     ],
     "path": "Story/0AllStories.cs",
-    "size": 26727,
+    "size": 26953,
     "fileName": "0AllStories.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/0AllStories.cs"
   },
@@ -5551,6 +5551,62 @@
     "size": 738,
     "fileName": "4Collector.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Summer2015AdventureMap/4Collector.cs"
+  },
+  {
+    "name": "Hollowborn Saga",
+    "description": "This script will complete Hollowborn Saga.",
+    "tags": [
+      "hollowborn",
+      "saga",
+      "trygve",
+      "neofortress",
+      "lae"
+    ],
+    "path": "Story/Hollowborn/00DoAll.cs",
+    "size": 602,
+    "fileName": "00DoAll.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Hollowborn/00DoAll.cs"
+  },
+  {
+    "name": "Neo Fortress",
+    "description": "This script will complete the storyline in /neofortress.",
+    "tags": [
+      "hollowborn",
+      "saga",
+      "trygve",
+      "neofortress",
+      "lae"
+    ],
+    "path": "Story/Hollowborn/02NeoFortress.cs",
+    "size": 623,
+    "fileName": "02NeoFortress.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Hollowborn/02NeoFortress.cs"
+  },
+  {
+    "name": "null",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Story/Hollowborn/CoreHollowbornStory.cs",
+    "size": 3539,
+    "fileName": "CoreHollowbornStory.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Hollowborn/CoreHollowbornStory.cs"
+  },
+  {
+    "name": "Trygve",
+    "description": "This script will complete the storyline in /trygve.",
+    "tags": [
+      "hollowborn",
+      "saga",
+      "trygve",
+      "neofortress",
+      "lae"
+    ],
+    "path": "Story/Hollowborn/01Trygve.cs",
+    "size": 602,
+    "fileName": "01Trygve.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Hollowborn/01Trygve.cs"
   },
   {
     "name": "Citadel Ruins",
@@ -10362,6 +10418,38 @@
     "size": 10061,
     "fileName": "ShadowrealmMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/MergeShops/ShadowrealmMerge.cs"
+  },
+  {
+    "name": "Dawn Fortress Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Dawn Fortress Merge [2300] in /neofortress",
+    "tags": [
+      "dawn",
+      "fortress",
+      "merge",
+      "neofortress",
+      "vindicator",
+      "archer",
+      "scout",
+      "archers",
+      "",
+      "scouts",
+      "bright",
+      "bow",
+      "general",
+      "captain",
+      "generals",
+      "captains",
+      "blessed",
+      "shield",
+      "vindication",
+      "hammer",
+      "hammers",
+      "battlegear"
+    ],
+    "path": "Hollowborn/MergeShops/DawnFortressMerge.cs",
+    "size": 7620,
+    "fileName": "DawnFortressMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/MergeShops/DawnFortressMerge.cs"
   },
   {
     "name": "Hollowborn Chaos Envoy - Shadow Of Disdain",
