@@ -253,12 +253,12 @@ public class CoreLegion
     {
         if (Core.CheckInventory("Legion Token", quant) || !Core.CheckInventory("Hardcore Paragon Pet"))
             return;
-
+        Core.BankingBlackList.Add("Legion Token");
         Core.EquipClass(ClassType.Solo);
         Adv.BestGear(RacialGearBoost.Chaos);
 
         Core.FarmingLogger("Legion Token", quant);
-        Core.AddDrop("Legion Token");
+        Core.AddDrop(Core.QuestRewards(3393, 3394));
 
         if (!Bot.Quests.IsDailyComplete(3394))
         {
@@ -271,6 +271,7 @@ public class CoreLegion
         while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
             Adv.BoostHuntMonster(Core.IsMember ? "binky" : "doomvault", "Binky", "Dark Unicorn Rib", isTemp: false, log: false);
         Core.CancelRegisteredQuests();
+        Core.ToBank(Core.QuestRewards(3393, 3394));
 
     }
 
