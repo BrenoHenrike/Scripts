@@ -2042,13 +2042,16 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/DarkWarLegionGold.cs"
   },
   {
-    "name": "GoldFarm",
-    "description": "null",
+    "name": "Gold Farm",
+    "description": "honor hall for members, BGE for f2p",
     "tags": [
-      "null"
+      "gold",
+      "battelgrounde",
+      "honorhall",
+      "berserker bunny"
     ],
     "path": "Farm/GoldFarm.cs",
-    "size": 769,
+    "size": 844,
     "fileName": "GoldFarm.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/GoldFarm.cs"
   },
