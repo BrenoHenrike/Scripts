@@ -165,7 +165,7 @@ tags: story, quest, complete, all
 //cs_include Scripts/Story/Tournament.cs
 //cs_include Scripts/Story/Tower[mem].cs
 //cs_include Scripts/Story/TowerOfDoom.cs
-//cs_include Scripts/Story/Trygve.cs
+//cs_include Scripts/Story/HollowBorn/Trygve.cs
 //cs_include Scripts/Story/Tutorial.cs
 
 
@@ -182,6 +182,8 @@ tags: story, quest, complete, all
 //cs_include Scripts/Story/Yokai.cs
 
 //cs_include Scripts/Story/MemetsRealm/CoreMemet.cs
+
+//cs_include Scripts/Story/HollowBorn/neofortressStory.cs
 
 
 using Skua.Core.Interfaces;
@@ -335,6 +337,7 @@ public class AllStories
     public Mobius Mobius = new();
     public MustyCave MustyCave = new();
 
+    public NewoFortress NF = new();
     public Noobshire Noobshire = new();
     public Nukemichi Nukemichi = new();
     public NytheraSaga NytheraSaga = new();
@@ -758,6 +761,9 @@ public class AllStories
         MustyCave.Storyline();
         Core.Logger($"Story: MustyCave - Complete");
 
+        NF.Storyline();
+        Core.Logger($"Story: NeoFortress - Complete");
+        
         Noobshire.doAll();
         Core.Logger($"Story: Noobshire - Complete");
 
