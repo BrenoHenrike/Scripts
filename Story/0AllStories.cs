@@ -24,6 +24,8 @@ tags: story, quest, complete, all
 //cs_include Scripts/Story/FireIsland/CoreFireIsland.cs
 //cs_include Scripts/Seasonal/Friday13th/Story/CoreFriday13th.cs
 
+//cs_include Scripts/Story\Hollowborn\CoreHollowbornStory.cs
+
 //cs_include Scripts/Story/IsleOfFotia/CoreIsleOfFotia.cs
 
 //cs_include Scripts/Legion/CoreLegion.cs
@@ -210,6 +212,8 @@ public class AllStories
 
     //Fire Island
     public CoreFireIsland FI = new();
+
+    public CoreHollowbornStory HB = new();
 
     //Friday 13th
     public CoreFriday13th CoreFriday13th = new();
@@ -445,6 +449,11 @@ public class AllStories
         #region CoreFireIsland
         FI.CompleteFireIsland();
         Core.Logger($"Saga: Fireisland Maps - Complete");
+        #endregion
+
+        #region Hollowborn
+        HB.DoAll();
+        Core.Logger($"Saga: Hollowborn - Complete");
         #endregion
 
         #region CoreFriday13th
