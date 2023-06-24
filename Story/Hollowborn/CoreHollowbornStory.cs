@@ -70,8 +70,11 @@ public class HollowbornStory
     {
         if (Core.isCompletedBefore(9290))
             return;
+            
+        Trygve();
 
         Story.PreLoad(this);
+
         //Watch the Light 9281
         Story.MapItemQuest(9281, "neofortress", 11806, 9);
 
