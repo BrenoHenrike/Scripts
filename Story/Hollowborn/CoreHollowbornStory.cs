@@ -7,7 +7,7 @@ tags: null
 //cs_include Scripts/CoreStory.cs
 using Skua.Core.Interfaces;
 
-public class HollowbornStory
+public class CoreHollowbornStory
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
@@ -70,7 +70,7 @@ public class HollowbornStory
     {
         if (Core.isCompletedBefore(9290))
             return;
-            
+
         Trygve();
 
         Story.PreLoad(this);
