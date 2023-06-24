@@ -3850,36 +3850,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ThroneofDarkness/07bStranger(MysteriousDungeon).cs"
   },
   {
-    "name": "Trygve Story",
-    "description": "This will finish the Trygve Story.",
-    "tags": [
-      "story",
-      "quest",
-      "trygve"
-    ],
-    "path": "Story/HollowBorn/Trygve.cs",
-    "size": 2517,
-    "fileName": "Trygve.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/HollowBorn/Trygve.cs"
-  },
-  {
-    "name": "neofortressStory",
-    "description": "gonna farm all storyline in /neofortress for you",
-    "tags": [
-      "neo",
-      "fortress",
-      "story",
-      "line",
-      "lae",
-      "first",
-      "hollowborn"
-    ],
-    "path": "Story/HollowBorn/neofortressStory.cs",
-    "size": 1745,
-    "fileName": "neofortressStory.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/HollowBorn/neofortressStory.cs"
-  },
-  {
     "name": "Genesis Garden",
     "description": "This will finish the Genesis Garden quest.",
     "tags": [
@@ -14874,38 +14844,6 @@
     "size": 6667,
     "fileName": "DreampalaceMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/DreampalaceMerge.cs"
-  },
-  {
-    "name": "Dawn Fortress Merge",
-    "description": "This bot will farm the items belonging to the selected mode for the Dawn Fortress Merge [2300] in /neofortress",
-    "tags": [
-      "dawn",
-      "fortress",
-      "merge",
-      "neofortress",
-      "vindicator",
-      "archer",
-      "scout",
-      "archers",
-      "",
-      "scouts",
-      "bright",
-      "bow",
-      "general",
-      "captain",
-      "generals",
-      "captains",
-      "blessed",
-      "shield",
-      "vindication",
-      "hammer",
-      "hammers",
-      "battlegear"
-    ],
-    "path": "Other/MergeShops/DawnFortressMerge.cs",
-    "size": 7726,
-    "fileName": "DawnFortressMerge.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/DawnFortressMerge.cs"
   },
   {
     "name": "BarricadeDefenseMerge",
