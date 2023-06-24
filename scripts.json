@@ -2046,12 +2046,12 @@
     "description": "honor hall for members, BGE for f2p",
     "tags": [
       "gold",
-      "battelgrounde",
-      "honorhall",
+      "battle ground e",
+      "honor hall",
       "berserker bunny"
     ],
     "path": "Farm/GoldFarm.cs",
-    "size": 844,
+    "size": 847,
     "fileName": "GoldFarm.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/GoldFarm.cs"
   },
