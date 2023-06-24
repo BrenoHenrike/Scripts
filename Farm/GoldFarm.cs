@@ -1,7 +1,7 @@
 /*
-name: GoldFarm
-description: null
-tags: null
+name: Gold Farm
+description: honor hall for members, BGE for f2p
+tags: gold, battelgrounde, honorhall, Berserker Bunny
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
