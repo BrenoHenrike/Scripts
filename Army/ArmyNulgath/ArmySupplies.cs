@@ -27,7 +27,7 @@ public class SuppliesWheelArmy
 
     public List<IOption> Options = new List<IOption>()
     {
-        new Option<bool>("sellToSync", "Sell to Sync", "Sell items to make sure the army stays syncronized.\nIf off, there is a higher chance your army might desyncornize", false),
+        new Option<bool>("sellToSync", "Sell to Sync", "Sell \"Relic of Chaos\" to make sure the army stays syncronized. If off, there is a higher chance your army might desyncornize", false),
         new Option<bool>("SwindlesReturnDuring", "Do swindles Return", "Accepts the Swindles Returns items, and goes to kill a makai for the rune, during the quest.", false),
         sArmy.player1,
         sArmy.player2,

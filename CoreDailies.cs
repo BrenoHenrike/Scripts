@@ -742,13 +742,20 @@ public class CoreDailies
 
     public void BreakIntotheHoard(bool KeepReward = false, bool bank = false)
     {
-        if (!Bot.Quests.IsUnlocked(3897))
+        if (!CheckDaily(3898))
+            return;
+
+        if (!Core.HasAchievement(30, "ip6") || !Core.CheckInventory(27222) || !Core.IsMember)
         {
-            Core.Logger("Quest requires completion of `Defeat Braddock Bonebreaker`.(run the standalone daily...)");
+            Core.Logger("\"BoneBreak\" map requires you to have membership or purchased BoneBreaker Adventure Pack to be able to access it.");
             return;
         }
-        if (!Core.CheckInventory("BoneBreaker Fortress Map") || !CheckDaily(3898))
+
+        if (!Core.isCompletedBefore(5981))
+        {
+            Core.Logger("Requires storyline completetion, run the standalone daily (if you have the required items.)...)");
             return;
+        }
 
         ItemBase[] QuestReward = Core.EnsureLoad(3898).Rewards.ToArray();
 

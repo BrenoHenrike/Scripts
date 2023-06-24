@@ -62,9 +62,12 @@ public class EvolvedShadowOrbItems
 
     public void RebornDarkSide()
     {
-        // Reborn in the Dark Side 4771
-        if (!Core.CheckInventory("Platinum Coin of Nulgath: 2500") || !Core.CheckInventory("Evolved Shadow of Nulgath"))
+        // Reborn in the Dark Side 4771 (f2p - bard)
+        if (!Core.CheckInventory("Platinum Coin of Nulgath: 2500"))
+        {
+            Core.Logger("Platinum Coin of Nulgath 2500 not found");
             return;
+        }
 
         Core.AddDrop("Evolved Shadow of Nulgath");
         Bard.GetBard(true);
@@ -102,8 +105,11 @@ public class EvolvedShadowOrbItems
     public void VoidEmotions()
     {
         //Void Emotion 4774
-        if (!Core.CheckInventory("Platinum Coin of Nulgath: 300") || !Core.CheckInventory("Evolved Shadow Helm"))
+        if (!Core.CheckInventory("Platinum Coin of Nulgath: 300"))
+        {
+            Core.Logger("Platinum Coin of Nulgath 300 not found");
             return;
+        }
 
         Core.AddDrop("Evolved Shadow Helm");
         Core.EnsureAccept(4774);
@@ -120,8 +126,11 @@ public class EvolvedShadowOrbItems
 
     public void ShapeNothingness()
     {
-        if (!Core.CheckInventory("Platinum Coin of Nulgath: 2500") || !Core.CheckInventory("Evolved Shadow Spear of Nulgath"))
+        if (!Core.CheckInventory("Platinum Coin of Nulgath: 2500"))
+        {
+            Core.Logger("Platinum Coin of Nulgath 2500 not found");
             return;
+        }
 
         // Shape your Nothingness 4775
         Core.AddDrop("Unidentified 29", "Random Weapon of Nulgath", "Evolved Shadow Spear of Nulgath");

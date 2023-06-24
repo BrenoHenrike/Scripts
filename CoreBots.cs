@@ -2137,6 +2137,7 @@ public class CoreBots
             "Blaze Binder",
             "DeathKnight",
             "DragonSoul Shinobi",
+            "Shadow Dragon Shinobi",
             "Legion Revenant",
         };
 
@@ -2150,7 +2151,14 @@ public class CoreBots
             Logger($"\'Damage over Time\' class / VHL not found. See the logs to see suggestions. Please get one and run the bot agian. Stopping.", messageBox: true, stopBot: true);
         }
 
-        Bot.Skills.StartAdvanced(DOTClasses.ToList().First(c => Bot.Inventory.Contains(c)), true, ClassUseMode.Base);
+        if (CheckInventory("Shadow Dragon Shinobi") || CheckInventory("DragonSoul Shinobi"))
+        {
+            Logger("Due to the nature of this class and the hit range of the kitten, this is basicly RNG gl!");
+            Equip(CheckInventory("Shadow Dragon Shinobi") ? "Shadow Dragon Shinobi" : "DragonSoul Shinobi");
+            //tested Skillset is working properly and can get a kill.
+            Bot.Skills.StartAdvanced("4H>50 | 3M<70S | 2H<50 M>70S | 1H>50", 150);
+        }
+        else Bot.Skills.StartAdvanced(DOTClasses.ToList().First(c => Bot.Inventory.Contains(c)), true, ClassUseMode.Base);
         HuntMonster("doomkitten", "Doomkitten", item, quant, isTemp, log, publicRoom);
     }
 
@@ -2817,7 +2825,7 @@ public class CoreBots
     /// <param name="ignoreCheck">If set to true, the bot will not check if the player is already in the given room</param>
     public void Join(string map, string cell = "Enter", string pad = "Spawn", bool publicRoom = false, bool ignoreCheck = false)
     {
-        map = map.Replace(" ", "");
+        map = map.Replace(" ", "").Replace('I', 'i');
         map = map.ToLower() == "tercess" ? "tercessuinotlim" : map.ToLower();
         string strippedMap = map.Contains('-') ? map.Split('-').First() : map;
 

@@ -7,6 +7,7 @@ tags: daily-gifts, rare-items
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Seasonal/MayThe4th/TwiggusGearMerge.cs
+//cs_include Scripts/Seasonal/SummerBreak/RoseRapiers.cs.cs
 using System.Globalization;
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
@@ -19,6 +20,7 @@ public class CurrentDailyGifts
     private static CoreBots sCore = new();
     private CoreAdvanced Adv = new();
     private TwiggusGearMerge TGM = new();
+    private DualRoseRapiers DRR = new();
 
     public string OptionsStorage = "CurrentDailyGifts";
     public bool DontPreconfigure = true;
@@ -145,6 +147,9 @@ public class CurrentDailyGifts
 
             GetGift(AvailableUntil(10, 6), "ashray", "Ashray Fisherman", "Twig's Totally FUN-ctional Ride");
             GetGift(AvailableUntil(16, 6), "garden", "Creature 35", "Dark Astravian General Lance");
+            
+            //Throny Scavenger Clue
+            DRR.GetWeapons();
 
             // Fortunate Grenwog Garb
             // GetGift(AvailableUntil(30, 4), "elixirgrenwog", "Elixir Grenwog", "Fortunate Grenwog Garb");

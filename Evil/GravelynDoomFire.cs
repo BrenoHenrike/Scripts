@@ -45,7 +45,7 @@ public class GravelynDoomFire
                     //Let Darkness Enter your Heart 5457 
                     Farm.EvilREP(10);
                     Core.EnsureAccept(5457);
-                    Core.HuntMonster("necrodungeon", "Doom Overlord", "Essence of the Doomlord");
+                    Core.HuntMonsterMapID("necrodungeon", 9, "Essence of the Doomlord");
                     Core.EnsureComplete(5457);
                 }
                 Bot.Wait.ForPickup("Gravelyn's Blessing");

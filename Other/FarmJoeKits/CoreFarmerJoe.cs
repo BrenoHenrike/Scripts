@@ -134,7 +134,7 @@ public class CoreFarmerJoe
         {
             if (Core.SoloClass == "Generic")
             {
-                Core.Logger("grabbing oracle, ranking it, then continuing");
+                Core.Logger("grabbing Oracle, ranking it, then continuing");
                 Core.BuyItem("classhalla", 299, "Oracle");
                 Adv.RankUpClass("Oracle");
             }
@@ -162,7 +162,7 @@ public class CoreFarmerJoe
             if (DefaultWep != null && Core.CheckInventory(DefaultWep.Name))
                 Core.SellItem(DefaultWep.Name);
 
-            if (Core.SoloClass == "Generic")
+            if (Core.SoloClass == "Generic" && Bot.Player.Level < 5)
                 Core.SoloClass = "Oracle";
 
             Core.Equip(Core.SoloClass);
@@ -182,7 +182,7 @@ public class CoreFarmerJoe
             InvEn.EnhanceInventory(EnhancementType.Wizard);
         }
 
-        if (Core.SoloClass == "Generic")
+        if (Core.SoloClass == "Generic" && Bot.Player.Level < 28)
             Core.SoloClass = "Oracle";
 
         Core.Logger("Checking if farming quest is unlocked.");
@@ -223,9 +223,6 @@ public class CoreFarmerJoe
 
     public void Level30to75()
     {
-        if (Core.SoloClass == "Generic")
-            Core.SoloClass = "Oracle";
-
         #region Obtain Boost Weapons
 
         if (!Adv.HasMinimalBoost(GenericGearBoost.exp, 20))
@@ -257,13 +254,22 @@ public class CoreFarmerJoe
             switch (Level)
             {
                 case 30:
-                    if (Core.SoloClass == "Generic")
-                        Core.SoloClass = "Oracle";
-                    InvEn.EnhanceInventory();
-                    MR.GetMR();
+                    if (Bot.Player.Level >= 30)
+                        break;
+
+                    while (!Bot.ShouldExit && Bot.Player.Level < Level || !Core.CheckInventory("Master Ranger"))
+                    {
+                        if (Core.SoloClass == "Generic")
+                            Core.SoloClass = "Oracle";
+                        InvEn.EnhanceInventory();
+                        MR.GetMR();
+                    }
                     break;
 
                 case 45:
+                    if (Bot.Player.Level >= Level && Core.CheckInventory("Eternal Inversionist"))
+                        break;
+
                     while (!Bot.ShouldExit && Bot.Player.Level < Level || !Core.CheckInventory("Eternal Inversionist"))
                     {
                         if (Core.SoloClass == "Generic")
@@ -274,34 +280,46 @@ public class CoreFarmerJoe
                         Farm.Experience(Level);
                         InvEn.EnhanceInventory();
                         EI.GetEI();
-                        if (Core.FarmClass == "Generic")
-                            Core.FarmClass = "Eternal Inversionist";
                     }
                     break;
 
                 case 50:
-                    if (Core.FarmClass == "Generic")
-                        Core.FarmClass = "Eternal Inversionist";
+                    if (Bot.Player.Level >= Level && Core.CheckInventory("Darkblood StormKing"))
+                        break;
 
-                    DBSK.GetDSK();
-                    Adv.SmartEnhance("Darkblood StormKing");
+                    while (!Bot.ShouldExit && Bot.Player.Level < Level || !Core.CheckInventory("Darkblood StormKing"))
+                    {
+                        if (Core.FarmClass == "Generic")
+                            Core.FarmClass = "Eternal Inversionist";
+
+                        DBSK.GetDSK();
+                        Adv.SmartEnhance("Darkblood StormKing");
+                    }
                     break;
 
                 case 55:
                 case 60:
-                    while (!Bot.ShouldExit && Bot.Player.Level < Level)
+                    if (Bot.Player.Level >= Level && Core.CheckInventory("DragonSoul Shinobi"))
+                        break;
+
+                    while (!Bot.ShouldExit && Bot.Player.Level < Level || !Core.CheckInventory("DragonSoul Shinobi"))
                     {
                         if (Core.SoloClass == "Generic")
                             Core.SoloClass = "Darkblood StormKing";
                         if (Core.FarmClass == "Generic")
                             Core.FarmClass = "Eternal Inversionist";
-
+                        Core.Logger("Getting DSS for DoomKittem(ArchPaladin)");
+                        DS.GetDSS();
                         Farm.Experience(Level);
                         InvEn.EnhanceInventory();
                     }
                     break;
 
                 case 65:
+                    if (Bot.Player.Level >= Level && Core.CheckInventory("ArchPaladin"))
+                        break;
+
+
                     while (!Bot.ShouldExit && Bot.Player.Level < Level || !Core.CheckInventory("ArchPaladin"))
                     {
                         if (Core.SoloClass == "Generic")
@@ -318,6 +336,9 @@ public class CoreFarmerJoe
                 //Just Leveling
                 case 70:
                 case 75:
+                    if (Bot.Player.Level >= Level)
+                        break;
+
                     while (!Bot.ShouldExit && Bot.Player.Level < Level)
                     {
                         if (Core.SoloClass == "Generic")
@@ -332,6 +353,18 @@ public class CoreFarmerJoe
             }
         }
         Farm.ToggleBoost(BoostType.Experience, false);
+
+        //Setting solo and farm class
+        if (Core.SoloClass == "Generic" || Core.SoloClass == "Healer" || Core.SoloClass == "Oracle" || Core.SoloClass == "Darkblood StormKing")
+        {
+            Core.Logger("Setting Solo class.");
+            Core.SoloClass = "ArchPaladin";
+        }
+        if (Core.FarmClass == "Generic" || Core.FarmClass == "Master Ranger")
+        {
+            Core.Logger("Setting Farm class.");
+            Core.SoloClass = "Eternal Inversionist";
+        }
         #endregion Level to 75
     }
 
