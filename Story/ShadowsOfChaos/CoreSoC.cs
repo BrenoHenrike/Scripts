@@ -95,7 +95,7 @@ public class CoreSoC
             return;
         }
 
-        LagunaBeach();
+        DualPlane();
 
         Story.PreLoad(this);
 
@@ -130,7 +130,7 @@ public class CoreSoC
         }
         Story.PreLoad(this);
 
-        Laguna();
+        ChaosAmulet();
 
         //Eyes on You 7690
         Story.KillQuest(7690, "lagunabeach", "Flying Fisheye");
@@ -177,7 +177,7 @@ public class CoreSoC
             return;
         }
 
-        ShadowOff();
+        LagunaBeach();
 
         Story.PreLoad(this);
 
