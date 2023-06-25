@@ -225,7 +225,7 @@ public class CoreSoC
             return;
         }
 
-        BrightShadow();
+        Laguna();
 
         Story.PreLoad(this);
 
