@@ -29,19 +29,25 @@ public class TreasuresOfAotearoa
 
         foreach (string Item in Core.QuestRewards(questID)[4..9])
         {
-            var rewards = Core.EnsureLoad(questID).Rewards;
-            ItemBase? item = rewards.Find(x => x.Name == Item);
+            if (Core.CheckInventory(Item, toInv: false))
+                Core.Logger($"{Item} Found.");
+            else
+            {
+                var rewards = Core.EnsureLoad(questID).Rewards;
+                ItemBase? item = rewards.Find(x => x.Name == Item);
 
-            Core.EnsureAccept(questID);
+                Core.EnsureAccept(questID);
 
-            Core.HuntMonster("burningbeach", "Water Goblin", "Stolen Egg", 5, log: false);
+                Core.HuntMonster("burningbeach", "Water Goblin", "Stolen Egg", 5, log: false);
 
-            Core.EnsureComplete(questID, item.ID);
+                Core.EnsureComplete(questID, item.ID);
+            }
         }
 
         Core.RegisterQuests(questID);
         while (!Bot.ShouldExit && !Core.CheckInventory(Core.QuestRewards(questID)[2..3]))
             Core.HuntMonster("burningbeach", "Water Goblin", "Stolen Egg", 5, log: false);
         Core.CancelRegisteredQuests();
+
     }
 }
