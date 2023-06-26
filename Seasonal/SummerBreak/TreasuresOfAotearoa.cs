@@ -27,6 +27,7 @@ public class TreasuresOfAotearoa
     {
         Core.AddDrop(Core.QuestRewards(questID));
 
+        Core.EquipClass(ClassType.Farm);
         foreach (string Item in Core.QuestRewards(questID)[4..9])
         {
             if (Core.CheckInventory(Item, toInv: false))
