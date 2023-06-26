@@ -7591,7 +7591,7 @@
   },
   {
     "name": "Treasures of Aotearoa",
-    "description": "This script will farm all the rewards from Treasures of Aotearoa quest.",
+    "description": "This script will farm all the rewards of \"Treasures of Aotearoa\" quest.",
     "tags": [
       "treasures",
       "of",
@@ -7605,7 +7605,7 @@
       "cookie"
     ],
     "path": "Seasonal/SummerBreak/TreasuresOfAotearoa.cs",
-    "size": 2399,
+    "size": 1347,
     "fileName": "TreasuresOfAotearoa.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/SummerBreak/TreasuresOfAotearoa.cs"
   },
