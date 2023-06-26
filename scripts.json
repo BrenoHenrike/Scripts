@@ -905,7 +905,7 @@
       "all"
     ],
     "path": "Story/0AllStories.cs",
-    "size": 26617,
+    "size": 26626,
     "fileName": "0AllStories.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/0AllStories.cs"
   },
@@ -2042,13 +2042,16 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/DarkWarLegionGold.cs"
   },
   {
-    "name": "GoldFarm",
-    "description": "null",
+    "name": "Gold Farm",
+    "description": "honor hall for members, BGE for f2p",
     "tags": [
-      "null"
+      "gold",
+      "battle ground e",
+      "honor hall",
+      "berserker bunny"
     ],
     "path": "Farm/GoldFarm.cs",
-    "size": 769,
+    "size": 847,
     "fileName": "GoldFarm.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/GoldFarm.cs"
   },
@@ -2705,7 +2708,7 @@
       "null"
     ],
     "path": "Legion/CoreLegion.cs",
-    "size": 31379,
+    "size": 31496,
     "fileName": "CoreLegion.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/CoreLegion.cs"
   },
@@ -3102,7 +3105,7 @@
       "rare-items"
     ],
     "path": "Other/0CurrentDailyGifts.cs",
-    "size": 19330,
+    "size": 19682,
     "fileName": "0CurrentDailyGifts.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/0CurrentDailyGifts.cs"
   },
@@ -4561,7 +4564,7 @@
       "null"
     ],
     "path": "Story/ShadowsOfChaos/CoreSoC.cs",
-    "size": 11867,
+    "size": 11977,
     "fileName": "CoreSoC.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfChaos/CoreSoC.cs"
   },
@@ -13454,7 +13457,7 @@
       "null"
     ],
     "path": "Other/MergeShops/TrygveMerge.cs",
-    "size": 6584,
+    "size": 6664,
     "fileName": "TrygveMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/TrygveMerge.cs"
   },
@@ -17463,7 +17466,7 @@
       "null"
     ],
     "path": "Seasonal/Friday13th/Story/CoreFriday13th.cs",
-    "size": 29020,
+    "size": 29291,
     "fileName": "CoreFriday13th.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Friday13th/Story/CoreFriday13th.cs"
   },

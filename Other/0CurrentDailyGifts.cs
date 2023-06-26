@@ -7,7 +7,7 @@ tags: daily-gifts, rare-items
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Seasonal/MayThe4th/TwiggusGearMerge.cs
-//cs_include Scripts/Seasonal/SummerBreak/RoseRapiers.cs.cs
+//cs_include Scripts/Seasonal/SummerBreak/RoseRapiers.cs
 using System.Globalization;
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
@@ -20,7 +20,7 @@ public class CurrentDailyGifts
     private static CoreBots sCore = new();
     private CoreAdvanced Adv = new();
     private TwiggusGearMerge TGM = new();
-    private DualRoseRapiers DRR = new();
+    private RoseRapiers RR = new();
 
     public string OptionsStorage = "CurrentDailyGifts";
     public bool DontPreconfigure = true;
@@ -63,14 +63,17 @@ public class CurrentDailyGifts
             GetGift(Permanent, "eden", "Klawaii Machine", "Apa's Tour Guide Morph", "Crystallis Megaphone", "Eden City Tour Flag", "Eden Tour Guide's Vest", "Eta's Tour Guide Morph", "Furled Eden City Umbrella", "Key to Eden City", "Keys to Eden City", "Rainy Day Tour Guide");
             GetGift(Permanent, "garden", "Creature 83", "Chibi Darkon's Shag", "Chibi Darkon's Twintails", "Chibi Drago's Shag", "Chibi Drago's Twintails", "Chibi Fa's Shag", "Chibi Fa's Twintails", "Chibi La's Shag", "Chibi La's Twintails", "Chibi Mi's Shag", "Chibi Mi's Twintails", "Chibi Re's Shag", "Chibi Re's Twintails", "Chibi So's Shag", "Chibi So's Twintails", "Chibi Suki's Shag", "Chibi Suki's Twintails", "Chibi Ti's Shag", "Chibi Ti's Twintails");
             GetGift(Permanent, "garden", "Creature 72", "Chibi Darkon's Pillow", "Chibi Drago's Pillow", "Chibi Fa's Pillow", "Chibi La's Pillow", "Chibi Mi's Pillow", "Chibi Re's Pillow", "Chibi So's Pillow", "Chibi Suki's Pillow", "Chibi Ti's Pillow");
-            GetGift(Permanent, "eridani", 4643, "Malevolent Hourglass");
+            GetGift(Permanent, "eridani", 25, "Malevolent Hourglass");
             GetGift(Permanent, "falcontower", "Alteon", "Alteon's Dragon Sword", "Alteon's Polished Dragon Sword");
             GetGift(Permanent, "aqlesson", "Carnax", "Guardian Blade Evolution", "Sanctified Guardian Blade");
             GetGift(Permanent, "superdeath", "Super Death", "HeroSmash Electina Guard", "HeroSmash General Smash Guard", "HeroSmash Hottica Guard", "HeroSmash Rider Guard", "HeroSmash Ultimate Good Guard", "HeroSmash Ultimate Evil Guard");
-            GetGift(Permanent, "sepulchure", "Dark Sepulchure", "Gravelyn's Champion Wings", "Gravelyn's Purified DoomBlade");
+            GetGift(Permanent, "sepulchure", "Dark Sepulchure", "Gravelyn's Champion Wings", "Gravelyn's Purified DoomBlade", "Vampragon of DOOM");
             GetGift(Permanent, "dflesson", "Fluffy the Dracolich", "Zurvana's Blessing", "Zurvana's Wrath", "Zurvana's Wrath", "Zurvana's Pity", "Zurvana's Pity");
             GetGift(Permanent, "mqlesson", "Dragonoid", "Dragonoid Edge", "Dragonoid Edges");
             GetGift(Permanent, "aqw3d", "Trolluk", "Underworld Anguish Scythe");
+            GetGift(Permanent, "lavarockbay", "Kalayo", "Lavarock Orb Pet");
+            GetGift(Permanent, "burningbeach", "Lava Guardian", "Burnt Ember Scrap Pet");
+            GetGift(Permanent, "twilightzone", "Leviathan", "Fallen Leviathan's Spear", "Staff of the Twilight Sea God", "Sea Dragon's Scimitars", "Sea Dragon's Scimitar");
 
             #endregion
             //GetGift(AvailableUntil(30, 11, 2022), "moonlab", "Nightmare Zorbak", "Zorbak's VordredSlayer", "Zorbak's VordredSlayers");
@@ -149,7 +152,9 @@ public class CurrentDailyGifts
             GetGift(AvailableUntil(16, 6), "garden", "Creature 35", "Dark Astravian General Lance");
             
             //Throny Scavenger Clue
-            DRR.GetWeapons();
+            RR.GetWeapons();
+
+
 
             // Fortunate Grenwog Garb
             // GetGift(AvailableUntil(30, 4), "elixirgrenwog", "Elixir Grenwog", "Fortunate Grenwog Garb");

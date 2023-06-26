@@ -29,7 +29,7 @@ public class CoreSoC
             Core.Logger("You have already completed Shadows Of Chaos storyline");
             return;
         }
-        
+
         SoW.ShadowWar();
         DualPlane();
         ChaosAmulet();
@@ -95,6 +95,8 @@ public class CoreSoC
             return;
         }
 
+        DualPlane();
+
         Story.PreLoad(this);
 
         //Mega Shadow Medals
@@ -127,6 +129,8 @@ public class CoreSoC
             return;
         }
         Story.PreLoad(this);
+
+        ChaosAmulet();
 
         //Eyes on You 7690
         Story.KillQuest(7690, "lagunabeach", "Flying Fisheye");
@@ -173,6 +177,8 @@ public class CoreSoC
             return;
         }
 
+        LagunaBeach();
+
         Story.PreLoad(this);
 
         //Fight the Crew 7702
@@ -218,6 +224,8 @@ public class CoreSoC
             Core.Logger("You have already completed Shadowoff storyline");
             return;
         }
+
+        Laguna();
 
         Story.PreLoad(this);
 
@@ -384,6 +392,8 @@ public class CoreSoC
             Core.Logger("You have already completed BrightForest Extra storyline");
             return;
         }
+
+        BrightForestPast();
 
         Story.PreLoad(this);
 
