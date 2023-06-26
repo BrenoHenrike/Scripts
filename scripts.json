@@ -7590,6 +7590,26 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/SummerBreak/LavarockForgePreReqs.cs"
   },
   {
+    "name": "Treasures of Aotearoa",
+    "description": "This script will farm all the rewards from Treasures of Aotearoa quest.",
+    "tags": [
+      "treasures",
+      "of",
+      "aotearoa",
+      "seasonal",
+      "summer",
+      "break",
+      "valencia",
+      "dandelion",
+      "kiwi",
+      "cookie"
+    ],
+    "path": "Seasonal/SummerBreak/TreasuresOfAotearoa.cs",
+    "size": 2399,
+    "fileName": "TreasuresOfAotearoa.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/SummerBreak/TreasuresOfAotearoa.cs"
+  },
+  {
     "name": "Blazing Beach Story",
     "description": "This will finish the Blazing Beach Story Line.",
     "tags": [
