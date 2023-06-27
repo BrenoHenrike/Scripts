@@ -24,7 +24,7 @@ public class ThunderFang
 
     public void StoryLine()
     {
-        if (Core.isCompletedBefore(000))
+        if (Core.isCompletedBefore(4246))
             return;
 
         Story.PreLoad(this);
