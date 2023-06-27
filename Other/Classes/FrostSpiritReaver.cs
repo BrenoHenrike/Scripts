@@ -78,7 +78,7 @@ public class FrostSpiritReaver
             Core.Logger("Getting the quest item requirements for \"Cold Hearted\"");
             Core.AddDrop("Flame of Courage");
             //Frost Sigil
-            Core.BuyItem("icedungeon", 2295, 25464, shopItemID: 25464);
+            Core.BuyItem("icedungeon", 2295, 25464, shopItemID: 48002);
 
             Core.HuntMonster("Northstar", "Karok the Fallen", "Karok's Glaceran Gem", isTemp: false);
             Adv.BuyItem("Glacera", 1055, "Scythe of Vengeance");
