@@ -8,6 +8,7 @@ tags: null
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Story/Glacera.cs
+//cs_include Scripts/CoreDailies.cs
 using Skua.Core.Interfaces;
 
 public class FrostSpiritReaver
@@ -16,6 +17,7 @@ public class FrostSpiritReaver
     public CoreBots Core => CoreBots.Instance;
     public CoreAdvanced Adv = new();
     public GlaceraStory Glacera = new();
+    public CoreDailies Dailies = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -32,6 +34,14 @@ public class FrostSpiritReaver
             return;
 
         Glacera.DoAll();
+
+        Dailies.Cryomancer();
+        if (!Core.CheckInventory("Cryomancer"))
+        {
+            Core.Logger("Cryomancer Required for \"Frost Sigil\" for \"IceNinth\", Comeback tomarrow.");
+            return;
+        }
+
 
         if (!Core.CheckInventory("Envoy of Kyanos"))
         {
