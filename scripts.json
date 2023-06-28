@@ -2719,7 +2719,7 @@
       "null"
     ],
     "path": "Legion/DagePvP.cs",
-    "size": 911,
+    "size": 912,
     "fileName": "DagePvP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/DagePvP.cs"
   },
@@ -9291,6 +9291,36 @@
     "size": 1978,
     "fileName": "CoreAwe.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/GearOfAwe/CoreAwe.cs"
+  },
+  {
+    "name": "Awe Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Awe Merge [632] in /museum",
+    "tags": [
+      "awe",
+      "merge",
+      "museum",
+      "prime",
+      "spear",
+      "guardian",
+      "guardians",
+      "armored",
+      "dragon",
+      "pet",
+      "flameborn",
+      "iceborn",
+      "windborn",
+      "earthborn",
+      "stormborn",
+      "waterborn",
+      "lightborn",
+      "darkborn",
+      "baby",
+      "enchanted"
+    ],
+    "path": "Good/GearOfAwe/AweMerge.cs",
+    "size": 7292,
+    "fileName": "AweMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/GearOfAwe/AweMerge.cs"
   },
   {
     "name": "Blade of Awe",
