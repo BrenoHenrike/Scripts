@@ -63,6 +63,7 @@ public class ShadowrealmMerge
                 case "Hollow Soul":
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.RegisterQuests(7553, 7555);
+                    Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.KillMonster("shadowrealm", "r2", "Down", "*", "Darkseed", 8);
