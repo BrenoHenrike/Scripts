@@ -32,7 +32,7 @@ public class LegionCombatTrophy
         Bot.Options.LagKiller = false;
         Adv.BestGear(RacialGearBoost.Undead);
         //order of quants: Trophy - Technique - Scroll
-        Legion.DagePvP(400, 50, 1000);
+        Legion.DagePvP(4000, 50, 1000);
 
     }
 }
