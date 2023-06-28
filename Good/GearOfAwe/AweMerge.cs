@@ -87,19 +87,16 @@ public class AweMerge
                 case "Dagger of Awe":
                 case "Staff of Awe":
                 case "Guardian Dragon Pet":
-                    Core.BuyItem("museum", 631, req.Name);
+                    Adv.BuyItem("museum", 631, req.Name);
                     break;
 
                 case "Guardian Patent":
-                    Core.FarmingLogger(req.Name, quant);
-                    Core.EquipClass(ClassType.Farm);
-                    Core.RegisterQuests(0000);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
+                    if (Bot.Flash.GetGameObject<int>("world.myAvatar.objData.intAQ") > 0)
                     {
-                        Core.Logger("This item is not setup yet");
-                        Bot.Wait.ForPickup(req.Name);
+                        Core.Logger("Active Aqw Guardian Acc Requiored for this Item.");
+                        break;
                     }
-                    Core.CancelRegisteredQuests();
+                    else Adv.BuyItem("museum", 53, "Guardian Patent");
                     break;
 
                 case "Baby Red Dragon":
