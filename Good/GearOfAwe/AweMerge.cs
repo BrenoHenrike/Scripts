@@ -93,10 +93,10 @@ public class AweMerge
                 case "Guardian Patent":
                     if (Bot.Flash.GetGameObject<int>("world.myAvatar.objData.intAQ") > 0)
                     {
-                        Core.Logger("Active Aqw Guardian Acc Requiored for this Item.");
+                        Adv.BuyItem("museum", 53, "Guardian Patent");
                         break;
                     }
-                    else Adv.BuyItem("museum", 53, "Guardian Patent");
+                    else Core.Logger("Active Aqw Guardian Acc Requiored for this Item.");
                     break;
 
                 case "Baby Red Dragon":
