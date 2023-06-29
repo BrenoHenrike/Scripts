@@ -82,7 +82,7 @@ public class Tercessuinotlim
         {
             Core.EnsureAccept(8473);
             Core.KillMonster($"fiendshard","r8", "Left", "Fiend Shard", "Dirtlicker’s Shard Shaving", 3);
-            Core.KillMonster("fiendshard", "r9", "Left", "Nulgath's Fiend Shard", "Piece of the Shard");
+            Core.KillMonster("fiendshard", "r9", "Left", "Nulgath's Fiend Shard", "Nulgath’s Shard Shaving",3);
             Core.Jump("Enter", "Spawn");
             Bot.Wait.ForCombatExit();
             Core.HuntMonster("QuibbleHunt", "RogueFiend", "Roguefiend Crystal Shaving", 5);
