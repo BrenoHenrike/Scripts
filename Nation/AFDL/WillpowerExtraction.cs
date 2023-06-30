@@ -50,45 +50,28 @@ public class WillpowerExtraction
             Adv.BuyItem("shadowfall", 89, "Shadow Lich");
             Adv.BuyItem("arcangrove", 214, "Mystic Tribal Sword");
 
-            uni19(1);
-
             Core.EquipClass(ClassType.Farm);
-
             if (!Core.CheckInventory("Necrot", 5))
             {
                 Adv.BuyItem("tercessuinotlim", 1951, "Necrot", 10);
                 Bot.Wait.ForItemBuy();
             }
-            
             if (!Core.CheckInventory("Chaoroot", 5))
             {
                 Adv.BuyItem("tercessuinotlim", 1951, "Chaoroot", 10);
                 Bot.Wait.ForItemBuy();
             }
-
             if (!Core.CheckInventory("Doomatter", 5))
             {
                 Adv.BuyItem("tercessuinotlim", 1951, "Doomatter", 10);
                 Bot.Wait.ForItemBuy();
             }
-
             if (!Core.CheckInventory("Mortality Cape of Revontheus"))
             {
                 Nation.ApprovalAndFavor(0, 35);
                 Adv.BuyItem("evilwarnul", 452, 13167);
                 Bot.Wait.ForItemBuy();
             }
-
-            Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("evilwarnul", "Laken", "King Klunk's Crown", 1, false);
-
-            Nation.ApprovalAndFavor(0, 90);
-
-            Nation.FarmTotemofNulgath(1);
-
-            Nation.EssenceofNulgath(10);
-
-
             if (!Core.CheckInventory("Facebreakers of Nulgath"))
             {
                 while (!Bot.ShouldExit && !Core.CheckInventory("Facebreakers of Nulgath"))
@@ -106,23 +89,22 @@ public class WillpowerExtraction
                     Bot.Sleep(Core.ActionDelay);
                 }
             }
-            Nation.FarmUni13();
+
+            Nation.ApprovalAndFavor(0, 90);
+            Nation.FarmTotemofNulgath(1);
+            Nation.EssenceofNulgath(10);
+
+            if (Core.IsMember)
+                Adv.BuyItem("tercessuinotlim", 1951, "Unidentified 19");
+            else Nation.Supplies("Unidentified 19");
+
+            Core.EquipClass(ClassType.Solo);
+            Core.HuntMonster("evilwarnul", "Laken", "King Klunk's Crown", 1, false);
 
             Core.EnsureComplete(5258);
             Bot.Drops.Pickup("Unidentified 34");
 
             Core.Logger($"Completed x{i++}");
         }
-    }
-
-    public void uni19(int quant = 1)
-    {
-        if (Core.CheckInventory("Unidentified 19"))
-            return;
-
-        if (Core.IsMember)
-            Adv.BuyItem("tercessuinotlim", 1951, "Unidentified 19");
-            
-        else Nation.Supplies("Unidentified 19");
     }
 }
