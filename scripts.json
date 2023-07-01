@@ -9320,7 +9320,7 @@
       "null"
     ],
     "path": "Story/AgeOfRuin/CoreAOR.cs",
-    "size": 6255,
+    "size": 7871,
     "fileName": "CoreAOR.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/CoreAOR.cs"
   },
@@ -9336,16 +9336,13 @@
       "quest",
       "yulgar",
       "aria",
-      "sunlight",
-      "twilight",
-      "zone",
       "father",
       "day",
       "venomous",
       "rose"
     ],
     "path": "Story/AgeOfRuin/05YulgarAria.cs",
-    "size": 783,
+    "size": 760,
     "fileName": "05YulgarAria.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/05YulgarAria.cs"
   },
@@ -9359,8 +9356,8 @@
       "saga",
       "story",
       "quest",
-      "termina",
-      "temple"
+      "ashray",
+      "village"
     ],
     "path": "Story/AgeOfRuin/02AshrayVillage.cs",
     "size": 730,
@@ -9386,6 +9383,24 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/04TwilightZone.cs"
   },
   {
+    "name": "Midnight Zone",
+    "description": "This script completes the storyline in /midnightzone.",
+    "tags": [
+      "age",
+      "of",
+      "ruin",
+      "saga",
+      "story",
+      "quest",
+      "zone",
+      "midnight"
+    ],
+    "path": "Story/AgeOfRuin/06MidnightZone.cs",
+    "size": 732,
+    "fileName": "06MidnightZone.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/06MidnightZone.cs"
+  },
+  {
     "name": "Age Of Ruin (All)",
     "description": "This script completes the full Age Of Ruin saga.",
     "tags": [
@@ -9402,10 +9417,11 @@
       "twilight",
       "zone",
       "yulgar",
-      "aria"
+      "aria",
+      "midnight"
     ],
     "path": "Story/AgeOfRuin/00DoAll.cs",
-    "size": 772,
+    "size": 781,
     "fileName": "00DoAll.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/00DoAll.cs"
   },
@@ -12668,6 +12684,37 @@
     "size": 5587,
     "fileName": "ShadowofChaosMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/ShadowofChaosMerge.cs"
+  },
+  {
+    "name": "Midnight Zone Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Midnight Zone Merge [2302] in /midnightzone",
+    "tags": [
+      "midnight",
+      "zone",
+      "merge",
+      "midnightzone",
+      "elven",
+      "heritage",
+      "guardian",
+      "morph",
+      "dark",
+      "forest",
+      "shawl",
+      "silver",
+      "edged",
+      "lamenter",
+      "lamenters",
+      "ranger",
+      "rustic",
+      "quiver",
+      "immortal",
+      "yew",
+      "bow"
+    ],
+    "path": "Other/MergeShops/MidnightZoneMerge.cs",
+    "size": 5335,
+    "fileName": "MidnightZoneMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/MidnightZoneMerge.cs"
   },
   {
     "name": "WarTrainingMerge",

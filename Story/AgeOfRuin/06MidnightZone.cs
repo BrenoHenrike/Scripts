@@ -1,7 +1,7 @@
 /*
-name: Age Of Ruin (All)
-description: This script completes the full Age Of Ruin saga.
-tags: age,ruin,saga,story,quest,termina,temple,ashray,village,sunlight,twilight,zone,yulgar,aria,midnight
+name: Midnight Zone
+description: This script completes the storyline in /midnightzone.
+tags: age,of,ruin,saga,story,quest,zone,midnight
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
@@ -11,7 +11,7 @@ tags: age,ruin,saga,story,quest,termina,temple,ashray,village,sunlight,twilight,
 //cs_include Scripts/Story\AgeOfRuin\CoreAOR.cs
 using Skua.Core.Interfaces;
 
-public class AgeOfRuinAll
+public class MidnightZone
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
@@ -21,7 +21,7 @@ public class AgeOfRuinAll
     {
         Core.SetOptions();
 
-        AOR.DoAll();
+        AOR.MidnightZone();
         Core.SetOptions(false);
     }
 }

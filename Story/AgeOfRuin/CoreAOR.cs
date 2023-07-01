@@ -29,6 +29,7 @@ public class CoreAOR
         SunlightZone();
         TwilightZone();
         YulgarAria();
+        MidnightZone();
     }
 
     public void TerminaTemple()
@@ -192,19 +193,64 @@ public class CoreAOR
 
         Story.PreLoad(this);
 
-        //Octotree (9270)
+        // Octotree (9270)
         Story.KillQuest(9270, "twilightzone", "Polymelia Lamprey");
 
-        //Thirsty Roots (9271)
+        // Thirsty Roots (9271)
         Story.KillQuest(9271, "sunlightzone", "Blighted Water");
 
-        //Dollar Store Mogloween Costume (9272)
+        // Dollar Store Mogloween Costume (9272)
         Story.KillQuest(9272, "sunlightzone", new[] { "Astravian Illusion", "Infernal Illusion" });
 
-        //Sea Snow Angels (9273)
+        // Sea Snow Angels (9273)
         Story.KillQuest(9273, "sunlightzone", "Marine Snow");
 
-        //Ten Klicks (9274)
+        // Ten Klicks (9274)
         Story.KillQuest(9274, "twilightzone", "Leviathan");
+    }
+
+    public void MidnightZone()
+    {
+        if (Core.isCompletedBefore(9301))
+            return;
+
+        TwilightZone();
+
+        Story.PreLoad(this);
+
+        // Motivation Malady (9292)
+        Story.MapItemQuest(9292, "midnightzone", new[] { 11842, 11843, 11844 });
+
+        // Radical Renovation (9293)
+        Story.KillQuest(9293, "midnightzone", "Polymelia Lamprey");
+        Story.MapItemQuest(9293, "midnightzone", 11845);
+
+        // Graveyard Shift (9294)
+        Story.KillQuest(9294, "midnightzone", new[] { "Vowed ShadowSlayer", "Vowed ShadowSlayer" });
+
+        // Educational Execution (9295)
+        Story.MapItemQuest(9295, "midnightzone", 11846);
+        Story.KillQuest(9295, "midnightzone", "Undead Prisoner");
+
+        // Vows For Ignorance (9296)
+        Story.KillQuest(9296, "midnightzone", new[] { "Undead Prisoner", "Vowed ShadowSlayer" });
+        Story.MapItemQuest(9296, "midnightzone", 11847);
+
+        // Protein Shake (9297)
+        Story.MapItemQuest(9297, "midnightzone", 11848, 3);
+        Story.KillQuest(9297, "midnightzone", "Shadow Viscera");
+
+        // Duty Beyond Death (9298)
+        Story.KillQuest(9298, "midnightzone", "Venerated Wraith");
+
+        // Designated Taunters (9299)
+        Story.KillQuest(9299, "midnightzone", new[] { "Venerated Wraith", "Shadow Viscera" });
+
+        // Beloved Simulacrum (9230)
+        Story.MapItemQuest(9300, "midnightzone", 11849, 4);
+        Story.MapItemQuest(9300, "midnightzone", 11850);
+
+        // Roko's Royal Basilisk (9301)
+        Story.KillQuest(9301, "midnightzone", "Sparagmos");
     }
 }
