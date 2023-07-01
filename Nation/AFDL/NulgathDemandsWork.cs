@@ -92,9 +92,9 @@ public class NulgathDemandsWork
 
                 if (item == "Unidentified 35")
                 {
-                    while (!Bot.ShouldExit && Core.CheckInventory("Archfiend Essence Fragment", 9) && !Core.CheckInventory(item, quant))
+                    while (!Bot.ShouldExit && Core.CheckInventory("Archfiend Essence Fragment", 9) && !Core.CheckInventory("Unidentified 35", quant))
                         Adv.BuyItem("tercessuinotlim", 1951, 35770, shopItemID: 7912);
-                    if (!Core.CheckInventory(item, quant))
+                    if (!Core.CheckInventory(_item!.ID, quant))
                         Core.EnsureComplete(5259, _item!.ID);
                 }
                 else Core.EnsureComplete(5259, _item!.ID);
