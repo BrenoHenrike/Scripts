@@ -40,7 +40,6 @@ public class SeaBaseHouseMerge
 
     public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
-        AoR.TwilightZone();
         AoR.MidnightZone();
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("twilightzone", 2289, findIngredients, buyOnlyThis, buyMode: buyMode);
