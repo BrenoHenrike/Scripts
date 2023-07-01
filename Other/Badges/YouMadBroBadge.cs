@@ -17,6 +17,7 @@ public class YouMadBroBadge
 
     public void ScriptMain(IScriptInterface bot)
     {
+        Core.BankingBlackList.AddRange(new[] { "Dragon Runestone", "Ice Vapor" });
         Core.SetOptions();
 
         Badge();
@@ -36,15 +37,20 @@ public class YouMadBroBadge
         Core.EquipClass(ClassType.Farm);
         while (!Bot.ShouldExit && !Core.HasWebBadge(badge))
         {
-            Core.AddDrop("Dragon Scale", "Ice Vapor");
+            Core.AddDrop("Ice Vapor");
+            Core.AddDrop(11475); //dragon scale (2 items items have this name hence the id)
             Core.FarmingLogger("Dragon Scale", 30);
-            Core.FarmingLogger("Ice Vapor", 30);
-            while (!Core.CheckInventory(11475, 30) || !Core.CheckInventory("Ice Vapor", 30))
+            Core.FarmingLogger("Ice Vapor", 2);
+            // while (!Core.CheckInventory(11475, 30) || !Core.CheckInventory("Ice Vapor", 30)) //uncomment this, and comment the line below out, if ice vapor ever gets fixed from only needing 1 and it never being used.
+            while (!Core.CheckInventory(11475, 30) || !Core.CheckInventory("Ice Vapor", 2))
                 Core.KillMonster("lair", "Enter", "Spawn", "*", isTemp: false, log: false);
 
             // Adv.BuyItem("alchemyacademy", 395, 7132, 100, 1, 8844);
-            Adv.BuyItem("alchemyacademy", 395, 62749, 30, 1, 8777);
-            Core.BuyItem("alchemyacademy", 395, "Dragon Runestone", 30, 8844);
+            if (!Core.CheckInventory("Dragon Runestone", 30))
+            {
+                // Adv.BuyItem("alchemyacademy", 395, 62749, 30, 1, 8777);
+                Adv.BuyItem("alchemyacademy", 395, "Dragon Runestone", 30, 8844);
+            }
 
             Core.Join("alchemy"); //maybe you have to be here to get the badge?
 

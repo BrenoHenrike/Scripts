@@ -844,14 +844,14 @@ public class CoreFarms
         int reagentid2 = reg2!.ID;
 
         if (reagent1 == "Dragon Scale")
-            reg1!.ID = 11478;
+            reg1!.ID = 11475;
 
         Core.Logger($"Reagents: [{reagent1}], [{reagent2}].");
         Core.Logger($"Rune: {rune}.");
         Core.Logger($"Modifier: {modifier}.");
+        int i = 1;
         if (loop)
         {
-            int i = 1;
             while (!Bot.ShouldExit && Core.CheckInventory(new[] { reagent1, reagent2 }))
             {
                 if (P2w && !Core.CheckInventory("Dragon Runestone"))
@@ -1127,7 +1127,7 @@ public class CoreFarms
             Core.EnsureAccept(8736);
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("hydrachallenge", "Hydra Head 25", "Hydra Scale Piece", 75, isTemp: false, log: false);
-            Core.HuntMonster("maul", "Creature Creation", "Creature Shard", isTemp: false, log: false);            
+            Core.HuntMonster("maul", "Creature Creation", "Creature Shard", isTemp: false, log: false);
             Core.HuntMonster("towerofdoom", "Dread Klunk", "Monster Trophy", 15, isTemp: false, log: false);
             Core.EnsureComplete(8736);
         }
