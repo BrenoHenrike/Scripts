@@ -78,8 +78,8 @@ public class MidnightZoneMerge
                         Core.EquipClass(ClassType.Solo);
                         Core.HuntMonster("midnightzone", "Sparagmos", "Memory Card", log: false);
                         Core.EquipClass(ClassType.Farm);
-                        Core.HuntMonster("midnightzone", "Shadow Viscera", "Fleshy Shadows", 8);
-                        Core.HuntMonster("midnightzone", "Venerated Wraith");
+                        Core.HuntMonster("midnightzone", "Shadow Viscera", "Fleshy Shadows", 8, log: false);
+                        Core.HuntMonster("midnightzone", "Venerated Wraith", log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
