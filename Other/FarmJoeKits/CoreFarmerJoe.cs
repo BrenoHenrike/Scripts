@@ -15,7 +15,7 @@ tags: null
 //cs_include Scripts/Evil/SDKA/CoreSDKA.cs
 //cs_include Scripts/Legion/CoreLegion.cs
 //cs_include Scripts/Legion/YamiNoRonin/CoreYnR.cs
-//cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
+//cs_include Scripts/Darkon/CoreDarkon.cs
 
 //cs_include Scripts/Dailies/0AllDailies.cs
 //cs_include Scripts/Good/GearOfAwe/CapeOfAwe.cs
@@ -23,6 +23,8 @@ tags: null
 //cs_include Scripts/Nation/AssistingCragAndBamboozle[Mem].cs
 //cs_include Scripts/Other/FreeBoostsQuest(10mns).cs
 //cs_include Scripts/Enhancement/InventoryEnhancer.cs
+//cs_include Scripts/Nation/Various/ArchfiendDeathLord.cs
+//cs_include Scripts/Story/Nation/Originul.cs
 
 //cs_include Scripts/Other/Classes/REP-based/MasterRanger.cs
 //cs_include Scripts/Other/Classes/REP-based/EternalInversionist.cs
@@ -33,16 +35,16 @@ tags: null
 //cs_include Scripts/Other/Classes/ScarletSorceress.cs
 //cs_include Scripts/Other/Classes/BloodSorceress.cs
 //cs_include Scripts/Other/Classes/DragonShinobi.cs
-//cs_include Scripts/Other/MergeShops/SynderesMerge.cs
 //cs_include Scripts/Good/ArchPaladin.cs
 //cs_include Scripts/Dailies/LordOfOrder.cs
+//cs_include Scripts/Legion/SwordMaster.cs
 
 //cs_include Scripts/Other/Weapons/BurningBlade.cs
 //cs_include Scripts/Other/Weapons/DualChainSawKatanas.cs
 //cs_include Scripts/Other/Weapons/EnchantedVictoryBladeWeapons.cs
-//cs_include Scripts/Hollowborn/MergeShops/ShadowrealmMerge.cs
+//cs_include Scripts/Other/Weapons/GoldenBladeOfFate.cs
+//cs_include Scripts/Other/Weapons/PinkBladeofDestruction.cs
 
-//cs_include Scripts/Legion/SwordMaster.cs
 
 //cs_include Scripts/Story/DragonFableOrigins.cs
 //cs_include Scripts/Story/Glacera.cs
@@ -55,6 +57,24 @@ tags: null
 //cs_include Scripts/Story/XansLair.cs
 //cs_include Scripts/Story/Yokai.cs
 //cs_include Scripts/Story/Friendship.cs
+//cs_include Scripts/Story/Nation/Fiendshard.cs
+//cs_include Scripts/Story/Doomwood/CoreDoomwood.cs
+//cs_include Scripts/Story/QueenofMonsters/CoreQoM.cs
+//cs_include Scripts/Story/7DeadlyDragons/Core7DD.cs
+//cs_include Scripts/Other/MysteriousEgg.cs
+//cs_include Scripts/Story/Summer2015AdventureMap/CoreSummer.cs
+//cs_include Scripts/Story/Borgars.cs
+//cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
+//cs_include Scripts/Story/ElegyofMadness(Darkon)/CoreAstravia.cs
+
+//cs_include Scripts/Hollowborn/MergeShops/ShadowrealmMerge.cs
+//cs_include Scripts/Other/MergeShops/SynderesMerge.cs
+//cs_include Scripts/Nation/AFDL/WillpowerExtraction.cs
+
+
+
+
+
 
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
@@ -68,6 +88,7 @@ public class CoreFarmerJoe
     public FarmAllDailies FAD = new();
     public InventoryEnhancer InvEn = new();
     public SynderesMerge SM = new();
+    public ArchfiendDeathLord AFDeath = new();
 
     //Cores
     public CoreBots Core => CoreBots.Instance;
@@ -92,6 +113,7 @@ public class CoreFarmerJoe
     public ScarletSorceress SS = new();
     public EternalInversionist EI = new();
     public DarkbloodStormKing DBSK = new();
+    public DragonOfTime DoT = new();
 
     //Weapons
     public DualChainSawKatanas DCSK = new();
@@ -267,10 +289,10 @@ public class CoreFarmerJoe
                     break;
 
                 case 45:
-                    if (Bot.Player.Level >= Level && Core.CheckInventory("Eternal Inversionist"))
+                    if (Bot.Player.Level >= Level && Core.CheckInventory("Scarlet Sorceress"))
                         break;
 
-                    while (!Bot.ShouldExit && Bot.Player.Level < Level || !Core.CheckInventory("Eternal Inversionist"))
+                    while (!Bot.ShouldExit && Bot.Player.Level < Level || !Core.CheckInventory("Scarlet Sorceress"))
                     {
                         if (Core.SoloClass == "Generic")
                             Core.SoloClass = "Oracle";
@@ -279,7 +301,7 @@ public class CoreFarmerJoe
 
                         Farm.Experience(Level);
                         InvEn.EnhanceInventory();
-                        EI.GetEI();
+                        SS.GetSSorc();
                     }
                     break;
 
@@ -290,7 +312,7 @@ public class CoreFarmerJoe
                     while (!Bot.ShouldExit && Bot.Player.Level < Level || !Core.CheckInventory("Darkblood StormKing"))
                     {
                         if (Core.FarmClass == "Generic")
-                            Core.FarmClass = "Eternal Inversionist";
+                            Core.FarmClass = "Scarlet Sorceress";
 
                         DBSK.GetDSK();
                         Adv.SmartEnhance("Darkblood StormKing");
@@ -307,7 +329,7 @@ public class CoreFarmerJoe
                         if (Core.SoloClass == "Generic")
                             Core.SoloClass = "Darkblood StormKing";
                         if (Core.FarmClass == "Generic")
-                            Core.FarmClass = "Eternal Inversionist";
+                            Core.FarmClass = "Scarlet Sorceress";
                         Core.Logger("Getting DSS for DoomKittem(ArchPaladin)");
                         DS.GetDSS();
                         Farm.Experience(Level);
@@ -325,7 +347,7 @@ public class CoreFarmerJoe
                         if (Core.SoloClass == "Generic")
                             Core.SoloClass = "Darkblood StormKing";
                         if (Core.FarmClass == "Generic")
-                            Core.FarmClass = "Eternal Inversionist";
+                            Core.FarmClass = "Scarlet Sorceress";
 
                         Farm.Experience(Level);
                         InvEn.EnhanceInventory();
@@ -344,8 +366,9 @@ public class CoreFarmerJoe
                         if (Core.SoloClass == "Generic")
                             Core.SoloClass = "ArchPaladin";
                         if (Core.FarmClass == "Generic")
-                            Core.FarmClass = "Eternal Inversionist";
+                            Core.FarmClass = "Scarlet Sorceress";
 
+                        AFDeath.GetArm(true, ArchfiendDeathLord.RewardChoice.Archfiend_DeathLord);
                         Farm.Experience(Level);
                         InvEn.EnhanceInventory();
                     }
@@ -363,7 +386,7 @@ public class CoreFarmerJoe
         if (Core.FarmClass == "Generic" || Core.FarmClass == "Master Ranger")
         {
             Core.Logger("Setting Farm class.");
-            Core.SoloClass = "Eternal Inversionist";
+            Core.SoloClass = "Scarlet Sorceress";
         }
         #endregion Level to 75
     }
@@ -373,7 +396,7 @@ public class CoreFarmerJoe
         if (Core.SoloClass == "Generic")
             Core.SoloClass = "ArchPaladin";
         if (Core.FarmClass == "Generic")
-            Core.FarmClass = "Eternal Inversionist";
+            Core.FarmClass = "Scarlet Sorceress";
 
         InvEn.EnhanceInventory();
         #region Prepare for Lvl100
@@ -423,7 +446,6 @@ public class CoreFarmerJoe
         InvEn.EnhanceInventory();
 
         Core.Logger("P3 - 4: Improving Efficiency, and more Classes");
-        Shaman.GetShaman();
         if (Core.FarmClass == "Generic")
             Core.FarmClass = "Shaman";
         GB.GetGB();
@@ -457,6 +479,7 @@ public class CoreFarmerJoe
 
         SRM.BuyAllMerge("Hollowborn Reaper's Scythe");
         YNR.GetYnR();
+        DoT.GetDoT();
         //Add more eventualy >.> please?
 
         #endregion Ending & Extras
