@@ -48,8 +48,8 @@ public class YouMadBroBadge
             // Adv.BuyItem("alchemyacademy", 395, 7132, 100, 1, 8844);
             if (!Core.CheckInventory("Dragon Runestone", 30))
             {
-                // Adv.BuyItem("alchemyacademy", 395, 62749, 30, 1, 8777);
-                Adv.BuyItem("alchemyacademy", 395, "Dragon Runestone", 30, 8844);
+                Adv.BuyItem("alchemyacademy", 395, 62749, 30, 1, 8777);
+                Core.BuyItem("alchemyacademy", 395, "Dragon Runestone", 30, 8844);
             }
 
             Core.Join("alchemy"); //maybe you have to be here to get the badge?
