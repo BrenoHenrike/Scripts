@@ -116,6 +116,7 @@ public class ArmyLR
         Seraph.SeraphicWar_Questline();
         CruxShip.StoryLine();
         DarkCasterCheck();
+        Farm.EvilREP();
         /*
         ********************************************************************************
         ********************************PREFARM ZONE************************************
@@ -380,7 +381,7 @@ public class ArmyLR
 
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
             Bot.Combat.Attack("*");
-        
+
         Army.AggroMonStop(true);
         Core.JumpWait();
     }
