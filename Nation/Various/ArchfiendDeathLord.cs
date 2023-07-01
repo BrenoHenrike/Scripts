@@ -28,7 +28,7 @@ public class ArchfiendDeathLord
     public List<IOption> Options = new()
     {
         new Option<bool>("OnlyArmor", "Only get the Armor?", "Whether to only get the Armor or all quest rewards"),
-        new Option<RewardChoice>("RewardChoice", "Choose Your Reward", "", RewardChoice.Archfiend_DeathLord),
+        new Option<RewardChoice>("RewardChoice", "Choose Your Reward", "", RewardChoice.All),
         CoreBots.Instance.SkipOptions,
     };
 
@@ -36,42 +36,70 @@ public class ArchfiendDeathLord
     {
         Core.SetOptions();
 
-        GetArm(Bot.Config.Get<bool>("OnlyArmor"));
+        GetArm(Bot.Config!.Get<bool>("OnlyArmor"), RewardChoice.All);
 
         Core.SetOptions(false);
     }
 
-    public void GetArm(bool OnlyArmor = true)
+    public void GetArm(bool OnlyArmor, RewardChoice Reward)
     {
-        if (Bot.Config.Get<RewardChoice>("RewardChoice") == RewardChoice.None || Core.CheckInventory(Bot.Config.Get<RewardChoice>("RewardChoice").ToString()))
+        if (Reward != RewardChoice.All && Core.CheckInventory((int)Reward, toInv: false))
             return;
 
-        else if (OnlyArmor && Bot.Config.Get<RewardChoice>("RewardChoice") != RewardChoice.Archfiend_DeathLord)
+        else if (OnlyArmor && Reward == RewardChoice.All)
             Core.Logger("With \"OnlyArmor\" Please Select the \"Archfiend DeathLord\" Option from the list.", messageBox: true, stopBot: true);
-        else Core.AddDrop(Bot.Config.Get<RewardChoice>("RewardChoice").ToString());
+        else Core.AddDrop((int)Reward);
 
         Fiendshard.Fiendshard_Questline();
 
-        Core.FarmingLogger(Bot.Config.Get<RewardChoice>("RewardChoice").ToString(), 1);
-        Core.RegisterQuests(7900);
-        while (!Bot.ShouldExit && !Core.CheckInventory(Bot.Config.Get<RewardChoice>("RewardChoice").ToString()))
+        if (Reward == RewardChoice.All)
         {
-            Nation.FarmBloodGem(20);
-            Nation.FarmUni13(5);
-            Nation.FarmTotemofNulgath(3);
-            Nation.FarmVoucher(false);
-            Nation.FarmDiamondofNulgath(150);
-            Nation.FarmGemofNulgath(50);
-            Willpower.Unidentified34(10);
+            foreach (RewardChoice reward in Enum.GetValues(typeof(RewardChoice)))
+            {
+                if (Core.CheckInventory((int)Reward, toInv: false))
+                    break;
 
-            Bot.Wait.ForPickup(Bot.Config.Get<RewardChoice>("RewardChoice").ToString());
+                Core.FarmingLogger(reward.ToString(), 1);
+                while (!Bot.ShouldExit && !Core.CheckInventory((int)reward, toInv: false))
+                {
+                    Core.EnsureAccept(7900);
+                    Nation.FarmBloodGem(20);
+                    Nation.FarmUni13(5);
+                    Nation.FarmTotemofNulgath(3);
+                    Nation.FarmVoucher(false);
+                    Nation.FarmDiamondofNulgath(150);
+                    Nation.FarmGemofNulgath(50);
+                    Willpower.Unidentified34(10);
+                    Core.EnsureComplete(7900, (int)reward);
+
+                    Bot.Wait.ForPickup((int)reward);
+                }
+            }
         }
-        Core.CancelRegisteredQuests();
+
+        else
+        {
+            Core.FarmingLogger(Reward.ToString(), 1);
+            while (!Bot.ShouldExit && !Core.CheckInventory((int)Reward, toInv: false))
+            {
+                Core.EnsureAccept(7900);
+                Nation.FarmBloodGem(20);
+                Nation.FarmUni13(5);
+                Nation.FarmTotemofNulgath(3);
+                Nation.FarmVoucher(false);
+                Nation.FarmDiamondofNulgath(150);
+                Nation.FarmGemofNulgath(50);
+                Willpower.Unidentified34(10);
+                Core.EnsureComplete(7900, (int)Reward);
+
+                Bot.Wait.ForPickup((int)Reward);
+            }
+        }
     }
 
-    private enum RewardChoice
+    public enum RewardChoice
     {
-        None,
+        All,
         Archfiend_DeathLord = 54366,
         Champion_Ender_of_Nulgath = 54377,
         Doomblade_of_Genocide = 54379,
