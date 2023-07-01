@@ -66,6 +66,7 @@ tags: null
 //cs_include Scripts/Other/MysteriousEgg.cs
 //cs_include Scripts/Story/Summer2015AdventureMap/CoreSummer.cs
 //cs_include Scripts/Story/Borgars.cs
+//cs_include Scripts/Other/Classes/DragonOfTime.cs
 //cs_include Scripts/Story/ElegyofMadness(Darkon)/CoreAstravia.cs
 using Skua.Core.Interfaces;
 

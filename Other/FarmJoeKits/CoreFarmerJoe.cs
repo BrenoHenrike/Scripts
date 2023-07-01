@@ -35,6 +35,7 @@ tags: null
 //cs_include Scripts/Other/Classes/ScarletSorceress.cs
 //cs_include Scripts/Other/Classes/BloodSorceress.cs
 //cs_include Scripts/Other/Classes/DragonShinobi.cs
+//cs_include Scripts/Other/Classes/DragonOfTime.cs
 //cs_include Scripts/Good/ArchPaladin.cs
 //cs_include Scripts/Dailies/LordOfOrder.cs
 //cs_include Scripts/Legion/SwordMaster.cs
@@ -70,6 +71,7 @@ tags: null
 //cs_include Scripts/Hollowborn/MergeShops/ShadowrealmMerge.cs
 //cs_include Scripts/Other/MergeShops/SynderesMerge.cs
 //cs_include Scripts/Nation/AFDL/WillpowerExtraction.cs
+
 
 
 
