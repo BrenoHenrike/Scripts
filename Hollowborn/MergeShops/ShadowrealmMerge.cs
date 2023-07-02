@@ -31,7 +31,7 @@ public class ShadowrealmMerge
         Core.SetOptions();
 
         BuyAllMerge();
-        
+
         Core.SetOptions(false);
     }
 
@@ -62,14 +62,16 @@ public class ShadowrealmMerge
 
                 case "Hollow Soul":
                     Core.FarmingLogger($"{req.Name}", quant);
-                    Core.RegisterQuests(7553, 7555);
+                    // Core.RegisterQuests(7553, 7555);
                     Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.KillMonster("shadowrealm", "r2", "Down", "*", "Darkseed", 8);
-                        Core.KillMonster("shadowrealm", "r2", "Down", "*", "Shadow Medallion", 5);
+                        Core.EnsureAccept(7553, 7555); //Get the Seeds 7553, Flex it! 7555
+                        Core.HuntMonster("shadowrealm", "Gargrowl", "Darkseed", 8, log: false);
+                        Core.HuntMonster("shadowrealm", "Shadow Guardian", "Shadow Medallion", 5, log: false);
+                        Core.EnsureComplete(7553, 7555); //Get the Seeds 7553, Flex it! 7555
                     }
-                    Core.CancelRegisteredQuests();
+                    // Core.CancelRegisteredQuests();
                     break;
 
                 case "Bone Dust":
