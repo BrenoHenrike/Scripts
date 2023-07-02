@@ -2086,10 +2086,11 @@ public class CoreFarms
         // Core.RegisterQuests(7553, 7555); //Get the Seeds 7553, Flex it! 7555
         while (!Bot.ShouldExit && FactionRank("Hollowborn") < rank)
         {
-            Core.EnsureAccept(7553, 7555); //Get the Seeds 7553, Flex it! 7555
-                        Core.KillMonster("shadowrealm", "r2", "Left", "Gargrowl", "Darkseed", 8, log: false);
-                        Core.KillMonster("shadowrealm", "r2", "Left", "Shadow Guardian", "Shadow Medallion", 5, log: false);
-            Core.EnsureComplete(7553, 7555); //Get the Seeds 7553, Flex it! 7555
+            Core.EnsureAccept(7553, 7555);
+            Core.KillMonster("shadowrealm", "r2", "Left", "Gargrowl", "Darkseed", 8, log: false);
+            Core.KillMonster("shadowrealm", "r2", "Left", "Shadow Guardian", "Shadow Medallion", 5, log: false);
+            Core.EnsureComplete(7553); //Get the Seeds 7553
+            Core.EnsureComplete(7555); // Flex it! 7555
         }
         // Core.CancelRegisteredQuests();
         ToggleBoost(BoostType.Reputation, false);
