@@ -18,7 +18,10 @@ public class HollowbornREP
         Core.SetOptions();
 
         Adv.BestGear(GenericGearBoost.dmgAll);
-        Adv.BestGear(GenericGearBoost.rep);
+
+        //Rep boost type here crahes bestgear uncomment when fixed.
+        // Adv.BestGear(GenericGearBoost.rep);
+
         Farm.HollowbornREP();
 
         Core.SetOptions(false);

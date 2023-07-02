@@ -139,8 +139,9 @@ public class CoreFarms
         Core.RegisterQuests(3992, 3993);
         while (!Bot.ShouldExit && Bot.Player.Gold < goldQuant && Bot.Player.Gold <= 100000000)
         {
-            Core.KillMonster("honorhall", "r1", "Center", "*", "Battleground E Opponent Defeated", 10, log: false);
-            Core.KillMonster("honorhall", "r1", "Center", "*", "HonorHall Opponent Defeated", 10, log: false);
+            Core.KillMonster("honorhall", "r1", "Center", "*");
+            // Core.KillMonster("honorhall", "r1", "Center", "*", "Battleground E Opponent Defeated", 10, log: false);
+            // Core.KillMonster("honorhall", "r1", "Center", "*", "HonorHall Opponent Defeated", 10, log: false);
         }
         Core.CancelRegisteredQuests();
         Core.SavedState(false);
@@ -162,8 +163,9 @@ public class CoreFarms
         Core.RegisterQuests(3991, 3992);
         while (!Bot.ShouldExit && Bot.Player.Gold < goldQuant && Bot.Player.Gold <= 100000000)
         {
-            Core.KillMonster("battlegrounde", "r2", "Center", "*", "Battleground D Opponent Defeated", 10, log: false);
-            Core.KillMonster("battlegrounde", "r2", "Center", "*", "Battleground E Opponent Defeated", 10, log: false);
+            Core.KillMonster("battlegrounde", "r2", "Center", "*");
+            // Core.KillMonster("battlegrounde", "r2", "Center", "*", "Battleground D Opponent Defeated", 10, log: false);
+            // Core.KillMonster("battlegrounde", "r2", "Center", "*", "Battleground E Opponent Defeated", 10, log: false);
         }
         Core.CancelRegisteredQuests();
         Core.SavedState(false);
@@ -1721,7 +1723,7 @@ public class CoreFarms
         {
             GetBaitandDynamite(20, 0);
             Core.Logger($"Fishing With: Fishing Bait");
-            Core.Logger($"0 Xp means a Failed Catch, common at lower Fishing (non)Faction ranks");
+            Core.Logger($"0 Xp means a Failed Catch, common at lower Fishing (Non-Faction) ranks (Minigame)");
 
             while (!Bot.ShouldExit && Core.CheckInventory("Fishing Bait"))
             {
@@ -1744,8 +1746,8 @@ public class CoreFarms
                 Core.Logger($"Fished {z++} Times");
             }
         }
+        z = 0;
         Core.TrashCan(new[] { "Fishing Bait", "Fishing Dynamite" });
-        // ToggleBoost(BoostType.Reputation, false);
         Core.SavedState(false);
 
         void GetBaitandDynamite(int FishingBaitQuant, int FishingDynamiteQuant)
@@ -2077,15 +2079,16 @@ public class CoreFarms
         Core.AddDrop("Hollow Soul");
         Core.EquipClass(ClassType.Farm);
         Core.SavedState();
-        ToggleBoost(BoostType.Reputation);
+        //rep boost type crashes atm
+        // ToggleBoost(BoostType.Reputation);
         Core.Logger($"Farming rank {rank}");
 
         // Core.RegisterQuests(7553, 7555); //Get the Seeds 7553, Flex it! 7555
         while (!Bot.ShouldExit && FactionRank("Hollowborn") < rank)
         {
             Core.EnsureAccept(7553, 7555); //Get the Seeds 7553, Flex it! 7555
-            Core.KillMonster("shadowrealm", "r2", "Down", "*", "Darkseed", 8, log: false);
-            Core.KillMonster("shadowrealm", "r2", "Down", "*", "Shadow Medallion", 5, log: false);
+            Core.HuntMonster("shadowrealm", "Gargrowl", "Darkseed", 8, log: false);
+            Core.HuntMonster("shadowrealm", "Shadow Guardian", "Shadow Medallion", 5, log: false);
             Core.EnsureComplete(7553, 7555); //Get the Seeds 7553, Flex it! 7555
         }
         // Core.CancelRegisteredQuests();
