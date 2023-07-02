@@ -42,10 +42,17 @@ public class YouMadBroBadge
             Core.FarmingLogger("Dragon Scale", 30);
             Core.FarmingLogger("Ice Vapor", 2);
             // while (!Core.CheckInventory(11475, 30) || !Core.CheckInventory("Ice Vapor", 30)) //uncomment this, and comment the line below out, if ice vapor ever gets fixed from only needing 1 and it never being used.
-            while (!Core.CheckInventory(11475, 30) || !Core.CheckInventory("Ice Vapor", 2))
-                Core.KillMonster("lair", "Enter", "Spawn", "*", isTemp: false, log: false);
+            // while (!Core.CheckInventory(11475, 30) || !Core.CheckInventory("Ice Vapor", 2))
+            //     Core.KillMonster("lair", "Enter", "Spawn", "*", isTemp: false, log: false);
 
-            // Adv.BuyItem("alchemyacademy", 395, 7132, 100, 1, 8844);
+
+            while (!Core.CheckInventory(11475, 30))
+                Core.KillMonster("lair", "Hole", "Center", "*", isTemp: false, log: false);
+            Core.KillMonster("lair", "Enter", "Spawn", "*", "Ice Vapor", 2, isTemp: false, log: false);
+
+            //incase they fix icevapor not being used V
+            // Core.KillMonster("lair", "Enter", "Spawn", "*", "Ice Vapor", 30, isTemp: false, log: false);
+
             if (!Core.CheckInventory("Dragon Runestone", 30))
             {
                 Adv.BuyItem("alchemyacademy", 395, 62749, 30, 1, 8777);
