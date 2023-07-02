@@ -67,8 +67,8 @@ public class ShadowrealmMerge
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.EnsureAccept(7553, 7555); //Get the Seeds 7553, Flex it! 7555
-                        Core.HuntMonster("shadowrealm", "Gargrowl", "Darkseed", 8, log: false);
-                        Core.HuntMonster("shadowrealm", "Shadow Guardian", "Shadow Medallion", 5, log: false);
+                        Core.KillMonster("shadowrealm", "r2", "Left", "Gargrowl", "Darkseed", 8, log: false);
+                        Core.KillMonster("shadowrealm", "r2", "Left", "Shadow Guardian", "Shadow Medallion", 5, log: false);
                         Core.EnsureComplete(7553, 7555); //Get the Seeds 7553, Flex it! 7555
                     }
                     // Core.CancelRegisteredQuests();
