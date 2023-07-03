@@ -40,7 +40,8 @@ public class YulgarsUndineMerge
 
     public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
-        AoR.YulgarAria();
+        //doall because its also required for shadowrealmmerge which includes this script.
+        AoR.DoAll();
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("sunlightzone", 2297, findIngredients, buyOnlyThis, buyMode: buyMode);
 
