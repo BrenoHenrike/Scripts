@@ -53,6 +53,25 @@ tags: null
 //cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
 //cs_include Scripts/Other/MergeShops/SynderesMerge.cs
 //cs_include Scripts/Other/Classes/REP-based/DarkbloodStormKing.cs
+//cs_include Scripts/Nation/Various/ArchfiendDeathLord.cs
+//cs_include Scripts/Story/Nation/Originul.cs
+//cs_include Scripts/Story/Nation/Fiendshard.cs
+//cs_include Scripts/Nation/AFDL/WillpowerExtraction.cs
+//cs_include Scripts/Darkon/CoreDarkon.cs
+//cs_include Scripts/Other/Weapons/GoldenBladeOfFate.cs
+//cs_include Scripts/Other/Weapons/PinkBladeofDestruction.cs
+//cs_include Scripts/Story/Doomwood/CoreDoomwood.cs
+//cs_include Scripts/Story/QueenofMonsters/CoreQoM.cs
+//cs_include Scripts/Story/7DeadlyDragons/Core7DD.cs
+//cs_include Scripts/Other/MysteriousEgg.cs
+//cs_include Scripts/Story/Summer2015AdventureMap/CoreSummer.cs
+//cs_include Scripts/Story/Borgars.cs
+//cs_include Scripts/Story/ElegyofMadness(Darkon)/CoreAstravia.cs
+//cs_include Scripts/Other/Classes/DragonOfTime.cs
+//cs_include Scripts/Story/AgeofRuin/CoreAOR.cs
+//cs_include Scripts/Other/MergeShops/YulgarsUndineMerge.cs
+//cs_include Scripts/Hollowborn/MergeShops/DawnFortressMerge.cs
+//cs_include Scripts/Story/Hollowborn/CoreHollowbornStory.cs
 using Skua.Core.Interfaces;
 
 public class FarmerJoeOutfitandPet

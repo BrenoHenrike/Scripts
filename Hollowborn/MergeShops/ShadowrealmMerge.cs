@@ -1,11 +1,18 @@
 /*
-name: Shadowrealm
+name: Shadowrealm Merge
 description: This bot will farm the items belonging to the selected mode for the Shadowrealm Merge [1889] in /shadowrealm
-tags: shadowrealm, merge, shadowrealm, hollowborn, thunderlord, visor, lightning, lightnings, vampire, flying, skulls, scythe, chained, reaper, guard, fiend, blind, reapers, , horns, ponytail, katana, kamas, kama, minion, sheathed, dragonslayer, dragonslayers, beard, scarf
+tags: shadowrealm, merge, shadowrealm, hollowborn, thunderlord, visor, lightning, lightnings, vampire, flying, skulls, scythe, chained, reaper, guard, fiend, blind, reapers, , horns, ponytail, katana, kamas, kama, minion, sheathed, dragonslayer, dragonslayers, beard, scarf, vine, rogue, thorn, assassin, assassins, wreath, thorns, guardian, whip, agony, poison, claws, ranger, rangers, quiver, enchanted, bow, battlemage, sigil, hammer, hammers, armaments
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/CoreStory.cs
+//cs_include Scripts/Story/AgeofRuin/CoreAOR.cs
+//cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
+//cs_include Scripts/Other/MergeShops/YulgarsUndineMerge.cs
+//cs_include Scripts/Hollowborn/MergeShops/DawnFortressMerge.cs
+//cs_include Scripts/Story/Hollowborn/CoreHollowbornStory.cs
+//
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
@@ -16,6 +23,8 @@ public class ShadowrealmMerge
     private CoreBots Core => CoreBots.Instance;
     private CoreFarms Farm = new();
     private CoreAdvanced Adv = new();
+    private YulgarsUndineMerge YUM = new();
+    private DawnFortressMerge DFM = new();
     private static CoreAdvanced sAdv = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
@@ -27,11 +36,10 @@ public class ShadowrealmMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Hollow Soul", "Bone Dust", "Death's Oversight", "Death's Scythe", "Unmoulded Fiend Essence" });
+        Core.BankingBlackList.AddRange(new[] { "Hollow Soul", "Bone Dust", "Death's Oversight", "Death's Scythe", "Unmoulded Fiend Essence", "Poisonous Rogue", "Nightshade Thorn Assasasin", "Elven Assassin's Locks", "Elven Assassin's Locks + Scarf", "Elven Assassin's Hair", "Elven Assassin’s Scarf", "Poisonous Thorn Wreath", "Nightshade Assassin Guardian", "Reversed Blade of Thorns", "Reversed Daggers of Thorns", "Envenomed Whip of Agony", "Envenomed Gauntlet", "Gold Voucher 25k", "Dawn Vindicator Archer", "Vindicator Archer's Hat + Locks", "Gilded Scout's Quiver", "Bright Bow of the Dawn", "Vindicator Scout's Bow", "Dawn Vindicator General", "Vindicator General's Hood", "Vindicator General's Hood + Locks", "Blessed Rune of Vindication", "Blessed Shield of Vindication", "Blessed Hammer of the Dawn", "Blessed Hammers of the Dawn", "Battlegear of Vindication" });
         Core.SetOptions();
 
         BuyAllMerge();
-        
         Core.SetOptions(false);
     }
 
@@ -62,14 +70,15 @@ public class ShadowrealmMerge
 
                 case "Hollow Soul":
                     Core.FarmingLogger($"{req.Name}", quant);
-                    Core.RegisterQuests(7553, 7555);
                     Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.KillMonster("shadowrealm", "r2", "Down", "*", "Darkseed", 8);
-                        Core.KillMonster("shadowrealm", "r2", "Down", "*", "Shadow Medallion", 5);
+                        Core.EnsureAccept(7553, 7555);
+                        Core.KillMonster("shadowrealm", "r2", "Left", "Gargrowl", "Darkseed", 8, log: false);
+                        Core.KillMonster("shadowrealm", "r2", "Left", "Shadow Guardian", "Shadow Medallion", 5, log: false);
+                        Core.EnsureComplete(7553);
+                        Core.EnsureComplete(7555);
                     }
-                    Core.CancelRegisteredQuests();
                     break;
 
                 case "Bone Dust":
@@ -93,6 +102,53 @@ public class ShadowrealmMerge
 
                 case "Unmoulded Fiend Essence":
                     Adv.BuyItem("tercessuinotlim", 1951, "Unmoulded Fiend Essence", quant);
+                    Bot.Wait.ForPickup(req.Name);
+                    break;
+
+                case "Elven Assassin's Locks + Scarf":
+                case "Elven Assassin's Locks":
+                case "Elven Assassin's Hair":
+                case "Elven Assassin’s Scarf":
+                case "Poisonous Thorn Wreath":
+                case "Nightshade Assassin Guardian":
+                case "Reversed Blade of Thorns":
+                case "Reversed Daggers of Thorns":
+                case "Envenomed Whip of Agony":
+                case "Envenomed Gauntlet":
+                case "Poisonous Rogue":
+                case "Nightshade Thorn Assasasin":
+                    YUM.BuyAllMerge(req.Name);
+                    Bot.Wait.ForPickup(req.Name);
+                    break;
+
+                case "Gold Voucher 25k":
+                    Adv.BuyItem("sunlightzone", 2288, 57304, quant, 7782);
+                    Bot.Wait.ForPickup(req.Name);
+                    break;
+
+                case "Vindicator Archer's Hat + Locks":
+                case "Dawn Vindicator Archer":
+                case "Dawn Vindicator General":
+                case "Bright Bow of the Dawn":
+                case "Vindicator General's Hood":
+                case "Vindicator General's Hood + Locks":
+                case "Blessed Shield of Vindication":
+                case "Blessed Hammers of the Dawn":
+                case "Blessed Hammer of the Dawn":
+                    DFM.BuyAllMerge(req.Name);
+                    Bot.Wait.ForPickup(req.Name);
+                    break;
+
+                case "Gilded Scout's Quiver":
+                case "Vindicator Scout's Bow":
+                    Core.HuntMonster("neofortress", "Vindicator Recruit", req.Name, isTemp: false);
+
+                    break;
+
+                case "Blessed Rune of Vindication":
+                case "Battlegear of Vindication":
+                    Core.HuntMonster("neofortress", "Vindicator General", req.Name, isTemp: false);
+                    Bot.Wait.ForPickup(req.Name);
                     break;
 
             }
@@ -139,5 +195,31 @@ public class ShadowrealmMerge
         new Option<bool>("55358", "Hollowborn DragonSlayer's Scarf", "Mode: [select] only\nShould the bot buy \"Hollowborn DragonSlayer's Scarf\" ?", false),
         new Option<bool>("55359", "Hollowborn DragonSlayer's Cape", "Mode: [select] only\nShould the bot buy \"Hollowborn DragonSlayer's Cape\" ?", false),
         new Option<bool>("55360", "Hollowborn DragonSlayer's Blade", "Mode: [select] only\nShould the bot buy \"Hollowborn DragonSlayer's Blade\" ?", false),
+        new Option<bool>("78297", "Hollowborn Vine Rogue", "Mode: [select] only\nShould the bot buy \"Hollowborn Vine Rogue\" ?", false),
+        new Option<bool>("78298", "Hollowborn Thorn Assassin", "Mode: [select] only\nShould the bot buy \"Hollowborn Thorn Assassin\" ?", false),
+        new Option<bool>("78299", "Hollowborn Assassin's Locks", "Mode: [select] only\nShould the bot buy \"Hollowborn Assassin's Locks\" ?", false),
+        new Option<bool>("78300", "Hollowborn Assassin's Locks + Scarf", "Mode: [select] only\nShould the bot buy \"Hollowborn Assassin's Locks + Scarf\" ?", false),
+        new Option<bool>("78301", "Hollowborn Assassin's Hair", "Mode: [select] only\nShould the bot buy \"Hollowborn Assassin's Hair\" ?", false),
+        new Option<bool>("78302", "Hollowborn Assassin's Hair + Scarf", "Mode: [select] only\nShould the bot buy \"Hollowborn Assassin's Hair + Scarf\" ?", false),
+        new Option<bool>("78303", "Hollowborn Wreath of Thorns", "Mode: [select] only\nShould the bot buy \"Hollowborn Wreath of Thorns\" ?", false),
+        new Option<bool>("78304", "Hollowborn Thorn Guardian", "Mode: [select] only\nShould the bot buy \"Hollowborn Thorn Guardian\" ?", false),
+        new Option<bool>("78305", "Hollowborn Blade of Thorns", "Mode: [select] only\nShould the bot buy \"Hollowborn Blade of Thorns\" ?", false),
+        new Option<bool>("78306", "Hollowborn Daggers of Thorns", "Mode: [select] only\nShould the bot buy \"Hollowborn Daggers of Thorns\" ?", false),
+        new Option<bool>("78307", "Hollowborn Whip of Agony", "Mode: [select] only\nShould the bot buy \"Hollowborn Whip of Agony\" ?", false),
+        new Option<bool>("78308", "Hollowborn Poison Claws", "Mode: [select] only\nShould the bot buy \"Hollowborn Poison Claws\" ?", false),
+        new Option<bool>("67444", "Hollowborn Ranger", "Mode: [select] only\nShould the bot buy \"Hollowborn Ranger\" ?", false),
+        new Option<bool>("67445", "Hollowborn Ranger's Hat + Locks", "Mode: [select] only\nShould the bot buy \"Hollowborn Ranger's Hat + Locks\" ?", false),
+        new Option<bool>("67446", "Hollowborn Ranger's Hat", "Mode: [select] only\nShould the bot buy \"Hollowborn Ranger's Hat\" ?", false),
+        new Option<bool>("67447", "Hollowborn Ranger Quiver", "Mode: [select] only\nShould the bot buy \"Hollowborn Ranger Quiver\" ?", false),
+        new Option<bool>("67448", "Enchanted Hollowborn Bow", "Mode: [select] only\nShould the bot buy \"Enchanted Hollowborn Bow\" ?", false),
+        new Option<bool>("67449", "Hollowborn Ranger Bow", "Mode: [select] only\nShould the bot buy \"Hollowborn Ranger Bow\" ?", false),
+        new Option<bool>("67450", "Hollowborn Battlemage", "Mode: [select] only\nShould the bot buy \"Hollowborn Battlemage\" ?", false),
+        new Option<bool>("67451", "Hollowborn Battlemage Hood", "Mode: [select] only\nShould the bot buy \"Hollowborn Battlemage Hood\" ?", false),
+        new Option<bool>("67452", "Hollowborn Battlemage Hood + Locks", "Mode: [select] only\nShould the bot buy \"Hollowborn Battlemage Hood + Locks\" ?", false),
+        new Option<bool>("67453", "Hollowborn Battlemage Rune", "Mode: [select] only\nShould the bot buy \"Hollowborn Battlemage Rune\" ?", false),
+        new Option<bool>("67454", "Hollowborn Battlemage Sigil", "Mode: [select] only\nShould the bot buy \"Hollowborn Battlemage Sigil\" ?", false),
+        new Option<bool>("67455", "Hollowborn Battlemage Hammer", "Mode: [select] only\nShould the bot buy \"Hollowborn Battlemage Hammer\" ?", false),
+        new Option<bool>("67456", "Hollowborn Battlemage Hammers", "Mode: [select] only\nShould the bot buy \"Hollowborn Battlemage Hammers\" ?", false),
+        new Option<bool>("67457", "Hollowborn Battlemage Armaments", "Mode: [select] only\nShould the bot buy \"Hollowborn Battlemage Armaments\" ?", false),
     };
 }

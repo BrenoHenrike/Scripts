@@ -867,7 +867,7 @@ public class UnlockForgeEnhancements
         Core.HuntMonster("Towerofdoom10", "*", "Ethereal Essence", 250, isTemp: false);
 
         Core.EnsureComplete(8825);
-        if (Bot.Config.Get<bool>("SellQuestClass"))
+        if (Bot.Config!.Get<bool>("SellQuestClass"))
             Core.SellItem("Healer");
         Core.Logger("Enhancement Unlocked: Examen");
     }
@@ -891,7 +891,7 @@ public class UnlockForgeEnhancements
         Core.HuntMonster("Towerofdoom10", "*", "Ethereal Essence", 650, isTemp: false);
 
         Core.EnsureComplete(8826);
-        if (Bot.Config.Get<bool>("SellQuestClass"))
+        if (Bot.Config!.Get<bool>("SellQuestClass"))
             Core.SellItem("Warrior");
         Core.Logger("Enhancement Unlocked: Anima");
     }
@@ -915,7 +915,7 @@ public class UnlockForgeEnhancements
         Core.HuntMonster("Towerofdoom10", "*", "Ethereal Essence", 650, isTemp: false);
 
         Core.EnsureComplete(8827);
-        if (Bot.Config.Get<bool>("SellQuestClass"))
+        if (Bot.Config!.Get<bool>("SellQuestClass"))
             Core.SellItem("Mage");
         Core.Logger("Enhancement Unlocked: Pneuma");
     }

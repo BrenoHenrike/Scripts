@@ -119,7 +119,7 @@ public class StarFestival
             Core.HuntMonster("astraviajudge", "La", "Righteous Requiem");
             Core.HuntMonster("theworld", "Ti", "Gentle Glissando");
             Core.HuntMonster("theworld", "Re", "Reckless Rhapsody");
-            Adv.BoostHuntMonster($"theworld", "Encore Darkon", "Conductor’s Canata");
+            Core.HuntMonster($"theworld", "Encore Darkon", "Conductor’s Canata");
             Core.EnsureComplete(8754);
         }
 
@@ -128,9 +128,8 @@ public class StarFestival
         {
             Core.EnsureAccept(8755);
             Bot.Quests.UpdateQuest(8094);
-            Adv.BoostHuntMonster($"transformation", "Queen of Monsters", "Queen’s Remnant");
-            Core.HuntMonster("transformation", "Chaos Spitter", "Terrestrial Chaos", 30);
-            Core.HuntMonster($"dreadforest", "Lord Reignolds", "Traitor’s Remnant");
+            Core.HuntMonster($"transformation", "Queen of Monsters", "Queen’s Remnant");
+            Core.HuntMonsterMapID("transformation", 16, "Terrestrial Chaos", 30);
             Core.HuntMonster($"lagunabeach", "Heart of Chaos", "Heart’s Remnant");
             Core.HuntMonster($"lagunabeach", "Chaos Kelp", "Aquatic Chaos", 25);
             Core.EnsureComplete(8755);

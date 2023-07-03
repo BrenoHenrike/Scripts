@@ -131,34 +131,43 @@ public class CurrentDailyGifts
             //GetGift(AvailableUntil(27, 3), "eden", "Klawaii Machine", "Minty Fresh Gacha Orb", "Sweet Treat Gacha Orb", "Dragon Lover's Gacha Orb", "TreasureHunter's Gacha Orb", "TechFiend's Gacha Orb", "TreasureHunter's Gacha Orb Decor", "Sweet Treat Gacha Orb Decor", "Minty Fresh Gacha Orb Decor", "TechFiend's Gacha Orb Decor", "Dragon Lover's Gacha Orb Decor");
             #endregion
 
-            #region April 2023
+            #region April 2023 ( + Scavenger Clues)        
             //Dark Scavenger Clue
             GetGift(AvailableUntil(3, 4), "fireplanewar", "ShadowClaw", "Trident of Destruction");
+
             //Shadowy Scavenger Clue
             GetGift(AvailableUntil(27, 3), "manacradle", "The Mainyu", "ShadowFlame Eviscerator Pistol", "ShadowFlame Eviscerator Pistols", "ShadowFlame Eviscerator Revolver", "ShadowFlame Eviscerator Revolvers", "ShadowFlame Annihilator Rifle", "ShadowFlame Devastator");
+
             //Undead Scavenger Clue
             GetGift(AvailableUntil(10, 4), "dragontown", "Chaos Fluffy", "Dracosaster", "Dracotastrophe");
+
             //O_o Scavenger Clue
             GetGift(AvailableUntil(17, 4), "andre", "Giant Fist", "Navel Top Hat");
+
             //GigaWUT Scavenger Clue
             GetGift(AvailableUntil(24, 4), "dvg", "Munthor", "Giga Twilly");
+
             //Golden Treasure Hunt clue
             GetGift(AvailableUntil(1, 5), "necrodungeon", 48, "Golden Spear of Light");
+
             //Message Capsule Clue
             TGM.BuyAllMerge("L'il Twiggu Guest");
             TGM.BuyAllMerge("Baby Twiggu's Pod Pet");
 
-            GetGift(AvailableUntil(10, 6), "ashray", "Ashray Fisherman", "Twig's Totally FUN-ctional Ride");
-            GetGift(AvailableUntil(16, 6), "garden", "Creature 35", "Dark Astravian General Lance");
-            
             //Throny Scavenger Clue
             RR.GetWeapons();
 
+            GetGift(AvailableUntil(10, 6), "ashray", "Ashray Fisherman", "Twig's Totally FUN-ctional Ride");
+            GetGift(AvailableUntil(16, 6), "garden", "Creature 35", "Dark Astravian General Lance");
+            #endregion April 2023 ( + Scavenger Clues) 
+
+            #region July 2023
+            GetGift(Permanent, "ontherun", "lumberhorc", "Maple Party Twig");
+
+            #endregion July 2023
 
 
-            // Fortunate Grenwog Garb
-            // GetGift(AvailableUntil(30, 4), "elixirgrenwog", "Elixir Grenwog", "Fortunate Grenwog Garb");
-            #endregion
+
             //GetGift(AvailableUntil(1, 1), "map", "monster", "");
             //GetGift(Permanent, "map", "monster", "");
 
