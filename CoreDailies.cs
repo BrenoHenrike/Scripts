@@ -678,7 +678,7 @@ public class CoreDailies
 
         // Weekly Power Gem Quest
         Core.EnsureAccept(9109);
-        Core.HuntMonster("warsneevil", "Sneevil", "News Scroll", log: false);
+        Core.HuntMonster("boxes", "Sneevil", "News Scroll", log: false);
         Core.EnsureComplete(9109);
         Bot.Wait.ForPickup("Power Gem");
         Core.ToBank("Power Gem");
