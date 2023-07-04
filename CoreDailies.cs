@@ -390,7 +390,7 @@ public class CoreDailies
         }
 
         if (Core.CheckInventory("Shurpu Blaze Token", 84))
-            Core.BuyItem("xancave", 447, 12812, shopItemID: 1278); 
+            Core.BuyItem("xancave", 447, 12812, shopItemID: 1278);
         Core.ToBank("Shurpu Blaze Token");
     }
 
@@ -663,21 +663,32 @@ public class CoreDailies
 
     public void PowerGem()
     {
+        if (!Bot.Flash.CallGameFunction<bool>("world.myAvatar.isEmailVerified"))
+        {
+            Core.Logger("Account doesn't have a verified email.");
+            return;
+        }
+
         Core.Logger("Weekly: Power Gems");
-        if (Core.CheckInventory("Power Gem", 1000, false))
+        if (Core.CheckInventory("Power Gem", 1000, false) || !CheckDaily(9109))
         {
             Core.Logger("You have the maximum amount of Power Gems");
             return;
         }
 
-        Core.JumpWait();
-        int PreQuant = Bot.Inventory.GetQuantity("Power Gem");
-        Bot.Send.Packet($"%xt%zm%powergem%{Bot.Map.RoomID}%");
-        Bot.Sleep(Core.ActionDelay);
-        if (Bot.Inventory.GetQuantity("Power Gem") != PreQuant)
-            Core.Logger($"You received {Bot.Inventory.GetQuantity("Power Gem") - PreQuant} Power Gem");
-        else Core.Logger("You received no Power Gem");
+        // Weekly Power Gem Quest
+        Core.EnsureAccept(9109);
+        Core.HuntMonster("warsneevil", "Sneevil", "News Scroll", log: false);
+        Core.EnsureComplete(9109);
+        Bot.Wait.ForPickup("Power Gem");
         Core.ToBank("Power Gem");
+        // Core.JumpWait();
+        // int PreQuant = Bot.Inventory.GetQuantity("Power Gem");
+        // Bot.Send.Packet($"%xt%zm%powergem%{Bot.Map.RoomID}%");
+        // Bot.Sleep(Core.ActionDelay);
+        // if (Bot.Inventory.GetQuantity("Power Gem") != PreQuant)
+        //     Core.Logger($"You received {Bot.Inventory.GetQuantity("Power Gem") - PreQuant} Power Gem");
+        // else Core.Logger("You received no Power Gem");
     }
 
     public void GoldenInquisitor()
