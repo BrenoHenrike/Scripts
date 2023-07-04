@@ -17,7 +17,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 104396,
+    "size": 104175,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreDailies.cs",
-    "size": 42557,
+    "size": 42997,
     "fileName": "CoreDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreDailies.cs"
   },
@@ -2340,7 +2340,7 @@
       "rare-items"
     ],
     "path": "Other/0CurrentDailyGifts.cs",
-    "size": 19735,
+    "size": 19885,
     "fileName": "0CurrentDailyGifts.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/0CurrentDailyGifts.cs"
   },
@@ -3046,7 +3046,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 64042,
+    "size": 64067,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -3688,6 +3688,21 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AprilFools/SuperSLAYIN'Badge(GardenQuest).cs"
   },
   {
+    "name": "Magic magicmeadow Story",
+    "description": "This will finish the Magic magicmeadow storyline.",
+    "tags": [
+      "magic",
+      "magicmeadow",
+      "seasonal",
+      "april",
+      "fools"
+    ],
+    "path": "Seasonal/AprilFools/Magicmeadow.cs",
+    "size": 1492,
+    "fileName": "Magicmeadow.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AprilFools/Magicmeadow.cs"
+  },
+  {
     "name": "3D Battleon Storyline",
     "description": "This script will complete Cysero's quests in aqw3d.",
     "tags": [
@@ -3730,21 +3745,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AprilFools/MeateorHuntMerge(UnoriginalRecipe).cs"
   },
   {
-    "name": "Magic Meaderp Story",
-    "description": "This will finish the Magic Meaderp storyline.",
-    "tags": [
-      "magic",
-      "meaderp",
-      "seasonal",
-      "april",
-      "fools"
-    ],
-    "path": "Seasonal/AprilFools/MagicMeaderp.cs",
-    "size": 1565,
-    "fileName": "MagicMeaderp.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AprilFools/MagicMeaderp.cs"
-  },
-  {
     "name": "Aries Chrysomallus Rewards",
     "description": "does the \"aries chrysomallus\" quest for the rewards.",
     "tags": [
@@ -3769,7 +3769,7 @@
       "merge"
     ],
     "path": "Seasonal/AprilFools/NeighBeleenMerge.cs",
-    "size": 15920,
+    "size": 15919,
     "fileName": "NeighBeleenMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AprilFools/NeighBeleenMerge.cs"
   },
@@ -9781,7 +9781,7 @@
       "null"
     ],
     "path": "Story/LordsofChaos/Core13LoC.cs",
-    "size": 80383,
+    "size": 80055,
     "fileName": "Core13LoC.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/LordsofChaos/Core13LoC.cs"
   },
@@ -10090,7 +10090,7 @@
       "fiendshard"
     ],
     "path": "Story/Nation/Fiendshard.cs",
-    "size": 3665,
+    "size": 3678,
     "fileName": "Fiendshard.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Nation/Fiendshard.cs"
   },
@@ -13034,6 +13034,32 @@
     "size": 5192,
     "fileName": "EtherstormEvilMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/EtherstormEvilMerge.cs"
+  },
+  {
+    "name": "Starsinc Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Starsinc Merge [678] in /starsinc",
+    "tags": [
+      "starsinc",
+      "merge",
+      "starsinc",
+      "finals",
+      "base",
+      "skull",
+      "horned",
+      "galactic",
+      "stars",
+      "primes",
+      "exo",
+      "wings",
+      "legendary",
+      "prime",
+      "dominus",
+      "visor"
+    ],
+    "path": "Other/MergeShops/StarsincMerge.cs",
+    "size": 7237,
+    "fileName": "StarsincMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/StarsincMerge.cs"
   },
   {
     "name": "Diplomat Merge",

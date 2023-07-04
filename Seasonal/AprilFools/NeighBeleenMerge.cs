@@ -19,7 +19,7 @@ public class NeighBeleenMerge
     private CoreFarms Farm = new();
     private CoreAdvanced Adv = new();
     private static CoreAdvanced sAdv = new();
-    private MagicMeaderp MM = new();
+    private Magicmeadow MM = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
     public string[] MultiOptions = { "Generic", "Select" };

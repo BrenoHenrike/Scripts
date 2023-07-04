@@ -157,6 +157,10 @@ public class CurrentDailyGifts
             //Throny Scavenger Clue
             RR.GetWeapons();
 
+            // Fireworks twilly
+            if (DateTime.Now.Month == 7)
+                Core.BuyItem(Bot.Map.Name, 1348, 78735, shopItemID: 48402);
+
             GetGift(AvailableUntil(10, 6), "ashray", "Ashray Fisherman", "Twig's Totally FUN-ctional Ride");
             GetGift(AvailableUntil(16, 6), "garden", "Creature 35", "Dark Astravian General Lance");
             #endregion April 2023 ( + Scavenger Clues) 

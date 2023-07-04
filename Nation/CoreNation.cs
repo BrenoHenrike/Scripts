@@ -464,6 +464,7 @@ public class CoreNation
         Core.AddDrop("Essence of Nulgath");
         Core.EquipClass(ClassType.Farm);
         Core.KillMonster("tercessuinotlim", "m2", "Bottom", "Dark Makai", "Essence of Nulgath", quant, false);
+        Core.JumpWait();
     }
 
     /// <summary>
