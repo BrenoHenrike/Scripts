@@ -150,7 +150,7 @@ public class CoreIsleOfFotia
         if (!Story.QuestProgression(3036))
         {
             Core.EnsureAccept(3036);
-            Core.HuntMonster("judgement", Bot.Flash.GetGameObject<string>("world.myAvatar.objData.strGender") == "M" ? "Female Mourner" : "Male Mourner", "Delivered Asphodel Flower", 8);
+            Core.HuntMonster("judgement", Bot.Flash.GetGameObject<string>("world.myAvatar.objData.strGender") == "M" ? "Male Mourner" : "Female Mourner", "Delivered Asphodel Flower", 8);
             Core.EnsureComplete(3036);
         }
 
