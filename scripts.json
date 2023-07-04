@@ -2681,13 +2681,16 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/SnowballAmberarms.cs"
   },
   {
-    "name": "HollowbornReapersScythe",
-    "description": "null",
+    "name": "Hollowborn Reaper's Scythe",
+    "description": "This script will farm Hollowborn Reaper's Scythe",
     "tags": [
-      "null"
+      "hollowborn",
+      "reaper",
+      "scythe",
+      "shadowrealm"
     ],
     "path": "Hollowborn/HollowbornReapersScythe.cs",
-    "size": 1002,
+    "size": 1116,
     "fileName": "HollowbornReapersScythe.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/HollowbornReapersScythe.cs"
   },
