@@ -83,14 +83,9 @@ public class StarsincMerge
                     break;
 
                 case "Brimstone Scrap":
-                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster("starsinc", "Living Star", "Living Star Defeated", 30, isTemp: false);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    Core.CancelRegisteredQuests();
+                    Core.HuntMonster("starsinc", "Infernal Imp", req.Name, isTemp: false);
+                    Bot.Wait.ForPickup(req.Name);
                     break;
 
                 case "Star Fragment":
@@ -99,7 +94,7 @@ public class StarsincMerge
                     Core.RegisterQuests(4413);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("starsinc", "Infernal Imp", req.Name, isTemp: false);
+                        Core.HuntMonster("starsinc", "Living Star", "Living Star Defeated", 30, isTemp: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
@@ -118,7 +113,6 @@ public class StarsincMerge
 
                         Bot.Wait.ForPickup(req.Name);
                     }
-                    Core.CancelRegisteredQuests();
                     break;
 
                 case "Prime's Respect":
