@@ -390,7 +390,7 @@ public class CoreDailies
         }
 
         if (Core.CheckInventory("Shurpu Blaze Token", 84))
-            Core.BuyItem("xancave", 447, "Pyromancer", shopItemID: 1278);
+            Core.BuyItem("xancave", 447, 12812, shopItemID: 1278); 
         Core.ToBank("Shurpu Blaze Token");
     }
 
