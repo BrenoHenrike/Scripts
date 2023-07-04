@@ -3688,6 +3688,21 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AprilFools/SuperSLAYIN'Badge(GardenQuest).cs"
   },
   {
+    "name": "Magic magicmeadow Story",
+    "description": "This will finish the Magic magicmeadow storyline.",
+    "tags": [
+      "magic",
+      "magicmeadow",
+      "seasonal",
+      "april",
+      "fools"
+    ],
+    "path": "Seasonal/AprilFools/Magicmeadow.cs",
+    "size": 1492,
+    "fileName": "Magicmeadow.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AprilFools/Magicmeadow.cs"
+  },
+  {
     "name": "3D Battleon Storyline",
     "description": "This script will complete Cysero's quests in aqw3d.",
     "tags": [
@@ -3730,21 +3745,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AprilFools/MeateorHuntMerge(UnoriginalRecipe).cs"
   },
   {
-    "name": "Magic Meaderp Story",
-    "description": "This will finish the Magic Meaderp storyline.",
-    "tags": [
-      "magic",
-      "meaderp",
-      "seasonal",
-      "april",
-      "fools"
-    ],
-    "path": "Seasonal/AprilFools/MagicMeaderp.cs",
-    "size": 1565,
-    "fileName": "MagicMeaderp.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AprilFools/MagicMeaderp.cs"
-  },
-  {
     "name": "Aries Chrysomallus Rewards",
     "description": "does the \"aries chrysomallus\" quest for the rewards.",
     "tags": [
@@ -3769,7 +3769,7 @@
       "merge"
     ],
     "path": "Seasonal/AprilFools/NeighBeleenMerge.cs",
-    "size": 15920,
+    "size": 15919,
     "fileName": "NeighBeleenMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AprilFools/NeighBeleenMerge.cs"
   },
