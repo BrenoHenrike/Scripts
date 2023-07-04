@@ -13036,6 +13036,32 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/EtherstormEvilMerge.cs"
   },
   {
+    "name": "Starsinc Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Starsinc Merge [678] in /starsinc",
+    "tags": [
+      "starsinc",
+      "merge",
+      "starsinc",
+      "finals",
+      "base",
+      "skull",
+      "horned",
+      "galactic",
+      "stars",
+      "primes",
+      "exo",
+      "wings",
+      "legendary",
+      "prime",
+      "dominus",
+      "visor"
+    ],
+    "path": "Other/MergeShops/StarsincMerge.cs",
+    "size": 7533,
+    "fileName": "StarsincMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/StarsincMerge.cs"
+  },
+  {
     "name": "Diplomat Merge",
     "description": "farms the materials and gets teh items from the diplomat merge in /castle",
     "tags": [
