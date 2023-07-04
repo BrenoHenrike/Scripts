@@ -87,7 +87,7 @@ public class Fiendshard_Story
                 Core.Jump("r9");
             }
             Core.EnsureAccept(7898);
-            Core.KillMonster("fiendshard", "r9", "Left", "Nulgath's Fiend Shard", "Piece of the Shard");
+            Core.KillMonster("fiendshard", "r9", "Left", "Nulgath's Fiend Shard", "Nulgath's Fiend Shard Destroyed");
             Core.KillMonster("fiendshard", "r9", "Left", "Paladin Fiend", "Fiends Fended Off", 15);
             Core.Jump("Enter", "Spawn");
             Bot.Wait.ForCombatExit();
