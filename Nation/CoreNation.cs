@@ -150,35 +150,28 @@ public class CoreNation
         if (Core.CheckInventory("Dark Crystal Shard", quant))
             return;
 
-        Core.AddDrop(tercessBags);
-        Core.AddDrop(bagDrops);
-        int i = 1;
-        Core.Logger($"Farming {quant} Dark Crystal Shard");
+        Core.AddDrop(tercessBags.Concat(bagDrops).ToArray());
+        Core.FarmingLogger("Dark Crystal Shard", quant);
 
+        Core.RegisterQuests(570);
         while (!Bot.ShouldExit && !Core.CheckInventory("Dark Crystal Shard", quant))
         {
             Core.EquipClass(ClassType.Solo);
-            Core.EnsureAccept(570);
             Core.HuntMonster("faerie", "Aracara", "Aracara's Fang", isTemp: false, log: false);
             Core.HuntMonster("hydra", "Hydra Head", "Hydra Scale", isTemp: false, log: false);
             Core.KillVath("Strand of Vath's Hair", 1, false, false);
             Core.HuntMonster("yokaiwar", "O-dokuro's Head", "O-dokuro's Tooth", isTemp: false, log: false);
             Core.KillEscherion("Escherion's Chain", publicRoom: true);
-            if (!Core.CheckInventory("Defeated Makai", 50))
-            {
-                Core.EquipClass(ClassType.Farm);
-                Core.KillMonster("tercessuinotlim", "m2", "Bottom", "Dark Makai", "Defeated Makai", 50, false, log: false);
-                Core.JumpWait();
-            }
+
+            Core.EquipClass(ClassType.Farm);
+            Core.KillMonster("tercessuinotlim", "m2", "Bottom", "Dark Makai", "Defeated Makai", 50, false, log: false);
+            Core.JumpWait();
+
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("djinn", "Tibicenas", "Tibicenas' Chain", publicRoom: true, log: false);
-            Core.EnsureComplete(570);
             Bot.Wait.ForPickup("Dark Crystal Shard");
-            Core.Logger($"Completed x{i++}");
-            if (Bot.Inventory.IsMaxStack("Dark Crystal Shard"))
-                Core.Logger("Max Stack Hit.");
-            else Core.Logger($"Dark Crystal Shard: {Bot.Inventory.GetQuantity("Dark Crystal Shard")}/{quant}");
         }
+        Core.CancelRegisteredQuests();
     }
 
     /// <summary>
