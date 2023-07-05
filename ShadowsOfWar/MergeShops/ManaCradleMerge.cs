@@ -100,7 +100,7 @@ public class ManaCradleMerge
                         Bot.Skills.StartAdvanced(Core.CheckInventory("Yami no Ronin") ? "Yami no Ronin" : "Dragon of Time", true, ClassUseMode.Solo);
                     else Core.EquipClass(ClassType.Solo);
                     Core.AddDrop(SoW.MalgorDrops.Concat(SoW.MainyuDrops).ToArray());
-                    Core.HuntMonster("manacradle", "The Mainyu", req.Name);
+                    Core.HuntMonster("manacradle", "The Mainyu", req.Name, isTemp: false);
                     break;
 
             }
