@@ -27,7 +27,7 @@ public class ArchfiendDeathLord
     public bool DontPreconfigure = true;
     public List<IOption> Options = new()
     {
-        new Option<bool>("OnlyArmor", "Only get the Armor?", "Whether to only get the Armor or all quest rewards"),
+        new Option<bool>("OnlyArmor", "Only get the Armor?", "Whether to only get the Armor or all quest rewards", false),
         new Option<RewardChoice>("RewardChoice", "Choose Your Reward", "", RewardChoice.All),
         CoreBots.Instance.SkipOptions,
     };
@@ -36,7 +36,7 @@ public class ArchfiendDeathLord
     {
         Core.SetOptions();
 
-        GetArm(Bot.Config!.Get<bool>("OnlyArmor"), RewardChoice.All);
+        GetArm(Bot.Config!.Get<bool>("OnlyArmor"), Bot.Config!.Get<RewardChoice>("RewardChoice"));
 
         Core.SetOptions(false);
     }
@@ -48,19 +48,30 @@ public class ArchfiendDeathLord
 
         else if (OnlyArmor && Reward == RewardChoice.All)
             Core.Logger("With \"OnlyArmor\" Please Select the \"Archfiend DeathLord\" Option from the list.", messageBox: true, stopBot: true);
-        else Core.AddDrop((int)Reward);
 
         Fiendshard.Fiendshard_Questline();
 
         if (Reward == RewardChoice.All)
         {
-            foreach (RewardChoice reward in Enum.GetValues(typeof(RewardChoice)))
+            Core.Logger($"section 1");
+            bool skipFirstItem = true;
+            foreach (RewardChoice item in Enum.GetValues(typeof(RewardChoice)))
             {
-                if (Core.CheckInventory((int)Reward, toInv: false))
-                    break;
+                string? itemName = Enum.GetName(typeof(RewardChoice), item);
+                Bot.Drops.Add(itemName!.Replace("_", " "));
 
-                Core.FarmingLogger(reward.ToString(), 1);
-                while (!Bot.ShouldExit && !Core.CheckInventory((int)reward, toInv: false))
+                if (skipFirstItem)
+                {
+                    skipFirstItem = false;
+                    continue;
+                }
+
+                if (Core.CheckInventory((int)item, toInv: false))
+                    continue;
+
+                Core.FarmingLogger(itemName!.Replace("_", " "), 1);
+
+                while (!Bot.ShouldExit && !Core.CheckInventory((int)item, toInv: false))
                 {
                     Core.EnsureAccept(7900);
                     Nation.FarmBloodGem(20);
@@ -70,16 +81,17 @@ public class ArchfiendDeathLord
                     Nation.FarmDiamondofNulgath(150);
                     Nation.FarmGemofNulgath(50);
                     Willpower.Unidentified34(10);
-                    Core.EnsureComplete(7900, (int)reward);
+                    Core.EnsureComplete(7900, (int)item);
 
-                    Bot.Wait.ForPickup((int)reward);
+                    Bot.Wait.ForPickup((int)item);
                 }
             }
         }
 
         else
         {
-            Core.FarmingLogger(Reward.ToString(), 1);
+            Core.Logger($"section 2");
+            Core.FarmingLogger(Reward.ToString().Replace("_", " "), 1);
             while (!Bot.ShouldExit && !Core.CheckInventory((int)Reward, toInv: false))
             {
                 Core.EnsureAccept(7900);
@@ -99,7 +111,7 @@ public class ArchfiendDeathLord
 
     public enum RewardChoice
     {
-        All,
+        All = 1,
         Archfiend_DeathLord = 54366,
         Champion_Ender_of_Nulgath = 54377,
         Doomblade_of_Genocide = 54379,
