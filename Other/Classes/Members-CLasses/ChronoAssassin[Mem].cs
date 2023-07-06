@@ -54,9 +54,14 @@ public class ChronoAssassin
         while (!Bot.ShouldExit && !Core.CheckInventory("Saeculum Gem", GemQuant))
         {
             Core.EnsureAccept(5085);
+            
+            Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("tachyon", "Svelgr the Devourer", "Svelgr Fang", isTemp: false);
+
+            Core.EquipClass(ClassType.Farm);
             Core.HuntMonster("portalwar", "Chronorysa", "Sands of Time", 6, isTemp: false);
             Core.HuntMonster("portalmaze", "Time Wraith", "Wraith Wisp", 12, isTemp: false);
+
             Core.EnsureComplete(5085);
             Bot.Wait.ForPickup("Saeculum Gem");
             Core.Logger($"Complete Quest {i++} Time[s]");
