@@ -653,7 +653,7 @@ public class CoreAdvanced
                         .Select(b => b.Item1);
                 // Should always return true if its two pets or armors or ground runes
 
-                if (filter != null && filter.Any(x => x != null))
+                if (filter != null && filter.Any(x => x != null && x.ID > 0))
                     setToReturn(filter);
                 else
                 {
