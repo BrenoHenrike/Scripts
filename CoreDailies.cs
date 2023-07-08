@@ -750,6 +750,43 @@ public class CoreDailies
         }
     }
 
+    // public void templeshrineDailies()
+    // {
+    //     if(Core.isCompletedBefore(?))
+    //     if (!CheckDaily(9303) && !CheckDaily(9304) && !CheckDaily(9305))
+    //         return;
+
+    //     //Night Falls (Daily Bonus) - Sliver of Moonlight
+    //     if (CheckDaily(9303))
+    //     {
+    //         Core.EnsureAccept(9303);
+    //         Core.HuntMonster("midnightsun", "*", "Midnight Moondrop");
+    //         Core.EnsureComplete(9303);
+    //         Bot.Wait.ForPickup("Sliver of Moonlight");
+    //     }
+
+    //     //Dawn Breaks (Daily Bonus) - Sliver of Sunlight
+    //     if (CheckDaily(9304))
+    //     {
+    //         Core.EnsureAccept(9304);
+    //         Core.HuntMonster("solsticemoon", "*", "Solstice Sundew");
+    //         Core.EnsureComplete(9304);
+    //         Bot.Wait.ForPickup("Sliver of Sunlight");
+    //     }
+
+    //     //boss 3 requires taunting, not doable for skua atm.
+    //     //Frozen Cycle (Daily Bonus) - Ecliptic Offering
+    //     if (CheckDaily(9305))
+    //     {
+    //         Core.EnsureAccept(9305);
+    //         Core.Join("templeshrine");
+    //         Core.HuntMonster("ascendeclipse", "monster", "Midnight's Shadow");
+    //         Core.HuntMonster("ascendeclipse", "monster", "Solstice's Shadow");
+    //         Core.EnsureComplete(9305);
+    //         Bot.Wait.ForPickup("Ecliptic Offering");
+    //     }
+    // }
+
 
     public void BreakIntotheHoard(bool KeepReward = false, bool bank = false)
     {
