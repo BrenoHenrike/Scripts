@@ -2848,6 +2848,22 @@ public class CoreBots
 
             #region Simple Quest Bypasses
 
+            case "ascendeclipse":
+                if (!CheckInventory("Rite of Ascension"))
+                    Logger("Item Required is a server-side check, cannot ghost it.");
+                else
+                {
+                    SendPackets($"%xt%zm%dungeonQueue%{Bot.Map.RoomID}%{map}-{PrivateRoomNumber}%");
+                    Bot.Wait.ForMapLoad(map);
+                }
+                break;
+
+            case "solsticemoon":
+            case "midnightsun":
+                SendPackets($"%xt%zm%dungeonQueue%{Bot.Map.RoomID}%{map}-{PrivateRoomNumber}%");
+                Bot.Wait.ForMapLoad(map);
+                break;
+
             case "temple":
                 SimpleQuestBypass((49, 25));
                 break;
