@@ -2708,10 +2708,6 @@ public class CoreFarms
         if (FactionRank("Yokai") >= rank)
             return;
 
-        // if (Core.IsMember)
-        //     MembershipDues(MemberShipsIDS.Yokai, rank);
-        // else
-        {
             Core.EquipClass(ClassType.Farm);
             ToggleBoost(BoostType.Reputation);
             Core.SavedState();
@@ -2726,7 +2722,6 @@ public class CoreFarms
             Core.CancelRegisteredQuests();
             ToggleBoost(BoostType.Reputation, false);
             Core.SavedState(false);
-        }
     }
 
     public void SwagTokenA(int quant = 100)
