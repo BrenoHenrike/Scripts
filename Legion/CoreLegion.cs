@@ -504,7 +504,7 @@ public class CoreLegion
         JoinLegion();
 
         Core.EquipClass(ClassType.Farm);
-        Adv.BestGear(RacialGearBoost.Dragonkin);
+        Adv.BestGear(RacialGearBoost.Undead);
 
         Core.FarmingLogger("Legion Token", quant);
         Core.AddDrop("Legion Token");
