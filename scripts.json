@@ -11615,7 +11615,7 @@
       "null"
     ],
     "path": "Other/FarmJoeKits/CoreFarmerJoe.cs",
-    "size": 21816,
+    "size": 21892,
     "fileName": "CoreFarmerJoe.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/CoreFarmerJoe.cs"
   },
@@ -12873,7 +12873,7 @@
       "null"
     ],
     "path": "Nation/Various/ArchfiendDeathLord.cs",
-    "size": 4427,
+    "size": 4411,
     "fileName": "ArchfiendDeathLord.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/ArchfiendDeathLord.cs"
   },
@@ -16202,15 +16202,28 @@
   },
   {
     "name": "Shorinzan Merge",
-    "description": "This script will merge all the items needed for the Shorinzan merge.",
+    "description": "This bot will farm the items belonging to the selected mode for the Shorinzan Merge [2148] in /starfest",
     "tags": [
-      "farm",
+      "shorinzan",
       "merge",
-      "star-festival",
-      "shorinzan"
+      "starfest",
+      "starry",
+      "samurai",
+      "samurais",
+      "backswords",
+      "aurelian",
+      "aurous",
+      "hope",
+      "fallen",
+      "stars",
+      "dark",
+      "heart",
+      "hearts",
+      "blackhole",
+      "suns"
     ],
     "path": "Seasonal/StarFestival/ShorinzanMerge.cs",
-    "size": 6691,
+    "size": 8233,
     "fileName": "ShorinzanMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StarFestival/ShorinzanMerge.cs"
   },
