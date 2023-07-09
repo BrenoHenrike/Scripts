@@ -22,6 +22,7 @@ public class ArchfiendDeathLord
     private Fiendshard_Story Fiendshard = new();
     private CoreNation Nation = new();
     private WillpowerExtraction Willpower = new();
+    public CoreAdvanced Adv = new();
 
     public string OptionsStorage = "ArchfiendDeathLord";
     public bool DontPreconfigure = true;
@@ -53,6 +54,7 @@ public class ArchfiendDeathLord
 
         if (Reward == RewardChoice.All)
         {
+            Adv.BestGear(GenericGearBoost.dmgAll);
             Core.Logger($"section 1");
             bool skipFirstItem = true;
             foreach (RewardChoice item in Enum.GetValues(typeof(RewardChoice)))
