@@ -29,7 +29,7 @@ public class StarFestivalGift
         Core.AddDrop(rewards);
         Core.RegisterQuests(6449);
         while (!Bot.ShouldExit && !Core.CheckInventory(rewards))
-            Core.HuntMonster("starfestival", "Fallen Star", "Fallen Star", 7, log: false);
+            Core.HuntMonster("starfest", "Fallen Star", "Fallen Star", 7, log: false);
         Core.CancelRegisteredQuests();
     }
 }
