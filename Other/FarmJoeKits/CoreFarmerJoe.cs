@@ -287,7 +287,7 @@ public class CoreFarmerJoe
             switch (Level)
             {
                 case 30:
-                    if (Bot.Player.Level >= 30)
+                    if (Bot.Player.Level >= 30 && Core.CheckInventory("Master Ranger"))
                         break;
 
                     while (!Bot.ShouldExit && Bot.Player.Level < Level && !Core.CheckInventory("Master Ranger"))
