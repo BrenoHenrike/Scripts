@@ -29,6 +29,7 @@ tags: null
 //cs_include Scripts/Other/Classes/ScarletSorceress.cs
 //cs_include Scripts/Other/Classes/BloodSorceress.cs
 //cs_include Scripts/Other/FreeBoostsQuest(10mns).cs
+//cs_include Scripts/Other/Weapons/BurningBladeOfAbezeth.cs
 //cs_include Scripts/Other/Weapons/BurningBlade.cs
 //cs_include Scripts/Other/Weapons/DualChainSawKatanas.cs
 //cs_include Scripts/Other/Weapons/EnchantedVictoryBladeWeapons.cs
@@ -72,6 +73,8 @@ tags: null
 //cs_include Scripts/Other/MergeShops/YulgarsUndineMerge.cs
 //cs_include Scripts/Hollowborn/MergeShops/DawnFortressMerge.cs
 //cs_include Scripts/Story/Hollowborn/CoreHollowbornStory.cs
+//cs_include Scripts/Other/MergeShops/CelestialChampMerge.cs
+//cs_include Scripts/Story/QueenofMonsters/Extra/CelestialArena.cs
 using Skua.Core.Interfaces;
 
 public class FarmerJoeKit0DoAll
