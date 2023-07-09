@@ -330,7 +330,6 @@ public class CoreFarmerJoe
                         Adv.SmartEnhance("Darkblood StormKing");
                         BB.GetBurningBlade();
                         Adv.BestGear(GenericGearBoost.dmgAll);
-                        InvEn.EnhanceInventory();
                     }
                     break;
 
@@ -349,7 +348,6 @@ public class CoreFarmerJoe
                         InvEn.EnhanceInventory();
                         DS.GetDSS();
                         Farm.Experience(Level);
-                        InvEn.EnhanceInventory();
                     }
                     break;
 
@@ -387,7 +385,6 @@ public class CoreFarmerJoe
                         Farm.Experience(Level);
                         InvEn.EnhanceInventory();
                         BBOA.GetBBoA();
-                        InvEn.EnhanceInventory();
                     }
                     break;
 
@@ -403,6 +400,7 @@ public class CoreFarmerJoe
                         if (Core.FarmClass == "Generic")
                             Core.FarmClass = "Scarlet Sorceress";
 
+                        InvEn.EnhanceInventory();
                         AFDeath.GetArm(true, ArchfiendDeathLord.RewardChoice.Archfiend_DeathLord);
                         Adv.BestGear(GenericGearBoost.dmgAll);
                         InvEn.EnhanceInventory();
