@@ -133,7 +133,7 @@ public class CoreArmyLite
     public string AggroMonPacket(params int[] MonsterMapIDs)
         => $"%xt%zm%aggroMon%{Bot.Map.RoomID}%{String.Join('%', MonsterMapIDs)}%";
 
-    public void SmartAggroMonStart(string map, params string[] monsters)
+    public void SmartAggroMonStart(string map, params string?[] monsters)
     {
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = getRoomNr();
@@ -437,9 +437,9 @@ public class CoreArmyLite
         Bot.Sleep(3500); //To make sure everyone attack at the same time, to avoid deaths
     }
 
-    public bool SellToSync(string item, int quant)
+    public bool SellToSync(string? item, int quant)
     {
-        if (Core.CheckInventory(item, quant))
+        if (Core.CheckInventory(item, quant) || item == null)
             return true;
         if (SellToSyncOn)
             Core.SellItem(item, 0, true);
