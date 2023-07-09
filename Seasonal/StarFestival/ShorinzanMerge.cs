@@ -1,26 +1,22 @@
 /*
 name: Shorinzan Merge
-description: This script will merge all the items needed for the Shorinzan merge.
-tags: farm, merge, star-festival, shorinzan
+description: This bot will farm the items belonging to the selected mode for the Shorinzan Merge [2148] in /starfest
+tags: shorinzan, merge, starfest, starry, samurai, samurais, backswords, aurelian, aurous, hope, fallen, stars, dark, heart, hearts, blackhole, suns
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/Seasonal/StarFestival/StarFestival.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
 
 public class ShorinzanMerge
 {
-    public IScriptInterface Bot => IScriptInterface.Instance;
-    public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new();
-    public CoreStory Story = new();
-    public CoreAdvanced Adv = new();
-    public static CoreAdvanced sAdv = new();
-    public StarFestival SF = new();
+    private IScriptInterface Bot => IScriptInterface.Instance;
+    private CoreBots Core => CoreBots.Instance;
+    private CoreFarms Farm = new();
+    private CoreAdvanced Adv = new();
+    private static CoreAdvanced sAdv = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
     public string[] MultiOptions = { "Generic", "Select" };
@@ -29,17 +25,20 @@ public class ShorinzanMerge
     //              If true, it will not stop the script if the default case triggers and the user chose to only get mats
     private bool dontStopMissingIng = false;
 
-    public void ScriptMain(IScriptInterface bot)
+    public void ScriptMain(IScriptInterface Bot)
     {
+        Core.BankingBlackList.AddRange(new[] { "Deepest Desire", "Hidden Hope", "Simple Wish", "Fallen Star Shard", "Hashihime's Heart" });
         Core.SetOptions();
-        BuyAllMerge();
 
+        BuyAllMerge();
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
+    public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
-        SF.StoryLine();
+        if (!Core.isSeasonalMapActive("yokairiver"))
+            return;
+
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("starfest", 2148, findIngredients, buyOnlyThis, buyMode: buyMode);
 
@@ -118,6 +117,20 @@ public class ShorinzanMerge
                     Core.CancelRegisteredQuests();
                     break;
 
+                case "Fallen Star Shard":
+                    Core.EquipClass(ClassType.Solo);
+                    Adv.BestGear(RacialGearBoost.Elemental);
+                    Core.HuntMonster("starfest", "Fallen Star", req.Name, quant, isTemp: false);
+                    Bot.Wait.ForPickup(req.Name);
+                    break;
+
+                case "Hashihime's Heart":
+                    Core.EquipClass(ClassType.Solo);
+                    Adv.BestGear(RacialGearBoost.Chaos);
+                    Core.HuntMonster("yokairiver", "Uji No Hashihime", req.Name, quant, isTemp: false);
+                    Bot.Wait.ForPickup(req.Name);
+                    break;
+
             }
         }
     }
@@ -132,5 +145,10 @@ public class ShorinzanMerge
         new Option<bool>("69473", "Aurelian Sword", "Mode: [select] only\nShould the bot buy \"Aurelian Sword\" ?", false),
         new Option<bool>("69474", "Aurelian Swords", "Mode: [select] only\nShould the bot buy \"Aurelian Swords\" ?", false),
         new Option<bool>("69479", "Aurous Staff of Hope", "Mode: [select] only\nShould the bot buy \"Aurous Staff of Hope\" ?", false),
+        new Option<bool>("78064", "Fallen Star's Dark Heart", "Mode: [select] only\nShould the bot buy \"Fallen Star's Dark Heart\" ?", false),
+        new Option<bool>("78065", "Fallen Star's Dark Hearts", "Mode: [select] only\nShould the bot buy \"Fallen Star's Dark Hearts\" ?", false),
+        new Option<bool>("78074", "Blackhole Sun's Heart", "Mode: [select] only\nShould the bot buy \"Blackhole Sun's Heart\" ?", false),
+        new Option<bool>("78075", "Blackhole Sun's Hearts", "Mode: [select] only\nShould the bot buy \"Blackhole Sun's Hearts\" ?", false),
+        new Option<bool>("78801", "Blackhole Sun's Heart", "Mode: [select] only\nShould the bot buy \"Blackhole Sun's Heart\" ?", false),
     };
 }
