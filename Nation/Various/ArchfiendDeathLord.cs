@@ -54,7 +54,6 @@ public class ArchfiendDeathLord
 
         if (Reward == RewardChoice.All)
         {
-            Adv.BestGear(GenericGearBoost.dmgAll);
             Core.Logger($"Section: Farm all");
             bool skipFirstItem = true;
             foreach (RewardChoice item in Enum.GetValues(typeof(RewardChoice)))
