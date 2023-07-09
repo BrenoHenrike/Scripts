@@ -55,7 +55,7 @@ public class ArchfiendDeathLord
         if (Reward == RewardChoice.All)
         {
             Adv.BestGear(GenericGearBoost.dmgAll);
-            Core.Logger($"section 1");
+            Core.Logger($"Section: Farm all");
             bool skipFirstItem = true;
             foreach (RewardChoice item in Enum.GetValues(typeof(RewardChoice)))
             {
@@ -92,7 +92,7 @@ public class ArchfiendDeathLord
 
         else
         {
-            Core.Logger($"section 2");
+            Core.Logger($"Section: AFDL2 (Archfiend DeathLord)");
             Core.FarmingLogger(Reward.ToString().Replace("_", " "), 1);
             while (!Bot.ShouldExit && !Core.CheckInventory((int)Reward, toInv: false))
             {
