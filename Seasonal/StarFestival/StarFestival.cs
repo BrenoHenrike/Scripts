@@ -28,7 +28,7 @@ public class StarFestival
 
     public void StoryLine()
     {
-        if (Core.isCompletedBefore(8756))
+        if (Core.isCompletedBefore(8756) || !Core.isSeasonalMapActive("starfest"))
             return;
 
         if (!Story.QuestProgression(8748))
