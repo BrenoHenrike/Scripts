@@ -83,14 +83,31 @@ public class FrostSpiritReaver
         Core.AddDrop("Ice-Ninth", "Ice Diamond");
         Core.FarmingLogger("Ice-Ninth", quant);
 
-        //Quest Prereqs.
         //////////////////////////////////////////////
+        //////////////////////////////////////////////
+        #region "Quest Prerequisites 
+
+        if (!Core.CheckInventory("25464") && Core.CheckInventory(new[] { 27437, 27525 }, any: true))
+        {
+            //Frost Sigil
+            Core.BuyItem("icedungeon", Core.CheckInventory(27437) ? 2294 : 2295, 25464, shopItemID: Core.CheckInventory(27437) ? 48001 : 48002);
+            Core.ToBank(27437, 27525);
+        }
+
+        Core.RegisterQuests(3955);
+        while (!Bot.ShouldExit && !Core.CheckInventory("Flame of Courage", 25))
+        {
+            Core.AddDrop("Flame of Courage");
+            Core.HuntMonster("frozenruins", "Frost Invader", "Spark of Courage", log: false);
+            Bot.Wait.ForPickup("Flame of Courage");
+        }
+        Core.CancelRegisteredQuests();
+        Core.ToBank("Frozen Tower Merge Token");
 
         //cryomancer unbank
         if (!Core.CheckInventory("Fallen Scythe of Vengeance"))
         {
             Core.Logger("Getting the quest item requirements for \"Cold Hearted\"");
-            Core.AddDrop("Flame of Courage");
 
             Core.HuntMonster("Northstar", "Karok the Fallen", "Karok's Glaceran Gem", isTemp: false);
             Adv.BuyItem("Glacera", 1055, "Scythe of Vengeance");
@@ -99,12 +116,8 @@ public class FrostSpiritReaver
             Adv.BuyItem("Glacera", 1055, "Fallen Scythe of Vengeance");
         }
 
-        if (!Core.CheckInventory("25464") && Core.CheckInventory(new[] { 27437, 27525 }, any: true))
-        {
-            //Frost Sigil
-            Core.BuyItem("icedungeon", Core.CheckInventory(27437) ? 2294 : 2295, 25464, shopItemID: Core.CheckInventory(27437) ? 48001 : 48002);
-            Core.ToBank(27437, 27525);
-        }
+        #endregion "Quest Prerequisites 
+        //////////////////////////////////////////////
         //////////////////////////////////////////////
 
 
