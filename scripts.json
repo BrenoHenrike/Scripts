@@ -15523,6 +15523,113 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/SolarNewYear/EvenNaughtierMonkeys.cs"
   },
   {
+    "name": "Enchanted Mountaineer & FlameHeart Warrior Set",
+    "description": "This will do the quest to obtain the Enchanted Mountaineer and FlameHeart Warrior Sets.",
+    "tags": [
+      "flameheart-warrior",
+      "enchanted-mountaineer",
+      "seasonal",
+      "frostvale"
+    ],
+    "path": "Seasonal/FrostvalInJuly/EnchantedMountaineerAndFlameHeartWarriorSets.cs",
+    "size": 2162,
+    "fileName": "EnchantedMountaineerAndFlameHeartWarriorSets.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/FrostvalInJuly/EnchantedMountaineerAndFlameHeartWarriorSets.cs"
+  },
+  {
+    "name": "Ice Storm",
+    "description": "This script completes the questline in /icestorm.",
+    "tags": [
+      "ice",
+      "storm",
+      "seasonal",
+      "frostvale",
+      "july",
+      "storyline"
+    ],
+    "path": "Seasonal/FrostvalInJuly/IceStorm.cs",
+    "size": 2862,
+    "fileName": "IceStorm.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/FrostvalInJuly/IceStorm.cs"
+  },
+  {
+    "name": "Ylsas Gift Sac Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Ylsas Gift Sac Merge [1605] in /icestorm",
+    "tags": [
+      "ylsas",
+      "gift",
+      "sac",
+      "merge",
+      "icestorm",
+      "winter",
+      "assassin",
+      "",
+      "bangs",
+      "bandana",
+      "shuriken",
+      "ninjato",
+      "kunai",
+      "katana"
+    ],
+    "path": "Seasonal/FrostvalInJuly/YlsasGiftSacMerge.cs",
+    "size": 5173,
+    "fileName": "YlsasGiftSacMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/FrostvalInJuly/YlsasGiftSacMerge.cs"
+  },
+  {
+    "name": "Search For Gifts Quest Rewards",
+    "description": "This script will get all the rewards of search for gifts quest.",
+    "tags": [
+      "search",
+      "for",
+      "gifts",
+      "rewards",
+      "seasonal",
+      "akibalight",
+      "ai no miko"
+    ],
+    "path": "Seasonal/FrostvalInJuly/SearchForGiftsRewards.cs",
+    "size": 1216,
+    "fileName": "SearchForGiftsRewards.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/FrostvalInJuly/SearchForGiftsRewards.cs"
+  },
+  {
+    "name": "Frost Blade Master",
+    "description": "Does the seasonal quests of frostblademaster in /akibalight",
+    "tags": [
+      "frost",
+      "blade",
+      "master",
+      "seasonal",
+      "akiba",
+      "light"
+    ],
+    "path": "Seasonal/FrostvalInJuly/frostblademaster.cs",
+    "size": 1938,
+    "fileName": "frostblademaster.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/FrostvalInJuly/frostblademaster.cs"
+  },
+  {
+    "name": "Tinsel Quest Rewards",
+    "description": "This script will farm \"Gift Theft?! NOT COOL.\" [8177] quest rewards.",
+    "tags": [
+      "tinsel",
+      "quest",
+      "rewards",
+      "bright lights",
+      "festive",
+      "ushanka",
+      "party",
+      "seasonal",
+      "frostval",
+      "july"
+    ],
+    "path": "Seasonal/FrostvalInJuly/TinselQuestRewards.cs",
+    "size": 1185,
+    "fileName": "TinselQuestRewards.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/FrostvalInJuly/TinselQuestRewards.cs"
+  },
+  {
     "name": "Elixir Grenwog Merge",
     "description": "This script will farm all the materials needed for Elixir Grenwog Merge in elixirgrenwog.",
     "tags": [
@@ -15783,20 +15890,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/GundaharsStashMerge.cs"
   },
   {
-    "name": "Enchanted Mountaineer & FlameHeart Warrior Set",
-    "description": "This will do the quest to obtain the Enchanted Mountaineer and FlameHeart Warrior Sets.",
-    "tags": [
-      "flameheart-warrior",
-      "enchanted-mountaineer",
-      "seasonal",
-      "frostvale"
-    ],
-    "path": "Seasonal/Frostvale/EnchantedMountaineerAndFlameHeartWarriorSets.cs",
-    "size": 2213,
-    "fileName": "EnchantedMountaineerAndFlameHeartWarriorSets.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/EnchantedMountaineerAndFlameHeartWarriorSets.cs"
-  },
-  {
     "name": "Mount Otzi Story",
     "description": "This will finish the Mount Otzi Storyline.",
     "tags": [
@@ -15831,7 +15924,7 @@
       "frostvale"
     ],
     "path": "Seasonal/Frostvale/Frostvale.cs",
-    "size": 33504,
+    "size": 31023,
     "fileName": "Frostvale.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/Frostvale.cs"
   },
@@ -15914,23 +16007,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/WinterHorrorWarRewardsMerge.cs"
   },
   {
-    "name": "Search For Gifts Quest Rewards",
-    "description": "This script will get all the rewards of search for gifts quest.",
-    "tags": [
-      "search",
-      "for",
-      "gifts",
-      "rewards",
-      "seasonal",
-      "akibalight",
-      "ai no miko"
-    ],
-    "path": "Seasonal/Frostvale/SearchForGiftsRewards.cs",
-    "size": 1148,
-    "fileName": "SearchForGiftsRewards.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/SearchForGiftsRewards.cs"
-  },
-  {
     "name": "World Savior & Frost Defanged Badge",
     "description": "This will finish the required quest in order to get the badge.",
     "tags": [
@@ -15943,22 +16019,6 @@
     "size": 1336,
     "fileName": "FrostvaleBadges.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/FrostvaleBadges.cs"
-  },
-  {
-    "name": "Frost Blade Master",
-    "description": "Does the seasonal quests of frostblademaster in /akibalight",
-    "tags": [
-      "frost",
-      "blade",
-      "master",
-      "seasonal",
-      "akiba",
-      "light"
-    ],
-    "path": "Seasonal/Frostvale/frostblademaster.cs",
-    "size": 1938,
-    "fileName": "frostblademaster.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/frostblademaster.cs"
   },
   {
     "name": "Bow Jangles Merge",
@@ -16188,6 +16248,21 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AqwBirthday/BeleensPartyPresentsMerge.cs"
   },
   {
+    "name": "Akiba",
+    "description": "This script will complete the storyline in /akiba.",
+    "tags": [
+      "star",
+      "festival",
+      "akiba",
+      "story",
+      "seasonal"
+    ],
+    "path": "Seasonal/StarFestival/Akiba.cs",
+    "size": 2788,
+    "fileName": "Akiba.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StarFestival/Akiba.cs"
+  },
+  {
     "name": "Star Festival Story",
     "description": "This script will complete the Star Festival story quests.",
     "tags": [
@@ -16196,9 +16271,44 @@
       "star-festival"
     ],
     "path": "Seasonal/StarFestival/StarFestival.cs",
-    "size": 6008,
+    "size": 6049,
     "fileName": "StarFestival.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StarFestival/StarFestival.cs"
+  },
+  {
+    "name": "Yokai River",
+    "description": "This script will complete the storyline in /yokairiver.",
+    "tags": [
+      "star",
+      "festival",
+      "yokai",
+      "river",
+      "story",
+      "seasonal"
+    ],
+    "path": "Seasonal/StarFestival/YokaiRiver.cs",
+    "size": 1524,
+    "fileName": "YokaiRiver.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StarFestival/YokaiRiver.cs"
+  },
+  {
+    "name": "Star Festival Gift",
+    "description": "This bot will get you all the rewards from the quest for the 'Star Festival Gift' quest in /starfestival",
+    "tags": [
+      "star",
+      "festival",
+      "gift",
+      "yokai",
+      "river",
+      "fallen",
+      "moon",
+      "bow",
+      "ninja"
+    ],
+    "path": "Seasonal/StarFestival/StarFestivalGift.cs",
+    "size": 1022,
+    "fileName": "StarFestivalGift.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StarFestival/StarFestivalGift.cs"
   },
   {
     "name": "Shorinzan Merge",
