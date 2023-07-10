@@ -6,15 +6,14 @@ tags: flameheart-warrior, enchanted-mountaineer, seasonal, frostvale
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Seasonal/Frostvale/Frostvale.cs
-//cs_include Scripts/Story/Glacera.cs
+//cs_include Scripts/Seasonal\FrostvalInJuly\IceStorm.cs
 using Skua.Core.Interfaces;
 public class EnchantedMountaineerAndFlameHeartWarriorSets
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
-    public Frostvale Frostvale = new();
+    private IceStorm IS = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -29,7 +28,7 @@ public class EnchantedMountaineerAndFlameHeartWarriorSets
     {
         if (!Core.isSeasonalMapActive("BrightLights"))
             return;
-        Frostvale.BrightLights();
+        IS.Storyline();
 
         string[] Rewards = (Core.EnsureLoad(8176).Rewards.Select(i => i.Name).ToArray());
         Core.AddDrop(Rewards);
