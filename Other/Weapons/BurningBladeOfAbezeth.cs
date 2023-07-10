@@ -15,6 +15,7 @@ public class BurningBladeOfAbezeth
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreAdvanced Adv = new CoreAdvanced();
+    public CelestialArenaQuests CAQ = new();
     //public CelestialChampion CC = new();
     public void ScriptMain(IScriptInterface bot)
     {
@@ -29,6 +30,8 @@ public class BurningBladeOfAbezeth
     {
         if (Core.CheckInventory("Burning Blade Of Abezeth")) //Other method until it's fixed
             return;
+
+        CAQ.DoAll();
 
         // CC.BuyAllMerge("Burning Blade Of Abezeth", mergeOptionsEnum.select);
         Core.EquipClass(ClassType.Solo);
