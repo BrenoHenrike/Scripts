@@ -134,6 +134,7 @@ public class CoreFarmerJoe
 
     //Story
     public Tutorial Tutorial = new();
+    public CelestialArenaQuests CAQ = new();
 
 
 
@@ -369,24 +370,6 @@ public class CoreFarmerJoe
                     break;
 
                 case 70:
-                    if (Bot.Player.Level >= Level && Core.CheckInventory("Burning Blade Of Abezeth"))
-                        break;
-
-                    while (!Bot.ShouldExit && Bot.Player.Level < Level && !Core.CheckInventory("Burning Blade Of Abezeth"))
-                    {
-                        if (Core.SoloClass == "Generic")
-                            Core.SoloClass = "ArchPaladin";
-                        if (Core.FarmClass == "Generic")
-                            Core.FarmClass = "Scarlet Sorceress";
-
-                        InvEn.EnhanceInventory();
-                        Farm.Experience(Level);
-                        InvEn.EnhanceInventory();
-                        BBOA.GetBBoA();
-                    }
-                    break;
-
-
                 case 75:
                     if (Bot.Player.Level >= Level && Core.CheckInventory("Archfiend DeathLord"))
                         break;
@@ -482,7 +465,13 @@ public class CoreFarmerJoe
         SC.GetSC();
         if (Core.SoloClass == "Generic")
             Core.SoloClass = "StoneCrusher";
+
+        Farm.Experience(80);
+        CAQ.DoAll();
+        BBOA.GetBBoA();
+        
         #endregion Prepare for Lvl100
+
         InvEn.EnhanceInventory();
 
         #region Leveling to 100
