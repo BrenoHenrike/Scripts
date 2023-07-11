@@ -33,7 +33,7 @@ public class LordOfOrder
 
     public void GetLoO(bool rankUpClass = true, bool getExtras = true)
     {
-        if (Core.CheckInventory(50741, toInv: false) && (getExtras ? !Core.CheckInventory(Core.QuestRewards(7165), toInv: false) : true))
+        if (Core.CheckInventory(50741, toInv: false) && (getExtras ? Core.CheckInventory(Core.QuestRewards(7165), toInv: false) : true))
             return;
 
         Core.Logger("Daily: Lord Of Order Class");
