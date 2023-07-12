@@ -6,7 +6,7 @@ Base = Acolyte = 3 | 4 | 2 | 2 | 1 = 250
 Base = Alpha DOOMmega = 3 | 4 | 1 | 2H<50S = 250
 Base = Alpha Omega = 3 | 4 | 1 | 2H<50S = 250
 Base = Alpha Pirate = 4 | 1 | 3 | 2 = Use if Available
-Base = Arachnomancer = 1 | 1 | 1 | 1 | 1 | 1 | 2 | 4 | 3 = 250
+Base = Arachnomancer = 4 | 1 | 3 | 2 | 4 | 1 | 3 | 2 = 250
 Base = Arcane Dark Caster = 4WW5000 | 3 | 3 | 2 | 1 = 250
 Solo = ArchFiend = 3S | 1S | 2S | 4S = Use if Available
 Farm = ArchFiend = 3S | 1S | 2S = Use if Available
