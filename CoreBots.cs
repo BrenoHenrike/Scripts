@@ -2214,6 +2214,7 @@ public class CoreBots
     public bool IsMonsterAlive(int monsterMapID, bool useMapID)
         => IsMonsterAlive(Bot.Monsters.CurrentMonsters.Find(m => m.MapID == monsterMapID));
 
+
     private List<int> KilledMonsters = new();
     private void CleanKilledMonstersList(string map)
         => KilledMonsters.Clear();
@@ -2235,6 +2236,33 @@ public class CoreBots
         }
     }
 
+    public bool IsDungeonMonsterAlive(Monster? mon)
+        => mon != null && (mon.Alive || !KilledDungeonMonsters.Contains(mon.MapID));
+    public bool IsDungeonMonsterAlive(string monsterName)
+        => Bot.Monsters.CurrentMonsters.Where(m => m.Name == monsterName).Any(m => IsDungeonMonsterAlive(m));
+    public bool IsDungeonMonsterAlive(int monsterID)
+        => Bot.Monsters.CurrentMonsters.Where(m => m.ID == monsterID).Any(m => IsDungeonMonsterAlive(m));
+    public bool IsDungeonMonsterAlive(int monsterMapID, bool useMapID)
+        => IsDungeonMonsterAlive(Bot.Monsters.CurrentMonsters.Find(m => m.MapID == monsterMapID));
+    public void ActivateDungeonMonsterListener(bool enable = true)
+    {
+        if (enable)
+        {
+            Bot.Events.MonsterKilled += KilledDungeonMonsterListener;
+            Bot.Events.MapChanged += CleanKilledDungeonMonstersList;
+        }
+        else
+        {
+            Bot.Events.MonsterKilled -= KilledDungeonMonsterListener;
+            Bot.Events.MapChanged -= CleanKilledDungeonMonstersList;
+        }
+    }
+
+    private List<int> KilledDungeonMonsters = new();
+    private void CleanKilledDungeonMonstersList(string map)
+        => KilledMonsters.Clear();
+    private void KilledDungeonMonsterListener(int monsterMapID)
+        => KilledMonsters.Add(monsterMapID);
 
     #endregion
 
