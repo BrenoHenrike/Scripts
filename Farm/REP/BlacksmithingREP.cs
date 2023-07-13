@@ -23,7 +23,8 @@ public class BlacksmithingREP
     public List<IOption> Options = new List<IOption>()
     {
         new Option<bool>("UseGold", "Use Gold To Get Rep?", "Will Farm the Quest \"Intrepid Investing\" which costs 500k/ turnin, if you dont have the gold the bot will farm it.", false),
-        // new Option<bool>("CanSolo", "SoloSlugButter", "If not, it will do the mobs in the begining of the map.", false)
+        new Option<bool>("BulkFarmGold", "Pre-Farm Gold(100m)", "Bulk Turnin after farming 100m Gold.", false),
+        CoreBots.Instance.SkipOptions,
     };
 
 
@@ -33,7 +34,7 @@ public class BlacksmithingREP
 
         Adv.BestGear(GenericGearBoost.dmgAll);
         Adv.BestGear(GenericGearBoost.rep);
-        Farm.BlacksmithingREP(10, Bot.Config.Get<bool>("UseGold") ? true : false);
+        Farm.BlacksmithingREP(10, Bot.Config!.Get<bool>("UseGold") ? true : false, Bot.Config.Get<bool>("UseGold") ? true : false);
 
         Core.SetOptions(false);
     }
