@@ -188,12 +188,7 @@ public class CoreArchMage
         BLOD.BrilliantAura(200);
 
         Scroll.BuyScroll(Scrolls.Mystify, 50);
-
-        Core.EquipClass(ClassType.Farm);
-        Core.RegisterQuests(8814, 8815);
-        while (!Bot.ShouldExit && !Core.CheckInventory("Prismatic Seams", 250))
-            Core.HuntMonster("Streamwar", "Decaying Locust", "Timestream Medal", 5);
-        Core.CancelRegisteredQuests();
+        SOWM.PrismaticSeams(250);
 
         Core.HuntMonster("noxustower", "Lightguard Caster", "Mortal Essence", 100, false);
         Core.HuntMonster("portalmazec", "Pactagonal Knight", "Orthogonal Energy", 150, false);
