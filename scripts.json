@@ -50,7 +50,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 104050,
+    "size": 103945,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -1735,7 +1735,7 @@
       "pneuma"
     ],
     "path": "Enhancement/UnlockForgeEnhancements.cs",
-    "size": 37264,
+    "size": 38244,
     "fileName": "UnlockForgeEnhancements.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Enhancement/UnlockForgeEnhancements.cs"
   },
@@ -6947,7 +6947,7 @@
       "null"
     ],
     "path": "Farm/REP/BlacksmithingREP.cs",
-    "size": 1210,
+    "size": 1287,
     "fileName": "BlacksmithingREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/BlacksmithingREP.cs"
   },
