@@ -160,8 +160,8 @@ public class CoreFarms
 
         Core.RegisterQuests(3991, 3992);
         while (!Bot.ShouldExit && Bot.Player.Gold < goldQuant && Bot.Player.Gold <= 100000000)
-                    Core.KillMonster("battlegrounde", "r2", "Center", "*", log: false);
-        
+            Core.KillMonster("battlegrounde", "r2", "Center", "*", log: false);
+
         Core.CancelRegisteredQuests();
         Core.SavedState(false);
     }
@@ -1095,9 +1095,17 @@ public class CoreFarms
             {
                 Core.EnsureAccept(8737);
                 if (Bot.Player.Gold % 5000000 != 0 && BulkFarmGold)
-                    Gold(100000000);
-                else Gold(5000000);
-                Core.BuyItem("alchemyacademy", 2036, "Gold Voucher 500k", Bot.Player.Gold % 5000000 == 0 ? 10 : 1);
+                {
+                    ToggleBoost(BoostType.Reputation, false);
+                    Gold(1000000); //100m
+                }
+                else
+                {
+                    ToggleBoost(BoostType.Reputation, false);
+                    Gold(5000000); //5m
+                }
+                ToggleBoost(BoostType.Reputation);
+                Core.BuyItem("alchemyacademy", 2036, "Gold Voucher 500k", Bot.Player.Gold % 10 == 5000000 ? 10 : 1);
                 Bot.Sleep(Core.ActionDelay);
                 Core.EnsureCompleteMulti(8737);
             }
