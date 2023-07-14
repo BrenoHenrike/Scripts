@@ -14839,24 +14839,17 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/SummerBreak/BeachPartyTokenItems.cs"
   },
   {
-    "name": "Lavarock Forge Pre Reqs",
+    "name": "LavarockForge",
     "description": "This script will farm the pre reqs for the Lavarock Forge Set.",
     "tags": [
-      "molten",
-      "heart",
-      "blaze",
-      "blazing",
-      "burning",
-      "anina",
-      "lavarock",
-      "seasonal",
-      "summer break",
-      "forge",
-      "quest",
-      "pre reqs"
+      "burning sword of doom",
+      "blazing light of destiny",
+      "blaze of awe",
+      "pre reqs",
+      "lavarock forge"
     ],
     "path": "Seasonal/SummerBreak/LavarockForgePreReqs.cs",
-    "size": 2792,
+    "size": 2778,
     "fileName": "LavarockForgePreReqs.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/SummerBreak/LavarockForgePreReqs.cs"
   },
