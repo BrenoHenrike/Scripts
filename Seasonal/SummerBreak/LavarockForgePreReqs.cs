@@ -1,7 +1,7 @@
 /*
 name: LavarockForge
 description: This script will farm the pre reqs for the Lavarock Forge Set.
-tags: burning sword of doom, blazing light of destiny, blaze of awe, pre reqs, lavarock forge
+tags: burning sword of doom, blazing light of destiny, blaze of awe, pre reqs, lavarock forge, seasonal
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
