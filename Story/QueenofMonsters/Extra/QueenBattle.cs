@@ -47,7 +47,16 @@ public class QueenBattle
         Story.KillQuest(8353, "QueenBattle", "Chaos Ghost");
 
         //Slain Children 8354
-        Story.KillQuest(8354, "QueenBattle", new[] { "Kolyaban Shade", "Horothotep Shade", "Sa-Laatan Shade", "Grou'luu Shade", "Extriki Shade" });
+        if (!Story.QuestProgression(8354))
+        {
+            Core.EnsureAccept(8354);
+            Core.HuntMonster("QueenBattle", "Extriki Shade", "Extriki Shade Banished", log: false);
+            Core.HuntMonster("QueenBattle", "Kolyaban Shade", "Kolyaban Shade Banished", log: false);
+            Core.HuntMonster("QueenBattle", "Horothotep Shade", "Horothotep Shade Banished", log: false);
+            Core.HuntMonster("QueenBattle", "Sa-Laatan Shade", "Sa-Laatan Shade Banished", log: false);
+            Core.HuntMonster($"QueenBattle", "Grou’luu Shade", "Grou’luu Shade Banished", log: false);
+            Core.EnsureComplete(8354);
+        }
 
         //Dragons Felled By Chaos 8355
         Story.KillQuest(8355, "QueenBattle", "Chaos Dracolich");
