@@ -14846,10 +14846,11 @@
       "blazing light of destiny",
       "blaze of awe",
       "pre reqs",
-      "lavarock forge"
+      "lavarock forge",
+      "seasonal"
     ],
     "path": "Seasonal/SummerBreak/LavarockForgePreReqs.cs",
-    "size": 2778,
+    "size": 2788,
     "fileName": "LavarockForgePreReqs.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/SummerBreak/LavarockForgePreReqs.cs"
   },
