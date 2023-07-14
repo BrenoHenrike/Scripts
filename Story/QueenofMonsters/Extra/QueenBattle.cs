@@ -8,7 +8,7 @@ tags: story, quest, queen-of-monsters, queen-battle, extra
 //cs_include Scripts/Story/QueenofMonsters/Extra/OrbHunt.cs
 using Skua.Core.Interfaces;
 
-public class queenbattle
+public class QueenBattle
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
@@ -26,7 +26,7 @@ public class queenbattle
 
     public void StoryLine()
     {
-        // OrbHunt.OrbHuntSaga();
+        OrbHunt.OrbHuntSaga();
 
         if (Core.isCompletedBefore(8361))
             return;
