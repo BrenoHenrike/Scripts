@@ -160,11 +160,8 @@ public class CoreFarms
 
         Core.RegisterQuests(3991, 3992);
         while (!Bot.ShouldExit && Bot.Player.Gold < goldQuant && Bot.Player.Gold <= 100000000)
-        {
-            Core.KillMonster("battlegrounde", "r2", "Center", "*");
-            // Core.KillMonster("battlegrounde", "r2", "Center", "*", "Battleground D Opponent Defeated", 10, log: false);
-            // Core.KillMonster("battlegrounde", "r2", "Center", "*", "Battleground E Opponent Defeated", 10, log: false);
-        }
+            Core.KillMonster("battlegrounde", "r2", "Center", "*", log: false);
+
         Core.CancelRegisteredQuests();
         Core.SavedState(false);
     }
@@ -1080,7 +1077,7 @@ public class CoreFarms
         Core.SavedState(false);
     }
 
-    public void BlacksmithingREP(int rank = 10, bool UseGold = false)
+    public void BlacksmithingREP(int rank = 10, bool UseGold = false, bool BulkFarmGold = false)
     {
         if (FactionRank("Blacksmithing") >= rank)
             return;
@@ -1097,10 +1094,20 @@ public class CoreFarms
             while (!Bot.ShouldExit && FactionRank("Blacksmithing") < rank)
             {
                 Core.EnsureAccept(8737);
-                Gold(500000);
-                Core.BuyItem("alchemyacademy", 2036, "Gold Voucher 500k");
+                if (Bot.Player.Gold % 5000000 != 0 && BulkFarmGold)
+                {
+                    ToggleBoost(BoostType.Reputation, false);
+                    Gold(1000000); //100m
+                }
+                else
+                {
+                    ToggleBoost(BoostType.Reputation, false);
+                    Gold(5000000); //5m
+                }
+                ToggleBoost(BoostType.Reputation);
+                Core.BuyItem("alchemyacademy", 2036, "Gold Voucher 500k", Bot.Player.Gold % 10 == 5000000 ? 10 : 1);
                 Bot.Sleep(Core.ActionDelay);
-                Core.EnsureComplete(8737);
+                Core.EnsureCompleteMulti(8737);
             }
             // Core.CancelRegisteredQuests();
             ToggleBoost(BoostType.Reputation, false);
@@ -2708,20 +2715,20 @@ public class CoreFarms
         if (FactionRank("Yokai") >= rank)
             return;
 
-            Core.EquipClass(ClassType.Farm);
-            ToggleBoost(BoostType.Reputation);
-            Core.SavedState();
-            Core.Logger($"Farming rank {rank}");
+        Core.EquipClass(ClassType.Farm);
+        ToggleBoost(BoostType.Reputation);
+        Core.SavedState();
+        Core.Logger($"Farming rank {rank}");
 
-            Core.RegisterQuests(383);
-            while (!Bot.ShouldExit && FactionRank("Yokai") < rank)
-            {
-                Core.HuntMonster("dragonkoiz", "Pockey Chew", "Piece of Pockey", 3);
-                Bot.Wait.ForQuestComplete(383);
-            }
-            Core.CancelRegisteredQuests();
-            ToggleBoost(BoostType.Reputation, false);
-            Core.SavedState(false);
+        Core.RegisterQuests(383);
+        while (!Bot.ShouldExit && FactionRank("Yokai") < rank)
+        {
+            Core.HuntMonster("dragonkoiz", "Pockey Chew", "Piece of Pockey", 3);
+            Bot.Wait.ForQuestComplete(383);
+        }
+        Core.CancelRegisteredQuests();
+        ToggleBoost(BoostType.Reputation, false);
+        Core.SavedState(false);
     }
 
     public void SwagTokenA(int quant = 100)

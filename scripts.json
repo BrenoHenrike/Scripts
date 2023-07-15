@@ -17,7 +17,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 171842,
+    "size": 173165,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -50,7 +50,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 104050,
+    "size": 104207,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -1735,7 +1735,7 @@
       "pneuma"
     ],
     "path": "Enhancement/UnlockForgeEnhancements.cs",
-    "size": 37264,
+    "size": 38244,
     "fileName": "UnlockForgeEnhancements.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Enhancement/UnlockForgeEnhancements.cs"
   },
@@ -3229,7 +3229,7 @@
       "khasaanda"
     ],
     "path": "Dailies/LordOfOrder.cs",
-    "size": 10476,
+    "size": 10475,
     "fileName": "LordOfOrder.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/LordOfOrder.cs"
   },
@@ -6947,7 +6947,7 @@
       "null"
     ],
     "path": "Farm/REP/BlacksmithingREP.cs",
-    "size": 1210,
+    "size": 1287,
     "fileName": "BlacksmithingREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/BlacksmithingREP.cs"
   },
@@ -7959,7 +7959,7 @@
       "seven circles war"
     ],
     "path": "Army/ArmyFarm/ArmyGold.cs",
-    "size": 5314,
+    "size": 5720,
     "fileName": "ArmyGold.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/ArmyGold.cs"
   },
@@ -14839,24 +14839,18 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/SummerBreak/BeachPartyTokenItems.cs"
   },
   {
-    "name": "Lavarock Forge Pre Reqs",
+    "name": "LavarockForge",
     "description": "This script will farm the pre reqs for the Lavarock Forge Set.",
     "tags": [
-      "molten",
-      "heart",
-      "blaze",
-      "blazing",
-      "burning",
-      "anina",
-      "lavarock",
-      "seasonal",
-      "summer break",
-      "forge",
-      "quest",
-      "pre reqs"
+      "burning sword of doom",
+      "blazing light of destiny",
+      "blaze of awe",
+      "pre reqs",
+      "lavarock forge",
+      "seasonal"
     ],
     "path": "Seasonal/SummerBreak/LavarockForgePreReqs.cs",
-    "size": 2792,
+    "size": 2788,
     "fileName": "LavarockForgePreReqs.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/SummerBreak/LavarockForgePreReqs.cs"
   },
@@ -16618,7 +16612,7 @@
       "extra"
     ],
     "path": "Story/QueenofMonsters/Extra/QueenBattle.cs",
-    "size": 2205,
+    "size": 3220,
     "fileName": "QueenBattle.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/QueenofMonsters/Extra/QueenBattle.cs"
   },
@@ -17449,7 +17443,7 @@
       "null"
     ],
     "path": "Other/Classes/ArchMage/CoreArchMage.cs",
-    "size": 22899,
+    "size": 22646,
     "fileName": "CoreArchMage.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/ArchMage/CoreArchMage.cs"
   },

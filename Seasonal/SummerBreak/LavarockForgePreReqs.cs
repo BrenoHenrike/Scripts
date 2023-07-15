@@ -1,7 +1,7 @@
 /*
-name: Lavarock Forge Pre Reqs
+name: LavarockForge
 description: This script will farm the pre reqs for the Lavarock Forge Set.
-tags: molten,heart,blaze,blazing,burning,anina,lavarock,seasonal,summer break,forge,quest,pre reqs
+tags: burning sword of doom, blazing light of destiny, blaze of awe, pre reqs, lavarock forge, seasonal
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -30,7 +30,7 @@ public class LavarockForge
     {
         Core.SetOptions();
 
-        PreReqs(Bot.Config.Get<bool>("FarmAwe"), Bot.Config.Get<bool>("FarmBLOD"), Bot.Config.Get<bool>("FarmBSOD"));
+        PreReqs(Bot.Config!.Get<bool>("FarmAwe"), Bot.Config.Get<bool>("FarmBLOD"), Bot.Config.Get<bool>("FarmBSOD"));
         Core.SetOptions(false);
     }
 
