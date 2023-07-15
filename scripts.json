@@ -3496,7 +3496,7 @@
       "null"
     ],
     "path": "Story/AgeOfRuin/CoreAOR.cs",
-    "size": 7871,
+    "size": 9448,
     "fileName": "CoreAOR.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/CoreAOR.cs"
   },
@@ -3559,6 +3559,24 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/06MidnightZone.cs"
   },
   {
+    "name": "Abyssal Zone",
+    "description": "This script completes the storyline in /abyssalzone.",
+    "tags": [
+      "age",
+      "of",
+      "ruin",
+      "saga",
+      "story",
+      "quest",
+      "zone",
+      "abyssal"
+    ],
+    "path": "Story/AgeOfRuin/07AbyssalZone.cs",
+    "size": 727,
+    "fileName": "07AbyssalZone.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/07AbyssalZone.cs"
+  },
+  {
     "name": "Termina Temple",
     "description": "This script completes the storyline in /terminatemple.",
     "tags": [
@@ -3594,10 +3612,11 @@
       "zone",
       "yulgar",
       "aria",
-      "midnight"
+      "midnight",
+      "abyssal"
     ],
     "path": "Story/AgeOfRuin/00DoAll.cs",
-    "size": 781,
+    "size": 789,
     "fileName": "00DoAll.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/00DoAll.cs"
   },
