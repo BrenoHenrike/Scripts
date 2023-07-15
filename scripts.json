@@ -1905,20 +1905,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/DragonLordGrandMasterSet.cs"
   },
   {
-    "name": "Kylokos Quest Rewards",
-    "description": "farms quest rewards from Pisces Venaris Mater` in /natatorium",
-    "tags": [
-      "natatorium",
-      "quest reward",
-      "kyloko",
-      ""
-    ],
-    "path": "Other/KylokosQuestRewards.cs",
-    "size": 1597,
-    "fileName": "KylokosQuestRewards.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/KylokosQuestRewards.cs"
-  },
-  {
     "name": "Elementa Dragon Slayer set",
     "description": "farms the \"Elemental Dragon Slayer\" set from Quest",
     "tags": [
@@ -11617,6 +11603,39 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/WarTrainingMerge.cs"
   },
   {
+    "name": "Abyssal Zone Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Abyssal Zone Merge [2304] in /abyssalzone",
+    "tags": [
+      "abyssal",
+      "zone",
+      "merge",
+      "abyssalzone",
+      "enchanted",
+      "shark",
+      "diver",
+      "suit",
+      "",
+      "morph",
+      "ashray",
+      "elf",
+      "warden",
+      "top",
+      "knot",
+      "horns",
+      "coastal",
+      "corona",
+      "golden",
+      "trident",
+      "dancers",
+      "sea",
+      "streams"
+    ],
+    "path": "Other/MergeShops/AbyssalZoneMerge.cs",
+    "size": 6056,
+    "fileName": "AbyssalZoneMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/AbyssalZoneMerge.cs"
+  },
+  {
     "name": "FarmerJoeOutfitandPet",
     "description": "null",
     "tags": [
@@ -14217,6 +14236,63 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Mogloween/07MystcroftForestStory.cs"
   },
   {
+    "name": "Kylokos Quest Rewards",
+    "description": "farms quest rewards from Pisces Venaris Mater` in /natatorium",
+    "tags": [
+      "natatorium",
+      "quest reward",
+      "kylokos",
+      "march",
+      "seasonal",
+      "pisces",
+      "venaris",
+      "mater",
+      "arcangrove",
+      "zodiac"
+    ],
+    "path": "Seasonal/ZodiacQuests/PiscesVenarisMaterRewards.cs",
+    "size": 1885,
+    "fileName": "PiscesVenarisMaterRewards.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/ZodiacQuests/PiscesVenarisMaterRewards.cs"
+  },
+  {
+    "name": "Karkinos Mnimi Quest Rewards",
+    "description": "This script will get the \"Karkinos Mnimi\" [9195] quest rewards in /arcangrove.",
+    "tags": [
+      "karkinos",
+      "mnimi",
+      "quest rewards",
+      "july",
+      "seasonal",
+      "arcangrove",
+      "zodiac",
+      "kylokos"
+    ],
+    "path": "Seasonal/ZodiacQuests/KarkinosMnimiRewards.cs",
+    "size": 1463,
+    "fileName": "KarkinosMnimiRewards.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/ZodiacQuests/KarkinosMnimiRewards.cs"
+  },
+  {
+    "name": "Aries Chrysomallus Rewards",
+    "description": "does the \"aries chrysomallus\" quest for the rewards.",
+    "tags": [
+      "aries chrysomallus",
+      "quest rewards",
+      "darkblood starshard",
+      "kolyaban",
+      "april",
+      "seasonal",
+      "arcangrove",
+      "kylokos",
+      "zodiac"
+    ],
+    "path": "Seasonal/ZodiacQuests/AriesChrysomallusRewards.cs",
+    "size": 1885,
+    "fileName": "AriesChrysomallusRewards.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/ZodiacQuests/AriesChrysomallusRewards.cs"
+  },
+  {
     "name": "Mawa's Stand Merge",
     "description": "This bot will farm the items belonging to the selected mode for the Mawa's Stand Merge [1874] in /zorbaspalace",
     "tags": [
@@ -15193,20 +15269,6 @@
     "size": 1772,
     "fileName": "Mmmm,Meaty(or)(MeatyShard).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AprilFools/Mmmm,Meaty(or)(MeatyShard).cs"
-  },
-  {
-    "name": "Aries Chrysomallus Rewards",
-    "description": "does the \"aries chrysomallus\" quest for the rewards.",
-    "tags": [
-      "aries chrysomallus",
-      "quest rewards",
-      "darkblood starshard",
-      "kolyaban"
-    ],
-    "path": "Seasonal/AprilFools/AriesChrysomallusRewards.cs",
-    "size": 1737,
-    "fileName": "AriesChrysomallusRewards.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AprilFools/AriesChrysomallusRewards.cs"
   },
   {
     "name": "Magic magicmeadow Story",
