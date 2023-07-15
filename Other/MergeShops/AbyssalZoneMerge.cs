@@ -48,7 +48,7 @@ public class AbyssalZoneMerge
         void findIngredients()
         {
             ItemBase req = Adv.externalItem;
-            int quant = 1;
+            int quant = Adv.externalQuant;
             int currentQuant = req.Temp ? Bot.TempInv.GetQuantity(req.Name) : Bot.Inventory.GetQuantity(req.Name);
             if (req == null)
             {
