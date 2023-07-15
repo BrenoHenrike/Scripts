@@ -49,7 +49,7 @@ public class ArmyGold
     {
         Core.SetOptions(disableClassSwap: true);
 
-        Setup(Bot.Config.Get<Method>("mapname"));
+        Setup(Bot.Config!.Get<Method>("mapname"));
 
         Core.SetOptions(false);
     }
@@ -63,7 +63,7 @@ public class ArmyGold
         Farm.ToggleBoost(BoostType.Gold);
 
         if (((int)mapname == 0) || ((int)mapname == 1))
-            BGE(Bot.Config.Get<Method>("mapname"));
+            BGE(Bot.Config!.Get<Method>("mapname"));
         else if (((int)mapname == 2))
             DWL();
         else if (((int)mapname == 3))
@@ -107,8 +107,13 @@ public class ArmyGold
 
         DWLN.DarkWarLegion();
 
+        Army.AggroMonIDs(5108, 5111, 5110);
+        Army.AggroMonStart("darkwarlegion");
+        Army.DivideOnCells("r2", "r3", "r4");
+
+
         Core.RegisterQuests(8584, 8585, 8586, 8587); //Nation Badges 8584, Mega Nation Badges 8585, A Nation Defeated 8586, ManSlayer? More Like ManSLAIN 8587
-        Army.SmartAggroMonStart("darkwarlegion", "Bloodfiend", "Dreadfiend", "Infernal Fiend", "Manslayer Fiend", "Void Fiend");
+        // Army.SmartAggroMonStart("darkwarlegion", "Bloodfiend", "Dreadfiend", "Infernal Fiend", "Manslayer Fiend", "Void Fiend");
         while (!Bot.ShouldExit)// && Bot.Player.Gold < 100000000)
             Bot.Combat.Attack("*");
         Army.AggroMonStop(true);
@@ -124,7 +129,12 @@ public class ArmyGold
         DWLN.DarkWarNation();
 
         Core.RegisterQuests(8578, 8579, 8580, 8581); //Legion Badges, Mega Legion Badges, Doomed Legion Warriors, Undead Legion Dread
-        Army.SmartAggroMonStart("darkwarnation", "High Legion Inquisitor", "Legion Doomknight", "Legion Dread Knight", "Legion Dreadmarch", "Legion Fiend Rider");
+
+        Army.AggroMonIDs(5101, 5102, 5103);
+        Army.AggroMonStart("darkwarnation");
+        Army.DivideOnCells("Enter", "r1", "r2", "r4");
+
+        // Army.SmartAggroMonStart("darkwarnation", "High Legion Inquisitor", "Legion Doomknight", "Legion Dread Knight");
         while (!Bot.ShouldExit)// && Bot.Player.Gold < 100000000)
             Bot.Combat.Attack("*");
         Army.AggroMonStop(true);
@@ -140,7 +150,13 @@ public class ArmyGold
         SC.CirclesWar(true);
 
         Core.RegisterQuests(7979, 7980, 7981);
-        Army.SmartAggroMonStart("sevencircleswar", "Wrath Guard", "Heresy Guard", "Violence Guard", "Treachery Guard");
+
+
+        Army.AggroMonIDs(4756, 4758, 4759, 4760);
+        Army.AggroMonStart("sevencircleswar");
+        Army.DivideOnCells("Enter", "r1", "r2", "r3");
+
+        // Army.SmartAggroMonStart("sevencircleswar", "Wrath Guard", "Heresy Guard", "Violence Guard", "Treachery Guard");
         while (!Bot.ShouldExit)// && Bot.Player.Gold < 100000000)
             Bot.Combat.Attack("*");
         Army.AggroMonStop(true);
