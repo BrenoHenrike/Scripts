@@ -30,6 +30,7 @@ public class CoreAOR
         TwilightZone();
         YulgarAria();
         MidnightZone();
+        AbyssalZone();
     }
 
     public void TerminaTemple()
@@ -252,5 +253,51 @@ public class CoreAOR
 
         // Roko's Royal Basilisk (9301)
         Story.KillQuest(9301, "midnightzone", "Sparagmos");
+    }
+
+    public void AbyssalZone()
+    {
+        if (Core.isCompletedBefore(9315))
+            return;
+
+        MidnightZone();
+
+        Story.PreLoad(this);
+
+        // Shark Kiting (9306)
+        Story.KillQuest(9306, "abyssalzone", "Kitefin Shark Bait");
+        Story.MapItemQuest(9306, "abyssalzone", 11914);
+
+        // Suckered Blockade (9307)
+        Story.MapItemQuest(9307, "abyssalzone", 11893, 6);
+        Story.MapItemQuest(9307, "abyssalzone", 11894);
+
+        // Digestive Fluids (9308)
+        Story.KillQuest(9308, "abyssalzone", "Blighted Water");
+
+        // Sodden Secrets (9309)
+        Story.KillQuest(9309, "abyssalzone", "Shadow Viscera");
+        Story.MapItemQuest(9309, "abyssalzone", 11895, 3);
+
+        // The Hidden Corpse (9310)
+        Story.KillQuest(9310, "abyssalzone", new[] { "Shadow Viscera", "Blighted Water" });
+
+        // Octo-Flake Fish Feed (9311)
+        Story.KillQuest(9311, "abyssalzone", "Foam Scavenger");
+        Story.MapItemQuest(9311, "abyssalzone", 11896);
+
+        // Completely Surrounded (9312)
+        Story.MapItemQuest(9312, "abyssalzone", 11897, 6);
+        Story.MapItemQuest(9312, "abyssalzone", 11898);
+
+        // Sea Salt Soap (9313)
+        Story.KillQuest(9313, "abyssalzone", "Necro Adipocere");
+
+        // In the Grip of Justice (9314)
+        Story.KillQuest(9314, "abyssalzone", new[] { "Necro Adipocere", "Foam Scavenger" });
+        Story.MapItemQuest(9314, "abyssalzone", 11899);
+
+        // Together as One (9315)
+        Story.KillQuest(9315, "abyssalzone", "The Ashray");
     }
 }
