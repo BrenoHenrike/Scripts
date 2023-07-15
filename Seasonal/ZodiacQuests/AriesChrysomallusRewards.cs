@@ -1,7 +1,7 @@
 /*
 name: Aries Chrysomallus Rewards
 description: does the "aries chrysomallus" quest for the rewards.
-tags: aries chrysomallus, quest rewards, darkblood starshard, kolyaban
+tags: aries chrysomallus, quest rewards, darkblood starshard, kolyaban,april,seasonal,arcangrove,kylokos,zodiac
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -27,9 +27,11 @@ public class AriesChrysomallusRewards
 
     public void Example()
     {
-
-        if (Core.CheckInventory(Core.QuestRewards(9192)) || !Core.isSeasonalMapActive("Kolyaban"))
+        if (!Bot.Quests.IsAvailable(9192) || Core.CheckInventory(Core.QuestRewards(9192)))
+        {
+            Core.Logger("The quest is not available yet or you already have all the rewards.");
             return;
+        }
 
         List<ItemBase> RewardOptions = Core.EnsureLoad(9192).Rewards;
         foreach (ItemBase item in RewardOptions)

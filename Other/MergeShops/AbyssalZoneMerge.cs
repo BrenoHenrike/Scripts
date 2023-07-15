@@ -48,7 +48,7 @@ public class AbyssalZoneMerge
         void findIngredients()
         {
             ItemBase req = Adv.externalItem;
-            int quant = Adv.externalQuant;
+            int quant = 1;
             int currentQuant = req.Temp ? Bot.TempInv.GetQuantity(req.Name) : Bot.Inventory.GetQuantity(req.Name);
             if (req == null)
             {
@@ -88,13 +88,7 @@ public class AbyssalZoneMerge
                 case "Waves of Tumult":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
-                    Core.RegisterQuests(0000);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.Logger("This item is not setup yet");
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    Core.CancelRegisteredQuests();
+                    Core.HuntMonster("abyssalzone", "Blighted Water", req.Name, quant, false, false);
                     break;
 
             }
