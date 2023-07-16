@@ -1,14 +1,14 @@
 /*
 name: Kylokos Quest Rewards
 description: farms quest rewards from Pisces Venaris Mater` in /natatorium
-tags: natatorium, quest reward, Kyloko, 
+tags: natatorium, quest reward, Kylokos, march,seasonal,pisces,venaris,mater,arcangrove,zodiac
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 
-public class KylokosQuest
+public class PiscesVenarisMater
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
@@ -24,6 +24,12 @@ public class KylokosQuest
 
     public void GetRewards()
     {
+        if (!Bot.Quests.IsAvailable(9145) || Core.CheckInventory(Core.QuestRewards(9145)))
+        {
+            Core.Logger("The quest is not available yet or you already have all the rewards.");
+            return;
+        }
+
         List<ItemBase> RewardOptions = Core.EnsureLoad(9145).Rewards;
 
         foreach (ItemBase item in RewardOptions)
