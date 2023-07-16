@@ -235,7 +235,7 @@ public class CoreFarms
                 Core.HuntMonster("swordhavenundead", "Skeletal Soldier", "Slain Skeletal Soldier", 10);
                 Core.EnsureComplete(176);
                 Core.EnsureAccept(177);
-                Core.HuntMonster("swordhavenundead", "Skeletal Ice Mage", "rozen Boneheads", 8);
+                Core.HuntMonster("swordhavenundead", "Skeletal Ice Mage", "Frozen Boneheads", 8);
                 Core.EnsureComplete(177);
             }
 
