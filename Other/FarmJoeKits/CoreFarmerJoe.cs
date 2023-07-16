@@ -312,8 +312,6 @@ public class CoreFarmerJoe
 
                         InvEn.EnhanceInventory();
                         Farm.Experience(Level);
-                        InvEn.EnhanceInventory();
-                        SS.GetSSorc();
                     }
                     break;
 
@@ -323,6 +321,13 @@ public class CoreFarmerJoe
 
                     while (!Bot.ShouldExit && Bot.Player.Level < Level && !Core.CheckInventory(new[] { "Darkblood StormKing", "Burning Blade" }))
                     {
+                        if (Core.FarmClass == "Generic")
+                            Core.FarmClass = "Master Ranger";
+
+                        InvEn.EnhanceInventory();
+                        SS.GetSSorc();
+                        Adv.SmartEnhance("Scarlet Sorceress");
+
                         if (Core.FarmClass == "Generic")
                             Core.FarmClass = "Scarlet Sorceress";
 
@@ -366,6 +371,7 @@ public class CoreFarmerJoe
                         Farm.Experience(Level);
                         InvEn.EnhanceInventory();
                         AP.GetAP();
+                        Adv.SmartEnhance("ArchPaladin");
                     }
                     break;
 
@@ -469,7 +475,7 @@ public class CoreFarmerJoe
         Farm.Experience(80);
         CAQ.DoAll();
         BBOA.GetBBoA();
-        
+
         #endregion Prepare for Lvl100
 
         InvEn.EnhanceInventory();
