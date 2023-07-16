@@ -241,6 +241,10 @@ public class CoreFarmerJoe
         Farm.BladeofAweREP(6);
         Core.Equip("Blade of Awe");
 
+        Adv.BuyItem("museum", 631, "Awethur's Accoutrements");
+        Core.Equip("Awethur's Accoutrements");
+        COA.GetCoA();
+
         if (Bot.Player.Level < 30)
         {
             InvEn.EnhanceInventory(EnhancementType.Wizard);
@@ -443,12 +447,7 @@ public class CoreFarmerJoe
         //P2 Chaos Shenanagins
         Core.Logger("P2: Chaos Shenanagins");
 
-        // if (!Core.isCompletedBefore(3765))
         LOC.Complete13LOC();
-        // Farm.ChaosREP();
-        // Adv.BuyItem("confrontation", 891, "Chaos Slayer Berserker");
-        // Adv.RankUpClass("Chaos Slayer Berserker");
-        // Core.Equip("Chaos Slayer Berserker");
 
         //Step 2 Solo Class:
         Core.Logger("P3: Solo Classes & Weapon");
@@ -456,13 +455,8 @@ public class CoreFarmerJoe
         LOO.GetLoO();
         Core.ToBank(Core.EnsureLoad(7156).Rewards.Select(i => i.Name).ToArray());
 
-        Core.Logger("P3 - 2: Blade and Cape of Awe");
-        Core.ToBank("Blade of Awe");
-        Adv.BuyItem("museum", 631, "Awethur's Accoutrements");
-        COA.GetCoA();
-
-
         Core.Logger("P3 - 4: Improving Efficiency, and more Classes");
+        Shaman.GetShaman();
         if (Core.FarmClass == "Generic")
             Core.FarmClass = "Shaman";
         GB.GetGB();
