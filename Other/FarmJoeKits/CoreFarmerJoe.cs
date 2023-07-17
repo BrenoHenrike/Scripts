@@ -348,9 +348,6 @@ public class CoreFarmerJoe
                             Core.FarmClass = "Scarlet Sorceress";
 
                         BB.GetBurningBlade();
-                        Daily.Cryomancer();
-                        Bb.GetClass();
-
                     }
                     break;
 
