@@ -72,10 +72,13 @@ tags: null
 //cs_include Scripts/Other/MergeShops/YulgarsUndineMerge.cs
 //cs_include Scripts/Hollowborn/MergeShops/DawnFortressMerge.cs
 //cs_include Scripts/Story/Hollowborn/CoreHollowbornStory.cs
-//cs_include Scripts/Other/Weapons/BurningBlade.cs
 //cs_include Scripts/Other/MergeShops/CelestialChampMerge.cs
 //cs_include Scripts/Other/Weapons/BurningBladeOfAbezeth.cs
 //cs_include Scripts/Story/QueenofMonsters/Extra/CelestialArena.cs
+//cs_include Scripts/Other/Classes/Daily-Classes/BlazeBinder.cs
+//cs_include Scripts/Nation/Various/Archfiend.cs
+//cs_include Scripts/Evil/NSoD/CoreNSOD.cs
+//cs_include Scripts/Other/Classes/Necromancer.cs
 using Skua.Core.Interfaces;
 
 public class FarmerJoeEndGame
