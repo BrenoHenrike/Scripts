@@ -1412,6 +1412,10 @@ public class CoreAdvanced
                     if (!uExamen())
                         Fail();
                     break;
+                case HelmSpecial.Forge:
+                    if (!uForgeHelm())
+                        Fail();
+                    break;
                 case HelmSpecial.Anima:
                     if (!uAnima())
                         Fail();
@@ -1709,10 +1713,12 @@ public class CoreAdvanced
         => Core.isCompletedBefore(8824);
     private bool uExamen()
         => Core.isCompletedBefore(8825);
-    private bool uAnima()
-        => Core.isCompletedBefore(8826);
+    private bool uForgeHelm()
+        => Core.isCompletedBefore(8828);
     private bool uPneuma()
         => Core.isCompletedBefore(8827);
+    private bool uAnima()
+        => Core.isCompletedBefore(8826);
     private bool uDauntless()
         => Core.isCompletedBefore(9172);
     private bool uPraxis()
@@ -1851,6 +1857,7 @@ public class CoreAdvanced
                     cSpecial = CapeSpecial.Vainglory;
                     wSpecial = WeaponSpecial.Valiance;
                     hSpecial = HelmSpecial.Anima;
+
                     break;
                 #endregion
 
