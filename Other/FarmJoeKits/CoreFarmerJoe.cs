@@ -184,16 +184,19 @@ public class CoreFarmerJoe
 
         #region starting out the acc
         //starting out the acc
-        Core.Logger("starting out the acc with the tutorial badges to make it a bit more convincing");
-        if (Bot.Player.Level < 10)
+        if (Bot.Player.Level < 10 || Bot.Player.CurrentClass!.Quantity < 10000)
         {
+            Core.Logger("Starting out acc: \n" +
+                "\tGoals: lvl 10, Temp weapon, Oracle class.");
+
             Tutorial.Badges();
 
             Core.Logger("Getting Starting Levels/Equipment");
 
             Core.BuyItem("classhalla", 299, "Oracle");
             Core.BuyItem("classhalla", 299, "Battle Oracle Wings");
-            Core.BuyItem("classhalla", 299, "Battle Oracle Battlestaff");
+            if (!Core.CheckInventory("Venom Head"))
+                Core.BuyItem("classhalla", 299, "Battle Oracle Battlestaff");
             Core.BuyItem("classhalla", 299, "Battle Oracle Hood");
             Core.Equip("Battle Oracle Battlestaff", "Battle Oracle Hood", "Battle Oracle Wings");
 
@@ -201,22 +204,31 @@ public class CoreFarmerJoe
             if (DefaultWep != null && Core.CheckInventory(DefaultWep.Name))
                 Core.SellItem(DefaultWep.Name);
 
-            if (Core.SoloClass == "Generic" && Bot.Player.Level < 5)
+            if (Core.SoloClass == "Generic")
                 Core.SoloClass = "Oracle";
+            else Core.SoloClass = Bot.Player.CurrentClass!.ToString();
 
             Core.Equip(Core.SoloClass);
 
             //Temporary Weapon #2
-            Core.RegisterQuests(4007);
-            Core.HuntMonster("oaklore", "Bone Berserker", "Venom Head", isTemp: false, log: false);
-            Bot.Wait.ForPickup("Venom Head");
-            Core.Equip("Venom Head");
-            Bot.Wait.ForItemEquip("Venom Head", 40);
-            Core.SellItem("Battle Oracle Battlestaff");
+            if (!Core.CheckInventory("Venom Head"))
+            {
+                Core.AddDrop("Bonehead Bludgeon", "Venom Head");
+                Core.EnsureAccept(4007);
+                Core.KillMonster("oaklore", "r3", "Left", "*", "Bone Berserker Slain", log: false);
+                Core.EnsureComplete(4007);
+                Bot.Wait.ForPickup("Venom Head");
+                Core.Equip("Venom Head");
+                Core.SellItem("Battle Oracle Battlestaff");
+                Core.SellItem("Bonehead Bludgeon");
+            }
 
-            Core.Logger("Leveling to 10 in tutorial Area");
-            while (!Bot.ShouldExit && Bot.Player.Level < 10)
-                Core.HuntMonster("oaklore", "Bone Berserker", log: false);
+            Core.Logger("Leveling to 10 in tutorial Area /n" +
+            "if skill 4 isnt unlocked, we'll do that now.");
+            Core.RegisterQuests(4007);
+            //level10 + class Rank 4 (to unlock all 4 abilities)
+            while (!Bot.ShouldExit && Bot.Player.Level < 10 || Bot.Player.CurrentClass!.Quantity < 10000)
+                Core.KillMonster("oaklore", "r3", "Left", "Bone Berserker", log: false);
             Core.CancelRegisteredQuests();
             InvEn.EnhanceInventory(EnhancementType.Wizard);
         }
@@ -326,7 +338,7 @@ public class CoreFarmerJoe
                     if (Bot.Player.Level >= Level && Core.CheckInventory(new[] { "Shaman", "Burning Blade" }) && Core.CheckInventory("Shaman"))
                         break;
 
-                    while (!Bot.ShouldExit && Bot.Player.Level < Level && !Core.CheckInventory(new[] { "Shaman", "Burning Blade" })&& !Core.CheckInventory("Shaman"))
+                    while (!Bot.ShouldExit && Bot.Player.Level < Level && !Core.CheckInventory(new[] { "Shaman", "Burning Blade" }) && !Core.CheckInventory("Shaman"))
                     {
                         if (Core.FarmClass == "Generic")
                             Core.FarmClass = "Blood Sorceress";
