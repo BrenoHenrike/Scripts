@@ -11,6 +11,7 @@ tags: army, gold, battle ground e, dark war legion, dark war nation, seven circl
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 //cs_include Scripts/Story/Legion/DarkWarLegionandNation.cs
 //cs_include Scripts/Story/Legion/SevenCircles(War).cs
+//cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Models.Quests;
@@ -25,6 +26,7 @@ public class ArmyGold
     private CoreArmyLite Army = new();
     private DarkWarLegionandNation DWLN = new();
     public SevenCircles SC = new();
+    private CoreSoW SoW = new();
 
     private static CoreBots sCore = new();
     private static CoreArmyLite sArmy = new();
@@ -61,6 +63,8 @@ public class ArmyGold
         Core.EquipClass(ClassType.Farm);
         Adv.BestGear(GenericGearBoost.gold);
         Farm.ToggleBoost(BoostType.Gold);
+        Bot.Options.LagKiller = false;
+        Bot.Lite.ReacceptQuest = true;
 
         if (((int)mapname == 0) || ((int)mapname == 1))
             BGE(Bot.Config!.Get<Method>("mapname"));
@@ -70,6 +74,9 @@ public class ArmyGold
             DWN();
         else if (((int)mapname == 4))
             SCW();
+        else if (((int)mapname == 5))
+            StreamWar();
+        Bot.Lite.ReacceptQuest = false;
     }
 
     public void BGE(Method mapname)
@@ -164,12 +171,36 @@ public class ArmyGold
         Core.CancelRegisteredQuests();
     }
 
+    public void StreamWar()
+    {
+        Core.PrivateRooms = true;
+        Core.PrivateRoomNumber = Army.getRoomNr();
+
+        Core.AddDrop("Prismatic Seams");
+
+        SoW.TimestreamWar();
+
+        Army.AggroMonCells("r3a");
+        Army.AggroMonStart("streamwar");
+        Army.DivideOnCells("r3a");
+
+        Core.RegisterQuests(8814, 8815);
+        while (!Bot.ShouldExit)
+            Bot.Combat.Attack("*");
+        Army.AggroMonStop(true);
+        Farm.ToggleBoost(BoostType.Gold, false);
+        Core.CancelRegisteredQuests();
+
+        Core.ToBank("Prismatic Seams");
+    }
+
     public enum Method
     {
         BattleGroundE = 0,
         HonorHall = 1,
         DarkWarLegion = 2,
         DarkWarNation = 3,
-        SevenCirclesWar = 4
+        SevenCirclesWar = 4,
+        StreamWar = 5
     }
 }
