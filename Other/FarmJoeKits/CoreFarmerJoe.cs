@@ -215,9 +215,9 @@ public class CoreFarmerJoe
 
             Core.Logger("Leveling to 10 in tutorial Area /n" +
             "if skill 4 isnt unlocked, we'll do that now.");
-           
+
             Adv.SmartEnhance(Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue");
-           
+
             Core.RegisterQuests(4007);
             //level10 + class Rank 4 (to unlock all 4 abilities)
             while (!Bot.ShouldExit && Bot.Player.Level < 10)
@@ -318,7 +318,7 @@ public class CoreFarmerJoe
                     break;
 
                 case 45:
-                    if (Bot.Player.Level >= Level && Core.CheckInventory("Blood Sorceress"))
+                    if (Bot.Player.Level >= Level && (Core.CheckInventory("Blood Sorceress") || Core.CheckInventory("Scarlet Sorceress")))
                         break;
 
                     while (!Bot.ShouldExit && Bot.Player.Level < Level || !Core.CheckInventory("Blood Sorceress"))
