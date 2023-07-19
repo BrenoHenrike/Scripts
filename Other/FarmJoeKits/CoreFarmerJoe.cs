@@ -187,7 +187,7 @@ public class CoreFarmerJoe
         if (Core.SoloClass == "Generic")
             Core.SoloClass = Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue";
 
-        if (Bot.Player.Level < 10 || Bot.Player.CurrentClassRank < 10)
+        if (Bot.Player.Level < 10)
         {
             Core.Logger("Starting out acc: \n" +
                 "\tGoals: lvl 10, Temp weapon, Rogue class.");
@@ -215,12 +215,15 @@ public class CoreFarmerJoe
 
             Core.Logger("Leveling to 10 in tutorial Area /n" +
             "if skill 4 isnt unlocked, we'll do that now.");
+           
             Adv.SmartEnhance(Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue");
+           
             Core.RegisterQuests(4007);
             //level10 + class Rank 4 (to unlock all 4 abilities)
-            while (!Bot.ShouldExit && Bot.Player.Level < 10 || Bot.Player.CurrentClassRank < 5)
+            while (!Bot.ShouldExit && Bot.Player.Level < 10)
                 Core.KillMonster("oaklore", "r3", "Left", "Bone Berserker", log: false);
             Core.CancelRegisteredQuests();
+
         }
         Adv.SmartEnhance(Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue");
 
@@ -266,11 +269,9 @@ public class CoreFarmerJoe
         #region Obtain Boost Weapons
 
         Adv.SmartEnhance(Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue");
-        Farm.BladeofAweREP(6);
+        Farm.BladeofAweREP(6, false);
         Adv.BuyItem("museum", 631, "Awethur's Accoutrements");
         Core.Equip("Awethur's Accoutrements");
-        COA.GetCoA();
-        Core.Equip("Cape of Awe");
         Adv.SmartEnhance(Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue");
 
         if (!Adv.HasMinimalBoost(GenericGearBoost.dmgAll, 25))
@@ -484,6 +485,8 @@ public class CoreFarmerJoe
         //P2 Chaos Shenanagins
         Core.Logger("P2: Chaos Shenanagins");
 
+        COA.GetCoA();
+        Core.Equip("Cape of Awe");
         LOC.Complete13LOC();
 
         //Step 2 Solo Class:
