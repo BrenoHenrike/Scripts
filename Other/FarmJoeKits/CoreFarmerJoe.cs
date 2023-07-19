@@ -16,6 +16,7 @@ tags: null
 //cs_include Scripts/Legion/CoreLegion.cs
 //cs_include Scripts/Legion/YamiNoRonin/CoreYnR.cs
 //cs_include Scripts/Darkon/CoreDarkon.cs
+//cs_include Scripts/Evil/NSoD/CoreNSOD.cs
 
 //cs_include Scripts/Dailies/0AllDailies.cs
 //cs_include Scripts/Good/GearOfAwe/CapeOfAwe.cs
@@ -39,6 +40,9 @@ tags: null
 //cs_include Scripts/Good/ArchPaladin.cs
 //cs_include Scripts/Dailies/LordOfOrder.cs
 //cs_include Scripts/Legion/SwordMaster.cs
+//cs_include Scripts/Other/Classes/Daily-Classes/BlazeBinder.cs
+//cs_include Scripts/Nation/Various/Archfiend.cs
+//cs_include Scripts/Other/Classes/Necromancer.cs
 
 //cs_include Scripts/Other/Weapons/BurningBlade.cs
 //cs_include Scripts/Other/Weapons/BurningBladeOfAbezeth.cs
@@ -124,6 +128,9 @@ public class CoreFarmerJoe
     public EternalInversionist EI = new();
     public DarkbloodStormKing DBSK = new();
     public DragonOfTime DoT = new();
+    public BloodSorceress BS = new();
+    public BlazeBinder Bb = new();
+    public ArchFiend AF = new();
 
     //Weapons
     public DualChainSawKatanas DCSK = new();
@@ -164,29 +171,31 @@ public class CoreFarmerJoe
 
     public void Level1to30()
     {
-        if (Bot.Player.Level >= 30)
+
+        if (Bot.Player.Level >= 30 && Core.SoloClass == "Generic" && !Core.CheckInventory(new[] { "Rogue", "Rogue (Rare)" }, any: true) && Bot.Player.CurrentClassRank < 10)
         {
-            if (Core.SoloClass == "Generic")
-            {
-                Core.Logger("grabbing Oracle, ranking it, then continuing");
-                Core.BuyItem("classhalla", 299, "Oracle");
-                Adv.RankUpClass("Oracle");
-            }
-            Farm.BladeofAweREP(6, true);
-            Core.ToBank("Blade of Awe");
+            Core.Logger("grabbing Rogue, ranking it, then continuing");
+            Core.BuyItem("classhalla", 172, "Rogue");
+            Adv.rankUpClass(Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue");
             return;
         }
 
         #region starting out the acc
         //starting out the acc
-        Core.Logger("starting out the acc with the tutorial badges to make it a bit more convincing");
-        if (Bot.Player.Level < 10)
+
+        if (Core.SoloClass == "Generic")
+            Core.SoloClass = Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue";
+
+        if (Bot.Player.Level < 10 || Bot.Player.CurrentClassRank < 10)
         {
+            Core.Logger("Starting out acc: \n" +
+                "\tGoals: lvl 10, Temp weapon, Rogue class.");
+
             Tutorial.Badges();
 
             Core.Logger("Getting Starting Levels/Equipment");
 
-            Core.BuyItem("classhalla", 299, "Oracle");
+            Core.BuyItem("classhalla", 172, "Rogue");
             Core.BuyItem("classhalla", 299, "Battle Oracle Wings");
             Core.BuyItem("classhalla", 299, "Battle Oracle Battlestaff");
             Core.BuyItem("classhalla", 299, "Battle Oracle Hood");
@@ -196,59 +205,54 @@ public class CoreFarmerJoe
             if (DefaultWep != null && Core.CheckInventory(DefaultWep.Name))
                 Core.SellItem(DefaultWep.Name);
 
-            if (Core.SoloClass == "Generic" && Bot.Player.Level < 5)
-                Core.SoloClass = "Oracle";
+            if (Core.SoloClass == "Generic")
+                Core.SoloClass = Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue";
+            else Core.SoloClass = Bot.Player.CurrentClass!.ToString();
 
-            Core.Equip(Core.SoloClass);
+            Core.Equip(Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue");
 
-            //Temporary Weapon #2
+            Core.Logger("Leveling to 10 in tutorial Area /n" +
+            "if skill 4 isnt unlocked, we'll do that now.");
+            Adv.SmartEnhance(Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue");
             Core.RegisterQuests(4007);
-            Core.HuntMonster("oaklore", "Bone Berserker", "Venom Head", isTemp: false, log: false);
-            Bot.Wait.ForPickup("Venom Head");
-            Core.Equip("Venom Head");
-            Bot.Wait.ForItemEquip("Venom Head", 40);
-            Core.SellItem("Battle Oracle Battlestaff");
-
-            Core.Logger("Leveling to 10 in tutorial Area");
-            while (!Bot.ShouldExit && Bot.Player.Level < 10)
-                Core.HuntMonster("oaklore", "Bone Berserker", log: false);
+            //level10 + class Rank 4 (to unlock all 4 abilities)
+            while (!Bot.ShouldExit && Bot.Player.Level < 10 || Bot.Player.CurrentClassRank < 5)
+                Core.KillMonster("oaklore", "r3", "Left", "Bone Berserker", log: false);
             Core.CancelRegisteredQuests();
-            InvEn.EnhanceInventory(EnhancementType.Wizard);
         }
+        Adv.SmartEnhance(Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue");
 
-        if (Core.SoloClass == "Generic" && Bot.Player.Level < 28)
-            Core.SoloClass = "Oracle";
-
-        Core.Logger("Checking if farming quest is unlocked.");
+        Core.Logger("Checking if farming quest is unlocked for Undead Giant.");
         if (!Core.isCompletedBefore(178))
         {
+            Core.Logger("They were not.");
             Story.KillQuest(183, "portalundead", "Skeletal Fire Mage");
             Story.KillQuest(176, "swordhavenundead", "Skeletal Soldier", false);
             Story.KillQuest(177, "swordhavenundead", "Skeletal Ice Mage", false);
         }
+        Core.Logger("Quests were finsihed, continuing");
 
         if (Bot.Player.Level < 28)
         {
-            InvEn.EnhanceInventory(EnhancementType.Wizard);
             Core.RegisterQuests(178);
             while (!Bot.ShouldExit && Bot.Player.Level < 28)
                 Core.HuntMonster("swordhavenundead", "Undead Giant", log: false);
             Core.CancelRegisteredQuests();
         }
-        InvEn.EnhanceInventory(EnhancementType.Wizard);
-        Adv.RankUpClass("Oracle");
-        Core.ToBank("Healer");
-        Farm.BladeofAweREP(6);
-        Core.Equip("Blade of Awe");
+        Adv.SmartEnhance(Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue");
 
         if (Bot.Player.Level < 30)
         {
-            InvEn.EnhanceInventory(EnhancementType.Wizard);
             Core.RegisterQuests(6294);
             while (!Bot.ShouldExit && Bot.Player.Level < 30)
                 Core.HuntMonster("firewar", "Fire Drakel", log: false);
             Core.CancelRegisteredQuests();
-            InvEn.EnhanceInventory(EnhancementType.Wizard);
+        }
+
+        if (Bot.Player.CurrentClassRank < 10)
+        {
+            Core.Logger("Finish Rank Rogue to r10");
+            Adv.RankUpClass(Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue");
         }
     }
 
@@ -259,14 +263,12 @@ public class CoreFarmerJoe
     {
         #region Obtain Boost Weapons
 
-        if (!Adv.HasMinimalBoost(GenericGearBoost.exp, 20))
-        {
-            //Arcane Blade of Glory / Shadow Blade of Despair (+20% xp)
-            Core.Logger("Arcane Blade of Glory / Shadow Blade of Despair (+20% xp)");
-            EVBW.GetWeapon(VictoryBladeStyles.Smart);
-            Adv.EnhanceItem(Core.CheckInventory("Arcane Blade of Glory") ? "Arcane Blade of Glory" : "Shadow Blade of Despair", EnhancementType.Lucky);
-            Core.Equip(Core.CheckInventory("Arcane Blade of Glory") ? "Arcane Blade of Glory" : "Shadow Blade of Despair");
-        }
+        Adv.SmartEnhance(Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue");
+        Farm.BladeofAweREP(6);
+        Adv.BuyItem("museum", 631, "Awethur's Accoutrements");
+        Core.Equip("Awethur's Accoutrements");
+        COA.GetCoA();
+        Adv.SmartEnhance(Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue");
 
         if (!Adv.HasMinimalBoost(GenericGearBoost.dmgAll, 25))
             DCSK.GetWep();
@@ -278,7 +280,7 @@ public class CoreFarmerJoe
 
         #region Leve30 to 75
         Core.Logger("Level to 75");
-        Adv.BestGear(GenericGearBoost.exp);
+        // Adv.BestGear(GenericGearBoost.exp);
         Farm.ToggleBoost(BoostType.Experience);
         foreach (int Level in new int[] { 30, 45, 50, 55, 60, 65, 70, 75 })
         {
@@ -287,62 +289,94 @@ public class CoreFarmerJoe
             switch (Level)
             {
                 case 30:
-                    if (Bot.Player.Level >= 30 && Core.CheckInventory("Master Ranger"))
+                    if (Bot.Player.Level >= 30 || Core.CheckInventory(new[] { "Arcane Blade of Glory", "Shadow Blade of Despair" }, any: true) && Core.CheckInventory("Master Ranger"))
                         break;
 
-                    while (!Bot.ShouldExit && Bot.Player.Level < Level || !Core.CheckInventory("Master Ranger"))
+                    while (!Bot.ShouldExit && Bot.Player.Level < Level && (!Core.CheckInventory("Arcane Blade of Glory") || !Core.CheckInventory("Shadow Blade of Despair")))
                     {
                         if (Core.SoloClass == "Generic")
-                            Core.SoloClass = "Oracle";
-                        InvEn.EnhanceInventory();
+                            Core.SoloClass = Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue";
+
+                        if (!Adv.HasMinimalBoost(GenericGearBoost.exp, 20))
+                        {
+                            //Arcane Blade of Glory / Shadow Blade of Despair (+20% xp)
+                            Core.Logger("Arcane Blade of Glory / Shadow Blade of Despair (+20% xp)");
+                            EVBW.GetWeapon(VictoryBladeStyles.Smart);
+                            Adv.EnhanceItem(Core.CheckInventory("Arcane Blade of Glory") ? "Arcane Blade of Glory" : "Shadow Blade of Despair", EnhancementType.Lucky);
+                            Core.Equip(Core.CheckInventory("Arcane Blade of Glory") ? "Arcane Blade of Glory" : "Shadow Blade of Despair");
+                        }
+
+                        Adv.SmartEnhance(Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue");
+                        Farm.Experience(Level);
                         MR.GetMR();
+                        Adv.SmartEnhance(Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue");
                     }
                     break;
 
                 case 45:
-                    if (Bot.Player.Level >= Level && Core.CheckInventory("Scarlet Sorceress"))
+                    if (Bot.Player.Level >= Level && Core.CheckInventory("Blood Sorceress"))
                         break;
 
-                    while (!Bot.ShouldExit && Bot.Player.Level < Level && !Core.CheckInventory("Scarlet Sorceress"))
+                    while (!Bot.ShouldExit && Bot.Player.Level < Level || !Core.CheckInventory("Blood Sorceress"))
                     {
-                        if (Core.SoloClass == "Generic")
-                            Core.SoloClass = "Oracle";
                         if (Core.FarmClass == "Generic")
                             Core.FarmClass = "Master Ranger";
 
-                        InvEn.EnhanceInventory();
+                        Adv.SmartEnhance("Master Ranger");
                         Farm.Experience(Level);
-                        InvEn.EnhanceInventory();
-                        SS.GetSSorc();
+
+                        Shaman.GetShaman();
+                        Adv.SmartEnhance("Shaman");
+                        Core.ToBank("Oracle");
                     }
                     break;
 
                 case 50:
-                    if (Bot.Player.Level >= Level && Core.CheckInventory(new[] { "Darkblood StormKing", "Burning Blade" }))
+                    if (Bot.Player.Level >= Level && Core.CheckInventory(new[] { "Shaman", "Burning Blade" }) && Core.CheckInventory("Shaman"))
                         break;
 
-                    while (!Bot.ShouldExit && Bot.Player.Level < Level && !Core.CheckInventory(new[] { "Darkblood StormKing", "Burning Blade" }))
+                    while (!Bot.ShouldExit && Bot.Player.Level < Level && !Core.CheckInventory(new[] { "Shaman", "Burning Blade" }) && !Core.CheckInventory("Shaman"))
                     {
+                        if (Core.SoloClass == "Generic")
+                        {
+                            Core.SoloClass = "Shaman";
+                            Core.FarmClass = "Shaman";
+                        }
+                        SS.GetSSorc();
+                        Core.SellItem("Master Ranger");
+
                         if (Core.FarmClass == "Generic")
                             Core.FarmClass = "Scarlet Sorceress";
 
-                        DBSK.GetDSK();
-                        Adv.SmartEnhance("Darkblood StormKing");
+                        Adv.SmartEnhance("Scarlet Sorceress");
                         BB.GetBurningBlade();
+                        Core.Equip("Burning Blade");
                     }
                     break;
 
                 case 55:
+                    if (Bot.Player.Level >= Level && Core.CheckInventory("Cryomancer") || Core.CheckInventory("Blaze Binder"))
+                        break;
+
+                    //Daily classes
+                    Core.Logger("Daily Classes Check");
+                    Daily.Cryomancer();
+                    Bb.GetClass();
+                    break;
+
                 case 60:
                     if (Bot.Player.Level >= Level && Core.CheckInventory("DragonSoul Shinobi"))
                         break;
 
                     while (!Bot.ShouldExit && Bot.Player.Level < Level && !Core.CheckInventory("DragonSoul Shinobi"))
                     {
-                        if (Core.SoloClass == "Generic")
-                            Core.SoloClass = "Darkblood StormKing";
-                        if (Core.FarmClass == "Generic")
-                            Core.FarmClass = "Scarlet Sorceress";
+                        if (Core.SoloClass == "Generic" && Core.CheckInventory("Cryomancer"))
+                            Core.SoloClass = "Cryomancer";
+
+                        if (Core.SoloClass == "Generic" && Core.CheckInventory("Blaze Binder"))
+                            Core.FarmClass = "Blaze Binder";
+                        else Core.FarmClass = "Scarlet Sorceress";
+
                         Core.Logger("Getting DSS for DoomKittem(ArchPaladin)");
                         InvEn.EnhanceInventory();
                         DS.GetDSS();
@@ -354,35 +388,45 @@ public class CoreFarmerJoe
                     if (Bot.Player.Level >= Level && Core.CheckInventory("ArchPaladin"))
                         break;
 
-
                     while (!Bot.ShouldExit && Bot.Player.Level < Level && !Core.CheckInventory("ArchPaladin"))
                     {
-                        if (Core.SoloClass == "Generic")
-                            Core.SoloClass = "Darkblood StormKing";
-                        if (Core.FarmClass == "Generic")
-                            Core.FarmClass = "Scarlet Sorceress";
+                        if (Core.SoloClass == "Generic" && Core.CheckInventory("Cryomancer"))
+                            Core.SoloClass = "Cryomancer";
+                        else Core.SoloClass = "Shaman";
+
+                        if (Core.SoloClass == "Generic" && Core.CheckInventory("Blaze Binder"))
+                            Core.FarmClass = "Blaze Binder";
+                        else Core.FarmClass = "Scarlet Sorceress";
 
                         InvEn.EnhanceInventory();
                         Farm.Experience(Level);
                         InvEn.EnhanceInventory();
                         AP.GetAP();
+                        Adv.SmartEnhance("ArchPaladin");
                     }
                     break;
 
                 case 70:
                 case 75:
-                    if (Bot.Player.Level >= Level && Core.CheckInventory("Archfiend DeathLord"))
+                    if (Bot.Player.Level >= Level && Core.CheckInventory("Archfiend DeathLord") || Core.CheckInventory("ArchFiend"))
                         break;
 
-                    while (!Bot.ShouldExit && Bot.Player.Level < Level && !Core.CheckInventory("Archfiend DeathLord"))
+                    while (!Bot.ShouldExit && Bot.Player.Level < Level && !Core.CheckInventory("Archfiend DeathLord") && !Core.CheckInventory("ArchFiend"))
                     {
                         if (Core.SoloClass == "Generic")
                             Core.SoloClass = "ArchPaladin";
-                        if (Core.FarmClass == "Generic")
-                            Core.FarmClass = "Scarlet Sorceress";
+                        if (Core.SoloClass == "Generic" && Core.CheckInventory("Blaze Binder"))
+                            Core.FarmClass = "Blaze Binder";
+                        else Core.FarmClass = "Scarlet Sorceress";
 
                         InvEn.EnhanceInventory();
+                        AF.GetArchfiend();
+                        if (Core.FarmClass == "Generic" || Core.FarmClass == "Scarlet Sorceress" || Core.FarmClass == "Blaze Binder")
+                            Core.FarmClass = "ArchFiend";
+                        Adv.SmartEnhance("ArchFiend");
                         AFDeath.GetArm(true, ArchfiendDeathLord.RewardChoice.Archfiend_DeathLord);
+                        Core.Equip("Archfiend DeathLord");
+                        // Adv.BestGear(GenericGearBoost.dmgAll);
                         InvEn.EnhanceInventory();
                         Farm.Experience(Level);
                         InvEn.EnhanceInventory();
@@ -393,15 +437,15 @@ public class CoreFarmerJoe
             Farm.ToggleBoost(BoostType.Experience, false);
 
             //Setting solo and farm class
-            if (Core.SoloClass == "Generic" || Core.SoloClass == "Healer" || Core.SoloClass == "Oracle" || Core.SoloClass == "Darkblood StormKing")
+            if (Core.SoloClass == "Generic" || Core.SoloClass == "Healer" || Core.SoloClass == "Rogue" || Core.SoloClass == "Shaman" || Core.SoloClass == "Cryomancer")
             {
                 Core.Logger("Setting Solo class.");
                 Core.SoloClass = "ArchPaladin";
             }
-            if (Core.FarmClass == "Generic" || Core.FarmClass == "Master Ranger")
+            if (Core.FarmClass == "Generic" || Core.FarmClass == "Blood Sorceress" || Core.FarmClass == "ArchFiend")
             {
                 Core.Logger("Setting Farm class.");
-                Core.SoloClass = "Scarlet Sorceress";
+                Core.SoloClass = "ArchFiend";
             }
             #endregion Level to 75
         }
@@ -409,10 +453,11 @@ public class CoreFarmerJoe
 
     public void Level75to100()
     {
-        if (Core.SoloClass == "Generic")
+        if ((Core.CheckInventory("Archfiend") && Core.CheckInventory("ArchPaladin")) || (Core.SoloClass == "Generic" && Core.FarmClass == "Generic"))
+        {
             Core.SoloClass = "ArchPaladin";
-        if (Core.FarmClass == "Generic")
-            Core.FarmClass = "Scarlet Sorceress";
+            Core.FarmClass = "ArchFiend";
+        }
 
         InvEn.EnhanceInventory();
         #region Prepare for Lvl100
@@ -437,12 +482,7 @@ public class CoreFarmerJoe
         //P2 Chaos Shenanagins
         Core.Logger("P2: Chaos Shenanagins");
 
-        // if (!Core.isCompletedBefore(3765))
         LOC.Complete13LOC();
-        // Farm.ChaosREP();
-        // Adv.BuyItem("confrontation", 891, "Chaos Slayer Berserker");
-        // Adv.RankUpClass("Chaos Slayer Berserker");
-        // Core.Equip("Chaos Slayer Berserker");
 
         //Step 2 Solo Class:
         Core.Logger("P3: Solo Classes & Weapon");
@@ -450,26 +490,14 @@ public class CoreFarmerJoe
         LOO.GetLoO();
         Core.ToBank(Core.EnsureLoad(7156).Rewards.Select(i => i.Name).ToArray());
 
-        Core.Logger("P3 - 2: Blade and Cape of Awe");
-        Core.ToBank("Blade of Awe");
-        Adv.BuyItem("museum", 631, "Awethur's Accoutrements");
-        COA.GetCoA();
-
-
         Core.Logger("P3 - 4: Improving Efficiency, and more Classes");
-        if (Core.FarmClass == "Generic")
-            Core.FarmClass = "Shaman";
         GB.GetGB();
-        if (Core.SoloClass == "Generic")
-            Core.SoloClass = "Glacial Berserker";
         SC.GetSC();
-        if (Core.SoloClass == "Generic")
-            Core.SoloClass = "StoneCrusher";
 
         Farm.Experience(80);
         CAQ.DoAll();
         BBOA.GetBBoA();
-        
+
         #endregion Prepare for Lvl100
 
         InvEn.EnhanceInventory();
@@ -484,11 +512,6 @@ public class CoreFarmerJoe
     public void EndGame()
     {
         #region Ending & Extras 
-
-        if (Core.SoloClass == "Generic")
-            Core.SoloClass = "StoneCrusher";
-        if (Core.FarmClass == "Generic")
-            Core.FarmClass = "Shaman";
 
         if (Bot.Config!.Get<bool>("OutFit"))
             Outfit();

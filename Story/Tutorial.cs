@@ -25,6 +25,9 @@ public class Tutorial
         if (Core.HasAchievement(31))
             return;
 
+        Core.Logger("Doing Tutorial Badges" +
+            "\tStartup may take a few seconds");
+
         string[] Achievements =  {
             "Combat",
             "Interact",
