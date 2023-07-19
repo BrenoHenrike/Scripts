@@ -379,7 +379,7 @@ public class CoreFarms
         Core.SavedState();
 
         Core.RegisterQuests(6294, 6295);
-        Core.ConfigureAggro();
+        // Core.ConfigureAggro(); //not worth it anymore and low lvls die.
         while (!Bot.ShouldExit && Bot.Player.Level < level)
             Core.KillMonster("Firewar", "r2", "Right", "*", log: false);
 
@@ -1167,7 +1167,7 @@ public class CoreFarms
 
             Core.RegisterQuests(2935);
             while (!Bot.ShouldExit && FactionRank("Blade of Awe") < rank)
-                Core.HuntMonster("castleundead", "Skeletal Viking", "Hilt Found!", 1, false, log: false);
+                Core.KillMonster("castleundead", "Enter", "Left", "Skeletal Viking", "Hilt Found!", 1, false, log: false);
             Core.CancelRegisteredQuests();
             Core.SavedState(false);
         }
