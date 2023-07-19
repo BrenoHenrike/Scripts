@@ -175,8 +175,9 @@ public class CoreFarmerJoe
         if (Bot.Player.Level >= 30 && Core.SoloClass == "Generic" && !Core.CheckInventory(new[] { "Rogue", "Rogue (Rare)" }, any: true) && Bot.Player.CurrentClassRank < 10)
         {
             Core.Logger("grabbing Rogue, ranking it, then continuing");
-            Core.BuyItem("classhalla", 172, "Rogue");
-            Adv.rankUpClass(Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue");
+            if (!Core.CheckInventory(Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue"))
+                Core.BuyItem("classhalla", 172, "Rogue");
+            else Adv.rankUpClass(Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue");
             return;
         }
 
@@ -195,7 +196,8 @@ public class CoreFarmerJoe
 
             Core.Logger("Getting Starting Levels/Equipment");
 
-            Core.BuyItem("classhalla", 172, "Rogue");
+            if (!Core.CheckInventory(Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue"))
+                Core.BuyItem("classhalla", 172, "Rogue");
             Core.BuyItem("classhalla", 299, "Battle Oracle Wings");
             Core.BuyItem("classhalla", 299, "Battle Oracle Battlestaff");
             Core.BuyItem("classhalla", 299, "Battle Oracle Hood");
@@ -268,6 +270,7 @@ public class CoreFarmerJoe
         Adv.BuyItem("museum", 631, "Awethur's Accoutrements");
         Core.Equip("Awethur's Accoutrements");
         COA.GetCoA();
+        Core.Equip("Cape of Awe");
         Adv.SmartEnhance(Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue");
 
         if (!Adv.HasMinimalBoost(GenericGearBoost.dmgAll, 25))
@@ -289,7 +292,7 @@ public class CoreFarmerJoe
             switch (Level)
             {
                 case 30:
-                    if (Bot.Player.Level >= 30 || Core.CheckInventory(new[] { "Arcane Blade of Glory", "Shadow Blade of Despair" }, any: true) && Core.CheckInventory("Master Ranger"))
+                    if (Bot.Player.Level >= 30 && Core.CheckInventory(new[] { "Arcane Blade of Glory", "Shadow Blade of Despair" }, any: true) && Core.CheckInventory("Master Ranger"))
                         break;
 
                     while (!Bot.ShouldExit && Bot.Player.Level < Level && (!Core.CheckInventory("Arcane Blade of Glory") || !Core.CheckInventory("Shadow Blade of Despair")))
@@ -327,7 +330,6 @@ public class CoreFarmerJoe
 
                         Shaman.GetShaman();
                         Adv.SmartEnhance("Shaman");
-                        Core.ToBank("Oracle");
                     }
                     break;
 
