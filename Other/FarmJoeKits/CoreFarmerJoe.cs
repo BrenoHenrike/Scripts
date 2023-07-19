@@ -232,7 +232,7 @@ public class CoreFarmerJoe
             Story.KillQuest(176, "swordhavenundead", "Skeletal Soldier", false);
             Story.KillQuest(177, "swordhavenundead", "Skeletal Ice Mage", false);
         }
-        Core.Logger("Quests were finsihed, continuing");
+        Core.Logger("Quests were finished, continuing");
 
         if (Bot.Player.Level < 28)
         {
