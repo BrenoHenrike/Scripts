@@ -1958,8 +1958,13 @@ public class CoreBots
             {
                 // DebugLogger(this);
                 while (!Bot.ShouldExit && IsMonsterAlive("Staff of Inversion"))
+                {
                     Bot.Kill.Monster("Staff of Inversion");
+                    Bot.Combat.CancelTarget();
+                    Bot.Sleep(1000);
+                }
                 Bot.Combat.Attack("Escherion");
+                Bot.Combat.CancelTarget();
                 Bot.Sleep(1000);
             }
         }
