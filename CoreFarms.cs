@@ -383,7 +383,7 @@ public class CoreFarms
         while (!Bot.ShouldExit && Bot.Player.Level < level)
             Core.KillMonster("Firewar", "r2", "Right", "*", log: false);
 
-        Core.ConfigureAggro(false);
+        // Core.ConfigureAggro(false); //not worth it anymore and low lvls die.
         Core.CancelRegisteredQuests();
     }
     #endregion

@@ -318,8 +318,8 @@ public class CoreFarmerJoe
                     break;
 
                 case 45:
-                    InventoryItem? ClassBloodSorceress = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == ("Blood Sorceress").ToLower().Trim() && i.Category == ItemCategory.Class);
-                    if (Bot.Player.Level >= Level && Core.CheckInventory("Blood Sorceress") && ClassBloodSorceress!.Quantity == 302500)
+                    InventoryItem? ClassShaman = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == ("Shaman").ToLower().Trim() && i.Category == ItemCategory.Class);
+                    if (Bot.Player.Level >= Level && Core.CheckInventory("Shaman") && ClassShaman!.Quantity == 302500)
                     {
                         Core.Logger("Items owned: \"Blood Sorceress\" continuing");
                         break;
@@ -336,8 +336,8 @@ public class CoreFarmerJoe
                     break;
 
                 case 50:
-                    InventoryItem? ClassShaman = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == ("Shaman").ToLower().Trim() && i.Category == ItemCategory.Class);
-                    if (Bot.Player.Level >= Level && Core.CheckInventory(new[] { "Shaman", "Burning Blade" }) && Core.CheckInventory("Shaman") && ClassShaman!.Quantity == 302500)
+                    InventoryItem? ClassScarletSorceress = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == ("Scarlet Sorceress").ToLower().Trim() && i.Category == ItemCategory.Class);
+                    if (Bot.Player.Level >= Level && Core.CheckInventory(new[] { "Scarlet Sorceress", "Burning Blade" }) && ClassScarletSorceress!.Quantity == 302500)
                     {
                         Core.Logger("Items owned: \"Shaman\", \"Burning Blade\" continuing");
                         break;
@@ -349,7 +349,6 @@ public class CoreFarmerJoe
                         Core.FarmClass = "Shaman";
                     }
                     SS.GetSSorc();
-                    Core.SellItem("Master Ranger");
 
                     if (Core.FarmClass == "Generic")
                         Core.FarmClass = "Scarlet Sorceress";
@@ -379,7 +378,7 @@ public class CoreFarmerJoe
                     break;
 
                 case 60:
-                    InventoryItem? ClassDragonSoulShinobi = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == ("className").ToLower().Trim() && i.Category == ItemCategory.Class);
+                    InventoryItem? ClassDragonSoulShinobi = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == ("DragonSoul Shinobi").ToLower().Trim() && i.Category == ItemCategory.Class);
                     if (Bot.Player.Level >= Level && Core.CheckInventory("DragonSoul Shinobi") && ClassDragonSoulShinobi!.Quantity == 302500)
                     {
                         Core.Logger("Items owned: \"DragonSoul Shinobi\", continuing");
