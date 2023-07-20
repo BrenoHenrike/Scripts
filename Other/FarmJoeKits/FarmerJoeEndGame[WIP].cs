@@ -79,6 +79,7 @@ tags: null
 //cs_include Scripts/Nation/Various/Archfiend.cs
 //cs_include Scripts/Evil/NSoD/CoreNSOD.cs
 //cs_include Scripts/Other/Classes/Necromancer.cs
+//cs_include Scripts/Dailies/Cryomancer.cs
 using Skua.Core.Interfaces;
 
 public class FarmerJoeEndGame
