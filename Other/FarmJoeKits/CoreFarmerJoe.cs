@@ -43,6 +43,7 @@ tags: null
 //cs_include Scripts/Other/Classes/Daily-Classes/BlazeBinder.cs
 //cs_include Scripts/Nation/Various/Archfiend.cs
 //cs_include Scripts/Other/Classes/Necromancer.cs
+//cs_include Scripts/Dailies/Cryomancer.cs
 
 //cs_include Scripts/Other/Weapons/BurningBlade.cs
 //cs_include Scripts/Other/Weapons/BurningBladeOfAbezeth.cs
@@ -131,6 +132,7 @@ public class CoreFarmerJoe
     public BloodSorceress BS = new();
     public BlazeBinder Bb = new();
     public ArchFiend AF = new();
+    public Cryomancer Cryo = new();
 
     //Weapons
     public DualChainSawKatanas DCSK = new();
@@ -142,6 +144,7 @@ public class CoreFarmerJoe
     //Story
     public Tutorial Tutorial = new();
     public CelestialArenaQuests CAQ = new();
+    public GlaceraStory GS = new();
 
 
 
@@ -369,7 +372,7 @@ public class CoreFarmerJoe
 
                     //Daily classes
                     Core.Logger("Daily Classes Check");
-                    Daily.Cryomancer();
+                    Cryo.DoCryomancer();
                     if (Core.CheckInventory("Cryomancer") && ClassCryomancer!.Quantity != 302500)
                         Adv.rankUpClass("Cryomancer");
                     Bb.GetClass();
