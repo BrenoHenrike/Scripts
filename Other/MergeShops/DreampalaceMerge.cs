@@ -7,6 +7,7 @@ tags: null
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/Story/DreamPalace.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
@@ -19,6 +20,7 @@ public class DreampalaceMerge
     public CoreStory Story = new();
     public CoreAdvanced Adv = new();
     public static CoreAdvanced sAdv = new();
+    public DreamPalace dreamPalace = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
     public string[] MultiOptions = { "Generic", "Select" };
@@ -32,6 +34,7 @@ public class DreampalaceMerge
         Core.BankingBlackList.AddRange(new[] { "Axe of Golmoth", "Scales of Golmoth", "Token of Fire", "Zahad's Ancient Gem", "Scythe of Gazeroth", "Souls of Gazeroth", "Token of Earth", "Bow of Zelkur", "Claws of Zelkur", "Token of Water", "Scimitar of Zal", "Feathers of Zal", "Token of Air " });
         Core.SetOptions();
 
+        dreamPalace.StoryLine();
         BuyAllMerge();
 
         Core.SetOptions(false);
