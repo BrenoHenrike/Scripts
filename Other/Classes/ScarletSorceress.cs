@@ -33,14 +33,18 @@ public class ScarletSorceress
     public void GetSSorc(bool rankUpClass = true)
     {
         if (Core.CheckInventory("Scarlet Sorceress"))
+        {
+            if (rankUpClass)
+                Adv.RankUpClass("Scarlet Sorceress");
             return;
+        }
 
         Core.AddDrop("Scarlet Sorceress");
 
         TOD.TowerofMirrors();
         BS.GetBSorc(false);
 
-        
+
         //checking if BS has atleast 1 classpoint.
         Adv.GearStore();
         InventoryItem? itemInv = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == "Blood Sorceress".ToLower().Trim() && i.Category == ItemCategory.Class);

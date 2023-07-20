@@ -32,7 +32,8 @@ public class DragonShinobi
     {
         if (Core.CheckInventory(59476))
         {
-            Adv.RankUpClass("DragonSoul Shinobi");
+            if (rankUpClass)
+                Adv.RankUpClass("DragonSoul Shinobi");
             return;
         }
 

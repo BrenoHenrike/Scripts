@@ -38,8 +38,11 @@ public class ArchPaladin
     public void GetAP(bool rankUpClass = true)
     {
         if (Core.CheckInventory(36920))
+        {
+            if (rankUpClass)
+                Adv.RankUpClass("ArchPaladin");
             return;
-
+        }
         Story.PreLoad(this);
 
         Farm.GoodREP();

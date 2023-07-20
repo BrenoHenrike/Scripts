@@ -38,8 +38,11 @@ public class ArchFiend
     public void GetArchfiend(bool rankUp = true)
     {
         if (Core.CheckInventory("ArchFiend"))
+        {
+            if (rankUp)
+                Adv.RankUpClass("ArchFiend");
             return;
-
+        }
         AbyssalContract();
 
         Core.BuyItem("tercessuinotlim", 695, "ArchFiend");

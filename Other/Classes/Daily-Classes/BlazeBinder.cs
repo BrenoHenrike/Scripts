@@ -28,10 +28,14 @@ public class BlazeBinder
         Core.SetOptions(false);
     }
 
-    public void GetClass()
+    public void GetClass(bool rankUpClass = true)
     {
         if (Core.CheckInventory("Blaze Binder"))
+        {
+            if (rankUpClass)
+                Adv.RankUpClass("Blaze Binder");
             return;
+        }
 
         if (!Core.CheckInventory("Pyromancer"))
         {

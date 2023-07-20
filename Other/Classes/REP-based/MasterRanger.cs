@@ -27,7 +27,11 @@ public class MasterRanger
     public void GetMR(bool rankUpClass = true)
     {
         if (Core.CheckInventory("Master Ranger"))
+        {
+            if (rankUpClass)
+                Adv.RankUpClass("Master Ranger");
             return;
+        }
 
         Farm.SandseaREP();
 

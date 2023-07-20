@@ -27,7 +27,11 @@ public class Shaman
     public void GetShaman(bool rankUpClass = true)
     {
         if (Core.CheckInventory("Shaman"))
+        {
+            if (rankUpClass)
+                Adv.RankUpClass("Shaman");
             return;
+        }
 
         Farm.ArcangroveREP();
 
