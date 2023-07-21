@@ -215,7 +215,7 @@ public class ArchPaladin
             Core.EnsureComplete(5470);
         }
 
-        Core.BuyItem("darkthronehub", 1303, "ArchPaladin", shopItemID: 21833);
+        Core.BuyItem("darkthronehub", 1303, 36920, shopItemID: 21833);
         if (rankUpClass)
         {
             Adv.GearStore();

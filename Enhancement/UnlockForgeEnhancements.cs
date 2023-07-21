@@ -136,7 +136,7 @@ public class UnlockForgeEnhancements
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.SetOptions();  
+        Core.SetOptions();
 
         ForgeUnlocks();
 
@@ -671,14 +671,11 @@ public class UnlockForgeEnhancements
         Farm.GoodREP(10);
         Farm.BlacksmithingREP(9, Bot.Config!.Get<bool>("UseGold"), Bot.Config.Get<bool>("UseGold") ? true : false);
 
-        if (!Core.CheckInventory(new[] { "Ascended Paladin", "Ascended Paladin Staff", "Ascended Paladin Sword" }))
-        {
-            Core.EquipClass(ClassType.Farm);
-            Core.KillMonster("therift", "r9", "Left", "Plague Spreader", "Slimed Sigil", 200, isTemp: false);
-            Adv.BuyItem("therift", 1399, "Ascended Paladin");
-            Adv.BuyItem("therift", 1399, "Ascended Paladin Staff");
-            Adv.BuyItem("therift", 1399, "Ascended Paladin Sword");
-        }
+        Core.EquipClass(ClassType.Farm);
+        Core.KillMonster("therift", "r9", "Left", "Plague Spreader", "Slimed Sigil", 200, isTemp: false);
+        Adv.BuyItem("therift", 1399, 39091, shopItemID: 5244);
+        Adv.BuyItem("therift", 1399, 39093, shopItemID: 5246);
+        Adv.BuyItem("therift", 1399, 39094, shopItemID: 5247);
 
         Core.ChainComplete(8743);
         Core.Logger("Enhancement Unlocked: Absolution");

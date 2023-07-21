@@ -33,9 +33,7 @@ public class MasterRanger
             return;
         }
 
-        Farm.SandseaREP();
-
-        Core.BuyItem("sandsea", 242, "Master Ranger");
+        Adv.BuyItem("sandsea", 242, 7260, shopItemID: 5682);
 
         if (rankUpClass)
             Adv.RankUpClass("Master Ranger");

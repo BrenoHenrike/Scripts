@@ -46,13 +46,9 @@ public class DragonShinobi
             Core.HuntMonster("shadowfortress", "1st Head Of Orochi", "Perfect Orochi Scales", 10, isTemp: false);
         Core.CancelRegisteredQuests();
 
-        Core.BuyItem("shadowfortress", 1968, 59476);
+        Adv.BuyItem("shadowfortress", 1968, 59476, shopItemID: 8078);
+      
         if (rankUpClass)
-        {
-            Adv.GearStore();
-            Core.Equip("DragonSoul Shinobi");
             Adv.RankUpClass("DragonSoul Shinobi");
-            Adv.GearStore(true);
-        }
     }
 }

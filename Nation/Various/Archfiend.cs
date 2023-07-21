@@ -45,7 +45,7 @@ public class ArchFiend
         }
         AbyssalContract();
 
-        Core.BuyItem("tercessuinotlim", 695, "ArchFiend");
+        Core.BuyItem("tercessuinotlim", 695, 18894, shopItemID: 1925);
         if (rankUp)
             Adv.RankUpClass("ArchFiend");
     }

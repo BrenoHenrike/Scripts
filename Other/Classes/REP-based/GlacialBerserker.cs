@@ -35,9 +35,7 @@ public class GlacialBerserker
 
         Glacera.IceWindPass();
         Adv.BestGear(GenericGearBoost.rep);
-        Farm.GlaceraREP();
-
-        Core.BuyItem("icewindpass", 1339, 38084);
+        Adv.BuyItem("icewindpass", 1339, 38084, shopItemID: 22266);
 
         if (rankUpClass)
             Adv.RankUpClass("Glacial Berserker");
