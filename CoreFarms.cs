@@ -250,7 +250,12 @@ public class CoreFarms
         while (Bot.Player.Level < 60)
             Core.KillMonster("underlair", "r5", "Left", "Void Draconian", log: false);
 
+        // delete ISA when new maps  come out
         IcestormArena(level);
+
+        //Enable when new ISA split maps are enabled. fix map names accordingly
+        // while (Bot.Player.Level < level)
+        //     Core.KillMonster(Bot.Player.Level < 75 ? "ice wind map" : "frost spiit map(255)", "cell", "pad", "*");
 
         ToggleBoost(BoostType.Experience, false);
     }
