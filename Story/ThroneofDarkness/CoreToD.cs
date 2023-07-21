@@ -1155,7 +1155,12 @@ public class CoreToD
         Story.KillQuest(5316, "towerofmirrors", new[] { "Phans", "Phans" });
 
         // But I Have A Backstage Pass!
-        Story.KillQuest(5317, "towerofmirrors", "Lothahnos the Reversed");
+        if (!Story.QuestProgression(5317))
+        {
+            Core.EnsureAccept(5317);
+            Core.HuntMonsterMapID("towerofmirrors", 36, "Lothahnos the Reversed Defeated");
+            Core.EnsureComplete(5317);
+        }
 
         // True Love
         Story.KillQuest(5318, "towerofmirrors", "Silver Elemental");
@@ -1165,7 +1170,12 @@ public class CoreToD
         Story.KillQuest(5319, "towerofmirrors", new[] { "Runway Wraith", "Runway Wraith", "Runway Wraith", "Runway Wraith" });
 
         // Now Turn to the Right
-        Story.KillQuest(5320, "towerofmirrors", "Lukcrisio the Buffed");
+        if (!Story.QuestProgression(5320))
+        {
+            Core.EnsureAccept(5320);
+            Core.HuntMonsterMapID("towerofmirrors", 40, "Lukcrisio the Buffed Defeated");
+            Core.EnsureComplete(5320);
+        }
 
         // Or Maybe THIS Is True Love
         Story.MapItemQuest(5321, "towerofmirrors", new[] { 4688, 4694 });
@@ -1175,7 +1185,12 @@ public class CoreToD
         Story.KillQuest(5322, "towerofmirrors", new[] { "Pageant Mom", "Pageant Mom" });
 
         // Drink your Go-Go Juice
-        Story.KillQuest(5323, "towerofmirrors", "Medeskar the Smudged");
+        if (!Story.QuestProgression(5323))
+        {
+            Core.EnsureAccept(5323);
+            Core.HuntMonsterMapID("towerofmirrors", 45, "Mendeskar the Smudged Defeated");
+            Core.EnsureComplete(5323);
+        }
 
         // Oh Sure, Why Not
         Story.MapItemQuest(5324, "towerofmirrors", new[] { 4689, 4695 });
@@ -1185,7 +1200,12 @@ public class CoreToD
         Story.KillQuest(5325, "towerofmirrors", new[] { "Stage Tech", "Stage Tech" });
 
         // In the Spotlight
-        Story.KillQuest(5326, "towerofmirrors", "Atticus the Warped");
+        if (!Story.QuestProgression(5326))
+        {
+            Core.EnsureAccept(5326);
+            Core.HuntMonsterMapID("towerofmirrors", 49, "Atticus the Warped Defeated");
+            Core.EnsureComplete(5326);
+        }
 
         // Oh, I Give Up
         Story.MapItemQuest(5327, "towerofmirrors", new[] { 4690, 4696 });
@@ -1195,7 +1215,12 @@ public class CoreToD
         Story.KillQuest(5328, "towerofmirrors", new[] { "Sasquatch", "Sasquatch" });
 
         // Kick His- Wait, Did We Already Use That Pun?
-        Story.KillQuest(5329, "towerofmirrors", "Leofire the Shattered");
+        if (!Story.QuestProgression(5329))
+        {
+            Core.EnsureAccept(5329);
+            Core.HuntMonsterMapID("towerofmirrors", 52, "Leofire the Shattered Defeated");
+            Core.EnsureComplete(5329);
+        }
 
         // Fiend Zoned
         Story.KillQuest(5330, "towerofmirrors", "Fervent Suitor");
@@ -1204,7 +1229,13 @@ public class CoreToD
         Story.MapItemQuest(5331, "towerofmirrors", 4697);
 
         // Defeat ... Wait. What?
-        Story.KillQuest(5332, "towerofmirrors", "Scarletta");
+        if (!Story.QuestProgression(5332))
+        {
+            Core.AddDrop("Blood Sorceress");
+            Core.EnsureAccept(5332);
+            Core.HuntMonsterMapID("towerofmirrors", 32, "Defeat the Groglurk");
+            Core.EnsureComplete(5332);
+        }
     }
 
     #endregion
