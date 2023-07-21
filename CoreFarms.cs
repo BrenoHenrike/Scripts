@@ -245,8 +245,6 @@ public class CoreFarms
             Core.CancelRegisteredQuests();
         }
 
-        IcestormArena(20);
-
         FireWarxp(40);
 
         while (Bot.Player.Level < 60)
