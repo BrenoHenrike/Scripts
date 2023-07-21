@@ -1659,7 +1659,7 @@
       "undead"
     ],
     "path": "Good/ArchPaladin.cs",
-    "size": 10559,
+    "size": 10551,
     "fileName": "ArchPaladin.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/ArchPaladin.cs"
   },
@@ -1735,7 +1735,7 @@
       "pneuma"
     ],
     "path": "Enhancement/UnlockForgeEnhancements.cs",
-    "size": 38244,
+    "size": 38086,
     "fileName": "UnlockForgeEnhancements.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Enhancement/UnlockForgeEnhancements.cs"
   },
@@ -8976,7 +8976,7 @@
       "null"
     ],
     "path": "Other/Classes/DragonShinobi.cs",
-    "size": 1619,
+    "size": 1515,
     "fileName": "DragonShinobi.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/DragonShinobi.cs"
   },
@@ -13021,7 +13021,7 @@
       "null"
     ],
     "path": "Nation/Various/Archfiend.cs",
-    "size": 3116,
+    "size": 3128,
     "fileName": "Archfiend.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/Archfiend.cs"
   },
@@ -17650,7 +17650,7 @@
       "null"
     ],
     "path": "Other/Classes/REP-based/Shaman.cs",
-    "size": 920,
+    "size": 902,
     "fileName": "Shaman.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/REP-based/Shaman.cs"
   },
@@ -17707,7 +17707,7 @@
       "null"
     ],
     "path": "Other/Classes/REP-based/GlacialBerserker.cs",
-    "size": 1060,
+    "size": 1050,
     "fileName": "GlacialBerserker.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/REP-based/GlacialBerserker.cs"
   },
@@ -17718,7 +17718,7 @@
       "null"
     ],
     "path": "Other/Classes/REP-based/StoneCrusher.cs",
-    "size": 1155,
+    "size": 1164,
     "fileName": "StoneCrusher.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/REP-based/StoneCrusher.cs"
   },
@@ -17795,7 +17795,7 @@
       "null"
     ],
     "path": "Other/Classes/REP-based/MasterRanger.cs",
-    "size": 946,
+    "size": 924,
     "fileName": "MasterRanger.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/REP-based/MasterRanger.cs"
   },
