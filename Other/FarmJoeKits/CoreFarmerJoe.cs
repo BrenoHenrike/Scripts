@@ -278,24 +278,10 @@ public class CoreFarmerJoe
 
     public void Level30to75()
     {
-        #region Obtain Boost Weapons
-        if (Core.SoloClass == "Generic" || Core.SoloClass == (Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue"))
-            Adv.SmartEnhance(Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue");
-        Farm.BladeofAweREP(6, false);
-        Adv.BuyItem("museum", 631, "Awethur's Accoutrements");
-        Core.Equip("Awethur's Accoutrements");
-
-        ItemBase? DefaultWep = Bot.Inventory.Items.Find(x => x.Name.StartsWith("Default"));
-        if (DefaultWep != null && Core.CheckInventory(DefaultWep.Name))
-            Core.SellItem(DefaultWep.Name);
-        #endregion Obtain Boost Weapon
-
         #region Leve30 to 75
         // Adv.BestGear(GenericGearBoost.exp);
         Farm.ToggleBoost(BoostType.Experience);
-        #endregion Obtain Boost Weapons
 
-        #region Leve 30-75
         foreach (int Level in new int[] { 30, 45, 50, 55, 60, 65, 70, 75 })
         {
             Core.Logger($"Level Goal: {Level}");
@@ -309,12 +295,25 @@ public class CoreFarmerJoe
                         Core.Logger($"Items owned: \"Master Ranger\" continuing");
                         if (Core.SoloClass == "Generic")
                             Core.SoloClass = Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue";
+                        Adv.SmartEnhance(ClassMasterRanger!.Name);
                         continue;
                     }
 
                     // Rest of the code inside the case will be executed if the conditions are not met.
                     if (Core.SoloClass == "Generic")
                         Core.SoloClass = Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue";
+
+                    //For BOA lvl 30 rogue *should* be able to kill escherion ..once in awhile :P (tested i got a few kills in an an hr... proabably horrible but w/e)
+                    Farm.BladeofAweREP(6, false);
+                    Adv.BuyItem("museum", 631, "Awethur's Accoutrements");
+                    Core.Equip("Awethur's Accoutrements");
+
+                    ItemBase? DefaultWep = Bot.Inventory.Items.Find(x => x.Name.StartsWith("Default"));
+                    if (DefaultWep != null && Core.CheckInventory(DefaultWep.Name))
+                        Core.SellItem(DefaultWep.Name);
+                    Core.SellItem("Battle Oracle Battlestaff");
+                    Core.SellItem("Venom Head");
+                    Core.ToBank("Blade of Awe");
 
                     InvEn.EnhanceInventory();
                     Farm.Experience(Level);
@@ -329,6 +328,7 @@ public class CoreFarmerJoe
                         Core.Logger("Items owned: \"Shaman\" continuing");
                         if (Core.FarmClass == "Generic")
                             Core.FarmClass = "Master Ranger";
+                        Adv.SmartEnhance(ClassShaman!.Name);
                         continue;
                     }
 
@@ -351,6 +351,7 @@ public class CoreFarmerJoe
                         {
                             Core.SoloClass = "Shaman";
                             Core.FarmClass = "Shaman";
+                            Adv.SmartEnhance(ClassScarletSorceress!.Name);
                         }
                         if (Core.FarmClass == "Generic" && Core.CheckInventory("Scarlet Sorceress"))
                             Core.FarmClass = "Scarlet Sorceress";
@@ -432,6 +433,7 @@ public class CoreFarmerJoe
                         if (Core.SoloClass == "Generic" && Core.CheckInventory("Blaze Binder"))
                             Core.FarmClass = "Blaze Binder";
                         else Core.FarmClass = "Scarlet Sorceress";
+                        Adv.SmartEnhance(ClassArchPaladin!.Name);
                         continue;
                     }
                     if (Core.SoloClass == "Generic" && Core.CheckInventory("Cryomancer"))
@@ -461,6 +463,7 @@ public class CoreFarmerJoe
                         else Core.FarmClass = "Scarlet Sorceress";
                         if (Core.FarmClass == "Generic" || Core.FarmClass == "Scarlet Sorceress" || Core.FarmClass == "Blaze Binder" && Core.CheckInventory("ArchFiend"))
                             Core.FarmClass = "ArchFiend";
+                        Adv.SmartEnhance(ClassArchFiend!.Name);
                         continue;
                     }
 
