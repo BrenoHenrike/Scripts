@@ -100,9 +100,15 @@ public class GlaceraStory
         Story.MapItemQuest(3924, "frozentower", 3009, 6);
 
         // Divination Draft
-        Story.MapItemQuest(3925, "frozentower", 3012, 4);
-        Story.MapItemQuest(3925, "frozentower", 3011, 4);
-        Story.KillQuest(3925, "frozentower", new[] { "Arctic Eel", "Frostwyrm" });
+        if (!Story.QuestProgression(3925))
+        {
+            Story.MapItemQuest(3925, "frozentower", 3012, 4);
+            Story.MapItemQuest(3925, "frozentower", 3011, 4);
+
+            Core.HuntMonster("frozentower", "Frostwyrm", "Frozen Tail", 5);
+            Core.HuntMonster("frozentower", "Arctic Eel", "Frozen Scale", 5);
+            Core.EnsureComplete(3925);
+        }
 
         // Retrieve the Light StarStone
         Story.MapItemQuest(3926, "frozentower", 3021);
