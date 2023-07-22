@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreAdvanced.cs",
-    "size": 111479,
+    "size": 112110,
     "fileName": "CoreAdvanced.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreAdvanced.cs"
   },
@@ -369,7 +369,7 @@
       "yokai"
     ],
     "path": "Story/Yokai.cs",
-    "size": 6870,
+    "size": 7303,
     "fileName": "Yokai.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Yokai.cs"
   },
@@ -8857,7 +8857,7 @@
       "neo metal necro"
     ],
     "path": "Other/Concerts/BattleConcert2023.cs",
-    "size": 2475,
+    "size": 2463,
     "fileName": "BattleConcert2023.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Concerts/BattleConcert2023.cs"
   },
@@ -11694,7 +11694,7 @@
       "null"
     ],
     "path": "Other/FarmJoeKits/CoreFarmerJoe.cs",
-    "size": 27286,
+    "size": 27523,
     "fileName": "CoreFarmerJoe.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/CoreFarmerJoe.cs"
   },
