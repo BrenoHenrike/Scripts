@@ -2652,7 +2652,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 63672,
+    "size": 63660,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -8092,7 +8092,7 @@
       "doall"
     ],
     "path": "Army/Various/ArmyLightCasterFull.cs",
-    "size": 4685,
+    "size": 4752,
     "fileName": "ArmyLightCasterFull.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmyLightCasterFull.cs"
   },
@@ -9150,7 +9150,7 @@
       "null"
     ],
     "path": "Other/Classes/LightCaster.cs",
-    "size": 1983,
+    "size": 2050,
     "fileName": "LightCaster.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/LightCaster.cs"
   },
