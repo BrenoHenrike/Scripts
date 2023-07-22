@@ -27,7 +27,12 @@ public class Necromancer
     public void GetNecromancer(bool rankUpClass = true)
     {
         if (Core.CheckInventory("Necromancer"))
+        {
+            if (rankUpClass)
+                Adv.RankUpClass("Necromancer");
+
             return;
+        }
 
         Farm.DoomWoodREP();
         Core.BuyItem("lightguard", 277, "NUE Necronomicon");
