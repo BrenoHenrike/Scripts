@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreAdvanced.cs",
-    "size": 111398,
+    "size": 111479,
     "fileName": "CoreAdvanced.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreAdvanced.cs"
   },
@@ -526,7 +526,7 @@
       "glacera"
     ],
     "path": "Story/Glacera.cs",
-    "size": 12075,
+    "size": 12421,
     "fileName": "Glacera.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Glacera.cs"
   },
@@ -3229,7 +3229,7 @@
       "seasonal"
     ],
     "path": "Dailies/Cryomancer.cs",
-    "size": 755,
+    "size": 761,
     "fileName": "Cryomancer.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/Cryomancer.cs"
   },
@@ -8834,6 +8834,47 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Pets/SerpentineLarvae.cs"
   },
   {
+    "name": "Doom Metal Necro[class]",
+    "description": "does the battle concert even quests for the classes.",
+    "tags": [
+      "concert",
+      "metal necro",
+      "doom metal necro",
+      "neo metal necro"
+    ],
+    "path": "Other/Concerts/DoomMetalNecro.cs",
+    "size": 2567,
+    "fileName": "DoomMetalNecro.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Concerts/DoomMetalNecro.cs"
+  },
+  {
+    "name": "Battle Concert Class Quests",
+    "description": "does the battle concert even quests for the classes.",
+    "tags": [
+      "concert",
+      "metal necro",
+      "doom metal necro",
+      "neo metal necro"
+    ],
+    "path": "Other/Concerts/BattleConcert2023.cs",
+    "size": 2475,
+    "fileName": "BattleConcert2023.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Concerts/BattleConcert2023.cs"
+  },
+  {
+    "name": "Neo Metal Necro[class]",
+    "description": "does the battle concert even quests for the classes, and buys the class.",
+    "tags": [
+      "concert",
+      "metal necro",
+      "neo metal necro"
+    ],
+    "path": "Other/Concerts/NeoMetalNecro.cs",
+    "size": 1575,
+    "fileName": "NeoMetalNecro.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Concerts/NeoMetalNecro.cs"
+  },
+  {
     "name": "DarknessShard",
     "description": "null",
     "tags": [
@@ -9087,7 +9128,7 @@
       "slayer"
     ],
     "path": "Other/Classes/Dragonslayer.cs",
-    "size": 976,
+    "size": 1074,
     "fileName": "Dragonslayer.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/Dragonslayer.cs"
   },
