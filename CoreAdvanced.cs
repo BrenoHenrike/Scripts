@@ -2398,6 +2398,7 @@ public class CoreAdvanced
                 case "dark chaos berserker":
                 case "dark harbinger":
                 case "doomknight":
+                case "doom metal necro":
                 case "empyrean chronomancer":
                 case "eternal chronomancer":
                 case "evolved clawsuit":
@@ -2421,6 +2422,7 @@ public class CoreAdvanced
                 case "master ranger":
                 case "mechajouster":
                 case "necromancer":
+                case "neo metal necro":
                 case "ninja":
                 case "ninja warrior":
                 case "not a mod":
