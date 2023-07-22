@@ -1875,6 +1875,22 @@ public class CoreAdvanced
                     break;
                 #endregion
 
+                #region Lucky - Lacerate - Forge - Lament
+
+                case "doom metal necro":
+                case "neo metal necro":
+                    if ((!uLacerate() || !uForgeHelm() || !uLament()))
+                        goto default;
+
+                    type = EnhancementType.Lucky;
+                    cSpecial = CapeSpecial.Vainglory;
+                    if (uLacerate())
+                        wSpecial = WeaponSpecial.Lacerate;
+                    hSpecial = HelmSpecial.Forge;
+                    cSpecial = CapeSpecial.Lament;
+                    break;
+                #endregion Lucky - lacerate - forge
+
                 #region Lucky - Vainglory - Lacerate - Vim
                 case "yami no ronin":
                     if ((!uVainglory() || !uLacerate() || !uVim()) || !uPraxis())
@@ -2398,7 +2414,6 @@ public class CoreAdvanced
                 case "dark chaos berserker":
                 case "dark harbinger":
                 case "doomknight":
-                case "doom metal necro":
                 case "empyrean chronomancer":
                 case "eternal chronomancer":
                 case "evolved clawsuit":
@@ -2422,7 +2437,6 @@ public class CoreAdvanced
                 case "master ranger":
                 case "mechajouster":
                 case "necromancer":
-                case "neo metal necro":
                 case "ninja":
                 case "ninja warrior":
                 case "not a mod":
@@ -2539,6 +2553,8 @@ public class CoreAdvanced
                 case "troubador of love":
                 case "unchained rocker":
                 case "unchained rockstar":
+                case "doom metal necro":
+                case "neo metal necro":
                     type = EnhancementType.Lucky;
                     wSpecial = WeaponSpecial.Awe_Blast;
                     break;
