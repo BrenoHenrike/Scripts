@@ -28,7 +28,11 @@ public class Dragonslayer
     public void GetDragonslayer(bool rankUpClass = true)
     {
         if (Core.CheckInventory("Dragonslayer"))
+        {
+            if (rankUpClass)
+                Adv.RankUpClass("Dragonslayer");
             return;
+        }
 
         Lair.Galanoth();
         Core.BuyItem("lair", 38, "Dragonslayer");
