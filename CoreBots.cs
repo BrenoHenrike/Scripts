@@ -2885,6 +2885,7 @@ public class CoreBots
                 SimpleQuestBypass((192, 9));
                 break;
 
+
             case "ascendeclipse":
                 if (!CheckInventory("Rite of Ascension"))
                     Logger("Item Required is a server-side check, cannot ghost it.");
@@ -3136,7 +3137,7 @@ public class CoreBots
             case "icestormarena":
                 JumpWait();
                 tryJoin();
-                Bot.Send.ClientPacket("{\"t\":\"xt\",\"b\":{\"r\":-1,\"o\":{\"cmd\":\"levelUp\",\"intExpToLevel\":\"0\",\"intLevel\":100}}}");
+                Bot.Send.ClientPacket("{\"t\":\"xt\",\"b\":{\"r\":-1,\"o\":{\"cmd\":\"levelUp\",\"intExpToLevel\":\"0\",\"intLevel\":100}}}", type: "json");
                 break;
             #endregion
 
@@ -4167,8 +4168,7 @@ public class CoreBots
         if (OTM_Contains(internalName))
             return false;
 
-        message = "Please make sure you read\n" +
-        "this as it will only be shown once:\n\n" + message;
+        message = "Please make sure you read this as it will only be shown once:\n\n" + message;
         Logger(message, "One Time-Only Message", messageBox && !forcedMessageBox);
         bool? toReturn = null;
         if (messageBox && forcedMessageBox)
