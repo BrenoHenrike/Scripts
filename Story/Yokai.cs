@@ -102,7 +102,13 @@ public class YokaiQuests
         Story.KillQuest(6462, "shinringrove", "Kame");
 
         // Food for the Utoroshi 6463
-        Story.KillQuest(6463, "shinringrove", new[] { "Reishi", "Tsurubebi" });
+        if (!Story.QuestProgression(6463))
+        {
+            Core.EnsureAccept(6463);
+            Core.HuntMonster("shinringrove", "Reishi", "Reishi Caps", 6);
+            Core.HuntMonster("shinringrove", "Tsurubebi", "Tsurubebi Flame", 3);
+            Core.EnsureComplete(6463);
+        }
 
         // Summon Otoroshi 6464
         Story.MapItemQuest(6464, "shinringrove", 5962);
@@ -138,7 +144,13 @@ public class YokaiQuests
 
         // For the Road 6473
         Core.EquipClass(ClassType.Farm);
-        Story.KillQuest(6473, "shinringrove", new[] { "Moglinberry Bush", "Reishi" });
+        if (!Story.QuestProgression(6473))
+        {
+            Core.EnsureAccept(6473);
+            Core.HuntMonster("shinringrove", "Moglinberry Bush", "Moglinberry Bushels ", 8);
+            Core.HuntMonster("shinringrove", "Reishi", "Reishi Caps", 6);
+            Core.EnsureComplete(6473);
+        }
     }
 
 
