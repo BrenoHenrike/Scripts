@@ -216,48 +216,68 @@ public class CoreFarms
     #endregion
 
     #region Experience
-    public void Experience(int level = 100)
+    public void Experience(int level = 100, bool rankUpClass = false)
     {
-        if (Bot.Player.Level >= level)
+        if (Bot.Player.Level >= level && !rankUpClass)
             return;
+
+        if (!rankUpClass)
+            Core.EquipClass(ClassType.Farm);
+        if (rankUpClass)
+            ToggleBoost(BoostType.Class);
 
         ToggleBoost(BoostType.Experience);
 
-        if (Bot.Player.Level < 28)
+        while (NotYetLevel(10))
         {
-            Core.Logger("Checking if farming quest is unlocked.");
-            if (!Core.isCompletedBefore(178))
-            {
-                Core.EnsureAccept(183);
-                Core.HuntMonster("portalundead", "Skeletal Fire Mage", "Defeated Fire Mage", 4);
-                Core.EnsureComplete(183);
-                Core.EnsureAccept(176);
-                Core.HuntMonster("swordhavenundead", "Skeletal Soldier", "Slain Skeletal Soldier", 10);
-                Core.EnsureComplete(176);
-                Core.EnsureAccept(177);
-                Core.HuntMonster("swordhavenundead", "Skeletal Ice Mage", "Frozen Bonehead", 8);
-                Core.EnsureComplete(177);
-            }
+            Core.RegisterQuests(4007);
+            while (!Bot.ShouldExit && Bot.Player.Level < 10)
+                Core.KillMonster("oaklore", "r3", "Left", "Bone Berserker", log: false);
+            Core.CancelRegisteredQuests();
+        }
 
+        while (NotYetLevel(30))
+        {
+            UndeadGiantUnlock();
             Core.RegisterQuests(178);
             while (!Bot.ShouldExit && Bot.Player.Level < 28)
                 Core.HuntMonster("swordhavenundead", "Undead Giant", log: false);
             Core.CancelRegisteredQuests();
         }
 
-        FireWarxp(40);
+        while (NotYetLevel(50))
+            IcestormArena(50);
 
-        while (Bot.Player.Level < 60)
-            Core.KillMonster("underlair", "r5", "Left", "Void Draconian", log: false);
+        while (NotYetLevel(60))
+            while (!Bot.ShouldExit && Bot.Player.Level < 60)
+                Core.KillMonster("underlair", "r5", "Left", "Void Draconian", log: false);
 
-        // delete ISA when new maps  come out
-        IcestormArena(level);
+        while (NotYetLevel(75))
+        {
+            Core.OneTimeMessage("Icestorm update part 1", "\"icy winds\" no longer exist (that i could find...)\n" +
+            "so its now swapped to shadowrealmpast mobs.", messageBox: false);
 
-        //Enable when new ISA split maps are enabled. fix map names accordingly
-        // while (Bot.Player.Level < level)
-        //     Core.KillMonster(Bot.Player.Level < 75 ? "ice wind map" : "frost spiit map(255)", "cell", "pad", "*");
+            while (!Bot.ShouldExit && Bot.Player.Level < 75)
+                Core.KillMonster("shadowrealmpast", "Enter", "Spawn", "*", log: false);
+        }
 
+        while (NotYetLevel(level))
+        {
+            Core.OneTimeMessage("Icestorm update part 2", $"for level 100 we'll do {(Core.IsMember ? "nightmare" : "icestormunder")} \n" +
+            $"{(Core.IsMember ? "nightmare - nothing give 1070xp" : "icestormunder - Frost Sprit give 600xp")} each", messageBox: false);
+
+            while (!Bot.ShouldExit && Bot.Player.Level < level)
+                Core.KillMonster(Core.IsMember ? "nightmare" : "icestormunder", Core.IsMember ? "r13" : "r2", Core.IsMember ? "Left" : "Top", "*", log: false);
+        }
+
+        if (rankUpClass)
+            ToggleBoost(BoostType.Class, false);
         ToggleBoost(BoostType.Experience, false);
+
+        bool NotYetLevel(int _level)
+        {
+            return !Bot.ShouldExit && (Bot.Player.Level < _level && Bot.Player.Level < level) || (Bot.Player.Level <= _level && rankUpClass && Bot.Player.CurrentClassRank != 10);
+        }
     }
 
     /// <summary>
@@ -293,9 +313,7 @@ public class CoreFarms
         {
             Core.RegisterQuests(6628);
             while (NotYetLevel(25))
-            {
                 Core.KillMonster("icestormarena", "r7", "Left", "*", "Icewing Grunt Defeated", 3, log: false, publicRoom: true);
-            }
             Core.CancelRegisteredQuests();
         }
 
@@ -308,9 +326,7 @@ public class CoreFarms
         {
             Core.RegisterQuests(6629);
             while (NotYetLevel(35))
-            {
                 Core.KillMonster("icestormarena", "r11", "Left", "*", "Icewing Warrior Defeated", 3, log: false, publicRoom: true);
-            }
             Core.CancelRegisteredQuests();
         }
 
@@ -318,13 +334,10 @@ public class CoreFarms
         while (NotYetLevel(50))
             Core.KillMonster("icestormarena", "r14", "Left", "*", log: false, publicRoom: true);
 
-        //Between level 50 and 75
-        while (NotYetLevel(75))
-            Core.KillMonster("icestormarena", "r3b", "Top", "*", log: false, publicRoom: true);
-
-        //Between level 75 and 100
-        while (NotYetLevel(100))
-            Core.KillMonster("icestormarena", "r3c", "Top", "*", log: false, publicRoom: true);
+        //Between level 50 and 100        
+        if (NotYetLevel(100))
+            while (NotYetLevel(50))
+                Experience(level);
 
         Core.SavedState(false);
         Core.ToggleAggro(false);
@@ -382,12 +395,10 @@ public class CoreFarms
         Core.SavedState();
 
         Core.RegisterQuests(6294, 6295);
-        // Core.ConfigureAggro(); //not worth it anymore and low lvls die.
         while (!Bot.ShouldExit && Bot.Player.Level < level)
             Core.KillMonster("Firewar", "r2", "Right", "*", log: false);
-
-        // Core.ConfigureAggro(false); //not worth it anymore and low lvls die.
         Core.CancelRegisteredQuests();
+        Core.SavedState(false);
     }
     #endregion
 
@@ -2815,6 +2826,23 @@ public class CoreFarms
         }
         ToggleBoost(BoostType.Reputation, false);
         Core.SavedState(false);
+    }
+
+    private void UndeadGiantUnlock()
+    {
+        Core.Logger("Checking if farming quest is unlocked.");
+        if (!Core.isCompletedBefore(178))
+        {
+            Core.EnsureAccept(183);
+            Core.HuntMonster("portalundead", "Skeletal Fire Mage", "Defeated Fire Mage", 4);
+            Core.EnsureComplete(183);
+            Core.EnsureAccept(176);
+            Core.HuntMonster("swordhavenundead", "Skeletal Soldier", "Slain Skeletal Soldier", 10);
+            Core.EnsureComplete(176);
+            Core.EnsureAccept(177);
+            Core.HuntMonster("swordhavenundead", "Skeletal Ice Mage", "Frozen Bonehead", 8);
+            Core.EnsureComplete(177);
+        }
     }
 
     public int FactionRank(string faction) => Bot.Reputation.GetRank(faction);
