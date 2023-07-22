@@ -13,6 +13,7 @@ tags: null
 //cs_include Scripts/Other/Weapons/LanceOfTime.cs
 //cs_include Scripts/Other/Weapons/BurningBlade.cs
 //cs_include Scripts/Other/Weapons/BurningBladeOfAbezeth.cs
+//cs_include Scripts/Story/QueenofMonsters/Extra/CelestialArena.cs
 using Skua.Core.Interfaces;
 public class LightCaster
 {
