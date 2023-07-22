@@ -142,10 +142,20 @@ public class GlaceraStory
         Story.KillQuest(3935, "frozentower", "Ice Wolf");
 
         // Drive Back the Invaders
-        Story.KillQuest(3936, "frozentower", "Frost Invader");
+        if(!Story.QuestProgression(3936))
+        {
+            Core.EnsureAccept(3936);
+            Core.HuntMonster("frozentower", "Frost Invader", "FrostSpawn Invader defeated", 10);
+            Core.EnsureComplete(3936);
+        }
 
         // Defeat the FrostSpawn Invaders
-        Story.KillQuest(3937, "frozentower", "Frost Fangbeast");
+        if(!Story.QuestProgression(3937))
+        {
+            Core.EnsureAccept(3937);
+            Core.HuntMonster("frozentower", "Frost Fangbeast", "Fangbeasts defeated", 15);
+            Core.EnsureComplete(3937);
+        }
     }
 
     public void FrozenRuins()
@@ -276,7 +286,7 @@ public class GlaceraStory
             return;
 
         // Key to the Fortress
-        Story.KillQuest(3948, "Glacera", "mob");
+        Story.KillQuest(3948, "Glacera", "Frost Invader");
         // Breaking Boulders
         Story.MapItemQuest(3949, "Glacera", 3049, 6);
         // The Scythe of Vengeance
