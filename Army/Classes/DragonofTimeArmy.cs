@@ -515,7 +515,7 @@ public class DoTArmy
         ArmyHunt("towerofdoom10", new[] { "Slugbutter" }, "Slugbutter Trophy", ClassType.Solo, false, 100);
 
         Army.SellToSync("Icewing's Laurel", 30);
-        ArmyHunt("icestormarena", new[] { "Warlord Icewing" }, "Icewing's Laurel", ClassType.Solo, false, 30);
+        ArmyHunt("icewing", new[] { "Warlord Icewing" }, "Icewing's Laurel", ClassType.Solo, false, 30);
 
         Core.EnsureComplete(7724);
         Core.Logger($"Quest 9: 🖕");

@@ -283,7 +283,7 @@ public class DragonOfTime
             Bot.Quests.UpdateQuest(10, 159);
             Adv.BoostHuntMonster("towerofdoom10", "Slugbutter", "Slugbutter Trophy", 100, false, publicRoom: true);
 
-            Adv.BoostHuntMonster("icestormarena", "Warlord Icewing", "Icewing's Laurel", 30, false, publicRoom: true);
+            Adv.BoostHuntMonster("icewing", "Warlord Icewing", "Icewing's Laurel", 30, false, publicRoom: true);
 
             Story.ChainQuest(7724);
             Bot.Wait.ForPickup("Dragon of Time");
