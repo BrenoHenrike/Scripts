@@ -40,7 +40,7 @@ public class BattleConcertClassQuests
         Story.MapItemQuest(9319, "skullhall", 11950, 6);
 
         // Rusty Metal 9320
-        Story.KillQuest(9320, "skullhall", new[] { "Photoghoulpher", "Necroupie" });
+        Story.KillQuest(9320, "skullhall", new[] { "Armored Zombie" });
 
         // Concert Crush 9324
         Story.KillQuest(9324, "skullhall", "Photoghoulpher");
