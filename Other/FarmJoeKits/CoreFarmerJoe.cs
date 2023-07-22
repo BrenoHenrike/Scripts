@@ -241,15 +241,7 @@ public class CoreFarmerJoe
             Core.Equip(Core.CheckInventory("Arcane Blade of Glory") ? "Arcane Blade of Glory" : "Shadow Blade of Despair");
         }
 
-        Core.Logger("Checking if farming quest is unlocked for Undead Giant.");
-        if (!Core.isCompletedBefore(178))
-        {
-            Core.Logger("They were not.");
-            Story.KillQuest(183, "portalundead", "Skeletal Fire Mage");
-            Story.KillQuest(176, "swordhavenundead", "Skeletal Soldier", false);
-            Story.KillQuest(177, "swordhavenundead", "Skeletal Ice Mage", false);
-        }
-        Core.Logger("Quests were finished, continuing");
+        UndeadGiantUnlock();
 
         if (Bot.Player.Level < 28)
         {
@@ -628,6 +620,25 @@ public class CoreFarmerJoe
         Bot.Wait.ForPickup("The Server is Down");
         Core.Equip("The Server is Down");
     }
+
+
+    private void UndeadGiantUnlock()
+    {
+        Core.Logger("Checking if farming quest is unlocked.");
+        if (!Core.isCompletedBefore(178))
+        {
+            Core.EnsureAccept(183);
+            Core.HuntMonster("portalundead", "Skeletal Fire Mage", "Defeated Fire Mage", 4);
+            Core.EnsureComplete(183);
+            Core.EnsureAccept(176);
+            Core.HuntMonster("swordhavenundead", "Skeletal Soldier", "Slain Skeletal Soldier", 10);
+            Core.EnsureComplete(176);
+            Core.EnsureAccept(177);
+            Core.HuntMonster("swordhavenundead", "Skeletal Ice Mage", "Frozen Bonehead", 8);
+            Core.EnsureComplete(177);
+        }
+    }
+
     public enum PetChoice
     {
         None,
