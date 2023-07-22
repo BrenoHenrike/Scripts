@@ -234,11 +234,11 @@ public class CoreNation
                 Core.EnsureAccept(2221);
             else
                 Core.EnsureAccept(2219);
-            Core.KillMonster("evilwarnul", "r2", "Down", "*", "Legion Blade", isTemp: false, log: false);
-            Core.KillMonster("evilwarnul", "r2", "Down", "*", "Dessicated Heart", 22, false, log: false);
-            Core.KillMonster("evilwarnul", "r2", "Down", "*", "Legion Helm", 5, log: false);
-            Core.KillMonster("evilwarnul", "r2", "Down", "*", "Undead Skull", 3, log: false);
-            Core.KillMonster("evilwarnul", "r2", "Down", "*", "Legion Champion Medal", 5, log: false);
+            Core.HuntMonster("evilwarnul", "Blade Master", "Legion Blade", isTemp: false, log: false);
+            Core.HuntMonster("evilwarnul", "Blade Master", "Dessicated Heart", 20, false, log: false);
+            Core.KillMonster("underworld", "Skull Warrior", "Legion Helm", 5, log: false);
+            Core.KillMonster("underworld", "Skull Warrior", "Undead Skull", 3, log: false);
+            Core.KillMonster("underworld", "Skull Warrior", "Legion Champion Medal", 5, log: false);
             if (Core.IsMember)
                 Core.EnsureComplete(2221);
             else
