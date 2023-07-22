@@ -6,10 +6,14 @@ tags: concert, metal necro, neo metal necro
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Other/Concerts/BattleConcert2023.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 //cs_include Scripts/Evil/ADK.cs
+//cs_include Scripts/Evil/VordredsArmor.cs
+//cs_include Scripts/Story/Doomwood/CoreDoomwood.cs
+//cs_include Scripts/Evil/SDKA/CoreSDKA.cs
 
 using Skua.Core.Interfaces;
 

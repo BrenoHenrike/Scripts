@@ -12,6 +12,9 @@ tags: concert, metal necro, doom metal necro, neo metal necro
 //cs_include Scripts/Other/Concerts/NeoMetalNecro.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 //cs_include Scripts/Evil/ADK.cs
+//cs_include Scripts/Evil/VordredsArmor.cs
+//cs_include Scripts/Story/Doomwood/CoreDoomwood.cs
+//cs_include Scripts/Evil/SDKA/CoreSDKA.cs
 using Skua.Core.Interfaces;
 
 public class DoomMetalNecro
@@ -24,6 +27,7 @@ public class DoomMetalNecro
     private BattleConcertClassQuests BCCQ = new();
     private NeoMetalNecro NMN = new();
     private ArchDoomKnight ADK = new();
+    private VordredArmor VA = new();
 
     public void ScriptMain(IScriptInterface Bot)
     {
@@ -51,6 +55,7 @@ public class DoomMetalNecro
 
         //Arch DoomKnight (takes the longest?)
         ADK.DoAll();
+        Core.Unbank("Arch DoomKnight");
 
         Core.EquipClass(ClassType.Solo);
         //Doom Metal Ore x200
@@ -62,8 +67,11 @@ public class DoomMetalNecro
         while (!Bot.ShouldExit && !Core.CheckInventory("Bone Pick", 150))
             Core.HuntMonster("brainmeat", "Brain Matter");
 
+
         //Voiduminance Necrock-Morph Spell
+        VA.GetVordredsArmor();
         Adv.BuyItem("stonewood", 2063, 78923, shopItemID: 48545);
+        
         //Neverborn Ritual
         Adv.BuyItem("dragonrune", 691, 77458, shopItemID: 47277);
 
