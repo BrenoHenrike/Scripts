@@ -222,7 +222,7 @@
       "tutorial"
     ],
     "path": "Story/Tutorial.cs",
-    "size": 1146,
+    "size": 1152,
     "fileName": "Tutorial.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Tutorial.cs"
   },
@@ -11694,7 +11694,7 @@
       "null"
     ],
     "path": "Other/FarmJoeKits/CoreFarmerJoe.cs",
-    "size": 26795,
+    "size": 26806,
     "fileName": "CoreFarmerJoe.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/CoreFarmerJoe.cs"
   },
