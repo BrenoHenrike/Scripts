@@ -33,8 +33,11 @@ public class VordredArmor
         Core.SetOptions(false);
     }
 
-    public void GetVordredsArmor()
+    public void GetVordredsArmor(bool DMN = false)
     {
+        if (DMN && Core.isCompletedBefore(8380))
+            return;
+
         if (Core.CheckInventory("Empowered Vordred's Armor"))
             return;
 
@@ -117,7 +120,10 @@ public class VordredArmor
             Bot.Quests.UpdateQuest(2059);
             Core.KillMonster("necrodungeon", "r22", "Down", "*", "Ancient Evil of the Necropolis", isTemp: false);
             Core.EnsureComplete(8380);
+            if (DMN)
+                return;
         }
+
 
         // Empower Vordred's Armor - 8381
         if (!Story.QuestProgression(8381))

@@ -69,7 +69,7 @@ public class DoomMetalNecro
 
 
         //Voiduminance Necrock-Morph Spell
-        VA.GetVordredsArmor();
+        VA.GetVordredsArmor(true);
         Adv.BuyItem("stonewood", 2063, 78923, shopItemID: 48545);
         
         //Neverborn Ritual
