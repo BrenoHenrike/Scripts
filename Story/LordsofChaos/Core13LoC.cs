@@ -2391,7 +2391,8 @@ public class Core13LoC
         if (!Story.QuestProgression(3881))
         {
             Core.EnsureAccept(3881);
-            Core.HuntMonsterMapID("finalshowdown", 1, "Prince Drakath Defeated");
+            while (!Bot.ShouldExit && !Core.CheckInventory("Prince Drakath Defeated"))
+                Core.HuntMonster("finalshowdown", "Prince Drakath");
             Core.EnsureComplete(3881);
         }
     }
@@ -2413,7 +2414,7 @@ public class Core13LoC
 
         //Kill Bandit Drakath in Dreadhaven
         Story.ChainQuest(3814);
-        
+
         //Up the Mountain
         Core.EquipClass(ClassType.Farm);
         if (!Story.QuestProgression(3815))
