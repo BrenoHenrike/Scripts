@@ -55,7 +55,7 @@ public class CoreVHL
         VHLChallenge(15);
         VHLCrystals();
 
-        Core.BuyItem("tercessuinotlim", 1355, "Void Highlord");
+        Adv.BuyItem("tercessuinotlim", 1355, "Void Highlord");
 
         if (rankUpClass)
             Adv.RankUpClass("Void Highlord");
@@ -87,9 +87,8 @@ public class CoreVHL
 
             Nation.FarmVoucher(false);
             Farm.BlackKnightOrb();
-            Adv.BuyItem("citadel", 44, 38316);
-
-            Core.BuyItem("yulgar", 16, "Aelita's Emerald");
+            Adv.BuyItem("citadel", 44, 38316, shopItemID: 22367);
+            Adv.BuyItem("yulgar", 16, "Aelita's Emerald");
             Nation.FarmUni13(1);
             Nation.FarmGemofNulgath(20);
             Nation.EmblemofNulgath(20);
@@ -132,8 +131,8 @@ public class CoreVHL
         if (!Core.CheckInventory("Elders' Blood", 2))
             Core.Logger($"Not enough \"Elders' Blood\", please do the daily {2 - Bot.Inventory.GetQuantity("Elders' Blood")} more times (not today)", messageBox: true, stopBot: true);
 
-        Core.BuyItem("tercessuinotlim", 1355, "Void Crystal A");
-        Core.BuyItem("tercessuinotlim", 1355, "Void Crystal B");
+        Adv.BuyItem("tercessuinotlim", 1355, "Void Crystal A");
+        Adv.BuyItem("tercessuinotlim", 1355, "Void Crystal B");
     }
 
     private void _SparrowMethod(int EldersBloodQuant)
@@ -150,7 +149,7 @@ public class CoreVHL
         if (!Core.CheckInventory("Unidentified 19"))
         {
             Nation.SwindleReturn(item.Name, 6);
-            Core.BuyItem("tercessuinotlim", 1951, "Unidentified 19");
+            Adv.BuyItem("tercessuinotlim", 1951, "Unidentified 19");
         }
         Nation.FarmVoucher(false);
         Nation.FarmVoucher(true);
