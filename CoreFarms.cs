@@ -234,14 +234,19 @@ public class CoreFarms
             Core.KillMonster("oaklore", "r3", "Left", "Bone Berserker", log: false);
         Core.CancelRegisteredQuests();
 
-
+        if (Bot.Quests.IsAvailable(6979))
+        {
+            Core.EquipClass(ClassType.Solo);
+            Core.RegisterQuests(6979);
+            while (!Bot.ShouldExit && Bot.Player.Level < 20)
+                Core.HuntMonster("prison", "Piggy Drake", log: false);
+        }
 
         UndeadGiantUnlock();
         Core.RegisterQuests(178);
         while (!Bot.ShouldExit && Bot.Player.Level < 28)
             Core.HuntMonster("swordhavenundead", "Undead Giant", log: false);
         Core.CancelRegisteredQuests();
-
 
         FireWarxp(40);
 
