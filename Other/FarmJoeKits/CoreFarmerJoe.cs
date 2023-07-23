@@ -366,20 +366,16 @@ public class CoreFarmerJoe
                     continue;
 
                 case 55:
-                    InventoryItem? ClassCryomancer = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == ("Cryomancer").ToLower().Trim() && i.Category == ItemCategory.Class);
                     InventoryItem? ClassBlazeBinder = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == ("Blaze Binder").ToLower().Trim() && i.Category == ItemCategory.Class);
-                    if (Bot.Player.Level >= Level && ClassCryomancer != null && ClassCryomancer!.Quantity == 302500 && ClassBlazeBinder != null && ClassBlazeBinder!.Quantity == 302500)
+                    if (Bot.Player.Level >= Level && ClassBlazeBinder != null && ClassBlazeBinder!.Quantity == 302500)
                     {
-                        Core.Logger("Items owned: \"Cryomancer\", \"Blaze Binder\", continuing");
+                        Core.Logger("Items owned:  \"Blaze Binder\", continuing");
                         continue;
                     }
 
                     //Daily classes
                     InvEn.EnhanceInventory();
                     Core.Logger("Daily Classes Check");
-                    Cryo.DoCryomancer();
-                    if (Core.CheckInventory("Cryomancer") && ClassCryomancer!.Quantity != 302500)
-                        Adv.rankUpClass("Cryomancer");
                     Bb.GetClass();
                     Farm.Experience(Level);
                     Core.Logger($"Level {Level} done");
@@ -390,17 +386,14 @@ public class CoreFarmerJoe
                     if (Bot.Player.Level >= Level && ClassDragonSoulShinobi != null && ClassDragonSoulShinobi!.Quantity == 302500)
                     {
                         Core.Logger("Items owned: \"DragonSoul Shinobi\", continuing");
-                        if (Core.SoloClass == "Generic" && Core.CheckInventory("Cryomancer"))
-                            Core.SoloClass = "Cryomancer";
+                        if (Core.SoloClass == "Generic" && Core.CheckInventory("DragonSoul Shinobi"))
+                            Core.SoloClass = "DragonSoul Shinobi";
 
                         if (Core.SoloClass == "Generic" && Core.CheckInventory("Blaze Binder"))
                             Core.FarmClass = "Blaze Binder";
                         else Core.FarmClass = "Scarlet Sorceress";
                         continue;
                     }
-
-                    if (Core.SoloClass == "Generic" && Core.CheckInventory("Cryomancer"))
-                        Core.SoloClass = "Cryomancer";
 
                     if (Core.SoloClass == "Generic" && Core.CheckInventory("Blaze Binder"))
                         Core.FarmClass = "Blaze Binder";
@@ -418,8 +411,8 @@ public class CoreFarmerJoe
                     if (Bot.Player.Level >= Level && ClassArchPaladin != null && ClassArchPaladin!.Quantity == 302500)
                     {
                         Core.Logger("Items owned: \"ArchPaladin\", continuing");
-                        if (Core.SoloClass == "Generic" && Core.CheckInventory("Cryomancer"))
-                            Core.SoloClass = "Cryomancer";
+                        if (Core.SoloClass == "Generic" && Core.CheckInventory("DragonSoul Shinobi"))
+                            Core.SoloClass = "DragonSoul Shinobi";
                         else Core.SoloClass = "Shaman";
 
                         if (Core.SoloClass == "Generic" && Core.CheckInventory("Blaze Binder"))
@@ -428,9 +421,8 @@ public class CoreFarmerJoe
                         Adv.SmartEnhance(ClassArchPaladin!.Name);
                         continue;
                     }
-                    if (Core.SoloClass == "Generic" && Core.CheckInventory("Cryomancer"))
-                        Core.SoloClass = "Cryomancer";
-                    else Core.SoloClass = "Shaman";
+                    if (Core.SoloClass == "Generic")
+                        Core.SoloClass = "Shaman";
 
                     if (Core.SoloClass == "Generic" && Core.CheckInventory("Blaze Binder"))
                         Core.FarmClass = "Blaze Binder";
