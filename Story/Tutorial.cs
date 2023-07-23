@@ -26,7 +26,7 @@ public class Tutorial
             return;
 
         Core.Logger("Doing Tutorial Badges" +
-            "\tStartup may take a few seconds");
+            "\tStartup may take a minute.. blame ae");
 
         string[] Achievements =  {
             "Combat",
