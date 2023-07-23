@@ -1779,7 +1779,7 @@
       "null"
     ],
     "path": "Legion/CoreLegion.cs",
-    "size": 31493,
+    "size": 31630,
     "fileName": "CoreLegion.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/CoreLegion.cs"
   },
@@ -12330,7 +12330,7 @@
       "null"
     ],
     "path": "Nation/VHL/CoreVHL.cs",
-    "size": 5993,
+    "size": 6006,
     "fileName": "CoreVHL.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/VHL/CoreVHL.cs"
   },
@@ -13040,7 +13040,7 @@
       "null"
     ],
     "path": "Nation/Various/VoidPaladin.cs",
-    "size": 4869,
+    "size": 4930,
     "fileName": "VoidPaladin.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/VoidPaladin.cs"
   },
