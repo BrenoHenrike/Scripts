@@ -46,7 +46,7 @@ public class ToxicOblivionBladeofAlchemy
         Nation.FarmBloodGem(40);
 
         Core.AddDrop("Concentrated Mana", "Bido's Appreciation");
-        Core.AddDrop(49085);
+        Core.AddDrop(49085, 49066);
 
         //Concentrated Mana x30
         Core.RegisterQuests(6979);
