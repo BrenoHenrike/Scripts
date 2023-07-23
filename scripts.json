@@ -50,7 +50,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 105039,
+    "size": 105315,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -11694,7 +11694,7 @@
       "null"
     ],
     "path": "Other/FarmJoeKits/CoreFarmerJoe.cs",
-    "size": 27523,
+    "size": 26861,
     "fileName": "CoreFarmerJoe.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/CoreFarmerJoe.cs"
   },
@@ -12977,6 +12977,17 @@
     "size": 2637,
     "fileName": "DragonBlade[mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/DragonBlade[mem].cs"
+  },
+  {
+    "name": "TheAssistant",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Nation/Various/ToxicOblivionBladeofAlchemy.cs",
+    "size": 2163,
+    "fileName": "ToxicOblivionBladeofAlchemy.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/ToxicOblivionBladeofAlchemy.cs"
   },
   {
     "name": "The Refreshing Deal",
