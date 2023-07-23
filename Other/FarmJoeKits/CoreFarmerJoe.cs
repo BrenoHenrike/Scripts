@@ -179,11 +179,10 @@ public class CoreFarmerJoe
         if (Bot.Player.Level >= 30 && Core.CheckInventory("Rogue") || Core.CheckInventory("Rogue (Rare)"))
         {
 
-            Core.Logger($"grabbing {ClassRogue!.Name}, ranking it, then continuing");
+            Core.Logger("grabbing Rogue, ranking it, then continuing");
             if (!Core.CheckInventory(Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue"))
                 Core.BuyItem("classhalla", 172, "Rogue");
-            if (ClassRogue!.Quantity != 302500)
-                Adv.rankUpClass(Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue");
+            Adv.rankUpClass(Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue");
             return;
         }
 
