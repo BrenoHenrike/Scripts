@@ -32,8 +32,8 @@ public class TempleSiege
         Story.PreLoad(this);
 
         //Fairweather Elementals || 9058
-        Story.KillQuest(9058, "templesiege", "Light Elemental");
         Story.MapItemQuest(9058, "templesiege", 11129);
+        Story.KillQuest(9058, "templesiege", "Light Elemental");
 
         //In Case of Emergency || 9059
         Story.KillQuest(9059, "templesiege", "Overdriven Paladin");
