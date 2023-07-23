@@ -176,9 +176,8 @@ public class CoreFarmerJoe
     {
         InventoryItem? ClassRogue = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == (Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue").ToLower().Trim() && i.Category == ItemCategory.Class);
 
-        if (Bot.Player.Level >= 30 && Core.CheckInventory("Rogue") || Core.CheckInventory("Rogue (Rare)"))
+        if (Bot.Player.Level >= 30 && (Core.CheckInventory("Rogue") || Core.CheckInventory("Rogue (Rare)")))
         {
-
             Core.Logger("grabbing Rogue, ranking it, then continuing");
             if (!Core.CheckInventory(Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue"))
                 Core.BuyItem("classhalla", 172, "Rogue");
@@ -194,7 +193,6 @@ public class CoreFarmerJoe
 
         if (Bot.Player.Level < 10)
         {
-            Adv.SmartEnhance(Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue");
             Core.Logger("Starting out acc: \n" +
                 "\tGoals: lvl 10, Temp weapon, Rogue class.");
 
@@ -209,6 +207,8 @@ public class CoreFarmerJoe
             Core.BuyItem("classhalla", 299, "Battle Oracle Hood");
             Core.Equip("Battle Oracle Battlestaff", "Battle Oracle Hood", "Battle Oracle Wings");
 
+            Adv.SmartEnhance(Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue");
+         
             ItemBase? DefaultWep = Bot.Inventory.Items.Find(x => x.Name.StartsWith("Default"));
             if (DefaultWep != null && Core.CheckInventory(DefaultWep.Name))
                 Core.SellItem(DefaultWep.Name);
