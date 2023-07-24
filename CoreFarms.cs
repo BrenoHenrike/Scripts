@@ -241,7 +241,7 @@ public class CoreFarms
             Core.RegisterQuests(6979);
             while (!Bot.ShouldExit && Bot.Player.Level < 30)
                 Core.HuntMonster("prison", "Piggy Drake", log: false);
-        Core.CancelRegisteredQuests();
+            Core.CancelRegisteredQuests();
         }
         else
         {
@@ -257,22 +257,12 @@ public class CoreFarms
         while (Bot.Player.Level < 60)
             Core.KillMonster("underlair", "r5", "Left", "Void Draconian", log: false);
 
-        while (NotYetLevel(level))
-            // {
-            // if (Core.IsMember)
-            Core.KillMonster(Core.IsMember ? "nightmare" : "icestormarena", Core.IsMember ? "r13" : "r3c", Core.IsMember ? "Left" : "Top", "*", log: false);
-        // Core.KillMonster("nightmare", "r13", "Left", "*", log: false);
-        // else IcestormArena(level);
-        // }
+        IcestormArena(level);
 
         if (rankUpClass)
             ToggleBoost(BoostType.Class, false);
         ToggleBoost(BoostType.Experience, false);
 
-        bool NotYetLevel(int _level)
-        {
-            return !Bot.ShouldExit && (Bot.Player.Level < _level && Bot.Player.Level < level) || (Bot.Player.Level <= _level && rankUpClass && Bot.Player.CurrentClassRank != 10);
-        }
     }
 
 
