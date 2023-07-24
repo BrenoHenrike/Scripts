@@ -24,12 +24,12 @@ public class SecretMapQuest
     public void DoQuest()
     {
         InventoryItem? BetaBerserker = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == ("Beta Berserker").ToLower().Trim() && i.Category == ItemCategory.Class);
-       
+
         if (BetaBerserker == null || Core.CheckInventory(Core.QuestRewards(5516)))
             return;
-
+        Core.Unbank("Beta Berserker");
         Core.AddDrop(Core.QuestRewards(5516));
-        if (Core.CheckInventory("Beta Berserker") && !Core.CheckInventory(Core.QuestRewards(5516)))
+        while (!Core.CheckInventory(Core.QuestRewards(5516)))
         {
             while (BetaBerserker != null && BetaBerserker.Quantity < 1)
                 Core.KillMonster("battleontown", "Enter", "Spawn", "*", log: false);
