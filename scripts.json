@@ -11694,7 +11694,7 @@
       "null"
     ],
     "path": "Other/FarmJoeKits/CoreFarmerJoe.cs",
-    "size": 24973,
+    "size": 25417,
     "fileName": "CoreFarmerJoe.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/CoreFarmerJoe.cs"
   },
@@ -11777,6 +11777,17 @@
     "size": 3992,
     "fileName": "BringTheCheer.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Various/BringTheCheer.cs"
+  },
+  {
+    "name": "null",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Other/Various/BetaBerserkerQuest.cs",
+    "size": 1223,
+    "fileName": "BetaBerserkerQuest.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Various/BetaBerserkerQuest.cs"
   },
   {
     "name": "KillYoshinoBoss",
