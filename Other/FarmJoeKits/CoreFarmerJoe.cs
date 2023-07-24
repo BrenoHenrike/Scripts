@@ -245,7 +245,7 @@ public class CoreFarmerJoe
                         Adv.SmartEnhance(Core.FarmClass);
                     MR.GetMR();
                     if (Core.FarmClass == "Generic")
-                        Core.FarmClass = "Master Ranger";   
+                        Core.FarmClass = "Master Ranger";
                     //For BOA lvl 30 rogue *should* be able to kill escherion ..once in awhile :P (tested i got a few kills in an an hr... proabably horrible but w/e)
                     Farm.BladeofAweREP(6, false);
                     Adv.BuyItem("museum", 631, "Awethur's Accoutrements");
@@ -480,6 +480,12 @@ public class CoreFarmerJoe
 
     public void EndGame()
     {
+        if ((Core.CheckInventory("Archfiend") && Core.CheckInventory("ArchPaladin")) || (Core.SoloClass == "Generic" && Core.FarmClass == "Generic"))
+        {
+            Core.SoloClass = "ArchPaladin";
+            Core.FarmClass = "ArchFiend";
+        }
+
         #region Ending & Extras 
 
         if (Bot.Config!.Get<bool>("OutFit"))
@@ -487,7 +493,10 @@ public class CoreFarmerJoe
 
         SRM.BuyAllMerge("Hollowborn Reaper's Scythe");
         YNR.GetYnR();
+        Core.SoloClass = "Yami no Ronin";
+
         DoT.GetDoT();
+        Core.FarmClass = "Dragon of Time";
         //Add more eventualy >.> please?
 
         #endregion Ending & Extras
@@ -495,6 +504,12 @@ public class CoreFarmerJoe
 
     public void Outfit()
     {
+        if ((Core.CheckInventory("Archfiend") && Core.CheckInventory("ArchPaladin")) || (Core.SoloClass == "Generic" && Core.FarmClass == "Generic"))
+        {
+            Core.SoloClass = "ArchPaladin";
+            Core.FarmClass = "ArchFiend";
+        }
+
         //Easy Difficulty Stuff
         ShirtandHat();
         ServersAreDown();
@@ -516,6 +531,11 @@ public class CoreFarmerJoe
 
     public void Pets(PetChoice PetChoice = PetChoice.None)
     {
+        if ((Core.CheckInventory("Archfiend") && Core.CheckInventory("ArchPaladin")) || (Core.SoloClass == "Generic" && Core.FarmClass == "Generic"))
+        {
+            Core.SoloClass = "ArchPaladin";
+            Core.FarmClass = "ArchFiend";
+        }
         if (Bot.Config!.Get<PetChoice>("Pets") == PetChoice.None)
             return;
 
