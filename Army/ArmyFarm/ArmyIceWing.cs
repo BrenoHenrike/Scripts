@@ -30,6 +30,7 @@ public class IceWingLevelingArmy
         sArmy.player4,
         sArmy.player5,
         sArmy.player6,
+        sArmy.player7,
         CoreBots.Instance.SkipOptions,
     };
 
