@@ -185,9 +185,10 @@ public class CoreFarmerJoe
             return;
         }
 
+        BeginnerItems();
+
         foreach (int level in new[] { 5, 10, 15, 20, 25, 30 })
         {
-            Level10Stuff();
             if (Core.SoloClass == "Generic" || Core.FarmClass == "Generic")
             {
                 Core.SoloClass = Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue";
@@ -195,12 +196,8 @@ public class CoreFarmerJoe
             }
 
             Adv.SmartEnhance(Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue");
-            Farm.Experience(level);
+            Farm.Experience(level, level >= 30 ? true : false);
         }
-
-
-        if (Bot.Player.CurrentClassRank < 10)
-            Adv.RankUpClass(Bot.Player.CurrentClass!.Name);
     }
 
 
@@ -239,8 +236,6 @@ public class CoreFarmerJoe
                         Core.SellItem(DefaultWep.Name);
                     Core.SellItem("Battle Oracle Battlestaff");
                     Core.SellItem("Venom Head");
-                    Core.ToBank("Blade of Awe");
-
                     Adv.SmartEnhance(Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue");
 
                     MR.GetMR();
@@ -553,14 +548,20 @@ public class CoreFarmerJoe
         Core.Equip("The Server is Down");
     }
 
-    void Level10Stuff()
+    void BeginnerItems()
     {
+        if (Core.CheckInventory(Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue") && Bot.Player.Level >= 10 )
+        {
+            Core.Logger("Acc is lvl 10+, skipping beginnger items.");
+            return;
+        }
+
         Core.Logger("Starting out acc: \n" +
-     "\tGoals: lvl 10, Temp weapon, Rogue class.");
+     "\tGoals:  Temp weapon, Rogue class.");
 
         Tutorial.Badges();
 
-        Core.Logger("Getting Starting Levels/Equipment");
+        Core.Logger("Getting Started: Beginner Levels/Equipment");
 
         if (!Core.CheckInventory(Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue"))
             Core.BuyItem("classhalla", 172, "Rogue");
@@ -569,7 +570,6 @@ public class CoreFarmerJoe
         Core.BuyItem("classhalla", 299, "Battle Oracle Hood");
         Core.Equip("Battle Oracle Battlestaff", "Battle Oracle Hood", "Battle Oracle Wings");
 
-        Adv.SmartEnhance(Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue");
 
         ItemBase? DefaultWep = Bot.Inventory.Items.Find(x => x.Name.StartsWith("Default"));
         if (DefaultWep != null && Core.CheckInventory(DefaultWep.Name))
@@ -577,12 +577,12 @@ public class CoreFarmerJoe
 
         if (Core.SoloClass == "Generic")
             Core.SoloClass = Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue";
-        else Core.SoloClass = Bot.Player.CurrentClass!.ToString();
+        else Core.SoloClass = Core.SoloClass;
 
-        Core.Equip(Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue");
+        if (Core.SoloClass == "Generic")
+            Core.Equip(Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue");
 
-        Core.Logger("Leveling to 10 in tutorial Area /n" +
-        "if skill 4 isnt unlocked, we'll do that now.");
+        Adv.SmartEnhance(Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue");
     }
 
     public enum PetChoice
