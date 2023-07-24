@@ -1796,6 +1796,7 @@ public class CoreBots
             ToggleAggro(true);
             Bot.Kill.Monster(monster);
             ToggleAggro(false);
+            JumpWait();
             Rest();
         }
         else _KillForItem(monster, item, quant, isTemp, log: log);
@@ -1836,6 +1837,7 @@ public class CoreBots
             ToggleAggro(true);
             Bot.Kill.Monster(monster);
             ToggleAggro(false);
+            JumpWait();
             Rest();
         }
         else _KillForItem(monster.Name, item, quant, isTemp, log: log);
@@ -2208,6 +2210,7 @@ public class CoreBots
         ToggleAggro(false);
         Bot.Sleep(ActionDelay);
         Rest();
+        JumpWait();
     }
 
     public bool IsMonsterAlive(Monster? mon)

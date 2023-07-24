@@ -335,7 +335,6 @@ public class CoreFarms
         while (NotYetLevel(100))
             Core.KillMonster(Core.IsMember ? "nightmare" : "icestormarena", Core.IsMember ? "r13" : "r3c", Core.IsMember ? "left" : "Top", "*", log: false);
 
-
         Core.SavedState(false);
         Core.ToggleAggro(false);
         if (rankUpClass)
