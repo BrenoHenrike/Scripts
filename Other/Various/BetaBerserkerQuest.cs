@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Secret Map Quest
+description: if you own the (rare) beta berserker class, this will do the quest [5516] for the rewards.
+tags: beta Berserker armor, dark berserker, beta berserker, secret map, rare, pseudo-rare
 */
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;
