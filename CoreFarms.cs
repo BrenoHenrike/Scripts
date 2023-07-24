@@ -234,36 +234,47 @@ public class CoreFarms
             Core.KillMonster("oaklore", "r3", "Left", "Bone Berserker", log: false);
         Core.CancelRegisteredQuests();
 
+        //i swear this is active yearround for a balckfriday "locked" quest according to the wiki.. keep undead warrior as a backup.. undead giant is slower but will work till we find a fillin - perhaps sluethhouseinn? used to be good years ago
         if (Bot.Quests.IsAvailable(6979))
         {
             Core.EquipClass(ClassType.Solo);
             Core.RegisterQuests(6979);
-            while (!Bot.ShouldExit && Bot.Player.Level < 20)
+            while (!Bot.ShouldExit && Bot.Player.Level < 30)
                 Core.HuntMonster("prison", "Piggy Drake", log: false);
-        }
-
-        UndeadGiantUnlock();
-        Core.RegisterQuests(178);
-        while (!Bot.ShouldExit && Bot.Player.Level < 28)
-            Core.HuntMonster("swordhavenundead", "Undead Giant", log: false);
         Core.CancelRegisteredQuests();
+        }
+        else
+        {
+            UndeadGiantUnlock();
+            Core.RegisterQuests(178);
+            while (!Bot.ShouldExit && Bot.Player.Level < 30)
+                Core.HuntMonster("swordhavenundead", "Undead Giant", log: false);
+            Core.CancelRegisteredQuests();
+        }
 
         FireWarxp(40);
 
         while (Bot.Player.Level < 60)
             Core.KillMonster("underlair", "r5", "Left", "Void Draconian", log: false);
 
-        while (Bot.Player.Level < level)
-        {
-            if (Core.IsMember)
-                Core.KillMonster("nightmare", "r13", "Left", "*", log: false);
-            else IcestormArena(level);
-        }
+        while (NotYetLevel(level))
+            // {
+            // if (Core.IsMember)
+            Core.KillMonster(Core.IsMember ? "nightmare" : "icestormarena", Core.IsMember ? "r13" : "r3c", Core.IsMember ? "Left" : "Top", "*", log: false);
+        // Core.KillMonster("nightmare", "r13", "Left", "*", log: false);
+        // else IcestormArena(level);
+        // }
 
         if (rankUpClass)
             ToggleBoost(BoostType.Class, false);
         ToggleBoost(BoostType.Experience, false);
+
+        bool NotYetLevel(int _level)
+        {
+            return !Bot.ShouldExit && (Bot.Player.Level < _level && Bot.Player.Level < level) || (Bot.Player.Level <= _level && rankUpClass && Bot.Player.CurrentClassRank != 10);
+        }
     }
+
 
     /// <summary>
     /// Farms level in Ice Storm Arena
