@@ -400,7 +400,7 @@ public class CoreFarmerJoe
 
                     if (Core.SoloClass == "Generic")
                         Core.SoloClass = "ArchPaladin";
-                        
+
                     if (Core.FarmClass == "Generic" && Core.CheckInventory("Blaze Binder"))
                         Core.FarmClass = "Blaze Binder";
                     else Core.FarmClass = "Scarlet Sorceress";
@@ -410,10 +410,10 @@ public class CoreFarmerJoe
                         Core.FarmClass = "ArchFiend";
                     AFDeath.GetArm(true, ArchfiendDeathLord.RewardChoice.Archfiend_DeathLord);
                     Core.Equip("Archfiend DeathLord");
-                    AF.GetArchfiend();
+                    AF.GetArchfiend(); 
                     // Adv.BestGear(GenericGearBoost.dmgAll);
                     Farm.Experience(Level);
-                    Adv.SmartEnhance("ArchFiend");
+                    Adv.SmartEnhance(Core.FarmClass);
                     Core.Logger($"Level {Level} done");
                     continue;
             }
