@@ -383,9 +383,9 @@ public class CoreFarms
     /// Farms level in FireWar Turnins
     /// </summary>
     /// <param name="level">Desired level</param>
-    public void FireWarxp(int level = 70)
+    public void FireWarxp(int level)
     {
-        if (Bot.Player.Level >= 70)
+        if (Bot.Player.Level >= 60)
             return;
 
         Core.EquipClass(ClassType.Farm);
@@ -2423,7 +2423,7 @@ public class CoreFarms
         {
             if (!Bot.Quests.IsAvailable(3445))
             {
-                Core.Logger("Quest Locked \"Slay the Spiderkin\" (/twilightedge)", messageBox: true);
+                Core.Logger("Quest Locked Run: \"Story/RavenlossSaga.cs\"", messageBox: true);
                 return;
             }
             Core.EquipClass(ClassType.Farm);
@@ -2434,7 +2434,6 @@ public class CoreFarms
             Core.RegisterQuests(3445); //Slay the Spiderkin 3445
             while (!Bot.ShouldExit && FactionRank("Ravenloss") < rank)
                 Core.HuntMonster("twilightedge", "ChaosWeaver Mage", "ChaosWeaver Slain", 10);
-            Bot.Wait.ForQuestComplete(5443);
             Core.CancelRegisteredQuests();
             ToggleBoost(BoostType.Reputation, false);
             Core.SavedState(false);
