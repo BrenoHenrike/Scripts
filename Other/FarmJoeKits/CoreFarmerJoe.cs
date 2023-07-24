@@ -174,35 +174,42 @@ public class CoreFarmerJoe
 
     public void Level1to30()
     {
-        InventoryItem? ClassRogue = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == (Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue").ToLower().Trim() && i.Category == ItemCategory.Class);
-
-        if (Bot.Player.Level >= 30 && (Core.CheckInventory("Rogue") || Core.CheckInventory("Rogue (Rare)")))
-        {
-            Core.Logger("grabbing Rogue, ranking it, then continuing");
-            if (!Core.CheckInventory(Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue"))
-                Core.BuyItem("classhalla", 172, "Rogue");
-            Adv.rankUpClass(Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue");
-            return;
-        }
-
         BeginnerItems();
 
-        foreach (int level in new[] { 5, 10, 15, 20, 25, 30 })
+        if (Core.SoloClass == "Generic" || Core.FarmClass == "Generic")
         {
-            if (Core.SoloClass == "Generic" || Core.FarmClass == "Generic")
+            Core.SoloClass = Core.CheckInventory("Rogue (Rare)") ? "Rogue (Rare)" : "Rogue";
+            Core.FarmClass = Core.CheckInventory("Mage (Rare)") ? "Mage (Rare)" : "Mage";
+        }
+
+        foreach (int level in new[] { 10, 15, 20, 25, 30 })
+        {
+            if (Bot.Player.Level >= 30)
             {
-                Core.SoloClass = Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue";
-                Core.FarmClass = Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue";
+                Core.Logger($"Ranking {Core.SoloClass}");
+                Adv.rankUpClass(Core.SoloClass);
+                Core.Logger($"Ranking {Core.FarmClass}");
+                Adv.rankUpClass(Core.FarmClass);
+                break;
             }
 
-            Adv.SmartEnhance(Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue");
-            Farm.Experience(level, level >= 30 ? true : false);
+            Core.Logger($"Level Goal: {level}");
+            Farm.Experience(level);
+            Adv.SmartEnhance(Core.FarmClass);
+
         }
+
+        //safet incase it desyncs.. the relog fuction isnt exactly perfect
+        Core.Logger("Class points may be desynced at Rank 9\n" +
+        "if you are stuck at rank 9, please relog");
     }
 
 
     public void Level30to75()
     {
+        InventoryItem? ClassRogue = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == (Core.CheckInventory("Rogue (Rare)") ? "Rogue (Rare)" : "Rogue").ToLower().Trim() && i.Category == ItemCategory.Class);
+        InventoryItem? ClassMage = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == (Core.CheckInventory("Mage (Rare)") ? "Mage(Rare)" : "Mage").ToLower().Trim() && i.Category == ItemCategory.Class);
+
         #region Leve30 to 75
         // Adv.BestGear(GenericGearBoost.exp);
         Farm.ToggleBoost(BoostType.Experience);
@@ -219,26 +226,27 @@ public class CoreFarmerJoe
                     {
                         Core.Logger($"Items owned: \"Master Ranger\" continuing");
                         if (Core.SoloClass == "Generic")
-                            Core.SoloClass = Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue";
+                            Core.SoloClass = Core.CheckInventory("Rogue (Rare)") ? "Rogue (Rare)" : "Rogue";
                         Adv.SmartEnhance(ClassMasterRanger!.Name);
                         continue;
                     }
 
-                    // Rest of the code inside the case will be executed if the conditions are not met.
                     if (Core.SoloClass == "Generic")
-                        Core.SoloClass = Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue";
-
-                    //For BOA lvl 30 rogue *should* be able to kill escherion ..once in awhile :P (tested i got a few kills in an an hr... proabably horrible but w/e)
-
+                        Core.SoloClass = ClassRogue!.Name;
+                    if (Core.FarmClass == "Generic")
+                        Core.SoloClass = ClassMage!.Name;
 
                     ItemBase? DefaultWep = Bot.Inventory.Items.Find(x => x.Name.StartsWith("Default"));
                     if (DefaultWep != null && Core.CheckInventory(DefaultWep.Name))
                         Core.SellItem(DefaultWep.Name);
                     Core.SellItem("Battle Oracle Battlestaff");
                     Core.SellItem("Venom Head");
-                    Adv.SmartEnhance(Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue");
-
+                    if (Core.SoloClass == "Generic")
+                        Adv.SmartEnhance(Core.FarmClass);
                     MR.GetMR();
+                    if (Core.FarmClass == "Generic")
+                        Core.FarmClass = "Master Ranger";   
+                    //For BOA lvl 30 rogue *should* be able to kill escherion ..once in awhile :P (tested i got a few kills in an an hr... proabably horrible but w/e)
                     Farm.BladeofAweREP(6, false);
                     Adv.BuyItem("museum", 631, "Awethur's Accoutrements");
                     Core.Equip("Awethur's Accoutrements");
@@ -262,7 +270,6 @@ public class CoreFarmerJoe
 
                     Adv.SmartEnhance("Master Ranger");
                     Farm.Experience(Level);
-
                     Shaman.GetShaman();
                     Core.Logger($"Level {Level} done");
                     continue;
@@ -550,7 +557,7 @@ public class CoreFarmerJoe
 
     void BeginnerItems()
     {
-        if (Core.CheckInventory(Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue") && Bot.Player.Level >= 10 )
+        if (Core.CheckInventory(Core.CheckInventory("Rogue (Rare)") ? "Rogue (Rare)" : "Rogue") && Core.CheckInventory(Core.CheckInventory("Mage (Rare)") ? "Mage (Rare)" : "Mage") && Bot.Player.Level >= 10)
         {
             Core.Logger("Acc is lvl 10+, skipping beginnger items.");
             return;
@@ -563,26 +570,27 @@ public class CoreFarmerJoe
 
         Core.Logger("Getting Started: Beginner Levels/Equipment");
 
-        if (!Core.CheckInventory(Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue"))
+        if (!Core.CheckInventory(Core.CheckInventory("Rogue (Rare)") ? "Rogue (Rare)" : "Rogue"))
             Core.BuyItem("classhalla", 172, "Rogue");
         Core.BuyItem("classhalla", 299, "Battle Oracle Wings");
         Core.BuyItem("classhalla", 299, "Battle Oracle Battlestaff");
         Core.BuyItem("classhalla", 299, "Battle Oracle Hood");
         Core.Equip("Battle Oracle Battlestaff", "Battle Oracle Hood", "Battle Oracle Wings");
 
-
         ItemBase? DefaultWep = Bot.Inventory.Items.Find(x => x.Name.StartsWith("Default"));
         if (DefaultWep != null && Core.CheckInventory(DefaultWep.Name))
             Core.SellItem(DefaultWep.Name);
 
         if (Core.SoloClass == "Generic")
-            Core.SoloClass = Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue";
+            Core.SoloClass = Core.CheckInventory("Rogue (Rare)") ? "Rogue (Rare)" : "Rogue";
         else Core.SoloClass = Core.SoloClass;
 
         if (Core.SoloClass == "Generic")
-            Core.Equip(Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue");
+            Core.Equip(Core.CheckInventory("Rogue (Rare)") ? "Rogue (Rare)" : "Rogue");
 
-        Adv.SmartEnhance(Core.CheckInventory("Rogue (Rare)") ? "Rogue(Rare)" : "Rogue");
+        Farm.Experience(5);
+        if (!Core.CheckInventory("Mage") || Core.CheckInventory("Mage (Rare)"))
+            Adv.BuyItem("classhalla", 174, 15653, shopItemID: 9845);
     }
 
     public enum PetChoice
