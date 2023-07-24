@@ -50,7 +50,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 105477,
+    "size": 105420,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -852,7 +852,7 @@
       "ravenloss-saga"
     ],
     "path": "Story/RavenlossSaga.cs",
-    "size": 5675,
+    "size": 5730,
     "fileName": "RavenlossSaga.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/RavenlossSaga.cs"
   },
@@ -7183,7 +7183,7 @@
       "null"
     ],
     "path": "Farm/REP/RavenlossREP.cs",
-    "size": 588,
+    "size": 690,
     "fileName": "RavenlossREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/RavenlossREP.cs"
   },
