@@ -190,7 +190,7 @@ public class CoreFarmerJoe
                 Adv.rankUpClass(Core.SoloClass);
                 Core.Logger($"Ranking {Core.FarmClass}");
                 Adv.rankUpClass(Core.FarmClass);
-                break;
+                return;
             }
 
             Core.Logger($"Level Goal: {level}");
@@ -331,15 +331,17 @@ public class CoreFarmerJoe
                         if (Core.SoloClass == "Generic" && Core.CheckInventory("DragonSoul Shinobi"))
                             Core.SoloClass = "DragonSoul Shinobi";
 
-                        if (Core.SoloClass == "Generic" && Core.CheckInventory("Blaze Binder"))
+                        if (Core.FarmClass == "Generic" && Core.CheckInventory("Blaze Binder"))
                             Core.FarmClass = "Blaze Binder";
-                        else Core.FarmClass = "Scarlet Sorceress";
+                        else if (Core.FarmClass == "Generic")
+                            Core.FarmClass = "Scarlet Sorceress";
                         continue;
                     }
 
                     if (Core.SoloClass == "Generic" && Core.CheckInventory("Blaze Binder"))
                         Core.FarmClass = "Blaze Binder";
-                    else Core.FarmClass = "Scarlet Sorceress";
+                    else if (Core.FarmClass == "Generic")
+                        Core.FarmClass = "Scarlet Sorceress";
 
                     Core.Logger("Getting DSS for DoomKittem(ArchPaladin)");
                     Adv.SmartEnhance("Scarlet Sorceress");
@@ -356,20 +358,23 @@ public class CoreFarmerJoe
                         Core.Logger("Items owned: \"ArchPaladin\", continuing");
                         if (Core.SoloClass == "Generic" && Core.CheckInventory("DragonSoul Shinobi"))
                             Core.SoloClass = "DragonSoul Shinobi";
-                        else Core.SoloClass = "Shaman";
+                        else if (Core.SoloClass == "Generic" && Core.CheckInventory("Shaman"))
+                            Core.SoloClass = "Shaman";
 
-                        if (Core.SoloClass == "Generic" && Core.CheckInventory("Blaze Binder"))
+                        if (Core.FarmClass == "Generic" && Core.CheckInventory("Blaze Binder"))
                             Core.FarmClass = "Blaze Binder";
-                        else Core.FarmClass = "Scarlet Sorceress";
+                        else if (Core.FarmClass == "Generic" && Core.CheckInventory("Scarlet Sorceress"))
+                            Core.FarmClass = "Scarlet Sorceress";
                         Adv.SmartEnhance(ClassArchPaladin!.Name);
                         continue;
                     }
                     if (Core.SoloClass == "Generic")
                         Core.SoloClass = "Shaman";
 
-                    if (Core.SoloClass == "Generic" && Core.CheckInventory("Blaze Binder"))
+                    if (Core.FarmClass == "Generic" && Core.CheckInventory("Blaze Binder"))
                         Core.FarmClass = "Blaze Binder";
-                    else Core.FarmClass = "Scarlet Sorceress";
+                    else if (Core.FarmClass == "Generic")
+                        Core.FarmClass = "Scarlet Sorceress";
 
                     Adv.SmartEnhance("Scarlet Sorceress");
                     Farm.Experience(Level);
@@ -383,11 +388,10 @@ public class CoreFarmerJoe
                     if (Bot.Player.Level >= Level && Core.CheckInventory("Archfiend DeathLord") && ClassArchFiend != null && ClassArchFiend!.Quantity == 302500)
                     {
                         Core.Logger("Items owned: \"Archfiend DeathLord\", \"ArchFiend\", continuing");
+
                         if (Core.SoloClass == "Generic" && Core.CheckInventory("ArchPaladin"))
                             Core.SoloClass = "ArchPaladin";
-                        if (Core.SoloClass == "Generic" && Core.CheckInventory("Blaze Binder"))
-                            Core.FarmClass = "Blaze Binder";
-                        else Core.FarmClass = "Scarlet Sorceress";
+
                         if (Core.FarmClass == "Generic" || Core.FarmClass == "Scarlet Sorceress" || Core.FarmClass == "Blaze Binder" && Core.CheckInventory("ArchFiend"))
                             Core.FarmClass = "ArchFiend";
                         Adv.SmartEnhance(ClassArchFiend!.Name);
@@ -396,7 +400,8 @@ public class CoreFarmerJoe
 
                     if (Core.SoloClass == "Generic")
                         Core.SoloClass = "ArchPaladin";
-                    if (Core.SoloClass == "Generic" && Core.CheckInventory("Blaze Binder"))
+                        
+                    if (Core.FarmClass == "Generic" && Core.CheckInventory("Blaze Binder"))
                         Core.FarmClass = "Blaze Binder";
                     else Core.FarmClass = "Scarlet Sorceress";
 
