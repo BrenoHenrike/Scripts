@@ -11779,13 +11779,18 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Various/BringTheCheer.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Secret Map Quest",
+    "description": "if you own the (rare) beta berserker class, this will do the quest [5516] for the rewards.",
     "tags": [
-      "null"
+      "beta berserker armor",
+      "dark berserker",
+      "beta berserker",
+      "secret map",
+      "rare",
+      "pseudo-rare"
     ],
     "path": "Other/Various/BetaBerserkerQuest.cs",
-    "size": 1216,
+    "size": 1393,
     "fileName": "BetaBerserkerQuest.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Various/BetaBerserkerQuest.cs"
   },
