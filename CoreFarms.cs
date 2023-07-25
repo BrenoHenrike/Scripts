@@ -287,7 +287,8 @@ public class CoreFarms
         "flags with using older map swf");
         Core.PrivateRooms = true;
 
-        Core.JoinSWF("icestormarena", "Icewing/town-icestormarena-28Dec18.swf");
+        //monsters were remoed, old swf nolonger needed --ty .G && Exe
+        // Core.JoinSWF("icestormarena", "Icewing/town-icestormarena-28Dec18.swf");
 
         //Between level 1 and 5
         while (NotYetLevel(5))
@@ -330,7 +331,7 @@ public class CoreFarms
         //Between level 50 and 75
         Core.Logger(" \"icy wind\" has been completly removed from\n" +
         "the original ISA map, using new methods till 75");
-        
+
         while (NotYetLevel(60))
             Core.KillMonster("underalir", "r4", "Right", "*", log: false);
 
