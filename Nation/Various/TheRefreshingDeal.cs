@@ -24,8 +24,8 @@ public class TheRefreshingDeal
     public List<IOption> Options = new List<IOption>()
     {
         CoreBots.Instance.SkipOptions,
-        new Option<int>("GemQuantity", "How many Gems of Nulgath?","Max Stack is 1000" ,0),
-        new Option<int>("TotemQuantity", "How many Totems of Nulgath?","Max Stack is 100", 0),
+        new Option<int>("GemQuantity", "How many Gems of Nulgath?","Max Stack is 1000", 1000),
+        new Option<int>("TotemQuantity", "How many Totems of Nulgath?","Max Stack is 100", 100),
         new Option<bool>("BankItems", "Bank nation items at the end", "true/false", false),
     };
 
