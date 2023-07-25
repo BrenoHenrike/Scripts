@@ -254,8 +254,9 @@ public class CoreFarms
 
         FireWarxp(40);
 
+        Core.EquipClass(ClassType.Farm);
         while (Bot.Player.Level < 60)
-            Core.KillMonster("underlair", "r5", "Left", "Void Draconian", log: false);
+            Core.KillMonster("underlair", "r4", "Right", "Void Draconian", log: false);
 
         IcestormArena(level);
 
@@ -327,13 +328,18 @@ public class CoreFarms
             Core.KillMonster("icestormarena", "r14", "Left", "*", log: false, publicRoom: true);
 
         //Between level 50 and 75
-        if (NotYetLevel(75))
-            while (NotYetLevel(75))
-                Core.KillMonster("icestormarena", "r3b", "Top", "*", log: false, publicRoom: true);
+        Core.Logger(" \"icy wind\" has been completly removed from\n" +
+        "the original ISA map, using new methods till 75");
+        
+        while (NotYetLevel(60))
+            Core.KillMonster("underalir", "r4", "Right", "*", log: false);
+
+        while (NotYetLevel(75))
+            Core.KillMonster("underalir", "r5", "Left", "*", log: false);
 
         //Between level 75 and 100
         while (NotYetLevel(100))
-            Core.KillMonster(Core.IsMember ? "nightmare" : "icestormarena", Core.IsMember ? "r13" : "r3c", Core.IsMember ? "left" : "Top", "*", log: false);
+            Core.KillMonster(Core.IsMember ? "nightmare" : "icestormunder", Core.IsMember ? "r13" : "r2", Core.IsMember ? "left" : "Top", "*", log: false);
 
         Core.SavedState(false);
         Core.ToggleAggro(false);
