@@ -333,10 +333,10 @@ public class CoreFarms
         "the original ISA map, using new methods till 75");
 
         while (NotYetLevel(60))
-            Core.KillMonster("under", "r4", "Right", "*", log: false);
+            Core.KillMonster("underlair", "r4", "Right", "*", log: false);
 
         while (NotYetLevel(75))
-            Core.KillMonster("under", "r5", "Left", "*", log: false);
+            Core.KillMonster("underlair", "r5", "Left", "*", log: false);
 
         //Between level 75 and 100
         while (NotYetLevel(100))

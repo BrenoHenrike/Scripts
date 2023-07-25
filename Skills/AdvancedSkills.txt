@@ -56,7 +56,7 @@ Base = Classic Alpha Pirate = 4 | 1 | 3 | 2 = Use if Available
 Base = Classic Barber = 4 | 1 | 3 | 2 = 250
 Base = Classic Defender = 2 | 3 | 2 | 4 | 3 = 250
 Base = Classic DoomKnight = 4 | 3 | 1 | 2 | 3 | 1 | 4 | 1 | 3H<50S = 250
-Base = Doom meta Necro = 1 | 4H>50S | 2 | 3 | 2 = 250
+Base = Doom metalv Necro = 1 | 4H>50S | 2 | 3 | 2 = 250
 Base = Classic Dragonlord = 2 | 3 | 1 | 1 | 4 = 250
 Base = Classic Exalted Soul Cleaver = 1 | 2 | 3 | 4 = Use if Available
 Base = Classic Guardian = 1 | 2 | 3 | 4 = Use if Available
