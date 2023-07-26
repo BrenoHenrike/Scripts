@@ -2888,6 +2888,9 @@ public class CoreBots
                 SimpleQuestBypass((192, 9));
                 break;
 
+            case "battleunderd":
+                SimpleQuestBypass((24, 18));
+                break;
 
             case "ascendeclipse":
                 if (!CheckInventory("Rite of Ascension"))
