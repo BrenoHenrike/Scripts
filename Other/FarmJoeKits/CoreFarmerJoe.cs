@@ -250,7 +250,7 @@ public class CoreFarmerJoe
                     Farm.BladeofAweREP(6, false);
                     Adv.BuyItem("museum", 631, "Awethur's Accoutrements");
                     Core.Equip("Awethur's Accoutrements");
-                    Adv.SmartEnhance("ClassMasterRanger!.Name");
+                    Adv.SmartEnhance(Core.FarmClass);
                     Core.Logger($"Level {Level} done");
                     continue;
 
@@ -268,7 +268,7 @@ public class CoreFarmerJoe
                     if (Core.FarmClass == "Generic")
                         Core.FarmClass = "Master Ranger";
 
-                    Adv.SmartEnhance("Master Ranger");
+                    Adv.SmartEnhance(Core.FarmClass);
                     Farm.Experience(Level);
                     Shaman.GetShaman();
                     Core.Logger($"Level {Level} done");
@@ -301,7 +301,7 @@ public class CoreFarmerJoe
                         Core.FarmClass = "Scarlet Sorceress";
 
                     BB.GetBurningBlade();
-                    Adv.SmartEnhance("Scarlet Sorceress");
+                    Adv.SmartEnhance(Core.FarmClass);
                     Core.Equip("Burning Blade");
                     Core.Logger($"Level {Level} done");
                     continue;
@@ -315,11 +315,11 @@ public class CoreFarmerJoe
                     }
 
                     //Daily classes
-                    Adv.SmartEnhance("Scarlet Sorceress");
+                    Adv.SmartEnhance(Core.FarmClass);
                     Core.Logger("Daily Classes Check");
                     Bb.GetClass();
                     Farm.Experience(Level);
-                    Adv.SmartEnhance("Scarlet Sorceress");
+                    Adv.SmartEnhance(Core.FarmClass);
                     Core.Logger($"Level {Level} done");
                     continue;
 
@@ -344,10 +344,10 @@ public class CoreFarmerJoe
                         Core.FarmClass = "Scarlet Sorceress";
 
                     Core.Logger("Getting DSS for DoomKittem(ArchPaladin)");
-                    Adv.SmartEnhance("Scarlet Sorceress");
+                    Adv.SmartEnhance(Core.FarmClass);
                     DS.GetDSS();
                     Farm.Experience(Level);
-                    Adv.SmartEnhance("Scarlet Sorceress");
+                    Adv.SmartEnhance(Core.FarmClass);
                     Core.Logger($"Level {Level} done");
                     continue;
 
@@ -376,7 +376,7 @@ public class CoreFarmerJoe
                     else if (Core.FarmClass == "Generic")
                         Core.FarmClass = "Scarlet Sorceress";
 
-                    Adv.SmartEnhance("Scarlet Sorceress");
+                    Adv.SmartEnhance(Core.FarmClass);
                     Farm.Experience(Level);
                     AP.GetAP();
                     Core.Logger($"Level {Level} done");
@@ -405,12 +405,12 @@ public class CoreFarmerJoe
                         Core.FarmClass = "Blaze Binder";
                     else Core.FarmClass = "Scarlet Sorceress";
 
-                    Adv.SmartEnhance("Scarlet Sorceress");
+                    Adv.SmartEnhance(Core.FarmClass);
                     if (Core.FarmClass == "Generic" || Core.FarmClass == "Scarlet Sorceress" || Core.FarmClass == "Blaze Binder" && Core.CheckInventory("ArchFiend"))
                         Core.FarmClass = "ArchFiend";
                     AFDeath.GetArm(true, ArchfiendDeathLord.RewardChoice.Archfiend_DeathLord);
                     Core.Equip("Archfiend DeathLord");
-                    AF.GetArchfiend(); 
+                    AF.GetArchfiend();
                     // Adv.BestGear(GenericGearBoost.dmgAll);
                     Farm.Experience(Level);
                     Adv.SmartEnhance(Core.FarmClass);
@@ -456,6 +456,7 @@ public class CoreFarmerJoe
 
         COA.GetCoA();
         Core.Equip("Cape of Awe");
+        Adv.SmartEnhance(Core.FarmClass);
         LOC.Complete13LOC();
 
         //Step 2 Solo Class:
