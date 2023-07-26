@@ -1954,18 +1954,21 @@ public class CoreBots
             // DebugLogger(this);
             if (log)
                 Logger("Killing Escherion");
-            while (!Bot.ShouldExit && IsMonsterAlive("Escherion"))
+            while (!Bot.ShouldExit && CheckInventory(item, quant))
             {
                 // DebugLogger(this);
-                while (!Bot.ShouldExit && IsMonsterAlive("Staff of Inversion"))
+                while (!Bot.ShouldExit && IsMonsterAlive(2, useMapID: true))
                 {
-                    Bot.Kill.Monster("Staff of Inversion");
-                    Bot.Combat.CancelTarget();
-                    Bot.Sleep(1000);
+                    Bot.Kill.Monster(203);
+                    while (!Bot.ShouldExit && Bot.Player.HasTarget)
+                        Bot.Combat.CancelTarget();
                 }
-                Bot.Combat.Attack("Escherion");
-                Bot.Combat.CancelTarget();
-                Bot.Sleep(1000);
+                while (!Bot.ShouldExit && IsMonsterAlive(3, useMapID: true))
+                {
+                    Bot.Kill.Monster(187);
+                    while (!Bot.ShouldExit && Bot.Player.HasTarget)
+                        Bot.Combat.CancelTarget();
+                }
             }
         }
         else
