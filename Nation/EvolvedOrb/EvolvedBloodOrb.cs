@@ -29,7 +29,7 @@ public class EvolvedBloodOrb
         Nation.FarmVoucher(false);
         Nation.FarmTotemofNulgath(10);
         Nation.FarmDiamondofNulgath(30);
-        Core.BuyItem("archportal", 1211, "Evolved Blood Orb");
+        Core.BuyItem("archportal", 1211, 33196, shopItemID: 4181);
         Core.Logger($"Done, you have Blood ball");
     }
 
