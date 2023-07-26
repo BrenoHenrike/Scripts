@@ -17,7 +17,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 173510,
+    "size": 173611,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -12023,7 +12023,7 @@
       "null"
     ],
     "path": "Nation/EvolvedOrb/EvolvedBloodOrb.cs",
-    "size": 888,
+    "size": 892,
     "fileName": "EvolvedBloodOrb.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/EvolvedOrb/EvolvedBloodOrb.cs"
   },
@@ -12069,7 +12069,7 @@
       "null"
     ],
     "path": "Nation/EvolvedOrb/EvolvedBloodOrbItems[Mem].cs",
-    "size": 3381,
+    "size": 3311,
     "fileName": "EvolvedBloodOrbItems[Mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/EvolvedOrb/EvolvedBloodOrbItems[Mem].cs"
   },
