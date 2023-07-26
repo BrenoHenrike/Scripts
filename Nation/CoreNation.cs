@@ -872,6 +872,8 @@ public class CoreNation
         if (Core.CheckInventory(item, quant) || !Core.IsMember)
             return;
 
+        //for Glacial Bones
+        Bot.Quests.UpdateQuest(2215);
         Core.RegisterQuests(3053);
         Core.EquipClass(ClassType.Solo);
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
