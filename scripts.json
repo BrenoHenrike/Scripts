@@ -7838,17 +7838,17 @@
   },
   {
     "name": "Army Totem And Gem",
-    "description": "uses an army to farm Totems Of Nulgath or Gem of Nulgath from \"voucher item totem of nulgath\"",
+    "description": "Uses an army to farm Totems Of Nulgath or Gem of Nulgath from \"voucher item totem of nulgath\"",
     "tags": [
       "totems of nulgath",
       "gem of nulgath",
       "army",
       "voucher item totem of nulgath"
     ],
-    "path": "Army/ArmyNulgath/ArmyVoucherItemTotemofNulgath.cs",
-    "size": 4247,
-    "fileName": "ArmyVoucherItemTotemofNulgath.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyNulgath/ArmyVoucherItemTotemofNulgath.cs"
+    "path": "Army/ArmyNulgath/ArmyVoucherItemofNulgath.cs",
+    "size": 4791,
+    "fileName": "ArmyVoucherItemofNulgath.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyNulgath/ArmyVoucherItemofNulgath.cs"
   },
   {
     "name": "Army Emblem of Dage",
