@@ -7,6 +7,7 @@ tags: null
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Story/RavenlossSaga.cs
+//cs_include Scripts/CoreStory.cs
 using Skua.Core.Interfaces;
 public class RavenlossREP
 {
