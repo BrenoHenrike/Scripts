@@ -138,9 +138,7 @@ public class CoreFarms
 
         Core.RegisterQuests(3992, 3993);
         while (!Bot.ShouldExit && Bot.Player.Gold < goldQuant && Bot.Player.Gold <= 100000000)
-        {
             Core.KillMonster("honorhall", "r1", "Center", "*", log: false);
-        }
         Core.CancelRegisteredQuests();
         Core.SavedState(false);
     }
