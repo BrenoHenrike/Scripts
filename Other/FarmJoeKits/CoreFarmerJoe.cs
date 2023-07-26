@@ -227,14 +227,18 @@ public class CoreFarmerJoe
                         Core.Logger($"Items owned: \"Master Ranger\" continuing");
                         if (Core.SoloClass == "Generic")
                             Core.SoloClass = Core.CheckInventory("Rogue (Rare)") ? "Rogue (Rare)" : "Rogue";
-                        Adv.SmartEnhance(ClassMasterRanger!.Name);
+                        if (Core.FarmClass == "Generic" && ClassMasterRanger != null)
+                            Core.FarmClass = "Master Ranger";
+                        else if (Core.FarmClass == "Generic" && (Core.CheckInventory("Mage") || Core.CheckInventory("Mage (Rare)")))
+                            Core.FarmClass = Core.CheckInventory("Mage (Rare)") ? "Mage (Rare)" : "Mage";
+                        Adv.SmartEnhance(Core.FarmClass);
                         continue;
                     }
 
-                    if (Core.SoloClass == "Generic")
+                    if (Core.SoloClass == "Generic" && ClassRogue != null)
                         Core.SoloClass = ClassRogue!.Name;
-                    if (Core.FarmClass == "Generic")
-                        Core.SoloClass = ClassMage!.Name;
+                    if (Core.FarmClass == "Generic" && ClassMage != null)
+                        Core.FarmClass = ClassMage!.Name;
 
                     ItemBase? DefaultWep = Bot.Inventory.Items.Find(x => x.Name.StartsWith("Default"));
                     if (DefaultWep != null && Core.CheckInventory(DefaultWep.Name))
@@ -261,7 +265,7 @@ public class CoreFarmerJoe
                         Core.Logger("Items owned: \"Shaman\" continuing");
                         if (Core.FarmClass == "Generic")
                             Core.FarmClass = "Master Ranger";
-                        Adv.SmartEnhance(ClassShaman!.Name);
+                        Adv.SmartEnhance(Core.FarmClass);
                         continue;
                     }
 
@@ -283,7 +287,7 @@ public class CoreFarmerJoe
                         {
                             Core.SoloClass = "Shaman";
                             Core.FarmClass = "Shaman";
-                            Adv.SmartEnhance(ClassScarletSorceress!.Name);
+                            Adv.SmartEnhance(Core.FarmClass);
                         }
                         if (Core.FarmClass == "Generic" && Core.CheckInventory("Scarlet Sorceress"))
                             Core.FarmClass = "Scarlet Sorceress";
