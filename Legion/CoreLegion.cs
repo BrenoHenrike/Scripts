@@ -579,7 +579,7 @@ public class CoreLegion
             Core.HuntMonster("tournament", "Roderick", "Roderick's Chaotic Bane");
             Core.HuntMonster("tournament", "Knight of Thorns", "Knight of Thorns' Sword");
             Core.HuntMonster("tournament", "Johann Wryce", "Platinum of Johann Wryce");
-            Core.HuntMonster("tournament", "Khai Kaldun", "Khai Kaldun's Scimitar");
+            Core.HuntMonster("tournament", "Khai Khaldun", "Khai Khaldun's Scimitar");
         }
         Core.CancelRegisteredQuests();
     }
