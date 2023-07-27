@@ -2145,6 +2145,7 @@ public class CoreAdvanced
 
                 // This list serves as an overview of what classes dont have a Forge Enhancement yet, when adding a setup for it, remove it from here
                 case "acolyte":
+                case "antique hunter":
                 case "alpha doommega":
                 case "alpha omega":
                 case "alpha pirate":
@@ -2555,6 +2556,7 @@ public class CoreAdvanced
                 case "unchained rockstar":
                 case "doom metal necro":
                 case "neo metal necro":
+                case "antique hunter":
                     type = EnhancementType.Lucky;
                     wSpecial = WeaponSpecial.Awe_Blast;
                     break;
