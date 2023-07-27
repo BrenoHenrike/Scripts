@@ -1208,16 +1208,17 @@ public class CoreToD
         if (!Story.QuestProgression(5325))
         {
             Core.EnsureAccept(5325);
-            Story.KillQuest(5325, "towerofmirrors", new[] { "Stage Tech", "Stage Tech" });
+            Core.HuntMonster("towerofmirrors", "Stage Tech", "Stage Tech Defeated", 9);
+            Core.HuntMonster("towerofmirrors", "Stage Tech", "Rope Ladder");
             Core.EnsureComplete(5325);
         }
 
         // In the Spotlight
         if (!Story.QuestProgression(5326))
         {
+            Core.EquipClass(ClassType.Solo);
             Core.EnsureAccept(5326);
-            Core.HuntMonster("towerofmirrors", "Stage Tech", "Stage Tech Defeated", 9);
-            Core.HuntMonster("towerofmirrors", "Stage Tech", "Rope Ladder");
+            Core.HuntMonsterMapID("towerofmirrors", 49, "Atticus the Warped Defeated");
             Core.EnsureComplete(5326);
         }
 
