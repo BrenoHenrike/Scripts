@@ -313,7 +313,6 @@ public class CoreFarmerJoe
 
                     BB.GetBurningBlade();
                     Adv.SmartEnhance(Core.FarmClass);
-                    Core.Equip("Burning Blade");
                     Core.Logger($"Level {Level} done");
                     continue;
 
