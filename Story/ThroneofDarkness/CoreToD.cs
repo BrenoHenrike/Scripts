@@ -1205,14 +1205,19 @@ public class CoreToD
         Story.MapItemQuest(5324, "towerofmirrors", new[] { 4689, 4695 });
 
         // Behind the Scenes
-        Story.KillQuest(5325, "towerofmirrors", new[] { "Stage Tech", "Stage Tech" });
+        if (!Story.QuestProgression(5325))
+        {
+            Core.EnsureAccept(5325);
+            Story.KillQuest(5325, "towerofmirrors", new[] { "Stage Tech", "Stage Tech" });
+            Core.EnsureComplete(5325);
+        }
 
         // In the Spotlight
         if (!Story.QuestProgression(5326))
         {
-            Core.EquipClass(ClassType.Solo);
             Core.EnsureAccept(5326);
-            Core.HuntMonsterMapID("towerofmirrors", 49, "Atticus the Warped Defeated");
+            Core.HuntMonster("towerofmirrors", "Stage Tech", "Stage Tech Defeated", 9);
+            Core.HuntMonster("towerofmirrors", "Stage Tech", "Rope Ladder");
             Core.EnsureComplete(5326);
         }
 
@@ -1221,7 +1226,13 @@ public class CoreToD
         Story.MapItemQuest(5327, "towerofmirrors", new[] { 4690, 4696 });
 
         // We Gotta Wendi-GO
-        Story.KillQuest(5328, "towerofmirrors", new[] { "Sasquatch", "Sasquatch" });
+        if (!Story.QuestProgression(5328))
+        {
+            Core.EnsureAccept(5328);
+            Core.HuntMonster("towerofmirrors", "Sasquatch", "Sasquatches Defeated", 10);
+            Core.HuntMonster("towerofmirrors", "Sasquatch", "Tracking Tag", 5);
+            Core.EnsureComplete(5328);
+        }
 
         // Kick His- Wait, Did We Already Use That Pun?
         if (!Story.QuestProgression(5329))
