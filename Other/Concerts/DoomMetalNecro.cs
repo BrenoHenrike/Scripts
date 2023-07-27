@@ -54,7 +54,7 @@ public class DoomMetalNecro
         Core.EnsureAccept(9328);
 
         //Arch DoomKnight (takes the longest?)
-        ADK.DoAll();
+        ADK.DoAll(true);
         Core.Unbank("Arch DoomKnight");
 
         Core.EquipClass(ClassType.Solo);

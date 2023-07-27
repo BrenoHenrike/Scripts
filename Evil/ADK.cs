@@ -71,14 +71,9 @@ public class ArchDoomKnight
         Core.SetOptions(false);
     }
 
-    public void DoAll(bool BankRewards = false)
+    public void DoAll(bool ArmorOnly = false, bool BankRewards = false)
     {
-        LOC.Wolfwing();
-        Farm.EvilREP(7);
-        GatheringPower();
-        DeathsDoor();
-        ChaoticLords();
-        AMeansToAnEnd();
+        AMeansToAnEnd(ArmorOnly);
         if (BankRewards)
             Core.ToBank(Combined);
     }
@@ -88,6 +83,9 @@ public class ArchDoomKnight
     {
         if (Core.CheckInventory("Arch DoomKnight Cape", toInv: false))
             return;
+
+        LOC.Wolfwing();
+        Farm.EvilREP(7);
 
         Core.AddDrop(Q1items);
         Core.EnsureAccept(6795);
@@ -102,6 +100,9 @@ public class ArchDoomKnight
 
     public void DeathsDoor()
     {
+        if (!Core.isCompletedBefore(6796))
+            GatheringPower();
+
         if (Core.CheckInventory(new[] { "Arch DoomKnight Cape Sword", "Arch DoomKnight Polearm" }, toInv: false))
             return;
 
@@ -117,6 +118,9 @@ public class ArchDoomKnight
 
     public void ChaoticLords()
     {
+        if (!Core.isCompletedBefore(6797))
+            DeathsDoor();
+
         if (Core.CheckInventory(new[] { "Arch DoomKnight Sword", "Arch DoomKnight's Edge" }, toInv: false))
             return;
 
@@ -144,8 +148,14 @@ public class ArchDoomKnight
         Core.ToBank(Q3items);
     }
 
-    public void AMeansToAnEnd()
+    public void AMeansToAnEnd(bool ArmorOnly = false)
     {
+        if (!Core.isCompletedBefore(6798))
+            ChaoticLords();
+            
+        if (ArmorOnly && Core.CheckInventory("Arch DoomKnight"))
+            return;
+
         if (Core.CheckInventory(new[] { "Arch DoomKnight", "Arch DoomKnight Open Helm", "Arch DoomKnight Helm" }, toInv: false))
             return;
 
