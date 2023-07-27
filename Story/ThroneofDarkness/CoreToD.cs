@@ -1097,7 +1097,7 @@ public class CoreToD
 
         Story.MapItemQuest(5299, "hedgemaze", 4679);
 
-            Core.EquipClass(ClassType.Solo);
+        Core.EquipClass(ClassType.Solo);
         Story.KillQuest(5299, "hedgemaze", new[] { "Mirrored Shard", "Hedge Goblin", "Minotaur" });
 
         Story.KillQuest(5300, "hedgemaze", "Knight's Reflection");
@@ -1112,7 +1112,7 @@ public class CoreToD
 
         Story.MapItemQuest(5305, "hedgemaze", 4682);
 
-            Core.EquipClass(ClassType.Solo);
+        Core.EquipClass(ClassType.Solo);
         Story.KillQuest(5306, "hedgemaze", "Minotaur Prime");
 
         Story.MapItemQuest(5307, "hedgemaze", 4683);
@@ -1129,7 +1129,7 @@ public class CoreToD
         }
 
         Story.MapItemQuest(5311, "hedgemaze", 4686);
-        
+
         Core.EquipClass(ClassType.Solo);
         Story.KillQuest(5312, "hedgemaze", "Shattered Knight");
 
@@ -1141,7 +1141,7 @@ public class CoreToD
         if (Core.isCompletedBefore(5332))
             return;
 
-            Core.Logger($"{Core.SoloClass}, {Core.FarmClass}");
+        Core.Logger($"{Core.SoloClass}, {Core.FarmClass}");
 
         ShatterGlassMaze();
 
@@ -1153,8 +1153,8 @@ public class CoreToD
         Story.KillQuest(5314, "towerofmirrors", new[] { "Glassgoyle", "Glass Serpent" });
 
         // The Key To Success
-        Story.MapItemQuest(5315, "towerofmirrors", new[] { 4691, 4692 });
         Story.KillQuest(5315, "towerofmirrors", "Silver Elemental");
+        Story.MapItemQuest(5315, "towerofmirrors", new[] { 4691, 4692 });
 
         // Phanatics
         Story.KillQuest(5316, "towerofmirrors", new[] { "Phans", "Phans" });
@@ -1185,8 +1185,8 @@ public class CoreToD
         }
 
         // Or Maybe THIS Is True Love
-        Story.MapItemQuest(5321, "towerofmirrors", new[] { 4688, 4694 });
         Story.KillQuest(5321, "towerofmirrors", "Silver Elemental");
+        Story.MapItemQuest(5321, "towerofmirrors", new[] { 4688, 4694 });
 
         // Those Harpies!
         Story.KillQuest(5322, "towerofmirrors", new[] { "Pageant Mom", "Pageant Mom" });
@@ -1201,8 +1201,8 @@ public class CoreToD
         }
 
         // Oh Sure, Why Not
-        Story.MapItemQuest(5324, "towerofmirrors", new[] { 4689, 4695 });
         Story.KillQuest(5324, "towerofmirrors", "Silver Elemental");
+        Story.MapItemQuest(5324, "towerofmirrors", new[] { 4689, 4695 });
 
         // Behind the Scenes
         Story.KillQuest(5325, "towerofmirrors", new[] { "Stage Tech", "Stage Tech" });
