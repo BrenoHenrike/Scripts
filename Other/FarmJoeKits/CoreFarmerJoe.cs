@@ -308,7 +308,7 @@ public class CoreFarmerJoe
 
                     SS.GetSSorc();
 
-                    if ((Core.FarmClass == "Generic" || Core.FarmClass == ClassMage!.Name || Core.FarmClass == ClassMasterRanger!.Name || Core.FarmClass == ClassShaman!.Name) && ClassScarletSorceress!=null)
+                    if ((Core.FarmClass == "Generic" || Core.FarmClass == ClassMage!.Name || Core.FarmClass == ClassMasterRanger!.Name || Core.FarmClass == ClassShaman!.Name) && ClassScarletSorceress != null)
                         Core.FarmClass = "Scarlet Sorceress";
 
                     BB.GetBurningBlade();
@@ -366,7 +366,7 @@ public class CoreFarmerJoe
                         if (Core.FarmClass == "Generic" || Core.FarmClass == "Master Ranger" || Core.FarmClass == "Shaman")
                             Core.FarmClass = Core.CheckInventory("Blaze Binder") ? "Blaze Binder" : "Scarlet Sorceress";
 
-                        Adv.SmartEnhance(ClassArchPaladin!.Name);
+                        Adv.SmartEnhance(Core.FarmClass);
                         continue;
                     }
                     if (Core.SoloClass == "Generic")
@@ -390,9 +390,10 @@ public class CoreFarmerJoe
                         if ((Core.SoloClass == "Generic" || Core.SoloClass == "Shaman") && Core.CheckInventory("ArchPaladin"))
                             Core.SoloClass = "ArchPaladin";
 
-                        if ((Core.FarmClass == "Generic" || Core.FarmClass == "Scarlet Sorceress" || Core.FarmClass == "Blaze Binder") && Core.CheckInventory("ArchFiend"))
-                            Core.FarmClass = "ArchFiend";
-                        Adv.SmartEnhance(ClassArchFiend!.Name);
+                        if (Core.FarmClass == "Generic" || Core.FarmClass == "Master Ranger" || Core.FarmClass == "Shaman")
+                            Core.FarmClass = Core.CheckInventory("Blaze Binder") ? "Blaze Binder" : "ArchFiend";
+
+                        Adv.SmartEnhance(Core.FarmClass);
                         continue;
                     }
 
@@ -423,11 +424,11 @@ public class CoreFarmerJoe
 
     public void Level75to100()
     {
-        if ((Core.CheckInventory("Archfiend") && Core.CheckInventory("ArchPaladin")) || (Core.SoloClass == "Generic" && Core.FarmClass == "Generic"))
-        {
+        if (Core.FarmClass == "Generic" || Core.FarmClass == "Master Ranger" || Core.FarmClass == "Shaman")
+            Core.FarmClass = Core.CheckInventory("Blaze Binder") ? "Blaze Binder" : "ArchFiend";
+
+        if ((Core.SoloClass == "Generic" || Core.SoloClass == "Shaman") && Core.CheckInventory("ArchPaladin"))
             Core.SoloClass = "ArchPaladin";
-            Core.FarmClass = "ArchFiend";
-        }
 
         InvEn.EnhanceInventory();
         #region Prepare for Lvl100
@@ -484,11 +485,11 @@ public class CoreFarmerJoe
 
     public void EndGame()
     {
-        if ((Core.CheckInventory("Archfiend") && Core.CheckInventory("ArchPaladin")) || (Core.SoloClass == "Generic" && Core.FarmClass == "Generic"))
-        {
+        if (Core.FarmClass == "Generic" || Core.FarmClass == "Master Ranger" || Core.FarmClass == "Shaman")
+            Core.FarmClass = Core.CheckInventory("Blaze Binder") ? "Blaze Binder" : "ArchFiend";
+
+        if ((Core.SoloClass == "Generic" || Core.SoloClass == "Shaman") && Core.CheckInventory("ArchPaladin"))
             Core.SoloClass = "ArchPaladin";
-            Core.FarmClass = "ArchFiend";
-        }
 
         #region Ending & Extras 
 
@@ -508,11 +509,11 @@ public class CoreFarmerJoe
 
     public void Outfit()
     {
-        if ((Core.CheckInventory("Archfiend") && Core.CheckInventory("ArchPaladin")) || (Core.SoloClass == "Generic" && Core.FarmClass == "Generic"))
-        {
+        if (Core.FarmClass == "Generic" || Core.FarmClass == "Master Ranger" || Core.FarmClass == "Shaman")
+            Core.FarmClass = Core.CheckInventory("Blaze Binder") ? "Blaze Binder" : "ArchFiend";
+
+        if ((Core.SoloClass == "Generic" || Core.SoloClass == "Shaman") && Core.CheckInventory("ArchPaladin"))
             Core.SoloClass = "ArchPaladin";
-            Core.FarmClass = "ArchFiend";
-        }
 
         //Easy Difficulty Stuff
         ShirtandHat();
@@ -535,11 +536,12 @@ public class CoreFarmerJoe
 
     public void Pets(PetChoice PetChoice = PetChoice.None)
     {
-        if ((Core.CheckInventory("Archfiend") && Core.CheckInventory("ArchPaladin")) || (Core.SoloClass == "Generic" && Core.FarmClass == "Generic"))
-        {
+        if (Core.FarmClass == "Generic" || Core.FarmClass == "Master Ranger" || Core.FarmClass == "Shaman")
+            Core.FarmClass = Core.CheckInventory("Blaze Binder") ? "Blaze Binder" : "ArchFiend";
+
+        if ((Core.SoloClass == "Generic" || Core.SoloClass == "Shaman") && Core.CheckInventory("ArchPaladin"))
             Core.SoloClass = "ArchPaladin";
-            Core.FarmClass = "ArchFiend";
-        }
+
         if (Bot.Config!.Get<PetChoice>("Pets") == PetChoice.None)
             return;
 
@@ -560,6 +562,12 @@ public class CoreFarmerJoe
 
     public void ShirtandHat()
     {
+        if (Core.FarmClass == "Generic" || Core.FarmClass == "Master Ranger" || Core.FarmClass == "Shaman")
+            Core.FarmClass = Core.CheckInventory("Blaze Binder") ? "Blaze Binder" : "ArchFiend";
+
+        if ((Core.SoloClass == "Generic" || Core.SoloClass == "Shaman") && Core.CheckInventory("ArchPaladin"))
+            Core.SoloClass = "ArchPaladin";
+
         if (Core.CheckInventory("NO BOTS Armor") | Core.CheckInventory("Scarecrow Hat"))
             return;
 
@@ -570,6 +578,12 @@ public class CoreFarmerJoe
 
     public void ServersAreDown()
     {
+        if (Core.FarmClass == "Generic" || Core.FarmClass == "Master Ranger" || Core.FarmClass == "Shaman")
+            Core.FarmClass = Core.CheckInventory("Blaze Binder") ? "Blaze Binder" : "ArchFiend";
+
+        if ((Core.SoloClass == "Generic" || Core.SoloClass == "Shaman") && Core.CheckInventory("ArchPaladin"))
+            Core.SoloClass = "ArchPaladin";
+
         if (Core.CheckInventory("The Server is Down"))
             return;
 
@@ -581,6 +595,12 @@ public class CoreFarmerJoe
 
     void BeginnerItems()
     {
+        if (Core.FarmClass == "Generic" || Core.FarmClass == "Master Ranger" || Core.FarmClass == "Shaman")
+            Core.FarmClass = Core.CheckInventory("Blaze Binder") ? "Blaze Binder" : "ArchFiend";
+
+        if ((Core.SoloClass == "Generic" || Core.SoloClass == "Shaman") && Core.CheckInventory("ArchPaladin"))
+            Core.SoloClass = "ArchPaladin";
+
         if (Core.CheckInventory(Core.CheckInventory("Rogue (Rare)") ? "Rogue (Rare)" : "Rogue") && Core.CheckInventory(Core.CheckInventory("Mage (Rare)") ? "Mage (Rare)" : "Mage") && Bot.Player.Level >= 10)
         {
             Core.Logger("Acc is lvl 10+, skipping beginnger items.");
