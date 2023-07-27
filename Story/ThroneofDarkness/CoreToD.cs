@@ -1097,6 +1097,7 @@ public class CoreToD
 
         Story.MapItemQuest(5299, "hedgemaze", 4679);
 
+            Core.EquipClass(ClassType.Solo);
         Story.KillQuest(5299, "hedgemaze", new[] { "Mirrored Shard", "Hedge Goblin", "Minotaur" });
 
         Story.KillQuest(5300, "hedgemaze", "Knight's Reflection");
@@ -1111,6 +1112,7 @@ public class CoreToD
 
         Story.MapItemQuest(5305, "hedgemaze", 4682);
 
+            Core.EquipClass(ClassType.Solo);
         Story.KillQuest(5306, "hedgemaze", "Minotaur Prime");
 
         Story.MapItemQuest(5307, "hedgemaze", 4683);
@@ -1127,7 +1129,8 @@ public class CoreToD
         }
 
         Story.MapItemQuest(5311, "hedgemaze", 4686);
-
+        
+        Core.EquipClass(ClassType.Solo);
         Story.KillQuest(5312, "hedgemaze", "Shattered Knight");
 
         Story.KillQuest(5313, "hedgemaze", "Resurrected Minotaur");
@@ -1137,6 +1140,8 @@ public class CoreToD
     {
         if (Core.isCompletedBefore(5332))
             return;
+
+            Core.Logger($"{Core.SoloClass}, {Core.FarmClass}");
 
         ShatterGlassMaze();
 
@@ -1157,8 +1162,9 @@ public class CoreToD
         // But I Have A Backstage Pass!
         if (!Story.QuestProgression(5317))
         {
+            Core.EquipClass(ClassType.Solo);
             Core.EnsureAccept(5317);
-            Core.HuntMonsterMapID("towerofmirrors", 36, "Lothahnos the Reversed Defeated");
+            Core.HuntMonsterMapID("towerofmirrors", 36, "Lathannos the Reversed Defeated");
             Core.EnsureComplete(5317);
         }
 
@@ -1172,8 +1178,9 @@ public class CoreToD
         // Now Turn to the Right
         if (!Story.QuestProgression(5320))
         {
+            Core.EquipClass(ClassType.Solo);
             Core.EnsureAccept(5320);
-            Core.HuntMonsterMapID("towerofmirrors", 40, "Lukcrisio the Buffed Defeated");
+            Core.HuntMonsterMapID("towerofmirrors", 40, "Lukrisio the Buffed Defeated");
             Core.EnsureComplete(5320);
         }
 
@@ -1187,6 +1194,7 @@ public class CoreToD
         // Drink your Go-Go Juice
         if (!Story.QuestProgression(5323))
         {
+            Core.EquipClass(ClassType.Solo);
             Core.EnsureAccept(5323);
             Core.HuntMonsterMapID("towerofmirrors", 45, "Mendeskar the Smudged Defeated");
             Core.EnsureComplete(5323);
@@ -1202,6 +1210,7 @@ public class CoreToD
         // In the Spotlight
         if (!Story.QuestProgression(5326))
         {
+            Core.EquipClass(ClassType.Solo);
             Core.EnsureAccept(5326);
             Core.HuntMonsterMapID("towerofmirrors", 49, "Atticus the Warped Defeated");
             Core.EnsureComplete(5326);
@@ -1217,6 +1226,7 @@ public class CoreToD
         // Kick His- Wait, Did We Already Use That Pun?
         if (!Story.QuestProgression(5329))
         {
+            Core.EquipClass(ClassType.Solo);
             Core.EnsureAccept(5329);
             Core.HuntMonsterMapID("towerofmirrors", 52, "Leofire the Shattered Defeated");
             Core.EnsureComplete(5329);
@@ -1232,6 +1242,7 @@ public class CoreToD
         if (!Story.QuestProgression(5332))
         {
             Core.AddDrop("Blood Sorceress");
+            Core.EquipClass(ClassType.Solo);
             Core.EnsureAccept(5332);
             Core.HuntMonsterMapID("towerofmirrors", 32, "Defeat the Groglurk");
             Core.EnsureComplete(5332);
