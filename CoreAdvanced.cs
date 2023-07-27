@@ -1943,6 +1943,20 @@ public class CoreAdvanced
                     break;
                 #endregion
 
+                #region Lucky - Vainglory - Elysium - Pneuma
+                case "antique hunter":
+                case "artifact hunter":
+                    if (!uVainglory() || !uElysium() || !uPneuma())
+                        goto default;
+
+                    type = EnhancementType.Lucky;
+                    cSpecial = CapeSpecial.Vainglory;
+                    wSpecial = WeaponSpecial.Elysium;
+                    hSpecial = HelmSpecial.Pneuma;
+                    break;
+                #endregion
+
+
                 #region Lucky - Lament - Elysium - Pneuma
                 case "abyssal angel":
                 case "abyssal angel's shadow":
@@ -1950,7 +1964,7 @@ public class CoreAdvanced
                         goto default;
 
                     type = EnhancementType.Lucky;
-                    cSpecial = CapeSpecial.Lament;
+                    cSpecial = CapeSpecial.Vainglory;
                     wSpecial = WeaponSpecial.Elysium;
                     hSpecial = HelmSpecial.Pneuma;
                     break;
@@ -2145,13 +2159,11 @@ public class CoreAdvanced
 
                 // This list serves as an overview of what classes dont have a Forge Enhancement yet, when adding a setup for it, remove it from here
                 case "acolyte":
-                case "antique hunter":
                 case "alpha doommega":
                 case "alpha omega":
                 case "alpha pirate":
                 case "arachnomancer":
                 case "arcane dark caster":
-                case "artifact hunter":
                 case "assassin":
                 case "barber":
                 case "bard":
