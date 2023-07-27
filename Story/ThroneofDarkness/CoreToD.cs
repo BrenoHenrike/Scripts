@@ -1217,8 +1217,8 @@ public class CoreToD
         }
 
         // Oh, I Give Up
-        Story.MapItemQuest(5327, "towerofmirrors", new[] { 4690, 4696 });
         Story.KillQuest(5327, "towerofmirrors", "Silver Elemental");
+        Story.MapItemQuest(5327, "towerofmirrors", new[] { 4690, 4696 });
 
         // We Gotta Wendi-GO
         Story.KillQuest(5328, "towerofmirrors", new[] { "Sasquatch", "Sasquatch" });
