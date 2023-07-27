@@ -308,7 +308,7 @@ public class CoreFarmerJoe
 
                     SS.GetSSorc();
 
-                    if ((Core.FarmClass == "Generic" || Core.FarmClass == ClassMage!.Name || Core.FarmClass == ClassMasterRanger!.Name || Core.FarmClass == ClassShaman!.Name) && Core.CheckInventory("Scarlet Sorceress"))
+                    if ((Core.FarmClass == "Generic" || Core.FarmClass == ClassMage!.Name || Core.FarmClass == ClassMasterRanger!.Name || Core.FarmClass == ClassShaman!.Name) && ClassScarletSorceress!=null)
                         Core.FarmClass = "Scarlet Sorceress";
 
                     BB.GetBurningBlade();

@@ -1250,6 +1250,12 @@ public class CoreToD
         // Find Scarletta
         Story.MapItemQuest(5331, "towerofmirrors", 4697);
 
+        while (!Bot.ShouldExit && (Bot.Player.Cell == "Cut4" || Bot.Player.Cell == "Cut5"))
+        {
+            Core.JumpWait();
+            Bot.Sleep(Core.ActionDelay);
+        }
+
         // Defeat ... Wait. What?
         if (!Story.QuestProgression(5332))
         {
