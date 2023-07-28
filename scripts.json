@@ -8466,20 +8466,13 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/Revenant/CoreLR.cs"
   },
   {
-    "name": "Legion Fealty 2",
-    "description": "Does the Legion Fealty 2 quest for Legion Revenant untill you have 6 Conquest Wraths",
+    "name": "null",
+    "description": "null",
     "tags": [
-      "legion",
-      "revenant",
-      "fealty",
-      "three",
-      "2",
-      "LR",
-      "conquest",
-      "wreath"
+      "null"
     ],
     "path": "Legion/Revenant/LegionFealty2.cs",
-    "size": 812,
+    "size": 669,
     "fileName": "LegionFealty2.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/Revenant/LegionFealty2.cs"
   },
@@ -8492,45 +8485,33 @@
       "fealty",
       "class",
       "LR",
-      ""
+      "do all",
+      "full"
     ],
     "path": "Legion/Revenant/0LegionRevenant.cs",
-    "size": 777,
+    "size": 789,
     "fileName": "0LegionRevenant.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/Revenant/0LegionRevenant.cs"
   },
   {
-    "name": "Legion Fealty 3",
-    "description": "Does the Legion Fealty 3 quest for Legion Revenant untill you have 10 Exalted Crowns",
+    "name": "null",
+    "description": "null",
     "tags": [
-      "legion",
-      "revenant",
-      "fealty",
-      "three",
-      "3",
-      "LR",
-      "exalted",
-      "crown"
+      "null"
     ],
     "path": "Legion/Revenant/LegionFealty3.cs",
-    "size": 808,
+    "size": 667,
     "fileName": "LegionFealty3.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/Revenant/LegionFealty3.cs"
   },
   {
-    "name": "Legion Fealty 1",
-    "description": "Does the Legion Fealty 1 quest for Legion Revenant untill you have 20 Revenant Spellscrolls",
+    "name": "null",
+    "description": "null",
     "tags": [
-      "legion",
-      "revenant",
-      "fealty",
-      "three",
-      "1",
-      "LR",
-      "spellscroll"
+      "null"
     ],
     "path": "Legion/Revenant/LegionFealty1.cs",
-    "size": 820,
+    "size": 675,
     "fileName": "LegionFealty1.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/Revenant/LegionFealty1.cs"
   },
