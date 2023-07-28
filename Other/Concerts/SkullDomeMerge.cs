@@ -4,8 +4,17 @@ description: This bot will farm the items belonging to the selected mode for the
 tags: skull, dome, merge, skulldome, diabolical, techwear, punk, shave, aviators, , street, summer, bag, guitar, delinquent, bat, bats, necrobard, apprentice, bony, cap, necrotic, tune, resting, ribcage, sickle, undead, masses, sickles, bone, basher, reverb, al, fine, neo, metal, necro
 */
 //cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/Other/Concerts/NeoMetalNecro.cs
+//cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
+//cs_include Scripts/Evil/ADK.cs
+//cs_include Scripts/Evil/VordredsArmor.cs
+//cs_include Scripts/Story/Doomwood/CoreDoomwood.cs
+//cs_include Scripts/Evil/SDKA/CoreSDKA.cs
+//cs_include Scripts/Other/Concerts/BattleConcert2023.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
@@ -16,6 +25,7 @@ public class SkullDomeMerge
     private CoreBots Core => CoreBots.Instance;
     private CoreFarms Farm = new();
     private CoreAdvanced Adv = new();
+    private BattleConcertClassQuests BCCQ = new();
     private static CoreAdvanced sAdv = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
@@ -36,6 +46,8 @@ public class SkullDomeMerge
 
     public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
+        BCCQ.BattleConcertQuests();
+
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("skulldome", 2312, findIngredients, buyOnlyThis, buyMode: buyMode);
 
