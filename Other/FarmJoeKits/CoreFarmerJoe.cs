@@ -347,8 +347,9 @@ public class CoreFarmerJoe
 
                     Core.Logger("Getting DSS for DoomKittem(ArchPaladin)");
                     Adv.SmartEnhance(Core.FarmClass);
-                    DS.GetDSS();
                     Farm.Experience(Level);
+                    Adv.SmartEnhance(Core.SoloClass);
+                    DS.GetDSS();
                     Adv.SmartEnhance(Core.FarmClass);
                     Core.Logger($"Level {Level} done");
                     continue;
