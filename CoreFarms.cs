@@ -727,6 +727,52 @@ public class CoreFarms
         if (Core.CheckInventory(item, quant))
             return;
 
+        if (item == "Undead Energy" && !Core.isCompletedBefore(2084))
+        {  
+            Core.Logger("Making it so undead energy can drop..");
+            
+            // 2066 - Reforging the Blinding Light
+            if (!Core.isCompletedBefore(2066))
+            {
+                Core.EnsureAccept(2066);
+                Core.BuyItem("doomwood", 276, "Blinding Light of Destiny Handle");
+                Core.EnsureComplete(2066);
+            }
+
+            // 2067 - Secret Order of Undead Slayers
+            if (!Core.isCompletedBefore(2067))
+            {
+                Core.EnsureAccept(2082);
+                Core.BuyItem("doomwood", 276, "Bonegrinder Medal");
+                Core.EnsureComplete(2082);
+            }
+
+            // 2082 - Essential Essences
+            if (!Core.isCompletedBefore(2082))
+            {
+                Core.EnsureAccept(2082);
+                Core.HuntMonster("battleunderb", "Skeleton Warrior", "Undead Essence", isTemp: false);
+                Core.EnsureComplete(2082);
+            }
+
+            // 2083 - Bust some Dust
+            if (!Core.isCompletedBefore(2083))
+            {
+                Core.EnsureAccept(2083);
+                Core.HuntMonster("battleunderb", "Skeleton Warrior", "Bone Dust", isTemp: false);
+                Core.EnsureComplete(2083);
+            }
+
+            // 2084 - A Loyal Follower
+            if (!Core.isCompletedBefore(2084))
+            {
+                Core.EnsureAccept(2084);
+                BoneSomeDust(100);
+                Core.HuntMonster("timevoid", "Ephemerite", "Celestial Compass");
+                Core.EnsureComplete(2084);
+            }
+        }
+
         Core.AddDrop(item);
         Core.FarmingLogger(item, quant);
         Core.EquipClass(ClassType.Farm);
@@ -734,6 +780,21 @@ public class CoreFarms
         Core.KillMonster("battleunderb", "Enter", "Spawn", "*", item, quant, isTemp, log: false);
         Core.ConfigureAggro(false);
         Core.JumpWait();
+    }
+
+    public void BoneSomeDust(int quant = 10500)
+    {
+        if (Core.CheckInventory("Spirit Orb", quant))
+            return;
+
+        Core.AddDrop("Bone Dust", "Undead Essence", "Undead Energy", "Spirit Orb");
+        Core.EquipClass(ClassType.Farm);
+        Core.FarmingLogger("Spirit Orb", quant);
+
+        Core.RegisterQuests(2082, 2083);
+        while (!Bot.ShouldExit && !Core.CheckInventory("Spirit Orb", quant))
+            Core.KillMonster("battleunderb", "Enter", "Spawn", "Skeleton Warrior", log: false);
+        Core.CancelRegisteredQuests();
     }
 
     #endregion
