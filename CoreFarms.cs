@@ -232,7 +232,7 @@ public class CoreFarms
             Core.KillMonster("oaklore", "r3", "Left", "Bone Berserker", log: false);
         Core.CancelRegisteredQuests();
 
-        //i swear this is active yearround for a balckfriday "locked" quest according to the wiki.. keep undead warrior as a backup.. undead giant is slower but will work till we find a fillin - perhaps sluethhouseinn? used to be good years ago
+        //i swear this is active yearround for a black friday "locked" quest according to the wiki.. keep undead warrior as a backup.. undead giant is slower but will work till we find a fillin - perhaps sluethhouseinn? used to be good years ago
         if (Bot.Quests.IsAvailable(6979))
         {
             Core.EquipClass(ClassType.Solo);
