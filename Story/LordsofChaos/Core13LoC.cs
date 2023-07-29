@@ -2331,8 +2331,9 @@ public class Core13LoC
         Story.MapItemQuest(3798, "shadowattack", 2896);
 
         //Beat Death!
+        Core.EquipClass(ClassType.Solo);
         Story.KillQuest(3799, "shadowattack", "Death");
-
+        
         //Enter Confrontation
         if (!Core.isCompletedBefore(3876))
         {
