@@ -31,6 +31,7 @@ public class CoreAOR
         YulgarAria();
         MidnightZone();
         AbyssalZone();
+        DeepWater();
     }
 
     public void TerminaTemple()
@@ -299,5 +300,55 @@ public class CoreAOR
 
         // Together as One (9315)
         Story.KillQuest(9315, "abyssalzone", "The Ashray");
+    }
+
+    public void DeepWater()
+    {
+        if (Core.isCompletedBefore(9338))
+            return;
+
+        AbyssalZone();
+
+        Story.PreLoad(this);
+
+        // Unsung Heroes (9329)
+        Story.KillQuest(9329, "trenchobserve", "Venerated Wraith");
+        Story.MapItemQuest(9329, "trenchobserve", 11975);
+
+        // Watertight Guarantee (9330)
+        if (!Story.QuestProgression(9330))
+        {
+            Core.EnsureAccept(9330);
+            Core.GetMapItem(11976, map: "trenchobserve");
+            Core.HuntMonster("trenchobserve", "Seabase Turret", "Turret Screws", 8);
+            Core.EnsureComplete(9330);
+        }
+
+        // Core Electrolytes (9331)
+        Story.MapItemQuest(9331, "trenchobserve", 11977, 4);
+
+        // Guardian Spirits (9332)
+        Story.KillQuest(9332, "trenchobserve", "Venerated Wraith");
+
+        // Enemy in Need (9333)
+        Story.MapItemQuest(9333, "trenchobserve", 11978, 4);
+        Story.KillQuest(9333, "trenchobserve", "Seabase Turret");
+
+        // Here Lies Shadow (9334)
+        Story.MapItemQuest(9334, "trenchobserve", new[] { 11979, 11981 });
+        Story.MapItemQuest(9334, "trenchobserve", 11980, 2);
+
+        // Nature's White Noise (9335)
+        Story.KillQuest(9335, "trenchobserve", "Sea Spirit");
+
+        // Dreams Seep into Reality (9336)
+        Story.KillQuest(9336, "trenchobserve", "Necro Adipocere");
+
+        // Hadal Havoc (9337)
+        Story.KillQuest(9337, "trenchobserve", new[] { "Necro Adipocere", "Sea Spirit" });
+        Story.MapItemQuest(9337, "trenchobserve", 11982);
+
+        // See You on the Other Side (9338)
+        Story.KillQuest(9338, "trenchobserve", "Lady Noelle");
     }
 }
