@@ -3482,7 +3482,7 @@
       "null"
     ],
     "path": "Story/AgeOfRuin/CoreAOR.cs",
-    "size": 9448,
+    "size": 11142,
     "fileName": "CoreAOR.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/CoreAOR.cs"
   },
@@ -3525,6 +3525,27 @@
     "size": 732,
     "fileName": "04TwilightZone.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/04TwilightZone.cs"
+  },
+  {
+    "name": "Deep Water",
+    "description": "This script completes the storyline in /trenchobserve.",
+    "tags": [
+      "age",
+      "of",
+      "ruin",
+      "saga",
+      "story",
+      "quest",
+      "deep",
+      "water",
+      "trenchobserve",
+      "observation",
+      "deck"
+    ],
+    "path": "Story/AgeOfRuin/08DeepWater.cs",
+    "size": 752,
+    "fileName": "08DeepWater.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/08DeepWater.cs"
   },
   {
     "name": "Midnight Zone",
@@ -3599,10 +3620,12 @@
       "yulgar",
       "aria",
       "midnight",
-      "abyssal"
+      "abyssal",
+      "deep_water",
+      "trench_observation"
     ],
     "path": "Story/AgeOfRuin/00DoAll.cs",
-    "size": 789,
+    "size": 819,
     "fileName": "00DoAll.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/00DoAll.cs"
   },
@@ -9817,6 +9840,30 @@
     "size": 4041,
     "fileName": "UbearMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/UbearMerge.cs"
+  },
+  {
+    "name": "Trench Observe Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Trench Observe Merge [2316] in /trenchobserve",
+    "tags": [
+      "trench",
+      "observe",
+      "merge",
+      "trenchobserve",
+      "deepwater",
+      "drow",
+      "top",
+      "knot",
+      "horns",
+      "corona",
+      "bioluminescent",
+      "trident",
+      "sea",
+      "streams"
+    ],
+    "path": "Other/MergeShops/TrenchObserveMerge.cs",
+    "size": 5603,
+    "fileName": "TrenchObserveMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/TrenchObserveMerge.cs"
   },
   {
     "name": "Ashfall Camp Merge",
