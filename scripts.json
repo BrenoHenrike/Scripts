@@ -11776,17 +11776,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/CoreFarmerJoe.cs"
   },
   {
-    "name": "FarmerJoeLeveling",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Other/FarmJoeKits/FarmerJoeLeveling.cs",
-    "size": 4462,
-    "fileName": "FarmerJoeLeveling.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/FarmerJoeLeveling.cs"
-  },
-  {
     "name": "FarmerJoeKit0DoAll",
     "description": "null",
     "tags": [
