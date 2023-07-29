@@ -3006,10 +3006,12 @@
     "description": "Gets the prerequisites for the Ultra Speaker merge.",
     "tags": [
       "ultra speaker merge",
-      "ultra malgor merge"
+      "ultra malgor merge",
+      "rgow",
+      "goddess of war"
     ],
     "path": "ShadowsOfWar/UltraSpeakerMergePreReqs.cs",
-    "size": 7718,
+    "size": 7740,
     "fileName": "UltraSpeakerMergePreReqs.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/ShadowsOfWar/UltraSpeakerMergePreReqs.cs"
   },
