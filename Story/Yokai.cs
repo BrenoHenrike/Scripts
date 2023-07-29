@@ -159,7 +159,7 @@ public class YokaiQuests
             Core.HuntMonster("greenshell", "Nagami", "Nagami Defeated");
             Core.EnsureComplete(6472);
         }
-        
+
         // For the Road 6473
         if (!Story.QuestProgression(6473))
         {
@@ -252,9 +252,17 @@ public class YokaiQuests
 
         // Find Jaaku! 6493
         Core.EquipClass(ClassType.Solo);
-        Story.MapItemQuest(6493, "shadowfortress", 5977);
-        Story.KillQuest(6493, "shadowfortress", new[] { "6th Head of Orochi", "5th Head of Orochi", "4th Head of Orochi", "3rd Head of Orochi", "2nd Head of Orochi", "1st Head of Orochi" });
-
+        if (!Story.QuestProgression(6493))
+        {
+            Core.EnsureAccept(6493);
+            Core.HuntMonster("shadowfortress", "6th Head of Orochi", "6th Head Defeated");
+            Core.HuntMonster("shadowfortress", "5th Head of Orochi", "5th Head Defeated");
+            Core.HuntMonster("shadowfortress", "4th Head of Orochi", "4th Head Defeated");
+            Core.HuntMonster("shadowfortress", "3rd Head of Orochi", "3rd Head Defeated");
+            Core.HuntMonster("shadowfortress", "2nd Head of Orochi", "2nd Head Defeated");
+            Core.HuntMonster("shadowfortress", "1st Head of Orochi", "1st Head Defeated");
+            Story.MapItemQuest(6493, "shadowfortress", 5977);
+        }
         // Defeat Jaaku! 6494        
         Story.KillQuest(6494, "shadowfortress", "Jaaku");
     }
