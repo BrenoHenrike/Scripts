@@ -17,7 +17,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 173630,
+    "size": 173633,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -50,7 +50,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 105497,
+    "size": 107722,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -369,7 +369,7 @@
       "yokai"
     ],
     "path": "Story/Yokai.cs",
-    "size": 7303,
+    "size": 7936,
     "fileName": "Yokai.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Yokai.cs"
   },
@@ -697,7 +697,7 @@
       "j6-saga"
     ],
     "path": "Story/J6Saga.cs",
-    "size": 6500,
+    "size": 6697,
     "fileName": "J6Saga.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/J6Saga.cs"
   },
@@ -4696,7 +4696,7 @@
       "null"
     ],
     "path": "Story/LordsofChaos/Core13LoC.cs",
-    "size": 80121,
+    "size": 80170,
     "fileName": "Core13LoC.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/LordsofChaos/Core13LoC.cs"
   },
@@ -8466,20 +8466,13 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/Revenant/CoreLR.cs"
   },
   {
-    "name": "Legion Fealty 2",
-    "description": "Does the Legion Fealty 2 quest for Legion Revenant untill you have 6 Conquest Wraths",
+    "name": "null",
+    "description": "null",
     "tags": [
-      "legion",
-      "revenant",
-      "fealty",
-      "three",
-      "2",
-      "LR",
-      "conquest",
-      "wreath"
+      "null"
     ],
     "path": "Legion/Revenant/LegionFealty2.cs",
-    "size": 812,
+    "size": 669,
     "fileName": "LegionFealty2.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/Revenant/LegionFealty2.cs"
   },
@@ -8492,45 +8485,33 @@
       "fealty",
       "class",
       "LR",
-      ""
+      "do all",
+      "full"
     ],
     "path": "Legion/Revenant/0LegionRevenant.cs",
-    "size": 777,
+    "size": 789,
     "fileName": "0LegionRevenant.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/Revenant/0LegionRevenant.cs"
   },
   {
-    "name": "Legion Fealty 3",
-    "description": "Does the Legion Fealty 3 quest for Legion Revenant untill you have 10 Exalted Crowns",
+    "name": "null",
+    "description": "null",
     "tags": [
-      "legion",
-      "revenant",
-      "fealty",
-      "three",
-      "3",
-      "LR",
-      "exalted",
-      "crown"
+      "null"
     ],
     "path": "Legion/Revenant/LegionFealty3.cs",
-    "size": 808,
+    "size": 667,
     "fileName": "LegionFealty3.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/Revenant/LegionFealty3.cs"
   },
   {
-    "name": "Legion Fealty 1",
-    "description": "Does the Legion Fealty 1 quest for Legion Revenant untill you have 20 Revenant Spellscrolls",
+    "name": "null",
+    "description": "null",
     "tags": [
-      "legion",
-      "revenant",
-      "fealty",
-      "three",
-      "1",
-      "LR",
-      "spellscroll"
+      "null"
     ],
     "path": "Legion/Revenant/LegionFealty1.cs",
-    "size": 820,
+    "size": 675,
     "fileName": "LegionFealty1.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/Revenant/LegionFealty1.cs"
   },
@@ -8832,6 +8813,53 @@
     "size": 2210,
     "fileName": "SerpentineLarvae.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Pets/SerpentineLarvae.cs"
+  },
+  {
+    "name": "Skull Dome Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Skull Dome Merge [2312] in /skulldome",
+    "tags": [
+      "skull",
+      "dome",
+      "merge",
+      "skulldome",
+      "diabolical",
+      "techwear",
+      "punk",
+      "shave",
+      "aviators",
+      "",
+      "street",
+      "summer",
+      "bag",
+      "guitar",
+      "delinquent",
+      "bat",
+      "bats",
+      "necrobard",
+      "apprentice",
+      "bony",
+      "cap",
+      "necrotic",
+      "tune",
+      "resting",
+      "ribcage",
+      "sickle",
+      "undead",
+      "masses",
+      "sickles",
+      "bone",
+      "basher",
+      "reverb",
+      "al",
+      "fine",
+      "neo",
+      "metal",
+      "necro"
+    ],
+    "path": "Other/Concerts/SkullDomeMerge.cs",
+    "size": 7969,
+    "fileName": "SkullDomeMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Concerts/SkullDomeMerge.cs"
   },
   {
     "name": "Doom Metal Necro[class]",
@@ -9150,7 +9178,7 @@
       "null"
     ],
     "path": "Other/Classes/LightCaster.cs",
-    "size": 2050,
+    "size": 2078,
     "fileName": "LightCaster.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/LightCaster.cs"
   },
@@ -11694,7 +11722,7 @@
       "null"
     ],
     "path": "Other/FarmJoeKits/CoreFarmerJoe.cs",
-    "size": 26964,
+    "size": 28873,
     "fileName": "CoreFarmerJoe.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/CoreFarmerJoe.cs"
   },
@@ -11946,7 +11974,7 @@
       "null"
     ],
     "path": "Evil/SDKA/CoreSDKA.cs",
-    "size": 24597,
+    "size": 24603,
     "fileName": "CoreSDKA.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/SDKA/CoreSDKA.cs"
   },
@@ -15732,7 +15760,7 @@
       "ai no miko"
     ],
     "path": "Seasonal/FrostvalInJuly/SearchForGiftsRewards.cs",
-    "size": 1216,
+    "size": 1284,
     "fileName": "SearchForGiftsRewards.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/FrostvalInJuly/SearchForGiftsRewards.cs"
   },
@@ -18892,7 +18920,7 @@
       "birthday"
     ],
     "path": "Seasonal/StaffBirthdays/Nulgath/TempleSiege.cs",
-    "size": 2010,
+    "size": 2409,
     "fileName": "TempleSiege.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/Nulgath/TempleSiege.cs"
   },

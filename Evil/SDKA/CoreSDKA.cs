@@ -108,7 +108,7 @@ public class CoreSDKA
     {
         if (!Core.IsMember)
             return;
-        if (Bot.Quests.IsUnlocked(2098))
+        if (Core.isCompletedBefore(2098))
         {
             Core.Logger("Hard Core Metals already unlocked, skipping.");
             return;
@@ -119,7 +119,7 @@ public class CoreSDKA
                      "DoomCoin", "Shadow Creeper Enchant", "Shadow Serpent Scythe",
                      "Dark Skull", "Corrupt Spirit Orb");
 
-        if (!Bot.Quests.IsUnlocked(2087))
+        if (!Core.isCompletedBefore(2087))
         {
             Core.Logger("Sepulchure's Armor [2069]");
             DSO(40);
@@ -129,7 +129,7 @@ public class CoreSDKA
             Core.ToBank("Experimental Dark Item");
         }
 
-        if (!Bot.Quests.IsUnlocked(2088))
+        if (!Core.isCompletedBefore(2088))
         {
             Adv.GearStore();
             Core.Logger("The Doom that Looms [2087]");
@@ -154,7 +154,7 @@ public class CoreSDKA
             Core.ToBank("DoomKnight");
         }
 
-        if (!Bot.Quests.IsUnlocked(2089))
+        if (!Core.isCompletedBefore(2089))
         {
             Core.Logger("Toiling with Terror [2088]");
             Daily.EldersBlood();
@@ -167,7 +167,7 @@ public class CoreSDKA
             Core.ToBank("Elders' Blood");
         }
 
-        if (!Bot.Quests.IsUnlocked(2090))
+        if (!Core.isCompletedBefore(2090))
         {
             Core.Logger("Quest: A Penny for your Foughts [2089]");
             Penny(oneTime: true);
@@ -368,7 +368,7 @@ public class CoreSDKA
                 Core.BuyItem("dwarfhold", 434, "Accursed Arsenic of Doom");
             }
 
-            if (!Bot.Quests.IsUnlocked(2144))
+            if (!Core.isCompletedBefore(2144))
             {
                 Core.Logger("Unlocking Weapon Kit quests");
                 Core.EnsureAccept(2137);

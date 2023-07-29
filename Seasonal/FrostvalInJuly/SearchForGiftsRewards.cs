@@ -5,6 +5,8 @@ tags: search, for, gifts, rewards, seasonal, akibalight, ai no miko
 */
 //cs_include Scripts/Seasonal/FrostvalInJuly/frostblademaster.cs
 //cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreStory.cs
+//cs_include Scripts/CoreFarms.cs
 using Skua.Core.Interfaces;
 
 public class SearchForGiftsRewards

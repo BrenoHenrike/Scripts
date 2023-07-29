@@ -1,7 +1,7 @@
 /*
-name: Legion Fealty 3
-description: Does the Legion Fealty 3 quest for Legion Revenant untill you have 10 Exalted Crowns
-tags: legion, revenant, fealty, three, 3, LR, exalted, crown
+name: null
+description: null
+tags: null
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

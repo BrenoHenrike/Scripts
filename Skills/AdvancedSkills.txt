@@ -190,7 +190,7 @@ Supp = Obsidian Paladin Chronomancer = 1 | 3 | 2 = 250
 Base = Paladin Highlord = 4 | 1 | 3 | 2 H<60 = 250
 Base = PaladinSlayer = 1 | 2 | 3 | 4 = Use if Available
 Base = Pink Romancer = 1 | 2 | 3 | 4 = Use if Available
-Base = Pinkomancer = 1 | 2 | 3 | 4 = Use if Available
+Base = Pinkomancer = 1 | 2 | 3 M<25S H<30S | 4 = Use if Available
 Base = Pirate = 1 | 2 | 3 | 4 = Use if Available
 Base = Prismatic ClawSuit = 1 | 2 | 3 | 4 = Use if Available
 Base = ProtoSartorium = 1 | 2 | 3 | 4 = Use if Available

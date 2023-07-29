@@ -39,7 +39,16 @@ public class TempleSiege
         Story.KillQuest(9059, "templesiege", "Overdriven Paladin");
 
         //Blind Devotion || 9060
-        Story.KillQuest(9060, "templesiege", new[] { "Overdriven Paladin", "Light Elemental" });
+        if (!Story.QuestProgression(9060))
+        {
+            Core.EnsureAccept(9060);            
+            //due to duplcate item names, using ItemIDs this way.
+            while (!Bot.ShouldExit && !Core.CheckInventory(75700, 5))
+                Core.HuntMonster("templesiege", "Overdriven Paladin");
+            while (!Bot.ShouldExit && !Core.CheckInventory(75701, 5))
+                Core.HuntMonster("templesiege", "Light Elemental");
+            Core.EnsureComplete(9060);
+        }
 
         //Blessed Visage || 9061
         Story.MapItemQuest(9061, "templesiege", new[] { 11130, 11131, 11132 });

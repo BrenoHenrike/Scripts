@@ -14,7 +14,7 @@ tags: skull, dome, merge, skulldome, diabolical, techwear, punk, shave, aviators
 //cs_include Scripts/Evil/VordredsArmor.cs
 //cs_include Scripts/Story/Doomwood/CoreDoomwood.cs
 //cs_include Scripts/Evil/SDKA/CoreSDKA.cs
-//cs_include Scripts/Other\Concerts\BattleConcert2023.cs
+//cs_include Scripts/Other/Concerts/BattleConcert2023.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
@@ -25,8 +25,8 @@ public class SkullDomeMerge
     private CoreBots Core => CoreBots.Instance;
     private CoreFarms Farm = new();
     private CoreAdvanced Adv = new();
+    private BattleConcertClassQuests BCCQ = new();
     private static CoreAdvanced sAdv = new();
-    private BattleConcertClassQuests BC = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
     public string[] MultiOptions = { "Generic", "Select" };
@@ -46,7 +46,8 @@ public class SkullDomeMerge
 
     public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
-        BC.BattleConcertQuests();
+        BCCQ.BattleConcertQuests();
+
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("skulldome", 2312, findIngredients, buyOnlyThis, buyMode: buyMode);
 
@@ -54,7 +55,7 @@ public class SkullDomeMerge
         void findIngredients()
         {
             ItemBase req = Adv.externalItem;
-            int quant = 1;
+            int quant = Adv.externalQuant;
             int currentQuant = req.Temp ? Bot.TempInv.GetQuantity(req.Name) : Bot.Inventory.GetQuantity(req.Name);
             if (req == null)
             {
@@ -73,12 +74,13 @@ public class SkullDomeMerge
                 case "Bone Pick":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
-                    Core.RegisterQuests(9327);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
+                        Core.EnsureAccept(9327);
                         Core.HuntMonster("brainmeat", "Brain Matter", "Brain Matter", log: false);
-                        Bot.Wait.ForPickup(req.Name);
+                        Core.EnsureComplete(9327);
                     }
+                    Bot.Wait.ForPickup(req.Name);
                     Core.CancelRegisteredQuests();
                     break;
 
