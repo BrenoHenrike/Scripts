@@ -1,7 +1,7 @@
 /*
-name: Age Of Ruin (All)
-description: This script completes the full Age Of Ruin saga.
-tags: age,ruin,saga,story,quest,termina,temple,ashray,village,sunlight,twilight,zone,yulgar,aria,midnight,abyssal,deep_water,trench_observation
+name: Deep Water
+description: This script completes the storyline in /trenchobserve.
+tags: age,of,ruin,saga,story,quest,deep,water,trenchobserve,observation,deck
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
@@ -11,7 +11,7 @@ tags: age,ruin,saga,story,quest,termina,temple,ashray,village,sunlight,twilight,
 //cs_include Scripts/Story\AgeOfRuin\CoreAOR.cs
 using Skua.Core.Interfaces;
 
-public class AgeOfRuinAll
+public class DeepWater
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
@@ -21,7 +21,7 @@ public class AgeOfRuinAll
     {
         Core.SetOptions();
 
-        AOR.DoAll();
+        AOR.DeepWater();
         Core.SetOptions(false);
     }
 }
