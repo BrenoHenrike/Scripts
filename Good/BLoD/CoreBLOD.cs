@@ -138,7 +138,7 @@ public class CoreBLOD
             Core.EnsureAccept(2084);
             SpiritOrb(100);
             Core.HuntMonster("timevoid", "Ephemerite", "Celestial Compass");
-            Story.QuestComplete(2084);
+            Core.EnsureComplete(2084);
         }
     }
 
