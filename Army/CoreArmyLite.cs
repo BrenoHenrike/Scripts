@@ -798,7 +798,7 @@ public class CoreArmyLite
         string[] NonMemMaps =
         {
             "icestormunder",
-            // "icewing",
+            "icewing",
             "tercessuinotlim",
             "doomvaultb",
             "doomvault",

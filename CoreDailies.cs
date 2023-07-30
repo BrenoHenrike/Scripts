@@ -110,6 +110,7 @@ public class CoreDailies
             Bot.Drops.Add(Core.EnsureLoad(quest).Rewards.Select(x => x.Name).ToArray());
         else Core.AddDrop(Core.EnsureLoad(quest).Rewards.Select(x => x.Name).Where(x => !Core.CheckInventory(x, toInv: false)).ToArray());
         Core.AddDrop(Core.EnsureLoad(quest).Requirements.Select(x => x.Name).ToArray());
+        Core.AddDrop(Core.EnsureLoad(quest).Rewards.Select(x => x.Name).ToArray());
 
         return true;
     }
@@ -313,7 +314,8 @@ public class CoreDailies
     public void CollectorClass()
     {
         Core.Logger("Daily: The Collector Class");
-        if (Core.CheckInventory("The Collector", toInv: false))
+        //30229 is the ac, 30250 is the non-ac
+        if (Core.CheckInventory(new[] { 30250 }, any: true, toInv: false))
         {
             Core.Logger("You already own The Collector. Skipped");
             return;
@@ -333,7 +335,7 @@ public class CoreDailies
                 DailyRoutine(1332, "terrarium", "*", "This Could Be A Token", 2, false, "r2", "Right");
         }
         if (Core.CheckInventory("Token of Collection", 90))
-            Core.BuyItem("Collection", 324, "The Collector");
+            Core.BuyItem("Collection", 324, 30250, shopItemID: 3511);
     }
 
     public void Cryomancer()
