@@ -41,6 +41,7 @@ public class DragonShinobi
         Core.AddDrop("Dragon Shinobi Token");
 
         Core.EquipClass(ClassType.Solo);
+        Core.FarmingLogger("Dragon Shinobi Token", 300);
         Core.RegisterQuests(7924);
         while (!Bot.ShouldExit && !Core.CheckInventory("Dragon Shinobi Token", 300))
             Core.HuntMonster("shadowfortress", "1st Head Of Orochi", "Perfect Orochi Scales", 10, isTemp: false);
