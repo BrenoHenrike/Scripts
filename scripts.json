@@ -369,7 +369,7 @@
       "yokai"
     ],
     "path": "Story/Yokai.cs",
-    "size": 7936,
+    "size": 8386,
     "fileName": "Yokai.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Yokai.cs"
   },
@@ -11774,17 +11774,6 @@
     "size": 28873,
     "fileName": "CoreFarmerJoe.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/CoreFarmerJoe.cs"
-  },
-  {
-    "name": "FarmerJoeLeveling",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Other/FarmJoeKits/FarmerJoeLeveling.cs",
-    "size": 4462,
-    "fileName": "FarmerJoeLeveling.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/FarmerJoeLeveling.cs"
   },
   {
     "name": "FarmerJoeKit0DoAll",
