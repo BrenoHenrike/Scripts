@@ -1084,15 +1084,15 @@ public class CoreFarms
         while (!Bot.ShouldExit && FactionRank("Arcangrove") < rank)
         {
             Core.EnsureAccept(794, 795, 796, 797, 798, 799, 800, 801); //A Necessary Sacrifice 794, Gorillaphant Poaching 795, Mustard and Pretzel Root 796, Thyme and a Half 797, Thistle Do Nicely 798, Pleased to Meat You 799, ArcanRobe 800, Ebony and Ivory Tusks 801
-            Core.HuntMonster("arcangrove", "Seed Spitter", "Spool of Arcane Thread", 10, log: false);
-            Core.HuntMonster("arcangrove", "Seed Spitter", "Defeated Seed Spitter", 10, log: false);
-            Core.HuntMonster("arcangrove", "Seed Spitter", "Bundle of Thyme", 10, log: false);
-            Core.HuntMonster("arcangrove", "Seed Spitter", "Thistle", 5, log: false);
-            Core.HuntMonster("arcangrove", "Seed Spitter", "Pretzel Root", 4, log: false);
-            Core.HuntMonster("arcangrove", "Gorillaphant", "Lore-Strip Gorillaphant Steak", 8, log: false);
-            Core.HuntMonster("arcangrove", "Gorillaphant", "Slain Gorillaphant", 7, log: false);
-            Core.HuntMonster("arcangrove", "Gorillaphant", "Gorillaphant Tusk", 6, log: false);
-            Core.HuntMonster("arcangrove", "Gorillaphant", "Batch of Mustard Seeds", 3, log: false);
+            Core.HuntMonster("arcangrove", "Seed Spitter", "Spool of Arcane Thread", 10);
+            Core.HuntMonster("arcangrove", "Seed Spitter", "Defeated Seed Spitter", 10);
+            Core.HuntMonster("arcangrove", "Seed Spitter", "Bundle of Thyme", 10);
+            Core.HuntMonster("arcangrove", "Seed Spitter", "Thistle", 5);
+            Core.HuntMonster("arcangrove", "Seed Spitter", "Pretzel Root", 4);
+            Core.HuntMonster("arcangrove", "Gorillaphant", "Lore-Strip Gorillaphant Steak", 8);
+            Core.HuntMonster("arcangrove", "Gorillaphant", "Slain Gorillaphant", 7);
+            Core.HuntMonster("arcangrove", "Gorillaphant", "Gorillaphant Tusk", 6);
+            Core.HuntMonster("arcangrove", "Gorillaphant", "Batch of Mustard Seeds", 3);
             Core.EnsureComplete(794, 795, 796, 797, 798, 799, 800, 801); //A Necessary Sacrifice 794, Gorillaphant Poaching 795, Mustard and Pretzel Root 796, Thyme and a Half 797, Thistle Do Nicely 798, Pleased to Meat You 799, ArcanRobe 800, Ebony and Ivory Tusks 801
         }
         // Core.CancelRegisteredQuests();
