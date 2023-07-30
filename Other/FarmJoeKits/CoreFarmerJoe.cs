@@ -407,7 +407,7 @@ public class CoreFarmerJoe
                     AF.GetArchfiend();
 
                     if ((Core.FarmClass == "Generic" || Core.FarmClass == "Scarlet Sorceress" || Core.FarmClass == "Blaze Binder") && Core.CheckInventory("ArchFiend"))
-                        Core.FarmClass = "ArchFiend";
+                        Core.FarmClass = Core.CheckInventory("Blaze Binder") ? "Blaze Binder" : "ArchFiend";
 
                     Farm.Experience(Level);
                     Adv.SmartEnhance(Core.FarmClass);
@@ -639,8 +639,8 @@ public class CoreFarmerJoe
             Core.SoloClass = Core.CheckInventory("Rogue (Rare)") ? "Rogue (Rare)" : "Rogue";
         else Core.SoloClass = Core.SoloClass;
 
-        if (Core.SoloClass == "Generic")
-            Core.Equip(Core.CheckInventory("Rogue (Rare)") ? "Rogue (Rare)" : "Rogue");
+        Core.EquipClass(ClassType.Solo);
+
 
         Farm.Experience(5);
         if (!Core.CheckInventory("Mage") || Core.CheckInventory("Mage (Rare)"))
