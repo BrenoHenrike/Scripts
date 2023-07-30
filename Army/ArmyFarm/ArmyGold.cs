@@ -114,9 +114,9 @@ public class ArmyGold
 
         DWLN.DarkWarLegion();
 
-        Army.AggroMonIDs(5108, 5111, 5110);
+        Army.AggroMonIDs(5108, 5110, 5111, 5112);
         Army.AggroMonStart("darkwarlegion");
-        Army.DivideOnCells("r2", "r3", "r4");
+        Army.DivideOnCells("r2", "r3", "r4", "f6", "r8" );
 
 
         Core.RegisterQuests(8584, 8585, 8586, 8587); //Nation Badges 8584, Mega Nation Badges 8585, A Nation Defeated 8586, ManSlayer? More Like ManSLAIN 8587
@@ -137,9 +137,9 @@ public class ArmyGold
 
         Core.RegisterQuests(8578, 8579, 8580, 8581); //Legion Badges, Mega Legion Badges, Doomed Legion Warriors, Undead Legion Dread
 
-        Army.AggroMonIDs(5101, 5102, 5103);
+        Army.AggroMonIDs(5101, 5102, 5103, 5104);
         Army.AggroMonStart("darkwarnation");
-        Army.DivideOnCells("Enter", "r1", "r2", "r4");
+        Army.DivideOnCells("Enter", "r2", "r3", "r4", "r5", "r6", "r8");
 
         // Army.SmartAggroMonStart("darkwarnation", "High Legion Inquisitor", "Legion Doomknight", "Legion Dread Knight");
         while (!Bot.ShouldExit)// && Bot.Player.Gold < 100000000)
