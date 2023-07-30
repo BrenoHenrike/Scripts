@@ -819,8 +819,6 @@ public class CoreFarms
         ChaosREP();
         ChronoSpanREP();
         CraggleRockREP();
-        DeathPitArenaREP();
-        DeathPitBrawlREP();
         DiabolicalREP();
         DoomWoodREP();
         DreadfireREP();
@@ -859,7 +857,10 @@ public class CoreFarms
         TreasureHunterREP();
         TrollREP();
         VampireREP();
-        YokaiREP();
+        YokaiREP();        
+        //Death Pit scripts here because they take alot of time and kill script efficieny
+        DeathPitBrawlREP();
+        DeathPitArenaREP();
 
         ToggleBoost(BoostType.Reputation, false);
     }
