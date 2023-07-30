@@ -52,13 +52,17 @@ public class CoreDailies
         Bot.Wait.ForPickup("*");
     }
 
+
+    //if new CheckDaily fails fallback to this one just comment out the other checkdaily, and rename this one
+    //VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
     /// <summary>
     /// Checks if the daily is complete, if not will add the specified drops and unbank if necessary
     /// </summary>
     /// <param name="quest">ID of the quest</param>
     /// <param name="items">Items to add to drop grabber and unbank</param>
     /// <returns></returns>
-    public bool CheckDaily(int quest, bool any = true, params string[] items)
+    //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    public bool CheckDailyv2(int quest, bool any = true, bool ShouldUnBank = true, params string[] items)
     {
         if (Bot.Quests.IsDailyComplete(quest))
         {
@@ -106,9 +110,11 @@ public class CoreDailies
             }
             Bot.Drops.Add(items);
         }
-        if (quest == 3075 || quest == 3076)
-            Bot.Drops.Add(Core.EnsureLoad(quest).Rewards.Select(x => x.Name).ToArray());
-        else
+        var questIds = Enumerable.Range(7156, 10).Concat(Enumerable.Range(3075, 3)).Distinct();
+        foreach (int questId in questIds)
+            Bot.Drops.Add(Core.QuestRewards(questId));
+
+
         {
             Core.AddDrop(Core.EnsureLoad(quest).Rewards.Select(x => x.Name).Where(x => !Core.CheckInventory(x, toInv: false)).ToArray());
             Core.AddDrop(Core.EnsureLoad(quest).Rewards.Select(x => x.Name).ToArray());
@@ -117,6 +123,76 @@ public class CoreDailies
 
         return true;
     }
+
+
+    //new one
+    public bool CheckDaily(int quest, bool any = true, bool shouldUnBank = true, params string[] items)
+    {
+        if (Bot.Quests.IsDailyComplete(quest))
+        {
+            Core.Logger("Daily/Weekly/Monthly quest not available right now");
+            return false;
+        }
+
+        if (items != null)
+        {
+            bool isSingleItem = items.Length == 1 && !items[0].Contains(',');
+
+            if (isSingleItem)
+            {
+                string itemName = items[0];
+                InventoryItem? item = Bot.Inventory.Items.Find(x => x.Name == itemName);
+                if (item != null && item.Quantity == item.MaxStack)
+                {
+                    Core.Logger("You already own the maximum amount of: " + itemName);
+                    return false;
+                }
+
+                if (shouldUnBank)
+                {
+                    InventoryItem? bankItem = Bot.Bank.Items.Find(x => x.Name == itemName);
+                    if (bankItem != null && bankItem.Quantity != bankItem.MaxStack)
+                        Core.Unbank(itemName);
+                }
+                Bot.Drops.Add(itemName);
+            }
+            else
+            {
+                List<string> itemsToAdd = new List<string>();
+                foreach (string item in items)
+                {
+                    InventoryItem? invItem = Bot.Inventory.Items.Find(x => x.Name == item);
+                    InventoryItem? bankItem = Bot.Bank.Items.Find(x => x.Name == item);
+
+                    if (invItem != null && invItem.Quantity == invItem.MaxStack)
+                    {
+                        Core.Logger("You already own the maximum amount of: " + item);
+                        return false;
+                    }
+
+                    if (shouldUnBank && bankItem != null && bankItem.Quantity == bankItem.MaxStack)
+                        Core.Unbank(item);
+
+                    itemsToAdd.Add(item);
+                }
+                Bot.Drops.Add(itemsToAdd.ToArray());
+            }
+        }
+
+        var questIds = Enumerable.Range(7156, 10).Concat(Enumerable.Range(3075, 3)).Distinct();
+        foreach (int questId in questIds)
+            Bot.Drops.Add(Core.QuestRewards(questId));
+
+        Core.AddDrop(Core.EnsureLoad(quest).Rewards.Select(x => x.Name).Where(x => x != "Arrow" && !Core.CheckInventory(x, toInv: false)).ToArray());
+        Core.AddDrop(Core.EnsureLoad(quest).Requirements.Select(x => x.Name).ToArray());
+
+        return true;
+    }
+
+
+
+
+
 
     /// <summary>
     /// Does the Mine Crafting quest for 2 Barium, Copper and Silver by default.
@@ -135,7 +211,7 @@ public class CoreDailies
                 Core.ToBank(metals);
             return;
         }
-        if (!CheckDaily(2091, false, metals))
+        if (!CheckDaily(2091, false, false, metals))
             return;
 
         Core.EnsureAccept(2091);
@@ -179,7 +255,7 @@ public class CoreDailies
                 Core.ToBank(metals);
             return;
         }
-        if (!CheckDaily(2098, false, metals))
+        if (!CheckDaily(2098, false, false, metals))
             return;
 
         Core.EnsureAccept(2098);
@@ -257,9 +333,9 @@ public class CoreDailies
             Core.Logger("You don't own Mad Weaponsmith yet. Skipped");
             return;
         }
-        if (!CheckDaily(4310, true, "C-Hammer Token") && !Core.IsMember)
+        if (!CheckDaily(4310, true, true, "C-Hammer Token") && !Core.IsMember)
             return;
-        if (!CheckDaily(4311, true, "C-Hammer Token") && Core.IsMember)
+        if (!CheckDaily(4311, true, true, "C-Hammer Token") && Core.IsMember)
             return;
         Core.EquipClass(ClassType.Solo);
         DailyRoutine(4310, "deadmoor", "Geist", "Geist's Chain Link");
@@ -281,9 +357,9 @@ public class CoreDailies
             Core.BuyItem("deadmoor", 500, "Mad Weaponsmith");
             return;
         }
-        if (!CheckDaily(4308, true, "C-Armor Token") && !Core.IsMember)
+        if (!CheckDaily(4308, true, true, "C-Armor Token") && !Core.IsMember)
             return;
-        if (!CheckDaily(4309, true, "C-Armor Token") && Core.IsMember)
+        if (!CheckDaily(4309, true, true, "C-Armor Token") && Core.IsMember)
             return;
         Core.EquipClass(ClassType.Solo);
         DailyRoutine(4308, "deadmoor", "Nightmare", "Nightmare Fire");
@@ -301,12 +377,12 @@ public class CoreDailies
             return;
         }
 
-        if (CheckDaily(3826, true, "Seal of Light"))
+        if (CheckDaily(3826, true, true, "Seal of Light"))
         {
             Core.EquipClass(ClassType.Solo);
             DailyRoutine(3826, "alteonbattle", "ULTRA Alteon", "Alteon Defeated");
         }
-        if (CheckDaily(3825, true, "Seal of Darkness"))
+        if (CheckDaily(3825, true, true, "Seal of Darkness"))
         {
             Core.EquipClass(ClassType.Solo);
             DailyRoutine(3825, "sepulchurebattle", "ULTRA Sepulchure", "Sepulchure Defeated");
@@ -323,7 +399,7 @@ public class CoreDailies
             Core.Logger("You already own The Collector. Skipped");
             return;
         }
-        if (CheckDaily(1316, true, "Tokens of Collection"))
+        if (CheckDaily(1316, true, true, "Tokens of Collection"))
         {
             Core.EquipClass(ClassType.Farm);
             Core.FarmingLogger("Token of Collection", 90);
@@ -332,9 +408,9 @@ public class CoreDailies
         if (Core.IsMember)
         {
             Core.FarmingLogger("Token of Collection", 90);
-            if (CheckDaily(1331, true, "Tokens of Collection"))
+            if (CheckDaily(1331, true, true, "Tokens of Collection"))
                 DailyRoutine(1331, "terrarium", "*", "This Is Definitely A Token", 2, false, "Enter", "Right");
-            if (CheckDaily(1332, true, "Tokens of Collection"))
+            if (CheckDaily(1332, true, true, "Tokens of Collection"))
                 DailyRoutine(1332, "terrarium", "*", "This Could Be A Token", 2, false, "r2", "Right");
         }
         if (Core.CheckInventory("Token of Collection", 90))
@@ -350,7 +426,7 @@ public class CoreDailies
             return;
         }
 
-        if (Core.IsMember && CheckDaily(3965, true, "Glacera Ice Token"))
+        if (Core.IsMember && CheckDaily(3965, true, true, "Glacera Ice Token"))
         {
             Core.EquipClass(ClassType.Farm);
             DailyRoutine(3965, "frozentower", "Frost Invader", "Dark Ice");
@@ -358,7 +434,7 @@ public class CoreDailies
             Core.ToBank("Glacera Ice Token");
         }
 
-        if (CheckDaily(3966, true, "Glacera Ice Token"))
+        if (CheckDaily(3966, true, true, "Glacera Ice Token"))
         {
             Core.EquipClass(ClassType.Farm);
             DailyRoutine(3966, "frozentower", "Frost Invader", "Dark Ice");
@@ -378,7 +454,7 @@ public class CoreDailies
             Core.Logger("You already own Pryomancer, Skipped");
             return;
         }
-        if (Core.IsMember && CheckDaily(2210, true, "Shurpu Blaze Token"))
+        if (Core.IsMember && CheckDaily(2210, true, true, "Shurpu Blaze Token"))
         {
             Core.EquipClass(ClassType.Solo);
             DailyRoutine(2210, "xancave", "Shurpu Ring Guardian", "Guardian Shale");
@@ -386,7 +462,7 @@ public class CoreDailies
             Core.ToBank("Shurpu Blaze Token");
         }
 
-        if (CheckDaily(2209, true, "Shurpu Blaze Token"))
+        if (CheckDaily(2209, true, true, "Shurpu Blaze Token"))
         {
             Core.EquipClass(ClassType.Solo);
             DailyRoutine(2209, "xancave", "Shurpu Ring Guardian", "Guardian Shale");
@@ -412,7 +488,7 @@ public class CoreDailies
             return;
         }
 
-        if (!CheckDaily(492, true, "Shadow Skull"))
+        if (!CheckDaily(492, true, true, "Shadow Skull"))
             return;
 
         DailyRoutine(492, "bludrut4", "Shadow Serpent", "Shadow Scales", 5);
@@ -437,7 +513,7 @@ public class CoreDailies
             Core.BuyItem("shadowfall", 1644, "ShadowScythe General");
             return;
         }
-        if (!CheckDaily(3828, true, "Shadow Shield") && (Core.IsMember && !CheckDaily(3827, true, "Shadow Shield")))
+        if (!CheckDaily(3828, true, true, "Shadow Shield") && (Core.IsMember && !CheckDaily(3827, true, true, "Shadow Shield")))
             return;
         DailyRoutine(3828, "lightguardwar", "Citadel Crusader", "Broken Blade");
         if (Core.IsMember)
@@ -455,7 +531,7 @@ public class CoreDailies
         if (!Core.CheckInventory(4845))
             return;
         Core.Logger("Daily: Grumble Grumble (Blood Gem of the Archfiend)");
-        if (!CheckDaily(592, false, new[] { "Diamond of Nulgath", "Blood Gem of the Archfiend" }))
+        if (!CheckDaily(592, false, false, new[] { "Diamond of Nulgath", "Blood Gem of the Archfiend" }))
             return;
         Core.ChainComplete(592);
         Core.ToBank("Diamond of Nulgath", "Blood Gem of the Archfiend");
@@ -466,7 +542,7 @@ public class CoreDailies
         Core.Logger("Daily: Elders' Blood");
         if (Core.CheckInventory("Elders' Blood", 20)) //AE keeps updating this shit, Laste update: 1/30/23, https://www.aq.com/gamedesignnotes/aqw-30jan23-mondayupdates-9076
             return;
-        if (!CheckDaily(802, true, "Elders' Blood"))
+        if (!CheckDaily(802, true, true, "Elders' Blood"))
             return;
         Core.EquipClass(ClassType.Farm);
         DailyRoutine(802, "arcangrove", "Gorillaphant", "Slain Gorillaphant", 50, cell: "Right", pad: "Left");
@@ -475,7 +551,7 @@ public class CoreDailies
     public void SparrowsBlood()
     {
         Core.Logger("Daily: Sparrow's Blood");
-        if (!CheckDaily(803, true, "Sparrow's Blood"))
+        if (!CheckDaily(803, true, true, "Sparrow's Blood"))
             return;
         Core.AddDrop("Sparrow's Blood");
         Core.EquipClass(ClassType.Farm);
@@ -489,7 +565,7 @@ public class CoreDailies
     public void ShadowShroud()
     {
         Core.Logger("Daily: Shadow Shroud");
-        if (!CheckDaily(486, true, "Shadow Shroud"))
+        if (!CheckDaily(486, true, true, "Shadow Shroud"))
             return;
         DailyRoutine(486, "bludrut2", "Shadow Creeper", "Shadow Canvas", 5, cell: "Enter", pad: "Down");
         Core.ToBank("Shadow Shroud");
@@ -498,7 +574,7 @@ public class CoreDailies
     public void DagesScrollFragment()
     {
         Core.Logger("Daily: Dage's Scroll Fragment");
-        if (!CheckDaily(3596, true, "Dage's Scroll Fragment"))
+        if (!CheckDaily(3596, true, true, "Dage's Scroll Fragment"))
             return;
 
         DailyRoutine(3596, "mountdoomskull", "*", "Chaos Power Increased", 6, cell: "b1", pad: "Left");
@@ -510,7 +586,7 @@ public class CoreDailies
     public void CryptoToken()
     {
         Core.Logger("Daily: Crypto Token (/curio)");
-        if (!CheckDaily(6187, true, "Crypto Token"))
+        if (!CheckDaily(6187, true, true, "Crypto Token"))
             return;
         Core.EquipClass(ClassType.Farm);
         DailyRoutine(6187, "boxes", "Sneevil", "Metal Ore", cell: "Closet", pad: "Center");
