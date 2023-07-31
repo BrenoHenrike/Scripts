@@ -1732,10 +1732,12 @@
       "vim",
       "examen",
       "anima",
-      "pneuma"
+      "pneuma",
+      "dauntless",
+      "praxis"
     ],
     "path": "Enhancement/UnlockForgeEnhancements.cs",
-    "size": 38080,
+    "size": 38099,
     "fileName": "UnlockForgeEnhancements.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Enhancement/UnlockForgeEnhancements.cs"
   },
