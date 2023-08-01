@@ -224,7 +224,7 @@ public class CoreFarmerJoe
                 case 30:
                     if (Bot.Player.Level >= Level && Core.CheckInventory("Awethur's Accoutrements") && (Core.CheckInventory("Master Ranger") && ClassMasterRanger?.Quantity == 302500))
                     {
-                        Adv.SmartEnhance(Core.FarmClass);
+                        Core.Logger("Items owned: \"Awethur's Accoutrements\", \"Master Ranger\" continuing");
                         continue;
                     }
 
@@ -253,7 +253,6 @@ public class CoreFarmerJoe
                 case 45:
                     if (Bot.Player.Level >= Level && (Core.CheckInventory("Shaman") && ClassShaman?.Quantity == 302500))
                     {
-                        Adv.SmartEnhance(Core.FarmClass);
                         Core.Logger("Items owned: \"Shaman\" continuing");
                         continue;
                     }
@@ -269,7 +268,6 @@ public class CoreFarmerJoe
                 case 50:
                     if (Bot.Player.Level >= Level && Core.CheckInventory("Burning Blade") && (Core.CheckInventory("Scarlet Sorceress") && ClassScarletSorceress?.Quantity == 302500))
                     {
-                        Adv.SmartEnhance(Core.FarmClass);
                         Core.Logger("Items owned: \"Scarlet Sorceress\", \"Burning Blade\" continuing");
                         continue;
                     }
@@ -290,7 +288,6 @@ public class CoreFarmerJoe
                 case 55:
                     if (Bot.Player.Level >= Level && (Core.CheckInventory("Blaze Binder") && ClassBlazeBinder?.Quantity == 302500))
                     {
-                        Adv.SmartEnhance(Core.FarmClass);
                         Core.Logger("Items owned:  \"Blaze Binder\", continuing");
                         continue;
                     }
@@ -309,7 +306,6 @@ public class CoreFarmerJoe
                 case 60:
                     if (Bot.Player.Level >= Level && (Core.CheckInventory("DragonSoul Shinobi") && ClassDragonSoulShinobi?.Quantity == 302500))
                     {
-                        Adv.SmartEnhance(Core.FarmClass);
                         Core.Logger("Items owned:  \"DragonSoul Shinobi\", continuing");
                         continue;
                     }
@@ -321,14 +317,12 @@ public class CoreFarmerJoe
                     Farm.Experience(Level);
                     Adv.SmartEnhance(Core.SoloClass);
                     DS.GetDSS();
-                    Adv.SmartEnhance(Core.FarmClass);
                     Core.Logger($"Level {Level} done");
                     continue;
 
                 case 65:
                     if (Bot.Player.Level >= Level && (Core.CheckInventory("ArchPaladin") && ClassArchPaladin?.Quantity == 302500))
                     {
-                        Adv.SmartEnhance(Core.FarmClass);
                         Core.Logger("Items owned: \"ArchPaladin\", continuing");
                         continue;
                     }
@@ -337,7 +331,11 @@ public class CoreFarmerJoe
 
                     Adv.SmartEnhance(Core.FarmClass);
                     Farm.Experience(Level);
+
+                    DmgOverTimeEnh();
                     AP.GetAP();
+                    
+                    Adv.SmartEnhance(Core.FarmClass);
                     Core.Logger($"Level {Level} done");
                     continue;
 
@@ -345,7 +343,6 @@ public class CoreFarmerJoe
                 case 75:
                     if (Bot.Player.Level >= Level && Core.CheckInventory("Archfiend DeathLord") && (Core.CheckInventory("Archfiend") && ClassArchFiend?.Quantity == 302500))
                     {
-                        Adv.SmartEnhance(Core.FarmClass);
                         Core.Logger("Items owned: \"Archfiend DeathLord\", \"ArchFiend\", continuing");
                         continue;
                     }
@@ -602,6 +599,44 @@ public class CoreFarmerJoe
         Core.Logger($"No valid {classType} found. Using default value: Generic");
         return "Generic"; // Return "Generic" as the default value when no valid class is found.
     }
+
+    /// <summary>
+    /// Enhances the first item from the given list of items in the player's inventory, if found.
+    /// </summary>
+    /// <remarks>
+    /// This method checks the player's inventory for the specified items and enhances the first
+    /// item found using the "Adv.SmartEnhance" method.
+    /// </remarks>
+    public void DmgOverTimeEnh()
+    {
+        string[] itemsToCheck = new[]
+        {
+        "ShadowStalker of Time",
+        "ShadowWeaver of Time",
+        "ShadowWalker of Time",
+        "Infinity Knight",
+        "Interstellar Knight",
+        "Void Highlord",
+        "Dragon of Time",
+        "Timeless Dark Caster",
+        "Frostval Barbarian",
+        "Blaze Binder",
+        "DeathKnight",
+        "DragonSoul Shinobi",
+        "Shadow Dragon Shinobi",
+        "Legion Revenant"
+    };
+
+        foreach (string item in itemsToCheck)
+        {
+            if (Core.CheckInventory(new[] { item }, any: true))
+            {
+                Adv.SmartEnhance(item);
+                break; // Stops the loop once the item is found and enhanced.
+            }
+        }
+    }
+
 
 
 
