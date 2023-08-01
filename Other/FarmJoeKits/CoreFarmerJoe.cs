@@ -222,7 +222,7 @@ public class CoreFarmerJoe
             switch (Level)
             {
                 case 30:
-                    if (Bot.Player.Level >= Level && (Core.CheckInventory("Master Ranger") && ClassMasterRanger?.Quantity == 302500))
+                    if (Bot.Player.Level >= Level && Core.CheckInventory("Awethur's Accoutrements") && (Core.CheckInventory("Master Ranger") && ClassMasterRanger?.Quantity == 302500))
                     {
                         Adv.SmartEnhance(Core.FarmClass);
                         continue;
@@ -557,8 +557,7 @@ public class CoreFarmerJoe
     {
         if (Core.SoloClass != "Generic" && Core.FarmClass != "Generic")
         {
-            if (Core.Logger != null)
-                Core.Logger("CBO classes are set, using what you picked, don't blame me");
+            Core.Logger("CBO classes are set, using what you picked, don't blame me");
             return;
         }
 
