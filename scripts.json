@@ -17,7 +17,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 176612,
+    "size": 176880,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -50,7 +50,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 107712,
+    "size": 107620,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -369,7 +369,7 @@
       "yokai"
     ],
     "path": "Story/Yokai.cs",
-    "size": 8386,
+    "size": 8394,
     "fileName": "Yokai.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Yokai.cs"
   },
@@ -11962,7 +11962,7 @@
       "null"
     ],
     "path": "Evil/NSoD/CoreNSOD.cs",
-    "size": 15767,
+    "size": 15706,
     "fileName": "CoreNSOD.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/NSoD/CoreNSOD.cs"
   },
