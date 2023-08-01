@@ -222,7 +222,7 @@ public class CoreFarmerJoe
             switch (Level)
             {
                 case 30:
-                    if (Bot.Player.Level >= Level && Core.CheckInventory("Awethur's Accoutrements") && (Core.CheckInventory("Master Ranger") && ClassMasterRanger?.Quantity == 302500))
+                    if (Bot.Player.Level >= Level && Adv.HasMinimalBoost(GenericGearBoost.exp, 25) && (Core.CheckInventory("Master Ranger") && ClassMasterRanger?.Quantity == 302500))
                     {
                         Core.Logger("Items owned: \"Awethur's Accoutrements\", \"Master Ranger\" continuing");
                         continue;
@@ -246,7 +246,6 @@ public class CoreFarmerJoe
                     Farm.BladeofAweREP(6, false);
                     Adv.BuyItem("museum", 631, "Awethur's Accoutrements");
                     Core.Equip("Awethur's Accoutrements");
-                    Adv.SmartEnhance(Core.FarmClass);
                     Core.Logger($"Level {Level} done");
                     continue;
 
@@ -334,7 +333,7 @@ public class CoreFarmerJoe
 
                     DmgOverTimeEnh();
                     AP.GetAP();
-                    
+
                     Adv.SmartEnhance(Core.FarmClass);
                     Core.Logger($"Level {Level} done");
                     continue;
