@@ -776,10 +776,7 @@ public class CoreFarms
         Core.AddDrop(item);
         Core.FarmingLogger(item, quant);
         Core.EquipClass(ClassType.Farm);
-        Core.ConfigureAggro();
         Core.KillMonster("battleunderb", "Enter", "Spawn", "*", item, quant, isTemp, log: false);
-        Core.ConfigureAggro(false);
-        Core.JumpWait();
     }
 
     public void BoneSomeDust(int quant = 10500)
