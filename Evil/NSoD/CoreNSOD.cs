@@ -68,7 +68,6 @@ public class CoreNSOD
             {
                 VoidAuras(7500);
                 CavernCelestite(1600);
-                Core.AddDrop("Bone Dust", "Undead Energy");
                 Farm.BattleUnderB("Bone Dust", 5100);
                 Farm.BattleUnderB("Undead Energy", 10000);
                 PrimarchHilt(2);
