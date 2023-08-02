@@ -176,8 +176,12 @@ public class CoreFarmerJoe
     {
         BeginnerItems();
 
+        if (Bot.Player.Level >= 30)
+            return;
+
         foreach (int level in new[] { 10, 15, 20, 25, 30 })
         {
+
             Core.Logger($"Level Goal: {level}");
             Farm.Experience(level);
             Adv.SmartEnhance(Core.FarmClass);
@@ -313,6 +317,7 @@ public class CoreFarmerJoe
                     Adv.SmartEnhance(Core.SoloClass);
 
                     DS.GetDSS(false);
+                    Adv.RankUpClass("DragonSoul Shinobi");
                     SetClass();
 
                     Core.Logger($"Level {Level} done");
@@ -550,7 +555,7 @@ public class CoreFarmerJoe
     {
         if (Core.SoloClass != "Generic" && Core.FarmClass != "Generic")
         {
-            Core.Logger("CBO classes are set, using what you picked, don't blame me");
+            Core.Logger("CBO classes are set, using what you picked.");
             return;
         }
 
