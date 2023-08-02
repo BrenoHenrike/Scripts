@@ -562,7 +562,7 @@ public class CoreNation
             Core.FarmingLogger(item, quant);
 
             if (returnPolicyDuringSupplies)
-                Core.RegisterQuests(2857, 7551);
+                Core.RegisterQuests(2857, 557);
             else Core.RegisterQuests(2857);
 
             while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
