@@ -40,7 +40,13 @@ public class BattleUnder
 
         Core.EquipClass(ClassType.Farm);
         Story.KillQuest(374, "battleundera", "Skeletal Warrior");
-        Story.KillQuest(375, "battleundera", new[] { "Skeletal Warrior", "Skeletal Warrior" });
+        if(!Story.QuestProgression(375))
+        {
+            Core.EnsureAccept(375);
+            Core.HuntMonster("battleundera", "Skeletal Warrior", "Skeletal Claymore", 6);
+            Core.HuntMonster("battleundera", "Skeletal Warrior", "Bony Chestplate", 3);
+            Core.EnsureComplete(375);
+        }
         Core.EquipClass(ClassType.Solo);
         Story.KillQuest(376, "battleundera", "Bone Terror");
         Core.EquipClass(ClassType.Farm);

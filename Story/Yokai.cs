@@ -88,9 +88,10 @@ public class YokaiQuests
         {
             Core.EnsureAccept(6459);
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("ShogunWar", "Orochi", "Orochi Defeated");
+            Core.HuntMonsterMapID("ShogunWar", 25, "Orochi Defeated");
             Core.EnsureComplete(6459);
         }
+        
         // Get the Medallions 6460
         Core.EquipClass(ClassType.Farm);
         Story.KillQuest(6460, "ShogunWar", "Shadow Samurai");

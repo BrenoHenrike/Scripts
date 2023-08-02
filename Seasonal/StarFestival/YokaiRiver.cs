@@ -49,6 +49,6 @@ public class YokaiRiver
         Story.MapItemQuest(6447, "yokairiver", 5950, 18);
 
         // Slay Uji No Hashihime (6448)
-        Story.KillQuest(6448, "yokairiver", "Uji No Hashihime");
+        Story.KillQuest(6448, "yokaistarriver", "Uji No Hashihime");
     }
 }

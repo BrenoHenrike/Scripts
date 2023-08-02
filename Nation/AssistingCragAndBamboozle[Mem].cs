@@ -37,7 +37,7 @@ public class AssistingCragAndBamboozle
         if (!Core.IsMember || !Core.CheckInventory(Nation.CragName))
             return;
 
-        if (!Core.CheckInventory("Sparrow's Blood") && !Daily.CheckDaily(803, true, "Sparrow's Blood"))
+        if (!Core.CheckInventory("Sparrow's Blood") && !Daily.CheckDaily(803, true, true, "Sparrow's Blood"))
         {
             if (logSparrow)
                 Core.Logger("This bot requires you to have at least 1 Sparrow's Blood OR to have not done the Sparrow's Blood Daily yet");

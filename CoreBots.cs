@@ -1877,7 +1877,8 @@ public class CoreBots
                     Bot.Hunt.Monster(monster);
                 }
                 Bot.Sleep(ActionDelay);
-                Rest();
+                if (ShouldRest)
+                    Rest();
             }
         }
     }
@@ -1913,7 +1914,8 @@ public class CoreBots
             if (log)
                 Logger($"Killing {monster.Name}");
             Bot.Kill.Monster(monster);
-            Rest();
+            if (ShouldRest)
+                Rest();
         }
         else
         {
@@ -1927,7 +1929,8 @@ public class CoreBots
                 if (!Bot.Combat.StopAttacking)
                     Bot.Combat.Attack(monster);
                 Bot.Sleep(ActionDelay);
-                Rest();
+                if (ShouldRest)
+                    Rest();
             }
         }
     }
@@ -1991,6 +1994,8 @@ public class CoreBots
                 Bot.Combat.Attack("Escherion");
                 Bot.Sleep(1000);
             }
+            if (ShouldRest)
+                Rest();
             // DebugLogger(this);
         }
     }
@@ -2032,6 +2037,8 @@ public class CoreBots
             Bot.Combat.Attack("Vath");
             Bot.Sleep(1000);
         }
+        if (ShouldRest)
+            Rest();
     }
 
     /// <summary>
@@ -2121,68 +2128,134 @@ public class CoreBots
         JumpWait();
     }
 
+    // /// <summary>
+    // /// Kill DoomKitten for the desired item
+    // /// </summary>
+    // /// <param name="item">Item name</param>
+    // /// <param name="quant">Desired quantity</param>
+    // /// <param name="isTemp">Whether the item is temporary</param>
+    // public void KillDoomKitten(string item, int quant = 1, bool isTemp = false, bool log = true, bool publicRoom = false)
+    // {
+    //     if (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant))
+    //         return;
+
+    //     string[] DOTClasses = {
+    //         "ShadowStalker of Time",
+    //         "ShadowWeaver of Time",
+    //         "ShadowWalker of Time",
+    //         "Infinity Knight",
+    //         "Interstellar Knight",
+    //         "Void Highlord",
+    //         "Dragon of Time",
+    //         "Timeless Dark Caster",
+    //         "Frostval Barbarian",
+    //         "Blaze Binder",
+    //         "DeathKnight",
+    //         "DragonSoul Shinobi",
+    //         "Shadow Dragon Shinobi",
+    //         "Legion Revenant",
+    //     };
+
+    //     if (!DOTClasses.Any(c => CheckInventory(c)))
+    //     {
+    //         Bot.Log("--------------------------------");
+    //         Logger("Possible classes for DoomKitten:");
+    //         DOTClasses.ForEach(l => Logger(l));
+    //         Bot.Log("--------------------------------");
+
+    //         Logger($"\'Damage over Time\' class / VHL not found. See the logs to see suggestions. Please get one and run the bot agian. Stopping.", messageBox: true, stopBot: true);
+    //     }
+
+    //     if (CheckInventory("Shadow Dragon Shinobi") || CheckInventory("DragonSoul Shinobi"))
+    //     {
+    //         Logger("Due to the nature of this class and the hit range of the kitten, this is basicly RNG gl!");
+    //         Equip(CheckInventory("Shadow Dragon Shinobi") ? "Shadow Dragon Shinobi" : "DragonSoul Shinobi");
+    //         //tested Skillset is working properly and can get a kill.
+    //         Bot.Skills.StartAdvanced("4H>50 | 3M<70S | 2H<50 M>70S | 1H>50", 150);
+    //     }
+    //     else Bot.Skills.StartAdvanced(DOTClasses.ToList().First(c => Bot.Inventory.Contains(c)), true, ClassUseMode.Base);
+    //     HuntMonster("doomkitten", "Doomkitten", item, quant, isTemp, log, publicRoom);
+    // }
+
+
+
     /// <summary>
-    /// Kill DoomKitten for the desired item
+    /// Kills the DoomKitten monster to obtain the desired item.
     /// </summary>
-    /// <param name="item">Item name</param>
-    /// <param name="quant">Desired quantity</param>
-    /// <param name="isTemp">Whether the item is temporary</param>
+    /// <param name="item">The name of the item to obtain.</param>
+    /// <param name="quant">The desired quantity of the item.</param>
+    /// <param name="isTemp">Specifies whether the item is temporary.</param>
+    /// <param name="log">Specifies whether to log the process.</param>
+    /// <param name="publicRoom">Specifies whether to use a public room for the hunt.</param>
     public void KillDoomKitten(string item, int quant = 1, bool isTemp = false, bool log = true, bool publicRoom = false)
     {
-        if (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant))
+        bool hasItem = isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant);
+        if (hasItem)
             return;
 
-        string[] DOTClasses = {
-            "ShadowStalker of Time",
-            "ShadowWeaver of Time",
-            "ShadowWalker of Time",
-            "Infinity Knight",
-            "Interstellar Knight",
-            "Void Highlord",
-            "Dragon of Time",
-            "Timeless Dark Caster",
-            "Frostval Barbarian",
-            "Blaze Binder",
-            "DeathKnight",
-            "DragonSoul Shinobi",
-            "Shadow Dragon Shinobi",
-            "Legion Revenant",
-        };
+        List<string> DOTClasses = new List<string>
+    {
+        "ShadowStalker of Time",
+        "ShadowWeaver of Time",
+        "ShadowWalker of Time",
+        "Infinity Knight",
+        "Interstellar Knight",
+        "Void Highlord",
+        "Dragon of Time",
+        "Timeless Dark Caster",
+        "Frostval Barbarian",
+        "Blaze Binder",
+        "DeathKnight",
+        "DragonSoul Shinobi",
+        "Shadow Dragon Shinobi",
+        "Legion Revenant",
+    };
 
-        if (!DOTClasses.Any(c => CheckInventory(c)))
+        string classList = string.Join("\n", DOTClasses);
+        bool hasAnyClass = DOTClasses.Any(c => CheckInventory(c));
+
+        if (!hasAnyClass)
         {
-            Bot.Log("--------------------------------");
-            Logger("Possible classes for DoomKitten:");
-            DOTClasses.ForEach(l => Logger(l));
-            Bot.Log("--------------------------------");
+            Logger("--------------------------------");
+            Logger("Possible classes for DoomKitten:\n" + classList);
+            Logger("--------------------------------");
 
-            Logger($"\'Damage over Time\' class / VHL not found. See the logs to see suggestions. Please get one and run the bot agian. Stopping.", messageBox: true, stopBot: true);
+            Logger($"'Damage over Time' class / VHL not found. See the logs to see suggestions. Please get one and run the bot again. Stopping.", messageBox: true, stopBot: true);
         }
 
-        if (CheckInventory("Shadow Dragon Shinobi") || CheckInventory("DragonSoul Shinobi"))
+        bool hasShadowDragonShinobi = CheckInventory("Shadow Dragon Shinobi");
+        bool hasDragonSoulShinobi = CheckInventory("DragonSoul Shinobi");
+
+        if (hasShadowDragonShinobi || hasDragonSoulShinobi)
         {
-            Logger("Due to the nature of this class and the hit range of the kitten, this is basicly RNG gl!");
-            Equip(CheckInventory("Shadow Dragon Shinobi") ? "Shadow Dragon Shinobi" : "DragonSoul Shinobi");
-            //tested Skillset is working properly and can get a kill.
+            Logger("Due to the nature of this class and the hit range of the kitten, this is basically RNG gl!");
+            Equip(hasShadowDragonShinobi ? "Shadow Dragon Shinobi" : "DragonSoul Shinobi");
+            // tested Skillset is working properly and can get a kill.
             Bot.Skills.StartAdvanced("4H>50 | 3M<70S | 2H<50 M>70S | 1H>50", 150);
         }
-        else Bot.Skills.StartAdvanced(DOTClasses.ToList().First(c => Bot.Inventory.Contains(c)), true, ClassUseMode.Base);
+        else if (hasAnyClass)
+        {
+            string firstClass = DOTClasses.First(c => CheckInventory(c));
+            Bot.Skills.StartAdvanced(firstClass, true, ClassUseMode.Base);
+        }
+
         HuntMonster("doomkitten", "Doomkitten", item, quant, isTemp, log, publicRoom);
     }
 
+
     /// <summary>
-    /// Kill Xiang for the desired item
+    /// Kills Xiang or Ultra Xiang to obtain the desired item.
     /// </summary>
-    /// <param name="item">Item name</param>
-    /// <param name="quant">Desired quantity</param>
-    /// <param name="ultra">Fight the ultra variant</param>
-    /// <param name="isTemp">Whether the item is temporary</param>
+    /// <param name="item">The name of the item to obtain.</param>
+    /// <param name="quant">The desired quantity of the item.</param>
+    /// <param name="ultra">Specifies whether to fight the Ultra Xiang variant.</param>
+    /// <param name="isTemp">Specifies whether the item is temporary.</param>
+    /// <param name="log">Specifies whether to log the process.</param>
+    /// <param name="publicRoom">Specifies whether to use a public room for the hunt.</param>
     public void KillXiang(string item, int quant = 1, bool ultra = false, bool isTemp = false, bool log = true, bool publicRoom = false)
     {
         if (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant))
             return;
-
-        JumpWait();
 
         if (CheckInventory("Dragon of Time"))
             Bot.Skills.StartAdvanced("Dragon of Time", true, ClassUseMode.Solo);
@@ -2191,8 +2264,11 @@ public class CoreBots
         else if (CheckInventory("Healer"))
             Bot.Skills.StartAdvanced("Healer", true, ClassUseMode.Base);
 
+        JumpWait();
+
         KillMonster("mirrorportal", ultra ? "r6" : "r4", "Right", ultra ? "Ultra Xiang" : "Chaos Lord Xiang", item, quant, isTemp, log, publicRoom);
     }
+
 
     public void _KillForItem(string name, string item, int quantity, bool isTemp = false, bool rejectElse = false, bool log = true)
     {

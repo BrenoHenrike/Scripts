@@ -51,7 +51,7 @@ public class YulgarsDualWieldMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
+    public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         if (!Core.CheckInventory("Golden 8th Birthday Candle"))
             Core.BuyItem(Bot.Map.Name, 1317, "Golden 8th Birthday Candle");
@@ -563,7 +563,7 @@ public class YulgarsDualWieldMerge
                     break;
 
                 case "Burn it Down":
-                    if (!Daily.CheckDaily(187, true, req.Name))
+                    if (!Daily.CheckDaily(187, true, true, req.Name))
                     {
                         Core.Logger($"{req.Name} owned, or daily unavailable");
                         return;

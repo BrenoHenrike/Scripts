@@ -112,8 +112,8 @@ public class Banished
         if (!Story.QuestProgression(2023))
         {
             Core.EnsureAccept(2023);
-            Core.HuntMonster("northlands", "Chaos Gemrald", "Chaos Gemerald Cluster");
-            Core.HuntMonster("northlands", "Chaos Gemrald", "Chaos Gemerald Shard", 5);
+            Core.HuntMonster("northlands", "Chaos Gemrald", "Chaos Gemrald Cluster");
+            Core.HuntMonster("northlands", "Chaos Gemrald", "Chaos Gemrald Shard", 5);
             Core.EnsureComplete(2023);
         }
 

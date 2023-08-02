@@ -127,7 +127,7 @@ public class ShorinzanMerge
                 case "Hashihime's Heart":
                     Core.EquipClass(ClassType.Solo);
                     Adv.BestGear(RacialGearBoost.Chaos);
-                    Core.HuntMonster("yokairiver", "Uji No Hashihime", req.Name, quant, isTemp: false);
+                    Core.HuntMonster("yokaistarriver", "Uji No Hashihime", req.Name, quant, isTemp: false);
                     Bot.Wait.ForPickup(req.Name);
                     break;
 
