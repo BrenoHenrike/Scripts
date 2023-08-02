@@ -331,16 +331,14 @@ public class CoreFarmerJoe
                     }
 
                     SetClass();
-
-                    Adv.SmartEnhance(Core.FarmClass);
                     Farm.Experience(Level);
 
                     DmgOverTimeEnh();
+                    SetClass();
 
                     AP.GetAP(false);
                     SetClass();
 
-                    Adv.SmartEnhance(Core.FarmClass);
                     Core.Logger($"Level {Level} done");
                     continue;
 
