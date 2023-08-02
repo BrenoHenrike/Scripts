@@ -316,10 +316,7 @@ public class CoreFarmerJoe
                     Farm.Experience(Level);
                     Adv.SmartEnhance(Core.SoloClass);
 
-                    DS.GetDSS(false);
-                    Adv.RankUpClass("DragonSoul Shinobi");
-                    SetClass();
-
+                    DS.GetDSS();
                     Core.Logger($"Level {Level} done");
                     continue;
 
@@ -333,7 +330,6 @@ public class CoreFarmerJoe
                     SetClass();
                     Farm.Experience(Level);
 
-                    DmgOverTimeEnh();
                     SetClass();
 
                     AP.GetAP(false);
