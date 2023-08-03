@@ -1,26 +1,22 @@
 /*
-name: TitanGearIIMerge
-description: null
-tags: null
+name: Titan Strike Gear Merge
+description: This bot will farm the items belonging to the selected mode for the Titan Strike Gear Merge [2154] in /titanstrike
+tags: titan, strike, gear, merge, titanstrike, titanic, destroyer, tentacles, heroic, titans, greatswords, drakath, drakaths, antititan, corps
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/Story/TitanAttack.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
 
-public class TitanGearIIMerge
+public class TitanStrikeGearMerge
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
     private CoreFarms Farm = new();
-    private CoreStory Story = new();
     private CoreAdvanced Adv = new();
     private static CoreAdvanced sAdv = new();
-    private TitanAttackStory TAS = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
     public string[] MultiOptions = { "Generic", "Select" };
@@ -29,18 +25,17 @@ public class TitanGearIIMerge
     //              If true, it will not stop the script if the default case triggers and the user chose to only get mats
     private bool dontStopMissingIng = false;
 
-    public void ScriptMain(IScriptInterface bot)
+    public void ScriptMain(IScriptInterface Bot)
     {
+        Core.BankingBlackList.AddRange(new[] { "Destroyer Essence", "Titanic Destroyer Blade", "Titanic Destroyer Morph", "Titanic Tincture", "Heroic Titan's Greatsword", "Titan Paladin", "Vindicator Titan XL", "Vindicator Titan's Axes", "Titan Paladin's Blades", "Titan Drakath's Blade", "Titan Paladin's Helm", "Vindicator Titan's Helm", "Titan Drakath's Morph", "Titan Paladin's Cloak", "Vindicator Titan's Cloak", "Chaorrupted AntiTitan Corps", "Titan Hunter" });
         Core.SetOptions();
 
         BuyAllMerge();
-
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
+    public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
-        TAS.DoAll();
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("titanstrike", 2154, findIngredients, buyOnlyThis, buyMode: buyMode);
 
@@ -134,6 +129,7 @@ public class TitanGearIIMerge
                     Core.EquipClass(ClassType.Solo);
                     Adv.BoostHuntMonster("titandrakath", "Titan Drakath", req.Name, quant, false);
                     break;
+
 
                 case "Titan Paladin's Helm":
                     Core.FarmingLogger($"{req.Name}", quant);
