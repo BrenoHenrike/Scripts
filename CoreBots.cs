@@ -2178,22 +2178,13 @@ public class CoreBots
     // }
 
 
+public void KillDoomKitten(string item, int quant = 1, bool isTemp = false, bool log = true, bool publicRoom = false)
+{
+    bool hasItem = isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant);
+    if (hasItem)
+        return;
 
-    /// <summary>
-    /// Kills the DoomKitten monster to obtain the desired item.
-    /// </summary>
-    /// <param name="item">The name of the item to obtain.</param>
-    /// <param name="quant">The desired quantity of the item.</param>
-    /// <param name="isTemp">Specifies whether the item is temporary.</param>
-    /// <param name="log">Specifies whether to log the process.</param>
-    /// <param name="publicRoom">Specifies whether to use a public room for the hunt.</param>
-    public void KillDoomKitten(string item, int quant = 1, bool isTemp = false, bool log = true, bool publicRoom = false)
-    {
-        bool hasItem = isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant);
-        if (hasItem)
-            return;
-
-        List<string> DOTClasses = new List<string>
+    List<string> DOTClasses = new List<string>
     {
         "ShadowStalker of Time",
         "ShadowWeaver of Time",
@@ -2211,36 +2202,49 @@ public class CoreBots
         "Legion Revenant",
     };
 
-        string classList = string.Join("\n", DOTClasses);
-        bool hasAnyClass = DOTClasses.Any(c => CheckInventory(c));
+    // Check if the bot has any of the classes from the DOTClasses list
+    bool hasAnyClass = DOTClasses.Any(c => CheckInventory(c));
 
-        if (!hasAnyClass)
-        {
-            Logger("--------------------------------");
-            Logger("Possible classes for DoomKitten:\n" + classList);
-            Logger("--------------------------------");
+    if (!hasAnyClass)
+    {
+        Logger("--------------------------------");
+        Logger("Possible classes for DoomKitten:\n" + string.Join("\n", DOTClasses));
+        Logger("--------------------------------");
 
-            Logger($"'Damage over Time' class / VHL not found. See the logs to see suggestions. Please get one and run the bot again. Stopping.", messageBox: true, stopBot: true);
-        }
-
-        bool hasShadowDragonShinobi = CheckInventory("Shadow Dragon Shinobi");
-        bool hasDragonSoulShinobi = CheckInventory("DragonSoul Shinobi");
-
-        if (hasShadowDragonShinobi || hasDragonSoulShinobi)
-        {
-            Logger("Due to the nature of this class and the hit range of the kitten, this is basically RNG gl!");
-            Equip(hasShadowDragonShinobi ? "Shadow Dragon Shinobi" : "DragonSoul Shinobi");
-            // tested Skillset is working properly and can get a kill.
-            Bot.Skills.StartAdvanced("4H>50 | 3M<70S | 2H<50 M>70S | 1H>50", 150);
-        }
-        else if (hasAnyClass)
-        {
-            string firstClass = DOTClasses.First(c => CheckInventory(c));
-            Bot.Skills.StartAdvanced(firstClass, true, ClassUseMode.Base);
-        }
-
-        HuntMonster("doomkitten", "Doomkitten", item, quant, isTemp, log, publicRoom);
+        Logger($"'Damage over Time' class / VHL not found. See the logs to see suggestions. Please get one and run the bot again. Stopping.", messageBox: true, stopBot: true);
+        return; // Stop execution as the bot doesn't have any of the required classes.
     }
+
+    InventoryItem? classItem = null;
+    foreach (string className in DOTClasses)
+    {
+        classItem = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == className.ToLower().Trim() && i.Category == ItemCategory.Class);
+        if (classItem != null)
+        {
+            if (className == "DragonSoul Shinobi" || className == "Shadow Dragon Shinobi")
+            {
+                Logger("Due to the nature of this class and the hit range of the kitten, this is basically RNG gl!");
+                Equip(classItem.Name);
+                // tested Skillset is working properly and can get a kill.
+                Bot.Skills.StartAdvanced("4H>50 | 3M<70S | 2H<50 M>70S | 1H>50", 150);
+            }
+            else
+            {
+                Bot.Skills.StartAdvanced(classItem.Name, true, ClassUseMode.Base);
+            }
+            break;
+        }
+    }
+
+    if (classItem == null)
+    {
+        Logger("Could not find any of the Damage over Time classes in the bot's inventory. Stopping.", messageBox: true, stopBot: true);
+        return; // Stop execution as the bot doesn't have any of the required classes.
+    }
+
+    HuntMonster("doomkitten", "Doomkitten", item, quant, isTemp, log, publicRoom);
+}
+
 
 
     /// <summary>
