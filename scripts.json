@@ -9526,17 +9526,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/ShadowScytheGeneralMerge.cs"
   },
   {
-    "name": "TitanGearMerge",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Other/MergeShops/TitanGearMerge.cs",
-    "size": 4420,
-    "fileName": "TitanGearMerge.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/TitanGearMerge.cs"
-  },
-  {
     "name": "BeleensChaosFuzzyMerge",
     "description": "null",
     "tags": [
@@ -10473,6 +10462,36 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/StormCacheMerge.cs"
   },
   {
+    "name": "Titan Attack Gear Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Titan Attack Gear Merge [2149] in /titanattack",
+    "tags": [
+      "titan",
+      "attack",
+      "gear",
+      "merge",
+      "titanattack",
+      "paladin",
+      "paladins",
+      "cloak",
+      "",
+      "vindicator",
+      "xl",
+      "titans",
+      "primaris",
+      "cut",
+      "morph",
+      "chainsword",
+      "chainswords",
+      "hammer",
+      "hammers",
+      "powerfist"
+    ],
+    "path": "Other/MergeShops/TitanAttackGearMerge.cs",
+    "size": 7358,
+    "fileName": "TitanAttackGearMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/TitanAttackGearMerge.cs"
+  },
+  {
     "name": "Diplomat Merge",
     "description": "farms the materials and gets teh items from the diplomat merge in /castle",
     "tags": [
@@ -10655,6 +10674,31 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/TowerofWindsMerge.cs"
   },
   {
+    "name": "Titan Strike Gear Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Titan Strike Gear Merge [2154] in /titanstrike",
+    "tags": [
+      "titan",
+      "strike",
+      "gear",
+      "merge",
+      "titanstrike",
+      "titanic",
+      "destroyer",
+      "tentacles",
+      "heroic",
+      "titans",
+      "greatswords",
+      "drakath",
+      "drakaths",
+      "antititan",
+      "corps"
+    ],
+    "path": "Other/MergeShops/TitanStrikeGearMerge.cs",
+    "size": 11411,
+    "fileName": "TitanStrikeGearMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/TitanStrikeGearMerge.cs"
+  },
+  {
     "name": "DreadForestMerge",
     "description": "null",
     "tags": [
@@ -10686,17 +10730,6 @@
     "size": 4412,
     "fileName": "ByrodaxMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/ByrodaxMerge.cs"
-  },
-  {
-    "name": "TitanGearIIMerge",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Other/MergeShops/TitanGearIIMerge.cs",
-    "size": 10865,
-    "fileName": "TitanGearIIMerge.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/TitanGearIIMerge.cs"
   },
   {
     "name": "Fell Beast Merge",
