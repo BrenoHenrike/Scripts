@@ -378,8 +378,13 @@ public class CoreSoC
         }
 
         //Purifying Flames 7765
-        Story.MapItemQuest(7765, "BrightForestPast", 7757);
-        Story.KillQuest(7765, "BrightForestPast", "Treeant");
+        if (!Story.QuestProgression(7765))
+        {
+            Core.EnsureAccept(7765);
+            Core.GetMapItem(7757, 1, "BrightForestPast");
+            Core.KillMonster("BrightForestPast", "r8", "Left", 4633, "Purified Oil", 8);
+            Core.EnsureComplete(7765);
+        }
 
         //Return to Iadoa 7766
         Story.MapItemQuest(7766, "BrightForestPast", 7758);
