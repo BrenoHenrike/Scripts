@@ -54,7 +54,7 @@ public class QueenBattle
             Core.HuntMonster("queenbattle", "Kolyaban Shade", "Kolyaban Shade Banished", log: false);
             Core.HuntMonster("queenbattle", "Horothotep Shade", "Horothotep Shade Banished", log: false);
             Core.HuntMonster("queenbattle", "Sa-Laatan Shade", "Sa-Laatan Shade Banished", log: false);
-            Core.HuntMonster($"queenbattle", "Grou’luu Shade", "Grou’luu Shade Banished", log: false);
+            Core.HuntMonster($"queenbattle", "Grou'luu Shade", "Grou'luu Shade Banished", log: false);
             Core.EnsureComplete(8354);
         }
 
