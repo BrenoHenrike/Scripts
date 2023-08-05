@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 107620,
+    "size": 107188,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -1163,7 +1163,7 @@
       "starsinc"
     ],
     "path": "Story/StarSinc.cs",
-    "size": 4154,
+    "size": 4316,
     "fileName": "StarSinc.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/StarSinc.cs"
   },
@@ -2023,7 +2023,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 63726,
+    "size": 68818,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -7841,7 +7841,7 @@
       "null"
     ],
     "path": "Nation/Various/TarosManslayer.cs",
-    "size": 1704,
+    "size": 1715,
     "fileName": "TarosManslayer.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/TarosManslayer.cs"
   },
@@ -18196,6 +18196,23 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/MergeShops/LowTideMerge.cs"
   },
   {
+    "name": "Beetle General Pet",
+    "description": "This will complete the Beetle General Pet quest.",
+    "tags": [
+      "quest",
+      "beetle",
+      "general",
+      "pet",
+      "staff",
+      "birthday",
+      "nulgath"
+    ],
+    "path": "Seasonal/StaffBirthdays/Nulgath/BeetleGeneralPetQuest.cs",
+    "size": 4014,
+    "fileName": "BeetleGeneralPetQuest.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/Nulgath/BeetleGeneralPetQuest.cs"
+  },
+  {
     "name": "Temple Siege Merge",
     "description": "Merges all the items needed for the Temple Siege storyline.",
     "tags": [
@@ -18215,23 +18232,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/Nulgath/TempleSiegeMerge.cs"
   },
   {
-    "name": "Beetle Warlord Pet",
-    "description": "This will complete the Beetle Warlord Pet quest.",
-    "tags": [
-      "quest",
-      "beetle",
-      "warlord",
-      "pet",
-      "staff",
-      "birthday",
-      "nulgath"
-    ],
-    "path": "Seasonal/StaffBirthdays/Nulgath/BeetleWarlordPet.cs",
-    "size": 1799,
-    "fileName": "BeetleWarlordPet.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/Nulgath/BeetleWarlordPet.cs"
-  },
-  {
     "name": "Temple Siege",
     "description": "Completes the Temple Siege storyline.",
     "tags": [
@@ -18245,9 +18245,26 @@
       "birthday"
     ],
     "path": "Seasonal/StaffBirthdays/Nulgath/TempleSiege.cs",
-    "size": 2409,
+    "size": 2412,
     "fileName": "TempleSiege.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/Nulgath/TempleSiege.cs"
+  },
+  {
+    "name": "Beetle Warlord Pet",
+    "description": "This will complete the Beetle Warlord Pet quest.",
+    "tags": [
+      "quest",
+      "beetle",
+      "warlord",
+      "pet",
+      "staff",
+      "birthday",
+      "nulgath"
+    ],
+    "path": "Seasonal/StaffBirthdays/Nulgath/BeetleWarlordPetQuest.cs",
+    "size": 3982,
+    "fileName": "BeetleWarlordPetQuest.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/Nulgath/BeetleWarlordPetQuest.cs"
   },
   {
     "name": "Temple Delve",
@@ -18267,23 +18284,6 @@
     "size": 3632,
     "fileName": "TempleDelve.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/Nulgath/TempleDelve.cs"
-  },
-  {
-    "name": "Beetle General Pet",
-    "description": "This will complete the Beetle General Pet quest.",
-    "tags": [
-      "quest",
-      "beetle",
-      "general",
-      "pet",
-      "staff",
-      "birthday",
-      "nulgath"
-    ],
-    "path": "Seasonal/StaffBirthdays/Nulgath/BeetleGeneralPet.cs",
-    "size": 2155,
-    "fileName": "BeetleGeneralPet.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/Nulgath/BeetleGeneralPet.cs"
   },
   {
     "name": "Temple Delve Merge",
