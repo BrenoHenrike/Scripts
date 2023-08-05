@@ -17,7 +17,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 176797,
+    "size": 176969,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -10418,17 +10418,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/3LittleWolvesHousesMerge.cs"
   },
   {
-    "name": "RangdaMerge",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Other/MergeShops/RangdaMerge.cs",
-    "size": 3929,
-    "fileName": "RangdaMerge.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/RangdaMerge.cs"
-  },
-  {
     "name": "VokunMerge",
     "description": "null",
     "tags": [
@@ -10708,17 +10697,6 @@
     "size": 10741,
     "fileName": "DreadForestMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/DreadForestMerge.cs"
-  },
-  {
-    "name": "ExtraCreditMerge[non-ac]",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Other/MergeShops/ExtraCreditMerge[non-ac].cs",
-    "size": 6676,
-    "fileName": "ExtraCreditMerge[non-ac].cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/ExtraCreditMerge[non-ac].cs"
   },
   {
     "name": "ByrodaxMerge",
@@ -13755,6 +13733,68 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/BowJanglesMerge.cs"
   },
   {
+    "name": "Kala Story",
+    "description": "This will finish the Kala storyline.",
+    "tags": [
+      "kala-story",
+      "kala",
+      "seasonal"
+    ],
+    "path": "Seasonal/IndonesianDay/Kala.cs",
+    "size": 2324,
+    "fileName": "Kala.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/IndonesianDay/Kala.cs"
+  },
+  {
+    "name": "Abhorrent Remains Farm",
+    "description": "Farms the max Abhorrent Remains quantity.",
+    "tags": [
+      "abhorrent-remains",
+      "kala",
+      "seasonal"
+    ],
+    "path": "Seasonal/IndonesianDay/KalaMergeAbhorrentRemains.cs",
+    "size": 1461,
+    "fileName": "KalaMergeAbhorrentRemains.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/IndonesianDay/KalaMergeAbhorrentRemains.cs"
+  },
+  {
+    "name": "Rangda Story",
+    "description": "This will finish the Rangda storyline.",
+    "tags": [
+      "rangda-story",
+      "rangda",
+      "seasonal"
+    ],
+    "path": "Seasonal/IndonesianDay/Rangda.cs",
+    "size": 1983,
+    "fileName": "Rangda.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/IndonesianDay/Rangda.cs"
+  },
+  {
+    "name": "Rangda Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Rangda Merge [1901] in /rangda",
+    "tags": [
+      "rangda",
+      "merge",
+      "rangda",
+      "gatotkaca",
+      "gatot",
+      "crown",
+      "bearded",
+      "sheath",
+      "keris",
+      "arjunas",
+      "bow",
+      "mace",
+      "wings"
+    ],
+    "path": "Seasonal/IndonesianDay/RangdaMerge.cs",
+    "size": 4099,
+    "fileName": "RangdaMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/IndonesianDay/RangdaMerge.cs"
+  },
+  {
     "name": "Steampunk Eggsplorer Armor",
     "description": "This will finish the Bring me the PURPLE Eggs! quest to obtain the Steampunk Eggsplorer Armor.",
     "tags": [
@@ -14418,22 +14458,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/SummerBreak/SweetSummerTreats.cs"
   },
   {
-    "name": "Extra Credit AC Items",
-    "description": "This will farm the Extra Credit AC Items.",
-    "tags": [
-      "farm",
-      "merge",
-      "shop",
-      "credit",
-      "extra",
-      "summer-break"
-    ],
-    "path": "Seasonal/SummerBreak/ExtraCreditACItems.cs",
-    "size": 1881,
-    "fileName": "ExtraCreditACItems.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/SummerBreak/ExtraCreditACItems.cs"
-  },
-  {
     "name": "Luna Cove Merge",
     "description": "This will farm the Luna Cove items.",
     "tags": [
@@ -14579,6 +14603,57 @@
     "size": 1956,
     "fileName": "VolleyBaller.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/SummerBreak/VolleyBaller.cs"
+  },
+  {
+    "name": "Extra Credit AC Items",
+    "description": "This will farm the Extra Credit AC Items.",
+    "tags": [
+      "farm",
+      "merge",
+      "shop",
+      "credit",
+      "extra",
+      "summer-break"
+    ],
+    "path": "Seasonal/BackToSchool/ExtraCreditACItems.cs",
+    "size": 1881,
+    "fileName": "ExtraCreditACItems.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/BackToSchool/ExtraCreditACItems.cs"
+  },
+  {
+    "name": "Extra Credit Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Extra Credit Merge [2158] in /extracredit",
+    "tags": [
+      "extra",
+      "credit",
+      "merge",
+      "extracredit",
+      "ultra",
+      "fierce",
+      "outfit",
+      "super",
+      "cute",
+      "academic",
+      "attitude",
+      "curls",
+      "power",
+      "puffs",
+      "female",
+      "morph",
+      "becky",
+      "ben",
+      "beckys",
+      "bens",
+      "academy",
+      "jacket",
+      "jeans",
+      "autumn",
+      "days"
+    ],
+    "path": "Seasonal/BackToSchool/ExtraCreditMerge.cs",
+    "size": 7414,
+    "fileName": "ExtraCreditMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/BackToSchool/ExtraCreditMerge.cs"
   },
   {
     "name": "Alpha Hunter And Rogue Set",
@@ -15859,45 +15934,6 @@
     "size": 2712,
     "fileName": "Zoda.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/MayThe4th/Zoda.cs"
-  },
-  {
-    "name": "Kala Story",
-    "description": "This will finish the Kala storyline.",
-    "tags": [
-      "kala-story",
-      "kala",
-      "seasonal"
-    ],
-    "path": "Seasonal/August/Kala.cs",
-    "size": 2324,
-    "fileName": "Kala.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/August/Kala.cs"
-  },
-  {
-    "name": "Abhorrent Remains Farm",
-    "description": "Farms the max Abhorrent Remains quantity.",
-    "tags": [
-      "abhorrent-remains",
-      "kala",
-      "seasonal"
-    ],
-    "path": "Seasonal/August/KalaMergeAbhorrentRemains.cs",
-    "size": 1461,
-    "fileName": "KalaMergeAbhorrentRemains.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/August/KalaMergeAbhorrentRemains.cs"
-  },
-  {
-    "name": "Rangda Story",
-    "description": "This will finish the Rangda storyline.",
-    "tags": [
-      "rangda-story",
-      "rangda",
-      "seasonal"
-    ],
-    "path": "Seasonal/August/Rangda.cs",
-    "size": 1983,
-    "fileName": "Rangda.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/August/Rangda.cs"
   },
   {
     "name": "Loves Curse",
