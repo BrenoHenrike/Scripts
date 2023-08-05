@@ -32,6 +32,9 @@ public class StarSinc
         if (Core.CheckInventory("SuperNova Badge"))
             return;
 
+        foreach (int Qid in new[] { 4400, 4401, 4402, 4403, 4404, 4405, 4406, 4407, 4408, 4409, 4410, 4412 })
+            Bot.Drops.Add(Core.QuestRewards(Qid));
+
         Core.EquipClass(ClassType.Farm);
 
         Story.LegacyQuestManager(QuestLogic, 4400, 4401, 4402, 4403, 4404, 4405, 4406, 4407, 4408, 4409, 4410, 4412);

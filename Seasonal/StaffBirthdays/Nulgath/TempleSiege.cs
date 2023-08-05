@@ -32,7 +32,7 @@ public class TempleSiege
         Story.PreLoad(this);
 
         //Fairweather Elementals || 9058
-        Story.MapItemQuest(9058, "templesiege", 11129);
+        Story.MapItemQuest(9058, "templesiege", 11129, 8);
         Story.KillQuest(9058, "templesiege", "Light Elemental");
 
         //In Case of Emergency || 9059

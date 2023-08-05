@@ -281,13 +281,6 @@ public class CoreFarms
         Core.ToggleAggro(true);
         Core.SavedState();
 
-        Core.Logger("Forcing private rooms due to potential\n" +
-        "flags with using older map swf");
-        Core.PrivateRooms = true;
-
-        //monsters were remoed, old swf nolonger needed --ty .G && Exe
-        // Core.JoinSWF("icestormarena", "Icewing/town-icestormarena-28Dec18.swf");
-
         //Between level 1 and 5
         while (NotYetLevel(5))
             Core.KillMonster("icestormarena", "r4", "Bottom", "*", log: false, publicRoom: true);
@@ -327,9 +320,6 @@ public class CoreFarms
             Core.KillMonster("icestormarena", "r14", "Left", "*", log: false, publicRoom: true);
 
         //Between level 50 and 75
-        Core.Logger(" \"icy wind\" has been completly removed from\n" +
-        "the original ISA map, using new methods till 75");
-
         while (NotYetLevel(60))
             Core.KillMonster("underlair", "r4", "Right", "*", log: false);
 
