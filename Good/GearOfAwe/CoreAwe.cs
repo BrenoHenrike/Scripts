@@ -29,12 +29,17 @@ public class CoreAwe
         int questID;
         if (Bot.Flash.GetGameObject<int>("world.myAvatar.objData.intAQ") > 0)
         {
-            Adv.BuyItem("tower", 53, 29403, shopItemID: 18569);
+            Farm.BladeofAweREP(5, false);
+            Farm.Experience(35);
+            Core.BuyItem("tower", 53, 29403, shopItemID: 18569);
             questID = LegendQuest + 1;
         }
         else
         {
-            Adv.BuyItem("museum", 1130, Core.IsMember ? 29402 : 29404, shopItemID: Core.IsMember ? 18580 : 18579);
+            Farm.BladeofAweREP(10, false);
+            Farm.Experience(55);
+
+            Core.BuyItem("museum", 1130, Core.IsMember ? 29402 : 29404, shopItemID: Core.IsMember ? 18580 : 18579);
             questID = Core.IsMember ? LegendQuest : LegendQuest + 2;
         }
 
@@ -52,6 +57,6 @@ public class CoreAwe
         }
         Core.CancelRegisteredQuests();
 
-        Adv.BuyItem("museum", 1129, $"{Item} Relic");
+        Core.BuyItem("museum", 1129, $"{Item} Relic");
     }
 }
