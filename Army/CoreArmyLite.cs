@@ -388,7 +388,7 @@ public class CoreArmyLite
         return players.ToArray();
     }
 
-    public void waitForParty(string map, string? item = null, int playerMax = -1)
+    public void waitForParty(string? map, string? item = null, int playerMax = -1)
     {
         string[] players = Players();
         int partySize = players.Count();

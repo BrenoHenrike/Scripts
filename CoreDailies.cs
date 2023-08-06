@@ -126,6 +126,12 @@ public class CoreDailies
 
 
     //new one
+    /// <summary>
+    /// Checks if the daily is complete, if not will add the specified drops and unbank if necessary
+    /// </summary>
+    /// <param name="quest">ID of the quest</param>
+    /// <param name="items">Items to add to drop grabber and unbank</param>
+    /// <returns></returns>
     public bool CheckDaily(int quest, bool any = true, bool shouldUnBank = true, params string[] items)
     {
         if (Bot.Quests.IsDailyComplete(quest))
