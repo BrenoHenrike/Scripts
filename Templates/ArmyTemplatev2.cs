@@ -63,15 +63,12 @@ public class ArmyTemplate
         }
     }
 
-    void Armykill(string map = null, string[] monsters = null, string item = null, bool isTemp = false, int quant = 1)
+    void Armykill(string? map = null, string[]? monsters = null, string? item = null, bool isTemp = false, int quant = 1)
     {
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
 
-        if (Core.CheckInventory(item, quant))
-            return;
-
-        if (item == null)
+        if (item == null || Core.CheckInventory(item, quant))
             return;
 
         Bot.Drops.Add(item);
@@ -82,8 +79,8 @@ public class ArmyTemplate
         Army.waitForParty(map, item);
         AggroSetup(map);
 
-        foreach (string monster in monsters)
-            Army.SmartAggroMonStart(map, monsters);
+        foreach (string monster in monsters ?? Array.Empty<string>())
+            Army.SmartAggroMonStart(map, monster);
 
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
             Bot.Combat.Attack("*");
@@ -91,22 +88,23 @@ public class ArmyTemplate
         Army.AggroMonStop(true);
         Core.JumpWait();
         Bot.Wait.ForPickup(item);
-
     }
 
-    void AggroSetup(string map = null)
+    void AggroSetup(string? map = null, params string[] cellNames)
     {
         if (Bot.Map.Name == null)
             return;
 
-        if (Bot.Map.Name == "MaptoAggro")
+        if (Bot.Map.Name == map)
         {
-            Army.AggroMonCells("cell1", "cell2", "cell3");
-            Army.AggroMonStart("MaptoAggro");
-            Army.DivideOnCells("cell1", "cell2", "cell3");
+            Army.AggroMonCells(cellNames);
+            Army.AggroMonStart(map);
+            Army.DivideOnCells(cellNames);
         }
     }
 }
+
+
 
 /*old stuff
 

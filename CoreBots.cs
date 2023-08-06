@@ -2940,11 +2940,11 @@ public class CoreBots
     /// <param name="pad">The pad to jump to</param>
     /// <param name="publicRoom">Whether or not it should be a public room, if PrivateRoom is on in the CanChange section on the top of CoreBots</param>
     /// <param name="ignoreCheck">If set to true, the bot will not check if the player is already in the given room</param>
-    public void Join(string map, string cell = "Enter", string pad = "Spawn", bool publicRoom = false, bool ignoreCheck = false)
+    public void Join(string? map, string cell = "Enter", string pad = "Spawn", bool publicRoom = false, bool ignoreCheck = false)
     {
-        map = map.Replace(" ", "").Replace('I', 'i');
-        map = map.ToLower() == "tercess" ? "tercessuinotlim" : map.ToLower();
-        string strippedMap = map.Contains('-') ? map.Split('-').First() : map;
+        map = map?.Replace(" ", "").Replace('I', 'i');
+        map = map?.ToLower() == "tercess" ? "tercessuinotlim" : map?.ToLower();
+        string? strippedMap = map.Contains('-') ? map.Split('-').First() : map;
 
         if (Bot.Map.Name != null && Bot.Map.Name.ToLower() == strippedMap && !ignoreCheck)
             return;

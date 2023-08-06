@@ -6,7 +6,7 @@
       "null"
     ],
     "path": "CoreDailies.cs",
-    "size": 47628,
+    "size": 47922,
     "fileName": "CoreDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreDailies.cs"
   },
@@ -17,7 +17,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 176969,
+    "size": 176974,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -61,7 +61,7 @@
       "null"
     ],
     "path": "Army/CoreArmyLite.cs",
-    "size": 39015,
+    "size": 39016,
     "fileName": "CoreArmyLite.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/CoreArmyLite.cs"
   },
@@ -202,7 +202,7 @@
       "null"
     ],
     "path": "Templates/ArmyTemplatev2.cs",
-    "size": 5112,
+    "size": 5087,
     "fileName": "ArmyTemplatev2.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Templates/ArmyTemplatev2.cs"
   },
@@ -4158,7 +4158,7 @@
       "null"
     ],
     "path": "Good/GearOfAwe/CoreAwe.cs",
-    "size": 2061,
+    "size": 1887,
     "fileName": "CoreAwe.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/GearOfAwe/CoreAwe.cs"
   },
