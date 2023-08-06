@@ -14653,10 +14653,10 @@
       "shop",
       "credit",
       "extra",
-      "summer-break"
+      "back-to-school"
     ],
     "path": "Seasonal/BackToSchool/ExtraCreditACItems.cs",
-    "size": 1881,
+    "size": 1883,
     "fileName": "ExtraCreditACItems.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/BackToSchool/ExtraCreditACItems.cs"
   },
