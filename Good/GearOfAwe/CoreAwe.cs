@@ -28,19 +28,20 @@ public class CoreAwe
         int QuestID;
         if (Bot.Flash.GetGameObject<int>("world.myAvatar.objData.intAQ") > 0)
         {
-            Farm.BladeofAweREP(5, false);
-            Farm.Experience(35);
+            // Farm.BladeofAweREP(5, false);
+            // Farm.Experience(35);
+            Adv.BuyItem("tower", 53, 29403, shopItemID: 18569);
             QuestID = LegendQuest + 1;
         }
         else
         {
-            if (!Core.IsMember)
-            {
-                Farm.BladeofAweREP(10, false);
-                Farm.Experience(55);
-            }
+            // if (!Core.IsMember)
+            // {
+            //     Farm.BladeofAweREP(10, false);
+            //     Farm.Experience(55);
+            // }
 
-            Core.BuyItem("museum", 1130, Core.IsMember ? "Legendary Awe Pass" : "Armor of Awe Pass");
+            Adv.BuyItem("museum", 1130, Core.IsMember ? "Legendary Awe Pass" : "Armor of Awe Pass");
             QuestID = Core.IsMember ? LegendQuest : LegendQuest + 2;
         }
 
@@ -57,6 +58,6 @@ public class CoreAwe
         }
         Core.CancelRegisteredQuests();
 
-        Core.BuyItem("museum", 1129, $"{Item} Relic");
+        Adv.BuyItem("museum", 1129, $"{Item} Relic");
     }
 }
