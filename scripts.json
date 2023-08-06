@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 107188,
+    "size": 107166,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -13772,6 +13772,20 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/IndonesianDay/Rangda.cs"
   },
   {
+    "name": "Wentira",
+    "description": "This script will complete the storyline in /wentira.",
+    "tags": [
+      "royal wentira",
+      "agung palakka",
+      "seasonal",
+      "indonesia"
+    ],
+    "path": "Seasonal/IndonesianDay/Wentira.cs",
+    "size": 991,
+    "fileName": "Wentira.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/IndonesianDay/Wentira.cs"
+  },
+  {
     "name": "Rangda Merge",
     "description": "This bot will farm the items belonging to the selected mode for the Rangda Merge [1901] in /rangda",
     "tags": [
@@ -13793,6 +13807,32 @@
     "size": 4099,
     "fileName": "RangdaMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/IndonesianDay/RangdaMerge.cs"
+  },
+  {
+    "name": "Royal Wentira Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Royal Wentira Merge [2318] in /wentira",
+    "tags": [
+      "royal",
+      "wentira",
+      "merge",
+      "wentira",
+      "pesugihan",
+      "boar",
+      "crown",
+      "maned",
+      "morph",
+      "ritual",
+      "instruments",
+      "kabasaran",
+      "master",
+      "headdress",
+      "adornment",
+      "shielded"
+    ],
+    "path": "Seasonal/IndonesianDay/RoyalWentiraMerge.cs",
+    "size": 5948,
+    "fileName": "RoyalWentiraMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/IndonesianDay/RoyalWentiraMerge.cs"
   },
   {
     "name": "Steampunk Eggsplorer Armor",
