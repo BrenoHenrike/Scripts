@@ -718,9 +718,9 @@ public class CoreFarms
             return;
 
         if (item == "Undead Energy" && !Core.isCompletedBefore(2084))
-        {  
+        {
             Core.Logger("Making it so undead energy can drop..");
-            
+
             // 2066 - Reforging the Blinding Light
             if (!Core.isCompletedBefore(2066))
             {
@@ -844,7 +844,7 @@ public class CoreFarms
         TreasureHunterREP();
         TrollREP();
         VampireREP();
-        YokaiREP();        
+        YokaiREP();
         //Death Pit scripts here because they take alot of time and kill script efficieny
         DeathPitBrawlREP();
         DeathPitArenaREP();
