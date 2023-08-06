@@ -1,7 +1,7 @@
 /*
 name: Extra Credit AC Items
 description: This will farm the Extra Credit AC Items.
-tags: farm, merge, shop, credit, extra, summer-break
+tags: farm, merge, shop, credit, extra, back-to-school
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
