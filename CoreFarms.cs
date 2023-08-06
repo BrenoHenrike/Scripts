@@ -1662,6 +1662,31 @@ public class CoreFarms
         }
     }
 
+    public void EmberseaFFREP(int rank = 10)
+    {
+        if (FactionRank("Embersea") >= rank)
+        return;
+
+        // if (Core.IsMember)
+        //     MembershipDues(MemberShipsIDS.Embersea, rank);
+        // else
+        {
+            Core.EquipClass(ClassType.Farm);
+            Core.SavedState();
+            ToggleBoost(BoostType.Reputation);
+            Core.Join("feverfew");
+            Core.Logger($"Farming rank {rank}");
+
+            Core.RegisterQuests(4135); //Where There's Smoke
+            while (!Bot.ShouldExit && FactionRank("Embersea") < rank)
+                Core.SendPackets("%xt%zm%getMapItem%22601%3248%");
+            Bot.Wait.ForQuestComplete(4135);
+            Core.CancelRegisteredQuests();
+            ToggleBoost(BoostType.Reputation, false);
+            Core.SavedState(false);
+        }
+    }
+
     public void EternalREP(int rank = 10)
     {
         if (FactionRank("Eternal") >= rank)
