@@ -2023,7 +2023,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 68818,
+    "size": 76703,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -2107,7 +2107,7 @@
       "null"
     ],
     "path": "Nation/SwindlesReturnPolicy.cs",
-    "size": 2632,
+    "size": 3502,
     "fileName": "SwindlesReturnPolicy.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/SwindlesReturnPolicy.cs"
   },
@@ -4158,7 +4158,7 @@
       "null"
     ],
     "path": "Good/GearOfAwe/CoreAwe.cs",
-    "size": 1887,
+    "size": 2042,
     "fileName": "CoreAwe.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/GearOfAwe/CoreAwe.cs"
   },
