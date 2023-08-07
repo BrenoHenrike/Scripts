@@ -304,7 +304,7 @@ public class CoreNation
             Supplies("Unidentified 9");
             Supplies("Unidentified 16");
             Supplies("Unidentified 20");
-            Core.KillMonster(Core.IsMember ? "nulgath" : "evilmarsh", "Field1", "Dark Makai", "Dark Makai Rune");
+            Core.KillMonster(Core.IsMember ? "nulgath" : "evilmarsh", "Field1", "Left", "Dark Makai", "Dark Makai Rune");
             Core.EnsureComplete(7551, Item.ID);
             if (Item.Name != "Voucher of Nulgath" && sellMemVoucher)
                 Core.SellItem("Voucher of Nulgath", all: true);
@@ -573,7 +573,7 @@ public class CoreNation
                 // Process "Return Policy During Supplies" if active and the Dark Makai Rune is not available
                 if (returnPolicyDuringSupplies && !Core.CheckInventory("Dark Makai Rune"))
                 {
-                    Core.KillMonster(Core.IsMember ? "nulgath" : "evilmarsh", "Field1", "Dark Makai", "Dark Makai Rune");
+                    Core.KillMonster(Core.IsMember ? "nulgath" : "evilmarsh", "Field1", "Left", "Dark Makai", "Dark Makai Rune");
                 }
 
                 // Kill Escherion and wait for the item drop
@@ -671,7 +671,7 @@ public class CoreNation
 
                         Core.FarmingLogger(Item2.Name, Item2.MaxStack);
                         Core.EnsureAccept(7551);
-                        Core.KillMonster(Core.IsMember ? "nulgath" : "evilmarsh", "Field1", "Dark Makai", "Dark Makai Rune");
+                        Core.KillMonster(Core.IsMember ? "nulgath" : "evilmarsh", "Field1", "Left", "Dark Makai", "Dark Makai Rune");
 
                         if (Reward != SwindlesReturnReward.None)
                             Core.EnsureComplete(7551, Item2.ID);
@@ -706,7 +706,7 @@ public class CoreNation
 
                     Core.FarmingLogger(Item2.Name, Item2.MaxStack);
                     Core.EnsureAccept(7551);
-                    Core.KillMonster(Core.IsMember ? "nulgath" : "evilmarsh", "Field1", "Dark Makai", "Dark Makai Rune");
+                    Core.KillMonster(Core.IsMember ? "nulgath" : "evilmarsh", "Field1", "Left", "Dark Makai", "Dark Makai Rune");
 
                     if (Reward != SwindlesReturnReward.None)
                         Core.EnsureComplete(7551, (int)Reward);
@@ -853,7 +853,7 @@ public class CoreNation
                 Core.EnsureAccept(7551);
 
                 // Kill the Dark Makai monster
-                Core.KillMonster(Core.IsMember ? "nulgath" : "evilmarsh", "Field1", "Dark Makai", "Dark Makai Rune");
+                Core.KillMonster(Core.IsMember ? "nulgath" : "evilmarsh", "Field1", "Left", "Dark Makai", "Dark Makai Rune");
 
                 int itemId = item switch
                 {
@@ -949,7 +949,7 @@ public class CoreNation
                 Core.EnsureAccept(7551);
 
                 // Kill the Dark Makai monster
-                Core.KillMonster(Core.IsMember ? "nulgath" : "evilmarsh", "Field1", "Dark Makai", "Dark Makai Rune");
+                Core.KillMonster(Core.IsMember ? "nulgath" : "evilmarsh", "Field1", "Left", "Dark Makai", "Dark Makai Rune");
 
                 int itemId = item switch
                 {
