@@ -249,7 +249,7 @@ public class CoreLegion
         LTHardCoreParagon(quant);
         LTUW3017(quant);
         LTInfernalLegionBetrayal(quant);
-        LTFirstClassEntertainment(quant);
+        LTFirstClassEntertainment(quant, true, 4, true);
         LTDreadrock(quant);
     }
 
