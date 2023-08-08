@@ -383,6 +383,11 @@ public class CoreDailies
             return;
         }
 
+        if (Core.CheckInventory(new[] { "Seal of Light", "Seal of Darkness" }, 50))
+        {
+            Core.BuyItem("alteonbattle", 574, "Bright Knight");
+            return;
+        }
         if (CheckDaily(3826, true, true, "Seal of Light"))
         {
             Core.EquipClass(ClassType.Solo);
