@@ -175,7 +175,7 @@ public class CoreSepulchure
         if (!Story.QuestProgression(6364))
         {
             Core.EnsureAccept(6364);
-            Core.KillMonster("valleyofdoom", "r8a", "Left", 3801);
+            Core.HuntMonsterMapID("valleyofdoom", 25, "Doomknight Armor Defeated");
             Core.EnsureComplete(6364);
         }
 
