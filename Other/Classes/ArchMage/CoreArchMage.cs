@@ -16,6 +16,7 @@ tags: null
 //cs_include Scripts/ShadowsOfWar/CoreSoWMats.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Skills;
+using Skua.Core.Models.Items;
 using Skua.Core.Options;
 
 public class CoreArchMage
@@ -436,7 +437,10 @@ public class CoreArchMage
 
     public void UnboundTome(int quant)
     {
-        if (Core.CheckInventory("Unbound Tome", quant))
+        ItemBase? unboundTomeItem = Bot.Inventory.Items.FirstOrDefault(item => item.Name == "Unbound Tome");
+        int unboundTomesNeeded = Math.Max(0, quant - (unboundTomeItem?.Quantity ?? 0));
+
+        if (unboundTomesNeeded <= 0)
             return;
 
         if (!Bot.Quests.IsUnlocked(8912))
@@ -445,15 +449,13 @@ public class CoreArchMage
         Core.FarmingLogger("Unbound Tome", quant);
         Core.AddDrop("Unbound Tome");
 
-        MysticScribingKit(quant);
-        PrismaticEther(quant);
-        ArcaneLocus(quant);
+        MysticScribingKit(unboundTomesNeeded);
+        PrismaticEther(unboundTomesNeeded);
+        ArcaneLocus(unboundTomesNeeded);
 
-        while (!Bot.ShouldExit && !Core.CheckInventory("Unbound Tome", quant))
+        while (!Bot.ShouldExit && (unboundTomeItem == null || unboundTomeItem.Quantity < quant))
         {
             Core.EnsureAccept(8912);
-            //line 460 is require else it tries to do the 500ks and it absolutely refuses todo so.
-            // Adv.BuyItem("alchemyacademy", 395, 7132, 30, 1, 8844);
             Adv.BuyItem("alchemyacademy", 395, 62749, 30, 1, 8777);
             Core.BuyItem("alchemyacademy", 395, "Dragon Runestone", 30, 8844);
             Adv.BuyItem("darkthronehub", 1308, "Exalted Paladin Seal");
@@ -461,8 +463,12 @@ public class CoreArchMage
 
             Core.EnsureComplete(8912);
             Bot.Wait.ForPickup("Unbound Tome");
+
+            unboundTomeItem = Bot.Inventory.Items.FirstOrDefault(item => item.Name == "Unbound Tome");
         }
     }
+
+
 
     #endregion
 
