@@ -305,6 +305,8 @@ public class CoreFireIsland
 
         Fireforge();
 
+        Story.PreLoad(this);
+
         //Defeat Phedra 4231
         Story.KillQuest(4231, "Lavarun", "Phedra");
 
