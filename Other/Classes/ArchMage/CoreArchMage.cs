@@ -452,9 +452,11 @@ public class CoreArchMage
         Core.FarmingLogger("Unbound Tome", quant);
         Core.AddDrop("Unbound Tome");
 
-        MysticScribingKit(unboundTomesNeeded);
-        PrismaticEther(unboundTomesNeeded);
-        ArcaneLocus(unboundTomesNeeded);
+        int remainingQuant = quant - unboundTomesNeeded;
+
+        MysticScribingKit(remainingQuant);
+        PrismaticEther(remainingQuant);
+        ArcaneLocus(remainingQuant);
 
         while (!Bot.ShouldExit && (unboundTomeItem == null || unboundTomeItem.Quantity < quant))
         {
@@ -470,6 +472,7 @@ public class CoreArchMage
             unboundTomeItem = Bot.Inventory.Items.FirstOrDefault(item => item.Name == "Unbound Tome");
         }
     }
+
 
     #endregion
 
