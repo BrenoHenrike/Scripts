@@ -438,6 +438,9 @@ public class CoreArchMage
     public void UnboundTome(int quant)
     {
         ItemBase? unboundTomeItem = Bot.Inventory.Items.FirstOrDefault(item => item.Name == "Unbound Tome");
+        if (unboundTomeItem?.Quantity >= 30)
+            return;
+
         int unboundTomesNeeded = Math.Max(0, quant - (unboundTomeItem?.Quantity ?? 0));
 
         if (unboundTomesNeeded <= 0)
@@ -467,8 +470,6 @@ public class CoreArchMage
             unboundTomeItem = Bot.Inventory.Items.FirstOrDefault(item => item.Name == "Unbound Tome");
         }
     }
-
-
 
     #endregion
 
