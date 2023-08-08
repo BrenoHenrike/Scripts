@@ -47,9 +47,9 @@ public class EternalDrakath
 
         Armor.DrakathArmor();
 
-        if (!Core.CheckInventory("Drakath's Sword"))
-            Core.EquipClass(ClassType.Solo);
-        Core.HuntMonster("ultradrakath", "Champion of Chaos", "Drakath's Sword", isTemp: false);
+        Core.EquipClass(ClassType.Solo);
+        while (!Bot.ShouldExit && !Core.CheckInventory(25286))
+            Core.HuntMonster("ultradrakath", "Champion of Chaos");
 
         Core.EnsureAccept(8457);
 
