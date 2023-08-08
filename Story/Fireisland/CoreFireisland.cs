@@ -61,6 +61,8 @@ public class CoreFireIsland
         if (Core.isCompletedBefore(4081))
             return;
 
+        Embersea();
+
         Story.PreLoad(this);
 
         //Flee the Flames
@@ -140,6 +142,8 @@ public class CoreFireIsland
         if (Core.isCompletedBefore(4142))
             return;
 
+        Pyrewatch();
+
         Story.PreLoad(this);
 
         //Quench the Flames
@@ -203,6 +207,8 @@ public class CoreFireIsland
         if (Core.isCompletedBefore(4213))
             return;
 
+        Feverfew();
+
         Story.PreLoad(this);
 
         //Stonecold Defense
@@ -251,6 +257,8 @@ public class CoreFireIsland
         if (Core.isCompletedBefore(4226))
             return;
 
+        Phoenixrise();
+
         Story.PreLoad(this);
 
         //Round 1: Firestorm Scouts 4216
@@ -294,6 +302,8 @@ public class CoreFireIsland
     {
         if (Core.isCompletedBefore(4235))
             return;
+
+        Fireforge();
 
         //Defeat Phedra 4231
         Story.KillQuest(4231, "Lavarun", "Phedra");
