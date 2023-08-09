@@ -47,6 +47,7 @@ public class WillpowerExtraction
         {
             Core.EnsureAccept(5258);
 
+            Nation.FarmUni13(3);
             Adv.BuyItem("shadowfall", 89, "Shadow Lich");
             Adv.BuyItem("arcangrove", 214, "Mystic Tribal Sword");
 
@@ -80,7 +81,6 @@ public class WillpowerExtraction
                     Core.EquipClass(ClassType.Solo);
                     Core.HuntMonster("citadel", "Grand Inquisitor", "Golden Shadow Breaker", 1, false);
                     Core.HuntMonster("battleundera", "Bone Terror", "Shadow Terror Axe", 1, false);
-                    Nation.FarmUni13(2);
                     Nation.FarmDarkCrystalShard(5);
                     Nation.SwindleBulk(5);
                     Nation.FarmDiamondofNulgath(1);
