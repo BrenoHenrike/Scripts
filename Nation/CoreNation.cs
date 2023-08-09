@@ -1056,7 +1056,7 @@ public class CoreNation
     /// Farms Unidentified 13 with the best method available
     /// </summary>
     /// <param name="quant">Desired quantity, 13 = max stack</param>
-    public void FarmUni13(int quant = 1)
+    public void FarmUni13(int quant = 13)
     {
         if (Core.CheckInventory("Unidentified 13", quant))
             return;
