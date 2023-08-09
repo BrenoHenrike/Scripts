@@ -557,15 +557,8 @@ public class CoreNation
 
             // Choose the appropriate quest based on pet availability and return policy
             if (returnPolicyDuringSupplies)
-            {
-                bool OBoNPet = Core.IsMember && Core.CheckInventory("Oblivion Blade of Nulgath") && Bot.Inventory.Items.Any(obon => obon.Category == Skua.Core.Models.Items.ItemCategory.Pet && obon.Name == "Oblivion Blade of Nulgath");
-                if (Core.CheckInventory("Oblivion Blade of Nulgath Pet (Rare)") && Core.IsMember)
-                    Core.RegisterQuests(2857, 609, 599);
-                else if (OBoNPet)
-                    Core.RegisterQuests(2857, 609, 2561);
-                else
-                    Core.RegisterQuests(2857, 609);
-            }
+                Core.RegisterQuests(2857, 7551);
+            else Core.RegisterQuests(2857);
 
             // Continue the quest until the desired item and quantity are obtained
             while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
