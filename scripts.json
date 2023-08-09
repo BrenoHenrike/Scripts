@@ -2023,7 +2023,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 70024,
+    "size": 70025,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -7678,7 +7678,7 @@
       "null"
     ],
     "path": "Nation/AFDL/WillpowerExtraction.cs",
-    "size": 4202,
+    "size": 4194,
     "fileName": "WillpowerExtraction.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/AFDL/WillpowerExtraction.cs"
   },
