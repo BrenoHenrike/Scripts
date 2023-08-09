@@ -2023,7 +2023,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 70514,
+    "size": 70024,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -10476,7 +10476,7 @@
       "powerfist"
     ],
     "path": "Other/MergeShops/TitanAttackGearMerge.cs",
-    "size": 7358,
+    "size": 7174,
     "fileName": "TitanAttackGearMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/TitanAttackGearMerge.cs"
   },
