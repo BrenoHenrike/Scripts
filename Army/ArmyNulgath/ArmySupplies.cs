@@ -76,7 +76,7 @@ public class SuppliesWheelArmy
                 {
                     ArmyHunt("hydrachallenge", new[] { "Hydra Head 90" }, "Relic of Chaos", ClassType.Farm, false, 13);
                     if (Core.CheckInventory(Nation.SwindlesReturn))
-                        Core.HuntMonster(Core.IsMember ? "nulgath" : "evilmarsh", "Dark Makai", "Dark Makai Rune", 1);
+                    Core.KillMonster("tercessuinotlim", "m1", "Right", "Dark Makai", "Dark Makai Rune");
                 }
             }
             else

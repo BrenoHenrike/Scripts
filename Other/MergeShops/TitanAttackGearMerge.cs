@@ -65,6 +65,7 @@ public class TitanAttackGearMerge
                     Bot.Wait.ForPickup(req.Name);
                     break;
 
+                case "Golden Sun Seal":
                 case "Titan Paladin's Blade":
                     Core.EquipClass(ClassType.Solo);
                     Core.HuntMonster("titanattack", "Titanic Paladin", req.Name, quant, isTemp: false);
@@ -79,10 +80,6 @@ public class TitanAttackGearMerge
                     Bot.Wait.ForPickup(req.Name);
                     break;
 
-                case "Golden Sun Seal":
-                    Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster("titanattack", "Titanic Paladin", req.Name, quant, isTemp: false);
-                    break;
 
                 case "Holy Wasabi Jar":
                     Core.EquipClass(ClassType.Solo);

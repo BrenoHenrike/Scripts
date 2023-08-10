@@ -304,7 +304,7 @@ public class CoreNation
             Supplies("Unidentified 9");
             Supplies("Unidentified 16");
             Supplies("Unidentified 20");
-            Core.KillMonster(Core.IsMember ? "nulgath" : "evilmarsh", "Field1", "Left", "Dark Makai", "Dark Makai Rune");
+            Core.KillMonster("tercessuinotlim", "m1", "Right", "Dark Makai", "Dark Makai Rune");
             Core.EnsureComplete(7551, Item.ID);
             if (Item.Name != "Voucher of Nulgath" && sellMemVoucher)
                 Core.SellItem("Voucher of Nulgath", all: true);
@@ -557,24 +557,15 @@ public class CoreNation
 
             // Choose the appropriate quest based on pet availability and return policy
             if (returnPolicyDuringSupplies)
-            {
-                bool OBoNPet = Core.IsMember && Core.CheckInventory("Oblivion Blade of Nulgath") && Bot.Inventory.Items.Any(obon => obon.Category == Skua.Core.Models.Items.ItemCategory.Pet && obon.Name == "Oblivion Blade of Nulgath");
-                if (Core.CheckInventory("Oblivion Blade of Nulgath Pet (Rare)") && Core.IsMember)
-                    Core.RegisterQuests(2857, 609, 599);
-                else if (OBoNPet)
-                    Core.RegisterQuests(2857, 609, 2561);
-                else
-                    Core.RegisterQuests(2857, 609);
-            }
+                Core.RegisterQuests(2857, 7551);
+            else Core.RegisterQuests(2857);
 
             // Continue the quest until the desired item and quantity are obtained
             while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
             {
                 // Process "Return Policy During Supplies" if active and the Dark Makai Rune is not available
-                if (returnPolicyDuringSupplies && !Core.CheckInventory("Dark Makai Rune"))
-                {
-                    Core.KillMonster(Core.IsMember ? "nulgath" : "evilmarsh", "Field1", "Left", "Dark Makai", "Dark Makai Rune");
-                }
+                if (returnPolicyDuringSupplies && Core.CheckInventory(rPDSuni))
+                    Core.KillMonster("tercessuinotlim", "m1", "Right", "Dark Makai", "Dark Makai Rune");
 
                 // Kill Escherion and wait for the item drop
                 Core.KillEscherion("Relic of Chaos", publicRoom: true, log: false);
@@ -671,7 +662,7 @@ public class CoreNation
 
                         Core.FarmingLogger(Item2.Name, Item2.MaxStack);
                         Core.EnsureAccept(7551);
-                        Core.KillMonster(Core.IsMember ? "nulgath" : "evilmarsh", "Field1", "Left", "Dark Makai", "Dark Makai Rune");
+                        Core.KillMonster("tercessuinotlim", "m1", "Right", "Dark Makai", "Dark Makai Rune");
 
                         if (Reward != SwindlesReturnReward.None)
                             Core.EnsureComplete(7551, Item2.ID);
@@ -706,7 +697,8 @@ public class CoreNation
 
                     Core.FarmingLogger(Item2.Name, Item2.MaxStack);
                     Core.EnsureAccept(7551);
-                    Core.KillMonster(Core.IsMember ? "nulgath" : "evilmarsh", "Field1", "Left", "Dark Makai", "Dark Makai Rune");
+                    Core.KillMonster("tercessuinotlim", "m1", "Right", "Dark Makai", "Dark Makai Rune");
+
 
                     if (Reward != SwindlesReturnReward.None)
                         Core.EnsureComplete(7551, (int)Reward);
@@ -790,41 +782,31 @@ public class CoreNation
     /// <param name="quant">Desired item quantity</param>
     public void BambloozevsDrudgen(string? item = null, int quant = 1)
     {
-        // Check if CragName is available and if the desired item is already in inventory
         if (!Core.CheckInventory(CragName) || Core.CheckInventory(item, quant))
             return;
 
-        // Add drops based on whether return policy is active
         Core.AddDrop("Relic of Chaos", "Tainted Core");
+        Core.AddDrop(string.IsNullOrEmpty(item) ? bagDrops : new string[] { item });
 
-        // Check if 'item' is null or empty and set 'selectedDrops' accordingly
-        string[] selectedDrops = string.IsNullOrEmpty(item) ? bagDrops : new string[] { item };
-        Core.AddDrop(selectedDrops);
-
-        // Check if the Oblivion Blade of Nulgath Pet (Rare) is available
         bool hasOBoNPet = Core.IsMember && Core.CheckInventory("Oblivion Blade of Nulgath") &&
                           Bot.Inventory.Items.Any(obon => obon.Category == Skua.Core.Models.Items.ItemCategory.Pet && obon.Name == "Oblivion Blade of Nulgath");
-
-        // Add Tainted Soul drop if OBoNPet is available or already in inventory
         if (hasOBoNPet || Core.CheckInventory("Oblivion Blade of Nulgath Pet (Rare)"))
             Core.AddDrop("Tainted Soul");
 
-        // Check if return policy and sell voucher are active
         bool returnPolicyDuringSupplies = Core.CBOBool("Nation_ReturnPolicyDuringSupplies", out bool _returnSupplies);
         bool sellMemVoucher = Core.CBOBool("Nation_SellMemVoucher", out bool _sellMemVoucher);
 
         Core.Logger(returnPolicyDuringSupplies ? "return Policy During Supplies: true" : "return Policy During Supplies: false");
         Core.Logger(sellMemVoucher ? "Sell Voucher of Nulgath: true" : "Sell Voucher of Nulgath: false");
 
-        string[]? rPDSuni = returnPolicyDuringSupplies ? new[] { Uni(1), Uni(6), Uni(9), Uni(16), Uni(20) } : null;
-
-        // Check if 'rPDSuni' is null and set an empty array if so
-        Core.AddDrop(rPDSuni ?? Array.Empty<string>());
-
-        Core.AddDrop("Blood Gem of Nulgath");
-
-        // List of rewards for Bamblooze vs. Drudgen quest
-        string[] rewards = { "Tainted Gem", "Dark Crystal Shard", "Gem of Nulgath", "Blood Gem of the Archfiend", "Diamond of Nulgath" };
+        Dictionary<string, int> rewardItemIds = new Dictionary<string, int>
+        {
+            ["Dark Crystal Shard"] = 123,
+            ["Diamond of Nulgath"] = 456,
+            ["Gem of Nulgath"] = 789,
+            ["Tainted Gem"] = 101,
+            ["Unidentified 10"] = 202
+        };
 
         if (!string.IsNullOrEmpty(item))
             Core.FarmingLogger(item, quant);
@@ -837,52 +819,44 @@ public class CoreNation
         else
             Core.RegisterQuests(2857, 609);
 
-        // Continue the quest until the desired item and quantity are obtained
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
         {
-            // Hunt the Tainted Elemental monster
-            Core.HuntMonster("evilmarsh", "Tainted Elemental", log: false);
+            Core.KillMonster("evilmarsh", "End", "Left", "Tainted Elemental", log: false);
 
-            // Sell Voucher of Nulgath if specified and return policy is active
             if (Core.CheckInventory("Voucher of Nulgath") && !string.IsNullOrEmpty(item) && item != "Voucher of Nulgath" && sellMemVoucher)
+            {
+                Core.JumpWait();
                 Core.SellItem("Voucher of Nulgath", all: true);
+            }
 
-            // Process return policy during supplies
-            if (returnPolicyDuringSupplies && rPDSuni != null && rPDSuni.Length > 0 && Core.CheckInventory(rPDSuni))
+            if (returnPolicyDuringSupplies && Core.CheckInventory(new[] { Uni(1), Uni(6), Uni(9), Uni(16), Uni(20) }))
             {
                 Core.EnsureAccept(7551);
+                Core.KillMonster("tercessuinotlim", "Field1", "Left", "Dark Makai", "Dark Makai Rune", publicRoom: false);
 
-                // Kill the Dark Makai monster
-                Core.KillMonster(Core.IsMember ? "nulgath" : "evilmarsh", "Field1", "Left", "Dark Makai", "Dark Makai Rune");
-
-                int itemId = item switch
-                {
-                    "Dark Crystal Shard" => 123,
-                    "Diamond of Nulgath" => 456,
-                    "Gem of Nulgath" => 789,
-                    "Tainted Gem" => 101,
-                    "Unidentified 10" => 202,
-                    _ => -1,
-                };
-
-                // Complete the quest with specified item ID or let the bot choose the item ID
-                if (itemId != -1)
+                if (item != null && rewardItemIds.TryGetValue(item, out int itemId))
                     Core.EnsureCompleteMulti(7551, itemId);
                 else
-                    Core.EnsureCompleteMulti(7551); // Complete the quest and let the bot choose the item ID
-
-                // Check if you have the required item and quantity after quest completion
-                if (Core.CheckInventory(item, quant))
                 {
-                    Core.EnsureCompleteMulti(7551); // Complete the quest without specifying item ID
-                    return; // Exit the method as the required items are obtained
-                }
+                    foreach (var rewardItemPair in rewardItemIds)
+                    {
+                        string rewardItem = rewardItemPair.Key;
+                        itemId = rewardItemPair.Value;
 
-                if (!string.IsNullOrEmpty(item) && rewards.Contains(item))
-                    Core.Logger($"{item}: {Bot.Inventory.GetQuantity(item)}/{quant}");
+                        if (!Bot.Inventory.IsMaxStack(rewardItem))
+                        {
+                            Core.EnsureCompleteMulti(7551, itemId);
+                            break;
+                        }
+                    }
+                }
             }
         }
     }
+
+
+
+
 
 
 
@@ -1082,7 +1056,7 @@ public class CoreNation
     /// Farms Unidentified 13 with the best method available
     /// </summary>
     /// <param name="quant">Desired quantity, 13 = max stack</param>
-    public void FarmUni13(int quant = 1)
+    public void FarmUni13(int quant = 13)
     {
         if (Core.CheckInventory("Unidentified 13", quant))
             return;

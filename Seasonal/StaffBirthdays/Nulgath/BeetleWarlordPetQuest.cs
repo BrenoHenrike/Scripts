@@ -31,7 +31,6 @@ public class BeetleWarlordPetQuest
     {
         Core.SetOptions();
 
-        RequiredItemsandQuests();
         AutoReward();
 
         Core.SetOptions(false);
@@ -40,9 +39,10 @@ public class BeetleWarlordPetQuest
     public void AutoReward(int questID = 9078, int quant = 1, string rewardItemName = "")
     {
         // Add drops and experience at the beginning
-        Core.AddDrop("Baby Chaos Dragon", "Reaper's Soul");
         Farm.Experience(80);
+        GetBeetlWarlordPet();
 
+        Core.AddDrop("Baby Chaos Dragon", "Reaper's Soul");
         List<ItemBase> RewardOptions = Core.EnsureLoad(questID).Rewards;
 
         // Find the ItemBase object that matches the rewardItemName using case-insensitive comparison
@@ -103,8 +103,11 @@ public class BeetleWarlordPetQuest
 
 
     // Beetle Warlord Pet
-    private void RequiredItemsandQuests(params string[] items)
+    private void GetBeetlWarlordPet(params string[] items)
     {
+        if (Core.CheckInventory(75663))
+            return;
+
         Core.EnsureAccept(9077);
         Adv.BuyItem("tercessuinotlim", 1951, "Unmoulded Fiend Essence");
         BGP.AutoReward(9087, 8, "Beetle EXP");

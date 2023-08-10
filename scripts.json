@@ -17,7 +17,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 176974,
+    "size": 177236,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -2023,7 +2023,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 72115,
+    "size": 70025,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -3269,7 +3269,7 @@
       "null"
     ],
     "path": "Legion/CoreLegion.cs",
-    "size": 31632,
+    "size": 31647,
     "fileName": "CoreLegion.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/CoreLegion.cs"
   },
@@ -3902,7 +3902,7 @@
       "reagents"
     ],
     "path": "Army/ArmyNulgath/ArmySupplies.cs",
-    "size": 4129,
+    "size": 4115,
     "fileName": "ArmySupplies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyNulgath/ArmySupplies.cs"
   },
@@ -4964,7 +4964,7 @@
       "null"
     ],
     "path": "Story/SepulchureSaga/CoreSepulchure.cs",
-    "size": 14467,
+    "size": 14484,
     "fileName": "CoreSepulchure.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/SepulchureSaga/CoreSepulchure.cs"
   },
@@ -7678,7 +7678,7 @@
       "null"
     ],
     "path": "Nation/AFDL/WillpowerExtraction.cs",
-    "size": 4202,
+    "size": 4194,
     "fileName": "WillpowerExtraction.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/AFDL/WillpowerExtraction.cs"
   },
@@ -7841,7 +7841,7 @@
       "null"
     ],
     "path": "Nation/Various/TarosManslayer.cs",
-    "size": 1722,
+    "size": 1718,
     "fileName": "TarosManslayer.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/TarosManslayer.cs"
   },
@@ -10476,7 +10476,7 @@
       "powerfist"
     ],
     "path": "Other/MergeShops/TitanAttackGearMerge.cs",
-    "size": 7358,
+    "size": 7174,
     "fileName": "TitanAttackGearMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/TitanAttackGearMerge.cs"
   },
@@ -18135,7 +18135,7 @@
       "null"
     ],
     "path": "Other/Classes/ArchMage/CoreArchMage.cs",
-    "size": 22646,
+    "size": 23009,
     "fileName": "CoreArchMage.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/ArchMage/CoreArchMage.cs"
   },
@@ -18302,7 +18302,7 @@
       "nulgath"
     ],
     "path": "Seasonal/StaffBirthdays/Nulgath/BeetleWarlordPetQuest.cs",
-    "size": 3982,
+    "size": 4035,
     "fileName": "BeetleWarlordPetQuest.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/Nulgath/BeetleWarlordPetQuest.cs"
   },

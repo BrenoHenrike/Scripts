@@ -493,7 +493,6 @@ public class CoreBots
                (!toInv && Bot.Bank.TryGetItem(item, out InventoryItem? _item) && _item != null && _item.Quantity >= quant))
                 return true;
         }
-
         if (Bot.House.Contains(item))
             return true;
 
@@ -1123,7 +1122,12 @@ public class CoreBots
     {
         if (!(quant > 0 ? CheckInventory(itemName, quant) : CheckInventory(itemName)) || !Bot.Inventory.TryGetItem(itemName, out var item))
             return;
-        JumpWait();
+
+        while (!Bot.ShouldExit && Bot.Player.InCombat)
+        {
+            JumpWait();
+            Bot.Sleep(ActionDelay);
+        }
 
         if (!all)
         {
@@ -2926,8 +2930,13 @@ public class CoreBots
             Bot.Sleep(ExitCombatDelay < 200 ? ExitCombatDelay : ExitCombatDelay - 200);
             Bot.Wait.ForCombatExit();
         }
-        Bot.Combat.Exit();
-        Bot.Wait.ForCombatExit();
+        while (!Bot.ShouldExit && Bot.Player.InCombat)
+        {
+            Bot.Combat.CancelTarget();
+            Bot.Combat.Exit();
+            Bot.Wait.ForTrue(() => !Bot.Player.InCombat, 20);
+        }
+
     }
     private string lastMapJW = String.Empty;
     private (string, string) lastCellPadJW = (String.Empty, String.Empty);
