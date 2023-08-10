@@ -133,30 +133,41 @@ public class CoreNSOD
             return;
 
         Core.AddDrop("Void Aura");
-        Core.Logger($"Farming Void Aura's ({Bot.Inventory.GetQuantity("Void Aura")}/{quant}) with SDKA Method");
         Core.RegisterQuests(4439);
+
         while (!Bot.ShouldExit && !Core.CheckInventory("Void Aura", quant))
         {
             Core.FarmingLogger("Void Aura", quant);
-            //aggro breaks it and it just get stuck swapping classes or stuck on an empty cell.
-            //anyone else reprots this *probably* has aggro on > ignore them.
-            if (Bot.Options.AggroAllMonsters || Bot.Options.AggroMonsters)
-            {
-                Core.Logger("having this shit on breaks the script\n" +
-                "please keep it disabled");
-                Bot.Options.AggroAllMonsters = false;
-                Bot.Options.AggroMonsters = false;
-            }
 
+            if (Bot.Options.AggroAllMonsters)
+                Bot.Options.AggroAllMonsters = false;  // Disable aggro all monsters (breaks stuff)
+
+            // Disable aggro, Jump and wait, wait for combat exit, equip FarmClass
+            Core.Logger("Switching to FarmClass with aggro off");
+            Bot.Options.AggroMonsters = false;
             Core.EquipClass(ClassType.Farm);
-            Core.KillMonster("shadowrealmpast", "Enter", "Spawn", "*", "Empowered Essence", 50, false, log: false);
-            Core.EquipClass(ClassType.Solo);
-            Core.HuntMonsterMapID("shadowrealmpast", 11, "Malignant Essence", 3, false, log: false);
 
-            Bot.Wait.ForPickup("Void Aura");
-            Core.Logger($"Void Auras: ({Bot.Inventory.GetQuantity("Void Aura")}/{quant})");
+            // Farm mob 1 for essence with aggro on
+            Core.Logger("Switching aggro on for mob 1");
+            Bot.Options.AggroMonsters = true;
+            Core.KillMonster("shadowrealmpast", "Enter", "Spawn", "*", "Empowered Essence", 50, false, log: false);
+
+            // Disable aggro, Jump and wait, wait for combat exit, equip SoloClass
+            Core.Logger("Switching to SoloClass with aggro off");
+            Bot.Options.AggroMonsters = false;  // Set aggro off for mob 2
+            Core.EquipClass(ClassType.Solo);
+
+            // Hunt mob 2 for essence with aggro off
+            Core.HuntMonsterMapID("shadowrealmpast", 11, "Malignant Essence", 3, false, log: false);
         }
+
+        // Reset Aggros both to off
+        Bot.Options.AggroAllMonsters = false;
+        Bot.Options.AggroMonsters = false;
+        Core.CancelRegisteredQuests();
     }
+
+
 
     public void GatheringUnstableEssences(int quant = 7500)
     {
@@ -200,23 +211,28 @@ public class CoreNSOD
         {
             Core.EquipClass(ClassType.Farm);
             Core.HuntMonster("timespace", "Astral Ephemerite", "Astral Ephemerite Essence", Essencequant, false, log: false);
-
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("citadel", "Belrot the Fiend", "Belrot the Fiend Essence", Essencequant, false, publicRoom: true, log: false);
-            Core.KillMonster("greenguardwest", "BKWest15", "Down", "Black Knight", "Black Knight Essence", Essencequant, false, publicRoom: true, log: false);
-            Core.KillMonster("mudluk", "Boss", "Down", "Tiger Leech", "Tiger Leech Essence", Essencequant, false, publicRoom: true, log: false);
-            Core.KillMonster("aqlesson", "Frame9", "Right", "Carnax", "Carnax Essence", Essencequant, false, publicRoom: true, log: false);
-            Core.KillMonster("necrocavern", "r16", "Down", "Chaos Vordred", "Chaos Vordred Essence", Essencequant, false, publicRoom: true, log: false);
-            Core.HuntMonster("hachiko", "Dai Tengu", "Dai Tengu Essence", Essencequant, false, publicRoom: true, log: false);
-            Core.HuntMonster("timevoid", "Unending Avatar", "Unending Avatar Essence", Essencequant, false, publicRoom: true, log: false);
-            Core.HuntMonster("dragonchallenge", "Void Dragon", "Void Dragon Essence", Essencequant, false, publicRoom: true, log: false);
-            Core.KillMonster("maul", "r3", "Down", "Creature Creation", "Creature Creation Essence", Essencequant, false, publicRoom: true, log: false);
+
+            HuntMonsterBatch(Essencequant, false, true, false,
+                ("citadel", "Belrot the Fiend", "Down", "Black Knight", "Black Knight Essence"),
+                ("greenguardwest", "BKWest15", "Down", "Black Knight", "Black Knight Essence"));
+
+            // Add more monsters here
 
             Bot.Wait.ForPickup("Void Aura");
             Core.Logger($"Void Auras: ({Bot.Inventory.GetQuantity("Void Aura")}/{quant})");
         }
         Core.CancelRegisteredQuests();
     }
+
+    private void HuntMonsterBatch(int quant, bool isTemp, bool publicRoom, bool log, params (string map, string region, string direction, string monster, string essence)[] monsters)
+    {
+        foreach (var monster in monsters)
+        {
+            Core.KillMonster(monster.map, monster.region, monster.direction, monster.monster, monster.essence, quant, isTemp, publicRoom, log);
+        }
+    }
+
 
     #endregion
 
