@@ -312,9 +312,9 @@ public class CoreArchMage
     #endregion
 
     #region Materials
-    public void MysticScribingKit(int quant = 5)
+    public void MysticScribingKit(int quant = 99)
     {
-        if (Core.CheckInventory("Mystic Scribing Kit", quant))
+        if (Core.CheckInventory(73327, quant))
             return;
 
         Core.FarmingLogger("Mystic Scribing Kit", quant);
@@ -341,11 +341,11 @@ public class CoreArchMage
             Core.RegisterQuests(3050);
             while (!Bot.ShouldExit && !Core.CheckInventory(new[] { "Mystic Shards", "Mystic Quills" }, 49))
             {
-                Core.KillMonster("gilead", "r3", "Left", "Water Elemental", "Water Core");
-                Core.KillMonster("gilead", "r4", "Left", "Fire Elemental", "Fire Core");
-                Core.KillMonster("gilead", "r4", "Left", "Wind Elemental", "Air Core");
-                Core.KillMonster("gilead", "r3", "Left", "Earth Elemental", "Earth Core");
-                Core.KillMonster("gilead", "r8", "Left", "Mana Elemental", "Mana Core");
+                Core.KillMonster("gilead", "r3", "Left", "Water Elemental", "Water Core", log: false);
+                Core.KillMonster("gilead", "r4", "Left", "Fire Elemental", "Fire Core", log: false);
+                Core.KillMonster("gilead", "r4", "Left", "Wind Elemental", "Air Core", log: false);
+                Core.KillMonster("gilead", "r3", "Left", "Earth Elemental", "Earth Core", log: false);
+                Core.KillMonster("gilead", "r8", "Left", "Mana Elemental", "Mana Core", log: false);
             }
 
             //Incase they swap it back again:
@@ -353,10 +353,10 @@ public class CoreArchMage
             // Core.RegisterQuests(3298);
             // while (!Bot.ShouldExit && !Core.CheckInventory(new[] { "Mystic Shards", "Mystic Quills" }, 49))
             // {
-            //     Core.HuntMonster("gilead", "Water Elemental", "Water Drop", 5);
-            //     Core.HuntMonster("gilead", "Fire Elemental", "Flame", 5);
-            //     Core.HuntMonster("gilead", "Wind Elemental", "Breeze", 5);
-            //     Core.HuntMonster("gilead", "Earth Elemental", "Stone", 5);
+            //     Core.HuntMonster("gilead", "Water Elemental", "Water Drop", 5, log: false);
+            //     Core.HuntMonster("gilead", "Fire Elemental", "Flame", 5, log: false);
+            //     Core.HuntMonster("gilead", "Wind Elemental", "Breeze", 5, log: false);
+            //     Core.HuntMonster("gilead", "Earth Elemental", "Stone", 5, log: false);
             // }
 
             Core.CancelRegisteredQuests();
@@ -377,9 +377,9 @@ public class CoreArchMage
         }
     }
 
-    public void PrismaticEther(int quant = 1)
+    public void PrismaticEther(int quant = 99)
     {
-        if (Core.CheckInventory("Prismatic Ether", quant))
+        if (Core.CheckInventory(73333, quant))
             return;
 
         if (!Bot.Quests.IsUnlocked(8910))
@@ -404,7 +404,7 @@ public class CoreArchMage
         }
     }
 
-    public void ArcaneLocus(int quant = 1)
+    public void ArcaneLocus(int quant = 99)
     {
         if (Core.CheckInventory(73339, quant))
             return;
@@ -435,7 +435,7 @@ public class CoreArchMage
         }
     }
 
-    public void UnboundTome(int quant)
+    public void UnboundTome(int quant = 99)
     {
         ItemBase? unboundTomeItem = Bot.Inventory.Items.FirstOrDefault(item => item.Name == "Unbound Tome");
         int currentUnboundTomes = unboundTomeItem?.Quantity ?? 0;
@@ -454,17 +454,13 @@ public class CoreArchMage
         Core.FarmingLogger("Unbound Tome", quant);
         Core.AddDrop("Unbound Tome");
 
-        int remainingQuant = quant - unboundTomesNeeded;
-
-        MysticScribingKit(remainingQuant);
-        PrismaticEther(remainingQuant);
-        ArcaneLocus(remainingQuant);
-
         while (!Bot.ShouldExit && (unboundTomeItem == null || unboundTomeItem.Quantity < quant))
         {
             Core.EnsureAccept(8912);
-            Adv.BuyItem("alchemyacademy", 395, 62749, 30, 1, 8777);
-            Core.BuyItem("alchemyacademy", 395, "Dragon Runestone", 30, 8844);
+            MysticScribingKit(unboundTomesNeeded);
+            PrismaticEther(unboundTomesNeeded);
+            ArcaneLocus(unboundTomesNeeded);
+            Farm.DragonRunestone(30);
             Adv.BuyItem("darkthronehub", 1308, "Exalted Paladin Seal");
             Adv.BuyItem("shadowfall", 89, "Forsaken Doom Seal");
 
@@ -474,6 +470,8 @@ public class CoreArchMage
             unboundTomeItem = Bot.Inventory.Items.FirstOrDefault(item => item.Name == "Unbound Tome");
         }
     }
+
+
 
 
 

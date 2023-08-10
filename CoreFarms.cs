@@ -972,7 +972,7 @@ public class CoreFarms
         //more to be added by request
     };
 
-    public void DragonRunestone(int quant)
+    public void DragonRunestone(int quant = 100)
     {
         if (Core.CheckInventory("Dragon Runestone", quant))
             return;
