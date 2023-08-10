@@ -562,7 +562,7 @@ public class CoreDailies
     public void SparrowsBlood()
     {
         Core.Logger("Daily: Sparrow's Blood");
-        if (!CheckDaily(803, true, true, "Sparrow's Blood"))
+        if (!CheckDaily(803, true, true, "Sparrow's Blood") || Core.CheckInventory("Sparrow's Blood", 3, false))
             return;
         Core.AddDrop("Sparrow's Blood");
         Core.EquipClass(ClassType.Farm);
@@ -576,7 +576,7 @@ public class CoreDailies
     public void ShadowShroud()
     {
         Core.Logger("Daily: Shadow Shroud");
-        if (!CheckDaily(486, true, true, "Shadow Shroud"))
+        if (!CheckDaily(486, true, true, "Shadow Shroud") || Core.Checkinventory("Shadow Shroud", 15, false))
             return;
         DailyRoutine(486, "bludrut2", "Shadow Creeper", "Shadow Canvas", 5, cell: "Enter", pad: "Down");
         Core.ToBank("Shadow Shroud");
@@ -585,7 +585,7 @@ public class CoreDailies
     public void DagesScrollFragment()
     {
         Core.Logger("Daily: Dage's Scroll Fragment");
-        if (!CheckDaily(3596, true, true, "Dage's Scroll Fragment"))
+        if (!CheckDaily(3596, true, true, "Dage's Scroll Fragment") || Core.CheckInventory("Dage's Scroll Fragment", 13, false))
             return;
 
         DailyRoutine(3596, "mountdoomskull", "*", "Chaos Power Increased", 6, cell: "b1", pad: "Left");
@@ -597,7 +597,7 @@ public class CoreDailies
     public void CryptoToken()
     {
         Core.Logger("Daily: Crypto Token (/curio)");
-        if (!CheckDaily(6187, true, true, "Crypto Token"))
+        if (!CheckDaily(6187, true, true, "Crypto Token") || Core.CheckInventory("Crypto Token", 300, false))
             return;
         Core.EquipClass(ClassType.Farm);
         DailyRoutine(6187, "boxes", "Sneevil", "Metal Ore", cell: "Closet", pad: "Center");
