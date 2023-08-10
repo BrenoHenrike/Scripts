@@ -885,7 +885,7 @@ public class CoreDailies
         if (!CheckDaily(3898))
             return;
 
-        if (!Core.HasAchievement(30, "ip6") || (!Core.CheckInventory(27222) || !Core.IsMember))
+        if (Core.HasAchievement(30, "ip6") && (!Core.CheckInventory(27222) || !Core.IsMember))
         {
             Core.Logger("\"BoneBreak\" map requires you to have membership or purchased BoneBreaker Adventure Pack to be able to access it.");
             return;

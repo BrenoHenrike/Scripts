@@ -24,7 +24,10 @@ public class BoneBreak
 
     public void StoryLine()
     {
-        if (!Core.HasAchievement(30, "ip6") || (Core.isCompletedBefore(5981) || !Core.CheckInventory(27222) || !Core.IsMember))
+        if (Core.isCompletedBefore(5981))
+            return;
+
+       if (Core.HasAchievement(30, "ip6") && (!Core.CheckInventory(27222) || !Core.IsMember))
         {
             Core.Logger("\"BoneBreak\" map requires you to have membership or purchased BoneBreaker Adventure Pack to be able to access it.");
             return;
