@@ -576,7 +576,7 @@ public class CoreDailies
     public void ShadowShroud()
     {
         Core.Logger("Daily: Shadow Shroud");
-        if (!CheckDaily(486, true, true, "Shadow Shroud") || Core.Checkinventory("Shadow Shroud", 15, false))
+        if (!CheckDaily(486, true, true, "Shadow Shroud") || Core.CheckInventory("Shadow Shroud", 15, false))
             return;
         DailyRoutine(486, "bludrut2", "Shadow Creeper", "Shadow Canvas", 5, cell: "Enter", pad: "Down");
         Core.ToBank("Shadow Shroud");
