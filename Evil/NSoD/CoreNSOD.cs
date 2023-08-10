@@ -134,19 +134,28 @@ public class CoreNSOD
 
         Core.AddDrop("Void Aura");
         Core.Logger($"Farming Void Aura's ({Bot.Inventory.GetQuantity("Void Aura")}/{quant}) with SDKA Method");
-
         Core.RegisterQuests(4439);
         while (!Bot.ShouldExit && !Core.CheckInventory("Void Aura", quant))
         {
+            Core.FarmingLogger("Void Aura", quant);
+            //aggro breaks it and it just get stuck swapping classes or stuck on an empty cell.
+            //anyone else reprots this *probably* has aggro on > ignore them.
+            if (Bot.Options.AggroAllMonsters || Bot.Options.AggroMonsters)
+            {
+                Core.Logger("having this shit on breaks the script\n" +
+                "please keep it disabled");
+                Bot.Options.AggroAllMonsters = false;
+                Bot.Options.AggroMonsters = false;
+            }
+
             Core.EquipClass(ClassType.Farm);
             Core.KillMonster("shadowrealmpast", "Enter", "Spawn", "*", "Empowered Essence", 50, false, log: false);
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("shadowrealmpast", "Shadow Lord", "Malignant Essence", 3, false, publicRoom: true, log: false);
+            Core.HuntMonsterMapID("shadowrealmpast", 11, "Malignant Essence", 3, false, log: false);
 
             Bot.Wait.ForPickup("Void Aura");
             Core.Logger($"Void Auras: ({Bot.Inventory.GetQuantity("Void Aura")}/{quant})");
         }
-        Core.CancelRegisteredQuests();
     }
 
     public void GatheringUnstableEssences(int quant = 7500)
