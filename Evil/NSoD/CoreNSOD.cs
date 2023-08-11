@@ -214,7 +214,7 @@ public class CoreNSOD
             Core.EquipClass(ClassType.Solo);
 
             HuntMonsterBatch(Essencequant, false, true, false,
-                ("citadel", "Belrot the Fiend", "Down", "Black Knight", "Black Knight Essence"),
+                ("citadel", "m13", "Down", "Belrot the Fiend", "Belrot the Fiend Essence"),
                 ("greenguardwest", "BKWest15", "Down", "Black Knight", "Black Knight Essence"));
 
             // Add more monsters here
