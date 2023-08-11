@@ -215,6 +215,7 @@ public class CoreNSOD
             
             HuntMonsterBatch(Essencequant, false, true, false,
                 ("citadel", "m13", "Down", "Belrot the Fiend", "Belrot the Fiend Essence"),
+                ("greenguardwest", "BKWest15", "Down", "Black Knight", "Black Knight Essence"),
                 ("mudluk", "Boss", "Down", "Tiger Leech", "Tiger Leech Essence"),
                 ("aqlesson", "Frame9", "Right", "Carnax", "Carnax Essence"),
                 ("necrocavern", "r16", "Down", "Chaos Vordred", "Chaos Vordred Essence"),
@@ -223,8 +224,6 @@ public class CoreNSOD
                 ("dragonchallenge", "r4", "Left", "Void Dragon", "Void Dragon Essence"),
                 ("maul", "r3", "Down", "Creature Creation", "Creature Creation Essence")
             );
-
-            // Add more monsters here
 
             Bot.Wait.ForPickup("Void Aura");
             Core.Logger($"Void Auras: ({Bot.Inventory.GetQuantity("Void Aura")}/{quant})");
