@@ -212,12 +212,18 @@ public class CoreNSOD
             Core.EquipClass(ClassType.Farm);
             Core.HuntMonster("timespace", "Astral Ephemerite", "Astral Ephemerite Essence", Essencequant, false, log: false);
             Core.EquipClass(ClassType.Solo);
-
+            
             HuntMonsterBatch(Essencequant, false, true, false,
-                ("citadel", "Belrot the Fiend", "Down", "Black Knight", "Black Knight Essence"),
-                ("greenguardwest", "BKWest15", "Down", "Black Knight", "Black Knight Essence"));
-
-            // Add more monsters here
+                ("citadel", "m13", "Down", "Belrot the Fiend", "Belrot the Fiend Essence"),
+                ("greenguardwest", "BKWest15", "Down", "Black Knight", "Black Knight Essence"),
+                ("mudluk", "Boss", "Down", "Tiger Leech", "Tiger Leech Essence"),
+                ("aqlesson", "Frame9", "Right", "Carnax", "Carnax Essence"),
+                ("necrocavern", "r16", "Down", "Chaos Vordred", "Chaos Vordred Essence"),
+                ("hachiko", "Roof", "Left", "Dai Tengu", "Dai Tengu Essence"),
+                ("timevoid", "Frame8", "Left", "Unending Avatar", "Unending Avatar Essence"),
+                ("dragonchallenge", "r4", "Left", "Void Dragon", "Void Dragon Essence"),
+                ("maul", "r3", "Down", "Creature Creation", "Creature Creation Essence")
+            );
 
             Bot.Wait.ForPickup("Void Aura");
             Core.Logger($"Void Auras: ({Bot.Inventory.GetQuantity("Void Aura")}/{quant})");
