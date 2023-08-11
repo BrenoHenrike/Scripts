@@ -2647,7 +2647,7 @@ public class CoreBots
             if (String.IsNullOrEmpty(item) || String.IsNullOrWhiteSpace(item))
                 continue;
 
-            while (!Bot.Inventory.IsEquipped(item))
+            if (!Bot.Inventory.IsEquipped(item))
             {
                 if (!CheckInventory(item))
                 {
@@ -2678,7 +2678,7 @@ public class CoreBots
             if (item <= 0)
                 continue;
 
-            while (!Bot.Inventory.IsEquipped(item))
+            if (!Bot.Inventory.IsEquipped(item))
             {
                 if (!CheckInventory(item))
                 {
