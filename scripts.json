@@ -9271,10 +9271,11 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/FireWarMerge.cs"
   },
   {
-    "name": "SeaVoice Merge",
+    "name": "SeaVoice Merge PreReqs",
     "description": "This bot will farm the items belonging to the selected mode for the SeaVoice Merge [2320] in /seavoice",
     "tags": [
       "seavoice",
+      "prereqs",
       "merge",
       "seavoice",
       "midnight",
@@ -9288,7 +9289,7 @@
       "trident"
     ],
     "path": "Other/MergeShops/SeaVoiceMerge.cs",
-    "size": 7709,
+    "size": 7733,
     "fileName": "SeaVoiceMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/SeaVoiceMerge.cs"
   },
