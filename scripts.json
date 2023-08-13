@@ -9007,29 +9007,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Various/StarFestivalGift.cs"
   },
   {
-    "name": "SeaVoice Merge PreReqs",
-    "description": "This bot will farm the items belonging to the selected mode for the SeaVoice Merge [2320] in /seavoice",
-    "tags": [
-      "seavoice",
-      "prereqs",
-      "merge",
-      "seavoice",
-      "midnight",
-      "glaucus",
-      "sage",
-      "mystic",
-      "morph",
-      "companion",
-      "abyssal",
-      "atlanticus",
-      "trident"
-    ],
-    "path": "Other/Various/SeaVoiceMergePreReqs.cs",
-    "size": 7733,
-    "fileName": "SeaVoiceMergePreReqs.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Various/SeaVoiceMergePreReqs.cs"
-  },
-  {
     "name": "UnderworldPirateCasterQuest",
     "description": "null",
     "tags": [
@@ -9292,6 +9269,28 @@
     "size": 5985,
     "fileName": "FireWarMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/FireWarMerge.cs"
+  },
+  {
+    "name": "SeaVoice Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the SeaVoice Merge [2320] in /seavoice",
+    "tags": [
+      "seavoice",
+      "merge",
+      "seavoice",
+      "midnight",
+      "glaucus",
+      "sage",
+      "mystic",
+      "morph",
+      "companion",
+      "abyssal",
+      "atlanticus",
+      "trident"
+    ],
+    "path": "Other/MergeShops/SeaVoiceMerge.cs",
+    "size": 8871,
+    "fileName": "SeaVoiceMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/SeaVoiceMerge.cs"
   },
   {
     "name": "Owl Merge",
