@@ -8128,17 +8128,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/VoidDestroyer.cs"
   },
   {
-    "name": "TheAssistant",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Nation/Various/ToxicOblivionBladeofAlchemy.cs",
-    "size": 2170,
-    "fileName": "ToxicOblivionBladeofAlchemy.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/ToxicOblivionBladeofAlchemy.cs"
-  },
-  {
     "name": "VoidBattleMageSet",
     "description": "null",
     "tags": [
@@ -9282,6 +9271,28 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/FireWarMerge.cs"
   },
   {
+    "name": "SeaVoice Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the SeaVoice Merge [2320] in /seavoice",
+    "tags": [
+      "seavoice",
+      "merge",
+      "seavoice",
+      "midnight",
+      "glaucus",
+      "sage",
+      "mystic",
+      "morph",
+      "companion",
+      "abyssal",
+      "atlanticus",
+      "trident"
+    ],
+    "path": "Other/MergeShops/SeaVoiceMerge.cs",
+    "size": 7709,
+    "fileName": "SeaVoiceMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/SeaVoiceMerge.cs"
+  },
+  {
     "name": "Owl Merge",
     "description": "This bot will farm the items belonging to the selected mode for the Owl Merge [1180] in /rivensylth",
     "tags": [
@@ -9722,17 +9733,6 @@
     "size": 9344,
     "fileName": "BoneTowersMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/BoneTowersMerge.cs"
-  },
-  {
-    "name": "BidoBirthdayMerge",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Other/MergeShops/BidoBirthdayMerge.cs",
-    "size": 10409,
-    "fileName": "BidoBirthdayMerge.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/BidoBirthdayMerge.cs"
   },
   {
     "name": "NavalTopHatMerge",
@@ -18667,6 +18667,82 @@
     "size": 2486,
     "fileName": "FortressDelve.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/FortressDelve.cs"
+  },
+  {
+    "name": "Bido Birthday Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Bido Birthday Merge [1735] in /akiba",
+    "tags": [
+      "bido",
+      "birthday",
+      "merge",
+      "akiba",
+      "bidos",
+      "fireflies",
+      "toxic",
+      "alchemist",
+      "wings",
+      "alchemical",
+      "onyx",
+      "reversed",
+      "katana",
+      "katanas",
+      "backblades",
+      "seal",
+      "balance",
+      "amber",
+      "bloodriver",
+      "alchemists",
+      "adornments",
+      "fists",
+      "diviner",
+      "spear",
+      "rogue",
+      "bandana",
+      "",
+      "scarf",
+      "pixel",
+      "on",
+      "your",
+      "back",
+      "venom",
+      "noxious",
+      "royal",
+      "lance"
+    ],
+    "path": "Seasonal/StaffBirthdays/Bido/BidoBirthdayMerge.cs",
+    "size": 10628,
+    "fileName": "BidoBirthdayMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/Bido/BidoBirthdayMerge.cs"
+  },
+  {
+    "name": "Toxic Oblivion Blade of Alchemy",
+    "description": "This script will complete the quest for Toxic Oblivion Blade of Alchemy.",
+    "tags": [
+      "nation",
+      "bido",
+      "birthday",
+      "seasonal",
+      "little science experiment"
+    ],
+    "path": "Seasonal/StaffBirthdays/Bido/ToxicOblivionBladeofAlchemy.cs",
+    "size": 2253,
+    "fileName": "ToxicOblivionBladeofAlchemy.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/Bido/ToxicOblivionBladeofAlchemy.cs"
+  },
+  {
+    "name": "Toxic Blood Blade (Mem)",
+    "description": "This script will complete the quest for Toxic Blood Blade.",
+    "tags": [
+      "nation",
+      "bido",
+      "birthday",
+      "seasonal",
+      "another science experiment"
+    ],
+    "path": "Seasonal/StaffBirthdays/Bido/ToxicBloodBlade[Mem].cs",
+    "size": 2238,
+    "fileName": "ToxicBloodBlade[Mem].cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/Bido/ToxicBloodBlade[Mem].cs"
   },
   {
     "name": "Mogloween Seasonal Merge",
