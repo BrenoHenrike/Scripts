@@ -7,6 +7,7 @@ tags: null
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Models.Monsters;
+using Skua.Core.Models.Quests;
 
 public class CoreFarms
 {
@@ -1643,23 +1644,29 @@ public class CoreFarms
         if (FactionRank("Embersea") >= rank)
             return;
 
-        // if (Core.IsMember)
-        //     MembershipDues(MemberShipsIDS.Embersea, rank);
-        // else
-        {
-            Core.EquipClass(ClassType.Farm);
-            Core.SavedState();
-            ToggleBoost(BoostType.Reputation);
-            Core.Logger($"Farming rank {rank}");
+        Core.EquipClass(ClassType.Solo);
+        Core.SavedState();
+        ToggleBoost(BoostType.Reputation);
+        Core.Logger($"Farming rank {rank}");
 
-            Core.RegisterQuests(4228); //Slay the Blazebinders 4228
+        if (Core.isCompletedBefore(4135))
+        {
+            // Where There's Smoke...(200rep - faster)
+            Core.RegisterQuests(4135);
             while (!Bot.ShouldExit && FactionRank("Embersea") < rank)
-                Core.HuntMonster("fireforge", "Blazebinder", "Defeated Blazebinder", 5, log: false);
-            Bot.Wait.ForQuestComplete(4228);
-            Core.CancelRegisteredQuests();
-            ToggleBoost(BoostType.Reputation, false);
-            Core.SavedState(false);
+                Core.GetMapItem(3248, 1, "feverfew");
         }
+        else
+        {
+            //  Slay the Blazebinders (500rep - 5 kills)
+            Core.RegisterQuests(4228);
+            while (!Bot.ShouldExit && FactionRank("Embersea") < rank)
+                Core.HuntMonster("fireforge", "Blazebinder", log: false);
+        }
+
+        ToggleBoost(BoostType.Reputation, false);
+        Core.CancelRegisteredQuests();
+        Core.SavedState(false);
     }
 
     public void EternalREP(int rank = 10)
