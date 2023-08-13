@@ -1,7 +1,7 @@
 /*
-name: SeaVoice Merge
+name: SeaVoice Merge PreReqs
 description: This bot will farm the items belonging to the selected mode for the SeaVoice Merge [2320] in /seavoice
-tags: seavoice, merge, seavoice, midnight, glaucus, sage, mystic, morph, companion, abyssal, atlanticus, trident
+tags: seavoice, prereqs, merge, seavoice, midnight, glaucus, sage, mystic, morph, companion, abyssal, atlanticus, trident
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -10,7 +10,7 @@ using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
 
-public class SeaVoiceMerge
+public class SeaVoiceMergePreReqs
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
