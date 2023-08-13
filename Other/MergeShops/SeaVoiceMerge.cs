@@ -1,7 +1,7 @@
 /*
-name: SeaVoice Merge PreReqs
+name: SeaVoice Merge
 description: This bot will farm the items belonging to the selected mode for the SeaVoice Merge [2320] in /seavoice
-tags: seavoice, prereqs, merge, seavoice, midnight, glaucus, sage, mystic, morph, companion, abyssal, atlanticus, trident
+tags: seavoice, merge, seavoice, midnight, glaucus, sage, mystic, morph, companion, abyssal, atlanticus, trident
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -10,7 +10,7 @@ using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
 
-public class SeaVoiceMergePreReqs
+public class SeaVoiceMerge
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
@@ -27,7 +27,7 @@ public class SeaVoiceMergePreReqs
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Bioluminessence", "Dark Elf Pearl", "Glaucus Mystic", "Water Elf Pearl", "Water Elf Antler", "Glaucus Companion", "Sundered Tentacle", "Calamity Atlanticus Trident" });
+        Core.BankingBlackList.AddRange(new[] { "Algal Bloom", "Bioluminessence", "Dark Elf Pearl", "Glaucus Mystic", "Water Elf Pearl", "Water Elf Antler", "Glaucus Companion", "Sundered Tentacle", "Calamity Atlanticus Trident" });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -64,8 +64,8 @@ public class SeaVoiceMergePreReqs
                 case "Glaucus Mystic":
                 case "Glaucus Companion":
                     Core.FarmingLogger(req.Name, quant);
-                    Core.Logger("This item requires ultra boss, come back when you've farmed it.");
-                    return;
+                    AttackVoiceInTheSea(req.Name, quant);
+                    break;
 
                 case "Dark Elf Pearl":
                     Core.FarmingLogger(req.Name, quant);
@@ -127,6 +127,40 @@ public class SeaVoiceMergePreReqs
                     break;
             }
         }
+    }
+
+    public void AttackVoiceInTheSea(string itemName, int quant)
+    {
+        Bot.Options.AttackWithoutTarget = true;  // Enable AttackWithoutTarget
+
+        // Register the quest
+        Core.RegisterQuests(9347);
+        Core.EquipClass(ClassType.Solo);
+        Core.AddDrop("Algal Bloom");
+        Core.Unbank("Algal Bloom");
+        while (!Bot.ShouldExit && !Core.CheckInventory(itemName, quant))
+        {
+            // Join the map "seavoice"
+            if (Bot.Player.Cell != "seavoice")
+            {
+                Core.Join("seavoice", "r2", "Left");
+                Bot.Wait.ForMapLoad("seavoice");
+            }
+
+            // Ensure we're in the correct cell "r2", "Left"
+            if (Bot.Player.Cell != "r2" || Bot.Player.Pad != "Left")
+            {
+                Core.Jump("r2", "Left");
+                Bot.Wait.ForMapLoad("seavoice");
+            }
+
+            // Attack the monster
+            while (!Bot.ShouldExit && !Bot.Player.InCombat)
+                Bot.Combat.Attack("Voice in the Sea");
+        }
+
+        Bot.Options.AttackWithoutTarget = false;  // Disable AttackWithoutTarget
+        Core.CancelRegisteredQuests();  // Unregister the quest
     }
 
     public List<IOption> Select = new()
