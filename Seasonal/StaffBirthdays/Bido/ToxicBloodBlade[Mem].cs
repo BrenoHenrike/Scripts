@@ -1,7 +1,7 @@
 /*
-name: TheAssistant
-description: null
-tags: null
+name: Toxic Blood Blade (Mem)
+description: This script will complete the quest for Toxic Blood Blade.
+tags: nation,bido,birthday,seasonal,another science experiment
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -9,10 +9,8 @@ tags: null
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Nation/CoreNation.cs
 using Skua.Core.Interfaces;
-using Skua.Core.Options;
-using Skua.Core.Models.Items;
 
-public class ToxicOblivionBladeofAlchemy
+public class ToxicBloodBlade
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
@@ -34,10 +32,10 @@ public class ToxicOblivionBladeofAlchemy
 
     public void GetBlade()
     {
-        if (Core.CheckInventory(49066))
+        if (Core.CheckInventory(55688) || !Core.IsMember)
             return;
 
-        Core.EnsureAccept(6981);
+        Core.EnsureAccept(7602);
 
         Nation.FarmUni13(2);
         Nation.SwindleBulk(100);
@@ -46,7 +44,7 @@ public class ToxicOblivionBladeofAlchemy
         Nation.FarmBloodGem(40);
 
         Core.AddDrop("Concentrated Mana", "Bido's Appreciation");
-        Core.AddDrop(49085, 49066);
+        Core.AddDrop(49085, 55688);
 
         //Concentrated Mana x30
         Core.RegisterQuests(6979);
@@ -66,8 +64,8 @@ public class ToxicOblivionBladeofAlchemy
             Bot.Wait.ForPickup("Bido's Appreciation");
         }
 
-        Core.EnsureComplete(6981);
-        Bot.Wait.ForPickup(49066);
+        Core.EnsureComplete(7602);
+        Bot.Wait.ForPickup(55688);
         Core.ToBank(49085);
         Core.ToBank("Concentrated Mana", "Bido's Appreciation");
 
