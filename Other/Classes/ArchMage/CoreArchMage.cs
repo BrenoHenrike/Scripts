@@ -341,11 +341,11 @@ public class CoreArchMage
             Core.RegisterQuests(3050);
             while (!Bot.ShouldExit && !Core.CheckInventory(new[] { "Mystic Shards", "Mystic Quills" }, 49))
             {
-                Core.KillMonster("gilead", "r3", "Left", "Water Elemental", "Water Core", log: false);
-                Core.KillMonster("gilead", "r4", "Left", "Fire Elemental", "Fire Core", log: false);
-                Core.KillMonster("gilead", "r4", "Left", "Wind Elemental", "Air Core", log: false);
-                Core.KillMonster("gilead", "r3", "Left", "Earth Elemental", "Earth Core", log: false);
-                Core.KillMonster("gilead", "r8", "Left", "Mana Elemental", "Mana Core", log: false);
+                Core.HuntMonster("gilead", "Water Elemental", "Water Core", log: false);
+                Core.HuntMonster("gilead", "Fire Elemental", "Fire Core", log: false);
+                Core.HuntMonster("gilead", "Wind Elemental", "Air Core", log: false);
+                Core.HuntMonster("gilead", "Earth Elemental", "Earth Core", log: false);
+                Core.HuntMonster("gilead", "Mana Elemental", "Mana Core", log: false);
             }
 
             //Incase they swap it back again:
