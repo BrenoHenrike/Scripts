@@ -18096,17 +18096,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/REP-based/HorcEvader.cs"
   },
   {
-    "name": "UnboundTome",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Other/Classes/ArchMage/UnboundTome.cs",
-    "size": 923,
-    "fileName": "UnboundTome.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/ArchMage/UnboundTome.cs"
-  },
-  {
     "name": "LuminaElementi",
     "description": "null",
     "tags": [
@@ -19337,6 +19326,50 @@
     "size": 618,
     "fileName": "01NewYearStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/NewYear/Story/01NewYearStory.cs"
+  },
+  {
+    "name": "ArcaneLocus",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Other/Classes/ArchMage/Materials/ArcaneLocus.cs",
+    "size": 923,
+    "fileName": "ArcaneLocus.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/ArchMage/Materials/ArcaneLocus.cs"
+  },
+  {
+    "name": "UnboundTome",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Other/Classes/ArchMage/Materials/UnboundTome.cs",
+    "size": 923,
+    "fileName": "UnboundTome.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/ArchMage/Materials/UnboundTome.cs"
+  },
+  {
+    "name": "PrismaticEther",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Other/Classes/ArchMage/Materials/PrismaticEther.cs",
+    "size": 932,
+    "fileName": "PrismaticEther.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/ArchMage/Materials/PrismaticEther.cs"
+  },
+  {
+    "name": "MysticScribingKit",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Other/Classes/ArchMage/Materials/MysticScribingKit.cs",
+    "size": 941,
+    "fileName": "MysticScribingKit.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/ArchMage/Materials/MysticScribingKit.cs"
   },
   {
     "name": "1BookOfMagus",
