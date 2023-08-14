@@ -27,7 +27,7 @@ public class PrismaticEther
     {
         Core.SetOptions();
 
-        AM.PrismaticEther(30);
+        AM.PrismaticEther(99);
 
         Core.SetOptions(false);
     }
