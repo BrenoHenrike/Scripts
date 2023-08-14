@@ -53,7 +53,7 @@ public class CoreArchMage
 
     public void GetAM(bool rankUpClass = true)
     {
-        bool cosmetics = Bot.Config.Get<bool>("cosmetics");
+        bool cosmetics = Bot.Config!.Get<bool>("cosmetics");
         bool lumina = Bot.Config.Get<bool>("lumina_elementi");
         army = Bot.Config.Get<bool>("army");
 
@@ -312,7 +312,7 @@ public class CoreArchMage
     #endregion
 
     #region Materials
-    public void MysticScribingKit(int quant = 99)
+    public void MysticScribingKit(int quant)
     {
         if (Core.CheckInventory(73327, quant))
             return;
@@ -377,7 +377,7 @@ public class CoreArchMage
         }
     }
 
-    public void PrismaticEther(int quant = 99)
+    public void PrismaticEther(int quant)
     {
         if (Core.CheckInventory(73333, quant))
             return;
@@ -404,7 +404,7 @@ public class CoreArchMage
         }
     }
 
-    public void ArcaneLocus(int quant = 99)
+    public void ArcaneLocus(int quant)
     {
         if (Core.CheckInventory(73339, quant))
             return;
@@ -414,7 +414,6 @@ public class CoreArchMage
 
         Core.FarmingLogger("Arcane Locus", quant);
         Core.AddDrop(73339);
-        Core.EquipClass(ClassType.Solo);
 
         while (!Bot.ShouldExit && !Core.CheckInventory(73339, quant))
         {
@@ -435,12 +434,12 @@ public class CoreArchMage
         }
     }
 
-    public void UnboundTome(int quant = 99)
+    public void UnboundTome(int quant)
     {
         ItemBase? unboundTomeItem = Bot.Inventory.Items.FirstOrDefault(item => item.Name == "Unbound Tome");
         int currentUnboundTomes = unboundTomeItem?.Quantity ?? 0;
 
-        if (currentUnboundTomes >= 30)
+        if (currentUnboundTomes >= quant)  // Check if you already have enough
             return;
 
         int unboundTomesNeeded = Math.Max(0, quant - currentUnboundTomes);
@@ -449,7 +448,7 @@ public class CoreArchMage
             return;
 
         if (!Bot.Quests.IsUnlocked(8912))
-            ArcaneLocus();
+            ArcaneLocus(1);
 
         Core.FarmingLogger("Unbound Tome", quant);
         Core.AddDrop("Unbound Tome");
@@ -470,6 +469,7 @@ public class CoreArchMage
             unboundTomeItem = Bot.Inventory.Items.FirstOrDefault(item => item.Name == "Unbound Tome");
         }
     }
+
 
 
 
