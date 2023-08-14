@@ -21,7 +21,7 @@ tags: hollowborn chaos envy, hollowborn, beasts shadow
 //cs_include Scripts/Story/StarSinc.cs
 //cs_include Scripts/Story/TitanAttack.cs
 //cs_include Scripts/Story/TowerOfDoom.cs
-//cs_include Scripts/Other/MergeShops/TitanGearIIMerge.cs
+//cs_include Scripts/Other/MergeShops/TitanStrikeGearMerge.cs
 //cs_include Scripts/Hollowborn/HollowbornChaosEnvoy/CoreHollowbornChaosEnvoy.cs
 //cs_include Scripts/Other/Badges/ChaosPuppetMaster.cs
 using Skua.Core.Interfaces;

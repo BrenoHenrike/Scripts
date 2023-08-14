@@ -6,8 +6,8 @@ tags: abhorrent-remains, kala, seasonal
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Seasonal/August/Kala.cs
-//cs_include Scripts/Seasonal/August/Rangda.cs
+//cs_include Scripts/Seasonal/IndonesianDay/Kala.cs
+//cs_include Scripts/Seasonal/IndonesianDay/Rangda.cs
 using Skua.Core.Interfaces;
 
 public class KalaMergeNonDaily
