@@ -1,5 +1,5 @@
 /*
-name: UnboundTome
+name: MysticScribingKit
 description: null
 tags: null
 */
@@ -17,7 +17,7 @@ tags: null
 //cs_include Scripts/Other/Classes/ArchMage/CoreArchMage.cs
 using Skua.Core.Interfaces;
 
-public class UnboundTome
+public class MysticScribingKit
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
@@ -27,7 +27,7 @@ public class UnboundTome
     {
         Core.SetOptions();
 
-        AM.UnboundTome(30);
+        AM.MysticScribingKit(99);
 
         Core.SetOptions(false);
     }
