@@ -3611,13 +3611,14 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/OneClient/EldersBlood.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "script name here",
+    "description": "Farms [InsertItem]  using your army.",
     "tags": [
-      "null"
+      "army",
+      "[item]"
     ],
     "path": "Army/Templates/ArmyTemplatev3.cs",
-    "size": 3788,
+    "size": 4453,
     "fileName": "ArmyTemplatev3.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Templates/ArmyTemplatev3.cs"
   },
