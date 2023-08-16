@@ -187,7 +187,6 @@ public class CoreFireIsland
 
             Core.EnsureComplete(4134);
         }
-        Story.KillQuest(4134, "feverfew", new[] { "Firestorm Knight", "Twisted Undine", "Feverfew Vase", "Coral Creeper", "Salamander" });
 
         //When There's Smoke...
         Story.MapItemQuest(4135, "feverfew", 3248);
