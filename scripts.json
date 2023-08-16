@@ -201,17 +201,6 @@
     "tags": [
       "null"
     ],
-    "path": "Templates/ArmyTemplatev2.cs",
-    "size": 5087,
-    "fileName": "ArmyTemplatev2.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Templates/ArmyTemplatev2.cs"
-  },
-  {
-    "name": "null",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
     "path": "Templates/StoryTemplate.cs",
     "size": 883,
     "fileName": "StoryTemplate.cs",
@@ -3620,6 +3609,17 @@
     "size": 1155,
     "fileName": "EldersBlood.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/OneClient/EldersBlood.cs"
+  },
+  {
+    "name": "null",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Army/Templates/ArmyTemplatev3.cs",
+    "size": 3788,
+    "fileName": "ArmyTemplatev3.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Templates/ArmyTemplatev3.cs"
   },
   {
     "name": "Army Gold",
