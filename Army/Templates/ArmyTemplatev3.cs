@@ -47,19 +47,16 @@ public class ArmyTemplatev3 //Rename This
         // 6. Uncomment the appropriate method call based on single/multi-targeting.
         // 7. Repeat the method call for each item you want to farm.
 
-        // Only Part you'll need to Edit vvvvvvvvvvvvv
+        #region Edit This vvv                                           vvv Edit this
         //~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~
-      
         // Single-target example:
         // ArmyBits("map", new[] { "cell" }, MonsterMapID, new[] { "item" }, 1);
 
         // Multi-target example:
         // ArmyBits("map", new[] { "cell" }, new[] { MonsterMapID1, MonsterMapID2 }, new[] { "item" }, 1);
-
-        // Only Part you'll need to Edit 
-       
         //~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~
-        
+        #endregion Edit This ^^^                                           ^^^ Edit this
+
         Core.SetOptions(false);
     }
 
