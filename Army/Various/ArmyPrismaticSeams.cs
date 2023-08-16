@@ -15,6 +15,8 @@ public class ArmyPrimaticSeams
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
+    private CoreFarms Farm = new();
+    private CoreAdvanced Adv => new();
     private CoreArmyLite Army = new();
     private static CoreArmyLite sArmy = new();
     private CoreSoW SoW = new();
@@ -48,15 +50,25 @@ public class ArmyPrimaticSeams
         Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
 
         SoW.CompleteCoreSoW();
-        ArmyPS();
+        ArmyBits();
     }
 
 
-    public void ArmyPS()
-        => Army.RunGeneratedAggroMon(map, monNames, questIDs, classtype, drops);
-    private List<int> questIDs = new() { 8814, 8815 };
-    private List<string> monNames = new() { "Decaying Locust", "Distorted Imp", "Mumbler" };
-    private List<string> drops = new() { "Prismatic Seams" };
-    private string map = "streamwar";
-    private ClassType classtype = ClassType.Farm;
+    public void ArmyBits()
+    {
+        Core.PrivateRooms = true;
+        Core.PrivateRoomNumber = Army.getRoomNr();
+
+        Army.AggroMonIDs(5241, 5242, 5243);
+        Army.AggroMonStart("streamwar");
+        Army.DivideOnCells("r2", "r3", "r3a");
+
+        // this wont stop when capped, if u want 
+        // it to stop just uncomment and delete the ) after the exit
+        Core.RegisterQuests(8814, 8815);
+        while (!Bot.ShouldExit)// && !Core.CheckInventory("Prismatic Seams", 2000))
+            Bot.Combat.Attack("*");
+        Army.AggroMonStop(true);
+        Core.CancelRegisteredQuests();
+    }
 }
