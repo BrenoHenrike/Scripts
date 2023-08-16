@@ -175,6 +175,18 @@ public class CoreFireIsland
         Story.KillQuest(4133, "feverfew", "Twisted Undine");
 
         //Fear the Fog
+        if (!Story.QuestProgression(4134))
+        {
+            Core.EnsureAccept(4134);
+
+            Core.HuntMonster("feverfew", "Salamander", "Salamander Tongue", 2, log: false);
+            Core.HuntMonster("feverfew", "Feverfew Vase", "Adderoot Powder", 3, log: false);
+            Core.HuntMonster("feverfew", "Twisted Undine", "Shadowbane Brine", 4, log: false);
+            Core.HuntMonster("feverfew", "Coral Creeper", "Charred Claw", 2, log: false);
+            Core.HuntMonster("feverfew", "Firestorm Knight", "Whispered Regret", log: false);
+
+            Core.EnsureComplete(4134);
+        }
         Story.KillQuest(4134, "feverfew", new[] { "Firestorm Knight", "Twisted Undine", "Feverfew Vase", "Coral Creeper", "Salamander" });
 
         //When There's Smoke...

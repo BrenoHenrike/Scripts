@@ -231,12 +231,13 @@ public class CoreOblivionBladeofNulgath
     {
         if (Core.IsMember && Core.CheckInventory("Oblivion Blade of Nulgath Pet"))
             Core.RegisterQuests(OblivionID);
-        if (Core.CheckInventory("Oblivion Blade of Nulgath Pet (Rare)"))
+        else if (Core.CheckInventory("Oblivion Blade of Nulgath Pet (Rare)"))
             Core.RegisterQuests(OblivionRareID);
         else
         {
-            Core.Logger("You Dont Own Either of The Required Pets.");
-            return;
+            Core.Logger("You Dont Own Either of The Required Pets.", stopBot: true);
         }
+        return;
     }
+
 }
