@@ -50,6 +50,7 @@ public class ArmyElementalBinding
         Core.PrivateRoomNumber = Army.getRoomNr();
 
         Core.EquipClass(ClassType.Solo);
+        Core.AddDrop("Elemental Binding");
 
         Army.AggroMonStart("archmage");
         Army.DivideOnCells("r2");
