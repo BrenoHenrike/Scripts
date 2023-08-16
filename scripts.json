@@ -3709,6 +3709,18 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyMerge/ArmyLowTideMergeReqs.cs"
   },
   {
+    "name": "Elemental Binding (Army)",
+    "description": "Farms Prismatic Seams using your army.",
+    "tags": [
+      "army",
+      "elemental binding"
+    ],
+    "path": "Army/Various/ArmyElementalBindings.cs",
+    "size": 2005,
+    "fileName": "ArmyElementalBindings.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmyElementalBindings.cs"
+  },
+  {
     "name": "Light Caster (Army)",
     "description": "Farms LightCaster class using your army.",
     "tags": [
