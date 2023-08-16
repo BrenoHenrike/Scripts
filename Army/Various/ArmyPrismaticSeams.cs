@@ -58,6 +58,7 @@ public class ArmyPrimaticSeams
     {
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
+        Core.EquipClass(ClassType.Farm);
 
         Army.AggroMonIDs(5241, 5242, 5243);
         Army.AggroMonStart("streamwar");
