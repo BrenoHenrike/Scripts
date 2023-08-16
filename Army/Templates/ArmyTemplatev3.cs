@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: script name here
+description: Farms [InsertItem]  using your army.
+tags: army, [item]
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
@@ -38,88 +38,92 @@ public class ArmyTemplatev3 //Rename This
     {
         Core.SetOptions();
 
-        /*     ~_~_~_~_~_~_~IMPORTANT INFO:~_~_~_~_~_~_~
+        // Instructions for using the ArmyBits method 
+        // 1. Fill in the map name.
+        // 2. Fill in the cell(s) you want to jump to (can be multiple cells).
+        // 3. Fill in the MonsterMapID(s) you want to target (can be multiple IDs for multi-targeting).
+        // 4. Fill in the item(s) you want to farm (can be multiple items).
+        // 5. Fill in the desired quantity of the item(s).
+        // 6. Uncomment the appropriate method call based on single/multi-targeting.
+        // 7. Repeat the method call for each item you want to farm.
 
-        map, cell, item, item quant
-        if multiple items, seperate them with a comma. ex:{ "item", "item" }
-        if multiple cells, seperate them with a comma. ex:{ "cell", "cell" }
-        replace map and quanity appropriately below.
-
-        I mostly use the [monsterMapIDS] one for single targets(bosses)
-        and [monsterIDs] for multi-target(farming)
-
-        How to get to and use grabber:
-        1. Ingame goto the mob
-        2.  then on teh top Skua bar > Tools > Grabber > scroll left to "Map Monsters" > bottom "Grab" 
-        3. in the grabber it'll show as:  MonsterName [monsterID][monsterMapID, Cell]
-        Photo Example: https://i.imgur.com/1oDkh39.png
-
-                            **SO** 
-        (1. Multi-Target / 2. Singl-Target) [remove the 2 //'s]:
-
-              ~_~_~_~_~_~_~IMPORTANT INFO:~_~_~_~_~_~_~ */
-
-
-
-        // ArmyBits("map", new[] { "cell" }, new[] { MonsterMapID, MonsterMapID, MonsterMapID }, new[] { "item" }, 1);
+        // Only Part you'll need to Edit vvvvvvvvvvvvv
+        //~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~
+      
+        // Single-target example:
         // ArmyBits("map", new[] { "cell" }, MonsterMapID, new[] { "item" }, 1);
 
+        // Multi-target example:
+        // ArmyBits("map", new[] { "cell" }, new[] { MonsterMapID1, MonsterMapID2 }, new[] { "item" }, 1);
+
+        // Only Part you'll need to Edit 
+       
+        //~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~
+        
         Core.SetOptions(false);
     }
 
-
     public void ArmyBits(string map, string[] cell, int MonsterMapID, string[] items, int quant)
     {
+        // Setting up private rooms and class
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
-
         Core.EquipClass(ClassType.Solo);
         Core.AddDrop(items);
 
-
-        Army.AggroMonMIDs(MonsterMapID);
-
+        // Single-target scenario
+        // Explanation: For each item you specified, target the specified MonsterMapID
         foreach (string item in items)
         {
+            // Aggro and divide on cells
             Army.AggroMonStart(map);
             Army.DivideOnCells(cell);
 
+            // Farm the specified item
             while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
                 Bot.Combat.Attack(MonsterMapID);
+
+            // Wait for the party
             Army.waitForParty(map, item);
         }
 
+        // Clean up
         Army.AggroMonStop(true);
         Core.CancelRegisteredQuests();
     }
 
     public void ArmyBits(string map, string[] cell, int[] MonsterMapIDs, string[] items, int quant)
     {
+        // Setting up private rooms and class
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
-
         Core.EquipClass(ClassType.Solo);
         Core.AddDrop(items);
 
-        Army.AggroMonStart(map);
-        Army.DivideOnCells(cell);
-
+        // Multi-target scenario
+        // Explanation: For each item you specified, target all specified MonsterMapIDs
         foreach (string item in items)
         {
             while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
             {
+                // Aggro, divide on cells, and target specified MonsterMapIDs
                 Army.AggroMonStart(map);
                 Army.DivideOnCells(cell);
                 Army.AggroMonMIDs(MonsterMapIDs);
 
+                // Farm the specified item
                 while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
                     Bot.Combat.Attack("*");
+
+                // Wait for the party
                 Army.waitForParty(map, item);
             }
             Army.waitForParty(map, item);
         }
 
+        // Clean up
         Army.AggroMonStop(true);
         Core.CancelRegisteredQuests();
     }
+
 }
