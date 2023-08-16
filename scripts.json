@@ -3785,10 +3785,19 @@
       "mage",
       "army",
       "boss",
-      "items"
+      "items",
+      "\"calamitous ruin\"",
+      "\"vital exanima\"",
+      "\"everlight flame\"",
+      "\"the mortal coil\"",
+      "\"undying resolve\"",
+      "\"the divine will\"",
+      "\"insatiable hunger\"",
+      "\"void essentia\"",
+      "\"elemental binding\""
     ],
     "path": "Army/Various/ArmyArchMageBossItems.cs",
-    "size": 7264,
+    "size": 6383,
     "fileName": "ArmyArchMageBossItems.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmyArchMageBossItems.cs"
   },
