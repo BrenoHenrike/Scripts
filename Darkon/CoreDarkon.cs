@@ -39,7 +39,7 @@ public class CoreDarkon
 
         Core.RegisterQuests(7324);
         while (!Bot.ShouldExit && !Core.CheckInventory("Darkon's Receipt", Quantity))
-                Core.HuntMonsterMapID("portalmaze", 20, "Banana", 22, false, log: false);
+                Core.HuntMonster("portalmaze", "Jurassic Monkey", "Banana", 22, false, log: false);
         Core.CancelRegisteredQuests();
     }
 
