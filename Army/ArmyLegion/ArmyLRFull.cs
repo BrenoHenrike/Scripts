@@ -150,7 +150,7 @@ public class ArmyLR
 
     public void ArmyLF1(int quant = 20)
     {
-        if (Core.CheckInventory("Revenant's Spellscroll", quant) && !Bot.Config.Get<bool>("sellToSync"))
+        if (Core.CheckInventory("Revenant's Spellscroll", quant) && !Bot.Config!.Get<bool>("sellToSync"))
             return;
 
         Core.AddDrop("Legion Token");
@@ -174,7 +174,7 @@ public class ArmyLR
 
     public void ArmyFL2(int quant = 6)
     {
-        if (Core.CheckInventory("Conquest Wreath", quant) && !Bot.Config.Get<bool>("sellToSync"))
+        if (Core.CheckInventory("Conquest Wreath", quant) && !Bot.Config!.Get<bool>("sellToSync"))
             return;
 
         Core.AddDrop(LF2);
@@ -202,7 +202,7 @@ public class ArmyLR
 
     public void ArmyLF3(int quant = 10)
     {
-        if (Core.CheckInventory("Exalted Crown", quant) && !Bot.Config.Get<bool>("sellToSync"))
+        if (Core.CheckInventory("Exalted Crown", quant) && !Bot.Config!.Get<bool>("sellToSync"))
             return;
 
         Core.FarmingLogger("Exalted Crown", quant);
@@ -267,7 +267,7 @@ public class ArmyLR
 
     public void ArmyDageFavor(int quant = 3000)
     {
-        if (Core.CheckInventory("Dage's Favor", quant) && !Bot.Config.Get<bool>("sellToSync"))
+        if (Core.CheckInventory("Dage's Favor", quant) && !Bot.Config!.Get<bool>("sellToSync"))
             return;
         while (!Bot.ShouldExit && !Core.CheckInventory("Dage's Favor", quant))
             ArmyHunt("evilwarnul", new[] { "Skeletal Warrior", "Skull Warrior" }, "Dage's Favor", ClassType.Farm, false, quant);
@@ -275,7 +275,7 @@ public class ArmyLR
 
     public void ArmyEmblemOfDage(int quant = 500)
     {
-        if (Core.CheckInventory("Emblem of Dage", quant) && !Bot.Config.Get<bool>("sellToSync"))
+        if (Core.CheckInventory("Emblem of Dage", quant) && !Bot.Config!.Get<bool>("sellToSync"))
             return;
 
         Core.AddDrop("Emblem of Dage");
@@ -294,7 +294,7 @@ public class ArmyLR
 
     public void ArmyDiamondTokenOfDage(int quant = 300)
     {
-        if (Core.CheckInventory("Diamond Token of Dage", quant) && !Bot.Config.Get<bool>("sellToSync"))
+        if (Core.CheckInventory("Diamond Token of Dage", quant) && !Bot.Config!.Get<bool>("sellToSync"))
             return;
 
         ArmyLTs(50);
@@ -323,7 +323,7 @@ public class ArmyLR
 
     public void ArmyDarkTokenOfDage(int quant = 600)
     {
-        if (Core.CheckInventory("Dark Token", quant) && !Bot.Config.Get<bool>("sellToSync"))
+        if (Core.CheckInventory("Dark Token", quant) && !Bot.Config!.Get<bool>("sellToSync"))
             return;
 
         Core.FarmingLogger("Dark Token", quant);
@@ -337,7 +337,7 @@ public class ArmyLR
 
     public void ArmyLTs(int quant = 25000)
     {
-        if (Core.CheckInventory("Legion Token", quant) && !Bot.Config.Get<bool>("sellToSync"))
+        if (Core.CheckInventory("Legion Token", quant) && !Bot.Config!.Get<bool>("sellToSync"))
             return;
 
         // Adv.BestGear(RacialGearBoost.Human);
