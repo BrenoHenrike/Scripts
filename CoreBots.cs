@@ -2953,7 +2953,7 @@ public class CoreBots
     {
         map = map?.Replace(" ", "").Replace('I', 'i');
         map = map?.ToLower() == "tercess" ? "tercessuinotlim" : map?.ToLower();
-        string? strippedMap = map.Contains('-') ? map.Split('-').First() : map;
+        string? strippedMap = map!.Contains('-') ? map.Split('-').First() : map;
 
         if (Bot.Map.Name != null && Bot.Map.Name.ToLower() == strippedMap && !ignoreCheck)
             return;
@@ -3561,6 +3561,81 @@ public class CoreBots
             }
         }
     }
+
+    /// <summary>
+    /// Automatic Class Selection for certain bosses.
+    /// </summary>
+    /// <param name="additionalClass">Additional class to swap into for said boss</param>
+    public void BossClass(string? additionalClass = null)
+    {
+        JumpWait();
+
+        string[] classesToCheck = new[] { "TimeKeeper", "Yami no Ronin", "Void Highlord", "Void HighLord (IoDA)" };
+
+        foreach (string Class in classesToCheck)
+        {
+            if (!CheckInventory(Class))
+            {
+                Logger($"{Class} Not Found, skipping");
+                continue;
+            }
+
+            // Unbank(Class);
+            // Bot.Wait.ForTrue(() => Bot.Inventory.Contains(Class), 20);
+
+            switch (Class)
+            {
+                case "TimeKeeper":
+                    Bot.Skills.StartAdvanced(Class, true, ClassUseMode.Base);
+                    break;
+
+                case "Yami no Ronin":
+                    Bot.Skills.StartAdvanced(Class, true, ClassUseMode.Solo);
+                    break;
+
+                case "Void Highlord":
+                case "Void HighLord (IoDA)":
+                    Bot.Skills.StartAdvanced(Class, true, ClassUseMode.Def);
+                    break;
+
+                default:
+                    Logger($"Using {SoloClass}");
+                    Unbank(SoloClass);
+                    EquipClass(ClassType.Solo);
+                    break;
+            }
+            Bot.Wait.ForItemEquip(CheckInventory(Class) ? Class : SoloClass);
+            Logger($"Using {Bot.Player.CurrentClass!.Name}");
+            break;
+        }
+
+        if (!string.IsNullOrEmpty(additionalClass))
+        {
+            Unbank(additionalClass);
+
+            switch (additionalClass)
+            {
+                case "AnotherClass":
+                    Equip(additionalClass);
+                    Bot.Wait.ForItemEquip(additionalClass);
+                    // Perform actions for the additional class "AnotherClass"
+                    break;
+
+                default:
+                    Logger($"Using {additionalClass}");
+                    Unbank(SoloClass);
+                    EquipClass(ClassType.Solo);
+                    Bot.Wait.ForItemEquip(SoloClass);
+                    break;
+            }
+            Bot.Wait.ForItemEquip(CheckInventory(additionalClass) ? additionalClass : SoloClass);
+            Logger($"Using {Bot.Player.CurrentClass!.Name}");
+        }
+    }
+
+
+
+
 
     #endregion
 

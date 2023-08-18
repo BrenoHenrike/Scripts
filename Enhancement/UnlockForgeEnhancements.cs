@@ -614,9 +614,9 @@ public class UnlockForgeEnhancements
             Core.HuntMonster("shadowgrove", "Titan Shadow Dragonlord", "ShadowFlame Dragon Blade", isTemp: false);
 
             Core.AddDrop(SoW.MalgorDrops.Concat(SoW.MainyuDrops).ToArray());
-            if (Core.CheckInventory("Yami no Ronin"))
-                Bot.Skills.StartAdvanced("Yami no Ronin", true, ClassUseMode.Solo);
-            else Core.EquipClass(ClassType.Solo);
+
+            Core.BossClass();
+
             SOWM.ElementalCore(20);
 
             Core.Logger("Items still needed(the bot cannot farm these):");

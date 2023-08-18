@@ -919,7 +919,7 @@ public class CoreSoW
 
         // 8788 Em-pathetic Connection (Merge Shop Quest)
         Core.EnsureAccept(8788);
-       
+
         Core.EquipClass(ClassType.Farm);
         Core.HuntMonster("ruinedcrown", "Frenzied Mana", "Mana Residue", 8);
         Core.HuntMonster($"ruinedcrown", "Mana-Burdened Mage", "Mage’s Blood Sample", 8);
@@ -1132,10 +1132,9 @@ public class CoreSoW
         Story.KillQuest(9123, "manacradle", new[] { "Dark Tainted Mana", "Darkness Elemental" });
         Story.MapItemQuest(9123, "manacradle", 11271);
 
-        if (Core.CheckInventory("Yami no Ronin"))
+        if (Core.CheckInventory(new[] { "Yami no Ronin", "TimeKeeper", "Void Highlord", "Void HighLord (IoDA)" }))
         {
-            Core.AddDrop(MainyuDrops.Concat(MalgorDrops).ToArray());
-            Bot.Skills.StartAdvanced("Yami no Ronin", true, ClassUseMode.Solo);
+            Core.BossClass();
 
             // Cognitive Dissonance 9124
             Story.KillQuest(9124, "manacradle", "Malgor");
@@ -1144,7 +1143,11 @@ public class CoreSoW
             Story.KillQuest(9125, "manacradle", "The Mainyu");
             Core.ToBank(MainyuDrops.Concat(MalgorDrops).ToArray());
         }
-        else Core.Logger("Cant do these last quests as they require YNR or a *realy good* dodge class... or for you todo it manualy with an group/army(this quest isnt required afaik.)");
+        else Core.Logger("Cant do these last quests\n" +
+        "as they require Yami no Ronin/TimeKeeper\n" +
+        "or a *realy good* dodge class... or for you\n" +
+        "todo it manualy with an group/army\n" +
+        "(this quest isnt required afaik.)");
 
         #region GroupBoss Quest
         // These 2 arent needed.
