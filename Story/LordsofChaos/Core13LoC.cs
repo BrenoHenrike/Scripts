@@ -201,7 +201,7 @@ public class Core13LoC
         if (!Story.QuestProgression(272))
         {
             Core.EnsureAccept(272);
-            Core.KillEscherion(publicRoom: true);
+            Core.KillEscherion("Defeated Escherion", isTemp: true);
             Core.EnsureComplete(272);
         }
     }
@@ -2333,7 +2333,7 @@ public class Core13LoC
         //Beat Death!
         Core.EquipClass(ClassType.Solo);
         Story.KillQuest(3799, "shadowattack", "Death");
-        
+
         //Enter Confrontation
         if (!Core.isCompletedBefore(3876))
         {
