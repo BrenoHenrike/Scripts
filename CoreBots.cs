@@ -2976,7 +2976,6 @@ public class CoreBots
                 SimpleQuestBypass((192, 9));
                 break;
 
-
             case "ascendeclipse":
                 if (!CheckInventory("Rite of Ascension"))
                     Logger("Item Required is a server-side check, cannot ghost it.");
@@ -3259,6 +3258,7 @@ public class CoreBots
             case "baconcatb":
             case "baconcat":
             case "tlapd":
+            case "superslayin":
                 // Special
                 JumpWait();
                 map = strippedMap + "-999999";
