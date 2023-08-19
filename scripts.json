@@ -10060,6 +10060,28 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/OriginulMerge.cs"
   },
   {
+    "name": "Super Slayin Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Super Slayin Merge [2321] in /superslayin",
+    "tags": [
+      "super",
+      "slayin",
+      "merge",
+      "superslayin",
+      "enchanted",
+      "martial",
+      "artists",
+      "gi",
+      "ryokus",
+      "masters",
+      "ryoku",
+      "morph"
+    ],
+    "path": "Other/MergeShops/SuperSlayinMerge.cs",
+    "size": 4559,
+    "fileName": "SuperSlayinMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/SuperSlayinMerge.cs"
+  },
+  {
     "name": "WarTrainingMerge",
     "description": "null",
     "tags": [
