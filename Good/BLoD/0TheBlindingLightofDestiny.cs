@@ -33,7 +33,7 @@ public class TheBlindingLightofDestiny
     {
         Core.SetOptions();
 
-        BLOD.BlindingLightOfDestiny();
+        BLOD.BlindingLightOfDestiny(Bot.Config!.Get<BLODMethod>("BLODMethod"));
 
         Core.SetOptions(false);
     }
