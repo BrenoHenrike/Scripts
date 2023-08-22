@@ -2826,20 +2826,31 @@ public class CoreBots
 
     public void BankACMisc()
     {
+
+        /* put the (ID - ItemName) here vv
+                // 18927 is Treasure Potion
+                // 38575 is Dark Potion
+                */
+
+        // Add extra (Misc) Items that *shouldnt* be banked (seperated by a comma ","),
+        // by their itemid here  vvvvv 
+        int?[] Extras = { 18927, 38575 };
         List<ItemCategory> whiteList = new() { ItemCategory.Note, ItemCategory.Item, ItemCategory.Resource, ItemCategory.QuestItem };
+
         // If boosts are not enabled, bank those too
         if (!Bot.Boosts.Enabled && (CBO_Active() ||
                 !new[] { "doGoldBoost", "doClassBoost", "doRepBoost", "doExpBoost" }.Any(b => CBOBool(b, out bool o) && o)))
             whiteList.Add(ItemCategory.ServerUse);
 
-        // Bank AC items based on whitelist, excempt blacklist and treasure potion
-        ToBank(Bot.Inventory.Items.Where(x =>
-            whiteList.Contains(x.Category) &&
-            x.Coins &&
-            !BankingBlackList.Contains(x.Name) &&
-            // 18927 is Treasure Potion
-            x.ID != 18927
-        ).Select(x => x.ID).ToArray());
+        // Bank AC items based on whitelist, exempt blacklist and treasure potion
+        ToBank(Bot.Inventory.Items
+            .Where(x =>
+                whiteList.Contains(x.Category) &&
+                x.Coins &&
+                !BankingBlackList.Contains(x.Name) &&
+                !Extras.Contains(x.ID))
+            .Select(x => x.ID)
+            .ToArray());
     }
 
     public void BankACUnenhancedGear()
