@@ -70,10 +70,6 @@ public class BoneBreak
         //Defeat Braddock Bonebreaker  3897
         Story.KillQuest(3897, "bonebreak", "Bonebreaker");
 
-        //Break Into the Hoard 3898
-        Story.BuyQuest(3898, "bonebreak", 1046, "BoneBreaker Fortress Map");
-        Story.KillQuest(3898, "bonebreak", "Undead Berserker");
-
         //Hunt for Killek 5977
         Story.MapItemQuest(5977, "bonebreak", 5418);
 
