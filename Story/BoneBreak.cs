@@ -27,16 +27,18 @@ public class BoneBreak
         if (Core.isCompletedBefore(5981))
             return;
 
-       if (Core.HasAchievement(30, "ip6") && (!Core.CheckInventory(27222) || !Core.IsMember))
+        if (!Core.HasAchievement(30, "ip6") && !Core.IsMember)
         {
             Core.Logger("\"BoneBreak\" map requires you to have membership or purchased BoneBreaker Adventure Pack to be able to access it.");
             return;
         }
+        if (Core.HasAchievement(30, "ip6"))
+            Core.BuyItem("battleon", 1046, 27222);
 
         Story.PreLoad(this);
 
         //Bracken, Bone, and Branch 3892
-        if (Story.QuestProgression(3892))
+        if (!Story.QuestProgression(3892))
         {
             Core.EnsureAccept(3892);
             Core.HuntMonster("bonebreak", "Bone Leech", "Venomous Leech Fang", 3);
@@ -53,7 +55,7 @@ public class BoneBreak
         Story.KillQuest(3894, "bonebreak", "Kidnapped Prisoner");
 
         //Break the Bone Fortress 3895
-        if (Story.QuestProgression(3895))
+        if (!Story.QuestProgression(3895))
         {
             Core.EnsureAccept(3895);
             Core.HuntMonster("bonebreak", "Unbroken Minion", "Unbroken Minion Defeated", 10);
