@@ -43,7 +43,7 @@ public class BoneBreak
             Core.EnsureAccept(3892);
             Core.HuntMonster("bonebreak", "Bone Leech", "Venomous Leech Fang", 3);
             Core.HuntMonster("bonebreak", "Marsh Treeant", "Dread Tree Branch", 6);
-            Core.HuntMonster("bonebreak", "Marsh Thing ", "Marsh Weed", 12);
+            Core.HuntMonster("bonebreak", "Marsh Thing", "Marsh Weed", 12);
             Core.EnsureComplete(3892);
         }
 
