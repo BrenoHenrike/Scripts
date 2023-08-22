@@ -810,7 +810,7 @@ public class CoreDailies
     public void MoglinPets()
     {
         Core.Logger("Daily: Moglin Pets");
-        string[] pets = { "Twig Pet", "Twiggy Pet", "Zorbak Pet" };
+        string[] pets = { "Twig Pet", "Twilly Pet", "Zorbak Pet" };
         if (Core.CheckInventory(pets, toInv: false))
             return;
 
