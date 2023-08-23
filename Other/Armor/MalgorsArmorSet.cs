@@ -13,7 +13,7 @@ tags: null
 
 //cs_include Scripts/Legion/YamiNoRonin/CoreYnR.cs
 //cs_include Scripts/ShadowsOfWar/MergeShops/DeadLinesMerge.cs
-//cs_include Scripts/ShadowsOfWar/MergeShops/RuinedCrownMerge.cs
+//cs_include Scripts/ShadowsOfWar/MergeShops/ShadowflameFinaleMerge.cs
 //cs_include Scripts/ShadowsOfWar/MergeShops/TimekeepMerge.cs
 //cs_include Scripts/ShadowsOfWar/MergeShops/StreamwarMerge.cs
 //cs_include Scripts/ShadowsOfWar/MergeShops/WorldsCoreMerge.cs
@@ -32,7 +32,7 @@ public class MalgorsArmorSet
     public CoreSoW SoW = new();
     public CoreYnR YNR = new();
     private DeadLinesMerge DeadLinesMerge = new();
-    private RuinedCrownMerge RuinedCrownMerge = new();
+    private ShadowflameFinaleMerge ShadowflameFinaleMerge = new();
     private TimekeepMerge TimekeepMerge = new();
     private StreamwarMerge StreamwarMerge = new();
     private WorldsCoreMerge WorldsCoreMerge = new();
@@ -75,7 +75,7 @@ public class MalgorsArmorSet
         while (!Bot.ShouldExit && !Core.CheckInventory(Set))
         {
             DeadLinesMerge.BuyAllMerge(buyOnlyThis: "Timestream Ravager");
-            RuinedCrownMerge.BuyAllMerge(buyOnlyThis: "ShadowFlame Defender");
+            ShadowflameFinaleMerge.BuyAllMerge(buyOnlyThis: "ShadowFlame Defender");
             TimekeepMerge.BuyAllMerge(buyOnlyThis: "Mana Guardian");
             StreamwarMerge.BuyAllMerge(buyOnlyThis: "Dark Dragon Slayer");
             WorldsCoreMerge.BuyAllMerge(buyOnlyThis: "Mystical Devotee of Mana");
