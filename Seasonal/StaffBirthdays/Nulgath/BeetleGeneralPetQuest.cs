@@ -14,95 +14,79 @@ tags: quest, beetle, general, pet, staff, birthday, nulgath
 //cs_include Scripts/Hollowborn/CoreHollowborn.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
-// using Skua.Core.Options;
+using Skua.Core.Options;
 
-public class BeetleGeneralPetQuest
+public class BeetleGeneralPet
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    private CoreFarms Farm = new();
-    private CoreAdvanced Adv = new();
     private TempleSiegeMerge TSM = new();
     private CoreNation Nation = new();
     private CoreHollowborn HB = new();
+    public CoreAdvanced Adv => new();
+
+
+    public string OptionsStorage = "BeetleGeneralPet";
+    public bool DontPreconfigure = true;
+    public List<IOption> Options = new List<IOption>()
+    {
+        CoreBots.Instance.SkipOptions,
+        new Option<bool>("GetExtras", "\"Im Hungry\" Rewards", "Get the rewards from \"Im Hungry\"", false),
+    };
 
     public void ScriptMain(IScriptInterface Bot)
     {
         Core.SetOptions();
 
+        RequiredItemsandQuests("Beetle General Pet");
         AutoReward();
 
         Core.SetOptions(false);
 
     }
 
-    public void AutoReward(int questID = 9076, int quant = 1, string rewardItemName = "")
+    public void AutoReward(int questID = 9076)
     {
-        // Add drops and experience at the beginning
-        Core.AddDrop("Baby Chaos Dragon", "Reaper's Soul"); // Using names for these two
-        Farm.Experience(80);
+        Core.AddDrop("Red Ant Pet", "Beetle EXP", "Beetle Warlord Pet");
 
-        // Beetle General Pet
-        TSM.BuyAllMerge("Beetle General Pet");
-
-        List<ItemBase> RewardOptions = Core.EnsureLoad(questID).Rewards;
-
-        // Find the ItemBase object that matches the rewardItemName using case-insensitive comparison
-        if (!string.IsNullOrEmpty(rewardItemName))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Beetle EXP", 8))
         {
-            ItemBase? rewardItem = RewardOptions.Find(item => item.Name.Equals(rewardItemName, StringComparison.OrdinalIgnoreCase));
-            if (rewardItem == null)
-            {
-                Core.Logger("The specified reward item name is not available as a reward.");
-                return;
-            }
-
-            int rewardItemID = rewardItem.ID;
-            Core.AddDrop(rewardItemID);
-            int rewardItemQuantity = Bot.Inventory.GetItem(rewardItemID)?.Quantity ?? 0;
-
-            if (rewardItemQuantity >= quant)
-            {
-                Core.Logger($"You already have the desired quantity ({quant}) of {rewardItemName}. Skipping banking for this item.");
-                return;
-            }
-
-            while (rewardItemQuantity < quant)
-            {
-                PerformQuestActions(questID);
-                Core.EnsureComplete(questID, rewardItemID);
-                rewardItemQuantity = Bot.Inventory.GetItem(rewardItemID)?.Quantity ?? 0;
-            }
+            Core.EnsureAccept(questID);
+            Core.HuntMonster("giant", "Red Ant", "Red Ant Pet", isTemp: false);
+            Nation.EssenceofNulgath(10);
+            HB.FreshSouls(1, 10);
+            Core.EnsureComplete(questID);
+            Core.JumpWait();
+            Core.ToBank(Core.QuestRewards(questID));
         }
-        else
+        Adv.BuyItem("tercessuinotlim", 1951, "Unmoulded Fiend Essence");
+        Core.ChainComplete(9077);
+        Bot.Wait.ForPickup("Beetle Warlord Pet");
+
+        if (Bot.Config!.Get<bool>("GetExtras"))
         {
+            List<ItemBase> RewardOptions = Core.EnsureLoad(questID).Rewards;
+            foreach (ItemBase item in RewardOptions)
+                Core.AddDrop(item.Name);
             foreach (ItemBase item in RewardOptions)
             {
-                int itemQuantity = Bot.Inventory.GetItem(item.ID)?.Quantity ?? 0;
-
-                // For non-specified part, check each item's MaxStack
-                while (itemQuantity < (item.MaxStack > 1 ? item.MaxStack : 1))
+                while (!Bot.ShouldExit && !Core.CheckInventory(item.ID, toInv: false))
                 {
-                    PerformQuestActions(questID);
+                    Core.EnsureAccept(questID);
+                    Core.HuntMonster("giant", "Red Ant", "Red Ant Pet", isTemp: false);
+                    Nation.EssenceofNulgath(10);
+                    HB.FreshSouls(1, 10);
                     Core.EnsureComplete(questID, item.ID);
-                    // Check inventory without adding to inventory
-                    itemQuantity = Core.CheckInventory(item.ID, toInv: false) ? Bot.Inventory.GetItem(item.ID)?.Quantity ?? 0 : item.MaxStack;
-                }
-
-                // After completing each quest, bank the rewards for non-specified items
-                if (itemQuantity > 0)
+                    Core.JumpWait();
                     Core.ToBank(item.ID);
+                }
             }
         }
     }
 
-    private void PerformQuestActions(int questID)
+    void RequiredItemsandQuests(params string[] items)
     {
-        Core.EnsureAccept(questID);
-        Nation.FarmTotemofNulgath(1);
-        Core.EquipClass(ClassType.Farm);
-        Core.HuntMonster("dragonchallenge", "Chaos Dragon", "Baby Chaos Dragon", isTemp: false);
-        Core.EquipClass(ClassType.Solo);
-        Core.HuntMonster("thevoid", "Reaper", "Reaper's Soul", isTemp: false);
+        if (!Core.CheckInventory("Beetle General Pet"))
+            TSM.BuyAllMerge("Beetle General Pet");
     }
 }

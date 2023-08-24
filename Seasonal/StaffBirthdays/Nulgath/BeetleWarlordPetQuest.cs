@@ -13,8 +13,10 @@ tags: quest, beetle, warlord, pet, staff, birthday, nulgath
 //cs_include Scripts/Seasonal/StaffBirthdays/Nulgath/TempleSiegeMerge.cs
 //cs_include Scripts/Hollowborn/CoreHollowborn.cs
 //cs_include Scripts/Seasonal/StaffBirthdays/Nulgath/BeetleGeneralPetQuest.cs
+
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
+using Skua.Core.Options;
 
 public class BeetleWarlordPetQuest
 {
@@ -23,29 +25,34 @@ public class BeetleWarlordPetQuest
     private CoreFarms Farm = new();
     private CoreNation Nation = new();
     private CoreAdvanced Adv = new();
-    private BeetleGeneralPetQuest BGP = new();
+    private BeetleGeneralPet BGP = new();
     private TempleSiegeMerge TSM = new();
 
+    public string OptionsStorage = "BeetleGeneralPet";
+    public bool DontPreconfigure = true;
+    public List<IOption> Options = new List<IOption>()
+    {
+        CoreBots.Instance.SkipOptions,
+        new Option<bool>("Armoronly", "\"Void Beetle Warlord\" Only", "Only get \"Void Beetle Warlord\" for RGoW", false),
+    };
 
     public void ScriptMain(IScriptInterface Bot)
     {
         Core.SetOptions();
 
-        AutoReward();
+        AutoReward(9078, 1, Bot.Config!.Get<bool>("Armoronly") ? "" : "Void Beetle Warlord");
 
         Core.SetOptions(false);
     }
 
     public void AutoReward(int questID = 9078, int quant = 1, string rewardItemName = "")
     {
-        // Add drops and experience at the beginning
         Farm.Experience(80);
         GetBeetlWarlordPet();
 
         Core.AddDrop("Baby Chaos Dragon", "Reaper's Soul");
         List<ItemBase> RewardOptions = Core.EnsureLoad(questID).Rewards;
 
-        // Find the ItemBase object that matches the rewardItemName using case-insensitive comparison
         if (!string.IsNullOrEmpty(rewardItemName))
         {
             ItemBase? rewardItem = RewardOptions.Find(item => item.Name.Equals(rewardItemName, StringComparison.OrdinalIgnoreCase));
@@ -76,14 +83,12 @@ public class BeetleWarlordPetQuest
             {
                 int itemQuantity = Bot.Inventory.GetItem(item.ID)?.Quantity ?? 0;
 
-                // For non-specified part, check each item's MaxStack
                 while (itemQuantity < item.MaxStack)
                 {
                     PerformQuestActions(questID);
                     Core.EnsureComplete(questID, item.ID);
                     Core.ToBank(item.ID);
 
-                    // Check inventory without adding to inventory
                     itemQuantity = Core.CheckInventory(item.ID, toInv: false) ? Bot.Inventory.GetItem(item.ID)?.Quantity ?? 0 : item.MaxStack;
                 }
             }
@@ -100,9 +105,6 @@ public class BeetleWarlordPetQuest
         Core.HuntMonster("thevoid", "Reaper", "Reaper's Soul", isTemp: false);
     }
 
-
-
-    // Beetle Warlord Pet
     private void GetBeetlWarlordPet(params string[] items)
     {
         if (Core.CheckInventory(75663))
@@ -110,8 +112,7 @@ public class BeetleWarlordPetQuest
 
         Core.EnsureAccept(9077);
         Adv.BuyItem("tercessuinotlim", 1951, "Unmoulded Fiend Essence");
-        BGP.AutoReward(9087, 8, "Beetle EXP");
+        BGP.AutoReward();
         Core.EnsureComplete(9077);
     }
-
 }
