@@ -378,21 +378,63 @@ public class CoreNation
     }
 
     /// <summary>
-    /// Farms Nation Round 4 Medal in Shadow Blast Arena.
+    /// Farms the required medals for Nation Round 4 in Shadow Blast Arena.
     /// </summary>
     public void NationRound4Medal()
     {
-        while (!Bot.ShouldExit && !Core.CheckInventory("Nation Round 4 Medal"))
+        foreach (string medal in new[] { "Nation Round 1 Medal", "Nation Round 2 Medal", "Nation Round 3 Medal", "Nation Round 4 Medal" })
         {
-            FarmMedalStep(4744, "Nation Round 1 Medal", 1, "Nation Round 2 Medal");
-            FarmMedalStep(4745, "Nation Round 2 Medal", 2, "Nation Round 3 Medal");
-            FarmMedalStep(4746, "Nation Round 3 Medal", 3, "Nation Round 4 Medal");
+            if (Core.CheckInventory(medal))
+            {
+                Core.Logger($"\"{medal}\" owned.");
+            }
+            else
+            {
+                switch (medal)
+                {
+                    // The Nation Needs YOU!
+                    case "Nation Round 1 Medal":
+                        Core.EnsureAccept(4744);
+                        Core.HuntMonster("shadowblast", "Legion AirStrike", "Legion Rookie Defeated", 5);
+                        Core.HuntMonster("shadowblast", "Shadowrise Guard", "Shadowscythe Rookie Defeated", 5);
+                        Core.EnsureComplete(4744);
+                        break;
+
+                    // Show Me More, Nation-Noob
+                    case "Nation Round 2 Medal":
+                        Core.EnsureAccept(4745);
+                        Core.HuntMonster("shadowblast", "Legion Fenrir", "Legion Veteran Defeated", 7);
+                        Core.HuntMonster("shadowblast", "Doombringer", "Shadowscythe Veteran Defeated", 7);
+                        Core.EnsureComplete(4745);
+                        break;
+
+                    // For the Nation!
+                    case "Nation Round 3 Medal":
+                        Core.EnsureAccept(4746);
+                        Core.HuntMonster("shadowblast", "Legion Cannon", "Legion Elite Defeated", 10);
+                        Core.HuntMonster("shadowblast", "Draconic Doomknight", "Shadowscythe Elite Defeated", 10);
+                        Core.EnsureComplete(4746);
+                        break;
+
+                    // Nulgath Likes Your Style
+                    case "Nation Round 4 Medal":
+                        Core.EnsureAccept(4747);
+                        Core.HuntMonster("shadowblast", "Grimlord Boss", "Grimlord Vanquished");
+                        Core.EnsureComplete(4747);
+                        break;
+                }
+
+                Bot.Drops.Pickup(medal);
+                Core.Logger($"Medal {medal} acquired");
+            }
         }
     }
 
+
     private void FarmMedalStep(int questId, string medalName, int requiredMedalStep, string nextMedalName)
     {
-        if (Core.CheckInventory(medalName)) return;
+        if (Core.CheckInventory(medalName))
+            return;
 
         if (Core.CheckInventory(nextMedalName) && Core.IsMember)
         {
