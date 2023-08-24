@@ -1652,9 +1652,13 @@ public class CoreFarms
         if (Core.isCompletedBefore(4135))
         {
             // Where There's Smoke...(200rep - faster)
-            Core.RegisterQuests(4135);
             while (!Bot.ShouldExit && FactionRank("Embersea") < rank)
+            {
+                Core.EnsureAccept(4135);
                 Core.GetMapItem(3248, 1, "feverfew");
+                Core.EnsureComplete(4135);
+                Bot.Wait.ForQuestComplete(4135);
+            }
         }
         else
         {

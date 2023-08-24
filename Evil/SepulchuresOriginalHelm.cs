@@ -71,14 +71,14 @@ public class SepulchuresOriginalHelm
 
     public void GravelynsDoomFireToken(int quant = 1)
     {
-        if (Core.CheckInventory("Gravelyn's DoomFire Token", quant))
+        if (Core.CheckInventory(37033, quant))
             return;
 
         Core.AddDrop(GravelynsDoomFireTokenItems);
 
-        while (!Bot.ShouldExit && !Core.CheckInventory("Gravelyn's DoomFire Token", quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory(37033, quant))
         {
-            while (!Bot.ShouldExit && !Core.CheckInventory("Gravelyn's Blessing"))
+            while (!Bot.ShouldExit && !Core.CheckInventory(37034))
             {
                 if (Core.CheckInventory("Necrotic Sword of Doom"))
                     Core.ChainComplete(5455);
@@ -90,7 +90,7 @@ public class SepulchuresOriginalHelm
                     Core.HuntMonster("necrodungeon", "Doom Overlord", "Essence of the Doomlord");
                     Core.EnsureComplete(5457);
                 }
-                Bot.Wait.ForPickup("Gravelyn's Blessing");
+                Bot.Wait.ForPickup(37034);
             }
             Core.EnsureAccept(5458, 5459, 5460, 5461);
             Core.KillMonster("swordhavenfalls", "r10", "Left", 1295, "Doomed Memories");
@@ -104,7 +104,7 @@ public class SepulchuresOriginalHelm
             Bot.Wait.ForPickup("Father's Sorrowful Tear");
             Core.HuntMonster("shadowrealmpast", "*", "Empowered Essence", 13, isTemp: false);
             Core.EnsureComplete(5461);
-            Bot.Wait.ForPickup("Gravelyn's DoomFire Token");
+            Bot.Wait.ForPickup(37033);
         }
     }
 

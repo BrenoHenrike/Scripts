@@ -30,9 +30,9 @@ public class GravelynDoomFire
             return;
 
         Core.AddDrop(GravelynsDoomFireTokenItems);
-        if (!Core.CheckInventory("Gravelyn's DoomFire Token"))
+        if (!Core.CheckInventory(37033))
         {
-            while (!Bot.ShouldExit && !Core.CheckInventory("Gravelyn's Blessing"))
+            while (!Bot.ShouldExit && !Core.CheckInventory(37034))
             {
                 if (Core.CheckInventory("Necrotic Sword of Doom"))
                     //A Loyal Servant: Necrotic Sword of Doom 5455
@@ -48,7 +48,7 @@ public class GravelynDoomFire
                     Core.HuntMonsterMapID("necrodungeon", 9, "Essence of the Doomlord");
                     Core.EnsureComplete(5457);
                 }
-                Bot.Wait.ForPickup("Gravelyn's Blessing");
+                Bot.Wait.ForPickup(37034);
 
             }
             //Find me some Doom 5458
@@ -70,7 +70,7 @@ public class GravelynDoomFire
             //The Summoning 5461
             Core.HuntMonster("shadowrealmpast", "*", "Empowered Essence", 13, isTemp: false);
             Core.EnsureComplete(5461);
-            Bot.Wait.ForPickup("Gravelyn's DoomFire Token");
+            Bot.Wait.ForPickup(37033);
         }
 
         Core.BuyItem("darkthronehub", 1307, "DOOMFire OF Gravelyn");

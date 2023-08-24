@@ -6,7 +6,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 107317,
+    "size": 107439,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -2860,7 +2860,7 @@
       "null"
     ],
     "path": "Evil/GravelynDoomFire.cs",
-    "size": 3056,
+    "size": 2980,
     "fileName": "GravelynDoomFire.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/GravelynDoomFire.cs"
   },
@@ -2882,7 +2882,7 @@
       "null"
     ],
     "path": "Evil/SepulchuresOriginalHelm.cs",
-    "size": 4516,
+    "size": 4418,
     "fileName": "SepulchuresOriginalHelm.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/SepulchuresOriginalHelm.cs"
   },
@@ -3236,7 +3236,7 @@
       "rare-items"
     ],
     "path": "Other/0CurrentDailyGifts.cs",
-    "size": 19885,
+    "size": 19888,
     "fileName": "0CurrentDailyGifts.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/0CurrentDailyGifts.cs"
   },
