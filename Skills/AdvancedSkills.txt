@@ -242,7 +242,9 @@ Base = SwordMaster Assassin = 1 | 2 | 3 | 4 = Use if Available
 Base = The Collector = 1WW20000 | 3 | 4 | 1 = 250
 Base = Thief of Hours = 4 | 1 | 3 | 2 = 250
 Base = TimeKeeper = 2 | 4 | 1 | 1 | 1 | 4 | 3 | 2 | 1 | 1 | 4 | 1 | 2 | 1 | 1 | 3 = 250
+Farm = TimeKeeper = 2 | 4 | 1 | 1 | 1 | 3 = 250
 Base = TimeKiller = 2 | 4 | 1 | 1 | 1 | 4 | 3 | 2 | 1 | 1 | 4 | 1 | 2 | 1 | 1 | 3 = 250
+Farm = TimeKiller = 2 | 4 | 1 | 1 | 1 | 3 = 250
 Solo = Timeless Chronomancer = 5 | 2 | 3 | 1 | 1 | 1 | 3 | 1 | 4 = 250
 Farm = Timeless Chronomancer = 5 | 3 | 1 | 1 | 3 | 1 | 1 | 3 | 1 | 4 | 2 = 250
 Base = Timeless Dark Caster = 1 | 2 | 3 | 4 = Use if Available
@@ -263,12 +265,12 @@ Solo = Vampire = 2 | 3 | 1 | 1 | 3 = 250
 Base = Vampire Lord = 2 | 4 | 3 | 1 | 1 | 3 = 250
 Solo = Vampire Lord = 2 | 3 | 1 | 1 | 3 = 250
 Base = Vindicator Of They = 1WW20000 | 3 | 4 | 1 = 250
-Atk = Void Highlord = 3H>50S | 4 | 2 | 1H>25S | 3H>50S | 2 | 1H>25S | 3H>50S | 2 | 1H>25S = 250
+Atk = Void Highlord = 3H>60S | 4 | 2 | 1H>30S | 3H>60S | 2 | 1H>30S | 3H>60S | 2 | 1H>30S = 250
 Def = Void Highlord = 4 | 2 | 1 = Use if Available
-Farm = Void Highlord = 3H>50S | 2 | 4 | 1H>25S = Use if Available
-Atk = Void Highlord (IoDA) = 3H>50S | 4 | 2 | 1H>25S | 3H>50S | 2 | 1H>25S | 3H>50S | 2 | 1H>25S = 250
+Farm = Void Highlord = 3H>60S | 2 | 4 | 1H>30S = Use if Available
+Atk = Void Highlord (IoDA) = 3H>50S | 4 | 2 | 1H>30S | 3H>60S | 2 | 1H>30S | 3H>60S | 2 | 1H>30S = 250
 Def = Void Highlord (IoDA) = 4 | 2 | 1 = Use if Available
-Farm = Void Highlord (IoDA) = 3H>50S | 2 | 4 | 1H>25S = Use if Available
+Farm = Void Highlord (IoDA) = 3H>60S | 2 | 4 | 1H>30S = Use if Available
 Base = Void Highlord Tester = 3 | 2 | 4 | 3 | 2 | 1 | 3 | 2 | 1 = 250
 Def = Void Highlord Tester = 4 | 2 | 1 = Use if Available
 Base = Warlord = 1 | 2 | 3 | 4 = Use if Available
