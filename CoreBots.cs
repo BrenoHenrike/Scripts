@@ -3589,13 +3589,12 @@ public class CoreBots
                 continue;
             }
 
-            // Unbank(Class);
-            // Bot.Wait.ForTrue(() => Bot.Inventory.Contains(Class), 20);
-
             switch (Class)
             {
                 case "TimeKeeper":
-                    Bot.Skills.StartAdvanced(Class, true, ClassUseMode.Base);
+                    if (SoloClass != Class)
+                        return;
+                    else Bot.Skills.StartAdvanced(Class, true, ClassUseMode.Base);
                     break;
 
                 case "Yami no Ronin":
@@ -3641,6 +3640,7 @@ public class CoreBots
             Logger($"Using {Bot.Player.CurrentClass!.Name}");
         }
     }
+
 
 
 

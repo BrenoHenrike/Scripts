@@ -27,21 +27,23 @@ public class BoneBreak
         if (Core.isCompletedBefore(5981))
             return;
 
-       if (Core.HasAchievement(30, "ip6") && (!Core.CheckInventory(27222) || !Core.IsMember))
+        if (!Core.HasAchievement(30, "ip6") && !Core.IsMember)
         {
             Core.Logger("\"BoneBreak\" map requires you to have membership or purchased BoneBreaker Adventure Pack to be able to access it.");
             return;
         }
+        if (Core.HasAchievement(30, "ip6"))
+            Core.BuyItem("battleon", 1046, 27222);
 
         Story.PreLoad(this);
 
         //Bracken, Bone, and Branch 3892
-        if (Story.QuestProgression(3892))
+        if (!Story.QuestProgression(3892))
         {
             Core.EnsureAccept(3892);
             Core.HuntMonster("bonebreak", "Bone Leech", "Venomous Leech Fang", 3);
             Core.HuntMonster("bonebreak", "Marsh Treeant", "Dread Tree Branch", 6);
-            Core.HuntMonster("bonebreak", "Marsh Thing ", "Marsh Weed", 12);
+            Core.HuntMonster("bonebreak", "Marsh Thing", "Marsh Weed", 12);
             Core.EnsureComplete(3892);
         }
 
@@ -53,7 +55,7 @@ public class BoneBreak
         Story.KillQuest(3894, "bonebreak", "Kidnapped Prisoner");
 
         //Break the Bone Fortress 3895
-        if (Story.QuestProgression(3895))
+        if (!Story.QuestProgression(3895))
         {
             Core.EnsureAccept(3895);
             Core.HuntMonster("bonebreak", "Unbroken Minion", "Unbroken Minion Defeated", 10);
@@ -67,10 +69,6 @@ public class BoneBreak
 
         //Defeat Braddock Bonebreaker  3897
         Story.KillQuest(3897, "bonebreak", "Bonebreaker");
-
-        //Break Into the Hoard 3898
-        Story.BuyQuest(3898, "bonebreak", 1046, "BoneBreaker Fortress Map");
-        Story.KillQuest(3898, "bonebreak", "Undead Berserker");
 
         //Hunt for Killek 5977
         Story.MapItemQuest(5977, "bonebreak", 5418);
