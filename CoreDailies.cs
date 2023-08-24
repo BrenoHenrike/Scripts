@@ -810,7 +810,7 @@ public class CoreDailies
     public void MoglinPets()
     {
         Core.Logger("Daily: Moglin Pets");
-        string[] pets = { "Twig Pet", "Twiggy Pet", "Zorbak Pet" };
+        string[] pets = { "Twig Pet", "Twilly Pet", "Zorbak Pet" };
         if (Core.CheckInventory(pets, toInv: false))
             return;
 
@@ -885,9 +885,9 @@ public class CoreDailies
         if (!CheckDaily(3898))
             return;
 
-        if (Core.HasAchievement(30, "ip6") && (!Core.CheckInventory(27222) || !Core.IsMember))
+        if (!Core.HasAchievement(30, "ip6"))
         {
-            Core.Logger("\"BoneBreak\" map requires you to have membership or purchased BoneBreaker Adventure Pack to be able to access it.");
+            Core.Logger("\"Break Into the Hoard\" daily quest requires you to purchase BoneBreaker Adventure Pack to be able to complete it.");
             return;
         }
 
@@ -896,6 +896,9 @@ public class CoreDailies
             Core.Logger("Requires storyline completetion, run the standalone daily (if you have the required items.)...)");
             return;
         }
+
+        //Buying BoneBreaker Fortress Map
+        Core.BuyItem("battleon", 1046, 27222);
 
         ItemBase[] QuestReward = Core.EnsureLoad(3898).Rewards.ToArray();
 

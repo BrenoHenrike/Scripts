@@ -70,7 +70,7 @@ tags: lacerate, smite, herosvaliance, arcanasconcerto, elysium, acheron, absolut
 //cs_include Scripts/Story/DragonFableOrigins.cs
 //cs_include Scripts/Other\Armor\MalgorsArmorSet.cs
 //cs_include Scripts/ShadowsOfWar/MergeShops/DeadLinesMerge.cs
-//cs_include Scripts/ShadowsOfWar/MergeShops/RuinedCrownMerge.cs
+//cs_include Scripts/ShadowsOfWar/MergeShops/ShadowflameFinaleMerge.cs
 //cs_include Scripts/ShadowsOfWar/MergeShops/TimekeepMerge.cs
 //cs_include Scripts/ShadowsOfWar/MergeShops/StreamwarMerge.cs
 //cs_include Scripts/ShadowsOfWar/MergeShops/WorldsCoreMerge.cs
@@ -614,9 +614,9 @@ public class UnlockForgeEnhancements
             Core.HuntMonster("shadowgrove", "Titan Shadow Dragonlord", "ShadowFlame Dragon Blade", isTemp: false);
 
             Core.AddDrop(SoW.MalgorDrops.Concat(SoW.MainyuDrops).ToArray());
-            if (Core.CheckInventory("Yami no Ronin"))
-                Bot.Skills.StartAdvanced("Yami no Ronin", true, ClassUseMode.Solo);
-            else Core.EquipClass(ClassType.Solo);
+
+            Core.BossClass();
+
             SOWM.ElementalCore(20);
 
             Core.Logger("Items still needed(the bot cannot farm these):");

@@ -32,6 +32,7 @@ public class CoreAOR
         MidnightZone();
         AbyssalZone();
         DeepWater();
+        SeaVoice();
     }
 
     public void TerminaTemple()
@@ -180,7 +181,13 @@ public class CoreAOR
         Story.KillQuest(9266, "twilightzone", new[] { "Decay Spirit", "Ice Guardian" });
 
         // Singing to Whales (9267)
-        Story.KillQuest(9267, "twilightzone", "Leviathan");
+        if (!Story.QuestProgression(9267))
+        {
+            Core.EquipClass(ClassType.Solo);
+            Core.EnsureAccept(9267);
+            Core.HuntMonster("twilightzone", "Leviathan", "Leviathan Fought");
+            Core.EnsureComplete(9267);
+        }
 
         // The Sea's Commitment (9268)
         Story.MapItemQuest(9268, "twilightzone", 11756);
@@ -208,7 +215,13 @@ public class CoreAOR
         Story.KillQuest(9273, "sunlightzone", "Marine Snow");
 
         // Ten Klicks (9274)
-        Story.KillQuest(9274, "twilightzone", "Leviathan");
+        if (!Story.QuestProgression(9274))
+        {
+            Core.EquipClass(ClassType.Solo);
+            Core.EnsureAccept(9274);
+            Core.HuntMonster("twilightzone", "Leviathan", "Leviathan's Tendril", 3);
+            Core.EnsureComplete(9274);
+        }
     }
 
     public void MidnightZone()
@@ -253,7 +266,13 @@ public class CoreAOR
         Story.MapItemQuest(9300, "midnightzone", 11850);
 
         // Roko's Royal Basilisk (9301)
-        Story.KillQuest(9301, "midnightzone", "Sparagmos");
+        if (!Story.QuestProgression(9301))
+        {
+            Core.EquipClass(ClassType.Solo);
+            Core.EnsureAccept(9301);
+            Core.HuntMonster("midnightzone", "Sparagmos", "Sparagmos A.I. Defeated");
+            Core.EnsureComplete(9301);
+        }
     }
 
     public void AbyssalZone()
@@ -299,7 +318,13 @@ public class CoreAOR
         Story.MapItemQuest(9314, "abyssalzone", 11899);
 
         // Together as One (9315)
-        Story.KillQuest(9315, "abyssalzone", "The Ashray");
+        if (!Story.QuestProgression(9315))
+        {
+            Core.EquipClass(ClassType.Solo);
+            Core.EnsureAccept(9315);
+            Core.HuntMonster("abyssalzone", "The Ashray", "The Ashray Vanquished");
+            Core.EnsureComplete(9315);
+        }
     }
 
     public void DeepWater()
@@ -349,6 +374,35 @@ public class CoreAOR
         Story.MapItemQuest(9337, "trenchobserve", 11982);
 
         // See You on the Other Side (9338)
-        Story.KillQuest(9338, "trenchobserve", "Lady Noelle");
+        if (!Story.QuestProgression(9338))
+        {
+            Core.EquipClass(ClassType.Solo);
+            Core.EnsureAccept(9338);
+            Core.HuntMonster("trenchobserve", "Lady Noelle", "Lady Noelle Defeated");
+            Core.EnsureComplete(9338);
+        }
+    }
+
+    public void SeaVoice()
+    {
+        if (Core.isCompletedBefore(8965))
+            return;
+
+        DeepWater();
+
+        if (!Core.isCompletedBefore(9125))
+        {
+            Core.Logger(" \"Your Hero\" Quest *REQUIRED* to start SeaVoice quests");
+            return;
+        }
+
+        Story.PreLoad(this);
+
+        Core.Logger("all Seavoice Quests are\n" +
+                    "ultra boss quests (not doable):\n" +
+                    "Voice in the Sea(Badge Quest)\n" +
+                    "Dead Sea 9348\n" +
+                    "Dry Spell 9349\n" +
+                    "Blooming Sea 9347 (Rare)\n");
     }
 }

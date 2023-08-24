@@ -382,37 +382,6 @@ public class CoreNation
     /// </summary>
     public void NationRound4Medal()
     {
-        if (Core.CheckInventory("Nation Round 4 Medal"))
-            return;
-
-        Core.AddDrop(nationMedals);
-        Core.Logger("Farming Nation Round 4 Medal");
-        Core.Join("shadowblast");
-
-        void FarmMedalStep(int questId, string medalName, int requiredMedalStep, string nextMedalName)
-        {
-            if (!Core.CheckInventory(medalName))
-            {
-                if (Core.CheckInventory(nextMedalName) && Core.IsMember)
-                {
-                    Core.EnsureAccept(questId);
-                    Core.HuntMonster("shadowblast", "Grimlord Boss", "Grimlord Vanquished", 1, true, log: false);
-                    Core.EnsureComplete(questId);
-                    Bot.Drops.Pickup(medalName);
-                    Core.Logger($"Medal {requiredMedalStep} acquired");
-                }
-                else
-                {
-                    Core.EnsureAccept(questId);
-                    Core.HuntMonster("shadowblast", "Legion AirStrike", "Legion Rookie Defeated", 5, true, log: false);
-                    Core.HuntMonster("shadowblast", "Shadowrise Guard", "Shadowscythe Rookie Defeated", 5, true, log: false);
-                    Core.EnsureComplete(questId);
-                    Bot.Drops.Pickup(nextMedalName);
-                    Core.Logger($"Medal {requiredMedalStep} acquired");
-                }
-            }
-        }
-
         while (!Bot.ShouldExit && !Core.CheckInventory("Nation Round 4 Medal"))
         {
             FarmMedalStep(4744, "Nation Round 1 Medal", 1, "Nation Round 2 Medal");
@@ -421,6 +390,28 @@ public class CoreNation
         }
     }
 
+    private void FarmMedalStep(int questId, string medalName, int requiredMedalStep, string nextMedalName)
+    {
+        if (Core.CheckInventory(medalName)) return;
+
+        if (Core.CheckInventory(nextMedalName) && Core.IsMember)
+        {
+            Core.EnsureAccept(questId);
+            Core.HuntMonster("shadowblast", "Grimlord Boss", "Grimlord Vanquished", 1, true, log: false);
+            Core.EnsureComplete(questId);
+            Bot.Drops.Pickup(medalName);
+            Core.Logger($"Medal {requiredMedalStep} acquired");
+        }
+        else
+        {
+            Core.EnsureAccept(questId);
+            Core.HuntMonster("shadowblast", "Legion AirStrike", "Legion Rookie Defeated", 5, true, log: false);
+            Core.HuntMonster("shadowblast", "Shadowrise Guard", "Shadowscythe Rookie Defeated", 5, true, log: false);
+            Core.EnsureComplete(questId);
+            Bot.Drops.Pickup(nextMedalName);
+            Core.Logger($"Medal {requiredMedalStep} acquired");
+        }
+    }
 
     /// <summary>
     /// Farms Totem of Nulgath/Gem of Nulgath with Voucher Item: Totem of Nulgath quest

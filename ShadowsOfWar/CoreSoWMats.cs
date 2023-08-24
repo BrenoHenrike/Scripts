@@ -65,9 +65,7 @@ public class CoreSoWMats
         Core.FarmingLogger("Elemental Core", Quantity);
         Core.AddDrop("Elemental Core");
 
-        if (Core.CheckInventory("Yami no Ronin"))
-            Bot.Skills.StartAdvanced("Yami no Ronin", true, ClassUseMode.Solo);
-        else Core.EquipClass(ClassType.Solo);
+        Core.BossClass();
 
         Core.RegisterQuests(9126);
         while (!Bot.ShouldExit && !Core.CheckInventory("Elemental Core", Quantity))

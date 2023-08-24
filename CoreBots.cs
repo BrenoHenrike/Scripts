@@ -1963,19 +1963,17 @@ public class CoreBots
                 Logger("Killing Escherion");
             while (!Bot.ShouldExit && CheckInventory(item, quant))
             {
+                while (!Bot.ShouldExit && Bot.Player.Cell != "Boss")
+                {
+                    // DebugLogger(this);
+                    Jump("Boss", "Left");
+                    Bot.Sleep(ActionDelay);
+                }
                 // DebugLogger(this);
-                while (!Bot.ShouldExit && IsMonsterAlive(2, useMapID: true))
-                {
-                    Bot.Kill.Monster(203);
-                    while (!Bot.ShouldExit && Bot.Player.HasTarget)
-                        Bot.Combat.CancelTarget();
-                }
-                while (!Bot.ShouldExit && IsMonsterAlive(3, useMapID: true))
-                {
-                    Bot.Kill.Monster(187);
-                    while (!Bot.ShouldExit && Bot.Player.HasTarget)
-                        Bot.Combat.CancelTarget();
-                }
+                while (!Bot.ShouldExit && IsMonsterAlive("Staff of Inversion"))
+                    Bot.Kill.Monster("Staff of Inversion");
+                Bot.Combat.Attack("Escherion");
+                Bot.Sleep(1000);
             }
         }
         else
@@ -2828,20 +2826,31 @@ public class CoreBots
 
     public void BankACMisc()
     {
+
+        /* put the (ID - ItemName) here vv
+                // 18927 is Treasure Potion
+                // 38575 is Dark Potion
+                */
+
+        // Add extra (Misc) Items that *shouldnt* be banked (seperated by a comma ","),
+        // by their itemid here  vvvvv 
+        int?[] Extras = { 18927, 38575 };
         List<ItemCategory> whiteList = new() { ItemCategory.Note, ItemCategory.Item, ItemCategory.Resource, ItemCategory.QuestItem };
+
         // If boosts are not enabled, bank those too
         if (!Bot.Boosts.Enabled && (CBO_Active() ||
                 !new[] { "doGoldBoost", "doClassBoost", "doRepBoost", "doExpBoost" }.Any(b => CBOBool(b, out bool o) && o)))
             whiteList.Add(ItemCategory.ServerUse);
 
-        // Bank AC items based on whitelist, excempt blacklist and treasure potion
-        ToBank(Bot.Inventory.Items.Where(x =>
-            whiteList.Contains(x.Category) &&
-            x.Coins &&
-            !BankingBlackList.Contains(x.Name) &&
-            // 18927 is Treasure Potion
-            x.ID != 18927
-        ).Select(x => x.ID).ToArray());
+        // Bank AC items based on whitelist, exempt blacklist and treasure potion
+        ToBank(Bot.Inventory.Items
+            .Where(x =>
+                whiteList.Contains(x.Category) &&
+                x.Coins &&
+                !BankingBlackList.Contains(x.Name) &&
+                !Extras.Contains(x.ID))
+            .Select(x => x.ID)
+            .ToArray());
     }
 
     public void BankACUnenhancedGear()
@@ -2953,7 +2962,7 @@ public class CoreBots
     {
         map = map?.Replace(" ", "").Replace('I', 'i');
         map = map?.ToLower() == "tercess" ? "tercessuinotlim" : map?.ToLower();
-        string? strippedMap = map.Contains('-') ? map.Split('-').First() : map;
+        string? strippedMap = map!.Contains('-') ? map.Split('-').First() : map;
 
         if (Bot.Map.Name != null && Bot.Map.Name.ToLower() == strippedMap && !ignoreCheck)
             return;
@@ -2977,7 +2986,6 @@ public class CoreBots
             case "nightmare":
                 SimpleQuestBypass((192, 9));
                 break;
-
 
             case "ascendeclipse":
                 if (!CheckInventory("Rite of Ascension"))
@@ -3261,6 +3269,7 @@ public class CoreBots
             case "baconcatb":
             case "baconcat":
             case "tlapd":
+            case "superslayin":
                 // Special
                 JumpWait();
                 map = strippedMap + "-999999";
@@ -3561,6 +3570,81 @@ public class CoreBots
             }
         }
     }
+
+    /// <summary>
+    /// Automatic Class Selection for certain bosses.
+    /// </summary>
+    /// <param name="additionalClass">Additional class to swap into for said boss</param>
+    public void BossClass(string? additionalClass = null)
+    {
+        JumpWait();
+
+        string[] classesToCheck = new[] { "TimeKeeper", "Yami no Ronin", "Void Highlord", "Void HighLord (IoDA)" };
+
+        foreach (string Class in classesToCheck)
+        {
+            if (!CheckInventory(Class))
+            {
+                Logger($"{Class} Not Found, skipping");
+                continue;
+            }
+
+            switch (Class)
+            {
+                case "TimeKeeper":
+                    if (SoloClass != Class)
+                        return;
+                    else Bot.Skills.StartAdvanced(Class, true, ClassUseMode.Base);
+                    break;
+
+                case "Yami no Ronin":
+                    Bot.Skills.StartAdvanced(Class, true, ClassUseMode.Solo);
+                    break;
+
+                case "Void Highlord":
+                case "Void HighLord (IoDA)":
+                    Bot.Skills.StartAdvanced(Class, true, ClassUseMode.Def);
+                    break;
+
+                default:
+                    Logger($"Using {SoloClass}");
+                    Unbank(SoloClass);
+                    EquipClass(ClassType.Solo);
+                    break;
+            }
+            Bot.Wait.ForItemEquip(CheckInventory(Class) ? Class : SoloClass);
+            Logger($"Using {Bot.Player.CurrentClass!.Name}");
+            break;
+        }
+
+        if (!string.IsNullOrEmpty(additionalClass))
+        {
+            Unbank(additionalClass);
+
+            switch (additionalClass)
+            {
+                case "AnotherClass":
+                    Equip(additionalClass);
+                    Bot.Wait.ForItemEquip(additionalClass);
+                    // Perform actions for the additional class "AnotherClass"
+                    break;
+
+                default:
+                    Logger($"Using {additionalClass}");
+                    Unbank(SoloClass);
+                    EquipClass(ClassType.Solo);
+                    Bot.Wait.ForItemEquip(SoloClass);
+                    break;
+            }
+            Bot.Wait.ForItemEquip(CheckInventory(additionalClass) ? additionalClass : SoloClass);
+            Logger($"Using {Bot.Player.CurrentClass!.Name}");
+        }
+    }
+
+
+
+
+
 
     #endregion
 

@@ -33,33 +33,13 @@ public class CoreDarkon
         if (Core.CheckInventory("Darkon's Receipt", Quantity))
             return;
 
-        bool EnoughPeople = false;
         Core.AddDrop("Darkon's Receipt");
         Core.FarmingLogger("Darkon's Receipt", Quantity);
         Core.EquipClass(ClassType.Farm);
-        Core.Join("towerofdoom7", "r2", "Left");
 
         Core.RegisterQuests(7324);
         while (!Bot.ShouldExit && !Core.CheckInventory("Darkon's Receipt", Quantity))
-        {
-            if (Bot.Map.Name.ToLower() == "towerofdoom7")
-            {
-                while (!Bot.ShouldExit && Bot.Player.Cell != "r2")
-                {
-                    Core.Jump("r2", "Left");
-                    Bot.Sleep(5000);
-                }
-                if (Bot.Map.PlayerCount >= 3)
-                    EnoughPeople = true;
-                else EnoughPeople = false;
-            }
-
-            else EnoughPeople = false;
-            if (!EnoughPeople)
-                Core.KillMonster("arcangrove", "Right", "Left", "*", "Banana", 22, false, log: false);
-            else Core.KillMonster("towerofdoom7", "r2", "Left", "Dread Gorillaphant", "Banana", 22, false, log: false);
-            Bot.Wait.ForPickup("Darkon's Receipt");
-        }
+                Core.HuntMonster("portalmaze", "Jurassic Monkey", "Banana", 22, false, log: false);
         Core.CancelRegisteredQuests();
     }
 
