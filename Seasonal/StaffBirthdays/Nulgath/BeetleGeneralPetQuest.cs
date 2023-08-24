@@ -31,7 +31,7 @@ public class BeetleGeneralPet
     public List<IOption> Options = new List<IOption>()
     {
         CoreBots.Instance.SkipOptions,
-        new Option<bool>("GetExtras", "\"Im Hungry\" Rewards", "Get the rewards from \"Im Hungry\"", false),
+        new Option<bool>("OnlyPet", "Only get the pet", " only get the warlord pet? or get the rest of the rewards(cosmetics)", false),
     };
 
     public void ScriptMain(IScriptInterface Bot)
@@ -63,7 +63,7 @@ public class BeetleGeneralPet
         Core.ChainComplete(9077);
         Bot.Wait.ForPickup("Beetle Warlord Pet");
 
-        if (Bot.Config!.Get<bool>("GetExtras"))
+        if (Bot.Config!.Get<bool>("OnlyPet"))
         {
             List<ItemBase> RewardOptions = Core.EnsureLoad(questID).Rewards;
             foreach (ItemBase item in RewardOptions)
