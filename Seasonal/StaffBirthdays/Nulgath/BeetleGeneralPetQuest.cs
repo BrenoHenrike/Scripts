@@ -55,7 +55,7 @@ public class BeetleGeneralPet
             Core.HuntMonster("giant", "Red Ant", "Red Ant Pet", isTemp: false);
             Nation.EssenceofNulgath(10);
             HB.FreshSouls(1, 10);
-            Core.EnsureComplete(questID);
+            Core.EnsureCompleteChoose(questID);
             Core.JumpWait();
             Core.ToBank(Core.QuestRewards(questID));
         }
