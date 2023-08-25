@@ -6098,7 +6098,7 @@
       "reagents"
     ],
     "path": "Army/ArmyNulgath/ArmySupplies.cs",
-    "size": 4115,
+    "size": 3987,
     "fileName": "ArmySupplies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyNulgath/ArmySupplies.cs"
   },
@@ -18713,23 +18713,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/Bido/ToxicOblivionBladeofAlchemy.cs"
   },
   {
-    "name": "Beetle General Pet",
-    "description": "This will complete the Beetle General Pet quest.",
-    "tags": [
-      "quest",
-      "beetle",
-      "general",
-      "pet",
-      "staff",
-      "birthday",
-      "nulgath"
-    ],
-    "path": "Seasonal/StaffBirthdays/Nulgath/BeetleGeneralPetQuest.cs",
-    "size": 3196,
-    "fileName": "BeetleGeneralPetQuest.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/Nulgath/BeetleGeneralPetQuest.cs"
-  },
-  {
     "name": "Temple Siege Merge",
     "description": "Merges all the items needed for the Temple Siege storyline.",
     "tags": [
@@ -18767,23 +18750,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/Nulgath/TempleSiege.cs"
   },
   {
-    "name": "Beetle Warlord Pet",
-    "description": "This will complete the Beetle Warlord Pet quest.",
-    "tags": [
-      "quest",
-      "beetle",
-      "warlord",
-      "pet",
-      "staff",
-      "birthday",
-      "nulgath"
-    ],
-    "path": "Seasonal/StaffBirthdays/Nulgath/BeetleWarlordPetQuest.cs",
-    "size": 4112,
-    "fileName": "BeetleWarlordPetQuest.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/Nulgath/BeetleWarlordPetQuest.cs"
-  },
-  {
     "name": "Temple Delve Merge",
     "description": "This will get all or selected items on this merge shop.",
     "tags": [
@@ -18798,6 +18764,24 @@
     "size": 6774,
     "fileName": "TempleDelveMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/Nulgath/TempleDelveMerge.cs"
+  },
+  {
+    "name": "Beetle Quests and Rewards",
+    "description": "This will complete the Beetle General Pet quest.",
+    "tags": [
+      "quest",
+      "beetle",
+      "general",
+      "warlord",
+      "pet",
+      "staff",
+      "birthday",
+      "nulgath"
+    ],
+    "path": "Seasonal/StaffBirthdays/Nulgath/BeetleQuests.cs",
+    "size": 6228,
+    "fileName": "BeetleQuests.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/Nulgath/BeetleQuests.cs"
   },
   {
     "name": "Temple Delve",
