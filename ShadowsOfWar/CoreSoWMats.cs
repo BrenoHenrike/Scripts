@@ -153,10 +153,10 @@ public class CoreSoWMats
         while (!Bot.ShouldExit && !Core.CheckInventory("Willpower", Quantity))
         {
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster($"ruinedcrown", "Calamitous Warlic", "Warlic’s Favor", log: false);
+            Core.HuntMonster("ruinedcrown", "Calamitous Warlic", "Warlic's Favor", log: false);
             Core.EquipClass(ClassType.Farm);
             Core.HuntMonster("ruinedcrown", "Frenzied Mana", "Mana Residue", 8, log: false);
-            Core.HuntMonster($"ruinedcrown", "Mana-Burdened Mage", "Mage’s Blood Sample", 8, log: false);
+            Core.HuntMonster("ruinedcrown", "Mana-Burdened Mage", "Mage's Blood Sample", 8, log: false);
         }
         Core.CancelRegisteredQuests();
     }

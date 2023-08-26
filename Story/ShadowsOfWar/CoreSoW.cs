@@ -922,10 +922,10 @@ public class CoreSoW
 
         Core.EquipClass(ClassType.Farm);
         Core.HuntMonster("ruinedcrown", "Frenzied Mana", "Mana Residue", 8);
-        Core.HuntMonster($"ruinedcrown", "Mana-Burdened Mage", "Mage’s Blood Sample", 8);
+        Core.HuntMonster($"ruinedcrown", "Mana-Burdened Mage", "Mage's Blood Sample", 8);
 
         Core.EquipClass(ClassType.Solo);
-        Core.HuntMonster($"ruinedcrown", "Calamitous Warlic", "Warlic’s Favor");
+        Core.HuntMonster($"ruinedcrown", "Calamitous Warlic", "Warlic's Favor");
         Core.EnsureComplete(8788);
     }
 
