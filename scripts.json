@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 179910,
+    "size": 180265,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -3236,7 +3236,7 @@
       "rare-items"
     ],
     "path": "Other/0CurrentDailyGifts.cs",
-    "size": 19888,
+    "size": 20165,
     "fileName": "0CurrentDailyGifts.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/0CurrentDailyGifts.cs"
   },
@@ -12673,6 +12673,18 @@
     "size": 4260,
     "fileName": "BattleConGearMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/BattleConGearMerge.cs"
+  },
+  {
+    "name": "Cursed Wazikashi Pet",
+    "description": "gets the pet",
+    "tags": [
+      "cursed wazikashi",
+      "pet"
+    ],
+    "path": "Other/Pets/CursedWazikashi.cs",
+    "size": 1302,
+    "fileName": "CursedWazikashi.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Pets/CursedWazikashi.cs"
   },
   {
     "name": "serpentine larvae set",
