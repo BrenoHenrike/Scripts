@@ -8,6 +8,7 @@ tags: daily-gifts, rare-items
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Seasonal/MayThe4th/TwiggusGearMerge.cs
 //cs_include Scripts/Seasonal/SummerBreak/RoseRapiers.cs
+//cs include Scripts/Other/Pets/CursedWazikashi.cs
 using System.Globalization;
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
@@ -21,6 +22,7 @@ public class CurrentDailyGifts
     private CoreAdvanced Adv = new();
     private TwiggusGearMerge TGM = new();
     private RoseRapiers RR = new();
+    private CursedWazikashi CursedWazikashi = new();
 
     public string OptionsStorage = "CurrentDailyGifts";
     public bool DontPreconfigure = true;
@@ -169,6 +171,13 @@ public class CurrentDailyGifts
             GetGift(Permanent, "ontherun", "lumberhorc", "Maple Party Twig");
 
             #endregion July 2023
+
+            #region August 2023
+
+            // Cursed Wakizashi Pet (Treasure Hunt?)
+            CursedWazikashi.CursedWakizashiPet();
+
+            #endregion August 2023
 
 
 
