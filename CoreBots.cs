@@ -3232,7 +3232,19 @@ public class CoreBots
 
             case "hyperium":
                 JumpWait();
-                Bot.Send.Packet($"%xt%zm%serverUseItem%{Bot.Map.RoomID}%+%5041%525,275%hyperium%");
+                Bot.Send.Packet($"%xt%zm%serverUseItem%{Bot.Map.RoomID}%+%5041%525,275%{(PrivateRooms ? (map + "-" + PrivateRoomNumber) : map)}%");
+                Bot.Wait.ForMapLoad("hyperium");
+                break;
+
+            case "moonyard":
+                Join("hyperium");
+                Jump("R10");
+                tryJoin();
+                break;
+
+            case "moonyardb":
+                Join("moonyard");
+                tryJoin();
                 break;
 
             case "icestormarena":
