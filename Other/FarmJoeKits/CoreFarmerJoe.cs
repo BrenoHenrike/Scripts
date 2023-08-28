@@ -229,6 +229,7 @@ public class CoreFarmerJoe
                     if (Bot.Player.Level >= Level && Adv.HasMinimalBoost(GenericGearBoost.exp, 25) && (Core.CheckInventory("Master Ranger") && ClassMasterRanger?.Quantity == 302500))
                     {
                         Core.Logger("Items owned: \"Awethur's Accoutrements\", \"Master Ranger\" continuing");
+                        SetClass(false, true, true);
                         continue;
                     }
 
@@ -258,6 +259,7 @@ public class CoreFarmerJoe
                     if (Bot.Player.Level >= Level && (Core.CheckInventory("Shaman") && ClassShaman?.Quantity == 302500))
                     {
                         Core.Logger("Items owned: \"Shaman\" continuing");
+                        SetClass(true, false, true);
                         continue;
                     }
 
@@ -277,6 +279,7 @@ public class CoreFarmerJoe
                     if (Bot.Player.Level >= Level && Core.CheckInventory("Burning Blade") && (Core.CheckInventory("Scarlet Sorceress") && ClassScarletSorceress?.Quantity == 302500))
                     {
                         Core.Logger("Items owned: \"Scarlet Sorceress\", \"Burning Blade\" continuing");
+                        SetClass(false, true, true);
                         continue;
                     }
 
@@ -298,6 +301,7 @@ public class CoreFarmerJoe
                     if (Bot.Player.Level >= Level && (Core.CheckInventory("Blaze Binder") && ClassBlazeBinder?.Quantity == 302500))
                     {
                         Core.Logger("Items owned:  \"Blaze Binder\", continuing");
+                        SetClass(false, true, true);
                         continue;
                     }
 
@@ -334,6 +338,7 @@ public class CoreFarmerJoe
 
                     Core.Logger("Getting DragonSoul Shinobi");
                     DS.GetDSS();
+                    Adv.RankUpClass("DragonSoul Shinobi");
                     Core.Logger($"Level {Level} done");
                     continue;
 
