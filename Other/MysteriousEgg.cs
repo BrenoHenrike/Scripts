@@ -28,11 +28,12 @@ public class MysteriousEgg
         if (Core.CheckInventory("Mysterious Egg"))
             return;
 
-        if (Core.CheckInventory("Manticore Cub Pet"))
+        if (Core.CheckInventory("Manticore Cub Pet") && !Core.CheckInventory("Mysterious Egg"))
         {
             Core.Logger("You own the \"Manticore Cub Pet\" and thus dont need to farm for the \"Mysterious Egg\".\n" +
                         "It's a lot quicker to use AQW's BuyBack function for the \"Mysterious Egg\". Please do so now\n" +
-                        "https://www.aq.com > Account > Manage Account > left hand side, \"Buy Back\"",
+                        "https://www.aq.com > Account > Manage Account > left hand side, \"Buy Back\"\n" +
+                        "Relogin and restart the script after hitting ok.",
                         messageBox: true, stopBot: true);
         }
 
