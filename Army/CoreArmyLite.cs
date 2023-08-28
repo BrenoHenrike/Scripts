@@ -842,8 +842,37 @@ public class CoreArmyLite
             "yoshino"
         };
 
+        var levelLockedMaps = new[]
+        {
+            new { Map = "icestormunder", LevelRequired = 75 }
+        };
+
         int maptry = 1;
-        int mapCount = Core.IsMember ? (NonMemMaps.Count() + MemMaps.Count()) : NonMemMaps.Count();
+        int mapCount = Core.IsMember ? NonMemMaps.Length + MemMaps.Length : NonMemMaps.Length;
+
+        foreach (var mapInfo in levelLockedMaps)
+        {
+            if (Bot.Player.Level != mapInfo.LevelRequired)
+                continue;
+
+            Core.Logger($"[{(maptry.ToString().Length == 1 ? "0" : "")}{maptry++}/{mapCount}] Searching for {b_playerName} in /{mapInfo.Map}", "LockedZoneHandler");
+            Core.Join(mapInfo.Map);
+
+            if (!Bot.Map.PlayerExists(b_playerName!))
+                continue;
+
+            tryGoto(b_playerName!);
+            Core.Logger($"[{((maptry - 1).ToString().Length == 1 ? "0" : "")}{maptry - 1}/{mapCount}] Found {b_playerName} in /{mapInfo.Map}", "LockedZoneHandler");
+
+            switch (mapInfo.Map.ToLower())
+            {
+                case "binky":
+                    _killTheUltra("binky");
+                    PriorityAttack("*");
+                    return;
+            }
+        }
+
 
         foreach (string map in EventMaps)
         {
