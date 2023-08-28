@@ -98,7 +98,7 @@ using Skua.Core.Options;
 public class CoreFarmerJoe
 {
     //other
-    public IScriptInterface Bot => IScriptInterface.Instance;
+    public static IScriptInterface Bot => IScriptInterface.Instance;
     public FreeBoosts Boosts = new();
     public FarmAllDailies FAD = new();
     public InventoryEnhancer InvEn = new();
@@ -106,14 +106,14 @@ public class CoreFarmerJoe
     public ArchfiendDeathLord AFDeath = new();
 
     //Cores
-    public CoreBots Core => CoreBots.Instance;
+    public static CoreBots Core => CoreBots.Instance;
     public CoreAdvanced Adv = new();
     public CoreFarms Farm = new();
     public CoreStory Story = new();
     public CapeOfAwe COA = new();
-    public Core13LoC LOC => new Core13LoC();
+    public static Core13LoC LOC => new();
     public CoreDailies Daily = new();
-    public CoreVHL VHL = new CoreVHL();
+    public CoreVHL VHL = new();
     public CoreNation Nation = new();
     public CoreYnR YNR = new();
 
@@ -150,7 +150,7 @@ public class CoreFarmerJoe
 
     public string OptionsStorage = "FarmerJoePet";
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         CoreBots.Instance.SkipOptions,
         new Option<bool>("OutFit", "Get a Pre-Made Outfit, Curtious of the Community", "We are farmers, bum ba dum bum bum bum bum", false),
@@ -158,7 +158,7 @@ public class CoreFarmerJoe
         new Option<PetChoice>("PetChoice", "Choose Your Pet", "Extra stuff to choose, if you have any suggestions -form in disc, and put it under request. or dm Tato(the retarded one on disc)", PetChoice.None),
     };
 
-    public void ScriptMain(IScriptInterface bot) => Core.RunCore();
+    public static void ScriptMain(IScriptInterface bot) => Core.RunCore();
 
     public void DoAll()
     {
@@ -224,7 +224,7 @@ public class CoreFarmerJoe
                         continue;
                     }
 
-                    SetClass();
+                    SetClass(false, true, true);
 
                     ItemBase? DefaultWep = Bot.Inventory.Items.Find(x => x.Name.StartsWith("Default"));
                     if (DefaultWep != null && Core.CheckInventory(DefaultWep.Name))
@@ -235,7 +235,7 @@ public class CoreFarmerJoe
                     Adv.SmartEnhance(Core.FarmClass);
 
                     MR.GetMR(false);
-                    SetClass();
+                    SetClass(false, true, true);
 
                     //For BOA lvl 30 rogue *should* be able to kill escherion ..once in awhile :P (tested i got a few kills in an an hr... proabably horrible but w/e)
                     Farm.BladeofAweREP(6, false);
@@ -251,13 +251,13 @@ public class CoreFarmerJoe
                         continue;
                     }
 
-                    SetClass();
+                    SetClass(false, true, true);
 
                     Adv.SmartEnhance(Core.FarmClass);
                     Farm.Experience(Level);
 
                     Shaman.GetShaman(false);
-                    SetClass();
+                    SetClass(true, false, true);
 
                     Core.Logger($"Level {Level} done");
                     continue;
@@ -269,12 +269,12 @@ public class CoreFarmerJoe
                         continue;
                     }
 
-                    SetClass();
+                    SetClass(false, true, true);
 
                     Adv.SmartEnhance(Core.FarmClass);
 
                     SS.GetSSorc(false);
-                    SetClass();
+                    SetClass(false, true, true);
 
                     BB.GetBurningBlade();
                     Adv.SmartEnhance(Core.FarmClass);
@@ -288,14 +288,14 @@ public class CoreFarmerJoe
                         continue;
                     }
 
-                    SetClass();
+                    SetClass(true, false, true);
 
                     //Daily classes
                     Adv.SmartEnhance(Core.FarmClass);
                     Core.Logger("Daily Classes Check");
 
                     Bb.GetClass(false);
-                    SetClass();
+                    SetClass(false, true, true);
 
                     Farm.Experience(Level);
                     Adv.SmartEnhance(Core.FarmClass);
@@ -309,13 +309,14 @@ public class CoreFarmerJoe
                         continue;
                     }
 
-                    SetClass();
+                    SetClass(false, true, true);
 
                     Core.Logger("Getting DSS for DoomKittem(ArchPaladin)");
                     Adv.SmartEnhance(Core.FarmClass);
                     Farm.Experience(Level);
                     Adv.SmartEnhance(Core.SoloClass);
 
+                    SetClass(true, false, true);
                     DS.GetDSS();
                     Core.Logger($"Level {Level} done");
                     continue;
@@ -327,13 +328,13 @@ public class CoreFarmerJoe
                         continue;
                     }
 
-                    SetClass();
+                    SetClass(false, true, true);
                     Farm.Experience(Level);
 
-                    SetClass();
+                    SetClass(true, false, true);
 
                     AP.GetAP(false);
-                    SetClass();
+                    SetClass(true, false, true);
 
                     Core.Logger($"Level {Level} done");
                     continue;
@@ -346,14 +347,14 @@ public class CoreFarmerJoe
                         continue;
                     }
 
-                    SetClass();
+                    SetClass(true, false, true);
 
                     Adv.SmartEnhance(Core.FarmClass);
                     AFDeath.GetArm(true, ArchfiendDeathLord.RewardChoice.Archfiend_DeathLord);
                     Core.Equip("Archfiend DeathLord");
 
                     AF.GetArchfiend(false);
-                    SetClass();
+                    SetClass(false, true, true);
 
                     Farm.Experience(Level);
                     Adv.SmartEnhance(Core.FarmClass);
@@ -368,7 +369,7 @@ public class CoreFarmerJoe
 
     public void Level75to100()
     {
-        SetClass();
+        SetClass(false, true, true);
 
         InvEn.EnhanceInventory();
         #region Prepare for Lvl100
@@ -425,7 +426,7 @@ public class CoreFarmerJoe
 
     public void EndGame()
     {
-        SetClass();
+        SetClass(false, true, true);
 
         #region Ending & Extras 
 
@@ -443,7 +444,7 @@ public class CoreFarmerJoe
 
     public void Outfit()
     {
-        SetClass();
+        SetClass(false, true, true);
 
         //Easy Difficulty Stuff
         ShirtandHat();
@@ -466,7 +467,7 @@ public class CoreFarmerJoe
 
     public void Pets(PetChoice PetChoice = PetChoice.None)
     {
-        SetClass();
+        SetClass(true, false, true);
 
         if (Bot.Config!.Get<PetChoice>("Pets") == PetChoice.None)
             return;
@@ -488,7 +489,7 @@ public class CoreFarmerJoe
 
     public void ShirtandHat()
     {
-        SetClass();
+        SetClass(false, true, true);
 
         Core.Logger("Farming Shirt & Hat");
         SM.BuyAllMerge(buyOnlyThis: "NO BOTS Armor");
@@ -497,7 +498,7 @@ public class CoreFarmerJoe
 
     public void ServersAreDown()
     {
-        SetClass();
+        SetClass(false, true, true);
 
         if (Core.CheckInventory("The Server is Down"))
             return;
@@ -541,12 +542,16 @@ public class CoreFarmerJoe
         Farm.Experience(5);
     }
 
-    /// <summary>
-    /// Automatically sets the class for both solo and farm activities, if not already set, based on available classes in the player's inventory.
-    /// </summary>
-    /// <param name="rankUp">Flag to determine if the found class should be ranked up (default: true)</param>
-    public void SetClass(bool rankUp = true)
+    public void SetClass(bool swapToSoloClass = false, bool swapToFarmClass = false, bool rankUp = true)
     {
+        if (swapToSoloClass && swapToFarmClass)
+        {
+            Core.Logger("Both swapToSoloClass and swapToFarmClass cannot be true at the same time. Please choose only one.");
+            return;
+        }
+        string newSoloClass = Core.SoloClass;
+        string newFarmClass = Core.FarmClass;
+
         if (Core.SoloClass != "Generic" && Core.FarmClass != "Generic")
         {
             Core.Logger("CBO classes are set, using what you picked.");
@@ -554,34 +559,48 @@ public class CoreFarmerJoe
         }
 
         string[] soloClassesToCheck = { "ArchPaladin", "Shaman", "Rogue (Rare)", "Rogue", "Healer (Rare)", "Healer" };
-        string[] farmClassesToCheck = { "Archfiend", "Blaze Binder", "Scarlet Sorceress", "Master Ranger", "Shaman", "Mage (Rare)", "Mage", };
+        string[] farmClassesToCheck = { "Archfiend", "Blaze Binder", "Scarlet Sorceress", "Master Ranger", "Shaman", "Mage (Rare)", "Mage" };
 
         Core.Logger($"Checking if CBO (Corebot Options) classes are set\n" +
             $"Solo: {string.Join(", ", soloClassesToCheck)}\n" +
             $"Farm: {string.Join(", ", farmClassesToCheck)}");
 
-        if (Core.SoloClass == "Generic")
-            Core.SoloClass = FindValidClass(soloClassesToCheck, "SoloClass", rankUp);
-        else
-            Core.Logger($"Using predetermined SoloClass: {Core.SoloClass}");
+        newSoloClass = CheckAndSetClass(newSoloClass, soloClassesToCheck, "SoloClass", rankUp);
+        newFarmClass = CheckAndSetClass(newFarmClass, farmClassesToCheck, "FarmClass", rankUp);
 
-        if (Core.FarmClass == "Generic")
-            Core.FarmClass = FindValidClass(farmClassesToCheck, "FarmClass", rankUp);
-        else
-            Core.Logger($"Using predetermined FarmClass: {Core.FarmClass}");
+        if (swapToSoloClass)
+        {
+            Enum.TryParse(newSoloClass, true, out ClassType soloClassEnum);
+            Core.EquipClass(soloClassEnum);
+        }
+
+        if (swapToFarmClass)
+        {
+            Enum.TryParse(newFarmClass, true, out ClassType farmClassEnum);
+            Core.EquipClass(farmClassEnum);
+        }
+
+        Core.SoloClass = newSoloClass;
+        Core.FarmClass = newFarmClass;
 
         Core.Logger($"Setting SoloClass to: {Core.SoloClass}.");
         Core.Logger($"Setting FarmClass to: {Core.FarmClass}.");
     }
 
-    /// <summary>
-    /// Finds the first valid class from the given list of classes in the player's inventory.
-    /// </summary>
-    /// <param name="classesToCheck">Array of class names to check in the inventory</param>
-    /// <param name="classType">Type of class being checked ("SoloClass" or "FarmClass")</param>
-    /// <param name="rankUp">Flag to determine if the found class should be ranked up (default: true)</param>
-    /// <returns>The first valid class found in the inventory, or "Generic" if no valid class is found.</returns>
-    private string FindValidClass(string[] classesToCheck, string classType, bool rankUp = true)
+    private string CheckAndSetClass(string classToCheck, string[] classesToCheck, string classType, bool rankUp)
+    {
+        if (classToCheck == "Generic" || classesToCheck.Contains(classToCheck))
+        {
+            return FindValidClass(classesToCheck, classType, rankUp);
+        }
+        else
+        {
+            Core.Logger($"Using predetermined {classType}: {classToCheck}");
+            return classToCheck;
+        }
+    }
+
+    private string FindValidClass(string[] classesToCheck, string classType, bool rankUp)
     {
         foreach (string className in classesToCheck)
         {
@@ -595,13 +614,13 @@ public class CoreFarmerJoe
                     {
                         Adv.RankUpClass(className);
                     }
+                    return className;
                 }
                 else
                 {
                     Core.Logger($"{classType} found: {className}. Quantity: {classItem?.Quantity ?? 0}. No need to rank up.");
+                    return className;
                 }
-
-                return className;
             }
         }
 
