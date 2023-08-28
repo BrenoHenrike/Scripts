@@ -95,7 +95,7 @@ public class ArchFiend
             Nation.ApprovalAndFavor(0, 999);
             Core.BuyItem("shadowblast", 1206, "Blood Star of the Archfiend");
         }
-
+        Core.EquipClass(ClassType.Solo);
         Core.HuntMonster("fiendshard", "Dirtlicker", "Dirtlicker Demoted", 1, false);
 
         Core.EnsureComplete(8476);
