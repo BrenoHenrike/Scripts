@@ -27,6 +27,8 @@ public class SuppliesWheelArmy
 
     public List<IOption> Options = new()
     {
+        
+        new Option<Cell>("mob", "h90 or h85", "h90 for more relic turn ins, but more chance of getting stuck due to deaths - h85 for just Relics from Escherion", Cell.h90),
         new Option<bool>("sellToSync", "Sell to Sync", "Sell \"Relic of Chaos\" to make sure the army stays syncronized. If off, there is a higher chance your army might desyncornize", false),
         new Option<bool>("SwindlesReturnDuring", "Do swindles Return", "Accepts the Swindles Returns items, and goes to kill a makai for the rune, during the quest.", false),
         sArmy.player1,
@@ -85,7 +87,7 @@ public class SuppliesWheelArmy
                 Core.FarmingLogger(item.Name, item.MaxStack);
                 while (!Bot.ShouldExit && !Core.CheckInventory(item.ID, item.MaxStack))
                     ArmyHydra(item, item.MaxStack);
-            } 
+            }
         }
         Core.CancelRegisteredQuests();
     }
@@ -98,20 +100,25 @@ public class SuppliesWheelArmy
         if (Bot.Config!.Get<bool>("sellToSync"))
             Army.SellToSync(item.Name, quant);
 
-        Core.AddDrop("Relic of Chaos");
+        Core.AddDrop("Relic of Chaos", "Hydra Scale Piece");
 
         Core.EquipClass(ClassType.Farm);
         Army.waitForParty("hydrachallenge");
 
+        Army.AggroMonMIDs(Bot.Config!.Get<Cell>("mob") == Cell.h85 ? new[] { 29, 30, 31 } : new[] { 32, 33, 34 });
+        Army.DivideOnCells(Bot.Config!.Get<Cell>("mob") == Cell.h85 ? "h85" : "h90");
         Army.AggroMonStart("hydrachallenge");
-        Army.AggroMonIDs(32, 33, 34);
-        Army.AggroMonCells("h90");
 
         while (!Bot.ShouldExit && !Core.CheckInventory(item.ID, quant))
-            Bot.Combat.Attack("*");
+            Bot.Combat.Attack(Bot.Config!.Get<Cell>("mob") == Cell.h85 ? "Hydra Head 85" : "Hydra Head 90");
 
         Army.AggroMonStop(true);
         Core.JumpWait();
     }
 
+    public enum Cell
+    {
+        h90 = 0,
+        h85 = 1
+    }
 }
