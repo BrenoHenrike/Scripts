@@ -187,9 +187,17 @@ public class CoreFarmerJoe
             Adv.SmartEnhance(Core.FarmClass);
         }
 
-        //safet incase it desyncs.. the relog fuction isnt exactly perfect
+        //safety incase it desyncs.. the relog fuction isnt exactly perfect
         Core.Logger("Class points may be desynced at Rank 9\n" +
         "if you are stuck at rank 9, please relog");
+
+        Core.Logger("Relogging to check for ClassPoint Desync");
+        Bot.Options.SafeRelogin = true;
+        Bot.Sleep(Core.ActionDelay);
+        Core.Relogin();
+        Bot.Wait.ForMapLoad("battleon");
+        if (Bot.Map.Name == "battleon")
+            Core.Logger("Relogin Successful");
     }
 
 
@@ -213,7 +221,7 @@ public class CoreFarmerJoe
 
         foreach (int Level in new int[] { 30, 45, 50, 55, 60, 65, 70, 75 })
         {
-            Core.Logger($"Starting Level {Level}");
+            Core.Logger($"Level Goal: {Level} ({Level - Bot.Player.Level}) levels to go");
 
             switch (Level)
             {
@@ -234,10 +242,12 @@ public class CoreFarmerJoe
 
                     Adv.SmartEnhance(Core.FarmClass);
 
+                    Core.Logger("Getting Master Ranger");
                     MR.GetMR(false);
                     SetClass(false, true, true);
 
                     //For BOA lvl 30 rogue *should* be able to kill escherion ..once in awhile :P (tested i got a few kills in an an hr... proabably horrible but w/e)
+                    Core.Logger("Doing BoA rep till r6 (for enhancments & sword)");
                     Farm.BladeofAweREP(6, false);
                     Adv.BuyItem("museum", 631, "Awethur's Accoutrements");
                     Core.Equip("Awethur's Accoutrements");
@@ -256,6 +266,7 @@ public class CoreFarmerJoe
                     Adv.SmartEnhance(Core.FarmClass);
                     Farm.Experience(Level);
 
+                    Core.Logger("Getting Shaman");
                     Shaman.GetShaman(false);
                     SetClass(true, false, true);
 
@@ -273,9 +284,11 @@ public class CoreFarmerJoe
 
                     Adv.SmartEnhance(Core.FarmClass);
 
+                    Core.Logger("Getting Scarlet Socrceress");
                     SS.GetSSorc(false);
                     SetClass(false, true, true);
 
+                    Core.Logger("Getting Burning Blaze");
                     BB.GetBurningBlade();
                     Adv.SmartEnhance(Core.FarmClass);
                     Core.Logger($"Level {Level} done");
@@ -294,6 +307,7 @@ public class CoreFarmerJoe
                     Adv.SmartEnhance(Core.FarmClass);
                     Core.Logger("Daily Classes Check");
 
+                    Core.Logger("Getting Blaze Binder");
                     Bb.GetClass(false);
                     SetClass(false, true, true);
 
@@ -317,6 +331,8 @@ public class CoreFarmerJoe
                     Adv.SmartEnhance(Core.SoloClass);
 
                     SetClass(true, false, true);
+
+                    Core.Logger("Getting DragonSoul Shinobi");
                     DS.GetDSS();
                     Core.Logger($"Level {Level} done");
                     continue;
@@ -333,6 +349,7 @@ public class CoreFarmerJoe
 
                     SetClass(true, false, true);
 
+                    Core.Logger("Getting ArchPaladin");
                     AP.GetAP(false);
                     SetClass(true, false, true);
 
@@ -350,9 +367,11 @@ public class CoreFarmerJoe
                     SetClass(true, false, true);
 
                     Adv.SmartEnhance(Core.FarmClass);
+                    Core.Logger("Getting ArchFiend DeathLord");
                     AFDeath.GetArm(true, ArchfiendDeathLord.RewardChoice.Archfiend_DeathLord);
                     Core.Equip("Archfiend DeathLord");
 
+                    Core.Logger("Getting ArchFiend");
                     AF.GetArchfiend(false);
                     SetClass(false, true, true);
 
@@ -377,7 +396,7 @@ public class CoreFarmerJoe
         Core.Logger("P1: Healer for xiang, Buying & Ranking Healer\n" +
         "class to prep for xiang (Skipped if you have Dragon of Time.");
 
-        Core.Equip(Core.SoloClass);
+        SetClass(true, false, true);
 
         ///Prep class for 13LoC
         if (!Core.CheckInventory("Dragon of Time"))
@@ -520,6 +539,8 @@ public class CoreFarmerJoe
         Core.Logger("Starting out acc: \n" +
         "\tGoals:  Temp weapon, Rogue class.");
 
+        Core.Logger("Getting Badges to look a little\n" +
+        "more legit (start make take a minute)");
         Tutorial.Badges();
 
         Core.Logger("Getting Started: Beginner Levels/Equipment");
@@ -537,11 +558,16 @@ public class CoreFarmerJoe
         ItemBase? DefaultWep = Bot.Inventory.Items.Find(x => x.Name.StartsWith("Default"));
         if (DefaultWep != null && Core.CheckInventory(DefaultWep.Name))
             Core.SellItem(DefaultWep.Name);
-        SetClass(false);
-        Core.EquipClass(ClassType.Solo);
+        SetClass(true, false, false);
         Farm.Experience(5);
     }
 
+    /// <summary>
+    /// Automatically sets the class for both solo and farm activities, if not already set, based on available classes in the player's inventory.
+    /// </summary>
+    /// <param name="swapToSoloClass">Flag to determine if the found solo class should be equipped (default: false)</param>
+    /// <param name="swapToFarmClass">Flag to determine if the found farm class should be equipped (default: false)</param>
+    /// <param name="rankUp">Flag to determine if the found class should be ranked up (default: true)</param>
     public void SetClass(bool swapToSoloClass = false, bool swapToFarmClass = false, bool rankUp = true)
     {
         if (swapToSoloClass && swapToFarmClass)
@@ -587,6 +613,14 @@ public class CoreFarmerJoe
         Core.Logger($"Setting FarmClass to: {Core.FarmClass}.");
     }
 
+    /// <summary>
+    /// Checks and sets the specified class if needed, based on available classes in the player's inventory.
+    /// </summary>
+    /// <param name="classToCheck">The class to check</param>
+    /// <param name="classesToCheck">Array of class names to check in the inventory</param>
+    /// <param name="classType">Type of class being checked ("SoloClass" or "FarmClass")</param>
+    /// <param name="rankUp">Flag to determine if the found class should be ranked up (default: true)</param>
+    /// <returns>The selected class based on checks</returns>
     private string CheckAndSetClass(string classToCheck, string[] classesToCheck, string classType, bool rankUp)
     {
         if (classToCheck == "Generic" || classesToCheck.Contains(classToCheck))
@@ -600,6 +634,13 @@ public class CoreFarmerJoe
         }
     }
 
+    /// <summary>
+    /// Finds the first valid class from the given list of classes in the player's inventory.
+    /// </summary>
+    /// <param name="classesToCheck">Array of class names to check in the inventory</param>
+    /// <param name="classType">Type of class being checked ("SoloClass" or "FarmClass")</param>
+    /// <param name="rankUp">Flag to determine if the found class should be ranked up (default: true)</param>
+    /// <returns>The first valid class found in the inventory, or "Generic" if no valid class is found.</returns>
     private string FindValidClass(string[] classesToCheck, string classType, bool rankUp)
     {
         foreach (string className in classesToCheck)
@@ -669,19 +710,33 @@ public class CoreFarmerJoe
 
 
 
-    //_____________________________________Explanation_____________________________________________________________________________________________________________//
-    // 1. The SetClass() method checks if SoloClass is "Generic" and proceeds to find a valid class from the soloClassesToCheck list using the FindValidClass() method.
-    // 2. If a valid class is found in the soloClassesToCheck list, it is set as the SoloClass, and the method logs a message that the class was found.
-    // 3.If no valid class is found in the soloClassesToCheck list, the SoloClass remains as "Generic", and the method logs a message that no valid class was found.
-    // 4. The SetClass() method then checks if FarmClass is "Generic" and proceeds to find a valid class from the farmClassesToCheck list using the FindValidClass() method.
-    // 5. If a valid class is found in the farmClassesToCheck list, it is set as the FarmClass, and the method logs a message that the class was found.
-    // 6. If no valid class is found in the farmClassesToCheck list, the FarmClass remains as "Generic", and the method logs a message that no valid class was found.
+    /*________________________________________________________________________________________Explanation_____________________________________________________________________________________________
+       🖕 The SetClass() method checks whether the swapToSoloClass and swapToFarmClass flags are both set to true. If so, it logs an error message and returns.
+       🖕 The method initializes newSoloClass and newFarmClass variables with the current values of SoloClass and FarmClass, respectively.
+       🖕 If both SoloClass and FarmClass are already set and not "Generic", the method logs a message indicating that the CBO classes are already set and exits.
+       🖕 If SoloClass is not already set, the method attempts to find a valid class from the soloClassesToCheck list using the CheckAndSetClass() method.
+       🖕 If a valid class is found in the soloClassesToCheck list, it is set as newSoloClass, and the method logs a message indicating the class was found.
+       🖕 If SoloClass is already set, the method logs a message indicating the predetermined SoloClass is being used.
+       🖕 If FarmClass is not already set, the method attempts to find a valid class from the farmClassesToCheck list using the CheckAndSetClass() method.
+       🖕 If a valid class is found in the farmClassesToCheck list, it is set as newFarmClass, and the method logs a message indicating the class was found.
+       🖕 If FarmClass is already set, the method logs a message indicating the predetermined FarmClass is being used.
+       🖕 If the swapToSoloClass flag is true, the method equips the class represented by newSoloClass using Core.EquipClass().
+       🖕 If the swapToFarmClass flag is true, the method equips the class represented by newFarmClass using Core.EquipClass().
+       🖕 SoloClass and FarmClass are updated with the values of newSoloClass and newFarmClass, respectively.
+       🖕 The method logs messages indicating the updated SoloClass and FarmClass values.
 
-    // By using the break statement within the FindValidClass() method, the method returns as soon as it finds a valid class, and it doesn't continue searching for other classes in the list.
-    // This approach ensures that the method sets SoloClass and FarmClass independently, allowing different classes to be chosen for each role. The first valid class found for each role is
-    //  used, and the method doesn't keep searching for more valid classes after setting the first one.
-    // **Curtsey  of ChatGPT**
-    //_____________________________________Explanation_____________________________________________________________________________________________________________//
+       The CheckAndSetClass() method checks if the provided classToCheck is "Generic" or exists in the classesToCheck array.
+       If so, it calls the FindValidClass() method to find a valid class from the classesToCheck list and possibly ranks it up.
+       If classToCheck is not "Generic" and not found in classesToCheck, the method logs a message indicating the predetermined class is being used.
+
+       The FindValidClass() method iterates through classesToCheck to find a valid class in the player's inventory.
+       If a valid class is found, it logs whether the class is being ranked up or not and returns the class name.
+       If no valid class is found, it logs a message that no valid class was found and returns "Generic".
+
+       This approach allows the SetClass() method to independently set SoloClass and FarmClass, choose valid classes based on predefined lists,
+       and optionally rank up classes, providing flexibility for class management. 
+       ℭ𝔬𝔲𝔯𝔱𝔢𝔰𝔶 𝔬𝔣 ℭ𝔥𝔞𝔱𝔊ℙ𝔗 
+       ________________________________________________________________________________________Explanation_____________________________________________________________________________________________*/
 
 
 
