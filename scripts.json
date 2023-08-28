@@ -482,7 +482,7 @@
       "null"
     ],
     "path": "Templates/MultiQuestAggromonTemplate.cs",
-    "size": 3857,
+    "size": 3607,
     "fileName": "MultiQuestAggromonTemplate.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Templates/MultiQuestAggromonTemplate.cs"
   },
@@ -3277,7 +3277,7 @@
       "egg"
     ],
     "path": "Other/MysteriousEgg.cs",
-    "size": 2020,
+    "size": 2133,
     "fileName": "MysteriousEgg.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MysteriousEgg.cs"
   },
@@ -6070,7 +6070,7 @@
       "army"
     ],
     "path": "Army/ArmyNulgath/ArmyBloodyChaos.cs",
-    "size": 4245,
+    "size": 5032,
     "fileName": "ArmyBloodyChaos.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyNulgath/ArmyBloodyChaos.cs"
   },
@@ -6098,7 +6098,7 @@
       "reagents"
     ],
     "path": "Army/ArmyNulgath/ArmySupplies.cs",
-    "size": 3987,
+    "size": 4456,
     "fileName": "ArmySupplies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyNulgath/ArmySupplies.cs"
   },
@@ -13430,7 +13430,7 @@
       "null"
     ],
     "path": "Other/FarmJoeKits/CoreFarmerJoe.cs",
-    "size": 26693,
+    "size": 31365,
     "fileName": "CoreFarmerJoe.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/CoreFarmerJoe.cs"
   },
