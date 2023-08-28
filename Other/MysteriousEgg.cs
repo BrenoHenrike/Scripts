@@ -30,8 +30,9 @@ public class MysteriousEgg
 
         if (Core.CheckInventory("Manticore Cub Pet"))
         {
-            Core.Logger("You own the \"Manticore Cub Pet\" and thus dont need to farm for the \"Mysterious Egg\"." +
-                        "It's a lot quicker to use AQW's BuyBack function. Please do so before continueing the bot",
+            Core.Logger("You own the \"Manticore Cub Pet\" and thus dont need to farm for the \"Mysterious Egg\".\n" +
+                        "It's a lot quicker to use AQW's BuyBack function for the \"Mysterious Egg\". Please do so now\n" +
+                        "https://www.aq.com > Account > Manage Account > left hand side, \"Buy Back\"",
                         messageBox: true, stopBot: true);
         }
 
