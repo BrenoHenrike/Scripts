@@ -213,7 +213,7 @@ public class CoreFarmerJoe
 
         foreach (int Level in new int[] { 30, 45, 50, 55, 60, 65, 70, 75 })
         {
-            Core.Logger($"Level Goal: {Level}");
+            Core.Logger($"Starting Level {Level}");
 
             switch (Level)
             {
