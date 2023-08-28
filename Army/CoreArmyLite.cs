@@ -853,7 +853,11 @@ public class CoreArmyLite
         foreach (var mapInfo in levelLockedMaps)
         {
             if (Bot.Player.Level != mapInfo.LevelRequired)
+            {
+                Core.Logger($"Not a high enough level.\n" +
+                "required: {mapInfo.LevelRequired}, your's: {Bot.Player.Level}");
                 continue;
+            }
 
             Core.Logger($"[{(maptry.ToString().Length == 1 ? "0" : "")}{maptry++}/{mapCount}] Searching for {b_playerName} in /{mapInfo.Map}", "LockedZoneHandler");
             Core.Join(mapInfo.Map);
