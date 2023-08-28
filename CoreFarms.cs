@@ -253,10 +253,6 @@ public class CoreFarms
 
         FireWarxp(40);
 
-        Core.EquipClass(ClassType.Farm);
-        while (Bot.Player.Level < 60)
-            Core.KillMonster("underlair", "r4", "Right", "Void Draconian", log: false);
-
         IcestormArena(level);
 
         if (rankUpClass)
