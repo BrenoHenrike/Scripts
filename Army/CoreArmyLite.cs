@@ -797,7 +797,6 @@ public class CoreArmyLite
 
         string[] NonMemMaps =
         {
-            "icestormunder",
             "icewing",
             "tercessuinotlim",
             "doomvaultb",
@@ -867,14 +866,6 @@ public class CoreArmyLite
 
             tryGoto(b_playerName!);
             Core.Logger($"[{((maptry - 1).ToString().Length == 1 ? "0" : "")}{maptry - 1}/{mapCount}] Found {b_playerName} in /{mapInfo.Map}", "LockedZoneHandler");
-
-            switch (mapInfo.Map.ToLower())
-            {
-                case "binky":
-                    _killTheUltra("binky");
-                    PriorityAttack("*");
-                    return;
-            }
         }
 
 
