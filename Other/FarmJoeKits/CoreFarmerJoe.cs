@@ -190,14 +190,6 @@ public class CoreFarmerJoe
         //safety incase it desyncs.. the relog fuction isnt exactly perfect
         Core.Logger("Class points may be desynced at Rank 9\n" +
         "if you are stuck at rank 9, please relog");
-
-        Core.Logger("Relogging to check for ClassPoint Desync");
-        Bot.Options.SafeRelogin = true;
-        Bot.Sleep(Core.ActionDelay);
-        Core.Relogin();
-        Bot.Wait.ForMapLoad("battleon");
-        if (Bot.Map.Name == "battleon")
-            Core.Logger("Relogin Successful");
     }
 
 
