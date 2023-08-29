@@ -3237,14 +3237,27 @@ public class CoreBots
                 break;
 
             case "moonyard":
+                JumpWait();
                 Join("hyperium");
                 Jump("R10");
-                tryJoin();
+                Bot.Map.Join(PrivateRooms ? $"{map}-" + PrivateRoomNumber : strippedMap);
+                Bot.Wait.ForMapLoad(strippedMap);
+                Bot.Sleep(ActionDelay);
+                Bot.Wait.ForItemEquip(8733);
+                Bot.Wait.ForCellChange("MoonCut");
                 break;
 
             case "moonyardb":
-                Join("moonyard");
-                tryJoin();
+                JumpWait();
+                Bot.Send.Packet($"%xt%zm%serverUseItem%{Bot.Map.RoomID}%+%5041%525,275%{(PrivateRooms ? ("hyperium-" + PrivateRoomNumber) : "hyperium")}%");
+                Bot.Wait.ForMapLoad("hyperium");
+                Jump("R10");
+                Bot.Map.Join(PrivateRooms ? "moonyard-" + PrivateRoomNumber : "moonyard");
+                Bot.Wait.ForMapLoad("moonyard");
+                Bot.Wait.ForItemEquip("j6");
+                SimpleQuestBypass((28,35));
+                Bot.Map.Join(PrivateRooms ? $"{map}-" + PrivateRoomNumber : map);
+                Bot.Wait.ForMapLoad(strippedMap);
                 break;
 
             case "icestormarena":
