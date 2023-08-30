@@ -188,6 +188,7 @@ public class MemberFarm
         Core.AddDrop("Dragon Flame");
         Core.FarmingLogger("Dragon Flame", 1);
         Core.EquipClass(ClassType.Farm);
+        Core.RegisterQuests(6300);
 
         while (!Bot.ShouldExit && (!Core.CheckInventory("Dragon Flame", 25)))
         {
