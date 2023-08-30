@@ -38,6 +38,9 @@ public class ArchfiendDragonEgg
         Core.BuyItem("Airstorm", 357, "Breath of Life");
         Core.HuntMonster("queenspire", "Fire Guardian Dragon", "Fire Guardian Dragon Soul", isTemp: false);
         HB.FreshSouls(1, 10);
+        if (Core.CheckInventory("Yami no Ronin") || Core.CheckInventory("Dragon of Time"))
+            Bot.Skills.StartAdvanced(Core.CheckInventory("Yami no Ronin") ? "Yami no Ronin" : "Dragon of Time", true, ClassUseMode.Solo);
+        else Core.EquipClass(ClassType.Solo);
         Core.HuntMonster("Underlair", "ArchFiend DragonLord", "Fiendish Brimstone", isTemp: false);
         Core.BuyItem("Ariapet", 12, "ArchFiend Dragon Egg");
         Core.EnsureComplete(7296);
