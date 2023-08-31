@@ -2221,20 +2221,23 @@ public class CoreBots
         foreach (string className in DOTClasses)
         {
             classItem = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == className.ToLower().Trim() && i.Category == ItemCategory.Class);
+
             if (classItem != null)
             {
+                Equip(classItem.Name);
+
                 if (className == "DragonSoul Shinobi" || className == "Shadow Dragon Shinobi")
                 {
                     Logger("Due to the nature of this class and the hit range of the kitten, this is basically RNG gl!");
-                    Equip(classItem.Name);
-                    // tested Skillset is working properly and can get a kill.
-                    Bot.Skills.StartAdvanced("4H>50 | 3M<70S | 2H<50 M>70S | 1H>50", 150);
+                    Join("doomkitten");
+
+                    Bot.Skills.StartAdvanced("4 | 1 | 3M<30 | 2H<30");
+                    while (!Bot.ShouldExit && !CheckInventory(item, quant))
+                        Bot.Combat.Attack("*");
                 }
                 else
-                {
-                    Bot.Skills.StartAdvanced(classItem.Name, true, ClassUseMode.Base);
-                }
-                break;
+                    HuntMonster("doomkitten", "Doomkitten", item, quant, isTemp, log, publicRoom);
+                return; // Exit the method after handling the class.
             }
         }
 
@@ -3255,7 +3258,7 @@ public class CoreBots
                 Bot.Map.Join(PrivateRooms ? "moonyard-" + PrivateRoomNumber : "moonyard");
                 Bot.Wait.ForMapLoad("moonyard");
                 Bot.Wait.ForItemEquip("j6");
-                SimpleQuestBypass((28,35));
+                SimpleQuestBypass((28, 35));
                 Bot.Map.Join(PrivateRooms ? $"{map}-" + PrivateRoomNumber : map);
                 Bot.Wait.ForMapLoad(strippedMap);
                 break;
