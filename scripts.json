@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 181105,
+    "size": 181192,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -6125,7 +6125,7 @@
       "rewards"
     ],
     "path": "Army/Quests/ArmyUniqueQuarry.cs",
-    "size": 7335,
+    "size": 7338,
     "fileName": "ArmyUniqueQuarry.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Quests/ArmyUniqueQuarry.cs"
   },
