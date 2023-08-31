@@ -160,6 +160,9 @@ public class CoreFarmerJoe
 
     public static void ScriptMain(IScriptInterface bot) => Core.RunCore();
 
+    /// <summary>
+    /// Executes a sequence of leveling and progression steps including class enhancements, item acquisition, and outfit setup.
+    /// </summary>
     public void DoAll()
     {
         Level1to30();
@@ -171,7 +174,9 @@ public class CoreFarmerJoe
         Pets(PetChoice.Akriloth);
     }
 
-
+    /// <summary>
+    /// Progresses the character's level from 1 to 30, acquiring beginner items and enhancing classes.
+    /// </summary>
     public void Level1to30()
     {
         BeginnerItems();
@@ -192,7 +197,9 @@ public class CoreFarmerJoe
         "if you are stuck at rank 9, please relog");
     }
 
-
+    /// <summary>
+    /// Progresses the character's level from 30 to 75, acquiring items and enhancing classes as needed.
+    /// </summary>
     public void Level30to75()
     {
         #region InvClasses
@@ -227,10 +234,6 @@ public class CoreFarmerJoe
 
                     SetClass(false, true, true);
 
-                    ItemBase? DefaultWep = Bot.Inventory.Items.Find(x => x.Name.StartsWith("Default"));
-                    if (DefaultWep != null && Core.CheckInventory(DefaultWep.Name))
-                        Core.SellItem(DefaultWep.Name);
-                    Core.SellItem("Battle Oracle Battlestaff");
                     Core.SellItem("Venom Head");
 
                     Adv.SmartEnhance(Core.FarmClass);
@@ -276,14 +279,13 @@ public class CoreFarmerJoe
                     }
 
                     SetClass(false, true, true);
-
-                    Adv.SmartEnhance(Core.FarmClass);
+                    Farm.Experience(Level);
 
                     Core.Logger("Getting Scarlet Socrceress");
                     SS.GetSSorc(false);
-                    SetClass(false, true, true);
 
                     Core.Logger("Getting Burning Blaze");
+                    SetClass(true, false, true);
                     BB.GetBurningBlade();
                     Adv.SmartEnhance(Core.FarmClass);
                     Core.Logger($"Level {Level} done");
@@ -322,13 +324,12 @@ public class CoreFarmerJoe
                     SetClass(false, true, true);
 
                     Core.Logger("Getting DSS for DoomKittem(ArchPaladin)");
-                    Adv.SmartEnhance(Core.FarmClass);
+                    SetClass(false, true, true);
                     Farm.Experience(Level);
-                    Adv.SmartEnhance(Core.SoloClass);
 
-                    SetClass(true, false, true);
 
                     Core.Logger("Getting DragonSoul Shinobi");
+                    SetClass(true, false, true);
                     DS.GetDSS();
                     Adv.RankUpClass("DragonSoul Shinobi");
                     Core.Logger($"Level {Level} done");
@@ -344,9 +345,9 @@ public class CoreFarmerJoe
                     SetClass(false, true, true);
                     Farm.Experience(Level);
 
-                    SetClass(true, false, true);
 
                     Core.Logger("Getting ArchPaladin");
+                    SetClass(true, false, true);
                     AP.GetAP(false);
                     SetClass(true, false, true);
 
@@ -383,19 +384,22 @@ public class CoreFarmerJoe
         #endregion Leve 30-75
     }
 
+    /// <summary>
+    /// Progresses through various steps to prepare, acquire items, level up, and enhance the character.
+    /// </summary>
     public void Level75to100()
     {
         SetClass(false, true, true);
 
         InvEn.EnhanceInventory();
-        #region Prepare for Lvl100
-        // P1: Healer for xiang
+
+        // Prepare for Lvl100
         Core.Logger("P1: Healer for xiang, Buying & Ranking Healer\n" +
-        "class to prep for xiang (Skipped if you have Dragon of Time.");
+            "class to prep for xiang (Skipped if you have Dragon of Time.");
 
         SetClass(true, false, true);
 
-        ///Prep class for 13LoC
+        // Prep class for 13LoC
         if (!Core.CheckInventory("Dragon of Time"))
         {
             if (!Core.CheckInventory(new[] { "Healer", "Healer (Rare)" }))
@@ -407,15 +411,15 @@ public class CoreFarmerJoe
             Adv.RankUpClass("Dragon of Time");
         }
 
-        //P2 Chaos Shenanagins
-        Core.Logger("P2: Chaos Shenanagins");
+        // P2 Chaos Shenanigans
+        Core.Logger("P2: Chaos Shenanigans");
 
         COA.GetCoA();
         Core.Equip("Cape of Awe");
         Adv.SmartEnhance(Core.FarmClass);
         LOC.Complete13LOC();
 
-        //Step 2 Solo Class:
+        // P3 Solo Classes & Weapon
         Core.Logger("P3: Solo Classes & Weapon");
         Core.Logger("Getting Lord of order.");
         LOO.GetLoO();
@@ -429,17 +433,19 @@ public class CoreFarmerJoe
         CAQ.DoAll();
         BBOA.GetBBoA();
 
-        #endregion Prepare for Lvl100
-
+        // Prepare for Lvl100
         InvEn.EnhanceInventory();
 
-        #region Leveling to 100
+        // Leveling to 100
         Core.Logger("P4 Leveling to 100");
         Farm.IcestormArena();
         InvEn.EnhanceInventory();
-        #endregion Leveling to 100}
     }
 
+
+    /// <summary>
+    /// Executes endgame tasks including outfit setup, acquiring specific items, and advancing through endgame content.
+    /// </summary>
     public void EndGame()
     {
         SetClass(false, true, true);
@@ -458,16 +464,19 @@ public class CoreFarmerJoe
         #endregion Ending & Extras
     }
 
+    /// <summary>
+    /// Orchestrates the process of setting up a character's outfit, including class, items, and equipping.
+    /// </summary>
     public void Outfit()
     {
         SetClass(false, true, true);
 
-        //Easy Difficulty Stuff
-        ShirtandHat();
+        // Easy Difficulty Stuff
+        ShirtAndHat();
         ServersAreDown();
         Adv.SmartEnhance(Bot.Player.CurrentClass?.Name ?? String.Empty);
 
-        //Extra Stuff
+        // Extra Stuff
         Pets(PetChoice.None);
 
         if (Bot.Config!.Get<bool>("EquipOutfit"))
@@ -479,23 +488,30 @@ public class CoreFarmerJoe
         Core.Logger("We are farmers, bum ba dum bum bum bum bum");
     }
 
+
     #region other stuff
 
-    public void Pets(PetChoice PetChoice = PetChoice.None)
+    /// <summary>
+    /// Manages the acquisition and equipping of pets based on a specified choice.
+    /// </summary>
+    /// <param name="petChoice">Selected pet choice</param>
+    public void Pets(PetChoice petChoice = PetChoice.None)
     {
         SetClass(true, false, true);
 
-        if (Bot.Config!.Get<PetChoice>("Pets") == PetChoice.None)
+        var configPetChoice = Bot.Config!.Get<PetChoice>("Pets");
+
+        if (configPetChoice == PetChoice.None)
             return;
 
-        if (Bot.Config.Get<PetChoice>("Pets") == PetChoice.HotMama && !Core.CheckInventory("Hot Mama"))
+        if (configPetChoice == PetChoice.HotMama && !Core.CheckInventory("Hot Mama"))
         {
             Core.HuntMonster("battleundere", "Hot Mama", "Hot Mama", isTemp: false, log: false);
             Bot.Wait.ForPickup("Hot Mama");
             Core.Equip("Hot Mama");
         }
 
-        if (Bot.Config.Get<PetChoice>("Pets") == PetChoice.Akriloth && !Core.CheckInventory("Akriloth Pet"))
+        if (configPetChoice == PetChoice.Akriloth && !Core.CheckInventory("Akriloth Pet"))
         {
             Core.HuntMonster("gravestrike", "Ultra Akriloth", "Akriloth Pet", isTemp: false, log: false);
             Bot.Wait.ForPickup("Akriloth Pet");
@@ -503,7 +519,10 @@ public class CoreFarmerJoe
         }
     }
 
-    public void ShirtandHat()
+    /// <summary>
+    /// Acquires a shirt and hat by purchasing and merging items.
+    /// </summary>
+    public void ShirtAndHat()
     {
         SetClass(false, true, true);
 
@@ -512,6 +531,9 @@ public class CoreFarmerJoe
         Adv.BuyItem("yulgar", 16, "Scarecrow Hat");
     }
 
+    /// <summary>
+    /// Hunts a specific monster to obtain an item related to server downtime and equips it.
+    /// </summary>
     public void ServersAreDown()
     {
         SetClass(false, true, true);
@@ -525,38 +547,84 @@ public class CoreFarmerJoe
         Core.Equip("The Server is Down");
     }
 
+    /// <summary>
+    /// Manages the acquisition and equipping of beginner items, including weapons and class choices.
+    /// </summary>
     void BeginnerItems()
     {
-        if (Core.CheckInventory(Core.CheckInventory("Rogue (Rare)") ? "Rogue (Rare)" : "Rogue") && Core.CheckInventory(Core.CheckInventory("Mage (Rare)") ? "Mage (Rare)" : "Mage") && Bot.Player.Level >= 10)
+        foreach (ItemCategory category in Enum.GetValues(typeof(ItemCategory)))
         {
-            Core.Logger("Acc is lvl 10+, skipping beginnger items.");
+            InventoryItem? equippedItem = Bot.Inventory.Items.Find(i => i.Equipped && i.Category == category);
+            switch (category)
+            {
+                case ItemCategory.Helm:
+                    if (equippedItem == null)
+                    {
+                        Core.BuyItem("classhalla", 299, "Battle Oracle Hood");
+                        Core.Equip("Battle Oracle Hood");
+                    }
+                    break;
+
+                case ItemCategory.Cape:
+                    if (equippedItem == null)
+                    {
+                        Core.BuyItem("classhalla", 299, "Battle Oracle Wings");
+                        Core.Equip("Battle Oracle Wings");
+                    }
+                    break;
+
+                case ItemCategory.Staff:
+                case ItemCategory.Axe:
+                case ItemCategory.Bow:
+                case ItemCategory.HandGun:
+                case ItemCategory.Gauntlet:
+                case ItemCategory.Dagger:
+                case ItemCategory.Rifle:
+                case ItemCategory.Sword:
+                case ItemCategory.Whip:
+                case ItemCategory.Wand:
+                case ItemCategory.Mace:
+                case ItemCategory.Polearm:
+                    ItemBase? DefaultWep = Bot.Inventory.Items.Find(x => x.Name.StartsWith("Default"));
+                    if (DefaultWep != null && Core.CheckInventory(DefaultWep.Name))
+                    {
+                        Core.BuyItem("classhalla", 299, "Battle Oracle Battlestaff");
+                        Core.Equip("Battle Oracle Battlestaff");
+                        Core.SellItem(DefaultWep.Name);
+                    }
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+        if (Core.CheckInventory(Core.CheckInventory("Rogue (Rare)") ? "Rogue (Rare)" : "Rogue") &&
+            Core.CheckInventory(Core.CheckInventory("Mage (Rare)") ? "Mage (Rare)" : "Mage") &&
+            Bot.Player.Level >= 10)
+        {
+            Core.Logger("Acc is lvl 10+, skipping beginner items.");
             return;
         }
 
-        Core.Logger("Starting out acc: \n" +
-        "\tGoals:  Temp weapon, Rogue class.");
+        Core.Logger("Starting out acc:\n" +
+            "\tGoals: Temp weapon, Rogue class.");
 
         Core.Logger("Getting Badges to look a little\n" +
-        "more legit (start make take a minute)");
+            "more legit (start may take a minute)");
         Tutorial.Badges();
 
         Core.Logger("Getting Started: Beginner Levels/Equipment");
 
         if (!Core.CheckInventory(Core.CheckInventory("Rogue (Rare)") ? "Rogue (Rare)" : "Rogue"))
             Core.BuyItem("classhalla", 172, "Rogue");
+
         if (!Core.CheckInventory("Mage") || Core.CheckInventory("Mage (Rare)"))
             Adv.BuyItem("classhalla", 174, 15653, shopItemID: 9845);
-        foreach (string item in new[] { "Battle Oracle Wings", "Battle Oracle Battlestaff", "Battle Oracle Battlestaff" })
-        {
-            Core.BuyItem("classhalla", 299, item); ;
-            Core.Equip(item);
-        }
 
-        ItemBase? DefaultWep = Bot.Inventory.Items.Find(x => x.Name.StartsWith("Default"));
-        if (DefaultWep != null && Core.CheckInventory(DefaultWep.Name))
-            Core.SellItem(DefaultWep.Name);
         SetClass(true, false, false);
         Farm.Experience(5);
+
     }
 
     /// <summary>
