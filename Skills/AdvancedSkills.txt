@@ -89,12 +89,11 @@ Base = DoomKnight OverLord = 1 | 2 | 3 | 4 = Use if Available
 Base = Dragon Knight = 1 | 2 | 3 | 4 = Use if Available
 Farm = Dragon of Time = 1 | 2 | 3 | 4 | 2 = 250
 Solo = Dragon of Time = 3 | 2 | 1 | 2 | 4 = 250
-Base = Dragon Shinobi = 4H>50 | 3M<70S | 2H<50 M>70S | 1H>50 = 250
 Farm = Dragon Shinobi = 1 | 2H<30 M>70S | 3M<10S = 250
 Base = Dragonlord = 1 | 2 | 3 | 4 = Use if Available
 Base = Dragonslayer = 1 | 2 | 3 | 4 = Use if Available
 Base = Dragonslayer General = 1 | 2 | 3 | 4 = Use if Available
-Farm = DragonSoul Shinobi = 1 | 2H<30 M>70S | 3M<10S = 250
+Farm = DragonSoul Shinobi  = 1 | 2H<30 M>70 | 3M<10 = Use if Available
 Base = DragonSoul Shinobi = 4H>50 | 3M<70S | 2H<50 M>70S | 1H>50 = 250
 Base = Drakel Warlord = 1 | 2 | 3 | 4 = Use if Available
 Base = Elemental Dracomancer = 3 | 4 | 2 | 1 = Use if Available
@@ -213,7 +212,7 @@ Base = Quantum Chronomancer = 2 | 1 | 1 | 1 | 3 | 1 | 4 = 250
 Base = Sakura Cryomancer = 3 | 1 | 2 | 4 | 1 | 2 | 1 | 2 = 250
 Base = Scarlet Sorceress = 4 | 1 | 2 | 3 = 250
 Base = Sentinel = 1 | 2 | 3 | 4 = Use if Available
-Farm = Shadow Dragon Shinobi = 1 | 2H<30 M>70S | 3M<10S = 250
+Farm = Shadow Dragon Shinobi  = 1 | 2H<30 M>70 | 3M<10 = Use if Available
 Base = Shadow Dragon Shinobi = 4H>50 | 3M<70S | 2H<50 M>70S | 1H>50 = 250
 Base = Shadow Ripper = 1 | 2 | 3 | 4 = Use if Available
 Base = Shadow Rocker = 1 | 2 | 3 | 4 = Use if Available
