@@ -80,7 +80,7 @@ public class ArmyUniqueQuarry
             Core.ToBank(item.ID);
     }
 
-    void Armykill(string map = null, string[] monsters = null, string item = null, bool isTemp = false, int quant = 1)
+    void Armykill(string? map = null, string[]? monsters = null, string? item = null, bool isTemp = false, int quant = 1)
     {
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
