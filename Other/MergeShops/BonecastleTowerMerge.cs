@@ -138,7 +138,6 @@ public class BonecastleTowerMerge
                     Core.HuntMonster("towergold", "Yurrod the Gold", req.Name, isTemp: false);
                     break;
 
-
             }
         }
     }
