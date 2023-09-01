@@ -1,26 +1,24 @@
 /*
-name: BoneTowersMerge
-description: null
-tags: null
+name: Bonecastle Tower Merge
+description: This bot will farm the items belonging to the selected mode for the Bonecastle Tower Merge [1243] in /towersilver
+tags: bonecastle, tower, merge, towersilver, deathknight, lord, deathknights, silver, golden
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
-
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
 
-public class TowersMerge
+public class BonecastleTowerMerge
 {
-    public IScriptInterface Bot => IScriptInterface.Instance;
-    public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new();
-    public CoreStory Story = new();
-    public CoreAdvanced Adv = new();
-    public static CoreAdvanced sAdv = new();
+    private IScriptInterface Bot => IScriptInterface.Instance;
+    private CoreBots Core => CoreBots.Instance;
+    private CoreFarms Farm = new();
+    private CoreAdvanced Adv = new();
+    private static CoreAdvanced sAdv = new();
     public CoreToD TOD = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
@@ -30,16 +28,16 @@ public class TowersMerge
     //              If true, it will not stop the script if the default case triggers and the user chose to only get mats
     private bool dontStopMissingIng = false;
 
-    public void ScriptMain(IScriptInterface bot)
+    public void ScriptMain(IScriptInterface Bot)
     {
+        Core.BankingBlackList.AddRange(new[] { "DeathKnight Lord Gauntlets", "DeathKnight Lord Greaves", "DeathKnight Lord Chest Plate", "DeathKnight Lord Hauberk", "DeathKnight Lord Boots", "Bonecastle Amulet", "Silver DeathKnight Lord Gauntlets", "Silver DeathKnight Lord Greaves", "Silver DeathKnight Lord Chest Plate", "Silver DeathKnight Lord Hauberk", "Silver DeathKnight Lord Boots", "SilverSkull Amulet", "Golden DeathKnight Lord Gauntlets", "Golden DeathKnight Lord Greaves", "Golden DeathKnight Lord Chest Plate", "Golden DeathKnight Lord Hauberk", "Golden DeathKnight Lord Boots", "GoldSkull Amulet" });
         Core.SetOptions();
 
         BuyAllMerge();
-
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
+    public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         TOD.BoneTowerAll();
 
@@ -66,41 +64,10 @@ public class TowersMerge
                     break;
                 #endregion
 
-                // Add how to get items here
-                case "SilverSkull Amulet":
-                    Core.RegisterQuests(5009);
-                    Core.EquipClass(ClassType.Farm);
-                    Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster("towersilver", "Fallen DeathKnight", "Chef Ramskull's Apron");
-                        Core.HuntMonster("towersilver", "Undead Knight", "Chef Ramskull's Hat");
-                        Core.HuntMonster("towersilver", "Undead Warrior", "Chef Ramskull's Cookbook");
-                        Core.HuntMonster("towersilver", "Ghoul", "Chef Ramskull's Spatula");
-                        Core.HuntMonster("towersilver", "Undead Guard", "Chef Ramskull's Skillet");
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    Core.CancelRegisteredQuests();
-                    break;
-
-                case "GoldSkull Amulet":
-                    Core.RegisterQuests(5023);
-                    Core.EquipClass(ClassType.Farm);
-                    Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster("towergold", "Book Maggot", "Book Pages", 10);
-                        Core.HuntMonster("towergold", "Vampire Bat", "Batwing Leather");
-                        Core.HuntMonster("towergold", "Skullspider", "Skullspider Silk", 3);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    Core.CancelRegisteredQuests();
-                    break;
-
                 case "Bonecastle Amulet":
-                    Core.RegisterQuests(4993);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
-                    Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
+                    Core.RegisterQuests(4993);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.HuntMonster("bonecastle", "Green Rat", "Gamey Rat Meat", 3);
@@ -114,52 +81,78 @@ public class TowersMerge
                     Core.CancelRegisteredQuests();
                     break;
 
-                case "DeathKnight Lord Greaves":
-                case "DeathKnight Lord Hauberk":
-                case "DeathKnight Lord Chest Plate":
-                case "DeathKnight Lord Gauntlets":
-                case "DeathKnight Lord Boots":
-                    Bot.Drops.Add("DeathKnight Lord Gauntlets", "DeathKnight Lord Greaves", "DeathKnight Lord Chest Plate", "DeathKnight Lord Hauberk", "DeathKnight Lord Boots");
-                    Core.EquipClass(ClassType.Solo);
-                    Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster("bonecastle", "Vaden", req.Name, isTemp: false, log: false);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    break;
-
-                case "Golden DeathKnight Lord Gauntlets":
-                case "Golden DeathKnight Lord Chest Plate":
-                case "Golden DeathKnight Lord Hauberk":
-                case "Golden DeathKnight Lord Boots":
-                case "Golden DeathKnight Lord Greaves":
-                    Bot.Drops.Add("Golden DeathKnight Lord Gauntlets", "Golden DeathKnight Lord Greaves", "Golden DeathKnight Lord Chest Plate", "Golden DeathKnight Lord Hauberk", "Golden DeathKnight Lord Boots");
+                case "SilverSkull Amulet":
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
-                    Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
+                    Core.RegisterQuests(5009);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("Towergold", "Yurrod the Gold", req.Name, isTemp: false, log: false);
+                        Core.HuntMonster("towersilver", "Fallen DeathKnight", "Chef Ramskull's Apron");
+                        Core.HuntMonster("towersilver", "Undead Knight", "Chef Ramskull's Hat");
+                        Core.HuntMonster("towersilver", "Undead Warrior", "Chef Ramskull's Cookbook");
+                        Core.HuntMonster("towersilver", "Ghoul", "Chef Ramskull's Spatula");
+                        Core.HuntMonster("towersilver", "Undead Guard", "Chef Ramskull's Skillet");
                         Bot.Wait.ForPickup(req.Name);
                     }
+                    Core.CancelRegisteredQuests();
                     break;
 
+                case "GoldSkull Amulet":
+                    Core.FarmingLogger(req.Name, quant);
+                    Core.EquipClass(ClassType.Farm);
+                    Core.RegisterQuests(5023);
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
+                    {
+                        Core.HuntMonster("towergold", "Book Maggot", "Book Pages", 10);
+                        Core.HuntMonster("towergold", "Vampire Bat", "Batwing Leather");
+                        Core.HuntMonster("towergold", "Skullspider", "Skullspider Silk", 3);
+                        Bot.Wait.ForPickup(req.Name);
+                    }
+                    Core.CancelRegisteredQuests();
+                    break;
+
+                case "DeathKnight Lord Gauntlets":
+                case "DeathKnight Lord Greaves":
+                case "DeathKnight Lord Chest Plate":
+                case "DeathKnight Lord Hauberk":
+                case "DeathKnight Lord Boots":
+                    Core.EquipClass(ClassType.Solo);
+                    Core.HuntMonster("bonecastle", "Vaden", req.Name, isTemp: false);
+                    break;
+
+                case "Silver DeathKnight Lord Gauntlets":
                 case "Silver DeathKnight Lord Greaves":
                 case "Silver DeathKnight Lord Chest Plate":
                 case "Silver DeathKnight Lord Hauberk":
                 case "Silver DeathKnight Lord Boots":
-                case "Silver DeathKnight Lord Gauntlets":
-                    Bot.Drops.Add("Silver DeathKnight Lord Gauntlets", "Silver DeathKnight Lord Greaves", "Silver DeathKnight Lord Chest Plate", "Silver DeathKnight Lord Hauberk", "Silver DeathKnight Lord Boots");
-                    Core.EquipClass(ClassType.Farm);
-                    Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster("Towersilver", "Flester the Silver", req.Name, isTemp: false, log: false);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
+                    Core.EquipClass(ClassType.Solo);
+                    Core.HuntMonster("towersilver", "Flester the Silver", req.Name, isTemp: false);
                     break;
+
+                case "Golden DeathKnight Lord Gauntlets":
+                case "Golden DeathKnight Lord Greaves":
+                case "Golden DeathKnight Lord Chest Plate":
+                case "Golden DeathKnight Lord Hauberk":
+                case "Golden DeathKnight Lord Boots":
+                    Core.EquipClass(ClassType.Solo);
+                    Core.HuntMonster("towergold", "Yurrod the Gold", req.Name, isTemp: false);
+                    break;
+
+
             }
         }
+    }
+
+
+    void QuestRequirements()
+    {
+        /*
+        My Final Recipe:
+        Must have completed the 'Yurrod the Gold' quest in order to access this quest.
+        Must have Silver DeathKnight Lord and Golden DeathKnight Lord in your inventory in order to accept this quest.
+        */
+
+
     }
 
     public List<IOption> Select = new()
