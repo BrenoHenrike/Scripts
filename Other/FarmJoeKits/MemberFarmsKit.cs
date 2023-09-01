@@ -29,7 +29,7 @@ tags: member, kit, expire, legend
 //cs_include Scripts/Seasonal/Friday13th/SpellRaiser[Mem].cs
 //cs_include Scripts/Seasonal/Friday13th/TheLostKnightAndBackupBlade[Mem].cs
 //cs_include Scripts/Seasonal/Friday13th/TrobbolierPet[Mem].cs
-//cs_include Scripts/Other/MergeShops/BoneTowerMerge.cs
+//cs_include Scripts/Other/MergeShops/BonecastleTowerMerge.cs
 //cs_include Scripts/Other/MergeShops/TachyonMerge.cs
 //cs_include Scripts/Other/CoinCollectorSet[Member].cs
 //cs_include Scripts/Other/Classes/Curio-Classes/LegendaryElementalWarrior[mem].cs
@@ -50,7 +50,7 @@ public class MemberFarm
     private SpellRaiser SpellRaiser = new();
     private ArchfiendDragonEgg ArchfiendDragonPet = new();
     private DragonBladeofNulgath DBoN = new();
-    private TowersMerge DeathKnight = new();
+    private BonecastleTowerMerge DeathKnight = new();
     private LegendaryElementalWarrior LegendaryElementalWarrior = new();
     private ChronoAssassin ChronoAssassin = new();
     private TachyonMerge Tachyon = new();
