@@ -143,18 +143,6 @@ public class BonecastleTowerMerge
         }
     }
 
-
-    void QuestRequirements()
-    {
-        /*
-        My Final Recipe:
-        Must have completed the 'Yurrod the Gold' quest in order to access this quest.
-        Must have Silver DeathKnight Lord and Golden DeathKnight Lord in your inventory in order to accept this quest.
-        */
-
-
-    }
-
     public List<IOption> Select = new()
     {
         new Option<bool>("34717", "DeathKnight Lord", "Mode: [select] only\nShould the bot buy \"DeathKnight Lord\" ?", false),
