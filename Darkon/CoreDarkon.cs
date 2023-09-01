@@ -39,7 +39,7 @@ public class CoreDarkon
 
         Core.RegisterQuests(7324);
         while (!Bot.ShouldExit && !Core.CheckInventory("Darkon's Receipt", Quantity))
-                Core.HuntMonster("portalmaze", "Jurassic Monkey", "Banana", 22, false, log: false);
+            Core.HuntMonster("portalmaze", "Jurassic Monkey", "Banana", 22, false, log: false);
         Core.CancelRegisteredQuests();
     }
 
@@ -248,9 +248,11 @@ public class CoreDarkon
         Core.RegisterQuests(8641);
         while (!Bot.ShouldExit && !Core.CheckInventory("Ancient Remnant", Quantity))
         {
+            Core.JumpWait();
             Core.EquipClass(ClassType.Farm);
-            Core.HuntMonster("firstobservatory", "Ancient Creature", "Creature Samples", 6);
-            Core.HuntMonster("firstobservatory", "Ancient Turret", "Turret Pieces", 12);
+            Core.KillMonster("firstobservatory", "r7", "Left", "Ancient Creature", "Creature Samples", 6);
+            Core.KillMonster("firstobservatory", "r6", "Left", "Ancient Turret", "Turret Pieces", 12);
+            Core.JumpWait();
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster($"firstobservatory", "Empress’ Finger", "Alprecha Observed");
             Bot.Wait.ForPickup("Ancient Remnant");
