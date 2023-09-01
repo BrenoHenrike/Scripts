@@ -29,7 +29,7 @@ tags: member, kit, expire, legend
 //cs_include Scripts/Seasonal/Friday13th/SpellRaiser[Mem].cs
 //cs_include Scripts/Seasonal/Friday13th/TheLostKnightAndBackupBlade[Mem].cs
 //cs_include Scripts/Seasonal/Friday13th/TrobbolierPet[Mem].cs
-//cs_include Scripts/Other/MergeShops/BoneTowersMerge.cs
+//cs_include Scripts/Other/MergeShops/BoneTowerMerge.cs
 //cs_include Scripts/Other/MergeShops/TachyonMerge.cs
 //cs_include Scripts/Other/CoinCollectorSet[Member].cs
 //cs_include Scripts/Other/Classes/Curio-Classes/LegendaryElementalWarrior[mem].cs
