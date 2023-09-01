@@ -797,7 +797,6 @@ public class CoreArmyLite
 
         string[] NonMemMaps =
         {
-            "icewing",
             "tercessuinotlim",
             "doomvaultb",
             "doomvault",
@@ -844,6 +843,7 @@ public class CoreArmyLite
         var levelLockedMaps = new[]
         {
             new { Map = "icestormunder", LevelRequired = 75 }
+            new { Map = "icewing", LevelRequired = 75 }
         };
 
         int maptry = 1;
