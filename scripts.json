@@ -1397,7 +1397,7 @@
       "null"
     ],
     "path": "Darkon/CoreDarkon.cs",
-    "size": 11425,
+    "size": 11509,
     "fileName": "CoreDarkon.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/CoreDarkon.cs"
   },
@@ -11256,6 +11256,25 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/AshfallCampMerge.cs"
   },
   {
+    "name": "Bonecastle Tower Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Bonecastle Tower Merge [1243] in /towersilver",
+    "tags": [
+      "bonecastle",
+      "tower",
+      "merge",
+      "towersilver",
+      "deathknight",
+      "lord",
+      "deathknights",
+      "silver",
+      "golden"
+    ],
+    "path": "Other/MergeShops/BonecastleTowerMerge.cs",
+    "size": 8870,
+    "fileName": "BonecastleTowerMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/BonecastleTowerMerge.cs"
+  },
+  {
     "name": "Abyssal Zone Merge",
     "description": "This bot will farm the items belonging to the selected mode for the Abyssal Zone Merge [2304] in /abyssalzone",
     "tags": [
@@ -12588,17 +12607,6 @@
     "size": 7192,
     "fileName": "CharonsPurgeMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/CharonsPurgeMerge.cs"
-  },
-  {
-    "name": "BoneTowersMerge",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Other/MergeShops/BoneTowersMerge.cs",
-    "size": 9344,
-    "fileName": "BoneTowersMerge.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/BoneTowersMerge.cs"
   },
   {
     "name": "CommitedMerge",
