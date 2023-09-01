@@ -842,7 +842,7 @@ public class CoreArmyLite
 
         var levelLockedMaps = new[]
         {
-            new { Map = "icestormunder", LevelRequired = 75 }
+            new { Map = "icestormunder", LevelRequired = 75 },
             new { Map = "icewing", LevelRequired = 75 }
         };
 
