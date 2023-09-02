@@ -65,6 +65,9 @@ public class BonecastleTowerMerge
                 #endregion
 
                 case "Bonecastle Amulet":
+                    BuyAllMerge("Silver DeathKnight Lord");
+                    BuyAllMerge("Golden DeathKnight Lord");
+
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.RegisterQuests(4993);
