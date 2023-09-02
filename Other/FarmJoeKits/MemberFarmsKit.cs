@@ -50,7 +50,7 @@ public class MemberFarm
     private SpellRaiser SpellRaiser = new();
     private ArchfiendDragonEgg ArchfiendDragonPet = new();
     private DragonBladeofNulgath DBoN = new();
-    private BonecastleTowerMerge DeathKnight = new();
+    private BonecastleTowerMerge BonecastleTowerMerge = new();
     private LegendaryElementalWarrior LegendaryElementalWarrior = new();
     private ChronoAssassin ChronoAssassin = new();
     private TachyonMerge Tachyon = new();
@@ -474,10 +474,14 @@ public class MemberFarm
         if (Core.CheckInventory(BoneTowerShop, toInv: false))
             return;
 
+        // Required for quest:         
+        BonecastleTowerMerge.BuyAllMerge("Silver DeathKnight Lord");
+        BonecastleTowerMerge.BuyAllMerge("Golden DeathKnight Lord");
+
         Bot.Drops.Add(BoneTowerShop);
         foreach (string BoneTowerItem in BoneTowerShop)
         {
-            DeathKnight.BuyAllMerge(BoneTowerItem);
+            BonecastleTowerMerge.BuyAllMerge(BoneTowerItem);
             Core.ToBank(BoneTowerItem);
         }
     }
