@@ -32,7 +32,11 @@ public class BonecastleTowerMerge
     {
         Core.BankingBlackList.AddRange(new[] { "DeathKnight Lord Gauntlets", "DeathKnight Lord Greaves", "DeathKnight Lord Chest Plate", "DeathKnight Lord Hauberk", "DeathKnight Lord Boots", "Bonecastle Amulet", "Silver DeathKnight Lord Gauntlets", "Silver DeathKnight Lord Greaves", "Silver DeathKnight Lord Chest Plate", "Silver DeathKnight Lord Hauberk", "Silver DeathKnight Lord Boots", "SilverSkull Amulet", "Golden DeathKnight Lord Gauntlets", "Golden DeathKnight Lord Greaves", "Golden DeathKnight Lord Chest Plate", "Golden DeathKnight Lord Hauberk", "Golden DeathKnight Lord Boots", "GoldSkull Amulet" });
         Core.SetOptions();
+        // Required:
+        BuyAllMerge("Silver DeathKnight Lord");
+        BuyAllMerge("Golden DeathKnight Lord");
 
+        // Start the rest:
         BuyAllMerge();
         Core.SetOptions(false);
     }
@@ -65,8 +69,6 @@ public class BonecastleTowerMerge
                 #endregion
 
                 case "Bonecastle Amulet":
-                    BuyAllMerge("Silver DeathKnight Lord");
-                    BuyAllMerge("Golden DeathKnight Lord");
 
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
