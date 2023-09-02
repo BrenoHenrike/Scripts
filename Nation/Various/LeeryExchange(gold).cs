@@ -22,7 +22,7 @@ public class leeryExchange
     {
         Core.SetOptions();
 
-        Nation.leeryExchangeGold();
+        Nation.LeeryExchangeGold();
 
         Core.SetOptions(false);
     }
