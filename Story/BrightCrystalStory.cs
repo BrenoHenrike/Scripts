@@ -71,10 +71,15 @@ public class BrightCrystalStory
             Core.HuntMonsterMapID("dreamforest", 19, "Prize Ticket", 10);
             Core.EnsureComplete(4963);
         }
-        //Story.KillQuest(4963, "dreamforest", "Balloons");
 
         //Out of the Shadows 4964
-        Story.KillQuest(4964, "dreamforest", new[] { "Living Shadow", "Dark Imp" });
+        if (!Story.QuestProgression(4964))
+        {
+            Core.EnsureAccept(4964);
+            Core.HuntMonster("dreamforest", "Living Shadow", "Shadows", 4);
+            Core.HuntMonsterMapID("dreamforest", 9, "Darkness", 4);
+            Core.EnsureComplete(4964);
+        }
 
         //Follow the Footprints 4965
         Story.MapItemQuest(4965, "dreamforest", 4335, 10);
