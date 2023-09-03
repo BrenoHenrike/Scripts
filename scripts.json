@@ -354,7 +354,7 @@
       "null"
     ],
     "path": "Nation/DragonSlayerReward.cs",
-    "size": 503,
+    "size": 510,
     "fileName": "DragonSlayerReward.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/DragonSlayerReward.cs"
   },
@@ -449,7 +449,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 71479,
+    "size": 70638,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -3199,7 +3199,7 @@
       "gold"
     ],
     "path": "Other/FreeBoostsQuest(10mns).cs",
-    "size": 2715,
+    "size": 3631,
     "fileName": "FreeBoostsQuest(10mns).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FreeBoostsQuest(10mns).cs"
   },
@@ -3743,7 +3743,7 @@
       "null"
     ],
     "path": "Legion/Various/WorthyOfTheBlade.cs",
-    "size": 1760,
+    "size": 1761,
     "fileName": "WorthyOfTheBlade.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/Various/WorthyOfTheBlade.cs"
   },
@@ -4510,7 +4510,7 @@
       "null"
     ],
     "path": "Nation/AFDL/EnoughDOOMforanArchfiend.cs",
-    "size": 3949,
+    "size": 3914,
     "fileName": "EnoughDOOMforanArchfiend.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/AFDL/EnoughDOOMforanArchfiend.cs"
   },
@@ -4531,7 +4531,7 @@
       "fragment"
     ],
     "path": "Nation/AFDL/NulgathDemandsWork.cs",
-    "size": 4089,
+    "size": 4047,
     "fileName": "NulgathDemandsWork.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/AFDL/NulgathDemandsWork.cs"
   },
@@ -4542,7 +4542,7 @@
       "null"
     ],
     "path": "Nation/AFDL/WillpowerExtraction.cs",
-    "size": 4194,
+    "size": 4201,
     "fileName": "WillpowerExtraction.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/AFDL/WillpowerExtraction.cs"
   },
@@ -4580,7 +4580,7 @@
       "enchanted nulgath nation house"
     ],
     "path": "Nation/MergeShops/DirtlickersMerge.cs",
-    "size": 9299,
+    "size": 9376,
     "fileName": "DirtlickersMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/MergeShops/DirtlickersMerge.cs"
   },
@@ -4936,7 +4936,7 @@
       "claymore"
     ],
     "path": "Nation/Various/ThePoisonousDeal.cs",
-    "size": 2855,
+    "size": 2846,
     "fileName": "ThePoisonousDeal.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/ThePoisonousDeal.cs"
   },
@@ -5009,7 +5009,7 @@
       "null"
     ],
     "path": "Nation/Various/ShadowLegacyofNulgath.cs",
-    "size": 1286,
+    "size": 1275,
     "fileName": "ShadowLegacyofNulgath.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/ShadowLegacyofNulgath.cs"
   },
@@ -5116,7 +5116,7 @@
       "quest"
     ],
     "path": "Nation/Various/TheRefreshingDeal.cs",
-    "size": 2846,
+    "size": 2823,
     "fileName": "TheRefreshingDeal.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/TheRefreshingDeal.cs"
   },
@@ -5138,7 +5138,7 @@
       "null"
     ],
     "path": "Nation/Various/TendurrrTheAssistantQuests.cs",
-    "size": 3469,
+    "size": 3419,
     "fileName": "TendurrrTheAssistantQuests.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/TendurrrTheAssistantQuests.cs"
   },
@@ -5466,7 +5466,7 @@
       "null"
     ],
     "path": "Nation/VHL/CoreVHL.cs",
-    "size": 6006,
+    "size": 6026,
     "fileName": "CoreVHL.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/VHL/CoreVHL.cs"
   },
@@ -10716,7 +10716,7 @@
       "null"
     ],
     "path": "Other/MergeShops/OriginulMerge.cs",
-    "size": 7195,
+    "size": 7196,
     "fileName": "OriginulMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/OriginulMerge.cs"
   },
@@ -11091,7 +11091,7 @@
       "null"
     ],
     "path": "Other/MergeShops/BeleensMerge.cs",
-    "size": 20640,
+    "size": 20590,
     "fileName": "BeleensMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/BeleensMerge.cs"
   },
@@ -13383,7 +13383,7 @@
       "legend"
     ],
     "path": "Other/FarmJoeKits/MemberFarmsKit.cs",
-    "size": 20431,
+    "size": 20434,
     "fileName": "MemberFarmsKit.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/MemberFarmsKit.cs"
   },
