@@ -85,6 +85,11 @@ public class BrightCrystalStory
         Story.MapItemQuest(4965, "dreamforest", 4335, 10);
 
         //Help Miranda 4967
-        Story.KillQuest(4967, "dreamforest", "Mirandageist");
+        if (!Story.QuestProgression(4967))
+        {
+            Core.EnsureAccept(4967);
+            Core.HuntMonsterMapID("dreamforest", 23, "Geist Defated");
+            Core.EnsureComplete(4967);
+        }
     }
 }
