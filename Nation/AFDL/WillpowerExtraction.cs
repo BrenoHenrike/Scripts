@@ -12,7 +12,7 @@ using Skua.Core.Interfaces;
 public class WillpowerExtraction
 {
     public IScriptInterface Bot = IScriptInterface.Instance;
-    public CoreBots Core => CoreBots.Instance;
+    public static CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
     public CoreAdvanced Adv = new();
     public CoreNation Nation = new();

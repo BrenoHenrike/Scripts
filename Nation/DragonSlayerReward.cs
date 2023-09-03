@@ -10,7 +10,7 @@ using Skua.Core.Interfaces;
 
 public class DragonSlayerReward
 {
-    public CoreBots Core => CoreBots.Instance;
+    public static CoreBots Core => CoreBots.Instance;
     public CoreNation Nation = new();
 
     public void ScriptMain(IScriptInterface bot)

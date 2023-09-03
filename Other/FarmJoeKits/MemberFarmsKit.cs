@@ -89,7 +89,7 @@ public class MemberFarm
         Core.ToBank("Legendary Elemental Warrior");
 
         //Nation Item
-        TarosItems.TemptationTest();
+        // TarosItems.TemptationTest();
         Core.ToBank("Taro's Prismatic Manslayer", "Taro's Dual Prismatic Manslayers", "Taro's BattleBlade");
 
         ArchfiendDragonPet.GetAFDE();

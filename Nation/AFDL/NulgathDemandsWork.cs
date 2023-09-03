@@ -54,8 +54,7 @@ public class NulgathDemandsWork
     /// </summary>
     public void NDWQuest(string[]? items = null, int quant = 1)
     {
-        if (items == null)
-            items = NDWItems;
+        items ??= NDWItems;
 
         if (Core.CheckInventory(items, quant))
             return;
@@ -105,7 +104,7 @@ public class NulgathDemandsWork
         }
     }
 
-    public void Uni27(int quant = 1)
+    public void Uni27()
     {
         if (Core.CheckInventory("Unidentified 27"))
             return;

@@ -22,21 +22,21 @@ public class DirtlickersMerge
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
-    private CoreFarms Farm = new();
-    private CoreDailies Daily = new();
-    private CoreAdvanced Adv = new();
-    private static CoreAdvanced sAdv = new();
-    private CoreNation Nation = new();
-    private CoreBLOD BLOD = new();
-    private TheLeeryContract TLC = new();
-    private JuggernautItemsofNulgath Jugger = new();
+    private readonly CoreFarms Farm = new();
+    private readonly CoreDailies Daily = new();
+    private readonly CoreAdvanced Adv = new();
+    private static readonly CoreAdvanced sAdv = new();
+    private readonly CoreNation Nation = new();
+    private readonly CoreBLOD BLOD = new();
+    private readonly TheLeeryContract TLC = new();
+    private readonly JuggernautItemsofNulgath Jugger = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
     public string[] MultiOptions = { "Generic", "Select" };
     public string OptionsStorage = sAdv.OptionsStorage;
     // [Can Change] This should only be changed by the author.
     //              If true, it will not stop the script if the default case triggers and the user chose to only get mats
-    private bool dontStopMissingIng = false;
+    private readonly bool dontStopMissingIng = false;
 
     public void ScriptMain(IScriptInterface Bot)
     {
@@ -47,7 +47,7 @@ public class DirtlickersMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
+    public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("archportal", 1211, findIngredients, buyOnlyThis, buyMode: buyMode);
@@ -67,7 +67,7 @@ public class DirtlickersMerge
             switch (req.Name)
             {
                 default:
-                    bool shouldStop = Adv.matsOnly ? !dontStopMissingIng : true;
+                    bool shouldStop = !Adv.matsOnly || !dontStopMissingIng;
                     Core.Logger($"The bot hasn't been taught how to get {req.Name}." + (shouldStop ? " Please report the issue." : " Skipping"), messageBox: shouldStop, stopBot: shouldStop);
                     break;
                 #endregion

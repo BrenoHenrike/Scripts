@@ -92,7 +92,7 @@ public class CoreVHL
             Nation.FarmUni13(1);
             Nation.FarmGemofNulgath(20);
             Nation.EmblemofNulgath(20);
-            Nation.EssenceofNulgath(50);
+           Nation.EssenceofNulgath(50);
             Nation.SwindleBulk(100);
             Nation.ApprovalAndFavor(300, 300);
 
@@ -137,12 +137,13 @@ public class CoreVHL
 
     private void _SparrowMethod(int EldersBloodQuant)
     {
-        if (!Bot.Config.Get<bool>("SparrowMethod") || !Core.IsMember || !Core.CheckInventory(Nation.CragName) || Core.CheckInventory("Elders' Blood", EldersBloodQuant))
+        if (!Bot.Config!.Get<bool>("SparrowMethod") || !Core.IsMember || !Core.CheckInventory(Nation.CragName) || Core.CheckInventory("Elders' Blood", EldersBloodQuant))
             return;
 
         Core.Logger("Sparrow Method is enabled, the bot will now max out Totems, BloodGems, Uni19 and Vouchers in order to get another Elders' Blood. This may take a while");
 
-        ItemBase item = Core.EnsureLoad(7551).Rewards.Find(x => x.ID == 57446);
+        ItemBase item = Core.EnsureLoad(7551).Rewards.Find(x => x.ID == 57446) ?? new ItemBase(); 
+
         Core.AddDrop("Totem of Nulgath", "Blood Gem of Nulgath", "Voucher of Nulgath", "Voucher of Nulgath (non-mem)");
         Nation.FarmTotemofNulgath();
         Nation.FarmBloodGem();
