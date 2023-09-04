@@ -57,7 +57,7 @@ public class NavalTopHatMerge
             switch (req.Name)
             {
                 default:
-                    bool shouldStop = Adv.matsOnly ? !dontStopMissingIng : true;
+                    bool shouldStop = !Adv.matsOnly || !dontStopMissingIng;
                     Core.Logger($"The bot hasn't been taught how to get {req.Name}." + (shouldStop ? " Please report the issue." : " Skipping"), messageBox: shouldStop, stopBot: shouldStop);
                     break;
                 #endregion
@@ -88,7 +88,10 @@ public class NavalTopHatMerge
                 case "Scrap of Cloth":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
-                    Core.HuntMonster("tlapd", "Skellkie|Bedrock Lobster|Blind Eel|Giant Crabble", req.Name, quant, isTemp: false);
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
+                        foreach (int mon in new[] { 3, 7, 15, 10 })
+                            if (Core.IsMonsterAlive(mon, useMapID: true))
+                                Core.HuntMonsterMapID("tlapd", mon, req.Name, quant, isTemp: false);
                     break;
             }
         }
