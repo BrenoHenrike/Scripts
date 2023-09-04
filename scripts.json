@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 181192,
+    "size": 181189,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -5868,6 +5868,21 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmyMirrorRealmToken.cs"
   },
   {
+    "name": "Army leveling",
+    "description": "Uses your army, and different methods, to level up",
+    "tags": [
+      "army",
+      "icestormarena",
+      "icestormunder",
+      "icewing",
+      "aggro"
+    ],
+    "path": "Army/ArmyFarm/ArmyLeveling.cs",
+    "size": 4523,
+    "fileName": "ArmyLeveling.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/ArmyLeveling.cs"
+  },
+  {
     "name": "Army Gold",
     "description": "Uses different methods with your army to farm gold.",
     "tags": [
@@ -5895,21 +5910,6 @@
     "size": 1915,
     "fileName": "ArmyBattleUnderB.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/ArmyBattleUnderB.cs"
-  },
-  {
-    "name": "IceWing Leveling Army",
-    "description": "Uses your army to kill Warlord Icewing.",
-    "tags": [
-      "army",
-      "warlord icewing",
-      "experience",
-      "gold",
-      "icestorm arena"
-    ],
-    "path": "Army/ArmyFarm/ArmyIceWing.cs",
-    "size": 2396,
-    "fileName": "ArmyIceWing.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/ArmyIceWing.cs"
   },
   {
     "name": "Dragon of Time Army",
