@@ -7,8 +7,8 @@ tags: reagents for zifwin, free, boost, class points, reputation, gold
 //cs_include Scripts/CoreFarms.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
-using Skua.Core.Models.Items; // Added using directive
-using System.Collections.Generic;
+// using Skua.Core.Models.Items; // Added using directive
+// using System.Collections.Generic;
 
 public class FreeBoosts
 {
