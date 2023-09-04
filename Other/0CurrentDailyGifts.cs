@@ -8,7 +8,7 @@ tags: daily-gifts, rare-items
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Seasonal/MayThe4th/TwiggusGearMerge.cs
 //cs_include Scripts/Seasonal/SummerBreak/RoseRapiers.cs
-//cs include Scripts/Other/Pets/CursedWazikashi.cs
+//cs_include Scripts/Other/Pets/CursedWazikashi.cs
 using System.Globalization;
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
