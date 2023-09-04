@@ -855,7 +855,7 @@ public void Supplies(string item = "Any", int quant = 1, bool voucherNeeded = fa
             if (returnPolicyDuringSupplies && Core.CheckInventory(new[] { Uni(1), Uni(6), Uni(9), Uni(16), Uni(20) }))
             {
                 Core.EnsureAccept(7551);
-                Core.KillMonster("tercessuinotlim", "Field1", "Left", "Dark Makai", "Dark Makai Rune", publicRoom: false);
+                Core.KillMonster("tercessuinotlim", "m1", "Right", "Dark Makai", "Dark Makai Rune", publicRoom: false);
 
                 if (item != null && rewardItemIds.TryGetValue(item, out int itemId))
                     Core.EnsureCompleteMulti(7551, itemId);
