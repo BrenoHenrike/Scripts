@@ -41,7 +41,7 @@ public class CursedWazikashi
             Core.GetMapItem(12046, 1, "superslayin");
 
         // Broken Bamboo Chunk
-        Core.HuntMonster("shogunwar", "Bamboo Treeant", "Broken Bamboo Chunk");
+        Core.HuntMonster("shogunwar", "Bamboo Treeant", "Broken Bamboo Chunk", isTemp: false);
 
         // Combin
         Core.BuyItem("yokairiver", 2326, "Cursed Wakizashi Pet", shopItemID: 12048);
