@@ -35,8 +35,8 @@ public class CruxShip
         Story.KillQuest(4598, "CruxShip", "Shadow Locust");
 
         //Clear the Swarm 4599
-        Story.MapItemQuest(4599, "CruxShip", 3901, 2);
         Story.KillQuest(4599, "CruxShip", "Shadow Locust");
+        Story.MapItemQuest(4599, "CruxShip", 3901, 2);
 
         //Act 1 Complete 4600
         Story.ChainQuest(4600);
