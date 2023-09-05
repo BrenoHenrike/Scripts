@@ -2131,10 +2131,10 @@ public class CoreBots
     }
 
 
-    public void KillDoomKitten(string item, int quant = 1, bool isTemp = false, bool log = true, bool publicRoom = false)
+    public void KillDoomKitten(string item = null, int quant = 1, bool isTemp = false, bool log = true)
     {
         bool hasItem = isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant);
-        if (hasItem)
+        if (hasItem || item == null)
             return;
 
         List<string> DOTClasses = new()
@@ -2187,7 +2187,7 @@ public class CoreBots
                         Bot.Combat.Attack("*");
                 }
                 else
-                    HuntMonster("doomkitten", "Doomkitten", item, quant, isTemp, log, publicRoom);
+                    HuntMonster("doomkitten", "Doomkitten", item, quant, isTemp, log);
                 return; // Exit the method after handling the class.
             }
         }
@@ -2198,7 +2198,7 @@ public class CoreBots
             return; // Stop execution as the bot doesn't have any of the required classes.
         }
 
-        HuntMonster("doomkitten", "Doomkitten", item, quant, isTemp, log, publicRoom);
+        HuntMonster("doomkitten", "Doomkitten", item, quant, isTemp, log);
     }
 
 
@@ -3216,6 +3216,11 @@ public class CoreBots
                 JumpWait();
                 tryJoin();
                 Bot.Send.ClientPacket("{\"t\":\"xt\",\"b\":{\"r\":-1,\"o\":{\"cmd\":\"levelUp\",\"intExpToLevel\":\"0\",\"intLevel\":100}}}", type: "json");
+                break;
+
+
+            case "cruxship":
+                SimpleQuestBypass((97, 16));
                 break;
             #endregion
 

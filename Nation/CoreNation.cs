@@ -159,7 +159,7 @@ public class CoreNation
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("faerie", "Aracara", "Aracara's Fang", isTemp: false, log: false);
             Core.HuntMonster("hydra", "Hydra Head", "Hydra Scale", isTemp: false, log: false);
-            Core.KillVath("Strand of Vath's Hair", 1, false, false);
+            Core.KillVath("Strand of Vath's Hair", 1, isTemp: false);
             Core.HuntMonster("yokaiwar", "O-dokuro's Head", "O-dokuro's Tooth", isTemp: false, log: false);
             Core.KillEscherion("Escherion's Chain", publicRoom: true);
 

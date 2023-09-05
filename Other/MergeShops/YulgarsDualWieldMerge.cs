@@ -256,7 +256,7 @@ public class YulgarsDualWieldMerge
 
                 case "Hanzamune Dragon Koi Blade":
                     Core.EquipClass(ClassType.Solo);
-                    Core.KillKitsune(req.Name);
+                    Core.KillKitsune(req.Name, quant, req.Temp);
                     break;
 
                 case "Ugly Stick":
