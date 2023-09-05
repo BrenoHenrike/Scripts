@@ -58,6 +58,18 @@ public class CoreNation
         "Unidentified 34"
     };
 
+    public string[] SuppliesRewards =
+    {
+    "Tainted Gem",
+    "Dark Crystal Shard",
+    "Diamond of Nulgath",
+    "Ddog's Sea Serpent Armor",
+    "Voucher of Nulgath",
+    "Voucher of Nulgath (non-mem)",
+    "Random Weapon of Nulgath",
+    "Gem of Nulgath"
+    };
+
     /// <summary>
     /// Drops from the bosses that used to give acess to tercess
     /// </summary>
@@ -529,59 +541,54 @@ public class CoreNation
         bool sellMemVoucher = Core.CBOBool("Nation_SellMemVoucher", out bool _sellMemVoucher) && _sellMemVoucher;
         bool returnPolicyDuringSupplies = Core.CBOBool("Nation_ReturnPolicyDuringSupplies", out bool _returnSupplies) && _returnSupplies;
 
-        if (Core.CheckInventory(item, quant))
-            return;
-
-        if (Core.CheckInventory(CragName) && returnPolicyDuringSupplies)
-            BambloozevsDrudgen(item, quant);
-        else
+        if (Core.CheckInventory(CragName))
         {
-            string[]? rPDSuni = null;
-            if (returnPolicyDuringSupplies)
-            {
-                rPDSuni = new[] { Uni(1), Uni(6), Uni(9), Uni(16), Uni(20) };
-                Core.AddDrop(rPDSuni);
-                Core.AddDrop("Blood Gem of Nulgath");
-            }
+            BambloozevsDrudgen(item, quant);
+            return; // Exit early if BambloozevsDrudgen was called
+        }
 
-            Core.FarmingLogger(item, quant);
+        Core.RegisterQuests(2857);
+        Core.EquipClass(ClassType.Solo);
 
-            if (item == null)
-            {
-                Core.AddDrop(bagDrops[..^11].Append("Relic of Chaos").ToArray());
-            }
-            else
-            {
-                Core.AddDrop(item);
-                Core.AddDrop(sellMemVoucher ? new[] { "Voucher of Nulgath" } : null!);
-            }
+        Core.AddDrop(SuppliesRewards.Concat(sellMemVoucher ? new[] { "Voucher of Nulgath" } : Enumerable.Empty<string>()).ToArray());
 
-            Core.EquipClass(ClassType.Solo);
-            Core.RegisterQuests(2857);
+        if (item == null)
+        {
+            foreach (string Thing in SuppliesRewards)
+            {
+                // Find the corresponding item in quest rewards
+                var rewards = Core.EnsureLoad(2857).Rewards;
+                ItemBase? Item = rewards.Find(x => x.Name == Thing);
+
+                while (!Bot.ShouldExit && Item != null && !Core.CheckInventory(Item.Name, Item.MaxStack))
+                {
+                    Core.KillEscherion(Item.Name, Item.MaxStack, log: false);
+
+                    if (Item.Name != "Voucher of Nulgath" && sellMemVoucher && Core.CheckInventory("Voucher of Nulgath") && !voucherNeeded)
+                    {
+                        Bot.Drops.Pickup(Item.Name);
+                        Core.SellItem(Item.Name, all: true);
+                        Bot.Wait.ForItemSell();
+                    }
+                }
+            }
+        }
+        else // Handle the case when item is not null
+        {
             while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
             {
-                if (returnPolicyDuringSupplies && Core.CheckInventory(rPDSuni))
-                    Core.KillMonster("tercessuinotlim", "m1", "Right", "Dark Makai", "Dark Makai Rune");
-
                 Core.KillEscherion(item, quant, log: false);
 
                 if (item != "Voucher of Nulgath" && sellMemVoucher && Core.CheckInventory("Voucher of Nulgath") && !voucherNeeded)
                 {
                     Bot.Drops.Pickup("Voucher of Nulgath");
                     Core.SellItem("Voucher of Nulgath", all: true);
-                    Bot.Wait.ForItemSell(40);
-                }
-
-                if (Bot.Inventory.IsMaxStack(item ?? ""))
-                {
-                    Core.Logger($"Max-Stack for {item ?? ""} has been reached ({Bot.Inventory.GetItem(item ?? "")?.MaxStack})");
-                    break;
+                    Bot.Wait.ForItemSell();
                 }
             }
-
-            Core.CancelRegisteredQuests();
-
         }
+
+        Core.CancelRegisteredQuests();
     }
 
     /// <summary>

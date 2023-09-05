@@ -15,7 +15,7 @@ public class SuppliesToSpinTheWheelofChance
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.BankingBlackList.AddRange(Nation.bagDrops[..^11]);
+        Core.BankingBlackList.AddRange(Nation.SuppliesRewards);
         Core.SetOptions();
 
         Nation.Supplies();

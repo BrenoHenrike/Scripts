@@ -38,7 +38,6 @@ public class ArmyLR
     public bool DontPreconfigure = true;
     public List<IOption> Options = new()
     {
-        new Option<bool>("sellToSync", "Sell to Sync", "Sell items to make sure the army stays syncronized.\nIf off, there is a higher chance your army might desyncornize", false),
         sArmy.player1,
         sArmy.player2,
         sArmy.player3,
@@ -102,12 +101,12 @@ public class ArmyLR
         Core.BankingBlackList.AddRange(LRMaterials.Concat(LF1).Concat(LF2).Concat(LF3).Concat(legionMedals));
         Core.SetOptions();
 
-        LR(Bot.Config!.Get<bool>("sellToSync"));
+        LR();
 
         Core.SetOptions(false);
     }
 
-    public void LR(bool sellToSYnc = true)
+    public void LR()
     {
         Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
 
@@ -118,7 +117,6 @@ public class ArmyLR
         Seraph.SeraphicWar_Questline();
         CruxShip.StoryLine();
         DarkCasterCheck();
-        Farm.EvilREP();
         /*
         ********************************************************************************
         ********************************PREFARM ZONE************************************
@@ -126,16 +124,22 @@ public class ArmyLR
         */
         /*Step 1: Evil Rank 10*/
         ArmyEvilGoodRepMax();
+        Army.waitForParty("whitemap");
         /*Step 2: Hooded Legion Cowl funds and some change for enhancement costs*/
         ArmyGoldFarm(5500000);
+        Army.waitForParty("whitemap");
         /*Step 3: 3000 Dage Favor*/
         ArmyDageFavor();
+        Army.waitForParty("whitemap");
         /*Step 4: 10 Emblem of Dage*/
         ArmyEmblemOfDage(10);
+        Army.waitForParty("whitemap");
         /*Step 5: 300 Diamond Token of Dage*/
         ArmyDiamondTokenOfDage();
+        Army.waitForParty("whitemap");
         /*Step 6: 600 Dark Token*/
         ArmyDarkTokenOfDage();
+        Army.waitForParty("whitemap");
         /*
         ********************************************************************************
         **********************************FINISH****************************************
@@ -153,7 +157,7 @@ public class ArmyLR
 
     public void ArmyLF1(int quant = 20)
     {
-        if (Core.CheckInventory("Revenant's Spellscroll", quant) && !Bot.Config!.Get<bool>("sellToSync"))
+        if (Core.CheckInventory("Revenant's Spellscroll", quant))
             return;
 
         Core.AddDrop("Legion Token");
@@ -177,7 +181,7 @@ public class ArmyLR
 
     public void ArmyFL2(int quant = 6)
     {
-        if (Core.CheckInventory("Conquest Wreath", quant) && !Bot.Config!.Get<bool>("sellToSync"))
+        if (Core.CheckInventory("Conquest Wreath", quant))
             return;
 
         Core.AddDrop(LF2);
@@ -189,34 +193,24 @@ public class ArmyLR
         while (!Bot.ShouldExit && !Core.CheckInventory("Conquest Wreath", quant))
         {
             ArmyHunt("doomvault", new[] { "Grim Soldier" }, "Grim Cohort Conquered", ClassType.Farm, false, 500);
-            Army.waitForParty("mummies");
 
             ArmyHunt("mummies", new[] { "Mummy" }, "Ancient Cohort Conquered", ClassType.Farm, false, 500);
-            Army.waitForParty("wrath");
 
             ArmyHunt("wrath", new[] { "Undead Pirate", "Mutineer", "Dark Fire", "Fishbones" }, "Pirate Cohort Conquered", ClassType.Farm, false, 500);
-            Army.waitForParty("doomwar");
 
             ArmyHunt("doomwar", new[] { "Zombie", "Zombie Knight" }, "Battleon Cohort Conquered", ClassType.Farm, false, 500);
-            Army.waitForParty("overworld");
 
             ArmyHunt("overworld", new[] { "Undead Minion", "Undead Mage", "Undead Bruiser" }, "Mirror Cohort Conquered", ClassType.Farm, false, 500);
-            Army.waitForParty("deathpits");
 
             ArmyHunt("deathpits", new[] { "Ghastly Darkblood", "Rotting Darkblood", "Sundered Darkblood" }, "Darkblood Cohort Conquered", ClassType.Farm, false, 500);
-            Army.waitForParty("maxius");
 
             ArmyHunt("maxius", new[] { "Ghoul Minion", "Vampire Minion" }, "Vampire Cohort Conquered", ClassType.Farm, false, 500);
-            Army.waitForParty("curseshore");
 
             ArmyHunt("curseshore", new[] { "Escaped Ghostly Zardman", "Escaped Wendighost", "Escaped Dai Tenghost" }, "Spirit Cohort Conquered", ClassType.Farm, false, 500);
-            Army.waitForParty("dragonbone");
 
             ArmyHunt("dragonbone", new[] { "Bone Dragonling", "Dark Fire", }, "Dragon Cohort Conquered", ClassType.Farm, false, 500);
-            Army.waitForParty("doomwood");
 
             ArmyHunt("doomwood", new[] { "Doomwood Soldier", "Doomwood Bonemuncher", "Doomwood Ectomancer", "Undead Paladin", "Doomwood Treeant" }, "Doomwood Cohort Conquered", ClassType.Farm, false, 500);
-            Army.waitForParty("doomvault", "Conquest Wreath");
 
             Bot.Wait.ForPickup("Conquest Wreath");
         }
@@ -225,7 +219,7 @@ public class ArmyLR
 
     public void ArmyLF3(int quant = 10)
     {
-        if (Core.CheckInventory("Exalted Crown", quant) && !Bot.Config!.Get<bool>("sellToSync"))
+        if (Core.CheckInventory("Exalted Crown", quant))
             return;
 
         Core.FarmingLogger("Exalted Crown", quant);
@@ -246,9 +240,7 @@ public class ArmyLR
     public void ArmyEvilGoodRepMax(int rank = 10)
     {
         ArmyEvilGoodRank4();
-        Army.waitForParty("whitemap");
         ArmyEvilGoodRankMax();
-        Army.waitForParty("whitemap");
     }
 
     public void ArmyEvilGoodRank4()
@@ -262,7 +254,6 @@ public class ArmyLR
             ArmyHunt("swordhavenbridge", new[] { "Slime" }, "Slime in a Jar", ClassType.Farm, true, 6);
         Core.CancelRegisteredQuests();
         Farm.ToggleBoost(BoostType.Reputation, false);
-        Army.waitForParty("whitemap");
     }
 
     public void ArmyEvilGoodRankMax()
@@ -276,7 +267,6 @@ public class ArmyLR
             ArmyHunt("castleundead", new[] { "Skeletal Viking", "Skeletal Warrior" }, "Replacement Tibia", ClassType.Farm, true, 6);
         Core.CancelRegisteredQuests();
         Farm.ToggleBoost(BoostType.Reputation, false);
-        Army.waitForParty("whitemap");
     }
 
     public void ArmyGoldFarm(int quant = 100000000)
@@ -292,21 +282,19 @@ public class ArmyLR
         Farm.ToggleBoost(BoostType.Gold, false);
         Core.CancelRegisteredQuests();
         Core.TrashCan("Nation Defender Medal");
-        Army.waitForParty("whitemap");
     }
 
     public void ArmyDageFavor(int quant = 3000)
     {
-        if (Core.CheckInventory("Dage's Favor", quant) && !Bot.Config!.Get<bool>("sellToSync"))
+        if (Core.CheckInventory("Dage's Favor", quant))
             return;
         while (!Bot.ShouldExit && !Core.CheckInventory("Dage's Favor", quant))
             ArmyHunt("evilwarnul", new[] { "Skeletal Warrior", "Skull Warrior" }, "Dage's Favor", ClassType.Farm, false, quant);
-        Army.waitForParty("whitemap");
     }
 
     public void ArmyEmblemOfDage(int quant = 500)
     {
-        if (Core.CheckInventory("Emblem of Dage", quant) && !Bot.Config!.Get<bool>("sellToSync"))
+        if (Core.CheckInventory("Emblem of Dage", quant))
             return;
 
         Core.AddDrop("Emblem of Dage");
@@ -321,12 +309,11 @@ public class ArmyLR
             ArmyHunt("shadowblast", new[] { "Minotaurofwar", "Carnage", "CaesarisTheDark" }, "Gem of Mastery", ClassType.Farm);
         }
         Core.CancelRegisteredQuests();
-        Army.waitForParty("whitemap");
     }
 
     public void ArmyDiamondTokenOfDage(int quant = 300)
     {
-        if (Core.CheckInventory("Diamond Token of Dage", quant) && !Bot.Config!.Get<bool>("sellToSync"))
+        if (Core.CheckInventory("Diamond Token of Dage", quant))
             return;
 
         ArmyLTs(50);
@@ -359,12 +346,11 @@ public class ArmyLR
             Army.waitForParty("tercessuinotlim");
         }
         Core.CancelRegisteredQuests();
-        Army.waitForParty("whitemap");
     }
 
     public void ArmyDarkTokenOfDage(int quant = 600)
     {
-        if (Core.CheckInventory("Dark Token", quant) && !Bot.Config!.Get<bool>("sellToSync"))
+        if (Core.CheckInventory("Dark Token", quant))
             return;
 
         Core.FarmingLogger("Dark Token", quant);
@@ -374,29 +360,24 @@ public class ArmyLR
         while (!Bot.ShouldExit && !Core.CheckInventory("Dark Token", quant))
             ArmyHunt("seraphicwardage", new[] { "Seraphic Commander, Seraphic Soldier" }, "Seraphic Commanders Slain", ClassType.Farm, true, 6);
         Core.CancelRegisteredQuests();
-        Army.waitForParty("whitemap");
     }
 
     public void ArmyLTs(int quant = 25000)
     {
-        if (Core.CheckInventory("Legion Token", quant) && !Bot.Config!.Get<bool>("sellToSync"))
+        if (Core.CheckInventory("Legion Token", quant))
             return;
 
         //Adv.BestGear(RacialGearBoost.Human);
         Core.RegisterQuests(4849);
         while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
-            ArmyHuntNoSell("dreadrock", new[] { "Fallen Hero", "Hollow Wraith", "Legion Sentinel", "Shadowknight", "Void Mercenary" }, "Legion Token", ClassType.Farm, false, quant);
+            ArmyHunt("dreadrock", new[] { "Fallen Hero", "Hollow Wraith", "Legion Sentinel", "Shadowknight", "Void Mercenary" }, "Legion Token", ClassType.Farm, false, quant);
         Core.CancelRegisteredQuests();
-        Army.waitForParty("whitemap");
     }
 
     void ArmyHunt(string map, string[] monsters, string item, ClassType classType, bool isTemp = false, int quant = 1)
     {
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
-
-        if (Bot.Config!.Get<bool>("sellToSync"))
-            Army.SellToSync(item, quant);
 
         Core.AddDrop(item);
 
@@ -416,23 +397,6 @@ public class ArmyLR
             Army.AggroMonStart("tercessuinotlim");
         }
         else Army.SmartAggroMonStart(map, monsters);
-
-        while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
-            Bot.Combat.Attack("*");
-
-        Army.AggroMonStop(true);
-        Core.JumpWait();
-    }
-
-    void ArmyHuntNoSell(string map, string[] monsters, string item, ClassType classType, bool isTemp = false, int quant = 1)
-    {
-        Core.PrivateRooms = true;
-        Core.PrivateRoomNumber = Army.getRoomNr();
-
-        Core.AddDrop(item);
-        Core.FarmingLogger(item, quant);
-
-        Army.SmartAggroMonStart(map, monsters);
 
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
             Bot.Combat.Attack("*");
@@ -472,7 +436,10 @@ public class ArmyLR
             }
         }
         if (!hasDarkCaster)
+        {
+            ArmyLTs(2000);
             ILDC.GetILDC(false);
+        }
     }
 
     void PlayerAFK()
@@ -481,5 +448,8 @@ public class ArmyLR
         Bot.Sleep(1500);
         Bot.Send.Packet("%xt%zm%afk%1%false%");
     }
+
+
+
 
 }
