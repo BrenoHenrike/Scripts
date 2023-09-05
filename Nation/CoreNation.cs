@@ -58,15 +58,15 @@ public class CoreNation
         "Unidentified 34"
     };
 
-    public string[] SuppliesRewards =
+    public string[] SuppliesRewards = 
     {
     "Tainted Gem",
     "Dark Crystal Shard",
     "Diamond of Nulgath",
     "Voucher of Nulgath",
     "Voucher of Nulgath (non-mem)",
-    "Random Weapon of Nulgath",
-    "Gem of Nulgath"
+    "Gem of Nulgath",
+    "Unidentified 10"
     };
 
     /// <summary>
