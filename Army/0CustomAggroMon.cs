@@ -181,7 +181,7 @@ public class CustomAggroMon
 
         void GenerateFile()
         {
-            if (!Bot.Config.Get<bool>("genFile"))
+            if (!Bot.Config!.Get<bool>("genFile"))
                 return;
 
             InputDialogViewModel diag = new("Name the bot", "What is the name you wish to give the bot. (case-sensitive)", false);

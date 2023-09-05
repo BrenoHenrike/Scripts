@@ -41,7 +41,7 @@ public class HBCE2
     {
         Core.SetOptions();
 
-        HBCE.InTheBeastsShadow(Bot.Config.Get<bool>("getAll"));
+        HBCE.InTheBeastsShadow(Bot.Config!.Get<bool>("getAll"));
 
         Core.SetOptions(false);
     }

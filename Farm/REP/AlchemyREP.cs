@@ -37,7 +37,7 @@ public class AlchemyREP
         Adv.BestGear(GenericGearBoost.rep);
         Adv.BestGear(GenericGearBoost.rep);
 
-        Farm.AlchemyREP(10, Bot.Config.Get<bool>("goldMethod"));
+        Farm.AlchemyREP(10, Bot.Config!.Get<bool>("goldMethod"));
 
         Core.SetOptions(false);
     }

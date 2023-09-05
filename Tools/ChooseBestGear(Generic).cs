@@ -29,7 +29,7 @@ public class ChooseGenericBestGear
     {
         Core.SetOptions();
 
-        ChooseItem(Bot.Config!.Get<GenericGearBoost>("GenericGearBoost"), Bot.Config.Get<bool>("EnhanceEquipment"));
+        ChooseItem(Bot.Config!.Get<GenericGearBoost>("GenericGearBoost"), Bot.Config!.Get<bool>("EnhanceEquipment"));
 
         Core.SetOptions(false);
     }

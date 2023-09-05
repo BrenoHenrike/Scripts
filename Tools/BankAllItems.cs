@@ -61,7 +61,7 @@ public class BankAllItems
                 }
                 continue;
             }
-            if (Bot.Config.Get<bool>("BanknonAc") && !item.Coins)
+            if (Bot.Config!.Get<bool>("BanknonAc") && !item.Coins)
                 Core.ToBank(item.Name);
             else if (item.Coins)
                 Core.ToBank(item.Name);
@@ -86,7 +86,7 @@ public class BankAllItems
                 }
                 continue;
             }
-            if (Bot.Config.Get<bool>("BanknonAc") && !item.Coins)
+            if (Bot.Config!.Get<bool>("BanknonAc") && !item.Coins)
                 Core.ToHouseBank(item.Name);
             else if (item.Coins)
                 Core.ToHouseBank(item.Name);

@@ -25,7 +25,7 @@ public class CelestialPirateCommander
     {
         Core.SetOptions();
 
-        GetCPC(Bot.Config.Get<bool>("PetOnly"));
+        GetCPC(Bot.Config!.Get<bool>("PetOnly"));
 
         Core.SetOptions(false);
     }

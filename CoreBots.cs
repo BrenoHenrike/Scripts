@@ -241,7 +241,7 @@ public class CoreBots
                     // Settin Loaded Quest Limiter
                     Bot.Handlers.RegisterHandler(3000, b =>
                     {
-                        if (Bot.Quests.Tree.Count() > LoadedQuestLimit)
+                        if (Bot.Quests.Tree.Count > LoadedQuestLimit)
                         {
                             Bot.Flash.SetGameObject("world.questTree", new ExpandoObject());
                         }
@@ -418,13 +418,13 @@ public class CoreBots
 
         string eSlice = e.Message + "\n" + e.InnerException;
         List<string> logs = Ioc.Default.GetRequiredService<ILogService>().GetLogs(LogType.Script);
-        logs = logs.Skip(logs.Count() > 5 ? (logs.Count() - 5) : logs.Count()).ToList();
+        logs = logs.Skip(logs.Count > 5 ? (logs.Count - 5) : logs.Count).ToList();
         if (Bot.ShowMessageBox("A crash has been detected, please fill in the report form (prefilled):\n\n" + eSlice,
                                "Script Crashed", "Open Form", "Close Window").Text == "Open Form")
         {
             string url = "\"https://docs.google.com/forms/d/e/1FAIpQLSeI_S99Q7BSKoUCY2O6o04KXF1Yh2uZtLp0ykVKsFD1bwAXUg/viewform?usp=pp_url&" +
                 "entry.2118425091=Bug+Report&" +
-               $"entry.290078150={Bot.Manager.LoadedScript.Split("Scripts").Last().Replace('/', '\\').Substring(1).Replace(".cs", "")}&" +
+               $"entry.290078150={Bot.Manager.LoadedScript.Split("Scripts").Last().Replace('/', '\\')[1..].Replace(".cs", "")}&" +
                 "entry.1803231651=It+stopped+at+the+wrong+time+(crash)&" +
                $"entry.1954840906={logs.Join("%0A")}&" +
                $"entry.285894207={eSlice}&\"";
@@ -602,8 +602,8 @@ public class CoreBots
             if (CheckInventory(s, toInv: false))
                 count++;
         }
-        if (Bot.Inventory.FreeSlots < (items.Count() - count))
-            Logger($"Not enough free slots, please clear {(items.Count() - count)} slot" + ((items.Count() - count) > 1 ? "s" : ""), messageBox: true, stopBot: true);
+        if (Bot.Inventory.FreeSlots < (items.Length - count))
+            Logger($"Not enough free slots, please clear {(items.Length - count)} slot" + ((items.Length - count) > 1 ? "s" : ""), messageBox: true, stopBot: true);
     }
 
     /// <summary>
@@ -1197,7 +1197,7 @@ public class CoreBots
 
         item.ItemID = ID;
         item.sName = name;
-        item.sDesc = description == null ? "A Ghost Item that mimics Item ID: " + ID : description;
+        item.sDesc = description ?? "A Ghost Item that mimics Item ID: " + ID;
 
         item.iLvl = level;
         if (quantity != 0) // This allows for ghost items without taking up slots, but it'll not work for bypasses
@@ -1557,7 +1557,7 @@ public class CoreBots
     {
         var q = EnsureLoad(questID);
 
-        int turnIns = 0;
+        int turnIns;
         if (q.Once || !String.IsNullOrEmpty(q.Field))
             turnIns = 1;
         else
@@ -1616,7 +1616,7 @@ public class CoreBots
 
         List<int> missing = questIDs.Where(x => !quests.Any(y => y.ID == x)).ToList();
         Bot.Sleep(ActionDelay);
-        for (int i = 0; i < missing.Count; i = i + 30)
+        for (int i = 0; i < missing.Count; i += 30)
         {
             Bot.Quests.Load(missing.ToArray()[i..(missing.Count > i ? missing.Count : i + 30)]);
             Bot.Sleep(1500);
@@ -1734,7 +1734,7 @@ public class CoreBots
         List<string> toReturn = new();
         foreach (var q in EnsureLoad(questIDs))
         {
-            if (q.Rewards == null || q.Rewards.Count() == 0)
+            if (q.Rewards == null || q.Rewards.Count == 0)
                 continue;
             toReturn.AddRange(q.Rewards.Select(i => i.Name));
         }
@@ -2008,7 +2008,7 @@ public class CoreBots
     /// <param name="item">Item name</param>
     /// <param name="quant">Desired quantity</param>
     /// <param name="isTemp">Whether the item is temporary</param>
-    public void KillVath(string? item = null, int quant = 1, bool isTemp = false, bool log = true, bool publicRoom = false)
+    public void KillVath(string? item = null, int quant = 1, bool isTemp = false, bool log = true)
     {
         if (item != null && (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
             return;
@@ -2049,7 +2049,7 @@ public class CoreBots
     /// <param name="item">Item name</param>
     /// <param name="quant">Desired quantity</param>
     /// <param name="isTemp">Whether the item is temporary</param>
-    public void KillKitsune(string? item = null, int quant = 1, bool isTemp = false, bool log = true, bool publicRoom = false)
+    public void KillKitsune(string? item = null, int quant = 1, bool isTemp = false, bool log = true)
     {
         if (item != null && (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
             return;
@@ -2112,7 +2112,7 @@ public class CoreBots
     /// <param name="quant">Desired quantity</param>
     /// <param name="isTemp">Whether the item is temporary</param>
     /// <param name="Phase">Which phase of the boss to kill>
-    public void KillTrigoras(string item, int quant = 1, int Phase = 1, bool isTemp = false, bool log = true, bool publicRoom = false)
+    public void KillTrigoras(string item, int quant = 1, int Phase = 1, bool isTemp = false)
     {
         if (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant))
             return;
@@ -2130,55 +2130,6 @@ public class CoreBots
         JumpWait();
     }
 
-    // /// <summary>
-    // /// Kill DoomKitten for the desired item
-    // /// </summary>
-    // /// <param name="item">Item name</param>
-    // /// <param name="quant">Desired quantity</param>
-    // /// <param name="isTemp">Whether the item is temporary</param>
-    // public void KillDoomKitten(string item, int quant = 1, bool isTemp = false, bool log = true, bool publicRoom = false)
-    // {
-    //     if (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant))
-    //         return;
-
-    //     string[] DOTClasses = {
-    //         "ShadowStalker of Time",
-    //         "ShadowWeaver of Time",
-    //         "ShadowWalker of Time",
-    //         "Infinity Knight",
-    //         "Interstellar Knight",
-    //         "Void Highlord",
-    //         "Dragon of Time",
-    //         "Timeless Dark Caster",
-    //         "Frostval Barbarian",
-    //         "Blaze Binder",
-    //         "DeathKnight",
-    //         "DragonSoul Shinobi",
-    //         "Shadow Dragon Shinobi",
-    //         "Legion Revenant",
-    //     };
-
-    //     if (!DOTClasses.Any(c => CheckInventory(c)))
-    //     {
-    //         Bot.Log("--------------------------------");
-    //         Logger("Possible classes for DoomKitten:");
-    //         DOTClasses.ForEach(l => Logger(l));
-    //         Bot.Log("--------------------------------");
-
-    //         Logger($"\'Damage over Time\' class / VHL not found. See the logs to see suggestions. Please get one and run the bot agian. Stopping.", messageBox: true, stopBot: true);
-    //     }
-
-    //     if (CheckInventory("Shadow Dragon Shinobi") || CheckInventory("DragonSoul Shinobi"))
-    //     {
-    //         Logger("Due to the nature of this class and the hit range of the kitten, this is basicly RNG gl!");
-    //         Equip(CheckInventory("Shadow Dragon Shinobi") ? "Shadow Dragon Shinobi" : "DragonSoul Shinobi");
-    //         //tested Skillset is working properly and can get a kill.
-    //         Bot.Skills.StartAdvanced("4H>50 | 3M<70S | 2H<50 M>70S | 1H>50", 150);
-    //     }
-    //     else Bot.Skills.StartAdvanced(DOTClasses.ToList().First(c => Bot.Inventory.Contains(c)), true, ClassUseMode.Base);
-    //     HuntMonster("doomkitten", "Doomkitten", item, quant, isTemp, log, publicRoom);
-    // }
-
 
     public void KillDoomKitten(string item, int quant = 1, bool isTemp = false, bool log = true, bool publicRoom = false)
     {
@@ -2186,8 +2137,8 @@ public class CoreBots
         if (hasItem)
             return;
 
-        List<string> DOTClasses = new List<string>
-    {
+        List<string> DOTClasses = new()
+        {
         "ShadowStalker of Time",
         "ShadowWeaver of Time",
         "ShadowWalker of Time",
@@ -2251,7 +2202,6 @@ public class CoreBots
     }
 
 
-
     /// <summary>
     /// Kills Xiang or Ultra Xiang to obtain the desired item.
     /// </summary>
@@ -2261,7 +2211,7 @@ public class CoreBots
     /// <param name="isTemp">Specifies whether the item is temporary.</param>
     /// <param name="log">Specifies whether to log the process.</param>
     /// <param name="publicRoom">Specifies whether to use a public room for the hunt.</param>
-    public void KillXiang(string item, int quant = 1, bool ultra = false, bool isTemp = false, bool log = true, bool publicRoom = false)
+    public void KillXiang(string item, int quant = 1, bool ultra = false, bool isTemp = false, bool log = true)
     {
         if (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant))
             return;
@@ -2275,7 +2225,7 @@ public class CoreBots
 
         JumpWait();
 
-        KillMonster("mirrorportal", ultra ? "r6" : "r4", "Right", ultra ? "Ultra Xiang" : "Chaos Lord Xiang", item, quant, isTemp, log, publicRoom);
+        KillMonster("mirrorportal", ultra ? "r6" : "r4", "Right", ultra ? "Ultra Xiang" : "Chaos Lord Xiang", item, quant, isTemp, log);
     }
 
 
@@ -2400,7 +2350,7 @@ public class CoreBots
 
     public void DebugLogger(object _this, string? marker = null, [CallerMemberName] string? caller = null, [CallerLineNumber] int lineNumber = 0)
     {
-        if (!DL_Enabled || ((DL_MarkerFilter == null ? false : DL_MarkerFilter != marker) || (DL_CallerFilter == null ? false : DL_CallerFilter != caller)))
+        if (!DL_Enabled || ((DL_MarkerFilter != null && DL_MarkerFilter != marker) || (DL_CallerFilter != null && DL_CallerFilter != caller)))
             return;
 
         string _class = _this.GetType().ToString();
@@ -2558,7 +2508,7 @@ public class CoreBots
         if (Bot.Options.ReloginServer == null || !Bot.Servers.EnsureRelogin(Bot.Options.ReloginServer))
         {
             var servers = Bot.Servers.GetServers(true).Result;
-            if (servers.Count() == 0)
+            if (servers.Count == 0)
                 Logger("Failed to relogin: could not fetch server details" + (Bot.Options.ReloginServer == null ? '.' : " or the find the server you've set in Options > Game."), messageBox: true, stopBot: true);
             Bot.Servers.EnsureRelogin(servers.First(s => s.Name != "Class Test Realm").Name);
         }
@@ -2815,9 +2765,8 @@ public class CoreBots
     }
 
     public void SavedState(bool on = true)
-    {
+    { }
 
-    }
 
     public int[] FromTo(int from, int to)
     {
@@ -2870,7 +2819,7 @@ public class CoreBots
         ).Select(i => i.ID).ToArray());
     }
 
-    public Option<bool> SkipOptions = new Option<bool>("SkipOption", "Skip this window next time", "You will be able to return to this screen via [Scripts] -> [Edit Script Options] if you wish to change anything.", false);
+    public Option<bool> SkipOptions = new("SkipOption", "Skip this window next time", "You will be able to return to this screen via [Scripts] -> [Edit Script Options] if you wish to change anything.", false);
     public bool DontPreconfigure = true;
 
     public const string reinstallCleanFlash = ". If the issue persists, try the following things in the order they are here:\n - Restart the client.\n - Restart your computer.\n - Reinstall CleanFlash";
@@ -3486,7 +3435,7 @@ public class CoreBots
         {
             Bot.Map.GetMapItem(itemID);
             Bot.Sleep(1000);
-            if (!found && Bot.TempInv.Items.Except(tempItems).Count() > 0)
+            if (!found && Bot.TempInv.Items.Except(tempItems).Any())
             {
                 newItem = Bot.TempInv.Items.Except(tempItems).First();
                 found = true;
@@ -3885,7 +3834,7 @@ public class CoreBots
             return false;
 
         var files = Directory.GetFiles(ButlerLogDir);
-        return files.Count() > 0 && files.Any(x => x.Contains("~!") && (x.Split("~!").Last() == (Username().ToLower() + ".txt")));
+        return files.Length > 0 && files.Any(x => x.Contains("~!") && (x.Split("~!").Last() == (Username().ToLower() + ".txt")));
     }
 
     public void WriteFile(string path, IEnumerable<string> content)
@@ -4053,7 +4002,7 @@ public class CoreBots
             // If allowed, send scriptNameData
             if (scriptNameData)
             {
-                string botPath = Bot.Manager.LoadedScript.Split("Scripts").Last().Replace('/', '\\').Substring(1);
+                string botPath = Bot.Manager.LoadedScript.Split("Scripts").Last().Replace('/', '\\')[1..];
 
                 if (botPath.StartsWith("Nulgath\\"))
                     botPath.Replace("Nulgath\\", "Nation\\");
@@ -4286,7 +4235,7 @@ public class CoreBots
             LoadedQuestLimit = _LoadedQuestLimit;
 
         //Class Equipment
-        List<string> _SoloGear = new List<string>();
+        List<string> _SoloGear = new();
         if (CBOString("Helm1Select", out string _Helm1))
             _SoloGear.Add(_Helm1);
         if (CBOString("Armor1Select", out string _Armor1))
@@ -4299,10 +4248,10 @@ public class CoreBots
             _SoloGear.Add(_Pet1);
         if (CBOString("GroundItem1Select", out string _GroundItem1))
             _SoloGear.Add(_GroundItem1);
-        if (_SoloGear.Count() > 0)
+        if (_SoloGear.Count > 0)
             SoloGear = _SoloGear.ToArray();
 
-        List<string> _FarmGear = new List<string>();
+        List<string> _FarmGear = new();
         if (CBOString("Helm2Select", out string _Helm2))
             _FarmGear.Add(_Helm2);
         if (CBOString("Armor2Select", out string _Armor2))
@@ -4315,7 +4264,7 @@ public class CoreBots
             _FarmGear.Add(_Pet2);
         if (CBOString("GroundItem2Select", out string _GroundItem2))
             _FarmGear.Add(_GroundItem2);
-        if (_FarmGear.Count() > 0)
+        if (_FarmGear.Count > 0)
             FarmGear = _FarmGear.ToArray();
 
         //Best set order modification

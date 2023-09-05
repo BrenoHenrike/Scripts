@@ -139,7 +139,7 @@ public class ArmySmartVoidAuras
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
 
-        if (Bot.Config.Get<bool>("sellToSync"))
+        if (Bot.Config!.Get<bool>("sellToSync"))
             Army.SellToSync(item, quant);
 
         Core.AddDrop(item);

@@ -27,7 +27,7 @@ public class ArmyWheelofDoom
     {
         Core.SetOptions();
 
-        WheelOfDoom(Bot.Config.Get<bool>("randomServers"));
+        WheelOfDoom(Bot.Config!.Get<bool>("randomServers"));
 
         Core.SetOptions(false);
     }

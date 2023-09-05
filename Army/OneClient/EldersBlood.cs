@@ -27,7 +27,7 @@ public class ArmyEldersBlood
     {
         Core.SetOptions();
 
-        EldersBlood(Bot.Config.Get<bool>("randomServers"));
+        EldersBlood(Bot.Config!.Get<bool>("randomServers"));
 
         Core.SetOptions(false);
     }

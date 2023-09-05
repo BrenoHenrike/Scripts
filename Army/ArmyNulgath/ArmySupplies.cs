@@ -70,7 +70,7 @@ public class SuppliesWheelArmy
 
         foreach (ItemBase item in RewardOptions1.Concat(RewardOptions2).ToArray())
         {
-            if (Bot.Config.Get<bool>("SwindlesReturnDuring"))
+            if (Bot.Config!.Get<bool>("SwindlesReturnDuring"))
             {
                 Core.RegisterQuests(2857, 7551);
                 Core.FarmingLogger(item.Name, item.MaxStack);

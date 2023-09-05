@@ -30,7 +30,7 @@ public class LavarockForge
     {
         Core.SetOptions();
 
-        PreReqs(Bot.Config!.Get<bool>("FarmAwe"), Bot.Config.Get<bool>("FarmBLOD"), Bot.Config.Get<bool>("FarmBSOD"));
+        PreReqs(Bot.Config!.Get<bool>("FarmAwe"), Bot.Config!.Get<bool>("FarmBLOD"), Bot.Config!.Get<bool>("FarmBSOD"));
         Core.SetOptions(false);
     }
 

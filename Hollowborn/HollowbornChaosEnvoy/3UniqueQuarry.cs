@@ -41,7 +41,7 @@ public class HBCE3
     {
         Core.SetOptions();
 
-        HBCE.UniqueQuarry(Bot.Config.Get<bool>("getAll"));
+        HBCE.UniqueQuarry(Bot.Config!.Get<bool>("getAll"));
 
         Core.SetOptions(false);
     }

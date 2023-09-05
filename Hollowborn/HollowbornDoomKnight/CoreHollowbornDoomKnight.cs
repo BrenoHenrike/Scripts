@@ -84,7 +84,7 @@ public class CoreHollowbornDoomKnight
             Core.CheckInventory(ADKFallsItems, toInv: false) && Core.CheckInventory(ADKReturnsItems, toInv: false))
             return;
 
-        if (Bot.Config.Get<bool>("PreFarm"))
+        if (Bot.Config!.Get<bool>("PreFarm"))
         {
             ADK();
             ADKRises();

@@ -41,7 +41,7 @@ public class HBCE1
     {
         Core.SetOptions();
 
-        HBCE.StirringDiscord(Bot.Config.Get<bool>("getAll"));
+        HBCE.StirringDiscord(Bot.Config!.Get<bool>("getAll"));
 
         Core.SetOptions(false);
     }

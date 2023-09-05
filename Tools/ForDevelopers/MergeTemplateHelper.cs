@@ -91,7 +91,7 @@ public class MergeTemplateHelper
     {
         string? map = Bot.Config!.Get<string>("mapName")?.ToLower();
         int shopID = Bot.Config.Get<int>("shopID");
-        bool genFile = Bot.Config.Get<bool>("genFile");
+        bool genFile = Bot.Config!.Get<bool>("genFile");
 
         if (shopID == 0 || String.IsNullOrEmpty(map) || String.IsNullOrWhiteSpace(map))
         {

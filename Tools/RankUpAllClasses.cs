@@ -27,7 +27,7 @@ public class RankUpAll
     {
         Core.SetOptions();
 
-        RankUpAllClasses(Bot.Config.Get<bool>("inclBank"));
+        RankUpAllClasses(Bot.Config!.Get<bool>("inclBank"));
 
         Core.SetOptions(false);
     }

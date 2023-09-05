@@ -54,8 +54,8 @@ public class CoreArchMage
     public void GetAM(bool rankUpClass = true)
     {
         bool cosmetics = Bot.Config!.Get<bool>("cosmetics");
-        bool lumina = Bot.Config.Get<bool>("lumina_elementi");
-        army = Bot.Config.Get<bool>("army");
+        bool lumina = Bot.Config!.Get<bool>("lumina_elementi");
+        army = Bot.Config!.Get<bool>("army");
 
         if (Core.CheckInventory("ArchMage", toInv: false))
         {

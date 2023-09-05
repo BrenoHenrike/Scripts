@@ -168,11 +168,11 @@ public class CoreAdvanced
         {
             if (Core.CheckInventory(item.ID, toInv: false) ||
                 miscCatagories.Contains(item.Category) ||
-                (String.IsNullOrEmpty(buyOnlyThis) ? false : buyOnlyThis != item.Name) ||
+                (!String.IsNullOrEmpty(buyOnlyThis) && buyOnlyThis != item.Name) ||
                 (itemBlackList != null && itemBlackList.Any(b => b.ToLower() == item.Name.ToLower())))
                 continue;
 
-            if (Core.IsMember ? true : !item.Upgrade)
+            if (Core.IsMember || !item.Upgrade)
             {
                 if (mode == 3)
                 {

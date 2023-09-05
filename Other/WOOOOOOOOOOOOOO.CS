@@ -56,7 +56,7 @@ public class YeeaaahhBabbyyThaaatsWhatImTalkingAbout
             "Moist Water Bottle",
         };
 
-        string[] FocussedArray = Bot.Config.Get<bool>("AConly") ? WOOOOODropsAC : WOOOOODropsAC.Concat(WOOOOODropsNonAC).ToArray();
+        string[] FocussedArray = Bot.Config!.Get<bool>("AConly") ? WOOOOODropsAC : WOOOOODropsAC.Concat(WOOOOODropsNonAC).ToArray();
 
         Core.RegisterQuests(8497);
         while (!Bot.ShouldExit && !Core.CheckInventory(FocussedArray))

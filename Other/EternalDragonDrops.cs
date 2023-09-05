@@ -65,7 +65,7 @@ public class EternalDragonDrops
 
         Core.Logger("Starting to get drops");
         //Can't Solo section
-        if (!Bot.Config.Get<bool>("CanSolo"))
+        if (!Bot.Config!.Get<bool>("CanSolo"))
             while (!Bot.ShouldExit && !Core.CheckInventory(NonMemDrops))
                 Core.HuntMonster("deadlines", "Eternal Dragon", "*", isTemp: false, publicRoom: true);
         else

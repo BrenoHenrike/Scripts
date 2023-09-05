@@ -34,7 +34,7 @@ public class BlacksmithingREP
 
         Adv.BestGear(GenericGearBoost.dmgAll);
         Adv.BestGear(GenericGearBoost.rep);
-        Farm.BlacksmithingREP(10, Bot.Config!.Get<bool>("UseGold") ? true : false, Bot.Config.Get<bool>("UseGold") ? true : false);
+        Farm.BlacksmithingREP(10, Bot.Config!.Get<bool>("UseGold") ? true : false, Bot.Config!.Get<bool>("UseGold") ? true : false);
 
         Core.SetOptions(false);
     }

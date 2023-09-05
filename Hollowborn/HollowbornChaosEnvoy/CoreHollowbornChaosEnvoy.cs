@@ -226,7 +226,7 @@ public class CoreHollowbornChaosEnvoy
 
         Core.AddDrop(rewards);
         if (!Bot.Quests.IsUnlocked(9002))
-            WaveringIllusions(Bot.Config == null || Bot.Config.Get<bool>("getAll"));
+            WaveringIllusions(Bot.Config == null || Bot.Config!.Get<bool>("getAll"));
 
         Farm.Experience(95);
         ED.getSet();

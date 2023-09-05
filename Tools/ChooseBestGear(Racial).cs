@@ -28,7 +28,7 @@ public class ChooseRacialBestGear
     {
         Core.SetOptions();
 
-        ChooseItem(Bot.Config!.Get<RacialGearBoost>("RacialGearBoost"), Bot.Config.Get<bool>("EnhanceEquipment"));
+        ChooseItem(Bot.Config!.Get<RacialGearBoost>("RacialGearBoost"), Bot.Config!.Get<bool>("EnhanceEquipment"));
 
         Core.SetOptions(false);
     }

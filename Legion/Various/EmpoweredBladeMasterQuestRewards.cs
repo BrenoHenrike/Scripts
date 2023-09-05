@@ -59,7 +59,7 @@ public class EmpoweredBladeMaster
         Farm.Experience(95);
         Core.EquipClass(ClassType.Solo);
 
-        if (Bot.Config.Get<bool>("GetAllRewards"))
+        if (Bot.Config!.Get<bool>("GetAllRewards"))
             Core.RegisterQuests(8554);
         else Core.EnsureAccept(8554);
 
@@ -72,7 +72,7 @@ public class EmpoweredBladeMaster
 
             Legion.FarmLegionToken(15000);
             DageInsignia(30);
-            if (!Bot.Config.Get<bool>("GetAllRewards"))
+            if (!Bot.Config!.Get<bool>("GetAllRewards"))
             {
                 Core.EnsureComplete(8554, (int)Bot.Config.Get<rewards>("RewardSelect"));
                 return;

@@ -43,7 +43,7 @@ public class ArmyBlackSmithRep
         Core.BankingBlackList.AddRange(new[] { "Creature Shard", "Monster Trophy", "Hydra Scale Piece" });
 
         Core.OneTimeMessage("Urgent", "Please Make sure your goto is on in ingame settings so the buttlering system works properly [turn it back off after your done armying please.]", forcedMessageBox: true);
-        
+
         Core.SetOptions();
 
         Setup();
@@ -57,11 +57,17 @@ public class ArmyBlackSmithRep
         Core.RegisterQuests(8736);
         while (!Bot.ShouldExit && Farm.FactionRank("Blacksmithing") < 10)
         {
-            Core.EquipClass(ClassType.Solo);
-            Armykill("maul", new[] { "Creature Creation" }, "Creature Shard", isTemp: false, 1);
-            Armykill("towerofdoom", new[] { "Dread Klunk" }, "Monster Trophy", isTemp: false, 15);
             Core.EquipClass(ClassType.Farm);
             Armykill("hydrachallenge", new[] { "Hydra Head 75" }, "Hydra Scale Piece", isTemp: false, 75);
+            Army.waitForParty("maul");
+            
+            Core.EquipClass(ClassType.Solo);
+            Armykill("maul", new[] { "Creature Creation" }, "Creature Shard", isTemp: false, 1);
+            Army.waitForParty("towerofdoom");
+
+            Armykill("towerofdoom", new[] { "Dread Klunk" }, "Monster Trophy", isTemp: false, 15);
+            Army.waitForParty("hydrachallenge");
+           
         }
         Core.CancelRegisteredQuests();
     }
@@ -82,7 +88,6 @@ public class ArmyBlackSmithRep
         Core.EquipClass(ClassType.Farm);
         Core.FarmingLogger(item, quant);
 
-        Army.waitForParty(map, item);
         AggroSetup(map);
 
         foreach (string monster in monsters)
