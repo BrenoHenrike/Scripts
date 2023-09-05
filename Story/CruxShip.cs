@@ -35,8 +35,12 @@ public class CruxShip
         Story.KillQuest(4598, "CruxShip", "Shadow Locust");
 
         //Clear the Swarm 4599
-        Story.KillQuest(4599, "CruxShip", "Shadow Locust");
-        Story.MapItemQuest(4599, "CruxShip", 3901, 2);
+        if (!Story.QuestProgression(4599))
+        {
+            Core.EnsureAccept(4599);
+            Core.KillMonster("CruxShip", "r2", "Left", "Shadow Locust", "Locusts Defeated", 5);
+            Story.MapItemQuest(4599, "CruxShip", 3901, 2);
+        }
 
         //Act 1 Complete 4600
         Story.ChainQuest(4600);
@@ -60,10 +64,15 @@ public class CruxShip
         Story.KillQuest(4606, "CruxShip", "Shadow Locust");
 
         //The Plaguebringer Appears 4607
-        Story.KillQuest(4607, "CruxShip", new[] { "Shadow Locust", "Nokris Plaguebringer" });
+        if (!Story.QuestProgression(4607))
+        {
+            Core.EnsureAccept(4607);
+            Core.HuntMonster("CruxShip", "Nokris Plaguebringer", "Norkis Plaugebringer Defeated");
+            Core.KillMonster("CruxShip", "r2", "Left", "Shadow Locust", "Locusts Defeated", 3);
+            Core.EnsureComplete(4607);
+        }
 
-        //Battle to the Temple 4610
-        Story.KillQuest(4610, "CruxShip", new[] { "Treasure Hunter", "Mummy" });
+        Story.KillQuest(4610, "CruxShip", new[] { "Ancient Mummy", "Treasure Hunter" });
 
         //Treasure Hunter's Last Stand 4611
         Story.KillQuest(4611, "CruxShip", new[] { "Treasure Hunter", "Treasure Hunter Captain" });
@@ -83,7 +92,7 @@ public class CruxShip
         {
             Core.EquipClass(ClassType.Farm);
             Core.EnsureAccept(4616);
-            Core.HuntMonster("Mummies", "Mummy", "Mummy Defeated", 100, false);
+            Core.HuntMonster("Mummies", "Mummy", "Mummy Defeated", 100);
             Core.EnsureComplete(4616);
         }
 

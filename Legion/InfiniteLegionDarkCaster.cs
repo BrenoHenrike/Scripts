@@ -28,7 +28,11 @@ public class InfiniteLegionDC
     public void GetILDC(bool rankUpClass = true)
     {
         if (Core.CheckInventory("Infinite Legion Dark Caster"))
+        {
+            if (rankUpClass)
+                Adv.RankUpClass("Infinite Legion Dark Caster");
             return;
+        }
 
         Legion.FarmLegionToken(2000);
         Core.BuyItem("underworld", 238, "Infinite Legion Dark Caster");
