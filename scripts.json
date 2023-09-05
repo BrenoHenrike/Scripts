@@ -83,7 +83,7 @@
       "null"
     ],
     "path": "Legion/InfiniteLegionDarkCaster.cs",
-    "size": 984,
+    "size": 1097,
     "fileName": "InfiniteLegionDarkCaster.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/InfiniteLegionDarkCaster.cs"
   },
@@ -2476,7 +2476,7 @@
       "crux-ship"
     ],
     "path": "Story/CruxShip.cs",
-    "size": 2437,
+    "size": 2782,
     "fileName": "CruxShip.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/CruxShip.cs"
   },
@@ -7343,7 +7343,7 @@
       "seraphic-war"
     ],
     "path": "Story/Legion/SeraphicWar.cs",
-    "size": 1684,
+    "size": 1808,
     "fileName": "SeraphicWar.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Legion/SeraphicWar.cs"
   },
