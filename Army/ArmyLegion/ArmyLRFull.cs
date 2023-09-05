@@ -111,6 +111,8 @@ public class ArmyLR
     {
         Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
 
+        Bot.Events.PlayerAFK += PlayerAFK;
+
         Legion.JoinLegion();
         Legion.LegionRound4Medal();
         Seraph.SeraphicWar_Questline();
@@ -145,7 +147,8 @@ public class ArmyLR
         ArmyFL2();
         /*Step 10: LF3 and Finish*/
         ArmyLF3();
-        CoreLR.GetLR(true);
+        Adv.RankUpClass("Legion Revenant");
+        Bot.Events.PlayerAFK -= PlayerAFK;
     }
 
     public void ArmyLF1(int quant = 20)
@@ -161,7 +164,7 @@ public class ArmyLR
         Core.RegisterQuests(6897);
         while (!Bot.ShouldExit && !Core.CheckInventory("Revenant's Spellscroll", quant))
         {
-           //Adv.BestGear(RacialGearBoost.Undead);
+            //Adv.BestGear(RacialGearBoost.Undead);
             ArmyHunt("judgement", new[] { "Ultra Aeacus" }, "Aeacus Empowered", ClassType.Solo, false, 50);
             ArmyHunt("revenant", new[] { "Forgotten Soul" }, "Tethered Soul", ClassType.Farm, false, 300);
             ArmyHunt("shadowrealmpast", new[] { "Pure Shadowscythe, Shadow Guardian, Shadow Warrior" }, "Darkened Essence", ClassType.Farm, false, 500);
@@ -180,7 +183,7 @@ public class ArmyLR
         Core.AddDrop(LF2);
 
         Core.RegisterQuests(6898);
-       //Adv.BestGear(RacialGearBoost.Undead);
+        //Adv.BestGear(RacialGearBoost.Undead);
         Core.FarmingLogger("Conquest Wreath", quant);
 
         while (!Bot.ShouldExit && !Core.CheckInventory("Conquest Wreath", quant))
@@ -190,31 +193,31 @@ public class ArmyLR
 
             ArmyHunt("mummies", new[] { "Mummy" }, "Ancient Cohort Conquered", ClassType.Farm, false, 500);
             Army.waitForParty("wrath");
-            
+
             ArmyHunt("wrath", new[] { "Undead Pirate", "Mutineer", "Dark Fire", "Fishbones" }, "Pirate Cohort Conquered", ClassType.Farm, false, 500);
             Army.waitForParty("doomwar");
-            
+
             ArmyHunt("doomwar", new[] { "Zombie", "Zombie Knight" }, "Battleon Cohort Conquered", ClassType.Farm, false, 500);
             Army.waitForParty("overworld");
-            
+
             ArmyHunt("overworld", new[] { "Undead Minion", "Undead Mage", "Undead Bruiser" }, "Mirror Cohort Conquered", ClassType.Farm, false, 500);
             Army.waitForParty("deathpits");
-            
+
             ArmyHunt("deathpits", new[] { "Ghastly Darkblood", "Rotting Darkblood", "Sundered Darkblood" }, "Darkblood Cohort Conquered", ClassType.Farm, false, 500);
             Army.waitForParty("maxius");
-            
+
             ArmyHunt("maxius", new[] { "Ghoul Minion", "Vampire Minion" }, "Vampire Cohort Conquered", ClassType.Farm, false, 500);
             Army.waitForParty("curseshore");
-            
+
             ArmyHunt("curseshore", new[] { "Escaped Ghostly Zardman", "Escaped Wendighost", "Escaped Dai Tenghost" }, "Spirit Cohort Conquered", ClassType.Farm, false, 500);
             Army.waitForParty("dragonbone");
-            
+
             ArmyHunt("dragonbone", new[] { "Bone Dragonling", "Dark Fire", }, "Dragon Cohort Conquered", ClassType.Farm, false, 500);
             Army.waitForParty("doomwood");
-            
+
             ArmyHunt("doomwood", new[] { "Doomwood Soldier", "Doomwood Bonemuncher", "Doomwood Ectomancer", "Undead Paladin", "Doomwood Treeant" }, "Doomwood Cohort Conquered", ClassType.Farm, false, 500);
             Army.waitForParty("doomvault", "Conquest Wreath");
-            
+
             Bot.Wait.ForPickup("Conquest Wreath");
         }
         Core.CancelRegisteredQuests();
@@ -309,7 +312,7 @@ public class ArmyLR
         Core.AddDrop("Emblem of Dage");
         Core.FarmingLogger("Emblem of Dage", quant);
         Core.EquipClass(ClassType.Farm);
-       //Adv.BestGear(GenericGearBoost.gold);
+        //Adv.BestGear(GenericGearBoost.gold);
 
         Core.RegisterQuests(4742);
         while (!Bot.ShouldExit && !Core.CheckInventory("Emblem of Dage", quant))
@@ -337,7 +340,7 @@ public class ArmyLR
             ArmyHunt("tercessuinotlim", new[] { "Dark Makai" }, "Defeated Makai", ClassType.Farm, false, 25);
             Army.waitForParty("bloodtitan");
 
-           //Adv.BestGear(RacialGearBoost.Chaos);
+            //Adv.BestGear(RacialGearBoost.Chaos);
             ArmyHunt("aqlesson", new[] { "Carnax" }, "Carnax Eye", ClassType.Solo, true, 1);
             Army.waitForParty("deepchaos");
 
@@ -347,11 +350,11 @@ public class ArmyLR
             ArmyHunt("dflesson", new[] { "Fluffy the Dracolich" }, "Fluffy's Bones", ClassType.Solo, true, 1);
             Army.waitForParty("lair");
 
-           //Adv.BestGear(RacialGearBoost.Dragonkin);
+            //Adv.BestGear(RacialGearBoost.Dragonkin);
             ArmyHunt("lair", new[] { "Red Dragon" }, "Red Dragon's Fang", ClassType.Solo, true);
             Army.waitForParty("bloodtitan");
 
-           //Adv.BestGear(RacialGearBoost.Human);
+            //Adv.BestGear(RacialGearBoost.Human);
             ArmyHunt("bloodtitan", new[] { "Blood Titan" }, "Blood Titan's Blade", ClassType.Solo, true, 1);
             Army.waitForParty("tercessuinotlim");
         }
@@ -366,7 +369,7 @@ public class ArmyLR
 
         Core.FarmingLogger("Dark Token", quant);
         Core.AddDrop("Dark Token");
-       //Adv.BestGear(RacialGearBoost.Human);
+        //Adv.BestGear(RacialGearBoost.Human);
         Core.RegisterQuests(6248, 6249, 6251);
         while (!Bot.ShouldExit && !Core.CheckInventory("Dark Token", quant))
             ArmyHunt("seraphicwardage", new[] { "Seraphic Commander, Seraphic Soldier" }, "Seraphic Commanders Slain", ClassType.Farm, true, 6);
@@ -379,7 +382,7 @@ public class ArmyLR
         if (Core.CheckInventory("Legion Token", quant) && !Bot.Config!.Get<bool>("sellToSync"))
             return;
 
-       //Adv.BestGear(RacialGearBoost.Human);
+        //Adv.BestGear(RacialGearBoost.Human);
         Core.RegisterQuests(4849);
         while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
             ArmyHuntNoSell("dreadrock", new[] { "Fallen Hero", "Hollow Wraith", "Legion Sentinel", "Shadowknight", "Void Mercenary" }, "Legion Token", ClassType.Farm, false, quant);
@@ -471,4 +474,12 @@ public class ArmyLR
         if (!hasDarkCaster)
             ILDC.GetILDC(false);
     }
+
+    void PlayerAFK()
+    {
+        Core.Logger("Anti-AFK engaged");
+        Bot.Sleep(1500);
+        Bot.Send.Packet("%xt%zm%afk%1%false%");
+    }
+
 }

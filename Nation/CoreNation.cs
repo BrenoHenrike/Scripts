@@ -277,7 +277,6 @@ public class CoreNation
         Core.KillMonster("evilwarnul", "r2", "Down", "*", "Archfiend's Favor", quantFavor, false, shouldLog);
     }
 
-
     /// <summary>
     /// Farms specific item with Swindles Return Policy quest
     /// </summary>
@@ -312,7 +311,6 @@ public class CoreNation
             Core.Logger(Bot.Inventory.IsMaxStack(Item.Name) ? "Max Stack Hit." : $"{Item.Name}: {Bot.Inventory.GetQuantity(Item.Name)}/{quant}");
         }
     }
-
 
     /// <summary>
     /// Farms Tainted Gem with Swindle Bulk quest.
@@ -350,7 +348,6 @@ public class CoreNation
                 Core.Logger($"Tainted Gem: {Bot.Inventory.GetQuantity("Tainted Gem")}/{quant}");
         }
     }
-
 
     /// <summary>
     /// Farms Emblem of Nulgath in Shadow Blast Arena
@@ -429,31 +426,6 @@ public class CoreNation
             }
         }
     }
-
-
-    // private void FarmMedalStep(int questId, string medalName, int requiredMedalStep, string nextMedalName)
-    // {
-    //     if (Core.CheckInventory(medalName))
-    //         return;
-
-    //     if (Core.CheckInventory(nextMedalName) && Core.IsMember)
-    //     {
-    //         Core.EnsureAccept(questId);
-    //         Core.HuntMonster("shadowblast", "Grimlord Boss", "Grimlord Vanquished", 1, true, log: false);
-    //         Core.EnsureComplete(questId);
-    //         Bot.Drops.Pickup(medalName);
-    //         Core.Logger($"Medal {requiredMedalStep} acquired");
-    //     }
-    //     else
-    //     {
-    //         Core.EnsureAccept(questId);
-    //         Core.HuntMonster("shadowblast", "Legion AirStrike", "Legion Rookie Defeated", 5, true, log: false);
-    //         Core.HuntMonster("shadowblast", "Shadowrise Guard", "Shadowscythe Rookie Defeated", 5, true, log: false);
-    //         Core.EnsureComplete(questId);
-    //         Bot.Drops.Pickup(nextMedalName);
-    //         Core.Logger($"Medal {requiredMedalStep} acquired");
-    //     }
-    // }
 
     /// <summary>
     /// Farms Totem of Nulgath/Gem of Nulgath with Voucher Item: Totem of Nulgath quest
@@ -546,14 +518,13 @@ public class CoreNation
         }
     }
 
-
     /// <summary>
     /// Does Supplies to Spin the Wheel of Chance for the desired item with the best method available.
     /// </summary>
     /// <param name="item">Desired item name.</param>
     /// <param name="quant">Desired item quantity.</param>
     /// <param name="voucherNeeded">Whether a voucher is required for the item (default: false).</param>
-    public void Supplies(string item = "Any", int quant = 1, bool voucherNeeded = false)
+    public void Supplies(string? item = null, int quant = 1, bool voucherNeeded = false)
     {
         bool sellMemVoucher = Core.CBOBool("Nation_SellMemVoucher", out bool _sellMemVoucher) && _sellMemVoucher;
         bool returnPolicyDuringSupplies = Core.CBOBool("Nation_ReturnPolicyDuringSupplies", out bool _returnSupplies) && _returnSupplies;
@@ -561,19 +532,10 @@ public class CoreNation
         if (Core.CheckInventory(item, quant))
             return;
 
-        if (Core.CheckInventory(CragName))
+        if (Core.CheckInventory(CragName) && returnPolicyDuringSupplies)
             BambloozevsDrudgen(item, quant);
         else
         {
-            if (item != "Any")
-            {
-                Core.AddDrop(item);
-                if (sellMemVoucher)
-                    Core.AddDrop("Voucher of Nulgath");
-            }
-            else
-                Core.AddDrop(bagDrops[..^11]);
-
             string[]? rPDSuni = null;
             if (returnPolicyDuringSupplies)
             {
@@ -584,20 +546,24 @@ public class CoreNation
 
             Core.FarmingLogger(item, quant);
 
-            if (returnPolicyDuringSupplies)
-                BambloozevsDrudgen(item, quant);
+            if (item == null)
+            {
+                Core.AddDrop(bagDrops[..^11].Append("Relic of Chaos").ToArray());
+            }
             else
-                BambloozevsDrudgen(item, quant);
+            {
+                Core.AddDrop(item);
+                Core.AddDrop(sellMemVoucher ? new[] { "Voucher of Nulgath" } : null!);
+            }
 
-            Core.AddDrop("Relic of Chaos");
             Core.EquipClass(ClassType.Solo);
+            Core.RegisterQuests(2857);
             while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
             {
                 if (returnPolicyDuringSupplies && Core.CheckInventory(rPDSuni))
                     Core.KillMonster("tercessuinotlim", "m1", "Right", "Dark Makai", "Dark Makai Rune");
 
-                Core.KillEscherion(publicRoom: true, log: false);
-                Bot.Wait.ForDrop(item, 40);
+                Core.KillEscherion(item, quant, log: false);
 
                 if (item != "Voucher of Nulgath" && sellMemVoucher && Core.CheckInventory("Voucher of Nulgath") && !voucherNeeded)
                 {
@@ -606,18 +572,17 @@ public class CoreNation
                     Bot.Wait.ForItemSell(40);
                 }
 
-                if (Bot.Inventory.IsMaxStack(item))
+                if (Bot.Inventory.IsMaxStack(item ?? ""))
                 {
-                    Core.Logger($"Max-Stack for {item} has been reached ({Bot.Inventory.GetItem(item)?.MaxStack})");
+                    Core.Logger($"Max-Stack for {item ?? ""} has been reached ({Bot.Inventory.GetItem(item ?? "")?.MaxStack})");
                     break;
                 }
             }
+
             Core.CancelRegisteredQuests();
+
         }
     }
-
-
-
 
     /// <summary>
     /// Does "The Assistant" quest for the desired item.
@@ -734,8 +699,6 @@ public class CoreNation
         }
     }
 
-
-
     /// <summary>
     /// Logs the quantity of the specified item after a time interval.
     /// </summary>
@@ -767,7 +730,6 @@ public class CoreNation
         }
     }
 
-
     /// <summary>
     /// Logs the quantity of the specified item object after a time interval.
     /// </summary>
@@ -798,7 +760,6 @@ public class CoreNation
             Bot.Sleep(1500);
         }
     }
-
 
     /// <summary>
     /// Does the "Bamblooze vs. Drudgen" quest for the desired item.
@@ -879,12 +840,6 @@ public class CoreNation
         }
     }
 
-
-
-
-
-
-
     /// <summary>
     /// Does the "AssistingDrudgen" Quest for Fiend Tokens (and other possible drops).
     /// Requires either "Drudgen the Assistant" or "Twin Blade of Nulgath" to accept.
@@ -921,7 +876,6 @@ public class CoreNation
         }
     }
 
-
     /// <summary>
     /// Completes the Feed the Fiend quest to obtain the specified item.
     /// </summary>
@@ -954,7 +908,6 @@ public class CoreNation
         Bot.Wait.ForPickup(item);
         Core.CancelRegisteredQuests();
     }
-
 
     /// <summary>
     /// Completes the Void Knight Sword Quest to obtain the specified item.
@@ -1001,7 +954,6 @@ public class CoreNation
         // Cancel any registered quests once the desired items are obtained
         Core.CancelRegisteredQuests();
     }
-
 
     /// <summary>
     /// Do Diamond Exchange quest 1 time, if farmDiamond is true, will farm 15 Diamonds before if needed
@@ -1057,7 +1009,7 @@ public class CoreNation
         Core.AddDrop("Emerald Pickaxe", "Seraphic Grave Digger Spade", "Unidentified 10", "Receipt of Swindle", "Blood Gem of the Archfiend");
 
         if (!Core.CheckInventory("Emerald Pickaxe"))
-            Core.KillEscherion("Emerald Pickaxe", publicRoom: true);
+            Core.KillEscherion("Emerald Pickaxe");
 
         if (!Core.CheckInventory("Seraphic Grave Digger Spade"))
             Core.KillMonster("legioncrypt", "r1", "Top", "Gravedigger", "Seraphic Grave Digger Spade", isTemp: false, log: false);
@@ -1161,8 +1113,6 @@ public class CoreNation
         FeedtheFiend();
     }
 
-
-
     /// <summary>
     /// Farms Gem of Nulgath with the best method available
     /// </summary>
@@ -1197,7 +1147,6 @@ public class CoreNation
         BloodyChaos(quant, true);
         KisstheVoid(quant);
     }
-
 
     /// <summary>
     /// Completes the lair questline to unlock Nation mats if not completed.
@@ -1258,7 +1207,6 @@ public class CoreNation
         }
     }
 
-
     /// <summary>
     /// Do Bloody Chaos quest for Blood Gems.
     /// </summary>
@@ -1301,7 +1249,6 @@ public class CoreNation
         Core.CancelRegisteredQuests();
     }
 
-
     /// <summary>
     /// Do Kiss the Void quest for Blood Gems.
     /// </summary>
@@ -1340,8 +1287,6 @@ public class CoreNation
                 Core.Logger($"Blood Gem of the Archfiend: {Bot.Inventory.GetQuantity("Blood Gem of the Archfiend")}/{quant}");
         }
     }
-
-
 
     /// <summary>
     /// Farms Gemstone Receipt of Nulgath with specific quantities.
@@ -1399,7 +1344,6 @@ public class CoreNation
         }
     }
 
-
     /// <summary>
     /// Farms Dwobo Coins with the specified quest and quantity.
     /// </summary>
@@ -1422,8 +1366,6 @@ public class CoreNation
         Bot.Wait.ForPickup("Dwobo Coin");
         Core.CancelRegisteredQuests();
     }
-
-
 
     /// <summary>
     /// Farm Gemstones of Nulgath for specified quantities

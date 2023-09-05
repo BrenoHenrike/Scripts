@@ -1999,6 +1999,7 @@ public class CoreBots
             if (ShouldRest)
                 Rest();
             // DebugLogger(this);
+            Bot.Wait.ForPickup(item);
         }
     }
 
@@ -2131,11 +2132,13 @@ public class CoreBots
     }
 
 
-    public void KillDoomKitten(string item = null, int quant = 1, bool isTemp = false, bool log = true)
+    public void KillDoomKitten(string? item = null, int quant = 1, bool isTemp = false, bool log = true)
     {
-        bool hasItem = isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant);
-        if (hasItem || item == null)
-            return;
+        if (item != null)
+        {
+            bool hasItem = isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant);
+            if (hasItem) return;
+        }
 
         List<string> DOTClasses = new()
         {
@@ -2210,7 +2213,6 @@ public class CoreBots
     /// <param name="ultra">Specifies whether to fight the Ultra Xiang variant.</param>
     /// <param name="isTemp">Specifies whether the item is temporary.</param>
     /// <param name="log">Specifies whether to log the process.</param>
-    /// <param name="publicRoom">Specifies whether to use a public room for the hunt.</param>
     public void KillXiang(string item, int quant = 1, bool ultra = false, bool isTemp = false, bool log = true)
     {
         if (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant))
@@ -2345,8 +2347,12 @@ public class CoreBots
         }
     }
 
-    public void FarmingLogger(string item, int quant, [CallerMemberName] string caller = "")
-        => Logger($"Farming {item} ({Bot.Inventory.GetQuantity(item)}/{quant})", caller);
+    public void FarmingLogger(string? item, int quant, [CallerMemberName] string caller = "")
+    {
+        int quantity = Bot.Inventory.GetQuantity(item ?? string.Empty); // Use string.Empty as the default value
+        Logger($"Farming {item} ({quantity}/{quant})", caller);
+    }
+
 
     public void DebugLogger(object _this, string? marker = null, [CallerMemberName] string? caller = null, [CallerLineNumber] int lineNumber = 0)
     {
