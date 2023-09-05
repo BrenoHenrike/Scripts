@@ -63,7 +63,6 @@ public class CoreNation
     "Tainted Gem",
     "Dark Crystal Shard",
     "Diamond of Nulgath",
-    "Ddog's Sea Serpent Armor",
     "Voucher of Nulgath",
     "Voucher of Nulgath (non-mem)",
     "Random Weapon of Nulgath",
@@ -550,7 +549,7 @@ public class CoreNation
         Core.RegisterQuests(2857);
         Core.EquipClass(ClassType.Solo);
 
-        Core.AddDrop(SuppliesRewards.Concat(sellMemVoucher ? new[] { "Voucher of Nulgath" } : Enumerable.Empty<string>()).ToArray());
+        Core.AddDrop((item != null ? new[] { item } : Enumerable.Empty<string>()).Concat(SuppliesRewards.Concat(sellMemVoucher ? new[] { "Voucher of Nulgath" } : Enumerable.Empty<string>()).Append("Relic of Chaos")).ToArray());
 
         if (item == null)
         {
