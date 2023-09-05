@@ -486,7 +486,7 @@ public class CoreFarms
 
         // Bot.Events.PlayerDeath += PVPDeath;
         Core.DebugLogger(this);
-
+        Core.EquipClass(ClassType.Solo);
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
         {
             Core.DebugLogger(this);
