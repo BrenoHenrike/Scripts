@@ -36,6 +36,7 @@ public class ArmyLeveling
         sArmy.player5,
         sArmy.player6,
         sArmy.player7,
+        sArmy.packetDelay,
         CoreBots.Instance.SkipOptions
     };
 
@@ -71,7 +72,9 @@ public class ArmyLeveling
                 Core.RegisterQuests();
                 while (!Bot.ShouldExit && Bot.Player.Level < level)
                     Bot.Combat.Attack("*");
-                Army.waitForParty("icestormarena");
+                Army.AggroMonStop(true);
+                Core.JumpWait();
+                Army.waitForParty("whitemap");
                 break;
 
             case Method.IceStormUnder:
@@ -85,7 +88,9 @@ public class ArmyLeveling
                 Army.DivideOnCells("r2");
                 while (!Bot.ShouldExit && Bot.Player.Level < level)
                     Bot.Combat.Attack("Frost Spirit");
-                Army.waitForParty("icestormunder");
+                Army.AggroMonStop(true);
+                Core.JumpWait();
+                Army.waitForParty("whitemap");
                 break;
 
             case Method.IceWing:
@@ -100,7 +105,9 @@ public class ArmyLeveling
                 Core.RegisterQuests(Core.IsMember ? 6635 : 6632);
                 while (!Bot.ShouldExit && Bot.Player.Level < level)
                     Bot.Combat.Attack("*");
-                Army.waitForParty("icewing");
+                Army.AggroMonStop(true);
+                Core.JumpWait();
+                Army.waitForParty("whitemap");
                 break;
 
                 //add more cases
