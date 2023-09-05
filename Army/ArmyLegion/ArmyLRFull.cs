@@ -161,7 +161,7 @@ public class ArmyLR
         Core.RegisterQuests(6897);
         while (!Bot.ShouldExit && !Core.CheckInventory("Revenant's Spellscroll", quant))
         {
-           Adv.BestGear(RacialGearBoost.Undead);
+           //Adv.BestGear(RacialGearBoost.Undead);
             ArmyHunt("judgement", new[] { "Ultra Aeacus" }, "Aeacus Empowered", ClassType.Solo, false, 50);
             ArmyHunt("revenant", new[] { "Forgotten Soul" }, "Tethered Soul", ClassType.Farm, false, 300);
             ArmyHunt("shadowrealmpast", new[] { "Pure Shadowscythe, Shadow Guardian, Shadow Warrior" }, "Darkened Essence", ClassType.Farm, false, 500);
@@ -180,7 +180,7 @@ public class ArmyLR
         Core.AddDrop(LF2);
 
         Core.RegisterQuests(6898);
-       Adv.BestGear(RacialGearBoost.Undead);
+       //Adv.BestGear(RacialGearBoost.Undead);
         Core.FarmingLogger("Conquest Wreath", quant);
 
         while (!Bot.ShouldExit && !Core.CheckInventory("Conquest Wreath", quant))
@@ -309,7 +309,7 @@ public class ArmyLR
         Core.AddDrop("Emblem of Dage");
         Core.FarmingLogger("Emblem of Dage", quant);
         Core.EquipClass(ClassType.Farm);
-       Adv.BestGear(GenericGearBoost.gold);
+       //Adv.BestGear(GenericGearBoost.gold);
 
         Core.RegisterQuests(4742);
         while (!Bot.ShouldExit && !Core.CheckInventory("Emblem of Dage", quant))
@@ -337,7 +337,7 @@ public class ArmyLR
             ArmyHunt("tercessuinotlim", new[] { "Dark Makai" }, "Defeated Makai", ClassType.Farm, false, 25);
             Army.waitForParty("bloodtitan");
 
-           Adv.BestGear(RacialGearBoost.Chaos);
+           //Adv.BestGear(RacialGearBoost.Chaos);
             ArmyHunt("aqlesson", new[] { "Carnax" }, "Carnax Eye", ClassType.Solo, true, 1);
             Army.waitForParty("deepchaos");
 
@@ -347,11 +347,11 @@ public class ArmyLR
             ArmyHunt("dflesson", new[] { "Fluffy the Dracolich" }, "Fluffy's Bones", ClassType.Solo, true, 1);
             Army.waitForParty("lair");
 
-           Adv.BestGear(RacialGearBoost.Dragonkin);
+           //Adv.BestGear(RacialGearBoost.Dragonkin);
             ArmyHunt("lair", new[] { "Red Dragon" }, "Red Dragon's Fang", ClassType.Solo, true);
             Army.waitForParty("bloodtitan");
 
-           Adv.BestGear(RacialGearBoost.Human);
+           //Adv.BestGear(RacialGearBoost.Human);
             ArmyHunt("bloodtitan", new[] { "Blood Titan" }, "Blood Titan's Blade", ClassType.Solo, true, 1);
             Army.waitForParty("tercessuinotlim");
         }
@@ -366,7 +366,7 @@ public class ArmyLR
 
         Core.FarmingLogger("Dark Token", quant);
         Core.AddDrop("Dark Token");
-       Adv.BestGear(RacialGearBoost.Human);
+       //Adv.BestGear(RacialGearBoost.Human);
         Core.RegisterQuests(6248, 6249, 6251);
         while (!Bot.ShouldExit && !Core.CheckInventory("Dark Token", quant))
             ArmyHunt("seraphicwardage", new[] { "Seraphic Commander, Seraphic Soldier" }, "Seraphic Commanders Slain", ClassType.Farm, true, 6);
@@ -379,7 +379,7 @@ public class ArmyLR
         if (Core.CheckInventory("Legion Token", quant) && !Bot.Config!.Get<bool>("sellToSync"))
             return;
 
-       Adv.BestGear(RacialGearBoost.Human);
+       //Adv.BestGear(RacialGearBoost.Human);
         Core.RegisterQuests(4849);
         while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
             ArmyHuntNoSell("dreadrock", new[] { "Fallen Hero", "Hollow Wraith", "Legion Sentinel", "Shadowknight", "Void Mercenary" }, "Legion Token", ClassType.Farm, false, quant);

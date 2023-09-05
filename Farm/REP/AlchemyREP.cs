@@ -33,9 +33,9 @@ public class AlchemyREP
     {
         Core.SetOptions();
 
-        Adv.BestGear(GenericGearBoost.dmgAll);
-        Adv.BestGear(GenericGearBoost.rep);
-        Adv.BestGear(GenericGearBoost.rep);
+        //Adv.BestGear(GenericGearBoost.dmgAll);
+        //Adv.BestGear(GenericGearBoost.rep);
+        //Adv.BestGear(GenericGearBoost.rep);
 
         Farm.AlchemyREP(10, Bot.Config!.Get<bool>("goldMethod"));
 

@@ -40,7 +40,7 @@ public class ChooseRacialBestGear
         if (EnhanceEquipment && Core.CBOBool("DisableAutoEnhance", out bool _disableAutoEnhance) && _disableAutoEnhance)
             Core.Logger("This bot requires you to have Auto-Enhance enabled, please enable it in Options > CoreBots", messageBox: true, stopBot: true);
 
-        Adv.BestGear(gearBoost);
+        //Adv.BestGear(gearBoost);
         if (EnhanceEquipment && Bot.Player.CurrentClass != null)
             Adv.SmartEnhance(Bot.Player.CurrentClass.Name);
     }

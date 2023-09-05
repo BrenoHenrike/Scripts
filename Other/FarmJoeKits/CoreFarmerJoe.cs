@@ -215,7 +215,7 @@ public class CoreFarmerJoe
         #endregion InvClasses
 
         #region Leve30 to 75
-        // Adv.BestGear(GenericGearBoost.exp);
+        // //Adv.BestGear(GenericGearBoost.exp);
         Farm.ToggleBoost(BoostType.Experience);
 
         foreach (int Level in new int[] { 30, 45, 50, 55, 60, 65, 70, 75 })

@@ -61,7 +61,7 @@ public class ArmyGold
         Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
 
         Core.EquipClass(ClassType.Farm);
-        Adv.BestGear(GenericGearBoost.gold);
+        //Adv.BestGear(GenericGearBoost.gold);
         Farm.ToggleBoost(BoostType.Gold);
         Bot.Options.LagKiller = false;
         Bot.Lite.ReacceptQuest = true;

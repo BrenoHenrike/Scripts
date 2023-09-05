@@ -17,8 +17,8 @@ public class DwarfholdREP
     {
         Core.SetOptions();
 
-        Adv.BestGear(GenericGearBoost.dmgAll);
-        Adv.BestGear(GenericGearBoost.rep);
+        //Adv.BestGear(GenericGearBoost.dmgAll);
+        //Adv.BestGear(GenericGearBoost.rep);
         Farm.DwarfholdREP();
 
         Core.SetOptions(false);

@@ -19,8 +19,8 @@ public class RavenlossREP
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
-        Adv.BestGear(GenericGearBoost.dmgAll);
-        Adv.BestGear(GenericGearBoost.rep);
+        //Adv.BestGear(GenericGearBoost.dmgAll);
+        //Adv.BestGear(GenericGearBoost.rep);
         RLS.DoAll();
         Farm.RavenlossREP();
 

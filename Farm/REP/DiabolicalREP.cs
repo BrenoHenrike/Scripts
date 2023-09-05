@@ -31,8 +31,8 @@ public class DiabolicalREP
         Story.KillQuest(7875, "timevoid", "Unending Avatar");
         Story.KillQuest(7876, "twilightedge", "ChaosWeaver Warrior");
 
-        Adv.BestGear(GenericGearBoost.dmgAll);
-        Adv.BestGear(GenericGearBoost.rep);
+        //Adv.BestGear(GenericGearBoost.dmgAll);
+        //Adv.BestGear(GenericGearBoost.rep);
         Farm.DiabolicalREP();
 
     }

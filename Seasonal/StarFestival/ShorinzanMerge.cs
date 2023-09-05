@@ -119,14 +119,14 @@ public class ShorinzanMerge
 
                 case "Fallen Star Shard":
                     Core.EquipClass(ClassType.Solo);
-                    Adv.BestGear(RacialGearBoost.Elemental);
+                    //Adv.BestGear(RacialGearBoost.Elemental);
                     Core.HuntMonster("starfest", "Fallen Star", req.Name, quant, isTemp: false);
                     Bot.Wait.ForPickup(req.Name);
                     break;
 
                 case "Hashihime's Heart":
                     Core.EquipClass(ClassType.Solo);
-                    Adv.BestGear(RacialGearBoost.Chaos);
+                    //Adv.BestGear(RacialGearBoost.Chaos);
                     Core.HuntMonster("yokaistarriver", "Uji No Hashihime", req.Name, quant, isTemp: false);
                     Bot.Wait.ForPickup(req.Name);
                     break;

@@ -62,7 +62,7 @@ public class ChaosAvengerClass
             else if (Bot.Quests.IsAvailable(7979))
             {
                 Core.EnsureAccept(8300);
-                Adv.BestGear(RacialGearBoost.Chaos);
+                //Adv.BestGear(RacialGearBoost.Chaos);
                 Core.EquipClass(ClassType.Solo);
                 Core.KillMonster("championdrakath", "r2", "Left", "Champion Drakath", "Champion Drakath Defeated", publicRoom: true);
                 Core.EnsureComplete(8300);
@@ -86,7 +86,7 @@ public class ChaosAvengerClass
         if (!Core.CheckInventory("Fragment of Mount Doomskull", 1300))
         {
             Core.EquipClass(ClassType.Farm);
-            Adv.BestGear(RacialGearBoost.Chaos);
+            //Adv.BestGear(RacialGearBoost.Chaos);
             Core.HuntMonster("mountdoomskull", "Chaorrupted Rogue", "Fragment of Mount Doomskull", 1300, isTemp: false);
         }
 
