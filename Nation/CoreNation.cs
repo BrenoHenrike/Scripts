@@ -548,71 +548,73 @@ public class CoreNation
 
 
     /// <summary>
-/// Does Supplies to Spin the Wheel of Chance for the desired item with the best method available.
-/// </summary>
-/// <param name="item">Desired item name.</param>
-/// <param name="quant">Desired item quantity.</param>
-/// <param name="voucherNeeded">Whether a voucher is required for the item (default: false).</param>
-public void Supplies(string item = "Any", int quant = 1, bool voucherNeeded = false)
-{
-    bool sellMemVoucher = Core.CBOBool("Nation_SellMemVoucher", out bool _sellMemVoucher) && _sellMemVoucher;
-    bool returnPolicyDuringSupplies = Core.CBOBool("Nation_ReturnPolicyDuringSupplies", out bool _returnSupplies) && _returnSupplies;
-
-    if (Core.CheckInventory(item, quant))
-        return;
-
-    if (Core.CheckInventory(CragName))
-        BambloozevsDrudgen(item, quant);
-    else
+    /// Does Supplies to Spin the Wheel of Chance for the desired item with the best method available.
+    /// </summary>
+    /// <param name="item">Desired item name.</param>
+    /// <param name="quant">Desired item quantity.</param>
+    /// <param name="voucherNeeded">Whether a voucher is required for the item (default: false).</param>
+    public void Supplies(string item = "Any", int quant = 1, bool voucherNeeded = false)
     {
-        if (item != "Any")
-        {
-                Core.AddDrop(item);
-            if (sellMemVoucher)
-                    Core.AddDrop("Voucher of Nulgath");
-        }
+        bool sellMemVoucher = Core.CBOBool("Nation_SellMemVoucher", out bool _sellMemVoucher) && _sellMemVoucher;
+        bool returnPolicyDuringSupplies = Core.CBOBool("Nation_ReturnPolicyDuringSupplies", out bool _returnSupplies) && _returnSupplies;
+
+        if (Core.CheckInventory(item, quant))
+            return;
+
+        if (Core.CheckInventory(CragName))
+            BambloozevsDrudgen(item, quant);
         else
+        {
+            if (item != "Any")
+            {
+                Core.AddDrop(item);
+                if (sellMemVoucher)
+                    Core.AddDrop("Voucher of Nulgath");
+            }
+            else
                 Core.AddDrop(bagDrops[..^11]);
 
-        string[]? rPDSuni = null;
-        if (returnPolicyDuringSupplies)
-        {
-            rPDSuni = new[] { Uni(1), Uni(6), Uni(9), Uni(16), Uni(20) };
+            string[]? rPDSuni = null;
+            if (returnPolicyDuringSupplies)
+            {
+                rPDSuni = new[] { Uni(1), Uni(6), Uni(9), Uni(16), Uni(20) };
                 Core.AddDrop(rPDSuni);
                 Core.AddDrop("Blood Gem of Nulgath");
-        }
+            }
 
             Core.FarmingLogger(item, quant);
 
-        if (returnPolicyDuringSupplies)
-            BambloozevsDrudgen(item, quant);
-        else
-            BambloozevsDrudgen(item, quant);
+            if (returnPolicyDuringSupplies)
+                BambloozevsDrudgen(item, quant);
+            else
+                BambloozevsDrudgen(item, quant);
 
-        while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
-        {
-            if (returnPolicyDuringSupplies && Core.CheckInventory(rPDSuni))
+            Core.AddDrop("Relic of Chaos");
+            Core.EquipClass(ClassType.Solo);
+            while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
+            {
+                if (returnPolicyDuringSupplies && Core.CheckInventory(rPDSuni))
                     Core.KillMonster("tercessuinotlim", "m1", "Right", "Dark Makai", "Dark Makai Rune");
 
-                Core.KillEscherion("Relic of Chaos", publicRoom: true, log: false);
-            Bot.Wait.ForDrop(item, 40);
+                Core.KillEscherion(publicRoom: true, log: false);
+                Bot.Wait.ForDrop(item, 40);
 
-            if (item != "Voucher of Nulgath" && sellMemVoucher && Core.CheckInventory("Voucher of Nulgath") && !voucherNeeded)
-            {
-                Bot.Drops.Pickup("Voucher of Nulgath");
+                if (item != "Voucher of Nulgath" && sellMemVoucher && Core.CheckInventory("Voucher of Nulgath") && !voucherNeeded)
+                {
+                    Bot.Drops.Pickup("Voucher of Nulgath");
                     Core.SellItem("Voucher of Nulgath", all: true);
-                Bot.Wait.ForItemSell(40);
-            }
+                    Bot.Wait.ForItemSell(40);
+                }
 
-            if (Bot.Inventory.IsMaxStack(item))
-            {
+                if (Bot.Inventory.IsMaxStack(item))
+                {
                     Core.Logger($"Max-Stack for {item} has been reached ({Bot.Inventory.GetItem(item)?.MaxStack})");
-                break;
+                    break;
+                }
             }
-        }
             Core.CancelRegisteredQuests();
+        }
     }
-}
 
 
 
@@ -1240,13 +1242,8 @@ public void Supplies(string item = "Any", int quant = 1, bool voucherNeeded = fa
         if (Core.CheckInventory("Totem of Nulgath", quant))
             return;
 
-        // Add Totem of Nulgath to the drops list
-        Core.AddDrop("Totem of Nulgath");
-
-        // Try different quest methods to obtain Totem of Nulgath
-        TryQuestMethods("Totem of Nulgath", quant,
-            NewWorldsNewOpportunities,
-            VoidKightSwordQuest);
+        NewWorldsNewOpportunities("Totem of Nulgath", quant);
+        VoidKightSwordQuest("Totem of Nulgath", quant);
 
         // Continue farming until desired quantity is reached
         while (!Bot.ShouldExit && !Core.CheckInventory("Totem of Nulgath", quant))
@@ -1763,24 +1760,6 @@ public void Supplies(string item = "Any", int quant = 1, bool voucherNeeded = fa
     }
 
     private static string Uni1(int nr) => $"Unidentified {nr}";
-
-    /// <summary>
-    /// Try different quest methods to obtain the specified item and quantity.
-    /// </summary>
-    /// <param name="item">The item to be obtained.</param>
-    /// <param name="quant">The desired quantity of the item.</param>
-    /// <param name="questMethods">Array of quest methods to try.</param>
-    private static void TryQuestMethods(string item, int quant, params Action<string, int>[] questMethods)
-    {
-        foreach (var questMethod in questMethods)
-        {
-            questMethod(item, quant);
-
-            if (Core.CheckInventory(item, quant))
-                return;
-        }
-    }
-
 
     /// <summary>
     /// Farms Voucher of Nulgath (member or not) with the best method available
