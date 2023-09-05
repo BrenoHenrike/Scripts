@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 178627,
+    "size": 178700,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -449,7 +449,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 70097,
+    "size": 70098,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -697,7 +697,7 @@
       "prerequisites"
     ],
     "path": "Chaos/ChaosAvengerPreReqs.cs",
-    "size": 6064,
+    "size": 5830,
     "fileName": "ChaosAvengerPreReqs.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Chaos/ChaosAvengerPreReqs.cs"
   },
@@ -1056,7 +1056,7 @@
       "khasaanda"
     ],
     "path": "Dailies/LordOfOrder.cs",
-    "size": 10475,
+    "size": 10451,
     "fileName": "LordOfOrder.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/LordOfOrder.cs"
   },
@@ -2849,7 +2849,7 @@
       "chaotic lords"
     ],
     "path": "Evil/ADK.cs",
-    "size": 6817,
+    "size": 6565,
     "fileName": "ADK.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/ADK.cs"
   },
@@ -8405,7 +8405,7 @@
       "null"
     ],
     "path": "Story/LordsofChaos/Core13LoC.cs",
-    "size": 80180,
+    "size": 80162,
     "fileName": "Core13LoC.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/LordsofChaos/Core13LoC.cs"
   },
@@ -10071,7 +10071,7 @@
       "null"
     ],
     "path": "Good/BLoD/CoreBLOD.cs",
-    "size": 21369,
+    "size": 21321,
     "fileName": "CoreBLOD.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/CoreBLOD.cs"
   },
@@ -10325,7 +10325,7 @@
       "null"
     ],
     "path": "Evil/SDKA/CoreSDKA.cs",
-    "size": 24603,
+    "size": 24519,
     "fileName": "CoreSDKA.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/SDKA/CoreSDKA.cs"
   },
@@ -11904,7 +11904,7 @@
       "null"
     ],
     "path": "Other/MergeShops/YulgarsDualWieldMerge.cs",
-    "size": 35136,
+    "size": 35153,
     "fileName": "YulgarsDualWieldMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/YulgarsDualWieldMerge.cs"
   },
