@@ -468,7 +468,7 @@ public class CoreFarms
             return;
 
         Core.Logger("Kill ads is on by default now\n" +
-        "as you get rewarded 10 rather then\n" +
+        "as you get rewarded 10 rather then 3\n" +
         "Combat Trophies");
 
 
@@ -1392,11 +1392,11 @@ public class CoreFarms
         if (!Bot.Quests.IsUnlocked(7877))
         {
             Core.EnsureAccept(7875);
-            Core.HuntMonster("timevoid", "Unending Avatar", "Everlasting Scale", log: false);
+            Core.HuntMonster("timevoid", "Unending Avatar", "Everlasting Scale");
             Core.EnsureComplete(7875);
 
             Core.EnsureAccept(7876);
-            Core.HuntMonster($"twilightedge", "ChaosWeaver Warrior", "Chaotic Arachnid’s Flesh", log: false);
+            Core.HuntMonster($"twilightedge", "ChaosWeaver Warrior", "Chaotic Arachnid's Flesh");
             Core.EnsureComplete(7876);
         }
 
@@ -1498,24 +1498,31 @@ public class CoreFarms
         // if (Core.IsMember)
         //     MembershipDues(MemberShipsIDS.Dwarfhold, rank);
         // else
+        if (!Bot.Quests.IsUnlocked(320))
         {
-            Core.EquipClass(ClassType.Farm);
-            Core.SavedState();
-            ToggleBoost(BoostType.Reputation);
-            Core.Logger($"Farming rank {rank}");
-
-            // Core.RegisterQuests(320, 321); //Warm and Furry 320, Shell Shock 321
-            while (!Bot.ShouldExit && FactionRank("Dwarfhold") < rank)
-            {
-                Core.EnsureAccept(320, 321); //Warm and Furry 320, Shell Shock 321
-                Core.KillMonster("pines", "Enter", "Right", "Pine Grizzly", "Bear Skin", 5, log: false);
-                Core.KillMonster("pines", "Enter", "Right", "Red Shell Turtle", "Red Turtle Shell", 5, log: false);
-                Core.EnsureComplete(320, 321); //Warm and Furry 320, Shell Shock 321
-            }
-            // Core.CancelRegisteredQuests();
-            ToggleBoost(BoostType.Reputation, false);
-            Core.SavedState(false);
+            // Seven Sisters
+            Core.EnsureAccept(319);
+            Core.GetMapItem(56, 7, "tavern");
+            Core.EnsureAccept(319);
         }
+
+        Core.EquipClass(ClassType.Farm);
+        Core.SavedState();
+        ToggleBoost(BoostType.Reputation);
+        Core.Logger($"Farming rank {rank}");
+
+        // Core.RegisterQuests(320, 321); //Warm and Furry 320, Shell Shock 321
+        while (!Bot.ShouldExit && FactionRank("Dwarfhold") < rank)
+        {
+            Core.EnsureAccept(320, 321); //Warm and Furry 320, Shell Shock 321
+            Core.KillMonster("pines", "Enter", "Right", "Pine Grizzly", "Bear Skin", 5, log: false);
+            Core.KillMonster("pines", "Enter", "Right", "Red Shell Turtle", "Red Turtle Shell", 5, log: false);
+            Core.EnsureComplete(320, 321); //Warm and Furry 320, Shell Shock 321
+        }
+        // Core.CancelRegisteredQuests();
+        ToggleBoost(BoostType.Reputation, false);
+        Core.SavedState(false);
+
     }
 
     public void ElementalMasterREP(int rank = 10)
