@@ -1503,7 +1503,7 @@ public class CoreFarms
             // Seven Sisters
             Core.EnsureAccept(319);
             Core.GetMapItem(56, 7, "tavern");
-            Core.EnsureAccept(319);
+            Core.EnsureComplete(319);
         }
 
         Core.EquipClass(ClassType.Farm);
