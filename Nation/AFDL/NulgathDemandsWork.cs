@@ -19,6 +19,7 @@ public class NulgathDemandsWork
     public CoreNation Nation = new();
     public GoldenHanzoVoid GHV = new();
     public WillpowerExtraction WillpowerExtraction = new();
+    public CoreAdvanced Adv = new();
 
     public string[] NDWItems =
     {
@@ -53,8 +54,7 @@ public class NulgathDemandsWork
     /// </summary>
     public void NDWQuest(string[]? items = null, int quant = 1)
     {
-        if (items == null)
-            items = NDWItems;
+        items ??= NDWItems;
 
         if (Core.CheckInventory(items, quant))
             return;
@@ -91,12 +91,12 @@ public class NulgathDemandsWork
 
                 if (item == "Unidentified 35")
                 {
-                    if (Core.CheckInventory("Archfiend Essence Fragment", 9))
-                        Core.BuyItem("tercessuinotlim", 1951, 35770);
-                    else Core.EnsureComplete(5259);
+                    while (!Bot.ShouldExit && Core.CheckInventory("Archfiend Essence Fragment", 9) && !Core.CheckInventory("Unidentified 35", quant))
+                        Adv.BuyItem("tercessuinotlim", 1951, 35770, shopItemID: 7912);
+                    if (!Core.CheckInventory(_item!.ID, quant))
+                        Core.EnsureComplete(5259, _item!.ID);
                 }
                 else Core.EnsureComplete(5259, _item!.ID);
-                Core.ToBank(item);
 
                 Core.Logger($"Completed x{++i}");
                 i++;
@@ -104,7 +104,7 @@ public class NulgathDemandsWork
         }
     }
 
-    public void Uni27(int quant = 1)
+    public void Uni27()
     {
         if (Core.CheckInventory("Unidentified 27"))
             return;

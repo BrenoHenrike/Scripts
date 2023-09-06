@@ -178,7 +178,7 @@ public class Core13LoC
         Story.KillQuest(264, "mobius", "Cyclops Raider");
 
         //To-go box
-          if (!Story.QuestProgression(265))
+        if (!Story.QuestProgression(265))
         {
             Core.EnsureAccept(265);
             Core.HuntMonster("faerie", "Chainsaw Sneevil", "Cardboard Box", 4);
@@ -201,7 +201,7 @@ public class Core13LoC
         if (!Story.QuestProgression(272))
         {
             Core.EnsureAccept(272);
-            Core.KillEscherion(publicRoom: true);
+            Core.KillEscherion("Defeated Escherion", isTemp: true);
             Core.EnsureComplete(272);
         }
     }
@@ -2046,7 +2046,7 @@ public class Core13LoC
         {
             Adv.GearStore();
             Core.EnsureAccept(3189);
-            Core.KillXiang("Chaos Lord Xiang Defeated", publicRoom: true);
+            Core.KillXiang("Chaos Lord Xiang Defeated");
             Core.EnsureComplete(3189);
             Adv.GearStore(true);
         }
@@ -2331,6 +2331,7 @@ public class Core13LoC
         Story.MapItemQuest(3798, "shadowattack", 2896);
 
         //Beat Death!
+        Core.EquipClass(ClassType.Solo);
         Story.KillQuest(3799, "shadowattack", "Death");
 
         //Enter Confrontation
@@ -2391,7 +2392,8 @@ public class Core13LoC
         if (!Story.QuestProgression(3881))
         {
             Core.EnsureAccept(3881);
-            Core.HuntMonsterMapID("finalshowdown", 1, "Prince Drakath Defeated");
+            while (!Bot.ShouldExit && !Core.CheckInventory("Prince Drakath Defeated"))
+                Core.HuntMonster("finalshowdown", "Prince Drakath");
             Core.EnsureComplete(3881);
         }
     }
@@ -2415,10 +2417,11 @@ public class Core13LoC
         Story.ChainQuest(3814);
 
         //Up the Mountain
+        Core.EquipClass(ClassType.Farm);
         if (!Story.QuestProgression(3815))
         {
             Core.EnsureAccept(3815);
-            Core.KillMonster("falcontower", "Spawn", "Enter", "*", "Enemy Defeated", 3);
+            Core.HuntMonster("falcontower", "Sir Knight", "Enemy Defeated", 3);
             Core.EnsureComplete(3815);
         }
 
@@ -2426,7 +2429,7 @@ public class Core13LoC
         if (!Story.QuestProgression(3816))
         {
             Core.EnsureAccept(3816);
-            Core.KillMonster("falcontower", "Spawn", "Enter", "*", "Enemy Defeated", 3);
+            Core.HuntMonster("falcontower", "Sir Knight", "Enemy Defeated", 3);
             Core.EnsureComplete(3816);
         }
 
@@ -2434,7 +2437,7 @@ public class Core13LoC
         if (!Story.QuestProgression(3817))
         {
             Core.EnsureAccept(3817);
-            Core.KillMonster("falcontower", "Spawn", "Enter", "*", "Enemy Defeated", 3);
+            Core.HuntMonster("falcontower", "Sir Knight", "Enemy Defeated", 3);
             Core.EnsureComplete(3817);
         }
 
@@ -2442,7 +2445,7 @@ public class Core13LoC
         if (!Story.QuestProgression(3818))
         {
             Core.EnsureAccept(3818);
-            Core.KillMonster("falcontower", "Spawn", "Enter", "*", "Enemy Defeated", 3);
+            Core.HuntMonster("falcontower", "Sir Knight", "Enemy Defeated", 3);
             Core.EnsureComplete(3818);
         }
 
@@ -2450,7 +2453,7 @@ public class Core13LoC
         if (!Story.QuestProgression(3819))
         {
             Core.EnsureAccept(3819);
-            Core.KillMonster("falcontower", "Spawn", "Enter", "*", "Enemy Defeated", 2);
+            Core.HuntMonster("falcontower", "Sir Knight", "Enemy Defeated", 2);
             Core.EnsureComplete(3819);
         }
 
@@ -2458,11 +2461,12 @@ public class Core13LoC
         if (!Story.QuestProgression(3820))
         {
             Core.EnsureAccept(3820);
-            Core.KillMonster("falcontower", "Spawn", "Enter", "*", "Enemy Defeated", 5);
+            Core.HuntMonster("falcontower", "Sir Knight", "Enemy Defeated", 5);
             Core.EnsureComplete(3820);
         }
 
         //Defeat the Dragonlord
+        Core.EquipClass(ClassType.Solo);
         Story.KillQuest(3821, "falcontower", "DragonLord");
 
         //Defeat Dragon Drakath

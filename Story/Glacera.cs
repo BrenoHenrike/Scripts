@@ -37,7 +37,7 @@ public class GlaceraStory
 
     public void FrozenTower()
     {
-        if (Core.isCompletedBefore(3941))
+        if (Core.isCompletedBefore(3937))
             return;
 
         Story.PreLoad(this);
@@ -100,9 +100,15 @@ public class GlaceraStory
         Story.MapItemQuest(3924, "frozentower", 3009, 6);
 
         // Divination Draft
-        Story.MapItemQuest(3925, "frozentower", 3012, 4);
-        Story.MapItemQuest(3925, "frozentower", 3011, 4);
-        Story.KillQuest(3925, "frozentower", new[] { "Arctic Eel", "Frostwyrm" });
+        if (!Story.QuestProgression(3925))
+        {
+            Story.MapItemQuest(3925, "frozentower", 3012, 4);
+            Story.MapItemQuest(3925, "frozentower", 3011, 4);
+
+            Core.HuntMonster("frozentower", "Frostwyrm", "Frozen Tail", 5);
+            Core.HuntMonster("frozentower", "Arctic Eel", "Frozen Scale", 5);
+            Core.EnsureComplete(3925);
+        }
 
         // Retrieve the Light StarStone
         Story.MapItemQuest(3926, "frozentower", 3021);
@@ -136,13 +142,20 @@ public class GlaceraStory
         Story.KillQuest(3935, "frozentower", "Ice Wolf");
 
         // Drive Back the Invaders
-        Story.KillQuest(3936, "frozentower", "Frost Invader");
+        if(!Story.QuestProgression(3936))
+        {
+            Core.EnsureAccept(3936);
+            Core.HuntMonster("frozentower", "Frost Invader", "FrostSpawn Invader defeated", 10);
+            Core.EnsureComplete(3936);
+        }
 
         // Defeat the FrostSpawn Invaders
-        Story.KillQuest(3937, "frozentower", "Frost Fangbeast");
-
-        // FangBeast Bash-up
-        Story.KillQuest(3941, "frozentower", "Frost Fangbeast");
+        if(!Story.QuestProgression(3937))
+        {
+            Core.EnsureAccept(3937);
+            Core.HuntMonster("frozentower", "Frost Fangbeast", "Fangbeasts defeated", 15);
+            Core.EnsureComplete(3937);
+        }
     }
 
     public void FrozenRuins()
@@ -153,6 +166,9 @@ public class GlaceraStory
         Story.PreLoad(this);
 
         // FrozenRuins
+
+        // FangBeast Bash-up
+        Story.KillQuest(3941, "frozenruins", "Frost Fangbeast");
 
         // Ravage the Reapers
         Story.KillQuest(3942, "frozenruins", "Frost Reaper");
@@ -270,7 +286,7 @@ public class GlaceraStory
             return;
 
         // Key to the Fortress
-        Story.KillQuest(3948, "Glacera", "mob");
+        Story.KillQuest(3948, "Glacera", "Frost Invader");
         // Breaking Boulders
         Story.MapItemQuest(3949, "Glacera", 3049, 6);
         // The Scythe of Vengeance

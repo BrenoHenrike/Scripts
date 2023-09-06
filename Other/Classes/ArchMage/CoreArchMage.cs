@@ -16,6 +16,7 @@ tags: null
 //cs_include Scripts/ShadowsOfWar/CoreSoWMats.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Skills;
+using Skua.Core.Models.Items;
 using Skua.Core.Options;
 
 public class CoreArchMage
@@ -52,9 +53,9 @@ public class CoreArchMage
 
     public void GetAM(bool rankUpClass = true)
     {
-        bool cosmetics = Bot.Config.Get<bool>("cosmetics");
-        bool lumina = Bot.Config.Get<bool>("lumina_elementi");
-        army = Bot.Config.Get<bool>("army");
+        bool cosmetics = Bot.Config!.Get<bool>("cosmetics");
+        bool lumina = Bot.Config!.Get<bool>("lumina_elementi");
+        army = Bot.Config!.Get<bool>("army");
 
         if (Core.CheckInventory("ArchMage", toInv: false))
         {
@@ -136,7 +137,7 @@ public class CoreArchMage
 
     public void LuminaElementi(bool standalone = false)
     {
-        if (standalone || Bot.Config.Get<bool>("cosmetics") ?
+        if (standalone || Bot.Config!.Get<bool>("cosmetics") ?
                 Core.CheckInventory(Core.EnsureLoad(8919).Rewards.Select(x => x.ID).ToArray(), toInv: false) :
                 Core.CheckInventory("Providence", toInv: false))
             return;
@@ -157,6 +158,7 @@ public class CoreArchMage
         Core.FarmingLogger("Unbound Thread", 100);
         //Fallen Branches 8869
         Core.RegisterQuests(8869);
+        Core.AddDrop("Unbound Thread", "Providence");
         while (!Bot.ShouldExit && !Core.CheckInventory("Unbound Thread", 100))
         {
             Core.EquipClass(ClassType.Farm);
@@ -187,12 +189,7 @@ public class CoreArchMage
         BLOD.BrilliantAura(200);
 
         Scroll.BuyScroll(Scrolls.Mystify, 50);
-
-        Core.EquipClass(ClassType.Farm);
-        Core.RegisterQuests(8814, 8815);
-        while (!Bot.ShouldExit && !Core.CheckInventory("Prismatic Seams", 250))
-            Core.HuntMonster("Streamwar", "Decaying Locust", "Timestream Medal", 5);
-        Core.CancelRegisteredQuests();
+        SOWM.PrismaticSeams(250);
 
         Core.HuntMonster("noxustower", "Lightguard Caster", "Mortal Essence", 100, false);
         Core.HuntMonster("portalmazec", "Pactagonal Knight", "Orthogonal Energy", 150, false);
@@ -315,9 +312,9 @@ public class CoreArchMage
     #endregion
 
     #region Materials
-    public void MysticScribingKit(int quant = 5)
+    public void MysticScribingKit(int quant)
     {
-        if (Core.CheckInventory("Mystic Scribing Kit", quant))
+        if (Core.CheckInventory(73327, quant))
             return;
 
         Core.FarmingLogger("Mystic Scribing Kit", quant);
@@ -344,11 +341,11 @@ public class CoreArchMage
             Core.RegisterQuests(3050);
             while (!Bot.ShouldExit && !Core.CheckInventory(new[] { "Mystic Shards", "Mystic Quills" }, 49))
             {
-                Core.KillMonster("gilead", "r3", "Left", "Water Elemental", "Water Core");
-                Core.KillMonster("gilead", "r4", "Left", "Fire Elemental", "Fire Core");
-                Core.KillMonster("gilead", "r4", "Left", "Wind Elemental", "Air Core");
-                Core.KillMonster("gilead", "r3", "Left", "Earth Elemental", "Earth Core");
-                Core.KillMonster("gilead", "r8", "Left", "Mana Elemental", "Mana Core");
+                Core.HuntMonster("gilead", "Water Elemental", "Water Core", log: false);
+                Core.HuntMonster("gilead", "Fire Elemental", "Fire Core", log: false);
+                Core.HuntMonster("gilead", "Wind Elemental", "Air Core", log: false);
+                Core.HuntMonster("gilead", "Earth Elemental", "Earth Core", log: false);
+                Core.HuntMonster("gilead", "Mana Elemental", "Mana Core", log: false);
             }
 
             //Incase they swap it back again:
@@ -356,10 +353,10 @@ public class CoreArchMage
             // Core.RegisterQuests(3298);
             // while (!Bot.ShouldExit && !Core.CheckInventory(new[] { "Mystic Shards", "Mystic Quills" }, 49))
             // {
-            //     Core.HuntMonster("gilead", "Water Elemental", "Water Drop", 5);
-            //     Core.HuntMonster("gilead", "Fire Elemental", "Flame", 5);
-            //     Core.HuntMonster("gilead", "Wind Elemental", "Breeze", 5);
-            //     Core.HuntMonster("gilead", "Earth Elemental", "Stone", 5);
+            //     Core.HuntMonster("gilead", "Water Elemental", "Water Drop", 5, log: false);
+            //     Core.HuntMonster("gilead", "Fire Elemental", "Flame", 5, log: false);
+            //     Core.HuntMonster("gilead", "Wind Elemental", "Breeze", 5, log: false);
+            //     Core.HuntMonster("gilead", "Earth Elemental", "Stone", 5, log: false);
             // }
 
             Core.CancelRegisteredQuests();
@@ -380,9 +377,9 @@ public class CoreArchMage
         }
     }
 
-    public void PrismaticEther(int quant = 1)
+    public void PrismaticEther(int quant)
     {
-        if (Core.CheckInventory("Prismatic Ether", quant))
+        if (Core.CheckInventory(73333, quant))
             return;
 
         if (!Bot.Quests.IsUnlocked(8910))
@@ -400,12 +397,14 @@ public class CoreArchMage
             Core.KillMonster("shadowattack", "Boss", "Left", "Death", "Mortal Ether", isTemp: false);
             Core.HuntMonster("gaiazor", "Gaiazor", "Vital Ether", isTemp: false);
             Core.KillMonster("fiendshard", "r9", "Left", "Nulgath's Fiend Shard", "Infernal Ether", isTemp: false);
+            Core.Jump("Enter", "Spawn");
+            Bot.Wait.ForCombatExit();
             Core.EnsureComplete(8910);
             Bot.Wait.ForPickup("Prismatic Ether");
         }
     }
 
-    public void ArcaneLocus(int quant = 1)
+    public void ArcaneLocus(int quant)
     {
         if (Core.CheckInventory(73339, quant))
             return;
@@ -415,7 +414,6 @@ public class CoreArchMage
 
         Core.FarmingLogger("Arcane Locus", quant);
         Core.AddDrop(73339);
-        Core.EquipClass(ClassType.Solo);
 
         while (!Bot.ShouldExit && !Core.CheckInventory(73339, quant))
         {
@@ -438,33 +436,44 @@ public class CoreArchMage
 
     public void UnboundTome(int quant)
     {
-        if (Core.CheckInventory("Unbound Tome", quant))
+        ItemBase? unboundTomeItem = Bot.Inventory.Items.FirstOrDefault(item => item.Name == "Unbound Tome");
+        int currentUnboundTomes = unboundTomeItem?.Quantity ?? 0;
+
+        if (currentUnboundTomes >= quant)  // Check if you already have enough
+            return;
+
+        int unboundTomesNeeded = Math.Max(0, quant - currentUnboundTomes);
+
+        if (unboundTomesNeeded <= 0)
             return;
 
         if (!Bot.Quests.IsUnlocked(8912))
-            ArcaneLocus();
+            ArcaneLocus(1);
 
         Core.FarmingLogger("Unbound Tome", quant);
         Core.AddDrop("Unbound Tome");
 
-        MysticScribingKit(quant);
-        PrismaticEther(quant);
-        ArcaneLocus(quant);
-
-        while (!Bot.ShouldExit && !Core.CheckInventory("Unbound Tome", quant))
+        while (!Bot.ShouldExit && (unboundTomeItem == null || unboundTomeItem.Quantity < quant))
         {
             Core.EnsureAccept(8912);
-            //line 460 is require else it tries to do the 500ks and it absolutely refuses todo so.
-            // Adv.BuyItem("alchemyacademy", 395, 7132, 30, 1, 8844);
-            Adv.BuyItem("alchemyacademy", 395, 62749, 30, 1, 8777);
-            Core.BuyItem("alchemyacademy", 395, "Dragon Runestone", 30, 8844);
+            MysticScribingKit(unboundTomesNeeded);
+            PrismaticEther(unboundTomesNeeded);
+            ArcaneLocus(unboundTomesNeeded);
+            Farm.DragonRunestone(30);
             Adv.BuyItem("darkthronehub", 1308, "Exalted Paladin Seal");
             Adv.BuyItem("shadowfall", 89, "Forsaken Doom Seal");
 
             Core.EnsureComplete(8912);
             Bot.Wait.ForPickup("Unbound Tome");
+
+            unboundTomeItem = Bot.Inventory.Items.FirstOrDefault(item => item.Name == "Unbound Tome");
         }
     }
+
+
+
+
+
 
     #endregion
 
@@ -482,23 +491,13 @@ public class CoreArchMage
                     break;
 
                 case "Vital Exanima":
-                    if (Core.CheckInventory("Yami No Ronin") || Core.CheckInventory("Void Highlord") || Core.CheckInventory("Void HighLord (IoDA)"))
-                    {
-                        if (Core.CheckInventory("Yami No Ronin"))
-                            Bot.Skills.StartAdvanced("Yami no Ronin", true, ClassUseMode.Def);
-                        else Bot.Skills.StartAdvanced(Core.CheckInventory("Void Highlord") ? "Void Highlord" : "Void HighLord (IoDA)", true, ClassUseMode.Def);
-                        Adv.KillUltra("dage", "Boss", "Right", "Dage the Evil", item, isTemp: false);
-                    }
-                    else Item("dage", "Dage the Evil", item, quant);
+                    Core.BossClass();
+                    Adv.KillUltra("dage", "Boss", "Right", "Dage the Evil", item, isTemp: false);
                     break;
 
                 case "Everlight Flame":
-                    if (Core.CheckInventory("Void Highlord") || Core.CheckInventory("Void HighLord (IoDA)"))
-                    {
-                        Bot.Skills.StartAdvanced(Core.CheckInventory("Void Highlord") ? "Void Highlord" : "Void HighLord (IoDA)", true, ClassUseMode.Def);
-                        Adv.KillUltra("fireavatar", "r9", "Left", "Avatar Tyndarius", item, isTemp: false);
-                    }
-                    else Item("fireavatar", "Avatar Tyndarius", item, quant);
+                    Core.BossClass();
+                    Adv.KillUltra("fireavatar", "r9", "Left", "Avatar Tyndarius", item, isTemp: false);
                     break;
 
                 case "Calamitous Ruin":
@@ -513,13 +512,8 @@ public class CoreArchMage
                     break;
 
                 case "The Mortal Coil":
-                    if (Core.CheckInventory("Yami No Ronin"))
-                    {
-                        Core.Logger("This may Take a few trys to kill it but it'll work Trust the Potato.");
-                        Bot.Skills.StartAdvanced("Yami No Ronin", true, ClassUseMode.Def);
-                        Adv.KillUltra("tercessuinotlim", "Boss2", "Right", "Nulgath", item, isTemp: false);
-                    }
-                    else Item("tercessuinotlim", "Nulgath", item, quant);
+                    Core.BossClass();
+                    Adv.KillUltra("tercessuinotlim", "Boss2", "Right", "Nulgath", item, isTemp: false);
                     break;
 
                 case "The Divine Will":
@@ -571,6 +565,7 @@ public class CoreArchMage
                 break;
         }
     }
+
 
     private string[] RequiredItems = {
         "ArchMage",

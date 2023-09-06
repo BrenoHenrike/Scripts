@@ -1,7 +1,7 @@
 /*
-name: Legion Fealty 2
-description: Does the Legion Fealty 2 quest for Legion Revenant untill you have 6 Conquest Wraths
-tags: legion, revenant, fealty, three, 2, LR, conquest, wreath
+name: null
+description: null
+tags: null
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

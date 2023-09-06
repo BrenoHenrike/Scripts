@@ -217,7 +217,7 @@ public class Core7DD
         {
             Core.EnsureAccept(5952);
             Core.BuyItem("Dragonhame", 865, "Airther Vitae");
-            Core.BuyItem("Arcangrove", 211, "Health Potion");
+            Core.BuyItem("Arcangrove", 211, 1749);
             Core.EnsureComplete(5952);
         }
 

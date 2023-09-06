@@ -15,17 +15,17 @@ public class TheRefreshingDeal
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
+    public CoreFarms Farm = new();
     public CoreNation Nation = new();
     public PurifiedClaymoreOfDestiny PCoD = new();
 
     public string OptionsStorage = "RefreshingDeal";
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         CoreBots.Instance.SkipOptions,
-        new Option<int>("GemQuantity", "How many Gems of Nulgath?","Max Stack is 1000" ,0),
-        new Option<int>("TotemQuantity", "How many Totems of Nulgath?","Max Stack is 100", 0),
+        new Option<int>("GemQuantity", "How many Gems of Nulgath?","Max Stack is 1000", 1000),
+        new Option<int>("TotemQuantity", "How many Totems of Nulgath?","Max Stack is 100", 100),
         new Option<bool>("BankItems", "Bank nation items at the end", "true/false", false),
     };
 
@@ -34,7 +34,7 @@ public class TheRefreshingDeal
         Core.BankingBlackList.AddRange(Nation.bagDrops);
         Core.SetOptions();
 
-        Deal(Bot.Config.Get<int>("GemQuantity"), Bot.Config.Get<int>("TotemQuantity"));
+        Deal(Bot.Config!.Get<int>("GemQuantity"), Bot.Config.Get<int>("TotemQuantity"));
 
         Core.SetOptions(false);
     }
@@ -47,7 +47,7 @@ public class TheRefreshingDeal
             return;
         }
 
-        Nation.DragonSlayerReward(); //required
+       Nation.DragonSlayerReward(); //required
         PCoD.GetPCoD();
 
         Core.AddDrop("Gem of Nulgath", "Totem of Nulgath");
@@ -76,7 +76,7 @@ public class TheRefreshingDeal
             Bot.Wait.ForPickup("Totem of Nulgath");
         }
 
-        if (Bot.Config.Get<bool>("BankItems"))
+        if (Bot.Config!.Get<bool>("BankItems"))
             Core.ToBank(Nation.bagDrops);
     }
 }

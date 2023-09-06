@@ -7,6 +7,8 @@ tags: daily-gifts, rare-items
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Seasonal/MayThe4th/TwiggusGearMerge.cs
+//cs_include Scripts/Seasonal/SummerBreak/RoseRapiers.cs
+//cs_include Scripts/Other/Pets/CursedWazikashi.cs
 using System.Globalization;
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
@@ -19,6 +21,8 @@ public class CurrentDailyGifts
     private static CoreBots sCore = new();
     private CoreAdvanced Adv = new();
     private TwiggusGearMerge TGM = new();
+    private RoseRapiers RR = new();
+    private CursedWazikashi CursedWazikashi = new();
 
     public string OptionsStorage = "CurrentDailyGifts";
     public bool DontPreconfigure = true;
@@ -61,14 +65,17 @@ public class CurrentDailyGifts
             GetGift(Permanent, "eden", "Klawaii Machine", "Apa's Tour Guide Morph", "Crystallis Megaphone", "Eden City Tour Flag", "Eden Tour Guide's Vest", "Eta's Tour Guide Morph", "Furled Eden City Umbrella", "Key to Eden City", "Keys to Eden City", "Rainy Day Tour Guide");
             GetGift(Permanent, "garden", "Creature 83", "Chibi Darkon's Shag", "Chibi Darkon's Twintails", "Chibi Drago's Shag", "Chibi Drago's Twintails", "Chibi Fa's Shag", "Chibi Fa's Twintails", "Chibi La's Shag", "Chibi La's Twintails", "Chibi Mi's Shag", "Chibi Mi's Twintails", "Chibi Re's Shag", "Chibi Re's Twintails", "Chibi So's Shag", "Chibi So's Twintails", "Chibi Suki's Shag", "Chibi Suki's Twintails", "Chibi Ti's Shag", "Chibi Ti's Twintails");
             GetGift(Permanent, "garden", "Creature 72", "Chibi Darkon's Pillow", "Chibi Drago's Pillow", "Chibi Fa's Pillow", "Chibi La's Pillow", "Chibi Mi's Pillow", "Chibi Re's Pillow", "Chibi So's Pillow", "Chibi Suki's Pillow", "Chibi Ti's Pillow");
-            GetGift(Permanent, "eridani", 4643, "Malevolent Hourglass");
+            // GetGift(Permanent, "eridani", 25, "Malevolent Hourglass");
             GetGift(Permanent, "falcontower", "Alteon", "Alteon's Dragon Sword", "Alteon's Polished Dragon Sword");
             GetGift(Permanent, "aqlesson", "Carnax", "Guardian Blade Evolution", "Sanctified Guardian Blade");
             GetGift(Permanent, "superdeath", "Super Death", "HeroSmash Electina Guard", "HeroSmash General Smash Guard", "HeroSmash Hottica Guard", "HeroSmash Rider Guard", "HeroSmash Ultimate Good Guard", "HeroSmash Ultimate Evil Guard");
-            GetGift(Permanent, "sepulchure", "Dark Sepulchure", "Gravelyn's Champion Wings", "Gravelyn's Purified DoomBlade");
+            GetGift(Permanent, "sepulchure", "Dark Sepulchure", "Gravelyn's Champion Wings", "Gravelyn's Purified DoomBlade", "Vampragon of DOOM");
             GetGift(Permanent, "dflesson", "Fluffy the Dracolich", "Zurvana's Blessing", "Zurvana's Wrath", "Zurvana's Wrath", "Zurvana's Pity", "Zurvana's Pity");
             GetGift(Permanent, "mqlesson", "Dragonoid", "Dragonoid Edge", "Dragonoid Edges");
             GetGift(Permanent, "aqw3d", "Trolluk", "Underworld Anguish Scythe");
+            GetGift(Permanent, "lavarockbay", "Kalayo", "Lavarock Orb Pet");
+            GetGift(Permanent, "burningbeach", "Lava Guardian", "Burnt Ember Scrap Pet");
+            GetGift(Permanent, "twilightzone", "Leviathan", "Fallen Leviathan's Spear", "Staff of the Twilight Sea God", "Sea Dragon's Scimitars", "Sea Dragon's Scimitar");
 
             #endregion
             //GetGift(AvailableUntil(30, 11, 2022), "moonlab", "Nightmare Zorbak", "Zorbak's VordredSlayer", "Zorbak's VordredSlayers");
@@ -126,29 +133,54 @@ public class CurrentDailyGifts
             //GetGift(AvailableUntil(27, 3), "eden", "Klawaii Machine", "Minty Fresh Gacha Orb", "Sweet Treat Gacha Orb", "Dragon Lover's Gacha Orb", "TreasureHunter's Gacha Orb", "TechFiend's Gacha Orb", "TreasureHunter's Gacha Orb Decor", "Sweet Treat Gacha Orb Decor", "Minty Fresh Gacha Orb Decor", "TechFiend's Gacha Orb Decor", "Dragon Lover's Gacha Orb Decor");
             #endregion
 
-            #region April 2023
+            #region April 2023 ( + Scavenger Clues)        
             //Dark Scavenger Clue
             GetGift(AvailableUntil(3, 4), "fireplanewar", "ShadowClaw", "Trident of Destruction");
+
             //Shadowy Scavenger Clue
             GetGift(AvailableUntil(27, 3), "manacradle", "The Mainyu", "ShadowFlame Eviscerator Pistol", "ShadowFlame Eviscerator Pistols", "ShadowFlame Eviscerator Revolver", "ShadowFlame Eviscerator Revolvers", "ShadowFlame Annihilator Rifle", "ShadowFlame Devastator");
+
             //Undead Scavenger Clue
             GetGift(AvailableUntil(10, 4), "dragontown", "Chaos Fluffy", "Dracosaster", "Dracotastrophe");
+
             //O_o Scavenger Clue
             GetGift(AvailableUntil(17, 4), "andre", "Giant Fist", "Navel Top Hat");
+
             //GigaWUT Scavenger Clue
             GetGift(AvailableUntil(24, 4), "dvg", "Munthor", "Giga Twilly");
+
             //Golden Treasure Hunt clue
             GetGift(AvailableUntil(1, 5), "necrodungeon", 48, "Golden Spear of Light");
+
             //Message Capsule Clue
             TGM.BuyAllMerge("L'il Twiggu Guest");
             TGM.BuyAllMerge("Baby Twiggu's Pod Pet");
 
+            //Throny Scavenger Clue
+            RR.GetWeapons();
+
+            // Fireworks twilly
+            if (DateTime.Now.Month == 7)
+                Core.BuyItem(Bot.Map.Name, 1348, 78735, shopItemID: 48402);
+
             GetGift(AvailableUntil(10, 6), "ashray", "Ashray Fisherman", "Twig's Totally FUN-ctional Ride");
             GetGift(AvailableUntil(16, 6), "garden", "Creature 35", "Dark Astravian General Lance");
+            #endregion April 2023 ( + Scavenger Clues) 
 
-            // Fortunate Grenwog Garb
-            // GetGift(AvailableUntil(30, 4), "elixirgrenwog", "Elixir Grenwog", "Fortunate Grenwog Garb");
-            #endregion
+            #region July 2023
+            GetGift(Permanent, "ontherun", "lumberhorc", "Maple Party Twig");
+
+            #endregion July 2023
+
+            #region August 2023
+
+            // Cursed Wakizashi Pet (Treasure Hunt?)
+            CursedWazikashi.CursedWakizashiPet();
+
+            #endregion August 2023
+
+
+
             //GetGift(AvailableUntil(1, 1), "map", "monster", "");
             //GetGift(Permanent, "map", "monster", "");
 

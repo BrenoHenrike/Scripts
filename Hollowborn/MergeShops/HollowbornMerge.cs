@@ -1,7 +1,7 @@
 /*
-name: Hollowborn 
-description: This bot will farm the items belonging to the selected mode for the Hollowborn  [1887] in /hbchallenge
-tags: hollowborn, , hbchallenge, adept, spirit, spite, locks, shag, blades, cleaver, executioner's, axe, druidic, soothsayer, soothsayer’s, antlered, skull, soothsayer's, hooded, visage, hood, runed, cape, runes, burning, aura, rune, gate, staff, spike, spikes, gauntlet
+name: Hollowborn Merge
+description: This bot will farm the items belonging to the selected mode for the Hollowborn Merge [1887] in /hbchallenge
+tags: hollowborn, merge, hbchallenge, executioner, executioners, gas, , scarves, bite, cleavers, druid, druids, antlered, skull, runed, burning
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -27,7 +27,7 @@ public class HollowbornMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Hollowborn Adept", "Hollowborn Spirit", "Hollowborn Spite", "Hollowborn Locks", "Hollowborn Shag", "Hollowborn Blades", "Hollowborn Cleaver", "Hollowborn Executioner's Axe", "Druidic Soothsayer", "Druidic Soothsayer’s Antlered Skull", "Druidic Soothsayer's Hooded Visage", "Druidic Soothsayer Hood", "Druidic Soothsayer's Runed Cape", "Druidic Soothsayer's Cape", "Druidic Soothsayer's Runes", "Druidic Soothsayer's Burning Cape", "Druidic Soothsayer's Burning Aura", "Druidic Soothsayer Rune Gate", "Druidic Soothsayer Staff", "Druidic Soothsayer Spike", "Druidic Soothsayer Spikes", "Druidic Soothsayer Gauntlet" });
+        Core.BankingBlackList.AddRange(new[] { "Hollowborn Adept", "Hollowborn Spirit", "Hollowborn Spite", "Hollowborn Locks", "Hollowborn Shag", "Hollowborn Blades", "Hollowborn Cleaver", "Hollowborn Executioner's Axe", "Druidic Soothsayer", "Druidic Soothsayer’s Antlered Skull", "Druidic Soothsayer's Hooded Visage", "Druidic Soothsayer Hood", "Druidic Soothsayer's Runed Cape", "Druidic Soothsayer's Cape", "Druidic Soothsayer's Runes", "Druidic Soothsayer's Burning Cape", "Druidic Soothsayer's Burning Aura", "Druidic Soothsayer Rune Gate", "Druidic Soothsayer Staff", "Druidic Soothsayer Spike", "Druidic Soothsayer Spikes", "Druidic Soothsayer Gauntlet"});
         Core.SetOptions();
 
         BuyAllMerge();
@@ -96,7 +96,7 @@ public class HollowbornMerge
                 case "Druidic Soothsayer Spikes":
                 case "Druidic Soothsayer Gauntlet":
                     Adv.BuyItem($"dragonrune", 689, req.Name, quant);
-                    break;
+                    break;              
             }
         }
     }

@@ -101,7 +101,7 @@ public class CoreFriday13th
 
         // Captain Von Poach 3111
         Story.KillQuest(3111, "TreasureIsland", "Captain Von Poach");
-        
+
         if (Core.IsMember)
         {
             //Me Knickers Got a Big Hole Across th' Bum 3114
@@ -647,16 +647,28 @@ public class CoreFriday13th
         Story.KillQuest(7394, "PuzzleBox", "Bones of the Doomed");
 
         // The Blackened Heart 7395
-        Core.Join("PuzzleBox", "r5", "right", true);
-        Story.KillQuest(7395, "PuzzleBox", "Cursed Guardian");
+        if (!Story.QuestProgression(7395))
+        {
+            Core.EnsureAccept(7395);
+            Core.HuntMonsterMapID("PuzzleBox", 13, "Blackened Heart");
+            Core.EnsureComplete(7395);
+        }
 
         // The Ancient Athame 7396
-        Core.Join("PuzzleBox", "r6", "right", true);
-        Story.KillQuest(7396, "PuzzleBox", "Cursed Guardian");
+        if (!Story.QuestProgression(7396))
+        {
+            Core.EnsureAccept(7396);
+            Core.HuntMonsterMapID("PuzzleBox", 14, "Ancient Athame");
+            Core.EnsureComplete(7396);
+        }
 
         // The Withered Hand 7397
-        Core.Join("PuzzleBox", "r7", "right", true);
-        Story.KillQuest(7397, "PuzzleBox", "Cursed Guardian");
+        if (!Story.QuestProgression(7397))
+        {
+            Core.EnsureAccept(7397);
+            Core.HuntMonsterMapID("PuzzleBox", 15, "Withered Hand");
+            Core.EnsureComplete(7397);
+        }
 
         // The Bones 7398
         Story.KillQuest(7398, "PuzzleBox", "Bones of the Doomed");

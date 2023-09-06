@@ -71,14 +71,9 @@ public class ArchDoomKnight
         Core.SetOptions(false);
     }
 
-    public void DoAll(bool BankRewards = false)
+    public void DoAll(bool ArmorOnly = false, bool BankRewards = false)
     {
-        LOC.Wolfwing();
-        Farm.EvilREP(7);
-        GatheringPower();
-        DeathsDoor();
-        ChaoticLords();
-        AMeansToAnEnd();
+        AMeansToAnEnd(ArmorOnly);
         if (BankRewards)
             Core.ToBank(Combined);
     }
@@ -88,6 +83,9 @@ public class ArchDoomKnight
     {
         if (Core.CheckInventory("Arch DoomKnight Cape", toInv: false))
             return;
+
+        LOC.Wolfwing();
+        Farm.EvilREP(7);
 
         Core.AddDrop(Q1items);
         Core.EnsureAccept(6795);
@@ -102,6 +100,9 @@ public class ArchDoomKnight
 
     public void DeathsDoor()
     {
+        if (!Core.isCompletedBefore(6796))
+            GatheringPower();
+
         if (Core.CheckInventory(new[] { "Arch DoomKnight Cape Sword", "Arch DoomKnight Polearm" }, toInv: false))
             return;
 
@@ -117,6 +118,9 @@ public class ArchDoomKnight
 
     public void ChaoticLords()
     {
+        if (!Core.isCompletedBefore(6797))
+            DeathsDoor();
+
         if (Core.CheckInventory(new[] { "Arch DoomKnight Sword", "Arch DoomKnight's Edge" }, toInv: false))
             return;
 
@@ -124,28 +128,34 @@ public class ArchDoomKnight
         Core.EnsureAccept(6797);
 
         Core.EquipClass(ClassType.Solo);
-        Core.KillEscherion("Escherion's Helm", publicRoom: true);
-        Core.KillEscherion("Chaotic Power", 13, publicRoom: true);
+        Core.KillEscherion("Escherion's Helm");
+        Core.KillEscherion("Chaotic Power", 13);
 
-        Core.KillVath("Legendary Sword of Dragon Control", isTemp: false, publicRoom: true);
-        Core.KillKitsune("Hanzamune Dragon Koi Blade", publicRoom: true);
+        Core.KillVath("Legendary Sword of Dragon Control", isTemp: false);
+        Core.KillKitsune("Hanzamune Dragon Koi Blade");
         Core.HuntMonster("Wolfwing", "Wolfwing", "Wolfwing Armor", isTemp: false);
         Core.HuntMonster("palooza", "Kimberly", "One Eyed Doll Breaker", isTemp: false);
-        Core.HuntMonster("Ledgermayne", "Ledgermayne", "Ledgermayne", isTemp: false, publicRoom: true);
-        Core.HuntMonster("djinn", "Tibicenas", "Tibicenas", isTemp: false, publicRoom: true);
+        Core.HuntMonster("Ledgermayne", "Ledgermayne", "Ledgermayne", isTemp: false);
+        Core.HuntMonster("djinn", "Tibicenas", "Tibicenas", isTemp: false);
         Core.HuntMonster("dreamnexus", "Khasaanda", "Soul of Chaos Armor", isTemp: false);
         Core.HuntMonster("stormtemple", "Chaos Lord Lionfang", "Chaos Lionfang Armor", isTemp: false);
-        Core.HuntMonster("swordhavenfalls", "Chaos Lord Alteon", "Shorn Chaos King Crown", isTemp: false, publicRoom: true);
-        Core.KillXiang("Xiang Chaos", isTemp: false, publicRoom: true);
-        Core.HuntMonster("ultradrakath", "Champion of Chaos", "Drakath's Sword", isTemp: false, publicRoom: true);
+        Core.HuntMonster("swordhavenfalls", "Chaos Lord Alteon", "Shorn Chaos King Crown", isTemp: false);
+        Core.KillXiang("Xiang Chaos", isTemp: false);
+        Core.HuntMonster("ultradrakath", "Champion of Chaos", "Drakath's Sword", isTemp: false);
         Core.HuntMonster("mqlesson", "Dragonoid", "Dragonoid of Hours", isTemp: false);
         Core.HuntMonster("timespace", "Chaos Lord Iadoa", "Chaorrupted Hourglass", isTemp: false);
         Core.EnsureComplete(6797);
         Core.ToBank(Q3items);
     }
 
-    public void AMeansToAnEnd()
+    public void AMeansToAnEnd(bool ArmorOnly = false)
     {
+        if (!Core.isCompletedBefore(6798))
+            ChaoticLords();
+            
+        if (ArmorOnly && Core.CheckInventory("Arch DoomKnight"))
+            return;
+
         if (Core.CheckInventory(new[] { "Arch DoomKnight", "Arch DoomKnight Open Helm", "Arch DoomKnight Helm" }, toInv: false))
             return;
 
@@ -157,11 +167,11 @@ public class ArchDoomKnight
         Farm.BattleUnderB("Undead Energy", 2000);
 
         Core.EquipClass(ClassType.Solo);
-        Core.HuntMonster("epicvordred", "Ultra Vordred", "(Necro) Scroll of Dark Arts", 2, isTemp: false, publicRoom: true);
-        Core.HuntMonster("sepulchurebattle", "ULTRA Sepulchure", "Doom Heart", isTemp: false, publicRoom: true);
-        Core.HuntMonster("sepulchure", "Dark Sepulchure", "Dread Knight Cleaver", isTemp: false, publicRoom: true);
-        Core.HuntMonster("thevoid", "Reaper", "Reaper's Soul", 1, isTemp: false, publicRoom: true);
-        Core.HuntMonster("Desolich", "Desolich", "Desolich's Undead Eye", 2, isTemp: false, publicRoom: true);
+        Core.HuntMonster("epicvordred", "Ultra Vordred", "(Necro) Scroll of Dark Arts", 2, isTemp: false);
+        Core.HuntMonster("sepulchurebattle", "ULTRA Sepulchure", "Doom Heart", isTemp: false);
+        Core.HuntMonster("sepulchure", "Dark Sepulchure", "Dread Knight Cleaver", isTemp: false);
+        Core.HuntMonster("thevoid", "Reaper", "Reaper's Soul", 1, isTemp: false);
+        Core.HuntMonster("Desolich", "Desolich", "Desolich's Undead Eye", 2, isTemp: false);
         Core.EnsureComplete(6798);
         Core.ToBank(Q4items);
     }

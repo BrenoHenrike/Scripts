@@ -28,7 +28,7 @@ public class Caladbolg
     {
         Core.SetOptions();
 
-        GetCaladbolg(Bot.Config.Get<bool>("other"));
+        GetCaladbolg(Bot.Config!.Get<bool>("other"));
 
         Core.SetOptions(false);
     }

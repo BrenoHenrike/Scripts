@@ -29,8 +29,8 @@ public class BrethwrenREPFarm
 
     public void DoRep()
     {
-        Adv.BestGear(GenericGearBoost.dmgAll);
-        Adv.BestGear(GenericGearBoost.rep);
+        //Adv.BestGear(GenericGearBoost.dmgAll);
+        //Adv.BestGear(GenericGearBoost.rep);
         HarvestDay.BirdsWithHarms();
 
         Farm.BrethwrenREP();

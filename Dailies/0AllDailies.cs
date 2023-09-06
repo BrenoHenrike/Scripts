@@ -84,6 +84,7 @@ public class FarmAllDailies
         Daily.HardCoreMetals(new[] { "Arsenic", "Beryllium", "Chromium", "Palladium", "Rhodium", "Rhodium", "Thorium", "Mercury" }, 10, ToBank: true);
         Daily.CryptoToken();
         Daily.GoldenInquisitor();
+        Daily.BreakIntotheHoard(false, false);
 
         // Core.Logger("All dailies are completed. Doing a last Bankall");
         // BAI.BankAll();

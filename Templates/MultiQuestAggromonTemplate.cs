@@ -12,17 +12,17 @@ using Skua.Core.Options;
 public class MultiQuestAggromonTemplate  //<-- replace
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
-    public CoreBots Core => CoreBots.Instance;
+    public static CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
-    public CoreAdvanced Adv => new();
-    private CoreArmyLite Army = new();
+    public static CoreAdvanced Adv => new();
+    private readonly CoreArmyLite Army = new();
 
-    private static CoreBots sCore = new();
-    private static CoreArmyLite sArmy = new();
+    private static readonly CoreBots sCore = new();
+    private static readonly CoreArmyLite sArmy = new();
 
     public string OptionsStorage = "RenameME"; //<-- replace
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         new Option<int>("armysize", "Players", "Input the minimum of players to wait for 1-6", 1),
         sArmy.player1,
@@ -52,16 +52,17 @@ public class MultiQuestAggromonTemplate  //<-- replace
 
         while (!Bot.ShouldExit && !Core.CheckInventory(new[] { "item", "item", "etc" })) //<-- fill in stuffs
         {
+            //use these for quest items
             if (!Core.CheckInventory("item"))
-                ArmyThing(0000, "map", new[] { "monster" }, "drop", isTemp: false); //<-- fill in stuffs
-            if (!Core.CheckInventory("item"))                                       //<--               |
-                ArmyThing(0000, "map", new[] { "monster" }, "drop", isTemp: false); //<--               |
-            if (!Core.CheckInventory("item"))                                       //<--               |
-                ArmyThing(0000, "map", new[] { "monster" }, "drop", isTemp: false); //<-- fill in stuffs
+                ArmyThing(0000, "map", new[] { 1, 2, 3, 4 }, "drop", 1, isTemp: false); //<-- fill in stuffs
+            if (!Core.CheckInventory("item"))                                       //<--                   |
+                ArmyThing(0000, "map", new[] { 1, 2, 3, 4 }, "drop", 1, isTemp: false); //<--               |
+            if (!Core.CheckInventory("item"))                                       //<--                   |
+                ArmyThing(0000, "map", new[] { 1, 2, 3, 4 }, "drop", 1, isTemp: false); //<-- fill in stuffs
         }
     }
 
-    void ArmyThing(int questID, string map = null, string[] monsters = null, string item = null, bool isTemp = false, int quant = 1)
+    void ArmyThing(int questID, string map, int[] MonsterMapID, string? item, int quant, bool isTemp)
     {
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
@@ -77,44 +78,31 @@ public class MultiQuestAggromonTemplate  //<-- replace
         Core.EquipClass(ClassType.Farm);
         Core.FarmingLogger(item, quant);
 
-        Core.Join(map);
-        WaitCheck();
+        Army.waitForParty(map, item);
         Core.EnsureAccept(questID);
-        Armyshit(map);
-
-
-        foreach (string monster in monsters)
-            Army.SmartAggroMonStart(map, monsters);
+        Armyshit(map, MonsterMapID);
 
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
             Bot.Combat.Attack("*");
 
+        Army.waitForParty("whitemap", item);
         Army.AggroMonStop(true);
         Core.JumpWait();
-        Bot.Wait.ForPickup(item);
         Core.EnsureComplete(questID);
-    }
+        Bot.Wait.ForPickup(item);
 
-    void WaitCheck()
-    {
-        while (Bot.Map.PlayerCount < Bot.Config.Get<int>("armysize"))
+        void Armyshit(string map, int[] MonsterMapID)
         {
-            Core.Logger($"Waiting for the squad. [{Bot.Map.PlayerNames.Count}/{Bot.Config.Get<int>("armysize")}]");
-            Bot.Sleep(5000);
-        }
-        Core.Logger($"Squad All Gathered [{Bot.Map.PlayerNames.Count}/{Bot.Config.Get<int>("armysize")}]");
-    }
+            if (Bot.Map.Name == null)
+                return;
 
-    void Armyshit(string map = null)
-    {
-        if (Bot.Map.Name == null)
-            return;
-
-        if (Bot.Map.Name == "MapName") //<-- fill in stuffs
-        {
-            Army.AggroMonCells("r1", "r2", "r3"); //<-- replace the cells with the cells mobs are in.
-            Army.AggroMonStart("MapName");
-            Army.DivideOnCells("r1", "r2", "r3"); //<-- replace the cells with the cells mobs are in.
+            if (Bot.Map.Name == "MapName") //<-- fill in stuffs
+            {
+                Army.AggroMonCells("insert", "cells", "here"); //<-- replace the cells with the cells mobs are in.
+                Army.AggroMonMIDs(MonsterMapID);
+                Army.AggroMonStart(map);
+                Army.DivideOnCells("insert", "cells", "here"); //<-- replace the cells with the cells mobs are in.
+            }
         }
     }
 }

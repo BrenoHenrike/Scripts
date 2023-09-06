@@ -46,7 +46,7 @@ public class Eden
         }
 
         // Eden City KotaMart 8797
-        Story.KillQuest(8797, "eden", "SalaryMan");
+        Story.KillQuest(8797, "eden", new[] { "SalaryMan", "SalaryMan" });
 
         // Save the Citizens! 8798
         if (!Story.QuestProgression(8798))

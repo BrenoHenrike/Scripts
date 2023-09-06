@@ -38,11 +38,14 @@ public class ArchFiend
     public void GetArchfiend(bool rankUp = true)
     {
         if (Core.CheckInventory("ArchFiend"))
+        {
+            if (rankUp)
+                Adv.RankUpClass("ArchFiend");
             return;
-
+        }
         AbyssalContract();
 
-        Core.BuyItem("tercessuinotlim", 695, "ArchFiend");
+        Core.BuyItem("tercessuinotlim", 695, 18894, shopItemID: 1925);
         if (rankUp)
             Adv.RankUpClass("ArchFiend");
     }
@@ -92,7 +95,7 @@ public class ArchFiend
             Nation.ApprovalAndFavor(0, 999);
             Core.BuyItem("shadowblast", 1206, "Blood Star of the Archfiend");
         }
-
+        Core.EquipClass(ClassType.Solo);
         Core.HuntMonster("fiendshard", "Dirtlicker", "Dirtlicker Demoted", 1, false);
 
         Core.EnsureComplete(8476);

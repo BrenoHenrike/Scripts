@@ -33,7 +33,7 @@ public class LordOfOrder
 
     public void GetLoO(bool rankUpClass = true, bool getExtras = true)
     {
-        if (Core.CheckInventory(50741, toInv: false) && (getExtras ? !Core.CheckInventory(Core.QuestRewards(7156), toInv: false) : true))
+        if (Core.CheckInventory(50741, toInv: false) && (getExtras ? Core.CheckInventory(Core.QuestRewards(7165), toInv: false) : true))
             return;
 
         Core.Logger("Daily: Lord Of Order Class");
@@ -131,7 +131,7 @@ public class LordOfOrder
             Core.EnsureAccept(7160);
 
             Core.EquipClass(ClassType.Solo);
-            Core.KillKitsune("Hanzamune Dragon Koi Blade", log: false);
+            Core.KillKitsune("Hanzamune Dragon Koi Blade");
             Core.HuntMonster("ledgermayne", "Ledgermayne", "The Supreme Arcane Staff", isTemp: false, log: false);
             Core.HuntMonster("mqlesson", "Dragonoid", "Dragonoid of Hours", isTemp: false, log: false);
             if (!Core.CheckInventory("Safiria's Spirit Orb"))
@@ -219,7 +219,7 @@ public class LordOfOrder
             Farm.FishingREP(7);
             Core.BuyItem("greenguardwest", 363, "Lure of Order");
             Adv.GearStore();
-            Core.KillXiang("Quixotic Mana Essence", 10, true, false, true, true);
+            Core.KillXiang("Quixotic Mana Essence", 10, ultra: true, isTemp: false);
             Adv.GearStore(true);
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("yasaris", "Serepthys", "Inversion Infusion", 5, false, log: false);

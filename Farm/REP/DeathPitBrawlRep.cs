@@ -29,8 +29,8 @@ public class DeathPitBrawlREP
     public void DoRep()
     {
         CoreToD.DeathPitPVP();
-        Adv.BestGear(GenericGearBoost.dmgAll);
-        Adv.BestGear(GenericGearBoost.rep);
+        //Adv.BestGear(GenericGearBoost.dmgAll);
+        //Adv.BestGear(GenericGearBoost.rep);
         Farm.DeathPitBrawlREP();
         
     }

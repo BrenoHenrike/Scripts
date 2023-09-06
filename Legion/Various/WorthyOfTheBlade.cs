@@ -11,11 +11,11 @@ using Skua.Core.Interfaces;
 
 public class WorthyBlade
 {
-    public IScriptInterface Bot => IScriptInterface.Instance;
-    public CoreBots Core => CoreBots.Instance;
+    public static IScriptInterface Bot => IScriptInterface.Instance;
+    public static CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
     public CoreNation Nation = new();
-    public CoreAdvanced Adv = new CoreAdvanced();
+    public CoreAdvanced Adv = new();
 
     public void ScriptMain(IScriptInterface bot)
     {

@@ -12,9 +12,9 @@ public class TarosManslayer
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
+    public CoreFarms Farm = new();
     public CoreNation Nation = new();
-    public PurifiedClaymoreOfDestiny PCoD = new PurifiedClaymoreOfDestiny();
+    public PurifiedClaymoreOfDestiny PCoD = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -52,7 +52,8 @@ public class TarosManslayer
             {
                 Core.EnsureAccept(1111);
                 Nation.FarmGemofNulgath(10);
-                Core.HuntMonster(Core.IsMember ? "nulgath" : "evilmarsh", "Dark Makai", "Dark Makai Rune");
+                Core.KillMonster( "tercessuinotlim", "m1", "Right", "Dark Makai", "Dark Makai Rune");
+                
                 Core.EnsureCompleteChoose(1111, Rewards);
                 Bot.Sleep(Core.ActionDelay);
             }

@@ -29,8 +29,8 @@ public class BrightoakREP
 
     public void DoRep()
     {
-        Adv.BestGear(GenericGearBoost.dmgAll);
-        Adv.BestGear(GenericGearBoost.rep);
+        //Adv.BestGear(GenericGearBoost.dmgAll);
+        //Adv.BestGear(GenericGearBoost.rep);
 
         BrightOak.doall();
         Farm.BrightoakREP();

@@ -24,6 +24,8 @@ tags: story, quest, complete, all
 //cs_include Scripts/Story/FireIsland/CoreFireIsland.cs
 //cs_include Scripts/Seasonal/Friday13th/Story/CoreFriday13th.cs
 
+//cs_include Scripts/Story\Hollowborn\CoreHollowbornStory.cs
+
 //cs_include Scripts/Story/IsleOfFotia/CoreIsleOfFotia.cs
 
 //cs_include Scripts/Legion/CoreLegion.cs
@@ -165,7 +167,6 @@ tags: story, quest, complete, all
 //cs_include Scripts/Story/Tournament.cs
 //cs_include Scripts/Story/Tower[mem].cs
 //cs_include Scripts/Story/TowerOfDoom.cs
-//cs_include Scripts/Story/Trygve.cs
 //cs_include Scripts/Story/Tutorial.cs
 
 
@@ -182,7 +183,6 @@ tags: story, quest, complete, all
 //cs_include Scripts/Story/Yokai.cs
 
 //cs_include Scripts/Story/MemetsRealm/CoreMemet.cs
-
 
 using Skua.Core.Interfaces;
 
@@ -210,6 +210,9 @@ public class AllStories
 
     //Fire Island
     public CoreFireIsland FI = new();
+
+    //Hollowborn
+    public CoreHollowbornStory HB = new();
 
     //Friday 13th
     public CoreFriday13th CoreFriday13th = new();
@@ -368,7 +371,6 @@ public class AllStories
     public Tournament Tournament = new();
     public Tower Tower = new();
     public TowerOfDoom TowerOfDoom = new();
-    public Trygve Trygve = new();
     public Tutorial Tutorial = new();
 
     public Ubear Ubear = new();
@@ -445,6 +447,11 @@ public class AllStories
         #region CoreFireIsland
         FI.CompleteFireIsland();
         Core.Logger($"Saga: Fireisland Maps - Complete");
+        #endregion
+
+        #region Hollowborn
+        HB.DoAll();
+        Core.Logger($"Saga: Hollowborn - Complete");
         #endregion
 
         #region CoreFriday13th
@@ -758,6 +765,7 @@ public class AllStories
         MustyCave.Storyline();
         Core.Logger($"Story: MustyCave - Complete");
 
+
         Noobshire.doAll();
         Core.Logger($"Story: Noobshire - Complete");
 
@@ -847,9 +855,6 @@ public class AllStories
 
         TowerOfDoom.TowerProgress();
         Core.Logger($"Story: Tower Of Doom - Complete");
-
-        Trygve.Storyline();
-        Core.Logger($"Story: Trygve - Complete");
 
 
         Ubear.StoryLine();

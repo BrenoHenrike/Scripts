@@ -27,11 +27,13 @@ public class MasterRanger
     public void GetMR(bool rankUpClass = true)
     {
         if (Core.CheckInventory("Master Ranger"))
+        {
+            if (rankUpClass)
+                Adv.RankUpClass("Master Ranger");
             return;
+        }
 
-        Farm.SandseaREP();
-
-        Core.BuyItem("sandsea", 242, "Master Ranger");
+        Adv.BuyItem("sandsea", 242, 7260, shopItemID: 5682);
 
         if (rankUpClass)
             Adv.RankUpClass("Master Ranger");

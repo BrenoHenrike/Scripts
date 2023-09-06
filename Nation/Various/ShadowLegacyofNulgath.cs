@@ -12,7 +12,7 @@ public class ShadowLegacyofNulgath
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
+    public CoreFarms Farm = new();
     public CoreNation Nation = new();
 
     public void ScriptMain(IScriptInterface bot)
@@ -33,7 +33,7 @@ public class ShadowLegacyofNulgath
 
         Nation.ApprovalAndFavor(100, 0);
         Nation.Supplies("Voucher of Nulgath (non-mem)");
-        Nation.EssenceofNulgath(100);
+       Nation.EssenceofNulgath(100);
         Core.KillMonster("tercessuinotlim", "m4", "Right", "Shadow of Nulgath", "Hadean Onyx of Nulgath", 1, false);
         Core.HuntMonster("Citadel", "Burning Witch", "Letter from Asuka and Tendou", isTemp: false);
         Farm.Gold(3000000);

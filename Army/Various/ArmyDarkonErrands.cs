@@ -67,13 +67,13 @@ public class ArmyDarkonErrands
 
     void ArmyHunt(string map, string[] monsters, string item, ClassType classType, bool isTemp = false, int quant = 1, Method Method = Method.None)
     {
-        if (!Bot.Config.Get<bool>("sellToSync") && Core.CheckInventory(item, quant))
+        if (!Bot.Config!.Get<bool>("sellToSync") && Core.CheckInventory(item, quant))
             return;
 
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
 
-        if (Bot.Config.Get<bool>("sellToSync"))
+        if (Bot.Config!.Get<bool>("sellToSync"))
             Army.SellToSync(item, quant);
 
         Core.AddDrop(item);

@@ -168,11 +168,11 @@ public class CoreAdvanced
         {
             if (Core.CheckInventory(item.ID, toInv: false) ||
                 miscCatagories.Contains(item.Category) ||
-                (String.IsNullOrEmpty(buyOnlyThis) ? false : buyOnlyThis != item.Name) ||
+                (!String.IsNullOrEmpty(buyOnlyThis) && buyOnlyThis != item.Name) ||
                 (itemBlackList != null && itemBlackList.Any(b => b.ToLower() == item.Name.ToLower())))
                 continue;
 
-            if (Core.IsMember ? true : !item.Upgrade)
+            if (Core.IsMember || !item.Upgrade)
             {
                 if (mode == 3)
                 {
@@ -653,7 +653,7 @@ public class CoreAdvanced
                         .Select(b => b.Item1);
                 // Should always return true if its two pets or armors or ground runes
 
-                if (filter != null && filter.Any(x => x != null))
+                if (filter != null && filter.Any(x => x != null && x.ID > 0))
                     setToReturn(filter);
                 else
                 {
@@ -1412,6 +1412,10 @@ public class CoreAdvanced
                     if (!uExamen())
                         Fail();
                     break;
+                case HelmSpecial.Forge:
+                    if (!uForgeHelm())
+                        Fail();
+                    break;
                 case HelmSpecial.Anima:
                     if (!uAnima())
                         Fail();
@@ -1709,10 +1713,12 @@ public class CoreAdvanced
         => Core.isCompletedBefore(8824);
     private bool uExamen()
         => Core.isCompletedBefore(8825);
-    private bool uAnima()
-        => Core.isCompletedBefore(8826);
+    private bool uForgeHelm()
+        => Core.isCompletedBefore(8828);
     private bool uPneuma()
         => Core.isCompletedBefore(8827);
+    private bool uAnima()
+        => Core.isCompletedBefore(8826);
     private bool uDauntless()
         => Core.isCompletedBefore(9172);
     private bool uPraxis()
@@ -1851,6 +1857,7 @@ public class CoreAdvanced
                     cSpecial = CapeSpecial.Vainglory;
                     wSpecial = WeaponSpecial.Valiance;
                     hSpecial = HelmSpecial.Anima;
+
                     break;
                 #endregion
 
@@ -1867,6 +1874,22 @@ public class CoreAdvanced
                     hSpecial = HelmSpecial.Vim;
                     break;
                 #endregion
+
+                #region Lucky - Lacerate - Forge - Lament
+
+                case "doom metal necro":
+                case "neo metal necro":
+                    if ((!uLacerate() || !uForgeHelm() || !uLament()))
+                        goto default;
+
+                    type = EnhancementType.Lucky;
+                    cSpecial = CapeSpecial.Vainglory;
+                    if (uLacerate())
+                        wSpecial = WeaponSpecial.Lacerate;
+                    hSpecial = HelmSpecial.Forge;
+                    cSpecial = CapeSpecial.Lament;
+                    break;
+                #endregion Lucky - lacerate - forge
 
                 #region Lucky - Vainglory - Lacerate - Vim
                 case "yami no ronin":
@@ -1920,6 +1943,20 @@ public class CoreAdvanced
                     break;
                 #endregion
 
+                #region Lucky - Vainglory - Elysium - Pneuma
+                case "antique hunter":
+                case "artifact hunter":
+                    if (!uVainglory() || !uElysium() || !uPneuma())
+                        goto default;
+
+                    type = EnhancementType.Lucky;
+                    cSpecial = CapeSpecial.Vainglory;
+                    wSpecial = WeaponSpecial.Elysium;
+                    hSpecial = HelmSpecial.Pneuma;
+                    break;
+                #endregion
+
+
                 #region Lucky - Lament - Elysium - Pneuma
                 case "abyssal angel":
                 case "abyssal angel's shadow":
@@ -1927,7 +1964,7 @@ public class CoreAdvanced
                         goto default;
 
                     type = EnhancementType.Lucky;
-                    cSpecial = CapeSpecial.Lament;
+                    cSpecial = CapeSpecial.Vainglory;
                     wSpecial = WeaponSpecial.Elysium;
                     hSpecial = HelmSpecial.Pneuma;
                     break;
@@ -2127,7 +2164,6 @@ public class CoreAdvanced
                 case "alpha pirate":
                 case "arachnomancer":
                 case "arcane dark caster":
-                case "artifact hunter":
                 case "assassin":
                 case "barber":
                 case "bard":
@@ -2530,6 +2566,9 @@ public class CoreAdvanced
                 case "troubador of love":
                 case "unchained rocker":
                 case "unchained rockstar":
+                case "doom metal necro":
+                case "neo metal necro":
+                case "antique hunter":
                     type = EnhancementType.Lucky;
                     wSpecial = WeaponSpecial.Awe_Blast;
                     break;

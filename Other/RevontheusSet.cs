@@ -50,7 +50,7 @@ public class RevontheusSet
         while (!Bot.ShouldExit && !Core.CheckInventory(Set))
             Core.KillMonster("underworld", "r10", "left", "Undead Legend", log: false);
 
-        if (Bot.Config.Get<bool>("Equip"))
+        if (Bot.Config!.Get<bool>("Equip"))
             Core.Equip(Set);
 
     }

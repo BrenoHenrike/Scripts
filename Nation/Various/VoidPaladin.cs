@@ -23,6 +23,7 @@ public class VoidPaladin
     public CoreFarms Farm = new CoreFarms();
     public CoreNation Nation = new();
     public CoreNSOD NSoD = new();
+    public CoreAdvanced Adv = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -81,7 +82,8 @@ public class VoidPaladin
                 if (!Core.CheckInventory("Archmage Ink"))
                 {
                     Core.HuntMonster("underworld", "Skull Warrior", "Mystic Shards", 2, false);
-                    Core.BuyItem("dragonrune", 549, "Archmage Ink", 1);
+                    //ArchMage Ink
+                    Adv.BuyItem("dragonrune", 549, 13289, shopItemID: 1641);
                 }
                 Core.ChainComplete(2346);
                 Bot.Drops.Pickup("Scroll of Underworld");
@@ -109,10 +111,8 @@ public class VoidPaladin
         Nation.FarmUni13(2);
 
         if (!Core.CheckInventory("Nulgath Shaped Chocolate"))
-        {
-            Farm.Gold(2000000);
-            Core.BuyItem("citadel", 44, "Nulgath Shaped Chocolate");
-        }
+            //Nulgath Shaped Chocolate
+            Adv.BuyItem("citadel", 44, 38316, shopItemID: 22367);
         NSoD.VoidAuras(2);
 
         Core.EnsureComplete(5827);

@@ -14,20 +14,22 @@ using Skua.Core.Options;
 
 public class SuppliesWheelArmy
 {
-    public IScriptInterface Bot => IScriptInterface.Instance;
-    public CoreBots Core => CoreBots.Instance;
+    public static IScriptInterface Bot => IScriptInterface.Instance;
+    public static CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
     public CoreArmyLite Army = new();
     public CoreNation Nation = new();
 
-    private static CoreArmyLite sArmy = new();
+    private static readonly CoreArmyLite sArmy = new();
 
     public bool DontPreconfigure = true;
     public string OptionsStorage = "ArmySupplies";
 
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
-        new Option<bool>("sellToSync", "Sell to Sync", "Sell items to make sure the army stays syncronized.\nIf off, there is a higher chance your army might desyncornize", false),
+        
+        new Option<Cell>("mob", "h90 or h85", "h90 for more relic turn ins, but more chance of getting stuck due to deaths - h85 for just Relics from Escherion", Cell.h90),
+        new Option<bool>("sellToSync", "Sell to Sync", "Sell \"Relic of Chaos\" to make sure the army stays syncronized. If off, there is a higher chance your army might desyncornize", false),
         new Option<bool>("SwindlesReturnDuring", "Do swindles Return", "Accepts the Swindles Returns items, and goes to kill a makai for the rune, during the quest.", false),
         sArmy.player1,
         sArmy.player2,
@@ -47,6 +49,7 @@ public class SuppliesWheelArmy
 
         Core.SetOptions();
 
+        Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
         ArmySupplies();
 
         Core.SetOptions(false);
@@ -56,7 +59,6 @@ public class SuppliesWheelArmy
     {
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
-        Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
 
         List<ItemBase> RewardOptions1 = Core.EnsureLoad(2857).Rewards;
         List<ItemBase> RewardOptions2 = Core.EnsureLoad(7551).Rewards;
@@ -68,15 +70,15 @@ public class SuppliesWheelArmy
 
         foreach (ItemBase item in RewardOptions1.Concat(RewardOptions2).ToArray())
         {
-            if (Bot.Config.Get<bool>("SwindlesReturnDuring"))
+            if (Bot.Config!.Get<bool>("SwindlesReturnDuring"))
             {
                 Core.RegisterQuests(2857, 7551);
                 Core.FarmingLogger(item.Name, item.MaxStack);
                 while (!Bot.ShouldExit && !Core.CheckInventory(item.ID, item.MaxStack))
                 {
-                    ArmyHunt("hydrachallenge", new[] { "Hydra Head 90" }, "Relic of Chaos", ClassType.Farm, false, 13);
+                    ArmyHydra(item, item.MaxStack);
                     if (Core.CheckInventory(Nation.SwindlesReturn))
-                        Core.HuntMonster(Core.IsMember ? "nulgath" : "evilmarsh", "Dark Makai", "Dark Makai Rune", 1);
+                        Core.KillMonster("tercessuinotlim", "m1", "Right", "Dark Makai", "Dark Makai Rune");
                 }
             }
             else
@@ -84,32 +86,39 @@ public class SuppliesWheelArmy
                 Core.RegisterQuests(2857);
                 Core.FarmingLogger(item.Name, item.MaxStack);
                 while (!Bot.ShouldExit && !Core.CheckInventory(item.ID, item.MaxStack))
-                    ArmyHunt("hydrachallenge", new[] { "Hydra Head 90" }, "Relic of Chaos", ClassType.Farm, false, 99);
+                    ArmyHydra(item, item.MaxStack);
             }
         }
         Core.CancelRegisteredQuests();
     }
 
-    void ArmyHunt(string map, string[] monsters, string item, ClassType classType, bool isTemp = false, int quant = 1)
+    void ArmyHydra(ItemBase item, int quant = 99)
     {
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
 
         if (Bot.Config!.Get<bool>("sellToSync"))
-            Army.SellToSync(item, quant);
+            Army.SellToSync(item.Name, quant);
 
-        Core.AddDrop(item);
+        Core.AddDrop("Relic of Chaos", "Hydra Scale Piece");
 
-        Core.EquipClass(classType);
-        Army.waitForParty(map, item);
-        Core.FarmingLogger(item, quant);
+        Core.EquipClass(ClassType.Farm);
+        Army.waitForParty("hydrachallenge");
 
-        Army.SmartAggroMonStart(map, monsters);
+        Army.AggroMonMIDs(Bot.Config!.Get<Cell>("mob") == Cell.h85 ? new[] { 29, 30, 31 } : new[] { 32, 33, 34 });
+        Army.DivideOnCells(Bot.Config!.Get<Cell>("mob") == Cell.h85 ? "h85" : "h90");
+        Army.AggroMonStart("hydrachallenge");
 
-        while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
-            Bot.Combat.Attack("*");
+        while (!Bot.ShouldExit && !Core.CheckInventory(item.ID, quant))
+            Bot.Combat.Attack(Bot.Config!.Get<Cell>("mob") == Cell.h85 ? "Hydra Head 85" : "Hydra Head 90");
 
         Army.AggroMonStop(true);
         Core.JumpWait();
+    }
+
+    public enum Cell
+    {
+        h90 = 0,
+        h85 = 1
     }
 }

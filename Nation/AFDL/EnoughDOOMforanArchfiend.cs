@@ -14,14 +14,14 @@ using Skua.Core.Interfaces;
 
 public class EnoughDOOMforanArchfiend
 {
-    public IScriptInterface Bot => IScriptInterface.Instance;
-    public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
+    public static IScriptInterface Bot => IScriptInterface.Instance;
+    public static CoreBots Core => CoreBots.Instance;
+    public CoreFarms Farm = new();
     public CoreAdvanced Adv = new();
     public CoreNation Nation = new();
 
-    public WillpowerExtraction WillpowerExtraction = new WillpowerExtraction();
-    public NulgathDemandsWork NulgathDemandsWork = new NulgathDemandsWork();
+    public WillpowerExtraction WillpowerExtraction = new();
+    public NulgathDemandsWork NulgathDemandsWork = new();
 
     public void ScriptMain(IScriptInterface bot)
     {

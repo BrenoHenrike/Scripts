@@ -38,8 +38,11 @@ public class ArchPaladin
     public void GetAP(bool rankUpClass = true)
     {
         if (Core.CheckInventory(36920))
+        {
+            if (rankUpClass)
+                Adv.RankUpClass("ArchPaladin");
             return;
-
+        }
         Story.PreLoad(this);
 
         Farm.GoodREP();
@@ -212,7 +215,7 @@ public class ArchPaladin
             Core.EnsureComplete(5470);
         }
 
-        Core.BuyItem("darkthronehub", 1303, "ArchPaladin", shopItemID: 21833);
+        Core.BuyItem("darkthronehub", 1303, 36920, shopItemID: 21833);
         if (rankUpClass)
         {
             Adv.GearStore();

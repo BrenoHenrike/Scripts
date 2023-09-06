@@ -39,7 +39,7 @@ public class AstravianOracleSet
             Core.AddDrop(item.Name);
 
         Core.EquipClass(ClassType.Farm);
-        Adv.BestGear(RacialGearBoost.Elemental);
+        //Adv.BestGear(RacialGearBoost.Elemental);
         foreach (ItemBase item in RewardOptions)
         {
             while (!Bot.ShouldExit && !Core.CheckInventory(item.ID, quant))
@@ -60,7 +60,7 @@ public class AstravianOracleSet
             Core.AddDrop(item.Name);
 
         Core.EquipClass(ClassType.Farm);
-        Adv.BestGear(RacialGearBoost.Human);
+        //Adv.BestGear(RacialGearBoost.Human);
 
         foreach (ItemBase item in RewardOptions)
         {

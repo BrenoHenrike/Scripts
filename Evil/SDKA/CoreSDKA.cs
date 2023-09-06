@@ -108,7 +108,7 @@ public class CoreSDKA
     {
         if (!Core.IsMember)
             return;
-        if (Bot.Quests.IsUnlocked(2098))
+        if (Core.isCompletedBefore(2098))
         {
             Core.Logger("Hard Core Metals already unlocked, skipping.");
             return;
@@ -119,7 +119,7 @@ public class CoreSDKA
                      "DoomCoin", "Shadow Creeper Enchant", "Shadow Serpent Scythe",
                      "Dark Skull", "Corrupt Spirit Orb");
 
-        if (!Bot.Quests.IsUnlocked(2087))
+        if (!Core.isCompletedBefore(2087))
         {
             Core.Logger("Sepulchure's Armor [2069]");
             DSO(40);
@@ -129,7 +129,7 @@ public class CoreSDKA
             Core.ToBank("Experimental Dark Item");
         }
 
-        if (!Bot.Quests.IsUnlocked(2088))
+        if (!Core.isCompletedBefore(2088))
         {
             Adv.GearStore();
             Core.Logger("The Doom that Looms [2087]");
@@ -154,7 +154,7 @@ public class CoreSDKA
             Core.ToBank("DoomKnight");
         }
 
-        if (!Bot.Quests.IsUnlocked(2089))
+        if (!Core.isCompletedBefore(2089))
         {
             Core.Logger("Toiling with Terror [2088]");
             Daily.EldersBlood();
@@ -167,7 +167,7 @@ public class CoreSDKA
             Core.ToBank("Elders' Blood");
         }
 
-        if (!Bot.Quests.IsUnlocked(2090))
+        if (!Core.isCompletedBefore(2090))
         {
             Core.Logger("Quest: A Penny for your Foughts [2089]");
             Penny(oneTime: true);
@@ -199,27 +199,17 @@ public class CoreSDKA
             return;
 
         Core.AddDrop("DoomCoin", "Dark Spirit Orb", "Shadow Creeper Enchant");
-        if (!oneTime)
-        {
-            Core.Logger($"Farming {quant} DSOs");
-            Core.EquipClass(ClassType.Farm);
-        }
-        else Core.Logger($"Farming {quant} DSOs");
+        Core.EquipClass(ClassType.Farm);
 
-        Core.RegisterQuests(2089, 2065);
+        Core.FarmingLogger("Dark Spirit Orb", quant);
+
+        Core.RegisterQuests(2089);
         while (!Bot.ShouldExit && (!Core.CheckInventory("Dark Spirit Orb", quant)))
         {
-            Core.KillMonster("maul", "r7", "Left", "*", "DoomCoin", 20, false, log: false);
-
+            Core.KillMonster("maul", "r7", "Left", "Shelleton", "DoomCoin", 20, false, log: false);
+            Bot.Drops.Pickup("Dark Spirit Orb");
             if (oneTime)
                 break;
-
-            if (Core.CheckInventory("Shadow Creeper Enchant"))
-            {
-                Core.HuntMonster("bludrut4", "Shadow Serpent", "Shadow Serpent Scythe", isTemp: false);
-                Core.HuntMonster("ruins", "Dark Witch", "Shadow Whiskers", 6);
-            }
-            Bot.Drops.Pickup("Dark Spirit Orb");
         }
         Core.CancelRegisteredQuests();
     }
@@ -286,8 +276,8 @@ public class CoreSDKA
         {
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("cornelis", "Stone Golem", "Stone Hammer", isTemp: false);
-            Core.HuntMonster("hachiko", "Dai Tengu", "Superior Blade Oil", publicRoom: true);
-            Core.HuntMonster("vordredboss", "Shadow Vordred", "Shadow Lacquer Finish", publicRoom: true);
+            Core.HuntMonster("hachiko", "Dai Tengu", "Superior Blade Oil");
+            Core.HuntMonster("vordredboss", "Shadow Vordred", "Shadow Lacquer Finish");
             Core.HuntMonster("anders", "Copper Sky Pirate", "Copper Awl");
             Core.HuntMonster("necrocavern", "Shadow Imp", "Shadowstone Sharpener");
 
@@ -313,8 +303,8 @@ public class CoreSDKA
         while (!Bot.ShouldExit && (!Core.CheckInventory(item, quant)))
         {
             Core.KillMonster("boxes", "Boss", "Left", "Sneeviltron", "Grumpy Warhammer", isTemp: false, log: false);
-            Core.KillKitsune("No. 1337 Blade Oil", publicRoom: true, log: false);
-            Core.KillMonster("sandcastle", "r7", "Left", "Chaos Sphinx", "Gold Brush", publicRoom: true, log: false);
+            Core.KillKitsune("No. 1337 Blade Oil");
+            Core.KillMonster("sandcastle", "r7", "Left", "Chaos Sphinx", "Gold Brush", log: false);
             Core.KillMonster("crashsite", "Boss", "Left", "ProtoSartorium", "Non-abrasive Power Powder", log: false);
             Core.KillMonster("necrocavern", "r13", "Left", "Shadow Dragon", "ShadowDragon Hide", 3, log: false);
             Core.KillMonster("dragonplane", "r9", "Left", "Moganth", "Moganth's Stone Sharpener", log: false);
@@ -378,7 +368,7 @@ public class CoreSDKA
                 Core.BuyItem("dwarfhold", 434, "Accursed Arsenic of Doom");
             }
 
-            if (!Bot.Quests.IsUnlocked(2144))
+            if (!Core.isCompletedBefore(2144))
             {
                 Core.Logger("Unlocking Weapon Kit quests");
                 Core.EnsureAccept(2137);

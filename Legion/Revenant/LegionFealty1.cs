@@ -1,7 +1,7 @@
 /*
-name: Legion Fealty 1
-description: Does the Legion Fealty 1 quest for Legion Revenant untill you have 20 Revenant Spellscrolls
-tags: legion, revenant, fealty, three, 1, LR, spellscroll 
+name: null
+description: null
+tags: null 
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

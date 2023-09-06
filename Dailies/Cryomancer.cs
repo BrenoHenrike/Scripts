@@ -28,7 +28,7 @@ public class Cryomancer
 
     public void DoCryomancer()
     {
-        Glac.DoAll();
+        Glac.FrozenTower();
         Daily.Cryomancer();
     }
 

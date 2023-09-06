@@ -6,6 +6,7 @@ tags: null
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/Nation/CoreNation.cs
+//cs_include Scripts/CoreAdvanced.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Shops;
 
@@ -15,6 +16,7 @@ public class GoldenHanzoVoid
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
     public CoreNation Nation = new();
+    public CoreAdvanced Adv = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -38,12 +40,7 @@ public class GoldenHanzoVoid
         Nation.FarmDiamondofNulgath(50);
         Nation.FarmVoucher(false);
 
-        Core.Join("evilwarnul");
-        Bot.Shops.Load(456);
-        List<ShopItem> shopdata = Bot.Shops.Items;
-        //Golden hanzo had issues buying? --temp fix probably
-
-        Core.BuyItem("evilwarnul", 456, "Golden Hanzo Void");
+        Adv.BuyItem("evilwarnul", 456, 27843, shopItemID: 3142);
         Bot.Wait.ForItemBuy();
     }
 }

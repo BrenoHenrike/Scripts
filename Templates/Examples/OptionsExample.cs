@@ -54,7 +54,7 @@ public class OptionsExample
         }
 
         //Bool if true
-        if (Bot.Config.Get<bool>("BoolNameGoesHere"))
+        if (Bot.Config!.Get<bool>("BoolNameGoesHere"))
         {
             //Do a thing if true
         }

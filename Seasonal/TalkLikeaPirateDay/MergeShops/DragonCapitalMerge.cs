@@ -40,7 +40,7 @@ public class DragonCapitalMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
+    public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         DCS.DragonCapital();
         //Only edit the map and shopID here
@@ -66,7 +66,7 @@ public class DragonCapitalMerge
                     break;
                 #endregion
 
-                case "Dragon King’s Favor":
+                case "Dragon King's Favor":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.RegisterQuests(8288);

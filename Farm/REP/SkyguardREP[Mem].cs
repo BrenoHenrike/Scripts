@@ -17,8 +17,8 @@ public class SkyguardREP
     {
         Core.SetOptions();
 
-        Adv.BestGear(GenericGearBoost.dmgAll);
-        Adv.BestGear(GenericGearBoost.rep);
+        //Adv.BestGear(GenericGearBoost.dmgAll);
+        //Adv.BestGear(GenericGearBoost.rep);
         Farm.SkyguardREP();
 
         Core.SetOptions(false);

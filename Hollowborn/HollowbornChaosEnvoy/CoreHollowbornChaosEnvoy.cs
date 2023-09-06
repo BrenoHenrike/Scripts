@@ -21,7 +21,7 @@ tags: null
 //cs_include Scripts/Story/StarSinc.cs
 //cs_include Scripts/Story/TitanAttack.cs
 //cs_include Scripts/Story/TowerOfDoom.cs
-//cs_include Scripts/Other/MergeShops/TitanGearIIMerge.cs
+//cs_include Scripts/Other/MergeShops/TitanStrikeGearMerge.cs
 //cs_include Scripts/Other/Badges/ChaosPuppetMaster.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
@@ -37,7 +37,7 @@ public class CoreHollowbornChaosEnvoy
     private ChaosAvengerClass CAV = new();
     private EternalDrakath ED = new();
     private AscendedDrakathGear ADG = new();
-    private TitanGearIIMerge TGM = new();
+    private TitanStrikeGearMerge TGM = new();
     private ChaosPuppetMaster CPM = new();
 
     public string OptionsStorage = "HollowbornChaosEnvoy";
@@ -226,7 +226,7 @@ public class CoreHollowbornChaosEnvoy
 
         Core.AddDrop(rewards);
         if (!Bot.Quests.IsUnlocked(9002))
-            WaveringIllusions(Bot.Config == null || Bot.Config.Get<bool>("getAll"));
+            WaveringIllusions(Bot.Config == null || Bot.Config!.Get<bool>("getAll"));
 
         Farm.Experience(95);
         ED.getSet();

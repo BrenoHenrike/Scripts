@@ -1,7 +1,7 @@
 /*
 name: Unlock Forge Enhancements
 description: null
-tags: lacerate, smite, herosvaliance, arcanasconcerto, elysium, acheron, absolution, vainglory, avarice, penitence, lament, vim, examen, anima, pneuma
+tags: lacerate, smite, herosvaliance, arcanasconcerto, elysium, acheron, absolution, vainglory, avarice, penitence, lament, vim, examen, anima, pneuma, dauntLess, praxis
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -70,7 +70,7 @@ tags: lacerate, smite, herosvaliance, arcanasconcerto, elysium, acheron, absolut
 //cs_include Scripts/Story/DragonFableOrigins.cs
 //cs_include Scripts/Other\Armor\MalgorsArmorSet.cs
 //cs_include Scripts/ShadowsOfWar/MergeShops/DeadLinesMerge.cs
-//cs_include Scripts/ShadowsOfWar/MergeShops/RuinedCrownMerge.cs
+//cs_include Scripts/ShadowsOfWar/MergeShops/ShadowflameFinaleMerge.cs
 //cs_include Scripts/ShadowsOfWar/MergeShops/TimekeepMerge.cs
 //cs_include Scripts/ShadowsOfWar/MergeShops/StreamwarMerge.cs
 //cs_include Scripts/ShadowsOfWar/MergeShops/WorldsCoreMerge.cs
@@ -129,8 +129,9 @@ public class UnlockForgeEnhancements
         new Option<ForgeQuestCape>("ForgeQuestCape", "Cape Enhancement", "Forge Quests to unlock Cape Enhancement, change to none to unselect", ForgeQuestCape.None),
         new Option<ForgeQuestHelm>("ForgeQuestHelm", "Helm Enhancement", "Forge Quests to unlock Helm Enhancement, change to none to unselect", ForgeQuestHelm.None),
         new Option<bool>("UseGold", "Use Gold", "Speed the BlacksmithingREP grind up with Gold?", false),
+        new Option<bool>("BulkFarmGold", "Pre-Farm Gold(BlackSmithRep)", "Bulk Turnin after farming 100m Gold. (turns in x10 as long as u have 5m gold)", false),
         new Option<bool>("SellQuestClass", "Sell quest classes", "sell the classes backa after the Anima, Pneuma, Examen, and Vim quests", false),
-        new Option<bool>("CanSolo", "Can solo", "Solo Sluggbutter"),
+        new Option<bool>("CanSolo", "Can solo", "Solo Sluggbutter")
     };
 
     public void ScriptMain(IScriptInterface Bot)
@@ -306,7 +307,7 @@ public class UnlockForgeEnhancements
 
         LOC.Escherion();
         Farm.Experience(30);
-        Farm.BlacksmithingREP(4, Bot.Config!.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
+        Farm.BlacksmithingREP(4, Bot.Config!.Get<bool>("UseGold"), Bot.Config!.Get<bool>("UseGold"));
 
         Core.EquipClass(ClassType.Solo);
         Core.EnsureAccept(8738);
@@ -350,7 +351,7 @@ public class UnlockForgeEnhancements
         }
 
         Farm.Experience(40);
-        Farm.BlacksmithingREP(5, Bot.Config!.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
+        Farm.BlacksmithingREP(5, Bot.Config!.Get<bool>("UseGold"), Bot.Config!.Get<bool>("UseGold"));
 
         Core.EnsureAccept(8739);
 
@@ -396,7 +397,7 @@ public class UnlockForgeEnhancements
         Core.Logger("Unlocking Enhancement: Smite");
 
         Farm.Experience(60);
-        Farm.BlacksmithingREP(6, Bot.Config!.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
+        Farm.BlacksmithingREP(6, Bot.Config!.Get<bool>("UseGold"), Bot.Config!.Get<bool>("UseGold"));
         CoreSS.ShadowfallRise();
 
         Core.EnsureAccept(8740);
@@ -419,7 +420,7 @@ public class UnlockForgeEnhancements
 
         Core.Logger("Unlocking Enhancement: Praxis");
 
-        Farm.BlacksmithingREP(6, Bot.Config!.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
+        Farm.BlacksmithingREP(6, Bot.Config!.Get<bool>("UseGold"), Bot.Config!.Get<bool>("UseGold"));
 
         Adv.BuyItem("thespan", 439, "Thief of Hours Armor");
         Adv.BuyItem("yulgar", 69, "Hashashin Armor");
@@ -452,7 +453,7 @@ public class UnlockForgeEnhancements
         Core.Logger("Unlocking Enhancement: Hero's Valiance");
 
         Farm.Experience(100);
-        Farm.BlacksmithingREP(10, Bot.Config!.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
+        Farm.BlacksmithingREP(10, Bot.Config!.Get<bool>("UseGold"), Bot.Config!.Get<bool>("UseGold"));
 
         FCA.GetFireChampsArmor();
         DOT.GetDoT(doExtra: false);
@@ -495,7 +496,7 @@ public class UnlockForgeEnhancements
 
         Astravia.CompleteCoreAstravia();
         Farm.Experience(100);
-        Farm.BlacksmithingREP(10, Bot.Config!.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
+        Farm.BlacksmithingREP(10, Bot.Config!.Get<bool>("UseGold"), Bot.Config!.Get<bool>("UseGold"));
 
         if (!Core.isCompletedBefore(8746))
         {
@@ -514,7 +515,7 @@ public class UnlockForgeEnhancements
             Darkon.BanditsCorrespondence(22);
             Darkon.SukisPrestiege(22);
             Darkon.AncientRemnant(22);
-            Darkon.WheelofFortune(22);
+            Darkon.WheelofFortune(22, 0);
             if (!Core.CheckInventory("Darkon Insignia", 20))
             {
                 Core.Logger(" x20 \"Darkon Insignia\" is Required to continue quest, our Bots cannot *currently* kill this mob Untill CoreArmy is Released and a script is made.", messageBox: true);
@@ -544,7 +545,7 @@ public class UnlockForgeEnhancements
 
         Core.Logger("Unlocking Enhancement: Acheron");
 
-        Farm.BlacksmithingREP(8, Bot.Config!.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
+        Farm.BlacksmithingREP(8, Bot.Config!.Get<bool>("UseGold"), Bot.Config!.Get<bool>("UseGold"));
         Core.EnsureAccept(8820);
 
         VoidLodestone();
@@ -577,7 +578,7 @@ public class UnlockForgeEnhancements
 
         Core.Logger("Unlocking Enhancement: Elysium");
 
-        Farm.BlacksmithingREP(10, Bot.Config!.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
+        Farm.BlacksmithingREP(10, Bot.Config!.Get<bool>("UseGold"), Bot.Config!.Get<bool>("UseGold"));
 
         Core.EnsureAccept(8821);
         CorNSOD.BonesVoidRealm(20);
@@ -600,7 +601,7 @@ public class UnlockForgeEnhancements
 
         Core.Logger("Unlocking Enhancement: Dauntless");
 
-        Farm.BlacksmithingREP(10, Bot.Config!.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
+        Farm.BlacksmithingREP(10, Bot.Config!.Get<bool>("UseGold"), Bot.Config!.Get<bool>("UseGold"));
 
         string[] DauntlessItems = { "ShadowLord's Helm", "Malgor the ShadowLord", "Malgor's ShadowFlame Blade", "Infernal Flame Pyromancer" };
 
@@ -612,12 +613,10 @@ public class UnlockForgeEnhancements
             MAS.GetSet();
             Core.HuntMonster("shadowgrove", "Titan Shadow Dragonlord", "ShadowFlame Dragon Blade", isTemp: false);
 
-            if (Core.CheckInventory("Yami no Ronin") || Core.CheckInventory("Dragon of Time"))
-            {
-                Core.AddDrop(SoW.MalgorDrops.Concat(SoW.MainyuDrops).ToArray());
-                Bot.Skills.StartAdvanced(Core.CheckInventory("Yami no Ronin") ? "Yami no Ronin" : "Dragon of Time", true, ClassUseMode.Solo);
-            }
-            else Core.EquipClass(ClassType.Solo);
+            Core.AddDrop(SoW.MalgorDrops.Concat(SoW.MainyuDrops).ToArray());
+
+            Core.BossClass();
+
             SOWM.ElementalCore(20);
 
             Core.Logger("Items still needed(the bot cannot farm these):");
@@ -647,7 +646,7 @@ public class UnlockForgeEnhancements
 
         LOC.Kitsune();
         Farm.Experience(30);
-        Farm.BlacksmithingREP(3, Bot.Config!.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
+        Farm.BlacksmithingREP(3, Bot.Config!.Get<bool>("UseGold"), Bot.Config!.Get<bool>("UseGold"));
 
         Core.EquipClass(ClassType.Solo);
         Core.EnsureAccept(8758);
@@ -670,16 +669,13 @@ public class UnlockForgeEnhancements
 
         Farm.Experience(90);
         Farm.GoodREP(10);
-        Farm.BlacksmithingREP(9, Bot.Config!.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
+        Farm.BlacksmithingREP(9, Bot.Config!.Get<bool>("UseGold"), Bot.Config!.Get<bool>("UseGold"));
 
-        if (!Core.CheckInventory(new[] { "Ascended Paladin", "Ascended Paladin Staff", "Ascended Paladin Sword" }))
-        {
-            Core.EquipClass(ClassType.Farm);
-            Core.KillMonster("therift", "r9", "Left", "Plague Spreader", "Slimed Sigil", 200, isTemp: false);
-            Adv.BuyItem("therift", 1399, "Ascended Paladin");
-            Adv.BuyItem("therift", 1399, "Ascended Paladin Staff");
-            Adv.BuyItem("therift", 1399, "Ascended Paladin Sword");
-        }
+        Core.EquipClass(ClassType.Farm);
+        Core.KillMonster("therift", "r9", "Left", "Plague Spreader", "Slimed Sigil", 200, isTemp: false);
+        Adv.BuyItem("therift", 1399, 39091, shopItemID: 5244);
+        Adv.BuyItem("therift", 1399, 39093, shopItemID: 5246);
+        Adv.BuyItem("therift", 1399, 39094, shopItemID: 5247);
 
         Core.ChainComplete(8743);
         Core.Logger("Enhancement Unlocked: Absolution");
@@ -695,7 +691,7 @@ public class UnlockForgeEnhancements
         Core.Logger("Unlocking Enhancement: Vainglory");
         Core.EnsureAccept(8744);
 
-        Farm.BlacksmithingREP(9, Bot.Config!.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
+        Farm.BlacksmithingREP(9, Bot.Config!.Get<bool>("UseGold"), Bot.Config!.Get<bool>("UseGold"));
         Core.EquipClass(ClassType.Solo);
 
         if (Core.IsMember)
@@ -736,7 +732,7 @@ public class UnlockForgeEnhancements
         Vainglory();
         Core.Logger("Unlocking Enhancement: Avarice");
 
-        Farm.BlacksmithingREP(9, Bot.Config!.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
+        Farm.BlacksmithingREP(9, Bot.Config!.Get<bool>("UseGold"), Bot.Config!.Get<bool>("UseGold"));
 
         Core.EnsureAccept(8745);
 
@@ -756,7 +752,7 @@ public class UnlockForgeEnhancements
         Avarice();
         Core.Logger("Unlocking Enhancement: Penitence");
 
-        Farm.BlacksmithingREP(9, Bot.Config!.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
+        Farm.BlacksmithingREP(9, Bot.Config!.Get<bool>("UseGold"), Bot.Config!.Get<bool>("UseGold"));
 
         Core.EnsureAccept(8822);
         Core.EquipClass(ClassType.Solo);
@@ -769,7 +765,7 @@ public class UnlockForgeEnhancements
             Core.EnsureComplete(3270);
         }
         Core.HuntMonster("frozenlair", "Legion Lich Lord", "Sapphire Orb", 100, isTemp: false);
-        Core.HuntMonster("icestormarena", "Warlord Icewing", "Boreal Cavalier Bardiche", isTemp: false);
+        Core.HuntMonster("icewing", "Warlord Icewing", "Boreal Cavalier Bardiche", isTemp: false);
         Core.HuntMonster("underlair", "ArchFiend DragonLord", "Void Scale", 13, isTemp: false);
 
         Core.EnsureComplete(8822);
@@ -784,7 +780,7 @@ public class UnlockForgeEnhancements
         Penitence();
         Core.Logger("Unlocking Enhancement: Lament");
 
-        Farm.BlacksmithingREP(9, Bot.Config!.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
+        Farm.BlacksmithingREP(9, Bot.Config!.Get<bool>("UseGold"), Bot.Config!.Get<bool>("UseGold"));
 
         Core.EquipClass(ClassType.Solo);
         Core.EnsureAccept(8823);
@@ -812,7 +808,7 @@ public class UnlockForgeEnhancements
             return;
 
         Core.Logger("Unlocking Enhancement: Forge (Helm)");
-        Farm.BlacksmithingREP(4, Bot.Config!.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
+        Farm.BlacksmithingREP(4, Bot.Config!.Get<bool>("UseGold"), Bot.Config!.Get<bool>("UseGold"));
 
         Core.EquipClass(ClassType.Solo);
         Core.EnsureAccept(8828);
@@ -834,7 +830,7 @@ public class UnlockForgeEnhancements
         ForgeHelmEnhancement();
         Core.Logger("Unlocking Enhancement: Vim");
 
-        Farm.BlacksmithingREP(7, Bot.Config!.Get<bool>("UseGold"), CanSolo: Bot.Config.Get<bool>("CanSolo"));
+        Farm.BlacksmithingREP(7, Bot.Config!.Get<bool>("UseGold"), Bot.Config!.Get<bool>("UseGold"));
         Adv.GearStore();
         Core.EnsureAccept(8824);
 
@@ -846,7 +842,7 @@ public class UnlockForgeEnhancements
         Core.HuntMonster("Towerofdoom10", "*", "Ethereal Essence", 250, isTemp: false);
 
         Core.EnsureComplete(8824);
-        if (Bot.Config.Get<bool>("SellQuestClass"))
+        if (Bot.Config!.Get<bool>("SellQuestClass"))
             Core.SellItem("Rogue");
         Core.Logger("Enhancement Unlocked: Vim");
     }
@@ -869,7 +865,7 @@ public class UnlockForgeEnhancements
         Core.HuntMonster("Towerofdoom10", "*", "Ethereal Essence", 250, isTemp: false);
 
         Core.EnsureComplete(8825);
-        if (Bot.Config.Get<bool>("SellQuestClass"))
+        if (Bot.Config!.Get<bool>("SellQuestClass"))
             Core.SellItem("Healer");
         Core.Logger("Enhancement Unlocked: Examen");
     }
@@ -893,7 +889,7 @@ public class UnlockForgeEnhancements
         Core.HuntMonster("Towerofdoom10", "*", "Ethereal Essence", 650, isTemp: false);
 
         Core.EnsureComplete(8826);
-        if (Bot.Config.Get<bool>("SellQuestClass"))
+        if (Bot.Config!.Get<bool>("SellQuestClass"))
             Core.SellItem("Warrior");
         Core.Logger("Enhancement Unlocked: Anima");
     }
@@ -917,7 +913,7 @@ public class UnlockForgeEnhancements
         Core.HuntMonster("Towerofdoom10", "*", "Ethereal Essence", 650, isTemp: false);
 
         Core.EnsureComplete(8827);
-        if (Bot.Config.Get<bool>("SellQuestClass"))
+        if (Bot.Config!.Get<bool>("SellQuestClass"))
             Core.SellItem("Mage");
         Core.Logger("Enhancement Unlocked: Pneuma");
     }

@@ -36,16 +36,20 @@ public class SeraphicWar_Story
         //Get the Fire
         Story.KillQuest(6240, "worldsoul", "Divine Fire Elemental");
         //Gather Armaments
-        Story.MapItemQuest(6241, "worldsoul", 5681, 3);
         Story.KillQuest(6241, "worldsoul", "Skeletal Squatter");
+        Story.MapItemQuest(6241, "worldsoul", 5681, 3);
         //Plutonium For Power
         Story.KillQuest(6242, "worldsoul", "Radioactive Hydra");
         //Defeat the Undead
-        Story.MapItemQuest(6243, "worldsoul", 5680);
         Story.KillQuest(6243, "worldsoul", "Legion Dreadmarch");
+        Story.MapItemQuest(6243, "worldsoul", 5680);
         //Remove the Ward
-        Story.MapItemQuest(6244, "worldsoul", 5682);
-        Story.KillQuest(6244, "worldsoul", "Legion Dreadmarch");
+        if (!Story.QuestProgression(6244))
+        {
+            Core.EnsureAccept(6244);
+            Core.HuntMonster("worldsoul", "Legion Dreadmarch", "Legion Amulets", 3);
+            Story.MapItemQuest(6244, "worldsoul", 5682);
+        }
         //Defeat the Guardian
         Story.KillQuest(6245, "worldsoul", "Core Guardian");
     }

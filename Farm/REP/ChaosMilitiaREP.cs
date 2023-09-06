@@ -17,8 +17,8 @@ public class ChaosMilitiaREP
     {
         Core.SetOptions();
 
-        Adv.BestGear(GenericGearBoost.dmgAll);
-        Adv.BestGear(GenericGearBoost.rep);
+        //Adv.BestGear(GenericGearBoost.dmgAll);
+        //Adv.BestGear(GenericGearBoost.rep);
         Farm.ChaosMilitiaREP();
 
         Core.SetOptions(false);

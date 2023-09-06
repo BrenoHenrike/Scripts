@@ -33,8 +33,11 @@ public class VordredArmor
         Core.SetOptions(false);
     }
 
-    public void GetVordredsArmor()
+    public void GetVordredsArmor(bool DMN = false)
     {
+        if (DMN && Core.isCompletedBefore(8380))
+            return;
+
         if (Core.CheckInventory("Empowered Vordred's Armor"))
             return;
 
@@ -42,7 +45,7 @@ public class VordredArmor
 
         DW.DoomwoodPart3();
         Farm.Experience(60);
-        Adv.BestGear(RacialGearBoost.Undead);
+        //Adv.BestGear(RacialGearBoost.Undead);
 
         if (!Story.QuestProgression(8376))
         {
@@ -117,12 +120,15 @@ public class VordredArmor
             Bot.Quests.UpdateQuest(2059);
             Core.KillMonster("necrodungeon", "r22", "Down", "*", "Ancient Evil of the Necropolis", isTemp: false);
             Core.EnsureComplete(8380);
+            if (DMN)
+                return;
         }
+
 
         // Empower Vordred's Armor - 8381
         if (!Story.QuestProgression(8381))
         {
-            Adv.BestGear(RacialGearBoost.Undead);
+            //Adv.BestGear(RacialGearBoost.Undead);
             Core.EquipClass(ClassType.Solo);
             Core.EnsureAccept(8381);
             if (!Core.CheckInventory("Sepulchure's DoomKnight Armor"))
@@ -144,7 +150,7 @@ public class VordredArmor
             return;
 
         Core.AddDrop("Especially Unbroken Skull");
-        Adv.BestGear(RacialGearBoost.Undead);
+        //Adv.BestGear(RacialGearBoost.Undead);
         Core.EquipClass(ClassType.Farm);
 
         // UNBROKEN SKULLS (Mem) - 8342

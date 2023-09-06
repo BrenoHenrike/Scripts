@@ -42,23 +42,23 @@ public class BirthdayFeastQuestRewards
 
     public void configure()
     {
-        if (Bot.Config.Get<bool>("ArlettesQuests"))
+        if (Bot.Config!.Get<bool>("ArlettesQuests"))
         {
             ArlettesQuests();
             Core.ToBank(Core.EnsureLoad(8385).Rewards.ToString());
         }
 
-        if (Bot.Config.Get<bool>("InanitasQuests"))
+        if (Bot.Config!.Get<bool>("InanitasQuests"))
         {
             InanitasQuests();
             Core.ToBank(Core.EnsureLoad(8384).Rewards.ToString());
         }
-        if (Bot.Config.Get<bool>("MemetsQuests"))
+        if (Bot.Config!.Get<bool>("MemetsQuests"))
         {
             MemetsQuests();
             Core.ToBank(Core.EnsureLoad(8382).Rewards.ToString());
         }
-        if (Bot.Config.Get<bool>("KotarosQuests"))
+        if (Bot.Config!.Get<bool>("KotarosQuests"))
         {
             KotarosQuests();
             Core.ToBank(Core.EnsureLoad(8383).Rewards.ToString());

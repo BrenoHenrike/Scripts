@@ -71,15 +71,25 @@ public class BrightCrystalStory
             Core.HuntMonsterMapID("dreamforest", 19, "Prize Ticket", 10);
             Core.EnsureComplete(4963);
         }
-        //Story.KillQuest(4963, "dreamforest", "Balloons");
 
         //Out of the Shadows 4964
-        Story.KillQuest(4964, "dreamforest", new[] { "Living Shadow", "Dark Imp" });
+        if (!Story.QuestProgression(4964))
+        {
+            Core.EnsureAccept(4964);
+            Core.HuntMonster("dreamforest", "Living Shadow", "Shadows", 4);
+            Core.HuntMonsterMapID("dreamforest", 9, "Darkness", 4);
+            Core.EnsureComplete(4964);
+        }
 
         //Follow the Footprints 4965
         Story.MapItemQuest(4965, "dreamforest", 4335, 10);
 
         //Help Miranda 4967
-        Story.KillQuest(4967, "dreamforest", "Mirandageist");
+        if (!Story.QuestProgression(4967))
+        {
+            Core.EnsureAccept(4967);
+            Core.HuntMonsterMapID("dreamforest", 23, "Geist Defated");
+            Core.EnsureComplete(4967);
+        }
     }
 }

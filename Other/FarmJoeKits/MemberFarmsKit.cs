@@ -29,7 +29,7 @@ tags: member, kit, expire, legend
 //cs_include Scripts/Seasonal/Friday13th/SpellRaiser[Mem].cs
 //cs_include Scripts/Seasonal/Friday13th/TheLostKnightAndBackupBlade[Mem].cs
 //cs_include Scripts/Seasonal/Friday13th/TrobbolierPet[Mem].cs
-//cs_include Scripts/Other/MergeShops/BoneTowersMerge.cs
+//cs_include Scripts/Other/MergeShops/BonecastleTowerMerge.cs
 //cs_include Scripts/Other/MergeShops/TachyonMerge.cs
 //cs_include Scripts/Other/CoinCollectorSet[Member].cs
 //cs_include Scripts/Other/Classes/Curio-Classes/LegendaryElementalWarrior[mem].cs
@@ -50,7 +50,7 @@ public class MemberFarm
     private SpellRaiser SpellRaiser = new();
     private ArchfiendDragonEgg ArchfiendDragonPet = new();
     private DragonBladeofNulgath DBoN = new();
-    private TowersMerge DeathKnight = new();
+    private BonecastleTowerMerge BonecastleTowerMerge = new();
     private LegendaryElementalWarrior LegendaryElementalWarrior = new();
     private ChronoAssassin ChronoAssassin = new();
     private TachyonMerge Tachyon = new();
@@ -89,7 +89,7 @@ public class MemberFarm
         Core.ToBank("Legendary Elemental Warrior");
 
         //Nation Item
-        TarosItems.TemptationTest();
+        // TarosItems.TemptationTest();
         Core.ToBank("Taro's Prismatic Manslayer", "Taro's Dual Prismatic Manslayers", "Taro's BattleBlade");
 
         ArchfiendDragonPet.GetAFDE();
@@ -188,6 +188,7 @@ public class MemberFarm
         Core.AddDrop("Dragon Flame");
         Core.FarmingLogger("Dragon Flame", 1);
         Core.EquipClass(ClassType.Farm);
+        Core.RegisterQuests(6300);
 
         while (!Bot.ShouldExit && (!Core.CheckInventory("Dragon Flame", 25)))
         {
@@ -473,10 +474,14 @@ public class MemberFarm
         if (Core.CheckInventory(BoneTowerShop, toInv: false))
             return;
 
+        // Required for quest:         
+        BonecastleTowerMerge.BuyAllMerge("Silver DeathKnight Lord");
+        BonecastleTowerMerge.BuyAllMerge("Golden DeathKnight Lord");
+
         Bot.Drops.Add(BoneTowerShop);
         foreach (string BoneTowerItem in BoneTowerShop)
         {
-            DeathKnight.BuyAllMerge(BoneTowerItem);
+            BonecastleTowerMerge.BuyAllMerge(BoneTowerItem);
             Core.ToBank(BoneTowerItem);
         }
     }

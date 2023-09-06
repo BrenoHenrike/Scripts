@@ -27,7 +27,7 @@ public class DarkWarLegionGold
     public void DoDarkWarLegionGold()
     {
         Core.EquipClass(ClassType.Farm);
-        Adv.BestGear(GenericGearBoost.gold);
+        //Adv.BestGear(GenericGearBoost.gold);
         Bot.Drops.Start();
 
         Farm.DarkWarLegion();

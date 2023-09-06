@@ -31,8 +31,8 @@ public class SevenCirclesWarXP
     {
         SC.Circles();
 
-        Adv.BestGear(GenericGearBoost.exp);
-        Adv.BestGear(GenericGearBoost.gold);
+        //Adv.BestGear(GenericGearBoost.exp);
+        //Adv.BestGear(GenericGearBoost.gold);
         //Farm.UseBoost(ChangeToBoostID, Skua.Core.Models.Items.BoostType.Experience, true);
 
         Farm.SevenCirclesWar(Bot.Player.Level == 100 ? 101 : 100, 100000000);

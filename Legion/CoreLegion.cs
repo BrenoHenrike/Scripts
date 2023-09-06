@@ -40,7 +40,7 @@ public class CoreLegion
             LegionRound4Medal();
 
         Core.EquipClass(ClassType.Farm);
-        Adv.BestGear(GenericGearBoost.gold);
+        //Adv.BestGear(GenericGearBoost.gold);
 
         Core.FarmingLogger("Emblem of Dage", quant);
         Core.AddDrop("Legion Seal", "Gem of Mastery", "Emblem of Dage");
@@ -60,14 +60,14 @@ public class CoreLegion
             return;
 
         Core.EquipClass(ClassType.Farm);
-        Adv.BestGear(RacialGearBoost.Human);
+        //Adv.BestGear(RacialGearBoost.Human);
 
         Core.AddDrop("Dark Token");
         Core.FarmingLogger("Dark Token", quant);
         Core.RegisterQuests(6248, 6249, 6251);
         while (!Bot.ShouldExit && !Core.CheckInventory("Dark Token", quant))
         {
-            Core.HuntMonster("seraphicwardage", "Seraphic Soldier", log: false);
+            Core.HuntMonster("seraphicwardage", "Seraphic Commander", log: false);
         }
         Core.CancelRegisteredQuests();
     }
@@ -95,13 +95,17 @@ public class CoreLegion
                 Core.Join("aqlesson");
             }
             Core.EquipClass(ClassType.Solo);
-            Adv.BestGear(RacialGearBoost.Chaos);
+            //Adv.BestGear(RacialGearBoost.Chaos);
             Core.KillMonster("aqlesson", "Frame9", "Right", "Carnax", "Carnax Eye", publicRoom: true);
             Core.HuntMonster("deepchaos", "Kathool", "Kathool Tentacle", publicRoom: true);
-            Core.KillMonster("dflesson", "r12", "Right", "Fluffy the Dracolich", "Fluffy's Bones", publicRoom: true);
-            Adv.BestGear(RacialGearBoost.Dragonkin);
+
+            //More then one item of the same name as drop btoh temp and non-temp.
+            while (!Bot.ShouldExit && !Core.CheckInventory(33257))
+                Core.KillMonster("dflesson", "r12", "Right", "Fluffy the Dracolich", publicRoom: true);
+
+            //Adv.BestGear(RacialGearBoost.Dragonkin);
             Core.HuntMonster("lair", "Red Dragon", "Red Dragon's Fang");
-            Adv.BestGear(RacialGearBoost.Human);
+            //Adv.BestGear(RacialGearBoost.Human);
             Core.HuntMonster("bloodtitan", "Blood Titan", "Blood Titan's Blade", publicRoom: true);
             Bot.Drops.Pickup("Legion Token", "Diamond Token of Dage");
         }
@@ -119,7 +123,7 @@ public class CoreLegion
         Core.AddDrop(legionMedals);
         Core.Logger("Farming Legion Round 4 Medal");
         Core.Join("shadowblast");
-        Adv.BestGear(GenericGearBoost.dmgAll);
+        //Adv.BestGear(GenericGearBoost.dmgAll);
         while (!Bot.ShouldExit && !Core.CheckInventory("Legion Round 4 Medal"))
         {
             if (!Core.CheckInventory("Legion Round 1 Medal") &&
@@ -181,7 +185,7 @@ public class CoreLegion
         }
 
         Core.EquipClass(ClassType.Farm);
-        Adv.BestGear(RacialGearBoost.Undead);
+        //Adv.BestGear(RacialGearBoost.Undead);
 
         Core.KillMonster("evilwardage", "r8", "Left", "*", "Dage's Approval", quantApproval, false, shouldLog);
         Core.KillMonster("evilwardage", "r8", "Left", "*", "Dage's Favor", quantFavor, false, shouldLog);
@@ -193,7 +197,7 @@ public class CoreLegion
             return;
 
         Core.EquipClass(ClassType.Farm);
-        Adv.BestGear(RacialGearBoost.Undead);
+        //Adv.BestGear(RacialGearBoost.Undead);
 
         Core.FarmingLogger("Bone Sigil", quant);
         Core.AddDrop("Bone Sigil");
@@ -212,7 +216,7 @@ public class CoreLegion
             return;
 
         Core.EquipClass(ClassType.Solo);
-        Adv.BestGear(GenericGearBoost.dmgAll);
+        //Adv.BestGear(GenericGearBoost.dmgAll);
 
         Core.AddDrop("SoulForge Hammer");
         Core.EnsureAccept(2741);
@@ -245,7 +249,7 @@ public class CoreLegion
         LTHardCoreParagon(quant);
         LTUW3017(quant);
         LTInfernalLegionBetrayal(quant);
-        LTFirstClassEntertainment(quant);
+        LTFirstClassEntertainment(quant, true, 4, true);
         LTDreadrock(quant);
     }
 
@@ -253,12 +257,12 @@ public class CoreLegion
     {
         if (Core.CheckInventory("Legion Token", quant) || !Core.CheckInventory("Hardcore Paragon Pet"))
             return;
-
+        Core.BankingBlackList.Add("Legion Token");
         Core.EquipClass(ClassType.Solo);
-        Adv.BestGear(RacialGearBoost.Chaos);
+        //Adv.BestGear(RacialGearBoost.Chaos);
 
         Core.FarmingLogger("Legion Token", quant);
-        Core.AddDrop("Legion Token");
+        Core.AddDrop(Core.QuestRewards(3393, 3394));
 
         if (!Bot.Quests.IsDailyComplete(3394))
         {
@@ -271,6 +275,7 @@ public class CoreLegion
         while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
             Adv.BoostHuntMonster(Core.IsMember ? "binky" : "doomvault", "Binky", "Dark Unicorn Rib", isTemp: false, log: false);
         Core.CancelRegisteredQuests();
+        Core.ToBank(Core.QuestRewards(3393, 3394));
 
     }
 
@@ -282,7 +287,7 @@ public class CoreLegion
         JoinLegion();
 
         Core.EquipClass(ClassType.Farm);
-        Adv.BestGear(GenericGearBoost.dmgAll);
+        //Adv.BestGear(GenericGearBoost.dmgAll);
 
         Core.FarmingLogger("Legion Token", quant);
         Core.AddDrop("Legion Token");
@@ -304,7 +309,7 @@ public class CoreLegion
         JoinLegion();
 
         Core.EquipClass(ClassType.Farm);
-        Adv.BestGear(GenericGearBoost.dmgAll);
+        //Adv.BestGear(GenericGearBoost.dmgAll);
 
         Core.FarmingLogger("Legion Token", quant);
         Core.AddDrop("Legion Token");
@@ -327,7 +332,7 @@ public class CoreLegion
         JoinLegion();
 
         Core.EquipClass(ClassType.Farm);
-        Adv.BestGear(GenericGearBoost.dmgAll);
+        //Adv.BestGear(GenericGearBoost.dmgAll);
 
         Core.FarmingLogger("Legion Token", quant);
         Core.AddDrop("Legion Token");
@@ -349,7 +354,7 @@ public class CoreLegion
         JoinLegion();
 
         Core.EquipClass(ClassType.Farm);
-        Adv.BestGear(GenericGearBoost.dmgAll);
+        //Adv.BestGear(GenericGearBoost.dmgAll);
 
         Core.FarmingLogger("Legion Token", quant);
         Core.AddDrop("Legion Token");
@@ -372,7 +377,7 @@ public class CoreLegion
         JoinLegion();
 
         Core.EquipClass(ClassType.Farm);
-        Adv.BestGear(GenericGearBoost.dmgAll);
+        //Adv.BestGear(GenericGearBoost.dmgAll);
 
         Core.FarmingLogger("Legion Token", quant);
         Core.AddDrop("Legion Token", "Legion Token Pile");
@@ -412,7 +417,7 @@ public class CoreLegion
             QuestID = 7073;
 
         Core.EquipClass(ClassType.Farm);
-        Adv.BestGear(GenericGearBoost.dmgAll);
+        //Adv.BestGear(GenericGearBoost.dmgAll);
 
         Core.FarmingLogger("Legion Token", quant);
         Core.AddDrop("Legion Token");
@@ -440,7 +445,7 @@ public class CoreLegion
         }
 
         Core.EquipClass(ClassType.Solo);
-        Adv.BestGear(RacialGearBoost.Undead);
+        //Adv.BestGear(RacialGearBoost.Undead);
 
         Core.FarmingLogger("Legion Token", quant);
         Core.RegisterQuests(6742, 6743);
@@ -460,7 +465,7 @@ public class CoreLegion
         Adv.BuyItem("underworld", 216, "Undead Champion");
 
         Core.EquipClass(ClassType.Farm);
-        Adv.BestGear(RacialGearBoost.Human);
+        //Adv.BestGear(RacialGearBoost.Human);
 
         Core.FarmingLogger("Legion Token", quant);
         Core.RegisterQuests(4849);
@@ -480,7 +485,7 @@ public class CoreLegion
         JoinLegion();
 
         Core.EquipClass(ClassType.Farm);
-        Adv.BestGear(RacialGearBoost.Dragonkin);
+        //Adv.BestGear(RacialGearBoost.Dragonkin);
 
         Core.FarmingLogger("Legion Token", quant);
         Core.AddDrop("Legion Token", "Granite Dracolich Soul", "Tempest Dracolich Soul", "Deluge Dracolich Soul", "Inferno Dracolich Soul");
@@ -503,7 +508,7 @@ public class CoreLegion
         JoinLegion();
 
         Core.EquipClass(ClassType.Farm);
-        Adv.BestGear(RacialGearBoost.Dragonkin);
+        //Adv.BestGear(RacialGearBoost.Undead);
 
         Core.FarmingLogger("Legion Token", quant);
         Core.AddDrop("Legion Token");
@@ -519,7 +524,7 @@ public class CoreLegion
             return;
 
         Core.EquipClass(ClassType.Farm);
-        Adv.BestGear(GenericGearBoost.dmgAll);
+        //Adv.BestGear(GenericGearBoost.dmgAll);
 
         Core.FarmingLogger("Legion Token", quant);
         Core.AddDrop("Legion Token");
@@ -541,7 +546,7 @@ public class CoreLegion
         JoinLegion();
 
         Core.EquipClass(ClassType.Farm);
-        Adv.BestGear(GenericGearBoost.dmgAll);
+        //Adv.BestGear(GenericGearBoost.dmgAll);
 
         Core.FarmingLogger("Legion Token", quant);
         Core.AddDrop("Legion Token");
@@ -563,7 +568,7 @@ public class CoreLegion
         JoinLegion();
 
         Core.EquipClass(ClassType.Farm);
-        Adv.BestGear(GenericGearBoost.dmgAll);
+        //Adv.BestGear(GenericGearBoost.dmgAll);
 
         Core.FarmingLogger("Legion Token", quant);
         Core.AddDrop("Legion Token");
@@ -574,7 +579,7 @@ public class CoreLegion
             Core.HuntMonster("tournament", "Roderick", "Roderick's Chaotic Bane");
             Core.HuntMonster("tournament", "Knight of Thorns", "Knight of Thorns' Sword");
             Core.HuntMonster("tournament", "Johann Wryce", "Platinum of Johann Wryce");
-            Core.HuntMonster("tournament", "Khai Kaldun", "Khai Kaldun's Scimitar");
+            Core.HuntMonster("tournament", "Khai Khaldun", "Khai Khaldun's Scimitar");
         }
         Core.CancelRegisteredQuests();
     }
@@ -594,6 +599,7 @@ public class CoreLegion
             "Do you want the bot to sell the \"Undead Warrior\" armor after it has succesfully joined the legion. This will return 1080 AC to you",
             "Sell \"Undead Warrior\"?",
             true);
+            
 
         // Undead Champion Initiation
         if (!Story.QuestProgression(789))
@@ -630,6 +636,7 @@ public class CoreLegion
 
         if (SellUW == true)
             Core.SellItem("Undead Warrior", all: true);
+        Adv.BuyItem("underworld", 216, "Undead Champion");
     }
 
     public void ObsidianRock(int quant = 10)
@@ -640,7 +647,7 @@ public class CoreLegion
         SoulForgeHammer();
 
         Core.EquipClass(ClassType.Farm);
-        Adv.BestGear(GenericGearBoost.dmgAll);
+        //Adv.BestGear(GenericGearBoost.dmgAll);
 
         Core.FarmingLogger("Obsidian Rock", quant);
         Core.AddDrop("Obsidian Rock");

@@ -60,7 +60,7 @@ public class ArmyNSoDDaily
         Core.EnsureAccept(8653);
 
         Army.waitForParty("Icestormarena", "Glacial Pinion");
-        Army.SmartAggroMonStart("icestormarena", "Warlord Icewing");
+        Army.SmartAggroMonStart("icewing", "Warlord Icewing");
         while (!Bot.ShouldExit && !Core.CheckInventory("Glacial Pinion"))
             Bot.Combat.Attack("*");
         Army.AggroMonStop();

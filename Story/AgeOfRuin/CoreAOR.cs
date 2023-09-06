@@ -27,6 +27,12 @@ public class CoreAOR
         TerminaTemple();
         AshrayVillage();
         SunlightZone();
+        TwilightZone();
+        YulgarAria();
+        MidnightZone();
+        AbyssalZone();
+        DeepWater();
+        SeaVoice();
     }
 
     public void TerminaTemple()
@@ -135,5 +141,268 @@ public class CoreAOR
 
         // Down the Digestive Tract (9251)
         Story.KillQuest(9251, "sunlightzone", "Marine Snow");
+    }
+
+    public void TwilightZone()
+    {
+        if (Core.isCompletedBefore(9268))
+            return;
+
+        SunlightZone();
+
+        Story.PreLoad(this);
+
+        // Marshmallows With Bite (9258)
+        Story.KillQuest(9258, "twilightzone", "Whale Louse");
+
+        // Meaty Cold Spaghetti (9259)
+        Story.KillQuest(9259, "twilightzone", "Polymelia Lamprey");
+
+        // Songs in the Seams (9260)
+        Story.MapItemQuest(9260, "twilightzone", 11749);
+        Story.MapItemQuest(9260, "twilightzone", 11750, 4);
+
+        // Parched Throats (9261)
+        Story.KillQuest(9261, "twilightzone", new[] { "Whale Louse", "Polymelia Lamprey" });
+
+        // Morning Stretches (9262)
+        Story.MapItemQuest(9262, "twilightzone", new[] { 11751, 11752 });
+
+        // Natural Empathy (9263)
+        Story.KillQuest(9263, "twilightzone", "Decay Spirit");
+
+        // Comfort Blanket of Snow (9264)
+        Story.KillQuest(9264, "twilightzone", "Ice Guardian");
+
+        // Whale Watching (9265)
+        Story.MapItemQuest(9265, "twilightzone", new[] { 11753, 11754, 11755 });
+
+        // Exhausted Spirits (9266)
+        Story.KillQuest(9266, "twilightzone", new[] { "Decay Spirit", "Ice Guardian" });
+
+        // Singing to Whales (9267)
+        if (!Story.QuestProgression(9267))
+        {
+            Core.EquipClass(ClassType.Solo);
+            Core.EnsureAccept(9267);
+            Core.HuntMonster("twilightzone", "Leviathan", "Leviathan Fought");
+            Core.EnsureComplete(9267);
+        }
+
+        // The Sea's Commitment (9268)
+        Story.MapItemQuest(9268, "twilightzone", 11756);
+    }
+
+    public void YulgarAria()
+    {
+        if (Core.isCompletedBefore(9274))
+            return;
+
+        TwilightZone();
+
+        Story.PreLoad(this);
+
+        // Octotree (9270)
+        Story.KillQuest(9270, "twilightzone", "Polymelia Lamprey");
+
+        // Thirsty Roots (9271)
+        Story.KillQuest(9271, "sunlightzone", "Blighted Water");
+
+        // Dollar Store Mogloween Costume (9272)
+        Story.KillQuest(9272, "sunlightzone", new[] { "Astravian Illusion", "Infernal Illusion" });
+
+        // Sea Snow Angels (9273)
+        Story.KillQuest(9273, "sunlightzone", "Marine Snow");
+
+        // Ten Klicks (9274)
+        if (!Story.QuestProgression(9274))
+        {
+            Core.EquipClass(ClassType.Solo);
+            Core.EnsureAccept(9274);
+            Core.HuntMonster("twilightzone", "Leviathan", "Leviathan's Tendril", 3);
+            Core.EnsureComplete(9274);
+        }
+    }
+
+    public void MidnightZone()
+    {
+        if (Core.isCompletedBefore(9301))
+            return;
+
+        TwilightZone();
+
+        Story.PreLoad(this);
+
+        // Motivation Malady (9292)
+        Story.MapItemQuest(9292, "midnightzone", new[] { 11842, 11843, 11844 });
+
+        // Radical Renovation (9293)
+        Story.KillQuest(9293, "midnightzone", "Polymelia Lamprey");
+        Story.MapItemQuest(9293, "midnightzone", 11845);
+
+        // Graveyard Shift (9294)
+        Story.KillQuest(9294, "midnightzone", new[] { "Vowed ShadowSlayer", "Vowed ShadowSlayer" });
+
+        // Educational Execution (9295)
+        Story.MapItemQuest(9295, "midnightzone", 11846);
+        Story.KillQuest(9295, "midnightzone", "Undead Prisoner");
+
+        // Vows For Ignorance (9296)
+        Story.KillQuest(9296, "midnightzone", new[] { "Undead Prisoner", "Vowed ShadowSlayer" });
+        Story.MapItemQuest(9296, "midnightzone", 11847);
+
+        // Protein Shake (9297)
+        Story.MapItemQuest(9297, "midnightzone", 11848, 3);
+        Story.KillQuest(9297, "midnightzone", "Shadow Viscera");
+
+        // Duty Beyond Death (9298)
+        Story.KillQuest(9298, "midnightzone", "Venerated Wraith");
+
+        // Designated Taunters (9299)
+        Story.KillQuest(9299, "midnightzone", new[] { "Venerated Wraith", "Shadow Viscera" });
+
+        // Beloved Simulacrum (9230)
+        Story.MapItemQuest(9300, "midnightzone", 11849, 4);
+        Story.MapItemQuest(9300, "midnightzone", 11850);
+
+        // Roko's Royal Basilisk (9301)
+        if (!Story.QuestProgression(9301))
+        {
+            Core.EquipClass(ClassType.Solo);
+            Core.EnsureAccept(9301);
+            Core.HuntMonster("midnightzone", "Sparagmos", "Sparagmos A.I. Defeated");
+            Core.EnsureComplete(9301);
+        }
+    }
+
+    public void AbyssalZone()
+    {
+        if (Core.isCompletedBefore(9315))
+            return;
+
+        MidnightZone();
+
+        Story.PreLoad(this);
+
+        // Shark Kiting (9306)
+        Story.KillQuest(9306, "abyssalzone", "Kitefin Shark Bait");
+        Story.MapItemQuest(9306, "abyssalzone", 11914);
+
+        // Suckered Blockade (9307)
+        Story.MapItemQuest(9307, "abyssalzone", 11893, 6);
+        Story.MapItemQuest(9307, "abyssalzone", 11894);
+
+        // Digestive Fluids (9308)
+        Story.KillQuest(9308, "abyssalzone", "Blighted Water");
+
+        // Sodden Secrets (9309)
+        Story.KillQuest(9309, "abyssalzone", "Shadow Viscera");
+        Story.MapItemQuest(9309, "abyssalzone", 11895, 3);
+
+        // The Hidden Corpse (9310)
+        Story.KillQuest(9310, "abyssalzone", new[] { "Shadow Viscera", "Blighted Water" });
+
+        // Octo-Flake Fish Feed (9311)
+        Story.KillQuest(9311, "abyssalzone", "Foam Scavenger");
+        Story.MapItemQuest(9311, "abyssalzone", 11896);
+
+        // Completely Surrounded (9312)
+        Story.MapItemQuest(9312, "abyssalzone", 11897, 6);
+        Story.MapItemQuest(9312, "abyssalzone", 11898);
+
+        // Sea Salt Soap (9313)
+        Story.KillQuest(9313, "abyssalzone", "Necro Adipocere");
+
+        // In the Grip of Justice (9314)
+        Story.KillQuest(9314, "abyssalzone", new[] { "Necro Adipocere", "Foam Scavenger" });
+        Story.MapItemQuest(9314, "abyssalzone", 11899);
+
+        // Together as One (9315)
+        if (!Story.QuestProgression(9315))
+        {
+            Core.EquipClass(ClassType.Solo);
+            Core.EnsureAccept(9315);
+            Core.HuntMonster("abyssalzone", "The Ashray", "The Ashray Vanquished");
+            Core.EnsureComplete(9315);
+        }
+    }
+
+    public void DeepWater()
+    {
+        if (Core.isCompletedBefore(9338))
+            return;
+
+        AbyssalZone();
+
+        Story.PreLoad(this);
+
+        // Unsung Heroes (9329)
+        Story.KillQuest(9329, "trenchobserve", "Venerated Wraith");
+        Story.MapItemQuest(9329, "trenchobserve", 11975);
+
+        // Watertight Guarantee (9330)
+        if (!Story.QuestProgression(9330))
+        {
+            Core.EnsureAccept(9330);
+            Core.GetMapItem(11976, map: "trenchobserve");
+            Core.HuntMonster("trenchobserve", "Seabase Turret", "Turret Screws", 8);
+            Core.EnsureComplete(9330);
+        }
+
+        // Core Electrolytes (9331)
+        Story.MapItemQuest(9331, "trenchobserve", 11977, 4);
+
+        // Guardian Spirits (9332)
+        Story.KillQuest(9332, "trenchobserve", "Venerated Wraith");
+
+        // Enemy in Need (9333)
+        Story.MapItemQuest(9333, "trenchobserve", 11978, 4);
+        Story.KillQuest(9333, "trenchobserve", "Seabase Turret");
+
+        // Here Lies Shadow (9334)
+        Story.MapItemQuest(9334, "trenchobserve", new[] { 11979, 11981 });
+        Story.MapItemQuest(9334, "trenchobserve", 11980, 2);
+
+        // Nature's White Noise (9335)
+        Story.KillQuest(9335, "trenchobserve", "Sea Spirit");
+
+        // Dreams Seep into Reality (9336)
+        Story.KillQuest(9336, "trenchobserve", "Necro Adipocere");
+
+        // Hadal Havoc (9337)
+        Story.KillQuest(9337, "trenchobserve", new[] { "Necro Adipocere", "Sea Spirit" });
+        Story.MapItemQuest(9337, "trenchobserve", 11982);
+
+        // See You on the Other Side (9338)
+        if (!Story.QuestProgression(9338))
+        {
+            Core.EquipClass(ClassType.Solo);
+            Core.EnsureAccept(9338);
+            Core.HuntMonster("trenchobserve", "Lady Noelle", "Lady Noelle Defeated");
+            Core.EnsureComplete(9338);
+        }
+    }
+
+    public void SeaVoice()
+    {
+        if (Core.isCompletedBefore(8965))
+            return;
+
+        DeepWater();
+
+        if (!Core.isCompletedBefore(9125))
+        {
+            Core.Logger(" \"Your Hero\" Quest *REQUIRED* to start SeaVoice quests");
+            return;
+        }
+
+        Story.PreLoad(this);
+
+        Core.Logger("all Seavoice Quests are\n" +
+                    "ultra boss quests (not doable):\n" +
+                    "Voice in the Sea(Badge Quest)\n" +
+                    "Dead Sea 9348\n" +
+                    "Dry Spell 9349\n" +
+                    "Blooming Sea 9347 (Rare)\n");
     }
 }

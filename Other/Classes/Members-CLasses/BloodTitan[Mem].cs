@@ -25,15 +25,28 @@ public class BloodTitan
 
     public void Getclass(bool rankUpClass = true)
     {
-        if (Core.CheckInventory("Blood Titan") || !Core.IsMember)
+        if (Core.CheckInventory(16641, toInv: false))
             return;
 
-        Core.EquipClass(ClassType.Farm);
-        Core.RegisterQuests(2908);
-        Core.AddDrop("Blood Titan Token");
-        while (!Bot.ShouldExit && !Core.CheckInventory("Blood Titan Token", 425))
-            Core.HuntMonster("dwarfhold", "Albino Bat", "Bat Wing", 3);
-        Core.BuyItem("classhalla", 617, "Blood Titan");
+        Core.EquipClass(ClassType.Solo);
+        Core.AddDrop("Blood Titan Token", "Blood Titan's Tribute");
+        while (!Bot.ShouldExit && !Core.CheckInventory("Blood Titan Token", 200))
+        {
+            // Blood Titan Defender 2908
+            Core.EnsureAccept(2908);
+            Core.KillMonster("bloodtitan", "Enter", "Spawn", "Blood Titan", "Blood Titan's Phial", isTemp: false);
+            Core.KillMonster("titandrakath", "Enter", "Spawn", "Titan Drakath", "Titanic Drakath's Blood", isTemp: false);
+            Core.KillMonster("Desoloth", "Enter", "Spawn", "Desoloth", "Desoloth's Blood", isTemp: false);
+            Core.KillMonster("ultracarnax", "Frame9", "Right", "Ultra-Carnax", "Ultra Carnax's Blood", isTemp: false);
+            Core.EnsureComplete(2908);
+
+            // Blood Titan's Challenge 9253
+            Core.EnsureAccept(9253);
+            Core.KillMonster("bloodtitan", "Ultra", "Left", "Ultra Blood Titan", "Ultra Blood Titan Defeated", isTemp: false);
+            Core.EnsureComplete(9253);
+        }
+
+        Core.BuyItem("classhalla", 617, 16641, shopItemID: 1772);
 
         if (rankUpClass)
             Adv.RankUpClass("Blood Titan");

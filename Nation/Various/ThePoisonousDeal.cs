@@ -13,15 +13,15 @@ using Skua.Core.Options;
 
 public class ThePoisonousDeal
 {
-    public IScriptInterface Bot => IScriptInterface.Instance;
-    public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
+    public static IScriptInterface Bot => IScriptInterface.Instance;
+    public static CoreBots Core => CoreBots.Instance;
+    public CoreFarms Farm = new();
     public CoreNation Nation = new();
     public TaintedClaymore TC = new();
 
     public string OptionsStorage = "PoisonousDeal";
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         CoreBots.Instance.SkipOptions,
         new Option<int>("TaintedQuantity", "How many Tainted Gems?","Max Stack is 1000" ,0),
@@ -34,7 +34,7 @@ public class ThePoisonousDeal
         Core.BankingBlackList.AddRange(Nation.bagDrops);
         Core.SetOptions();
 
-        Deal(Bot.Config.Get<int>("TaintedQuantity"), Bot.Config.Get<int>("ShardQuantity"));
+        Deal(Bot.Config!.Get<int>("TaintedQuantity"), Bot.Config.Get<int>("ShardQuantity"));
 
         Core.SetOptions(false);
     }
@@ -47,7 +47,7 @@ public class ThePoisonousDeal
             return;
         }
 
-        Nation.DragonSlayerReward();
+       Nation.DragonSlayerReward();
         TC.DoAll();
 
         Core.AddDrop("Tainted Gem", "Dark Crystal Shard");
@@ -76,7 +76,7 @@ public class ThePoisonousDeal
             Bot.Wait.ForPickup("Dark Crystal Shard");
         }
 
-        if (Bot.Config.Get<bool>("BankItems"))
+        if (Bot.Config!.Get<bool>("BankItems"))
             Core.ToBank(Nation.bagDrops);
     }
 }

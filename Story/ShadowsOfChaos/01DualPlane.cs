@@ -4,6 +4,7 @@ description: This will finish the Dual Plane quest.
 tags: story, quest, shadow-chaos, dual-plane
 */
 //cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs

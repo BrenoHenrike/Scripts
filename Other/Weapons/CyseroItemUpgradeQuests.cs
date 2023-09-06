@@ -61,28 +61,28 @@ public class CyseroItemUpgrade
     public void ScriptOtions()
     {
 
-        if (Bot.Config.Get<bool>("PolishedBlod"))
+        if (Bot.Config!.Get<bool>("PolishedBlod"))
             GetPolishedBLoD();
 
-        if (Bot.Config.Get<bool>("ToxicPlagueSpear"))
+        if (Bot.Config!.Get<bool>("ToxicPlagueSpear"))
             GetToxicPlagueSpear();
 
-        if (Bot.Config.Get<bool>("BurningPhoenixBlade"))
+        if (Bot.Config!.Get<bool>("BurningPhoenixBlade"))
             GetBurningPhoenixBlade();
 
-        if (Bot.Config.Get<bool>("OdokuroBlight"))
+        if (Bot.Config!.Get<bool>("OdokuroBlight"))
             GetOdokuroBlight();
 
-        if (Bot.Config.Get<bool>("PolishedManslayer"))
+        if (Bot.Config!.Get<bool>("PolishedManslayer"))
             GetPolishedManslayer();
 
-        if (Bot.Config.Get<bool>("CursedDoomBlade"))
+        if (Bot.Config!.Get<bool>("CursedDoomBlade"))
             GetCursedDoomBlade();
 
-        if (Bot.Config.Get<bool>("RebornSepulchureHelm"))
+        if (Bot.Config!.Get<bool>("RebornSepulchureHelm"))
             GetRebornSepulchureHelm();
 
-        if (Bot.Config.Get<bool>("GetAll"))
+        if (Bot.Config!.Get<bool>("GetAll"))
             GetAll();
     }
 

@@ -17,8 +17,8 @@ public class NorthpointeREP
     {
         Core.SetOptions();
 
-        Adv.BestGear(GenericGearBoost.dmgAll);
-        Adv.BestGear(GenericGearBoost.rep);
+        //Adv.BestGear(GenericGearBoost.dmgAll);
+        //Adv.BestGear(GenericGearBoost.rep);
         Farm.NorthpointeREP();
 
         Core.SetOptions(false);

@@ -64,11 +64,8 @@ public class CoreSoWMats
 
         Core.FarmingLogger("Elemental Core", Quantity);
         Core.AddDrop("Elemental Core");
-        if (Core.CheckInventory("Yami no Ronin") || Core.CheckInventory("Dragon of Time"))
-        {
-            Bot.Skills.StartAdvanced(Core.CheckInventory("Yami no Ronin") ? "Yami no Ronin" : "Dragon of Time", true, ClassUseMode.Solo);
-        }
-        else Core.EquipClass(ClassType.Solo);
+
+        Core.BossClass();
 
         Core.RegisterQuests(9126);
         while (!Bot.ShouldExit && !Core.CheckInventory("Elemental Core", Quantity))
@@ -133,9 +130,11 @@ public class CoreSoWMats
         Core.RegisterQuests(8869);
         while (!Bot.ShouldExit && !Core.CheckInventory("Unbound Thread", Quantity))
         {
-            Core.HuntMonster("DeadLines", "Shadowfall Warrior", "Armor Scrap", 8, log: false);
-            Core.HuntMonster("DeadLines", "Frenzied Mana", "Captured Mana", 8, log: false);
-            Core.HuntMonster("DeadLines", "Eternal Dragon", "Eternal Dragon Scale", log: false);
+            Core.EquipClass(ClassType.Farm);
+            Core.HuntMonster("DeadLines", "Frenzied Mana", "Captured Mana", 8);
+            Core.HuntMonster("DeadLines", "Shadowfall Warrior", "Armor Scrap", 8);
+            Core.EquipClass(ClassType.Solo);
+            Core.HuntMonster("DeadLines", "Eternal Dragon", "Eternal Dragon Scale");
         }
         Core.CancelRegisteredQuests();
     }
@@ -154,10 +153,10 @@ public class CoreSoWMats
         while (!Bot.ShouldExit && !Core.CheckInventory("Willpower", Quantity))
         {
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster($"ruinedcrown", "Calamitous Warlic", "Warlic’s Favor", log: false);
+            Core.HuntMonster("ruinedcrown", "Calamitous Warlic", "Warlic's Favor", log: false);
             Core.EquipClass(ClassType.Farm);
             Core.HuntMonster("ruinedcrown", "Frenzied Mana", "Mana Residue", 8, log: false);
-            Core.HuntMonster($"ruinedcrown", "Mana-Burdened Mage", "Mage’s Blood Sample", 8, log: false);
+            Core.HuntMonster("ruinedcrown", "Mana-Burdened Mage", "Mage's Blood Sample", 8, log: false);
         }
         Core.CancelRegisteredQuests();
     }

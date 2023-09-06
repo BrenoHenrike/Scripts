@@ -64,8 +64,9 @@ public class DragonFableOrigins
         Story.KillQuest(6298, "firewar", "Uriax");
 
         // Confront Akriloth
+        Core.EquipClass(ClassType.Farm);
         Story.KillQuest(6299, "firewar", "Akriloth");
-
+        
         //Quest not required!
         // // Clear out the Dragons
         // if (!Story.QuestProgression(6300))

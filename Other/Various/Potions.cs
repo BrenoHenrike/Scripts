@@ -66,14 +66,14 @@ public class PotionBuyer
             "Unstable Body Tonic", "Unstable Fate Tonic", "Unstable Keen Elixir",
             "Unstable Mastery Tonic", "Unstable Might Tonic", "Unstable Velocity Elixir",
             "Unstable Wise Tonic"};
-        potionsFarm ??= new[] {                         Bot.Config!.Get<bool>("farmFate"),           Bot.Config.Get<bool>("farmSage"),
-            Bot.Config.Get<bool>("farmBattle"),         Bot.Config.Get<bool>("farmMalevolence"),    Bot.Config.Get<bool>("farmHonor"),
-            Bot.Config.Get<bool>("farmDivine"),         Bot.Config.Get<bool>("farmRevitalize"),
-            Bot.Config.Get<bool>("buyFeli"),            Bot.Config.Get<bool>("buyEndu"),            Bot.Config.Get<bool>("farmDestruction"),
-            Bot.Config.Get<bool>("farmBody"),           Bot.Config.Get<bool>("FarmSoul"),           Bot.Config.Get<bool>("UnstableBattle"),
-            Bot.Config.Get<bool>("UnstableBody"),       Bot.Config.Get<bool>("UnstableFate"),       Bot.Config.Get<bool>("UnstableKeen"),
-            Bot.Config.Get<bool>("UnstableMastery"),    Bot.Config.Get<bool>("UnstableMight"),      Bot.Config.Get<bool>("UnstableVelocity"),
-            Bot.Config.Get<bool>("UnstableWise") };
+        potionsFarm ??= new[] {                         Bot.Config!.Get<bool>("farmFate"),           Bot.Config!.Get<bool>("farmSage"),
+            Bot.Config!.Get<bool>("farmBattle"),         Bot.Config!.Get<bool>("farmMalevolence"),    Bot.Config!.Get<bool>("farmHonor"),
+            Bot.Config!.Get<bool>("farmDivine"),         Bot.Config!.Get<bool>("farmRevitalize"),
+            Bot.Config!.Get<bool>("buyFeli"),            Bot.Config!.Get<bool>("buyEndu"),            Bot.Config!.Get<bool>("farmDestruction"),
+            Bot.Config!.Get<bool>("farmBody"),           Bot.Config!.Get<bool>("FarmSoul"),           Bot.Config!.Get<bool>("UnstableBattle"),
+            Bot.Config!.Get<bool>("UnstableBody"),       Bot.Config!.Get<bool>("UnstableFate"),       Bot.Config!.Get<bool>("UnstableKeen"),
+            Bot.Config!.Get<bool>("UnstableMastery"),    Bot.Config!.Get<bool>("UnstableMight"),      Bot.Config!.Get<bool>("UnstableVelocity"),
+            Bot.Config!.Get<bool>("UnstableWise") };
 
         if (!potionsFarm.Any(x => x) || potionQuant < 1 || potionQuant > 300)
         {

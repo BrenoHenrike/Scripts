@@ -22,9 +22,9 @@ public class CruxShip
         Core.SetOptions(false);
     }
 
-    public void StoryLine()
+    public void StoryLine(bool badge = false)
     {
-        if (Core.isCompletedBefore(4616))
+        if (Core.isCompletedBefore(4614))
             return;
 
         Story.PreLoad(this);
@@ -35,8 +35,12 @@ public class CruxShip
         Story.KillQuest(4598, "CruxShip", "Shadow Locust");
 
         //Clear the Swarm 4599
-        Story.MapItemQuest(4599, "CruxShip", 3901, 2);
-        Story.KillQuest(4599, "CruxShip", "Shadow Locust");
+        if (!Story.QuestProgression(4599))
+        {
+            Core.EnsureAccept(4599);
+            Core.KillMonster("CruxShip", "r2", "Left", "Shadow Locust", "Locusts Defeated", 5);
+            Story.MapItemQuest(4599, "CruxShip", 3901, 2);
+        }
 
         //Act 1 Complete 4600
         Story.ChainQuest(4600);
@@ -60,31 +64,61 @@ public class CruxShip
         Story.KillQuest(4606, "CruxShip", "Shadow Locust");
 
         //The Plaguebringer Appears 4607
-        Story.KillQuest(4607, "CruxShip", new[] { "Shadow Locust", "Nokris Plaguebringer" });
+        if (!Story.QuestProgression(4607))
+        {
+            Core.EnsureAccept(4607);
+            Core.HuntMonster("CruxShip", "Nokris Plaguebringer", "Nokris Plaguebringer Defeated");
+            Core.KillMonster("CruxShip", "r2", "Left", "Shadow Locust", "Locusts Defeated", 3);
+            Core.EnsureComplete(4607);
+        }
 
-        //Battle to the Temple 4610
-        Story.KillQuest(4610, "CruxShip", new[] { "Treasure Hunter", "Mummy" });
+        // Battle to the Temple
+        if (!Story.QuestProgression(4610))
+        {
+            Core.EnsureAccept(4610);
+            Core.HuntMonster("CruxShip", "Ancient Mummy", "Mummy Defeated", 12);
+            Core.HuntMonster("CruxShip", "Treasure Hunter", "Treasure Hunter Defeated", 8);
+            Core.EnsureComplete(4610);
+        }
 
         //Treasure Hunter's Last Stand 4611
-        Story.KillQuest(4611, "CruxShip", new[] { "Treasure Hunter", "Treasure Hunter Captain" });
+        if (!Story.QuestProgression(4611))
+        {
+            Core.EnsureAccept(4611);
+            Core.HuntMonster("CruxShip", "Treasure Hunter Captain", "Captain Defeated");
+            Core.HuntMonster("CruxShip", "Treasure Hunter", "Treasure Hunter Defeated", 8);
+            Core.EnsureComplete(4611);
+        }
 
         //Act 4 Complete 4612
         Story.ChainQuest(4612);
 
         //Apephyrx Rises 4613
-        Core.EquipClass(ClassType.Solo);
-        Story.KillQuest(4613, "CruxShip", "Apephryx");
+        if (!Story.QuestProgression(4613))
+        {
+            Core.EquipClass(ClassType.Solo);
+            Core.EnsureAccept(4613);
+            Core.HuntMonster("CruxShip", "Apephryx", "Apephryx Defeated");
+            Core.EnsureComplete(4613);
+        }
 
         //Act 5 Complete 4614
         Story.ChainQuest(4614);
+
+        if (!badge)
+            return;
 
         //100 Mummy Massacre 4616
         if (!Story.QuestProgression(4616))
         {
             Core.EquipClass(ClassType.Farm);
             Core.EnsureAccept(4616);
-            Core.HuntMonster("Mummies", "Mummy", "Mummy Defeated", 100, false);
-            Core.EnsureComplete(4616);
+            Core.HuntMonster("Mummies", "Mummy", "Mummy Defeated", 100);
+            Bot.Wait.ForQuestComplete(4616);
+            Bot.Sleep(2500);
+            if (Core.HasWebBadge("Mummy Slayer"))
+                return;
+            else Core.EnsureComplete(4616);
         }
 
     }

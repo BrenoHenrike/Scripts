@@ -67,9 +67,11 @@ public class GenesisGardenMerge
                     break;
                 #endregion
 
-                case "Jus Divinum Scale":
                 case "Mourning Flower":
-                    Darkon.WheelofFortune(quant);
+                    Darkon.WheelofFortune(quant, 0);
+                    break;
+                case "Jus Divinum Scale":
+                    Darkon.WheelofFortune(0, quant);
                     break;
             }
         }

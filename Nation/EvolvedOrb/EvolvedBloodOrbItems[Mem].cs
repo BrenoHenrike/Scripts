@@ -37,8 +37,6 @@ public class EvolvedBloodOrbItems
             return;
 
         EBO.GetEvolvedBloodOrb();
-        if (Core.CheckInventory(33196)) //recheck
-            return;
 
         FlowLikeBlood();
         BloodTears();

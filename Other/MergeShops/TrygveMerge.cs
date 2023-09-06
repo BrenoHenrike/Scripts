@@ -7,7 +7,7 @@ tags: null
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/Story/Trygve.cs
+//cs_include Scripts/Story/Hollowborn/CoreHollowbornStory.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
@@ -20,7 +20,7 @@ public class TrygveMerge
     public CoreStory Story = new();
     public CoreAdvanced Adv = new();
     public static CoreAdvanced sAdv = new();
-    public Trygve Trygve = new();
+    public CoreHollowbornStory HB = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
     public string[] MultiOptions = { "Generic", "Select" };
@@ -41,7 +41,7 @@ public class TrygveMerge
 
     public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
-        Trygve.Storyline();
+        HB.Trygve();
         Adv.StartBuyAllMerge("trygve", 2054, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
@@ -85,7 +85,7 @@ public class TrygveMerge
                     Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("trygve", "Vindicator Recruit", req.Name, quant);
+                        Core.HuntMonster("trygve", "Vindicator Recruit", req.Name, quant, isTemp: req.Temp);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     break;
@@ -97,7 +97,7 @@ public class TrygveMerge
                     Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("trygve", "Vindicator Soldier", req.Name, quant);
+                        Core.HuntMonster("trygve", "Vindicator Soldier", req.Name, quant, isTemp: req.Temp);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     break;
@@ -109,7 +109,7 @@ public class TrygveMerge
                     Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("trygve", "Gramiel", req.Name, quant);
+                        Core.HuntMonster("trygve", "Gramiel", req.Name, quant, isTemp: req.Temp);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     break;

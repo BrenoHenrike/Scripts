@@ -1,7 +1,7 @@
 /*
 name: Legion Revenant (Full)
 description: Does the entirety of the Legion Tevenant class garming from A to Z
-tags: legion, revenant, fealty, class, LR, 
+tags: legion, revenant, fealty, class, LR, do all, full
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

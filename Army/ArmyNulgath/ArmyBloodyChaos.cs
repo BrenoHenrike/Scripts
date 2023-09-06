@@ -14,17 +14,16 @@ using Skua.Core.Models.Monsters;
 public class ArmyBloodyChaos
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
-    private CoreBots Core => CoreBots.Instance;
-    private CoreFarms Farm = new();
-    private CoreAdvanced Adv => new();
-    private CoreArmyLite Army = new();
+    private static CoreBots Core => CoreBots.Instance;
+    private readonly CoreFarms Farm = new();
+    private readonly CoreArmyLite Army = new();
 
-    private static CoreBots sCore = new();
-    private static CoreArmyLite sArmy = new();
+    private static readonly CoreBots sCore = new();
+    private static readonly CoreArmyLite sArmy = new();
 
     public string OptionsStorage = "ArmyBloodyChaos";
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         sArmy.player1,
         sArmy.player2,
@@ -61,14 +60,14 @@ public class ArmyBloodyChaos
         Core.RegisterQuests(7816, 2857); //
         while (!Bot.ShouldExit && !Core.CheckInventory("Blood Gem of the Archfiend", quant))
         {
-            ArmyHunt("hydrachallenge", mob.ToString(), "Hydra Scale Piece", ClassType.Solo, true, 200);
-            ArmyHunt("stalagbite", "Vath", "Shattered Legendary Sword of Dragon Control");
-            ArmyHunt("escherion", "Escherion", "Escherion's Helm");
+            ArmyHunt("hydrachallenge", Bot.Config!.Get<Cell>("mob") == Cell.h85 ? new[] { 29, 30, 31 } : new[] { 32, 33, 34 }, "Hydra Scale Piece", 200);
+            ArmyHunt("stalagbite", new[] { 7, 8 }, "Shattered Legendary Sword of Dragon Control");
+            ArmyHunt("escherion", new[] { 2, 3 }, "Escherion's Helm");
         }
         Core.CancelRegisteredQuests();
     }
 
-    void ArmyHunt(string map, string monster, string item, ClassType classType = ClassType.Solo, bool isTemp = false, int quant = 1)
+    void ArmyHunt(string map, int[] monsters, string item, int quant = 1)
     {
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
@@ -78,41 +77,58 @@ public class ArmyBloodyChaos
 
         Core.AddDrop(item);
 
-        Core.EquipClass(classType);
+        Core.EquipClass(ClassType.Solo);
         Army.waitForParty(map, item);
         Core.FarmingLogger(item, quant);
 
-        Army.SmartAggroMonStart(map, monster);
+        switch (Bot.Map.Name)
+        {
+            case "Stalagbite":
+                Army.AggroMonCells("r2");
+                Army.AggroMonMIDs(7, 8);
+                Army.AggroMonStart("Stalagbite");
 
-        if (Bot.Map.Name == "vath")
-        {
-            while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
-            {
-                if (Core.IsMonsterAlive("Stalagbite"))
-                    Bot.Kill.Monster("Stalagbite");
-                Bot.Combat.Attack("Vath");
-                Bot.Sleep(1000);
-            }
-        }
-        else if (Bot.Map.Name == "escherion")
-        {
-            while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
-            {
-                if (Core.IsMonsterAlive("Staff of Inversion"))
-                    Bot.Kill.Monster("Staff of Inversion");
-                Bot.Combat.Attack("Escherion");
-                Bot.Sleep(1000);
-            }
+                while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
+                {
+                    if (Core.IsMonsterAlive("Stalagbite"))
+                        Bot.Kill.Monster("Stalagbite");
+                    else Bot.Combat.Attack("Vath");
+                    Bot.Sleep(1000);
+                }
+                break;
 
+            case "escherion":
+                Army.AggroMonCells("Boss");
+                Army.AggroMonMIDs(2, 3);
+                Army.AggroMonStart("Escherion");
+                while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
+                {
+                    if (Core.IsMonsterAlive("Staff of Inversion"))
+                        Bot.Kill.Monster("Staff of Inversion");
+                    else Bot.Combat.Attack("Escherion");
+                    Bot.Sleep(1000);
+                }
+                break;
+
+            case "hydrachallenge":
+                Army.AggroMonMIDs(monsters);
+                Army.DivideOnCells(Bot.Config!.Get<Cell>("mob") == Cell.h85 ? "h85" : "h90");
+                Army.AggroMonStart("hydrachallenge");
+                while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
+                    Bot.Combat.Attack(Bot.Config!.Get<Cell>("mob") == Cell.h85 ? "Hydra Head 85" : "Hydra Head 90");
+                break;
+
+            default:
+                while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
+                    Bot.Combat.Attack("*");
+                break;
         }
-        else
-        {
-            while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
-                Bot.Combat.Attack("*");
-        }
+
         Army.AggroMonStop(true);
         Core.JumpWait();
     }
+
+
 
     private string[] Loot =
     {

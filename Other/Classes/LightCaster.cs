@@ -13,6 +13,8 @@ tags: null
 //cs_include Scripts/Other/Weapons/LanceOfTime.cs
 //cs_include Scripts/Other/Weapons/BurningBlade.cs
 //cs_include Scripts/Other/Weapons/BurningBladeOfAbezeth.cs
+//cs_include Scripts/Story/QueenofMonsters/Extra/CelestialArena.cs
+//cs_include Scripts/Other/MergeShops/CelestialChampMerge.cs
 using Skua.Core.Interfaces;
 public class LightCaster
 {
@@ -48,13 +50,13 @@ public class LightCaster
         AODS.GetAoDS();
         LOT.GetLoT();
         BB.GetBurningBlade();
-        LM.GetLM(false);
+        LM.GetLM(false);        
+        BBOA.GetBBoA();
+
 
         Core.EquipClass(ClassType.Solo);
-        Bot.Quests.UpdateQuest(6042);
         Core.EnsureAccept(6495);
-        BBOA.GetBBoA();
-        Adv.BoostHuntMonster("celestialarenad", "Aranx", "Aranx's Pure Light", isTemp: false);
+        Core.HuntMonster("celestialarenad", "Aranx", "Aranx's Pure Light", isTemp: false);
         Core.EnsureComplete(6495);
         Bot.Wait.ForPickup("LightCaster");
 

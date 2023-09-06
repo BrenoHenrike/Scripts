@@ -32,26 +32,24 @@ public class DragonShinobi
     {
         if (Core.CheckInventory(59476))
         {
-            Adv.RankUpClass("DragonSoul Shinobi");
+            if (rankUpClass)
+                Adv.RankUpClass("DragonSoul Shinobi");
             return;
         }
 
         Yokai.Quests();
-        Core.AddDrop("Dragon Shinobi Token");
+        Core.AddDrop(20561);
 
         Core.EquipClass(ClassType.Solo);
+        Core.FarmingLogger("Dragon Shinobi Token", 300);
         Core.RegisterQuests(7924);
-        while (!Bot.ShouldExit && !Core.CheckInventory("Dragon Shinobi Token", 300))
-            Core.HuntMonster("shadowfortress", "1st Head Of Orochi", "Perfect Orochi Scales", 10, isTemp: false);
+        while (!Bot.ShouldExit && !Core.CheckInventory(20561, 300))
+            Core.HuntMonster("shadowfortress", "1st Head Of Orochi");
         Core.CancelRegisteredQuests();
 
-        Core.BuyItem("shadowfortress", 1968, 59476);
+        Adv.BuyItem("shadowfortress", 1968, 59476, shopItemID: 8078);
+      
         if (rankUpClass)
-        {
-            Adv.GearStore();
-            Core.Equip("DragonSoul Shinobi");
             Adv.RankUpClass("DragonSoul Shinobi");
-            Adv.GearStore(true);
-        }
     }
 }

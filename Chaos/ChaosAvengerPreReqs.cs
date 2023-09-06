@@ -62,9 +62,9 @@ public class ChaosAvengerClass
             else if (Bot.Quests.IsAvailable(7979))
             {
                 Core.EnsureAccept(8300);
-                Adv.BestGear(RacialGearBoost.Chaos);
+                //Adv.BestGear(RacialGearBoost.Chaos);
                 Core.EquipClass(ClassType.Solo);
-                Core.KillMonster("championdrakath", "r2", "Left", "Champion Drakath", "Champion Drakath Defeated", publicRoom: true);
+                Core.KillMonster("championdrakath", "r2", "Left", "Champion Drakath", "Champion Drakath Defeated");
                 Core.EnsureComplete(8300);
                 ParallelChaosAmulet();
             }
@@ -76,7 +76,7 @@ public class ChaosAvengerClass
         if (!Core.CheckInventory("Fragment of the Dragon"))
         {
             Core.EquipClass(ClassType.Solo);
-            Core.KillMonster("chaoslord", "r2", "Left", "*", "Fragment of the Dragon", isTemp: false, publicRoom: true);
+            Core.KillMonster("chaoslord", "r2", "Left", "*", "Fragment of the Dragon", isTemp: false);
         }
 
     }
@@ -86,7 +86,7 @@ public class ChaosAvengerClass
         if (!Core.CheckInventory("Fragment of Mount Doomskull", 1300))
         {
             Core.EquipClass(ClassType.Farm);
-            Adv.BestGear(RacialGearBoost.Chaos);
+            //Adv.BestGear(RacialGearBoost.Chaos);
             Core.HuntMonster("mountdoomskull", "Chaorrupted Rogue", "Fragment of Mount Doomskull", 1300, isTemp: false);
         }
 
@@ -100,19 +100,19 @@ public class ChaosAvengerClass
             bool Ledgermayne = true;
 
             //Escherion's Robe
-            Core.KillEscherion("Escherion's Robe", publicRoom: true);
+            Core.KillEscherion("Escherion's Robe");
 
             //Vath's Chaotic Dragonlord Armor
             Core.KillVath("Vath's Chaotic Dragonlord Armor");
 
             //Chaos Shogun Armor
-            Core.KillKitsune("Chaos Shogun Armor", publicRoom: true);
+            Core.KillKitsune("Chaos Shogun Armor");
 
             //Wolfwing Armor
-            Core.HuntMonster("wolfwing", "Wolfwing", "Wolfwing Armor", isTemp: false, publicRoom: true);
+            Core.HuntMonster("wolfwing", "Wolfwing", "Wolfwing Armor", isTemp: false);
 
             //Discordia Armor
-            Core.HuntMonster("palooza", "Chaos Lord Discordia", "Discordia Armor", isTemp: false, publicRoom: true);
+            Core.HuntMonster("palooza", "Chaos Lord Discordia", "Discordia Armor", isTemp: false);
 
             //Ledgermayne (Armor)
             Core.HuntMonster("Ledgermayne", "Ledgermayne", "Ledgermayne", isTemp: !Ledgermayne, publicRoom: Ledgermayne);
@@ -128,24 +128,24 @@ public class ChaosAvengerClass
             Core.EquipClass(ClassType.Solo);
 
             //Tibicenas (Armor)
-            Core.HuntMonster("djinn", "Tibicenas", "Tibicenas", isTemp: false, publicRoom: true);
+            Core.HuntMonster("djinn", "Tibicenas", "Tibicenas", isTemp: false);
 
             //Soul of Chaos Armor
-            Core.HuntMonster("dreamnexus", "Khasaanda", "Soul of Chaos Armor", isTemp: false, publicRoom: true);
+            Core.HuntMonster("dreamnexus", "Khasaanda", "Soul of Chaos Armor", isTemp: false);
 
             //Iadoa (Armor)
             Core.HuntMonster("mqlesson", "Dragonoid", "Dragonoid of Hours", isTemp: false);
-            Core.HuntMonster("timespace", "Chaos Lord Iadoa", "Iadoa", isTemp: false, publicRoom: true);
+            Core.HuntMonster("timespace", "Chaos Lord Iadoa", "Iadoa", isTemp: false);
 
             //Chaos Lionfang Armor
-            Core.HuntMonster("stormtemple", "Chaos Lord Lionfang", "Chaos Lionfang Armor", isTemp: false, publicRoom: true);
+            Core.HuntMonster("stormtemple", "Chaos Lord Lionfang", "Chaos Lionfang Armor", isTemp: false);
 
             //Chaos Lord Alteon (Armor)
-            Core.HuntMonster("swordhavenfalls", "Chaos Lord Alteon", "Chaos Lord Alteon", isTemp: false, publicRoom: true);
+            Core.HuntMonster("swordhavenfalls", "Chaos Lord Alteon", "Chaos Lord Alteon", isTemp: false);
 
             //Xiang Chaos
             Adv.GearStore();
-            Core.KillXiang("Xiang Chaos", publicRoom: true);
+            Core.KillXiang("Xiang Chaos");
             Adv.GearStore(true);
 
             Core.BuyItem("championdrakath", 2055, "Fragments of the Lords B");
@@ -158,7 +158,7 @@ public class ChaosAvengerClass
         {
             Core.EquipClass(ClassType.Solo);
             Bot.Quests.UpdateQuest(8094);
-            Core.HuntMonster("transformation", "Queen of Monsters", "Fragment of the Queen", 13, false, publicRoom: true);
+            Core.HuntMonster("transformation", "Queen of Monsters", "Fragment of the Queen", 13, false);
         }
 
     }

@@ -32,7 +32,7 @@ public class MummySlayerAndCruxShadowsDefender
         }
 
         Core.Logger("Doing CruxShip story for Mummy Slayer and CruxShadows Defender badge");
-        CS.StoryLine();
+        CS.StoryLine(true);
 
     }
 

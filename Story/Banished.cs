@@ -45,7 +45,7 @@ public class Banished
             return;
 
         Core.EquipClass(ClassType.Solo);
-        Adv.BestGear(GenericGearBoost.dmgAll);
+        //Adv.BestGear(GenericGearBoost.dmgAll);
 
         // he First Task
         Story.KillQuest(7875, "timevoid", "Unending Avatar");
@@ -103,7 +103,7 @@ public class Banished
         if (Core.isCompletedBefore(2027))
             return;
 
-        Adv.BestGear(GenericGearBoost.dmgAll);
+        //Adv.BestGear(GenericGearBoost.dmgAll);
 
         // Knave1's Route to the Void
         Story.MapItemQuest(2022, "northlands", 979);
@@ -112,8 +112,8 @@ public class Banished
         if (!Story.QuestProgression(2023))
         {
             Core.EnsureAccept(2023);
-            Core.HuntMonster("northlands", "Chaos Gemrald", "Chaos Gemerald Cluster");
-            Core.HuntMonster("northlands", "Chaos Gemrald", "Chaos Gemerald Shard", 5);
+            Core.HuntMonster("northlands", "Chaos Gemrald", "Chaos Gemrald Cluster");
+            Core.HuntMonster("northlands", "Chaos Gemrald", "Chaos Gemrald Shard", 5);
             Core.EnsureComplete(2023);
         }
 
