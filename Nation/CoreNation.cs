@@ -1001,7 +1001,7 @@ public class CoreNation
             if (farmUni13 && !Core.CheckInventory("Unidentified 13"))
                 FarmUni13(3);
             Core.EnsureAccept(870);
-            Core.HuntMonster("tercessuinotlim", "Shadow of Nulgath", "Blade Master Rune", log: false);
+            Core.KillMonster("tercessuinotlim", "m4", "Top,", "Shadow of Nulgath", "Blade Master Rune", log: false);
             Core.EnsureComplete(870, (int)reward);
             Core.Logger($"Exchanged for {reward}");
         }
