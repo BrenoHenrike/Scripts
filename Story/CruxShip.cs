@@ -24,7 +24,7 @@ public class CruxShip
 
     public void StoryLine()
     {
-        if (Core.isCompletedBefore(4616))
+        if (Core.isCompletedBefore(4614))
             return;
 
         Story.PreLoad(this);
@@ -76,8 +76,8 @@ public class CruxShip
         if (!Story.QuestProgression(4610))
         {
             Core.EnsureAccept(4610);
-            Core.HuntMonster("CruxShip", "Ancient Mummy", "Treasure Hunter Defeated", 8);
-            Core.KillMonster("CruxShip",  "Treasure Hunter", "Mummy Defeated", 12);
+            Core.HuntMonster("CruxShip", "Ancient Mummy", "Mummy Defeated", 12);
+            Core.HuntMonster("CruxShip", "Treasure Hunter", "Treasure Hunter Defeated", 8);
             Core.EnsureComplete(4610);
         }
 
