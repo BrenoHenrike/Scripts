@@ -113,14 +113,12 @@ public class ArmyLR
     {
         Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
 
-        Bot.Events.PlayerAFK += PlayerAFK;
 
         Legion.JoinLegion();
         Legion.LegionRound4Medal();
         Seraph.SeraphicWar_Questline();
         CruxShip.StoryLine();
         DWLN.DarkWarNation();
-
         DarkCasterCheck();
         /*
         ********************************************************************************
@@ -151,7 +149,6 @@ public class ArmyLR
         /*Step 10: LF3 and Finish*/
         ArmyLF3();
         Adv.RankUpClass("Legion Revenant");
-        Bot.Events.PlayerAFK -= PlayerAFK;
     }
 
     public void ArmyLF1(int quant = 20)
