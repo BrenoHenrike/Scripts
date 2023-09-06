@@ -540,6 +540,9 @@ public class CoreNation
         bool sellMemVoucher = Core.CBOBool("Nation_SellMemVoucher", out bool _sellMemVoucher) && _sellMemVoucher;
         bool returnPolicyDuringSupplies = Core.CBOBool("Nation_ReturnPolicyDuringSupplies", out bool _returnSupplies) && _returnSupplies;
 
+        if (!Core.CheckInventory(CragName))
+                BambloozevsDrudgen(item, quant);
+
         Core.RegisterQuests(2857);
         Core.EquipClass(ClassType.Solo);
 
@@ -549,44 +552,34 @@ public class CoreNation
         {
             foreach (string Thing in SuppliesRewards)
             {
-                if (Core.CheckInventory(CragName))
-                    BambloozevsDrudgen(item, quant);
-                else
+                // Find the corresponding item in quest rewards
+                var rewards = Core.EnsureLoad(2857).Rewards;
+                ItemBase? Item = rewards.Find(x => x.Name == Thing);
+
+                while (!Bot.ShouldExit && Item != null && !Core.CheckInventory(Item.Name, Item.MaxStack))
                 {
-                    // Find the corresponding item in quest rewards
-                    var rewards = Core.EnsureLoad(2857).Rewards;
-                    ItemBase? Item = rewards.Find(x => x.Name == Thing);
+                    Core.KillEscherion(Item.Name, Item.MaxStack, log: false);
 
-                    while (!Bot.ShouldExit && Item != null && !Core.CheckInventory(Item.Name, Item.MaxStack))
+                    if (Item.Name != "Voucher of Nulgath" && sellMemVoucher && Core.CheckInventory("Voucher of Nulgath") && !voucherNeeded)
                     {
-                        Core.KillEscherion(Item.Name, Item.MaxStack, log: false);
-
-                        if (Item.Name != "Voucher of Nulgath" && sellMemVoucher && Core.CheckInventory("Voucher of Nulgath") && !voucherNeeded)
-                        {
-                            Bot.Drops.Pickup(Item.Name);
-                            Core.SellItem(Item.Name, all: true);
-                            Bot.Wait.ForItemSell();
-                        }
+                        Bot.Drops.Pickup(Item.Name);
+                        Core.SellItem(Item.Name, all: true);
+                        Bot.Wait.ForItemSell();
                     }
                 }
             }
         }
         else // Handle the case when item is not null
         {
-            if (Core.CheckInventory(CragName))
-                BambloozevsDrudgen(item, quant);
-            else
+            while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
             {
-                while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
-                {
-                    Core.KillEscherion(item, quant, log: false);
+                Core.KillEscherion(item, quant, log: false);
 
-                    if (item != "Voucher of Nulgath" && sellMemVoucher && Core.CheckInventory("Voucher of Nulgath") && !voucherNeeded)
-                    {
-                        Bot.Drops.Pickup("Voucher of Nulgath");
-                        Core.SellItem("Voucher of Nulgath", all: true);
-                        Bot.Wait.ForItemSell();
-                    }
+                if (item != "Voucher of Nulgath" && sellMemVoucher && Core.CheckInventory("Voucher of Nulgath") && !voucherNeeded)
+                {
+                    Bot.Drops.Pickup("Voucher of Nulgath");
+                    Core.SellItem("Voucher of Nulgath", all: true);
+                    Bot.Wait.ForItemSell();
                 }
             }
         }
