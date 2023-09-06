@@ -413,8 +413,8 @@ public class CoreFarmerJoe
 
         // P2 Chaos Shenanigans
         Core.Logger("P2: Chaos Shenanigans");
-
-        COA.GetCoA();
+        if (!Core.CheckInventory("Enchanted Cape of Awe"))
+            COA.GetCoA();
         Core.Equip("Cape of Awe");
         Adv.SmartEnhance(Core.FarmClass);
         LOC.Complete13LOC();
