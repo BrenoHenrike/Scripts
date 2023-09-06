@@ -137,7 +137,7 @@
       "null"
     ],
     "path": "Legion/CoreLegion.cs",
-    "size": 31697,
+    "size": 31769,
     "fileName": "CoreLegion.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/CoreLegion.cs"
   },
@@ -659,7 +659,7 @@
       "null"
     ],
     "path": "Army/CoreArmyLite.cs",
-    "size": 39947,
+    "size": 39946,
     "fileName": "CoreArmyLite.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/CoreArmyLite.cs"
   },
@@ -2476,7 +2476,7 @@
       "crux-ship"
     ],
     "path": "Story/CruxShip.cs",
-    "size": 3037,
+    "size": 3633,
     "fileName": "CruxShip.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/CruxShip.cs"
   },
@@ -6196,7 +6196,7 @@
       "fealty"
     ],
     "path": "Army/ArmyLegion/ArmyLRFull.cs",
-    "size": 18749,
+    "size": 19410,
     "fileName": "ArmyLRFull.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyLegion/ArmyLRFull.cs"
   },
@@ -7329,7 +7329,7 @@
       "dark-war-legion-and-nation"
     ],
     "path": "Story/Legion/DarkWarLegionandNation.cs",
-    "size": 4155,
+    "size": 6329,
     "fileName": "DarkWarLegionandNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Legion/DarkWarLegionandNation.cs"
   },
@@ -7360,7 +7360,7 @@
       "birthday"
     ],
     "path": "Story/Legion/DageRecruit.cs",
-    "size": 2812,
+    "size": 5210,
     "fileName": "DageRecruit.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Legion/DageRecruit.cs"
   },
@@ -10471,7 +10471,7 @@
       "null"
     ],
     "path": "Other/Badges/MummySlayerAndCruxShadowsDefender.cs",
-    "size": 918,
+    "size": 922,
     "fileName": "MummySlayerAndCruxShadowsDefender.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Badges/MummySlayerAndCruxShadowsDefender.cs"
   },
