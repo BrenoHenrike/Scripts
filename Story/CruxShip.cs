@@ -67,12 +67,19 @@ public class CruxShip
         if (!Story.QuestProgression(4607))
         {
             Core.EnsureAccept(4607);
-            Core.HuntMonster("CruxShip", "Nokris Plaguebringer", "Norkis Plaugebringer Defeated");
+            Core.HuntMonster("CruxShip", "Nokris Plaguebringer", "Nokris Plaguebringer Defeated");
             Core.KillMonster("CruxShip", "r2", "Left", "Shadow Locust", "Locusts Defeated", 3);
             Core.EnsureComplete(4607);
         }
 
-        Story.KillQuest(4610, "CruxShip", new[] { "Ancient Mummy", "Treasure Hunter" });
+        // Battle to the Temple
+        if (!Story.QuestProgression(4610))
+        {
+            Core.EnsureAccept(4610);
+            Core.HuntMonster("CruxShip", "Ancient Mummy", "Treasure Hunter Defeated", 8);
+            Core.KillMonster("CruxShip",  "Treasure Hunter", "Mummy Defeated", 12);
+            Core.EnsureComplete(4610);
+        }
 
         //Treasure Hunter's Last Stand 4611
         Story.KillQuest(4611, "CruxShip", new[] { "Treasure Hunter", "Treasure Hunter Captain" });
