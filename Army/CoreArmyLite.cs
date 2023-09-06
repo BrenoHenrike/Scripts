@@ -854,7 +854,7 @@ public class CoreArmyLite
             if (Bot.Player.Level != mapInfo.LevelRequired)
             {
                 Core.Logger($"Not a high enough level.\n" +
-                "required: {mapInfo.LevelRequired}, your's: {Bot.Player.Level}");
+                $"required: {mapInfo.LevelRequired}, your's: {Bot.Player.Level}");
                 continue;
             }
 
