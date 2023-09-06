@@ -449,7 +449,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 69152,
+    "size": 69188,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -2476,7 +2476,7 @@
       "crux-ship"
     ],
     "path": "Story/CruxShip.cs",
-    "size": 2782,
+    "size": 3038,
     "fileName": "CruxShip.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/CruxShip.cs"
   },
