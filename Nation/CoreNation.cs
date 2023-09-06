@@ -975,11 +975,16 @@ public class CoreNation
             return;
 
         Core.AddDrop("Diamond of Nulgath");
-
+        Core.Logger("Randomizing location for Dark Makai\n" +
+        "as the drop can randomly stop showing up");
         if (farmDiamond)
             BambloozevsDrudgen("Diamond of Nulgath", 15);
         Core.EnsureAccept(869);
-        Core.KillMonster("tercessuinotlim", "m1", "Right", "Dark Makai", "Dark Makai Sigil");
+        string[] locations = new[] { "tercessuinotlim", Core.IsMember ? "Nulgath" : "evilmarsh" };
+        string location = locations[new Random().Next(locations.Length)];
+        string cell = location == "tercessuinotlim" ? "m1" : "Field1";
+        Core.KillMonster(location, cell, "Left", "Dark Makai", "Dark Makai Sigil");
+
         Core.EnsureComplete(869);
         Core.Logger("Completed");
     }
