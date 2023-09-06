@@ -909,9 +909,9 @@ public class CoreNation
         {
             // Hunt monsters to complete the quest
             FarmDiamondofNulgath(1);
-            Core.HuntMonster("lair", "Red Dragon", "Dragon Fiend Gem", 13, isTemp: false, log: false);
-            Core.HuntMonster("battleunderd", "Glacial Horror", "Glacial Bones", 3, isTemp: false, log: false);
-            Core.HuntMonster("dreammaze", "Screamfeeder", "Screamfeeder Heart", isTemp: false, log: false);
+            Core.HuntMonster("lair", "Red Dragon", "Dragon Fiend Gem", 13, isTemp: false);
+            Core.KillMonster("battleunderd", "r5", "Left", "Glacial Horror", "Glacial Bones", 3, isTemp: false);
+            Core.HuntMonster("dreammaze", "Screamfeeder", "Screamfeeder Heart", isTemp: false);
         }
 
         // Wait for the item to be picked up and cancel any registered quests
