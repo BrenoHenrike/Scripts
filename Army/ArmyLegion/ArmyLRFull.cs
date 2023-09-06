@@ -113,43 +113,89 @@ public class ArmyLR
     {
         Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
 
+        Bot.Events.PlayerAFK += PlayerAFK;
 
+        Core.PrivateRooms = true;
+        Core.PrivateRoomNumber = Army.getRoomNr();
+
+        Core.Logger("Step 1: Joining Legion");
         Legion.JoinLegion();
+        Adv.BuyItem("underworld", 216, "Undead Champion");
+        Army.waitForParty("party");
+
+        Core.Logger("Legion Round 4 Medal");
         Legion.LegionRound4Medal();
+        Army.waitForParty("party");
+
+        Core.Logger("Seraphic War Questline");
         Seraph.SeraphicWar_Questline();
+        Army.waitForParty("party");
+
+        Core.Logger("Crux Ship Storyline");
         CruxShip.StoryLine();
-        DWLN.DarkWarNation();
+        Army.waitForParty("party");
+
+        Core.Logger("Dark War Nation/Legion Story");
+        DWLN.DoBoth();
+        Army.waitForParty("party");
+
+        Core.Logger("Dark Caster Check");
         DarkCasterCheck();
-        /*
-        ********************************************************************************
-        ********************************PREFARM ZONE************************************
-        ********************************************************************************
-        */
-        /*Step 1: Evil Rank 10*/
+        Army.waitForParty("party");
+
+        /* PREFARM ZONE */
+
+        /* Step 1: Evil Rank 10 */
+        Core.Logger("Step 1: Evil Rank 10");
         ArmyEvilGoodRepMax();
-        /*Step 2: Hooded Legion Cowl funds and some change for enhancement costs*/
+        Army.waitForParty("party");
+
+        /* Step 2: Hooded Legion Cowl funds and some change for enhancement costs */
+        Core.Logger("Step 2: Hooded Legion Cowl funds and some change for enhancement costs");
         ArmyGoldFarm(5500000);
-        /*Step 3: 3000 Dage Favor*/
+        Army.waitForParty("party");
+
+        /* Step 3: 3000 Dage Favor */
+        Core.Logger("Step 3: 3000 Dage Favor");
         ArmyDageFavor();
-        /*Step 4: 10 Emblem of Dage*/
+        Army.waitForParty("party");
+
+        /* Step 4: 10 Emblem of Dage */
+        Core.Logger("Step 4: 10 Emblem of Dage");
         ArmyEmblemOfDage(10);
-        /*Step 5: 300 Diamond Token of Dage*/
+        Army.waitForParty("party");
+
+        /* Step 5: 300 Diamond Token of Dage */
+        Core.Logger("Step 5: 300 Diamond Token of Dage");
         ArmyDiamondTokenOfDage();
-        /*Step 6: 600 Dark Token*/
+        Army.waitForParty("party");
+
+        /* Step 6: 600 Dark Token */
+        Core.Logger("Step 6: 600 Dark Token");
         ArmyDarkTokenOfDage();
-        /*
-        ********************************************************************************
-        **********************************FINISH****************************************
-        ********************************************************************************
-        */
-        /*Step 7: LF1*/
+        Army.waitForParty("party");
+
+        /* FINISH */
+
+        /* Step 7: LF1 */
+        Core.Logger("Step 7: LF1");
         ArmyLF1();
-        /*Step 9: LF2, thx tato :TatoGasm:*/
+        Army.waitForParty("party");
+
+        /* Step 9: LF2, thx tato :TatoGasm: */
+        Core.Logger("Step 9: LF2");
         ArmyFL2();
-        /*Step 10: LF3 and Finish*/
+        Army.waitForParty("party");
+
+        /* Step 10: LF3 and Finish */
+        Core.Logger("Step 10: LF3 and Finish");
         ArmyLF3();
+        Army.waitForParty("party");
+
         Adv.RankUpClass("Legion Revenant");
+        Bot.Events.PlayerAFK -= PlayerAFK;
     }
+
 
     public void ArmyLF1(int quant = 20)
     {
@@ -164,7 +210,6 @@ public class ArmyLR
         Core.RegisterQuests(6897);
         while (!Bot.ShouldExit && !Core.CheckInventory("Revenant's Spellscroll", quant))
         {
-            //Adv.BestGear(RacialGearBoost.Undead);
             ArmyHunt("judgement", "Aeacus Empowered", ClassType.Solo, 50, false);
             ArmyHunt("revenant", "Tethered Soul", ClassType.Farm, 300);
             ArmyHunt("shadowrealmpast", "Darkened Essence", ClassType.Farm, 500);
@@ -183,7 +228,6 @@ public class ArmyLR
         Core.AddDrop(LF2);
 
         Core.RegisterQuests(6898);
-        //Adv.BestGear(RacialGearBoost.Undead);
         Core.FarmingLogger("Conquest Wreath", quant);
 
         while (!Bot.ShouldExit && !Core.CheckInventory("Conquest Wreath", quant))
@@ -216,7 +260,9 @@ public class ArmyLR
         {
             Adv.BuyItem("underworld", 216, "Hooded Legion Cowl");
             ArmyDarkTokenOfDage(100);
+            Army.waitForParty("party");
             ArmyLTs(4000);
+            Army.waitForParty("party");
             Bot.Wait.ForPickup("Exalted Crown");
         }
         Core.CancelRegisteredQuests();
@@ -284,7 +330,6 @@ public class ArmyLR
         Core.AddDrop("Emblem of Dage");
         Core.FarmingLogger("Emblem of Dage", quant);
         Core.EquipClass(ClassType.Farm);
-        //Adv.BestGear(GenericGearBoost.gold);
 
         Core.RegisterQuests(4742);
         while (!Bot.ShouldExit && !Core.CheckInventory("Emblem of Dage", quant))
@@ -309,14 +354,10 @@ public class ArmyLR
         while (!Bot.ShouldExit && !Core.CheckInventory("Diamond Token of Dage", quant))
         {
             ArmyHunt("tercessuinotlim", "Defeated Makai", ClassType.Farm, 25);
-            //Adv.BestGear(RacialGearBoost.Chaos);
             ArmyHunt("aqlesson", "Carnax Eye", ClassType.Solo);
             ArmyHunt("deepchaos", "Kathool Tentacle", ClassType.Solo);
             ArmyHunt("dflesson", "Fluffy's Bones", ClassType.Solo);
-            //Adv.BestGear(RacialGearBoost.Dragonkin);
             ArmyHunt("lair", "Red Dragon's Fang", ClassType.Solo);
-
-            //Adv.BestGear(RacialGearBoost.Human);
             ArmyHunt("bloodtitan", "Blood Titan's Blade", ClassType.Solo);
         }
         Core.CancelRegisteredQuests();
@@ -329,7 +370,6 @@ public class ArmyLR
 
         Core.FarmingLogger("Dark Token", quant);
         Core.AddDrop("Dark Token");
-        //Adv.BestGear(RacialGearBoost.Human);
         Core.RegisterQuests(6248, 6249, 6251);
         while (!Bot.ShouldExit && !Core.CheckInventory("Dark Token", quant))
             ArmyHunt("seraphicwardage", "Seraphic Commanders Slain", ClassType.Farm, 6);
@@ -341,7 +381,7 @@ public class ArmyLR
         if (Core.CheckInventory("Legion Token", quant))
             return;
 
-        //Adv.BestGear(RacialGearBoost.Human);
+        Core.FarmingLogger("Legion Token", quant);
         Core.RegisterQuests(4849);
         while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
             ArmyHunt("dreadrock", "Legion Token", ClassType.Farm, quant);
@@ -401,8 +441,7 @@ public class ArmyLR
             Core.AddDrop(item);
 
         Core.EquipClass(classType);
-
-        HandleMap(map, item);
+        HandleMap(map, item, quant);
 
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
             Bot.Combat.Attack("*");
@@ -412,24 +451,20 @@ public class ArmyLR
     }
 
 
-    void HandleMap(string map, string? item)
+    void HandleMap(string map, string? item, int quant)
     {
+        Core.PrivateRooms = true;
+        Core.PrivateRoomNumber = Army.getRoomNr();
+
         switch (map)
         {
             case "revenant":
+                map = "revenant-" + (Array.IndexOf(Army.Players(), Core.Username()) > 2 ? (Army.getRoomNr() + 1).ToString() : "");
                 Army.waitForParty(map);
                 Army.AggroMonMIDs(1, 2, 3, 4);
                 Army.AggroMonStart(map);
-                if (Array.IndexOf(Army.Players(), Core.Username()) > 2)
-                {
-                    map = "revenant-" + (Army.getRoomNr() + 1);
-                    Army.DivideOnCells("r2");
-                }
-                else
-                {
-                    map = "revenant";
-                    Army.DivideOnCells("r2");
-                }
+                Army.DivideOnCells("r2");
+
                 break;
 
             case "curseshore":

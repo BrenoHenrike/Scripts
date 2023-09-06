@@ -599,6 +599,7 @@ public class CoreLegion
             "Do you want the bot to sell the \"Undead Warrior\" armor after it has succesfully joined the legion. This will return 1080 AC to you",
             "Sell \"Undead Warrior\"?",
             true);
+            
 
         // Undead Champion Initiation
         if (!Story.QuestProgression(789))
@@ -635,6 +636,7 @@ public class CoreLegion
 
         if (SellUW == true)
             Core.SellItem("Undead Warrior", all: true);
+        Adv.BuyItem("underworld", 216, "Undead Champion");
     }
 
     public void ObsidianRock(int quant = 10)

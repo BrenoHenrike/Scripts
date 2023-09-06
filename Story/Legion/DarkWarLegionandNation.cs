@@ -40,31 +40,65 @@ public class DarkWarLegionandNation
 
         Story.PreLoad(this);
 
-        // Pop Goes the Makai
+        //Pop Goes the Makai
         Story.KillQuest(8556, "dagerecruit", "Dark Makai");
 
-        // Dispel Spell
-        Story.MapItemQuest(8557, "dagerecruit", 9883, 4);
-        Story.KillQuest(8557, "dagerecruit", "Dreadfiend");
+        //Dispel Spell
+        if (!Story.QuestProgression(8557))
+        {
+            Core.EnsureAccept(8557);
+            Core.KillMonster("dagerecruit", "Enter", "Spawn", "Dreadfiend", "Dark Makai Defeated", 8);
+            Story.MapItemQuest(8557, "dagerecruit", 9883, 4);
+        }
 
-        // Dreadfiend Demolition
-        Story.KillQuest(8558, "dagerecruit", "Dreadfiend");
+        //Dreadfiend Demolition
+        if (!Story.QuestProgression(8558))
+        {
+            Core.EnsureAccept(8558);
+            Core.KillMonster("dagerecruit", "Enter", "Spawn", "Dreadfiend", "Dreadfiend Defeated", 6);
+            Core.EnsureComplete(8558);
+        }
 
-        // Graython Located
+        //Graython Located
         Story.MapItemQuest(8559, "dagerecruit", 9884);
 
-        // Defeat Graython
-        Story.KillQuest(8560, "dagerecruit", "Graython");
+        //Defeat Graython
+        if (!Story.QuestProgression(8560))
+        {
+            Core.EquipClass(ClassType.Solo);
+            Core.EnsureAccept(8560);
+            while (!Bot.ShouldExit && Bot.Player.Cell != "r3")
+            {
+                Core.Join("dagerecruit", "r3", "Left");
+                Bot.Sleep(Core.ActionDelay);
+            }
+            Core.KillMonster("dagerecruit", "r3", "Left", "Graython", "Graython Defeated");
+            Core.EnsureComplete(8560);
+        }
 
-        // Island Sightseeing
-        Story.MapItemQuest(8561, "dagerecruit", 9885);
-        Story.KillQuest(8561, "dagerecruit", "Scared Wildcat");
+        //Island Sightseeing
+        if (!Story.QuestProgression(8561))
+        {
+            Core.EnsureAccept(8561);
+            Core.HuntMonster("dagerecruit", "Scared Wildcat", "Wildlife Cleared", 10);
+            Story.MapItemQuest(8561, "dagerecruit", 9885);
+        }
 
-        // Lure Crafted
-        Story.KillQuest(8562, "dagerecruit", "Dreadfiend");
+        //Lure Crafted
+        if (!Story.QuestProgression(8562))
+        {
+            Core.EnsureAccept(8562);
+            Core.KillMonster("dagerecruit", "Enter", "Spawn", "Dreadfiend", "Void Crystals", 3);
+            Core.EnsureComplete(8562);
+        }
 
         // Lure Charged
-        Story.KillQuest(8563, "dagerecruit", "Scared Wildcat");
+        if (!Story.QuestProgression(8563))
+        {
+            Core.EnsureAccept(8563);
+            Core.HuntMonster("dagerecruit", "Scared Wildcat", "Death Charge", 10);
+            Story.MapItemQuest(8563, "dagerecruit", 9885);
+        }
 
         // Place the Lure
         Story.MapItemQuest(8564, "dagerecruit", 9886);
@@ -88,11 +122,23 @@ public class DarkWarLegionandNation
         Story.KillQuest(8570, "dagerecruit", "Smaras");
 
         // Understanding Yokai
-        Story.KillQuest(8571, "dagerecruit", "Funa-yurei");
+        if (!Story.QuestProgression(8571))
+        {
+            Core.EquipClass(ClassType.Farm);
+            Core.EnsureAccept(8571);
+            Core.HuntMonster("dagerecruit", "Funa-yurei", "Funa-Yurei Defeated", 10);
+            Core.EnsureComplete(8571);
+        }
 
         // Covering Our Scent
-        Story.KillQuest(8572, "dagerecruit", "Funa-yurei");
-        Story.MapItemQuest(8572, "dagerecruit", 9888, 4);
+        if (!Story.QuestProgression(8572))
+        {
+            Core.EquipClass(ClassType.Farm);
+            Core.EnsureAccept(8572);
+            Core.HuntMonster("dagerecruit", "Funa-yurei", "Yokai Energy", 4);
+            Story.MapItemQuest(8572, "dagerecruit", 9888, 4);
+            Core.EquipClass(ClassType.Solo);
+        }
 
         // Can't Escape the Shadows
         Story.KillQuest(8573, "dagerecruit", "Shadow Clone");
@@ -101,13 +147,26 @@ public class DarkWarLegionandNation
         Story.KillQuest(8574, "dagerecruit", "Shadow Clone");
 
         // Defeat Hebimaru
-        Story.KillQuest(8575, "dagerecruit", "Hebimaru");
+        if (!Story.QuestProgression(8575))
+        {
+            Core.EnsureAccept(8575);
+            Core.HuntMonster("dagerecruit", "Hebimaru", "Hebimaru Defeated");
+            Core.EnsureComplete(8575);
+        }
 
         // Scorched Earth
-        Story.KillQuest(8576, "dagerecruit", new[] { "Dark Makai", "Dreadfiend", "Bloodfiend", "Infernal Fiend" });
+        if (!Story.QuestProgression(8576))
+        {
+            Core.EnsureAccept(8576);
+            Core.KillMonster("dagerecruit", "Enter", "Spawn", "Dreadfiend", "Dreadfiend Defeated", 6);
+            Core.HuntMonster("dagerecruit", "Dark Makai", "Dark Makai Defeated", 6);
+            Core.HuntMonster("dagerecruit", "Bloodfiend ", "Bloodfiend Defeated", 6);
+            Core.HuntMonster("dagerecruit", "Infernal Fiend", "Infernal Fiend Defeated", 6);
+            Core.EnsureComplete(8576);
+        }
 
-        // Nation Badges / Mega Nation BadgesDreadfiend
-        Story.KillQuest(8585, "darkwarlegion", "Dreadfiend");
+        // Nation Badges / Mega Nation Badges
+        Story.KillQuest(8584, "darkwarlegion", "Dreadfiend");
 
         // A Nation Defeated
         Story.KillQuest(8586, "darkwarlegion", "Dreadfiend");

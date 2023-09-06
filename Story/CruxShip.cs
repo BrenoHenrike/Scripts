@@ -22,7 +22,7 @@ public class CruxShip
         Core.SetOptions(false);
     }
 
-    public void StoryLine()
+    public void StoryLine(bool badge = false)
     {
         if (Core.isCompletedBefore(4614))
             return;
@@ -82,17 +82,31 @@ public class CruxShip
         }
 
         //Treasure Hunter's Last Stand 4611
-        Story.KillQuest(4611, "CruxShip", new[] { "Treasure Hunter", "Treasure Hunter Captain" });
+        if (!Story.QuestProgression(4611))
+        {
+            Core.EnsureAccept(4611);
+            Core.HuntMonster("CruxShip", "Treasure Hunter Captain", "Captain Defeated");
+            Core.HuntMonster("CruxShip", "Treasure Hunter", "Treasure Hunter Defeated", 8);
+            Core.EnsureComplete(4611);
+        }
 
         //Act 4 Complete 4612
         Story.ChainQuest(4612);
 
         //Apephyrx Rises 4613
-        Core.EquipClass(ClassType.Solo);
-        Story.KillQuest(4613, "CruxShip", "Apephryx");
+        if (!Story.QuestProgression(4613))
+        {
+            Core.EquipClass(ClassType.Solo);
+            Core.EnsureAccept(4613);
+            Core.HuntMonster("CruxShip", "Apephryx", "Apephryx Defeated");
+            Core.EnsureComplete(4613);
+        }
 
         //Act 5 Complete 4614
         Story.ChainQuest(4614);
+
+        if (!badge)
+            return;
 
         //100 Mummy Massacre 4616
         if (!Story.QuestProgression(4616))
@@ -100,7 +114,11 @@ public class CruxShip
             Core.EquipClass(ClassType.Farm);
             Core.EnsureAccept(4616);
             Core.HuntMonster("Mummies", "Mummy", "Mummy Defeated", 100);
-            Core.EnsureComplete(4616);
+            Bot.Wait.ForQuestComplete(4616);
+            Bot.Sleep(2500);
+            if (Core.HasWebBadge("Mummy Slayer"))
+                return;
+            else Core.EnsureComplete(4616);
         }
 
     }

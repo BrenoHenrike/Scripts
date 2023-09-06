@@ -37,25 +37,44 @@ public class DageRecruitStory
         Story.KillQuest(8556, "dagerecruit", "Dark Makai");
 
         //Dispel Spell
-        Story.KillQuest(8557, "dagerecruit", "Dreadfiend");
-        Story.MapItemQuest(8557, "dagerecruit", 9883, 4);
+        if (!Story.QuestProgression(8557))
+        {
+            Core.EnsureAccept(8557);
+            Core.KillMonster("dagerecruit", "Enter", "Spawn", "Dreadfiend", "Dark Makai Defeated", 8);
+            Story.MapItemQuest(8557, "dagerecruit", 9883, 4);
+        }
 
         //Dreadfiend Demolition
-        Story.KillQuest(8558, "dagerecruit", "Dreadfiend");
+        if (!Story.QuestProgression(8558))
+        {
+            Core.EnsureAccept(8558);
+            Core.KillMonster("dagerecruit", "Enter", "Spawn", "Dreadfiend", "Dreadfiend Defeated", 6);
+            Core.EnsureComplete(8558);
+        }
 
         //Graython Located
         Story.MapItemQuest(8559, "dagerecruit", 9884);
 
         //Defeat Graython
-        Core.EquipClass(ClassType.Solo);
-        Story.KillQuest(8560, "dagerecruit", "Graython");
+        if (!Story.QuestProgression(8560))
+        {
+            Core.EquipClass(ClassType.Solo);
+            Core.EnsureAccept(8560);
+            Core.HuntMonsterMapID("dagerecruit", 7, "Graython Defeated");
+            Core.EnsureComplete(8560);
+        }
 
         //Island Sightseeing
         Story.KillQuest(8561, "dagerecruit", "Scared Wildcat");
         Story.MapItemQuest(8561, "dagerecruit", 9885);
 
         //Lure Crafted
-        Story.KillQuest(8562, "dagerecruit", "Dreadfiend");
+        if (!Story.QuestProgression(8562))
+        {
+            Core.EnsureAccept(8562);
+            Core.KillMonster("dagerecruit", "Enter", "Spawn", "Dreadfiend", "Void Crystals", 36);
+            Core.EnsureComplete(8562);
+        }
 
         //Lure Charged
         Story.KillQuest(8563, "dagerecruit", "Scared Wildcat");
@@ -84,9 +103,15 @@ public class DageRecruitStory
         //Understanding Yokai
         Story.KillQuest(8571, "dagerecruit", "Funa-yurei");
 
-        //Covering Our Scent
-        Story.KillQuest(8572, "dagerecruit", "Funa-yurei");
-        Story.MapItemQuest(8572, "dagerecruit", 9888, 4);
+        // Covering Our Scent
+        if (!Story.QuestProgression(8572))
+        {
+            Core.EquipClass(ClassType.Farm);
+            Core.EnsureAccept(8572);
+            Core.HuntMonster("dagerecruit", "Funa-yurei", "Yokai Energy", 4);
+            Story.MapItemQuest(8572, "dagerecruit", 9888, 4);
+            Core.EquipClass(ClassType.Solo);
+        }
 
         //Can't Escape the Shadows
         Story.KillQuest(8573, "dagerecruit", "Shadow Clone");
@@ -94,7 +119,45 @@ public class DageRecruitStory
         //Last of the Defenses
         Story.KillQuest(8574, "dagerecruit", "Shadow Clone");
 
-        //Defeat Hebimaru
-        Story.KillQuest(8575, "dagerecruit", "Hebimaru");
+        // Defeat Hebimaru
+        if (!Story.QuestProgression(8575))
+        {
+            Core.EquipClass(ClassType.Solo);
+            Core.EnsureAccept(8575);
+            Core.HuntMonster("dagerecruit", "Hebimaru", "Hebimaru Defeated");
+            Core.EnsureComplete(8575);
+        }
+        // Scorched Earth
+        if (!Story.QuestProgression(8576))
+        {
+            Core.EnsureAccept(8576);
+            Core.KillMonster("dagerecruit", "Enter", "Spawn", "Dreadfiend", "Dreadfiend Defeated", 6);
+            Core.HuntMonster("dagerecruit", "Dark Makai", "Dark Makai Defeated", 6);
+            Core.HuntMonster("dagerecruit", "Bloodfiend ", "Bloodfiend Defeated", 6);
+            Core.HuntMonster("dagerecruit", "Infernal Fiend", "Infernal Fiend Defeated", 6);
+            Core.EnsureComplete(8576);
+        }
+
+        // Nation Badges / Mega Nation BadgesDreadfiend
+        if (!Story.QuestProgression(8585))
+        {
+            Core.EnsureAccept(8585);
+            Core.KillMonster("darkwarlegion", "Enter", "Spawn", "Dreadfiend", "Dreadfiend Defeated", 6);
+            Core.EnsureComplete(8585);
+        }
+
+        // A Nation Defeated
+        if (!Story.QuestProgression(8586))
+        {
+            Core.EnsureAccept(8586);
+            Core.KillMonster("darkwarlegion", "Enter", "Spawn", "Dreadfiend", "Nation's Dread", 5);
+            Core.EnsureComplete(8586);
+        }
+
+        // ManSlayer? More Like ManSLAIN
+        Story.KillQuest(8587, "darkwarlegion", "Manslayer Fiend");
+
+        // Defeat Dirtlicker            
+        Story.KillQuest(8588, "darkwarlegion", "Dirtlicker");
     }
 }
