@@ -3224,10 +3224,6 @@ public class CoreBots
                 Bot.Send.ClientPacket("{\"t\":\"xt\",\"b\":{\"r\":-1,\"o\":{\"cmd\":\"levelUp\",\"intExpToLevel\":\"0\",\"intLevel\":100}}}", type: "json");
                 break;
 
-
-            case "cruxship":
-                SimpleQuestBypass((97, 16));
-                break;
             #endregion
 
             #region Always Private
