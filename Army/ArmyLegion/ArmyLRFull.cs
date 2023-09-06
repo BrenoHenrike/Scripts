@@ -13,6 +13,8 @@ tags: legion, reventant, class, army, fealty
 //cs_include Scripts/Legion/InfiniteLegionDarkCaster.cs
 //cs_include Scripts/Story/Legion/SeraphicWar.cs
 //cs_include Scripts/Story/CruxShip.cs
+//cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
+//cs_include Scripts/Story/Legion/DarkWarLegionandNation.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Monsters;
 using Skua.Core.Models.Items;
@@ -31,6 +33,7 @@ public class ArmyLR
     private InfiniteLegionDC ILDC = new();
     private SeraphicWar_Story Seraph = new();
     private CruxShip CruxShip = new();
+    private DarkWarLegionandNation DWLN = new();
 
     private static CoreArmyLite sArmy = new();
 
@@ -116,6 +119,8 @@ public class ArmyLR
         Legion.LegionRound4Medal();
         Seraph.SeraphicWar_Questline();
         CruxShip.StoryLine();
+        DWLN.DarkWarNation();
+
         DarkCasterCheck();
         /*
         ********************************************************************************
