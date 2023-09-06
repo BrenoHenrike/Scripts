@@ -58,7 +58,7 @@ public class CoreNation
         "Unidentified 34"
     };
 
-    public string[] SuppliesRewards = 
+    public string[] SuppliesRewards =
     {
     "Tainted Gem",
     "Dark Crystal Shard",
@@ -540,12 +540,6 @@ public class CoreNation
         bool sellMemVoucher = Core.CBOBool("Nation_SellMemVoucher", out bool _sellMemVoucher) && _sellMemVoucher;
         bool returnPolicyDuringSupplies = Core.CBOBool("Nation_ReturnPolicyDuringSupplies", out bool _returnSupplies) && _returnSupplies;
 
-        if (Core.CheckInventory(CragName))
-        {
-            BambloozevsDrudgen(item, quant);
-            return; // Exit early if BambloozevsDrudgen was called
-        }
-
         Core.RegisterQuests(2857);
         Core.EquipClass(ClassType.Solo);
 
@@ -555,19 +549,24 @@ public class CoreNation
         {
             foreach (string Thing in SuppliesRewards)
             {
-                // Find the corresponding item in quest rewards
-                var rewards = Core.EnsureLoad(2857).Rewards;
-                ItemBase? Item = rewards.Find(x => x.Name == Thing);
-
-                while (!Bot.ShouldExit && Item != null && !Core.CheckInventory(Item.Name, Item.MaxStack))
+                if (Core.CheckInventory(CragName))
+                    BambloozevsDrudgen(item, quant);
+                else
                 {
-                    Core.KillEscherion(Item.Name, Item.MaxStack, log: false);
+                    // Find the corresponding item in quest rewards
+                    var rewards = Core.EnsureLoad(2857).Rewards;
+                    ItemBase? Item = rewards.Find(x => x.Name == Thing);
 
-                    if (Item.Name != "Voucher of Nulgath" && sellMemVoucher && Core.CheckInventory("Voucher of Nulgath") && !voucherNeeded)
+                    while (!Bot.ShouldExit && Item != null && !Core.CheckInventory(Item.Name, Item.MaxStack))
                     {
-                        Bot.Drops.Pickup(Item.Name);
-                        Core.SellItem(Item.Name, all: true);
-                        Bot.Wait.ForItemSell();
+                        Core.KillEscherion(Item.Name, Item.MaxStack, log: false);
+
+                        if (Item.Name != "Voucher of Nulgath" && sellMemVoucher && Core.CheckInventory("Voucher of Nulgath") && !voucherNeeded)
+                        {
+                            Bot.Drops.Pickup(Item.Name);
+                            Core.SellItem(Item.Name, all: true);
+                            Bot.Wait.ForItemSell();
+                        }
                     }
                 }
             }
