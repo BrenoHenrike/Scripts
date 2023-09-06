@@ -573,15 +573,20 @@ public class CoreNation
         }
         else // Handle the case when item is not null
         {
-            while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
+            if (Core.CheckInventory(CragName))
+                BambloozevsDrudgen(item, quant);
+            else
             {
-                Core.KillEscherion(item, quant, log: false);
-
-                if (item != "Voucher of Nulgath" && sellMemVoucher && Core.CheckInventory("Voucher of Nulgath") && !voucherNeeded)
+                while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
                 {
-                    Bot.Drops.Pickup("Voucher of Nulgath");
-                    Core.SellItem("Voucher of Nulgath", all: true);
-                    Bot.Wait.ForItemSell();
+                    Core.KillEscherion(item, quant, log: false);
+
+                    if (item != "Voucher of Nulgath" && sellMemVoucher && Core.CheckInventory("Voucher of Nulgath") && !voucherNeeded)
+                    {
+                        Bot.Drops.Pickup("Voucher of Nulgath");
+                        Core.SellItem("Voucher of Nulgath", all: true);
+                        Bot.Wait.ForItemSell();
+                    }
                 }
             }
         }
