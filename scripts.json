@@ -5912,6 +5912,21 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/ArmyBattleUnderB.cs"
   },
   {
+    "name": "IceWing Leveling Army",
+    "description": "Uses your army to kill Warlord Icewing.",
+    "tags": [
+      "army",
+      "warlord icewing",
+      "experience",
+      "gold",
+      "icestorm arena"
+    ],
+    "path": "Army/ArmyFarm/ArmyIceWing.cs",
+    "size": 2427,
+    "fileName": "ArmyIceWing.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/ArmyIceWing.cs"
+  },
+  {
     "name": "Dragon of Time Army",
     "description": "sues an army to get the dragon of time class",
     "tags": [
