@@ -124,22 +124,16 @@ public class ArmyLR
         */
         /*Step 1: Evil Rank 10*/
         ArmyEvilGoodRepMax();
-        Army.waitForParty("whitemap");
         /*Step 2: Hooded Legion Cowl funds and some change for enhancement costs*/
         ArmyGoldFarm(5500000);
-        Army.waitForParty("whitemap");
         /*Step 3: 3000 Dage Favor*/
         ArmyDageFavor();
-        Army.waitForParty("whitemap");
         /*Step 4: 10 Emblem of Dage*/
         ArmyEmblemOfDage(10);
-        Army.waitForParty("whitemap");
         /*Step 5: 300 Diamond Token of Dage*/
         ArmyDiamondTokenOfDage();
-        Army.waitForParty("whitemap");
         /*Step 6: 600 Dark Token*/
         ArmyDarkTokenOfDage();
-        Army.waitForParty("whitemap");
         /*
         ********************************************************************************
         **********************************FINISH****************************************
@@ -169,10 +163,10 @@ public class ArmyLR
         while (!Bot.ShouldExit && !Core.CheckInventory("Revenant's Spellscroll", quant))
         {
             //Adv.BestGear(RacialGearBoost.Undead);
-            ArmyHunt("judgement", new[] { "Ultra Aeacus" }, "Aeacus Empowered", ClassType.Solo, false, 50);
-            ArmyHunt("revenant", new[] { "Forgotten Soul" }, "Tethered Soul", ClassType.Farm, false, 300);
-            ArmyHunt("shadowrealmpast", new[] { "Pure Shadowscythe, Shadow Guardian, Shadow Warrior" }, "Darkened Essence", ClassType.Farm, false, 500);
-            ArmyHunt("necrodungeon", new[] { "5 Headed Dracolich" }, "Dracolich Contract", ClassType.Farm, false, 1000);
+            ArmyHunt("judgement", "Aeacus Empowered", ClassType.Solo, 50, false);
+            ArmyHunt("revenant", "Tethered Soul", ClassType.Farm, 300);
+            ArmyHunt("shadowrealmpast", "Darkened Essence", ClassType.Farm, 500);
+            ArmyHunt("necrodungeon", "Dracolich Contract", ClassType.Farm, 1000);
 
             Bot.Wait.ForPickup("Revenant's Spellscroll");
         }
@@ -192,25 +186,16 @@ public class ArmyLR
 
         while (!Bot.ShouldExit && !Core.CheckInventory("Conquest Wreath", quant))
         {
-            ArmyHunt("doomvault", new[] { "Grim Soldier" }, "Grim Cohort Conquered", ClassType.Farm, false, 500);
-
-            ArmyHunt("mummies", new[] { "Mummy" }, "Ancient Cohort Conquered", ClassType.Farm, false, 500);
-
-            ArmyHunt("wrath", new[] { "Undead Pirate", "Mutineer", "Dark Fire", "Fishbones" }, "Pirate Cohort Conquered", ClassType.Farm, false, 500);
-
-            ArmyHunt("doomwar", new[] { "Zombie", "Zombie Knight" }, "Battleon Cohort Conquered", ClassType.Farm, false, 500);
-
-            ArmyHunt("overworld", new[] { "Undead Minion", "Undead Mage", "Undead Bruiser" }, "Mirror Cohort Conquered", ClassType.Farm, false, 500);
-
-            ArmyHunt("deathpits", new[] { "Ghastly Darkblood", "Rotting Darkblood", "Sundered Darkblood" }, "Darkblood Cohort Conquered", ClassType.Farm, false, 500);
-
-            ArmyHunt("maxius", new[] { "Ghoul Minion", "Vampire Minion" }, "Vampire Cohort Conquered", ClassType.Farm, false, 500);
-
-            ArmyHunt("curseshore", new[] { "Escaped Ghostly Zardman", "Escaped Wendighost", "Escaped Dai Tenghost" }, "Spirit Cohort Conquered", ClassType.Farm, false, 500);
-
-            ArmyHunt("dragonbone", new[] { "Bone Dragonling", "Dark Fire", }, "Dragon Cohort Conquered", ClassType.Farm, false, 500);
-
-            ArmyHunt("doomwood", new[] { "Doomwood Soldier", "Doomwood Bonemuncher", "Doomwood Ectomancer", "Undead Paladin", "Doomwood Treeant" }, "Doomwood Cohort Conquered", ClassType.Farm, false, 500);
+            ArmyHunt("doomvault", "Grim Cohort Conquered", ClassType.Farm, 500);
+            ArmyHunt("mummies", "Ancient Cohort Conquered", ClassType.Farm, 500);
+            ArmyHunt("wrath", "Pirate Cohort Conquered", ClassType.Farm, 500);
+            ArmyHunt("doomwar", "Battleon Cohort Conquered", ClassType.Farm, 500);
+            ArmyHunt("overworld", "Mirror Cohort Conquered", ClassType.Farm, 500);
+            ArmyHunt("deathpits", "Darkblood Cohort Conquered", ClassType.Farm, 500);
+            ArmyHunt("maxius", "Vampire Cohort Conquered", ClassType.Farm, 500);
+            ArmyHunt("curseshore", "Spirit Cohort Conquered", ClassType.Farm, 500);
+            ArmyHunt("dragonbone", "Dragon Cohort Conquered", ClassType.Farm, 500);
+            ArmyHunt("doomwood", "Doomwood Cohort Conquered", ClassType.Farm, 500);
 
             Bot.Wait.ForPickup("Conquest Wreath");
         }
@@ -229,15 +214,13 @@ public class ArmyLR
         {
             Adv.BuyItem("underworld", 216, "Hooded Legion Cowl");
             ArmyDarkTokenOfDage(100);
-            Army.waitForParty("whitemap");
             ArmyLTs(4000);
-            Army.waitForParty("whitemap");
             Bot.Wait.ForPickup("Exalted Crown");
         }
         Core.CancelRegisteredQuests();
     }
 
-    public void ArmyEvilGoodRepMax(int rank = 10)
+    public void ArmyEvilGoodRepMax()
     {
         ArmyEvilGoodRank4();
         ArmyEvilGoodRankMax();
@@ -251,7 +234,7 @@ public class ArmyLR
         Farm.ToggleBoost(BoostType.Reputation);
         Core.RegisterQuests(364, 369); //Youthanize 364, That Hero Who Chases Slimes 369
         while (!Bot.ShouldExit && (Farm.FactionRank("Good") < 4 && Farm.FactionRank("Evil") < 4))
-            ArmyHunt("swordhavenbridge", new[] { "Slime" }, "Slime in a Jar", ClassType.Farm, true, 6);
+            ArmyHunt("swordhavenbridge", "Slime in a Jar", ClassType.Farm, 6, true);
         Core.CancelRegisteredQuests();
         Farm.ToggleBoost(BoostType.Reputation, false);
     }
@@ -264,7 +247,7 @@ public class ArmyLR
         Farm.ToggleBoost(BoostType.Reputation);
         Core.RegisterQuests(367, 372);
         while (!Bot.ShouldExit && (Farm.FactionRank("Good") < 10 && Farm.FactionRank("Evil") < 10))
-            ArmyHunt("castleundead", new[] { "Skeletal Viking", "Skeletal Warrior" }, "Replacement Tibia", ClassType.Farm, true, 6);
+            ArmyHunt("castleundead", "Replacement Tibia", ClassType.Farm, 6, true);
         Core.CancelRegisteredQuests();
         Farm.ToggleBoost(BoostType.Reputation, false);
     }
@@ -277,8 +260,7 @@ public class ArmyLR
         Farm.ToggleBoost(BoostType.Gold);
         Core.RegisterQuests(8578, 8579, 8580, 8581); //Legion Badges, Mega Legion Badges, Doomed Legion Warriors, Undead Legion Dread        
         while (!Bot.ShouldExit && Bot.Player.Gold < quant)
-            ArmyHunt("darkwarnation", new[] { "High Legion Inquisitor", "Legion Doomknight", "Legion Dread Knight", "Legion Dreadmarch", "Legion Fiend Rider" }, "Legion Badges", ClassType.Farm, true, 999);
-        // ArmyHunt("battlegrounde", new[] { "Living Ice", "Ice Lord", "Ice Demon", "Glacial Horror", "Icy Dragon", "Permafrost Pummeler", "Icy Banshee", "Frozen Deserter" }, "Battleground E Opponent Defeated", ClassType.Farm, true, 10);
+            ArmyHunt("darkwarnation", "Legion Badges", ClassType.Farm, 999, true);
         Farm.ToggleBoost(BoostType.Gold, false);
         Core.CancelRegisteredQuests();
         Core.TrashCan("Nation Defender Medal");
@@ -289,7 +271,7 @@ public class ArmyLR
         if (Core.CheckInventory("Dage's Favor", quant))
             return;
         while (!Bot.ShouldExit && !Core.CheckInventory("Dage's Favor", quant))
-            ArmyHunt("evilwarnul", new[] { "Skeletal Warrior", "Skull Warrior" }, "Dage's Favor", ClassType.Farm, false, quant);
+            ArmyHunt("evilwarnul", "Dage's Favor", ClassType.Farm, quant);
     }
 
     public void ArmyEmblemOfDage(int quant = 500)
@@ -305,8 +287,8 @@ public class ArmyLR
         Core.RegisterQuests(4742);
         while (!Bot.ShouldExit && !Core.CheckInventory("Emblem of Dage", quant))
         {
-            ArmyHunt("shadowblast", new[] { "Shadowrise Guard", "Doombringer", "DoomKnight Prime", "Draconic DoomKnight" }, "Legion Seal", ClassType.Farm, isTemp: false, 25);
-            ArmyHunt("shadowblast", new[] { "Minotaurofwar", "Carnage", "CaesarisTheDark" }, "Gem of Mastery", ClassType.Farm);
+            ArmyHunt("shadowblast", "Legion Seal", ClassType.Farm, 25);
+            ArmyHunt("shadowblast", "Gem of Mastery", ClassType.Farm);
         }
         Core.CancelRegisteredQuests();
     }
@@ -324,26 +306,16 @@ public class ArmyLR
         Core.RegisterQuests(4743);
         while (!Bot.ShouldExit && !Core.CheckInventory("Diamond Token of Dage", quant))
         {
-            ArmyHunt("tercessuinotlim", new[] { "Dark Makai" }, "Defeated Makai", ClassType.Farm, false, 25);
-            Army.waitForParty("bloodtitan");
-
+            ArmyHunt("tercessuinotlim", "Defeated Makai", ClassType.Farm, 25);
             //Adv.BestGear(RacialGearBoost.Chaos);
-            ArmyHunt("aqlesson", new[] { "Carnax" }, "Carnax Eye", ClassType.Solo, true, 1);
-            Army.waitForParty("deepchaos");
-
-            ArmyHunt("deepchaos", new[] { "Kathool" }, "Kathool Tentacle", ClassType.Solo, true, 1);
-            Army.waitForParty("dflesson");
-
-            ArmyHunt("dflesson", new[] { "Fluffy the Dracolich" }, "Fluffy's Bones", ClassType.Solo, true, 1);
-            Army.waitForParty("lair");
-
+            ArmyHunt("aqlesson", "Carnax Eye", ClassType.Solo);
+            ArmyHunt("deepchaos", "Kathool Tentacle", ClassType.Solo);
+            ArmyHunt("dflesson", "Fluffy's Bones", ClassType.Solo);
             //Adv.BestGear(RacialGearBoost.Dragonkin);
-            ArmyHunt("lair", new[] { "Red Dragon" }, "Red Dragon's Fang", ClassType.Solo, true);
-            Army.waitForParty("bloodtitan");
+            ArmyHunt("lair", "Red Dragon's Fang", ClassType.Solo);
 
             //Adv.BestGear(RacialGearBoost.Human);
-            ArmyHunt("bloodtitan", new[] { "Blood Titan" }, "Blood Titan's Blade", ClassType.Solo, true, 1);
-            Army.waitForParty("tercessuinotlim");
+            ArmyHunt("bloodtitan", "Blood Titan's Blade", ClassType.Solo);
         }
         Core.CancelRegisteredQuests();
     }
@@ -358,7 +330,7 @@ public class ArmyLR
         //Adv.BestGear(RacialGearBoost.Human);
         Core.RegisterQuests(6248, 6249, 6251);
         while (!Bot.ShouldExit && !Core.CheckInventory("Dark Token", quant))
-            ArmyHunt("seraphicwardage", new[] { "Seraphic Commander, Seraphic Soldier" }, "Seraphic Commanders Slain", ClassType.Farm, true, 6);
+            ArmyHunt("seraphicwardage", "Seraphic Commanders Slain", ClassType.Farm, 6);
         Core.CancelRegisteredQuests();
     }
 
@@ -370,39 +342,8 @@ public class ArmyLR
         //Adv.BestGear(RacialGearBoost.Human);
         Core.RegisterQuests(4849);
         while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
-            ArmyHunt("dreadrock", new[] { "Fallen Hero", "Hollow Wraith", "Legion Sentinel", "Shadowknight", "Void Mercenary" }, "Legion Token", ClassType.Farm, false, quant);
+            ArmyHunt("dreadrock", "Legion Token", ClassType.Farm, quant);
         Core.CancelRegisteredQuests();
-    }
-
-    void ArmyHunt(string map, string[] monsters, string item, ClassType classType, bool isTemp = false, int quant = 1)
-    {
-        Core.PrivateRooms = true;
-        Core.PrivateRoomNumber = Army.getRoomNr();
-
-        Core.AddDrop(item);
-
-        Core.EquipClass(classType);
-        if (map == "revenant")
-        {
-            map = Array.IndexOf(Army.Players(), Core.Username()) > 2 ? "revenant" : "revenant-" + (Army.getRoomNr() + 1);
-            Army.waitForParty(map, item, 3);
-        }
-
-        Core.FarmingLogger(item, quant);
-
-        if (Bot.Map.Name == "tercessuinotlim")
-        {
-            Army.DivideOnCells("m1", "m2");
-            Army.AggroMonMIDs(2, 3, 4, 5);
-            Army.AggroMonStart("tercessuinotlim");
-        }
-        else Army.SmartAggroMonStart(map, monsters);
-
-        while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
-            Bot.Combat.Attack("*");
-
-        Army.AggroMonStop(true);
-        Core.JumpWait();
     }
 
     void DarkCasterCheck()
@@ -448,6 +389,167 @@ public class ArmyLR
         Bot.Sleep(1500);
         Bot.Send.Packet("%xt%zm%afk%1%false%");
     }
+
+    void ArmyHunt(string map, string? item, ClassType classType, int quant = 1, bool isTemp = false)
+    {
+        Core.PrivateRooms = true;
+        Core.PrivateRoomNumber = Army.getRoomNr();
+
+        if (item != null)
+            Core.AddDrop(item);
+
+        Core.EquipClass(classType);
+
+        HandleMap(map, item);
+
+        while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
+            Bot.Combat.Attack("*");
+
+        Army.AggroMonStop(true);
+        Core.JumpWait();
+    }
+
+
+    void HandleMap(string map, string? item)
+    {
+        switch (map)
+        {
+            case "revenant":
+                Army.waitForParty(map);
+                Army.AggroMonMIDs(1, 2, 3, 4);
+                Army.AggroMonStart(map);
+                if (Array.IndexOf(Army.Players(), Core.Username()) > 2)
+                {
+                    map = "revenant-" + (Army.getRoomNr() + 1);
+                    Army.DivideOnCells("r2");
+                }
+                else
+                {
+                    map = "revenant";
+                    Army.DivideOnCells("r2");
+                }
+                break;
+
+            case "curseshore":
+                Army.waitForParty(map);
+                Army.AggroMonMIDs(1, 2, 3, 4, 5, 6);
+                Army.AggroMonStart("curseshore");
+                Army.DivideOnCells("Enter", "r2");
+                break;
+
+            case "dragonbone":
+                Army.waitForParty(map);
+                Army.AggroMonMIDs(4, 67, 9);
+                Army.AggroMonStart("dragonbone");
+                Army.DivideOnCells("r2", "r3");
+                break;
+
+            case "doomwood":
+                Army.waitForParty(map);
+                Army.AggroMonMIDs(3, 4, 5, 8, 9, 10, 11, 12);
+                Army.AggroMonStart("doomwood");
+                Army.DivideOnCells("r3", "r5", "r6");
+                break;
+
+            case "swordhavenbridge":
+                Army.waitForParty(map);
+                Army.AggroMonMIDs(1, 2, 3, 4, 5);
+                Army.AggroMonStart("swordhavenbridge");
+                Army.DivideOnCells("Bridge", "End");
+                break;
+
+            case "castleundead":
+                Army.waitForParty(map);
+                Army.AggroMonMIDs(1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13);
+                Army.AggroMonStart("castleundead");
+                Army.DivideOnCells("Enter", "Bleft", "Bright", "Tleft", "Hall");
+                break;
+
+            case "darkwarnation":
+                Army.waitForParty(map);
+                Army.AggroMonMIDs(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11);
+                Army.AggroMonStart("darkwarnation");
+                Army.DivideOnCells("Enter", "r2", "r3", "r4");
+                break;
+
+            case "shadowblast":
+                Army.waitForParty(map);
+                if (item == "Legion Seal")
+                {
+                    Army.AggroMonMIDs(25, 27, 29, 31);
+                    Army.AggroMonStart("shadowblast");
+                    Army.DivideOnCells("r12", "r13");
+                }
+                else if (item == "Gem of Mastery")
+                {
+                    Army.AggroMonMIDs(41, 43, 46, 48);
+                    Army.AggroMonStart("shadowblast");
+                    Army.DivideOnCells("r16", "r17");
+                }
+                break;
+
+            case "tercessuinotlim":
+                Army.waitForParty(map);
+                Army.AggroMonMIDs(1, 3, 4, 5);
+                Army.AggroMonStart("tercessuinotlim");
+                Army.DivideOnCells("m1", "m2");
+                break;
+
+            case "aqlesson":
+                Army.waitForParty(map);
+                Army.DivideOnCells("Frame9");
+                Army.AggroMonMIDs(17);
+                Army.AggroMonStart("aqlesson");
+                break;
+
+            case "deepchaos":
+                Army.waitForParty(map);
+                Army.AggroMonMIDs(9);
+                Army.AggroMonStart("deepchaos");
+                Army.DivideOnCells("Frame4");
+                break;
+
+            case "dflesson":
+                Army.waitForParty(map);
+                Army.AggroMonMIDs(29);
+                Army.AggroMonStart("dflesson");
+                Army.DivideOnCells("r12");
+                break;
+
+            case "lair":
+                Army.waitForParty(map);
+                Army.AggroMonMIDs(14);
+                Army.AggroMonStart("lair");
+                Army.DivideOnCells("End");
+                break;
+
+            case "bloodtitan":
+                Army.waitForParty(map);
+                Army.AggroMonMIDs(1);
+                Army.AggroMonStart("bloodtitan");
+                Army.DivideOnCells("Enter");
+                break;
+
+            case "seraphicwardage":
+                Army.waitForParty(map);
+                Army.AggroMonMIDs(7, 8, 9, 10, 11, 12);
+                Army.AggroMonStart("seraphicwardage");
+                Army.DivideOnCells("r3", "r4");
+                break;
+
+            case "dreadrock":
+                Army.waitForParty(map);
+                Army.AggroMonMIDs(12, 14, 15, 22, 23, 24, 25);
+                Army.AggroMonStart("dreadrock");
+                Army.DivideOnCells("r3", "r8a");
+                break;
+
+            default:
+                // Handle other maps or cases here if needed
+                break;
+        }
+    }
+
 
 
 
