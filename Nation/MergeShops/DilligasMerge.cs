@@ -70,7 +70,7 @@ public class DilligasMerge
                     break;
 
                 case "Tainted Gem":
-                    Nation.SwindleBulk(quant);
+                    Nation.FarmTaintedGem(quant);
                     break;
 
                 case "Dark Crystal Shard":

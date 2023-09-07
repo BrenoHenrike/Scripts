@@ -29,7 +29,7 @@ public class EvolvedHexOrb
         Nation.FarmVoucher(false);
         Nation.FarmTotemofNulgath(10);
         Nation.FarmDarkCrystalShard(30);
-        Nation.Supplies("Tainted Gem", 30);
+        Nation.FarmTaintedGem(30);
         Core.BuyItem("archportal", 1211, "Evolved Hex Orb");
         Core.Logger($"Done, you have Hex ball");
     }

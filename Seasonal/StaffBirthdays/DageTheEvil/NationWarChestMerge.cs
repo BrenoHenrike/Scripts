@@ -73,7 +73,7 @@ public class NationWarChestMerge
 
                 case "Tainted Gem":
                     Nation.ForgeTaintedGems(quant);
-                    Nation.SwindleBulk(quant);
+                    Nation.FarmTaintedGem(quant);
                     break;
 
                 case "Dark Crystal Shard":

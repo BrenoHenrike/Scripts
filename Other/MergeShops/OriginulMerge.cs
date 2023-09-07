@@ -97,7 +97,7 @@ public class OriginulMerge
                     break;
 
                 case "Tainted Gem":
-                    Nation.SwindleBulk(quant);
+                    Nation.FarmTaintedGem(quant);
                     break;
 
                 case "Essence of Nulgath":

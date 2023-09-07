@@ -197,7 +197,7 @@ public class CitadelRuins
         Story.KillQuest(585, "Tercessuinotlim", "Legion Fenrir");
 
         //purified claw
-        Nation.Supplies("Tainted Gem", 7);
+        Nation.FarmTaintedGem(7);
         Nation.Supplies("Claw of Nulgath");
         Story.KillQuest(668, "Tercessuinotlim", "Dark Makai");
     }

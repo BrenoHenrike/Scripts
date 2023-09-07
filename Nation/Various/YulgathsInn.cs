@@ -41,7 +41,7 @@ public class YulgathsInn
                 Core.HuntMonster("originul", "Fiend Champion", log: false);
         }
         Nation.FarmUni10(400);
-        Nation.TheAssistant("Tainted Gem", 200);
+        Nation.FarmTaintedGem(200);
         Nation.FarmDarkCrystalShard(250);
         Nation.FarmDiamondofNulgath(200);
         Nation.FarmUni13();

@@ -37,7 +37,7 @@ public class ScriptTemplate
             return;
 
         Nation.FarmUni13();
-        Nation.TheAssistant("Tainted Gem", 80);
+        Nation.FarmTaintedGem( 80);
         Nation.FarmDarkCrystalShard(60);
         Nation.FarmDiamondofNulgath(100);
         Nation.FarmVoucher(true);

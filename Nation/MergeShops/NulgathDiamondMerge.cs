@@ -91,7 +91,7 @@ public class NulgathDiamondMerge
                     break;
 
                 case "Tainted Gem":
-                    Nation.SwindleBulk(quant);
+                    Nation.FarmTaintedGem(quant);
                     break;
 
                 case "Blade of Holy Might":

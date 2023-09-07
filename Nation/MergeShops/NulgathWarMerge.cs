@@ -82,7 +82,7 @@ public class NulgathWarMerge
                     break;
 
                 case "Tainted Gem":
-                    Nation.SwindleBulk(quant);
+                    Nation.FarmTaintedGem(quant);
                     break;
 
                 case "Random Weapon of Nulgath":

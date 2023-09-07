@@ -139,7 +139,7 @@ public class DirtlickersMerge
                     if (Core.CheckInventory("Gemstone of Nulgath") && Core.IsMember)
                         Nation.ForgeTaintedGems(quant);
                     else
-                        Nation.SwindleBulk(quant);
+                        Nation.FarmTaintedGem(quant);
                     break;
 
                 case "Gem of Nulgath":
