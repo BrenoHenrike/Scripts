@@ -449,7 +449,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 69720,
+    "size": 74569,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -4553,7 +4553,7 @@
       "null"
     ],
     "path": "Nation/MergeShops/NulgathDiamondMerge.cs",
-    "size": 11030,
+    "size": 11033,
     "fileName": "NulgathDiamondMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/MergeShops/NulgathDiamondMerge.cs"
   },
@@ -4580,7 +4580,7 @@
       "enchanted nulgath nation house"
     ],
     "path": "Nation/MergeShops/DirtlickersMerge.cs",
-    "size": 9376,
+    "size": 9379,
     "fileName": "DirtlickersMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/MergeShops/DirtlickersMerge.cs"
   },
@@ -4617,7 +4617,7 @@
       "null"
     ],
     "path": "Nation/MergeShops/NulgathWarMerge.cs",
-    "size": 7942,
+    "size": 7945,
     "fileName": "NulgathWarMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/MergeShops/NulgathWarMerge.cs"
   },
@@ -4628,7 +4628,7 @@
       "null"
     ],
     "path": "Nation/MergeShops/DilligasMerge.cs",
-    "size": 6435,
+    "size": 6438,
     "fileName": "DilligasMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/MergeShops/DilligasMerge.cs"
   },
@@ -4661,7 +4661,7 @@
       "null"
     ],
     "path": "Nation/EvolvedOrb/EvolvedHexOrb.cs",
-    "size": 918,
+    "size": 909,
     "fileName": "EvolvedHexOrb.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/EvolvedOrb/EvolvedHexOrb.cs"
   },
@@ -5031,7 +5031,7 @@
       "null"
     ],
     "path": "Nation/Various/YulgathsInn.cs",
-    "size": 1402,
+    "size": 1389,
     "fileName": "YulgathsInn.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/YulgathsInn.cs"
   },
@@ -7530,7 +7530,7 @@
       "citadel-ruins"
     ],
     "path": "Story/Nation/CitadelRuins.cs",
-    "size": 8360,
+    "size": 8351,
     "fileName": "CitadelRuins.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Nation/CitadelRuins.cs"
   },
@@ -10731,7 +10731,7 @@
       "null"
     ],
     "path": "Other/MergeShops/OriginulMerge.cs",
-    "size": 7196,
+    "size": 7199,
     "fileName": "OriginulMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/OriginulMerge.cs"
   },
@@ -13238,7 +13238,7 @@
       "null"
     ],
     "path": "Other/Weapons/WrathofNulgath.cs",
-    "size": 2585,
+    "size": 2573,
     "fileName": "WrathofNulgath.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Weapons/WrathofNulgath.cs"
   },
@@ -18642,7 +18642,7 @@
       "birthday"
     ],
     "path": "Seasonal/StaffBirthdays/DageTheEvil/NationWarChestMerge.cs",
-    "size": 3947,
+    "size": 3950,
     "fileName": "NationWarChestMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/NationWarChestMerge.cs"
   },
@@ -18762,7 +18762,7 @@
       "birthday"
     ],
     "path": "Seasonal/StaffBirthdays/Nulgath/TempleSiegeMerge.cs",
-    "size": 9950,
+    "size": 9953,
     "fileName": "TempleSiegeMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/Nulgath/TempleSiegeMerge.cs"
   },
@@ -18796,7 +18796,7 @@
       "birthday"
     ],
     "path": "Seasonal/StaffBirthdays/Nulgath/TempleDelveMerge.cs",
-    "size": 6774,
+    "size": 6777,
     "fileName": "TempleDelveMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/Nulgath/TempleDelveMerge.cs"
   },
