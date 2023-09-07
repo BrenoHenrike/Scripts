@@ -361,6 +361,95 @@ public class CoreNation
     }
 
     /// <summary>
+    /// Farms specified items or a specific item in the specified location.
+    /// </summary>
+    /// <param name="item">The item to farm. If null, it farms a list of rewards.</param>
+    /// <param name="quant">Desired quantity, 1000 = max stack.</param>
+    public void FarmContractExchage(string? item = null, int quant = 1)
+    {
+        if (!Core.CheckInventory("Drudgen the Assistant") || (item != null && Core.CheckInventory(item, quant)))
+        {
+            if (!Core.CheckInventory("Drudgen the Assistant"))
+                Core.Logger("Missing \"Drudgen the Assistant\"");
+            return;
+        }
+
+        string?[] rewards = { "Tainted Gem", "Dark Crystal Shard", "Gem of Nulgath", "Blood Gem of the Archfiend" };
+
+        Core.EquipClass(ClassType.Farm);
+        Core.AddDrop(Core.QuestRewards(870));
+
+        if (item != null)
+        {
+            ItemBase? Reward = Bot.Quests.EnsureLoad(870)?.Rewards.Find(x => x.Name == item);
+            Core.FarmingLogger(Reward.Name, quant > 1 ? quant : Reward.MaxStack);
+            while (!Bot.ShouldExit && !Core.CheckInventory(Reward.Name, quant > 1 ? quant : Reward.MaxStack))
+            {
+                switch (Reward.Name)
+                {
+                    case "Tainted Gem":
+                        Supplies("Diamond of Nulgath", 45);
+                        ContractExchange(ChooseReward.TaintedGem, quant > 1 ? quant : Reward.MaxStack);
+                        break;
+                    case "Dark Crystal Shard":
+                        Supplies("Diamond of Nulgath", 45);
+                        ContractExchange(ChooseReward.DarkCrystalShard, quant > 1 ? quant : Reward.MaxStack);
+                        break;
+                    case "Gem of Nulgath":
+                        Supplies("Diamond of Nulgath", 45);
+                        ContractExchange(ChooseReward.GemofNulgath, quant > 1 ? quant : Reward.MaxStack);
+                        break;
+                    case "Blood Gem of the Archfiend":
+                        Supplies("Diamond of Nulgath", 45);
+                        ContractExchange(ChooseReward.BloodGemoftheArchfiend, quant > 1 ? quant : Reward.MaxStack);
+                        break;
+                    // Add more cases for other rewards
+                    default:
+                        Core.Logger("Default case");
+                        break;
+                }
+            }
+        }
+        else
+        {
+            foreach (string? thing in rewards)
+            {
+                ItemBase? Reward = Bot.Quests.EnsureLoad(870)?.Rewards.Find(item => item.Name == thing);
+                Core.FarmingLogger(Reward.Name, quant);
+                while (!Bot.ShouldExit && !Core.CheckInventory(Reward.Name, quant > 1 ? quant : Reward.MaxStack))
+                {
+                    switch (Reward.Name)
+                    {
+                        case "Tainted Gem":
+                            Supplies("Diamond of Nulgath", 45);
+                            ContractExchange(ChooseReward.TaintedGem, quant > 1 ? quant : Reward.MaxStack);
+                            break;
+                        case "Dark Crystal Shard":
+                            Supplies("Diamond of Nulgath", 45);
+                            ContractExchange(ChooseReward.DarkCrystalShard, quant > 1 ? quant : Reward.MaxStack);
+                            break;
+                        case "Gem of Nulgath":
+                            Supplies("Diamond of Nulgath", 45);
+                            ContractExchange(ChooseReward.GemofNulgath, quant > 1 ? quant : Reward.MaxStack);
+                            break;
+                        case "Blood Gem of the Archfiend":
+                            Supplies("Diamond of Nulgath", 45);
+                            ContractExchange(ChooseReward.BloodGemoftheArchfiend, quant > 1 ? quant : Reward.MaxStack);
+                            break;
+                        // Add more cases for other rewards
+                        default:
+                            Core.Logger("Default case");
+                            break;
+                    }
+                }
+            }
+        }
+    }
+
+
+
+
+    /// <summary>
     /// Farms Emblem of Nulgath in Shadow Blast Arena
     /// </summary>
     /// <param name="quant">Desired quantity, 500 = max stack</param>
@@ -975,15 +1064,15 @@ public class CoreNation
             return;
 
         Core.AddDrop("Diamond of Nulgath");
-        Core.Logger("Randomizing location for Dark Makai\n" +
-        "as the drop can randomly stop showing up");
+        Core.OneTimeMessage("Dark Makai Rune/Sigil Solution", "Randomizing location for \"Dark Makai\"\n" +
+        "as the drop can randomly stop showing up", forcedMessageBox: false);
         if (farmDiamond)
             BambloozevsDrudgen("Diamond of Nulgath", 15);
         Core.EnsureAccept(869);
         string[] locations = new[] { "tercessuinotlim", Core.IsMember ? "Nulgath" : "evilmarsh" };
         string location = locations[new Random().Next(locations.Length)];
         string cell = location == "tercessuinotlim" ? "m1" : "Field1";
-        Core.KillMonster(location, cell, "Left", "Dark Makai", "Dark Makai Sigil");
+        Core.KillMonster(location, cell, "Left", "Dark Makai", "Dark Makai Sigil", log: false);
 
         Core.EnsureComplete(869);
         Core.Logger("Completed");
@@ -994,14 +1083,22 @@ public class CoreNation
     /// </summary>
     /// <param name="reward">Desired reward</param>
     /// <param name="farmUni13">Whether or not farm Uni 13</param>
-    public void ContractExchange(ChooseReward reward = ChooseReward.DiamondofNulgath, int quant = 1, bool farmUni13 = true)
+    public void ContractExchange(ChooseReward reward, int quant, bool farmUni13 = true)
     {
         if ((!Core.CheckInventory("Unidentified 13") && !farmUni13) || !Core.CheckInventory("Drudgen the Assistant"))
+        {
+            if ((!Core.CheckInventory("Unidentified 13") && !farmUni13))
+                Core.Logger($"{farmUni13} is probably set to false, please have a dev change it");
+            if (!Core.CheckInventory("Drudgen the Assistant"))
+                Core.Logger("Missing \"Drudgen the Assistant\"");
             return;
+        }
+
 
         Core.AddDrop(bagDrops);
         Core.EquipClass(ClassType.Solo);
-        while (!Bot.ShouldExit && !Core.CheckInventory((int)reward, quant))
+        Core.FarmingLogger(reward.ToString(), quant);
+        while (!Bot.ShouldExit && !Core.CheckInventory(reward.ToString(), quant))
         {
             if (farmUni13 && !Core.CheckInventory("Unidentified 13"))
                 FarmUni13(3);
@@ -1089,10 +1186,11 @@ public class CoreNation
             return;
 
         Core.AddDrop("Dark Crystal Shard");
+        FarmContractExchage("Dark Crystal Shard", quant);
         NewWorldsNewOpportunities("Dark Crystal Shard", quant); //1minute turning  = 1x guaranteed
         VoidKightSwordQuest("Dark Crystal Shard", quant);
-        EssenceofDefeatReagent(quant);
         Supplies("Dark Crystal Shard", quant); //xx:xx time turnin = 10% chance
+        EssenceofDefeatReagent(quant);
     }
 
     /// <summary>
@@ -1137,6 +1235,7 @@ public class CoreNation
         if (Core.CheckInventory("Gem of Nulgath", quant))
             return;
 
+        FarmContractExchage("Gem of Nulgath", quant);
         Core.AddDrop("Gem of Nulgath");
         VoidKightSwordQuest("Gem of Nulgath", quant);
         while (!Bot.ShouldExit && !Core.CheckInventory("Gem of Nulgath", quant))
@@ -1154,13 +1253,22 @@ public class CoreNation
 
         Core.AddDrop("Blood Gem of the Archfiend");
 
-        if (Core.CheckInventory("Drudgen the Assistant"))
-            while (!Bot.ShouldExit && !Core.CheckInventory("Blood Gem of the Archfiend", quant))
-                ContractExchange(ChooseReward.BloodGemoftheArchfiend, quant);
+        FarmContractExchage("Blood Gem of the Archfiend", quant);
         NewWorldsNewOpportunities("Blood Gem of the Archfiend", quant);
         VoidKightSwordQuest("Blood Gem of the Archfiend", quant);
         BloodyChaos(quant, true);
         KisstheVoid(quant);
+    }
+
+    public void FarmTaintedGem(int quant = 100)
+    {
+        if (Core.CheckInventory("Tainted Gem", quant))
+            return;
+
+        Core.AddDrop("Tainted Gem");
+        FarmContractExchage("Tainted Gem", quant);
+        ForgeTaintedGems(quant);
+        Supplies("Tainted Gem", quant);
     }
 
     /// <summary>
