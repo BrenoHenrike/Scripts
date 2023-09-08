@@ -2236,9 +2236,9 @@ public class CoreBots
     /// <param name="item">The name of the item to obtain.</param>
     /// <param name="quant">The desired quantity of the item.</param>
     /// <param name="isTemp">Specifies whether the item is temporary.</param>
-    public void KillNulgathFiendShard(string? item, int quant = 1, bool isTemp = false)
+    public void KillNulgathFiendShard(string item, int quant = 1, bool isTemp = false)
     {
-        bool itemIsTemp = isTemp && item != null;
+        bool itemIsTemp = isTemp;
 
         if (item == null || (itemIsTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
             return;
@@ -2255,22 +2255,22 @@ public class CoreBots
                 Bot.Sleep(ActionDelay);
             }
 
-            while (!Bot.ShouldExit && IsMonsterAlive(15, useMapID: true) && Bot.Player.Cell == "r9")
+            while (!Bot.ShouldExit && IsMonsterAlive(15, useMapID: true) && Bot.Player.Cell == "r9" && !CheckInventory(item, quant))
                 Bot.Combat.Attack(4722);
 
             if (item == null || (itemIsTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
             {
                 Bot.Wait.ForPickup(item);
+                Bot.Options.AttackWithoutTarget = false;
+                while (!Bot.ShouldExit && Bot.Player.InCombat)
+                {
+                    Jump("Enter", "Spawn");
+                    Bot.Sleep(ActionDelay);
+                }
                 break;
             }
         }
-
-        Bot.Options.AttackWithoutTarget = false;
-        JumpWait();
     }
-
-
-
 
 
     public void _KillForItem(string name, string item, int quantity, bool isTemp = false, bool rejectElse = false, bool log = true)
