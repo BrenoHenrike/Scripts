@@ -302,9 +302,18 @@ public class ArmyLR
             return;
 
         Farm.ToggleBoost(BoostType.Gold);
-        // Army.waitForParty("darkwarnation");
-        while (!Bot.ShouldExit && Bot.Player.Gold < quant)
-            ArmyHunt("darkwarnation", "Legion Badges", ClassType.Farm, 999, true);
+        Core.RegisterQuests(8578, 8579, 8580, 8581); //Legion Badges, Mega Legion Badges, Doomed Legion Warriors, Undead Legion Dread        
+        if (!Bot.ShouldExit && Bot.Player.Gold < quant)
+        {
+            Army.AggroMonMIDs(3, 4, 5, 7, 8, 9);
+            Army.AggroMonStart("darkwarnation");
+            Army.DivideOnCells("r2", "r3", "r4");
+
+            while (!Bot.ShouldExit && Bot.Player.Gold < quant)
+                Bot.Combat.Attack("*");
+        }
+        Army.AggroMonStop(true);
+        Core.JumpWait();
         Farm.ToggleBoost(BoostType.Gold, false);
         Core.CancelRegisteredQuests();
         Core.TrashCan("Nation Defender Medal");
@@ -434,9 +443,8 @@ public class ArmyLR
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
 
-        if (item != null)
+        if (item != null && isTemp == false)
             Core.AddDrop(item);
-
 
         Core.EquipClass(classType);
         if (Core.CheckInventory(item))
@@ -501,13 +509,6 @@ public class ArmyLR
                 Army.AggroMonMIDs(1, 2, 3, 4, 5, 7, 10, 11, 12, 13);
                 Army.AggroMonStart(map);
                 Army.DivideOnCells("Enter", "Bleft", "Bright", "Tleft", "Hall");
-                break;
-
-            case "darkwarnation":
-                Core.RegisterQuests(8578, 8579, 8580, 8581); //Legion Badges, Mega Legion Badges, Doomed Legion Warriors, Undead Legion Dread        
-                Army.AggroMonMIDs(3, 4, 5, 7, 8, 9);
-                Army.AggroMonStart(map);
-                Army.DivideOnCells("r2", "r3", "r4");
                 break;
 
             case "shadowblast":
