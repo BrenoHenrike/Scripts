@@ -2230,12 +2230,53 @@ public class CoreBots
         KillMonster("mirrorportal", ultra ? "r6" : "r4", "Right", ultra ? "Ultra Xiang" : "Chaos Lord Xiang", item, quant, isTemp, log);
     }
 
+    /// <summary>
+    /// Kills Nulgath Fiend Shards to obtain the desired item.
+    /// </summary>
+    /// <param name="item">The name of the item to obtain.</param>
+    /// <param name="quant">The desired quantity of the item.</param>
+    /// <param name="isTemp">Specifies whether the item is temporary.</param>
+    public void KillNulgathFiendShard(string? item, int quant = 1, bool isTemp = false)
+    {
+        bool itemIsTemp = isTemp && item != null;
+
+        if (item == null || (itemIsTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
+            return;
+
+        Join("fiendshard");
+        FarmingLogger(item, 1);
+
+        Bot.Options.AttackWithoutTarget = true;
+        while (!Bot.ShouldExit && !CheckInventory(item, quant))
+        {
+            while (!Bot.ShouldExit && Bot.Player.Cell != "r9")
+            {
+                Jump("r9", "Left");
+                Bot.Sleep(ActionDelay);
+            }
+
+            while (!Bot.ShouldExit && IsMonsterAlive(15, useMapID: true) && Bot.Player.Cell == "r9")
+                Bot.Combat.Attack(4722);
+
+            if (item == null || (itemIsTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
+            {
+                Bot.Wait.ForPickup(item);
+                break;
+            }
+        }
+
+        Bot.Options.AttackWithoutTarget = false;
+        JumpWait();
+    }
+
+
+
+
 
     public void _KillForItem(string name, string item, int quantity, bool isTemp = false, bool rejectElse = false, bool log = true)
     {
         if (log)
-            Logger($"Killing {name} for {item}, ({dynamicQuant(item, isTemp)}/{quantity}) [Temp = {isTemp}]");
-
+            FarmingLogger(item, quantity);
         ToggleAggro(true);
         while (!Bot.ShouldExit && !CheckInventory(item, quantity))
         {

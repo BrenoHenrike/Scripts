@@ -60,7 +60,7 @@ public class FiendshardMerge
             switch (req.Name)
             {
                 default:
-                    bool shouldStop = Adv.matsOnly ? !dontStopMissingIng : true;
+                    bool shouldStop = !Adv.matsOnly || !dontStopMissingIng;
                     Core.Logger($"The bot hasn't been taught how to get {req.Name}." + (shouldStop ? " Please report the issue." : " Skipping"), messageBox: shouldStop, stopBot: shouldStop);
                     break;
                 #endregion
@@ -69,15 +69,11 @@ public class FiendshardMerge
                     Fiendshard.Fiendshard_Questline();
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
+                    //De-shard the Shard 7901
                     Core.RegisterQuests(7901);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        //De-shard the Shard 7901
-                        Core.KillMonster("fiendshard", "r9", "Left", "Nulgath's Fiend Shard", "Piece of the Shard");
-            Core.Jump("Enter", "Spawn");
-            Bot.Wait.ForCombatExit();
-                        Bot.Wait.ForPickup(req.Name);
-                    }
+                        Core.KillNulgathFiendShard("Piece of the Shard", isTemp: true);
+                    Bot.Wait.ForPickup(req.Name);
                     Core.CancelRegisteredQuests();
                     break;
 

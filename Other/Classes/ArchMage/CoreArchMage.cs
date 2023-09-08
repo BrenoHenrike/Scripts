@@ -388,17 +388,14 @@ public class CoreArchMage
         Core.FarmingLogger("Prismatic Ether", quant);
         Core.AddDrop("Prismatic Ether");
         Core.EquipClass(ClassType.Solo);
-
         while (!Bot.ShouldExit && !Core.CheckInventory("Prismatic Ether", quant))
         {
             Core.EnsureAccept(8910);
+            Core.KillNulgathFiendShard("Infernal Ether");
             Core.HuntMonster("celestialarenad", "Aranx", "Celestial Ether", isTemp: false);
             Core.HuntMonster("eternalchaos", "Eternal Drakath", "Chaotic Ether", isTemp: false);
             Core.KillMonster("shadowattack", "Boss", "Left", "Death", "Mortal Ether", isTemp: false);
             Core.HuntMonster("gaiazor", "Gaiazor", "Vital Ether", isTemp: false);
-            Core.KillMonster("fiendshard", "r9", "Left", "Nulgath's Fiend Shard", "Infernal Ether", isTemp: false);
-            Core.Jump("Enter", "Spawn");
-            Bot.Wait.ForCombatExit();
             Core.EnsureComplete(8910);
             Bot.Wait.ForPickup("Prismatic Ether");
         }

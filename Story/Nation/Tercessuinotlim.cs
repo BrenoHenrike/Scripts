@@ -81,10 +81,8 @@ public class Tercessuinotlim
         if (!Story.QuestProgression(8473))
         {
             Core.EnsureAccept(8473);
-            Core.KillMonster($"fiendshard","r8", "Left", "Fiend Shard", "Dirtlicker's Shard Shaving", 3);
-            Core.KillMonster("fiendshard", "r9", "Left", "Nulgath's Fiend Shard", "Nulgath's Shard Shaving",3);
-            Core.Jump("Enter", "Spawn");
-            Bot.Wait.ForCombatExit();
+            Core.KillMonster($"fiendshard", "r8", "Left", "Fiend Shard", "Dirtlicker's Shard Shaving", 3);
+            Core.KillNulgathFiendShard("Nulgath's Shard Shaving", 3, true);
             Core.HuntMonster("QuibbleHunt", "RogueFiend", "Roguefiend Crystal Shaving", 5);
             Core.EnsureComplete(8473);
         }
