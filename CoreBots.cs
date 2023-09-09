@@ -3253,7 +3253,7 @@ public class CoreBots
                 Jump("R10");
                 Bot.Map.Join(PrivateRooms ? "moonyard-" + PrivateRoomNumber : "moonyard");
                 Bot.Wait.ForMapLoad("moonyard");
-                Bot.Wait.ForItemEquip("j6");
+                Bot.Wait.ForItemEquip("j5");
                 SimpleQuestBypass((28, 35));
                 Bot.Map.Join(PrivateRooms ? $"{map}-" + PrivateRoomNumber : map);
                 Bot.Wait.ForMapLoad(strippedMap);

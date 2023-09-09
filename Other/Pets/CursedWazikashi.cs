@@ -23,6 +23,9 @@ public class CursedWazikashi
 
     public void CursedWakizashiPet()
     {
+        if (Core.CheckInventory("Cursed Wakizashi Pet", toInv: false))
+            return;
+
         Core.AddDrop(79316, 79317, 79318, 79319, 79320);
 
         // Get item to  start quest [required]
@@ -38,7 +41,7 @@ public class CursedWazikashi
 
         // Master Pockey Ball
         if (!Core.CheckInventory(79320))
-            Core.GetMapItem(12046, 1, "superslayin");
+            Core.GetMapItem(12047, 1, "superslayin");
 
         // Broken Bamboo Chunk
         Core.HuntMonster("shogunwar", "Bamboo Treeant", "Broken Bamboo Chunk", isTemp: false);
