@@ -58,7 +58,7 @@ public class ArchMageMatsArmy
         Bot.Events.PlayerAFK += PlayerAFK;
         Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
         GetmBois();
-        Bot.Events.PlayerAFK += PlayerAFK;
+        Bot.Events.PlayerAFK -= PlayerAFK;
 
         Core.SetOptions(false);
     }
@@ -85,8 +85,6 @@ public class ArchMageMatsArmy
     {
         if (string.IsNullOrEmpty(item) || Core.CheckInventory(item, quant))
             return;
-
-        Bot.Events.PlayerAFK += PlayerAFK;
 
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
