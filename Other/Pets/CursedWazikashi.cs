@@ -38,7 +38,7 @@ public class CursedWazikashi
 
         // Master Pockey Ball
         if (!Core.CheckInventory(79320))
-            Core.GetMapItem(12046, 1, "superslayin");
+            Core.GetMapItem(12047, 1, "superslayin");
 
         // Broken Bamboo Chunk
         Core.HuntMonster("shogunwar", "Bamboo Treeant", "Broken Bamboo Chunk", isTemp: false);
