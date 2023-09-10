@@ -2260,9 +2260,9 @@ public class CoreBots
 
             if (item == null || (itemIsTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
             {
-                Bot.Wait.ForPickup(item);
                 Bot.Options.AttackWithoutTarget = false;
-                while (!Bot.ShouldExit && Bot.Player.InCombat)
+                Bot.Wait.ForPickup(item);
+                while (!Bot.ShouldExit && Bot.Player.Cell != "Enter")
                 {
                     Jump("Enter", "Spawn");
                     Bot.Sleep(ActionDelay);
