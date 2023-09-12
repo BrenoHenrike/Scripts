@@ -851,7 +851,7 @@ public class CoreArmyLite
 
         foreach (var mapInfo in levelLockedMaps)
         {
-            if (Bot.Player.Level != mapInfo.LevelRequired)
+            if (Bot.Player.Level < mapInfo.LevelRequired)
             {
                 Core.Logger($"Not a high enough level.\n" +
                 $"required: {mapInfo.LevelRequired}, your's: {Bot.Player.Level}");
