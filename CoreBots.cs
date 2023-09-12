@@ -3163,6 +3163,7 @@ public class CoreBots
                 if (Bot.Player.Cell != cell && cell != "r2")
                 {
                     Logger("Resetting map for required quest update so it doesn't get stuck.");
+                    JumpWait();
                     Join("whitemap");
                     SimpleQuestBypass((363, 14));
                 }
@@ -3171,8 +3172,9 @@ public class CoreBots
                     //Asherion
                     Logger("Resetting map for next quest update.");
                     Logger("Updating for \"Asherion's\" cell");
+                    JumpWait();
+                    Join("whitemap");
                     SimpleQuestBypass((363, 1));
-                    tryJoin();
                 }
                 else
                     SimpleQuestBypass((363, 1));
