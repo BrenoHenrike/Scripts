@@ -911,7 +911,20 @@ public class CoreNation
             if (Core.CheckInventory("Voucher of Nulgath") && !string.IsNullOrEmpty(item) && item != "Voucher of Nulgath" && sellMemVoucher)
             {
                 Core.JumpWait();
-                Core.SellItem("Voucher of Nulgath", all: true);
+
+                while (!Bot.ShouldExit && (Bot.Player.HasTarget || Bot.Player.InCombat))
+                {
+                    Bot.Combat.CancelTarget();
+                    Bot.Wait.ForCombatExit();
+                    Core.Jump("Enter", "Spawn");
+                }
+
+                while (!Bot.ShouldExit && Core.CheckInventory("Voucher of Nulgath"))
+                {
+                    Core.SellItem("Voucher of Nulgath", all: true);
+                    Bot.Wait.ForItemSell();
+                }
+
             }
 
             if (returnPolicyDuringSupplies && Core.CheckInventory(new[] { Uni(1), Uni(6), Uni(9), Uni(16), Uni(20) }))

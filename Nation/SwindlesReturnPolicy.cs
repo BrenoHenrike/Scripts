@@ -21,10 +21,10 @@ public class SwindlesReturnPolicy
     public string OptionsStorage = "SwindlesReturnPolicy";
     public bool DontPreconfigure = true;
     public List<IOption> Options = new()
-{
-    CoreBots.Instance.SkipOptions,
-    new Option<RewardsSelection>("RewardSelect", "Choose Your Quest Reward", "Select Your Quest Reward for Swindle's Return Policy.", RewardsSelection.All)
-};
+    {
+        CoreBots.Instance.SkipOptions,
+        new Option<RewardsSelection>("RewardSelect", "Choose Your Quest Reward", "Select Your Quest Reward for Swindle's Return Policy.", RewardsSelection.All)
+    };
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -73,7 +73,7 @@ public class SwindlesReturnPolicy
             if (Core.CheckInventory(item.Name, item.MaxStack))
                 return;
 
-            SwindleReturn(reward, item.Name, item.MaxStack); // Fix the argument here
+            Nation.SwindleReturn(item.Name, item.MaxStack); // Fix the argument here
         }
         else
         {
@@ -84,7 +84,7 @@ public class SwindlesReturnPolicy
                 if (Core.CheckInventory(thing.Name, thing.MaxStack))
                     continue;
 
-                SwindleReturn(reward, thing.Name, thing.MaxStack); // Fix the argument here
+                Nation.SwindleReturn(thing.Name, thing.MaxStack); // Fix the argument here
             }
         }
 
@@ -92,38 +92,35 @@ public class SwindlesReturnPolicy
     }
 
 
-    public ItemBase? SwindleReturn(RewardsSelection? reward = null, string? itemName = null, int quantity = 1)
-    {
-        Core.RegisterQuests(641, 907); // Quest IDs for the pets you want to register
+    // public ItemBase? SwindleReturn(RewardsSelection? reward = null, string? itemName = null, int quantity = 1)
+    // {
+    //     Core.RegisterQuests(641, 907); // Quest IDs for the pets you want to register
 
-        string? targetItemName = reward.HasValue ? reward.Value.ToString().Replace("_", " ") : itemName;
+    //     string? targetItemName = reward.HasValue ? reward.Value.ToString().Replace("_", " ") : itemName;
 
-        while (Bot.Inventory.GetQuantity(targetItemName ?? "") < quantity)
-        {
-            if (reward != null)
-                DoSwindlesReturnPolicy(reward, true);
-            else
-                DoSwindlesReturnPolicy(RewardsSelection.All, true);
+    //     while (Bot.Inventory.GetQuantity(targetItemName ?? "") < quantity)
+    //     {
+    //         if (reward != null)
+    //             DoSwindlesReturnPolicy(reward, true);
+    //         else
+    //             DoSwindlesReturnPolicy(RewardsSelection.All, true);
 
-            ItemBase? item = Core.EnsureLoad(7551)?.Rewards.Find(x => x.Name == targetItemName);
-            if (item != null)
-            {
-                Core.AddDrop(item.ID);
+    //         ItemBase? item = Core.EnsureLoad(7551)?.Rewards.Find(x => x.Name == targetItemName);
+    //         if (item != null)
+    //         {
+    //             Core.AddDrop(item.ID);
 
-                if (!Core.CheckInventory(item.Name, item.MaxStack))
-                {
-                    return item;
-                }
-            }
-            else
-            {
-                // Handle the case where 'item' is null (item not found)
-                Core.Logger($"Item with name {targetItemName} not found in Quest Rewards.");
-            }
-        }
+    //             if (!Core.CheckInventory(item.Name, item.MaxStack))
+    //                 return item;
+    //         }
+    //         else
+    //             // Handle the case where 'item' is null (item not found)
+    //             Core.Logger($"Item with name {targetItemName} not found in Quest Rewards.");
 
-        return null;
-    }
+    //     }
+
+    //     return null;
+    // }
 
 
 
