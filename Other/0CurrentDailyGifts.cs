@@ -176,9 +176,17 @@ public class CurrentDailyGifts
 
             // Cursed Wakizashi Pet (Treasure Hunt?)
             CursedWazikashi.CursedWakizashiPet();
+            GetGift(AvailableUntil(15, 9), "superslayin", "Charidon", "Charidon Pet", "Charidon Battlepet");
+            GetGift(AvailableUntil(15, 9), "garden", "Creature 343", "Debris .45 Revolver", "Debris .45 Revolvers");
 
             #endregion August 2023
 
+            #region September 2023
+            
+            GetGift(AvailableUntil(30, 9), "septhub", "Cursed Cecaelia", "DeepWater Waves", "Master Gunner Gween");
+            GetGift(AvailableUntil(30, 9), "twilightzone", "Whale Louse", "Compact Cyamidae");
+            
+            #endregion
 
 
             //GetGift(AvailableUntil(1, 1), "map", "monster", "");
