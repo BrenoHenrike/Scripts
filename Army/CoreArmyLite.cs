@@ -653,6 +653,13 @@ public class CoreArmyLite
             // Try to go to the followed player
             if (!tryGoto(playerName))
             {
+                while (!Bot.ShouldExit && (Bot.Player.HasTarget || Bot.Player.InCombat))
+                {
+                    Bot.Combat.CancelTarget();
+                    Bot.Sleep(Core.ActionDelay);
+                    Core.JumpWait();
+                }
+
                 // Do these things if that fails
                 Core.Join("whitemap");
                 Core.Logger($"Could not find {playerName}. Check if \"{playerName}\" is in the same server with you.", "tryGoto");
@@ -698,6 +705,7 @@ public class CoreArmyLite
             // Attack any monster that is alive.
             if (!Bot.Combat.StopAttacking && Bot.Monsters.CurrentMonsters.Count(m => Core.IsMonsterAlive(m)) > 0)
                 PriorityAttack("*");
+
             Core.Rest();
             Bot.Sleep(Core.ActionDelay);
         }
