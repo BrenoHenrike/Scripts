@@ -618,8 +618,10 @@ public class CoreFarms
                 Core.Logger($"Attempting Exit {i++}.");
                 Bot.Map.Join("battleon-999999");
                 Bot.Sleep(1500);
+                if (Bot.Map.Name != "battleon")
+                    Core.Logger("Failed!? HOW.. try agian");
             }
-
+            Core.Logger("Successful!");
         }
 
         foreach (string reward in new[] { "Yoshino's Citrine", "The Secret 4" })

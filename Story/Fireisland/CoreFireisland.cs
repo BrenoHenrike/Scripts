@@ -251,7 +251,7 @@ public class CoreFireIsland
         Story.KillQuest(4209, "phoenixrise", new[] { "Pyrric Ursus", "Lava Troll", "Infernal Goblin", "Firestorm Tiger" });
 
         //Strengthen the Survivors
-        Story.KillQuest(4210, "phoenixrise", new[] { "Pyrric Ursus", "Lava Troll", "Infernal Goblin", "Firestorm Tiger", });
+        Story.KillQuest(4210, "phoenixrise", new[] { "Infernal Goblin", "Firestorm Tiger", "Pyrric Ursus", "Lava Troll" });
 
         //Bridge to Salvation
         Story.KillQuest(4211, "phoenixrise", "Lava Troll");
