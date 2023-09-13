@@ -462,7 +462,7 @@ public class CoreFarms
     /// <param name="item">Name of the desired item</param>
     /// <param name="quant">Desired quantity</param>
     /// <param name="canSoloBoss">Whether you can solo the Boss without killing Restorers and Brawlers</param>
-    public void BludrutBrawlBoss(string item = "Combat Trophy", int quant = 5000, bool canSoloBoss = true)
+    public void BludrutBrawlBoss(string item = "Combat Trophy", int quant = 5000) //, bool canSoloBoss = true)
     {
         if (Core.CheckInventory(item, quant))
             return;
@@ -479,7 +479,8 @@ public class CoreFarms
         Bot.Drops.Add("The Secret 4", "Yoshino's Citrine");
 
         Core.EquipClass(ClassType.Solo);
-        Core.Logger($"Farming {quant} {item}. SoloBoss = {canSoloBoss}");
+        Core.FarmingLogger(item, quant);
+        // Core.Logger($"Farming {quant} {item}. SoloBoss = {canSoloBoss}");
         Core.ConfigureAggro(false);
 
         // Bot.Events.PlayerDeath += PVPDeath;
@@ -611,7 +612,7 @@ public class CoreFarms
             Core.Logger("Delaying exit");
             Bot.Sleep(7500);
 
-            int i = 0;
+            int i = 1;
             while (Bot.Map.Name != "battleon")
             {
                 Core.Logger($"Attempting Exit {i++}.");
