@@ -198,7 +198,7 @@ public class CoreFireIsland
         Story.MapItemQuest(4137, "feverfew", 3242, 10);
 
         //Parting the Waters
-        Story.KillQuest(4138, "feverfew", new[] { "Firestorm Knight", "Twisted Undine", "Coral Creeper", "Salamander" });
+        Story.KillQuest(4138, "feverfew", new[] { "Salamander", "Coral Creeper", "Firestorm Knight", "Twisted Undine"});
 
         //The Power to Heal
         Story.KillQuest(4139, "feverfew", new[] { "Locked Chest", "Feverfew Vase", "Twisted Undine" });
