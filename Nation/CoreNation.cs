@@ -590,7 +590,9 @@ public class CoreNation
                         continue;
 
                     Core.FarmingLogger(Drop, drop.MaxStack);
-                    Core.RegisterQuests(2566);
+                    if (Bot.Quests.IsAvailable(2568))
+                        Core.RegisterQuests(2568);
+                    else Core.RegisterQuests(2566);
                     while (!Bot.ShouldExit && !Core.CheckInventory(drop.Name, drop.MaxStack))
                     {
                         Core.EquipClass(ClassType.Solo);
@@ -604,7 +606,9 @@ public class CoreNation
             else
             {
                 Core.FarmingLogger(item, quant);
-                Core.RegisterQuests(2566);
+                if (Bot.Quests.IsAvailable(2568))
+                    Core.RegisterQuests(2568);
+                else Core.RegisterQuests(2566);
                 while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
                 {
                     Core.EquipClass(ClassType.Solo);
