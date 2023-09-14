@@ -91,24 +91,46 @@ public class InfernalArena
         // From the Crux of Shadows 9372
         Story.KillQuest(9372, "infernalarena", "Accursed Apephyrx");
 
+        #region Fuck these guys
+        //Rest below require potions or aloooota luck and fuck that 
+        Core.Logger("The Remaining quests will require specific\n" +
+        "classes [thanks to famous youtuber deso]");
+
+        foreach (string Class in new[] { "Legion DoomKnight", "Lord of Order", "Dragon of Time", "Void Highlord" })
+        {
+            if (Core.CheckInventory(Class))
+                Core.Logger($"{Class} Found!");
+            else Core.Logger($"{Class} not Found! Stopping.", stopBot: true);
+        }
+
         // Reviled Returner 9373
         //this ones barely soloable so gl
+        Core.JumpWait();
+        Core.Equip("Void Highlord");
         Story.KillQuest(9373, "infernalarena", "Deadly Duo");
 
-        //Rest below the line require potions and fuck that 
-        /*---------------------------------------------------
         // Reign of the Deer 9374
+        Core.JumpWait();
+        Core.Equip("Legion DoomKnight");
         Story.KillQuest(9374, "infernalarena", "Cervus Malus");
 
         // Ars Infernum 9375
+        Core.JumpWait();
+        Core.Equip("Dragon of Time");
         Story.KillQuest(9375, "infernalarena", "Key of Sholemoh");
 
         // Unrepentant Culler 9376
+        Core.JumpWait();
+        Core.Equip("Lord of Order");
         Story.KillQuest(9376, "infernalarena", "Azalith's Scythe");
 
         // Lord of the Scarred Barrens  9377
+        Core.JumpWait();
+        Core.Equip("Void Highlord");
+        Core.Logger("this may take an hr or 2... or u may first try\n" +
+        "it so good luck(a kill has been gotten with vhl\n" +
+        "so its confirmd able to be done...)");
         Story.KillQuest(9377, "infernalarena", "Na'al");
-        */
-
+        #endregion Fuck these guysa
     }
 }
