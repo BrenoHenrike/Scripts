@@ -212,6 +212,7 @@ public class CoreFarmerJoe
         InventoryItem? ClassDragonSoulShinobi = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == ("DragonSoul Shinobi").ToLower().Trim() && i.Category == ItemCategory.Class);
         InventoryItem? ClassArchPaladin = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == ("ArchPaladin").ToLower().Trim() && i.Category == ItemCategory.Class);
         InventoryItem? ClassArchFiend = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == ("ArchFiend").ToLower().Trim() && i.Category == ItemCategory.Class);
+        InventoryItem? ClassGlacialBerserker = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == ("Glacial Berserker").ToLower().Trim() && i.Category == ItemCategory.Class);
         #endregion InvClasses
 
         #region Leve30 to 75
@@ -225,7 +226,9 @@ public class CoreFarmerJoe
             switch (Level)
             {
                 case 30:
-                    if (Bot.Player.Level >= Level && Adv.HasMinimalBoost(GenericGearBoost.exp, 25) && (Core.CheckInventory("Master Ranger") && ClassMasterRanger?.Quantity == 302500))
+                    if (Bot.Player.Level >= Level &&
+                    Adv.HasMinimalBoost(GenericGearBoost.exp, 25) &&
+                    (Core.CheckInventory("Master Ranger") && ClassMasterRanger?.Quantity == 302500))
                     {
                         Core.Logger("Items owned: \"Awethur's Accoutrements\", \"Master Ranger\" continuing");
                         SetClass(false, true, true);
@@ -251,7 +254,8 @@ public class CoreFarmerJoe
                     continue;
 
                 case 45:
-                    if (Bot.Player.Level >= Level && (Core.CheckInventory("Shaman") && ClassShaman?.Quantity == 302500))
+                    if (Bot.Player.Level >= Level && 
+                    (Core.CheckInventory("Shaman") && ClassShaman?.Quantity == 302500))
                     {
                         Core.Logger("Items owned: \"Shaman\" continuing");
                         SetClass(true, false, true);
@@ -271,7 +275,9 @@ public class CoreFarmerJoe
                     continue;
 
                 case 50:
-                    if (Bot.Player.Level >= Level && Core.CheckInventory("Burning Blade") && (Core.CheckInventory("Scarlet Sorceress") && ClassScarletSorceress?.Quantity == 302500))
+                    if (Bot.Player.Level >= Level &&
+                    Core.CheckInventory("Burning Blade") &&
+                    (Core.CheckInventory("Scarlet Sorceress") && ClassScarletSorceress?.Quantity == 302500))
                     {
                         Core.Logger("Items owned: \"Scarlet Sorceress\", \"Burning Blade\" continuing");
                         SetClass(false, true, true);
@@ -292,7 +298,8 @@ public class CoreFarmerJoe
                     continue;
 
                 case 55:
-                    if (Bot.Player.Level >= Level && (Core.CheckInventory("Blaze Binder") && ClassBlazeBinder?.Quantity == 302500))
+                    if (Bot.Player.Level >= Level &&
+                    (Core.CheckInventory("Blaze Binder") && ClassBlazeBinder?.Quantity == 302500))
                     {
                         Core.Logger("Items owned:  \"Blaze Binder\", continuing");
                         SetClass(false, true, true);
@@ -315,7 +322,8 @@ public class CoreFarmerJoe
                     continue;
 
                 case 60:
-                    if (Bot.Player.Level >= Level && (Core.CheckInventory("DragonSoul Shinobi") && ClassDragonSoulShinobi?.Quantity == 302500))
+                    if (Bot.Player.Level >= Level &&
+                    (Core.CheckInventory("DragonSoul Shinobi") && ClassDragonSoulShinobi?.Quantity == 302500))
                     {
                         Core.Logger("Items owned:  \"DragonSoul Shinobi\", continuing");
                         continue;
@@ -336,7 +344,9 @@ public class CoreFarmerJoe
                     continue;
 
                 case 65:
-                    if (Bot.Player.Level >= Level && (Core.CheckInventory("ArchPaladin") && ClassArchPaladin?.Quantity == 302500))
+                    if (Bot.Player.Level >= Level &&
+                    (Core.CheckInventory("ArchPaladin") && ClassArchPaladin?.Quantity == 302500) &&
+                    (Core.CheckInventory("Glacial Berserker") && ClassGlacialBerserker?.Quantity == 302500))
                     {
                         Core.Logger("Items owned: \"ArchPaladin\", continuing");
                         continue;
@@ -357,7 +367,9 @@ public class CoreFarmerJoe
 
                 case 70:
                 case 75:
-                    if (Bot.Player.Level >= Level && Core.CheckInventory("Archfiend DeathLord") && (Core.CheckInventory("Archfiend") && ClassArchFiend?.Quantity == 302500))
+                    if (Bot.Player.Level >= Level &&
+                    Core.CheckInventory("Archfiend DeathLord") &&
+                    (Core.CheckInventory("Archfiend") && ClassArchFiend?.Quantity == 302500))
                     {
                         Core.Logger("Items owned: \"Archfiend DeathLord\", \"ArchFiend\", continuing");
                         continue;
