@@ -23,10 +23,7 @@ public class CoreDarkon
         Core.RunCore();
     }
 
-    public void FarmReceipt(int Quantity = 222)
-    {
-        FirstErrand(Quantity);
-    }
+    public void FarmReceipt(int Quantity = 222) => FirstErrand(Quantity);
 
     public void FirstErrand(int Quantity = 222)
     {
