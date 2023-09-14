@@ -345,6 +345,7 @@ public class CoreFarmerJoe
                     SetClass(false, true, true);
                     Farm.Experience(Level);
 
+                    GB.GetGB();
 
                     Core.Logger("Getting ArchPaladin");
                     SetClass(true, false, true);
@@ -426,7 +427,6 @@ public class CoreFarmerJoe
         Core.ToBank(Core.EnsureLoad(7156).Rewards.Select(i => i.Name).ToArray());
 
         Core.Logger("P3 - 4: Improving Efficiency, and more Classes");
-        GB.GetGB();
         SC.GetSC();
 
         Farm.Experience(80);
@@ -649,7 +649,7 @@ public class CoreFarmerJoe
             return;
         }
 
-        string[] soloClassesToCheck = { "ArchPaladin", "Shaman", "Rogue (Rare)", "Rogue", "Healer (Rare)", "Healer" };
+        string[] soloClassesToCheck = { "ArchPaladin", "Glacial Berserker", "Shaman", "Rogue (Rare)", "Rogue", "Healer (Rare)", "Healer" };
         string[] farmClassesToCheck = { "Archfiend", "Blaze Binder", "Scarlet Sorceress", "Master Ranger", "Shaman", "Mage (Rare)", "Mage" };
 
         Core.Logger($"Checking if CBO (Corebot Options) classes are set\n" +
