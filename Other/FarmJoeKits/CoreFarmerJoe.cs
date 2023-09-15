@@ -355,10 +355,10 @@ public class CoreFarmerJoe
                     SetClass(false, true, true);
                     Farm.Experience(Level);
 
-                    GB.GetGB();
+                    GB.GetGB(false);
+                    SetClass(true, false, true);
 
                     Core.Logger("Getting ArchPaladin");
-                    SetClass(true, false, true);
                     AP.GetAP(false);
                     SetClass(true, false, true);
 

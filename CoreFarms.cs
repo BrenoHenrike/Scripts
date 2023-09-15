@@ -326,7 +326,7 @@ public class CoreFarms
             ToggleBoost(BoostType.Gold);
             Core.RegisterQuests(3991, 3992);
             while (NotYetLevel(75))
-                Core.KillMonster("battelgrounde", "r2", "Center", "*", log: false, publicRoom: true);
+                Core.KillMonster("battlegrounde", "r2", "Center", "*", log: false, publicRoom: true);
             Core.CancelRegisteredQuests();
             ToggleBoost(BoostType.Gold, false);
         }

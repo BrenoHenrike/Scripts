@@ -31,7 +31,11 @@ public class GlacialBerserker
     public void GetGB(bool rankUpClass = true)
     {
         if (Core.CheckInventory("Glacial Berserker"))
+        {
+            if (rankUpClass)
+                Adv.RankUpClass("Glacial Berserker");
             return;
+        }
 
         Glacera.IceWindPass();
         //Adv.BestGear(GenericGearBoost.rep);
