@@ -2617,9 +2617,6 @@ public class CoreAdvanced
                 case "timeless dark caster":
                 case "witch":
                 case "stonecrusher":
-                case "classic legion doomknight":
-                case "legion doomknight":
-                case "legion doomknight tester":
                     type = EnhancementType.Wizard;
                     wSpecial = WeaponSpecial.Awe_Blast;
                     break;
@@ -2645,6 +2642,9 @@ public class CoreAdvanced
                 case "pyromancer":
                 case "sakura cryomancer":
                 case "troll spellsmith":
+                case "classic legion doomknight":
+                case "legion doomknight":
+                case "legion doomknight tester":
                     type = EnhancementType.Wizard;
                     wSpecial = WeaponSpecial.Spiral_Carve;
                     break;
