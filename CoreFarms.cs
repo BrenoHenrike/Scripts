@@ -316,12 +316,20 @@ public class CoreFarms
         while (NotYetLevel(50))
             Core.KillMonster("icestormarena", "r14", "Left", "*", log: false, publicRoom: true);
 
-        //Between level 50 and 75
-        while (NotYetLevel(60))
-            Core.KillMonster("underlair", "r4", "Right", "*", log: false);
+        //Between level 50 and 61(for BGE)
+        while (NotYetLevel(61))
+            Core.KillMonster("icestormarena", "r16", "Left", "*", log: false, publicRoom: true);
 
-        while (NotYetLevel(75))
-            Core.KillMonster("underlair", "r5", "Left", "*", log: false);
+        //Between level 61 and 75
+        if (NotYetLevel(75))
+        {
+            ToggleBoost(BoostType.Gold);
+            Core.RegisterQuests(3991, 3992);
+            while (NotYetLevel(75))
+                Core.KillMonster("battelgrounde", "r2", "Center", "*", log: false, publicRoom: true);
+            Core.CancelRegisteredQuests();
+            ToggleBoost(BoostType.Gold, false);
+        }
 
         //Between level 75 and 100
         while (NotYetLevel(100))
