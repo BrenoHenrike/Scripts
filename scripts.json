@@ -10494,6 +10494,35 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/3LittleWolvesHousesMerge.cs"
   },
   {
+    "name": "Kathool's Chest Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Kathools Chest Merge [2322] in /kathooldepths",
+    "tags": [
+      "kathool",
+      "chest",
+      "merge",
+      "kathooldepths",
+      "adeptus",
+      "kathooli",
+      "morph",
+      "sacrosanct",
+      "tendril",
+      "fins",
+      "barbarous",
+      "mindsmasher",
+      "mindsmashers",
+      "apex",
+      "leviathan",
+      "domination",
+      "spear",
+      "spears",
+      "thyllian"
+    ],
+    "path": "Other/MergeShops/KathoolsChestMerge.cs",
+    "size": 7236,
+    "fileName": "KathoolsChestMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/KathoolsChestMerge.cs"
+  },
+  {
     "name": "WarTrainingMerge",
     "description": "null",
     "tags": [
