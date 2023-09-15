@@ -3454,6 +3454,8 @@
     "name": "Extra Credit Merge",
     "description": "This bot will farm the items belonging to the selected mode for the Extra Credit Merge [2158] in /extracredit",
     "tags": [
+      "back-to-school",
+      "seasonal",
       "extra",
       "credit",
       "merge",
@@ -3478,10 +3480,22 @@
       "jacket",
       "jeans",
       "autumn",
-      "days"
+      "days",
+      "violet",
+      "puffed",
+      "coat",
+      "grape",
+      "chill",
+      "package",
+      "fiercer",
+      "chewy",
+      "cookie",
+      "melty",
+      "crunchy",
+      "gourmet"
     ],
     "path": "Seasonal/BackToSchool/ExtraCreditMerge.cs",
-    "size": 7414,
+    "size": 9339,
     "fileName": "ExtraCreditMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/BackToSchool/ExtraCreditMerge.cs"
   },
@@ -9955,7 +9969,7 @@
       "deep"
     ],
     "path": "Other/MergeShops/SeaBaseHouseMerge.cs",
-    "size": 12466,
+    "size": 12547,
     "fileName": "SeaBaseHouseMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/SeaBaseHouseMerge.cs"
   },
