@@ -22,16 +22,21 @@ public class PotionBuyer
     {
         CoreBots.Instance.SkipOptions,
         new Option<int>("potionQuant", "Potion Quantity", "Desired stack amount [max - 300]", 1),
+
+        //Tonic
         new Option<bool>("farmFate", "Fate", "Should the bot farm Fate Tonics?", false),
         new Option<bool>("farmSage", "Sage", "Should the bot farm Sage Tonics?", false),
+        new Option<bool>("farmMight", "Might", "Should the bot farm Might Tonics?", false),
+
+        //Elixer
         new Option<bool>("farmBattle", "Battle", "Should the bot farm Battle Elixirs?", false),
         new Option<bool>("farmMalevolence", "Malevolence", "Should the bot farm Malevolence Elixirs?", false),
-        new Option<bool>("farmHonor", "Honor", "Should the bot farm Honor Potions?", false),
         new Option<bool>("farmDivine", "Divine", "Should the bot farm Unstable Divine Elixers?", false),
         new Option<bool>("farmRevitalize", "Revitalize", "Should the bot farm Potent Revitalize Elixirs", false),
-        new Option<bool>("buyFeli", "Felicitous Philtre", "Should the bot buy Felicitous Philtre?", false),
-        new Option<bool>("buyEndu", "Endurance Draught", "Should the bot buy Endurance Draught?", false),
         new Option<bool>("farmDestruction", "Destruction", "Should the bot farm Potent Destruction Elixir?", false),
+
+        //Potion
+        new Option<bool>("farmHonor", "Honor", "Should the bot farm Honor Potions?", false),
         new Option<bool>("farmBody", "Body", "Should the bot farm Body Tonics?", false),
         new Option<bool>("farmSoul", "Soul", "Should the bot farm Soul Potions?", false),
         new Option<bool>("UnstableBattle", "Unstable Battle Elixir", "Should the bot farm Soul Potions?", false),
@@ -41,10 +46,14 @@ public class PotionBuyer
         new Option<bool>("UnstableMastery", "Unstable Mastery Tonic", "Should the bot farm Soul Potions?", false),
         new Option<bool>("UnstableMight", "Unstable Might Tonic ", "Should the bot farm Soul Potions?", false),
         new Option<bool>("UnstableVelocity", "Unstable Velocity Elixir", "Should the bot farm Soul Potions?", false),
-        new Option<bool>("UnstableWise", "Unstable Wise Tonic", "Should the bot farm Soul Potions?", false)
+        new Option<bool>("UnstableWise", "Unstable Wise Tonic", "Should the bot farm Soul Potions?", false),
+
+        //Other        
+        new Option<bool>("buyFeli", "Felicitous Philtre", "Should the bot buy Felicitous Philtre?", false),
+        new Option<bool>("buyEndu", "Endurance Draught", "Should the bot buy Endurance Draught?", false)
 
     };
-
+    
     public void ScriptMain(IScriptInterface bot)
     {
         Core.BankingBlackList.Add("Dragon Runestone");
@@ -65,7 +74,8 @@ public class PotionBuyer
             "Potent Destruction Elixir", "Body Tonic", "Soul Potion", "Unstable Battle Elixir",
             "Unstable Body Tonic", "Unstable Fate Tonic", "Unstable Keen Elixir",
             "Unstable Mastery Tonic", "Unstable Might Tonic", "Unstable Velocity Elixir",
-            "Unstable Wise Tonic"};
+            "Unstable Wise Tonic", "Might Tonic"};
+
         potionsFarm ??= new[] {                         Bot.Config!.Get<bool>("farmFate"),           Bot.Config!.Get<bool>("farmSage"),
             Bot.Config!.Get<bool>("farmBattle"),         Bot.Config!.Get<bool>("farmMalevolence"),    Bot.Config!.Get<bool>("farmHonor"),
             Bot.Config!.Get<bool>("farmDivine"),         Bot.Config!.Get<bool>("farmRevitalize"),
@@ -73,7 +83,7 @@ public class PotionBuyer
             Bot.Config!.Get<bool>("farmBody"),           Bot.Config!.Get<bool>("FarmSoul"),           Bot.Config!.Get<bool>("UnstableBattle"),
             Bot.Config!.Get<bool>("UnstableBody"),       Bot.Config!.Get<bool>("UnstableFate"),       Bot.Config!.Get<bool>("UnstableKeen"),
             Bot.Config!.Get<bool>("UnstableMastery"),    Bot.Config!.Get<bool>("UnstableMight"),      Bot.Config!.Get<bool>("UnstableVelocity"),
-            Bot.Config!.Get<bool>("UnstableWise") };
+            Bot.Config!.Get<bool>("UnstableWise"),       Bot.Config!.Get<bool>("MightTonic") };
 
         if (!potionsFarm.Any(x => x) || potionQuant < 1 || potionQuant > 300)
         {
@@ -108,6 +118,11 @@ public class PotionBuyer
                 case "Potent Honor Potion":
                     currTrait = CoreFarms.AlchemyTraits.Dam;
                     BulkGrind("Chaoroot", "Chaos Entity");
+                    break;
+
+                case "Might Tonic":
+                    currTrait = CoreFarms.AlchemyTraits.Dam;
+                    BulkGrind("Chaos Entity", "Rhison Blood");
                     break;
 
                 case "Sage Tonic":
