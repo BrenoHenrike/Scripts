@@ -2199,7 +2199,6 @@ public class CoreAdvanced
                 case "classic dragonlord":
                 case "classic exalted soul cleaver":
                 case "classic guardian":
-                case "classic legion doomknight":
                 case "classic paladin":
                 case "classic pirate":
                 case "classic soul cleaver":
@@ -2418,7 +2417,6 @@ public class CoreAdvanced
                 case "classic doomknight":
                 case "classic exalted soul cleaver":
                 case "classic guardian":
-                case "classic legion doomknight":
                 case "classic paladin":
                 case "classic pirate":
                 case "classic soul cleaver":
@@ -2442,7 +2440,6 @@ public class CoreAdvanced
                 case "infinite legion dark caster":
                 case "infinity titan":
                 case "legion blademaster assassin":
-                case "legion doomknight":
                 case "legion evolved dark caster":
                 case "legion swordmaster assassin":
                 case "leprechaun":
@@ -2507,7 +2504,6 @@ public class CoreAdvanced
                 case "horc evader":
                 case "legendary hero":
                 case "legendary naval commander":
-                case "legion doomknight tester":
                 case "legion revenant member test":
                 case "naval commander":
                 case "paladin high lord":
@@ -2621,6 +2617,9 @@ public class CoreAdvanced
                 case "timeless dark caster":
                 case "witch":
                 case "stonecrusher":
+                case "classic legion doomknight":
+                case "legion doomknight":
+                case "legion doomknight tester":
                     type = EnhancementType.Wizard;
                     wSpecial = WeaponSpecial.Awe_Blast;
                     break;
