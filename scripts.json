@@ -19312,13 +19312,18 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Legion/DageTheEvilIsland/04EnvyMap.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Infernal Arena",
+    "description": "This script will complete the quests in /infernalarena.",
     "tags": [
-      "null"
+      "na'al",
+      "naal",
+      "infernal",
+      "arena",
+      "story",
+      "dungeon"
     ],
     "path": "Story/QueenofMonsters/Extra/InfernalArena.cs",
-    "size": 4420,
+    "size": 4516,
     "fileName": "InfernalArena.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/QueenofMonsters/Extra/InfernalArena.cs"
   },
