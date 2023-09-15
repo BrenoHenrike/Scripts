@@ -5294,6 +5294,22 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/AluteaNursery.cs"
   },
   {
+    "name": "Doom Pirate",
+    "description": "This script will complete the storyline in /doompirate",
+    "tags": [
+      "doom",
+      "pirate",
+      "story",
+      "dusk",
+      "doompirate",
+      "gallaeon"
+    ],
+    "path": "Seasonal/TalkLikeaPirateDay/DoomPirateStory.cs",
+    "size": 931,
+    "fileName": "DoomPirateStory.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/DoomPirateStory.cs"
+  },
+  {
     "name": "Low Tide Story",
     "description": "This will finish the Low Tide Story Quest.",
     "tags": [
@@ -17568,6 +17584,27 @@
     "size": 7043,
     "fileName": "LowTideMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/MergeShops/LowTideMerge.cs"
+  },
+  {
+    "name": "DoomPirate House Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the DoomPirate House Merge [2331] in /doompirate",
+    "tags": [
+      "doompirate",
+      "house",
+      "merge",
+      "doompirate",
+      "shadowscythe",
+      "pirate",
+      "warship",
+      "commander",
+      "gallaeon",
+      "guest",
+      "statue"
+    ],
+    "path": "Seasonal/TalkLikeaPirateDay/MergeShops/DoomPirateHouseMerge.cs",
+    "size": 3830,
+    "fileName": "DoomPirateHouseMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/MergeShops/DoomPirateHouseMerge.cs"
   },
   {
     "name": "Skull Punch Story",
