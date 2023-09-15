@@ -1099,7 +1099,7 @@ public class CoreFarms
         }
 
         Core.Logger("Using Non-Gold Method");
-        Core.Logger($"If you can't Solo SlugButter, Either use the Gold method or Run the AP Script (Found in: Good-ArchPaladin) as it can Solo the boss 👍");
+        // Core.Logger($"If you can't Solo SlugButter, Either use the Gold method or Run the AP Script (Found in: Good-ArchPaladin) as it can Solo the boss 👍");
 
         // Core.RegisterQuests(2777);
         while (!Bot.ShouldExit && FactionRank("Blacksmithing") < 4 && !UseGold)
