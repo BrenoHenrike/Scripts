@@ -19,6 +19,7 @@ tags: all dailies, dailies, daily, all
 //cs_include Scripts/Evil/SDKA/CoreSDKA.cs
 //cs_include Scripts/Tools\BankAllItems.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Options;
 
 public class FarmAllDailies
 {
@@ -32,6 +33,14 @@ public class FarmAllDailies
     private CoreSDKA CSDKA = new();
     //private BankAllItems BAI = new();
 
+    public bool DontPreconfigure = true;
+    public string OptionsStorage = "FarmAllDailies";
+    public List<IOption> Options = new()
+    {
+        new Option<DailySet>("Select Dailies Set", "Dailies set: Recommended or All?", "only do the few that we recommend to make it a bit quicker?", DailySet.All),
+        CoreBots.Instance.SkipOptions,
+    };
+
     public void ScriptMain(IScriptInterface Bot)
     {
         Core.SetOptions();
@@ -41,56 +50,70 @@ public class FarmAllDailies
         Core.SetOptions(false);
     }
 
-    public void DoAllDailies()
+    public void DoAllDailies(DailySet Set = new())
     {
-        Core.Logger("Doing all dailies");
+        if (Set == DailySet.Recommended)
+        {
+            Core.Logger($"Doing selected set of dailies: Recommended");
+            LOO.GetLoO();
+            BLOD.UnlockMineCrafting();
+            Daily.Pyromancer();
+            Daily.DeathKnightLord();
+            Daily.ShadowScytheClass();
+            Daily.WheelofDoom();
+            Daily.FreeDailyBoost();
+            Daily.CollectorClass();
+            Glac.FrozenTower();
+            Daily.Cryomancer();
+            Daily.EldersBlood();
+            Daily.ShadowShroud();
+            Daily.DagesScrollFragment();
+            Daily.MineCrafting(new[] { "Aluminum", "Barium", "Gold", "Iron", "Copper", "Silver", "Platinum" }, 10, ToBank: true);
+            Daily.CryptoToken();
+            Core.Logger("Recommended Dailies finished!");
+        }
+        if (Set == DailySet.All)
+        {
+            Core.Logger($"Doing selected set of dailies: All");
+            LOO.GetLoO();
+            BLOD.UnlockMineCrafting();
+            Daily.Pyromancer();
+            Daily.DeathKnightLord();
+            Daily.ShadowScytheClass();
+            Daily.WheelofDoom();
+            Daily.FreeDailyBoost();
+            Daily.CollectorClass();
+            Glac.FrozenTower();
+            Daily.Cryomancer();
+            Daily.EldersBlood();
+            Daily.MineCrafting(new[] { "Aluminum", "Barium", "Gold", "Iron", "Copper", "Silver", "Platinum" }, 10, ToBank: true);
 
-        LOO.GetLoO();
-        BLOD.UnlockMineCrafting();
-
-        //With solo class
-        Daily.MadWeaponSmith();
-        Daily.CyserosSuperHammer();
-        Daily.BrightKnightArmor();
-        Daily.Pyromancer();
-        Daily.DeathKnightLord();
-        Daily.ShadowScytheClass();
-        Daily.GrumbleGrumble();
-        Daily.MonthlyTreasureChestKeys();
-        Daily.WheelofDoom();
-        Daily.FreeDailyBoost();
-        Daily.BallyhooAdRewards();
-        Daily.PowerGem();
-        Daily.DesignNotes();
-        Daily.MoglinPets();
-        // Daily.NSoDDaily();
-        
-        //Friendships (alota inv spaces)
-        FR.CompleteStory();
-        Daily.Friendships();
-
-        //With farm class
-        Daily.CollectorClass();
-        Glac.FrozenTower();
-        Daily.Cryomancer();
-        Daily.EldersBlood();
-        Daily.SparrowsBlood();
-        Daily.ShadowShroud();
-        Daily.DagesScrollFragment();
-        Daily.BeastMasterChallenge();
-        Daily.FungiforaFunGuy();
-        Daily.MineCrafting(new[] { "Aluminum", "Barium", "Gold", "Iron", "Copper", "Silver", "Platinum" }, 10, ToBank: true);
-        CSDKA.UnlockHardCoreMetals();
-        Daily.HardCoreMetals(new[] { "Arsenic", "Beryllium", "Chromium", "Palladium", "Rhodium", "Rhodium", "Thorium", "Mercury" }, 10, ToBank: true);
-        Daily.CryptoToken();
-        Daily.GoldenInquisitor();
-        Daily.BreakIntotheHoard(false, false);
-
-        // Core.Logger("All dailies are completed. Doing a last Bankall");
-        // BAI.BankAll();
+            Daily.SparrowsBlood();
+            Daily.BeastMasterChallenge();
+            Daily.FungiforaFunGuy();
+            CSDKA.UnlockHardCoreMetals();
+            Daily.HardCoreMetals(new[] { "Arsenic", "Beryllium", "Chromium", "Palladium", "Rhodium", "Rhodium", "Thorium", "Mercury" }, 10, ToBank: true);
+            Daily.GoldenInquisitor();
+            Daily.BreakIntotheHoard(false, false);
+            Daily.MadWeaponSmith();
+            Daily.CyserosSuperHammer();
+            Daily.BrightKnightArmor();
+            Daily.GrumbleGrumble();
+            Daily.MonthlyTreasureChestKeys();
+            Daily.BallyhooAdRewards();
+            Daily.PowerGem();
+            Daily.DesignNotes();
+            Daily.MoglinPets();
+            FR.CompleteStory();
+            Daily.Friendships();
+            Core.Logger("\"All\" Dailies finished!");
+        }
+        else Core.Logger("How the fuck did u get here? this shouldnt be an option....", stopBot: true);
     }
 
-
-
-
+    public enum DailySet
+    {
+        Recommended,
+        All
+    }
 }

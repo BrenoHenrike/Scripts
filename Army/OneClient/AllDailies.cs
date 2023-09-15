@@ -34,6 +34,8 @@ public class ArmyAllDailies
     public List<IOption> Options = new()
     {
         new Option<bool>("randomServers", "Random Servers", "Should the bot use a random server each for each account.", true),
+        new Option<FarmAllDailies.DailySet>("Select Dailies Set", "Dailies set: Recommended or All?", "only do the few that we recommend to make it a bit quicker?", FarmAllDailies.DailySet.All),
+        CoreBots.Instance.SkipOptions,
     };
 
     public void ScriptMain(IScriptInterface Bot)
@@ -48,6 +50,6 @@ public class ArmyAllDailies
     public void CheckACs(bool randomServers)
     {
         while (Army.doForAll(randomServers))
-            FAD.DoAllDailies();
-    }
+            FAD.DoAllDailies(Bot.Config!.Get<FarmAllDailies.DailySet>("Select Dailies Set"));
+    }  
 }
