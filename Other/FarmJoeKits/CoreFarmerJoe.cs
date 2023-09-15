@@ -152,10 +152,10 @@ public class CoreFarmerJoe
     public bool DontPreconfigure = true;
     public List<IOption> Options = new()
     {
-        CoreBots.Instance.SkipOptions,
         new Option<bool>("OutFit", "Get a Pre-Made Outfit, Curtious of the Community", "We are farmers, bum ba dum bum bum bum bum", false),
         new Option<bool>("EquipOutfit", "Equip outfit at the end?", "Yay or Nay", false),
         new Option<PetChoice>("PetChoice", "Choose Your Pet", "Extra stuff to choose, if you have any suggestions -form in disc, and put it under request. or dm Tato(the retarded one on disc)", PetChoice.None),
+        CoreBots.Instance.SkipOptions,
     };
 
     public static void ScriptMain(IScriptInterface bot) => Core.RunCore();
@@ -489,7 +489,7 @@ public class CoreFarmerJoe
         Adv.SmartEnhance(Bot.Player.CurrentClass?.Name ?? String.Empty);
 
         // Extra Stuff
-        Pets(PetChoice.None);
+        Pets();
 
         if (Bot.Config!.Get<bool>("EquipOutfit"))
         {
