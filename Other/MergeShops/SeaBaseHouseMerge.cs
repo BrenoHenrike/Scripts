@@ -1,7 +1,7 @@
 /*
 name: Sea Base House Merge
 description: This bot will farm the items belonging to the selected mode for the Sea Base House Merge [2289] in /twilightzone
-tags: sea, base, house, merge, twilightzone, stern, song, guest, taras, temporary, rest, disgruntled, mi, undine, office, desk, ominous, hero, hydration, station, server, rack, ergonomic, engineer, setup, basic, infirmary, bed, flowering, shrub, table, golden, bouquet, medical, monitor, trio, songs, seaside, portrait, sunlight, zone, workstation, chair, seabase, soft, reading, light, blue, ray, bookshelf, corner, fuel, vat, sleek, midnight, memorial, stones, occupied, experimentation, conference, couch, porthole, window, windows, slim
+tags: sea, base, house, merge, twilightzone, stern, song, guest, taras, temporary, rest, disgruntled, mi, undine, office, desk, ominous, hero, hydration, station, server, rack, ergonomic, engineer, setup, basic, infirmary, bed, flowering, shrub, table, golden, bouquet, medical, monitor, trio, songs, seaside, portrait, sunlight, zone, workstation, chair, seabase, soft, reading, light, blue, ray, bookshelf, corner, fuel, vat, sleek, midnight, memorial, stones, occupied, experimentation, conference, couch, porthole, window, windows, slim, deep
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -31,7 +31,7 @@ public class SeaBaseHouseMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Sun Zone Chit", "Undine Visitor Badge", "Undine Base Scrip", "Sundered Tentacle", "Leviathan Scale", "Water Elf Pearl", "Undine Coffee Table", "Scattered Bones", "Experimentation Chair", "Sleeping Monitor"});
+        Core.BankingBlackList.AddRange(new[] { "Sun Zone Chit", "Undine Visitor Badge", "Undine Base Scrip", "Sundered Tentacle", "Leviathan Scale", "Water Elf Pearl", "Undine Coffee Table", "Scattered Bones", "Experimentation Chair", "Sleeping Monitor" });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -40,7 +40,7 @@ public class SeaBaseHouseMerge
 
     public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
-        AoR.MidnightZone();
+        AoR.DeepWater();
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("twilightzone", 2289, findIngredients, buyOnlyThis, buyMode: buyMode);
 
@@ -69,9 +69,9 @@ public class SeaBaseHouseMerge
                     Core.RegisterQuests(9252);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("sunlightzone", "Marine Snow", "Marine Sample", log:false);
-                        Core.HuntMonster("sunlightzone", "Infernal Illusion", "Infernal Sample", 10, log:false);
-                        Core.HuntMonster("sunlightzone", "Seraphic Illusion", "Seraphic Sample", 10, log:false);
+                        Core.HuntMonster("sunlightzone", "Marine Snow", "Marine Sample", log: false);
+                        Core.HuntMonster("sunlightzone", "Infernal Illusion", "Infernal Sample", 10, log: false);
+                        Core.HuntMonster("sunlightzone", "Seraphic Illusion", "Seraphic Sample", 10, log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
@@ -79,13 +79,12 @@ public class SeaBaseHouseMerge
 
                 case "Undine Visitor Badge":
                     Core.FarmingLogger(req.Name, quant);
-                        Core.HuntMonster("sunlightzone", "Astravian Illusion", req.Name, quant, false, false);
-                        Bot.Wait.ForPickup(req.Name);
+                    Core.HuntMonster("sunlightzone", "Astravian Illusion", req.Name, quant, false, false);
                     break;
 
                 case "Undine Base Scrip":
                     Core.FarmingLogger(req.Name, quant);
-                        Core.HuntMonster("sunlightzone", "Marine Snow", req.Name, quant, false, false);
+                    Core.HuntMonster("sunlightzone", "Marine Snow", req.Name, quant, false, false);
                     break;
 
                 case "Sundered Tentacle":
@@ -105,8 +104,7 @@ public class SeaBaseHouseMerge
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
                     Core.Logger("Better to use alts to farm it faster.");
-                        Core.HuntMonster("twilightzone", "Leviathan", "Leviathan Scale", quant, false, false);
-                        Bot.Wait.ForPickup(req.Name);
+                    Core.HuntMonster("twilightzone", "Leviathan", "Leviathan Scale", quant, false, false);
                     break;
 
                 case "Water Elf Pearl":
@@ -126,19 +124,31 @@ public class SeaBaseHouseMerge
 
                 case "Undine Coffee Table":
                 case "Sleeping Monitor":
+                case "Water Temple Pedestal":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
-                        Core.HuntMonster("midnightzone", "Sparagmos", req.Name, quant, false, false);
-                        Bot.Wait.ForPickup(req.Name);
+                    Core.HuntMonster("midnightzone", "Sparagmos", req.Name, quant, false, false);
                     break;
 
                 case "Scattered Bones":
                 case "Experimentation Chair":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
-                        Core.HuntMonster("midnightzone", "Undead Prisoner", req.Name, quant, false, false);
-                        Bot.Wait.ForPickup(req.Name);
+                    Core.HuntMonster("midnightzone", "Undead Prisoner", req.Name, quant, false, false);
                     break;
+
+                case "Ascending Kathool Tentacle":
+                    Core.FarmingLogger(req.Name, quant);
+                    Core.EquipClass(ClassType.Solo);
+                    Core.HuntMonster("abyssalzone", "The Ashray", req.Name, quant, false, false);
+                    break;
+
+                case "Ashray Trench Pedestal":
+                    Core.FarmingLogger(req.Name, quant);
+                    Core.EquipClass(ClassType.Solo);
+                    Core.HuntMonster("trenchobserve", "Lady Noelle", req.Name, quant, false, false);
+                    break;
+
 
             }
         }
@@ -180,5 +190,6 @@ public class SeaBaseHouseMerge
         new Option<bool>("78690", "Undine Dual Windows", "Mode: [select] only\nShould the bot buy \"Undine Dual Windows\" ?", false),
         new Option<bool>("78689", "Slim Undine Window", "Mode: [select] only\nShould the bot buy \"Slim Undine Window\" ?", false),
         new Option<bool>("78688", "Seabase Undine Window", "Mode: [select] only\nShould the bot buy \"Seabase Undine Window\" ?", false),
+        new Option<bool>("79483", "Deep SeaBase House", "Mode: [select] only\nShould the bot buy \"Deep SeaBase House\" ?", false),
     };
 }
