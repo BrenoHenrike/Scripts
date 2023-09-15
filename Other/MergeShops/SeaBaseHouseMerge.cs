@@ -31,7 +31,7 @@ public class SeaBaseHouseMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Sun Zone Chit", "Undine Visitor Badge", "Undine Base Scrip", "Sundered Tentacle", "Leviathan Scale", "Water Elf Pearl", "Undine Coffee Table", "Scattered Bones", "Experimentation Chair", "Sleeping Monitor" });
+        Core.BankingBlackList.AddRange(new[] { "Sun Zone Chit", "Undine Visitor Badge", "Undine Base Scrip", "Sundered Tentacle", "Leviathan Scale", "Water Elf Pearl", "Undine Coffee Table", "Scattered Bones", "Experimentation Chair", "Sleeping Monitor", "Water Temple Pedestal", "Ascending Kathool Tentacle", "Ashray Trench Pedestal" });
         Core.SetOptions();
 
         BuyAllMerge();

@@ -1,7 +1,7 @@
 /*
 name: Extra Credit Merge
 description: This bot will farm the items belonging to the selected mode for the Extra Credit Merge [2158] in /extracredit
-tags: extra, credit, merge, extracredit, ultra, fierce, outfit, super, cute, academic, attitude, curls, power, puffs, female, morph, becky, ben, beckys, bens, academy, jacket, jeans, autumn, days
+tags: back-to-school, seasonal, extra, credit, merge, extracredit, ultra, fierce, outfit, super, cute, academic, attitude, curls, power, puffs, female, morph, becky, ben, beckys, bens, academy, jacket, jeans, autumn, days, violet, puffed, coat, grape, chill, package, fiercer, chewy, cookie, melty, crunchy, gourmet
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -27,7 +27,7 @@ public class ExtraCreditMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Golden Apple", "Silver Ruler", "Plastic Toy", "Bronze Plaque" });
+        Core.BankingBlackList.AddRange(new[] { "Golden Apple", "Silver Ruler", "Plastic Toy", "Bronze Plaque", "Guava Sip", "Purple Paddlepop", "DogEar's Snack Serum", "Raw Cookie Dough Blade" });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -113,6 +113,24 @@ public class ExtraCreditMerge
                     Core.CancelRegisteredQuests();
                     break;
 
+                case "Guava Sip":
+                case "Purple Paddlepop":
+                    Core.FarmingLogger(req.Name, quant);
+                    Core.EquipClass(ClassType.Farm);
+                    Core.HuntMonster("extracredit", "Meanest Girl", req.Name, quant, false, false);
+                    break;
+
+                case "DogEar's Snack Serum":
+                    Core.FarmingLogger(req.Name, quant);
+                    Core.EquipClass(ClassType.Solo);
+                    Core.HuntMonster("extracredit", "Dogear", req.Name, quant, false, false);
+                    break;
+
+                case "Raw Cookie Dough Blade":
+                    Core.FarmingLogger(req.Name, quant);
+                    Core.GetMapItem(11646, quant, "oaklore");
+                    break;
+
             }
         }
     }
@@ -136,5 +154,12 @@ public class ExtraCreditMerge
         new Option<bool>("62185", "Autumn Days Outfit", "Mode: [select] only\nShould the bot buy \"Autumn Days Outfit\" ?", false),
         new Option<bool>("62186", "Autumn Days Hat", "Mode: [select] only\nShould the bot buy \"Autumn Days Hat\" ?", false),
         new Option<bool>("62187", "Autumn Days Hat and Locks", "Mode: [select] only\nShould the bot buy \"Autumn Days Hat and Locks\" ?", false),
+        new Option<bool>("79458", "Violet Puffed Coat", "Mode: [select] only\nShould the bot buy \"Violet Puffed Coat\" ?", false),
+        new Option<bool>("79461", "Grape Chill Package", "Mode: [select] only\nShould the bot buy \"Grape Chill Package\" ?", false),
+        new Option<bool>("71688", "Ultra Fiercer Outfit", "Mode: [select] only\nShould the bot buy \"Ultra Fiercer Outfit\" ?", false),
+        new Option<bool>("28001", "Chewy Cookie Sword", "Mode: [select] only\nShould the bot buy \"Chewy Cookie Sword\" ?", false),
+        new Option<bool>("28002", "Melty Cookie Sword", "Mode: [select] only\nShould the bot buy \"Melty Cookie Sword\" ?", false),
+        new Option<bool>("28003", "Crunchy Cookie Sword", "Mode: [select] only\nShould the bot buy \"Crunchy Cookie Sword\" ?", false),
+        new Option<bool>("28004", "Gourmet Cookie Sword", "Mode: [select] only\nShould the bot buy \"Gourmet Cookie Sword\" ?", false),
     };
 }
