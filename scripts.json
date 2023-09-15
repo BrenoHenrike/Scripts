@@ -17541,6 +17541,40 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/MergeShops/DragonCapitalMerge.cs"
   },
   {
+    "name": "DoomPirate Haul Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the DoomPirate Haul Merge [2330] in /doompirate",
+    "tags": [
+      "doompirate",
+      "haul",
+      "merge",
+      "doompirate",
+      "shadowscythe",
+      "admiral",
+      "empire",
+      "fleet",
+      "admirals",
+      "flintlock",
+      "flintlocks",
+      "doomtech",
+      "doomknight",
+      "shadowspace",
+      "crewman",
+      "crew",
+      "woman",
+      "aerated",
+      "cloak",
+      "serrated",
+      "cutlass",
+      "cutlasses",
+      "dark",
+      "crimson"
+    ],
+    "path": "Seasonal/TalkLikeaPirateDay/MergeShops/DoomPirateHaulMerge.cs",
+    "size": 5734,
+    "fileName": "DoomPirateHaulMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/MergeShops/DoomPirateHaulMerge.cs"
+  },
+  {
     "name": "Alutea Nursery Merge",
     "description": "This will farm and buy all the items from the Alutea Nursery Merge Shop.",
     "tags": [
