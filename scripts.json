@@ -3454,6 +3454,8 @@
     "name": "Extra Credit Merge",
     "description": "This bot will farm the items belonging to the selected mode for the Extra Credit Merge [2158] in /extracredit",
     "tags": [
+      "back-to-school",
+      "seasonal",
       "extra",
       "credit",
       "merge",
@@ -3478,10 +3480,22 @@
       "jacket",
       "jeans",
       "autumn",
-      "days"
+      "days",
+      "violet",
+      "puffed",
+      "coat",
+      "grape",
+      "chill",
+      "package",
+      "fiercer",
+      "chewy",
+      "cookie",
+      "melty",
+      "crunchy",
+      "gourmet"
     ],
     "path": "Seasonal/BackToSchool/ExtraCreditMerge.cs",
-    "size": 7414,
+    "size": 9339,
     "fileName": "ExtraCreditMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/BackToSchool/ExtraCreditMerge.cs"
   },
@@ -5278,6 +5292,22 @@
     "size": 3519,
     "fileName": "AluteaNursery.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/AluteaNursery.cs"
+  },
+  {
+    "name": "Doom Pirate",
+    "description": "This script will complete the storyline in /doompirate",
+    "tags": [
+      "doom",
+      "pirate",
+      "story",
+      "dusk",
+      "doompirate",
+      "gallaeon"
+    ],
+    "path": "Seasonal/TalkLikeaPirateDay/DoomPirateStory.cs",
+    "size": 931,
+    "fileName": "DoomPirateStory.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/DoomPirateStory.cs"
   },
   {
     "name": "Low Tide Story",
@@ -8312,7 +8342,7 @@
       "null"
     ],
     "path": "Other/Various/Potions.cs",
-    "size": 15013,
+    "size": 15434,
     "fileName": "Potions.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Various/Potions.cs"
   },
@@ -9951,10 +9981,11 @@
       "porthole",
       "window",
       "windows",
-      "slim"
+      "slim",
+      "deep"
     ],
     "path": "Other/MergeShops/SeaBaseHouseMerge.cs",
-    "size": 11943,
+    "size": 12547,
     "fileName": "SeaBaseHouseMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/SeaBaseHouseMerge.cs"
   },
@@ -10492,6 +10523,35 @@
     "size": 10107,
     "fileName": "3LittleWolvesHousesMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/3LittleWolvesHousesMerge.cs"
+  },
+  {
+    "name": "Kathool's Chest Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Kathools Chest Merge [2322] in /kathooldepths",
+    "tags": [
+      "kathool",
+      "chest",
+      "merge",
+      "kathooldepths",
+      "adeptus",
+      "kathooli",
+      "morph",
+      "sacrosanct",
+      "tendril",
+      "fins",
+      "barbarous",
+      "mindsmasher",
+      "mindsmashers",
+      "apex",
+      "leviathan",
+      "domination",
+      "spear",
+      "spears",
+      "thyllian"
+    ],
+    "path": "Other/MergeShops/KathoolsChestMerge.cs",
+    "size": 7236,
+    "fileName": "KathoolsChestMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/KathoolsChestMerge.cs"
   },
   {
     "name": "WarTrainingMerge",
@@ -17481,6 +17541,40 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/MergeShops/DragonCapitalMerge.cs"
   },
   {
+    "name": "DoomPirate Haul Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the DoomPirate Haul Merge [2330] in /doompirate",
+    "tags": [
+      "doompirate",
+      "haul",
+      "merge",
+      "doompirate",
+      "shadowscythe",
+      "admiral",
+      "empire",
+      "fleet",
+      "admirals",
+      "flintlock",
+      "flintlocks",
+      "doomtech",
+      "doomknight",
+      "shadowspace",
+      "crewman",
+      "crew",
+      "woman",
+      "aerated",
+      "cloak",
+      "serrated",
+      "cutlass",
+      "cutlasses",
+      "dark",
+      "crimson"
+    ],
+    "path": "Seasonal/TalkLikeaPirateDay/MergeShops/DoomPirateHaulMerge.cs",
+    "size": 5734,
+    "fileName": "DoomPirateHaulMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/MergeShops/DoomPirateHaulMerge.cs"
+  },
+  {
     "name": "Alutea Nursery Merge",
     "description": "This will farm and buy all the items from the Alutea Nursery Merge Shop.",
     "tags": [
@@ -17524,6 +17618,27 @@
     "size": 7043,
     "fileName": "LowTideMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/MergeShops/LowTideMerge.cs"
+  },
+  {
+    "name": "DoomPirate House Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the DoomPirate House Merge [2331] in /doompirate",
+    "tags": [
+      "doompirate",
+      "house",
+      "merge",
+      "doompirate",
+      "shadowscythe",
+      "pirate",
+      "warship",
+      "commander",
+      "gallaeon",
+      "guest",
+      "statue"
+    ],
+    "path": "Seasonal/TalkLikeaPirateDay/MergeShops/DoomPirateHouseMerge.cs",
+    "size": 3830,
+    "fileName": "DoomPirateHouseMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/MergeShops/DoomPirateHouseMerge.cs"
   },
   {
     "name": "Skull Punch Story",
@@ -19312,13 +19427,18 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Legion/DageTheEvilIsland/04EnvyMap.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "Infernal Arena",
+    "description": "This script will complete the quests in /infernalarena.",
     "tags": [
-      "null"
+      "na'al",
+      "naal",
+      "infernal",
+      "arena",
+      "story",
+      "dungeon"
     ],
     "path": "Story/QueenofMonsters/Extra/InfernalArena.cs",
-    "size": 4349,
+    "size": 4516,
     "fileName": "InfernalArena.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/QueenofMonsters/Extra/InfernalArena.cs"
   },
