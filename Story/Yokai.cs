@@ -33,6 +33,7 @@ public class YokaiQuests
         ShogunWar();
         ShinrinGrove();
         Shadowfortress();
+        YokaiPirate();
     }
 
 
@@ -91,7 +92,7 @@ public class YokaiQuests
             Core.HuntMonsterMapID("ShogunWar", 25, "Orochi Defeated");
             Core.EnsureComplete(6459);
         }
-        
+
         // Get the Medallions 6460
         Core.EquipClass(ClassType.Farm);
         Story.KillQuest(6460, "ShogunWar", "Shadow Samurai");
@@ -266,5 +267,53 @@ public class YokaiQuests
         }
         // Defeat Jaaku! 6494        
         Story.KillQuest(6494, "shadowfortress", "Jaaku");
+    }
+
+    public void YokaiPirate()
+    {
+        if (Core.isCompletedBefore(9388))
+            return;
+
+        Story.PreLoad(this);
+
+
+        Core.Logger("YokaiPirate Quests Done");
+
+        Core.EquipClass(ClassType.Farm);
+
+        // Wokou 9378
+        Story.MapItemQuest(9378, "yokaipirate", new[] { 12133, 12134, 12135, });
+
+        // Shanty Sha-N-Ti 9379
+        Story.KillQuest(9379, "yokaipirate", "Disguised Pirate");
+
+        // Yokai's Ark  9380
+        Story.MapItemQuest(9380, "yokaipirate", new[] { 12136, 01213700, });
+        Story.KillQuest(9380, "yokaipirate", "Serpent Warrior");
+
+        // Fashion Fathoms 9381
+        Story.KillQuest(9381, "yokaipirate", "Disguised Pirate");
+
+        // Hoo Wants a Cracker 9382
+        Story.KillQuest(9382, "yokaipirate", "Noble Owl");
+
+        // Papers Please 9383
+        Story.MapItemQuest(9383, "yokaipirate", 12138, 7);
+
+        // King and Coral Snakes 9384
+        Story.MapItemQuest(9384, "yokaipirate", 12139, 1);
+        Story.KillQuest(9384, "yokaipirate", new[] { "Disguised Pirate", "Serpent Warrior" });
+
+        // Horizon's Green Flash 9385
+        Story.KillQuest(9385, "yokaipirate", "Noble Owl");
+
+        // Highly Buoyant Metal Armor 9386
+        Story.KillQuest(9386, "yokaipirate", "Neverglades Knight");
+
+        // Salty Roots 9387
+        Story.KillQuest(9387, "yokaipirate", "Lord Brentan");
+
+        // Kabuki Rehearsal 9388
+        Story.KillQuest(9388, "yokaipirate", new[] { "Lord Brentan", "Neverglades Knight", "Disguised Pirate" });
     }
 }
