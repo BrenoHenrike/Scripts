@@ -72,7 +72,7 @@ public class FarmAllDailies
             Daily.CryptoToken();
             Core.Logger("Recommended Dailies finished!");
         }
-        if (Set == DailySet.All)
+        else if (Set == DailySet.All)
         {
             Core.Logger($"Doing selected set of dailies: All");
             LOO.GetLoO();
@@ -108,7 +108,6 @@ public class FarmAllDailies
             Daily.Friendships();
             Core.Logger("\"All\" Dailies finished!");
         }
-        else Core.Logger("How the fuck did u get here? this shouldnt be an option....", stopBot: true);
     }
 
     public enum DailySet
