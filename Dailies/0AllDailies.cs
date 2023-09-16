@@ -45,12 +45,12 @@ public class FarmAllDailies
     {
         Core.SetOptions();
 
-        DoAllDailies();
+        DoAllDailies(Bot.Config!.Get<DailySet>("Select Dailies Set"));
 
         Core.SetOptions(false);
     }
 
-    public void DoAllDailies(DailySet Set = new())
+    public void DoAllDailies(DailySet Set = DailySet.All)
     {
         if (Set == DailySet.Recommended)
         {
