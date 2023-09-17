@@ -41,8 +41,8 @@ public class TheDarkBox
         while (!Bot.ShouldExit && !Core.CheckInventory(Rewards, toInv: false))
         {
             if (Core.IsMember)
-                Core.HuntMonster("darkfortress", "Dark Elemental", "Dark Gem", isTemp: false);
-            else Core.HuntMonster("ruins", "Dark Elemental", "Dark Gem", isTemp: false);
+                Core.HuntMonster("ruins", "Dark Elemental", "Dark Gem", isTemp: false);
+            else Core.HuntMonster("darkfortress", "Dark Elemental", "Dark Gem", isTemp: false);
             Core.JumpWait();
             Core.ToBank(Rewards);
         }
