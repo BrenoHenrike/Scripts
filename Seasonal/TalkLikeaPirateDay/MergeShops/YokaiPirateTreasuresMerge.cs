@@ -40,7 +40,7 @@ public class YokaiPirateTreasuresMerge
 
     public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
-        if (Core.isSeasonalMapActive("yokaipirate"))
+        if (!Core.isSeasonalMapActive("yokaipirate"))
             Core.Logger("map is seasonal, and is not aviable atm", stopBot: true);
 
         YokaiQuests.YokaiPirate();

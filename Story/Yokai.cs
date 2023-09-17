@@ -271,7 +271,7 @@ public class YokaiQuests
 
     public void YokaiPirate()
     {
-        if (Core.isCompletedBefore(9388))
+        if (Core.isCompletedBefore(9388) || !Core.isSeasonalMapActive("yokaipirate"))
             return;
 
         Story.PreLoad(this);
