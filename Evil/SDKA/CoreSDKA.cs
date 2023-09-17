@@ -609,7 +609,8 @@ public class CoreSDKA
         Core.AddDrop("Dark Energy", "Dark Spirit Orb", "Corrupt Spirit Orb", "Ominous Aura", "Diabolical Aura", "Doom Aura");
 
         Core.EnsureAccept(quest);
-        Core.KillMonster("lycan", "r4", "Left", "*", "DoomKnight Armor Piece", 10, log: false);
+        Core.KillMonster("lycan", "r4", "Left", "Chaos Vampire Knight", "DoomKnight Armor Piece", 10, log: false);
+        Core.JumpWait();
         Core.EnsureComplete(quest);
     }
 }
