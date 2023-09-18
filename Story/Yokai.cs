@@ -276,20 +276,23 @@ public class YokaiQuests
 
         Story.PreLoad(this);
 
-
         Core.Logger("YokaiPirate Quests Done");
 
         Core.EquipClass(ClassType.Farm);
 
         // Wokou 9378
-        Story.MapItemQuest(9378, "yokaipirate", new[] { 12133, 12134, 12135, });
+        Story.MapItemQuest(9378, "yokaipirate", new[] { 12133, 12134, 12135});
 
         // Shanty Sha-N-Ti 9379
         Story.KillQuest(9379, "yokaipirate", "Disguised Pirate");
-
-        // Yokai's Ark  9380
-        Story.MapItemQuest(9380, "yokaipirate", new[] { 12136, 01213700, });
-        Story.KillQuest(9380, "yokaipirate", "Serpent Warrior");
+        
+        // Yokai's Ark 9380
+        if (!Story.QuestProgression(9380))
+        {
+            Core.EnsureAccept(9380);
+            Core.HuntMonster("yokaipirate", "Serpent Warrior", "Serpent Badge", 7);
+            Story.MapItemQuest(9380, "yokaipirate", new[] { 12136, 12137 });
+        }
 
         // Fashion Fathoms 9381
         Story.KillQuest(9381, "yokaipirate", "Disguised Pirate");
@@ -301,19 +304,25 @@ public class YokaiQuests
         Story.MapItemQuest(9383, "yokaipirate", 12138, 7);
 
         // King and Coral Snakes 9384
-        Story.MapItemQuest(9384, "yokaipirate", 12139, 1);
+        Story.MapItemQuest(9384, "yokaipirate", 12139);
         Story.KillQuest(9384, "yokaipirate", new[] { "Disguised Pirate", "Serpent Warrior" });
 
         // Horizon's Green Flash 9385
         Story.KillQuest(9385, "yokaipirate", "Noble Owl");
 
         // Highly Buoyant Metal Armor 9386
-        Story.KillQuest(9386, "yokaipirate", "Neverglades Knight");
+        Story.KillQuest(9386, "yokaipirate", "Neverglades  Knight");
 
         // Salty Roots 9387
         Story.KillQuest(9387, "yokaipirate", "Lord Brentan");
 
         // Kabuki Rehearsal 9388
-        Story.KillQuest(9388, "yokaipirate", new[] { "Lord Brentan", "Neverglades Knight", "Disguised Pirate" });
+        Story.KillQuest(9388, "yokaipirate", new[] { "Lord Brentan", "Neverglades  Knight", "Disguised Pirate" });
+
+
+
+
+
+
     }
 }
