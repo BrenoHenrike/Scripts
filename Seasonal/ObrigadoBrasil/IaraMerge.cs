@@ -69,7 +69,7 @@ public class IaraMerge
                     Core.RegisterQuests(8261);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("iara", "Iara");
+                        Core.HuntMonster("iara", "Iara", log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
