@@ -4260,6 +4260,56 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StarFestival/YokaiRiver.cs"
   },
   {
+    "name": "Trickster's Gifts Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Tricksters Gifts Merge [1910] in /mythperception",
+    "tags": [
+      "brasil",
+      "obrigado",
+      "seasonal",
+      "trickster",
+      "gifts",
+      "merge",
+      "mythperception",
+      "arara",
+      "azul",
+      "on",
+      "your",
+      "shoulder",
+      "picapau",
+      "amarelo",
+      "emiglin",
+      "cucas",
+      "apprentice",
+      "shadow",
+      "cuca",
+      "prismatic",
+      "",
+      "morph",
+      "pastel",
+      "privateer",
+      "privateers",
+      "scarf",
+      "eyepatch",
+      "bicorne",
+      "eyepatched",
+      "scarfed",
+      "cloak",
+      "cloaked",
+      "sheath",
+      "holster",
+      "pistol",
+      "pistols",
+      "hand",
+      "cannon",
+      "cutlass",
+      "pitiless"
+    ],
+    "path": "Seasonal/ObrigadoBrasil/TrickstersGiftsMerge.cs",
+    "size": 11040,
+    "fileName": "TrickstersGiftsMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/ObrigadoBrasil/TrickstersGiftsMerge.cs"
+  },
+  {
     "name": "Love Lockdown",
     "description": "This will complete the Love Lockdown story quest.",
     "tags": [
@@ -10037,17 +10087,6 @@
     "size": 5496,
     "fileName": "DradensMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/DradensMerge.cs"
-  },
-  {
-    "name": "TrickstersGiftsMerge",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Other/MergeShops/TrickstersGiftsMerge.cs",
-    "size": 10625,
-    "fileName": "TrickstersGiftsMerge.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/TrickstersGiftsMerge.cs"
   },
   {
     "name": "DreadForestMerge",
