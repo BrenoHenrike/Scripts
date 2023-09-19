@@ -13650,6 +13650,18 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/ArmyIceWing.cs"
   },
   {
+    "name": "script name here",
+    "description": "Farms [InsertItem]  using your army.",
+    "tags": [
+      "army",
+      "[item]"
+    ],
+    "path": "Army/ArmySeasonal/ArmyPoly.cs",
+    "size": 4185,
+    "fileName": "ArmyPoly.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmySeasonal/ArmyPoly.cs"
+  },
+  {
     "name": "Army Emblem Of Nulgath",
     "description": "uses an army to farm Emblem of Nulgath",
     "tags": [
