@@ -17725,6 +17725,36 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/MergeShops/NavalTopHatMerge.cs"
   },
   {
+    "name": "Barnacle's Bandanas Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Barnacles Bandanas Merge [984] in /pirates",
+    "tags": [
+      "tlapd",
+      "talk-like-a-pirate-day",
+      "seasonal",
+      "barnacle",
+      "bandanas",
+      "merge",
+      "pirates",
+      "chaos",
+      "bandana",
+      "undead",
+      "legion",
+      "rotting",
+      "naval",
+      "icy",
+      "galactic",
+      "doom",
+      "chrono",
+      "bright",
+      "blazing",
+      "toxic"
+    ],
+    "path": "Seasonal/TalkLikeaPirateDay/MergeShops/BarnaclesBandanasMerge.cs",
+    "size": 4602,
+    "fileName": "BarnaclesBandanasMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/MergeShops/BarnaclesBandanasMerge.cs"
+  },
+  {
     "name": "Yokai Pirate Treasures Merge",
     "description": "This bot will farm the items belonging to the selected mode for the Yokai Pirate Treasures Merge [2337] in /yokaipirate",
     "tags": [
