@@ -55,7 +55,7 @@ public class ArmyPoly
         ArmyBits("extinction", new[] { "r12" }, 39, new[] { "Starlit Journal Page 4 Scraps" }, 10);
         ArmyBits("starsinc", new[] { "r16" }, 25, new[] { "Map of the Celestial Seas" }, 1);
         ArmyBits("underlair", new[] { "r7" }, 17, new[] { "Coffer of the Stars" }, 1);
-        Core.EnsureCompleteChoose(7713);
+        Core.EnsureCompleteChoose(7713, new[] { "Polly Roger" });
     }
 
     public void ArmyBits(string map, string[] cell, int MonsterMapID, string[] items, int quant)
