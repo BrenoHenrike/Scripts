@@ -24,7 +24,7 @@ public class Iara
 
     public void StoryLine()
     {
-        if (Core.isCompletedBefore(8288) || !Core.isSeasonalMapActive("iara"))
+        if (Core.isCompletedBefore(8261) || !Core.isSeasonalMapActive("iara"))
             return;
 
         Story.PreLoad(this);
