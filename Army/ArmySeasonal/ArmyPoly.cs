@@ -47,7 +47,7 @@ public class ArmyPoly
     {
         Core.EnsureAccept(7713);
 
-        ArmyBits("frozenlair", new[] { "r3" }, 4, new[] { "Sapphire Orb" }, 26);
+        ArmyBits("frozenlair", new[] { "r3" }, 4, new[] { "Sapphire Orb" }, 5);
         ArmyBits("lostruinswar", new[] { "r7" }, 13, new[] { "Rumors of the Celestial Commander" }, 5);
         ArmyBits("iceplane", new[] { "r7", "r8", "r9" }, new[] { 8, 10, 12 }, new[] { "Starlit Journal Page 1 Scraps" }, 10);
         ArmyBits("ivoliss", new[] { "r11" }, 20, new[] { "Starlit Journal Page 2 Scraps" }, 10);
