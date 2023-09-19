@@ -29,7 +29,6 @@ public class ArmyPoly
         sArmy.player4,
         sArmy.player5,
         sArmy.player6,
-        sArmy.player7,
         sArmy.packetDelay,
         CoreBots.Instance.SkipOptions
     };
