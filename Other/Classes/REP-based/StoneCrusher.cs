@@ -34,7 +34,11 @@ public class StoneCrusher
     public void GetSC(bool rankUpClass = true)
     {
         if (Core.CheckInventory("StoneCrusher"))
+        {
+            if (rankUpClass)
+                Adv.RankUpClass("StoneCrusher");
             return;
+        }
 
         LOC.Kimberly();
         Oak.doall();
