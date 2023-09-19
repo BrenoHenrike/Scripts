@@ -5,8 +5,13 @@ tags: army, icestormarena, icestormunder, icewing, aggro
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Army/CoreArmyLite.cs
+//cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
+//cs_include Scripts/Story/Legion/DarkWarLegionandNation.cs
+//cs_include Scripts/Story/Legion/SevenCircles(War).cs
+//cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
 using Skua.Core.Models.Monsters;
@@ -20,6 +25,8 @@ public class ArmyLeveling
     public CoreFarms Farm = new();
     private CoreAdvanced Adv => new();
     public CoreArmyLite Army = new();
+    public SevenCircles SC = new();
+    private CoreSoW SoW = new();
 
     private static CoreBots sCore = new();
     private static CoreArmyLite sArmy = new();
@@ -45,7 +52,9 @@ public class ArmyLeveling
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
+        Bot.Lite.ReacceptQuest = true;
         Level();
+        Bot.Lite.ReacceptQuest = false;
         Core.SetOptions(false);
     }
 
@@ -110,6 +119,37 @@ public class ArmyLeveling
                 Army.waitForParty("whitemap");
                 break;
 
+            case Method.SevenCirclesWar:
+                SC.CirclesWar(true);
+                Core.EquipClass(ClassType.Farm);
+                Army.waitForParty("sevencircleswar");
+                Army.AggroMonIDs(4756, 4758, 4759, 4760);
+                Army.AggroMonStart("sevencircleswar");
+                Army.DivideOnCells("Enter", "r1", "r2", "r3");
+                Core.RegisterQuests(7979, 7980, 7981);
+                while (!Bot.ShouldExit && Bot.Player.Level < level)
+                    Bot.Combat.Attack("*");
+                Army.AggroMonStop(true);
+                Core.JumpWait();
+                Army.waitForParty("whitemap");
+                break;
+
+            case Method.Streamwar:
+                SoW.TimestreamWar();
+                Core.EquipClass(ClassType.Farm);
+                Core.AddDrop("Prismatic Seams");
+                Army.waitForParty("streamwar");
+                Army.AggroMonCells("r3a");
+                Army.AggroMonStart("streamwar");
+                Army.DivideOnCells("r3a");
+                Core.RegisterQuests(8814, 8815);
+                while (!Bot.ShouldExit && Bot.Player.Level < level)
+                    Bot.Combat.Attack("*");
+                Army.AggroMonStop(true);
+                Core.JumpWait();
+                Army.waitForParty("whitemap");
+                break;
+
                 //add more cases
 
                 /*
@@ -122,7 +162,9 @@ public class ArmyLeveling
                 Core.RegisterQuests(questIDs);
                 while (!Bot.ShouldExit && Bot.Player.Level < level)
                     Bot.Combat.Attack("*");
-                Army.waitForParty("map");
+                Army.AggroMonStop(true);
+                Core.JumpWait();
+                Army.waitForParty("whitemap");
                 break;
 
                 */
@@ -130,13 +172,17 @@ public class ArmyLeveling
         Army.AggroMonStop(true);
         Farm.ToggleBoost(BoostType.Experience, false);
         Core.CancelRegisteredQuests();
+        Core.JumpWait();
     }
 
     public enum Method
     {
         IceStormArena = 1,
         IceStormUnder = 2,
-        IceWing = 3,
+        Streamwar = 3,
+        SevenCirclesWar = 4,
+        IceWing = 5
+
     }
 
 }
