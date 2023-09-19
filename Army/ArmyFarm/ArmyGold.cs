@@ -63,7 +63,6 @@ public class ArmyGold
         Core.EquipClass(ClassType.Farm);
         //Adv.BestGear(GenericGearBoost.gold);
         Farm.ToggleBoost(BoostType.Gold);
-        Bot.Options.LagKiller = false;
         Bot.Lite.ReacceptQuest = true;
 
         if (((int)mapname == 0) || ((int)mapname == 1))
@@ -100,11 +99,12 @@ public class ArmyGold
             Army.DivideOnCells("r4", "r3", "r2", "r1");
         else Army.DivideOnCells("r4", "r3", "r2", "r1");
 
-        while (!Bot.ShouldExit)// && Bot.Player.Gold < 100000000)
+        while (!Bot.ShouldExit && Bot.Player.Gold < 100000000)
             Bot.Combat.Attack("*");
         Army.AggroMonStop(true);
         Farm.ToggleBoost(BoostType.Gold, false);
         Core.CancelRegisteredQuests();
+        Army.waitForParty("whitemap");
     }
 
     public void DWL()
@@ -116,16 +116,17 @@ public class ArmyGold
 
         Army.AggroMonIDs(5108, 5110, 5111, 5112);
         Army.AggroMonStart("darkwarlegion");
-        Army.DivideOnCells("r2", "r3", "r4", "f6", "r8" );
+        Army.DivideOnCells("r2", "r3", "r4", "f6", "r8");
 
 
         Core.RegisterQuests(8584, 8585, 8586, 8587); //Nation Badges 8584, Mega Nation Badges 8585, A Nation Defeated 8586, ManSlayer? More Like ManSLAIN 8587
         // Army.SmartAggroMonStart("darkwarlegion", "Bloodfiend", "Dreadfiend", "Infernal Fiend", "Manslayer Fiend", "Void Fiend");
-        while (!Bot.ShouldExit)// && Bot.Player.Gold < 100000000)
+        while (!Bot.ShouldExit && Bot.Player.Gold < 100000000)
             Bot.Combat.Attack("*");
         Army.AggroMonStop(true);
         Farm.ToggleBoost(BoostType.Gold, false);
         Core.CancelRegisteredQuests();
+        Army.waitForParty("whitemap");
     }
 
     public void DWN()
@@ -142,11 +143,12 @@ public class ArmyGold
         Army.DivideOnCells("Enter", "r2", "r3", "r4", "r5", "r6", "r8");
 
         // Army.SmartAggroMonStart("darkwarnation", "High Legion Inquisitor", "Legion Doomknight", "Legion Dread Knight");
-        while (!Bot.ShouldExit)// && Bot.Player.Gold < 100000000)
+        while (!Bot.ShouldExit && Bot.Player.Gold < 100000000)
             Bot.Combat.Attack("*");
         Army.AggroMonStop(true);
         Farm.ToggleBoost(BoostType.Gold, false);
         Core.CancelRegisteredQuests();
+        Army.waitForParty("whitemap");
     }
 
     public void SCW()
@@ -164,11 +166,12 @@ public class ArmyGold
         Army.DivideOnCells("Enter", "r1", "r2", "r3");
 
         // Army.SmartAggroMonStart("sevencircleswar", "Wrath Guard", "Heresy Guard", "Violence Guard", "Treachery Guard");
-        while (!Bot.ShouldExit)// && Bot.Player.Gold < 100000000)
+        while (!Bot.ShouldExit && Bot.Player.Gold < 100000000)
             Bot.Combat.Attack("*");
         Army.AggroMonStop(true);
         Farm.ToggleBoost(BoostType.Gold, false);
         Core.CancelRegisteredQuests();
+        Army.waitForParty("whitemap");
     }
 
     public void StreamWar()
@@ -185,13 +188,14 @@ public class ArmyGold
         Army.DivideOnCells("r3a");
 
         Core.RegisterQuests(8814, 8815);
-        while (!Bot.ShouldExit)
+        while (!Bot.ShouldExit && Bot.Player.Gold < 100000000)
             Bot.Combat.Attack("*");
         Army.AggroMonStop(true);
         Farm.ToggleBoost(BoostType.Gold, false);
         Core.CancelRegisteredQuests();
 
         Core.ToBank("Prismatic Seams");
+        Army.waitForParty("whitemap");
     }
 
     public enum Method
