@@ -69,18 +69,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AllSeasonal.cs"
   },
   {
-    "name": "Iara Story",
-    "description": "This will finish the Iara seasonal storyline.",
-    "tags": [
-      "iara",
-      "seasonal"
-    ],
-    "path": "Seasonal/IaraStory.cs",
-    "size": 1063,
-    "fileName": "IaraStory.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/IaraStory.cs"
-  },
-  {
     "name": "null",
     "description": "null",
     "tags": [
@@ -4258,6 +4246,44 @@
     "size": 1528,
     "fileName": "YokaiRiver.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StarFestival/YokaiRiver.cs"
+  },
+  {
+    "name": "Iara Story",
+    "description": "This will finish the Iara seasonal storyline.",
+    "tags": [
+      "iara",
+      "story",
+      "seasonal"
+    ],
+    "path": "Seasonal/ObrigadoBrasil/IaraStory.cs",
+    "size": 1070,
+    "fileName": "IaraStory.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/ObrigadoBrasil/IaraStory.cs"
+  },
+  {
+    "name": "Iara Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Iara Merge [2047] in /iara",
+    "tags": [
+      "iara",
+      "merge",
+      "iara",
+      "iaras",
+      "morph",
+      "symbol",
+      "bubbles",
+      "harp",
+      "acolyte",
+      "acolytes",
+      "flowered",
+      "coral",
+      "brush",
+      "water",
+      "orb"
+    ],
+    "path": "Seasonal/ObrigadoBrasil/IaraMerge.cs",
+    "size": 5417,
+    "fileName": "IaraMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/ObrigadoBrasil/IaraMerge.cs"
   },
   {
     "name": "Trickster's Gifts Merge",
@@ -13586,7 +13612,7 @@
       "aggro"
     ],
     "path": "Army/ArmyFarm/ArmyLeveling.cs",
-    "size": 4763,
+    "size": 6648,
     "fileName": "ArmyLeveling.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/ArmyLeveling.cs"
   },
@@ -13615,7 +13641,7 @@
       "seven circles war"
     ],
     "path": "Army/ArmyFarm/ArmyGold.cs",
-    "size": 6635,
+    "size": 6809,
     "fileName": "ArmyGold.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/ArmyGold.cs"
   },
