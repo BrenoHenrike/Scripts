@@ -5340,6 +5340,24 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/MayThe4th/TwiggusGearMerge.cs"
   },
   {
+    "name": "Midnight War",
+    "description": "This script will complete the storyline in /midnightcrown and /midnightwar",
+    "tags": [
+      "midnight-war",
+      "midnight-crown",
+      "flintfang",
+      "bonnie blood",
+      "rustclaw",
+      "tlapd",
+      "talk-like-a-pirate-day",
+      "seasonal"
+    ],
+    "path": "Seasonal/TalkLikeaPirateDay/MidnightWarStory.cs",
+    "size": 2454,
+    "fileName": "MidnightWarStory.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/MidnightWarStory.cs"
+  },
+  {
     "name": "Alutea Nursery",
     "description": "This will finish the Alutea Nursery Quest.",
     "tags": [
