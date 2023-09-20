@@ -28,7 +28,7 @@ tags: null
 //cs_include Scripts/Other/Classes/REP-based/StoneCrusher.cs
 //cs_include Scripts/Other/Classes/ScarletSorceress.cs
 //cs_include Scripts/Other/Classes/BloodSorceress.cs
-//cs_include Scripts/Other/FreeBoosts/FreeBoostsQuest(10mns).cs
+//cs_include Scripts/Other/FreeBoosts/FreeBoostsQuest(10mns)[Rng].cs
 //cs_include Scripts/Other/Weapons/BurningBlade.cs
 //cs_include Scripts/Other/Weapons/DualChainSawKatanas.cs
 //cs_include Scripts/Other/Weapons/EnchantedVictoryBladeWeapons.cs
