@@ -24,7 +24,7 @@ public class Pirates
 
     public void StoryLine()
     {
-        if (Core.isCompletedBefore(1550) && !Core.IsMember)
+        if (Core.isCompletedBefore(1541) || !Core.IsMember)
             return;
 
         Story.PreLoad(this);
@@ -53,9 +53,5 @@ public class Pirates
         //Blow Stuff Up! 1541
         Story.MapItemQuest(1541, "pirates", 772, 10);
         Story.KillQuest(1541, "pirates", "Undead Pirate");
-
-        //Pack Of Spices 1550
-        Story.KillQuest(1550, "pirates", "Capt. Beard");
-
     }
 }
