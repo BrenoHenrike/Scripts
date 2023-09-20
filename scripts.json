@@ -2363,7 +2363,7 @@
       "member"
     ],
     "path": "Story/Pirates[Member].cs",
-    "size": 1534,
+    "size": 1445,
     "fileName": "Pirates[Member].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Pirates[Member].cs"
   },
@@ -17843,6 +17843,42 @@
     "size": 4602,
     "fileName": "BarnaclesBandanasMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/MergeShops/BarnaclesBandanasMerge.cs"
+  },
+  {
+    "name": "Rakham's Pirate Merge [Member]",
+    "description": "This bot will farm the items belonging to the selected mode for the Rakhams Pirate Merge [350] in /pirates",
+    "tags": [
+      "talk-like-a-pirate-day",
+      "seasonal",
+      "tlapd",
+      "rakham",
+      "pirate",
+      "merge",
+      "pirates",
+      "blunderbuss",
+      "boom",
+      "renegade",
+      "looter",
+      "handcannon",
+      "high",
+      "seas",
+      "captains",
+      "cutlass",
+      "bandana",
+      "looting",
+      "tricorn",
+      "terror",
+      "mermaids",
+      "hairpoon",
+      "calais",
+      "looters",
+      "raiment",
+      "bladed"
+    ],
+    "path": "Seasonal/TalkLikeaPirateDay/MergeShops/RakhamsPirateMerge.cs",
+    "size": 5866,
+    "fileName": "RakhamsPirateMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/MergeShops/RakhamsPirateMerge.cs"
   },
   {
     "name": "Yokai Pirate Treasures Merge",
