@@ -5,6 +5,7 @@ tags: null
 */
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Factions;
 using Skua.Core.Models.Items;
 using Skua.Core.Models.Monsters;
 using Skua.Core.Models.Quests;
@@ -2835,15 +2836,23 @@ public class CoreFarms
         }
     }
 
-    public void GetBoost(int itemID, string boostName, int quant, int quest, bool doOnce = false)
+    public void GetBoost(int itemID, string boostName, int BoostQuant, int quest, bool doOnce = false)
     {
         ItemBase? boostItem = Core.EnsureLoad(quest)?.Rewards.Find(x => x.Name == boostName);
 
-        if (boostItem != null && Core.CheckInventory(boostItem?.Name, quant) && !doOnce) return;
+        if (boostItem != null && Core.CheckInventory(boostItem?.Name, BoostQuant) && !doOnce) return;
 
-        FishingREP(2, false);
+        if (FactionRank("Fishing") < 2)
+            FishingREP(2, false);
+        else
+        {
+            Core.Logger("Pre-Ranking XP(This is Required)");
+            Core.EnsureAccept(1682);
+            Core.KillMonster("greenguardwest", "West4", "Right", "Slime", "Faith's Fi'shtick", 1, log: false);
+            Core.EnsureComplete(1682);
+        }
 
-        Core.FarmingLogger(boostName, quant); // Use boostName directly
+        Core.FarmingLogger(boostName, BoostQuant); // Use boostName directly
         Core.AddDrop("Fishing Dynamite", boostItem?.Name ?? "DefaultItemName");
         Core.EquipClass(ClassType.Farm);
 
@@ -2858,16 +2867,18 @@ public class CoreFarms
             Core.EnsureComplete(1615);
         }
 
-        while (!Bot.ShouldExit && (boostItem == null || (boostItem != null && !Core.CheckInventory(boostItem?.Name, quant)) || doOnce))
+        while (!Bot.ShouldExit && (boostItem == null || (boostItem != null && !Core.CheckInventory(boostItem?.Name, BoostQuant)) || doOnce))
         {
             Core.EnsureAccept(quest);
-            GetFish(itemID, quant, quest);
+
+            GetFish(itemID, quest == 1614 ? 30 : 5, quest);
 
             if (quest == 1614)
                 Core.HuntMonster("swordhaven", "Slime", "Slime Sauce");
             else if (quest == 1615)
                 Core.HuntMonster("Greenguardwest", "Frogzard", "Greenguard Seal");
             Bot.Wait.ForPickup(quest == 1614 ? "Slime Sauce" : "Greenguard Seal");
+
             Core.EnsureComplete(quest);
         }
 
@@ -2890,8 +2901,10 @@ public class CoreFarms
 
             while (!Bot.ShouldExit && Core.CheckInventory("Fishing Dynamite") && !Core.CheckInventory(itemID, quant))
             {
+                int CurrentDynamiteQuant = Bot.Inventory.GetQuantity("Fishing Dynamite");
                 Bot.Send.Packet($"%xt%zm%FishCast%1%Dynamite%30%");
                 Bot.Sleep(3500);
+                Bot.Wait.ForTrue(() => CurrentDynamiteQuant == CurrentDynamiteQuant - 1, 20);
                 Core.SendPackets("%xt%zm%getFish%1%false");
                 Core.Logger($"Dynamite: {Bot.Inventory.GetQuantity("Fishing Dynamite")} Fish: {Bot.TempInv.GetQuantity(itemID)}/{quant}");
             }
