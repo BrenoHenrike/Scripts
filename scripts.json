@@ -981,19 +981,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/EternalDragonDrops.cs"
   },
   {
-    "name": "Second First Mate",
-    "description": "Farms \"All Drops\" From Quest",
-    "tags": [
-      "a second first mate",
-      "set",
-      "pirate"
-    ],
-    "path": "Other/SecondFirstMate.cs",
-    "size": 1408,
-    "fileName": "SecondFirstMate.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/SecondFirstMate.cs"
-  },
-  {
     "name": "Sunken Treasure",
     "description": "Farms \"All Drops\" From Quest",
     "tags": [
@@ -5400,6 +5387,22 @@
     "size": 2312,
     "fileName": "LowTideStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/LowTideStory.cs"
+  },
+  {
+    "name": "Second First Mate",
+    "description": "Farms \"All Drops\" From Quest",
+    "tags": [
+      "a second first mate",
+      "set",
+      "pirate",
+      "tlapd",
+      "seasonal",
+      "talk-like-a-pirate-day"
+    ],
+    "path": "Seasonal/TalkLikeaPirateDay/SecondFirstMateQuestRewards.cs",
+    "size": 1741,
+    "fileName": "SecondFirstMateQuestRewards.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/SecondFirstMateQuestRewards.cs"
   },
   {
     "name": "Cetoleon War Story",
