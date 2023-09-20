@@ -981,18 +981,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/EternalDragonDrops.cs"
   },
   {
-    "name": "Sunken Treasure",
-    "description": "Farms \"All Drops\" From Quest",
-    "tags": [
-      "sunken treasure",
-      "drops"
-    ],
-    "path": "Other/SunkenTreasure.cs",
-    "size": 1676,
-    "fileName": "SunkenTreasure.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/SunkenTreasure.cs"
-  },
-  {
     "name": "corrupt draconic paragon",
     "description": "farms the corrupt draconic paragon set from Quest",
     "tags": [
@@ -5464,6 +5452,23 @@
     "size": 1979,
     "fileName": "HeartOfTheSeaStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/HeartOfTheSeaStory.cs"
+  },
+  {
+    "name": "Sunken Treasure Quest Rewards",
+    "description": "Farms \"All Drops\" From Quest",
+    "tags": [
+      "sunken treasure",
+      "drops",
+      "set",
+      "pirate",
+      "tlapd",
+      "talk-like-a-pirate-day",
+      "seasonal"
+    ],
+    "path": "Seasonal/TalkLikeaPirateDay/SunkenTreasureQuestRewards.cs",
+    "size": 1862,
+    "fileName": "SunkenTreasureQuestRewards.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/SunkenTreasureQuestRewards.cs"
   },
   {
     "name": "Dragon Capital Story",
