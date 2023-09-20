@@ -596,7 +596,7 @@ public class CoreNation
                     while (!Bot.ShouldExit && !Core.CheckInventory(drop.Name, drop.MaxStack))
                     {
                         Core.EquipClass(ClassType.Solo);
-                        Core.HuntMonster("elemental", "Mana Golem", "Mana Energy for Nulgath", isTemp: false, log: false);
+                        Core.HuntMonster("elemental", "Mana Golem", "Mana Energy for Nulgath", 13, isTemp: false, log: false);
                         Core.EquipClass(ClassType.Farm);
                         Core.HuntMonster("elemental", "Mana Falcon", "Charged Mana Energy for Nulgath", 5, log: false);
                     }
@@ -612,7 +612,7 @@ public class CoreNation
                 while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
                 {
                     Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster("elemental", "Mana Golem", "Mana Energy for Nulgath", isTemp: false, log: false);
+                    Core.HuntMonster("elemental", "Mana Golem", "Mana Energy for Nulgath", 13, isTemp: false, log: false);
                     Core.EquipClass(ClassType.Farm);
                     Core.HuntMonster("elemental", "Mana Falcon", "Charged Mana Energy for Nulgath", 5, log: false);
                     Bot.Wait.ForDrop(item, 40);
