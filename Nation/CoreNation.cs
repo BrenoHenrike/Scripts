@@ -590,17 +590,21 @@ public class CoreNation
                         continue;
 
                     Core.FarmingLogger(Drop, drop.MaxStack);
-                    if (Bot.Quests.IsAvailable(2568))
-                        Core.RegisterQuests(2568);
-                    else Core.RegisterQuests(2566);
                     while (!Bot.ShouldExit && !Core.CheckInventory(drop.Name, drop.MaxStack))
                     {
+                        if (Bot.Quests.IsAvailable(2568))
+                            Core.EnsureAccept(2568);
+                        else Core.EnsureAccept(2566);
+
                         Core.EquipClass(ClassType.Solo);
                         Core.HuntMonster("elemental", "Mana Golem", "Mana Energy for Nulgath", 13, isTemp: false, log: false);
                         Core.EquipClass(ClassType.Farm);
                         Core.HuntMonster("elemental", "Mana Falcon", "Charged Mana Energy for Nulgath", 5, log: false);
+
+                        if (Bot.Quests.IsAvailable(2568))
+                            Core.EnsureCompleteMulti(2568);
+                        else Core.EnsureCompleteMulti(2566);
                     }
-                    Core.CancelRegisteredQuests();
                 }
             }
             else
@@ -611,13 +615,22 @@ public class CoreNation
                 else Core.RegisterQuests(2566);
                 while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
                 {
+
+                    if (Bot.Quests.IsAvailable(2568))
+                        Core.EnsureAccept(2568);
+                    else Core.EnsureAccept(2566);
+
                     Core.EquipClass(ClassType.Solo);
                     Core.HuntMonster("elemental", "Mana Golem", "Mana Energy for Nulgath", 13, isTemp: false, log: false);
                     Core.EquipClass(ClassType.Farm);
                     Core.HuntMonster("elemental", "Mana Falcon", "Charged Mana Energy for Nulgath", 5, log: false);
                     Bot.Wait.ForDrop(item, 40);
+
+
+                    if (Bot.Quests.IsAvailable(2568))
+                        Core.EnsureCompleteMulti(2568);
+                    else Core.EnsureCompleteMulti(2566);
                 }
-                Core.CancelRegisteredQuests();
             }
         }
     }
