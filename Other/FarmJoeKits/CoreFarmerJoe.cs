@@ -22,7 +22,7 @@ tags: null
 //cs_include Scripts/Good/GearOfAwe/CapeOfAwe.cs
 //cs_include Scripts/Good/Paladin.cs
 //cs_include Scripts/Nation/AssistingCragAndBamboozle[Mem].cs
-//cs_include Scripts/Other/FreeBoostsQuest(10mns).cs
+//cs_include Scripts/Other/FreeBoosts/FreeBoostsQuest(10mns).cs
 //cs_include Scripts/Enhancement/InventoryEnhancer.cs
 //cs_include Scripts/Nation/Various/ArchfiendDeathLord.cs
 //cs_include Scripts/Story/Nation/Originul.cs
