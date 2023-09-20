@@ -1271,8 +1271,9 @@ public class CoreBots
 
             if (!TrashItem.Coins)
             {
-                Logger($"Trashed: \"{TrashItem}\" x{TrashItem.Quantity}");
                 Bot.Send.Packet($"%xt%zm%removeItem%{Bot.Map.RoomID}%{TrashItem.ID}%{Bot.Player.ID}%{TrashItem.Quantity}%");
+                Bot.Sleep(ActionDelay);
+                Logger($"Trashed: {TrashItem.Name} x{TrashItem.Quantity}");
             }
             else ToBank(item);
         }
