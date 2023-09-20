@@ -5417,6 +5417,22 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/CetoleonWarStory.cs"
   },
   {
+    "name": "Pirate Class",
+    "description": "This script will get the Pirate Class.",
+    "tags": [
+      "merge-shop",
+      "pirate",
+      "class",
+      "tlapd",
+      "talk-like-a-pirate-day",
+      "seasonal"
+    ],
+    "path": "Seasonal/TalkLikeaPirateDay/PirateClass.cs",
+    "size": 1207,
+    "fileName": "PirateClass.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/PirateClass.cs"
+  },
+  {
     "name": "Avast Badge (Member)",
     "description": "This will finish the quest line of Avast and get Avast Badge.",
     "tags": [
@@ -5500,7 +5516,7 @@
       "class"
     ],
     "path": "Seasonal/TalkLikeaPirateDay/AlphaPirate.cs",
-    "size": 1243,
+    "size": 1206,
     "fileName": "AlphaPirate.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/AlphaPirate.cs"
   },
