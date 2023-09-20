@@ -627,9 +627,10 @@ public class CoreNation
                     Core.EquipClass(ClassType.Solo);
                     Core.HuntMonster("elemental", "Mana Golem", "Mana Energy for Nulgath", 13, isTemp: false, log: false);
                     Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(drop.Name, drop.MaxStack) && Core.CheckInventory("Mana Energy for Nulgath"))
+                    while (!Bot.ShouldExit && !Core.CheckInventory(item, quant) && Core.CheckInventory("Mana Energy for Nulgath"))
                     {
                         Core.HuntMonster("elemental", "Mana Falcon", "Charged Mana Energy for Nulgath", 5, log: false);
+                        Bot.Wait.ForDrop(item, 40);
 
                         if (Bot.Quests.IsAvailable(2568))
                             Core.EnsureCompleteMulti(2568);
