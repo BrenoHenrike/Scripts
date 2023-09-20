@@ -45,9 +45,9 @@ public class FreeBoosts
 
         while (!Bot.ShouldExit)
         {
-            Core.KillMonster("nibbleon", "r10", "Left", "Dark Makai", "Moglinberries", 3, isTemp: false, log: false);
-            Core.KillMonster("bloodtusk", "r4", "Left", "Trollola Plant", "Trollola Nectar", 2, isTemp: false, log: false);
-            Core.KillMonster("mudluk", "r3", "Left", "*", "Nimblestem", isTemp: false, log: false);
+            Core.KillMonster("nibbleon-100000", "r10", "Left", "Dark Makai", "Moglinberries", 3, isTemp: false, log: false);
+            Core.KillMonster("bloodtusk-100000", "r4", "Left", "Trollola Plant", "Trollola Nectar", 2, isTemp: false, log: false);
+            Core.KillMonster("mudluk-100000", "r3", "Left", "*", "Nimblestem", isTemp: false, log: false);
 
             bool allQuantitiesMet = Core.CheckInventory("GOLD Boost! (10 min)", GoldBoostQuant) &&
                                     Core.CheckInventory("CLASS Boost! (10 min)", ClassBoostQuant) &&

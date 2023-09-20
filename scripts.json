@@ -6,7 +6,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 180247,
+    "size": 180288,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 104724,
+    "size": 109313,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -50,7 +50,7 @@
       "null"
     ],
     "path": "CoreAdvanced.cs",
-    "size": 112562,
+    "size": 112568,
     "fileName": "CoreAdvanced.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreAdvanced.cs"
   },
@@ -796,22 +796,6 @@
     "size": 1916,
     "fileName": "LycanShamanSet.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/LycanShamanSet.cs"
-  },
-  {
-    "name": "Free Boosts [10mns]",
-    "description": "Farms Free Boosts from \"Reagents for Zifwin\" (cp/gold/rep)",
-    "tags": [
-      "reagents for zifwin",
-      "free",
-      "boost",
-      "class points",
-      "reputation",
-      "gold"
-    ],
-    "path": "Other/FreeBoostsQuest(10mns).cs",
-    "size": 3606,
-    "fileName": "FreeBoostsQuest(10mns).cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FreeBoostsQuest(10mns).cs"
   },
   {
     "name": "Astravian Oracle Set",
@@ -7738,6 +7722,44 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/DragonOfTime.cs"
   },
   {
+    "name": "Free Boosts [10mns]",
+    "description": "Farms Free Boosts from \"Reagents for Zifwin\" (cp/gold/rep)",
+    "tags": [
+      "reagents for zifwin",
+      "free",
+      "boost",
+      "class points",
+      "reputation",
+      "gold"
+    ],
+    "path": "Other/FreeBoosts/FreeBoostsQuest(10mns)[Rng].cs",
+    "size": 3627,
+    "fileName": "FreeBoostsQuest(10mns)[Rng].cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FreeBoosts/FreeBoostsQuest(10mns)[Rng].cs"
+  },
+  {
+    "name": "null",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Other/FreeBoosts/RepBoost.cs",
+    "size": 617,
+    "fileName": "RepBoost.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FreeBoosts/RepBoost.cs"
+  },
+  {
+    "name": "null",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Other/FreeBoosts/XPBoost.cs",
+    "size": 599,
+    "fileName": "XPBoost.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FreeBoosts/XPBoost.cs"
+  },
+  {
     "name": "Fiend of Light",
     "description": "This script will obtain the items from Fiend of Light set that you choose.",
     "tags": [
@@ -7836,7 +7858,7 @@
       "null"
     ],
     "path": "Other/FarmJoeKits/FarmerJoeEndGame[WIP].cs",
-    "size": 4512,
+    "size": 4528,
     "fileName": "FarmerJoeEndGame[WIP].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/FarmerJoeEndGame[WIP].cs"
   },
@@ -7847,7 +7869,7 @@
       "null"
     ],
     "path": "Other/FarmJoeKits/FarmerJoeOutfitandPet.cs",
-    "size": 4508,
+    "size": 4524,
     "fileName": "FarmerJoeOutfitandPet.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/FarmerJoeOutfitandPet.cs"
   },
@@ -7872,7 +7894,7 @@
       "null"
     ],
     "path": "Other/FarmJoeKits/FarmerJoeKit0DoAll.cs",
-    "size": 4397,
+    "size": 4413,
     "fileName": "FarmerJoeKit0DoAll.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/FarmerJoeKit0DoAll.cs"
   },
@@ -7883,7 +7905,7 @@
       "null"
     ],
     "path": "Other/FarmJoeKits/CoreFarmerJoe.cs",
-    "size": 34397,
+    "size": 34413,
     "fileName": "CoreFarmerJoe.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/CoreFarmerJoe.cs"
   },
@@ -7894,7 +7916,7 @@
       "null"
     ],
     "path": "Other/FarmJoeKits/FarmerJoeKitClasses[WIP].cs",
-    "size": 5204,
+    "size": 5220,
     "fileName": "FarmerJoeKitClasses[WIP].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/FarmerJoeKitClasses[WIP].cs"
   },
@@ -13650,6 +13672,18 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/ArmyIceWing.cs"
   },
   {
+    "name": "script name here",
+    "description": "Farms [InsertItem]  using your army.",
+    "tags": [
+      "army",
+      "[item]"
+    ],
+    "path": "Army/ArmySeasonal/ArmyPoly.cs",
+    "size": 4186,
+    "fileName": "ArmyPoly.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmySeasonal/ArmyPoly.cs"
+  },
+  {
     "name": "Army Emblem Of Nulgath",
     "description": "uses an army to farm Emblem of Nulgath",
     "tags": [
@@ -13694,7 +13728,7 @@
       "voucher item totem of nulgath"
     ],
     "path": "Army/ArmyNulgath/ArmyVoucherItemofNulgath.cs",
-    "size": 4791,
+    "size": 4388,
     "fileName": "ArmyVoucherItemofNulgath.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyNulgath/ArmyVoucherItemofNulgath.cs"
   },
@@ -17567,15 +17601,37 @@
   },
   {
     "name": "Blazebeard Merge",
-    "description": "This will farm the Blazebeard Merge items.",
+    "description": "This bot will farm the items belonging to the selected mode for the Blazebeard Merge [108] in /blazebeard",
     "tags": [
-      "farm",
+      "tlapd",
+      "talk-like-a-pirate-day",
+      "seasonal",
       "blazebeard",
       "merge",
-      "pirate"
+      "blazebeard",
+      "crimson",
+      "pirate",
+      "mage",
+      "tricorn",
+      "weapons",
+      "side",
+      "cutlass",
+      "skull",
+      "harpoon",
+      "flintlock",
+      "spellbook",
+      "cutlasses",
+      "alpha",
+      "ferret",
+      "golden",
+      "explorer",
+      "pistol",
+      "great",
+      "pistols",
+      "platinum"
     ],
     "path": "Seasonal/TalkLikeaPirateDay/MergeShops/BlazeBeardMerge.cs",
-    "size": 9516,
+    "size": 9787,
     "fileName": "BlazeBeardMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/MergeShops/BlazeBeardMerge.cs"
   },
@@ -18424,7 +18480,7 @@
       "null"
     ],
     "path": "Other/Classes/REP-based/StoneCrusher.cs",
-    "size": 1164,
+    "size": 1262,
     "fileName": "StoneCrusher.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/REP-based/StoneCrusher.cs"
   },

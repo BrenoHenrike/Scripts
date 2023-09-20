@@ -456,54 +456,53 @@ public class CoreAdvanced
     /// Ranks up your class
     /// </summary>
     /// <param name="ClassName">Name of the class you want it to rank up</param>
-    public void RankUpClass(string ClassName, bool GearRestore = true)
+    public void RankUpClass(string className, bool gearRestore = true)
     {
-        Bot.Wait.ForPickup(ClassName, 20);
+        InventoryItem? itemInv = Bot.Inventory.Items.Find(i => i.Name.Equals(className, StringComparison.OrdinalIgnoreCase) && i.Category == ItemCategory.Class);
+        Bot.Wait.ForPickup(className, 20);
 
-        if (!Core.CheckInventory(ClassName))
-            return;
-        InventoryItem? itemInv = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == ClassName.ToLower().Trim() && i.Category == ItemCategory.Class);
-        if (itemInv == null && !Bot.Inventory.TryGetItem("ClassName", out itemInv))
+        if (itemInv == null)
         {
-            Core.Logger($"Cant level up \"{ClassName}\" because you do not own it.", messageBox: true);
+            Core.Logger($"Can't level up \"{className}\" because you do not own it.", messageBox: true);
             return;
         }
-        if (itemInv == null)
-            return;
 
         if (itemInv.Quantity == 302500)
         {
-            Core.Logger($"\"{itemInv.Name}\" is already Rank 10");
-            return;
+            Core.Logger($"\"{className}\" is already Rank 10");
         }
-        if (itemInv.Name.Equals("Hobo Highlord") || itemInv.Name.Equals("No Class") || itemInv.Name.Equals("Obsidian No Class"))
+        else if (itemInv.Name.Equals("Hobo Highlord") || itemInv.Name.Equals("No Class") || itemInv.Name.Equals("Obsidian No Class"))
         {
             Core.Logger($"\"{itemInv.Name}\" cannot be leveled past Rank 1");
-            return;
         }
-
-        if (GearRestore)
-            GearStore();
-
-        SmartEnhance(ClassName);
-        if (Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == ClassName.ToLower().Trim() && i.Category == ItemCategory.Class)?.EnhancementLevel == 0)
+        else
         {
-            Core.Logger($"Cant level up \"{ClassName}\" because it's not enhanced and AutoEnhance is turned off");
-            return;
+            if (gearRestore)
+                GearStore();
+
+            SmartEnhance(className);
+            var classItem = Bot.Inventory.Items.Find(i => i.Name.Equals(className, StringComparison.OrdinalIgnoreCase) && i.Category == ItemCategory.Class);
+            if (classItem?.EnhancementLevel == 0)
+            {
+                Core.Logger($"Can't level up \"{className}\" because it's not enhanced, and AutoEnhance is turned off");
+            }
+            else
+            {
+                string cpBoost = BestGear(GenericGearBoost.cp, false);
+                EnhanceItem(cpBoost, CurrentClassEnh(), CurrentCapeSpecial(), CurrentHelmSpecial(), CurrentWeaponSpecial());
+                Core.Equip(cpBoost);
+                Farm.ToggleBoost(BoostType.Class);
+
+                Farm.IcestormArena(Bot.Player.Level, true);
+                Core.Logger($"\"{itemInv.Name}\" is now Rank 10");
+
+                Farm.ToggleBoost(BoostType.Class, false);
+                if (gearRestore)
+                    GearStore(true);
+            }
         }
-
-        string CPBoost = BestGear(GenericGearBoost.cp, false);
-        EnhanceItem(CPBoost, CurrentClassEnh(), CurrentCapeSpecial(), CurrentHelmSpecial(), CurrentWeaponSpecial());
-        Core.Equip(CPBoost);
-        Farm.ToggleBoost(BoostType.Class);
-
-        Farm.IcestormArena(Bot.Player.Level, true);
-        Core.Logger($"\"{itemInv.Name}\" is now Rank 10");
-
-        Farm.ToggleBoost(BoostType.Class, false);
-        if (GearRestore)
-            GearStore(true);
     }
+
 
     // Temp here cuz name change is fucky on auto update for some reason
     public void rankUpClass(string ClassName, bool GearRestore = true) => RankUpClass(ClassName, GearRestore);

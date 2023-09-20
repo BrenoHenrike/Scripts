@@ -98,28 +98,28 @@ public class ArmyVoucherItemofNulgath
         while (!Bot.ShouldExit && !Core.CheckInventory((int)reward, quant))
         {
             Core.EnsureAccept(QuestID);
-            FarmTotems(map: "tercessuinotlim", monsters: new[] { "Dark Makai" }, item: "Essence of Nulgath", quant: 60);
+            FarmTotems();
             // Add a delay between monster kills to avoid spamming server requests
             Bot.Sleep(Core.ActionDelay);
             Core.EnsureComplete(4778, (int)reward);
         }
     }
 
-    void FarmTotems(string map = "tercessuinotlim", string[]? monsters = null, string item = "Essence of Nulgath", bool isTemp = false, int quant = 1)
+    void FarmTotems(string item = "Essence of Nulgath", int quant = 60)
     {
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
-
-        if (Core.CheckInventory(item, quant))
-            return;
 
         Bot.Drops.Add(item);
 
         Core.EquipClass(ClassType.Farm);
         Core.FarmingLogger(item, quant);
 
-        Army.waitForParty(map, item);
-        AggroSetup(map);
+        Army.waitForParty("tercessuinotlim", item);
+
+        Army.AggroMonMIDs(2, 3, 4, 5);
+        Army.AggroMonStart("tercessuinotlim");
+        Army.DivideOnCells("m1", "m2");
 
         // Attack monsters until the inventory is filled with the specified quantity
         while (!Core.CheckInventory(item, quant) && !Bot.ShouldExit)
@@ -132,19 +132,6 @@ public class ArmyVoucherItemofNulgath
         Army.AggroMonStop(true);
         Core.JumpWait();
         Bot.Wait.ForPickup(item);
-    }
-
-    void AggroSetup(string map)
-    {
-        if (Bot.Map.Name == null)
-            return;
-
-        if (Bot.Map.Name == map)
-        {
-            Army.AggroMonCells("m1", "m2");
-            Army.AggroMonStart(map);
-            Army.DivideOnCells("m1", "m2");
-        }
     }
 
     public enum Rewards
