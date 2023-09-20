@@ -126,10 +126,20 @@ public class CoreBLOD
         Story.BuyQuest(2067, "doomwood", 276, "Bonegrinder Medal");
 
         // 2082 - Essential Essences
-        Story.KillQuest(2082, "battleunderb", "Skeleton Warrior");
+        if(!Story.QuestProgression(2082))
+        {
+            Core.EnsureAccept(2082);
+            Core.HuntMonster("battleunderb", "Skeleton Warrior", "Undead Essence", 25, isTemp: false);
+            Core.EnsureComplete(2082);
+        }
 
         // 2083 - Bust some Dust
-        Story.KillQuest(2083, "battleunderb", "Skeleton Warrior");
+        if(!Story.QuestProgression(2083))
+        {
+            Core.EnsureAccept(2083);
+            Core.HuntMonster("battleunderb", "Skeleton Warrior", "Bone Dust", 40, isTemp: false);
+            Core.EnsureComplete(2083);
+        }
 
         // 2084 - A Loyal Follower
         if (!Story.QuestProgression(2084))
