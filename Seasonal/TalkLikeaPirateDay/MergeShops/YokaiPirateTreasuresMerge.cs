@@ -43,7 +43,7 @@ public class YokaiPirateTreasuresMerge
         if (!Core.isSeasonalMapActive("yokaipirate"))
             Core.Logger("map is seasonal, and is not aviable atm", stopBot: true);
 
-        YokaiQuests.YokaiPirate();
+        YokaiQuests.YokaiPirate(false);
 
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("yokaipirate", 2337, findIngredients, buyOnlyThis, buyMode: buyMode);

@@ -33,7 +33,7 @@ public class YokaiQuests
         ShogunWar();
         ShinrinGrove();
         Shadowfortress();
-        YokaiPirate();
+        YokaiPirate(false);
     }
 
 
@@ -173,9 +173,6 @@ public class YokaiQuests
         }
     }
 
-
-
-
     public void Shadowfortress()
     {
         if (Core.isCompletedBefore(6494))
@@ -269,9 +266,9 @@ public class YokaiQuests
         Story.KillQuest(6494, "shadowfortress", "Jaaku");
     }
 
-    public void YokaiPirate()
+    public void YokaiPirate(bool NoPirate = true)
     {
-        if (Core.isCompletedBefore(9388) || !Core.isSeasonalMapActive("yokaipirate"))
+        if (Core.isCompletedBefore(9388) || !Core.isSeasonalMapActive("yokaipirate") || NoPirate)
             return;
 
         Story.PreLoad(this);
