@@ -981,31 +981,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/EternalDragonDrops.cs"
   },
   {
-    "name": "Second First Mate",
-    "description": "Farms \"All Drops\" From Quest",
-    "tags": [
-      "a second first mate",
-      "set",
-      "pirate"
-    ],
-    "path": "Other/SecondFirstMate.cs",
-    "size": 1408,
-    "fileName": "SecondFirstMate.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/SecondFirstMate.cs"
-  },
-  {
-    "name": "Sunken Treasure",
-    "description": "Farms \"All Drops\" From Quest",
-    "tags": [
-      "sunken treasure",
-      "drops"
-    ],
-    "path": "Other/SunkenTreasure.cs",
-    "size": 1676,
-    "fileName": "SunkenTreasure.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/SunkenTreasure.cs"
-  },
-  {
     "name": "corrupt draconic paragon",
     "description": "farms the corrupt draconic paragon set from Quest",
     "tags": [
@@ -1206,7 +1181,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 75228,
+    "size": 76054,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -2363,7 +2338,7 @@
       "member"
     ],
     "path": "Story/Pirates[Member].cs",
-    "size": 1534,
+    "size": 1445,
     "fileName": "Pirates[Member].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Pirates[Member].cs"
   },
@@ -5402,6 +5377,22 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/LowTideStory.cs"
   },
   {
+    "name": "Second First Mate",
+    "description": "Farms \"All Drops\" From Quest",
+    "tags": [
+      "a second first mate",
+      "set",
+      "pirate",
+      "tlapd",
+      "seasonal",
+      "talk-like-a-pirate-day"
+    ],
+    "path": "Seasonal/TalkLikeaPirateDay/SecondFirstMateQuestRewards.cs",
+    "size": 1741,
+    "fileName": "SecondFirstMateQuestRewards.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/SecondFirstMateQuestRewards.cs"
+  },
+  {
     "name": "Cetoleon War Story",
     "description": "This will finish the Cetoleon War Story Line.",
     "tags": [
@@ -5415,6 +5406,22 @@
     "size": 7516,
     "fileName": "CetoleonWarStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/CetoleonWarStory.cs"
+  },
+  {
+    "name": "Pirate Class",
+    "description": "This script will get the Pirate Class.",
+    "tags": [
+      "merge-shop",
+      "pirate",
+      "class",
+      "tlapd",
+      "talk-like-a-pirate-day",
+      "seasonal"
+    ],
+    "path": "Seasonal/TalkLikeaPirateDay/PirateClass.cs",
+    "size": 1207,
+    "fileName": "PirateClass.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/PirateClass.cs"
   },
   {
     "name": "Avast Badge (Member)",
@@ -5445,6 +5452,23 @@
     "size": 1979,
     "fileName": "HeartOfTheSeaStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/HeartOfTheSeaStory.cs"
+  },
+  {
+    "name": "Sunken Treasure Quest Rewards",
+    "description": "Farms \"All Drops\" From Quest",
+    "tags": [
+      "sunken treasure",
+      "drops",
+      "set",
+      "pirate",
+      "tlapd",
+      "talk-like-a-pirate-day",
+      "seasonal"
+    ],
+    "path": "Seasonal/TalkLikeaPirateDay/SunkenTreasureQuestRewards.cs",
+    "size": 1862,
+    "fileName": "SunkenTreasureQuestRewards.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/SunkenTreasureQuestRewards.cs"
   },
   {
     "name": "Dragon Capital Story",
@@ -5500,7 +5524,7 @@
       "class"
     ],
     "path": "Seasonal/TalkLikeaPirateDay/AlphaPirate.cs",
-    "size": 1243,
+    "size": 1206,
     "fileName": "AlphaPirate.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/AlphaPirate.cs"
   },
@@ -9734,6 +9758,51 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/FriendshipMerge.cs"
   },
   {
+    "name": "Infernal Arena Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Infernal Arena Merge [2334] in /infernalarena",
+    "tags": [
+      "infernal",
+      "arena",
+      "merge",
+      "infernalarena",
+      "tainted",
+      "naal",
+      "cervus",
+      "malus",
+      "skull",
+      "krampus",
+      "claws",
+      "defiler",
+      "scythe",
+      "azalith",
+      "fallen",
+      "crown",
+      "",
+      "great",
+      "wings",
+      "divine",
+      "wanderer",
+      "wanderers",
+      "circlet",
+      "champions",
+      "mantle",
+      "guidance",
+      "spear",
+      "grace",
+      "serene",
+      "sharpshooter",
+      "bow",
+      "celestial",
+      "dire",
+      "engineers",
+      "horns"
+    ],
+    "path": "Other/MergeShops/InfernalArenaMerge.cs",
+    "size": 10179,
+    "fileName": "InfernalArenaMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/InfernalArenaMerge.cs"
+  },
+  {
     "name": "CruxShadowsMerge",
     "description": "null",
     "tags": [
@@ -10006,17 +10075,6 @@
     "size": 5991,
     "fileName": "DruidMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/DruidMerge.cs"
-  },
-  {
-    "name": "ShadowofChaosMerge",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Other/MergeShops/ShadowofChaosMerge.cs",
-    "size": 5587,
-    "fileName": "ShadowofChaosMerge.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/ShadowofChaosMerge.cs"
   },
   {
     "name": "FireandIceMerge",
@@ -17748,6 +17806,43 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/MergeShops/LowTideMerge.cs"
   },
   {
+    "name": "Shadow of Chaos Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Shadow of Chaos Merge [1917] in /laguna",
+    "tags": [
+      "tlapd",
+      "talk-like-a-pirate-day",
+      "seasonal",
+      "shadow",
+      "of",
+      "chaos",
+      "merge",
+      "laguna",
+      "chaotic",
+      "sorcerer",
+      "sorcerers",
+      "sorceress",
+      "",
+      "horns",
+      "floating",
+      "crystals",
+      "energy",
+      "claws",
+      "gem",
+      "khopesh",
+      "deepsea",
+      "scourge",
+      "hunter",
+      "tentacled",
+      "tentaclewrapped",
+      "pistol",
+      "pistols"
+    ],
+    "path": "Seasonal/TalkLikeaPirateDay/MergeShops/ShadowofChaosMerge.cs",
+    "size": 5806,
+    "fileName": "ShadowofChaosMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/MergeShops/ShadowofChaosMerge.cs"
+  },
+  {
     "name": "Naval Top Hat Merge",
     "description": "This bot will farm the items belonging to the selected mode for the Naval Top Hat Merge [723] in /pirates",
     "tags": [
@@ -17827,6 +17922,95 @@
     "size": 4602,
     "fileName": "BarnaclesBandanasMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/MergeShops/BarnaclesBandanasMerge.cs"
+  },
+  {
+    "name": "Legendary Naval Top Hats Merge [Member]",
+    "description": "This bot will farm the items belonging to the selected mode for the Legendary Naval Top Hats Merge [1919] in /pirates",
+    "tags": [
+      "tlapd",
+      "talk-like-a-pirate-day",
+      "seasonal",
+      "legendary",
+      "naval",
+      "top",
+      "hats",
+      "merge",
+      "pirates",
+      "male",
+      "galactic",
+      "bearded",
+      "chronolord",
+      "chaos",
+      "blazing",
+      "icy",
+      "platinum",
+      "legion",
+      "red",
+      "rotting",
+      "skull",
+      "scallywag",
+      "sir",
+      "miss",
+      "mr",
+      "chronolady",
+      "missy",
+      "lady",
+      "mrs",
+      "lassy",
+      "cutie",
+      "femme",
+      "goggleless",
+      "brilliant",
+      "tophat",
+      "",
+      "doom",
+      "lass",
+      "chaotic",
+      "morph",
+      "flaming",
+      "toxic",
+      "beard"
+    ],
+    "path": "Seasonal/TalkLikeaPirateDay/MergeShops/LegendaryNavalTopHatsMerge.cs",
+    "size": 11125,
+    "fileName": "LegendaryNavalTopHatsMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/MergeShops/LegendaryNavalTopHatsMerge.cs"
+  },
+  {
+    "name": "Rakham's Pirate Merge [Member]",
+    "description": "This bot will farm the items belonging to the selected mode for the Rakhams Pirate Merge [350] in /pirates",
+    "tags": [
+      "talk-like-a-pirate-day",
+      "seasonal",
+      "tlapd",
+      "rakham",
+      "pirate",
+      "merge",
+      "pirates",
+      "blunderbuss",
+      "boom",
+      "renegade",
+      "looter",
+      "handcannon",
+      "high",
+      "seas",
+      "captains",
+      "cutlass",
+      "bandana",
+      "looting",
+      "tricorn",
+      "terror",
+      "mermaids",
+      "hairpoon",
+      "calais",
+      "looters",
+      "raiment",
+      "bladed"
+    ],
+    "path": "Seasonal/TalkLikeaPirateDay/MergeShops/RakhamsPirateMerge.cs",
+    "size": 5866,
+    "fileName": "RakhamsPirateMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/MergeShops/RakhamsPirateMerge.cs"
   },
   {
     "name": "Yokai Pirate Treasures Merge",

@@ -1,7 +1,7 @@
 /*
-name: Alpha Pirate Class
-description: This will merge the Alpha Pirate Class Token.
-tags: merge-shop, alpha, pirate, class
+name: Pirate Class
+description: This script will get the Pirate Class.
+tags: merge-shop, pirate, class, tlapd, talk-like-a-pirate-day, seasonal
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -14,7 +14,7 @@ using Skua.Core.Models.Items;
 using Skua.Core.Models.Quests;
 using Skua.Core.Models.Shops;
 
-public class AlphaPirate
+public class PirateClass
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
@@ -25,19 +25,19 @@ public class AlphaPirate
     {
         Core.SetOptions();
 
-        GetAlphaPirate();
+        GetPirate();
 
         Core.SetOptions(false);
     }
 
-    public void GetAlphaPirate(bool rankUpClass = true)
+    public void GetPirate(bool rankUpClass = true)
     {
-        if (Core.CheckInventory("Alpha Pirate") || !Core.isSeasonalMapActive("blazebeard"))
+        if (Core.CheckInventory("Classic Pirate") || !Core.isSeasonalMapActive("blazebeard"))
             return;
 
-        BBM.BuyAllMerge("Alpha Pirate");
+        BBM.BuyAllMerge("Pirate");
 
         if (rankUpClass)
-            Adv.RankUpClass("Alpha Pirate");
+            Adv.RankUpClass("Pirate");
     }
 }

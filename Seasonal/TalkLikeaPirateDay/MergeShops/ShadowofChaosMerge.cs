@@ -1,12 +1,12 @@
 /*
-name: ShadowofChaosMerge
-description: null
-tags: null
+name: Shadow of Chaos Merge
+description: This bot will farm the items belonging to the selected mode for the Shadow of Chaos Merge [1917] in /laguna
+tags: tlapd,talk-like-a-pirate-day,seasonal, shadow, of, chaos, merge, laguna, chaotic, sorcerer, sorcerers, sorceress, , horns, floating, crystals, energy, claws, gem, khopesh, deepsea, scourge, hunter, tentacled, tentaclewrapped, pistol, pistols
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
 //cs_include Scripts/Story/ShadowsOfChaos/CoreSoC.cs
 using Skua.Core.Interfaces;
@@ -17,8 +17,6 @@ public class ShadowofChaosMerge
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new();
-    public CoreStory Story = new();
     public CoreAdvanced Adv = new();
     public static CoreAdvanced sAdv = new();
     public CoreSoC Laguna = new();
@@ -32,7 +30,7 @@ public class ShadowofChaosMerge
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "ShadowChaos Mote " });
+        Core.BankingBlackList.AddRange(new[] { "ShadowChaos Mote" });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -71,7 +69,7 @@ public class ShadowofChaosMerge
                     Core.RegisterQuests(7700);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("lagunabeach", "Flying Fisheye|ShadowChaos Brigand", "Chaos-ShadowFlame Sample", 15);
+                        Core.HuntMonster("lagunabeach", "Flying Fisheye");
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
