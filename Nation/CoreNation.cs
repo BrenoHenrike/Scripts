@@ -583,6 +583,7 @@ public class CoreNation
 
                 while (!Bot.ShouldExit && !Core.CheckInventory(item, quant) && Core.CheckInventory("Mana Energy for Nulgath"))
                 {
+                    Core.EnsureAccept(Bot.Quests.IsAvailable(2568) ? 2568 : 2566);
                     Core.HuntMonster("elemental", "Mana Falcon", "Charged Mana Energy for Nulgath", 5);
                     Core.EnsureComplete(Bot.Quests.IsAvailable(2568) ? 2568 : 2566);
                     Bot.Wait.ForPickup(item);
@@ -611,6 +612,7 @@ public class CoreNation
 
                     while (!Bot.ShouldExit && !Core.CheckInventory(drop.Name, drop.MaxStack) && Core.CheckInventory("Mana Energy for Nulgath"))
                     {
+                        Core.EnsureAccept(Bot.Quests.IsAvailable(2568) ? 2568 : 2566);
                         Core.HuntMonster("elemental", "Mana Falcon", "Charged Mana Energy for Nulgath", 5);
                         Core.EnsureComplete(Bot.Quests.IsAvailable(2568) ? 2568 : 2566);
                         Bot.Wait.ForPickup(drop.Name);
