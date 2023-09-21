@@ -62,6 +62,12 @@ public class CoreSoWMats
 
         SoW.ManaCradle();
 
+        if (!Core.isCompletedBefore(9126))
+        {
+            Core.Logger("Once Upon Another Time 9126, missing quest progress (Group Boss - skua no can do)");
+            return;
+        }
+
         Core.FarmingLogger("Elemental Core", Quantity);
         Core.AddDrop("Elemental Core");
 
