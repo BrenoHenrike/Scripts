@@ -10706,6 +10706,31 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/KathoolsChestMerge.cs"
   },
   {
+    "name": "Deep Trobble Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Deep Trobble Merge [2338] in /pirates",
+    "tags": [
+      "deep",
+      "trobble",
+      "merge",
+      "pirates",
+      "silver",
+      "sun",
+      "bandana",
+      "pistol",
+      "cutlass",
+      "enchanted",
+      "plunger",
+      "omocha",
+      "tsuika",
+      "no",
+      "higure"
+    ],
+    "path": "Other/MergeShops/DeepTrobbleMerge.cs",
+    "size": 6968,
+    "fileName": "DeepTrobbleMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/DeepTrobbleMerge.cs"
+  },
+  {
     "name": "WarTrainingMerge",
     "description": "null",
     "tags": [
