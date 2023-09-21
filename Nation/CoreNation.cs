@@ -571,6 +571,8 @@ public class CoreNation
     /// <param name="quant">Desired item quantity</param>
     public void NulgathLarvae(string? item = null, int quant = 1)
     {
+        Bot.Drops.Add(bagDrops);
+        Bot.Drops.Add("Mana Energy for Nulgath");
         if (item != null)
         {
             Core.FarmingLogger(item, quant);
@@ -579,8 +581,8 @@ public class CoreNation
                 Core.EnsureAccept(Bot.Quests.IsAvailable(2568) ? 2568 : 2566);
                 Core.EquipClass(ClassType.Solo);
                 Core.HuntMonster("elemental", "Mana Golem", "Mana Energy for Nulgath", 13, isTemp: false);
-                Core.EquipClass(ClassType.Farm);
 
+                Core.EquipClass(ClassType.Farm);
                 while (!Bot.ShouldExit && !Core.CheckInventory(item, quant) && Core.CheckInventory("Mana Energy for Nulgath"))
                 {
                     Core.EnsureAccept(Bot.Quests.IsAvailable(2568) ? 2568 : 2566);
@@ -592,9 +594,6 @@ public class CoreNation
         }
         else
         {
-            Bot.Drops.Add(bagDrops);
-            Bot.Drops.Add("Mana Energy for Nulgath");
-
             foreach (string Drop in bagDrops)
             {
                 ItemBase? drop = Core.EnsureLoad(Bot.Quests.IsAvailable(2568) ? 2568 : 2566).Rewards.Find(x => x.Name == Drop);
@@ -610,6 +609,7 @@ public class CoreNation
                     Core.HuntMonster("elemental", "Mana Golem", "Mana Energy for Nulgath", 13, isTemp: false);
                     Core.EquipClass(ClassType.Farm);
 
+                    Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(drop.Name, drop.MaxStack) && Core.CheckInventory("Mana Energy for Nulgath"))
                     {
                         Core.EnsureAccept(Bot.Quests.IsAvailable(2568) ? 2568 : 2566);
