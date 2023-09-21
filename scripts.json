@@ -1281,6 +1281,20 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/DragonSlayerReward.cs"
   },
   {
+    "name": "NulgathLarvaeAndKlunk",
+    "description": "will either do \"Nulgath (Klunk) [2568]\" or \"Nulgath (Larvae) [2566]\" depending on what is currently available.",
+    "tags": [
+      "nulgath",
+      "larvae",
+      "klunk",
+      "nation"
+    ],
+    "path": "Nation/NulgathLarvaeAndKlunk.cs",
+    "size": 669,
+    "fileName": "NulgathLarvaeAndKlunk.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/NulgathLarvaeAndKlunk.cs"
+  },
+  {
     "name": "EmpoweringItems",
     "description": "null",
     "tags": [
@@ -1372,17 +1386,6 @@
     "size": 456,
     "fileName": "KisstheVoid.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/KisstheVoid.cs"
-  },
-  {
-    "name": "NulgathLarvae",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Nation/NulgathLarvae.cs",
-    "size": 521,
-    "fileName": "NulgathLarvae.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/NulgathLarvae.cs"
   },
   {
     "name": "Gold Farm",
