@@ -2068,10 +2068,10 @@ public class CoreFarms
         {
             Core.EnsureAccept(5597, 5598, 5599, 5600);
 
-            Core.KillMonster("icewindwar", "r2", "Left", "*", "Mega World Ender Medal", 5);
-            Core.KillMonster("icewindwar", "r2", "Left", "*", "Frostspawn Medal", 10);
-            Core.KillMonster("icewindwar", "r2", "Left", "*", "Mega Frostspawn Medal", 5);
-            Core.KillMonster("icewindwar", "r2", "Left", "*", "World Ender Medal", 10);
+            Core.KillMonster("icewindwar", "r2", "Left", "Frost Invader", "World Ender Medal", 10);
+            Core.KillMonster("icewindwar", "r2", "Left", "Frost Invader", "Mega World Ender Medal", 5);
+            Core.KillMonster("icewindwar", "r2", "Left", "Glaceran Defender", "Frostspawn Medal", 10);
+            Core.KillMonster("icewindwar", "r2", "Left", "Glaceran Defender", "Mega Frostspawn Medal", 5);
 
             Core.EnsureComplete(5597, 5598, 5599, 5600);
         }
