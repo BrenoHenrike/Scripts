@@ -1,11 +1,10 @@
 /*
-name: CelestialPastMerge
-description: null
-tags: null
+name: Celestial Past Merge
+description: This bot will farm the items belonging to the selected mode for the Celestial Past Merge [1909] in /celestialpast
+tags: celestial, past, merge, celestialpast, summoner, aranx
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
@@ -15,8 +14,6 @@ public class CelestialPastMerge
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new();
-    public CoreStory Story = new();
     public CoreAdvanced Adv = new();
     public static CoreAdvanced sAdv = new();
 
