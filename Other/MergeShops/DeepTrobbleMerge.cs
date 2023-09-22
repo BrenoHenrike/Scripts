@@ -78,10 +78,10 @@ public class DeepTrobbleMerge
 
                         if (!Core.CheckInventory("Nifarii Blade"))
                         {
-                            Core.EnsureAccept(9804);
+                            Core.EnsureAccept(1382);
                             Core.HuntMonster("alliance", "Chaorrupted Evil Lieutenant", "Chaorruption Essence", 75);
                             Core.HuntMonster("alliance", "Chaorrupted Evil Lieutenant", "Chaorruption Vial");
-                            Core.EnsureComplete(9804);
+                            Core.EnsureComplete(1382);
                             Bot.Wait.ForPickup("Nifarii Blade");
                         }
                         Core.HuntMonster("waterstorm", "Living Water", "Souls of Living Water", 20);
