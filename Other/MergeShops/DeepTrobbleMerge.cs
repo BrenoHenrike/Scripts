@@ -66,29 +66,12 @@ public class DeepTrobbleMerge
 
                 case "Bounty Hunter Dubloon":
                     Core.FarmingLogger(req.Name, quant);
-                    Core.EquipClass(ClassType.Farm);
-                    // Here There Be Dragons
-                    Core.RegisterQuests(9158);
+                    Core.EquipClass(ClassType.Solo);
+                    // Very Trobblesome
+                    Core.RegisterQuests(9394);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster("volcano", "Lava Golem", "Hammer of the Core", isTemp: false);
-
-                        //jump from aggro cell vv
-                        Core.JumpWait();
-
-                        if (!Core.CheckInventory("Nifarii Blade"))
-                        {
-                            Core.EnsureAccept(1382);
-                            Core.HuntMonster("alliance", "Chaorrupted Evil Lieutenant", "Chaorruption Essence", 75);
-                            Core.HuntMonster("alliance", "Chaorrupted Evil Lieutenant", "Chaorruption Vial");
-                            Core.EnsureComplete(1382);
-                            Bot.Wait.ForPickup("Nifarii Blade");
-                        }
-                        Core.HuntMonster("waterstorm", "Living Water", "Souls of Living Water", 20);
-                        Core.HuntMonster("lair", "Purple Draconian", "Pieces of Iron", 15);
-                        Core.HuntMonster("embersea", "Coal Creeper", "Coal", 15);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
+                        Core.HuntMonster("dreadspace", "Troblor", "Trobble Captured");
+                    Bot.Wait.ForPickup(req.Name);
                     Core.CancelRegisteredQuests();
                     break;
 
