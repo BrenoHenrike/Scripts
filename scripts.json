@@ -9197,13 +9197,18 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/TrygveMerge.cs"
   },
   {
-    "name": "CelestialPastMerge",
-    "description": "null",
+    "name": "Celestial Past Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Celestial Past Merge [1909] in /celestialpast",
     "tags": [
-      "null"
+      "celestial",
+      "past",
+      "merge",
+      "celestialpast",
+      "summoner",
+      "aranx"
     ],
     "path": "Other/MergeShops/CelestialPastMerge.cs",
-    "size": 3851,
+    "size": 3907,
     "fileName": "CelestialPastMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/CelestialPastMerge.cs"
   },
@@ -13756,7 +13761,7 @@
       "seven circles war"
     ],
     "path": "Army/ArmyFarm/ArmyGold.cs",
-    "size": 6809,
+    "size": 6779,
     "fileName": "ArmyGold.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/ArmyGold.cs"
   },
