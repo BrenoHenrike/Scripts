@@ -10729,7 +10729,7 @@
       "higure"
     ],
     "path": "Other/MergeShops/DeepTrobbleMerge.cs",
-    "size": 6983,
+    "size": 6976,
     "fileName": "DeepTrobbleMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/DeepTrobbleMerge.cs"
   },
@@ -18546,6 +18546,21 @@
     "size": 21485,
     "fileName": "CoreArchMage.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/ArchMage/CoreArchMage.cs"
+  },
+  {
+    "name": "VersusDoomKnightClassPrep",
+    "description": "Quest & item Prep for the new class \"Verus DoomKnight\".",
+    "tags": [
+      "versus",
+      "doomknight",
+      "prep",
+      "prerequisite",
+      "class"
+    ],
+    "path": "Other/Classes/NewClassPreps[TempLocation]/VersusDoomKnightClassPrep.cs",
+    "size": 2551,
+    "fileName": "VersusDoomKnightClassPrep.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/NewClassPreps[TempLocation]/VersusDoomKnightClassPrep.cs"
   },
   {
     "name": "LegendaryElementalWarrior[mem]",
