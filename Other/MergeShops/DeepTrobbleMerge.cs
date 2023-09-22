@@ -71,7 +71,7 @@ public class DeepTrobbleMerge
                     Core.RegisterQuests(9158);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("volcano", "Lava Golem", "Hammer of the Core", quant);
+                        Core.HuntMonster("volcano", "Lava Golem", "Hammer of the Core", quant, isTemp: false);
 
                         //jump from aggro cell vv
                         Core.JumpWait();
