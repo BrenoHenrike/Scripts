@@ -2066,14 +2066,13 @@ public class CoreFarms
         Core.RegisterQuests(5597, 5598, 5599, 5600);
         while (!Bot.ShouldExit && FactionRank("Glacera") < rank)
         {
-            Core.EnsureAccept(5597, 5598, 5599, 5600);
+            while (!Bot.ShouldExit && !Core.CheckInventory("World Ender Medal", 10)
+            && !Core.CheckInventory("Mega World Ender Medal", 5))
+                Core.HuntMonster("icewindwar", "Frost Invader", log: false);
 
-            Core.KillMonster("icewindwar", "r2", "Left", "Frost Invader", "World Ender Medal", 10);
-            Core.KillMonster("icewindwar", "r2", "Left", "Frost Invader", "Mega World Ender Medal", 5);
-            Core.KillMonster("icewindwar", "r2", "Left", "Glaceran Defender", "Frostspawn Medal", 10);
-            Core.KillMonster("icewindwar", "r2", "Left", "Glaceran Defender", "Mega Frostspawn Medal", 5);
-
-            Core.EnsureComplete(5597, 5598, 5599, 5600);
+            while (!Bot.ShouldExit && !Core.CheckInventory("rostspawn Medal", 10)
+            && !Core.CheckInventory("Mega Frostspawn Medal", 5))
+                Core.HuntMonster("icewindwar", "Glaceran Defender", log: false);
         }
         Core.CancelRegisteredQuests();
         ToggleBoost(BoostType.Reputation, false);
