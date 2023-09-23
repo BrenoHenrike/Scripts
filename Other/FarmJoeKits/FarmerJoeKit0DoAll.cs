@@ -95,6 +95,12 @@ public class FarmerJoeKit0DoAll
 
         FJDoAll();
 
+        //resetting
+        Core.SoloClass = "Generic";
+        Core.FarmClass = "Generic";
+
+        Core.Logger($"S: {Core.SoloClass}, F: {Core.FarmClass}");
+
         Core.SetOptions(false);
     }
 
@@ -102,7 +108,7 @@ public class FarmerJoeKit0DoAll
     {
         CFJ.DoAll();
 
-        BAI.BankAll();
+        // BAI.BankAll();
 
     }
 }
