@@ -60,15 +60,15 @@ public class ArmyPrimaticSeams
         Core.PrivateRoomNumber = Army.getRoomNr();
         Core.EquipClass(ClassType.Farm);
 
-        Army.AggroMonIDs(5241, 5242, 5243);
+        Army.AggroMonMIDs(1, 2, 15, 3, 4, 14, 8, 9, 10, 11, 12, 13);
         Army.AggroMonStart("streamwar");
         Army.DivideOnCells("r2", "r3", "r3a");
 
-        // this wont stop when capped, if u want 
-        // it to stop just uncomment and delete the ) after the exit
         Core.RegisterQuests(8814, 8815);
-        while (!Bot.ShouldExit)// && !Core.CheckInventory("Prismatic Seams", 2000))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Prismatic Seams", 2000))
             Bot.Combat.Attack("*");
+
+        Army.waitForParty("streamwar", "Prismatic Seams");
         Army.AggroMonStop(true);
         Core.CancelRegisteredQuests();
     }
