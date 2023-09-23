@@ -21,6 +21,7 @@ public class ArmyPennyForYourThoughts
     private static CoreBots sCore = new();
     private static CoreArmyLite sArmy = new();
 
+    private string[] Loot = { "DoomCoin", "Dark Spirit Orb" };
     public string OptionsStorage = "ArmyPenny";
     public bool DontPreconfigure = true;
     public List<IOption> Options = new List<IOption>()
@@ -41,29 +42,34 @@ public class ArmyPennyForYourThoughts
 
         Core.SetOptions(disableClassSwap: true);
 
-        Setup();
+        Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
+        ArmyBits();
 
         Core.SetOptions(false);
     }
 
-    public void Setup()
+    public void ArmyBits()
     {
+
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
-
-        Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
-
         Core.AddDrop(Loot);
         Core.EquipClass(ClassType.Farm);
+
+        Army.AggroMonMIDs(1, 2, 18, 5, 6, 21, 7, 8, 22);
+        Army.AggroMonStart("maul");
+        Army.DivideOnCells("r2", "r5", "r6");
+
         if (Core.IsMember)
             Core.RegisterQuests(2089);
-
-        Army.SmartAggroMonStart("maul", "Slimeskull", "Shelleton", "Personal Chopper");
-
-        while (!Bot.ShouldExit)
+        else Core.Logger("Player is not member, farm will continue\n" +
+        "but you wont get the spirit orbs");
+        
+        while (!Bot.ShouldExit && !Core.CheckInventory("Dark Spirit Orb", 10500))
             Bot.Combat.Attack("*");
+        Army.waitForParty("whitemap", "Dark Spirit Orb");
         Army.AggroMonStop(true);
+        Core.CancelRegisteredQuests();
     }
 
-    private string[] Loot = { "DoomCoin", "Dark Spirit Orb" };
 }
