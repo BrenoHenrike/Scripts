@@ -1095,10 +1095,16 @@ public class CoreToD
 
         Story.KillQuest(5298, "hedgemaze", "Knight's Reflection");
 
-        Story.MapItemQuest(5299, "hedgemaze", 4679);
 
         Core.EquipClass(ClassType.Solo);
-        Story.KillQuest(5299, "hedgemaze", new[] { "Mirrored Shard", "Hedge Goblin", "Minotaur" });
+        if (!Story.QuestProgression(5299))
+        {
+            Core.EnsureAccept(5299);
+            Core.HuntMonster("hedgemaze", "Mirrored Shard", "Mirror Shard Slain", 4);
+            Core.HuntMonsterMapID("hedgemaze", 48, "Hedge Goblin Slain", 4);
+            Core.HuntMonsterMapID("hedgemaze", 20, "Minotaur Slain", 3);
+            Story.MapItemQuest(5299, "hedgemaze", 4679);
+        }
 
         Story.KillQuest(5300, "hedgemaze", "Knight's Reflection");
 
