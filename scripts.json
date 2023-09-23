@@ -8411,6 +8411,37 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Various/ShadowslayerSummoningRitual.cs"
   },
   {
+    "name": "DeepTrobbleTreasureChest",
+    "description": "Does the \"Deep Trobble Treasure Chest\" quest for the rewards [random drops]",
+    "tags": [
+      "deep",
+      "trobble",
+      "treasure",
+      "chest",
+      "rewards",
+      "grim first mort on yer back",
+      "grim skull 'n flag",
+      "marauder's monkey mace",
+      "captain chinchillarrrr on yer back",
+      "captain chinchillarrrr pet",
+      "beleen's balloon cutelass",
+      "beleen's balloon cutelasses",
+      "gunpowder beach",
+      "gunpowder beach",
+      "pearl dust arm shuriken",
+      "astravian corsair",
+      "astravian corsair hat",
+      "astravian corsair hat",
+      "astravian corsair hat + locks",
+      "astravian corsair's coat",
+      "astravian corsair coat and blade"
+    ],
+    "path": "Other/Various/DeepTrobbleTreasureChest.cs",
+    "size": 2952,
+    "fileName": "DeepTrobbleTreasureChest.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Various/DeepTrobbleTreasureChest.cs"
+  },
+  {
     "name": "Secret Map Quest",
     "description": "if you own the (rare) beta berserker class, this will do the quest [5516] for the rewards.",
     "tags": [
