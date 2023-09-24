@@ -238,15 +238,15 @@ public class CoreFarmerJoe
                     SetClass(false, true, true);
 
                     Core.SellItem("Venom Head");
-
-                    Adv.SmartEnhance(Core.FarmClass);
-
                     Core.Logger("Getting Master Ranger");
                     MR.GetMR(false);
                     SetClass(false, true, true);
 
+                    Farm.Experience(Level);
+
                     //For BOA lvl 30 rogue *should* be able to kill escherion ..once in awhile :P (tested i got a few kills in an an hr... proabably horrible but w/e)
                     Core.Logger("Doing BoA rep till r6 (for enhancments & sword)");
+                    SetClass(true, false, true);
                     Farm.BladeofAweREP(6, false);
                     Adv.BuyItem("museum", 631, "Awethur's Accoutrements");
                     Core.Equip("Awethur's Accoutrements");
@@ -655,19 +655,20 @@ public class CoreFarmerJoe
         string[] soloClassesToCheck = { "ArchPaladin", "Glacial Berserker", "Shaman", "Rogue (Rare)", "Rogue", "Healer (Rare)", "Healer" };
         string[] farmClassesToCheck = { "Archfiend", "Blaze Binder", "Scarlet Sorceress", "Master Ranger", "Shaman", "Mage (Rare)", "Mage" };
 
-        if (swapToSoloClass && (Core.SoloClass != "Generic" || soloClassesToCheck.Contains(Core.SoloClass)))
+        if (swapToSoloClass && (Core.SoloClass == "Generic" || soloClassesToCheck.Contains(Core.SoloClass)))
         {
             Core.Logger("Setting solo class as requested.");
             newSoloClass = CheckAndSetClass(newSoloClass, soloClassesToCheck, "SoloClass", rankUp);
         }
-        else if (swapToFarmClass && (Core.FarmClass != "Generic" || farmClassesToCheck.Contains(Core.FarmClass)))
+        else if (swapToFarmClass && (Core.FarmClass == "Generic" || farmClassesToCheck.Contains(Core.FarmClass)))
         {
             Core.Logger("Setting farm class as requested.");
             newFarmClass = CheckAndSetClass(newFarmClass, farmClassesToCheck, "FarmClass", rankUp);
         }
         else
         {
-            Core.Logger("CBO classes are set, using what you picked.");
+            Core.Logger("CBO classes are set, using what you picked.\n" +
+            $"Solo: {newSoloClass}, Farm: {newFarmClass}");
             return;
         }
 
@@ -687,8 +688,8 @@ public class CoreFarmerJoe
         Core.SoloClass = newSoloClass;
         Core.FarmClass = newFarmClass;
 
-        Core.Logger($"Setting SoloClass to: {Core.SoloClass}.");
-        Core.Logger($"Setting FarmClass to: {Core.FarmClass}.");
+        Core.Logger($"Setting SoloClass to: {newSoloClass}.");
+        Core.Logger($"Setting FarmClass to: {newFarmClass}.");
     }
 
     /// <summary>
