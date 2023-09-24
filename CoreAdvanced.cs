@@ -1079,10 +1079,12 @@ public class CoreAdvanced
             return;
         }
 
-        InventoryItem? SelectedItem = Bot.Inventory.Items.Find(i => i.Name == item && EnhanceableCatagories.Contains(i.Category)); ;
+        InventoryItem? SelectedItem = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == item.ToLower().Trim() && EnhanceableCatagories.Contains(i.Category)); ;
         if (SelectedItem == null)
         {
-            if (Bot.Inventory.Items.Any(i => i.Name == item))
+            // Bot.Log(Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == item.ToLower().Trim()));
+            // Bot.Log(Bot.Inventory.Items.Find(i => EnhanceableCatagories.Contains(i.Category)));
+            if (Bot.Inventory.Items.Any(i => i.Name.ToLower().Trim() == item.ToLower().Trim()))
                 Core.Logger($"Enhancement Failed: {item} cannot be enhanced");
             return;
         }
@@ -1752,7 +1754,7 @@ public class CoreAdvanced
 
         // Creating variables that can be assigned to
         className = SelectedClass.Name.ToLower();
-        EnhancementType? type = EnhancementType.Lucky;
+        EnhancementType? type = null;
         CapeSpecial cSpecial = CapeSpecial.None;
         HelmSpecial hSpecial = HelmSpecial.None;
         WeaponSpecial wSpecial = WeaponSpecial.None;
@@ -1769,9 +1771,9 @@ public class CoreAdvanced
         }
 
         // If the class isn't enhanced yet, enhance it with the enhancement type
-        if (SelectedClass.EnhancementLevel == 0)
-            EnhanceItem(SelectedClass.Name, (EnhancementType)type);
-        Core.Equip(SelectedClass.ID);
+        if (SelectedClass.EnhancementLevel <= 0)
+            EnhanceItem(className, (EnhancementType)type);
+        Core.Equip(className);
         Bot.Wait.ForTrue(() => Bot.Player.CurrentClass?.Name == className, 40);
         EnhanceEquipped((EnhancementType)type, cSpecial, hSpecial, wSpecial);
 

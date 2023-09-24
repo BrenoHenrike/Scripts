@@ -65,6 +65,18 @@ public class ScarletSorceress
 
         Core.ChainComplete(6236);
         Bot.Wait.ForPickup("Scarlet Sorceress");
+        Core.Logger("Quest Classes are received unenhanced until relog...\n" +
+        "GOOD LUCK ON THE RELOG WORKING");
+
+        Core.Relogin();
+
+        while (!Bot.ShouldExit && Bot.Map.Name != "battleon")
+        {
+            Bot.Sleep(Core.ActionDelay);
+            Bot.Wait.ForMapLoad("battleon");
+        }
+
+        Core.Logger("Holy F**k it worked, congrats!");
 
         if (rankUpClass)
             Adv.RankUpClass("Scarlet Sorceress");
