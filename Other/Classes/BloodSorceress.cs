@@ -27,10 +27,16 @@ public class BloodSorceress
     public void GetBSorc(bool rankUpClass = true)
     {
         if (Core.CheckInventory("Blood Sorceress"))
+        {
+            if (rankUpClass)
+                Adv.RankUpClass("Blood Sorceress");
             return;
+        }
 
         Core.EquipClass(ClassType.Solo);
         Core.HuntMonster("towerofmirrors", "Scarletta", "Blood Sorceress", isTemp: false);
+        Bot.Wait.ForPickup("Blood Sorceress");
+        
         if (rankUpClass)
             Adv.RankUpClass("Blood Sorceress");
     }
