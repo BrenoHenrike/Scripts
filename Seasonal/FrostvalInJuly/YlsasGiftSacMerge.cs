@@ -58,7 +58,7 @@ public class YlsasGiftSacMerge
             switch (req.Name)
             {
                 default:
-                    bool shouldStop = Adv.matsOnly ? !dontStopMissingIng : true;
+                    bool shouldStop = !Adv.matsOnly || !dontStopMissingIng;
                     Core.Logger($"The bot hasn't been taught how to get {req.Name}." + (shouldStop ? " Please report the issue." : " Skipping"), messageBox: shouldStop, stopBot: shouldStop);
                     break;
                 #endregion
