@@ -303,10 +303,7 @@ public class CoreFarmerJoe
                         continue;
                     }
 
-                    SetClass(true, false, true);
-
                     //Daily classes
-                    Adv.SmartEnhance(Core.FarmClass);
                     Core.Logger("Daily Classes Check");
 
                     Core.Logger("Getting Blaze Binder");
@@ -649,7 +646,7 @@ public class CoreFarmerJoe
         string[] soloClassesToCheck;
 
         if (!Core.CheckInventory("ArchPaladin"))
-            soloClassesToCheck = new[] { "ArchPaladin", "Dagonsoul Shinobi", "Shaman", "Rogue (Rare)", "Rogue", "Healer (Rare)", "Healer" };
+            soloClassesToCheck = new[] { "ArchPaladin", "DragonSoul Shinobi", "Shaman", "Rogue (Rare)", "Rogue", "Healer (Rare)", "Healer" };
         else
             soloClassesToCheck = new[] { "ArchPaladin", "Glacial Berserker", "Shaman", "Rogue (Rare)", "Rogue", "Healer (Rare)", "Healer" };
 
