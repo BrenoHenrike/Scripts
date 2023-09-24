@@ -480,11 +480,11 @@ public class CoreAdvanced
             if (gearRestore)
                 GearStore();
 
-            SmartEnhance(className);
-            var classItem = Bot.Inventory.Items.Find(i => i.Name.Equals(className, StringComparison.OrdinalIgnoreCase) && i.Category == ItemCategory.Class);
+            SmartEnhance(itemInv.Name);
+            var classItem = Bot.Inventory.Items.Find(i => i.Name.Equals(itemInv.Name, StringComparison.OrdinalIgnoreCase) && i.Category == ItemCategory.Class);
             if (classItem?.EnhancementLevel == 0)
             {
-                Core.Logger($"Can't level up \"{className}\" because it's not enhanced, and AutoEnhance is turned off");
+                Core.Logger($"Can't level up \"{itemInv.Name}\" because it's not enhanced, and AutoEnhance is turned off");
             }
             else
             {
@@ -1752,7 +1752,7 @@ public class CoreAdvanced
 
         // Creating variables that can be assigned to
         className = SelectedClass.Name.ToLower();
-        EnhancementType? type = null;
+        EnhancementType? type = EnhancementType.Lucky;
         CapeSpecial cSpecial = CapeSpecial.None;
         HelmSpecial hSpecial = HelmSpecial.None;
         WeaponSpecial wSpecial = WeaponSpecial.None;
@@ -1770,8 +1770,8 @@ public class CoreAdvanced
 
         // If the class isn't enhanced yet, enhance it with the enhancement type
         if (SelectedClass.EnhancementLevel == 0)
-            EnhanceItem(className, (EnhancementType)type);
-        Core.Equip(className);
+            EnhanceItem(SelectedClass.Name, (EnhancementType)type);
+        Core.Equip(SelectedClass.ID);
         Bot.Wait.ForTrue(() => Bot.Player.CurrentClass?.Name == className, 40);
         EnhanceEquipped((EnhancementType)type, cSpecial, hSpecial, wSpecial);
 
