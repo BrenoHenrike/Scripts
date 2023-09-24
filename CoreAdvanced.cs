@@ -349,7 +349,7 @@ public class CoreAdvanced
 
         Core.Join(map, cell, pad, publicRoom: publicRoom);
 
-        _RaceGear(monster);
+        // _RaceGear(monster);
         Core.KillMonster(map, cell, pad, monster, item, quant, isTemp, log, publicRoom);
 
         GearStore(true);
@@ -373,7 +373,7 @@ public class CoreAdvanced
 
         Core.Join(map, cell, pad, publicRoom: publicRoom);
 
-        _RaceGear(monsterID);
+        // _RaceGear(monsterID);
 
         Core.KillMonster(map, cell, pad, monsterID, item, quant, isTemp, log, publicRoom);
 
@@ -396,7 +396,7 @@ public class CoreAdvanced
 
         Core.Join(map, publicRoom: publicRoom);
 
-        _RaceGear(monster);
+        // _RaceGear(monster);
 
         Core.HuntMonster(map, monster, item, quant, isTemp, log, publicRoom);
 
@@ -422,8 +422,8 @@ public class CoreAdvanced
             Core.AddDrop(item);
 
         Core.Join(map, cell, pad, publicRoom: publicRoom);
-        if (!forAuto)
-            _RaceGear(monster);
+        // if (!forAuto)
+        //     _RaceGear(monster);
         Core.Jump(cell, pad);
 
         if (item == null)
@@ -973,7 +973,7 @@ public class CoreAdvanced
             MonsterRace = Bot.Monsters.MapMonsters.First(x => x.Name.ToLower() == Monster.ToLower())?.Race ?? "";
         else
         {
-            if (Bot.Monsters.CurrentMonsters.Count() == 0)
+            if (Bot.Monsters.CurrentMonsters.Count == 0)
             {
                 Core.Logger($"No monsters are present in cell \"{Bot.Player.Cell}\" in /{Bot.Map.Name}");
                 return;
