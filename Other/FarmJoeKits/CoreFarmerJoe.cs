@@ -231,14 +231,13 @@ public class CoreFarmerJoe
                     (Core.CheckInventory("Master Ranger") && ClassMasterRanger?.Quantity == 302500))
                     {
                         Core.Logger("Items owned: \"Awethur's Accoutrements\", \"Master Ranger\" continuing");
-                        SetClass(false, true, true);
                         continue;
                     }
 
-                    SetClass(false, true, true);
 
                     Core.SellItem("Venom Head");
                     Core.Logger("Getting Master Ranger");
+                    SetClass(false, true, true);
                     MR.GetMR(false);
                     SetClass(false, true, true);
 
@@ -258,13 +257,10 @@ public class CoreFarmerJoe
                     (Core.CheckInventory("Shaman") && ClassShaman?.Quantity == 302500))
                     {
                         Core.Logger("Items owned: \"Shaman\" continuing");
-                        SetClass(true, false, true);
                         continue;
                     }
 
                     SetClass(false, true, true);
-
-                    Adv.SmartEnhance(Core.FarmClass);
                     Farm.Experience(Level);
 
                     Core.Logger("Getting Shaman");
@@ -281,7 +277,6 @@ public class CoreFarmerJoe
                     (Core.CheckInventory("Scarlet Sorceress") && ClassScarletSorceress?.Quantity == 302500))
                     {
                         Core.Logger("Items owned: \"Scarlet Sorceress\", \"Burning Blade\" continuing");
-                        SetClass(false, true, true);
                         continue;
                     }
 
@@ -291,6 +286,7 @@ public class CoreFarmerJoe
                     Core.Logger("Getting Scarlet Socrceress");
                     SetClass(true, false, true);
                     SS.GetSSorc(false);
+                    SetClass(false, true, true);
 
                     Core.Logger("Getting Burning Blaze");
                     SetClass(true, false, true);
@@ -304,7 +300,6 @@ public class CoreFarmerJoe
                     (Core.CheckInventory("Blaze Binder") && ClassBlazeBinder?.Quantity == 302500))
                     {
                         Core.Logger("Items owned:  \"Blaze Binder\", continuing");
-                        SetClass(false, true, true);
                         continue;
                     }
 
@@ -374,7 +369,6 @@ public class CoreFarmerJoe
                         Core.Logger("Items owned: \"Archfiend DeathLord\", \"ArchFiend\", continuing");
                         continue;
                     }
-
 
                     Core.Logger("Getting ArchFiend DeathLord");
                     SetClass(true, false, true);
@@ -649,10 +643,16 @@ public class CoreFarmerJoe
             Core.Logger("Both swapToSoloClass and swapToFarmClass cannot be true at the same time. Please choose only one.");
             return;
         }
+
         string newSoloClass = Core.SoloClass;
         string newFarmClass = Core.FarmClass;
+        string[] soloClassesToCheck;
 
-        string[] soloClassesToCheck = { "ArchPaladin", "Glacial Berserker", "Shaman", "Rogue (Rare)", "Rogue", "Healer (Rare)", "Healer" };
+        if (!Core.CheckInventory("ArchPaladin"))
+            soloClassesToCheck = new[] { "ArchPaladin", "Dagonsoul Shinobi", "Shaman", "Rogue (Rare)", "Rogue", "Healer (Rare)", "Healer" };
+        else
+            soloClassesToCheck = new[] { "ArchPaladin", "Glacial Berserker", "Shaman", "Rogue (Rare)", "Rogue", "Healer (Rare)", "Healer" };
+
         string[] farmClassesToCheck = { "Archfiend", "Blaze Binder", "Scarlet Sorceress", "Master Ranger", "Shaman", "Mage (Rare)", "Mage" };
 
         if (swapToSoloClass && (Core.SoloClass == "Generic" || soloClassesToCheck.Contains(Core.SoloClass)))
@@ -731,9 +731,7 @@ public class CoreFarmerJoe
                 {
                     Core.Logger($"{classType} found: {className}. Quantity: {classItem.Quantity}. {(rankUp ? "Ranking up" : "Not ranking up")} the class...");
                     if (rankUp)
-                    {
-                        Adv.RankUpClass(className);
-                    }
+                        Adv.RankUpClass(classItem.Name);
                     return className;
                 }
                 else
