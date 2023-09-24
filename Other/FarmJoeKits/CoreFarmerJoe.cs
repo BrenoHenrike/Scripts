@@ -254,7 +254,7 @@ public class CoreFarmerJoe
                     continue;
 
                 case 45:
-                    if (Bot.Player.Level >= Level && 
+                    if (Bot.Player.Level >= Level &&
                     (Core.CheckInventory("Shaman") && ClassShaman?.Quantity == 302500))
                     {
                         Core.Logger("Items owned: \"Shaman\" continuing");
@@ -268,6 +268,7 @@ public class CoreFarmerJoe
                     Farm.Experience(Level);
 
                     Core.Logger("Getting Shaman");
+                    SetClass(true, false, true);
                     Shaman.GetShaman(false);
                     SetClass(true, false, true);
 
@@ -288,6 +289,7 @@ public class CoreFarmerJoe
                     Farm.Experience(Level);
 
                     Core.Logger("Getting Scarlet Socrceress");
+                    SetClass(true, false, true);
                     SS.GetSSorc(false);
 
                     Core.Logger("Getting Burning Blaze");
@@ -313,9 +315,10 @@ public class CoreFarmerJoe
                     Core.Logger("Daily Classes Check");
 
                     Core.Logger("Getting Blaze Binder");
+                    SetClass(true, false, true);
                     Bb.GetClass(false);
-                    SetClass(false, true, true);
 
+                    SetClass(false, true, true);
                     Farm.Experience(Level);
                     Adv.SmartEnhance(Core.FarmClass);
                     Core.Logger($"Level {Level} done");
@@ -328,8 +331,6 @@ public class CoreFarmerJoe
                         Core.Logger("Items owned:  \"DragonSoul Shinobi\", continuing");
                         continue;
                     }
-
-                    SetClass(false, true, true);
 
                     Core.Logger("Getting DSS for DoomKittem(ArchPaladin)");
                     SetClass(false, true, true);
@@ -355,13 +356,12 @@ public class CoreFarmerJoe
                     SetClass(false, true, true);
                     Farm.Experience(Level);
 
-                    GB.GetGB(false);
                     SetClass(true, false, true);
+                    GB.GetGB(false);
 
                     Core.Logger("Getting ArchPaladin");
-                    AP.GetAP(false);
                     SetClass(true, false, true);
-
+                    AP.GetAP(false);
                     Core.Logger($"Level {Level} done");
                     continue;
 
@@ -375,19 +375,18 @@ public class CoreFarmerJoe
                         continue;
                     }
 
-                    SetClass(true, false, true);
 
-                    Adv.SmartEnhance(Core.FarmClass);
                     Core.Logger("Getting ArchFiend DeathLord");
+                    SetClass(true, false, true);
                     AFDeath.GetArm(true, ArchfiendDeathLord.RewardChoice.Archfiend_DeathLord);
                     Core.Equip("Archfiend DeathLord");
 
                     Core.Logger("Getting ArchFiend");
+                    SetClass(true, false, true);
                     AF.GetArchfiend(false);
-                    SetClass(false, true, true);
 
+                    SetClass(false, true, true);
                     Farm.Experience(Level);
-                    Adv.SmartEnhance(Core.FarmClass);
                     Core.Logger($"Level {Level} done");
                     continue;
             }
@@ -403,8 +402,6 @@ public class CoreFarmerJoe
     public void Level75to100()
     {
         SetClass(false, true, true);
-
-        InvEn.EnhanceInventory();
 
         // Prepare for Lvl100
         Core.Logger("P1: Healer for xiang, Buying & Ranking Healer\n" +
@@ -655,32 +652,36 @@ public class CoreFarmerJoe
         string newSoloClass = Core.SoloClass;
         string newFarmClass = Core.FarmClass;
 
-        if (Core.SoloClass != "Generic" && Core.FarmClass != "Generic")
+        string[] soloClassesToCheck = { "ArchPaladin", "Glacial Berserker", "Shaman", "Rogue (Rare)", "Rogue", "Healer (Rare)", "Healer" };
+        string[] farmClassesToCheck = { "Archfiend", "Blaze Binder", "Scarlet Sorceress", "Master Ranger", "Shaman", "Mage (Rare)", "Mage" };
+
+        if (swapToSoloClass && (Core.SoloClass != "Generic" || soloClassesToCheck.Contains(Core.SoloClass)))
+        {
+            Core.Logger("Setting solo class as requested.");
+            newSoloClass = CheckAndSetClass(newSoloClass, soloClassesToCheck, "SoloClass", rankUp);
+        }
+        else if (swapToFarmClass && (Core.FarmClass != "Generic" || farmClassesToCheck.Contains(Core.FarmClass)))
+        {
+            Core.Logger("Setting farm class as requested.");
+            newFarmClass = CheckAndSetClass(newFarmClass, farmClassesToCheck, "FarmClass", rankUp);
+        }
+        else
         {
             Core.Logger("CBO classes are set, using what you picked.");
             return;
         }
 
-        string[] soloClassesToCheck = { "ArchPaladin", "Glacial Berserker", "Shaman", "Rogue (Rare)", "Rogue", "Healer (Rare)", "Healer" };
-        string[] farmClassesToCheck = { "Archfiend", "Blaze Binder", "Scarlet Sorceress", "Master Ranger", "Shaman", "Mage (Rare)", "Mage" };
-
-        Core.Logger($"Checking if CBO (Corebot Options) classes are set\n" +
-            $"Solo: {string.Join(", ", soloClassesToCheck)}\n" +
-            $"Farm: {string.Join(", ", farmClassesToCheck)}");
-
-        newSoloClass = CheckAndSetClass(newSoloClass, soloClassesToCheck, "SoloClass", rankUp);
-        newFarmClass = CheckAndSetClass(newFarmClass, farmClassesToCheck, "FarmClass", rankUp);
-
         if (swapToSoloClass)
         {
             Enum.TryParse(newSoloClass, true, out ClassType soloClassEnum);
             Core.EquipClass(soloClassEnum);
+            Adv.SmartEnhance(newSoloClass);
         }
-
-        if (swapToFarmClass)
+        else if (swapToFarmClass)
         {
             Enum.TryParse(newFarmClass, true, out ClassType farmClassEnum);
             Core.EquipClass(farmClassEnum);
+            Adv.SmartEnhance(newFarmClass);
         }
 
         Core.SoloClass = newSoloClass;
