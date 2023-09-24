@@ -356,31 +356,6 @@ public class CoreAdvanced
     }
 
     /// <summary>
-    /// Kills a monster using it's ID, with the specified monsters the best available race gear
-    /// </summary>
-    /// <param name="map">Map to join</param>
-    /// <param name="cell">Cell to jump to</param>
-    /// <param name="pad">Pad to jump to</param>
-    /// <param name="monsterID">ID of the monster</param>
-    /// <param name="item">Item to kill the monster for, if null will just kill the monster 1 time</param>
-    /// <param name="quant">Desired quantity of the item</param>
-    /// <param name="isTemp">Whether the item is temporary</param>
-    /// <param name="log">Whether it will log that it is killing the monster</param>
-    public void BoostKillMonster(string map, string cell, string pad, int monsterID, string item = "", int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
-    {
-        if (item != "" && Core.CheckInventory(item, quant))
-            return;
-
-        Core.Join(map, cell, pad, publicRoom: publicRoom);
-
-        _RaceGear(monsterID);
-
-        Core.KillMonster(map, cell, pad, monsterID, item, quant, isTemp, log, publicRoom);
-
-        GearStore(true);
-    }
-
-    /// <summary>
     /// Joins a map and hunt for the monster and kills the specified monster with the best available race gear
     /// </summary>
     /// </summary>
