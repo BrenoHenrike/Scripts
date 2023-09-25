@@ -1281,7 +1281,6 @@ public class CoreAdvanced
         InventoryItem? helm = null;
         if (hSpecial != HelmSpecial.None && ItemList.Any(i => i.Category == ItemCategory.Helm))
         {
-            Core.DebugLogger(this);
             helm = ItemList.Find(i => i.Category == ItemCategory.Helm);
 
             // Removing helm from the list because it needs to be enhanced seperately
@@ -1294,7 +1293,6 @@ public class CoreAdvanced
         // If Awe-Enhancements aren't unlocked, enhance them with normal enhancements
         if (wSpecial != WeaponSpecial.None && ItemList.Any(i => i.ItemGroup == "Weapon") && (uAwe() || (int)wSpecial > 6))
         {
-            Core.DebugLogger(this);
             weapon = ItemList.Find(i => i.ItemGroup == "Weapon");
 
             // Removing weapon from the list because it needs to be enhanced seperately
@@ -1342,11 +1340,9 @@ public class CoreAdvanced
             {
                 _AutoEnhance(item, shopID);
                 Bot.Sleep(Core.ActionDelay);
-                Core.DebugLogger(this);
             }
         }
 
-        Core.DebugLogger(this);
         // Enhancing the cape with the cape special
         if (cape != null)
         {
@@ -1396,7 +1392,6 @@ public class CoreAdvanced
                 _AutoEnhance(cape, 2143, ((int)cSpecial > 0) ? "forge" : null);
             else skipCounter++;
         }
-        Core.DebugLogger(this);
 
         // Enhancing the helm with the helm special
         if (helm != null)
@@ -1440,18 +1435,15 @@ public class CoreAdvanced
                 _AutoEnhance(helm, 2164, ((int)hSpecial > 0) ? "forge" : null);
             else skipCounter++;
         }
-        Core.DebugLogger(this);
 
         // Enhancing the weapon with the weapon special
         if (weapon != null)
         {
-            Core.DebugLogger(this);
             int shopID = 0;
             bool canEnhance = true;
 
             if ((int)wSpecial <= 6)
             {
-                Core.DebugLogger(this);
                 switch (type)
                 {
                     case EnhancementType.Fighter:
@@ -1480,7 +1472,6 @@ public class CoreAdvanced
             }
             else
             {
-                Core.DebugLogger(this);
                 switch (wSpecial)
                 {
                     case WeaponSpecial.Forge:
@@ -1537,7 +1528,6 @@ public class CoreAdvanced
                         }
                 }
 
-                Core.DebugLogger(this);
                 shopID = 2142;
             }
 
@@ -1563,10 +1553,9 @@ public class CoreAdvanced
             }
 
             // Checking if the item is already optimally enhanced
-            Core.DebugLogger(this, item.Name);
+            // Core.DebugLogger(this, item.Name);
             if (Bot.Player.Level == item.EnhancementLevel)
             {
-                Core.DebugLogger(this);
                 if (specialOnCape)
                 {
                     if ((int)cSpecial == item.EnhancementPatternID)
@@ -1577,10 +1566,8 @@ public class CoreAdvanced
                 }
                 else if (specialOnWeapon)
                 {
-                    Core.DebugLogger(this);
                     if (((int)wSpecial <= 6 ? (int)type : 10) == item.EnhancementPatternID && ((int)wSpecial == getProcID(item) || ((int)wSpecial == 99 && getProcID(item) == 0)))
                     {
-                        Core.DebugLogger(this);
                         skipCounter++;
                         return;
                     }
