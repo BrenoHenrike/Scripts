@@ -46,22 +46,17 @@ public class YokaiQuests
 
         Core.Logger("ShogunWar Quest line");
 
-        Core.EquipClass(ClassType.Farm);
-
         // Shadow Medals 6450
         Story.KillQuest(6450, "ShogunWar", "Shadow Samurai");
 
         // We Need Supplies 6451
-        Story.KillQuest(6451, "ShogunWar", new[] { "Kijimuna", "Reishi" });
-
-
-        // if (!Story.QuestProgression(6451))
-        // {
-        //     Core.EnsureAccept(6451);
-        //     Core.HuntMonsterMapID("ShogunWar", "Reishi", "Item");
-        //     Core.HuntMonsterMapID("ShogunWar", "Kijimuna", "Item", 4);
-        //     Core.EnsureComplete(6451);
-        // }
+        if (!Story.QuestProgression(6451))
+        {
+            Core.EnsureAccept(6451);
+            Core.HuntMonsterMapID("ShogunWar", 8, "Kijimuna Pollen", 4);
+            Core.HuntMonsterMapID("ShogunWar", 7, "Reishi Spores", 4);
+            Core.EnsureComplete(6451);
+        }
 
         // Help the Samurai 6452
         Story.MapItemQuest(6452, "ShogunWar", 5956, 5);
@@ -278,11 +273,11 @@ public class YokaiQuests
         Core.EquipClass(ClassType.Farm);
 
         // Wokou 9378
-        Story.MapItemQuest(9378, "yokaipirate", new[] { 12133, 12134, 12135});
+        Story.MapItemQuest(9378, "yokaipirate", new[] { 12133, 12134, 12135 });
 
         // Shanty Sha-N-Ti 9379
         Story.KillQuest(9379, "yokaipirate", "Disguised Pirate");
-        
+
         // Yokai's Ark 9380
         if (!Story.QuestProgression(9380))
         {
