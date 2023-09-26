@@ -184,8 +184,7 @@ public class YokaiQuests
         Story.KillQuest(6474, "heiwavalley", "Abumi Guchi");
 
         // Arm the Militia 6475
-
-        if(!Story.QuestProgression(6475))
+        if (!Story.QuestProgression(6475))
         {
             Core.EnsureAccept(6475);
             Core.HuntMonster("heiwavalley", "Shadow Samurai", "Pilfered Armor", 5);
@@ -201,8 +200,12 @@ public class YokaiQuests
         Story.KillQuest(6477, "heiwavalley", "Goryo");
 
         // Feel the Heat 6478
-        Story.BuyQuest(6478, "heiwavalley", 1608, "Wasabi");
-        Story.KillQuest(6478, "heiwavalley", "Kosenjobi");
+        if (!Story.QuestProgression(6478))
+        {
+            Core.EnsureAccept(6478);
+            Core.HuntMonster("heiwavalley", "Kosenjobi", "Spectral Heat", 5);
+            Story.BuyQuest(6478, "heiwavalley", 1608, "Wasabi");
+        }
 
         // Get Some Fur 6479
         Story.KillQuest(6479, "heiwavalley", "Abumi Guchi");
@@ -213,8 +216,12 @@ public class YokaiQuests
 
 
         // Eyes on the Prize 6481
-        Story.MapItemQuest(6481, "heiwavalley", 5970, 8);
-        Story.KillQuest(6481, "heiwavalley", "Inugami");
+        if (!Story.QuestProgression(6481))
+        {
+            Core.EnsureAccept(6481);
+            Core.HuntMonster("heiwavalley", "Inugami", "Spirit Eyes", 4);
+            Story.MapItemQuest(6481, "heiwavalley", 5970, 8);
+        }
 
 
         // Reveal the Trail 6482
@@ -223,7 +230,12 @@ public class YokaiQuests
 
 
         // Defeat the Onryo 6483
-        Story.KillQuest(6483, "heiwavalley", "Onryo");
+        if (!Story.QuestProgression(6483))
+        {
+            Core.EnsureAccept(6483);
+            Core.HuntMonsterMapID("heiwavalley", 15, "Onryo Slain");
+            Core.EnsureComplete(6483);
+        }
 
         // Calm the Spirits 6485
         Story.KillQuest(6485, "shadowfortress", "Restless Spirit");
