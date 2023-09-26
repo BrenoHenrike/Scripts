@@ -99,9 +99,7 @@ public class CoreHollowbornChaosEnvoy
 
         if (getAllDrops)
         {
-            // Core.DebugLogger(this);
             StirringDiscord(StirringDiscordRewards.All);
-            // Core.DebugLogger(this);
             if (BankAfter)
             {
                 foreach (string item in Core.QuestRewards(8998))
@@ -110,10 +108,8 @@ public class CoreHollowbornChaosEnvoy
                         Core.ToBank(item);
                 }
             }
-            // Core.DebugLogger(this);
 
             InTheBeastsShadow(InTheBeastsShadowRewards.All);
-            // Core.DebugLogger(this);
             if (BankAfter)
             {
                 foreach (string item in Core.QuestRewards(8999))
@@ -122,10 +118,8 @@ public class CoreHollowbornChaosEnvoy
                         Core.ToBank(item);
                 }
             }
-            // Core.DebugLogger(this);
 
             UniqueQuarry(UniqueQuarryRewards.All, false);
-            // Core.DebugLogger(this);
             if (BankAfter)
             {
                 foreach (string item in Core.QuestRewards(9000))
@@ -134,10 +128,8 @@ public class CoreHollowbornChaosEnvoy
                         Core.ToBank(item);
                 }
             }
-            // Core.DebugLogger(this);
 
             WaveringIllusions(WaveringIllusionsRewards.All);
-            // Core.DebugLogger(this);
             if (BankAfter)
             {
                 foreach (string item in Core.QuestRewards(9001))
@@ -146,10 +138,8 @@ public class CoreHollowbornChaosEnvoy
                         Core.ToBank(item);
                 }
             }
-            // Core.DebugLogger(this);
 
             ShadowsOfDisdain(ShadowsOfDisdainRewards.All);
-            // Core.DebugLogger(this);
             if (BankAfter)
             {
                 foreach (string item in Core.QuestRewards(9002))
@@ -158,10 +148,8 @@ public class CoreHollowbornChaosEnvoy
                         Core.ToBank(item);
                 }
             }
-            // Core.DebugLogger(this);
 
             PersistingMayhem(PersistingMayhemRewards.All);
-            // Core.DebugLogger(this);
             if (BankAfter)
             {
                 foreach (string item in Core.QuestRewards(9003))
@@ -170,46 +158,32 @@ public class CoreHollowbornChaosEnvoy
                         Core.ToBank(item);
                 }
             }
-            // Core.DebugLogger(this);
         }
         else
         {
-            // Core.DebugLogger(this);
             StirringDiscord(Bot.Config!.Get<StirringDiscordRewards>("Stirring Discord"), true);
-            // Core.DebugLogger(this);
             if (BankAfter)
                 Core.ToBank((int)Bot.Config!.Get<StirringDiscordRewards>("Stirring Discord"));
-            // Core.DebugLogger(this);
 
             InTheBeastsShadow(Bot.Config!.Get<InTheBeastsShadowRewards>("In TheBeasts Shadow"), true);
-            // Core.DebugLogger(this);
             if (BankAfter)
                 Core.ToBank((int)Bot.Config!.Get<InTheBeastsShadowRewards>("In TheBeasts Shadow"));
-            // Core.DebugLogger(this);
 
             UniqueQuarry(Bot.Config!.Get<UniqueQuarryRewards>("Unique Quarry"), true);
-            // Core.DebugLogger(this);
             if (BankAfter)
                 Core.ToBank((int)Bot.Config!.Get<UniqueQuarryRewards>("Unique Quarry"));
-            // Core.DebugLogger(this);
 
             WaveringIllusions(Bot.Config!.Get<WaveringIllusionsRewards>("Wavering Illusions"), true);
-            // Core.DebugLogger(this);
             if (BankAfter)
                 Core.ToBank((int)Bot.Config!.Get<WaveringIllusionsRewards>("Wavering Illusions"));
-            // Core.DebugLogger(this);
 
             ShadowsOfDisdain(Bot.Config!.Get<ShadowsOfDisdainRewards>("Shadows Of Disdain"), true);
-            // Core.DebugLogger(this);
             if (BankAfter)
                 Core.ToBank((int)Bot.Config!.Get<ShadowsOfDisdainRewards>("Shadows Of Disdain"));
-            // Core.DebugLogger(this);
 
             PersistingMayhem(Bot.Config!.Get<PersistingMayhemRewards>("Persisting Mayhem"), true);
-            // Core.DebugLogger(this);
             if (BankAfter)
                 Core.ToBank((int)Bot.Config!.Get<PersistingMayhemRewards>("Persisting Mayhem"));
-            // Core.DebugLogger(this);
         }
     }
 
@@ -431,8 +405,9 @@ public class CoreHollowbornChaosEnvoy
         if ((Bot.Config!.Get<ShadowsOfDisdainRewards>("Shadows Of Disdain") == ShadowsOfDisdainRewards.All && Core.CheckInventory(rewards))
         || Bot.Config!.Get<ShadowsOfDisdainRewards>("Shadows Of Disdain") == ShadowsOfDisdainRewards.None
         || Core.CheckInventory((int)Bot.Config!.Get<ShadowsOfDisdainRewards>("Shadows Of Disdain"), toInv: false))
+            return;
 
-            Core.AddDrop(rewards);
+        Core.AddDrop(rewards);
 
         if (!Bot.Quests.IsUnlocked(9002))
             WaveringIllusions();
@@ -488,8 +463,9 @@ public class CoreHollowbornChaosEnvoy
         if ((Bot.Config!.Get<PersistingMayhemRewards>("Persisting Mayhem") == PersistingMayhemRewards.All && Core.CheckInventory(rewards))
         || Bot.Config!.Get<PersistingMayhemRewards>("Persisting Mayhem") == PersistingMayhemRewards.None
         || Core.CheckInventory((int)Bot.Config!.Get<PersistingMayhemRewards>("Persisting Mayhem"), toInv: false))
+            return;
 
-            Core.AddDrop(rewards);
+        Core.AddDrop(rewards);
 
         if (!Bot.Quests.IsUnlocked(9003))
             ShadowsOfDisdain();
