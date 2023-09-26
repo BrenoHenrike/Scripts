@@ -5469,7 +5469,7 @@
       "seasonal"
     ],
     "path": "Seasonal/TalkLikeaPirateDay/SunkenTreasureQuestRewards.cs",
-    "size": 1862,
+    "size": 1896,
     "fileName": "SunkenTreasureQuestRewards.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/SunkenTreasureQuestRewards.cs"
   },
@@ -19078,6 +19078,19 @@
     "size": 3293,
     "fileName": "ArmyLoremasterRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyLoremasterRep.cs"
+  },
+  {
+    "name": "Army Aegis Rep",
+    "description": "Farm reputation with your army. Faction",
+    "tags": [
+      "army",
+      "reputation",
+      "aegis"
+    ],
+    "path": "Army/ArmyFarm/Rep/RepTemplate.cs",
+    "size": 2074,
+    "fileName": "RepTemplate.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/RepTemplate.cs"
   },
   {
     "name": "Army Troll Rep",
