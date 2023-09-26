@@ -184,7 +184,14 @@ public class YokaiQuests
         Story.KillQuest(6474, "heiwavalley", "Abumi Guchi");
 
         // Arm the Militia 6475
-        Story.KillQuest(6475, "heiwavalley", new[] { "Shadow Samurai", "Shadow Samurai" });
+
+        if(!Story.QuestProgression(6475))
+        {
+            Core.EnsureAccept(6475);
+            Core.HuntMonster("heiwavalley", "Shadow Samurai", "Pilfered Armor", 5);
+            Core.HuntMonster("heiwavalley", "Shadow Samurai", "Stolen Sword", 5);
+            Core.EnsureComplete(6475);
+        }
 
         // Burn the Bones 6476
         Story.MapItemQuest(6476, "heiwavalley", 5968, 6);
