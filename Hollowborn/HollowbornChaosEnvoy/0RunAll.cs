@@ -41,7 +41,7 @@ public class HBCE0
     {
         Core.SetOptions();
 
-        HBCE.GetAll(Bot.Config!.Get<bool>("getAll"));
+        HBCE.GetAll();
 
         Core.SetOptions(false);
     }

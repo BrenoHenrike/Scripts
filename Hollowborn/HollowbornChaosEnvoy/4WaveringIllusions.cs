@@ -41,7 +41,7 @@ public class HBCE4
     {
         Core.SetOptions();
 
-        HBCE.WaveringIllusions(Bot.Config!.Get<bool>("getAll"));
+        HBCE.WaveringIllusions();
 
         Core.SetOptions(false);
     }
