@@ -1721,6 +1721,10 @@ public class CoreFarms
             return;
         }
 
+        Core.Logger("Getting some boosters to make this quicker");
+        GetBoost(10997, "REPUTATION Boost! (10 min)", 6, 1615, true);
+
+        ToggleBoost(BoostType.Reputation);
         Core.AddDrop("Fishing Bait", "Fishing Dynamite");
         Core.EquipClass(ClassType.Farm);
         // ToggleBoost(BoostType.Reputation);
@@ -1735,6 +1739,7 @@ public class CoreFarms
 
         while (!Bot.ShouldExit && FactionRank("Fishing") < (rank > 2 ? 2 : rank) && (!shouldDerp || !Core.HasAchievement(14)))
         {
+            Core.Logger("Fishing Rank < 2, gotta do bait first");
             GetBaitandDynamite(20, 0);
             Core.Logger($"Fishing With: Fishing Bait");
             Core.Logger($"0 Xp means a Failed Catch, common at lower Fishing (Non-Faction) ranks (Minigame)");
@@ -1771,6 +1776,7 @@ public class CoreFarms
             Core.TrashCan(new[] { "Fishing Bait", "Fishing Dynamite" });
         Core.SavedState(false);
         Core.CancelRegisteredQuests();
+        ToggleBoost(BoostType.Reputation, false);
     }
 
     public void GetBaitandDynamite(int FishingBaitQuant, int FishingDynamiteQuant)
