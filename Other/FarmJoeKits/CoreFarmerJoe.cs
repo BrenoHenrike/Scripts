@@ -284,19 +284,13 @@ public class CoreFarmerJoe
                     Farm.Experience(Level);
 
                     //check to reduce setclass usage
-                    if (!Core.CheckInventory(ClassScarletSorceress?.Name))
-                    {
-                        Core.Logger("Getting Scarlet Socrceress");
-                        SetClass(true, false, true);
-                        SS.GetSSorc(false);
-                    }
+                    Core.Logger("Getting Scarlet Socrceress");
+                    SetClass(true, false, true);
+                    SS.GetSSorc(false);
                     SetClass(false, true, true);
 
-                    if (!Core.CheckInventory("Burning Blaze"))
-                    {
-                        Core.Logger("Getting Burning Blaze");
-                        BB.GetBurningBlade();
-                    }
+                    Core.Logger("Getting Burning Blaze");
+                    BB.GetBurningBlade();
                     Core.Logger($"Level {Level} done");
                     continue;
 
@@ -311,18 +305,12 @@ public class CoreFarmerJoe
                     //Daily classes
                     Core.Logger("Daily Classes Check");
 
-                    if (!Core.CheckInventory(ClassBlazeBinder?.Name))
-                    {
-                        Core.Logger("Getting Blaze Binder");
-                        SetClass(true, false, true);
-                        Bb.GetClass(false);
-                    }
+                    Core.Logger("Getting Blaze Binder");
+                    SetClass(true, false, true);
+                    Bb.GetClass(false);
 
-                    if (Bot.Player.Level < Level)
-                    {
-                        SetClass(false, true, true);
-                        Farm.Experience(Level);
-                    }
+                    SetClass(false, true, true);
+                    Farm.Experience(Level);
                     Core.Logger($"Level {Level} done");
                     continue;
 
@@ -336,19 +324,13 @@ public class CoreFarmerJoe
 
                     Core.Logger("Getting DSS for DoomKittem(ArchPaladin)");
 
-                    if (Bot.Player.Level < Level)
-                    {
-                        SetClass(false, true, true);
-                        Farm.Experience(Level);
-                    }
+                    SetClass(false, true, true);
+                    Farm.Experience(Level);
 
-                    if (!Core.CheckInventory(ClassDragonSoulShinobi?.Name))
-                    {
-                        Core.Logger("Getting DragonSoul Shinobi");
-                        SetClass(true, false, true);
-                        DS.GetDSS(false);
-                        SetClass(true, false, true);
-                    }
+                    Core.Logger("Getting DragonSoul Shinobi");
+                    SetClass(true, false, true);
+                    DS.GetDSS(false);
+                    SetClass(true, false, true);
                     Core.Logger($"Level {Level} done");
                     continue;
 
@@ -361,24 +343,15 @@ public class CoreFarmerJoe
                         continue;
                     }
 
-                    if (Bot.Player.Level < Level)
-                    {
-                        SetClass(false, true, true);
-                        Farm.Experience(Level);
-                    }
+                    SetClass(false, true, true);
+                    Farm.Experience(Level);
 
-                    if (!Core.CheckInventory(ClassGlacialBerserker?.Name))
-                    {
-                        SetClass(true, false, true);
-                        GB.GetGB(false);
-                    }
+                    SetClass(true, false, true);
+                    GB.GetGB(false);
 
-                    if (!Core.CheckInventory(ClassArchPaladin?.Name))
-                    {
-                        Core.Logger("Getting ArchPaladin");
-                        SetClass(true, false, true);
-                        AP.GetAP(false);
-                    }
+                    Core.Logger("Getting ArchPaladin");
+                    SetClass(true, false, true);
+                    AP.GetAP(false);
                     Core.Logger($"Level {Level} done");
                     continue;
 
@@ -392,25 +365,16 @@ public class CoreFarmerJoe
                         continue;
                     }
 
-                    if (!Core.CheckInventory("ArchFiend DeathLord"))
-                    {
-                        Core.Logger("Getting ArchFiend DeathLord");
-                        SetClass(true, false, true);
-                        AFDeath.GetArm(true, ArchfiendDeathLord.RewardChoice.Archfiend_DeathLord);
-                    }
+                    Core.Logger("Getting ArchFiend DeathLord");
+                    SetClass(true, false, true);
+                    AFDeath.GetArm(true, ArchfiendDeathLord.RewardChoice.Archfiend_DeathLord);
 
-                    if (!Core.CheckInventory(ClassArchFiend?.Name))
-                    {
-                        Core.Logger("Getting ArchFiend");
-                        SetClass(true, false, true);
-                        AF.GetArchfiend(false);
-                    }
+                    Core.Logger("Getting ArchFiend");
+                    SetClass(true, false, true);
+                    AF.GetArchfiend(false);
 
-                    if (Bot.Player.Level < Level)
-                    {
-                        SetClass(false, true, true);
-                        Farm.Experience(Level);
-                    }
+                    SetClass(false, true, true);
+                    Farm.Experience(Level);
                     Core.Logger($"Level {Level} done");
                     continue;
             }
