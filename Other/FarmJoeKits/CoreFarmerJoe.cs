@@ -239,6 +239,7 @@ public class CoreFarmerJoe
                         Core.Logger("Getting Master Ranger");
                         SetClass(false, true, false);
                         MR.GetMR(false);
+                        SetClass(false, true, false);
                     }
 
                     if (Bot.Player.Level < Level)
@@ -277,6 +278,7 @@ public class CoreFarmerJoe
                         Core.Logger("Getting Shaman");
                         SetClass(true, false, true);
                         Shaman.GetShaman(false);
+                        SetClass(true, false, true);
                     }
                     Core.Logger($"Level {Level} done");
                     continue;
@@ -302,6 +304,7 @@ public class CoreFarmerJoe
                         Core.Logger("Getting Scarlet Socrceress");
                         SetClass(true, false, true);
                         SS.GetSSorc(false);
+                        SetClass(true, false, true);
                     }
 
                     if (!Core.CheckInventory("Burning Blaze"))
@@ -329,6 +332,7 @@ public class CoreFarmerJoe
                         Core.Logger("Getting Blaze Binder");
                         SetClass(true, false, true);
                         Bb.GetClass(false);
+                        SetClass(true, false, true);
                     }
 
                     if (Bot.Player.Level < Level)
@@ -357,7 +361,8 @@ public class CoreFarmerJoe
                     {
                         Core.Logger("Getting DSS for DoomKittem(ArchPaladin)");
                         SetClass(true, false, true);
-                        DS.GetDSS(false);
+                        DS.GetDSS();
+                        SetClass(true, false, true);
                     }
                     Core.Logger($"Level {Level} done");
                     continue;
@@ -381,6 +386,7 @@ public class CoreFarmerJoe
                     {
                         SetClass(true, false, true);
                         GB.GetGB(false);
+                        SetClass(true, false, true);
                     }
 
                     if (!Core.CheckInventory("ArchPaladin"))
@@ -388,6 +394,7 @@ public class CoreFarmerJoe
                         Core.Logger("Getting ArchPaladin");
                         SetClass(true, false, true);
                         AP.GetAP(false);
+                        SetClass(true, false, true);
                     }
                     Core.Logger($"Level {Level} done");
                     continue;
@@ -414,6 +421,7 @@ public class CoreFarmerJoe
                         Core.Logger("Getting ArchFiend");
                         SetClass(true, false, true);
                         AF.GetArchfiend(false);
+                        SetClass(true, false, true);
                     }
 
                     if (Bot.Player.Level < Level)
@@ -582,7 +590,7 @@ public class CoreFarmerJoe
     {
         if (Core.CheckInventory("The Server is Down"))
             return;
-            
+
         Core.FarmingLogger("The Server is Down", 1);
         SetClass(false, true, true);
         Core.HuntMonster("undergroundlabb", "Rabid Server Hamster", "The Server is Down", isTemp: false, log: false);

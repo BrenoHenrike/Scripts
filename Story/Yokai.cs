@@ -28,12 +28,12 @@ public class YokaiQuests
         Core.SetOptions(false);
     }
 
-    public void Quests()
+    public void Quests(bool NoPirate = true)
     {
         ShogunWar();
         ShinrinGrove();
         Shadowfortress();
-        YokaiPirate(false);
+        YokaiPirate(NoPirate);
     }
 
 
@@ -264,9 +264,9 @@ public class YokaiQuests
         Story.MapItemQuest(6492, "shadowfortress", new[] { 5976, 5979 });
 
         // Find Jaaku! 6493
-        Core.EquipClass(ClassType.Solo);
         if (!Story.QuestProgression(6493))
         {
+            Core.EquipClass(ClassType.Solo);
             Core.EnsureAccept(6493);
             Core.HuntMonster("shadowfortress", "6th Head of Orochi", "6th Head Defeated");
             Core.HuntMonster("shadowfortress", "5th Head of Orochi", "5th Head Defeated");
@@ -276,13 +276,20 @@ public class YokaiQuests
             Core.HuntMonster("shadowfortress", "1st Head of Orochi", "1st Head Defeated");
             Story.MapItemQuest(6493, "shadowfortress", 5977);
         }
+
         // Defeat Jaaku! 6494        
-        Story.KillQuest(6494, "shadowfortress", "Jaaku");
+        if (!Story.QuestProgression(6494))
+        {
+            Core.EquipClass(ClassType.Solo);
+            Core.EnsureAccept(6494);
+            Core.HuntMonsterMapID("shadowfortress", 31, "Jaaku Defeated");
+            Core.EnsureAccept(6494);
+        }
     }
 
     public void YokaiPirate(bool NoPirate = true)
     {
-        if (Core.isCompletedBefore(9388) || !Core.isSeasonalMapActive("yokaipirate") || NoPirate)
+        if (NoPirate || Core.isCompletedBefore(9388) || !Core.isSeasonalMapActive("yokaipirate"))
             return;
 
         Story.PreLoad(this);
@@ -314,21 +321,48 @@ public class YokaiQuests
         // Papers Please 9383
         Story.MapItemQuest(9383, "yokaipirate", 12138, 7);
 
+        Core.EquipClass(ClassType.Farm);
         // King and Coral Snakes 9384
-        Story.MapItemQuest(9384, "yokaipirate", 12139);
-        Story.KillQuest(9384, "yokaipirate", new[] { "Disguised Pirate", "Serpent Warrior" });
+        if (!Story.QuestProgression(9384))
+        {
+            Core.EnsureAccept(9384);
+            Core.HuntMonster("yokaipirate", "Disguised Pirate", "Pirate Interrogated", 6);
+            Core.HuntMonster("yokaipirate", "Serpent Warrior", "Warrior Interrogated", 6);
+            Story.MapItemQuest(9384, "yokaipirate", 12139);
+        }
 
         // Horizon's Green Flash 9385
         Story.KillQuest(9385, "yokaipirate", "Noble Owl");
 
         // Highly Buoyant Metal Armor 9386
-        Story.KillQuest(9386, "yokaipirate", "Neverglades Knight");
+        if (!Story.QuestProgression(9386))
+        {
+            Core.EquipClass(ClassType.Solo);
+            Core.EnsureAccept(9386);
+            Core.HuntMonsterMapID("yokaipirate", 1, "Knight Captured", 8);
+            Core.EnsureComplete(9386);
+        }
 
         // Salty Roots 9387
-        Story.KillQuest(9387, "yokaipirate", "Lord Brentan");
+        if (!Story.QuestProgression(9387))
+        {
+            Core.EquipClass(ClassType.Solo);
+            Core.EnsureAccept(9387);
+            Core.HuntMonsterMapID("yokaipirate", 11, "Neverglades Lord Dueled");
+            Core.EnsureComplete(9387);
+        }
 
         // Kabuki Rehearsal 9388
-        Story.KillQuest(9388, "yokaipirate", new[] { "Lord Brentan", "Neverglades Knight", "Disguised Pirate" });
+        if (!Story.QuestProgression(9384))
+        {
+            Core.EnsureAccept(9388);
+            Core.EquipClass(ClassType.Solo);
+            Core.HuntMonsterMapID("yokaipirate", 11, "Gold Leaf Brooch", 1);
+            Core.EquipClass(ClassType.Farm);
+            Core.HuntMonsterMapID("yokaipirate", 1, "Knight's Emblem", 7);
+            Core.HuntMonsterMapID("yokaipirate", 3, "Yokai Pirate's Piece", 7);
+            Core.EnsureComplete(9388);
+        }
 
 
 

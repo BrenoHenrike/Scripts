@@ -44,7 +44,7 @@ public class DragonShinobi
         Core.FarmingLogger("Dragon Shinobi Token", 300);
         Core.RegisterQuests(7924);
         while (!Bot.ShouldExit && !Core.CheckInventory(20561, 300))
-            Core.HuntMonster("shadowfortress", "1st Head Of Orochi");
+            Core.HuntMonster("shadowfortress", "1st Head Of Orochi", log: false);
         Core.CancelRegisteredQuests();
 
         Adv.BuyItem("shadowfortress", 1968, 59476, shopItemID: 8078);
