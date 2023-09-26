@@ -34,6 +34,7 @@ public class YokaiQuests
         ShinrinGrove();
         Shadowfortress();
         YokaiPirate(NoPirate);
+        YokaiTreasure(NoPirate);
     }
 
 
@@ -369,5 +370,52 @@ public class YokaiQuests
 
 
 
+    }
+
+    public void YokaiTreasure(bool NoPirate = true)
+    {
+        if (Core.isCompletedBefore(9405) || !Core.isSeasonalMapActive("yokaitreasure"))
+            return;
+
+        Story.PreLoad(this);
+
+        Core.Logger("YokaiTreasure Quests Line");
+
+        Core.EquipClass(ClassType.Farm);
+
+        // All Hands Report 9396
+        Story.MapItemQuest(9396, "yokaitreasure", new[] { 12162, 12163, 12164});
+
+        // Starving Ghosts 9397
+        Story.KillQuest(9397, "yokaitreasure", "Needle Mouth");
+
+        // Sudden Striker 9398
+        Story.KillQuest(9398, "yokaitreasure", "Quicksilver");
+
+        // Onmyoji Maiden 9399
+        Story.MapItemQuest(9399, "yokaitreasure", new[] { 12165, 12166});
+
+        // Proper Parley 9400
+        Story.KillQuest(9400, "yokaitreasure", "Imperial Warrior");
+
+        // Hunger Pains 9401
+        Story.KillQuest(9401, "yokaitreasure", "Needle Mouth");
+
+        // Terror-cotta Warriors 9402
+        Story.KillQuest(9402, "yokaitreasure", "Imperial Warrior");
+
+        // Indoor Fireworks 9403
+        Story.MapItemQuest(9403, "yokaitreasure", 12167, 4);
+        
+        // Sons of Biscuit Eaters 9404
+        if (!Story.QuestProgression(9404))
+        {
+            Core.EnsureAccept(9404);
+            Core.HuntMonster("yokaitreasure", "Needle Mouth", "Criminal Marker", 6);
+            Core.HuntMonster("yokaitreasure", "Imperial Warrior", "Imperial Scale", 6);
+        }
+
+        // Pearl of my Heart 9405
+        Story.KillQuest(9405, "yokaitreasure", "Admiral Zheng");
     }
 }
