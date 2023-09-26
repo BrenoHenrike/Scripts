@@ -159,7 +159,19 @@ public class CoreFarmerJoe
     };
 
     public static void ScriptMain(IScriptInterface bot) => Core.RunCore();
-
+    #region InvClasses
+    private readonly InventoryItem? ClassRogue = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == (Core.CheckInventory("Rogue (Rare)") ? "Rogue (Rare)" : "Rogue").ToLower().Trim() && i.Category == ItemCategory.Class);
+    private readonly InventoryItem? ClassMage = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == (Core.CheckInventory("Mage (Rare)") ? "Mage(Rare)" : "Mage").ToLower().Trim() && i.Category == ItemCategory.Class);
+    private readonly InventoryItem? ClassMasterRanger = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == ("Master Ranger").ToLower().Trim() && i.Category == ItemCategory.Class);
+    private readonly InventoryItem? ClassShaman = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == ("Shaman").ToLower().Trim() && i.Category == ItemCategory.Class);
+    private readonly InventoryItem? ClassScarletSorceress = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == ("Scarlet Sorceress").ToLower().Trim() && i.Category == ItemCategory.Class);
+    private readonly InventoryItem? ClassBlazeBinder = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == ("Blaze Binder").ToLower().Trim() && i.Category == ItemCategory.Class);
+    private readonly InventoryItem? ClassDragonSoulShinobi = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == ("DragonSoul Shinobi").ToLower().Trim() && i.Category == ItemCategory.Class);
+    private readonly InventoryItem? ClassArchPaladin = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == ("ArchPaladin").ToLower().Trim() && i.Category == ItemCategory.Class);
+    private readonly InventoryItem? ClassArchFiend = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == ("ArchFiend").ToLower().Trim() && i.Category == ItemCategory.Class);
+    private readonly InventoryItem? ClassGlacialBerserker = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == ("Glacial Berserker").ToLower().Trim() && i.Category == ItemCategory.Class);
+    private readonly InventoryItem? ClassDragonofTime = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == ("Dragon of Time").ToLower().Trim() && i.Category == ItemCategory.Class);
+    #endregion InvClasses
     /// <summary>
     /// Executes a sequence of leveling and progression steps including class enhancements, item acquisition, and outfit setup.
     /// </summary>
@@ -202,19 +214,6 @@ public class CoreFarmerJoe
     /// </summary>
     public void Level30to75()
     {
-        #region InvClasses
-        InventoryItem? ClassRogue = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == (Core.CheckInventory("Rogue (Rare)") ? "Rogue (Rare)" : "Rogue").ToLower().Trim() && i.Category == ItemCategory.Class);
-        InventoryItem? ClassMage = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == (Core.CheckInventory("Mage (Rare)") ? "Mage(Rare)" : "Mage").ToLower().Trim() && i.Category == ItemCategory.Class);
-        InventoryItem? ClassMasterRanger = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == ("Master Ranger").ToLower().Trim() && i.Category == ItemCategory.Class);
-        InventoryItem? ClassShaman = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == ("Shaman").ToLower().Trim() && i.Category == ItemCategory.Class);
-        InventoryItem? ClassScarletSorceress = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == ("Scarlet Sorceress").ToLower().Trim() && i.Category == ItemCategory.Class);
-        InventoryItem? ClassBlazeBinder = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == ("Blaze Binder").ToLower().Trim() && i.Category == ItemCategory.Class);
-        InventoryItem? ClassDragonSoulShinobi = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == ("DragonSoul Shinobi").ToLower().Trim() && i.Category == ItemCategory.Class);
-        InventoryItem? ClassArchPaladin = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == ("ArchPaladin").ToLower().Trim() && i.Category == ItemCategory.Class);
-        InventoryItem? ClassArchFiend = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == ("ArchFiend").ToLower().Trim() && i.Category == ItemCategory.Class);
-        InventoryItem? ClassGlacialBerserker = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == ("Glacial Berserker").ToLower().Trim() && i.Category == ItemCategory.Class);
-        #endregion InvClasses
-
         #region Leve30 to 75
         // //Adv.BestGear(GenericGearBoost.exp);
         Farm.ToggleBoost(BoostType.Experience);
@@ -436,13 +435,9 @@ public class CoreFarmerJoe
     /// </summary>
     public void Level75to100()
     {
-        SetClass(false, true, true);
-
         // Prepare for Lvl100
         Core.Logger("P1: Healer for xiang, Buying & Ranking Healer\n" +
             "class to prep for xiang (Skipped if you have Dragon of Time.");
-
-        SetClass(true, false, true);
 
         // Prep class for 13LoC
         if (!Core.CheckInventory("Dragon of Time"))
@@ -453,37 +448,41 @@ public class CoreFarmerJoe
                     Adv.BuyItem("classhalla", 176, "Healer");
                 Adv.RankUpClass(Core.CheckInventory("Healer (Rare)") ? "Healer (Rare)" : "Healer");
             }
-            Adv.RankUpClass("Dragon of Time");
         }
+        else if (Core.CheckInventory("Dragon of Time") && ClassDragonofTime?.Quantity < 302500)
+            Adv.RankUpClass("Dragon of Time");
+
 
         // P2 Chaos Shenanigans
         Core.Logger("P2: Chaos Shenanigans");
         if (!Core.CheckInventory("Enchanted Cape of Awe"))
             COA.GetCoA();
         Core.Equip("Cape of Awe");
-        Adv.SmartEnhance(Core.FarmClass);
+        SetClass(true, false, true);
         LOC.Complete13LOC();
 
         // P3 Solo Classes & Weapon
         Core.Logger("P3: Solo Classes & Weapon");
-        Core.Logger("Getting Lord of order.");
+        Core.Logger("Doing Lord of order Daily.");
         LOO.GetLoO();
         Core.ToBank(Core.EnsureLoad(7156).Rewards.Select(i => i.Name).ToArray());
 
+
+        #region More Classes
         Core.Logger("P3 - 4: Improving Efficiency, and more Classes");
         SC.GetSC();
+        #endregion More Classes
+
 
         Farm.Experience(80);
+        SetClass(true, false, true);
         CAQ.DoAll();
         BBOA.GetBBoA();
 
-        // Prepare for Lvl100
-        InvEn.EnhanceInventory();
-
         // Leveling to 100
         Core.Logger("P4 Leveling to 100");
-        Farm.IcestormArena();
-        InvEn.EnhanceInventory();
+        SetClass(true, false, true);
+        Farm.Experience();
     }
 
 
@@ -492,7 +491,6 @@ public class CoreFarmerJoe
     /// </summary>
     public void EndGame()
     {
-        SetClass(false, true, true);
 
         #region Ending & Extras 
 
@@ -500,8 +498,10 @@ public class CoreFarmerJoe
             Outfit();
 
         SRM.BuyAllMerge("Hollowborn Reaper's Scythe");
+        SetClass(true, false, true);
         YNR.GetYnR();
 
+        SetClass(true, false, true);
         DoT.GetDoT();
         //Add more eventualy >.> please?
 
@@ -541,7 +541,6 @@ public class CoreFarmerJoe
     /// <param name="petChoice">Selected pet choice</param>
     public void Pets(PetChoice petChoice = PetChoice.None)
     {
-        SetClass(true, false, true);
 
         var configPetChoice = Bot.Config!.Get<PetChoice>("Pets");
 
@@ -550,6 +549,7 @@ public class CoreFarmerJoe
 
         if (configPetChoice == PetChoice.HotMama && !Core.CheckInventory("Hot Mama"))
         {
+            SetClass(true, false, true);
             Core.HuntMonster("battleundere", "Hot Mama", "Hot Mama", isTemp: false, log: false);
             Bot.Wait.ForPickup("Hot Mama");
             Core.Equip("Hot Mama");
@@ -557,6 +557,7 @@ public class CoreFarmerJoe
 
         if (configPetChoice == PetChoice.Akriloth && !Core.CheckInventory("Akriloth Pet"))
         {
+            SetClass(true, false, true);
             Core.HuntMonster("gravestrike", "Ultra Akriloth", "Akriloth Pet", isTemp: false, log: false);
             Bot.Wait.ForPickup("Akriloth Pet");
             Core.Equip("Akriloth Pet");
@@ -568,10 +569,9 @@ public class CoreFarmerJoe
     /// </summary>
     public void ShirtAndHat()
     {
-        SetClass(false, true, true);
-
-        Core.Logger("Farming Shirt & Hat");
+        Core.FarmingLogger("NO BOTS Armor", 1);
         SM.BuyAllMerge(buyOnlyThis: "NO BOTS Armor");
+        Core.FarmingLogger("Scarecrow Hat", 1);
         Adv.BuyItem("yulgar", 16, "Scarecrow Hat");
     }
 
@@ -580,12 +580,11 @@ public class CoreFarmerJoe
     /// </summary>
     public void ServersAreDown()
     {
-        SetClass(false, true, true);
-
         if (Core.CheckInventory("The Server is Down"))
             return;
-
-        Core.Logger("Farming Servers Are Down Sign");
+            
+        Core.FarmingLogger("The Server is Down", 1);
+        SetClass(false, true, true);
         Core.HuntMonster("undergroundlabb", "Rabid Server Hamster", "The Server is Down", isTemp: false, log: false);
         Bot.Wait.ForPickup("The Server is Down");
         Core.Equip("The Server is Down");
