@@ -303,13 +303,13 @@ public class YokaiQuests
         Story.KillQuest(9385, "yokaipirate", "Noble Owl");
 
         // Highly Buoyant Metal Armor 9386
-        Story.KillQuest(9386, "yokaipirate", "Neverglades  Knight");
+        Story.KillQuest(9386, "yokaipirate", "Neverglades Knight");
 
         // Salty Roots 9387
         Story.KillQuest(9387, "yokaipirate", "Lord Brentan");
 
         // Kabuki Rehearsal 9388
-        Story.KillQuest(9388, "yokaipirate", new[] { "Lord Brentan", "Neverglades  Knight", "Disguised Pirate" });
+        Story.KillQuest(9388, "yokaipirate", new[] { "Lord Brentan", "Neverglades Knight", "Disguised Pirate" });
 
 
 
