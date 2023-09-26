@@ -32,6 +32,10 @@ public class HBCE6
     private CoreBots Core => CoreBots.Instance;
     private CoreHollowbornChaosEnvoy HBCE = new();
     private static CoreHollowbornChaosEnvoy sHBCE = new();
+    
+    public string OptionsStorage = sHBCE.OptionsStorage;
+    public bool DontPreconfigure = true;
+    public List<IOption> Options = sHBCE.Options;
 
     public void ScriptMain(IScriptInterface bot)
     {
