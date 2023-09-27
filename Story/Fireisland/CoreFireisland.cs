@@ -179,8 +179,8 @@ public class CoreFireIsland
         {
             Core.EnsureAccept(4134);
 
-            Core.HuntMonster("feverfew", "Salamander", "Salamander Tongue", 2, log: false);
-            Core.HuntMonster("feverfew", "Feverfew Vase", "Adderoot Powder", 3, log: false);
+            Core.HuntMonster("feverfew", "Salamander", "Salamander Tongue", 3, log: false);
+            Core.HuntMonster("feverfew", "Feverfew Vase", "Adderoot Powder", 2, log: false);
             Core.HuntMonster("feverfew", "Twisted Undine", "Shadowbane Brine", 4, log: false);
             Core.HuntMonster("feverfew", "Coral Creeper", "Charred Claw", 2, log: false);
             Core.HuntMonster("feverfew", "Firestorm Knight", "Whispered Regret", log: false);
