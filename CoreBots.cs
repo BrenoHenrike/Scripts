@@ -2237,17 +2237,23 @@ public class CoreBots
     /// <param name="item">The name of the item to obtain.</param>
     /// <param name="quant">The desired quantity of the item.</param>
     /// <param name="isTemp">Specifies whether the item is temporary.</param>
-    public void KillNulgathFiendShard(string item, int quant = 1, bool isTemp = false)
+    public void KillNulgathFiendShard(string? item, int quant = 1, bool isTemp = false)
     {
+        if (item == null)
+        {
+            // Handle the case where 'item' is null, if necessary.
+            return;
+        }
+
         bool itemIsTemp = isTemp;
 
-        if (item == null || (itemIsTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
+        if (itemIsTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant))
             return;
 
         Join("fiendshard");
         FarmingLogger(item, 1);
 
-        Bot.Options.AttackWithoutTarget = true;
+        Monster? monster = Bot.Monsters.CurrentMonsters?.Find(m => m.MapID == 15);
         while (!Bot.ShouldExit && !CheckInventory(item, quant))
         {
             while (!Bot.ShouldExit && Bot.Player.Cell != "r9")
@@ -2257,22 +2263,26 @@ public class CoreBots
             }
 
             while (!Bot.ShouldExit && IsMonsterAlive(15, useMapID: true) && Bot.Player.Cell == "r9" && !CheckInventory(item, quant))
-                Bot.Combat.Attack(4722);
-
-            if (item == null || (itemIsTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
             {
-                Bot.Options.AttackWithoutTarget = false;
-                Bot.Wait.ForPickup(item);
-                while (!Bot.ShouldExit && Bot.Player.Cell != "Enter")
+                if (itemIsTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant))
                 {
-                    Jump("Enter", "Spawn");
-                    Bot.Sleep(ActionDelay);
+                    Bot.Wait.ForPickup(item);
+                    while (!Bot.ShouldExit && Bot.Player.Cell != "Enter")
+                    {
+                        Jump("Enter", "Spawn");
+                        Bot.Sleep(ActionDelay);
+                    }
+                    break;
                 }
-                break;
+                else
+                {
+                    if (IsMonsterAlive(15, useMapID: true))
+                        Bot.Combat.Attack(15);
+                    else Bot.Combat.Attack("*");
+                }
             }
         }
     }
-
 
     public void _KillForItem(string name, string item, int quantity, bool isTemp = false, bool rejectElse = false, bool log = true)
     {
