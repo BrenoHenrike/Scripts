@@ -75,7 +75,7 @@ public class YokaiPirateTreasuresMerge
                     {
                         Core.EquipClass(ClassType.Solo);
                         Core.HuntMonster("yokaipirate", "Lord Brentan", "Gold Leaf Brooch");
-                        Core.HuntMonster("yokaipirate", "Neverglades Knight", "Knight's Emblem", 7);
+                        Core.HuntMonster("yokaipirate", "Neverglades  Knight", "Knight's Emblem", 7);
 
                         Core.EquipClass(ClassType.Farm);
                         Core.HuntMonster("yokaipirate", "Disguised Pirate", "Yokai Pirate's Piece", 7);
@@ -104,7 +104,7 @@ public class YokaiPirateTreasuresMerge
                 case "Swashbuckler's Rapier":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster("yokaipirate", "Neverglades Knight", req.Name, quant, req.Temp);
+                    Core.HuntMonster("yokaipirate", "Neverglades  Knight", req.Name, quant, req.Temp);
                     break;
 
             }
