@@ -5427,6 +5427,23 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/PirateClass.cs"
   },
   {
+    "name": "Yokai Treasure Story",
+    "description": "This script will finish the storyline in /yokaitreasure.",
+    "tags": [
+      "story",
+      "quest",
+      "yokai",
+      "tlapd",
+      "talk-like-a-pirate-day",
+      "seasonal",
+      "treasure"
+    ],
+    "path": "Seasonal/TalkLikeaPirateDay/YokaiTreasureStory.cs",
+    "size": 2103,
+    "fileName": "YokaiTreasureStory.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/YokaiTreasureStory.cs"
+  },
+  {
     "name": "Avast Badge (Member)",
     "description": "This will finish the quest line of Avast and get Avast Badge.",
     "tags": [
@@ -5501,7 +5518,7 @@
       "pirate"
     ],
     "path": "Seasonal/TalkLikeaPirateDay/YokaiPirateStory.cs",
-    "size": 3199,
+    "size": 2704,
     "fileName": "YokaiPirateStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/YokaiPirateStory.cs"
   },
