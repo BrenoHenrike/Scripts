@@ -224,8 +224,8 @@ public class CoreHollowbornChaosEnvoy
 
             else if (rewardSelection != StirringDiscordRewards.All && !completeOnce)
             {
-                Core.EnsureComplete(8998, (int)rewardSelection);
-                Bot.Wait.ForPickup((int)rewardSelection);
+                Core.EnsureComplete(8998, (int)Bot.Config!.Get<WaveringIllusionsRewards>("Unique Quarry"));
+                Bot.Wait.ForPickup((int)Bot.Config!.Get<WaveringIllusionsRewards>("Unique Quarry"));
             }
         }
         Core.CancelRegisteredQuests();
@@ -268,8 +268,8 @@ public class CoreHollowbornChaosEnvoy
                 Core.EnsureCompleteChoose(8999, Core.QuestRewards(8999));
             else if (rewardSelection != InTheBeastsShadowRewards.All && !completeOnce)
             {
-                Core.EnsureComplete(8999, (int)rewardSelection);
-                Bot.Wait.ForPickup((int)rewardSelection);
+                Core.EnsureComplete(8999, (int)Bot.Config!.Get<WaveringIllusionsRewards>("Unique Quarry"));
+                Bot.Wait.ForPickup((int)Bot.Config!.Get<WaveringIllusionsRewards>("Unique Quarry"));
             }
 
             if (completeOnce || Core.CheckInventory(Bot.Config!.Get<InTheBeastsShadowRewards>("Unique Quarry").ToString()) || Core.CheckInventory(rewards))
@@ -290,7 +290,7 @@ public class CoreHollowbornChaosEnvoy
         Core.AddDrop(rewards);
 
         if (!Bot.Quests.IsUnlocked(9000))
-            InTheBeastsShadow();
+            InTheBeastsShadow(completeOnce: true);
 
         Farm.Experience(75);
         ADG.AscendedGear("Ascended Face of Chaos");
@@ -317,20 +317,20 @@ public class CoreHollowbornChaosEnvoy
                 Farm.Gold(900000);
                 Core.BuyItem("tercessuinotlim", 1951, "Receipt of Swindle", 3);
                 Core.BuyItem("tercessuinotlim", 1951, "Chaoroot", 30);
-
-                // Check if all rewards are collected or the specific item is collected
-                if (rewardSelection == UniqueQuarryRewards.All)
-                    Core.EnsureCompleteChoose(9000, Core.QuestRewards(9000));
-
-                else if (rewardSelection != UniqueQuarryRewards.All && !completeOnce)
-                {
-                    Core.EnsureComplete(9000, (int)rewardSelection);
-                    Bot.Wait.ForPickup((int)rewardSelection);
-                }
-
-                if (completeOnce || Core.CheckInventory((int)Bot.Config!.Get<UniqueQuarryRewards>("Unique Quarry")) || Core.CheckInventory(rewards))
-                    break; // Exit the loop if the condition is met
             }
+
+            // Check if all rewards are collected or the specific item is collected
+            if (rewardSelection == UniqueQuarryRewards.All)
+                Core.EnsureCompleteChoose(9000, Core.QuestRewards(9000));
+
+            else if (rewardSelection != UniqueQuarryRewards.All && !completeOnce)
+            {
+                Core.EnsureComplete(9000, (int)Bot.Config!.Get<WaveringIllusionsRewards>("Unique Quarry"));
+                Bot.Wait.ForPickup((int)Bot.Config!.Get<WaveringIllusionsRewards>("Unique Quarry"));
+            }
+
+            if (completeOnce || Core.CheckInventory((int)Bot.Config!.Get<UniqueQuarryRewards>("Unique Quarry")) || Core.CheckInventory(rewards))
+                break; // Exit the loop if the condition is met
             Core.CancelRegisteredQuests();
         }
     }
@@ -376,23 +376,16 @@ public class CoreHollowbornChaosEnvoy
 
             Core.BuyItem("downbelow", 2004, "Chaos PuppetMaster");
 
-            // Check if all rewards are collected or the specific item is collected
-            if (completeOnce)
-            {
-                Core.EnsureCompleteChoose(9001, Core.QuestRewards(9001));
-                break;
-            }
-
-            else if (rewardSelection == WaveringIllusionsRewards.All)
+            if (rewardSelection == WaveringIllusionsRewards.All)
                 Core.EnsureCompleteChoose(9001, Core.QuestRewards(9001));
 
             else if (rewardSelection != WaveringIllusionsRewards.All && !completeOnce)
             {
-                Core.EnsureComplete(9001, (int)rewardSelection);
-                Bot.Wait.ForPickup((int)rewardSelection);
+                Core.EnsureComplete(9001, (int)Bot.Config!.Get<WaveringIllusionsRewards>("Unique Quarry"));
+                Bot.Wait.ForPickup((int)Bot.Config!.Get<WaveringIllusionsRewards>("Unique Quarry"));
             }
 
-            if (completeOnce || Core.CheckInventory(Bot.Config!.Get<WaveringIllusionsRewards>("Unique Quarry").ToString()) || Core.CheckInventory(rewards))
+            else if (completeOnce || Core.CheckInventory((int)Bot.Config!.Get<WaveringIllusionsRewards>("Unique Quarry")) || Core.CheckInventory(rewards))
                 break; // Exit the loop if the condition is met
         }
         Core.CancelRegisteredQuests();
@@ -434,22 +427,16 @@ public class CoreHollowbornChaosEnvoy
 
             Adv.BuyItem("transformation", 2002, "Chaorrupted Usurper");
 
-            // Check if all rewards are collected or the specific item is collected
-            if (completeOnce)
-            {
-                Core.EnsureCompleteChoose(9002, Core.QuestRewards(9002));
-                break;
-            }
-            else if (rewardSelection == ShadowsOfDisdainRewards.All)
+            if (rewardSelection == ShadowsOfDisdainRewards.All)
                 Core.EnsureCompleteChoose(9002, Core.QuestRewards(9002));
 
             else if (rewardSelection != ShadowsOfDisdainRewards.All && !completeOnce)
             {
-                Core.EnsureComplete(9002, (int)rewardSelection);
-                Bot.Wait.ForPickup((int)rewardSelection);
+                Core.EnsureComplete(9002, (int)Bot.Config!.Get<WaveringIllusionsRewards>("Unique Quarry"));
+                Bot.Wait.ForPickup((int)Bot.Config!.Get<WaveringIllusionsRewards>("Unique Quarry"));
             }
 
-            if (completeOnce || Core.CheckInventory(Bot.Config!.Get<ShadowsOfDisdainRewards>("Unique Quarry").ToString()) || Core.CheckInventory(rewards))
+            else if (completeOnce || Core.CheckInventory(Bot.Config!.Get<ShadowsOfDisdainRewards>("Unique Quarry").ToString()) || Core.CheckInventory(rewards))
                 break; // Exit the loop if the condition is met
         }
 
@@ -491,8 +478,8 @@ public class CoreHollowbornChaosEnvoy
 
             else if (rewardSelection != PersistingMayhemRewards.All && !completeOnce)
             {
-                Core.EnsureComplete(9003, (int)rewardSelection);
-                Bot.Wait.ForPickup((int)rewardSelection);
+                Core.EnsureComplete(9003, (int)Bot.Config!.Get<WaveringIllusionsRewards>("Unique Quarry"));
+                Bot.Wait.ForPickup((int)Bot.Config!.Get<WaveringIllusionsRewards>("Unique Quarry"));
             }
 
             if (completeOnce || Core.CheckInventory(Bot.Config!.Get<PersistingMayhemRewards>("Unique Quarry").ToString()) || Core.CheckInventory(rewards))
