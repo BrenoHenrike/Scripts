@@ -1818,7 +1818,7 @@
       "yokai"
     ],
     "path": "Story/Yokai.cs",
-    "size": 11811,
+    "size": 9083,
     "fileName": "Yokai.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Yokai.cs"
   },
@@ -5487,6 +5487,23 @@
     "size": 2133,
     "fileName": "DragonCapitalStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/DragonCapitalStory.cs"
+  },
+  {
+    "name": "Yokai Pirate Story",
+    "description": "This script will finish the storyline in /yokaipirate.",
+    "tags": [
+      "story",
+      "quest",
+      "yokai",
+      "tlapd",
+      "talk-like-a-pirate-day",
+      "seasonal",
+      "pirate"
+    ],
+    "path": "Seasonal/TalkLikeaPirateDay/YokaiPirateStory.cs",
+    "size": 3199,
+    "fileName": "YokaiPirateStory.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/YokaiPirateStory.cs"
   },
   {
     "name": "Blaze Beard Story",
@@ -18112,7 +18129,7 @@
       "rapier"
     ],
     "path": "Seasonal/TalkLikeaPirateDay/MergeShops/YokaiPirateTreasuresMerge.cs",
-    "size": 7764,
+    "size": 7727,
     "fileName": "YokaiPirateTreasuresMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/MergeShops/YokaiPirateTreasuresMerge.cs"
   },

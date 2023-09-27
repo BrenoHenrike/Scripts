@@ -6,9 +6,8 @@ tags: yokai, pirate, treasures, merge, yokaipirate, coastal, raider, raiders, ba
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/Story/Yokai.cs
+//cs_include Scripts/Seasonal\TalkLikeaPirateDay\YokaiPirateStory.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
@@ -19,7 +18,7 @@ public class YokaiPirateTreasuresMerge
     private CoreBots Core => CoreBots.Instance;
     private CoreFarms Farm = new();
     private CoreAdvanced Adv = new();
-    private YokaiQuests YokaiQuests = new();
+    private YokaiPirateStory YPS = new();
     private static CoreAdvanced sAdv = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
@@ -41,10 +40,9 @@ public class YokaiPirateTreasuresMerge
     public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         if (!Core.isSeasonalMapActive("yokaipirate"))
-            Core.Logger("map is seasonal, and is not aviable atm", stopBot: true);
+            Core.Logger("map is seasonal, and is not available atm", stopBot: true);
 
-        YokaiQuests.YokaiPirate(false);
-
+        YPS.Storyline();
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("yokaipirate", 2337, findIngredients, buyOnlyThis, buyMode: buyMode);
 
