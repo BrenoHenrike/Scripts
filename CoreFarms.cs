@@ -2179,30 +2179,22 @@ public class CoreFarms
         ToggleBoost(BoostType.Reputation);
         Core.Logger($"Farming rank {rank}");
 
-        if (!Bot.ShouldExit && FactionRank("Loremaster") < rank)
+        Core.EquipClass(ClassType.Farm);
+        Core.RegisterQuests(7505); //Studying the Rogue 7505
+        while (!Bot.ShouldExit && FactionRank("Loremaster") < rank)
         {
 
-            while (!Bot.ShouldExit && FactionRank("Loremaster") < rank)
+            if (Core.IsMember && FactionRank("Loremaster") >= 3)
+                LoremasterREPAbove3();
+            else
             {
-
-                Core.EquipClass(ClassType.Farm);
-                Core.RegisterQuests(7505); //Studying the Rogue 7505
-                while (!Bot.ShouldExit && FactionRank("Loremaster") < rank)
-                {
-
-                    if (Core.IsMember && FactionRank("Loremaster") >= 3)
-                        LoremasterREPAbove3();
-                    else
-                    {
-                        Core.HuntMonster("wardwarf", "Drow Assassin", "Poisoned Dagger", 4, log: false);
-                        Core.HuntMonster("wardwarf", "D'wain Jonsen", "Scroll: Opportunity's Strike", log: false);
-                    }
-                }
-                Core.CancelRegisteredQuests();
-                ToggleBoost(BoostType.Reputation, false);
-                Core.SavedState(false);
+                Core.HuntMonster("wardwarf", "Drow Assassin", "Poisoned Dagger", 4, log: false);
+                Core.HuntMonster("wardwarf", "D'wain Jonsen", "Scroll: Opportunity's Strike", log: false);
             }
         }
+        Core.CancelRegisteredQuests();
+        ToggleBoost(BoostType.Reputation, false);
+        Core.SavedState(false);
 
         void LoremasterREPAbove3()
         {
