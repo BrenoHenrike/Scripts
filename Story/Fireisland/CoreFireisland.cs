@@ -24,7 +24,7 @@ public class CoreFireIsland
 
     public void CompleteFireIsland()
     {
-        if (Core.isCompletedBefore(4235))
+        if (Core.isCompletedBefore(Core.IsMember ? 4157 : 4235))
             return;
 
         Embersea();
