@@ -24,7 +24,7 @@ public class YokaiPirateStory
 
     public void Storyline()
     {
-        if (Core.isCompletedBefore(9388) || !Core.isSeasonalMapActive("yokaipirate"))
+        if (Core.isCompletedBefore(9387) || !Core.isSeasonalMapActive("yokaipirate"))
             return;
 
         Story.PreLoad(this);
@@ -83,18 +83,6 @@ public class YokaiPirateStory
             Core.EnsureAccept(9387);
             Core.HuntMonsterMapID("yokaipirate", 11, "Neverglades Lord Dueled");
             Core.EnsureComplete(9387);
-        }
-
-        // Kabuki Rehearsal 9388
-        if (!Story.QuestProgression(9384))
-        {
-            Core.EnsureAccept(9388);
-            Core.EquipClass(ClassType.Solo);
-            Core.HuntMonsterMapID("yokaipirate", 11, "Gold Leaf Brooch", 1);
-            Core.EquipClass(ClassType.Farm);
-            Core.HuntMonsterMapID("yokaipirate", 1, "Knight's Emblem", 7);
-            Core.HuntMonsterMapID("yokaipirate", 3, "Yokai Pirate's Piece", 7);
-            Core.EnsureComplete(9388);
         }
     }
 }
