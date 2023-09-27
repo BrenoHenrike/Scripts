@@ -1529,7 +1529,8 @@ public class CoreFarms
             Core.EnsureAccept(320, 321); //Warm and Furry 320, Shell Shock 321
             Core.KillMonster("pines", "Enter", "Right", "Pine Grizzly", "Bear Skin", 5, log: false);
             Core.KillMonster("pines", "Enter", "Right", "Red Shell Turtle", "Red Turtle Shell", 5, log: false);
-            Core.EnsureComplete(320, 321); //Warm and Furry 320, Shell Shock 321
+            Core.EnsureComplete(320); //Warm and Furry 320
+            Core.EnsureComplete(321); //Shell Shock 321
         }
         // Core.CancelRegisteredQuests();
         ToggleBoost(BoostType.Reputation, false);
