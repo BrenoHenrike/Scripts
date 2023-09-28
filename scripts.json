@@ -804,7 +804,7 @@
       "accoutrements"
     ],
     "path": "Other/DeathKnightLootQuest.cs",
-    "size": 2213,
+    "size": 2189,
     "fileName": "DeathKnightLootQuest.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/DeathKnightLootQuest.cs"
   },
@@ -4366,7 +4366,7 @@
       "null"
     ],
     "path": "Nation/Various/TheGameofGemstones(Gold[Members]).cs",
-    "size": 1646,
+    "size": 1639,
     "fileName": "TheGameofGemstones(Gold[Members]).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/TheGameofGemstones(Gold[Members]).cs"
   },
@@ -4455,7 +4455,7 @@
       "null"
     ],
     "path": "Nation/Various/ArchfiendDragonEgg[Mem].cs",
-    "size": 1560,
+    "size": 1592,
     "fileName": "ArchfiendDragonEgg[Mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/ArchfiendDragonEgg[Mem].cs"
   },
@@ -7143,7 +7143,7 @@
       "null"
     ],
     "path": "Other/MergeShops/BeleensMerge.cs",
-    "size": 20586,
+    "size": 20582,
     "fileName": "BeleensMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/BeleensMerge.cs"
   },
@@ -10477,7 +10477,7 @@
       "doom"
     ],
     "path": "Army/Various/ArmySmartVoidAuas.cs",
-    "size": 5806,
+    "size": 5772,
     "fileName": "ArmySmartVoidAuas.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmySmartVoidAuas.cs"
   },
@@ -10675,7 +10675,7 @@
       "null"
     ],
     "path": "Evil/NSoD/CoreNSOD.cs",
-    "size": 16408,
+    "size": 16411,
     "fileName": "CoreNSOD.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/NSoD/CoreNSOD.cs"
   },
@@ -12479,7 +12479,7 @@
       "seasonal"
     ],
     "path": "Seasonal/TalkLikeaPirateDay/SunkenTreasureQuestRewards.cs",
-    "size": 1896,
+    "size": 1927,
     "fileName": "SunkenTreasureQuestRewards.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/SunkenTreasureQuestRewards.cs"
   },
@@ -12559,7 +12559,7 @@
       "talk-like-a-pirate-day"
     ],
     "path": "Seasonal/TalkLikeaPirateDay/SecondFirstMateQuestRewards.cs",
-    "size": 1741,
+    "size": 1772,
     "fileName": "SecondFirstMateQuestRewards.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/SecondFirstMateQuestRewards.cs"
   },
@@ -14086,7 +14086,7 @@
       "akibacny"
     ],
     "path": "Seasonal/AkibaNewYear/GongJiZhanshiSet.cs",
-    "size": 2074,
+    "size": 2055,
     "fileName": "GongJiZhanshiSet.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AkibaNewYear/GongJiZhanshiSet.cs"
   },
