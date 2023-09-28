@@ -37,8 +37,6 @@ public class ArmySmartVoidAuras
         CoreBots.Instance.SkipOptions
     };
 
-    private int EssenceQuantity;
-
     public string[] VA =
     {
         "Void Aura",

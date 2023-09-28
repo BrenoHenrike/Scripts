@@ -5,6 +5,8 @@ tags: a second first mate, set, pirate, tlapd, seasonal, talk-like-a-pirate-day
 */
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
+
 
 public class SecondFirstMate
 {

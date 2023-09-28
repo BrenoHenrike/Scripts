@@ -7,6 +7,8 @@ tags: null
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/Hollowborn/CoreHollowborn.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Skills;
+
 
 public class ArchfiendDragonEgg
 {

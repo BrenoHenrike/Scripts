@@ -17,7 +17,6 @@ public class GongJiZhanshiSet
 
 
     int questID = 5668;
-    int quant = 1;
 
 
     public void ScriptMain(IScriptInterface Bot)

@@ -23,7 +23,6 @@ public class DeathKnightLootChestQuest
 
     private CoreFarms Cf = new();
 
-    int questID = 6509;
 
 
     public void ScriptMain(IScriptInterface Bot)
