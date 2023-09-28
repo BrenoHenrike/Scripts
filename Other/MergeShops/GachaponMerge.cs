@@ -40,7 +40,7 @@ public class GachaponMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
+    public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         Eden.StoryLine();
         //Only edit the map and shopID here

@@ -36,7 +36,7 @@ public class DreadForestMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
+    public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("dreadforest", 2140, findIngredients, buyOnlyThis, buyMode: buyMode);

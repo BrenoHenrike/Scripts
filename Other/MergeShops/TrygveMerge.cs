@@ -39,7 +39,7 @@ public class TrygveMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
+    public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         HB.Trygve();
         Adv.StartBuyAllMerge("trygve", 2054, findIngredients, buyOnlyThis, buyMode: buyMode);

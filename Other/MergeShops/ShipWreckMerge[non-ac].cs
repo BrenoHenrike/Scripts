@@ -39,7 +39,7 @@ public class ShipWreckMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
+    public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         ShipWreck.StoryLine();
 

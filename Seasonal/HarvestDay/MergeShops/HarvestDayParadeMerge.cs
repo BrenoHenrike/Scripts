@@ -37,7 +37,7 @@ public class HarvestDayParadeMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
+    public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         if (!Core.isSeasonalMapActive("float"))
             return;

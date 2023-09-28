@@ -40,7 +40,7 @@ public class BrightshadowMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
+    public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         SoC.BrightShadow();
         SoC.BrightChaos();

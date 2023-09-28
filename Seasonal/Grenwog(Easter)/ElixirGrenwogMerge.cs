@@ -34,7 +34,7 @@ public class ElixirGrenwogMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
+    public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("elixirgrenwog", 2252, findIngredients, buyOnlyThis, buyMode: buyMode);

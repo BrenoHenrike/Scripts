@@ -40,7 +40,7 @@ public class AstraviaPastMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
+    public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("astraviapast", 2126, findIngredients, buyOnlyThis, buyMode: buyMode);

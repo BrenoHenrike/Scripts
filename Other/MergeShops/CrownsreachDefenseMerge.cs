@@ -43,7 +43,7 @@ public class CrownsreachDefenseMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
+    public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         SoW.ShadowWar();
         SoC.DualPlane();

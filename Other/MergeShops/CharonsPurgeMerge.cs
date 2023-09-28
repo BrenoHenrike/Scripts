@@ -43,7 +43,7 @@ public class CharonsPurgeMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
+    public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         CoreIsleOfFotia.CompleteALL();
         Adv.AltFarmItems.Add("Psyche");

@@ -45,7 +45,7 @@ public class WarTrainingMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
+    public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         Tynd.Tyndarius(true);
         Adv.StartBuyAllMerge("wartraining", 2035, findIngredients, buyOnlyThis, buyMode: buyMode);

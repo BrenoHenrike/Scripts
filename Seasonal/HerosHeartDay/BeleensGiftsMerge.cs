@@ -34,7 +34,7 @@ public class BeleensGiftsMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
+    public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("canalshore", 1833, findIngredients, buyOnlyThis, buyMode: buyMode);

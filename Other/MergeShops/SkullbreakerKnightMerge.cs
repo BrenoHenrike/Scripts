@@ -33,7 +33,7 @@ public class SkullbreakerKnightMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
+    public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("stonewood", 2071, findIngredients, buyOnlyThis, buyMode: buyMode);

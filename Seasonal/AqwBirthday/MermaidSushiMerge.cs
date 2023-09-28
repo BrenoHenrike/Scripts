@@ -37,7 +37,7 @@ public class MermaidSushiMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
+    public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         Bot.Quests.UpdateQuest(8892);
         //Only edit the map and shopID here

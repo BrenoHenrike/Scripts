@@ -37,7 +37,7 @@ public class FriendshipMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
+    public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         Fr.CompleteStory();
         //Only edit the map and shopID here

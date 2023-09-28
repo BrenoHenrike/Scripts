@@ -39,7 +39,7 @@ public class SuperDeathMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
+    public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         SuperDeath.StoryLine();
         Adv.StartBuyAllMerge("superdeath", 1992, findIngredients, buyOnlyThis, buyMode: buyMode);

@@ -52,7 +52,7 @@ public class NightmareCarnaxMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
+    public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         DarkCarnax.Storyline(true);
         //Only edit the map and shopID here

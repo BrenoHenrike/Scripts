@@ -34,7 +34,7 @@ public class DageWar50Merge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
+    public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("futurewardage", 1377, findIngredients, buyOnlyThis, buyMode: buyMode);

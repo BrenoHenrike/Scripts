@@ -38,7 +38,7 @@ public class DarkHandMerge1
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
+    public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("legionarena", 1693, findIngredients, buyOnlyThis, buyMode: buyMode);

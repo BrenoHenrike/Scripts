@@ -38,7 +38,7 @@ public class PaladinTreasureHunterMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
+    public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         SEP.SilverExaltedPaladin();
         Farm.TreasureHunterREP(5);
