@@ -258,19 +258,23 @@ public class DoTArmy
 
     public void DoQuest1()
     {
-        if (!Core.isCompletedBefore(7716) || !Core.CheckInventory(QuestRewards[^2], toInv: false))
-            Core.ButlerOnMe();
+        if (Core.CheckInventory(QuestRewards[0..2], toInv: false))
+            foreach (string reward in QuestRewards[0..2])
+                Army.waitForParty("whitemap", reward);
+
 
         // Acquiring Ancient Secrets 7716
         Core.EnsureAccept(7716);
 
         Bot.Quests.UpdateQuest(4614);
+        Core.EquipClass(ClassType.Farm);
         ArmyHunt("mummies", new[] { "Mummy" }, "Lost Hieroglyphic", ClassType.Solo, false, 30);
 
         ArmyHunt("timelibrary", new[] { "Training Globe", "Tog", "Moglin Ghost" }, "Historia Page", ClassType.Solo, false, 100);
 
         ArmyHunt("kingcoal", new[] { "Frost King" }, "Frost King's Story", ClassType.Solo);
 
+        Core.EquipClass(ClassType.Solo);
         Core.KillMonster("baconcatyou", "Enter", "Spawn", "*", "Your Own Memories", isTemp: false);
 
         Core.BuyItem("librarium", 651, "Myths of Lore");
@@ -282,13 +286,15 @@ public class DoTArmy
 
     public void DoQuest2()
     {
-        if (!Core.isCompletedBefore(7717) || !Core.CheckInventory(QuestRewards[^5], toInv: false))
-            Core.ButlerOnMe();
+        if (Core.CheckInventory(QuestRewards[3..5], toInv: false))
+            foreach (string reward in QuestRewards[3..5])
+                Army.waitForParty("whitemap", reward);
 
         else Core.Logger("Quest already complete / Items owned, butlering[hopefully]");
 
         Core.EnsureAccept(7717);
 
+        Core.EquipClass(ClassType.Solo);
         ArmyHunt("dragonchallenge", new[] { "Desoloth the Final" }, "Desoloth's Destructive Aura", ClassType.Solo);
 
         Bot.Quests.UpdateQuest(899);
@@ -308,18 +314,22 @@ public class DoTArmy
 
     public void DoQuest3()
     {
-        if (!Core.isCompletedBefore(7718) || !Core.CheckInventory(QuestRewards[^7], toInv: false))
-            Core.ButlerOnMe();
+        if (Core.CheckInventory(QuestRewards[6..7], toInv: false))
+            foreach (string reward in QuestRewards[6..7])
+                Army.waitForParty("whitemap", reward);
 
         else Core.Logger("Quest already complete / Items owned, butlering[hopefully]");
 
         Core.EnsureAccept(7718);
 
+        Core.EquipClass(ClassType.Solo);
         ArmyHunt("underworld", new[] { "Laken" }, "Cross-Era Stabilizer", ClassType.Solo);
 
         if (!Core.CheckInventory("Chronomancer's Codex"))
         {
+            Core.EquipClass(ClassType.Solo);
             ArmyHunt("mqlesson", new[] { "Dragonoid" }, "Dragonoid of Hours", ClassType.Solo);
+            Core.EquipClass(ClassType.Solo);
             ArmyHunt("timespace", new[] { "Chaos Lord Iadoa" }, "Chronomancer's Codex", ClassType.Solo);
         }
 
@@ -333,19 +343,24 @@ public class DoTArmy
 
     public void DoQuest4()
     {
-        if (!Core.isCompletedBefore(7719) || !Core.CheckInventory(QuestRewards[^8], toInv: false))
-            Core.ButlerOnMe();
+        if (Core.CheckInventory(QuestRewards[7..8], toInv: false))
+            foreach (string reward in QuestRewards[7..8])
+                Army.waitForParty("whitemap", reward);
 
         else Core.Logger("Quest already complete / Items owned, butlering[hopefully]");
 
         Core.EnsureAccept(7719);
 
+        Core.EquipClass(ClassType.Solo);
         ArmyHunt("cathedral", new[] { "Incarnation of Time" }, "Time Loop Broken", ClassType.Solo);
 
+        Core.EquipClass(ClassType.Solo);
         ArmyHunt("ubear", new[] { "Cornholio" }, "Is This a Wormhole?", ClassType.Solo);
 
+        Core.EquipClass(ClassType.Solo);
         ArmyHunt("portalwar", new[] { "Chronorysa", "Tempus Larva", "Time Wraith" }, "Anomaly Silenced", ClassType.Solo, false, 100);
 
+        Core.EquipClass(ClassType.Solo);
         ArmyHunt("portalmaze", new[] { "ChronoLord" }, "Chronolord Stopped", ClassType.Solo, false, 50);
 
         Core.EnsureComplete(7719);
@@ -355,8 +370,9 @@ public class DoTArmy
 
     public void DoQuest5()
     {
-        if (!Core.isCompletedBefore(7720) || !Core.CheckInventory(QuestRewards[^10], toInv: false))
-            Core.ButlerOnMe();
+        if (Core.CheckInventory(QuestRewards[9..10], toInv: false))
+            foreach (string reward in QuestRewards[9..10])
+                Army.waitForParty("whitemap", reward);
 
         else Core.Logger("Quest already complete / Items owned, butlering[hopefully]");
 
@@ -374,8 +390,9 @@ public class DoTArmy
 
     public void DoQuest6()
     {
-        if (!Core.isCompletedBefore(7721) || !Core.CheckInventory(QuestRewards[^12], toInv: false))
-            Core.ButlerOnMe();
+        if (Core.CheckInventory(QuestRewards[11..12], toInv: false))
+            foreach (string reward in QuestRewards[11..12])
+                Army.waitForParty("whitemap", reward);
 
         else Core.Logger("Quest already complete / Items owned, butlering[hopefully]");
 
@@ -416,8 +433,9 @@ public class DoTArmy
 
     public void DoQuest7()
     {
-        if (!Core.isCompletedBefore(7722) || !Core.CheckInventory(QuestRewards[^14], toInv: false))
-            Core.ButlerOnMe();
+        if (Core.CheckInventory(QuestRewards[13..14], toInv: false))
+            foreach (string reward in QuestRewards[13..14])
+                Army.waitForParty("whitemap", reward);
 
         else Core.Logger("Quest already complete / Items owned, butlering[hopefully]");
 
@@ -443,8 +461,9 @@ public class DoTArmy
 
     public void DoQuest8()
     {
-        if (!Core.isCompletedBefore(7723) || !Core.CheckInventory(QuestRewards[^15], toInv: false))
-            Core.ButlerOnMe();
+        if (Core.CheckInventory(QuestRewards[14..15], toInv: false))
+            foreach (string reward in QuestRewards[14..15])
+                Army.waitForParty("whitemap", reward);
 
         else Core.Logger("Quest already complete / Items owned, butlering[hopefully]");
 
@@ -465,8 +484,9 @@ public class DoTArmy
 
     public void DoQuest9()
     {
-        if (!Core.isCompletedBefore(7724) || !Core.CheckInventory(QuestRewards[^19], toInv: false))
-            Core.ButlerOnMe();
+        if (Core.CheckInventory(QuestRewards[16..19], toInv: false))
+            foreach (string reward in QuestRewards[16..19])
+                Army.waitForParty("whitemap", reward);
 
         else Core.Logger("Quest already complete / Items owned, butlering[hopefully]");
 
@@ -488,8 +508,9 @@ public class DoTArmy
 
     public void DoQuest10()
     {
-        if (!Core.isCompletedBefore(7725) || !Core.CheckInventory(QuestRewards[^22], toInv: false))
-            Core.ButlerOnMe();
+        if (Core.CheckInventory(QuestRewards[20..22], toInv: false))
+            foreach (string reward in QuestRewards[20..22])
+                Army.waitForParty("whitemap", reward);
 
         else Core.Logger("Quest already complete / Items owned, butlering[hopefully]");
 
@@ -574,7 +595,6 @@ public class DoTArmy
             Army.SellToSync(item, quant);
 
         Core.AddDrop(item);
-        Army.waitForParty(map);
 
         Core.EquipClass(classType);
         Core.FarmingLogger(item, quant);
