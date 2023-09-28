@@ -26,7 +26,7 @@ public class LegionBlade
 
     public void Blade()
     {
-        string item = null;
+        string? item = null;
         int questID = 0000;
         int quant1 = 1;
         int quant2 = 1;
