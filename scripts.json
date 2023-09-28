@@ -6470,7 +6470,7 @@
       "null"
     ],
     "path": "Other/OnePercentDrops/LowDRWeapons.cs",
-    "size": 7346,
+    "size": 7347,
     "fileName": "LowDRWeapons.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/OnePercentDrops/LowDRWeapons.cs"
   },
@@ -9260,7 +9260,7 @@
       "null"
     ],
     "path": "Legion/Various/LegionOverfiendBlade.cs",
-    "size": 3163,
+    "size": 3164,
     "fileName": "LegionOverfiendBlade.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/Various/LegionOverfiendBlade.cs"
   },
@@ -10210,7 +10210,7 @@
       "rewards"
     ],
     "path": "Army/Quests/ArmyUniqueQuarry.cs",
-    "size": 7341,
+    "size": 7342,
     "fileName": "ArmyUniqueQuarry.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Quests/ArmyUniqueQuarry.cs"
   },
@@ -17655,7 +17655,7 @@
       "eternal"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyEternalRep.cs",
-    "size": 3728,
+    "size": 3729,
     "fileName": "ArmyEternalRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyEternalRep.cs"
   },
@@ -17747,7 +17747,7 @@
       "blacksmithing"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyBlackSmithRep.cs",
-    "size": 5825,
+    "size": 5827,
     "fileName": "ArmyBlackSmithRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyBlackSmithRep.cs"
   },
