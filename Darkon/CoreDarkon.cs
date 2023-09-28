@@ -174,12 +174,13 @@ public class CoreDarkon
         Core.AddDrop("A Melody");
         Astravia.AstraviaJudgement();
         Core.FarmingLogger("A Melody", Quantity);
-
         Core.RegisterQuests(8396);
         while (!Bot.ShouldExit && (!Core.CheckInventory("A Melody", Quantity)))
         {
+            Core.EquipClass(ClassType.Farm);
             Core.HuntMonster("astraviajudge", "Trumpeter", "Brass", 10, log: false);
             Core.HuntMonster("astraviajudge", "Hand", "Sinew", 10, log: false);
+            Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("astraviajudge", "La", "Knight's Favor", log: false);
             Bot.Wait.ForPickup("A Melody");
         }
