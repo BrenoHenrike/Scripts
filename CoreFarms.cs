@@ -2078,7 +2078,7 @@ public class CoreFarms
             && !Core.CheckInventory("Mega World Ender Medal", 5))
                 Core.HuntMonster("icewindwar", "Frost Invader", log: false);
 
-            while (!Bot.ShouldExit && !Core.CheckInventory("rostspawn Medal", 10)
+            while (!Bot.ShouldExit && !Core.CheckInventory("Frostspawn Medal", 10)
             && !Core.CheckInventory("Mega Frostspawn Medal", 5))
                 Core.HuntMonster("icewindwar", "Glaceran Defender", log: false);
         }

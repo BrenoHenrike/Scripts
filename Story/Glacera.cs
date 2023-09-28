@@ -347,15 +347,17 @@ public class GlaceraStory
         // Take a Break from Fighting
         Story.KillQuest(5596, "IceWindPass", new[] { "Polar Golem", "Glacial Elemental" });
 
-        // Fight For Karok! & Fight For Kezeroth! + Mega   
         if (!Bot.Quests.IsUnlocked(5601))
         {
+            //Fight For Kezeroth! && (Mega) Fight For Kezeroth!
             Core.EnsureAccept(new[] { 5597, 5598, 5599, 5600 });
             Core.EquipClass(ClassType.Farm);
-            Core.KillMonster("icewindwar", "r3", "Left", "*", "FrostSpawn Medal", 10);
-            Core.KillMonster("icewindwar", "r3", "Left", "*", "Mega Frostspawn Medal", 5);
-            Core.KillMonster("icewindwar", "r3", "Left", "*", "World Ender Medal", 10);
-            Core.KillMonster("icewindwar", "r3", "Left", "*", "Mega World Ender Medal", 5);
+            Core.HuntMonster("icewindwar",  "Glaceran Defender", "FrostSpawn Medal", 10);
+            Core.HuntMonster("icewindwar", "Glaceran Defender", "Mega Frostspawn Medal", 5);
+
+            //Fight For Karok! && (Mega) Fight For Karok!
+            Core.HuntMonster("icewindwar", "Frost Invader", "World Ender Medal", 10);
+            Core.HuntMonster("icewindwar", "Frost Invader", "Mega World Ender Medal", 5);
             Core.EnsureComplete(new[] { 5597, 5598, 5599, 5600 });
         }
 
