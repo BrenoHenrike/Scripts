@@ -83,10 +83,10 @@ public class ArmyBloodyChaos
 
         switch (Bot.Map.Name)
         {
-            case "Stalagbite":
-                Army.AggroMonCells("r2");
+            case "stalagbite":
                 Army.AggroMonMIDs(7, 8);
-                Army.AggroMonStart("Stalagbite");
+                Army.DivideOnCells("r2");
+                Army.AggroMonStart("stalagbite");
 
                 while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
                 {
@@ -98,9 +98,9 @@ public class ArmyBloodyChaos
                 break;
 
             case "escherion":
-                Army.AggroMonCells("Boss");
                 Army.AggroMonMIDs(2, 3);
-                Army.AggroMonStart("Escherion");
+                Army.DivideOnCells("Boss");
+                Army.AggroMonStart("escherion");
                 while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
                 {
                     if (Core.IsMonsterAlive("Staff of Inversion"))
