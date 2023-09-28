@@ -40,7 +40,7 @@ public class DageRecruitStory
         if (!Story.QuestProgression(8557))
         {
             Core.EnsureAccept(8557);
-            Core.KillMonster("dagerecruit", "Enter", "Spawn", "Dreadfiend", "Dark Makai Defeated", 4);
+            Core.KillMonster("dagerecruit", "Enter", "Spawn", "Dreadfiend", "Fiend Energy Collected", 4);
             Story.MapItemQuest(8557, "dagerecruit", 9883, 4);
         }
 
@@ -72,7 +72,7 @@ public class DageRecruitStory
         if (!Story.QuestProgression(8562))
         {
             Core.EnsureAccept(8562);
-            Core.KillMonster("dagerecruit", "Enter", "Spawn", "Dreadfiend", "Void Crystals", 36);
+            Core.KillMonster("dagerecruit", "Enter", "Spawn", "Dreadfiend", "Void Crystals", 3);
             Core.EnsureComplete(8562);
         }
 
