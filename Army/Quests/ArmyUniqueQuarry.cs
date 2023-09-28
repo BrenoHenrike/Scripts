@@ -146,7 +146,7 @@ public class ArmyUniqueQuarry
 
 /*old stuff
 
-    public void GetItems(string? map = null, string[] Monsters = null, int questID = 000, string[] Loot = null, bool isTemp = false)
+    public void GetItems(string? map = null, string[]? monsters = null, int questID = 000, string[] Loot = null, bool isTemp = false)
     {
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();

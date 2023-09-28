@@ -72,7 +72,7 @@ public class ArmyBlackSmithRep
         Core.CancelRegisteredQuests();
     }
 
-    void Armykill(string? map = null, string[] monsters = null, string? item = null, bool isTemp = false, int quant = 1)
+    void Armykill(string? map = null, string[]? monsters = null, string? item = null, bool isTemp = false, int quant = 1)
     {
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
@@ -118,7 +118,7 @@ public class ArmyBlackSmithRep
 
 /*old stuff
 
-    public void GetItems(string? map = null, string[] Monsters = null, int questID = 000, string[] Loot = null, bool isTemp = false)
+    public void GetItems(string? map = null, string[]? monsters = null, int questID = 000, string[] Loot = null, bool isTemp = false)
     {
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
