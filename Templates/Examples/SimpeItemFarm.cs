@@ -21,10 +21,14 @@ public class SimpleItemFarm
         Core.SetOptions(false);
     }
 
-    //for the quant just put the Max quant of the item that can be gotten from the logger. or leave it blank and put the number in the Exmaple(here); above
+    //for the quant just put the Max quant of the item that can be gotten from the logger. or leave it blank and put the number in the Exmaple(here); above,
     public void Example(int quant = 9999)
     {
         if (Core.CheckInventory("item", quant))
+            return;
+
+        // if the above method doesn't work, you can use itemID
+        if (Core.CheckInventory(itemID: 9999, quant))
             return;
 
         //Example 1:
@@ -32,18 +36,18 @@ public class SimpleItemFarm
             Core.HuntMonster("map", "mob", "item", quant);
 
         //Example 2:
-        while (!Bot.ShouldExit && !Core.CheckInventory(itemID, quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory(itemID: 9999, quant))
             Core.HuntMonster("map", "mob");
 
         //Example 3:
-        while (!Bot.ShouldExit && !Core.CheckInventory(itemID, quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory(itemID: 9999, quant))
         {
             /*
             Insert imported function from another script here after properly doing imports
-            //Example: 
+            //Example:
             Legion.FarmLegionTokens(quant);
 
-            with the includes (no duplicates please check your script beforehand.):                
+            with the includes (no duplicates please check your script beforehand.):
                 //cs_include Scripts/CoreBots.cs
                 //cs_include Scripts/CoreFarms.cs
                 //cs_include Scripts/CoreAdvanced.cs
@@ -54,10 +58,5 @@ public class SimpleItemFarm
                 public CoreLegion Legion = new CoreLegion();
             */
         }
-
-
-
-
-
     }
 }

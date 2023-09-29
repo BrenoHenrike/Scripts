@@ -23,7 +23,7 @@ public class QuestRewardRandomTemplate
     }
 
     /*
-    Replace the `0000` with the quest for the drops u want, this can be found in the 
+    Replace the `0000` with the quest for the drops u want, this can be found in the
     loader just press update or if no quests show /updateall (may take a few minutes)
     */
     int QuestID = 0000;
@@ -50,7 +50,7 @@ public class QuestRewardRandomTemplate
             Core.FarmingLogger(Reward.Name, 1);
             while (!Bot.ShouldExit && !Core.CheckInventory(Reward.ID))
                 //Edit teh HuuntMonster approriately
-                Core.HuntMonster("map", "mob", "drop", quant, isTemp: truefalse, log: false);
+                Core.HuntMonster("map", "mob", "drop", quant: 1, isTemp: true, log: false); // if the drop is not temporary you should put isTemp: false
             Core.CancelRegisteredQuests();
 
             Core.JumpWait();
