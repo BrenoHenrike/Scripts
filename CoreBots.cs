@@ -2736,10 +2736,19 @@ public class CoreBots
                 break;
         }
 
-        Bot.Wait.ForItemEquip(item.ID);
-        Bot.Sleep((int)(ActionDelay * 1.5));
-        if (logEquip)
-            Logger($"Equipping {(Bot.Inventory.IsEquipped(item.ID) ? String.Empty : "failed: ")} {item.Name}", "Equip");
+        int i = 1;
+        while (!Bot.ShouldExit && !Bot.Inventory.IsEquipped(item.ID))
+        {
+            Logger($"Trying to equip {item.Name[item.ID]}, try {i++}.");
+            Bot.Sleep((int)(ActionDelay * 1.5));
+            if (Bot.Inventory.IsEquipped(item.ID))
+            {
+                if (logEquip)
+                    Logger($"Equipping {(Bot.Inventory.IsEquipped(item.ID) ? String.Empty : "failed: ")} {item.Name}", "Equip");
+                Bot.Wait.ForItemEquip(item.ID);
+                break;
+            }
+        }
     }
 
     public void EquipCached()
