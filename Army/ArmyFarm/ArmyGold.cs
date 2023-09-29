@@ -87,17 +87,12 @@ public class ArmyGold
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
 
-        if (((int)mapname == 0 && Core.IsMember))
-            Core.RegisterQuests(3991, 3992, 3993);
-        else if (((int)mapname == 1))
-            Core.RegisterQuests(3991, 3992);
+        Core.RegisterQuests(Core.IsMember ? new[] { 3991, 3992, 3993 } : new[] { 3991, 3992 });
 
         Army.AggroMonMIDs(1, 2, 3, 4, 5, 6);
-        Army.AggroMonStart(mapname.ToString());
+        Army.AggroMonStart("battlegrounde");
+        Army.DivideOnCells("r4", "r3", "r2", "r1");
 
-        if ((int)mapname == 0)
-            Army.DivideOnCells("r4", "r3", "r2", "r1");
-        else Army.DivideOnCells("r4", "r3", "r2", "r1");
 
         while (!Bot.ShouldExit && Bot.Player.Gold < 100000000)
             Bot.Combat.Attack("*");
