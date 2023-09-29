@@ -263,7 +263,7 @@ public class DoTArmy
                 Army.waitForParty("whitemap", reward);
 
         while (!Bot.ShouldExit && !Core.CheckInventory(QuestRewards[0..2], toInv: false))
-        { 
+        {
             // Acquiring Ancient Secrets 7716
             Core.EnsureAccept(7716);
 
@@ -612,6 +612,7 @@ public class DoTArmy
             Army.SellToSync(item, quant);
 
         Core.AddDrop(item);
+        Army.waitForParty(map);
 
         Core.EquipClass(classType);
         Core.FarmingLogger(item, quant);
@@ -620,12 +621,39 @@ public class DoTArmy
 
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
         {
-            if (monsters == new[] { "Tigoras" })
+            if (monsters == new[] { "Hydra Head 90" })
+            {
+                Core.Logger("Swapping classes to 1 of the 3\n" +
+                ">> so that we can be sure you arent doing multi targeting\n" +
+                ">> as itd fuck it up");
+                
+                foreach (string Class in new[] { "StoneCrusher", "Lord of Order", "Void Highlord" })
+                    if (Core.CheckInventory(Class))
+                        Core.Equip(Class);
+
+                while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
+                    Bot.Combat.Attack("*");
+                break;
+            }
+
+            else if (monsters == new[] { "Tigoras" })
+            {
                 Core.KillTrigoras(item, quant, 1, isTemp);
-            else Bot.Combat.Attack("*");
+                break;
+            }
+
+            else if (monsters != new[] { "Tigoras" } || monsters != new[] { "Hydra Head 90" })
+                Bot.Combat.Attack("*");
         }
-        Army.AggroMonStop(true);
         Core.JumpWait();
+        Army.AggroMonStop(true);
+
+        while (!Bot.ShouldExit && Bot.Player.InCombat)
+        {
+            Core.JumpWait();
+            Bot.Sleep(2500);
+        }
+        Army.waitForParty(map, item);
     }
 
     void ArmyHunt(string map, int monsterID, string item, ClassType classType, bool isTemp = false, int quant = 1)
@@ -641,6 +669,7 @@ public class DoTArmy
         Core.AddDrop(item);
         Army.waitForParty(map);
 
+        Core.EquipClass(classType);
         Core.FarmingLogger(item, quant);
 
         Army.SmartAggroMonStart(map, monster!.ToString());
@@ -648,8 +677,15 @@ public class DoTArmy
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
             Bot.Combat.Attack("*");
 
-        Army.AggroMonStop(true);
         Core.JumpWait();
+        Army.AggroMonStop(true);
+
+        while (!Bot.ShouldExit && Bot.Player.InCombat)
+        {
+            Core.JumpWait();
+            Bot.Sleep(2500);
+        }
+        Army.waitForParty(map, item);
     }
 
 
