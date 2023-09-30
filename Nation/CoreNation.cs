@@ -885,8 +885,7 @@ public class CoreNation
         bool returnPolicyDuringSupplies = Core.CBOBool("Nation_ReturnPolicyDuringSupplies", out bool _returnSupplies);
         bool sellMemVoucher = Core.CBOBool("Nation_SellMemVoucher", out bool _sellMemVoucher);
 
-        Core.Logger(returnPolicyDuringSupplies ? "return Policy During Supplies: true" : "return Policy During Supplies: false");
-        Core.Logger($"Sell Voucher of Nulgath: {sellMemVoucher}");
+        Core.Logger($"Sell Voucher of Nulgath: {_sellMemVoucher}");
 
 
         Dictionary<string, int> rewardItemIds = new()
@@ -913,7 +912,7 @@ public class CoreNation
         {
             Core.KillMonster("evilmarsh", "End", "Left", "Tainted Elemental", log: false);
 
-            if (item != "Voucher of Nulgath" && sellMemVoucher && Core.CheckInventory("Voucher of Nulgath"))
+            if (item != "Voucher of Nulgath" && _sellMemVoucher && Core.CheckInventory("Voucher of Nulgath"))
             {
                 Core.JumpWait();
 
