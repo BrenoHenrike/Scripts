@@ -118,7 +118,6 @@ public class CoreFarms
 
         ToggleBoost(BoostType.Gold);
 
-        HonorHall(quant);
         BattleGroundE(quant);
         BerserkerBunny(quant);
 
@@ -158,7 +157,7 @@ public class CoreFarms
         Core.SavedState();
         Core.Logger($"Farming {goldQuant} gold using BattleGroundE Method");
 
-        Core.RegisterQuests(3991, 3992);
+        Core.RegisterQuests(Core.IsMember ? new[] { 3991, 3992, 3993 } : new[] { 3991, 3992 });
         while (!Bot.ShouldExit && Bot.Player.Gold < goldQuant && Bot.Player.Gold <= 100000000)
             Core.KillMonster("battlegrounde", "r2", "Center", "*", log: false);
 
