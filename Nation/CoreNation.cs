@@ -917,7 +917,7 @@ public class CoreNation
             {
                 Core.JumpWait();
 
-                while (!Bot.ShouldExit && (Bot.Player.HasTarget || Bot.Player.InCombat))
+                while (!Bot.ShouldExit && (Bot.Player.HasTarget || Bot.Player.InCombat) && Bot.Player.Cell != "Enter")
                 {
                     Bot.Combat.CancelTarget();
                     Bot.Wait.ForCombatExit();
