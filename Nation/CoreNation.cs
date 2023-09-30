@@ -630,6 +630,7 @@ public class CoreNation
     /// <param name="voucherNeeded">Whether a voucher is required for the item (default: false).</param>
     public void Supplies(string? item = null, int quant = 1, bool voucherNeeded = false)
     {
+        voucherNeeded = item == "Voucher of Nulgath";
         bool sellMemVoucher = Core.CBOBool("Nation_SellMemVoucher", out bool _sellMemVoucher) && _sellMemVoucher;
         bool returnPolicyDuringSupplies = Core.CBOBool("Nation_ReturnPolicyDuringSupplies", out bool _returnSupplies) && _returnSupplies;
 
@@ -646,7 +647,7 @@ public class CoreNation
                 ItemBase? Item = rewards.Find(x => x.Name == Thing);
 
                 if (Core.CheckInventory(CragName))
-                    BambloozevsDrudgen(Item.Name, Item.MaxStack);
+                    BambloozevsDrudgen(Item.Name, Item.MaxStack, voucherNeeded);
                 else
                 {    // Find the corresponding item in quest rewards
 
@@ -674,7 +675,7 @@ public class CoreNation
                 {
                     Core.KillEscherion(item, quant, log: false);
 
-                    if (item == "Voucher of Nulgath" && sellMemVoucher && Core.CheckInventory("Voucher of Nulgath") && !voucherNeeded)
+                    if (item != "Voucher of Nulgath" && sellMemVoucher && Core.CheckInventory("Voucher of Nulgath") && !voucherNeeded)
                     {
                         Bot.Drops.Pickup("Voucher of Nulgath");
                         Core.SellItem("Voucher of Nulgath", all: true);
@@ -877,6 +878,7 @@ public class CoreNation
         Core.AddDrop("Relic of Chaos", "Tainted Core");
         Core.AddDrop(string.IsNullOrEmpty(item) ? bagDrops : new string[] { item });
 
+        voucherNeeded = item == "Voucher of Nulgath";
         bool hasOBoNPet = Core.IsMember && Core.CheckInventory("Oblivion Blade of Nulgath") &&
                           Bot.Inventory.Items.Any(obon => obon.Category == Skua.Core.Models.Items.ItemCategory.Pet && obon.Name == "Oblivion Blade of Nulgath");
         if (hasOBoNPet || Core.CheckInventory("Oblivion Blade of Nulgath Pet (Rare)"))
@@ -912,7 +914,7 @@ public class CoreNation
         {
             Core.KillMonster("evilmarsh", "End", "Left", "Tainted Elemental", log: false);
 
-            if (item == "Voucher of Nulgath" && sellMemVoucher && Core.CheckInventory("Voucher of Nulgath") && !voucherNeeded)
+            if (item != "Voucher of Nulgath" && sellMemVoucher && Core.CheckInventory("Voucher of Nulgath") && !voucherNeeded)
             {
                 Core.JumpWait();
 
@@ -1852,7 +1854,7 @@ public class CoreNation
 
         Core.AddDrop(member ? "Voucher of Nulgath" : "Voucher of Nulgath (non-mem)");
 
-        BambloozevsDrudgen(member ? "Voucher of Nulgath" : "Voucher of Nulgath (non-mem)");
+        BambloozevsDrudgen(member ? "Voucher of Nulgath" : "Voucher of Nulgath (non-mem)", voucherNeeded: true);
         NewWorldsNewOpportunities(member ? "Voucher of Nulgath" : "Voucher of Nulgath (non-mem)");
         VoidKightSwordQuest(member ? "Voucher of Nulgath" : "Voucher of Nulgath (non-mem)");
         Supplies(member ? "Voucher of Nulgath" : "Voucher of Nulgath (non-mem)");
