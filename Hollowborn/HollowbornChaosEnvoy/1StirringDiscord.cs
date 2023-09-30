@@ -34,7 +34,7 @@ public class HBCE1
     private static CoreHollowbornChaosEnvoy sHBCE = new();
 
     public string OptionsStorage = sHBCE.OptionsStorage;
-    public bool DontPreconfigure = true;
+    public bool DontPreconfigure = false;
     public List<IOption> Options = sHBCE.Options;
 
     public void ScriptMain(IScriptInterface bot)

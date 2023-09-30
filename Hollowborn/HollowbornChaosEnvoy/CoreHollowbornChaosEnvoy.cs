@@ -383,7 +383,6 @@ public class CoreHollowbornChaosEnvoy
 
             Core.BuyItem("downbelow", 2004, "Chaos PuppetMaster");
 
-
             // Check if all rewards are collected or the specific item is collected
             if (completeOnce && !Core.CheckInventory((int)Bot.Config!.Get<WaveringIllusionsRewards>("Wavering Illusions")))
                 Core.EnsureComplete(9001, (int)Bot.Config!.Get<WaveringIllusionsRewards>("Wavering Illusions"));
