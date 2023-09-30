@@ -42,7 +42,7 @@ public class HBCE6
     {
         Core.SetOptions();
 
-        HBCE.PersistingMayhem();
+        HBCE.PersistingMayhem(Bot.Config!.Get<CoreHollowbornChaosEnvoy.PersistingMayhemRewards >("Persisting Mayhem"));
 
         Core.SetOptions(false);
     }

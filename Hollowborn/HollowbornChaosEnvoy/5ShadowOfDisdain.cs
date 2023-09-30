@@ -40,7 +40,6 @@ public class HBCE5
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
-        Core.DL_Enable();
         HBCE.ShadowsOfDisdain(Bot.Config!.Get<CoreHollowbornChaosEnvoy.ShadowsOfDisdainRewards>("Shadows Of Disdain"));
 
         Core.SetOptions(false);

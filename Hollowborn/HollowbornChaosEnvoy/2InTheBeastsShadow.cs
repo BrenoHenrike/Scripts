@@ -41,7 +41,7 @@ public class HBCE2
     {
         Core.SetOptions();
 
-        HBCE.InTheBeastsShadow();
+        HBCE.InTheBeastsShadow(Bot.Config!.Get<CoreHollowbornChaosEnvoy.InTheBeastsShadowRewards >("In The Beasts Shadow"));
 
         Core.SetOptions(false);
     }

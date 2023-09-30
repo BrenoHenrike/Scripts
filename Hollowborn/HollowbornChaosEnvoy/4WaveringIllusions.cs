@@ -41,7 +41,7 @@ public class HBCE4
     {
         Core.SetOptions();
 
-        HBCE.WaveringIllusions();
+        HBCE.WaveringIllusions(Bot.Config!.Get<CoreHollowbornChaosEnvoy.WaveringIllusionsRewards>("Wavering Illusions"));
 
         Core.SetOptions(false);
     }

@@ -41,7 +41,7 @@ public class HBCE1
     {
         Core.SetOptions();
 
-        HBCE.StirringDiscord();
+        HBCE.StirringDiscord(Bot.Config!.Get<CoreHollowbornChaosEnvoy.StirringDiscordRewards >("Stirring Discord"));
 
         Core.SetOptions(false);
     }

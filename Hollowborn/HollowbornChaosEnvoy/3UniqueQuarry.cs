@@ -41,7 +41,7 @@ public class HBCE3
     {
         Core.SetOptions();
 
-        HBCE.UniqueQuarry();
+        HBCE.UniqueQuarry(Bot.Config!.Get<CoreHollowbornChaosEnvoy.UniqueQuarryRewards >("Unique Quarry"));
 
         Core.SetOptions(false);
     }
