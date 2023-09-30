@@ -627,7 +627,6 @@ public class CoreNation
     /// </summary>
     /// <param name="item">Desired item name.</param>
     /// <param name="quant">Desired item quantity.</param>
-    /// <param name="voucherNeeded">Whether a voucher is required for the item (default: false).</param>
     public void Supplies(string? item = null, int quant = 1)
     {
         bool sellMemVoucher = Core.CBOBool("Nation_SellMemVoucher", out bool _sellMemVoucher) && _sellMemVoucher;
