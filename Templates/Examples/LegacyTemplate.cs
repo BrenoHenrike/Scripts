@@ -30,29 +30,30 @@ public class LegacyTemplate
         //LegacyQuestManager handles drops & required tokens and will sort out automaticly where you are in the questline.
         //Insert Questids after "Questlogic," in order.
         Story.LegacyQuestManager(QuestLogic, 1, 2, 3);
-
+        
         void QuestLogic()
         {
             //InsertQuestID from the LegacyQuestManager in order, per case
             switch (Story.LegacyQuestID)
             {
                 case 1:
-                    Core.HuntMonster("map", "mob", "item", quant: 9999);
+                    Core.HuntMonster("map", "mob", "item", quant);
                     break;
 
                 case 2:
                     //ItemID - How to Get: Goto Quest Map > Tools > Grabber > GetMap Item Ids > ItemID is the first # in the bit lines that show up.
-                    Core.GetMapItem(itemID: 9999, quant: 9999, "map");
+                    Core.GetMapItem(ItemID, quant, "map");
                     break;
 
                 case 3:
                     //There area  few ways to use Core.BuyItem (itemname, ItemID, or ShopItemID)
                     //ShopItemID can be gotten through the Grabber, just open teh shop goto the shop items tab in grabber, and hit grab. the ShopItemID will be on the Right you may need to scroll.
                     //ShopItemID is used when there are more then 1 item in the shop with the same name.
-                    Core.BuyItem("map", shopID: 9999, "ItemName", quant: 9999);
-                    Core.BuyItem("map", shopID: 9999, itemID: 9999, quant: 9999);
-                    Core.BuyItem("map", shopID: 9999, "ItemName", quant: 9999, shopItemID: 9999);
+                    Core.BuyItem("map", shopID, "ItemName", quant);
+                    Core.BuyItem("map", shopID, itemID, quant);
+                    Core.BuyItem("map", shopID, "ItemName", ShopItemID, quant);
                     break;
+
             }
         }
     }
