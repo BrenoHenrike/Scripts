@@ -45,7 +45,7 @@ public class ShadowSlayerKMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
+    public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         var result = Bot.ShowMessageBox("Items containing the word \"Shadow\" in this shop cost 1 Elders' Blood per piece, " +
                                                 "which is a valuable resource used to get Void Highlord. Are you sure you want to continue?",

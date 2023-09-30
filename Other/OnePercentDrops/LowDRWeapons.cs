@@ -32,7 +32,7 @@ public class LowDRWeapons
         Core.SetOptions(false);
     }
 
-    public void GetItem(string item = null)
+    public void GetItem(string? item = null)
     {
         if (Bot.Config.Get<Weapons>("Weapons") == Weapons.None)
         {

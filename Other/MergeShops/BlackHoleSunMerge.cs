@@ -36,7 +36,7 @@ public class BlackHoleSunMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
+    public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("blackholesun", 1268, findIngredients, buyOnlyThis, buyMode: buyMode);

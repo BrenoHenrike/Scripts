@@ -32,16 +32,15 @@ public class HBCE5
     private CoreBots Core => CoreBots.Instance;
     private CoreHollowbornChaosEnvoy HBCE = new();
     private static CoreHollowbornChaosEnvoy sHBCE = new();
-    
+
     public string OptionsStorage = sHBCE.OptionsStorage;
-    public bool DontPreconfigure = true;
+    public bool DontPreconfigure = false;
     public List<IOption> Options = sHBCE.Options;
 
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
-
-        HBCE.ShadowsOfDisdain();
+        HBCE.ShadowsOfDisdain(Bot.Config!.Get<CoreHollowbornChaosEnvoy.ShadowsOfDisdainRewards>("Shadows Of Disdain"));
 
         Core.SetOptions(false);
     }

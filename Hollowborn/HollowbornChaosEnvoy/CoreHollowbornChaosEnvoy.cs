@@ -57,7 +57,7 @@ public class CoreHollowbornChaosEnvoy
             CoreBots.Instance.SkipOptions,
 
             new Option<StirringDiscordRewards>("Stirring Discord", "Stirring Discord Reward", "Reward Selection for Stirring Discord", StirringDiscordRewards.None),
-            new Option<InTheBeastsShadowRewards>("In TheBeasts Shadow", "In TheBeasts Shadow Reward", "Reward Selection for Stirring Discord", InTheBeastsShadowRewards.None),
+            new Option<InTheBeastsShadowRewards>("In The Beasts Shadow", "In The Beasts Shadow Reward", "Reward Selection for Stirring Discord", InTheBeastsShadowRewards.None),
             new Option<UniqueQuarryRewards>("Unique Quarry", "Unique Quarry Reward", "Reward Selection for Stirring Discord", UniqueQuarryRewards.None),
             new Option<WaveringIllusionsRewards>("Wavering Illusions", "Wavering Illusions Reward", "Reward Selection for Stirring Discord", WaveringIllusionsRewards.None),
             new Option<ShadowsOfDisdainRewards>("Shadows Of Disdain", "Shadows Of Disdain Reward", "Reward Selection for Stirring Discord", ShadowsOfDisdainRewards.None),
@@ -75,7 +75,7 @@ public class CoreHollowbornChaosEnvoy
         bool BankAfter = Bot.Config!.Get<bool>("BankAfter");
 
         string? stirringDiscord = Bot.Config!.Get<string>("Stirring Discord");
-        string? inTheBeastsShadow = Bot.Config!.Get<string>("In TheBeasts Shadow");
+        string? inTheBeastsShadow = Bot.Config!.Get<string>("In The Beasts Shadow");
         string? uniqueQuarry = Bot.Config!.Get<string>("Unique Quarry");
         string? waveringIllusions = Bot.Config!.Get<string>("Wavering Illusions");
         string? shadowsOfDisdain = Bot.Config!.Get<string>("Shadows Of Disdain");
@@ -89,7 +89,7 @@ public class CoreHollowbornChaosEnvoy
             persistingMayhem != null)
             Core.Logger($"Options Selected:\n" +
                 $"\t\tStirring Discord:  [{stirringDiscord.Replace("_", " ")}]\n" +
-                $"\t\tIn TheBeasts Shadow: [{inTheBeastsShadow.Replace("_", " ")}]\n" +
+                $"\t\tIn The Beasts Shadow: [{inTheBeastsShadow.Replace("_", " ")}]\n" +
                 $"\t\tUnique Quarry:  [{uniqueQuarry.Replace("_", " ")}\n" +
                 $"\t\tWavering Illusions:  [{waveringIllusions.Replace("_", " ")}]\n" +
                 $"\t\tShadows Of Disdain:  [{shadowsOfDisdain.Replace("_", " ")}]\n" +
@@ -165,9 +165,9 @@ public class CoreHollowbornChaosEnvoy
             if (BankAfter)
                 Core.ToBank((int)Bot.Config!.Get<StirringDiscordRewards>("Stirring Discord"));
 
-            InTheBeastsShadow(Bot.Config!.Get<InTheBeastsShadowRewards>("In TheBeasts Shadow"), true);
+            InTheBeastsShadow(Bot.Config!.Get<InTheBeastsShadowRewards>("In The Beasts Shadow"), true);
             if (BankAfter)
-                Core.ToBank((int)Bot.Config!.Get<InTheBeastsShadowRewards>("In TheBeasts Shadow"));
+                Core.ToBank((int)Bot.Config!.Get<InTheBeastsShadowRewards>("In The Beasts Shadow"));
 
             UniqueQuarry(Bot.Config!.Get<UniqueQuarryRewards>("Unique Quarry"), true);
             if (BankAfter)
@@ -214,40 +214,40 @@ public class CoreHollowbornChaosEnvoy
             Adv.BuyItem("crownsreach", 1383, "Chaotic Knight Helm");
 
 
-            if (completeOnce)
-            {
-                Core.EnsureCompleteChoose(8998, Core.QuestRewards(8998));
-                break;
-            }
+
+            // Check if all rewards are collected or the specific item is collected
+            if (completeOnce && !Core.CheckInventory((int)Bot.Config!.Get<StirringDiscordRewards>("Stirring Discord")))
+                Core.EnsureComplete(8998, (int)Bot.Config!.Get<StirringDiscordRewards>("Stirring Discord"));
             else if (rewardSelection == StirringDiscordRewards.All)
                 Core.EnsureCompleteChoose(8998, Core.QuestRewards(8998));
-
-            else if (rewardSelection != StirringDiscordRewards.All && !completeOnce)
-            {
-                Core.EnsureComplete(8998, (int)rewardSelection);
-                Bot.Wait.ForPickup((int)rewardSelection);
-            }
+            // Exit the loop if the condition is met
+            else if ((completeOnce && Core.CheckInventory(((int)Bot.Config!.Get<StirringDiscordRewards>("Stirring Discord")))
+            || (!completeOnce && Core.CheckInventory(rewards))))
+                break;
         }
         Core.CancelRegisteredQuests();
     }
 
     public void InTheBeastsShadow(InTheBeastsShadowRewards rewardSelection = InTheBeastsShadowRewards.None, bool completeOnce = false)
     {
+        if (!Bot.Quests.IsUnlocked(8999))
+            Core.Logger("Quest not unlocked [8999], doing \"Stirring Discord\"");
+
+        StirringDiscord(completeOnce: true);
+
         string[] rewards = Core.QuestRewards(8999);
 
-        if ((Bot.Config!.Get<InTheBeastsShadowRewards>("In TheBeasts Shadow") == InTheBeastsShadowRewards.All && Core.CheckInventory(rewards))
-        || Bot.Config!.Get<InTheBeastsShadowRewards>("In TheBeasts Shadow") == InTheBeastsShadowRewards.None
-        || Core.CheckInventory((int)Bot.Config!.Get<InTheBeastsShadowRewards>("In TheBeasts Shadow")))
+        if ((Bot.Config!.Get<InTheBeastsShadowRewards>("In The Beasts Shadow") == InTheBeastsShadowRewards.All && Core.CheckInventory(rewards))
+        || Bot.Config!.Get<InTheBeastsShadowRewards>("In The Beasts Shadow") == InTheBeastsShadowRewards.None
+        || Core.CheckInventory((int)Bot.Config!.Get<InTheBeastsShadowRewards>("In The Beasts Shadow")))
             return;
 
         Core.AddDrop(rewards);
 
-        if (!Bot.Quests.IsUnlocked(8999))
-            StirringDiscord();
 
         Farm.Experience(75);
 
-        Core.Logger($"Reward Choosen: {Bot.Config!.Get<InTheBeastsShadowRewards>("In TheBeasts Shadow")}");
+        Core.Logger($"Reward Choosen: {Bot.Config!.Get<InTheBeastsShadowRewards>("In The Beasts Shadow")}");
         while (!Bot.ShouldExit)
         {
             Core.EnsureAccept(8999);
@@ -264,22 +264,26 @@ public class CoreHollowbornChaosEnvoy
             Core.KillMonster("mountdoomskull", "b1", "Left", "*", "Fragment of Mount Doomskull", 1000, isTemp: false);
 
             // Check if all rewards are collected or the specific item is collected
-            if (rewardSelection == InTheBeastsShadowRewards.All)
+            if (completeOnce && !Core.CheckInventory((int)Bot.Config!.Get<InTheBeastsShadowRewards>("In The Beasts Shadow")))
+                Core.EnsureComplete(8999, (int)Bot.Config!.Get<InTheBeastsShadowRewards>("In The Beasts Shadow"));
+            else if (rewardSelection == InTheBeastsShadowRewards.All)
                 Core.EnsureCompleteChoose(8999, Core.QuestRewards(8999));
-            else if (rewardSelection != InTheBeastsShadowRewards.All && !completeOnce)
-            {
-                Core.EnsureComplete(8999, (int)rewardSelection);
-                Bot.Wait.ForPickup((int)rewardSelection);
-            }
-
-            if (completeOnce || Core.CheckInventory(Bot.Config!.Get<InTheBeastsShadowRewards>("Unique Quarry").ToString()) || Core.CheckInventory(rewards))
-                break; // Exit the loop if the condition is met
+            // Exit the loop if the condition is met
+            else if ((completeOnce && Core.CheckInventory(((int)Bot.Config!.Get<InTheBeastsShadowRewards>("In The Beasts Shadow")))
+            || (!completeOnce && Core.CheckInventory(rewards))))
+                break;
         }
         Core.CancelRegisteredQuests();
     }
 
     public void UniqueQuarry(UniqueQuarryRewards rewardSelection = UniqueQuarryRewards.None, bool completeOnce = false)
     {
+        if (!Bot.Quests.IsUnlocked(9000))
+        {
+            Core.Logger("Quest not unlocked [9000], doing \"In The Beasts Shadow\"");
+            InTheBeastsShadow(completeOnce: true);
+        }
+
         string[] rewards = Core.QuestRewards(9000);
 
         if ((Bot.Config!.Get<UniqueQuarryRewards>("Unique Quarry") == UniqueQuarryRewards.All && Core.CheckInventory(rewards))
@@ -290,7 +294,7 @@ public class CoreHollowbornChaosEnvoy
         Core.AddDrop(rewards);
 
         if (!Bot.Quests.IsUnlocked(9000))
-            InTheBeastsShadow();
+            InTheBeastsShadow(completeOnce: true);
 
         Farm.Experience(75);
         ADG.AscendedGear("Ascended Face of Chaos");
@@ -317,26 +321,29 @@ public class CoreHollowbornChaosEnvoy
                 Farm.Gold(900000);
                 Core.BuyItem("tercessuinotlim", 1951, "Receipt of Swindle", 3);
                 Core.BuyItem("tercessuinotlim", 1951, "Chaoroot", 30);
-
-                // Check if all rewards are collected or the specific item is collected
-                if (rewardSelection == UniqueQuarryRewards.All)
-                    Core.EnsureCompleteChoose(9000, Core.QuestRewards(9000));
-
-                else if (rewardSelection != UniqueQuarryRewards.All && !completeOnce)
-                {
-                    Core.EnsureComplete(9000, (int)rewardSelection);
-                    Bot.Wait.ForPickup((int)rewardSelection);
-                }
-
-                if (completeOnce || Core.CheckInventory((int)Bot.Config!.Get<UniqueQuarryRewards>("Unique Quarry")) || Core.CheckInventory(rewards))
-                    break; // Exit the loop if the condition is met
             }
-            Core.CancelRegisteredQuests();
+
+
+            // Check if all rewards are collected or the specific item is collected
+            if (completeOnce && !Core.CheckInventory((int)Bot.Config!.Get<UniqueQuarryRewards>("Unique Quarry")))
+                Core.EnsureComplete(9000, (int)Bot.Config!.Get<UniqueQuarryRewards>("Unique Quarry"));
+            else if (rewardSelection == UniqueQuarryRewards.All)
+                Core.EnsureCompleteChoose(9000, Core.QuestRewards(9000));
+            // Exit the loop if the condition is met
+            else if ((completeOnce && Core.CheckInventory(((int)Bot.Config!.Get<UniqueQuarryRewards>("Unique Quarry")))
+            || (!completeOnce && Core.CheckInventory(rewards))))
+                break;
         }
     }
 
     public void WaveringIllusions(WaveringIllusionsRewards rewardSelection = WaveringIllusionsRewards.None, bool completeOnce = false)
     {
+        if (!Bot.Quests.IsUnlocked(9001))
+        {
+            Core.Logger("Quest not unlocked [9001], doing \"Unique Quarry\"");
+            UniqueQuarry(completeOnce: true);
+        }
+
         string[] rewards = Core.QuestRewards(9001);
 
         if ((Bot.Config!.Get<WaveringIllusionsRewards>("Wavering Illusions") == WaveringIllusionsRewards.All && Core.CheckInventory(rewards))
@@ -377,29 +384,26 @@ public class CoreHollowbornChaosEnvoy
             Core.BuyItem("downbelow", 2004, "Chaos PuppetMaster");
 
             // Check if all rewards are collected or the specific item is collected
-            if (completeOnce)
-            {
-                Core.EnsureCompleteChoose(9001, Core.QuestRewards(9001));
-                break;
-            }
-
+            if (completeOnce && !Core.CheckInventory((int)Bot.Config!.Get<WaveringIllusionsRewards>("Wavering Illusions")))
+                Core.EnsureComplete(9001, (int)Bot.Config!.Get<WaveringIllusionsRewards>("Wavering Illusions"));
             else if (rewardSelection == WaveringIllusionsRewards.All)
                 Core.EnsureCompleteChoose(9001, Core.QuestRewards(9001));
-
-            else if (rewardSelection != WaveringIllusionsRewards.All && !completeOnce)
-            {
-                Core.EnsureComplete(9001, (int)rewardSelection);
-                Bot.Wait.ForPickup((int)rewardSelection);
-            }
-
-            if (completeOnce || Core.CheckInventory(Bot.Config!.Get<WaveringIllusionsRewards>("Unique Quarry").ToString()) || Core.CheckInventory(rewards))
-                break; // Exit the loop if the condition is met
+            // Exit the loop if the condition is met
+            else if ((completeOnce && Core.CheckInventory(((int)Bot.Config!.Get<WaveringIllusionsRewards>("Wavering Illusions")))
+            || (!completeOnce && Core.CheckInventory(rewards))))
+                break;
         }
         Core.CancelRegisteredQuests();
     }
 
     public void ShadowsOfDisdain(ShadowsOfDisdainRewards rewardSelection = ShadowsOfDisdainRewards.None, bool completeOnce = false)
     {
+        if (!Bot.Quests.IsUnlocked(9002))
+        {
+            Core.Logger("Quest not unlocked [9002], doing \"Wavering Illusions\"");
+            WaveringIllusions(completeOnce: true);
+        }
+
         string[] rewards = Core.QuestRewards(9002);
 
         if ((Bot.Config!.Get<ShadowsOfDisdainRewards>("Shadows Of Disdain") == ShadowsOfDisdainRewards.All && Core.CheckInventory(rewards))
@@ -434,23 +438,16 @@ public class CoreHollowbornChaosEnvoy
 
             Adv.BuyItem("transformation", 2002, "Chaorrupted Usurper");
 
+
             // Check if all rewards are collected or the specific item is collected
-            if (completeOnce)
-            {
-                Core.EnsureCompleteChoose(9002, Core.QuestRewards(9002));
-                break;
-            }
+            if (completeOnce && !Core.CheckInventory((int)Bot.Config!.Get<ShadowsOfDisdainRewards>("Shadows Of Disdain")))
+                Core.EnsureComplete(9002, (int)Bot.Config!.Get<ShadowsOfDisdainRewards>("Shadows Of Disdain"));
             else if (rewardSelection == ShadowsOfDisdainRewards.All)
                 Core.EnsureCompleteChoose(9002, Core.QuestRewards(9002));
-
-            else if (rewardSelection != ShadowsOfDisdainRewards.All && !completeOnce)
-            {
-                Core.EnsureComplete(9002, (int)rewardSelection);
-                Bot.Wait.ForPickup((int)rewardSelection);
-            }
-
-            if (completeOnce || Core.CheckInventory(Bot.Config!.Get<ShadowsOfDisdainRewards>("Unique Quarry").ToString()) || Core.CheckInventory(rewards))
-                break; // Exit the loop if the condition is met
+            // Exit the loop if the condition is met
+            else if ((completeOnce && Core.CheckInventory(((int)Bot.Config!.Get<ShadowsOfDisdainRewards>("Shadows Of Disdain")))
+            || (!completeOnce && Core.CheckInventory(rewards))))
+                break;
         }
 
         Core.CancelRegisteredQuests();
@@ -458,6 +455,12 @@ public class CoreHollowbornChaosEnvoy
 
     public void PersistingMayhem(PersistingMayhemRewards rewardSelection = PersistingMayhemRewards.None, bool completeOnce = false)
     {
+        if (!Bot.Quests.IsUnlocked(9003))
+        {
+            Core.Logger("Quest not unlocked [9003], doing \"Shadows of Disdain\"");
+            ShadowsOfDisdain(completeOnce: true);
+        }
+
         string[] rewards = Core.QuestRewards(9003);
 
         if ((Bot.Config!.Get<PersistingMayhemRewards>("Persisting Mayhem") == PersistingMayhemRewards.All && Core.CheckInventory(rewards))
@@ -481,22 +484,14 @@ public class CoreHollowbornChaosEnvoy
             Core.HuntMonster("ultradrakath", "Champion of Chaos", "Trace of Chaos", 13, isTemp: false, publicRoom: true);
 
             // Check if all rewards are collected or the specific item is collected
-            if (completeOnce)
-            {
-                Core.EnsureCompleteChoose(9003, Core.QuestRewards(9003));
-                break;
-            }
+            if (completeOnce && !Core.CheckInventory((int)Bot.Config!.Get<PersistingMayhemRewards>("Persisting Mayhem")))
+                Core.EnsureComplete(9002, (int)Bot.Config!.Get<PersistingMayhemRewards>("Persisting Mayhem"));
             else if (rewardSelection == PersistingMayhemRewards.All)
-                Core.EnsureCompleteChoose(9003, Core.QuestRewards(9003));
-
-            else if (rewardSelection != PersistingMayhemRewards.All && !completeOnce)
-            {
-                Core.EnsureComplete(9003, (int)rewardSelection);
-                Bot.Wait.ForPickup((int)rewardSelection);
-            }
-
-            if (completeOnce || Core.CheckInventory(Bot.Config!.Get<PersistingMayhemRewards>("Unique Quarry").ToString()) || Core.CheckInventory(rewards))
-                break; // Exit the loop if the condition is met
+                Core.EnsureCompleteChoose(9002, Core.QuestRewards(9002));
+            // Exit the loop if the condition is met
+            else if ((completeOnce && Core.CheckInventory(((int)Bot.Config!.Get<PersistingMayhemRewards>("Persisting Mayhem")))
+            || (!completeOnce && Core.CheckInventory(rewards))))
+                break;
         }
 
         Core.CancelRegisteredQuests();

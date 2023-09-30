@@ -39,7 +39,7 @@ public class CelestialChampion
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
+    public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         CAQ.Arena1to10();
         CAQ.Arena11to20();

@@ -38,7 +38,7 @@ public class ChaosLabMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
+    public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("chaoslab", 887, findIngredients, buyOnlyThis, buyMode: buyMode);
@@ -65,7 +65,7 @@ public class ChaosLabMerge
 
                 case "Chaorrupted Hamster":
                     Core.EquipClass(ClassType.Farm);
-                    Core.HuntMonster("chaoslab", "Chaotic Server Hamster", req.name, isTemp: false, log: false);
+                    Core.HuntMonster("chaoslab", "Chaotic Server Hamster", req.Name, isTemp: false, log: false);
                     break;
 
                 case "Crystallized Chaos":

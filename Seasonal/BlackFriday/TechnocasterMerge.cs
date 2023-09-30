@@ -35,7 +35,7 @@ public class TechnocasterMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
+    public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         Core.AddDrop("Purified Energy Core", "Seraphic Steel Plate");
         //Only edit the map and shopID here

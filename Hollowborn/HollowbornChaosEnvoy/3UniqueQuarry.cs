@@ -34,14 +34,14 @@ public class HBCE3
     private static CoreHollowbornChaosEnvoy sHBCE = new();
 
     public string OptionsStorage = sHBCE.OptionsStorage;
-    public bool DontPreconfigure = true;
+    public bool DontPreconfigure = false;
     public List<IOption> Options = sHBCE.Options;
 
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
-        HBCE.UniqueQuarry();
+        HBCE.UniqueQuarry(Bot.Config!.Get<CoreHollowbornChaosEnvoy.UniqueQuarryRewards >("Unique Quarry"));
 
         Core.SetOptions(false);
     }

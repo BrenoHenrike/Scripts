@@ -1,7 +1,7 @@
 /*
-name: Army DoomWood Rep
-description: Farm reputation with your army. Faction: Doomwood
-tags: army, reputation, doomwood
+name: Army Aegis Rep
+description: Farm reputation with your army. Faction: Aegis
+tags: army, reputation, aegis
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -11,7 +11,7 @@ using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
 
-public class ArmyDoomWoodRep
+public class ArmyRepTemplate
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
@@ -22,7 +22,7 @@ public class ArmyDoomWoodRep
     private static CoreBots sCore = new();
     private static CoreArmyLite sArmy = new();
 
-    public string OptionsStorage = "ArmyDoomWoodRep";
+    public string OptionsStorage = "ArmyRep";
     public bool DontPreconfigure = true;
     public List<IOption> Options = new List<IOption>()
     {
@@ -36,6 +36,12 @@ public class ArmyDoomWoodRep
         CoreBots.Instance.SkipOptions
     };
 
+    string repname = "";
+    string AggroMonStart = "";
+    int[] AggroMonMIDs = { };
+    string[] DivideOnCells = { };
+    int[] RegisterQuests = { };
+
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
@@ -47,20 +53,31 @@ public class ArmyDoomWoodRep
 
     public void Setup()
     {
-        if (Farm.FactionRank("DoomWood") >= 10)
+        if (Farm.FactionRank(repname) >= 10)
             return;
 
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
 
-        Core.EquipClass(ClassType.Farm);
-        Core.RegisterQuests(1151, 1152, 1153); //Minion Morale 1151, Shadowfall is DOOMed 1152, Grave-lyn Danger, 1153
+        Army.AggroMonMIDs(AggroMonMIDs);
+        Army.AggroMonStart(AggroMonStart);
+        Army.DivideOnCells(DivideOnCells);
+
         Farm.ToggleBoost(BoostType.Reputation);
-        Army.SmartAggroMonStart("shadowfallwar", "Bonemuncher", "Ghoul", "Undead Soldier", "Skeletal Fire Mage", "Undead War Mage");
-        while (!Bot.ShouldExit && Farm.FactionRank("DoomWood") < 10)
+        Core.EquipClass(ClassType.Farm);
+        Core.RegisterQuests(RegisterQuests);
+        while (!Bot.ShouldExit && Farm.FactionRank(repname) < 10)
             Bot.Combat.Attack("*");
         Army.AggroMonStop(true);
         Farm.ToggleBoost(BoostType.Reputation, false);
         Core.CancelRegisteredQuests();
+        Army.waitForParty("whitemap");
     }
 }
+
+
+
+
+
+
+

@@ -24,7 +24,7 @@ public class CoreFireIsland
 
     public void CompleteFireIsland()
     {
-        if (Core.isCompletedBefore(4235))
+        if (Core.isCompletedBefore(Core.IsMember ? 4157 : 4235))
             return;
 
         Embersea();
@@ -179,8 +179,8 @@ public class CoreFireIsland
         {
             Core.EnsureAccept(4134);
 
-            Core.HuntMonster("feverfew", "Salamander", "Salamander Tongue", 2, log: false);
-            Core.HuntMonster("feverfew", "Feverfew Vase", "Adderoot Powder", 3, log: false);
+            Core.HuntMonster("feverfew", "Salamander", "Salamander Tongue", 3, log: false);
+            Core.HuntMonster("feverfew", "Feverfew Vase", "Adderoot Powder", 2, log: false);
             Core.HuntMonster("feverfew", "Twisted Undine", "Shadowbane Brine", 4, log: false);
             Core.HuntMonster("feverfew", "Coral Creeper", "Charred Claw", 2, log: false);
             Core.HuntMonster("feverfew", "Firestorm Knight", "Whispered Regret", log: false);
@@ -198,7 +198,7 @@ public class CoreFireIsland
         Story.MapItemQuest(4137, "feverfew", 3242, 10);
 
         //Parting the Waters
-        Story.KillQuest(4138, "feverfew", new[] { "Salamander", "Coral Creeper", "Firestorm Knight", "Twisted Undine"});
+        Story.KillQuest(4138, "feverfew", new[] { "Salamander", "Coral Creeper", "Firestorm Knight", "Twisted Undine" });
 
         //The Power to Heal
         Story.KillQuest(4139, "feverfew", new[] { "Locked Chest", "Feverfew Vase", "Twisted Undine" });
@@ -330,12 +330,9 @@ public class CoreFireIsland
 
     public void Brimstone()
     {
-        if (Core.isCompletedBefore(4115))
-            return;
-
-        if (!Core.IsMember)
+        if (Core.isCompletedBefore(4115) || !Core.IsMember)
         {
-            Core.Logger("You need to be a member for complete the /brimestone questline.");
+            Core.Logger(!Core.IsMember ? "You need to be a member to complete /brimestone questline." : "Brimstone Story Complete");
             return;
         }
 

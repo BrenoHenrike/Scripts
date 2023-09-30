@@ -15,11 +15,6 @@ public class GongJiZhanshiSet
     public CoreBots Core => CoreBots.Instance;
     private CoreStory Story = new();
 
-
-    int questID = 5668;
-    int quant = 1;
-
-
     public void ScriptMain(IScriptInterface Bot)
     {
         Core.SetOptions();

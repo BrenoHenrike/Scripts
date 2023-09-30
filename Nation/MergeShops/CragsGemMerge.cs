@@ -34,7 +34,7 @@ public class CragsGemMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
+    public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         Farm.CraggleRockREP();
         //Only edit the map and shopID here

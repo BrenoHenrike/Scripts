@@ -62,7 +62,7 @@ public class CoreDailies
     /// <param name="items">Items to add to drop grabber and unbank</param>
     /// <returns></returns>
     //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    public bool CheckDailyv2(int quest, bool any = true, bool ShouldUnBank = true, params string[] items)
+    public bool CheckDailyv2(int quest, bool any = true, params string[] items)
     {
         if (Bot.Quests.IsDailyComplete(quest))
         {
@@ -207,8 +207,7 @@ public class CoreDailies
     /// <param name="quant">Quantity you want of the metals</param>
     public void MineCrafting(string[]? metals = null, int quant = 2, bool ToBank = false)
     {
-        if (metals == null)
-            metals = MineCraftingMetalsArray;
+        metals ??= MineCraftingMetalsArray;
         Core.Logger($"Daily: Mine Crafting ({string.Join('/', metals)})");
         if (Core.CheckInventory(metals, quant))
         {
@@ -217,7 +216,7 @@ public class CoreDailies
                 Core.ToBank(metals);
             return;
         }
-        if (!CheckDaily(2091, false, false, metals))
+        if (!CheckDailyv2(2091, false, metals))
             return;
 
         Core.EnsureAccept(2091);
@@ -251,8 +250,7 @@ public class CoreDailies
     {
         if (!Core.IsMember || !Core.isCompletedBefore(2090))
             return;
-        if (metals == null)
-            metals = HardCoreMetalsMetalsArray;
+        metals ??= HardCoreMetalsMetalsArray;
         Core.Logger($"Daily: Hard Core Metals ({string.Join('/', metals)})");
         if (Core.CheckInventory(metals, quant))
         {
@@ -261,7 +259,7 @@ public class CoreDailies
                 Core.ToBank(metals);
             return;
         }
-        if (!CheckDaily(2098, false, false, metals))
+        if (!CheckDailyv2(2098, false, metals))
             return;
 
         Core.EnsureAccept(2098);
@@ -994,7 +992,7 @@ public class CoreDailies
                 int[] _gifts = gifts.Select(x => (int)x).ToArray();
                 if (!Core.CheckInventory(_gifts, any: true))
                 {
-                    if (gifts.Count() == 1)
+                    if (gifts.Length == 1)
                         Core.FarmingLogger(gifts[0].ToString().Replace('_', ' '), 1);
                     else Core.Logger("Farming for one of the following items: " + String.Join(" | ", gifts.Select(x => x.ToString().Replace('_', ' ')).ToArray()));
 
@@ -1084,7 +1082,7 @@ public class CoreDailies
                 }, 30);
                 if (selectedGift == null)
                 {
-                    if (gifts.Count() > 1)
+                    if (gifts.Length > 1)
                         Core.Logger("Failed to parse any of the following items from your inventory: " + String.Join(" | ", gifts.Select(x => x.ToString())).Replace('_', ' '));
                     else Core.Logger($"Failed to find \"{gifts[0].ToString().Replace('_', ' ')}\" in your inventory.");
                     return;

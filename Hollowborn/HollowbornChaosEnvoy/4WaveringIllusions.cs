@@ -34,14 +34,14 @@ public class HBCE4
     private static CoreHollowbornChaosEnvoy sHBCE = new();
 
     public string OptionsStorage = sHBCE.OptionsStorage;
-    public bool DontPreconfigure = true;
+    public bool DontPreconfigure = false;
     public List<IOption> Options = sHBCE.Options;
 
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
-        HBCE.WaveringIllusions();
+        HBCE.WaveringIllusions(Bot.Config!.Get<CoreHollowbornChaosEnvoy.WaveringIllusionsRewards>("Wavering Illusions"));
 
         Core.SetOptions(false);
     }

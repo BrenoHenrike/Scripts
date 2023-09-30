@@ -34,14 +34,14 @@ public class HBCE2
     private static CoreHollowbornChaosEnvoy sHBCE = new();
 
     public string OptionsStorage = sHBCE.OptionsStorage;
-    public bool DontPreconfigure = true;
+    public bool DontPreconfigure = false;
     public List<IOption> Options = sHBCE.Options;
 
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
-        HBCE.InTheBeastsShadow();
+        HBCE.InTheBeastsShadow(Bot.Config!.Get<CoreHollowbornChaosEnvoy.InTheBeastsShadowRewards >("In The Beasts Shadow"));
 
         Core.SetOptions(false);
     }

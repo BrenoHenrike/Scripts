@@ -1529,7 +1529,7 @@ public class CoreFarms
             Core.EnsureAccept(320, 321); //Warm and Furry 320, Shell Shock 321
             Core.KillMonster("pines", "Enter", "Right", "Pine Grizzly", "Bear Skin", 5, log: false);
             Core.KillMonster("pines", "Enter", "Right", "Red Shell Turtle", "Red Turtle Shell", 5, log: false);
-            Core.EnsureComplete(320, 321); //Warm and Furry 320, Shell Shock 321
+            Core.EnsureComplete(new[] {320, 321}); //Warm and Furry 320, Shell Shock 321
         }
         // Core.CancelRegisteredQuests();
         ToggleBoost(BoostType.Reputation, false);
@@ -1712,32 +1712,36 @@ public class CoreFarms
         }
     }
 
-    public void FishingREP(int rank = 10, bool shouldDerp = false, bool TrashBait = true)
+    public void FishingREP(int rank = 10, bool shouldDerp = false, bool TrashBait = true, bool GetBoosts = true)
     {
         if (FactionRank("Fishing") >= rank)
         {
+            Core.DebugLogger(this);
             if (TrashBait)
                 Core.TrashCan("Fishing Bait", "Fishing Dynamite");
             return;
         }
 
-        Core.Logger("Getting some boosters to make this quicker");
-        GetBoost(10997, "REPUTATION Boost! (10 min)", 6, 1615, true);
+        if (GetBoosts)
+        {
+            Core.Logger("Getting some boosters to make this quicker");
+            GetBoost(10997, "REPUTATION Boost! (10 min)", 6, 1615, true);
+        }
 
         ToggleBoost(BoostType.Reputation);
         Core.AddDrop("Fishing Bait", "Fishing Dynamite");
         Core.EquipClass(ClassType.Farm);
-        // ToggleBoost(BoostType.Reputation);
         Core.SavedState();
         Core.Logger($"Farming rank {rank}");
-
+        #region Prefarm xp
         Core.Logger("Pre-Ranking XP(This is Required)");
         Core.EnsureAccept(1682);
         Core.KillMonster("greenguardwest", "West4", "Right", "Slime", "Faith's Fi'shtick", 1, log: false);
         Core.EnsureComplete(1682);
         Core.Join("fishing");
+        #endregion Prefarm xp
 
-        while (!Bot.ShouldExit && FactionRank("Fishing") < (rank > 2 ? 2 : rank) && (!shouldDerp || !Core.HasAchievement(14)))
+        while (!Bot.ShouldExit && FactionRank("Fishing") < 2)
         {
             Core.Logger("Fishing Rank < 2, gotta do bait first");
             GetBaitandDynamite(20, 0);
@@ -1745,14 +1749,13 @@ public class CoreFarms
             Core.Logger($"0 Xp means a Failed Catch, common at lower Fishing (Non-Faction) ranks (Minigame)");
 
             int Bait = Bot.Inventory.GetQuantity("Fishing Bait");
-            int x = 1;
+            int FishAttempt = 1;
             while (!Bot.ShouldExit && Core.CheckInventory("Fishing Bait"))
             {
                 Bot.Send.Packet("%xt%zm%FishCast%1%Net%30%");
                 Bot.Sleep(10000);
                 if (Bait != Bait - 1)
-                    Core.Logger("Failed to catch anything.");
-                else Core.Logger($"Catch Successful! x{x++}");
+                    Core.Logger($"Cast: x{FishAttempt++}");
             }
         }
 
@@ -1761,15 +1764,14 @@ public class CoreFarms
             GetBaitandDynamite(0, 20);
             Core.Logger($"Fishing With: Dynamite");
             int Dyamnite = Bot.Inventory.GetQuantity("Fishing Dynamite");
-            int z = 1;
+            int FishAttempt = 1;
             while (!Bot.ShouldExit && Core.CheckInventory("Fishing Dynamite") && FactionRank("Fishing") < rank && (!shouldDerp || !Core.HasAchievement(14)))
             {
                 Bot.Send.Packet($"%xt%zm%FishCast%1%Dynamite%30%");
                 Bot.Sleep(3500);
                 Core.SendPackets("%xt%zm%getFish%1%false%");
                 if (Dyamnite != Dyamnite - 1)
-                    Core.Logger("Failed to catch anything.");
-                else Core.Logger($"Catch Successful! x{z++}");
+                    Core.Logger($"Cast: x{FishAttempt++}");
             }
         }
         if (TrashBait)
@@ -2076,7 +2078,7 @@ public class CoreFarms
             && !Core.CheckInventory("Mega World Ender Medal", 5))
                 Core.HuntMonster("icewindwar", "Frost Invader", log: false);
 
-            while (!Bot.ShouldExit && !Core.CheckInventory("rostspawn Medal", 10)
+            while (!Bot.ShouldExit && !Core.CheckInventory("Frostspawn Medal", 10)
             && !Core.CheckInventory("Mega Frostspawn Medal", 5))
                 Core.HuntMonster("icewindwar", "Glaceran Defender", log: false);
         }
@@ -2179,30 +2181,22 @@ public class CoreFarms
         ToggleBoost(BoostType.Reputation);
         Core.Logger($"Farming rank {rank}");
 
-        if (!Bot.ShouldExit && FactionRank("Loremaster") < rank)
+        Core.EquipClass(ClassType.Farm);
+        Core.RegisterQuests(7505); //Studying the Rogue 7505
+        while (!Bot.ShouldExit && FactionRank("Loremaster") < rank)
         {
 
-            while (!Bot.ShouldExit && FactionRank("Loremaster") < rank)
+            if (Core.IsMember && FactionRank("Loremaster") >= 3)
+                LoremasterREPAbove3();
+            else
             {
-
-                Core.EquipClass(ClassType.Farm);
-                Core.RegisterQuests(7505); //Studying the Rogue 7505
-                while (!Bot.ShouldExit && FactionRank("Loremaster") < rank)
-                {
-
-                    if (Core.IsMember && FactionRank("Loremaster") >= 3)
-                        LoremasterREPAbove3();
-                    else
-                    {
-                        Core.HuntMonster("wardwarf", "Drow Assassin", "Poisoned Dagger", 4, log: false);
-                        Core.HuntMonster("wardwarf", "D'wain Jonsen", "Scroll: Opportunity's Strike", log: false);
-                    }
-                }
-                Core.CancelRegisteredQuests();
-                ToggleBoost(BoostType.Reputation, false);
-                Core.SavedState(false);
+                Core.HuntMonster("wardwarf", "Drow Assassin", "Poisoned Dagger", 4, log: false);
+                Core.HuntMonster("wardwarf", "D'wain Jonsen", "Scroll: Opportunity's Strike", log: false);
             }
         }
+        Core.CancelRegisteredQuests();
+        ToggleBoost(BoostType.Reputation, false);
+        Core.SavedState(false);
 
         void LoremasterREPAbove3()
         {
@@ -2848,7 +2842,7 @@ public class CoreFarms
         if (boostItem != null && Core.CheckInventory(boostItem?.Name, BoostQuant) && !doOnce) return;
 
         if (FactionRank("Fishing") < 2)
-            FishingREP(2, false);
+            FishingREP(2, false, false, false);
         else
         {
             Core.Logger("Pre-Ranking XP(This is Required)");
@@ -2862,18 +2856,17 @@ public class CoreFarms
         Core.EquipClass(ClassType.Farm);
 
         string itemName = boostItem?.Name ?? (Core.EnsureLoad(quest)?.Rewards.Find(x => x.ID == itemID)?.Name ?? "DefaultItemName");
-
-        // Unlock the quest if not completed before (only for quest 1615)
-        if (quest == 1615 && !Core.isCompletedBefore(1615))
-        {
-            Core.EnsureAccept(1615);
-            GetFish(10997, 5, 1615);
-            Core.HuntMonster("Greenguardwest", "Frogzard", "Greenguard Seal");
-            Core.EnsureComplete(1615);
-        }
-
         while (!Bot.ShouldExit && (boostItem == null || (boostItem != null && !Core.CheckInventory(boostItem?.Name, BoostQuant)) || doOnce))
         {
+            // Unlock the quest if not completed before (only for quest 1615)
+            if (!Core.isCompletedBefore(1615))
+            {
+                Core.EnsureAccept(1614);
+                GetFish(10850, 30, 1614);
+                Core.HuntMonster("swordhaven", "Slime", "Slime Sauce");
+                Core.EnsureComplete(1614);
+            }
+
             Core.EnsureAccept(quest);
 
             GetFish(itemID, quest == 1614 ? 30 : 5, quest);

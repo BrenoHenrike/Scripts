@@ -23,10 +23,11 @@ public class QuestRewardSelectTemplate
     }
 
     /*
-    Replace the `0000` with the quest for the drops u want, this can be found in the 
+    Replace the `0000` with the quest for the drops u want, this can be found in the
     loader just press update or if no quests show /updateall (may take a few minutes)
     */
     int QuestID = 0000;
+
     public void GetRewards()
     {
         // Any Quest Requirements for the Quest(aka stories / quuests to unlock this farm go below herehere)
@@ -49,7 +50,7 @@ public class QuestRewardSelectTemplate
 
             Core.EnsureAccept(QuestID);
 
-            Core.HuntMonster("map", "mob", "drop", quant, isTemp: truefalse, log: false);
+            Core.HuntMonster("map", "mob", "drop", quant: 1, isTemp: true, log: false); // if the drop is not temporary you should put isTemp: false
 
             Core.EnsureComplete(QuestID, Reward.ID);
             Core.JumpWait();
@@ -63,7 +64,7 @@ Possible extras:
     List<ItemBase> RewardOptions1 = Core.EnsureLoad(QuestID).Rewards;
     List<ItemBase> RewardOptions2 = Core.EnsureLoad(QuestID).Rewards;
   foreach (ItemBase item in RewardOptions1.Concat(RewardOptions2).ToArray())
-  {    
+  {
     if(Core.CheckInventory(item.ID, Quant))
         return;
     

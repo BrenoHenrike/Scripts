@@ -39,7 +39,7 @@ public class ShadowFirePlaneMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
+    public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("shadowfireplane", 2008, findIngredients, buyOnlyThis, buyMode: buyMode);

@@ -39,7 +39,7 @@ public class SevenCirclesWarMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
+    public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         Circles.CirclesWar();
         //Only edit the map and shopID here

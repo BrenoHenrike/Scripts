@@ -36,7 +36,7 @@ public class HBJudgementMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
+    public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("hbchallenge", 2075, findIngredients, buyOnlyThis, buyMode: buyMode);

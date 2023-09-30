@@ -4,7 +4,10 @@ description: Farms "All Drops" From Quest: "Sunken Treasure?".
 tags: sunken treasure, drops, set,pirate,tlapd,talk-like-a-pirate-day,seasonal
 */
 //cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreFarms.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
+
 
 public class SunkenTreasure
 {

@@ -37,7 +37,7 @@ public class NeighBeleenMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
+    public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         MM.CompleteStory();
         //Only edit the map and shopID here

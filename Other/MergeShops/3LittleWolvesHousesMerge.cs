@@ -37,7 +37,7 @@ public class ThreeLittleWolvesHousesMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
+    public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("buyhouse", 1729, findIngredients, buyOnlyThis, buyMode: buyMode);

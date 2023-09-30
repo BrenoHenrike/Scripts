@@ -68,7 +68,7 @@ public class ArmyEternalRep
         Core.CancelRegisteredQuests();
     }
 
-    void ArmyThing(string map = null, string[] monsters = null, string item = null, int quant = 1, bool isTemp = true)
+    void ArmyThing(string? map = null, string[]? monsters = null, string? item = null, int quant = 1, bool isTemp = true)
     {
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
@@ -114,7 +114,7 @@ public class ArmyEternalRep
         Core.Logger($"Squad All Gathered [{Bot.Map.PlayerNames.Count}/{Bot.Config.Get<int>("armysize")}]");
     }
 
-    void Armyshit(string map = null)
+    void Armyshit(string? map = null)
     {
         if (Bot.Map.Name == null)
             return;

@@ -34,14 +34,14 @@ public class HBCE1
     private static CoreHollowbornChaosEnvoy sHBCE = new();
 
     public string OptionsStorage = sHBCE.OptionsStorage;
-    public bool DontPreconfigure = true;
+    public bool DontPreconfigure = false;
     public List<IOption> Options = sHBCE.Options;
 
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
-        HBCE.StirringDiscord();
+        HBCE.StirringDiscord(Bot.Config!.Get<CoreHollowbornChaosEnvoy.StirringDiscordRewards >("Stirring Discord"));
 
         Core.SetOptions(false);
     }

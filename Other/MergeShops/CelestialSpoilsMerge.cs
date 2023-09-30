@@ -41,7 +41,7 @@ public class CelestialSpoilsMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
+    public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("djinnguard", 1582, findIngredients, buyOnlyThis, buyMode: buyMode);

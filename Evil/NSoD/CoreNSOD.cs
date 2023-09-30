@@ -17,7 +17,7 @@ using Skua.Core.Options;
 
 public class CoreNSOD
 {
-    private bool OptimizeInv = true;
+    // private bool OptimizeInv = true;
 
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;

@@ -29,7 +29,7 @@ public class BeleensMerge
     public CoreLegion CoreLegion = new();
     public LegionExercise3 LegionExercise3 = new();
     public LegionExercise4 LegionExercise4 = new();
-    public CoreNation CoreNation = new();
+    public CoreNation Nation = new();
     public TarosManslayer TarosManslayer = new();
     public ArtixWedding ArtixWedding = new();
 
@@ -50,7 +50,7 @@ public class BeleensMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge(string buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
+    public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         ArtixWedding.ArtixWeddingComplete();
         //Only edit the map and shopID here

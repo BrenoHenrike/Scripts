@@ -654,7 +654,7 @@ public class CoreNation
                     {
                         Core.KillEscherion(Item.Name, Item.MaxStack, log: false);
 
-                        if (Item.Name != "Voucher of Nulgath" && sellMemVoucher && Core.CheckInventory("Voucher of Nulgath") && !voucherNeeded)
+                        if (Item.Name == "Voucher of Nulgath" && sellMemVoucher && Core.CheckInventory("Voucher of Nulgath") && !voucherNeeded)
                         {
                             Bot.Drops.Pickup(Item.Name);
                             Core.SellItem(Item.Name, all: true);
@@ -674,7 +674,7 @@ public class CoreNation
                 {
                     Core.KillEscherion(item, quant, log: false);
 
-                    if (item != "Voucher of Nulgath" && sellMemVoucher && Core.CheckInventory("Voucher of Nulgath") && !voucherNeeded)
+                    if (item == "Voucher of Nulgath" && sellMemVoucher && Core.CheckInventory("Voucher of Nulgath") && !voucherNeeded)
                     {
                         Bot.Drops.Pickup("Voucher of Nulgath");
                         Core.SellItem("Voucher of Nulgath", all: true);
@@ -869,7 +869,7 @@ public class CoreNation
     /// </summary>
     /// <param name="item">Desired item name</param>
     /// <param name="quant">Desired item quantity</param>
-    public void BambloozevsDrudgen(string? item = null, int quant = 1)
+    public void BambloozevsDrudgen(string? item = null, int quant = 1, bool voucherNeeded = false)
     {
         if (!Core.CheckInventory(CragName) || Core.CheckInventory(item, quant))
             return;
@@ -912,7 +912,7 @@ public class CoreNation
         {
             Core.KillMonster("evilmarsh", "End", "Left", "Tainted Elemental", log: false);
 
-            if (Core.CheckInventory("Voucher of Nulgath") && !string.IsNullOrEmpty(item) && item != "Voucher of Nulgath" && sellMemVoucher)
+            if (item == "Voucher of Nulgath" && sellMemVoucher && Core.CheckInventory("Voucher of Nulgath") && !voucherNeeded)
             {
                 Core.JumpWait();
 
@@ -923,13 +923,11 @@ public class CoreNation
                     Core.Jump("Enter", "Spawn");
                 }
 
-                while (!Bot.ShouldExit && Core.CheckInventory("Voucher of Nulgath"))
-                {
-                    Core.SellItem("Voucher of Nulgath", all: true);
-                    Bot.Wait.ForItemSell();
-                }
-
+                Bot.Drops.Pickup("Voucher of Nulgath");
+                Core.SellItem("Voucher of Nulgath", all: true);
+                Bot.Wait.ForItemSell();
             }
+
 
             if (returnPolicyDuringSupplies && Core.CheckInventory(new[] { Uni(1), Uni(6), Uni(9), Uni(16), Uni(20) }))
             {
