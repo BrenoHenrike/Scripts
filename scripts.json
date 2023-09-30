@@ -541,7 +541,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 75486,
+    "size": 75428,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -3976,7 +3976,7 @@
       "wavering illusions"
     ],
     "path": "Hollowborn/HollowbornChaosEnvoy/4WaveringIllusions.cs",
-    "size": 1740,
+    "size": 1829,
     "fileName": "4WaveringIllusions.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/HollowbornChaosEnvoy/4WaveringIllusions.cs"
   },
@@ -3989,7 +3989,7 @@
       "pesisting mayhem"
     ],
     "path": "Hollowborn/HollowbornChaosEnvoy/6PesistingMayhem.cs",
-    "size": 1738,
+    "size": 1831,
     "fileName": "6PesistingMayhem.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/HollowbornChaosEnvoy/6PesistingMayhem.cs"
   },
@@ -4015,7 +4015,7 @@
       "beasts shadow"
     ],
     "path": "Hollowborn/HollowbornChaosEnvoy/2InTheBeastsShadow.cs",
-    "size": 1732,
+    "size": 1824,
     "fileName": "2InTheBeastsShadow.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/HollowbornChaosEnvoy/2InTheBeastsShadow.cs"
   },
@@ -4028,7 +4028,7 @@
       "stirring discord"
     ],
     "path": "Hollowborn/HollowbornChaosEnvoy/1StirringDiscord.cs",
-    "size": 1732,
+    "size": 1818,
     "fileName": "1StirringDiscord.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/HollowbornChaosEnvoy/1StirringDiscord.cs"
   },
@@ -4041,7 +4041,7 @@
       "unique quarry"
     ],
     "path": "Hollowborn/HollowbornChaosEnvoy/3UniqueQuarry.cs",
-    "size": 1720,
+    "size": 1800,
     "fileName": "3UniqueQuarry.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/HollowbornChaosEnvoy/3UniqueQuarry.cs"
   },
@@ -4052,7 +4052,7 @@
       "null"
     ],
     "path": "Hollowborn/HollowbornChaosEnvoy/CoreHollowbornChaosEnvoy.cs",
-    "size": 24426,
+    "size": 25206,
     "fileName": "CoreHollowbornChaosEnvoy.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/HollowbornChaosEnvoy/CoreHollowbornChaosEnvoy.cs"
   },
@@ -4066,7 +4066,7 @@
       "hollowborn envoy of chaos character page badge"
     ],
     "path": "Hollowborn/HollowbornChaosEnvoy/5ShadowOfDisdain.cs",
-    "size": 1788,
+    "size": 1871,
     "fileName": "5ShadowOfDisdain.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/HollowbornChaosEnvoy/5ShadowOfDisdain.cs"
   },
