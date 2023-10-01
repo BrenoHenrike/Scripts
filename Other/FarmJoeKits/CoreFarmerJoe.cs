@@ -238,8 +238,7 @@ public class CoreFarmerJoe
                         Core.SellItem("Venom Head");
                         Core.Logger("Getting Master Ranger");
                         SetClass(false, true, false);
-                        MR.GetMR(false);
-                        SetClass(false, true, false);
+                        MR.GetMR();
                     }
 
                     if (Bot.Player.Level < Level)
@@ -277,8 +276,7 @@ public class CoreFarmerJoe
                     {
                         Core.Logger("Getting Shaman");
                         SetClass(true, false, true);
-                        Shaman.GetShaman(false);
-                        SetClass(true, false, true);
+                        Shaman.GetShaman();
                     }
                     Core.Logger($"Level {Level} done");
                     continue;
@@ -303,8 +301,7 @@ public class CoreFarmerJoe
                     {
                         Core.Logger("Getting Scarlet Socrceress");
                         SetClass(true, false, true);
-                        SS.GetSSorc(false);
-                        SetClass(true, false, true);
+                        SS.GetSSorc();
                     }
 
                     if (!Core.CheckInventory("Burning Blaze"))
@@ -331,8 +328,7 @@ public class CoreFarmerJoe
                     {
                         Core.Logger("Getting Blaze Binder");
                         SetClass(true, false, true);
-                        Bb.GetClass(false);
-                        SetClass(true, false, true);
+                        Bb.GetClass();
                     }
 
                     if (Bot.Player.Level < Level)
@@ -362,7 +358,6 @@ public class CoreFarmerJoe
                         Core.Logger("Getting DSS for DoomKittem(ArchPaladin)");
                         SetClass(true, false, true);
                         DS.GetDSS();
-                        SetClass(true, false, true);
                     }
                     Core.Logger($"Level {Level} done");
                     continue;
@@ -385,16 +380,14 @@ public class CoreFarmerJoe
                     if (!Core.CheckInventory("Glacial Berserker"))
                     {
                         SetClass(true, false, true);
-                        GB.GetGB(false);
-                        SetClass(true, false, true);
+                        GB.GetGB();
                     }
 
                     if (!Core.CheckInventory("ArchPaladin"))
                     {
                         Core.Logger("Getting ArchPaladin");
                         SetClass(true, false, true);
-                        AP.GetAP(false);
-                        SetClass(true, false, true);
+                        AP.GetAP();
                     }
                     Core.Logger($"Level {Level} done");
                     continue;
@@ -409,7 +402,7 @@ public class CoreFarmerJoe
                         continue;
                     }
 
-                    if (!Core.CheckInventory("ArchFiend DeathLord"))
+                    if (!Core.CheckInventory("ArchFiend DeathLord") || !Adv.HasMinimalBoost(GenericGearBoost.dmgAll, 30))
                     {
                         Core.Logger("Getting ArchFiend DeathLord");
                         SetClass(true, false, true);
@@ -420,8 +413,7 @@ public class CoreFarmerJoe
                     {
                         Core.Logger("Getting ArchFiend");
                         SetClass(true, false, true);
-                        AF.GetArchfiend(false);
-                        SetClass(true, false, true);
+                        AF.GetArchfiend();
                     }
 
                     if (Bot.Player.Level < Level)
@@ -696,14 +688,13 @@ public class CoreFarmerJoe
 
         string newSoloClass = Core.SoloClass;
         string newFarmClass = Core.FarmClass;
-        string[] soloClassesToCheck;
 
-        if (!Core.CheckInventory("ArchPaladin"))
-            soloClassesToCheck = new[] { "ArchPaladin", "DragonSoul Shinobi", "Shaman", "Rogue (Rare)", "Rogue", "Healer (Rare)", "Healer" };
-        else
-            soloClassesToCheck = new[] { "ArchPaladin", "Glacial Berserker", "Shaman", "Rogue (Rare)", "Rogue", "Healer (Rare)", "Healer" };
+        // if (!Core.CheckInventory("ArchPaladin"))
+        //     soloClassesToCheck = new[] { "ArchPaladin", "Shaman", "Rogue (Rare)", "Rogue", "Healer (Rare)", "Healer" };
+        // else
+        string[] soloClassesToCheck = new[] { "ArchPaladin", "Glacial Berserker", "DragonSoul Shinobi", "Shaman", "Rogue (Rare)", "Rogue", "Healer (Rare)", "Healer" };
 
-        string[] farmClassesToCheck = { "Archfiend", "Blaze Binder", "Scarlet Sorceress", "Master Ranger", "Shaman", "Mage (Rare)", "Mage" };
+        string[] farmClassesToCheck = new[] { "Archfiend", "Blaze Binder", "Scarlet Sorceress", "Master Ranger", "Shaman", "Mage (Rare)", "Mage" };
 
         if (swapToSoloClass && (Core.SoloClass == "Generic" || soloClassesToCheck.Contains(Core.SoloClass)))
         {
