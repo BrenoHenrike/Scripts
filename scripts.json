@@ -541,7 +541,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 75167,
+    "size": 75039,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -4177,7 +4177,7 @@
       "fragment"
     ],
     "path": "Nation/AFDL/NulgathDemandsWork.cs",
-    "size": 4047,
+    "size": 4041,
     "fileName": "NulgathDemandsWork.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/AFDL/NulgathDemandsWork.cs"
   },
