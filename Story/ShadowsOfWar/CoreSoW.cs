@@ -1132,7 +1132,7 @@ public class CoreSoW
         Story.KillQuest(9123, "manacradle", new[] { "Dark Tainted Mana", "Darkness Elemental" });
         Story.MapItemQuest(9123, "manacradle", 11271);
 
-        if (Core.CheckInventory(new[] { "Yami no Ronin", "TimeKeeper", "Void Highlord", "Void HighLord (IoDA)" }))
+        if (Core.CheckInventory(new[] { "Yami no Ronin", "TimeKeeper", "Void Highlord", "Void HighLord (IoDA)" }, any: true))
         {
             Core.BossClass();
 
