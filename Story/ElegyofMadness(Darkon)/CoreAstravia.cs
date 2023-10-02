@@ -35,7 +35,10 @@ public class CoreAstravia
     {
         //Progress Check
         if (Core.isCompletedBefore(7779))
+        {
+            Core.Logger("Story Complete: Eridani");
             return;
+        }
 
         //Preload Quests
         Story.PreLoad(this);
@@ -124,7 +127,10 @@ public class CoreAstravia
     {
         //Progress Check
         if (Core.isCompletedBefore(8000))
+        {
+            Core.Logger("Story Complete: Astravia");
             return;
+        }
 
         Eridani();
 
@@ -170,7 +176,10 @@ public class CoreAstravia
     {
         //Progress Check
         if (Core.isCompletedBefore(8256))
+        {
+            Core.Logger("Story Complete: AstraviaCastle");
             return;
+        }
 
         Astravia();
 
@@ -236,7 +245,10 @@ public class CoreAstravia
     {
         //Progress Check
         if (Core.isCompletedBefore(8395))
+        {
+            Core.Logger("Story Complete: AstraviaJudgement");
             return;
+        }
 
         //Preload Quests
         Story.PreLoad(this);
@@ -291,7 +303,10 @@ public class CoreAstravia
     {
         //Progress Check
         if (Core.isCompletedBefore(8530))
+        {
+            Core.Logger("Story Complete: EridaniPast");
             return;
+        }
 
         AstraviaJudgement();
 
@@ -345,7 +360,10 @@ public class CoreAstravia
     {
         //Progress Check
         if (Core.isCompletedBefore(8601))
+        {
+            Core.Logger("Story Complete: AstraviaPast");
             return;
+        }
 
         EridaniPast();
 
@@ -390,7 +408,10 @@ public class CoreAstravia
     {
         //Progress Check
         if (Core.isCompletedBefore(8641))
+        {
+            Core.Logger("Story Complete: FirstObservatory");
             return;
+        }
 
         //Preload Quests
         Story.PreLoad(this);
@@ -436,7 +457,10 @@ public class CoreAstravia
     public void GenesisGarden()
     {
         if (Core.isCompletedBefore(8687))
+        {
+            Core.Logger("Story Complete: GenesisGarden");
             return;
+        }
 
         FirstObservatory();
 
@@ -477,7 +501,10 @@ public class CoreAstravia
     public void TheWorld()
     {
         if (Core.isCompletedBefore(8733))
+        {
+            Core.Logger("Story Complete: TheWorld");
             return;
+        }
 
         GenesisGarden();
 
