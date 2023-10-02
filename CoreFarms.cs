@@ -2779,7 +2779,7 @@ public class CoreFarms
         Core.FarmingLogger($"Super-Fan Swag Token A", quant);
         while (!Bot.ShouldExit && !Core.CheckInventory("Super-Fan Swag Token A", quant))
         {
-            Core.KillMonster("terrarium", "r2", "Left", "Dustbunny of DOOM", "Super-Fan Swag Token D", 500, isTemp: false);
+            Core.KillMonster("terrarium", "Enter", "Spawn", "Dustbunny of DOOM", "Super-Fan Swag Token D", 500, isTemp: false);
 
             //Check if shop is loaded into Cache
             Core.Join("Collection", "Begin", "Spawn");
