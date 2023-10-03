@@ -47,7 +47,7 @@ public class DarkWarLegionandNation
         if (!Story.QuestProgression(8557))
         {
             Core.EnsureAccept(8557);
-            Core.KillMonster("dagerecruit", "Enter", "Spawn", "Dreadfiend", "Dark Makai Defeated", 8);
+            Core.KillMonster("dagerecruit", "Enter", "Spawn", "Dreadfiend", "Fiend Energy Collected", 4);
             Story.MapItemQuest(8557, "dagerecruit", 9883, 4);
         }
 
