@@ -1971,8 +1971,19 @@ public class CoreAdvanced
                     break;
                 #endregion
 
-                #region Lucky - Avarice - Elysium - Anima
+                #region Lucky - Avarice - Dauntless - Anima
                 case "flame dragon warrior":
+                    if (!uAvarice() || !uDauntless() || !uAnima())
+                        goto default;
+
+                    type = EnhancementType.Lucky;
+                    cSpecial = CapeSpecial.Avarice;
+                    wSpecial = WeaponSpecial.Dauntless;
+                    hSpecial = HelmSpecial.Anima;
+                    break;
+                #endregion
+
+                #region Lucky - Avarice - Elysium - Anima
                 case "chaos slayer":
                 case "chaos slayer berserker":
                 case "chaos slayer cleric":
