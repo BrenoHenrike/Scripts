@@ -353,7 +353,7 @@ public class CoreFarmerJoe
                         Farm.Experience(Level);
                     }
 
-                    if (!Core.CheckInventory("DragonSoul Shinobi"))
+                    if (!Core.CheckInventory("DragonSoul Shinobi") && !Core.CheckInventory("ArchPaladin"))
                     {
                         Core.Logger("Getting DSS for DoomKittem(ArchPaladin)");
                         SetClass(true, false, true);
