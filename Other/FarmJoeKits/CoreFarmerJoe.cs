@@ -233,7 +233,7 @@ public class CoreFarmerJoe
                         continue;
                     }
 
-                    if (!Core.CheckInventory("Master Ranger"))
+                    if (!Core.CheckInventory("Master Ranger") || !Core.CheckInventory(new[] { "Archfiend", "Blaze Binder", "Scarlet Sorceress"}, any: true))
                     {
                         Core.SellItem("Venom Head");
                         Core.Logger("Getting Master Ranger");
@@ -272,7 +272,7 @@ public class CoreFarmerJoe
                         Farm.Experience(Level);
                     }
 
-                    if (!Core.CheckInventory("Shaman"))
+                    if (!Core.CheckInventory("Shaman") || !Core.CheckInventory("ArchPaladin"))
                     {
                         Core.Logger("Getting Shaman");
                         SetClass(true, false, true);
@@ -297,7 +297,7 @@ public class CoreFarmerJoe
                     }
 
                     //check to reduce setclass usage
-                    if (!Core.CheckInventory("Scarlet Sorceress"))
+                    if (!Core.CheckInventory("Scarlet Sorceress")  || !Core.CheckInventory(new[] { "Archfiend", "Blaze Binder"}, any: true))
                     {
                         Core.Logger("Getting Scarlet Socrceress");
                         SetClass(true, false, true);
@@ -353,7 +353,7 @@ public class CoreFarmerJoe
                         Farm.Experience(Level);
                     }
 
-                    if (!Core.CheckInventory("DragonSoul Shinobi") && !Core.CheckInventory("ArchPaladin"))
+                    if (!Core.CheckInventory("DragonSoul Shinobi") || !Core.CheckInventory("ArchPaladin"))
                     {
                         Core.Logger("Getting DSS for DoomKittem(ArchPaladin)");
                         SetClass(true, false, true);
@@ -377,7 +377,7 @@ public class CoreFarmerJoe
                         Farm.Experience(Level);
                     }
 
-                    if (!Core.CheckInventory("Glacial Berserker"))
+                    if (!Core.CheckInventory("Glacial Berserker") || !Core.CheckInventory("ArchPaladin"))
                     {
                         SetClass(true, false, true);
                         GB.GetGB();
