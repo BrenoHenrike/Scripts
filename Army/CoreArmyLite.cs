@@ -872,9 +872,8 @@ public class CoreArmyLite
 
             if (!Bot.Map.PlayerExists(b_playerName!))
                 continue;
-            else {
+            else
                 return;
-            }
         }
 
 
@@ -888,9 +887,8 @@ public class CoreArmyLite
 
             if (!Bot.Map.PlayerExists(b_playerName!))
                 continue;
-            else {
+            else
                 return;
-            }
         }
 
         foreach (string map in NonMemMaps)
@@ -900,9 +898,8 @@ public class CoreArmyLite
 
             if (!Bot.Map.PlayerExists(b_playerName!))
                 continue;
-            else {
+            else
                 return;
-            }
         }
 
         if (Core.IsMember)
@@ -914,9 +911,8 @@ public class CoreArmyLite
 
                 if (!Bot.Map.PlayerExists(b_playerName!))
                     continue;
-                else {
+                else
                     return;
-                }
             }
         }
 
