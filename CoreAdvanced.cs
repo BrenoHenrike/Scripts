@@ -1944,7 +1944,6 @@ public class CoreAdvanced
                     break;
                 #endregion
 
-
                 #region Lucky - Lament - Elysium - Pneuma
                 case "abyssal angel":
                 case "abyssal angel's shadow":
@@ -1955,6 +1954,20 @@ public class CoreAdvanced
                     cSpecial = CapeSpecial.Vainglory;
                     wSpecial = WeaponSpecial.Elysium;
                     hSpecial = HelmSpecial.Pneuma;
+                    break;
+                #endregion
+
+                #region Lucky - Penitence - Dauntless - suggest me
+                case "Verus DoomKnight":
+                    if (!uPenitence() || !uDauntless()) 
+                    // fix me on release || !uVim())
+                        goto default;
+
+                    type = EnhancementType.Lucky;
+                    cSpecial = CapeSpecial.Penitence;
+                    wSpecial = WeaponSpecial.Dauntless;
+                    //fix me on release
+                    //hSpecial = HelmSpecial.Vim; 
                     break;
                 #endregion
 
@@ -2564,6 +2577,7 @@ public class CoreAdvanced
                 case "doom metal necro":
                 case "neo metal necro":
                 case "antique hunter":
+                case "Verus DoomKnight":
                     type = EnhancementType.Lucky;
                     wSpecial = WeaponSpecial.Awe_Blast;
                     break;
