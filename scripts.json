@@ -17165,7 +17165,7 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/ArchMage/0ArchMage.cs"
   },
   {
-    "name": "VersusDoomKnightClassPrep",
+    "name": "VerusDoomKnightClassPrep",
     "description": "Quest & item Prep for the new class \"Verus DoomKnight\".",
     "tags": [
       "versus",
@@ -17174,10 +17174,10 @@
       "prerequisite",
       "class"
     ],
-    "path": "Other/Classes/NewClassPreps[TempLocation]/VersusDoomKnightClassPrep.cs",
-    "size": 2551,
-    "fileName": "VersusDoomKnightClassPrep.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/NewClassPreps[TempLocation]/VersusDoomKnightClassPrep.cs"
+    "path": "Other/Classes/NewClassPreps[TempLocation]/VerusDoomKnightClassPrep.cs",
+    "size": 2549,
+    "fileName": "VerusDoomKnightClassPrep.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/NewClassPreps[TempLocation]/VerusDoomKnightClassPrep.cs"
   },
   {
     "name": "BlazeBinder",
