@@ -3361,7 +3361,7 @@
       "praxis"
     ],
     "path": "Enhancement/UnlockForgeEnhancements.cs",
-    "size": 37938,
+    "size": 37940,
     "fileName": "UnlockForgeEnhancements.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Enhancement/UnlockForgeEnhancements.cs"
   },
@@ -10066,7 +10066,7 @@
       "army"
     ],
     "path": "Army/ArmyNulgath/ArmyTaintedGem.cs",
-    "size": 2684,
+    "size": 2924,
     "fileName": "ArmyTaintedGem.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyNulgath/ArmyTaintedGem.cs"
   },
