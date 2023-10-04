@@ -53,6 +53,9 @@ public class ArmyTaintedGem
 
     public void TaintedGem(int quant = 1000)
     {
+        Core.PrivateRooms = true;
+        Core.PrivateRoomNumber = Army.getRoomNr();
+
         if (Core.CheckInventory("Tainted Gem", quant))
             return;
 
@@ -68,6 +71,8 @@ public class ArmyTaintedGem
             Bot.Wait.ForPickup("Tained Gem");
         }
         Core.CancelRegisteredQuests();
+        Army.waitForParty("whitemap", "Tainted Gem");
+
     }
 
     public void Cubes()
@@ -83,6 +88,7 @@ public class ArmyTaintedGem
 
         Core.JumpWait();
         Bot.Sleep(2000);
+        Army.waitForParty("boxes", "Cubes");
     }
 
     public void IceCube()
@@ -98,5 +104,6 @@ public class ArmyTaintedGem
 
         Core.JumpWait();
         Bot.Sleep(2000);
+        Army.waitForParty("mountfrost", "Ice Cubes");
     }
 }
