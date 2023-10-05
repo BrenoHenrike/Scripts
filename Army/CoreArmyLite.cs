@@ -390,6 +390,7 @@ public class CoreArmyLite
 
     public void waitForParty(string map, string? item = null, int playerMax = -1)
     {
+        Bot.Events.PlayerAFK += PlayerAFK;
         string[] players = Players();
         int partySize = players.Length;
         List<string> playersWhoHaveBeenHere = new() { Bot.Player.Username };
@@ -429,12 +430,20 @@ public class CoreArmyLite
                 Core.Logger("Butler active until in map /" + b_breakOnMap);
                 Butler(toFollow, roomNr: getRoomNr());
                 Core.Logger($"{toFollow} has joined {b_breakOnMap}. Continueing");
+                Bot.Events.PlayerAFK -= PlayerAFK;
                 break;
             }
         }
         if (hasWaited)
             Core.Logger($"Party complete [{partySize}/{partySize}]");
         Bot.Sleep(3500); //To make sure everyone attack at the same time, to avoid deaths
+
+        void PlayerAFK()
+        {
+            Core.Logger("Anti-AFK engaged");
+            Bot.Sleep(1500);
+            Bot.Send.Packet("%xt%zm%afk%1%false%");
+        }
     }
 
     public bool SellToSync(string? item, int quant)
