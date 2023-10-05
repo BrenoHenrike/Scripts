@@ -391,7 +391,7 @@ public class CoreArmyLite
     public void waitForParty(string map, string? item = null, int playerMax = -1)
     {
         string[] players = Players();
-        int partySize = players.Count();
+        int partySize = players.Length;
         List<string> playersWhoHaveBeenHere = new() { Bot.Player.Username };
         int playerCount = 1;
 
@@ -408,7 +408,7 @@ public class CoreArmyLite
                 foreach (var name in Bot.Map.PlayerNames)
                     if (!playersWhoHaveBeenHere.Contains(name) && players.Select(x => x.ToLower().Trim()).Contains(name.ToLower()))
                         playersWhoHaveBeenHere.Add(name);
-            playerCount = playersWhoHaveBeenHere.Count();
+            playerCount = playersWhoHaveBeenHere.Count;
 
             logCount++;
             if (logCount == 15)
@@ -419,7 +419,7 @@ public class CoreArmyLite
             }
             Bot.Sleep(1000);
 
-            if (playersWhoHaveBeenHere.Count() == (dynamicPartySize - 1))
+            if (playersWhoHaveBeenHere.Count == (dynamicPartySize - 1))
                 butlerTimer++;
             if (butlerTimer >= 30)
             {
@@ -451,7 +451,7 @@ public class CoreArmyLite
 
     public bool doForAll(bool randomServers = true)
     {
-        if (Bot.ShouldExit || _doForAllIndex >= (doForAllAccountDetails ??= readManager()).Count())
+        if (Bot.ShouldExit || _doForAllIndex >= (doForAllAccountDetails ??= readManager()).Length)
             return false;
 
         Bot.Options.AutoRelogin = false;
@@ -703,7 +703,7 @@ public class CoreArmyLite
             }
 
             // Attack any monster that is alive.
-            if (!Bot.Combat.StopAttacking && Bot.Monsters.CurrentMonsters.Count(m => Core.IsMonsterAlive(m)) > 0)
+            if (!Bot.Combat.StopAttacking && Bot.Monsters.CurrentMonsters.Any(m => Core.IsMonsterAlive(m)))
                 PriorityAttack("*");
 
             Core.Rest();
@@ -967,7 +967,7 @@ public class CoreArmyLite
 
     private void PriorityAttack(string attNoPrio)
     {
-        if (_attackPriority.Count() == 0)
+        if (_attackPriority.Count == 0)
         {
             Bot.Combat.Attack(attNoPrio);
             return;
