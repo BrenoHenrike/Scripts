@@ -8060,6 +8060,7 @@
     "name": "Starsword Merge",
     "description": "This bot will farm the items belonging to the selected mode for the Starsword Merge [1154] in /dragonroad",
     "tags": [
+      "upholder",
       "starsword",
       "merge",
       "dragonroad",
@@ -8120,7 +8121,7 @@
       "zorbaks"
     ],
     "path": "Other/MergeShops/StarswordMerge[Upholder].cs",
-    "size": 11695,
+    "size": 11699,
     "fileName": "StarswordMerge[Upholder].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/StarswordMerge[Upholder].cs"
   },
