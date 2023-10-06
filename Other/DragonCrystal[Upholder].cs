@@ -26,6 +26,9 @@ public class DragonCristal
 
     public void Quantity(int quant = 5000)
     {
+        if (!Core.isUpholder())
+            return;
+
         DragonRoad.StoryLine();
 
         Core.RegisterQuests(4549);
