@@ -50,7 +50,7 @@
       "null"
     ],
     "path": "CoreAdvanced.cs",
-    "size": 113401,
+    "size": 113393,
     "fileName": "CoreAdvanced.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreAdvanced.cs"
   },
@@ -1454,7 +1454,7 @@
       "null"
     ],
     "path": "Army/CoreArmyLite.cs",
-    "size": 38962,
+    "size": 39228,
     "fileName": "CoreArmyLite.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/CoreArmyLite.cs"
   },
@@ -1498,7 +1498,7 @@
       "chaotic lords"
     ],
     "path": "Evil/ADK.cs",
-    "size": 6565,
+    "size": 6676,
     "fileName": "ADK.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/ADK.cs"
   },
@@ -2065,7 +2065,7 @@
       "tutorial"
     ],
     "path": "Story/Tutorial.cs",
-    "size": 1152,
+    "size": 1159,
     "fileName": "Tutorial.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Tutorial.cs"
   },
@@ -3361,7 +3361,7 @@
       "praxis"
     ],
     "path": "Enhancement/UnlockForgeEnhancements.cs",
-    "size": 37712,
+    "size": 37940,
     "fileName": "UnlockForgeEnhancements.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Enhancement/UnlockForgeEnhancements.cs"
   },
@@ -8950,7 +8950,7 @@
       "higure"
     ],
     "path": "Other/MergeShops/DeepTrobbleMerge.cs",
-    "size": 6019,
+    "size": 6041,
     "fileName": "DeepTrobbleMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/DeepTrobbleMerge.cs"
   },
@@ -10066,7 +10066,7 @@
       "army"
     ],
     "path": "Army/ArmyNulgath/ArmyTaintedGem.cs",
-    "size": 2684,
+    "size": 2924,
     "fileName": "ArmyTaintedGem.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyNulgath/ArmyTaintedGem.cs"
   },

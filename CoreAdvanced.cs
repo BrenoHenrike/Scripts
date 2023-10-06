@@ -1957,7 +1957,7 @@ public class CoreAdvanced
                     break;
                 #endregion
 
-                #region Lucky - Penitence - Dauntless - suggest me
+                #region Lucky - Penitence - Dauntless - None
                 case "Verus DoomKnight":
                     if (!uPenitence() || !uDauntless()) 
                     // fix me on release || !uVim())
@@ -1967,7 +1967,7 @@ public class CoreAdvanced
                     cSpecial = CapeSpecial.Penitence;
                     wSpecial = WeaponSpecial.Dauntless;
                     //fix me on release
-                    //hSpecial = HelmSpecial.Vim; 
+                    hSpecial = HelmSpecial.None;
                     break;
                 #endregion
 
