@@ -1,7 +1,7 @@
 /*
 name: Starsword Merge
 description: This bot will farm the items belonging to the selected mode for the Starsword Merge [1154] in /dragonroad
-tags: starsword, merge, dragonroad, lava, backblades, reversed, orange, star, scythe, cloud, rider, mirrored, kings, mirror, chronomancers, prophets, djinns, werepyres, twins, mages, bards, starguitar, samurais, mana, knights, drows, escherions, kimberlys, kitsunes, ledgermaynes, lionfangs, vaths, alteons, iadoas, khasaandas, tibicenass, wolfwings, xiangs, eternal, dragons, imbalanced, debris, awe, mechquest, memorial, dragonfable, shadows, black, dragon, oni, queen, monsters, shadowflame, epicduel, biobeasts, twillys, twigs, zorbaks
+tags: upholder,starsword, merge, dragonroad, lava, backblades, reversed, orange, star, scythe, cloud, rider, mirrored, kings, mirror, chronomancers, prophets, djinns, werepyres, twins, mages, bards, starguitar, samurais, mana, knights, drows, escherions, kimberlys, kitsunes, ledgermaynes, lionfangs, vaths, alteons, iadoas, khasaandas, tibicenass, wolfwings, xiangs, eternal, dragons, imbalanced, debris, awe, mechquest, memorial, dragonfable, shadows, black, dragon, oni, queen, monsters, shadowflame, epicduel, biobeasts, twillys, twigs, zorbaks
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -72,7 +72,7 @@ public class StarswordMerge
                     {
                         //Gather Energy Beans 4549
                         Core.GetMapItem(3760, 4, "DragonRoad");
-                        Core.HuntMonster("DragonRoad", "Desert Wolf Bandit", "Wild Energy Bean", 4, log: false);
+                        Core.HuntMonster("DragonRoad", "Desert Wolf Bandit", "Energy Bean", 3, log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
