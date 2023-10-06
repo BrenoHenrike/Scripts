@@ -989,7 +989,7 @@
       "upholder"
     ],
     "path": "Other/DragonCrystal[Upholder].cs",
-    "size": 1134,
+    "size": 1187,
     "fileName": "DragonCrystal[Upholder].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/DragonCrystal[Upholder].cs"
   },
@@ -1550,19 +1550,6 @@
     "size": 6697,
     "fileName": "J6Saga.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/J6Saga.cs"
-  },
-  {
-    "name": "Dragon Road Story (Upholder)",
-    "description": "This will finish the Dragon Road Story.",
-    "tags": [
-      "story",
-      "quest",
-      "dragon-road"
-    ],
-    "path": "Story/DragonRoad[Upholder].cs",
-    "size": 4076,
-    "fileName": "DragonRoad[Upholder].cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/DragonRoad[Upholder].cs"
   },
   {
     "name": "Shadow Void Story",
