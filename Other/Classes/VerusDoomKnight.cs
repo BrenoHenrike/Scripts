@@ -65,7 +65,7 @@ public class VerusDoomKnightClass
             Core.HuntMonster("underrealm", "Fear", "Fear's Bones", 13, false);
             Core.HuntMonster("brainmeat", "Brain Matter", "Gray Matter", 13, false);
             Core.HuntMonster("titanattack", "Titanic DoomKnight", "Titanic Spine", 13, false);
-            Core.HuntMonster("valleyofdoom", "Doom Knight Armor", "Doom Knight Plating", 13, false);
+            Core.HuntMonsterMapID("valleyofdoom", 25, "Doom Knight Plating", 13, false);
             Core.EnsureComplete(9411);
         }
 
