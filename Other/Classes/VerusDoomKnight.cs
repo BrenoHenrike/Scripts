@@ -9,6 +9,8 @@ tags: versus,verus,doomKnight,vdk, class
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreDailies.cs
 
+//cs_include Scripts/Story\TitanAttack.cs
+
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 //cs_include Scripts/Story/Doomwood/CoreDoomwood.cs
 //cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
@@ -36,6 +38,7 @@ public class VerusDoomKnightClass
     private CoreBots Core => CoreBots.Instance;
     private CoreFarms Farm = new();
     private CoreAdvanced Adv = new();
+    private TitanAttackStory TAS = new();
     private SepulchuresOriginalHelm SOH = new();
     private ArchDoomKnight ADK = new();
     private SRoD SRoD = new();
@@ -64,6 +67,7 @@ public class VerusDoomKnightClass
             Core.EnsureAccept(9411);
             Core.HuntMonster("underrealm", "Fear", "Fear's Bones", 13, false);
             Core.HuntMonster("brainmeat", "Brain Matter", "Gray Matter", 13, false);
+            TAS.DoAll();
             Core.HuntMonster("titanattack", "Titanic DoomKnight", "Titanic Spine", 13, false);
             Core.HuntMonsterMapID("valleyofdoom", 25, "Doom Knight Plating", 13, false);
             Core.EnsureComplete(9411);
