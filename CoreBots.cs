@@ -3201,27 +3201,6 @@ public class CoreBots
                 SimpleQuestBypass((488, 20));
                 break;
 
-            case "stonewooddeep":
-                if (Bot.Player.Cell != cell && cell != "r2")
-                {
-                    Logger("Resetting map for required quest update so it doesn't get stuck.");
-                    JumpWait();
-                    Join("whitemap");
-                    SimpleQuestBypass((363, 14));
-                }
-                else if (cell == "r2" && Bot.Player.Cell != "r2")
-                {
-                    //Asherion
-                    Logger("Resetting map for next quest update.");
-                    Logger("Updating for \"Asherion's\" cell");
-                    JumpWait();
-                    Join("whitemap");
-                    SimpleQuestBypass((363, 1));
-                }
-                else
-                    SimpleQuestBypass((363, 1));
-                break;
-
             case "shadowattack":
             case "dreadhaven":
                 SimpleQuestBypass((175, 20));
