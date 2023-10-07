@@ -6783,6 +6783,21 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/Enforcer.cs"
   },
   {
+    "name": "Verus DoomKnight Class",
+    "description": "This script will farm Verus DoomKnight Class.",
+    "tags": [
+      "versus",
+      "verus",
+      "doomknight",
+      "vdk",
+      "class"
+    ],
+    "path": "Other/Classes/VerusDoomKnight.cs",
+    "size": 7414,
+    "fileName": "VerusDoomKnight.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/VerusDoomKnight.cs"
+  },
+  {
     "name": "LegionDoomKnight[Mem]",
     "description": "null",
     "tags": [
@@ -17207,21 +17222,6 @@
     "size": 910,
     "fileName": "0ArchMage.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/ArchMage/0ArchMage.cs"
-  },
-  {
-    "name": "VerusDoomKnightClassPrep",
-    "description": "Quest & item Prep for the new class \"Verus DoomKnight\".",
-    "tags": [
-      "versus",
-      "doomknight",
-      "prep",
-      "prerequisite",
-      "class"
-    ],
-    "path": "Other/Classes/NewClassPreps[TempLocation]/VerusDoomKnightClassPrep.cs",
-    "size": 2549,
-    "fileName": "VerusDoomKnightClassPrep.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/NewClassPreps[TempLocation]/VerusDoomKnightClassPrep.cs"
   },
   {
     "name": "BlazeBinder",
