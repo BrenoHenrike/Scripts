@@ -46,11 +46,11 @@ public class VerusDoomKnightClass
     {
         Core.SetOptions();
 
-        GetClassPrep();
+        GetClass();
         Core.SetOptions(false);
     }
 
-    public void GetClassPrep(bool rankup = true)
+    public void GetClass(bool rankup = true)
     {
         if (Core.CheckInventory("Verus DoomKnight"))
             return;
