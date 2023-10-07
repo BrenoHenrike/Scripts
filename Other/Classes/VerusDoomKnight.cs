@@ -103,6 +103,8 @@ public class VerusDoomKnightClass
         if (!Core.isCompletedBefore(9417))
         {
             Core.EnsureAccept(9417);
+            Core.Logger("The map \"Wanders\", is a bit broke,\n" +
+            "it will take a minute to hunt the mosnter");
             Core.HuntMonsterMapID("wanders", 46, "Trace of Light", 8, false); //i hate this map
             Core.HuntMonster("lightguardwar", "Extreme Noxus", "Trace of Dark", 8, false);
             Core.HuntMonster("eternalchaos", "Bandit Drakath", "Trace of Wind", 8, false);
