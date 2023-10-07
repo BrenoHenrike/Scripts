@@ -1,5 +1,5 @@
 /*
-name: VersusDoomKnightClassPrep
+name: VerusDoomKnightClassPrep
 description: Quest & item Prep for the new class "Verus DoomKnight".
 tags: versus, doomKnight, prep, prerequisite, class
 */
@@ -27,7 +27,7 @@ tags: versus, doomKnight, prep, prerequisite, class
 
 using Skua.Core.Interfaces;
 
-public class VersusDoomKnightClassPrep
+public class VerusDoomKnightClassPrep
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;

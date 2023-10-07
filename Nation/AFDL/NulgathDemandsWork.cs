@@ -110,7 +110,7 @@ public class NulgathDemandsWork
             return;
 
         Core.AddDrop("Unidentified 27");
-        Nation.Supplies("Unidentified 26", 1, true);
+        Nation.Supplies("Unidentified 26", 1);
         Core.EnsureAccept(584);
         Core.HuntMonster("evilmarsh", "Dark Makai", "Dark Makai Sigil");
         Core.EnsureComplete(584);

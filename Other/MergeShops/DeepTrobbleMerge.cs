@@ -67,10 +67,10 @@ public class DeepTrobbleMerge
                 case "Bounty Hunter Dubloon":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
-                    // Very Trobblesome
+                    // Very Trobblesome 9394
                     Core.RegisterQuests(9394);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                        Core.HuntMonster("dreadspace", "Troblor", "Trobble Captured");
+                        Core.HuntMonsterMapID("dreadspace", 48, "Trobble Captured");
                     Bot.Wait.ForPickup(req.Name);
                     Core.CancelRegisteredQuests();
                     break;
@@ -78,16 +78,16 @@ public class DeepTrobbleMerge
                 case "Deep Trobble Plunger":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
-                    // Pressurized Weapon
-                    Core.RegisterQuests(9157);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
+                    // Pressurized Weapon 9157
+                    while (!Bot.ShouldExit && !Core.CheckInventory("Deep Trobble Plunger", 1))
                     {
+                        Core.EnsureAccept(9157);
                         Core.HuntMonster("brightoak", "Bright Treeant", "Chunk of Rubber", 10);
-                        Core.HuntMonster("marsh", "Marsh Tree", "Broken Sticks");
-                        Core.BuyItem("yulgar", 16, 16946, shopItemID: 10477);
+                        Core.HuntMonster("marsh", "Marsh Tree", "Broken Sticks", 8);
+                        Adv.BuyItem("yulgar", 16, 16946, shopItemID: 10477);
+                        Core.EnsureComplete(9157);
                         Bot.Wait.ForPickup(req.Name);
                     }
-                    Core.CancelRegisteredQuests();
                     break;
 
                 case "Darkon's Receipt":

@@ -2369,6 +2369,37 @@ public class CoreBots
     // Whether the player is Member (set to true if neccessary during setOptions)
     public bool IsMember = false;
 
+    /// <summary>
+    /// Checks whether the player is Upholder
+    /// </summary>
+    public bool isUpholder()
+    {
+        string[] upholder = new string[]
+        {
+            "1st Upholder",
+            "2nd Upholder",
+            "3rd Upholder",
+            "4th Upholder",
+            "5th Upholder",
+            "6th Upholder",
+            "7th Upholder",
+            "8th Upholder",
+            "9th Upholder",
+            "10th Upholder",
+            "11th Upholder",
+            "12th Upholder",
+            "13th Upholder",
+            "14th Upholder",
+            "15th Upholder",
+        };
+
+        foreach (string badge in upholder)
+            if (HasWebBadge(badge))
+                return true;
+
+        return false;
+    }
+
     public string Username()
     {
         try

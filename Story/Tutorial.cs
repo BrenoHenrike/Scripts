@@ -41,8 +41,8 @@ public class Tutorial
             "Travel"
         };
 
-        Core.Join("oaklore");
-        for (int i = 0; Achievements.Count() > i; i++)
+        Core.Join("oaklore-9999999");
+        for (int i = 0; Achievements.Length > i; i++)
         {
             Core.Logger("Achievement - " + Achievements[i]);
             Core.SetAchievement(22 + i);

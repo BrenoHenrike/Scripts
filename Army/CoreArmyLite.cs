@@ -390,6 +390,7 @@ public class CoreArmyLite
 
     public void waitForParty(string map, string? item = null, int playerMax = -1)
     {
+        Bot.Events.PlayerAFK += PlayerAFK;
         string[] players = Players();
         int partySize = players.Count();
         List<string> playersWhoHaveBeenHere = new() { Bot.Player.Username };
@@ -429,12 +430,20 @@ public class CoreArmyLite
                 Core.Logger("Butler active until in map /" + b_breakOnMap);
                 Butler(toFollow, roomNr: getRoomNr());
                 Core.Logger($"{toFollow} has joined {b_breakOnMap}. Continueing");
+                Bot.Events.PlayerAFK -= PlayerAFK;
                 break;
             }
         }
         if (hasWaited)
             Core.Logger($"Party complete [{partySize}/{partySize}]");
         Bot.Sleep(3500); //To make sure everyone attack at the same time, to avoid deaths
+
+        void PlayerAFK()
+        {
+            Core.Logger("Anti-AFK engaged");
+            Bot.Sleep(1500);
+            Bot.Send.Packet("%xt%zm%afk%1%false%");
+        }
     }
 
     public bool SellToSync(string? item, int quant)
@@ -872,9 +881,8 @@ public class CoreArmyLite
 
             if (!Bot.Map.PlayerExists(b_playerName!))
                 continue;
-
-            tryGoto(b_playerName!);
-            Core.Logger($"[{((maptry - 1).ToString().Length == 1 ? "0" : "")}{maptry - 1}/{mapCount}] Found {b_playerName} in /{mapInfo.Map}", "LockedZoneHandler");
+            else
+                return;
         }
 
 
@@ -888,12 +896,8 @@ public class CoreArmyLite
 
             if (!Bot.Map.PlayerExists(b_playerName!))
                 continue;
-
-            tryGoto(b_playerName!);
-            Core.Logger($"[{((maptry - 1).ToString().Length == 1 ? "0" : "")}{maptry - 1}/{mapCount}] Found {b_playerName} in /{map}", "LockedZoneHandler");
-
-            PriorityAttack("*");
-            return;
+            else
+                return;
         }
 
         foreach (string map in NonMemMaps)
@@ -903,22 +907,8 @@ public class CoreArmyLite
 
             if (!Bot.Map.PlayerExists(b_playerName!))
                 continue;
-
-            tryGoto(b_playerName!);
-            Core.Logger($"[{((maptry - 1).ToString().Length == 1 ? "0" : "")}{maptry - 1}/{mapCount}] Found {b_playerName} in /{map}", "LockedZoneHandler");
-
-            switch (map.ToLower())
-            {
-                case "doomvault":
-                    _killTheUltra("r26");
-                    break;
-
-                case "doomvaultb":
-                    _killTheUltra("r5");
-                    break;
-            }
-            PriorityAttack("*");
-            return;
+            else
+                return;
         }
 
         if (Core.IsMember)
@@ -930,28 +920,10 @@ public class CoreArmyLite
 
                 if (!Bot.Map.PlayerExists(b_playerName!))
                     continue;
-
-                tryGoto(b_playerName!);
-                Core.Logger($"[{((maptry - 1).ToString().Length == 1 ? "0" : "")}{maptry - 1}/{mapCount}] Found {b_playerName} in /{map}", "LockedZoneHandler");
-
-                switch (map.ToLower())
-                {
-                    case "binky":
-                        _killTheUltra("binky");
-                        break;
-                }
-                PriorityAttack("*");
-                return;
+                else
+                    return;
             }
         }
-
-        insideLockedMaps = true;
-        if (tryGoto(b_playerName!))
-        {
-            insideLockedMaps = false;
-            return;
-        }
-        insideLockedMaps = false;
 
         Core.Join("whitemap");
         Core.Logger($"Could not find {b_playerName} in any of the maps within the LockedZoneHandler.", "LockedZoneHandler");
@@ -985,19 +957,21 @@ public class CoreArmyLite
         }
         return;
 
-        void _killTheUltra(string cell)
-        {
-            if (Bot.Player.Cell == cell && Bot.Monsters.CurrentMonsters.Count(m => Core.IsMonsterAlive(m)) > 0)
-            {
-                Monster? Target = Bot.Monsters.CurrentMonsters.MaxBy(x => x.MaxHP);
-                if (Target == null)
-                {
-                    Core.Logger("No monsters found", "KillUltra");
-                    return;
-                }
-                PriorityAttack(Target.Name);
-            }
-        }
+        // If useful, will refactor so that we can use this again with this method
+
+        // void _killTheUltra(string cell)
+        // {
+        //     if (Bot.Player.Cell == cell && Bot.Monsters.CurrentMonsters.Count(m => Core.IsMonsterAlive(m)) > 0)
+        //     {
+        //         Monster? Target = Bot.Monsters.CurrentMonsters.MaxBy(x => x.MaxHP);
+        //         if (Target == null)
+        //         {
+        //             Core.Logger("No monsters found", "KillUltra");
+        //             return;
+        //         }
+        //         PriorityAttack(Target.Name);
+        //     }
+        // }
     }
 
     private void PriorityAttack(string attNoPrio)

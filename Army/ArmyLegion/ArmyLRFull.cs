@@ -534,9 +534,9 @@ public class ArmyLR
                 break;
 
             case "aqlesson":
-                Army.DivideOnCells("Frame9");
                 Army.AggroMonMIDs(17);
                 Army.AggroMonStart(map);
+                Army.DivideOnCells("Frame9");
                 break;
 
             case "deepchaos":

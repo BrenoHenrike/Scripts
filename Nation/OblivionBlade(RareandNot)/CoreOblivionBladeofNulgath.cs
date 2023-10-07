@@ -144,8 +144,8 @@ public class CoreOblivionBladeofNulgath
         Adv.RankUpClass("Warlord");
         Core.AddDrop("Champion Blade of Nulgath");
 
-        Nation.Supplies("Voucher of Nulgath", voucherNeeded: true);
-        Nation.Supplies("Voucher of Nulgath (non-mem)", voucherNeeded: true);
+        Nation.Supplies("Voucher of Nulgath");
+        Nation.Supplies("Voucher of Nulgath (non-mem)");
         Nation.FarmUni13();
         Core.HuntMonster("Evilmarsh", "Tainte Elemental", "Tainted Rune of Evil");
         Bot.Wait.ForPickup("Champion Blade of Nulgath");

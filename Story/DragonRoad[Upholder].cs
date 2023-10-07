@@ -1,3 +1,4 @@
+using System.Reflection.PortableExecutable;
 /*
 name: Dragon Road Story (Upholder)
 description: This will finish the Dragon Road Story.
@@ -25,19 +26,7 @@ public class DragonRoad
 
     public void StoryLine()
     {
-        if (Core.isCompletedBefore(4547))
-            return;
-
-        if (!new Dictionary<int, string>()
-            {
-                { 22, "ip9" },  //8th Upholder
-                { 15, "ip11" }, //9th Upholder
-                { 8, "ip14" },  //10th Upholder
-                { 10, "ip16" }, //11th Upholder
-                { 12, "ip17" }, //12th Upholder
-                { 18, "ip18" }, //13th Upholder
-                { 2, "ip20" },  //14th Upholder
-            }.Any(kvp => Core.HasAchievement(kvp.Key, kvp.Value)))
+        if (!Core.isUpholder() || Core.isCompletedBefore(4547))
             return;
 
         Story.PreLoad(this);

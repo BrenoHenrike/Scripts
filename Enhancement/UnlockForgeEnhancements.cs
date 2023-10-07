@@ -935,6 +935,10 @@ public class UnlockForgeEnhancements
                 Core.EnsureAccept(5723);
                 Core.HuntMonster("dreadfire", "Stray Mana", "Bronze Key", isTemp: false);
                 Core.HuntMonster("dreadfire", "Living Brimstone", "Silver Key", isTemp: false);
+                Core.Logger("Going to your house to load the shop.\n" +
+                "[there may be a delay]");
+                Core.SendPackets($"%xt%zm%house%1%{Bot.Player.Username}%");
+                Bot.Sleep(5000);
                 Core.BuyItem(Bot.Map.Name, 336, "Golden Key");
                 Core.EnsureComplete(5723);
             }

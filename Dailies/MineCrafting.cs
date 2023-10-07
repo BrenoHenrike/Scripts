@@ -39,6 +39,23 @@ public class MineCrafting
     public void DoMinecrafting()
     {
         BLOD.UnlockMineCrafting();
-        Daily.MineCrafting(new[] { Bot.Config!.Get<MineCraftingMetalsEnum>("metals").ToString() }, 10, false);
+
+        if (!Core.CheckInventory("Blinding Light of Destiny") && !Daily.CheckDaily(2091, false))
+            Daily.MineCrafting(new[] { "Barium", "Copper", "Silver" }, 1, ToBank: true);
+        
+        else if (!Core.CheckInventory("Necrotic Sword of Doom") && !Daily.CheckDaily(2091, false))
+            Daily.MineCrafting(new[] { "Barium" }, 4, ToBank: true);
+        
+        else if (!Core.CheckInventory("Sepulchure's DoomKnight Armor") && Core.IsMember)
+        {
+            Daily.HardCoreMetals(new[] { "rhodium " }, 2, true);
+            Daily.HardCoreMetals(new[] { "Beryllium  " }, 1, true);
+            Daily.HardCoreMetals(new[] { "Chromium " }, 2, true);
+        }
+        
+        else if (Core.IsMember)
+            Daily.HardCoreMetals(new[] { "Arsenic", "Beryllium", "Chromium", "Palladium", "Rhodium", "Rhodium", "Thorium", "Mercury" }, 10, ToBank: true);
+        
+        else Daily.MineCrafting(new[] { "Aluminum", "Barium", "Gold", "Iron", "Copper", "Silver", "Platinum" }, 10, ToBank: true);
     }
 }

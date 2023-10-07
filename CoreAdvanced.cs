@@ -1944,7 +1944,6 @@ public class CoreAdvanced
                     break;
                 #endregion
 
-
                 #region Lucky - Lament - Elysium - Pneuma
                 case "abyssal angel":
                 case "abyssal angel's shadow":
@@ -1955,6 +1954,20 @@ public class CoreAdvanced
                     cSpecial = CapeSpecial.Vainglory;
                     wSpecial = WeaponSpecial.Elysium;
                     hSpecial = HelmSpecial.Pneuma;
+                    break;
+                #endregion
+
+                #region Lucky - Penitence - Dauntless - None
+                case "Verus DoomKnight":
+                    if (!uPenitence() || !uDauntless()) 
+                    // fix me on release || !uVim())
+                        goto default;
+
+                    type = EnhancementType.Lucky;
+                    cSpecial = CapeSpecial.Penitence;
+                    wSpecial = WeaponSpecial.Dauntless;
+                    //fix me on release
+                    hSpecial = HelmSpecial.None;
                     break;
                 #endregion
 
@@ -1971,8 +1984,19 @@ public class CoreAdvanced
                     break;
                 #endregion
 
-                #region Lucky - Avarice - Elysium - Anima
+                #region Lucky - Avarice - Dauntless - Anima
                 case "flame dragon warrior":
+                    if (!uAvarice() || !uDauntless() || !uAnima())
+                        goto default;
+
+                    type = EnhancementType.Lucky;
+                    cSpecial = CapeSpecial.Avarice;
+                    wSpecial = WeaponSpecial.Dauntless;
+                    hSpecial = HelmSpecial.Anima;
+                    break;
+                #endregion
+
+                #region Lucky - Avarice - Elysium - Anima
                 case "chaos slayer":
                 case "chaos slayer berserker":
                 case "chaos slayer cleric":
@@ -2553,6 +2577,7 @@ public class CoreAdvanced
                 case "doom metal necro":
                 case "neo metal necro":
                 case "antique hunter":
+                case "Verus DoomKnight":
                     type = EnhancementType.Lucky;
                     wSpecial = WeaponSpecial.Awe_Blast;
                     break;

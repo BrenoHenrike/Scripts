@@ -627,8 +627,7 @@ public class CoreNation
     /// </summary>
     /// <param name="item">Desired item name.</param>
     /// <param name="quant">Desired item quantity.</param>
-    /// <param name="voucherNeeded">Whether a voucher is required for the item (default: false).</param>
-    public void Supplies(string? item = null, int quant = 1, bool voucherNeeded = false)
+    public void Supplies(string? item = null, int quant = 1)
     {
         bool sellMemVoucher = Core.CBOBool("Nation_SellMemVoucher", out bool _sellMemVoucher) && _sellMemVoucher;
         bool returnPolicyDuringSupplies = Core.CBOBool("Nation_ReturnPolicyDuringSupplies", out bool _returnSupplies) && _returnSupplies;
@@ -654,7 +653,7 @@ public class CoreNation
                     {
                         Core.KillEscherion(Item.Name, Item.MaxStack, log: false);
 
-                        if (Item.Name == "Voucher of Nulgath" && sellMemVoucher && Core.CheckInventory("Voucher of Nulgath") && !voucherNeeded)
+                        if (Item.Name == "Voucher of Nulgath" && sellMemVoucher && Core.CheckInventory("Voucher of Nulgath"))
                         {
                             Bot.Drops.Pickup(Item.Name);
                             Core.SellItem(Item.Name, all: true);
@@ -674,7 +673,7 @@ public class CoreNation
                 {
                     Core.KillEscherion(item, quant, log: false);
 
-                    if (item == "Voucher of Nulgath" && sellMemVoucher && Core.CheckInventory("Voucher of Nulgath") && !voucherNeeded)
+                    if (item != "Voucher of Nulgath" && sellMemVoucher && Core.CheckInventory("Voucher of Nulgath"))
                     {
                         Bot.Drops.Pickup("Voucher of Nulgath");
                         Core.SellItem("Voucher of Nulgath", all: true);
@@ -708,7 +707,8 @@ public class CoreNation
         returnPolicyDuringSupplies = Core.CBOBool("Nation_ReturnPolicyDuringSupplies", out bool _returnSupplies) && _returnSupplies;
 
         Core.Logger(returnPolicyDuringSupplies ? "Return Policy During Supplies: true" : "Return Policy During Supplies: false");
-        Core.Logger(sellMemVoucher ? "Sell Voucher of Nulgath: true" : "Sell Voucher of Nulgath: false");
+        Core.Logger($"Sell Voucher of Nulgath: {sellMemVoucher}");
+
 
         string[]? rPDSuni = null;
         if (returnPolicyDuringSupplies)
@@ -869,7 +869,7 @@ public class CoreNation
     /// </summary>
     /// <param name="item">Desired item name</param>
     /// <param name="quant">Desired item quantity</param>
-    public void BambloozevsDrudgen(string? item = null, int quant = 1, bool voucherNeeded = false)
+    public void BambloozevsDrudgen(string? item = null, int quant = 1)
     {
         if (!Core.CheckInventory(CragName) || Core.CheckInventory(item, quant))
             return;
@@ -885,8 +885,8 @@ public class CoreNation
         bool returnPolicyDuringSupplies = Core.CBOBool("Nation_ReturnPolicyDuringSupplies", out bool _returnSupplies);
         bool sellMemVoucher = Core.CBOBool("Nation_SellMemVoucher", out bool _sellMemVoucher);
 
-        Core.Logger(returnPolicyDuringSupplies ? "return Policy During Supplies: true" : "return Policy During Supplies: false");
-        Core.Logger(sellMemVoucher ? "Sell Voucher of Nulgath: true" : "Sell Voucher of Nulgath: false");
+        Core.Logger($"Sell Voucher of Nulgath: {_sellMemVoucher}");
+
 
         Dictionary<string, int> rewardItemIds = new()
         {
@@ -912,11 +912,11 @@ public class CoreNation
         {
             Core.KillMonster("evilmarsh", "End", "Left", "Tainted Elemental", log: false);
 
-            if (item == "Voucher of Nulgath" && sellMemVoucher && Core.CheckInventory("Voucher of Nulgath") && !voucherNeeded)
+            if (item != "Voucher of Nulgath" && _sellMemVoucher && Core.CheckInventory("Voucher of Nulgath"))
             {
                 Core.JumpWait();
 
-                while (!Bot.ShouldExit && (Bot.Player.HasTarget || Bot.Player.InCombat))
+                while (!Bot.ShouldExit && (Bot.Player.HasTarget || Bot.Player.InCombat) && Bot.Player.Cell != "Enter")
                 {
                     Bot.Combat.CancelTarget();
                     Bot.Wait.ForCombatExit();
