@@ -117,7 +117,8 @@ public class CoreFarms
             return;
 
         ToggleBoost(BoostType.Gold);
-
+        
+        HonorHall(quant);
         BattleGroundE(quant);
         BerserkerBunny(quant);
 
@@ -157,7 +158,7 @@ public class CoreFarms
         Core.SavedState();
         Core.Logger($"Farming {goldQuant} gold using BattleGroundE Method");
 
-        Core.RegisterQuests(Core.IsMember ? new[] { 3991, 3992, 3993 } : new[] { 3991, 3992 });
+        Core.RegisterQuests(3991, 3992);
         while (!Bot.ShouldExit && Bot.Player.Gold < goldQuant && Bot.Player.Gold <= 100000000)
             Core.KillMonster("battlegrounde", "r2", "Center", "*", log: false);
 
@@ -1528,7 +1529,7 @@ public class CoreFarms
             Core.EnsureAccept(320, 321); //Warm and Furry 320, Shell Shock 321
             Core.KillMonster("pines", "Enter", "Right", "Pine Grizzly", "Bear Skin", 5, log: false);
             Core.KillMonster("pines", "Enter", "Right", "Red Shell Turtle", "Red Turtle Shell", 5, log: false);
-            Core.EnsureComplete(new[] {320, 321}); //Warm and Furry 320, Shell Shock 321
+            Core.EnsureComplete(new[] { 320, 321 }); //Warm and Furry 320, Shell Shock 321
         }
         // Core.CancelRegisteredQuests();
         ToggleBoost(BoostType.Reputation, false);
