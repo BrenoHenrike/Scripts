@@ -131,6 +131,7 @@ public class VerusDoomKnightClassPrep
             Core.KillDoomKitten("Doomkitten's Molar", 20, false);
             if (!Core.CheckInventory("Void Highlord") && !Core.CheckInventory("Deadly Duo's Decayed Denture"))
                 Core.Logger("You need Void HIghLord to solo Deadly Duo.", stopBot: true);
+            Core.HuntMonster("infernalarena", "Deadly Duo", "Deadly Duo's Decayed Denture", 10, false);
             if (!Core.CheckInventory("Xyfrag's Slimy Tooth", 5) || !Core.CheckInventory("Nerfkitten's Fang", 3) || !Core.CheckInventory("Maw of the Sea", 10))
                 Core.Logger("You need to manually kill Xyfrag, Sarah the Nerfkitten and Voice of the Sea to proceed with the quest.", stopBot: true);
             Core.EnsureComplete(9418);
