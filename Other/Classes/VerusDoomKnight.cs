@@ -100,7 +100,7 @@ public class VerusDoomKnightClass
         if (!Core.isCompletedBefore(9417))
         {
             Core.EnsureAccept(9417);
-            Core.HuntMonster("wanders", "Sek-Duat", "Trace of Light", 8, false); //i hate this map
+            Core.HuntMonsterMapID("wanders", 46, "Trace of Light", 8, false); //i hate this map
             Core.HuntMonster("lightguardwar", "Extreme Noxus", "Trace of Dark", 8, false);
             Core.HuntMonster("eternalchaos", "Bandit Drakath", "Trace of Wind", 8, false);
             Core.HuntMonster("quibblehunt", "Entropy Dragon", "Trace of Earth", 8, false);
