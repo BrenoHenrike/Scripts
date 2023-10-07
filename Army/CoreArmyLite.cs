@@ -992,6 +992,7 @@ public class CoreArmyLite
             }
         }
         Bot.Combat.Attack(attNoPrio);
+        Bot.Sleep(Core.ActionDelay);
     }
 
     private async void MapNumberParses(string map)
