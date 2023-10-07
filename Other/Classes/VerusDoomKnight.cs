@@ -79,7 +79,7 @@ public class VerusDoomKnightClass
             Core.HuntMonster("innershadows", "Krahen", "Empress' ShadowCloak", isTemp: false);
             Core.HuntMonster("techfortress", "MechaVortrix", "Cybernetic Doom Blade", isTemp: false);
             Bot.Quests.UpdateQuest(7650);
-            Core.GhostItem(55823, "Kyger", category: ItemCategory.Pet,)
+            Core.GhostItem(55823, "Kyger", category: ItemCategory.Pet, "Time for training!", 1);
             Core.HuntMonsterMapID("stonewooddeep", 16, "Asherion Armor", isTemp: false);
             Core.EnsureComplete(9412);
         }
