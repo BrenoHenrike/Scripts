@@ -157,6 +157,7 @@ public class VerusDoomKnightClass
                 Adv.BoostHuntMonster("infernalarena", "Deadly Duo", "Deadly Duo's Decayed Denture", 10, false);
                 Core.JumpWait();
                 Adv.GearStore(true);
+                Core.EquipClass(ClassType.Solo);
             }
             if (!Core.CheckInventory("Xyfrag's Slimy Tooth", 5) || !Core.CheckInventory("Nerfkitten's Fang", 3) || !Core.CheckInventory("Maw of the Sea", 10))
             {
