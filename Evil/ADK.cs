@@ -147,19 +147,22 @@ public class ArchDoomKnight
         //Drakath's Sword (Free Player)
         while (!Bot.ShouldExit && !Core.CheckInventory(25286))
             Core.HuntMonster("ultradrakath", "Champion of Chaos");
-            
+
         Core.HuntMonster("mqlesson", "Dragonoid", "Dragonoid of Hours", isTemp: false);
         Core.HuntMonster("timespace", "Chaos Lord Iadoa", "Chaorrupted Hourglass", isTemp: false);
         Core.EnsureComplete(6797);
         Core.ToBank(Q3items);
     }
 
-    public void AMeansToAnEnd(bool ArmorOnly = false)
+    public void AMeansToAnEnd(bool ArmorOnly = false, bool HelmOnly = false)
     {
         if (!Core.isCompletedBefore(6798))
             ChaoticLords();
 
-        if (ArmorOnly && Core.CheckInventory("Arch DoomKnight"))
+        if (HelmOnly && Core.CheckInventory("Arch DoomKnight"))
+            return;
+
+        if (ArmorOnly && Core.CheckInventory("Arch DoomKnight Helm"))
             return;
 
         if (Core.CheckInventory(new[] { "Arch DoomKnight", "Arch DoomKnight Open Helm", "Arch DoomKnight Helm" }, toInv: false))
