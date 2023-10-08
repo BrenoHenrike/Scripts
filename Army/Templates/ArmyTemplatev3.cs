@@ -50,22 +50,22 @@ public class ArmyTemplatev3 //Rename This
         #region Edit This vvv                                           vvv Edit this
         //~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~
         // Single-target example:
-        // ArmyBits("map", new[] { "cell" }, MonsterMapID, new[] { "item" }, 1);
+        // ArmyBits("map", new[] { "cell" }, MonsterMapID, new[] { "item" }, 1, ClassType.Solo);
 
         // Multi-target example:
-        // ArmyBits("map", new[] { "cell" }, new[] { MonsterMapID1, MonsterMapID2 }, new[] { "item" }, 1);
+        // ArmyBits("map", new[] { "cell" }, new[] { MonsterMapID1, MonsterMapID2 }, new[] { "item" }, 1, ClassType.Solo);
         //~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~
         #endregion Edit This ^^^                                           ^^^ Edit this
 
         Core.SetOptions(false);
     }
 
-    public void ArmyBits(string map, string[] cell, int MonsterMapID, string[] items, int quant)
+    public void ArmyBits(string map, string[] cell, int MonsterMapID, string[] items, int quant, ClassType classToUse)
     {
         // Setting up private rooms and class
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
-        Core.EquipClass(ClassType.Solo);
+        Core.EquipClass(classToUse);
         Core.AddDrop(items);
 
         // Single-target scenario
@@ -73,54 +73,67 @@ public class ArmyTemplatev3 //Rename This
         foreach (string item in items)
         {
             // Aggro and divide on cells
+            Army.AggroMonMIDs(MonsterMapID);
             Army.AggroMonStart(map);
             Army.DivideOnCells(cell);
 
             // Farm the specified item
             while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
+            {
                 Bot.Combat.Attack(MonsterMapID);
+                Bot.Sleep(Core.ActionDelay);
+                if (Core.CheckInventory(item))
+                    break;
+            }
 
             // Wait for the party
             Army.waitForParty(map, item);
         }
 
         // Clean up
+        Core.JumpWait();
         Army.AggroMonStop(true);
         Core.CancelRegisteredQuests();
     }
 
-    public void ArmyBits(string map, string[] cell, int[] MonsterMapIDs, string[] items, int quant)
+    public void ArmyBits(string map, string[] cell, int[] MonsterMapIDs, string[] items, int quant, ClassType classToUse)
     {
         // Setting up private rooms and class
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
-        Core.EquipClass(ClassType.Solo);
+        Core.EquipClass(classToUse);
         Core.AddDrop(items);
 
         // Multi-target scenario
         // Explanation: For each item you specified, target all specified MonsterMapIDs
         foreach (string item in items)
         {
+            // Aggro, divide on cells, and target specified MonsterMapIDs
+            Army.AggroMonMIDs(MonsterMapIDs);
+            Army.AggroMonStart(map);
+            Army.DivideOnCells(cell);
+
             while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
             {
-                // Aggro, divide on cells, and target specified MonsterMapIDs
-                Army.AggroMonStart(map);
-                Army.DivideOnCells(cell);
-                Army.AggroMonMIDs(MonsterMapIDs);
-
-                // Farm the specified item
-                while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
-                    Bot.Combat.Attack("*");
+                foreach (int monsterMapID in MonsterMapIDs)
+                {
+                    if (Core.IsMonsterAlive(monsterMapID, useMapID: true))
+                    {
+                        Bot.Combat.Attack(monsterMapID);
+                        Bot.Sleep(Core.ActionDelay);
+                        if (Core.CheckInventory(item))
+                            break;
+                    }
+                }
 
                 // Wait for the party
                 Army.waitForParty(map, item);
             }
-            Army.waitForParty(map, item);
+
+            // Clean up
+            Core.JumpWait();
+            Army.AggroMonStop(true);
+            Core.CancelRegisteredQuests();
         }
-
-        // Clean up
-        Army.AggroMonStop(true);
-        Core.CancelRegisteredQuests();
     }
-
 }
