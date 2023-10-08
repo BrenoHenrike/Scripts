@@ -153,7 +153,8 @@ public class VerusDoomKnightClass
             Core.EnsureAccept(9414);
             SRoD.ShadowReaperOfDoom();
             SOH.DoAll();
-            ADK.AMeansToAnEnd();
+            if (!Core.CheckInventory("Arch DoomKnight Helm"))
+                ADK.AMeansToAnEnd();
             TTMerge.BuyAllMerge("Dragonlord of Evil");
             DPHM.BuyAllMerge("DoomTech DoomKnight");
             Core.EnsureComplete(9414);
