@@ -3386,7 +3386,10 @@ public class CoreBots
                     "binky",
                     "superlowe",
                     "voidflibbi",
-                    "voidnightbane"
+                    "voidnightbane",
+                    "voidxyfrag",
+                    "voidnerfkitten",
+                    "seavoice"
                 };
                 if (lockedMaps.Contains(strippedMap))
                     WriteFile(ButlerLogPath(), Bot.Map.FullName);
