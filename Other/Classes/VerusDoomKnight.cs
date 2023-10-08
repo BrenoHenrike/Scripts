@@ -30,6 +30,9 @@ tags: versus,verus,doomKnight,vdk, class
 
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
+using Skua.Core.Models.Skills;
+using Skua.Core.Models.Monsters;
+using Skua.Core.Models.Shops;
 
 public class VerusDoomKnightClass
 {
@@ -63,10 +66,10 @@ public class VerusDoomKnightClass
         if (!Core.isCompletedBefore(9411))
         {
             Core.EnsureAccept(9411);
-            Core.HuntMonster("underrealm", "Fear", "Fear's Bones", 13, false);
-            Core.HuntMonster("brainmeat", "Brain Matter", "Gray Matter", 13, false);
+            Adv.BoostHuntMonster("underrealm", "Fear", "Fear's Bones", 13, false);
+            Adv.BoostHuntMonster("brainmeat", "Brain Matter", "Gray Matter", 13, false);
             Bot.Quests.UpdateQuest(8777);
-            Core.HuntMonster("titanattack", "Titanic DoomKnight", "Titanic Spine", 13, false);
+            Adv.BoostHuntMonster("titanattack", "Titanic DoomKnight", "Titanic Spine", 13, false);
             Core.HuntMonsterMapID("valleyofdoom", 25, "Doom Knight Plating", 13, false);
             Core.EnsureComplete(9411);
         }
@@ -76,9 +79,9 @@ public class VerusDoomKnightClass
         {
             Core.EnsureAccept(9412);
             Core.HuntMonsterMapID("necrodungeon", 47, "The Mask of the Skulls", isTemp: false);
-            Core.HuntMonster("lumafortress", "Corrupted Luma", "Doom Worshipper's Blade Of Doom", isTemp: false);
-            Core.HuntMonster("innershadows", "Krahen", "Empress' ShadowCloak", isTemp: false);
-            Core.HuntMonster("techfortress", "MechaVortrix", "Cybernetic Doom Blade", isTemp: false);
+            Adv.BoostHuntMonster("lumafortress", "Corrupted Luma", "Doom Worshipper's Blade Of Doom", isTemp: false);
+            Adv.BoostHuntMonster("innershadows", "Krahen", "Empress' ShadowCloak", isTemp: false);
+            Adv.BoostHuntMonster("techfortress", "MechaVortrix", "Cybernetic Doom Blade", isTemp: false);
             Core.GhostItem(55823, "Kyger", 1, false, ItemCategory.Pet, "Time for training!", 1);
             Bot.Quests.UpdateQuest(7650);
             Core.HuntMonsterMapID("stonewooddeep", 16, "Asherion Armor", isTemp: false);
@@ -90,12 +93,12 @@ public class VerusDoomKnightClass
         {
             Core.EnsureAccept(9413);
             Core.EquipClass(ClassType.Farm);
-            Core.HuntMonster("brightshadow", "Shadowflame Paladin", "Shadowflame Spike", 150, false);
-            Core.HuntMonster("fiendshard", "Paladin Fiend", "Light Fiend Horn", 150, false);
-            Core.HuntMonster("legionarena", "Dark Legion Paladin", "Underworld Soul Glow", 50, false);
+            Adv.BoostHuntMonster("brightshadow", "Shadowflame Paladin", "Shadowflame Spike", 150, false);
+            Adv.BoostHuntMonster("fiendshard", "Paladin Fiend", "Light Fiend Horn", 150, false);
+            Adv.BoostHuntMonster("legionarena", "Dark Legion Paladin", "Underworld Soul Glow", 50, false);
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("noxustower", "General Goldhammer", "Gold Hammer Chip", isTemp: false);
-            Core.HuntMonster("chaoslab", "Chaos Artix", "Shimmering Tentacle", 20, false);
+            Adv.BoostHuntMonster("noxustower", "General Goldhammer", "Gold Hammer Chip", isTemp: false);
+            Adv.BoostHuntMonster("chaoslab", "Chaos Artix", "Shimmering Tentacle", 20, false);
             Core.EnsureComplete(9413);
         }
 
@@ -106,14 +109,14 @@ public class VerusDoomKnightClass
             Core.Logger("The map \"Wanders\", is a bit broke,\n" +
             "it will take a minute to hunt the mosnter");
             Core.HuntMonsterMapID("wanders", 46, "Trace of Light", 8, false); //i hate this map
-            Core.HuntMonster("lightguardwar", "Extreme Noxus", "Trace of Dark", 8, false);
-            Core.HuntMonster("eternalchaos", "Bandit Drakath", "Trace of Wind", 8, false);
-            Core.HuntMonster("quibblehunt", "Entropy Dragon", "Trace of Earth", 8, false);
-            Core.HuntMonster("crashsite", "ProtoSartorium", "Trace of Energy", 8, false);
-            Core.HuntMonster("northlands", "Aisha's Drake", "Trace of Ice", 8, false);
-            Core.HuntMonster("deepchaos", "Kathool", "Trace of Water", 8, false);
-            Core.HuntMonster("drakonnan", "Ultra Drakonnan", "Trace of Fire", 8, false);
-            Core.HuntMonster("battlefowl", "Zeuster Projection", "Trace of Bacon", isTemp: false);
+            Adv.BoostHuntMonster("lightguardwar", "Extreme Noxus", "Trace of Dark", 8, false);
+            Adv.BoostHuntMonster("eternalchaos", "Bandit Drakath", "Trace of Wind", 8, false);
+            Adv.BoostHuntMonster("quibblehunt", "Entropy Dragon", "Trace of Earth", 8, false);
+            Adv.BoostHuntMonster("crashsite", "ProtoSartorium", "Trace of Energy", 8, false);
+            Adv.BoostHuntMonster("northlands", "Aisha's Drake", "Trace of Ice", 8, false);
+            Adv.BoostHuntMonster("deepchaos", "Kathool", "Trace of Water", 8, false);
+            Adv.BoostHuntMonster("drakonnan", "Ultra Drakonnan", "Trace of Fire", 8, false);
+            Adv.BoostHuntMonster("battlefowl", "Zeuster Projection", "Trace of Bacon", isTemp: false);
             Core.EnsureComplete(9417);
         }
 
@@ -121,12 +124,12 @@ public class VerusDoomKnightClass
         if (!Core.isCompletedBefore(9416))
         {
             Core.EnsureAccept(9416);
-            Core.HuntMonster("ultraalteon", "Ultra Alteon", "Soul of Alteon", 40, false); //goodluck
-            Core.HuntMonster("ebondungeon", "Dethrix", "Soul of Dethrix", 40, false);
-            Core.HuntMonster("shadowstrike", "Sepulchuroth", "Soul of Sepulchuroth", 40, false);
-            Core.HuntMonster("ultradrakath", "Champion of Chaos", "Soul of Drakath", 40, false);
-            Core.HuntMonster("ebilcorphq", "Gravelyn", "Soul of Gravelyn", 40, false);
-            Core.HuntMonster("shadowvoid", "Fragment of Doom", "Soul of Doom", 40, false);
+            Adv.BoostHuntMonster("ultraalteon", "Ultra Alteon", "Soul of Alteon", 40, false); //goodluck
+            Adv.BoostHuntMonster("ebondungeon", "Dethrix", "Soul of Dethrix", 40, false);
+            Adv.BoostHuntMonster("shadowstrike", "Sepulchuroth", "Soul of Sepulchuroth", 40, false);
+            Adv.BoostHuntMonster("ultradrakath", "Champion of Chaos", "Soul of Drakath", 40, false);
+            Adv.BoostHuntMonster("ebilcorphq", "Gravelyn", "Soul of Gravelyn", 40, false);
+            Adv.BoostHuntMonster("shadowvoid", "Fragment of Doom", "Soul of Doom", 40, false);
             Core.EnsureComplete(9416);
         }
 
@@ -135,16 +138,36 @@ public class VerusDoomKnightClass
         {
             Core.EnsureAccept(9418);
             Core.KillDoomKitten("Doomkitten's Molar", 20, false);
-            if (!Core.CheckInventory("Void Highlord") && !Core.CheckInventory("Deadly Duo's Decayed Denture"))
+            if (!Core.CheckInventory(new[ ]{"Void Highlord", "Void Highlord (ioda)"}, any: true) && !Core.CheckInventory("Deadly Duo's Decayed Denture"))
                 Core.Logger("You need Void HIghLord to solo Deadly Duo.", stopBot: true);
-            if (!Core.CheckInventory("Deadly Duo's Decayed Denture"))
+            else if (!Core.CheckInventory("Deadly Duo's Decayed Denture"))
             {
-                Core.Equip("Void Highlord");
-                Core.HuntMonster("infernalarena", "Deadly Duo", "Deadly Duo's Decayed Denture", 10, false);
+                Core.Logger("InfernalArena is a **SOLO ONLY** map!");
+                Adv.GearStore();
+                while (!Bot.ShouldExit && !Bot.Inventory.IsEquipped(Core.CheckInventory("Void Highlord (ioda)")? "Void Highlord (ioda)" : "Void Highlord"))
+                {
+                    Core.JumpWait();
+                    Bot.Sleep(Core.ActionDelay);
+                    Core.Equip(Core.CheckInventory("Void Highlord (ioda)")? "Void Highlord (ioda)" : "Void Highlord");
+                    Bot.Sleep(Core.ActionDelay);
+                    if (Bot.Inventory.IsEquipped(Core.CheckInventory("Void Highlord (ioda)")? "Void Highlord (ioda)" : "Void Highlord"))
+                        break;
+                }
+                Bot.Skills.StartAdvanced(Core.CheckInventory("Void Highlord (ioda)")? "Void Highlord (ioda)" : "Void Highlord", true, ClassUseMode.Atk);
+                Adv.BoostHuntMonster("infernalarena", "Deadly Duo", "Deadly Duo's Decayed Denture", 10, false);
+                Core.JumpWait();
+                Adv.GearStore(true);
+                Core.EquipClass(ClassType.Solo);
             }
             if (!Core.CheckInventory("Xyfrag's Slimy Tooth", 5) || !Core.CheckInventory("Nerfkitten's Fang", 3) || !Core.CheckInventory("Maw of the Sea", 10))
-                Core.Logger("You need to manually kill Xyfrag, Sarah the Nerfkitten and Voice of the Sea to proceed with the quest.", stopBot: true);
-            Core.EnsureComplete(9418);
+            {
+                Core.Logger("You will need to manually kill the following to proceed with the quest:\n" +
+                            "1. Xyfrag - in /join voidxyfrag\n" +
+                            "2. Sarah the Nerfkitten - in /join voidnerfkitten\n" +
+                            "3. Voice of the Sea - in /join seavoice\n" +
+                            "Once done, you can continue with the quest by running the bot again.", stopBot: true);
+            }
+            else Core.EnsureComplete(9418);
         }
 
         // Necrotic Blade (9414)
@@ -153,8 +176,7 @@ public class VerusDoomKnightClass
             Core.EnsureAccept(9414);
             SRoD.ShadowReaperOfDoom();
             SOH.DoAll();
-            if (!Core.CheckInventory("Arch DoomKnight Helm"))
-                ADK.AMeansToAnEnd();
+            ADK.AMeansToAnEnd(HelmOnly: true);
             TTMerge.BuyAllMerge("Dragonlord of Evil");
             DPHM.BuyAllMerge("DoomTech DoomKnight");
             Core.EnsureComplete(9414);
@@ -165,11 +187,11 @@ public class VerusDoomKnightClass
         {
             Core.EquipClass(ClassType.Farm);
             Core.EnsureAccept(9419);
-            Core.HuntMonster("citadelruins", "Inquisitor Hobo", "Inquisitor Bones", 1000000, false);
-            Core.HuntMonster("deltavlab", "Pistol Guard", "Refined Metal", 1000000, false);
-            Core.HuntMonster("etherwardes", "Earth Dragon Warrior", "Dragon Skin", 1000000, false);
+            Adv.BoostHuntMonster("citadelruins", "Inquisitor Hobo", "Inquisitor Bones", 1000000, false);
+            Adv.BoostHuntMonster("deltavlab", "Pistol Guard", "Refined Metal", 1000000, false);
+            Adv.BoostHuntMonster("etherwardes", "Earth Dragon Warrior", "Dragon Skin", 1000000, false);
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("necrocavern", "Chaos Vordred", "PaladinSlayer's Skull", 100000, false);
+            Adv.BoostHuntMonster("necrocavern", "Chaos Vordred", "PaladinSlayer's Skull", 100000, false);
             Core.EnsureComplete(9419);
         }
 
