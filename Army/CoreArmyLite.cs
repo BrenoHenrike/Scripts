@@ -857,6 +857,13 @@ public class CoreArmyLite
             "yoshino"
         };
 
+        string[] VerusMaps =
+        {
+            "voidxyfrag",
+            "voidnerfkitten",
+            "seavoice",
+        };
+
         var levelLockedMaps = new[]
         {
             new { Map = "icestormunder", LevelRequired = 75 },
@@ -866,6 +873,31 @@ public class CoreArmyLite
 
         int maptry = 1;
         int mapCount = Core.IsMember ? NonMemMaps.Length + MemMaps.Length : NonMemMaps.Length;
+
+        foreach (string map in VerusMaps)
+        {
+            Core.Logger($"[{(maptry.ToString().Length == 1 ? "0" : "")}{maptry++}/{mapCount}] Searching for {b_playerName} in /{map}", "LockedZoneHandler");
+            Core.Join(map);
+
+            if (!Bot.Map.PlayerExists(b_playerName!))
+                continue;
+            else
+                return;
+        }
+
+        foreach (string map in EventMaps)
+        {
+            if (!Core.isSeasonalMapActive(map))
+                continue;
+
+            Core.Logger($"[{(maptry.ToString().Length == 1 ? "0" : "")}{maptry++}/{mapCount}] Searching for {b_playerName} in /{map}", "LockedZoneHandler");
+            Core.Join(map);
+
+            if (!Bot.Map.PlayerExists(b_playerName!))
+                continue;
+            else
+                return;
+        }
 
         foreach (var mapInfo in levelLockedMaps)
         {
@@ -878,21 +910,6 @@ public class CoreArmyLite
 
             Core.Logger($"[{(maptry.ToString().Length == 1 ? "0" : "")}{maptry++}/{mapCount}] Searching for {b_playerName} in /{mapInfo.Map}", "LockedZoneHandler");
             Core.Join(mapInfo.Map);
-
-            if (!Bot.Map.PlayerExists(b_playerName!))
-                continue;
-            else
-                return;
-        }
-
-
-        foreach (string map in EventMaps)
-        {
-            if (!Core.isSeasonalMapActive(map))
-                continue;
-
-            Core.Logger($"[{(maptry.ToString().Length == 1 ? "0" : "")}{maptry++}/{mapCount}] Searching for {b_playerName} in /{map}", "LockedZoneHandler");
-            Core.Join(map);
 
             if (!Bot.Map.PlayerExists(b_playerName!))
                 continue;
