@@ -173,6 +173,8 @@ public class VerusDoomKnightClass
             Core.EnsureComplete(9419);
         }
 
+        Core.BuyItem("terminatemple", 2343, "Verus DoomKnight");
+
         if (rankup)
             Adv.RankUpClass("Verus DoomKnight");
     }
