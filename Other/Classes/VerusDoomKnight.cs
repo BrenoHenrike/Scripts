@@ -138,22 +138,22 @@ public class VerusDoomKnightClass
         {
             Core.EnsureAccept(9418);
             Core.KillDoomKitten("Doomkitten's Molar", 20, false);
-            if (!Core.CheckInventory("Void Highlord") && !Core.CheckInventory("Deadly Duo's Decayed Denture"))
+            if (!Core.CheckInventory(new[ ]{"Void Highlord", "Void Highlord (ioda)"}, any: true) && !Core.CheckInventory("Deadly Duo's Decayed Denture"))
                 Core.Logger("You need Void HIghLord to solo Deadly Duo.", stopBot: true);
             else if (!Core.CheckInventory("Deadly Duo's Decayed Denture"))
             {
                 Core.Logger("InfernalArena is a **SOLO ONLY** map!");
                 Adv.GearStore();
-                while (!Bot.ShouldExit && !Bot.Inventory.IsEquipped("Void Highlord"))
+                while (!Bot.ShouldExit && !Bot.Inventory.IsEquipped(Core.CheckInventory("Void Highlord (ioda)")? "Void Highlord (ioda)" : "Void Highlord"))
                 {
                     Core.JumpWait();
                     Bot.Sleep(Core.ActionDelay);
-                    Core.Equip("Void Highlord");
+                    Core.Equip(Core.CheckInventory("Void Highlord (ioda)")? "Void Highlord (ioda)" : "Void Highlord");
                     Bot.Sleep(Core.ActionDelay);
-                    if (Bot.Inventory.IsEquipped("Void Highlord"))
+                    if (Bot.Inventory.IsEquipped(Core.CheckInventory("Void Highlord (ioda)")? "Void Highlord (ioda)" : "Void Highlord"))
                         break;
                 }
-                Bot.Skills.StartAdvanced("Void Highlord", true, ClassUseMode.Atk);
+                Bot.Skills.StartAdvanced(Core.CheckInventory("Void Highlord (ioda)")? "Void Highlord (ioda)" : "Void Highlord", true, ClassUseMode.Atk);
                 Adv.BoostHuntMonster("infernalarena", "Deadly Duo", "Deadly Duo's Decayed Denture", 10, false);
                 Core.JumpWait();
                 Adv.GearStore(true);
