@@ -1084,11 +1084,10 @@ public class CoreNation
         if (farmDiamond)
             BambloozevsDrudgen("Diamond of Nulgath", 15);
         Core.EnsureAccept(869);
-            Core.Logger("Resetting tercessuinotlim [map bugs on this drop.]");
-            Core.Join("whitemap");
-            string[] locations = new[] { "tercessuinotlim", Core.IsMember ? "Nulgath" : "evilmarsh" };
-            string location = locations[new Random().Next(locations.Length)];
-            string cell = location == "tercessuinotlim" ? (new Random().Next(2) == 0 ? "m1" : "m2") : "Field1";
+        string[] locations = new[] { "tercessuinotlim", Core.IsMember ? "Nulgath" : "evilmarsh" };
+        string location = locations[new Random().Next(locations.Length)];
+        string cell = location == "tercessuinotlim" ? (new Random().Next(2) == 0 ? "m1" : "m2") : "Field1";
+        Core.KillMonster(location, cell, "Left", "Dark Makai", "Dark Makai Sigil", log: false);
 
         Core.EnsureComplete(869);
         Core.Logger("Completed");

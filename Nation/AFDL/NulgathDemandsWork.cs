@@ -112,11 +112,10 @@ public class NulgathDemandsWork
         Core.AddDrop("Unidentified 27");
         Nation.Supplies("Unidentified 26", 1);
         Core.EnsureAccept(584);
-            Core.Logger("Resetting tercessuinotlim [map bugs on this drop.]");
-            Core.Join("whitemap");
-            string[] locations = new[] { "tercessuinotlim", Core.IsMember ? "Nulgath" : "evilmarsh" };
-            string location = locations[new Random().Next(locations.Length)];
-            string cell = location == "tercessuinotlim" ? (new Random().Next(2) == 0 ? "m1" : "m2") : "Field1";
+        string[] locations = new[] { "tercessuinotlim", Core.IsMember ? "Nulgath" : "evilmarsh" };
+        string location = locations[new Random().Next(locations.Length)];
+        string cell = location == "tercessuinotlim" ? (new Random().Next(2) == 0 ? "m1" : "m2") : "Field1";
+        Core.KillMonster(location, cell, "Left", "Dark Makai", "Dark Makai Sigil", log: false);
         Core.EnsureComplete(584);
         Bot.Wait.ForPickup("Unidentified 27");
         Core.Logger("Uni 27 acquired");

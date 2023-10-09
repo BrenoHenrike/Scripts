@@ -153,9 +153,7 @@ public class NulgathDiamondMerge
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EnsureAccept(584);
                     Nation.Supplies("Unidentified 26");
-                
-                    Core.Logger("Resetting tercessuinotlim [map bugs on this drop.]");
-                    Core.Join("whitemap");
+                    
                     string[] locations = new[] { "tercessuinotlim", Core.IsMember ? "Nulgath" : "evilmarsh" };
                     string location = locations[new Random().Next(locations.Length)];
                     string cell = location == "tercessuinotlim" ? (new Random().Next(2) == 0 ? "m1" : "m2") : "Field1";
