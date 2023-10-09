@@ -81,6 +81,7 @@ public class VerusDoomKnightClass
             Core.HuntMonsterMapID("necrodungeon", 47, "The Mask of the Skulls", isTemp: false);
             Adv.BoostHuntMonster("lumafortress", "Corrupted Luma", "Doom Worshipper's Blade Of Doom", isTemp: false);
             Adv.BoostHuntMonster("innershadows", "Krahen", "Empress' ShadowCloak", isTemp: false);
+            Bot.Quests.UpdateQuest(7646);
             Adv.BoostHuntMonster("techfortress", "MechaVortrix", "Cybernetic Doom Blade", isTemp: false);
             Core.GhostItem(55823, "Kyger", 1, false, ItemCategory.Pet, "Time for training!", 1);
             Bot.Quests.UpdateQuest(7650);
