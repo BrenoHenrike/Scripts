@@ -108,7 +108,7 @@ public class ArmyLeveling
                     "the map --stopping", stopBot: true);
                 Core.EquipClass(ClassType.Solo);
                 Army.waitForParty("icewing");
-                Army.AggroMonCells('Enter');
+                Army.AggroMonCells("Enter");
                 Army.AggroMonStart("icewing");
                 Army.DivideOnCells("Enter");
                 Core.RegisterQuests(Core.IsMember ? 6635 : 6632);
