@@ -34,10 +34,10 @@ public class AssistingOblivionBlade
             return;
 
         if (!Core.CheckInventory("Tendurrr The Assistant"))
-            Core.HuntMonster("tercessuinotlim", "Dark Makai", "Tendurrr The Assistant");
+            Core.KillMonster("tercessuinotlim", "m2", "Top", "Dark Makai", "Tendurrr The Assistant", isTemp: false);
 
         List<ItemBase> RewardOptions = Core.EnsureLoad(5818).Rewards;
-        List<string> RewardsList = new List<string>();
+        List<string> RewardsList = new();
         foreach (Skua.Core.Models.Items.ItemBase Item in RewardOptions)
             RewardsList.Add(Item.Name);
         string[] Rewards = RewardsList.ToArray();

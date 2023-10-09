@@ -77,7 +77,7 @@ public class BuyScrolls
             {
                 if (!Core.CheckInventory(ink))
                 {
-                    Core.HuntMonster("tercessuinotlim", "Dark makai", "Mystic Parchment", ((quant / 5) / 2) - (Bot.Inventory.GetQuantity("Mystic Parchment")), isTemp: false);
+                    Core.KillMonster("tercessuinotlim", "m2", "Top", "Dark Makai", "Mystic Parchment", ((quant / 5) / 2) - (Bot.Inventory.GetQuantity("Mystic Parchment")), isTemp: false);
                     Core.BuyItem("spellcraft", 549, ink);
                 }
                 Core.EnsureAccept((int)scroll);

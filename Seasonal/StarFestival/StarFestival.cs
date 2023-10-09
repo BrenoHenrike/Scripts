@@ -104,7 +104,7 @@ public class StarFestival
         {
             Core.EnsureAccept(8753);
             Core.HuntMonster("Tercessuinotlim", "Tainted Elemental", "Tainted Essence Collected", 10);
-            Core.HuntMonster("Tercessuinotlim", "Dark Makai", "Makai Essence Collected", 20);
+            Core.KillMonster("tercessuinotlim", "m2", "Top", "Dark Makai", "Makai Essence Collected", 20);
             Core.HuntMonster("necrodungeon", "5 Headed Dracolich", "Dracolich Soul Collected", 15);
             Core.HuntMonster("necrodungeon", "SlimeSkull", "Necropolis Soul Collected", 15);
             Core.HuntMonster("necrodungeon", "Doom Overlord", "Doom Power Catalyst", 2);

@@ -44,7 +44,7 @@ public class TendurrrTheAssistantQuests
         Core.AddDrop(Rewards);
 
         if (!Core.CheckInventory("Tendurrr The Assistant"))
-            Core.HuntMonster("tercessuinotlim", "Dark Makai", "Tendurrr The Assistant", 1, false);
+            Core.KillMonster("tercessuinotlim", "m2", "Top", "Dark Makai", "Tendurrr The Assistant", isTemp: false);
 
         Nation.FarmUni13();
 
@@ -76,7 +76,7 @@ public class TendurrrTheAssistantQuests
 
             Core.EnsureAccept(5814);
             Nation.ApprovalAndFavor(500, 500);
-           Nation.EssenceofNulgath(20);
+            Nation.EssenceofNulgath(20);
             Nation.FarmGemofNulgath(30);
             Nation.FarmDarkCrystalShard(30);
             Nation.SwindleBulk(30);

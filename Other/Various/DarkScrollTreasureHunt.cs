@@ -33,7 +33,7 @@ public class DarkScrollTreasureHunt
         {
             Core.Logger($"Step 1 Dark Scroll");
             Core.EquipClass(ClassType.Farm);
-            Core.HuntMonster("tercessuinotlim", "Dark Makai", "Dark Scroll", isTemp: false, log: false);
+            Core.KillMonster("tercessuinotlim", "m2", "Top", "Dark Makai", "Dark Scroll", isTemp: false);
 
             if (!Core.CheckInventory("Amethyst Inferno Tome"))
             {
