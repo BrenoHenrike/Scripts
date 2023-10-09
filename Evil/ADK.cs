@@ -159,13 +159,10 @@ public class ArchDoomKnight
         if (!Core.isCompletedBefore(6798))
             ChaoticLords();
 
-        if (HelmOnly && Core.CheckInventory("Arch DoomKnight"))
+        if (HelmOnly && Core.CheckInventory("Arch DoomKnight Helm") || (ArmorOnly && Core.CheckInventory("Arch DoomKnight")))
             return;
 
-        if (ArmorOnly && Core.CheckInventory("Arch DoomKnight Helm"))
-            return;
-
-        if (Core.CheckInventory(new[] { "Arch DoomKnight", "Arch DoomKnight Open Helm", "Arch DoomKnight Helm" }, toInv: false))
+        else if (Core.CheckInventory(new[] { "Arch DoomKnight", "Arch DoomKnight Open Helm", "Arch DoomKnight Helm" }, toInv: false))
             return;
 
         Core.AddDrop(Q4items);
