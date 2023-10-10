@@ -135,26 +135,29 @@ public class CurrentDailyGifts
 
             #region April 2023 ( + Scavenger Clues)        
             //Dark Scavenger Clue
-            GetGift(AvailableUntil(3, 4), "fireplanewar", "ShadowClaw", "Trident of Destruction");
+            // GetGift(AvailableUntil(3, 4), "fireplanewar", "ShadowClaw", "Trident of Destruction");
 
             //Shadowy Scavenger Clue
-            GetGift(AvailableUntil(27, 3), "manacradle", "The Mainyu", "ShadowFlame Eviscerator Pistol", "ShadowFlame Eviscerator Pistols", "ShadowFlame Eviscerator Revolver", "ShadowFlame Eviscerator Revolvers", "ShadowFlame Annihilator Rifle", "ShadowFlame Devastator");
+            // GetGift(AvailableUntil(27, 3), "manacradle", "The Mainyu", "ShadowFlame Eviscerator Pistol", "ShadowFlame Eviscerator Pistols", "ShadowFlame Eviscerator Revolver", "ShadowFlame Eviscerator Revolvers", "ShadowFlame Annihilator Rifle", "ShadowFlame Devastator");
 
             //Undead Scavenger Clue
-            GetGift(AvailableUntil(10, 4), "dragontown", "Chaos Fluffy", "Dracosaster", "Dracotastrophe");
+            // GetGift(AvailableUntil(10, 4), "dragontown", "Chaos Fluffy", "Dracosaster", "Dracotastrophe");
 
             //O_o Scavenger Clue
-            GetGift(AvailableUntil(17, 4), "andre", "Giant Fist", "Navel Top Hat");
+            // GetGift(AvailableUntil(17, 4), "andre", "Giant Fist", "Navel Top Hat");
 
             //GigaWUT Scavenger Clue
-            GetGift(AvailableUntil(24, 4), "dvg", "Munthor", "Giga Twilly");
+            // GetGift(AvailableUntil(24, 4), "dvg", "Munthor", "Giga Twilly");
 
             //Golden Treasure Hunt clue
-            GetGift(AvailableUntil(1, 5), "necrodungeon", 48, "Golden Spear of Light");
+            // GetGift(AvailableUntil(1, 5), "necrodungeon", 48, "Golden Spear of Light");
 
             //Message Capsule Clue
-            TGM.BuyAllMerge("L'il Twiggu Guest");
-            TGM.BuyAllMerge("Baby Twiggu's Pod Pet");
+            if (DateTime.Now.Month == 4)
+            {
+                TGM.BuyAllMerge("L'il Twiggu Guest");
+                TGM.BuyAllMerge("Baby Twiggu's Pod Pet");
+            }
 
             //Throny Scavenger Clue
             RR.GetWeapons();
@@ -163,8 +166,8 @@ public class CurrentDailyGifts
             if (DateTime.Now.Month == 7)
                 Core.BuyItem(Bot.Map.Name, 1348, 78735, shopItemID: 48402);
 
-            GetGift(AvailableUntil(10, 6), "ashray", "Ashray Fisherman", "Twig's Totally FUN-ctional Ride");
-            GetGift(AvailableUntil(16, 6), "garden", "Creature 35", "Dark Astravian General Lance");
+            // GetGift(AvailableUntil(10, 6), "ashray", "Ashray Fisherman", "Twig's Totally FUN-ctional Ride");
+            // GetGift(AvailableUntil(16, 6), "garden", "Creature 35", "Dark Astravian General Lance");
             #endregion April 2023 ( + Scavenger Clues) 
 
             #region July 2023
@@ -175,19 +178,25 @@ public class CurrentDailyGifts
             #region August 2023
 
             // Cursed Wakizashi Pet (Treasure Hunt?)
-            CursedWazikashi.CursedWakizashiPet();
-            GetGift(AvailableUntil(15, 9), "superslayin", "Charidon", "Charidon Pet", "Charidon Battlepet");
-            GetGift(AvailableUntil(15, 9), "garden", "Creature 343", "Debris .45 Revolver", "Debris .45 Revolvers");
+            // CursedWazikashi.CursedWakizashiPet();
+            // GetGift(AvailableUntil(15, 9), "superslayin", "Charidon", "Charidon Pet", "Charidon Battlepet");
+            // GetGift(AvailableUntil(15, 9), "garden", "Creature 343", "Debris .45 Revolver", "Debris .45 Revolvers");
 
             #endregion August 2023
 
             #region September 2023
             
-            GetGift(AvailableUntil(30, 9), "septhub", "Cursed Cecaelia", "DeepWater Waves", "Master Gunner Gween");
-            GetGift(AvailableUntil(30, 9), "twilightzone", "Whale Louse", "Compact Cyamidae");
+            // GetGift(AvailableUntil(30, 9), "septhub", "Cursed Cecaelia", "DeepWater Waves", "Master Gunner Gween");
+            // GetGift(AvailableUntil(30, 9), "twilightzone", "Whale Louse", "Compact Cyamidae");
             
             #endregion
 
+            #region October 2023
+
+            GetGift(AvailableUntil(30, 10), "eventhub", "Slayer Cake", "Gravelyn's TopHat + Locks of DOOM", "Gravelyn's TopHat of DOOM", "ShadowScythe Commander's TopHat", "ShadowScythe Commander's TopHat + Locks");
+            GetGift(AvailableUntil(30, 10), "lair", "Red Dragon", "Blacksteel Dragon Bow", "Blacksteel Dragon Spear");
+
+            #endregion
 
             //GetGift(AvailableUntil(1, 1), "map", "monster", "");
             //GetGift(Permanent, "map", "monster", "");
