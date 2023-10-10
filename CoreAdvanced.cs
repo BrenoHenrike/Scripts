@@ -1958,10 +1958,10 @@ public class CoreAdvanced
                 #endregion
 
                 #region Lucky - Penitence - Dauntless - anima
-                case "Verus DoomKnight":
+                case "verus doomKnight":
                     if (!uPenitence() || !uDauntless() || !uAnima())
                     {
-                        if (uForgeCape() || uValiance() || uForgeHelm())
+                        if (uForgeCape() && uValiance() && uForgeHelm())
                         {
                             type = EnhancementType.Lucky;
                             cSpecial = CapeSpecial.Forge;
@@ -2494,7 +2494,7 @@ public class CoreAdvanced
                 case "unlucky leperchaun":
                 case "void highlord":
                 case "void highlord (ioda)":
-                case "Verus DoomKnight":
+                case "verus doomKnight":
                     type = EnhancementType.Lucky;
                     wSpecial = WeaponSpecial.Spiral_Carve;
                     break;
