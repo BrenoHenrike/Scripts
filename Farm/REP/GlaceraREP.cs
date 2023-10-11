@@ -7,6 +7,7 @@ tags: null
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Story/Glacera.cs
+//cs_include Scripts/CoreStory.cs
 
 using Skua.Core.Interfaces;
 public class GlaceraREP
@@ -14,7 +15,7 @@ public class GlaceraREP
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public CoreAdvanced Adv = new();
-    public Glacera GlaceraStory = new();
+    public GlaceraStory GlaceraStory = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
