@@ -197,9 +197,21 @@ public class CitadelRuins
         Story.KillQuest(585, "Tercessuinotlim", "Legion Fenrir");
 
         //purified claw
-        Nation.FarmTaintedGem(7);
-        Nation.Supplies("Claw of Nulgath");
-        Story.KillQuest(668, "Tercessuinotlim", "Dark Makai");
+        if (!Core.CheckInventory("Purified Claw of Nulgath"))
+        {
+            Core.AddDrop("Purified Claw of Nulgath");
+            Core.EnsureAccept(668);
+            Nation.FarmTaintedGem(7);
+            Nation.Supplies("Claw of Nulgath");
+            
+            string[] locations = new[] { "tercessuinotlim", Core.IsMember ? "Nulgath" : "evilmarsh" };
+            string location = locations[new Random().Next(locations.Length)];
+            string cell = location == "tercessuinotlim" ? (new Random().Next(2) == 0 ? "m1" : "m2") : "Field1";
+            Core.KillMonster(location, cell, "Left", "Dark Makai", "Dark Makai Sigil", log: false);
+
+            Bot.Wait.ForPickup("Dark Makai Sigil");
+            Core.EnsureComplete(668);
+        }
     }
 
     public void PolishsQuestsCitadelRuins()

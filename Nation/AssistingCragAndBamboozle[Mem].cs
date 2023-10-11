@@ -45,7 +45,7 @@ public class AssistingCragAndBamboozle
         }
 
         if (!Core.CheckInventory("Tendurrr The Assistant"))
-            Core.HuntMonster("tercessuinotlim", "Dark Makai", "Tendurrr The Assistant", 1, false);
+            Core.KillMonster("tercessuinotlim", "m2", "Top", "Dark Makai", "Tendurrr The Assistant", 1, false);
 
         Core.AddDrop("Nulgath Larvae",
                      "Sword of Nulgath", "Gem of Nulgath", "Tainted Gem", "Dark Crystal Shard", "Diamond of Nulgath",

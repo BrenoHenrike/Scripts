@@ -212,7 +212,7 @@ public class CoreNation
                 Core.KillMonster("mobius", "Slugfit", "Bottom", "Slugfit", "Slugfit Horn", 5, log: false);
                 Core.KillMonster("mobius", "Slugfit", "Bottom", "Cyclops Warlord", "Cyclops Horn", 3, log: false);
             }
-            Core.HuntMonster(Core.IsMember ? "nulgath" : "tercessuinotlim", "Dark Makai", "Makai Fang", 5);
+            Core.KillMonster("tercessuinotlim", "m2", "Top", "Dark Makai", "Makai Fang", 5);
             Core.KillMonster("hydra", "Rune2", "Left", "Fire Imp", "Imp Flame", 3, log: false);
             Core.HuntMonster("greenguardwest", "Big Bad Boar", "Wereboar Tusk", 2, log: false);
 
@@ -1057,7 +1057,7 @@ public class CoreNation
 
             // Equip the Farm class and hunt monsters for quest completion
             Core.EquipClass(ClassType.Farm);
-            Core.HuntMonster(Core.IsMember ? "nulgath" : "tercessuinotlim", "Dark Makai", "Makai Fang", 5);
+            Core.KillMonster("tercessuinotlim", "m2", "Top", "Dark Makai", "Makai Fang", 5);
             Core.HuntMonster("hydra", "Fire Imp", "Imp Flame", 3);
             Core.HuntMonster("battleunderc", "Crystalized Jellyfish", "Aquamarine of Nulgath", 3, false);
 
@@ -1086,7 +1086,7 @@ public class CoreNation
         Core.EnsureAccept(869);
         string[] locations = new[] { "tercessuinotlim", Core.IsMember ? "Nulgath" : "evilmarsh" };
         string location = locations[new Random().Next(locations.Length)];
-        string cell = location == "tercessuinotlim" ? "m1" : "Field1";
+        string cell = location == "tercessuinotlim" ? (new Random().Next(2) == 0 ? "m1" : "m2") : "Field1";
         Core.KillMonster(location, cell, "Left", "Dark Makai", "Dark Makai Sigil", log: false);
 
         Core.EnsureComplete(869);

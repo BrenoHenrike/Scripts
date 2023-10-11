@@ -2369,6 +2369,37 @@ public class CoreBots
     // Whether the player is Member (set to true if neccessary during setOptions)
     public bool IsMember = false;
 
+    /// <summary>
+    /// Checks whether the player is Upholder
+    /// </summary>
+    public bool isUpholder()
+    {
+        string[] upholder = new string[]
+        {
+            "1st Upholder",
+            "2nd Upholder",
+            "3rd Upholder",
+            "4th Upholder",
+            "5th Upholder",
+            "6th Upholder",
+            "7th Upholder",
+            "8th Upholder",
+            "9th Upholder",
+            "10th Upholder",
+            "11th Upholder",
+            "12th Upholder",
+            "13th Upholder",
+            "14th Upholder",
+            "15th Upholder",
+        };
+
+        foreach (string badge in upholder)
+            if (HasWebBadge(badge))
+                return true;
+
+        return false;
+    }
+
     public string Username()
     {
         try
@@ -3170,27 +3201,6 @@ public class CoreBots
                 SimpleQuestBypass((488, 20));
                 break;
 
-            case "stonewooddeep":
-                if (Bot.Player.Cell != cell && cell != "r2")
-                {
-                    Logger("Resetting map for required quest update so it doesn't get stuck.");
-                    JumpWait();
-                    Join("whitemap");
-                    SimpleQuestBypass((363, 14));
-                }
-                else if (cell == "r2" && Bot.Player.Cell != "r2")
-                {
-                    //Asherion
-                    Logger("Resetting map for next quest update.");
-                    Logger("Updating for \"Asherion's\" cell");
-                    JumpWait();
-                    Join("whitemap");
-                    SimpleQuestBypass((363, 1));
-                }
-                else
-                    SimpleQuestBypass((363, 1));
-                break;
-
             case "shadowattack":
             case "dreadhaven":
                 SimpleQuestBypass((175, 20));
@@ -3376,7 +3386,10 @@ public class CoreBots
                     "binky",
                     "superlowe",
                     "voidflibbi",
-                    "voidnightbane"
+                    "voidnightbane",
+                    "voidxyfrag",
+                    "voidnerfkitten",
+                    "seavoice"
                 };
                 if (lockedMaps.Contains(strippedMap))
                     WriteFile(ButlerLogPath(), Bot.Map.FullName);

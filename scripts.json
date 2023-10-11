@@ -6,7 +6,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 180603,
+    "size": 180627,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -17,7 +17,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 109280,
+    "size": 109359,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -50,7 +50,7 @@
       "null"
     ],
     "path": "CoreAdvanced.cs",
-    "size": 113393,
+    "size": 113724,
     "fileName": "CoreAdvanced.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreAdvanced.cs"
   },
@@ -541,7 +541,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 75039,
+    "size": 75046,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -568,7 +568,7 @@
       "null"
     ],
     "path": "Nation/AssistingCragAndBamboozle[Mem].cs",
-    "size": 3344,
+    "size": 3357,
     "fileName": "AssistingCragAndBamboozle[Mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/AssistingCragAndBamboozle[Mem].cs"
   },
@@ -626,7 +626,7 @@
       "null"
     ],
     "path": "Farm/BuyScrolls.cs",
-    "size": 5189,
+    "size": 5202,
     "fileName": "BuyScrolls.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/BuyScrolls.cs"
   },
@@ -889,7 +889,7 @@
       "rare-items"
     ],
     "path": "Other/0CurrentDailyGifts.cs",
-    "size": 20689,
+    "size": 21085,
     "fileName": "0CurrentDailyGifts.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/0CurrentDailyGifts.cs"
   },
@@ -980,18 +980,6 @@
     "size": 2254,
     "fileName": "MysteriousEgg.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MysteriousEgg.cs"
-  },
-  {
-    "name": "Dragon Crystal [Upholder]",
-    "description": "Farms \"Dragon Crystals\" From Quest",
-    "tags": [
-      "dragon crystal",
-      "upholder"
-    ],
-    "path": "Other/DragonCrystal[Upholder].cs",
-    "size": 1134,
-    "fileName": "DragonCrystal[Upholder].cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/DragonCrystal[Upholder].cs"
   },
   {
     "name": "Lore Master University",
@@ -1454,7 +1442,7 @@
       "null"
     ],
     "path": "Army/CoreArmyLite.cs",
-    "size": 39228,
+    "size": 39765,
     "fileName": "CoreArmyLite.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/CoreArmyLite.cs"
   },
@@ -1498,7 +1486,7 @@
       "chaotic lords"
     ],
     "path": "Evil/ADK.cs",
-    "size": 6676,
+    "size": 6753,
     "fileName": "ADK.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/ADK.cs"
   },
@@ -1550,19 +1538,6 @@
     "size": 6697,
     "fileName": "J6Saga.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/J6Saga.cs"
-  },
-  {
-    "name": "Dragon Road Story (Upholder)",
-    "description": "This will finish the Dragon Road Story.",
-    "tags": [
-      "story",
-      "quest",
-      "dragon-road"
-    ],
-    "path": "Story/DragonRoad[Upholder].cs",
-    "size": 4076,
-    "fileName": "DragonRoad[Upholder].cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/DragonRoad[Upholder].cs"
   },
   {
     "name": "Shadow Void Story",
@@ -4177,7 +4152,7 @@
       "fragment"
     ],
     "path": "Nation/AFDL/NulgathDemandsWork.cs",
-    "size": 4041,
+    "size": 4345,
     "fileName": "NulgathDemandsWork.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/AFDL/NulgathDemandsWork.cs"
   },
@@ -4366,7 +4341,7 @@
       "null"
     ],
     "path": "Nation/Various/TheGameofGemstones(Gold[Members]).cs",
-    "size": 1639,
+    "size": 1652,
     "fileName": "TheGameofGemstones(Gold[Members]).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/TheGameofGemstones(Gold[Members]).cs"
   },
@@ -4477,7 +4452,7 @@
       "null"
     ],
     "path": "Nation/Various/TendurrrTheAssistantQuests.cs",
-    "size": 3419,
+    "size": 3438,
     "fileName": "TendurrrTheAssistantQuests.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/TendurrrTheAssistantQuests.cs"
   },
@@ -4663,7 +4638,7 @@
       "quests"
     ],
     "path": "Nation/Various/HanzoOrbQuest.cs",
-    "size": 2449,
+    "size": 2421,
     "fileName": "HanzoOrbQuest.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/HanzoOrbQuest.cs"
   },
@@ -4761,7 +4736,7 @@
       "null"
     ],
     "path": "Nation/Various/AssistingOblivionBlade.cs",
-    "size": 1873,
+    "size": 1888,
     "fileName": "AssistingOblivionBlade.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/AssistingOblivionBlade.cs"
   },
@@ -4847,7 +4822,7 @@
       "null"
     ],
     "path": "Nation/MergeShops/NulgathDiamondMerge.cs",
-    "size": 11029,
+    "size": 11407,
     "fileName": "NulgathDiamondMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/MergeShops/NulgathDiamondMerge.cs"
   },
@@ -4873,7 +4848,7 @@
       "null"
     ],
     "path": "Nation/MergeShops/NulgathWarMerge.cs",
-    "size": 7941,
+    "size": 8319,
     "fileName": "NulgathWarMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/MergeShops/NulgathWarMerge.cs"
   },
@@ -5750,7 +5725,7 @@
       "null"
     ],
     "path": "Farm/REP/GlaceraREP.cs",
-    "size": 909,
+    "size": 948,
     "fileName": "GlaceraREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/GlaceraREP.cs"
   },
@@ -6626,7 +6601,7 @@
       "the point sword"
     ],
     "path": "Other/Various/DarkScrollTreasureHunt.cs",
-    "size": 3288,
+    "size": 3289,
     "fileName": "DarkScrollTreasureHunt.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Various/DarkScrollTreasureHunt.cs"
   },
@@ -6806,6 +6781,21 @@
     "size": 926,
     "fileName": "Enforcer.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/Enforcer.cs"
+  },
+  {
+    "name": "Verus DoomKnight Class",
+    "description": "This script will farm Verus DoomKnight Class.",
+    "tags": [
+      "versus",
+      "verus",
+      "doomknight",
+      "vdk",
+      "class"
+    ],
+    "path": "Other/Classes/VerusDoomKnight.cs",
+    "size": 9635,
+    "fileName": "VerusDoomKnight.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/VerusDoomKnight.cs"
   },
   {
     "name": "LegionDoomKnight[Mem]",
@@ -8080,6 +8070,75 @@
     "size": 5032,
     "fileName": "CrownsreachDefenseMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/CrownsreachDefenseMerge.cs"
+  },
+  {
+    "name": "Starsword Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Starsword Merge [1154] in /dragonroad",
+    "tags": [
+      "upholder",
+      "starsword",
+      "merge",
+      "dragonroad",
+      "lava",
+      "backblades",
+      "reversed",
+      "orange",
+      "star",
+      "scythe",
+      "cloud",
+      "rider",
+      "mirrored",
+      "kings",
+      "mirror",
+      "chronomancers",
+      "prophets",
+      "djinns",
+      "werepyres",
+      "twins",
+      "mages",
+      "bards",
+      "starguitar",
+      "samurais",
+      "mana",
+      "knights",
+      "drows",
+      "escherions",
+      "kimberlys",
+      "kitsunes",
+      "ledgermaynes",
+      "lionfangs",
+      "vaths",
+      "alteons",
+      "iadoas",
+      "khasaandas",
+      "tibicenass",
+      "wolfwings",
+      "xiangs",
+      "eternal",
+      "dragons",
+      "imbalanced",
+      "debris",
+      "awe",
+      "mechquest",
+      "memorial",
+      "dragonfable",
+      "shadows",
+      "black",
+      "dragon",
+      "oni",
+      "queen",
+      "monsters",
+      "shadowflame",
+      "epicduel",
+      "biobeasts",
+      "twillys",
+      "twigs",
+      "zorbaks"
+    ],
+    "path": "Other/MergeShops/StarswordMerge[Upholder].cs",
+    "size": 11699,
+    "fileName": "StarswordMerge[Upholder].cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/StarswordMerge[Upholder].cs"
   },
   {
     "name": "TechfortressWarMerge",
@@ -10306,7 +10365,7 @@
       "[item]"
     ],
     "path": "Army/Templates/ArmyTemplatev3.cs",
-    "size": 4507,
+    "size": 5025,
     "fileName": "ArmyTemplatev3.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Templates/ArmyTemplatev3.cs"
   },
@@ -10545,7 +10604,7 @@
       "aggro"
     ],
     "path": "Army/ArmyFarm/ArmyLeveling.cs",
-    "size": 6648,
+    "size": 6661,
     "fileName": "ArmyLeveling.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/ArmyLeveling.cs"
   },
@@ -12316,7 +12375,7 @@
       "star-festival"
     ],
     "path": "Seasonal/StarFestival/StarFestival.cs",
-    "size": 6049,
+    "size": 6062,
     "fileName": "StarFestival.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StarFestival/StarFestival.cs"
   },
@@ -12358,7 +12417,7 @@
       "suns"
     ],
     "path": "Seasonal/StarFestival/ShorinzanMerge.cs",
-    "size": 8236,
+    "size": 8249,
     "fileName": "ShorinzanMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StarFestival/ShorinzanMerge.cs"
   },
@@ -15659,7 +15718,7 @@
       "citadel-ruins"
     ],
     "path": "Story/Nation/CitadelRuins.cs",
-    "size": 8351,
+    "size": 8965,
     "fileName": "CitadelRuins.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Nation/CitadelRuins.cs"
   },
@@ -17163,21 +17222,6 @@
     "size": 910,
     "fileName": "0ArchMage.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/ArchMage/0ArchMage.cs"
-  },
-  {
-    "name": "VerusDoomKnightClassPrep",
-    "description": "Quest & item Prep for the new class \"Verus DoomKnight\".",
-    "tags": [
-      "versus",
-      "doomknight",
-      "prep",
-      "prerequisite",
-      "class"
-    ],
-    "path": "Other/Classes/NewClassPreps[TempLocation]/VerusDoomKnightClassPrep.cs",
-    "size": 2549,
-    "fileName": "VerusDoomKnightClassPrep.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/NewClassPreps[TempLocation]/VerusDoomKnightClassPrep.cs"
   },
   {
     "name": "BlazeBinder",
