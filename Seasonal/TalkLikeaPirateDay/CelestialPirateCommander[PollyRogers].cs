@@ -13,6 +13,7 @@ public class CelestialPirateCommander
     public IScriptInterface Bot => IScriptInterface.Instance;
 
     public CoreBots Core => CoreBots.Instance;
+    public CoreFarms Farm = new();
     public bool DontPreconfigure = true;
     public string OptionsStorage = "Pet only or All";
     public List<IOption> Options = new List<IOption>()
@@ -48,6 +49,9 @@ public class CelestialPirateCommander
     public void GetCPC(bool PetOnly = true)
     {
 
+        if (Bot.Player.Level < 80)
+            Farm.Experience(80);
+        
         if ((PetOnly && Core.CheckInventory("Polly Roger")) || !Core.isSeasonalMapActive("lowtide"))
         {
             Core.Logger(!Core.isSeasonalMapActive("lowtide") ? "Not the right season ya dummy" : "You already have Polly Roger");
