@@ -74,7 +74,7 @@ public class ArmyLeveling
         {
             case Method.IceStormArena:
                 Core.EquipClass(ClassType.Farm);
-                Army.waitForParty("icestormarena");
+                Army.waitForParty("whitemap");
                 Army.AggroMonCells("r22");
                 Army.AggroMonStart("icestormarena");
                 Army.DivideOnCells("r22");
@@ -91,7 +91,7 @@ public class ArmyLeveling
                     Core.Logger("Player is below lvl 75, which is\n" +
                     "required for the map. --stopping", stopBot: true);
                 Core.EquipClass(ClassType.Farm);
-                Army.waitForParty("icestormunder");
+                Army.waitForParty("whitemap");
                 Army.AggroMonCells("r2");
                 Army.AggroMonStart("icestormunder");
                 Army.DivideOnCells("r2");
@@ -107,7 +107,7 @@ public class ArmyLeveling
                     Core.Logger("Player is below lvl 75, required for\n" +
                     "the map --stopping", stopBot: true);
                 Core.EquipClass(ClassType.Solo);
-                Army.waitForParty("icewing");
+                Army.waitForParty("whitemap");
                 Army.AggroMonCells("Enter");
                 Army.AggroMonStart("icewing");
                 Army.DivideOnCells("Enter");
@@ -122,7 +122,7 @@ public class ArmyLeveling
             case Method.SevenCirclesWar:
                 SC.CirclesWar(true);
                 Core.EquipClass(ClassType.Farm);
-                Army.waitForParty("sevencircleswar");
+                Army.waitForParty("whitemap");
                 Army.AggroMonCells("Enter", "r1", "r2", "r3");
                 Army.AggroMonStart("sevencircleswar");
                 Army.DivideOnCells("Enter", "r1", "r2", "r3");
@@ -138,7 +138,7 @@ public class ArmyLeveling
                 SoW.TimestreamWar();
                 Core.EquipClass(ClassType.Farm);
                 Core.AddDrop("Prismatic Seams");
-                Army.waitForParty("streamwar");
+                Army.waitForParty("whitemap");
                 Army.AggroMonCells("r3a");
                 Army.AggroMonStart("streamwar");
                 Army.DivideOnCells("r3a");
