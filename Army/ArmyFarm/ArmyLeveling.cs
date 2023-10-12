@@ -123,9 +123,9 @@ public class ArmyLeveling
                 SC.CirclesWar(true);
                 Core.EquipClass(ClassType.Farm);
                 Army.waitForParty("whitemap");
-                Army.AggroMonCells("Enter", "r1", "r2", "r3");
+                Army.AggroMonCells("Enter", "r2", "r3");
                 Army.AggroMonStart("sevencircleswar");
-                Army.DivideOnCells("Enter", "r1", "r2", "r3");
+                Army.DivideOnCells("Enter", "r2", "r3");
                 Core.RegisterQuests(7979, 7980, 7981);
                 while (!Bot.ShouldExit && Bot.Player.Level < level)
                     Bot.Combat.Attack("*");
