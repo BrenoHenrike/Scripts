@@ -17952,6 +17952,19 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyAllRep.cs"
   },
   {
+    "name": "Army Aegis Rep",
+    "description": "Farm reputation with your army. Faction",
+    "tags": [
+      "army",
+      "reputation",
+      "aegis"
+    ],
+    "path": "Army/ArmyFarm/Rep/CoreArmyRep.cs",
+    "size": 10340,
+    "fileName": "CoreArmyRep.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/CoreArmyRep.cs"
+  },
+  {
     "name": "Army Mythsong Rep",
     "description": "Farm reputation with your army. Faction",
     "tags": [
