@@ -180,6 +180,9 @@ public class VerusDoomKnightClass
             ADK.AMeansToAnEnd(HelmOnly: true);
             TTMerge.BuyAllMerge("Dragonlord of Evil");
             DPHM.BuyAllMerge("DoomTech DoomKnight");
+
+            //Ensure Everything is unbanked.
+            Core.Unbank("Dragonlord of Evil", "DoomTech DoomKnight", "Arch DoomKnight Helm", "Sepulchure's Original Helm", "ShadowReaper Of Doom");
             Core.EnsureComplete(9414);
         }
 
