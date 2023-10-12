@@ -39,7 +39,7 @@
       "null"
     ],
     "path": "CoreDailies.cs",
-    "size": 48268,
+    "size": 48526,
     "fileName": "CoreDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreDailies.cs"
   },
@@ -6793,7 +6793,7 @@
       "class"
     ],
     "path": "Other/Classes/VerusDoomKnight.cs",
-    "size": 9635,
+    "size": 9829,
     "fileName": "VerusDoomKnight.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/VerusDoomKnight.cs"
   },
@@ -17558,7 +17558,7 @@
       "hollowborn"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyHollowbornRep.cs",
-    "size": 1866,
+    "size": 1546,
     "fileName": "ArmyHollowbornRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyHollowbornRep.cs"
   },
@@ -17569,7 +17569,7 @@
       "army pet tamer reputation"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyPetTamerRep.cs",
-    "size": 1533,
+    "size": 1532,
     "fileName": "ArmyPetTamerRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyPetTamerRep.cs"
   },
@@ -17582,7 +17582,7 @@
       "dreadfire"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyDreadfireRep.cs",
-    "size": 1939,
+    "size": 1535,
     "fileName": "ArmyDreadfireRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyDreadfireRep.cs"
   },
@@ -17595,7 +17595,7 @@
       "chaos"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyChaosRep.cs",
-    "size": 1951,
+    "size": 1624,
     "fileName": "ArmyChaosRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyChaosRep.cs"
   },
@@ -17608,7 +17608,7 @@
       "monster hunter"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyMonsterHunterRep.cs",
-    "size": 2344,
+    "size": 1607,
     "fileName": "ArmyMonsterHunterRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyMonsterHunterRep.cs"
   },
@@ -17621,7 +17621,7 @@
       "necro crypt"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyNecroCryptRep.cs",
-    "size": 1897,
+    "size": 1565,
     "fileName": "ArmyNecroCryptRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyNecroCryptRep.cs"
   },
@@ -17634,7 +17634,7 @@
       "brethwren"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyBrethwrenRep.cs",
-    "size": 2100,
+    "size": 1629,
     "fileName": "ArmyBrethwrenRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyBrethwrenRep.cs"
   },
@@ -17647,7 +17647,7 @@
       "embersea"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyEmberseaRep.cs",
-    "size": 2003,
+    "size": 1529,
     "fileName": "ArmyEmberseaRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyEmberseaRep.cs"
   },
@@ -17660,7 +17660,7 @@
       "baconcat"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyBaconCatRep.cs",
-    "size": 2325,
+    "size": 1564,
     "fileName": "ArmyBaconCatRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyBaconCatRep.cs"
   },
@@ -17673,7 +17673,7 @@
       "sword haven"
     ],
     "path": "Army/ArmyFarm/Rep/ArmySwordhavenRep.cs",
-    "size": 1992,
+    "size": 1607,
     "fileName": "ArmySwordhavenRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmySwordhavenRep.cs"
   },
@@ -17686,7 +17686,7 @@
       "somnia"
     ],
     "path": "Army/ArmyFarm/Rep/ArmySomniaRep.cs",
-    "size": 1965,
+    "size": 1564,
     "fileName": "ArmySomniaRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmySomniaRep.cs"
   },
@@ -17699,7 +17699,7 @@
       "eternal"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyEternalRep.cs",
-    "size": 3730,
+    "size": 1687,
     "fileName": "ArmyEternalRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyEternalRep.cs"
   },
@@ -17712,7 +17712,7 @@
       "army"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyTrollRep.cs",
-    "size": 1928,
+    "size": 1569,
     "fileName": "ArmyTrollRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyTrollRep.cs"
   },
@@ -17726,7 +17726,7 @@
       "evil"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyGoodEvilRep.cs",
-    "size": 2386,
+    "size": 1470,
     "fileName": "ArmyGoodEvilRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyGoodEvilRep.cs"
   },
@@ -17739,7 +17739,7 @@
       "ravenloss"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyRavenlossRep.cs",
-    "size": 2089,
+    "size": 1583,
     "fileName": "ArmyRavenlossRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyRavenlossRep.cs"
   },
@@ -17752,7 +17752,7 @@
       "etherstorm"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyEtherstormRep.cs",
-    "size": 1941,
+    "size": 1541,
     "fileName": "ArmyEtherstormRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyEtherstormRep.cs"
   },
@@ -17765,7 +17765,7 @@
       "infernal army"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyInfernalArmyRep.cs",
-    "size": 2003,
+    "size": 1600,
     "fileName": "ArmyInfernalArmyRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyInfernalArmyRep.cs"
   },
@@ -17778,7 +17778,7 @@
       "doomwood"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyDoomWoodRep.cs",
-    "size": 1977,
+    "size": 1529,
     "fileName": "ArmyDoomWoodRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyDoomWoodRep.cs"
   },
@@ -17804,7 +17804,7 @@
       "arcangrove"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyArcangroveRep.cs",
-    "size": 2096,
+    "size": 1541,
     "fileName": "ArmyArcangroveRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyArcangroveRep.cs"
   },
@@ -17817,7 +17817,7 @@
       "dwarfhold"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyDwarfholdRep.cs",
-    "size": 1932,
+    "size": 1580,
     "fileName": "ArmyDwarfholdRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyDwarfholdRep.cs"
   },
@@ -17830,7 +17830,7 @@
       "dreadrock"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyDreadrockRep.cs",
-    "size": 2098,
+    "size": 1580,
     "fileName": "ArmyDreadrockRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyDreadrockRep.cs"
   },
@@ -17843,7 +17843,7 @@
       "mysterious dungeon"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyMysteriousDungeonRep.cs",
-    "size": 2453,
+    "size": 1630,
     "fileName": "ArmyMysteriousDungeonRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyMysteriousDungeonRep.cs"
   },
@@ -17869,7 +17869,7 @@
       "chrono span"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyChronoSpanRep.cs",
-    "size": 1932,
+    "size": 1543,
     "fileName": "ArmyChronoSpanRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyChronoSpanRep.cs"
   },
@@ -17882,7 +17882,7 @@
       "treasure hunter"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyTreasureHunterRep.cs",
-    "size": 1944,
+    "size": 1631,
     "fileName": "ArmyTreasureHunterRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyTreasureHunterRep.cs"
   },
@@ -17895,7 +17895,7 @@
       "craggle rock"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyCraggleRockRep.cs",
-    "size": 2325,
+    "size": 1582,
     "fileName": "ArmyCraggleRockRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyCraggleRockRep.cs"
   },
@@ -17908,7 +17908,7 @@
       "lore master"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyLoremasterRep.cs",
-    "size": 3293,
+    "size": 1543,
     "fileName": "ArmyLoremasterRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyLoremasterRep.cs"
   },
@@ -17921,7 +17921,7 @@
       "north pointe"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyNorthpoienteRep.cs",
-    "size": 1911,
+    "size": 1594,
     "fileName": "ArmyNorthpoienteRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyNorthpoienteRep.cs"
   },
@@ -17934,7 +17934,7 @@
       "sandsea"
     ],
     "path": "Army/ArmyFarm/Rep/ArmySandseaRep.cs",
-    "size": 2033,
+    "size": 1588,
     "fileName": "ArmySandseaRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmySandseaRep.cs"
   },
@@ -17947,7 +17947,7 @@
       "all reputation"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyAllRep.cs",
-    "size": 6301,
+    "size": 1502,
     "fileName": "ArmyAllRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyAllRep.cs"
   },
@@ -17960,7 +17960,7 @@
       "mythsong"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyMythsongRep.cs",
-    "size": 2060,
+    "size": 2344,
     "fileName": "ArmyMythsongRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyMythsongRep.cs"
   },
@@ -17973,7 +17973,7 @@
       "aegis"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyAegisRep.cs",
-    "size": 1949,
+    "size": 1511,
     "fileName": "ArmyAegisRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyAegisRep.cs"
   },
@@ -17986,7 +17986,7 @@
       "lycan"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyLycanRep.cs",
-    "size": 2075,
+    "size": 1556,
     "fileName": "ArmyLycanRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyLycanRep.cs"
   },
@@ -17999,7 +17999,7 @@
       "druid grove"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyDruidGroveRep.cs",
-    "size": 1914,
+    "size": 1588,
     "fileName": "ArmyDruidGroveRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyDruidGroveRep.cs"
   },
@@ -18012,7 +18012,7 @@
       "elemental master"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyElementalMasterRep.cs",
-    "size": 2056,
+    "size": 1619,
     "fileName": "ArmyElementalMasterRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyElementalMasterRep.cs"
   },
@@ -18025,7 +18025,7 @@
       "chaos militia"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyChaosMilitiaRep.cs",
-    "size": 1863,
+    "size": 1532,
     "fileName": "ArmyChaosMilitiaRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyChaosMilitiaRep.cs"
   },
