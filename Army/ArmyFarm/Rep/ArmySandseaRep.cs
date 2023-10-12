@@ -4,9 +4,14 @@ description: Farm reputation with your army. Faction: Sandsea
 tags: army, reputation, sandsea
 */
 //cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 //cs_include Scripts/Army/CoreArmyLite.cs
+//cs_include Scripts/Story/RavenlossSaga.cs
+//cs_include Scripts/Story/PockeymogsStory.cs
+//cs_include Scripts/Army/ArmyFarm/Rep/CoreArmyRep.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
@@ -18,6 +23,7 @@ public class ArmySandseaRep
     private CoreFarms Farm = new();
     private CoreAdvanced Adv => new();
     private CoreArmyLite Army = new();
+    private CoreArmyRep CAR = new();
 
     private static CoreBots sCore = new();
     private static CoreArmyLite sArmy = new();
@@ -47,20 +53,7 @@ public class ArmySandseaRep
 
     public void Setup()
     {
-        if (Farm.FactionRank("Sandsea") >= 10)
-            return;
+        CAR.ArmySandseaRep();
 
-        Core.PrivateRooms = true;
-        Core.PrivateRoomNumber = Army.getRoomNr();
-
-        Core.EquipClass(ClassType.Farm);
-        Core.RegisterQuests(916, 917, 919, 921, 922); //Dissertations Bupers Camel 916, Crafty Creepers: A Favorite of Mine 917, Parched Pets 919, Oasis Ornaments 921, The Power of Pomade 922
-        Farm.ToggleBoost(BoostType.Reputation);
-        Army.SmartAggroMonStart("sandsea", "Bupers Camel", "Cactus Creeper");
-        while (!Bot.ShouldExit && Farm.FactionRank("Sandsea") < 10)
-            Bot.Combat.Attack("*");
-        Army.AggroMonStop(true);
-        Farm.ToggleBoost(BoostType.Reputation, false);
-        Core.CancelRegisteredQuests();
     }
 }

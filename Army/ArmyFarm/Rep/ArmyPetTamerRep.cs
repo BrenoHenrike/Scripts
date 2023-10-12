@@ -34,7 +34,7 @@ public class Generated_ArmyPetTamerRep
     public void ScriptMain(IScriptInterface Bot)
     {
         Core.SetOptions();
-        lite.PockeyMogs(); 
+        lite.PockeyMogs();
 
         ArmyPetTamerRep();
         Core.SetOptions(false);
