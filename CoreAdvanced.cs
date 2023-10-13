@@ -2153,7 +2153,7 @@ public class CoreAdvanced
                     wSpecial = WeaponSpecial.Valiance;
                     hSpecial = HelmSpecial.Pneuma;
                     break;
-                #endregion
+                #endregion 
 
                 #endregion
 
@@ -2169,8 +2169,21 @@ public class CoreAdvanced
                     wSpecial = WeaponSpecial.Elysium;
                     hSpecial = HelmSpecial.Pneuma;
                     break;
+
                 #endregion
 
+                #region  Healer - None - Valiance - Nine
+                case "obsidian paladin chronomancer":
+                    if (!uValiance())
+                        goto default;
+
+                    type = EnhancementType.Healer;
+                    cSpecial = CapeSpecial.None;
+                    wSpecial = WeaponSpecial.Valiance;
+                    hSpecial = HelmSpecial.None;
+                    break;
+
+                #endregion
                 #endregion
 
                 #region Unassigned Region
@@ -2495,7 +2508,6 @@ public class CoreAdvanced
                 case "void highlord":
                 case "void highlord (ioda)":
                 case "verus doomKnight":
-                case "obsidian paladin chronomancer":
                     type = EnhancementType.Lucky;
                     wSpecial = WeaponSpecial.Spiral_Carve;
                     break;
@@ -2717,6 +2729,13 @@ public class CoreAdvanced
                 case "dragon of time":
                     type = EnhancementType.Healer;
                     wSpecial = WeaponSpecial.Health_Vamp;
+                    break;
+                #endregion
+
+                #region Healer - Mana Vamp
+                case "obsidian paladin chronomancer":
+                    type = EnhancementType.Healer;
+                    wSpecial = WeaponSpecial.Mana_Vamp;
                     break;
                 #endregion
 
