@@ -50,7 +50,7 @@
       "null"
     ],
     "path": "CoreAdvanced.cs",
-    "size": 113724,
+    "size": 113778,
     "fileName": "CoreAdvanced.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreAdvanced.cs"
   },
@@ -10856,7 +10856,7 @@
       "aqw-anniversary"
     ],
     "path": "Seasonal/AqwBirthday/AspiringNecromancerMerge.cs",
-    "size": 6610,
+    "size": 6459,
     "fileName": "AspiringNecromancerMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AqwBirthday/AspiringNecromancerMerge.cs"
   },
@@ -12648,7 +12648,7 @@
       "pirate"
     ],
     "path": "Seasonal/TalkLikeaPirateDay/CelestialPirateCommander[PollyRogers].cs",
-    "size": 3413,
+    "size": 3487,
     "fileName": "CelestialPirateCommander[PollyRogers].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/CelestialPirateCommander[PollyRogers].cs"
   },
