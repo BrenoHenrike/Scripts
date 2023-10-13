@@ -2495,6 +2495,7 @@ public class CoreAdvanced
                 case "void highlord":
                 case "void highlord (ioda)":
                 case "verus doomKnight":
+                case "obsidian paladin chronomancer":
                     type = EnhancementType.Lucky;
                     wSpecial = WeaponSpecial.Spiral_Carve;
                     break;
