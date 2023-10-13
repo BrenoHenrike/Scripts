@@ -1364,7 +1364,7 @@ public class CoreFarms
         Core.AddDrop("Empowered Voidstone");
         Core.RegisterQuests(7277); //Star of the Sandsea 7277
         while (!Bot.ShouldExit && FactionRank("CraggleRock") < rank)
-            Core.KillMonster("wanders", "r3", "Down", "Kalestri Worshiper");
+            Core.KillMonster("wanders", "r3", "Down", "Kalestri Worshiper", log: false);
         Bot.Wait.ForQuestComplete(7277);
         Core.CancelRegisteredQuests();
         ToggleBoost(BoostType.Reputation, false);
