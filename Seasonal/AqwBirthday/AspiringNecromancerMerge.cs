@@ -72,7 +72,7 @@ public class AspiringNecromancerMerge
                     Core.RegisterQuests(7751);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("BattleunderA", "Skeletal Warrior", "Skeleton Captured", 10, log: false);
+                        Core.HuntMonsterMapID("BattleunderA", 10, "Skeleton Captured", 10, log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
@@ -85,7 +85,7 @@ public class AspiringNecromancerMerge
                     Core.RegisterQuests(7752);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("DoomWood", "Doomwood Bonemuncher", "Bones Collected", 15, log: false);
+                        Core.KillMonster("DoomWood", "r8", "Left", "*", "Bones Collected", 15, log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
@@ -100,10 +100,10 @@ public class AspiringNecromancerMerge
                     Core.RegisterQuests(7753);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.KillMonster("necrodungeon", "r22", "Down", "*", "Dracolich Head", log: false, publicRoom: true);
-                        Core.KillMonster("necrodungeon", "r22", "Down", "*", "Yet Another Dracolich Head", log: false, publicRoom: true);
-                        Core.KillMonster("necrodungeon", "r22", "Down", "*", "More Dracolich Heads", log: false, publicRoom: true);
-                        Core.HuntMonster("underrealm", "Agony", "Fresh Agony Wraps", 5, log: false);
+                        Core.HuntMonsterMapID("necrodungeon", 46, "Dracolich Head");
+                        Core.HuntMonsterMapID("necrodungeon", 48, "Yet Another Dracolich Head");
+                        Core.HuntMonsterMapID("necrodungeon", 47, "More Dracolich Heads");
+                        Core.HuntMonsterMapID("underrealm", 24, "Fresh Agony Wraps", 5);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
