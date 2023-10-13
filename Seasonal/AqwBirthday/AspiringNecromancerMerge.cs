@@ -43,7 +43,7 @@ public class AspiringNecromancerMerge
             return;
 
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("battleontown", 1924, findIngredients, buyOnlyThis, buyMode: buyMode);
+        Adv.StartBuyAllMerge("birthday", 1924, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()
