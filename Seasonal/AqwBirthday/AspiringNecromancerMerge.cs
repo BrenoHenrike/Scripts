@@ -29,7 +29,7 @@ public class AspiringNecromancerMerge
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Necromancer’s Pride", "Necromancer’s Joy", "Necromancer’s Insanity " });
+        Core.BankingBlackList.AddRange(new[] { "Necromancer's Pride", "Necromancer's Joy", "Necromancer's Insanity " });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -43,7 +43,7 @@ public class AspiringNecromancerMerge
             return;
 
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("birthday", 1924, findIngredients, buyOnlyThis, buyMode: buyMode);
+        Adv.StartBuyAllMerge($"birthday", 1924, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()
@@ -65,7 +65,7 @@ public class AspiringNecromancerMerge
                     break;
                 #endregion
 
-                case "Necromancer’s Pride":
+                case "Necromancer's Pride":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     //I Want to Be The Very Best Necromancer 7751
@@ -78,7 +78,7 @@ public class AspiringNecromancerMerge
                     Core.CancelRegisteredQuests();
                     break;
 
-                case "Necromancer’s Joy":
+                case "Necromancer's Joy":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     //Like No One Ever Was 7752
@@ -91,7 +91,7 @@ public class AspiringNecromancerMerge
                     Core.CancelRegisteredQuests();
                     break;
 
-                case "Necromancer’s Insanity":
+                case "Necromancer's Insanity":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     //To Raise Them is my Real Quest 7753
