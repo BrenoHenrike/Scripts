@@ -6,6 +6,7 @@ tags: null
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/Story/Legion/DarkWarLegionandNation.cs
 using Skua.Core.Interfaces;
 
 public class DarkWarLegionGold
@@ -14,6 +15,7 @@ public class DarkWarLegionGold
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
     public CoreAdvanced Adv = new();
+    public DarkWarLegionandNation DWLaN = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -28,7 +30,9 @@ public class DarkWarLegionGold
     {
         Core.EquipClass(ClassType.Farm);
         //Adv.BestGear(GenericGearBoost.gold);
-        Bot.Drops.Start();
+
+        Core.Logger("Doing quest requirements.");
+        DWLaN.DarkWarLegion();
 
         Farm.DarkWarLegion();
     }
