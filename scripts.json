@@ -10874,6 +10874,26 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AqwBirthday/MermaidSushiMerge.cs"
   },
   {
+    "name": "Bright Paladin Presents Quest Rewards",
+    "description": "This script will farm all the quest rewards from \"Bright Paladin Presents\" quest in /eventhub",
+    "tags": [
+      "seasonal",
+      "birthday",
+      "ascended",
+      "paladin",
+      "axe",
+      "hammer",
+      "mace",
+      "blade",
+      "light",
+      "rewards"
+    ],
+    "path": "Seasonal/AqwBirthday/BrightPaladinPresentsRewards.cs",
+    "size": 1477,
+    "fileName": "BrightPaladinPresentsRewards.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AqwBirthday/BrightPaladinPresentsRewards.cs"
+  },
+  {
     "name": "15th Birthday Hero Character Page Badge",
     "description": "This script will get the \"15th Birthday Hero\" Character Page Badge.",
     "tags": [
