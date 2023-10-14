@@ -68,7 +68,8 @@ public class CoreLR
 
     public void GetLR(bool rankUpClass)
     {
-        if (Core.CheckInventory("Legion Revenant"))
+        // Tests for IODA LR since it does not provide the badge and currently has the same ID as normal LR
+        if (Core.CheckInventory("Legion Revenant") && Core.Badges.Contains(badge => badge.Name == "Legion Revenant");)
             return;
 
         Legion.JoinLegion();
