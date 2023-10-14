@@ -2244,7 +2244,6 @@ public class CoreBots
             // Handle the case where 'item' is null, if necessary.
             return;
         }
-
         bool itemIsTemp = isTemp;
         bool originalAggroAll = Bot.Options.AggroAllMonsters;
         bool originalAggroMonsters = Bot.Options.AggroMonsters;
@@ -2253,7 +2252,8 @@ public class CoreBots
         Bot.Options.AggroAllMonsters = false;
         Bot.Options.AggroMonsters = false;
         Logger("Aggro settings temporarily modified: AggroAllMonsters and AggroMonsters set to false.");
-
+        Join("fiendshard");
+        Bot.Wait.ForMapLoad("fiendshard");
         Monster? monster = Bot.Monsters.CurrentMonsters?.Find(m => m.MapID == 15);
         while (!Bot.ShouldExit && !CheckInventory(item, quant))
         {
@@ -2288,7 +2288,6 @@ public class CoreBots
             // Extra insurance to make sure it's at the enter cell.
             Jump("Enter", "Spawn");
         }
-
         // Restore the original Aggro settings
         Bot.Options.AggroAllMonsters = originalAggroAll;
         Bot.Options.AggroMonsters = originalAggroMonsters;
