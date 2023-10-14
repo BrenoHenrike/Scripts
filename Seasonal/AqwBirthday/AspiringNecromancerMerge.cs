@@ -101,8 +101,8 @@ public class AspiringNecromancerMerge
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.HuntMonsterMapID("necrodungeon", 46, "Dracolich Head");
-                        Core.HuntMonsterMapID("necrodungeon", 48, "Yet Another Dracolich Head");
-                        Core.HuntMonsterMapID("necrodungeon", 47, "More Dracolich Heads");
+                        Core.HuntMonsterMapID("necrodungeon", 47, "Yet Another Dracolich Head");
+                        Core.HuntMonsterMapID("necrodungeon", 49, "More Dracolich Heads");
                         Core.HuntMonsterMapID("underrealm", 24, "Fresh Agony Wraps", 5);
                         Bot.Wait.ForPickup(req.Name);
                     }
