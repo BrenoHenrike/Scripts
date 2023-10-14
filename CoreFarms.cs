@@ -118,6 +118,7 @@ public class CoreFarms
 
         ToggleBoost(BoostType.Gold);
 
+        HonorHall(quant);
         BattleGroundE(quant);
         BerserkerBunny(quant);
 
@@ -157,7 +158,7 @@ public class CoreFarms
         Core.SavedState();
         Core.Logger($"Farming {goldQuant} gold using BattleGroundE Method");
 
-        Core.RegisterQuests(Core.IsMember ? new[] { 3991, 3992, 3993 } : new[] { 3991, 3992 });
+        Core.RegisterQuests(3991, 3992);
         while (!Bot.ShouldExit && Bot.Player.Gold < goldQuant && Bot.Player.Gold <= 100000000)
             Core.KillMonster("battlegrounde", "r2", "Center", "*", log: false);
 
@@ -964,7 +965,7 @@ public class CoreFarms
                 Core.EquipClass(ClassType.Farm);
                 while (!Core.CheckInventory(11475, 30))
                     Core.KillMonster("lair", "Hole", "Center", "*", isTemp: false, log: false);
-                Core.KillMonster("lair", "Enter", "Spawn", "*", "Ice Vapor", 10, isTemp: false, log: false);
+                Core.KillMonster("lair", "Enter", "Spawn", "*", "Ice Vapor", 30, isTemp: false, log: false);
 
                 if (FactionRank("Alchemy") < 3)
                     AlchemyPacket("Dragon Scale", "Ice Vapor", AlchemyRunes.Jera, trait: CoreFarms.AlchemyTraits.hOu, P2w: false);
@@ -1363,7 +1364,7 @@ public class CoreFarms
         Core.AddDrop("Empowered Voidstone");
         Core.RegisterQuests(7277); //Star of the Sandsea 7277
         while (!Bot.ShouldExit && FactionRank("CraggleRock") < rank)
-            Core.KillMonster("wanders", "r3", "Down", "Kalestri Worshiper");
+            Core.KillMonster("wanders", "r3", "Down", "Kalestri Worshiper", log: false);
         Bot.Wait.ForQuestComplete(7277);
         Core.CancelRegisteredQuests();
         ToggleBoost(BoostType.Reputation, false);
@@ -1528,7 +1529,7 @@ public class CoreFarms
             Core.EnsureAccept(320, 321); //Warm and Furry 320, Shell Shock 321
             Core.KillMonster("pines", "Enter", "Right", "Pine Grizzly", "Bear Skin", 5, log: false);
             Core.KillMonster("pines", "Enter", "Right", "Red Shell Turtle", "Red Turtle Shell", 5, log: false);
-            Core.EnsureComplete(new[] {320, 321}); //Warm and Furry 320, Shell Shock 321
+            Core.EnsureComplete(new[] { 320, 321 }); //Warm and Furry 320, Shell Shock 321
         }
         // Core.CancelRegisteredQuests();
         ToggleBoost(BoostType.Reputation, false);
@@ -1711,7 +1712,7 @@ public class CoreFarms
         }
     }
 
-    public void FishingREP(int rank = 10, bool shouldDerp = false, bool TrashBait = true, bool GetBoosts = true)
+    public void FishingREP(int rank = 11, bool shouldDerp = false, bool TrashBait = true, bool GetBoosts = true)
     {
         if (FactionRank("Fishing") >= rank)
         {
@@ -1783,7 +1784,10 @@ public class CoreFarms
     public void GetBaitandDynamite(int FishingBaitQuant, int FishingDynamiteQuant)
     {
         if (Core.CheckInventory("Fishing Bait", FishingBaitQuant) && Core.CheckInventory("Fishing Dynamite", FishingDynamiteQuant))
+        {
+            Core.JumpWait();
             return;
+        }
 
         if (FishingBaitQuant > 0)
         {
@@ -2871,7 +2875,7 @@ public class CoreFarms
             GetFish(itemID, quest == 1614 ? 30 : 5, quest);
 
             if (quest == 1614)
-                Core.HuntMonster("swordhaven", "Slime", "Slime Sauce");
+                Core.KillMonster("greenguardwest", "West4", "Right", "Slime", "Slime Sauce");
             else if (quest == 1615)
                 Core.HuntMonster("Greenguardwest", "Frogzard", "Greenguard Seal");
             Bot.Wait.ForPickup(quest == 1614 ? "Slime Sauce" : "Greenguard Seal");
@@ -2895,6 +2899,8 @@ public class CoreFarms
         {
             if (!Core.CheckInventory("Fishing Dynamite"))
                 GetBaitandDynamite(0, 20);
+
+            Core.Join("fishing");
 
             while (!Bot.ShouldExit && Core.CheckInventory("Fishing Dynamite") && !Core.CheckInventory(itemID, quant))
             {

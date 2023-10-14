@@ -175,7 +175,7 @@ public class CurrentDailyGifts
             #region August 2023
 
             // Cursed Wakizashi Pet (Treasure Hunt?)
-            CursedWazikashi.CursedWakizashiPet();
+            // CursedWazikashi.CursedWakizashiPet();
             GetGift(AvailableUntil(15, 9), "superslayin", "Charidon", "Charidon Pet", "Charidon Battlepet");
             GetGift(AvailableUntil(15, 9), "garden", "Creature 343", "Debris .45 Revolver", "Debris .45 Revolvers");
 
@@ -188,6 +188,12 @@ public class CurrentDailyGifts
             
             #endregion
 
+            #region October 2023
+
+            GetGift(AvailableUntil(30, 10), "eventhub", "Slayer Cake", "Gravelyn's TopHat + Locks of DOOM", "Gravelyn's TopHat of DOOM", "ShadowScythe Commander's TopHat", "ShadowScythe Commander's TopHat + Locks");
+            GetGift(AvailableUntil(30, 10), "lair", "Red Dragon", "Blacksteel Dragon Bow", "Blacksteel Dragon Spear");
+
+            #endregion
 
             //GetGift(AvailableUntil(1, 1), "map", "monster", "");
             //GetGift(Permanent, "map", "monster", "");

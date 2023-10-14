@@ -74,8 +74,8 @@ public class ArmyLeveling
         {
             case Method.IceStormArena:
                 Core.EquipClass(ClassType.Farm);
-                Army.waitForParty("icestormarena");
-                Army.AggroMonIDs(4002);
+                Army.waitForParty("whitemap");
+                Army.AggroMonCells("r22");
                 Army.AggroMonStart("icestormarena");
                 Army.DivideOnCells("r22");
                 Core.RegisterQuests();
@@ -91,8 +91,8 @@ public class ArmyLeveling
                     Core.Logger("Player is below lvl 75, which is\n" +
                     "required for the map. --stopping", stopBot: true);
                 Core.EquipClass(ClassType.Farm);
-                Army.waitForParty("icestormunder");
-                Army.AggroMonIDs(4019);
+                Army.waitForParty("whitemap");
+                Army.AggroMonCells("r2");
                 Army.AggroMonStart("icestormunder");
                 Army.DivideOnCells("r2");
                 while (!Bot.ShouldExit && Bot.Player.Level < level)
@@ -107,8 +107,8 @@ public class ArmyLeveling
                     Core.Logger("Player is below lvl 75, required for\n" +
                     "the map --stopping", stopBot: true);
                 Core.EquipClass(ClassType.Solo);
-                Army.waitForParty("icewing");
-                Army.AggroMonIDs(4003);
+                Army.waitForParty("whitemap");
+                Army.AggroMonCells("Enter");
                 Army.AggroMonStart("icewing");
                 Army.DivideOnCells("Enter");
                 Core.RegisterQuests(Core.IsMember ? 6635 : 6632);
@@ -122,10 +122,10 @@ public class ArmyLeveling
             case Method.SevenCirclesWar:
                 SC.CirclesWar(true);
                 Core.EquipClass(ClassType.Farm);
-                Army.waitForParty("sevencircleswar");
-                Army.AggroMonIDs(4756, 4758, 4759, 4760);
+                Army.waitForParty("whitemap");
+                Army.AggroMonCells("Enter", "r2", "r3");
                 Army.AggroMonStart("sevencircleswar");
-                Army.DivideOnCells("Enter", "r1", "r2", "r3");
+                Army.DivideOnCells("Enter", "r2", "r3");
                 Core.RegisterQuests(7979, 7980, 7981);
                 while (!Bot.ShouldExit && Bot.Player.Level < level)
                     Bot.Combat.Attack("*");
@@ -138,7 +138,7 @@ public class ArmyLeveling
                 SoW.TimestreamWar();
                 Core.EquipClass(ClassType.Farm);
                 Core.AddDrop("Prismatic Seams");
-                Army.waitForParty("streamwar");
+                Army.waitForParty("whitemap");
                 Army.AggroMonCells("r3a");
                 Army.AggroMonStart("streamwar");
                 Army.DivideOnCells("r3a");
@@ -156,7 +156,7 @@ public class ArmyLeveling
                 case Method.Method:
                 Core.EquipClass(ClassType.ClassType);
                 Army.waitForParty("map");
-                Army.AggroMonIDs(monsterid);
+                Army.AggroMonCells(cells);
                 Army.AggroMonStart("map");
                 Army.DivideOnCells("cell");
                 Core.RegisterQuests(questIDs);

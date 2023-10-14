@@ -4,9 +4,14 @@ description: Farm reputation with your army. Faction: Ravenloss
 tags: army, reputation, ravenloss
 */
 //cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 //cs_include Scripts/Army/CoreArmyLite.cs
+//cs_include Scripts/Story/RavenlossSaga.cs
+//cs_include Scripts/Story/PockeymogsStory.cs
+//cs_include Scripts/Army/ArmyFarm/Rep/CoreArmyRep.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
@@ -18,6 +23,7 @@ public class ArmyRavenlossRep
     private CoreFarms Farm = new();
     private CoreAdvanced Adv => new();
     private CoreArmyLite Army = new();
+    private CoreArmyRep CAR = new();
 
     private static CoreBots sCore = new();
     private static CoreArmyLite sArmy = new();
@@ -45,28 +51,6 @@ public class ArmyRavenlossRep
         Core.SetOptions(false);
     }
 
-    public void Setup()
-    {
-        if (Farm.FactionRank("Ravenloss") >= 10)
-            return;
+    public void Setup() => CAR.ArmyRavenlossRep();
 
-        if (!Bot.Quests.IsAvailable(3445))
-        {
-            Core.Logger("Quest Locked \"Slay the Spiderkin\" (/twilightedge)", messageBox: true);
-            return;
-        }
-
-        Core.PrivateRooms = true;
-        Core.PrivateRoomNumber = Army.getRoomNr();
-
-        Core.EquipClass(ClassType.Farm);
-        Core.RegisterQuests(3445); //Slay the Spiderkin 3445
-        Farm.ToggleBoost(BoostType.Reputation);
-        Army.SmartAggroMonStart("twilightedge", "ChaosWeaver Mage");
-        while (!Bot.ShouldExit && Farm.FactionRank("Ravenloss") < 10)
-            Bot.Combat.Attack("*");
-        Army.AggroMonStop(true);
-        Farm.ToggleBoost(BoostType.Reputation, false);
-        Core.CancelRegisteredQuests();
-    }
 }

@@ -2246,12 +2246,13 @@ public class CoreBots
         }
 
         bool itemIsTemp = isTemp;
+        bool originalAggroAll = Bot.Options.AggroAllMonsters;
+        bool originalAggroMonsters = Bot.Options.AggroMonsters;
 
-        if (itemIsTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant))
-            return;
-
-        Join("fiendshard");
-        FarmingLogger(item, 1);
+        // Backup current Aggro settings
+        Bot.Options.AggroAllMonsters = false;
+        Bot.Options.AggroMonsters = false;
+        Logger("Aggro settings temporarily modified: AggroAllMonsters and AggroMonsters set to false.");
 
         Monster? monster = Bot.Monsters.CurrentMonsters?.Find(m => m.MapID == 15);
         while (!Bot.ShouldExit && !CheckInventory(item, quant))
@@ -2266,12 +2267,14 @@ public class CoreBots
             {
                 if (itemIsTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant))
                 {
-                    Bot.Wait.ForPickup(item);
                     while (!Bot.ShouldExit && Bot.Player.Cell != "Enter")
                     {
                         Jump("Enter", "Spawn");
                         Bot.Sleep(ActionDelay);
                     }
+                    Bot.Wait.ForCellChange("Enter");
+                    Bot.Wait.ForPickup(item);
+                    Logger("Temporary Aggro settings restored: AggroAllMonsters and AggroMonsters reset to original values.");
                     break;
                 }
                 else
@@ -2281,8 +2284,17 @@ public class CoreBots
                     else Bot.Combat.Attack("*");
                 }
             }
+
+            // Extra insurance to make sure it's at the enter cell.
+            Jump("Enter", "Spawn");
         }
+
+        // Restore the original Aggro settings
+        Bot.Options.AggroAllMonsters = originalAggroAll;
+        Bot.Options.AggroMonsters = originalAggroMonsters;
+        Logger("Original Aggro settings restored: AggroAllMonsters and AggroMonsters set back to their original values.");
     }
+
 
     public void _KillForItem(string name, string item, int quantity, bool isTemp = false, bool rejectElse = false, bool log = true)
     {
@@ -3201,27 +3213,6 @@ public class CoreBots
                 SimpleQuestBypass((488, 20));
                 break;
 
-            case "stonewooddeep":
-                if (Bot.Player.Cell != cell && cell != "r2")
-                {
-                    Logger("Resetting map for required quest update so it doesn't get stuck.");
-                    JumpWait();
-                    Join("whitemap");
-                    SimpleQuestBypass((363, 14));
-                }
-                else if (cell == "r2" && Bot.Player.Cell != "r2")
-                {
-                    //Asherion
-                    Logger("Resetting map for next quest update.");
-                    Logger("Updating for \"Asherion's\" cell");
-                    JumpWait();
-                    Join("whitemap");
-                    SimpleQuestBypass((363, 1));
-                }
-                else
-                    SimpleQuestBypass((363, 1));
-                break;
-
             case "shadowattack":
             case "dreadhaven":
                 SimpleQuestBypass((175, 20));
@@ -3407,7 +3398,10 @@ public class CoreBots
                     "binky",
                     "superlowe",
                     "voidflibbi",
-                    "voidnightbane"
+                    "voidnightbane",
+                    "voidxyfrag",
+                    "voidnerfkitten",
+                    "seavoice"
                 };
                 if (lockedMaps.Contains(strippedMap))
                     WriteFile(ButlerLogPath(), Bot.Map.FullName);

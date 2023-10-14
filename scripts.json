@@ -6,7 +6,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 181348,
+    "size": 181390,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -17,7 +17,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 109280,
+    "size": 109371,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -39,7 +39,7 @@
       "null"
     ],
     "path": "CoreDailies.cs",
-    "size": 48268,
+    "size": 48526,
     "fileName": "CoreDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreDailies.cs"
   },
@@ -50,7 +50,7 @@
       "null"
     ],
     "path": "CoreAdvanced.cs",
-    "size": 113393,
+    "size": 114432,
     "fileName": "CoreAdvanced.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreAdvanced.cs"
   },
@@ -541,7 +541,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 75039,
+    "size": 75046,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -568,7 +568,7 @@
       "null"
     ],
     "path": "Nation/AssistingCragAndBamboozle[Mem].cs",
-    "size": 3344,
+    "size": 3357,
     "fileName": "AssistingCragAndBamboozle[Mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/AssistingCragAndBamboozle[Mem].cs"
   },
@@ -626,7 +626,7 @@
       "null"
     ],
     "path": "Farm/BuyScrolls.cs",
-    "size": 5189,
+    "size": 5202,
     "fileName": "BuyScrolls.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/BuyScrolls.cs"
   },
@@ -889,7 +889,7 @@
       "rare-items"
     ],
     "path": "Other/0CurrentDailyGifts.cs",
-    "size": 20689,
+    "size": 21085,
     "fileName": "0CurrentDailyGifts.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/0CurrentDailyGifts.cs"
   },
@@ -1442,7 +1442,7 @@
       "null"
     ],
     "path": "Army/CoreArmyLite.cs",
-    "size": 39228,
+    "size": 39765,
     "fileName": "CoreArmyLite.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/CoreArmyLite.cs"
   },
@@ -1486,7 +1486,7 @@
       "chaotic lords"
     ],
     "path": "Evil/ADK.cs",
-    "size": 6676,
+    "size": 6753,
     "fileName": "ADK.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/ADK.cs"
   },
@@ -4152,7 +4152,7 @@
       "fragment"
     ],
     "path": "Nation/AFDL/NulgathDemandsWork.cs",
-    "size": 4041,
+    "size": 4345,
     "fileName": "NulgathDemandsWork.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/AFDL/NulgathDemandsWork.cs"
   },
@@ -4341,7 +4341,7 @@
       "null"
     ],
     "path": "Nation/Various/TheGameofGemstones(Gold[Members]).cs",
-    "size": 1639,
+    "size": 1652,
     "fileName": "TheGameofGemstones(Gold[Members]).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/TheGameofGemstones(Gold[Members]).cs"
   },
@@ -4452,7 +4452,7 @@
       "null"
     ],
     "path": "Nation/Various/TendurrrTheAssistantQuests.cs",
-    "size": 3419,
+    "size": 3438,
     "fileName": "TendurrrTheAssistantQuests.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/TendurrrTheAssistantQuests.cs"
   },
@@ -4638,7 +4638,7 @@
       "quests"
     ],
     "path": "Nation/Various/HanzoOrbQuest.cs",
-    "size": 2449,
+    "size": 2421,
     "fileName": "HanzoOrbQuest.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/HanzoOrbQuest.cs"
   },
@@ -4736,7 +4736,7 @@
       "null"
     ],
     "path": "Nation/Various/AssistingOblivionBlade.cs",
-    "size": 1873,
+    "size": 1888,
     "fileName": "AssistingOblivionBlade.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/AssistingOblivionBlade.cs"
   },
@@ -4822,7 +4822,7 @@
       "null"
     ],
     "path": "Nation/MergeShops/NulgathDiamondMerge.cs",
-    "size": 11029,
+    "size": 11407,
     "fileName": "NulgathDiamondMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/MergeShops/NulgathDiamondMerge.cs"
   },
@@ -4848,7 +4848,7 @@
       "null"
     ],
     "path": "Nation/MergeShops/NulgathWarMerge.cs",
-    "size": 7941,
+    "size": 8319,
     "fileName": "NulgathWarMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/MergeShops/NulgathWarMerge.cs"
   },
@@ -5725,7 +5725,7 @@
       "null"
     ],
     "path": "Farm/REP/GlaceraREP.cs",
-    "size": 909,
+    "size": 948,
     "fileName": "GlaceraREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/GlaceraREP.cs"
   },
@@ -6601,7 +6601,7 @@
       "the point sword"
     ],
     "path": "Other/Various/DarkScrollTreasureHunt.cs",
-    "size": 3288,
+    "size": 3289,
     "fileName": "DarkScrollTreasureHunt.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Various/DarkScrollTreasureHunt.cs"
   },
@@ -6781,6 +6781,21 @@
     "size": 926,
     "fileName": "Enforcer.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/Enforcer.cs"
+  },
+  {
+    "name": "Verus DoomKnight Class",
+    "description": "This script will farm Verus DoomKnight Class.",
+    "tags": [
+      "versus",
+      "verus",
+      "doomknight",
+      "vdk",
+      "class"
+    ],
+    "path": "Other/Classes/VerusDoomKnight.cs",
+    "size": 9829,
+    "fileName": "VerusDoomKnight.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/VerusDoomKnight.cs"
   },
   {
     "name": "LegionDoomKnight[Mem]",
@@ -10325,7 +10340,7 @@
       "fealty"
     ],
     "path": "Army/ArmyLegion/ArmyLRFull.cs",
-    "size": 19296,
+    "size": 19295,
     "fileName": "ArmyLRFull.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyLegion/ArmyLRFull.cs"
   },
@@ -10350,7 +10365,7 @@
       "[item]"
     ],
     "path": "Army/Templates/ArmyTemplatev3.cs",
-    "size": 4507,
+    "size": 5039,
     "fileName": "ArmyTemplatev3.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Templates/ArmyTemplatev3.cs"
   },
@@ -10589,7 +10604,7 @@
       "aggro"
     ],
     "path": "Army/ArmyFarm/ArmyLeveling.cs",
-    "size": 6648,
+    "size": 6632,
     "fileName": "ArmyLeveling.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/ArmyLeveling.cs"
   },
@@ -10841,7 +10856,7 @@
       "aqw-anniversary"
     ],
     "path": "Seasonal/AqwBirthday/AspiringNecromancerMerge.cs",
-    "size": 6610,
+    "size": 6455,
     "fileName": "AspiringNecromancerMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AqwBirthday/AspiringNecromancerMerge.cs"
   },
@@ -12360,7 +12375,7 @@
       "star-festival"
     ],
     "path": "Seasonal/StarFestival/StarFestival.cs",
-    "size": 6049,
+    "size": 6062,
     "fileName": "StarFestival.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StarFestival/StarFestival.cs"
   },
@@ -12402,7 +12417,7 @@
       "suns"
     ],
     "path": "Seasonal/StarFestival/ShorinzanMerge.cs",
-    "size": 8236,
+    "size": 8249,
     "fileName": "ShorinzanMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StarFestival/ShorinzanMerge.cs"
   },
@@ -12633,7 +12648,7 @@
       "pirate"
     ],
     "path": "Seasonal/TalkLikeaPirateDay/CelestialPirateCommander[PollyRogers].cs",
-    "size": 3413,
+    "size": 3487,
     "fileName": "CelestialPirateCommander[PollyRogers].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/CelestialPirateCommander[PollyRogers].cs"
   },
@@ -15703,7 +15718,7 @@
       "citadel-ruins"
     ],
     "path": "Story/Nation/CitadelRuins.cs",
-    "size": 8351,
+    "size": 8965,
     "fileName": "CitadelRuins.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Nation/CitadelRuins.cs"
   },
@@ -17209,21 +17224,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/ArchMage/0ArchMage.cs"
   },
   {
-    "name": "VerusDoomKnightClassPrep",
-    "description": "Quest & item Prep for the new class \"Verus DoomKnight\".",
-    "tags": [
-      "versus",
-      "doomknight",
-      "prep",
-      "prerequisite",
-      "class"
-    ],
-    "path": "Other/Classes/NewClassPreps[TempLocation]/VerusDoomKnightClassPrep.cs",
-    "size": 2549,
-    "fileName": "VerusDoomKnightClassPrep.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/NewClassPreps[TempLocation]/VerusDoomKnightClassPrep.cs"
-  },
-  {
     "name": "BlazeBinder",
     "description": "null",
     "tags": [
@@ -17558,7 +17558,7 @@
       "hollowborn"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyHollowbornRep.cs",
-    "size": 1866,
+    "size": 1546,
     "fileName": "ArmyHollowbornRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyHollowbornRep.cs"
   },
@@ -17569,7 +17569,7 @@
       "army pet tamer reputation"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyPetTamerRep.cs",
-    "size": 1533,
+    "size": 1532,
     "fileName": "ArmyPetTamerRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyPetTamerRep.cs"
   },
@@ -17582,7 +17582,7 @@
       "dreadfire"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyDreadfireRep.cs",
-    "size": 1939,
+    "size": 1535,
     "fileName": "ArmyDreadfireRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyDreadfireRep.cs"
   },
@@ -17595,7 +17595,7 @@
       "chaos"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyChaosRep.cs",
-    "size": 1951,
+    "size": 1624,
     "fileName": "ArmyChaosRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyChaosRep.cs"
   },
@@ -17608,7 +17608,7 @@
       "monster hunter"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyMonsterHunterRep.cs",
-    "size": 2344,
+    "size": 1607,
     "fileName": "ArmyMonsterHunterRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyMonsterHunterRep.cs"
   },
@@ -17621,7 +17621,7 @@
       "necro crypt"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyNecroCryptRep.cs",
-    "size": 1897,
+    "size": 1565,
     "fileName": "ArmyNecroCryptRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyNecroCryptRep.cs"
   },
@@ -17634,7 +17634,7 @@
       "brethwren"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyBrethwrenRep.cs",
-    "size": 2100,
+    "size": 1629,
     "fileName": "ArmyBrethwrenRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyBrethwrenRep.cs"
   },
@@ -17647,7 +17647,7 @@
       "embersea"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyEmberseaRep.cs",
-    "size": 2003,
+    "size": 1529,
     "fileName": "ArmyEmberseaRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyEmberseaRep.cs"
   },
@@ -17660,7 +17660,7 @@
       "baconcat"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyBaconCatRep.cs",
-    "size": 2325,
+    "size": 1564,
     "fileName": "ArmyBaconCatRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyBaconCatRep.cs"
   },
@@ -17673,7 +17673,7 @@
       "sword haven"
     ],
     "path": "Army/ArmyFarm/Rep/ArmySwordhavenRep.cs",
-    "size": 1992,
+    "size": 1607,
     "fileName": "ArmySwordhavenRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmySwordhavenRep.cs"
   },
@@ -17686,7 +17686,7 @@
       "somnia"
     ],
     "path": "Army/ArmyFarm/Rep/ArmySomniaRep.cs",
-    "size": 1965,
+    "size": 1564,
     "fileName": "ArmySomniaRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmySomniaRep.cs"
   },
@@ -17699,7 +17699,7 @@
       "eternal"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyEternalRep.cs",
-    "size": 3730,
+    "size": 1687,
     "fileName": "ArmyEternalRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyEternalRep.cs"
   },
@@ -17712,7 +17712,7 @@
       "army"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyTrollRep.cs",
-    "size": 1928,
+    "size": 1569,
     "fileName": "ArmyTrollRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyTrollRep.cs"
   },
@@ -17726,7 +17726,7 @@
       "evil"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyGoodEvilRep.cs",
-    "size": 2386,
+    "size": 1470,
     "fileName": "ArmyGoodEvilRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyGoodEvilRep.cs"
   },
@@ -17739,7 +17739,7 @@
       "ravenloss"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyRavenlossRep.cs",
-    "size": 2089,
+    "size": 1583,
     "fileName": "ArmyRavenlossRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyRavenlossRep.cs"
   },
@@ -17752,7 +17752,7 @@
       "etherstorm"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyEtherstormRep.cs",
-    "size": 1941,
+    "size": 1541,
     "fileName": "ArmyEtherstormRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyEtherstormRep.cs"
   },
@@ -17765,7 +17765,7 @@
       "infernal army"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyInfernalArmyRep.cs",
-    "size": 2003,
+    "size": 1600,
     "fileName": "ArmyInfernalArmyRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyInfernalArmyRep.cs"
   },
@@ -17778,7 +17778,7 @@
       "doomwood"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyDoomWoodRep.cs",
-    "size": 1977,
+    "size": 1529,
     "fileName": "ArmyDoomWoodRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyDoomWoodRep.cs"
   },
@@ -17804,7 +17804,7 @@
       "arcangrove"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyArcangroveRep.cs",
-    "size": 2096,
+    "size": 1541,
     "fileName": "ArmyArcangroveRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyArcangroveRep.cs"
   },
@@ -17817,7 +17817,7 @@
       "dwarfhold"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyDwarfholdRep.cs",
-    "size": 1932,
+    "size": 1580,
     "fileName": "ArmyDwarfholdRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyDwarfholdRep.cs"
   },
@@ -17830,7 +17830,7 @@
       "dreadrock"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyDreadrockRep.cs",
-    "size": 2098,
+    "size": 1580,
     "fileName": "ArmyDreadrockRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyDreadrockRep.cs"
   },
@@ -17843,7 +17843,7 @@
       "mysterious dungeon"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyMysteriousDungeonRep.cs",
-    "size": 2453,
+    "size": 1630,
     "fileName": "ArmyMysteriousDungeonRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyMysteriousDungeonRep.cs"
   },
@@ -17869,7 +17869,7 @@
       "chrono span"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyChronoSpanRep.cs",
-    "size": 1932,
+    "size": 1543,
     "fileName": "ArmyChronoSpanRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyChronoSpanRep.cs"
   },
@@ -17882,7 +17882,7 @@
       "treasure hunter"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyTreasureHunterRep.cs",
-    "size": 1944,
+    "size": 1631,
     "fileName": "ArmyTreasureHunterRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyTreasureHunterRep.cs"
   },
@@ -17895,7 +17895,7 @@
       "craggle rock"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyCraggleRockRep.cs",
-    "size": 2325,
+    "size": 1582,
     "fileName": "ArmyCraggleRockRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyCraggleRockRep.cs"
   },
@@ -17908,7 +17908,7 @@
       "lore master"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyLoremasterRep.cs",
-    "size": 3293,
+    "size": 1543,
     "fileName": "ArmyLoremasterRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyLoremasterRep.cs"
   },
@@ -17921,7 +17921,7 @@
       "north pointe"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyNorthpoienteRep.cs",
-    "size": 1911,
+    "size": 1594,
     "fileName": "ArmyNorthpoienteRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyNorthpoienteRep.cs"
   },
@@ -17934,7 +17934,7 @@
       "sandsea"
     ],
     "path": "Army/ArmyFarm/Rep/ArmySandseaRep.cs",
-    "size": 2033,
+    "size": 1588,
     "fileName": "ArmySandseaRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmySandseaRep.cs"
   },
@@ -17947,9 +17947,22 @@
       "all reputation"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyAllRep.cs",
-    "size": 6301,
+    "size": 1502,
     "fileName": "ArmyAllRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyAllRep.cs"
+  },
+  {
+    "name": "Army Aegis Rep",
+    "description": "Farm reputation with your army. Faction",
+    "tags": [
+      "army",
+      "reputation",
+      "aegis"
+    ],
+    "path": "Army/ArmyFarm/Rep/CoreArmyRep.cs",
+    "size": 10340,
+    "fileName": "CoreArmyRep.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/CoreArmyRep.cs"
   },
   {
     "name": "Army Mythsong Rep",
@@ -17960,7 +17973,7 @@
       "mythsong"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyMythsongRep.cs",
-    "size": 2060,
+    "size": 2344,
     "fileName": "ArmyMythsongRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyMythsongRep.cs"
   },
@@ -17973,7 +17986,7 @@
       "aegis"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyAegisRep.cs",
-    "size": 1949,
+    "size": 1511,
     "fileName": "ArmyAegisRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyAegisRep.cs"
   },
@@ -17986,7 +17999,7 @@
       "lycan"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyLycanRep.cs",
-    "size": 2075,
+    "size": 1556,
     "fileName": "ArmyLycanRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyLycanRep.cs"
   },
@@ -17999,7 +18012,7 @@
       "druid grove"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyDruidGroveRep.cs",
-    "size": 1914,
+    "size": 1588,
     "fileName": "ArmyDruidGroveRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyDruidGroveRep.cs"
   },
@@ -18012,7 +18025,7 @@
       "elemental master"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyElementalMasterRep.cs",
-    "size": 2056,
+    "size": 1619,
     "fileName": "ArmyElementalMasterRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyElementalMasterRep.cs"
   },
@@ -18025,7 +18038,7 @@
       "chaos militia"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyChaosMilitiaRep.cs",
-    "size": 1863,
+    "size": 1532,
     "fileName": "ArmyChaosMilitiaRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyChaosMilitiaRep.cs"
   },
