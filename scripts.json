@@ -10874,6 +10874,22 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AqwBirthday/MermaidSushiMerge.cs"
   },
   {
+    "name": "15th Birthday Hero Character Page Badge",
+    "description": "This script will get the \"15th Birthday Hero\" Character Page Badge.",
+    "tags": [
+      "birthday",
+      "badge",
+      "anniversary",
+      "gifts",
+      "quest",
+      "seasonal"
+    ],
+    "path": "Seasonal/AqwBirthday/15thBirthdayHeroBadge.cs",
+    "size": 1026,
+    "fileName": "15thBirthdayHeroBadge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AqwBirthday/15thBirthdayHeroBadge.cs"
+  },
+  {
     "name": "Sweet Birthday Treats Rewards",
     "description": "This will do the Sweet Birthday Treats quest and obtain all of the rewards.",
     "tags": [
