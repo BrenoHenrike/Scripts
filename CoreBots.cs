@@ -2148,7 +2148,6 @@ public class CoreBots
         "ShadowWalker of Time",
         "Infinity Knight",
         "Interstellar Knight",
-        "Void Highlord",
         "Dragon of Time",
         "Timeless Dark Caster",
         "Frostval Barbarian",
@@ -2157,6 +2156,7 @@ public class CoreBots
         "DragonSoul Shinobi",
         "Shadow Dragon Shinobi",
         "Legion Revenant",
+        "Void Highlord",
     };
 
         // Check if the bot has any of the classes from the DOTClasses list
