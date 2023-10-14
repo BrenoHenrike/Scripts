@@ -1712,7 +1712,7 @@ public class CoreFarms
         }
     }
 
-    public void FishingREP(int rank = 11, bool shouldDerp = false, bool TrashBait = true, bool GetBoosts = true)
+    public void FishingREP(int rank = 10, bool shouldDerp = false, bool TrashBait = true, bool GetBoosts = true)
     {
         if (FactionRank("Fishing") >= rank)
         {
