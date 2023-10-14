@@ -58,9 +58,9 @@ public class AspiringNecromancer
         Core.RegisterQuests(7753);
         while (!Bot.ShouldExit && !Core.CheckInventory(Quest3Rewards, toInv: false))
         {
-            Core.KillMonster("necrodungeon", "r22", "Down", "*", "Dracolich Head", log: false, publicRoom: true);
-            Core.KillMonster("necrodungeon", "r22", "Down", "*", "Yet Another Dracolich Head", log: false, publicRoom: true);
-            Core.KillMonster("necrodungeon", "r22", "Down", "*", "More Dracolich Heads", log: false, publicRoom: true);
+            Core.HuntMonsterMapID("necrodungeon", 46, "Dracolich Head");
+            Core.HuntMonsterMapID("necrodungeon", 48, "Yet Another Dracolich Head");
+            Core.HuntMonsterMapID("necrodungeon", 47, "More Dracolich Heads");
             Core.HuntMonster("underrealm", "Agony", "Fresh Agony Wraps", 5, log: false);
         }
         Core.JumpWait();
