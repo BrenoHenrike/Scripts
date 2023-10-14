@@ -129,6 +129,9 @@ public class CoreArmyRep
     }
     void RunArmyRep(string repname, string AggroMonStart, string[] AggroMonCells, string[] DivideOnCells, int[] RegisterQuests)
     {
+        Core.PrivateRooms = true;
+        Core.PrivateRoomNumber = Army.getRoomNr();
+
         if (FactionRank(repname) >= 10)
             return;
 
@@ -154,12 +157,10 @@ public class CoreArmyRep
                 // Handle the default case if needed.
                 break;
         }
-
-        Core.PrivateRooms = true;
-        Core.PrivateRoomNumber = Army.getRoomNr();
+        Army.waitForParty(AggroMonStart);
+        Army.DivideOnCells(DivideOnCells);
         Army.AggroMonCells(AggroMonCells);
         Army.AggroMonStart(AggroMonStart);
-        Army.DivideOnCells(DivideOnCells);
         Farm.ToggleBoost(BoostType.Reputation);
         Core.EquipClass(ClassType.Farm);
         Core.RegisterQuests(RegisterQuests);
@@ -168,6 +169,14 @@ public class CoreArmyRep
         Army.AggroMonStop(true);
         Farm.ToggleBoost(BoostType.Reputation, false);
         Core.CancelRegisteredQuests();
+
+        //Insurance to leave map to wait for party.
+        while (!Bot.ShouldExit && Bot.Player.InCombat)
+        {
+            Core.JumpWait();
+            Bot.Sleep(2500);
+        }
+        
         Army.waitForParty("whitemap");
     }
     public int FactionRank(string faction) => Bot.Reputation.GetRank(faction);
