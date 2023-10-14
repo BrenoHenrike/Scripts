@@ -129,19 +129,27 @@ public class CoreArmyRep
     }
     void RunArmyRep(string repname, string AggroMonStart, string[] AggroMonCells, string[] DivideOnCells, int[] RegisterQuests)
     {
+        Core.DL_Enable();
+        // Core.DebugLogger(this);
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
 
-        if (FactionRank(repname) >= 10)
-            return;
+        // if (FactionRank(repname) >= 10)
+        // {
+        //     Core.Logger($"{Bot.Player.Username} is rank 10, butlering the rest.");
+        //     Army.waitForParty("whitemap");
+        //     return;
+        // }
 
         switch (repname)
         {
             case "Mythsong":
                 LOC.Kimberly();
+                // Core.DebugLogger(this);
                 break;
             case "RavenLoss":
                 RavenlossSaga.TwilightEdge();
+                // Core.DebugLogger(this);
                 break;
             case "Monster Hunter":
                 if (!Bot.Quests.IsAvailable(5850))
@@ -151,33 +159,44 @@ public class CoreArmyRep
                     Core.KillMonster("pilgrimage", "r5", "Left", "Urstrix", "Urstrix Captured", 4, log: false);
                     Core.EnsureComplete(5849);
                 }
+                // Core.DebugLogger(this);
                 break;
             // Add more cases for other faction-specific actions as needed.
             default:
                 // Handle the default case if needed.
+                // Core.DebugLogger(this);
                 break;
         }
-        Army.waitForParty(AggroMonStart);
-        Army.DivideOnCells(DivideOnCells);
-        Army.AggroMonCells(AggroMonCells);
-        Army.AggroMonStart(AggroMonStart);
+
+        // Core.DebugLogger(this);
         Farm.ToggleBoost(BoostType.Reputation);
+        // Core.DebugLogger(this);
         Core.EquipClass(ClassType.Farm);
+        // Core.DebugLogger(this);
         Core.RegisterQuests(RegisterQuests);
+        // Core.DebugLogger(this);
+
+        Army.AggroMonCells(AggroMonCells);
+        // Core.DebugLogger(this);
+        Army.AggroMonStart(AggroMonStart);
+        // Core.DebugLogger(this);
+        Army.DivideOnCells(DivideOnCells);
+        // Core.DebugLogger(this);
+
         while (!Bot.ShouldExit && FactionRank(repname) < 10)
             Bot.Combat.Attack("*");
+        // Core.DebugLogger(this);
         Army.AggroMonStop(true);
+        // Core.DebugLogger(this);
         Farm.ToggleBoost(BoostType.Reputation, false);
+        // Core.DebugLogger(this);
         Core.CancelRegisteredQuests();
 
-        //Insurance to leave map to wait for party.
-        while (!Bot.ShouldExit && Bot.Player.InCombat)
-        {
-            Core.JumpWait();
-            Bot.Sleep(2500);
-        }
-        
+        // Core.DebugLogger(this);
+        Core.JumpWait();
+        // Core.DebugLogger(this);
         Army.waitForParty("whitemap");
+        // Core.DebugLogger(this);
     }
     public int FactionRank(string faction) => Bot.Reputation.GetRank(faction);
 }
