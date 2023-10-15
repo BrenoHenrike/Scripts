@@ -26,7 +26,7 @@ public class DeathKnight
 
     public void GetDK(bool rankUpClass = true)
     {
-        if (Core.CheckInventory("DeathKnight"))
+        if (Core.CheckInventory("DeathKnight") || !Core.IsMember)
             return;
 
         Farm.DoomWoodREP();
