@@ -6,7 +6,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 181390,
+    "size": 181458,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -17,7 +17,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 109371,
+    "size": 109623,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -662,7 +662,7 @@
       "null"
     ],
     "path": "Farm/DarkWarLegionGold.cs",
-    "size": 781,
+    "size": 945,
     "fileName": "DarkWarLegionGold.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/DarkWarLegionGold.cs"
   },
@@ -3259,7 +3259,7 @@
       "set"
     ],
     "path": "Chaos/EternalDrakathSet.cs",
-    "size": 3189,
+    "size": 3219,
     "fileName": "EternalDrakathSet.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Chaos/EternalDrakathSet.cs"
   },
@@ -8313,6 +8313,44 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/KathoolsChestMerge.cs"
   },
   {
+    "name": "Queens Battle Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Queens Battle Merge [2061] in /queenbattle",
+    "tags": [
+      "queens",
+      "battle",
+      "merge",
+      "queenbattle",
+      "st",
+      "chaoslord",
+      "prime",
+      "chaoslords",
+      "tattered",
+      "cloak",
+      "twisted",
+      "inversion",
+      "good",
+      "ponytail",
+      "morph",
+      "evil",
+      "rd",
+      "primes",
+      "monstrous",
+      "control",
+      "th",
+      "runed",
+      "laser",
+      "katana",
+      "katanas",
+      "ruined",
+      "wings",
+      "twintails"
+    ],
+    "path": "Other/MergeShops/QueensBattleMerge.cs",
+    "size": 8842,
+    "fileName": "QueensBattleMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/QueensBattleMerge.cs"
+  },
+  {
     "name": "DwobosMerge",
     "description": "null",
     "tags": [
@@ -10817,7 +10855,7 @@
       "seasonal"
     ],
     "path": "Seasonal/AqwBirthday/AspiringNecromancer.cs",
-    "size": 2687,
+    "size": 2564,
     "fileName": "AspiringNecromancer.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AqwBirthday/AspiringNecromancer.cs"
   },
@@ -10856,7 +10894,7 @@
       "aqw-anniversary"
     ],
     "path": "Seasonal/AqwBirthday/AspiringNecromancerMerge.cs",
-    "size": 6455,
+    "size": 6444,
     "fileName": "AspiringNecromancerMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AqwBirthday/AspiringNecromancerMerge.cs"
   },
@@ -10872,6 +10910,42 @@
     "size": 3720,
     "fileName": "MermaidSushiMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AqwBirthday/MermaidSushiMerge.cs"
+  },
+  {
+    "name": "Bright Paladin Presents Quest Rewards",
+    "description": "This script will farm all the quest rewards from \"Bright Paladin Presents\" quest in /eventhub",
+    "tags": [
+      "seasonal",
+      "birthday",
+      "ascended",
+      "paladin",
+      "axe",
+      "hammer",
+      "mace",
+      "blade",
+      "light",
+      "rewards"
+    ],
+    "path": "Seasonal/AqwBirthday/BrightPaladinPresentsRewards.cs",
+    "size": 1477,
+    "fileName": "BrightPaladinPresentsRewards.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AqwBirthday/BrightPaladinPresentsRewards.cs"
+  },
+  {
+    "name": "15th Birthday Hero Character Page Badge",
+    "description": "This script will get the \"15th Birthday Hero\" Character Page Badge.",
+    "tags": [
+      "birthday",
+      "badge",
+      "anniversary",
+      "gifts",
+      "quest",
+      "seasonal"
+    ],
+    "path": "Seasonal/AqwBirthday/15thBirthdayHeroBadge.cs",
+    "size": 1026,
+    "fileName": "15thBirthdayHeroBadge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AqwBirthday/15thBirthdayHeroBadge.cs"
   },
   {
     "name": "Sweet Birthday Treats Rewards",
@@ -17960,7 +18034,7 @@
       "aegis"
     ],
     "path": "Army/ArmyFarm/Rep/CoreArmyRep.cs",
-    "size": 10340,
+    "size": 11221,
     "fileName": "CoreArmyRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/CoreArmyRep.cs"
   },
@@ -18150,6 +18224,52 @@
     "size": 7938,
     "fileName": "YokaiTreasureMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/MergeShops/YokaiTreasureMerge.cs"
+  },
+  {
+    "name": "Celestias Rewards Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Celestias Rewards Merge [2341] in /nerites",
+    "tags": [
+      "celestias",
+      "rewards",
+      "merge",
+      "nerites",
+      "messina",
+      "mirage",
+      "corsair",
+      "patched",
+      "captain",
+      "sea",
+      "enchanter",
+      "flag",
+      "glint",
+      "edge",
+      "cutlasses",
+      "doubled",
+      "illusionary",
+      "grog",
+      "crews",
+      "gear",
+      "helmsmans",
+      "elite",
+      "zardic",
+      "swordmaster",
+      "savage",
+      "swordsmaster",
+      "beastly",
+      "kinsman",
+      "morph",
+      "scarred",
+      "kinsmans",
+      "single",
+      "partner",
+      "yokai",
+      "bandit",
+      "straw"
+    ],
+    "path": "Seasonal/TalkLikeaPirateDay/MergeShops/CelestiasRewardsMerge.cs",
+    "size": 6311,
+    "fileName": "CelestiasRewardsMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/MergeShops/CelestiasRewardsMerge.cs"
   },
   {
     "name": "Yokai Pirate Treasures Merge",

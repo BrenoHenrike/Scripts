@@ -44,6 +44,7 @@ public class EternalDrakath
             return;
 
         Core.AddDrop(Rewards);
+        Core.AddDrop(25286);
 
         Armor.DrakathArmor();
 

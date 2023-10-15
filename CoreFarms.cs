@@ -994,7 +994,9 @@ public class CoreFarms
         Core.SavedState();
         ToggleBoost(BoostType.Reputation);
         Core.Logger($"Farming rank {rank}");
-
+        Core.Logger("This will Do First Get all the quest\n" +
+        "items for all 8 quests, then turn them in.");
+        Bot.Sleep(2500);
         //Restore this v when 1.2.4 comes out to fix mobs
         // Core.RegisterQuests(794, 795, 796, 797, 798, 799, 800, 801); //A Necessary Sacrifice 794, Gorillaphant Poaching 795, Mustard and Pretzel Root 796, Thyme and a Half 797, Thistle Do Nicely 798, Pleased to Meat You 799, ArcanRobe 800, Ebony and Ivory Tusks 801
         while (!Bot.ShouldExit && FactionRank("Arcangrove") < rank)
@@ -1218,7 +1220,7 @@ public class CoreFarms
                 Core.Logger($"Doing Quest: [2937] - \"Find the Runes!\"");
                 Core.EquipClass(ClassType.Solo);
                 Core.EnsureAccept(2937);
-                Core.KillEscherion("Runes Found!", publicRoom: true, log: false);
+                Core.KillEscherion("Runes Found!", log: false);
                 Core.EnsureComplete(2937);
                 Core.Logger($"Completed Quest: [2937] - \"Find the Runes!\"");
             }
@@ -1244,7 +1246,7 @@ public class CoreFarms
 
         Core.RegisterQuests(8989);
         while (!Bot.ShouldExit && FactionRank("Brethwren") < rank)
-            Core.HuntMonster("birdswithharms", "Turkonian");
+            Core.HuntMonster("birdswithharms", "Turkonian", log: false);
 
         Core.CancelRegisteredQuests();
         ToggleBoost(BoostType.Reputation, false);
@@ -1293,7 +1295,7 @@ public class CoreFarms
 
         Core.RegisterQuests(5775); //Expect the Inquisitors 5775
         while (!Bot.ShouldExit && FactionRank("Chaos Militia") < rank)
-            Core.HuntMonster("citadel", "Inquisitor Guard");
+            Core.HuntMonster("citadel", "Inquisitor Guard", log: false);
         Bot.Wait.ForQuestComplete(5775);
         Core.CancelRegisteredQuests();
         ToggleBoost(BoostType.Reputation, false);
@@ -1389,7 +1391,7 @@ public class CoreFarms
 
         Core.RegisterQuests(5153);
         while (!Bot.ShouldExit && FactionRank("Death Pit Arena") < rank)
-            Core.HuntMonster("deathpit", "General Hun'Gar");
+            Core.HuntMonster("deathpit", "General Hun'Gar", log: false);
         Bot.Wait.ForQuestComplete(5153);
         Core.CancelRegisteredQuests();
         ToggleBoost(BoostType.Reputation, false);
@@ -1456,7 +1458,7 @@ public class CoreFarms
 
         Core.RegisterQuests(5697); //Gather Crystals 5697
         while (!Bot.ShouldExit && FactionRank("Dreadfire") < rank)
-            Core.KillMonster("dreadfire", "r13", "Bottom", "Arcane Crystal");
+            Core.KillMonster("dreadfire", "r13", "Bottom", "Arcane Crystal", log: false);
         Bot.Wait.ForQuestComplete(5697);
         Core.CancelRegisteredQuests();
         ToggleBoost(BoostType.Reputation, false);
@@ -1495,7 +1497,7 @@ public class CoreFarms
 
         Core.RegisterQuests(3049); //Help Professor Maedoc 3049
         while (!Bot.ShouldExit && FactionRank("Druid Grove") < rank)
-            Core.HuntMonster("bloodtusk", "Crystal-Rock");
+            Core.HuntMonster("bloodtusk", "Crystal-Rock", log: false);
         Bot.Wait.ForQuestComplete(3049);
         Core.CancelRegisteredQuests();
         ToggleBoost(BoostType.Reputation, false);
@@ -1566,7 +1568,7 @@ public class CoreFarms
             Core.HuntMonster("gilead", "Wind Elemental", "Breeze", 5, log: false);
             Core.HuntMonster("gilead", "Earth Elemental", "Stone", 5, log: false);
             Core.HuntMonster("gilead", "Mana Elemental", "Mana Core", log: false);
-            Core.EnsureComplete(3298, 3050);
+            Core.EnsureComplete(new[] { 3298, 3050 });
         }
         // Core.CancelRegisteredQuests();
         ToggleBoost(BoostType.Reputation, false);
@@ -1712,7 +1714,7 @@ public class CoreFarms
         }
     }
 
-    public void FishingREP(int rank = 11, bool shouldDerp = false, bool TrashBait = true, bool GetBoosts = true)
+    public void FishingREP(int rank = 10, bool shouldDerp = false, bool TrashBait = true, bool GetBoosts = true)
     {
         if (FactionRank("Fishing") >= rank)
         {
@@ -2041,12 +2043,12 @@ public class CoreFarms
             if (FactionRank("Faerie Court") < 8)
             {
                 Core.EquipClass(ClassType.Solo);
-                Core.HuntMonster("rainbow", "Lucky Harms", "Four Leaf Clover", 3);
+                Core.HuntMonster("rainbow", "Lucky Harms", "Four Leaf Clover", 3, log: false);
             }
             if (FactionRank("Faerie Court") >= 8)
             {
                 Core.EquipClass(ClassType.Farm);
-                Core.HuntMonster("faegrove", "Dark Sylphdrake", "Silver Sylph Feather");
+                Core.HuntMonster("faegrove", "Dark Sylphdrake", "Silver Sylph Feather", log: false);
             }
         }
         Core.CancelRegisteredQuests();
@@ -2591,7 +2593,7 @@ public class CoreFarms
                 Core.HuntMonster("castle", "Dungeon Fiend", "Dungeon Fiend Hair Bow", 5, log: false);
                 Core.HuntMonster("castle", "Dungeon Fiend", "Dungeon Fiend Bow Tie", 5, log: false);
                 Core.HuntMonster("castle", "Dungeon Fiend", "Dungeon Fiend Textiles", 2, log: false);
-                Core.EnsureComplete(3065, 3066, 3067, 3070, 3085, 3086, 3087);
+                Core.EnsureComplete(new[] { 3065, 3066, 3067, 3070, 3085, 3086, 3087 });
             }
             Core.CancelRegisteredQuests();
             ToggleBoost(BoostType.Reputation, false);
@@ -2866,7 +2868,7 @@ public class CoreFarms
             {
                 Core.EnsureAccept(1614);
                 GetFish(10850, 30, 1614);
-                Core.HuntMonster("swordhaven", "Slime", "Slime Sauce");
+                Core.HuntMonster("swordhaven", "Slime", "Slime Sauce", log: false);
                 Core.EnsureComplete(1614);
             }
 
@@ -2877,7 +2879,7 @@ public class CoreFarms
             if (quest == 1614)
                 Core.KillMonster("greenguardwest", "West4", "Right", "Slime", "Slime Sauce");
             else if (quest == 1615)
-                Core.HuntMonster("Greenguardwest", "Frogzard", "Greenguard Seal");
+                Core.HuntMonster("Greenguardwest", "Frogzard", "Greenguard Seal", log: false);
             Bot.Wait.ForPickup(quest == 1614 ? "Slime Sauce" : "Greenguard Seal");
 
             Core.EnsureComplete(quest);
