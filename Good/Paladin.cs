@@ -25,9 +25,9 @@ public class Paladin
         Core.SetOptions(false);
     }
 
-    public void GetPaladin(bool rankUpClass = true || !Core.IsMember)
+    public void GetPaladin(bool rankUpClass = true)
     {
-        if (Core.CheckInventory("Paladin"))
+        if (Core.CheckInventory("Paladin") || !Core.IsMember)
             return;
 
         Core.BuyItem("necropolis", 26, "Warrior");
