@@ -6650,6 +6650,21 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/BloodSorceress.cs"
   },
   {
+    "name": "All Classes",
+    "description": "This script will get all of the classes that are currently farmable.",
+    "tags": [
+      "all classes",
+      "class",
+      "farm",
+      "complete",
+      "all"
+    ],
+    "path": "Other/Classes/0AllClasses.cs",
+    "size": 13569,
+    "fileName": "0AllClasses.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/0AllClasses.cs"
+  },
+  {
     "name": "FrostSpiritReaver",
     "description": "null",
     "tags": [
@@ -17452,7 +17467,7 @@
       "null"
     ],
     "path": "Other/Classes/REP-based/DeathKnight.cs",
-    "size": 861,
+    "size": 879,
     "fileName": "DeathKnight.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/REP-based/DeathKnight.cs"
   },
@@ -17619,7 +17634,7 @@
       "null"
     ],
     "path": "Other/Classes/REP-based/Bard.cs",
-    "size": 967,
+    "size": 985,
     "fileName": "Bard.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/REP-based/Bard.cs"
   },
