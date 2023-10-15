@@ -6,7 +6,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 181390,
+    "size": 181458,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -8311,6 +8311,44 @@
     "size": 7231,
     "fileName": "KathoolsChestMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/KathoolsChestMerge.cs"
+  },
+  {
+    "name": "Queens Battle Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Queens Battle Merge [2061] in /queenbattle",
+    "tags": [
+      "queens",
+      "battle",
+      "merge",
+      "queenbattle",
+      "st",
+      "chaoslord",
+      "prime",
+      "chaoslords",
+      "tattered",
+      "cloak",
+      "twisted",
+      "inversion",
+      "good",
+      "ponytail",
+      "morph",
+      "evil",
+      "rd",
+      "primes",
+      "monstrous",
+      "control",
+      "th",
+      "runed",
+      "laser",
+      "katana",
+      "katanas",
+      "ruined",
+      "wings",
+      "twintails"
+    ],
+    "path": "Other/MergeShops/QueensBattleMerge.cs",
+    "size": 8842,
+    "fileName": "QueensBattleMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/QueensBattleMerge.cs"
   },
   {
     "name": "DwobosMerge",
@@ -17996,7 +18034,7 @@
       "aegis"
     ],
     "path": "Army/ArmyFarm/Rep/CoreArmyRep.cs",
-    "size": 10340,
+    "size": 11221,
     "fileName": "CoreArmyRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/CoreArmyRep.cs"
   },
