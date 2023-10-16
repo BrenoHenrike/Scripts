@@ -360,7 +360,7 @@ public class AllClasses
         AM.GetAM();
         AP.GetAP();
         CAV.GetClass();
-        DOT.GetDoT();
+        DOT.GetDoT(doExtra: false);
         LC.GetLC();
         LR.GetLR(true);
         VDK.GetClass();
