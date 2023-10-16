@@ -75,20 +75,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/ArchPaladin.cs"
   },
   {
-    "name": "Paladin",
-    "description": "This bot farms the Paladin class for you.",
-    "tags": [
-      "warrior",
-      "healer",
-      "paladin",
-      "class"
-    ],
-    "path": "Good/Paladin.cs",
-    "size": 1067,
-    "fileName": "Paladin.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/Paladin.cs"
-  },
-  {
     "name": "Silver Exalted Paladin",
     "description": "Farms the Silver Exalted Paladin.",
     "tags": [
@@ -6648,6 +6634,21 @@
     "size": 1067,
     "fileName": "BloodSorceress.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/BloodSorceress.cs"
+  },
+  {
+    "name": "All Classes",
+    "description": "This script will get all of the classes that are currently farmable.",
+    "tags": [
+      "all classes",
+      "class",
+      "farm",
+      "complete",
+      "all"
+    ],
+    "path": "Other/Classes/0AllClasses.cs",
+    "size": 13594,
+    "fileName": "0AllClasses.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/0AllClasses.cs"
   },
   {
     "name": "FrostSpiritReaver",
@@ -17190,14 +17191,14 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/Materials/AncientRemnant.cs"
   },
   {
-    "name": "Mouring Flower",
+    "name": "Mourning Flower",
     "description": "Mouring Flower",
     "tags": [
       "darkon",
-      "mouring flower"
+      "mourning flower"
     ],
     "path": "Darkon/Materials/MourningFlower.cs",
-    "size": 723,
+    "size": 725,
     "fileName": "MourningFlower.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/Materials/MourningFlower.cs"
   },
@@ -17452,7 +17453,7 @@
       "null"
     ],
     "path": "Other/Classes/REP-based/DeathKnight.cs",
-    "size": 861,
+    "size": 879,
     "fileName": "DeathKnight.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/REP-based/DeathKnight.cs"
   },
@@ -17619,7 +17620,7 @@
       "null"
     ],
     "path": "Other/Classes/REP-based/Bard.cs",
-    "size": 967,
+    "size": 985,
     "fileName": "Bard.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/REP-based/Bard.cs"
   },

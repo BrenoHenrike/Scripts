@@ -1,3 +1,4 @@
+using System.Reflection.PortableExecutable;
 /*
 name: Paladin
 description: This bot farms the Paladin class for you.
@@ -26,7 +27,7 @@ public class Paladin
 
     public void GetPaladin(bool rankUpClass = true)
     {
-        if (Core.CheckInventory("Paladin"))
+        if (Core.CheckInventory("Paladin") || !Core.IsMember)
             return;
 
         Core.BuyItem("necropolis", 26, "Warrior");

@@ -1,7 +1,7 @@
 /*
-name: Mouring Flower
+name: Mourning Flower
 description: Mouring Flower
-tags: darkon, mouring flower
+tags: darkon, mourning flower
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
