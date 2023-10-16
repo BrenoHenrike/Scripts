@@ -65,7 +65,8 @@ public class CoreArmyRep
     public void ArmyEtherstormRep() => RunArmyRep("Etherstorm", "etherwardes", new string[] { "Enter", "r3", "r2" }, new string[] { "Enter", "r3", "r2" }, new int[] { 3050, 3298 });
     public void ArmyEmberseaRep() => RunArmyRep("Embersea", "fireforge", new string[] { "r5", "r8", "r7" }, new string[] { "r5", "r8", "r7" }, new int[] { 4227, 4228, 4229 });
     public void ArmyEternalRep() => RunArmyRep("Eternal", "fourdpyramid", new[] { "r10", "r11" }, new[] { "r10", "r11" }, new int[] { 5198, 5208 });
-    public void ArmyGoodEvilRep() { int goodRank = FactionRank("Good"); int evilRank = FactionRank("Evil"); string repname = "Good"; string AggroMonStart = goodRank < 4 || evilRank < 4 ? "castleundead" : "swordhavenbridge"; string[] Cells = goodRank < 4 || evilRank < 4 ? new[] { "Bridge" } : new string[] { "Enter", "Bright", "Hall" }; int[] quests = goodRank < 4 || evilRank < 4 ? new[] { 364, 369 } : new int[] { 367, 372 }; RunArmyRep(repname, AggroMonStart, Cells, Cells, quests); }
+    public void ArmyGoodEvilRep() { int goodRank = FactionRank("Good"); int evilRank = FactionRank("Evil"); string repname = "Good"; string AggroMonStart = goodRank < 4 || evilRank < 4 ? "castleundead" : "swordhavenbridge"; string[] Cells = goodRank < 4 || evilRank < 4 ? new[] { "Bridge" } : new string[] { "Enter", "Bright", "Hall" }; int[] quests = goodRank < 4 || evilRank < 4 ? new[] { 364, 369 } : new int[] { 367, 372 };
+     RunArmyRep(repname, AggroMonStart, Cells, Cells, quests); }
     public void ArmyHollowbornRep() => RunArmyRep("Hollowborn", "shadowrealm", new[] { "r2", "r4", "r6" }, new[] { "r2", "r4", "r6" }, new int[] { 7553, 7555 });
     public void ArmyInfernalArmyRep() => RunArmyRep("Infernal Army", "dreadfire", new[] { "r10", "r10a", "r10b" }, new[] { "r10", "r10a", "r10b" }, new int[] { 5707, 5708, 5709 });
     public void ArmyMythsongRep() => RunArmyRep("Mythsong", "beehive", new[] { "r1", "r2", "r3", "r4" }, new string[] { "r1", "r2", "r3", "r4" }, new int[] { 4829 });
@@ -130,16 +131,8 @@ public class CoreArmyRep
     void RunArmyRep(string repname, string AggroMonStart, string[] AggroMonCells, string[] DivideOnCells, int[] RegisterQuests)
     {
         Core.DL_Enable();
-        // Core.DebugLogger(this);
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
-
-        // if (FactionRank(repname) >= 10)
-        // {
-        //     Core.Logger($"{Bot.Player.Username} is rank 10, butlering the rest.");
-        //     Army.waitForParty("whitemap");
-        //     return;
-        // }
 
         switch (repname)
         {
@@ -168,35 +161,25 @@ public class CoreArmyRep
                 break;
         }
 
-        // Core.DebugLogger(this);
         Farm.ToggleBoost(BoostType.Reputation);
-        // Core.DebugLogger(this);
         Core.EquipClass(ClassType.Farm);
-        // Core.DebugLogger(this);
         Core.RegisterQuests(RegisterQuests);
-        // Core.DebugLogger(this);
 
         Army.AggroMonCells(AggroMonCells);
-        // Core.DebugLogger(this);
         Army.AggroMonStart(AggroMonStart);
-        // Core.DebugLogger(this);
         Army.DivideOnCells(DivideOnCells);
-        // Core.DebugLogger(this);
 
         while (!Bot.ShouldExit && FactionRank(repname) < 10)
             Bot.Combat.Attack("*");
-        // Core.DebugLogger(this);
-        Army.AggroMonStop(true);
-        // Core.DebugLogger(this);
-        Farm.ToggleBoost(BoostType.Reputation, false);
-        // Core.DebugLogger(this);
-        Core.CancelRegisteredQuests();
 
-        // Core.DebugLogger(this);
+        // Clean up
+        Army.AggroMonStop(true);
         Core.JumpWait();
-        // Core.DebugLogger(this);
+        Core.CancelRegisteredQuests();
+        Farm.ToggleBoost(BoostType.Reputation, false);
+
+        // Wait for the party
         Army.waitForParty("whitemap");
-        // Core.DebugLogger(this);
     }
     public int FactionRank(string faction) => Bot.Reputation.GetRank(faction);
 }

@@ -86,14 +86,14 @@ public class ArmyTemplatev3 //Rename This
                     break;
             }
 
+            // Clean up
+            Army.AggroMonStop(true);
+            Core.JumpWait();
+            Core.CancelRegisteredQuests();
+
             // Wait for the party
             Army.waitForParty(map, item);
         }
-
-        // Clean up
-        Core.JumpWait();
-        Army.AggroMonStop(true);
-        Core.CancelRegisteredQuests();
     }
 
     public void ArmyBits(string map, string[] cell, int[] MonsterMapIDs, string[] items, int quant, ClassType classToUse)
@@ -126,14 +126,14 @@ public class ArmyTemplatev3 //Rename This
                     }
                 }
 
-                // Wait for the party
-                Army.waitForParty(map, item);
             }
-
             // Clean up
-            Core.JumpWait();
             Army.AggroMonStop(true);
+            Core.JumpWait();
             Core.CancelRegisteredQuests();
+
+            // Wait for the party
+            Army.waitForParty(map, item);
         }
     }
 }
