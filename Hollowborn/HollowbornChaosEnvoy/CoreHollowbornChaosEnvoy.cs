@@ -95,7 +95,6 @@ public class CoreHollowbornChaosEnvoy
                 $"\t\tShadows Of Disdain:  [{shadowsOfDisdain.Replace("_", " ")}]\n" +
                 $"\t\tPersisting Mayhem: [{persistingMayhem.Replace("_", " ")}]\n");
 
-        //delete this comment (test push)
 
         if (getAllDrops)
         {
