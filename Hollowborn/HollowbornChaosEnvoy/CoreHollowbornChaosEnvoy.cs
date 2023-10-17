@@ -95,7 +95,7 @@ public class CoreHollowbornChaosEnvoy
                 $"\t\tShadows Of Disdain:  [{shadowsOfDisdain.Replace("_", " ")}]\n" +
                 $"\t\tPersisting Mayhem: [{persistingMayhem.Replace("_", " ")}]\n");
 
-
+        //delete this comment (test push)
 
         if (getAllDrops)
         {
@@ -352,7 +352,7 @@ public class CoreHollowbornChaosEnvoy
         || Core.CheckInventory((int)Bot.Config!.Get<WaveringIllusionsRewards>("Wavering Illusions"), toInv: false)
         && !completeOnce)
 
-        Core.AddDrop(rewards);
+            Core.AddDrop(rewards);
 
         Farm.Experience(80);
         QOM.TheQueensSecrets();
