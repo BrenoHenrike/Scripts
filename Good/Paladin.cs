@@ -42,5 +42,6 @@ public class Paladin
 
         if (rankUpClass)
             Adv.RankUpClass("Paladin");
-    }
+    }    
 }
+//why isnt this pushing to  people
