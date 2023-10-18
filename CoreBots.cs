@@ -2674,11 +2674,19 @@ public class CoreBots
                 Equip(equipment);
             }
 
+            string equipedClass = Bot.Player.CurrentClass?.Name.Trim().ToLower();
             className = className.Trim().ToLower();
+            Logger("Equiped Class: " + equipedClass + " Equiping: " + className, "Class Equiper");
 
-            logEquip = false;
-            Equip(Bot.Inventory.Items.First(x => x.Name.ToLower() == className && x.Category == ItemCategory.Class).ID);
-            logEquip = true;
+            while (equipedClass != className)
+            {
+                logEquip = false;
+                Equip(Bot.Inventory.Items.First(x => x.Name.ToLower() == className && x.Category == ItemCategory.Class).ID);
+                logEquip = true;
+                equipedClass = Bot.Player.CurrentClass?.Name.Trim().ToLower();
+            }
+
+            Logger("Equiped Class: " + equipedClass, "Class Equiper");
 
             Bot.Skills.StartAdvanced(className, false, classMode);
             return true;
