@@ -160,7 +160,7 @@ public class CoreNSOD
             // Disable aggro, Jump and wait, wait for combat exit, equip SoloClass
             Core.Logger("Switching to SoloClass with aggro off");
             Bot.Options.AggroMonsters = false;  // Set aggro off for mob 2
-            while (!Bot.ShouldExit && !Bot.Inventory.IsEquipped(Core.Solo))
+            while (!Bot.ShouldExit && !Bot.Inventory.IsEquipped(Core.SoloClass))
             {
                 Core.EquipClass(ClassType.Solo);
                 Bot.Sleep(2500);
