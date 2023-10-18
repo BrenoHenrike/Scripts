@@ -238,43 +238,14 @@ public class ArmyLeveling
                 // Solidified Light
                 Story.KillQuest(9426, "shadowbattleon", "Tainted Wraith");
                 Core.Logger($"{QuestData.Name} [ {QuestData.ID}] Unlocked! Onto the gains.");
-
-                #region incase it breaks for w/e reason
-                // if (!Story.QuestProgression(9423))
-                // {
-                //     Core.EnsureAccept(9422);
-                //     Core.HuntMonster("shadowbattleon", "Doomed Beast", "Mega Shadow Hunt Medal", 3);
-                //     Core.EnsureComplete(9422);
-                // }
-
-                // if (!Story.QuestProgression(9424))
-                // {
-                //     Core.EnsureAccept(9423);
-                //     Core.HuntMonster("shadowbattleon", "Doomed Beast", "Infested Flesh", 6);
-                //     Core.EnsureComplete(9423);
-                // }
-
-                // if (!Story.QuestProgression(9425))
-                // {
-                //     Core.EnsureAccept(9424);
-                //     Core.HuntMonster("shadowbattleon", "Possessed Armor", "Shadow Growth", 6);
-                //     Core.EnsureComplete(9424);
-                // }
-
-                // if (!Story.QuestProgression(9426))
-                // {
-                //     Core.EnsureAccept(9425);
-                //     Core.HuntMonster("shadowbattleon", "Ouro Spawn", "Shadow Scale", 6);
-                //     Core.EnsureComplete(9425);
-                // }
-                #endregion incase it breaks for w/e reason
                 break;
 
             case "Default":
                 //Example Case
                 break;
-
         }
+        Core.JumpWait();
+        Core.Join("Whitemap");
     }
 
 }
