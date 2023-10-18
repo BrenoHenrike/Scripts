@@ -17,6 +17,7 @@ using Skua.Core.Options;
 using Skua.Core.Models.Monsters;
 using System.Collections.Generic;
 using Skua.Core.Models.Items;
+using Skua.Core.Models.Quests;
 
 public class ArmyLeveling
 {
@@ -27,6 +28,7 @@ public class ArmyLeveling
     public CoreArmyLite Army = new();
     public SevenCircles SC = new();
     private CoreSoW SoW = new();
+    public CoreStory Story = new();
 
     private static CoreBots sCore = new();
     private static CoreArmyLite sArmy = new();
@@ -58,7 +60,7 @@ public class ArmyLeveling
         Core.SetOptions(false);
     }
 
-    public void Level(int level = 100)
+    public void Level(int level = 101)
     {
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
@@ -150,6 +152,27 @@ public class ArmyLeveling
                 Army.waitForParty("whitemap");
                 break;
 
+
+            case Method.ShadowBattleon:
+                RequiredQuest("shadowbattleon", 9426);
+                Core.EquipClass(ClassType.Farm);
+                Core.AddDrop("Wisper");
+                Core.RegisterQuests(Core.isCompletedBefore(9426) ? new[] { 9421, 9422, 9426 } : new[] { 9421, 9422 });
+
+                Army.waitForParty("shadowbattleon");
+
+                Army.AggroMonCells("r11", "r12");
+                Army.AggroMonStart("shadowbattleon");
+                Army.DivideOnCells("r11", "r12");
+
+                while (!Bot.ShouldExit && Bot.Player.Level < level)
+                    Bot.Combat.Attack("*");
+
+                Army.AggroMonStop(true);
+                Core.JumpWait();
+                Army.waitForParty("whitemap");
+                break;
+
                 //add more cases
 
                 /*
@@ -181,8 +204,77 @@ public class ArmyLeveling
         IceStormUnder = 2,
         Streamwar = 3,
         SevenCirclesWar = 4,
-        IceWing = 5
+        IceWing = 5,
+        ShadowBattleon = 6
 
+    }
+
+
+    void RequiredQuest(string map, int Quest)
+    {
+        Quest QuestData = Core.EnsureLoad(Quest);
+        if (Core.isCompletedBefore(Quest))
+        {
+            Core.Logger($"{QuestData.Name} [ {QuestData.ID}] Already unlocked! onto the gains.");
+            return;
+        }
+
+        Bot.Lite.ReacceptQuest = false;
+        Core.Logger($"Unlocking {QuestData.Name} [ {QuestData.ID}]");
+        switch (map)
+        {
+            case "shadowbattleon":
+
+                Core.EquipClass(ClassType.Solo);
+
+                // Mega Shadow Hunt Medal
+                Story.KillQuest(9422, "shadowbattleon", "Doomed Beast");
+                // Early Autopsy
+                Story.KillQuest(9423, "shadowbattleon", "Doomed Beast");
+                // Given Life and Purpose
+                Story.KillQuest(9424, "shadowbattleon", "Possessed Armor");
+                // Adult Hatchling
+                Story.KillQuest(9425, "shadowbattleon", "Ouro Spawn");
+                // Solidified Light
+                Story.KillQuest(9426, "shadowbattleon", "Tainted Wraith");
+                Core.Logger($"{QuestData.Name} [ {QuestData.ID}] Unlocked! Onto the gains.");
+
+                #region incase it breaks for w/e reason
+                // if (!Story.QuestProgression(9423))
+                // {
+                //     Core.EnsureAccept(9422);
+                //     Core.HuntMonster("shadowbattleon", "Doomed Beast", "Mega Shadow Hunt Medal", 3);
+                //     Core.EnsureComplete(9422);
+                // }
+
+                // if (!Story.QuestProgression(9424))
+                // {
+                //     Core.EnsureAccept(9423);
+                //     Core.HuntMonster("shadowbattleon", "Doomed Beast", "Infested Flesh", 6);
+                //     Core.EnsureComplete(9423);
+                // }
+
+                // if (!Story.QuestProgression(9425))
+                // {
+                //     Core.EnsureAccept(9424);
+                //     Core.HuntMonster("shadowbattleon", "Possessed Armor", "Shadow Growth", 6);
+                //     Core.EnsureComplete(9424);
+                // }
+
+                // if (!Story.QuestProgression(9426))
+                // {
+                //     Core.EnsureAccept(9425);
+                //     Core.HuntMonster("shadowbattleon", "Ouro Spawn", "Shadow Scale", 6);
+                //     Core.EnsureComplete(9425);
+                // }
+                #endregion incase it breaks for w/e reason
+                break;
+
+            case "Default":
+                //Example Case
+                break;
+
+        }
     }
 
 }

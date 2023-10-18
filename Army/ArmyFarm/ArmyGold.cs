@@ -23,6 +23,7 @@ public class ArmyGold
     private CoreBots Core => CoreBots.Instance;
     private CoreFarms Farm = new();
     private CoreAdvanced Adv => new();
+    public CoreStory Story = new();
     private CoreArmyLite Army = new();
     private DarkWarLegionandNation DWLN = new();
     public SevenCircles SC = new();
@@ -189,6 +190,68 @@ public class ArmyGold
 
         Core.ToBank("Prismatic Seams");
         Army.waitForParty("whitemap");
+    }
+
+
+    private void ShadowBattleon()
+    {
+        RequiredQuest("shadowbattleon", 9426);
+        Core.EquipClass(ClassType.Farm);
+        Core.AddDrop("Wisper");
+        Core.RegisterQuests(Core.isCompletedBefore(9426) ? new[] { 9421, 9422, 9426 } : new[] { 9421, 9422 });
+
+        Army.waitForParty("shadowbattleon");
+
+        Army.AggroMonCells("r11", "r12");
+        Army.AggroMonStart("shadowbattleon");
+        Army.DivideOnCells("r11", "r12");
+
+        while (!Bot.ShouldExit && Bot.Player.Gold < 100000000)
+            Bot.Combat.Attack("*");
+
+
+        Army.AggroMonStop(true);
+        Core.JumpWait();
+        Core.ToBank("Wisper");
+        Army.waitForParty("whitemap");
+    }
+
+
+    void RequiredQuest(string map, int Quest)
+    {
+        Quest QuestData = Core.EnsureLoad(Quest);
+        if (Core.isCompletedBefore(Quest))
+        {
+            Core.Logger($"{QuestData.Name} [ {QuestData.ID}] Already unlocked! onto the gains.");
+            return;
+        }
+
+        Bot.Lite.ReacceptQuest = false;
+        Core.Logger($"Unlocking {QuestData.Name} [ {QuestData.ID}]");
+        switch (map)
+        {
+            case "shadowbattleon":
+
+                Core.EquipClass(ClassType.Solo);
+
+                // Mega Shadow Hunt Medal
+                Story.KillQuest(9422, "shadowbattleon", "Doomed Beast");
+                // Early Autopsy
+                Story.KillQuest(9423, "shadowbattleon", "Doomed Beast");
+                // Given Life and Purpose
+                Story.KillQuest(9424, "shadowbattleon", "Possessed Armor");
+                // Adult Hatchling
+                Story.KillQuest(9425, "shadowbattleon", "Ouro Spawn");
+                // Solidified Light
+                Story.KillQuest(9426, "shadowbattleon", "Tainted Wraith");
+                Core.Logger($"{QuestData.Name} [ {QuestData.ID}] Unlocked! Onto the gains.");
+                break;
+
+            case "Default":
+                //Example Case
+                break;
+
+        }
     }
 
     public enum Method
