@@ -7,7 +7,7 @@ tags: upholder,starsword, merge, dragonroad, lava, backblades, reversed, orange,
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/Story\DragonRoad[Upholder].cs
+//cs_include Scripts/Story/DragonRoad[Upholder].cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;

@@ -30,7 +30,7 @@ public class ChaosAvengerClass
     public void GetClass()
     {
         //Progress Check
-        if (Core.CheckInventory("Empowered Chaos Avenger's GreatSword"))
+        if (Core.CheckInventory("Empowered Chaos Avenger's GreatSword") || Core.CheckInventory("Chaos Avenger"))
             return;
 
         //Preload Quests

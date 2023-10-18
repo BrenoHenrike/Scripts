@@ -96,7 +96,6 @@ public class CoreHollowbornChaosEnvoy
                 $"\t\tPersisting Mayhem: [{persistingMayhem.Replace("_", " ")}]\n");
 
 
-
         if (getAllDrops)
         {
             StirringDiscord(StirringDiscordRewards.All);
@@ -193,7 +192,8 @@ public class CoreHollowbornChaosEnvoy
 
         if ((Bot.Config!.Get<StirringDiscordRewards>("Stirring Discord") == StirringDiscordRewards.All && Core.CheckInventory(rewards))
         || Bot.Config!.Get<StirringDiscordRewards>("Stirring Discord") == StirringDiscordRewards.None
-        || Core.CheckInventory((int)Bot.Config!.Get<StirringDiscordRewards>("Stirring Discord")))
+        || Core.CheckInventory((int)Bot.Config!.Get<StirringDiscordRewards>("Stirring Discord"))
+        && !completeOnce)
             return;
 
         Core.AddDrop(rewards);
@@ -231,15 +231,17 @@ public class CoreHollowbornChaosEnvoy
     public void InTheBeastsShadow(InTheBeastsShadowRewards rewardSelection = InTheBeastsShadowRewards.None, bool completeOnce = false)
     {
         if (!Bot.Quests.IsUnlocked(8999))
+        {
             Core.Logger("Quest not unlocked [8999], doing \"Stirring Discord\"");
-
-        StirringDiscord(completeOnce: true);
+            StirringDiscord(completeOnce: true);
+        }
 
         string[] rewards = Core.QuestRewards(8999);
 
         if ((Bot.Config!.Get<InTheBeastsShadowRewards>("In The Beasts Shadow") == InTheBeastsShadowRewards.All && Core.CheckInventory(rewards))
         || Bot.Config!.Get<InTheBeastsShadowRewards>("In The Beasts Shadow") == InTheBeastsShadowRewards.None
-        || Core.CheckInventory((int)Bot.Config!.Get<InTheBeastsShadowRewards>("In The Beasts Shadow")))
+        || Core.CheckInventory((int)Bot.Config!.Get<InTheBeastsShadowRewards>("In The Beasts Shadow"))
+        && !completeOnce)
             return;
 
         Core.AddDrop(rewards);
@@ -278,7 +280,7 @@ public class CoreHollowbornChaosEnvoy
 
     public void UniqueQuarry(UniqueQuarryRewards rewardSelection = UniqueQuarryRewards.None, bool completeOnce = false)
     {
-        if (!Bot.Quests.IsUnlocked(9000))
+        if (!Core.isCompletedBefore(9000))
         {
             Core.Logger("Quest not unlocked [9000], doing \"In The Beasts Shadow\"");
             InTheBeastsShadow(completeOnce: true);
@@ -288,13 +290,11 @@ public class CoreHollowbornChaosEnvoy
 
         if ((Bot.Config!.Get<UniqueQuarryRewards>("Unique Quarry") == UniqueQuarryRewards.All && Core.CheckInventory(rewards))
         || Bot.Config!.Get<UniqueQuarryRewards>("Unique Quarry") == UniqueQuarryRewards.None
-        || Core.CheckInventory((int)Bot.Config!.Get<UniqueQuarryRewards>("Unique Quarry")))
+        || Core.CheckInventory((int)Bot.Config!.Get<UniqueQuarryRewards>("Unique Quarry"))
+        && !completeOnce)
             return;
 
         Core.AddDrop(rewards);
-
-        if (!Bot.Quests.IsUnlocked(9000))
-            InTheBeastsShadow(completeOnce: true);
 
         Farm.Experience(75);
         ADG.AscendedGear("Ascended Face of Chaos");
@@ -348,13 +348,10 @@ public class CoreHollowbornChaosEnvoy
 
         if ((Bot.Config!.Get<WaveringIllusionsRewards>("Wavering Illusions") == WaveringIllusionsRewards.All && Core.CheckInventory(rewards))
         || Bot.Config!.Get<WaveringIllusionsRewards>("Wavering Illusions") == WaveringIllusionsRewards.None
-        || Core.CheckInventory((int)Bot.Config!.Get<WaveringIllusionsRewards>("Wavering Illusions"), toInv: false))
-            return;
+        || Core.CheckInventory((int)Bot.Config!.Get<WaveringIllusionsRewards>("Wavering Illusions"), toInv: false)
+        && !completeOnce)
 
-        Core.AddDrop(rewards);
-
-        if (!Bot.Quests.IsUnlocked(9001))
-            UniqueQuarry();
+            Core.AddDrop(rewards);
 
         Farm.Experience(80);
         QOM.TheQueensSecrets();
@@ -408,13 +405,11 @@ public class CoreHollowbornChaosEnvoy
 
         if ((Bot.Config!.Get<ShadowsOfDisdainRewards>("Shadows Of Disdain") == ShadowsOfDisdainRewards.All && Core.CheckInventory(rewards))
         || Bot.Config!.Get<ShadowsOfDisdainRewards>("Shadows Of Disdain") == ShadowsOfDisdainRewards.None
-        || Core.CheckInventory((int)Bot.Config!.Get<ShadowsOfDisdainRewards>("Shadows Of Disdain"), toInv: false))
+        || Core.CheckInventory((int)Bot.Config!.Get<ShadowsOfDisdainRewards>("Shadows Of Disdain"), toInv: false)
+        && !completeOnce)
             return;
 
         Core.AddDrop(rewards);
-
-        if (!Bot.Quests.IsUnlocked(9002))
-            WaveringIllusions();
 
         Farm.Experience(95);
         ED.getSet();
@@ -465,13 +460,11 @@ public class CoreHollowbornChaosEnvoy
 
         if ((Bot.Config!.Get<PersistingMayhemRewards>("Persisting Mayhem") == PersistingMayhemRewards.All && Core.CheckInventory(rewards))
         || Bot.Config!.Get<PersistingMayhemRewards>("Persisting Mayhem") == PersistingMayhemRewards.None
-        || Core.CheckInventory((int)Bot.Config!.Get<PersistingMayhemRewards>("Persisting Mayhem"), toInv: false))
+        || Core.CheckInventory((int)Bot.Config!.Get<PersistingMayhemRewards>("Persisting Mayhem"), toInv: false)
+        && !completeOnce)
             return;
 
         Core.AddDrop(rewards);
-
-        if (!Bot.Quests.IsUnlocked(9003))
-            ShadowsOfDisdain();
 
         Farm.Experience(95);
 

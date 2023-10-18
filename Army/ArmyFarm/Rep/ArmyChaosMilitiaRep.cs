@@ -4,9 +4,14 @@ description: Farm reputation with your army. Faction: chaos Militia
 tags: army, reputation, chaos militia
 */
 //cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 //cs_include Scripts/Army/CoreArmyLite.cs
+//cs_include Scripts/Story/RavenlossSaga.cs
+//cs_include Scripts/Story/PockeymogsStory.cs
+//cs_include Scripts/Army/ArmyFarm/Rep/CoreArmyRep.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
@@ -16,9 +21,9 @@ public class ArmyChaosMilitiaRep
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
     private CoreFarms Farm = new();
-    private CoreAdvanced Adv => new();
+    private CoreAdvanced Adv = new();
     private CoreArmyLite Army = new();
-
+    private CoreArmyRep CAR = new();
     private static CoreBots sCore = new();
     private static CoreArmyLite sArmy = new();
 
@@ -44,22 +49,5 @@ public class ArmyChaosMilitiaRep
         Core.SetOptions(false);
     }
 
-    public void Setup()
-    {
-        if (Farm.FactionRank("Chaos Militia") >= 10)
-            return;
-
-        Core.PrivateRooms = true;
-        Core.PrivateRoomNumber = Army.getRoomNr();
-
-        Core.EquipClass(ClassType.Farm);
-        Core.RegisterQuests(5775); //Expect the Inquisitors 5775
-        Farm.ToggleBoost(BoostType.Reputation);
-        Army.SmartAggroMonStart("citadel", "Inquisitor Guard");
-        while (!Bot.ShouldExit && Farm.FactionRank("Chaos Militia") < 10)
-            Bot.Combat.Attack("*");
-        Army.AggroMonStop(true);
-        Farm.ToggleBoost(BoostType.Reputation, false);
-        Core.CancelRegisteredQuests();
-    }
+    public void Setup() => CAR.ArmyChaosMilitiaRep();
 }

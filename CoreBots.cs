@@ -1415,14 +1415,14 @@ public class CoreBots
                             }
                             if (simpleRewards.Count == 0)
                             {
-                                EnsureComplete(kvp.Key.ID);
+                                EnsureCompleteMulti(kvp.Key.ID);
                                 await Task.Delay(ActionDelay);
                                 EnsureAccept(kvp.Key.ID);
                                 continue;
                             }
 
                             Bot.Drops.Add(kvp.Key.Rewards.Where(x => simpleRewards.Any(t => t.ID == x.ID)).Select(i => i.Name).ToArray());
-                            EnsureComplete(kvp.Key.ID, simpleRewards.First().ID);
+                            EnsureCompleteMulti(kvp.Key.ID, simpleRewards.First().ID);
                             await Task.Delay(ActionDelay);
                             EnsureAccept(kvp.Key.ID);
                             Logger($"Quest completed x{chooseQuests[kvp.Key]++} times: [{kvp.Key.ID}] \"{kvp.Key.Name}\" (Got \"{kvp.Key.Rewards.First(x => x.ID == simpleRewards.First().ID).Name}\")");
@@ -2148,7 +2148,6 @@ public class CoreBots
         "ShadowWalker of Time",
         "Infinity Knight",
         "Interstellar Knight",
-        "Void Highlord",
         "Dragon of Time",
         "Timeless Dark Caster",
         "Frostval Barbarian",
@@ -2157,6 +2156,7 @@ public class CoreBots
         "DragonSoul Shinobi",
         "Shadow Dragon Shinobi",
         "Legion Revenant",
+        "Void Highlord",
     };
 
         // Check if the bot has any of the classes from the DOTClasses list
@@ -2244,15 +2244,16 @@ public class CoreBots
             // Handle the case where 'item' is null, if necessary.
             return;
         }
-
         bool itemIsTemp = isTemp;
+        bool originalAggroAll = Bot.Options.AggroAllMonsters;
+        bool originalAggroMonsters = Bot.Options.AggroMonsters;
 
-        if (itemIsTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant))
-            return;
-
+        // Backup current Aggro settings
+        Bot.Options.AggroAllMonsters = false;
+        Bot.Options.AggroMonsters = false;
+        Logger("Aggro settings temporarily modified: AggroAllMonsters and AggroMonsters set to false.");
         Join("fiendshard");
-        FarmingLogger(item, 1);
-
+        Bot.Wait.ForMapLoad("fiendshard");
         Monster? monster = Bot.Monsters.CurrentMonsters?.Find(m => m.MapID == 15);
         while (!Bot.ShouldExit && !CheckInventory(item, quant))
         {
@@ -2266,12 +2267,14 @@ public class CoreBots
             {
                 if (itemIsTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant))
                 {
-                    Bot.Wait.ForPickup(item);
                     while (!Bot.ShouldExit && Bot.Player.Cell != "Enter")
                     {
                         Jump("Enter", "Spawn");
                         Bot.Sleep(ActionDelay);
                     }
+                    Bot.Wait.ForCellChange("Enter");
+                    Bot.Wait.ForPickup(item);
+                    Logger("Temporary Aggro settings restored: AggroAllMonsters and AggroMonsters reset to original values.");
                     break;
                 }
                 else
@@ -2281,8 +2284,16 @@ public class CoreBots
                     else Bot.Combat.Attack("*");
                 }
             }
+
+            // Extra insurance to make sure it's at the enter cell.
+            Jump("Enter", "Spawn");
         }
+        // Restore the original Aggro settings
+        Bot.Options.AggroAllMonsters = originalAggroAll;
+        Bot.Options.AggroMonsters = originalAggroMonsters;
+        Logger("Original Aggro settings restored: AggroAllMonsters and AggroMonsters set back to their original values.");
     }
+
 
     public void _KillForItem(string name, string item, int quantity, bool isTemp = false, bool rejectElse = false, bool log = true)
     {

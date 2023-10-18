@@ -82,18 +82,18 @@ public class ArmyTemplatev3 //Rename This
             {
                 Bot.Combat.Attack(MonsterMapID);
                 Bot.Sleep(Core.ActionDelay);
-                if (Core.CheckInventory(item))
+                if (Core.CheckInventory(item, quant))
                     break;
             }
+
+            // Clean up
+            Army.AggroMonStop(true);
+            Core.JumpWait();
+            Core.CancelRegisteredQuests();
 
             // Wait for the party
             Army.waitForParty(map, item);
         }
-
-        // Clean up
-        Core.JumpWait();
-        Army.AggroMonStop(true);
-        Core.CancelRegisteredQuests();
     }
 
     public void ArmyBits(string map, string[] cell, int[] MonsterMapIDs, string[] items, int quant, ClassType classToUse)
@@ -121,19 +121,19 @@ public class ArmyTemplatev3 //Rename This
                     {
                         Bot.Combat.Attack(monsterMapID);
                         Bot.Sleep(Core.ActionDelay);
-                        if (Core.CheckInventory(item))
+                        if (Core.CheckInventory(item, quant))
                             break;
                     }
                 }
 
-                // Wait for the party
-                Army.waitForParty(map, item);
             }
-
             // Clean up
-            Core.JumpWait();
             Army.AggroMonStop(true);
+            Core.JumpWait();
             Core.CancelRegisteredQuests();
+
+            // Wait for the party
+            Army.waitForParty(map, item);
         }
     }
 }

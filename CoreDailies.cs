@@ -209,13 +209,23 @@ public class CoreDailies
     {
         metals ??= MineCraftingMetalsArray;
         Core.Logger($"Daily: Mine Crafting ({string.Join('/', metals)})");
-        if (Core.CheckInventory(metals, quant))
+
+        // Check if all metals are in inventory
+        bool allMetalsFound = metals.All(metal => Core.CheckInventory(metal, quant, false));
+
+        if (allMetalsFound)
         {
-            Core.Logger($"All metals were found with the needed quantity ({quant}). Skipped");
+            Core.Logger($"All metals were found with the needed quantity ({quant}).");
+
+            // Sort metals in the desired order
+            metals = metals.OrderBy(metal => Array.IndexOf(metals, metal)).ToArray();
+
             if (ToBank)
                 Core.ToBank(metals);
+
             return;
         }
+
         if (!CheckDailyv2(2091, false, metals))
             return;
 
@@ -223,6 +233,7 @@ public class CoreDailies
         Core.EquipClass(ClassType.Farm);
         Core.HuntMonster("stalagbite", "Balboa", "Axe of the Prospector", isTemp: false);
         Core.HuntMonster("stalagbite", "Balboa", "Raw Ore", 30);
+
         foreach (string metal in metals)
         {
             if (!Core.CheckInventory(metal, quant, false))
@@ -236,10 +247,14 @@ public class CoreDailies
                 break;
             }
         }
+
         if (Bot.Quests.IsInProgress(2091))
             Core.Logger($"All desired metals were found with the needed quantity ({quant}), quest not completed");
+
         Bot.Sleep(Core.ActionDelay);
     }
+
+
 
     /// <summary>
     /// Does the Hard Core Metals quest for 1 Arsenic, Chromium and Rhodium by default

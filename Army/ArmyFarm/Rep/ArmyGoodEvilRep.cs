@@ -4,8 +4,14 @@ description: Farm reputation with your army. Faction: Good & Evil
 tags: army, reputation, good, evil
 */
 //cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 //cs_include Scripts/Army/CoreArmyLite.cs
+//cs_include Scripts/Story/RavenlossSaga.cs
+//cs_include Scripts/Story/PockeymogsStory.cs
+//cs_include Scripts/Army/ArmyFarm/Rep/CoreArmyRep.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
@@ -16,6 +22,7 @@ public class ArmyGoodEvilREP
     private CoreBots Core => CoreBots.Instance;
     private CoreFarms Farm = new();
     private CoreArmyLite Army = new();
+    private CoreArmyRep CAR = new();
     private static CoreArmyLite sArmy = new();
 
     public string OptionsStorage = "ArmyGoodEvilREP";
@@ -41,40 +48,5 @@ public class ArmyGoodEvilREP
         Core.SetOptions(false);
     }
 
-    public void Setup()
-    {
-        Core.PrivateRooms = true;
-        Core.PrivateRoomNumber = Army.getRoomNr();
-
-        Core.EquipClass(ClassType.Farm);
-        Farm.ToggleBoost(BoostType.Reputation);
-
-        if (Farm.FactionRank("Evil") < 4 || Farm.FactionRank("Good") < 4)
-            rank4();
-
-        if (Farm.FactionRank("Good") < 10 || Farm.FactionRank("Evil") < 10)
-            rankMAX();
-
-        Farm.ToggleBoost(BoostType.Reputation, false);
-    }
-
-    public void rank4()
-    {
-        Core.RegisterQuests(364, 369); //Youthanize 364, That Hero Who Chases Slimes 369
-        Army.SmartAggroMonStart("swordhavenbridge", "Slimes");
-        while (!Bot.ShouldExit && (Farm.FactionRank("Good") < 4 || Farm.FactionRank("Evil") < 4))
-            Bot.Combat.Attack("*");
-        Army.AggroMonStop(true);
-        Core.CancelRegisteredQuests();
-    }
-
-    public void rankMAX()
-    {
-        Core.RegisterQuests(367, 372); //Bone-afide 367, Tomb with a View 372
-        Army.SmartAggroMonStart("castleundead", "Skeletal Viking", "Skeletal Warrior");
-        while (!Bot.ShouldExit && (Farm.FactionRank("Good") < 10 || Farm.FactionRank("Evil") < 10))
-            Bot.Combat.Attack("*");
-        Army.AggroMonStop(true);
-        Core.CancelRegisteredQuests();
-    }
+    public void Setup() => CAR.ArmyGoodEvilRep();
 }

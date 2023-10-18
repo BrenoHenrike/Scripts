@@ -11,6 +11,7 @@ using Skua.Core.Options;
 public class CelestialPirateCommander
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
+    private CoreFarms Farm = new();
 
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
@@ -57,6 +58,8 @@ public class CelestialPirateCommander
             Core.Logger(!Core.isSeasonalMapActive("lowtide") ? "Not the right season ya dummy" : "You already have Polly Roger");
             return;
         }
+        
+        Farm.Experience(80);
 
         int i = 1;
         Core.AddDrop(Rewards);

@@ -77,13 +77,14 @@ public class ArmyPoly
             while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
                 Bot.Combat.Attack(MonsterMapID);
 
-            // Wait for the party
-            Army.waitForParty("whitemap", item);
-        }
+            // Clean up
+            Army.AggroMonStop(true);
+            Core.JumpWait();
+            Core.CancelRegisteredQuests();
 
-        // Clean up
-        Army.AggroMonStop(true);
-        Core.CancelRegisteredQuests();
+            // Wait for the party
+            Army.waitForParty(map, item);
+        }
     }
 
     public void ArmyBits(string map, string[] cell, int[] MonsterMapIDs, string[] items, int quant)
@@ -108,11 +109,14 @@ public class ArmyPoly
                 // Farm the specified item
                 while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
                     Bot.Combat.Attack("*");
-
-                // Wait for the party
-                Army.waitForParty(map, item);
             }
-            Army.waitForParty("whitemap", item);
+            // Clean up
+            Army.AggroMonStop(true);
+            Core.JumpWait();
+            Core.CancelRegisteredQuests();
+
+            // Wait for the party
+            Army.waitForParty(map, item);
         }
 
         // Clean up

@@ -4,9 +4,14 @@ description: Farm reputation with your army. Faction: mythsong
 tags: army, reputation, mythsong
 */
 //cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 //cs_include Scripts/Army/CoreArmyLite.cs
+//cs_include Scripts/Story/RavenlossSaga.cs
+//cs_include Scripts/Story/PockeymogsStory.cs
+//cs_include Scripts/Army/ArmyFarm/Rep/CoreArmyRep.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
@@ -16,9 +21,9 @@ public class ArmyMythsongRep
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
     private CoreFarms Farm = new();
-    private CoreAdvanced Adv => new();
+    private CoreAdvanced Adv = new();
     private CoreArmyLite Army = new();
-
+    private CoreArmyRep CAR = new();
     private static CoreBots sCore = new();
     private static CoreArmyLite sArmy = new();
 
@@ -45,8 +50,7 @@ public class ArmyMythsongRep
         Core.SetOptions(false);
     }
 
-    public void Setup()
-    {
+    public void Setup() => CAR.insertrephere();
         if (Farm.FactionRank("Mythsong") >= 10)
             return;
 

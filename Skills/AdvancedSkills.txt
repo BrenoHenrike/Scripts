@@ -135,11 +135,11 @@ Base = Immortal Chronomancer = 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4
 Base = Imperial Chunin = 1 | 2 | 3 | 4 = Use if Available
 Base = Infinite Dark Caster = 1 | 2 | 3 | 4 = Use if Available
 Base = Infinite Legion Dark Caster = 1 | 2 | 3 | 4 = Use if Available
-Base = Interstellar Knight = 1 | 2 | 4 | 1 | 2 | 1 | 1 | 2 | 1 | 1 | 2 | 3 = 250
 Base = Infinity Titan = 3 | 2 | 1 | 4 = Use if Available
 Solo = Infinity Titan = 4M>50S | 2S | 3H<50S | 2S | 3H<50S | 1 | 1 = Use if Available
 Supp = Infinity Titan = 3 | 2 | 4 | 1 = Use if Available
-Base = Interstellar Knight = 1 | 2 | 4 | 1 | 2 | 1 | 1 | 2 | 1 | 1 | 2 | 3 = 250
+Base = Infinity Knight = 4 | 2 | 1 | 1 | 1 | 2 | 1 | 1 | 1 | 2 | 4 | 3 = 250
+Base = Interstellar Knight = 4 | 2 | 1 | 1 | 1 | 2 | 1 | 1 | 1 | 2 | 4 | 3 = 250
 Base = Legendary ArchFiend = 1 | 2 | 3 | 4 = Use if Available
 Atk = Legendary Elemental Warrior = 1 | 3 | 4 | 1 | 2 | 4 | 1 | 3 | 2 | 1 | 4 | 2 = 250
 Def = Legendary Elemental Warrior = 1 | 3 | 2 | 1 | 2 | 3 = 250
@@ -261,7 +261,8 @@ Base = Vampire = 2 | 4 | 3 | 1 = 250
 Solo = Vampire = 2 | 3 | 1 | 1 | 3 = 250
 Base = Vampire Lord = 2 | 4 | 3 | 1 | 1 | 3 = 250
 Solo = Vampire Lord = 2 | 3 | 1 | 1 | 3 = 250
-Base = Verus DoomKnight = 1 | 3 | 2 | 4 | 1 | 3 | 2 | 1 | 3 | 2 | 4 | 1 | 3 | 2 = 250
+Def = Verus DoomKnight = 1 | 3 | 2 | 1 | 3 | 4 | 2 | 3 | 1 | 2 | 3 | 4 = 250
+Atk = Verus DoomKnight = 1 | 2 | 3 | 1 | 2 | 4 | 3 | 2 | 1 | 3 | 2 | 4 = 250
 Base = Vindicator Of They = 1WW20000 | 3 | 4 | 1 = 250
 Atk = Void Highlord = 3H>50S | 4 | 2 | 1H>30S | 3H>50S | 2 | 1H>30S | 3H>50S | 2 | 1H>30S = 250
 Def = Void Highlord = 4 | 2 | 1 = Use if Available

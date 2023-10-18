@@ -29,7 +29,7 @@ public class AspiringNecromancerMerge
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Necromancer’s Pride", "Necromancer’s Joy", "Necromancer’s Insanity " });
+        Core.BankingBlackList.AddRange(new[] { "Necromancer's Pride", "Necromancer's Joy", "Necromancer's Insanity " });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -43,7 +43,7 @@ public class AspiringNecromancerMerge
             return;
 
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("battleontown", 1924, findIngredients, buyOnlyThis, buyMode: buyMode);
+        Adv.StartBuyAllMerge($"birthday", 1924, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()
@@ -65,33 +65,33 @@ public class AspiringNecromancerMerge
                     break;
                 #endregion
 
-                case "Necromancer’s Pride":
+                case "Necromancer's Pride":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     //I Want to Be The Very Best Necromancer 7751
                     Core.RegisterQuests(7751);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("BattleunderA", "Skeletal Warrior", "Skeleton Captured", 10, log: false);
+                        Core.HuntMonsterMapID("BattleunderA", 10, "Skeleton Captured", 10, log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
                     break;
 
-                case "Necromancer’s Joy":
+                case "Necromancer's Joy":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     //Like No One Ever Was 7752
                     Core.RegisterQuests(7752);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("DoomWood", "Doomwood Bonemuncher", "Bones Collected", 15, log: false);
+                        Core.KillMonster("DoomWood", "r8", "Left", "*", "Bones Collected", 15, log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
                     break;
 
-                case "Necromancer’s Insanity":
+                case "Necromancer's Insanity":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     //To Raise Them is my Real Quest 7753
@@ -100,10 +100,10 @@ public class AspiringNecromancerMerge
                     Core.RegisterQuests(7753);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.KillMonster("necrodungeon", "r22", "Down", "*", "Dracolich Head", log: false, publicRoom: true);
-                        Core.KillMonster("necrodungeon", "r22", "Down", "*", "Yet Another Dracolich Head", log: false, publicRoom: true);
-                        Core.KillMonster("necrodungeon", "r22", "Down", "*", "More Dracolich Heads", log: false, publicRoom: true);
-                        Core.HuntMonster("underrealm", "Agony", "Fresh Agony Wraps", 5, log: false);
+                        Core.HuntMonsterMapID("necrodungeon", 46, "Dracolich Head");
+                        Core.HuntMonsterMapID("necrodungeon", 47, "Yet Another Dracolich Head");
+                        Core.HuntMonsterMapID("necrodungeon", 49, "More Dracolich Heads");
+                        Core.HuntMonsterMapID("underrealm", 24, "Fresh Agony Wraps", 5);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
