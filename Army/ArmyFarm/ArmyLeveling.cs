@@ -60,7 +60,7 @@ public class ArmyLeveling
         Core.SetOptions(false);
     }
 
-    public void Level(int level = 101)
+    public void Level(int level = 100)
     {
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
