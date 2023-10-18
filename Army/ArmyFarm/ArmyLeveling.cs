@@ -54,9 +54,7 @@ public class ArmyLeveling
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
-        Bot.Lite.ReacceptQuest = true;
         Level();
-        Bot.Lite.ReacceptQuest = false;
         Core.SetOptions(false);
     }
 
@@ -85,6 +83,8 @@ public class ArmyLeveling
                     Bot.Combat.Attack("*");
                 Army.AggroMonStop(true);
                 Core.JumpWait();
+                Farm.ToggleBoost(BoostType.Experience, false);
+                Farm.ToggleBoost(BoostType.Gold, false);
                 Army.waitForParty("whitemap");
                 break;
 
@@ -101,6 +101,8 @@ public class ArmyLeveling
                     Bot.Combat.Attack("Frost Spirit");
                 Army.AggroMonStop(true);
                 Core.JumpWait();
+                Farm.ToggleBoost(BoostType.Experience, false);
+                Farm.ToggleBoost(BoostType.Gold, false);
                 Army.waitForParty("whitemap");
                 break;
 
@@ -118,6 +120,8 @@ public class ArmyLeveling
                     Bot.Combat.Attack("*");
                 Army.AggroMonStop(true);
                 Core.JumpWait();
+                Farm.ToggleBoost(BoostType.Experience, false);
+                Farm.ToggleBoost(BoostType.Gold, false);
                 Army.waitForParty("whitemap");
                 break;
 
@@ -133,6 +137,8 @@ public class ArmyLeveling
                     Bot.Combat.Attack("*");
                 Army.AggroMonStop(true);
                 Core.JumpWait();
+                Farm.ToggleBoost(BoostType.Experience, false);
+                Farm.ToggleBoost(BoostType.Gold, false);
                 Army.waitForParty("whitemap");
                 break;
 
@@ -149,6 +155,8 @@ public class ArmyLeveling
                     Bot.Combat.Attack("*");
                 Army.AggroMonStop(true);
                 Core.JumpWait();
+                Farm.ToggleBoost(BoostType.Experience, false);
+                Farm.ToggleBoost(BoostType.Gold, false);
                 Army.waitForParty("whitemap");
                 break;
 
@@ -159,17 +167,18 @@ public class ArmyLeveling
                 Core.AddDrop("Wisper");
                 Core.RegisterQuests(9421, 9422, 9426);
 
-                Army.waitForParty("shadowbattleon");
 
                 Army.AggroMonCells("r11", "r12");
                 Army.AggroMonStart("shadowbattleon");
                 Army.DivideOnCells("r11", "r12");
-
+                Core.Logger("This method is insane atm.. if the rate is ever complete sh*t please use SCW");
                 while (!Bot.ShouldExit && Bot.Player.Level < level)
                     Bot.Combat.Attack("*");
 
                 Army.AggroMonStop(true);
                 Core.JumpWait();
+                Farm.ToggleBoost(BoostType.Experience, false);
+                Farm.ToggleBoost(BoostType.Gold, false);
                 Army.waitForParty("whitemap");
                 break;
 
@@ -192,8 +201,6 @@ public class ArmyLeveling
 
                 */
         }
-        Army.AggroMonStop(true);
-        Farm.ToggleBoost(BoostType.Experience, false);
         Core.CancelRegisteredQuests();
         Core.JumpWait();
     }
@@ -245,7 +252,7 @@ public class ArmyLeveling
                 break;
         }
         Core.JumpWait();
-        Core.Join("Whitemap");
+        Army.waitForParty("Whitemap");
     }
 
 }

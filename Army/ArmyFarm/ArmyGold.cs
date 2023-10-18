@@ -110,7 +110,7 @@ public class ArmyGold
 
     public void DWL()
     {
-         DWLN.DarkWarLegion();
+        DWLN.DarkWarLegion();
 
         Army.AggroMonMIDs(1, 2, 3, 4, 5, 6, 7, 8);
         Army.AggroMonStart("darkwarlegion");
@@ -128,7 +128,7 @@ public class ArmyGold
 
     public void DWN()
     {
-       DWLN.DarkWarNation();
+        DWLN.DarkWarNation();
 
         Core.RegisterQuests(8578, 8579, 8580, 8581); //Legion Badges, Mega Legion Badges, Doomed Legion Warriors, Undead Legion Dread
 
@@ -190,16 +190,16 @@ public class ArmyGold
     {
         RequiredQuest("shadowbattleon", 9426);
 
+        Bot.Lite.ReacceptQuest = true;
         Core.EquipClass(ClassType.Farm);
         Core.AddDrop("Wisper");
-        Core.RegisterQuests(9421, 9422, 9426 );
-
-        Army.waitForParty("shadowbattleon");
+        Core.RegisterQuests(9421, 9422, 9426);
 
         Army.AggroMonCells("r11", "r12");
         Army.AggroMonStart("shadowbattleon");
         Army.DivideOnCells("r11", "r12");
 
+        Core.Logger("This method is insane atm.. if the rate is ever complete sh*t please use SCW");
         while (!Bot.ShouldExit && Bot.Player.Gold < 100000000)
             Bot.Combat.Attack("*");
 
@@ -207,7 +207,6 @@ public class ArmyGold
         Core.CancelRegisteredQuests();
         Farm.ToggleBoost(BoostType.Gold, false);
         Core.JumpWait();
-        Core.ToBank("Wisper");
         Army.waitForParty("whitemap");
     }
 
@@ -246,7 +245,6 @@ public class ArmyGold
                 break;
         }
         Core.JumpWait();
-        Core.Join("Whitemap");
     }
 
     public enum Method
