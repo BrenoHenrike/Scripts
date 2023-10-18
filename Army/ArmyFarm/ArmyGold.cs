@@ -204,8 +204,8 @@ public class ArmyGold
             Bot.Combat.Attack("*");
 
         Army.AggroMonStop(true);
-        Farm.ToggleBoost(BoostType.Gold, false);
         Core.CancelRegisteredQuests();
+        Farm.ToggleBoost(BoostType.Gold, false);
         Core.JumpWait();
         Core.ToBank("Wisper");
         Army.waitForParty("whitemap");
