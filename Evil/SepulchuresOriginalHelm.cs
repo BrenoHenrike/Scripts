@@ -69,41 +69,65 @@ public class SepulchuresOriginalHelm
         Core.SellItem("Royal ShadowScythe Blade");
     }
 
-    public void GravelynsDoomFireToken(int quant = 1)
+    public void GravelynsDoomFireToken()
     {
-        if (Core.CheckInventory(37033, quant))
+        if (Core.CheckInventory(37033))
             return;
 
         Core.AddDrop(GravelynsDoomFireTokenItems);
 
-        while (!Bot.ShouldExit && !Core.CheckInventory(37033, quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory(37033))
         {
-            while (!Bot.ShouldExit && !Core.CheckInventory(37034))
+            // Check for "Gravelyn's Blessing"
+            if (!Core.CheckInventory(37034))
             {
                 if (Core.CheckInventory("Necrotic Sword of Doom"))
                     Core.ChainComplete(5455);
-                if (Core.CheckInventory("Sepulchure's DoomKnight Armor"))
+                else if (Core.CheckInventory("Sepulchure's DoomKnight Armor"))
                     Core.ChainComplete(5456);
                 else
                 {
+                    // Handle the case when none of the above conditions match
+                    Farm.EvilREP(10);
                     Core.EnsureAccept(5457);
-                    Core.HuntMonster("necrodungeon", "Doom Overlord", "Essence of the Doomlord");
+                    while (!Bot.ShouldExit && !Core.CheckInventory(37039))
+                        Core.HuntMonsterMapID("necrodungeon", 9);
                     Core.EnsureComplete(5457);
+                    Bot.Wait.ForPickup(37034);
                 }
-                Bot.Wait.ForPickup(37034);
             }
-            Core.EnsureAccept(5458, 5459, 5460, 5461);
-            Core.KillMonster("swordhavenfalls", "r10", "Left", 1295, "Doomed Memories");
-            Core.EnsureComplete(5458);
-            Bot.Wait.ForPickup("Painful Memory Bubble");
-            Core.HuntMonster("shadowstrike", "Sepulchuroth", "Sepulchuroth's Undying Flame");
-            Core.EnsureComplete(5459);
-            Bot.Wait.ForPickup("Burning Passion Flame");
-            Core.HuntMonster("Shadowfall", "Shadow of the Past", "Father's Anger");
-            Core.EnsureComplete(5460);
-            Bot.Wait.ForPickup("Father's Sorrowful Tear");
-            Core.HuntMonster("shadowrealmpast", "*", "Empowered Essence", 13, isTemp: false);
-            Core.EnsureComplete(5461);
+
+            // Check for "Painful Memory Bubble"
+            if (!Core.CheckInventory("Painful Memory Bubble"))
+            {
+                Core.EnsureAccept(5458, 5459, 5460, 5461);
+                Core.KillMonster("swordhavenfalls", "r10", "Left", 1295, "Doomed Memories");
+                Core.EnsureComplete(5458);
+                Bot.Wait.ForPickup("Painful Memory Bubble");
+            }
+
+            // Check for "Burning Passion Flame"
+            if (!Core.CheckInventory("Burning Passion Flame"))
+            {
+                Core.HuntMonster("shadowstrike", "Sepulchuroth", "Sepulchuroth's Undying Flame");
+                Core.EnsureComplete(5459);
+                Bot.Wait.ForPickup("Burning Passion Flame");
+            }
+
+            // Check for "Father's Sorrowful Tear"
+            if (!Core.CheckInventory("Father's Sorrowful Tear"))
+            {
+                Core.HuntMonster("Shadowfall", "Shadow of the Past", "Father's Anger");
+                Core.EnsureComplete(5460);
+                Bot.Wait.ForPickup("Father's Sorrowful Tear");
+            }
+
+            // Kill monsters for "Empowered Essence"
+            Core.KillMonster("shadowrealmpast", "Enter", "Spawn", "*", "Empowered Essence", 13, isTemp: false);
+
+            // Ensure completion of the main quest
+            if (GravelynsDoomFireTokenItems.Take(6).All(item => Core.CheckInventory(item)) && Core.CheckInventory("Empowered Essence", 13))
+                Core.EnsureComplete(5461);
             Bot.Wait.ForPickup(37033);
         }
     }
