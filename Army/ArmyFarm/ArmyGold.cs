@@ -244,8 +244,9 @@ public class ArmyGold
             case "Default":
                 //Example Case
                 break;
-
         }
+        Core.JumpWait();
+        Core.Join("Whitemap");
     }
 
     public enum Method
