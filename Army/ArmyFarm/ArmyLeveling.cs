@@ -157,7 +157,7 @@ public class ArmyLeveling
                 RequiredQuest("shadowbattleon", 9426);
                 Core.EquipClass(ClassType.Farm);
                 Core.AddDrop("Wisper");
-                Core.RegisterQuests(Core.isCompletedBefore(9426) ? new[] { 9421, 9422, 9426 } : new[] { 9421, 9422 });
+                Core.RegisterQuests(9421, 9422, 9426);
 
                 Army.waitForParty("shadowbattleon");
 

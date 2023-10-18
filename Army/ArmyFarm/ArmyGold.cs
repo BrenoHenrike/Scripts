@@ -61,6 +61,9 @@ public class ArmyGold
     {
         Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
 
+        Core.PrivateRooms = true;
+        Core.PrivateRoomNumber = Army.getRoomNr();
+
         Core.EquipClass(ClassType.Farm);
         //Adv.BestGear(GenericGearBoost.gold);
         Farm.ToggleBoost(BoostType.Gold);
@@ -76,6 +79,8 @@ public class ArmyGold
             SCW();
         else if (((int)mapname == 5))
             StreamWar();
+        else if (((int)mapname == 6))
+            ShadowBattleon();
         Bot.Lite.ReacceptQuest = false;
     }
 
@@ -105,10 +110,7 @@ public class ArmyGold
 
     public void DWL()
     {
-        Core.PrivateRooms = true;
-        Core.PrivateRoomNumber = Army.getRoomNr();
-
-        DWLN.DarkWarLegion();
+         DWLN.DarkWarLegion();
 
         Army.AggroMonMIDs(1, 2, 3, 4, 5, 6, 7, 8);
         Army.AggroMonStart("darkwarlegion");
@@ -126,10 +128,7 @@ public class ArmyGold
 
     public void DWN()
     {
-        Core.PrivateRooms = true;
-        Core.PrivateRoomNumber = Army.getRoomNr();
-
-        DWLN.DarkWarNation();
+       DWLN.DarkWarNation();
 
         Core.RegisterQuests(8578, 8579, 8580, 8581); //Legion Badges, Mega Legion Badges, Doomed Legion Warriors, Undead Legion Dread
 
@@ -148,9 +147,6 @@ public class ArmyGold
 
     public void SCW()
     {
-        Core.PrivateRooms = true;
-        Core.PrivateRoomNumber = Army.getRoomNr();
-
         SC.CirclesWar(true);
 
         Core.RegisterQuests(7979, 7980, 7981);
@@ -170,9 +166,6 @@ public class ArmyGold
 
     public void StreamWar()
     {
-        Core.PrivateRooms = true;
-        Core.PrivateRoomNumber = Army.getRoomNr();
-
         Core.AddDrop("Prismatic Seams");
 
         SoW.TimestreamWar();
@@ -196,9 +189,10 @@ public class ArmyGold
     private void ShadowBattleon()
     {
         RequiredQuest("shadowbattleon", 9426);
+
         Core.EquipClass(ClassType.Farm);
         Core.AddDrop("Wisper");
-        Core.RegisterQuests(Core.isCompletedBefore(9426) ? new[] { 9421, 9422, 9426 } : new[] { 9421, 9422 });
+        Core.RegisterQuests(9421, 9422, 9426 );
 
         Army.waitForParty("shadowbattleon");
 
@@ -209,13 +203,13 @@ public class ArmyGold
         while (!Bot.ShouldExit && Bot.Player.Gold < 100000000)
             Bot.Combat.Attack("*");
 
-
         Army.AggroMonStop(true);
+        Farm.ToggleBoost(BoostType.Gold, false);
+        Core.CancelRegisteredQuests();
         Core.JumpWait();
         Core.ToBank("Wisper");
         Army.waitForParty("whitemap");
     }
-
 
     void RequiredQuest(string map, int Quest)
     {
@@ -261,6 +255,7 @@ public class ArmyGold
         DarkWarLegion = 2,
         DarkWarNation = 3,
         SevenCirclesWar = 4,
-        StreamWar = 5
+        StreamWar = 5,
+        ShadowBattleon = 6
     }
 }
