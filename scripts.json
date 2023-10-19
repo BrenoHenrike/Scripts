@@ -212,12 +212,16 @@
   },
   {
     "name": "DarkWarLegionGold",
-    "description": "null",
+    "description": "Gold farm using Dark War Legion Method",
     "tags": [
-      "null"
+      "gold",
+      "farm",
+      "dark",
+      "war",
+      "legion"
     ],
     "path": "Farm/DarkWarLegionGold.cs",
-    "size": 1032,
+    "size": 1091,
     "fileName": "DarkWarLegionGold.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/DarkWarLegionGold.cs"
   },
