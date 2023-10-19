@@ -146,11 +146,7 @@ public class CoreNSOD
             Core.Logger("Switching to FarmClass with aggro off");
             Bot.Options.AggroMonsters = false;
 
-            while (!Bot.ShouldExit && !Bot.Inventory.IsEquipped(Core.FarmClass))
-            {
-                Core.EquipClass(ClassType.Farm);
-                Bot.Sleep(2500);
-            }
+            Core.EquipClass(ClassType.Farm);
 
             // Farm mob 1 for essence with aggro on
             Core.Logger("Switching aggro on for mob 1");
@@ -160,11 +156,8 @@ public class CoreNSOD
             // Disable aggro, Jump and wait, wait for combat exit, equip SoloClass
             Core.Logger("Switching to SoloClass with aggro off");
             Bot.Options.AggroMonsters = false;  // Set aggro off for mob 2
-            while (!Bot.ShouldExit && !Bot.Inventory.IsEquipped(Core.SoloClass))
-            {
-                Core.EquipClass(ClassType.Solo);
-                Bot.Sleep(2500);
-            }
+
+            Core.EquipClass(ClassType.Solo);
 
             // Hunt mob 2 for essence with aggro off
             Core.HuntMonsterMapID("shadowrealmpast", 11, "Malignant Essence", 3, false, log: false);
