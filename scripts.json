@@ -9950,7 +9950,7 @@
       "pirate"
     ],
     "path": "Seasonal/TalkLikeaPirateDay/CelestialPirateCommander[PollyRogers].cs",
-    "size": 3487,
+    "size": 3599,
     "fileName": "CelestialPirateCommander[PollyRogers].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/CelestialPirateCommander[PollyRogers].cs"
   },
@@ -14253,6 +14253,23 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyLegion/ArmyObsidianRock.cs"
   },
   {
+    "name": "Complete Elegy of Madness Story, then farm Higure sword",
+    "description": "This will complete the Astravia story and farm the seasonal Higure sword.",
+    "tags": [
+      "story",
+      "quest",
+      "elegy-of-madness",
+      "darkon",
+      "complete",
+      "all",
+      "higure"
+    ],
+    "path": "Army/ArmySeasonal/ArmyHigure.cs",
+    "size": 7951,
+    "fileName": "ArmyHigure.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmySeasonal/ArmyHigure.cs"
+  },
+  {
     "name": "script name here",
     "description": "Farms [InsertItem]  using your army.",
     "tags": [
@@ -14354,6 +14371,19 @@
     "size": 1920,
     "fileName": "AllDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/OneClient/AllDailies.cs"
+  },
+  {
+    "name": "Void HighLord Army",
+    "description": "uses an army to get the void highlord class",
+    "tags": [
+      "void highlord",
+      "class",
+      "army"
+    ],
+    "path": "Army/Classes/ArmyVoidHighlord.cs",
+    "size": 30467,
+    "fileName": "ArmyVoidHighlord.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Classes/ArmyVoidHighlord.cs"
   },
   {
     "name": "Dragon of Time Army",
