@@ -50,27 +50,5 @@ public class ArmyMythsongRep
         Core.SetOptions(false);
     }
 
-    public void Setup() => CAR.insertrephere();
-        if (Farm.FactionRank("Mythsong") >= 10)
-            return;
-
-        if (!Bot.Quests.IsUnlocked(4829))
-        {
-            Core.Logger("Can't do farming quest (Do Lord of Chaos Kimberly)", messageBox: true);
-            return;
-        }
-
-        Core.PrivateRooms = true;
-        Core.PrivateRoomNumber = Army.getRoomNr();
-
-        Core.EquipClass(ClassType.Farm);
-        Core.RegisterQuests(4829); //Sugar, Sugar 4829
-        Farm.ToggleBoost(BoostType.Reputation);
-        Army.SmartAggroMonStart("beehive", "Stinger");
-        while (!Bot.ShouldExit && Farm.FactionRank("Mythsong") < 10)
-            Bot.Combat.Attack("*");
-        Army.AggroMonStop(true);
-        Farm.ToggleBoost(BoostType.Reputation, false);
-        Core.CancelRegisteredQuests();
-    }
+    public void Setup() => CAR.ArmyMythsongRep();
 }

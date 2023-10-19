@@ -7,6 +7,7 @@ tags: army, reputation, all reputation
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/Army/ArmyFarm/Rep/CoreArmyRep.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 //cs_include Scripts/Army/CoreArmyLite.cs
 //cs_include Scripts/Story/RavenlossSaga.cs
