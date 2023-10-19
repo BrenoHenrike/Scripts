@@ -161,23 +161,38 @@ public class ArmyLeveling
                 break;
 
 
-
             case Method.ShadowBattleon_High_Levels:
             case Method.ShadowBattleon_Lower_Levels:
+            case Method.ShadowBattleon_Baby_Mode:
                 RequiredQuest("shadowbattleon", 9426);
                 Core.EquipClass(ClassType.Farm);
                 Core.AddDrop("Wisper");
-                Core.RegisterQuests(9421, 9422, 9426);
 
-                Army.AggroMonStart("shadowbattleon");
+                if (selectedMethod == Method.ShadowBattleon_Baby_Mode)
+                    Core.RegisterQuests(9421, 9422, 9423);
+                else
+                    Core.RegisterQuests(9421, 9422, 9426);
+
+                Core.Logger($"Mode Selected: {selectedMethod}");
 
                 if (selectedMethod == Method.ShadowBattleon_High_Levels)
                 {
                     Army.AggroMonCells("r11", "r12");
+                    Army.AggroMonStart("shadowbattleon");
                     Army.DivideOnCells("r11", "r12");
                 }
-                else
-                    Army.AggroMonCells("r11"); // For "ShadowBattleon_Lower_Levels"
+                else if (selectedMethod == Method.ShadowBattleon_Lower_Levels)
+                {
+                    Army.AggroMonCells("r11");
+                    Army.AggroMonStart("shadowbattleon");
+                    Army.DivideOnCells("r11");
+                }
+                else if (selectedMethod == Method.ShadowBattleon_Baby_Mode)
+                {
+                    Army.AggroMonCells("Enter");
+                    Army.AggroMonStart("shadowbattleon");
+                    Army.DivideOnCells("Enter");
+                }
 
                 Core.Logger("This method is optimized. If the rate is ever poor, please use SCW.");
 
@@ -190,7 +205,6 @@ public class ArmyLeveling
                 Farm.ToggleBoost(BoostType.Gold, false);
                 Army.waitForParty("whitemap");
                 break;
-
 
                 //add more cases
 
@@ -222,9 +236,9 @@ public class ArmyLeveling
         Streamwar = 3,
         SevenCirclesWar = 4,
         IceWing = 5,
-        ShadowBattleon_Lower_Levels = 6,
-        ShadowBattleon_High_Levels = 7
-
+        ShadowBattleon_Baby_Mode = 6,
+        ShadowBattleon_Lower_Levels = 7,
+        ShadowBattleon_High_Levels = 8,
     }
 
 
