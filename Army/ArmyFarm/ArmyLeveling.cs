@@ -161,17 +161,26 @@ public class ArmyLeveling
                 break;
 
 
-            case Method.ShadowBattleon:
+
+            case Method.ShadowBattleon_High_Levels:
+            case Method.ShadowBattleon_Lower_Levels:
                 RequiredQuest("shadowbattleon", 9426);
                 Core.EquipClass(ClassType.Farm);
                 Core.AddDrop("Wisper");
                 Core.RegisterQuests(9421, 9422, 9426);
 
-
-                Army.AggroMonCells("r11", "r12");
                 Army.AggroMonStart("shadowbattleon");
-                Army.DivideOnCells("r11", "r12");
-                Core.Logger("This method is insane atm.. if the rate is ever complete sh*t please use SCW");
+
+                if (selectedMethod == Method.ShadowBattleon_High_Levels)
+                {
+                    Army.AggroMonCells("r11", "r12");
+                    Army.DivideOnCells("r11", "r12");
+                }
+                else
+                    Army.AggroMonCells("r11"); // For "ShadowBattleon_Lower_Levels"
+
+                Core.Logger("This method is optimized. If the rate is ever poor, please use SCW.");
+
                 while (!Bot.ShouldExit && Bot.Player.Level < level)
                     Bot.Combat.Attack("*");
 
@@ -181,6 +190,7 @@ public class ArmyLeveling
                 Farm.ToggleBoost(BoostType.Gold, false);
                 Army.waitForParty("whitemap");
                 break;
+
 
                 //add more cases
 
@@ -212,7 +222,8 @@ public class ArmyLeveling
         Streamwar = 3,
         SevenCirclesWar = 4,
         IceWing = 5,
-        ShadowBattleon = 6
+        ShadowBattleon_Lower_Levels = 6,
+        ShadowBattleon_High_Levels = 7
 
     }
 
