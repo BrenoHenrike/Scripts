@@ -369,7 +369,7 @@ public class CoreFarms
         Core.Logger($"Farming {gold} gold using SCW Method");
 
         Core.RegisterQuests(7979, 7980, 7981);
-        while (!Bot.ShouldExit && Bot.Player.Level < level || Bot.Player.Gold < gold)
+        while (!Bot.ShouldExit && level == 101 ? Bot.Player.Gold < gold : Bot.Player.Level < level && Bot.Player.Gold < gold)
         {
             Core.KillMonster("sevencircleswar", "Enter", "Right", "*", "Wrath Guards Defeated", 12);
             Core.KillMonster("sevencircleswar", "Enter", "Right", "*", "War Medal", 5);
