@@ -54,9 +54,10 @@ public class SevenCircles
         //Cirlces of Fate
         Story.KillQuest(7978, "sevencircles", new[] { "Luxuria", "Gluttony", "Avarice", "Limbo Guard" });
     }
-    public void CirclesWar(bool excludeBoss = false)
+
+    public void CirclesWar(bool excludeBoss = false, bool StopForGoldFarm = false)
     {
-        if (Core.isCompletedBefore(7990))
+        if (excludeBoss ? Core.isCompletedBefore(7989) : Core.isCompletedBefore(7990))
             return;
 
         Circles();
@@ -69,6 +70,10 @@ public class SevenCircles
         Story.KillQuest(7980, "sevencircleswar", "Wrath Guard");
         //Mega War Medals
         Story.KillQuest(7981, "sevencircleswar", "Wrath Guard");
+
+        if (StopForGoldFarm)
+            return;
+
         //Wrath Against the Machine  
         Story.KillQuest(7982, "sevencircleswar", "Wrath");
         //Blasphemy? Blasphe-you!
