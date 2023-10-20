@@ -78,6 +78,7 @@ public class SepulchuresOriginalHelm
 
         while (!Bot.ShouldExit && !Core.CheckInventory(37033))
         {
+            Core.EnsureAccept(5461);
             // Check for "Gravelyn's Blessing"
             if (!Core.CheckInventory(37034))
             {
@@ -100,7 +101,7 @@ public class SepulchuresOriginalHelm
             // Check for "Painful Memory Bubble"
             if (!Core.CheckInventory("Painful Memory Bubble"))
             {
-                Core.EnsureAccept(5458, 5459, 5460, 5461);
+                Core.EnsureAccept(5458);
                 Core.KillMonster("swordhavenfalls", "r10", "Left", 1295, "Doomed Memories");
                 Core.EnsureComplete(5458);
                 Bot.Wait.ForPickup("Painful Memory Bubble");
@@ -109,6 +110,7 @@ public class SepulchuresOriginalHelm
             // Check for "Burning Passion Flame"
             if (!Core.CheckInventory("Burning Passion Flame"))
             {
+                Core.EnsureAccept(5459);
                 Core.HuntMonster("shadowstrike", "Sepulchuroth", "Sepulchuroth's Undying Flame");
                 Core.EnsureComplete(5459);
                 Bot.Wait.ForPickup("Burning Passion Flame");
@@ -117,6 +119,7 @@ public class SepulchuresOriginalHelm
             // Check for "Father's Sorrowful Tear"
             if (!Core.CheckInventory("Father's Sorrowful Tear"))
             {
+                Core.EnsureAccept(5460);
                 Core.HuntMonster("Shadowfall", "Shadow of the Past", "Father's Anger");
                 Core.EnsureComplete(5460);
                 Bot.Wait.ForPickup("Father's Sorrowful Tear");
@@ -125,9 +128,7 @@ public class SepulchuresOriginalHelm
             // Kill monsters for "Empowered Essence"
             Core.KillMonster("shadowrealmpast", "Enter", "Spawn", "*", "Empowered Essence", 13, isTemp: false);
 
-            // Ensure completion of the main quest
-            if (GravelynsDoomFireTokenItems.Take(6).All(item => Core.CheckInventory(item)) && Core.CheckInventory("Empowered Essence", 13))
-                Core.EnsureComplete(5461);
+            Core.EnsureComplete(5461);
             Bot.Wait.ForPickup(37033);
         }
     }
