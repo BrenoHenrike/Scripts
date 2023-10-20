@@ -32,7 +32,7 @@ public class ArmyGold
     private static CoreBots sCore = new();
     private static CoreArmyLite sArmy = new();
 
-    public string OptionsStorage = "Army Gold";
+    public string OptionsStorage = "Army_Gold";
     public bool DontPreconfigure = true;
     public List<IOption> Options = new()
     {
@@ -71,16 +71,18 @@ public class ArmyGold
 
         if (((int)mapname == 0) || ((int)mapname == 1))
             BGE(Bot.Config!.Get<Method>("mapname"));
-        else if (((int)mapname == 2))
+        else if ((int)mapname == 2)
             DWL();
         else if (((int)mapname == 3))
             DWN();
-        else if (((int)mapname == 4))
+        else if ((int)mapname == 4)
             SCW();
-        else if (((int)mapname == 5))
+        else if ((int)mapname == 5)
             StreamWar();
-        else if (((int)mapname == 6))
-            ShadowBattleon();
+        else
+            foreach (int mapName in new[] { 6, 7, 8 })
+                ShadowBattleon();
+
         Bot.Lite.ReacceptQuest = false;
     }
 
@@ -195,9 +197,31 @@ public class ArmyGold
         Core.AddDrop("Wisper");
         Core.RegisterQuests(9421, 9422, 9426);
 
-        Army.AggroMonCells("r11", "r12");
-        Army.AggroMonStart("shadowbattleon");
-        Army.DivideOnCells("r11", "r12");
+        if (Bot.Config!.Get<Method>("mapname") == Method.ShadowBattleon_Baby_Mode)
+            Core.RegisterQuests(9421, 9422, 9423);
+        else
+            Core.RegisterQuests(9421, 9422, 9426);
+
+        Core.Logger($"Mode Selected: {Bot.Config!.Get<Method>("mapname")}");
+
+        if (Bot.Config!.Get<Method>("mapname") == Method.ShadowBattleon_High_Levels)
+        {
+            Army.AggroMonCells("r11", "r12");
+            Army.AggroMonStart("shadowbattleon");
+            Army.DivideOnCells("r11", "r12");
+        }
+        else if (Bot.Config!.Get<Method>("mapname") == Method.ShadowBattleon_Lower_Levels)
+        {
+            Army.AggroMonCells("r11");
+            Army.AggroMonStart("shadowbattleon");
+            Army.DivideOnCells("r11");
+        }
+        else if (Bot.Config!.Get<Method>("mapname") == Method.ShadowBattleon_Baby_Mode)
+        {
+            Army.AggroMonCells("Enter");
+            Army.AggroMonStart("shadowbattleon");
+            Army.DivideOnCells("Enter");
+        }
 
         Core.Logger("This method is insane atm.. if the rate is ever complete sh*t please use SCW");
         while (!Bot.ShouldExit && Bot.Player.Gold < 100000000)
@@ -255,6 +279,9 @@ public class ArmyGold
         DarkWarNation = 3,
         SevenCirclesWar = 4,
         StreamWar = 5,
-        ShadowBattleon = 6
+        ShadowBattleon_Baby_Mode = 6,
+        ShadowBattleon_Lower_Levels = 7,
+        ShadowBattleon_High_Levels = 8
+
     }
 }
