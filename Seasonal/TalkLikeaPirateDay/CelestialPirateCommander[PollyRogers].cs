@@ -14,7 +14,6 @@ public class CelestialPirateCommander
     private CoreFarms Farm = new();
 
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new();
     public bool DontPreconfigure = true;
     public string OptionsStorage = "Pet only or All";
     public List<IOption> Options = new List<IOption>()
