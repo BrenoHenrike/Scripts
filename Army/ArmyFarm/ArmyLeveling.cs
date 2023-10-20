@@ -34,7 +34,7 @@ public class ArmyLeveling
     private static CoreArmyLite sArmy = new();
 
     public bool DontPreconfigure = true;
-    public string OptionsStorage = "ArmyLeveling";
+    public string OptionsStorage = "Army Leveling";
     public List<IOption> Options = new List<IOption>
     {
         new Option<Method>("LevelMethod", "Map selection", "Which map to farm Experience?", Method.IceStormArena),

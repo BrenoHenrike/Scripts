@@ -32,7 +32,7 @@ public class ArmyGold
     private static CoreBots sCore = new();
     private static CoreArmyLite sArmy = new();
 
-    public string OptionsStorage = "ArmyGold";
+    public string OptionsStorage = "Army Gold";
     public bool DontPreconfigure = true;
     public List<IOption> Options = new()
     {
