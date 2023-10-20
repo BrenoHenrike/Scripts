@@ -29,7 +29,7 @@ public class SevenCirclesWarXP
 
     public void DoSevenCirclesWarXP()
     {
-        SC.Circles();
+        SC.CirclesWar();
 
         //Adv.BestGear(GenericGearBoost.exp);
         //Adv.BestGear(GenericGearBoost.gold);
