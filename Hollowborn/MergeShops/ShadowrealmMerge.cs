@@ -101,6 +101,7 @@ public class ShadowrealmMerge
                     break;
 
                 case "Unmoulded Fiend Essence":
+                    Core.FarmingLogger($"{req.Name}", quant);
                     Adv.BuyItem("tercessuinotlim", 1951, "Unmoulded Fiend Essence", quant);
                     Bot.Wait.ForPickup(req.Name);
                     break;
