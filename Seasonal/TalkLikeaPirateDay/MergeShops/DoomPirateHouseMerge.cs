@@ -66,34 +66,31 @@ public class DoomPirateHouseMerge
                 case "Gallaeon's Piece of Eight":
                     Core.FarmingLogger(req.Name, quant);
                     Core.RegisterQuests(9355);
-
-                    // Main loop while bot should continue and inventory has enough "item".
+                    int[] monsterIDs = new[] { 5, 4, 7, 6, 9, 8, 11, 10 };
                     while (!Bot.ShouldExit && !Core.CheckInventory("Gallaeon's Piece of Eight", 99))
                     {
-                        // Equip "Solo" class and join "doompirate" map on "r5" (Left).
                         Core.EquipClass(ClassType.Solo);
                         Core.Join("doompirate");
-
-                        // Move to "r5" while not in the "r5" room.
                         while (!Bot.ShouldExit && Bot.Player.Cell != "r5")
                         {
                             Core.Jump("r5", "Left");
-                            Bot.Sleep(2500);
+                            Bot.Sleep(Core.ActionDelay);
                         }
+                        Bot.Player.SetSpawnPoint();
 
-                        // Attack a list of monsters if they are alive.
-                        foreach (int MonsterID in new[] { 4, 5, 6, 7, 8, 9, 10, 11 })
+
+                        while (!Bot.ShouldExit && !Core.CheckInventory("Gallaeon's Piece of Eight", 99))
                         {
-                            while (!Bot.ShouldExit && Core.IsMonsterAlive(MonsterID, useMapID: true))
+                            foreach (int MonsterID in monsterIDs)
                             {
-                                Bot.Combat.Attack(MonsterID);
-                                if (!Core.IsMonsterAlive(MonsterID, useMapID: true))
-                                    break;
+                                if (Core.IsMonsterAlive(MonsterID, useMapID: true))
+                                    while (!Bot.ShouldExit && Core.IsMonsterAlive(MonsterID, useMapID: true))
+                                        Bot.Combat.Attack(MonsterID);
+                                else
+                                    Bot.Combat.Attack(12);
                             }
                         }
 
-                        // Hunt the Monster with Map ID 12 on the "doompirate" map for "item" until reaching 9999.
-                        Core.HuntMonsterMapID("doompirate", 12, req.Name, quant, false);
                     }
                     break;
 
