@@ -13060,13 +13060,26 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/Various/ExaltedSoulCleaver.cs"
   },
   {
-    "name": "DageChallengeMerge",
-    "description": "null",
+    "name": "Dage Challenge Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Dage Challenge Merge [2118] in /dage",
     "tags": [
-      "null"
+      "dage",
+      "challenge",
+      "merge",
+      "dage",
+      "avarice",
+      "legion",
+      "legions",
+      "scarf",
+      "scythe",
+      "luxuria",
+      "eye",
+      "virgil",
+      "vital",
+      "exanima"
     ],
     "path": "Legion/Various/DageChallengeMerge.cs",
-    "size": 6326,
+    "size": 7364,
     "fileName": "DageChallengeMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/Various/DageChallengeMerge.cs"
   },
