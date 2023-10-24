@@ -7731,6 +7731,18 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/LightCaster.cs"
   },
   {
+    "name": "Free 500 accs",
+    "description": "the 500 free acs quest",
+    "tags": [
+      "acs",
+      "free"
+    ],
+    "path": "Other/FreeAcGifts[Yearly]/AcGift2023.cs",
+    "size": 879,
+    "fileName": "AcGift2023.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FreeAcGifts[Yearly]/AcGift2023.cs"
+  },
+  {
     "name": "serpentine larvae set",
     "description": "gets pet, does quest, gets set",
     "tags": [
@@ -14320,7 +14332,7 @@
       "army."
     ],
     "path": "Army/OneClient/ArmyFreeAcs.cs",
-    "size": 1216,
+    "size": 1879,
     "fileName": "ArmyFreeAcs.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/OneClient/ArmyFreeAcs.cs"
   },
