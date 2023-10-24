@@ -64,18 +64,42 @@ public class DoomPirateHouseMerge
                 #endregion
 
                 case "Gallaeon's Piece of Eight":
-                    Core.Logger($"{req.Name}" + " requires ultra boss, you need to prefarm it yourself.");
+                    // Main loop while bot should continue and inventory has enough "item".
+                    while (!Bot.ShouldExit && !Core.CheckInventory("Gallaeon's Piece of Eight", 99))
+                    {
+                        // Equip "Solo" class and join "doompirate" map on "r5" (Left).
+                        Core.EquipClass(ClassType.Solo);
+                        Core.Join("doompirate");
+
+                        // Move to "r5" while not in the "r5" room.
+                        while (!Bot.ShouldExit && Bot.Player.Cell != "r5")
+                        {
+                            Core.Jump("r5", "Left");
+                            Bot.Sleep(2500);
+                        }
+
+                        // Attack a list of monsters if they are alive.
+                        foreach (int MonsterID in new[] { 4, 5, 6, 7, 8, 9, 10, 11 })
+                        {
+                            while (!Bot.ShouldExit && Core.IsMonsterAlive(MonsterID, useMapID: true))
+                            {
+                                Bot.Combat.Attack(MonsterID);
+                                if (!Core.IsMonsterAlive(MonsterID, useMapID: true))
+                                    break;
+                            }
+                        }
+
+                        // Hunt the Monster with Map ID 12 on the "doompirate" map for "item" until reaching 9999.
+                        Core.HuntMonsterMapID("doompirate", 12, "Gallaeon's Piece of Eight", 99, false);
+                    }
                     break;
 
                 case "Doom Doubloon":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
                     Core.RegisterQuests(9354);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster("doompirate", "Gallaeon", log: false);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
+                    Core.HuntMonsterMapID("doompirate", 3, req.Name, quant, log: false);
+                    Bot.Wait.ForPickup(req.Name);
                     Core.CancelRegisteredQuests();
                     break;
             }

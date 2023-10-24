@@ -29,9 +29,21 @@ public class DoomPirate
         Story.PreLoad(this);
 
         // Spare Hydra Heads (9353)
-        Story.KillQuest(9353, "doompirate", "Hydra Swabbie");
+        if (!Story.QuestProgression(9353))
+        {
+            Core.EquipClass(ClassType.Farm);
+            Core.EnsureAccept(9353);
+            Core.HuntMonsterMapID("doompirate", 1, "Silver Doubloon", 6);
+            Core.EnsureAccept(9353);
+        }
 
         // Chasing Crimson October (9354)
-        Story.KillQuest(9354, "doompirate", "Gallaeon");
+        if (!Story.QuestProgression(9354))
+        {
+            Core.EquipClass(ClassType.Solo);
+            Core.EnsureAccept(9354);
+            Core.HuntMonsterMapID("doompirate", 3, "Dented Naval Medal");
+            Core.EnsureAccept(9354);
+        }
     }
 }
