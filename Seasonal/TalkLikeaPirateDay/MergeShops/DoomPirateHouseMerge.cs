@@ -64,6 +64,9 @@ public class DoomPirateHouseMerge
                 #endregion
 
                 case "Gallaeon's Piece of Eight":
+                    Core.FarmingLogger(req.Name, quant);
+                    Core.RegisterQuests(9355);
+
                     // Main loop while bot should continue and inventory has enough "item".
                     while (!Bot.ShouldExit && !Core.CheckInventory("Gallaeon's Piece of Eight", 99))
                     {
@@ -90,7 +93,7 @@ public class DoomPirateHouseMerge
                         }
 
                         // Hunt the Monster with Map ID 12 on the "doompirate" map for "item" until reaching 9999.
-                        Core.HuntMonsterMapID("doompirate", 12, "Gallaeon's Piece of Eight", 99, false);
+                        Core.HuntMonsterMapID("doompirate", 12, req.Name, quant, false);
                     }
                     break;
 
