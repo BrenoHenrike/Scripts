@@ -65,7 +65,9 @@ public class DoomPirateHaulMerge
                 #endregion
 
                 case "Gallaeon's Piece of Eight":
-                    Core.Logger($"{req.Name}" + " requires ultra boss, you need to prefarm it yourself.");
+                    if (Core.CheckInventory(req.Name, quant))
+                        Core.Logger($"{req.Name}, x{quant} Found!");
+                    else Core.Logger($"{req.Name}" + " requires ultra boss, you need to prefarm it yourself.", stopBot: true);
                     break;
 
                 case "Doom Doubloon":
