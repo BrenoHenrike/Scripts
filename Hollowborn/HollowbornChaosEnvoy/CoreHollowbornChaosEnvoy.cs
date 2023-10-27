@@ -199,16 +199,16 @@ public class CoreHollowbornChaosEnvoy
 
         if (shouldReturnEarly)
         {
+            Core.Logger("Quest rewards are already obtained or conditions met. Exiting Stirring Discord.");
             return;
         }
-
 
         Core.AddDrop(rewards);
 
         HB.HardcoreContract();
         Farm.Experience(75);
 
-        Core.Logger($"Reward Choosen: {Bot.Config!.Get<StirringDiscordRewards>("Stirring Discord")}");
+        Core.Logger($"Reward Chosen: {Bot.Config!.Get<StirringDiscordRewards>("Stirring Discord")}");
         while (!Bot.ShouldExit)
         {
             Core.EnsureAccept(7158);
@@ -220,26 +220,30 @@ public class CoreHollowbornChaosEnvoy
             Core.HuntMonster("chaosboss", "Ultra Chaos Warlord", "Chaotic War Essence", 15, false);
             Adv.BuyItem("crownsreach", 1383, "Chaotic Knight Helm");
 
-
-
             if (completeOnce)
             {
                 Core.EnsureComplete(8998);
+                Core.Logger("Stirring Discord quest completed.");
                 return;
             }
             else
             {
                 if (rewardSelection == StirringDiscordRewards.All && !Core.CheckInventory(rewards))
+                {
                     Core.EnsureCompleteChoose(8998, Core.QuestRewards(8998));
+                    Core.Logger("Stirring Discord quest completed.");
+                }
                 else
                 {
                     Core.EnsureComplete(8998, (int)Bot.Config!.Get<StirringDiscordRewards>("Stirring Discord"));
+                    Core.Logger("Stirring Discord quest completed.");
                     break;
                 }
             }
         }
         Core.CancelRegisteredQuests();
     }
+
     public void InTheBeastsShadow(InTheBeastsShadowRewards rewardSelection = InTheBeastsShadowRewards.None, bool completeOnce = false)
     {
         if (!Bot.Quests.IsUnlocked(8999))
@@ -258,14 +262,14 @@ public class CoreHollowbornChaosEnvoy
 
         if (shouldReturnEarly)
         {
+            Core.Logger("Conditions met to skip In The Beasts Shadow quest.");
             return;
         }
 
         Core.AddDrop(rewards);
         Farm.Experience(75);
 
-        Core.Logger($"Reward Choosen: {beastsShadowReward}");
-
+        Core.Logger($"Reward Chosen: {beastsShadowReward}");
         while (!Bot.ShouldExit)
         {
             Core.EnsureAccept(8999);
@@ -284,15 +288,20 @@ public class CoreHollowbornChaosEnvoy
             if (completeOnce)
             {
                 Core.EnsureComplete(8999);
+                Core.Logger("In The Beasts Shadow quest completed.");
                 return;
             }
             else
             {
                 if (rewardSelection == InTheBeastsShadowRewards.All && !Core.CheckInventory(rewards))
+                {
                     Core.EnsureCompleteChoose(8999, Core.QuestRewards(8999));
+                    Core.Logger("In The Beasts Shadow quest completed.");
+                }
                 else
                 {
                     Core.EnsureComplete(8999, (int)beastsShadowReward);
+                    Core.Logger("In The Beasts Shadow quest completed.");
                     break;
                 }
             }
@@ -300,7 +309,6 @@ public class CoreHollowbornChaosEnvoy
 
         Core.CancelRegisteredQuests();
     }
-
 
     public void UniqueQuarry(UniqueQuarryRewards rewardSelection = UniqueQuarryRewards.None, bool completeOnce = false)
     {
@@ -320,6 +328,7 @@ public class CoreHollowbornChaosEnvoy
 
         if (shouldReturnEarly)
         {
+            Core.Logger("Conditions met to skip Unique Quarry quest.");
             return;
         }
 
@@ -327,8 +336,7 @@ public class CoreHollowbornChaosEnvoy
         Farm.Experience(75);
         ADG.AscendedGear("Ascended Face of Chaos");
 
-        Core.Logger($"Reward Choosen: {quarryReward}");
-
+        Core.Logger($"Reward Chosen: {quarryReward}");
         while (!Bot.ShouldExit)
         {
             Core.EnsureAccept(9000);
@@ -355,15 +363,20 @@ public class CoreHollowbornChaosEnvoy
             if (completeOnce)
             {
                 Core.EnsureComplete(9000);
+                Core.Logger("Unique Quarry quest completed.");
                 return;
             }
             else
             {
                 if (rewardSelection == UniqueQuarryRewards.All && !Core.CheckInventory(rewards))
+                {
                     Core.EnsureCompleteChoose(9000, Core.QuestRewards(9000));
+                    Core.Logger("Unique Quarry quest completed.");
+                }
                 else
                 {
                     Core.EnsureComplete(9000, (int)quarryReward);
+                    Core.Logger("Unique Quarry quest completed.");
                     break;
                 }
             }
@@ -396,9 +409,10 @@ public class CoreHollowbornChaosEnvoy
         QOM.TheQueensSecrets();
         Core.HuntMonster("finalbattle", "Drakath", "Drakath Wings", isTemp: false);
 
-        Core.Logger($"Reward Choosen: {illusionsReward}");
+        Core.Logger($"Reward Chosen: {illusionsReward}");
         if (!Core.CheckInventory("Supreme Arcane Staff of Chaos"))
         {
+            Core.Logger("Hunting for Supreme Arcane Staff of Chaos.");
             Core.HuntMonster("ledgermayne", "Ledgermayne", "The Supreme Arcane Staff", isTemp: false); // Can buyback
             Adv.BuyItem("deepforest", 1999, "Supreme Arcane Staff of Chaos");
         }
@@ -422,22 +436,26 @@ public class CoreHollowbornChaosEnvoy
             if (completeOnce)
             {
                 Core.EnsureComplete(9001);
+                Core.Logger("Wavering Illusions quest completed.");
                 return;
             }
             else
             {
                 if (rewardSelection == WaveringIllusionsRewards.All && !Core.CheckInventory(rewards))
+                {
                     Core.EnsureCompleteChoose(9001, Core.QuestRewards(9001));
+                    Core.Logger("Wavering Illusions quest completed.");
+                }
                 else
                 {
                     Core.EnsureComplete(9001, (int)illusionsReward);
+                    Core.Logger("Wavering Illusions quest completed.");
                     break;
                 }
             }
         }
         Core.CancelRegisteredQuests();
     }
-
 
     public void ShadowsOfDisdain(ShadowsOfDisdainRewards rewardSelection = ShadowsOfDisdainRewards.None, bool completeOnce = false)
     {
@@ -466,10 +484,11 @@ public class CoreHollowbornChaosEnvoy
 
         if (!Core.CheckInventory("Titan Drakath"))
         {
+            Core.Logger("Hunting for Titan Drakath.");
             TGM.BuyAllMerge("Titan Drakath");
         }
 
-        Core.Logger($"Reward Choosen: {disdainReward}");
+        Core.Logger($"Reward Chosen: {disdainReward}");
         while (!Bot.ShouldExit)
         {
             Core.EnsureAccept(9002);
@@ -487,15 +506,20 @@ public class CoreHollowbornChaosEnvoy
             if (completeOnce)
             {
                 Core.EnsureComplete(9002);
+                Core.Logger("Shadows Of Disdain quest completed.");
                 return;
             }
             else
             {
                 if (rewardSelection == ShadowsOfDisdainRewards.All && !Core.CheckInventory(rewards))
+                {
                     Core.EnsureCompleteChoose(9002, Core.QuestRewards(9002));
+                    Core.Logger("Shadows Of Disdain quest completed.");
+                }
                 else
                 {
                     Core.EnsureComplete(9002, (int)disdainReward);
+                    Core.Logger("Shadows Of Disdain quest completed.");
                     break;
                 }
             }
@@ -503,7 +527,6 @@ public class CoreHollowbornChaosEnvoy
 
         Core.CancelRegisteredQuests();
     }
-
 
     public void PersistingMayhem(PersistingMayhemRewards rewardSelection = PersistingMayhemRewards.None, bool completeOnce = false)
     {
@@ -516,6 +539,8 @@ public class CoreHollowbornChaosEnvoy
         string[] rewards = Core.QuestRewards(9003);
         PersistingMayhemRewards mayhemReward = Bot.Config!.Get<PersistingMayhemRewards>("Persisting Mayhem");
 
+        Core.Logger($"Reward Chosen: {mayhemReward}");
+
         // Check if we should return early based on inventory conditions and 'completeOnce' flag
         bool shouldReturnEarly = (mayhemReward == PersistingMayhemRewards.All && Core.CheckInventory(rewards))
             || mayhemReward == PersistingMayhemRewards.None
@@ -523,13 +548,13 @@ public class CoreHollowbornChaosEnvoy
 
         if (shouldReturnEarly)
         {
+            Core.Logger("Persisting Mayhem quest conditions met. Exiting.");
             return;
         }
 
         Core.AddDrop(rewards);
         Farm.Experience(95);
 
-        Core.Logger($"Reward Choosen: {mayhemReward}");
         while (!Bot.ShouldExit)
         {
             Core.EnsureAccept(9003);
@@ -538,15 +563,20 @@ public class CoreHollowbornChaosEnvoy
             if (completeOnce)
             {
                 Core.EnsureComplete(9003);
+                Core.Logger("Persisting Mayhem quest completed.");
                 return;
             }
             else
             {
                 if (rewardSelection == PersistingMayhemRewards.All && !Core.CheckInventory(rewards))
+                {
                     Core.EnsureCompleteChoose(9003, Core.QuestRewards(9003));
+                    Core.Logger("Persisting Mayhem quest completed.");
+                }
                 else
                 {
                     Core.EnsureComplete(9003, (int)mayhemReward);
+                    Core.Logger("Persisting Mayhem quest completed.");
                     break;
                 }
             }
@@ -554,7 +584,6 @@ public class CoreHollowbornChaosEnvoy
 
         Core.CancelRegisteredQuests();
     }
-
 
     public enum StirringDiscordRewards
     {
