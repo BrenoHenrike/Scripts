@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 181886,
+    "size": 181889,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -12199,9 +12199,25 @@
       "null"
     ],
     "path": "Seasonal/Mogloween/CoreMogloween.cs",
-    "size": 21196,
+    "size": 22897,
     "fileName": "CoreMogloween.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Mogloween/CoreMogloween.cs"
+  },
+  {
+    "name": "Cursed Castle Story",
+    "description": "This will complete the cursed castle Story quest.",
+    "tags": [
+      "story",
+      "quest",
+      "mogloween",
+      "seasonal",
+      "cursed",
+      "castle"
+    ],
+    "path": "Seasonal/Mogloween/14CursedCastle.cs",
+    "size": 689,
+    "fileName": "14CursedCastle.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Mogloween/14CursedCastle.cs"
   },
   {
     "name": "Complete All Mogloween Story",
@@ -18799,6 +18815,52 @@
     "size": 15000,
     "fileName": "MogloweenSeasonalMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Mogloween/MergeShops/MogloweenSeasonalMerge.cs"
+  },
+  {
+    "name": "Alnswick Castle Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Alnswick Castle Merge [2360] in /cursedcastle",
+    "tags": [
+      "alnswick",
+      "castle",
+      "merge",
+      "cursedcastle",
+      "vampiric",
+      "gentlefolk",
+      "red",
+      "eyed",
+      "aristohat",
+      "morph",
+      "stache",
+      "aristocap",
+      "dapper",
+      "bloodshot",
+      "crimson",
+      "vampire",
+      "wings",
+      "winged",
+      "cloak",
+      "wind",
+      "soul",
+      "starved",
+      "jiangshi",
+      "cap",
+      "talisman",
+      "sedge",
+      "bandaged",
+      "glare",
+      "sealed",
+      "coffin",
+      "haunted",
+      "tuanshan",
+      "jiangshis",
+      "weaponry",
+      "claw",
+      "claws"
+    ],
+    "path": "Seasonal/Mogloween/MergeShops/AlnswickCastleMerge.cs",
+    "size": 8259,
+    "fileName": "AlnswickCastleMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Mogloween/MergeShops/AlnswickCastleMerge.cs"
   },
   {
     "name": "Candied Costumes Merge",
