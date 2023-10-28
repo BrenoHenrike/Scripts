@@ -80,7 +80,7 @@ public class CoreShadowofDoom
         Story.KillQuest(9436, "camlan", "Tainted Wraith");
 
         // Guileless Sneers 9437
-        Story.MapItemQuest(9437, "camlan", new[] { 12252, 12253 });
+        Story.MapItemQuest(9437, "camlan", new[] { 12252, 12253,  12254});
 
         // Shadows of Aminion 9438
         Story.KillQuest(9438, "camlan", "Doomed Elf");
