@@ -69,19 +69,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/BuyOut.cs"
   },
   {
-    "name": "Player Finder",
-    "description": "Finds a player in a range of roomnumbers, with a specific map name, player name, stop location (wether u want to stop at the player or your default location), and a start and stop range for room#",
-    "tags": [
-      "find",
-      "player",
-      ""
-    ],
-    "path": "Tools/FindPlayer.cs",
-    "size": 2798,
-    "fileName": "FindPlayer.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/FindPlayer.cs"
-  },
-  {
     "name": "Wheel Of Doom Spam",
     "description": "Wastes (with a warning) your extra ACs on Wheel of Doom spins",
     "tags": [
@@ -215,6 +202,19 @@
     "size": 842,
     "fileName": "RankUpEquippedClass.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/RankUpEquippedClass.cs"
+  },
+  {
+    "name": "Player Finder",
+    "description": "Finds a player in a range of roomnumbers, with a specific map name, player name, stop location (wether u want to stop at the player or your default location), and a start and stop range for room#",
+    "tags": [
+      "find",
+      "player",
+      ""
+    ],
+    "path": "Tools/YandereStalker.cs",
+    "size": 2800,
+    "fileName": "YandereStalker.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/YandereStalker.cs"
   },
   {
     "name": "Generate Queued Script",
@@ -11530,6 +11530,41 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/BlackFriday/AlphaHunterAndRogue.cs"
   },
   {
+    "name": "Camlan Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Camlan Merge [2349] in /camlan",
+    "tags": [
+      "camlan",
+      "merge",
+      "camlan",
+      "dark",
+      "tithe",
+      "chevalier",
+      "armet",
+      "chevaliers",
+      "long",
+      "cloak",
+      "starbane",
+      "lance",
+      "fallen",
+      "star",
+      "shield",
+      "apocryphal",
+      "shadow",
+      "executioner",
+      "retribution",
+      "eons",
+      "broadsword",
+      "awakened",
+      "carnage",
+      "maw",
+      "cleaver"
+    ],
+    "path": "Seasonal/BlackFriday/CamlanMerge.cs",
+    "size": 5533,
+    "fileName": "CamlanMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/BlackFriday/CamlanMerge.cs"
+  },
+  {
     "name": "Technocaster Merge",
     "description": "This will get all or selected items on this merge shop.",
     "tags": [
@@ -18367,7 +18402,7 @@
       "null"
     ],
     "path": "Seasonal/BlackFriday/ShadowofDoom/CoreShadowofDoom.cs",
-    "size": 2898,
+    "size": 3509,
     "fileName": "CoreShadowofDoom.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/BlackFriday/ShadowofDoom/CoreShadowofDoom.cs"
   },
