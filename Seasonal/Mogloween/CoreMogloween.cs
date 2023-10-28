@@ -40,6 +40,7 @@ public class CoreMogloween
         That();
         NecroCarnival();
         TrickTown();
+        CursedCastle();
     }
 
     public void Mogloween()
@@ -695,5 +696,52 @@ public class CoreMogloween
 
         // The Fruits of Labor 8935
         Story.KillQuest(8935, "tricktown", "Madam Ester");
+    }
+
+    public void CursedCastle()
+    {
+        if (Core.isCompletedBefore(9454) || !Core.isSeasonalMapActive("cursedcastle"))
+            return;
+
+        Story.PreLoad(this);
+
+        // Ghoul Fungi 9445
+        Story.KillQuest(9445, "cursedcastle", "Luminous Fungus");
+        Story.MapItemQuest(9445, "cursedcastle", 12272);
+
+        // Grotesque Guardian 9446
+        Story.KillQuest(9446, "cursedcastle", "Noble Gargoyle");
+        Story.MapItemQuest(9446, "cursedcastle", 12273);
+
+        // Dragon Instinct 9447
+        Story.MapItemQuest(9447, "cursedcastle", new[] { 12274 , 12275 });
+
+        // The Uninvited 9448
+        Story.KillQuest(9448, "cursedcastle", "Noble Ghost");
+        Story.MapItemQuest(9448, "cursedcastle", 12276);
+
+        // Room Service 9449
+        Story.MapItemQuest(9449, "cursedcastle", new[] { 12277 , 12278, 12279 });
+
+        // Newborn's Teething 9450
+        Story.KillQuest(9450, "cursedcastle", "Bone Dragonling");
+        Story.MapItemQuest(9450, "cursedcastle", 12280);
+
+        // Sadistic Solicitations 9451
+        Story.KillQuest(9451, "cursedcastle", "Noble Ghost");
+        Story.MapItemQuest(9451, "cursedcastle", 12281);
+
+        // Stomping on Eggshells 9452
+        Story.KillQuest(9452, "cursedcastle", "Dragonlord Coledale");
+        Story.MapItemQuest(9452, "cursedcastle", 12282);
+
+        // Stone Clad Clan 9453
+        Story.KillQuest(9453, "cursedcastle", "Noble Gargoyle");
+        Story.MapItemQuest(9453, "cursedcastle", 12283);
+
+        // Restless Waltz 9454
+        Story.KillQuest(9454, "cursedcastle", "Unborn Brood");
+
+
     }
 }
