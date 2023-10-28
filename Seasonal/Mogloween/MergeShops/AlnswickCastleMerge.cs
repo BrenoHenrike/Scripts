@@ -75,7 +75,7 @@ public class AlnswickCastleMerge
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.EquipClass(ClassType.Farm);
-                        Core.HuntMonster("cursedcastle", "Luminous Fungus", "iGrilled Shroom Capstem", 6);
+                        Core.HuntMonster("cursedcastle", "Luminous Fungus", "Grilled Shroom Capstem", 6);
                         Core.HuntMonster("cursedcastle", "Noble Gargoyle", "Decorated Gargoyle", 6);
                         Core.EquipClass(ClassType.Solo);
                         Core.HuntMonster("cursedcastle", "Unborn Brood Defeated ", "Unborn Brood");
