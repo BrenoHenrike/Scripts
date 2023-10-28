@@ -1,7 +1,7 @@
 /*
 name: Cursed Castle Story
-description: This will complete the Trick Town story quest.
-tags: story, quest, mogloween, seasonal, trick, town
+description: This will complete the Cursed Castle story quest.
+tags: story, quest, mogloween, seasonal, cursed, castle
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
