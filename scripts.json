@@ -12161,17 +12161,17 @@
   },
   {
     "name": "Cursed Castle Story",
-    "description": "This will complete the Trick Town story quest.",
+    "description": "This will complete the Cursed Castle story quest.",
     "tags": [
       "story",
       "quest",
       "mogloween",
       "seasonal",
-      "trick",
-      "town"
+      "cursed",
+      "castle"
     ],
     "path": "Seasonal/Mogloween/14CursedCastle.cs",
-    "size": 683,
+    "size": 689,
     "fileName": "14CursedCastle.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Mogloween/14CursedCastle.cs"
   },
