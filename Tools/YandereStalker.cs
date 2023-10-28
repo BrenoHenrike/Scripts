@@ -7,7 +7,7 @@ tags: find, player,
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
 
-public class PlayerFinder
+public class YandereStalker
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
