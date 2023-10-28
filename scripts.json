@@ -69,6 +69,19 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/BuyOut.cs"
   },
   {
+    "name": "Player Finder",
+    "description": "Finds a player in a range of roomnumbers, with a specific map name, player name, stop location (wether u want to stop at the player or your default location), and a start and stop range for room#",
+    "tags": [
+      "find",
+      "player",
+      ""
+    ],
+    "path": "Tools/FindPlayer.cs",
+    "size": 2798,
+    "fileName": "FindPlayer.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/FindPlayer.cs"
+  },
+  {
     "name": "Wheel Of Doom Spam",
     "description": "Wastes (with a warning) your extra ACs on Wheel of Doom spins",
     "tags": [
@@ -18299,6 +18312,64 @@
     "size": 8291,
     "fileName": "EbilCorpHQMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HarvestDay/MergeShops/EbilCorpHQMerge.cs"
+  },
+  {
+    "name": "Shadowbattleon",
+    "description": "Does the Shadow of Doom Saga",
+    "tags": [
+      "shadow of doom",
+      "shadowbattleon",
+      "story",
+      "saga",
+      "doall",
+      "camlan"
+    ],
+    "path": "Seasonal/BlackFriday/ShadowofDoom/ShadowBattleon.cs",
+    "size": 695,
+    "fileName": "ShadowBattleon.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/BlackFriday/ShadowofDoom/ShadowBattleon.cs"
+  },
+  {
+    "name": "Shadow of Doom Do All",
+    "description": "Does the Shadow of Doom Saga",
+    "tags": [
+      "shadow of doom",
+      "camlan",
+      "shadowbattleon story",
+      "saga",
+      "doall"
+    ],
+    "path": "Seasonal/BlackFriday/ShadowofDoom/0DoAll.cs",
+    "size": 694,
+    "fileName": "0DoAll.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/BlackFriday/ShadowofDoom/0DoAll.cs"
+  },
+  {
+    "name": "Camlan",
+    "description": "Does the Shadow of Doom Saga",
+    "tags": [
+      "shadow of doom",
+      "camlan",
+      "story",
+      "saga",
+      "doall",
+      "camlan"
+    ],
+    "path": "Seasonal/BlackFriday/ShadowofDoom/Camlan.cs",
+    "size": 662,
+    "fileName": "Camlan.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/BlackFriday/ShadowofDoom/Camlan.cs"
+  },
+  {
+    "name": "null",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Seasonal/BlackFriday/ShadowofDoom/CoreShadowofDoom.cs",
+    "size": 2898,
+    "fileName": "CoreShadowofDoom.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/BlackFriday/ShadowofDoom/CoreShadowofDoom.cs"
   },
   {
     "name": "Valarian's Merge",
