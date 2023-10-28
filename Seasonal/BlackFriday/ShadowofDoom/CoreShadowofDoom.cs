@@ -18,10 +18,10 @@ public class CoreShadowofDoom
         Core.RunCore();
     }
 
-    public void DoAll()
+    public void DoAll(bool ReturnEarly = false)
     {
         ShadowBattleon();
-        Camlan();
+        Camlan(ReturnEarly);
     }
 
     public void ShadowBattleon()
@@ -53,7 +53,7 @@ public class CoreShadowofDoom
 
     }
 
-    public void Camlan()
+    public void Camlan(bool ReturnEarly = false)
     {
         ShadowBattleon();
 
@@ -93,14 +93,30 @@ public class CoreShadowofDoom
         Story.KillQuest(9440, "camlan", "Doomed Elf");
 
         // Parental Pressure 9441
-        Story.KillQuest(9441, "camlan", new[] { "Bellona", "Sleih" });
+        if (!Story.QuestProgression(9441))
+        {
+            Core.EnsureAccept(9441);
+            Core.HuntMonster("camlan", "Sleih", "Cracked Light Crystal");
+            Core.HuntMonster("camlan", "Bellona", "Crushed Light Pendant");
+            Core.EnsureComplete(9441);
+        }
 
         // Get Lost in Me 9442
         Core.Logger("Good luck with this \"ultra\"!");
         Story.KillQuest(9442, "camlan", "Metamorphosis Maw");
 
+        if (ReturnEarly)
+            return;
+
         // Cocooned Gold 9443
-        Story.KillQuest(9443, "camlan", new[] { "Bellona", "Sleih", "Metamorphosis Maw" });
+        if (!Story.QuestProgression(9443))
+        {
+            Core.EnsureAccept(9443);
+            Core.HuntMonster("camlan", "Sleih", "Sleih's Changeling Records");
+            Core.HuntMonster("camlan", "Bellona", "Bellona's Edict of War");
+            Core.HuntMonster("camlan", "Metamorphosis Maw", "Alchemic Snake Scale");
+            Core.EnsureComplete(9443);
+        }
     }
 }
 
