@@ -2674,9 +2674,9 @@ public class CoreBots
                 Equip(equipment);
             }
 
-            string equipedClass = Bot.Player.CurrentClass?.Name.Trim().ToLower();
+            string? equipedClass = Bot.Player.CurrentClass?.Name.Trim().ToLower();
             className = className.Trim().ToLower();
-            Logger("Equiped Class: " + equipedClass + " Equiping: " + className, "Class Equiper");
+            Logger($"Equiped Class: [{equipedClass}], Equiping: [{className}].", "Class Equiper");
 
             while (equipedClass != className)
             {
@@ -2686,7 +2686,7 @@ public class CoreBots
                 equipedClass = Bot.Player.CurrentClass?.Name.Trim().ToLower();
             }
 
-            Logger("Equiped Class: " + equipedClass, "Class Equiper");
+            Logger($"Equiped Class: [{equipedClass}]", "Class Equiper");
 
             Bot.Skills.StartAdvanced(className, false, classMode);
             return true;
