@@ -67,7 +67,7 @@ public class ValariansMerge
                     break;
                 #endregion
 
-                case "Zenobia’s Moglinberry Juice":
+                case "Zenobia's Moglinberry Juice":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.RegisterQuests(9056);

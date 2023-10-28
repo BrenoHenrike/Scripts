@@ -8,6 +8,7 @@ tags: army, reputation, blacksmithing
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Army/CoreArmyLite.cs
+//cs_include Scripts/Army/ArmyFarm/Rep/CoreArmyRep.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Models.Quests;
@@ -90,7 +91,7 @@ public class ArmyBlackSmithRep
 
         AggroSetup(map);
 
-        foreach (string monster in monsters)
+        foreach (string? monster in monsters)
             Army.SmartAggroMonStart(map, monsters);
 
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))

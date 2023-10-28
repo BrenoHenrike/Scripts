@@ -13,6 +13,7 @@ tags: army, reputation, eternal
 //cs_include Scripts/Army/CoreArmyLite.cs
 //cs_include Scripts/Legion/CoreLegion.cs
 //cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
+//cs_include Scripts/Army/ArmyFarm/Rep/CoreArmyRep.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Models.Quests;

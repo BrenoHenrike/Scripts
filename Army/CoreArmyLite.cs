@@ -859,16 +859,16 @@ public class CoreArmyLite
 
         string[] VerusMaps =
         {
-            "voidxyfrag",
-            "voidnerfkitten",
-            "seavoice",
+            "seavoice"
         };
 
         var levelLockedMaps = new[]
         {
             new { Map = "icestormunder", LevelRequired = 75 },
             new { Map = "icewing", LevelRequired = 75 },
-            new { Map = "battlegrounde", LevelRequired = 61 }
+            new { Map = "battlegrounde", LevelRequired = 61 },
+            new { Map = "voidxyfrag", LevelRequired = 80 },
+            new { Map = "voidnerfkitten", LevelRequired = 80 }
         };
 
         int maptry = 1;

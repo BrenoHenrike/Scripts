@@ -65,18 +65,42 @@ public class DoomPirateHaulMerge
                 #endregion
 
                 case "Gallaeon's Piece of Eight":
-                    Core.Logger($"{req.Name}" + " requires ultra boss, you need to prefarm it yourself.");
+                    Core.FarmingLogger(req.Name, quant);
+                    Core.RegisterQuests(9355);
+                    int[] monsterIDs = new[] { 5, 4, 7, 6, 9, 8, 11, 10 };
+                    while (!Bot.ShouldExit && !Core.CheckInventory("Gallaeon's Piece of Eight", 99))
+                    {
+                        Core.EquipClass(ClassType.Solo);
+                        Core.Join("doompirate");
+                        while (!Bot.ShouldExit && Bot.Player.Cell != "r5")
+                        {
+                            Core.Jump("r5", "Left");
+                            Bot.Sleep(Core.ActionDelay);
+                        }
+                        Bot.Player.SetSpawnPoint();
+
+
+                        while (!Bot.ShouldExit && !Core.CheckInventory("Gallaeon's Piece of Eight", 99))
+                        {
+                            foreach (int MonsterID in monsterIDs)
+                            {
+                                if (Core.IsMonsterAlive(MonsterID, useMapID: true))
+                                    while (!Bot.ShouldExit && Core.IsMonsterAlive(MonsterID, useMapID: true))
+                                        Bot.Combat.Attack(MonsterID);
+                                else
+                                    Bot.Combat.Attack(12);
+                            }
+                        }
+
+                    }
                     break;
 
                 case "Doom Doubloon":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
                     Core.RegisterQuests(9354);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster("doompirate", "Gallaeon", log: false);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
+                    Core.HuntMonsterMapID("doompirate", 3, req.Name, quant, log: false);
+                    Bot.Wait.ForPickup(req.Name);
                     Core.CancelRegisteredQuests();
                     break;
 

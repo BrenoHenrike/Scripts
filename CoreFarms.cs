@@ -357,7 +357,7 @@ public class CoreFarms
         if (Bot.Player.Level >= level && Bot.Player.Gold >= gold)
             return;
 
-        if (!Bot.Quests.IsUnlocked(7979))
+        if (!Core.isCompletedBefore(7979))
         {
             Core.Logger("Please use Scripts/Story/Legion/SevenCircles(War).cs in order to use the SevenCircles method");
             return;
@@ -369,7 +369,7 @@ public class CoreFarms
         Core.Logger($"Farming {gold} gold using SCW Method");
 
         Core.RegisterQuests(7979, 7980, 7981);
-        while (!Bot.ShouldExit && Bot.Player.Level < level || Bot.Player.Gold < gold)
+        while (!Bot.ShouldExit && level == 101 ? Bot.Player.Gold < gold : Bot.Player.Level < level && Bot.Player.Gold < gold)
         {
             Core.KillMonster("sevencircleswar", "Enter", "Right", "*", "Wrath Guards Defeated", 12);
             Core.KillMonster("sevencircleswar", "Enter", "Right", "*", "War Medal", 5);

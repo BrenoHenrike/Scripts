@@ -653,10 +653,18 @@ public class CoreNation
                     {
                         Core.KillEscherion(Item.Name, Item.MaxStack, log: false);
 
-                        if (Item.Name == "Voucher of Nulgath" && sellMemVoucher && Core.CheckInventory("Voucher of Nulgath"))
+                        if (item != "Voucher of Nulgath" && _sellMemVoucher && Core.CheckInventory("Voucher of Nulgath"))
                         {
-                            Bot.Drops.Pickup(Item.Name);
-                            Core.SellItem(Item.Name, all: true);
+                            while (!Bot.ShouldExit && (Bot.Player.HasTarget || Bot.Player.InCombat) && Bot.Player.Cell != "Enter")
+                            {
+                                Bot.Combat.CancelTarget();
+                                Bot.Wait.ForCombatExit();
+                                Core.Jump("Enter", "Spawn");
+                                Bot.Sleep(Core.ActionDelay);
+                            }
+
+                            Bot.Wait.ForPickup("Voucher of Nulgath");
+                            Core.SellItem("Voucher of Nulgath", all: true);
                             Bot.Wait.ForItemSell();
                         }
                     }
@@ -673,9 +681,18 @@ public class CoreNation
                 {
                     Core.KillEscherion(item, quant, log: false);
 
-                    if (item != "Voucher of Nulgath" && sellMemVoucher && Core.CheckInventory("Voucher of Nulgath"))
+                    if (item != "Voucher of Nulgath" && _sellMemVoucher && Core.CheckInventory("Voucher of Nulgath"))
                     {
-                        Bot.Drops.Pickup("Voucher of Nulgath");
+                        Core.JumpWait();
+
+                        while (!Bot.ShouldExit && (Bot.Player.HasTarget || Bot.Player.InCombat) && Bot.Player.Cell != "Enter")
+                        {
+                            Bot.Combat.CancelTarget();
+                            Bot.Wait.ForCombatExit();
+                            Core.Jump("Enter", "Spawn");
+                        }
+
+                        Bot.Wait.ForPickup("Voucher of Nulgath");
                         Core.SellItem("Voucher of Nulgath", all: true);
                         Bot.Wait.ForItemSell();
                     }
@@ -877,6 +894,7 @@ public class CoreNation
         Core.AddDrop("Relic of Chaos", "Tainted Core");
         Core.AddDrop(string.IsNullOrEmpty(item) ? bagDrops : new string[] { item });
 
+
         bool hasOBoNPet = Core.IsMember && Core.CheckInventory("Oblivion Blade of Nulgath") &&
                           Bot.Inventory.Items.Any(obon => obon.Category == Skua.Core.Models.Items.ItemCategory.Pet && obon.Name == "Oblivion Blade of Nulgath");
         if (hasOBoNPet || Core.CheckInventory("Oblivion Blade of Nulgath Pet (Rare)"))
@@ -887,6 +905,8 @@ public class CoreNation
 
         Core.Logger($"Sell Voucher of Nulgath: {_sellMemVoucher}");
 
+        if (_returnSupplies)
+            Core.AddDrop(Uni(1), Uni(6), Uni(9), Uni(16), Uni(20));
 
         Dictionary<string, int> rewardItemIds = new()
         {
@@ -914,13 +934,12 @@ public class CoreNation
 
             if (item != "Voucher of Nulgath" && _sellMemVoucher && Core.CheckInventory("Voucher of Nulgath"))
             {
-                Core.JumpWait();
-
                 while (!Bot.ShouldExit && (Bot.Player.HasTarget || Bot.Player.InCombat) && Bot.Player.Cell != "Enter")
                 {
                     Bot.Combat.CancelTarget();
                     Bot.Wait.ForCombatExit();
                     Core.Jump("Enter", "Spawn");
+                    Bot.Sleep(Core.ActionDelay);
                 }
 
                 Bot.Drops.Pickup("Voucher of Nulgath");
