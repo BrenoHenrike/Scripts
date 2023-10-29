@@ -429,7 +429,7 @@ public class CoreArmyLite
                 Core.Logger($"Missing {toFollow}, initiating Butler.cs");
                 Core.Logger("Butler active until in map /" + b_breakOnMap);
                 Butler(toFollow, roomNr: getRoomNr());
-                Core.Logger($"{toFollow} has joined {b_breakOnMap}. Continueing");
+                Core.Logger($"{toFollow} has joined {b_breakOnMap}. continuing");
                 Bot.Events.PlayerAFK -= PlayerAFK;
                 break;
             }

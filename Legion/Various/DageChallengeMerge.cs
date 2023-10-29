@@ -122,7 +122,7 @@ public class DageChallengeMerge
                 case "Dage the Evil Insignia":
                     if (!Core.CheckInventory(req.Name, quant))
                         Core.Logger($"Player does not have required amount of insignias [x{quant}]", stopBot: true);
-                    Core.Logger($"Insignias [x{quant}] found, continueing");
+                    Core.Logger($"Insignias [x{quant}] found, continuing");
                     break;
 
             }
