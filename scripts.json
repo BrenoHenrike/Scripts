@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 181889,
+    "size": 181888,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -275,7 +275,7 @@
       "null"
     ],
     "path": "Army/CoreArmyLite.cs",
-    "size": 39832,
+    "size": 39831,
     "fileName": "CoreArmyLite.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/CoreArmyLite.cs"
   },
@@ -1857,7 +1857,7 @@
       "null"
     ],
     "path": "Legion/CoreLegion.cs",
-    "size": 31731,
+    "size": 31819,
     "fileName": "CoreLegion.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/CoreLegion.cs"
   },
@@ -11800,7 +11800,7 @@
       "frostvale"
     ],
     "path": "Seasonal/Frostvale/FrostvalBarbarian.cs",
-    "size": 3833,
+    "size": 3832,
     "fileName": "FrostvalBarbarian.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/FrostvalBarbarian.cs"
   },
@@ -13473,7 +13473,7 @@
       "exanima"
     ],
     "path": "Legion/Various/DageChallengeMerge.cs",
-    "size": 7364,
+    "size": 7363,
     "fileName": "DageChallengeMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/Various/DageChallengeMerge.cs"
   },
