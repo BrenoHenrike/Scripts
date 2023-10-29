@@ -2360,10 +2360,15 @@
     "tags": [
       "story",
       "quest",
-      "dragon-fable-origins"
+      "dragon fable origins",
+      "firewar",
+      "northmountain",
+      "charredplains",
+      "drakonnan",
+      ""
     ],
     "path": "Story/DragonFableOrigins.cs",
-    "size": 5149,
+    "size": 5201,
     "fileName": "DragonFableOrigins.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/DragonFableOrigins.cs"
   },
