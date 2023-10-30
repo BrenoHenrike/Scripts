@@ -74,6 +74,9 @@ public class SuppliesWheelArmy
         {
             Core.RegisterQuests(Bot.Config!.Get<bool>("SwindlesReturnDuring") ? new[] { 2857, 7551 } : new[] { 2857 });
             Core.FarmingLogger(item.Name, item.MaxStack);
+
+            Army.waitForParty("whitemap");
+
             while (!Bot.ShouldExit && !Core.CheckInventory(item.ID, item.MaxStack))
                 ArmyHydra(item, item.MaxStack);
         }
@@ -82,9 +85,6 @@ public class SuppliesWheelArmy
 
     void ArmyHydra(ItemBase item, int quant = 99)
     {
-        Core.PrivateRooms = true;
-        Core.PrivateRoomNumber = Army.getRoomNr();
-
         if (Bot.Config!.Get<bool>("sellToSync"))
             Army.SellToSync(item.Name, quant);
 
@@ -95,12 +95,18 @@ public class SuppliesWheelArmy
 
         while (!Bot.ShouldExit && !Core.CheckInventory(item.ID, quant))
         {
+            Army.waitForParty("hydrachallenge");
+
+            SetHydraAggro();
+
             Bot.Combat.Attack(Bot.Config!.Get<Cell>("mob") == Cell.h85 ? "Hydra Head 85" : "Hydra Head 90");
 
             Bot.Sleep(Core.ActionDelay);
 
             if (Core.CheckInventory(Nation.SwindlesReturn) && Bot.Config!.Get<bool>("SwindlesReturnDuring"))
             {
+                Core.Logger("getting dark makai rune.");
+
                 Army.AggroMonStop(true);
                 Core.JumpWait();
 
@@ -108,13 +114,8 @@ public class SuppliesWheelArmy
                 string location = locations[new Random().Next(locations.Length)];
                 string cell = location == "tercessuinotlim" ? (new Random().Next(2) == 0 ? "m1" : "m2") : "Field1";
                 Core.KillMonster(location, cell, "Left", "Dark Makai", "Dark Makai Rune");
-
-                Bot.Sleep(2500);
-
-                Army.waitForParty("hydrachallenge");
-
-                SetHydraAggro();
             }
+            Core.Logger("returning to hydras.");
         }
 
         Army.AggroMonStop(true);
@@ -123,9 +124,9 @@ public class SuppliesWheelArmy
 
     void SetHydraAggro()
     {
-        Army.AggroMonMIDs(Bot.Config!.Get<Cell>("mob") == Cell.h85 ? new[] { 29, 30, 31 } : new[] { 32, 33, 34 });
-        Army.DivideOnCells(Bot.Config!.Get<Cell>("mob") == Cell.h85 ? "h85" : "h90");
+        Army.AggroMonCells(Bot.Config!.Get<Cell>("mob") == Cell.h85 ? "h85" : "h90");
         Army.AggroMonStart("hydrachallenge");
+        Army.DivideOnCells(Bot.Config!.Get<Cell>("mob") == Cell.h85 ? "h85" : "h90");
     }
 
     public enum Cell
