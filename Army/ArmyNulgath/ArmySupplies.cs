@@ -72,29 +72,10 @@ public class SuppliesWheelArmy
 
         foreach (ItemBase item in RewardOptions1.Concat(RewardOptions2).ToArray())
         {
-            if (Bot.Config!.Get<bool>("SwindlesReturnDuring"))
-            {
-                Core.RegisterQuests(2857, 7551);
-                Core.FarmingLogger(item.Name, item.MaxStack);
-                while (!Bot.ShouldExit && !Core.CheckInventory(item.ID, item.MaxStack))
-                {
-                    ArmyHydra(item, item.MaxStack);
-                    if (Core.CheckInventory(Nation.SwindlesReturn))
-                    {
-                        string[] locations = new[] { "tercessuinotlim", Core.IsMember ? "Nulgath" : "evilmarsh" };
-                        string location = locations[new Random().Next(locations.Length)];
-                        string cell = location == "tercessuinotlim" ? (new Random().Next(2) == 0 ? "m1" : "m2") : "Field1";
-                        Core.KillMonster(location, cell, "Left", "Dark Makai", "Dark Makai Rune");
-                    }
-                }
-            }
-            else
-            {
-                Core.RegisterQuests(2857);
-                Core.FarmingLogger(item.Name, item.MaxStack);
-                while (!Bot.ShouldExit && !Core.CheckInventory(item.ID, item.MaxStack))
-                    ArmyHydra(item, item.MaxStack);
-            }
+            Core.RegisterQuests(Bot.Config!.Get<bool>("SwindlesReturnDuring") ? new[] { 2857, 7551 } : new[] { 2857 });
+            Core.FarmingLogger(item.Name, item.MaxStack);
+            while (!Bot.ShouldExit && !Core.CheckInventory(item.ID, item.MaxStack))
+                ArmyHydra(item, item.MaxStack);
         }
         Core.CancelRegisteredQuests();
     }
@@ -108,19 +89,43 @@ public class SuppliesWheelArmy
             Army.SellToSync(item.Name, quant);
 
         Core.AddDrop("Relic of Chaos", "Hydra Scale Piece");
+        Core.AddDrop(item.ID);
 
         Core.EquipClass(ClassType.Farm);
-        Army.waitForParty("hydrachallenge");
-
-        Army.AggroMonMIDs(Bot.Config!.Get<Cell>("mob") == Cell.h85 ? new[] { 29, 30, 31 } : new[] { 32, 33, 34 });
-        Army.DivideOnCells(Bot.Config!.Get<Cell>("mob") == Cell.h85 ? "h85" : "h90");
-        Army.AggroMonStart("hydrachallenge");
 
         while (!Bot.ShouldExit && !Core.CheckInventory(item.ID, quant))
+        {
             Bot.Combat.Attack(Bot.Config!.Get<Cell>("mob") == Cell.h85 ? "Hydra Head 85" : "Hydra Head 90");
+
+            Bot.Sleep(Core.ActionDelay);
+
+            if (Core.CheckInventory(Nation.SwindlesReturn) && Bot.Config!.Get<bool>("SwindlesReturnDuring"))
+            {
+                Army.AggroMonStop(true);
+                Core.JumpWait();
+
+                string[] locations = new[] { "tercessuinotlim", Core.IsMember ? "Nulgath" : "evilmarsh" };
+                string location = locations[new Random().Next(locations.Length)];
+                string cell = location == "tercessuinotlim" ? (new Random().Next(2) == 0 ? "m1" : "m2") : "Field1";
+                Core.KillMonster(location, cell, "Left", "Dark Makai", "Dark Makai Rune");
+
+                Bot.Sleep(2500);
+
+                Army.waitForParty("hydrachallenge");
+
+                SetHydraAggro();
+            }
+        }
 
         Army.AggroMonStop(true);
         Core.JumpWait();
+    }
+
+    void SetHydraAggro()
+    {
+        Army.AggroMonMIDs(Bot.Config!.Get<Cell>("mob") == Cell.h85 ? new[] { 29, 30, 31 } : new[] { 32, 33, 34 });
+        Army.DivideOnCells(Bot.Config!.Get<Cell>("mob") == Cell.h85 ? "h85" : "h90");
+        Army.AggroMonStart("hydrachallenge");
     }
 
     public enum Cell
