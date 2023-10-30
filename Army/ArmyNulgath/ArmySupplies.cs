@@ -27,7 +27,7 @@ public class SuppliesWheelArmy
 
     public List<IOption> Options = new()
     {
-        
+
         new Option<Cell>("mob", "h90 or h85", "h90 for more relic turn ins, but more chance of getting stuck due to deaths - h85 for just Relics from Escherion", Cell.h90),
         new Option<bool>("sellToSync", "Sell to Sync", "Sell \"Relic of Chaos\" to make sure the army stays syncronized. If off, there is a higher chance your army might desyncornize", false),
         new Option<bool>("SwindlesReturnDuring", "Do swindles Return", "Accepts the Swindles Returns items, and goes to kill a makai for the rune, during the quest.", false),
@@ -50,6 +50,8 @@ public class SuppliesWheelArmy
         Core.SetOptions();
 
         Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
+        Core.OneTimeMessage("Dark Makai Rune/Sigil Solution", "Randomizing location for \"Dark Makai\"\n" +
+        "as the drop can randomly stop showing up", forcedMessageBox: false);
         ArmySupplies();
 
         Core.SetOptions(false);
@@ -78,7 +80,12 @@ public class SuppliesWheelArmy
                 {
                     ArmyHydra(item, item.MaxStack);
                     if (Core.CheckInventory(Nation.SwindlesReturn))
-                        Core.KillMonster("tercessuinotlim", "m1", "Right", "Dark Makai", "Dark Makai Rune");
+                    {
+                        string[] locations = new[] { "tercessuinotlim", Core.IsMember ? "Nulgath" : "evilmarsh" };
+                        string location = locations[new Random().Next(locations.Length)];
+                        string cell = location == "tercessuinotlim" ? (new Random().Next(2) == 0 ? "m1" : "m2") : "Field1";
+                        Core.KillMonster(location, cell, "Left", "Dark Makai", "Dark Makai Rune");
+                    }
                 }
             }
             else
