@@ -37,8 +37,7 @@ public class EvovledHexOrbItems
             return;
 
         EHO.GetEvolvedHexOrb();
-        if (Core.CheckInventory(33197)) //recheck
-            return;
+        Core.Unbank(33197); //make sure ya have it
 
         UnlockedevovledHexArmor();
         CutOffOneHead();
