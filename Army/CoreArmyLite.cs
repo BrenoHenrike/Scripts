@@ -451,7 +451,7 @@ public class CoreArmyLite
         if (Core.CheckInventory(item, quant) || item == null)
             return true;
         if (SellToSyncOn)
-            Core.SellItem(item, 0, true);
+            Core.SellItem(item, all: true);
         return false;
     }
     public bool SellToSyncOn = false;
