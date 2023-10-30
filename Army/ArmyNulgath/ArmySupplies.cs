@@ -26,20 +26,42 @@ public class SuppliesWheelArmy
     public string OptionsStorage = "ArmySupplies";
 
     public List<IOption> Options = new()
-    {
+{
+    new Option<Cell>("mob", "h90 or h85", "h90 for more relic turn-ins, but more chance of getting stuck due to deaths - h85 for just Relics from Escherion", Cell.h90),
+    new Option<bool>("sellToSync", "Sell to Sync", "Sell \"Relic of Chaos\" to make sure the army stays synchronized. If off, there is a higher chance your army might desynchronize", false),
+    new Option<bool>("SwindlesReturnDuring", "Do Swindles Return", "Accept the Swindles Returns items, and goes to kill a makai for the rune, during the quest.", false),
+    new Option<bool>("BloodyChaos", "Do Bloody Chaos", "Accept and complete the 'Bloody Chaos' quest for 'Blood Gem of the Archfiend'", false),
+    sArmy.player1,
+    sArmy.player2,
+    sArmy.player3,
+    sArmy.player4,
+    sArmy.player5,
+    sArmy.player6,
+    sArmy.player7,
+    sArmy.packetDelay,
+    CoreBots.Instance.SkipOptions
+};
 
-        new Option<Cell>("mob", "h90 or h85", "h90 for more relic turn ins, but more chance of getting stuck due to deaths - h85 for just Relics from Escherion", Cell.h90),
-        new Option<bool>("sellToSync", "Sell to Sync", "Sell \"Relic of Chaos\" to make sure the army stays syncronized. If off, there is a higher chance your army might desyncornize", false),
-        new Option<bool>("SwindlesReturnDuring", "Do swindles Return", "Accepts the Swindles Returns items, and goes to kill a makai for the rune, during the quest.", false),
-        sArmy.player1,
-        sArmy.player2,
-        sArmy.player3,
-        sArmy.player4,
-        sArmy.player5,
-        sArmy.player6,
-        sArmy.player7,
-        sArmy.packetDelay,
-        CoreBots.Instance.SkipOptions
+
+    private readonly string[] SuppliesRewards =
+      {
+    "Tainted Gem",
+    "Dark Crystal Shard",
+    "Diamond of Nulgath",
+    "Voucher of Nulgath",
+    "Voucher of Nulgath (non-mem)",
+    "Gem of Nulgath",
+    "Unidentified 10"
+    };
+
+    private readonly string[] SwindlesReturnRewards =
+    {
+        "Tainted Gem",
+        "Dark Crystal Shard",
+        "Diamond of Nulgath",
+        "Gem of Nulgath",
+        "Blood Gem of the Archfiend",
+        "Receipt of Swindle"
     };
 
     public void ScriptMain(IScriptInterface bot)
@@ -63,38 +85,60 @@ public class SuppliesWheelArmy
         Core.PrivateRoomNumber = Army.getRoomNr();
 
         if (Bot.Config!.Get<bool>("SwindlesReturnDuring"))
+        {
             Core.AddDrop(Nation.SwindlesReturn);
-        Core.AddDrop(Nation.bagDrops);
+            Core.AddDrop(Nation.SwindlesReturnRewards);
+        }
+
+        Core.AddDrop(Nation.SuppliesRewards);
         Core.AddDrop("Relic of Chaos");
 
-        foreach (ItemBase item in Nation.SuppliesRewards.Select(s => new ItemBase { Name = s })
-     .Concat(Nation.SwindlesReturn.Select(s => new ItemBase { Name = s }))
-     .Concat(Nation.SwindlesReturnRewards.Select(s => new ItemBase { Name = s }))
-     .ToArray())
+        bool doBloodyChaos = Bot.Config!.Get<bool>("BloodyChaos");
+        bool doSwindlesReturnDuring = Bot.Config!.Get<bool>("SwindlesReturnDuring");
+
+        int[] questIDs = doBloodyChaos
+            ? (doSwindlesReturnDuring ? new[] { 2857, 7551, 7816 } : new[] { 2857, 7816 })
+            : (doSwindlesReturnDuring ? new[] { 2857, 7551 } : new[] { 2857 });
+
+        Quest[] QuestData = questIDs.Select(id => Core.EnsureLoad(id)).ToArray();
+
+
+        foreach (Quest quest in QuestData)
         {
-            Core.RegisterQuests(Bot.Config!.Get<bool>("SwindlesReturnDuring") ? new[] { 2857, 7551 } : new[] { 2857 });
-            Core.FarmingLogger(item.Name, item.MaxStack);
+            ItemBase[] QuestReward = quest.Rewards
+                .Where(item => SuppliesRewards.Contains(item.Name) || SwindlesReturnRewards.Contains(item.Name))
+                .ToArray();
 
-            while (!Bot.ShouldExit && !Core.CheckInventory(item.ID, item.MaxStack))
-                ArmyHydra(item, item.MaxStack);
+            foreach (ItemBase item in QuestReward)
+            {
+                Core.FarmingLogger(item.Name, item.MaxStack);
 
-            Army.waitForParty("whitemap", item.Name);
+                while (!Bot.ShouldExit && !Core.CheckInventory(item.ID, item.MaxStack))
+                    ArmyHydra(item.Name, item.MaxStack);
+            }
+                Army.waitForParty("whitemap", );
         }
-        Core.CancelRegisteredQuests();
     }
 
-    void ArmyHydra(ItemBase item, int quant = 99)
+    void ArmyHydra(string item, int quant)
     {
         if (Bot.Config!.Get<bool>("sellToSync"))
-            Army.SellToSync(item.Name, quant);
+            Army.SellToSync(item, quant);
 
         Core.AddDrop("Relic of Chaos", "Hydra Scale Piece");
-        Core.AddDrop(item.ID);
+        Core.AddDrop(item);
 
+
+        bool doBloodyChaos = Bot.Config!.Get<bool>("BloodyChaos");
+        bool doSwindlesReturnDuring = Bot.Config!.Get<bool>("SwindlesReturnDuring");
+        int[] questIDs = doSwindlesReturnDuring ? new[] { 2857, 7551 } : new[] { 2857 };
+
+
+        Core.RegisterQuests(questIDs);
+        Core.FarmingLogger(item, quant);
         Core.EquipClass(ClassType.Farm);
         bool AggroSet = false;
-
-        while (!Bot.ShouldExit && !Core.CheckInventory(item.ID, quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
         {
             if (!AggroSet)
             {
@@ -117,6 +161,15 @@ public class SuppliesWheelArmy
                 Core.KillMonster(location, cell, "Left", "Dark Makai", "Dark Makai Rune");
                 AggroSet = false;
             }
+
+            if (doBloodyChaos && Core.CheckInventory("Hydra Scale Piece", 200))
+            {
+                Army.AggroMonStop(true);
+                Core.JumpWait();
+                BloodyChaos();
+                AggroSet = false;
+            }
+
         }
         Army.AggroMonStop(true);
         Core.JumpWait();
@@ -127,6 +180,17 @@ public class SuppliesWheelArmy
         Army.AggroMonCells(Bot.Config!.Get<Cell>("mob") == Cell.h85 ? "h85" : "h90");
         Army.AggroMonStart("hydrachallenge");
         Army.DivideOnCells(Bot.Config!.Get<Cell>("mob") == Cell.h85 ? "h85" : "h90");
+    }
+
+    private static void BloodyChaos()
+    {
+        if (Core.CheckInventory("Blood Gem of the Archfiend", 100))
+            return;
+
+        Core.EnsureAccept(7816);
+        Core.KillVath("Shattered Legendary Sword of Dragon Control", isTemp: false);
+        Core.KillEscherion("Escherion's Helm");
+        Core.EnsureComplete(7816);
     }
 
     public enum Cell
