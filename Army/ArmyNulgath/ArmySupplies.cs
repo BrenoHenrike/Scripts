@@ -62,15 +62,15 @@ public class SuppliesWheelArmy
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
 
-        List<ItemBase> RewardOptions1 = Core.EnsureLoad(2857).Rewards;
-        List<ItemBase> RewardOptions2 = Core.EnsureLoad(7551).Rewards;
-
         if (Bot.Config!.Get<bool>("SwindlesReturnDuring"))
             Core.AddDrop(Nation.SwindlesReturn);
         Core.AddDrop(Nation.bagDrops);
         Core.AddDrop("Relic of Chaos");
 
-        foreach (ItemBase item in RewardOptions1.Concat(RewardOptions2).ToArray())
+        foreach (ItemBase item in Nation.SuppliesRewards.Select(s => new ItemBase { Name = s })
+     .Concat(Nation.SwindlesReturn.Select(s => new ItemBase { Name = s }))
+     .Concat(Nation.SwindlesReturnRewards.Select(s => new ItemBase { Name = s }))
+     .ToArray())
         {
             Core.RegisterQuests(Bot.Config!.Get<bool>("SwindlesReturnDuring") ? new[] { 2857, 7551 } : new[] { 2857 });
             Core.FarmingLogger(item.Name, item.MaxStack);
