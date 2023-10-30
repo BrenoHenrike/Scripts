@@ -102,6 +102,12 @@ public class SuppliesWheelArmy
 
         Quest[] QuestData = questIDs.Select(id => Core.EnsureLoad(id)).ToArray();
 
+        if (doSwindlesReturnDuring)
+        {
+            Core.Logger("Setting it so the Dark Makai rune can drop... why is aes s*t so broke.");
+            Core.EnsureAccept(7551);
+            Core.CancelRegisteredQuests();
+        }
 
         foreach (Quest quest in QuestData)
         {
@@ -116,7 +122,7 @@ public class SuppliesWheelArmy
                 while (!Bot.ShouldExit && !Core.CheckInventory(item.ID, item.MaxStack))
                     ArmyHydra(item.Name, item.MaxStack);
             }
-                Army.waitForParty("whitemap");
+            Army.waitForParty("whitemap");
         }
     }
 
@@ -132,7 +138,6 @@ public class SuppliesWheelArmy
         bool doBloodyChaos = Bot.Config!.Get<bool>("BloodyChaos");
         bool doSwindlesReturnDuring = Bot.Config!.Get<bool>("SwindlesReturnDuring");
         int[] questIDs = doSwindlesReturnDuring ? new[] { 2857, 7551 } : new[] { 2857 };
-
 
         Core.RegisterQuests(questIDs);
         Core.FarmingLogger(item, quant);
