@@ -75,10 +75,10 @@ public class SuppliesWheelArmy
             Core.RegisterQuests(Bot.Config!.Get<bool>("SwindlesReturnDuring") ? new[] { 2857, 7551 } : new[] { 2857 });
             Core.FarmingLogger(item.Name, item.MaxStack);
 
-            Army.waitForParty("whitemap");
-
             while (!Bot.ShouldExit && !Core.CheckInventory(item.ID, item.MaxStack))
                 ArmyHydra(item, item.MaxStack);
+
+            Army.waitForParty("whitemap", item.Name);
         }
         Core.CancelRegisteredQuests();
     }
@@ -92,12 +92,15 @@ public class SuppliesWheelArmy
         Core.AddDrop(item.ID);
 
         Core.EquipClass(ClassType.Farm);
+        bool AggroSet = false;
 
         while (!Bot.ShouldExit && !Core.CheckInventory(item.ID, quant))
         {
-            Army.waitForParty("hydrachallenge");
-
-            SetHydraAggro();
+            if (!AggroSet)
+            {
+                SetHydraAggro();
+                AggroSet = true;
+            }
 
             Bot.Combat.Attack(Bot.Config!.Get<Cell>("mob") == Cell.h85 ? "Hydra Head 85" : "Hydra Head 90");
 
@@ -105,8 +108,6 @@ public class SuppliesWheelArmy
 
             if (Core.CheckInventory(Nation.SwindlesReturn) && Bot.Config!.Get<bool>("SwindlesReturnDuring"))
             {
-                Core.Logger("getting dark makai rune.");
-
                 Army.AggroMonStop(true);
                 Core.JumpWait();
 
@@ -114,10 +115,9 @@ public class SuppliesWheelArmy
                 string location = locations[new Random().Next(locations.Length)];
                 string cell = location == "tercessuinotlim" ? (new Random().Next(2) == 0 ? "m1" : "m2") : "Field1";
                 Core.KillMonster(location, cell, "Left", "Dark Makai", "Dark Makai Rune");
+                AggroSet = false;
             }
-            Core.Logger("returning to hydras.");
         }
-
         Army.AggroMonStop(true);
         Core.JumpWait();
     }
