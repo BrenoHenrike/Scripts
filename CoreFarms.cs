@@ -164,8 +164,8 @@ public class CoreFarms
         Core.RegisterQuests(3991, 3992);
         while (!Bot.ShouldExit && Bot.Player.Gold < goldQuant)
         {
-            Core.KillMonster("battlegrounde", "r1", "Center", "*", "Battleground E Opponent Defeated", 10, log: false);
-            Core.KillMonster("battlegrounde", "r1", "Center", "*", "Battleground D Opponent Defeated", 10, log: false);
+            Core.KillMonster("battlegrounde", "r2", "Center", "*", "Battleground E Opponent Defeated", 10, log: false);
+            Core.KillMonster("battlegrounde", "r2", "Center", "*", "Battleground D Opponent Defeated", 10, log: false);
         }
 
         Core.CancelRegisteredQuests();
