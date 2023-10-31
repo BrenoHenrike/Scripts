@@ -111,7 +111,7 @@ public class CoreFarms
     }
 
     #region Gold
-    public void Gold(int quant = 100000000)
+    public void Gold(int quant = 1000000000)
     {
         if (Bot.Player.Gold >= quant)
             return;
@@ -139,8 +139,11 @@ public class CoreFarms
         Core.Logger($"Farming {goldQuant} gold using HonorHall Method");
 
         Core.RegisterQuests(3992, 3993);
-        while (!Bot.ShouldExit && Bot.Player.Gold < goldQuant && Bot.Player.Gold <= 100000000)
-            Core.KillMonster("honorhall", "r1", "Center", "Ice Demon", log: false);
+        while (!Bot.ShouldExit && Bot.Player.Gold < goldQuant)
+        {
+            Core.KillMonster("honorhall", "r1", "Center", "Ice Demon", "Battleground E Opponent Defeated", 10, log: false);
+            Core.KillMonster("honorhall", "r1", "Center", "Ice Demon", "HonorHall Opponent Defeated", 10, log: false);
+        }
         Core.CancelRegisteredQuests();
         Core.SavedState(false);
     }
@@ -159,8 +162,11 @@ public class CoreFarms
         Core.Logger($"Farming {goldQuant} gold using BattleGroundE Method");
 
         Core.RegisterQuests(3991, 3992);
-        while (!Bot.ShouldExit && Bot.Player.Gold < goldQuant && Bot.Player.Gold <= 100000000)
-            Core.KillMonster("battlegrounde", "r2", "Center", "*", log: false);
+        while (!Bot.ShouldExit && Bot.Player.Gold < goldQuant)
+        {
+            Core.KillMonster("battlegrounde", "r1", "Center", "*", "Battleground E Opponent Defeated", 10, log: false);
+            Core.KillMonster("battlegrounde", "r1", "Center", "*", "Battleground D Opponent Defeated", 10, log: false);
+        }
 
         Core.CancelRegisteredQuests();
         Core.SavedState(false);
@@ -181,7 +187,7 @@ public class CoreFarms
         Core.Logger($"Farming {goldQuant}  using BerserkerBunny Method");
 
         Core.RegisterQuests(236);
-        while (!Bot.ShouldExit && Bot.Player.Gold < goldQuant && Bot.Player.Gold <= 100000000)
+        while (!Bot.ShouldExit && Bot.Player.Gold < goldQuant)
         {
             Core.HuntMonster("greenguardwest", "Big Bad Boar", "Were Egg", log: false);
             Bot.Wait.ForDrop("Berserker Bunny", 40);
@@ -208,7 +214,7 @@ public class CoreFarms
         Core.Logger($"Farming {goldQuant}  using DarkWarLegion Method");
 
         Core.RegisterQuests(8584, 8585);
-        while (!Bot.ShouldExit && Bot.Player.Gold < goldQuant && Bot.Player.Gold <= 100000000)
+        while (!Bot.ShouldExit && Bot.Player.Gold < goldQuant)
             Core.KillMonster("darkwarlegion", "r2", "Left", "*", "Nation Badge", 5, log: false);
         Core.CancelRegisteredQuests();
         Core.SavedState(false);
