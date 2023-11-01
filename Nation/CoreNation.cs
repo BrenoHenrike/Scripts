@@ -314,6 +314,7 @@ public class CoreNation
             Supplies("Unidentified 9");
             Supplies("Unidentified 16");
             Supplies("Unidentified 20");
+            ResetSindles();
             string[] locations = new[] { "tercessuinotlim", Core.IsMember ? "Nulgath" : "evilmarsh" };
             string location = locations[new Random().Next(locations.Length)];
             string cell = location == "tercessuinotlim" ? (new Random().Next(2) == 0 ? "m1" : "m2") : "Field1";
@@ -830,13 +831,14 @@ public class CoreNation
             }
 
         }
-        void ResetSindles()
-        {
-            Core.EnsureAccept(7551);
-            Bot.Wait.ForQuestAccept(7551);
-            Core.AbandonQuest(7551);
-            Core.EnsureAccept(7551);
-        }
+    }
+
+    public void ResetSindles()
+    {
+        Core.EnsureAccept(7551);
+        Bot.Wait.ForQuestAccept(7551);
+        Core.AbandonQuest(7551);
+        Core.EnsureAccept(7551);
     }
 
     /// <summary>
@@ -970,7 +972,7 @@ public class CoreNation
 
             if (returnPolicyDuringSupplies && Core.CheckInventory(new[] { Uni(1), Uni(6), Uni(9), Uni(16), Uni(20) }))
             {
-                Core.EnsureAccept(7551);
+                ResetSindles();
                 string[] locations = new[] { "tercessuinotlim", Core.IsMember ? "Nulgath" : "evilmarsh" };
                 string location = locations[new Random().Next(locations.Length)];
                 string cell = location == "tercessuinotlim" ? (new Random().Next(2) == 0 ? "m1" : "m2") : "Field1";

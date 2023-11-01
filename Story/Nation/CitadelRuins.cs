@@ -204,6 +204,7 @@ public class CitadelRuins
             Nation.FarmTaintedGem(7);
             Nation.Supplies("Claw of Nulgath");
             
+                Nation.ResetSindles();
             string[] locations = new[] { "tercessuinotlim", Core.IsMember ? "Nulgath" : "evilmarsh" };
             string location = locations[new Random().Next(locations.Length)];
             string cell = location == "tercessuinotlim" ? (new Random().Next(2) == 0 ? "m1" : "m2") : "Field1";

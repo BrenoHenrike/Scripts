@@ -112,6 +112,7 @@ public class NulgathDemandsWork
         Core.AddDrop("Unidentified 27");
         Nation.Supplies("Unidentified 26", 1);
         Core.EnsureAccept(584);
+                Nation.ResetSindles();
         string[] locations = new[] { "tercessuinotlim", Core.IsMember ? "Nulgath" : "evilmarsh" };
         string location = locations[new Random().Next(locations.Length)];
         string cell = location == "tercessuinotlim" ? (new Random().Next(2) == 0 ? "m1" : "m2") : "Field1";
