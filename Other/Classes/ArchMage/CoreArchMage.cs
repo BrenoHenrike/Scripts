@@ -433,13 +433,7 @@ public class CoreArchMage
 
     public void UnboundTome(int quant)
     {
-        ItemBase? unboundTomeItem = Bot.Inventory.Items.FirstOrDefault(item => item.Name == "Unbound Tome");
-        int currentUnboundTomes = unboundTomeItem?.Quantity ?? 0;
-
-        if (currentUnboundTomes >= quant)  // Check if you already have enough
-            return;
-
-        int unboundTomesNeeded = Math.Max(0, quant - currentUnboundTomes);
+        int unboundTomesNeeded = Core.CheckInventory("Unbound Tome") ? quant - Bot.Inventory.GetQuantity("Unbound Tome") : quant;
 
         if (unboundTomesNeeded <= 0)
             return;
@@ -447,10 +441,10 @@ public class CoreArchMage
         if (!Bot.Quests.IsUnlocked(8912))
             ArcaneLocus(1);
 
-        Core.FarmingLogger("Unbound Tome", quant);
+        Core.FarmingLogger("Unbound Tome", unboundTomesNeeded);
         Core.AddDrop("Unbound Tome");
 
-        while (!Bot.ShouldExit && (unboundTomeItem == null || unboundTomeItem.Quantity < quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Unbound Tome", unboundTomesNeeded))
         {
             Core.EnsureAccept(8912);
             MysticScribingKit(unboundTomesNeeded);
@@ -462,15 +456,8 @@ public class CoreArchMage
 
             Core.EnsureComplete(8912);
             Bot.Wait.ForPickup("Unbound Tome");
-
-            unboundTomeItem = Bot.Inventory.Items.FirstOrDefault(item => item.Name == "Unbound Tome");
         }
     }
-
-
-
-
-
 
     #endregion
 
@@ -564,7 +551,7 @@ public class CoreArchMage
     }
 
 
-    private string[] RequiredItems = {
+    private readonly string[] RequiredItems = {
         "ArchMage",
         "Providence",
         "Mystic Scribing Kit",
