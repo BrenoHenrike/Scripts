@@ -106,6 +106,7 @@ public class HeadlessHorsemanGear
                         Core.HuntMonster("franken", "Frankenwerepire", "Shattered Metal Piece", 7);
                         Core.HuntMonster("that", "Shattered Hope", "Lost Hope", 10);
                         Core.HuntMonster("voltabolt", "Nightmare Dentist Chair", "Blade Sharpener");
+                        Core.EnsureComplete(QuestID);
                         break;
 
                     case 9461:
