@@ -68,9 +68,9 @@ public class HeadlessHorsemanGear
                     case 9457:
                         Core.Logger("Get Required Quest item");
                         Core.EquipClass(ClassType.Solo);
-                        Core.HuntMonsterMapID("crescentmoon", 1, "Oversoul's Headless Horseman", isTemp: false);
+                        Core.HuntMonster("crescentmoon", "Royce", "Oversoul's Headless Horseman", isTemp: false);
                         Core.EnsureAccept(QuestID);
-                        Core.HuntMonsterMapID("crescentmoon", 1, "Royce's Direclaw", 10, isTemp: false);
+                        Core.HuntMonster("crescentmoon", "Royce", "Royce's Direclaw", 10, isTemp: false);
                         Core.EquipClass(ClassType.Farm);
                         Core.HuntMonster("pie", "Myst Yaga", "Yaga Staff", 15);
                         Core.HuntMonster("twigsarcade", "Spirit Residue", "Spirit Residue", 15);
