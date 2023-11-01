@@ -22,6 +22,7 @@ tags: seasonal, story, complete, all
 //cs_include Scripts/Seasonal/MayThe4th/MurderMoonStory.cs
 //cs_include Scripts/Seasonal/MayThe4th/MurderMoonMerge.cs
 //cs_include Scripts/Story/MemetsRealm/CoreMemet.cs
+//cs_include Scripts/Seasonal/Mogloween/CoreMogloween.cs
 //cs_include Scripts/Seasonal/Mogloween/VampireLord(Class).cs
 //cs_include Scripts/Seasonal/StaffBirthdays/DageTheEvil/Undervoid.cs
 //cs_include Scripts/Seasonal/StarFestival/StarFestival.cs
@@ -63,6 +64,7 @@ public class AllSeasonal
     public MmmmMeatyQuest Meaty = new();
     public DarkLord DarkLord = new();
     public MurderMoon MurderMoon = new();
+    public CoreMogloween CoreMogloween = new();
 
     public VampireLord VPL = new();
     public DageRecruitStory DageRecruit = new();
@@ -109,7 +111,7 @@ public class AllSeasonal
             case 1:
                 Core.Logger("Starting Scripts for January");
                 //insert script voids here
-                Core.Logger($"Scripts Finished for {DateTime.Now.ToString("MMMM")}");
+                Core.Logger($"Scripts Finished for {DateTime.Now:MMMM}");
                 break;
 
             case 2:
@@ -118,7 +120,7 @@ public class AllSeasonal
                 Fezzini.FezziniScript();
                 LoveSpell.LoveSpellScript();
                 WheeleOfLove.DoWheeleOfLove();
-                Core.Logger($"Scripts Finished for {DateTime.Now.ToString("MMMM")}");
+                Core.Logger($"Scripts Finished for {DateTime.Now:MMMM}");
                 break;
 
             case 3:
@@ -128,7 +130,7 @@ public class AllSeasonal
                 DarkLord.GetDL();
                 MurderMoon.MurderMoonStory();
                 Undervoid.CompleteUnderVoid();
-                Core.Logger($"Scripts Finished for {DateTime.Now.ToString("MMMM")}");
+                Core.Logger($"Scripts Finished for {DateTime.Now:MMMM}");
 
                 break;
 
@@ -139,13 +141,13 @@ public class AllSeasonal
                 MeateorHunt.StoryLine();
                 SSB.GetBadgeANDDoStory();
                 Meaty.CompleteQuests();
-                Core.Logger($"Scripts Finished for {DateTime.Now.ToString("MMMM")}");
+                Core.Logger($"Scripts Finished for {DateTime.Now:MMMM}");
                 break;
 
             case 5:
                 Core.Logger("Starting Scripts for May");
                 //insert script voids here
-                Core.Logger($"Scripts Finished for {DateTime.Now.ToString("MMMM")}");
+                Core.Logger($"Scripts Finished for {DateTime.Now:MMMM}");
                 break;
 
             case 6:
@@ -159,7 +161,7 @@ public class AllSeasonal
                 // LunaCoveMerge.BuyAllMerge();
                 // SweetSummerTreats.GetTreats();
                 // UnLifeguardQuest.GetItems();
-                Core.Logger($"Scripts Finished for {DateTime.Now.ToString("MMMM")}");
+                Core.Logger($"Scripts Finished for {DateTime.Now:MMMM}");
                 break;
 
             case 7:
@@ -176,14 +178,14 @@ public class AllSeasonal
                 // UnLifeguardQuest.GetItems();
                 StarFestival.StoryLine();
                 MountOtzi.MountOtziQuests();
-                Core.Logger($"Scripts Finished for {DateTime.Now.ToString("MMMM")}");
+                Core.Logger($"Scripts Finished for {DateTime.Now:MMMM}");
                 break;
 
             case 8:
                 Core.Logger("Starting Scripts for August");
                 //insert script voids here
                 Frostvale.DoAll();
-                Core.Logger($"Scripts Finished for {DateTime.Now.ToString("MMMM")}");
+                Core.Logger($"Scripts Finished for {DateTime.Now:MMMM}");
                 break;
 
             case 9:
@@ -198,27 +200,27 @@ public class AllSeasonal
                 LowTideStory.Storyline();
                 AluteaNursery.DoAll();
                 BlazeBeard.TokenQuests();
-                Core.Logger($"Scripts Finished for {DateTime.Now.ToString("MMMM")}");
+                Core.Logger($"Scripts Finished for {DateTime.Now:MMMM}");
                 break;
 
             case 10:
                 Core.Logger("Starting Scripts for October");
-                //insert script voids here
-                Core.Logger($"Scripts Finished for {DateTime.Now.ToString("MMMM")}");
+                CoreMogloween.DoAll();
+                Core.Logger($"Scripts Finished for {DateTime.Now:MMMM}");
                 break;
 
             case 11:
                 Core.Logger("Starting Scripts for November");
                 //insert script voids here
                 VPL.GetClass(false);
-                Core.Logger($"Scripts Finished for {DateTime.Now.ToString("MMMM")}");
+                Core.Logger($"Scripts Finished for {DateTime.Now:MMMM}");
                 break;
 
             case 12:
                 Core.Logger("Starting Scripts for December");
                 //insert script voids here
                 Frostvale.DoAll();
-                Core.Logger($"Scripts Finished for {DateTime.Now.ToString("MMMM")}");
+                Core.Logger($"Scripts Finished for {DateTime.Now:MMMM}");
                 break;
         }
     }
