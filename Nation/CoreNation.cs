@@ -774,6 +774,7 @@ public class CoreNation
 
                         if (Item2 == null)
                             continue;
+                        ResetSindles();
 
                         Core.FarmingLogger(Item2.Name, Item2.MaxStack);
                         Core.EnsureAccept(7551);
@@ -812,9 +813,11 @@ public class CoreNation
 
                     if (Item2 == null)
                         continue;
+                    ResetSindles();
 
                     Core.FarmingLogger(Item2.Name, Item2.MaxStack);
                     Core.EnsureAccept(7551);
+
                     string[] locations = new[] { "tercessuinotlim", Core.IsMember ? "Nulgath" : "evilmarsh" };
                     string location = locations[new Random().Next(locations.Length)];
                     string cell = location == "tercessuinotlim" ? (new Random().Next(2) == 0 ? "m1" : "m2") : "Field1";
@@ -825,6 +828,14 @@ public class CoreNation
                         Core.EnsureComplete(7551, (int)Reward);
                 }
             }
+
+        }
+        void ResetSindles()
+        {
+            Core.EnsureAccept(7551);
+            Bot.Wait.ForQuestAccept(7551);
+            Core.AbandonQuest(7551);
+            Core.EnsureAccept(7551);
         }
     }
 
@@ -963,7 +974,7 @@ public class CoreNation
                 string[] locations = new[] { "tercessuinotlim", Core.IsMember ? "Nulgath" : "evilmarsh" };
                 string location = locations[new Random().Next(locations.Length)];
                 string cell = location == "tercessuinotlim" ? (new Random().Next(2) == 0 ? "m1" : "m2") : "Field1";
-                Core.KillMonster(location, cell, "Left", "Dark Makai", "Dark Makai Rune"); 
+                Core.KillMonster(location, cell, "Left", "Dark Makai", "Dark Makai Rune");
 
                 if (item != null && rewardItemIds.TryGetValue(item, out int itemId))
                     Core.EnsureCompleteMulti(7551, itemId);
