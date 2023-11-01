@@ -169,7 +169,7 @@
       "null"
     ],
     "path": "Tools/BankAllItems.cs",
-    "size": 3154,
+    "size": 2971,
     "fileName": "BankAllItems.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/BankAllItems.cs"
   },
@@ -275,7 +275,7 @@
       "null"
     ],
     "path": "Army/CoreArmyLite.cs",
-    "size": 39833,
+    "size": 40112,
     "fileName": "CoreArmyLite.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/CoreArmyLite.cs"
   },
@@ -3669,7 +3669,7 @@
       "oneclient"
     ],
     "path": "Army/OneClient/EldersBlood.cs",
-    "size": 1156,
+    "size": 1175,
     "fileName": "EldersBlood.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/OneClient/EldersBlood.cs"
   },
@@ -3683,7 +3683,7 @@
       "army."
     ],
     "path": "Army/OneClient/ArmyFreeAcs.cs",
-    "size": 1879,
+    "size": 1898,
     "fileName": "ArmyFreeAcs.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/OneClient/ArmyFreeAcs.cs"
   },
@@ -3696,7 +3696,7 @@
       "army"
     ],
     "path": "Army/OneClient/AllDailies.cs",
-    "size": 1920,
+    "size": 1939,
     "fileName": "AllDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/OneClient/AllDailies.cs"
   },
@@ -3709,7 +3709,7 @@
       "all"
     ],
     "path": "Army/OneClient/AllBankAllItems.cs",
-    "size": 874,
+    "size": 901,
     "fileName": "AllBankAllItems.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/OneClient/AllBankAllItems.cs"
   },
@@ -3725,7 +3725,7 @@
       "oneclient"
     ],
     "path": "Army/OneClient/WheelOfDoom.cs",
-    "size": 1133,
+    "size": 1152,
     "fileName": "WheelOfDoom.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/OneClient/WheelOfDoom.cs"
   },
@@ -4114,7 +4114,7 @@
       "null"
     ],
     "path": "ShadowsOfWar/MergeShops/ManaCradleMerge.cs",
-    "size": 5879,
+    "size": 5647,
     "fileName": "ManaCradleMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/ShadowsOfWar/MergeShops/ManaCradleMerge.cs"
   },
@@ -4936,7 +4936,7 @@
       "null"
     ],
     "path": "Other/Armor/MalgorsArmorSet.cs",
-    "size": 2924,
+    "size": 2707,
     "fileName": "MalgorsArmorSet.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Armor/MalgorsArmorSet.cs"
   },
