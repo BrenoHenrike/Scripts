@@ -91,7 +91,7 @@ public class HeadlessHorsemanGear
                         // The Horseman’s Head 9459
                         Core.EnsureAccept(QuestID);
                         Adv.BuyItem("asylum", 507, 36720, shopItemID: 21659);
-                        Core.KillMonster("that", "Will O' The Wisp", "Flames", 30);
+                        Core.HuntMonster("that", "Will O' The Wisp", "Flames", 30);
                         Core.HuntMonster("twigsarcade", "Ectoplasm", "Ectoplasm", 20);
                         Core.HuntMonster("tricktown", "Rotting Pumpkin", "Pumpkin Seeds", 50);
                         Core.EnsureComplete(QuestID);
