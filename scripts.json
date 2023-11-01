@@ -18768,6 +18768,17 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Friday13th/Story/05Sleezter.cs"
   },
   {
+    "name": "Headless Horseman Gear",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Seasonal/Mogloween/GearSets/HeadlessHorsemanGear.cs",
+    "size": 5243,
+    "fileName": "HeadlessHorsemanGear.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Mogloween/GearSets/HeadlessHorsemanGear.cs"
+  },
+  {
     "name": "Mog-GLOW-ween Merge",
     "description": "null",
     "tags": [
