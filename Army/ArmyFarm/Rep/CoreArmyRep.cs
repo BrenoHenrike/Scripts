@@ -51,7 +51,7 @@ public class CoreArmyRep
 
     public void ArmyAegisRep() => RunArmyRep("Aegis", "skytower", new[] { "r4", "r6", "r7" }, new[] { "r4", "r6", "r7" }, new[] { 4900, 4910, 4914 });
     public void ArmyArcangroveRep() => RunArmyRep("Arcangrove", "arcangrove", new[] { "Left", "Back", "Right", "LeftBack" }, new[] { "Left", "Back", "Right", "LeftBack" }, new[] { 794, 795, 796, 797, 798, 799, 800, 801 });
-    public void ArmyBaconCatRep() => RunArmyRep("BaconCatu", "baconcatlair", new[] { "r9", "r10", "r11", "r12", "r13" }, new[] { "r9", "r10", "r11", "r12", "r13" }, new[] { 5121 });
+    public void ArmyBaconCatRep() => RunArmyRep("BaconCatu", "baconcatlair", new[] { "r4" }, new[] { "r4" }, new[] { 5112, 5120 });
     public void ArmyDoomWoodRep() => RunArmyRep("DoomWood", "shadowfallwar", new[] { "Garden2", "Garden1", "Bonus" }, new[] { "Garden2", "Garden1", "Bonus" }, new[] { 1151, 1152, 1153 });
     public void ArmyCraggleRockRep() => RunArmyRep("CraggleRock", "wanders", new[] { "r2", "r3", "r5", "r7" }, new[] { "r2", "r3", "r5", "r7" }, new[] { 7277 });
     public void ArmyChaosMilitiaRep() => RunArmyRep("Chaos Militia", "citadel", new[] { "m1", "m5", "m9" }, new[] { "m1", "m5", "m9" }, new[] { 5775 });
@@ -65,8 +65,7 @@ public class CoreArmyRep
     public void ArmyEtherstormRep() => RunArmyRep("Etherstorm", "etherwardes", new string[] { "Enter", "r3", "r2" }, new string[] { "Enter", "r3", "r2" }, new int[] { 1721 });
     public void ArmyEmberseaRep() => RunArmyRep("Embersea", "fireforge", new string[] { "r5", "r8", "r7" }, new string[] { "r5", "r8", "r7" }, new int[] { 4227, 4228, 4229 });
     public void ArmyEternalRep() => RunArmyRep("Eternal", "fourdpyramid", new[] { "r10", "r11" }, new[] { "r10", "r11" }, new int[] { 5198, 5208 });
-    public void ArmyGoodEvilRep() { int goodRank = FactionRank("Good"); int evilRank = FactionRank("Evil"); string repname = "Good"; string AggroMonStart = goodRank < 4 || evilRank < 4 ? "castleundead" : "swordhavenbridge"; string[] Cells = goodRank < 4 || evilRank < 4 ? new[] { "Bridge" } : new string[] { "Enter", "Bright", "Hall" }; int[] quests = goodRank < 4 || evilRank < 4 ? new[] { 364, 369 } : new int[] { 367, 372 };
-     RunArmyRep(repname, AggroMonStart, Cells, Cells, quests); }
+    public void ArmyGoodEvilRep() { int goodRank = FactionRank("Good"); int evilRank = FactionRank("Evil"); string repname = "Good"; string AggroMonStart = goodRank < 4 || evilRank < 4 ? "castleundead" : "swordhavenbridge"; string[] Cells = goodRank < 4 || evilRank < 4 ? new[] { "Bridge" } : new string[] { "Enter", "Bright", "Hall" }; int[] quests = goodRank < 4 || evilRank < 4 ? new[] { 364, 369 } : new int[] { 367, 372 }; RunArmyRep(repname, AggroMonStart, Cells, Cells, quests); }
     public void ArmyHollowbornRep() => RunArmyRep("Hollowborn", "shadowrealm", new[] { "r2", "r4", "r6" }, new[] { "r2", "r4", "r6" }, new int[] { 7553, 7555 });
     public void ArmyInfernalArmyRep() => RunArmyRep("Infernal Army", "dreadfire", new[] { "r10", "r10a", "r10b" }, new[] { "r10", "r10a", "r10b" }, new int[] { 5707, 5708, 5709 });
     public void ArmyMythsongRep() => RunArmyRep("Mythsong", "beehive", new[] { "r1", "r2", "r3", "r4" }, new string[] { "r1", "r2", "r3", "r4" }, new int[] { 4829 });
@@ -80,7 +79,7 @@ public class CoreArmyRep
     public void ArmyTreasureHunterRep() => RunArmyRep("TreasureHunter", "stalagbite", new[] { "Enter", "r1" }, new[] { "Enter", "r1" }, new[] { 6593 });
     public void ArmyTrollRep() => RunArmyRep("Troll", "bloodtuskwar", new[] { "r6", "r3", "r2" }, new[] { "r6", "r3", "r2" }, new[] { 1263 });
     public void ArmyLoremasterRep() => RunArmyRep("Loremaster", Core.IsMember ? "druids" : "wardwarf", new[] { Core.IsMember ? "r5" : "r2", Core.IsMember ? "r5" : "r4" }, new[] { Core.IsMember ? "r5" : "r2", Core.IsMember ? "r5" : "r4" }, Core.IsMember ? new[] { 3032 } : new[] { 7505 });
-    public void ArmyLycanRep() => RunArmyRep("Lycan", "Lycan", new[] { "r4", "r5" }, new[] { "r4", "r5" }, new[] { 532, 537 });
+    public void ArmyLycanRep() => RunArmyRep("Lycan", "Lycan", new[] { "r4", "r5" }, new[] { "r4", "r5" }, Bot.Quests.IsDailyComplete(532) ? new[] { 537 } : new[] { 532, 537 });
     public void ArmyMonsterHunterRep() => RunArmyRep("Monster Hunter", "pilgrimage", new[] { "r5", "r7", "r8", "r9" }, new[] { "r5", "r7", "r8", "r9" }, new[] { 5849, 5850 });
 
     #region Time of year restricted
