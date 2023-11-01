@@ -1,7 +1,7 @@
 /*
 name: DarkWarLegionGold
-description: null
-tags: null
+description: Gold farm using Dark War Legion Method
+tags: gold, farm, dark, war, legion
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
