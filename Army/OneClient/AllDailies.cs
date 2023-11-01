@@ -49,7 +49,7 @@ public class ArmyAllDailies
 
     public void CheckACs(bool randomServers)
     {
-        while (Army.doForAll(randomServers))
+        while (!Bot.ShouldExit && Army.doForAll(randomServers))
             FAD.DoAllDailies(Bot.Config!.Get<FarmAllDailies.DailySet>("Select Dailies Set"));
     }  
 }

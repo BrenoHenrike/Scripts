@@ -12,6 +12,7 @@ using Skua.Core.Models.Monsters;
 using Skua.Core.Models.Players;
 using Skua.Core.Options;
 using Skua.Core.ViewModels;
+using Skua.Core.Models.Servers;
 using System.Diagnostics;
 using System.Text;
 using System.Xml;
@@ -460,12 +461,17 @@ public class CoreArmyLite
 
     public bool doForAll(bool randomServers = true)
     {
-        if (Bot.ShouldExit || _doForAllIndex >= (doForAllAccountDetails ??= readManager()).Count())
+        if (Bot.ShouldExit || _doForAllIndex >= (doForAllAccountDetails ??= readManager()).Length)
             return false;
 
         Bot.Options.AutoRelogin = false;
+
         string name = doForAllAccountDetails[_doForAllIndex].Item1;
         string pass = doForAllAccountDetails[_doForAllIndex++].Item2;
+
+        Server[] ServerList = Bot.Servers.CachedServers
+            .Where(x => !BlacklistedServers.Contains(x.Name.ToLower()) && (Core.IsMember || !x.Upgrade) && (x.Online))
+            .ToArray();
 
         if (Core.Username() != name)
         {
@@ -476,10 +482,13 @@ public class CoreArmyLite
             }
             Bot.Servers.Login(name, pass);
             Bot.Sleep(3000);
+            
+            
             Bot.Servers.Connect(
-                randomServers ?
-                Bot.Servers.CachedServers.Where(x => !BlacklistedServers.Contains(x.Name.ToLower())).ToArray()[Bot.Random.Next(0, 8)] :
-                Bot.Servers.CachedServers.First(x => x.Name == Bot.Options.ReloginServer));
+            randomServers ?
+            Bot.Servers.ServerList.Where(x => !BlacklistedServers.Contains(x.Name.ToLower()) && !x.Upgrade && x.Online).ToArray()[Bot.Random.Next(1, 5)] :
+            Bot.Servers.CachedServers.First(x => x.Name == Bot.Options.ReloginServer));
+
             Bot.Wait.ForMapLoad("battleon");
             while (!Bot.Player.Loaded) { }
         }
@@ -587,7 +596,7 @@ public class CoreArmyLite
     }
     private int _doForAllIndex = 0;
     public (string, string)[]? doForAllAccountDetails;
-    private string[] BlacklistedServers =
+    private readonly string[] BlacklistedServers =
     {
         "artix",
         "sir ver",

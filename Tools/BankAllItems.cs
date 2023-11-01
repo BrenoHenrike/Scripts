@@ -4,6 +4,7 @@ description: null
 tags: null
 */
 //cs_include Scripts/CoreBots.cs
+using System.Linq.Expressions;
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
@@ -29,52 +30,47 @@ public class BankAllItems
         Core.SetOptions();
 
         BankAll();
-       
+
         Core.SetOptions(false);
     }
 
     public void BankAll()
     {
-        
-        bool logged = false;
-        List<string> blackListedItems = new() { "Treasure Potion" };
-        blackListedItems.AddRange(Core.SoloGear);
-        blackListedItems.AddRange(Core.FarmGear);
-        if (!String.IsNullOrEmpty(Bot.Config.Get<string>("BlackList")))
-            blackListedItems.AddRange(Bot.Config.Get<string>("BlackList").Split(',', StringSplitOptions.TrimEntries));
-        Bot.Wait.ForMapLoad("battleon");
-        Bot.Sleep(Core.ActionDelay);
-        Bot.Send.Packet($"%xt%zm%house%1%{Bot.Player.Username}%");
+        // Initialize the list of blacklisted items
+        var blackListedItems = new HashSet<string> { "Treasure Potion" };
+        blackListedItems.UnionWith(Core.SoloGear);
+        blackListedItems.UnionWith(Core.FarmGear);
 
-        Core.Logger("Currently Banking: Inventory Items");
-        foreach (InventoryItem item in Bot.Inventory.Items)
+        // Check for BlackList from Bot.Config
+        var configBlackList = Bot.Config?.Get<string>("BlackList");
+        if (!string.IsNullOrEmpty(configBlackList))
         {
-            if (item.Equipped || blackListedItems.Contains(item.Name))
-                continue;
-
-            if (Bot.Bank.FreeSlots == 0 && !item.Coins)
-            {
-                if (!logged)
-                {
-                    Core.Logger($"{Bot.Player.Username}'s Bank is full");
-                    logged = true;
-                }
-                continue;
-            }
-            if (Bot.Config!.Get<bool>("BanknonAc") && !item.Coins)
-                Core.ToBank(item.Name);
-            else if (item.Coins)
-                Core.ToBank(item.Name);
-
-            Bot.Sleep(Core.ActionDelay);
+            blackListedItems.UnionWith(configBlackList.Split(',').Select(item => item.Trim()));
         }
+
+        // Wait for the player to load before joining "whitemap"
+        Bot.Wait.ForMapLoad("battleon");
+        Bot.Wait.ForTrue(() => Bot.Player.Loaded, 30);
+        Core.Join("whitemap");
+
+        // Bank inventory items
+        BankItems(Bot.Inventory.Items, blackListedItems, Bot.Config?.Get<bool>("BanknonAc") == true);
 
         Core.Logger("Finished inventory items, onto house items.");
 
-        Core.Logger("Currently Banking: House Items");
-        foreach (InventoryItem item in Bot.House.Items)
+        // Bank house items
+        BankItems(Bot.House.Items, blackListedItems, Bot.Config?.Get<bool>("BanknonAc") == true);
+    }
+
+    private void BankItems(IEnumerable<InventoryItem> items, HashSet<string> blackList, bool bankNonAc)
+    {
+        bool logged = false;
+
+        foreach (var item in items)
         {
-            if (Bot.House.IsEquipped(item.ID) || blackListedItems.Contains(item.Name))
+            var itemName = item.Name; // Store the item name in a variable for better performance
+
+            if (item.Equipped || blackList.Contains(itemName))
                 continue;
 
             if (Bot.Bank.FreeSlots == 0 && !item.Coins)
@@ -86,13 +82,17 @@ public class BankAllItems
                 }
                 continue;
             }
-            if (Bot.Config!.Get<bool>("BanknonAc") && !item.Coins)
-                Core.ToHouseBank(item.Name);
+
+            if (bankNonAc && !item.Coins)
+                Core.ToBank(itemName);
             else if (item.Coins)
-                Core.ToHouseBank(item.Name);
+                Core.ToBank(itemName);
+
             Bot.Sleep(Core.ActionDelay);
         }
-
     }
+
+
+
 }
 

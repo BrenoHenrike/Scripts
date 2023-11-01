@@ -32,7 +32,7 @@ public class ArmyFreeAcs
     {
         Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
 
-        while (Army.doForAll())
+        while (!Bot.ShouldExit && Army.doForAll())
         {
 
             if (Story.QuestProgression(9444))
