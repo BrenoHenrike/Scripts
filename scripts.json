@@ -6,7 +6,7 @@
       "null"
     ],
     "path": "CoreDailies.cs",
-    "size": 48526,
+    "size": 48579,
     "fileName": "CoreDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreDailies.cs"
   },
@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 181886,
+    "size": 181888,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -39,7 +39,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 109664,
+    "size": 109903,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -204,6 +204,19 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/RankUpEquippedClass.cs"
   },
   {
+    "name": "Player Finder",
+    "description": "Finds a player in a range of roomnumbers, with a specific map name, player name, stop location (wether u want to stop at the player or your default location), and a start and stop range for room#",
+    "tags": [
+      "find",
+      "player",
+      ""
+    ],
+    "path": "Tools/YandereStalker.cs",
+    "size": 2800,
+    "fileName": "YandereStalker.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/YandereStalker.cs"
+  },
+  {
     "name": "Generate Queued Script",
     "description": "Pick multiple scripts that you want to run in sequence of one another, and the script will generate a new file that does exactly those bots for you",
     "tags": [
@@ -262,7 +275,7 @@
       "null"
     ],
     "path": "Army/CoreArmyLite.cs",
-    "size": 39832,
+    "size": 39833,
     "fileName": "CoreArmyLite.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/CoreArmyLite.cs"
   },
@@ -1605,7 +1618,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 76001,
+    "size": 77187,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -1848,7 +1861,7 @@
       "null"
     ],
     "path": "Legion/CoreLegion.cs",
-    "size": 31731,
+    "size": 31819,
     "fileName": "CoreLegion.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/CoreLegion.cs"
   },
@@ -2351,10 +2364,15 @@
     "tags": [
       "story",
       "quest",
-      "dragon-fable-origins"
+      "dragon fable origins",
+      "firewar",
+      "northmountain",
+      "charredplains",
+      "drakonnan",
+      ""
     ],
     "path": "Story/DragonFableOrigins.cs",
-    "size": 5149,
+    "size": 5201,
     "fileName": "DragonFableOrigins.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/DragonFableOrigins.cs"
   },
@@ -3892,7 +3910,7 @@
       "reagents"
     ],
     "path": "Army/ArmyNulgath/ArmySupplies.cs",
-    "size": 4457,
+    "size": 7091,
     "fileName": "ArmySupplies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyNulgath/ArmySupplies.cs"
   },
@@ -8586,7 +8604,7 @@
       "null"
     ],
     "path": "Nation/Various/TarosManslayer.cs",
-    "size": 1679,
+    "size": 2161,
     "fileName": "TarosManslayer.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/TarosManslayer.cs"
   },
@@ -8991,7 +9009,7 @@
       "null"
     ],
     "path": "Nation/EvolvedOrb/EvovledHexOrbItems[Mem].cs",
-    "size": 3408,
+    "size": 3439,
     "fileName": "EvovledHexOrbItems[Mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/EvolvedOrb/EvovledHexOrbItems[Mem].cs"
   },
@@ -9024,7 +9042,7 @@
       "null"
     ],
     "path": "Nation/EvolvedOrb/EvolvedBloodOrbItems[Mem].cs",
-    "size": 3311,
+    "size": 3328,
     "fileName": "EvolvedBloodOrbItems[Mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/EvolvedOrb/EvolvedBloodOrbItems[Mem].cs"
   },
@@ -9102,7 +9120,7 @@
       "fragment"
     ],
     "path": "Nation/AFDL/NulgathDemandsWork.cs",
-    "size": 4345,
+    "size": 4412,
     "fileName": "NulgathDemandsWork.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/AFDL/NulgathDemandsWork.cs"
   },
@@ -11521,6 +11539,41 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/BlackFriday/AlphaHunterAndRogue.cs"
   },
   {
+    "name": "Camlan Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Camlan Merge [2349] in /camlan",
+    "tags": [
+      "camlan",
+      "merge",
+      "camlan",
+      "dark",
+      "tithe",
+      "chevalier",
+      "armet",
+      "chevaliers",
+      "long",
+      "cloak",
+      "starbane",
+      "lance",
+      "fallen",
+      "star",
+      "shield",
+      "apocryphal",
+      "shadow",
+      "executioner",
+      "retribution",
+      "eons",
+      "broadsword",
+      "awakened",
+      "carnage",
+      "maw",
+      "cleaver"
+    ],
+    "path": "Seasonal/BlackFriday/CamlanMerge.cs",
+    "size": 5533,
+    "fileName": "CamlanMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/BlackFriday/CamlanMerge.cs"
+  },
+  {
     "name": "Technocaster Merge",
     "description": "This will get all or selected items on this merge shop.",
     "tags": [
@@ -11751,7 +11804,7 @@
       "frostvale"
     ],
     "path": "Seasonal/Frostvale/FrostvalBarbarian.cs",
-    "size": 3833,
+    "size": 3832,
     "fileName": "FrostvalBarbarian.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/FrostvalBarbarian.cs"
   },
@@ -12155,13 +12208,13 @@
       "null"
     ],
     "path": "Seasonal/Mogloween/CoreMogloween.cs",
-    "size": 22817,
+    "size": 22897,
     "fileName": "CoreMogloween.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Mogloween/CoreMogloween.cs"
   },
   {
     "name": "Cursed Castle Story",
-    "description": "This will complete the Cursed Castle story quest.",
+    "description": "This will complete the cursed castle Story quest.",
     "tags": [
       "story",
       "quest",
@@ -13424,7 +13477,7 @@
       "exanima"
     ],
     "path": "Legion/Various/DageChallengeMerge.cs",
-    "size": 7364,
+    "size": 7363,
     "fileName": "DageChallengeMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/Various/DageChallengeMerge.cs"
   },
@@ -16608,7 +16661,7 @@
       "good"
     ],
     "path": "Good/BLoD/2UltimateBlindingLightofDestiny.cs",
-    "size": 4005,
+    "size": 4003,
     "fileName": "2UltimateBlindingLightofDestiny.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/2UltimateBlindingLightofDestiny.cs"
   },
@@ -17621,7 +17674,7 @@
       "aegis"
     ],
     "path": "Army/ArmyFarm/Rep/CoreArmyRep.cs",
-    "size": 10562,
+    "size": 10556,
     "fileName": "CoreArmyRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/CoreArmyRep.cs"
   },
@@ -18321,6 +18374,64 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HarvestDay/MergeShops/EbilCorpHQMerge.cs"
   },
   {
+    "name": "Shadowbattleon",
+    "description": "Does the Shadow of Doom Saga",
+    "tags": [
+      "shadow of doom",
+      "shadowbattleon",
+      "story",
+      "saga",
+      "doall",
+      "camlan"
+    ],
+    "path": "Seasonal/BlackFriday/ShadowofDoom/ShadowBattleon.cs",
+    "size": 695,
+    "fileName": "ShadowBattleon.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/BlackFriday/ShadowofDoom/ShadowBattleon.cs"
+  },
+  {
+    "name": "Shadow of Doom Do All",
+    "description": "Does the Shadow of Doom Saga",
+    "tags": [
+      "shadow of doom",
+      "camlan",
+      "shadowbattleon story",
+      "saga",
+      "doall"
+    ],
+    "path": "Seasonal/BlackFriday/ShadowofDoom/0DoAll.cs",
+    "size": 694,
+    "fileName": "0DoAll.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/BlackFriday/ShadowofDoom/0DoAll.cs"
+  },
+  {
+    "name": "Camlan",
+    "description": "Does the Shadow of Doom Saga",
+    "tags": [
+      "shadow of doom",
+      "camlan",
+      "story",
+      "saga",
+      "doall",
+      "camlan"
+    ],
+    "path": "Seasonal/BlackFriday/ShadowofDoom/Camlan.cs",
+    "size": 662,
+    "fileName": "Camlan.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/BlackFriday/ShadowofDoom/Camlan.cs"
+  },
+  {
+    "name": "null",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Seasonal/BlackFriday/ShadowofDoom/CoreShadowofDoom.cs",
+    "size": 3516,
+    "fileName": "CoreShadowofDoom.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/BlackFriday/ShadowofDoom/CoreShadowofDoom.cs"
+  },
+  {
     "name": "Valarian's Merge",
     "description": "This will get all or selected items on this merge shop.",
     "tags": [
@@ -18713,6 +18824,52 @@
     "size": 15000,
     "fileName": "MogloweenSeasonalMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Mogloween/MergeShops/MogloweenSeasonalMerge.cs"
+  },
+  {
+    "name": "Alnswick Castle Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Alnswick Castle Merge [2360] in /cursedcastle",
+    "tags": [
+      "alnswick",
+      "castle",
+      "merge",
+      "cursedcastle",
+      "vampiric",
+      "gentlefolk",
+      "red",
+      "eyed",
+      "aristohat",
+      "morph",
+      "stache",
+      "aristocap",
+      "dapper",
+      "bloodshot",
+      "crimson",
+      "vampire",
+      "wings",
+      "winged",
+      "cloak",
+      "wind",
+      "soul",
+      "starved",
+      "jiangshi",
+      "cap",
+      "talisman",
+      "sedge",
+      "bandaged",
+      "glare",
+      "sealed",
+      "coffin",
+      "haunted",
+      "tuanshan",
+      "jiangshis",
+      "weaponry",
+      "claw",
+      "claws"
+    ],
+    "path": "Seasonal/Mogloween/MergeShops/AlnswickCastleMerge.cs",
+    "size": 8254,
+    "fileName": "AlnswickCastleMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Mogloween/MergeShops/AlnswickCastleMerge.cs"
   },
   {
     "name": "Candied Costumes Merge",

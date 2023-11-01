@@ -1,6 +1,6 @@
 /*
 name: Cursed Castle Story
-description: This will complete the Cursed Castle story quest.
+description: This will complete the cursed castle Story quest.
 tags: story, quest, mogloween, seasonal, cursed, castle
 */
 //cs_include Scripts/CoreBots.cs

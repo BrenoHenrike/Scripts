@@ -37,8 +37,7 @@ public class EvovledHexOrbItems
             return;
 
         EHO.GetEvolvedHexOrb();
-        if (Core.CheckInventory(33197)) //recheck
-            return;
+        Core.Unbank(33197); //make sure ya have it
 
         UnlockedevovledHexArmor();
         CutOffOneHead();
@@ -60,9 +59,9 @@ public class EvovledHexOrbItems
 
         #endregion
 
-        // Flow Like Blood - 4780
+        // Unlock the Evolved Hex Armor - 4764
         Core.AddDrop("Evolved Hex of Nulgath");
-        Core.EnsureAccept(4780);
+        Core.EnsureAccept(4764);
 
         Nation.FarmUni13(3);
         Nation.TheAssistant("Unidentified 22");
@@ -71,7 +70,7 @@ public class EvovledHexOrbItems
         Farm.BludrutBrawlBoss(quant: 500);
         Core.BuyItem(Bot.Map.Name, 222, "Warden of Light");
 
-        Core.EnsureComplete(4780);
+        Core.EnsureComplete(4764);
         Bot.Wait.ForPickup("Evolved Hex of Nulgath");
     }
 
@@ -97,6 +96,7 @@ public class EvovledHexOrbItems
         if (!Core.CheckInventory("Platinum Coin of Nulgath: 2500") || !Core.CheckInventory(33197))
             return;
 
+        //Blood Tears - 4783
         Core.EnsureAccept(4783);
         Nation.FarmUni10(30);
         Nation.SwindleBulk(30);
@@ -108,11 +108,10 @@ public class EvovledHexOrbItems
 
         Core.EnsureComplete(4783);
 
-
         Bot.Wait.ForPickup("Evolved Hex Staf");
     }
 
-    private string[] Rewards =
+    private readonly string[] Rewards =
     {
         "Evolved Hex of Nulgath",
         "Evolved Hex Helm",

@@ -29,7 +29,11 @@ public class TarosManslayer
 
     public void GuardianTaro(bool ManslayerOnly = true)
     {
-        if (ManslayerOnly)
+     
+        Core.OneTimeMessage("Dark Makai Rune/Sigil Solution", "Randomizing location for \"Dark Makai\"\n" +
+        "as the drop can randomly stop showing up", forcedMessageBox: false);
+        
+           if (ManslayerOnly)
         {
             Rewards = new[] { "Taro's Manslayer" };
         }
@@ -52,8 +56,11 @@ public class TarosManslayer
             {
                 Core.EnsureAccept(1111);
                 Nation.FarmGemofNulgath(10);
-                Core.KillMonster( "tercessuinotlim", "m1", "Right", "Dark Makai", "Dark Makai Rune");
-                
+                string[] locations = new[] { "tercessuinotlim", Core.IsMember ? "Nulgath" : "evilmarsh" };
+                string location = locations[new Random().Next(locations.Length)];
+                string cell = location == "tercessuinotlim" ? (new Random().Next(2) == 0 ? "m1" : "m2") : "Field1";
+                Core.KillMonster(location, cell, "Left", "Dark Makai", "Dark Makai Rune");
+
                 Core.EnsureCompleteChoose(1111, Rewards);
                 Bot.Sleep(Core.ActionDelay);
             }

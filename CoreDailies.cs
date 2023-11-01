@@ -234,6 +234,8 @@ public class CoreDailies
         Core.HuntMonster("stalagbite", "Balboa", "Axe of the Prospector", isTemp: false);
         Core.HuntMonster("stalagbite", "Balboa", "Raw Ore", 30);
 
+        Core.JumpWait();
+
         foreach (string metal in metals)
         {
             if (!Core.CheckInventory(metal, quant, false))
@@ -281,6 +283,9 @@ public class CoreDailies
         Core.EquipClass(ClassType.Farm);
         Core.HuntMonster("stalagbite", "Balboa", "Axe of the Prospector", 1, false);
         Core.HuntMonster("stalagbite", "Balboa", "Raw Ore", 30);
+
+        Core.JumpWait();
+
         foreach (string metal in metals)
         {
             if (!Core.CheckInventory(metal, quant, false))

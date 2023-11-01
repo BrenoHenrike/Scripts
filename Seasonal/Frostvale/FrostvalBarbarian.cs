@@ -47,7 +47,7 @@ public class FrostvalBarbarian
         {
             Daily.CryptoToken();
             if (!Core.CheckInventory("Crypto Token", 5))
-                Core.Logger($"Please do the Crypto Token Daily {5 - Bot.Inventory.GetQuantity("Crypto Token")} more times before continueing the farm", messageBox: true, stopBot: true);
+                Core.Logger($"Please do the Crypto Token Daily {5 - Bot.Inventory.GetQuantity("Crypto Token")} more times before continuing the farm", messageBox: true, stopBot: true);
         }
 
         Core.AddDrop("Frostval Barbarian", "Frosty Barbarian's Helm", "Frosty Barbarian's Horns", "Bearded Barbarian Helm", "Frostval Barbarian Cape", "Frostval Barbarian Sword");

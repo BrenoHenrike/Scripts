@@ -314,7 +314,10 @@ public class CoreNation
             Supplies("Unidentified 9");
             Supplies("Unidentified 16");
             Supplies("Unidentified 20");
-            Core.KillMonster("tercessuinotlim", "m1", "Right", "Dark Makai", "Dark Makai Rune");
+            string[] locations = new[] { "tercessuinotlim", Core.IsMember ? "Nulgath" : "evilmarsh" };
+            string location = locations[new Random().Next(locations.Length)];
+            string cell = location == "tercessuinotlim" ? (new Random().Next(2) == 0 ? "m1" : "m2") : "Field1";
+            Core.KillMonster(location, cell, "Left", "Dark Makai", "Dark Makai Rune");
             Core.EnsureComplete(7551, Item.ID);
             if (Item.Name != "Voucher of Nulgath" && sellMemVoucher)
                 Core.SellItem("Voucher of Nulgath", all: true);
@@ -774,7 +777,10 @@ public class CoreNation
 
                         Core.FarmingLogger(Item2.Name, Item2.MaxStack);
                         Core.EnsureAccept(7551);
-                        Core.KillMonster("tercessuinotlim", "m1", "Right", "Dark Makai", "Dark Makai Rune");
+                        string[] locations = new[] { "tercessuinotlim", Core.IsMember ? "Nulgath" : "evilmarsh" };
+                        string location = locations[new Random().Next(locations.Length)];
+                        string cell = location == "tercessuinotlim" ? (new Random().Next(2) == 0 ? "m1" : "m2") : "Field1";
+                        Core.KillMonster(location, cell, "Left", "Dark Makai", "Dark Makai Rune");
 
                         if (Reward != SwindlesReturnReward.None)
                             Core.EnsureComplete(7551, Item2.ID);
@@ -809,7 +815,10 @@ public class CoreNation
 
                     Core.FarmingLogger(Item2.Name, Item2.MaxStack);
                     Core.EnsureAccept(7551);
-                    Core.KillMonster("tercessuinotlim", "m1", "Right", "Dark Makai", "Dark Makai Rune");
+                    string[] locations = new[] { "tercessuinotlim", Core.IsMember ? "Nulgath" : "evilmarsh" };
+                    string location = locations[new Random().Next(locations.Length)];
+                    string cell = location == "tercessuinotlim" ? (new Random().Next(2) == 0 ? "m1" : "m2") : "Field1";
+                    Core.KillMonster(location, cell, "Left", "Dark Makai", "Dark Makai Rune");
 
 
                     if (Reward != SwindlesReturnReward.None)
@@ -951,7 +960,10 @@ public class CoreNation
             if (returnPolicyDuringSupplies && Core.CheckInventory(new[] { Uni(1), Uni(6), Uni(9), Uni(16), Uni(20) }))
             {
                 Core.EnsureAccept(7551);
-                Core.KillMonster("tercessuinotlim", "m1", "Right", "Dark Makai", "Dark Makai Rune", publicRoom: false);
+                string[] locations = new[] { "tercessuinotlim", Core.IsMember ? "Nulgath" : "evilmarsh" };
+                string location = locations[new Random().Next(locations.Length)];
+                string cell = location == "tercessuinotlim" ? (new Random().Next(2) == 0 ? "m1" : "m2") : "Field1";
+                Core.KillMonster(location, cell, "Left", "Dark Makai", "Dark Makai Rune"); 
 
                 if (item != null && rewardItemIds.TryGetValue(item, out int itemId))
                     Core.EnsureCompleteMulti(7551, itemId);

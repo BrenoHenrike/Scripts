@@ -62,7 +62,7 @@ public class CoreArmyRep
     public void ArmyDruidGroveRep() => RunArmyRep("Druid Grove", "bloodtusk", new string[] { "r8", "r3", "r18" }, new string[] { "r8", "r3", "r18" }, new int[] { 3049 });
     public void ArmyDwarfholdRep() => RunArmyRep("Dwarfhold", "pines", new string[] { "Enter", "Mountain" }, new string[] { "Enter", "Mountain" }, new int[] { 320, 321 });
     public void ArmyElementalMasterRep() => RunArmyRep("Elemental Master", "gilead", new[] { "r8", "r3", "r4" }, new string[] { "r8", "r3", "r4" }, new int[] { 3050, 3298 });
-    public void ArmyEtherstormRep() => RunArmyRep("Etherstorm", "etherwardes", new string[] { "Enter", "r3", "r2" }, new string[] { "Enter", "r3", "r2" }, new int[] { 3050, 3298 });
+    public void ArmyEtherstormRep() => RunArmyRep("Etherstorm", "etherwardes", new string[] { "Enter", "r3", "r2" }, new string[] { "Enter", "r3", "r2" }, new int[] { 1721 });
     public void ArmyEmberseaRep() => RunArmyRep("Embersea", "fireforge", new string[] { "r5", "r8", "r7" }, new string[] { "r5", "r8", "r7" }, new int[] { 4227, 4228, 4229 });
     public void ArmyEternalRep() => RunArmyRep("Eternal", "fourdpyramid", new[] { "r10", "r11" }, new[] { "r10", "r11" }, new int[] { 5198, 5208 });
     public void ArmyGoodEvilRep() { int goodRank = FactionRank("Good"); int evilRank = FactionRank("Evil"); string repname = "Good"; string AggroMonStart = goodRank < 4 || evilRank < 4 ? "castleundead" : "swordhavenbridge"; string[] Cells = goodRank < 4 || evilRank < 4 ? new[] { "Bridge" } : new string[] { "Enter", "Bright", "Hall" }; int[] quests = goodRank < 4 || evilRank < 4 ? new[] { 364, 369 } : new int[] { 367, 372 };

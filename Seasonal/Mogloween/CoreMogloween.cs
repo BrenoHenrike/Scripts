@@ -700,10 +700,12 @@ public class CoreMogloween
 
     public void CursedCastle()
     {
-        if (Core.isCompletedBefore(9454) || !Core.isSeasonalMapActive("cursedcastle"))
+        if (!Core.isSeasonalMapActive("cursedcastle"))
+            return;
+        if (Core.isCompletedBefore(9454))
             return;
 
-        Story.PreLoad(this);
+        Core.EquipClass(ClassType.Farm);
 
         // Ghoul Fungi 9445
         Story.KillQuest(9445, "cursedcastle", "Luminous Fungus");
@@ -714,18 +716,20 @@ public class CoreMogloween
         Story.MapItemQuest(9446, "cursedcastle", 12273);
 
         // Dragon Instinct 9447
-        Story.MapItemQuest(9447, "cursedcastle", new[] { 12274 , 12275 });
+        Story.MapItemQuest(9447, "cursedcastle", new[] { 12274, 12275 });
 
         // The Uninvited 9448
         Story.KillQuest(9448, "cursedcastle", "Noble Ghost");
         Story.MapItemQuest(9448, "cursedcastle", 12276);
 
         // Room Service 9449
-        Story.MapItemQuest(9449, "cursedcastle", new[] { 12277 , 12278, 12279 });
+        Story.MapItemQuest(9449, "cursedcastle", new[] { 12277, 12278, 12279 });
 
         // Newborn's Teething 9450
         Story.KillQuest(9450, "cursedcastle", "Bone Dragonling");
         Story.MapItemQuest(9450, "cursedcastle", 12280);
+
+        Core.EquipClass(ClassType.Solo);
 
         // Sadistic Solicitations 9451
         Story.KillQuest(9451, "cursedcastle", "Noble Ghost");
@@ -741,7 +745,5 @@ public class CoreMogloween
 
         // Restless Waltz 9454
         Story.KillQuest(9454, "cursedcastle", "Unborn Brood");
-
-
     }
 }

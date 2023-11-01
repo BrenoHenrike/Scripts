@@ -59,17 +59,17 @@ public class NulgathDemandsWork
         if (Core.CheckInventory(items, quant))
             return;
 
-        var rewards = Core.EnsureLoad(5259).Rewards;
+        ItemBase[] rewards5259 = Core.EnsureLoad(5259).Rewards.ToArray();
 
         Core.AddDrop(Nation.bagDrops);
-        Core.AddDrop(rewards.Select(x => x.Name).ToArray());
+        Core.AddDrop(rewards5259.Select(x => x.Name).ToArray());
 
         foreach (string item in items)
         {
             if (Core.CheckInventory(item, quant))
                 continue;
-            if (!rewards.TryFind(x => x.Name.ToLower() == item.ToLower(), out var _item))
-                continue;
+
+            ItemBase _item = rewards5259.FirstOrDefault(reward => reward.Name.Equals(item, StringComparison.OrdinalIgnoreCase))!;
 
             Core.FarmingLogger(item, quant);
 
@@ -89,14 +89,14 @@ public class NulgathDemandsWork
                 Nation.SwindleBulk(50);
                 GHV.GetGHV();
 
-                if (item == "Unidentified 35")
+                if (_item.Name == "Unidentified 35")
                 {
                     while (!Bot.ShouldExit && Core.CheckInventory("Archfiend Essence Fragment", 9) && !Core.CheckInventory("Unidentified 35", quant))
-                        Adv.BuyItem("tercessuinotlim", 1951, 35770, shopItemID: 7912);
-                    if (!Core.CheckInventory(_item!.ID, quant))
-                        Core.EnsureComplete(5259, _item!.ID);
+                        Adv.BuyItem("tercessuinotlim", 1951, _item.ID, shopItemID: 7912);
+                    if (!Core.CheckInventory(_item.ID, quant))
+                        Core.EnsureComplete(5259, _item.ID);
                 }
-                else Core.EnsureComplete(5259, _item!.ID);
+                else Core.EnsureCompleteChoose(5259, Core.QuestRewards(5259));
 
                 Core.Logger($"Completed x{++i}");
                 i++;

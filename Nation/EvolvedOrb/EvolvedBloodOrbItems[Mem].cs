@@ -77,6 +77,7 @@ public class EvolvedBloodOrbItems
             Core.HuntMonster("underworld", "Skull Warrior", "Skull Warrior Rune");
             Core.EnsureComplete(765, 4961);
         }
+        
         Nation.FarmUni13(3);
         Nation.TheAssistant("Unidentified 25");
         juggernaut.JuggItems(reward: JuggernautItemsofNulgath.RewardsSelection.Dimensional_Championof_Nulgath);
@@ -94,7 +95,6 @@ public class EvolvedBloodOrbItems
         if (!Core.CheckInventory("Platinum Coin of Nulgath: 300") || !Core.CheckInventory("Evolved Blood Orb"))
             return;
 
-
         Core.EnsureAccept(4783);
 
         Nation.FarmDiamondofNulgath(10);
@@ -107,7 +107,7 @@ public class EvolvedBloodOrbItems
         Bot.Wait.ForPickup("Evolved Blood Guard");
     }
 
-    private string[] Rewards =
+    private readonly string[] Rewards =
     {
         "Evolved Blood of Nulgath",
         "Evolved Blood Guard",

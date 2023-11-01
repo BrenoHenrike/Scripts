@@ -1,7 +1,7 @@
 /*
 name: Dragon Fable Origins Story
 description: This will finish the Dragon Fable Origins Story.
-tags: story, quest, dragon-fable-origins
+tags: story, quest, dragon fable origins, firewar, northmountain, charredplains, drakonnan, 
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

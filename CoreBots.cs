@@ -1068,7 +1068,7 @@ public class CoreBots
         if (Bot.Inventory.Slots != 0 && Bot.Inventory.FreeSlots <= 0)
         {
             int prefCount = Bot.Inventory.UsedSlots;
-            Logger($"Your inventory is very full [{prefCount}/{Bot.Inventory.Slots}], the bot will now clean it a bit before continueing.", "BuyItem");
+            Logger($"Your inventory is very full [{prefCount}/{Bot.Inventory.Slots}], the bot will now clean it a bit before continuing.", "BuyItem");
             BankACMisc();
             if (Bot.Inventory.FreeSlots <= 0)
                 Logger($"Banked {(prefCount - Bot.Inventory.UsedSlots)} items but it still wasn't enough. Please clean the rest of your inventory manually. Stopping the bot.", "BuyItem", true, true);
@@ -2674,9 +2674,9 @@ public class CoreBots
                 Equip(equipment);
             }
 
-            string equipedClass = Bot.Player.CurrentClass?.Name.Trim().ToLower();
+            string? equipedClass = Bot.Player.CurrentClass?.Name.Trim().ToLower();
             className = className.Trim().ToLower();
-            Logger("Equiped Class: " + equipedClass + " Equiping: " + className, "Class Equiper");
+            Logger($"Equiped Class: [{equipedClass}], Equiping: [{className}].", "Class Equiper");
 
             while (equipedClass != className)
             {
@@ -2686,7 +2686,7 @@ public class CoreBots
                 equipedClass = Bot.Player.CurrentClass?.Name.Trim().ToLower();
             }
 
-            Logger("Equiped Class: " + equipedClass, "Class Equiper");
+            Logger($"Equiped Class: [{equipedClass}]", "Class Equiper");
 
             Bot.Skills.StartAdvanced(className, false, classMode);
             return true;
