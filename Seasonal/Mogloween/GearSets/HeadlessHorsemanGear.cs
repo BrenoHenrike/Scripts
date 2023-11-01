@@ -27,7 +27,7 @@ public class HeadlessHorsemanGear
         Core.SetOptions();
 
         GetGear();
-        
+
         Core.SetOptions(false);
     }
 
@@ -98,7 +98,7 @@ public class HeadlessHorsemanGear
                         break;
 
                     case 9460:
-                        if (!Core.CheckInventory(QuestData.AcceptRequirements.ToString()))
+                        if (!Core.CheckInventory("Headtaking Headless Horseman"))
                             goto case 9459;
 
                         // The Horseman’s Axe 9460
@@ -109,7 +109,7 @@ public class HeadlessHorsemanGear
                         break;
 
                     case 9461:
-                        if (!Core.CheckInventory(QuestData.AcceptRequirements.ToString()))
+                        if (!Core.CheckInventory("Oversoul's Rusted Head Axe"))
                             goto case 9460;
 
                         // The Horseman’s Second Axe 9461
