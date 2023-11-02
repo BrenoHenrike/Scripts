@@ -9,6 +9,8 @@ tags: army, reputation, blacksmithing
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Army/CoreArmyLite.cs
 //cs_include Scripts/Army/ArmyFarm/Rep/CoreArmyRep.cs
+//cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
+//cs_include Scripts/Story/RavenlossSaga.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Models.Quests;
