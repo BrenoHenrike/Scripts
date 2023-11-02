@@ -3073,7 +3073,7 @@
       "null"
     ],
     "path": "Army/CoreArmyLite.cs",
-    "size": 40112,
+    "size": 40876,
     "fileName": "CoreArmyLite.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/CoreArmyLite.cs"
   },
@@ -15408,7 +15408,7 @@
       "higure"
     ],
     "path": "Army/ArmySeasonal/ArmyHigure.cs",
-    "size": 7951,
+    "size": 14557,
     "fileName": "ArmyHigure.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmySeasonal/ArmyHigure.cs"
   },
@@ -20400,7 +20400,7 @@
       "aegis"
     ],
     "path": "Army/ArmyFarm/Rep/CoreArmyRep.cs",
-    "size": 10551,
+    "size": 10496,
     "fileName": "CoreArmyRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/CoreArmyRep.cs"
   },
