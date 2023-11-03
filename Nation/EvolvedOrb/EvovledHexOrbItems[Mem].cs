@@ -64,11 +64,11 @@ public class EvovledHexOrbItems
         Core.EnsureAccept(4764);
 
         Nation.FarmUni13(3);
-        Nation.TheAssistant("Unidentified 22");
-        Nation.TheAssistant("4th Betrayal Blade of Nulgath");
+        Nation.TheAssistant("Unidentified 22", 1);
+        Nation.TheAssistant("4th Betrayal Blade of Nulgath", 1);
         Core.HuntMonster("Tercessuu", "Taro Blademaster", "Polish's Book of Avalon", isTemp: false);
         Farm.BludrutBrawlBoss(quant: 500);
-        Core.BuyItem(Bot.Map.Name, 222, "Warden of Light");
+        Adv.BuyItem(Bot.Map.Name, 222, "Warden of Light");
 
         Core.EnsureComplete(4764);
         Bot.Wait.ForPickup("Evolved Hex of Nulgath");
@@ -76,8 +76,8 @@ public class EvovledHexOrbItems
 
     public void CutOffOneHead()
     {
-        //Void Emotion 4774
-        if (!Core.CheckInventory("Platinum Coin of Nulgath: 300") || !Core.CheckInventory("Evolved Blood Orb"))
+        // Unlock the Evolved Hex Armor 4769
+        if (!Core.CheckInventory("Platinum Coin of Nulgath: 300") || !Core.CheckInventory("Evolved Shadow Orb"))
 
             Core.EnsureAccept(4769);
 
@@ -88,7 +88,7 @@ public class EvovledHexOrbItems
         Nation.FarmBloodGem(5);
 
         Core.EnsureComplete(4769);
-        Bot.Wait.ForPickup("Evolved Blood Guard");
+        Bot.Wait.ForPickup("Evolved Hex Helm");
     }
 
     public void EmpoweringtheEmpowered()
