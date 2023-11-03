@@ -145,21 +145,15 @@ public class VerusDoomKnightClass
             {
                 Core.Logger("InfernalArena is a **SOLO ONLY** map!");
                 Adv.GearStore();
-                while (!Bot.ShouldExit && !Bot.Inventory.IsEquipped(Core.CheckInventory("Void Highlord (IoDA)") ? "Void Highlord (IoDA)" : "Void Highlord"))
-                {
-                    Core.JumpWait();
-                    Bot.Sleep(Core.ActionDelay);
-                    Core.Equip(Core.CheckInventory("Void Highlord (IoDA)") ? "Void Highlord (IoDA)" : "Void Highlord");
-                    Bot.Sleep(Core.ActionDelay);
-                    if (Bot.Inventory.IsEquipped(Core.CheckInventory("Void Highlord (IoDA)") ? "Void Highlord (IoDA)" : "Void Highlord"))
-                        break;
-                }
-                Bot.Skills.StartAdvanced(Core.CheckInventory("Void Highlord (IoDA)") ? "Void Highlord (IoDA)" : "Void Highlord", true, ClassUseMode.Atk);
+                Core.BossClass("Archpaladin");
+                Core.JumpWait();
+                Bot.Sleep(Core.ActionDelay);
                 Adv.BoostHuntMonster("infernalarena", "Deadly Duo", "Deadly Duo's Decayed Denture", 10, false);
                 Core.JumpWait();
                 Adv.GearStore(true);
                 Core.EquipClass(ClassType.Solo);
             }
+
             if (!Core.CheckInventory("Xyfrag's Slimy Tooth", 5) || !Core.CheckInventory("Nerfkitten's Fang", 3) || !Core.CheckInventory("Maw of the Sea", 10))
             {
                 Core.Logger("You will need to manually kill the following to proceed with the quest:\n" +
