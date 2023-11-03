@@ -139,20 +139,16 @@ public class VerusDoomKnightClass
         {
             Core.EnsureAccept(9418);
             Core.KillDoomKitten("Doomkitten's Molar", 20, false);
-            if (!Core.CheckInventory(new[] { "Void Highlord", "Void Highlord (IoDA)" }, any: true) && !Core.CheckInventory("Deadly Duo's Decayed Denture"))
-                Core.Logger("You need Void HIghLord to solo Deadly Duo.", stopBot: true);
-            else if (!Core.CheckInventory("Deadly Duo's Decayed Denture"))
-            {
+            if (!Core.CheckInventory("Deadly Duo's Decayed Denture"))
                 Core.Logger("InfernalArena is a **SOLO ONLY** map!");
-                Adv.GearStore();
-                Core.BossClass("Archpaladin");
-                Core.JumpWait();
-                Bot.Sleep(Core.ActionDelay);
-                Adv.BoostHuntMonster("infernalarena", "Deadly Duo", "Deadly Duo's Decayed Denture", 10, false);
-                Core.JumpWait();
-                Adv.GearStore(true);
-                Core.EquipClass(ClassType.Solo);
-            }
+            Adv.GearStore();
+            Core.BossClass("Archpaladin");
+            Core.JumpWait();
+            Bot.Sleep(Core.ActionDelay);
+            Adv.BoostHuntMonster("infernalarena", "Deadly Duo", "Deadly Duo's Decayed Denture", 10, false);
+            Core.JumpWait();
+            Adv.GearStore(true);
+            Core.EquipClass(ClassType.Solo);
 
             if (!Core.CheckInventory("Xyfrag's Slimy Tooth", 5) || !Core.CheckInventory("Nerfkitten's Fang", 3) || !Core.CheckInventory("Maw of the Sea", 10))
             {
