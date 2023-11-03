@@ -51,7 +51,7 @@ public class CoreArmyRep
 
     public void ArmyAegisRep() => RunArmyRep("Aegis", "skytower", new[] { "r4", "r6", "r7" }, new[] { "r4", "r6", "r7" }, new[] { 4900, 4910, 4914 });
     public void ArmyArcangroveRep() => RunArmyRep("Arcangrove", "arcangrove", new[] { "Left", "Back", "Right", "LeftBack" }, new[] { "Left", "Back", "Right", "LeftBack" }, new[] { 794, 795, 796, 797, 798, 799, 800, 801 });
-    public void ArmyBaconCatRep() => RunArmyRep("BaconCatu", "baconcatlair", new[] { "r4" }, new[] { "r4" }, new[] { 5112, 5120 });
+    public void ArmyBaconCatRep() => RunArmyRep("BaconCat", "baconcatlair", new[] { "r4" }, new[] { "r4" }, new[] { 5112, 5120 });
     public void ArmyDoomWoodRep() => RunArmyRep("DoomWood", "shadowfallwar", new[] { "Garden2", "Garden1", "Bonus" }, new[] { "Garden2", "Garden1", "Bonus" }, new[] { 1151, 1152, 1153 });
     public void ArmyCraggleRockRep() => RunArmyRep("CraggleRock", "wanders", new[] { "r2", "r3", "r5", "r7" }, new[] { "r2", "r3", "r5", "r7" }, new[] { 7277 });
     public void ArmyChaosMilitiaRep() => RunArmyRep("Chaos Militia", "citadel", new[] { "m1", "m5", "m9" }, new[] { "m1", "m5", "m9" }, new[] { 5775 });
