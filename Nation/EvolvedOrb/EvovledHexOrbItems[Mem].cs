@@ -77,15 +77,18 @@ public class EvovledHexOrbItems
     public void CutOffOneHead()
     {
         // Unlock the Evolved Hex Armor 4769
-        if (!Core.CheckInventory("Platinum Coin of Nulgath: 300") || !Core.CheckInventory("Evolved Shadow Orb"))
+        if (!Core.CheckInventory("Platinum Coin of Nulgath: 300") || !Core.CheckInventory(33197))
+            return;
 
-            Core.EnsureAccept(4769);
+        Core.EnsureAccept(4769);
 
         Nation.FarmDiamondofNulgath(10);
         Nation.FarmVoucher(false);
         Nation.FarmBloodGem(5);
         Nation.FarmTotemofNulgath(1);
         Nation.FarmBloodGem(5);
+        Core.HuntMonster("marsh2", "Soulseeker", "Deathdoll enchant", isTemp: false);
+        Core.HuntMonster("void", "Void Dragon", "Heart of the Void", isTemp: false);
 
         Core.EnsureComplete(4769);
         Bot.Wait.ForPickup("Evolved Hex Helm");
