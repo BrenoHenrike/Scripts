@@ -126,7 +126,7 @@ public class FarmHigure
                     Army.AggroMonCells("Boss2");
                     Army.AggroMonStart("tercessuinotlim");
                     Army.DivideOnCells("Boss2");
-                    while (!Bot.ShouldExit && !Core.CheckInventory("Darkon's Receipt", remainingQuantity))
+                    while (!Bot.ShouldExit && !Core.CheckInventory("Darkon's Receipt", 66))
                         Bot.Combat.Attack("*");
                     Army.AggroMonStop(true);
                     Core.CancelRegisteredQuests();
@@ -137,7 +137,7 @@ public class FarmHigure
                     Army.AggroMonCells("r6", "r7", "r8");
                     Army.AggroMonStart("astravia");
                     Army.DivideOnCells("r6", "r7", "r8");
-                    while (!Bot.ShouldExit && !Core.CheckInventory("La's Gratitude", remainingQuantity))
+                    while (!Bot.ShouldExit && !Core.CheckInventory("La's Gratitude", 66))
                         Bot.Combat.Attack("*");
                     Army.AggroMonStop(true);
                     Core.CancelRegisteredQuests();
@@ -148,7 +148,7 @@ public class FarmHigure
                     Army.AggroMonCells("r11", "r6", "r3", "r4");
                     Army.AggroMonStart("astraviacastle");
                     Army.DivideOnCells("r11", "r6", "r3", "r4");
-                    while (!Bot.ShouldExit && !Core.CheckInventory("Astravian Medal", remainingQuantity))
+                    while (!Bot.ShouldExit && !Core.CheckInventory("Astravian Medal", 66))
                         Bot.Combat.Attack("*");
                     Army.AggroMonStop(true);
                     Core.CancelRegisteredQuests();
@@ -159,7 +159,7 @@ public class FarmHigure
                     Army.AggroMonCells("r11", "r3", "r2");
                     Army.AggroMonStart("astraviajudge");
                     Army.DivideOnCells("r11", "r3", "r2");
-                    while (!Bot.ShouldExit && !Core.CheckInventory("A Melody", remainingQuantity))
+                    while (!Bot.ShouldExit && !Core.CheckInventory("A Melody", 66))
                         Bot.Combat.Attack("*");
                     Army.AggroMonStop(true);
                     Core.CancelRegisteredQuests();
@@ -170,7 +170,7 @@ public class FarmHigure
                     Army.AggroMonCells("r4", "r7", "r8", "r6");
                     Army.AggroMonStart("astraviapast");
                     Army.DivideOnCells("r4", "r7", "r8", "r6");
-                    while (!Bot.ShouldExit && !Core.CheckInventory("Suki's Prestige", remainingQuantity))
+                    while (!Bot.ShouldExit && !Core.CheckInventory("Suki's Prestige", 66))
                         Bot.Combat.Attack("*");
                     Army.AggroMonStop(true);
                     Core.CancelRegisteredQuests();
@@ -181,12 +181,12 @@ public class FarmHigure
                     Army.AggroMonCells("r10a", "r6", "r7");
                     Army.AggroMonStart("firstobservatory");
                     Army.DivideOnCells("r10a", "r6", "r7");
-                    while (!Bot.ShouldExit && !Core.CheckInventory("Ancient Remnant", remainingQuantity))
+                    while (!Bot.ShouldExit && !Core.CheckInventory("Ancient Remnant", 66))
                         if (Bot.Map.PlayerCount < 3)
                         {
                             Core.OneTimeMessage("Ancient Remnant - SoloMode", "Players Missing, Soloing", false);
                             Army.AggroMonStop(true);
-                            while (!Bot.ShouldExit && !Core.CheckInventory("Ancient Remnant", remainingQuantity))
+                            while (!Bot.ShouldExit && !Core.CheckInventory("Ancient Remnant", 66))
                             {
                                 Core.EquipClass(ClassType.Farm);
                                 Core.HuntMonsterMapID("firstobservatory", 12, "Turret Pieces", 12);
@@ -205,7 +205,7 @@ public class FarmHigure
                     Army.AggroMonCells("r11", "r9", "r6");
                     Army.AggroMonStart("genesisgarden");
                     Army.DivideOnCells("r11", "r9", "r6");
-                    while (!Bot.ShouldExit && !Core.CheckInventory("Mourning Flower", remainingQuantity))
+                    while (!Bot.ShouldExit && !Core.CheckInventory("Mourning Flower", 66))
                         Bot.Combat.Attack("*");
                     Army.AggroMonStop(true);
                     Core.CancelRegisteredQuests();
@@ -215,7 +215,7 @@ public class FarmHigure
                     Army.AggroMonCells("r9");
                     Army.AggroMonStart("theworld");
                     Army.DivideOnCells("r9");
-                    while (!Bot.ShouldExit && !Core.CheckInventory("Unfinished Musical Score", remainingQuantity))
+                    while (!Bot.ShouldExit && !Core.CheckInventory("Unfinished Musical Score", 66))
                         Bot.Combat.Attack("*");
                     Army.AggroMonStop(true);
                     Core.CancelRegisteredQuests();
@@ -224,7 +224,7 @@ public class FarmHigure
                     Core.EquipClass(ClassType.Solo);
                     Core.FarmingLogger("Bounty Hunter Dubloon", 222);
                     Core.RegisterQuests(9394);
-                    while (!Bot.ShouldExit && !Core.CheckInventory("Bounty Hunter Dubloon", remainingQuantity))
+                    while (!Bot.ShouldExit && !Core.CheckInventory("Bounty Hunter Dubloon", 222))
                         Core.HuntMonsterMapID("dreadspace", 48, "Trobble Captured");
                     Bot.Wait.ForPickup("Bounty Hunter Dubloon");
                     Core.CancelRegisteredQuests();
