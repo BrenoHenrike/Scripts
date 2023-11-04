@@ -29,8 +29,11 @@ public class CoreFriday13th
 
     public void CompleteFriday13th()
     {
-        if (!Friday13thCheck())
+        if (!Core.isSeasonalMapActive("blackmaze") && !Friday13thCheck())
+        {
+            Core.Logger(!Core.isSeasonalMapActive("blackmaze") ? "seasonal maps not aviable" : "its not black friday");
             return;
+        }
 
         Skullpunch();
         Lowe();
@@ -53,8 +56,10 @@ public class CoreFriday13th
     public void Skullpunch()
     {
         if (Core.isCompletedBefore(3119) || !Friday13thCheck())
+        {
+            Core.Logger("[Skullpunch] Complete.");
             return;
-
+        }
         Story.PreLoad(this);
 
         // Fishbones, Fishbones 3097
@@ -127,7 +132,10 @@ public class CoreFriday13th
     public void Lowe()
     {
         if (Core.isCompletedBefore(763) || !Friday13thCheck())
+        {
+            Core.Logger("[StLoweory] Complete.");
             return;
+        }
 
         Story.PreLoad(this);
 
@@ -180,7 +188,10 @@ public class CoreFriday13th
     public void Saloonfront()
     {
         if (Core.isCompletedBefore(1057) || !Friday13thCheck())
+        {
+            Core.Logger("[Saloonfront] Complete.");
             return;
+        }
 
         Story.PreLoad(this);
 
@@ -236,7 +247,11 @@ public class CoreFriday13th
     public void Firehouse()
     {
         if (Core.isCompletedBefore(1564) || !Friday13thCheck())
+        {
+            Core.Logger("[Firehouse] Complete.");
             return;
+        }
+
         Story.PreLoad(this);
 
         // Gaining Trust 1552
@@ -289,7 +304,10 @@ public class CoreFriday13th
     public void Sleezter()
     {
         if (Core.isCompletedBefore(1972) || !Friday13thCheck())
+        {
+            Core.Logger("[Sleezter] Complete.");
             return;
+        }
 
         Story.PreLoad(this);
 
@@ -336,7 +354,10 @@ public class CoreFriday13th
     public void Neverhub()
     {
         if (Core.isCompletedBefore(2234) || !Friday13thCheck())
+        {
+            Core.Logger("[Neverhub] Complete.");
             return;
+        }
 
         Story.PreLoad(this);
 
@@ -387,7 +408,10 @@ public class CoreFriday13th
     public void Battledoom()
     {
         if (Core.CheckInventory("Cursed Mirror of Enutrof") || !Friday13thCheck())
+        {
+            Core.Logger("[Battledoom] Complete.");
             return;
+        }
 
         //Banking Black List doesn't do anything after SetOptions has been called. ~Lord Exelot
         //Core.BankingBlackList.AddRange(new[] { "Unlucky Gem I", "Unlucky Gem II", "Unlucky Gem III",
@@ -450,7 +474,10 @@ public class CoreFriday13th
     public void Wormhole()
     {
         if (Core.isCompletedBefore(5066) || !Friday13thCheck())
+        {
+            Core.Logger("[Wormhole] Complete.");
             return;
+        }
 
         Story.PreLoad(this);
 
@@ -508,7 +535,10 @@ public class CoreFriday13th
     public void Crownsreachfxiii()
     {
         if (Core.isCompletedBefore(5646) || !Friday13thCheck())
+        {
+            Core.Logger("[Crownsreachfxiii] Complete.");
             return;
+        }
 
         Story.PreLoad(this);
 
@@ -546,7 +576,10 @@ public class CoreFriday13th
     public void Gonnagetcha()
     {
         if (Core.isCompletedBefore(6269) || !Friday13thCheck())
+        {
+            Core.Logger("[Gonnagetcha] Complete.");
             return;
+        }
 
         Story.PreLoad(this);
 
@@ -592,7 +625,10 @@ public class CoreFriday13th
     public void Greymoor()
     {
         if (Core.isCompletedBefore(6420) || !Friday13thCheck())
+        {
+            Core.Logger("[Greymoor] Complete.");
             return;
+        }
 
         Story.PreLoad(this);
 
@@ -639,7 +675,10 @@ public class CoreFriday13th
     public void Puzzlebox()
     {
         if (Core.isCompletedBefore(7399) || !Friday13thCheck())
+        {
+            Core.Logger("[Puzzlebox] Complete.");
             return;
+        }
 
         Story.PreLoad(this);
 
@@ -680,7 +719,10 @@ public class CoreFriday13th
     public void Splatterwar()
     {
         if (Core.isCompletedBefore(7407) || !Friday13thCheck())
+        {
+            Core.Logger("[Splatterwar] Complete.");
             return;
+        }
 
         Puzzlebox();
 
@@ -714,7 +756,10 @@ public class CoreFriday13th
     public void Deadfly()
     {
         if (Core.isCompletedBefore(8232) || !Friday13thCheck())
+        {
+            Core.Logger("[Deadfly] Complete.");
             return;
+        }
 
         Story.PreLoad(this);
 
@@ -779,7 +824,10 @@ public class CoreFriday13th
     public void Oddities()
     {
         if (Core.isCompletedBefore(8667) || !Friday13thCheck())
+        {
+            Core.Logger("[Oddities] Complete.");
             return;
+        }
 
         Story.PreLoad(this);
 
@@ -846,7 +894,10 @@ public class CoreFriday13th
     public void BlackMaze()
     {
         if (Core.isCompletedBefore(9055) || !Friday13thCheck())
+        {
+            Core.Logger("[BlackMaze] Complete.");
             return;
+        }
 
         //9045 | Gobbling Globlins
         Story.KillQuest(9045, "blackmaze", "Globlin");
