@@ -90,7 +90,9 @@ public class HeadlessHorsemanGear
                     case 9459:
                         // The Horseman’s Head 9459
                         Core.EnsureAccept(QuestID);
+                        // Pumpkin Grin
                         Adv.BuyItem("asylum", 507, 36720, shopItemID: 21659);
+                        
                         Core.HuntMonster("that", "Will O' The Wisp", "Flames", 30);
                         Core.HuntMonster("twigsarcade", "Ectoplasm", "Ectoplasm", 20);
                         Core.HuntMonster("tricktown", "Rotting Pumpkin", "Pumpkin Seeds", 50);
@@ -116,10 +118,10 @@ public class HeadlessHorsemanGear
                         // The Horseman’s Second Axe 9461
                         Core.EnsureAccept(QuestID);
                         MogloweenMerge.BuyAllMerge("Sinister PumpKing Blade");
-                        Core.HuntMonster("necronaut", "necronaut", "Aged Metal", 5);
-                        Core.HuntMonster("mogloweengrave", "Zombie Terror", "Oversoul Essence", 15);
-                        Core.HuntMonster("cask", "Nitre Golem", "Potassium Nitrate", 10);
-                        Core.HuntMonster("that", "Concealed Fear", "Fear Essence", 15);
+                        Core.HuntMonster("necronaut", "necronaut", "Aged Metal", 5, isTemp: false);
+                        Core.HuntMonster("mogloweengrave", "Zombie Terror", "Oversoul Essence", 15, isTemp: false);
+                        Core.HuntMonster("cask", "Nitre Golem", "Potassium Nitrate", 10, isTemp: false);
+                        Core.HuntMonster("that", "Congealed Fear", "Fear Essence", 15, isTemp: false);
                         Core.EnsureComplete(QuestID);
                         break;
                 }
