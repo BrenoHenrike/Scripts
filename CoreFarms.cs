@@ -1570,9 +1570,17 @@ public class CoreFarms
         {
             Core.EnsureAccept(3298, 3050);
             Core.HuntMonster("gilead", "Water Elemental", "Water Drop", 5, log: false);
+            Core.HuntMonster("gilead", "Water Elemental", "Water Core", log: false);
+
             Core.HuntMonster("gilead", "Fire Elemental", "Flame", 5, log: false);
+            Core.HuntMonster("gilead", "Fire Elemental", "Fire Core", log: false);
+
             Core.HuntMonster("gilead", "Wind Elemental", "Breeze", 5, log: false);
+            Core.HuntMonster("gilead", "Wind Elemental", "Air Core", log: false);
+
             Core.HuntMonster("gilead", "Earth Elemental", "Stone", 5, log: false);
+            Core.HuntMonster("gilead", "Earth Elemental", "Earth Core", log: false);
+
             Core.HuntMonster("gilead", "Mana Elemental", "Mana Core", log: false);
             Core.EnsureComplete(new[] { 3298, 3050 });
         }
