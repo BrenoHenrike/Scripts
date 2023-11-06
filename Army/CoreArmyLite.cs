@@ -393,13 +393,13 @@ public class CoreArmyLite
     {
         Bot.Events.PlayerAFK += PlayerAFK;
         string[] players = Players();
-        int partySize = players.Length;
+        int partySize = players.Count();
         List<string> playersWhoHaveBeenHere = new() { Bot.Player.Username };
-        List<string> playersWithButler = new();
         int playerCount = 1;
 
-        int waitCount = 0;
+        int logCount = 0;
         int butlerTimer = 0;
+        bool hasWaited = false;
 
         Core.Join(map);
         int dynamicPartySize = playerMax == -1 ? partySize : playerMax;
@@ -410,46 +410,33 @@ public class CoreArmyLite
                 foreach (var name in Bot.Map.PlayerNames)
                     if (!playersWhoHaveBeenHere.Contains(name) && players.Select(x => x.ToLower().Trim()).Contains(name.ToLower()))
                         playersWhoHaveBeenHere.Add(name);
-            playerCount = playersWhoHaveBeenHere.Count;
+            playerCount = playersWhoHaveBeenHere.Count();
 
-            if (waitCount == 5)
+            logCount++;
+            if (logCount == 15)
             {
-                string? missingPlayer = FindMissingPlayer(players, playersWhoHaveBeenHere);
-                if (missingPlayer != null && !playersWithButler.Contains(missingPlayer))
-                {
-                    playersWithButler.Add(missingPlayer);
-                    Core.Logger($"Initiating Butler for {missingPlayer}");
-                    Butler(missingPlayer, roomNr: getRoomNr());
-                }
-                waitCount = 0;
+                Core.Logger($"Waiting for the party{(item == null ? String.Empty : (" to farm " + item))} [{playerCount}/{dynamicPartySize}]");
+                hasWaited = true;
+                logCount = 0;
             }
-
             Bot.Sleep(1000);
 
-            if (playersWhoHaveBeenHere.Count == (dynamicPartySize - 1))
+            if (playersWhoHaveBeenHere.Count() == (dynamicPartySize - 1))
                 butlerTimer++;
-
-            if (butlerTimer >= 10)
+            if (butlerTimer >= 30)
             {
                 b_breakOnMap = Bot.Map.Name;
-                string? toFollow = FindMissingPlayer(players, playersWhoHaveBeenHere);
-                if (toFollow != null)
-                {
-                    Core.Logger($"Missing {toFollow}, initiating Butler.cs");
-                    Core.Logger("Butler active until in map /" + b_breakOnMap);
-                    Butler(toFollow, roomNr: getRoomNr());
-                    Core.Logger($"{toFollow} has joined {b_breakOnMap}. continuing");
-                    Bot.Events.PlayerAFK -= PlayerAFK;
-                    break;
-                }
-            }
-
-            if (waitCount < 5)
-            {
-                waitCount++;
-                Core.Logger($"Waiting for the party{(item == null ? String.Empty : (" to farm " + item))} [{playerCount}/{dynamicPartySize}]");
+                string toFollow = players.First(p => !playersWhoHaveBeenHere.Any(n => n.ToLower() == p.ToLower().Trim()));
+                Core.Logger($"Missing {toFollow}, initiating Butler.cs");
+                Core.Logger("Butler active until in map /" + b_breakOnMap);
+                Butler(toFollow, roomNr: getRoomNr());
+                Core.Logger($"{toFollow} has joined {b_breakOnMap}. continuing");
+                Bot.Events.PlayerAFK -= PlayerAFK;
+                break;
             }
         }
+        if (hasWaited)
+            Core.Logger($"Party complete [{partySize}/{partySize}]");
         Bot.Sleep(3500); //To make sure everyone attack at the same time, to avoid deaths
 
         void PlayerAFK()
@@ -457,18 +444,6 @@ public class CoreArmyLite
             Core.Logger("Anti-AFK engaged");
             Bot.Sleep(1500);
             Bot.Send.Packet("%xt%zm%afk%1%false%");
-        }
-
-        string? FindMissingPlayer(string[] allPlayers, List<string> partyMembers)
-        {
-            foreach (var player in allPlayers)
-            {
-                if (!partyMembers.Contains(player) && !playersWithButler.Contains(player))
-                {
-                    return player;
-                }
-            }
-            return null;
         }
     }
 
@@ -507,8 +482,8 @@ public class CoreArmyLite
             }
             Bot.Servers.Login(name, pass);
             Bot.Sleep(3000);
-
-
+            
+            
             Bot.Servers.Connect(
             randomServers ?
             Bot.Servers.ServerList.Where(x => !BlacklistedServers.Contains(x.Name.ToLower()) && !x.Upgrade && x.Online).ToArray()[Bot.Random.Next(1, 5)] :
@@ -746,7 +721,7 @@ public class CoreArmyLite
             }
 
             // Attack any monster that is alive.
-            if (!Bot.Combat.StopAttacking && Bot.Monsters.CurrentMonsters.Any(m => Core.IsMonsterAlive(m)))
+            if (!Bot.Combat.StopAttacking && Bot.Monsters.CurrentMonsters.Count(m => Core.IsMonsterAlive(m)) > 0)
                 PriorityAttack("*");
 
             Core.Rest();
