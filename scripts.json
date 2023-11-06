@@ -6,7 +6,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 109903,
+    "size": 110242,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -192,7 +192,7 @@
       "null"
     ],
     "path": "Tools/RankUpAllClasses.cs",
-    "size": 1940,
+    "size": 1885,
     "fileName": "RankUpAllClasses.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/RankUpAllClasses.cs"
   },
@@ -15502,6 +15502,19 @@
     "size": 901,
     "fileName": "AllBankAllItems.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/OneClient/AllBankAllItems.cs"
+  },
+  {
+    "name": "All accs bank all",
+    "description": "banks all items on all accs in the \"thefamily.txt\" file.",
+    "tags": [
+      "bank",
+      "army",
+      "all"
+    ],
+    "path": "Army/OneClient/AllRankAllClasses.cs",
+    "size": 911,
+    "fileName": "AllRankAllClasses.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/OneClient/AllRankAllClasses.cs"
   },
   {
     "name": "Dragon of Time Army",
