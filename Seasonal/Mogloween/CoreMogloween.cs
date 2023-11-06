@@ -625,8 +625,15 @@ public class CoreMogloween
         Story.KillQuest(8370, "necrocarnival", "Mooch Treeant");
 
         //Witch Soup 8371
-        Story.MapItemQuest(8371, "necrocarnival", 9256);
-        Story.KillQuest(8371, "necrocarnival", new[] { "Mooch Treeant", "Gummy Tapeworm", "Skeleclown" });
+        if (!Story.QuestProgression(8371))
+        {
+            Core.EnsureAccept(8371);
+            Story.MapItemQuest(8371, "necrocarnival", 9256);
+            Core.HuntMonster("necrocarnival", "Mooch Treeant", "Sticky Bark", 10);
+            Core.HuntMonster("necrocarnival", "Gummy Tapeworm", "Gum Eye", 10);
+            Core.HuntMonster("necrocarnival", "Skeleclown", "Finger Tips", 10);
+            Core.EnsureComplete(8371);
+        }
 
         //Written Promise 8372
         Story.MapItemQuest(8372, "necrocarnival", 9257, 7);
@@ -684,7 +691,13 @@ public class CoreMogloween
         Story.KillQuest(8931, "tricktown", "Decay Spirit");
 
         // Messy Unrest 8932
-        Story.KillQuest(8932, "tricktown", new[] { "Decay Spirit", "Playful Ghost" });
+        if (!Story.QuestProgression(8932))
+        {
+            Core.EnsureAccept(8932);
+            Core.HuntMonster("tricktown", "Decay Spirit", "Decay Spirit Calmed", 10);
+            Core.HuntMonster("tricktown", "Playful Ghost", "Ghosts Silenced", 10);
+            Core.EnsureComplete(8932);
+        }
 
         // Plain Monster 8933
         Story.MapItemQuest(8933, "tricktown", 10808);
