@@ -16,10 +16,15 @@ public class CoreFriday13th
 
     public bool Friday13thCheck([CallerMemberName] string caller = "")
     {
-        bool _bool = Core.IsMember || (new DateTime(DateTime.Now.Year, DateTime.Now.Month, 13).DayOfWeek == DayOfWeek.Friday && DateTime.Now.Day >= 5);
-        if (!_bool)
-            Core.Logger($"You must be Member or wait until a week before Friday the 13th to complete {caller}.");
-        return _bool;
+        if (Core.isSeasonalMapActive("blackmaze"))
+            return true;
+
+        bool isMemberOrFriday13th = Core.IsMember || (new DateTime(DateTime.Now.Year, DateTime.Now.Month, 13).DayOfWeek == DayOfWeek.Friday && DateTime.Now.Day >= 5);
+
+        if (!isMemberOrFriday13th)
+            Core.Logger($"You must be a Member or wait until a week before Friday the 13th to complete {caller}");
+
+        return isMemberOrFriday13th;
     }
 
     public void ScriptMain(IScriptInterface bot)

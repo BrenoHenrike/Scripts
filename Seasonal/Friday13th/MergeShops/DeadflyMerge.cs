@@ -40,6 +40,7 @@ public class DeadflyMerge
     public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         F13.Deadfly();
+        
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("deadfly", 2037, findIngredients, buyOnlyThis, buyMode: buyMode);
 

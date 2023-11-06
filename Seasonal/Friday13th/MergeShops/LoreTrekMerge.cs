@@ -40,6 +40,7 @@ public class LoreTrekMerge
     public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         F13.Wormhole();
+        
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("wormhole", 1250, findIngredients, buyOnlyThis, buyMode: buyMode);
 

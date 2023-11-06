@@ -39,10 +39,8 @@ public class OdditiesMerge
 
     public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
-        if (!F13.Friday13thCheck("Oddities Merge"))
-            return;
-
         F13.Oddities();
+        
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("oddities", 2134, findIngredients, buyOnlyThis, buyMode: buyMode);
 
