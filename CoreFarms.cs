@@ -1564,24 +1564,34 @@ public class CoreFarms
             Core.GetMapItem(1924, 1, "dragonrune");
             Core.EnsureComplete(3052);
         }
+        
+        // Define a dictionary to store the items and their quantities for each elemental
+        Dictionary<string, Tuple<string, string, int, int>> elementalItems = new()
+        {
+            { "Water Elemental", Tuple.Create("Water Drop", "Water Core", 5, 1) },
+            { "Fire Elemental", Tuple.Create("Flame", "Fire Core", 5, 1) },
+            { "Wind Elemental", Tuple.Create("Breeze", "Air Core", 5, 1) },
+            { "Earth Elemental", Tuple.Create("Stone", "Earth Core", 5, 1) }
+        };
 
-        // Core.RegisterQuests(3298, 3050);
         while (!Bot.ShouldExit && FactionRank("Elemental Master") < rank)
         {
             Core.EnsureAccept(3298, 3050);
-            Core.HuntMonster("gilead", "Water Elemental", "Water Drop", 5, log: false);
-            Core.HuntMonster("gilead", "Water Elemental", "Water Core", log: false);
 
-            Core.HuntMonster("gilead", "Fire Elemental", "Flame", 5, log: false);
-            Core.HuntMonster("gilead", "Fire Elemental", "Fire Core", log: false);
+            foreach (var elementalEntry in elementalItems)
+            {
+                string elementalName = elementalEntry.Key;
+                string firstItem = elementalEntry.Value.Item1;
+                string secondItem = elementalEntry.Value.Item2;
+                int dropQuantity = elementalEntry.Value.Item3;
+                int coreQuantity = elementalEntry.Value.Item4;
 
-            Core.HuntMonster("gilead", "Wind Elemental", "Breeze", 5, log: false);
-            Core.HuntMonster("gilead", "Wind Elemental", "Air Core", log: false);
+                while (!Bot.ShouldExit && !Core.CheckInventory(firstItem, dropQuantity))
+                    Core.HuntMonster("gilead", elementalName, firstItem, dropQuantity);
+                Core.HuntMonster("gilead", elementalName, secondItem, coreQuantity);
+            }
 
-            Core.HuntMonster("gilead", "Earth Elemental", "Stone", 5, log: false);
-            Core.HuntMonster("gilead", "Earth Elemental", "Earth Core", log: false);
-
-            Core.HuntMonster("gilead", "Mana Elemental", "Mana Core", log: false);
+            Core.HuntMonster("gilead", "Mana Elemental", "Mana Core");
             Core.EnsureComplete(new[] { 3298, 3050 });
         }
         // Core.CancelRegisteredQuests();
