@@ -1123,8 +1123,7 @@ public class CoreNation
             return;
 
         Core.AddDrop("Diamond of Nulgath");
-        Core.OneTimeMessage("Dark Makai Rune/Sigil Solution", "Randomizing location for \"Dark Makai\"\n" +
-        "as the drop can randomly stop showing up", forcedMessageBox: false);
+
         if (farmDiamond)
             BambloozevsDrudgen("Diamond of Nulgath", 15);
         Core.EnsureAccept(869);
