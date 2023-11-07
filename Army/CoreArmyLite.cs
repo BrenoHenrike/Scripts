@@ -1000,7 +1000,7 @@ public class CoreArmyLite
         // }
     }
 
-    private void PriorityAttack(string attNoPrio)
+    public void PriorityAttack(string attNoPrio)
     {
         if (_attackPriority.Count == 0)
         {
