@@ -93,7 +93,7 @@ public class StarSinc
                     Core.Logger("Nova Badge 10");
                     Core.EquipClass(ClassType.Solo);
                     Core.HuntMonster("starsinc", "Prime Dominus", "Prime Defeated", isTemp: false);
-                    Core.Join("Whtiemap");
+                    Core.Join("whitemap");
                     Core.Logger("Resetting map");
                     break;
 
@@ -102,7 +102,7 @@ public class StarSinc
                     Core.Logger("Nova Badge 11");
                     Core.GetMapItem(3609, 6, "starsinc");
                     Core.Logger("Resetting map");
-                    Core.Join("Whtiemap");
+                    Core.Join("whitemap");
                     break;
 
                 case 4412: // Retrieve the Core
