@@ -146,6 +146,19 @@ public class CoreFireIsland
 
         Story.PreLoad(this);
 
+        //map aggro from pyrewatch
+        while (Bot.ShouldExit && Bot.Map.Name != "feverfew")
+        {
+            Core.Jump("Enter", "Spawn");
+            Bot.Wait.ForCombatExit();
+            Bot.Sleep(Core.ActionDelay);
+            if (!Bot.Player.InCombat)
+            {
+                Core.Join("feverfew");
+                Bot.Wait.ForMapLoad("feverfew");
+            }
+        }
+
         //Quench the Flames
         Story.KillQuest(4128, "feverfew", "Firestorm Knight");
 
@@ -200,13 +213,18 @@ public class CoreFireIsland
         //Parting the Waters
         if (!Story.QuestProgression(4138))
         {
+            Core.Logger("Quest needs to be abadoned before it can be completed adn reaccepted.");
+            Core.EnsureAccept(4138);
+            Core.AbandonQuest(4138);
+
             Core.EnsureAccept(4138);
 
             Core.HuntMonster("feverfew", "Salamander", "Burning Ember", 3);
-            Core.HuntMonster("feverfew", "Coral Creeper", "Stoneskin Shard ", 3);
+            Core.HuntMonster("feverfew", "Coral Creeper", "Stoneskin Shard", 3);
             Core.HuntMonster("feverfew", "Firestorm Knight", "Last Breath", 3);
             Core.HuntMonster("feverfew", "Twisted Undine", "Undine's Tear", 3);
 
+            Core.Jump("Cut2", "Left");
             Core.EnsureComplete(4138);
         }
 
