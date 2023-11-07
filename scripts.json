@@ -7769,13 +7769,16 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/VHL/0VoidHighlord.cs"
   },
   {
-    "name": "0DoAll",
-    "description": "null",
+    "name": "ADFL Do ALl",
+    "description": "Does the entirety of  AFDL",
     "tags": [
-      "null"
+      "afdl",
+      "archfiend doom lord",
+      "doall",
+      "0doall"
     ],
     "path": "Nation/AFDL/0DoAll.cs",
-    "size": 1238,
+    "size": 1301,
     "fileName": "0DoAll.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/AFDL/0DoAll.cs"
   },
