@@ -156,6 +156,7 @@ public class UltraSpeakerMergePreReqs
                 SoW.ShadowWar();
                 SoC.LagunaBeach();
                 Core.EquipClass(ClassType.Farm);
+                Core.AddDrop("ShadowChaos Mote");
                 Core.RegisterQuests(7700);
                 while (!Bot.ShouldExit && !Core.CheckInventory("ShadowChaos Mote", 250))
                     Core.HuntMonster("lagunabeach", "ShadowChaos Brigand", "Chaos-ShadowFlame Sample", 15);
