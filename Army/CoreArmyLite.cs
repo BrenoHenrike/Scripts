@@ -170,7 +170,7 @@ public class CoreArmyLite
         if (questIDs.Count > 0)
             Core.RegisterQuests(questIDs.ToArray());
 
-        if (drops == null || drops.Count() == 0 || drops.All(x => String.IsNullOrEmpty(x)))
+        if (drops == null || drops.Count == 0 || drops.All(x => String.IsNullOrEmpty(x)))
             Bot.Drops.Stop();
         else Core.AddDrop(drops.ToArray());
 
@@ -234,7 +234,7 @@ public class CoreArmyLite
     public string[]? PartyMemberArray()
     {
         string[]? members = Bot.Flash.GetGameObject<string[]>("world.partyMembers");
-        return members == null ? null : members.Concat(new[] { Core.Username().ToLower() }).ToArray();
+        return members?.Concat(new[] { Core.Username().ToLower() }).ToArray();
     }
 
     public string? getPartyLeader()
@@ -317,8 +317,8 @@ public class CoreArmyLite
 
         while (!Bot.ShouldExit && combinedDigits.Length >= 6)
         {
-            long firstHalf = long.Parse(combinedDigits.Substring(0, (combinedDigits.Length / 2)));
-            long secondHalf = long.Parse(combinedDigits.Substring(combinedDigits.Length / 2));
+            long firstHalf = long.Parse(combinedDigits[..(combinedDigits.Length / 2)]);
+            long secondHalf = long.Parse(combinedDigits[(combinedDigits.Length / 2)..]);
             combinedDigits = (firstHalf + secondHalf).ToString();
             if (combinedDigits.Length <= 4)
                 combinedDigits = (long.Parse(combinedDigits) * DateTime.Today.Day).ToString();
@@ -336,10 +336,10 @@ public class CoreArmyLite
         string[] _players = Players();
 
         // If no paramaters are given, select all cells that have monsters in them
-        if ((cells == null || cells.Count() == 0))
+        if ((cells == null || cells.Length == 0))
         {
             List<Monster> monsters = Bot.Monsters.MapMonsters;
-            if (monsters == null || monsters.Count() == 0)
+            if (monsters == null || monsters.Count == 0)
                 return;
 
             List<string> _cells = new();
@@ -360,7 +360,7 @@ public class CoreArmyLite
 
             if (username == p)
                 Core.Jump(cell);
-            cellCount = cellCount == cells.Count() - 1 ? 0 : cellCount + 1;
+            cellCount = cellCount == cells.Length - 1 ? 0 : cellCount + 1;
         }
     }
 
@@ -393,7 +393,7 @@ public class CoreArmyLite
     {
         Bot.Events.PlayerAFK += PlayerAFK;
         string[] players = Players();
-        int partySize = players.Count();
+        int partySize = players.Length;
         List<string> playersWhoHaveBeenHere = new() { Bot.Player.Username };
         int playerCount = 1;
 
@@ -410,7 +410,7 @@ public class CoreArmyLite
                 foreach (var name in Bot.Map.PlayerNames)
                     if (!playersWhoHaveBeenHere.Contains(name) && players.Select(x => x.ToLower().Trim()).Contains(name.ToLower()))
                         playersWhoHaveBeenHere.Add(name);
-            playerCount = playersWhoHaveBeenHere.Count();
+            playerCount = playersWhoHaveBeenHere.Count;
 
             logCount++;
             if (logCount == 15)
@@ -421,7 +421,7 @@ public class CoreArmyLite
             }
             Bot.Sleep(1000);
 
-            if (playersWhoHaveBeenHere.Count() == (dynamicPartySize - 1))
+            if (playersWhoHaveBeenHere.Count == (dynamicPartySize - 1))
                 butlerTimer++;
             if (butlerTimer >= 30)
             {
@@ -721,7 +721,7 @@ public class CoreArmyLite
             }
 
             // Attack any monster that is alive.
-            if (!Bot.Combat.StopAttacking && Bot.Monsters.CurrentMonsters.Count(m => Core.IsMonsterAlive(m)) > 0)
+            if (!Bot.Combat.StopAttacking && Bot.Monsters.CurrentMonsters.Any(m => Core.IsMonsterAlive(m)))
                 PriorityAttack("*");
 
             Core.Rest();
@@ -1002,7 +1002,7 @@ public class CoreArmyLite
 
     private void PriorityAttack(string attNoPrio)
     {
-        if (_attackPriority.Count() == 0)
+        if (_attackPriority.Count == 0)
         {
             Bot.Combat.Attack(attNoPrio);
             return;
