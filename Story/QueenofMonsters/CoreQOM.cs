@@ -174,7 +174,13 @@ public class CoreQOM
         Story.KillQuest(5384, "infernalspire", "Azkorath");
 
         //Clear the Invaders
-        Story.KillQuest(5385, "infernalspire", new[] { "Infernal Knight", "Grievous Fiend" });
+        if (!Story.QuestProgression(5387))
+        {
+            Core.EnsureAccept(5387);
+            Core.HuntMonster("infernalspire", "Infernal Knight", "Infernal Knight Slain", 8);
+            Core.HuntMonster("infernalspire", "Grievous Fiend", "Grievous Fiend Slain", 8);
+            Core.EnsureAccept(5387);
+        }
 
         //Find the Weapon
         Story.MapItemQuest(5386, "infernalspire", 4735);
