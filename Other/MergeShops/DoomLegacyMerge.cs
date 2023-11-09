@@ -68,7 +68,7 @@ public class DoomLegacyMerge
                 case "ShadowScythe Trooper's Helm":
                 case "ShadowScythe Trooper's Cape":
                 case "ShadowScythe Blade":
-                    Core.KillMonster("thorngarde", "Enter", "Spawn", 4541, req.Name, isTemp: false);
+                    Core.HuntMonsterMapID("thorngarde", 2, req.Name, isTemp: false);
                     break;
 
                 case "Salvaged Deadtech Node":
@@ -94,7 +94,7 @@ public class DoomLegacyMerge
                 case "ShadowScythe Rogue's Cape":
                 case "ShadowScythe Reversed Daggers":
                 case "ShadowScythe Daggers":
-                    Core.KillMonster("thorngarde", "r2", "Left", 4541, req.Name, isTemp: false);
+                    Core.HuntMonsterMapID("thorngarde", 3, req.Name, isTemp: false);
                     break;
 
                 case "ShadowScythe Mage":
@@ -102,7 +102,7 @@ public class DoomLegacyMerge
                 case "ShadowScythe Mage's Hat + Locks":
                 case "ShadowScythe Mage's Rune":
                 case "ShadowScythe Staff":
-                    Core.KillMonster("thorngarde", "r2", "Left", 4542, req.Name, isTemp: false);
+                    Core.HuntMonsterMapID("thorngarde", 5, req.Name, isTemp: false);
                     break;
 
                 case "Zealous Paladin":
