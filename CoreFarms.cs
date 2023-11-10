@@ -154,7 +154,7 @@ public class CoreFarms
     /// <param name="goldQuant">How much gold to farm</param>
     public void BattleGroundE(int goldQuant = 100000000)
     {
-        if (Bot.Player.Gold >= goldQuant || Bot.Player.Level < 61)
+        if (Bot.Player.Level < 61 || Bot.Player.Gold >= goldQuant )
             return;
 
         Core.EquipClass(ClassType.Farm);
@@ -1754,7 +1754,7 @@ public class CoreFarms
             GetBoost(10997, "REPUTATION Boost! (10 min)", 6, 1615, true);
         }
 
-        ToggleBoost(BoostType.Reputation);
+        // ToggleBoost(BoostType.Reputation);
         Core.AddDrop("Fishing Bait", "Fishing Dynamite");
         Core.EquipClass(ClassType.Farm);
         Core.SavedState();
@@ -1804,7 +1804,7 @@ public class CoreFarms
             Core.TrashCan(new[] { "Fishing Bait", "Fishing Dynamite" });
         Core.SavedState(false);
         Core.CancelRegisteredQuests();
-        ToggleBoost(BoostType.Reputation, false);
+        // ToggleBoost(BoostType.Reputation, false);
     }
 
     public void GetBaitandDynamite(int FishingBaitQuant, int FishingDynamiteQuant)
