@@ -6,7 +6,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 110690,
+    "size": 110697,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -19965,6 +19965,31 @@
     "size": 4168,
     "fileName": "HarvestDayParadeMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HarvestDay/MergeShops/HarvestDayParadeMerge.cs"
+  },
+  {
+    "name": "Free as a Bird Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Free as a Bird Merge [2361] in /birdswithharms",
+    "tags": [
+      "free",
+      "as",
+      "a",
+      "bird",
+      "merge",
+      "birdswithharms",
+      "gryphonclaw",
+      "knights",
+      "scythe",
+      "wings",
+      "guard",
+      "crested",
+      "knight",
+      "warriors",
+      "warrior"
+    ],
+    "path": "Seasonal/HarvestDay/MergeShops/FreeasaBirdMerge.cs",
+    "size": 5018,
+    "fileName": "FreeasaBirdMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HarvestDay/MergeShops/FreeasaBirdMerge.cs"
   },
   {
     "name": "Ebil Corp HQ Merge",
