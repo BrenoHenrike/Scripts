@@ -694,8 +694,8 @@ public class CoreMogloween
         if (!Story.QuestProgression(8932))
         {
             Core.EnsureAccept(8932);
-            Core.HuntMonster("tricktown", "Decay Spirit", "Decay Spirit Calmed", 10);
-            Core.HuntMonster("tricktown", "Playful Ghost", "Ghosts Silenced", 10);
+            Core.HuntMonster("tricktown", "Decay Spirit", "Decay Spirit Calmed", 6);
+            Core.HuntMonster("tricktown", "Playful Ghost", "Ghosts Silenced", 6);
             Core.EnsureComplete(8932);
         }
 
