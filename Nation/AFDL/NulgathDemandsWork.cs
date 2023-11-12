@@ -43,8 +43,8 @@ public class NulgathDemandsWork
 
     public void DoNulgathDemandsWork()
     {
-        NDWQuest(new[] { "Unidentified 35" }, 300);
         NDWQuest(NDWItems);
+        NDWQuest(new[] { "Unidentified 35" }, 300);
     }
 
     /// <summary>
@@ -52,29 +52,30 @@ public class NulgathDemandsWork
     /// <param name="string[] items">The List of items to Get from the Quest</param>
     /// <param name="quant">Amount of the "item" [Mostly the Archfiend Ess and Uni 35]</param>
     /// </summary>
-    public void NDWQuest(string[]? items = null, int quant = 1)
+    public void NDWQuest(string[]? itemNames = null, int quant = 1)
     {
-        items ??= NDWItems;
+        itemNames ??= NDWItems.Select(item => item).ToArray() ?? Array.Empty<string>(); // Ensure itemNames is not null
 
-        if (Core.CheckInventory(items, quant))
-            return;
+        if (itemNames.Length == 0 || Core.CheckInventory(itemNames, quant)) return;
 
-        ItemBase[] rewards5259 = Core.EnsureLoad(5259).Rewards.ToArray();
+        ItemBase[] Rewards = Core.EnsureLoad(5259).Rewards.ToArray();
 
         Core.AddDrop(Nation.bagDrops);
-        Core.AddDrop(rewards5259.Select(x => x.Name).ToArray());
+        Core.AddDrop(Rewards.Select(x => x.Name).ToArray());
 
-        foreach (string item in items)
+        foreach (string itemName in itemNames)
         {
-            if (Core.CheckInventory(item, quant))
+            ItemBase item = Rewards.Find(x => x.Name == itemName) ?? new ItemBase(); // Ensure item is not null
+
+            if (Core.CheckInventory(item.Name, quant))
+            {
+                Core.Logger($"{item.Name}, x[{quant}] owned, continuing.");
                 continue;
+            }
 
-            ItemBase _item = rewards5259.FirstOrDefault(reward => reward.Name.Equals(item, StringComparison.OrdinalIgnoreCase))!;
+            Core.FarmingLogger(item.Name, quant);
 
-            Core.FarmingLogger(item, quant);
-
-            int i = 0;
-            while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
+            while (!Bot.ShouldExit && !Core.CheckInventory(item.Name, quant))
             {
                 Core.EnsureAccept(5259);
 
@@ -89,20 +90,19 @@ public class NulgathDemandsWork
                 Nation.SwindleBulk(50);
                 GHV.GetGHV();
 
-                if (_item.Name == "Unidentified 35")
+                if (item.Name == "Unidentified 35")
                 {
                     while (!Bot.ShouldExit && Core.CheckInventory("Archfiend Essence Fragment", 9) && !Core.CheckInventory("Unidentified 35", quant))
-                        Adv.BuyItem("tercessuinotlim", 1951, _item.ID, shopItemID: 7912);
-                    if (!Core.CheckInventory(_item.ID, quant))
-                        Core.EnsureComplete(5259, _item.ID);
-                }
-                else Core.EnsureCompleteChoose(5259, Core.QuestRewards(5259));
+                        Adv.BuyItem("tercessuinotlim", 1951, item.ID, shopItemID: 7912);
 
-                Core.Logger($"Completed x{++i}");
-                i++;
+                    if (!Core.CheckInventory(item.ID, quant))
+                        Core.EnsureComplete(5259, item.ID);
+                }
+                else Core.EnsureComplete(5259, item.ID);
             }
         }
     }
+
 
     public void Uni27()
     {
@@ -112,7 +112,7 @@ public class NulgathDemandsWork
         Core.AddDrop("Unidentified 27");
         Nation.Supplies("Unidentified 26", 1);
         Core.EnsureAccept(584);
-                Nation.ResetSindles();
+        Nation.ResetSindles();
         string[] locations = new[] { "tercessuinotlim", Core.IsMember ? "Nulgath" : "evilmarsh" };
         string location = locations[new Random().Next(locations.Length)];
         string cell = location == "tercessuinotlim" ? (new Random().Next(2) == 0 ? "m1" : "m2") : "Field1";
