@@ -3496,6 +3496,95 @@ public class CoreBots
         }
     }
 
+    public void CutSceneFixer(string map, string? cell, string cutsceneCell, string pad = "Left")
+    {
+
+        if (string.IsNullOrWhiteSpace(map))
+        {
+            Logger("Invalid map parameter. Map is required.");
+            return;
+        }
+
+        if (cell != null && string.IsNullOrWhiteSpace(cell))
+        {
+            Logger("Invalid cell parameter. If provided, cell must not be empty or whitespace.");
+            return;
+        }
+
+        Logger("CutSceneFixer Started.");
+
+        // Ensure the bot is in the correct map (either "doomvault" or "doomvaultb")
+        while (Bot.Map.Name != "doomvault" && Bot.Map.Name != "doomvaultb")
+        {
+            while (!Bot.ShouldExit && (Bot.Player.InCombat || Bot.Player.HasTarget))
+            {
+                Bot.Combat.Exit();
+                Bot.Combat.CancelTarget();
+                JumpWait();
+            }
+
+            // Join the correct map based on the provided map parameter
+            Join(map);
+        }
+
+        if (!string.IsNullOrEmpty(cell) && Bot.Player.Cell != cell)
+        {
+            Jump(cell);
+            Bot.Wait.ForCellChange(cell);
+        }
+
+        // Handle different cases for cutsceneCell
+        switch (cutsceneCell.ToLower())
+        {
+            case "initroom":
+                Bot.Wait.ForCellChange("initRoom");
+                break;
+
+            case var cut when cut.StartsWith("cut") && int.TryParse(cut.AsSpan(3), out _):
+                Bot.Wait.ForCellChange(cutsceneCell);
+                break;
+
+            default:
+                Logger($"Unhandled case for cutsceneCell: \"{cutsceneCell}\". Yell at Tato.. nicely!");
+                return;
+        }
+
+        if (Bot.Player.Cell == cutsceneCell)
+        {
+            Logger($"Player not in Cell: \"{cell}\", required for this quest.\nAttempting to fix");
+
+            // Fix the map if needed
+            if (Bot.Map.Name != map)
+            {
+                if (!string.IsNullOrEmpty(cell))
+                {
+                    Join(map, cell, pad);
+                    Bot.Wait.ForCellChange(cell);
+                }
+                else
+                {
+                    Logger("Invalid cell parameter. Cell is required.");
+                }
+            }
+
+            // Ensure the player is in the correct cell
+            while (!Bot.ShouldExit && (Bot.Player.Cell != cell || Bot.Player.Cell == cutsceneCell))
+            {
+                if (!string.IsNullOrEmpty(cell))
+                {
+                    Jump(cell);
+                    Bot.Wait.ForCellChange(cell);
+                }
+
+                Bot.Sleep(ActionDelay);
+            }
+
+            Logger($"{Bot.Player.Cell} Fixed.");
+        }
+        else
+            Logger($"Fix for Cell: \"{cell}\" Not Required.");
+    }
+
     public void JoinSWF(string map, string swfPath, string cell = "Enter", string pad = "Spawn", bool ignoreCheck = false)
     {
         Join(map, ignoreCheck: ignoreCheck);
