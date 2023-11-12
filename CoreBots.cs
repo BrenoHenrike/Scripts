@@ -3511,7 +3511,7 @@ public class CoreBots
             return;
         }
 
-        Logger("CutSceneFixer Started.");
+        Logger($"CutSceneFixer Started. Cell:\"[{cell}]\"");
 
         // Ensure the bot is in the correct map (either "doomvault" or "doomvaultb")
         while (Bot.Map.Name != "doomvault" && Bot.Map.Name != "doomvaultb")
