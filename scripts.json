@@ -50,7 +50,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 181888,
+    "size": 184691,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -744,7 +744,7 @@
       "doom-vault-a"
     ],
     "path": "Story/DoomVault.cs",
-    "size": 6398,
+    "size": 5845,
     "fileName": "DoomVault.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/DoomVault.cs"
   },
