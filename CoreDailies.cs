@@ -1182,6 +1182,7 @@ public class CoreDailies
         "Gold Voucher 100k",
         "Gold Voucher 500k",
 
+        "Happy Penguin",
         "Combat Trophy",
         "Super-Fan Swag Token A",
         "Super-Fan Swag Token B",
