@@ -106,6 +106,7 @@ public class FarmAllDailies
             Daily.MoglinPets();
             FR.CompleteStory();
             Daily.Friendships();
+            Daily.DagesScrollFragment();
             Core.Logger("\"All\" Dailies finished!");
         }
     }
