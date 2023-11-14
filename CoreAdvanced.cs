@@ -1957,9 +1957,9 @@ public class CoreAdvanced
                     break;
                 #endregion
 
-                #region Lucky - Penitence - Dauntless - anima
+                #region Lucky - Penitence - Dauntless Extra - Anima
                 case "verus doomknight":
-                    if (!uPenitence() || !uDauntless() || !uAnima())
+                    if (!uPenitence() || !uDauntlessExtra() || !uAnima())
                     {
                         if (uForgeCape() && uValiance() && uForgeHelm())
                         {
