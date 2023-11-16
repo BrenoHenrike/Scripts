@@ -28,9 +28,9 @@ public class AcGift2023
             Core.Logger("Quest not avaible / is already completed.");
             return;
         }
-        
+
         Core.EnsureAccept(9444);
-        Core.HuntMonster("eventhub", "Agitated Orb", "Free ACs... and Yogurt");
+        Core.HuntMonster("yulgar", "Agitated Orb", "Free ACs... and Yogurt");
         Core.EnsureComplete(9444);
 
 
