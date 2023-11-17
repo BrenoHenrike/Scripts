@@ -1,4 +1,3 @@
-using System.Reflection.PortableExecutable;
 /*
 name: Paladin
 description: This bot farms the Paladin class for you.
