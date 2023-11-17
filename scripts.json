@@ -2314,6 +2314,20 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/ArchPaladin.cs"
   },
   {
+    "name": "Paladin",
+    "description": "This bot farms the Paladin class for you.",
+    "tags": [
+      "warrior",
+      "healer",
+      "paladin",
+      "class"
+    ],
+    "path": "Good/Paladin.cs",
+    "size": 1124,
+    "fileName": "Paladin.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/Paladin.cs"
+  },
+  {
     "name": "Silver Exalted Paladin",
     "description": "Farms the Silver Exalted Paladin.",
     "tags": [
