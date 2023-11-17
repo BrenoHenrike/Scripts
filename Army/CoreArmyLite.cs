@@ -459,7 +459,7 @@ public class CoreArmyLite
     #endregion
     #region OneClient
 
-    public bool doForAll(bool randomServers = true)
+    public bool doForAll(bool randomServers = false)
     {
         if (Bot.ShouldExit || _doForAllIndex >= (doForAllAccountDetails ??= readManager()).Length)
             return false;
