@@ -586,6 +586,19 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Guru.cs"
   },
   {
+    "name": "Dragon Road Story (Upholder)",
+    "description": "This will finish the Dragon Road Story.",
+    "tags": [
+      "story",
+      "quest",
+      "dragon-road"
+    ],
+    "path": "Story/DragonRoad[Upholder].cs",
+    "size": 3732,
+    "fileName": "DragonRoad[Upholder].cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/DragonRoad[Upholder].cs"
+  },
+  {
     "name": "Aranx Quests",
     "description": "This script will do all quests of aranx in /darkdimension, /icedimension, /Ivoliss, /Pocketdimension and /sanddimension",
     "tags": [
