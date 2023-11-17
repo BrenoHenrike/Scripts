@@ -164,7 +164,7 @@ public class CoreDailies
             }
             else
             {
-                List<string> itemsToAdd = new List<string>();
+                List<string> itemsToAdd = new();
                 foreach (string item in items)
                 {
                     InventoryItem? invItem = Bot.Inventory.Items.Find(x => x.Name == item);
