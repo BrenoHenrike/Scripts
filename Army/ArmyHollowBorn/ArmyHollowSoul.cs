@@ -50,6 +50,9 @@ public class ArmyHollowSoul
 
     public void Setup(int quant = 2500)
     {
+        Core.PrivateRooms = true;
+        Core.PrivateRoomNumber = Army.getRoomNr();
+        
         if (Core.CheckInventory("Hollow Soul", quant))
             return;
 
