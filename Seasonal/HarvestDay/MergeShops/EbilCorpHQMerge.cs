@@ -101,7 +101,6 @@ public class EbilHQMerge
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.HuntMonster("ebilcorphq", "Master Chairman", req.Name, isTemp: false);
-                        Core.Logger("This item is not setup yet");
                         Bot.Wait.ForPickup(req.Name);
                     }
                     break;
