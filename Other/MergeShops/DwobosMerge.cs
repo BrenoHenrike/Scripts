@@ -7,6 +7,7 @@ tags: null
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/Nation/CoreNation.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
@@ -19,6 +20,7 @@ public class DwobosMerge
     public CoreStory Story = new();
     public CoreAdvanced Adv = new();
     public static CoreAdvanced sAdv = new();
+    private CoreNation Nation = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
     public string[] MultiOptions = { "Generic", "Select" };
@@ -63,24 +65,7 @@ public class DwobosMerge
                 #endregion
 
                 case "Dwobo Coin":
-                    Core.FarmingLogger(req.Name, quant);
-                    Core.EquipClass(ClassType.Farm);
-                    Core.RegisterQuests(Core.IsMember ? 4798 : 4797);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        if (!Core.IsMember)
-                            Core.KillMonster("crashruins", "r2", "Left", "Unlucky Explorer", "Ancient Treasure", 10);
-                        else Core.KillMonster("crashruins", "r2", "Left", "Unlucky Explorer", "Ancient Treasure", 8);
-
-                        if (!Core.IsMember)
-                            Core.KillMonster("crashruins", "r2", "Left", "Spacetime Anomaly", "Pieces of Future Tech", 7);
-                        else Core.KillMonster("crashruins", "r2", "Left", "Spacetime Anomaly", "Pieces of Future Tech", 5);
-
-                        Core.HuntMonster("crashruins", "Cluckmoo Idol", "Idol Heart");
-
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    Core.CancelRegisteredQuests();
+                    Nation.DwoboCoin(quant);
                     break;
 
             }

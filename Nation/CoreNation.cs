@@ -1477,7 +1477,6 @@ public class CoreNation
     {
         const int demandingApprovalQuest = 4917;
         const int receiptOfNulgathQuest = 4924;
-        const int dwoboCoinQuestMember = 4798;
         const int receiptItemId = 33451;
 
         if (!Core.IsMember)
@@ -1500,7 +1499,7 @@ public class CoreNation
 
             if (!Core.CheckInventory(receiptItemId))
             {
-                DwoboCoin(100, dwoboCoinQuestMember);
+                DwoboCoin(100);
                 Core.BuyItem("crashedruins", 1212, receiptItemId);
             }
 
@@ -1508,7 +1507,7 @@ public class CoreNation
             ApprovalAndFavor(0, 100);
             Core.EquipClass(ClassType.Farm);
             Core.HuntMonster("Extinction", "Control Panel", "Coal", 15, isTemp: false, log: false);
-            DwoboCoin(10, dwoboCoinQuestMember);
+            DwoboCoin(10);
             EssenceofNulgath(10);
             Core.BuyItem("Tercessuinotlim", 68, "Blade of Affliction");
             Core.EnsureComplete(receiptOfNulgathQuest);
@@ -1530,9 +1529,14 @@ public class CoreNation
     /// </summary>
     /// <param name="quant">Desired quantity of Dwobo Coins</param>
     /// <param name="questId">Quest ID for the Dwobo Coin quest</param>
-    public void DwoboCoin(int quant, int questId)
+    public void DwoboCoin(int quant)
     {
-        Core.RegisterQuests(questId);
+        if (Core.CheckInventory("Dwobo Coin", quant))
+            return;
+
+        Core.FarmingLogger("Dwobo Coin", quant);
+        Core.RegisterQuests(Core.IsMember ? 4798 : 4797);
+        Core.AddDrop("Dwobo Coin");
 
         while (!Bot.ShouldExit && !Core.CheckInventory("Dwobo Coin", quant))
         {
