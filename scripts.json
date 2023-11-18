@@ -7088,6 +7088,27 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/GearOfAwe/HelmOfAwe.cs"
   },
   {
+    "name": "Gear of Allwe",
+    "description": "This bot will farm get you all the gear of awe",
+    "tags": [
+      "armor",
+      "awe",
+      "good",
+      "pauldron",
+      "breastplate",
+      "vambrace",
+      "gauntlet",
+      "greaves",
+      "fragment",
+      "shard",
+      "relic"
+    ],
+    "path": "Good/GearOfAwe/GearofAllwe.cs",
+    "size": 4725,
+    "fileName": "GearofAllwe.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/GearOfAwe/GearofAllwe.cs"
+  },
+  {
     "name": "Awe Merge",
     "description": "This bot will farm the items belonging to the selected mode for the Awe Merge [632] in /museum",
     "tags": [
