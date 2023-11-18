@@ -2443,10 +2443,9 @@ public class CoreBots
 
     public void FarmingLogger(string? item, int quant, [CallerMemberName] string caller = "")
     {
-        int quantity = Bot.Inventory.GetQuantity(item ?? string.Empty); // Use string.Empty as the default value
+        int quantity = string.IsNullOrEmpty(item) ? 0 : Bot.TempInv.GetQuantity(item) + Bot.Inventory.GetQuantity(item);
         Logger($"Farming {item} ({quantity}/{quant})", caller);
     }
-
 
     public void DebugLogger(object _this, string? marker = null, [CallerMemberName] string? caller = null, [CallerLineNumber] int lineNumber = 0)
     {
