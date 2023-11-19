@@ -85,7 +85,7 @@ public class CoreDoomwood
         Story.KillQuest(1068, "doomwood", "Undead Paladin");
 
         //1069    Camouflage: Skelly-Style
-        if(!Story.QuestProgression(1069))
+        if (!Story.QuestProgression(1069))
         {
             Core.EnsureAccept(1069);
             Core.HuntMonster("doomwood", "Doomwood Bonemuncher", "Muncher Mandibles", 5);
@@ -900,9 +900,9 @@ public class CoreDoomwood
         Story.KillQuest(2125, "doomwar", "Zombie Dragon");
 
         //2126    Defeat Your Fallen Friends
-        Core.EquipClass(ClassType.Farm);
         if (!Story.QuestProgression(2126))
         {
+            Core.EquipClass(ClassType.Farm);
             Core.EnsureAccept(2126);
             Core.KillMonster("doomwar", "r5", "left", "*", "Fallen Friend Defeated", 4);
             Core.EnsureComplete(2126);
