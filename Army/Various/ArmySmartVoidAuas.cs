@@ -30,9 +30,7 @@ public class ArmySmartVoidAuras
         sArmy.player2,
         sArmy.player3,
         sArmy.player4,
-        sArmy.player5,
-        sArmy.player6,
-        sArmy.player7,
+        //limit to 4 due to /dragonchallenge
         sArmy.packetDelay,
         CoreBots.Instance.SkipOptions
     };
