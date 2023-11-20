@@ -501,15 +501,17 @@ public class CoreArmyLite
 
         (string, string)[] readManager()
         {
-            string[]? dirs = Directory.GetDirectories(
-                Path.Combine(
-                    Environment.GetFolderPath(
-                        Environment.SpecialFolder.LocalApplicationData),
-                    "Skua.Manager"
-                ),
-                Bot.Version.ToString(),
-                SearchOption.AllDirectories
-            );
+            string dirPath = Path.Combine(
+                                Environment.GetFolderPath(
+                                    Environment.SpecialFolder.LocalApplicationData),
+                                "Skua.Manager");
+            if (!Directory.Exists(dirPath))
+            {
+                Core.Logger($"There were no (sub-)folders named {Bot.Version} found in AppData/Local/Skua.Manager. Please set up your accounts in the Account tab in the Skua.Manager.exe", "AccountManager", true, true);
+                return Array.Empty<(string, string)>();
+            }
+
+            string[]? dirs = Directory.GetDirectories(dirPath, Bot.Version.ToString(), SearchOption.AllDirectories);
 
             // These two IFs are here cuz of the 1.2.3 VS 1.2.2.1 issue
             if (dirs == null || dirs.Length == 0)
