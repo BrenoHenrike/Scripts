@@ -579,6 +579,12 @@ public class CoreStory
 
     private void _SmartKill(string monster, int iterations = 20)
     {
+        if (monster == null)
+        {
+            Core.Logger("ERROR: monster is null, please report", stopBot: true);
+            return;
+        }
+
         bool repeat = true;
         for (int j = 0; j < iterations; j++)
         {
