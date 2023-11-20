@@ -4492,7 +4492,13 @@ public class CoreBots
             output = "";
             return false;
         }
-        output = (CBOList.FirstOrDefault(x => x.StartsWith(Name)) ?? $".: fail").Split(": ")[1];
+        var values = (CBOList.FirstOrDefault(x => x.StartsWith(Name)) ?? $".: fail").Split(": ");
+        if (values.Length < 2)
+        {
+            output = "";
+            return false;
+        }
+        output = values[1];
         return output != "fail" && !String.IsNullOrWhiteSpace(output) && !String.IsNullOrWhiteSpace(output);
     }
     public bool CBOBool(string Name, out bool output)
