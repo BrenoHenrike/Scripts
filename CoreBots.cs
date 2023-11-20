@@ -2419,7 +2419,7 @@ public class CoreBots
         }
         catch
         {
-            return Bot.Player.Username;
+            return Bot.Player.Username ?? "";
         }
     }
 
@@ -4186,7 +4186,7 @@ public class CoreBots
                 string botPath = Bot.Manager.LoadedScript.Split("Scripts").Last().Replace('/', '\\')[1..];
 
                 if (botPath.StartsWith("Nulgath\\"))
-                    botPath.Replace("Nulgath\\", "Nation\\");
+                    botPath = botPath.Replace("Nulgath\\", "Nation\\");
 
                 string[] allowedPathStarters =
                 {

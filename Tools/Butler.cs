@@ -13,9 +13,9 @@ using Skua.Core.Options;
 
 public class Butler
 {
-    private IScriptInterface Bot => IScriptInterface.Instance;
-    private CoreBots Core => CoreBots.Instance;
-    private CoreArmyLite Army => new();
+    private static IScriptInterface Bot => IScriptInterface.Instance;
+    private static CoreBots Core => CoreBots.Instance;
+    private static CoreArmyLite Army => new();
 
     public bool DontPreconfigure = true;
     public string OptionsStorage = "Butler";
@@ -27,19 +27,22 @@ public class Butler
         new Option<ClassType>("classType", "Class Type", "This uses the farm or solo class set in [Options] > [CoreBots]", ClassType.Farm),
         new Option<string>("attackPriority", "Attack Priority", "Fill in the monsters that the bot should prioritize (in order), split with a , (comma)."),
         new Option<bool>("copyWalk", "Copy Walk", "Set to true if you want to move to the same position of the player you follow.", false),
-        new Option<int>("roomNumber", "Room Number", "Insert the room number which will be used when looking through Locked Zones.", 999999),
+        new Option<string>("roomNumber", "Room Number", "Insert the room number which will be used when looking through Locked Zones.", "999999"),
         new Option<bool>("rejectDrops", "Reject Drops", "Do you wish for the Butler to reject all drops? If false, your drop screen will fill up.", true),
-        new Option<int>("hibernationTimer", "Hibernate Timer", "How many seconds should the bot wait before trying to /goto again?\nIf set to 0, it will not hibernate at all.", 60),
+        new Option<string>("hibernationTimer", "Hibernate Timer", "How many seconds should the bot wait before trying to /goto again?\nIf set to 0, it will not hibernate at all.", "60"),
     };
 
-    public void ScriptMain(IScriptInterface bot)
+    public static void ScriptMain(IScriptInterface bot)
     {
-        if (!Int32.TryParse(Bot.Config!.Get<string>("roomNumber"), out int roomNr) && Bot.Config!.Get<bool>("lockedMaps"))
+        if (!int.TryParse(Bot.Config!.Get<string>("roomNumber"), out int roomNr) && Bot.Config!.Get<bool>("lockedMaps"))
         {
             Core.Logger("Please provide a room number for the bot to use whilst searching locked zones", messageBox: true);
             Bot.Config.Configure();
             Bot.Stop(false);
         }
+        if (!int.TryParse(Bot.Config!.Get<string>("hibernationTimer"), out int hibernationSec))
+            hibernationSec = 0;
+
         Core.SetOptions(disableClassSwap: true);
 
         Army.Butler(
@@ -50,7 +53,7 @@ public class Butler
             roomNr,
             Bot.Config!.Get<bool>("rejectDrops"),
             Bot.Config.Get<string>("attackPriority"),
-            Bot.Config.Get<int>("hibernationTimer")
+            hibernationSec
         );
     }
 }
