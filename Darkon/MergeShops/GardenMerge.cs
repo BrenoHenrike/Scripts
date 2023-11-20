@@ -88,7 +88,7 @@ public class GardenMerge
                             while (!Bot.ShouldExit && Bot.Player.Cell != "r5")
                             {
                                 Core.Jump("r5", "Left");
-                                Bot.Sleep(Core.ActionDelay);
+                                Core.Sleep(Core.ActionDelay);
                             }
 
                             EnoughPeople = Bot.Map.CellPlayers?.Count >= 3;

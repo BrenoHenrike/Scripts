@@ -434,7 +434,7 @@ public class ArmyLR
     void PlayerAFK()
     {
         Core.Logger("Anti-AFK engaged");
-        Bot.Sleep(1500);
+        Core.Sleep(1500);
         Bot.Send.Packet("%xt%zm%afk%1%false%");
     }
 

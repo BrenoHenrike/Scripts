@@ -89,7 +89,7 @@ public class FishingGearMerge
                             while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant) && Core.CheckInventory("Fishing Bait"))
                             {
                                 Bot.Send.Packet("%xt%zm%FishCast%1%Net%30%");
-                                Bot.Sleep(10000);
+                                Core.Sleep(10000);
                             }
                         }
                         else
@@ -100,7 +100,7 @@ public class FishingGearMerge
                             while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant) && Core.CheckInventory("Fishing Dynamite"))
                             {
                                 Bot.Send.Packet($"%xt%zm%FishCast%1%Dynamite%30%");
-                                Bot.Sleep(3500);
+                                Core.Sleep(3500);
                                 Core.SendPackets("%xt%zm%getFish%1%false%");
                             }
                         }
@@ -108,12 +108,12 @@ public class FishingGearMerge
                         while (!Bot.ShouldExit && Bot.TempInv.Contains("Fish Caught", 30))
                         {
                             Core.HuntMonster("swordhaven", "Slime", "Slime Sauce", 1, log: false);
-                            Bot.Sleep(Core.ActionDelay);
+                            Core.Sleep(Core.ActionDelay);
                         }
                         while (!Bot.ShouldExit && Bot.TempInv.Contains("Endangered Fish", 5))
                         {
                             Core.HuntMonster("nexus", "Frogzard", "Greenguard Seal", 1, log: false);
-                            Bot.Sleep(Core.ActionDelay);
+                            Core.Sleep(Core.ActionDelay);
                         }
 
                         if (!legendDailyDone && Bot.Quests.CanCompleteFullCheck(1684))

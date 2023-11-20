@@ -128,7 +128,7 @@ public class DoomVaultB
     //will probably be needing this in the future...
     void InitFix(string cell, string pad = "Left")
     {
-        Bot.Sleep(2500);
+        Core.Sleep(2500);
         if (Bot.Player.Cell != "init")
             return;
 
@@ -138,7 +138,7 @@ public class DoomVaultB
         while (!Bot.ShouldExit && Bot.Player.Cell != cell)
         {
             Core.Jump(cell);
-            Bot.Sleep(Core.ActionDelay);
+            Core.Sleep(Core.ActionDelay);
         }
         Core.Logger($"{Bot.Player.Cell} Fixed.");
     }

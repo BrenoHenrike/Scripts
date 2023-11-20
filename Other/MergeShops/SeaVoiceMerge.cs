@@ -151,7 +151,7 @@ public class SeaVoiceMerge
             if (Bot.Player.Cell != "r2" || Bot.Player.Pad != "Left")
             {
                 Core.Jump("r2", "Left");
-                Bot.Sleep(2500);
+                Core.Sleep(2500);
             }
 
             // Attack the monster

@@ -120,7 +120,7 @@ public class ArchMageMatsArmy
                 while (!Bot.ShouldExit && Bot.Player.Cell != cell)
                 {
                     Core.Jump(cell);
-                    Bot.Sleep(Core.ActionDelay);
+                    Core.Sleep(Core.ActionDelay);
                 }
                 Bot.Combat.Attack(MonID);
             }
@@ -135,7 +135,7 @@ public class ArchMageMatsArmy
                 while (!Bot.ShouldExit && Bot.Player.Cell != cell)
                 {
                     Core.Jump(cell);
-                    Bot.Sleep(Core.ActionDelay);
+                    Core.Sleep(Core.ActionDelay);
                 }
                 foreach (int MonsterMapID in new[] { 1, 2 })
                     if (Core.IsMonsterAlive(MonsterMapID, useMapID: true))
@@ -149,7 +149,7 @@ public class ArchMageMatsArmy
                 while (!Bot.ShouldExit && Bot.Player.Cell != cell)
                 {
                     Core.Jump(cell);
-                    Bot.Sleep(Core.ActionDelay);
+                    Core.Sleep(Core.ActionDelay);
                 }
                 Bot.Combat.Attack(MonID);
             }
@@ -162,22 +162,22 @@ public class ArchMageMatsArmy
 
     void DarkCarnaxMove(string zone)
     {
-        Bot.Sleep(Core.ActionDelay);
+        Core.Sleep(Core.ActionDelay);
         switch (zone.ToLower())
         {
             case "a":
                 //Move to the right
-                Bot.Sleep(1500);
+                Core.Sleep(1500);
                 Bot.Player.WalkTo(Bot.Random.Next(600, 930), Bot.Random.Next(380, 475));
                 break;
             case "b":
                 //Move to the left
-                Bot.Sleep(1500);
+                Core.Sleep(1500);
                 Bot.Player.WalkTo(Bot.Random.Next(25, 325), Bot.Random.Next(380, 475));
                 break;
             default:
                 //Move to the center
-                Bot.Sleep(1500);
+                Core.Sleep(1500);
                 Bot.Player.WalkTo(Bot.Random.Next(325, 600), Bot.Random.Next(380, 475));
                 break;
         }
@@ -185,7 +185,7 @@ public class ArchMageMatsArmy
     public void PlayerAFK()
     {
         Core.Logger("Anti-AFK engaged");
-        Bot.Sleep(1500);
+        Core.Sleep(1500);
         Bot.Send.Packet("%xt%zm%afk%1%false%");
     }
 

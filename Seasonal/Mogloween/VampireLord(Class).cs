@@ -41,7 +41,7 @@ public class VampireLord
 
             while (!Bot.ShouldExit && Core.CheckInventory("Black Blood Vial", 1) && Core.CheckInventory("Moon Stone", 1))
             {
-                Bot.Sleep(Core.ActionDelay);
+                Core.Sleep(Core.ActionDelay);
                 Core.ChainComplete(Core.IsMember ? 6060 : 6059);
                 Bot.Wait.ForPickup("Blood Moon Token");
                 if (Core.CheckInventory("Blood Moon Token", 300))

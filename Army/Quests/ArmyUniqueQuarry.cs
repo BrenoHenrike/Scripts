@@ -52,7 +52,7 @@ public class ArmyUniqueQuarry
     public void Setup()
     {
         Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
-        
+
         Quest QuestData = Core.EnsureLoad(9000);
         ItemBase[] RequiredItems = QuestData.Requirements.ToArray();
         ItemBase[] QuestReward = QuestData.Rewards.ToArray();
@@ -115,7 +115,7 @@ public class ArmyUniqueQuarry
             while (Bot.Map.PlayerCount < Bot.Config.Get<int>("armysize"))
             {
                 Core.Logger($"Waiting for the squad. [{Bot.Map.PlayerNames.Count}/{Bot.Config.Get<int>("armysize")}]");
-                Bot.Sleep(5000);
+                Core.Sleep(5000);
             }
             Core.Logger($"Squad All Gathered [{Bot.Map.PlayerNames.Count}/{Bot.Config.Get<int>("armysize")}]");
         }

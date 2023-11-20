@@ -60,7 +60,7 @@ public class CoreDarkon
                 while (!Bot.ShouldExit && Bot.Player.Cell != "r5")
                 {
                     Core.Jump("r5", "Left");
-                    Bot.Sleep(5000);
+                    Core.Sleep(5000);
                 }
                 if (Bot.Map.PlayerCount >= 3)
                     EnoughPeople = true;

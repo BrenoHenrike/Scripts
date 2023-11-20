@@ -82,7 +82,7 @@ public class AvastBadge
                             if (Bot.Inventory.IsMaxStack("Fishing Bait"))
                                 Bot.Drops.Remove("Fishing Bait");
                             Bot.Send.Packet($"%xt%zm%FishCast%1%Dynamite%30%");
-                            Bot.Sleep(3500);
+                            Core.Sleep(3500);
                             Core.SendPackets("%xt%zm%getFish%1%false%");
                         }
                         Core.HuntMonster("Greenguardwest", "Slime", "Slime Sauce");

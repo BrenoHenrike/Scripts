@@ -238,7 +238,7 @@ public class CoreSepulchure
             Core.EnsureAccept(6381);
             Core.Join("ebonslate", "r11", "Left");
             Bot.Combat.Attack("Dethrix");
-            Bot.Sleep(10000);
+            Core.Sleep(10000);
         }
 
         // Please Fix Me 6382

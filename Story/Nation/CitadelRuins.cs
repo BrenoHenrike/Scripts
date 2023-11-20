@@ -203,8 +203,8 @@ public class CitadelRuins
             Core.EnsureAccept(668);
             Nation.FarmTaintedGem(7);
             Nation.Supplies("Claw of Nulgath");
-            
-                Nation.ResetSindles();
+
+            Nation.ResetSindles();
             string[] locations = new[] { "tercessuinotlim", Core.IsMember ? "Nulgath" : "evilmarsh" };
             string location = locations[new Random().Next(locations.Length)];
             string cell = location == "tercessuinotlim" ? (new Random().Next(2) == 0 ? "m1" : "m2") : "Field1";
@@ -244,7 +244,7 @@ public class CitadelRuins
         //grab a clue
         Story.KillQuest(6175, "citadelruins", "Inquisitor Hobo");
         Story.MapItemQuest(6175, "citadelruins", 5593, Amount: 5);
-        Bot.Sleep(2500);
+        Core.Sleep(2500);
 
         //unlock the door
         if (!Story.QuestProgression(6176))

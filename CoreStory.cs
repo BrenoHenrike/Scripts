@@ -172,7 +172,7 @@ public class CoreStory
         if (QuestProgression(QuestID, GetReward, Reward))
             return;
 
-        Bot.Sleep(Core.ActionDelay);
+        Core.Sleep(Core.ActionDelay);
         if (AutoCompleteQuest)
             Core.ChainComplete(QuestID);
         else
@@ -181,7 +181,7 @@ public class CoreStory
         }
         Bot.Wait.ForQuestComplete(QuestID);
         Core.Logger($"Completed \"{QuestData.Name}\" [{QuestID}]");
-        Bot.Sleep(Core.ActionDelay);
+        Core.Sleep(Core.ActionDelay);
     }
 
     public void QuestComplete(int questID) => TryComplete(Core.EnsureLoad(questID), true);
@@ -191,12 +191,12 @@ public class CoreStory
         if (!Bot.Quests.CanComplete(QuestData.ID))
             return;
 
-        Bot.Sleep(Core.ActionDelay);
+        Core.Sleep(Core.ActionDelay);
         if (AutoCompleteQuest)
             Core.EnsureComplete(QuestData.ID);
         Bot.Wait.ForQuestComplete(QuestData.ID);
         Core.Logger($"Completed Quest: [{QuestData.ID}] - \"{QuestData.Name}\"", "QuestProgression");
-        Bot.Sleep(1500);
+        Core.Sleep(1500);
     }
 
     /// <summary>
@@ -223,7 +223,7 @@ public class CoreStory
         int timeout = 0;
         while (!Bot.Quests.IsUnlocked(QuestID))
         {
-            Bot.Sleep(1000);
+            Core.Sleep(1000);
             timeout++;
 
             if (timeout > 15)
@@ -571,7 +571,7 @@ public class CoreStory
         for (int i = 0; i < QuestIDs.Count; i = i + 30)
         {
             Bot.Quests.Load(QuestIDs.ToArray()[i..(QuestIDs.Count > i ? QuestIDs.Count : i + 30)]);
-            Bot.Sleep(1500);
+            Core.Sleep(1500);
         }
     }
     private int PreviousQuestID = 0;
@@ -614,7 +614,7 @@ public class CoreStory
 
             Bot.Hunt.Monster(monster);
             Bot.Drops.Pickup(CurrentRequirements.Where(item => !item.Temp).Select(item => item.Name).ToArray());
-            Bot.Sleep(Core.ActionDelay);
+            Core.Sleep(Core.ActionDelay);
         }
     }
     private List<ItemBase> CurrentRequirements = new();

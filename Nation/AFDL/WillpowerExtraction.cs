@@ -86,7 +86,7 @@ public class WillpowerExtraction
                     Nation.FarmDiamondofNulgath(1);
                     Core.EnsureComplete(3046);
                     Bot.Drops.Pickup("Facebreakers of Nulgath", "SightBlinder Axes of Nulgath");
-                    Bot.Sleep(Core.ActionDelay);
+                    Core.Sleep(Core.ActionDelay);
                 }
             }
 

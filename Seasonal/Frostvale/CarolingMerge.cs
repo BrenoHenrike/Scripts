@@ -71,12 +71,12 @@ public class CarolingMerge
                         for (int i = 0; i <= 5; i++)
                         {
                             Bot.Kill.Monster("Frostval Tree");
-                            Bot.Sleep(Core.ActionDelay);
+                            Core.Sleep(Core.ActionDelay);
                             Bot.Wait.ForPickup(req.Name);
                             if (i == 5)
                             {
                                 Core.Join("carolinn-100000");
-                                Bot.Sleep(1500);
+                                Core.Sleep(1500);
                             }
                         }
                     }

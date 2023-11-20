@@ -59,7 +59,7 @@ public class BlazeBinder
             Adv.BuyItem("fireforge", 1142, "Darkness Sigil");
             Adv.BuyItem("fireforge", 1142, "Flame Sigil");
             Adv.BuyItem("fireforge", 1140, "Blaze Binder");
-            Bot.Sleep(Core.ActionDelay);
+            Core.Sleep(Core.ActionDelay);
             Adv.RankUpClass("Blaze Binder");
         }
     }

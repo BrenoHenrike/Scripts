@@ -626,7 +626,7 @@ public class DoTArmy
                 Core.Logger("Swapping classes to 1 of the 3\n" +
                 ">> so that we can be sure you arent doing multi targeting\n" +
                 ">> as itd fuck it up");
-                
+
                 foreach (string Class in new[] { "StoneCrusher", "Lord of Order", "Void Highlord" })
                     if (Core.CheckInventory(Class))
                         Core.Equip(Class);
@@ -651,7 +651,7 @@ public class DoTArmy
         while (!Bot.ShouldExit && Bot.Player.InCombat)
         {
             Core.JumpWait();
-            Bot.Sleep(2500);
+            Core.Sleep(2500);
         }
         Army.waitForParty(map, item);
     }
@@ -683,7 +683,7 @@ public class DoTArmy
         while (!Bot.ShouldExit && Bot.Player.InCombat)
         {
             Core.JumpWait();
-            Bot.Sleep(2500);
+            Core.Sleep(2500);
         }
         Army.waitForParty(map, item);
     }
@@ -692,7 +692,7 @@ public class DoTArmy
     public void PlayerAFK()
     {
         Core.Logger("Anti-AFK engaged");
-        Bot.Sleep(1500);
+        Core.Sleep(1500);
         Bot.Send.Packet("%xt%zm%afk%1%false%");
     }
 }

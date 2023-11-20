@@ -264,7 +264,7 @@ public class CoreArmyLite
                     //{
                     PartyAccept(partyID);
                     Core.Logger($"Joined the party");
-                    Bot.Sleep(Core.ActionDelay);
+                    Core.Sleep(Core.ActionDelay);
                     Bot.Map.Jump(Bot.Player.Cell, Bot.Player.Pad);
                     //}
                     break;
@@ -419,7 +419,7 @@ public class CoreArmyLite
                 hasWaited = true;
                 logCount = 0;
             }
-            Bot.Sleep(1000);
+            Core.Sleep(1000);
 
             if (playersWhoHaveBeenHere.Count == (dynamicPartySize - 1))
                 butlerTimer++;
@@ -437,12 +437,12 @@ public class CoreArmyLite
         }
         if (hasWaited)
             Core.Logger($"Party complete [{partySize}/{partySize}]");
-        Bot.Sleep(3500); //To make sure everyone attack at the same time, to avoid deaths
+        Core.Sleep(3500); //To make sure everyone attack at the same time, to avoid deaths
 
         void PlayerAFK()
         {
             Core.Logger("Anti-AFK engaged");
-            Bot.Sleep(1500);
+            Core.Sleep(1500);
             Bot.Send.Packet("%xt%zm%afk%1%false%");
         }
     }
@@ -478,12 +478,12 @@ public class CoreArmyLite
             if (Bot.Player.LoggedIn)
             {
                 Bot.Servers.Logout();
-                Bot.Sleep(Core.ActionDelay);
+                Core.Sleep(Core.ActionDelay);
             }
             Bot.Servers.Login(name, pass);
-            Bot.Sleep(3000);
-            
-            
+            Core.Sleep(3000);
+
+
             Bot.Servers.Connect(
             randomServers ?
             Bot.Servers.ServerList.Where(x => !BlacklistedServers.Contains(x.Name.ToLower()) && !x.Upgrade && x.Online).ToArray()[Bot.Random.Next(1, 5)] :
@@ -674,7 +674,7 @@ public class CoreArmyLite
                 while (!Bot.ShouldExit && (Bot.Player.HasTarget || Bot.Player.InCombat))
                 {
                     Bot.Combat.CancelTarget();
-                    Bot.Sleep(Core.ActionDelay);
+                    Core.Sleep(Core.ActionDelay);
                     Core.JumpWait();
                 }
 
@@ -692,7 +692,7 @@ public class CoreArmyLite
                     {
                         for (int t = 0; t < hibernateTimer; t++)
                         {
-                            Bot.Sleep(1000);
+                            Core.Sleep(1000);
                             if (Bot.ShouldExit)
                                 break;
                         }
@@ -725,7 +725,7 @@ public class CoreArmyLite
                 PriorityAttack("*");
 
             Core.Rest();
-            Bot.Sleep(Core.ActionDelay);
+            Core.Sleep(Core.ActionDelay);
         }
         ButlerStop();
     }
@@ -755,7 +755,7 @@ public class CoreArmyLite
             Core.ToggleAggro(false);
 
             Bot.Player.Goto(userName);
-            Bot.Sleep(1000);
+            Core.Sleep(1000);
 
             if (LockedZoneWarning)
                 break;
@@ -963,7 +963,7 @@ public class CoreArmyLite
             {
                 for (int t = 0; t < b_hibernationTimer; t++)
                 {
-                    Bot.Sleep(1000);
+                    Core.Sleep(1000);
                     if (Bot.ShouldExit)
                         break;
                 }
@@ -1018,7 +1018,7 @@ public class CoreArmyLite
             }
         }
         Bot.Combat.Attack(attNoPrio);
-        Bot.Sleep(Core.ActionDelay);
+        Core.Sleep(Core.ActionDelay);
     }
 
     private async void MapNumberParses(string map)

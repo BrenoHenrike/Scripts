@@ -116,7 +116,7 @@ public class CoreBots
                     {
                         if (!Bot.Servers.EnsureRelogin(Bot.Options.ReloginServer ?? Bot.Servers.CachedServers[0]?.Name ?? "Twilly"))
                             Logger("Please log-in before starting the bot.\nIf you are already logged in but are receiving this message regardless, please re-install CleanFlash", messageBox: true, stopBot: true);
-                        Bot.Sleep(5000);
+                        Sleep(5000);
                     }
                     catch
                     {
@@ -207,7 +207,7 @@ public class CoreBots
 
                     // AFK Handler
                     Bot.Send.Packet("%xt%zm%afk%1%false%");
-                    Bot.Sleep(ActionDelay);
+                    Sleep(ActionDelay);
                     bool TimerRunning = false;
                     //int afkCount = 0;
                     //Bot.Events.PlayerAFK += eventAFK;
@@ -216,7 +216,7 @@ public class CoreBots
                     //{
                     //    afkCount++;
                     //    int localCount = afkCount;
-                    //    Bot.Sleep(300000);
+                    //    Sleep(300000);
                     //    if (Bot.Player.AFK && afkCount == localCount)
                     //    {
                     //        Bot.Options.AutoRelogin = true;
@@ -228,7 +228,7 @@ public class CoreBots
                         if (b.Player.AFK && !TimerRunning)
                         {
                             TimerRunning = true;
-                            Bot.Sleep(300000);
+                            Sleep(300000);
                             if (b.Player.AFK)
                             {
                                 b.Options.AutoRelogin = true;
@@ -311,7 +311,7 @@ public class CoreBots
         if (Bot.Player.LoggedIn)
         {
             JumpWait();
-            Bot.Sleep(ActionDelay);
+            Sleep(ActionDelay);
 
             if (!string.IsNullOrWhiteSpace(CustomStopLocation))
             {
@@ -624,7 +624,7 @@ public class CoreBots
         {
             if (Bot.Bank.Contains(item))
             {
-                Bot.Sleep(ActionDelay);
+                Sleep(ActionDelay);
                 if (Bot.Inventory.FreeSlots == 0 && Bot.Inventory.Slots != 0 && Bot.Inventory.UsedSlots <= Bot.Inventory.Slots)
                     Logger($"Your inventory is full ({Bot.Inventory.UsedSlots}/{Bot.Inventory.Slots}), please clean it and restart the bot", messageBox: true, stopBot: true);
 
@@ -656,7 +656,7 @@ public class CoreBots
         {
             if (Bot.Bank.Contains(item))
             {
-                Bot.Sleep(ActionDelay);
+                Sleep(ActionDelay);
                 if (Bot.Inventory.FreeSlots == 0 && Bot.Inventory.Slots != 0 && Bot.Inventory.UsedSlots <= Bot.Inventory.Slots)
                     Logger($"Your inventory is full ({Bot.Inventory.UsedSlots}/{Bot.Inventory.Slots}), please clean it and restart the bot", messageBox: true, stopBot: true);
 
@@ -862,14 +862,14 @@ public class CoreBots
         sItem.iSel.iQty = buy_quant;
         sItem.accept = 1;
 
-        Bot.Sleep(ActionDelay);
+        Sleep(ActionDelay);
 
         if (Bot.Options.SafeTimings)
             Bot.Wait.ForActionCooldown(GameActions.BuyItem);
         Bot.Flash.CallGameFunction("world.sendBuyItemRequestWithQuantity", JsonConvert.DeserializeObject<ExpandoObject>(JsonConvert.SerializeObject(sItem))!);
         if (Bot.Options.SafeTimings)
             Bot.Wait.ForItemBuy();
-        Bot.Sleep(ActionDelay);
+        Sleep(ActionDelay);
 
         Bot.Events.ExtensionPacketReceived -= RelogRequieredListener;
 
@@ -1126,7 +1126,7 @@ public class CoreBots
         while (!Bot.ShouldExit && Bot.Player.InCombat)
         {
             JumpWait();
-            Bot.Sleep(ActionDelay);
+            Sleep(ActionDelay);
         }
 
         if (!all)
@@ -1138,7 +1138,7 @@ public class CoreBots
             if (Bot.Options.SafeTimings)
                 Bot.Wait.ForItemSell();
 
-            Bot.Sleep(ActionDelay);
+            Sleep(ActionDelay);
             return;
         }
         else Bot.Shops.SellItem(itemName);
@@ -1152,7 +1152,7 @@ public class CoreBots
         {
             Join(map);
             Bot.Shops.Load(shopID);
-            Bot.Sleep(ActionDelay);
+            Sleep(ActionDelay);
         }, 20, 1000);
 
         if (Bot.Shops.ID != shopID || Bot.Shops.Items == null)
@@ -1272,7 +1272,7 @@ public class CoreBots
             if (!TrashItem.Coins)
             {
                 Bot.Send.Packet($"%xt%zm%removeItem%{Bot.Map.RoomID}%{TrashItem.ID}%{Bot.Player.ID}%{TrashItem.Quantity}%");
-                Bot.Sleep(ActionDelay);
+                Sleep(ActionDelay);
                 Logger($"Trashed: {TrashItem.Name} x{TrashItem.Quantity}");
             }
             else ToBank(item);
@@ -1467,7 +1467,7 @@ public class CoreBots
             return false;
 
         Bot.Drops.Add(QuestData.Requirements.Where(x => !x.Temp).Select(y => y.Name).ToArray());
-        Bot.Sleep(ActionDelay);
+        Sleep(ActionDelay);
         return Bot.Quests.EnsureAccept(questID);
     }
 
@@ -1487,7 +1487,7 @@ public class CoreBots
                 continue;
 
             Bot.Drops.Add(quest.Requirements.Where(x => !x.Temp).Select(y => y.Name).ToArray());
-            Bot.Sleep(ActionDelay);
+            Sleep(ActionDelay);
             Bot.Quests.EnsureAccept(quest.ID);
         }
     }
@@ -1501,7 +1501,7 @@ public class CoreBots
     {
         if (questID <= 0)
             return false;
-        Bot.Sleep(ActionDelay);
+        Sleep(ActionDelay);
         return Bot.Quests.EnsureComplete(questID, itemID);
     }
 
@@ -1523,7 +1523,7 @@ public class CoreBots
     {
         if (questID <= 0)
             return false;
-        Bot.Sleep(ActionDelay);
+        Sleep(ActionDelay);
         Quest quest = EnsureLoad(questID);
         if (quest is not null)
         {
@@ -1598,13 +1598,13 @@ public class CoreBots
 
         Quest? _EnsureLoad1()
         {
-            Bot.Sleep(ActionDelay);
+            Sleep(ActionDelay);
             Bot.Wait.ForTrue(() => Bot.Quests.Tree.Contains(x => x.ID == questID), () => Bot.Quests.Load(questID), 20);
             return Bot.Quests.Tree.Find(q => q.ID == questID)!;
         }
         Quest? _EnsureLoad2()
         {
-            Bot.Sleep(ActionDelay);
+            Sleep(ActionDelay);
             return Bot.Quests.EnsureLoad(questID);
         }
     }
@@ -1616,11 +1616,11 @@ public class CoreBots
             return quests;
 
         List<int> missing = questIDs.Where(x => !quests.Any(y => y.ID == x)).ToList();
-        Bot.Sleep(ActionDelay);
+        Sleep(ActionDelay);
         for (int i = 0; i < missing.Count; i += 30)
         {
             Bot.Quests.Load(missing.ToArray()[i..(missing.Count > i ? missing.Count : i + 30)]);
-            Bot.Sleep(1500);
+            Sleep(1500);
         }
         Bot.Wait.ForTrue(() => questIDs.All(id => Bot.Quests.Tree.Any(q => q.ID == id)), 20);
 
@@ -1750,7 +1750,7 @@ public class CoreBots
     public void ChainComplete(int questID, int itemID = -1)
     {
         Bot.Quests.EnsureAccept(questID);
-        Bot.Sleep(ActionDelay);
+        Sleep(ActionDelay);
         Bot.Quests.EnsureComplete(questID, itemID);
     }
 
@@ -1881,7 +1881,7 @@ public class CoreBots
                 {
                     Bot.Hunt.Monster(monster);
                 }
-                Bot.Sleep(ActionDelay);
+                Sleep(ActionDelay);
                 Rest();
             }
         }
@@ -1931,7 +1931,7 @@ public class CoreBots
             {
                 if (!Bot.Combat.StopAttacking)
                     Bot.Combat.Attack(monster);
-                Bot.Sleep(ActionDelay);
+                Sleep(ActionDelay);
                 Rest();
             }
         }
@@ -1965,13 +1965,13 @@ public class CoreBots
                 {
                     // DebugLogger(this);
                     Jump("Boss", "Left");
-                    Bot.Sleep(ActionDelay);
+                    Sleep(ActionDelay);
                 }
                 // DebugLogger(this);
                 while (!Bot.ShouldExit && IsMonsterAlive("Staff of Inversion"))
                     Bot.Kill.Monster("Staff of Inversion");
                 Bot.Combat.Attack("Escherion");
-                Bot.Sleep(1000);
+                Sleep(1000);
             }
         }
         else
@@ -1986,13 +1986,13 @@ public class CoreBots
                 {
                     // DebugLogger(this);
                     Jump("Boss", "Left");
-                    Bot.Sleep(ActionDelay);
+                    Sleep(ActionDelay);
                 }
                 // DebugLogger(this);
                 while (!Bot.ShouldExit && IsMonsterAlive("Staff of Inversion"))
                     Bot.Kill.Monster("Staff of Inversion");
                 Bot.Combat.Attack("Escherion");
-                Bot.Sleep(1000);
+                Sleep(1000);
             }
             Rest();
             // DebugLogger(this);
@@ -2035,7 +2035,7 @@ public class CoreBots
             if (IsMonsterAlive("Stalagbite"))
                 Bot.Kill.Monster("Stalagbite");
             Bot.Combat.Attack("Vath");
-            Bot.Sleep(1000);
+            Sleep(1000);
         }
         Rest();
     }
@@ -2255,7 +2255,7 @@ public class CoreBots
             while (!Bot.ShouldExit && Bot.Player.Cell != "r9")
             {
                 Jump("r9", "Left");
-                Bot.Sleep(ActionDelay);
+                Sleep(ActionDelay);
             }
 
             while (!Bot.ShouldExit && IsMonsterAlive(15, useMapID: true) && Bot.Player.Cell == "r9" && !CheckInventory(item, quant))
@@ -2265,7 +2265,7 @@ public class CoreBots
                     while (!Bot.ShouldExit && Bot.Player.Cell != "Enter")
                     {
                         Jump("Enter", "Spawn");
-                        Bot.Sleep(ActionDelay);
+                        Sleep(ActionDelay);
                     }
                     Bot.Wait.ForCellChange("Enter");
                     Bot.Wait.ForPickup(item);
@@ -2299,7 +2299,7 @@ public class CoreBots
         {
             if (!Bot.Combat.StopAttacking)
                 Bot.Combat.Attack(name);
-            Bot.Sleep(ActionDelay);
+            Sleep(ActionDelay);
             if (rejectElse)
                 Bot.Drops.RejectExcept(item);
         }
@@ -2418,6 +2418,15 @@ public class CoreBots
         }
     }
 
+    public void Sleep(int ms)
+    {
+        if (Bot.ShouldExit)
+        {
+            Bot.Stop(false);
+            return;
+        }
+        Bot.Sleep(ms);
+    }
 
     /// <summary>
     /// Logs a line of text to the script log with time, method from where it's called and a message
@@ -2581,7 +2590,7 @@ public class CoreBots
                 Bot.Send.ClientPacket(packet);
             else
                 Bot.Send.Packet(packet);
-            Bot.Sleep(ActionDelay * 2);
+            Sleep(ActionDelay * 2);
         }
     }
 
@@ -2664,7 +2673,7 @@ public class CoreBots
 
             if (useEquipment && equipment.Any())
             {
-                Bot.Sleep((int)(ActionDelay * 1.5));
+                Sleep((int)(ActionDelay * 1.5));
                 Equip(equipment);
             }
 
@@ -2781,7 +2790,7 @@ public class CoreBots
         }
 
         Bot.Wait.ForItemEquip(item.ID);
-        Bot.Sleep((int)(ActionDelay * 1.5));
+        Sleep((int)(ActionDelay * 1.5));
         if (logEquip)
             Logger($"Equipping {(Bot.Inventory.IsEquipped(item.ID) ? String.Empty : "failed: ")} {item.Name}", "Equip");
     }
@@ -2798,7 +2807,7 @@ public class CoreBots
     public void ChangeAlignment(Alignment side)
     {
         Bot.Send.Packet($"%xt%zm%updateQuest%{Bot.Map.RoomID}%41%{(int)side}%");
-        Bot.Sleep(ActionDelay * 2);
+        Sleep(ActionDelay * 2);
     }
 
     public bool HasAchievement(int ID, string ia = "ia0") => Bot.Flash.CallGameFunction<bool>("world.getAchievement", ia, ID);
@@ -2990,7 +2999,7 @@ public class CoreBots
             lastMapJW = Bot.Map.Name;
             lastCellPadJW = cellPad!;
 
-            Bot.Sleep(ExitCombatDelay < 200 ? ExitCombatDelay : ExitCombatDelay - 200);
+            Sleep(ExitCombatDelay < 200 ? ExitCombatDelay : ExitCombatDelay - 200);
             Bot.Wait.ForCombatExit();
         }
         while (!Bot.ShouldExit && Bot.Player.InCombat)
@@ -3021,7 +3030,7 @@ public class CoreBots
         if (Bot.Map.Name != null && Bot.Map.Name.ToLower() == strippedMap && !ignoreCheck)
             return;
 
-        Bot.Sleep(ActionDelay);
+        Sleep(ActionDelay);
 
         switch (strippedMap)
         {
@@ -3195,7 +3204,7 @@ public class CoreBots
                 if (!CheckInventory(2047))
                 {
                     SendPackets("%xt%zm%getMapItem%169031%67%");
-                    Bot.Sleep(2500);
+                    Sleep(2500);
                     SendPackets("%xt%zm%equipItem%169031%2047%");
                 }
                 else
@@ -3277,7 +3286,7 @@ public class CoreBots
                 Jump("R10");
                 Bot.Map.Join(PrivateRooms ? $"{map}-" + PrivateRoomNumber : strippedMap);
                 Bot.Wait.ForMapLoad(strippedMap);
-                Bot.Sleep(ActionDelay);
+                Sleep(ActionDelay);
                 Bot.Wait.ForItemEquip(8733);
                 Bot.Wait.ForCellChange("MoonCut");
                 break;
@@ -3409,7 +3418,7 @@ public class CoreBots
             }
 
             Jump(cell, pad);
-            Bot.Sleep(1500);
+            Sleep(1500);
         }
 
         void tryJoin()
@@ -3428,7 +3437,7 @@ public class CoreBots
                 Bot.Wait.ForMapLoad(strippedMap);
 
                 // Exponential Backoff
-                Bot.Sleep(Math.Max(1, 100 * rnd.Next((int)(Math.Pow(2, i / 2.0)))));
+                Sleep(Math.Max(1, 100 * rnd.Next((int)(Math.Pow(2, i / 2.0)))));
 
                 string? currentMap = Bot.Map.Name;
                 if (!String.IsNullOrEmpty(currentMap) && currentMap.ToLower() == strippedMap)
@@ -3439,7 +3448,7 @@ public class CoreBots
                             Bot.Map.Jump(Bot.Player.Cell, Bot.Player.Pad, false);
                         else
                             Bot.Map.Jump(cell, pad, false);
-                        Bot.Sleep(Bot.Options.ActionDelay);
+                        Sleep(Bot.Options.ActionDelay);
                     }
                     break;
                 }
@@ -3570,7 +3579,7 @@ public class CoreBots
                     Bot.Wait.ForCellChange(cell);
                 }
 
-                Bot.Sleep(ActionDelay);
+                Sleep(ActionDelay);
             }
 
             Logger($"{Bot.Player.Cell} Fixed.");
@@ -3585,7 +3594,7 @@ public class CoreBots
         Bot.Flash.CallGameFunction("world.loadMap", swfPath);
 
         Bot.Wait.ForMapLoad(map);
-        Bot.Sleep(ActionDelay);
+        Sleep(ActionDelay);
 
         Jump(cell, pad);
     }
@@ -3602,7 +3611,7 @@ public class CoreBots
             Join(map);
 
         JumpWait();
-        Bot.Sleep(ActionDelay);
+        Sleep(ActionDelay);
         List<ItemBase> tempItems = Bot.TempInv.Items;
         ItemBase? newItem = null;
         bool found = false;
@@ -3610,7 +3619,7 @@ public class CoreBots
         for (int i = 0; i < quant; i++)
         {
             Bot.Map.GetMapItem(itemID);
-            Bot.Sleep(1000);
+            Sleep(1000);
             if (!found && Bot.TempInv.Items.Except(tempItems).Any())
             {
                 newItem = Bot.TempInv.Items.Except(tempItems).First();
@@ -3625,7 +3634,7 @@ public class CoreBots
                 (_item.Quantity < _item.MaxStack)))
             {
                 Bot.Map.GetMapItem(itemID);
-                Bot.Sleep(1000);
+                Sleep(1000);
                 t++;
 
                 if (t > (quant + 10))
@@ -3648,7 +3657,7 @@ public class CoreBots
         while (!Bot.ShouldExit && Bot.Player.Cell != cell)
         {
             Bot.Send.Packet($"%xt%zm%mv%{Bot.Map.RoomID}%{moveX}%{moveY}%8%");
-            Bot.Sleep(2500);
+            Sleep(2500);
             Bot.Send.Packet($"%xt%zm%mtcid%{Bot.Map.RoomID}%{mtcid}%");
         }
     }
@@ -4569,15 +4578,15 @@ public class CoreBots
 
                     Bot.Options.LagKiller = false;
                     Bot.Flash.SetGameObject("world.myAvatar.objData.intGold", 0);
-                    Bot.Sleep(200);
+                    Sleep(200);
                     Bot.Flash.SetGameObject("ui.mcInterface.mcGold.strGold.text", 0);
-                    Bot.Sleep(200);
+                    Sleep(200);
                     Bot.Flash.SetGameObject("world.myAvatar.objData.intCoins", 0);
-                    Bot.Sleep(200);
+                    Sleep(200);
                     Bot.Flash.SetGameObject("world.myAvatar.objData.strClassName", "Beggar");
-                    Bot.Sleep(200);
+                    Sleep(200);
                     Bot.Flash.SetGameObject("world.myAvatar.objData.iRank", 1);
-                    Bot.Sleep(200);
+                    Sleep(200);
                     Bot.ShowMessageBox("You may now life out your life as a hobo", "Thank you for donating");
                     break;
 
@@ -4616,9 +4625,9 @@ public class CoreBots
                     {
                         // Doesnt actually, ofc
                         Process.Start("cmd", "/C echo DDOSing \"https://game.aq.com/\" (104.18.2.150) via port 9001 & timeout 15 > nul /NOBREAK");
-                        Bot.Sleep(200);
+                        Sleep(200);
                     }
-                    Bot.Sleep(15000);
+                    Sleep(15000);
                     break;
             }
             Bot.ShowMessageBox("April Fools!", "April Fools!");

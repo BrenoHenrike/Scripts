@@ -81,7 +81,7 @@ public class ArmyTemplatev3 //Rename This
             while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
             {
                 Bot.Combat.Attack(MonsterMapID);
-                Bot.Sleep(Core.ActionDelay);
+                Core.Sleep(Core.ActionDelay);
                 if (Core.CheckInventory(item, quant))
                     break;
             }
@@ -120,7 +120,7 @@ public class ArmyTemplatev3 //Rename This
                     if (Core.IsMonsterAlive(monsterMapID, useMapID: true))
                     {
                         Bot.Combat.Attack(monsterMapID);
-                        Bot.Sleep(Core.ActionDelay);
+                        Core.Sleep(Core.ActionDelay);
                         if (Core.CheckInventory(item, quant))
                             break;
                     }

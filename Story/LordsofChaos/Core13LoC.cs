@@ -80,9 +80,9 @@ public class Core13LoC
             Core.Join("Shadowfall");
             Core.SendPackets("%xt%zm%updateQuest%73922%43%1%");
             Bot.Send.Packet($"%xt%zm%updateQuest%188220%41%{(Core.HeroAlignment > 1 ? 1 : Core.HeroAlignment)}%");
-            Bot.Sleep(2000);
+            Core.Sleep(2000);
             Core.Join("shadowfall");
-            Bot.Sleep(2000);
+            Core.Sleep(2000);
 
             //ShadowFall Quest1
             Story.ChainQuest(195);
@@ -285,7 +285,7 @@ public class Core13LoC
         {
             Core.Join("dwarfhold", "rdoor", "Right");
             Core.EnsureComplete(343);
-            Bot.Sleep(2500);
+            Core.Sleep(2500);
         }
 
         //Rock me Amadeus
@@ -322,7 +322,7 @@ public class Core13LoC
 
             Core.Join("vath");
             Core.Jump("CutCap", "Left");
-            Bot.Sleep(2500);
+            Core.Sleep(2500);
             Bot.Quests.UpdateQuest(354);
 
             if (!Core.CheckInventory("Thermite"))
@@ -591,7 +591,7 @@ public class Core13LoC
         {
             Core.EnsureAccept(564);
             Core.KillMonster("lycanwar", "Boss", "Left", "Edvard");
-            Bot.Sleep(5000);
+            Core.Sleep(5000);
             Story.MapItemQuest(564, "chaoscave", 107);
         }
 
@@ -1210,9 +1210,9 @@ public class Core13LoC
         {
             while (!Bot.ShouldExit && Bot.Player.Cell != "r17a")
             {
-                Bot.Sleep(2500);
+                Core.Sleep(2500);
                 Core.Jump("r17a");
-                Bot.Sleep(2500);
+                Core.Sleep(2500);
             }
         }
 
@@ -1222,9 +1222,9 @@ public class Core13LoC
             {
                 while (!Bot.ShouldExit && Bot.Player.Cell != "r1")
                 {
-                    Bot.Sleep(2500);
+                    Core.Sleep(2500);
                     Core.Jump("r1");
-                    Bot.Sleep(2500);
+                    Core.Sleep(2500);
                 }
             }
 
@@ -1232,18 +1232,18 @@ public class Core13LoC
             {
                 while (!Bot.ShouldExit && Bot.Player.Cell != "r4")
                 {
-                    Bot.Sleep(2500);
+                    Core.Sleep(2500);
                     Core.Jump("r4");
-                    Bot.Sleep(2500);
+                    Core.Sleep(2500);
                 }
             }
             else if (Core.isCompletedBefore(3878))
             {
                 while (!Bot.ShouldExit && Bot.Player.Cell != "r9")
                 {
-                    Bot.Sleep(2500);
+                    Core.Sleep(2500);
                     Core.Jump("r9");
-                    Bot.Sleep(2500);
+                    Core.Sleep(2500);
                 }
             }
         }
@@ -1256,9 +1256,9 @@ public class Core13LoC
         // {
         //     while (!Bot.ShouldExit && Bot.Player.Cell != "InsertCell")
         //     {
-        //         Bot.Sleep(2500);
+        //         Core.Sleep(2500);
         //         Core.Jump("Cell");
-        //         Bot.Sleep(2500);
+        //         Core.Sleep(2500);
         //     }
         // }
     }
@@ -1324,10 +1324,10 @@ public class Core13LoC
         {
             Core.EnsureAccept(1240);
             Core.Join("crossroads");
-            Bot.Sleep(2000);
+            Core.Sleep(2000);
             Core.Join("crossroads");
             Core.Jump("CutE", "Left");
-            Bot.Sleep(2000);
+            Core.Sleep(2000);
             Core.EnsureComplete(1240);
         }
 
@@ -1633,7 +1633,7 @@ public class Core13LoC
         //Chaos Beast Kathool
         Story.KillQuest(2517, "deepchaos", "Kathool");
 
-        Bot.Sleep(2500);
+        Core.Sleep(2500);
 
         //Starry, Starry Night
         if (!Story.QuestProgression(2518))

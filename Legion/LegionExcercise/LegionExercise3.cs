@@ -59,7 +59,7 @@ public class LegionExercise3
                     Core.HuntMonster("Uppercity", "Chaos Egg", publicRoom: false, log: false);
             }
             Core.HuntMonster("Mobius", "Chaos Sp-Eye", "Chaorrupted Essence", 50, isTemp: false, publicRoom: false);
-            Bot.Sleep(2500);
+            Core.Sleep(2500);
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("Underworld", "Dreadfiend Of Nulgath", "Darkness Core", publicRoom: false);
             Core.EnsureComplete(823);

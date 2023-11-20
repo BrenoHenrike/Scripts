@@ -115,7 +115,7 @@ public class CruxShip
             Core.EnsureAccept(4616);
             Core.HuntMonster("Mummies", "Mummy", "Mummy Defeated", 100);
             Bot.Wait.ForQuestComplete(4616);
-            Bot.Sleep(2500);
+            Core.Sleep(2500);
             if (Core.HasWebBadge("Mummy Slayer"))
                 return;
             else Core.EnsureComplete(4616);

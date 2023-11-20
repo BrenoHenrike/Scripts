@@ -93,7 +93,7 @@ public class ArmyBloodyChaos
                     if (Core.IsMonsterAlive("Stalagbite"))
                         Bot.Kill.Monster("Stalagbite");
                     else Bot.Combat.Attack("Vath");
-                    Bot.Sleep(1000);
+                    Core.Sleep(1000);
                 }
                 break;
 
@@ -106,7 +106,7 @@ public class ArmyBloodyChaos
                     if (Core.IsMonsterAlive("Staff of Inversion"))
                         Bot.Kill.Monster("Staff of Inversion");
                     else Bot.Combat.Attack("Escherion");
-                    Bot.Sleep(1000);
+                    Core.Sleep(1000);
                 }
                 break;
 

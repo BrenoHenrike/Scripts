@@ -60,7 +60,7 @@ public class J6Saga
         Story.KillQuest(1171, "moonyard", "Junkyard Wall");
 
         if (!Core.isCompletedBefore(1172))
-            Bot.Sleep(5000);
+            Core.Sleep(5000);
 
         //I'm on the Hunt, I'm after 58-Sr3
         Story.MapItemQuest(1172, "moonyard", 495);
@@ -104,7 +104,7 @@ public class J6Saga
             Bot.Combat.CancelTarget();
             Core.JumpWait();
             Bot.Wait.ForCombatExit();
-            Core.Logger("Joining Whitemap to amke sure your outa xantown as the mobs\n" + 
+            Core.Logger("Joining Whitemap to amke sure your outa xantown as the mobs\n" +
             "are aggressive.. and you amy potentialy be stuck there");
             Core.Join("whitemap");
             Core.SellItem("Auxiliary Clue 3");
@@ -212,7 +212,7 @@ public class J6Saga
         {
             Core.Jump("R10");
             Core.Join("alley");
-            Bot.Sleep(2000);
+            Core.Sleep(2000);
         }
         //Save the Girl
         Story.KillQuest(2851, "alley", "Thug Minion");

@@ -664,7 +664,7 @@ public class CoreNation
                                 Bot.Combat.CancelTarget();
                                 Bot.Wait.ForCombatExit();
                                 Core.Jump("Enter", "Spawn");
-                                Bot.Sleep(Core.ActionDelay);
+                                Core.Sleep(Core.ActionDelay);
                             }
 
                             Bot.Wait.ForPickup("Voucher of Nulgath");
@@ -857,7 +857,7 @@ public class CoreNation
 
         // Wait for a short period (e.g., 1.5 seconds) to allow the item quantity to change
         // (e.g., after completing a quest, the quantity might increase)
-        Bot.Sleep(1500);
+        Core.Sleep(1500);
 
         // Get the current quantity of the item in the inventory
         int currentQuant = Bot.Inventory.GetQuantity(item);
@@ -868,7 +868,7 @@ public class CoreNation
             Core.FarmingLogger(item, quant);
 
             // Wait for a short period again (optional)
-            Bot.Sleep(1500);
+            Core.Sleep(1500);
         }
     }
 
@@ -888,7 +888,7 @@ public class CoreNation
 
         // Wait for a short period (e.g., 1.5 seconds) to allow the item quantity to change
         // (e.g., after completing a quest, the quantity might increase)
-        Bot.Sleep(1500);
+        Core.Sleep(1500);
 
         // Get the current quantity of the item in the inventory
         int currentQuant = item.Quantity;
@@ -899,7 +899,7 @@ public class CoreNation
             Core.FarmingLogger(item.Name, item.MaxStack);
 
             // Wait for a short period again (optional)
-            Bot.Sleep(1500);
+            Core.Sleep(1500);
         }
     }
 
@@ -961,7 +961,7 @@ public class CoreNation
                     Bot.Combat.CancelTarget();
                     Bot.Wait.ForCombatExit();
                     Core.Jump("Enter", "Spawn");
-                    Bot.Sleep(Core.ActionDelay);
+                    Core.Sleep(Core.ActionDelay);
                 }
 
                 Bot.Drops.Pickup("Voucher of Nulgath");

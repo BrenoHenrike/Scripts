@@ -590,7 +590,7 @@ public class CoreLegion
     {
         if (Core.isCompletedBefore(793))
         {
-            Core.Logger("already part of the legion, continuing"); 
+            Core.Logger("already part of the legion, continuing");
             return;
         }
 
@@ -703,7 +703,7 @@ public class CoreLegion
                 Core.Logger($"Fragment: {Bot.Inventory.GetQuantity("Sword Scroll Fragment")} / {ScrollQuant}");
 
             Core.Join("dagepvp", "Enter0", "Spawn", ignoreCheck: true);
-            Bot.Sleep(2500);
+            Core.Sleep(2500);
 
             Core.PvPMove(1, "r2", 475, 269);
             Core.PvPMove(4, "r4", 963, 351);
@@ -815,18 +815,18 @@ public class CoreLegion
             }
 
             Bot.Wait.ForDrop("Legion Combat Trophy", 40);
-            Bot.Sleep(Core.ActionDelay);
+            Core.Sleep(Core.ActionDelay);
             Bot.Wait.ForPickup("Legion Combat Trophy");
 
             Core.Logger("Delaying exit");
-            Bot.Sleep(7500);
+            Core.Sleep(7500);
 
             while (Bot.Map.Name != "battleon")
             {
                 int i = 1;
                 Core.Logger($"Attemping Exit {i++}.");
                 Core.Join("battleon-999999");
-                Bot.Sleep(1500);
+                Core.Sleep(1500);
             }
         }
     }
@@ -847,7 +847,7 @@ public class CoreLegion
     //         Bot.Wait.ForTrue(() => Bot.Player.Alive, 20);
     //     }
     //     Core.DebugLogger(this);
-    //     Bot.Sleep(2500);
+    //     Core.Sleep(2500);
     //     Core.DebugLogger(this);
     //     Bot.Map.Join("battleon-999999");
     //     Core.DebugLogger(this);

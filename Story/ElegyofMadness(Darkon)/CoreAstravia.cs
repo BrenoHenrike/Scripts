@@ -44,7 +44,7 @@ public class CoreAstravia
         Story.PreLoad(this);
 
         Core.Join("Garden");
-        Bot.Sleep(2000);
+        Core.Sleep(2000);
 
         //Lost Breadcrumbs
         Story.KillQuest(7769, "eridani", "Maggot-Like Creature");

@@ -46,7 +46,7 @@ public class Tutorial
         {
             Core.Logger("Achievement - " + Achievements[i]);
             Core.SetAchievement(22 + i);
-            Bot.Sleep(Core.ActionDelay);
+            Core.Sleep(Core.ActionDelay);
         }
     }
 }

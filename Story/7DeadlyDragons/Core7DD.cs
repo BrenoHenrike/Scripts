@@ -424,7 +424,7 @@ public class Core7DD
                 Core.HuntMonster("Doomwood", "Doomwood Ectomancer", "Dried Wasabi Powder", 4, true);
                 Core.GetMapItem(428, 1, "lightguard");
                 Core.EnsureComplete(1075);
-                Bot.Sleep(5000);
+                Core.Sleep(5000);
             }
             Core.EnsureComplete(6113);
         }

@@ -60,7 +60,7 @@ public class ArmyElementalBinding
             while (!Bot.ShouldExit && Bot.Player.Cell != "r2")
             {
                 Core.Jump("r2");
-                Bot.Sleep(Core.ActionDelay);
+                Core.Sleep(Core.ActionDelay);
             }
 
             foreach (int MonsterMapID in new[] { 1, 2 })

@@ -52,7 +52,7 @@ public class ArmyHollowSoul
     {
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
-        
+
         if (Core.CheckInventory("Hollow Soul", quant))
             return;
 
@@ -91,7 +91,7 @@ public class ArmyHollowSoul
             {
                 if (Bot.Monsters.CurrentAvailableMonsters.Exists(x => x.MapID == MonsterMapID))
                     Bot.Combat.Attack(MonsterMapID);
-                Bot.Sleep(Core.ActionDelay);
+                Core.Sleep(Core.ActionDelay);
             }
         }
 

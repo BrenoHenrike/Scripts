@@ -32,9 +32,9 @@ public class DualChainSawKatanas
         Core.KillMonster("darkoviahorde", "r8", "Right", "Zombie", "Zombie Defeated", 100);
         Core.EnsureComplete(8670);
         Core.JumpWait();
-        Bot.Sleep(Core.ActionDelay);
+        Core.Sleep(Core.ActionDelay);
         Core.SetAchievement(10);
-        Bot.Sleep(Core.ActionDelay);
+        Core.Sleep(Core.ActionDelay);
         Core.BuyItem("Darkoviahorde", 1171, "Dual Chainsaw Katanas");
     }
 }

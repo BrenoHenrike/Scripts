@@ -110,9 +110,9 @@ public class SevenCircles
             {
                 while (!Bot.ShouldExit && Bot.Player.Cell != "r17")
                 {
-                    Bot.Sleep(2500);
+                    Core.Sleep(2500);
                     Core.Jump("r17", "Left");
-                    Bot.Sleep(2500);
+                    Core.Sleep(2500);
                 }
             }
         }

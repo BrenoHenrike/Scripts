@@ -87,7 +87,7 @@ public class WheeleOfLove
             Core.EnsureAccept(5694);
             Core.HuntMonster("wheeloflove", "Undead Cherub", "Unlove Dart", 13);
             Core.EnsureCompleteChoose(5694, Rewards);
-            Bot.Sleep(Core.ActionDelay);
+            Core.Sleep(Core.ActionDelay);
         }
     }
 }

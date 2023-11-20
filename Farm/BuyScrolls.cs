@@ -66,7 +66,7 @@ public class BuyScrolls
                 Core.EnsureAccept((int)scroll);
                 Core.EnsureCompleteMulti((int)scroll, Bot.Inventory.GetQuantity(_scroll) - ((int)Math.Ceiling((float)quant / (float)questData.Rewards.First().Quantity)));
                 Bot.Wait.ForPickup(_scroll);
-                Bot.Sleep(500);
+                Core.Sleep(500);
                 Core.Logger($"You now own {Bot.Inventory.GetQuantity(_scroll)} of the requested {quant} {_scroll}'s");
             }
             Core.Logger($"Buying complete, you now own {quant} {_scroll}'s");

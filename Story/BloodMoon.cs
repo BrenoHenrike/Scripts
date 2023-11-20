@@ -124,23 +124,23 @@ public class BloodMoon
         {
             while (!Bot.ShouldExit && Bot.Player.Cell == "Cut2")
             {
-                Bot.Sleep(2500);
+                Core.Sleep(2500);
                 Core.Jump("r3");
-                Bot.Sleep(2500);
+                Core.Sleep(2500);
             }
 
             while (!Bot.ShouldExit && Bot.Player.Cell == "Cut3")
             {
-                Bot.Sleep(2500);
+                Core.Sleep(2500);
                 Core.Jump("r5");
-                Bot.Sleep(2500);
+                Core.Sleep(2500);
             }
 
             while (!Bot.ShouldExit && Bot.Player.Cell == "Cut5")
             {
-                Bot.Sleep(2500);
+                Core.Sleep(2500);
                 Core.Jump("r6");
-                Bot.Sleep(2500);
+                Core.Sleep(2500);
             }
         }
         Bot.Events.CellChanged -= CutSceneFixer;

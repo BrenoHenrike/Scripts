@@ -353,7 +353,7 @@ public class VHLArmy
         {
             Bot.Combat.Attack("*");
             // Add a delay between attacks to avoid spamming server requests
-            Bot.Sleep(Core.ActionDelay);
+            Core.Sleep(Core.ActionDelay);
         }
 
         Army.AggroMonStop(true);
@@ -384,7 +384,7 @@ public class VHLArmy
             Core.EnsureAccept(4778);
             VoucherItemOfNulgathQuest();
             // Add a delay between monster kills to avoid spamming server requests
-            Bot.Sleep(Core.ActionDelay);
+            Core.Sleep(Core.ActionDelay);
             Core.EnsureComplete(4778, 6136);
         }
     }
@@ -411,7 +411,7 @@ public class VHLArmy
             Core.EnsureAccept(4778);
             VoucherItemOfNulgathQuest();
             // Add a delay between monster kills to avoid spamming server requests
-            Bot.Sleep(Core.ActionDelay);
+            Core.Sleep(Core.ActionDelay);
             Core.EnsureComplete(4778, 5357);
         }
     }
@@ -509,14 +509,14 @@ public class VHLArmy
             while (!Bot.ShouldExit && Bot.Player.Cell != "Boss")
             {
                 Core.Jump("Boss", "Left");
-                Bot.Sleep(Core.ActionDelay);
+                Core.Sleep(Core.ActionDelay);
             }
 
             while (!Bot.ShouldExit && Core.IsMonsterAlive("Staff of Inversion"))
                 Bot.Kill.Monster("Staff of Inversion");
 
             Bot.Combat.Attack("Escherion");
-            Bot.Sleep(1000);
+            Core.Sleep(1000);
         }
 
         Army.AggroMonStop(true);
@@ -557,7 +557,7 @@ public class VHLArmy
             while (!Bot.ShouldExit && Core.CheckInventory("Mana Energy for Nulgath"))
             {
                 Bot.Combat.Attack("*");
-                Bot.Sleep(Core.ActionDelay);
+                Core.Sleep(Core.ActionDelay);
             }
         }
 
@@ -616,7 +616,7 @@ public class VHLArmy
     public void PlayerAFK()
     {
         Core.Logger("Anti-AFK engaged");
-        Bot.Sleep(1500);
+        Core.Sleep(1500);
         Bot.Send.Packet("%xt%zm%afk%1%false%");
     }
 
@@ -664,7 +664,7 @@ public class VHLArmy
                 break;
         }
 
-        Bot.Sleep(2500);
+        Core.Sleep(2500);
     }
 
 

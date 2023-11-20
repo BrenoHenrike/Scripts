@@ -54,7 +54,7 @@ public class BrightOak
         // Map: Rivensylth
         // Equip spirit animal packets
         Core.SendPackets("%xt%zm%getMapItem%104347%3935%");
-        Bot.Sleep(Core.ActionDelay);
+        Core.Sleep(Core.ActionDelay);
         Core.SendPackets("%xt%zm%equipItem%104347%32057%");
 
         // Take to the Skies 
@@ -298,7 +298,7 @@ public class BrightOak
                             Core.GetMapItem(4204, 6);
                             Core.EnsureComplete(4799);
                             Bot.Wait.ForPickup("Ravinos Token I");
-                            Bot.Sleep(1000);
+                            Core.Sleep(1000);
                         }
                         Core.EnsureAccept(4800);
                         Core.HuntMonster("Gaiazor", "Wolfwood", "Wolfwood Slain", 4);
@@ -306,7 +306,7 @@ public class BrightOak
                         Core.HuntMonster("Gaiazor", "Tree Golem", "Tree Golem Slain", 4);
                         Core.EnsureComplete(4800);
                         Bot.Wait.ForPickup("Ravinos Token II");
-                        Bot.Sleep(1000);
+                        Core.Sleep(1000);
                     }
                     Core.EnsureAccept(4801);
                     Core.HuntMonster("Gaiazor", "Tree Golem", "Lapis' Runestones");
@@ -314,7 +314,7 @@ public class BrightOak
                     Core.HuntMonster("Gaiazor", "Wisterrora", "Zephyr's Toolkit");
                     Core.EnsureComplete(4801);
                     Bot.Wait.ForPickup("Ravinos Token III");
-                    Bot.Sleep(1000);
+                    Core.Sleep(1000);
                 }
                 Core.EnsureAccept(4802);
                 Core.HuntMonster("Gaiazor", "Tree Golem", "Tree Golem Roots", 5);
@@ -322,7 +322,7 @@ public class BrightOak
                 Core.GetMapItem(4205, 5);
                 Core.EnsureComplete(4802);
                 Bot.Wait.ForPickup("Ravinos Token IV");
-                Bot.Sleep(1000);
+                Core.Sleep(1000);
             }
             Core.EnsureAccept(4803);
             Core.HuntMonster("Darkheart", "Toxic Grove Spider", "Grove Spider Silk", 6);
@@ -330,7 +330,7 @@ public class BrightOak
             Core.HuntMonster("Firestorm", "Sulfur Imp", "Searbush", 2);
             Core.EnsureComplete(4803);
             Bot.Wait.ForPickup("Ravinos Token V");
-            Bot.Sleep(1000);
+            Core.Sleep(1000);
         }
 
         // Talk to Lapis
@@ -366,14 +366,14 @@ public class BrightOak
                     Core.HuntMonster("Gaiazor", "Wisterrora", "Drop of Wisterrora Ichor");
                     Core.EnsureComplete(4805);
                     Bot.Wait.ForPickup("Lapis Token I");
-                    Bot.Sleep(1000);
+                    Core.Sleep(1000);
                 }
                 Core.EnsureAccept(4806);
                 if (!Core.CheckInventory("Sparrow's Blood"))
                     Daily.SparrowsBlood();
                 Core.EnsureComplete(4806);
                 Bot.Wait.ForPickup("Lapis Token II");
-                Bot.Sleep(1000);
+                Core.Sleep(1000);
             }
             Core.EnsureAccept(4807);
             Core.GetMapItem(4207, 1, "Gaiazor");
@@ -381,7 +381,7 @@ public class BrightOak
             Core.GetMapItem(4209, 1, "Gaiazor");
             Core.EnsureComplete(4807);
             Bot.Wait.ForPickup("Lapis Token III");
-            Bot.Sleep(1000);
+            Core.Sleep(1000);
         }
         Story.MapItemQuest(4808, "Gaiazor", 4210);
     }

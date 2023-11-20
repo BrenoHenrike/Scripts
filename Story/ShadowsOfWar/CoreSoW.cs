@@ -728,7 +728,7 @@ public class CoreSoW
 
         // Awaken Lady Fiamme
         Story.MapItemQuest(8139, "shadowfireplane", 8542);
-        Bot.Sleep(5000);
+        Core.Sleep(5000);
 
         // Destroy the Barrier
         if (!Story.QuestProgression(8140))

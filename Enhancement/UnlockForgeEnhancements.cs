@@ -938,7 +938,7 @@ public class UnlockForgeEnhancements
                 Core.Logger("Going to your house to load the shop.\n" +
                 "[there may be a delay]");
                 Core.SendPackets($"%xt%zm%house%1%{Bot.Player.Username}%");
-                Bot.Sleep(5000);
+                Core.Sleep(5000);
                 Core.BuyItem(Bot.Map.Name, 336, "Golden Key");
                 Core.EnsureComplete(5723);
             }

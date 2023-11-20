@@ -227,7 +227,7 @@ public class MemberFarm
     {
         if (!Core.CheckInventory("Golden 8th Birthday Candle"))
             Core.BuyItem(Bot.Map.Name, 1317, "Golden 8th Birthday Candle");
-        Bot.Sleep(1500);
+        Core.Sleep(1500);
         if (!Core.CheckInventory("Golden 8th Birthday Candle"))
         {
             Core.Logger("Golden Candle not found - skip dual wield script.");
@@ -412,7 +412,7 @@ public class MemberFarm
 
         if (!Core.CheckInventory("Guardian Patent"))
             Core.BuyItem("museum", 53, "Guardian Patent");
-        Bot.Sleep(1500);
+        Core.Sleep(1500);
         if (!Core.CheckInventory("Guardian Patent"))
         {
             Core.Logger("Guardian Patent not found - skip Baby Dragon of Awe script");

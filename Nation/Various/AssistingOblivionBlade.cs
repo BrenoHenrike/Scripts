@@ -54,7 +54,7 @@ public class AssistingOblivionBlade
                 Core.KillMonster("boxes", "Fort2", "Left", "*", "Cubes", 50, false);
                 Core.KillMonster("shadowblast", "r13", "Left", "*", "Fiend Seal", 10, false);
                 Farm.BattleUnderB(quant: 200);
-                Bot.Sleep(Core.ActionDelay);
+                Core.Sleep(Core.ActionDelay);
             }
         }
         Core.CancelRegisteredQuests();

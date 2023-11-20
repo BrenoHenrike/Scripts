@@ -83,7 +83,7 @@ public class Fiendshard_Story
             Core.Join("fiendshard", "r9");
             while (!Bot.ShouldExit && Bot.Player.Cell != "r9")
             {
-                Bot.Sleep(2500);
+                Core.Sleep(2500);
                 Core.Jump("r9");
             }
             Core.EnsureAccept(7898);
@@ -103,9 +103,9 @@ public class Fiendshard_Story
     //     {
     //         while (Bot.Player.Cell != "r9")
     //         {
-    //             Bot.Sleep(2500);
+    //             Core.Sleep(2500);
     //             Core.Jump("r9");
-    //             Bot.Sleep(2500);
+    //             Core.Sleep(2500);
     //         }
     //     }
     //     Bot.Events.CellChanged -= CutSceneFixer;

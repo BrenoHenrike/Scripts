@@ -51,7 +51,7 @@ public class TarosPrismaticManslayers
             Nation.FarmGemofNulgath(75);
             Nation.FarmBloodGem(35);
             Core.EnsureCompleteChoose(8496, Rewards);
-            Bot.Sleep(Core.ActionDelay);
+            Core.Sleep(Core.ActionDelay);
         }
     }
 }

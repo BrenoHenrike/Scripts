@@ -455,7 +455,7 @@ public class CoreToD
             Core.Join("baconcat", "r11a", "Left");
             Core.Logger("Cutscene may have appeared... `Hunt` wil resume soon, please be patient.");
             Bot.Wait.ForCellChange("Cut1");
-            Bot.Sleep(2500);
+            Core.Sleep(2500);
             Core.EnsureAccept(5098);
             Core.HuntMonsterMapID("baconcat", 41, "Oopy Defeated");
             Core.HuntMonsterMapID("baconcat", 40, "Bloopy Defeated");
@@ -1259,7 +1259,7 @@ public class CoreToD
         while (!Bot.ShouldExit && (Bot.Player.Cell == "Cut4" || Bot.Player.Cell == "Cut5"))
         {
             Core.JumpWait();
-            Bot.Sleep(Core.ActionDelay);
+            Core.Sleep(Core.ActionDelay);
         }
 
         // Defeat ... Wait. What?

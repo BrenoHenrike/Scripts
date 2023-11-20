@@ -45,7 +45,7 @@ public class CheckForDonatedACs
         Bot.Events.ExtensionPacketReceived += ACsListener;
         while (Army.doForAll())
         {
-            Bot.Sleep(2000);
+            Core.Sleep(2000);
 
             Daily.WheelofDoom();
             Daily.MonthlyTreasureChestKeys();

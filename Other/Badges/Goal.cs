@@ -32,7 +32,7 @@ public class GoalBadge
         Core.Join("chute");
         Core.EnsureAccept(8543);
         Bot.Map.GetMapItem(9837);
-        Bot.Sleep(Core.ActionDelay);
+        Core.Sleep(Core.ActionDelay);
         Core.EnsureComplete(8543);
     }
 

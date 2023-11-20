@@ -418,9 +418,9 @@ public class CoreArchMage
             Core.EquipClass(ClassType.Farm);
             Core.HuntMonster("natatorium", "Anglerfish", "Sea Locus", isTemp: false);
             Core.EquipClass(ClassType.Solo);
-            Bot.Sleep(2500);
+            Core.Sleep(2500);
             Core.Logger("cutscene happens when joining some maps, give the bot a sec to realise its not broke :P");
-            Bot.Sleep(2500);
+            Core.Sleep(2500);
             Core.KillMonster("skytower", "r13", "Bottom", "*", "Sky Locus", isTemp: false);
             Core.HuntMonster("elemental", "Mana Golem", "Prime Locus Attunement", 30, isTemp: false);
             Core.HuntMonster("ectocave", "Ektorax", "Earth Locus", isTemp: false);
@@ -535,17 +535,17 @@ public class CoreArchMage
             case "a":
                 //Move to the right
                 Bot.Player.WalkTo(Bot.Random.Next(600, 930), Bot.Random.Next(380, 475));
-                Bot.Sleep(2500);
+                Core.Sleep(2500);
                 break;
             case "b":
                 //Move to the left
                 Bot.Player.WalkTo(Bot.Random.Next(25, 325), Bot.Random.Next(380, 475));
-                Bot.Sleep(2500);
+                Core.Sleep(2500);
                 break;
             default:
                 //Move to the center
                 Bot.Player.WalkTo(Bot.Random.Next(325, 600), Bot.Random.Next(380, 475));
-                Bot.Sleep(2500);
+                Core.Sleep(2500);
                 break;
         }
     }

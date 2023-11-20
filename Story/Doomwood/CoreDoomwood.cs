@@ -692,7 +692,7 @@ public class CoreDoomwood
             Core.EnsureComplete(7623);
             Core.Logger("Cutscene > Wait > Jump > Continue");
             Bot.Wait.ForCellChange("Cut2");
-            Bot.Sleep(2500);
+            Core.Sleep(2500);
             Core.JumpWait();
         }
 
@@ -715,7 +715,7 @@ public class CoreDoomwood
             Core.EnsureComplete(7625);
             Core.Logger("Cutscene > Wait > Jump > Continue");
             Bot.Wait.ForCellChange("Cut2");
-            Bot.Sleep(2500);
+            Core.Sleep(2500);
             Core.JumpWait();
         }
 
@@ -735,7 +735,7 @@ public class CoreDoomwood
             Core.GetMapItem(7531, 6, "stonewooddeep");
             Core.EnsureComplete(7627);
             Core.Jump("r2");
-            Bot.Sleep(2500);
+            Core.Sleep(2500);
             Core.Jump("r3");
         }
 
@@ -795,7 +795,7 @@ public class CoreDoomwood
             Story.MapItemQuest(7635, "stonewooddeep", 7533);
             Core.Logger("Cutscene > Wait > Jump > Continue");
             Bot.Wait.ForCellChange("Cut2");
-            Bot.Sleep(2500);
+            Core.Sleep(2500);
             Core.JumpWait();
         }
 

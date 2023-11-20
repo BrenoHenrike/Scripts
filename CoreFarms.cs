@@ -154,7 +154,7 @@ public class CoreFarms
     /// <param name="goldQuant">How much gold to farm</param>
     public void BattleGroundE(int goldQuant = 100000000)
     {
-        if (Bot.Player.Level < 61 || Bot.Player.Gold >= goldQuant )
+        if (Bot.Player.Level < 61 || Bot.Player.Gold >= goldQuant)
             return;
 
         Core.EquipClass(ClassType.Farm);
@@ -193,7 +193,7 @@ public class CoreFarms
             Bot.Wait.ForDrop("Berserker Bunny", 40);
             if (!sell)
                 return;
-            Bot.Sleep(Core.ActionDelay);
+            Core.Sleep(Core.ActionDelay);
             Core.SellItem("Berserker Bunny");
         }
         Core.CancelRegisteredQuests();
@@ -439,7 +439,7 @@ public class CoreFarms
         {
             while (!Bot.ShouldExit && Bot.Map.Name != "bludrutbrawl")
             {
-                Bot.Sleep(5000);
+                Core.Sleep(5000);
                 Core.JumpWait();
                 Core.Join("bludrutbrawl", "Enter0", "Spawn");
             }
@@ -464,7 +464,7 @@ public class CoreFarms
 
             while (!Bot.ShouldExit && Bot.Map.Name != "battleon")
             {
-                Bot.Sleep(5000);
+                Core.Sleep(5000);
                 Core.JumpWait();
                 Core.Join("battleon");
             }
@@ -503,7 +503,7 @@ public class CoreFarms
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
         {
             Core.Join("bludrutbrawl", "Enter0", "Spawn");
-            Bot.Sleep(2500);
+            Core.Sleep(2500);
 
             Core.PvPMove(5, "Morale0C");
             Core.PvPMove(4, "Morale0B");
@@ -621,18 +621,18 @@ public class CoreFarms
             }
 
             Bot.Wait.ForDrop(item, 40);
-            Bot.Sleep(1500);
+            Core.Sleep(1500);
             Bot.Wait.ForPickup(item, 40);
 
             Core.Logger("Delaying exit");
-            Bot.Sleep(7500);
+            Core.Sleep(7500);
 
             int i = 1;
             while (Bot.Map.Name != "battleon")
             {
                 Core.Logger($"Attempting Exit {i++}.");
                 Bot.Map.Join("battleon-999999");
-                Bot.Sleep(1500);
+                Core.Sleep(1500);
                 if (Bot.Map.Name != "battleon")
                     Core.Logger("Failed!? HOW.. try agian");
             }
@@ -861,15 +861,15 @@ public class CoreFarms
         void Packet()
         {
             if (!P2w)
-                Bot.Sleep(3500);
-            else Bot.Sleep(Core.ActionDelay);
+                Core.Sleep(3500);
+            else Core.Sleep(Core.ActionDelay);
             if (P2w && Core.CheckInventory("Dragon Runestone"))
                 Bot.Send.Packet($"%xt%zm%crafting%1%getAlchWait%{reagentid1}%{reagentid2}%true%Ready to Mix%{reagent1}%{reagent2}%{rune}%{trait}%");
             else if (!P2w)
                 Bot.Send.Packet($"%xt%zm%crafting%1%getAlchWait%{reagentid1}%{reagentid2}%false%Ready to Mix%{reagent1}%{reagent2}%{rune}%{modifier}%");
             if (P2w)
-                Bot.Sleep(2500);
-            else Bot.Sleep(11000);
+                Core.Sleep(2500);
+            else Core.Sleep(11000);
             if (P2w && Core.CheckInventory("Dragon Runestone"))
                 Bot.Send.Packet($"%xt%zm%crafting%1%checkAlchComplete%{reagentid1}%{reagentid2}%true%Mix Complete%{reagent1}%{reagent2}%{rune}%{trait}%");
 
@@ -1002,7 +1002,7 @@ public class CoreFarms
         Core.Logger($"Farming rank {rank}");
         Core.Logger("This will Do First Get all the quest\n" +
         "items for all 8 quests, then turn them in.");
-        Bot.Sleep(2500);
+        Core.Sleep(2500);
         //Restore this v when 1.2.4 comes out to fix mobs
         // Core.RegisterQuests(794, 795, 796, 797, 798, 799, 800, 801); //A Necessary Sacrifice 794, Gorillaphant Poaching 795, Mustard and Pretzel Root 796, Thyme and a Half 797, Thistle Do Nicely 798, Pleased to Meat You 799, ArcanRobe 800, Ebony and Ivory Tusks 801
         while (!Bot.ShouldExit && FactionRank("Arcangrove") < rank)
@@ -1106,7 +1106,7 @@ public class CoreFarms
                 }
                 ToggleBoost(BoostType.Reputation);
                 Core.BuyItem("alchemyacademy", 2036, "Gold Voucher 500k", Bot.Player.Gold % 10 == 5000000 ? 10 : 1);
-                Bot.Sleep(Core.ActionDelay);
+                Core.Sleep(Core.ActionDelay);
                 Core.EnsureCompleteMulti(8737);
             }
             // Core.CancelRegisteredQuests();
@@ -1282,7 +1282,7 @@ public class CoreFarms
         while (!Bot.ShouldExit && FactionRank("Brightoak") < rank)
         {
             Bot.Map.GetMapItem(3984);
-            Bot.Sleep(Core.ActionDelay);
+            Core.Sleep(Core.ActionDelay);
             Bot.Wait.ForQuestComplete(4667, 20);
         }
         Core.CancelRegisteredQuests();
@@ -1564,7 +1564,7 @@ public class CoreFarms
             Core.GetMapItem(1924, 1, "dragonrune");
             Core.EnsureComplete(3052);
         }
-        
+
         // Define a dictionary to store the items and their quantities for each elemental
         Dictionary<string, Tuple<string, string, int, int>> elementalItems = new()
         {
@@ -1779,7 +1779,7 @@ public class CoreFarms
             while (!Bot.ShouldExit && Core.CheckInventory("Fishing Bait"))
             {
                 Bot.Send.Packet("%xt%zm%FishCast%1%Net%30%");
-                Bot.Sleep(10000);
+                Core.Sleep(10000);
                 if (Bait != Bait - 1)
                     Core.Logger($"Cast: x{FishAttempt++}");
             }
@@ -1794,7 +1794,7 @@ public class CoreFarms
             while (!Bot.ShouldExit && Core.CheckInventory("Fishing Dynamite") && FactionRank("Fishing") < rank && (!shouldDerp || !Core.HasAchievement(14)))
             {
                 Bot.Send.Packet($"%xt%zm%FishCast%1%Dynamite%30%");
-                Bot.Sleep(3500);
+                Core.Sleep(3500);
                 Core.SendPackets("%xt%zm%getFish%1%false%");
                 if (Dyamnite != Dyamnite - 1)
                     Core.Logger($"Cast: x{FishAttempt++}");
@@ -1891,7 +1891,7 @@ public class CoreFarms
         {
             Core.Logger("Joining Brawl");
             Core.Join("DeathPitbrawl", "Enter0", "Spawn");
-            Bot.Sleep(Core.ActionDelay);
+            Core.Sleep(Core.ActionDelay);
         }
 
         int Move = 1;
@@ -2017,20 +2017,20 @@ public class CoreFarms
             }
         }
 
-        Bot.Sleep(5000);
+        Core.Sleep(5000);
 
         Bot.Wait.ForDrop(item, 40);
         Bot.Wait.ForPickup(item);
 
         Core.Logger("Delaying exit");
-        Bot.Sleep(7500);
+        Core.Sleep(7500);
 
         while (Bot.Map.Name != "battleon")
         {
             int i = 0;
             Core.Logger($"Attemping Exit {i++}.");
             Bot.Map.Join("battleon-999999");
-            Bot.Sleep(1500);
+            Core.Sleep(1500);
         }
     }
 
@@ -2932,7 +2932,7 @@ public class CoreFarms
             {
                 int CurrentDynamiteQuant = Bot.Inventory.GetQuantity("Fishing Dynamite");
                 Bot.Send.Packet($"%xt%zm%FishCast%1%Dynamite%30%");
-                Bot.Sleep(3500);
+                Core.Sleep(3500);
                 Bot.Wait.ForTrue(() => CurrentDynamiteQuant == CurrentDynamiteQuant - 1, 20);
                 Core.SendPackets("%xt%zm%getFish%1%false");
                 Core.Logger($"Dynamite: {Bot.Inventory.GetQuantity("Fishing Dynamite")} Fish: {Bot.TempInv.GetQuantity(itemID)}/{quant}");

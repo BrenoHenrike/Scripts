@@ -48,7 +48,7 @@ public class WorthyBlade
             Core.EquipClass(ClassType.Solo);
             Adv.KillUltra("doomvault", "r5", "Left", "Binky", "Binky's Uni-horn", isTemp: false, publicRoom: true);
         }
-        Bot.Sleep(1500);
+        Core.Sleep(1500);
         Core.EnsureComplete(6738);
     }
 }

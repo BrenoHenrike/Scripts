@@ -63,7 +63,7 @@ public class TarosManslayer
                 Core.KillMonster(location, cell, "Left", "Dark Makai", "Dark Makai Rune");
 
                 Core.EnsureCompleteChoose(1111, Rewards);
-                Bot.Sleep(Core.ActionDelay);
+                Core.Sleep(Core.ActionDelay);
             }
         }
     }

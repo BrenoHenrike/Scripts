@@ -87,7 +87,7 @@ public class ArmyTaintedGem
         Army.AggroMonStop(true);
 
         Core.JumpWait();
-        Bot.Sleep(2000);
+        Core.Sleep(2000);
         Army.waitForParty("boxes", "Cubes");
     }
 
@@ -103,7 +103,7 @@ public class ArmyTaintedGem
         Army.AggroMonStop(true);
 
         Core.JumpWait();
-        Bot.Sleep(2000);
+        Core.Sleep(2000);
         Army.waitForParty("mountfrost", "Ice Cubes");
     }
 }

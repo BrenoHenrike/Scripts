@@ -131,7 +131,7 @@ public class AnniversaryofDoom
             Core.Join("afkquest");
             Bot.Send.Packet("%xt%zm%afk%0%false%");
             Core.Logger($"**DO NOT CLICK THE GAME SCREEN** this Will Take ~5minutes, Go touch some grass 👍");
-            Bot.Sleep(360000);
+            Core.Sleep(360000);
             Core.Logger("Game Complete. You're Welcome for the Acs");
         }
     }
