@@ -24,12 +24,15 @@ public class J6Saga
         Core.SetOptions(false);
     }
 
-    public void J6()
+    public void J6(bool ReTurnWithHammer = false)
     {
         if (Core.isCompletedBefore(2858))
             return;
 
         Story.PreLoad(this);
+
+        if (ReTurnWithHammer)
+            Core.AddDrop(5194);
 
         //J6 Quiz Game
         Story.ChainQuest(674);
@@ -47,6 +50,9 @@ public class J6Saga
 
         //Mission1
         Story.KillQuest(698, "forest", "Zardman Grunt");
+
+        if (ReTurnWithHammer)
+            return;
 
         //Mission2
         Story.KillQuest(699, "boxes", "Sneeviltron");
