@@ -100,39 +100,8 @@ public class CoreLR
 
         Legion.JoinLegion();
 
-        bool hasDarkCaster = false;
-        if (Core.CheckInventory(new[] { "Love Caster", "Legion Revenant" }, any: true))
-            hasDarkCaster = true;
-        else
-        {
-            List<InventoryItem> InventoryData = Bot.Inventory.Items;
-            foreach (InventoryItem Item in InventoryData)
-            {
-                if (Item.Name.Contains("Dark Caster") && Item.Category == ItemCategory.Class)
-                {
-                    hasDarkCaster = true;
-                    break;
-                }
-            }
-
-            if (!hasDarkCaster)
-            {
-                List<InventoryItem> BankData = Bot.Bank.Items;
-                foreach (InventoryItem Item in BankData)
-                {
-                    if (Item.Name.Contains("Dark Caster") && Item.Category == ItemCategory.Class)
-                    {
-                        hasDarkCaster = true;
-                        Core.Unbank(Item.Name);
-                        break;
-                    }
-                }
-            }
-        }
-        if (!hasDarkCaster)
-        {
-            ILDC.GetILDC(false);
-        }
+        // GenerateDarkCaster
+        Core.GhostItem(47465, "Fake Dark Caster for LR", 1, false, Skua.Core.Models.Items.ItemCategory.Class, "What requirement??", 99999999);
 
         Core.AddDrop("Legion Token");
         Core.AddDrop(LR);

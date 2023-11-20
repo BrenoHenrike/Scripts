@@ -135,7 +135,7 @@ public class ArmyLR
         DWLN.DoBoth();
 
         Core.Logger("Dark Caster Check");
-        DarkCasterCheck();
+        GenerateDarkCaster();
 
         /* PREFARM ZONE */
 
@@ -394,42 +394,8 @@ public class ArmyLR
         Core.CancelRegisteredQuests();
     }
 
-    void DarkCasterCheck()
-    {
-        bool hasDarkCaster = false;
-        if (Core.CheckInventory(new[] { "Love Caster", "Legion Revenant" }, any: true))
-            hasDarkCaster = true;
-        else
-        {
-            List<InventoryItem> InventoryData = Bot.Inventory.Items;
-            foreach (InventoryItem Item in InventoryData)
-            {
-                if (Item.Name.Contains("Dark Caster") && Item.Category == ItemCategory.Class)
-                {
-                    hasDarkCaster = true;
-                    break;
-                }
-            }
-            if (!hasDarkCaster)
-            {
-                List<InventoryItem> BankData = Bot.Bank.Items;
-                foreach (InventoryItem Item in BankData)
-                {
-                    if (Item.Name.Contains("Dark Caster") && Item.Category == ItemCategory.Class)
-                    {
-                        hasDarkCaster = true;
-                        Core.Unbank(Item.Name);
-                        break;
-                    }
-                }
-            }
-        }
-        if (!hasDarkCaster)
-        {
-            ArmyLTs(2000);
-            ILDC.GetILDC(false);
-        }
-    }
+    void GenerateDarkCaster() => Core.GhostItem(47465, "Fake Dark Caster for LR", 1, false, Skua.Core.Models.Items.ItemCategory.Class, "What requirement??", 99999999);
+
 
     void PlayerAFK()
     {
@@ -473,6 +439,7 @@ public class ArmyLR
                 break;
 
             case "revenant":
+                GenerateDarkCaster();
                 map = "revenant" + (Array.IndexOf(Army.Players(), Core.Username()) > 2 ? (Army.getRoomNr() + 1).ToString() : "");
                 Army.AggroMonMIDs(1, 2, 3, 4);
                 Army.AggroMonStart(map);
