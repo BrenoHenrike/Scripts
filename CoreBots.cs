@@ -2681,7 +2681,7 @@ public class CoreBots
             if (usingGeneric)
                 return false;
 
-            if (!CheckInventory(className))
+            if (!CheckInventory(className) || !Bot.Inventory.Items.Any(x => x.Name.ToLower().Trim() == className && x.Category == ItemCategory.Class))
             {
                 Logger("You do not own " + className);
                 return false;
@@ -2700,7 +2700,7 @@ public class CoreBots
             while (equipedClass != className)
             {
                 logEquip = false;
-                Equip(Bot.Inventory.Items.First(x => x.Name.ToLower() == className && x.Category == ItemCategory.Class).ID);
+                Equip(Bot.Inventory.Items.First(x => x.Name.ToLower().Trim() == className && x.Category == ItemCategory.Class).ID);
                 logEquip = true;
                 equipedClass = Bot.Player.CurrentClass?.Name.Trim().ToLower();
             }
