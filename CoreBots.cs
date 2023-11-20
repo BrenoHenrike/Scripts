@@ -1882,8 +1882,7 @@ public class CoreBots
                     Bot.Hunt.Monster(monster);
                 }
                 Bot.Sleep(ActionDelay);
-                if (ShouldRest)
-                    Rest();
+                Rest();
             }
         }
     }
@@ -1919,8 +1918,7 @@ public class CoreBots
             if (log)
                 Logger($"Killing {monster.Name}");
             Bot.Kill.Monster(monster);
-            if (ShouldRest)
-                Rest();
+            Rest();
         }
         else
         {
@@ -1934,8 +1932,7 @@ public class CoreBots
                 if (!Bot.Combat.StopAttacking)
                     Bot.Combat.Attack(monster);
                 Bot.Sleep(ActionDelay);
-                if (ShouldRest)
-                    Rest();
+                Rest();
             }
         }
     }
@@ -1997,8 +1994,7 @@ public class CoreBots
                 Bot.Combat.Attack("Escherion");
                 Bot.Sleep(1000);
             }
-            if (ShouldRest)
-                Rest();
+            Rest();
             // DebugLogger(this);
             Bot.Wait.ForPickup(item);
         }
@@ -2041,8 +2037,7 @@ public class CoreBots
             Bot.Combat.Attack("Vath");
             Bot.Sleep(1000);
         }
-        if (ShouldRest)
-            Rest();
+        Rest();
     }
 
     /// <summary>
