@@ -855,12 +855,28 @@ public class CoreBots
         Bot.Events.ExtensionPacketReceived += RelogRequieredListener;
 
         dynamic sItem = new ExpandoObject();
-        dynamic objData = getData(item.ID, item.ShopItemID);
-        sItem = objData;
-        sItem.iSel = objData;
-        sItem.iQty = buy_quant;
-        sItem.iSel.iQty = buy_quant;
-        sItem.accept = 1;
+        for (int i = 0; i < 5; i++)
+        {
+            dynamic objData = getData(item.ID, item.ShopItemID);
+            try
+            {
+                sItem = objData;
+                sItem.iSel = objData;
+                sItem.iQty = buy_quant;
+                sItem.iSel.iQty = buy_quant;
+                sItem.accept = 1;
+                break;
+            }
+            catch
+            {
+                Sleep(1000);
+            }
+            if (i == 5)
+            {
+                Logger("BuyItem Failed, crashed 5 times", stopBot: true);
+                return;
+            }
+        }
 
         Sleep(ActionDelay);
 
