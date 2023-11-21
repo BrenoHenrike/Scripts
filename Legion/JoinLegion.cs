@@ -1,7 +1,7 @@
 /*
-name: JoinLegion
-description: null
-tags: null
+name: Join the Legion
+description: This script will join Dage's undead. It will also buy (with permission) the Undead Warrior. Option available to have the Undead Warrior be sold after joining the leigon.
+tags: dage, legion, tokens, undead, warrior, bludrut, brawl, fail, king
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -12,10 +12,9 @@ using Skua.Core.Interfaces;
 
 public class JointheLegion
 {
-    public IScriptInterface Bot => IScriptInterface.Instance;
-    public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new();
-    public CoreLegion Legion = new CoreLegion();
+    private static IScriptInterface Bot => IScriptInterface.Instance;
+    private static CoreBots Core => CoreBots.Instance;
+    private readonly CoreLegion Legion = new();
 
     public void ScriptMain(IScriptInterface bot)
     {

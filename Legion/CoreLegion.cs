@@ -589,10 +589,7 @@ public class CoreLegion
     public void JoinLegion()
     {
         if (Core.isCompletedBefore(793))
-        {
-            Core.Logger("already part of the legion, continuing");
             return;
-        }
 
         if (!Core.isCompletedBefore(792))
             Farm.BludrutBrawlBoss(quant: 200);
