@@ -2681,7 +2681,7 @@ public class CoreBots
             if (usingGeneric)
                 return false;
 
-            if (!CheckInventory(className) || !Bot.Inventory.Items.Any(x => x.Name.ToLower().Trim() == className && x.Category == ItemCategory.Class))
+            if (!CheckInventory(className) || !Bot.Inventory.Items.Any(x => x.Name.ToLower().Trim() == className.ToLower().Trim() && x.Category == ItemCategory.Class))
             {
                 Logger("You do not own " + className);
                 return false;
