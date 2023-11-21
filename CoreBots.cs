@@ -1479,13 +1479,19 @@ public class CoreBots
 
         if (Bot.Quests.IsInProgress(questID))
             return true;
+
         if (questID <= 0)
             return false;
 
-        Bot.Drops.Add(QuestData.Requirements.Where(x => !x.Temp).Select(y => y.Name).ToArray());
-        Sleep(ActionDelay);
+        if (QuestData.Requirements.Any())
+            AddDrop(QuestData.Requirements.Where(x => !x.Temp).Select(y => y.Name).ToArray());
+
+        if (QuestData.Rewards.Any())
+            AddDrop(QuestData.Rewards.Where(x => !x.Temp).Select(y => y.Name).ToArray());
+
         return Bot.Quests.EnsureAccept(questID);
     }
+
 
     /// <summary>
     /// Accepts all the quests given
@@ -1494,6 +1500,7 @@ public class CoreBots
     public void EnsureAccept(params int[] questIDs)
     {
         List<Quest> QuestData = EnsureLoad(questIDs);
+
         foreach (Quest quest in QuestData)
         {
             if (quest.Upgrade && !IsMember)
@@ -1502,11 +1509,16 @@ public class CoreBots
             if (Bot.Quests.IsInProgress(quest.ID) || quest.ID <= 0)
                 continue;
 
-            Bot.Drops.Add(quest.Requirements.Where(x => !x.Temp).Select(y => y.Name).ToArray());
-            Sleep(ActionDelay);
+            if (quest.Requirements.Any())
+                AddDrop(quest.Requirements.Where(x => !x.Temp).Select(y => y.Name).ToArray());
+
+            if (quest.Rewards.Any())
+                AddDrop(quest.Rewards.Where(x => !x.Temp).Select(y => y.Name).ToArray());
+
             Bot.Quests.EnsureAccept(quest.ID);
         }
     }
+
 
     /// <summary>
     /// Completes the quest with a choose-able reward item
