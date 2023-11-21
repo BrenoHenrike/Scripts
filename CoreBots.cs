@@ -1483,8 +1483,12 @@ public class CoreBots
         if (questID <= 0)
             return false;
 
+        if (QuestData.AcceptRequirements.Any())
+            AddDrop(QuestData.AcceptRequirements.Where(x => !x.Temp).Select(y => y.Name).ToArray());
+
         if (QuestData.Requirements.Any())
             AddDrop(QuestData.Requirements.Where(x => !x.Temp).Select(y => y.Name).ToArray());
+        AddDrop(QuestData.AcceptRequirements.Where(x => !x.Temp).Select(y => y.Name).ToArray());
 
         if (QuestData.Rewards.Any())
             AddDrop(QuestData.Rewards.Where(x => !x.Temp).Select(y => y.Name).ToArray());
@@ -1508,6 +1512,9 @@ public class CoreBots
 
             if (Bot.Quests.IsInProgress(quest.ID) || quest.ID <= 0)
                 continue;
+
+            if (quest.AcceptRequirements.Any())
+                AddDrop(quest.AcceptRequirements.Where(x => !x.Temp).Select(y => y.Name).ToArray());
 
             if (quest.Requirements.Any())
                 AddDrop(quest.Requirements.Where(x => !x.Temp).Select(y => y.Name).ToArray());
