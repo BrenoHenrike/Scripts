@@ -3036,13 +3036,21 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/HeadOfTheLegionBeast.cs"
   },
   {
-    "name": "JoinLegion",
-    "description": "null",
+    "name": "Join the Legion",
+    "description": "This script will join Dage's undead. It will also buy (with permission) the Undead Warrior. Option available to have the Undead Warrior be sold after joining the leigon.",
     "tags": [
-      "null"
+      "dage",
+      "legion",
+      "tokens",
+      "undead",
+      "warrior",
+      "bludrut",
+      "brawl",
+      "fail",
+      "king"
     ],
     "path": "Legion/JoinLegion.cs",
-    "size": 637,
+    "size": 847,
     "fileName": "JoinLegion.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/JoinLegion.cs"
   },
@@ -3053,7 +3061,7 @@
       "null"
     ],
     "path": "Legion/CoreLegion.cs",
-    "size": 31823,
+    "size": 31736,
     "fileName": "CoreLegion.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/CoreLegion.cs"
   },
