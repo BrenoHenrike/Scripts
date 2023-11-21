@@ -100,9 +100,6 @@ public class CoreLR
 
         Legion.JoinLegion();
 
-        // GenerateDarkCaster
-        Core.GhostItem(47465, "Fake Dark Caster for LR", 1, false, Skua.Core.Models.Items.ItemCategory.Class, "What requirement??", 99999999);
-
         Core.AddDrop("Legion Token");
         Core.AddDrop(LR);
         Core.AddDrop(LF1);

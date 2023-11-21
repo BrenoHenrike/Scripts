@@ -134,9 +134,6 @@ public class ArmyLR
         Core.Logger("Dark War Nation/Legion Story");
         DWLN.DoBoth();
 
-        Core.Logger("Dark Caster Check");
-        GenerateDarkCaster();
-
         /* PREFARM ZONE */
 
         /* Step 1: Evil Rank 10 */
@@ -394,9 +391,6 @@ public class ArmyLR
         Core.CancelRegisteredQuests();
     }
 
-    void GenerateDarkCaster() => Core.GhostItem(47465, "Fake Dark Caster for LR", 1, false, Skua.Core.Models.Items.ItemCategory.Class, "What requirement??", 99999999);
-
-
     void PlayerAFK()
     {
         Core.Logger("Anti-AFK engaged");
@@ -439,7 +433,6 @@ public class ArmyLR
                 break;
 
             case "revenant":
-                GenerateDarkCaster();
                 map = "revenant" + (Array.IndexOf(Army.Players(), Core.Username()) > 2 ? (Army.getRoomNr() + 1).ToString() : "");
                 Army.AggroMonMIDs(1, 2, 3, 4);
                 Army.AggroMonStart(map);

@@ -3039,9 +3039,12 @@ public class CoreBots
     /// <param name="ignoreCheck">If set to true, the bot will not check if the player is already in the given room</param>
     public void Join(string? map, string cell = "Enter", string pad = "Spawn", bool publicRoom = false, bool ignoreCheck = false)
     {
-        map = map?.Replace(" ", "").Replace('I', 'i');
-        map = map?.ToLower() == "tercess" ? "tercessuinotlim" : map?.ToLower();
-        string? strippedMap = map!.Contains('-') ? map.Split('-').First() : map;
+        if (map == null)
+            return;
+
+        map = map.Replace(" ", "").Replace('I', 'i');
+        map = map.ToLower() == "tercess" ? "tercessuinotlim" : map.ToLower();
+        string strippedMap = map.Contains('-') ? map.Split('-').First() : map;
 
         if (Bot.Map.Name != null && Bot.Map.Name.ToLower() == strippedMap && !ignoreCheck)
             return;
@@ -3058,7 +3061,6 @@ public class CoreBots
             // case "map":
             //     SimpleQuestBypass((000, 000));
             //     break;
-
 
             #region Simple Quest Bypasses
 
@@ -3267,7 +3269,11 @@ public class CoreBots
             #region Ghost Item Bypasses
 
             case "nostalgiaquest":
-                GhostItemBypass(37378);
+                GhostItemBypass(37378, "NostalgiaQuest Map Bypass");
+                break;
+
+            case "revenant":
+                GhostItemBypass(47465, "Revenant Map Bypass", category: ItemCategory.Class);
                 break;
 
             #endregion
@@ -3508,9 +3514,10 @@ public class CoreBots
             SimpleQuestBypass(slotValues);
         }
 
-        void GhostItemBypass(int ID, string name = "Ghost Item")
+        void GhostItemBypass(int ID, string name = "Ghost Item", int quantity = 1, bool temp = false, ItemCategory category = ItemCategory.Unknown, string? description = null, int level = 1, params (string, object)[] extraInfo)
         {
-            GhostItem(ID, name);
+            if (!CheckInventory(ID))
+                GhostItem(ID, name);
             tryJoin();
         }
     }
