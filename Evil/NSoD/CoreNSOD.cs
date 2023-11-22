@@ -208,9 +208,9 @@ public class CoreNSOD
             Bot.Drops.Add("Creature Shard");
         Core.Logger($"Gathering {quant} Void Aura's with Non-Mem/Non-SDKA Method");
 
-        Core.RegisterQuests(4432);
         while (!Bot.ShouldExit && !Core.CheckInventory("Void Aura", quant))
         {
+            Core.EnsureAccept(4432);
             Core.EquipClass(ClassType.Farm);
             Core.HuntMonster("timespace", "Astral Ephemerite", "Astral Ephemerite Essence", Essencequant, false, log: false);
             Core.EquipClass(ClassType.Solo);
@@ -229,8 +229,8 @@ public class CoreNSOD
 
             Bot.Wait.ForPickup("Void Aura");
             Core.Logger($"Void Auras: ({Bot.Inventory.GetQuantity("Void Aura")}/{quant})");
+            Core.EnsureCompleteMulti(4432);
         }
-        Core.CancelRegisteredQuests();
     }
 
     private void HuntMonsterBatch(int quant, bool isTemp, bool publicRoom, bool log, params (string map, string region, string direction, string monster, string essence)[] monsters)
