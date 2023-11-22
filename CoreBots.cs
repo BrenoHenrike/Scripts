@@ -1488,10 +1488,9 @@ public class CoreBots
 
         if (QuestData.Requirements.Any())
             AddDrop(QuestData.Requirements.Where(x => !x.Temp).Select(y => y.Name).ToArray());
-        AddDrop(QuestData.AcceptRequirements.Where(x => !x.Temp).Select(y => y.Name).ToArray());
 
-        if (QuestData.Rewards.Any())
-            AddDrop(QuestData.Rewards.Where(x => !x.Temp).Select(y => y.Name).ToArray());
+        // if (QuestData.Rewards.Any())
+        //     Bot.Drops.Add(QuestData.Rewards.Where(x => !x.Temp).Select(y => y.Name).ToArray());
 
         return Bot.Quests.EnsureAccept(questID);
     }
@@ -1519,8 +1518,8 @@ public class CoreBots
             if (quest.Requirements.Any())
                 AddDrop(quest.Requirements.Where(x => !x.Temp).Select(y => y.Name).ToArray());
 
-            if (quest.Rewards.Any())
-                AddDrop(quest.Rewards.Where(x => !x.Temp).Select(y => y.Name).ToArray());
+            // if (quest.Rewards.Any())
+            //     Bot.Drops.Add(quest.Rewards.Where(x => !x.Temp).Select(y => y.Name).ToArray());
 
             Bot.Quests.EnsureAccept(quest.ID);
         }
