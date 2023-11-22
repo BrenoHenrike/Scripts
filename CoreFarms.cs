@@ -1566,38 +1566,37 @@ public class CoreFarms
         }
 
         // Define a dictionary to store the items and their quantities for each elemental
-        Dictionary<string, Tuple<string, string, int, int>> elementalItems = new()
+        Dictionary<string, Tuple<string, int>> elementalItems = new()
         {
-            { "Water Elemental", Tuple.Create("Water Drop", "Water Core", 5, 1) },
-            { "Fire Elemental", Tuple.Create("Flame", "Fire Core", 5, 1) },
-            { "Wind Elemental", Tuple.Create("Breeze", "Air Core", 5, 1) },
-            { "Earth Elemental", Tuple.Create("Stone", "Earth Core", 5, 1) }
+            { "Water Elemental", Tuple.Create("Water Drop", 5) },
+            { "Fire Elemental", Tuple.Create("Flame", 5) },
+            { "Wind Elemental", Tuple.Create("Breeze", 5) },
+            { "Earth Elemental", Tuple.Create("Stone", 5) }
         };
 
+        // Core.RegisterQuests(3298, 3050);
+        //do not add `3050` as it breaks it... AE spaghettie code -_-
         while (!Bot.ShouldExit && FactionRank("Elemental Master") < rank)
         {
-            Core.EnsureAccept(3298, 3050);
+            Core.EnsureAccept(3298);
 
             foreach (var elementalEntry in elementalItems)
             {
                 string elementalName = elementalEntry.Key;
                 string firstItem = elementalEntry.Value.Item1;
-                string secondItem = elementalEntry.Value.Item2;
-                int dropQuantity = elementalEntry.Value.Item3;
-                int coreQuantity = elementalEntry.Value.Item4;
+                int dropQuantity = elementalEntry.Value.Item2;
 
-                while (!Bot.ShouldExit && !Core.CheckInventory(firstItem, dropQuantity))
-                    Core.HuntMonster("gilead", elementalName, firstItem, dropQuantity);
-                Core.HuntMonster("gilead", elementalName, secondItem, coreQuantity);
+                Core.HuntMonster("dragonplane", elementalName, firstItem, dropQuantity);
             }
 
-            Core.HuntMonster("gilead", "Mana Elemental", "Mana Core");
-            Core.EnsureComplete(new[] { 3298, 3050 });
+            Core.EnsureComplete(3298);
         }
-        // Core.CancelRegisteredQuests();
+
         ToggleBoost(BoostType.Reputation, false);
         Core.SavedState(false);
+        Core.CancelRegisteredQuests();
     }
+
 
     public void EmberseaREP(int rank = 10)
     {
