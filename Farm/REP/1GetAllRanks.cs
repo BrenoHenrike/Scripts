@@ -1,7 +1,7 @@
 /*
-name: 1GetAllRanks
-description: null
-tags: null
+name: Get All Ranks
+description: This script will get all reputations to rank 10.
+tags: all reps, reputation, rank,all ranks,farm,rep,reps
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
