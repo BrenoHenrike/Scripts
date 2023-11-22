@@ -132,8 +132,8 @@ public class BrightOak
         // Unlock the Guardian's Second Rune
         if (!Story.QuestProgression(4663))
         {
-            Core.EnsureAccept(4663);
             NaturePotion(2);
+            Core.EnsureAccept(4663);
             Core.HuntMonster("elfhame", "Wolfrider", "Wolfrider Maimed", 4);
             Core.EnsureComplete(4663);
         }
@@ -144,8 +144,8 @@ public class BrightOak
         // Unlock the Guardian's Third Rune
         if (!Story.QuestProgression(4665))
         {
-            Core.EnsureAccept(4665);
             NaturePotion(3);
+            Core.EnsureAccept(4665);
             Core.HuntMonster("elfhame", "Ratawampus", "Ratawampus Cleared", 2);
             Core.HuntMonster("elfhame", "Ruin Dweller", "Ruin Dweller Cleared", 3);
             Core.EnsureComplete(4665);
@@ -154,9 +154,9 @@ public class BrightOak
         // Unlock the Guardian's Fourth Rune
         if (!Story.QuestProgression(4666))
         {
-            Core.EnsureAccept(4666);
             NaturePotion(4);
-            Core.HuntMonster("elfhame", "Ruin Stalker", "Ruin Stalker Contained", 6);
+            Core.EnsureAccept(4666);
+            Core.KillMonster("elfhame", "r2", "Left", "Ruin Stalker", "Ruin Stalker Contained", 6);
             Core.EnsureComplete(4666);
         }
 
@@ -165,24 +165,6 @@ public class BrightOak
 
         // Defeat the Guardian Spirit
         Story.KillQuest(4668, "elfhame", "Guardian Spirit");
-
-        void NaturePotion(int quant)
-        {
-            if (Core.CheckInventory("Restoration of Nature Potion", quant))
-                return;
-
-            Core.AddDrop("Restoration of Nature Potion");
-
-            while (!Bot.ShouldExit && !Core.CheckInventory("Restoration of Nature Potion", quant))
-            {
-                Core.EnsureAccept(4660);
-                Core.BuyItem("sandsea", 245, "Water of Life");
-                Core.KillMonster("brightoak", "r2", "Left", "Bright Treeant", "Bright Ore", 3);
-                Core.KillMonster("brightoak", "r2", "Left", "Wolfwood", "Herbal Remedy", 4);
-                Core.EnsureComplete(4660);
-                Bot.Wait.ForPickup("Restoration of Nature Potion");
-            }
-        }
     }
 
     public void FlixSpiderwhisp()
@@ -421,6 +403,27 @@ public class BrightOak
             Core.EnsureAccept(4472);
             Core.HuntMonster("Brightoak", "Brightpool Guardian", "Disciplined Guardian", 7);
             Core.EnsureComplete(4472);
+        }
+    }
+
+    void NaturePotion(int quant)
+    {
+        if (Core.CheckInventory("Restoration of Nature Potion", quant))
+            return;
+
+        Core.AddDrop("Restoration of Nature Potion");
+
+        Core.Logger("Resetting so that `Nature potion` drops work ...properly?");
+        Core.Join("Whitemap");
+
+        while (!Bot.ShouldExit && !Core.CheckInventory("Restoration of Nature Potion", quant))
+        {
+            Core.EnsureAccept(4660);
+            Core.BuyItem("sandsea", 245, "Water of Life");
+            Core.KillMonster("brightoak", "r2", "Left", "Bright Treeant", "Bright Ore", 3);
+            Core.KillMonster("brightoak", "r2", "Left", "Wolfwood", "Herbal Remedy", 4);
+            Core.EnsureComplete(4660);
+            Bot.Wait.ForPickup("Restoration of Nature Potion");
         }
     }
 }
