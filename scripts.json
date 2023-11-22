@@ -16663,13 +16663,19 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/BrightoakREP.cs"
   },
   {
-    "name": "1GetAllRanks",
-    "description": "null",
+    "name": "Get All Ranks",
+    "description": "This script will get all reputations to rank 10.",
     "tags": [
-      "null"
+      "all reps",
+      "reputation",
+      "rank",
+      "all ranks",
+      "farm",
+      "rep",
+      "reps"
     ],
     "path": "Farm/REP/1GetAllRanks.cs",
-    "size": 1185,
+    "size": 1276,
     "fileName": "1GetAllRanks.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/1GetAllRanks.cs"
   },
