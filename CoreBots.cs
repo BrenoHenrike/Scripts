@@ -3346,8 +3346,11 @@ public class CoreBots
 
             case "icestormarena":
                 JumpWait();
-                tryJoin();
+                Bot.Map.Join(PrivateRooms ? $"{map}-" + PrivateRoomNumber : map);
+                Bot.Wait.ForMapLoad("icestormarena");
                 Bot.Send.ClientPacket("{\"t\":\"xt\",\"b\":{\"r\":-1,\"o\":{\"cmd\":\"levelUp\",\"intExpToLevel\":\"0\",\"intLevel\":100}}}", type: "json");
+                Sleep(ActionDelay);
+                Jump(cell);
                 break;
 
             #endregion
