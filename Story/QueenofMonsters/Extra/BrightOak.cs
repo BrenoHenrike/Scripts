@@ -177,8 +177,8 @@ public class BrightOak
             {
                 Core.EnsureAccept(4660);
                 Core.BuyItem("sandsea", 245, "Water of Life");
-                Core.HuntMonster("brightoak", "Bright Treeant", "Bright Ore", 3);
-                Core.KillMonster("brightoak", "r8", "Left", "*", "Herbal Remedy", 4);
+                Core.KillMonster("brightoak", "r2", "Left", "Bright Treeant", "Bright Ore", 3);
+                Core.KillMonster("brightoak", "r2", "Left", "Wolfwood", "Herbal Remedy", 4);
                 Core.EnsureComplete(4660);
                 Bot.Wait.ForPickup("Restoration of Nature Potion");
             }
