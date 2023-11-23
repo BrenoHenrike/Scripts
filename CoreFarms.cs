@@ -2151,20 +2151,16 @@ public class CoreFarms
         Core.AddDrop("Hollow Soul");
         Core.EquipClass(ClassType.Farm);
         Core.SavedState();
-        //rep boost type crashes atm
-        // ToggleBoost(BoostType.Reputation);
+        ToggleBoost(BoostType.Reputation);
         Core.Logger($"Farming rank {rank}");
 
-        // Core.RegisterQuests(7553, 7555); //Get the Seeds 7553, Flex it! 7555
         while (!Bot.ShouldExit && FactionRank("Hollowborn") < rank)
         {
             Core.EnsureAccept(7553, 7555);
             Core.KillMonster("shadowrealm", "r2", "Left", "Gargrowl", "Darkseed", 8, log: false);
             Core.KillMonster("shadowrealm", "r2", "Left", "Shadow Guardian", "Shadow Medallion", 5, log: false);
-            Core.EnsureComplete(7553); //Get the Seeds 7553
-            Core.EnsureComplete(7555); // Flex it! 7555
+            Core.EnsureComplete(new[] { 7553, 7555 }); // Get the Seeds 7553 && Flex it! 7555
         }
-        // Core.CancelRegisteredQuests();
         ToggleBoost(BoostType.Reputation, false);
         Core.SavedState(false);
     }

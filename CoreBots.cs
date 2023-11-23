@@ -1489,9 +1489,9 @@ public class CoreBots
         if (QuestData.Requirements.Any())
             AddDrop(QuestData.Requirements.Where(x => !x.Temp).Select(y => y.Name).ToArray());
 
-        // if (QuestData.Rewards.Any())
-        //     Bot.Drops.Add(QuestData.Rewards.Where(x => !x.Temp).Select(y => y.Name).ToArray());
 
+        Sleep(ActionDelay * 2);
+        // Bot.Send.Packet($"%xt%zm%acceptQuest%{Bot.Map.RoomID}%{questID}%");
         return Bot.Quests.EnsureAccept(questID);
     }
 
@@ -1518,9 +1518,8 @@ public class CoreBots
             if (quest.Requirements.Any())
                 AddDrop(quest.Requirements.Where(x => !x.Temp).Select(y => y.Name).ToArray());
 
-            // if (quest.Rewards.Any())
-            //     Bot.Drops.Add(quest.Rewards.Where(x => !x.Temp).Select(y => y.Name).ToArray());
-
+            Sleep(ActionDelay * 2);
+            // Bot.Send.Packet($"%xt%zm%acceptQuest%{Bot.Map.RoomID}%{quest.ID}%");
             Bot.Quests.EnsureAccept(quest.ID);
         }
     }
@@ -2454,6 +2453,7 @@ public class CoreBots
 
     public void Sleep(int ms)
     {
+        // Logger($"Sleeping {ms}");
         if (Bot.ShouldExit)
         {
             Bot.Stop(false);
