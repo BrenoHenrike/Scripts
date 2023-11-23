@@ -313,7 +313,7 @@ public class CoreHollowbornChaosEnvoy
         // Check if we should return early based on inventory conditions and 'completeOnce' flag
         bool shouldReturnEarly = (illusionsReward == WaveringIllusionsRewards.All && Core.CheckInventory(rewards))
             || illusionsReward == WaveringIllusionsRewards.None
-            || Core.CheckInventory((int)illusionsReward, toInv: false);
+            || (illusionsReward != WaveringIllusionsRewards.All && Core.CheckInventory((int)illusionsReward, toInv: false));
 
         if (shouldReturnEarly)
         {
@@ -388,7 +388,7 @@ public class CoreHollowbornChaosEnvoy
         // Check if we should return early based on inventory conditions and 'completeOnce' flag
         bool shouldReturnEarly = (disdainReward == ShadowsOfDisdainRewards.All && Core.CheckInventory(rewards))
             || disdainReward == ShadowsOfDisdainRewards.None
-            || Core.CheckInventory((int)disdainReward, toInv: false);
+            || (disdainReward != ShadowsOfDisdainRewards.All && Core.CheckInventory((int)disdainReward, toInv: false));
 
         if (shouldReturnEarly)
         {
@@ -462,7 +462,7 @@ public class CoreHollowbornChaosEnvoy
         // Check if we should return early based on inventory conditions and 'completeOnce' flag
         bool shouldReturnEarly = (mayhemReward == PersistingMayhemRewards.All && Core.CheckInventory(rewards))
             || mayhemReward == PersistingMayhemRewards.None
-            || Core.CheckInventory((int)mayhemReward, toInv: false);
+            || (mayhemReward != PersistingMayhemRewards.All && Core.CheckInventory((int)mayhemReward, toInv: false));
 
         if (shouldReturnEarly)
         {
