@@ -1568,8 +1568,8 @@ public class CoreFarms
         // Define a dictionary to store the secondary items for each elemental
         Dictionary<string, string> elementalItems = new()
         {
-            { "Water", "Flame" },
-            { "Fire", "Water Drop" },
+            { "Water", "Water Drop" },
+            { "Fire", "Flame" },
             { "Wind", "Breeze" },
             { "Earth", "Stone" }
         };
