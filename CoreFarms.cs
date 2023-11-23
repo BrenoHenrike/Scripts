@@ -1566,36 +1566,38 @@ public class CoreFarms
         }
 
         // Define a dictionary to store the items and their quantities for each elemental
-        Dictionary<string, Tuple<string, int>> elementalItems = new()
-        {
-            { "Water Elemental", Tuple.Create("Water Drop", 5) },
-            { "Fire Elemental", Tuple.Create("Flame", 5) },
-            { "Wind Elemental", Tuple.Create("Breeze", 5) },
-            { "Earth Elemental", Tuple.Create("Stone", 5) }
-        };
+        Dictionary<string, Tuple<string, string, int, int>> elementalItems = new()
+    {
+        { "Water Elemental", Tuple.Create("Water Drop", "Water Core", 5, 1) },
+        { "Fire Elemental", Tuple.Create("Flame", "Fire Core", 5, 1) },
+        { "Wind Elemental", Tuple.Create("Breeze", "Air Core", 5, 1) },
+        { "Earth Elemental", Tuple.Create("Stone", "Earth Core", 5, 1) }
+    };
 
-        // Core.RegisterQuests(3298, 3050);
-        //do not add `3050` as it breaks it... AE spaghettie code -_-
+        Core.RegisterQuests(3298, 3050);
         while (!Bot.ShouldExit && FactionRank("Elemental Master") < rank)
         {
-            Core.EnsureAccept(3298);
 
             foreach (var elementalEntry in elementalItems)
             {
                 string elementalName = elementalEntry.Key;
                 string firstItem = elementalEntry.Value.Item1;
-                int dropQuantity = elementalEntry.Value.Item2;
+                string secondItem = elementalEntry.Value.Item2;
+                int dropQuantity = elementalEntry.Value.Item3;
+                int coreQuantity = elementalEntry.Value.Item4;
 
-                Core.HuntMonster("dragonplane", elementalName, firstItem, dropQuantity);
+                while (!Bot.ShouldExit && !Core.CheckInventory(firstItem, dropQuantity))
+                    Core.HuntMonster("dragonplane", elementalName, firstItem, dropQuantity);
+
+                Core.HuntMonster("gilead", "Mana Elemental", "Mana Core");
             }
 
-            Core.EnsureComplete(3298);
+            Core.CancelRegisteredQuests();
+            ToggleBoost(BoostType.Reputation, false);
+            Core.SavedState(false);
         }
-
-        ToggleBoost(BoostType.Reputation, false);
-        Core.SavedState(false);
-        Core.CancelRegisteredQuests();
     }
+
 
 
     public void EmberseaREP(int rank = 10)
@@ -2154,14 +2156,16 @@ public class CoreFarms
         ToggleBoost(BoostType.Reputation);
         Core.Logger($"Farming rank {rank}");
 
+        // Get the Seeds 7553 && Flex it! 7555
+        Core.RegisterQuests(7553, 7555);
+        
         while (!Bot.ShouldExit && FactionRank("Hollowborn") < rank)
         {
-            Core.EnsureAccept(7553, 7555);
             Core.KillMonster("shadowrealm", "r2", "Left", "Gargrowl", "Darkseed", 8, log: false);
             Core.KillMonster("shadowrealm", "r2", "Left", "Shadow Guardian", "Shadow Medallion", 5, log: false);
-            Core.EnsureComplete(new[] { 7553, 7555 }); // Get the Seeds 7553 && Flex it! 7555
         }
         ToggleBoost(BoostType.Reputation, false);
+        Core.CancelRegisteredQuests();
         Core.SavedState(false);
     }
 
