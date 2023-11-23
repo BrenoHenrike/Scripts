@@ -1565,37 +1565,28 @@ public class CoreFarms
             Core.EnsureComplete(3052);
         }
 
-        // Define a dictionary to store the items and their quantities for each elemental
-        Dictionary<string, Tuple<string, string, int, int>> elementalItems = new()
-    {
-        { "Water Elemental", Tuple.Create("Water Drop", "Water Core", 5, 1) },
-        { "Fire Elemental", Tuple.Create("Flame", "Fire Core", 5, 1) },
-        { "Wind Elemental", Tuple.Create("Breeze", "Air Core", 5, 1) },
-        { "Earth Elemental", Tuple.Create("Stone", "Earth Core", 5, 1) }
-    };
+        // Define a dictionary to store the secondary items for each elemental
+        Dictionary<string, string> elementalItems = new()
+        {
+            { "Water", "Flame" },
+            { "Fire", "Water Drop" },
+            { "Wind", "Breeze" },
+            { "Earth", "Stone" }
+        };
 
         Core.RegisterQuests(3298, 3050);
         while (!Bot.ShouldExit && FactionRank("Elemental Master") < rank)
         {
-
-            foreach (var elementalEntry in elementalItems)
+            foreach (var element in elementalItems)
             {
-                string elementalName = elementalEntry.Key;
-                string firstItem = elementalEntry.Value.Item1;
-                string secondItem = elementalEntry.Value.Item2;
-                int dropQuantity = elementalEntry.Value.Item3;
-                int coreQuantity = elementalEntry.Value.Item4;
-
-                while (!Bot.ShouldExit && !Core.CheckInventory(firstItem, dropQuantity))
-                    Core.HuntMonster("dragonplane", elementalName, firstItem, dropQuantity);
-
-                Core.HuntMonster("gilead", "Mana Elemental", "Mana Core");
+                Core.HuntMonster("dragonplane", $"{element.Key} Elemental", $"{element.Key} Core", 1);
+                Core.HuntMonster("dragonplane", $"{element.Key} Elemental", element.Value, 6);
             }
-
-            Core.CancelRegisteredQuests();
-            ToggleBoost(BoostType.Reputation, false);
-            Core.SavedState(false);
+            Core.HuntMonster("gilead", "Mana Elemental", "Mana Core");
         }
+        Core.CancelRegisteredQuests();
+        ToggleBoost(BoostType.Reputation, false);
+        Core.SavedState(false);
     }
 
 
@@ -2158,7 +2149,7 @@ public class CoreFarms
 
         // Get the Seeds 7553 && Flex it! 7555
         Core.RegisterQuests(7553, 7555);
-        
+
         while (!Bot.ShouldExit && FactionRank("Hollowborn") < rank)
         {
             Core.KillMonster("shadowrealm", "r2", "Left", "Gargrowl", "Darkseed", 8, log: false);
