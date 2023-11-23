@@ -1579,8 +1579,8 @@ public class CoreFarms
         {
             foreach (var element in elementalItems)
             {
-                Core.HuntMonster("dragonplane", $"{element.Key} Elemental", $"{element.Key} Core", 1);
-                Core.HuntMonster("dragonplane", $"{element.Key} Elemental", element.Value, 6);
+                Core.HuntMonster("gilead", $"{element.Key} Elemental", $"{element.Key} Core", 1);
+                Core.HuntMonster("gilead", $"{element.Key} Elemental", element.Value, 6);
             }
             Core.HuntMonster("gilead", "Mana Elemental", "Mana Core");
         }
