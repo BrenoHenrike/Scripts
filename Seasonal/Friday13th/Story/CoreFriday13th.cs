@@ -18,22 +18,21 @@ public class CoreFriday13th
     {
         bool isMemberOrFriday13th = (new DateTime(DateTime.Now.Year, DateTime.Now.Month, 13).DayOfWeek == DayOfWeek.Friday && DateTime.Now.Day >= 5) || Core.IsMember;
 
-        if (Core.isSeasonalMapActive("blackmaze") || isMemberOrFriday13th)
+        if (isMemberOrFriday13th)
             return true;
 
-        if (!isMemberOrFriday13th)
+        else if (!isMemberOrFriday13th)
             Core.Logger($"You must be a Member or wait until a week before Friday the 13th to complete {caller}");
-
-        return isMemberOrFriday13th;
+        return false;
     }
 
     public void ScriptMain(IScriptInterface bot) => Core.RunCore();
 
     public void CompleteFriday13th()
     {
-        if (!Core.isSeasonalMapActive("blackmaze") && !Friday13thCheck())
+        if (!Friday13thCheck())
         {
-            Core.Logger(!Core.isSeasonalMapActive("blackmaze") ? "seasonal maps not aviable" : "Friday the 13th not active yet");
+            Core.Logger("Friday the 13th not active yet");
             return;
         }
 
@@ -57,7 +56,7 @@ public class CoreFriday13th
 
     public void Skullpunch()
     {
-        if (!Core.isSeasonalMapActive("blackmaze") && !Friday13thCheck())
+        if (!Friday13thCheck())
         {
             Core.Logger(!Core.isSeasonalMapActive("blackmaze") ? "seasonal maps not aviable" : "Friday the 13th not active yet");
             return;
@@ -140,7 +139,7 @@ public class CoreFriday13th
 
     public void Lowe()
     {
-        if (!Core.isSeasonalMapActive("blackmaze") && !Friday13thCheck())
+        if (!Friday13thCheck())
         {
             Core.Logger(!Core.isSeasonalMapActive("blackmaze") ? "seasonal maps not aviable" : "Friday the 13th not active yet");
             return;
@@ -202,7 +201,7 @@ public class CoreFriday13th
 
     public void Saloonfront()
     {
-        if (!Core.isSeasonalMapActive("blackmaze") && !Friday13thCheck())
+        if (!Friday13thCheck())
         {
             Core.Logger(!Core.isSeasonalMapActive("blackmaze") ? "seasonal maps not aviable" : "Friday the 13th not active yet");
             return;
@@ -267,7 +266,7 @@ public class CoreFriday13th
 
     public void Firehouse()
     {
-        if (!Core.isSeasonalMapActive("blackmaze") && !Friday13thCheck())
+        if (!Friday13thCheck())
         {
             Core.Logger(!Core.isSeasonalMapActive("blackmaze") ? "seasonal maps not aviable" : "Friday the 13th not active yet");
             return;
@@ -330,7 +329,7 @@ public class CoreFriday13th
 
     public void Sleezter()
     {
-        if (!Core.isSeasonalMapActive("blackmaze") && !Friday13thCheck())
+        if (!Friday13thCheck())
         {
             Core.Logger(!Core.isSeasonalMapActive("blackmaze") ? "seasonal maps not aviable" : "Friday the 13th not active yet");
             return;
@@ -386,7 +385,7 @@ public class CoreFriday13th
 
     public void Neverhub()
     {
-        if (!Core.isSeasonalMapActive("blackmaze") && !Friday13thCheck())
+        if (!Friday13thCheck())
         {
             Core.Logger(!Core.isSeasonalMapActive("blackmaze") ? "seasonal maps not aviable" : "Friday the 13th not active yet");
             return;
@@ -446,7 +445,7 @@ public class CoreFriday13th
 
     public void Battledoom()
     {
-        if (!Core.isSeasonalMapActive("blackmaze") && !Friday13thCheck())
+        if (!Friday13thCheck())
         {
             Core.Logger(!Core.isSeasonalMapActive("blackmaze") ? "seasonal maps not aviable" : "Friday the 13th not active yet");
             return;
@@ -518,7 +517,7 @@ public class CoreFriday13th
 
     public void Wormhole()
     {
-        if (!Core.isSeasonalMapActive("blackmaze") && !Friday13thCheck())
+        if (!Friday13thCheck())
         {
             Core.Logger(!Core.isSeasonalMapActive("blackmaze") ? "seasonal maps not aviable" : "Friday the 13th not active yet");
             return;
@@ -585,7 +584,7 @@ public class CoreFriday13th
 
     public void Crownsreachfxiii()
     {
-        if (!Core.isSeasonalMapActive("blackmaze") && !Friday13thCheck())
+        if (!Friday13thCheck())
         {
             Core.Logger(!Core.isSeasonalMapActive("blackmaze") ? "seasonal maps not aviable" : "Friday the 13th not active yet");
             return;
@@ -632,7 +631,7 @@ public class CoreFriday13th
 
     public void Gonnagetcha()
     {
-        if (!Core.isSeasonalMapActive("blackmaze") && !Friday13thCheck())
+        if (!Friday13thCheck())
         {
             Core.Logger(!Core.isSeasonalMapActive("blackmaze") ? "seasonal maps not aviable" : "Friday the 13th not active yet");
             return;
@@ -687,7 +686,7 @@ public class CoreFriday13th
 
     public void Greymoor()
     {
-        if (!Core.isSeasonalMapActive("blackmaze") && !Friday13thCheck())
+        if (!Friday13thCheck())
         {
             Core.Logger(!Core.isSeasonalMapActive("blackmaze") ? "seasonal maps not aviable" : "Friday the 13th not active yet");
             return;
@@ -743,7 +742,7 @@ public class CoreFriday13th
 
     public void Puzzlebox()
     {
-        if (!Core.isSeasonalMapActive("blackmaze") && !Friday13thCheck())
+        if (!Friday13thCheck())
         {
             Core.Logger(!Core.isSeasonalMapActive("blackmaze") ? "seasonal maps not aviable" : "Friday the 13th not active yet");
             return;
@@ -793,7 +792,7 @@ public class CoreFriday13th
 
     public void Splatterwar()
     {
-        if (!Core.isSeasonalMapActive("blackmaze") && !Friday13thCheck())
+        if (!Friday13thCheck())
         {
             Core.Logger(!Core.isSeasonalMapActive("blackmaze") ? "seasonal maps not aviable" : "Friday the 13th not active yet");
             return;
@@ -834,7 +833,7 @@ public class CoreFriday13th
 
     public void Deadfly()
     {
-        if (!Core.isSeasonalMapActive("blackmaze") && !Friday13thCheck())
+        if (!Friday13thCheck())
         {
             Core.Logger(!Core.isSeasonalMapActive("blackmaze") ? "seasonal maps not aviable" : "Friday the 13th not active yet");
             return;
@@ -908,7 +907,7 @@ public class CoreFriday13th
 
     public void Oddities()
     {
-        if (!Core.isSeasonalMapActive("blackmaze") && !Friday13thCheck())
+        if (!Friday13thCheck())
         {
             Core.Logger(!Core.isSeasonalMapActive("blackmaze") ? "seasonal maps not aviable" : "Friday the 13th not active yet");
             return;
@@ -984,7 +983,7 @@ public class CoreFriday13th
 
     public void BlackMaze()
     {
-        if (!Core.isSeasonalMapActive("blackmaze") && !Friday13thCheck())
+        if (!Friday13thCheck())
         {
             Core.Logger(!Core.isSeasonalMapActive("blackmaze") ? "seasonal maps not aviable" : "Friday the 13th not active yet");
             return;
