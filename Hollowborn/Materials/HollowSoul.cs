@@ -38,7 +38,7 @@ public class HollowSoul
 
         Core.FarmingLogger("Hollow Soul", HSQuant);
         Core.EquipClass(ClassType.Farm);
-
+        Core.AddDrop("Hollow Soul");
         // Core.RegisterQuests(7553, 7555);
         while (!Bot.ShouldExit && !Core.CheckInventory("Hollow Soul", HSQuant))
         {
