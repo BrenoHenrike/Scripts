@@ -6,6 +6,7 @@ tags: null
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Monsters;
 
 public class CoreIsleOfFotia
 {
@@ -146,11 +147,20 @@ public class CoreIsleOfFotia
         //The Raven’s Loss 3035
         Story.KillQuest(3035, "Judgement", "Raven");
 
-        //The Power of Flowers  3036
+        // The Power of Flowers 3036
         if (!Story.QuestProgression(3036))
         {
+            int mournerGenderResult = CheckMournerGender();
+            Monster MonsterName = Bot.Monsters.MapMonsters.Where(X => X.MapID == mournerGenderResult).First();
+
+            if (mournerGenderResult == -1)
+                Core.Logger("how tf did u manage this? your genderless >.>", stopBot: true);
+            else Core.Logger($"Setting Mourner to: [{MonsterName.Name}], MID: [{MonsterName.MapID}]");
+
             Core.EnsureAccept(3036);
-            Core.HuntMonster("judgement", Bot.Flash.GetGameObject<string>("world.myAvatar.objData.strGender") == "F" ? "Male Mourner" : "Female Mourner", "Delivered Asphodel Flower", 8);
+
+            Core.HuntMonsterMapID("judgement", MonsterName.MapID, "Delivered Asphodel Flower", 8);
+
             Core.EnsureComplete(3036);
         }
 
@@ -168,7 +178,9 @@ public class CoreIsleOfFotia
 
         //Challenged Allegiance to Dage 3042
         Story.KillQuest(3042, "Judgement", "Ultra Aeacus");
+
     }
+
 
     public void DageFortress()
     {
@@ -251,6 +263,39 @@ public class CoreIsleOfFotia
                 Bot.Wait.ForPickup("Center Map Piece");
             }
             Core.BuyItem("DageFortress", 1144, "Palace Map");
+        }
+    }
+
+    int CheckMournerGender()
+    {
+        Core.Join("judgement", "r3", "Left");
+        Core.Logger("Testing if AE swapped the gender on the quest again...");
+
+        // Calculate the quantity of the flower
+        int FlowerQuant = (Bot.Inventory.GetQuantity(18762) > 0) ? Bot.Inventory.GetQuantity(18762) + 1 :
+                          (Bot.Inventory.GetQuantity(18762) == 0) ? 1 :
+                          (Bot.Inventory.GetQuantity(18762) == 8) ? (Bot.Flash.GetGameObject<string>("world.myAvatar.objData.strGender") == "F" ? 4 : 2) :
+                          1;
+
+        if (Core.CheckInventory(18762, 8))
+            return Bot.Flash.GetGameObject<string>("world.myAvatar.objData.strGender") == "F" ? 4 : 2;
+        else
+        {
+            Core.EnsureAccept(3036);
+
+            // Kill the monster until the flower drop is obtained
+            while (!Bot.ShouldExit && Core.IsMonsterAlive(4, useMapID: true))
+                Bot.Kill.Monster("Female Mourner");
+
+            // If the drop is obtained, set the Mourner Gender and return the MonsterMapID
+            if (Core.CheckInventory(18762, FlowerQuant))
+            {
+                return 4;
+            }
+            else
+            {
+                return 2;
+            }
         }
     }
 }
