@@ -22,6 +22,7 @@ public class CoreHollowbornStory
     {
         Trygve();
         NeoFortress();
+        ShadowslayerD();
     }
 
     public void Trygve()
@@ -104,6 +105,21 @@ public class CoreHollowbornStory
 
         //Tales from the Past 9290
         Story.MapItemQuest(9290, "neofortress", 11808);
+    }
+
+    public void ShadowslayerD()
+    {
+        if (Core.isCompletedBefore(9489))
+            return;
+
+        Story.PreLoad(this);
+
+        // Remnant of Will 9487
+        Story.KillQuest(9487, "hbchallenge", "Sentient Hollow");
+        // Stake Your Life 9488
+        Story.KillQuest(9488, "hbchallenge", "Hollowborn Vampire");
+        // Hollow Howl 9489     
+        Story.KillQuest(9489, "hbchallenge", "Hollowborn Lycan");
     }
 
 
