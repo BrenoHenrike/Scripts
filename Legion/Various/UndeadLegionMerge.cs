@@ -1,7 +1,7 @@
 /*
-name: UndeadLegionMerge
-description: null
-tags: null
+name: Undead Legion Merge
+description: This bot will farm the items belonging to the selected mode for the Undead Legion Merge [238] in /underworld
+tags: undead, legion, merge, underworld, frostbite, overlord, zealith, reavers, master, guiltius, legend, crown, face, judge, assassin, darkside, titan, cloak, exalted, champion, horns, archer, otherworldly, deathstare, deathdealer, shield, gutripper, skull, goggles, deathmask, apocalypse, dark, flaming, ultimate, lich, king, original, paragon, castle, soul, cleaver, smiling, dage, infinite, caster, loyal, warrior, swordmaster, draconic, plate, horned, spiked, guard, rhongomyniad, yami, no, ronin, sheathed, katana, shuriken, shurikens, healer, mage, hatmask, rogue, , dragonblade, nulgath, monsterhunter, monsterhunters, revenant, seven, circles, beast, ancient, wraiths, winged, bone, crusher, crushers, warlord, great, twisted, yulgars, inn, house, parabellum, armaments, hammer, back, armet, hollowborn, wrap
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -16,8 +16,6 @@ tags: null
 //cs_include Scripts/Legion/LegionExcercise/LegionExercise4.cs
 //cs_include Scripts/Nation/CoreNation.cs
 //cs_include Scripts/Nation/Various/DragonBlade[mem].cs
-
-
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
@@ -37,9 +35,6 @@ public class UndeadLegionMerge
     public LegionExercise4 LegionExercise4 = new();
     public DragonBladeofNulgath DBoN = new DragonBladeofNulgath();
 
-
-
-
     public List<IOption> Generic = sAdv.MergeOptions;
     public string[] MultiOptions = { "Generic", "Select" };
     public string OptionsStorage = sAdv.OptionsStorage;
@@ -47,13 +42,12 @@ public class UndeadLegionMerge
     //              If true, it will not stop the script if the default case triggers and the user chose to only get mats
     private bool dontStopMissingIng = false;
 
-    public void ScriptMain(IScriptInterface bot)
+    public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Legion Token", "Frosted Falchion", "Judgement Scythe", "Judgement Hammer", "Cursed Scimitar", "Essence of the Undead Legend", "Shadow Shroud", "DragonBlade of Nulgath", "Fallen MonsterHunter", "Fallen MonsterHunter Helm", "Fallen MonsterHunter Cape", "Fallen MonsterHunter Sword", "Exalted Crown " });
+        Core.BankingBlackList.AddRange(new[] { "Legion Token", "Frosted Falchion", "Judgement Scythe", "Judgement Hammer", "Cursed Scimitar", "Essence of the Undead Legend", "Shadow Shroud", "DragonBlade of Nulgath", "Fallen MonsterHunter", "Fallen MonsterHunter Helm", "Fallen MonsterHunter Cape", "Fallen MonsterHunter Sword", "Exalted Crown", "Hollow Soul" });
         Core.SetOptions();
 
         BuyAllMerge();
-
         Core.SetOptions(false);
     }
 
@@ -127,6 +121,19 @@ public class UndeadLegionMerge
 
                 case "Exalted Crown":
                     LR.ExaltedCrown();
+                    break;
+
+                case "Hollow Soul":
+                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.EquipClass(ClassType.Farm);
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
+                    {
+                        Core.EnsureAccept(7553, 7555);
+                        Core.KillMonster("shadowrealm", "r2", "Left", "Gargrowl", "Darkseed", 8, log: false);
+                        Core.KillMonster("shadowrealm", "r2", "Left", "Shadow Guardian", "Shadow Medallion", 5, log: false);
+                        Core.EnsureComplete(7553);
+                        Core.EnsureComplete(7555);
+                    }
                     break;
 
             }
@@ -205,5 +212,37 @@ public class UndeadLegionMerge
         new Option<bool>("60880", "Legion MonsterHunter's Cape", "Mode: [select] only\nShould the bot buy \"Legion MonsterHunter's Cape\" ?", false),
         new Option<bool>("60881", "Legion MonsterHunter's Sword", "Mode: [select] only\nShould the bot buy \"Legion MonsterHunter's Sword\" ?", false),
         new Option<bool>("51507", "Legion Revenant Armor", "Mode: [select] only\nShould the bot buy \"Legion Revenant Armor\" ?", false),
+        new Option<bool>("68439", "Seven Circles Beast Warrior", "Mode: [select] only\nShould the bot buy \"Seven Circles Beast Warrior\" ?", false),
+        new Option<bool>("76442", "Ancient Underworld Wraith's Hood", "Mode: [select] only\nShould the bot buy \"Ancient Underworld Wraith's Hood\" ?", false),
+        new Option<bool>("76446", "Ancient Underworld Winged Cape", "Mode: [select] only\nShould the bot buy \"Ancient Underworld Winged Cape\" ?", false),
+        new Option<bool>("76449", "Legion Bone Crusher", "Mode: [select] only\nShould the bot buy \"Legion Bone Crusher\" ?", false),
+        new Option<bool>("76450", "Legion Bone Crushers", "Mode: [select] only\nShould the bot buy \"Legion Bone Crushers\" ?", false),
+        new Option<bool>("76452", "Legion Bone Crusher and Shield", "Mode: [select] only\nShould the bot buy \"Legion Bone Crusher and Shield\" ?", false),
+        new Option<bool>("76584", "Underworld Warlord", "Mode: [select] only\nShould the bot buy \"Underworld Warlord\" ?", false),
+        new Option<bool>("76585", "Underworld Warlord Great Helm", "Mode: [select] only\nShould the bot buy \"Underworld Warlord Great Helm\" ?", false),
+        new Option<bool>("76586", "Underworld Warlord Twisted Helm", "Mode: [select] only\nShould the bot buy \"Underworld Warlord Twisted Helm\" ?", false),
+        new Option<bool>("76587", "Underworld Warlord Helm", "Mode: [select] only\nShould the bot buy \"Underworld Warlord Helm\" ?", false),
+        new Option<bool>("76588", "Underworld Warlord Cape", "Mode: [select] only\nShould the bot buy \"Underworld Warlord Cape\" ?", false),
+        new Option<bool>("76952", "Legion Yulgar's Inn House", "Mode: [select] only\nShould the bot buy \"Legion Yulgar's Inn House\" ?", false),
+        new Option<bool>("76769", "Underworld Parabellum Gauntlets", "Mode: [select] only\nShould the bot buy \"Underworld Parabellum Gauntlets\" ?", false),
+        new Option<bool>("76768", "Underworld Parabellum Gauntlet", "Mode: [select] only\nShould the bot buy \"Underworld Parabellum Gauntlet\" ?", false),
+        new Option<bool>("76767", "Underworld Parabellum Armaments", "Mode: [select] only\nShould the bot buy \"Underworld Parabellum Armaments\" ?", false),
+        new Option<bool>("76766", "Underworld Parabellum Hammer", "Mode: [select] only\nShould the bot buy \"Underworld Parabellum Hammer\" ?", false),
+        new Option<bool>("76765", "Underworld Parabellum Blades", "Mode: [select] only\nShould the bot buy \"Underworld Parabellum Blades\" ?", false),
+        new Option<bool>("76764", "Underworld Parabellum Blade", "Mode: [select] only\nShould the bot buy \"Underworld Parabellum Blade\" ?", false),
+        new Option<bool>("76763", "Underworld Parabellum Sword and Shield", "Mode: [select] only\nShould the bot buy \"Underworld Parabellum Sword and Shield\" ?", false),
+        new Option<bool>("76762", "Underworld Parabellum Back Sword", "Mode: [select] only\nShould the bot buy \"Underworld Parabellum Back Sword\" ?", false),
+        new Option<bool>("76761", "Underworld Parabellum Back Shield", "Mode: [select] only\nShould the bot buy \"Underworld Parabellum Back Shield\" ?", false),
+        new Option<bool>("76760", "Underworld Parabellum Back Hammer", "Mode: [select] only\nShould the bot buy \"Underworld Parabellum Back Hammer\" ?", false),
+        new Option<bool>("76759", "Underworld Parabellum Guard", "Mode: [select] only\nShould the bot buy \"Underworld Parabellum Guard\" ?", false),
+        new Option<bool>("76758", "Underworld Parabellum Helm", "Mode: [select] only\nShould the bot buy \"Underworld Parabellum Helm\" ?", false),
+        new Option<bool>("76757", "Underworld Parabellum Armet", "Mode: [select] only\nShould the bot buy \"Underworld Parabellum Armet\" ?", false),
+        new Option<bool>("76756", "Underworld Parabellum", "Mode: [select] only\nShould the bot buy \"Underworld Parabellum\" ?", false),
+        new Option<bool>("76953", "Dage the Lich King Guard", "Mode: [select] only\nShould the bot buy \"Dage the Lich King Guard\" ?", false),
+        new Option<bool>("81975", "HollowBorn Paragon", "Mode: [select] only\nShould the bot buy \"HollowBorn Paragon\" ?", false),
+        new Option<bool>("81976", "HollowBorn Paragon Helm", "Mode: [select] only\nShould the bot buy \"HollowBorn Paragon Helm\" ?", false),
+        new Option<bool>("81977", "Hollowborn Paragon Helmet", "Mode: [select] only\nShould the bot buy \"Hollowborn Paragon Helmet\" ?", false),
+        new Option<bool>("81978", "HollowBorn Paragon Cape", "Mode: [select] only\nShould the bot buy \"HollowBorn Paragon Cape\" ?", false),
+        new Option<bool>("81979", "HollowBorn Paragon Wrap", "Mode: [select] only\nShould the bot buy \"HollowBorn Paragon Wrap\" ?", false),
     };
 }
