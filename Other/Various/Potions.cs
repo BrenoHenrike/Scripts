@@ -20,8 +20,9 @@ public class PotionBuyer
     public bool DontPreconfigure = true;
     public List<IOption> Options = new List<IOption>()
     {
+        new Option<bool>("BuyReagents", "Buy Reagents?", "Use gold to buy the reagents for the potions [ this takes **ALOT** of gold.].", false),
+        new Option<int>("potionQuant", "Potion Quantity", "Desired stack amount [max - 300]", 300),
         CoreBots.Instance.SkipOptions,
-        new Option<int>("potionQuant", "Potion Quantity", "Desired stack amount [max - 300]", 1),
 
         //Tonic
         new Option<bool>("farmFate", "Fate", "Should the bot farm Fate Tonics?", false),
@@ -53,7 +54,7 @@ public class PotionBuyer
         new Option<bool>("buyEndu", "Endurance Draught", "Should the bot buy Endurance Draught?", false)
 
     };
-    
+
     public void ScriptMain(IScriptInterface bot)
     {
         Core.BankingBlackList.Add("Dragon Runestone");
@@ -67,6 +68,8 @@ public class PotionBuyer
     {
         Farm.AlchemyREP();
         Farm.GoodREP();
+
+        Core.Logger(Bot.Config!.Get<bool>("BuyReagents") ? "Method Choose: Buy Reagents" : "Farm Reagents");
 
         potions ??= new[] { "Fate Tonic", "Sage Tonic", "Potent Battle Elixir",
             "Potent Malevolence Elixir","Potent Honor Potion", "Unstable Divine Elixir",
@@ -137,10 +140,12 @@ public class PotionBuyer
                     break;
 
                 case "Felicitous Philtre": // No Farm method
+                    Core.Logger($"item: [{potion}] doesn't currently have a farm method, forced to buy.");
                     Adv.BuyItem("alchemyacademy", 2036, "Felicitous Philtre", potionQuant);
                     break;
 
                 case "Endurance Draught": // No Farm method
+                    Core.Logger($"item: [{potion}] doesn't currently have a farm method, forced to buy.");
                     Adv.BuyItem("alchemyacademy", 2036, "Endurance Draught", potionQuant);
                     break;
 
@@ -161,7 +166,7 @@ public class PotionBuyer
 
                 case "Unstable Divine Elixir":
                     potionQuant = 99;
-                    Core.Logger($"{potionQuant} : {potionQuant} is the max for this pot. isntead of 300.");
+                    Core.Logger($"Max quant for [{potion}] is [{potionQuant}] -Adjusting");
                     currTrait = CoreFarms.AlchemyTraits.hOu;
                     BulkGrind("Dragon Scale", "Lemurphant Tears");
                     break;
@@ -206,15 +211,16 @@ public class PotionBuyer
                     currTrait = CoreFarms.AlchemyTraits.Wis;
                     BulkGrind("Moglin Tears", "Rhison Blood");
                     break;
-                default:
-                    Core.Logger("The bot was not taught how to make " + potion);
-                    break;
 
                 //For other scripts:
 
                 case "Bright Tonic":
                     currTrait = CoreFarms.AlchemyTraits.Int;
                     BulkGrind("Arashtite Ore", "Dried Slime");
+                    break;
+
+                default:
+                    Core.Logger("The bot was not taught how to make " + potion);
                     break;
             }
 
@@ -226,6 +232,7 @@ public class PotionBuyer
                     // {
                     GetIngredient(reagent1);
                     GetIngredient(reagent2);
+
                     // if(Bot.Shops.LoadedCache.Find(X=> X.ID == 395))
                     Adv.BuyItem("alchemyacademy", 395, 62749, 30, 1, 8777);
                     Core.BuyItem("alchemyacademy", 395, "Dragon Runestone", 30, 8844);
@@ -259,15 +266,21 @@ public class PotionBuyer
                         }
                         break;
                     case "Lemurphant Tears":
-                        Core.HuntMonster("ravinetemple", "Lemurphant", ingredient, ingreQuant, isTemp: false);
+                        if (!Bot.Config!.Get<bool>("BuyReagents"))
+                            Core.HuntMonster("ravinetemple", "Lemurphant", ingredient, ingreQuant, isTemp: false);
+                        else Adv.BuyItem("alchemyacademy", 397, ingredient, potionQuant);
                         break;
 
                     case "Dried Slime":
-                        Core.HuntMonster("orecavern", "Crashroom", ingredient, ingreQuant, isTemp: false);
+                        if (!Bot.Config!.Get<bool>("BuyReagents"))
+                            Core.HuntMonster("orecavern", "Crashroom", ingredient, ingreQuant, isTemp: false);
+                        else Adv.BuyItem("alchemyacademy", 397, ingredient, potionQuant);
                         break;
 
                     case "Arashtite Ore":
-                        Core.HuntMonster("orecavern", "Deathmole", ingredient, ingreQuant, isTemp: false);
+                        if (!Bot.Config!.Get<bool>("BuyReagents"))
+                            Core.HuntMonster("orecavern", "Deathmole", ingredient, ingreQuant, isTemp: false);
+                        else Adv.BuyItem("alchemyacademy", 397, ingredient, potionQuant);
                         break;
 
                     case "Chaos Entity":
@@ -279,45 +292,66 @@ public class PotionBuyer
                         break;
 
                     case "Doomatter":
-                        // Adv.BuyItem("tercessuinotlim", 1951, ingredient, ingreQuant);
-                        if (Bot.Player.IsMember)
-                            Core.HuntMonster("Creepy", "Fear Feeder", ingredient, ingreQuant, isTemp: false);
-                        else Core.HuntMonster("maul", "Creature Creation", ingredient, ingreQuant, isTemp: false);
+                        if (!Bot.Config!.Get<bool>("BuyReagents"))
+                        {
+                            if (Bot.Player.IsMember)
+                                Core.HuntMonster("Creepy", "Fear Feeder", ingredient, ingreQuant, isTemp: false);
+                            else Core.HuntMonster("maul", "Creature Creation", ingredient, ingreQuant, isTemp: false);
+                        }
+                        else Adv.BuyItem("tercessuinotlim", 1951, ingredient, ingreQuant);
                         break;
 
                     case "Chaoroot":
-                        Core.HuntMonster("orecavern", "Naga Baas", ingredient, ingreQuant, isTemp: false);
-                        // Adv.BuyItem("tercessuinotlim", 1951, ingredient, ingreQuant);
+                        if (!Bot.Config!.Get<bool>("BuyReagents"))
+                            Core.HuntMonster("orecavern", "Naga Baas", ingredient, ingreQuant, isTemp: false);
+                        else Adv.BuyItem("tercessuinotlim", 1951, ingredient, ingreQuant);
                         break;
 
                     case "Nimblestem":
-                        Core.HuntMonster("mudluk", "Swamp Frogdrake", "Nimblestem", ingreQuant, isTemp: false);
+                        if (!Bot.Config!.Get<bool>("BuyReagents"))
+                            Core.HuntMonster("mudluk", "Swamp Frogdrake", "Nimblestem", ingreQuant, isTemp: false);
+                        else Adv.BuyItem("alchemyacademy", 397, ingredient, potionQuant);
                         break;
 
                     case "Trollola Nectar":
-                        Core.HuntMonster("bloodtusk", "Trollola Plant", ingredient, ingreQuant, isTemp: false);
+                        if (!Bot.Config!.Get<bool>("BuyReagents"))
+                            Core.HuntMonster("bloodtusk", "Trollola Plant", ingredient, ingreQuant, isTemp: false);
+                        else Adv.BuyItem("alchemyacademy", 397, ingredient, potionQuant);
                         break;
 
                     case "Searbush":
-                        Core.HuntMonster("mafic", "Living Fire", ingredient, ingreQuant, isTemp: false);
+                        if (!Bot.Config!.Get<bool>("BuyReagents"))
+                            Core.HuntMonster("mafic", "Living Fire", ingredient, ingreQuant, isTemp: false);
+                        else Adv.BuyItem("alchemyacademy", 397, ingredient, potionQuant);
                         break;
 
                     case "Dragon Scale":
                         Bot.Drops.Add(11475);
-                        while (!Bot.ShouldExit && !Core.CheckInventory(11475, ingreQuant))
-                            Core.KillMonster("lair", "Hole", "Center", "*", isTemp: false, log: false);
+                        if (!Bot.Config!.Get<bool>("BuyReagents"))
+                        {
+                            while (!Bot.ShouldExit && !Core.CheckInventory(11475, ingreQuant))
+                                Core.KillMonster("lair", "Hole", "Center", "*", isTemp: false, log: false);
+                        }
+                        else if (!Core.CheckInventory(11475, ingreQuant))
+                            Adv.BuyItem("alchemyacademy", 397, 11475, potionQuant, shopItemID: 1241);
                         break;
 
                     case "Roc Tongue":
-                        Core.HuntMonster("roc", "Rock Roc", ingredient, ingreQuant, isTemp: false, log: false);
+                        if (!Bot.Config!.Get<bool>("BuyReagents"))
+                            Core.HuntMonster("roc", "Rock Roc", ingredient, ingreQuant, isTemp: false, log: false);
+                        else Adv.BuyItem("alchemyacademy", 397, ingredient, potionQuant);
                         break;
 
                     case "Necrot":
-                        Core.HuntMonster("deathsrealm", "Skeleton Fighter", ingredient, ingreQuant, isTemp: false, log: false);
+                        if (!Bot.Config!.Get<bool>("BuyReagents"))
+                            Core.HuntMonster("deathsrealm", "Skeleton Fighter", ingredient, ingreQuant, isTemp: false, log: false);
+                        else Adv.BuyItem("tercessuinotlim", 1951, ingredient, ingreQuant);
                         break;
 
                     case "Rhison Blood":
-                        Core.HuntMonster("bloodtusk", "Rhison", ingredient, ingreQuant, isTemp: false, log: false);
+                        if (!Bot.Config!.Get<bool>("BuyReagents"))
+                            Core.HuntMonster("bloodtusk", "Rhison", ingredient, ingreQuant, isTemp: false, log: false);
+                        else Adv.BuyItem("alchemyacademy", 397, ingredient, potionQuant);
                         break;
 
                     default:
