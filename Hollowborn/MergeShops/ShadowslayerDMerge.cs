@@ -40,7 +40,7 @@ public class ShadowslayerDMerge
     public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         CHBS.ShadowslayerD();
-     
+
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("hbchallenge", 2369, findIngredients, buyOnlyThis, buyMode: buyMode);
 
@@ -65,39 +65,51 @@ public class ShadowslayerDMerge
                 #endregion
 
                 case "Hollow Essence":
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
                     Core.RegisterQuests(9487);
-                    Core.HuntMonster("hbchallenge", "Sentient Hollow", req.Name, quant, req.Temp);
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
+                        Core.HuntMonster("hbchallenge", "Sentient Hollow", "Hollow Essence", 9);
+                    Bot.Wait.ForPickup(req.Name);
                     Core.CancelRegisteredQuests();
                     break;
 
                 case "Hollowborn Vampire Fang":
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
                     Core.RegisterQuests(9488);
-                    Core.HuntMonster("hbchallenge", "Hollowborn Vampire", req.Name, quant, req.Temp);
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
+                        Core.HuntMonster("hbchallenge", "Hollowborn Vampire", "Shattered Fang");
+                    Bot.Wait.ForPickup(req.Name);
                     Core.CancelRegisteredQuests();
                     break;
 
                 case "Hollowborn Lycan Claw":
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
                     Core.RegisterQuests(9489);
-                    Core.HuntMonster("hbchallenge", "Hollowborn Lycan", req.Name, quant, req.Temp);
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
+                        Core.HuntMonster("hbchallenge", "Hollowborn Lycan", "Chipped Claw");
+                    Bot.Wait.ForPickup(req.Name);
                     Core.CancelRegisteredQuests();
                     break;
 
                 case "Hollowborn Lycan Morph":
                     Core.EquipClass(ClassType.Solo);
                     Core.HuntMonster("hbchallenge", "Hollowborn Lycan", req.Name, quant, req.Temp);
+                    Bot.Wait.ForPickup(req.Name);
                     break;
 
                 case "Hollowborn Vampire Lord Mask":
                     Core.EquipClass(ClassType.Solo);
                     Core.HuntMonster("hbchallenge", "Sentient Hollow", req.Name, quant, req.Temp);
+                    Bot.Wait.ForPickup(req.Name);
                     break;
 
                 case "Noble Hollowborn Vampire Wings":
                     Core.EquipClass(ClassType.Solo);
                     Core.HuntMonster("hbchallenge", "Hollowborn Vampire", req.Name, quant, req.Temp);
+                    Bot.Wait.ForPickup(req.Name);
                     break;
 
             }
