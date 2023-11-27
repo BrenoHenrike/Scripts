@@ -17107,13 +17107,15 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/MergeShops/ShadowslayerDMerge.cs"
   },
   {
-    "name": "TradingandStuff(Dual)",
-    "description": "null",
+    "name": "Hollow Soul",
+    "description": "Farms \"Hollow Soul\"",
     "tags": [
-      "null"
+      "hollow soul",
+      "shadowrealm",
+      "hollowborn"
     ],
     "path": "Hollowborn/Materials/HollowSoul.cs",
-    "size": 1562,
+    "size": 1599,
     "fileName": "HollowSoul.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/Materials/HollowSoul.cs"
   },
