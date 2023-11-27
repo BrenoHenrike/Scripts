@@ -1,7 +1,7 @@
 /*
-name: TradingandStuff(Dual)
-description: null
-tags: null
+name: Hollow Soul
+description: Farms "Hollow Soul"
+tags: hollow soul, shadowrealm, hollowborn
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
