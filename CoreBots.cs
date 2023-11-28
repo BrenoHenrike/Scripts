@@ -1821,23 +1821,33 @@ public class CoreBots
     {
         if (item != null && (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
             return;
+
         if (!isTemp && item != null)
             AddDrop(item);
 
         Join(map, cell, pad, publicRoom: publicRoom);
         Jump(cell, pad);
 
+        if (Bot.Player.CurrentClass?.Name == "ArchMage")
+            Bot.Options.AttackWithoutTarget = true;
+
         if (item == null)
         {
             if (log)
                 Logger($"Killing {monster}");
+
             ToggleAggro(true);
+
             Bot.Kill.Monster(monster);
+
             ToggleAggro(false);
             Rest();
         }
         else _KillForItem(monster, item, quant, isTemp, log: log);
+        Bot.Options.AttackWithoutTarget = false;
+        // Bot.Skills.Stop();
     }
+
 
     /// <summary>
     /// Kills a monster using it's ID
@@ -1867,6 +1877,9 @@ public class CoreBots
             return;
         }
 
+        if (Bot.Player.CurrentClass?.Name == "ArchMage")
+            Bot.Options.AttackWithoutTarget = true;
+
         if (item == null)
         {
             if (log)
@@ -1877,6 +1890,7 @@ public class CoreBots
             Rest();
         }
         else _KillForItem(monster.Name, item, quant, isTemp, log: log);
+        Bot.Options.AttackWithoutTarget = false;
     }
 
     /// <summary>
@@ -1894,10 +1908,14 @@ public class CoreBots
 
         Join(map, publicRoom: publicRoom);
 
+        if (Bot.Player.CurrentClass?.Name == "ArchMage")
+            Bot.Options.AttackWithoutTarget = true;
+
         if (item == null)
         {
             if (log)
                 Logger($"Hunting {monster}");
+
             Bot.Hunt.Monster(monster);
             Rest();
         }
@@ -1908,16 +1926,17 @@ public class CoreBots
             if (log)
                 Logger($"Hunting {monster} for {item}, ({dynamicQuant(item, isTemp)}/{quant}) [Temp = {isTemp}]");
 
+
             while (!Bot.ShouldExit && (isTemp ? !Bot.TempInv.Contains(item, quant) : !CheckInventory(item, quant)))
             {
                 if (!Bot.Combat.StopAttacking)
-                {
                     Bot.Hunt.Monster(monster);
-                }
+
                 Sleep(ActionDelay);
                 Rest();
             }
         }
+        Bot.Options.AttackWithoutTarget = false;
     }
 
     /// <summary>
@@ -1946,11 +1965,15 @@ public class CoreBots
         }
         Jump(monster.Cell, "Left");
 
+        if (Bot.Player.CurrentClass?.Name == "ArchMage")
+            Bot.Options.AttackWithoutTarget = true;
+
         if (item == null)
         {
             if (log)
                 Logger($"Killing {monster.Name}");
-            Bot.Kill.Monster(monster);
+
+            else Bot.Kill.Monster(monster);
             Rest();
         }
         else
@@ -1984,6 +2007,9 @@ public class CoreBots
         // DebugLogger(this);
         Join("escherion", "Boss", "Left", publicRoom: publicRoom);
 
+        if (Bot.Player.CurrentClass?.Name == "ArchMage")
+            Bot.Options.AttackWithoutTarget = true;
+
         if (item != null)
             FarmingLogger(item, quant);
 
@@ -2002,9 +2028,11 @@ public class CoreBots
                 }
                 // DebugLogger(this);
                 while (!Bot.ShouldExit && IsMonsterAlive("Staff of Inversion"))
+                {
                     Bot.Kill.Monster("Staff of Inversion");
-                Bot.Combat.Attack("Escherion");
-                Sleep(1000);
+                    Bot.Combat.Attack("Escherion");
+                    Sleep(1000);
+                }
             }
         }
         else
@@ -2031,6 +2059,7 @@ public class CoreBots
             // DebugLogger(this);
             Bot.Wait.ForPickup(item);
         }
+        Bot.Options.AttackWithoutTarget = false;
     }
 
     /// <summary>
@@ -2045,6 +2074,9 @@ public class CoreBots
             return;
 
         Join("stalagbite", "r2", "Left");
+
+        if (Bot.Player.CurrentClass?.Name == "ArchMage")
+            Bot.Options.AttackWithoutTarget = true;
 
         if (item == null)
         {
@@ -2062,6 +2094,7 @@ public class CoreBots
             while (!Bot.ShouldExit && !CheckInventory(item, quant))
                 _killVath();
         }
+        Bot.Options.AttackWithoutTarget = false;
 
         void _killVath()
         {
@@ -2086,6 +2119,10 @@ public class CoreBots
 
         Join("kitsune", "Boss", "Left");
         Bot.Events.ExtensionPacketReceived += KitsuneListener;
+
+
+        if (Bot.Player.CurrentClass?.Name == "ArchMage")
+            Bot.Options.AttackWithoutTarget = true;
 
         if (item == null)
         {
@@ -2149,6 +2186,9 @@ public class CoreBots
 
         EquipClass(ClassType.Solo);
         Join("trigoras");
+
+        if (Bot.Player.CurrentClass?.Name == "ArchMage")
+            Bot.Options.AttackWithoutTarget = true;
 
         while (!Bot.ShouldExit && !CheckInventory(item, quant))
         {
@@ -2283,6 +2323,10 @@ public class CoreBots
         Join("fiendshard");
         Bot.Wait.ForMapLoad("fiendshard");
         Monster? monster = Bot.Monsters.CurrentMonsters?.Find(m => m.MapID == 15);
+
+        if (Bot.Player.CurrentClass?.Name == "ArchMage")
+            Bot.Options.AttackWithoutTarget = true;
+
         while (!Bot.ShouldExit && !CheckInventory(item, quant))
         {
             while (!Bot.ShouldExit && Bot.Player.Cell != "r9")
@@ -2320,6 +2364,7 @@ public class CoreBots
         Bot.Options.AggroAllMonsters = originalAggroAll;
         Bot.Options.AggroMonsters = originalAggroMonsters;
         Logger("Original Aggro settings restored: AggroAllMonsters and AggroMonsters set back to their original values.");
+        Bot.Options.AttackWithoutTarget = false;
     }
 
 
@@ -2328,6 +2373,7 @@ public class CoreBots
         if (log)
             FarmingLogger(item, quantity);
         ToggleAggro(true);
+
         while (!Bot.ShouldExit && !CheckInventory(item, quantity))
         {
             if (!Bot.Combat.StopAttacking)
@@ -3383,6 +3429,7 @@ public class CoreBots
             case "baconcat":
             case "tlapd":
             case "superslayin":
+            case "infernalarena":
                 // Special
                 JumpWait();
                 map = strippedMap + "-999999";
@@ -3785,43 +3832,52 @@ public class CoreBots
     {
         JumpWait();
 
-        string[] classesToCheck = new[] { "TimeKeeper", "Yami no Ronin", "Void Highlord", "Void HighLord (IoDA)" };
+        string[] classesToCheck = new[] { "TimeKeeper", "Void Highlord", "Void HighLord (IoDA)", "Yami no Ronin", "ArchPaladin" };
 
         foreach (string Class in classesToCheck)
         {
-            if (!CheckInventory(Class))
-            {
-                Logger($"{Class} Not Found, skipping");
-                continue;
-            }
-
             switch (Class)
             {
                 case "TimeKeeper":
                     if (SoloClass != Class)
-                        return;
-                    else Bot.Skills.StartAdvanced(Class, true, ClassUseMode.Base);
+                        continue;
+                    else
+                        Bot.Skills.StartAdvanced(Class, true, ClassUseMode.Base);
+                    break;
+
+                case "Void Highlord":
+                    Bot.Skills.StartAdvanced(Class, true, ClassUseMode.Def);
+                    break;
+
+                case "Void HighLord (IoDA)":
+                    Bot.Skills.StartAdvanced(Class, true, ClassUseMode.Def);
                     break;
 
                 case "Yami no Ronin":
                     Bot.Skills.StartAdvanced(Class, true, ClassUseMode.Solo);
                     break;
 
-                case "Void Highlord":
-                case "Void HighLord (IoDA)":
-                    Bot.Skills.StartAdvanced(Class, true, ClassUseMode.Def);
+                case "ArchPaladin":
+                    Bot.Skills.StartAdvanced(Class, true, ClassUseMode.Base);
                     break;
 
                 default:
-                    Logger($"Using {SoloClass}");
+                    Logger($"Equipping {ClassType.Solo}");
                     Unbank(SoloClass);
                     EquipClass(ClassType.Solo);
                     break;
             }
-            Bot.Wait.ForItemEquip(CheckInventory(Class) ? Class : SoloClass);
-            Logger($"Using {Bot.Player.CurrentClass!.Name}");
-            break;
+
+            if (!CheckInventory(Class))
+                Logger($"{Class} Not Found, skipping");
+            else
+            {
+                Bot.Wait.ForItemEquip(CheckInventory(Class) ? Class : SoloClass);
+                Logger($"Using {Bot.Player.CurrentClass?.Name}");
+                break;
+            }
         }
+
 
         if (!string.IsNullOrEmpty(additionalClass))
         {
