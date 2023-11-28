@@ -179,7 +179,7 @@ public class CoreQOM
             Core.EnsureAccept(5385);
             Core.HuntMonster("infernalspire", "Infernal Knight", "Infernal Knight Slain", 8);
             Core.HuntMonster("infernalspire", "Grievous Fiend", "Grievous Fiend Slain", 8);
-            Core.EnsureAccept(5385);
+            Core.EnsureComplete(5385);
         }
 
         //Find the Weapon
