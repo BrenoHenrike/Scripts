@@ -34,7 +34,7 @@ public class DoomPirate
             Core.EquipClass(ClassType.Farm);
             Core.EnsureAccept(9353);
             Core.HuntMonsterMapID("doompirate", 1, "Silver Doubloon", 6);
-            Core.EnsureAccept(9353);
+            Core.EnsureComplete(9353);
         }
 
         // Chasing Crimson October (9354)
@@ -43,7 +43,7 @@ public class DoomPirate
             Core.EquipClass(ClassType.Solo);
             Core.EnsureAccept(9354);
             Core.HuntMonsterMapID("doompirate", 3, "Dented Naval Medal");
-            Core.EnsureAccept(9354);
+            Core.EnsureComplete(9354);
         }
     }
 }
