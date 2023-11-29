@@ -64,7 +64,10 @@ public class ArmyPennyForYourThoughts
             Core.RegisterQuests(2089);
         else Core.Logger("Player is not member, farm will continue\n" +
         "but you wont get the spirit orbs");
-        
+
+        if (Bot.Player.CurrentClass?.Name == "ArchMage")
+            Bot.Options.AttackWithoutTarget = true;
+
         while (!Bot.ShouldExit && !Core.CheckInventory("Dark Spirit Orb", 10500))
             Bot.Combat.Attack("*");
         Army.waitForParty("whitemap", "Dark Spirit Orb");

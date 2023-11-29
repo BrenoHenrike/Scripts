@@ -106,6 +106,9 @@ public class ArmyPoly
                 Army.DivideOnCells(cell);
                 Army.AggroMonMIDs(MonsterMapIDs);
 
+                if (Bot.Player.CurrentClass?.Name == "ArchMage")
+                    Bot.Options.AttackWithoutTarget = true;
+                    
                 // Farm the specified item
                 while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
                     Bot.Combat.Attack("*");

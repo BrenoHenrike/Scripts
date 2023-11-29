@@ -157,6 +157,9 @@ public class AggroMonReader
         Core.RegisterQuests(questIDs.ToArray());
         Core.Logger($"AggroMonBot \"{file[0]}\" initiated", caller);
 
+        if (Bot.Player.CurrentClass!.Name == "ArchMage")
+            Bot.Options.AttackWithoutTarget = true;
+            
         while (!Bot.ShouldExit)
             Bot.Combat.Attack("*");
         Core.CancelRegisteredQuests();

@@ -303,6 +303,7 @@ public class CoreBots
     /// </summary>
     private bool StopBot(bool crashed)
     {
+        Bot.Options.AttackWithoutTarget = false;
         CancelRegisteredQuests();
         AbandonQuest(Bot.Quests.Active.Select(x => x.ID).ToArray());
         StopBotAsync();
@@ -2351,6 +2352,10 @@ public class CoreBots
                 }
                 else
                 {
+
+                    if (Bot.Player.CurrentClass!.Name == "ArchMage")
+                        Bot.Options.AttackWithoutTarget = true;
+
                     if (IsMonsterAlive(15, useMapID: true))
                         Bot.Combat.Attack(15);
                     else Bot.Combat.Attack("*");
@@ -2793,14 +2798,14 @@ public class CoreBots
             {
                 if (!CheckInventory(item))
                 {
-                    // if (!Bot.ShouldExit)
-                    //     Logger($"Equipping Failed: \"{item}\" not found in Inventory or Bank");
+                    if (!Bot.ShouldExit)
+                        Logger($"Equipping Failed: \"{item}\" not found in Inventory or Bank");
                     continue;
                 }
                 if (!Bot.Inventory.TryGetItem(item, out var _item))
                 {
-                    // if (!Bot.ShouldExit)
-                    // Logger($"Equipping Failed: Could not parse \"{item}\" from your inventory");
+                    if (!Bot.ShouldExit)
+                        Logger($"Equipping Failed: Could not parse \"{item}\" from your inventory");
                     continue;
                 }
                 _Equip(_item);
@@ -2823,15 +2828,15 @@ public class CoreBots
             if (!Bot.Inventory.IsEquipped(item))
             {
                 if (!CheckInventory(item))
-                    // {
-                    //     Logger($"Equipping Failed: \"{item}\" not found in Inventory or Bank");
+                {
+                    Logger($"Equipping Failed: \"{item}\" not found in Inventory or Bank");
                     continue;
-                // }
+                }
                 if (!Bot.Inventory.TryGetItem(item, out var _item))
-                    // {
-                    //     Logger($"Equipping Failed: Could not parse \"{item}\" from your inventory");
+                {
+                    Logger($"Equipping Failed: Could not parse \"{item}\" from your inventory");
                     continue;
-                // }
+                }
                 _Equip(_item);
             }
         }
@@ -3046,6 +3051,7 @@ public class CoreBots
         if (!Bot.Player.InCombat)
             return;
 
+        Bot.Options.AttackWithoutTarget = false;
         List<string> blackListedCells = Bot.Monsters.MapMonsters.Select(monster => monster.Cell).ToList();
         if (!blackListedCells.Contains(Bot.Player.Cell))
             return;

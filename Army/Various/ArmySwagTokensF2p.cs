@@ -53,7 +53,7 @@ public class ArmySwagTokensF2p
         Core.FarmingLogger($"Super-Fan Swag Token A", quant);
         Core.EquipClass(ClassType.Farm);
         //Adv.BestGear(GenericGearBoost.dmgAll);
-        Adv.SmartEnhance(Bot.Player.CurrentClass.Name);
+        Adv.SmartEnhance(Bot.Player.CurrentClass?.Name);
         Core.RegisterQuests(1304, 1307);
         while (!Bot.ShouldExit && !Core.CheckInventory("Super-Fan Swag Token A", quant))
         {
@@ -63,6 +63,10 @@ public class ArmySwagTokensF2p
                 Army.AggroMonStart("terrarium");
                 Army.DivideOnCells("r3", "Enter");
                 Army.AggroMonIDs(701, 703);
+
+                if (Bot.Player.CurrentClass?.Name == "ArchMage")
+                    Bot.Options.AttackWithoutTarget = true;
+
                 while (!Bot.ShouldExit && !Core.CheckInventory("Super-Fan Swag Token D", 500))
                     Bot.Combat.Attack("*");
                 Army.AggroMonStop();

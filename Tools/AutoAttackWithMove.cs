@@ -42,6 +42,8 @@ public class AAWithMove
                 break;
         }
 
+        if (Bot.Player.CurrentClass?.Name == "ArchMage")
+            Bot.Options.AttackWithoutTarget = true;
 
         while (!Bot.ShouldExit)
             Bot.Combat.Attack("*");

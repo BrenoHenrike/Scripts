@@ -82,6 +82,9 @@ public class MultiQuestAggromonTemplate  //<-- replace
         Core.EnsureAccept(questID);
         Armyshit(map, MonsterMapID);
 
+        if (Bot.Player.CurrentClass?.Name == "ArchMage")
+            Bot.Options.AttackWithoutTarget = true;
+
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
             Bot.Combat.Attack("*");
 

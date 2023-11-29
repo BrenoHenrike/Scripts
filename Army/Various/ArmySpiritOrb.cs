@@ -59,6 +59,10 @@ public class ArmySpiritOrb
 
         Core.RegisterQuests(2082, 2083);
         Army.SmartAggroMonStart("battleunderb", "Skeleton Warrior", "Skeleton Fighter", "Undead Champion");
+
+        if (Bot.Player.CurrentClass?.Name == "ArchMage")
+            Bot.Options.AttackWithoutTarget = true;
+
         while (!Bot.ShouldExit && !Core.CheckInventory("Spirit Orb", quant))
             Bot.Combat.Attack("*");
         Army.AggroMonStop(true);

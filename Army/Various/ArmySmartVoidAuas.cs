@@ -146,6 +146,9 @@ public class ArmySmartVoidAuras
 
         Army.SmartAggroMonStart(map, monsters);
 
+        if (Bot.Player.CurrentClass?.Name == "ArchMage")
+            Bot.Options.AttackWithoutTarget = true;
+
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
             Bot.Combat.Attack("*");
 

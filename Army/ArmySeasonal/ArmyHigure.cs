@@ -128,6 +128,10 @@ public class FarmHigure
                 Army.AggroMonCells("Boss2");
                 Army.AggroMonStart("tercessuinotlim");
                 Army.DivideOnCells("Boss2");
+
+                if (Bot.Player.CurrentClass?.Name == "ArchMage")
+                    Bot.Options.AttackWithoutTarget = true;
+
                 while (!Bot.ShouldExit && !Core.CheckInventory("Darkon's Receipt", 66))
                     Bot.Combat.Attack("*");
                 Army.AggroMonStop(true);
@@ -139,6 +143,10 @@ public class FarmHigure
                 Army.AggroMonCells("r6", "r7", "r8");
                 Army.AggroMonStart("astravia");
                 Army.DivideOnCells("r6", "r7", "r8");
+
+                if (Bot.Player.CurrentClass?.Name == "ArchMage")
+                    Bot.Options.AttackWithoutTarget = true;
+
                 while (!Bot.ShouldExit && !Core.CheckInventory("La's Gratitude", 66))
                     Bot.Combat.Attack("*");
                 Army.AggroMonStop(true);
@@ -150,6 +158,10 @@ public class FarmHigure
                 Army.AggroMonCells("r11", "r6", "r3", "r4");
                 Army.AggroMonStart("astraviacastle");
                 Army.DivideOnCells("r11", "r6", "r3", "r4");
+
+                if (Bot.Player.CurrentClass?.Name == "ArchMage")
+                    Bot.Options.AttackWithoutTarget = true;
+
                 while (!Bot.ShouldExit && !Core.CheckInventory("Astravian Medal", 66))
                     Bot.Combat.Attack("*");
                 Army.AggroMonStop(true);
@@ -161,6 +173,10 @@ public class FarmHigure
                 Army.AggroMonCells("r11", "r3", "r2");
                 Army.AggroMonStart("astraviajudge");
                 Army.DivideOnCells("r11", "r3", "r2");
+
+                if (Bot.Player.CurrentClass?.Name == "ArchMage")
+                    Bot.Options.AttackWithoutTarget = true;
+
                 while (!Bot.ShouldExit && !Core.CheckInventory("A Melody", 66))
                     Bot.Combat.Attack("*");
                 Army.AggroMonStop(true);
@@ -172,6 +188,10 @@ public class FarmHigure
                 Army.AggroMonCells("r4", "r7", "r8", "r6");
                 Army.AggroMonStart("astraviapast");
                 Army.DivideOnCells("r4", "r7", "r8", "r6");
+
+                if (Bot.Player.CurrentClass?.Name == "ArchMage")
+                    Bot.Options.AttackWithoutTarget = true;
+
                 while (!Bot.ShouldExit && !Core.CheckInventory("Suki's Prestige", 66))
                     Bot.Combat.Attack("*");
                 Army.AggroMonStop(true);
@@ -183,6 +203,10 @@ public class FarmHigure
                 Army.AggroMonCells("r10a", "r6", "r7");
                 Army.AggroMonStart("firstobservatory");
                 Army.DivideOnCells("r10a", "r6", "r7");
+
+                if (Bot.Player.CurrentClass?.Name == "ArchMage")
+                    Bot.Options.AttackWithoutTarget = true;
+
                 while (!Bot.ShouldExit && !Core.CheckInventory("Ancient Remnant", 66))
                 {
                     if (Bot.Map.PlayerCount < 3)
@@ -212,6 +236,10 @@ public class FarmHigure
                 Army.AggroMonCells("r11", "r9", "r6");
                 Army.AggroMonStart("genesisgarden");
                 Army.DivideOnCells("r11", "r9", "r6");
+                
+                if (Bot.Player.CurrentClass?.Name == "ArchMage")
+                    Bot.Options.AttackWithoutTarget = true;
+
                 while (!Bot.ShouldExit && !Core.CheckInventory("Mourning Flower", 66))
                     Bot.Combat.Attack("*");
                 Army.AggroMonStop(true);
@@ -222,6 +250,10 @@ public class FarmHigure
                 Army.AggroMonCells("r9");
                 Army.AggroMonStart("theworld");
                 Army.DivideOnCells("r9");
+                
+                if (Bot.Player.CurrentClass?.Name == "ArchMage")
+                    Bot.Options.AttackWithoutTarget = true;
+                    
                 while (!Bot.ShouldExit && !Core.CheckInventory("Unfinished Musical Score", 66))
                     Bot.Combat.Attack("*");
                 Army.AggroMonStop(true);
@@ -248,7 +280,7 @@ public class FarmHigure
 
 
 
-//commented this out but kept incase previos breaks this does "ok" jsut broken butlering.
+    //commented this out but kept incase previos breaks this does "ok" jsut broken butlering.
     // void Higure()
     // {
     //     Core.PrivateRooms = true;

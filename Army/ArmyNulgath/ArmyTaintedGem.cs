@@ -82,6 +82,9 @@ public class ArmyTaintedGem
         Army.AggroMonStart("boxes");
         Army.DivideOnCells("Fort2", "Closet", "Fort1", "Boss", "Boss", "Boss");
 
+        if (Bot.Player.CurrentClass?.Name == "ArchMage")
+            Bot.Options.AttackWithoutTarget = true;
+
         while (!Bot.ShouldExit && (!Core.CheckInventory("Cubes", 500)))
             Bot.Combat.Attack("*");
         Army.AggroMonStop(true);
@@ -97,6 +100,9 @@ public class ArmyTaintedGem
         Army.AggroMonCells("War");
         Army.AggroMonStart("mountfrost");
         Core.Jump("War", "Left");
+
+        if (Bot.Player.CurrentClass?.Name == "ArchMage")
+            Bot.Options.AttackWithoutTarget = true;
 
         while (!Bot.ShouldExit && (!Core.CheckInventory("Ice Cubes", 6)))
             Bot.Combat.Attack("*");

@@ -62,6 +62,9 @@ public class ArmyApprovalFavour
         Army.AggroMonStart("evilwarnul");
         Army.DivideOnCells("r2", "r3", "r4", "r5", "r6");
 
+        if (Bot.Player.CurrentClass?.Name == "ArchMage")
+            Bot.Options.AttackWithoutTarget = true;
+            
         while (!Bot.ShouldExit)
             Bot.Combat.Attack("*");
         Army.AggroMonStop(true);

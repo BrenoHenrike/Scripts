@@ -85,6 +85,7 @@ public class CoreArmyLite
     /// </summary>
     public void AggroMonStop(bool clear = false)
     {
+        Bot.Options.AttackWithoutTarget = false;
         aggroCTS?.Cancel();
         if (clear)
             AggroMonClear();
@@ -134,7 +135,7 @@ public class CoreArmyLite
     public string AggroMonPacket(params int[] MonsterMapIDs)
         => $"%xt%zm%aggroMon%{Bot.Map.RoomID}%{String.Join('%', MonsterMapIDs)}%";
 
-    public void SmartAggroMonStart(string map, params string?[] monsters)
+    public void SmartAggroMonStart(string? map, params string?[] monsters)
     {
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = getRoomNr();
@@ -175,6 +176,10 @@ public class CoreArmyLite
         else Core.AddDrop(drops.ToArray());
 
         SmartAggroMonStart(map, monNames.ToArray());
+
+        if (Bot.Player.CurrentClass!.Name == "ArchMage")
+            Bot.Options.AttackWithoutTarget = true;
+
         while (!Bot.ShouldExit)
             Bot.Combat.Attack("*");
         AggroMonStop(true);

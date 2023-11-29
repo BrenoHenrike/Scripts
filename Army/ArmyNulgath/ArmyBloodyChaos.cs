@@ -119,6 +119,10 @@ public class ArmyBloodyChaos
                 break;
 
             default:
+
+                if (Bot.Player.CurrentClass?.Name == "ArchMage")
+                    Bot.Options.AttackWithoutTarget = true;
+
                 while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
                     Bot.Combat.Attack("*");
                 break;

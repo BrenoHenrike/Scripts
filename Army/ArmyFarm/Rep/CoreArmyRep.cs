@@ -168,6 +168,9 @@ public class CoreArmyRep
         Army.AggroMonStart(AggroMonStart);
         Army.DivideOnCells(DivideOnCells);
 
+        if (Bot.Player.CurrentClass?.Name == "ArchMage")
+            Bot.Options.AttackWithoutTarget = true;
+            
         while (!Bot.ShouldExit && FactionRank(repname) < 10)
             Bot.Combat.Attack("*");
 

@@ -66,6 +66,10 @@ public class ArmyEmblemofDage
 
         Core.RegisterQuests(4742);
         Army.SmartAggroMonStart("shadowblast", "Carnage", "Shadowrise Guard");
+        
+        if (Bot.Player.CurrentClass?.Name == "ArchMage")
+            Bot.Options.AttackWithoutTarget = true;
+            
         while (!Bot.ShouldExit && !Core.CheckInventory("Emblem of Dage", quant))
             Bot.Combat.Attack("*");
         Core.CancelRegisteredQuests();

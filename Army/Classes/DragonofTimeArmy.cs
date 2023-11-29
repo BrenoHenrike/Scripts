@@ -631,6 +631,9 @@ public class DoTArmy
                     if (Core.CheckInventory(Class))
                         Core.Equip(Class);
 
+                if (Bot.Player.CurrentClass?.Name == "ArchMage")
+                    Bot.Options.AttackWithoutTarget = true;
+
                 while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
                     Bot.Combat.Attack("*");
                 break;
@@ -641,6 +644,9 @@ public class DoTArmy
                 Core.KillTrigoras(item, quant, 1, isTemp);
                 break;
             }
+
+                if (Bot.Player.CurrentClass?.Name == "ArchMage")
+                    Bot.Options.AttackWithoutTarget = true;
 
             else if (monsters != new[] { "Tigoras" } || monsters != new[] { "Hydra Head 90" })
                 Bot.Combat.Attack("*");
@@ -674,6 +680,9 @@ public class DoTArmy
 
         Army.SmartAggroMonStart(map, monster!.ToString());
 
+                if (Bot.Player.CurrentClass?.Name == "ArchMage")
+                    Bot.Options.AttackWithoutTarget = true;
+                    
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
             Bot.Combat.Attack("*");
 

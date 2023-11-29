@@ -72,14 +72,14 @@ public class CustomAggroMon
 
     public void MakeAggroMon()
     {
-        string map = Bot.Config.Get<string>("map");
+        string? map = Bot.Config!.Get<string>("map");
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
         Core.Join(map);
 
         var _monData = Bot.Monsters.MapMonsters;
         List<string> _monDataNames = _monData.Select(m => m.Name).ToList();
-        string monsters = Bot.Config.Get<string>("monsters");
+        string? monsters = Bot.Config.Get<string>("monsters");
         if (String.IsNullOrEmpty(monsters) || String.IsNullOrWhiteSpace(monsters))
             monsters = getMonsters();
         string[] monsterList = monsters.Split(',');
@@ -130,7 +130,7 @@ public class CustomAggroMon
         GenerateFile();
 
 
-        if (drops == null || drops.Count() == 0 || drops.All(x => String.IsNullOrEmpty(x)))
+        if (drops == null || drops.Count == 0 || drops.All(x => String.IsNullOrEmpty(x)))
             Bot.Drops.Stop();
         else Core.AddDrop(drops.ToArray());
 
@@ -142,6 +142,10 @@ public class CustomAggroMon
             Core.RegisterQuests(questIDs.ToArray());
 
         Army.SmartAggroMonStart(map, monNames.ToArray());
+
+        if (Bot.Player.CurrentClass!.Name == "ArchMage")
+            Bot.Options.AttackWithoutTarget = true;
+
         while (!Bot.ShouldExit)
             Bot.Combat.Attack("*");
         Army.AggroMonStop(true);
@@ -216,7 +220,7 @@ public class CustomAggroMon
                 template[dropsIndex] = $"{spaces}private List<string> drops = new() {{ \"{String.Join("\", \"", drops)}\" }};";
             }
             int mapIndex = FetchIndex("private string map = \"\";");
-            template[mapIndex] = $"{spaces}private string map = \"{map.ToLower().Trim()}\";";
+            template[mapIndex] = $"{spaces}private string map = \"{map?.ToLower().Trim()}\";";
             int classTypeIndex = FetchIndex("private ClassType classtype = ClassType.None;");
             template[classTypeIndex] = $"{spaces}private ClassType classtype = ClassType.{Bot.Config.Get<ClassType>("classtype")};";
 

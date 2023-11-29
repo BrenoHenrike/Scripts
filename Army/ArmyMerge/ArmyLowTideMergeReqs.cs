@@ -63,6 +63,10 @@ public class ArmyLowTideMergeReqs
         Army.DivideOnCells("r4", "r5", "r6");
 
         Core.RegisterQuests(8846);
+        
+        if (Bot.Player.CurrentClass?.Name == "ArchMage")
+            Bot.Options.AttackWithoutTarget = true;
+            
         while (!Bot.ShouldExit)
             Bot.Combat.Attack("*");
 

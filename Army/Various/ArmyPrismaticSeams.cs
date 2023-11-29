@@ -63,8 +63,11 @@ public class ArmyPrimaticSeams
         Army.AggroMonMIDs(1, 2, 15, 3, 4, 14, 8, 9, 10, 11, 12, 13);
         Army.AggroMonStart("streamwar");
         Army.DivideOnCells("r2", "r3", "r3a");
-
         Core.RegisterQuests(8814, 8815);
+
+        if (Bot.Player.CurrentClass?.Name == "ArchMage")
+            Bot.Options.AttackWithoutTarget = true;
+
         while (!Bot.ShouldExit && !Core.CheckInventory("Prismatic Seams", 2000))
             Bot.Combat.Attack("*");
 

@@ -61,6 +61,9 @@ public class ArmyMirrorRealmToken
             Army.SmartAggroMonStart("mirrorportal", "Chaos Harpy");
         }
 
+        if (Bot.Player.CurrentClass?.Name == "ArchMage")
+            Bot.Options.AttackWithoutTarget = true;
+
         while (!Bot.ShouldExit && (!Core.CheckInventory("Mirror Realm Token", 300)))
             Bot.Combat.Attack("*");
         Army.AggroMonStop(true);
