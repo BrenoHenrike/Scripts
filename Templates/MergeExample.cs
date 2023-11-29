@@ -29,7 +29,7 @@ public class MergeExample
     public string OptionsStorage = sAdv.OptionsStorage;
     // [Can Change] This should only be changed by the author.
     //              If true, it will not stop the script if the default case triggers and the user chose to only get mats
-    private bool dontStopMissingIng = false;
+    private readonly bool dontStopMissingIng = false;
 
     public void ScriptMain(IScriptInterface bot)
     {

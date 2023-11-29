@@ -30,5 +30,5 @@ public class BadgeTemplate
         Core.Logger($"Doing xxx story for {badge} badge");
     }
 
-    private string badge = "BadgeName";
+    private readonly string badge = "BadgeName";
 }
