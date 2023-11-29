@@ -7171,13 +7171,13 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HarvestDay/04BanquetStory.cs"
   },
   {
-    "name": "null",
+    "name": "PineappleSlayerSet",
     "description": "null",
     "tags": [
       "null"
     ],
     "path": "Seasonal/HarvestDay/PineAppleSlayerSet.cs",
-    "size": 3176,
+    "size": 3270,
     "fileName": "PineAppleSlayerSet.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HarvestDay/PineAppleSlayerSet.cs"
   },
