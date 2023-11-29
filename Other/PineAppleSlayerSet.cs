@@ -73,7 +73,9 @@ public class APineappleSlayer
 
         if (!Story.QuestProgression(9485))
         {
-            if (!Core.CheckInventory("Boar's Feet recipe"))
+            Core.EnsureAccept(9485);
+         
+            if (!Core.CheckInventory("Boar's Feet in Salted-Butter Sauce"))
             {
                 Core.AddDrop("Boar's Feet recipe");
                 Core.EnsureAccept(1183);
@@ -82,11 +84,13 @@ public class APineappleSlayer
                 Core.HuntMonster("bloodtusk", "Horc Boar Scout", "Boar's Foot", 12);
                 Core.EnsureComplete(1183);
                 Bot.Wait.ForPickup("Boar's Feet recipe");
+                Core.BuyItem("bloodtusk", 304, "Boar's Feet in Salted-Butter Sauce");
+                Bot.Wait.ForPickup("Boar's Feet in Salted-Butter Sauce");
             }
 
-            Story.BuyQuest(9485, "bloodtusk", 304, "Boar's Feet in Salted-Butter Sauce");
-            Story.KillQuest(9485, "grams", "Wereboar");
-            Story.KillQuest(9485, "trygve", "Rune Boar");
+            Core.HuntMonster("grams", "Wereboar", "Wereboar Captured");
+            Core.HuntMonster("trygve", "Rune Boar", "Rune Boar Captured", 10);
+            Core.EnsureComplete(9485);
         }
 
         Story.KillQuest(9486, "freakitiki", "Spineapple");
