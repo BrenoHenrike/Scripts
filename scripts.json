@@ -2404,7 +2404,7 @@
       "null"
     ],
     "path": "Templates/BadgeTemplate.cs",
-    "size": 664,
+    "size": 673,
     "fileName": "BadgeTemplate.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Templates/BadgeTemplate.cs"
   },
@@ -2425,10 +2425,10 @@
     "tags": [
       "null"
     ],
-    "path": "Templates/TokenStoryTemplate.cs",
-    "size": 3207,
-    "fileName": "TokenStoryTemplate.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Templates/TokenStoryTemplate.cs"
+    "path": "Templates/EmptyTemplate[Basics].cs",
+    "size": 527,
+    "fileName": "EmptyTemplate[Basics].cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Templates/EmptyTemplate[Basics].cs"
   },
   {
     "name": "null",
@@ -2436,10 +2436,53 @@
     "tags": [
       "null"
     ],
-    "path": "Templates/CustomAggroMonTemplate.cs",
-    "size": 1283,
-    "fileName": "CustomAggroMonTemplate.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Templates/CustomAggroMonTemplate.cs"
+    "path": "Templates/TokenStoryTemplate[Legacy].cs",
+    "size": 3207,
+    "fileName": "TokenStoryTemplate[Legacy].cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Templates/TokenStoryTemplate[Legacy].cs"
+  },
+  {
+    "name": "null",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Templates/MergeExample.cs",
+    "size": 4681,
+    "fileName": "MergeExample.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Templates/MergeExample.cs"
+  },
+  {
+    "name": "Iten Farm Name",
+    "description": "farms \"itemname\", until you have the desired amount",
+    "tags": [
+      "itemname",
+      "tag",
+      "tag",
+      "tag",
+      "tag",
+      "tag",
+      "tag",
+      "tag",
+      "tag"
+    ],
+    "path": "Templates/SimpleItemFarming[with]instructions.cs",
+    "size": 2677,
+    "fileName": "SimpleItemFarming[with]instructions.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Templates/SimpleItemFarming[with]instructions.cs"
+  },
+  {
+    "name": "questgivername Quest Rewards",
+    "description": "farms quest rewards from `quest name here` in /mapname",
+    "tags": [
+      "mapname",
+      "questgivername",
+      "quest rewards"
+    ],
+    "path": "Templates/QuestReward[Random]Template.cs",
+    "size": 1891,
+    "fileName": "QuestReward[Random]Template.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Templates/QuestReward[Random]Template.cs"
   },
   {
     "name": "null",
@@ -2448,20 +2491,22 @@
       "null"
     ],
     "path": "Templates/StoryTemplate.cs",
-    "size": 883,
+    "size": 892,
     "fileName": "StoryTemplate.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Templates/StoryTemplate.cs"
   },
   {
-    "name": "null",
-    "description": "null",
+    "name": "questgivername Quest Rewards",
+    "description": "farms quest rewards from `quest name here` in /mapname",
     "tags": [
-      "null"
+      "mapname",
+      "questgivername",
+      "quest rewards"
     ],
-    "path": "Templates/QuestRewardTemplate.cs",
-    "size": 6413,
-    "fileName": "QuestRewardTemplate.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Templates/QuestRewardTemplate.cs"
+    "path": "Templates/QuestReward[Choose]Template.cs",
+    "size": 2247,
+    "fileName": "QuestReward[Choose]Template.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Templates/QuestReward[Choose]Template.cs"
   },
   {
     "name": "null",
@@ -2469,32 +2514,10 @@
     "tags": [
       "null"
     ],
-    "path": "Templates/ArmyRepTemplate.cs",
-    "size": 1807,
-    "fileName": "ArmyRepTemplate.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Templates/ArmyRepTemplate.cs"
-  },
-  {
-    "name": "null",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Templates/MergeTemplate.cs",
-    "size": 3063,
-    "fileName": "MergeTemplate.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Templates/MergeTemplate.cs"
-  },
-  {
-    "name": "null",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Templates/DefaultTemplate.cs",
-    "size": 527,
-    "fileName": "DefaultTemplate.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Templates/DefaultTemplate.cs"
+    "path": "Templates/HowToCreateandUseOptions.cs",
+    "size": 3611,
+    "fileName": "HowToCreateandUseOptions.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Templates/HowToCreateandUseOptions.cs"
   },
   {
     "name": "Blood Guardian Set",
@@ -11710,87 +11733,6 @@
     "size": 730,
     "fileName": "02AshrayVillage.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/02AshrayVillage.cs"
-  },
-  {
-    "name": "questgivername Quest Rewards",
-    "description": "farms quest rewards from `quest name here` in /mapname",
-    "tags": [
-      "mapname",
-      "questgivername",
-      "quest rewards"
-    ],
-    "path": "Templates/Examples/QuestRewardSelectTemplate.cs",
-    "size": 2247,
-    "fileName": "QuestRewardSelectTemplate.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Templates/Examples/QuestRewardSelectTemplate.cs"
-  },
-  {
-    "name": "null",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Templates/Examples/MergeExample.cs",
-    "size": 4672,
-    "fileName": "MergeExample.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Templates/Examples/MergeExample.cs"
-  },
-  {
-    "name": "questgivername Quest Rewards",
-    "description": "farms quest rewards from `quest name here` in /mapname",
-    "tags": [
-      "mapname",
-      "questgivername",
-      "quest rewards"
-    ],
-    "path": "Templates/Examples/QuestRewardRandomTemplate.cs",
-    "size": 1891,
-    "fileName": "QuestRewardRandomTemplate.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Templates/Examples/QuestRewardRandomTemplate.cs"
-  },
-  {
-    "name": "Iten Farm Name",
-    "description": "farms \"itemname\", until you have the desired amount",
-    "tags": [
-      "itemname",
-      "tag",
-      "tag",
-      "tag",
-      "tag",
-      "tag",
-      "tag",
-      "tag",
-      "tag"
-    ],
-    "path": "Templates/Examples/SimpeItemFarm.cs",
-    "size": 1935,
-    "fileName": "SimpeItemFarm.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Templates/Examples/SimpeItemFarm.cs"
-  },
-  {
-    "name": "Blaze Beard Story",
-    "description": "This will finish the Blaze Beard Story Quest.",
-    "tags": [
-      "story",
-      "quest",
-      "blaze-beard",
-      "pirate"
-    ],
-    "path": "Templates/Examples/LegacyTemplate.cs",
-    "size": 2153,
-    "fileName": "LegacyTemplate.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Templates/Examples/LegacyTemplate.cs"
-  },
-  {
-    "name": "null",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Templates/Examples/OptionsExample.cs",
-    "size": 3611,
-    "fileName": "OptionsExample.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Templates/Examples/OptionsExample.cs"
   },
   {
     "name": "Verus DoomKnight Class",
