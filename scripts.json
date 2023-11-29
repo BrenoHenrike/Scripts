@@ -2826,17 +2826,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/GrimDarkSet.cs"
   },
   {
-    "name": "null",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Other/PineAppleSlayerSet.cs",
-    "size": 3139,
-    "fileName": "PineAppleSlayerSet.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/PineAppleSlayerSet.cs"
-  },
-  {
     "name": "Lorebowl",
     "description": "Kills the mob in /punt for its drops",
     "tags": [
@@ -7180,6 +7169,17 @@
     "size": 653,
     "fileName": "04BanquetStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HarvestDay/04BanquetStory.cs"
+  },
+  {
+    "name": "null",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Seasonal/HarvestDay/PineAppleSlayerSet.cs",
+    "size": 3173,
+    "fileName": "PineAppleSlayerSet.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HarvestDay/PineAppleSlayerSet.cs"
   },
   {
     "name": "Float Story (Member)",
