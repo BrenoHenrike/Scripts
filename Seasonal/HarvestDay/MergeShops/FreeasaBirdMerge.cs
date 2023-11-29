@@ -61,12 +61,12 @@ public class FreeasaBirdMerge
 
                 case "Stymphalian's Bronze Feather":
                     Core.FarmingLogger(req.Name, quant);
-                    Core.EquipClass(ClassType.Farm);
+                    Core.EquipClass(ClassType.Solo);
                     // Muck and Feather 9462
                     Core.RegisterQuests(9462);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonsterMapID("birdswithharms", 33);
+                        Core.HuntMonsterMapID("birdswithharms", 33, "Bronze Feather");
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
