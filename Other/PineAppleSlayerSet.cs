@@ -77,7 +77,7 @@ public class APineappleSlayer
             {
                 Core.AddDrop("Boar's Feet Recipe");
                 Core.EnsureAccept(1183);
-                Core.HuntMonster("bloodtusk", "Rhison", "Quarts of Rhison Milk", 7);
+                Core.HuntMonster("bloodtusk", "Rhison", "Quart of Rhison Milk", 7);
                 Core.HuntMonster("bloodtusk", "Rhison", "Rhison Tears");
                 Core.HuntMonster("bloodtusk", "Horc Boar Scout", "Boar's Foot", 12);
                 Core.EnsureComplete(1183);
