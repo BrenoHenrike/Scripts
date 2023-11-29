@@ -39,11 +39,12 @@ public class APineappleSlayer
             Core.Logger(Core.CheckInventory(Core.QuestRewards(9486)) ? "All rewards owned." : "seasonal map not available.");
             return;
         }
-        
+
         PreReqs();
 
         Core.EquipClass(ClassType.Solo);
         Core.AddDrop(Core.QuestRewards(9486));
+        Core.RegisterQuests(9486);
         foreach (string reward in Core.QuestRewards(9486))
         {
             Core.FarmingLogger(reward, 1);
