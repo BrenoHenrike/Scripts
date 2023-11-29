@@ -34,11 +34,12 @@ public class APineappleSlayer
 
     public void Example()
     {
-        if (!Core.isSeasonalMapActive("freakitiki") || Core.CheckInventory(Core.QuestRewards(9486), toInv: false))
+        if (!Core.isSeasonalMapActive("foulfarm") || Core.CheckInventory(Core.QuestRewards(9486), toInv: false))
         {
             Core.Logger(Core.CheckInventory(Core.QuestRewards(9486)) ? "All rewards owned." : "seasonal map not available.");
             return;
         }
+        
         PreReqs();
 
         Core.EquipClass(ClassType.Solo);
