@@ -42,7 +42,7 @@ public class APineappleSlayer
         PreReqs();
 
         Core.EquipClass(ClassType.Solo);
-
+        Core.AddDrop(Core.QuestRewards(9486));
         foreach (string reward in Core.QuestRewards(9486))
         {
             Core.FarmingLogger(reward, 1);
@@ -83,7 +83,7 @@ public class APineappleSlayer
                 Core.EnsureComplete(1183);
                 Bot.Wait.ForPickup("Boar's Feet Recipe");
             }
-            
+
             Story.BuyQuest(9485, "bloodtusk", 304, "Boar's Feet in Salted-Butter Sauce");
             Story.KillQuest(9485, "grams", "Wereboar");
             Story.KillQuest(9485, "trygve", "Rune Boar");
