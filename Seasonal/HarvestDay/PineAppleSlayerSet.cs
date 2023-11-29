@@ -49,7 +49,7 @@ public class APineappleSlayer
         {
             Core.FarmingLogger(reward, 1);
             while (!Bot.ShouldExit && !Core.CheckInventory(reward))
-                Core.HuntMonster("freakitiki", "Spineapple", "Fresh Pineapple", 10);
+                Core.HuntMonster("freakitiki", "Spineapple", "Fresh Pineapple", 10, log: false);
             Bot.Wait.ForPickup(reward);
 
             if (Bot.Config!.Get<bool>("BankAfter"))
@@ -76,7 +76,7 @@ public class APineappleSlayer
         if (!Story.QuestProgression(9485))
         {
             Core.EnsureAccept(9485);
-         
+
             if (!Core.CheckInventory("Boar's Feet in Salted-Butter Sauce"))
             {
                 Core.AddDrop("Boar's Feet recipe");
