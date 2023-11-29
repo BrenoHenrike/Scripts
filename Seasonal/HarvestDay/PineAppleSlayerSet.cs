@@ -1,21 +1,22 @@
 /*
-name: null
+name: PineappleSlayerSet
 description: null
 tags: null
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Quests;
 using Skua.Core.Options;
 
-public class APineappleSlayer
+public class PineappleSlayerSet
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new();
 
 
-    public string OptionsStorage = "APineappleSlayer";
+    public string OptionsStorage = "PineappleSlayerSet";
     public bool DontPreconfigure = true;
     public List<IOption> Options = new()
     {
@@ -29,6 +30,7 @@ public class APineappleSlayer
         Core.SetOptions();
 
         Example();
+
         Core.SetOptions(false);
     }
 
@@ -42,18 +44,20 @@ public class APineappleSlayer
 
         PreReqs();
 
+        Quest? QuestData = Bot.Quests.EnsureLoad(9486);
+
         Core.EquipClass(ClassType.Solo);
         Core.AddDrop(Core.QuestRewards(9486));
-        Core.RegisterQuests(9486);
-        foreach (string reward in Core.QuestRewards(9486))
+        foreach (var reward in QuestData!.Rewards)
         {
-            Core.FarmingLogger(reward, 1);
-            while (!Bot.ShouldExit && !Core.CheckInventory(reward))
-                Core.HuntMonster("freakitiki", "Spineapple", "Fresh Pineapple", 10, log: false);
-            Bot.Wait.ForPickup(reward);
+            Core.FarmingLogger(reward.Name, 1);
+            Core.EnsureAccept(9486);
+            Core.HuntMonster("freakitiki", "Spineapple", "Fresh Pineapple", 10, log: false);
+            Core.EnsureComplete(9486, reward.ID);
+            Bot.Wait.ForPickup(reward.Name);
 
             if (Bot.Config!.Get<bool>("BankAfter"))
-                Core.ToBank(reward);
+                Core.ToBank(reward.Name);
         }
     }
 
