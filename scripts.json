@@ -2826,6 +2826,17 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/GrimDarkSet.cs"
   },
   {
+    "name": "null",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Other/PineAppleSlayerSet.cs",
+    "size": 2899,
+    "fileName": "PineAppleSlayerSet.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/PineAppleSlayerSet.cs"
+  },
+  {
     "name": "Lorebowl",
     "description": "Kills the mob in /punt for its drops",
     "tags": [
