@@ -2759,7 +2759,7 @@ public class CoreBots
 
             string? equipedClass = Bot.Player.CurrentClass?.Name.Trim().ToLower();
             className = className.Trim().ToLower();
-            Logger($"Equiped Class: [{equipedClass}], Equiping: [{className}].", "Class Equiper");
+            // Logger($"Equiped Class: [{equipedClass}], Equiping: [{className}].", "Class Equiper");
 
             while (equipedClass != className)
             {
@@ -2769,7 +2769,7 @@ public class CoreBots
                 equipedClass = Bot.Player.CurrentClass?.Name.Trim().ToLower();
             }
 
-            Logger($"Equiped Class: [{equipedClass}]", "Class Equiper");
+            // Logger($"Equiped Class: [{equipedClass}]", "Class Equiper");
 
             Bot.Skills.StartAdvanced(className, false, classMode);
             return true;
@@ -2793,14 +2793,14 @@ public class CoreBots
             {
                 if (!CheckInventory(item))
                 {
-                    if (!Bot.ShouldExit)
-                        Logger($"Equipping Failed: \"{item}\" not found in Inventory or Bank");
+                    // if (!Bot.ShouldExit)
+                    //     Logger($"Equipping Failed: \"{item}\" not found in Inventory or Bank");
                     continue;
                 }
                 if (!Bot.Inventory.TryGetItem(item, out var _item))
                 {
-                    if (!Bot.ShouldExit)
-                        Logger($"Equipping Failed: Could not parse \"{item}\" from your inventory");
+                    // if (!Bot.ShouldExit)
+                    // Logger($"Equipping Failed: Could not parse \"{item}\" from your inventory");
                     continue;
                 }
                 _Equip(_item);
@@ -2823,15 +2823,15 @@ public class CoreBots
             if (!Bot.Inventory.IsEquipped(item))
             {
                 if (!CheckInventory(item))
-                {
-                    Logger($"Equipping Failed: \"{item}\" not found in Inventory or Bank");
+                    // {
+                    //     Logger($"Equipping Failed: \"{item}\" not found in Inventory or Bank");
                     continue;
-                }
+                // }
                 if (!Bot.Inventory.TryGetItem(item, out var _item))
-                {
-                    Logger($"Equipping Failed: Could not parse \"{item}\" from your inventory");
+                    // {
+                    //     Logger($"Equipping Failed: Could not parse \"{item}\" from your inventory");
                     continue;
-                }
+                // }
                 _Equip(_item);
             }
         }
