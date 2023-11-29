@@ -73,15 +73,15 @@ public class APineappleSlayer
 
         if (!Story.QuestProgression(9485))
         {
-            if (!Core.CheckInventory("Boar's Feet Recipe"))
+            if (!Core.CheckInventory("Boar's Feet recipe"))
             {
-                Core.AddDrop("Boar's Feet Recipe");
+                Core.AddDrop("Boar's Feet recipe");
                 Core.EnsureAccept(1183);
                 Core.HuntMonster("bloodtusk", "Rhison", "Quart of Rhison Milk", 7);
                 Core.HuntMonster("bloodtusk", "Rhison", "Rhison Tears");
                 Core.HuntMonster("bloodtusk", "Horc Boar Scout", "Boar's Foot", 12);
                 Core.EnsureComplete(1183);
-                Bot.Wait.ForPickup("Boar's Feet Recipe");
+                Bot.Wait.ForPickup("Boar's Feet recipe");
             }
 
             Story.BuyQuest(9485, "bloodtusk", 304, "Boar's Feet in Salted-Butter Sauce");
