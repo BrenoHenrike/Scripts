@@ -247,7 +247,6 @@ public class PotionBuyer
             {
                 if (Core.CheckInventory(ingredient, ingreQuant))
                     return;
-
                 Core.EquipClass(ClassType.Farm);
                 Core.ToggleAggro(false);
 
@@ -268,19 +267,19 @@ public class PotionBuyer
                     case "Lemurphant Tears":
                         if (!Bot.Config!.Get<bool>("BuyReagents"))
                             Core.HuntMonster("ravinetemple", "Lemurphant", ingredient, ingreQuant, isTemp: false);
-                        else Adv.BuyItem("alchemyacademy", 397, ingredient, potionQuant);
+                        else Adv.BuyItem("alchemyacademy", 397, ingredient, ingreQuant);
                         break;
 
                     case "Dried Slime":
                         if (!Bot.Config!.Get<bool>("BuyReagents"))
                             Core.HuntMonster("orecavern", "Crashroom", ingredient, ingreQuant, isTemp: false);
-                        else Adv.BuyItem("alchemyacademy", 397, ingredient, potionQuant);
+                        else Adv.BuyItem("alchemyacademy", 397, ingredient, ingreQuant);
                         break;
 
                     case "Arashtite Ore":
                         if (!Bot.Config!.Get<bool>("BuyReagents"))
                             Core.HuntMonster("orecavern", "Deathmole", ingredient, ingreQuant, isTemp: false);
-                        else Adv.BuyItem("alchemyacademy", 397, ingredient, potionQuant);
+                        else Adv.BuyItem("alchemyacademy", 397, ingredient, ingreQuant);
                         break;
 
                     case "Chaos Entity":
@@ -310,19 +309,19 @@ public class PotionBuyer
                     case "Nimblestem":
                         if (!Bot.Config!.Get<bool>("BuyReagents"))
                             Core.HuntMonster("mudluk", "Swamp Frogdrake", "Nimblestem", ingreQuant, isTemp: false);
-                        else Adv.BuyItem("alchemyacademy", 397, ingredient, potionQuant);
+                        else Adv.BuyItem("alchemyacademy", 397, ingredient, ingreQuant);
                         break;
 
                     case "Trollola Nectar":
                         if (!Bot.Config!.Get<bool>("BuyReagents"))
                             Core.HuntMonster("bloodtusk", "Trollola Plant", ingredient, ingreQuant, isTemp: false);
-                        else Adv.BuyItem("alchemyacademy", 397, ingredient, potionQuant);
+                        else Adv.BuyItem("alchemyacademy", 397, ingredient, ingreQuant);
                         break;
 
                     case "Searbush":
                         if (!Bot.Config!.Get<bool>("BuyReagents"))
                             Core.HuntMonster("mafic", "Living Fire", ingredient, ingreQuant, isTemp: false);
-                        else Adv.BuyItem("alchemyacademy", 397, ingredient, potionQuant);
+                        else Adv.BuyItem("alchemyacademy", 397, ingredient, ingreQuant);
                         break;
 
                     case "Dragon Scale":
@@ -333,13 +332,13 @@ public class PotionBuyer
                                 Core.KillMonster("lair", "Hole", "Center", "*", isTemp: false, log: false);
                         }
                         else if (!Core.CheckInventory(11475, ingreQuant))
-                            Adv.BuyItem("alchemyacademy", 397, 11475, potionQuant, shopItemID: 1241);
+                            Adv.BuyItem("alchemyacademy", 397, 11475, ingreQuant, shopItemID: 1241);
                         break;
 
                     case "Roc Tongue":
                         if (!Bot.Config!.Get<bool>("BuyReagents"))
                             Core.HuntMonster("roc", "Rock Roc", ingredient, ingreQuant, isTemp: false, log: false);
-                        else Adv.BuyItem("alchemyacademy", 397, ingredient, potionQuant);
+                        else Adv.BuyItem("alchemyacademy", 397, ingredient, ingreQuant);
                         break;
 
                     case "Necrot":
@@ -351,7 +350,7 @@ public class PotionBuyer
                     case "Rhison Blood":
                         if (!Bot.Config!.Get<bool>("BuyReagents"))
                             Core.HuntMonster("bloodtusk", "Rhison", ingredient, ingreQuant, isTemp: false, log: false);
-                        else Adv.BuyItem("alchemyacademy", 397, ingredient, potionQuant);
+                        else Adv.BuyItem("alchemyacademy", 397, ingredient, ingreQuant);
                         break;
 
                     default:
