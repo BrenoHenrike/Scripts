@@ -6,6 +6,7 @@ tags: null
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
 using Skua.Core.Models.Quests;
 using Skua.Core.Options;
 
@@ -44,20 +45,25 @@ public class PineappleSlayerSet
 
         PreReqs();
 
-        Quest? QuestData = Bot.Quests.EnsureLoad(9486);
+        List<ItemBase> RewardOptions = Core.EnsureLoad(9486).Rewards;
+
+        foreach (ItemBase item in RewardOptions)
+            Core.AddDrop(item.ID);
 
         Core.EquipClass(ClassType.Solo);
-        Core.AddDrop(Core.QuestRewards(9486));
-        foreach (var reward in QuestData!.Rewards)
+        foreach (ItemBase Reward in RewardOptions)
         {
-            Core.FarmingLogger(reward.Name, 1);
+            if (Core.CheckInventory(Reward.ID, toInv: false))
+                continue;
+
+            Core.FarmingLogger(Reward.Name, 1);
             Core.EnsureAccept(9486);
             Core.HuntMonster("freakitiki", "Spineapple", "Fresh Pineapple", 10, log: false);
-            Core.EnsureComplete(9486, reward.ID);
-            Bot.Wait.ForPickup(reward.Name);
+            Core.EnsureComplete(9486, Reward.ID);
 
-            if (Bot.Config!.Get<bool>("BankAfter"))
-                Core.ToBank(reward.Name);
+            Bot.Wait.ForPickup(Reward.Name);
+            if (Bot.Config!.Get<bool>("BankAfter") && Bot.Inventory.Contains(Reward.ID))
+                Core.ToBank(Reward.Name);
         }
     }
 
