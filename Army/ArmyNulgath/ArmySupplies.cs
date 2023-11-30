@@ -153,7 +153,7 @@ public class SuppliesWheelArmy
 
             Bot.Combat.Attack(Bot.Config!.Get<Cell>("mob") == Cell.h85 ? "Hydra Head 85" : "Hydra Head 90");
 
-            Core.Sleep(Core.ActionDelay);
+            Core.Sleep();
 
             if (Core.CheckInventory(Nation.SwindlesReturn) && Bot.Config!.Get<bool>("SwindlesReturnDuring"))
             {

@@ -91,11 +91,11 @@ public class WheelOfDoomSpam
         {
             Bot.Shops.BuyItem(45252, 26665);
 
-            Core.Sleep(Core.ActionDelay);
+            Core.Sleep();
             var preTicketItems = Bot.Inventory.Items;
 
             Core.ChainComplete(3074);
-            Core.Sleep(Core.ActionDelay);
+            Core.Sleep();
 
             var newItems = Bot.Inventory.Items.Except(preTicketItems);
             foreach (var item in newItems)

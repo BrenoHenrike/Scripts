@@ -138,7 +138,7 @@ public class DoomVaultB
         while (!Bot.ShouldExit && Bot.Player.Cell != cell)
         {
             Core.Jump(cell);
-            Core.Sleep(Core.ActionDelay);
+            Core.Sleep();
         }
         Core.Logger($"{Bot.Player.Cell} Fixed.");
     }

@@ -39,7 +39,7 @@ public class KillYoshinoBoss
         Core.JumpWait();
         //Adv.BestGear(GenericGearBoost.gold);
         Farm.ToggleBoost(BoostType.Gold);
-        Core.Sleep(Core.ActionDelay);
+        Core.Sleep();
         Core.EnsureComplete(5720);
         Bot.Wait.ForPickup("Limited Event Coin");
         Farm.ToggleBoost(BoostType.Gold, false);

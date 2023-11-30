@@ -172,7 +172,7 @@ public class CoreStory
         if (QuestProgression(QuestID, GetReward, Reward))
             return;
 
-        Core.Sleep(Core.ActionDelay);
+        Core.Sleep();
         if (AutoCompleteQuest)
             Core.ChainComplete(QuestID);
         else
@@ -181,7 +181,7 @@ public class CoreStory
         }
         Bot.Wait.ForQuestComplete(QuestID);
         Core.Logger($"Completed \"{QuestData.Name}\" [{QuestID}]");
-        Core.Sleep(Core.ActionDelay);
+        Core.Sleep();
     }
 
     public void QuestComplete(int questID) => TryComplete(Core.EnsureLoad(questID), true);
@@ -191,7 +191,7 @@ public class CoreStory
         if (!Bot.Quests.CanComplete(QuestData.ID))
             return;
 
-        Core.Sleep(Core.ActionDelay);
+        Core.Sleep();
         if (AutoCompleteQuest)
             Core.EnsureComplete(QuestData.ID);
         Bot.Wait.ForQuestComplete(QuestData.ID);
@@ -620,7 +620,7 @@ public class CoreStory
 
             Bot.Hunt.Monster(monster);
             Bot.Drops.Pickup(CurrentRequirements.Where(item => !item.Temp).Select(item => item.Name).ToArray());
-            Core.Sleep(Core.ActionDelay);
+            Core.Sleep();
         }
     }
     private List<ItemBase> CurrentRequirements = new();

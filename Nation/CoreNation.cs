@@ -664,7 +664,7 @@ public class CoreNation
                                 Bot.Combat.CancelTarget();
                                 Bot.Wait.ForCombatExit();
                                 Core.Jump("Enter", "Spawn");
-                                Core.Sleep(Core.ActionDelay);
+                                Core.Sleep();
                             }
 
                             Bot.Wait.ForPickup("Voucher of Nulgath");
@@ -961,7 +961,7 @@ public class CoreNation
                     Bot.Combat.CancelTarget();
                     Bot.Wait.ForCombatExit();
                     Core.Jump("Enter", "Spawn");
-                    Core.Sleep(Core.ActionDelay);
+                    Core.Sleep();
                 }
 
                 Bot.Drops.Pickup("Voucher of Nulgath");

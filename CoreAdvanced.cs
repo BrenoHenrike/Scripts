@@ -276,7 +276,7 @@ public class CoreAdvanced
                         while (!Core.CheckInventory(selectedItem.ID, req.Quantity))
                         {
                             getIngredients(selectedItem, req.Quantity);
-                            Core.Sleep(Core.ActionDelay);
+                            Core.Sleep();
 
                             if (!matsOnly)
                                 BuyItem(map, shopID, selectedItem.ID, (Bot.Inventory.GetQuantity(selectedItem.ID) + selectedItem.Quantity));
@@ -286,7 +286,7 @@ public class CoreAdvanced
                     else
                     {
                         getIngredients(selectedItem, req.Quantity);
-                        Core.Sleep(Core.ActionDelay);
+                        Core.Sleep();
 
                         if (!matsOnly)
                             BuyItem(map, shopID, selectedItem.ID, req.Quantity);
@@ -1339,7 +1339,7 @@ public class CoreAdvanced
             foreach (InventoryItem item in ItemList)
             {
                 _AutoEnhance(item, shopID);
-                Core.Sleep(Core.ActionDelay);
+                Core.Sleep();
             }
         }
 
@@ -1660,7 +1660,7 @@ public class CoreAdvanced
             else
                 Core.Logger($"Enhancement Applied:\t{type} - \"{item.Name}\" (Lvl {bestEnhancement.Level})");
 
-            Core.Sleep(Core.ActionDelay);
+            Core.Sleep();
         }
     }
 

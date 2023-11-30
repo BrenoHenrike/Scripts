@@ -100,7 +100,7 @@ public class ArmyVoucherItemofNulgath
             Core.EnsureAccept(QuestID);
             FarmTotems();
             // Add a delay between monster kills to avoid spamming server requests
-            Core.Sleep(Core.ActionDelay);
+            Core.Sleep();
             Core.EnsureComplete(4778, (int)reward);
         }
     }
@@ -129,7 +129,7 @@ public class ArmyVoucherItemofNulgath
         {
             Bot.Combat.Attack("*");
             // Add a delay between attacks to avoid spamming server requests
-            Core.Sleep(Core.ActionDelay);
+            Core.Sleep();
         }
 
         Army.AggroMonStop(true);

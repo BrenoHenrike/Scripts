@@ -91,7 +91,7 @@ public class ArmyHollowSoul
             {
                 if (Bot.Monsters.CurrentAvailableMonsters.Exists(x => x.MapID == MonsterMapID))
                     Bot.Combat.Attack(MonsterMapID);
-                Core.Sleep(Core.ActionDelay);
+                Core.Sleep();
             }
         }
 

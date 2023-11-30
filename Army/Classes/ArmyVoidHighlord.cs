@@ -362,7 +362,7 @@ public class VHLArmy
         {
             Bot.Combat.Attack("*");
             // Add a delay between attacks to avoid spamming server requests
-            Core.Sleep(Core.ActionDelay);
+            Core.Sleep();
         }
 
         Army.AggroMonStop(true);
@@ -393,7 +393,7 @@ public class VHLArmy
             Core.EnsureAccept(4778);
             VoucherItemOfNulgathQuest();
             // Add a delay between monster kills to avoid spamming server requests
-            Core.Sleep(Core.ActionDelay);
+            Core.Sleep();
             Core.EnsureComplete(4778, 6136);
         }
     }
@@ -420,7 +420,7 @@ public class VHLArmy
             Core.EnsureAccept(4778);
             VoucherItemOfNulgathQuest();
             // Add a delay between monster kills to avoid spamming server requests
-            Core.Sleep(Core.ActionDelay);
+            Core.Sleep();
             Core.EnsureComplete(4778, 5357);
         }
     }
@@ -521,7 +521,7 @@ public class VHLArmy
             while (!Bot.ShouldExit && Bot.Player.Cell != "Boss")
             {
                 Core.Jump("Boss", "Left");
-                Core.Sleep(Core.ActionDelay);
+                Core.Sleep();
             }
 
             while (!Bot.ShouldExit && Core.IsMonsterAlive("Staff of Inversion"))
@@ -572,7 +572,7 @@ public class VHLArmy
             while (!Bot.ShouldExit && Core.CheckInventory("Mana Energy for Nulgath"))
             {
                 Bot.Combat.Attack("*");
-                Core.Sleep(Core.ActionDelay);
+                Core.Sleep();
             }
         }
 

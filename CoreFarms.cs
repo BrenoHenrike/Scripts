@@ -193,7 +193,7 @@ public class CoreFarms
             Bot.Wait.ForDrop("Berserker Bunny", 40);
             if (!sell)
                 return;
-            Core.Sleep(Core.ActionDelay);
+            Core.Sleep();
             Core.SellItem("Berserker Bunny");
         }
         Core.CancelRegisteredQuests();
@@ -862,7 +862,7 @@ public class CoreFarms
         {
             if (!P2w)
                 Core.Sleep(3500);
-            else Core.Sleep(Core.ActionDelay);
+            else Core.Sleep();
             if (P2w && Core.CheckInventory("Dragon Runestone"))
                 Bot.Send.Packet($"%xt%zm%crafting%1%getAlchWait%{reagentid1}%{reagentid2}%true%Ready to Mix%{reagent1}%{reagent2}%{rune}%{trait}%");
             else if (!P2w)
@@ -1106,7 +1106,7 @@ public class CoreFarms
                 }
                 ToggleBoost(BoostType.Reputation);
                 Core.BuyItem("alchemyacademy", 2036, "Gold Voucher 500k", Bot.Player.Gold % 10 == 5000000 ? 10 : 1);
-                Core.Sleep(Core.ActionDelay);
+                Core.Sleep();
                 Core.EnsureCompleteMulti(8737);
             }
             // Core.CancelRegisteredQuests();
@@ -1282,7 +1282,7 @@ public class CoreFarms
         while (!Bot.ShouldExit && FactionRank("Brightoak") < rank)
         {
             Bot.Map.GetMapItem(3984);
-            Core.Sleep(Core.ActionDelay);
+            Core.Sleep();
             Bot.Wait.ForQuestComplete(4667, 20);
         }
         Core.CancelRegisteredQuests();
@@ -1883,7 +1883,7 @@ public class CoreFarms
         {
             Core.Logger("Joining Brawl");
             Core.Join("DeathPitbrawl", "Enter0", "Spawn");
-            Core.Sleep(Core.ActionDelay);
+            Core.Sleep();
         }
 
         int Move = 1;

@@ -85,11 +85,11 @@ public class ShorinzanMerge
                     Core.RegisterQuests(8751);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.KillMonster($"battleunderb", "Enter", "Spawn", "*", "Bundle O’ Bones", 30);
+                        Core.KillMonster($"battleunderb", "Enter", "Spawn", "*", "Bundle O' Bones", 30);
                         Core.EquipClass(ClassType.Solo);
-                        Core.HuntMonsterMapID($"Odokuro", 1, "Odokuro’s Occipital");
-                        Core.HuntMonster($"bonecastle", "Vaden", "Vaden’s Other Arm");
-                        Core.HuntMonster($"vordredboss", "Vordred", "Vordred’s Skull(s)", 3);
+                        Core.HuntMonsterMapID($"Odokuro", 1, "Odokuro's Occipital");
+                        Core.HuntMonster($"bonecastle", "Vaden", "Vaden's Other Arm");
+                        Core.HuntMonster($"vordredboss", "Vordred", "Vordred's Skull(s)", 3);
                     }
                     Core.CancelRegisteredQuests();
                     break;

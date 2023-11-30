@@ -88,7 +88,7 @@ public class BankAllItems
             else if (item.Coins)
                 Core.ToBank(itemName);
 
-            Core.Sleep(Core.ActionDelay);
+            Core.Sleep();
         }
     }
 

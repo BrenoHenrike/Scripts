@@ -144,7 +144,7 @@ public class VerusDoomKnightClass
             Adv.GearStore();
             Core.BossClass("Archpaladin");
             Core.JumpWait();
-            Core.Sleep(Core.ActionDelay);
+            Core.Sleep();
             Adv.BoostHuntMonster("infernalarena", "Deadly Duo", "Deadly Duo's Decayed Denture", 10, false);
             Core.JumpWait();
             Adv.GearStore(true);

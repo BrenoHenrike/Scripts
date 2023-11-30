@@ -207,7 +207,7 @@ public class CoreBots
 
                     // AFK Handler
                     Bot.Send.Packet("%xt%zm%afk%1%false%");
-                    Sleep(ActionDelay);
+                    Sleep();
                     bool TimerRunning = false;
                     //int afkCount = 0;
                     //Bot.Events.PlayerAFK += eventAFK;
@@ -312,7 +312,7 @@ public class CoreBots
         if (Bot.Player.LoggedIn)
         {
             JumpWait();
-            Sleep(ActionDelay);
+            Sleep();
 
             if (!string.IsNullOrWhiteSpace(CustomStopLocation))
             {
@@ -625,7 +625,7 @@ public class CoreBots
         {
             if (Bot.Bank.Contains(item))
             {
-                Sleep(ActionDelay);
+                Sleep();
                 if (Bot.Inventory.FreeSlots == 0 && Bot.Inventory.Slots != 0 && Bot.Inventory.UsedSlots <= Bot.Inventory.Slots)
                     Logger($"Your inventory is full ({Bot.Inventory.UsedSlots}/{Bot.Inventory.Slots}), please clean it and restart the bot", messageBox: true, stopBot: true);
 
@@ -657,7 +657,7 @@ public class CoreBots
         {
             if (Bot.Bank.Contains(item))
             {
-                Sleep(ActionDelay);
+                Sleep();
                 if (Bot.Inventory.FreeSlots == 0 && Bot.Inventory.Slots != 0 && Bot.Inventory.UsedSlots <= Bot.Inventory.Slots)
                     Logger($"Your inventory is full ({Bot.Inventory.UsedSlots}/{Bot.Inventory.Slots}), please clean it and restart the bot", messageBox: true, stopBot: true);
 
@@ -879,14 +879,14 @@ public class CoreBots
             }
         }
 
-        Sleep(ActionDelay);
+        Sleep();
 
         if (Bot.Options.SafeTimings)
             Bot.Wait.ForActionCooldown(GameActions.BuyItem);
         Bot.Flash.CallGameFunction("world.sendBuyItemRequestWithQuantity", JsonConvert.DeserializeObject<ExpandoObject>(JsonConvert.SerializeObject(sItem))!);
         if (Bot.Options.SafeTimings)
             Bot.Wait.ForItemBuy();
-        Sleep(ActionDelay);
+        Sleep();
 
         Bot.Events.ExtensionPacketReceived -= RelogRequieredListener;
 
@@ -1143,7 +1143,7 @@ public class CoreBots
         while (!Bot.ShouldExit && Bot.Player.InCombat)
         {
             JumpWait();
-            Sleep(ActionDelay);
+            Sleep();
         }
 
         if (!all)
@@ -1155,7 +1155,7 @@ public class CoreBots
             if (Bot.Options.SafeTimings)
                 Bot.Wait.ForItemSell();
 
-            Sleep(ActionDelay);
+            Sleep();
             return;
         }
         else Bot.Shops.SellItem(itemName);
@@ -1169,7 +1169,7 @@ public class CoreBots
         {
             Join(map);
             Bot.Shops.Load(shopID);
-            Sleep(ActionDelay);
+            Sleep();
         }, 20, 1000);
 
         if (Bot.Shops.ID != shopID || Bot.Shops.Items == null)
@@ -1289,7 +1289,7 @@ public class CoreBots
             if (!TrashItem.Coins)
             {
                 Bot.Send.Packet($"%xt%zm%removeItem%{Bot.Map.RoomID}%{TrashItem.ID}%{Bot.Player.ID}%{TrashItem.Quantity}%");
-                Sleep(ActionDelay);
+                Sleep();
                 Logger($"Trashed: {TrashItem.Name} x{TrashItem.Quantity}");
             }
             else ToBank(item);
@@ -1535,7 +1535,7 @@ public class CoreBots
     {
         if (questID <= 0)
             return false;
-        Sleep(ActionDelay);
+        Sleep();
         return Bot.Quests.EnsureComplete(questID, itemID);
     }
 
@@ -1545,8 +1545,20 @@ public class CoreBots
     /// <param name="questIDs">IDs of the quests</param>
     public void EnsureComplete(params int[] questIDs)
     {
-        Bot.Quests.EnsureComplete(questIDs);
+        EnsureLoad(questIDs);
+        foreach (var q in questIDs)
+        {
+            var questData = EnsureLoad(q);
+            if (questData != null && questData.Requirements != null
+            && questData.Requirements.Any()
+            && CheckInventory(questData.Requirements.Select(x => x.ID).ToArray()))
+            {
+                Bot.Quests.EnsureComplete(q);
+                Sleep();
+            }
+        }
     }
+
 
     /// <summary>
     /// Completes a quest and choose any item from it that you don't have (automatically accepts the drop)
@@ -1555,9 +1567,9 @@ public class CoreBots
     /// <param name="itemList">List of the items to get, if you want all just let it be null</param>
     public bool EnsureCompleteChoose(int questID, string[]? itemList = null)
     {
-        if (questID <= 0)
-            return false;
-        Sleep(ActionDelay);
+        EnsureLoad(questID);
+        Sleep();
+
         Quest quest = EnsureLoad(questID);
         if (quest is not null)
         {
@@ -1567,33 +1579,36 @@ public class CoreBots
                     && (itemList == null || (itemList != null && itemList.Contains(item.Name))))
                 {
                     bool completed = Bot.Quests.EnsureComplete(questID, item.ID);
-                    Bot.Drops.Pickup(item.Name);
+                    if (Bot.Drops.Exists(item.ID))
+                        Bot.Drops.Pickup(item.Name);
                     Bot.Wait.ForPickup(item.Name);
                     return completed;
                 }
             }
+
+            Logger($"Could not complete the quest {questID}. Maybe all items are already in your inventory");
+            return false;
         }
         else
         {
             Logger($"Failed to load Quest {questID}, EnsureCompleteChoose failed");
             return false;
         }
-        Logger($"Could not complete the quest {questID}. Maybe all items are already in your inventory");
-        return false;
     }
+
 
     /// <summary>
     /// Completes the quest with a choose-able reward item
     /// </summary>
     /// <param name="questID">ID of the quest to complete</param>
-    /// <param name="amount">Amount of times you want it to turn in the quest, -1 is maximum amount possible.</param>
+    /// <param name="amount">Amount of times you want it to turn in the quest, -1 is the maximum amount possible.</param>
     /// <param name="itemID">ID of the choose-able reward item</param>
     public int EnsureCompleteMulti(int questID, int amount = -1, int itemID = -1)
     {
-        var q = EnsureLoad(questID);
+        var quest = EnsureLoad(questID);
 
         int turnIns;
-        if (q.Once || !String.IsNullOrEmpty(q.Field))
+        if (quest.Once || !string.IsNullOrEmpty(quest.Field))
             turnIns = 1;
         else
         {
@@ -1602,11 +1617,15 @@ public class CoreBots
             if (turnIns == 0)
                 return 0;
         }
+
         Bot.Flash.CallGameFunction("world.tryQuestComplete", questID, itemID, false, turnIns);
+
         if (Bot.Options.SafeTimings)
             Bot.Wait.ForQuestComplete(questID);
+
         return !Bot.Quests.IsInProgress(questID) ? turnIns : 0;
     }
+
 
     public Quest EnsureLoad(int questID)
     {
@@ -1632,13 +1651,13 @@ public class CoreBots
 
         Quest? _EnsureLoad1()
         {
-            Sleep(ActionDelay);
+            Sleep();
             Bot.Wait.ForTrue(() => Bot.Quests.Tree.Contains(x => x.ID == questID), () => Bot.Quests.Load(questID), 20);
             return Bot.Quests.Tree.Find(q => q.ID == questID)!;
         }
         Quest? _EnsureLoad2()
         {
-            Sleep(ActionDelay);
+            Sleep();
             return Bot.Quests.EnsureLoad(questID);
         }
     }
@@ -1650,7 +1669,7 @@ public class CoreBots
             return quests;
 
         List<int> missing = questIDs.Where(x => !quests.Any(y => y.ID == x)).ToList();
-        Sleep(ActionDelay);
+        Sleep();
         for (int i = 0; i < missing.Count; i += 30)
         {
             Bot.Quests.Load(missing.ToArray()[i..(missing.Count > i ? missing.Count : i + 30)]);
@@ -1783,9 +1802,9 @@ public class CoreBots
     /// <param name="itemID">ID of the choose-able reward item</param>
     public void ChainComplete(int questID, int itemID = -1)
     {
-        Bot.Quests.EnsureAccept(questID);
-        Sleep(ActionDelay);
-        Bot.Quests.EnsureComplete(questID, itemID);
+        EnsureAccept(questID);
+        Sleep();
+        EnsureComplete(questID, itemID);
     }
 
     /// <param name="QuestID">ID of the quest</param>
@@ -1933,7 +1952,7 @@ public class CoreBots
                 if (!Bot.Combat.StopAttacking)
                     Bot.Hunt.Monster(monster);
 
-                Sleep(ActionDelay);
+                Sleep();
                 Rest();
             }
         }
@@ -1988,7 +2007,7 @@ public class CoreBots
             {
                 if (!Bot.Combat.StopAttacking)
                     Bot.Combat.Attack(monster);
-                Sleep(ActionDelay);
+                Sleep();
                 Rest();
             }
         }
@@ -2025,7 +2044,7 @@ public class CoreBots
                 {
                     // DebugLogger(this);
                     Jump("Boss", "Left");
-                    Sleep(ActionDelay);
+                    Sleep();
                 }
                 // DebugLogger(this);
                 while (!Bot.ShouldExit && IsMonsterAlive("Staff of Inversion"))
@@ -2048,7 +2067,7 @@ public class CoreBots
                 {
                     // DebugLogger(this);
                     Jump("Boss", "Left");
-                    Sleep(ActionDelay);
+                    Sleep();
                 }
                 // DebugLogger(this);
                 while (!Bot.ShouldExit && IsMonsterAlive("Staff of Inversion"))
@@ -2333,7 +2352,7 @@ public class CoreBots
             while (!Bot.ShouldExit && Bot.Player.Cell != "r9")
             {
                 Jump("r9", "Left");
-                Sleep(ActionDelay);
+                Sleep();
             }
 
             while (!Bot.ShouldExit && IsMonsterAlive(15, useMapID: true) && Bot.Player.Cell == "r9" && !CheckInventory(item, quant))
@@ -2343,7 +2362,7 @@ public class CoreBots
                     while (!Bot.ShouldExit && Bot.Player.Cell != "Enter")
                     {
                         Jump("Enter", "Spawn");
-                        Sleep(ActionDelay);
+                        Sleep();
                     }
                     Bot.Wait.ForCellChange("Enter");
                     Bot.Wait.ForPickup(item);
@@ -2383,7 +2402,7 @@ public class CoreBots
         {
             if (!Bot.Combat.StopAttacking)
                 Bot.Combat.Attack(name);
-            Sleep(ActionDelay);
+            Sleep();
             if (rejectElse)
                 Bot.Drops.RejectExcept(item);
         }
@@ -2502,15 +2521,14 @@ public class CoreBots
         }
     }
 
-    public void Sleep(int ms)
+    public void Sleep(int ms = -1)
     {
-        // Logger($"Sleeping {ms}");
         if (Bot.ShouldExit)
         {
             Bot.Stop(false);
             return;
         }
-        Bot.Sleep(ms);
+        Bot.Sleep((ms == -1) ? ActionDelay : ms);
     }
 
     /// <summary>
@@ -3119,7 +3137,7 @@ public class CoreBots
         if (Bot.Map.Name != null && Bot.Map.Name.ToLower() == strippedMap && !ignoreCheck)
             return;
 
-        Sleep(ActionDelay);
+        Sleep();
 
         switch (strippedMap)
         {
@@ -3378,7 +3396,7 @@ public class CoreBots
                 Jump("R10");
                 Bot.Map.Join(PrivateRooms ? $"{map}-" + PrivateRoomNumber : strippedMap);
                 Bot.Wait.ForMapLoad(strippedMap);
-                Sleep(ActionDelay);
+                Sleep();
                 Bot.Wait.ForItemEquip(8733);
                 Bot.Wait.ForCellChange("MoonCut");
                 break;
@@ -3401,7 +3419,7 @@ public class CoreBots
                 Bot.Map.Join(PrivateRooms ? $"{map}-" + PrivateRoomNumber : map);
                 Bot.Wait.ForMapLoad("icestormarena");
                 Bot.Send.ClientPacket("{\"t\":\"xt\",\"b\":{\"r\":-1,\"o\":{\"cmd\":\"levelUp\",\"intExpToLevel\":\"0\",\"intLevel\":100}}}", type: "json");
-                Sleep(ActionDelay);
+                Sleep();
                 Jump(cell);
                 break;
 
@@ -3676,7 +3694,7 @@ public class CoreBots
                     Bot.Wait.ForCellChange(cell);
                 }
 
-                Sleep(ActionDelay);
+                Sleep();
             }
 
             Logger($"{Bot.Player.Cell} Fixed.");
@@ -3691,7 +3709,7 @@ public class CoreBots
         Bot.Flash.CallGameFunction("world.loadMap", swfPath);
 
         Bot.Wait.ForMapLoad(map);
-        Sleep(ActionDelay);
+        Sleep();
 
         Jump(cell, pad);
     }
@@ -3708,7 +3726,7 @@ public class CoreBots
             Join(map);
 
         JumpWait();
-        Sleep(ActionDelay);
+        Sleep();
         List<ItemBase> tempItems = Bot.TempInv.Items;
         ItemBase? newItem = null;
         bool found = false;

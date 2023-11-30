@@ -108,12 +108,12 @@ public class FishingGearMerge
                         while (!Bot.ShouldExit && Bot.TempInv.Contains("Fish Caught", 30))
                         {
                             Core.HuntMonster("swordhaven", "Slime", "Slime Sauce", 1, log: false);
-                            Core.Sleep(Core.ActionDelay);
+                            Core.Sleep();
                         }
                         while (!Bot.ShouldExit && Bot.TempInv.Contains("Endangered Fish", 5))
                         {
                             Core.HuntMonster("nexus", "Frogzard", "Greenguard Seal", 1, log: false);
-                            Core.Sleep(Core.ActionDelay);
+                            Core.Sleep();
                         }
 
                         if (!legendDailyDone && Bot.Quests.CanCompleteFullCheck(1684))

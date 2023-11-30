@@ -253,7 +253,7 @@ public class CoreDailies
         if (Bot.Quests.IsInProgress(2091))
             Core.Logger($"All desired metals were found with the needed quantity ({quant}), quest not completed");
 
-        Core.Sleep(Core.ActionDelay);
+        Core.Sleep();
     }
 
 
@@ -758,7 +758,7 @@ public class CoreDailies
             int PreGold = Bot.Player.Gold;
             int PreAC = PlayerAC();
             Bot.Send.Packet($"%xt%zm%getAdReward%{Bot.Map.RoomID}%");
-            Core.Sleep(Core.ActionDelay);
+            Core.Sleep();
             Bot.Send.Packet($"%xt%zm%getAdData%{Bot.Map.RoomID}%");
             Core.Sleep(1000);
             if (Bot.Player.Gold != PreGold)
@@ -795,7 +795,7 @@ public class CoreDailies
         // Core.JumpWait();
         // int PreQuant = Bot.Inventory.GetQuantity("Power Gem");
         // Bot.Send.Packet($"%xt%zm%powergem%{Bot.Map.RoomID}%");
-        // Core.Sleep(Core.ActionDelay);
+        // Core.Sleep();
         // if (Bot.Inventory.GetQuantity("Power Gem") != PreQuant)
         //     Core.Logger($"You received {Bot.Inventory.GetQuantity("Power Gem") - PreQuant} Power Gem");
         // else Core.Logger("You received no Power Gem");

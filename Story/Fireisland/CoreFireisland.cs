@@ -151,7 +151,7 @@ public class CoreFireIsland
         {
             Core.Jump("Enter", "Spawn");
             Bot.Wait.ForCombatExit();
-            Core.Sleep(Core.ActionDelay);
+            Core.Sleep();
             if (!Bot.Player.InCombat)
             {
                 Core.Join("feverfew");

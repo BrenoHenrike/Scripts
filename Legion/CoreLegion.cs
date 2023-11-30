@@ -812,7 +812,7 @@ public class CoreLegion
             }
 
             Bot.Wait.ForDrop("Legion Combat Trophy", 40);
-            Core.Sleep(Core.ActionDelay);
+            Core.Sleep();
             Bot.Wait.ForPickup("Legion Combat Trophy");
 
             Core.Logger("Delaying exit");

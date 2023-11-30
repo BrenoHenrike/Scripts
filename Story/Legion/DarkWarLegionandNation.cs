@@ -70,7 +70,7 @@ public class DarkWarLegionandNation
             while (!Bot.ShouldExit && Bot.Player.Cell != "r3")
             {
                 Core.Join("dagerecruit", "r3", "Left");
-                Core.Sleep(Core.ActionDelay);
+                Core.Sleep();
             }
             Core.KillMonster("dagerecruit", "r3", "Left", "Graython", "Graython Defeated");
             Core.EnsureComplete(8560);

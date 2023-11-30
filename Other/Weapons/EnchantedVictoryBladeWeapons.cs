@@ -59,10 +59,10 @@ public class EnchantedVictoryBladeWeapons
             return;
 
         TypeAuraGem(doGlory ? "bright" : "dark");
-        Core.Sleep(Core.ActionDelay);
+        Core.Sleep();
         Adv.BuyItem("river", 1213, doGlory ? "Enchanted Mana Blade" : "Enchanted Shadow Blade");
         AmuletOfType(doGlory ? "glory" : "despair");
-        Core.Sleep(Core.ActionDelay);
+        Core.Sleep();
         Adv.BuyItem("river", 1213, doGlory ? "Arcane Blade of Glory" : "Shadow Blade of Despair");
     }
 
@@ -85,7 +85,7 @@ public class EnchantedVictoryBladeWeapons
             Core.EnsureComplete(4811);
             Bot.Wait.ForPickup("Enchantment Rune");
         }
-        Core.Sleep(Core.ActionDelay);
+        Core.Sleep();
         Adv.BuyItem("river", 1213, "Enchanted Victory Blade");
     }
 

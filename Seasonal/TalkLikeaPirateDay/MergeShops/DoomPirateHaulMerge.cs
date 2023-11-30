@@ -75,7 +75,7 @@ public class DoomPirateHaulMerge
                         while (!Bot.ShouldExit && Bot.Player.Cell != "r5")
                         {
                             Core.Jump("r5", "Left");
-                            Core.Sleep(Core.ActionDelay);
+                            Core.Sleep();
                         }
                         Bot.Player.SetSpawnPoint();
 

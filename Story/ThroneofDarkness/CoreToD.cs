@@ -1259,7 +1259,7 @@ public class CoreToD
         while (!Bot.ShouldExit && (Bot.Player.Cell == "Cut4" || Bot.Player.Cell == "Cut5"))
         {
             Core.JumpWait();
-            Core.Sleep(Core.ActionDelay);
+            Core.Sleep();
         }
 
         // Defeat ... Wait. What?

@@ -269,7 +269,7 @@ public class CoreArmyLite
                     //{
                     PartyAccept(partyID);
                     Core.Logger($"Joined the party");
-                    Core.Sleep(Core.ActionDelay);
+                    Core.Sleep();
                     Bot.Map.Jump(Bot.Player.Cell, Bot.Player.Pad);
                     //}
                     break;
@@ -483,7 +483,7 @@ public class CoreArmyLite
             if (Bot.Player.LoggedIn)
             {
                 Bot.Servers.Logout();
-                Core.Sleep(Core.ActionDelay);
+                Core.Sleep();
             }
             Bot.Servers.Login(name, pass);
             Core.Sleep(3000);
@@ -680,8 +680,9 @@ public class CoreArmyLite
             {
                 while (!Bot.ShouldExit && (Bot.Player.HasTarget || Bot.Player.InCombat))
                 {
+                    Bot.Options.AttackWithoutTarget = false;
                     Bot.Combat.CancelTarget();
-                    Core.Sleep(Core.ActionDelay);
+                    Core.Sleep();
                     Core.JumpWait();
                 }
 
@@ -732,7 +733,7 @@ public class CoreArmyLite
                 PriorityAttack("*");
 
             Core.Rest();
-            Core.Sleep(Core.ActionDelay);
+            Core.Sleep();
         }
         ButlerStop();
     }
@@ -1009,6 +1010,9 @@ public class CoreArmyLite
 
     public void PriorityAttack(string attNoPrio)
     {
+        if (Bot.Player.CurrentClass?.Name == "ArchMage")
+            Bot.Options.AttackWithoutTarget = true;
+
         if (_attackPriority.Count == 0)
         {
             Bot.Combat.Attack(attNoPrio);
@@ -1025,7 +1029,7 @@ public class CoreArmyLite
             }
         }
         Bot.Combat.Attack(attNoPrio);
-        Core.Sleep(Core.ActionDelay);
+        Core.Sleep();
     }
 
     private async void MapNumberParses(string map)

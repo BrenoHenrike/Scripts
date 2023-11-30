@@ -54,7 +54,7 @@ public class ScarletSorceress
             if (Core.CheckInventory("Blood Sorceress") && !Bot.Inventory.IsEquipped("Blood Sorceress"))
             {
                 Core.Equip("Blood Sorceress");
-                Core.Sleep(Core.ActionDelay);
+                Core.Sleep();
             }
             else if (Bot.Inventory.IsEquipped("Blood Sorceress"))
                 Core.KillMonster("battleontown", "Enter", "Spawn", "*");
@@ -72,7 +72,7 @@ public class ScarletSorceress
 
         while (!Bot.ShouldExit && Bot.Map.Name != "battleon")
         {
-            Core.Sleep(Core.ActionDelay);
+            Core.Sleep();
             Bot.Wait.ForMapLoad("battleon");
         }
 

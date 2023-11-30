@@ -71,7 +71,7 @@ public class CarolingMerge
                         for (int i = 0; i <= 5; i++)
                         {
                             Bot.Kill.Monster("Frostval Tree");
-                            Core.Sleep(Core.ActionDelay);
+                            Core.Sleep();
                             Bot.Wait.ForPickup(req.Name);
                             if (i == 5)
                             {

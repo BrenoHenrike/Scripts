@@ -120,7 +120,7 @@ public class ArchMageMatsArmy
                 while (!Bot.ShouldExit && Bot.Player.Cell != cell)
                 {
                     Core.Jump(cell);
-                    Core.Sleep(Core.ActionDelay);
+                    Core.Sleep();
                 }
                 Bot.Combat.Attack(MonID);
             }
@@ -135,7 +135,7 @@ public class ArchMageMatsArmy
                 while (!Bot.ShouldExit && Bot.Player.Cell != cell)
                 {
                     Core.Jump(cell);
-                    Core.Sleep(Core.ActionDelay);
+                    Core.Sleep();
                 }
                 foreach (int MonsterMapID in new[] { 1, 2 })
                     if (Core.IsMonsterAlive(MonsterMapID, useMapID: true))
@@ -149,7 +149,7 @@ public class ArchMageMatsArmy
                 while (!Bot.ShouldExit && Bot.Player.Cell != cell)
                 {
                     Core.Jump(cell);
-                    Core.Sleep(Core.ActionDelay);
+                    Core.Sleep();
                 }
                 Bot.Combat.Attack(MonID);
             }
@@ -162,7 +162,7 @@ public class ArchMageMatsArmy
 
     void DarkCarnaxMove(string zone)
     {
-        Core.Sleep(Core.ActionDelay);
+        Core.Sleep();
         switch (zone.ToLower())
         {
             case "a":
