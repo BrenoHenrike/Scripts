@@ -7,7 +7,7 @@ tags: seasonal, april fools, magicmeaderp, neighbeleen, merge
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Seasonal\AprilFools\MagicMeaderp.cs
+//cs_include Scripts/Seasonal\AprilFools\Magicmeadow.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
