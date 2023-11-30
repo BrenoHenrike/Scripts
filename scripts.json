@@ -6,7 +6,7 @@
       "null"
     ],
     "path": "CoreAdvanced.cs",
-    "size": 114447,
+    "size": 114383,
     "fileName": "CoreAdvanced.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreAdvanced.cs"
   },
@@ -17,7 +17,7 @@
       "null"
     ],
     "path": "CoreStory.cs",
-    "size": 29430,
+    "size": 29366,
     "fileName": "CoreStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreStory.cs"
   },
@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreDailies.cs",
-    "size": 48595,
+    "size": 48547,
     "fileName": "CoreDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreDailies.cs"
   },
@@ -39,7 +39,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 109896,
+    "size": 109816,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -50,7 +50,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 188242,
+    "size": 188338,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -106,7 +106,7 @@
       "IODA"
     ],
     "path": "Tools/WheelOfDoomSpam.cs",
-    "size": 5080,
+    "size": 5048,
     "fileName": "WheelOfDoomSpam.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/WheelOfDoomSpam.cs"
   },
@@ -228,7 +228,7 @@
       "null"
     ],
     "path": "Tools/BankAllItems.cs",
-    "size": 2972,
+    "size": 2956,
     "fileName": "BankAllItems.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/BankAllItems.cs"
   },
@@ -245,7 +245,7 @@
       "AC"
     ],
     "path": "Tools/TreasureChestSpam.cs",
-    "size": 6284,
+    "size": 6252,
     "fileName": "TreasureChestSpam.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/TreasureChestSpam.cs"
   },
@@ -382,7 +382,7 @@
       "null"
     ],
     "path": "Army/CoreArmyLite.cs",
-    "size": 40544,
+    "size": 40635,
     "fileName": "CoreArmyLite.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/CoreArmyLite.cs"
   },
@@ -406,7 +406,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 77362,
+    "size": 77330,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -1190,7 +1190,7 @@
       "tutorial"
     ],
     "path": "Story/Tutorial.cs",
-    "size": 1160,
+    "size": 1144,
     "fileName": "Tutorial.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Tutorial.cs"
   },
@@ -1735,7 +1735,7 @@
       "doom-vault-b"
     ],
     "path": "Story/DoomVaultB.cs",
-    "size": 4329,
+    "size": 4313,
     "fileName": "DoomVaultB.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/DoomVaultB.cs"
   },
@@ -3084,7 +3084,7 @@
       "null"
     ],
     "path": "Legion/CoreLegion.cs",
-    "size": 31736,
+    "size": 31720,
     "fileName": "CoreLegion.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/CoreLegion.cs"
   },
@@ -3817,7 +3817,7 @@
       "army"
     ],
     "path": "Army/Classes/ArmyVoidHighlord.cs",
-    "size": 31033,
+    "size": 30953,
     "fileName": "ArmyVoidHighlord.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Classes/ArmyVoidHighlord.cs"
   },
@@ -4074,7 +4074,7 @@
       "voucher item totem of nulgath"
     ],
     "path": "Army/ArmyNulgath/ArmyVoucherItemofNulgath.cs",
-    "size": 4500,
+    "size": 4468,
     "fileName": "ArmyVoucherItemofNulgath.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyNulgath/ArmyVoucherItemofNulgath.cs"
   },
@@ -4088,7 +4088,7 @@
       "reagents"
     ],
     "path": "Army/ArmyNulgath/ArmySupplies.cs",
-    "size": 7130,
+    "size": 7114,
     "fileName": "ArmySupplies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyNulgath/ArmySupplies.cs"
   },
@@ -4134,7 +4134,7 @@
       "[item]"
     ],
     "path": "Army/Templates/ArmyTemplatev3.cs",
-    "size": 5049,
+    "size": 5017,
     "fileName": "ArmyTemplatev3.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Templates/ArmyTemplatev3.cs"
   },
@@ -4215,7 +4215,7 @@
       "army"
     ],
     "path": "Army/ArmyHollowBorn/ArmyHollowSoul.cs",
-    "size": 2978,
+    "size": 2962,
     "fileName": "ArmyHollowSoul.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyHollowBorn/ArmyHollowSoul.cs"
   },
@@ -4257,7 +4257,7 @@
       "\"elemental binding\""
     ],
     "path": "Army/Various/ArmyArchMageBossItems.cs",
-    "size": 6347,
+    "size": 6283,
     "fileName": "ArmyArchMageBossItems.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmyArchMageBossItems.cs"
   },
@@ -4288,7 +4288,7 @@
       "elemental binding"
     ],
     "path": "Army/Various/ArmyElementalBindings.cs",
-    "size": 2006,
+    "size": 1990,
     "fileName": "ArmyElementalBindings.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmyElementalBindings.cs"
   },
@@ -4993,7 +4993,7 @@
       "null"
     ],
     "path": "Nation/AFDL/WillpowerExtraction.cs",
-    "size": 4202,
+    "size": 4186,
     "fileName": "WillpowerExtraction.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/AFDL/WillpowerExtraction.cs"
   },
@@ -5215,7 +5215,7 @@
       "null"
     ],
     "path": "Nation/Various/TarosPrismaticManslayers.cs",
-    "size": 1706,
+    "size": 1690,
     "fileName": "TarosPrismaticManslayers.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/TarosPrismaticManslayers.cs"
   },
@@ -5290,7 +5290,7 @@
       "null"
     ],
     "path": "Nation/Various/TarosManslayer.cs",
-    "size": 2185,
+    "size": 2169,
     "fileName": "TarosManslayer.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/TarosManslayer.cs"
   },
@@ -5301,7 +5301,7 @@
       "null"
     ],
     "path": "Nation/Various/AssistingOblivionBlade.cs",
-    "size": 1889,
+    "size": 1873,
     "fileName": "AssistingOblivionBlade.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/AssistingOblivionBlade.cs"
   },
@@ -6111,7 +6111,7 @@
       "heart"
     ],
     "path": "Seasonal/HerosHeartDay/WheelOfLove.cs",
-    "size": 2613,
+    "size": 2597,
     "fileName": "WheelOfLove.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HerosHeartDay/WheelOfLove.cs"
   },
@@ -7712,7 +7712,7 @@
       "frostvale"
     ],
     "path": "Seasonal/Frostvale/CarolingMerge.cs",
-    "size": 5982,
+    "size": 5966,
     "fileName": "CarolingMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/CarolingMerge.cs"
   },
@@ -8044,7 +8044,7 @@
       "suns"
     ],
     "path": "Seasonal/StarFestival/ShorinzanMerge.cs",
-    "size": 8249,
+    "size": 8241,
     "fileName": "ShorinzanMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StarFestival/ShorinzanMerge.cs"
   },
@@ -8710,7 +8710,7 @@
       "shop"
     ],
     "path": "Seasonal/SummerBreak/BeachPartyTokenItems.cs",
-    "size": 1414,
+    "size": 1398,
     "fileName": "BeachPartyTokenItems.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/SummerBreak/BeachPartyTokenItems.cs"
   },
@@ -8723,7 +8723,7 @@
       "summer-break"
     ],
     "path": "Seasonal/SummerBreak/Un-LifeguardQuest.cs",
-    "size": 1303,
+    "size": 1287,
     "fileName": "Un-LifeguardQuest.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/SummerBreak/Un-LifeguardQuest.cs"
   },
@@ -8865,7 +8865,7 @@
       "vampire lord"
     ],
     "path": "Seasonal/Mogloween/VampireLord(Class).cs",
-    "size": 2045,
+    "size": 2029,
     "fileName": "VampireLord(Class).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Mogloween/VampireLord(Class).cs"
   },
@@ -9664,7 +9664,7 @@
       "null"
     ],
     "path": "Story/ThroneofDarkness/CoreToD.cs",
-    "size": 45002,
+    "size": 44986,
     "fileName": "CoreToD.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ThroneofDarkness/CoreToD.cs"
   },
@@ -10853,7 +10853,7 @@
       "dark-war-legion-and-nation"
     ],
     "path": "Story/Legion/DarkWarLegionandNation.cs",
-    "size": 6333,
+    "size": 6317,
     "fileName": "DarkWarLegionandNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Legion/DarkWarLegionandNation.cs"
   },
@@ -11459,7 +11459,7 @@
       "null"
     ],
     "path": "Story/Fireisland/CoreFireisland.cs",
-    "size": 15234,
+    "size": 15218,
     "fileName": "CoreFireisland.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Fireisland/CoreFireisland.cs"
   },
@@ -11745,7 +11745,7 @@
       "class"
     ],
     "path": "Other/Classes/VerusDoomKnight.cs",
-    "size": 8874,
+    "size": 8858,
     "fileName": "VerusDoomKnight.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/VerusDoomKnight.cs"
   },
@@ -11926,7 +11926,7 @@
       "null"
     ],
     "path": "Other/Classes/ScarletSorceress.cs",
-    "size": 2448,
+    "size": 2416,
     "fileName": "ScarletSorceress.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/ScarletSorceress.cs"
   },
@@ -12538,7 +12538,7 @@
       "merge"
     ],
     "path": "Other/MergeShops/FishingGearMerge.cs",
-    "size": 8860,
+    "size": 8828,
     "fileName": "FishingGearMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/FishingGearMerge.cs"
   },
@@ -14421,7 +14421,7 @@
       "null"
     ],
     "path": "Other/Weapons/EnchantedVictoryBladeWeapons.cs",
-    "size": 5427,
+    "size": 5379,
     "fileName": "EnchantedVictoryBladeWeapons.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Weapons/EnchantedVictoryBladeWeapons.cs"
   },
@@ -14520,7 +14520,7 @@
       "null"
     ],
     "path": "Other/Weapons/DualChainSawKatanas.cs",
-    "size": 1016,
+    "size": 984,
     "fileName": "DualChainSawKatanas.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Weapons/DualChainSawKatanas.cs"
   },
@@ -14776,7 +14776,7 @@
       "null"
     ],
     "path": "Other/Badges/Goal.cs",
-    "size": 842,
+    "size": 826,
     "fileName": "Goal.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Badges/Goal.cs"
   },
@@ -14875,7 +14875,7 @@
       "null"
     ],
     "path": "Other/Badges/MoglinPunter.cs",
-    "size": 2759,
+    "size": 2743,
     "fileName": "MoglinPunter.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Badges/MoglinPunter.cs"
   },
@@ -15007,7 +15007,7 @@
       "null"
     ],
     "path": "Other/Various/KillYoshinoBoss.cs",
-    "size": 1237,
+    "size": 1221,
     "fileName": "KillYoshinoBoss.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Various/KillYoshinoBoss.cs"
   },
@@ -15993,7 +15993,7 @@
       "mergeshop"
     ],
     "path": "Darkon/MergeShops/GardenMerge.cs",
-    "size": 11044,
+    "size": 11028,
     "fileName": "GardenMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/MergeShops/GardenMerge.cs"
   },
@@ -19377,7 +19377,7 @@
       "crimson"
     ],
     "path": "Seasonal/TalkLikeaPirateDay/MergeShops/DoomPirateHaulMerge.cs",
-    "size": 6864,
+    "size": 6848,
     "fileName": "DoomPirateHaulMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/MergeShops/DoomPirateHaulMerge.cs"
   },
@@ -19636,7 +19636,7 @@
       "statue"
     ],
     "path": "Seasonal/TalkLikeaPirateDay/MergeShops/DoomPirateHouseMerge.cs",
-    "size": 4960,
+    "size": 4944,
     "fileName": "DoomPirateHouseMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/MergeShops/DoomPirateHouseMerge.cs"
   },
@@ -20261,7 +20261,7 @@
       "extra"
     ],
     "path": "Story/QueenofMonsters/Extra/BrightOak.cs",
-    "size": 14641,
+    "size": 14625,
     "fileName": "BrightOak.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/QueenofMonsters/Extra/BrightOak.cs"
   },
@@ -20400,7 +20400,7 @@
       "null"
     ],
     "path": "Other/Classes/Daily-Classes/BlazeBinder.cs",
-    "size": 2039,
+    "size": 2023,
     "fileName": "BlazeBinder.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/Daily-Classes/BlazeBinder.cs"
   },
