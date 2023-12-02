@@ -1574,13 +1574,21 @@ public class CoreFarms
             { "Earth", "Stone" }
         };
 
-        Core.RegisterQuests(3050, Core.IsMember ? 3299 : 3298);
+
+        Core.RegisterQuests(3050, 3298);
         while (!Bot.ShouldExit && FactionRank("Elemental Master") < rank)
         {
             foreach (var element in elementalItems)
             {
+                if (!Bot.Quests.IsDailyComplete(3299) && Core.IsMember)
+                {
+                    Core.EnsureAccept(3299);
+                    Core.HuntMonster("gilead", $"{element.Key} Elemental", element.Value, 6);
+                    Core.EnsureComplete(3299);
+                }
+
                 Core.HuntMonster("gilead", $"{element.Key} Elemental", $"{element.Key} Core", 1);
-                Core.HuntMonster("gilead", $"{element.Key} Elemental", element.Value, Core.IsMember ? 6 : 5);
+                Core.HuntMonster("gilead", $"{element.Key} Elemental", element.Value, 5);
             }
             Core.HuntMonster("gilead", "Mana Elemental", "Mana Core");
         }
