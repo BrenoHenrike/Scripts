@@ -996,7 +996,7 @@ public class CoreFriday13th
         }
         //9045 | Gobbling Globlins
         Story.MapItemQuest(9045, "blackmaze", 11085);
-Story.KillQuest(9045,"blackmaze","Globlin");
+        Story.KillQuest(9045, "blackmaze", "Globlin");
 
         //9046 | Flowers for Forever
         Story.MapItemQuest(9046, "blackmaze", 11086, 2);
