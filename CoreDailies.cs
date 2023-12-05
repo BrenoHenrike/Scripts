@@ -698,7 +698,7 @@ public class CoreDailies
                     Core.CancelRegisteredQuests();
                 }
                 else Core.HuntMonster("chaoskraken", "Chaos Kraken", "Kraken Doubloon", 13, isTemp: false, publicRoom: true);
-                Core.HuntMonster($"ancienttrigoras", "Ancient Trigoras", "Ancient Trigora’s Horns", 3, isTemp: false);
+                Core.HuntMonster($"ancienttrigoras", "Ancient Trigoras", "Ancient Trigora's Horns", 3, isTemp: false);
                 Core.KillMonster("gravechallenge", "r19", "Left", "Graveclaw the Destroyer", "Graveclaw's Broken Axe", isTemp: false);
                 Core.EnsureComplete(8652);
                 Bot.Wait.ForPickup("Void Aura");
