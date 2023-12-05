@@ -46,15 +46,15 @@ public class TheLeeryContract
 
         var RewardOptions = Core.EnsureLoad(554).Rewards.Select(x => x.Name).ToArray();
         Core.AddDrop(RewardOptions);
-        bool getAll = (int)Bot.Config.Get<RewardsSelection>("RewardSelect") == 9999;
+        bool getAll = (int)Bot.Config!.Get<RewardsSelection>("RewardSelect") == 9999;
 
-        ItemBase item = null;
+        ItemBase? item = null;
         if (!getAll)
         {
             item = Core.EnsureLoad(554).Rewards.Find(x => x.ID == (int)Bot.Config.Get<RewardsSelection>("RewardSelect"));
             if (item == null)
             {
-                Core.Logger($"{item.Name} not found in Quest Rewards");
+                Core.Logger($"{Bot.Config.Get<RewardsSelection>("RewardSelect")} not found in Quest Rewards");
                 return;
             }
             if (Core.CheckInventory(item.Name))
@@ -62,14 +62,14 @@ public class TheLeeryContract
             Core.FarmingLogger(item.Name, 1);
         }
 
-        while (getAll ? !Core.CheckInventory(RewardOptions) : !Core.CheckInventory(item.Name))
+        while (getAll ? !Core.CheckInventory(RewardOptions) : !Core.CheckInventory(item!.Name))
         {
             Core.EnsureAccept(554);
             Nation.FarmUni13(1);
             Core.HuntMonster("EvilWarNul", "Undead Legend", "Undead Legend Rune");
 
             if (!getAll)
-                Core.EnsureComplete(554, item.ID);
+                Core.EnsureComplete(554, item!.ID);
             else Core.EnsureCompleteChoose(554);
         }
     }
