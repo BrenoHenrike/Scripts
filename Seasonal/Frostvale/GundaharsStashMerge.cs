@@ -75,8 +75,8 @@ public class GundaharsStashMerge
                     Core.RegisterQuests(8433);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonsterMapID("deerhunt", 1, "Wolf Warded", quant);
-                        Core.HuntMonsterMapID("deerhunt", 4, "Deer Deterred", quant);
+                        Core.HuntMonsterMapID("deerhunt", 1, "Deer Deterred", quant);
+                        Core.HuntMonsterMapID("deerhunt", 4, "Wolf Warded", quant);
                         Core.HuntMonsterMapID("deerhunt", 5, "Owl Ousted", quant);
                         Bot.Wait.ForPickup(req.Name);
                     }
