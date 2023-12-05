@@ -2255,14 +2255,23 @@
   },
   {
     "name": "Mine Crafting Daily",
-    "description": "Mine Crafting",
+    "description": "Automatically does the MineCrafting quest for you and picks what metals are needed.",
     "tags": [
       "daily",
-      "mine crafting",
-      "metal"
+      "mine",
+      "crafting",
+      "metal",
+      "barium",
+      "copper",
+      "silver",
+      "aluminum",
+      "gold",
+      "iron",
+      "platinum",
+      "BLOD"
     ],
     "path": "Dailies/MineCrafting.cs",
-    "size": 1880,
+    "size": 2015,
     "fileName": "MineCrafting.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/MineCrafting.cs"
   },
