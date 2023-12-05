@@ -37,7 +37,7 @@ public class ArmyLeveling
     public string OptionsStorage = "Army Leveling";
     public List<IOption> Options = new List<IOption>
     {
-        new Option<Method>("LevelMethod", "Map selection", "Which map to farm Experience?", Method.IceStormArena),
+        new Option<MethodV2>("LevelMethod", "Map selection", "Which map to farm Experience?", MethodV2.IceStormArena),
         sArmy.player1,
         sArmy.player2,
         sArmy.player3,
@@ -67,12 +67,12 @@ public class ArmyLeveling
         Farm.ToggleBoost(BoostType.Gold);
 
         // Get the selected method from the configuration
-        Method selectedMethod = Bot.Config!.Get<Method>("LevelMethod");
+        MethodV2 selectedMethod = Bot.Config!.Get<MethodV2>("LevelMethod");
 
         // Execute the selected method
         switch (selectedMethod)
         {
-            case Method.IceStormArena:
+            case MethodV2.IceStormArena:
                 Core.EquipClass(ClassType.Farm);
                 Army.waitForParty("whitemap");
                 Army.AggroMonCells("r22");
@@ -90,7 +90,7 @@ public class ArmyLeveling
                 Army.waitForParty("whitemap");
                 break;
 
-            case Method.IceStormUnder:
+            case MethodV2.IceStormUnder:
                 if (Bot.Player.Level < 75)
                     Core.Logger("Player is below lvl 75, which is\n" +
                     "required for the map. --stopping", stopBot: true);
@@ -110,7 +110,7 @@ public class ArmyLeveling
                 Army.waitForParty("whitemap");
                 break;
 
-            case Method.IceWing:
+            case MethodV2.IceWing:
                 if (Bot.Player.Level < 75)
                     Core.Logger("Player is below lvl 75, required for\n" +
                     "the map --stopping", stopBot: true);
@@ -131,7 +131,7 @@ public class ArmyLeveling
                 Army.waitForParty("whitemap");
                 break;
 
-            case Method.SevenCirclesWar:
+            case MethodV2.SevenCirclesWar:
                 SC.CirclesWar(true);
                 Core.EquipClass(ClassType.Farm);
                 Army.waitForParty("whitemap");
@@ -150,7 +150,7 @@ public class ArmyLeveling
                 Army.waitForParty("whitemap");
                 break;
 
-            case Method.Streamwar:
+            case MethodV2.Streamwar:
                 SoW.TimestreamWar();
                 Core.EquipClass(ClassType.Farm);
                 Core.AddDrop("Prismatic Seams");
@@ -171,33 +171,33 @@ public class ArmyLeveling
                 break;
 
 
-            case Method.ShadowBattleon_High_Levels:
-            case Method.ShadowBattleon_Lower_Levels:
-            case Method.ShadowBattleon_Baby_Mode:
+            case MethodV2.ShadowBattleon_High_Levels:
+            case MethodV2.ShadowBattleon_Lower_Levels:
+            case MethodV2.ShadowBattleon_Baby_Mode:
                 RequiredQuest("shadowbattleon", 9426);
                 Core.EquipClass(ClassType.Farm);
                 Core.AddDrop("Wisper");
 
-                if (selectedMethod == Method.ShadowBattleon_Baby_Mode)
+                if (selectedMethod == MethodV2.ShadowBattleon_Baby_Mode)
                     Core.RegisterQuests(9421, 9422, 9423);
                 else
                     Core.RegisterQuests(9421, 9422, 9426);
 
                 Core.Logger($"Mode Selected: {selectedMethod}");
 
-                if (selectedMethod == Method.ShadowBattleon_High_Levels)
+                if (selectedMethod == MethodV2.ShadowBattleon_High_Levels)
                 {
                     Army.AggroMonCells("r11", "r12");
                     Army.AggroMonStart("shadowbattleon");
                     Army.DivideOnCells("r11", "r12");
                 }
-                else if (selectedMethod == Method.ShadowBattleon_Lower_Levels)
+                else if (selectedMethod == MethodV2.ShadowBattleon_Lower_Levels)
                 {
                     Army.AggroMonCells("r11");
                     Army.AggroMonStart("shadowbattleon");
                     Army.DivideOnCells("r11");
                 }
-                else if (selectedMethod == Method.ShadowBattleon_Baby_Mode)
+                else if (selectedMethod == MethodV2.ShadowBattleon_Baby_Mode)
                 {
                     Army.AggroMonCells("Enter");
                     Army.AggroMonStart("shadowbattleon");
@@ -208,7 +208,7 @@ public class ArmyLeveling
 
                 if (Bot.Player.CurrentClass!.Name == "ArchMage")
                     Bot.Options.AttackWithoutTarget = true;
-                    
+
                 while (!Bot.ShouldExit && Bot.Player.Level < level)
                     Bot.Combat.Attack("*");
 
@@ -242,7 +242,7 @@ public class ArmyLeveling
         Core.JumpWait();
     }
 
-    public enum Method
+    public enum MethodV2
     {
         IceStormArena = 1,
         IceStormUnder = 2,
