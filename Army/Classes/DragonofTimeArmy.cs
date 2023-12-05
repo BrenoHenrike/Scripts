@@ -45,7 +45,6 @@ public class DoTArmy
     public Borgars Borgars = new();
     private CoreArmyLite Army = new();
 
-    private static CoreBots sCore = new();
     private static CoreArmyLite sArmy = new();
 
 
@@ -525,15 +524,15 @@ public class DoTArmy
 
     public void DoQuest10()
     {
-        if (Core.CheckInventory(QuestRewards[20..22], toInv: false))
-            foreach (string reward in QuestRewards[20..22])
+        if (Core.CheckInventory(QuestRewards[20..21], toInv: false))
+            foreach (string reward in QuestRewards[20..21])
                 Army.waitForParty("whitemap", reward);
 
         else Core.Logger("Quest already complete / Items owned, butlering[hopefully]");
 
         List<string> PreQuestInv = Bot.Inventory.Items.Select(x => x.Name).ToList();
 
-        while (!Bot.ShouldExit && !Core.CheckInventory(QuestRewards[20..22], toInv: false))
+        while (!Bot.ShouldExit && !Core.CheckInventory(QuestRewards[20..21], toInv: false))
         {
             Core.EnsureAccept(7725);
 
@@ -645,8 +644,8 @@ public class DoTArmy
                 break;
             }
 
-                if (Bot.Player.CurrentClass?.Name == "ArchMage")
-                    Bot.Options.AttackWithoutTarget = true;
+            if (Bot.Player.CurrentClass?.Name == "ArchMage")
+                Bot.Options.AttackWithoutTarget = true;
 
             else if (monsters != new[] { "Tigoras" } || monsters != new[] { "Hydra Head 90" })
                 Bot.Combat.Attack("*");
@@ -668,6 +667,11 @@ public class DoTArmy
         Core.PrivateRoomNumber = Army.getRoomNr();
 
         Monster? monster = Bot.Monsters.CurrentMonsters?.Find(m => m.ID == monsterID);
+        if (monster == null)
+        {
+            Core.Logger($"Could not find monster {monsterID}, stopping the bot", stopBot: true);
+            return;
+        }
 
         if (Bot.Config!.Get<bool>("sellToSync"))
             Army.SellToSync(item, quant);
@@ -678,11 +682,11 @@ public class DoTArmy
         Core.EquipClass(classType);
         Core.FarmingLogger(item, quant);
 
-        Army.SmartAggroMonStart(map, monster!.ToString());
+        Army.SmartAggroMonStart(map, monster.Name);
 
-                if (Bot.Player.CurrentClass?.Name == "ArchMage")
-                    Bot.Options.AttackWithoutTarget = true;
-                    
+        if (Bot.Player.CurrentClass?.Name == "ArchMage")
+            Bot.Options.AttackWithoutTarget = true;
+
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
             Bot.Combat.Attack("*");
 
