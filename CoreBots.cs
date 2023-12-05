@@ -3454,8 +3454,9 @@ public class CoreBots
             case "tlapd":
             case "superslayin":
             case "infernalarena":
+            case "caroling":
                 // Special
-                JumpWait();
+                JumpWait();                
                 map = strippedMap + "-999999";
                 tryJoin();
                 break;
