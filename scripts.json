@@ -7530,7 +7530,7 @@
       "frostvale"
     ],
     "path": "Seasonal/Frostvale/CheckForDonantedACs.cs",
-    "size": 5884,
+    "size": 5984,
     "fileName": "CheckForDonantedACs.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/CheckForDonantedACs.cs"
   },
@@ -7570,7 +7570,7 @@
       "frostvale"
     ],
     "path": "Seasonal/Frostvale/ChillysParticipation.cs",
-    "size": 1105,
+    "size": 1830,
     "fileName": "ChillysParticipation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/ChillysParticipation.cs"
   },
