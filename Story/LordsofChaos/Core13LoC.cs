@@ -8,6 +8,7 @@ tags: null
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreFarms.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
 
 public class Core13LoC
 {
@@ -2021,6 +2022,12 @@ public class Core13LoC
             Bot.Wait.ForMapLoad("mirrorportal");
             Core.EnsureComplete(3187);
             Bot.Wait.ForPickup("Shriekward Potion");
+            Core.SellItem("Shriekward Potion", all: true);
+
+            Core.Logger("Fixing soemthing with teh chaos harpy, one moment");
+            Core.Join("whitemap");
+            Core.Join("mirrorportal");
+
         }
 
         //Horror Takes Flight
@@ -2028,15 +2035,17 @@ public class Core13LoC
         {
             Core.EquipClass(ClassType.Solo);
             Core.EnsureAccept(3188);
-            Core.BuyItem("mirrorportal", 774, "Shriekward Potion", 1);
-            Core.Equip("Shriekward Potion");
-            Bot.Skills.UseSkill(5);
+            Core.BuyItem("mirrorportal", 774, "Shriekward Potion", 99);
             Core.HuntMonsterMapID("mirrorportal", 1, "Chaos Harpy Defeated");
             Core.EnsureComplete(3188);
             if (Core.CheckInventory("Shriekward Potion"))
             {
                 Core.JumpWait();
-                Core.SendPackets($"%xt%zm%unequipItem%{Bot.Map.RoomID}%{20771}%");
+                if (Bot.Inventory.IsEquipped(20771))
+                {
+                    Core.SendPackets($"%xt%zm%unequipItem%{Bot.Map.RoomID}%{20771}%");
+                    Core.Sleep();
+                }
                 Core.SellItem("Shriekward Potion", all: true);
             }
         }
