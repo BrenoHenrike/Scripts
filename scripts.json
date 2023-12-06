@@ -1546,7 +1546,7 @@
       "djinn-gate"
     ],
     "path": "Story/DjinnGate.cs",
-    "size": 6928,
+    "size": 7111,
     "fileName": "DjinnGate.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/DjinnGate.cs"
   },
@@ -11643,7 +11643,7 @@
       "class"
     ],
     "path": "Other/Classes/VerusDoomKnight.cs",
-    "size": 8858,
+    "size": 8920,
     "fileName": "VerusDoomKnight.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/VerusDoomKnight.cs"
   },
@@ -14190,7 +14190,7 @@
       "pet"
     ],
     "path": "Other/Pets/CursedWazikashi.cs",
-    "size": 1409,
+    "size": 1584,
     "fileName": "CursedWazikashi.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Pets/CursedWazikashi.cs"
   },
