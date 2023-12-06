@@ -1,7 +1,7 @@
 /*
 name: Exaltia Tower Story
 description: This will finish the Exaltia Tower story.
-tags: story, quest, exaltia-tower
+tags: story, quest, exaltia, exaltia tower, timeinn, dot
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
