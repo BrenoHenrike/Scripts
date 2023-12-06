@@ -166,8 +166,10 @@ public class PotionBuyer
 
                 case "Unstable Divine Elixir":
                     if (potionQuant > 99)
+                    {
                         Core.Logger($"Max quant for [{potion}] is [{potionQuant}] -Adjusting");
-                    potionQuant = 99;
+                        potionQuant = 99;
+                    }
                     currTrait = CoreFarms.AlchemyTraits.hOu;
                     BulkGrind("Dragon Scale", "Lemurphant Tears");
                     break;
