@@ -4,6 +4,8 @@ description: This will finish the Djinn Gate story.
 tags: story, quest, djinn-gate
 */
 //cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
 using Skua.Core.Interfaces;
 
@@ -12,6 +14,7 @@ public class DjinnGateStory
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new CoreStory();
+    public CoreAdvanced Adv = new CoreAdvanced();
 
     private string[] drops =
     {
@@ -111,7 +114,9 @@ public class DjinnGateStory
         {
             Core.EnsureAccept(6158);
             Core.EquipClass(ClassType.Solo);
+            Adv.GearStore();
             Core.KillDoomKitten("Potent DoomKitten Mana", isTemp: true);
+            Adv.GearStore(true);
             Core.KillMonster("bloodtitan", "Ultra", "Left", "*", "Potent Blood Titan Mana");
             Core.KillTrigoras("Potent Trigoras Mana", isTemp: true);
             Core.KillMonster("phoenixrise", "r8", "Left", "*", "Potent CinderClaw Mana");

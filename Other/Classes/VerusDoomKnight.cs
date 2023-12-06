@@ -138,7 +138,9 @@ public class VerusDoomKnightClass
         if (!Core.isCompletedBefore(9418))
         {
             Core.EnsureAccept(9418);
+            Adv.GearStore();
             Core.KillDoomKitten("Doomkitten's Molar", 20, false);
+            Adv.GearStore(true);
             if (!Core.CheckInventory("Deadly Duo's Decayed Denture"))
                 Core.Logger("InfernalArena is a **SOLO ONLY** map!");
             Adv.GearStore();
