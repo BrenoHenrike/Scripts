@@ -165,8 +165,9 @@ public class PotionBuyer
                     break;
 
                 case "Unstable Divine Elixir":
+                    if (potionQuant > 99)
+                        Core.Logger($"Max quant for [{potion}] is [{potionQuant}] -Adjusting");
                     potionQuant = 99;
-                    Core.Logger($"Max quant for [{potion}] is [{potionQuant}] -Adjusting");
                     currTrait = CoreFarms.AlchemyTraits.hOu;
                     BulkGrind("Dragon Scale", "Lemurphant Tears");
                     break;
@@ -332,7 +333,7 @@ public class PotionBuyer
                                 Core.KillMonster("lair", "Hole", "Center", "*", isTemp: false, log: false);
                         }
                         else if (!Core.CheckInventory(11475, ingreQuant))
-                            Adv.BuyItem("alchemyacademy", 397, 11475, ingreQuant, shopItemID: 1241);
+                            Adv.BuyItem("alchemyacademy", 397, 11475, ingreQuant, shopItemID: 1232);
                         break;
 
                     case "Roc Tongue":
