@@ -2521,6 +2521,11 @@ public class CoreBots
         }
     }
 
+    /// <summary>
+    /// Pauses execution for a specified duration in milliseconds.
+    /// If the provided duration is -1, it uses the default action delay of 750ms.
+    /// </summary>
+    /// <param name="ms">The duration to pause execution in milliseconds. Defaults to -1.</param>
     public void Sleep(int ms = -1)
     {
         if (Bot.ShouldExit)
@@ -2530,6 +2535,7 @@ public class CoreBots
         }
         Bot.Sleep((ms == -1) ? ActionDelay : ms);
     }
+
 
     /// <summary>
     /// Logs a line of text to the script log with time, method from where it's called and a message
@@ -2805,8 +2811,6 @@ public class CoreBots
         if (gear == null || gear.Length == 0)
             return;
 
-        JumpWait();
-
         foreach (string item in gear)
         {
             if (String.IsNullOrEmpty(item) || String.IsNullOrWhiteSpace(item))
@@ -2835,8 +2839,6 @@ public class CoreBots
     {
         if (gear == null || gear.Length == 0)
             return;
-
-        JumpWait();
 
         foreach (int item in gear)
         {
@@ -2868,6 +2870,14 @@ public class CoreBots
             return;
         }
 
+        while (!Bot.ShouldExit && (Bot.Player.HasTarget || Bot.Player.InCombat))
+        {
+            Bot.Combat.CancelTarget();
+            Bot.Wait.ForCombatExit();
+            JumpWait();
+            Sleep();
+        }
+
         switch (item.CategoryString.ToLower())
         {
             case "item": // Consumables
@@ -2893,7 +2903,7 @@ public class CoreBots
         }
 
         Bot.Wait.ForItemEquip(item.ID);
-        Sleep((int)(ActionDelay * 1.5));
+        Sleep();
         if (logEquip)
             Logger($"Equipping {(Bot.Inventory.IsEquipped(item.ID) ? String.Empty : "failed: ")} {item.Name}", "Equip");
     }
@@ -3456,7 +3466,7 @@ public class CoreBots
             case "infernalarena":
             case "caroling":
                 // Special
-                JumpWait();                
+                JumpWait();
                 map = strippedMap + "-999999";
                 tryJoin();
                 break;

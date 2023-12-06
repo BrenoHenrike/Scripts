@@ -687,13 +687,12 @@ public class CoreNation
 
                     if (item != "Voucher of Nulgath" && _sellMemVoucher && Core.CheckInventory("Voucher of Nulgath"))
                     {
-                        Core.JumpWait();
-
                         while (!Bot.ShouldExit && (Bot.Player.HasTarget || Bot.Player.InCombat) && Bot.Player.Cell != "Enter")
                         {
                             Bot.Combat.CancelTarget();
                             Bot.Wait.ForCombatExit();
-                            Core.Jump("Enter", "Spawn");
+                            Core.JumpWait();
+                            Core.Sleep();
                         }
 
                         Bot.Wait.ForPickup("Voucher of Nulgath");

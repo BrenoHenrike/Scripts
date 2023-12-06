@@ -922,7 +922,7 @@ public class CoreAdvanced
     /// Stores the gear a player has so that it can later restore these
     /// </summary>
     /// <param name="Restore">Set true to restore previously stored gear</param>
-    public void GearStore(bool Restore = false)
+    public void GearStore(bool Restore = false, bool EnhAfter = false)
     {
         if (!Restore)
         {
@@ -936,13 +936,14 @@ public class CoreAdvanced
                 ReHEnhanceAfter = CurrentHelmSpecial();
             ReWEnhanceAfter = CurrentWeaponSpecial();
         }
-        else if (ReEquippedItems.Count() > 0)
+        else if (ReEquippedItems.Count > 0)
         {
             Core.Equip(ReEquippedItems.ToArray());
-            EnhanceEquipped(ReEnhanceAfter, ReCEnhanceAfter, ReHEnhanceAfter, ReWEnhanceAfter);
+            if (EnhAfter)
+                EnhanceEquipped(ReEnhanceAfter, ReCEnhanceAfter, ReHEnhanceAfter, ReWEnhanceAfter);
         }
     }
-    private List<string> ReEquippedItems = new List<string>();
+    private List<string> ReEquippedItems = new();
     private EnhancementType ReEnhanceAfter = EnhancementType.Lucky;
     private CapeSpecial ReCEnhanceAfter = CapeSpecial.None;
     private HelmSpecial ReHEnhanceAfter = HelmSpecial.None;
