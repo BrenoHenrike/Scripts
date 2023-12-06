@@ -72,15 +72,19 @@ public class CheckForDonatedACs
             double accountAgeInDays = DateTime.Now.Subtract(creationDate).TotalDays;
             if (accountAgeInDays < (double)14)
             {
-                Core.Logger($"Account too young: {Core.Username()} ({accountAgeInDays.ToString()}/14 days) - Skipping");
-                warnings.Add($"- {Core.Username()}: account is too young ({accountAgeInDays.ToString()}/14 days)");
+                Core.Logger($"Account too young: {Core.Username()} ({accountAgeInDays}/14 days) - Skipping");
+                warnings.Add($"- {Core.Username()}: account is too young ({accountAgeInDays}/14 days)");
                 continue;
             }
 
             // Verified Email
             if (Bot.Flash.CallGameFunction<bool>("world.myAvatar.isEmailVerified"))
-                // Participation Quest
+            {
+                //Edit for future years quests vv
+                // Participation Quest 9493
                 CQ.ChillysParticipation();
+                Bot.Wait.ForQuestComplete(9493);
+            }
             else
             {
                 Core.Logger($"Unverified Email: {Core.Username()} - Skipping");
@@ -100,14 +104,14 @@ public class CheckForDonatedACs
         }
         Core.WriteFile(logPath, writeACs);
 
-        if (newACs.Count() == 0)
-            Bot.ShowMessageBox($"We checked {Army.doForAllAccountDetails.Count() / 2} accounts, but none of them have gained any {(firstTime ? "ACs" : "more ACs since last time")}." +
-            $"{(warnings.Count() > 0 ? "\n\nPlease be aware of the following things:\n" + String.Join('\n', warnings) : "")}",
+        if (newACs.Count == 0)
+            Bot.ShowMessageBox($"We checked {Army.doForAllAccountDetails.Length / 2} accounts, but none of them have gained any {(firstTime ? "ACs" : "more ACs since last time")}." +
+            $"{(warnings.Count > 0 ? "\n\nPlease be aware of the following things:\n" + String.Join('\n', warnings) : "")}",
             (Bot.Random.Next(1, 100) == 100 ? "No Maidens" : "No ACs"));
         else
         {
-            Bot.ShowMessageBox($"{newACs.Count()} out of {Army.doForAllAccountDetails.Count() / 2} accounts received ACs! Below you will find more details:\n\n" + String.Join('\n', ACs) +
-            $"{(warnings.Count() > 0 ? "\n\nPlease be aware of the following things:\n" + String.Join('\n', warnings) : "")}", "Got ACs!");
+            Bot.ShowMessageBox($"{newACs.Count} out of {Army.doForAllAccountDetails.Length / 2} accounts received ACs! Below you will find more details:\n\n" + String.Join('\n', ACs) +
+            $"{(warnings.Count > 0 ? "\n\nPlease be aware of the following things:\n" + String.Join('\n', warnings) : "")}", "Got ACs!");
         }
 
         void ACsListener(dynamic packet)
