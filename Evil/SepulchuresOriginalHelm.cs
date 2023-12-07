@@ -92,7 +92,7 @@ public class SepulchuresOriginalHelm
                     Farm.EvilREP(10);
                     Core.EnsureAccept(5457);
                     while (!Bot.ShouldExit && !Core.CheckInventory(37039))
-                        Core.HuntMonsterMapID("necrodungeon", 9);
+                        Core.HuntMonsterMapID("necrodungeon", 9, log: false);
                     Core.EnsureComplete(5457);
                     Bot.Wait.ForPickup(37034);
                 }

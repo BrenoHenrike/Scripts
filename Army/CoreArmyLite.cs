@@ -135,7 +135,7 @@ public class CoreArmyLite
     public string AggroMonPacket(params int[] MonsterMapIDs)
         => $"%xt%zm%aggroMon%{Bot.Map.RoomID}%{String.Join('%', MonsterMapIDs)}%";
 
-    public void SmartAggroMonStart(string? map, params string?[] monsters)
+    public void SmartAggroMonStart(string map, params string?[] monsters)
     {
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = getRoomNr();
