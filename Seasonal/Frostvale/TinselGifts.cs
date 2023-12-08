@@ -28,87 +28,30 @@ public class TinselGifts
         TinselCape();
     }
 
-    public void TinselWeapon()
+    public void TinselWeapon() => ProcessSeasonalMap("frostdeep", 914, "Ancient Maggot", "Tinsel's Sword Bow");
+    public void TinselHelm() => ProcessSeasonalMap("icevolcano", 915, "Ice Symbiote", "Tinsel's Helm Bow");
+    public void TinselArmor() => ProcessSeasonalMap("goldenruins", 1517, "Golden Warrior", "Tinsel's Armor Bow");
+    public void TinselCape() => ProcessSeasonalMap("icerise", 2554, "Arctic Direwolf", "Tinsel's Cape Bow");
+
+    private void ProcessSeasonalMap(string mapName, int questId, string monsterName, string itemBow)
     {
-        if (!Core.isSeasonalMapActive("frostdeep"))
+        if (!Core.isSeasonalMapActive(mapName))
             return;
 
-        string[] rewards = Core.QuestRewards(914); //Tinsel's Weapon Gift
+        string[] rewards = Core.QuestRewards(questId);
 
         if (Core.CheckInventory(rewards))
             return;
 
         Core.AddDrop(rewards);
 
-        Core.RegisterQuests(914);
         while (!Bot.ShouldExit && !(Core.CheckInventory(rewards)))
         {
-            Core.HuntMonster("frostdeep", "Ancient Maggot", "Tinsel's Sword Bow", log: false);
+            Core.EnsureAccept(questId);
+            Core.HuntMonster(mapName, monsterName, itemBow, log: false);
+            Core.EnsureCompleteChoose(questId);
         }
-        Core.CancelRegisteredQuests();
         Core.ToBank(rewards);
     }
 
-    public void TinselHelm()
-    {
-        if (!Core.isSeasonalMapActive("icevolcano"))
-            return;
-
-        string[] rewards = Core.QuestRewards(915); //Tinsel's Helm & Pet Gift
-
-        if (Core.CheckInventory(rewards))
-            return;
-
-        Core.AddDrop(rewards);
-
-        Core.RegisterQuests(915);
-        while (!Bot.ShouldExit && !(Core.CheckInventory(rewards)))
-        {
-            Core.HuntMonster("icevolcano", "Ice Symbiote", "Tinsel's Helm Bow", log: false);
-        }
-        Core.CancelRegisteredQuests();
-        Core.ToBank(rewards);
-    }
-
-    public void TinselArmor()
-    {
-        if (!Core.isSeasonalMapActive("goldenruins"))
-            return;
-
-        string[] rewards = Core.QuestRewards(1517); //Tinsel's Armor Gift
-
-        if (Core.CheckInventory(rewards))
-            return;
-
-        Core.AddDrop(rewards);
-
-        Core.RegisterQuests(1517);
-        while (!Bot.ShouldExit && !(Core.CheckInventory(rewards)))
-        {
-            Core.HuntMonster("goldenruins", "Golden Warrior", "Tinsel's Armor Bow", log: false);
-        }
-        Core.CancelRegisteredQuests();
-        Core.ToBank(rewards);
-    }
-
-    public void TinselCape()
-    {
-        if (!Core.isSeasonalMapActive("icerise"))
-            return;
-
-        string[] rewards = Core.QuestRewards(2554); //Tinsel's Cape Gift
-
-        if (Core.CheckInventory(rewards))
-            return;
-
-        Core.AddDrop(rewards);
-
-        Core.RegisterQuests(2554);
-        while (!Bot.ShouldExit && !(Core.CheckInventory(rewards)))
-        {
-            Core.HuntMonster("icerise", "Arctic Direwolf", "Tinsel's Cape Bow", log: false);
-        }
-        Core.CancelRegisteredQuests();
-        Core.ToBank(rewards);
-    }
 }
