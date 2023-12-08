@@ -69,9 +69,7 @@ public class DeepTrobbleMerge
                     Core.EquipClass(ClassType.Solo);
                     // Very Trobblesome 9394
                     Core.RegisterQuests(9394);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                        Core.HuntMonsterMapID("dreadspace", 48, "Trobble Captured");
-                    Bot.Wait.ForPickup(req.Name);
+                    Core.HuntMonsterMapID("dreadspace", 48, req.Name, quant, false);
                     Core.CancelRegisteredQuests();
                     break;
 

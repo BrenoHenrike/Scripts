@@ -62,8 +62,7 @@ public class WeaponMasteryAC
             if (!Core.CheckInventory("Underfriend Blade of Nulgath"))
             {
                 Core.EquipClass(ClassType.Solo);
-                while (!Bot.ShouldExit && !Core.CheckInventory("Mirror Realm Token", 10))
-                    Core.HuntMonsterMapID("mirrorportal", 1);
+                Core.HuntMonsterMapID("mirrorportal", 1, "Mirror Realm Token", 10, false);
 
                 Farm.Gold(100000);
                 Core.BuyItem("mirrorportal", 618, "Underfriend Blade of Nulgath");

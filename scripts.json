@@ -50,7 +50,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 188811,
+    "size": 188763,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -322,7 +322,7 @@
       "null"
     ],
     "path": "Evil/SepulchuresOriginalHelm.cs",
-    "size": 5251,
+    "size": 5263,
     "fileName": "SepulchuresOriginalHelm.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/SepulchuresOriginalHelm.cs"
   },
@@ -382,7 +382,7 @@
       "null"
     ],
     "path": "Army/CoreArmyLite.cs",
-    "size": 40635,
+    "size": 40634,
     "fileName": "CoreArmyLite.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/CoreArmyLite.cs"
   },
@@ -5022,7 +5022,7 @@
       "underfiend"
     ],
     "path": "Nation/Various/WeaponMastery(AC).cs",
-    "size": 2537,
+    "size": 2476,
     "fileName": "WeaponMastery(AC).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/WeaponMastery(AC).cs"
   },
@@ -12176,7 +12176,7 @@
       "null"
     ],
     "path": "Other/MergeShops/MirrorRealmMerge.cs",
-    "size": 9331,
+    "size": 9266,
     "fileName": "MirrorRealmMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/MirrorRealmMerge.cs"
   },
@@ -13410,7 +13410,7 @@
       "higure"
     ],
     "path": "Other/MergeShops/DeepTrobbleMerge.cs",
-    "size": 6041,
+    "size": 5906,
     "fileName": "DeepTrobbleMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/DeepTrobbleMerge.cs"
   },
@@ -14360,13 +14360,18 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Weapons/FortitudeAndHubris.cs"
   },
   {
-    "name": "ShadowReaperOfDoom",
-    "description": "null",
+    "name": "ShadowReaper of Doom",
+    "description": "This bot farms the requiered materials to farm the ShadowReaper of Doom",
     "tags": [
-      "null"
+      "blod",
+      "mirror",
+      "realm",
+      "token",
+      "undead",
+      "paladin"
     ],
     "path": "Other/Weapons/ShadowReaperOfDoom.cs",
-    "size": 1445,
+    "size": 1330,
     "fileName": "ShadowReaperOfDoom.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Weapons/ShadowReaperOfDoom.cs"
   },
@@ -14845,7 +14850,7 @@
       "null"
     ],
     "path": "Other/Various/Potions.cs",
-    "size": 17931,
+    "size": 18468,
     "fileName": "Potions.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Various/Potions.cs"
   },

@@ -69,8 +69,7 @@ public class MirrorRealmMerge
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
                     Core.RegisterQuests(3188);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                        Core.HuntMonsterMapID("mirrorportal", 1);
+                    Core.HuntMonsterMapID("mirrorportal", 1, req.Name, quant, false);
                     Core.CancelRegisteredQuests();
                     break;
 

@@ -1995,22 +1995,21 @@ public class CoreBots
 
             else Bot.Kill.Monster(monster);
             Rest();
+            return;
         }
-        else
-        {
-            if (!isTemp)
-                AddDrop(item);
-            if (log)
-                Logger($"Killing {monster.Name} for {item}, ({dynamicQuant(item, isTemp)}/{quant}) [Temp = {isTemp}]");
+        if (!isTemp)
+            AddDrop(item);
+        if (log)
+            Logger($"Killing {monster.Name} for {item}, ({dynamicQuant(item, isTemp)}/{quant}) [Temp = {isTemp}]");
 
-            while (!Bot.ShouldExit && (isTemp ? !Bot.TempInv.Contains(item, quant) : !CheckInventory(item, quant)))
-            {
-                if (!Bot.Combat.StopAttacking)
-                    Bot.Combat.Attack(monster);
-                Sleep();
-                Rest();
-            }
+        while (!Bot.ShouldExit && (isTemp ? !Bot.TempInv.Contains(item, quant) : !CheckInventory(item, quant)))
+        {
+            if (!Bot.Combat.StopAttacking)
+                Bot.Combat.Attack(monster);
+            Sleep();
+            Rest();
         }
+        
     }
 
     /// <summary>
