@@ -46,6 +46,13 @@ public class CheckForDonatedACs
         while (Army.doForAll())
         {
             Core.Sleep(2000);
+            Bot.Wait.ForMapLoad("battleon");
+
+            while (!Bot.ShouldExit && !Bot.Player.Loaded)
+                Core.Sleep();
+
+            Bot.Send.Packet($"%xt%zm%house%1%{Bot.Player.Username}%");
+            Bot.Wait.ForMapLoad("house");
 
             Daily.WheelofDoom();
             Daily.MonthlyTreasureChestKeys();
