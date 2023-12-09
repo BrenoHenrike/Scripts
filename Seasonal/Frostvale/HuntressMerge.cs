@@ -33,7 +33,6 @@ public class HuntressMerge
     {   
         Core.BankingBlackList.AddRange(new[] { "Sluagh Bell", "Punk Coal Elf Stabber", "Festive Punk Elf Stabber", "Wild Huntress' Sword " });
         Core.SetOptions();
-
         
         BuyAllMerge();
 
@@ -70,10 +69,10 @@ public class HuntressMerge
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.RegisterQuests(8446, 8447, 8448);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.ID, quant))
                     {
-                        Core.KillMonster("otziwar", "r6", "Left", "Sluagh Warrior", "Ancient Fragments", 3);
-                        Bot.Wait.ForPickup(req.Name);
+                        Core.KillMonster("otziwar", "r6", "Left", "Sluagh Warrior", req.Name, quant);
+                        Bot.Wait.ForPickup(req.ID);
                     }
                     Core.CancelRegisteredQuests();
                     break;
