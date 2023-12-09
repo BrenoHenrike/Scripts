@@ -15617,6 +15617,40 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/CheckForDonantedACs.cs"
   },
   {
+    "name": "Glacial Tomb Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Glacial Tomb Merge [2377] in /glacetomb",
+    "tags": [
+      "glacial",
+      "tomb",
+      "merge",
+      "glacetomb",
+      "arctic",
+      "necrodraugr",
+      "scholar",
+      "nether",
+      "morph",
+      "blessed",
+      "frostguarde",
+      "resonating",
+      "polaris",
+      "rapier",
+      "rapiers",
+      "awakening",
+      "frost",
+      "shatter",
+      "spear",
+      "lumen",
+      "ice",
+      "bright",
+      "astromancer",
+      "shillelagh"
+    ],
+    "path": "Seasonal/Frostvale/GlacialTombMerge.cs",
+    "size": 5848,
+    "fileName": "GlacialTombMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/GlacialTombMerge.cs"
+  },
+  {
     "name": "Yulecat Drops",
     "description": "This will repeatedly kill Yulecat until you got all of the drops.",
     "tags": [
@@ -15734,6 +15768,19 @@
     "size": 1830,
     "fileName": "ChillysParticipation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/ChillysParticipation.cs"
+  },
+  {
+    "name": "Glace Tomb",
+    "description": "This will finish the Glace Tomb Storyline.",
+    "tags": [
+      "glace-tomb-story",
+      "seasonal",
+      "frostvale"
+    ],
+    "path": "Seasonal/Frostvale/GlaceTomb.cs",
+    "size": 2445,
+    "fileName": "GlaceTomb.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/GlaceTomb.cs"
   },
   {
     "name": "Refreshment Retrieval",
