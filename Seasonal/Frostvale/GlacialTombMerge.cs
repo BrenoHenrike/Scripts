@@ -6,6 +6,7 @@ tags: glacial, tomb, merge, glacetomb, arctic, necrodraugr, scholar, nether, mor
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Seasonal/Frostvale/GlaceTomb.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
@@ -84,12 +85,8 @@ public class GlacialTombMerge
                 case "Frost Shatter Spear":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster("glacetomb", "Kriomein", req.Name, isTemp: false);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    Core.CancelRegisteredQuests();
+                    Core.HuntMonster("glacetomb", "Kriomein", req.Name, isTemp: false);
+                    Bot.Wait.ForPickup(req.Name);
                     break;
 
             }
