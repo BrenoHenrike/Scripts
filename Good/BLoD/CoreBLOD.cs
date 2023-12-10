@@ -126,7 +126,7 @@ public class CoreBLOD
         Story.BuyQuest(2067, "doomwood", 276, "Bonegrinder Medal");
 
         // 2082 - Essential Essences
-        if(!Story.QuestProgression(2082))
+        if (!Story.QuestProgression(2082))
         {
             Core.EnsureAccept(2082);
             Core.HuntMonster("battleunderb", "Skeleton Warrior", "Undead Essence", 25, isTemp: false);
@@ -134,7 +134,7 @@ public class CoreBLOD
         }
 
         // 2083 - Bust some Dust
-        if(!Story.QuestProgression(2083))
+        if (!Story.QuestProgression(2083))
         {
             Core.EnsureAccept(2083);
             Core.HuntMonster("battleunderb", "Skeleton Warrior", "Bone Dust", 40, isTemp: false);
@@ -256,9 +256,9 @@ public class CoreBLOD
 
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
         {
-            Core.HuntMonster("battleundera", "Bone Terror", "Bone Terror Soul", log: false);
-            Core.HuntMonster("battleunderb", "Undead Champion", "Undead Champion Soul", log: false);
-            Core.HuntMonster("battleunderc", "Crystalized Jellyfish", "Jellyfish Soul", log: false);
+            Core.HuntMonsterMapID("battleundera", 12, "Bone Terror Soul", log: false);
+            Core.HuntMonsterMapID("battleunderb", 8, "Undead Champion Soul", log: false);
+            Core.HuntMonsterMapID("battleunderc", 9, "Jellyfish Soul", log: false);
 
             Bot.Wait.ForPickup(item);
         }
