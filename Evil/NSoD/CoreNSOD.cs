@@ -85,12 +85,15 @@ public class CoreNSOD
             Core.BuyItem("shadowfall", 793, "Necrotic Sword of Doom");
             Adv.EnhanceItem("Necrotic Sword of Doom", EnhancementType.Lucky, wSpecial: WeaponSpecial.Spiral_Carve);
         }
-
-        Core.Logger("Getting the NSOD character page badge");
-        Core.EnsureAccept(7652);
-        Core.HuntMonster("graveyard", "Skeletal Warrior", "Arcane Parchment", log: false);
-        Core.EnsureComplete(7652);
-        Core.Relogin();
+        
+        if (!Core.isCompletedBefore(7652))
+        {
+            Core.Logger("Getting the NSOD character page badge");
+            Core.EnsureAccept(7652);
+            Core.HuntMonster("graveyard", "Skeletal Warrior", "Arcane Parchment", log: false);
+            Core.EnsureComplete(7652);
+            Core.Relogin();
+        }
 
         if (!Core.CheckInventory(14474) && !Core.IsMember)
             Core.Logger("Congratulations on completing the longest farm in the game!!!", messageBox: true);

@@ -112,12 +112,12 @@ public class CheckForDonatedACs
         Core.WriteFile(logPath, writeACs);
 
         if (newACs.Count == 0)
-            Bot.ShowMessageBox($"We checked {Army.doForAllAccountDetails.Count() / 2} accounts, but none of them have gained any {(firstTime ? "ACs" : "more ACs since last time")}." +
+            Bot.ShowMessageBox($"We checked {Army.doForAllAccountDetails.Length} accounts, but none of them have gained any {(firstTime ? "ACs" : "more ACs since last time")}." +
             $"{(warnings.Count > 0 ? "\n\nPlease be aware of the following things:\n" + String.Join('\n', warnings) : "")}",
             (Bot.Random.Next(1, 100) == 100 ? "No Maidens" : "No ACs"));
         else
         {
-            Bot.ShowMessageBox($"{newACs.Count} out of {Army.doForAllAccountDetails.Count() / 2} accounts received ACs! Below you will find more details:\n\n" + String.Join('\n', ACs) +
+            Bot.ShowMessageBox($"{newACs.Count} out of {Army.doForAllAccountDetails.Length} accounts received ACs! Below you will find more details:\n\n" + String.Join('\n', ACs) +
             $"{(warnings.Count > 0 ? "\n\nPlease be aware of the following things:\n" + String.Join('\n', warnings) : "")}", "Got ACs!");
         }
 
