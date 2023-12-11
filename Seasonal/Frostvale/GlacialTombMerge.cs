@@ -71,8 +71,8 @@ public class GlacialTombMerge
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.EquipClass(ClassType.Farm);
-                        Core.HuntMonster("glacetomb", "Snow Fairy", "Frozen Marrow", 8);
-                        Core.HuntMonster("glacetomb", "Draugr", "Crystalline Wings", 8);
+                        Core.HuntMonster("glacetomb", "Draugr", "Frozen Marrow", 8);
+                        Core.HuntMonster("glacetomb", "Snow Fairy", "Crystalline Wings", 8);
                         Core.EquipClass(ClassType.Solo);
                         Core.HuntMonsterMapID("glacetomb", 7, "Valedictorian Speech");
                     }
