@@ -16862,10 +16862,10 @@
       "thefamily",
       "army."
     ],
-    "path": "Army/OneClient/ArmyFreeAcs.cs",
-    "size": 1898,
-    "fileName": "ArmyFreeAcs.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/OneClient/ArmyFreeAcs.cs"
+    "path": "Army/OneClient/AccsForAll.cs",
+    "size": 1896,
+    "fileName": "AccsForAll.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/OneClient/AccsForAll.cs"
   },
   {
     "name": "Elders Blood (Army)",
