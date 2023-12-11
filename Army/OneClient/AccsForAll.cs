@@ -42,7 +42,7 @@ public class ArmyFreeAcs
             else
             {
                 Core.EnsureAccept(9444);
-                Core.HuntMonster("eventhub", "Agitated Orb", "Free ACs... and Yogurt");
+                Core.HuntMonster("yulgar", "Agitated Orb", "Free ACs... and Yogurt");
                 Core.EnsureComplete(9444);
             }
         }
