@@ -27,9 +27,10 @@ public class Frostvale
     {
         if (!Core.isSeasonalMapActive("frostvale"))
         {
-            Core.Logger($"it is Currently {DateTime.Now.ToString("MMMM")}, The Maps Will Be out In December, as per the Design Notes.");
+            Core.Logger($"it is Currently {DateTime.Now:MMMM}, The Maps Will Be out In December, as per the Design Notes.");
             return;
         }
+        
         IceCave();
         SnowGlobe();
         Alpine();
@@ -51,6 +52,7 @@ public class Frostvale
         SnowviewRace();
         DeerHunt();
         BowJangles();
+        GlaceTomb();
     }
 
     public void IceCave()
@@ -860,6 +862,7 @@ public class Frostvale
         //Vaderix Requiem (9026)
         Story.KillQuest(9026, "snowviewrace", "Aurora Vaderix");
     }
+
     public void DeerHunt()
     {
         if (Bot.Quests.IsUnlocked(8433) || !Core.isSeasonalMapActive("deerhunt"))
@@ -941,6 +944,52 @@ public class Frostvale
         Story.KillQuest(7828, "stormtemple", "Chaos Lord Lionfang");
     }
 
+    public void GlaceTomb()
+    {
+        if (Core.isCompletedBefore(9507) || !Core.isSeasonalMapActive("frostvale"))
+            return;
+
+        Story.PreLoad(this);
+        Core.EquipClass(ClassType.Farm);
+
+        // PTA Meeting 9497
+        Story.MapItemQuest(9497, "glacetomb", new[] { 12421, 12422 });
+
+        // Bear Essentials 9498
+        Story.KillQuest(9498, "glacetomb", "Auberon");
+
+        // Powder Sugar Faeries 9499
+        Story.KillQuest(9499, "glacetomb", "Snow Fairy");
+
+        // Water Intoxication 9500
+        Story.KillQuest(9500, "glacetomb", "Auberon");
+
+        // Wet Pages 9501
+        Story.MapItemQuest(9501, "glacetomb", 12423, 7);
+        Story.MapItemQuest(9501, "glacetomb", new[] { 12424, 12425 });
+
+        // IceBox Break In 9502
+        Story.MapItemQuest(9502, "glacetomb", 12426);
+        Story.KillQuest(9502, "glacetomb", "Snow Fairy");
+
+        // Necrocollege Rejects 9503
+        Story.MapItemQuest(9503, "glacetomb", new[] { 12427, 12428 });
+        Story.KillQuest(9503, "glacetomb", "Draugr");
+
+        // Finger Paintings 9504
+        Story.MapItemQuest(9504, "glacetomb", 12429, 5);
+
+        // Exhibit on Ice 9505
+        Story.MapItemQuest(9505, "glacetomb", 12430, 3);
+        Story.KillQuest(9505, "glacetomb", "Draugr");
+
+        Core.EquipClass(ClassType.Solo);
+        // Academic Probation 9506
+        Story.KillQuest(9506, "glacetomb", "Kriomein");
+
+        // Still Peace 9507
+        Story.KillQuest(9507, "glacetomb", new[] { "Kriomein", "Draugr", "Snow Fairy" });
+    }
 
     // --------------------------------------------------------------------------------------------------------------------------
 
