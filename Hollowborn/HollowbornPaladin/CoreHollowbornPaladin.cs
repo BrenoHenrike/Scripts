@@ -19,6 +19,7 @@ tags: hollowborn paladin, hollowborn, inserthere
 //cs_include Scripts/Story/Artixpointe.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
 
 public class CoreHollowbornPaladin
 {
@@ -69,6 +70,30 @@ public class CoreHollowbornPaladin
             HB.HumanSoul(50);
             Core.EnsureCompleteChoose(7560, PostSummoningItems);
             Bot.Wait.ForPickup("*");
+        }
+        Core.ToBank(PostSummoningItems);
+    }
+
+
+    public void GetSpecific(string item)
+    {
+        if (Core.CheckInventory(item))
+            return;
+
+        HB.HardcoreContract();
+        HBShadowOfFate();
+        Farm.Experience();
+
+        ItemBase[] Rewards = Core.EnsureLoad(7560).Rewards.ToArray();
+        ItemBase Item = Rewards.Find(x => x.Name == item) ?? new ItemBase(); // Ensure item is not null
+        Core.AddDrop(item);
+        while (!Bot.ShouldExit && !Core.CheckInventory(Item.ID))
+        {
+            Core.EnsureAccept(7560);
+            Core.HuntMonster("shadowblast", "Carnage", "Shadow Seal", 1, false);
+            HB.HumanSoul(50);
+            Core.EnsureComplete(7560, Item.ID);
+            Bot.Wait.ForPickup(Item.ID);
         }
         Core.ToBank(PostSummoningItems);
     }

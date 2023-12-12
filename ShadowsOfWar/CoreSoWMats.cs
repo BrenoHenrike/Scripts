@@ -25,6 +25,8 @@ public class CoreSoWMats
         if (Core.CheckInventory("Dragon's Tear"))
             return;
 
+        Core.FarmingLogger("Dragon's Tear", 1);
+
         Willpower(10);
         GarishRemnant(30);
         PrismaticSeams(100);

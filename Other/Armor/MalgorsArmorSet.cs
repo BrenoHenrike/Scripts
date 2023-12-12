@@ -38,7 +38,7 @@ public class MalgorsArmorSet
     private WorldsCoreMerge WorldsCoreMerge = new();
     private ManaCradleMerge ManaCradleMerge = new();
 
-    string[] Set =
+    string[] ArmorSet =
     {
     "Malgor the ShadowLord",
     "ShadowLord's Helm"
@@ -56,21 +56,24 @@ public class MalgorsArmorSet
 
     public void ScriptMain(IScriptInterface Bot)
     {
+        Core.BankingBlackList.AddRange(ArmorSet.Concat(QuestItems));
         Core.SetOptions();
 
-        GetSet();
+        GetSet(true, ArmorSet);
 
         Core.SetOptions(false);
     }
 
-    public void GetSet()
+    public void GetSet(bool useSet = true, string[]? item = null)
     {
-        if (Core.CheckInventory(Set))
+        string[]? items = useSet ? ArmorSet : item;
+
+        if (Core.CheckInventory(items))
             return;
 
         Core.BossClass();
 
-        while (!Bot.ShouldExit && !Core.CheckInventory(Set))
+        while (!Bot.ShouldExit && !Core.CheckInventory(items))
         {
             DeadLinesMerge.BuyAllMerge(buyOnlyThis: "Timestream Ravager");
             ShadowflameFinaleMerge.BuyAllMerge(buyOnlyThis: "ShadowFlame Defender");
