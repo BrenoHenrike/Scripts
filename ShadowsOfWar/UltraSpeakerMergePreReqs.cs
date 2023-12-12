@@ -127,7 +127,8 @@ public class UltraSpeakerMergePreReqs
                 Core.EquipClass(ClassType.Solo);
                 Core.AddDrop("Ice Shard");
                 Core.RegisterQuests(6311);
-                while (!Bot.ShouldExit && !Core.CheckInventory("Ice Shard", 50))
+                // Ice Shard - 43712
+                while (!Bot.ShouldExit && !Core.CheckInventory(43712, 50))
                     Core.HuntMonster("northmountain", "Izotz", "Ice Crystal");
                 HDK.ADKFalls();
             }
