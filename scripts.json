@@ -13008,7 +13008,7 @@
       "null"
     ],
     "path": "Evil/NSoD/CoreNSOD.cs",
-    "size": 16504,
+    "size": 17982,
     "fileName": "CoreNSOD.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/NSoD/CoreNSOD.cs"
   },
@@ -18239,10 +18239,11 @@
       "quest",
       "queen-of-monsters",
       "bright-oak",
-      "extra"
+      "extra",
+      "brightoak"
     ],
     "path": "Story/QueenofMonsters/Extra/BrightOak.cs",
-    "size": 14625,
+    "size": 14636,
     "fileName": "BrightOak.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/QueenofMonsters/Extra/BrightOak.cs"
   },
