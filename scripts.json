@@ -3259,7 +3259,7 @@
       "null"
     ],
     "path": "ShadowsOfWar/CoreSoWMats.cs",
-    "size": 5647,
+    "size": 5696,
     "fileName": "CoreSoWMats.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/ShadowsOfWar/CoreSoWMats.cs"
   },
@@ -3273,7 +3273,7 @@
       "goddess of war"
     ],
     "path": "ShadowsOfWar/UltraSpeakerMergePreReqs.cs",
-    "size": 11416,
+    "size": 24504,
     "fileName": "UltraSpeakerMergePreReqs.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/ShadowsOfWar/UltraSpeakerMergePreReqs.cs"
   },
@@ -7121,7 +7121,7 @@
       "null"
     ],
     "path": "Other/Armor/MalgorsArmorSet.cs",
-    "size": 2707,
+    "size": 2893,
     "fileName": "MalgorsArmorSet.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Armor/MalgorsArmorSet.cs"
   },
@@ -8766,7 +8766,7 @@
       "null"
     ],
     "path": "Good/BLoD/CoreBLOD.cs",
-    "size": 21642,
+    "size": 21729,
     "fileName": "CoreBLOD.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/CoreBLOD.cs"
   },
@@ -9307,7 +9307,7 @@
       "inserthere"
     ],
     "path": "Hollowborn/HollowbornPaladin/CoreHollowbornPaladin.cs",
-    "size": 6804,
+    "size": 7599,
     "fileName": "CoreHollowbornPaladin.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/HollowbornPaladin/CoreHollowbornPaladin.cs"
   },
@@ -9504,7 +9504,7 @@
       "null"
     ],
     "path": "Hollowborn/HollowbornDoomKnight/CoreHollowbornDoomKnight.cs",
-    "size": 7643,
+    "size": 7769,
     "fileName": "CoreHollowbornDoomKnight.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/HollowbornDoomKnight/CoreHollowbornDoomKnight.cs"
   },
