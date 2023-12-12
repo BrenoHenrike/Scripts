@@ -285,6 +285,7 @@ public class UltraSpeakerMergePreReqs
 
                         case "War Blade of Power":
                             //Dragon Scale(1)
+                            Core.AddDrop(11475);
                             while (!Core.CheckInventory(11475, 30))
                                 Core.KillMonster("lair", "Hole", "Center", "*", isTemp: false, log: false);
                             DSG.EnchantedScaleandClaw(250, 0);
