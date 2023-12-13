@@ -1577,23 +1577,25 @@ public class CoreFarms
             { "Earth", "Stone" }
         };
 
+        if (!Bot.Quests.IsDailyComplete(3299) && Core.IsMember)
+        {
+            Core.Logger("Doing daily first.");
+            Core.EnsureAccept(3299);
+            foreach (var element in elementalItems)
+                Core.HuntMonster("gilead", $"{element.Key} Elemental", element.Value, 6, log: false);
+            Core.EnsureComplete(3299);
+        }
 
+        Core.Logger(!Core.IsMember ? "Daily is mem only, Onto the Farm" : "Daily complete, onto the farm.");
         Core.RegisterQuests(3050, 3298);
         while (!Bot.ShouldExit && FactionRank("Elemental Master") < rank)
         {
             foreach (var element in elementalItems)
             {
-                if (!Bot.Quests.IsDailyComplete(3299) && Core.IsMember)
-                {
-                    Core.EnsureAccept(3299);
-                    Core.HuntMonster("gilead", $"{element.Key} Elemental", element.Value, 6);
-                    Core.EnsureComplete(3299);
-                }
-
-                Core.HuntMonster("gilead", $"{element.Key} Elemental", $"{element.Key} Core", 1);
-                Core.HuntMonster("gilead", $"{element.Key} Elemental", element.Value, 5);
+                Core.HuntMonster("gilead", $"{element.Key} Elemental", $"{element.Key} Core", log: false);
+                Core.HuntMonster("gilead", $"{element.Key} Elemental", element.Value, 5, log: false);
             }
-            Core.HuntMonster("gilead", "Mana Elemental", "Mana Core");
+            Core.HuntMonster("gilead", "Mana Elemental", "Mana Core", log: false);
         }
         Core.CancelRegisteredQuests();
         ToggleBoost(BoostType.Reputation, false);
