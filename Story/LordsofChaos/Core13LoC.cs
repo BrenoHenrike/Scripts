@@ -2055,7 +2055,7 @@ public class Core13LoC
         {
             Adv.GearStore();
             Core.EnsureAccept(3189);
-            Core.KillXiang("Chaos Lord Xiang Defeated");
+            Core.KillXiang("Chaos Lord Xiang Defeated", isTemp: true);
             Core.EnsureComplete(3189);
             Adv.GearStore(true);
         }

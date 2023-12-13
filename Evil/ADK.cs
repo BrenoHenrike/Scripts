@@ -142,7 +142,7 @@ public class ArchDoomKnight
         Core.HuntMonster("dreamnexus", "Khasaanda", "Soul of Chaos Armor", isTemp: false);
         Core.HuntMonster("stormtemple", "Chaos Lord Lionfang", "Chaos Lionfang Armor", isTemp: false);
         Core.HuntMonster("swordhavenfalls", "Chaos Lord Alteon", "Shorn Chaos King Crown", isTemp: false);
-        Core.KillXiang("Xiang Chaos", isTemp: false);
+        Core.KillXiang("Xiang Chaos");
 
         //Drakath's Sword (Free Player)
         while (!Bot.ShouldExit && !Core.CheckInventory(25286))
