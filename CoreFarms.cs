@@ -1548,7 +1548,7 @@ public class CoreFarms
 
     }
 
-    public void ElementalMasterREP(int rank = 10)
+    public void ElementalMasterREP(int rank = 11)
     {
         if (FactionRank("Elemental Master") >= rank)
             return;
