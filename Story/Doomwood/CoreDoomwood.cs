@@ -616,6 +616,8 @@ public class CoreDoomwood
         if (Core.isCompletedBefore(7653))
             return;
 
+        Thornsgarde();
+
         Story.PreLoad(this);
 
         //7603    Defeat the Deadtech
@@ -643,6 +645,8 @@ public class CoreDoomwood
     {
         if (Core.isCompletedBefore(7636))
             return;
+
+        Stonewood();
 
         Story.PreLoad(this);
 
@@ -681,6 +685,8 @@ public class CoreDoomwood
     {
         if (Core.isCompletedBefore(7636))
             return;
+
+        TechDungeon();
 
         Story.PreLoad(this);
 
@@ -809,6 +815,8 @@ public class CoreDoomwood
         if (Core.isCompletedBefore(7653))
             return;
 
+        StonewoodForest();
+
         Story.PreLoad(this);
 
         //7637    I CPU U!
@@ -857,6 +865,8 @@ public class CoreDoomwood
     {
         if (Core.isCompletedBefore(2128))
             return;
+
+        TechFortress();
 
         Story.PreLoad(this);
 
