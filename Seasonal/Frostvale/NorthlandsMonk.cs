@@ -32,7 +32,7 @@ public class NorthlandsMonk
 
         if (Core.CheckInventory(52413))
         {
-            Adv.RankUpClass("Northlands Monk");
+            Adv.RankUpClass("Northlands Monk", true);
             return;
         }
 
@@ -43,10 +43,7 @@ public class NorthlandsMonk
             Core.KillMonster("frozensoul", "r4", "Left", "FrozenSoul Queen", "Northlands Monk", isTemp: false);
 
         if (rankUpClass)
-        {
-            Adv.GearStore();
-            Adv.RankUpClass("Northlands Monk");
-            Adv.GearStore(true);
-        }
+            Adv.RankUpClass("Northlands Monk", true);
+
     }
 }
