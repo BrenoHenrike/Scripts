@@ -1,7 +1,7 @@
 /*
 name: Bright Oak (Extra)
 description: This will finish the Bright Oak quest.
-tags: story, quest, queen-of-monsters, bright-oak, extra
+tags: story, quest, queen-of-monsters, bright-oak, extra, brightoak
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

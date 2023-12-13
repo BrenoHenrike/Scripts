@@ -51,10 +51,7 @@ public class CoreNSOD
         "Creature Creation Essence"
     };
 
-    public void ScriptMain(IScriptInterface bot)
-    {
-        Core.RunCore();
-    }
+    public void ScriptMain(IScriptInterface bot) => Core.RunCore();
 
     public void GetNSOD()
     {
@@ -63,29 +60,33 @@ public class CoreNSOD
 
         if (!Core.CheckInventory("Necrotic Sword of Doom"))
         {
+            Core.Logger("NSoD: Step #1/16: Barium (MineCrafting Daily)");
             Barium();
-            if (Bot.Config!.Get<bool>("PreFarm"))
+
+            bool preFarmEnabled = Bot.Config?.Get<bool>("PreFarm") ?? false;
+
+            if (preFarmEnabled)
             {
-                VoidAuras(7500);
-                CavernCelestite(1600);
-                Farm.BattleUnderB("Bone Dust", 5100);
-                Farm.BattleUnderB("Undead Energy", 10000);
-                PrimarchHilt(2);
-                BladeEssence(2);
-                CHourglass(31);
-                ScrollDarkArts(4);
-                Core.HuntMonster("sepulchurebattle", "ULTRA Sepulchure", "Doom Heart", isTemp: false, publicRoom: true, log: false);
+                Core.Logger("NSoD: PreFarm Steps:");
+                PreFarmSteps();
             }
+
+            Core.Logger("NSoD: Step #10/16: NSBlade.");
             NSBlade();
+            Core.Logger("NSoD: Step #11/16: NSHilt.");
             NSHilt();
+            Core.Logger("NSoD: Step #12/16: NSAura.");
             NSAura();
+            Core.Logger("NSoD: Step #13/16: ULTRA Sepulchure for \"Doom Heart\"");
             Core.HuntMonster("sepulchurebattle", "ULTRA Sepulchure", "Doom Heart", isTemp: false, publicRoom: true, log: false);
+            Core.Logger("NSoD: Step #14/16: Void Auras x800");
             VoidAuras(800);
 
+            Core.Logger("NSoD: Step #15/16: NSoD purchase");
             Core.BuyItem("shadowfall", 793, "Necrotic Sword of Doom");
-            Adv.EnhanceItem("Necrotic Sword of Doom", EnhancementType.Lucky, wSpecial: WeaponSpecial.Spiral_Carve);
+            Core.Logger("NSoD: Step #16/16: NSoD Enhancement");
         }
-        
+
         if (!Core.isCompletedBefore(7652))
         {
             Core.Logger("Getting the NSOD character page badge");
@@ -99,21 +100,31 @@ public class CoreNSOD
             Core.Logger("Congratulations on completing the longest farm in the game!!!", messageBox: true);
     }
 
+
     public void GetNBOD()
     {
         if (Core.CheckInventory("Necrotic Blade of Doom"))
             return;
 
+        Core.Logger("NBOD: Step #1: Get NSoD");
         GetNSOD();
+
+        Core.Logger("NBOD: Step #2: Void Auras x750");
         VoidAuras(750);
+
         if (!Core.CheckInventory("Void Essentia"))
         {
+            Core.Logger("NBOD: Step #3: Kill Flibbitiestgibbet for \"Void Essentia\"");
             Core.Logger("Flibbitiestgibbet is a very tough monster, I hope you brought your army/butler/friends!");
             Core.KillMonster("voidflibbi", "Enter", "Spawn", "Flibbitiestgibbet", "Void Essentia", isTemp: false, log: false);
         }
+
+        Core.Logger("NBOD: Step #4: Buy NBoD");
         Core.BuyItem("shadowfall", 793, "Necrotic Blade of Doom");
-        Core.Logger("Don't forget to use AE's Buy-Back system to retreive your Necrotic Sword of Doom", messageBox: true);
+
+        Core.Logger("NBOD: Step #5: Reminder - Use AE's Buy-Back system to retrieve your NSoD", messageBox: true);
     }
+
 
     #region Void Auras
 
@@ -136,8 +147,8 @@ public class CoreNSOD
             return;
 
         Core.AddDrop("Void Aura");
-        Core.RegisterQuests(4439);
 
+        Core.RegisterQuests(4439);
         while (!Bot.ShouldExit && !Core.CheckInventory("Void Aura", quant))
         {
             Core.FarmingLogger("Void Aura", quant);
@@ -470,6 +481,29 @@ public class CoreNSOD
         Core.EquipClass(ClassType.Solo);
         Core.HuntMonster("epicvordred", "Ultra Vordred", "(Necro) Scroll of Dark Arts", quant, false, publicRoom: true, log: false);
     }
+
+    private void PreFarmSteps()
+    {
+        Core.Logger("NSoD: PreFarm Step #1/9: VoidAuras (Quantity: 7500)");
+        VoidAuras(7500);
+        Core.Logger("NSoD: PreFarm Step #2/9: CavernCelestite (Quantity: 1600)");
+        CavernCelestite(1600);
+        Core.Logger("NSoD: PreFarm Step #3/9: BattleUnderB - Bone Dust (Quantity: 5100)");
+        Farm.BattleUnderB("Bone Dust", 5100);
+        Core.Logger("NSoD: PreFarm Step #4/9: BattleUnderB - Undead Energy (Quantity: 10000)");
+        Farm.BattleUnderB("Undead Energy", 10000);
+        Core.Logger("NSoD: PreFarm Step #5/9: PrimarchHilt (Quantity: 2)");
+        PrimarchHilt(2);
+        Core.Logger("NSoD: PreFarm Step #6/9: BladeEssence (Quantity: 2)");
+        BladeEssence(2);
+        Core.Logger("NSoD: PreFarm Step #7/9: CHourglass (Quantity: 31)");
+        CHourglass(31);
+        Core.Logger("NSoD: PreFarm Step #8/9: ScrollDarkArts (Quantity: 4)");
+        ScrollDarkArts(4);
+        Core.Logger("NSoD: PreFarm Step #9/9: ULTRA Sepulchure");
+        Core.HuntMonster("sepulchurebattle", "ULTRA Sepulchure", "Doom Heart", isTemp: false, publicRoom: true, log: false);
+    }
+
 
     #endregion
 }

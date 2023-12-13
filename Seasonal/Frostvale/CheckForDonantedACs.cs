@@ -39,8 +39,12 @@ public class CheckForDonatedACs
         List<string> oldACs = new();
         List<string> newACs = new();
         List<string> warnings = new();
-        if (!firstTime)
+
+        if (firstTime)
+            File.WriteAllText(logPath, string.Empty);
+        else
             oldACs = File.ReadAllLines(logPath).ToList();
+
 
         Bot.Events.ExtensionPacketReceived += ACsListener;
         while (Army.doForAll())

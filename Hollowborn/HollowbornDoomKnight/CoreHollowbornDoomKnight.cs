@@ -155,12 +155,14 @@ public class CoreHollowbornDoomKnight
         }
     }
 
-    public void ADKFalls()
+    public void ADKFalls(bool RGRoW = false)
     {
         if (Core.CheckInventory(ADKFallsItems))
             return;
 
         Core.AddDrop(ADKFallsItems);
+        if (RGRoW)
+            Core.AddDrop(new[] { "Hollowborn DoomBlade", "Hollowborn Empress' Blade" });
 
         // Requirements
         HB.HardcoreContract();

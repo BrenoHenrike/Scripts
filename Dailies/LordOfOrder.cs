@@ -221,7 +221,7 @@ public class LordOfOrder
             Farm.FishingREP(7);
             Core.BuyItem("greenguardwest", 363, "Lure of Order");
             Adv.GearStore();
-            Core.KillXiang("Quixotic Mana Essence", 10, ultra: true, isTemp: false);
+            Core.KillXiang("Quixotic Mana Essence", 10, true);
             Adv.GearStore(true);
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("yasaris", "Serepthys", "Inversion Infusion", 5, false, log: false);

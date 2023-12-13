@@ -365,7 +365,7 @@ public class CoreFarms
 
         if (!Core.isCompletedBefore(7979))
         {
-            Core.Logger("Please use Scripts/Story/Legion/SevenCircles(War).cs in order to use the SevenCircles method");
+            Core.Logger("Please use Scripts/Story/Legion/SevenCircles(War).cs to use the SevenCircles method");
             return;
         }
 
@@ -375,15 +375,18 @@ public class CoreFarms
         Core.Logger($"Farming {gold} gold using SCW Method");
 
         Core.RegisterQuests(7979, 7980, 7981);
-        while (!Bot.ShouldExit && level == 101 ? Bot.Player.Gold < gold : Bot.Player.Level < level && Bot.Player.Gold < gold)
+
+        while (!Bot.ShouldExit && (level == 101 ? Bot.Player.Gold < gold : (Bot.Player.Level < level && Bot.Player.Gold < gold)))
         {
             Core.KillMonster("sevencircleswar", "Enter", "Right", "*", "Wrath Guards Defeated", 12);
             Core.KillMonster("sevencircleswar", "Enter", "Right", "*", "War Medal", 5);
             Core.KillMonster("sevencircleswar", "Enter", "Right", "*", "Mega War Medal", 3);
         }
+
         Core.CancelRegisteredQuests();
         Core.SavedState(false);
     }
+
 
     /// <summary>
     /// Farms level in FireWar Turnins
@@ -1545,7 +1548,7 @@ public class CoreFarms
 
     }
 
-    public void ElementalMasterREP(int rank = 10)
+    public void ElementalMasterREP(int rank = 11)
     {
         if (FactionRank("Elemental Master") >= rank)
             return;
@@ -1566,32 +1569,39 @@ public class CoreFarms
         }
 
         // Define a dictionary to store the secondary items for each elemental
-        Dictionary<string, string> elementalItems = new()
+        Dictionary<string, (string, string)> elementalItems = new()
         {
-            { "Water", "Water Drop" },
-            { "Fire", "Flame" },
-            { "Wind", "Breeze" },
-            { "Earth", "Stone" }
+            { "Water", ("Water Drop", "Water Core") },
+            { "Fire", ("Flame", "Fire Core") },
+            { "Wind", ("Breeze", "Air Core") },
+            { "Earth", ("Stone", "Earth Core") }
         };
 
+        if (!Bot.Quests.IsDailyComplete(3299) && Core.IsMember)
+        {
+            Core.Logger("Doing daily first.");
+            Core.EnsureAccept(3299);
+            foreach (var element in elementalItems)
+                Core.HuntMonster("gilead", $"{element.Key} Elemental", element.Value.Item1, 6); // Use the second item
+            Core.EnsureComplete(3299);
+        }
 
-        Core.RegisterQuests(3050, 3298);
+        Core.Logger(!Core.IsMember ? "Daily is mem only, Onto the Farm" : "Daily complete, onto the farm.");
+
         while (!Bot.ShouldExit && FactionRank("Elemental Master") < rank)
         {
+            Core.EnsureAccept(3050, 3298);
+            Core.EquipClass(ClassType.Farm);
             foreach (var element in elementalItems)
             {
-                if (!Bot.Quests.IsDailyComplete(3299) && Core.IsMember)
-                {
-                    Core.EnsureAccept(3299);
-                    Core.HuntMonster("gilead", $"{element.Key} Elemental", element.Value, 6);
-                    Core.EnsureComplete(3299);
-                }
-
-                Core.HuntMonster("gilead", $"{element.Key} Elemental", $"{element.Key} Core", 1);
-                Core.HuntMonster("gilead", $"{element.Key} Elemental", element.Value, 5);
+                Core.HuntMonster("gilead", $"{element.Key} Elemental", element.Value.Item2); // Use the second item
+                Core.HuntMonster("gilead", $"{element.Key} Elemental", element.Value.Item1, 5); // Use the second item
             }
+            Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("gilead", "Mana Elemental", "Mana Core");
+            Core.EnsureComplete(new[] { 3050, 3298 });
         }
+
         Core.CancelRegisteredQuests();
         ToggleBoost(BoostType.Reputation, false);
         Core.SavedState(false);

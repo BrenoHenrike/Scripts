@@ -483,11 +483,11 @@ public class CoreArmyLite
             if (Bot.Player.LoggedIn)
             {
                 Bot.Servers.Logout();
-                Core.Sleep();
+                while (Bot.Player.LoggedIn)
+                    Core.Sleep();
             }
             Bot.Servers.Login(name, pass);
             Core.Sleep(3000);
-
 
             Bot.Servers.Connect(
             randomServers ?

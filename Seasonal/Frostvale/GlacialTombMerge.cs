@@ -5,9 +5,10 @@ tags: glacial, tomb, merge, glacetomb, arctic, necrodraugr, scholar, nether, mor
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Seasonal/Frostvale/GlaceTomb.cs
+//cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/Story/Glacera.cs
+//cs_include Scripts/Seasonal/Frostvale/Frostvale.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
@@ -18,19 +19,19 @@ public class GlacialTombMerge
     private CoreBots Core => CoreBots.Instance;
     private CoreFarms Farm = new();
     private CoreAdvanced Adv = new();
+    private Frostvale Frostvale = new();
     private static CoreAdvanced sAdv = new();
-    private GlaceTomb GT = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
     public string[] MultiOptions = { "Generic", "Select" };
-    public string OptionsStorage = "GlaceTombMergeOption";
+    public string OptionsStorage = sAdv.OptionsStorage;
     // [Can Change] This should only be changed by the author.
     //              If true, it will not stop the script if the default case triggers and the user chose to only get mats
     private bool dontStopMissingIng = false;
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Fimbul's Frost", "Frostguarde Blade", "Frostguarde Blades", "Polaris Duelist Rapier", "Polaris Duelist Rapiers", "Frost Shatter Spear"});
+        Core.BankingBlackList.AddRange(new[] { "Fimbul's Frost", "Frostguarde Blade", "Frostguarde Blades", "Polaris Duelist Rapier", "Polaris Duelist Rapiers", "Frost Shatter Spear" });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -39,7 +40,8 @@ public class GlacialTombMerge
 
     public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
-        GT.GlaceTombQuest();
+        Frostvale.GlaceTomb();
+
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("glacetomb", 2377, findIngredients, buyOnlyThis, buyMode: buyMode);
 
@@ -68,25 +70,22 @@ public class GlacialTombMerge
                     Core.RegisterQuests(9507);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.EquipClass(ClassType.Solo);
-                        Core.HuntMonster("glacetomb", "Kriomein", "Valedictorian Speech");
                         Core.EquipClass(ClassType.Farm);
                         Core.HuntMonster("glacetomb", "Draugr", "Frozen Marrow", 8);
                         Core.HuntMonster("glacetomb", "Snow Fairy", "Crystalline Wings", 8);
-                        Bot.Wait.ForPickup(req.Name);
+                        Core.EquipClass(ClassType.Solo);
+                        Core.HuntMonsterMapID("glacetomb", 7, "Valedictorian Speech");
                     }
                     Core.CancelRegisteredQuests();
                     break;
 
                 case "Frostguarde Blade":
                 case "Frostguarde Blades":
-                case "Polaris Duelist Rapier":
                 case "Polaris Duelist Rapiers":
+                case "Polaris Duelist Rapier":
                 case "Frost Shatter Spear":
-                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster("glacetomb", "Kriomein", req.Name, isTemp: false);
-                    Bot.Wait.ForPickup(req.Name);
+                    Core.HuntMonsterMapID("glacetomb", 7, req.Name, 1, req.Temp);
                     break;
 
             }
