@@ -49,9 +49,6 @@ public class FindingFragments_Any
             _ => 0,
         };
         foreach (ItemBase item in Core.EnsureLoad(quest).Rewards)
-        {
             BLOD.FindingFragments(Bot.Config.Get<WeaponOfDestiny>("questID"), item.Name, item.MaxStack);
-            Core.Logger($"{item.Name} has reached max stack ({item.MaxStack})");
-        }
     }
 }

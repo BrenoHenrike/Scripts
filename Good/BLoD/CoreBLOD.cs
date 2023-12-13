@@ -304,8 +304,8 @@ public class CoreBLOD
         Core.FarmingLogger(item, quant);
 
         Core.RegisterQuests(quest);
-        while (!Bot.ShouldExit && Core.CheckInventory(item, quant))
-            Core.KillMonster("battleunderb", "Enter", "Spawn", "Skeleton Warior", item, quant, log: false, isTemp: false);
+        while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
+            Core.KillMonster("battleunderb", "Enter", "Spawn", "Skeleton Warrior", item, quant, log: false, isTemp: false);
         Core.CancelRegisteredQuests();
     }
 
