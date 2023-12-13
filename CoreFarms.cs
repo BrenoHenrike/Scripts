@@ -1548,7 +1548,7 @@ public class CoreFarms
 
     }
 
-    public void ElementalMasterREP(int rank = 10)
+    public void ElementalMasterREP(int rank = 11)
     {
         if (FactionRank("Elemental Master") >= rank)
             return;
@@ -1569,12 +1569,12 @@ public class CoreFarms
         }
 
         // Define a dictionary to store the secondary items for each elemental
-        Dictionary<string, string> elementalItems = new()
+        Dictionary<string, (string, string)> elementalItems = new()
         {
-            { "Water", "Water Drop" },
-            { "Fire", "Flame" },
-            { "Wind", "Breeze" },
-            { "Earth", "Stone" }
+            { "Water", ("Water Drop", "Water Core") },
+            { "Fire", ("Flame", "Fire Core") },
+            { "Wind", ("Breeze", "Air Core") },
+            { "Earth", ("Stone", "Earth Core") }
         };
 
         if (!Bot.Quests.IsDailyComplete(3299) && Core.IsMember)
@@ -1582,21 +1582,26 @@ public class CoreFarms
             Core.Logger("Doing daily first.");
             Core.EnsureAccept(3299);
             foreach (var element in elementalItems)
-                Core.HuntMonster("gilead", $"{element.Key} Elemental", element.Value, 6, log: false);
+                Core.HuntMonster("gilead", $"{element.Key} Elemental", element.Value.Item1, 6); // Use the second item
             Core.EnsureComplete(3299);
         }
 
         Core.Logger(!Core.IsMember ? "Daily is mem only, Onto the Farm" : "Daily complete, onto the farm.");
-        Core.RegisterQuests(3050, 3298);
+
         while (!Bot.ShouldExit && FactionRank("Elemental Master") < rank)
         {
+            Core.EnsureAccept(3050, 3298);
+            Core.EquipClass(ClassType.Farm);
             foreach (var element in elementalItems)
             {
-                Core.HuntMonster("gilead", $"{element.Key} Elemental", $"{element.Key} Core", log: false);
-                Core.HuntMonster("gilead", $"{element.Key} Elemental", element.Value, 5, log: false);
+                Core.HuntMonster("gilead", $"{element.Key} Elemental", element.Value.Item2); // Use the second item
+                Core.HuntMonster("gilead", $"{element.Key} Elemental", element.Value.Item1, 5); // Use the second item
             }
-            Core.HuntMonster("gilead", "Mana Elemental", "Mana Core", log: false);
+            Core.EquipClass(ClassType.Solo);
+            Core.HuntMonster("gilead", "Mana Elemental", "Mana Core");
+            Core.EnsureComplete(new[] { 3050, 3298 });
         }
+
         Core.CancelRegisteredQuests();
         ToggleBoost(BoostType.Reputation, false);
         Core.SavedState(false);
