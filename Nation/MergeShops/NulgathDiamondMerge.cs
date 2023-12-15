@@ -153,13 +153,20 @@ public class NulgathDiamondMerge
                     Core.FarmingLogger($"{req.Name}", quant);
                     Core.EnsureAccept(584);
                     Nation.Supplies("Unidentified 26");
-                    
-                Nation.ResetSindles();
-                    string[] locations = new[] { "tercessuinotlim", Core.IsMember ? "Nulgath" : "evilmarsh" };
-                    string location = locations[new Random().Next(locations.Length)];
-                    string cell = location == "tercessuinotlim" ? (new Random().Next(2) == 0 ? "m1" : "m2") : "Field1";
-                    Core.KillMonster(location, cell, "Left", "Dark Makai", "Dark Makai Sigil", log: false);
-                
+
+                    Nation.ResetSindles();
+                    while (!Bot.ShouldExit && !Core.CheckInventory("Dark Makai Sigil"))
+                        foreach (var mapInfo in new[] { ("tercessuinotlim", "m1"), (Core.IsMember ? "Nulgath" : "evilmarsh", "Field1") })
+                        {
+                            Core.Join(mapInfo.Item1, mapInfo.Item2, "Left");
+                            while (!Bot.ShouldExit && Core.IsMonsterAlive(1, useMapID: true))
+                            {
+                                Core.Sleep();
+                                Bot.Combat.Attack("*");
+                            }
+                        }
+
+                    Bot.Wait.ForPickup("Dark Makai Sigil");
                     Core.EnsureComplete(584);
                     Bot.Wait.ForPickup(req.Name);
                     break;

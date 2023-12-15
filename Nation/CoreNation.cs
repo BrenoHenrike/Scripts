@@ -315,10 +315,17 @@ public class CoreNation
             Supplies("Unidentified 16");
             Supplies("Unidentified 20");
             ResetSindles();
-            string[] locations = new[] { "tercessuinotlim", Core.IsMember ? "Nulgath" : "evilmarsh" };
-            string location = locations[new Random().Next(locations.Length)];
-            string cell = location == "tercessuinotlim" ? (new Random().Next(2) == 0 ? "m1" : "m2") : "Field1";
-            Core.KillMonster(location, cell, "Left", "Dark Makai", "Dark Makai Rune");
+            while (!Bot.ShouldExit && !Core.CheckInventory("Dark Makai Rune"))
+                foreach (var mapInfo in new[] { ("tercessuinotlim", "m1"), (Core.IsMember ? "Nulgath" : "evilmarsh", "Field1") })
+                {
+                    Core.Join(mapInfo.Item1, mapInfo.Item2, "Left");
+                    while (!Bot.ShouldExit && Core.IsMonsterAlive(1, useMapID: true))
+                    {
+                        Core.Sleep();
+                        Bot.Combat.Attack("*");
+                    }
+                }
+            Bot.Wait.ForPickup("Dark Makai Rune");
             Core.EnsureComplete(7551, Item.ID);
             if (Item.Name != "Voucher of Nulgath" && sellMemVoucher)
                 Core.SellItem("Voucher of Nulgath", all: true);
@@ -778,10 +785,17 @@ public class CoreNation
 
                         Core.FarmingLogger(Item2.Name, Item2.MaxStack);
                         Core.EnsureAccept(7551);
-                        string[] locations = new[] { "tercessuinotlim", Core.IsMember ? "Nulgath" : "evilmarsh" };
-                        string location = locations[new Random().Next(locations.Length)];
-                        string cell = location == "tercessuinotlim" ? (new Random().Next(2) == 0 ? "m1" : "m2") : "Field1";
-                        Core.KillMonster(location, cell, "Left", "Dark Makai", "Dark Makai Rune");
+                        while (!Bot.ShouldExit && !Core.CheckInventory("Dark Makai Rune"))
+                            foreach (var mapInfo in new[] { ("tercessuinotlim", "m1"), (Core.IsMember ? "Nulgath" : "evilmarsh", "Field1") })
+                            {
+                                Core.Join(mapInfo.Item1, mapInfo.Item2, "Left");
+                                while (!Bot.ShouldExit && Core.IsMonsterAlive(1, useMapID: true))
+                                {
+                                    Core.Sleep();
+                                    Bot.Combat.Attack("*");
+                                }
+                            }
+                        Bot.Wait.ForPickup("Dark Makai Rune");
 
                         if (Reward != SwindlesReturnReward.None)
                             Core.EnsureComplete(7551, Item2.ID);
@@ -818,10 +832,17 @@ public class CoreNation
                     Core.FarmingLogger(Item2.Name, Item2.MaxStack);
                     Core.EnsureAccept(7551);
 
-                    string[] locations = new[] { "tercessuinotlim", Core.IsMember ? "Nulgath" : "evilmarsh" };
-                    string location = locations[new Random().Next(locations.Length)];
-                    string cell = location == "tercessuinotlim" ? (new Random().Next(2) == 0 ? "m1" : "m2") : "Field1";
-                    Core.KillMonster(location, cell, "Left", "Dark Makai", "Dark Makai Rune");
+                    while (!Bot.ShouldExit && !Core.CheckInventory("Dark Makai Rune"))
+                        foreach (var mapInfo in new[] { ("tercessuinotlim", "m1"), (Core.IsMember ? "Nulgath" : "evilmarsh", "Field1") })
+                        {
+                            Core.Join(mapInfo.Item1, mapInfo.Item2, "Left");
+                            while (!Bot.ShouldExit && Core.IsMonsterAlive(1, useMapID: true))
+                            {
+                                Core.Sleep();
+                                Bot.Combat.Attack("*");
+                            }
+                        }
+                    Bot.Wait.ForPickup("Dark Makai Rune");
 
 
                     if (Reward != SwindlesReturnReward.None)
@@ -972,10 +993,17 @@ public class CoreNation
             if (returnPolicyDuringSupplies && Core.CheckInventory(new[] { Uni(1), Uni(6), Uni(9), Uni(16), Uni(20) }))
             {
                 ResetSindles();
-                string[] locations = new[] { "tercessuinotlim", Core.IsMember ? "Nulgath" : "evilmarsh" };
-                string location = locations[new Random().Next(locations.Length)];
-                string cell = location == "tercessuinotlim" ? (new Random().Next(2) == 0 ? "m1" : "m2") : "Field1";
-                Core.KillMonster(location, cell, "Left", "Dark Makai", "Dark Makai Rune");
+                while (!Bot.ShouldExit && !Core.CheckInventory("Dark Makai Rune"))
+                    foreach (var mapInfo in new[] { ("tercessuinotlim", "m1"), (Core.IsMember ? "Nulgath" : "evilmarsh", "Field1") })
+                    {
+                        Core.Join(mapInfo.Item1, mapInfo.Item2, "Left");
+                        while (!Bot.ShouldExit && Core.IsMonsterAlive(1, useMapID: true))
+                        {
+                            Core.Sleep();
+                            Bot.Combat.Attack("*");
+                        }
+                    }
+                Bot.Wait.ForPickup("Dark Makai Rune");
 
                 if (item != null && rewardItemIds.TryGetValue(item, out int itemId))
                     Core.EnsureCompleteMulti(7551, itemId);
@@ -1126,13 +1154,20 @@ public class CoreNation
         if (farmDiamond)
             BambloozevsDrudgen("Diamond of Nulgath", 15);
         Core.EnsureAccept(869);
-        string[] locations = new[] { "tercessuinotlim", Core.IsMember ? "Nulgath" : "evilmarsh" };
-        string location = locations[new Random().Next(locations.Length)];
-        string cell = location == "tercessuinotlim" ? (new Random().Next(2) == 0 ? "m1" : "m2") : "Field1";
-        Core.KillMonster(location, cell, "Left", "Dark Makai", "Dark Makai Sigil", log: false);
+        Core.EquipClass(ClassType.Solo);
 
+        while (!Bot.ShouldExit && !Core.CheckInventory("Dark Makai Sigil"))
+            foreach (var mapInfo in new[] { ("tercessuinotlim", "m1"), (Core.IsMember ? "Nulgath" : "evilmarsh", "Field1") })
+            {
+                Core.Join(mapInfo.Item1, mapInfo.Item2, "Left");
+                while (!Bot.ShouldExit && Core.IsMonsterAlive(1, useMapID: true))
+                {
+                    Core.Sleep();
+                    Bot.Combat.Attack("*");
+                }
+            }
+        Bot.Wait.ForPickup("Dark Makai Sigil");
         Core.EnsureComplete(869);
-        Core.Logger("Completed");
     }
 
     /// <summary>
