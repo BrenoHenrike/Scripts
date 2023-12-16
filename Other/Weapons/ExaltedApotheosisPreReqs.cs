@@ -80,8 +80,7 @@ public class ExaltedApotheosisPreReqs
                 if (Core.CheckInventory(wep))
                     continue;
 
-                if (!Core.CheckInventory("Exalted Node", 150))
-                    Core.KillMonster("timeinn", "r3", "Top", "Energy Elemental", "Exalted Node", 300, isTemp: false);
+                Core.KillMonster("timeinn", "r3", "Top", "Energy Elemental", "Exalted Node", 300, isTemp: false);
                 Adv.BuyItem("timeinn", 2010, wep);
             }
             Bot.Wait.ForPickup("Exalted Apotheosis");
