@@ -18,7 +18,7 @@ public class ExaltedApotheosisPreReqs
 
     private string[] Weps =
     {
-        "Apostate Ultima", "Apostate Omega"
+        "Apostate Ultima", "Apostate Omega",
         "Thaumaturgus Ultima", "Thaumaturgus Omega",
         "Exalted Penultima", "Exalted Unity", "Exalted Apotheosis"
     };
