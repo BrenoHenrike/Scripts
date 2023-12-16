@@ -18,9 +18,9 @@ public class ExaltedApotheosisPreReqs
 
     private string[] Weps =
     {
-        "Exalted Penultima", "Exalted Unity",
-        "Thaumaturgus Ultima", "Thaumaturgus Omega",
         "Apostate Ultima", "Apostate Omega"
+        "Thaumaturgus Ultima", "Thaumaturgus Omega",
+        "Exalted Penultima", "Exalted Unity", "Exalted Apotheosis"
     };
 
     public void ScriptMain(IScriptInterface bot)
@@ -42,11 +42,8 @@ public class ExaltedApotheosisPreReqs
         // }
 
         /// No ultras required
-        if (!Core.CheckInventory("Thaumaturgus Alpha") && !Core.CheckInventory("Apostate Alpha"))
+        if (!Core.CheckInventory(new[] { "Thaumaturgus Alpha", "Apostate Alpha" }))
         {
-            if (Core.CheckInventory(Weps))
-                return;
-
             Core.EquipClass(ClassType.Farm);
             Core.KillMonster("timeinn", "r3", "Top", "Energy Elemental", "Exalted Node", 300, isTemp: false);
             Core.EquipClass(ClassType.Solo);
@@ -75,11 +72,19 @@ public class ExaltedApotheosisPreReqs
             "Currently our boats can't do the Ultra Bosses\n" +
             "for you until CoreArmy is finished.", stopBot: true);
         }
-        
         else
         {
             /// Apotheosis merge once got insignias
-            Adv.BuyItem("timeinn", 2010, "Exalted Apotheosis");
+            foreach (string wep in Weps)
+            {
+                if (Core.CheckInventory(wep))
+                    continue;
+
+                if (!Core.CheckInventory("Exalted Node", 150))
+                    Core.KillMonster("timeinn", "r3", "Top", "Energy Elemental", "Exalted Node", 300, isTemp: false);
+                Adv.BuyItem("timeinn", 2010, wep);
+            }
+            Bot.Wait.ForPickup("Exalted Apotheosis");
             Core.Logger("Congratulations on completing the Exalted Apotheosis weapon!");
         }
     }
