@@ -263,6 +263,11 @@ public class UltraSpeakerMergePreReqs
                         "War Blade of Wisdom"
                     };
 
+                //Story Requirements:
+                Core.Logger("Doing Story Req. for some items.");
+                Core.Logger("if more quests are locked, let tato know (for this script)");
+                SoC.LagunaBeach();
+
                 foreach (string Blade in WarBlades)
                 {
                     if (Core.CheckInventory(Blade))
