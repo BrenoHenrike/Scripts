@@ -333,21 +333,15 @@ public class UltraSpeakerMergePreReqs
                             break;
 
                         case "War Blade of Wisdom":
-                            Core.AddDrop("Fragment of the Queen");
-                            if (!Core.CheckInventory("Fragment of the Queen", 13))
-                            {
-                                Core.EquipClass(ClassType.Solo);
-                                Bot.Quests.UpdateQuest(8094);
-                                Core.HuntMonster("transformation", "Queen of Monsters", "Fragment of the Queen", 13, false);
-                            }
+                            Core.AddDrop("Fragment of the Queen", "ShadowChaos Mote");
+                            Core.EquipClass(ClassType.Solo);
+                            Bot.Quests.UpdateQuest(8094);
+                            Core.HuntMonster("transformation", "Queen of Monsters", "Fragment of the Queen", 13, false);
 
                             Core.EquipClass(ClassType.Farm);
                             Core.RegisterQuests(7700);
-                            while (!Bot.ShouldExit && !Core.CheckInventory("ShadowChaos Mote", 250))
-                            {
-                                Core.HuntMonster("lagunabeach", "Flying Fisheye");
-                                Bot.Wait.ForPickup("ShadowChaos Mote");
-                            }
+                            Core.HuntMonster("lagunabeach", "Flying Fisheye", "ShadowChaos Mote", 250, false);
+                            Bot.Wait.ForPickup("ShadowChaos Mote");
                             Core.CancelRegisteredQuests();
 
                             Core.Logger("Adding 7 to the Insignias Count");
