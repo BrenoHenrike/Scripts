@@ -173,8 +173,6 @@ public class UltraSpeakerMergePreReqs
 
     public void GetPrereqs()
     {
-        // Check Default Options
-        // CheckAndSetDefaultOptions();
 
         // Initialize counters
         int AcquiescenceCount = 0;
@@ -184,7 +182,7 @@ public class UltraSpeakerMergePreReqs
         // Complete Core SoW tasks
         SoW.CompleteCoreSoW();
 
-        #region GoddessofWar[rewrote]
+        #region GoddessofWar rewrote
         // Armors
         if (!Core.CheckInventory("Goddess Of War"))
         {
@@ -371,139 +369,124 @@ public class UltraSpeakerMergePreReqs
                 InsigniasCount += 10;
             }
             #endregion GoddessOfWarPrestigeCloak
+            #endregion GoddessofWar rewrote
 
-            Core.Logger("Checking items before attempting to buy Goddess Of War");
-            var allItemsOwned = true;
+            #region RGRoW item Check
+            Core.Logger("Checking items before buying Goddess Of War");
 
-            var yourDictionary = new Dictionary<int, int>
-                {
-                    { 55901, 3 },    // Purified Undead Dragon Essence
-                    { 43712, 50 },   // Ice Shard (2)
-                    { 65841, 1 },    // Hollowborn Doomblade (Sword)
-                    { 72921, 1 },    // Goddess Of War Prestige Cloak
-                    { 76482, 1 }     // Dragon's Tear
-                };
-
-            foreach (var kvp in yourDictionary)
+            var allItemsOwned = new Dictionary<int, int>
             {
-                var itemId = kvp.Key;
-                var quant = kvp.Value;
-
-                var itemName = GetItemName(itemId);
-
-                if (!Core.CheckInventory(itemId, quant))
-                {
-                    allItemsOwned = false;
-                    Core.Logger($"Still missing {itemName}, {quant - Bot.Inventory.GetQuantity(itemId)}");
-                }
-                else
-                    Core.Logger($"{itemName} owned {Bot.Inventory.GetQuantity(itemId) / quant}");
-            }
-
-            if (allItemsOwned)
+                { 55901, 3 }, { 43712, 50 }, { 65841, 1 }, { 72921, 1 }, { 76482, 1 }
+            }.All(kvp =>
             {
-                Core.Logger("All items owned. Attempting to buy Goddess Of War.");
-                Core.BuyItem("ultraspeaker", 2248, 72921, shopItemID: 11443);
-            }
-            else
-                Core.Logger("Cannot buy Goddess Of War. Missing items:");
+                var item = Bot.Inventory.Items.Find(x => x.ID == kvp.Key) ?? new ItemBase();
+                Core.Logger(!Core.CheckInventory(kvp.Key, kvp.Value)
+                    ? $"Missing {item.Name}, {kvp.Value - Bot.Inventory.GetQuantity(kvp.Key)}"
+                    : $"{item.Name} owned {Bot.Inventory.GetQuantity(kvp.Key) / kvp.Value}");
+                return Core.CheckInventory(kvp.Key, kvp.Value);
+            });
 
+            Core.Logger(allItemsOwned
+                ? "All items owned. Attempting to buy Goddess Of War."
+                : "Cannot buy Goddess Of War. Missing items");
 
-            // Example method to get item name based on item ID using ItemBase.
-            string GetItemName(int itemId)
-            {
-                var item = new ItemBase();
-                return item?.Name ?? $"Unknown Item ({itemId})";
-            }
+            if (allItemsOwned) Core.BuyItem("ultraspeaker", 2248, 72921, shopItemID: 11443);
         }
-        #endregion GoddessofWar[rewrote]
+        #endregion RGRoW item Check
 
         #region Radiant Goddess of War quest
 
         #endregion Radiant Goddess of War quest
 
-
-        #region Commented out
-        // #region WarBladeOfCourage
-        // // Weapons
-        // if (Bot.Config!.Get<bool>("GetWarBladeOfCourage"))
-        // {
-        //     if (!Core.CheckInventory("War Blade of Courage", toInv: false))
-        //     {
-        //         Core.Logger("Getting prerequisites for 'War Blade of Courage'...");
-        //         // Prerequisites for acquiring "War Blade of Courage"
-        //         if (Core.CheckInventory("Goddess Of War Blades", toInv: false) || Core.CheckInventory("War Blades of Courage", toInv: false))
-        //             Core.Logger("Buyback War Blade of Courage smh");
-        //         else
-        //         {
-        //             BLOD.BrilliantAura(50);
-        //             BLOD.BlindingAura(1);
-        //             Core.Logger("adding 10 to the Acquiescence Count");
-        //             AcquiescenceCount += 10;
-        //         }
-        //     }
-        //     if (!Core.CheckInventory("War Blades of Courage", toInv: false))
-        //     {
-        //         Core.Logger("adding 3 to the ElementalCore count");
-        //         ElementalCoreCount += 3;
-        //     }
-        // }
-        // #endregion WarBladeOfCourage
-
-        // Goddess of War Gauntlets
-        // if (Bot.Config!.Get<bool>("GetGoddessOfWarGauntlet"))
-        // {
-        //     if (!Core.CheckInventory("Goddess of War Gauntlet", toInv: false))
-        //     {
-        //         Core.Logger("Getting prerequisites for 'Goddess of War Gauntlet'...");
-        //         // Prerequisites for acquiring "Goddess of War Gauntlet"
-        //         if (Core.CheckInventory("Goddess of War Gauntlets", toInv: false))
-        //             Core.Logger("Buyback Goddess of War Gauntlet smh");
-        //         else
-        //             WFE.WarfuryEmblemFarm(50);
-        //     }
-        //     if (!Core.CheckInventory("Goddess of War Gauntlets", toInv: false))
-        //     {
-        //         Core.Logger("adding 3 to the ElementalCore count");
-        //         ElementalCoreCount += 3;
-        //     }
-        // }
-
-        // // Helmets
-        // if (Bot.Config!.Get<bool>("GetDragonMalgorVisage") || Bot.Config!.Get<bool>("GetGoddessOfWarHelm"))
-        // {
-        //     Core.Logger("Getting prerequisites for Helmets...");
-        //     if (!Core.CheckInventory("Dragon Malgor Visage"))
-        //     {
-        //         Core.Logger("adding 3 to the ElementalCore count");
-        //         ElementalCoreCount += 3;
-        //     }
-        //     if (!Core.CheckInventory("Goddess Of War Helm"))
-        //     {
-        //         Core.Logger("adding 3 to the ElementalCore count");
-        //         ElementalCoreCount += 3;
-        //     }
-        // }
-
-        // // Ground Runes
-        // if (Bot.Config!.Get<bool>("GetGoddessOfWarBattlefield"))
-        // {
-        //     Core.Logger("Getting prerequisites for Ground Runes...");
-        //     if (!Core.CheckInventory("Goddess Of War Battlefield"))
-        //     {
-        //         Core.Logger("adding 15 to the ElementalCore count");
-        //         ElementalCoreCount += 15;
-        //     }
-        // }
-        #endregion Commented out
-
         SOWM.Acquiescence(AcquiescenceCount);
         SOWM.ElementalCore(ElementalCoreCount);
 
-        Core.Logger($"Insignias left to farm: {Bot.Inventory.GetQuantity("Malgor Insignia") / InsigniasCount}");
+        Core.Logger("Amount left to farm:");
+        Core.FarmingLogger("Malgor Insignia", InsigniasCount);
+        Core.FarmingLogger("Malgor Insignia", InsigniasCount);
 
     }
 
+    #region Commented out
+
+
+    // Check Default Options
+    // CheckAndSetDefaultOptions();
+
+
+    // #region WarBladeOfCourage
+    // // Weapons
+    // if (Bot.Config!.Get<bool>("GetWarBladeOfCourage"))
+    // {
+    //     if (!Core.CheckInventory("War Blade of Courage", toInv: false))
+    //     {
+    //         Core.Logger("Getting prerequisites for 'War Blade of Courage'...");
+    //         // Prerequisites for acquiring "War Blade of Courage"
+    //         if (Core.CheckInventory("Goddess Of War Blades", toInv: false) || Core.CheckInventory("War Blades of Courage", toInv: false))
+    //             Core.Logger("Buyback War Blade of Courage smh");
+    //         else
+    //         {
+    //             BLOD.BrilliantAura(50);
+    //             BLOD.BlindingAura(1);
+    //             Core.Logger("adding 10 to the Acquiescence Count");
+    //             AcquiescenceCount += 10;
+    //         }
+    //     }
+    //     if (!Core.CheckInventory("War Blades of Courage", toInv: false))
+    //     {
+    //         Core.Logger("adding 3 to the ElementalCore count");
+    //         ElementalCoreCount += 3;
+    //     }
+    // }
+    // #endregion WarBladeOfCourage
+
+    // Goddess of War Gauntlets
+    // if (Bot.Config!.Get<bool>("GetGoddessOfWarGauntlet"))
+    // {
+    //     if (!Core.CheckInventory("Goddess of War Gauntlet", toInv: false))
+    //     {
+    //         Core.Logger("Getting prerequisites for 'Goddess of War Gauntlet'...");
+    //         // Prerequisites for acquiring "Goddess of War Gauntlet"
+    //         if (Core.CheckInventory("Goddess of War Gauntlets", toInv: false))
+    //             Core.Logger("Buyback Goddess of War Gauntlet smh");
+    //         else
+    //             WFE.WarfuryEmblemFarm(50);
+    //     }
+    //     if (!Core.CheckInventory("Goddess of War Gauntlets", toInv: false))
+    //     {
+    //         Core.Logger("adding 3 to the ElementalCore count");
+    //         ElementalCoreCount += 3;
+    //     }
+    // }
+
+    // // Helmets
+    // if (Bot.Config!.Get<bool>("GetDragonMalgorVisage") || Bot.Config!.Get<bool>("GetGoddessOfWarHelm"))
+    // {
+    //     Core.Logger("Getting prerequisites for Helmets...");
+    //     if (!Core.CheckInventory("Dragon Malgor Visage"))
+    //     {
+    //         Core.Logger("adding 3 to the ElementalCore count");
+    //         ElementalCoreCount += 3;
+    //     }
+    //     if (!Core.CheckInventory("Goddess Of War Helm"))
+    //     {
+    //         Core.Logger("adding 3 to the ElementalCore count");
+    //         ElementalCoreCount += 3;
+    //     }
+    // }
+
+    // // Ground Runes
+    // if (Bot.Config!.Get<bool>("GetGoddessOfWarBattlefield"))
+    // {
+    //     Core.Logger("Getting prerequisites for Ground Runes...");
+    //     if (!Core.CheckInventory("Goddess Of War Battlefield"))
+    //     {
+    //         Core.Logger("adding 15 to the ElementalCore count");
+    //         ElementalCoreCount += 15;
+    //     }
+    // }
+
+    //split here
 
     // // Check and set options that are turned off by default
     // void CheckAndSetDefaultOptions()
@@ -550,4 +533,5 @@ public class UltraSpeakerMergePreReqs
     //         Bot.Config!.Set("GetGoddessOfWarPrestigeCloak", true);
     //     }
     // }
+    #endregion Commented out
 }
