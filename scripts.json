@@ -20250,11 +20250,10 @@
       "shadow",
       "essences",
       "retrieve",
-      "void",
-      "auras"
+      "void aura"
     ],
     "path": "Evil/NSoD/VoidAuras/0SmartVoidAuras.cs",
-    "size": 1613,
+    "size": 1611,
     "fileName": "0SmartVoidAuras.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/NSoD/VoidAuras/0SmartVoidAuras.cs"
   },
@@ -20265,11 +20264,10 @@
       "commanding",
       "shadow",
       "essences",
-      "void",
-      "aura"
+      "void aura"
     ],
     "path": "Evil/NSoD/VoidAuras/CommandingShadowEssences.cs",
-    "size": 1313,
+    "size": 1312,
     "fileName": "CommandingShadowEssences.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/NSoD/VoidAuras/CommandingShadowEssences.cs"
   },
@@ -20278,11 +20276,10 @@
     "description": "farms void auras via the \"retrieve void auras\" quest.",
     "tags": [
       "retrieve",
-      "void",
-      "auras"
+      "void aura"
     ],
     "path": "Evil/NSoD/VoidAuras/RetreiveVoidAuras.cs",
-    "size": 1323,
+    "size": 1321,
     "fileName": "RetreiveVoidAuras.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/NSoD/VoidAuras/RetreiveVoidAuras.cs"
   },
