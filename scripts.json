@@ -357,7 +357,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 78459,
+    "size": 78557,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -389,17 +389,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/DragonSlayerReward.cs"
   },
   {
-    "name": "BambloozevsDrudgen",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Nation/BambloozevsDrudgen.cs",
-    "size": 1441,
-    "fileName": "BambloozevsDrudgen.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/BambloozevsDrudgen.cs"
-  },
-  {
     "name": "New Worlds, New Opportunities",
     "description": "Farms the resources of nation so instantly. Note that you must have Bounty Hunter's Drone Pet.",
     "tags": [
@@ -412,6 +401,20 @@
     "size": 699,
     "fileName": "NewWorldsNewOpportunities.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/NewWorldsNewOpportunities.cs"
+  },
+  {
+    "name": "Contract Exchange",
+    "description": "null",
+    "tags": [
+      "bamblooze vs drudgen",
+      "contract exchange",
+      "pet",
+      ""
+    ],
+    "path": "Nation/ContractExchange.cs",
+    "size": 4261,
+    "fileName": "ContractExchange.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/ContractExchange.cs"
   },
   {
     "name": "KisstheVoid",
