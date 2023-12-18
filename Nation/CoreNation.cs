@@ -400,23 +400,19 @@ public class CoreNation
                 {
                     case "Tainted Gem":
                         Supplies("Diamond of Nulgath", 45);
-                        ContractExchange(ChooseReward.TaintedGem, quant > 1 ? quant : Reward.MaxStack);
+                        ContractExchange(ContractExchangeRewards.Tainted_Gem, quant > 1 ? quant : Reward.MaxStack);
                         break;
                     case "Dark Crystal Shard":
                         Supplies("Diamond of Nulgath", 45);
-                        ContractExchange(ChooseReward.DarkCrystalShard, quant > 1 ? quant : Reward.MaxStack);
+                        ContractExchange(ContractExchangeRewards.Dark_Crystal_Shard, quant > 1 ? quant : Reward.MaxStack);
                         break;
                     case "Gem of Nulgath":
                         Supplies("Diamond of Nulgath", 45);
-                        ContractExchange(ChooseReward.GemofNulgath, quant > 1 ? quant : Reward.MaxStack);
+                        ContractExchange(ContractExchangeRewards.Gem_of_Nulgath, quant > 1 ? quant : Reward.MaxStack);
                         break;
                     case "Blood Gem of the Archfiend":
                         Supplies("Diamond of Nulgath", 45);
-                        ContractExchange(ChooseReward.BloodGemoftheArchfiend, quant > 1 ? quant : Reward.MaxStack);
-                        break;
-                    // Add more cases for other rewards
-                    default:
-                        Core.Logger("Default case");
+                        ContractExchange(ContractExchangeRewards.Blood_Gem_of_the_Archfiend, quant > 1 ? quant : Reward.MaxStack);
                         break;
                 }
             }
@@ -425,7 +421,7 @@ public class CoreNation
         {
             foreach (string? thing in rewards)
             {
-                ItemBase? Reward = Bot.Quests.EnsureLoad(870)?.Rewards.Find(item => item.Name == thing);
+                ItemBase? Reward = Bot.Quests.EnsureLoad(870)?.Rewards.Find(item => item.Name == thing) ?? new ItemBase();
                 Core.FarmingLogger(Reward.Name, quant);
                 while (!Bot.ShouldExit && !Core.CheckInventory(Reward.Name, quant > 1 ? quant : Reward.MaxStack))
                 {
@@ -433,23 +429,19 @@ public class CoreNation
                     {
                         case "Tainted Gem":
                             Supplies("Diamond of Nulgath", 45);
-                            ContractExchange(ChooseReward.TaintedGem, quant > 1 ? quant : Reward.MaxStack);
+                            ContractExchange(ContractExchangeRewards.Tainted_Gem, quant > 1 ? quant : Reward.MaxStack);
                             break;
                         case "Dark Crystal Shard":
                             Supplies("Diamond of Nulgath", 45);
-                            ContractExchange(ChooseReward.DarkCrystalShard, quant > 1 ? quant : Reward.MaxStack);
+                            ContractExchange(ContractExchangeRewards.Dark_Crystal_Shard, quant > 1 ? quant : Reward.MaxStack);
                             break;
                         case "Gem of Nulgath":
                             Supplies("Diamond of Nulgath", 45);
-                            ContractExchange(ChooseReward.GemofNulgath, quant > 1 ? quant : Reward.MaxStack);
+                            ContractExchange(ContractExchangeRewards.Gem_of_Nulgath, quant > 1 ? quant : Reward.MaxStack);
                             break;
                         case "Blood Gem of the Archfiend":
                             Supplies("Diamond of Nulgath", 45);
-                            ContractExchange(ChooseReward.BloodGemoftheArchfiend, quant > 1 ? quant : Reward.MaxStack);
-                            break;
-                        // Add more cases for other rewards
-                        default:
-                            Core.Logger("Default case");
+                            ContractExchange(ContractExchangeRewards.Blood_Gem_of_the_Archfiend, quant > 1 ? quant : Reward.MaxStack);
                             break;
                     }
                 }
@@ -542,7 +534,7 @@ public class CoreNation
     /// Farms Totem of Nulgath/Gem of Nulgath with Voucher Item: Totem of Nulgath quest
     /// </summary>
     /// <param name="reward">Which reward to pick (totem or gem)</param>
-    public void VoucherItemTotemofNulgath(ChooseReward reward = ChooseReward.TotemofNulgath)
+    public void VoucherItemTotemofNulgath(ChooseReward reward = ChooseReward.Totem_of_Nulgath)
     {
         if (!Core.CheckInventory("Voucher of Nulgath (non-mem)"))
             FarmVoucher(false);
@@ -1175,8 +1167,9 @@ public class CoreNation
     /// </summary>
     /// <param name="reward">Desired reward</param>
     /// <param name="farmUni13">Whether or not farm Uni 13</param>
-    public void ContractExchange(ChooseReward reward, int quant, bool farmUni13 = true)
+    public void ContractExchange(ContractExchangeRewards rewardEnum, int quant, bool farmUni13 = true)
     {
+        string reward = rewardEnum.ToString().Replace("_", " ");
         if ((!Core.CheckInventory("Unidentified 13") && !farmUni13) || !Core.CheckInventory("Drudgen the Assistant"))
         {
             if ((!Core.CheckInventory("Unidentified 13") && !farmUni13))
@@ -1189,14 +1182,14 @@ public class CoreNation
 
         Core.AddDrop(bagDrops);
         Core.EquipClass(ClassType.Solo);
-        Core.FarmingLogger(reward.ToString(), quant);
+        Core.FarmingLogger(reward.ToString().Replace("_", " "), quant);
         while (!Bot.ShouldExit && !Core.CheckInventory(reward.ToString(), quant))
         {
             if (farmUni13 && !Core.CheckInventory("Unidentified 13"))
                 FarmUni13(3);
             Core.EnsureAccept(870);
             Core.KillMonster("tercessuinotlim", "m4", "Top,", "Shadow of Nulgath", "Blade Master Rune", log: false);
-            Core.EnsureComplete(870, (int)reward);
+            Core.EnsureComplete(870, (int)rewardEnum);
             Core.Logger($"Exchanged for {reward}");
         }
     }
@@ -1331,7 +1324,7 @@ public class CoreNation
         Core.AddDrop("Gem of Nulgath");
         VoidKightSwordQuest("Gem of Nulgath", quant);
         while (!Bot.ShouldExit && !Core.CheckInventory("Gem of Nulgath", quant))
-            VoucherItemTotemofNulgath(ChooseReward.GemofNulgath);
+            VoucherItemTotemofNulgath(ChooseReward.Gem_of_Nulgath);
     }
 
     /// <summary>
@@ -1413,7 +1406,7 @@ public class CoreNation
         while (!Bot.ShouldExit && !Core.CheckInventory("Totem of Nulgath", quant))
         {
             // Complete the Voucher Item: Totem of Nulgath quest with the TotemofNulgath reward
-            VoucherItemTotemofNulgath(ChooseReward.TotemofNulgath);
+            VoucherItemTotemofNulgath(ChooseReward.Totem_of_Nulgath);
 
             if (Bot.Inventory.IsMaxStack("Totem of Nulgath"))
                 Core.Logger("Max Stack Hit.");
@@ -1943,12 +1936,22 @@ public class CoreNation
 
 public enum ChooseReward
 {
-    TaintedGem = 4769,
-    DarkCrystalShard = 4770,
-    DiamondofNulgath = 4771,
-    GemofNulgath = 6136,
-    BloodGemoftheArchfiend = 22332,
-    TotemofNulgath = 5357
+    Tainted_Gem = 4769,
+    Dark_Crystal_Shard = 4770,
+    Diamond_of_Nulgath = 4771,
+    Gem_of_Nulgath = 6136,
+    Blood_Gem_of_the_Archfiend = 22332,
+    Totem_of_Nulgath = 5357,
+}
+
+public enum ContractExchangeRewards
+{
+    Tainted_Gem = 4769,
+    Dark_Crystal_Shard = 4770,
+    Diamond_of_Nulgath = 4771,
+    Gem_of_Nulgath = 6136,
+    Blood_Gem_of_the_Archfiend = 22332,
+    All = 0
 }
 
 public enum SwindlesReturnReward
