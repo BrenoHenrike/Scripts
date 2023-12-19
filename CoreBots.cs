@@ -1485,10 +1485,10 @@ public class CoreBots
             return false;
 
         if (QuestData.AcceptRequirements.Any())
-            AddDrop(QuestData.AcceptRequirements.Where(x => !x.Temp).Select(y => y.ID).ToArray());
+            AddDrop(QuestData.AcceptRequirements.Where(x => !x.Temp).Select(y => y.Name).ToArray());
 
         if (QuestData.Requirements.Any())
-            AddDrop(QuestData.Requirements.Where(x => !x.Temp).Select(y => y.ID).ToArray());
+            AddDrop(QuestData.Requirements.Where(x => !x.Temp).Select(y => y.Name).ToArray());
 
 
         Sleep(ActionDelay * 2);
@@ -1514,10 +1514,10 @@ public class CoreBots
                 continue;
 
             if (quest.AcceptRequirements.Any())
-                AddDrop(quest.AcceptRequirements.Where(x => !x.Temp).Select(y => y.ID).ToArray());
+                AddDrop(quest.AcceptRequirements.Where(x => !x.Temp).Select(y => y.Name).ToArray());
 
             if (quest.Requirements.Any())
-                AddDrop(quest.Requirements.Where(x => !x.Temp).Select(y => y.ID).ToArray());
+                AddDrop(quest.Requirements.Where(x => !x.Temp).Select(y => y.Name).ToArray());
 
             Sleep(ActionDelay * 2);
             // Bot.Send.Packet($"%xt%zm%acceptQuest%{Bot.Map.RoomID}%{quest.ID}%");
