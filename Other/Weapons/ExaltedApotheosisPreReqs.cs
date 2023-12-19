@@ -115,10 +115,17 @@ public class ExaltedApotheosisPreReqs
                         }
                     }
                 }
-                Bot.Wait.ForPickup(ExaltedApo!.ID);
-                Core.Logger("Congratulations on completing the Exalted Apotheosis weapon!");
+                if (Core.CheckInventory(ExaltedApo!.ID))
+                    Core.Logger("Congratulations on completing the Exalted Apotheosis weapon!");
+                else
+                    foreach (var item in ExaltedApo.Requirements)
+                    {
+                        if (Core.CheckInventory(item.ID, toInv: false))
+                            continue;
+                        else Core.Logger($"Mising {item.Name}, {item.Quantity}");
+                    }
             }
-
+            Bot.Wait.ForPickup(ExaltedApo!.ID);
         }
     }
 }
