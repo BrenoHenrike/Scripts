@@ -366,13 +366,34 @@ public class CoreFireIsland
         }
 
         // The Hard Way 4107
-        Story.KillQuest(4107, "Brimstone", new[] { "Brimstone Marauder", "Brimstone Looter", "Brimstone Bandit" });
+        if (!Story.QuestProgression(4107))
+        {
+            Core.EnsureAccept(4107);
+            Core.HuntMonster("Brimstone", "Brimstone Marauder", "Pieces of Gossip", 3);
+            Core.HuntMonster("Brimstone", "Brimstone Looter", "Bits of Hearsay", 3);
+            Core.HuntMonster("Brimstone", "Brimstone Bandit", "Overheard Conversations", 3);
+            Core.EnsureComplete(4107);
+        }
 
         //Encrypt Keepers 4108
-        Story.KillQuest(4108, "Brimstone", new[] { "Brimstone Marauder", "Brimstone Looter", "Brimstone Bandit" });
+        if (!Story.QuestProgression(4108))
+        {
+            Core.EnsureAccept(4108);
+            Core.HuntMonster("Brimstone", "Brimstone Marauder", "Cryptic Key", 4);
+            Core.HuntMonster("Brimstone", "Brimstone Looter", "Partial Cipher", 2);
+            Core.HuntMonster("Brimstone", "Brimstone Bandit", "Reliable(?) Translation", 2);
+            Core.EnsureComplete(4108);
+        }
 
         //Catching Couriers  4109
-        Story.KillQuest(4109, "Brimstone", new[] { "Brimstone Marauder", "Brimstone Looter", "Brimstone Bandit" });
+        if (!Story.QuestProgression(4109))
+        {
+            Core.EnsureAccept(4109);
+            Core.HuntMonster("Brimstone", "Brimstone Marauder", "Burned Letter");
+            Core.HuntMonster("Brimstone", "Brimstone Looter", "Smudged Letter");
+            Core.HuntMonster("Brimstone", "Brimstone Bandit", "Barely Legible Letter");
+            Core.EnsureComplete(4109);
+        }
 
         //Steppe Quickly 4110
         if (!Story.QuestProgression(4110))
@@ -387,16 +408,42 @@ public class CoreFireIsland
         }
 
         //Reclamation 4111
-        Story.KillQuest(4111, "Brimstone", new[] { "Brimstone Marauder", "Brimstone Looter" });
+        if (!Story.QuestProgression(4111))
+        {
+            Core.EnsureAccept(4111);
+            Core.HuntMonster("Brimstone", "Brimstone Bandit", "Bags of Mercantile Goods ", 3);
+            Core.HuntMonster("Brimstone", "Brimstone Bandit", "Boxes of Raw Materials", 3);
+            Core.EnsureComplete(4111);
+        }
 
         //Bad Press 4112
-        Story.KillQuest(4112, "Brimstone", new[] { "Brimstone Marauder", "Brimstone Looter" });
+        if (!Story.QuestProgression(4112))
+        {
+            Core.EnsureAccept(4112);
+            Core.HuntMonster("Brimstone", "Brimstone Bandit", "Talmin's Propoganda", 6);
+            Core.HuntMonster("Brimstone", "Brimstone Bandit", "Talmins Doctrine", 3);
+            Core.EnsureComplete(04112000);
+        }
 
         //Good Hunting 4113
-        Story.KillQuest(4113, "Brimstone", new[] { "Fyresyn", "Fyreborn Tiger", "Pyradon" });
+        if (!Story.QuestProgression(4113))
+        {
+            Core.EnsureAccept(4113);
+            Core.HuntMonster("Brimstone", "Fyresyn", "Fyresyns Put Down", 5);
+            Core.HuntMonster("Brimstone", "Fyreborn Tiger", "Fyreborn Tigers Put Down", 6);
+            Core.HuntMonster("Brimstone", "Pyradon", "Pyradons Put Down", 5);
+            Core.EnsureComplete(4113);
+        }
 
         //One Last Push 4114
-        Story.KillQuest(4114, "Brimstone", new[] { "Brimstone Bandit", "Brimstone Marauder", "Brimstone Looter" });
+        if (!Story.QuestProgression(4114))
+        {
+            Core.EnsureAccept(4114);
+            Core.HuntMonster("Brimstone", "Brimstone Bandit", "Bandit's Ear", 3);
+            Core.HuntMonster("Brimstone", "Brimstone Marauder", "Marauder's Finger", 3);
+            Core.HuntMonster("Brimstone", "Brimstone Looter", "Looter's Tooth", 3);
+            Core.EnsureComplete(4114);
+        }
 
         //Redemption 4115
         Story.KillQuest(4115, "Brimstone", "Chief Talmin");
