@@ -268,34 +268,26 @@ public class CoreIsleOfFotia
 
     int CheckMournerGender()
     {
-        Core.Join("judgement", "r3", "Left");
+        Core.Join("judgement", "r5", "Left");
         Core.Logger("Testing if AE swapped the gender on the quest again...");
+        Core.Logger($"Current Charracter Gender: {Bot.Flash.GetGameObject<string>("world.myAvatar.objData.strGender")}");
 
-        // Calculate the quantity of the flower
-        int FlowerQuant = (Bot.Inventory.GetQuantity(18762) > 0) ? Bot.Inventory.GetQuantity(18762) + 1 :
-                          (Bot.Inventory.GetQuantity(18762) == 0) ? 1 :
-                          (Bot.Inventory.GetQuantity(18762) == 8) ? (Bot.Flash.GetGameObject<string>("world.myAvatar.objData.strGender") == "F" ? 4 : 2) :
-                          1;
+        Core.EnsureAccept(3036);
 
-        if (Core.CheckInventory(18762, 8))
-            return Bot.Flash.GetGameObject<string>("world.myAvatar.objData.strGender") == "F" ? 4 : 2;
+        // Kill the monster until the flower drop is obtained
+        while (!Bot.ShouldExit && Core.IsMonsterAlive(4, useMapID: true))
+            Bot.Kill.Monster("Female Mourner");
+
+        // If the drop is obtained, set the Mourner Gender and return the MonsterMapID
+        if (Core.CheckInventory(18762))
+        {
+            Core.Logger("Mourner to kill: Female");
+            return 4;
+        }
         else
         {
-            Core.EnsureAccept(3036);
-
-            // Kill the monster until the flower drop is obtained
-            while (!Bot.ShouldExit && Core.IsMonsterAlive(4, useMapID: true))
-                Bot.Kill.Monster("Female Mourner");
-
-            // If the drop is obtained, set the Mourner Gender and return the MonsterMapID
-            if (Core.CheckInventory(18762, FlowerQuant))
-            {
-                return 4;
-            }
-            else
-            {
-                return 2;
-            }
+            Core.Logger("Mourner to kill: Male");
+            return 2;
         }
     }
 }
