@@ -2352,11 +2352,29 @@ public class Core13LoC
         }
 
         // Defeat Drakath!
+        Bot.Events.CellChanged += CutSceneFixer;
         if (!Story.QuestProgression(3876))
         {
             Core.EnsureAccept(3876);
-            while (!Bot.ShouldExit && !Core.CheckInventory(26875))
-                Core.HuntMonsterMapID("finalbattle", 1);
+
+            while (Bot.Map.Name != "finalbattle")
+            {
+                Core.Join("finalbattle");
+                Core.Sleep();
+            }
+
+            while (Bot.Player.Cell != "r1")
+            {
+                Core.Jump("r1");
+                Core.Sleep();
+            }
+
+            while (!Bot.ShouldExit && Core.IsMonsterAlive(1, useMapID: true))
+            {
+                Bot.Combat.Attack(1);
+                if (Core.CheckInventory(26875))
+                    break;
+            }
             Core.EnsureComplete(3876);
         }
 
@@ -2364,8 +2382,26 @@ public class Core13LoC
         if (!Story.QuestProgression(3877))
         {
             Core.EnsureAccept(3877);
-            while (!Bot.ShouldExit && !Core.CheckInventory(26876))
-                Core.HuntMonsterMapID("finalbattle", 14);
+
+            while (Bot.Map.Name != "finalbattle")
+            {
+                Core.Join("finalbattle");
+                Core.Sleep();
+            }
+
+            while (Bot.Player.Cell != "r4")
+            {
+                Core.Jump("r4");
+                Core.Sleep();
+            }
+
+            while (!Bot.ShouldExit && Core.IsMonsterAlive(14, useMapID: true))
+            {
+                Bot.Combat.Attack(14);
+                if (Core.CheckInventory(26876))
+                    break;
+            }
+
             Core.EnsureComplete(3877);
         }
 
@@ -2373,8 +2409,21 @@ public class Core13LoC
         if (!Story.QuestProgression(3878))
         {
             Core.EnsureAccept(3878);
-            while (!Bot.ShouldExit && !Core.CheckInventory(26877))
-                Core.HuntMonsterMapID("finalbattle", 23);
+
+            if (Bot.Map.Name != "finalbattle")
+                Core.Join("finalbattle");
+
+            if (Bot.Player.Cell != "r9")
+                Core.Jump("r9");
+
+            while (!Bot.ShouldExit && Core.IsMonsterAlive(23, useMapID: true))
+            {
+                Bot.Combat.Attack(23);
+                if (Core.CheckInventory(26877))
+                    break;
+            }
+
+            Bot.Events.CellChanged -= CutSceneFixer;
             Core.EnsureComplete(3878);
             Bot.Wait.ForMapLoad("confrontation");
         }
