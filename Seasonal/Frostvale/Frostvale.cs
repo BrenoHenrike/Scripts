@@ -30,7 +30,7 @@ public class Frostvale
             Core.Logger($"it is Currently {DateTime.Now:MMMM}, The Maps Will Be out In December, as per the Design Notes.");
             return;
         }
-        
+
         IceCave();
         SnowGlobe();
         Alpine();
@@ -53,6 +53,7 @@ public class Frostvale
         DeerHunt();
         BowJangles();
         GlaceTomb();
+        Fimbultomb();
     }
 
     public void IceCave()
@@ -397,7 +398,6 @@ public class Frostvale
         Story.KillQuest(2575, "creatures", "Red Bird", GetReward: false);
     }
 
-
     public void Darkwinter()
     {
         if (Core.isCompletedBefore(3260) || !Core.isSeasonalMapActive("darkwinter"))
@@ -536,7 +536,12 @@ public class Frostvale
         Story.KillQuest(3902, "icerisepast", "Guard Drumlin");
 
         // The Camp 3903
-        Story.KillQuest(3903, "icerisepast", "Drumlin");
+        if (!Story.QuestProgression(3903))
+        {
+            Core.EnsureAccept(3903);
+            Core.KillMonster("icerisepast", "r7", "Left", "Drumlin", "Inhabitant found", 7);
+            Core.EnsureComplete(3903);
+        }
 
         // Fire from the Hole 3904
         Story.KillQuest(3904, "icerisepast", "Ice Drumlinster");
@@ -573,7 +578,6 @@ public class Frostvale
         //Not avaiable
         //There is no quests over here
     }
-
 
     public void Cryostorm()
     {
@@ -990,6 +994,53 @@ public class Frostvale
         // Still Peace 9507
         Story.KillQuest(9507, "glacetomb", new[] { "Kriomein", "Draugr", "Snow Fairy" });
     }
+
+    public void Fimbultomb()
+    {
+        if (Core.isCompletedBefore(9519))
+            return;
+
+        GlaceTomb();
+
+        // Hold the Door 9509
+        Story.MapItemQuest(9509, "fimbultomb", new[] { 12490, 12491 });
+        Story.KillQuest(9509, "fimbultomb", "Draugr");
+
+        // Floral Remedy 9510
+        Story.MapItemQuest(9510, "fimbultomb", 12492, 7);
+        Story.KillQuest(9510, "fimbultomb", "Sullied Auberon");
+
+        // Caving Hazards 9511
+        Story.KillQuest(9511, "fimbultomb", new[] { "Sullied Auberon", "Draugr" });
+
+        // Poetic Ettin 9512
+        Story.MapItemQuest(9512, "fimbultomb", 12493);
+        Story.KillQuest(9512, "fimbultomb", "Ettin Golem");
+
+        // In the Field 9513
+        Story.MapItemQuest(9513, "fimbultomb", new[] { 12494, 12495, 12496 });
+
+        // Nectar Tea 9514
+        Story.MapItemQuest(9514, "fimbultomb", 12497, 7);
+        Story.KillQuest(9514, "fimbultomb", "Ettin Golem");
+
+        // Copied Homework 9515
+        Story.KillQuest(9515, "fimbultomb", "Daselm");
+
+        // Nepomancer 9516
+        Story.KillQuest(9516, "fimbultomb", "Peter");
+
+        // Invert the Cycle 9517
+        Story.MapItemQuest(9517, "fimbultomb", 12498, 2);
+        Story.KillQuest(9517, "fimbultomb", "Ettin Golem");
+
+        // Death Squall 9518
+        Story.KillQuest(9518, "fimbultomb", "Fimbulventr Witch");
+
+        // Clean Sweep 9519
+        Story.KillQuest(9519, "fimbultomb", new[] { "Fimbulventr Witch", "Daselm", "Peter" });
+    }
+
 
     // --------------------------------------------------------------------------------------------------------------------------
 
