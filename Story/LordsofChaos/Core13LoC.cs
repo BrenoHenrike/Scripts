@@ -1197,12 +1197,10 @@ public class Core13LoC
         if (!Story.QuestProgression(1473))
         {
             Core.EnsureAccept(1473);
-            Adv.KillUltra("dreamnexus", "r17a", "Up", "Khasaanda", "Khasaanda Defeated!", publicRoom: false);
-            Bot.Events.CellChanged -= CutSceneFixer;
+            Core.KillMonster("dreamnexus", "r17a", "Up", "Khasaanda", "Khasaanda Defeated!", publicRoom: false);
             Core.EnsureComplete(1473);
             Bot.Wait.ForQuestComplete(1473);
         }
-
     }
 
     private void CutSceneFixer(string map, string cell, string pad)
@@ -1305,9 +1303,7 @@ public class Core13LoC
 
         //She Who asks 1
         if (!Story.QuestProgression(1230))
-        {
             Story.ChainQuest(1230);
-        }
 
         //The Troll Inside
         if (!Story.QuestProgression(1231))
