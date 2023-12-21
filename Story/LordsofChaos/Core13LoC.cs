@@ -1050,7 +1050,7 @@ public class Core13LoC
         if (!Story.QuestProgression(1234))
         {
             Core.EnsureAccept(1234);
-            Core.HuntMonster("bloodtusk", "Crystal-Rock", "Polished Rocks", 3);
+            Core.HuntMonsterMapID("bloodtusk", 21, "Polished Rocks", 3);
             Core.HuntMonster("crossroads", "Lemurphant", "Lemurphant Ivory", 5);
             Core.HuntMonster("crossroads", "Chinchilizard", "Liz-Leather Thongs", 5);
             Story.MapItemQuest(1234, "crossroads", 525);
