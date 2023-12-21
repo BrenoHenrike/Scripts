@@ -2352,7 +2352,6 @@ public class Core13LoC
         }
 
         // Defeat Drakath!
-        Bot.Events.CellChanged += CutSceneFixer;
         if (!Story.QuestProgression(3876))
         {
             Core.EnsureAccept(3876);
@@ -2423,7 +2422,6 @@ public class Core13LoC
                     break;
             }
 
-            Bot.Events.CellChanged -= CutSceneFixer;
             Core.EnsureComplete(3878);
             Bot.Wait.ForMapLoad("confrontation");
         }
