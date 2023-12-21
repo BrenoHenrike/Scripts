@@ -72,7 +72,7 @@ public class Core13LoC
         Story.MapItemQuest(179, "castleundead", 38, 5);
 
         //Defend the Throne
-        Story.KillQuest(180, "castleundead", "*");
+        Story.KillQuest(180, "castleundead", "Skeletal Viking");
 
         //The Arrival of Drakath cutscene
         if (!Bot.Quests.IsUnlocked(196))
@@ -1095,14 +1095,14 @@ public class Core13LoC
         Story.MapItemQuest(1281, "ravinetemple", new[] { 555, 556 }, 10);
 
         //Tears of the Mountain
-        Story.KillQuest(1282, "ravinetemple", "*");
+        Story.KillQuest(1282, "ravinetemple", "Temple Guardian");
 
         //Defend the UnderMountain
-        Story.KillQuest(1283, "ravinetemple", "*");
+        Story.KillQuest(1283, "ravinetemple", "Temple Guardian");
         Story.MapItemQuest(1283, "ravinetemple", 557, 10);
 
         //Alliance Defiance
-        Story.KillQuest(1284, "ravinetemple", "*");
+        Story.KillQuest(1284, "ravinetemple", "Temple Guardian");
 
         //Scout and Return
         Story.MapItemQuest(1375, "alliance", new[] { 679, 680 });
@@ -1339,18 +1339,17 @@ public class Core13LoC
         Story.MapItemQuest(1275, "ravinetemple", new[] { 555, 556 }, 10);
 
         //Learn More of the Ore
-        Story.KillQuest(1276, "ravinetemple", "*");
+        Story.KillQuest(1276, "ravinetemple", "Temple Guardian");
 
         //Too Little, Too Late. Still Needed
-        Story.KillQuest(1277, "ravinetemple", "*");
+        Story.KillQuest(1277, "ravinetemple", "Temple Guardian");
         Story.MapItemQuest(1277, "ravinetemple", 557, 10);
 
         //Alliance Defiance
-        Story.KillQuest(1278, "ravinetemple", "*");
+        Story.KillQuest(1278, "ravinetemple", "Temple Guardian");
 
         //The Headquartes of Good and Evil
         Story.MapItemQuest(1369, "alliance", new[] { 679, 680 });
-
 
         //Treat Nullification, Good and Bad
         Story.KillQuest(1370, "alliance", new[] { "Good Soldier", "Evil Soldier" });
