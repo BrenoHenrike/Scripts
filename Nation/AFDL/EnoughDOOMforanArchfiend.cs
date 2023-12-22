@@ -47,7 +47,7 @@ public class EnoughDOOMforanArchfiend
             "Undead Energy", "DoomLord's War Mask", "ShadowFiend Cloak", "Locks of the DoomLord", "Doomblade of Destruction");
 
         // Quest Accept Requirements: "DoomLord's War Mask", "ShadowFiend Cloak", "Locks of the DoomLord", "Doomblade of Destruction" 
-        Nation.FarmUni13();
+        Nation.FarmUni13(1);
         Nation.ApprovalAndFavor(0, 1);
         NulgathDemandsWork.NDWQuest(NDWRequiredItems);
 
