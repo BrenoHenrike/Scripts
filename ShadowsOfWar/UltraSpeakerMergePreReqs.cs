@@ -379,11 +379,11 @@ public class UltraSpeakerMergePreReqs
                 { 55901, 3 }, { 43712, 50 }, { 65841, 1 }, { 72921, 1 }, { 76482, 1 }
             }.All(kvp =>
             {
-                var item = Bot.Inventory.Items.Find(x => x.ID == kvp.Key) ?? new ItemBase();
-                Core.Logger(!Core.CheckInventory(kvp.Key, kvp.Value)
-                    ? $"Missing {item.Name}, {kvp.Value - Bot.Inventory.GetQuantity(kvp.Key)}"
-                    : $"{item.Name} owned {Bot.Inventory.GetQuantity(kvp.Key) / kvp.Value}");
-                return Core.CheckInventory(kvp.Key, kvp.Value);
+                ItemBase? item = Bot.Inventory.Items.Find(x => x.ID == kvp.Key);
+                Core.Logger(!Core.CheckInventory(item!.Name, kvp.Value)
+                    ? $"Missing {item!.Name}, {kvp.Value - Bot.Inventory.GetQuantity(item!.Name)}"
+                    : $"{item!.Name} owned {Bot.Inventory.GetQuantity(item!.Name) / kvp.Value}");
+                return Core.CheckInventory(item!.Name, kvp.Value);
             });
 
             Core.Logger(allItemsOwned
@@ -401,9 +401,7 @@ public class UltraSpeakerMergePreReqs
         SOWM.Acquiescence(AcquiescenceCount);
         SOWM.ElementalCore(ElementalCoreCount);
 
-        Core.Logger("Amount left to farm:");
-        Core.FarmingLogger("Malgor Insignia", InsigniasCount);
-        Core.FarmingLogger("Malgor Insignia", InsigniasCount);
+        Core.Logger($"Malgor Insignia Needed: {InsigniasCount - Bot.Inventory.GetQuantity("Malgor Insignia")}");
 
     }
 
