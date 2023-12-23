@@ -93,7 +93,7 @@ public class CarolingMerge
                 case "Chill Hat + Locks":
                 case "Chill Hat Visage":
                 case "Chill Hat Morph":
-                    Core.EquipClass(ClassType.Farm);
+                    Core.EquipClass(ClassType.Solo);
                     Core.HuntMonster("carolinn", "Eldritch Gifthulu", req.Name, quant, false);
                     break;
 
