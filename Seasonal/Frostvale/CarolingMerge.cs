@@ -57,18 +57,6 @@ public class CarolingMerge
                     bool shouldStop = !Adv.matsOnly || !dontStopMissingIng;
                     Core.Logger($"The bot hasn't been taught how to get {req.Name}." + (shouldStop ? " Please report the issue." : " Skipping"), messageBox: shouldStop, stopBot: shouldStop);
                     break;
-                    #endregion
-
-                    Core.FarmingLogger(req.Name, quant);
-                    Core.EquipClass(ClassType.Farm);
-                    Core.RegisterQuests(0000);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.Logger("This item is not setup yet");
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    Core.CancelRegisteredQuests();
-                    break;
 
                 case "Jingle Bells":
                     Core.FarmingLogger(req.Name, quant);
