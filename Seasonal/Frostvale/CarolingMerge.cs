@@ -50,26 +50,10 @@ public class CarolingMerge
                 Core.Logger("req is NULL");
                 return;
             }
+            #endregion Dont edit this part
 
             switch (req.Name)
             {
-                default:
-                    bool shouldStop = !Adv.matsOnly || !dontStopMissingIng;
-                    Core.Logger($"The bot hasn't been taught how to get {req.Name}." + (shouldStop ? " Please report the issue." : " Skipping"), messageBox: shouldStop, stopBot: shouldStop);
-                    break;
-
-                case "Jingle Bells":
-                    Core.FarmingLogger(req.Name, quant);
-                    Core.EquipClass(ClassType.Farm);
-                    Core.RegisterQuests(0000);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.Logger("This item is not setup yet");
-                        Bot.Wait.ForPickup(req.Name);
-                    }
-                    Core.CancelRegisteredQuests();
-                    break;
-
                 case "Aurum Wings Blade":
                 case "Brunswick Leo Scion":
                 case "Brunswick Leo's Requiem":
@@ -85,12 +69,13 @@ public class CarolingMerge
                     Core.HuntMonster("carolinn", "Eldritch Gifthulu", req.Name, quant, false);
                     break;
 
+                case "Red Ribbon":
                 case "Silver Tinsel":
                     Core.EquipClass(ClassType.Farm);
                     Core.HuntMonster("carolinn", "Frostval Tree", req.Name, quant, false);
                     break;
 
-                case "Red Ribbon":
+                case "Jingle Bells":
                     Core.EquipClass(ClassType.Farm);
                     // Jingle Spells - 9520
                     Core.RegisterQuests(9520);
@@ -105,6 +90,10 @@ public class CarolingMerge
                     Core.HuntMonster("carolinn", "Krumpet", req.Name, quant, false);
                     break;
 
+                default:
+                    bool shouldStop = !Adv.matsOnly || !dontStopMissingIng;
+                    Core.Logger($"The bot hasn't been taught how to get {req.Name}." + (shouldStop ? " Please report the issue." : " Skipping"), messageBox: shouldStop, stopBot: shouldStop);
+                    break;
             }
         }
     }
@@ -142,6 +131,6 @@ public class CarolingMerge
         new Option<bool>("82782", "Northlands Holiday Visage", "Mode: [select] only\nShould the bot buy \"Northlands Holiday Visage\" ?", false),
         new Option<bool>("82788", "Holly Holiday Twilly", "Mode: [select] only\nShould the bot buy \"Holly Holiday Twilly\" ?", false),
         new Option<bool>("82789", "Holly Holiday Twig", "Mode: [select] only\nShould the bot buy \"Holly Holiday Twig\" ?", false),
-        new Option<bool>("82790", "Holly Holiday Zorbak", "Mode: [select] only\nShould the bot buy \"Holly Holiday Zorbak\" ?", false),
+        new Option<bool>("82790", "Holly Holiday Zorbak", "Mode: [select] only\nShould the bot buy \"Holly Holiday Zorbak\" ?", false)
     };
 }
