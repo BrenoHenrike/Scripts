@@ -71,8 +71,25 @@ public class CarolingMerge
 
                 case "Red Ribbon":
                 case "Silver Tinsel":
-                    Core.EquipClass(ClassType.Farm);
-                    Core.HuntMonster("carolinn", "Frostval Tree", req.Name, quant, false);
+                    Core.EquipClass(ClassType.Solo);
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
+                    {
+                        Core.Join("whitemap");
+                        Core.Join("caroling");
+                        {
+                            for (int killCount = 0; killCount < 5 && !Bot.ShouldExit; killCount++)
+                            {
+
+                                while (!Bot.ShouldExit && Core.IsMonsterAlive(1, useMapID: true))
+                                    Bot.Combat.Attack(1);
+                                Core.Logger($"Kill: {killCount + 1}/5, {(killCount < 4 ? "Swapping Map at 5" : "swapping map to respawn mob")}");
+                                Bot.Wait.ForMonsterSpawn(1);
+                            }
+
+                            Core.Join("whitemap");
+                            Core.Join("caroling");
+                        }
+                    }
                     break;
 
                 case "Jingle Bells":
