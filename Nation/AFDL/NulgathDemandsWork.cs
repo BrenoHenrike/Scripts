@@ -95,10 +95,17 @@ public class NulgathDemandsWork
                     while (!Bot.ShouldExit && Core.CheckInventory("Archfiend Essence Fragment", 9) && !Core.CheckInventory("Unidentified 35", quant))
                         Adv.BuyItem("tercessuinotlim", 1951, item.ID, shopItemID: 7912);
 
-                    if (!Core.CheckInventory(item.ID, quant))
-                        Core.EnsureComplete(5259, item.ID);
+                    if (!Core.CheckInventory(NDWItems))
+                    {
+                        foreach (string NDWItem in NDWItems)
+                            if (!Core.CheckInventory(NDWItem))
+                                Core.EnsureCompleteChoose(5259, new[] { NDWItem });
+                                else Core.Logger("all NDW items owned, completing quest without Selecting reward.\n"+
+                                "(will still get \"Archfiend Essence Fragment\" and uni 35.)");
+                    }
+                    else Core.EnsureComplete(5259);
                 }
-                else Core.EnsureComplete(5259, item.ID);
+                else Core.EnsureCompleteChoose(5259, item.Name == "Archfiend Essence Fragment" ? NDWItems : new[] { item.Name });
             }
         }
     }
