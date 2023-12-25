@@ -133,7 +133,7 @@
       "prerequisites"
     ],
     "path": "Chaos/ChaosAvengerPreReqs.cs",
-    "size": 5870,
+    "size": 6056,
     "fileName": "ChaosAvengerPreReqs.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Chaos/ChaosAvengerPreReqs.cs"
   },
@@ -528,7 +528,7 @@
       "seasonal"
     ],
     "path": "Dailies/Cryomancer.cs",
-    "size": 761,
+    "size": 1092,
     "fileName": "Cryomancer.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/Cryomancer.cs"
   },
@@ -682,7 +682,7 @@
       "khasaanda"
     ],
     "path": "Dailies/LordOfOrder.cs",
-    "size": 10522,
+    "size": 10614,
     "fileName": "LordOfOrder.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/LordOfOrder.cs"
   },
@@ -12145,7 +12145,7 @@
       "null"
     ],
     "path": "Other/Classes/DragonslayerGeneral.cs",
-    "size": 1914,
+    "size": 1940,
     "fileName": "DragonslayerGeneral.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/DragonslayerGeneral.cs"
   },
@@ -12261,7 +12261,7 @@
       "all"
     ],
     "path": "Other/Classes/0AllClasses.cs",
-    "size": 13608,
+    "size": 15572,
     "fileName": "0AllClasses.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/0AllClasses.cs"
   },
@@ -19991,7 +19991,7 @@
       "deathpitarena"
     ],
     "path": "Other/Classes/Members-CLasses/DrakelWarlord[Mem].cs",
-    "size": 1181,
+    "size": 1261,
     "fileName": "DrakelWarlord[Mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/Members-CLasses/DrakelWarlord[Mem].cs"
   },
@@ -20037,7 +20037,7 @@
       "null"
     ],
     "path": "Other/Classes/Members-CLasses/ChronoAssassin[Mem].cs",
-    "size": 2031,
+    "size": 2050,
     "fileName": "ChronoAssassin[Mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/Members-CLasses/ChronoAssassin[Mem].cs"
   },
@@ -20116,7 +20116,7 @@
       "null"
     ],
     "path": "Other/Classes/REP-based/ChaosSlayer.cs",
-    "size": 1316,
+    "size": 1425,
     "fileName": "ChaosSlayer.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/REP-based/ChaosSlayer.cs"
   },
@@ -20226,7 +20226,7 @@
       "null"
     ],
     "path": "Other/Classes/REP-based/Arachnomancer.cs",
-    "size": 1036,
+    "size": 1135,
     "fileName": "Arachnomancer.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/REP-based/Arachnomancer.cs"
   },
