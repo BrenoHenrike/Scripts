@@ -27,11 +27,12 @@ public class ChronoAssassin
 
         Core.SetOptions(false);
     }
-    public void GetChronoAss()
+    public void GetChronoAss(bool rankUpClass = true)
     {
         if (Core.CheckInventory("Chrono Assassin"))
         {
-            Adv.RankUpClass("Chrono Assassin");
+            if (rankUpClass)
+                Adv.RankUpClass("Chrono Assassin");
             return;
         }
         if (!Core.IsMember)
@@ -41,9 +42,9 @@ public class ChronoAssassin
         Core.BuyItem("tachyon", 1251, "Chrono Assassin");
 
         Bot.Wait.ForPickup("Chrono Assassin");
-        Adv.GearStore();
-        Adv.RankUpClass("Chrono Assassin");
-        Adv.GearStore(true);
+
+        if (rankUpClass)
+            Adv.RankUpClass("Chrono Assassin");
     }
     public void SaeculumGem(int GemQuant)
     {
@@ -54,7 +55,7 @@ public class ChronoAssassin
         while (!Bot.ShouldExit && !Core.CheckInventory("Saeculum Gem", GemQuant))
         {
             Core.EnsureAccept(5085);
-            
+
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("tachyon", "Svelgr the Devourer", "Svelgr Fang", isTemp: false);
 
@@ -66,7 +67,6 @@ public class ChronoAssassin
             Bot.Wait.ForPickup("Saeculum Gem");
             Core.Logger($"Complete Quest {i++} Time[s]");
         }
-
 
     }
 }

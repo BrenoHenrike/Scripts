@@ -30,6 +30,8 @@ public class DrakelWarlord
         if (Core.CheckInventory("Drakel Warlord") || !Core.IsMember)
         {
             Core.Logger(Core.CheckInventory("Drakel Warlord") ? "You already own Drakel Warlord class." : "Membership is required for this class.");
+            if (rankUpClass)
+                Adv.RankUpClass("Drakel Warlord");
             return;
         }
 

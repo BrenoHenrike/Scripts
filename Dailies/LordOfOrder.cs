@@ -38,7 +38,10 @@ public class LordOfOrder
 
         Core.Logger("Daily: Lord Of Order Class");
         if (Bot.Quests.IsDailyComplete(7156))
-        {
+        {            
+            if (rankUpClass)
+                Adv.RankUpClass("Lord Of Order");
+
             Core.Logger("Daily Quest unavailable right now");
             return;
         }

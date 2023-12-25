@@ -40,7 +40,11 @@ public class ChaosSlayer
     public void GetCS(CSvariant variant = CSvariant.Mystic, bool rankUpClass = true)
     {
         if (Core.CheckInventory(Variants))
+        {
+            if (rankUpClass)
+                Adv.RankUpClass($"Chaos Slayer {variant}");
             return;
+        }
 
         LOC.Hero();
         Adv.BuyItem("newfinale", 891, $"Chaos Slayer {variant}", shopItemID: (int)variant);

@@ -138,6 +138,8 @@ tags: all classes,class,farm,complete,all
 //cs_include Scripts/Story/ElegyofMadness(Darkon)/CoreAstravia.cs
 //cs_include Scripts/Other/Classes/DragonOfTime.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
+using Skua.Core.Options;
 
 public class AllClasses
 {
@@ -149,7 +151,7 @@ public class AllClasses
     private BlazeBinder BB = new();
     private Cryomancer Cryo = new();
     private LordOfOrder LOO = new();
-    #endregion
+    #endregion Dailies
 
     #region Rep
     private Arachnomancer Arach = new();
@@ -169,7 +171,7 @@ public class AllClasses
     private StoneCrusher SC = new();
     private ThiefOfHours TOH = new();
     private TrollSpellsmith TS = new();
-    #endregion
+    #endregion Rep
 
     #region Member
     private AlphaOmega AO = new();
@@ -185,7 +187,7 @@ public class AllClasses
     private LegionDoomKnight LDK = new();
     private LegendaryElementalWarrior LEW = new();
     private UndeadSlayer US = new();
-    #endregion
+    #endregion Member
 
     #region Seasonal
     private AlphaPirate APir = new();
@@ -196,7 +198,7 @@ public class AllClasses
     private NorthlandsMonk NM = new();
     private PirateClass Pirate = new();
     private VampireLord VL = new();
-    #endregion
+    #endregion Seasonal
 
     #region Various
     private AbyssalAngelsShadow AAS = new();
@@ -216,7 +218,7 @@ public class AllClasses
     private NeoMetalNecro NMN = new();
     private ScarletSorceress SS = new();
     private SwordMaster SM = new();
-    #endregion
+    #endregion Various
 
     #region End game
     private CoreArchMage AM = new();
@@ -228,144 +230,169 @@ public class AllClasses
     private VerusDoomKnightClass VDK = new();
     private CoreVHL VHL = new();
     private CoreYnR YNR = new();
-    #endregion
+    #endregion End game
+
+
+    public string OptionsStorage = "GetAllClasses";
+    public bool DontPreconfigure = true;
+    public List<IOption> Options = new()
+    {
+        new Option<bool>("RankALL", "Rankup All Classes", "wether to Rankup the class to 10 after acquiring it", true),
+        CoreBots.Instance.SkipOptions,
+    };
 
     public void ScriptMain(IScriptInterface Bot)
     {
+        int GoldBoostID = Bot.Boosts.GetBoostID(BoostType.Gold, true);
+        int ClassBoostID = Bot.Boosts.GetBoostID(BoostType.Class, true);
+        int ExperienceBoostID = Bot.Boosts.GetBoostID(BoostType.Experience, true);
+        int ReputationBoostID = Bot.Boosts.GetBoostID(BoostType.Reputation, true);
+
+        Core.BankingBlackList.AddRange(
+            Bot.Inventory.Items
+                .Where(x => x.ID == GoldBoostID || x.ID == ClassBoostID || x.ID == ExperienceBoostID || x.ID == ReputationBoostID)
+                .Cast<ItemBase>()
+                .Select(item => item.Name)
+        );
+
+
         Core.SetOptions();
-        Core.DL_Enable();
+
         GetAllClasses();
+
         Core.SetOptions(false);
     }
 
     public void GetAllClasses()
     {
-        DailyClasses();
-        RepClasses();
-        MemClasses();
-        SeasonalClasses();
-        VariousClasses();
-        EndGameClasses();
+        bool rankUpClass = Bot.Config!.Get<bool>("RankALL");
+
+        DailyClasses(rankUpClass);
+        RepClasses(rankUpClass);
+        MemClasses(rankUpClass);
+        SeasonalClasses(rankUpClass);
+        VariousClasses(rankUpClass);
+        EndGameClasses(rankUpClass);
     }
 
-    public void DailyClasses()
+    public void DailyClasses(bool rankUpClass)
     {
         Core.Logger("=== Doing Daily Classes ===");
 
-        BB.GetClass();
+        BB.GetClass(rankUpClass);
         Daily.CollectorClass();
-        Cryo.DoCryomancer();
+        Cryo.DoCryomancer(rankUpClass);
         Daily.DeathKnightLord();
-        LOO.GetLoO();
+        LOO.GetLoO(rankUpClass);
         Daily.Pyromancer();
         Daily.ShadowScytheClass();
 
         Core.Logger("=== Daily Classes - Completed! ===");
     }
 
-    public void RepClasses()
+    public void RepClasses(bool rankUpClass)
     {
         Core.Logger("=== Doing Reputation Classes ===");
 
-        Arach.GetArach();
-        CS.GetCS();
-        DBSK.GetDSK();
-        ED.GetClass();
-        EI.GetEI();
-        ES.GetES();
-        GB.GetGB();
-        HE.GetHE();
-        IC.GetIC();
-        Lycan.GetLycan();
-        MR.GetMR();
-        Pal.GetPaladin();
-        RBM.GetRBM();
-        Shaman.GetShaman();
-        SC.GetSC();
-        TOH.GetToH();
-        TS.GetTS();
+        Arach.GetArach(rankUpClass);
+        CS.GetCS(CSvariant.Mystic, rankUpClass);
+        DBSK.GetDSK(rankUpClass);
+        ED.GetClass(rankUpClass);
+        EI.GetEI(rankUpClass);
+        ES.GetES(rankUpClass);
+        GB.GetGB(rankUpClass);
+        HE.GetHE(rankUpClass);
+        IC.GetIC(rankUpClass);
+        Lycan.GetLycan(rankUpClass);
+        MR.GetMR(rankUpClass);
+        Pal.GetPaladin(rankUpClass);
+        RBM.GetRBM(rankUpClass);
+        Shaman.GetShaman(rankUpClass);
+        SC.GetSC(rankUpClass);
+        TOH.GetToH(rankUpClass);
+        TS.GetTS(rankUpClass);
 
         Core.Logger("=== Reputation Classes - Completed! ===");
     }
 
-    private void MemClasses()
+    private void MemClasses(bool rankUpClass)
     {
         if (!Core.IsMember)
             return;
 
         Core.Logger("=== Doing Member Classes ===");
 
-        AO.GetAlphaOmega();
-        Acolyte.GetAcolyte();
-        Bard.GetBard();
-        BM.GetBM();
-        BA.GetBAnc();
-        BT.Getclass();
-        CA.GetChronoAss();
-        DK.GetDK();
-        DoomK.GetDoomKnight();
-        DW.GetClass();
-        LDK.GetLDK();
-        LEW.GetLEW();
-        US.GetUS();
+        AO.GetAlphaOmega(rankUpClass);
+        Acolyte.GetAcolyte(rankUpClass);
+        Bard.GetBard(rankUpClass);
+        BM.GetBM(rankUpClass);
+        BA.GetBAnc(rankUpClass);
+        BT.Getclass(rankUpClass);
+        CA.GetChronoAss(rankUpClass);
+        DK.GetDK(rankUpClass);
+        DoomK.GetDoomKnight(rankUpClass);
+        DW.GetClass(rankUpClass);
+        LDK.GetLDK(rankUpClass);
+        LEW.GetLEW(rankUpClass);
+        US.GetUS(rankUpClass);
 
         Core.Logger("=== Member Classes - Completed! ===");
     }
 
-    private void SeasonalClasses()
+    private void SeasonalClasses(bool rankUpClass)
     {
         Core.Logger("=== Doing Seasonal Classes ===");
 
-        APir.GetAlphaPirate();
-        DL.GetDL();
-        EL.GetClass();
-        FB.GetFB();
-        LSMA.GetClass();
-        NM.GetNlMonk();
-        VL.GetClass();
-        Pirate.GetPirate();
+        APir.GetAlphaPirate(rankUpClass);
+        DL.GetDL(rankUpClass);
+        EL.GetClass(rankUpClass);
+        FB.GetFB(rankUpClass);
+        LSMA.GetClass(rankUpClass);
+        NM.GetNlMonk(rankUpClass);
+        VL.GetClass(rankUpClass);
+        Pirate.GetPirate(rankUpClass);
 
         Core.Logger("=== Seasonal Classes - Completed! ===");
     }
 
-    private void VariousClasses()
+    private void VariousClasses(bool rankUpClass)
     {
         Core.Logger("=== Doing Various Classes ===");
 
-        AAS.GetAbyssal();
-        AF.GetArchfiend();
-        BS.GetBSorc();
-        DMN.GetClass();
-        DS.GetDragonslayer();
-        DSG.GetDSGeneral();
-        DSS.GetDSS();
-        Enf.GetClass();
-        ESC.GetClass();
-        FSR.GetFSR();
-        HSC.GetHSC();
-        ILDC.GetILDC();
-        LM.GetLM();
-        Necro.GetNecromancer();
-        NMN.GetClass();
-        SS.GetSSorc();
-        SM.GetSwordMaster();
+        AAS.GetAbyssal(rankUpClass);
+        AF.GetArchfiend(rankUpClass);
+        BS.GetBSorc(rankUpClass);
+        DMN.GetClass(rankUpClass);
+        DS.GetDragonslayer(rankUpClass);
+        DSG.GetDSGeneral(rankUpClass);
+        DSS.GetDSS(rankUpClass);
+        Enf.GetClass(rankUpClass);
+        ESC.GetClass(rankUpClass);
+        FSR.GetFSR(rankUpClass);
+        HSC.GetHSC(rankUpClass);
+        ILDC.GetILDC(rankUpClass);
+        LM.GetLM(rankUpClass);
+        Necro.GetNecromancer(rankUpClass);
+        NMN.GetClass(rankUpClass);
+        SS.GetSSorc(rankUpClass);
+        SM.GetSwordMaster(rankUpClass);
 
         Core.Logger("=== Various Classes - Completed! ===");
     }
 
-    private void EndGameClasses()
+    private void EndGameClasses(bool rankUpClass)
     {
         Core.Logger("=== Doing End Game Classes ===");
 
-        AM.GetAM();
-        AP.GetAP();
-        CAV.GetClass();
-        DOT.GetDoT(doExtra: false);
-        LC.GetLC();
-        LR.GetLR(true);
-        VDK.GetClass();
-        VHL.GetVHL();
-        YNR.GetYnR();
+        AM.GetAM(rankUpClass);
+        AP.GetAP(rankUpClass);
+        CAV.GetClass(rankUpClass);
+        DOT.GetDoT(rankUpClass, doExtra: false);
+        LC.GetLC(rankUpClass);
+        LR.GetLR(rankUpClass);
+        VDK.GetClass(rankUpClass);
+        VHL.GetVHL(rankUpClass);
+        YNR.GetYnR(rankUpClass);
 
         Core.Logger("=== End Game Classes - Completed! ===");
     }
