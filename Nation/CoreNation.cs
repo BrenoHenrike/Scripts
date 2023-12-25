@@ -534,7 +534,7 @@ public class CoreNation
     /// Farms Totem of Nulgath/Gem of Nulgath with Voucher Item: Totem of Nulgath quest
     /// </summary>
     /// <param name="reward">Which reward to pick (totem or gem)</param>
-    public void VoucherItemTotemofNulgath(ChooseReward reward = ChooseReward.Totem_of_Nulgath)
+    public void VoucherItemTotemofNulgath(VoucherItemTotem reward = VoucherItemTotem.Totem_of_Nulgath)
     {
         if (!Core.CheckInventory("Voucher of Nulgath (non-mem)"))
             FarmVoucher(false);
@@ -1324,7 +1324,7 @@ public class CoreNation
         Core.AddDrop("Gem of Nulgath");
         VoidKightSwordQuest("Gem of Nulgath", quant);
         while (!Bot.ShouldExit && !Core.CheckInventory("Gem of Nulgath", quant))
-            VoucherItemTotemofNulgath(ChooseReward.Gem_of_Nulgath);
+            VoucherItemTotemofNulgath(VoucherItemTotem.Gem_of_Nulgath);
     }
 
     /// <summary>
@@ -1406,7 +1406,7 @@ public class CoreNation
         while (!Bot.ShouldExit && !Core.CheckInventory("Totem of Nulgath", quant))
         {
             // Complete the Voucher Item: Totem of Nulgath quest with the TotemofNulgath reward
-            VoucherItemTotemofNulgath(ChooseReward.Totem_of_Nulgath);
+            VoucherItemTotemofNulgath(VoucherItemTotem.Totem_of_Nulgath);
 
             if (Bot.Inventory.IsMaxStack("Totem of Nulgath"))
                 Core.Logger("Max Stack Hit.");
@@ -1963,3 +1963,9 @@ public enum SwindlesReturnReward
     Blood_Gem_of_the_Archfiend = 22332,
     None = 0
 };
+
+public enum VoucherItemTotem
+{
+    Totem_of_Nulgath = 5357,
+    Gem_of_Nulgath = 6136
+}
