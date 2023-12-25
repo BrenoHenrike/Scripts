@@ -681,6 +681,8 @@ public class Frostvale
         if (Core.isCompletedBefore(5617) || !Core.isSeasonalMapActive("icepike"))
             return;
 
+        Icewindpass();
+
         Story.PreLoad(this);
 
         // Fight For Kezeroth!
