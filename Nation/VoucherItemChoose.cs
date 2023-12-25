@@ -18,10 +18,10 @@ public class VoucherItem
 
     public string OptionsStorage = "VoucherItem";
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         CoreBots.Instance.SkipOptions,
-        new Option<ChooseReward>("VoucherItem", "Choose Your Item", "Extra stuff to choose, if you have any suggestions -form in disc, and put it under request. or dm Tato(the retarded one on disc)", ChooseReward.TaintedGem),
+        new Option<VoucherItemTotem>("VoucherItem", "Choose Your Item", "Extra stuff to choose, if you have any suggestions -form in disc, and put it under request. or dm Tato(the retarded one on disc)", VoucherItemTotem.Totem_of_Nulgath),
     };
 
     public void ScriptMain(IScriptInterface bot)
@@ -36,6 +36,6 @@ public class VoucherItem
     public void Choose()
     {
         while (!Bot.ShouldExit)
-            Nation.VoucherItemTotemofNulgath(Bot.Config.Get<ChooseReward>("VoucherItem"));
+            Nation.VoucherItemTotemofNulgath(Bot.Config!.Get<VoucherItemTotem>("VoucherItem"));
     }
 }
