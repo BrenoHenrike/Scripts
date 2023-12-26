@@ -342,8 +342,11 @@ public class CoreFarms
         while (NotYetLevel(100))
             Core.KillMonster(Core.IsMember ? "nightmare" : "icestormunder", Core.IsMember ? "r13" : "r2", Core.IsMember ? "left" : "Top", "*", log: false);
 
-        Core.SavedState(false);
         Core.ToggleAggro(false);
+        Core.JumpWait();
+        Bot.Wait.ForCombatExit();
+        Core.Rest();
+
         if (rankUpClass)
             ToggleBoost(BoostType.Class, false);
 
@@ -915,6 +918,9 @@ public class CoreFarms
             return;
 
         Core.ToggleAggro(false);
+        Core.JumpWait();
+        Bot.Wait.ForCombatExit();
+
         Core.FarmingLogger("Dragon Runestone", quant);
 
         Gold((100000 * (quant - Bot.Inventory.GetQuantity("Dragon Runestone"))) - Bot.Inventory.GetQuantity("Gold Voucher 100k"));
@@ -1280,7 +1286,7 @@ public class CoreFarms
 
         Core.RegisterQuests(4667);
         Core.Join("elfhame", "Cut1", "Left");
-        Core.ToggleAggro(false);
+
 
         while (!Bot.ShouldExit && FactionRank("Brightoak") < rank)
         {
@@ -1871,18 +1877,20 @@ public class CoreFarms
             DeathPitToken();
             Core.EnsureComplete(5155);
         }
+
         if (!Core.isCompletedBefore(5156))
         {
             Core.EnsureAccept(5156);
             Core.EnsureComplete(5156);
         }
-        Core.RegisterQuests(5156);
+
         if (!Core.isCompletedBefore(5157))
         {
             Core.EnsureAccept(5157);
             RunDeathPitBrawl();
             Core.EnsureComplete(5157);
         }
+
         Core.RegisterQuests(5157, 5165);
 
         while (!Bot.ShouldExit && FactionRank("Death Pit Brawl") < rank)
@@ -1895,152 +1903,191 @@ public class CoreFarms
         Core.ToggleAggro(true);
     }
 
-    void RunDeathPitBrawl(string item = "Death Pit Token")
+    void RunDeathPitBrawl(string item = "Death Pit Token", int quant = 1, int rank = 10)
     {
-        while (Bot.Map.Name != "deathpitbrawl")
+        while (!Bot.ShouldExit && (!Core.CheckInventory(item, quant) || FactionRank("Death Pit Brawl") < rank))
         {
-            Core.Logger("Joining Brawl");
-            Core.Join("DeathPitbrawl", "Enter0", "Spawn");
-            Core.Sleep();
-        }
-
-        int Move = 1;
-        Core.PvPMove(5, "Morale0C", 228, 291);
-        Core.Logger($"Move: {Move++}");
-        Core.PvPMove(4, "Morale0B", 936, 397);
-        Core.Logger($"Move: {Move++}");
-        Core.PvPMove(7, "Morale0A", 946, 394);
-        Core.Logger($"Move: {Move++}");
-        Core.PvPMove(9, "Crosslower", 948, 400);
-        Core.Logger($"Move: {Move++}");
-        Core.PvPMove(14, "Crossupper", 903, 324);
-        Core.Logger($"Move: {Move++}");
-        Core.PvPMove(18, "Resource1A", 482, 295);
-        Core.Logger($"Move: {Move++}, Restorers");
-
-        while (!Bot.ShouldExit)
-        {
-            Bot.Kill.Monster(9);
-            Bot.Combat.CancelTarget();
-            Bot.Wait.ForCombatExit(20);
-            Bot.Kill.Monster(10);
-            Bot.Wait.ForCombatExit(20);
-            Bot.Combat.CancelTarget();
-            if (!Core.IsMonsterAlive("Velm's Restorer"))
+            while (!Bot.ShouldExit && Bot.Map.Name != "deathpitbrawl")
             {
-                Bot.Combat.CancelTarget();
-                Core.Logger("Velm's Restorers killed.");
-                break;
+                Core.Logger("Joining Brawl");
+                Core.Join("DeathPitbrawl", "Enter0", "Spawn");
+                Core.Sleep();
             }
-        }
 
-        Core.PvPMove(20, "Resource1B", 938, 400);
-        Core.Logger($"Move: {Move++}, Restorers");
+            int Move = 1;
+            Core.PvPMove(5, "Morale0C", 228, 291);
+            Core.Logger($"Move: {Move++}");
+            Core.PvPMove(4, "Morale0B", 936, 397);
+            Core.Logger($"Move: {Move++}");
+            Core.PvPMove(7, "Morale0A", 946, 394);
+            Core.Logger($"Move: {Move++}");
+            Core.PvPMove(9, "Crosslower", 948, 400);
+            Core.Logger($"Move: {Move++}");
+            Core.PvPMove(14, "Crossupper", 903, 324);
+            Core.Logger($"Move: {Move++}");
+            Core.PvPMove(18, "Resource1A", 482, 295);
+            Core.Logger($"Move: {Move++}, Restorers");
 
-        while (!Bot.ShouldExit)
-        {
-            Bot.Kill.Monster(11);
-            Bot.Combat.CancelTarget();
-            Bot.Wait.ForCombatExit(20);
-            Bot.Kill.Monster(12);
-            Bot.Wait.ForCombatExit(20);
-            Bot.Combat.CancelTarget();
-            if (!Core.IsMonsterAlive("Velm's Restorer"))
+            while (!Bot.ShouldExit)
             {
+                Bot.Kill.Monster(9);
                 Bot.Combat.CancelTarget();
-                Core.Logger("Velm's Restorers killed.");
-                break;
+                Bot.Wait.ForCombatExit(20);
+                Bot.Kill.Monster(10);
+                Bot.Wait.ForCombatExit(20);
+                Bot.Combat.CancelTarget();
+                if (!Core.IsMonsterAlive("Velm's Restorer"))
+                {
+                    Bot.Combat.CancelTarget();
+                    Core.Logger("Velm's Restorers killed.");
+                    break;
+                }
             }
-        }
 
-
-        Core.PvPMove(21, "Resource1A", 9, 435);
-        Core.Logger($"Move: {Move++}");
-        Core.PvPMove(19, "Crossupper", 461, 315);
-        Core.Logger($"Move: {Move++}");
-        Core.PvPMove(17, "Crosslower", 54, 339);
-        Core.Logger($"Move: {Move++}");
-        Core.PvPMove(15, "Morale1A", 522, 286);
-        Core.Logger($"Move: {Move++}, Velm's Brawler");
-
-        while (!Bot.ShouldExit)
-        {
-            Bot.Kill.Monster(13);
-            Bot.Combat.CancelTarget();
-            Bot.Wait.ForCombatExit(20);
-            if (!Core.IsMonsterAlive("Velm's Brawler"))
+            if (Core.CheckInventory(item, quant))
             {
-                Bot.Combat.CancelTarget();
-                Core.Logger("Velm's Brawlers killed.");
-                break;
+                Core.Join("battleon");
+                return;
             }
-        }
 
+            Core.PvPMove(20, "Resource1B", 938, 400);
+            Core.Logger($"Move: {Move++}, Restorers");
 
-        Core.PvPMove(23, "Morale1B", 948, 403);
-        Core.Logger($"Move: {Move++}, Velm's Brawler");
-
-        while (!Bot.ShouldExit)
-        {
-            Bot.Kill.Monster(14);
-            Bot.Combat.CancelTarget();
-            Bot.Wait.ForCombatExit(20);
-            if (!Core.IsMonsterAlive("Velm's Brawler"))
+            while (!Bot.ShouldExit)
             {
+                Bot.Kill.Monster(11);
                 Bot.Combat.CancelTarget();
-                Core.Logger("Velm's Brawlers killed.");
-                break;
+                Bot.Wait.ForCombatExit(20);
+                Bot.Kill.Monster(12);
+                Bot.Wait.ForCombatExit(20);
+                Bot.Combat.CancelTarget();
+                if (!Core.IsMonsterAlive("Velm's Restorer"))
+                {
+                    Bot.Combat.CancelTarget();
+                    Core.Logger("Velm's Restorers killed.");
+                    break;
+                }
             }
-        }
 
-
-        Core.PvPMove(25, "Morale1C", 945, 397);
-        Core.Logger($"Move: {Move++}, Velm's Brawler");
-
-        while (!Bot.ShouldExit)
-        {
-            Bot.Kill.Monster(15);
-            Bot.Combat.CancelTarget();
-            Bot.Wait.ForCombatExit(20);
-            if (!Core.IsMonsterAlive("Velm's Brawler"))
+            if (Core.CheckInventory(item, quant))
             {
-                Bot.Combat.CancelTarget();
-                Core.Logger("Velm's Brawlers killed.");
-                break;
+                Core.Join("battleon");
+                return;
             }
-        }
 
 
-        Core.PvPMove(28, "Captain1", 943, 404);
-        Core.Logger($"Move: {Move++}, General Velm (B)");
+            Core.PvPMove(21, "Resource1A", 9, 435);
+            Core.Logger($"Move: {Move++}");
+            Core.PvPMove(19, "Crossupper", 461, 315);
+            Core.Logger($"Move: {Move++}");
+            Core.PvPMove(17, "Crosslower", 54, 339);
+            Core.Logger($"Move: {Move++}");
+            Core.PvPMove(15, "Morale1A", 522, 286);
+            Core.Logger($"Move: {Move++}, Velm's Brawler");
 
-        while (!Bot.ShouldExit)
-        {
-            Bot.Kill.Monster(16);
-            Bot.Combat.CancelTarget();
-            Bot.Wait.ForCombatExit();
-            if (!Core.IsMonsterAlive("General Velm (B)"))
+            while (!Bot.ShouldExit)
             {
+                Bot.Kill.Monster(13);
                 Bot.Combat.CancelTarget();
-                Core.Logger("General Velm (B) killed.");
-                break;
+                Bot.Wait.ForCombatExit(20);
+                if (!Core.IsMonsterAlive("Velm's Brawler"))
+                {
+                    Bot.Combat.CancelTarget();
+                    Core.Logger("Velm's Brawlers killed.");
+                    break;
+                }
             }
-        }
 
-        Core.Sleep(5000);
+            if (Core.CheckInventory(item, quant))
+            {
+                Core.Join("battleon");
+                return;
+            }
 
-        Bot.Wait.ForDrop(item, 40);
-        Bot.Wait.ForPickup(item);
 
-        Core.Logger("Delaying exit");
-        Core.Sleep(7500);
+            Core.PvPMove(23, "Morale1B", 948, 403);
+            Core.Logger($"Move: {Move++}, Velm's Brawler");
 
-        while (Bot.Map.Name != "battleon")
-        {
-            int i = 0;
-            Core.Logger($"Attemping Exit {i++}.");
-            Bot.Map.Join("battleon-999999");
-            Core.Sleep(1500);
+            while (!Bot.ShouldExit)
+            {
+                Bot.Kill.Monster(14);
+                Bot.Combat.CancelTarget();
+                Bot.Wait.ForCombatExit(20);
+                if (!Core.IsMonsterAlive("Velm's Brawler"))
+                {
+                    Bot.Combat.CancelTarget();
+                    Core.Logger("Velm's Brawlers killed.");
+                    break;
+                }
+            }
+
+            if (Core.CheckInventory(item, quant))
+            {
+                Core.Join("battleon");
+                return;
+            }
+
+
+            Core.PvPMove(25, "Morale1C", 945, 397);
+            Core.Logger($"Move: {Move++}, Velm's Brawler");
+
+            while (!Bot.ShouldExit)
+            {
+                Bot.Kill.Monster(15);
+                Bot.Combat.CancelTarget();
+                Bot.Wait.ForCombatExit(20);
+                if (!Core.IsMonsterAlive("Velm's Brawler"))
+                {
+                    Bot.Combat.CancelTarget();
+                    Core.Logger("Velm's Brawlers killed.");
+                    break;
+                }
+            }
+
+            if (Core.CheckInventory(item, quant))
+            {
+                Core.Join("battleon");
+                return;
+            }
+
+
+            Core.PvPMove(28, "Captain1", 943, 404);
+            Core.Logger($"Move: {Move++}, General Velm (B)");
+
+            while (!Bot.ShouldExit)
+            {
+                Bot.Kill.Monster(16);
+                Bot.Combat.CancelTarget();
+                Bot.Wait.ForCombatExit();
+                if (!Core.IsMonsterAlive("General Velm (B)"))
+                {
+                    Bot.Combat.CancelTarget();
+                    Core.Logger("General Velm (B) killed.");
+                    break;
+                }
+            }
+
+            if (Core.CheckInventory(item, quant))
+            {
+                Core.Join("battleon");
+                return;
+            }
+
+            Core.Sleep(5000);
+
+            Bot.Wait.ForDrop(item, 40);
+            Bot.Wait.ForPickup(item);
+
+            Core.Logger("Delaying exit");
+            Core.Sleep(7500);
+
+            while (Bot.Map.Name != "battleon")
+            {
+                int i = 0;
+                Core.Logger($"Attemping Exit {i++}.");
+                Bot.Map.Join("battleon-999999");
+                Core.Sleep(1500);
+            }
         }
     }
 
@@ -2049,9 +2096,10 @@ public class CoreFarms
         // Do not call this with registered quests, or it technically never exits.
         if (Core.CheckInventory(item, quant))
             return;
-        Core.Logger($"Farming {quant} {item}");
+
+        Core.FarmingLogger(item, quant);
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
-            RunDeathPitBrawl();
+            RunDeathPitBrawl(item, quant, 0);
     }
 
     public void FaerieCourtREP(int rank = 10) // Seasonal

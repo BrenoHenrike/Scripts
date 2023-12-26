@@ -1850,22 +1850,26 @@ public class CoreBots
 
         if (Bot.Player.CurrentClass?.Name == "ArchMage")
             Bot.Options.AttackWithoutTarget = true;
+            
+        if (item == null)
+            ToggleAggro(false);
 
         if (item == null)
         {
             if (log)
                 Logger($"Killing {monster}");
 
-            ToggleAggro(true);
 
             Bot.Kill.Monster(monster);
 
-            ToggleAggro(false);
             Rest();
         }
         else _KillForItem(monster, item, quant, isTemp, log: log);
         Bot.Options.AttackWithoutTarget = false;
-        // Bot.Skills.Stop();
+        ToggleAggro(false);
+        JumpWait();
+        Bot.Wait.ForCombatExit();
+        Rest();
     }
 
 
@@ -1906,11 +1910,13 @@ public class CoreBots
                 Logger($"Killing {monster}");
             ToggleAggro(true);
             Bot.Kill.Monster(monster);
-            ToggleAggro(false);
             Rest();
         }
         else _KillForItem(monster.Name, item, quant, isTemp, log: log);
         Bot.Options.AttackWithoutTarget = false;
+        ToggleAggro(false);
+        JumpWait();
+        Bot.Wait.ForCombatExit();
     }
 
     /// <summary>
@@ -2009,7 +2015,7 @@ public class CoreBots
             Sleep();
             Rest();
         }
-        
+
     }
 
     /// <summary>

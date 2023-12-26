@@ -761,6 +761,8 @@ public class CoreArmyLite
                 Core.JumpWait();
 
             Core.ToggleAggro(false);
+            Core.JumpWait();
+            Bot.Wait.ForCombatExit();
 
             Bot.Player.Goto(userName);
             Core.Sleep(1000);
