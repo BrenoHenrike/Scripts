@@ -329,6 +329,17 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/EmpoweringItems.cs"
   },
   {
+    "name": "SuppliesToSpinTheWheelofChance",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Nation/SuppliesUltraAlteon.cs",
+    "size": 563,
+    "fileName": "SuppliesUltraAlteon.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/SuppliesUltraAlteon.cs"
+  },
+  {
     "name": "EmblemofNulgath",
     "description": "null",
     "tags": [
@@ -357,7 +368,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 78661,
+    "size": 79041,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
