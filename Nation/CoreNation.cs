@@ -630,7 +630,7 @@ public class CoreNation
     /// </summary>
     /// <param name="item">Desired item name.</param>
     /// <param name="quant">Desired item quantity.</param>
-    public void Supplies(string? item = null, int quant = 1)
+    public void Supplies(string? item = null, int quant = 1, bool UltraAlteon = false)
     {
         bool sellMemVoucher = Core.CBOBool("Nation_SellMemVoucher", out bool _sellMemVoucher) && _sellMemVoucher;
         bool returnPolicyDuringSupplies = Core.CBOBool("Nation_ReturnPolicyDuringSupplies", out bool _returnSupplies) && _returnSupplies;
@@ -648,13 +648,16 @@ public class CoreNation
                 ItemBase? Item = rewards.Find(x => x.Name == Thing);
 
                 if (Core.CheckInventory(CragName))
-                    BambloozevsDrudgen(Item.Name, Item.MaxStack);
+                    BambloozevsDrudgen(Item!.Name, Item.MaxStack);
                 else
                 {    // Find the corresponding item in quest rewards
 
                     while (!Bot.ShouldExit && Item != null && !Core.CheckInventory(Item.Name, Item.MaxStack))
                     {
-                        Core.KillEscherion(Item.Name, Item.MaxStack, log: false);
+                        if (UltraAlteon)
+                            Core.HuntMonster("ultraalteon", "Ultra Alteon", Item.Name, Item.MaxStack, log: false);
+                        else
+                            Core.KillEscherion(Item.Name, Item.MaxStack, log: false);
 
                         if (item != "Voucher of Nulgath" && _sellMemVoucher && Core.CheckInventory("Voucher of Nulgath"))
                         {
@@ -682,7 +685,10 @@ public class CoreNation
             {
                 while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
                 {
-                    Core.KillEscherion(item, quant, log: false);
+                    if (UltraAlteon)
+                        Core.HuntMonster("ultraalteon", "Ultra Alteon", item, quant, log: false);
+                    else
+                        Core.KillEscherion(item, quant, log: false);
 
                     if (item != "Voucher of Nulgath" && _sellMemVoucher && Core.CheckInventory("Voucher of Nulgath"))
                     {
