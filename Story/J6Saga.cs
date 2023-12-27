@@ -27,7 +27,10 @@ public class J6Saga
     public void J6(bool ReTurnWithHammer = false)
     {
         if (Core.isCompletedBefore(2858))
+        {
+            Core.Logger("Story Complete.");
             return;
+        }
 
         Story.PreLoad(this);
 
