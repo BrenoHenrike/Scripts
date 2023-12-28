@@ -1850,15 +1850,14 @@ public class CoreBots
 
         if (Bot.Player.CurrentClass?.Name == "ArchMage")
             Bot.Options.AttackWithoutTarget = true;
-            
-        if (item == null)
-            ToggleAggro(false);
+
+        if (item == null && Bot.Options.AggroMonsters)
+            ToggleAggro(true);
 
         if (item == null)
         {
             if (log)
                 Logger($"Killing {monster}");
-
 
             Bot.Kill.Monster(monster);
 
@@ -1866,10 +1865,7 @@ public class CoreBots
         }
         else _KillForItem(monster, item, quant, isTemp, log: log);
         Bot.Options.AttackWithoutTarget = false;
-        ToggleAggro(false);
-        JumpWait();
-        Bot.Wait.ForCombatExit();
-        Rest();
+
     }
 
 
@@ -3407,7 +3403,8 @@ public class CoreBots
 
             case "moonyard":
                 JumpWait();
-                Join("hyperium");
+                Bot.Send.Packet($"%xt%zm%serverUseItem%{Bot.Map.RoomID}%+%5041%525,275%{(PrivateRooms ? (map + "-" + PrivateRoomNumber) : map)}%");
+                Bot.Wait.ForMapLoad("hyperium");
                 Jump("R10");
                 Bot.Map.Join(PrivateRooms ? $"{map}-" + PrivateRoomNumber : strippedMap);
                 Bot.Wait.ForMapLoad(strippedMap);

@@ -687,7 +687,11 @@ public class CoreArmyLite
                 }
 
                 // Do these things if that fails
-                Core.Join("whitemap");
+                string stopLocation = Core.CustomStopLocation?.Trim().ToLower() ?? string.Empty;
+                if (!string.IsNullOrWhiteSpace(stopLocation))
+                    Core.Join(stopLocation, "Enter", "Spawn", false, false);
+                else Core.Join("whitemap");
+
                 Core.Logger($"Could not find {playerName}. Check if \"{playerName}\" is in the same server with you.", "tryGoto");
                 if (b_shouldHibernate)
                     Core.Logger($"The bot will now hibernate and try to /goto to {playerName} every {hibernateTimer} seconds.", "tryGoto");
@@ -761,8 +765,6 @@ public class CoreArmyLite
                 Core.JumpWait();
 
             Core.ToggleAggro(false);
-            Core.JumpWait();
-            Bot.Wait.ForCombatExit();
 
             Bot.Player.Goto(userName);
             Core.Sleep(1000);
