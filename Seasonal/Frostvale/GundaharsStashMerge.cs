@@ -72,15 +72,15 @@ public class GundaharsStashMerge
                 case "Icy Pelt":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
-                    Core.RegisterQuests(8433);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonsterMapID("deerhunt", 1, "Deer Deterred", quant);
-                        Core.HuntMonsterMapID("deerhunt", 4, "Wolf Warded", quant);
-                        Core.HuntMonsterMapID("deerhunt", 5, "Owl Ousted", quant);
-                        Bot.Wait.ForPickup(req.Name);
+                        Core.EnsureAccept(8433);
+                        Core.HuntMonsterMapID("deerhunt", 1, "Deer Deterred", 3);
+                        Core.HuntMonsterMapID("deerhunt", 4, "Wolf Warded", 9);
+                        Core.HuntMonsterMapID("deerhunt", 5, "Owl Ousted", 6);
+                        Core.EnsureComplete(8433);
                     }
-                    Core.CancelRegisteredQuests();
+                    Bot.Wait.ForPickup(req.Name);
                     break;
 
                 case "WinterWild Axe":
