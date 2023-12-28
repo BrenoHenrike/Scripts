@@ -935,7 +935,14 @@ public class Frostvale
         Story.KillQuest(7823, "darkoviaforest", "Lich Of The Stone");
 
         //Returning to Oblivion (7824)
-        Story.KillQuest(7824, "underworld", new[] { "Dreadfiend of Nulgath", "Infernalfiend", "Bloodfiend" });
+        if(!Story.QuestProgression(7824))
+        {
+            Core.EnsureAccept(7824);
+            Core.HuntMonster("underworld", "Dreadfiend of Nulgath", "Dreadfiend Gone", 5);
+            Core.HuntMonster("underworld", "Infernalfiend", "Infernalfiend Mauled", 5);
+            Core.HuntMonster("underworld", "Bloodfiend", "Bloodfiend Destroyed", 5);
+            Core.EnsureComplete(7824);
+        }
 
         //Both Sides are Guilty (7825)
         Story.KillQuest(7825, "judgement", new[] { "Aeacus", "Minos", "Rhadamanthys" });
