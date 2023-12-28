@@ -161,7 +161,7 @@ public class CoreDoomwood
         Story.KillQuest(1088, "doomwood", new[] { "Doomwood Soldier", "Doomwood Soldier" });
 
         //1090    An IDeal Seal
-        Story.KillQuest(1090, "necrotower", "DoomWood Bonemuncher");
+        Story.KillQuest(1090, "necrotower", "Doomwood Bonemuncher");
 
         //1091    Need for Speed (Reading)!
         Story.MapItemQuest(1091, "necrotower", 438);
