@@ -161,7 +161,12 @@ public class CoreDoomwood
         Story.KillQuest(1088, "doomwood", new[] { "Doomwood Soldier", "Doomwood Soldier" });
 
         //1090    An IDeal Seal
-        Story.KillQuest(1090, "necrotower", "Doomwood Bonemuncher");
+        if (!Story.QuestProgression(1090))
+        {
+            Core.EnsureAccept(1090);
+            Core.HuntMonsterMapID("necrotower", 4, "Seal Components");
+            Core.EnsureComplete(1090);
+        }
 
         //1091    Need for Speed (Reading)!
         Story.MapItemQuest(1091, "necrotower", 438);
