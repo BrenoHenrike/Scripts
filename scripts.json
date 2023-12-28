@@ -143,6 +143,17 @@
     "tags": [
       "null"
     ],
+    "path": "Templates/CustomAggromonTemplate.cs",
+    "size": 1282,
+    "fileName": "CustomAggromonTemplate.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Templates/CustomAggromonTemplate.cs"
+  },
+  {
+    "name": "null",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
     "path": "Templates/MergeTemplate.cs",
     "size": 3062,
     "fileName": "MergeTemplate.cs",
