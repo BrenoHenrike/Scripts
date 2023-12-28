@@ -8,6 +8,7 @@ tags: huntress-merge, seasonal, frostvale
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Seasonal/Frostvale/MountOtzi.cs
+//cs_include Scripts/Seasonal/Frostvale/Otziwar.cs
 
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
@@ -21,6 +22,7 @@ public class HuntressMerge
     private CoreAdvanced Adv = new();
     private static CoreAdvanced sAdv = new();
     private MountOtzi MO = new();
+    private Otziwar OW = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
     public string[] MultiOptions = { "Generic", "Select" };
@@ -30,10 +32,10 @@ public class HuntressMerge
     private bool dontStopMissingIng = false;
 
     public void ScriptMain(IScriptInterface Bot)
-    {   
+    {
         Core.BankingBlackList.AddRange(new[] { "Sluagh Bell", "Punk Coal Elf Stabber", "Festive Punk Elf Stabber", "Wild Huntress' Sword " });
         Core.SetOptions();
-        
+
         BuyAllMerge();
 
         Core.SetOptions(false);
@@ -42,6 +44,8 @@ public class HuntressMerge
     public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         MO.MountOtziQuests();
+        OW.OtziwarStory();
+
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("otziwar", 2088, findIngredients, buyOnlyThis, buyMode: buyMode);
 
@@ -81,7 +85,7 @@ public class HuntressMerge
                 case "Festive Punk Elf Stabber":
                 case "Wild Huntress' Sword":
                     Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster("otziwar", "Huntress Valais", req.Name, isTemp: false);
+                    Core.HuntMonsterMapID("otziwar", 14, "req.Name", isTemp: false);
                     break;
             }
         }
