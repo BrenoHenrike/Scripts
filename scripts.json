@@ -4130,6 +4130,19 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/SnowviewRaceMerge.cs"
   },
   {
+    "name": "Otziwar",
+    "description": "Does the quests in /join otziwar",
+    "tags": [
+      "otziwar",
+      "story",
+      "huntress merge"
+    ],
+    "path": "Seasonal/Frostvale/Otziwar.cs",
+    "size": 1332,
+    "fileName": "Otziwar.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/Otziwar.cs"
+  },
+  {
     "name": "Frostvale All Stories",
     "description": "This will finish the entire frostvale storylines.",
     "tags": [
@@ -4387,7 +4400,7 @@
       "frostvale"
     ],
     "path": "Seasonal/Frostvale/HuntressMerge.cs",
-    "size": 8010,
+    "size": 8106,
     "fileName": "HuntressMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/HuntressMerge.cs"
   },
