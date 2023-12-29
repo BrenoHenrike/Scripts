@@ -77,12 +77,12 @@ public class CarolingMerge
                         Core.Join("whitemap");
                         Core.Join("caroling");
                         {
-                            for (int killCount = 0; killCount < 5 && !Bot.ShouldExit; killCount++)
+                            for (int killCount = 0; killCount < 3 && !Bot.ShouldExit; killCount++)
                             {
 
                                 while (!Bot.ShouldExit && Core.IsMonsterAlive(1, useMapID: true))
                                     Bot.Combat.Attack(1);
-                                Core.Logger($"Kill: {killCount + 1}/5, {(killCount < 4 ? "Swapping Map at 5" : "swapping map to respawn mob")}");
+                                Core.Logger($"Kill: {killCount + 1}/3, {(killCount < 3 ? "Swapping Map at 3" : "swapping map to respawn mob")}");
                                 Bot.Wait.ForMonsterSpawn(1);
                             }
 
