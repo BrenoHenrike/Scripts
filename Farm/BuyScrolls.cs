@@ -1,7 +1,7 @@
 /*
-name: BuyScrolls
-description: null
-tags: null
+name: Buy Scrolls
+description: This script will buy the selected scrolls.
+tags: scroll,enrage,mystic,parchment,spellcraft,decay
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
