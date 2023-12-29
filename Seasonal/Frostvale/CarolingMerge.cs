@@ -66,7 +66,7 @@ public class CarolingMerge
                 case "Chill Hat Visage":
                 case "Chill Hat Morph":
                     Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster("carolinn", "Eldritch Gifthulu", req.Name, quant, false);
+                    Core.HuntMonsterMapID("carolinn", 6, req.Name, quant, false);
                     break;
 
                 case "Red Ribbon":
