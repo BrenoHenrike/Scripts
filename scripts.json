@@ -3342,13 +3342,18 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/SwagTokenA.cs"
   },
   {
-    "name": "BuyScrolls",
-    "description": "null",
+    "name": "Buy Scrolls",
+    "description": "This script will buy the selected scrolls.",
     "tags": [
-      "null"
+      "scroll",
+      "enrage",
+      "mystic",
+      "parchment",
+      "spellcraft",
+      "decay"
     ],
     "path": "Farm/BuyScrolls.cs",
-    "size": 5203,
+    "size": 5285,
     "fileName": "BuyScrolls.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/BuyScrolls.cs"
   },
