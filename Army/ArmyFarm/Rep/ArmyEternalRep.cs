@@ -10,7 +10,6 @@ tags: army, reputation, eternal
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 //cs_include Scripts/Army/CoreArmyLite.cs
 //cs_include Scripts/Story/RavenlossSaga.cs
-//cs_include Scripts/Army/CoreArmyLite.cs
 //cs_include Scripts/Legion/CoreLegion.cs
 //cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
 //cs_include Scripts/Army/ArmyFarm/Rep/CoreArmyRep.cs
@@ -25,7 +24,6 @@ public class ArmyEternalRep
     private CoreBots Core => CoreBots.Instance;
     private CoreFarms Farm = new();
     private CoreAdvanced Adv = new();
-    private CoreArmyLite Army = new();
     private CoreArmyRep CAR = new();
     private static CoreBots sCore = new();
     private static CoreArmyLite sArmy = new();
