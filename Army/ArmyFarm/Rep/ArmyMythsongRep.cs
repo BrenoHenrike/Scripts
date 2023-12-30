@@ -29,7 +29,7 @@ public class ArmyMythsongRep
 
     public string OptionsStorage = "ArmyMythsongRep";
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         sArmy.player1,
         sArmy.player2,

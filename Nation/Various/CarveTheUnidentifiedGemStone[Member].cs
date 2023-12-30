@@ -20,7 +20,7 @@ public class CarveTheUnidentifiedGemStone
 
     public string OptionsStorage = "CarveTheUnidentifiedGemStone";
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         CoreBots.Instance.SkipOptions,
         new Option<ChooseReward>("ChooseReward", "Choose Your Reward", "Pick A Reward", ChooseReward.All),

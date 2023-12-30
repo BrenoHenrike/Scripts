@@ -23,7 +23,7 @@ public class ArmySpiritOrb
 
     public string OptionsStorage = "ArmySpiritOrb";
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         new Option<int>("amount","Amount", "Input the amount of spirit orbs to farm", 65000),
         sArmy.player1,

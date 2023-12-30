@@ -20,7 +20,7 @@ public class BirthdayFeastQuestRewards
     public string OptionsStorage = "BirthdayFeast";
 
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         CoreBots.Instance.SkipOptions,
         new Option<bool>("ArlettesQuests", "ArlettesQuests Rewards", "Farms All \"Arlette's Birthday Quest (8385)\" Rewards.", false),

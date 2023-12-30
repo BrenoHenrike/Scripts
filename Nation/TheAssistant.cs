@@ -16,7 +16,7 @@ public class TheAssistant
 
     public string OptionsStorage = "TheAssistant";
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         CoreBots.Instance.SkipOptions,
         new Option<SwindlesReturnReward>("ChooseReward", "Choose Your Quest Reward", "if `returnPolicyDuringSupplies` is enabled in CoreBot Options, Choose the Reward here", (int)SwindlesReturnReward.None),

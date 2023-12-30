@@ -20,7 +20,7 @@ public class CustomAggroMon
     private static CoreArmyLite sArmy = new();
 
     public string OptionsStorage = "CustomAggroMon";
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         new Option<string>("map", "Map Name",
                            "Please provide the map you wish to join."),

@@ -15,7 +15,7 @@ public class RevontheusSet
 
     public bool DontPreconfigure = true;
     public string OptionsStorage = "RevontheusSet";
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         CoreBots.Instance.SkipOptions,
         new Option<bool>("Equip", "Equip the revontheus set?", "", false),

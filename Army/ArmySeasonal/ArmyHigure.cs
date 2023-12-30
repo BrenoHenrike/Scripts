@@ -27,7 +27,7 @@ public class FarmHigure
     public CoreAstravia Astravia => new CoreAstravia();
 
     public string OptionsStorage = "ArmyHigure";
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         sArmy.player1,
         sArmy.player2,

@@ -13,7 +13,7 @@ public class EternalDragonDrops
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
 
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         CoreBots.Instance.SkipOptions,
         new Option<bool>("CanSolo", "Can solo boss?", "unchecking this will take you to public room", false),

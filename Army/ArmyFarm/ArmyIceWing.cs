@@ -22,7 +22,7 @@ public class IceWingLevelingArmy
 
     public bool DontPreconfigure = true;
     public string OptionsStorage = "ArmyIceWing";
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         sArmy.player1,
         sArmy.player2,

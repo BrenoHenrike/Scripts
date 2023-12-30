@@ -15,7 +15,7 @@ public class LowDRArmors
     public CoreFarms Farm = new();
     public string OptionsStorage = "1%Armors";
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         CoreBots.Instance.SkipOptions,
         new Option<Armors>("Armors", "Choose Your Armors", "Extra Armors can be added as long as they are 1% or lower drop chance.", Armors.None),

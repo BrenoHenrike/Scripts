@@ -18,7 +18,7 @@ public class LavarockForge
 
     public string OptionsStorage = "LavarockForge";
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         CoreBots.Instance.SkipOptions,
         new Option<bool>("FarmAwe", "Farm Blaze of Awe Pre Reqs?","true/false" ,false),

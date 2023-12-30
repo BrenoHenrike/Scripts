@@ -27,7 +27,7 @@ public class ArmyVoucherItemofNulgath
 
     public string OptionsStorage = "ArmyTotemAndGem";
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         sArmy.player1,
         sArmy.player2,

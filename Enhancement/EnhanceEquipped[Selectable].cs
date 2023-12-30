@@ -17,7 +17,7 @@ public class EnhanceEquippedSelect
     public CoreAdvanced Adv = new CoreAdvanced();
 
     public string OptionsStorage = "EnhanceEquipSelect";
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         new Option<EnhancementType>("type", "Enhancement Type", "The type of enhancement to use", EnhancementType.Lucky),
         new Option<CapeSpecial>("cSpecial", "Cape Special", "The special enhancement to use on the cape", CapeSpecial.None),

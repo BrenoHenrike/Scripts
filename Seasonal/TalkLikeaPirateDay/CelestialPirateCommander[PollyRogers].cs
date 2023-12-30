@@ -16,7 +16,7 @@ public class CelestialPirateCommander
     public CoreBots Core => CoreBots.Instance;
     public bool DontPreconfigure = true;
     public string OptionsStorage = "Pet only or All";
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         new Option<bool>("PetOnly", "Do you want to get the pet only?", "Whether to farm only the pet or everthing", false),
         CoreBots.Instance.SkipOptions,

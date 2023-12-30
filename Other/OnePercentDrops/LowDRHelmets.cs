@@ -17,7 +17,7 @@ public class LowDRHelmets
 
     public string OptionsStorage = "1%Helmets";
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         CoreBots.Instance.SkipOptions,
         new Option<Helmets>("Helmets", "Choose Your Helmets", "Extra Helmets can be added as long as they are 1% or lower drop chance.", Helmets.None),

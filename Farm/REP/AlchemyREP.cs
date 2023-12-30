@@ -14,7 +14,7 @@ public class AlchemyREP
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public string OptionsStorage = "AlchemyREP";
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         new Option<bool>("goldMethod", "use Gold?", "Using gold (cost 7.000.000 without boosts rank 1 to 10)", false)
     };

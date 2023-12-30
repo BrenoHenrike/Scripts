@@ -18,7 +18,7 @@ public class PotionBuyer
     public CoreAdvanced Adv = new();
     public string OptionsStorage = "Potions";
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         new Option<bool>("BuyReagents", "Buy Reagents?", "Use gold to buy the reagents for the potions [ this takes **ALOT** of gold.].", false),
         new Option<int>("potionQuant", "Potion Quantity", "Desired stack amount [max - 300]", 300),

@@ -32,7 +32,7 @@ public class ArmyEternalRep
 
     public string OptionsStorage = "ArmyEternalRep";
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         new Option<int>("armysize","Players", "Input the minimum of players to wait for", 4),
         sArmy.player1,

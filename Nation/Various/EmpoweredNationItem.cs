@@ -20,7 +20,7 @@ public class EmpoweredWeaponsofNulgath
 
     public string OptionsStorage = "EmpoweredWeaponofN";
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         CoreBots.Instance.SkipOptions,
         new Option<EmpoweredItems>("EmpoweredWep", "Choose Weapon", "Choose, and the bot will Farm the Appropriate item.", EmpoweredItems.Empowered_Overfiend_Blade),

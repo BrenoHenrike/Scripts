@@ -19,7 +19,7 @@ public class ArmyDarkonErrands
 
     public string OptionsStorage = "ArmyDarkonErrands";
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         new Option<Method>("Method", "Which method to get Darkon's Receipt?", "Choose your method", Method.First_Errands_Weak_Team),
         sArmy.player1,

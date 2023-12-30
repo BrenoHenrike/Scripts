@@ -17,7 +17,7 @@ public class ArmyMirrorRealmToken
 
     public string OptionsStorage = "ArmyMirrorRealmToken";
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         new Option<Method>("Method", "Which method to farm Mirror Realm Token?", "Choose your method", Method.Kill_Weak_Mob),
         sArmy.player1,

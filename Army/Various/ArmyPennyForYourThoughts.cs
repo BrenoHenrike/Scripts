@@ -24,7 +24,7 @@ public class ArmyPennyForYourThoughts
     private string[] Loot = { "DoomCoin", "Dark Spirit Orb" };
     public string OptionsStorage = "ArmyPenny";
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         sArmy.player1,
         sArmy.player2,

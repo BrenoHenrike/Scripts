@@ -20,7 +20,7 @@ public class OblivionNulgath
 
     public string OptionsStorage = "TheDarkDeal";
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         CoreBots.Instance.SkipOptions,
         new Option<OblivionNulgathRewards>("Reward", "Item Selec", "Select the Item then Quantity", OblivionNulgathRewards.Unidentified_13),

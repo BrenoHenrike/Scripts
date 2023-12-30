@@ -62,7 +62,7 @@ public class Script
 
     public string OptionsStorage = "test_script";
 
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         new Option<bool>("loadBank", "Load Bank", "If enabled, the bank is loaded before the script starts.", true),
         new Option<string>("mapName", "Map Name", "The name of the map to join at the start of the script.", "battleon")
@@ -92,7 +92,7 @@ public class Script
 {
     public string OptionsStorage = "test_script";
 
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         new Option<bool>("loadBank", "Load Bank", "If enabled, the bank is loaded before the script starts.", true),
         new Option<string>("mapName", "Map Name", "The name of the map to join at the start of the script.", "battleon")
@@ -126,7 +126,7 @@ public class Script
 
     public string OptionsStorage = "test_script";
 
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         new Option<OptionEnum>("test", "Enumerated Option", "This is a test enumerated option.")
     };
