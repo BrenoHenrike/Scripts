@@ -6420,7 +6420,7 @@
       "null"
     ],
     "path": "Seasonal/NewYear/CoreNewYear.cs",
-    "size": 8577,
+    "size": 9453,
     "fileName": "CoreNewYear.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/NewYear/CoreNewYear.cs"
   },
@@ -6440,6 +6440,34 @@
     "size": 4497,
     "fileName": "TimeRetaliateMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/NewYear/TimeRetaliateMerge.cs"
+  },
+  {
+    "name": "ChronoGem Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the ChronoGem Merge [2386] in /chronogem",
+    "tags": [
+      "new year",
+      "chronogem",
+      "merge",
+      "chronogem",
+      "quantum",
+      "centurion",
+      "galea",
+      "chrono",
+      "circlet",
+      "coronal",
+      "countdown",
+      "meridian",
+      "epoch",
+      "definer",
+      "pilum",
+      "destructive",
+      "decennium",
+      "shield"
+    ],
+    "path": "Seasonal/NewYear/ChronoGemMerge.cs",
+    "size": 5311,
+    "fileName": "ChronoGemMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/NewYear/ChronoGemMerge.cs"
   },
   {
     "name": "Year Ball",
@@ -19360,6 +19388,23 @@
     "size": 658,
     "fileName": "05ChronoPhoenixStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/NewYear/Story/05ChronoPhoenixStory.cs"
+  },
+  {
+    "name": "ChronoForge Story",
+    "description": "This script will complete the storyline in /chronogem",
+    "tags": [
+      "chronogem",
+      "chrono forge",
+      "gem",
+      "new year",
+      "seasonal",
+      "story",
+      "forgemaster"
+    ],
+    "path": "Seasonal/NewYear/Story/07ChronoForgeStory.cs",
+    "size": 639,
+    "fileName": "07ChronoForgeStory.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/NewYear/Story/07ChronoForgeStory.cs"
   },
   {
     "name": "New Year Story",
