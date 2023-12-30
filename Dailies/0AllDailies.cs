@@ -86,6 +86,8 @@ public class FarmAllDailies
             Glac.FrozenTower();
             Daily.Cryomancer();
             Daily.EldersBlood();
+            Daily.CryptoToken();
+            Daily.ShadowShroud();
             Daily.MineCrafting(new[] { "Aluminum", "Barium", "Gold", "Iron", "Copper", "Silver", "Platinum" }, 10, ToBank: true);
 
             Daily.SparrowsBlood();

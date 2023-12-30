@@ -224,35 +224,35 @@ public class CoreNSOD
 
         while (!Bot.ShouldExit && !Core.CheckInventory("Void Aura", quant))
         {
+            Core.FarmingLogger("Void Aura", quant);
             Core.EnsureAccept(4432);
+
             Core.EquipClass(ClassType.Farm);
             Core.HuntMonster("timespace", "Astral Ephemerite", "Astral Ephemerite Essence", Essencequant, false, log: false);
-            Core.EquipClass(ClassType.Solo);
 
-            HuntMonsterBatch(Essencequant, false, true, false,
-                ("citadel", "m13", "Down", "Belrot the Fiend", "Belrot the Fiend Essence"),
-                ("greenguardwest", "BKWest15", "Down", "Black Knight", "Black Knight Essence"),
-                ("mudluk", "Boss", "Down", "Tiger Leech", "Tiger Leech Essence"),
-                ("aqlesson", "Frame9", "Right", "Carnax", "Carnax Essence"),
-                ("necrocavern", "r16", "Down", "Chaos Vordred", "Chaos Vordred Essence"),
-                ("hachiko", "Roof", "Left", "Dai Tengu", "Dai Tengu Essence"),
-                ("timevoid", "Frame8", "Left", "Unending Avatar", "Unending Avatar Essence"),
-                ("dragonchallenge", "r4", "Left", "Void Dragon", "Void Dragon Essence"),
-                ("maul", "r3", "Down", "Creature Creation", "Creature Creation Essence")
+            HuntMonsterBatch(Essencequant, false, true, true,
+                ("citadel", 21, "Belrot the Fiend Essence"),
+                ("greenguardwest", 22, "Black Knight Essence"),
+                ("mudluk", 18, "Tiger Leech Essence"),
+                ("aqlesson", 17, "Carnax Essence"),
+                ("necrocavern", 5, "Chaos Vordred Essence"),
+                ("hachiko", 10, "Dai Tengu Essence"),
+                ("timevoid", 12, "Unending Avatar Essence"),
+                ("dragonchallenge", 4, "Void Dragon Essence"),
+                ("maul", 17, "Creature Creation Essence")
             );
 
-            Bot.Wait.ForPickup("Void Aura");
-            Core.Logger($"Void Auras: ({Bot.Inventory.GetQuantity("Void Aura")}/{quant})");
             Core.EnsureCompleteMulti(4432);
+            Bot.Wait.ForPickup("Void Aura");
         }
     }
 
-    private void HuntMonsterBatch(int quant, bool isTemp, bool publicRoom, bool log, params (string map, string region, string direction, string monster, string essence)[] monsters)
+    private void HuntMonsterBatch(int quant, bool isTemp, bool publicRoom, bool log, params (string map, int monster, string essence)[] monsters)
     {
+        Core.EquipClass(ClassType.Solo);
+
         foreach (var monster in monsters)
-        {
-            Core.KillMonster(monster.map, monster.region, monster.direction, monster.monster, monster.essence, quant, isTemp, publicRoom, log);
-        }
+            Core.HuntMonsterMapID(monster.map, monster.monster, monster.essence, quant, isTemp, publicRoom, log);
     }
 
 
