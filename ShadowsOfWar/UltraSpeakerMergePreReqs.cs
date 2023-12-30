@@ -331,7 +331,7 @@ public class UltraSpeakerMergePreReqs
                             InsigniasCount += 7;
                             Core.Logger("Adding 10 to the Acquiescence Count");
                             AcquiescenceCount += 10;
-                            Core.Logger("Adding 1250 to the ElementalCore Count");
+                            Core.Logger("Adding 25 to the ElementalCore Count");
                             ElementalCoreCount += 25;
                             break;
 
