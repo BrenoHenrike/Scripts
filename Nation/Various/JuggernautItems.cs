@@ -21,7 +21,7 @@ public class JuggernautItemsofNulgath
 
     public string OptionsStorage = "Reward Select";
     public bool DontPreconfigure = false;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         CoreBots.Instance.SkipOptions,
         new Option<RewardsSelection>("RewardsSelection", "Select Your Quest Reward", "Select Your Quest Reward for The JuggerNaught items of Nulgath quest.", RewardsSelection.Oblivion_of_Nulgath),

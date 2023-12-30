@@ -29,7 +29,7 @@ public class EmpoweredBladeMaster
 
     public string OptionsStorage = "EmpoweredBladeMasterRewards";
 
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         CoreBots.Instance.SkipOptions,
         new Option<bool>("GetAllRewards", "Pick Automatically", "if true, does the quest till you have all the rewards possible. otherwise Gets selcted item", false),

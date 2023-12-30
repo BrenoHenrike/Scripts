@@ -13,7 +13,7 @@ public class YeeaaahhBabbyyThaaatsWhatImTalkingAbout
     public CoreBots Core => CoreBots.Instance;
 
     public string OptionsStorage = "WOOO";
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         new Option<bool>("AConly", "AC Only", "True = Only get AC items.\nFalse = Get both AC and non-AC items.", true),
     };

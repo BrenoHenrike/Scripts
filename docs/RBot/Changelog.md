@@ -545,7 +545,7 @@ public List<IOption> Third_List = new List<IOption>()
     new Option<string>("never", "Never", "Never gonna let you down", "Rick Astley but from Third_List")
 };
 
-public List<IOption> Options = new List<IOption>()
+public List<IOption> Options = new()
 {
     new Option<string>("normal", "Normal Option", "This is a normal option", "Normal")
 };

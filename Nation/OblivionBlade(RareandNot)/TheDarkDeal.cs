@@ -20,7 +20,7 @@ public class TheDarkDeal
 
     public string OptionsStorage = "TheDarkDeal";
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         CoreBots.Instance.SkipOptions,
         new Option<int>("RelicQuant", "Relic Quant", "Relic of Chaos quant", 00),

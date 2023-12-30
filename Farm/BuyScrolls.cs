@@ -16,7 +16,7 @@ public class BuyScrolls
     public CoreFarms Farm = new();
 
     public string OptionsStorage = "BuyScrolls";
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         new Option<bool>("UseMysticParchment", "Use Mystic Parchment", "Use Mystic Parchment instead of gold To Buy Ink", false),
         new Option<Scrolls>("scrollSelect", "Scroll of", "Select the scroll of your choise"),

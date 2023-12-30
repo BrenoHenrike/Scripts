@@ -17,7 +17,7 @@ public class LowDRPets
 
     public string OptionsStorage = "1%Pets";
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         CoreBots.Instance.SkipOptions,
         new Option<Pets>("Pets", "Choose Your Pets", "Extra Pets can be added as long as they are 1% or lower drop chance.", Pets.None),

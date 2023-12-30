@@ -17,7 +17,7 @@ public class LowDRWeapons
 
     public string OptionsStorage = "1%Weapons";
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         CoreBots.Instance.SkipOptions,
         new Option<Weapons>("Weapons", "Choose Your Weapons", "Extra Weapons can be added as long as they are 1% or lower drop chance.", Weapons.None),

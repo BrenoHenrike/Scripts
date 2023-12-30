@@ -35,7 +35,7 @@ public class CyseroItemUpgrade
 
     public string OptionsStorage = "CyseroItemUpgrade";
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         CoreBots.Instance.SkipOptions,
         new Option<bool>("PolishedBlod", "Polished Blinding Light of Destiny", "Finishes Cysero Quest \"Upgrade the Blinding Light of Destiny (7063)\" to get you \"Polished Blinding Light of Destiny\"", false),

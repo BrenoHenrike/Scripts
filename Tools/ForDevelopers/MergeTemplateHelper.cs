@@ -23,7 +23,7 @@ public class MergeTemplateHelper
     public static CoreAdvanced sAdv = new();
 
     public string OptionsStorage = "MergeTemplateHelper";
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         new Option<string>("", "Dev-Only", "This bot is to help us make merge bots, the average user wont find any use in this bot", ""),
         new Option<string>("", " ", "", ""),

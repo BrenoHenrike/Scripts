@@ -14,7 +14,7 @@ public class OptionsExample
 
     public string OptionsStorage = "OptionsExample"; //<--rename this
     public bool DontPreconfigure = true; //<- Leave this alone.
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         CoreBots.Instance.SkipOptions,
         //when "Skip Options" is checked it wont show the options window next time you run the script.
@@ -86,7 +86,7 @@ using Skua.Core.Options; <---- this goes at the top under the includes
 
     public string OptionsStorage = "FarmerJoePet";
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         CoreBots.Instance.SkipOptions,
         new Option<bool>("BoolName", "Get a Pre-Made Outfit, Curtious of the Community", "We are farmers, bum ba dum bum bum bum bum", false),

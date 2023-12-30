@@ -249,17 +249,19 @@ public class CoreBLOD
         Core.AddDrop("Cavern Celestite", "Undead Essence");
         if (farmSpiritOrbs)
         {
-            Core.RegisterQuests(939, 2082, 2083); // + Bone Some Dust & Essential Essences
+            Core.RegisterQuests(2082, 2083); // Bone Some Dust & Essential Essences
             Core.AddDrop("Bone Dust", "Undead Energy", "Spirit Orb");
         }
-        else Core.RegisterQuests(939);
 
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
         {
-            Core.HuntMonsterMapID("battleundera", 12, "Bone Terror Soul", log: false);
-            Core.HuntMonsterMapID("battleunderb", 8, "Undead Champion Soul", log: false);
-            Core.HuntMonsterMapID("battleunderc", 9, "Jellyfish Soul", log: false);
+            Core.EnsureAccept(939);
 
+            Core.KillMonster("battleundera", "r7", "Left", "Bone Terror", "Bone Terror Soul", log: false);
+            Core.KillMonster("battleunderb", "r3", "Right", "Undead Champion", "Undead Champion Soul", log: false);
+            Core.KillMonster("battleunderc", "r5", "Left", "Crystalized Jellyfish", "Jellyfish Soul", log: false);
+
+            Core.EnsureComplete(939);
             Bot.Wait.ForPickup(item);
         }
         Core.CancelRegisteredQuests();

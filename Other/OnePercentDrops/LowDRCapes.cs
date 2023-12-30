@@ -17,7 +17,7 @@ public class LowDRCapes
 
     public string OptionsStorage = "1%Capes";
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         CoreBots.Instance.SkipOptions,
         new Option<Capes>("Capes", "Choose Your Capes", "Extra Capes can be added as long as they are 1% or lower drop chance.", Capes.None),

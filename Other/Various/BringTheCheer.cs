@@ -26,7 +26,7 @@ public class BringTheCheer
 
     public string OptionsStorage = "BringTheCheer";
 
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         CoreBots.Instance.SkipOptions,
         new Option<RewardsSelection>("RewardSelect", "Choose Your Quest Reward", "Select Your Quest Reward for `Bring The Cheer`.", RewardsSelection.All)

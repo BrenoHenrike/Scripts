@@ -39,7 +39,7 @@ public class ArmyLightCaster
 
     public string OptionsStorage = "ArmyLightCaster";
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         new Option<bool>("sellToSync", "Sell to Sync", "Sell items to make sure the army stays syncronized.\nIf off, there is a higher chance your army might desyncornize", false),
         sArmy.player1,

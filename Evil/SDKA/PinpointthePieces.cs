@@ -20,7 +20,7 @@ public class PinpointthePieces_Any
 
     public string OptionStorage = "Pinpoint_the_Pieces";
 
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         new Option<PinpointIDs>("questID", "Quest ID", "ID of the desired Pinpoint quest to do.", PinpointIDs.Dagger)
     };

@@ -19,7 +19,7 @@ public class BehemothBlade
 
     public bool DontPreconfigure = true;
     public string OptionsStorage = "BehemothBlade";
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         CoreBots.Instance.SkipOptions,
         new Option<Blade>("BladeChoice", "Choose Your Version", "Choose between Behemoth Blade of Shadow, Light, or both", Blade.Both),
