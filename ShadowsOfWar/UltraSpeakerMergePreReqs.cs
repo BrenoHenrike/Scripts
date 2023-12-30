@@ -374,34 +374,41 @@ public class UltraSpeakerMergePreReqs
             #region RGRoW item Check
             Core.Logger("Checking items before buying Goddess Of War");
 
-            var allItemsOwned = new Dictionary<int, int>
+            // Define required items and their quantities
+            var requiredItems = new Dictionary<int, int> { { 55901, 3 }, { 43712, 50 }, { 65841, 1 }, { 72921, 1 }, { 76482, 1 } };
+
+            // Check if all required items are owned
+            var allItemsOwned = requiredItems.All(item =>
             {
-                { 55901, 3 }, { 43712, 50 }, { 65841, 1 }, { 72921, 1 }, { 76482, 1 }
-            }.All(kvp =>
-            {
-                ItemBase? item = Bot.Inventory.Items.Find(x => x.ID == kvp.Key);
-                Core.Logger(!Core.CheckInventory(item!.Name, kvp.Value)
-                    ? $"Missing {item!.Name}, {kvp.Value - Bot.Inventory.GetQuantity(item!.Name)}"
-                    : $"{item!.Name} owned {Bot.Inventory.GetQuantity(item!.Name) / kvp.Value}");
-                return Core.CheckInventory(item!.Name, kvp.Value);
+                // Find the item in the inventory
+                ItemBase? inventoryItem = Bot.Inventory.Items.Find(x => x.ID == item.Key);
+
+                // Log the inventory status of the item
+                Core.Logger(!Core.CheckInventory(inventoryItem!.Name, item.Value)
+                    ? $"Missing {inventoryItem!.Name}, {item.Value - Bot.Inventory.GetQuantity(inventoryItem!.Name)}"
+                    : $"{inventoryItem!.Name} owned {Bot.Inventory.GetQuantity(inventoryItem!.Name) / item.Value}");
+
+                // Return whether the item is owned in the required quantity
+                return Core.CheckInventory(inventoryItem!.Name, item.Value);
             });
 
-            Core.Logger(allItemsOwned
-                ? "All items owned. Attempting to buy Goddess Of War."
-                : "Cannot buy Goddess Of War. Missing items");
+            SOWM.Acquiescence(AcquiescenceCount);
+            SOWM.ElementalCore(ElementalCoreCount);
 
-            if (allItemsOwned) Core.BuyItem("ultraspeaker", 2248, 72921, shopItemID: 11443);
+            Core.Logger(allItemsOwned ? "All items owned. Attempting to buy Goddess Of War." : "Cannot buy Goddess Of War. Missing items");
+            if (!allItemsOwned)
+                // Log the overall status based on item ownership
+                Core.Logger($"Malgor Insignia Needed: {InsigniasCount - Bot.Inventory.GetQuantity("Malgor Insignia")}");
+
+            // If all required items are owned, proceed to buy the specified item
+            else Core.BuyItem("ultraspeaker", 2248, 72921, shopItemID: 11443);
+
         }
         #endregion RGRoW item Check
 
-        #region Radiant Goddess of War quest
+        // #region Radiant Goddess of War quest
+        // #endregion Radiant Goddess of War quest
 
-        #endregion Radiant Goddess of War quest
-
-        SOWM.Acquiescence(AcquiescenceCount);
-        SOWM.ElementalCore(ElementalCoreCount);
-
-        Core.Logger($"Malgor Insignia Needed: {InsigniasCount - Bot.Inventory.GetQuantity("Malgor Insignia")}");
 
     }
 
