@@ -100,8 +100,8 @@ public class NulgathDemandsWork
                         foreach (string NDWItem in NDWItems)
                             if (!Core.CheckInventory(NDWItem))
                                 Core.EnsureCompleteChoose(5259, new[] { NDWItem });
-                                else Core.Logger("all NDW items owned, completing quest without Selecting reward.\n"+
-                                "(will still get \"Archfiend Essence Fragment\" and uni 35.)");
+                            else Core.Logger("all NDW items owned, completing quest without Selecting reward.\n" +
+                            "(will still get \"Archfiend Essence Fragment\" and uni 35.)");
                     }
                     else Core.EnsureComplete(5259);
                 }
@@ -121,15 +121,28 @@ public class NulgathDemandsWork
         Core.EnsureAccept(584);
         Nation.ResetSindles();
         while (!Bot.ShouldExit && !Core.CheckInventory("Dark Makai Sigil"))
-            foreach (var mapInfo in new[] { ("tercessuinotlim", "m1"), (Core.IsMember ? "Nulgath" : "evilmarsh", "Field1") })
+        {
+            // Define the maps with their corresponding indexes
+            var maps = new[] { ("tercessuinotlim", "m1"), (Core.IsMember ? "Nulgath" : "evilmarsh", "Field1") };
+
+            // Randomly select a map
+            var randomMapIndex = new Random().Next(0, maps.Length);
+            var selectedMap = maps[randomMapIndex];
+
+            Core.Join(selectedMap.Item1, selectedMap.Item2, "Left");
+
+            while (!Bot.ShouldExit &&
+                (selectedMap.Item1 == "tercessuinotlim"
+                    ? (Core.IsMonsterAlive(2, useMapID: true) || Core.IsMonsterAlive(3, useMapID: true))
+                    : (Core.IsMonsterAlive(1, useMapID: true) || Core.IsMonsterAlive(2, useMapID: true))))
             {
-                Core.Join(mapInfo.Item1, mapInfo.Item2, "Left");
-                while (!Bot.ShouldExit && Core.IsMonsterAlive(1, useMapID: true))
-                {
-                    Core.Sleep();
-                    Bot.Combat.Attack("*");
-                }
+                if (!Bot.Player.InCombat)
+                    Core.Sleep();  // Use the built-in delay
+                Bot.Combat.Attack("*");
+                if (Core.CheckInventory("Dark Makai Sigil"))
+                    break;
             }
+        }
         Bot.Wait.ForPickup("Dark Makai Sigil");
         Core.EnsureComplete(584);
         Bot.Wait.ForPickup("Unidentified 27");
