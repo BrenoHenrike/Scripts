@@ -33,6 +33,7 @@ public class CoreNewYear
         Everfrost();
         ChronoPhoenix();
         TimeRitual();
+        ChronoForge();
     }
 
     public void NewYear()
@@ -122,7 +123,7 @@ public class CoreNewYear
         //Battle for a New Start 2597
         Story.KillQuest(2597, "darksun", "Raskar");
     }
-    
+
     public void Frostmane()
     {
         if (Core.isCompletedBefore(3281) || !Core.isSeasonalMapActive("frostmane"))
@@ -283,6 +284,31 @@ public class CoreNewYear
 
         //Defeat Chronocide 7867
         Story.KillQuest(7867, "timeritual", "Chronocide");
+    }
+
+    public void ChronoForge()
+    {
+        if (Core.isCompletedBefore(9536) || !Core.isSeasonalMapActive("chronogem"))
+            return;
+
+        Story.PreLoad(this);
+
+        // Raw Gems (9533)
+        Story.KillQuest(9533, "earthstorm", new[] { "Diamond Golem", "Emerald Golem", "Ruby Golem", "Sapphire Golem" });
+
+        // Rest in Riches (9534)
+        Story.KillQuest(9534, "battleunderc", new[] { "Crystalized Jellyfish", "Green Crystalized Undead" });
+
+        // Overclocked and Timed (9535)
+        Story.KillQuest(9535, "templesiege", new[] { "Overdriven Paladin", "Light Elemental" });
+
+        // Jewel Bug (9536)
+        if (!Core.isCompletedBefore(9536))
+        {
+            Core.EquipClass(ClassType.Solo);
+            Story.KillQuest(9536, "chronogem", "Gem Forgemaster");
+            Core.EquipClass(ClassType.Farm);
+        }
     }
 
 }
