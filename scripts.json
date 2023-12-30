@@ -1241,6 +1241,28 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/CorruptDraconicParagon.cs"
   },
   {
+    "name": "The Conqueror of Glacera",
+    "description": "This script will complete \"The Conqueror of Glacera\" [9492] quest.",
+    "tags": [
+      "glacera",
+      "karok",
+      "wings",
+      "fallen",
+      "runed",
+      "glaceran",
+      "loyalty",
+      "sigil",
+      "frigid",
+      "scythe",
+      "vengeance",
+      "conqueror"
+    ],
+    "path": "Other/TheConquerorOfGlacera.cs",
+    "size": 2152,
+    "fileName": "TheConquerorOfGlacera.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/TheConquerorOfGlacera.cs"
+  },
+  {
     "name": "Dark Ranger Armor",
     "description": "farms the \"Dark Ranger\" set from Quest",
     "tags": [
