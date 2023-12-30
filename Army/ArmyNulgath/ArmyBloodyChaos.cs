@@ -90,6 +90,15 @@ public class ArmyBloodyChaos
 
                 while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
                 {
+                    while (!Bot.ShouldExit && Bot.Player.Cell != "r2")
+                    {
+                        Core.Jump("r2");
+                        Core.Sleep();
+                        
+                        if (Bot.Player.Cell == "r2")
+                            break;
+                    }
+
                     if (Core.IsMonsterAlive("Stalagbite"))
                         Bot.Kill.Monster("Stalagbite");
                     else Bot.Combat.Attack("Vath");
@@ -101,8 +110,18 @@ public class ArmyBloodyChaos
                 Army.AggroMonMIDs(2, 3);
                 Army.DivideOnCells("Boss");
                 Army.AggroMonStart("escherion");
+
                 while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
                 {
+                    while (!Bot.ShouldExit && Bot.Player.Cell != "Boss")
+                    {
+                        Core.Jump("Boss");
+                        Core.Sleep();
+                        
+                        if (Bot.Player.Cell == "Boss")
+                            break;
+                    }
+
                     if (Core.IsMonsterAlive("Staff of Inversion"))
                         Bot.Kill.Monster("Staff of Inversion");
                     else Bot.Combat.Attack("Escherion");
@@ -114,8 +133,20 @@ public class ArmyBloodyChaos
                 Army.AggroMonMIDs(monsters);
                 Army.DivideOnCells(Bot.Config!.Get<Cell>("mob") == Cell.h85 ? "h85" : "h90");
                 Army.AggroMonStart("hydrachallenge");
+
                 while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
+                {
+                    while (!Bot.ShouldExit && Bot.Player.Cell != (Bot.Config.Get<Cell>("mob") == Cell.h85 ? "h85" : "h90"))
+                    {
+                        Core.Jump(Bot.Config!.Get<Cell>("mob") == Cell.h85 ? "h85" : "h90");
+                        Core.Sleep();
+                        
+                        if (Bot.Player.Cell == (Bot.Config!.Get<Cell>("mob") == Cell.h85 ? "h85" : "h90"))
+                            break;
+                    }
+
                     Bot.Combat.Attack(Bot.Config!.Get<Cell>("mob") == Cell.h85 ? "Hydra Head 85" : "Hydra Head 90");
+                }
                 break;
 
             default:
@@ -134,7 +165,7 @@ public class ArmyBloodyChaos
 
 
 
-    private string[] Loot =
+    private readonly string[] Loot =
     {
         "Tainted Gem",
         "Dark Crystal Shard",
