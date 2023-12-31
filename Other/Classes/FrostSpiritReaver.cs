@@ -87,7 +87,7 @@ public class FrostSpiritReaver
         //////////////////////////////////////////////
         #region "Quest Prerequisites 
 
-        if (!Core.CheckInventory("25464") && Core.CheckInventory(new[] { 27437, 27525 }, any: true))
+        if (!Core.CheckInventory(25464) && Core.CheckInventory(new[] { 27437, 27525 }, any: true))
         {
             //Frost Sigil
             Core.BuyItem("icedungeon", Core.CheckInventory(27437) ? 2294 : 2295, 25464, shopItemID: Core.CheckInventory(27437) ? 48001 : 48002);
