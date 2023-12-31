@@ -50,10 +50,30 @@ public class TheConquerorOfGlacera
             Core.RegisterQuests(5597, 5598);
             while (!Bot.ShouldExit && !Core.CheckInventory("Glaceran Gem", 500))
             {
-                Core.KillMonster("icewindwar", "r2", "Left", "*", log: false);
-                Bot.Wait.ForPickup("Glaceran Gem");
+                while (!Bot.ShouldExit && Bot.Map.Name != "icewindwar")
+                {
+                    Core.Join("icewindwar");
+                    Core.Sleep();
+                }
+
+
+                while (!Bot.ShouldExit && Bot.Player.Cell != "r2")
+                {
+                    Core.Jump("r2");
+                    Core.Sleep();
+                }
+
+                foreach (int mob in new[] { 1, 2, 3 })
+                    while (!Bot.ShouldExit && Core.IsMonsterAlive(mob, useMapID: true))
+                    {
+                        Bot.Combat.Attack(mob);
+                        if (Core.CheckInventory("Glaceran Gem", 500))
+                            break;
+                    }
+
             }
             Core.CancelRegisteredQuests();
+            Bot.Wait.ForPickup("Glaceran Gem");
         }
 
         // Ice Chunk

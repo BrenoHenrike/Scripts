@@ -188,7 +188,7 @@ public class CoreSDKA
         if (Core.CheckInventory("Dark Spirit Orb", quant))
             return;
 
-        if (Bot.Config.Get<SDKAQuest>("SelectedQuest") == SDKAQuest.DarkSpiritOrbs)
+        if (Bot.Config!.Get<SDKAQuest>("SelectedQuest") == SDKAQuest.DarkSpiritOrbs)
             DSO(quant);
         else Penny(quant);
     }
@@ -206,12 +206,32 @@ public class CoreSDKA
         Core.RegisterQuests(2089);
         while (!Bot.ShouldExit && (!Core.CheckInventory("Dark Spirit Orb", quant)))
         {
-            Core.KillMonster("maul", "r7", "Left", "Shelleton", "DoomCoin", 20, false, log: false);
-            Bot.Drops.Pickup("Dark Spirit Orb");
+            while (!Bot.ShouldExit && Bot.Map.Name != "maul")
+            {
+                Core.Join("maul", "r7", "Left");
+                Core.Sleep();
+            }
+
+            while (!Bot.ShouldExit && Bot.Player.Cell != "r7")
+            {
+                Core.Jump("r7");
+                Core.Sleep();
+            }
+
+            foreach (int mob in new[] { 9, 10, 23 })
+                while (!Bot.ShouldExit && Core.IsMonsterAlive(mob, useMapID: true))
+                {
+                    Bot.Combat.Attack(mob);
+                    if (Core.CheckInventory("Dark Spirit Orb", quant))
+                        break;
+                }
+
+
             if (oneTime)
                 break;
         }
         Core.CancelRegisteredQuests();
+        Bot.Wait.ForPickup("Dark Spirit Orb");
     }
 
     public void DSO(int quant = 10500)
