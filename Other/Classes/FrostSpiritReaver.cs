@@ -146,6 +146,11 @@ public class FrostSpiritReaver
         if (Core.CheckInventory("Glaceran Attunement", quant))
             return;
 
+        if (!Core.isCompletedBefore(7920))
+            IceNinth(1);
+
+        Farm.GlaceraREP();
+
         if (!Core.CheckInventory(new[] { 38915, 39011 }))
         {
             //IceBreaker Mage & FrostSlayer
