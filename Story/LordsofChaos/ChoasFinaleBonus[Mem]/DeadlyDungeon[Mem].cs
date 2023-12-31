@@ -6,6 +6,7 @@ tags: story, quest, chaos-saga, 13-lords-of-chaos, chaos-finale, deadly-dungeon,
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
 
 public class DeadlyDungeon
 {
@@ -77,8 +78,23 @@ public class DeadlyDungeon
         // Floor 18
         Story.KillQuest(3697, "deadlydungeon", "Giant Dungeon Spider");
         // Floor 19
-        Story.KillQuest(3698, "deadlydungeon", "Dire Draugr");
+
+        if (!Story.QuestProgression(3698))
+        {
+            Core.EnsureAccept(3698);
+            ItemBase Item = Bot.Inventory.Items.First(x => x.ID == 24738);
+
+            if (Item != null && Core.CheckInventory(Item.ID, 100))
+                Core.SellItem(Item.Name, 1);
+
+            Core.HuntMonster("deadlydungeon", "Dire Draugr", Item?.Name, 100, isTemp: false);
+
+            Core.EnsureComplete(3698);
+        }
+
+
         // Floor 20
         Story.KillQuest(3699, "deadlydungeon", "Chest Guardian");
+
     }
 }
