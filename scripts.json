@@ -4178,7 +4178,7 @@
       "frostvale"
     ],
     "path": "Seasonal/Frostvale/Frostvale.cs",
-    "size": 34455,
+    "size": 34379,
     "fileName": "Frostvale.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/Frostvale.cs"
   },
@@ -4234,6 +4234,32 @@
     "size": 5345,
     "fileName": "SnowviewMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/SnowviewMerge.cs"
+  },
+  {
+    "name": "Fimbul Tomb Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Fimbul Tomb Merge [2378] in /fimbultomb",
+    "tags": [
+      "frostval",
+      "fimbul",
+      "tomb",
+      "merge",
+      "fimbultomb",
+      "cursed",
+      "fimbulventr",
+      "witch",
+      "vengeful",
+      "azure",
+      "blossom",
+      "resonating",
+      "melodic",
+      "ice",
+      "crystal",
+      "crystals"
+    ],
+    "path": "Seasonal/Frostvale/FimbulTombMerge.cs",
+    "size": 5550,
+    "fileName": "FimbulTombMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/FimbulTombMerge.cs"
   },
   {
     "name": "Northlands Monk (Class)",
