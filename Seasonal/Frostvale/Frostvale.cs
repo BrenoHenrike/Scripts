@@ -935,7 +935,7 @@ public class Frostvale
         Story.KillQuest(7823, "darkoviaforest", "Lich Of The Stone");
 
         //Returning to Oblivion (7824)
-        if(!Story.QuestProgression(7824))
+        if (!Story.QuestProgression(7824))
         {
             Core.EnsureAccept(7824);
             Core.HuntMonster("underworld", "Dreadfiend of Nulgath", "Dreadfiend Gone", 5);
@@ -1045,9 +1045,6 @@ public class Frostvale
 
         // Death Squall 9518
         Story.KillQuest(9518, "fimbultomb", "Fimbulventr Witch");
-
-        // Clean Sweep 9519
-        Story.KillQuest(9519, "fimbultomb", new[] { "Fimbulventr Witch", "Daselm", "Peter" });
     }
 
 
