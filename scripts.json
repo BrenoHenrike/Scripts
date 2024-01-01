@@ -4376,11 +4376,11 @@
   },
   {
     "name": "Caroling Merge",
-    "description": "This bot will farm the items belonging to the selected mode for the Caroling Merge [2197] in /carolinn",
+    "description": "This bot will farm the items belonging to the selected mode for the Caroling Merge [2197] in /caroltown",
     "tags": [
       "caroling",
       "merge",
-      "carolinn",
+      "caroltown",
       "midwinter",
       "cheermaker",
       "cutie",
@@ -4427,7 +4427,7 @@
       "zorbak"
     ],
     "path": "Seasonal/Frostvale/CarolingMerge.cs",
-    "size": 9838,
+    "size": 9844,
     "fileName": "CarolingMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/CarolingMerge.cs"
   },
