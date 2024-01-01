@@ -1,7 +1,7 @@
 /*
 name: Caroling Merge
-description: This bot will farm the items belonging to the selected mode for the Caroling Merge [2197] in /carolinn
-tags: caroling, merge, carolinn, midwinter, cheermaker, cutie, antlered, beanie, snowflakes, snowy, nimbo, licorice, candy, cane, darkwood, carved, armaments, northlands, paladin, frozen, paladins, glacial, light, destiny, ascended, aurum, wings, noble, leo, scion, scions, requiem, heraldic, lion, companion, frostval, party, favor, gifts, holiday, hoodie, , morph, holly, twilly, twig, zorbak
+description: This bot will farm the items belonging to the selected mode for the Caroling Merge [2197] in /caroltown
+tags: caroling, merge, caroltown, midwinter, cheermaker, cutie, antlered, beanie, snowflakes, snowy, nimbo, licorice, candy, cane, darkwood, carved, armaments, northlands, paladin, frozen, paladins, glacial, light, destiny, ascended, aurum, wings, noble, leo, scion, scions, requiem, heraldic, lion, companion, frostval, party, favor, gifts, holiday, hoodie, , morph, holly, twilly, twig, zorbak
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -37,7 +37,7 @@ public class CarolingMerge
     public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("carolinn", 2197, findIngredients, buyOnlyThis, buyMode: buyMode);
+        Adv.StartBuyAllMerge("caroltown", 2197, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()
@@ -66,7 +66,7 @@ public class CarolingMerge
                 case "Chill Hat Visage":
                 case "Chill Hat Morph":
                     Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonsterMapID("carolinn", 6, req.Name, quant, false);
+                    Core.HuntMonsterMapID("caroltown", 6, req.Name, quant, false);
                     break;
 
                 case "Red Ribbon":
@@ -96,7 +96,7 @@ public class CarolingMerge
                     Core.EquipClass(ClassType.Farm);
                     // Jingle Spells - 9520
                     Core.RegisterQuests(9520);
-                    Core.HuntMonster("carolinn", "Frostval Deer", req.Name, quant, false);
+                    Core.HuntMonster("caroltown", "Frostval Deer", req.Name, quant, false);
                     Bot.Wait.ForPickup(req.ID);
                     Core.CancelRegisteredQuests();
                     break;
@@ -104,7 +104,7 @@ public class CarolingMerge
                 case "Icy Fur":
                 case "Wrapping Paper":
                     Core.EquipClass(ClassType.Farm);
-                    Core.HuntMonster("carolinn", "Krumpet", req.Name, quant, false);
+                    Core.HuntMonster("caroltown", "Krumpet", req.Name, quant, false);
                     break;
 
                 default:
