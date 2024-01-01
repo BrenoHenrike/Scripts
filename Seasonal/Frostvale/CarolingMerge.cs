@@ -148,6 +148,6 @@ public class CarolingMerge
         new Option<bool>("82782", "Northlands Holiday Visage", "Mode: [select] only\nShould the bot buy \"Northlands Holiday Visage\" ?", false),
         new Option<bool>("82788", "Holly Holiday Twilly", "Mode: [select] only\nShould the bot buy \"Holly Holiday Twilly\" ?", false),
         new Option<bool>("82789", "Holly Holiday Twig", "Mode: [select] only\nShould the bot buy \"Holly Holiday Twig\" ?", false),
-        new Option<bool>("82790", "Holly Holiday Zorbak", "Mode: [select] only\nShould the bot buy \"Holly Holiday Zorbak\" ?", false)
+        new Option<bool>("82790", "Holly Holiday Zorbak", "Mode: [select] only\nShould the bot buy \"Holly Holiday Zorbak\" ?", false),
     };
 }
