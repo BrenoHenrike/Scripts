@@ -959,7 +959,7 @@ public class Frostvale
 
     public void GlaceTomb()
     {
-        if (Core.isCompletedBefore(9507) || !Core.isSeasonalMapActive("frostvale"))
+        if (Core.isCompletedBefore(9506) || !Core.isSeasonalMapActive("frostvale"))
             return;
 
         Story.PreLoad(this);
@@ -999,14 +999,11 @@ public class Frostvale
         Core.EquipClass(ClassType.Solo);
         // Academic Probation 9506
         Story.KillQuest(9506, "glacetomb", "Kriomein");
-
-        // Still Peace 9507
-        Story.KillQuest(9507, "glacetomb", new[] { "Kriomein", "Draugr", "Snow Fairy" });
     }
 
     public void Fimbultomb()
     {
-        if (Core.isCompletedBefore(9519))
+        if (Core.isCompletedBefore(9518) || !Core.isSeasonalMapActive("fimbultomb"))
             return;
 
         GlaceTomb();
