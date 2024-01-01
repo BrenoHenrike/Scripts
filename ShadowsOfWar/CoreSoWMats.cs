@@ -120,7 +120,7 @@ public class CoreSoWMats
 
         Core.RegisterQuests(8814, 8815);
         while (!Bot.ShouldExit && !Core.CheckInventory("Prismatic Seams", Quantity))
-            Core.KillMonster("Streamwar", "r3a", "Left", "*", log: false);
+            Core.KillMonster("Streamwar", "r4", "Left", "False Wyvern", log: false);
         Core.CancelRegisteredQuests();
     }
 
