@@ -124,34 +124,33 @@ public class CoreSDKA
             Core.Logger("Sepulchure's Armor [2069]");
             DSO(40);
             Core.BuyItem("shadowfall", 100, "DoomKnight Hood");
+            Core.AddDrop("Experimental Dark Item");
             Core.ChainComplete(2069);
-            Bot.Drops.Pickup("Experimental Dark Item");
+            Bot.Wait.ForPickup("Experimental Dark Item");
             Core.ToBank("Experimental Dark Item");
         }
 
         if (!Core.isCompletedBefore(2088))
         {
-            Adv.GearStore();
             Core.Logger("The Doom that Looms [2087]");
             if (!Core.CheckInventory(2083))
             {
                 Core.Logger("You don't have the DoomKnight Class, Getting it for you. (+warrior/Healer if those aren't R10)");
 
                 Core.BuyItem("trainers", 176, "Healer");
-                Adv.RankUpClass("Healer", false);
+                Adv.RankUpClass("Healer");
 
                 Core.BuyItem("trainers", 170, "Warrior");
-                Adv.RankUpClass("Warrior", false);
+                Adv.RankUpClass("Warrior");
 
                 Adv.BuyItem("shadowfall", 100, "DoomKnight", shopItemID: 6309);
             }
-            Adv.RankUpClass("DoomKnight", false);
-
-            Adv.GearStore(true);
+            Adv.RankUpClass("DoomKnight");
             Core.EquipClass(ClassType.Solo);
 
             Core.ChainComplete(2087);
-            Core.ToBank("DoomKnight");
+            if (Core.SoloClass != "DoomKnight")
+                Core.ToBank("DoomKnight");
         }
 
         if (!Core.isCompletedBefore(2089))
@@ -160,7 +159,7 @@ public class CoreSDKA
             Daily.EldersBlood();
 
             if (!Core.CheckInventory("Elders' Blood"))
-                Core.Logger($"Not enough \"Elders' Blood\", please do the daily at a later date", messageBox: true, stopBot: true);
+                Core.Logger($"Not enough \"Elders' Blood\", please do the daily upon daily reset.", messageBox: true, stopBot: true);
 
             Core.HuntMonster("battleundera", "Bone Terror", "Shadow Terror Axe", isTemp: false);
             Core.ChainComplete(2088);
@@ -173,7 +172,7 @@ public class CoreSDKA
             Penny(oneTime: true);
         }
 
-        if (!Bot.Quests.IsAvailable(2098))
+        if (!Core.isCompletedBefore(2098))
         {
             Core.Logger("Quest: Dark Spirit Donation [2090]");
             Core.EnsureAccept(2090);
@@ -226,7 +225,6 @@ public class CoreSDKA
                         break;
                 }
 
-
             if (oneTime)
                 break;
         }
@@ -241,7 +239,7 @@ public class CoreSDKA
 
         Core.AddDrop("Dark Spirit Orb", "Shadow Creeper Enchant", "Shadow Serpent Scythe", "Dark Energy");
         Core.EquipClass(ClassType.Farm);
-        Core.Logger($"Farming {quant} DSOs");
+        Core.FarmingLogger("Dark Spirit Orb", quant);
         Core.RegisterQuests(2065);
         while (!Bot.ShouldExit && (!Core.CheckInventory("Dark Spirit Orb", quant)))
         {
@@ -264,7 +262,8 @@ public class CoreSDKA
             return;
 
         Core.EquipClass(ClassType.Farm);
-        Core.Logger($"Farming {quant} DoomSquire Weapon Kit");
+        Core.FarmingLogger("DoomSquire Weapon Kit", quant);
+        Core.AddDrop("DoomSquire Weapon Kit");
         Core.RegisterQuests(2144);
         while (!Bot.ShouldExit && (!Core.CheckInventory("DoomSquire Weapon Kit", quant)))
         {
@@ -280,7 +279,7 @@ public class CoreSDKA
             Core.HuntMonster("bludrut", "Rock Elemental", "Elemental Stone Sharpener", log: false);
             Core.HuntMonster("nulgath", "Dark Makai", "Dark Makai Lacquer Finish", log: false);
 
-            Bot.Drops.Pickup("DoomSquire Weapon Kit");
+            Bot.Wait.ForPickup("DoomSquire Weapon Kit");
         }
         Core.CancelRegisteredQuests();
     }
@@ -290,8 +289,9 @@ public class CoreSDKA
         if (Core.CheckInventory("DoomSoldier Weapon Kit", quant))
             return;
 
-        Core.Logger($"Farming {quant} DoomSoldier Weapon Kit");
+        Core.FarmingLogger("DoomSoldier Weapon Kit", quant);
         Core.RegisterQuests(2164);
+        Core.AddDrop("DoomSoldier Weapon Kit");
         while (!Bot.ShouldExit && (!Core.CheckInventory("DoomSoldier Weapon Kit", quant)))
         {
             Core.EquipClass(ClassType.Solo);
@@ -306,7 +306,7 @@ public class CoreSDKA
             Core.KillMonster("sandport", "r3", "Right", "Tomb Robber", "Leather Case", log: false);
             Core.KillMonster("pines", "Path1", "Left", "Leatherwing", "Leatherwing Hide", 10, log: false);
 
-            Bot.Drops.Pickup("DoomSoldier Weapon Kit");
+            Bot.Wait.ForPickup("DoomSoldier Weapon Kit");
         }
         Core.CancelRegisteredQuests();
     }
@@ -318,7 +318,7 @@ public class CoreSDKA
 
         Core.AddDrop("DoomKnight Weapon Kit", "Dark Spirit Orb", "Corrupt Spirit Orb", "Ominous Aura", "Grumpy Warhammer");
         Core.EquipClass(ClassType.Solo);
-        Core.Logger($"Farming {quant} {item}");
+        Core.FarmingLogger(item, quant);
         Core.RegisterQuests(2165);
         while (!Bot.ShouldExit && (!Core.CheckInventory(item, quant)))
         {
@@ -331,7 +331,7 @@ public class CoreSDKA
             Core.KillMonster("akiba", "cave4boss", "Left", "Shadow Nukemichi", "Doom Lacquer Finish", log: false);
             Core.KillMonster("dreamnexus", "r6", "Left", "Dark Wyvern", "Dark Wyvern Hide Travel Case", log: false);
 
-            Bot.Drops.Pickup(item);
+            Bot.Wait.ForPickup(item);
         }
         Core.CancelRegisteredQuests();
     }
@@ -370,7 +370,7 @@ public class CoreSDKA
             {
                 if (!Core.CheckInventory("Accursed Arsenic"))
                 {
-                    Core.Logger("Farming for Accursed Arsenic");
+                    Core.FarmingLogger("Accursed Arsenic");
                     Core.EnsureAccept(2110);
                     Core.HuntMonster("bludrut4", "Shadow Serpent", "Dark Energy", 26, false);
                     Daily.HardCoreMetals(new[] { "Arsenic" });
@@ -396,7 +396,7 @@ public class CoreSDKA
                 Core.KillMonster("dwarfhold", "Enter", "Spawn", "Albino Bat", "Forge Key", isTemp: false, log: false);
                 Core.EnsureComplete(2137);
             }
-            Core.Logger("Farming for Daggers of Destruction");
+            Core.FarmingLogger("Daggers of Destruction");
             DoomSquireWK();
             FarmDSO(50);
             DoomMerge("Daggers of Destruction");
@@ -404,7 +404,7 @@ public class CoreSDKA
 
         if (Core.CheckInventory("Daggers of Destruction"))
         {
-            Core.Logger("Farming for Shadow Daggers of Destruction");
+            Core.FarmingLogger("Shadow Daggers of Destruction");
             DoomSoldierWK();
             DoomKnightWK("Ominous Aura");
             DoomMerge("Shadow Daggers of Destruction");
@@ -412,7 +412,7 @@ public class CoreSDKA
 
         if (Core.CheckInventory("Shadow Daggers of Destruction"))
         {
-            Core.Logger("Farming for Necrotic Daggers of Destruction");
+            Core.FarmingLogger("Necrotic Daggers of Destruction");
             DoomKnightWK();
             DoomMerge("Necrotic Daggers of Destruction");
         }
@@ -434,7 +434,8 @@ public class CoreSDKA
             {
                 if (!Core.CheckInventory("Calamitous Chromium"))
                 {
-                    Core.Logger("Farming for Calamitous Chromium");
+                    Core.FarmingLogger("Calamitous Chromium", 1);
+                    Core.AddDrop("Calamitous Chromium");
                     Core.EnsureAccept(2112);
                     Core.HuntMonster("bludrut4", "Shadow Serpent", "Dark Energy", 26, false);
                     Daily.HardCoreMetals(new[] { "Chromium" });
@@ -444,9 +445,9 @@ public class CoreSDKA
                     DSO(6);
                     Core.HuntMonster("arcangrove", "Seed Spitter", "Deadly Knightshade", 16);
                     Core.EnsureComplete(2112);
-                    Bot.Drops.Pickup("Calamitous Chromium");
+                    Bot.Wait.ForPickup("Calamitous Chromium");
                 }
-                Core.Logger("Farming for Calamitous Chromium of Doom");
+                Core.FarmingLogger("Calamitous Chromium of Doom");
                 PinpointDaggers();
                 DoomKnightWK("Corrupt Spirit Orb", 5);
                 Core.BuyItem("dwarfhold", 434, "Calamitous Chromium of Doom");
@@ -456,7 +457,7 @@ public class CoreSDKA
                 PinpointDaggers(25);
                 DoomMerge("Diabolical Aura");
             }
-            Core.Logger("Farming for Broadsword of Bane");
+            Core.FarmingLogger("Broadsword of Bane");
             DoomKnightWK("Corrupt Spirit Orb");
             DoomKnightWK("Dark Spirit Orb", 20);
             DoomSquireWK();
@@ -465,7 +466,7 @@ public class CoreSDKA
 
         if (Core.CheckInventory("Broadsword of Bane"))
         {
-            Core.Logger("Farming for Shadow Broadsword of Bane");
+            Core.FarmingLogger("Shadow Broadsword of Bane");
             DoomKnightWK("Corrupt Spirit Orb");
             PinpointDaggers(1);
             DoomSoldierWK();
@@ -474,7 +475,7 @@ public class CoreSDKA
 
         if (Core.CheckInventory("Shadow Broadsword of Bane"))
         {
-            Core.Logger("Farming for Necrotic Broadsword of Bane");
+            Core.FarmingLogger("Necrotic Broadsword of Bane");
             DoomKnightWK();
             DoomMerge("Necrotic Broadsword of Bane");
         }
@@ -496,7 +497,8 @@ public class CoreSDKA
             {
                 if (!Core.CheckInventory("Reprehensible Rhodium"))
                 {
-                    Core.Logger("Farming for Reprehensible Rhodium");
+                    Core.FarmingLogger("Reprehensible Rhodium");
+                    Core.AddDrop("Reprehensible Rhodium");
                     Core.EnsureAccept(2114);
                     Core.HuntMonster("bludrut4", "Shadow Serpent", "Dark Energy", 26, false);
                     Daily.HardCoreMetals(new[] { "Rhodium" });
@@ -506,14 +508,14 @@ public class CoreSDKA
                     DSO(6);
                     Core.HuntMonster("arcangrove", "Seed Spitter", "Deadly Knightshade", 16);
                     Core.EnsureComplete(2114);
-                    Bot.Drops.Pickup("Reprehensible Rhodium");
+                    Bot.Wait.ForPickup("Reprehensible Rhodium");
                 }
-                Core.Logger("Farming for Reprehensible Rhodium of Doom");
+                Core.FarmingLogger("Reprehensible Rhodium of Doom");
                 PinpointDaggers();
                 DoomKnightWK("Corrupt Spirit Orb", 5);
                 Core.BuyItem("dwarfhold", 434, "Reprehensible Rhodium of Doom");
             }
-            Core.Logger("Farming for Bow to the Shadows");
+            Core.FarmingLogger("Bow to the Shadows");
             DoomSquireWK();
             DoomKnightWK("Corrupt Spirit Orb");
             DoomKnightWK("Dark Spirit Orb", 13);
@@ -524,7 +526,7 @@ public class CoreSDKA
 
         if (Core.CheckInventory("Bow to the Shadows"))
         {
-            Core.Logger("Farming for ShadowBow of the Shadows");
+            Core.FarmingLogger("ShadowBow of the Shadows");
             DoomSoldierWK();
             DoomKnightWK("Corrupt Spirit Orb");
             Core.HuntMonster("bludrut4", "Shadow Serpent", "Dark Energy", 50, false);
@@ -533,7 +535,7 @@ public class CoreSDKA
 
         if (Core.CheckInventory("ShadowBow of the Shadows"))
         {
-            Core.Logger("Farming for Necrotic Bow of the Shadow");
+            Core.FarmingLogger("Necrotic Bow of the Shadow");
             DoomKnightWK();
             DoomMerge("Necrotic Bow of the Shadow");
         }
@@ -548,26 +550,26 @@ public class CoreSDKA
         PinpointBow(500, 250);
         PinpointDaggers(125);
         PinpointBroadsword(75);
-        int i = 1;
+
         Core.Logger(Core.CheckInventory("Doom Aura") ? "Doom Aura found." : "Farming for Doom Aura");
+
         while (!Bot.ShouldExit && (!Core.CheckInventory("Doom Aura")))
-        {
-            PinpointthePieces(2181);
-            Bot.Drops.Pickup("Doom Aura");
-            Core.Logger($"Completed x{i}");
-        }
+            PinpointthePieces(2181, new[] { "Doom Aura" }, new[] { 1 });
+
         if (!Core.CheckInventory("Experimental Dark Item"))
         {
+            Core.AddDrop("Experimental Dark Item");
             PinpointBow(50, 0);
             Core.BuyItem("shadowfall", 100, "DoomKnight Hood");
             Core.ChainComplete(2069);
-            Bot.Drops.Pickup("Experimental Dark Item");
+            Bot.Wait.ForPickup("Experimental Dark Item");
         }
         DoomKnightWK();
+        Core.AddDrop("Sepulchure's DoomKnight Armor");
         Core.EnsureAccept(2187);
         Core.HuntMonster("ruins", "Dark Elemental", "Heart of Darkness");
         Core.EnsureComplete(2187);
-        Bot.Drops.Pickup("Sepulchure's DoomKnight Armor");
+        Bot.Wait.ForPickup("Sepulchure's DoomKnight Armor");
     }
 
     public void PinpointDaggers(int quant = 5)
@@ -575,18 +577,11 @@ public class CoreSDKA
         if (Core.CheckInventory("Ominous Aura", quant))
             return;
 
-        if (!Core.CheckInventory("Necrotic Daggers of Destruction"))
+        if (!Core.CheckInventory("Necrotic Daggers of Destruction", 1)) // Assuming third argument is toInv
             NecroticDaggers();
 
-        int i = 1;
-        Core.EquipClass(ClassType.Farm);
-        Core.Logger($"Farming {quant} Ominous Aura");
-        while (!Bot.ShouldExit && (!Core.CheckInventory("Ominous Aura", quant)))
-        {
-            PinpointthePieces(2181);
-            Bot.Drops.Pickup("Ominous Aura");
-            Core.Logger($"Completed x{i++}");
-        }
+        while (!Bot.ShouldExit && !Core.CheckInventory("Ominous Aura", quant))
+            PinpointthePieces(2181, new[] { "Ominous Aura" }, new[] { quant });
     }
 
     public void PinpointBroadsword(int quant = 1)
@@ -594,18 +589,11 @@ public class CoreSDKA
         if (Core.CheckInventory("Diabolical Aura", quant))
             return;
 
-        if (!Core.CheckInventory("Necrotic Broadsword of Bane"))
+        if (!Core.CheckInventory("Necrotic Broadsword of Bane", 1, false))
             NecroticBroadsword();
 
-        int i = 1;
-        Core.EquipClass(ClassType.Farm);
-        Core.Logger($"Farming {quant} Diabolical Aura");
-        while (!Bot.ShouldExit && (!Core.CheckInventory("Diabolical Aura", quant)))
-        {
-            PinpointthePieces(2183);
-            Bot.Drops.Pickup("Diabolical Aura");
-            Core.Logger($"Completed x{i}");
-        }
+        while (!Bot.ShouldExit && !Core.CheckInventory("Diabolical Aura", quant))
+            PinpointthePieces(2183, new[] { "Diabolical Aura" }, new[] { quant });
     }
 
     public void PinpointBow(int quantDSO, int quantCSO)
@@ -613,29 +601,40 @@ public class CoreSDKA
         if (Core.CheckInventory("Dark Spirit Orb", quantDSO) && Core.CheckInventory("Corrupt Spirit Orb", quantCSO))
             return;
 
-        if (!Core.CheckInventory("Necrotic Bow of the Shadow"))
+        if (!Core.CheckInventory("Necrotic Bow of the Shadow", 1, false)) // Assuming third argument is toInv
             NecroticBow();
 
-        int i = 1;
         Core.EquipClass(ClassType.Farm);
-        Core.Logger($"Farming {quantDSO} DSOs and {quantCSO} CSOs");
-        while (!Bot.ShouldExit && (!Core.CheckInventory("Dark Spirit Orb", quantDSO)) || (!Core.CheckInventory("Corrupt Spirit Orb", quantCSO)))
-        {
-            PinpointthePieces(2186);
-            Bot.Drops.Pickup("Dark Spirit Orb", "Corrupt Spirit Orb");
-            Core.Logger($"Completed x{i}");
-        }
+        Core.FarmingLogger("Dark Spirit Orb", quantDSO);
+        Core.FarmingLogger("Corrupt Spirit Orb", quantCSO);
+
+        string[] items = { "Dark Spirit Orb", "Corrupt Spirit Orb" };
+        int[] quants = { quantDSO, quantCSO };
+        while (!Bot.ShouldExit && (!Core.CheckInventory("Dark Spirit Orb", quantDSO) || !Core.CheckInventory("Corrupt Spirit Orb", quantCSO)))
+            PinpointthePieces(2186, items, quants);
     }
 
-    public void PinpointthePieces(int quest)
+    public void PinpointthePieces(int quest = 0000, string[]? items = null, int[]? quants = null)
     {
+        if (items == null || quants == null || items.Length != quants.Length)
+            return;
+
         Core.AddDrop("Dark Energy", "Dark Spirit Orb", "Corrupt Spirit Orb", "Ominous Aura", "Diabolical Aura", "Doom Aura");
 
-        Core.EnsureAccept(quest);
-        Core.KillMonster("lycan", "r4", "Left", "Chaos Vampire Knight", "DoomKnight Armor Piece", 10, log: false);
+        Core.RegisterQuests(quest);
+        Core.EquipClass(ClassType.Farm);
+        foreach ((string item, int quant) in items.Zip(quants, (item, quant) => (item, quant)))
+        {
+            Core.FarmingLogger(item, quant);
+
+            while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
+                Core.KillMonster("lycan", "r4", "Left", "Chaos Vampire Knight", "DoomKnight Armor Piece", 10, log: false);
+            Bot.Wait.ForPickup(item);
+        }
+        Core.CancelRegisteredQuests();
         Core.JumpWait();
-        Core.EnsureComplete(quest);
     }
+
 }
 
 public enum SDKAQuest
