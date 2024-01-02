@@ -3869,7 +3869,7 @@ public class CoreBots
     {
         JumpWait();
 
-        string[] classesToCheck = new[] { "TimeKeeper", "Void Highlord", "Void HighLord (IoDA)", "Yami no Ronin", "ArchPaladin" };
+        string[] classesToCheck = new[] { "TimeKeeper", "Chaos Avenger", "Void Highlord", "Void HighLord (IoDA)", "Yami no Ronin", "ArchPaladin" };
 
         foreach (string Class in classesToCheck)
         {
@@ -3880,6 +3880,10 @@ public class CoreBots
                         continue;
                     else
                         Bot.Skills.StartAdvanced(Class, true, ClassUseMode.Base);
+                    break;
+
+                case "Chaos Avenger":
+                    Bot.Skills.StartAdvanced(Class, true, ClassUseMode.Base);
                     break;
 
                 case "Void Highlord":
