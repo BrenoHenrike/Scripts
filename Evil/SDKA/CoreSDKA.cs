@@ -553,8 +553,7 @@ public class CoreSDKA
 
         Core.Logger(Core.CheckInventory("Doom Aura") ? "Doom Aura found." : "Farming for Doom Aura");
 
-        while (!Bot.ShouldExit && (!Core.CheckInventory("Doom Aura")))
-            PinpointthePieces(2181, new[] { "Doom Aura" }, new[] { 1 });
+        PinpointthePieces(2181, new[] { "Doom Aura" }, new[] { 1 });
 
         if (!Core.CheckInventory("Experimental Dark Item"))
         {
@@ -580,8 +579,7 @@ public class CoreSDKA
         if (!Core.CheckInventory("Necrotic Daggers of Destruction", 1)) // Assuming third argument is toInv
             NecroticDaggers();
 
-        while (!Bot.ShouldExit && !Core.CheckInventory("Ominous Aura", quant))
-            PinpointthePieces(2181, new[] { "Ominous Aura" }, new[] { quant });
+        PinpointthePieces(2181, new[] { "Ominous Aura" }, new[] { quant });
     }
 
     public void PinpointBroadsword(int quant = 1)
@@ -592,8 +590,7 @@ public class CoreSDKA
         if (!Core.CheckInventory("Necrotic Broadsword of Bane", 1, false))
             NecroticBroadsword();
 
-        while (!Bot.ShouldExit && !Core.CheckInventory("Diabolical Aura", quant))
-            PinpointthePieces(2183, new[] { "Diabolical Aura" }, new[] { quant });
+        PinpointthePieces(2183, new[] { "Diabolical Aura" }, new[] { quant });
     }
 
     public void PinpointBow(int quantDSO, int quantCSO)
@@ -608,13 +605,11 @@ public class CoreSDKA
         Core.FarmingLogger("Dark Spirit Orb", quantDSO);
         Core.FarmingLogger("Corrupt Spirit Orb", quantCSO);
 
-        string[] items = { "Dark Spirit Orb", "Corrupt Spirit Orb" };
-        int[] quants = { quantDSO, quantCSO };
-        while (!Bot.ShouldExit && (!Core.CheckInventory("Dark Spirit Orb", quantDSO) || !Core.CheckInventory("Corrupt Spirit Orb", quantCSO)))
-            PinpointthePieces(2186, items, quants);
+        // Process each item individually
+        PinpointthePieces(2186, new string[] { "Dark Spirit Orb", "Corrupt Spirit Orb" }, new int[] { quantDSO, quantCSO });
     }
 
-    public void PinpointthePieces(int quest = 0000, string[]? items = null, int[]? quants = null)
+    public void PinpointthePieces(int quest, string[]? items = null, int[]? quants = null)
     {
         if (items == null || quants == null || items.Length != quants.Length)
             return;
@@ -623,14 +618,19 @@ public class CoreSDKA
 
         Core.RegisterQuests(quest);
         Core.EquipClass(ClassType.Farm);
-        foreach ((string item, int quant) in items.Zip(quants, (item, quant) => (item, quant)))
-        {
-            Core.FarmingLogger(item, quant);
 
-            while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
+        // Process each item individually
+        for (int i = 0; i < items.Length; i++)
+        {
+            Core.FarmingLogger(items[i], quants[i]);
+
+            while (!Bot.ShouldExit && !Core.CheckInventory(items[i], quants[i]))
+            {
                 Core.KillMonster("lycan", "r4", "Left", "Chaos Vampire Knight", "DoomKnight Armor Piece", 10, log: false);
-            Bot.Wait.ForPickup(item);
+                Bot.Wait.ForPickup(items[i]);
+            }
         }
+
         Core.CancelRegisteredQuests();
         Core.JumpWait();
     }
