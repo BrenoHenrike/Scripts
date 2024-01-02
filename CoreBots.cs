@@ -2555,7 +2555,7 @@ public class CoreBots
         }
     }
 
-    public void FarmingLogger(string? item, int quant, [CallerMemberName] string caller = "")
+    public void FarmingLogger(string? item, int quant = 1, [CallerMemberName] string caller = "")
     {
         int quantity = string.IsNullOrEmpty(item) ? 0 : Bot.TempInv.GetQuantity(item) + Bot.Inventory.GetQuantity(item);
         Logger($"Farming {item} ({quantity}/{quant})", caller);
