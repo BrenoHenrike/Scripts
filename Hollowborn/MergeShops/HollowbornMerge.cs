@@ -27,7 +27,7 @@ public class HollowbornMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Hollowborn Adept", "Hollowborn Spirit", "Hollowborn Spite", "Hollowborn Locks", "Hollowborn Shag", "Hollowborn Blades", "Hollowborn Cleaver", "Hollowborn Executioner's Axe", "Druidic Soothsayer", "Druidic Soothsayer’s Antlered Skull", "Druidic Soothsayer's Hooded Visage", "Druidic Soothsayer Hood", "Druidic Soothsayer's Runed Cape", "Druidic Soothsayer's Cape", "Druidic Soothsayer's Runes", "Druidic Soothsayer's Burning Cape", "Druidic Soothsayer's Burning Aura", "Druidic Soothsayer Rune Gate", "Druidic Soothsayer Staff", "Druidic Soothsayer Spike", "Druidic Soothsayer Spikes", "Druidic Soothsayer Gauntlet"});
+        Core.BankingBlackList.AddRange(new[] { "Hollowborn Adept", "Hollowborn Spirit", "Hollowborn Spite", "Hollowborn Locks", "Hollowborn Shag", "Hollowborn Blades", "Hollowborn Cleaver", "Hollowborn Executioner's Axe", "Druidic Soothsayer", "Druidic Soothsayer's Antlered Skull", "Druidic Soothsayer's Hooded Visage", "Druidic Soothsayer Hood", "Druidic Soothsayer's Runed Cape", "Druidic Soothsayer's Cape", "Druidic Soothsayer's Runes", "Druidic Soothsayer's Burning Cape", "Druidic Soothsayer's Burning Aura", "Druidic Soothsayer Rune Gate", "Druidic Soothsayer Staff", "Druidic Soothsayer Spike", "Druidic Soothsayer Spikes", "Druidic Soothsayer Gauntlet"});
         Core.SetOptions();
 
         BuyAllMerge();
@@ -82,7 +82,7 @@ public class HollowbornMerge
                     break;
 
                 case "Druidic Soothsayer":
-                case "Druidic Soothsayer’s Antlered Skull":
+                case "Druidic Soothsayer's Antlered Skull":
                 case "Druidic Soothsayer Hood":
                 case "Druidic Soothsayer's Hooded Visage":
                 case "Druidic Soothsayer's Runed Cape":
@@ -117,7 +117,7 @@ public class HollowbornMerge
         new Option<bool>("77198", "Hollowborn Druid's Hood", "Mode: [select] only\nShould the bot buy \"Hollowborn Druid's Hood\" ?", false),
         new Option<bool>("77199", "Hollowborn Druid's Runed Cape", "Mode: [select] only\nShould the bot buy \"Hollowborn Druid's Runed Cape\" ?", false),
         new Option<bool>("77200", "Hollowborn Druid's Cape", "Mode: [select] only\nShould the bot buy \"Hollowborn Druid's Cape\" ?", false),
-        new Option<bool>("77201", "Hollowborn Druid’s Runes", "Mode: [select] only\nShould the bot buy \"Hollowborn Druid’s Runes\" ?", false),
+        new Option<bool>("77201", "Hollowborn Druid's Runes", "Mode: [select] only\nShould the bot buy \"Hollowborn Druid's Runes\" ?", false),
         new Option<bool>("77202", "Hollowborn Druid's Burning Cape", "Mode: [select] only\nShould the bot buy \"Hollowborn Druid's Burning Cape\" ?", false),
         new Option<bool>("77203", "Hollowborn Druid's Burning Aura", "Mode: [select] only\nShould the bot buy \"Hollowborn Druid's Burning Aura\" ?", false),
         new Option<bool>("77204", "Hollowborn Druid Rune Gate", "Mode: [select] only\nShould the bot buy \"Hollowborn Druid Rune Gate\" ?", false),

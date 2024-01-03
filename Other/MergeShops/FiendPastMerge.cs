@@ -97,7 +97,7 @@ public class FiendPastMerge
         new Option<bool>("61128", "Vengeance of Nulgath Axe", "Mode: [select] only\nShould the bot buy \"Vengeance of Nulgath Axe\" ?", false),
         new Option<bool>("61129", "Vengeance of Nulgath Spear", "Mode: [select] only\nShould the bot buy \"Vengeance of Nulgath Spear\" ?", false),
         new Option<bool>("61130", "Fiendish Vengeance GreatSword", "Mode: [select] only\nShould the bot buy \"Fiendish Vengeance GreatSword\" ?", false),
-        new Option<bool>("61131", "Nulgath’s Vengeance Orb Pet", "Mode: [select] only\nShould the bot buy \"Nulgath’s Vengeance Orb Pet\" ?", false),
+        new Option<bool>("61131", "Nulgath's Vengeance Orb Pet", "Mode: [select] only\nShould the bot buy \"Nulgath's Vengeance Orb Pet\" ?", false),
         new Option<bool>("61132", "Vengeance Blade BattlePet", "Mode: [select] only\nShould the bot buy \"Vengeance Blade BattlePet\" ?", false),
         new Option<bool>("66991", "Fiendish Outlaw Battlegear", "Mode: [select] only\nShould the bot buy \"Fiendish Outlaw Battlegear\" ?", false),
         new Option<bool>("66992", "Fiendish Outlaw Quickdraw", "Mode: [select] only\nShould the bot buy \"Fiendish Outlaw Quickdraw\" ?", false),

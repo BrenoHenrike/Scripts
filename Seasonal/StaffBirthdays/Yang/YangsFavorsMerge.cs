@@ -27,7 +27,7 @@ public class YangsFavorsMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Yang’s Favor" });
+        Core.BankingBlackList.AddRange(new[] { "Yang's Favor" });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -60,14 +60,14 @@ public class YangsFavorsMerge
                     break;
                 #endregion
 
-                case "Yang’s Favor":
+                case "Yang's Favor":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.RegisterQuests(9035);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("poisonforest", "Traitor Knight", "Traitor’s Medal", 15);
-                        Core.HuntMonster("poisonforest", "Xavier Lionfang", "Xavier’s Medal", 5);
+                        Core.HuntMonster("poisonforest", "Traitor Knight", "Traitor's Medal", 15);
+                        Core.HuntMonster("poisonforest", "Xavier Lionfang", "Xavier's Medal", 5);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();

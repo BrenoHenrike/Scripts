@@ -31,7 +31,7 @@ public class IceDungeonMerge
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Icy Token I", "Icy Token II", "Icy Token III", "Icy Token IV", "Warrior of Kyanos", "Glacial Envoy’s Helm", "Glacial Portal", "Glacial Envoy’s Wrap", "Floating Glacial Shards Mace", "Warrior of Kyanos Daggers", "Glacial Envoy's Buzzcut", "Glacial Envoy's Locks " });
+        Core.BankingBlackList.AddRange(new[] { "Icy Token I", "Icy Token II", "Icy Token III", "Icy Token IV", "Warrior of Kyanos", "Glacial Envoy's Helm", "Glacial Portal", "Glacial Envoy's Wrap", "Floating Glacial Shards Mace", "Warrior of Kyanos Daggers", "Glacial Envoy's Buzzcut", "Glacial Envoy's Locks " });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -133,8 +133,8 @@ public class IceDungeonMerge
                     Core.HuntMonster("icedungeon", "Shade of Kyanos", req.Name, isTemp: false);
                     break;
 
-                case "Glacial Envoy’s Helm":
-                case "Glacial Envoy’s Wrap":
+                case "Glacial Envoy's Helm":
+                case "Glacial Envoy's Wrap":
                 case "Warrior of Kyanos Daggers":
                     Core.EquipClass(ClassType.Solo);
                     Core.HuntMonster("icedungeon", "Abel", req.Name, isTemp: false);

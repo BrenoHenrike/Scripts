@@ -1484,6 +1484,17 @@ public class CoreBots
         if (questID <= 0)
             return false;
 
+
+        var requiredItemNames = QuestData.AcceptRequirements
+        .Concat(QuestData.Requirements)
+        .Select(item => item?.Name)
+        .Where(name => !string.IsNullOrEmpty(name))
+        .ToArray();
+
+        foreach (var itemName in requiredItemNames)
+            if (itemName != null && !Bot.Inventory.Contains(itemName))
+                Unbank(itemName);
+
         if (QuestData.AcceptRequirements.Any())
             foreach (ItemBase item in QuestData.AcceptRequirements)
             {
@@ -1520,24 +1531,31 @@ public class CoreBots
 
             if (Bot.Quests.IsInProgress(quest.ID) || quest.ID <= 0)
                 continue;
-                
+
+            var requiredItemNames = quest.AcceptRequirements
+                .Concat(quest.Requirements)
+                .Select(item => item?.Name)
+                .Where(name => !string.IsNullOrEmpty(name))
+                .ToArray();
+
+            foreach (var itemName in requiredItemNames)
+                if (itemName != null && !Bot.Inventory.Contains(itemName))
+                    Unbank(itemName);
+
             foreach (ItemBase item in quest.AcceptRequirements)
-            {
                 if (!Bot.Drops.ToPickupIDs.Contains(item?.ID ?? 0))
-                    Bot.Drops.Add(item?.ID ?? 1);
-            }
+                    Bot.Drops.Add(item?.ID ?? 0);  // Adjusted to use 0 as the default value
 
             foreach (ItemBase item in quest.Requirements)
-            {
                 if (!Bot.Drops.ToPickupIDs.Contains(item?.ID ?? 0))
-                    Bot.Drops.Add(item?.ID ?? 1);
-            }
+                    Bot.Drops.Add(item?.ID ?? 0);  // Adjusted to use 0 as the default value
 
             Sleep(ActionDelay * 2);
             // Bot.Send.Packet($"%xt%zm%acceptQuest%{Bot.Map.RoomID}%{quest.ID}%");
             Bot.Quests.EnsureAccept(quest.ID);
         }
     }
+
 
 
 
@@ -1760,7 +1778,7 @@ public class CoreBots
                 Gold = data.Gold,
                 XP = data.XP,
                 Status = null!, // Not found in QuestData
-                //Active is based on Status being NULL or not
+                                //Active is based on Status being NULL or not
                 AcceptRequirements = data.AcceptRequirements,
                 //Requirements cant be writen to
                 Rewards = data.Rewards,

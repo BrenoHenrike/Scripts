@@ -69,7 +69,7 @@ public class BlazingBeachMerge
                     break;
                 #endregion
 
-                case $"Mother Dragon’s Gift":
+                case $"Mother Dragon's Gift":
                     Core.RegisterQuests(8709);
                     Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
                     Core.EquipClass(ClassType.Farm);

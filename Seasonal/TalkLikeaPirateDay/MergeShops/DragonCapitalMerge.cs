@@ -32,7 +32,7 @@ public class DragonCapitalMerge
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Dragon King’s Favor", "Regal Pirate Fleet", "Regal Pirate Leggings", "Regal Pirate's Hat", "Regal Pirate's Accessories", "Regal Pirate's Hat + Locks", "Regal Pirate's Accessories + Locks", "Regal Pirate's Wheel", "Regal Pirate's Rapier", "Regal Pirate's Accoutrements", "Formal Pirate Fleet", "Formal Pirate Leggings", "Regal Pirate's Cape + Wheel " });
+        Core.BankingBlackList.AddRange(new[] { "Dragon King's Favor", "Regal Pirate Fleet", "Regal Pirate Leggings", "Regal Pirate's Hat", "Regal Pirate's Accessories", "Regal Pirate's Hat + Locks", "Regal Pirate's Accessories + Locks", "Regal Pirate's Wheel", "Regal Pirate's Rapier", "Regal Pirate's Accoutrements", "Formal Pirate Fleet", "Formal Pirate Leggings", "Regal Pirate's Cape + Wheel " });
         Core.SetOptions();
 
         BuyAllMerge();

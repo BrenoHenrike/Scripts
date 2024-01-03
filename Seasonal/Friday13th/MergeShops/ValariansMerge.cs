@@ -29,7 +29,7 @@ public class ValariansMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Zenobia’s Moglinberry Juice" });
+        Core.BankingBlackList.AddRange(new[] { "Zenobia's Moglinberry Juice" });
         Core.SetOptions();
 
         BuyAllMerge();

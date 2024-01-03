@@ -121,7 +121,7 @@ public class TechfortressWarMerge
                     Core.RegisterQuests(7654);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.KillMonster($"dflesson", "r12", "Right", "Fluffy the Dracolich", "Fluffy’s Bones", 10, isTemp: false);
+                        Core.KillMonster($"dflesson", "r12", "Right", "Fluffy the Dracolich", "Fluffy's Bones", 10, isTemp: false);
                         Core.KillMonster("dflesson", "r3", "Right", "Fire Elemental", "Fire Elemental's Bracer", 5, isTemp: false);
                         Core.KillMonster("dflesson", "r6", "Right", "Tog", "Tog Claw", 5, isTemp: false);
                         Bot.Wait.ForPickup(req.Name);

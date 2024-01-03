@@ -30,7 +30,7 @@ public class MurderMoonMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Cyber Crystal", "S Ring", "Fifth Lord’s Filtrinator", "Dark Helmet", "Dotty", "Dark Tempest Soldier", "Dark Tempest Soldier Helm", "Dark Tempest Soldier Jetpack", "Dark Tempest Soldier Blaster", "Dark Tempest Soldier Laserblade", "Dark Tempest Soldier Pet", "Dark Tempest Soldier Mask" });
+        Core.BankingBlackList.AddRange(new[] { "Cyber Crystal", "S Ring", "Fifth Lord's Filtrinator", "Dark Helmet", "Dotty", "Dark Tempest Soldier", "Dark Tempest Soldier Helm", "Dark Tempest Soldier Jetpack", "Dark Tempest Soldier Blaster", "Dark Tempest Soldier Laserblade", "Dark Tempest Soldier Pet", "Dark Tempest Soldier Mask" });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -76,7 +76,7 @@ public class MurderMoonMerge
                     Core.CancelRegisteredQuests();
                     break;
 
-                case "Fifth Lord’s Filtrinator":
+                case "Fifth Lord's Filtrinator":
                 case "S Ring":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);

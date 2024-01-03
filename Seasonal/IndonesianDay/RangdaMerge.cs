@@ -27,7 +27,7 @@ public class RangdaMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Rangda’s Mask", "Abhorrent Remnant" });
+        Core.BankingBlackList.AddRange(new[] { "Rangda's Mask", "Abhorrent Remnant" });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -61,7 +61,7 @@ public class RangdaMerge
                     break;
                 #endregion
 
-                case "Rangda’s Mask":
+                case "Rangda's Mask":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
                     Bot.Quests.UpdateQuest(7622);

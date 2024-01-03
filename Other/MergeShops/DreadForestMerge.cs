@@ -125,7 +125,7 @@ public class DreadForestMerge
                     Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("dreadforest", $"Noble’s Servant", req.Name, isTemp: false);
+                        Core.HuntMonster($"dreadforest", "Noble’s Servant", req.Name, isTemp: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();

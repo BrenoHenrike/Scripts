@@ -47,7 +47,7 @@ public class MeateorHuntMerge
 
             Core.HuntMonster("BattleFowl", "Egg-stremis", "Egg-Streme Drumstick", publicRoom: true);
             Core.HuntMonster("BattleonTown", "ChickenCow", "ChickenCow Wings");
-            Core.HuntMonster("BattleFowl", "Zeuster Projection", "Zeuster’s Thigh");
+            Core.HuntMonster("BattleFowl", "Zeuster Projection", "Zeuster's Thigh");
             Core.HuntMonster("BattleFowl", "Sabertooth Chicken", "Chick-N-Nuggets", 10);
 
             Core.EnsureComplete(8629);
