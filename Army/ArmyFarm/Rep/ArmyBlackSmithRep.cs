@@ -56,26 +56,39 @@ public class ArmyBlackSmithRep
 
     public void Setup()
     {
+        if (Farm.FactionRank("Blacksmithing") < 4)
+            Core.Logger("Rank is < 4, Soloing *till* rank 4");
+
+        while (!Bot.ShouldExit && Farm.FactionRank("Blacksmithing") < 4)
+        {
+            Core.EnsureAccept(2777);
+            Core.HuntMonster("greenguardeast", "Wolf", "Furry Lost Sock", 2, log: false);
+            Core.HuntMonster("greenguardwest", "Slime", "Slimy Lost Sock", 5, log: false);
+            Core.EnsureComplete(2777);
+        }
+
         Core.AddDrop("Creature Shard", "Monster Trophy", "Hydra Scale Piece");
-        Core.RegisterQuests(8736);
         while (!Bot.ShouldExit && Farm.FactionRank("Blacksmithing") < 10)
         {
+            Core.EnsureAccept(8736);
             Core.EquipClass(ClassType.Farm);
-            Armykill("hydrachallenge", new[] { "Hydra Head 75" }, "Hydra Scale Piece", isTemp: false, 75);
+
+            Armykill("hydrachallenge", "Hydra Scale Piece", 75);
             Army.waitForParty("maul");
-            
+
             Core.EquipClass(ClassType.Solo);
-            Armykill("maul", new[] { "Creature Creation" }, "Creature Shard", isTemp: false, 1);
+            Armykill("maul", "Creature Shard");
             Army.waitForParty("towerofdoom");
 
-            Armykill("towerofdoom", new[] { "Dread Klunk" }, "Monster Trophy", isTemp: false, 15);
+            Armykill("towerofdoom", "Monster Trophy", 15);
             Army.waitForParty("hydrachallenge");
-           
+
+            Core.EnsureComplete(8736);
         }
         Core.CancelRegisteredQuests();
     }
 
-    void Armykill(string? map = null, string[]? monsters = null, string? item = null, bool isTemp = false, int quant = 1)
+    void Armykill(string? map = null, string? item = null, int quant = 1)
     {
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
@@ -86,103 +99,46 @@ public class ArmyBlackSmithRep
         if (item == null)
             return;
 
-        Bot.Drops.Add(item);
+        if (!Bot.Drops.ToPickup.Contains(item) && Bot.Inventory.Items.Find(x => x.Name == item) == null)
+            Core.AddDrop(item);
 
         Core.EquipClass(ClassType.Farm);
         Core.FarmingLogger(item, quant);
 
         AggroSetup(map);
 
-        foreach (string? monster in monsters)
-            Army.SmartAggroMonStart(map, monsters);
-
         if (Bot.Player.CurrentClass?.Name == "ArchMage")
             Bot.Options.AttackWithoutTarget = true;
-            
+
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
             Bot.Combat.Attack("*");
 
         Army.AggroMonStop(true);
         Core.JumpWait();
         Bot.Wait.ForPickup(item);
-
     }
 
-    void AggroSetup(string? map = null)
+    void AggroSetup(string? map)
     {
-        if (Bot.Map.Name == null)
-            return;
-
-        if (Bot.Map.Name == "MaptoAggro")
+        switch (map)
         {
-            Army.AggroMonCells("cell1", "cell2", "cell3");
-            Army.AggroMonStart("MaptoAggro");
-            Army.DivideOnCells("cell1", "cell2", "cell3");
+            case "hydrachallenge":
+                Army.AggroMonCells("h75");
+                Army.AggroMonStart(map);
+                Army.DivideOnCells("h75");
+                break;
+
+            case "maul":
+                Army.AggroMonCells("r3");
+                Army.AggroMonStart(map);
+                Army.DivideOnCells("r3");
+                break;
+
+            case "towerofdoom":
+                Army.AggroMonCells("r10");
+                Army.AggroMonStart(map);
+                Army.DivideOnCells("f10");
+                break;
         }
     }
 }
-
-/*old stuff
-
-    public void GetItems(string? map = null, string[]? monsters = null, int questID = 000, string[] Loot = null, bool isTemp = false)
-    {
-        Core.PrivateRooms = true;
-        Core.PrivateRoomNumber = Army.getRoomNr();
-
-        Quest QuestData = Core.EnsureLoad(questID);
-        ItemBase[] RequiredItems = QuestData.Requirements.ToArray();
-        ItemBase[] QuestReward = QuestData.Rewards.ToArray();
-
-        if (Loot == null)
-        {
-            foreach (string Reward in Loot)
-            {
-                ItemBase item = Bot.Inventory.GetItem(Reward);
-                if (item.Coins)
-                    Core.AddDrop(Reward);
-                else
-                    Core.Logger($"{item} has been excluded as it is not a AC item.");
-            }
-        }
-        else Core.AddDrop(Loot);
-
-        Core.EquipClass(ClassType.Farm);
-        Core.RegisterQuests(questID);
-
-        Army.SmartAggroMonStart(map, Monsters);
-
-        while (!Bot.ShouldExit)
-            Bot.Combat.Attack("*");
-        Army.AggroMonStop(true);
-    }
-
-    public void GetItem(string? map = null, string Monster = null, int questID = 000, string? item = null, bool isTemp = false, int quant = 1)
-    {
-        Core.PrivateRooms = true;
-        Core.PrivateRoomNumber = Army.getRoomNr();
-
-        Quest QuestData = Core.EnsureLoad(questID);
-        ItemBase[] RequiredItems = QuestData.Requirements.ToArray();
-        ItemBase[] QuestReward = QuestData.Rewards.ToArray();
-
-        Core.AddDrop(item);
-        Core.EquipClass(ClassType.Farm);
-        if (!Bot.Quests.Active.Contains(QuestData))
-            Core.EnsureAccept(questID);
-
-        Army.SmartAggroMonStart(map, Monster);
-
-        while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
-            Core.HuntMonster(map, Monster);
-        Army.AggroMonStop(true);
-        Core.CancelRegisteredQuests();
-    }
-    
-    
-        GetItems("map", new[] { "mob", "mob" }, 000, new[] { "item", "item" }); //*ONLY* leave Loot Empty for AC(only) quest rewards."
-        GetItem("map", "mob", 000, "item"); //*ONLY* leave Loot Empty for AC(only) quest rewards."
-
-        //Examples;
-        //Setup("map", new[] { "mob", "mob" }, 000); 
-        //Setup("map", new[] { "mob", "mob" }, 000, new[] {"item", "item"});
-}*/
