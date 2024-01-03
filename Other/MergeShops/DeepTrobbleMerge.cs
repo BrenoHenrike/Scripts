@@ -65,11 +65,12 @@ public class DeepTrobbleMerge
                 #endregion
 
                 case "Bounty Hunter Dubloon":
-                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
                     // Very Trobblesome 9394
                     Core.RegisterQuests(9394);
-                    Core.HuntMonsterMapID("dreadspace", 48, req.Name, quant, false);
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
+                        Core.HuntMonsterMapID("dreadspace", 48, "Trobble Captured");
+                    Bot.Wait.ForPickup(req.Name);
                     Core.CancelRegisteredQuests();
                     break;
 
