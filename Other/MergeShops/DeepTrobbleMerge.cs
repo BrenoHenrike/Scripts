@@ -65,6 +65,7 @@ public class DeepTrobbleMerge
                 #endregion
 
                 case "Bounty Hunter Dubloon":
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
                     // Very Trobblesome 9394
                     Core.RegisterQuests(9394);
