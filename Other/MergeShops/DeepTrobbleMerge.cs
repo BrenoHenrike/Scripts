@@ -69,7 +69,7 @@ public class DeepTrobbleMerge
                     Core.EquipClass(ClassType.Solo);
                     // Very Trobblesome 9394
                     Core.RegisterQuests(9394);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.ID, quant))
                         Core.HuntMonsterMapID("dreadspace", 48, "Trobble Captured");
                     Bot.Wait.ForPickup(req.Name);
                     Core.CancelRegisteredQuests();
@@ -79,7 +79,7 @@ public class DeepTrobbleMerge
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     // Pressurized Weapon 9157
-                    while (!Bot.ShouldExit && !Core.CheckInventory("Deep Trobble Plunger", 1))
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.ID))
                     {
                         Core.EnsureAccept(9157);
                         Core.HuntMonster("brightoak", "Bright Treeant", "Chunk of Rubber", 10);

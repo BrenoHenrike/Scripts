@@ -1485,10 +1485,18 @@ public class CoreBots
             return false;
 
         if (QuestData.AcceptRequirements.Any())
-            AddDrop(QuestData.AcceptRequirements.Where(x => !x.Temp).Select(y => y.ID).ToArray());
+            foreach (ItemBase item in QuestData.AcceptRequirements)
+            {
+                if (!Bot.Drops.ToPickupIDs.Contains(item.ID))
+                    Bot.Drops.Add(item.ID);
+            }
 
         if (QuestData.Requirements.Any())
-            AddDrop(QuestData.Requirements.Where(x => !x.Temp).Select(y => y.ID).ToArray());
+            foreach (ItemBase item in QuestData.Requirements)
+            {
+                if (!Bot.Drops.ToPickupIDs.Contains(item.ID))
+                    Bot.Drops.Add(item.ID);
+            }
 
 
         Sleep(ActionDelay * 2);
@@ -1512,18 +1520,25 @@ public class CoreBots
 
             if (Bot.Quests.IsInProgress(quest.ID) || quest.ID <= 0)
                 continue;
+                
+            foreach (ItemBase item in quest.AcceptRequirements)
+            {
+                if (!Bot.Drops.ToPickupIDs.Contains(item?.ID ?? 0))
+                    Bot.Drops.Add(item?.ID ?? 1);
+            }
 
-            if (quest.AcceptRequirements.Any())
-                AddDrop(quest.AcceptRequirements.Where(x => !x.Temp).Select(y => y.ID).ToArray());
-
-            if (quest.Requirements.Any())
-                AddDrop(quest.Requirements.Where(x => !x.Temp).Select(y => y.ID).ToArray());
+            foreach (ItemBase item in quest.Requirements)
+            {
+                if (!Bot.Drops.ToPickupIDs.Contains(item?.ID ?? 0))
+                    Bot.Drops.Add(item?.ID ?? 1);
+            }
 
             Sleep(ActionDelay * 2);
             // Bot.Send.Packet($"%xt%zm%acceptQuest%{Bot.Map.RoomID}%{quest.ID}%");
             Bot.Quests.EnsureAccept(quest.ID);
         }
     }
+
 
 
     /// <summary>
