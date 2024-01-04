@@ -52,9 +52,9 @@ public class CoreStory
         void SmartKillMonster(int questID, string map, string monster)
         {
             Core.EnsureAccept(questID);
-            _AddRequirement(questID);
+            AddRequirement(questID);
             Core.Join(map);
-            _SmartKill(monster, 20);
+            SmartKill(monster, 20);
             CurrentRequirements.Clear();
         }
     }
@@ -83,10 +83,10 @@ public class CoreStory
         void SmartKillMonster(int questID, string map, string[] monsters)
         {
             Core.EnsureAccept(questID);
-            _AddRequirement(questID);
+            AddRequirement(questID);
             Core.Join(map);
             foreach (string monster in monsters)
-                _SmartKill(monster, 20);
+                SmartKill(monster, 20);
             CurrentRequirements.Clear();
         }
     }
@@ -307,7 +307,7 @@ public class CoreStory
             }
         }
 
-        if (Core.isCompletedBefore(QuestID) && (TestBot ? QuestData.Once : true))
+        if (Core.isCompletedBefore(QuestID) && (!TestBot || QuestData.Once))
         {
             if (TestBot)
                 Core.Logger($"Skipped (Once = true): [{QuestID}] - \"{QuestData.Name}\"");
@@ -345,7 +345,7 @@ public class CoreStory
     public void LegacyQuestManager(Action questLogic, params int[] questIDs)
     {
         List<Quest> questData = Core.EnsureLoad(questIDs);
-        List<LegacyQuestObject> whereToGet = new List<LegacyQuestObject>();
+        List<LegacyQuestObject> whereToGet = new();
 
         //Core.DL_Enable();
         Core.DebugLogger(this, "-------------\t");
@@ -361,7 +361,7 @@ public class CoreStory
             Core.DebugLogger(this, $"{requiredQuestReward?.FirstOrDefault()?.Name}\t");
             Core.DebugLogger(this, "-------------\t");
 
-            if (requiredQuestReward?.Count() == 0 && quest.AcceptRequirements?.Count() > 0)
+            if (requiredQuestReward?.Count == 0 && quest.AcceptRequirements?.Count > 0)
             {
                 Core.Logger("The managed failed to find the location of \"" +
                 String.Join("\" + \"", quest.AcceptRequirements.Select(a => a.Name)) +
@@ -482,7 +482,7 @@ public class CoreStory
     {
         List<int> QuestIDs = new();
         string[] ScriptSlice = Core.CompiledScript();
-        if (ScriptSlice.Count() == 0)
+        if (ScriptSlice.Length == 0)
         {
             Core.Logger("PreLoad failed, cannot read Compiled Script. You might not be on the latest version of Skua");
             return;
@@ -546,19 +546,19 @@ public class CoreStory
                 continue;
 
             char[] digits = Line.SkipWhile(c => !Char.IsDigit(c)).TakeWhile(Char.IsDigit).ToArray();
-            string sQuestID = new string(digits);
+            string sQuestID = new(digits);
             int QuestID = int.Parse(sQuestID);
 
             if (!QuestIDs.Contains(QuestID) && !Bot.Quests.Tree.Exists(x => x.ID == QuestID))
                 QuestIDs.Add(QuestID);
         }
 
-        if (QuestIDs.Count() + Bot.Quests.Tree.Count() > Core.LoadedQuestLimit
+        if (QuestIDs.Count + Bot.Quests.Tree.Count > Core.LoadedQuestLimit
             && QuestIDs.Count < Core.LoadedQuestLimit)
         {
             Bot.Flash.SetGameObject("world.questTree", new ExpandoObject());
         }
-        else if (QuestIDs.Count > (Core.LoadedQuestLimit - Bot.Quests.Tree.Count()))
+        else if (QuestIDs.Count > (Core.LoadedQuestLimit - Bot.Quests.Tree.Count))
         {
             Core.Logger($"Found {QuestIDs.Count} Quests, this exceeds the max amount of loaded quests ({Core.LoadedQuestLimit}). No quests will be loaded.");
             return;
@@ -568,7 +568,7 @@ public class CoreStory
         if (QuestIDs.Count > 30)
             Core.Logger($"Estimated Loading Time: {Convert.ToInt32(QuestIDs.Count / 30 * 1.6)}s");
 
-        for (int i = 0; i < QuestIDs.Count; i = i + 30)
+        for (int i = 0; i < QuestIDs.Count; i += 30)
         {
             Bot.Quests.Load(QuestIDs.ToArray()[i..(QuestIDs.Count > i ? QuestIDs.Count : i + 30)]);
             Core.Sleep(1500);
@@ -577,62 +577,56 @@ public class CoreStory
     private int PreviousQuestID = 0;
     private bool PreviousQuestState = false;
 
-    private void _SmartKill(string monster, int iterations = 20)
+    private void SmartKill(string monster, int iterations = 20)
     {
-        if (monster == null)
+        if (monster is null)
         {
             Core.Logger("ERROR: monster is null, please report", stopBot: true);
             return;
         }
 
-        bool repeat = true;
         for (int j = 0; j < iterations; j++)
         {
             if (CurrentRequirements.Count == 0)
                 break;
-            if (CurrentRequirements.Count == 1)
+
+            bool repeat = true;
+            foreach (ItemBase requirement in CurrentRequirements.ToList())
             {
-                if (_RepeatCheck(ref repeat, 0))
-                    break;
-                _MonsterHunt(ref repeat, monster, CurrentRequirements[0].Name, CurrentRequirements[0].Quantity, CurrentRequirements[0].Temp, 0);
-                break;
-            }
-            else
-            {
-                for (int i = CurrentRequirements.Count - 1; i >= 0; i--)
+                if (Core.CheckInventory(requirement.ID, requirement.Quantity))
                 {
-                    if (j == 0 && (Core.CheckInventory(CurrentRequirements[i].Name, CurrentRequirements[i].Quantity)))
-                    {
-                        CurrentRequirements.RemoveAt(i);
-                        continue;
-                    }
-                    if (j != 0 && Core.CheckInventory(CurrentRequirements[i].Name))
-                    {
-                        if (_RepeatCheck(ref repeat, i))
-                            break;
-                        _MonsterHunt(ref repeat, monster, CurrentRequirements[i].Name, CurrentRequirements[i].Quantity, CurrentRequirements[i].Temp, i);
-                        break;
-                    }
+                    CurrentRequirements.Remove(requirement);
+                    continue;
                 }
+
+                Bot.Hunt.Monster(monster);
+                Bot.Drops.Pickup(new[] { requirement.Name });
+                Core.Sleep();
+
+                if (!RepeatCheck(ref repeat, CurrentRequirements.IndexOf(requirement)))
+                    break;
             }
+
             if (!repeat)
                 break;
 
-            Bot.Hunt.Monster(monster);
-            Bot.Drops.Pickup(CurrentRequirements.Where(item => !item.Temp).Select(item => item.Name).ToArray());
             Core.Sleep();
         }
+
     }
-    private List<ItemBase> CurrentRequirements = new();
-    private void _MonsterHunt(ref bool shouldRepeat, string monster, string itemName, int quantity, bool isTemp, int index)
+
+    private readonly List<ItemBase> CurrentRequirements = new();
+
+    // private void _MonsterHunt(ref bool shouldRepeat, string monster, ItemBase item)
+    // {
+    //     Bot.Hunt.ForItem(monster, item.Name, item.Quantity, item.Temp);
+    //     CurrentRequirements.Remove(item);
+    //     shouldRepeat = false;
+    // }
+
+    private bool RepeatCheck(ref bool shouldRepeat, int index)
     {
-        Bot.Hunt.ForItem(monster, itemName, quantity, isTemp);
-        CurrentRequirements.RemoveAt(index);
-        shouldRepeat = false;
-    }
-    private bool _RepeatCheck(ref bool shouldRepeat, int index)
-    {
-        if (Core.CheckInventory(CurrentRequirements[index].Name, CurrentRequirements[index].Quantity))
+        if (Core.CheckInventory(CurrentRequirements[index].ID, CurrentRequirements[index].Quantity))
         {
             CurrentRequirements.RemoveAt(index);
             shouldRepeat = false;
@@ -640,26 +634,28 @@ public class CoreStory
         }
         return false;
     }
+
     private int lastQuestID;
-    private void _AddRequirement(int questID)
+
+    private void AddRequirement(int questID)
     {
         if (questID > 0 && questID != lastQuestID)
         {
             lastQuestID = questID;
             Quest quest = Core.EnsureLoad(questID);
 
-            List<string> reqItems = new();
-            quest.AcceptRequirements.ForEach(item => reqItems.Add(item.Name));
-            quest.Requirements.ForEach(item =>
-            {
-                if (!CurrentRequirements.Where(i => i.Name == item.Name).Any())
+            List<int> reqItems = quest.AcceptRequirements.Select(item => item.ID).ToList();
+            reqItems.AddRange(quest.Requirements
+                .Where(item => !CurrentRequirements.Any(i => i.ID == item.ID))
+                .Where(item => !item.Temp)
+                .Select(item =>
                 {
-                    if (!item.Temp)
-                        reqItems.Add(item.Name);
                     CurrentRequirements.Add(item);
-                }
-            });
+                    return item.ID;
+                }));
+
             Core.AddDrop(reqItems.ToArray());
         }
     }
+
 }
