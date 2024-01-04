@@ -99,7 +99,7 @@ public class OrbHunt
         Story.MapItemQuest(8323, "queenreign", 9125, 5);
 
         // 8324|Path to Sa-Laatan
-        Story.KillQuest(0008324, "queenreign", "Water Goblin");
+        Story.KillQuest(8324, "queenreign", "Water Goblin");
 
         // 8325|The Water Orb
         Story.KillQuest(8325, "queenreign", "Sa-Laatan");

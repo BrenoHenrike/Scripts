@@ -30,7 +30,7 @@ public class Otziwar
         Story.PreLoad(this);
 
         // Sluagh Medals 8446 (8447 is mega and not neede)
-        if (!Story.QuestProgression(0000))
+        if (!Story.QuestProgression(8446))
         {
             Core.EnsureAccept(8446);
             Core.HuntMonster("otziwar", "Sluagh Warrior", "Ancient Fragments", 3);
