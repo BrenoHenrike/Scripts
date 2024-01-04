@@ -786,9 +786,9 @@ public class CoreToD
         if (!Story.QuestProgression(5170))
         {
             Core.EnsureAccept(5170);
-            Core.HuntMonster("whitehole", "Dimensional Crystal", "item", 1);
-            Core.HuntMonster("whitehole", "Gate Goblin", "item", 1);
-            Core.HuntMonster("whitehole", "Vortex Matter", "item", 1);
+            Core.HuntMonster("whitehole", "Dimensional Crystal", "Quartz", 3);
+            Core.HuntMonster("whitehole", "Gate Goblin", "Lime", 2);
+            Core.HuntMonster("whitehole", "Vortex Matter", "Natron");
             Core.EnsureComplete(5170);
         }
 
