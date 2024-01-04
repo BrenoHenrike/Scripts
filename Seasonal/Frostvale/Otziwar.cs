@@ -33,7 +33,7 @@ public class Otziwar
         if (!Story.QuestProgression(8446))
         {
             Core.EnsureAccept(8446);
-            Core.HuntMonster("otziwar", "Sluagh Warrior", "Ancient Fragments", 3);
+            Core.HuntMonster("otziwar", "Sluagh Warrior", "Sluagh Medals", 5);
             Core.EnsureComplete(8446);
         }
 
