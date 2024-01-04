@@ -938,8 +938,8 @@ public class CoreToD
         Story.MapItemQuest(5195, "fourdpyramid", 4559, 1);
 
         // A Jarring Solution
-        Story.MapItemQuest(5196, "fourdpyramid", 4560, 1);
         Story.KillQuest(5196, "fourdpyramid", new[] { "Guardian of Anubyx", "Nega Mummy" });
+        Story.MapItemQuest(5196, "fourdpyramid", 4560, 1);
 
         // Ra of Light
         Story.MapItemQuest(5197, "fourdpyramid", 4561, 1);
