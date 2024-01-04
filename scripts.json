@@ -4118,19 +4118,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/SolarNewYear/WaterWar.cs"
   },
   {
-    "name": "Mount Otzi Story",
-    "description": "This will finish the Mount Otzi Storyline.",
-    "tags": [
-      "mount-otzi-story",
-      "seasonal",
-      "frostvale"
-    ],
-    "path": "Seasonal/Frostvale/MountOtzi.cs",
-    "size": 2706,
-    "fileName": "MountOtzi.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/MountOtzi.cs"
-  },
-  {
     "name": "Tinsel's Gifts",
     "description": "This will finish all of Tinsel's quest and obtain all of the quest rewards.",
     "tags": [
@@ -4157,19 +4144,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/SnowviewRaceMerge.cs"
   },
   {
-    "name": "Otziwar",
-    "description": "Does the quests in /join otziwar",
-    "tags": [
-      "otziwar",
-      "story",
-      "huntress merge"
-    ],
-    "path": "Seasonal/Frostvale/Otziwar.cs",
-    "size": 1328,
-    "fileName": "Otziwar.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/Otziwar.cs"
-  },
-  {
     "name": "Frostvale All Stories",
     "description": "This will finish the entire frostvale storylines.",
     "tags": [
@@ -4178,7 +4152,7 @@
       "frostvale"
     ],
     "path": "Seasonal/Frostvale/Frostvale.cs",
-    "size": 34379,
+    "size": 37397,
     "fileName": "Frostvale.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/Frostvale.cs"
   },
@@ -4453,7 +4427,7 @@
       "frostvale"
     ],
     "path": "Seasonal/Frostvale/HuntressMerge.cs",
-    "size": 8106,
+    "size": 8009,
     "fileName": "HuntressMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/HuntressMerge.cs"
   },
@@ -15306,7 +15280,7 @@
       "null"
     ],
     "path": "Story/ThroneofDarkness/CoreToD.cs",
-    "size": 44986,
+    "size": 47037,
     "fileName": "CoreToD.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ThroneofDarkness/CoreToD.cs"
   },
