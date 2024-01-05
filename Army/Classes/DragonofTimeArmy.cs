@@ -13,7 +13,7 @@ tags: dragon of time, class, army
 //cs_include Scripts/Other/Weapons/GoldenBladeOfFate.cs
 //cs_include Scripts/Other/Weapons/PinkBladeofDestruction.cs
 //cs_include Scripts/Story/Doomwood/CoreDoomwood.cs
-//cs_include Scripts/Story/QueenofMonsters/CoreQoM.cs
+//cs_include Scripts/Story/QueenofMonsters/CoreQOM.cs
 //cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
 //cs_include Scripts/Story/7DeadlyDragons/Core7DD.cs
 //cs_include Scripts/Other/MysteriousEgg.cs
