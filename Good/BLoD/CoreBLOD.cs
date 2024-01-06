@@ -586,7 +586,7 @@ public class CoreBLOD
     private List<ShopItem>? LightMergeShopItems = null;
 
     private void LightMerge(string item, int quant = 1)
-        => Core.BuyItem("necropolis", 422, item);
+        => Core.BuyItem("necropolis", 422, item, quant);
 }
 
 public enum WeaponOfDestiny
