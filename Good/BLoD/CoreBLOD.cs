@@ -154,7 +154,7 @@ public class CoreBLOD
 
     #region Materials
 
-    public void SpiritOrb(int quant)
+    public void SpiritOrb(int quant = 65000)
     {
         if (Core.CheckInventory("Spirit Orb", quant))
             return;
@@ -163,7 +163,7 @@ public class CoreBLOD
         farmFindingFrag(WeaponOfDestiny.Broadsword, "Spirit Orb", quant);
 
         // Default
-        SoulSearching("Spirit Orb", quant);
+        SoulSearching("Spirit Orb", quant > 65000 ? 65000 : quant);
     }
 
     public void LoyalSpiritOrb(int quant)
@@ -177,11 +177,11 @@ public class CoreBLOD
         farmUltimateWK("Loyal Spirit Orb", quant);
 
         // Default
-        if (!Core.CheckInventory("Loyal Spirit Orb", quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Loyal Spirit Orb", quant))
         {
             Core.FarmingLogger("Loyal Spirit Orb", quant);
             SpiritOrb(100 * quant);
-            LightMerge("Loyal Spirit Orb", quant);
+            LightMerge("Loyal Spirit Orb");
         }
     }
 
@@ -196,11 +196,11 @@ public class CoreBLOD
         farmUltimateWK("Bright Aura", quant);
 
         // Default
-        if (!Core.CheckInventory("Bright Aura", quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Bright Aura", quant))
         {
             Core.FarmingLogger("Bright Aura", quant);
             LoyalSpiritOrb(50 * quant);
-            LightMerge("Bright Aura", quant);
+            LightMerge("Bright Aura");
         }
     }
 
@@ -212,11 +212,11 @@ public class CoreBLOD
         farmFindingFrag(WeaponOfDestiny.Mace, "Brilliant Aura", quant);
 
         // Default
-        if (!Core.CheckInventory("Brilliant Aura", quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Brilliant Aura", quant))
         {
             Core.FarmingLogger("Brilliant Aura", quant);
             BrightAura(25 * quant);
-            LightMerge("Brilliant Aura", quant);
+            LightMerge("Brilliant Aura");
         }
     }
 
@@ -235,7 +235,7 @@ public class CoreBLOD
         farmFindingFrag(WeaponOfDestiny.Daggers, "Blinding Aura", quant);
     }
 
-    public void SoulSearching(string item, int quant, bool farmSpiritOrbs = true)
+    public void SoulSearching(string item = "Spirit Orb", int quant = 1, bool farmSpiritOrbs = true)
     {
         if (Core.CheckInventory(item, quant))
             return;
@@ -244,7 +244,6 @@ public class CoreBLOD
             BattleUnder.BattleUnderC();
 
         Core.EquipClass(ClassType.Solo);
-        Core.FarmingLogger(item, quant);
 
         Core.AddDrop("Cavern Celestite", "Undead Essence");
         if (farmSpiritOrbs)
@@ -263,6 +262,7 @@ public class CoreBLOD
 
             Core.EnsureComplete(939);
             Bot.Wait.ForPickup(item);
+
         }
         Core.CancelRegisteredQuests();
     }
@@ -585,7 +585,7 @@ public class CoreBLOD
     private List<ShopItem>? LightMergeShopItems = null;
 
     private void LightMerge(string item, int quant = 1)
-        => Core.BuyItem("necropolis", 422, item, quant);
+        => Core.BuyItem("necropolis", 422, item);
 }
 
 public enum WeaponOfDestiny
