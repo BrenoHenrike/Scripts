@@ -1488,7 +1488,7 @@
       "null"
     ],
     "path": "Legion/CoreLegion.cs",
-    "size": 31720,
+    "size": 31724,
     "fileName": "CoreLegion.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/CoreLegion.cs"
   },
@@ -7713,6 +7713,23 @@
     "size": 9396,
     "fileName": "CragsGemMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/MergeShops/CragsGemMerge.cs"
+  },
+  {
+    "name": "Shadowscythe Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Shadowscythe Merge [1208] in /shadowblast",
+    "tags": [
+      "shadowscythe",
+      "merge",
+      "shadowblast",
+      "doomfire",
+      "empowered",
+      "flaming",
+      "exalted"
+    ],
+    "path": "Nation/MergeShops/ShadowscytheMerge.cs",
+    "size": 5658,
+    "fileName": "ShadowscytheMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/MergeShops/ShadowscytheMerge.cs"
   },
   {
     "name": "FiendishLoreMasterMerge",
@@ -15017,6 +15034,20 @@
     "size": 2806,
     "fileName": "FiendPast.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Nation/FiendPast.cs"
+  },
+  {
+    "name": "ShadowBlast Arena",
+    "description": "This will finish the ShadowBlast Arena quest.",
+    "tags": [
+      "story",
+      "quest",
+      "nation",
+      "shadowblast arena"
+    ],
+    "path": "Story/Nation/ShadowBlastArena.cs",
+    "size": 4324,
+    "fileName": "ShadowBlastArena.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Nation/ShadowBlastArena.cs"
   },
   {
     "name": "Originul",
