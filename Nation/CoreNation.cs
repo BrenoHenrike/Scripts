@@ -55,7 +55,8 @@ public class CoreNation
         "Bone Dust",
         "Nulgath's Approval",
         "Archfiend's Favor",
-        "Unidentified 34"
+        "Unidentified 34",
+        "Essence of Nulgath"
     };
 
     public string[] SuppliesRewards =
@@ -66,7 +67,8 @@ public class CoreNation
     "Voucher of Nulgath",
     "Voucher of Nulgath (non-mem)",
     "Gem of Nulgath",
-    "Unidentified 10"
+    "Unidentified 10",
+    "Essence of Nulgath"
     };
 
     /// <summary>
