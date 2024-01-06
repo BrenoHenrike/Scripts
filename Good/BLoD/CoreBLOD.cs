@@ -159,8 +159,8 @@ public class CoreBLOD
         if (Core.CheckInventory("Spirit Orb", quant))
             return;
 
-        farmFindingFrag(WeaponOfDestiny.Blade, "Spirit Orb", quant);
-        farmFindingFrag(WeaponOfDestiny.Broadsword, "Spirit Orb", quant);
+        farmFindingFrag(WeaponOfDestiny.Blade, "Spirit Orb", quant > 65000 ? 65000 : quant);
+        farmFindingFrag(WeaponOfDestiny.Broadsword, "Spirit Orb", quant > 65000 ? 65000 : quant);
 
         // Default
         SoulSearching("Spirit Orb", quant > 65000 ? 65000 : quant);
@@ -181,7 +181,7 @@ public class CoreBLOD
         {
             Core.FarmingLogger("Loyal Spirit Orb", quant);
             SpiritOrb(100 * quant);
-            LightMerge("Loyal Spirit Orb");
+            LightMerge("Loyal Spirit Orb", quant);
         }
     }
 
@@ -200,7 +200,7 @@ public class CoreBLOD
         {
             Core.FarmingLogger("Bright Aura", quant);
             LoyalSpiritOrb(50 * quant);
-            LightMerge("Bright Aura");
+            LightMerge("Bright Aura", quant);
         }
     }
 
@@ -216,7 +216,7 @@ public class CoreBLOD
         {
             Core.FarmingLogger("Brilliant Aura", quant);
             BrightAura(25 * quant);
-            LightMerge("Brilliant Aura");
+            LightMerge("Brilliant Aura", quant);
         }
     }
 
