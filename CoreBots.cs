@@ -1358,7 +1358,7 @@ public class CoreBots
         List<Quest> questData = EnsureLoad(questIDs);
         Dictionary<Quest, int> chooseQuests = new();
         Dictionary<Quest, int> nonChooseQuests = new();
-
+        Bot.Lite.ReacceptQuest = true;
         foreach (Quest q in questData)
         {
             bool shouldBreak = false;
@@ -1464,6 +1464,7 @@ public class CoreBots
         Bot.Wait.ForTrue(() => questCTS == null, 30);
         AbandonQuest(registeredQuests!);
         registeredQuests = null;
+        Bot.Lite.ReacceptQuest = false;
     }
     private int[]? registeredQuests = null;
 
