@@ -3412,7 +3412,7 @@ public class CoreBots
 
             #region Special Cases
             case "tercessuinotlim":
-                if (isCompletedBefore(9540))
+                if (!isCompletedBefore(9540))
                     SimpleQuestBypass((542, 1));
                 Bot.Map.Jump("m22", "Left");
                 tryJoin();
