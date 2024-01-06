@@ -709,7 +709,7 @@ public class CoreFarms
         Core.KillMonster("battleunderb", "Enter", "Spawn", "*", item, quant, isTemp, log: false);
     }
 
-    public void BoneSomeDust(int quant = 10500)
+    public void BoneSomeDust(int quant = 65000)
     {
         if (Core.CheckInventory("Spirit Orb", quant))
             return;
