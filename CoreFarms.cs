@@ -161,7 +161,7 @@ public class CoreFarms
         Core.SavedState();
         Core.Logger($"Farming {goldQuant} gold using BattleGroundE Method");
 
-            Core.RegisterQuests(3991, 3992);
+        Core.RegisterQuests(3991, 3992);
         while (!Bot.ShouldExit && Bot.Player.Gold < goldQuant)
         {
             Core.KillMonster("battlegrounde", "r2", "Left", "*", "Battleground E Opponent Defeated", 10);

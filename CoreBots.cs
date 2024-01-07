@@ -2498,7 +2498,7 @@ public class CoreBots
                             Jump(CellandPadBefore.Item1, CellandPadBefore.Item2);
                             Sleep();
                         }
-                        
+
                         Bot.Combat.Attack(mob.MapID);
 
                         if (item != null && (isTemp ? !Bot.TempInv.Contains(item, quantity) : !CheckInventory(item, quantity)))
