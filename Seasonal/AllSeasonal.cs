@@ -13,7 +13,6 @@ tags: seasonal, story, complete, all
 //cs_include Scripts/Seasonal/AprilFools/Mmmm,Meaty(or)(MeatyShard).cs
 //cs_include Scripts/Story/Glacera.cs
 //cs_include Scripts/Seasonal/Frostvale/Frostvale.cs
-//cs_include Scripts/Seasonal/Frostvale/MountOtzi.cs
 //cs_include Scripts/Seasonal/HerosHeartDay/Fezzini.cs
 //cs_include Scripts/Seasonal/HerosHeartDay/LoveSpellStory.cs
 //cs_include Scripts/Seasonal/HerosHeartDay/WheelOfLove.cs
@@ -56,7 +55,6 @@ public class AllSeasonal
     public MeateorHunt MeateorHunt = new();
     public SuperSLAYINBadge SSB = new();
     public Frostvale Frostvale = new();
-    public MountOtzi MountOtzi = new();
     public FezziniStory Fezzini = new();
     public LoveSpell LoveSpell = new();
     public WheeleOfLove WheeleOfLove = new();
@@ -177,7 +175,6 @@ public class AllSeasonal
                 // SweetSummerTreats.GetTreats();
                 // UnLifeguardQuest.GetItems();
                 StarFestival.StoryLine();
-                MountOtzi.MountOtziQuests();
                 Core.Logger($"Scripts Finished for {DateTime.Now:MMMM}");
                 break;
 
