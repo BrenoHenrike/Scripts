@@ -118,7 +118,7 @@ public class CoreFarms
 
         ToggleBoost(BoostType.Gold);
 
-        // HonorHall(quant);
+        HonorHall(quant);
         BattleGroundE(quant);
         BerserkerBunny(quant);
 
