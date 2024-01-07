@@ -1888,13 +1888,10 @@ public class CoreFarms
             Core.EnsureComplete(5157);
         }
 
-        Core.RegisterQuests(5157, 5165);
+        Core.ToggleAggro(false);
 
-        while (!Bot.ShouldExit && FactionRank("Death Pit Brawl") < rank)
-        {
-            Core.ToggleAggro(false);
-            RunDeathPitBrawl();
-        }
+        RunDeathPitBrawl();
+
         Core.CancelRegisteredQuests();
         ToggleBoost(BoostType.Reputation, false);
         Core.ToggleAggro(true);
@@ -1902,7 +1899,8 @@ public class CoreFarms
 
     void RunDeathPitBrawl(string item = "Death Pit Token", int quant = 1, int rank = 10)
     {
-        while (!Bot.ShouldExit && (!Core.CheckInventory(item, quant) || FactionRank("Death Pit Brawl") < rank))
+        Core.RegisterQuests(5156, 5157, 5165);
+        while (!Bot.ShouldExit && !Core.CheckInventory(item, quant) || FactionRank("Death Pit Brawl") < rank)
         {
             while (!Bot.ShouldExit && Bot.Map.Name != "deathpitbrawl")
             {
@@ -2018,7 +2016,7 @@ public class CoreFarms
                 }
             }
 
-            Core.Sleep(5000);
+            // Core.Sleep(5000);
 
             Bot.Wait.ForDrop(item, 40);
             Bot.Wait.ForPickup(item);
@@ -2028,7 +2026,7 @@ public class CoreFarms
 
             while (Bot.Map.Name != "battleon" && !Bot.Drops.Exists(item))
             {
-                int i = 0;
+                int i = 1;
                 Core.Logger($"Attemping Exit {i++}.");
                 Bot.Map.Join("battleon-999999");
                 Core.Sleep(1500);
