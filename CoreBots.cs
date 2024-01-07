@@ -2483,6 +2483,8 @@ public class CoreBots
             ToggleAggro(true);
         else ToggleAggro(false);
 
+        (string, string) CellandPadBefore = ($"{Bot.Player.Cell}", $"{Bot.Player.Pad}");
+
         while (!Bot.ShouldExit && !CheckInventory(item, quantity))
         {
             if (!Bot.Combat.StopAttacking)
@@ -2491,6 +2493,12 @@ public class CoreBots
                 {
                     while (!Bot.ShouldExit && IsMonsterAlive(mob.MapID, true))
                     {
+                        while (!Bot.ShouldExit && Bot.Player.Cell != CellandPadBefore.Item1)
+                        {
+                            Jump(CellandPadBefore.Item1, CellandPadBefore.Item2);
+                            Sleep();
+                        }
+                        
                         Bot.Combat.Attack(mob.MapID);
 
                         if (item != null && (isTemp ? !Bot.TempInv.Contains(item, quantity) : !CheckInventory(item, quantity)))
