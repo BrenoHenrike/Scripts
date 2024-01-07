@@ -352,7 +352,7 @@ public class VHLArmy
 
         Army.AggroMonMIDs(2, 3, 4, 5);
         Army.AggroMonStart("tercessuinotlim");
-        Army.DivideOnCells("m1", "m2");
+        Army.DivideOnCells("Enter", "m1", "m2");
 
         if (Bot.Player.CurrentClass?.Name == "ArchMage")
             Bot.Options.AttackWithoutTarget = true;

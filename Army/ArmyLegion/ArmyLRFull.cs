@@ -306,8 +306,8 @@ public class ArmyLR
             Army.AggroMonStart("darkwarnation");
             Army.DivideOnCells("r2", "r3", "r4");
 
-        if (Bot.Player.CurrentClass?.Name == "ArchMage")
-            Bot.Options.AttackWithoutTarget = true;
+            if (Bot.Player.CurrentClass?.Name == "ArchMage")
+                Bot.Options.AttackWithoutTarget = true;
 
             while (!Bot.ShouldExit && Bot.Player.Gold < quant)
                 Bot.Combat.Attack("*");
@@ -416,7 +416,7 @@ public class ArmyLR
 
         if (Bot.Player.CurrentClass?.Name == "ArchMage")
             Bot.Options.AttackWithoutTarget = true;
-            
+
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
             Bot.Combat.Attack("*");
 
@@ -496,7 +496,7 @@ public class ArmyLR
             case "tercessuinotlim":
                 Army.AggroMonMIDs(1, 3, 4, 5);
                 Army.AggroMonStart(map);
-                Army.DivideOnCells("m1", "m2");
+                Army.DivideOnCells("Enter", "m1", "m2");
                 break;
 
             case "aqlesson":
