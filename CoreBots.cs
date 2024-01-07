@@ -616,6 +616,8 @@ public class CoreBots
         if (items == null || items.Length == 0)
             return;
 
+        // (string, string) CellandPadBefore = ($"{Bot.Player.Cell}", $"{Bot.Player.Pad}");
+
         JumpWait();
 
         if (Bot.Flash.GetGameObject("ui.mcPopup.currentLabel") != "\"Bank\"")
@@ -637,6 +639,12 @@ public class CoreBots
                 Logger($"{item} moved from bank");
             }
         }
+
+        // while (!Bot.ShouldExit && Bot.Player.Cell != CellandPadBefore.Item1)
+        // {
+        //     Jump(CellandPadBefore.Item1, CellandPadBefore.Item2);
+        //     Sleep();
+        // }
     }
 
     /// <summary>
@@ -1535,7 +1543,7 @@ public class CoreBots
             var requiredItemNames = quest.AcceptRequirements
                 .Concat(quest.Requirements)
                 .Select(item => item?.Name)
-                .Where(name => !string.IsNullOrEmpty(name))
+                .Where(name => !string.IsNullOrEmpty(name) && name != null)
                 .ToArray();
 
             foreach (var itemName in requiredItemNames)
@@ -1543,12 +1551,22 @@ public class CoreBots
                     Unbank(itemName);
 
             foreach (ItemBase item in quest.AcceptRequirements)
-                if (!Bot.Drops.ToPickupIDs.Contains(item?.ID ?? 0))
+            {
+                if (item == null || item.Temp)
+                    continue;
+
+                if (!Bot.Drops.ToPickupIDs.Contains(item?.ID ?? 0) && item?.Name != null && !item.Temp)
                     Bot.Drops.Add(item?.ID ?? 0);  // Adjusted to use 0 as the default value
+            }
 
             foreach (ItemBase item in quest.Requirements)
-                if (!Bot.Drops.ToPickupIDs.Contains(item?.ID ?? 0))
+            {
+                if (item == null || item.Temp)
+                    continue;
+
+                if (!Bot.Drops.ToPickupIDs.Contains(item?.ID ?? 0) && item?.Name != null && !item.Temp)
                     Bot.Drops.Add(item?.ID ?? 0);  // Adjusted to use 0 as the default value
+            }
 
             Sleep(ActionDelay * 2);
             // Bot.Send.Packet($"%xt%zm%acceptQuest%{Bot.Map.RoomID}%{quest.ID}%");
@@ -1884,8 +1902,8 @@ public class CoreBots
         if (Bot.Player.CurrentClass?.Name == "ArchMage")
             Bot.Options.AttackWithoutTarget = true;
 
-        if (item == null && Bot.Options.AggroMonsters)
-            ToggleAggro(true);
+        // if (Bot.Options.AggroMonsters)
+        //     ToggleAggro(true);
 
         if (item == null)
         {
@@ -1901,13 +1919,32 @@ public class CoreBots
             int CurrentQuantity = string.IsNullOrEmpty(item) ? 0 : Bot.TempInv.GetQuantity(item) + Bot.Inventory.GetQuantity(item);
             if (log)
                 Logger($"Killing {monster} in {Bot.Player.Cell} for {item}: {CurrentQuantity}/{quant}");
-            while (!Bot.ShouldExit && !CheckInventory(item, quant))
+
+            while (!Bot.ShouldExit && item != null && (isTemp ? !Bot.TempInv.Contains(item, quant) : !CheckInventory(item, quant)))
+            {
                 foreach (Monster mob in Bot.Monsters.CurrentAvailableMonsters)
+                {
                     while (!Bot.ShouldExit && IsMonsterAlive(mob.MapID, true))
+                    {
+                        if (Bot.Map.Name != map.ToLower())
+                            Join(map, cell, pad, publicRoom: publicRoom);
+                        if (Bot.Player.Cell != cell)
+                            Jump(cell, pad);
+
                         Bot.Combat.Attack(mob.MapID);
+
+                        if (item != null && (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
+                        {
+                            Bot.Wait.ForPickup(item);
+                            break;
+                        }
+                    }
+                }
+            }
             Rest();
         }
         else _KillForItem(monster, item, quant, isTemp, log: log);
+        // ToggleAggro(false);
         Bot.Options.AttackWithoutTarget = false;
     }
 
@@ -1944,9 +1981,6 @@ public class CoreBots
             Bot.Options.AttackWithoutTarget = true;
 
         if (item == null)
-            ToggleAggro(true);
-
-        if (item == null)
         {
             if (log)
                 Logger($"Killing {monster}");
@@ -1957,9 +1991,6 @@ public class CoreBots
         }
         else _KillForItem(monster.Name, item, quant, isTemp, log: log);
         Bot.Options.AttackWithoutTarget = false;
-        ToggleAggro(false);
-        JumpWait();
-        Bot.Wait.ForCombatExit();
     }
 
     /// <summary>
@@ -1995,21 +2026,20 @@ public class CoreBots
             if (log)
                 Logger($"Hunting {monster} for {item}, ({dynamicQuant(item, isTemp)}/{quant}) [Temp = {isTemp}]");
 
-            while (!Bot.ShouldExit && (isTemp ? !Bot.TempInv.Contains(item, quant) : !CheckInventory(item, quant)))
+            if (!Bot.Combat.StopAttacking)
             {
-                if (!Bot.Combat.StopAttacking)
+                while (!Bot.ShouldExit && (isTemp ? !Bot.TempInv.Contains(item, quant) : !CheckInventory(item, quant)))
                 {
-                    foreach (Monster mob in Bot.Monsters.MapMonsters.Where(x => x.Name == monster))
-                    {
-                        while (!Bot.ShouldExit && IsMonsterAlive(mob.MapID, true) && (isTemp ? !Bot.TempInv.Contains(item, quant) : !CheckInventory(item, quant)))
-                            Bot.Hunt.Monster(mob.MapID);
-                        if (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant))
-                            break;
-                    }
+                    Bot.Hunt.Monster(monster);
+
+                    if (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant))
+                        break;
+
+                    Sleep();
+                    Rest();
                 }
-                Sleep();
-                Rest();
             }
+
         }
         Bot.Options.AttackWithoutTarget = false;
     }
@@ -2425,7 +2455,6 @@ public class CoreBots
                 }
                 else
                 {
-
                     if (Bot.Player.CurrentClass!.Name == "ArchMage")
                         Bot.Options.AttackWithoutTarget = true;
 
@@ -2450,9 +2479,9 @@ public class CoreBots
     {
         if (log)
             FarmingLogger(item, quantity);
-        ToggleAggro(true);
-
-        Monster? Mob = Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault(x => x.Name == name);
+        if (Bot.Options.AggroMonsters == true)
+            ToggleAggro(true);
+        else ToggleAggro(false);
 
         while (!Bot.ShouldExit && !CheckInventory(item, quantity))
         {
@@ -2464,7 +2493,7 @@ public class CoreBots
                     {
                         Bot.Combat.Attack(mob.MapID);
 
-                        if (CheckInventory(item, quantity))
+                        if (item != null && (isTemp ? !Bot.TempInv.Contains(item, quantity) : !CheckInventory(item, quantity)))
                             break;
                     }
                 }
@@ -2472,14 +2501,15 @@ public class CoreBots
 
             Sleep();
 
-            if (rejectElse)
+            if (rejectElse && item != null)
             {
                 Bot.Drops.RejectExcept(item);
             }
         }
 
         ToggleAggro(false);
-        JumpWait();
+        Bot.Combat.CancelTarget();
+        Bot.Combat.Exit();
         Bot.Wait.ForCombatExit();
         Rest();
     }

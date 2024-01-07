@@ -118,7 +118,7 @@ public class CoreFarms
 
         ToggleBoost(BoostType.Gold);
 
-        HonorHall(quant);
+        // HonorHall(quant);
         BattleGroundE(quant);
         BerserkerBunny(quant);
 
@@ -161,13 +161,12 @@ public class CoreFarms
         Core.SavedState();
         Core.Logger($"Farming {goldQuant} gold using BattleGroundE Method");
 
-        Core.RegisterQuests(3991, 3992);
+            Core.RegisterQuests(3991, 3992);
         while (!Bot.ShouldExit && Bot.Player.Gold < goldQuant)
         {
-            Core.KillMonster("battlegrounde", "r2", "Center", "*", "Battleground E Opponent Defeated", 10, log: false);
-            Core.KillMonster("battlegrounde", "r2", "Center", "*", "Battleground D Opponent Defeated", 10, log: false);
+            Core.KillMonster("battlegrounde", "r2", "Left", "*", "Battleground E Opponent Defeated", 10);
+            Core.KillMonster("battlegrounde", "r2", "Left", "*", "Battleground D Opponent Defeated", 10);
         }
-
         Core.CancelRegisteredQuests();
         Core.SavedState(false);
     }
@@ -2016,13 +2015,13 @@ public class CoreFarms
                 }
             }
 
-            // Core.Sleep(5000);
+            Core.Sleep(5000);
 
             Bot.Wait.ForDrop(item, 40);
             Bot.Wait.ForPickup(item);
 
-            // Core.Logger("Delaying exit");
-            // Core.Sleep();
+            Core.Logger("Delaying exit");
+            Core.Sleep();
 
             while (Bot.Map.Name != "battleon" && !Bot.Drops.Exists(item))
             {
