@@ -1896,9 +1896,19 @@ public class CoreBots
 
             Rest();
         }
+        else if (monster == "*")
+        {
+            int CurrentQuantity = string.IsNullOrEmpty(item) ? 0 : Bot.TempInv.GetQuantity(item) + Bot.Inventory.GetQuantity(item);
+            if (log)
+                Logger($"Killing {monster} in {Bot.Player.Cell} for {item}: {CurrentQuantity}/{quant}");
+            while (!Bot.ShouldExit && !CheckInventory(item, quant))
+                foreach (Monster mob in Bot.Monsters.CurrentAvailableMonsters)
+                    while (!Bot.ShouldExit && IsMonsterAlive(mob.MapID, true))
+                        Bot.Combat.Attack(mob.MapID);
+            Rest();
+        }
         else _KillForItem(monster, item, quant, isTemp, log: log);
         Bot.Options.AttackWithoutTarget = false;
-
     }
 
 
@@ -1934,11 +1944,15 @@ public class CoreBots
             Bot.Options.AttackWithoutTarget = true;
 
         if (item == null)
+            ToggleAggro(true);
+
+        if (item == null)
         {
             if (log)
                 Logger($"Killing {monster}");
-            ToggleAggro(true);
+
             Bot.Kill.Monster(monster);
+
             Rest();
         }
         else _KillForItem(monster.Name, item, quant, isTemp, log: log);
@@ -1981,12 +1995,18 @@ public class CoreBots
             if (log)
                 Logger($"Hunting {monster} for {item}, ({dynamicQuant(item, isTemp)}/{quant}) [Temp = {isTemp}]");
 
-
             while (!Bot.ShouldExit && (isTemp ? !Bot.TempInv.Contains(item, quant) : !CheckInventory(item, quant)))
             {
                 if (!Bot.Combat.StopAttacking)
-                    Bot.Hunt.Monster(monster);
-
+                {
+                    foreach (Monster mob in Bot.Monsters.MapMonsters.Where(x => x.Name == monster))
+                    {
+                        while (!Bot.ShouldExit && IsMonsterAlive(mob.MapID, true) && (isTemp ? !Bot.TempInv.Contains(item, quant) : !CheckInventory(item, quant)))
+                            Bot.Hunt.Monster(mob.MapID);
+                        if (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant))
+                            break;
+                    }
+                }
                 Sleep();
                 Rest();
             }
@@ -2432,14 +2452,32 @@ public class CoreBots
             FarmingLogger(item, quantity);
         ToggleAggro(true);
 
+        Monster? Mob = Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault(x => x.Name == name);
+
         while (!Bot.ShouldExit && !CheckInventory(item, quantity))
         {
             if (!Bot.Combat.StopAttacking)
-                Bot.Combat.Attack(name);
+            {
+                foreach (Monster mob in Bot.Monsters.CurrentAvailableMonsters.Where(x => x.Name == name))
+                {
+                    while (!Bot.ShouldExit && IsMonsterAlive(mob.MapID, true))
+                    {
+                        Bot.Combat.Attack(mob.MapID);
+
+                        if (CheckInventory(item, quantity))
+                            break;
+                    }
+                }
+            }
+
             Sleep();
+
             if (rejectElse)
+            {
                 Bot.Drops.RejectExcept(item);
+            }
         }
+
         ToggleAggro(false);
         JumpWait();
         Bot.Wait.ForCombatExit();
