@@ -55,8 +55,8 @@ public class ArmyApprovalFavour
 
         Core.AddDrop(Loot);
         Core.EquipClass(ClassType.Farm);
-
-        if (String.IsNullOrEmpty(Bot.Config.Get<string>("player4")))
+        var player4 = Bot.Config?.Get<string>("player4");
+        if (String.IsNullOrEmpty(player4))
             Army.AggroMonMIDs(1, 2, 3, 4, 5, 6, 7, 8, 9);
         else Army.AggroMonMIDs(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15);
         Army.AggroMonStart("evilwarnul");
@@ -64,7 +64,7 @@ public class ArmyApprovalFavour
 
         if (Bot.Player.CurrentClass?.Name == "ArchMage")
             Bot.Options.AttackWithoutTarget = true;
-            
+
         while (!Bot.ShouldExit)
             Bot.Combat.Attack("*");
         Army.AggroMonStop(true);
