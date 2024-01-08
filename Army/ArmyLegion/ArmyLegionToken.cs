@@ -45,7 +45,11 @@ public class ArmyLegionToken
         Core.BankingBlackList.Add("Legion Token");
         Core.SetOptions(disableClassSwap: false);
 
-        Setup(Bot.Config.Get<Method>("Method"), 25001);
+        Method? method = Bot.Config?.Get<Method>("Method");
+        if (method != null)
+        {
+            Setup(method.Value, 25001);
+        }
 
         Core.SetOptions(false);
     }
