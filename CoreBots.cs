@@ -1914,38 +1914,10 @@ public class CoreBots
 
             Rest();
         }
-        else if (monster == "*")
-        {
-            int CurrentQuantity = string.IsNullOrEmpty(item) ? 0 : Bot.TempInv.GetQuantity(item) + Bot.Inventory.GetQuantity(item);
-            if (log)
-                Logger($"Killing {monster} in {Bot.Player.Cell} for {item}: {CurrentQuantity}/{quant}");
-
-            while (!Bot.ShouldExit && item != null && (isTemp ? !Bot.TempInv.Contains(item, quant) : !CheckInventory(item, quant)))
-            {
-                foreach (Monster mob in Bot.Monsters.CurrentAvailableMonsters)
-                {
-                    while (!Bot.ShouldExit && IsMonsterAlive(mob.MapID, true))
-                    {
-                        if (Bot.Map.Name != map.ToLower())
-                            Join(map, cell, pad, publicRoom: publicRoom);
-                        if (Bot.Player.Cell != cell)
-                            Jump(cell, pad);
-
-                        Bot.Combat.Attack(mob.MapID);
-
-                        if (item != null && (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
-                        {
-                            Bot.Wait.ForPickup(item);
-                            break;
-                        }
-                    }
-                }
-            }
-            Rest();
-        }
         else _KillForItem(monster, item, quant, isTemp, log: log);
         // ToggleAggro(false);
         Bot.Options.AttackWithoutTarget = false;
+
     }
 
 
@@ -1984,9 +1956,8 @@ public class CoreBots
         {
             if (log)
                 Logger($"Killing {monster}");
-
+            ToggleAggro(true);
             Bot.Kill.Monster(monster);
-
             Rest();
         }
         else _KillForItem(monster.Name, item, quant, isTemp, log: log);
@@ -2026,18 +1997,14 @@ public class CoreBots
             if (log)
                 Logger($"Hunting {monster} for {item}, ({dynamicQuant(item, isTemp)}/{quant}) [Temp = {isTemp}]");
 
-            if (!Bot.Combat.StopAttacking)
+
+            while (!Bot.ShouldExit && (isTemp ? !Bot.TempInv.Contains(item, quant) : !CheckInventory(item, quant)))
             {
-                while (!Bot.ShouldExit && (isTemp ? !Bot.TempInv.Contains(item, quant) : !CheckInventory(item, quant)))
-                {
+                if (!Bot.Combat.StopAttacking)
                     Bot.Hunt.Monster(monster);
 
-                    if (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant))
-                        break;
-
-                    Sleep();
-                    Rest();
-                }
+                Sleep();
+                Rest();
             }
 
         }
@@ -2483,38 +2450,14 @@ public class CoreBots
             ToggleAggro(true);
         else ToggleAggro(false);
 
-        (string, string) CellandPadBefore = ($"{Bot.Player.Cell}", $"{Bot.Player.Pad}");
-
         while (!Bot.ShouldExit && !CheckInventory(item, quantity))
         {
             if (!Bot.Combat.StopAttacking)
-            {
-                foreach (Monster mob in Bot.Monsters.CurrentAvailableMonsters.Where(x => x.Name == name))
-                {
-                    while (!Bot.ShouldExit && IsMonsterAlive(mob.MapID, true))
-                    {
-                        while (!Bot.ShouldExit && Bot.Player.Cell != CellandPadBefore.Item1)
-                        {
-                            Jump(CellandPadBefore.Item1, CellandPadBefore.Item2);
-                            Sleep();
-                        }
-
-                        Bot.Combat.Attack(mob.MapID);
-
-                        if (item != null && (isTemp ? !Bot.TempInv.Contains(item, quantity) : !CheckInventory(item, quantity)))
-                            break;
-                    }
-                }
-            }
-
+                Bot.Combat.Attack(name);
             Sleep();
-
-            if (rejectElse && item != null)
-            {
+            if (rejectElse)
                 Bot.Drops.RejectExcept(item);
-            }
         }
-
         ToggleAggro(false);
         Bot.Combat.CancelTarget();
         Bot.Combat.Exit();
