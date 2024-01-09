@@ -63,9 +63,16 @@ public class ArmyEmblemOfNulgath
         Core.AddDrop(Loot);
         Core.RegisterQuests(4748);
 
-        if (string.IsNullOrEmpty(Bot.Config.Get<string>("player5").Trim()) && string.IsNullOrEmpty(Bot.Config.Get<string>("player6").Trim()))
-            Army.AggroMonCells("r13", "r14", "r15", "r16");
-        else Army.AggroMonCells("r13", "r14", "r15", "r16", "r17", "r4");
+        if (Bot.Config != null)
+        {
+            string player5 = Bot.Config.Get<string>("player5") ?? string.Empty;
+            string player6 = Bot.Config.Get<string>("player6") ?? string.Empty;
+
+            if (string.IsNullOrEmpty(player5.Trim()) && string.IsNullOrEmpty(player6.Trim()))
+                Army.AggroMonCells("r13", "r14", "r15", "r16");
+            else
+                Army.AggroMonCells("r13", "r14", "r15", "r16", "r17", "r4");
+        }
         Army.AggroMonStart("shadowblast");
         Army.DivideOnCells("r13", "r14", "r15", "r16", "r17", "r4");
 
