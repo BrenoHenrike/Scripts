@@ -17,7 +17,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 110801,
+    "size": 110833,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 192529,
+    "size": 192963,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -284,7 +284,7 @@
       "null"
     ],
     "path": "Nation/AssistingCragAndBamboozle[Mem].cs",
-    "size": 3357,
+    "size": 3349,
     "fileName": "AssistingCragAndBamboozle[Mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/AssistingCragAndBamboozle[Mem].cs"
   },
@@ -379,7 +379,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 82827,
+    "size": 82772,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -395,7 +395,7 @@
       "diamond badge of nulgath"
     ],
     "path": "Nation/NationLoyaltyRewarded.cs",
-    "size": 2675,
+    "size": 2664,
     "fileName": "NationLoyaltyRewarded.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/NationLoyaltyRewarded.cs"
   },
@@ -1488,7 +1488,7 @@
       "null"
     ],
     "path": "Legion/CoreLegion.cs",
-    "size": 31724,
+    "size": 31713,
     "fileName": "CoreLegion.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/CoreLegion.cs"
   },
@@ -3375,7 +3375,7 @@
       "decay"
     ],
     "path": "Farm/BuyScrolls.cs",
-    "size": 5271,
+    "size": 5263,
     "fileName": "BuyScrolls.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/BuyScrolls.cs"
   },
@@ -5795,7 +5795,7 @@
       "suns"
     ],
     "path": "Seasonal/StarFestival/ShorinzanMerge.cs",
-    "size": 8241,
+    "size": 8233,
     "fileName": "ShorinzanMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StarFestival/ShorinzanMerge.cs"
   },
@@ -5823,7 +5823,7 @@
       "star-festival"
     ],
     "path": "Seasonal/StarFestival/StarFestival.cs",
-    "size": 6048,
+    "size": 6040,
     "fileName": "StarFestival.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StarFestival/StarFestival.cs"
   },
@@ -7727,7 +7727,7 @@
       "exalted"
     ],
     "path": "Nation/MergeShops/ShadowscytheMerge.cs",
-    "size": 5658,
+    "size": 5647,
     "fileName": "ShadowscytheMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/MergeShops/ShadowscytheMerge.cs"
   },
@@ -8042,7 +8042,7 @@
       "null"
     ],
     "path": "Nation/Various/TheGameofGemstones(Gold[Members]).cs",
-    "size": 1652,
+    "size": 1644,
     "fileName": "TheGameofGemstones(Gold[Members]).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/TheGameofGemstones(Gold[Members]).cs"
   },
@@ -8151,7 +8151,7 @@
       "quests"
     ],
     "path": "Nation/Various/HanzoOrbQuest.cs",
-    "size": 2421,
+    "size": 2403,
     "fileName": "HanzoOrbQuest.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/HanzoOrbQuest.cs"
   },
@@ -8338,7 +8338,7 @@
       "null"
     ],
     "path": "Nation/Various/AssistingOblivionBlade.cs",
-    "size": 1873,
+    "size": 1865,
     "fileName": "AssistingOblivionBlade.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/AssistingOblivionBlade.cs"
   },
@@ -8360,7 +8360,7 @@
       "null"
     ],
     "path": "Nation/Various/TendurrrTheAssistantQuests.cs",
-    "size": 3438,
+    "size": 3430,
     "fileName": "TendurrrTheAssistantQuests.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/TendurrrTheAssistantQuests.cs"
   },
@@ -11684,7 +11684,7 @@
       "the point sword"
     ],
     "path": "Other/Various/DarkScrollTreasureHunt.cs",
-    "size": 3289,
+    "size": 3281,
     "fileName": "DarkScrollTreasureHunt.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Various/DarkScrollTreasureHunt.cs"
   },
@@ -15045,7 +15045,7 @@
       "shadowblast arena"
     ],
     "path": "Story/Nation/ShadowBlastArena.cs",
-    "size": 4335,
+    "size": 4324,
     "fileName": "ShadowBlastArena.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Nation/ShadowBlastArena.cs"
   },
