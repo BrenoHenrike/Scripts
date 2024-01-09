@@ -192,37 +192,55 @@ public class CoreNation
     /// </summary>
     /// <param name=item>Desired item to get</param>
     /// <param name="quant">Desired quantity to get</param>
-    public void NewWorldsNewOpportunities(string item = "Any", int quant = 1)
+    public void NewWorldsNewOpportunities(string? item = null, int quant = 1)
     {
-        if (Core.CheckInventory(item, quant) || (!Core.CheckInventory("Nulgath's Birthday Gift") && !Core.CheckInventory("Bounty Hunter's Drone Pet")))
+        if ((item != null && Core.CheckInventory(item, quant)) || (!Core.CheckInventory("Nulgath's Birthday Gift") && !Core.CheckInventory("Bounty Hunter's Drone Pet")))
             return;
 
-        if (item != "Any")
-        {
-            Core.AddDrop(item);
-            Core.FarmingLogger(item, quant);
-        }
-        Core.AddDrop(bagDrops);
+        Core.AddDrop(Core.QuestRewards(Core.CheckInventory("Bounty Hunter's Drone Pet") ? 6183 : 6697));
         Core.EquipClass(ClassType.Farm);
 
         Core.RegisterQuests(Core.CheckInventory("Bounty Hunter's Drone Pet") ? 6183 : 6697);
-        while (!Bot.ShouldExit && !Core.CheckInventory(item, quant) && !Bot.Inventory.IsMaxStack(item))
+        if (item == null)
         {
-            Core.KillMonster("tercessuinotlim", "m2", "Left", "*", "Makai Fang", 5);
-            Core.KillMonster("hydra", "Rune2", "Left", "*", "Imp Flame", 3, log: false);
-            Core.HuntMonster("greenguardwest", "Big Bad Boar", "Wereboar Tusk", 2, log: false);
-
-            if (!Core.CheckInventory("Slugfit Horn", 5) || !Core.CheckInventory("Cyclops Horn", 3))
+            ItemBase[] QuestRewards = Core.EnsureLoad(Core.CheckInventory("Bounty Hunter's Drone Pet") ? 6183 : 6697).Rewards.ToArray();
+            foreach (var Item in QuestRewards)
             {
-                Core.JoinSWF("mobius", "ChiralValley/town-Mobius-21Feb14.swf");
-                Core.KillMonster("mobius", "Slugfit", "Bottom", "Slugfit", "Slugfit Horn", 5, log: false);
-                Core.KillMonster("mobius", "Slugfit", "Bottom", "Cyclops Warlord", "Cyclops Horn", 3, log: false);
+                Core.FarmingLogger(Item.Name, Item.MaxStack);
+
+                while (!Bot.ShouldExit && !Core.CheckInventory(Item.ID, Item.MaxStack))
+                {
+                    Core.KillMonster("tercessuinotlim", "m2", "top", "*", "Makai Fang", 5, log: false);
+                    Core.KillMonster("hydra", "Rune2", "Left", "*", "Imp Flame", 3, log: false);
+                    Core.HuntMonster("greenguardwest", "Big Bad Boar", "Wereboar Tusk", 2, log: false);
+
+                    if (!Core.CheckInventory("Slugfit Horn", 5) || !Core.CheckInventory("Cyclops Horn", 3))
+                    {
+                        Core.JoinSWF("mobius", "ChiralValley/town-Mobius-21Feb14.swf");
+                        Core.KillMonster("mobius", "Slugfit", "Bottom", "Slugfit", "Slugfit Horn", 5, log: false);
+                        Core.KillMonster("mobius", "Slugfit", "Bottom", "Cyclops Warlord", "Cyclops Horn", 3, log: false);
+                    }
+                }
             }
+            Core.Logger("all items quant maxed");
+        }
+        else
+        {
+            Core.FarmingLogger(item, quant);
+            while (!Bot.ShouldExit && !Core.CheckInventory(item, quant) && !Bot.Inventory.IsMaxStack(item))
+            {
+                Core.KillMonster("tercessuinotlim", "m2", "top", "*", "Makai Fang", 5);
+                Core.KillMonster("hydra", "Rune2", "Left", "*", "Imp Flame", 3, log: false);
+                Core.HuntMonster("greenguardwest", "Big Bad Boar", "Wereboar Tusk", 2, log: false);
 
-            if (item != "Any")
-                Bot.Wait.ForPickup(item);
-
-            Core.Logger($"{item}: {Bot.Inventory.GetQuantity(item)}/{quant}");
+                if (!Core.CheckInventory("Slugfit Horn", 5) || !Core.CheckInventory("Cyclops Horn", 3))
+                {
+                    Core.JoinSWF("mobius", "ChiralValley/town-Mobius-21Feb14.swf");
+                    Core.KillMonster("mobius", "Slugfit", "Bottom", "Slugfit", "Slugfit Horn", 5, log: false);
+                    Core.KillMonster("mobius", "Slugfit", "Bottom", "Cyclops Warlord", "Cyclops Horn", 3, log: false);
+                }
+            }
+            Core.Logger("items quant maxed");
         }
         Core.CancelRegisteredQuests();
     }
