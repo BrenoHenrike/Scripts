@@ -3181,7 +3181,7 @@
       "modes"
     ],
     "path": "Tools/BuyOut.cs",
-    "size": 4454,
+    "size": 4521,
     "fileName": "BuyOut.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/BuyOut.cs"
   },
@@ -3482,7 +3482,7 @@
       "cookie"
     ],
     "path": "Seasonal/SummerBreak/TreasuresOfAotearoa.cs",
-    "size": 1558,
+    "size": 1570,
     "fileName": "TreasuresOfAotearoa.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/SummerBreak/TreasuresOfAotearoa.cs"
   },
@@ -8162,7 +8162,7 @@
       "null"
     ],
     "path": "Nation/Various/JuggernautItems.cs",
-    "size": 4389,
+    "size": 4461,
     "fileName": "JuggernautItems.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/JuggernautItems.cs"
   },
@@ -11748,7 +11748,7 @@
       "null"
     ],
     "path": "Other/Various/BringTheCheer.cs",
-    "size": 3978,
+    "size": 4055,
     "fileName": "BringTheCheer.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Various/BringTheCheer.cs"
   },
@@ -12235,7 +12235,7 @@
       "null"
     ],
     "path": "Other/OnePercentDrops/LowDRPets.cs",
-    "size": 1698,
+    "size": 1692,
     "fileName": "LowDRPets.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/OnePercentDrops/LowDRPets.cs"
   },
@@ -12246,7 +12246,7 @@
       "null"
     ],
     "path": "Other/OnePercentDrops/LowDRArmors.cs",
-    "size": 3313,
+    "size": 3108,
     "fileName": "LowDRArmors.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/OnePercentDrops/LowDRArmors.cs"
   },
@@ -12257,7 +12257,7 @@
       "null"
     ],
     "path": "Other/OnePercentDrops/LowDRHelmets.cs",
-    "size": 4256,
+    "size": 3910,
     "fileName": "LowDRHelmets.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/OnePercentDrops/LowDRHelmets.cs"
   },
@@ -12270,7 +12270,7 @@
       "drop-rate"
     ],
     "path": "Other/OnePercentDrops/LowDRCapes.cs",
-    "size": 3705,
+    "size": 3469,
     "fileName": "LowDRCapes.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/OnePercentDrops/LowDRCapes.cs"
   },
@@ -12595,7 +12595,7 @@
       "null"
     ],
     "path": "Other/Weapons/EnchantedVictoryBladeWeapons.cs",
-    "size": 5379,
+    "size": 5380,
     "fileName": "EnchantedVictoryBladeWeapons.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Weapons/EnchantedVictoryBladeWeapons.cs"
   },
