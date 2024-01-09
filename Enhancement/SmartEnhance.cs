@@ -29,6 +29,7 @@ public class SmartEnhance
         if (Core.CBOBool("DisableAutoEnhance", out bool _disableAutoEnhance) && _disableAutoEnhance)
             return;
 
-        Adv.SmartEnhance(Bot.Player.CurrentClass.Name);
+        string className = Bot.Player.CurrentClass?.Name ?? string.Empty;
+        Adv.SmartEnhance(className);
     }
 }
