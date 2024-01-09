@@ -30,7 +30,7 @@ public class TheDarkDeal
     {
         Core.SetOptions();
 
-        COBoN.TheDarkDeal(Bot.Config.Get<int>("RelicQuant"));
+        COBoN.TheDarkDeal(Bot.Config?.Get<int>("RelicQuant") ?? default(int));
 
         Core.SetOptions(false);
     }

@@ -23,11 +23,11 @@ public class TheAssistant
     };
 
 
-    public void ScriptMain(IScriptInterface bot)
+    public void ScriptMain(IScriptInterface Bot)
     {
         Core.SetOptions();
 
-        Nation.TheAssistant(Reward: bot.Config.Get<SwindlesReturnReward>("ChooseReward"));
+        Nation.TheAssistant(Reward: Bot.Config?.Get<SwindlesReturnReward>("ChooseReward") ?? default);
 
         Core.SetOptions(false);
     }

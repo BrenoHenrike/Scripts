@@ -29,18 +29,19 @@ public class CarveTheUnidentifiedGemStone
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
-        
-DoCarveTheUnidentifiedGemStone();
+
+        DoCarveTheUnidentifiedGemStone();
 
         Core.SetOptions(false);
     }
 
     public void DoCarveTheUnidentifiedGemStone()
     {
-        if (Bot.Config.Get<ChooseReward>("ChooseReward") == ChooseReward.All)
+        ChooseReward reward = Bot.Config?.Get<ChooseReward>("ChooseReward") ?? default;
+        if (reward == ChooseReward.All)
             Nation.CarveUniGemStone();
-        else Nation.CarveUniGemStone(Bot.Config.Get<ChooseReward>("ChooseReward").ToString());
-        
+        else
+            Nation.CarveUniGemStone(reward.ToString());
     }
 
     private enum ChooseReward

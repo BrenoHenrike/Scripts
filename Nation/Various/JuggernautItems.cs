@@ -33,7 +33,7 @@ public class JuggernautItemsofNulgath
         Core.BankingBlackList.AddRange(Rewards);
         Core.SetOptions();
 
-        JuggItems(Bot.Config.Get<RewardsSelection>("RewardsSelection"));
+        JuggItems(Bot.Config?.Get<RewardsSelection>("RewardsSelection") ?? default);
 
         Core.SetOptions(false);
     }

@@ -31,7 +31,7 @@ public class OblivionNulgath
     {
         Core.SetOptions();
 
-        COBoN.OblivionNulgath(Bot.Config.Get<string>("Reward"), Bot.Config.Get<int>("Quanity"));
+        COBoN.OblivionNulgath(Bot.Config?.Get<string>("Reward") ?? string.Empty, Bot.Config?.Get<int>("Quanity") ?? default(int));
 
         Core.SetOptions(false);
     }
