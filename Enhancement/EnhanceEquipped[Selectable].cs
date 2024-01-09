@@ -39,6 +39,11 @@ public class EnhanceEquippedSelect
         if (Core.CBOBool("DisableAutoEnhance", out bool _disableAutoEnhance) && _disableAutoEnhance)
             Core.Logger("This bot requires you to have Auto-Enhance enabled, please enable it in Options > CoreBots", messageBox: true, stopBot: true);
 
-        Adv.EnhanceEquipped(Bot.Config.Get<EnhancementType>("type"), Bot.Config.Get<CapeSpecial>("cSpecial"), Bot.Config.Get<HelmSpecial>("hSpecial"), Bot.Config.Get<WeaponSpecial>("wSpecial"));
+        EnhancementType type = Bot.Config?.Get<EnhancementType>("type") ?? default;
+        CapeSpecial cSpecial = Bot.Config?.Get<CapeSpecial>("cSpecial") ?? default;
+        HelmSpecial hSpecial = Bot.Config?.Get<HelmSpecial>("hSpecial") ?? default;
+        WeaponSpecial wSpecial = Bot.Config?.Get<WeaponSpecial>("wSpecial") ?? default;
+
+        Adv.EnhanceEquipped(type, cSpecial, hSpecial, wSpecial);
     }
 }
