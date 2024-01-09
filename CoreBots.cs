@@ -636,7 +636,7 @@ public class CoreBots
                     Logger($"Failed to unbank {item}, skipping it", messageBox: true);
                     continue;
                 }
-                Logger($"{item} moved from bank");
+            Logger($"{item} moved from bank");
             }
         }
 
@@ -1543,7 +1543,7 @@ public class CoreBots
             var requiredItemNames = quest.AcceptRequirements
                 .Concat(quest.Requirements)
                 .Select(item => item?.Name)
-                .Where(name => !string.IsNullOrEmpty(name) && name != null)
+                .Where(name => !string.IsNullOrEmpty(name))
                 .ToArray();
 
             foreach (var itemName in requiredItemNames)
@@ -1552,19 +1552,19 @@ public class CoreBots
 
             foreach (ItemBase item in quest.AcceptRequirements)
             {
-                if (item == null || item.Temp)
+                if (item == null)
                     continue;
 
-                if (!Bot.Drops.ToPickupIDs.Contains(item?.ID ?? 0) && item?.Name != null && !item.Temp)
+                if (!Bot.Drops.ToPickupIDs.Contains(item?.ID ?? 0) && item?.Name != null)
                     Bot.Drops.Add(item?.ID ?? 0);  // Adjusted to use 0 as the default value
             }
 
             foreach (ItemBase item in quest.Requirements)
             {
-                if (item == null || item.Temp)
+                if (item == null)
                     continue;
 
-                if (!Bot.Drops.ToPickupIDs.Contains(item?.ID ?? 0) && item?.Name != null && !item.Temp)
+                if (!Bot.Drops.ToPickupIDs.Contains(item?.ID ?? 0) && item?.Name != null)
                     Bot.Drops.Add(item?.ID ?? 0);  // Adjusted to use 0 as the default value
             }
 
@@ -1907,18 +1907,35 @@ public class CoreBots
 
         if (item == null)
         {
+
             if (log)
                 Logger($"Killing {monster}");
 
-            Bot.Kill.Monster(monster);
+            while (!Bot.ShouldExit && Bot.Player.Cell != cell)
+            {
+                Jump(cell, pad);
+                Sleep();
+            }
 
-            Rest();
+            Monster? targetedMob = monster == "*"
+                ? Bot.Monsters.CurrentAvailableMonsters.Find(x => IsMonsterAlive(x.MapID, true))
+                : Bot.Monsters.CurrentAvailableMonsters.Find(x => x.Name == monster && IsMonsterAlive(x.MapID, true));
+
+            if (targetedMob != null)
+            {
+                Bot.Kill.Monster(targetedMob.MapID);
+            }
         }
-        else _KillForItem(monster, item, quant, isTemp, log: log);
+        else
+        {
+            _KillForItem(monster, item, quant, isTemp, log: log);
+        }
+
+        Rest();
         // ToggleAggro(false);
         Bot.Options.AttackWithoutTarget = false;
-
     }
+
 
 
     /// <summary>
@@ -2444,26 +2461,56 @@ public class CoreBots
 
     public void _KillForItem(string name, string item, int quantity, bool isTemp = false, bool rejectElse = false, bool log = true)
     {
+        var (Cell, Pad) = (Bot.Player.Cell, "Left");
+
+        if (CheckInventory(item, quantity))
+            return;
+
         if (log)
             FarmingLogger(item, quantity);
-        if (Bot.Options.AggroMonsters == true)
-            ToggleAggro(true);
-        else ToggleAggro(false);
 
-        while (!Bot.ShouldExit && !CheckInventory(item, quantity))
+        ToggleAggro(Bot.Options.AggroMonsters);
+
+        while (!Bot.ShouldExit &&
+       ((!Bot.Inventory.Contains(item) && Bot.Inventory.GetQuantity(item) < quantity) ||
+        (!Bot.TempInv.Contains(item) && Bot.TempInv.GetQuantity(item) < quantity)))
         {
-            if (!Bot.Combat.StopAttacking)
-                Bot.Combat.Attack(name);
+            while (!Bot.ShouldExit && Bot.Player.Cell != Cell)
+            {
+                Jump(Cell, Pad);
+                Sleep();
+            }
+
+            foreach (Monster mob in Bot.Monsters.CurrentAvailableMonsters)
+            {
+                Monster? targetedMob = (name == "*") ? mob : Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault(x => x.Name == name);
+
+                while (!Bot.ShouldExit && IsMonsterAlive(targetedMob?.MapID ?? 0, true))
+                {
+                    Bot.Combat.Attack(targetedMob?.MapID ?? Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault()?.MapID ?? 0);
+
+                    if ((Bot.Inventory.Contains(item) && Bot.Inventory.GetQuantity(item) >= quantity) ||
+                        (Bot.TempInv.Contains(item) && Bot.TempInv.GetQuantity(item) >= quantity))
+                    {
+                        return;
+                    }
+                }
+            }
+
             Sleep();
+
             if (rejectElse)
                 Bot.Drops.RejectExcept(item);
         }
+
         ToggleAggro(false);
         Bot.Combat.CancelTarget();
         Bot.Combat.Exit();
         Bot.Wait.ForCombatExit();
         Rest();
     }
+
+
 
     public bool IsMonsterAlive(Monster? mon)
         => mon != null && (mon.Alive || !KilledMonsters.Contains(mon.MapID));
