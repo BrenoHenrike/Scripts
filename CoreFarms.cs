@@ -465,6 +465,7 @@ public class CoreFarms
             Bot.Kill.Monster("(B) Defensive Restorer");
             Bot.Drops.Pickup("The Secret 4");
             Bot.Kill.Monster("(B) Defensive Restorer");
+            Bot.Wait.ForDrop("The Sercret 4");
             Bot.Drops.Pickup("The Secret 4");
 
             while (!Bot.ShouldExit && Bot.Map.Name != "battleon")
@@ -719,7 +720,7 @@ public class CoreFarms
 
         Core.RegisterQuests(2082, 2083);
         while (!Bot.ShouldExit && !Core.CheckInventory("Spirit Orb", quant))
-            Core.KillMonster("battleunderb", "Enter", "Spawn", "Skeleton Warrior", log: false);
+            Core.KillMonster("battleunderb", "Enter", "Spawn", "*", log: false);
         Core.CancelRegisteredQuests();
     }
 
