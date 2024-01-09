@@ -41,7 +41,7 @@ public class ArmySpiritOrb
         Core.BankingBlackList.AddRange(Loot);
         Core.SetOptions();
 
-        Setup(Bot.Config.Get<int>("amount"));
+        Setup(Bot.Config?.Get<int>("amount") ?? default(int));
 
         Core.SetOptions(false);
     }
