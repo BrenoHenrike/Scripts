@@ -7,6 +7,7 @@ tags: bounty-hunters-pet, pet, nation-farm, farm-resources
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/Nation/CoreNation.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
 
 public class NewWorldsNewOpportunities
 {
@@ -15,7 +16,7 @@ public class NewWorldsNewOpportunities
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.BankingBlackList.AddRange(Nation.bagDrops);
+        Core.BankingBlackList.AddRange(Core.QuestRewards(Core.CheckInventory("Bounty Hunter's Drone Pet") ? 6183 : 6697));
         Core.SetOptions();
 
         Nation.NewWorldsNewOpportunities();
