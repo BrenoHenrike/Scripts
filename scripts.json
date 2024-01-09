@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 192963,
+    "size": 194714,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -193,7 +193,7 @@
       "null"
     ],
     "path": "Darkon/CoreDarkon.cs",
-    "size": 11577,
+    "size": 11669,
     "fileName": "CoreDarkon.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/CoreDarkon.cs"
   },
@@ -204,7 +204,7 @@
       "null"
     ],
     "path": "ShadowsOfWar/CoreSoWMats.cs",
-    "size": 5696,
+    "size": 5750,
     "fileName": "CoreSoWMats.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/ShadowsOfWar/CoreSoWMats.cs"
   },
@@ -3230,7 +3230,7 @@
       "praxis"
     ],
     "path": "Enhancement/UnlockForgeEnhancements.cs",
-    "size": 37941,
+    "size": 38089,
     "fileName": "UnlockForgeEnhancements.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Enhancement/UnlockForgeEnhancements.cs"
   },
@@ -7362,7 +7362,7 @@
       "null"
     ],
     "path": "ShadowsOfWar/MergeShops/ManaCradleMerge.cs",
-    "size": 5647,
+    "size": 5725,
     "fileName": "ManaCradleMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/ShadowsOfWar/MergeShops/ManaCradleMerge.cs"
   },
@@ -9320,7 +9320,7 @@
       "null"
     ],
     "path": "Other/Armor/MalgorsArmorSet.cs",
-    "size": 2893,
+    "size": 2947,
     "fileName": "MalgorsArmorSet.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Armor/MalgorsArmorSet.cs"
   },
@@ -14933,7 +14933,7 @@
       "null"
     ],
     "path": "Story/ShadowsOfWar/CoreSoW.cs",
-    "size": 37024,
+    "size": 37086,
     "fileName": "CoreSoW.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfWar/CoreSoW.cs"
   },
@@ -17732,7 +17732,7 @@
       "null"
     ],
     "path": "Templates/Examples/ItemGathering/EmptyTemplate[Basics].cs",
-    "size": 527,
+    "size": 459,
     "fileName": "EmptyTemplate[Basics].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Templates/Examples/ItemGathering/EmptyTemplate[Basics].cs"
   },
@@ -20180,7 +20180,7 @@
       "null"
     ],
     "path": "Other/Classes/ArchMage/CoreArchMage.cs",
-    "size": 21177,
+    "size": 21412,
     "fileName": "CoreArchMage.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/ArchMage/CoreArchMage.cs"
   },
