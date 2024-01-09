@@ -566,7 +566,10 @@ public class UnlockForgeEnhancements
         }
         Core.CancelRegisteredQuests();
 
+        Adv.GearStore();
+        Core.DodgeClass();
         Core.HuntMonster("tercessuinotlim", "Nulgath", "The Mortal Coil", isTemp: false);
+        Adv.GearStore(true);
         Core.EnsureComplete(8820);
         Core.Logger("Enhancement Unlocked: Acheron");
     }
@@ -615,9 +618,11 @@ public class UnlockForgeEnhancements
 
             Core.AddDrop(SoW.MalgorDrops.Concat(SoW.MainyuDrops).ToArray());
 
+            Adv.GearStore();
             Core.BossClass();
 
             SOWM.ElementalCore(20);
+            Adv.GearStore(true);
 
             Core.Logger("Items still needed(the bot cannot farm these):");
             foreach (string item in DauntlessItems.Where(item => !Core.CheckInventory(item)))

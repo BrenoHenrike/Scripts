@@ -21,9 +21,6 @@ public class DefaultTemplate
 
     public void Example()
     {
-        if (Core.CheckInventory("item"))
-            return;
-
-        //INSERT CODE HERE      
+        Core.DodgeClass();
     }
 }

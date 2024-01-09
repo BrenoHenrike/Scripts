@@ -71,6 +71,7 @@ public class MalgorsArmorSet
         if (Core.CheckInventory(items))
             return;
 
+        Adv.GearStore();
         Core.BossClass();
 
         while (!Bot.ShouldExit && !Core.CheckInventory(items))
@@ -85,5 +86,6 @@ public class MalgorsArmorSet
             Core.Unbank(QuestItems);
             Core.ChainComplete(9127);
         }
+        Adv.GearStore(true);
     }
 }

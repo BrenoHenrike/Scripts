@@ -4055,8 +4055,59 @@ public class CoreBots
         }
     }
 
+    public void DodgeClass(string? additionalClass = null)
+    {
+        JumpWait();
+
+        string[] classesToCheck = new[] { "Yami no Ronin", "Chrono Assassin" };
+
+        foreach (string Class in classesToCheck)
+        {
+            switch (Class)
+            {
+                case "Yami no Ronin":
+                    Bot.Skills.StartAdvanced(Class, true, ClassUseMode.Solo);
+                    break;
+                    
+                case "Chrono Assassin":
+                    Bot.Skills.StartAdvanced(Class, true, ClassUseMode.Base);
+                    break;
+            }
+
+            if (!CheckInventory(Class))
+                Logger($"{Class} Not Found, skipping");
+            else
+            {
+                Bot.Wait.ForItemEquip(CheckInventory(Class) ? Class : SoloClass);
+                Logger($"Using {Bot.Player.CurrentClass?.Name}");
+                break;
+            }
+        }
 
 
+        if (!string.IsNullOrEmpty(additionalClass))
+        {
+            Unbank(additionalClass);
+
+            switch (additionalClass)
+            {
+                case "AnotherClass":
+                    Equip(additionalClass);
+                    Bot.Wait.ForItemEquip(additionalClass);
+                    // Perform actions for the additional class "AnotherClass"
+                    break;
+
+                default:
+                    Logger($"Using {additionalClass}");
+                    Unbank(SoloClass);
+                    EquipClass(ClassType.Solo);
+                    Bot.Wait.ForItemEquip(SoloClass);
+                    break;
+            }
+            Bot.Wait.ForItemEquip(CheckInventory(additionalClass) ? additionalClass : SoloClass);
+            Logger($"Using {Bot.Player.CurrentClass!.Name}");
+        }
+    }
 
 
 

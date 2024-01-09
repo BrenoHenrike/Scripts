@@ -73,6 +73,7 @@ public class CoreSoWMats
         Core.FarmingLogger("Elemental Core", Quantity);
         Core.AddDrop("Elemental Core");
 
+        Adv.GearStore();
         Core.BossClass();
 
         Core.RegisterQuests(9126);
@@ -83,6 +84,7 @@ public class CoreSoWMats
             Core.HuntMonster("manacradle", "The Mainyu", "Licorice Scale", log: false);
         }
         Core.CancelRegisteredQuests();
+        Adv.GearStore(true);
     }
 
     public void GarishRemnant(int Quantity = 1000)

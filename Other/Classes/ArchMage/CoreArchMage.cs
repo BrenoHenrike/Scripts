@@ -475,13 +475,17 @@ public class CoreArchMage
                     break;
 
                 case "Vital Exanima":
+                    Adv.GearStore();
                     Core.BossClass();
                     Adv.KillUltra("dage", "Boss", "Right", "Dage the Evil", item, isTemp: false);
+                    Adv.GearStore(true);
                     break;
 
                 case "Everlight Flame":
+                    Adv.GearStore();
                     Core.BossClass();
                     Adv.KillUltra("fireavatar", "r9", "Left", "Avatar Tyndarius", item, isTemp: false);
+                    Adv.GearStore(true);
                     break;
 
                 case "Calamitous Ruin":
@@ -496,8 +500,10 @@ public class CoreArchMage
                     break;
 
                 case "The Mortal Coil":
-                    Core.BossClass();
+                    Adv.GearStore();
+                    Core.DodgeClass();
                     Adv.KillUltra("tercessuinotlim", "Boss2", "Right", "Nulgath", item, isTemp: false);
+                    Adv.GearStore(true);
                     break;
 
                 case "The Divine Will":

@@ -94,9 +94,12 @@ public class CoreDarkon
         Core.RegisterQuests(7326);
         while (!Bot.ShouldExit && !Core.CheckInventory("Darkon's Receipt", Quantity))
         {
+            Adv.GearStore();
+            Core.DodgeClass();
             Core.HuntMonster("tercessuinotlim", "Nulgath", "Nulgath's mask", 1, false, publicRoom: true);
             Bot.Wait.ForPickup("Darkon's Receipt");
         }
+        Adv.GearStore(true);
         Core.CancelRegisteredQuests();
     }
 
