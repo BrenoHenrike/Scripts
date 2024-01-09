@@ -116,7 +116,7 @@ public class EnchantedVictoryBladeWeapons
     public void AmuletOfType(string type)
     {
         type = Captialize(type.Trim());
-        ItemBase Amulet = Bot.Inventory.GetItem($"Amulet of " + type);
+        ItemBase? Amulet = Bot.Inventory.GetItem($"Amulet of " + type);
         if (type != "Glory" && type != "Despair")
         {
             Core.Logger("Invalid paramater. Expected \"Glory\" or \"Despair\"");

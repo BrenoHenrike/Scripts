@@ -32,40 +32,42 @@ public class LowDRArmors
 
     public void GetItem()
     {
-        if (Bot.Config.Get<Armors>("Armors") == Armors.None)
+        Armors? armorConfig = Bot.Config?.Get<Armors>("Armors");
+
+        if (armorConfig == null || armorConfig == Armors.None)
         {
             Core.Logger($"\"None\" Selected, Stopping.");
             return;
         }
 
-        Core.FarmingLogger($"{Bot.Config.Get<Armors>("Armors").ToString()}", 1);
+        Core.FarmingLogger($"{armorConfig.ToString()}", 1);
 
-        if (Bot.Config.Get<Armors>("Armors") == Armors.Dark_FrostSpawn_Mage || Bot.Config.Get<Armors>("Armors") == Armors.All && !Core.CheckInventory("Dark FrostSpawn Mage"))
+        if (armorConfig == Armors.Dark_FrostSpawn_Mage || armorConfig == Armors.All && !Core.CheckInventory("Dark FrostSpawn Mage"))
         {
             Core.HuntMonster("northstar", "Karok the Fallen", "Dark FrostSpawn Mage", isTemp: false);
         }
 
-        if (Bot.Config.Get<Armors>("Armors") == Armors.Feral_DoomKnight || Bot.Config.Get<Armors>("Armors") == Armors.All && !Core.CheckInventory("Feral DoomKnight"))
+        if (armorConfig == Armors.Feral_DoomKnight || armorConfig == Armors.All && !Core.CheckInventory("Feral DoomKnight"))
         {
             Core.HuntMonster("stonewooddeep", "Sir Kut", "Feral DoomKnight", isTemp: false);
         }
 
-        if (Bot.Config.Get<Armors>("Armors") == Armors.Alteons_Royal_Armor || Bot.Config.Get<Armors>("Armors") == Armors.All && !Core.CheckInventory("Alteon's Royal Armor"))
+        if (armorConfig == Armors.Alteons_Royal_Armor || armorConfig == Armors.All && !Core.CheckInventory("Alteon's Royal Armor"))
         {
             Core.HuntMonster("swordhavenfalls", "Chaos Lord Alteon", "Alteon's Royal Armor", isTemp: false);
         }
 
-        if (Bot.Config.Get<Armors>("Armors") == Armors.Dracolich_Destroyer || Bot.Config.Get<Armors>("Armors") == Armors.All && !Core.CheckInventory("Dracolich Destroyer"))
+        if (armorConfig == Armors.Dracolich_Destroyer || armorConfig == Armors.All && !Core.CheckInventory("Dracolich Destroyer"))
         {
             Core.HuntMonster("dragonheart", "Avatar of Desolich", "Dracolich Destroyer", isTemp: false);
         }
 
-        if (Bot.Config.Get<Armors>("Armors") == Armors.Asherion_Armor || Bot.Config.Get<Armors>("Armors") == Armors.All && !Core.CheckInventory("Asherion Armor"))
+        if (armorConfig == Armors.Asherion_Armor || armorConfig == Armors.All && !Core.CheckInventory("Asherion Armor"))
         {
             Core.HuntMonster("stonewooddeep", "Sir Kut", "Asherion Armor", isTemp: false);
         }
 
-        if (Bot.Config.Get<Armors>("Armors") == Armors.Lore_Golem || Bot.Config.Get<Armors>("Armors") == Armors.All && !Core.CheckInventory("Lore Golem"))
+        if (armorConfig == Armors.Lore_Golem || armorConfig == Armors.All && !Core.CheckInventory("Lore Golem"))
         {
             Core.HuntMonster("twistedcavern", "Lore Golem", "Lore Golem", isTemp: false);
         }

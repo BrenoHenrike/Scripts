@@ -48,9 +48,9 @@ public class BuyOut
 
     public void Buy()
     {
-        List<string> map_names = Bot.Config.Get<string>("map_names").Split(",").ToList();
-        List<int> shop_ids = Bot.Config.Get<string>("shop_ids").Split(",").Select(id => Int32.Parse(id)).ToList();
-        BuyEnums mode = Bot.Config.Get<BuyEnums>("mode");
+        List<string> map_names = Bot.Config?.Get<string>("map_names")?.Split(",").ToList() ?? new List<string>();
+        List<int> shop_ids = Bot.Config?.Get<string>("shop_ids")?.Split(",").Select(id => Int32.Parse(id)).ToList() ?? new List<int>();
+        BuyEnums mode = Bot.Config?.Get<BuyEnums>("mode") ?? default(BuyEnums);
         Core.Logger($"User chose mode {mode}.");
 
         List<Tuple<int, string>> bought = new List<Tuple<int, string>>();

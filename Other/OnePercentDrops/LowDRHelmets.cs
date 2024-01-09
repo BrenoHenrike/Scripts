@@ -34,55 +34,57 @@ public class LowDRHelmets
 
     public void GetItem()
     {
-        if (Bot.Config.Get<Helmets>("Helmets") == Helmets.None)
+        Helmets? helmetConfig = Bot.Config?.Get<Helmets>("Helmets");
+
+        if (helmetConfig == null || helmetConfig == Helmets.None)
         {
             Core.Logger($"\"None\" Selected, Stopping.");
             return;
         }
 
-        Core.FarmingLogger($"{Bot.Config.Get<Helmets>("Helmets").ToString()}", 1);
+        Core.FarmingLogger($"{helmetConfig.ToString()}", 1);
 
-        if (Bot.Config.Get<Helmets>("Helmets") == Helmets.Sekts_Mummys_Hat || Bot.Config.Get<Helmets>("Helmets") == Helmets.All && !Core.CheckInventory("Sekt's Mummy's Hat"))
+        if (helmetConfig == Helmets.Sekts_Mummys_Hat || helmetConfig == Helmets.All && !Core.CheckInventory("Sekt's Mummy's Hat"))
         {
             Core.HuntMonster("fourdpyramid", "Sekt's Mummy", "Sekt's Mummy's Hat", isTemp: false);
         }
 
-        if (Bot.Config.Get<Helmets>("Helmets") == Helmets.Dracolich_Destroyer_Mask || Bot.Config.Get<Helmets>("Helmets") == Helmets.All && !Core.CheckInventory("Dracolich Destroyer Mask"))
+        if (helmetConfig == Helmets.Dracolich_Destroyer_Mask || helmetConfig == Helmets.All && !Core.CheckInventory("Dracolich Destroyer Mask"))
         {
             Core.HuntMonster("dragonheart", "Avatar of Desolich", "Dracolich Destroyer Mask", isTemp: false);
         }
 
-        if (Bot.Config.Get<Helmets>("Helmets") == Helmets.Asherion_Helmet || Bot.Config.Get<Helmets>("Helmets") == Helmets.All && !Core.CheckInventory("Asherion Helmet"))
+        if (helmetConfig == Helmets.Asherion_Helmet || helmetConfig == Helmets.All && !Core.CheckInventory("Asherion Helmet"))
         {
             Core.HuntMonster("stonewooddeep", "Sir Kut", "Asherion Helmet", isTemp: false);
         }
 
-        if (Bot.Config.Get<Helmets>("Helmets") == Helmets.Drakath_Mask || Bot.Config.Get<Helmets>("Helmets") == Helmets.All && !Core.CheckInventory("Drakath Mask"))
+        if (helmetConfig == Helmets.Drakath_Mask || helmetConfig == Helmets.All && !Core.CheckInventory("Drakath Mask"))
         {
             Core.HuntMonster("finalbattle", "drakath", "Drakath Mask", isTemp: false);
         }
 
-        if (Bot.Config.Get<Helmets>("Helmets") == Helmets.Monster_Queens_Locks || Bot.Config.Get<Helmets>("Helmets") == Helmets.All && !Core.CheckInventory("Monster Queen's Locks"))
+        if (helmetConfig == Helmets.Monster_Queens_Locks || helmetConfig == Helmets.All && !Core.CheckInventory("Monster Queen's Locks"))
         {
             Core.HuntMonster("deadlines", "Eternal Dragon", "Monster Queen's Locks", isTemp: false);
         }
 
-        if (Bot.Config.Get<Helmets>("Helmets") == Helmets.Monster_Queens_Malicious_Morph || Bot.Config.Get<Helmets>("Helmets") == Helmets.All && !Core.CheckInventory("Monster Queen's Malicious Morph"))
+        if (helmetConfig == Helmets.Monster_Queens_Malicious_Morph || helmetConfig == Helmets.All && !Core.CheckInventory("Monster Queen's Malicious Morph"))
         {
             Core.HuntMonster("deadlines", "Eternal Dragon", "Monster Queen's Malicious Morph", isTemp: false);
         }
 
-        if (Bot.Config.Get<Helmets>("Helmets") == Helmets.Reapers_Morph || Bot.Config.Get<Helmets>("Helmets") == Helmets.All && !Core.CheckInventory("Reaper's Morph"))
+        if (helmetConfig == Helmets.Reapers_Morph || helmetConfig == Helmets.All && !Core.CheckInventory("Reaper's Morph"))
         {
             Core.HuntMonster("thevoid", "Reaper", "Reaper's Morph", isTemp: false);
         }
 
-        if (Bot.Config.Get<Helmets>("Helmets") == Helmets.Reapers_Scream || Bot.Config.Get<Helmets>("Helmets") == Helmets.All && !Core.CheckInventory("Reaper's Scream"))
+        if (helmetConfig == Helmets.Reapers_Scream || helmetConfig == Helmets.All && !Core.CheckInventory("Reaper's Scream"))
         {
             Core.HuntMonster("thevoid", "Reaper", "Reaper's Scream", isTemp: false);
         }
 
-        if (Bot.Config.Get<Helmets>("Helmets") == Helmets.Reapers_Visage || Bot.Config.Get<Helmets>("Helmets") == Helmets.All && !Core.CheckInventory("Reaper's Visage"))
+        if (helmetConfig == Helmets.Reapers_Visage || helmetConfig == Helmets.All && !Core.CheckInventory("Reaper's Visage"))
         {
             Core.HuntMonster("thevoid", "Reaper", "Reaper's Visage", isTemp: false);
         }

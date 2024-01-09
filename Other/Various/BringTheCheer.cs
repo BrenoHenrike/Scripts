@@ -54,15 +54,15 @@ public class BringTheCheer
 
         var RewardOptions = Core.EnsureLoad(6651).Rewards.Select(x => x.Name).ToArray();
         Core.AddDrop(RewardOptions);
-        bool getAll = (int)Bot.Config.Get<RewardsSelection>("RewardSelect") == 9999;
+        bool getAll = (int)(Bot.Config?.Get<RewardsSelection>("RewardSelect") ?? default) == 9999;
 
-        ItemBase item = null;
+        ItemBase? item = null;
         if (!getAll)
         {
-            item = Core.EnsureLoad(6651).Rewards.Find(x => x.ID == (int)Bot.Config.Get<RewardsSelection>("RewardSelect"));
+            item = Core.EnsureLoad(6651).Rewards.Find(x => x.ID == (int)(Bot.Config?.Get<RewardsSelection>("RewardSelect") ?? default(RewardsSelection)));
             if (item == null)
             {
-                Core.Logger($"{item.Name} not found in Quest Rewards");
+                Core.Logger($"{item?.Name ?? "Item"} not found in Quest Rewards");
                 return;
             }
             if (Core.CheckInventory(item.Name))
@@ -72,7 +72,7 @@ public class BringTheCheer
 
         Core.EquipClass(ClassType.Solo);
 
-        while (getAll ? !Core.CheckInventory(RewardOptions) : !Core.CheckInventory(item.Name))
+        while (getAll ? !Core.CheckInventory(RewardOptions) : !Core.CheckInventory(item?.Name ?? ""))
         {
             Core.EnsureAccept(6651);
             Core.HuntMonster("frostvalfuture", "Wargoth the Frozen", "Wrapped Parcel", log: false);
@@ -81,7 +81,7 @@ public class BringTheCheer
             Core.HuntMonster("frostvalpast", "Ice Master Yeti", "Yeti Fur", log: false);
 
             if (!getAll)
-                Core.EnsureComplete(6651, item.ID);
+                Core.EnsureComplete(6651, item?.ID ?? default);
             else Core.EnsureCompleteChoose(6651);
         }
     }

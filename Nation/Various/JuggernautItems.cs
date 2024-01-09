@@ -46,18 +46,20 @@ public class JuggernautItemsofNulgath
         var Count = 0;
         int x = 1;
 
+
         List<ItemBase> RewardOptions = Core.EnsureLoad(837).Rewards;
         List<string> RewardsList = new List<string>();
         foreach (Skua.Core.Models.Items.ItemBase Item in RewardOptions)
             RewardsList.Add(Item.Name);
         Count = RewardsList.Count();
         var rewards = Core.EnsureLoad(837).Rewards;
-        ItemBase item = rewards.Find(x => x.ID == (int)reward) ?? null;
-
+        ItemBase? item = rewards.Find(x => x.ID == (int)reward) ?? null;
+        int defaultId = 0;
+        int itemId = item?.ID ?? defaultId;
         while (!Bot.ShouldExit &&
                 (reward == RewardsSelection.All ?
                     !Core.CheckInventory(rewards.Select(x => x.Name).ToArray(), toInv: false) :
-                    !Core.CheckInventory(item.ID, toInv: false)
+                    !Core.CheckInventory(itemId, toInv: false)
                 )
               )
         {
@@ -75,7 +77,7 @@ public class JuggernautItemsofNulgath
             Nation.SwindleBulk(50);
             Core.HuntMonster("underworld", "Undead Bruiser", "Undead Bruiser Rune");
 
-            if (Bot.Config.Get<RewardsSelection>("RewardsSelection") == RewardsSelection.All)
+            if (Bot.Config?.Get<RewardsSelection>("RewardsSelection") == RewardsSelection.All)
                 Core.EnsureCompleteChoose(837);
             else Core.EnsureComplete(837, (int)reward);
         }
