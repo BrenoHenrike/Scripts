@@ -368,7 +368,7 @@
       "null"
     ],
     "path": "Nation/TheAssistant.cs",
-    "size": 940,
+    "size": 952,
     "fileName": "TheAssistant.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/TheAssistant.cs"
   },
@@ -379,7 +379,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 82772,
+    "size": 82933,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -7585,7 +7585,7 @@
       "null"
     ],
     "path": "Nation/OblivionBlade(RareandNot)/TheDarkDeal.cs",
-    "size": 1015,
+    "size": 1032,
     "fileName": "TheDarkDeal.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/OblivionBlade(RareandNot)/TheDarkDeal.cs"
   },
@@ -7673,7 +7673,7 @@
       "null"
     ],
     "path": "Nation/OblivionBlade(RareandNot)/OblivionNulgath.cs",
-    "size": 1450,
+    "size": 1484,
     "fileName": "OblivionNulgath.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/OblivionBlade(RareandNot)/OblivionNulgath.cs"
   },
@@ -8125,7 +8125,7 @@
       "null"
     ],
     "path": "Nation/Various/BehemothBlades.cs",
-    "size": 2163,
+    "size": 2277,
     "fileName": "BehemothBlades.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/BehemothBlades.cs"
   },
@@ -8162,7 +8162,7 @@
       "null"
     ],
     "path": "Nation/Various/JuggernautItems.cs",
-    "size": 4377,
+    "size": 4389,
     "fileName": "JuggernautItems.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/JuggernautItems.cs"
   },
@@ -8228,7 +8228,7 @@
       "evovled void armor"
     ],
     "path": "Nation/Various/EmpoweredNationItem.cs",
-    "size": 9260,
+    "size": 9284,
     "fileName": "EmpoweredNationItem.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/EmpoweredNationItem.cs"
   },
@@ -8483,7 +8483,7 @@
       "null"
     ],
     "path": "Nation/Various/CarveTheUnidentifiedGemStone[Member].cs",
-    "size": 1400,
+    "size": 1415,
     "fileName": "CarveTheUnidentifiedGemStone[Member].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/CarveTheUnidentifiedGemStone[Member].cs"
   },
