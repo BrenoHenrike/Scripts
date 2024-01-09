@@ -108,10 +108,7 @@ public class CoreSDKA
     {
         if (!Core.IsMember || Core.isCompletedBefore(2098))
         {
-            Core.Logger(
-                message: !Core.IsMember ? "Not a member, skipping." : "Hard Core Metals already unlocked, skipping.",
-                stopBot: !Core.IsMember
-            );
+            Core.Logger(message: !Core.IsMember ? "Not a member, skipping." : "Hard Core Metals already unlocked, skipping.");
             return;
         }
 
