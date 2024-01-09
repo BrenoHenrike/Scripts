@@ -613,7 +613,7 @@ public class CoreSDKA
 
             while (!Bot.ShouldExit && !Core.CheckInventory(items[i], quants[i]))
             {
-                Core.KillMonster("lycan", "r4", "Left", "Chaos Vampire Knight", "DoomKnight Armor Piece", 10, log: false);
+                Core.KillMonster("lycan", "r4", "Left", "*", "DoomKnight Armor Piece", 10, log: false);
                 Bot.Wait.ForPickup(items[i]);
             }
         }

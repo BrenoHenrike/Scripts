@@ -10,6 +10,7 @@ tags: null
 //cs_include Scripts/Evil/SDKA/CoreSDKA.cs
 using System.Collections.Generic;
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
 using Skua.Core.Options;
 
 public class PinpointthePieces_Any
@@ -36,22 +37,25 @@ public class PinpointthePieces_Any
     public void Pinpoint()
     {
         Core.EquipClass(ClassType.Farm);
-        int i = 1;
-        PinpointIDs questID = Bot.Config?.Get<PinpointIDs>("questID") ?? default;
-        while (!Bot.ShouldExit)
-        {
-            SDKA.PinpointthePieces((int)questID);
-            Core.Logger($"Completed x{i++}");
-        }
-    }
-}
 
-public enum PinpointIDs
-{
-    Dagger = 2181,
-    Blade = 2182,
-    Broadsword = 2183,
-    Scythe = 2184,
-    Mace = 2185,
-    Bow = 2186
+        PinpointIDs questID = Bot.Config?.Get<PinpointIDs>("questID") ?? default;
+        ItemBase[] QuestRewards = Core.EnsureLoad((int)questID).Rewards.ToArray();
+
+        foreach (ItemBase reward in QuestRewards)
+        {
+            while (!Bot.ShouldExit && !Core.CheckInventory(reward.ID, reward.MaxStack))
+                SDKA.PinpointthePieces((int)questID, new[] { reward.Name }, new[] { reward.MaxStack });
+        }
+
+    }
+
+    public enum PinpointIDs
+    {
+        Dagger = 2181,
+        Blade = 2182,
+        Broadsword = 2183,
+        Scythe = 2184,
+        Mace = 2185,
+        Bow = 2186
+    }
 }
