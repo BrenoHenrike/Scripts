@@ -636,7 +636,7 @@ public class CoreBots
                     Logger($"Failed to unbank {item}, skipping it", messageBox: true);
                     continue;
                 }
-            Logger($"{item} moved from bank");
+                Logger($"{item} moved from bank");
             }
         }
 
@@ -3478,10 +3478,20 @@ public class CoreBots
 
             #region Special Cases
             case "tercessuinotlim":
-                if (!isCompletedBefore(9540))
-                    SimpleQuestBypass((542, 1));
+                // if (!isCompletedBefore(9540))
+                SimpleQuestBypass((542, 1));
                 Bot.Map.Jump("m22", "Left");
                 tryJoin();
+
+                // Following the recent update,
+                // even with the execution of an "updatequest," a black screen
+                // is encountered upon the initial `tryJoin`
+                // (also may be caused by the thing auto-fixes te cell on join 
+                // [client function.. nothing i can do about that] so had todo below). 
+                Jump("Enter", "Left");
+                Jump(cell, pad);
+
+
                 break;
 
             case "doomvaultb":
