@@ -100,8 +100,12 @@ public class ArmyUniqueQuarry
         WaitCheck();
         AggroSetup(map);
 
-        foreach (string monster in monsters)
-            Army.SmartAggroMonStart(map, monsters);
+        if (monsters != null)
+        {
+            foreach (string monster in monsters)
+                if (map != null)
+                    Army.SmartAggroMonStart(map, monster);
+        }
 
         if (Bot.Player.CurrentClass?.Name == "ArchMage")
             Bot.Options.AttackWithoutTarget = true;
