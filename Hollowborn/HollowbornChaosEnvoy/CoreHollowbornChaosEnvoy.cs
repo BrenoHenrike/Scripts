@@ -89,11 +89,12 @@ public class CoreHollowbornChaosEnvoy
 
         foreach (var quest in questOrder)
         {
-            if (Bot.Config!.Get<string>(quest) != null)
+            string questConfig = Bot.Config?.Get<string>(quest) ?? string.Empty;
+            if (!string.IsNullOrEmpty(questConfig))
             {
                 if (!optionsLogged)
                 {
-                    Core.Logger($"Options Selected:\n{string.Join("\n", questOrder.Select(q => $"\t{q.Replace("_", " ")}: [{Bot.Config!.Get<string>(q).Replace("_", " ")}]"))}");
+                    Core.Logger($"Options Selected:\n{string.Join("\n", questOrder.Select(q => $"\t{q.Replace("_", " ")}: [{Bot.Config?.Get<string>(q)?.Replace("_", " ") ?? string.Empty}]"))}");
                     optionsLogged = true;
                 }
 
