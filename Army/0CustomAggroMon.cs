@@ -94,7 +94,12 @@ public class CustomAggroMon
         foreach (string s in monsterList)
         {
             if (Int32.TryParse(s, out int monID) && Bot.Monsters.TryGetMonster(monID, out var Monster))
-                monNames.Add(Monster.Name);
+            {
+                if (Monster != null)
+                {
+                    monNames.Add(Monster.Name);
+                }
+            }
             else remainder.Add(s);
         }
 
@@ -115,16 +120,30 @@ public class CustomAggroMon
         if (monNames.Count == 0)
             Core.Logger("No monsters were found based on your input. The bot will now stop.", messageBox: true, stopBot: true);
 
-        string[] quests = Bot.Config.Get<string>("quests").Split(',');
-        List<int> questIDs = new();
-        foreach (string q in quests)
-        {
-            if (!Int32.TryParse(q.Trim(), out int ID) || questIDs.Contains(ID))
-                continue;
-            questIDs.Add(ID);
-        }
+        List<string> drops = new List<string>();
+        List<int> questIDs = new List<int>();
 
-        List<string> drops = Bot.Config.Get<string>("drops").Split(',').ToList();
+
+        if (Bot.Config != null)
+        {
+            string questsConfig = Bot.Config.Get<string>("quests") ?? string.Empty;
+            if (!string.IsNullOrEmpty(questsConfig))
+            {
+                string[] quests = questsConfig.Split(',');
+                foreach (string q in quests)
+                {
+                    if (!Int32.TryParse(q.Trim(), out int ID) || questIDs.Contains(ID))
+                        continue;
+                    questIDs.Add(ID);
+                }
+            }
+
+            string dropsConfig = Bot.Config.Get<string>("drops") ?? string.Empty;
+            if (!string.IsNullOrEmpty(dropsConfig))
+            {
+                drops = dropsConfig.Split(',').ToList();
+            }
+        }
 
 
         GenerateFile();
@@ -134,14 +153,15 @@ public class CustomAggroMon
             Bot.Drops.Stop();
         else Core.AddDrop(drops.ToArray());
 
-        ClassType classtype = Bot.Config.Get<ClassType>("classtype");
-        if (classtype != ClassType.None)
-            Core.EquipClass(classtype);
+        ClassType? classtype = Bot.Config?.Get<ClassType>("classtype");
+        if (classtype.HasValue && classtype.Value != ClassType.None)
+            Core.EquipClass(classtype.Value);
 
         if (questIDs.Count > 0)
             Core.RegisterQuests(questIDs.ToArray());
 
-        Army.SmartAggroMonStart(map, monNames.ToArray());
+        if (!string.IsNullOrEmpty(map) && monNames != null && monNames.Count > 0)
+            Army.SmartAggroMonStart(map, monNames.ToArray());
 
         if (Bot.Player.CurrentClass!.Name == "ArchMage")
             Bot.Options.AttackWithoutTarget = true;
