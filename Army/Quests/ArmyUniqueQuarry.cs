@@ -152,7 +152,8 @@ public class ArmyUniqueQuarry
 
         if (Bot.Map.Name == "chaoswar")
         {
-            if (Bot.Config.Get<int>("armysize") <= 3)
+            int armySize = Bot.Config?.Get<int>("armysize") ?? default(int);
+            if (armySize <= 3)
             {
                 Army.AggroMonCells("r2");
                 Army.AggroMonStart("chaoswar");
