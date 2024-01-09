@@ -34,7 +34,7 @@ public class AssistingOblivionBlade
             return;
 
         if (!Core.CheckInventory("Tendurrr The Assistant"))
-            Core.KillMonster("tercessuinotlim", "m2", "Top", "Dark Makai", "Tendurrr The Assistant", isTemp: false);
+            Core.KillMonster("tercessuinotlim", "m2", "Left", "*", "Tendurrr The Assistant", isTemp: false);
 
         List<ItemBase> RewardOptions = Core.EnsureLoad(5818).Rewards;
         List<string> RewardsList = new();

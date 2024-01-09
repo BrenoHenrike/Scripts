@@ -177,7 +177,7 @@ public class CoreNation
             Core.KillEscherion("Escherion's Chain", publicRoom: true);
 
             Core.EquipClass(ClassType.Farm);
-            Core.KillMonster("tercessuinotlim", "m2", "Bottom", "Dark Makai", "Defeated Makai", 50, false, log: false);
+            Core.KillMonster("tercessuinotlim", "m2", "Left", "*", "Defeated Makai", 50, false, log: false);
             Core.JumpWait();
 
             Core.EquipClass(ClassType.Solo);
@@ -208,15 +208,16 @@ public class CoreNation
         Core.RegisterQuests(Core.CheckInventory("Bounty Hunter's Drone Pet") ? 6183 : 6697);
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant) && !Bot.Inventory.IsMaxStack(item))
         {
+            Core.KillMonster("tercessuinotlim", "m2", "Left", "*", "Makai Fang", 5);
+            Core.KillMonster("hydra", "Rune2", "Left", "*", "Imp Flame", 3, log: false);
+            Core.HuntMonster("greenguardwest", "Big Bad Boar", "Wereboar Tusk", 2, log: false);
+
             if (!Core.CheckInventory("Slugfit Horn", 5) || !Core.CheckInventory("Cyclops Horn", 3))
             {
                 Core.JoinSWF("mobius", "ChiralValley/town-Mobius-21Feb14.swf");
                 Core.KillMonster("mobius", "Slugfit", "Bottom", "Slugfit", "Slugfit Horn", 5, log: false);
                 Core.KillMonster("mobius", "Slugfit", "Bottom", "Cyclops Warlord", "Cyclops Horn", 3, log: false);
             }
-            Core.KillMonster("tercessuinotlim", "m2", "Top", "Dark Makai", "Makai Fang", 5);
-            Core.KillMonster("hydra", "Rune2", "Left", "Fire Imp", "Imp Flame", 3, log: false);
-            Core.HuntMonster("greenguardwest", "Big Bad Boar", "Wereboar Tusk", 2, log: false);
 
             if (item != "Any")
                 Bot.Wait.ForPickup(item);
@@ -578,7 +579,7 @@ public class CoreNation
 
         Core.AddDrop("Essence of Nulgath");
         Core.EquipClass(ClassType.Farm);
-        Core.KillMonster("tercessuinotlim", "m2", "Bottom", "Dark Makai", "Essence of Nulgath", quant, false);
+        Core.KillMonster("tercessuinotlim", "m2", "Left", "*", "Essence of Nulgath", quant, false);
         Core.JumpWait();
     }
 
@@ -1197,7 +1198,7 @@ public class CoreNation
 
             // Equip the Farm class and hunt monsters for quest completion
             Core.EquipClass(ClassType.Farm);
-            Core.KillMonster("tercessuinotlim", "m2", "Top", "Dark Makai", "Makai Fang", 5);
+            Core.KillMonster("tercessuinotlim", "m2", "Left", "*", "Makai Fang", 5);
             Core.HuntMonster("hydra", "Fire Imp", "Imp Flame", 3);
             Core.HuntMonster("battleunderc", "Crystalized Jellyfish", "Aquamarine of Nulgath", 3, false);
 
@@ -1568,7 +1569,7 @@ public class CoreNation
 
             if (!Core.CheckInventory("Tendurrr The Assistant"))
             {
-                Core.KillMonster("tercessuinotlim", "m2", "Bottom", "Dark Makai", "Tendurrr The Assistant", isTemp: false, log: false);
+                Core.KillMonster("tercessuinotlim", "m2", "Left", "*", "Tendurrr The Assistant", isTemp: false, log: false);
                 Core.JumpWait();
             }
 

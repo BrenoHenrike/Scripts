@@ -59,7 +59,7 @@ public class NationLoyaltyRewarded
                     //Adv.BestGear(RacialGearBoost.Human);
                     Core.HuntMonster("bloodtitan", "Blood Titan", "Blood Titan's Blade", publicRoom: true, log: false);
                     Core.EquipClass(ClassType.Farm);
-                    Core.KillMonster("tercessuinotlim", "m2", "Bottom", "Dark Makai", "Defeated Makai", 25, false, false);
+                    Core.KillMonster("tercessuinotlim", "m2", "Left", "*", "Defeated Makai", 25, false, false);
                 }
             }
             Core.CancelRegisteredQuests();

@@ -32,7 +32,7 @@ public class TheGameofGemstones
 
         Nation.FarmUni13();
         if (!Core.CheckInventory("Tendurrr The Assistant"))
-            Core.KillMonster("tercessuinotlim", "m2", "Top", "Dark Makai", "Tendurrr The Assistant", isTemp: false);
+            Core.KillMonster("tercessuinotlim", "m2", "Left", "*", "Tendurrr The Assistant", isTemp: false);
 
         Bot.Quests.UpdateQuest(597);
         Core.RegisterQuests(5815);

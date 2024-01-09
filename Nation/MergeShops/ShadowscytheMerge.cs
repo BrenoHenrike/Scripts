@@ -73,7 +73,7 @@ public class ShadowscytheMerge
                         if (!Core.CheckInventory("Defeated Makai", 25))
                         {
                             Core.EquipClass(ClassType.Farm);
-                            Core.KillMonster("tercessuinotlim", "m2", "Bottom", "Dark Makai", "Defeated Makai", 25, false);
+                            Core.KillMonster("tercessuinotlim", "m2", "Left", "*", "Defeated Makai", 25, false);
                             Core.JumpWait();
                             Core.Join("aqlesson");
                         }
