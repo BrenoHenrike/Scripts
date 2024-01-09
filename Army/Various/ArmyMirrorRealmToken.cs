@@ -35,7 +35,7 @@ public class ArmyMirrorRealmToken
         Core.BankingBlackList.Add("Mirror Realm Token");
         Core.SetOptions();
 
-        Setup(Bot.Config.Get<Method>("Method"), 300);
+        Setup(Bot.Config?.Get<Method>("Method") ?? default(Method), 300);
 
         Core.SetOptions(false);
     }
