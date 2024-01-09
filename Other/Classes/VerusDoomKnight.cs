@@ -60,6 +60,7 @@ public class VerusDoomKnightClass
             return;
 
         Farm.Experience(40);
+        Farm.EvilREP();
         Core.EquipClass(ClassType.Solo);
 
         // Body, Soul and, Domination (9411)
