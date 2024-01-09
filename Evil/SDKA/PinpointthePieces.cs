@@ -37,10 +37,10 @@ public class PinpointthePieces_Any
     {
         Core.EquipClass(ClassType.Farm);
         int i = 1;
-        int questID = (int)Bot.Config.Get<PinpointIDs>("questID");
+        PinpointIDs questID = Bot.Config?.Get<PinpointIDs>("questID") ?? default;
         while (!Bot.ShouldExit)
         {
-            SDKA.PinpointthePieces(questID);
+            SDKA.PinpointthePieces((int)questID);
             Core.Logger($"Completed x{i++}");
         }
     }
