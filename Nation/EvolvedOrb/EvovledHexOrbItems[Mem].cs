@@ -107,7 +107,7 @@ public class EvovledHexOrbItems
         Nation.FarmVoucher(false);
         Nation.FarmTotemofNulgath(10);
         Nation.Supplies("Unidentified 29");
-        Potion.INeedYourStrongestPotions(new[] { "Bright Tonic" }, potionQuant: 10);
+        Adv.BuyItem("alchemyacademy", 2114, 11626, 10, shopItemID: 9724);
 
         Core.EnsureComplete(4783);
 
