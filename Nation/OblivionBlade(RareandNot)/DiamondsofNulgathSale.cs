@@ -30,7 +30,7 @@ public class DiamondsofNulgathSale
     {
         Core.SetOptions();
 
-        COBoN.DiamondsofNulgathSale(Bot.Config.Get<int>("DiamondQuant"));
+        COBoN.DiamondsofNulgathSale(Bot.Config?.Get<int>("DiamondQuant") ?? default(int));
 
         Core.SetOptions(false);
     }
