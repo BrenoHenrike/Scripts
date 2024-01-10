@@ -2130,7 +2130,7 @@ public class CoreFarms
 
         Core.RegisterQuests(369); //That Hero Who Chases Slimes 369
         while (!Bot.ShouldExit && FactionRank("Good") < 4)
-            Core.KillMonster("swordhavenbridge", "Bridge", "Left", "Slime", "Slime in a Jar", 6, log: false);
+            Core.KillMonster("swordhavenbridge", "Bridge", "Left", "*", "Slime in a Jar", 6, log: false);
 
         Core.CancelRegisteredQuests();
         Core.RegisterQuests(Core.IsMember ? 371 : 372); //Rumble with Grumble 371, Tomb with a View 372
