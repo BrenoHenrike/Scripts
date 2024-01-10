@@ -340,13 +340,14 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/EmpoweringItems.cs"
   },
   {
-    "name": "SuppliesToSpinTheWheelofChance",
-    "description": "null",
+    "name": "SuppliesUltraAlteon",
+    "description": "kills Ultra Alteon for the item required for `Spin the Wheel`.",
     "tags": [
-      "null"
+      "ultra alteon",
+      "supplies"
     ],
     "path": "Nation/SuppliesUltraAlteon.cs",
-    "size": 563,
+    "size": 628,
     "fileName": "SuppliesUltraAlteon.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/SuppliesUltraAlteon.cs"
   },
