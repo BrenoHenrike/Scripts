@@ -3247,6 +3247,15 @@ public class CoreBots
         if (Bot.Map.Name != null && Bot.Map.Name.ToLower() == strippedMap && !ignoreCheck)
             return;
 
+        //if aggro/aggroall is  enable when joining a map, disable it
+        bool pauseAggro = Bot.Options.AggroMonsters || Bot.Options.AggroAllMonsters;
+        if (pauseAggro)
+        {
+            ToggleAggro(false);
+            JumpWait();
+            Bot.Wait.ForCombatExit();
+        }
+
         Sleep();
 
         switch (strippedMap)
@@ -3478,9 +3487,15 @@ public class CoreBots
 
             #region Special Cases
             case "tercessuinotlim":
-                // if (!isCompletedBefore(9540))
-                SimpleQuestBypass((542, 1));
-                Bot.Map.Jump("m22", "Left");
+                if (!isCompletedBefore(9540))
+                {
+                    Logger("This map now requires a 1 time completion of \"Beyond the Portal\"");
+                    EnsureAccept(9540);
+                    KillMonster("citadel", "m22", "Left", "Death's Head", "Death's Head Bested");
+                    EnsureComplete(9540);
+                }
+                // SimpleQuestBypass((542, 1));
+                Jump("m22", "Left");
                 tryJoin();
 
                 // Following the recent update,
@@ -4068,7 +4083,7 @@ public class CoreBots
                 case "Yami no Ronin":
                     Bot.Skills.StartAdvanced(Class, true, ClassUseMode.Solo);
                     break;
-                    
+
                 case "Chrono Assassin":
                     Bot.Skills.StartAdvanced(Class, true, ClassUseMode.Base);
                     break;
