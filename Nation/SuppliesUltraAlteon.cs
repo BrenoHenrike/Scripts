@@ -1,7 +1,7 @@
 /*
-name: SuppliesToSpinTheWheelofChance
-description: null
-tags: null
+name: SuppliesUltraAlteon
+description: kills Ultra Alteon for the item required for `Spin the Wheel`.
+tags: Ultra Alteon, supplies
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
