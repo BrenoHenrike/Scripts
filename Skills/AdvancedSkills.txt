@@ -47,7 +47,7 @@ Base = Chrono DataKnight = 1 | 2 | 3 | 1 | 2S | 3S | 1 | 2S | 3S | 1 | 4 = 250
 Base = Chrono DragonKnight = 1 | 1 | 1 | 1 | 1 | 4 | 2 | 3 = 250
 Base = Chronomancer = 2 | 4 | 1 | 1 | 1 | 1 | 2 | 1 | 1 | 1 | 1 | 1 | 3 = 250
 Solo = Chronomancer =  1 | 2S | 4 | 1 | 1 | 1 | 1 | 2H<60S | 1 | 1 | 1 | 3 = 120
-Base = ChronoCommander =  = 4 | 1 | 1 | 1 | 1 | 2 | 3 = 250
+Base = ChronoCommander = = 4 | 1 | 1 | 1 | 1 | 2 | 3 = 250
 Base = Chronomancer Prime = 2 | 4 | 1 | 1 | 1 | 1 | 2 | 1 | 1 | 1 | 1 | 1 | 3 = 250
 Solo = Chronomancer Prime =  1 | 2S | 4 | 1 | 1 | 1 | 1 | 2H<60S | 1 | 1 | 1 | 3 = 120
 Base = Chunin = 1 | 2 | 4 | 3 = 250
@@ -92,7 +92,7 @@ Farm = Dragon Shinobi = 1 | 2H<30 M>70S | 3M<10S = 250
 Base = Dragonlord = 1 | 2 | 3 | 4 = Use if Available
 Base = Dragonslayer = 1 | 2 | 3 | 4 = Use if Available
 Base = Dragonslayer General = 1 | 2 | 3 | 4 = Use if Available
-Farm = DragonSoul Shinobi  = 1 | 2H<30 M>70 | 3M<10 = Use if Available
+Farm = DragonSoul Shinobi = 1 | 2H<30 M>70 | 3M<10 = Use if Available
 Base = DragonSoul Shinobi = 4H>50 | 3M<70S | 2H<50 M>70S | 1H>50 = 250
 Base = Drakel Warlord = 1 | 2 | 3 | 4 = Use if Available
 Base = Elemental Dracomancer = 3 | 4 | 2 | 1 = Use if Available
@@ -207,7 +207,7 @@ Base = Quantum Chronomancer = 2 | 1 | 1 | 1 | 3 | 1 | 4 = 250
 Base = Sakura Cryomancer = 3 | 1 | 2 | 4 | 1 | 2 | 1 | 2 = 250
 Base = Scarlet Sorceress = 4 | 1 | 2 | 3 = 250
 Base = Sentinel = 1 | 2 | 3 | 4 = Use if Available
-Farm = Shadow Dragon Shinobi  = 1 | 2H<30 M>70 | 3M<10 = Use if Available
+Farm = Shadow Dragon Shinobi = 1 | 2H<30 M>70 | 3M<10 = Use if Available
 Base = Shadow Dragon Shinobi = 4H>50 | 3M<70S | 2H<50 M>70S | 1H>50 = 250
 Base = Shadow Ripper = 1 | 2 | 3 | 4 = Use if Available
 Base = Shadow Rocker = 1 | 2 | 3 | 4 = Use if Available

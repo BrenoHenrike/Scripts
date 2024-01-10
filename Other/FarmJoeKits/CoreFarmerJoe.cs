@@ -201,7 +201,8 @@ public class CoreFarmerJoe
 
             Core.Logger($"Level Goal: {level}");
             Farm.Experience(level);
-            Adv.SmartEnhance(Core.FarmClass);
+            SetClass(false, true, false);
+
         }
 
         //safety incase it desyncs.. the relog fuction isnt exactly perfect
@@ -233,7 +234,7 @@ public class CoreFarmerJoe
                         continue;
                     }
 
-                    if (!Core.CheckInventory("Master Ranger") || !Core.CheckInventory(new[] { "Archfiend", "Blaze Binder", "Scarlet Sorceress"}, any: true))
+                    if (!Core.CheckInventory("Master Ranger") || !Core.CheckInventory(new[] { "Archfiend", "Blaze Binder", "Scarlet Sorceress" }, any: true))
                     {
                         Core.SellItem("Venom Head");
                         Core.Logger("Getting Master Ranger");
@@ -297,7 +298,7 @@ public class CoreFarmerJoe
                     }
 
                     //check to reduce setclass usage
-                    if (!Core.CheckInventory("Scarlet Sorceress")  || !Core.CheckInventory(new[] { "Archfiend", "Blaze Binder"}, any: true))
+                    if (!Core.CheckInventory("Scarlet Sorceress") || !Core.CheckInventory(new[] { "Archfiend", "Blaze Binder" }, any: true))
                     {
                         Core.Logger("Getting Scarlet Socrceress");
                         SetClass(true, false, true);
