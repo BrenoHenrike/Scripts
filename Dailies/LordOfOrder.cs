@@ -38,7 +38,7 @@ public class LordOfOrder
 
         Core.Logger("Daily: Lord Of Order Class");
         if (Bot.Quests.IsDailyComplete(7156))
-        {            
+        {
             if (rankUpClass)
                 Adv.RankUpClass("Lord Of Order");
 
@@ -96,12 +96,7 @@ public class LordOfOrder
 
             Core.EquipClass(ClassType.Solo);
 
-            if (!Core.CheckInventory("Chaoroot", 15))
-            {
-                Farm.Gold(600000);
-                Core.BuyItem("tercessuinotlim", 1951, "Receipt of Swindle", 2);
-                Core.BuyItem("tercessuinotlim", 1951, "Chaoroot", 15);
-            }
+            Adv.BuyItem("tercessuinotlim", 1951, "Chaoroot", 15);
             Core.HuntMonster("chaosboss", "Ultra Chaos Warlord", "Chaotic War Essence", 15, false, log: false);
             Core.HuntMonster("shadowgates", "Chaorruption", "Chaorrupting Particles", 15, false, log: false);
             Core.HuntMonster("stormtemple", "Chaos Lord Lionfang", "Purified Raindrop", 45, false, publicRoom: true, log: false);
