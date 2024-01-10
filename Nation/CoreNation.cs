@@ -210,16 +210,39 @@ public class CoreNation
 
                 while (!Bot.ShouldExit && !Core.CheckInventory(Item.ID, Item.MaxStack))
                 {
+                    if (!Core.CheckInventory("Slugfit Horn", 5) || !Core.CheckInventory("Cyclops Horn", 3))
+                    {
+                        Core.JoinSWF("mobius", "ChiralValley/town-Mobius-21Feb14.swf", "Slugfit", "Bottom");
+
+                        foreach ((string, string, int) MobItemQuant in new[] { ("Slugfit", "Slugfit Horn", 5), ("Cyclops Warlord", "Cyclops Horn", 3) })
+                        {
+                            while (!Bot.ShouldExit && !Core.CheckInventory(MobItemQuant.Item2, MobItemQuant.Item3))
+                            {
+                                while (!Bot.ShouldExit && MobItemQuant.Item1 == "Slugfit" && Core.IsMonsterAlive(10, true))
+                                {
+                                    if (Core.IsMonsterAlive(10, true))
+                                        Bot.Combat.Attack(10);
+                                    else Bot.Combat.Attack(9);
+                                    Core.Sleep();
+                                    if (Bot.TempInv.Contains(MobItemQuant.Item2) && Bot.TempInv.GetQuantity(MobItemQuant.Item2) >= MobItemQuant.Item3)
+                                        continue;
+                                }
+                                while (!Bot.ShouldExit && MobItemQuant.Item1 == "Cyclops Warlord" && Core.IsMonsterAlive(9, true))
+                                {
+                                    if (Core.IsMonsterAlive(10, true))
+                                        Bot.Combat.Attack(9);
+                                    else Bot.Combat.Attack(10);
+                                    Core.Sleep();
+                                    if (Bot.TempInv.Contains(MobItemQuant.Item2) && Bot.TempInv.GetQuantity(MobItemQuant.Item2) >= MobItemQuant.Item3)
+                                        continue;
+                                }
+                            }
+
+                        }
+                    }
                     Core.KillMonster("tercessuinotlim", "m2", "top", "*", "Makai Fang", 5, log: false);
                     Core.KillMonster("hydra", "Rune2", "Left", "*", "Imp Flame", 3, log: false);
                     Core.HuntMonster("greenguardwest", "Big Bad Boar", "Wereboar Tusk", 2, log: false);
-
-                    if (!Core.CheckInventory("Slugfit Horn", 5) || !Core.CheckInventory("Cyclops Horn", 3))
-                    {
-                        Core.JoinSWF("mobius", "ChiralValley/town-Mobius-21Feb14.swf");
-                        Core.KillMonster("mobius", "Slugfit", "Bottom", "Slugfit", "Slugfit Horn", 5, log: false);
-                        Core.KillMonster("mobius", "Slugfit", "Bottom", "Cyclops Warlord", "Cyclops Horn", 3, log: false);
-                    }
                 }
             }
             Core.Logger("all items quant maxed");
@@ -798,7 +821,7 @@ public class CoreNation
                 // Continue farming until the desired item quantity is obtained
                 while (!Bot.ShouldExit && !Core.CheckInventory(Item.Name, Item.MaxStack))
                 {
-                    LogItemQuant2(Item, Item.MaxStack);
+                    LogMobItemQuant2(Item, Item.MaxStack);
                     if (farmGold)
                         Farm.Gold(1000000);
 
@@ -856,7 +879,7 @@ public class CoreNation
             // Continue farming the specified item until the desired quantity is obtained
             while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
             {
-                LogItemQuant(item, quant);
+                LogMobItemQuant(item, quant);
                 if (farmGold)
                     Farm.Gold(1000000);
 
@@ -925,7 +948,7 @@ public class CoreNation
     /// </summary>
     /// <param name="item">Item name</param>
     /// <param name="quant">Desired item quantity</param>
-    void LogItemQuant(string item, int quant)
+    void LogMobItemQuant(string item, int quant)
     {
         // Check if the specified item is in inventory
         if (!Core.CheckInventory(item))
@@ -956,7 +979,7 @@ public class CoreNation
     /// </summary>
     /// <param name="item">Item object</param>
     /// <param name="quant">Desired item quantity</param>
-    void LogItemQuant2(ItemBase item, int maxStack)
+    void LogMobItemQuant2(ItemBase item, int maxStack)
     {
         // Check if the specified item is in inventory
         if (!Core.CheckInventory(item.Name))
