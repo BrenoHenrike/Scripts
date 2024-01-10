@@ -17,7 +17,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 110829,
+    "size": 110913,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -12224,7 +12224,7 @@
       "null"
     ],
     "path": "Other/FarmJoeKits/CoreFarmerJoe.cs",
-    "size": 37108,
+    "size": 37106,
     "fileName": "CoreFarmerJoe.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/CoreFarmerJoe.cs"
   },
@@ -20462,7 +20462,7 @@
       "null"
     ],
     "path": "Other/Classes/REP-based/GlacialBerserker.cs",
-    "size": 1229,
+    "size": 1270,
     "fileName": "GlacialBerserker.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/REP-based/GlacialBerserker.cs"
   },
