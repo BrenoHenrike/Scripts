@@ -692,15 +692,18 @@ public class CoreBots
 
         if (Bot.Flash.GetGameObject("ui.mcPopup.currentLabel") != "\"Bank\"")
             Bot.Bank.Open();
+
         foreach (string? item in items)
         {
             if (item == null || item == SoloClass || item == FarmClass)
                 continue;
+
             if (Bot.Inventory.IsEquipped(item))
             {
                 Logger("Can't bank an equipped item");
                 continue;
             }
+
             if (Bot.Inventory.Contains(item))
             {
                 if (!Bot.Inventory.EnsureToBank(item))
@@ -1288,10 +1291,18 @@ public class CoreBots
     /// <param name="items">Items to Trash/Bank</param>
     public void TrashCan(params string[] items)
     {
-        JumpWait();
+        while (Bot.ShouldExit && (Bot.Player.InCombat || Bot.Player.HasTarget))
+        {
+            Bot.Combat.CancelTarget();
+            Bot.Combat.Exit();
+            Bot.Wait.ForCombatExit();
+            JumpWait();
+            Sleep();
+        }
+
         foreach (string item in items)
         {
-            if (!Bot.Inventory.TryGetItem(item, out var TrashItem) || TrashItem == null)
+            if (!Bot.Inventory.TryGetItem(item, out var TrashItem) || TrashItem == null || TrashItem.Temp)
                 continue;
 
             if (!TrashItem.Coins)
@@ -1300,7 +1311,7 @@ public class CoreBots
                 Sleep();
                 Logger($"Trashed: {TrashItem.Name} x{TrashItem.Quantity}");
             }
-            else ToBank(item);
+            else ToBank(TrashItem.ID);
         }
     }
 
