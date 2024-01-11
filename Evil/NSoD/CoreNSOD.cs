@@ -373,14 +373,14 @@ public class CoreNSOD
         Adv.GearStore(true);
 
         Core.AddDrop("Unenhanced Aura");
-        Core.EnsureAccept(4436);
+        Core.EnsureAccept(Core.CheckInventory(8012) ? 4435 : 4436);
         FindBlade();
         FindHilt();
         CHourglass(2);
         ScrollDarkArts(1);
         TimeLordNecro(1);
         VoidAuras(10);
-        Core.EnsureComplete(4436);
+        Core.EnsureComplete(Core.CheckInventory(8012) ? 4435 : 4436);
     }
 
     #endregion
