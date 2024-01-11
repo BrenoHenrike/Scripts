@@ -48,16 +48,12 @@ public class CelestialPirateCommander
 
     public void GetCPC(bool PetOnly = true)
     {
-
-        if (Bot.Player.Level < 80)
-            Farm.Experience(80);
-        
-        if ((PetOnly && Core.CheckInventory("Polly Roger")) || !Core.isSeasonalMapActive("lowtide"))
+        if ((PetOnly && Core.CheckInventory("Polly Roger")) || !Bot.Quests.IsAvailable(7713))
         {
-            Core.Logger(!Core.isSeasonalMapActive("lowtide") ? "Not the right season ya dummy" : "You already have Polly Roger");
+            Core.Logger(!Bot.Quests.IsAvailable(7713) ? "Not the right season ya dummy" : "You already have Polly Roger");
             return;
         }
-        
+
         Farm.Experience(80);
 
         int i = 1;
