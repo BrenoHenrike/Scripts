@@ -166,7 +166,19 @@ public class CoreSDKA
         }
 
         if (!Core.isCompletedBefore(2090))
-            Penny(oneTime: true);
+        {
+            Core.Logger("Quest: A Penny for your Foughts [2089]");
+            Penny(1, true);
+        }
+
+        if (!Core.isCompletedBefore(2098))
+        {
+            Core.Logger("Quest: Dark Spirit Donation [2090]");
+            Core.EnsureAccept(2090);
+            DSO(100);
+            Core.HuntMonster("necrocavern", "Shadow Imp", "Dark Skull", isTemp: false);
+            Core.EnsureComplete(2090);
+        }
     }
 
     public void FarmDSO(int quant = 10500)
