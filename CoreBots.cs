@@ -2490,6 +2490,8 @@ public class CoreBots
             {
                 Jump(Cell, Pad);
                 Sleep();
+                if (Bot.Player.Cell == Cell)
+                    break;
             }
 
             foreach (Monster mob in Bot.Monsters.CurrentAvailableMonsters)
@@ -3747,6 +3749,7 @@ public class CoreBots
         {
             foreach ((int, int) sV in slotValues)
                 Bot.Quests.UpdateQuest(sV.Item2, sV.Item1);
+            Sleep();
             tryJoin();
         }
 
@@ -3760,6 +3763,7 @@ public class CoreBots
         {
             if (!CheckInventory(ID))
                 GhostItem(ID, name);
+            Sleep();
             tryJoin();
         }
     }
