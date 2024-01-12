@@ -359,6 +359,7 @@ public class CoreNation
             Supplies("Unidentified 16");
             Supplies("Unidentified 20");
             ResetSindles();
+            #region makai rune
             while (!Bot.ShouldExit && !Core.CheckInventory("Dark Makai Rune"))
             {
                 // Define the maps with their corresponding indexes
@@ -369,7 +370,6 @@ public class CoreNation
                 var selectedMap = maps[randomMapIndex];
 
                 Core.Join(selectedMap.Item1, selectedMap.Item2, "Left");
-
                 while (!Bot.ShouldExit &&
                     (selectedMap.Item1 == "tercessuinotlim"
                         ? (Core.IsMonsterAlive(2, useMapID: true) || Core.IsMonsterAlive(3, useMapID: true))
@@ -383,11 +383,13 @@ public class CoreNation
                 }
             }
             Bot.Wait.ForPickup("Dark Makai Rune");
+            #endregion makai rune
             Core.EnsureComplete(7551, Item.ID);
             if (Item.Name != "Voucher of Nulgath" && sellMemVoucher)
                 Core.SellItem("Voucher of Nulgath", all: true);
 
-            Core.Logger(Bot.Inventory.IsMaxStack(Item.Name) ? "Max Stack Hit." : $"{Item.Name}: {Bot.Inventory.GetQuantity(Item.Name)}/{quant}");
+            Core.FarmingLogger(Item.Name, quant);
+
         }
     }
 
@@ -1555,8 +1557,8 @@ public class CoreNation
     /// <param name="relic">Indicates if Relic of Chaos supplies are used.</param>
     public void BloodyChaos(int quant = 100, bool relic = false)
     {
-        // Check if Blood Gem Of The Archfiend is already in inventory or player level is below 80
-        if (Core.CheckInventory("Blood Gem Of The Archfiend", quant) || Bot.Player.Level < 80)
+        // Check if Blood Gem of the Archfiend is already in inventory or player level is below 80
+        if (Core.CheckInventory("Blood Gem of the Archfiend", quant) || Bot.Player.Level < 80)
             return;
 
         // Add drops for the quest
@@ -1564,14 +1566,14 @@ public class CoreNation
         if (relic)
             Core.AddDrop(BloodyChaosSupplies);
 
-        // Log the farming for Blood Gem Of The Archfiend
-        Core.FarmingLogger("Blood Gem Of The Archfiend", quant);
+        // Log the farming for Blood Gem of the Archfiend
+        Core.FarmingLogger("Blood Gem of the Archfiend", quant);
 
         // Register the quest depending on whether Relic of Chaos supplies are used
         Core.RegisterQuests(relic ? new[] { 7816, 2857 } : new[] { 7816 });
 
         // Continue farming until the desired quantity is reached
-        while (!Bot.ShouldExit && !Core.CheckInventory("Blood Gem Of The Archfiend", quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Blood Gem of the Archfiend", quant))
         {
             // Equip Solo class and kill Escherion
             Core.EquipClass(ClassType.Solo);
