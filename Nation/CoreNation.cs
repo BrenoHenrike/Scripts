@@ -1601,15 +1601,13 @@ public class CoreNation
         if (betrayalBlade == null ? Core.CheckInventory("Blood Gem of the Archfiend", quant) : Core.CheckInventory(betrayalBlade))
             return;
 
-        if (betrayalBlade != null)
-            Core.AddDrop(betrayalBlade);
-        Core.AddDrop("Tendurrr The Assistant", "Fragment of Chaos", "Blood Gem of the Archfiend");
+        Core.AddDrop(betrayalBlade ?? "Tendurrr The Assistant", "Fragment of Chaos", "Blood Gem of the Archfiend");
         Core.EquipClass(ClassType.Farm);
-        if (betrayalBlade == null)
-            Core.Logger($"Farming {quant} Blood Gems.");
-        else
-            Core.Logger($"Farming {betrayalBlade}.");
 
+        if (betrayalBlade == null)
+            Core.FarmingLogger("Blood Gem of the Archfiend", quant);
+        else
+            Core.FarmingLogger(betrayalBlade, 1);
 
         int i = 1;
 
@@ -1627,21 +1625,20 @@ public class CoreNation
             Core.KillMonster("evilwarnul", "r13", "Left", "Legion Fenrir", "Broken Betrayal Blade", 8, log: false);
             Core.EnsureComplete(3743);
 
-            if (betrayalBlade == null)
-                Bot.Wait.ForPickup("Blood Gem of the Archfiend");
-            else
-                Bot.Wait.ForPickup(betrayalBlade);
+            string itemToPickup = betrayalBlade ?? "Blood Gem of the Archfiend";
+            Bot.Wait.ForPickup(itemToPickup);
             Core.Logger($"Completed x{i++}");
 
             if (betrayalBlade == null)
             {
-                if (Bot.Inventory.IsMaxStack("Blood Gem of the Archfiend"))
+                if (Bot.Inventory.IsMaxStack(itemToPickup))
                     Core.Logger("Max Stack Hit.");
                 else
-                    Core.Logger($"Blood Gem of the Archfiend: {Bot.Inventory.GetQuantity("Blood Gem of the Archfiend")}/{quant}");
+                    Core.FarmingLogger(itemToPickup, quant);
             }
         }
     }
+
 
     /// <summary>
     /// Farms Gemstone Receipt of Nulgath with specific quantities.
