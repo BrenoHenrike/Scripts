@@ -49,13 +49,13 @@ public class MineCrafting
                 Daily.MineCrafting(new[] { "Aluminum", "Barium", "Gold", "Iron", "Copper", "Silver", "Platinum" }, 10, ToBank: true);
             }
         }
-
+        Core.Logger("Finished MineCrafting, Checking HardCore Metals(mem)");
         if (!Core.IsMember || Daily.CheckDaily(2090))
         {
             Core.Logger(!Core.IsMember ? "Membership required for SDK + HardCoreMetals stopping." : "Daily already complete, try tomarrow.");
             return;
         }
-        
+
         if (!Core.CheckInventory("Sepulchure's DoomKnight Armor", toInv: false))
         {
             Daily.HardCoreMetals(new[] { "Rhodium" }, 2, true);
