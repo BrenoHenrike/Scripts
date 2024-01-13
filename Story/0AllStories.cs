@@ -48,7 +48,9 @@ tags: story, quest, complete, all
 //cs_include Scripts/Story/Nation/Fiendshard.cs
 //cs_include Scripts/Story/Nation/FiendPast.cs
 //cs_include Scripts/Story/Nation/Originul.cs
+//cs_include Scripts/Story/Nation/ShadowBlastArena.cs
 //cs_include Scripts/Story/Nation/Tercessuinotlim.cs
+//cs_include Scripts/Story/Nation/VoidRefuge.cs
 
 //cs_include Scripts/Story/QueenofMonsters/CoreQoM.cs
 //cs_include Scripts/Story/QueenofMonsters/Extra/BrightOak.cs
@@ -240,8 +242,9 @@ public class AllStories
     public FiendPast FiendPast = new();
     public Fiendshard_Story Fiendshard_Story = new();
     public Originul_Story Originul_Story = new();
-
+    public ShadowBlastArena ShadowBlastArena = new();
     public Tercessuinotlim Tercessuinotlim = new();
+    public VoidRefuge VoidRefuge = new();
 
     // Queen of Monsters
     public CoreQOM QOM => new();
@@ -500,8 +503,17 @@ public class AllStories
         FiendPast.DoAll();
         Core.Logger($"Story: Fiend Past - Complete");
 
+        Originul_Story.Originul_Questline();
+        Core.Logger($"Story: Originul - Complete");
+
+        ShadowBlastArena.Doall();
+        Core.Logger($"Story: ShadowBlast Arena - Complete");
+
         Tercessuinotlim.JadziaQuests();
         Core.Logger($"Story: Tercessuinotlim - Complete");
+
+        VoidRefuge.Storyline();
+        Core.Logger($"Story: Void Refuge - Complete");
         #endregion
 
         #region QoM
