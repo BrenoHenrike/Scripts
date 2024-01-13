@@ -380,7 +380,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 85629,
+    "size": 86162,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -7766,6 +7766,48 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/MergeShops/NulgathDiamondMerge.cs"
   },
   {
+    "name": "Void Refuge Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Void Refuge Merge [2408] in /voidrefuge",
+    "tags": [
+      "void",
+      "refuge",
+      "merge",
+      "voidrefuge",
+      "envenomed",
+      "edge",
+      "nulgath",
+      "enchanted",
+      "carnage",
+      "evolved",
+      "crest",
+      "blood",
+      "spines",
+      "bloodletter",
+      "katana",
+      "katanas",
+      "bone",
+      "quaker",
+      "betrayal",
+      "soul",
+      "corroding",
+      "visionary",
+      "heart",
+      "render",
+      "golden",
+      "redeemer",
+      "poison",
+      "drinker",
+      "guillotine",
+      "fiend",
+      "carver",
+      "unstable"
+    ],
+    "path": "Nation/MergeShops/VoidRefugeMerge.cs",
+    "size": 11749,
+    "fileName": "VoidRefugeMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/MergeShops/VoidRefugeMerge.cs"
+  },
+  {
     "name": "FiendshardMerge",
     "description": "null",
     "tags": [
@@ -15007,6 +15049,23 @@
     "size": 4009,
     "fileName": "Tercessuinotlim.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Nation/Tercessuinotlim.cs"
+  },
+  {
+    "name": "Void Refuge Story",
+    "description": "This script will complete the storyline in /voidrefuge",
+    "tags": [
+      "voidrefuge",
+      "refuge",
+      "nation",
+      "nulgath",
+      "story",
+      "ana di carcano",
+      "gravelyn"
+    ],
+    "path": "Story/Nation/VoidRefuge.cs",
+    "size": 1937,
+    "fileName": "VoidRefuge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Nation/VoidRefuge.cs"
   },
   {
     "name": "Citadel Ruins",
