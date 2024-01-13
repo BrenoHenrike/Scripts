@@ -1596,18 +1596,24 @@ public class CoreNation
     /// Do Kiss the Void quest for Blood Gems.
     /// </summary>
     /// <param name="quant">Desired quantity, 100 = max stack</param>
-    public void KisstheVoid(int quant = 100)
+    public void KisstheVoid(int quant = 100, string? betrayalBlade = null)
     {
-        if (Core.CheckInventory("Blood Gem of the Archfiend", quant))
+        if (betrayalBlade == null ? Core.CheckInventory("Blood Gem of the Archfiend", quant) : Core.CheckInventory(betrayalBlade))
             return;
 
+        if (betrayalBlade != null)
+            Core.AddDrop(betrayalBlade);
         Core.AddDrop("Tendurrr The Assistant", "Fragment of Chaos", "Blood Gem of the Archfiend");
         Core.EquipClass(ClassType.Farm);
-        Core.Logger($"Farming {quant} Blood Gems");
+        if (betrayalBlade == null)
+            Core.Logger($"Farming {quant} Blood Gems.");
+        else
+            Core.Logger($"Farming {betrayalBlade}.");
+
 
         int i = 1;
 
-        while (!Bot.ShouldExit && !Core.CheckInventory("Blood Gem of the Archfiend", quant))
+        while (!Bot.ShouldExit && (betrayalBlade == null ? !Core.CheckInventory("Blood Gem of the Archfiend", quant) : !Core.CheckInventory(betrayalBlade)))
         {
             Core.EnsureAccept(3743);
 
@@ -1621,13 +1627,19 @@ public class CoreNation
             Core.KillMonster("evilwarnul", "r13", "Left", "Legion Fenrir", "Broken Betrayal Blade", 8, log: false);
             Core.EnsureComplete(3743);
 
-            Bot.Wait.ForPickup("Blood Gem of the Archfiend");
+            if (betrayalBlade == null)
+                Bot.Wait.ForPickup("Blood Gem of the Archfiend");
+            else
+                Bot.Wait.ForPickup(betrayalBlade);
             Core.Logger($"Completed x{i++}");
 
-            if (Bot.Inventory.IsMaxStack("Blood Gem of the Archfiend"))
-                Core.Logger("Max Stack Hit.");
-            else
-                Core.Logger($"Blood Gem of the Archfiend: {Bot.Inventory.GetQuantity("Blood Gem of the Archfiend")}/{quant}");
+            if (betrayalBlade == null)
+            {
+                if (Bot.Inventory.IsMaxStack("Blood Gem of the Archfiend"))
+                    Core.Logger("Max Stack Hit.");
+                else
+                    Core.Logger($"Blood Gem of the Archfiend: {Bot.Inventory.GetQuantity("Blood Gem of the Archfiend")}/{quant}");
+            }
         }
     }
 
