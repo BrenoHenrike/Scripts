@@ -2015,7 +2015,7 @@ public class CoreBots
             if (log)
                 Logger($"Hunting {monster}");
 
-            Bot.Hunt.Monster(monster.ToLower());
+            Bot.Hunt.Monster(monster);
             Rest();
         }
         else
@@ -2029,7 +2029,7 @@ public class CoreBots
             while (!Bot.ShouldExit && (isTemp ? !Bot.TempInv.Contains(item, quant) : !CheckInventory(item, quant)))
             {
                 if (!Bot.Combat.StopAttacking)
-                    Bot.Hunt.Monster(monster.ToLower());
+                    Bot.Hunt.Monster(monster);
 
                 Sleep();
                 Rest();
