@@ -1864,7 +1864,7 @@ public class CoreNation
     {
         if (!Core.CheckInventory("Gemstone of Nulgath") && !Core.IsMember)
         {
-            Core.Logger("This quest requires you to have Gemstone of Nulgath and membership to be able to accept it");
+            Core.Logger("This quest requires you to have Gemstone of Nulgath and membership to be able to accept it.");
             return;
         }
 
