@@ -377,7 +377,7 @@ public class CoreBLOD
             Core.KillMonster("safiria", "c3", "Left", "Chaos Lycan", "WolfClaw Hammer", 1, false);
             Core.KillMonster("lycan", "r4", "Left", "Chaos Vampire Knight", "Silver Brush");
             Core.KillMonster("sandport", "r3", "Right", "Tomb Robber", "Leather Case");
-            Core.KillMonster("pines", "Path1", "Left", "Leatherwing", "Leatherwing Hide", 10);
+            Core.KillMonster("pines", "Path1", "Left", "LeatherWing", "LeatherWing Hide", 10);
             Core.EnsureComplete(2162);
 
             Bot.Wait.ForPickup("Advanced Weapon Kit");

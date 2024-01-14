@@ -235,7 +235,7 @@ public class Core13LoC
         Story.KillQuest(325, "pines", "Pine Grizzly");
 
         //Leather Feathers
-        Story.KillQuest(326, "pines", "Leatherwing");
+        Story.KillQuest(326, "pines", "LeatherWing");
 
         //Follow your Nose!
         if (!Story.QuestProgression(327) || !Core.isCompletedBefore(323))

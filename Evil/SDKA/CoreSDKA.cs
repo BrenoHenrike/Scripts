@@ -303,7 +303,7 @@ public class CoreSDKA
             Core.EquipClass(ClassType.Farm);
             Core.KillMonster("lycan", "r4", "Left", "Chaos Vampire Knight", "Silver Brush", log: false);
             Core.KillMonster("sandport", "r3", "Right", "Tomb Robber", "Leather Case", log: false);
-            Core.KillMonster("pines", "Path1", "Left", "Leatherwing", "Leatherwing Hide", 10, log: false);
+            Core.KillMonster("pines", "Path1", "Left", "LeatherWing", "LeatherWing Hide", 10, log: false);
 
             Bot.Wait.ForPickup("DoomSoldier Weapon Kit");
         }

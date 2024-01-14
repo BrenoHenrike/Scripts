@@ -42,7 +42,7 @@ public class Necromance
         Story.KillQuest(4041, "judgement", "Raven");
 
         // Owl Always Love You (4042)
-        Story.KillQuest(4042, "pines", "Leatherwing");
+        Story.KillQuest(4042, "pines", "LeatherWing");
 
         // This is My Broom STICK! (4043)
         Story.KillQuest(4043, "farm", "Scarecrow");

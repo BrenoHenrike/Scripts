@@ -131,9 +131,9 @@ public class VoidAvengerScythe
         // Bear it all!
         Story.KillQuest(325, "llama", "Pine Grizzly");
         // Leather Feathers
-        Story.KillQuest(326, "llama", "Leatherwing");
+        Story.KillQuest(326, "llama", "LeatherWing");
         // Follow your Nose!      
-        Story.KillQuest(327, "llama", "Leatherwing");
+        Story.KillQuest(327, "llama", "LeatherWing");
     }
 
     public void SnowbeardsQuests()

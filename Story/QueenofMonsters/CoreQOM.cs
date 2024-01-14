@@ -713,7 +713,7 @@ public class CoreQOM
             Core.EnsureAccept(5867);
             Core.HuntMonster("brightoak", "Hootbear", "Hootbear Feathers", 2);
             Core.HuntMonster("BrokenWoods", "Urstrix", "Urstrix Feathers", 2);
-            Core.HuntMonster("pines", "Leatherwing", "Leatherwing Claws", 2);
+            Core.HuntMonster("pines", "LeatherWing", "LeatherWing Claws", 2);
             Core.HuntMonster("BrokenWoods", "SpiderWing", "SpiderWing Claws", 2);
             Core.EnsureComplete(5867);
         }
