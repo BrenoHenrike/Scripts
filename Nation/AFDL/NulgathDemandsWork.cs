@@ -105,7 +105,7 @@ public class NulgathDemandsWork
                     }
                     else Core.EnsureComplete(5259);
                 }
-                else Core.EnsureCompleteChoose(5259, item.Name == "Archfiend Essence Fragment" ? NDWItems : new[] { item.Name });
+                else Core.EnsureComplete(5259, item.Name == "Archfiend Essence Fragment" ? -1 : item.ID);
             }
         }
     }
@@ -136,15 +136,24 @@ public class NulgathDemandsWork
                     ? (Core.IsMonsterAlive(2, useMapID: true) || Core.IsMonsterAlive(3, useMapID: true))
                     : (Core.IsMonsterAlive(1, useMapID: true) || Core.IsMonsterAlive(2, useMapID: true))))
             {
+                while (!Bot.ShouldExit && Bot.Player.Cell != selectedMap.Item2)
+                {
+                    Core.Jump(selectedMap.Item2);
+                    Core.Sleep();
+                    if (Bot.Player.Cell == selectedMap.Item2)
+                        break;
+                }
+
                 if (!Bot.Player.InCombat)
-                    Core.Sleep();  // Use the built-in delay
-                Bot.Combat.Attack("*");
+                    Bot.Combat.Attack("*");
                 if (Core.CheckInventory("Dark Makai Sigil"))
                     break;
             }
         }
+        Bot.Wait.ForDrop("Dark Makai Sigil");
         Bot.Wait.ForPickup("Dark Makai Sigil");
         Core.EnsureComplete(584);
+        Bot.Wait.ForDrop("Unidentified 27");
         Bot.Wait.ForPickup("Unidentified 27");
         Core.Logger("Uni 27 acquired");
 
