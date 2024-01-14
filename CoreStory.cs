@@ -626,7 +626,7 @@ public class CoreStory
     private List<ItemBase> CurrentRequirements = new();
     private void _MonsterHunt(ref bool shouldRepeat, string monster, string itemName, int quantity, bool isTemp, int index)
     {
-        Bot.Hunt.ForItem(monster, itemName, quantity, isTemp);
+        Bot.Hunt.ForItem(monster.ToLower(), itemName, quantity, isTemp);
         CurrentRequirements.RemoveAt(index);
         shouldRepeat = false;
     }
