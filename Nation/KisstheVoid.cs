@@ -1,6 +1,6 @@
 /*
 name: KisstheVoid
-description: This bot will farm Blood Gem of the Archfiend and also the Betrayals (if selected)
+description: This bot will farm Blood Gem of the Archfiend and also the Betrayals (if needed)
 tags: betrayal, blood, gem, archfiend
 */
 //cs_include Scripts/CoreBots.cs
@@ -17,7 +17,7 @@ public class KisstheVoid
     
     public string OptionsStorage = "Kiss_The_Void";
     public bool DontPreconfigure = true;
-    public List<IOption> Select = new()
+    public List<IOption> Options = new()
     {
         new Option<int>("22332", "Blood Gem of the Archfiend", "How many \"Blood Gem of the Archfiend\" you need? 0 = none", 100),
         new Option<bool>("25150", "1st Betrayal Blade of Nulgath", "Should the bot farm \"1st Betrayal Blade of Nulgath\"?", false),
@@ -34,14 +34,14 @@ public class KisstheVoid
     {
         Core.SetOptions();
 
-        Kiss();
+        KissTheVoid();
 
         Core.SetOptions(false);
     }
 
-    private void Kiss() {
+    private void KissTheVoid() {
         // Farm selected Betrayals of Nulgath
-        Select.ForEach(x => Betrayal(x));
+        Options.ForEach(x => Betrayal(x));
 
         // Farm the Blood Gems last
         int bloodGems = Bot.Config.Get<int>("22332");
@@ -49,8 +49,7 @@ public class KisstheVoid
     }
 
     private void Betrayal(IOption details) {
-        Core.Logger($"ID: {details.Name}, Name: {details.DisplayName}");
-        if (details.Name === "22332") return;
+        if (details.Name == "22332") return;
 
         string itemId = details.Name;
         string itemName = details.DisplayName;
