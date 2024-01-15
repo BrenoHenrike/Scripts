@@ -1599,25 +1599,24 @@ public class CoreNation
     /// <param name="betrayalBlade">Desired betrayal, null = no betrayals/param>
     public void KisstheVoid(int quant = 100, string? betrayalBlade = null)
     {
-        bool isBetrayal = betrayalBlade != null;
-        int i = 1;
-        
-        if (!isBetrayal ? Core.CheckInventory("Blood Gem of the Archfiend", quant) : Core.CheckInventory(betrayalBlade))
+        if (betrayalBlade == null ? Core.CheckInventory("Blood Gem of the Archfiend", quant) : Core.CheckInventory(betrayalBlade))
             return;
-
-        if (betrayalBlade) {
-            Core.AddDrop(betrayalBlades);
-            Core.Logger($"Any Betrayal Blade dropped from the Quest will be accepted, but it will stop when the \"{betrayalBlade}\" is acquired.");
-            Core.FarmingLogger(betrayalBlade, 1);
-        }
-
-        if (!isBetrayal)
-            Core.FarmingLogger("Blood Gem of the Archfiend", quant);
 
         Core.AddDrop("Tendurrr The Assistant", "Fragment of Chaos", "Blood Gem of the Archfiend");
         Core.EquipClass(ClassType.Farm);
 
-        while (!Bot.ShouldExit && (!isBetrayal ? !Core.CheckInventory("Blood Gem of the Archfiend", quant) : !Core.CheckInventory(betrayalBlade)))
+        if (betrayalBlade == null)
+            Core.FarmingLogger("Blood Gem of the Archfiend", quant);
+
+        if (betrayalBlade != null) {
+            Core.Logger($"Any Betrayal Blade dropped from the Quest will be accepted, but it will stop when the \"{betrayalBlade}\" is acquired.");
+            Core.AddDrop(betrayalBlades);
+            Core.FarmingLogger(betrayalBlade, 1);
+        }
+
+        int i = 1;
+
+        while (!Bot.ShouldExit && (betrayalBlade == null ? !Core.CheckInventory("Blood Gem of the Archfiend", quant) : !Core.CheckInventory(betrayalBlade)))
         {
             Core.EnsureAccept(3743);
 
@@ -1635,7 +1634,7 @@ public class CoreNation
             Bot.Wait.ForPickup(itemToPickup);
             Core.Logger($"Completed x{i++}");
 
-            if (!isBetrayal)
+            if (betrayalBlade == null)
             {
                 if (Bot.Inventory.IsMaxStack(itemToPickup))
                     Core.Logger("Max Stack Hit.");
