@@ -194,5 +194,17 @@ public class VoidRefugeMerge
         new Option<bool>("83156", "Fiend Carver Betrayal Blades", "Mode: [select] only\nShould the bot buy \"Fiend Carver Betrayal Blades\" ?", false),
         new Option<bool>("83139", "Unstable Betrayal Blade", "Mode: [select] only\nShould the bot buy \"Unstable Betrayal Blade\" ?", false),
         new Option<bool>("83140", "Unstable Betrayal Blades", "Mode: [select] only\nShould the bot buy \"Unstable Betrayal Blades\" ?", false),
+        new Option<bool>("82878", "Void Betrayal Knight", "Mode: [select] only\nShould the bot buy \"Void Betrayal Knight\" ?", false),
+        new Option<bool>("82879", "Void Betrayer Crest", "Mode: [select] only\nShould the bot buy \"Void Betrayer Crest\" ?", false),
+        new Option<bool>("82880", "Void Betrayer Guard", "Mode: [select] only\nShould the bot buy \"Void Betrayer Guard\" ?", false),
+        new Option<bool>("82881", "Void Betrayer Horns", "Mode: [select] only\nShould the bot buy \"Void Betrayer Horns\" ?", false),
+        new Option<bool>("82882", "Void Betrayer Cloak", "Mode: [select] only\nShould the bot buy \"Void Betrayer Cloak\" ?", false),
+        new Option<bool>("82883", "Void Betrayer Spined Cloak", "Mode: [select] only\nShould the bot buy \"Void Betrayer Spined Cloak\" ?", false),
+        new Option<bool>("82885", "Void Betrayer Sword", "Mode: [select] only\nShould the bot buy \"Void Betrayer Sword\" ?", false),
+        new Option<bool>("83323", "Void Betrayer Swords", "Mode: [select] only\nShould the bot buy \"Void Betrayer Swords\" ?", false),
+        new Option<bool>("82886", "Void Betrayer Dagger", "Mode: [select] only\nShould the bot buy \"Void Betrayer Dagger\" ?", false),
+        new Option<bool>("82887", "Void Betrayer Daggers", "Mode: [select] only\nShould the bot buy \"Void Betrayer Daggers\" ?", false),
+        new Option<bool>("82888", "Void Betrayer Reaver", "Mode: [select] only\nShould the bot buy \"Void Betrayer Reaver\" ?", false),
+        new Option<bool>("82889", "Void Betrayer Reavers", "Mode: [select] only\nShould the bot buy \"Void Betrayer Reavers\" ?", false),
     };
 }
