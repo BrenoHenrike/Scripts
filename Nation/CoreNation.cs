@@ -1596,20 +1596,28 @@ public class CoreNation
     /// Do Kiss the Void quest for Blood Gems.
     /// </summary>
     /// <param name="quant">Desired quantity, 100 = max stack</param>
+    /// <param name="betrayalBlade">Desired betrayal, null = no betrayals/param>
     public void KisstheVoid(int quant = 100, string? betrayalBlade = null)
     {
+        int i = 1;
+
         if (betrayalBlade == null ? Core.CheckInventory("Blood Gem of the Archfiend", quant) : Core.CheckInventory(betrayalBlade))
             return;
 
-        Core.AddDrop(betrayalBlade ?? "Tendurrr The Assistant", "Fragment of Chaos", "Blood Gem of the Archfiend");
+        if (betrayalBlade) {
+            Core.AddDrop(betrayalBlades);
+            if (i == 1) Core.Logger("Any Betrayal Blade dropped from the Quest will be accepted, but it will stop when the desired is acquired.");
+        }
+
+        if (quant > 0) Core.AddDrop("Blood Gem of the Archfiend");
+        if (!betrayalBlade) Core.AddDrop("Tendurrr The Assistant", "Fragment of Chaos");
+
         Core.EquipClass(ClassType.Farm);
 
         if (betrayalBlade == null)
             Core.FarmingLogger("Blood Gem of the Archfiend", quant);
         else
             Core.FarmingLogger(betrayalBlade, 1);
-
-        int i = 1;
 
         while (!Bot.ShouldExit && (betrayalBlade == null ? !Core.CheckInventory("Blood Gem of the Archfiend", quant) : !Core.CheckInventory(betrayalBlade)))
         {
