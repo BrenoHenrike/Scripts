@@ -34,12 +34,12 @@ public class KisstheVoid
     {
         Core.SetOptions();
 
-        KissTheVoid();
+        FarmSelected();
 
         Core.SetOptions(false);
     }
 
-    private void KissTheVoid() {
+    private void FarmSelected() {
         // Farm selected Betrayals of Nulgath
         Options.ForEach(x => Betrayal(x));
 
@@ -55,10 +55,8 @@ public class KisstheVoid
         string itemName = details.DisplayName;
         bool farm = Bot.Config.Get<bool>(itemId);
 
-        if (!farm) {
-            Core.Logger($"You don't want the \"{itemName}\", ignoring it.");
+        if (!farm)
             return;
-        }
 
         if (Core.CheckInventory(itemName)) {
             Core.Logger($"You already own the \"{itemName}\".");
