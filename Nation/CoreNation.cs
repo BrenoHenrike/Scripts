@@ -1607,8 +1607,7 @@ public class CoreNation
 
         if (betrayalBlade == null)
             Core.FarmingLogger("Blood Gem of the Archfiend", quant);
-
-        if (betrayalBlade != null) {
+        else {
             Core.Logger($"Any Betrayal Blade dropped from the Quest will be accepted, but it will stop when the \"{betrayalBlade}\" is acquired.");
             Core.AddDrop(betrayalBlades);
             Core.FarmingLogger(betrayalBlade, 1);
