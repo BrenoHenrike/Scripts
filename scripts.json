@@ -380,7 +380,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 85981,
+    "size": 85990,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -15105,7 +15105,7 @@
       "shadowblast arena"
     ],
     "path": "Story/Nation/ShadowBlastArena.cs",
-    "size": 4324,
+    "size": 4784,
     "fileName": "ShadowBlastArena.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Nation/ShadowBlastArena.cs"
   },
