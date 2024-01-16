@@ -161,12 +161,6 @@ public class VoidRefugeMerge
                     Core.FarmingLogger(req.Name, quant);
                     Adv.BuyItem("tercessuinotlim", 1951, "Unmoulded Fiend Essence");
                     break;
-
-                case "Gold Voucher 25k":
-                    Core.FarmingLogger(req.Name, quant);
-                    Adv.BuyItem("battleunderb", 1990, "Gold Voucher 25k", quant);
-                    break;
-
             }
         }
     }

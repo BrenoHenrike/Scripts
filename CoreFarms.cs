@@ -245,7 +245,7 @@ public class CoreFarms
             Core.EquipClass(ClassType.Solo);
             Core.RegisterQuests(6979);
             while (!Bot.ShouldExit && Bot.Player.Level < 30)
-                Core.KillMonster("prison","Tax", "Left", "*", "Broken Piggy Bank", log: false);
+                Core.KillMonster("prison", "Tax", "Left", "*", "Broken Piggy Bank", log: false);
             Core.CancelRegisteredQuests();
         }
         else

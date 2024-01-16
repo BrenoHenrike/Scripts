@@ -17,7 +17,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 110913,
+    "size": 110914,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -7803,7 +7803,7 @@
       "unstable"
     ],
     "path": "Nation/MergeShops/VoidRefugeMerge.cs",
-    "size": 13615,
+    "size": 13406,
     "fileName": "VoidRefugeMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/MergeShops/VoidRefugeMerge.cs"
   },
