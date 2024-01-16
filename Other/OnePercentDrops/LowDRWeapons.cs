@@ -65,7 +65,7 @@ public class LowDRWeapons
             Core.HuntMonster("lostruinswar", "Diabolical Warlord", "Burning Blade");
 
         if (Bot.Config.Get<Weapons>("Weapons") == Weapons.Deaths_Bright_Blade || Bot.Config.Get<Weapons>("Weapons") == Weapons.All)
-            Core.HuntMonster("tercessuinotlim", "Death's Head", "Death's Bright Blade", isTemp: false);
+            Core.HuntMonster("citadel", "Death's Head", "Death's Bright Blade", isTemp: false);
 
         if (Bot.Config.Get<Weapons>("Weapons") == Weapons.Deaths_Scythe || Bot.Config.Get<Weapons>("Weapons") == Weapons.All && !Core.CheckInventory(25117))
             Core.HuntMonster("shadowattack", "Death", "Death's Scythe", isTemp: false);

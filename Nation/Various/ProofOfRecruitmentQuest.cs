@@ -87,7 +87,7 @@ public class ProofOFRecruitmentQuest
                                             }
                                             //Traitors 4755 [ArchToken V]
                                             Core.EnsureAccept(4755);
-                                            Core.HuntMonster("Tercessuinotlim", "Death's Head", "Death's Head Head");
+                                            Core.HuntMonster("citadel", "Death's Head", "Death's Head Head");
                                             Core.HuntMonster("EvilWarDage ", "Infernalfiend", "Infernal Fiend Head");
                                             Core.HuntMonster("EvilWarNul", "Nulgath's Redemption", "Nulgath's Redemption Head");
                                             Core.EnsureComplete(4755);
@@ -122,7 +122,7 @@ public class ProofOFRecruitmentQuest
                         Core.HuntMonster("ArchPortal", "Legion Guard", "Undead Guards Souls", 8);
                         Core.HuntMonster("ArchPortal", "Skull Warrior", "Skull Warriors Souls", 10);
                         Core.HuntMonster("ArchPortal", "Legion Spy", "Hidden Legion Spy Souls", 6);
-                        Core.HuntMonster("Tercessuinotlim", "Death's Head", "Soul of the Death's Head");
+                        Core.HuntMonster("citadel", "Death's Head", "Soul of the Death's Head");
                         Core.EnsureComplete(4760);
                     }
                     //Protect the Portal! 4761 [ArchToken XI]
