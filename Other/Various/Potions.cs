@@ -242,6 +242,7 @@ public class PotionBuyer
                     // Adv.BuyItem("alchemyacademy", 395, "Dragon Runestone", 30, 8844);
                     // }
                     Core.ToggleAggro(false);
+                    Core.Join("alchemy");
                     Farm.AlchemyPacket(reagent1, reagent2, trait: currTrait, P2w: true);
                 }
             }
