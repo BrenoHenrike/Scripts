@@ -1621,7 +1621,7 @@ public class CoreNation
                 Core.JumpWait();
             }
 
-            Core.HuntMonster("lair", "Water Draconian", "Fragment of Chaos", 80, false, log: false);
+            Core.KillMonster("blindingsnow", "r17", "Left", "*", "Fragment of Chaos", 80, false, log: false);
             Core.KillMonster("evilwarnul", "r13", "Left", "Legion Fenrir", "Broken Betrayal Blade", 8, log: false);
             Core.EnsureComplete(3743);
 
