@@ -62,8 +62,8 @@ public class ShadowBlastArena
                     Core.HuntMonster("shadowblast", "Minotaurofwar", "Nation Elite Defeated", 10);
                     break;
 
-                case 4736: // ravelyn Likes Your Style 4736
-                    Core.HuntMonster("shadowblast", "Shadowscythe Destroyer", "Shadowscythe Destroyer Vanquished");
+                case 4736: // Gravelyn Likes Your Style 4736
+                    Core.HuntMonster("shadowblast", "Shadow Destroyer", "Shadowscythe Destroyer Vanquished");
                     break;
             }
         }
