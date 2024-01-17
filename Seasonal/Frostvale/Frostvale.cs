@@ -1135,7 +1135,7 @@ public class Frostvale
             Core.EnsureAccept(8446, 8447);
             Core.HuntMonster("otziwar", "Sluagh Warrior", "Sluagh Medals", 5);
             Core.EnsureComplete(8446);
-            Core.HuntMonster("otziwar", "Sluagh Warrior", "Mega Sluagh Medalss", 3);
+            Core.HuntMonster("otziwar", "Sluagh Warrior", "Mega Sluagh Medals", 3);
             Core.EnsureComplete(8447);
         }
 
