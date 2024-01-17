@@ -1,5 +1,5 @@
 /*
-name: KisstheVoid
+name: Kiss The Void
 description: This bot will farm Blood Gem of the Archfiend and also the Betrayals (if needed)
 tags: betrayal, blood, gem, archfiend
 */
@@ -49,15 +49,13 @@ public class KisstheVoid
     }
 
     private void Betrayal(IOption details) {
-        if (details.Name == "22332") return;
-
         string itemId = details.Name;
-        string itemName = details.DisplayName;
+        if (itemId == "22332") return;
+
         bool farm = Bot.Config.Get<bool>(itemId);
+        if (!farm) return;
 
-        if (!farm)
-            return;
-
+        string itemName = details.DisplayName;
         if (Core.CheckInventory(itemName)) {
             Core.Logger($"You already own the \"{itemName}\".");
             return;
