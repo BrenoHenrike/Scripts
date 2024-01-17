@@ -380,7 +380,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 85990,
+    "size": 85961,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -396,7 +396,7 @@
       "diamond badge of nulgath"
     ],
     "path": "Nation/NationLoyaltyRewarded.cs",
-    "size": 2664,
+    "size": 2480,
     "fileName": "NationLoyaltyRewarded.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/NationLoyaltyRewarded.cs"
   },
@@ -1489,7 +1489,7 @@
       "null"
     ],
     "path": "Legion/CoreLegion.cs",
-    "size": 31713,
+    "size": 31546,
     "fileName": "CoreLegion.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/CoreLegion.cs"
   },
@@ -15105,7 +15105,7 @@
       "shadowblast arena"
     ],
     "path": "Story/Nation/ShadowBlastArena.cs",
-    "size": 4784,
+    "size": 4617,
     "fileName": "ShadowBlastArena.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Nation/ShadowBlastArena.cs"
   },
