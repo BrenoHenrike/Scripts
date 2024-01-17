@@ -178,7 +178,6 @@ public class CoreNation
 
             Core.EquipClass(ClassType.Farm);
             Core.KillMonster("tercessuinotlim", "m2", "Left", "*", "Defeated Makai", 50, false, log: false);
-            Core.JumpWait();
 
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("djinn", "Tibicenas", "Tibicenas' Chain", publicRoom: true, log: false);

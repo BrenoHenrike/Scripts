@@ -101,13 +101,9 @@ public class ShadowBlastArena
         Core.RegisterQuests(4750);
         while (!Bot.ShouldExit & !Core.CheckInventory("Diamond Token of Dage", quant))
         {
-            if (!Core.CheckInventory("Defeated Makai", 25))
-            {
-                Core.EquipClass(ClassType.Farm);
-                Core.KillMonster("tercessuinotlim", "m2", "Left", "*", "Defeated Makai", 25, false);
-                Core.JumpWait();
-                Core.Join("aqlesson");
-            }
+            Core.EquipClass(ClassType.Farm);
+            Core.KillMonster("tercessuinotlim", "m2", "Left", "*", "Defeated Makai", 25, false);
+
             Core.EquipClass(ClassType.Solo);
             Core.KillMonster("aqlesson", "Frame9", "Right", "Carnax", "Carnax Eye", publicRoom: true);
             Core.HuntMonster("deepchaos", "Kathool", "Kathool Tentacle", publicRoom: true);

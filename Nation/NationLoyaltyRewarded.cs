@@ -45,19 +45,17 @@ public class NationLoyaltyRewarded
             else
             {
                 Core.FarmingLogger(item.Name, item.MaxStack);
+                //Nation Loyalty Rewarded 4749
                 Core.RegisterQuests(4749);
                 while (!Bot.ShouldExit && !Bot.Inventory.IsMaxStack(item.ID))
                 {
-                    //Nation Loyalty Rewarded 4749
                     Core.EquipClass(ClassType.Solo);
-                    //Adv.BestGear(RacialGearBoost.Chaos);
                     Core.HuntMonster("aqlesson", "Carnax", "Carnax Eye", publicRoom: true, log: false);
                     Core.HuntMonster("deepchaos", "Kathool", "Kathool Tentacle", publicRoom: true, log: false);
                     Core.HuntMonster("dflesson", "Fluffy the Dracolich", "Fluffy's Bones", publicRoom: true, log: false);
-                    //Adv.BestGear(RacialGearBoost.Dragonkin);
                     Core.HuntMonster("lair", "Red Dragon", "Red Dragon's Fang", publicRoom: true, log: false);
-                    //Adv.BestGear(RacialGearBoost.Human);
                     Core.HuntMonster("bloodtitan", "Blood Titan", "Blood Titan's Blade", publicRoom: true, log: false);
+
                     Core.EquipClass(ClassType.Farm);
                     Core.KillMonster("tercessuinotlim", "m2", "Left", "*", "Defeated Makai", 25, false, false);
                 }

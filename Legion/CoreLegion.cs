@@ -87,13 +87,9 @@ public class CoreLegion
         Core.RegisterQuests(4743);
         while (!Bot.ShouldExit && !Core.CheckInventory("Diamond Token of Dage", quant))
         {
-            if (!Core.CheckInventory("Defeated Makai", 25))
-            {
-                Core.EquipClass(ClassType.Farm);
-                Core.KillMonster("tercessuinotlim", "m2", "Left", "*", "Defeated Makai", 25, false);
-                Core.JumpWait();
-                Core.Join("aqlesson");
-            }
+            Core.EquipClass(ClassType.Farm);
+            Core.KillMonster("tercessuinotlim", "m2", "Left", "*", "Defeated Makai", 25, false);
+
             Core.EquipClass(ClassType.Solo);
             //Adv.BestGear(RacialGearBoost.Chaos);
             Core.KillMonster("aqlesson", "Frame9", "Right", "Carnax", "Carnax Eye", publicRoom: true);
