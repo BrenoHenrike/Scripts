@@ -31,7 +31,9 @@ public class InfernalArenaMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Tainted Blade of Na'al", "Champion's Seal", "Tainted Dagger of Na'al", "Cervus Dente", "Infernal Krampus' Claw", "Infernal Emblem", "Axe of the Infernal Defiler", "Infernal Incantation", "Scythe Shard", "Duo's Dinner", "Infernal Badge" });
+        Core.BankingBlackList.AddRange(new[] { "Tainted Blade of Na'al", "Champion's Seal", "Tainted Dagger of Na'al",
+         "Cervus Dente", "Infernal Krampus' Claw", "Infernal Emblem", "Axe of the Infernal Defiler", "Infernal Incantation",
+          "Scythe Shard", "Duo's Dinner", "Infernal Badge" });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -40,7 +42,7 @@ public class InfernalArenaMerge
 
     public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
-        IA.DoStory();
+        IA.DoStory(true);
         Core.Logger("The mobs are strong so this may take a while.");
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("infernalarena", 2334, findIngredients, buyOnlyThis, buyMode: buyMode);
@@ -69,23 +71,14 @@ public class InfernalArenaMerge
                 case "Champion's Seal":
                 case "Tainted Dagger of Na'al":
                     Core.FarmingLogger(req.Name, quant);
-                    if (!Core.CheckInventory("Void Highlord"))
-                    {
-                        Core.Logger("Void Highlord is required for this mob.");
-                        return;
-                    }
-                    Core.Equip("Void Highlord");
+                    Core.BossClass();
                     Core.HuntMonster("infernalarena", "Na'al", req.Name, quant, false, false);
                     break;
 
                 case "Cervus Dente":
                     Core.FarmingLogger(req.Name, quant);
-                    if (!Core.CheckInventory("Legion DoomKnight"))
-                    {
-                        Core.Logger("Legion DoomKnight is required for this mob.");
-                        return;
-                    }
-                    Core.Equip("Legion DoomKnight");
+                    if (Core.CheckInventory(new[] { "Legion DoomKnight", "Classic Legion DoomKnight" }, any: true))
+                        Core.BossClass(Core.CheckInventory("Legion DoomKnight") ? "Legion DoomKnight" : "Classic Legion DoomKnight");
                     Core.HuntMonster("infernalarena", "Cervus Malus", req.Name, quant, false, false);
                     break;
 
@@ -104,34 +97,18 @@ public class InfernalArenaMerge
 
                 case "Infernal Incantation":
                     Core.FarmingLogger(req.Name, quant);
-                    if (!Core.CheckInventory("Dragon of Time"))
-                    {
-                        Core.Logger("Dragon of Time is required for this mob.");
-                        return;
-                    }
-                    Core.Equip("Dragon of Time");
+                    Core.BossClass("Dragon of Time");
                     Core.HuntMonster("infernalarena", "Key of Sholemoh", req.Name, quant, false, false);
                     break;
 
                 case "Scythe Shard":
-                    Core.FarmingLogger(req.Name, quant);
-                    if (!Core.CheckInventory("Lord of Order"))
-                    {
-                        Core.Logger("Lord of Order is required for this mob.");
-                        return;
-                    }
-                    Core.Equip("Lord of Order");
+                    Core.DodgeClass("Lord Of Order");
                     Core.HuntMonster("infernalarena", "Azalith's Scythe", req.Name, quant, false, false);
                     break;
 
                 case "Duo's Dinner":
                     Core.FarmingLogger(req.Name, quant);
-                    if (!Core.CheckInventory("Void Highlord"))
-                    {
-                        Core.Logger("Void Highlord is required for this mob.");
-                        return;
-                    }
-                    Core.Equip("Void Highlord");
+                    Core.BossClass();
                     Core.HuntMonster("infernalarena", "Deadly Duo", req.Name, quant, false, false);
                     break;
 
