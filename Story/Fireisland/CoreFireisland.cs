@@ -295,7 +295,7 @@ public class CoreFireIsland
             Core.HuntMonster("phoenixrise", "Lava Troll", "Sacred Flame");
             Core.HuntMonster("phoenixrise", "Infernal Goblin", "Lava Rune", 3);
             Core.HuntMonster("phoenixrise", "Firestorm Tiger", "Tiger Claw", 4);
-            Core.HuntMonster("phoenixrise", "Pyrric Ursus", "Pyrric Gem"2);
+            Core.HuntMonster("phoenixrise", "Pyrric Ursus", "Pyrric Gem", 2);
             Core.EnsureComplete(4210);
 
         }
