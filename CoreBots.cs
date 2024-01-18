@@ -2919,7 +2919,7 @@ public class CoreBots
             {
                 if (Bot.Player.InCombat)
                     Bot.Combat.Exit();
-                    
+
                 logEquip = false;
                 Equip(Bot.Inventory.Items.First(x => x.Name.ToLower().Trim() == className && x.Category == ItemCategory.Class).ID);
                 logEquip = true;
@@ -3519,25 +3519,19 @@ public class CoreBots
                 if (!isCompletedBefore(9541))
                 {
                     Logger("This map now requires a 1 time completion of \"Beyond the Portal\"");
-                    //to avoid black screen in `tercessuinotlim`
+                    //to avoid black screen in `tercessuinotlim
                     EnsureAccept(9540);
                     KillMonster("citadel", "m22", "Left", "Death's Head", "Death's Head Bested");
                     EnsureComplete(9540);
-                    //for taro to show up
-                    ChainComplete(9541);
                 }
-                
+
+                //for taro to show up
+                if (!isCompletedBefore(9541))
+                    ChainComplete(9541);
+
                 // SimpleQuestBypass((542, 1));
                 Jump("m22", "Left");
                 tryJoin();
-
-                // Following the recent update,
-                // even with the execution of an "updatequest," a black screen
-                // is encountered upon the initial `tryJoin`
-                // (also may be caused by the thing auto-fixes te cell on join 
-                // [client function.. nothing i can do about that] so had todo below). 
-                Jump("Enter", "Left");
-                Jump(cell, pad);
 
 
                 break;
