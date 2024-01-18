@@ -3516,13 +3516,17 @@ public class CoreBots
 
             #region Special Cases
             case "tercessuinotlim":
-                if (!isCompletedBefore(9540))
+                if (!isCompletedBefore(9541))
                 {
                     Logger("This map now requires a 1 time completion of \"Beyond the Portal\"");
+                    //to avoid black screen in `tercessuinotlim`
                     EnsureAccept(9540);
                     KillMonster("citadel", "m22", "Left", "Death's Head", "Death's Head Bested");
                     EnsureComplete(9540);
+                    //for taro to show up
+                    ChainComplete(9541);
                 }
+                
                 // SimpleQuestBypass((542, 1));
                 Jump("m22", "Left");
                 tryJoin();
