@@ -17,6 +17,7 @@ tags: null
 //cs_include Scripts/Good/GearOfAwe/CoreAwe.cs
 //cs_include Scripts/Good/Paladin.cs
 //cs_include Scripts/Hollowborn/MergeShops/ShadowrealmMerge.cs
+//cs_include Scripts/Dailies/MineCrafting.cs
 
 //cs_include Scripts/Nation/AssistingCragAndBamboozle[Mem].cs
 //cs_include Scripts/Nation/CoreNation.cs

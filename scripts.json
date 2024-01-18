@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 195671,
+    "size": 196102,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -551,7 +551,7 @@
       "seasonal"
     ],
     "path": "Dailies/Cryomancer.cs",
-    "size": 1092,
+    "size": 1126,
     "fileName": "Cryomancer.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/Cryomancer.cs"
   },
@@ -884,7 +884,7 @@
       "all"
     ],
     "path": "Dailies/0AllDailies.cs",
-    "size": 4374,
+    "size": 4224,
     "fileName": "0AllDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/0AllDailies.cs"
   },
@@ -9176,7 +9176,7 @@
       "army"
     ],
     "path": "Army/OneClient/AllDailies.cs",
-    "size": 1939,
+    "size": 1984,
     "fileName": "AllDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/OneClient/AllDailies.cs"
   },
@@ -12212,7 +12212,7 @@
       "legend"
     ],
     "path": "Other/FarmJoeKits/MemberFarmsKit.cs",
-    "size": 20436,
+    "size": 20481,
     "fileName": "MemberFarmsKit.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/MemberFarmsKit.cs"
   },
@@ -12223,7 +12223,7 @@
       "null"
     ],
     "path": "Other/FarmJoeKits/FarmerJoeOutfitandPet.cs",
-    "size": 4524,
+    "size": 4569,
     "fileName": "FarmerJoeOutfitandPet.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/FarmerJoeOutfitandPet.cs"
   },
@@ -12234,7 +12234,7 @@
       "null"
     ],
     "path": "Other/FarmJoeKits/FarmerJoeKit0DoAll.cs",
-    "size": 4416,
+    "size": 4461,
     "fileName": "FarmerJoeKit0DoAll.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/FarmerJoeKit0DoAll.cs"
   },
@@ -12245,7 +12245,7 @@
       "null"
     ],
     "path": "Other/FarmJoeKits/FarmerJoeKitClasses[WIP].cs",
-    "size": 5220,
+    "size": 5265,
     "fileName": "FarmerJoeKitClasses[WIP].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/FarmerJoeKitClasses[WIP].cs"
   },
@@ -12256,7 +12256,7 @@
       "null"
     ],
     "path": "Other/FarmJoeKits/FarmerJoeEndGame[WIP].cs",
-    "size": 4528,
+    "size": 4573,
     "fileName": "FarmerJoeEndGame[WIP].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/FarmerJoeEndGame[WIP].cs"
   },
@@ -12267,7 +12267,7 @@
       "null"
     ],
     "path": "Other/FarmJoeKits/CoreFarmerJoe.cs",
-    "size": 37106,
+    "size": 37151,
     "fileName": "CoreFarmerJoe.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/CoreFarmerJoe.cs"
   },

@@ -19,6 +19,7 @@ tags: all, dailies, army
 //cs_include Scripts/Army/CoreArmyLite.cs
 //cs_include Scripts/Story/Friendship.cs
 //cs_include Scripts/Evil/SDKA/CoreSDKA.cs
+//cs_include Scripts/Dailies/MineCrafting.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
 

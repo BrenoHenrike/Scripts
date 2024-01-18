@@ -34,6 +34,7 @@ tags: member, kit, expire, legend
 //cs_include Scripts/Other/CoinCollectorSet[Member].cs
 //cs_include Scripts/Other/Classes/Curio-Classes/LegendaryElementalWarrior[mem].cs
 //cs_include Scripts/Other/Classes/Members-CLasses/ChronoAssassin[Mem].cs
+//cs_include Scripts/Dailies/MineCrafting.cs
 
 using Skua.Core.Interfaces;
 

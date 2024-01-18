@@ -44,6 +44,7 @@ tags: null
 //cs_include Scripts/Nation/Various/Archfiend.cs
 //cs_include Scripts/Other/Classes/Necromancer.cs
 //cs_include Scripts/Dailies/Cryomancer.cs
+//cs_include Scripts/Dailies/MineCrafting.cs
 
 //cs_include Scripts/Other/Weapons/BurningBlade.cs
 //cs_include Scripts/Other/Weapons/BurningBladeOfAbezeth.cs

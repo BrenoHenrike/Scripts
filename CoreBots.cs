@@ -1913,8 +1913,7 @@ public class CoreBots
         if (Bot.Player.CurrentClass?.Name == "ArchMage")
             Bot.Options.AttackWithoutTarget = true;
 
-        // if (Bot.Options.AggroMonsters)
-        //     ToggleAggro(true);
+        Monster? Monster = Bot.Monsters.MapMonsters.FirstOrDefault(x => x.Name.FormatForCompare() == monster.FormatForCompare());
 
         if (item == null)
         {
@@ -1929,8 +1928,9 @@ public class CoreBots
             }
 
             Monster? targetedMob = monster == "*"
-                ? Bot.Monsters.CurrentAvailableMonsters.Find(x => IsMonsterAlive(x.MapID, true))
-                : Bot.Monsters.CurrentAvailableMonsters.Find(x => x.Name == monster && IsMonsterAlive(x.MapID, true));
+            ? Bot.Monsters.CurrentAvailableMonsters.Find(x => IsMonsterAlive(x.MapID, true))
+            : Bot.Monsters.CurrentAvailableMonsters.Find(x =>
+            x.Name.FormatForCompare() == monster.FormatForCompare() && IsMonsterAlive(x.MapID, true));
 
             if (targetedMob != null)
             {
@@ -1939,7 +1939,14 @@ public class CoreBots
         }
         else
         {
-            _KillForItem(monster, item, quant, isTemp, log: log);
+            if (Monster?.Name != null)
+            {
+                _KillForItem(Monster.Name, item, quant, isTemp, log: log);
+            }
+            else
+            {
+                _KillForItem(monster, item, quant, isTemp, log: log);
+            }
         }
 
         Rest();
@@ -5027,6 +5034,8 @@ public static class UtilExtensionsS
         => source.ToList().Find(match: Match);
     public static bool TryFind<T>(this IEnumerable<T> source, Predicate<T> Match, out T? toReturn)
         => (toReturn = source.Find(Match)) != null;
+    public static string FormatForCompare(this string input)
+        => input.Trim().ToLower().Normalize(System.Text.NormalizationForm.FormKD);
 }
 
 #nullable disable
