@@ -23,7 +23,7 @@ public class NationLoyaltyRewarded
     {
         Core.SetOptions();
 
-        FarmQuest("Diamond Badge of Nulgath", 1);
+        FarmQuest();
 
         Core.SetOptions(false);
     }
