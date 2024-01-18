@@ -396,7 +396,7 @@
       "diamond badge of nulgath"
     ],
     "path": "Nation/NationLoyaltyRewarded.cs",
-    "size": 4276,
+    "size": 4250,
     "fileName": "NationLoyaltyRewarded.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/NationLoyaltyRewarded.cs"
   },
@@ -1489,7 +1489,7 @@
       "null"
     ],
     "path": "Legion/CoreLegion.cs",
-    "size": 31546,
+    "size": 31558,
     "fileName": "CoreLegion.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/CoreLegion.cs"
   },
@@ -7728,7 +7728,7 @@
       "exalted"
     ],
     "path": "Nation/MergeShops/ShadowscytheMerge.cs",
-    "size": 5647,
+    "size": 5659,
     "fileName": "ShadowscytheMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/MergeShops/ShadowscytheMerge.cs"
   },
@@ -11632,7 +11632,7 @@
       "null"
     ],
     "path": "Other/MergeShops/TechfortressWarMerge.cs",
-    "size": 9939,
+    "size": 9951,
     "fileName": "TechfortressWarMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/TechfortressWarMerge.cs"
   },
@@ -15142,7 +15142,7 @@
       "shadowblast arena"
     ],
     "path": "Story/Nation/ShadowBlastArena.cs",
-    "size": 4545,
+    "size": 4557,
     "fileName": "ShadowBlastArena.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Nation/ShadowBlastArena.cs"
   },
@@ -17189,7 +17189,7 @@
       "good"
     ],
     "path": "Good/BLoD/2UltimateBlindingLightofDestiny.cs",
-    "size": 4121,
+    "size": 4132,
     "fileName": "2UltimateBlindingLightofDestiny.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/2UltimateBlindingLightofDestiny.cs"
   },
