@@ -105,10 +105,6 @@ public class NationLoyaltyRewarded
             Core.HuntMonster("lair", "Red Dragon", "Red Dragon's Fang");
             Core.HuntMonster("bloodtitan", "Blood Titan", "Blood Titan's Blade");
 
-
-            // More than one item of the same name as drop both temp and non-temp.
-            // while (!Bot.ShouldExit && !Core.CheckInventory(33257))
-
             Core.EquipClass(ClassType.Farm);
             Core.KillMonster("tercessuinotlim", "m2", "Left", "*", "Defeated Makai", 25, false, false);
 
