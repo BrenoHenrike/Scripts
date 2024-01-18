@@ -2503,31 +2503,36 @@ public class CoreBots
 
             foreach (Monster mob in Bot.Monsters.CurrentAvailableMonsters)
             {
-                Monster? targetedMob = (name == "*") ? mob : Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault(x => x.Name == name);
+                Monster? targetedMob = (name == "*") ? mob : Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault(x => x.Name.FormatForCompare() == name.FormatForCompare());
+
+                ItemBase? Item = isTemp ? Bot.TempInv.Items.FirstOrDefault(x => x.Name.FormatForCompare() == item.FormatForCompare())
+                : Bot.Inventory.Items.FirstOrDefault(x => x.Name.FormatForCompare() == item.FormatForCompare());
 
                 while (!Bot.ShouldExit && IsMonsterAlive(targetedMob?.MapID ?? 0, true))
                 {
                     Bot.Combat.Attack(targetedMob?.MapID ?? Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault()?.MapID ?? 0);
 
-                    if ((Bot.Inventory.Contains(item) && Bot.Inventory.GetQuantity(item) >= quantity) ||
-                        (Bot.TempInv.Contains(item) && Bot.TempInv.GetQuantity(item) >= quantity))
+                    if (Item != null && Bot.Inventory.Contains(Item.Name) && Bot.Inventory.GetQuantity(Item.Name) >= quantity ||
+                        Item != null && Bot.TempInv.Contains(Item.Name) && Bot.TempInv.GetQuantity(Item.Name) >= quantity)
                     {
+                        while (Bot.Player.InCombat)
+                        {
+                            ToggleAggro(false);
+                            Bot.Combat.CancelTarget();
+                            Bot.Combat.Exit();
+                            Bot.Wait.ForCombatExit();
+                        }
+
+                        Bot.Wait.ForPickup(Item.ID);
+                        Sleep();
+                        if (rejectElse)
+                            Bot.Drops.RejectExcept(Item.ID);
+                        Rest();
                         return;
                     }
                 }
             }
-
-            Sleep();
-
-            if (rejectElse)
-                Bot.Drops.RejectExcept(item);
         }
-
-        ToggleAggro(false);
-        Bot.Combat.CancelTarget();
-        Bot.Combat.Exit();
-        Bot.Wait.ForCombatExit();
-        Rest();
     }
 
 
@@ -2542,7 +2547,7 @@ public class CoreBots
         => IsMonsterAlive(Bot.Monsters.CurrentMonsters.Find(m => m.MapID == monsterMapID));
 
 
-    private List<int> KilledMonsters = new();
+    private readonly List<int> KilledMonsters = new();
     private void CleanKilledMonstersList(string map)
         => KilledMonsters.Clear();
     private void KilledMonsterListener(int monsterMapID)

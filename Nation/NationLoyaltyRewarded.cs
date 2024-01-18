@@ -94,21 +94,20 @@ public class NationLoyaltyRewarded
         Core.EquipClass(ClassType.Solo);
 
         // Nation Loyalty Rewarded 4749
-        Core.RegisterQuests(4749);
-
         while (!Bot.ShouldExit && items.Any(item => item != null && !Core.CheckInventory(item, quantity)))
         {
-
+            Core.EnsureAccept(4749);
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("aqlesson", "Carnax", "Carnax Eye", publicRoom: true, log: false);
-            Core.HuntMonster("deepchaos", "Kathool", "Kathool Tentacle", publicRoom: true, log: false);
-            Core.HuntMonster("lair", "Red Dragon", "Red Dragon's Fang", publicRoom: true, log: false);
-            Core.HuntMonster("bloodtitan", "Blood Titan", "Blood Titan's Blade", publicRoom: true, log: false);
+            while (!Bot.ShouldExit && !Core.CheckInventory(33257))
+                Core.KillMonster("dflesson", "r12", "Right", "Fluffy the Dracolich");
+            Core.HuntMonster("aqlesson", "Carnax", "Carnax Eye");
+            Core.HuntMonster("deepchaos", "Kathool", "Kathool Tentacle");
+            Core.HuntMonster("lair", "Red Dragon", "Red Dragon's Fang");
+            Core.HuntMonster("bloodtitan", "Blood Titan", "Blood Titan's Blade");
 
 
             // More than one item of the same name as drop both temp and non-temp.
-            while (!Bot.ShouldExit && items.Any(item => item != null && !Core.CheckInventory(33257)))
-                Core.KillMonster("dflesson", "r12", "Right", "Fluffy the Dracolich", publicRoom: true);
+            // while (!Bot.ShouldExit && !Core.CheckInventory(33257))
 
             Core.EquipClass(ClassType.Farm);
             Core.KillMonster("tercessuinotlim", "m2", "Left", "*", "Defeated Makai", 25, false, false);
@@ -120,6 +119,7 @@ public class NationLoyaltyRewarded
                     Bot.Wait.ForPickup(item);
                 }
             }
+            Core.EnsureComplete(4749);
         }
     }
 }
