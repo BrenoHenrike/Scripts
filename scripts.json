@@ -396,7 +396,7 @@
       "diamond badge of nulgath"
     ],
     "path": "Nation/NationLoyaltyRewarded.cs",
-    "size": 2480,
+    "size": 2965,
     "fileName": "NationLoyaltyRewarded.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/NationLoyaltyRewarded.cs"
   },
@@ -7835,6 +7835,25 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/MergeShops/DirtlickersMerge.cs"
   },
   {
+    "name": "Nation Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Nation Merge [1206] in /shadowblast",
+    "tags": [
+      "nation",
+      "merge",
+      "shadowblast",
+      "polish",
+      "pet",
+      "soulstealer",
+      "horned",
+      "void",
+      "executioner"
+    ],
+    "path": "Nation/MergeShops/NationMerge.cs",
+    "size": 4127,
+    "fileName": "NationMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/MergeShops/NationMerge.cs"
+  },
+  {
     "name": "NulgathWarMerge",
     "description": "null",
     "tags": [
@@ -13633,6 +13652,24 @@
     "size": 5215,
     "fileName": "DarkPalaceMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/MergeShops/DarkPalaceMerge.cs"
+  },
+  {
+    "name": "Legion Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Legion Merge [1207] in /shadowblast",
+    "tags": [
+      "legion",
+      "merge",
+      "shadowblast",
+      "executioner",
+      "evolved",
+      "soul",
+      "mender",
+      "soulstealer"
+    ],
+    "path": "Legion/MergeShops/LegionMerge.cs",
+    "size": 4157,
+    "fileName": "LegionMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/MergeShops/LegionMerge.cs"
   },
   {
     "name": "SevenCirclesWarMerge",
