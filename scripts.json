@@ -8044,12 +8044,16 @@
   },
   {
     "name": "0MaxBags",
-    "description": "null",
+    "description": "Farms the max stack of all the nation materials using various methods based off the pets / quest you have avaiable.",
     "tags": [
-      "null"
+      "nation",
+      "nulgath",
+      "bags",
+      "all",
+      "🖕"
     ],
     "path": "Nation/Materials/0MaxBags.cs",
-    "size": 885,
+    "size": 1024,
     "fileName": "0MaxBags.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Materials/0MaxBags.cs"
   },
