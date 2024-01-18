@@ -3324,6 +3324,11 @@ public class CoreBots
                 SimpleQuestBypass((49, 25));
                 break;
 
+
+            case "kitsune":
+                SimpleQuestBypass((25, 22));
+                break;
+
             case "elemental":
                 SimpleQuestBypass((32, 35));
                 break;
@@ -3516,7 +3521,7 @@ public class CoreBots
 
             #region Special Cases
             case "tercessuinotlim":
-                if (!isCompletedBefore(9541))
+                if (!isCompletedBefore(9540))
                 {
                     Logger("This map now requires a 1 time completion of \"Beyond the Portal\"");
                     //to avoid black screen in `tercessuinotlim
