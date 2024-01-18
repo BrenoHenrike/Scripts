@@ -64,7 +64,7 @@ public class NationMerge
                 #endregion
 
                 case "Diamond Badge of Nulgath":
-                    NLR.FarmQuest(req.Name, quant);
+                    NLR.FarmQuest(new string[] { req.Name }, quant);
                     break;
 
                 case "Emblem of Nulgath":
