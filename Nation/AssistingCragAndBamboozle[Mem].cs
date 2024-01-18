@@ -44,19 +44,25 @@ public class AssistingCragAndBamboozle
             return;
         }
 
-        if (!Core.CheckInventory("Tendurrr The Assistant"))
-            Core.KillMonster("tercessuinotlim", "m2", "Left", "*", "Tendurrr The Assistant", 1, false);
-
         Core.AddDrop("Nulgath Larvae",
                      "Sword of Nulgath", "Gem of Nulgath", "Tainted Gem", "Dark Crystal Shard", "Diamond of Nulgath",
                      "Totem of Nulgath", "Blood Gem of the Archfiend", "Unidentified 19", "Elders' Blood", "Voucher of Nulgath", "Voucher of Nulgath (non-mem)");
+
+        //Required to "Accept"
+        if (!Core.CheckInventory("Tendurrr The Assistant"))
+            Core.KillMonster("tercessuinotlim", "m2", "Left", "*", "Tendurrr The Assistant", isTemp: false);
 
         Core.EnsureAccept(5817);
         Nation.EssenceofNulgath(20);
         if (!Core.CheckInventory("Sparrow's Blood"))
             Daily.SparrowsBlood();
         Nation.ApprovalAndFavor(100, 100);
-        Nation.NationRound4Medal();
+        
+        //medal required to get seals
+        Nation.NationRound4Medal();        
+        Core.Logger("Accepting \"Nation Recruits: Seal Your Fate[4748]\" to allow \"Fiend Seal\" to drop.");
+        Core.EnsureAccept(4748);
+        Core.HuntMonster("shadowblast", "Legion Fenrir", "Fiend Seal", 10, isTemp: false);
 
         if (!Core.CheckInventory("Sparrow's Blood"))
         {
