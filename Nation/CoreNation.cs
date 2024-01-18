@@ -520,8 +520,7 @@ public class CoreNation
         if (Core.CheckInventory("Emblem of Nulgath", quant))
             return;
 
-        if (!Core.CheckInventory("Nation Round 4 Medal"))
-            NationRound4Medal();
+        NationRound4Medal();
 
         Core.AddDrop("Fiend Seal", "Gem of Domination", "Emblem of Nulgath");
         Core.AddDrop(bagDrops);
