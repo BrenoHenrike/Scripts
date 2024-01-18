@@ -2917,6 +2917,9 @@ public class CoreBots
 
             while (equipedClass != className)
             {
+                if (Bot.Player.InCombat)
+                    Bot.Combat.Exit();
+                    
                 logEquip = false;
                 Equip(Bot.Inventory.Items.First(x => x.Name.ToLower().Trim() == className && x.Category == ItemCategory.Class).ID);
                 logEquip = true;
@@ -2999,6 +3002,7 @@ public class CoreBots
         {
             Bot.Combat.CancelTarget();
             Bot.Wait.ForCombatExit();
+            Bot.Combat.Exit();
             JumpWait();
             Sleep();
         }
