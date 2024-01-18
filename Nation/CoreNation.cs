@@ -541,6 +541,12 @@ public class CoreNation
     /// </summary>
     public void NationRound4Medal()
     {
+        if (Core.CheckInventory("Nation Round 4 Medal"))
+        {
+            Core.Logger("Medal 4 owned, no need to farm it");
+            return;
+        }
+
         foreach (string medal in new[] { "Nation Round 1 Medal", "Nation Round 2 Medal", "Nation Round 3 Medal", "Nation Round 4 Medal" })
         {
             if (Core.CheckInventory(medal))

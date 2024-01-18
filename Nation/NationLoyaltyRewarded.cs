@@ -8,6 +8,7 @@ tags: nation loyalty rewarded, nulgath, nation, dark crystal shard, diamond of n
 //cs_include Scripts/Nation/CoreNation.cs
 //cs_include Scripts/CoreAdvanced.cs
 
+using System.Linq;
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 
@@ -19,64 +20,106 @@ public class NationLoyaltyRewarded
     public CoreNation Nation = new();
     public CoreAdvanced Adv = new();
 
+
+
+
     public void ScriptMain(IScriptInterface bot)
     {
+        var questRewards = Core.QuestRewards(4749);
+        var acceptRequirements = Bot.Quests.EnsureLoad(4749)?.AcceptRequirements;
+
+        Core.BankingBlackList.AddRange(
+            (questRewards != null ? questRewards.Select(item => item.ToString()) : Enumerable.Empty<string>())
+            .Concat(acceptRequirements != null ? acceptRequirements.Select(item => item.ToString()) : Enumerable.Empty<string>()));
+
         Core.SetOptions();
 
-        FarmQuest();
+        FarmQuest(Core.QuestRewards(4749));
 
         Core.SetOptions(false);
     }
 
-    public void FarmQuest(String? farmItem = null, int quant = 0)
+    public void FarmQuest(string[]? farmItems = null, int quantity = 0)
     {
-        List<ItemBase>? RewardOptions = null;
-        if (farmItem == null)
+        // Process all items if farmItems is null
+        if (farmItems == null)
         {
-            RewardOptions = Core.EnsureLoad(4749).Rewards;
-            foreach (ItemBase item in RewardOptions)
-                Core.AddDrop(item.Name);
-        }
-        else Core.AddDrop(farmItem);
-
-        Nation.NationRound4Medal();
-        Nation.FarmUni13(1);
-        if (RewardOptions != null)
-            foreach (ItemBase item in RewardOptions)
+            var allRewards = Core.EnsureLoad(4749).Rewards;
+            foreach (var item in allRewards)
             {
-                if (Bot.Inventory.IsMaxStack(item.ID))
-                    Core.Logger($"{item.Name} is max stack Checking next item in the \"Time is Money\" Quest's Rewards");
-                else
-                {
-                    Core.FarmingLogger(item.Name, item.MaxStack);
-                    //Nation Loyalty Rewarded 4749
-                    Core.RegisterQuests(4749);
-                    while (!Bot.ShouldExit && !Bot.Inventory.IsMaxStack(item.ID))
-                        NLR();
-                    Core.CancelRegisteredQuests();
-
-                }
+                NLR(new[] { item.Name }, quantity == 0 ? (Bot.Quests.EnsureLoad(4749)?.Rewards.Find(x => x.Name == item.Name)?.MaxStack ?? 0) : quantity);
             }
+        }
         else
         {
-            Core.FarmingLogger(farmItem, quant);
-            Core.RegisterQuests(4749);
-            while (!Bot.ShouldExit && !Core.CheckInventory(farmItem, quant))
-                NLR();
-            Core.CancelRegisteredQuests();
+            // Process specified items
+            foreach (var farmItem in farmItems)
+            {
+                Core.AddDrop((farmItem ?? Core.EnsureLoad(4749).Rewards.FirstOrDefault()?.ID.ToString())!);
+            }
+
+            // Required items to start quest;
+            Nation.NationRound4Medal();
+            Nation.FarmUni13(1);
+
+            // Process each specified item
+            foreach (var farmItem in farmItems)
+            {
+                var reward = Core.EnsureLoad(4749).Rewards.Find(x => x.Name == farmItem);
+                if (reward != null && !Bot.Inventory.IsMaxStack(reward.ID))
+                    NLR(new[] { farmItem }, quantity == 0 ? reward.MaxStack : quantity);
+            }
+
+        }
+    }
+
+
+    public void NLR(string[]? items = null, int quantity = 1)
+    {
+        // Rule 2: Fix nullable
+        if (items == null || items.Any(item => item == null || Core.CheckInventory(item, quantity)))
+        {
+            Core.Logger(items == null ? "Items Null" : $"{string.Join(", ", items)} x{quantity} Found! Returning...");
+            return;
         }
 
+        foreach (var item in items)
+        {
+            if (item != null)
+            {
+                Core.FarmingLogger(item, quantity);
+            }
+        }
 
-    }
-    public void NLR()
-    {
         Core.EquipClass(ClassType.Solo);
-        Core.HuntMonster("aqlesson", "Carnax", "Carnax Eye", publicRoom: true, log: false);
-        Core.HuntMonster("deepchaos", "Kathool", "Kathool Tentacle", publicRoom: true, log: false);
-        Core.HuntMonster("dflesson", "Fluffy the Dracolich", "Fluffy's Bones", publicRoom: true, log: false);
-        Core.HuntMonster("lair", "Red Dragon", "Red Dragon's Fang", publicRoom: true, log: false);
-        Core.HuntMonster("bloodtitan", "Blood Titan", "Blood Titan's Blade", publicRoom: true, log: false);
-        Core.EquipClass(ClassType.Farm);
-        Core.KillMonster("tercessuinotlim", "m2", "Left", "*", "Defeated Makai", 25, false, false);
+
+        // Nation Loyalty Rewarded 4749
+        Core.RegisterQuests(4749);
+
+        while (!Bot.ShouldExit && items.Any(item => item != null && !Core.CheckInventory(item, quantity)))
+        {
+
+            Core.EquipClass(ClassType.Solo);
+            Core.HuntMonster("aqlesson", "Carnax", "Carnax Eye", publicRoom: true, log: false);
+            Core.HuntMonster("deepchaos", "Kathool", "Kathool Tentacle", publicRoom: true, log: false);
+            Core.HuntMonster("lair", "Red Dragon", "Red Dragon's Fang", publicRoom: true, log: false);
+            Core.HuntMonster("bloodtitan", "Blood Titan", "Blood Titan's Blade", publicRoom: true, log: false);
+
+
+            // More than one item of the same name as drop both temp and non-temp.
+            while (!Bot.ShouldExit && items.Any(item => item != null && !Core.CheckInventory(33257)))
+                Core.KillMonster("dflesson", "r12", "Right", "Fluffy the Dracolich", publicRoom: true);
+
+            Core.EquipClass(ClassType.Farm);
+            Core.KillMonster("tercessuinotlim", "m2", "Left", "*", "Defeated Makai", 25, false, false);
+
+            foreach (var item in items)
+            {
+                if (item != null)
+                {
+                    Bot.Wait.ForPickup(item);
+                }
+            }
+        }
     }
 }

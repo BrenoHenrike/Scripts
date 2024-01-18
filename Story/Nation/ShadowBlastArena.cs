@@ -105,15 +105,15 @@ public class ShadowBlastArena
             Core.KillMonster("tercessuinotlim", "m2", "Left", "*", "Defeated Makai", 25, false);
 
             Core.EquipClass(ClassType.Solo);
-            Core.KillMonster("aqlesson", "Frame9", "Right", "Carnax", "Carnax Eye", publicRoom: true);
-            Core.HuntMonster("deepchaos", "Kathool", "Kathool Tentacle", publicRoom: true);
+            Core.KillMonster("aqlesson", "Frame9", "Right", "Carnax", "Carnax Eye");
+            Core.HuntMonster("deepchaos", "Kathool", "Kathool Tentacle");
 
             //More then one item of the same name as drop btoh temp and non-temp.
             while (!Bot.ShouldExit && !Core.CheckInventory(33257))
-                Core.KillMonster("dflesson", "r12", "Right", "Fluffy the Dracolich", publicRoom: true);
+                Core.KillMonster("dflesson", "r12", "Right", "Fluffy the Dracolich");
 
             Core.HuntMonster("lair", "Red Dragon", "Red Dragon's Fang");
-            Core.HuntMonster("bloodtitan", "Blood Titan", "Blood Titan's Blade", publicRoom: true);
+            Core.HuntMonster("bloodtitan", "Blood Titan", "Blood Titan's Blade");
             Bot.Wait.ForPickup("Diamond Token of Dage");
         }
         Core.CancelRegisteredQuests();
