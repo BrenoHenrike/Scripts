@@ -658,6 +658,8 @@ public class CoreNation
                     Core.EnsureComplete(Bot.Quests.IsAvailable(2568) ? 2568 : 2566);
                     Bot.Wait.ForPickup(item);
                 }
+                if (Core.CheckInventory("Voucher of Nulgath (non-mem)") && Core.CheckInventory("Essence of Nulgath", 60))
+                    Core.EnsureCompleteMulti(4778);
             }
         }
         else
@@ -685,6 +687,8 @@ public class CoreNation
                         Core.EnsureComplete(Bot.Quests.IsAvailable(2568) ? 2568 : 2566);
                         Bot.Wait.ForPickup(drop.Name);
                     }
+                    if (Core.CheckInventory("Voucher of Nulgath (non-mem)") && Core.CheckInventory("Essence of Nulgath", 60))
+                        Core.EnsureCompleteMulti(4778);
                 }
             }
         }
@@ -738,6 +742,8 @@ public class CoreNation
                             Core.SellItem("Voucher of Nulgath", all: true);
                             Bot.Wait.ForItemSell();
                         }
+                        if (Core.CheckInventory("Voucher of Nulgath (non-mem)") && Core.CheckInventory("Essence of Nulgath", 60))
+                            Core.EnsureCompleteMulti(4778);
                     }
                 }
             }
@@ -769,6 +775,8 @@ public class CoreNation
                         Core.SellItem("Voucher of Nulgath", all: true);
                         Bot.Wait.ForItemSell();
                     }
+                    if (Core.CheckInventory("Voucher of Nulgath (non-mem)") && Core.CheckInventory("Essence of Nulgath", 60))
+                        Core.EnsureCompleteMulti(4778);
                 }
             }
         }
@@ -876,6 +884,8 @@ public class CoreNation
                         if (Reward != SwindlesReturnReward.None)
                             Core.EnsureComplete(7551, Item2.ID);
                     }
+                    if (Core.CheckInventory("Voucher of Nulgath (non-mem)") && Core.CheckInventory("Essence of Nulgath", 60))
+                        Core.EnsureCompleteMulti(4778);
                 }
             }
             Core.CancelRegisteredQuests();
@@ -937,6 +947,8 @@ public class CoreNation
                     if (Reward != SwindlesReturnReward.None)
                         Core.EnsureComplete(7551, (int)Reward);
                 }
+                if (Core.CheckInventory("Voucher of Nulgath (non-mem)") && Core.CheckInventory("Essence of Nulgath", 60))
+                    Core.EnsureCompleteMulti(4778);
             }
 
         }
@@ -1081,17 +1093,17 @@ public class CoreNation
                         if (Bot.Player.Cell == "Enter")
                             break;
 
-                    } while (!Bot.ShouldExit && Bot.Player.Cell != "Enter");
+                    }
+                    while (!Bot.ShouldExit && Bot.Player.Cell != "Enter");
 
-                } while (!Bot.ShouldExit && (Bot.Player.HasTarget || Bot.Player.InCombat) && Bot.Player.Cell != "Enter");
+                }
+                while (!Bot.ShouldExit && (Bot.Player.HasTarget || Bot.Player.InCombat) && Bot.Player.Cell != "Enter");
 
                 // Pickup and sell the item
                 Bot.Drops.Pickup("Voucher of Nulgath");
                 Core.SellItem("Voucher of Nulgath", all: true);
                 Bot.Wait.ForItemSell();
             }
-
-
 
             if (returnPolicyDuringSupplies && Core.CheckInventory(new[] { Uni(1), Uni(6), Uni(9), Uni(16), Uni(20) }))
             {
@@ -1141,6 +1153,8 @@ public class CoreNation
                     }
                 }
             }
+            if (Core.CheckInventory("Voucher of Nulgath (non-mem)") && Core.CheckInventory("Essence of Nulgath", 60))
+                Core.EnsureCompleteMulti(4778);
         }
     }
 

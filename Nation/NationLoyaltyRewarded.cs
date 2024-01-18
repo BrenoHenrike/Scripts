@@ -99,7 +99,11 @@ public class NationLoyaltyRewarded
             Core.EnsureAccept(4749);
             Core.EquipClass(ClassType.Solo);
             while (!Bot.ShouldExit && !Core.CheckInventory(33257))
+            {
                 Core.KillMonster("dflesson", "r12", "Right", "Fluffy the Dracolich");
+                if (Core.CheckInventory(33257))
+                    break;
+            }
             Core.HuntMonster("aqlesson", "Carnax", "Carnax Eye");
             Core.HuntMonster("deepchaos", "Kathool", "Kathool Tentacle");
             Core.HuntMonster("lair", "Red Dragon", "Red Dragon's Fang");
