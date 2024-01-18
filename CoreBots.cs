@@ -3523,6 +3523,7 @@ public class CoreBots
             case "tercessuinotlim":
                 if (!isCompletedBefore(9540))
                 {
+                    SimpleQuestBypass((15, 8));
                     Logger("This map now requires a 1 time completion of \"Beyond the Portal\"");
                     //to avoid black screen in `tercessuinotlim
                     EnsureAccept(9540);
@@ -3531,13 +3532,15 @@ public class CoreBots
                 }
 
                 //for taro to show up
-                if (!isCompletedBefore(9541))
-                    ChainComplete(9541);
+                if (cell == "Taro")
+                    if (!isCompletedBefore(9541))
+                        ChainComplete(9541);
 
-                // SimpleQuestBypass((542, 1));
                 Jump("m22", "Left");
                 tryJoin();
 
+                Jump("Enter", "Left");
+                Jump(cell, pad);
 
                 break;
 
