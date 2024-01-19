@@ -2487,8 +2487,6 @@ public class CoreBots
         if (log)
             FarmingLogger(item, quantity);
 
-        ToggleAggro(Bot.Options.AggroMonsters);
-
         while (!Bot.ShouldExit &&
        ((!Bot.Inventory.Contains(item) && Bot.Inventory.GetQuantity(item) < quantity) ||
         (!Bot.TempInv.Contains(item) && Bot.TempInv.GetQuantity(item) < quantity)))
@@ -2515,12 +2513,11 @@ public class CoreBots
                     if (Item != null && Bot.Inventory.Contains(Item.Name) && Bot.Inventory.GetQuantity(Item.Name) >= quantity ||
                         Item != null && Bot.TempInv.Contains(Item.Name) && Bot.TempInv.GetQuantity(Item.Name) >= quantity)
                     {
-                        while (Bot.Player.InCombat)
+                        while (!Bot.ShouldExit && (Bot.Player.InCombat || Bot.Player.HasTarget))
                         {
                             ToggleAggro(false);
-                            Bot.Combat.CancelTarget();
                             Bot.Combat.Exit();
-                            Bot.Wait.ForCombatExit();
+                            Sleep();
                         }
 
                         Bot.Wait.ForPickup(Item.ID);
