@@ -7335,13 +7335,21 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/Materials/SukisPrestige.cs"
   },
   {
-    "name": "PrinceDarkonsPoleaxePreReqs",
-    "description": "null",
+    "name": "Prince Darkon's Poleaxe Pre Reqs",
+    "description": "This script will farm Prince Darkon's Poleaxe Pre-Reqs.",
     "tags": [
-      "null"
+      "darkon",
+      "poleaxe",
+      "prereqs",
+      "teeth",
+      "melody",
+      "receipt",
+      "gratitude",
+      "astravian medal",
+      "prince"
     ],
     "path": "Darkon/Various/PrinceDarkonsPoleaxePreReqs.cs",
-    "size": 1986,
+    "size": 2122,
     "fileName": "PrinceDarkonsPoleaxePreReqs.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/Various/PrinceDarkonsPoleaxePreReqs.cs"
   },
