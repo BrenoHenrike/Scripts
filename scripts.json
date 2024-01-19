@@ -3329,24 +3329,34 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/ArchPaladin.cs"
   },
   {
-    "name": "Leveling",
-    "description": "null",
+    "name": "Leveling [1-100]",
+    "description": "This script will farm XP to max level.",
     "tags": [
-      "null"
+      "levelling",
+      "leveling",
+      "level",
+      "xp",
+      "experience",
+      "farm",
+      "exp"
     ],
     "path": "Farm/Leveling.cs",
-    "size": 682,
+    "size": 773,
     "fileName": "Leveling.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/Leveling.cs"
   },
   {
-    "name": "CombatTrophy",
-    "description": "null",
+    "name": "Combat Trophy",
+    "description": "This script will farm Combat Trophies in /bludrutbtawl",
     "tags": [
-      "null"
+      "combat",
+      "trophy",
+      "pvp",
+      "bludrut",
+      "brawl"
     ],
     "path": "Farm/CombatTrophy.cs",
-    "size": 707,
+    "size": 789,
     "fileName": "CombatTrophy.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/CombatTrophy.cs"
   },
@@ -3365,24 +3375,43 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/GoldFarm.cs"
   },
   {
-    "name": "SevenCirclesWarXP+Gold",
-    "description": "null",
+    "name": "Seven Circles War XP + Gold",
+    "description": "This script will farm XP and Gold using SevenCirclesWar method.",
     "tags": [
-      "null"
+      "seven",
+      "7",
+      "circles",
+      "war",
+      "gold",
+      "xp",
+      "exp",
+      "experience",
+      "farm",
+      "max",
+      "100",
+      "level",
+      "leveling"
     ],
     "path": "Farm/SevenCirclesWarXP+Gold.cs",
-    "size": 1045,
+    "size": 1187,
     "fileName": "SevenCirclesWarXP+Gold.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/SevenCirclesWarXP+Gold.cs"
   },
   {
-    "name": "IcestormArenaXP[1-100]",
-    "description": "null",
+    "name": "IceStorm Arena XP [1-100]",
+    "description": "This script will farm XP in /icestormarena.",
     "tags": [
-      "null"
+      "experience",
+      "xp",
+      "level",
+      "leveling",
+      "farm",
+      "icestormarena",
+      "icestorm",
+      "arena"
     ],
     "path": "Farm/IcestormArenaXP[1-100].cs",
-    "size": 781,
+    "size": 888,
     "fileName": "IcestormArenaXP[1-100].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/IcestormArenaXP[1-100].cs"
   },
@@ -3412,12 +3441,12 @@
       "decay"
     ],
     "path": "Farm/BuyScrolls.cs",
-    "size": 5263,
+    "size": 5268,
     "fileName": "BuyScrolls.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/BuyScrolls.cs"
   },
   {
-    "name": "DarkWarLegionGold",
+    "name": "Dark War Legion Gold",
     "description": "Gold farm using Dark War Legion Method",
     "tags": [
       "gold",
@@ -3427,7 +3456,7 @@
       "legion"
     ],
     "path": "Farm/DarkWarLegionGold.cs",
-    "size": 1091,
+    "size": 1094,
     "fileName": "DarkWarLegionGold.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/DarkWarLegionGold.cs"
   },
@@ -17355,13 +17384,19 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/TreasureHunterREP.cs"
   },
   {
-    "name": "BladeofAweREP",
-    "description": "null",
+    "name": "Blade of Awe REP",
+    "description": "This script will farm Blade of Awe reputation to rank 10.",
     "tags": [
-      "null"
+      "boa",
+      "bladeofawe",
+      "awe",
+      "reputation",
+      "rep",
+      "rank",
+      "farm"
     ],
     "path": "Farm/REP/BladeofAweREP.cs",
-    "size": 604,
+    "size": 705,
     "fileName": "BladeofAweREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/BladeofAweREP.cs"
   },
@@ -17377,13 +17412,18 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/DreadrockREP.cs"
   },
   {
-    "name": "BaconCatREP",
-    "description": "null",
+    "name": "Bacon Cat REP",
+    "description": "This script will farm Bacon Cat reputation to rank 10.",
     "tags": [
-      "null"
+      "baconcat",
+      "bacon cat",
+      "reputation",
+      "rep",
+      "farm",
+      "rank"
     ],
     "path": "Farm/REP/BaconCatREP.cs",
-    "size": 860,
+    "size": 956,
     "fileName": "BaconCatREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/BaconCatREP.cs"
   },
@@ -17421,24 +17461,32 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/DeathPitBrawlRep.cs"
   },
   {
-    "name": "BeastMasterREP[Mem]",
-    "description": "null",
+    "name": "BeastMaster REP",
+    "description": "This script will farm BeastMaster reputation to rank 10.",
     "tags": [
-      "null"
+      "beastmaster",
+      "beast master",
+      "reputation",
+      "rep",
+      "farm",
+      "rank"
     ],
     "path": "Farm/REP/BeastMasterREP[Mem].cs",
-    "size": 629,
+    "size": 727,
     "fileName": "BeastMasterREP[Mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/BeastMasterREP[Mem].cs"
   },
   {
-    "name": "ChaosREP",
-    "description": "null",
+    "name": "Chaos REP",
+    "description": "This script will farm Chaos reputation to rank 10.",
     "tags": [
-      "null"
+      "chaos",
+      "rep",
+      "reputation",
+      "rank"
     ],
     "path": "Farm/REP/ChaosREP.cs",
-    "size": 580,
+    "size": 651,
     "fileName": "ChaosREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/ChaosREP.cs"
   },
@@ -17454,13 +17502,18 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/GlaceraREP.cs"
   },
   {
-    "name": "ChronoSpanREP",
-    "description": "null",
+    "name": "ChronoSpan REP",
+    "description": "This script will farm ChronoSpan reputation to rank 10.",
     "tags": [
-      "null"
+      "chrono",
+      "span",
+      "timespace",
+      "reputation",
+      "rep",
+      "rank"
     ],
     "path": "Farm/REP/ChronoSpanREP.cs",
-    "size": 595,
+    "size": 689,
     "fileName": "ChronoSpanREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/ChronoSpanREP.cs"
   },
@@ -17487,24 +17540,31 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/NorthpointeREP.cs"
   },
   {
-    "name": "AlchemyREP",
-    "description": "null",
+    "name": "Alchemy REP",
+    "description": "This script will farm Alchemy reputation to rank 10.",
     "tags": [
-      "null"
+      "alchemy",
+      "rep",
+      "reputation",
+      "farm"
     ],
     "path": "Farm/REP/AlchemyREP.cs",
-    "size": 1617,
+    "size": 1692,
     "fileName": "AlchemyREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/AlchemyREP.cs"
   },
   {
-    "name": "CraggleRockREP",
-    "description": "null",
+    "name": "CraggleRock REP",
+    "description": "This script will farm CraggleRock reputation to rank 10.",
     "tags": [
-      "null"
+      "craggle",
+      "rock",
+      "rep",
+      "reputation",
+      "rank"
     ],
     "path": "Farm/REP/CraggleRockREP.cs",
-    "size": 598,
+    "size": 683,
     "fileName": "CraggleRockREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/CraggleRockREP.cs"
   },
@@ -17641,24 +17701,32 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/TrollREP.cs"
   },
   {
-    "name": "ArcangroveREP",
-    "description": "null",
+    "name": "Arcangrove REP",
+    "description": "This script will farm Arcangrove reputation to rank 10.",
     "tags": [
-      "null"
+      "arcangrove",
+      "rep",
+      "reputation",
+      "farm",
+      "rank"
     ],
     "path": "Farm/REP/ArcangroveREP.cs",
-    "size": 621,
+    "size": 708,
     "fileName": "ArcangroveREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/ArcangroveREP.cs"
   },
   {
-    "name": "BrethwrenREP",
-    "description": "null",
+    "name": "Brethwren REP [Seasonal]",
+    "description": "This script will farm Brethwren reputation to rank 10.",
     "tags": [
-      "null"
+      "reputation",
+      "rep",
+      "seasonal",
+      "rank",
+      "farm"
     ],
     "path": "Farm/REP/BrethwrenREP.cs",
-    "size": 864,
+    "size": 959,
     "fileName": "BrethwrenREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/BrethwrenREP.cs"
   },
@@ -17685,13 +17753,18 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/SomniaREP.cs"
   },
   {
-    "name": "BrightoakREP",
-    "description": "null",
+    "name": "Brightoak REP",
+    "description": "This script will farm Brightoak REP to rank 10.",
     "tags": [
-      "null"
+      "bright",
+      "oak",
+      "reputation",
+      "rep",
+      "rank",
+      "farm"
     ],
     "path": "Farm/REP/BrightoakREP.cs",
-    "size": 848,
+    "size": 928,
     "fileName": "BrightoakREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/BrightoakREP.cs"
   },
@@ -17729,13 +17802,16 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/ThunderForgeREP.cs"
   },
   {
-    "name": "AegisREP",
-    "description": "null",
+    "name": "Aegis REP",
+    "description": "This script will farm Aegis REP to rank 10.",
     "tags": [
-      "null"
+      "aegis",
+      "rep",
+      "reputation",
+      "farm"
     ],
     "path": "Farm/REP/AegisREP.cs",
-    "size": 606,
+    "size": 670,
     "fileName": "AegisREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/AegisREP.cs"
   },
@@ -17751,24 +17827,34 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/SkyguardREP[Mem].cs"
   },
   {
-    "name": "BlacksmithingREP",
-    "description": "null",
+    "name": "Blacksmithing REP",
+    "description": "This script will farm Blacksmithing reputation to rank 10.",
     "tags": [
-      "null"
+      "blacksmith",
+      "rep",
+      "reputation",
+      "rank",
+      "farm"
     ],
     "path": "Farm/REP/BlacksmithingREP.cs",
-    "size": 1248,
+    "size": 1338,
     "fileName": "BlacksmithingREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/BlacksmithingREP.cs"
   },
   {
-    "name": "ChaosMilitiaREP",
-    "description": "null",
+    "name": "Chaos Militia REP",
+    "description": "This script will farm Chaos Militia reputation to rank 10.",
     "tags": [
-      "null"
+      "chaos",
+      "chaosmilitia",
+      "militia",
+      "rep",
+      "rank",
+      "farm",
+      "reputation"
     ],
     "path": "Farm/REP/ChaosMilitiaREP.cs",
-    "size": 601,
+    "size": 710,
     "fileName": "ChaosMilitiaREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/ChaosMilitiaREP.cs"
   },
@@ -17851,7 +17937,7 @@
       "reps"
     ],
     "path": "Farm/REP/1GetAllRanks.cs",
-    "size": 1459,
+    "size": 1463,
     "fileName": "1GetAllRanks.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/1GetAllRanks.cs"
   },
@@ -17900,13 +17986,18 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/EvilREP.cs"
   },
   {
-    "name": "DeathPitArenaREP",
-    "description": "null",
+    "name": "Death Pit Arena REP",
+    "description": "This script will farm Death Pit Arena reputation to rank 10.",
     "tags": [
-      "null"
+      "deathpitarena",
+      "deathpit",
+      "arena",
+      "reputation",
+      "rep",
+      "rank"
     ],
     "path": "Farm/REP/DeathPitArenaREP.cs",
-    "size": 604,
+    "size": 712,
     "fileName": "DeathPitArenaREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/DeathPitArenaREP.cs"
   },
