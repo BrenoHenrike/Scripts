@@ -2509,7 +2509,7 @@ public class CoreBots
                 while (!Bot.ShouldExit && IsMonsterAlive(targetedMob?.MapID ?? 0, true))
                 {
                     Bot.Combat.Attack(targetedMob?.MapID ?? Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault()?.MapID ?? 0);
-
+                    Sleep();
                     if (Item != null && Bot.Inventory.Contains(Item.Name) && Bot.Inventory.GetQuantity(Item.Name) >= quantity ||
                         Item != null && Bot.TempInv.Contains(Item.Name) && Bot.TempInv.GetQuantity(Item.Name) >= quantity)
                     {
