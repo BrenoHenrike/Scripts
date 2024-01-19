@@ -1,7 +1,7 @@
 /*
-name: BlacksmithingREP
-description: null
-tags: null
+name: Blacksmithing REP
+description: This script will farm Blacksmithing reputation to rank 10.
+tags: blacksmith, rep, reputation, rank, farm
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

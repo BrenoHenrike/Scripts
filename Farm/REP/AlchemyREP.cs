@@ -1,7 +1,7 @@
 /*
-name: AlchemyREP
-description: null
-tags: null
+name: Alchemy REP
+description: This script will farm Alchemy reputation to rank 10.
+tags: alchemy, rep, reputation, farm
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

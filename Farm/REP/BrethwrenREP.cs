@@ -1,7 +1,7 @@
 /*
-name: BrethwrenREP
-description: null
-tags: null
+name: Brethwren REP [Seasonal]
+description: This script will farm Brethwren reputation to rank 10.
+tags: reputation, rep, seasonal, rank, farm
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
