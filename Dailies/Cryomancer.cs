@@ -34,7 +34,7 @@ public class Cryomancer
         if (Core.CheckInventory("Cryomancer"))
         {
             if (rankUpClass)
-                Adv.RankUpClass("cryomancer");
+                Adv.RankUpClass("Cryomancer");
             return;
         }
 
@@ -42,7 +42,7 @@ public class Cryomancer
         Daily.Cryomancer();
 
         if (rankUpClass)
-            Adv.RankUpClass("cryomancer");
+            Adv.RankUpClass("Cryomancer");
     }
 
 }
