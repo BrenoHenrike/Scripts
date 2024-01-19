@@ -3187,30 +3187,38 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/BuyOut.cs"
   },
   {
-    "name": "InventoryEnhancer",
-    "description": "null",
+    "name": "Inventory Enhancer",
+    "description": "This script will enhance all the items in your inventory with optimal enhancements.",
     "tags": [
-      "null"
+      "inventory",
+      "enhance",
+      "enh"
     ],
     "path": "Enhancement/InventoryEnhancer.cs",
-    "size": 1337,
+    "size": 1436,
     "fileName": "InventoryEnhancer.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Enhancement/InventoryEnhancer.cs"
   },
   {
-    "name": "EnhanceEquipped[Selectable]",
-    "description": "null",
+    "name": "Enhance Equipped [Selectable]",
+    "description": "This script will enhance equipped gear with selected enhancements.",
     "tags": [
-      "null"
+      "enhance",
+      "enh",
+      "equipped",
+      "equip",
+      "gear",
+      "selectable",
+      "select"
     ],
     "path": "Enhancement/EnhanceEquipped[Selectable].cs",
-    "size": 1981,
+    "size": 2096,
     "fileName": "EnhanceEquipped[Selectable].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Enhancement/EnhanceEquipped[Selectable].cs"
   },
   {
     "name": "Unlock Forge Enhancements",
-    "description": "null",
+    "description": "This script will farm all forge enhancements.",
     "tags": [
       "lacerate",
       "smite",
@@ -3231,18 +3239,23 @@
       "praxis"
     ],
     "path": "Enhancement/UnlockForgeEnhancements.cs",
-    "size": 38089,
+    "size": 38130,
     "fileName": "UnlockForgeEnhancements.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Enhancement/UnlockForgeEnhancements.cs"
   },
   {
-    "name": "SmartEnhance",
-    "description": "null",
+    "name": "Smart Enhance",
+    "description": "This script will enhance your equipped gear with optimal enhancements.",
     "tags": [
-      "null"
+      "smart",
+      "enhancement",
+      "enhance",
+      "enh",
+      "gear",
+      "equip"
     ],
     "path": "Enhancement/SmartEnhance.cs",
-    "size": 871,
+    "size": 979,
     "fileName": "SmartEnhance.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Enhancement/SmartEnhance.cs"
   },
