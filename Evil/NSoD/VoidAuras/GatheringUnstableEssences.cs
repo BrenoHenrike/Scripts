@@ -1,5 +1,5 @@
 /*
-name: GatheringUnstableEssences
+name: Gathering Unstable Essences
 description: farms void auras via the "gathering unstable essences" quest.
 tags: gathering, unstable, essences, void aura
 */

@@ -1,7 +1,7 @@
 /*
-name: UnlockHardCoreMetals[Vayle-Quests]
-description: null
-tags: null
+name: Unlock HardCore Metals
+description: This script will unlock HardCore Metals using Vayle's Quests.
+tags: unlock, hardcore, metals, vayle, quest, sdka, sepulchure, doom that looms, toiling with terror, a penny for your foughts, dark spirit donation
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

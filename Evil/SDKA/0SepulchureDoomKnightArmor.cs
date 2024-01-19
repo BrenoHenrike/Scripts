@@ -1,7 +1,7 @@
 /*
-name: 0SepulchureDoomKnightArmor
-description: null
-tags: null
+name: Sepulchure's DoomKnight Armor (SDKA)
+description: This script will get Sepulchure's DoomKnight Armor (SDKA)
+tags: sepulchure, sdka, doomknight, armor, evil, member
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
