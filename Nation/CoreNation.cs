@@ -1619,7 +1619,7 @@ public class CoreNation
         if (betrayalBlade == null ? Core.CheckInventory("Blood Gem of the Archfiend", quant) : Core.CheckInventory(betrayalBlade))
             return;
 
-        Core.AddDrop(betrayalBlade ?? "Tendurrr The Assistant", "Fragment of Chaos", "Blood Gem of the Archfiend");
+        Core.AddDrop(betrayalBlade ?? "Tendurrr The Assistant", "Fragment of Chaos", "Blood Gem of the Archfiend", "Broken Betrayal Blade");
         Core.EquipClass(ClassType.Farm);
 
         if (betrayalBlade == null)
@@ -1640,7 +1640,7 @@ public class CoreNation
             }
 
             Core.KillMonster("blindingsnow", "r17", "Left", "*", "Fragment of Chaos", 80, false, log: false);
-            Core.KillMonster("evilwarnul", "r13", "Left", "Legion Fenrir", "Broken Betrayal Blade", 8, log: false);
+            Core.KillMonster("evilwarnul", "r13", "Left", "Legion Fenrir", "Broken Betrayal Blade", 8, false, log: false);
             Core.EnsureComplete(3743);
 
             string itemToPickup = betrayalBlade ?? "Blood Gem of the Archfiend";
