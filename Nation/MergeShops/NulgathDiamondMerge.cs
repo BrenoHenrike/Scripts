@@ -150,7 +150,7 @@ public class NulgathDiamondMerge
                     break;
 
                 case "Unidentified 27":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EnsureAccept(584);
                     Nation.Supplies("Unidentified 26");
 
@@ -178,15 +178,13 @@ public class NulgathDiamondMerge
                                 break;
                         }
                     }
-
                     Bot.Wait.ForPickup("Dark Makai Sigil");
                     Core.EnsureComplete(584);
                     Bot.Wait.ForPickup(req.Name);
                     break;
 
                 case "Crystal Phoenix Blade of Nulgath":
-                    Core.FarmingLogger($"{req.Name}", quant);
-
+                    Core.FarmingLogger(req.Name, quant);
                     Nation.FarmDiamondofNulgath(13);
                     Nation.FarmDarkCrystalShard(50);
                     Nation.FarmTotemofNulgath(3);
@@ -198,6 +196,13 @@ public class NulgathDiamondMerge
                     Core.HuntMonster("underworld", "Undead Bruiser", "Undead Bruiser Rune");
                     Core.EnsureComplete(837, req.ID);
                     Bot.Wait.ForPickup(req.Name);
+                    break;
+
+                case "Dragon Scale":
+                    Core.FarmingLogger(req.Name, quant);
+                    Core.EquipClass(ClassType.Farm);
+                    while (!Bot.ShouldExit && !Core.CheckInventory(11475, quant))
+                        Core.KillMonster("lair", "Hole", "Center", "*", isTemp: false, log: false);
                     break;
             }
         }
@@ -228,6 +233,7 @@ public class NulgathDiamondMerge
         new Option<bool>("28031", "Golden Hanzo Katana Cape", "Mode: [select] only\nShould the bot buy \"Golden Hanzo Katana Cape\" ?", false),
         new Option<bool>("27848", "Golden Hanzo Void Cape", "Mode: [select] only\nShould the bot buy \"Golden Hanzo Void Cape\" ?", false),
         new Option<bool>("30208", "Cyber Crystal Phoenix Blade", "Mode: [select] only\nShould the bot buy \"Cyber Crystal Phoenix Blade\" ?", false),
+        new Option<bool>("344", "Blood Cloak", "Mode: [select] only\nShould the bot buy \"Blood Cloak\" ?", false),
         new Option<bool>("52883", "Horned Worshipper Face of Nulgath", "Mode: [select] only\nShould the bot buy \"Horned Worshipper Face of Nulgath\" ?", false),
         new Option<bool>("52884", "Horned Worshipper Visage of Nulgath", "Mode: [select] only\nShould the bot buy \"Horned Worshipper Visage of Nulgath\" ?", false),
         new Option<bool>("69968", "Blood Ranger", "Mode: [select] only\nShould the bot buy \"Blood Ranger\" ?", false),
@@ -238,5 +244,6 @@ public class NulgathDiamondMerge
         new Option<bool>("69970", "Blood Ranger Quiver", "Mode: [select] only\nShould the bot buy \"Blood Ranger Quiver\" ?", false),
         new Option<bool>("70001", "Storm Knight", "Mode: [select] only\nShould the bot buy \"Storm Knight\" ?", false),
         new Option<bool>("70002", "Storm Knight Helm", "Mode: [select] only\nShould the bot buy \"Storm Knight Helm\" ?", false),
+        new Option<bool>("69152", "Molten DragonSpear of Nulgath", "Mode: [select] only\nShould the bot buy \"Molten DragonSpear of Nulgath\" ?", false),
     };
 }
