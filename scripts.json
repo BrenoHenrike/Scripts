@@ -1622,46 +1622,69 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/SoulForgeHammer.cs"
   },
   {
-    "name": "DoomKnight[Mem]",
-    "description": "null",
+    "name": "DoomKnight Class[Mem]",
+    "description": "This script will get DoomKnight Class [Member]",
     "tags": [
-      "null"
+      "doomknight",
+      "class",
+      "evil",
+      "doom knight",
+      "member"
     ],
     "path": "Evil/DoomKnight[Mem].cs",
-    "size": 1048,
+    "size": 1136,
     "fileName": "DoomKnight[Mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/DoomKnight[Mem].cs"
   },
   {
-    "name": "SepulchuresOriginalHelm",
-    "description": "null",
+    "name": "Sepulchure's Original Helm",
+    "description": "This script will get Sepulchure's Original Helm.",
     "tags": [
-      "null"
+      "sepulchure",
+      "original",
+      "helm",
+      "evil",
+      "gravelyn",
+      "doomfire",
+      "royal",
+      "shadowscythe",
+      "blade"
     ],
     "path": "Evil/SepulchuresOriginalHelm.cs",
-    "size": 5263,
+    "size": 5386,
     "fileName": "SepulchuresOriginalHelm.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/SepulchuresOriginalHelm.cs"
   },
   {
-    "name": "GravelynDoomFire",
-    "description": "null",
+    "name": "Gravelyn's DoomFire Token",
+    "description": "This script will get items from Gravelyn's DoomFire shop.",
     "tags": [
-      "null"
+      "gravelyn",
+      "doomfire",
+      "token",
+      "doomfire of gravelyn",
+      "horned doomfire helm",
+      "evil"
     ],
     "path": "Evil/GravelynDoomFire.cs",
-    "size": 4173,
+    "size": 4306,
     "fileName": "GravelynDoomFire.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/GravelynDoomFire.cs"
   },
   {
-    "name": "VordredsArmor",
-    "description": "null",
+    "name": "Empowered Vordred's Armor",
+    "description": "This script will farm Empowered Vordred's Armor.",
     "tags": [
-      "null"
+      "vordred",
+      "armor",
+      "empowered",
+      "more skulls",
+      "voiduminance",
+      "unbroken skulls",
+      "evil"
     ],
     "path": "Evil/VordredsArmor.cs",
-    "size": 7396,
+    "size": 7523,
     "fileName": "VordredsArmor.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/VordredsArmor.cs"
   },
@@ -1683,7 +1706,7 @@
       "chaotic lords"
     ],
     "path": "Evil/ADK.cs",
-    "size": 6738,
+    "size": 6748,
     "fileName": "ADK.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/ADK.cs"
   },
@@ -14147,7 +14170,7 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/NSoD/CoreNSOD.cs"
   },
   {
-    "name": "1NecroticBladeOfDoom",
+    "name": "Necrotic Blade of Doom",
     "description": "Does the entirety of and to farm \"necrotic blade of doom\"",
     "tags": [
       "nsod",
@@ -14157,12 +14180,12 @@
       "necrotic blade of doom"
     ],
     "path": "Evil/NSoD/1NecroticBladeOfDoom.cs",
-    "size": 1489,
+    "size": 1491,
     "fileName": "1NecroticBladeOfDoom.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/NSoD/1NecroticBladeOfDoom.cs"
   },
   {
-    "name": "0NecroticSwordOfDoom",
+    "name": "Necrotic Sword of Doom",
     "description": "Does the entirety of and to farm \"necrotic sword of doom\"",
     "tags": [
       "nsod",
@@ -14172,40 +14195,58 @@
       "necrotic sword of doom"
     ],
     "path": "Evil/NSoD/0NecroticSwordOfDoom.cs",
-    "size": 1537,
+    "size": 1539,
     "fileName": "0NecroticSwordOfDoom.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/NSoD/0NecroticSwordOfDoom.cs"
   },
   {
-    "name": "PinpointthePieces",
-    "description": "null",
+    "name": "Pinpoint the Pieces Quests",
+    "description": "This script will do \"Pinpoint the Pieces\" quest using the chosen method.",
     "tags": [
-      "null"
+      "pinpoint",
+      "pieces",
+      "sdka",
+      "dagger",
+      "blade",
+      "broadsword",
+      "scythe",
+      "mace",
+      "bow"
     ],
     "path": "Evil/SDKA/PinpointthePieces.cs",
-    "size": 1611,
+    "size": 1752,
     "fileName": "PinpointthePieces.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/SDKA/PinpointthePieces.cs"
   },
   {
-    "name": "DarkSpiritOrbs",
-    "description": "null",
+    "name": "Dark Spirit Orbs",
+    "description": "This script will farm 10500 Dark Spirit Orbs.",
     "tags": [
-      "null"
+      "dso",
+      "a penny for your foughts",
+      "sdka",
+      "evil",
+      "quest",
+      "farm"
     ],
     "path": "Evil/SDKA/DarkSpiritOrbs.cs",
-    "size": 599,
+    "size": 692,
     "fileName": "DarkSpiritOrbs.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/SDKA/DarkSpiritOrbs.cs"
   },
   {
-    "name": "0SepulchureDoomKnightArmor",
-    "description": "null",
+    "name": "Sepulchure's DoomKnight Armor (SDKA)",
+    "description": "This script will get Sepulchure's DoomKnight Armor (SDKA)",
     "tags": [
-      "null"
+      "sepulchure",
+      "sdka",
+      "doomknight",
+      "armor",
+      "evil",
+      "member"
     ],
     "path": "Evil/SDKA/0SepulchureDoomKnightArmor.cs",
-    "size": 827,
+    "size": 935,
     "fileName": "0SepulchureDoomKnightArmor.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/SDKA/0SepulchureDoomKnightArmor.cs"
   },
@@ -14221,35 +14262,57 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/SDKA/CoreSDKA.cs"
   },
   {
-    "name": "UnlockHardCoreMetals[Vayle-Quests]",
-    "description": "null",
+    "name": "Unlock HardCore Metals",
+    "description": "This script will unlock HardCore Metals using Vayle's Quests.",
     "tags": [
-      "null"
+      "unlock",
+      "hardcore",
+      "metals",
+      "vayle",
+      "quest",
+      "sdka",
+      "sepulchure",
+      "doom that looms",
+      "toiling with terror",
+      "a penny for your foughts",
+      "dark spirit donation"
     ],
     "path": "Evil/SDKA/UnlockHardCoreMetals[Vayle-Quests].cs",
-    "size": 650,
+    "size": 833,
     "fileName": "UnlockHardCoreMetals[Vayle-Quests].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/SDKA/UnlockHardCoreMetals[Vayle-Quests].cs"
   },
   {
-    "name": "APennyforyourFoughts",
-    "description": "null",
+    "name": "A Penny For Your Foughts",
+    "description": "This script will farm Dark Spirit Orbs using \"A Penny For Your Foughts\" Quest.",
     "tags": [
-      "null"
+      "dark spirit orbs",
+      "dso",
+      "penny",
+      "doomcoin",
+      "shadow creeper enchant",
+      "maul"
     ],
     "path": "Evil/SDKA/APennyforyourFoughts.cs",
-    "size": 596,
+    "size": 738,
     "fileName": "APennyforyourFoughts.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/SDKA/APennyforyourFoughts.cs"
   },
   {
-    "name": "DoomKnightWeaponKit",
-    "description": "null",
+    "name": "DoomKnight Weapon Kit",
+    "description": "This script will farm DoomKnight Weapon Kit.",
     "tags": [
-      "null"
+      "doomknight",
+      "doomknightwk",
+      "weapon kit",
+      "sdka",
+      "evil",
+      "corrupt spirit orb",
+      "ominous aura",
+      "grumpy warhammer"
     ],
     "path": "Evil/SDKA/DoomKnightWeaponKit.cs",
-    "size": 660,
+    "size": 798,
     "fileName": "DoomKnightWeaponKit.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/SDKA/DoomKnightWeaponKit.cs"
   },
@@ -20622,7 +20685,7 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/REP-based/DeathKnight.cs"
   },
   {
-    "name": "0SmartVoidAuras",
+    "name": "Smart Void Auras",
     "description": "farms void auras via what ever the current best method you have to farm them..",
     "tags": [
       "smart",
@@ -20636,12 +20699,12 @@
       "void aura"
     ],
     "path": "Evil/NSoD/VoidAuras/0SmartVoidAuras.cs",
-    "size": 1611,
+    "size": 1612,
     "fileName": "0SmartVoidAuras.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/NSoD/VoidAuras/0SmartVoidAuras.cs"
   },
   {
-    "name": "CommandingShadowEssences",
+    "name": "Commanding Shadow Essences",
     "description": "farms void auras via the \"commanding shadow essences\" quest.",
     "tags": [
       "commanding",
@@ -20650,24 +20713,24 @@
       "void aura"
     ],
     "path": "Evil/NSoD/VoidAuras/CommandingShadowEssences.cs",
-    "size": 1312,
+    "size": 1314,
     "fileName": "CommandingShadowEssences.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/NSoD/VoidAuras/CommandingShadowEssences.cs"
   },
   {
-    "name": "RetreiveVoidAuras",
+    "name": "Retrieve Void Auras",
     "description": "farms void auras via the \"retrieve void auras\" quest.",
     "tags": [
       "retrieve",
       "void aura"
     ],
     "path": "Evil/NSoD/VoidAuras/RetreiveVoidAuras.cs",
-    "size": 1321,
+    "size": 1323,
     "fileName": "RetreiveVoidAuras.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/NSoD/VoidAuras/RetreiveVoidAuras.cs"
   },
   {
-    "name": "GatheringUnstableEssences",
+    "name": "Gathering Unstable Essences",
     "description": "farms void auras via the \"gathering unstable essences\" quest.",
     "tags": [
       "gathering",
@@ -20676,7 +20739,7 @@
       "void aura"
     ],
     "path": "Evil/NSoD/VoidAuras/GatheringUnstableEssences.cs",
-    "size": 967,
+    "size": 969,
     "fileName": "GatheringUnstableEssences.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/NSoD/VoidAuras/GatheringUnstableEssences.cs"
   },
