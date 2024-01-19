@@ -67,7 +67,7 @@ public class DarkwarlegionWarChestMerge
                 #endregion
 
                 case "Wretched Blade of the Void":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.ID, quant))
                     {
@@ -77,7 +77,7 @@ public class DarkwarlegionWarChestMerge
                     break;
 
                 case "Legion Token":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.ID, quant))
                     {

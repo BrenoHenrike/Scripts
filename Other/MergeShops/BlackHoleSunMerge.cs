@@ -62,7 +62,7 @@ public class BlackHoleSunMerge
                 #endregion
 
                 case "4th Dimension Gem":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.RegisterQuests(5163);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))

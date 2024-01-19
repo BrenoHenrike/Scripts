@@ -74,7 +74,7 @@ public class DarkHandMerge1
                     break;
 
                 case "Bone Sigil":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     if (Core.isCompletedBefore(793))
                     {
                         Core.Logger("Legion Fiend Rider - Bone Sigil");

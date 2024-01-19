@@ -65,7 +65,7 @@ public class OriginulMerge
                 #endregion
 
                 case "Fiend Emblem":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.RegisterQuests(7890);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {

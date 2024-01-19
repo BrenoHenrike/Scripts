@@ -67,7 +67,7 @@ public class AstraviaCastleMerge
                 #endregion
 
                 case "Astravian Medal":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Darkon.AstravianMedal(quant);
                     break;
             }

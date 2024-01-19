@@ -106,7 +106,7 @@ public class DawnFortressMerge
                     break;
 
                 case "Hollow Soul":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
@@ -120,7 +120,7 @@ public class DawnFortressMerge
                     break;
 
                 case "Bone Dust":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                         Farm.BattleUnderB(req.Name, quant);

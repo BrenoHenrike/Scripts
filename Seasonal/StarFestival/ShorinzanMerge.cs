@@ -63,7 +63,7 @@ public class ShorinzanMerge
                 #endregion
 
                 case "Deepest Desire":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.RegisterQuests(8753);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
@@ -80,7 +80,7 @@ public class ShorinzanMerge
                     break;
 
                 case "Hidden Hope":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
                     Core.RegisterQuests(8751);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
@@ -95,7 +95,7 @@ public class ShorinzanMerge
                     break;
 
                 case "Simple Wish":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.RegisterQuests(8748);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))

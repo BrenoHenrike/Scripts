@@ -65,7 +65,7 @@ public class DragonSoulShinobiMerge
                 #endregion
 
                 case "Dragon Shinobi Token":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     Yokai.Quests();
                     Core.RegisterQuests(7924);

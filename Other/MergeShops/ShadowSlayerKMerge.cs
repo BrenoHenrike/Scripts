@@ -78,7 +78,7 @@ public class ShadowSlayerKMerge
                 #endregion
 
                 case "Meat Ration":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.RegisterQuests(8263);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
@@ -90,7 +90,7 @@ public class ShadowSlayerKMerge
                     break;
 
                 case "Grain Ration":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.RegisterQuests(8264);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
@@ -102,7 +102,7 @@ public class ShadowSlayerKMerge
                     break;
 
                 case "Dairy Ration":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
                     Core.RegisterQuests(8265);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
@@ -114,7 +114,7 @@ public class ShadowSlayerKMerge
                     break;
 
                 case "Shadowslayer Apprentice Badge":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     if (!Core.CheckInventory("Chibi Eldritch Yume"))
                     {
                         Core.EquipClass(ClassType.Solo);

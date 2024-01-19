@@ -72,7 +72,7 @@ public class StreamwarMerge
                 case "Avatar's Flame Sabre":
                 case "Avatar's Flame":
                 case "Avatar's Flame Guard":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {

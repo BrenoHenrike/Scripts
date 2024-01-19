@@ -64,7 +64,7 @@ public class OrbHuntMerge
                 #endregion
 
                 case "Ancient Astrolabe":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {

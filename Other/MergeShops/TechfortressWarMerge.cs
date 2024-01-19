@@ -71,7 +71,7 @@ public class TechfortressWarMerge
                 #endregion
 
                 case "Deadtech War Medal":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.RegisterQuests(7638, 7638, 7639, 7641);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
@@ -115,7 +115,7 @@ public class TechfortressWarMerge
                     break;
 
                 case "Shard of An Orb":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     BLOD.BlindingLightOfDestiny();
                     Core.EquipClass(ClassType.Solo);
                     Core.RegisterQuests(7654);
@@ -132,7 +132,7 @@ public class TechfortressWarMerge
                     break;
 
                 case "Purified Undead Dragon Essence":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.RegisterQuests(7655, 7291);
                     Core.AddDrop("Rainbow Moonstone");
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
