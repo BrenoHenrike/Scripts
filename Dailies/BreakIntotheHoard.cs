@@ -1,7 +1,7 @@
 /*
 name: Break Into the Hoard Daily
 description: does the quest `break into the hoard` for the rewards
-tags: daily, Break Into the Hoard
+tags: daily, break into the hoard
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreDailies.cs
