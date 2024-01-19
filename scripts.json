@@ -475,13 +475,13 @@
   },
   {
     "name": "Beast Master Challenge Daily",
-    "description": "null",
+    "description": "This script does BeastMaster Challenge daily quest.",
     "tags": [
       "daily",
       "beast master challenge"
     ],
     "path": "Dailies/BeastMasterChallenge[Mem].cs",
-    "size": 539,
+    "size": 586,
     "fileName": "BeastMasterChallenge[Mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/BeastMasterChallenge[Mem].cs"
   },
@@ -656,7 +656,7 @@
       "aura"
     ],
     "path": "Dailies/NSoDDaily.cs",
-    "size": 645,
+    "size": 646,
     "fileName": "NSoDDaily.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/NSoDDaily.cs"
   },
@@ -808,7 +808,7 @@
       "BLOD"
     ],
     "path": "Dailies/MineCrafting.cs",
-    "size": 2634,
+    "size": 2636,
     "fileName": "MineCrafting.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/MineCrafting.cs"
   },
