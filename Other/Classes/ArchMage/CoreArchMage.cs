@@ -431,12 +431,15 @@ public class CoreArchMage
         }
     }
 
-    public void UnboundTome(int quant)
+    public void UnboundTome(int quant = 99)
     {
         int unboundTomesNeeded = Core.CheckInventory("Unbound Tome") ? quant - Bot.Inventory.GetQuantity("Unbound Tome") : quant;
 
-        if (unboundTomesNeeded <= 0)
+        if (unboundTomesNeeded <= 1)
+        {
+            Core.FarmingLogger("Unbound Tome", quant);
             return;
+        }
 
         if (!Bot.Quests.IsUnlocked(8912))
             ArcaneLocus(1);
