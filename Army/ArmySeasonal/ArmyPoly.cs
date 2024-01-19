@@ -1,6 +1,6 @@
 /*
 name: script name here
-description: Farms [InsertItem]  using your army.
+description: Farms [InsertItem] using your army.
 tags: army, [item]
 */
 //cs_include Scripts/CoreBots.cs
