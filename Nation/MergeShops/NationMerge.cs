@@ -79,6 +79,7 @@ public class NationMerge
         }
     }
 
+    
     public List<IOption> Select = new()
     {
         new Option<bool>("33172", "Polish Pet", "Mode: [select] only\nShould the bot buy \"Polish Pet\" ?", false),
@@ -86,8 +87,5 @@ public class NationMerge
         new Option<bool>("33177", "Nation SoulStealer Hood", "Mode: [select] only\nShould the bot buy \"Nation SoulStealer Hood\" ?", false),
         new Option<bool>("33178", "Nation SoulStealer Horned Hood", "Mode: [select] only\nShould the bot buy \"Nation SoulStealer Horned Hood\" ?", false),
         new Option<bool>("33162", "Void Executioner", "Mode: [select] only\nShould the bot buy \"Void Executioner\" ?", false),
-        new Option<bool>("33176", "Nation Soulstealer", "Mode: [select] only\nShould the bot buy \"Nation Soulstealer\" ?", false),
-        new Option<bool>("33177", "Nation SoulStealer Hood", "Mode: [select] only\nShould the bot buy \"Nation SoulStealer Hood\" ?", false),
-        new Option<bool>("33178", "Nation SoulStealer Horned Hood", "Mode: [select] only\nShould the bot buy \"Nation SoulStealer Horned Hood\" ?", false),
     };
 }

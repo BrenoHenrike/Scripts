@@ -164,6 +164,10 @@ public class CoreAdvanced
         List<ShopItem> items = new();
         bool memSkipped = false;
 
+        shopItems = shopItems.GroupBy(item => item.ID)
+                             .Select(group => group.First())
+                             .ToList();
+       
         foreach (ShopItem item in shopItems)
         {
             if (Core.CheckInventory(item.ID, toInv: false) ||
@@ -264,7 +268,7 @@ public class CoreAdvanced
                 else
                     externalQuant = req.Quantity * (craftingQ - Bot.Inventory.GetQuantity(item.ID));
 
-                if (Core.CheckInventory(req.Name, externalQuant) && (matsOnly ? req.MaxStack == 1 : true))
+                if (Core.CheckInventory(req.Name, externalQuant) && (!matsOnly || req.MaxStack == 1))
                     continue;
 
                 if (shopItems.Select(x => x.ID).Contains(req.ID) && !AltFarmItems.Contains(req.Name))
