@@ -1,7 +1,7 @@
 /*
 name: PrimeFiendShardQuests
 description: This script will complete the storyline from the prime fiend shard
-tags: prime fiend shard, nation, ravenous
+tags: prime fiend shard, nation, ravenous, fiend shard, nulgath, voidchasm, void chasm
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
