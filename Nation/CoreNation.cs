@@ -1733,7 +1733,6 @@ public class CoreNation
         }
     }
 
-
     /// <summary>
     /// Farms Gemstone Receipt of Nulgath with specific quantities.
     /// </summary>
@@ -1890,9 +1889,6 @@ public class CoreNation
         }
     }
 
-
-
-
     /// <summary>
     /// [Member] Does Forge Tainted Gems for Nulgath [Quest] to get You Tainted Gems with your specific quantities
     /// </summary>
@@ -1921,7 +1917,6 @@ public class CoreNation
         }
     }
 
-
     /// <summary>
     /// [Member] Forges Dark Crystal Shards for Nulgath [Quest] to obtain Dark Crystal Shards with specific quantities.
     /// </summary>
@@ -1948,7 +1943,6 @@ public class CoreNation
             Core.EnsureComplete(4920);
         }
     }
-
 
     /// <summary>
     /// [Member] Forges Diamonds for Nulgath [Quest] to obtain Diamonds for Nulgath with specific quantities.
@@ -1977,8 +1971,6 @@ public class CoreNation
         }
     }
 
-
-
     /// <summary>
     /// [Member] Forges Blood Gems for Nulgath [Quest] to obtain Blood Gem of the Archfiend with specific quantities.
     /// </summary>
@@ -2005,8 +1997,6 @@ public class CoreNation
             Core.EnsureComplete(4922);
         }
     }
-
-
 
     /// <summary>
     /// [Member] Carves a Uni Gemstone [Quest] to obtain specific items.
@@ -2070,8 +2060,6 @@ public class CoreNation
         }
     }
 
-
-
     /// <summary>
     /// Farms gold through Leery Contract exchange.
     /// </summary>
@@ -2105,7 +2093,6 @@ public class CoreNation
         Farm.ToggleBoost(BoostType.Gold, false);
     }
 
-
     /// <summary>
     /// Hires Nulgath Larvae.
     /// </summary>
@@ -2131,8 +2118,6 @@ public class CoreNation
         Core.EnsureComplete(867);
         Bot.Wait.ForPickup("Nulgath Larvae");
     }
-
-
 
     /// <summary>
     /// Swindles Bilk method
@@ -2169,7 +2154,6 @@ public class CoreNation
         VoidKightSwordQuest(member ? "Voucher of Nulgath" : "Voucher of Nulgath (non-mem)");
         Supplies(member ? "Voucher of Nulgath" : "Voucher of Nulgath (non-mem)");
     }
-
 }
 
 public enum ChooseReward
