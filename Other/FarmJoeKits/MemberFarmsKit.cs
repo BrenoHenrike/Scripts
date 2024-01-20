@@ -36,6 +36,7 @@ tags: member, kit, expire, legend
 //cs_include Scripts/Other/Classes/Members-CLasses/ChronoAssassin[Mem].cs
 //cs_include Scripts/Dailies/MineCrafting.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
+//cs_include Scripts/Story/BattleUnder.cs
 
 using Skua.Core.Interfaces;
 
