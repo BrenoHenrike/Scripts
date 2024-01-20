@@ -11,6 +11,7 @@ tags: null
 //cs_include Scripts/Story/Nation/Originul.cs
 //cs_include Scripts/Story/Nation/Fiendshard.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
 
 public class SwirlingTheAbyss
 {
@@ -44,26 +45,46 @@ public class SwirlingTheAbyss
         "DeathLord Spines of Nulgath",
         "Deathless Wings of Nulgath",
     };
-    public void STA()
+    
+    public void STA(string? item = null)
     {
-        Fiendshard.Fiendshard_Questline();
+        Fiendshard.Fiendshard_QuestlineP1();
         Core.AddDrop(Nation.bagDrops);
         Core.AddDrop(Rewards);
-
-        int i = 1;
-        while (!Bot.ShouldExit && !Core.CheckInventory(Rewards, toInv: false))
+        ItemBase? Item = Bot.Inventory.Items.FirstOrDefault(x => x.Name == item);
+        if (item == null)
         {
-            Nation.FarmBloodGem(10);
-            Nation.FarmUni13(3);
-            Nation.SwindleBulk(75);
-            Nation.FarmDarkCrystalShard(50);
-            Nation.FarmGemofNulgath(50);
-            Nation.FarmVoucher(true);
+            int i = 1;
+            while (!Bot.ShouldExit && !Core.CheckInventory(Rewards, toInv: false))
+            {
+                Nation.FarmBloodGem(10);
+                Nation.FarmUni13(3);
+                Nation.SwindleBulk(75);
+                Nation.FarmDarkCrystalShard(50);
+                Nation.FarmGemofNulgath(50);
+                Nation.FarmVoucher(true);
 
-            Core.EnsureAccept(7899);
-            Core.EnsureCompleteChoose(7899);
-            Core.ToBank(Rewards);
-            Core.Logger($"Completed x{i++}");
+                Core.EnsureAccept(7899);
+                Core.EnsureCompleteChoose(7899);
+                Core.ToBank(Rewards);
+                Core.Logger($"Completed x{i++}");
+            }
+        }
+        else
+        {
+            while (!Bot.ShouldExit && !Core.CheckInventory(Item?.Name))
+            {
+                Nation.FarmBloodGem(10);
+                Nation.FarmUni13(3);
+                Nation.SwindleBulk(75);
+                Nation.FarmDarkCrystalShard(50);
+                Nation.FarmGemofNulgath(50);
+                Nation.FarmVoucher(true);
+
+                Core.EnsureAccept(7899);
+                Core.EnsureCompleteChoose(7899);
+
+            }
         }
     }
 
