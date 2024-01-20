@@ -380,7 +380,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 91936,
+    "size": 91920,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -12345,7 +12345,7 @@
       "legend"
     ],
     "path": "Other/FarmJoeKits/MemberFarmsKit.cs",
-    "size": 20524,
+    "size": 20566,
     "fileName": "MemberFarmsKit.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/MemberFarmsKit.cs"
   },
