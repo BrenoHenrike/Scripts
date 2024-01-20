@@ -1,7 +1,7 @@
 /*
 name: Void Chasm Story
-description: This script will complete the storyline in /voidrefuge
-tags: voidchasm, voidrefuge, refuge, nation, nulgath, story, ana di carcano, gravelyn
+description: This script will complete the storyline in /voidchasm.
+tags: voidchasm, chasm, nation, nulgath, story, ana di carcano, gravelyn, jadzia
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
