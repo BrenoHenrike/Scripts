@@ -43,7 +43,7 @@ public class VoidSpartan
         Core.SetOptions(false);
     }
 
-    public void GetSpartan(string? item = "Void Spartan ")
+    public void GetSpartan(string? item = null)
     {
         Core.AddDrop(Nation.bagDrops.Concat(Rewards).Concat(new[] { "Zee's Red Jasper", "Fiend Cloak of Nulgath" }).ToArray());
 
@@ -65,13 +65,15 @@ public class VoidSpartan
 
             if (Item != null)
             {
-                Core.EnsureComplete(5982, 40933);
-                Bot.Drops.Pickup(Item!.Name);
+                Core.EnsureComplete(5982, Item.ID);
+                Bot.Wait.ForPickup(Item!.Name);
             }
             else
             {
-                Core.EnsureCompleteChoose(5982, Rewards);
-                Bot.Drops.Pickup(Rewards);
+                Core.EnsureCompleteChoose(5982, Core.QuestRewards(5982));
+                foreach (string thing in Core.QuestRewards(5982))
+                    if (Bot.Drops.Exists(thing))
+                        Bot.Wait.ForPickup(thing);
             }
             Core.Logger($"Completed {QuestData.Name}[{QuestData.ID}] x{i++}");
         }
