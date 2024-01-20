@@ -138,11 +138,11 @@ public class PrimeFiendShard
         if (!Story.QuestProgression(9557))
         {
             Core.EnsureAccept(9557);
-            Nation.EssenceofNulgath(60);
             SwirlingTheAbyss.STA("Void Soul of Nulgath");
             TradingandStuffSingle.ArchFiendEnchantedOrbs();
             NulgathDiamondMerge.BuyAllMerge("Blood Ranger");
             VoidRefugeMerge.BuyAllMerge("Envenomed Edge of Nulgath");
+            Nation.EssenceofNulgath(60);
             Core.EnsureComplete(9557);
         }
 
