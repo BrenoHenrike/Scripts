@@ -1,7 +1,7 @@
 /*
 name: PrimeFiendShardQuests
-description: This script will complete the storyline from the Prime Fiend Shard
-tags: Prime Fiend Shard, nation, ravenous
+description: This script will complete the storyline from the prime fiend shard
+tags: prime fiend shard, nation, ravenous
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -43,6 +43,7 @@ tags: Prime Fiend Shard, nation, ravenous
 //cs_include Scripts/Other/Weapons/WrathofNulgath.cs
 //cs_include Scripts/Nation/Various/ArchfiendDeathLord.cs
 //cs_include Scripts/Nation/MergeShops/VoidChasmMerge.cs
+//cs_include Scripts/Story/Nation/VoidChasm.cs
 using Skua.Core.Interfaces;
 
 
@@ -54,7 +55,6 @@ public class PrimeFiendShard
     private CoreAdvanced Adv = new();
     public Originul_Story Originul = new();
     public CoreVHL VHL = new();
-    public static CoreVHL sVHL = new();
     public CoreNation Nation = new();
     public VoidRefugeMerge VoidRefugeMerge = new();
     public TempleDelveMerge TempleDelveMerge = new();

@@ -42,7 +42,6 @@ tags: void, chasm, merge, voidchasm, abyssal, gravity, ball, balls, midnight, fi
 //cs_include Scripts/Nation/MergeShops/DirtlickersMerge.cs
 //cs_include Scripts/Other/Weapons/WrathofNulgath.cs
 //cs_include Scripts/Story/Nation/VoidChasm.cs
-//cs_include Scripts/Story/Nation/PrimeFiendShard.cs
 //cs_include Scripts/Nation/Various/ArchfiendDeathLord.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
@@ -56,7 +55,7 @@ public class VoidChasmMerge
     private CoreAdvanced Adv = new();
     private static CoreAdvanced sAdv = new();
     public CoreNation Nation = new();
-    public PrimeFiendShard PFS = new();
+    public VoidChasm VoidChasm = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
     public string[] MultiOptions = { "Generic", "Select" };
@@ -76,7 +75,8 @@ public class VoidChasmMerge
 
     public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
-        PFS.Storyline();
+        VoidChasm.Storyline();
+        
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("voidchasm", 2410, findIngredients, buyOnlyThis, buyMode: buyMode);
 

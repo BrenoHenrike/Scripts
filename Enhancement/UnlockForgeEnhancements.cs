@@ -103,6 +103,8 @@ tags: lacerate, smite, herosvaliance, arcanasconcerto, elysium, acheron, absolut
 //cs_include Scripts/Other/Weapons/WrathofNulgath.cs
 //cs_include Scripts/Story/Nation/PrimeFiendShard.cs
 //cs_include Scripts/Nation/Various/ArchfiendDeathLord.cs
+//cs_include Scripts/Nation/MergeShops/VoidChasmMerge.cs
+//cs_include Scripts/Story/Nation/VoidChasm.cs
 
 
 using Skua.Core.Interfaces;
