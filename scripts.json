@@ -3263,7 +3263,7 @@
       "ravenous"
     ],
     "path": "Enhancement/UnlockForgeEnhancements.cs",
-    "size": 40265,
+    "size": 40374,
     "fileName": "UnlockForgeEnhancements.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Enhancement/UnlockForgeEnhancements.cs"
   },
@@ -12787,17 +12787,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Weapons/VoidAvengerScythe.cs"
   },
   {
-    "name": "WrathofNulgath",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Other/Weapons/WrathofNulgath.cs",
-    "size": 2528,
-    "fileName": "WrathofNulgath.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Weapons/WrathofNulgath.cs"
-  },
-  {
     "name": "ObsidianLightofDestiny",
     "description": "null",
     "tags": [
@@ -15222,7 +15211,7 @@
       "ravenous"
     ],
     "path": "Story/Nation/PrimeFiendShard.cs",
-    "size": 7021,
+    "size": 7168,
     "fileName": "PrimeFiendShard.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Nation/PrimeFiendShard.cs"
   },
