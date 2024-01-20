@@ -129,7 +129,7 @@ public class PrimeFiendShard
             NulgathDiamondMerge.BuyAllMerge("Abyssal Priest of Nulgath");
             NulgathDiamondMerge.BuyAllMerge("Storm Knight");
             VoidPaladin.DeeperandDeeperintoDarkness();
-            VoidSpartan.GetSpartan(true);
+            VoidSpartan.GetSpartan();
             Core.EnsureComplete(9556);
         }
 

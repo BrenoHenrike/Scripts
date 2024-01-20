@@ -7,6 +7,8 @@ tags: null
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/Nation/CoreNation.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
+using Skua.Core.Models.Quests;
 
 public class VoidSpartan
 {
@@ -41,14 +43,15 @@ public class VoidSpartan
         Core.SetOptions(false);
     }
 
-    public void GetSpartan(bool pfs = false)
+    public void GetSpartan(string? item = "Void Spartan ")
     {
-        Core.AddDrop(Nation.bagDrops);
-        Core.AddDrop(Rewards);
-        Core.AddDrop("Zee's Red Jasper", "Fiend Cloak of Nulgath");
+        Core.AddDrop(Nation.bagDrops.Concat(Rewards).Concat(new[] { "Zee's Red Jasper", "Fiend Cloak of Nulgath" }).ToArray());
+
+        Quest QuestData = Core.EnsureLoad(5982);
+        ItemBase? Item = Bot.Inventory.Items.FirstOrDefault(x => x.Name == item);
 
         int i = 1;
-        while (!Bot.ShouldExit && (pfs ? !Core.CheckInventory("Void Spartan") : !Core.CheckInventory(Rewards, toInv: false)))
+        while (!Bot.ShouldExit && (item != null ? !Core.CheckInventory("Void Spartan") : !Core.CheckInventory(Rewards, toInv: false)))
         {
             Core.EnsureAccept(5982);
 
@@ -59,18 +62,19 @@ public class VoidSpartan
             Core.JumpWait();
             Farm.Gold(500000);
             Core.BuyItem("tercessuinotlim", 68, "Fiend Cloak of Nulgath");
-            if (pfs)
+
+            if (Item != null)
             {
                 Core.EnsureComplete(5982, 40933);
-                Bot.Drops.Pickup("Void Spartan");
-
+                Bot.Drops.Pickup(Item!.Name);
             }
             else
             {
                 Core.EnsureCompleteChoose(5982, Rewards);
                 Bot.Drops.Pickup(Rewards);
-                Core.Logger($"Completed x{i++}");
             }
+            Core.Logger($"Completed {QuestData.Name}[{QuestData.ID}] x{i++}");
         }
+        i = 0;
     }
 }
