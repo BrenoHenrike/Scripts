@@ -681,13 +681,14 @@ public class UnlockForgeEnhancements
     {
         if (Core.isCompletedBefore(9560))
             return;
+
         Core.Logger("Unlocking Enhancement: Ravenous");
 
         Farm.Experience();
         PFS.Storyline();
 
-        //Missing shopid for "Gluttonous Maw" in 
-        // http://aqwwiki.wikidot.com/fiend-shard-shop
+        Adv.BuyItem(Bot.Map.Name, 2411, "Gluttonous Maw");
+        Core.ChainComplete(9560);
     }
 
     #endregion
