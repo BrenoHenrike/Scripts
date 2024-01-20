@@ -87,7 +87,6 @@ public class VoidAvengerScythe
         Core.HuntMonster("Citadel", "Burning Witch", "Letter from Asuka and Tendou", isTemp: false);
         Core.EnsureComplete(5025);
         Bot.Wait.ForPickup("Void Avenger Scythe");
-        Adv.EnhanceItem("Void Avenger Scythe", EnhancementType.Lucky);
     }
 
     public void BatwingScythe()
