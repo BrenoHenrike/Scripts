@@ -497,7 +497,7 @@ public class AllStories
         CitadelRuins.DoAll();
         Core.Logger($"Story: Citadel Ruins - Complete");
 
-        Fiendshard_Story.Fiendshard_Questline();
+        Fiendshard_Story.Fiendshard_QuestlineP1();
         Core.Logger($"Story: Fiendshard - Complete");
 
         FiendPast.DoAll();
