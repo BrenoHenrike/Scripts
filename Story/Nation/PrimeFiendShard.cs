@@ -41,6 +41,8 @@ tags: Prime Fiend Shard, nation, ravenous
 //cs_include Scripts/Nation/MergeShops/DilligasMerge.cs
 //cs_include Scripts/Nation/MergeShops/DirtlickersMerge.cs
 //cs_include Scripts/Other/Weapons/WrathofNulgath.cs
+//cs_include Scripts/Nation/Various/ArchfiendDeathLord.cs
+//cs_include Scripts/Nation/MergeShops/VoidChasmMerge.cs
 using Skua.Core.Interfaces;
 
 
@@ -67,6 +69,7 @@ public class PrimeFiendShard
     public ArchfiendDeathLord ArchfienddDeathLord = new();
     public WrathofNulgath WrathofNulgath = new();
     public DilligasMerge DilligasMerge = new();
+    public VoidChasmMerge VoidChasmMerge = new();
 
     public void ScriptMain(IScriptInterface Bot)
     {
@@ -82,14 +85,13 @@ public class PrimeFiendShard
         if (Core.isCompletedBefore(9559))
             return;
 
-        Core.OneTimeMessage("WARNING!!", "If you're going to use insingias for the roents\n" +
+        Core.Logger("If you're going to use insingias for the roents\n" +
         "please do so before starting the script, as it will stop otherwise if dont have them.");
 
         VHL.GetVHL();
 
         // Prime Fiend Shard [required to accept]
-        Nation.EssenceofNulgath(1);
-        //merge this ^
+        VoidChasmMerge.BuyAllMerge("Prime Fiend Shard");
 
         // Feed the Fiend Shard 9555
         if (!Story.QuestProgression(9555))

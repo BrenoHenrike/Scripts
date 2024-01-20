@@ -60,11 +60,18 @@ public class VoidChasm
         Story.MapItemQuest(9551, "voidchasm", new[] { 12625, 12626 });
         Story.KillQuest(9551, "voidchasm", "Carnage");
 
-        // Famiglia di Carcano 9452
+        // Famiglia di Carcano 9552
         Story.KillQuest(9552, "voidchasm", "Carcano");
 
-        // Uprooted Veins 9453
-        Story.KillQuest(9553, "voidrefuge", "Carnage");
-        Story.KillQuest(9553, "voidchasm", new[] { "Carcano", "The Hushed" });
+        // Uprooted Veins 9553 ( "Void Remnant" farm)
+        if (!Story.QuestProgression(9553))
+        {
+            Core.AddDrop("Void Remnant");
+            Core.EnsureAccept(9553);
+            Core.KillMonster("voidchasm", "r10", "left", "Carcano", "Carcano's Teratoma");
+            Core.KillMonster("voidchasm", "r9", "left", "Carnage", "Bloodied Chainlink");
+            Core.KillMonster("voidchasm", "r7", "left", "The Hushed", "Defunct Seal of Approval", 6);
+            Core.EnsureComplete(9553);
+        }
     }
 }
