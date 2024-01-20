@@ -51,6 +51,8 @@ public class SwirlingTheAbyss
         if (item != null && Core.CheckInventory(item))
             return;
 
+
+        Core.Logger($"Farming {item}.");
         Fiendshard.Fiendshard_QuestlineP1();
         Core.AddDrop(Nation.bagDrops);
         Core.AddDrop(Rewards);
