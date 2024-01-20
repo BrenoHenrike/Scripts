@@ -39,7 +39,7 @@
       "null"
     ],
     "path": "CoreAdvanced.cs",
-    "size": 114560,
+    "size": 115166,
     "fileName": "CoreAdvanced.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreAdvanced.cs"
   },
@@ -446,7 +446,7 @@
       "null"
     ],
     "path": "Nation/KisstheVoid.cs",
-    "size": 456,
+    "size": 1421,
     "fileName": "KisstheVoid.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/KisstheVoid.cs"
   },
@@ -1939,7 +1939,7 @@
       "all"
     ],
     "path": "Story/0AllStories.cs",
-    "size": 27105,
+    "size": 27107,
     "fileName": "0AllStories.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/0AllStories.cs"
   },
@@ -3262,7 +3262,7 @@
       "praxis"
     ],
     "path": "Enhancement/UnlockForgeEnhancements.cs",
-    "size": 38130,
+    "size": 40158,
     "fileName": "UnlockForgeEnhancements.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Enhancement/UnlockForgeEnhancements.cs"
   },
@@ -7887,7 +7887,7 @@
       "null"
     ],
     "path": "Nation/MergeShops/FiendshardMerge.cs",
-    "size": 5333,
+    "size": 5335,
     "fileName": "FiendshardMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/MergeShops/FiendshardMerge.cs"
   },
@@ -7925,6 +7925,42 @@
     "size": 3719,
     "fileName": "NationMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/MergeShops/NationMerge.cs"
+  },
+  {
+    "name": "Void Chasm Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Void Chasm Merge [2410] in /voidchasm",
+    "tags": [
+      "void",
+      "chasm",
+      "merge",
+      "voidchasm",
+      "abyssal",
+      "gravity",
+      "ball",
+      "balls",
+      "midnight",
+      "fiend",
+      "nulgath",
+      "blood",
+      "moon",
+      "winged",
+      "bloodmoon",
+      "darksided",
+      "energized",
+      "archfiend",
+      "spines",
+      "runed",
+      "draconic",
+      "nation",
+      "double",
+      "inferno",
+      "prime",
+      "shard"
+    ],
+    "path": "Nation/MergeShops/VoidChasmMerge.cs",
+    "size": 8329,
+    "fileName": "VoidChasmMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/MergeShops/VoidChasmMerge.cs"
   },
   {
     "name": "NulgathWarMerge",
@@ -8214,7 +8250,7 @@
       "null"
     ],
     "path": "Nation/Various/ArchfiendDeathLord.cs",
-    "size": 4411,
+    "size": 4413,
     "fileName": "ArchfiendDeathLord.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/ArchfiendDeathLord.cs"
   },
@@ -8455,7 +8491,7 @@
       "null"
     ],
     "path": "Nation/Various/SwirlingTheAbyss.cs",
-    "size": 1981,
+    "size": 2699,
     "fileName": "SwirlingTheAbyss.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/SwirlingTheAbyss.cs"
   },
@@ -12745,7 +12781,7 @@
       "null"
     ],
     "path": "Other/Weapons/VoidAvengerScythe.cs",
-    "size": 5069,
+    "size": 4998,
     "fileName": "VoidAvengerScythe.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Weapons/VoidAvengerScythe.cs"
   },
@@ -15172,9 +15208,22 @@
       "fiendshard"
     ],
     "path": "Story/Nation/Fiendshard.cs",
-    "size": 3652,
+    "size": 3182,
     "fileName": "Fiendshard.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Nation/Fiendshard.cs"
+  },
+  {
+    "name": "PrimeFiendShardQuests",
+    "description": "This script will complete the storyline from the prime fiend shard",
+    "tags": [
+      "prime fiend shard",
+      "nation",
+      "ravenous"
+    ],
+    "path": "Story/Nation/PrimeFiendShard.cs",
+    "size": 7021,
+    "fileName": "PrimeFiendShard.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Nation/PrimeFiendShard.cs"
   },
   {
     "name": "Bamboozle",
@@ -15186,9 +15235,27 @@
       "nation"
     ],
     "path": "Story/Nation/Bamboozle.cs",
-    "size": 4687,
+    "size": 4665,
     "fileName": "Bamboozle.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Nation/Bamboozle.cs"
+  },
+  {
+    "name": "Void Chasm Story",
+    "description": "This script will complete the storyline in /voidrefuge",
+    "tags": [
+      "voidchasm",
+      "voidrefuge",
+      "refuge",
+      "nation",
+      "nulgath",
+      "story",
+      "ana di carcano",
+      "gravelyn"
+    ],
+    "path": "Story/Nation/VoidChasm.cs",
+    "size": 2560,
+    "fileName": "VoidChasm.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Nation/VoidChasm.cs"
   },
   {
     "name": "Tercessuinotlim",
@@ -19508,7 +19575,7 @@
       "null"
     ],
     "path": "Seasonal/Friday13th/Story/CoreFriday13th.cs",
-    "size": 33405,
+    "size": 33633,
     "fileName": "CoreFriday13th.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Friday13th/Story/CoreFriday13th.cs"
   },
