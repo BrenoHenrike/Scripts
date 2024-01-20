@@ -59,40 +59,37 @@ public class SwirlingTheAbyss
         Core.AddDrop(Nation.bagDrops);
         Core.AddDrop(Rewards);
         ItemBase? Item = Bot.Inventory.Items.FirstOrDefault(x => x.Name == item);
-        if (item == null)
-        {
-            int i = 1;
-            while (!Bot.ShouldExit && !Core.CheckInventory(Rewards, toInv: false))
-            {
-                Nation.FarmBloodGem(10);
-                Nation.FarmUni13(3);
-                Nation.SwindleBulk(75);
-                Nation.FarmDarkCrystalShard(50);
-                Nation.FarmGemofNulgath(50);
-                Nation.FarmVoucher(true);
 
-                Core.EnsureAccept(7899);
-                Core.EnsureCompleteChoose(7899);
+        int i = 1;
+        while (!Bot.ShouldExit && (Item != null ? !Core.CheckInventory(Item!.Name) : !Core.CheckInventory(Rewards, toInv: false)))
+        {
+            Nation.FarmBloodGem(10);
+            Nation.FarmUni13(3);
+            Nation.SwindleBulk(75);
+            Nation.FarmDarkCrystalShard(50);
+            Nation.FarmGemofNulgath(50);
+            Nation.FarmVoucher(true);
+
+            Core.EnsureAccept(7899);
+
+            if (Item != null)
+            {
+                Core.EnsureComplete(7899, Item.ID);
+                Bot.Wait.ForPickup(Item!.Name);
+            }
+            else
+            {
+                Core.EnsureCompleteChoose(7899, Core.QuestRewards(7899));
+                foreach (string thing in Core.QuestRewards(7899))
+                    if (Bot.Drops.Exists(thing))
+                        Bot.Wait.ForPickup(thing);
                 Core.ToBank(Rewards);
                 Core.Logger($"Completed x{i++}");
             }
-        }
-        else
-        {
-            while (!Bot.ShouldExit && !Core.CheckInventory(Item?.Name))
-            {
-                Nation.FarmBloodGem(10);
-                Nation.FarmUni13(3);
-                Nation.SwindleBulk(75);
-                Nation.FarmDarkCrystalShard(50);
-                Nation.FarmGemofNulgath(50);
-                Nation.FarmVoucher(true);
 
-                Core.EnsureAccept(7899);
-                Core.EnsureComplete(7899, Item!.ID);
-
-            }
         }
+
+
     }
 
 }
