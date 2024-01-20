@@ -68,7 +68,7 @@ tags: lacerate, smite, herosvaliance, arcanasconcerto, elysium, acheron, absolut
 //cs_include Scripts/Dailies/LordOfOrder.cs
 //cs_include Scripts/Story/Nation/CitadelRuins.cs
 //cs_include Scripts/Story/DragonFableOrigins.cs
-//cs_include Scripts/Other\Armor\MalgorsArmorSet.cs
+//cs_include Scripts/Other/Armor/MalgorsArmorSet.cs
 //cs_include Scripts/ShadowsOfWar/MergeShops/DeadLinesMerge.cs
 //cs_include Scripts/ShadowsOfWar/MergeShops/ShadowflameFinaleMerge.cs
 //cs_include Scripts/ShadowsOfWar/MergeShops/TimekeepMerge.cs
@@ -76,6 +76,35 @@ tags: lacerate, smite, herosvaliance, arcanasconcerto, elysium, acheron, absolut
 //cs_include Scripts/ShadowsOfWar/MergeShops/WorldsCoreMerge.cs
 //cs_include Scripts/ShadowsOfWar/MergeShops/ManaCradleMerge.cs
 //cs_include Scripts/ShadowsOfWar/CoreSoWMats.cs
+//cs_include Scripts/Story/Nation/Fiendshard.cs
+
+//cs_include Scripts/Nation/VHL/CoreVHL.cs
+//cs_include Scripts/Story/Nation/VoidRefuge.cs
+//cs_include Scripts/Nation/MergeShops/VoidRefugeMerge.cs
+//cs_include Scripts/Nation/AssistingCragAndBamboozle[Mem].cs
+//cs_include Scripts/Story/Nation/Originul.cs
+//cs_include Scripts/Seasonal/StaffBirthdays/Nulgath/TempleDelve.cs
+//cs_include Scripts/Seasonal/StaffBirthdays/Nulgath/TempleSiege.cs
+//cs_include Scripts/Seasonal/StaffBirthdays/Nulgath/TempleDelveMerge.cs
+//cs_include Scripts/Nation/Various/TheLeeryContract[Member].cs
+//cs_include Scripts/Nation/Various/JuggernautItems.cs
+//cs_include Scripts/Nation/Various/VoidPaladin.cs
+//cs_include Scripts/Nation/MergeShops/NulgathDiamondMerge.cs
+//cs_include Scripts/Nation/Various/TarosManslayer.cs
+//cs_include Scripts/Nation/Various/PurifiedClaymoreOfDestiny.cs
+//cs_include Scripts/Nation/Various/VoidSpartan.cs
+//cs_include Scripts/Nation/Various/SwirlingTheAbyss.cs
+//cs_include Scripts/Hollowborn/TradingandStuff(single).cs
+//cs_include Scripts/Hollowborn/CoreHollowborn.cs
+//cs_include Scripts/Nation/EmpoweringItems.cs
+//cs_include Scripts/Other/Weapons/VoidAvengerScythe.cs
+//cs_include Scripts/Nation/MergeShops/DilligasMerge.cs
+//cs_include Scripts/Nation/MergeShops/DirtlickersMerge.cs
+//cs_include Scripts/Other/Weapons/WrathofNulgath.cs
+//cs_include Scripts/Story/Nation/PrimeFiendShard.cs
+//cs_include Scripts/Nation/Various/ArchfiendDeathLord.cs
+
+
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Models.Skills;
@@ -119,6 +148,8 @@ public class UnlockForgeEnhancements
     private SevenCircles Circles = new();
     private YokaiQuests Yokai = new();
     private MalgorsArmorSet MAS = new();
+    private PrimeFiendShard PFS = new();
+
 
     public string OptionsStorage = "Forge Ehn Unlocks";
     public bool DontPreconfigure = true;
@@ -197,6 +228,10 @@ public class UnlockForgeEnhancements
                     DauntLess();
                     break;
 
+                case ForgeQuestWeapon.Ravenous:
+                    Ravenous();
+                    break;
+
                 case ForgeQuestWeapon.All:
                     Core.Logger("Selected to unlock all Forge Weapon Enhancements");
                     ForgeWeaponEnhancement();
@@ -208,6 +243,7 @@ public class UnlockForgeEnhancements
                     Elysium();
                     ArcanasConcertoWIP();
                     DauntLess();
+                    Ravenous();
                     break;
             }
         }
@@ -639,6 +675,17 @@ public class UnlockForgeEnhancements
         }
     }
 
+    public void Ravenous()
+    {
+        if (Core.isCompletedBefore(9560))
+            return;
+        Core.Logger("Unlocking Enhancement: Ravenous");
+
+        Farm.Experience();
+        PFS.Storyline();
+
+    }
+
     #endregion
     #region Forge Enhancements
 
@@ -1010,6 +1057,7 @@ public enum ForgeQuestWeapon
     Elysium,
     ArcanasConcertoWIP,
     DauntLess,
+    Ravenous,
     None,
     All
 };
