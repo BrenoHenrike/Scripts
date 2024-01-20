@@ -25,7 +25,9 @@ public class VoidChasm
     public void Storyline()
     {
         if (Core.isCompletedBefore(9552))
-            Story.PreLoad(this);
+            return;
+
+        Story.PreLoad(this);
 
         // Light Headed 9543
         Story.KillQuest(9543, "voidchasm", "Paladin Ascendant");
