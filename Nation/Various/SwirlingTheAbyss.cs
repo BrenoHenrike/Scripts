@@ -58,7 +58,7 @@ public class SwirlingTheAbyss
         Fiendshard.Fiendshard_QuestlineP1();
         Core.AddDrop(Nation.bagDrops);
         Core.AddDrop(Rewards);
-        ItemBase? Item = Bot.Inventory.Items.FirstOrDefault(x => x.Name == item);
+        ItemBase? Item = Core.EnsureLoad(7899).Rewards.Find(x => x.Name == item);
 
         int i = 1;
         while (!Bot.ShouldExit && (Item != null ? !Core.CheckInventory(Item!.Name) : !Core.CheckInventory(Rewards, toInv: false)))
