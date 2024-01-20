@@ -3259,10 +3259,11 @@
       "anima",
       "pneuma",
       "dauntless",
-      "praxis"
+      "praxis",
+      "ravenous"
     ],
     "path": "Enhancement/UnlockForgeEnhancements.cs",
-    "size": 40158,
+    "size": 40275,
     "fileName": "UnlockForgeEnhancements.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Enhancement/UnlockForgeEnhancements.cs"
   },
@@ -12344,7 +12345,7 @@
       "legend"
     ],
     "path": "Other/FarmJoeKits/MemberFarmsKit.cs",
-    "size": 20481,
+    "size": 20524,
     "fileName": "MemberFarmsKit.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/MemberFarmsKit.cs"
   },
@@ -12792,7 +12793,7 @@
       "null"
     ],
     "path": "Other/Weapons/WrathofNulgath.cs",
-    "size": 2573,
+    "size": 2528,
     "fileName": "WrathofNulgath.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Weapons/WrathofNulgath.cs"
   },
