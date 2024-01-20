@@ -1,7 +1,7 @@
 /*
 name: Unlock Forge Enhancements
 description: This script will farm all forge enhancements.
-tags: lacerate, smite, herosvaliance, arcanasconcerto, elysium, acheron, absolution, vainglory, avarice, penitence, lament, vim, examen, anima, pneuma, dauntless, praxis
+tags: lacerate, smite, herosvaliance, arcanasconcerto, elysium, acheron, absolution, vainglory, avarice, penitence, lament, vim, examen, anima, pneuma, dauntless, praxis, ravenous
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -686,6 +686,8 @@ public class UnlockForgeEnhancements
         Farm.Experience();
         PFS.Storyline();
 
+        //Missing shopid for "Gluttonous Maw" in 
+        // http://aqwwiki.wikidot.com/fiend-shard-shop
     }
 
     #endregion
