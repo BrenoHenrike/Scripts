@@ -44,6 +44,8 @@ tags: prime fiend shard, nation, ravenous
 //cs_include Scripts/Nation/Various/ArchfiendDeathLord.cs
 //cs_include Scripts/Nation/MergeShops/VoidChasmMerge.cs
 //cs_include Scripts/Story/Nation/VoidChasm.cs
+//cs_include Scripts/Nation/MergeShops/NationMerge.cs
+//cs_include Scripts/Nation\NationLoyaltyRewarded.cs
 using Skua.Core.Interfaces;
 
 
@@ -70,6 +72,7 @@ public class PrimeFiendShard
     public WrathofNulgath WrathofNulgath = new();
     public DilligasMerge DilligasMerge = new();
     public VoidChasmMerge VoidChasmMerge = new();
+    public NationMerge NationMerge = new();
 
     public void ScriptMain(IScriptInterface Bot)
     {
@@ -111,7 +114,7 @@ public class PrimeFiendShard
                 Core.EnsureComplete(629);
             }
             Nation.EssenceofNulgath(20);
-            VoidRefugeMerge.BuyAllMerge("Nation Soulstealer");
+            NationMerge.BuyAllMerge("Nation Soulstealer");
             TempleDelveMerge.BuyAllMerge("Void Nation Caster");
             DirtlickersMerge.BuyAllMerge("Iron Dreadsaw");
             Core.EnsureComplete(9555);
