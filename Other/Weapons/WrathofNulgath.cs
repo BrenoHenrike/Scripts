@@ -12,7 +12,7 @@ tags: null
 //cs_include Scripts/Nation/Various/JuggernautItems.cs
 using Skua.Core.Interfaces;
 
-public class ScriptTemplate
+public class WrathofNulgath
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
