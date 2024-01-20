@@ -12,19 +12,19 @@ public class Fiendshard_Story
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreStory Story = new CoreStory();
-    public Originul_Story Originul = new Originul_Story();
+    public CoreStory Story = new();
+    public Originul_Story Originul = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
-        Fiendshard_Questline();
+        Fiendshard_QuestlineP1();
 
         Core.SetOptions(false);
     }
 
-    public void Fiendshard_Questline()
+    public void Fiendshard_QuestlineP1()
     {
         if (Core.isCompletedBefore(7900))
             return;
@@ -94,20 +94,4 @@ public class Fiendshard_Story
             Core.EnsureComplete(7898);
         }
     }
-
-
-    // void CutSceneFixer(string map, string cell, string pad)
-    // {
-    //     Bot.Wait.ForCellChange("Cut3");
-    //     if (map == "fiendshard" && cell == "Cut3")
-    //     {
-    //         while (Bot.Player.Cell != "r9")
-    //         {
-    //             Core.Sleep(2500);
-    //             Core.Jump("r9");
-    //             Core.Sleep(2500);
-    //         }
-    //     }
-    //     Bot.Events.CellChanged -= CutSceneFixer;
-    // }
 }
