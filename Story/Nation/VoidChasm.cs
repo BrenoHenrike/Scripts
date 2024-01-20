@@ -24,7 +24,7 @@ public class VoidChasm
 
     public void Storyline()
     {
-        if (Core.isCompletedBefore(9553))
+        if (Core.isCompletedBefore(9552))
             Story.PreLoad(this);
 
         // Light Headed 9543
@@ -62,16 +62,5 @@ public class VoidChasm
 
         // Famiglia di Carcano 9552
         Story.KillQuest(9552, "voidchasm", "Carcano");
-
-        // Uprooted Veins 9553 ( "Void Remnant" farm)
-        if (!Story.QuestProgression(9553))
-        {
-            Core.AddDrop("Void Remnant");
-            Core.EnsureAccept(9553);
-            Core.KillMonster("voidchasm", "r10", "left", "Carcano", "Carcano's Teratoma");
-            Core.KillMonster("voidchasm", "r9", "left", "Carnage", "Bloodied Chainlink");
-            Core.KillMonster("voidchasm", "r7", "left", "The Hushed", "Defunct Seal of Approval", 6);
-            Core.EnsureComplete(9553);
-        }
     }
 }

@@ -12787,6 +12787,17 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Weapons/VoidAvengerScythe.cs"
   },
   {
+    "name": "WrathofNulgath",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Other/Weapons/WrathofNulgath.cs",
+    "size": 2528,
+    "fileName": "WrathofNulgath.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Weapons/WrathofNulgath.cs"
+  },
+  {
     "name": "ObsidianLightofDestiny",
     "description": "null",
     "tags": [
@@ -15243,7 +15254,7 @@
       "jadzia"
     ],
     "path": "Story/Nation/VoidChasm.cs",
-    "size": 2555,
+    "size": 2036,
     "fileName": "VoidChasm.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Nation/VoidChasm.cs"
   },
