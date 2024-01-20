@@ -47,6 +47,8 @@ public class VoidAvengerScythe
         if (Core.CheckInventory("Void Avenger Scythe"))
             return;
 
+        Core.Logger("Farming Void Avenger Scythe.");
+
         Core.AddDrop("Void Avenger Scythe", "Batwing Scythe");
 
         Core.EnsureAccept(5025);

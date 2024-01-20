@@ -61,6 +61,8 @@ public class TradingandStuffSingle
         if (Core.CheckInventory("ArchFiend Enchanted Orbs"))
             return;
 
+        Core.Logger("Farming ArchFiend Enchanted Orbs.");
+
         HB.FreshSouls(1, 100);
         if (!Core.CheckInventory("Unidentified 25"))
         {

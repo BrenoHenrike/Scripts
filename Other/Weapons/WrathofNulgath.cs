@@ -36,8 +36,10 @@ public class WrathofNulgath
         if (Core.CheckInventory("Wrath of Nulgath"))
             return;
 
+        Core.Logger("Farming Wrath of Nulgath.");
+
         Nation.FarmUni13();
-        Nation.FarmTaintedGem( 80);
+        Nation.FarmTaintedGem(80);
         Nation.FarmDarkCrystalShard(60);
         Nation.FarmDiamondofNulgath(100);
         Nation.FarmVoucher(true);

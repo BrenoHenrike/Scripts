@@ -104,6 +104,7 @@ public class PrimeFiendShard
             if (!Core.CheckInventory("Dual Dragonbone Axe of Nulgath"))
             {
                 Core.AddDrop("Dual Dragonbone Axe of Nulgath");
+                Core.Logger("Farming Dual Dragonbone Axe of Nulgath.");
                 // Combat Style: Dragonbone Axe 629
                 Core.EnsureAccept(629);
                 Nation.FarmUni13(1);

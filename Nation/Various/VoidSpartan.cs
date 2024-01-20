@@ -50,6 +50,10 @@ public class VoidSpartan
         Quest QuestData = Core.EnsureLoad(5982);
         ItemBase? Item = Bot.Inventory.Items.FirstOrDefault(x => x.Name == item);
 
+        if (item == null)
+            Core.Logger("Farming Void Spartan Set.");
+        else Core.Logger($"Farming {item}.");
+
         int i = 1;
         while (!Bot.ShouldExit && (Item != null ? !Core.CheckInventory(Item!.Name) : !Core.CheckInventory(Rewards, toInv: false)))
         {
