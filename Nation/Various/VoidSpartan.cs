@@ -1,3 +1,4 @@
+using System.Reflection.PortableExecutable;
 /*
 name: VoidSpartan
 description: null
@@ -41,14 +42,14 @@ public class VoidSpartan
         Core.SetOptions(false);
     }
 
-    public void GetSpartan()
+    public void GetSpartan(bool pfs = false)
     {
         Core.AddDrop(Nation.bagDrops);
         Core.AddDrop(Rewards);
         Core.AddDrop("Zee's Red Jasper", "Fiend Cloak of Nulgath");
 
         int i = 1;
-        while (!Bot.ShouldExit && !Core.CheckInventory(Rewards, toInv: false))
+        while (!Bot.ShouldExit && (pfs ? !Core.CheckInventory("Void Spartan") : !Core.CheckInventory(Rewards, toInv: false)))
         {
             Core.EnsureAccept(5982);
 
@@ -59,10 +60,18 @@ public class VoidSpartan
             Core.JumpWait();
             Farm.Gold(500000);
             Core.BuyItem("tercessuinotlim", 68, "Fiend Cloak of Nulgath");
+            if (pfs)
+            {
+                Core.EnsureComplete(5982, 40933);
+                Bot.Drops.Pickup("Void Spartan");
 
-            Core.EnsureCompleteChoose(5982, Rewards);
-            Bot.Drops.Pickup(Rewards);
-            Core.Logger($"Completed x{i++}");
+            }
+            else
+            {
+                Core.EnsureCompleteChoose(5982, Rewards);
+                Bot.Drops.Pickup(Rewards);
+                Core.Logger($"Completed x{i++}");
+            }
         }
     }
 }
