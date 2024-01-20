@@ -45,9 +45,12 @@ public class SwirlingTheAbyss
         "DeathLord Spines of Nulgath",
         "Deathless Wings of Nulgath",
     };
-    
+
     public void STA(string? item = null)
     {
+        if (item != null && Core.CheckInventory(item))
+            return;
+
         Fiendshard.Fiendshard_QuestlineP1();
         Core.AddDrop(Nation.bagDrops);
         Core.AddDrop(Rewards);
@@ -82,7 +85,7 @@ public class SwirlingTheAbyss
                 Nation.FarmVoucher(true);
 
                 Core.EnsureAccept(7899);
-                Core.EnsureCompleteChoose(7899);
+                Core.EnsureComplete(7899, Item!.ID);
 
             }
         }
