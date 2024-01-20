@@ -52,7 +52,9 @@ public class SwirlingTheAbyss
             return;
 
 
-        Core.Logger($"Farming {item}.");
+        if (item != null)
+            Core.Logger($"Farming {item}.");
+        else Core.Logger("Farming Swirling the Abyss Quest Rewards.");
         Fiendshard.Fiendshard_QuestlineP1();
         Core.AddDrop(Nation.bagDrops);
         Core.AddDrop(Rewards);
