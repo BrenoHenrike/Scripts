@@ -8464,6 +8464,17 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/SinoftheAbyssMatsPreFarm[NoInsignia].cs"
   },
   {
+    "name": "VoidSpartan",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Nation/Various/VoidSpartan.cs",
+    "size": 2160,
+    "fileName": "VoidSpartan.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/VoidSpartan.cs"
+  },
+  {
     "name": "TarosPrismaticManslayers",
     "description": "null",
     "tags": [
