@@ -15242,19 +15242,19 @@
   },
   {
     "name": "Void Chasm Story",
-    "description": "This script will complete the storyline in /voidrefuge",
+    "description": "This script will complete the storyline in /voidchasm.",
     "tags": [
       "voidchasm",
-      "voidrefuge",
-      "refuge",
+      "chasm",
       "nation",
       "nulgath",
       "story",
       "ana di carcano",
-      "gravelyn"
+      "gravelyn",
+      "jadzia"
     ],
     "path": "Story/Nation/VoidChasm.cs",
-    "size": 2560,
+    "size": 2555,
     "fileName": "VoidChasm.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Nation/VoidChasm.cs"
   },
