@@ -741,6 +741,44 @@ public class CoreNation
                             Core.SellItem("Voucher of Nulgath", all: true);
                             Bot.Wait.ForItemSell();
                         }
+                        if (returnPolicyDuringSupplies && Core.CheckInventory(new[] { Uni(1), Uni(6), Uni(9), Uni(16), Uni(20) }))
+                        {
+                            ResetSindles();
+                            while (!Bot.ShouldExit && !Core.CheckInventory("Dark Makai Rune"))
+                            {
+                                // Define the maps with their corresponding indexes
+                                var maps = new[] { ("tercessuinotlim", "m1"), (Core.IsMember ? "Nulgath" : "evilmarsh", "Field1") };
+
+                                // Randomly select a map
+                                var randomMapIndex = new Random().Next(0, maps.Length);
+                                var selectedMap = maps[randomMapIndex];
+
+                                Core.Join(selectedMap.Item1, selectedMap.Item2, "Left");
+
+                                while (!Bot.ShouldExit &&
+                                    (selectedMap.Item1 == "tercessuinotlim"
+                                        ? (Core.IsMonsterAlive(2, useMapID: true) || Core.IsMonsterAlive(3, useMapID: true))
+                                        : (Core.IsMonsterAlive(1, useMapID: true) || Core.IsMonsterAlive(2, useMapID: true))))
+                                {
+                                    if (!Bot.Player.InCombat)
+                                        Core.Sleep();  // Use the built-in delay
+                                    Bot.Combat.Attack("*");
+                                    if (Core.CheckInventory("Dark Makai Rune"))
+                                        break;
+                                }
+                            }
+
+                            Bot.Wait.ForPickup("Dark Makai Rune");
+
+                            var ReturnRewards = Core.EnsureLoad(7551).Rewards;
+                            ItemBase? ReturnRewardsItem = rewards.Find(x => x.Name == item);
+
+                            if (ReturnRewards.Any(reward => reward.Name == item && reward.Name != "Receipt of Swindle"))
+                                Core.EnsureCompleteChoose(7551, new[] { ReturnRewardsItem!.Name });
+                            else
+                                Core.EnsureCompleteChoose(7551, Core.QuestRewards(7551));
+
+                        }
                         if (Core.CheckInventory("Voucher of Nulgath (non-mem)") && Core.CheckInventory("Essence of Nulgath", 60))
                             Core.EnsureCompleteMulti(4778);
                     }
@@ -753,6 +791,9 @@ public class CoreNation
                 BambloozevsDrudgen(item, quant);
             else
             {
+                var rewards = Core.EnsureLoad(2857).Rewards;
+                ItemBase? Item = rewards.Find(x => x.Name == item);
+
                 while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
                 {
                     if (UltraAlteon)
@@ -773,6 +814,43 @@ public class CoreNation
                         Bot.Wait.ForPickup("Voucher of Nulgath");
                         Core.SellItem("Voucher of Nulgath", all: true);
                         Bot.Wait.ForItemSell();
+                    }
+                    if (returnPolicyDuringSupplies && Core.CheckInventory(new[] { Uni(1), Uni(6), Uni(9), Uni(16), Uni(20) }))
+                    {
+                        ResetSindles();
+                        while (!Bot.ShouldExit && !Core.CheckInventory("Dark Makai Rune"))
+                        {
+                            // Define the maps with their corresponding indexes
+                            var maps = new[] { ("tercessuinotlim", "m1"), (Core.IsMember ? "Nulgath" : "evilmarsh", "Field1") };
+
+                            // Randomly select a map
+                            var randomMapIndex = new Random().Next(0, maps.Length);
+                            var selectedMap = maps[randomMapIndex];
+
+                            Core.Join(selectedMap.Item1, selectedMap.Item2, "Left");
+
+                            while (!Bot.ShouldExit &&
+                                (selectedMap.Item1 == "tercessuinotlim"
+                                    ? (Core.IsMonsterAlive(2, useMapID: true) || Core.IsMonsterAlive(3, useMapID: true))
+                                    : (Core.IsMonsterAlive(1, useMapID: true) || Core.IsMonsterAlive(2, useMapID: true))))
+                            {
+                                if (!Bot.Player.InCombat)
+                                    Core.Sleep();  // Use the built-in delay
+                                Bot.Combat.Attack("*");
+                                if (Core.CheckInventory("Dark Makai Rune"))
+                                    break;
+                            }
+                        }
+
+                        Bot.Wait.ForPickup("Dark Makai Rune");
+
+                        var ReturnRewards = Core.EnsureLoad(7551).Rewards;
+                        ItemBase? ReturnRewardsItem = rewards.Find(x => x.Name == item);
+
+                        if (ReturnRewards.Any(reward => reward.Name == item && reward.Name != "Receipt of Swindle"))
+                            Core.EnsureCompleteChoose(7551, new[] { ReturnRewardsItem!.Name });
+                        else
+                            Core.EnsureCompleteChoose(7551, Core.QuestRewards(7551));
                     }
                     if (Core.CheckInventory("Voucher of Nulgath (non-mem)") && Core.CheckInventory("Essence of Nulgath", 60))
                         Core.EnsureCompleteMulti(4778);
@@ -1130,8 +1208,6 @@ public class CoreNation
                             break;
                     }
                 }
-
-
 
                 Bot.Wait.ForPickup("Dark Makai Rune");
 
