@@ -127,7 +127,13 @@ public class CoreFriday13th
             Story.KillQuest(3116, "Skullpunch", "Fishbones");
 
             // Comfort Food 3117
-            Story.KillQuest(3117, "Skullpunch", new[] { "Shelleton", "Fishwing" });
+            if (!Story.QuestProgression(3117))
+            {
+                Core.EnsureAccept(3117);
+                Core.HuntMonster("Skullpunch", "Shelleton", "Turtle Meat", 10);
+                Core.HuntMonster("Skullpunch", "Fish Oil", "Fishwing", 5);
+                Core.EnsureAccept(3117);
+            }
 
             // Full o' Holes 3118
             Story.KillQuest(3118, "Skullpunch", "Shelleton");
