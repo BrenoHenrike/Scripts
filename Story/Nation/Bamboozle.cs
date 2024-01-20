@@ -12,8 +12,8 @@ public class Bamboozle
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreStory Story = new CoreStory();
-    public BattleUnder Under = new BattleUnder();
+    public CoreStory Story = new();
+    public BattleUnder Under = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
