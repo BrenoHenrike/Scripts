@@ -5,6 +5,7 @@ tags: voidchasm, chasm, nation, nulgath, story, ana di carcano, gravelyn, jadzia
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
+//cs_include Scripts/Story\Nation\VoidRefuge.cs
 using Skua.Core.Interfaces;
 
 public class VoidChasm
@@ -12,6 +13,7 @@ public class VoidChasm
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
     private CoreStory Story = new();
+    private VoidRefuge VR = new();
 
     public void ScriptMain(IScriptInterface Bot)
     {
@@ -26,6 +28,8 @@ public class VoidChasm
     {
         if (Core.isCompletedBefore(9552))
             return;
+
+        VR.Storyline();
 
         Story.PreLoad(this);
 

@@ -54,6 +54,7 @@ public class PrimeFiendShard
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new();
+    public CoreFarms Farm = new();
     private CoreAdvanced Adv = new();
     public Originul_Story Originul = new();
     public CoreVHL VHL = new();
@@ -94,6 +95,7 @@ public class PrimeFiendShard
         VHL.GetVHL();
 
         // Prime Fiend Shard [required to accept]
+
         VoidChasmMerge.BuyAllMerge("Prime Fiend Shard");
 
         // Feed the Fiend Shard 9555
