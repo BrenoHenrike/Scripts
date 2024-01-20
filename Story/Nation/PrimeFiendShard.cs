@@ -126,7 +126,7 @@ public class PrimeFiendShard
             Core.EnsureAccept(9556);
             Nation.EssenceofNulgath(40);
             NulgathDiamondMerge.BuyAllMerge("Abyssal Priest of Nulgath");
-            NulgathDiamondMerge.BuyAllMerge("torm Knight");
+            NulgathDiamondMerge.BuyAllMerge("Storm Knight");
             VoidPaladin.DeeperandDeeperintoDarkness();
             VoidSpartan.GetSpartan();
             Core.EnsureComplete(9556);
