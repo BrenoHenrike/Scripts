@@ -47,7 +47,9 @@ tags: prime fiend shard, nation, ravenous, fiend shard, nulgath, voidchasm, void
 //cs_include Scripts/Nation/MergeShops/NationMerge.cs
 //cs_include Scripts/Nation\NationLoyaltyRewarded.cs
 using Skua.Core.Interfaces;
-
+using Skua.Core.Models.Quests;
+using Skua.Core.Models.Items;
+using System.Collections.Generic;
 
 public class PrimeFiendShard
 {
@@ -76,6 +78,19 @@ public class PrimeFiendShard
 
     public void ScriptMain(IScriptInterface Bot)
     {
+        for (int questId = 9555; questId <= 9559; questId++)
+        {
+            Quest? quest = Bot.Quests.EnsureLoad(questId);
+
+            if (quest != null)
+            {
+                foreach (ItemBase item in quest.Requirements)
+                {
+                    Core.BankingBlackList.Add(item.Name);
+                }
+            }
+        }
+
         Core.SetOptions();
 
         Storyline();
@@ -96,6 +111,8 @@ public class PrimeFiendShard
         // Prime Fiend Shard [required to accept]
 
         VoidChasmMerge.BuyAllMerge("Prime Fiend Shard");
+        // Ensure requirements are unbanked
+        Core.Unbank("Prime Fiend Shard");
 
         // Feed the Fiend Shard 9555
         if (!Story.QuestProgression(9555))
@@ -119,6 +136,11 @@ public class PrimeFiendShard
             NationMerge.BuyAllMerge("Nation Soulstealer");
             TempleDelveMerge.BuyAllMerge("Void Nation Caster");
             DirtlickersMerge.BuyAllMerge("Iron Dreadsaw");
+
+            // Ensure requirements are unbanked
+            Quest? Quest = Bot.Quests.EnsureLoad(9555);
+            foreach (ItemBase Item in Quest!.Requirements)
+                Core.Unbank(Item.ID);
             Core.EnsureComplete(9555);
         }
 
@@ -131,6 +153,11 @@ public class PrimeFiendShard
             NulgathDiamondMerge.BuyAllMerge("Storm Knight");
             VoidPaladin.DeeperandDeeperintoDarkness();
             VoidSpartan.GetSpartan("Void Spartan");
+
+            // Ensure requirements are unbanked
+            Quest? Quest = Bot.Quests.EnsureLoad(9556);
+            foreach (ItemBase Item in Quest!.Requirements)
+                Core.Unbank(Item.ID);
             Core.EnsureComplete(9556);
         }
 
@@ -143,6 +170,11 @@ public class PrimeFiendShard
             NulgathDiamondMerge.BuyAllMerge("Blood Ranger");
             VoidRefugeMerge.BuyAllMerge("Envenomed Edge of Nulgath");
             Nation.EssenceofNulgath(60);
+
+            // Ensure requirements are unbanked
+            Quest? Quest = Bot.Quests.EnsureLoad(9557);
+            foreach (ItemBase Item in Quest!.Requirements)
+                Core.Unbank(Item.ID);
             Core.EnsureComplete(9557);
         }
 
@@ -156,7 +188,11 @@ public class PrimeFiendShard
             WrathofNulgath.GetSword();
             DilligasMerge.BuyAllMerge("Ancient Shogun Armor");
             //ooga booga it wont complete
-            Core.Unbank("Void Avenger Scythe", "Doomblade of Destruction", "Archfiend DeathLord", "Wrath of Nulgath", "Ancient Shogun Armor");
+
+            // Ensure requirements are unbanked
+            Quest? Quest = Bot.Quests.EnsureLoad(9558);
+            foreach (ItemBase Item in Quest!.Requirements)
+                Core.Unbank(Item.ID);
             Core.EnsureComplete(9558);
         }
 
@@ -173,6 +209,11 @@ public class PrimeFiendShard
             Nation.FarmBloodGem(100);
             while (!Bot.ShouldExit && (!Core.CheckInventory("Roentgenium of Nulgath", 10) && Core.CheckInventory("Elders' Blood")))
                 VHL.VHLChallenge(10);
+
+            // Ensure requirements are unbanked
+            Quest? Quest = Bot.Quests.EnsureLoad(9559);
+            foreach (ItemBase Item in Quest!.Requirements)
+                Core.Unbank(Item.ID);
             Core.EnsureAccept(9559);
         }
     }
