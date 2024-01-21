@@ -703,10 +703,11 @@ public class CoreNation
         bool sellMemVoucher = Core.CBOBool("Nation_SellMemVoucher", out bool _sellMemVoucher) && _sellMemVoucher;
         bool returnPolicyDuringSupplies = Core.CBOBool("Nation_ReturnPolicyDuringSupplies", out bool _returnSupplies) && _returnSupplies;
 
-        Core.RegisterQuests(2857);
+        Core.RegisterQuests(Core.CheckInventory("Swindle Bilk's To Go Hut") ? new[] { 2857, 9542 } : new[] { 2857 });
+
         Core.EquipClass(ClassType.Solo);
 
-        Core.AddDrop((item != null ? new[] { item } : Enumerable.Empty<string>()).Concat(SuppliesRewards.Concat(sellMemVoucher ? new[] { "Voucher of Nulgath" } : Enumerable.Empty<string>()).Append("Relic of Chaos")).ToArray());
+        Core.AddDrop((item != null ? new[] { item } : Enumerable.Empty<string>()).Concat(Core.QuestRewards(9542)).Concat(SuppliesRewards.Concat(sellMemVoucher ? new[] { "Voucher of Nulgath" } : Enumerable.Empty<string>()).Append("Relic of Chaos")).ToArray());
 
         if (item == null)
         {
@@ -1715,8 +1716,8 @@ public class CoreNation
                 Core.JumpWait();
             }
 
-            Core.KillMonster("blindingsnow", "r17", "Left", "*", "Fragment of Chaos", 80, false, log: false);
-            Core.KillMonster("evilwarnul", "r13", "Left", "Legion Fenrir", "Broken Betrayal Blade", 8, false, log: false);
+            Core.KillMonster("blindingsnow", "r17", "Left", "*", "Fragment of Chaos", 80, false);
+            Core.KillMonster("evilwarnul", "r13", "Left", "Legion Fenrir", "Broken Betrayal Blade", 8, false);
             Core.EnsureComplete(3743);
 
             string itemToPickup = betrayalBlade ?? "Blood Gem of the Archfiend";
