@@ -155,6 +155,8 @@ public class PrimeFiendShard
             ArchfienddDeathLord.GetArm(true, ArchfiendDeathLord.RewardChoice.Archfiend_DeathLord);
             WrathofNulgath.GetSword();
             DilligasMerge.BuyAllMerge("Ancient Shogun Armor");
+            //ooga booga it wont complete
+            Core.Unbank("Void Avenger Scythe", "Doomblade of Destruction", "Archfiend DeathLord", "Wrath of Nulgath", "Ancient Shogun Armor");
             Core.EnsureComplete(9558);
         }
 
