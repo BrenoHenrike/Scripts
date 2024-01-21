@@ -704,6 +704,8 @@ public class CoreNation
         bool returnPolicyDuringSupplies = Core.CBOBool("Nation_ReturnPolicyDuringSupplies", out bool _returnSupplies) && _returnSupplies;
 
         Core.RegisterQuests(Core.CheckInventory("Swindle Bilk's To Go Hut") ? new[] { 2857, 9542 } : new[] { 2857 });
+        if (item != Uni(13) && Core.CheckInventory("Drudgen the Assistant"))
+            Core.RegisterQuests(870);
 
         Core.EquipClass(ClassType.Solo);
 
