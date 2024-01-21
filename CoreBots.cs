@@ -2479,8 +2479,6 @@ public class CoreBots
 
     public void _KillForItem(string name, string item, int quantity, bool isTemp = false, bool rejectElse = false, bool log = true)
     {
-        var (Cell, Pad) = (Bot.Player.Cell, "Left");
-
         if (CheckInventory(item, quantity))
             return;
 
@@ -2491,39 +2489,27 @@ public class CoreBots
        ((!Bot.Inventory.Contains(item) && Bot.Inventory.GetQuantity(item) < quantity) ||
         (!Bot.TempInv.Contains(item) && Bot.TempInv.GetQuantity(item) < quantity)))
         {
-            while (!Bot.ShouldExit && Bot.Player.Cell != Cell)
-            {
-                Jump(Cell, Pad);
-                Sleep();
-                if (Bot.Player.Cell == Cell)
-                    break;
-            }
-
             foreach (Monster mob in Bot.Monsters.CurrentAvailableMonsters)
             {
                 Monster? targetedMob = (name == "*") ? mob : Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault(x => x.Name.FormatForCompare() == name.FormatForCompare());
 
-                ItemBase? Item = isTemp ? Bot.TempInv.Items.FirstOrDefault(x => x.Name.FormatForCompare() == item.FormatForCompare())
+                ItemBase? Item =
+                isTemp ? Bot.TempInv.Items.FirstOrDefault(x => x.Name.FormatForCompare() == item.FormatForCompare())
                 : Bot.Inventory.Items.FirstOrDefault(x => x.Name.FormatForCompare() == item.FormatForCompare());
 
                 while (!Bot.ShouldExit && IsMonsterAlive(targetedMob?.MapID ?? 0, true))
                 {
                     Bot.Combat.Attack(targetedMob?.MapID ?? Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault()?.MapID ?? 0);
-                    Sleep();
-                    if (Item != null && Bot.Inventory.Contains(Item.Name) && Bot.Inventory.GetQuantity(Item.Name) >= quantity ||
-                        Item != null && Bot.TempInv.Contains(Item.Name) && Bot.TempInv.GetQuantity(Item.Name) >= quantity)
-                    {
-                        while (!Bot.ShouldExit && (Bot.Player.InCombat || Bot.Player.HasTarget))
-                        {
-                            ToggleAggro(false);
-                            Bot.Combat.Exit();
-                            Sleep();
-                        }
 
-                        Bot.Wait.ForPickup(Item.ID);
-                        Sleep();
+                    Sleep();
+
+                    if (Item != null && Bot.Inventory.Contains(Item.ID) && Bot.Inventory.GetQuantity(Item.ID) >= quantity ||
+                    Item != null && Bot.TempInv.Contains(Item.ID) && Bot.TempInv.GetQuantity(Item.ID) >= quantity)
+                    {
+                        JumpWait();
+                        Bot.Wait.ForPickup(item);
                         if (rejectElse)
-                            Bot.Drops.RejectExcept(Item.ID);
+                            Bot.Drops.RejectExcept(item);
                         Rest();
                         return;
                     }
