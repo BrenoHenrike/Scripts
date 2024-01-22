@@ -233,28 +233,58 @@ public class CoreFarms
 
         ToggleBoost(BoostType.Experience);
 
-
-        Core.RegisterQuests(4007);
-        while (!Bot.ShouldExit && Bot.Player.Level < 10)
-            Core.KillMonster("oaklore", "r3", "Left", "Bone Berserker", log: false);
-        Core.CancelRegisteredQuests();
-
-        //i swear this is active yearround for a black friday "locked" quest according to the wiki.. keep undead warrior as a backup.. undead giant is slower but will work till we find a fillin - perhaps sluethhouseinn? used to be good years ago
-        if (Bot.Quests.IsAvailable(6979))
+        if (Bot.Player.Level < 10)
         {
-            Core.EquipClass(ClassType.Solo);
-            Core.RegisterQuests(6979);
-            while (!Bot.ShouldExit && Bot.Player.Level < 30)
-                Core.KillMonster("prison", "Tax", "Left", "*", "Broken Piggy Bank", log: false);
+            Core.RegisterQuests(4007);
+            while (!Bot.ShouldExit && Bot.Player.Level < 10)
+                Core.KillMonster("oaklore", "r3", "Left", "Bone Berserker", log: false);
             Core.CancelRegisteredQuests();
         }
-        else
+
+        if (Bot.Player.Level < 30)
         {
-            UndeadGiantUnlock();
-            Core.RegisterQuests(178);
-            while (!Bot.ShouldExit && Bot.Player.Level < 30)
-                Core.HuntMonster("swordhavenundead", "Undead Giant", log: false);
-            Core.CancelRegisteredQuests();
+            //i swear this is active yearround for a black friday "locked" quest according to the wiki.. keep undead warrior as a backup.. undead giant is slower but will work till we find a fillin - perhaps sluethhouseinn? used to be good years ago
+            if (Bot.Quests.IsAvailable(6979))
+            {
+                Core.EquipClass(ClassType.Solo);
+                Core.RegisterQuests(6979);
+                while (!Bot.ShouldExit && Bot.Player.Level < 30)
+                {
+                    Core.Join("prison", "Tax", "Left");
+
+                    if (Bot.Player.Cell != "Tax")
+                    {
+                        Core.Jump("Tax");
+                        Core.Sleep();
+                        Bot.Wait.ForCellChange("Tax");
+                    }
+
+                    while (!Bot.ShouldExit && Core.IsMonsterAlive(7, true) && Bot.Monsters.CurrentAvailableMonsters.Exists(m => m.MapID == 7))
+                    {
+                        Bot.Kill.Monster(7);
+
+                        while (Bot.Player.Cell != "Tax")
+                        {
+                            Core.Jump("Tax");
+                            Core.Sleep();
+                            // if (Bot.Player.Cell == "Tax")
+                            //     break;  // Removed unnecessary break statement
+                        }
+
+                        if (Bot.Player.Level >= 30)
+                            break;
+                    }
+                }
+                Core.CancelRegisteredQuests();
+            }
+            else
+            {
+                UndeadGiantUnlock();
+                Core.RegisterQuests(178);
+                while (!Bot.ShouldExit && Bot.Player.Level < 30)
+                    Core.HuntMonster("swordhavenundead", "Undead Giant", log: false);
+                Core.CancelRegisteredQuests();
+            }
         }
 
         FireWarxp(40);
