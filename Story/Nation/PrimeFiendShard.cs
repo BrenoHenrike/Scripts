@@ -214,7 +214,7 @@ public class PrimeFiendShard
             Quest? Quest = Bot.Quests.EnsureLoad(9559);
             foreach (ItemBase Item in Quest!.Requirements)
                 Core.Unbank(Item.ID);
-            Core.EnsureAccept(9559);
+            Core.EnsureComplete(9559);
         }
     }
 }
