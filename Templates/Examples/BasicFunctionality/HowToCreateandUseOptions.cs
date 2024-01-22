@@ -48,7 +48,7 @@ public class OptionsExample
         //Examples on how to use the options:
 
         //Sting if what was filled in matches the {== "this"}:
-        if (Bot.Config.Get<string>("StringName") == "Insert what ever here its \"supposed to be\".")
+        if (Bot.Config?.Get<string>("StringName") == "Insert what ever here its \"supposed to be\".")
         {
             //Do a thing
         }
