@@ -1334,6 +1334,7 @@ public class CoreNation
         {
             // Equip the Solo class and hunt monsters for quest completion
             Core.EquipClass(ClassType.Solo);
+            Core.JoinSWF("mobius", "ChiralValley/town-Mobius-21Feb14.swf", "Slugfit", "Bottom");
             Core.HuntMonster("mobius", "Slugfit", "Slugfit Horn", 5);
             Core.HuntMonster("faerie", "Aracara", "Aracara Silk");
 

@@ -42,6 +42,7 @@ public class TimeIsMoney
                     //Time is Money 6185
                     Core.EnsureAccept(6185);
 
+                    Core.JoinSWF("mobius", "ChiralValley/town-Mobius-21Feb14.swf", "Slugfit", "Bottom");
                     Core.HuntMonster("Mobius", "Slugfit", "Slugfit Horn", 5);
                     Core.HuntMonster("Mobius", "Fire Imp", "Imp Flame", 3);
                     Core.HuntMonster("bamboo", "Tanuki", "Tanuki Ears", 3);
