@@ -17,7 +17,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 110914,
+    "size": 112087,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -380,7 +380,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 92127,
+    "size": 92224,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -457,7 +457,7 @@
       "null"
     ],
     "path": "Nation/TimeIsMoney.cs",
-    "size": 1721,
+    "size": 1826,
     "fileName": "TimeIsMoney.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/TimeIsMoney.cs"
   },
@@ -5633,7 +5633,7 @@
       "story"
     ],
     "path": "Seasonal/HerosHeartDay/Love.cs",
-    "size": 1423,
+    "size": 1520,
     "fileName": "Love.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HerosHeartDay/Love.cs"
   },
