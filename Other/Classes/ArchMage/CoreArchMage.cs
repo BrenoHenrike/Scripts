@@ -433,9 +433,12 @@ public class CoreArchMage
 
     public void UnboundTome(int quant = 99)
     {
-        if(Core.CheckInventory("Unbound Tome", quant))
-        Core.Logger("We have enough Unbound Tomes.");
-
+        if (Core.CheckInventory("Unbound Tome", quant))
+        {
+            Core.Logger("We have enough Unbound Tomes.");
+            return;
+        }
+        
         if (!Bot.Quests.IsUnlocked(8912))
             ArcaneLocus(1);
 
