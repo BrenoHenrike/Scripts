@@ -85,10 +85,10 @@ public class NulgathDemandsWork
                 Nation.FarmDiamondofNulgath(60);
                 Nation.FarmDarkCrystalShard(45);
                 Uni27();
-                Nation.FarmVoucher(true);
                 Nation.FarmGemofNulgath(15);
                 Nation.SwindleBulk(50);
                 GHV.GetGHV();
+                Nation.FarmVoucher(true);
 
                 if (item.Name == "Unidentified 35")
                 {
