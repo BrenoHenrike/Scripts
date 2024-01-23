@@ -215,7 +215,6 @@ public class CoreNation
 
                         foreach ((string, string, int) MobItemQuant in new[] { ("Slugfit", "Slugfit Horn", 5), ("Cyclops Warlord", "Cyclops Horn", 3) })
                         {
-                            Core.FarmingLogger(MobItemQuant.Item2, MobItemQuant.Item3);
                             while (!Bot.ShouldExit && !Core.CheckInventory(MobItemQuant.Item2, MobItemQuant.Item3))
                             {
                                 if (Core.IsMonsterAlive(MobItemQuant.Item2 == "Slugfit Horn" ? 10 : 9, true))
@@ -247,7 +246,6 @@ public class CoreNation
 
                     foreach ((string, string, int) MobItemQuant in new[] { ("Slugfit", "Slugfit Horn", 5), ("Cyclops Warlord", "Cyclops Horn", 3) })
                     {
-                        Core.FarmingLogger(MobItemQuant.Item2, MobItemQuant.Item3);
                         while (!Bot.ShouldExit && !Core.CheckInventory(MobItemQuant.Item2, MobItemQuant.Item3))
                         {
                             if (Core.IsMonsterAlive(MobItemQuant.Item2 == "Slugfit Horn" ? 10 : 9, true))
