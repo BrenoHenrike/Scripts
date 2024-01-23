@@ -1628,7 +1628,7 @@ public class CoreNation
     /// Farms Totem of Nulgath with the best method available.
     /// </summary>
     /// <param name="quant">Desired quantity, 100 = max stack.</param>
-    public void FarmTotemofNulgath(int quant = 100)
+    public void FarmTotemofNulgath(int quant = 100, bool Taro = true)
     {
         // Check if Totem of Nulgath is already in inventory
         if (Core.CheckInventory("Totem of Nulgath", quant))
@@ -1638,15 +1638,15 @@ public class CoreNation
         VoidKightSwordQuest("Totem of Nulgath", quant);
 
         Quest? TotemQuest = Bot.Quests.EnsureLoad(726);
-        if (!TotemQuest!.Upgrade || Core.IsMember)
+        if (Taro && !TotemQuest!.Upgrade || Core.IsMember)
         {
             Core.EquipClass(ClassType.Solo);
             while (!Bot.ShouldExit && !Core.CheckInventory("Totem of Nulgath", quant))
             {
                 Core.EnsureAccept(726);
+                EssenceofNulgath(25);
                 Core.EquipClass(ClassType.Solo);
                 Core.HuntMonster("tercessuinotlim", "Taro Blademaster", "Taro's Manslayer", isTemp: false);
-                EssenceofNulgath(25);
                 Core.EnsureComplete(726);
             }
         }
