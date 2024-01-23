@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 196220,
+    "size": 196402,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -8992,10 +8992,10 @@
       "army",
       "[item]"
     ],
-    "path": "Army/Templates/ArmyTemplatev3.cs",
-    "size": 5002,
-    "fileName": "ArmyTemplatev3.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Templates/ArmyTemplatev3.cs"
+    "path": "Army/Templates/ArmyTemplatev4.cs",
+    "size": 9203,
+    "fileName": "ArmyTemplatev4.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Templates/ArmyTemplatev4.cs"
   },
   {
     "name": "Army Bone Dust",
