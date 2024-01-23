@@ -3244,7 +3244,7 @@ public class CoreBots
             //Extra jump if player still in combat due to auto-aggro cells
             if (Bot.Player.InCombat)
             {
-                Logger("still in combat, forcing spawn cell");
+                Logger("still in combat, forcing \"Enter\" cell");
                 Jump("Enter", "Spawn");
             }
             Bot.Wait.ForTrue(() => !Bot.Player.InCombat, 20);
