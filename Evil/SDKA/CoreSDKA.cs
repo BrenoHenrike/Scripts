@@ -615,17 +615,17 @@ public class CoreSDKA
 
         Core.AddDrop("Dark Energy", "Dark Spirit Orb", "Corrupt Spirit Orb", "Ominous Aura", "Diabolical Aura", "Doom Aura");
 
-        Core.RegisterQuests(quest);
         Core.EquipClass(ClassType.Farm);
 
         // Process each item individually
         for (int i = 0; i < items.Length; i++)
         {
             Core.FarmingLogger(items[i], quants[i]);
-
             while (!Bot.ShouldExit && !Core.CheckInventory(items[i], quants[i]))
             {
+                Core.EnsureAccept(quest);
                 Core.KillMonster("lycan", "r4", "Left", "*", "DoomKnight Armor Piece", 10, log: false);
+                Core.EnsureComplete(quest);
                 Bot.Wait.ForPickup(items[i]);
             }
         }
