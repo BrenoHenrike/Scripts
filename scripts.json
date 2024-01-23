@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 196402,
+    "size": 196702,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -380,7 +380,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 92545,
+    "size": 92571,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -8071,7 +8071,7 @@
       "null"
     ],
     "path": "Nation/Materials/TotemofNulgath.cs",
-    "size": 471,
+    "size": 943,
     "fileName": "TotemofNulgath.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Materials/TotemofNulgath.cs"
   },
