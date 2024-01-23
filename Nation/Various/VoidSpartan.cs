@@ -59,7 +59,7 @@ public class VoidSpartan
         {
             Core.EnsureAccept(5982);
 
-            Nation.FarmUni13();
+            Nation.FarmUni13(1);
             Nation.FarmBloodGem(5);
             Nation.FarmGemofNulgath(10);
             Core.HuntMonster("pyrewatch", "Flame Soldier", "Zee's Red Jasper", 1, false);

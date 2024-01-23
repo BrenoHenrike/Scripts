@@ -133,7 +133,8 @@ public class PrimeFiendShard
                 Core.EnsureComplete(629);
             }
             Nation.EssenceofNulgath(20);
-            NationMerge.BuyAllMerge("Nation Soulstealer");
+            Nation.FarmDiamondofNulgath(20);
+            Adv.BuyItem("shadowblast", 1206, "Nation Soulstealer", shopItemID: 4175);
             TempleDelveMerge.BuyAllMerge("Void Nation Caster");
             DirtlickersMerge.BuyAllMerge("Iron Dreadsaw");
 
