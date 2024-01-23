@@ -63,7 +63,9 @@ public class VoidSpartan
             Nation.FarmBloodGem(5);
             Nation.FarmGemofNulgath(10);
             Core.HuntMonster("pyrewatch", "Flame Soldier", "Zee's Red Jasper", 1, false);
+            //jumpwait jumps to same cell which is auto-aggro, spawn("Enter") isnt, so force jump there.
             Core.JumpWait();
+            // Core.Jump("Enter", "Spawn");
             Farm.Gold(500000);
             Core.BuyItem("tercessuinotlim", 68, "Fiend Cloak of Nulgath");
 
