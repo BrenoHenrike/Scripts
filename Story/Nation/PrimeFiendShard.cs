@@ -141,7 +141,11 @@ public class PrimeFiendShard
             // Ensure requirements are unbanked
             Quest? Quest = Bot.Quests.EnsureLoad(9555);
             foreach (ItemBase Item in Quest!.Requirements)
-                Core.Unbank(Item.ID);
+                while (!Bot.ShouldExit && !Core.CheckInventory(Item.ID))
+                {
+                    Core.Unbank(Item.ID);
+                    Core.Sleep();
+                }
             Core.EnsureComplete(9555);
         }
 
@@ -158,7 +162,11 @@ public class PrimeFiendShard
             // Ensure requirements are unbanked
             Quest? Quest = Bot.Quests.EnsureLoad(9556);
             foreach (ItemBase Item in Quest!.Requirements)
-                Core.Unbank(Item.ID);
+                while (!Bot.ShouldExit && !Core.CheckInventory(Item.ID))
+                {
+                    Core.Unbank(Item.ID);
+                    Core.Sleep();
+                }
             Core.EnsureComplete(9556);
         }
 
@@ -175,7 +183,11 @@ public class PrimeFiendShard
             // Ensure requirements are unbanked
             Quest? Quest = Bot.Quests.EnsureLoad(9557);
             foreach (ItemBase Item in Quest!.Requirements)
-                Core.Unbank(Item.ID);
+                while (!Bot.ShouldExit && !Core.CheckInventory(Item.ID))
+                {
+                    Core.Unbank(Item.ID);
+                    Core.Sleep();
+                }
             Core.EnsureComplete(9557);
         }
 
@@ -193,7 +205,11 @@ public class PrimeFiendShard
             // Ensure requirements are unbanked
             Quest? Quest = Bot.Quests.EnsureLoad(9558);
             foreach (ItemBase Item in Quest!.Requirements)
-                Core.Unbank(Item.ID);
+                while (!Bot.ShouldExit && !Core.CheckInventory(Item.ID))
+                {
+                    Core.Unbank(Item.ID);
+                    Core.Sleep();
+                }
             Core.EnsureComplete(9558);
         }
 
@@ -214,7 +230,11 @@ public class PrimeFiendShard
             // Ensure requirements are unbanked
             Quest? Quest = Bot.Quests.EnsureLoad(9559);
             foreach (ItemBase Item in Quest!.Requirements)
-                Core.Unbank(Item.ID);
+                while (!Bot.ShouldExit && !Core.CheckInventory(Item.ID))
+                {
+                    Core.Unbank(Item.ID);
+                    Core.Sleep();
+                }
             Core.EnsureComplete(9559);
         }
     }
