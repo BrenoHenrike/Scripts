@@ -3180,7 +3180,15 @@ public class CoreBots
         Bot.Player.SetSpawnPoint(cell, pad);
         if (!ignoreCheck && Bot.Player.Cell == cell)
             return;
-        Bot.Map.Jump(cell, pad, false);
+
+        while (!Bot.ShouldExit && Bot.Player.Cell != cell)
+        {
+            Bot.Map.Jump(cell, pad, false);
+            Sleep();
+            
+            if (Bot.Player.Cell == cell)
+                break;
+        }
     }
 
     /// <summary>
