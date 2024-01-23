@@ -380,7 +380,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 92571,
+    "size": 92774,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -7624,7 +7624,7 @@
       "fragment"
     ],
     "path": "Nation/AFDL/NulgathDemandsWork.cs",
-    "size": 6098,
+    "size": 6100,
     "fileName": "NulgathDemandsWork.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/AFDL/NulgathDemandsWork.cs"
   },
@@ -7835,7 +7835,7 @@
       "null"
     ],
     "path": "Nation/MergeShops/NulgathDiamondMerge.cs",
-    "size": 12971,
+    "size": 12973,
     "fileName": "NulgathDiamondMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/MergeShops/NulgathDiamondMerge.cs"
   },
@@ -7970,7 +7970,7 @@
       "null"
     ],
     "path": "Nation/MergeShops/NulgathWarMerge.cs",
-    "size": 9351,
+    "size": 9353,
     "fileName": "NulgathWarMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/MergeShops/NulgathWarMerge.cs"
   },
@@ -8454,7 +8454,7 @@
       "null"
     ],
     "path": "Nation/Various/TarosManslayer.cs",
-    "size": 3053,
+    "size": 3055,
     "fileName": "TarosManslayer.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/TarosManslayer.cs"
   },
@@ -8912,7 +8912,7 @@
       "reagents"
     ],
     "path": "Army/ArmyNulgath/ArmySupplies.cs",
-    "size": 7998,
+    "size": 8000,
     "fileName": "ArmySupplies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyNulgath/ArmySupplies.cs"
   },
@@ -15303,7 +15303,7 @@
       "citadel-ruins"
     ],
     "path": "Story/Nation/CitadelRuins.cs",
-    "size": 9743,
+    "size": 9745,
     "fileName": "CitadelRuins.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Nation/CitadelRuins.cs"
   },
