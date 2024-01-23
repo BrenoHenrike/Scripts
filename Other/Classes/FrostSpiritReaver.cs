@@ -125,12 +125,17 @@ public class FrostSpiritReaver
         Core.RegisterQuests(7920);
         while (!Bot.ShouldExit && !Core.CheckInventory("Ice-Ninth", quant))
         {
-            Core.HuntMonster("icestormarena", "Arctic Wolf", "Ice Needle", 30, isTemp: false);
+            Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("Snowmore", "Jon S'Nooooooo", "Northern Crown", isTemp: false);
-            while (!Bot.ShouldExit && !Core.CheckInventory("Ice Diamond", 3))
+            
+            Core.EquipClass(ClassType.Farm);
+            Core.HuntMonster("icestormarena", "Arctic Wolf", "Ice Needle", 30, isTemp: false);
+            Core.AddDrop("Ice Diamond");
+            Core.FarmingLogger("Ice Diamond", 100);
+            while (!Bot.ShouldExit && !Core.CheckInventory("Ice Diamond", 100))
             {
                 Core.EnsureAccept(7279);
-                Core.HuntMonster("kingcoal", "Snow Golem", "Frozen Coal", 10, log: false);
+                Core.KillMonster("kingcoal", "r1", "Left", "*", "Frozen Coal", 10, log: false);
                 Core.EnsureComplete(7279);
                 Bot.Wait.ForPickup("Ice Diamond");
             }
@@ -153,7 +158,7 @@ public class FrostSpiritReaver
             Core.Logger("Doing prerequisets for \"Cold Blooded\" [1x \"Ice Ninth\"]");
             IceNinth(1);
         }
-        
+
         Farm.GlaceraREP();
 
         if (!Core.CheckInventory(new[] { 38915, 39011 }))

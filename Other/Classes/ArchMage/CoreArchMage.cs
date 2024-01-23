@@ -245,14 +245,17 @@ public class CoreArchMage
 
         Scroll.BuyScroll(Scrolls.Frostbite, 50);
 
-        Core.EquipClass(ClassType.Solo);
+        Core.AddDrop("Ice Diamond");
+        Core.EquipClass(ClassType.Farm);
+        Core.FarmingLogger("Ice Diamond", 100);
         while (!Bot.ShouldExit && !Core.CheckInventory("Ice Diamond", 100))
         {
             Core.EnsureAccept(7279);
-            Core.HuntMonster("kingcoal", "Snow Golem", "Frozen Coal", 10);
+            Core.KillMonster("kingcoal", "r1", "Left", "*", "Frozen Coal", 10, log: false);
             Core.EnsureComplete(7279);
             Bot.Wait.ForPickup("Ice Diamond");
         }
+        Core.EquipClass(ClassType.Solo);
         Core.HuntMonster("icepike", "Chained Kezeroth", "Rimeblossom", 100, false);
         Core.HuntMonster("icepike", "Karok the Fallen", "Starlit Frost", 100, false);
         Core.HuntMonster("icedungeon", "Shade of Kyanos", "Temporal Floe", 100, false);
@@ -438,7 +441,7 @@ public class CoreArchMage
             Core.Logger("We have enough Unbound Tomes.");
             return;
         }
-        
+
         if (!Bot.Quests.IsUnlocked(8912))
             ArcaneLocus(1);
 

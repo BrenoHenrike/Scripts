@@ -45,10 +45,12 @@ public class Bamboozle
         //Ice Diamond
         if (!Story.QuestProgression(7278))
         {
+            Core.EnsureAccept(7278);
+            Core.AddDrop("Ice Diamond");
             if (!Core.CheckInventory("Ice Diamond"))
             {
-                Core.EnsureAccept(7278, 7279);
-                Core.HuntMonster("kingcoal", "Snow Golem", "Frozen Coal", 10);
+                Core.EnsureAccept(7279);
+                Core.KillMonster("kingcoal", "r1", "Left", "*", "Frozen Coal", 10, log: false);
                 Core.EnsureComplete(7279);
                 Bot.Wait.ForPickup("Ice Diamond");
             }
