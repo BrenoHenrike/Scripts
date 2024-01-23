@@ -3185,7 +3185,7 @@ public class CoreBots
         {
             Bot.Map.Jump(cell, pad, false);
             Sleep();
-            
+
             if (Bot.Player.Cell == cell)
                 break;
         }
@@ -3512,27 +3512,32 @@ public class CoreBots
 
             #region Special Cases
             case "tercessuinotlim":
+
+                //to avoid black screen in `tercessuinotlim
                 if (!isCompletedBefore(9540))
                 {
-                    SimpleQuestBypass((15, 8));
-                    Logger("This map now requires a 1 time completion of \"Beyond the Portal\"");
-                    //to avoid black screen in `tercessuinotlim
+                    OneTimeMessage("WARNING!", "This map now requires a 1 time completion of \"Beyond the Portal\"\n" +
+                    "not sure why it loads tercessuinotlim first. but ge tover it :|", messageBox: false);
+
+                    SimpleQuestBypass((15, 8), (542, 2));
+                    Join("citadel");
                     EnsureAccept(9540);
                     KillMonster("citadel", "m22", "Left", "Death's Head", "Death's Head Bested");
                     EnsureComplete(9540);
                 }
 
                 //for taro to show up
-                if (cell == "Taro")
-                    if (!isCompletedBefore(9541))
-                        ChainComplete(9541);
+                if (Bot.Quests.IsAvailable(9541))
+                    ChainComplete(9541);
 
                 Jump("m22", "Left");
                 tryJoin();
 
-                Jump("Enter", "Left");
-                Jump(cell, pad);
+                //leave incase more shit breaks reinstate this vv
+                // Jump("Enter", "Left");
 
+                //vv may no longer be needed as jump has a while check now that works wonders (hopefully)
+                // Jump(cell, pad);
                 break;
 
             case "doomvaultb":
