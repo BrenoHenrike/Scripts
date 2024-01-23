@@ -1637,16 +1637,23 @@ public class CoreNation
         NewWorldsNewOpportunities("Totem of Nulgath", quant);
         VoidKightSwordQuest("Totem of Nulgath", quant);
 
-        // Continue farming until desired quantity is reached
-        while (!Bot.ShouldExit && !Core.CheckInventory("Totem of Nulgath", quant))
+        Quest? TotemQuest = Bot.Quests.EnsureLoad(726);
+        if (!TotemQuest!.Upgrade || Core.IsMember)
         {
-            // Complete the Voucher Item: Totem of Nulgath quest with the TotemofNulgath reward
-            VoucherItemTotemofNulgath(VoucherItemTotem.Totem_of_Nulgath);
-
-            if (Bot.Inventory.IsMaxStack("Totem of Nulgath"))
-                Core.Logger("Max Stack Hit.");
-            else
-                Core.Logger($"Totem of Nulgath: {Bot.Inventory.GetQuantity("Totem of Nulgath")}/{quant}");
+            Core.EquipClass(ClassType.Solo);
+            while (!Bot.ShouldExit && !Core.CheckInventory("Totem of Nulgath", quant))
+            {
+                Core.EnsureAccept(726);
+                Core.EquipClass(ClassType.Solo);
+                Core.HuntMonster("tercessuinotlim", "Taro Blademaster", "Taro's Manslayer", isTemp: false);
+                EssenceofNulgath(25);
+                Core.EnsureComplete(726);
+            }
+        }
+        else
+        {
+            while (!Bot.ShouldExit && !Core.CheckInventory("Totem of Nulgath", quant))
+                VoucherItemTotemofNulgath(VoucherItemTotem.Totem_of_Nulgath);
         }
     }
 
