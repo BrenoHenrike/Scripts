@@ -380,7 +380,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 92352,
+    "size": 92545,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -8470,7 +8470,7 @@
       "null"
     ],
     "path": "Nation/Various/VoidSpartan.cs",
-    "size": 2670,
+    "size": 2671,
     "fileName": "VoidSpartan.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/VoidSpartan.cs"
   },
@@ -15226,7 +15226,7 @@
       "void chasm"
     ],
     "path": "Story/Nation/PrimeFiendShard.cs",
-    "size": 8892,
+    "size": 8964,
     "fileName": "PrimeFiendShard.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Nation/PrimeFiendShard.cs"
   },
