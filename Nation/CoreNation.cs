@@ -215,28 +215,17 @@ public class CoreNation
 
                         foreach ((string, string, int) MobItemQuant in new[] { ("Slugfit", "Slugfit Horn", 5), ("Cyclops Warlord", "Cyclops Horn", 3) })
                         {
+                            Core.FarmingLogger(MobItemQuant.Item2, MobItemQuant.Item3);
                             while (!Bot.ShouldExit && !Core.CheckInventory(MobItemQuant.Item2, MobItemQuant.Item3))
                             {
-                                while (!Bot.ShouldExit && MobItemQuant.Item1 == "Slugfit" && Core.IsMonsterAlive(10, true))
-                                {
-                                    if (Core.IsMonsterAlive(10, true))
-                                        Bot.Combat.Attack(10);
-                                    else Bot.Combat.Attack(9);
-                                    Core.Sleep();
-                                    if (Bot.TempInv.Contains(MobItemQuant.Item2) && Bot.TempInv.GetQuantity(MobItemQuant.Item2) >= MobItemQuant.Item3)
-                                        continue;
-                                }
-                                while (!Bot.ShouldExit && MobItemQuant.Item1 == "Cyclops Warlord" && Core.IsMonsterAlive(9, true))
-                                {
-                                    if (Core.IsMonsterAlive(10, true))
-                                        Bot.Combat.Attack(9);
-                                    else Bot.Combat.Attack(10);
-                                    Core.Sleep();
-                                    if (Bot.TempInv.Contains(MobItemQuant.Item2) && Bot.TempInv.GetQuantity(MobItemQuant.Item2) >= MobItemQuant.Item3)
-                                        continue;
-                                }
+                                if (Core.IsMonsterAlive(MobItemQuant.Item2 == "Slugfit Horn" ? 10 : 9, true))
+                                    Bot.Combat.Attack(MobItemQuant.Item2 == "Slugfit Horn" ? 10 : 9);
+                                else Bot.Combat.Attack(MobItemQuant.Item2 == "Slugfit Horn" ? 9 : 10);
+                                if (Bot.TempInv.Contains(MobItemQuant.Item2) && Bot.TempInv.GetQuantity(MobItemQuant.Item2) >= MobItemQuant.Item3)
+                                    continue;
+                                Core.Sleep();
                             }
-
+                            Bot.Wait.ForPickup(MobItemQuant.Item2);
                         }
                     }
                     Core.KillMonster("tercessuinotlim", "m2", "top", "*", "Makai Fang", 5, log: false);
@@ -245,24 +234,39 @@ public class CoreNation
                 }
             }
             Core.Logger("all items quant maxed");
+            Core.CancelRegisteredQuests();
         }
         else
         {
             Core.FarmingLogger(item, quant);
-            while (!Bot.ShouldExit && !Core.CheckInventory(item, quant) && !Bot.Inventory.IsMaxStack(item))
+            while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
             {
+                if (!Core.CheckInventory("Slugfit Horn", 5) || !Core.CheckInventory("Cyclops Horn", 3))
+                {
+                    Core.JoinSWF("mobius", "ChiralValley/town-Mobius-21Feb14.swf", "Slugfit", "Bottom");
+
+                    foreach ((string, string, int) MobItemQuant in new[] { ("Slugfit", "Slugfit Horn", 5), ("Cyclops Warlord", "Cyclops Horn", 3) })
+                    {
+                        Core.FarmingLogger(MobItemQuant.Item2, MobItemQuant.Item3);
+                        while (!Bot.ShouldExit && !Core.CheckInventory(MobItemQuant.Item2, MobItemQuant.Item3))
+                        {
+                            if (Core.IsMonsterAlive(MobItemQuant.Item2 == "Slugfit Horn" ? 10 : 9, true))
+                                Bot.Combat.Attack(MobItemQuant.Item2 == "Slugfit Horn" ? 10 : 9);
+                            else Bot.Combat.Attack(MobItemQuant.Item2 == "Slugfit Horn" ? 9 : 10);
+                            if (Bot.TempInv.Contains(MobItemQuant.Item2) && Bot.TempInv.GetQuantity(MobItemQuant.Item2) >= MobItemQuant.Item3)
+                                continue;
+                            Core.Sleep();
+                        }
+                        Bot.Wait.ForPickup(MobItemQuant.Item2);
+                    }
+                }
+
                 Core.KillMonster("tercessuinotlim", "m2", "top", "*", "Makai Fang", 5);
                 Core.KillMonster("hydra", "Rune2", "Left", "*", "Imp Flame", 3, log: false);
                 Core.HuntMonster("greenguardwest", "Big Bad Boar", "Wereboar Tusk", 2, log: false);
-
-                if (!Core.CheckInventory("Slugfit Horn", 5) || !Core.CheckInventory("Cyclops Horn", 3))
-                {
-                    Core.JoinSWF("mobius", "ChiralValley/town-Mobius-21Feb14.swf");
-                    Core.KillMonster("mobius", "Slugfit", "Bottom", "Slugfit", "Slugfit Horn", 5, log: false);
-                    Core.KillMonster("mobius", "Slugfit", "Bottom", "Cyclops Warlord", "Cyclops Horn", 3, log: false);
-                }
             }
             Core.Logger("items quant maxed");
+            Core.CancelRegisteredQuests();
         }
         Core.CancelRegisteredQuests();
     }
