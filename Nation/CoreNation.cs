@@ -359,7 +359,7 @@ public class CoreNation
             Supplies("Unidentified 9");
             Supplies("Unidentified 16");
             Supplies("Unidentified 20");
-            ResetSindles();
+            ResetQuest(7551);
             #region makai rune
             while (!Bot.ShouldExit && !Core.CheckInventory("Dark Makai Rune"))
             {
@@ -748,7 +748,7 @@ public class CoreNation
                         }
                         if (returnPolicyDuringSupplies && Core.CheckInventory(new[] { Uni(1), Uni(6), Uni(9), Uni(16), Uni(20) }))
                         {
-                            ResetSindles();
+                            ResetQuest(7551);
                             while (!Bot.ShouldExit && !Core.CheckInventory("Dark Makai Rune"))
                             {
                                 // Define the maps with their corresponding indexes
@@ -822,7 +822,7 @@ public class CoreNation
                     }
                     if (returnPolicyDuringSupplies && Core.CheckInventory(new[] { Uni(1), Uni(6), Uni(9), Uni(16), Uni(20) }))
                     {
-                        ResetSindles();
+                        ResetQuest(7551);
                         while (!Bot.ShouldExit && !Core.CheckInventory("Dark Makai Rune"))
                         {
                             // Define the maps with their corresponding indexes
@@ -934,7 +934,7 @@ public class CoreNation
 
                         if (Item2 == null)
                             continue;
-                        ResetSindles();
+                        ResetQuest(7551);
 
                         Core.FarmingLogger(Item2.Name, Item2.MaxStack);
                         Core.EnsureAccept(7551);
@@ -995,7 +995,7 @@ public class CoreNation
 
                     if (Item2 == null)
                         continue;
-                    ResetSindles();
+                    ResetQuest(7551);
 
                     Core.FarmingLogger(Item2.Name, Item2.MaxStack);
                     Core.EnsureAccept(7551);
@@ -1036,12 +1036,16 @@ public class CoreNation
         }
     }
 
-    public void ResetSindles()
+    public void ResetQuest(int QuestID = 0000)
     {
-        Core.EnsureAccept(7551);
-        Bot.Wait.ForQuestAccept(7551);
-        Core.AbandonQuest(7551);
-        Core.EnsureAccept(7551);
+        // Dark makai and their Sigils / Runes are fucky... use this with the aproriate QuestID below:
+        // Swindles Return: 7551
+        // Diamond Exchange: 869
+
+        Core.EnsureAccept(QuestID);
+        Bot.Wait.ForQuestAccept(QuestID);
+        Core.AbandonQuest(QuestID);
+        Core.EnsureAccept(QuestID);
     }
 
     /// <summary>
@@ -1189,7 +1193,7 @@ public class CoreNation
 
             if (returnPolicyDuringSupplies && Core.CheckInventory(new[] { Uni(1), Uni(6), Uni(9), Uni(16), Uni(20) }))
             {
-                ResetSindles();
+                ResetQuest(7551);
                 while (!Bot.ShouldExit && !Core.CheckInventory("Dark Makai Rune"))
                 {
                     // Define the maps with their corresponding indexes
@@ -1367,9 +1371,9 @@ public class CoreNation
 
         if (farmDiamond)
             BambloozevsDrudgen("Diamond of Nulgath", 15);
-        Core.EnsureAccept(869);
-        Core.EquipClass(ClassType.Solo);
 
+        ResetQuest(869);
+        Core.EquipClass(ClassType.Farm);
         while (!Bot.ShouldExit && !Core.CheckInventory("Dark Makai Sigil"))
         {
             // Define the maps with their corresponding indexes
