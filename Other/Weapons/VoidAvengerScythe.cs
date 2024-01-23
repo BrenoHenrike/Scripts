@@ -63,7 +63,7 @@ public class VoidAvengerScythe
         while (!Bot.ShouldExit && !Core.CheckInventory("Batwing Scythe"))
         {
             Core.EnsureAccept(498);
-            Core.HuntMonster("darkoviagrave", "Blightfang", "Blightfang's Skull");
+            Core.HuntMonster("darkoviagrave", "Blightfang", "Blightfang's Skull", log: false);
             Core.EnsureComplete(498);
             Bot.Wait.ForPickup("Batwing Scythe");
         }
