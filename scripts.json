@@ -13774,6 +13774,37 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/MergeShops/DageRecruitMerge.cs"
   },
   {
+    "name": "SoulForge Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the SoulForge Merge [577] in /underworld",
+    "tags": [
+      "soulforge",
+      "merge",
+      "underworld",
+      "classy",
+      "skullseeker",
+      "legion",
+      "beast",
+      "within",
+      "cane",
+      "death",
+      "bane",
+      "pride",
+      "horrid",
+      "cleaver",
+      "spine",
+      "shanks",
+      "ancient",
+      "undead",
+      "horns",
+      "breaker",
+      "warrior"
+    ],
+    "path": "Legion/MergeShops/SoulForgeMerge.cs",
+    "size": 4551,
+    "fileName": "SoulForgeMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/MergeShops/SoulForgeMerge.cs"
+  },
+  {
     "name": "DarkPalaceMerge",
     "description": "null",
     "tags": [
