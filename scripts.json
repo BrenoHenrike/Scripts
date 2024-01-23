@@ -1431,7 +1431,7 @@
       "null"
     ],
     "path": "Hollowborn/TradingandStuff(single).cs",
-    "size": 2600,
+    "size": 2601,
     "fileName": "TradingandStuff(single).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/TradingandStuff(single).cs"
   },
@@ -3263,7 +3263,7 @@
       "ravenous"
     ],
     "path": "Enhancement/UnlockForgeEnhancements.cs",
-    "size": 40374,
+    "size": 40376,
     "fileName": "UnlockForgeEnhancements.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Enhancement/UnlockForgeEnhancements.cs"
   },
@@ -8295,6 +8295,23 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/RandomWeaponOfNulgath.cs"
   },
   {
+    "name": "PrimeFiendShardQuests",
+    "description": "This script will complete the storyline from the prime fiend shard",
+    "tags": [
+      "prime fiend shard",
+      "nation",
+      "ravenous",
+      "fiend shard",
+      "nulgath",
+      "voidchasm",
+      "void chasm"
+    ],
+    "path": "Nation/Various/PrimeFiendShard.cs",
+    "size": 9699,
+    "fileName": "PrimeFiendShard.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/PrimeFiendShard.cs"
+  },
+  {
     "name": "BehemothBlades",
     "description": "null",
     "tags": [
@@ -12782,7 +12799,7 @@
       "null"
     ],
     "path": "Other/Weapons/VoidAvengerScythe.cs",
-    "size": 5052,
+    "size": 5064,
     "fileName": "VoidAvengerScythe.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Weapons/VoidAvengerScythe.cs"
   },
@@ -15212,23 +15229,6 @@
     "size": 3182,
     "fileName": "Fiendshard.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Nation/Fiendshard.cs"
-  },
-  {
-    "name": "PrimeFiendShardQuests",
-    "description": "This script will complete the storyline from the prime fiend shard",
-    "tags": [
-      "prime fiend shard",
-      "nation",
-      "ravenous",
-      "fiend shard",
-      "nulgath",
-      "voidchasm",
-      "void chasm"
-    ],
-    "path": "Story/Nation/PrimeFiendShard.cs",
-    "size": 8964,
-    "fileName": "PrimeFiendShard.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Nation/PrimeFiendShard.cs"
   },
   {
     "name": "Bamboozle",
