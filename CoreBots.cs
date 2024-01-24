@@ -2519,7 +2519,7 @@ public class CoreBots
                         if (rejectElse)
                             Bot.Drops.RejectExcept(item);
                         Rest();
-                        continue;
+                        return;
                     }
                 }
             }
