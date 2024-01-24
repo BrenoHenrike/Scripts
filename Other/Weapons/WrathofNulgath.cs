@@ -1,7 +1,7 @@
 /*
-name: WrathofNulgath
-description: null
-tags: null
+name: Wrath of Nulgath
+description: This script will get Wrath of Nulgath.
+tags: wrathofnulgath,wrath,ravenous,weapon
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -10,6 +10,8 @@ tags: null
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Nation/CoreNation.cs
 //cs_include Scripts/Nation/Various/JuggernautItems.cs
+//cs_include Scripts/Story\Legion\DarkWarLegionandNation.cs
+//cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 using Skua.Core.Interfaces;
 
 public class WrathofNulgath
@@ -19,8 +21,8 @@ public class WrathofNulgath
     public CoreFarms Farm = new();
     public CoreAdvanced Adv = new();
     public CoreStory Story = new();
-    public CoreDailies Daily = new();
     public CoreNation Nation = new();
+    private DarkWarLegionandNation DWLN = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -35,6 +37,8 @@ public class WrathofNulgath
     {
         if (Core.CheckInventory("Wrath of Nulgath"))
             return;
+
+        DWLN.DarkWarNation();
 
         Core.Logger("Farming Wrath of Nulgath.");
 
