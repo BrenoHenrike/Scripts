@@ -84,7 +84,7 @@ public class SwirlingTheAbyss
                     if (Bot.Drops.Exists(thing))
                         Bot.Wait.ForPickup(thing);
                 Core.ToBank(Rewards);
-                Core.Logger($"Completed x{i++}");
+                Core.Logger($"Completed x{i++}.");
             }
 
         }
