@@ -44,6 +44,8 @@ tags: prime fiend shard, nation, ravenous, fiend shard, nulgath, voidchasm, void
 //cs_include Scripts/Nation/Various/ArchfiendDeathLord.cs
 //cs_include Scripts/Nation/MergeShops/VoidChasmMerge.cs
 //cs_include Scripts/Story/Nation/VoidChasm.cs
+//cs_include Scripts/Story/Legion/DarkWarLegionandNation.cs
+//cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 //cs_include Scripts/Nation/MergeShops/NationMerge.cs
 //cs_include Scripts/Nation\NationLoyaltyRewarded.cs
 using Skua.Core.Interfaces;

@@ -101,6 +101,7 @@ tags: lacerate, smite, herosvaliance, arcanasconcerto, elysium, acheron, absolut
 //cs_include Scripts/Nation/MergeShops/DilligasMerge.cs
 //cs_include Scripts/Nation/MergeShops/DirtlickersMerge.cs
 //cs_include Scripts/Other/Weapons/WrathofNulgath.cs
+//cs_include Scripts/Story/Legion/DarkWarLegionandNation.cs
 //cs_include Scripts/Nation/Various/PrimeFiendShard.cs
 //cs_include Scripts/Nation/Various/ArchfiendDeathLord.cs
 //cs_include Scripts/Nation/MergeShops/VoidChasmMerge.cs
