@@ -82,7 +82,7 @@ public class VoidAvengerScythe
         // Dracolich Destroyer Scythe - 
         Core.HuntMonster("dragonheart", "Avatar of Desolich", "Dracolich Destroyer Scythe", isTemp: false);
         // Void Aura - 
-        NSoD.VoidAuras(15);
+        NSoD.VoidAuras(150);
         // Letter from Asuka and Tendou -    
         Core.HuntMonster("Citadel", "Burning Witch", "Letter from Asuka and Tendou", isTemp: false);
         Core.EnsureComplete(5025);
