@@ -3236,19 +3236,18 @@ public class CoreBots
             Sleep(ExitCombatDelay < 200 ? ExitCombatDelay : ExitCombatDelay - 200);
             Bot.Wait.ForCombatExit();
         }
+
         while (!Bot.ShouldExit && Bot.Player.InCombat)
         {
-            Bot.Combat.CancelTarget();
-            Bot.Combat.Exit();
-            Sleep();
+            // Logger("still in combat, trying to exit combat.. agian");
             //Extra jump if player still in combat due to auto-aggro cells
-            if (Bot.Player.InCombat)
-            {
-                Logger("still in combat, forcing \"Enter\" cell");
-                Jump("Enter", "Spawn");
-            }
-            Bot.Wait.ForTrue(() => !Bot.Player.InCombat, 20);
 
+            Bot.Combat.CancelTarget();
+            Sleep(ExitCombatDelay < 200 ? ExitCombatDelay : ExitCombatDelay - 200);
+            Jump("Enter");
+
+            if (!Bot.Player.InCombat)
+                break;
         }
 
     }
