@@ -3540,7 +3540,7 @@ public class CoreBots
                 }
 
                 //for taro to show up
-                if (Bot.Quests.IsAvailable(9541))
+                if (!isCompletedBefore(9541))
                     ChainComplete(9541);
 
                 Jump("m22", "Left");
