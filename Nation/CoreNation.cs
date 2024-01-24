@@ -227,7 +227,7 @@ public class CoreNation
                             Bot.Wait.ForPickup(MobItemQuant.Item2);
                         }
                     }
-                    Core.KillMonster("tercessuinotlim", "m2", "top", "*", "Makai Fang", 5, log: false);
+                    Core.KillMonster("tercessuinotlim", "m2", "Top", "*", "Makai Fang", 5, log: false);
                     Core.KillMonster("hydra", "Rune2", "Left", "*", "Imp Flame", 3, log: false);
                     Core.HuntMonster("greenguardwest", "Big Bad Boar", "Wereboar Tusk", 2, log: false);
                 }
