@@ -1941,11 +1941,11 @@ public class CoreBots
         {
             if (Monster?.Name != null)
             {
-                _KillForItem(Monster.Name, item, quant, isTemp, log: log);
+                _KillForItem(Monster.Name, item, quant, isTemp, log: log, cell: cell);
             }
             else
             {
-                _KillForItem(monster, item, quant, isTemp, log: log);
+                _KillForItem(monster, item, quant, isTemp, log: log, cell: cell);
             }
         }
 
@@ -1995,7 +1995,7 @@ public class CoreBots
             Bot.Kill.Monster(monster);
             Rest();
         }
-        else _KillForItem(monster.Name, item, quant, isTemp, log: log);
+        else _KillForItem(monster.Name, item, quant, isTemp, log: log, cell: cell);
         Bot.Options.AttackWithoutTarget = false;
     }
 
@@ -2477,7 +2477,7 @@ public class CoreBots
     }
 
 
-    public void _KillForItem(string name, string item, int quantity, bool isTemp = false, bool rejectElse = false, bool log = true)
+    public void _KillForItem(string name, string item, int quantity, bool isTemp = false, bool rejectElse = false, bool log = true, string? cell = null)
     {
         if (CheckInventory(item, quantity))
             return;
@@ -2489,6 +2489,16 @@ public class CoreBots
        ((!Bot.Inventory.Contains(item) && Bot.Inventory.GetQuantity(item) < quantity) ||
         (!Bot.TempInv.Contains(item) && Bot.TempInv.GetQuantity(item) < quantity)))
         {
+            // For some stupid fkin reason te bot will (once it has [item, quant] jump wait...
+            // this is to mitigate that (the jump will still hapen.. but this will atelst let u farm still))
+            while (!Bot.ShouldExit && Bot.Player.Cell != cell && cell != null)
+            {
+                Jump(cell, "Left");
+                Sleep();
+                if (Bot.Player.Cell == cell)
+                    break;
+            }
+
             foreach (Monster mob in Bot.Monsters.CurrentAvailableMonsters)
             {
                 Monster? targetedMob = (name == "*") ? mob : Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault(x => x.Name.FormatForCompare() == name.FormatForCompare());
@@ -2500,18 +2510,16 @@ public class CoreBots
                 while (!Bot.ShouldExit && IsMonsterAlive(targetedMob?.MapID ?? 0, true))
                 {
                     Bot.Combat.Attack(targetedMob?.MapID ?? Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault()?.MapID ?? 0);
-
                     Sleep();
 
                     if (Item != null && Bot.Inventory.Contains(Item.ID) && Bot.Inventory.GetQuantity(Item.ID) >= quantity ||
                     Item != null && Bot.TempInv.Contains(Item.ID) && Bot.TempInv.GetQuantity(Item.ID) >= quantity)
                     {
-                        JumpWait();
                         Bot.Wait.ForPickup(item);
                         if (rejectElse)
                             Bot.Drops.RejectExcept(item);
                         Rest();
-                        return;
+                        continue;
                     }
                 }
             }
@@ -3236,20 +3244,17 @@ public class CoreBots
             Sleep(ExitCombatDelay < 200 ? ExitCombatDelay : ExitCombatDelay - 200);
             Bot.Wait.ForCombatExit();
         }
-        while (!Bot.ShouldExit && Bot.Player.InCombat)
-        {
-            Bot.Combat.CancelTarget();
-            Bot.Combat.Exit();
-            Sleep();
-            //Extra jump if player still in combat due to auto-aggro cells
-            if (Bot.Player.InCombat)
-            {
-                Logger("still in combat, forcing \"Enter\" cell");
-                Jump("Enter", "Spawn");
-            }
-            Bot.Wait.ForTrue(() => !Bot.Player.InCombat, 20);
 
-        }
+        // while (!Bot.ShouldExit && Bot.Player.InCombat)
+        // {
+        //     // Logger("still in combat, trying to exit combat.. agian");
+        //     //Extra jump if player still in combat due to auto-aggro cells
+
+        //     Bot.Combat.CancelTarget();
+
+        //     if (!Bot.Player.InCombat)
+        //         break;
+        // }
 
     }
     private string lastMapJW = String.Empty;

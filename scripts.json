@@ -17,7 +17,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 112087,
+    "size": 112090,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 196971,
+    "size": 197312,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -39,7 +39,7 @@
       "null"
     ],
     "path": "CoreAdvanced.cs",
-    "size": 115166,
+    "size": 115148,
     "fileName": "CoreAdvanced.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreAdvanced.cs"
   },
@@ -12799,7 +12799,7 @@
       "null"
     ],
     "path": "Other/Weapons/VoidAvengerScythe.cs",
-    "size": 5064,
+    "size": 5065,
     "fileName": "VoidAvengerScythe.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Weapons/VoidAvengerScythe.cs"
   },
@@ -13774,6 +13774,37 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/MergeShops/DageRecruitMerge.cs"
   },
   {
+    "name": "SoulForge Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the SoulForge Merge [577] in /underworld",
+    "tags": [
+      "soulforge",
+      "merge",
+      "underworld",
+      "classy",
+      "skullseeker",
+      "legion",
+      "beast",
+      "within",
+      "cane",
+      "death",
+      "bane",
+      "pride",
+      "horrid",
+      "cleaver",
+      "spine",
+      "shanks",
+      "ancient",
+      "undead",
+      "horns",
+      "breaker",
+      "warrior"
+    ],
+    "path": "Legion/MergeShops/SoulForgeMerge.cs",
+    "size": 4551,
+    "fileName": "SoulForgeMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/MergeShops/SoulForgeMerge.cs"
+  },
+  {
     "name": "DarkPalaceMerge",
     "description": "null",
     "tags": [
@@ -14340,7 +14371,7 @@
       "null"
     ],
     "path": "Evil/SDKA/CoreSDKA.cs",
-    "size": 25561,
+    "size": 25610,
     "fileName": "CoreSDKA.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/SDKA/CoreSDKA.cs"
   },
@@ -16494,7 +16525,7 @@
       "null"
     ],
     "path": "Story/LordsofChaos/Core13LoC.cs",
-    "size": 81534,
+    "size": 81725,
     "fileName": "Core13LoC.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/LordsofChaos/Core13LoC.cs"
   },
