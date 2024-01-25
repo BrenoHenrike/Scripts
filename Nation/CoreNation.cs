@@ -1638,9 +1638,9 @@ public class CoreNation
         if (Core.CheckInventory("Totem of Nulgath", quant))
             return;
 
-        NewWorldsNewOpportunities("Totem of Nulgath", quant);
-        VoidKightSwordQuest("Totem of Nulgath", quant);
-
+        // NewWorldsNewOpportunities("Totem of Nulgath", quant);
+        // VoidKightSwordQuest("Totem of Nulgath", quant);
+        Core.Logger(Taro ? "Method choosen (if pets not owned): Taro" : "Method choosen (if pets not owned): Voucher Item");
         Quest? TotemQuest = Bot.Quests.EnsureLoad(726);
         if (Taro && !TotemQuest!.Upgrade || Core.IsMember)
         {
