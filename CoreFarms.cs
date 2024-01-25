@@ -1404,15 +1404,14 @@ public class CoreFarms
         if (FactionRank("CraggleRock") >= rank)
             return;
 
-        Core.EquipClass(ClassType.Farm);
+        Core.EquipClass(ClassType.Solo);
         Core.SavedState();
         ToggleBoost(BoostType.Reputation);
         Core.Logger($"Farming rank {rank}");
         Core.AddDrop("Empowered Voidstone");
         Core.RegisterQuests(7277); //Star of the Sandsea 7277
         while (!Bot.ShouldExit && FactionRank("CraggleRock") < rank)
-            Core.KillMonster("wanders", "r3", "Down", "Kalestri Worshiper", log: false);
-        Bot.Wait.ForQuestComplete(7277);
+            Core.KillMonster("wanders", "r3", "Down", "Kalestri Worshiper", "Star of the Sandsea", log: false);
         Core.CancelRegisteredQuests();
         ToggleBoost(BoostType.Reputation, false);
         Core.SavedState(false);
@@ -1436,7 +1435,7 @@ public class CoreFarms
 
         Core.RegisterQuests(5153);
         while (!Bot.ShouldExit && FactionRank("Death Pit Arena") < rank)
-            Core.HuntMonster("deathpit", "General Hun'Gar", log: false);
+            Core.HuntMonster("deathpit", "General Hun'Gar", "General Hun'Gar Defeated", log: false);
         Bot.Wait.ForQuestComplete(5153);
         Core.CancelRegisteredQuests();
         ToggleBoost(BoostType.Reputation, false);
@@ -1466,7 +1465,7 @@ public class CoreFarms
 
         Core.RegisterQuests(7877);
         while (!Bot.ShouldExit && FactionRank("Diabolical") < rank)
-            Core.HuntMonster("mudluk", "Tiger Leech", log: false);
+            Core.HuntMonster("mudluk", "Tiger Leech", "Swamped Leech Tooth", log: false);
         Bot.Wait.ForQuestComplete(7877);
         Core.CancelRegisteredQuests();
         ToggleBoost(BoostType.Reputation, false);
