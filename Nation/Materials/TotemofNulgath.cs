@@ -27,7 +27,7 @@ public class TotemofNulgath
     {
         Core.SetOptions();
 
-        Nation.FarmTotemofNulgath(Taro: bot.Config!.Get<bool>("Taro[true]/VoucherItem[False]"));
+        Nation.FarmTotemofNulgath(Taro: bot.Config!.Get<bool>("Choose"));
 
         Core.SetOptions(false);
     }
