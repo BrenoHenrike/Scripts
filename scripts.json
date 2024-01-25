@@ -13725,17 +13725,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/QueenofMonsters/6TheDestroyer.cs"
   },
   {
-    "name": "null",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Story/QueenofMonsters/CoreQOM.cs",
-    "size": 31925,
-    "fileName": "CoreQOM.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/QueenofMonsters/CoreQOM.cs"
-  },
-  {
     "name": "Complete Doomwood Story",
     "description": "This will complete the Doomwood story.",
     "tags": [
