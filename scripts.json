@@ -893,7 +893,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 92774,
+    "size": 92904,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -4601,7 +4601,7 @@
       "null"
     ],
     "path": "Nation/Materials/TotemofNulgath.cs",
-    "size": 943,
+    "size": 920,
     "fileName": "TotemofNulgath.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Materials/TotemofNulgath.cs"
   },
