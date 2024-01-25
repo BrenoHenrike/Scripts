@@ -1399,7 +1399,7 @@ public class CoreFarms
         }
     }
 
-    public void CraggleRockREP(int rank = 10)
+    public void CraggleRockREP(int rank = 11)
     {
         if (FactionRank("CraggleRock") >= rank)
             return;
@@ -1412,9 +1412,15 @@ public class CoreFarms
         //Star of the Sandsea 7277
         while (!Bot.ShouldExit && FactionRank("CraggleRock") < rank)
         {
-            Core.EnsureAccept(7277);
-            Core.KillMonster("wanders", "r3", "Down", "Kalestri Worshiper", "Star of the Sandsea", log: false);
-            Core.EnsureComplete(7277);
+            if (Bot.Player.Cell != "r3")
+                Core.Jump("r3");
+            else
+            {
+                Core.EnsureAccept(7277);
+                // Core.HuntMonster("wanders", "Kalestri Worshiper", "Star of the Sandsea", log: false);
+                Core.KillMonster("wanders", "r3", "Down", "Kalestri Worshiper", "Star of the Sandsea", log: false);
+                Core.EnsureComplete(7277);
+            }
         }
         ToggleBoost(BoostType.Reputation, false);
         Core.SavedState(false);
