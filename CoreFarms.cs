@@ -1399,7 +1399,7 @@ public class CoreFarms
         }
     }
 
-    public void CraggleRockREP(int rank = 10)
+    public void CraggleRockREP(int rank = 11)
     {
         if (FactionRank("CraggleRock") >= rank)
             return;
@@ -1409,12 +1409,16 @@ public class CoreFarms
         ToggleBoost(BoostType.Reputation);
         Core.Logger($"Farming rank {rank}");
         Core.AddDrop("Empowered Voidstone");
-        Core.RegisterQuests(7277); //Star of the Sandsea 7277
+        //Star of the Sandsea 7277
         while (!Bot.ShouldExit && FactionRank("CraggleRock") < rank)
+        {
+            Core.EnsureAccept(7277);
             Core.KillMonster("wanders", "r3", "Down", "Kalestri Worshiper", "Star of the Sandsea", log: false);
-        Core.CancelRegisteredQuests();
+            Core.EnsureComplete(7277);
+        }
         ToggleBoost(BoostType.Reputation, false);
         Core.SavedState(false);
+        Core.CancelRegisteredQuests();
     }
 
     public void DeathPitArenaREP(int rank = 10)
@@ -1433,9 +1437,12 @@ public class CoreFarms
         ToggleBoost(BoostType.Reputation);
         Core.Logger($"Farming rank {rank}");
 
-        Core.RegisterQuests(5153);
         while (!Bot.ShouldExit && FactionRank("Death Pit Arena") < rank)
+        {
+            Core.EnsureAccept(5153);
             Core.HuntMonster("deathpit", "General Hun'Gar", "General Hun'Gar Defeated", log: false);
+            Core.EnsureComplete(5153);
+        }
         Bot.Wait.ForQuestComplete(5153);
         Core.CancelRegisteredQuests();
         ToggleBoost(BoostType.Reputation, false);
@@ -1463,9 +1470,12 @@ public class CoreFarms
         ToggleBoost(BoostType.Reputation);
         Core.Logger($"Farming rank {rank}");
 
-        Core.RegisterQuests(7877);
         while (!Bot.ShouldExit && FactionRank("Diabolical") < rank)
+        {
+            Core.EnsureAccept(7877);
             Core.HuntMonster("mudluk", "Tiger Leech", "Swamped Leech Tooth", log: false);
+            Core.EnsureComplete(7877);
+        }
         Bot.Wait.ForQuestComplete(7877);
         Core.CancelRegisteredQuests();
         ToggleBoost(BoostType.Reputation, false);
