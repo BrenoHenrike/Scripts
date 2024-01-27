@@ -29,6 +29,7 @@ public class HolidayAC2023
         if (!Core.isCompletedBefore(9578))
         {
             Core.EnsureAccept(9578);
+            Bot.Quests.UpdateQuest(7522);
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("borgars", "Burglinster", "Cookie Dough");
             Core.EnsureComplete(9578);
