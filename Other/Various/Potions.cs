@@ -86,7 +86,7 @@ public class PotionBuyer
             Bot.Config!.Get<bool>("farmBody"),           Bot.Config!.Get<bool>("FarmSoul"),           Bot.Config!.Get<bool>("UnstableBattle"),
             Bot.Config!.Get<bool>("UnstableBody"),       Bot.Config!.Get<bool>("UnstableFate"),       Bot.Config!.Get<bool>("UnstableKeen"),
             Bot.Config!.Get<bool>("UnstableMastery"),    Bot.Config!.Get<bool>("UnstableMight"),      Bot.Config!.Get<bool>("UnstableVelocity"),
-            Bot.Config!.Get<bool>("UnstableWise"),       Bot.Config!.Get<bool>("MightTonic") };
+            Bot.Config!.Get<bool>("UnstableWise"),       Bot.Config!.Get<bool>("farmMight") };
 
         if (!potionsFarm.Any(x => x) || potionQuant < 1 || potionQuant > 300)
         {
