@@ -130,6 +130,7 @@ tags: story, quest, complete, all
 //cs_include Scripts/Story/Lair.cs
 //cs_include Scripts/Story/Lightguard[MEM].cs
 //cs_include Scripts/Story/LightoviaCave.cs
+//cs_include Scripts/Story/LostVilla.cs
 
 //cs_include Scripts/Story/Manor.cs
 //cs_include Scripts/Story/Marsh2[MEM].cs
@@ -334,6 +335,7 @@ public class AllStories
     public Lair Lair = new();
     public Lightguard Lightguard = new();
     public LightoviaCave LightoviaCave = new();
+    public LostVilla LostVilla = new();
 
     public Manor Manor = new();
     public Marsh2 Marsh2 = new();
@@ -757,6 +759,9 @@ public class AllStories
 
         LightoviaCave.LightoviaCaveQuests();
         Core.Logger($"Story: LightoviaCave - Complete");
+
+        LostVilla.Storyline();
+        Core.Logger($"Story: Lost Villa - Complete");
 
 
         Manor.StoryLine();
