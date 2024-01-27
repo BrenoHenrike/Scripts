@@ -62,21 +62,6 @@ public class ArmyFreeAcs
 #region Preious years (just copy and paste, then comment out)
 
 #region 2023
-// while (Army.doForAll())
-//         {
-
-//             if (!Bot.Quests.IsAvailable(9444))
-//             {
-//                 Core.Logger("Quest not avaible / is already completed.");
-//                 return;
-//             }
-
-//             Core.EnsureAccept(9444);
-//             Core.HuntMonster("eventhub", "Agitated Orb", "Free ACs... and Yogurt");
-//             Core.EnsureComplete(9444);
-//         }
-
-
 
 // while (!Bot.ShouldExit && Army.doForAll())
 // {
