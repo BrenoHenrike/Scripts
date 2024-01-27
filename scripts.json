@@ -2976,23 +2976,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MysteriousEgg.cs"
   },
   {
-    "name": "Free AC Gift",
-    "description": "This script will kill the Frogzard in Battleon Town to get a free AC Giftbox.",
-    "tags": [
-      "free",
-      "ac",
-      "gift",
-      "box",
-      "frogzard",
-      "battleon",
-      "town"
-    ],
-    "path": "Other/2022AcGift.cs",
-    "size": 854,
-    "fileName": "2022AcGift.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/2022AcGift.cs"
-  },
-  {
     "name": "Revontheus Set",
     "description": "farms the \"Revontheus\" set from Mob",
     "tags": [
@@ -14294,16 +14277,59 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Weapons/MalacodaNecroment.cs"
   },
   {
-    "name": "Free 500 accs",
-    "description": "the 500 free acs quest",
+    "name": "Free Holiday AC Gift 2023",
+    "description": "This script will kill the Frogzard in Battleon Town to get a free AC Giftbox.",
     "tags": [
-      "acs",
-      "free"
+      "free",
+      "ac",
+      "gift",
+      "box",
+      "frogzard",
+      "battleon",
+      "town",
+      "500",
+      "2022",
+      "holiday"
     ],
-    "path": "Other/FreeAcGifts[Yearly]/AcGift2023.cs",
-    "size": 869,
-    "fileName": "AcGift2023.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FreeAcGifts[Yearly]/AcGift2023.cs"
+    "path": "Other/FreeAcGifts[Yearly]/2023HolidayAcGift.cs",
+    "size": 985,
+    "fileName": "2023HolidayAcGift.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FreeAcGifts[Yearly]/2023HolidayAcGift.cs"
+  },
+  {
+    "name": "Free Birthday AC Gift 2023",
+    "description": "This script will kill Agitated Orb for free 500 ACs.",
+    "tags": [
+      "ac",
+      "free",
+      "500",
+      "2023",
+      "birthday"
+    ],
+    "path": "Other/FreeAcGifts[Yearly]/2023BirthdayAcGift.cs",
+    "size": 1009,
+    "fileName": "2023BirthdayAcGift.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FreeAcGifts[Yearly]/2023BirthdayAcGift.cs"
+  },
+  {
+    "name": "Free Holiday AC Gift 2022",
+    "description": "This script will kill the Frogzard in Battleon Town to get a free AC Giftbox.",
+    "tags": [
+      "free",
+      "ac",
+      "gift",
+      "box",
+      "frogzard",
+      "battleon",
+      "town",
+      "500",
+      "2022",
+      "holiday"
+    ],
+    "path": "Other/FreeAcGifts[Yearly]/2022HolidayAcGift.cs",
+    "size": 963,
+    "fileName": "2022HolidayAcGift.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FreeAcGifts[Yearly]/2022HolidayAcGift.cs"
   },
   {
     "name": "DarknessShard",
