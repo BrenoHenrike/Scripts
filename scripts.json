@@ -2088,6 +2088,21 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Banished.cs"
   },
   {
+    "name": "Lost Villa",
+    "description": "This script will complete the questline in /lostvilla.",
+    "tags": [
+      "lostvilla",
+      "diabolical",
+      "story",
+      "hikari",
+      "ira"
+    ],
+    "path": "Story/LostVilla.cs",
+    "size": 2214,
+    "fileName": "LostVilla.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/LostVilla.cs"
+  },
+  {
     "name": "Dark Carnax Story",
     "description": "This will finish the Dark Carnax story.",
     "tags": [
