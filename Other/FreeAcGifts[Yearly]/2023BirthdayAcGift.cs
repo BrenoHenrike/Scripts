@@ -23,7 +23,11 @@ public class BirthdayAC2023
     {
         Core.OneTimeMessage("WARNING", "This Quest is a ONE-TIME quest (per account).", true, true);
 
-        Core.Logger("You need to be level 20 and have a verified email!");
+        if (!Bot.Flash.CallGameFunction<bool>("world.myAvatar.isEmailVerified") || Bot.Player.Level < 20)
+        {
+            Core.Logger("You need to be level 20 and have a verified email!");
+            return;
+        }
 
         if (!Bot.Quests.IsAvailable(9444))
         {
