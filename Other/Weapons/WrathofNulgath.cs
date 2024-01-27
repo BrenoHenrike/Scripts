@@ -43,12 +43,12 @@ public class WrathofNulgath
         Core.Logger("Farming Wrath of Nulgath.");
 
         OverfiendBlade();
+        Nation.FarmVoucher(false, true);
+        Nation.FarmVoucher(true, true);
         Nation.FarmUni13();
         Nation.FarmTaintedGem(80);
         Nation.FarmDarkCrystalShard(60);
         Nation.FarmDiamondofNulgath(100);
-        Nation.FarmVoucher(true, true);
-        Nation.FarmVoucher(false, true);
         Adv.BuyItem("darkwarnation", 2123, "Wrath of Nulgath");
         Bot.Wait.ForPickup("Wrath of Nulgath");
         //...why are we enhancing it?
