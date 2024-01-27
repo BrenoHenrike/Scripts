@@ -32,7 +32,7 @@ public class LostVilla
         if (Core.isCompletedBefore(9570))
             return;
 
-        Ban.HikarisQuests();
+        Ban.HimisQuests();
 
         Story.PreLoad(this);
 
