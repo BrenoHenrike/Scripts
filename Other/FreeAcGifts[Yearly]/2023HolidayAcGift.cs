@@ -24,6 +24,7 @@ public class HolidayAC2023
 
     public void FreeAcs()
     {
+        Core.OneTimeMessage("WARNING", "This Quest is a ONE-TIME quest (per account).", true, true);
         Core.Logger("You need to be level 20 and have a verified email!");
 
         if (!Core.isCompletedBefore(9578))
