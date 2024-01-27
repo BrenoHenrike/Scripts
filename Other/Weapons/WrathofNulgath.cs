@@ -42,14 +42,14 @@ public class WrathofNulgath
 
         Core.Logger("Farming Wrath of Nulgath.");
 
+        OverfiendBlade();
         Nation.FarmUni13();
         Nation.FarmTaintedGem(80);
         Nation.FarmDarkCrystalShard(60);
         Nation.FarmDiamondofNulgath(100);
-        Nation.FarmVoucher(true);
-        Nation.FarmVoucher(false);
-        OverfiendBlade();
-        Core.BuyItem("darkwarnation", 2123, "Wrath of Nulgath");
+        Nation.FarmVoucher(true, true);
+        Nation.FarmVoucher(false, true);
+        Adv.BuyItem("darkwarnation", 2123, "Wrath of Nulgath");
         Bot.Wait.ForPickup("Wrath of Nulgath");
         //...why are we enhancing it?
         // Adv.EnhanceItem("Wrath of Nulgath", EnhancementType.Lucky, CapeSpecial.None, HelmSpecial.None, WeaponSpecial.Spiral_Carve);
@@ -62,14 +62,14 @@ public class WrathofNulgath
 
         Core.AddDrop("Overfiend Blade of Nulgath");
 
+        Nation.SwindleBulk(50);
         Farm.Experience(30);
         Nation.FarmUni13();
         Nation.FarmDiamondofNulgath(13);
         Nation.FarmDarkCrystalShard(50);
         Nation.FarmTotemofNulgath(3);
         Nation.FarmGemofNulgath(20);
-        Nation.FarmVoucher(false);
-        Nation.SwindleBulk(50);
+        Nation.FarmVoucher(false, true);
 
         Core.EnsureAccept(837);
         Core.HuntMonster("underworld", "Undead Bruiser", "Undead Bruiser Rune");
@@ -77,3 +77,4 @@ public class WrathofNulgath
         Bot.Wait.ForPickup("Overfiend Blade of Nulgath");
     }
 }
+

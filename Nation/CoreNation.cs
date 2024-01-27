@@ -603,7 +603,7 @@ public class CoreNation
     public void VoucherItemTotemofNulgath(VoucherItemTotem reward = VoucherItemTotem.Totem_of_Nulgath)
     {
         if (!Core.CheckInventory("Voucher of Nulgath (non-mem)"))
-            FarmVoucher(false);
+            FarmVoucher(false, true);
 
         Core.AddDrop("Gem of Nulgath", "Totem of Nulgath");
         Core.AddDrop(bagDrops);
@@ -700,7 +700,7 @@ public class CoreNation
     /// </summary>
     /// <param name="item">Desired item name.</param>
     /// <param name="quant">Desired item quantity.</param>
-    public void Supplies(string? item = null, int quant = 1, bool UltraAlteon = false)
+    public void Supplies(string? item = null, int quant = 1, bool UltraAlteon = false, bool KeepVoucher = false)
     {
         bool sellMemVoucher = Core.CBOBool("Nation_SellMemVoucher", out bool _sellMemVoucher) && _sellMemVoucher;
         bool returnPolicyDuringSupplies = Core.CBOBool("Nation_ReturnPolicyDuringSupplies", out bool _returnSupplies) && _returnSupplies;
@@ -743,7 +743,7 @@ public class CoreNation
                             }
 
                             Bot.Wait.ForPickup("Voucher of Nulgath");
-                            Core.SellItem("Voucher of Nulgath", all: true);
+                            Core.SellItem("Voucher of Nulgath", KeepVoucher ? 1 : 0, !KeepVoucher);
                             Bot.Wait.ForItemSell();
                         }
                         if (returnPolicyDuringSupplies && Core.CheckInventory(new[] { Uni(1), Uni(6), Uni(9), Uni(16), Uni(20) }))
@@ -817,7 +817,7 @@ public class CoreNation
                         }
 
                         Bot.Wait.ForPickup("Voucher of Nulgath");
-                        Core.SellItem("Voucher of Nulgath", all: true);
+                        Core.SellItem("Voucher of Nulgath", KeepVoucher ? 1 : 0, !KeepVoucher);
                         Bot.Wait.ForItemSell();
                     }
                     if (returnPolicyDuringSupplies && Core.CheckInventory(new[] { Uni(1), Uni(6), Uni(9), Uni(16), Uni(20) }))
@@ -1115,14 +1115,13 @@ public class CoreNation
     /// </summary>
     /// <param name="item">Desired item name</param>
     /// <param name="quant">Desired item quantity</param>
-    public void BambloozevsDrudgen(string? item = null, int quant = 1)
+    public void BambloozevsDrudgen(string? item = null, int quant = 1, bool KeepVoucher = false)
     {
         if (!Core.CheckInventory(CragName) || Core.CheckInventory(item, quant))
             return;
 
         Core.AddDrop("Relic of Chaos", "Tainted Core");
         Core.AddDrop(string.IsNullOrEmpty(item) ? bagDrops : new string[] { item });
-
 
         bool hasOBoNPet = Core.IsMember && Core.CheckInventory("Oblivion Blade of Nulgath") &&
                           Bot.Inventory.Items.Any(obon => obon.Category == Skua.Core.Models.Items.ItemCategory.Pet && obon.Name == "Oblivion Blade of Nulgath");
@@ -1131,7 +1130,7 @@ public class CoreNation
 
         bool returnPolicyDuringSupplies = Core.CBOBool("Nation_ReturnPolicyDuringSupplies", out bool _returnSupplies);
         bool sellMemVoucher = Core.CBOBool("Nation_SellMemVoucher", out bool _sellMemVoucher);
-
+        Core.Logger($"Keep Voucher set to: {KeepVoucher}");
         Core.Logger($"Sell Voucher of Nulgath: {_sellMemVoucher}");
 
         if (_returnSupplies)
@@ -1187,7 +1186,7 @@ public class CoreNation
 
                 // Pickup and sell the item
                 Bot.Drops.Pickup("Voucher of Nulgath");
-                Core.SellItem("Voucher of Nulgath", all: true);
+                Core.SellItem("Voucher of Nulgath", KeepVoucher ? 1 : 0, !KeepVoucher);
                 Bot.Wait.ForItemSell();
             }
 
@@ -1794,8 +1793,8 @@ public class CoreNation
             Core.EnsureComplete(receiptOfNulgathQuest);
             Bot.Wait.ForPickup("Receipt of Nulgath");
 
-            FarmVoucher(member: true);
-            FarmVoucher(member: false);
+            FarmVoucher(true, true);
+            FarmVoucher(false, true);
             EssenceofNulgath(100);
             FarmTotemofNulgath(1);
             Core.EquipClass(ClassType.Solo);
@@ -2126,7 +2125,7 @@ public class CoreNation
         Core.EnsureAccept(867);
 
         // Farm the required vouchers for the quest.
-        FarmVoucher(true);
+        FarmVoucher(true, true);
 
         // Hunt the specified monster to complete the quest.
         Core.HuntMonster("underworld", "Undead Legend", "Undead Legend Rune", log: false);
@@ -2159,17 +2158,18 @@ public class CoreNation
     /// Farms Voucher of Nulgath (member or not) with the best method available
     /// </summary>
     /// <param name="member">If true will farm Voucher of Nulgath; false Voucher of Nulgath (nom-mem)</param>
-    public void FarmVoucher(bool member)
+    public void FarmVoucher(bool member, bool KeepVoucher = false)
     {
         if ((Core.CheckInventory("Voucher of Nulgath (non-mem)") && !member) || (Core.CheckInventory("Voucher of Nulgath") && member))
             return;
 
         Core.AddDrop(member ? "Voucher of Nulgath" : "Voucher of Nulgath (non-mem)");
+        Core.Logger($"KeepVoucher set to {KeepVoucher}");
 
-        BambloozevsDrudgen(member ? "Voucher of Nulgath" : "Voucher of Nulgath (non-mem)");
+        BambloozevsDrudgen(member ? "Voucher of Nulgath" : "Voucher of Nulgath (non-mem)", KeepVoucher: KeepVoucher);
         NewWorldsNewOpportunities(member ? "Voucher of Nulgath" : "Voucher of Nulgath (non-mem)");
         VoidKightSwordQuest(member ? "Voucher of Nulgath" : "Voucher of Nulgath (non-mem)");
-        Supplies(member ? "Voucher of Nulgath" : "Voucher of Nulgath (non-mem)");
+        Supplies(member ? "Voucher of Nulgath" : "Voucher of Nulgath (non-mem)", KeepVoucher: KeepVoucher);
     }
 }
 
