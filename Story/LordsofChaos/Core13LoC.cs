@@ -2335,8 +2335,8 @@ public class Core13LoC
         if (!Story.QuestProgression(3798))
         {
             Core.EnsureAccept(3798);
-            Core.Join("shadowattack");
-            Core.Jump("r15");
+            Core.Join("shadowattack", "Boss", "Left");
+            Core.Jump("r15", "Left");
             Bot.Wait.ForPickup(25903);
             Core.EnsureComplete(3798);
         }

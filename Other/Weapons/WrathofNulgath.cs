@@ -49,17 +49,10 @@ public class WrathofNulgath
         Nation.FarmVoucher(true);
         Nation.FarmVoucher(false);
         OverfiendBlade();
-        if (!Core.isCompletedBefore(8580))
-        {
-            Core.EnsureAccept(new[] { 8578, 8579 });
-            Core.KillMonster("darkwarnation", "Enter", "Spawn", "*", "Legion Badge", 5);
-            Core.KillMonster("darkwarnation", "Enter", "Spawn", "*", "Mega Legion Badge", 3);
-            Core.EnsureComplete(new[] { 8578, 8579 });
-            Story.KillQuest(8580, "darkwarnation", "Legion Doomknight");
-        }
         Core.BuyItem("darkwarnation", 2123, "Wrath of Nulgath");
         Bot.Wait.ForPickup("Wrath of Nulgath");
-        Adv.EnhanceItem("Wrath of Nulgath", EnhancementType.Lucky, CapeSpecial.None, HelmSpecial.None, WeaponSpecial.Spiral_Carve);
+        //...why are we enhancing it?
+        // Adv.EnhanceItem("Wrath of Nulgath", EnhancementType.Lucky, CapeSpecial.None, HelmSpecial.None, WeaponSpecial.Spiral_Carve);
     }
 
     public void OverfiendBlade()
