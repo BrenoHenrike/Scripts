@@ -1,13 +1,13 @@
 /*
-name: Free AC Gift
+name: Free Holiday AC Gift 2022
 description: This script will kill the Frogzard in Battleon Town to get a free AC Giftbox.
-tags: free, ac, gift, box, frogzard, battleon, town
+tags: free, ac, gift, box, frogzard, battleon, town,500,2022,holiday
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 using Skua.Core.Interfaces;
 
-public class FreeAcGift
+public class HolidayAC2022
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
@@ -24,6 +24,8 @@ public class FreeAcGift
 
     public void FreeAcs()
     {
+        Core.Logger("You need to be level 20 and have a verified email!");
+
         if (!Core.isCompletedBefore(9057))
         {
             Core.EnsureAccept(9057);

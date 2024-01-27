@@ -1,12 +1,12 @@
 /*
-name: Free 500 accs
-description: the 500 free acs quest
-tags: acs, free
+name: Free Birthday AC Gift 2023
+description: This script will kill Agitated Orb for free 500 ACs.
+tags: ac, free,500,2023,birthday
 */
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;
 
-public class AcGift2023
+public class BirthdayAC2023
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
@@ -22,6 +22,8 @@ public class AcGift2023
     public void GetFreeAcs()
     {
         Core.OneTimeMessage("WARNING", "This Quest is a ONE-TIME quest (per account).", true, true);
+
+        Core.Logger("You need to be level 20 and have a verified email!");
 
         if (!Bot.Quests.IsAvailable(9444))
         {
