@@ -457,7 +457,7 @@ public class CoreArchMage
             Adv.BuyItem("darkthronehub", 1308, "Exalted Paladin Seal");
             Adv.BuyItem("shadowfall", 89, "Forsaken Doom Seal");
 
-            Core.EnsureComplete(8912);
+            Core.EnsureCompleteMulti(8912);
             Bot.Wait.ForPickup("Unbound Tome");
         }
     }
