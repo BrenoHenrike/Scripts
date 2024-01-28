@@ -76,6 +76,7 @@ public class WillpowerExtraction
 
             while (!Bot.ShouldExit && !Core.CheckInventory(18768)) // "Facebreakers of Nulgath"
             {
+                // "Kindness" of Nulgath
                 Core.EnsureAccept(3046);
                 Core.EquipClass(ClassType.Solo);
                 Core.HuntMonster("citadel", "Grand Inquisitor", "Golden Shadow Breaker", 1, false);
