@@ -315,7 +315,7 @@ public class CoreArchMage
     #endregion
 
     #region Materials
-    public void MysticScribingKit(int quant)
+    public void MysticScribingKit(int quant = 1)
     {
         if (Core.CheckInventory(73327, quant))
             return;
@@ -380,7 +380,7 @@ public class CoreArchMage
         }
     }
 
-    public void PrismaticEther(int quant)
+    public void PrismaticEther(int quant = 1)
     {
         if (Core.CheckInventory(73333, quant))
             return;
@@ -404,7 +404,7 @@ public class CoreArchMage
         }
     }
 
-    public void ArcaneLocus(int quant)
+    public void ArcaneLocus(int quant = 1)
     {
         if (Core.CheckInventory(73339, quant))
             return;
@@ -445,24 +445,19 @@ public class CoreArchMage
         if (!Bot.Quests.IsUnlocked(8912))
             ArcaneLocus(1);
 
-        foreach ((string item, int quantity) in new[] {
-                ("Mystic Scribing Kit", quant),
-                ("Prismatic Ether", quant),
-                ("Arcane Locus", quant),
-                ("Unbound Tome", quant)
-                })
-        {
-            Core.FarmingLogger(item, quantity);
-        }
+        Core.FarmingLogger("Unbound Tome", quant);
+        int MaterialsQuant = quant - (Bot.Inventory.Items.FirstOrDefault(x => x.Name == "Unbound Tome")?.Quantity ?? 0);
 
-        MysticScribingKit(quant);
-        PrismaticEther(quant);
-        ArcaneLocus(quant);
+        MysticScribingKit(MaterialsQuant);
+        PrismaticEther(MaterialsQuant);
+        ArcaneLocus(MaterialsQuant);
 
-        Farm.DragonRunestone(quant);
+        Farm.DragonRunestone(MaterialsQuant);
 
         Core.AddDrop("Unbound Tome");
-        while (!Bot.ShouldExit && Core.CheckInventory(new[] { "Mystic Scribing Kit", "Prismatic Ether", "Arcane Locus" }) && !Core.CheckInventory("Unbound Tome", quant))
+        while (!Bot.ShouldExit
+        && Core.CheckInventory(new[] { "Mystic Scribing Kit", "Prismatic Ether", "Arcane Locus", "Dragon Runestone" })
+        && !Core.CheckInventory("Unbound Tome", quant))
         {
             Core.EnsureAccept(8912);
 
