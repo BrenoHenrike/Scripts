@@ -74,6 +74,7 @@ public class WillpowerExtraction
                 Bot.Wait.ForItemBuy();
             }
 
+            Core.AddDrop("Facebreakers of Nulgath", "SightBlinder Axes of Nulgath");
             while (!Bot.ShouldExit && !Core.CheckInventory(18768)) // "Facebreakers of Nulgath"
             {
                 // "Kindness" of Nulgath
@@ -85,10 +86,8 @@ public class WillpowerExtraction
                 Nation.SwindleBulk(5);
                 Nation.FarmDiamondofNulgath(1);
                 Core.EnsureComplete(3046);
-                Core.Sleep();
-                foreach (string item in new[] { "Facebreakers of Nulgath", "SightBlinder Axes of Nulgath" })
-                    if (Bot.Drops.Exists(item))
-                        Bot.Wait.ForPickup(item);
+
+                Bot.Wait.ForPickup("Facebreakers of Nulgath");
 
                 if (Core.CheckInventory(18768))
                     break;
