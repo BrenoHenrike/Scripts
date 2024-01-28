@@ -315,7 +315,7 @@ public class CoreArchMage
     #endregion
 
     #region Materials
-    public void MysticScribingKit(int quant)
+    public void MysticScribingKit(int quant = 1)
     {
         if (Core.CheckInventory(73327, quant))
             return;
@@ -380,7 +380,7 @@ public class CoreArchMage
         }
     }
 
-    public void PrismaticEther(int quant)
+    public void PrismaticEther(int quant = 1)
     {
         if (Core.CheckInventory(73333, quant))
             return;
@@ -404,7 +404,7 @@ public class CoreArchMage
         }
     }
 
-    public void ArcaneLocus(int quant)
+    public void ArcaneLocus(int quant = 1)
     {
         if (Core.CheckInventory(73339, quant))
             return;
@@ -446,19 +446,29 @@ public class CoreArchMage
             ArcaneLocus(1);
 
         Core.FarmingLogger("Unbound Tome", quant);
+        int MaterialsQuant = quant - (Bot.Inventory.Items.FirstOrDefault(x => x.Name == "Unbound Tome")?.Quantity ?? 0);
+
+        MysticScribingKit(MaterialsQuant);
+        PrismaticEther(MaterialsQuant);
+        ArcaneLocus(MaterialsQuant);
+
+        Farm.DragonRunestone(MaterialsQuant);
+
         Core.AddDrop("Unbound Tome");
-        while (!Bot.ShouldExit && !Core.CheckInventory("Unbound Tome", quant))
+        while (!Bot.ShouldExit
+        && Core.CheckInventory(new[] { "Mystic Scribing Kit", "Prismatic Ether", "Arcane Locus", "Dragon Runestone" })
+        && !Core.CheckInventory("Unbound Tome", quant))
         {
             Core.EnsureAccept(8912);
-            MysticScribingKit(quant);
-            PrismaticEther(quant);
-            ArcaneLocus(quant);
-            Farm.DragonRunestone(30);
+
             Adv.BuyItem("darkthronehub", 1308, "Exalted Paladin Seal");
             Adv.BuyItem("shadowfall", 89, "Forsaken Doom Seal");
 
-            Core.EnsureCompleteMulti(8912);
+            Core.EnsureComplete(8912);
             Bot.Wait.ForPickup("Unbound Tome");
+
+            if (Core.CheckInventory("Unbound Tome", quant))
+                break;
         }
     }
 
