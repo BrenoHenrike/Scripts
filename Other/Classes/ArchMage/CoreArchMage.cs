@@ -445,20 +445,35 @@ public class CoreArchMage
         if (!Bot.Quests.IsUnlocked(8912))
             ArcaneLocus(1);
 
-        Core.FarmingLogger("Unbound Tome", quant);
+        foreach ((string item, int quantity) in new[] {
+                ("Mystic Scribing Kit", quant),
+                ("Prismatic Ether", quant),
+                ("Arcane Locus", quant),
+                ("Unbound Tome", quant)
+                })
+        {
+            Core.FarmingLogger(item, quantity);
+        }
+
+        MysticScribingKit(quant);
+        PrismaticEther(quant);
+        ArcaneLocus(quant);
+
+        Farm.DragonRunestone(quant);
+
         Core.AddDrop("Unbound Tome");
-        while (!Bot.ShouldExit && !Core.CheckInventory("Unbound Tome", quant))
+        while (!Bot.ShouldExit && Core.CheckInventory(new[] { "Mystic Scribing Kit", "Prismatic Ether", "Arcane Locus" }) && !Core.CheckInventory("Unbound Tome", quant))
         {
             Core.EnsureAccept(8912);
-            MysticScribingKit(quant);
-            PrismaticEther(quant);
-            ArcaneLocus(quant);
-            Farm.DragonRunestone(30);
+
             Adv.BuyItem("darkthronehub", 1308, "Exalted Paladin Seal");
             Adv.BuyItem("shadowfall", 89, "Forsaken Doom Seal");
 
-            Core.EnsureCompleteMulti(8912);
+            Core.EnsureComplete(8912);
             Bot.Wait.ForPickup("Unbound Tome");
+
+            if (Core.CheckInventory("Unbound Tome", quant))
+                break;
         }
     }
 
