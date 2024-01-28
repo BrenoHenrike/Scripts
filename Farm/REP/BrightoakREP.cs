@@ -32,7 +32,7 @@ public class BrightoakREP
         //Adv.BestGear(GenericGearBoost.dmgAll);
         //Adv.BestGear(GenericGearBoost.rep);
 
-        BrightOak.doall();
+        BrightOak.doall(true);
         Farm.BrightoakREP();
 
     }
