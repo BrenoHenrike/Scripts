@@ -73,21 +73,24 @@ public class WillpowerExtraction
                 Adv.BuyItem("evilwarnul", 452, 13167);
                 Bot.Wait.ForItemBuy();
             }
-            if (!Core.CheckInventory("Facebreakers of Nulgath"))
+
+            while (!Bot.ShouldExit && !Core.CheckInventory(18768)) // "Facebreakers of Nulgath"
             {
-                while (!Bot.ShouldExit && !Core.CheckInventory("Facebreakers of Nulgath"))
-                {
-                    Core.EnsureAccept(3046);
-                    Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster("citadel", "Grand Inquisitor", "Golden Shadow Breaker", 1, false);
-                    Core.HuntMonster("battleundera", "Bone Terror", "Shadow Terror Axe", 1, false);
-                    Nation.FarmDarkCrystalShard(5);
-                    Nation.SwindleBulk(5);
-                    Nation.FarmDiamondofNulgath(1);
-                    Core.EnsureComplete(3046);
-                    Bot.Drops.Pickup("Facebreakers of Nulgath", "SightBlinder Axes of Nulgath");
-                    Core.Sleep();
-                }
+                Core.EnsureAccept(3046);
+                Core.EquipClass(ClassType.Solo);
+                Core.HuntMonster("citadel", "Grand Inquisitor", "Golden Shadow Breaker", 1, false);
+                Core.HuntMonster("battleundera", "Bone Terror", "Shadow Terror Axe", 1, false);
+                Nation.FarmDarkCrystalShard(5);
+                Nation.SwindleBulk(5);
+                Nation.FarmDiamondofNulgath(1);
+                Core.EnsureComplete(3046);
+                Core.Sleep();
+                foreach (string item in new[] { "Facebreakers of Nulgath", "SightBlinder Axes of Nulgath" })
+                    if (Bot.Drops.Exists(item))
+                        Bot.Wait.ForPickup(item);
+
+                if (Core.CheckInventory(18768))
+                    break;
             }
 
             Nation.ApprovalAndFavor(0, 90);
