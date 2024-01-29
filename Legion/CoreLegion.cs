@@ -103,7 +103,8 @@ public class CoreLegion
             Core.HuntMonster("lair", "Red Dragon", "Red Dragon's Fang");
             //Adv.BestGear(RacialGearBoost.Human);
             Core.HuntMonster("bloodtitan", "Blood Titan", "Blood Titan's Blade", publicRoom: true);
-            Bot.Drops.Pickup("Legion Token", "Diamond Token of Dage");
+            foreach (string drop in new[] { "Legion Token", "Diamond Token of Dage" })
+                Bot.Wait.ForPickup(drop);
         }
         Core.CancelRegisteredQuests();
     }

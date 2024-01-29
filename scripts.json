@@ -50,7 +50,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 112550,
+    "size": 112547,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -1455,7 +1455,7 @@
       "null"
     ],
     "path": "Legion/CoreLegion.cs",
-    "size": 31558,
+    "size": 31616,
     "fileName": "CoreLegion.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/CoreLegion.cs"
   },
@@ -3923,7 +3923,7 @@
       "null"
     ],
     "path": "Good/BLoD/CoreBLOD.cs",
-    "size": 22238,
+    "size": 22230,
     "fileName": "CoreBLOD.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/CoreBLOD.cs"
   },
@@ -14320,7 +14320,7 @@
       "weapon"
     ],
     "path": "Other/Weapons/WrathofNulgath.cs",
-    "size": 2433,
+    "size": 2426,
     "fileName": "WrathofNulgath.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Weapons/WrathofNulgath.cs"
   },
@@ -17727,7 +17727,7 @@
       "farm"
     ],
     "path": "Farm/REP/BrightoakREP.cs",
-    "size": 928,
+    "size": 932,
     "fileName": "BrightoakREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/BrightoakREP.cs"
   },
@@ -20893,7 +20893,7 @@
       "brightoak"
     ],
     "path": "Story/QueenofMonsters/Extra/BrightOak.cs",
-    "size": 14636,
+    "size": 14724,
     "fileName": "BrightOak.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/QueenofMonsters/Extra/BrightOak.cs"
   },
