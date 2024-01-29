@@ -452,7 +452,6 @@ public class CoreArchMage
         PrismaticEther(MaterialsQuant);
         ArcaneLocus(MaterialsQuant);
 
-        Farm.DragonRunestone(MaterialsQuant);
 
         Core.AddDrop("Unbound Tome");
         while (!Bot.ShouldExit
@@ -461,6 +460,7 @@ public class CoreArchMage
         {
             Core.EnsureAccept(8912);
 
+            Farm.DragonRunestone(30);
             Adv.BuyItem("darkthronehub", 1308, "Exalted Paladin Seal");
             Adv.BuyItem("shadowfall", 89, "Forsaken Doom Seal");
 
