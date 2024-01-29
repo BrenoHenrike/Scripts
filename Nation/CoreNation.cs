@@ -1840,7 +1840,7 @@ public class CoreNation
         {
             Core.EnsureAccept(forgeTaintedGemsQuest);
             FarmGemofNulgath(1);
-            GemStonesOfnulgath(0, 1, 1, 0);
+            GemStonesOfnulgath(0, 3, 1, 1);
             Core.EnsureComplete(forgeTaintedGemsQuest);
         }
     }
