@@ -1,7 +1,7 @@
 /*
-name: BrightoakREP
-description: null
-tags: null
+name: Brightoak REP
+description: This script will farm Brightoak REP to rank 10.
+tags: bright, oak, reputation, rep, rank, farm
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -32,7 +32,7 @@ public class BrightoakREP
         //Adv.BestGear(GenericGearBoost.dmgAll);
         //Adv.BestGear(GenericGearBoost.rep);
 
-        BrightOak.doall();
+        BrightOak.doall(true);
         Farm.BrightoakREP();
 
     }

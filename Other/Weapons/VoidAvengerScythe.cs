@@ -47,6 +47,8 @@ public class VoidAvengerScythe
         if (Core.CheckInventory("Void Avenger Scythe"))
             return;
 
+        Core.Logger("Farming Void Avenger Scythe.");
+
         Core.AddDrop("Void Avenger Scythe", "Batwing Scythe");
 
         Core.EnsureAccept(5025);
@@ -61,7 +63,7 @@ public class VoidAvengerScythe
         while (!Bot.ShouldExit && !Core.CheckInventory("Batwing Scythe"))
         {
             Core.EnsureAccept(498);
-            Core.HuntMonster("darkoviagrave", "Blightfang", "Blightfang's Skull");
+            Core.HuntMonster("darkoviagrave", "Blightfang", "Blightfang's Skull", log: false);
             Core.EnsureComplete(498);
             Bot.Wait.ForPickup("Batwing Scythe");
         }
@@ -87,7 +89,6 @@ public class VoidAvengerScythe
         Core.HuntMonster("Citadel", "Burning Witch", "Letter from Asuka and Tendou", isTemp: false);
         Core.EnsureComplete(5025);
         Bot.Wait.ForPickup("Void Avenger Scythe");
-        Adv.EnhanceItem("Void Avenger Scythe", EnhancementType.Lucky);
     }
 
     public void BatwingScythe()
@@ -127,13 +128,13 @@ public class VoidAvengerScythe
 
 
         // The Spittoon Saloon
-        Story.KillQuest(324, "llama", "Red Shell Turtle");
+        Story.KillQuest(324, "pines", "Red Shell Turtle");
         // Bear it all!
-        Story.KillQuest(325, "llama", "Pine Grizzly");
+        Story.KillQuest(325, "pines", "Pine Grizzly");
         // Leather Feathers
-        Story.KillQuest(326, "llama", "LeatherWing");
+        Story.KillQuest(326, "pines", "LeatherWing");
         // Follow your Nose!      
-        Story.KillQuest(327, "llama", "LeatherWing");
+        Story.KillQuest(327, "pines", "LeatherWing");
     }
 
     public void SnowbeardsQuests()

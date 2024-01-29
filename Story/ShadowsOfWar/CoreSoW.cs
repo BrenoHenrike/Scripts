@@ -1135,7 +1135,7 @@ public class CoreSoW
         if (Core.CheckInventory(new[] { "Yami no Ronin", "TimeKeeper", "Void Highlord", "Void HighLord (IoDA)" }, any: true))
         {
             Adv.GearStore();
-            Core.BossClass();
+            Core.DodgeClass();
 
             // Cognitive Dissonance 9124
             Story.KillQuest(9124, "manacradle", "Malgor");

@@ -607,8 +607,13 @@ public class CoreQOM
         Story.KillQuest(5852, "Pilgrimage", new[] { "Extrikiti", "Extrikiti" });
 
         //Gather a Scouting Party
-        Story.MapItemQuest(5853, "Pilgrimage", 5290, 6);
-        Story.MapItemQuest(5853, "Pilgrimage", 5291);
+        if (!Story.QuestProgression(5853))
+        {
+            Core.EnsureAccept(5853);
+            Core.GetMapItem(5290, 6, "pilgrimage");
+            Core.GetMapItem(5291, map: "pilgrimage");
+            Core.EnsureComplete(5853);
+        }
 
         //Defeat the Parasites
         Story.MapItemQuest(5854, "Pilgrimage", 5292);

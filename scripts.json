@@ -6,7 +6,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 196823,
+    "size": 197376,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -17,7 +17,7 @@
       "null"
     ],
     "path": "CoreAdvanced.cs",
-    "size": 114401,
+    "size": 115148,
     "fileName": "CoreAdvanced.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreAdvanced.cs"
   },
@@ -50,7 +50,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 110914,
+    "size": 112550,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -274,13 +274,13 @@
   },
   {
     "name": "Beast Master Challenge Daily",
-    "description": "null",
+    "description": "This script does BeastMaster Challenge daily quest.",
     "tags": [
       "daily",
       "beast master challenge"
     ],
     "path": "Dailies/BeastMasterChallenge[Mem].cs",
-    "size": 539,
+    "size": 586,
     "fileName": "BeastMasterChallenge[Mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/BeastMasterChallenge[Mem].cs"
   },
@@ -314,7 +314,7 @@
       "BLOD"
     ],
     "path": "Dailies/MineCrafting.cs",
-    "size": 2634,
+    "size": 2636,
     "fileName": "MineCrafting.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/MineCrafting.cs"
   },
@@ -358,7 +358,7 @@
       "aura"
     ],
     "path": "Dailies/NSoDDaily.cs",
-    "size": 645,
+    "size": 646,
     "fileName": "NSoDDaily.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/NSoDDaily.cs"
   },
@@ -507,7 +507,7 @@
   },
   {
     "name": "Unlock Forge Enhancements",
-    "description": "null",
+    "description": "This script will farm all forge enhancements.",
     "tags": [
       "lacerate",
       "smite",
@@ -525,43 +525,57 @@
       "anima",
       "pneuma",
       "dauntless",
-      "praxis"
+      "praxis",
+      "ravenous"
     ],
     "path": "Enhancement/UnlockForgeEnhancements.cs",
-    "size": 38089,
+    "size": 40437,
     "fileName": "UnlockForgeEnhancements.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Enhancement/UnlockForgeEnhancements.cs"
   },
   {
-    "name": "InventoryEnhancer",
-    "description": "null",
+    "name": "Inventory Enhancer",
+    "description": "This script will enhance all the items in your inventory with optimal enhancements.",
     "tags": [
-      "null"
+      "inventory",
+      "enhance",
+      "enh"
     ],
     "path": "Enhancement/InventoryEnhancer.cs",
-    "size": 1337,
+    "size": 1436,
     "fileName": "InventoryEnhancer.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Enhancement/InventoryEnhancer.cs"
   },
   {
-    "name": "SmartEnhance",
-    "description": "null",
+    "name": "Smart Enhance",
+    "description": "This script will enhance your equipped gear with optimal enhancements.",
     "tags": [
-      "null"
+      "smart",
+      "enhancement",
+      "enhance",
+      "enh",
+      "gear",
+      "equip"
     ],
     "path": "Enhancement/SmartEnhance.cs",
-    "size": 871,
+    "size": 979,
     "fileName": "SmartEnhance.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Enhancement/SmartEnhance.cs"
   },
   {
-    "name": "EnhanceEquipped[Selectable]",
-    "description": "null",
+    "name": "Enhance Equipped [Selectable]",
+    "description": "This script will enhance equipped gear with selected enhancements.",
     "tags": [
-      "null"
+      "enhance",
+      "enh",
+      "equipped",
+      "equip",
+      "gear",
+      "selectable",
+      "select"
     ],
     "path": "Enhancement/EnhanceEquipped[Selectable].cs",
-    "size": 1981,
+    "size": 2096,
     "fileName": "EnhanceEquipped[Selectable].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Enhancement/EnhanceEquipped[Selectable].cs"
   },
@@ -593,7 +607,7 @@
       "undead"
     ],
     "path": "Good/ArchPaladin.cs",
-    "size": 10551,
+    "size": 10623,
     "fileName": "ArchPaladin.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/ArchPaladin.cs"
   },
@@ -651,7 +665,7 @@
       "null"
     ],
     "path": "Hollowborn/TradingandStuff(single).cs",
-    "size": 2541,
+    "size": 2601,
     "fileName": "TradingandStuff(single).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/TradingandStuff(single).cs"
   },
@@ -687,7 +701,7 @@
       "null"
     ],
     "path": "Nation/KisstheVoid.cs",
-    "size": 456,
+    "size": 1421,
     "fileName": "KisstheVoid.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/KisstheVoid.cs"
   },
@@ -824,7 +838,7 @@
       "null"
     ],
     "path": "Nation/TimeIsMoney.cs",
-    "size": 1721,
+    "size": 1826,
     "fileName": "TimeIsMoney.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/TimeIsMoney.cs"
   },
@@ -879,7 +893,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 87358,
+    "size": 93230,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -2074,6 +2088,21 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Banished.cs"
   },
   {
+    "name": "Lost Villa",
+    "description": "This script will complete the questline in /lostvilla.",
+    "tags": [
+      "lostvilla",
+      "diabolical",
+      "story",
+      "hikari",
+      "ira"
+    ],
+    "path": "Story/LostVilla.cs",
+    "size": 2212,
+    "fileName": "LostVilla.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/LostVilla.cs"
+  },
+  {
     "name": "Dark Carnax Story",
     "description": "This will finish the Dark Carnax story.",
     "tags": [
@@ -2686,7 +2715,7 @@
       "all"
     ],
     "path": "Story/0AllStories.cs",
-    "size": 27105,
+    "size": 27273,
     "fileName": "0AllStories.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/0AllStories.cs"
   },
@@ -2962,23 +2991,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MysteriousEgg.cs"
   },
   {
-    "name": "Free AC Gift",
-    "description": "This script will kill the Frogzard in Battleon Town to get a free AC Giftbox.",
-    "tags": [
-      "free",
-      "ac",
-      "gift",
-      "box",
-      "frogzard",
-      "battleon",
-      "town"
-    ],
-    "path": "Other/2022AcGift.cs",
-    "size": 854,
-    "fileName": "2022AcGift.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/2022AcGift.cs"
-  },
-  {
     "name": "Revontheus Set",
     "description": "farms the \"Revontheus\" set from Mob",
     "tags": [
@@ -3227,46 +3239,69 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/GachaponMachineQuests.cs"
   },
   {
-    "name": "VordredsArmor",
-    "description": "null",
+    "name": "Empowered Vordred's Armor",
+    "description": "This script will farm Empowered Vordred's Armor.",
     "tags": [
-      "null"
+      "vordred",
+      "armor",
+      "empowered",
+      "more skulls",
+      "voiduminance",
+      "unbroken skulls",
+      "evil"
     ],
     "path": "Evil/VordredsArmor.cs",
-    "size": 7396,
+    "size": 7523,
     "fileName": "VordredsArmor.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/VordredsArmor.cs"
   },
   {
-    "name": "SepulchuresOriginalHelm",
-    "description": "null",
+    "name": "Sepulchure's Original Helm",
+    "description": "This script will get Sepulchure's Original Helm.",
     "tags": [
-      "null"
+      "sepulchure",
+      "original",
+      "helm",
+      "evil",
+      "gravelyn",
+      "doomfire",
+      "royal",
+      "shadowscythe",
+      "blade"
     ],
     "path": "Evil/SepulchuresOriginalHelm.cs",
-    "size": 5263,
+    "size": 5386,
     "fileName": "SepulchuresOriginalHelm.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/SepulchuresOriginalHelm.cs"
   },
   {
-    "name": "GravelynDoomFire",
-    "description": "null",
+    "name": "Gravelyn's DoomFire Token",
+    "description": "This script will get items from Gravelyn's DoomFire shop.",
     "tags": [
-      "null"
+      "gravelyn",
+      "doomfire",
+      "token",
+      "doomfire of gravelyn",
+      "horned doomfire helm",
+      "evil"
     ],
     "path": "Evil/GravelynDoomFire.cs",
-    "size": 4173,
+    "size": 4306,
     "fileName": "GravelynDoomFire.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/GravelynDoomFire.cs"
   },
   {
-    "name": "DoomKnight[Mem]",
-    "description": "null",
+    "name": "DoomKnight Class[Mem]",
+    "description": "This script will get DoomKnight Class [Member]",
     "tags": [
-      "null"
+      "doomknight",
+      "class",
+      "evil",
+      "doom knight",
+      "member"
     ],
     "path": "Evil/DoomKnight[Mem].cs",
-    "size": 1048,
+    "size": 1136,
     "fileName": "DoomKnight[Mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/DoomKnight[Mem].cs"
   },
@@ -3288,7 +3323,7 @@
       "chaotic lords"
     ],
     "path": "Evil/ADK.cs",
-    "size": 6738,
+    "size": 6748,
     "fileName": "ADK.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/ADK.cs"
   },
@@ -3304,34 +3339,53 @@
       "decay"
     ],
     "path": "Farm/BuyScrolls.cs",
-    "size": 5263,
+    "size": 5268,
     "fileName": "BuyScrolls.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/BuyScrolls.cs"
   },
   {
-    "name": "SevenCirclesWarXP+Gold",
-    "description": "null",
+    "name": "Seven Circles War XP + Gold",
+    "description": "This script will farm XP and Gold using SevenCirclesWar method.",
     "tags": [
-      "null"
+      "seven",
+      "7",
+      "circles",
+      "war",
+      "gold",
+      "xp",
+      "exp",
+      "experience",
+      "farm",
+      "max",
+      "100",
+      "level",
+      "leveling"
     ],
     "path": "Farm/SevenCirclesWarXP+Gold.cs",
-    "size": 1045,
+    "size": 1187,
     "fileName": "SevenCirclesWarXP+Gold.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/SevenCirclesWarXP+Gold.cs"
   },
   {
-    "name": "IcestormArenaXP[1-100]",
-    "description": "null",
+    "name": "IceStorm Arena XP [1-100]",
+    "description": "This script will farm XP in /icestormarena.",
     "tags": [
-      "null"
+      "experience",
+      "xp",
+      "level",
+      "leveling",
+      "farm",
+      "icestormarena",
+      "icestorm",
+      "arena"
     ],
     "path": "Farm/IcestormArenaXP[1-100].cs",
-    "size": 781,
+    "size": 888,
     "fileName": "IcestormArenaXP[1-100].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/IcestormArenaXP[1-100].cs"
   },
   {
-    "name": "DarkWarLegionGold",
+    "name": "Dark War Legion Gold",
     "description": "Gold farm using Dark War Legion Method",
     "tags": [
       "gold",
@@ -3341,7 +3395,7 @@
       "legion"
     ],
     "path": "Farm/DarkWarLegionGold.cs",
-    "size": 1091,
+    "size": 1094,
     "fileName": "DarkWarLegionGold.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/DarkWarLegionGold.cs"
   },
@@ -3360,13 +3414,19 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/GoldFarm.cs"
   },
   {
-    "name": "Leveling",
-    "description": "null",
+    "name": "Leveling [1-100]",
+    "description": "This script will farm XP to max level.",
     "tags": [
-      "null"
+      "levelling",
+      "leveling",
+      "level",
+      "xp",
+      "experience",
+      "farm",
+      "exp"
     ],
     "path": "Farm/Leveling.cs",
-    "size": 682,
+    "size": 773,
     "fileName": "Leveling.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/Leveling.cs"
   },
@@ -3385,13 +3445,17 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/SwagTokenA.cs"
   },
   {
-    "name": "CombatTrophy",
-    "description": "null",
+    "name": "Combat Trophy",
+    "description": "This script will farm Combat Trophies in /bludrutbtawl",
     "tags": [
-      "null"
+      "combat",
+      "trophy",
+      "pvp",
+      "bludrut",
+      "brawl"
     ],
     "path": "Farm/CombatTrophy.cs",
-    "size": 707,
+    "size": 789,
     "fileName": "CombatTrophy.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/CombatTrophy.cs"
   },
@@ -3518,13 +3582,21 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/Materials/UnfinishedMusicalScore.cs"
   },
   {
-    "name": "PrinceDarkonsPoleaxePreReqs",
-    "description": "null",
+    "name": "Prince Darkon's Poleaxe Pre Reqs",
+    "description": "This script will farm Prince Darkon's Poleaxe Pre-Reqs.",
     "tags": [
-      "null"
+      "darkon",
+      "poleaxe",
+      "prereqs",
+      "teeth",
+      "melody",
+      "receipt",
+      "gratitude",
+      "astravian medal",
+      "prince"
     ],
     "path": "Darkon/Various/PrinceDarkonsPoleaxePreReqs.cs",
-    "size": 1986,
+    "size": 2122,
     "fileName": "PrinceDarkonsPoleaxePreReqs.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/Various/PrinceDarkonsPoleaxePreReqs.cs"
   },
@@ -4527,7 +4599,7 @@
       "null"
     ],
     "path": "Nation/Materials/TotemofNulgath.cs",
-    "size": 471,
+    "size": 920,
     "fileName": "TotemofNulgath.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Materials/TotemofNulgath.cs"
   },
@@ -4992,7 +5064,7 @@
       "null"
     ],
     "path": "Nation/Various/TarosManslayer.cs",
-    "size": 3053,
+    "size": 3055,
     "fileName": "TarosManslayer.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/TarosManslayer.cs"
   },
@@ -5014,7 +5086,7 @@
       "null"
     ],
     "path": "Nation/Various/VoidSpartan.cs",
-    "size": 1891,
+    "size": 2820,
     "fileName": "VoidSpartan.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/VoidSpartan.cs"
   },
@@ -5134,7 +5206,7 @@
       "quest"
     ],
     "path": "Nation/Various/TheRefreshingDeal.cs",
-    "size": 2823,
+    "size": 2992,
     "fileName": "TheRefreshingDeal.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/TheRefreshingDeal.cs"
   },
@@ -5156,7 +5228,7 @@
       "null"
     ],
     "path": "Nation/Various/ArchfiendDeathLord.cs",
-    "size": 4411,
+    "size": 4413,
     "fileName": "ArchfiendDeathLord.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/ArchfiendDeathLord.cs"
   },
@@ -5228,6 +5300,23 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/VoidWarlock.cs"
   },
   {
+    "name": "PrimeFiendShardQuests",
+    "description": "This script will complete the storyline from the prime fiend shard",
+    "tags": [
+      "prime fiend shard",
+      "nation",
+      "ravenous",
+      "fiend shard",
+      "nulgath",
+      "voidchasm",
+      "void chasm"
+    ],
+    "path": "Nation/Various/PrimeFiendShard.cs",
+    "size": 9812,
+    "fileName": "PrimeFiendShard.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/PrimeFiendShard.cs"
+  },
+  {
     "name": "SinoftheAbyssMatsPreFarm[NoInsignia]",
     "description": "null",
     "tags": [
@@ -5284,7 +5373,7 @@
       "null"
     ],
     "path": "Nation/Various/SwirlingTheAbyss.cs",
-    "size": 1981,
+    "size": 2797,
     "fileName": "SwirlingTheAbyss.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/SwirlingTheAbyss.cs"
   },
@@ -5329,7 +5418,7 @@
       "null"
     ],
     "path": "Nation/Various/VoidPaladin.cs",
-    "size": 4930,
+    "size": 4903,
     "fileName": "VoidPaladin.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/VoidPaladin.cs"
   },
@@ -5402,7 +5491,7 @@
       "empowered voidstone"
     ],
     "path": "Nation/MergeShops/CragsGemMerge.cs",
-    "size": 9396,
+    "size": 9570,
     "fileName": "CragsGemMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/MergeShops/CragsGemMerge.cs"
   },
@@ -5463,7 +5552,7 @@
       "executioner"
     ],
     "path": "Nation/MergeShops/NationMerge.cs",
-    "size": 4144,
+    "size": 3719,
     "fileName": "NationMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/MergeShops/NationMerge.cs"
   },
@@ -5485,7 +5574,7 @@
       "null"
     ],
     "path": "Nation/MergeShops/NulgathWarMerge.cs",
-    "size": 9351,
+    "size": 9353,
     "fileName": "NulgathWarMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/MergeShops/NulgathWarMerge.cs"
   },
@@ -5507,13 +5596,57 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/MergeShops/ShadowscytheMerge.cs"
   },
   {
-    "name": "NulgathDiamondMerge",
-    "description": "null",
+    "name": "Nulgath Diamond Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Nulgath Diamond Merge [456] in /evilwarnul",
     "tags": [
-      "null"
+      "nulgath",
+      "diamond",
+      "merge",
+      "evilwarnul",
+      "abyssal",
+      "priest",
+      "loyalty",
+      "nation",
+      "oversoul",
+      "witch",
+      "witchs",
+      "soulstealing",
+      "paladin",
+      "bearded",
+      "dire",
+      "monk",
+      "cleric",
+      "head",
+      "golden",
+      "hanzo",
+      "void",
+      "katana",
+      "katanas",
+      "horns",
+      "cyber",
+      "crystal",
+      "phoenix",
+      "blood",
+      "cloak",
+      "horned",
+      "worshipper",
+      "face",
+      "ranger",
+      "sheath",
+      "bow",
+      "morph",
+      "quiver",
+      "storm",
+      "knight",
+      "molten",
+      "dragonspear",
+      "formal",
+      "suit",
+      "circlet",
+      "cane"
     ],
     "path": "Nation/MergeShops/NulgathDiamondMerge.cs",
-    "size": 12971,
+    "size": 15433,
     "fileName": "NulgathDiamondMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/MergeShops/NulgathDiamondMerge.cs"
   },
@@ -5545,13 +5678,49 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/MergeShops/DirtlickersMerge.cs"
   },
   {
+    "name": "Void Chasm Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Void Chasm Merge [2410] in /voidchasm",
+    "tags": [
+      "void",
+      "chasm",
+      "merge",
+      "voidchasm",
+      "abyssal",
+      "gravity",
+      "ball",
+      "balls",
+      "midnight",
+      "fiend",
+      "nulgath",
+      "blood",
+      "moon",
+      "winged",
+      "bloodmoon",
+      "darksided",
+      "energized",
+      "archfiend",
+      "spines",
+      "runed",
+      "draconic",
+      "nation",
+      "double",
+      "inferno",
+      "prime",
+      "shard"
+    ],
+    "path": "Nation/MergeShops/VoidChasmMerge.cs",
+    "size": 8434,
+    "fileName": "VoidChasmMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/MergeShops/VoidChasmMerge.cs"
+  },
+  {
     "name": "FiendshardMerge",
     "description": "null",
     "tags": [
       "null"
     ],
     "path": "Nation/MergeShops/FiendshardMerge.cs",
-    "size": 5333,
+    "size": 5335,
     "fileName": "FiendshardMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/MergeShops/FiendshardMerge.cs"
   },
@@ -5562,7 +5731,7 @@
       "null"
     ],
     "path": "Nation/AFDL/WillpowerExtraction.cs",
-    "size": 4186,
+    "size": 4194,
     "fileName": "WillpowerExtraction.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/AFDL/WillpowerExtraction.cs"
   },
@@ -5594,7 +5763,7 @@
       "fragment"
     ],
     "path": "Nation/AFDL/NulgathDemandsWork.cs",
-    "size": 6098,
+    "size": 6100,
     "fileName": "NulgathDemandsWork.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/AFDL/NulgathDemandsWork.cs"
   },
@@ -7984,7 +8153,7 @@
       "story"
     ],
     "path": "Seasonal/HerosHeartDay/Love.cs",
-    "size": 1423,
+    "size": 1520,
     "fileName": "Love.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HerosHeartDay/Love.cs"
   },
@@ -9302,7 +9471,7 @@
       "developer"
     ],
     "path": "Tools/ForDevelopers/MergeTemplateHelper.cs",
-    "size": 8582,
+    "size": 8738,
     "fileName": "MergeTemplateHelper.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/ForDevelopers/MergeTemplateHelper.cs"
   },
@@ -9372,7 +9541,7 @@
       "army"
     ],
     "path": "Army/Classes/ArmyVoidHighlord.cs",
-    "size": 30962,
+    "size": 30963,
     "fileName": "ArmyVoidHighlord.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Classes/ArmyVoidHighlord.cs"
   },
@@ -9466,7 +9635,7 @@
       "army"
     ],
     "path": "Army/ArmyNulgath/ArmyTaintedGem.cs",
-    "size": 3146,
+    "size": 3147,
     "fileName": "ArmyTaintedGem.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyNulgath/ArmyTaintedGem.cs"
   },
@@ -9505,7 +9674,7 @@
       "voucher item totem of nulgath"
     ],
     "path": "Army/ArmyNulgath/ArmyVoucherItemofNulgath.cs",
-    "size": 4463,
+    "size": 4462,
     "fileName": "ArmyVoucherItemofNulgath.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyNulgath/ArmyVoucherItemofNulgath.cs"
   },
@@ -9532,7 +9701,7 @@
       "reagents"
     ],
     "path": "Army/ArmyNulgath/ArmySupplies.cs",
-    "size": 7998,
+    "size": 8000,
     "fileName": "ArmySupplies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyNulgath/ArmySupplies.cs"
   },
@@ -9688,7 +9857,7 @@
       "\"elemental binding\""
     ],
     "path": "Army/Various/ArmyArchMageBossItems.cs",
-    "size": 6269,
+    "size": 6270,
     "fileName": "ArmyArchMageBossItems.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmyArchMageBossItems.cs"
   },
@@ -9707,7 +9876,7 @@
       "doom"
     ],
     "path": "Army/Various/ArmySmartVoidAuas.cs",
-    "size": 5845,
+    "size": 5846,
     "fileName": "ArmySmartVoidAuas.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmySmartVoidAuas.cs"
   },
@@ -9770,7 +9939,7 @@
       "enroaching shadows"
     ],
     "path": "Army/Quests/ArmyNSODDaily.cs",
-    "size": 3113,
+    "size": 3114,
     "fileName": "ArmyNSODDaily.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Quests/ArmyNSODDaily.cs"
   },
@@ -9784,7 +9953,7 @@
       "army."
     ],
     "path": "Army/OneClient/AccsForAll.cs",
-    "size": 1896,
+    "size": 2187,
     "fileName": "AccsForAll.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/OneClient/AccsForAll.cs"
   },
@@ -9810,7 +9979,7 @@
       "all"
     ],
     "path": "Army/OneClient/AllBankAllItems.cs",
-    "size": 901,
+    "size": 902,
     "fileName": "AllBankAllItems.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/OneClient/AllBankAllItems.cs"
   },
@@ -9840,7 +10009,7 @@
       "all"
     ],
     "path": "Army/OneClient/AllRankAllClasses.cs",
-    "size": 911,
+    "size": 912,
     "fileName": "AllRankAllClasses.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/OneClient/AllRankAllClasses.cs"
   },
@@ -9892,25 +10061,25 @@
   },
   {
     "name": "script name here",
-    "description": "Farms [InsertItem]  using your army.",
+    "description": "Farms [InsertItem] using your army.",
     "tags": [
       "army",
       "[item]"
     ],
-    "path": "Army/Templates/ArmyTemplatev3.cs",
-    "size": 5003,
-    "fileName": "ArmyTemplatev3.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Templates/ArmyTemplatev3.cs"
+    "path": "Army/Templates/ArmyTemplatev4.cs",
+    "size": 9203,
+    "fileName": "ArmyTemplatev4.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Templates/ArmyTemplatev4.cs"
   },
   {
     "name": "script name here",
-    "description": "Farms [InsertItem]  using your army.",
+    "description": "Farms [InsertItem] using your army.",
     "tags": [
       "army",
       "[item]"
     ],
     "path": "Army/ArmySeasonal/ArmyPoly.cs",
-    "size": 4428,
+    "size": 4427,
     "fileName": "ArmyPoly.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmySeasonal/ArmyPoly.cs"
   },
@@ -9927,7 +10096,7 @@
       "higure"
     ],
     "path": "Army/ArmySeasonal/ArmyHigure.cs",
-    "size": 22089,
+    "size": 22090,
     "fileName": "ArmyHigure.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmySeasonal/ArmyHigure.cs"
   },
@@ -10520,6 +10689,37 @@
     "size": 7483,
     "fileName": "SevenCirclesWarMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/MergeShops/SevenCirclesWarMerge.cs"
+  },
+  {
+    "name": "SoulForge Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the SoulForge Merge [577] in /underworld",
+    "tags": [
+      "soulforge",
+      "merge",
+      "underworld",
+      "classy",
+      "skullseeker",
+      "legion",
+      "beast",
+      "within",
+      "cane",
+      "death",
+      "bane",
+      "pride",
+      "horrid",
+      "cleaver",
+      "spine",
+      "shanks",
+      "ancient",
+      "undead",
+      "horns",
+      "breaker",
+      "warrior"
+    ],
+    "path": "Legion/MergeShops/SoulForgeMerge.cs",
+    "size": 4551,
+    "fileName": "SoulForgeMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/MergeShops/SoulForgeMerge.cs"
   },
   {
     "name": "Legion Merge",
@@ -11608,7 +11808,7 @@
       "null"
     ],
     "path": "Story/LordsofChaos/Core13LoC.cs",
-    "size": 81534,
+    "size": 81707,
     "fileName": "Core13LoC.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/LordsofChaos/Core13LoC.cs"
   },
@@ -12036,6 +12236,24 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Nation/VoidRefuge.cs"
   },
   {
+    "name": "Void Chasm Story",
+    "description": "This script will complete the storyline in /voidchasm.",
+    "tags": [
+      "voidchasm",
+      "chasm",
+      "nation",
+      "nulgath",
+      "story",
+      "ana di carcano",
+      "gravelyn",
+      "jadzia"
+    ],
+    "path": "Story/Nation/VoidChasm.cs",
+    "size": 2161,
+    "fileName": "VoidChasm.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Nation/VoidChasm.cs"
+  },
+  {
     "name": "Originul",
     "description": "This will finish the Originul quest.",
     "tags": [
@@ -12059,7 +12277,7 @@
       "citadel-ruins"
     ],
     "path": "Story/Nation/CitadelRuins.cs",
-    "size": 9743,
+    "size": 9745,
     "fileName": "CitadelRuins.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Nation/CitadelRuins.cs"
   },
@@ -12073,7 +12291,7 @@
       "nation"
     ],
     "path": "Story/Nation/Bamboozle.cs",
-    "size": 4687,
+    "size": 4754,
     "fileName": "Bamboozle.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Nation/Bamboozle.cs"
   },
@@ -12101,7 +12319,7 @@
       "fiendshard"
     ],
     "path": "Story/Nation/Fiendshard.cs",
-    "size": 3652,
+    "size": 3182,
     "fileName": "Fiendshard.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Nation/Fiendshard.cs"
   },
@@ -12363,7 +12581,7 @@
       "null"
     ],
     "path": "Story/7DeadlyDragons/Core7DD.cs",
-    "size": 14789,
+    "size": 14815,
     "fileName": "Core7DD.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/7DeadlyDragons/Core7DD.cs"
   },
@@ -12790,7 +13008,7 @@
       "null"
     ],
     "path": "Story/ShadowsOfWar/CoreSoW.cs",
-    "size": 37086,
+    "size": 37087,
     "fileName": "CoreSoW.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfWar/CoreSoW.cs"
   },
@@ -13000,7 +13218,7 @@
       "dark-war-legion-and-nation"
     ],
     "path": "Story/Legion/DarkWarLegionandNation.cs",
-    "size": 6317,
+    "size": 6646,
     "fileName": "DarkWarLegionandNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Legion/DarkWarLegionandNation.cs"
   },
@@ -13555,7 +13773,7 @@
       "null"
     ],
     "path": "Story/QueenofMonsters/CoreQOM.cs",
-    "size": 31925,
+    "size": 32059,
     "fileName": "CoreQOM.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/QueenofMonsters/CoreQOM.cs"
   },
@@ -13643,7 +13861,7 @@
       "null"
     ],
     "path": "Other/Classes/FrostSpiritReaver.cs",
-    "size": 10223,
+    "size": 10418,
     "fileName": "FrostSpiritReaver.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/FrostSpiritReaver.cs"
   },
@@ -13816,7 +14034,7 @@
       "legend"
     ],
     "path": "Other/FarmJoeKits/MemberFarmsKit.cs",
-    "size": 20481,
+    "size": 20566,
     "fileName": "MemberFarmsKit.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/MemberFarmsKit.cs"
   },
@@ -14088,18 +14306,21 @@
       "null"
     ],
     "path": "Other/Weapons/VoidAvengerScythe.cs",
-    "size": 5070,
+    "size": 5065,
     "fileName": "VoidAvengerScythe.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Weapons/VoidAvengerScythe.cs"
   },
   {
-    "name": "WrathofNulgath",
-    "description": "null",
+    "name": "Wrath of Nulgath",
+    "description": "This script will get Wrath of Nulgath.",
     "tags": [
-      "null"
+      "wrathofnulgath",
+      "wrath",
+      "ravenous",
+      "weapon"
     ],
     "path": "Other/Weapons/WrathofNulgath.cs",
-    "size": 2573,
+    "size": 2433,
     "fileName": "WrathofNulgath.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Weapons/WrathofNulgath.cs"
   },
@@ -14115,16 +14336,36 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Weapons/MalacodaNecroment.cs"
   },
   {
-    "name": "Free 500 accs",
-    "description": "the 500 free acs quest",
+    "name": "Free Holiday AC Gift 2023",
+    "description": "This script will kill Burlingster in /borgars to get free 500 AC.",
     "tags": [
-      "acs",
-      "free"
+      "free",
+      "ac",
+      "burlingster",
+      "borgars",
+      "500",
+      "2023",
+      "holiday"
     ],
-    "path": "Other/FreeAcGifts[Yearly]/AcGift2023.cs",
-    "size": 869,
-    "fileName": "AcGift2023.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FreeAcGifts[Yearly]/AcGift2023.cs"
+    "path": "Other/FreeAcGifts[Yearly]/2023HolidayAcGift.cs",
+    "size": 1252,
+    "fileName": "2023HolidayAcGift.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FreeAcGifts[Yearly]/2023HolidayAcGift.cs"
+  },
+  {
+    "name": "Free Birthday AC Gift 2023",
+    "description": "This script will kill Agitated Orb for free 500 ACs.",
+    "tags": [
+      "ac",
+      "free",
+      "500",
+      "2023",
+      "birthday"
+    ],
+    "path": "Other/FreeAcGifts[Yearly]/2023BirthdayAcGift.cs",
+    "size": 1159,
+    "fileName": "2023BirthdayAcGift.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FreeAcGifts[Yearly]/2023BirthdayAcGift.cs"
   },
   {
     "name": "DarknessShard",
@@ -14231,7 +14472,7 @@
       "null"
     ],
     "path": "Other/Various/Potions.cs",
-    "size": 18496,
+    "size": 18495,
     "fileName": "Potions.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Various/Potions.cs"
   },
@@ -15067,7 +15308,7 @@
       "armblades"
     ],
     "path": "Other/MergeShops/CrocriverMerge.cs",
-    "size": 6965,
+    "size": 8982,
     "fileName": "CrocriverMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/CrocriverMerge.cs"
   },
@@ -16069,7 +16310,7 @@
       "null"
     ],
     "path": "Other/MergeShops/CraggleRockMerge.cs",
-    "size": 9329,
+    "size": 9356,
     "fileName": "CraggleRockMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/CraggleRockMerge.cs"
   },
@@ -17142,7 +17383,7 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Armor/FireChampionsArmor.cs"
   },
   {
-    "name": "0NecroticSwordOfDoom",
+    "name": "Necrotic Sword of Doom",
     "description": "Does the entirety of and to farm \"necrotic sword of doom\"",
     "tags": [
       "nsod",
@@ -17152,12 +17393,12 @@
       "necrotic sword of doom"
     ],
     "path": "Evil/NSoD/0NecroticSwordOfDoom.cs",
-    "size": 1537,
+    "size": 1539,
     "fileName": "0NecroticSwordOfDoom.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/NSoD/0NecroticSwordOfDoom.cs"
   },
   {
-    "name": "1NecroticBladeOfDoom",
+    "name": "Necrotic Blade of Doom",
     "description": "Does the entirety of and to farm \"necrotic blade of doom\"",
     "tags": [
       "nsod",
@@ -17167,7 +17408,7 @@
       "necrotic blade of doom"
     ],
     "path": "Evil/NSoD/1NecroticBladeOfDoom.cs",
-    "size": 1489,
+    "size": 1491,
     "fileName": "1NecroticBladeOfDoom.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/NSoD/1NecroticBladeOfDoom.cs"
   },
@@ -17183,68 +17424,108 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/NSoD/CoreNSOD.cs"
   },
   {
-    "name": "UnlockHardCoreMetals[Vayle-Quests]",
-    "description": "null",
+    "name": "Unlock HardCore Metals",
+    "description": "This script will unlock HardCore Metals using Vayle's Quests.",
     "tags": [
-      "null"
+      "unlock",
+      "hardcore",
+      "metals",
+      "vayle",
+      "quest",
+      "sdka",
+      "sepulchure",
+      "doom that looms",
+      "toiling with terror",
+      "a penny for your foughts",
+      "dark spirit donation"
     ],
     "path": "Evil/SDKA/UnlockHardCoreMetals[Vayle-Quests].cs",
-    "size": 650,
+    "size": 833,
     "fileName": "UnlockHardCoreMetals[Vayle-Quests].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/SDKA/UnlockHardCoreMetals[Vayle-Quests].cs"
   },
   {
-    "name": "DarkSpiritOrbs",
-    "description": "null",
+    "name": "Dark Spirit Orbs",
+    "description": "This script will farm 10500 Dark Spirit Orbs.",
     "tags": [
-      "null"
+      "dso",
+      "a penny for your foughts",
+      "sdka",
+      "evil",
+      "quest",
+      "farm"
     ],
     "path": "Evil/SDKA/DarkSpiritOrbs.cs",
-    "size": 599,
+    "size": 692,
     "fileName": "DarkSpiritOrbs.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/SDKA/DarkSpiritOrbs.cs"
   },
   {
-    "name": "DoomKnightWeaponKit",
-    "description": "null",
+    "name": "DoomKnight Weapon Kit",
+    "description": "This script will farm DoomKnight Weapon Kit.",
     "tags": [
-      "null"
+      "doomknight",
+      "doomknightwk",
+      "weapon kit",
+      "sdka",
+      "evil",
+      "corrupt spirit orb",
+      "ominous aura",
+      "grumpy warhammer"
     ],
     "path": "Evil/SDKA/DoomKnightWeaponKit.cs",
-    "size": 660,
+    "size": 798,
     "fileName": "DoomKnightWeaponKit.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/SDKA/DoomKnightWeaponKit.cs"
   },
   {
-    "name": "PinpointthePieces",
-    "description": "null",
+    "name": "Pinpoint the Pieces Quests",
+    "description": "This script will do \"Pinpoint the Pieces\" quest using the chosen method.",
     "tags": [
-      "null"
+      "pinpoint",
+      "pieces",
+      "sdka",
+      "dagger",
+      "blade",
+      "broadsword",
+      "scythe",
+      "mace",
+      "bow"
     ],
     "path": "Evil/SDKA/PinpointthePieces.cs",
-    "size": 1611,
+    "size": 1752,
     "fileName": "PinpointthePieces.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/SDKA/PinpointthePieces.cs"
   },
   {
-    "name": "0SepulchureDoomKnightArmor",
-    "description": "null",
+    "name": "Sepulchure's DoomKnight Armor (SDKA)",
+    "description": "This script will get Sepulchure's DoomKnight Armor (SDKA)",
     "tags": [
-      "null"
+      "sepulchure",
+      "sdka",
+      "doomknight",
+      "armor",
+      "evil",
+      "member"
     ],
     "path": "Evil/SDKA/0SepulchureDoomKnightArmor.cs",
-    "size": 827,
+    "size": 935,
     "fileName": "0SepulchureDoomKnightArmor.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/SDKA/0SepulchureDoomKnightArmor.cs"
   },
   {
-    "name": "APennyforyourFoughts",
-    "description": "null",
+    "name": "A Penny For Your Foughts",
+    "description": "This script will farm Dark Spirit Orbs using \"A Penny For Your Foughts\" Quest.",
     "tags": [
-      "null"
+      "dark spirit orbs",
+      "dso",
+      "penny",
+      "doomcoin",
+      "shadow creeper enchant",
+      "maul"
     ],
     "path": "Evil/SDKA/APennyforyourFoughts.cs",
-    "size": 596,
+    "size": 738,
     "fileName": "APennyforyourFoughts.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/SDKA/APennyforyourFoughts.cs"
   },
@@ -17255,7 +17536,7 @@
       "null"
     ],
     "path": "Evil/SDKA/CoreSDKA.cs",
-    "size": 25561,
+    "size": 25610,
     "fileName": "CoreSDKA.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/SDKA/CoreSDKA.cs"
   },
@@ -17315,13 +17596,18 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/TrollREP.cs"
   },
   {
-    "name": "BaconCatREP",
-    "description": "null",
+    "name": "Bacon Cat REP",
+    "description": "This script will farm Bacon Cat reputation to rank 10.",
     "tags": [
-      "null"
+      "baconcat",
+      "bacon cat",
+      "reputation",
+      "rep",
+      "farm",
+      "rank"
     ],
     "path": "Farm/REP/BaconCatREP.cs",
-    "size": 860,
+    "size": 956,
     "fileName": "BaconCatREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/BaconCatREP.cs"
   },
@@ -17337,24 +17623,34 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/DreadFireREP.cs"
   },
   {
-    "name": "DeathPitArenaREP",
-    "description": "null",
+    "name": "Death Pit Arena REP",
+    "description": "This script will farm Death Pit Arena reputation to rank 10.",
     "tags": [
-      "null"
+      "deathpitarena",
+      "deathpit",
+      "arena",
+      "reputation",
+      "rep",
+      "rank"
     ],
     "path": "Farm/REP/DeathPitArenaREP.cs",
-    "size": 604,
+    "size": 712,
     "fileName": "DeathPitArenaREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/DeathPitArenaREP.cs"
   },
   {
-    "name": "ChronoSpanREP",
-    "description": "null",
+    "name": "ChronoSpan REP",
+    "description": "This script will farm ChronoSpan reputation to rank 10.",
     "tags": [
-      "null"
+      "chrono",
+      "span",
+      "timespace",
+      "reputation",
+      "rep",
+      "rank"
     ],
     "path": "Farm/REP/ChronoSpanREP.cs",
-    "size": 595,
+    "size": 689,
     "fileName": "ChronoSpanREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/ChronoSpanREP.cs"
   },
@@ -17382,7 +17678,7 @@
       "reps"
     ],
     "path": "Farm/REP/1GetAllRanks.cs",
-    "size": 1459,
+    "size": 1463,
     "fileName": "1GetAllRanks.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/1GetAllRanks.cs"
   },
@@ -17420,13 +17716,18 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/DruidGroveREP.cs"
   },
   {
-    "name": "BrightoakREP",
-    "description": "null",
+    "name": "Brightoak REP",
+    "description": "This script will farm Brightoak REP to rank 10.",
     "tags": [
-      "null"
+      "bright",
+      "oak",
+      "reputation",
+      "rep",
+      "rank",
+      "farm"
     ],
     "path": "Farm/REP/BrightoakREP.cs",
-    "size": 848,
+    "size": 932,
     "fileName": "BrightoakREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/BrightoakREP.cs"
   },
@@ -17442,13 +17743,19 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/DreadrockREP.cs"
   },
   {
-    "name": "ChaosMilitiaREP",
-    "description": "null",
+    "name": "Chaos Militia REP",
+    "description": "This script will farm Chaos Militia reputation to rank 10.",
     "tags": [
-      "null"
+      "chaos",
+      "chaosmilitia",
+      "militia",
+      "rep",
+      "rank",
+      "farm",
+      "reputation"
     ],
     "path": "Farm/REP/ChaosMilitiaREP.cs",
-    "size": 601,
+    "size": 710,
     "fileName": "ChaosMilitiaREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/ChaosMilitiaREP.cs"
   },
@@ -17486,35 +17793,45 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/ElementalMasterREP.cs"
   },
   {
-    "name": "AlchemyREP",
-    "description": "null",
+    "name": "Alchemy REP",
+    "description": "This script will farm Alchemy reputation to rank 10.",
     "tags": [
-      "null"
+      "alchemy",
+      "rep",
+      "reputation",
+      "farm"
     ],
     "path": "Farm/REP/AlchemyREP.cs",
-    "size": 1617,
+    "size": 1692,
     "fileName": "AlchemyREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/AlchemyREP.cs"
   },
   {
-    "name": "BlacksmithingREP",
-    "description": "null",
+    "name": "Blacksmithing REP",
+    "description": "This script will farm Blacksmithing reputation to rank 10.",
     "tags": [
-      "null"
+      "blacksmith",
+      "rep",
+      "reputation",
+      "rank",
+      "farm"
     ],
     "path": "Farm/REP/BlacksmithingREP.cs",
-    "size": 1248,
+    "size": 1338,
     "fileName": "BlacksmithingREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/BlacksmithingREP.cs"
   },
   {
-    "name": "ChaosREP",
-    "description": "null",
+    "name": "Chaos REP",
+    "description": "This script will farm Chaos reputation to rank 10.",
     "tags": [
-      "null"
+      "chaos",
+      "rep",
+      "reputation",
+      "rank"
     ],
     "path": "Farm/REP/ChaosREP.cs",
-    "size": 580,
+    "size": 651,
     "fileName": "ChaosREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/ChaosREP.cs"
   },
@@ -17541,13 +17858,17 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/SkyguardREP[Mem].cs"
   },
   {
-    "name": "CraggleRockREP",
-    "description": "null",
+    "name": "CraggleRock REP",
+    "description": "This script will farm CraggleRock reputation to rank 10.",
     "tags": [
-      "null"
+      "craggle",
+      "rock",
+      "rep",
+      "reputation",
+      "rank"
     ],
     "path": "Farm/REP/CraggleRockREP.cs",
-    "size": 598,
+    "size": 683,
     "fileName": "CraggleRockREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/CraggleRockREP.cs"
   },
@@ -17574,13 +17895,18 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/GlaceraREP.cs"
   },
   {
-    "name": "BeastMasterREP[Mem]",
-    "description": "null",
+    "name": "BeastMaster REP",
+    "description": "This script will farm BeastMaster reputation to rank 10.",
     "tags": [
-      "null"
+      "beastmaster",
+      "beast master",
+      "reputation",
+      "rep",
+      "farm",
+      "rank"
     ],
     "path": "Farm/REP/BeastMasterREP[Mem].cs",
-    "size": 629,
+    "size": 727,
     "fileName": "BeastMasterREP[Mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/BeastMasterREP[Mem].cs"
   },
@@ -17695,13 +18021,19 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/SomniaREP.cs"
   },
   {
-    "name": "BladeofAweREP",
-    "description": "null",
+    "name": "Blade of Awe REP",
+    "description": "This script will farm Blade of Awe reputation to rank 10.",
     "tags": [
-      "null"
+      "boa",
+      "bladeofawe",
+      "awe",
+      "reputation",
+      "rep",
+      "rank",
+      "farm"
     ],
     "path": "Farm/REP/BladeofAweREP.cs",
-    "size": 604,
+    "size": 705,
     "fileName": "BladeofAweREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/BladeofAweREP.cs"
   },
@@ -17750,13 +18082,17 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/LycanREP.cs"
   },
   {
-    "name": "BrethwrenREP",
-    "description": "null",
+    "name": "Brethwren REP [Seasonal]",
+    "description": "This script will farm Brethwren reputation to rank 10.",
     "tags": [
-      "null"
+      "reputation",
+      "rep",
+      "seasonal",
+      "rank",
+      "farm"
     ],
     "path": "Farm/REP/BrethwrenREP.cs",
-    "size": 864,
+    "size": 959,
     "fileName": "BrethwrenREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/BrethwrenREP.cs"
   },
@@ -17783,13 +18119,16 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/DeathPitBrawlRep.cs"
   },
   {
-    "name": "AegisREP",
-    "description": "null",
+    "name": "Aegis REP",
+    "description": "This script will farm Aegis REP to rank 10.",
     "tags": [
-      "null"
+      "aegis",
+      "rep",
+      "reputation",
+      "farm"
     ],
     "path": "Farm/REP/AegisREP.cs",
-    "size": 606,
+    "size": 670,
     "fileName": "AegisREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/AegisREP.cs"
   },
@@ -17805,13 +18144,17 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/VampireREP.cs"
   },
   {
-    "name": "ArcangroveREP",
-    "description": "null",
+    "name": "Arcangrove REP",
+    "description": "This script will farm Arcangrove reputation to rank 10.",
     "tags": [
-      "null"
+      "arcangrove",
+      "rep",
+      "reputation",
+      "farm",
+      "rank"
     ],
     "path": "Farm/REP/ArcangroveREP.cs",
-    "size": 621,
+    "size": 708,
     "fileName": "ArcangroveREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/ArcangroveREP.cs"
   },
@@ -19343,7 +19686,7 @@
       "null"
     ],
     "path": "Seasonal/Friday13th/Story/CoreFriday13th.cs",
-    "size": 33405,
+    "size": 33633,
     "fileName": "CoreFriday13th.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Friday13th/Story/CoreFriday13th.cs"
   },
@@ -19847,13 +20190,13 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyTrollRep.cs"
   },
   {
-    "name": "ArmyPetTamerRep",
+    "name": "Army Pet Tamer Rep",
     "description": "Farms reputation for the Pet Tamer faction",
     "tags": [
       "army pet tamer reputation"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyPetTamerRep.cs",
-    "size": 1532,
+    "size": 1535,
     "fileName": "ArmyPetTamerRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyPetTamerRep.cs"
   },
@@ -19892,7 +20235,7 @@
       "blacksmithing"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyBlackSmithRep.cs",
-    "size": 4408,
+    "size": 4409,
     "fileName": "ArmyBlackSmithRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyBlackSmithRep.cs"
   },
@@ -20236,7 +20579,7 @@
       "null"
     ],
     "path": "Templates/Examples/BasicFunctionality/HowToCreateandUseOptions.cs",
-    "size": 3583,
+    "size": 3584,
     "fileName": "HowToCreateandUseOptions.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Templates/Examples/BasicFunctionality/HowToCreateandUseOptions.cs"
   },
@@ -20550,7 +20893,7 @@
       "brightoak"
     ],
     "path": "Story/QueenofMonsters/Extra/BrightOak.cs",
-    "size": 14636,
+    "size": 14724,
     "fileName": "BrightOak.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/QueenofMonsters/Extra/BrightOak.cs"
   },
@@ -20875,7 +21218,7 @@
       "null"
     ],
     "path": "Other/Classes/ArchMage/CoreArchMage.cs",
-    "size": 21412,
+    "size": 21831,
     "fileName": "CoreArchMage.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/ArchMage/CoreArchMage.cs"
   },
@@ -21184,7 +21527,7 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/REP-based/ImperialChunin.cs"
   },
   {
-    "name": "GatheringUnstableEssences",
+    "name": "Gathering Unstable Essences",
     "description": "farms void auras via the \"gathering unstable essences\" quest.",
     "tags": [
       "gathering",
@@ -21193,24 +21536,24 @@
       "void aura"
     ],
     "path": "Evil/NSoD/VoidAuras/GatheringUnstableEssences.cs",
-    "size": 967,
+    "size": 969,
     "fileName": "GatheringUnstableEssences.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/NSoD/VoidAuras/GatheringUnstableEssences.cs"
   },
   {
-    "name": "RetreiveVoidAuras",
+    "name": "Retrieve Void Auras",
     "description": "farms void auras via the \"retrieve void auras\" quest.",
     "tags": [
       "retrieve",
       "void aura"
     ],
     "path": "Evil/NSoD/VoidAuras/RetreiveVoidAuras.cs",
-    "size": 1321,
+    "size": 1323,
     "fileName": "RetreiveVoidAuras.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/NSoD/VoidAuras/RetreiveVoidAuras.cs"
   },
   {
-    "name": "CommandingShadowEssences",
+    "name": "Commanding Shadow Essences",
     "description": "farms void auras via the \"commanding shadow essences\" quest.",
     "tags": [
       "commanding",
@@ -21219,12 +21562,12 @@
       "void aura"
     ],
     "path": "Evil/NSoD/VoidAuras/CommandingShadowEssences.cs",
-    "size": 1312,
+    "size": 1314,
     "fileName": "CommandingShadowEssences.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/NSoD/VoidAuras/CommandingShadowEssences.cs"
   },
   {
-    "name": "0SmartVoidAuras",
+    "name": "Smart Void Auras",
     "description": "farms void auras via what ever the current best method you have to farm them..",
     "tags": [
       "smart",
@@ -21238,7 +21581,7 @@
       "void aura"
     ],
     "path": "Evil/NSoD/VoidAuras/0SmartVoidAuras.cs",
-    "size": 1611,
+    "size": 1612,
     "fileName": "0SmartVoidAuras.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/NSoD/VoidAuras/0SmartVoidAuras.cs"
   },

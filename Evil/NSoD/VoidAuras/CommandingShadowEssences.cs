@@ -1,5 +1,5 @@
 /*
-name: CommandingShadowEssences
+name: Commanding Shadow Essences
 description: farms void auras via the "commanding shadow essences" quest.
 tags: commanding, shadow, essences, void aura
 */

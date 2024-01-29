@@ -28,7 +28,7 @@ public class BrightOak
         Core.SetOptions(false);
     }
 
-    public void doall()
+    public void doall(bool repFarm = false)
     {
         if (Core.isCompletedBefore(4810))
             return;
@@ -36,7 +36,7 @@ public class BrightOak
         Story.PreLoad(this);
 
         Ælfred();
-        AvenGreywhorl();
+        AvenGreywhorl(repFarm);
         FlixSpiderwhisp();
         LapisPart1();
         RavinosBrightgladePart1();
@@ -83,7 +83,7 @@ public class BrightOak
         Story.KillQuest(4644, "Rivensylth", "Avada");
     }
 
-    public void AvenGreywhorl()
+    public void AvenGreywhorl(bool repFarm = false)
     {
         if (Core.isCompletedBefore(4668))
             return;
@@ -159,6 +159,8 @@ public class BrightOak
             Core.KillMonster("elfhame", "r2", "Left", "Ruin Stalker", "Ruin Stalker Contained", 6);
             Core.EnsureComplete(4666);
         }
+        if (repFarm)
+            return;
 
         // Unlocking the Guardian's Mouth
         Story.MapItemQuest(4667, "elfhame", 3984);

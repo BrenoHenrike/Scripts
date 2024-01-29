@@ -1,7 +1,7 @@
 /*
-name: DoomKnight[Mem]
-description: null
-tags: null
+name: DoomKnight Class[Mem]
+description: This script will get DoomKnight Class [Member]
+tags: doomknight, class, evil, doom knight, member
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

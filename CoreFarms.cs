@@ -118,7 +118,7 @@ public class CoreFarms
 
         ToggleBoost(BoostType.Gold);
 
-        HonorHall(quant);
+        // HonorHall(quant);
         BattleGroundE(quant);
         BerserkerBunny(quant);
 
@@ -233,28 +233,58 @@ public class CoreFarms
 
         ToggleBoost(BoostType.Experience);
 
-
-        Core.RegisterQuests(4007);
-        while (!Bot.ShouldExit && Bot.Player.Level < 10)
-            Core.KillMonster("oaklore", "r3", "Left", "Bone Berserker", log: false);
-        Core.CancelRegisteredQuests();
-
-        //i swear this is active yearround for a black friday "locked" quest according to the wiki.. keep undead warrior as a backup.. undead giant is slower but will work till we find a fillin - perhaps sluethhouseinn? used to be good years ago
-        if (Bot.Quests.IsAvailable(6979))
+        if (Bot.Player.Level < 10)
         {
-            Core.EquipClass(ClassType.Solo);
-            Core.RegisterQuests(6979);
-            while (!Bot.ShouldExit && Bot.Player.Level < 30)
-                Core.KillMonster("prison", "Tax", "Left", "*", "Broken Piggy Bank", log: false);
+            Core.RegisterQuests(4007);
+            while (!Bot.ShouldExit && Bot.Player.Level < 10)
+                Core.KillMonster("oaklore", "r3", "Left", "Bone Berserker", log: false);
             Core.CancelRegisteredQuests();
         }
-        else
+
+        if (Bot.Player.Level < 30)
         {
-            UndeadGiantUnlock();
-            Core.RegisterQuests(178);
-            while (!Bot.ShouldExit && Bot.Player.Level < 30)
-                Core.HuntMonster("swordhavenundead", "Undead Giant", log: false);
-            Core.CancelRegisteredQuests();
+            //i swear this is active yearround for a black friday "locked" quest according to the wiki.. keep undead warrior as a backup.. undead giant is slower but will work till we find a fillin - perhaps sluethhouseinn? used to be good years ago
+            if (Bot.Quests.IsAvailable(6979))
+            {
+                Core.EquipClass(ClassType.Solo);
+                Core.RegisterQuests(6979);
+                while (!Bot.ShouldExit && Bot.Player.Level < 30)
+                {
+                    Core.Join("prison", "Tax", "Left");
+
+                    if (Bot.Player.Cell != "Tax")
+                    {
+                        Core.Jump("Tax");
+                        Core.Sleep();
+                        Bot.Wait.ForCellChange("Tax");
+                    }
+
+                    while (!Bot.ShouldExit && Core.IsMonsterAlive(7, true) && Bot.Monsters.CurrentAvailableMonsters.Exists(m => m.MapID == 7))
+                    {
+                        Bot.Kill.Monster(7);
+
+                        while (Bot.Player.Cell != "Tax")
+                        {
+                            Core.Jump("Tax");
+                            Core.Sleep();
+                            // if (Bot.Player.Cell == "Tax")
+                            //     break;  // Removed unnecessary break statement
+                        }
+
+                        if (Bot.Player.Level >= 30)
+                            break;
+                    }
+                }
+                Core.CancelRegisteredQuests();
+            }
+            else
+            {
+                UndeadGiantUnlock();
+                Core.RegisterQuests(178);
+                while (!Bot.ShouldExit && Bot.Player.Level < 30)
+                    Core.HuntMonster("swordhavenundead", "Undead Giant", log: false);
+                Core.CancelRegisteredQuests();
+            }
         }
 
         FireWarxp(40);
@@ -1374,18 +1404,27 @@ public class CoreFarms
         if (FactionRank("CraggleRock") >= rank)
             return;
 
-        Core.EquipClass(ClassType.Farm);
+        Core.EquipClass(ClassType.Solo);
         Core.SavedState();
         ToggleBoost(BoostType.Reputation);
         Core.Logger($"Farming rank {rank}");
         Core.AddDrop("Empowered Voidstone");
-        Core.RegisterQuests(7277); //Star of the Sandsea 7277
+        //Star of the Sandsea 7277
         while (!Bot.ShouldExit && FactionRank("CraggleRock") < rank)
-            Core.KillMonster("wanders", "r3", "Down", "Kalestri Worshiper", log: false);
-        Bot.Wait.ForQuestComplete(7277);
-        Core.CancelRegisteredQuests();
+        {
+            if (Bot.Player.Cell != "r3")
+                Core.Jump("r3");
+            else
+            {
+                Core.EnsureAccept(7277);
+                // Core.HuntMonster("wanders", "Kalestri Worshiper", "Star of the Sandsea", log: false);
+                Core.KillMonster("wanders", "r3", "Down", "Kalestri Worshiper", "Star of the Sandsea", log: false);
+                Core.EnsureComplete(7277);
+            }
+        }
         ToggleBoost(BoostType.Reputation, false);
         Core.SavedState(false);
+        Core.CancelRegisteredQuests();
     }
 
     public void DeathPitArenaREP(int rank = 10)
@@ -1404,9 +1443,12 @@ public class CoreFarms
         ToggleBoost(BoostType.Reputation);
         Core.Logger($"Farming rank {rank}");
 
-        Core.RegisterQuests(5153);
         while (!Bot.ShouldExit && FactionRank("Death Pit Arena") < rank)
-            Core.HuntMonster("deathpit", "General Hun'Gar", log: false);
+        {
+            Core.EnsureAccept(5153);
+            Core.HuntMonster("deathpit", "General Hun'Gar", "General Hun'Gar Defeated", log: false);
+            Core.EnsureComplete(5153);
+        }
         Bot.Wait.ForQuestComplete(5153);
         Core.CancelRegisteredQuests();
         ToggleBoost(BoostType.Reputation, false);
@@ -1434,9 +1476,12 @@ public class CoreFarms
         ToggleBoost(BoostType.Reputation);
         Core.Logger($"Farming rank {rank}");
 
-        Core.RegisterQuests(7877);
         while (!Bot.ShouldExit && FactionRank("Diabolical") < rank)
-            Core.HuntMonster("mudluk", "Tiger Leech", log: false);
+        {
+            Core.EnsureAccept(7877);
+            Core.HuntMonster("mudluk", "Tiger Leech", "Swamped Leech Tooth", log: false);
+            Core.EnsureComplete(7877);
+        }
         Bot.Wait.ForQuestComplete(7877);
         Core.CancelRegisteredQuests();
         ToggleBoost(BoostType.Reputation, false);
@@ -2570,6 +2615,7 @@ public class CoreFarms
 
         if (FactionRank("SpellCrafting") < 4)
         {
+            Core.JoinSWF("mobius", "ChiralValley/town-Mobius-21Feb14.swf", "Slugfit", "Bottom");
             Core.HuntMonster("mobius", "Slugfit", "Mystic Quills", 10, false);
             Core.BuyItem("dragonrune", 549, "Ember Ink", 50);
             while (!Bot.ShouldExit && Core.CheckInventory("Ember Ink") && FactionRank("SpellCrafting") < 4)

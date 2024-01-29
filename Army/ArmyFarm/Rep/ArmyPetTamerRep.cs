@@ -1,5 +1,5 @@
 /*
-name: ArmyPetTamerRep
+name: Army Pet Tamer Rep
 description: Farms reputation for the Pet Tamer faction
 tags: army pet tamer reputation
 */

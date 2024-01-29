@@ -50,7 +50,7 @@ public class ArchfiendDeathLord
         else if (OnlyArmor && Reward == RewardChoice.All)
             Core.Logger("With \"OnlyArmor\" Please Select the \"Archfiend DeathLord\" Option from the list.", messageBox: true, stopBot: true);
 
-        Fiendshard.Fiendshard_Questline();
+        Fiendshard.Fiendshard_QuestlineP1();
 
         if (Reward == RewardChoice.All)
         {

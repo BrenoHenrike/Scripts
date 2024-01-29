@@ -32,7 +32,6 @@ public class VoidRefugeMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        VR.Storyline();
         Core.BankingBlackList.AddRange(new[] { "Venomous Fang Blade", "Unidentified 13", "Tainted Gem", "Dark Crystal Shard", "Diamond of Nulgath", "Unidentified 23", "Totem of Nulgath", "Blood Gem of the Archfiend", "Evolved Carnage of Nulgath", "Fiendish Remains", "Voucher of Nulgath (non-mem)", "Evolved Carnage Helm", "Evolved Carnage Crest", "Blood Void Spines", "Blood Void Spikes", "Gem of Nulgath", "Bloodletter Katana", "Bloodletter Katanas", "1st Betrayal Blade of Nulgath", "2nd Betrayal Blade of Nulgath", "3rd Betrayal Blade of Nulgath", "4th Betrayal Blade of Nulgath", "5th Betrayal Blade of Nulgath", "6th Betrayal Blade of Nulgath", "7th Betrayal Blade of Nulgath", "8th Betrayal Blade of Nulgath", "Unmoulded Fiend Essence", "Gold Voucher 25k" });
         Core.SetOptions();
 
@@ -42,6 +41,7 @@ public class VoidRefugeMerge
 
     public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
+        VR.Storyline();
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("voidrefuge", 2408, findIngredients, buyOnlyThis, buyMode: buyMode);
 

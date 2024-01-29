@@ -1941,11 +1941,11 @@ public class CoreBots
         {
             if (Monster?.Name != null)
             {
-                _KillForItem(Monster.Name, item, quant, isTemp, log: log);
+                _KillForItem(Monster.Name, item, quant, isTemp, log: log, cell: cell);
             }
             else
             {
-                _KillForItem(monster, item, quant, isTemp, log: log);
+                _KillForItem(monster, item, quant, isTemp, log: log, cell: cell);
             }
         }
 
@@ -1995,7 +1995,7 @@ public class CoreBots
             Bot.Kill.Monster(monster);
             Rest();
         }
-        else _KillForItem(monster.Name, item, quant, isTemp, log: log);
+        else _KillForItem(monster.Name, item, quant, isTemp, log: log, cell: cell);
         Bot.Options.AttackWithoutTarget = false;
     }
 
@@ -2477,27 +2477,25 @@ public class CoreBots
     }
 
 
-    public void _KillForItem(string name, string item, int quantity, bool isTemp = false, bool rejectElse = false, bool log = true)
+    public void _KillForItem(string name, string item, int quantity, bool isTemp = false, bool rejectElse = false, bool log = true, string? cell = null)
     {
-        var (Cell, Pad) = (Bot.Player.Cell, "Left");
-
         if (CheckInventory(item, quantity))
             return;
 
         if (log)
             FarmingLogger(item, quantity);
 
-        ToggleAggro(Bot.Options.AggroMonsters);
-
         while (!Bot.ShouldExit &&
        ((!Bot.Inventory.Contains(item) && Bot.Inventory.GetQuantity(item) < quantity) ||
         (!Bot.TempInv.Contains(item) && Bot.TempInv.GetQuantity(item) < quantity)))
         {
-            while (!Bot.ShouldExit && Bot.Player.Cell != Cell)
+            // For some stupid fkin reason te bot will (once it has [item, quant] jump wait...
+            // this is to mitigate that (the jump will still hapen.. but this will atelst let u farm still))
+            while (!Bot.ShouldExit && Bot.Player.Cell != cell && cell != null)
             {
-                Jump(Cell, Pad);
+                Jump(cell, "Left");
                 Sleep();
-                if (Bot.Player.Cell == Cell)
+                if (Bot.Player.Cell == cell)
                     break;
             }
 
@@ -2505,28 +2503,21 @@ public class CoreBots
             {
                 Monster? targetedMob = (name == "*") ? mob : Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault(x => x.Name.FormatForCompare() == name.FormatForCompare());
 
-                ItemBase? Item = isTemp ? Bot.TempInv.Items.FirstOrDefault(x => x.Name.FormatForCompare() == item.FormatForCompare())
+                ItemBase? Item =
+                isTemp ? Bot.TempInv.Items.FirstOrDefault(x => x.Name.FormatForCompare() == item.FormatForCompare())
                 : Bot.Inventory.Items.FirstOrDefault(x => x.Name.FormatForCompare() == item.FormatForCompare());
 
                 while (!Bot.ShouldExit && IsMonsterAlive(targetedMob?.MapID ?? 0, true))
                 {
                     Bot.Combat.Attack(targetedMob?.MapID ?? Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault()?.MapID ?? 0);
+                    Sleep();
 
-                    if (Item != null && Bot.Inventory.Contains(Item.Name) && Bot.Inventory.GetQuantity(Item.Name) >= quantity ||
-                        Item != null && Bot.TempInv.Contains(Item.Name) && Bot.TempInv.GetQuantity(Item.Name) >= quantity)
+                    if (Item != null && Bot.Inventory.Contains(Item.ID) && Bot.Inventory.GetQuantity(Item.ID) >= quantity ||
+                    Item != null && Bot.TempInv.Contains(Item.ID) && Bot.TempInv.GetQuantity(Item.ID) >= quantity)
                     {
-                        while (Bot.Player.InCombat)
-                        {
-                            ToggleAggro(false);
-                            Bot.Combat.CancelTarget();
-                            Bot.Combat.Exit();
-                            Bot.Wait.ForCombatExit();
-                        }
-
-                        Bot.Wait.ForPickup(Item.ID);
-                        Sleep();
+                        Bot.Wait.ForPickup(item);
                         if (rejectElse)
-                            Bot.Drops.RejectExcept(Item.ID);
+                            Bot.Drops.RejectExcept(item);
                         Rest();
                         return;
                     }
@@ -3197,7 +3188,15 @@ public class CoreBots
         Bot.Player.SetSpawnPoint(cell, pad);
         if (!ignoreCheck && Bot.Player.Cell == cell)
             return;
-        Bot.Map.Jump(cell, pad, false);
+
+        while (!Bot.ShouldExit && Bot.Player.Cell != cell)
+        {
+            Bot.Map.Jump(cell, pad, false);
+            Sleep();
+
+            if (Bot.Player.Cell == cell)
+                break;
+        }
     }
 
     /// <summary>
@@ -3245,12 +3244,17 @@ public class CoreBots
             Sleep(ExitCombatDelay < 200 ? ExitCombatDelay : ExitCombatDelay - 200);
             Bot.Wait.ForCombatExit();
         }
-        while (!Bot.ShouldExit && Bot.Player.InCombat)
-        {
-            Bot.Combat.CancelTarget();
-            Bot.Combat.Exit();
-            Bot.Wait.ForTrue(() => !Bot.Player.InCombat, 20);
-        }
+
+        // while (!Bot.ShouldExit && Bot.Player.InCombat)
+        // {
+        //     // Logger("still in combat, trying to exit combat.. agian");
+        //     //Extra jump if player still in combat due to auto-aggro cells
+
+        //     Bot.Combat.CancelTarget();
+
+        //     if (!Bot.Player.InCombat)
+        //         break;
+        // }
 
     }
     private string lastMapJW = String.Empty;
@@ -3483,6 +3487,9 @@ public class CoreBots
                 break;
 
             case "shadowattack":
+                SimpleQuestBypass((175, 18));
+                break;
+
             case "dreadhaven":
                 SimpleQuestBypass((175, 20));
                 break;
@@ -3521,27 +3528,32 @@ public class CoreBots
 
             #region Special Cases
             case "tercessuinotlim":
+
+                //to avoid black screen in `tercessuinotlim
                 if (!isCompletedBefore(9540))
                 {
-                    SimpleQuestBypass((15, 8));
-                    Logger("This map now requires a 1 time completion of \"Beyond the Portal\"");
-                    //to avoid black screen in `tercessuinotlim
+                    OneTimeMessage("WARNING!", "This map now requires a 1 time completion of \"Beyond the Portal\"\n" +
+                    "not sure why it loads tercessuinotlim first. but ge tover it :|", messageBox: false);
+
+                    SimpleQuestBypass((15, 8), (542, 2));
+                    Join("citadel");
                     EnsureAccept(9540);
                     KillMonster("citadel", "m22", "Left", "Death's Head", "Death's Head Bested");
                     EnsureComplete(9540);
                 }
 
                 //for taro to show up
-                if (cell == "Taro")
-                    if (!isCompletedBefore(9541))
-                        ChainComplete(9541);
+                if (!isCompletedBefore(9541))
+                    ChainComplete(9541);
 
                 Jump("m22", "Left");
                 tryJoin();
 
-                Jump("Enter", "Left");
-                Jump(cell, pad);
+                //leave incase more shit breaks reinstate this vv
+                // Jump("Enter", "Left");
 
+                //vv may no longer be needed as jump has a while check now that works wonders (hopefully)
+                // Jump(cell, pad);
                 break;
 
             case "doomvaultb":

@@ -245,14 +245,17 @@ public class CoreArchMage
 
         Scroll.BuyScroll(Scrolls.Frostbite, 50);
 
-        Core.EquipClass(ClassType.Solo);
+        Core.AddDrop("Ice Diamond");
+        Core.EquipClass(ClassType.Farm);
+        Core.FarmingLogger("Ice Diamond", 100);
         while (!Bot.ShouldExit && !Core.CheckInventory("Ice Diamond", 100))
         {
             Core.EnsureAccept(7279);
-            Core.HuntMonster("kingcoal", "Snow Golem", "Frozen Coal", 10);
+            Core.KillMonster("kingcoal", "r1", "Left", "*", "Frozen Coal", 10, log: false);
             Core.EnsureComplete(7279);
             Bot.Wait.ForPickup("Ice Diamond");
         }
+        Core.EquipClass(ClassType.Solo);
         Core.HuntMonster("icepike", "Chained Kezeroth", "Rimeblossom", 100, false);
         Core.HuntMonster("icepike", "Karok the Fallen", "Starlit Frost", 100, false);
         Core.HuntMonster("icedungeon", "Shade of Kyanos", "Temporal Floe", 100, false);
@@ -312,7 +315,7 @@ public class CoreArchMage
     #endregion
 
     #region Materials
-    public void MysticScribingKit(int quant)
+    public void MysticScribingKit(int quant = 1)
     {
         if (Core.CheckInventory(73327, quant))
             return;
@@ -377,7 +380,7 @@ public class CoreArchMage
         }
     }
 
-    public void PrismaticEther(int quant)
+    public void PrismaticEther(int quant = 1)
     {
         if (Core.CheckInventory(73333, quant))
             return;
@@ -401,7 +404,7 @@ public class CoreArchMage
         }
     }
 
-    public void ArcaneLocus(int quant)
+    public void ArcaneLocus(int quant = 1)
     {
         if (Core.CheckInventory(73339, quant))
             return;
@@ -431,31 +434,41 @@ public class CoreArchMage
         }
     }
 
-    public void UnboundTome(int quant)
+    public void UnboundTome(int quant = 99)
     {
-        int unboundTomesNeeded = Core.CheckInventory("Unbound Tome") ? quant - Bot.Inventory.GetQuantity("Unbound Tome") : quant;
-
-        if (unboundTomesNeeded <= 0)
+        if (Core.CheckInventory("Unbound Tome", quant))
+        {
+            Core.Logger("We have enough Unbound Tomes.");
             return;
+        }
 
         if (!Bot.Quests.IsUnlocked(8912))
             ArcaneLocus(1);
 
-        Core.FarmingLogger("Unbound Tome", unboundTomesNeeded);
-        Core.AddDrop("Unbound Tome");
+        Core.FarmingLogger("Unbound Tome", quant);
+        int MaterialsQuant = quant - (Bot.Inventory.Items.FirstOrDefault(x => x.Name == "Unbound Tome")?.Quantity ?? 0);
 
-        while (!Bot.ShouldExit && !Core.CheckInventory("Unbound Tome", unboundTomesNeeded))
+        MysticScribingKit(MaterialsQuant);
+        PrismaticEther(MaterialsQuant);
+        ArcaneLocus(MaterialsQuant);
+
+        Farm.DragonRunestone(MaterialsQuant);
+
+        Core.AddDrop("Unbound Tome");
+        while (!Bot.ShouldExit
+        && Core.CheckInventory(new[] { "Mystic Scribing Kit", "Prismatic Ether", "Arcane Locus", "Dragon Runestone" })
+        && !Core.CheckInventory("Unbound Tome", quant))
         {
             Core.EnsureAccept(8912);
-            MysticScribingKit(unboundTomesNeeded);
-            PrismaticEther(unboundTomesNeeded);
-            ArcaneLocus(unboundTomesNeeded);
-            Farm.DragonRunestone(30);
+
             Adv.BuyItem("darkthronehub", 1308, "Exalted Paladin Seal");
             Adv.BuyItem("shadowfall", 89, "Forsaken Doom Seal");
 
             Core.EnsureComplete(8912);
             Bot.Wait.ForPickup("Unbound Tome");
+
+            if (Core.CheckInventory("Unbound Tome", quant))
+                break;
         }
     }
 

@@ -149,7 +149,7 @@ public class Core7DD
         Story.KillQuest(5934, "Greed", "Sneevil Looter");
 
         // Jumping in Puddles 5935
-        Story.MapItemQuest(5935, "Greed", 5372);
+        Story.MapItemQuest(5935, "Greed", 5372, AutoCompleteQuest: false);
 
         // Pick the Right Chest 5936
         Story.MapItemQuest(5936, "Greed", 5373);

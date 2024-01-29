@@ -66,7 +66,7 @@ public class FiendshardMerge
                 #endregion
 
                 case "Shard of the Shard":
-                    Fiendshard.Fiendshard_Questline();
+                    Fiendshard.Fiendshard_QuestlineP1();
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
                     //De-shard the Shard 7901

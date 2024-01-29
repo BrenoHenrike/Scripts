@@ -61,6 +61,8 @@ public class TradingandStuffSingle
         if (Core.CheckInventory("ArchFiend Enchanted Orbs"))
             return;
 
+        Core.Logger("Farming ArchFiend Enchanted Orbs.");
+
         HB.FreshSouls(1, 100);
         if (!Core.CheckInventory("Unidentified 25"))
         {
@@ -68,7 +70,7 @@ public class TradingandStuffSingle
             Core.BuyItem("tercessuinotlim", 1951, "Unmoulded Fiend Essence");
             Core.BuyItem("tercessuinotlim", 1951, "Unidentified 25");
         }
-        Nation.FarmUni13();
+        Nation.FarmUni13(1);
         Nation.DiamondEvilWar(150);
         Nation.FarmBloodGem(10);
         Nation.FarmVoucher(false);

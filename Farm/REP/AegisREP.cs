@@ -1,7 +1,7 @@
 /*
-name: AegisREP
-description: null
-tags: null
+name: Aegis REP
+description: This script will farm Aegis REP to rank 10.
+tags: aegis, rep, reputation, farm
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

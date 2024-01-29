@@ -204,7 +204,7 @@ public class CitadelRuins
             Nation.FarmTaintedGem(7);
             Nation.Supplies("Claw of Nulgath");
 
-            Nation.ResetSindles();
+            Nation.ResetQuest(7551);
             while (!Bot.ShouldExit && !Core.CheckInventory("Dark Makai Sigil"))
             {
                 // Define the maps with their corresponding indexes

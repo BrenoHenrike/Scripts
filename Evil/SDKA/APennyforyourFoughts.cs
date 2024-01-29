@@ -1,7 +1,7 @@
 /*
-name: APennyforyourFoughts
-description: null
-tags: null
+name: A Penny For Your Foughts
+description: This script will farm Dark Spirit Orbs using "A Penny For Your Foughts" Quest.
+tags: dark spirit orbs, dso, penny, doomcoin, shadow creeper enchant, maul
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

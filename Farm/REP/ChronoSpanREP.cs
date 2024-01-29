@@ -1,7 +1,7 @@
 /*
-name: ChronoSpanREP
-description: null
-tags: null
+name: ChronoSpan REP
+description: This script will farm ChronoSpan reputation to rank 10.
+tags: chrono, span, timespace, reputation, rep, rank
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

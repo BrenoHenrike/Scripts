@@ -1,7 +1,7 @@
 /*
-name: ChaosMilitiaREP
-description: null
-tags: null
+name: Chaos Militia REP
+description: This script will farm Chaos Militia reputation to rank 10.
+tags: chaos, chaosmilitia, militia, rep, rank, farm, reputation
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

@@ -3,7 +3,6 @@ name: Army Totem And Gem
 description: Uses an army to farm Totems Of Nulgath or Gem of Nulgath from "voucher item totem of nulgath"
 tags: totems of nulgath, gem of nulgath, army, voucher item totem of nulgath
 */
-
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/Army/CoreArmyLite.cs

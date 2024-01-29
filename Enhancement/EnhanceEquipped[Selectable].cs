@@ -1,7 +1,7 @@
 /*
-name: EnhanceEquipped[Selectable]
-description: null
-tags: null
+name: Enhance Equipped [Selectable]
+description: This script will enhance equipped gear with selected enhancements.
+tags: enhance, enh, equipped, equip, gear, selectable, select
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

@@ -100,6 +100,11 @@ public class MergeTemplateHelper
         }
 
         List<ShopItem> shopItems = Core.GetShopItems(map, shopID);
+
+        shopItems = shopItems.GroupBy(item => item.ID)
+                             .Select(group => group.First())
+                             .ToList();
+
         string output = String.Empty;
         List<string> itemsToLearn = new();
         string scriptName = Bot.Shops.Name.Replace("Merge", "").Replace("merge", "").Replace("shop", "").Replace("Shop", "").Replace("'", "").Trim() + " Merge";
@@ -208,7 +213,7 @@ public class MergeTemplateHelper
         string[] content = new[] { scriptInfo }
                             .Concat(MergeTemplate[5..itemsIndex])
                             .Concat(new[] { output })
-                            .Concat(MergeTemplate[(MergeTemplate.Count() - 4)..(MergeTemplate.Count() - 1)])
+                            .Concat(MergeTemplate[(MergeTemplate.Length - 4)..(MergeTemplate.Length - 1)])
                             .Concat(shopItemNames.ToArray())
                             .Concat(new[] { "}" })
                             .ToArray();

@@ -11,6 +11,7 @@ tags: null
 //cs_include Scripts/Story/Nation/Originul.cs
 //cs_include Scripts/Story/Nation/Fiendshard.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
 
 public class SwirlingTheAbyss
 {
@@ -44,14 +45,23 @@ public class SwirlingTheAbyss
         "DeathLord Spines of Nulgath",
         "Deathless Wings of Nulgath",
     };
-    public void STA()
+
+    public void STA(string? item = null)
     {
-        Fiendshard.Fiendshard_Questline();
+        if (item != null && Core.CheckInventory(item))
+            return;
+
+
+        if (item != null)
+            Core.Logger($"Farming {item}.");
+        else Core.Logger("Farming Swirling the Abyss Quest Rewards.");
+        Fiendshard.Fiendshard_QuestlineP1();
         Core.AddDrop(Nation.bagDrops);
         Core.AddDrop(Rewards);
+        ItemBase? Item = Core.EnsureLoad(7899).Rewards.Find(x => x.Name == item);
 
         int i = 1;
-        while (!Bot.ShouldExit && !Core.CheckInventory(Rewards, toInv: false))
+        while (!Bot.ShouldExit && (Item != null ? !Core.CheckInventory(Item!.Name) : !Core.CheckInventory(Rewards, toInv: false)))
         {
             Nation.FarmBloodGem(10);
             Nation.FarmUni13(3);
@@ -61,10 +71,25 @@ public class SwirlingTheAbyss
             Nation.FarmVoucher(true);
 
             Core.EnsureAccept(7899);
-            Core.EnsureCompleteChoose(7899);
-            Core.ToBank(Rewards);
-            Core.Logger($"Completed x{i++}");
+
+            if (Item != null)
+            {
+                Core.EnsureComplete(7899, Item.ID);
+                Bot.Wait.ForPickup(Item!.Name);
+            }
+            else
+            {
+                Core.EnsureCompleteChoose(7899, Core.QuestRewards(7899));
+                foreach (string thing in Core.QuestRewards(7899))
+                    if (Bot.Drops.Exists(thing))
+                        Bot.Wait.ForPickup(thing);
+                Core.ToBank(Rewards);
+                Core.Logger($"Completed x{i++}.");
+            }
+
         }
+
+
     }
 
 }

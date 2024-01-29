@@ -1,6 +1,6 @@
 /*
 name: Beast Master Challenge Daily
-description: null
+description: This script does BeastMaster Challenge daily quest.
 tags: daily, beast master challenge
 */
 //cs_include Scripts/CoreBots.cs

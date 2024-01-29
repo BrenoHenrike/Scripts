@@ -1,5 +1,5 @@
 /*
-name: DarkWarLegionGold
+name: Dark War Legion Gold
 description: Gold farm using Dark War Legion Method
 tags: gold, farm, dark, war, legion
 */

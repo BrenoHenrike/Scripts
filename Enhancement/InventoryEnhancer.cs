@@ -1,7 +1,7 @@
 /*
-name: InventoryEnhancer
-description: null
-tags: null
+name: Inventory Enhancer
+description: This script will enhance all the items in your inventory with optimal enhancements.
+tags: inventory, enhance, enh
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

@@ -1,7 +1,7 @@
 /*
-name: SepulchuresOriginalHelm
-description: null
-tags: null
+name: Sepulchure's Original Helm
+description: This script will get Sepulchure's Original Helm.
+tags: sepulchure, original, helm, evil, gravelyn, doomfire, royal, shadowscythe, blade
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

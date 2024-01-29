@@ -99,7 +99,7 @@ public class VoidPaladin
             return;
 
         Core.AddDrop("Void Paladin");
-        Core.Logger("Starting [Deeper and Deeper into Darkness] Quest");
+        Core.Logger("Farming Void Paladin.");
 
         Core.EnsureAccept(5827);
 
