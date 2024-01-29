@@ -1804,7 +1804,7 @@ public class CoreNation
             {
                 Core.AddDrop("Yara's Sword");
                 Core.EnsureAccept(unidentifiedWeaponQuest);
-                Core.HuntMonster("battleundera", "Skeletal Warrior", "Unidentified Weapon", log: false);
+                Core.HuntMonster("battleundera", "Skeletal Warrior", "Unidentified Weapon", isTemp: false, log: false);
                 Core.EnsureComplete(unidentifiedWeaponQuest);
             }
 
