@@ -38,7 +38,7 @@ public class WrathofNulgath
         if (Core.CheckInventory("Wrath of Nulgath"))
             return;
 
-        DWLN.DarkWarNation();
+        DWLN.DoBoth();
 
         Core.Logger("Farming Wrath of Nulgath.");
 
