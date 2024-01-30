@@ -47,7 +47,7 @@ public class AssistingCragAndBamboozle
 
         Core.SetOptions();
 
-        AssistingCandB(logSparrow: true);
+        AssistingCandB(true);
 
         Core.SetOptions(false);
     }
