@@ -125,6 +125,7 @@ public class BeetleQuests
         }
         else
         {
+            Core.AddDrop(Core.QuestRewards(9078));
             foreach (ItemBase item in RewardOptions)
             {
                 Core.FarmingLogger(item.Name, item.MaxStack);
@@ -148,9 +149,9 @@ public class BeetleQuests
         TSM.BuyAllMerge("Beetle General Pet");
 
         List<ItemBase> RewardOptions = Core.EnsureLoad(9076).Rewards;
-        foreach (ItemBase item in RewardOptions)
-            Core.AddDrop(item.Name);
         RewardOptions.RemoveAll(item => item.Name == "Beetle EXP");
+        Core.AddDrop(Core.QuestRewards(9076));
+        
         foreach (ItemBase item in RewardOptions)
         {
             Core.FarmingLogger(item.Name, item.MaxStack);
