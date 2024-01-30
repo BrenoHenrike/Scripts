@@ -68,7 +68,7 @@ public class BloodTitanMerge
                     Core.EquipClass(ClassType.Farm);
                     Core.RegisterQuests(2908);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                        Core.HuntMonster("dwarfhold", "Albino Bat", "Bat Wing", 3);
+                        Core.KillMonster("dwarfhold", "Enter", "Spawn", "*", "Bat Wing", 3);
                     Core.CancelRegisteredQuests();
                     break;
 
