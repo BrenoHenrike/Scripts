@@ -1416,6 +1416,7 @@ public class CoreNation
         {
             if (farmUni13 && !Core.CheckInventory("Unidentified 13"))
                 FarmUni13(3);
+            ResetQuest(870);
             Core.EnsureAccept(870);
             Core.KillMonster("tercessuinotlim", "m4", "Top,", "Shadow of Nulgath", "Blade Master Rune", log: false);
             Core.EnsureComplete(870, (int)rewardEnum);
