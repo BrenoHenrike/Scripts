@@ -17536,7 +17536,7 @@
       "null"
     ],
     "path": "Evil/SDKA/CoreSDKA.cs",
-    "size": 25610,
+    "size": 25820,
     "fileName": "CoreSDKA.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/SDKA/CoreSDKA.cs"
   },
@@ -21235,12 +21235,15 @@
   },
   {
     "name": "BloodTitan[Mem]",
-    "description": "null",
+    "description": "farms Bt then gets and ranks the blood titan class if you'r a member",
     "tags": [
-      "null"
+      "blood titan",
+      "blood titan tokens",
+      "member",
+      "class"
     ],
     "path": "Other/Classes/Members-CLasses/BloodTitan[Mem].cs",
-    "size": 1837,
+    "size": 1943,
     "fileName": "BloodTitan[Mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/Members-CLasses/BloodTitan[Mem].cs"
   },
