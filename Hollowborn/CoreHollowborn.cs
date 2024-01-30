@@ -63,12 +63,20 @@ public class CoreHollowborn
 
         Farm.Experience(50);
 
-        Core.AddDrop("Unidentified 36", "Fresh Soul");
+        Core.AddDrop("Unidentified 36");
+        // "Fresh Soul"
+        Core.AddDrop(52588);
         Core.RegisterQuests(7293);
-        while (!Bot.ShouldExit && (!Core.CheckInventory("Unidentified 36", Uni36Quant) || !Core.CheckInventory("Fresh Soul", FSQuant)))
+
+        if (FSQuant > 0)
+            Core.FarmingLogger("Fresh Soul", FSQuant);
+        if (Uni36Quant > 0)
+            Core.FarmingLogger("Unidentified 36", Uni36Quant);
+            
+        while (!Bot.ShouldExit && (!Core.CheckInventory("Unidentified 36", Uni36Quant) || !Core.CheckInventory(52588, FSQuant)))
         {
             Core.HuntMonster("citadel", "Inquisitor Guard", "Fresh Soul?", 10, log: false);
-            Bot.Wait.ForPickup("Fresh Soul");
+            Bot.Wait.ForPickup(52588);
         }
         Core.CancelRegisteredQuests();
     }

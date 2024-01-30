@@ -37,7 +37,9 @@ public class BeetleQuests
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Beetle Warlord Pet", "Beetle General Pet", "Beetle EXP" });
+        if (Bot.Config!.Get<bool>("GetCosmetics"))
+            Core.BankingBlackList.AddRange(Core.QuestRewards(9077, 9078));
+        else Core.BankingBlackList.AddRange(new[] { "Beetle Warlord Pet", "Beetle General Pet", "Beetle EXP" });
         Core.SetOptions();
 
         if (Bot.Config!.Get<bool>("GetCosmetics"))
@@ -67,7 +69,8 @@ public class BeetleQuests
             return;
         }
 
-        TSM.BuyAllMerge("Beetle General Pet");
+        if (!Core.CheckInventory(75653))
+            TSM.BuyAllMerge("Beetle General Pet");
 
         if (!Core.CheckInventory(75663))
         {
@@ -94,6 +97,7 @@ public class BeetleQuests
 
         Core.AddDrop("Baby Chaos Dragon", "Reaper's Soul");
         List<ItemBase> RewardOptions = Core.EnsureLoad(9078).Rewards;
+        RewardOptions.RemoveAll(item => item.Name == "Beetle EXP");
 
         if (!string.IsNullOrEmpty(rewardItemName))
         {
@@ -105,11 +109,8 @@ public class BeetleQuests
             }
 
             Core.AddDrop(rewardItem.Name);
-            int rewardItemQuantity = Bot.Inventory.GetItem(rewardItem.ID)?.Quantity ?? 0;
 
-            if (rewardItemQuantity >= 1)
-                return;
-
+            Core.FarmingLogger(rewardItem.Name, rewardItem.MaxStack);
             while (!Bot.ShouldExit && !Core.CheckInventory(rewardItem.ID, quant))
             {
                 Core.EnsureAccept(9078);
@@ -126,6 +127,7 @@ public class BeetleQuests
         {
             foreach (ItemBase item in RewardOptions)
             {
+                Core.FarmingLogger(item.Name, item.MaxStack);
                 while (!Bot.ShouldExit && !Core.CheckInventory(item.ID, item.MaxStack))
                 {
                     Core.EnsureAccept(9078);
@@ -148,8 +150,10 @@ public class BeetleQuests
         List<ItemBase> RewardOptions = Core.EnsureLoad(9076).Rewards;
         foreach (ItemBase item in RewardOptions)
             Core.AddDrop(item.Name);
+        RewardOptions.RemoveAll(item => item.Name == "Beetle EXP");
         foreach (ItemBase item in RewardOptions)
         {
+            Core.FarmingLogger(item.Name, item.MaxStack);
             while (!Bot.ShouldExit && !Core.CheckInventory(item.ID, toInv: false))
             {
                 Core.EnsureAccept(9076);
