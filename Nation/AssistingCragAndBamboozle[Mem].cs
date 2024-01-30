@@ -21,7 +21,7 @@ public class AssistingCragAndBamboozle
     public CoreDailies Daily = new();
     public CoreNation Nation = new();
 
-    readonly Rewards[] rewardsToCheck = { Rewards.Sword_of_Nulgath, Rewards.Gem_of_Nulgath, Rewards.Tainted_Gem, Rewards.Dark_Crystal_Shard, Rewards.Diamond_of_Nulgath };
+    readonly Rewards[] rewardsToCheck = (Rewards[])Enum.GetValues(typeof(Rewards));
     readonly string[] ACaBItems = {
                     "Sword of Nulgath", "Gem of Nulgath", "Tainted Gem", "Dark Crystal Shard", "Diamond of Nulgath",
                     "Totem of Nulgath", "Blood Gem of the Archfiend", "Unidentified 19", "Elders' Blood", "Voucher of Nulgath",
@@ -83,14 +83,15 @@ public class AssistingCragAndBamboozle
             if (!Core.CheckInventory("Tendurrr The Assistant"))
                 Core.KillMonster("tercessuinotlim", "m2", "Left", "*", "Tendurrr The Assistant", isTemp: false);
 
-            Nation.EssenceofNulgath(20);
             if (!Core.CheckInventory("Sparrow's Blood"))
                 Daily.SparrowsBlood();
+            Nation.EssenceofNulgath(20);
             Nation.ApprovalAndFavor(100, 100);
 
             //medal required to get seals
             Nation.NationRound4Medal();
-            Core.Logger("Accepting \"Nation Recruits: Seal Your Fate[4748]\" to allow \"Fiend Seal\" to drop.");
+            Core.Logger("Accepting \"Nation Recruits: Seal Your Fate[4748]\"\n" +
+            "to allow \"Fiend Seal\" to drop.");
             Core.EnsureAccept(4748);
             Core.HuntMonster("shadowblast", "Legion Fenrir", "Fiend Seal", 10, isTemp: false);
 
