@@ -446,11 +446,11 @@ public class CoreArchMage
             ArcaneLocus(1);
 
         Core.FarmingLogger("Unbound Tome", quant);
-        int MaterialsQuant = quant - (Bot.Inventory.Items.FirstOrDefault(x => x.Name == "Unbound Tome")?.Quantity ?? 0);
+        // int MaterialsQuant = quant - (Bot.Inventory.Items.FirstOrDefault(x => x.Name == "Unbound Tome")?.Quantity ?? 0);
 
-        MysticScribingKit(MaterialsQuant);
-        PrismaticEther(MaterialsQuant);
-        ArcaneLocus(MaterialsQuant);
+        MysticScribingKit(quant);
+        PrismaticEther(quant);
+        ArcaneLocus(quant);
 
 
         Core.AddDrop("Unbound Tome");
