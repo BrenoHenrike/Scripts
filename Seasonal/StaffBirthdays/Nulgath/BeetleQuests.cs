@@ -97,7 +97,7 @@ public class BeetleQuests
 
         if (!string.IsNullOrEmpty(rewardItemName))
         {
-            ItemBase? rewardItem = RewardOptions.Find(item => item.Name.Equals(rewardItemName, StringComparison.OrdinalIgnoreCase));
+            ItemBase? rewardItem = RewardOptions.FirstOrDefault(x => x.Name == rewardItemName);
             if (rewardItem == null)
             {
                 Core.Logger("The specified reward item name is not available as a reward.");
@@ -110,7 +110,7 @@ public class BeetleQuests
             if (rewardItemQuantity >= 1)
                 return;
 
-            while (rewardItemQuantity < quant)
+            while (!Bot.ShouldExit && !Core.CheckInventory(rewardItem.ID, quant))
             {
                 Core.EnsureAccept(9078);
                 Nation.FarmTotemofNulgath(1);
@@ -120,17 +120,13 @@ public class BeetleQuests
                 Core.HuntMonster("thevoid", "Reaper", "Reaper's Soul", isTemp: false);
                 Core.EnsureComplete(9078, rewardItem.ID);
                 Core.ToBank(rewardItem.ID);
-
-                rewardItemQuantity = Bot.Inventory.GetItem(rewardItem.ID)?.Quantity ?? 0;
             }
         }
         else
         {
             foreach (ItemBase item in RewardOptions)
             {
-                int itemQuantity = Bot.Inventory.GetItem(item.ID)?.Quantity ?? 0;
-
-                while (itemQuantity < item.MaxStack)
+                while (!Bot.ShouldExit && !Core.CheckInventory(item.ID, item.MaxStack))
                 {
                     Core.EnsureAccept(9078);
                     Nation.FarmTotemofNulgath(1);
@@ -140,8 +136,6 @@ public class BeetleQuests
                     Core.HuntMonster("thevoid", "Reaper", "Reaper's Soul", isTemp: false);
                     Core.EnsureComplete(9078, item.ID);
                     Core.ToBank(item.ID);
-
-                    itemQuantity = Core.CheckInventory(item.ID, toInv: false) ? Bot.Inventory.GetItem(item.ID)?.Quantity ?? 0 : item.MaxStack;
                 }
             }
         }
