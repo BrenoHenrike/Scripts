@@ -8,6 +8,7 @@ tags: story, quest, banished
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/Story/QueenofMonsters/CoreQOM.cs
 using Skua.Core.Interfaces;
 
 public class Banished
@@ -18,7 +19,7 @@ public class Banished
     public CoreAdvanced Adv = new CoreAdvanced();
     public CoreStory Story = new CoreStory();
     public CoreDailies Daily = new();
-
+    private CoreQOM CoreQOM = new();
 
     public string[] QuestDrops = { "Diabolical Tome Pet", "Diabolical Tome Cape" };
 
@@ -145,7 +146,8 @@ public class Banished
             return;
 
         HikarisQuests();
-
+        CoreQOM.TheBook();
+        
         Story.PreLoad(this);
 
         //Recover and Recycle (9040)
@@ -154,11 +156,11 @@ public class Banished
         //Tormented Fang Uncleansed Grove (9041)
         Core.EquipClass(ClassType.Solo);
         Story.KillQuest(9041, "deepforest", "Aberrant Horror");
-        Core.EquipClass(ClassType.Farm);
 
         //Slice of Life (9042)
         if (!Story.QuestProgression(9042))
         {
+            Core.EquipClass(ClassType.Farm);
             Core.EnsureAccept(9042, 739);
             Core.AddDrop("Racing Trophy");
             while (!Bot.ShouldExit && !Core.CheckInventory("Racing Trophy", 20))
