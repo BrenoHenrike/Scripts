@@ -2083,7 +2083,7 @@
       "banished"
     ],
     "path": "Story/Banished.cs",
-    "size": 5144,
+    "size": 5273,
     "fileName": "Banished.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Banished.cs"
   },
@@ -2098,7 +2098,7 @@
       "ira"
     ],
     "path": "Story/LostVilla.cs",
-    "size": 2212,
+    "size": 2342,
     "fileName": "LostVilla.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/LostVilla.cs"
   },
@@ -15059,7 +15059,7 @@
       "mergeshop"
     ],
     "path": "Other/MergeShops/Adam1a1Merge.cs",
-    "size": 11732,
+    "size": 11786,
     "fileName": "Adam1a1Merge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/Adam1a1Merge.cs"
   },
