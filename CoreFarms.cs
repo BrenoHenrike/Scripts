@@ -313,6 +313,8 @@ public class CoreFarms
             ToggleBoost(BoostType.Class);
         Core.ToggleAggro(true);
         Core.SavedState();
+        if (NotYetLevel(level) && Bot.Player.Level < 100)
+            ToggleBoost(BoostType.Experience, true);
 
         //Between level 1 and 5
         while (NotYetLevel(5))
@@ -378,6 +380,7 @@ public class CoreFarms
 
         if (rankUpClass)
             ToggleBoost(BoostType.Class, false);
+        ToggleBoost(BoostType.Experience, false);
 
         bool NotYetLevel(int _level)
         {
