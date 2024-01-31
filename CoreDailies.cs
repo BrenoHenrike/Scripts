@@ -566,6 +566,40 @@ public class CoreDailies
         Core.ToBank("Diamond of Nulgath", "Blood Gem of the Archfiend");
     }
 
+  public void TenacityChallenge(string? item = null)
+    {
+        if (!Core.CheckInventory("Nulgath Challenge Pet") || !CheckDaily(3319))
+        {
+            Core.Logger(!CheckDaily(3319) ? "Daily Not Avaiable" : "You Don't Have \"Nulgath Challenge Pet\". Pet is required for doing the quests.");
+            return;
+        }
+        Core.Logger("Daily: Tenacity Challenge");
+        Core.EquipClass(ClassType.Farm);
+        Core.AddDrop(Core.QuestRewards(3319));
+        Core.EnsureAccept(3319);
+        Core.HuntMonster("deathpits", "Ghastly Darkblood", "Dark Runes", 6);
+        Core.HuntMonster("evilwardage", "Bloodfiend", "Blood Runes", 7);
+        if (item != null)
+            Core.EnsureCompleteChoose(3319, new[] { item });
+        if (!Core.CheckInventory("Blood Gem of the Archfiend", 100))
+            Core.EnsureComplete(3319, 22332);
+        else
+        {
+            foreach (ItemBase Item in Bot.Quests.EnsureLoad(3319)!.Rewards)
+            {
+                if (Core.CheckInventory(Item.ID, Item.MaxStack))
+                    continue;
+
+                else
+                {
+                    Core.EnsureComplete(3319, Item.ID);
+                    break;
+                }
+            }
+        }
+        Core.ToBank("Tained Gem", "Dark Crystal Shard", "Blood Gem of the Archfiend");
+    }
+
     public void EldersBlood()
     {
         Core.Logger("Daily: Elders' Blood");
