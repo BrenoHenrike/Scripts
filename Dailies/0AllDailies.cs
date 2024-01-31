@@ -106,6 +106,7 @@ public class FarmAllDailies
             Daily.CyserosSuperHammer();
             Daily.BrightKnightArmor();
             Daily.GrumbleGrumble();
+            Daily.TenacityChallenge();
             Daily.MonthlyTreasureChestKeys();
             Daily.BallyhooAdRewards();
             Daily.PowerGem();
