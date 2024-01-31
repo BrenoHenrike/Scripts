@@ -50,7 +50,7 @@
       "null"
     ],
     "path": "CoreDailies.cs",
-    "size": 48747,
+    "size": 50067,
     "fileName": "CoreDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreDailies.cs"
   },
@@ -2647,6 +2647,22 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/BeastMasterChallenge[Mem].cs"
   },
   {
+    "name": "Tenacity Challenge",
+    "description": "Farms the quest Tenacity Challenge to get Tainted Gems, Dark Crystal Shards and Blood Gem of the Archfiend (requires Nulgath Challenge Pet)",
+    "tags": [
+      "nation",
+      "tainted gem",
+      "dark crystal shard",
+      "blood gem of the archfiend",
+      "nulgath challenge pet",
+      "daily"
+    ],
+    "path": "Dailies/TenacityChallenge.cs",
+    "size": 724,
+    "fileName": "TenacityChallenge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/TenacityChallenge.cs"
+  },
+  {
     "name": "Elders Blood Daily",
     "description": "Elders Blood",
     "tags": [
@@ -2755,7 +2771,7 @@
       "all"
     ],
     "path": "Dailies/0AllDailies.cs",
-    "size": 4224,
+    "size": 4264,
     "fileName": "0AllDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/0AllDailies.cs"
   },
@@ -2887,21 +2903,6 @@
     "size": 6374,
     "fileName": "AssistingCragAndBamboozle[Mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/AssistingCragAndBamboozle[Mem].cs"
-  },
-  {
-    "name": "Tenacity Challenge",
-    "description": "Farms the quest Tenacity Challenge to get Tainted Gems, Dark Crystal Shards and Blood Gem of the Archfiend (requires Nulgath Challenge Pet)",
-    "tags": [
-      "nation",
-      "tainted gem",
-      "dark crystal shard",
-      "blood gem of the archfiend",
-      "nulgath challenge pet"
-    ],
-    "path": "Nation/TenacityChallenge.cs",
-    "size": 1619,
-    "fileName": "TenacityChallenge.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/TenacityChallenge.cs"
   },
   {
     "name": "Contract Exchange",
