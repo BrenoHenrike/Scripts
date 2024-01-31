@@ -2799,13 +2799,16 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/DirtyDeedsDoneDirtCheap.cs"
   },
   {
-    "name": "KisstheVoid",
-    "description": "null",
+    "name": "Kiss The Void",
+    "description": "This bot will farm Blood Gem of the Archfiend and also the Betrayals (if needed)",
     "tags": [
-      "null"
+      "betrayal",
+      "blood",
+      "gem",
+      "archfiend"
     ],
     "path": "Nation/KisstheVoid.cs",
-    "size": 1421,
+    "size": 3203,
     "fileName": "KisstheVoid.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/KisstheVoid.cs"
   },
@@ -3007,7 +3010,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 92875,
+    "size": 93116,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
