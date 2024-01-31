@@ -2658,7 +2658,7 @@
       "daily"
     ],
     "path": "Dailies/TenacityChallenge.cs",
-    "size": 724,
+    "size": 728,
     "fileName": "TenacityChallenge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/TenacityChallenge.cs"
   },
@@ -2799,16 +2799,13 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/DirtyDeedsDoneDirtCheap.cs"
   },
   {
-    "name": "Kiss The Void",
-    "description": "This bot will farm Blood Gem of the Archfiend and also the Betrayals (if needed)",
+    "name": "KisstheVoid",
+    "description": "null",
     "tags": [
-      "betrayal",
-      "blood",
-      "gem",
-      "archfiend"
+      "null"
     ],
     "path": "Nation/KisstheVoid.cs",
-    "size": 3203,
+    "size": 1421,
     "fileName": "KisstheVoid.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/KisstheVoid.cs"
   },
@@ -3010,7 +3007,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 93116,
+    "size": 92875,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
