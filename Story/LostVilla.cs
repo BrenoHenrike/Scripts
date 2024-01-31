@@ -8,7 +8,8 @@ tags: lostvilla,diabolical,story,hikari,ira
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/Story\Banished.cs
+//cs_include Scripts/Story/Banished.cs
+//cs_include Scripts/Story/QueenofMonsters/CoreQOM.cs
 using Skua.Core.Interfaces;
 
 public class LostVilla
@@ -17,6 +18,7 @@ public class LostVilla
     private CoreBots Core => CoreBots.Instance;
     private CoreStory Story = new();
     private Banished Ban = new();
+    private CoreQOM CoreQOM = new();
 
     public void ScriptMain(IScriptInterface Bot)
     {
@@ -31,7 +33,8 @@ public class LostVilla
     {
         if (Core.isCompletedBefore(9570))
             return;
-
+            
+        CoreQOM.TheBook();
         Ban.HimisQuests();
 
         Story.PreLoad(this);

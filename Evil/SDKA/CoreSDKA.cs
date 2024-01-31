@@ -201,7 +201,7 @@ public class CoreSDKA
 
         Core.FarmingLogger("Dark Spirit Orb", quant);
 
-        Core.RegisterQuests(2089);
+        // Core.RegisterQuests(2089);
         while (!Bot.ShouldExit && (!Core.CheckInventory("Dark Spirit Orb", quant)))
         {
             while (!Bot.ShouldExit && Bot.Map.Name != "maul")
@@ -222,6 +222,10 @@ public class CoreSDKA
                     Bot.Combat.Attack(mob);
                     if (Core.CheckInventory("Dark Spirit Orb", quant))
                         break;
+                    //purely because registerquest is a bit borked
+                    while (!Bot.ShouldExit && Bot.Quests.CanCompleteFullCheck(2089))
+                        Core.ChainComplete(2089);
+
                 }
 
             if (oneTime)

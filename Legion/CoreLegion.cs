@@ -103,7 +103,8 @@ public class CoreLegion
             Core.HuntMonster("lair", "Red Dragon", "Red Dragon's Fang");
             //Adv.BestGear(RacialGearBoost.Human);
             Core.HuntMonster("bloodtitan", "Blood Titan", "Blood Titan's Blade", publicRoom: true);
-            Bot.Drops.Pickup("Legion Token", "Diamond Token of Dage");
+            foreach (string drop in new[] { "Legion Token", "Diamond Token of Dage" })
+                Bot.Wait.ForPickup(drop);
         }
         Core.CancelRegisteredQuests();
     }
@@ -683,6 +684,10 @@ public class CoreLegion
         Core.EquipClass(ClassType.Solo);
         // Core.Logger($"Farming {quant} {item}. SoloBoss = {canSoloBoss}");
 
+        int ExitAttempt = 1;
+        int Death = 1;
+
+    Start:
         while (!Bot.ShouldExit &&
                 !Core.CheckInventory("Legion Combat Trophy", TrophyQuant) ||
                 !Core.CheckInventory("Technique Observed", TechniqueQuant) ||
@@ -722,9 +727,15 @@ public class CoreLegion
                         Core.Logger("Blade Masters killed, moving on.");
                         break;
                     }
+                    if (!Bot.Player.Alive)
+                        goto RestartOnDeath;
                 }
+                if (!Bot.Player.Alive)
+                    goto RestartOnDeath;
 
                 Core.PvPMove(20, "r11", 943, 391);
+                if (!Bot.Player.Alive)
+                    goto RestartOnDeath;
 
                 while (!Bot.ShouldExit)
                 {
@@ -739,13 +750,25 @@ public class CoreLegion
                         break;
                     }
                 }
+                if (!Bot.Player.Alive)
+                    goto RestartOnDeath;
 
                 Core.PvPMove(21, "r10", 9, 397);
+                if (!Bot.Player.Alive)
+                    goto RestartOnDeath;
                 Core.PvPMove(19, "r7", 7, 392);
+                if (!Bot.Player.Alive)
+                    goto RestartOnDeath;
                 Core.PvPMove(14, "r6", 482, 483);
+                if (!Bot.Player.Alive)
+                    goto RestartOnDeath;
             }
+            if (!Bot.Player.Alive)
+                goto RestartOnDeath;
 
             Core.PvPMove(12, "r12", 758, 338);
+            if (!Bot.Player.Alive)
+                goto RestartOnDeath;
 
             while (!Bot.ShouldExit && !canSoloBoss)
             {
@@ -759,9 +782,15 @@ public class CoreLegion
                     Core.Logger("Blade Masters killed, moving on.");
                     break;
                 }
+                if (!Bot.Player.Alive)
+                    goto RestartOnDeath;
             }
+            if (!Bot.Player.Alive)
+                goto RestartOnDeath;
 
             Core.PvPMove(23, "r13", 933, 394);
+            if (!Bot.Player.Alive)
+                goto RestartOnDeath;
 
             while (!Bot.ShouldExit && !canSoloBoss)
             {
@@ -775,9 +804,15 @@ public class CoreLegion
                     Core.Logger("Legion Guards killed, moving on.");
                     break;
                 }
+                if (!Bot.Player.Alive)
+                    goto RestartOnDeath;
             }
+            if (!Bot.Player.Alive)
+                goto RestartOnDeath;
 
             Core.PvPMove(25, "r14", 846, 181);
+            if (!Bot.Player.Alive)
+                goto RestartOnDeath;
 
             while (!Bot.ShouldExit && !canSoloBoss)
             {
@@ -791,9 +826,15 @@ public class CoreLegion
                     Core.Logger("Legion Guards killed, moving on.");
                     break;
                 }
+                if (!Bot.Player.Alive)
+                    goto RestartOnDeath;
             }
+            if (!Bot.Player.Alive)
+                goto RestartOnDeath;
 
             Core.PvPMove(28, "r15", 941, 348);
+            if (!Bot.Player.Alive)
+                goto RestartOnDeath;
 
             while (!Bot.ShouldExit)
             {
@@ -805,7 +846,11 @@ public class CoreLegion
                     Core.Logger("Dage the Evil, getting trophies.");
                     break;
                 }
+                if (!Bot.Player.Alive)
+                    goto RestartOnDeath;
             }
+            if (!Bot.Player.Alive)
+                goto RestartOnDeath;
 
             Bot.Wait.ForDrop("Legion Combat Trophy", 40);
             Core.Sleep();
@@ -813,38 +858,45 @@ public class CoreLegion
 
             Core.Logger("Delaying exit");
             Core.Sleep(7500);
+            goto Exit;
 
-            while (Bot.Map.Name != "battleon")
+
+        Exit:
+            while (!Bot.ShouldExit && Bot.Map.Name != "battleon")
             {
-                int i = 1;
-                Core.Logger($"Attemping Exit {i++}.");
-                Core.Join("battleon-999999");
+                Core.Logger($"Attempting Exit {ExitAttempt++}.");
+                Bot.Map.Join("battleon-999999");
+                Bot.Combat.CancelTarget();
+                Bot.Wait.ForCombatExit();
                 Core.Sleep(1500);
+                if (Bot.Map.Name != "battleon")
+                    Core.Logger("Failed!? HOW.. try agian");
+                else Core.Logger("Successful!");
+                goto Start;
             }
+
+        RestartOnDeath:
+            Core.Logger($"Death: {Death++}, resetting");
+            while (!Bot.ShouldExit && !Bot.Player.Alive)
+            {
+                Bot.Wait.ForTrue(() => Bot.Player.Alive, 100);
+                Bot.Wait.ForCellChange("Enter0");
+                Core.Logger($"Attempting Exit {ExitAttempt++}.");
+                Bot.Map.Join("battleon-999999");
+                Bot.Wait.ForMapLoad("battleon");
+                Core.Sleep(1500);
+                if (Bot.Map.Name != "battleon")
+                    Core.Logger("Failed!? HOW.. try agian");
+                else
+                {
+                    Core.Logger("Successful!");
+                    goto Start;
+                }
+            }
+
+            Core.Logger($"Deaths:[{Death}]");
+            Death = 0;
+            ExitAttempt = 0;
         }
     }
-    // Bot.Events.PlayerDeath -= PVPDeath;
-
-
-    // private void PVPDeath()
-    // {
-    //     Core.DebugLogger(this);
-    //     Bot.Wait.ForCellChange("Enter0");
-    //     Core.DebugLogger(this);
-
-    //     Core.Logger("Player Died in PvP, resetting");
-    //     Core.DebugLogger(this);
-    //     while (!Bot.ShouldExit && !Bot.Player.Alive)
-    //     {
-    //         Core.DebugLogger(this);
-    //         Bot.Wait.ForTrue(() => Bot.Player.Alive, 20);
-    //     }
-    //     Core.DebugLogger(this);
-    //     Core.Sleep(2500);
-    //     Core.DebugLogger(this);
-    //     Bot.Map.Join("battleon-999999");
-    //     Core.DebugLogger(this);
-    //     BludrutBrawlBoss();
-    //     Core.DebugLogger(this);
-    // }
 }

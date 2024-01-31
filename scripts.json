@@ -50,7 +50,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 112550,
+    "size": 115383,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -654,7 +654,7 @@
       "null"
     ],
     "path": "Hollowborn/CoreHollowborn.cs",
-    "size": 2129,
+    "size": 2339,
     "fileName": "CoreHollowborn.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/CoreHollowborn.cs"
   },
@@ -690,7 +690,7 @@
       "null"
     ],
     "path": "Nation/AssistingCragAndBamboozle[Mem].cs",
-    "size": 3673,
+    "size": 6374,
     "fileName": "AssistingCragAndBamboozle[Mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/AssistingCragAndBamboozle[Mem].cs"
   },
@@ -1455,7 +1455,7 @@
       "null"
     ],
     "path": "Legion/CoreLegion.cs",
-    "size": 31558,
+    "size": 33626,
     "fileName": "CoreLegion.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/CoreLegion.cs"
   },
@@ -2083,7 +2083,7 @@
       "banished"
     ],
     "path": "Story/Banished.cs",
-    "size": 5144,
+    "size": 5273,
     "fileName": "Banished.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Banished.cs"
   },
@@ -2098,7 +2098,7 @@
       "ira"
     ],
     "path": "Story/LostVilla.cs",
-    "size": 2212,
+    "size": 2342,
     "fileName": "LostVilla.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/LostVilla.cs"
   },
@@ -3923,7 +3923,7 @@
       "null"
     ],
     "path": "Good/BLoD/CoreBLOD.cs",
-    "size": 22238,
+    "size": 22230,
     "fileName": "CoreBLOD.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/CoreBLOD.cs"
   },
@@ -4720,7 +4720,7 @@
       "null"
     ],
     "path": "Nation/OblivionBlade(RareandNot)/CoreOblivionBladeofNulgath.cs",
-    "size": 7424,
+    "size": 7433,
     "fileName": "CoreOblivionBladeofNulgath.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/OblivionBlade(RareandNot)/CoreOblivionBladeofNulgath.cs"
   },
@@ -4895,7 +4895,7 @@
       "null"
     ],
     "path": "Nation/VHL/CoreVHL.cs",
-    "size": 6026,
+    "size": 6532,
     "fileName": "CoreVHL.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/VHL/CoreVHL.cs"
   },
@@ -14320,7 +14320,7 @@
       "weapon"
     ],
     "path": "Other/Weapons/WrathofNulgath.cs",
-    "size": 2433,
+    "size": 2426,
     "fileName": "WrathofNulgath.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Weapons/WrathofNulgath.cs"
   },
@@ -15059,7 +15059,7 @@
       "mergeshop"
     ],
     "path": "Other/MergeShops/Adam1a1Merge.cs",
-    "size": 11732,
+    "size": 11786,
     "fileName": "Adam1a1Merge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/Adam1a1Merge.cs"
   },
@@ -15401,7 +15401,7 @@
       "null"
     ],
     "path": "Other/MergeShops/BloodTitanMerge[mem].cs",
-    "size": 2996,
+    "size": 3005,
     "fileName": "BloodTitanMerge[mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/BloodTitanMerge[mem].cs"
   },
@@ -17536,7 +17536,7 @@
       "null"
     ],
     "path": "Evil/SDKA/CoreSDKA.cs",
-    "size": 25610,
+    "size": 25820,
     "fileName": "CoreSDKA.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/SDKA/CoreSDKA.cs"
   },
@@ -18345,7 +18345,7 @@
       "nulgath"
     ],
     "path": "Seasonal/StaffBirthdays/Nulgath/BeetleQuests.cs",
-    "size": 6228,
+    "size": 6310,
     "fileName": "BeetleQuests.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/Nulgath/BeetleQuests.cs"
   },
@@ -21218,7 +21218,7 @@
       "null"
     ],
     "path": "Other/Classes/ArchMage/CoreArchMage.cs",
-    "size": 21831,
+    "size": 21799,
     "fileName": "CoreArchMage.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/ArchMage/CoreArchMage.cs"
   },
@@ -21235,12 +21235,15 @@
   },
   {
     "name": "BloodTitan[Mem]",
-    "description": "null",
+    "description": "farms Bt then gets and ranks the blood titan class if you'r a member",
     "tags": [
-      "null"
+      "blood titan",
+      "blood titan tokens",
+      "member",
+      "class"
     ],
     "path": "Other/Classes/Members-CLasses/BloodTitan[Mem].cs",
-    "size": 1837,
+    "size": 1943,
     "fileName": "BloodTitan[Mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/Members-CLasses/BloodTitan[Mem].cs"
   },

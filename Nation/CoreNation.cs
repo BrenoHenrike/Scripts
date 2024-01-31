@@ -319,18 +319,9 @@ public class CoreNation
 
         Core.AddDrop("Nulgath's Approval", "Archfiend's Favor");
 
-        bool shouldLog = true;
-        if (quantApproval > 0 && quantFavor > 0)
-        {
-            Core.Logger($"Farming Nulgath's Approval ({Bot.Inventory.GetQuantity("Nulgath's Approval")}/{quantApproval}) " +
-                            $"and Archfiend's Favor ({Bot.Inventory.GetQuantity("Archfiend's Favor")}/{quantFavor})");
-            shouldLog = false;
-        }
-
         Core.EquipClass(ClassType.Farm);
-
-        Core.KillMonster("evilwarnul", "r2", "Down", "*", "Nulgath's Approval", quantApproval, false, shouldLog);
-        Core.KillMonster("evilwarnul", "r2", "Down", "*", "Archfiend's Favor", quantFavor, false, shouldLog);
+        Core.KillMonster("evilwarnul", "r2", "Down", "*", "Nulgath's Approval", quantApproval, false);
+        Core.KillMonster("evilwarnul", "r2", "Down", "*", "Archfiend's Favor", quantFavor, false);
     }
 
     /// <summary>
@@ -1425,6 +1416,7 @@ public class CoreNation
         {
             if (farmUni13 && !Core.CheckInventory("Unidentified 13"))
                 FarmUni13(3);
+            ResetQuest(870);
             Core.EnsureAccept(870);
             Core.KillMonster("tercessuinotlim", "m4", "Top,", "Shadow of Nulgath", "Blade Master Rune", log: false);
             Core.EnsureComplete(870, (int)rewardEnum);
