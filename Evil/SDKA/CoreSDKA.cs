@@ -201,7 +201,7 @@ public class CoreSDKA
 
         Core.FarmingLogger("Dark Spirit Orb", quant);
 
-        Core.RegisterQuests(2089);
+        // Core.RegisterQuests(2089);
         while (!Bot.ShouldExit && (!Core.CheckInventory("Dark Spirit Orb", quant)))
         {
             while (!Bot.ShouldExit && Bot.Map.Name != "maul")
@@ -222,6 +222,10 @@ public class CoreSDKA
                     Bot.Combat.Attack(mob);
                     if (Core.CheckInventory("Dark Spirit Orb", quant))
                         break;
+                    //purely because registerquest is a bit borked
+                    while (!Bot.ShouldExit && Bot.Quests.CanCompleteFullCheck(2089))
+                        Core.ChainComplete(2089);
+
                 }
 
             if (oneTime)
@@ -615,17 +619,17 @@ public class CoreSDKA
 
         Core.AddDrop("Dark Energy", "Dark Spirit Orb", "Corrupt Spirit Orb", "Ominous Aura", "Diabolical Aura", "Doom Aura");
 
-        Core.RegisterQuests(quest);
         Core.EquipClass(ClassType.Farm);
 
         // Process each item individually
         for (int i = 0; i < items.Length; i++)
         {
             Core.FarmingLogger(items[i], quants[i]);
-
             while (!Bot.ShouldExit && !Core.CheckInventory(items[i], quants[i]))
             {
+                Core.EnsureAccept(quest);
                 Core.KillMonster("lycan", "r4", "Left", "*", "DoomKnight Armor Piece", 10, log: false);
+                Core.EnsureComplete(quest);
                 Bot.Wait.ForPickup(items[i]);
             }
         }

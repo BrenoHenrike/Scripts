@@ -33,6 +33,21 @@ public class KisstheVoid
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
+        //blades:
+        foreach (string item in new[] {
+        "1st Betrayal Blade of Nulgath",
+        "2nd Betrayal Blade of Nulgath",
+        "3rd Betrayal Blade of Nulgath",
+        "4th Betrayal Blade of Nulgath",
+        "5th Betrayal Blade of Nulgath",
+        "6th Betrayal Blade of Nulgath",
+        "7th Betrayal Blade of Nulgath",
+        "8th Betrayal Blade of Nulgath"
+    })
+        {
+            Core.AddDrop(betrayalBlades);
+            Nation.KisstheVoid(1, item);
+        }
 
         FarmSelected();
 

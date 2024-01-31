@@ -75,7 +75,7 @@ public class TitanStrikeGearMerge
                     if (Core.isCompletedBefore(8776))
                         Core.Logger($"{req.Name} is obtained from a One-Time only quest that you have already completed. Please check your BuyBack", messageBox: true, stopBot: true);
 
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
                     Core.EnsureAccept(8776);
                     Core.HuntMonster("titanstrike", "Titanic Paladin", "Paladin Punished");
@@ -87,7 +87,7 @@ public class TitanStrikeGearMerge
                     break;
 
                 case "Titan Paladin":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.HuntMonster("titanattack", "Chaorrupted Bandit", "AntiTitan Supplies", 100, false);
                     Core.EquipClass(ClassType.Solo);
@@ -96,7 +96,7 @@ public class TitanStrikeGearMerge
                     break;
 
                 case "Vindicator Titan XL":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.HuntMonster("titanattack", "Chaorrupted Bandit", "AntiTitan Supplies", 100, false);
                     Core.EquipClass(ClassType.Solo);
@@ -106,7 +106,7 @@ public class TitanStrikeGearMerge
                     break;
 
                 case "Vindicator Titan's Axes":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.HuntMonster("titanattack", "Chaorrupted Bandit", "AntiTitan Supplies", 50, false);
                     Core.EquipClass(ClassType.Solo);
@@ -116,7 +116,7 @@ public class TitanStrikeGearMerge
                     break;
 
                 case "Titan Paladin's Blades":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.HuntMonster("titanattack", "Chaorrupted Bandit", "AntiTitan Supplies", 50, false);
                     Core.EquipClass(ClassType.Solo);
@@ -132,7 +132,7 @@ public class TitanStrikeGearMerge
 
 
                 case "Titan Paladin's Helm":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.HuntMonster("titanattack", "Chaorrupted Bandit", "AntiTitan Supplies", 25, false);
                     Core.EquipClass(ClassType.Solo);
@@ -141,7 +141,7 @@ public class TitanStrikeGearMerge
                     break;
 
                 case "Vindicator Titan's Helm":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.HuntMonster("titanattack", "Chaorrupted Bandit", "AntiTitan Supplies", 25, false);
                     Core.EquipClass(ClassType.Solo);
@@ -155,7 +155,7 @@ public class TitanStrikeGearMerge
                     break;
 
                 case "Titan Paladin's Cloak":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.HuntMonster("titanattack", "Chaorrupted Bandit", "AntiTitan Supplies", 25, false);
                     Core.EquipClass(ClassType.Solo);
@@ -164,7 +164,7 @@ public class TitanStrikeGearMerge
                     break;
 
                 case "Vindicator Titan's Cloak":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.HuntMonster("titanattack", "Chaorrupted Bandit", "AntiTitan Supplies", 25, false);
                     Core.EquipClass(ClassType.Solo);

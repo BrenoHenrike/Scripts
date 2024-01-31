@@ -62,7 +62,7 @@ public class BidoBirthdayMerge
 
                 case "Concentrated Mana":
                 case "Bits of Cloth":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
@@ -75,7 +75,7 @@ public class BidoBirthdayMerge
 
                 case "Green Scrap":
                 case "Scrap Metal":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
@@ -88,7 +88,7 @@ public class BidoBirthdayMerge
                     break;
 
                 case "Bido's Appreciation":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {

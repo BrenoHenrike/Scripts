@@ -1913,8 +1913,7 @@ public class CoreBots
         if (Bot.Player.CurrentClass?.Name == "ArchMage")
             Bot.Options.AttackWithoutTarget = true;
 
-        // if (Bot.Options.AggroMonsters)
-        //     ToggleAggro(true);
+        Monster? Monster = Bot.Monsters.MapMonsters.FirstOrDefault(x => x.Name.FormatForCompare() == monster.FormatForCompare());
 
         if (item == null)
         {
@@ -1929,8 +1928,9 @@ public class CoreBots
             }
 
             Monster? targetedMob = monster == "*"
-                ? Bot.Monsters.CurrentAvailableMonsters.Find(x => IsMonsterAlive(x.MapID, true))
-                : Bot.Monsters.CurrentAvailableMonsters.Find(x => x.Name == monster && IsMonsterAlive(x.MapID, true));
+            ? Bot.Monsters.CurrentAvailableMonsters.Find(x => IsMonsterAlive(x.MapID, true))
+            : Bot.Monsters.CurrentAvailableMonsters.Find(x =>
+            x.Name.FormatForCompare() == monster.FormatForCompare() && IsMonsterAlive(x.MapID, true));
 
             if (targetedMob != null)
             {
@@ -1939,7 +1939,14 @@ public class CoreBots
         }
         else
         {
-            _KillForItem(monster, item, quant, isTemp, log: log);
+            if (Monster?.Name != null)
+            {
+                _KillForItem(Monster.Name, item, quant, isTemp, log: log, cell: cell);
+            }
+            else
+            {
+                _KillForItem(monster, item, quant, isTemp, log: log, cell: cell);
+            }
         }
 
         Rest();
@@ -1988,7 +1995,7 @@ public class CoreBots
             Bot.Kill.Monster(monster);
             Rest();
         }
-        else _KillForItem(monster.Name, item, quant, isTemp, log: log);
+        else _KillForItem(monster.Name, item, quant, isTemp, log: log, cell: cell);
         Bot.Options.AttackWithoutTarget = false;
     }
 
@@ -2470,57 +2477,53 @@ public class CoreBots
     }
 
 
-    public void _KillForItem(string name, string item, int quantity, bool isTemp = false, bool rejectElse = false, bool log = true)
+    public void _KillForItem(string name, string item, int quantity, bool isTemp = false, bool rejectElse = false, bool log = true, string? cell = null)
     {
-        var (Cell, Pad) = (Bot.Player.Cell, "Left");
-
         if (CheckInventory(item, quantity))
             return;
 
         if (log)
             FarmingLogger(item, quantity);
 
-        ToggleAggro(Bot.Options.AggroMonsters);
-
         while (!Bot.ShouldExit &&
        ((!Bot.Inventory.Contains(item) && Bot.Inventory.GetQuantity(item) < quantity) ||
         (!Bot.TempInv.Contains(item) && Bot.TempInv.GetQuantity(item) < quantity)))
         {
-            while (!Bot.ShouldExit && Bot.Player.Cell != Cell)
+            // For some stupid fkin reason te bot will (once it has [item, quant] jump wait...
+            // this is to mitigate that (the jump will still hapen.. but this will atelst let u farm still))
+            while (!Bot.ShouldExit && Bot.Player.Cell != cell && cell != null)
             {
-                Jump(Cell, Pad);
+                Jump(cell, "Left");
                 Sleep();
-                if (Bot.Player.Cell == Cell)
+                if (Bot.Player.Cell == cell)
                     break;
             }
 
             foreach (Monster mob in Bot.Monsters.CurrentAvailableMonsters)
             {
-                Monster? targetedMob = (name == "*") ? mob : Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault(x => x.Name == name);
+                Monster? targetedMob = (name == "*") ? mob : Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault(x => x.Name.FormatForCompare() == name.FormatForCompare());
+
+                ItemBase? Item =
+                isTemp ? Bot.TempInv.Items.FirstOrDefault(x => x.Name.FormatForCompare() == item.FormatForCompare())
+                : Bot.Inventory.Items.FirstOrDefault(x => x.Name.FormatForCompare() == item.FormatForCompare());
 
                 while (!Bot.ShouldExit && IsMonsterAlive(targetedMob?.MapID ?? 0, true))
                 {
                     Bot.Combat.Attack(targetedMob?.MapID ?? Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault()?.MapID ?? 0);
+                    Sleep();
 
-                    if ((Bot.Inventory.Contains(item) && Bot.Inventory.GetQuantity(item) >= quantity) ||
-                        (Bot.TempInv.Contains(item) && Bot.TempInv.GetQuantity(item) >= quantity))
+                    if (Item != null && Bot.Inventory.Contains(Item.ID) && Bot.Inventory.GetQuantity(Item.ID) >= quantity ||
+                    Item != null && Bot.TempInv.Contains(Item.ID) && Bot.TempInv.GetQuantity(Item.ID) >= quantity)
                     {
+                        Bot.Wait.ForPickup(item);
+                        if (rejectElse)
+                            Bot.Drops.RejectExcept(item);
+                        Rest();
                         return;
                     }
                 }
             }
-
-            Sleep();
-
-            if (rejectElse)
-                Bot.Drops.RejectExcept(item);
         }
-
-        ToggleAggro(false);
-        Bot.Combat.CancelTarget();
-        Bot.Combat.Exit();
-        Bot.Wait.ForCombatExit();
-        Rest();
     }
 
 
@@ -2535,7 +2538,7 @@ public class CoreBots
         => IsMonsterAlive(Bot.Monsters.CurrentMonsters.Find(m => m.MapID == monsterMapID));
 
 
-    private List<int> KilledMonsters = new();
+    private readonly List<int> KilledMonsters = new();
     private void CleanKilledMonstersList(string map)
         => KilledMonsters.Clear();
     private void KilledMonsterListener(int monsterMapID)
@@ -2905,6 +2908,9 @@ public class CoreBots
 
             while (equipedClass != className)
             {
+                if (Bot.Player.InCombat)
+                    Bot.Combat.Exit();
+
                 logEquip = false;
                 Equip(Bot.Inventory.Items.First(x => x.Name.ToLower().Trim() == className && x.Category == ItemCategory.Class).ID);
                 logEquip = true;
@@ -2987,6 +2993,7 @@ public class CoreBots
         {
             Bot.Combat.CancelTarget();
             Bot.Wait.ForCombatExit();
+            Bot.Combat.Exit();
             JumpWait();
             Sleep();
         }
@@ -3181,7 +3188,15 @@ public class CoreBots
         Bot.Player.SetSpawnPoint(cell, pad);
         if (!ignoreCheck && Bot.Player.Cell == cell)
             return;
-        Bot.Map.Jump(cell, pad, false);
+
+        while (!Bot.ShouldExit && Bot.Player.Cell != cell)
+        {
+            Bot.Map.Jump(cell, pad, false);
+            Sleep();
+
+            if (Bot.Player.Cell == cell)
+                break;
+        }
     }
 
     /// <summary>
@@ -3229,12 +3244,17 @@ public class CoreBots
             Sleep(ExitCombatDelay < 200 ? ExitCombatDelay : ExitCombatDelay - 200);
             Bot.Wait.ForCombatExit();
         }
-        while (!Bot.ShouldExit && Bot.Player.InCombat)
-        {
-            Bot.Combat.CancelTarget();
-            Bot.Combat.Exit();
-            Bot.Wait.ForTrue(() => !Bot.Player.InCombat, 20);
-        }
+
+        // while (!Bot.ShouldExit && Bot.Player.InCombat)
+        // {
+        //     // Logger("still in combat, trying to exit combat.. agian");
+        //     //Extra jump if player still in combat due to auto-aggro cells
+
+        //     Bot.Combat.CancelTarget();
+
+        //     if (!Bot.Player.InCombat)
+        //         break;
+        // }
 
     }
     private string lastMapJW = String.Empty;
@@ -3306,6 +3326,11 @@ public class CoreBots
 
             case "temple":
                 SimpleQuestBypass((49, 25));
+                break;
+
+
+            case "kitsune":
+                SimpleQuestBypass((25, 22));
                 break;
 
             case "elemental":
@@ -3462,6 +3487,9 @@ public class CoreBots
                 break;
 
             case "shadowattack":
+                SimpleQuestBypass((175, 18));
+                break;
+
             case "dreadhaven":
                 SimpleQuestBypass((175, 20));
                 break;
@@ -3500,26 +3528,32 @@ public class CoreBots
 
             #region Special Cases
             case "tercessuinotlim":
+
+                //to avoid black screen in `tercessuinotlim
                 if (!isCompletedBefore(9540))
                 {
-                    Logger("This map now requires a 1 time completion of \"Beyond the Portal\"");
+                    OneTimeMessage("WARNING!", "This map now requires a 1 time completion of \"Beyond the Portal\"\n" +
+                    "not sure why it loads tercessuinotlim first. but ge tover it :|", messageBox: false);
+
+                    SimpleQuestBypass((15, 8), (542, 2));
+                    Join("citadel");
                     EnsureAccept(9540);
                     KillMonster("citadel", "m22", "Left", "Death's Head", "Death's Head Bested");
                     EnsureComplete(9540);
                 }
-                // SimpleQuestBypass((542, 1));
+
+                //for taro to show up
+                if (!isCompletedBefore(9541))
+                    ChainComplete(9541);
+
                 Jump("m22", "Left");
                 tryJoin();
 
-                // Following the recent update,
-                // even with the execution of an "updatequest," a black screen
-                // is encountered upon the initial `tryJoin`
-                // (also may be caused by the thing auto-fixes te cell on join 
-                // [client function.. nothing i can do about that] so had todo below). 
-                Jump("Enter", "Left");
-                Jump(cell, pad);
+                //leave incase more shit breaks reinstate this vv
+                // Jump("Enter", "Left");
 
-
+                //vv may no longer be needed as jump has a while check now that works wonders (hopefully)
+                // Jump(cell, pad);
                 break;
 
             case "doomvaultb":
@@ -5027,6 +5061,8 @@ public static class UtilExtensionsS
         => source.ToList().Find(match: Match);
     public static bool TryFind<T>(this IEnumerable<T> source, Predicate<T> Match, out T? toReturn)
         => (toReturn = source.Find(Match)) != null;
+    public static string FormatForCompare(this string input)
+        => input.Trim().ToLower().Normalize(System.Text.NormalizationForm.FormKD);
 }
 
 #nullable disable

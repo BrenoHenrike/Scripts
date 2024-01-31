@@ -1,5 +1,5 @@
 /*
-name: 0NecroticSwordOfDoom
+name: Necrotic Sword of Doom
 description: Does the entirety of and to farm "necrotic sword of doom"
 tags: nsod, necrotic, sword, doom, necrotic sword of doom
 */

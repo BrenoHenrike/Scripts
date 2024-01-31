@@ -124,7 +124,7 @@ public class UndeadLegionMerge
                     break;
 
                 case "Hollow Soul":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {

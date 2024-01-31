@@ -1,7 +1,7 @@
 /*
-name: VordredsArmor
-description: null
-tags: null
+name: Empowered Vordred's Armor
+description: This script will farm Empowered Vordred's Armor.
+tags: vordred, armor, empowered, more skulls, voiduminance, unbroken skulls, evil
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

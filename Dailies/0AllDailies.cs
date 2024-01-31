@@ -4,20 +4,26 @@ description: Does all the avaiable dailies.
 tags: all dailies, dailies, daily, all
 */
 //cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/CoreFarms.cs
+
 //cs_include Scripts/Nation/CoreNation.cs
+//cs_include Scripts/Evil/SDKA/CoreSDKA.cs
+//cs_include Scripts/Good/BLoD/CoreBLOD.cs
+
 //cs_include Scripts/Story/BattleUnder.cs
 //cs_include Scripts/Story/Nation/CitadelRuins.cs
 //cs_include Scripts/Story/DragonFableOrigins.cs
-//cs_include Scripts/Dailies/LordOfOrder.cs
 //cs_include Scripts/Story/Glacera.cs
-//cs_include Scripts/Good/BLoD/CoreBLOD.cs
 //cs_include Scripts/Story/Friendship.cs
-//cs_include Scripts/Evil/SDKA/CoreSDKA.cs
-//cs_include Scripts/Tools\BankAllItems.cs
+
+//cs_include Scripts/Dailies/LordOfOrder.cs
+//cs_include Scripts/Dailies/MineCrafting.cs
+
+//cs_include Scripts/Tools/BankAllItems.cs
+
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
 
@@ -31,6 +37,7 @@ public class FarmAllDailies
     private CoreBLOD BLOD = new();
     private Friendship FR = new();
     private CoreSDKA CSDKA = new();
+    private MineCrafting MineCrafting = new();
     //private BankAllItems BAI = new();
 
     public bool DontPreconfigure = true;
@@ -56,7 +63,6 @@ public class FarmAllDailies
         {
             Core.Logger($"Doing selected set of dailies: Recommended");
             LOO.GetLoO();
-            BLOD.UnlockMineCrafting();
             Daily.Pyromancer();
             Daily.DeathKnightLord();
             Daily.ShadowScytheClass();
@@ -68,7 +74,7 @@ public class FarmAllDailies
             Daily.EldersBlood();
             Daily.ShadowShroud();
             Daily.DagesScrollFragment();
-            Daily.MineCrafting(new[] { "Aluminum", "Barium", "Gold", "Iron", "Copper", "Silver", "Platinum" }, 10, ToBank: true);
+            MineCrafting.DoMinecrafting();
             Daily.CryptoToken();
             Core.Logger("Recommended Dailies finished!");
         }
@@ -76,7 +82,6 @@ public class FarmAllDailies
         {
             Core.Logger($"Doing selected set of dailies: All");
             LOO.GetLoO();
-            BLOD.UnlockMineCrafting();
             Daily.Pyromancer();
             Daily.DeathKnightLord();
             Daily.ShadowScytheClass();
@@ -88,7 +93,7 @@ public class FarmAllDailies
             Daily.EldersBlood();
             Daily.CryptoToken();
             Daily.ShadowShroud();
-            Daily.MineCrafting(new[] { "Aluminum", "Barium", "Gold", "Iron", "Copper", "Silver", "Platinum" }, 10, ToBank: true);
+            MineCrafting.DoMinecrafting();
 
             Daily.SparrowsBlood();
             Daily.BeastMasterChallenge();
@@ -101,6 +106,7 @@ public class FarmAllDailies
             Daily.CyserosSuperHammer();
             Daily.BrightKnightArmor();
             Daily.GrumbleGrumble();
+            Daily.TenacityChallenge();
             Daily.MonthlyTreasureChestKeys();
             Daily.BallyhooAdRewards();
             Daily.PowerGem();

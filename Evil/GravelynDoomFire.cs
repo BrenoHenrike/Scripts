@@ -1,7 +1,7 @@
 /*
-name: GravelynDoomFire
-description: null
-tags: null
+name: Gravelyn's DoomFire Token
+description: This script will get items from Gravelyn's DoomFire shop.
+tags: gravelyn, doomfire, token, doomfire of gravelyn, horned doomfire helm, evil
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

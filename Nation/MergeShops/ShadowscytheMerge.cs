@@ -83,7 +83,7 @@ public class ShadowscytheMerge
 
                         //More then one item of the same name as drop btoh temp and non-temp.
                         while (!Bot.ShouldExit && !Core.CheckInventory(33257))
-                            Core.KillMonster("dflesson", "r12", "Right", "Fluffy the Dracolich", publicRoom: true);
+                            Core.KillMonster("dflesson", "r12", "Right", "Fluffy the Dracolich", log: false, publicRoom: true);
 
                         Core.HuntMonster("lair", "Red Dragon", "Red Dragon's Fang");
                         Core.HuntMonster("bloodtitan", "Blood Titan", "Blood Titan's Blade", publicRoom: true);

@@ -85,10 +85,10 @@ public class NulgathDemandsWork
                 Nation.FarmDiamondofNulgath(60);
                 Nation.FarmDarkCrystalShard(45);
                 Uni27();
-                Nation.FarmVoucher(true);
                 Nation.FarmGemofNulgath(15);
                 Nation.SwindleBulk(50);
                 GHV.GetGHV();
+                Nation.FarmVoucher(true);
 
                 if (item.Name == "Unidentified 35")
                 {
@@ -119,7 +119,7 @@ public class NulgathDemandsWork
         Core.AddDrop("Unidentified 27");
         Nation.Supplies("Unidentified 26", 1);
         Core.EnsureAccept(584);
-        Nation.ResetSindles();
+        Nation.ResetQuest(7551);
         while (!Bot.ShouldExit && !Core.CheckInventory("Dark Makai Sigil"))
         {
             // Define the maps with their corresponding indexes

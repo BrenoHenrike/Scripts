@@ -32,8 +32,7 @@ public class VoidRefugeMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        VR.Storyline();
-        Core.BankingBlackList.AddRange(new[] { "Venomous Fang Blade", "Unidentified 13", "Tainted Gem", "Dark Crystal Shard", "Diamond of Nulgath", "Unidentified 23", "Totem of Nulgath", "Blood Gem of the Archfiend", "Evolved Carnage of Nulgath", "Fiendish Remains", "Voucher of Nulgath (non-mem)", "Evolved Carnage Helm", "Evolved Carnage Crest", "Blood Void Spines", "Blood Void Spikes", "Gem of Nulgath", "Bloodletter Katana", "Bloodletter Katanas", "1st Betrayal Blade of Nulgath", "2nd Betrayal Blade of Nulgath", "3rd Betrayal Blade of Nulgath", "4th Betrayal Blade of Nulgath", "5th Betrayal Blade of Nulgath", "6th Betrayal Blade of Nulgath", "7th Betrayal Blade of Nulgath", "8th Betrayal Blade of Nulgath", "Unmoulded Fiend Essence" });
+        Core.BankingBlackList.AddRange(new[] { "Venomous Fang Blade", "Unidentified 13", "Tainted Gem", "Dark Crystal Shard", "Diamond of Nulgath", "Unidentified 23", "Totem of Nulgath", "Blood Gem of the Archfiend", "Evolved Carnage of Nulgath", "Fiendish Remains", "Voucher of Nulgath (non-mem)", "Evolved Carnage Helm", "Evolved Carnage Crest", "Blood Void Spines", "Blood Void Spikes", "Gem of Nulgath", "Bloodletter Katana", "Bloodletter Katanas", "1st Betrayal Blade of Nulgath", "2nd Betrayal Blade of Nulgath", "3rd Betrayal Blade of Nulgath", "4th Betrayal Blade of Nulgath", "5th Betrayal Blade of Nulgath", "6th Betrayal Blade of Nulgath", "7th Betrayal Blade of Nulgath", "8th Betrayal Blade of Nulgath", "Unmoulded Fiend Essence", "Gold Voucher 25k" });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -42,6 +41,7 @@ public class VoidRefugeMerge
 
     public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
+        VR.Storyline();
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("voidrefuge", 2408, findIngredients, buyOnlyThis, buyMode: buyMode);
 
@@ -67,9 +67,9 @@ public class VoidRefugeMerge
 
                 case "Venomous Fang Blade":
                     Core.FarmingLogger(req.Name, quant);
-                    Core.HuntMonster("tercessuinotlim", "Ninja Spy", "Spy’s Info", log: false);
-                    Core.HuntMonster("citadel", "Inquisitor Captain", "Captain’s Info", log: false);
-                    Core.HuntMonster("lairattack", "Flame Dragon General", "Broken Fang Blade", log: false);
+                    Core.HuntMonster("tercessuinotlim", "Ninja Spy", "Spy’s Info", isTemp: false, log: false);
+                    Core.HuntMonster("citadel", "Inquisitor Captain", "Captain’s Info", isTemp: false, log: false);
+                    Core.HuntMonster("lairattack", "Flame Dragon General", "Broken Fang Blade", isTemp: false, log: false);
                     Core.GetMapItem(12571, map: "museum");
                     break;
 
@@ -161,7 +161,6 @@ public class VoidRefugeMerge
                     Core.FarmingLogger(req.Name, quant);
                     Adv.BuyItem("tercessuinotlim", 1951, "Unmoulded Fiend Essence");
                     break;
-
             }
         }
     }
@@ -194,5 +193,17 @@ public class VoidRefugeMerge
         new Option<bool>("83156", "Fiend Carver Betrayal Blades", "Mode: [select] only\nShould the bot buy \"Fiend Carver Betrayal Blades\" ?", false),
         new Option<bool>("83139", "Unstable Betrayal Blade", "Mode: [select] only\nShould the bot buy \"Unstable Betrayal Blade\" ?", false),
         new Option<bool>("83140", "Unstable Betrayal Blades", "Mode: [select] only\nShould the bot buy \"Unstable Betrayal Blades\" ?", false),
+        new Option<bool>("82878", "Void Betrayal Knight", "Mode: [select] only\nShould the bot buy \"Void Betrayal Knight\" ?", false),
+        new Option<bool>("82879", "Void Betrayer Crest", "Mode: [select] only\nShould the bot buy \"Void Betrayer Crest\" ?", false),
+        new Option<bool>("82880", "Void Betrayer Guard", "Mode: [select] only\nShould the bot buy \"Void Betrayer Guard\" ?", false),
+        new Option<bool>("82881", "Void Betrayer Horns", "Mode: [select] only\nShould the bot buy \"Void Betrayer Horns\" ?", false),
+        new Option<bool>("82882", "Void Betrayer Cloak", "Mode: [select] only\nShould the bot buy \"Void Betrayer Cloak\" ?", false),
+        new Option<bool>("82883", "Void Betrayer Spined Cloak", "Mode: [select] only\nShould the bot buy \"Void Betrayer Spined Cloak\" ?", false),
+        new Option<bool>("82885", "Void Betrayer Sword", "Mode: [select] only\nShould the bot buy \"Void Betrayer Sword\" ?", false),
+        new Option<bool>("83323", "Void Betrayer Swords", "Mode: [select] only\nShould the bot buy \"Void Betrayer Swords\" ?", false),
+        new Option<bool>("82886", "Void Betrayer Dagger", "Mode: [select] only\nShould the bot buy \"Void Betrayer Dagger\" ?", false),
+        new Option<bool>("82887", "Void Betrayer Daggers", "Mode: [select] only\nShould the bot buy \"Void Betrayer Daggers\" ?", false),
+        new Option<bool>("82888", "Void Betrayer Reaver", "Mode: [select] only\nShould the bot buy \"Void Betrayer Reaver\" ?", false),
+        new Option<bool>("82889", "Void Betrayer Reavers", "Mode: [select] only\nShould the bot buy \"Void Betrayer Reavers\" ?", false),
     };
 }

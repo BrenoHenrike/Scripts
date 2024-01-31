@@ -70,7 +70,7 @@ public class HollowbornMerge
 
                 case "Hollowborn Spirit":
                 case "Hollowborn Spite":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.RegisterQuests(7548);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))

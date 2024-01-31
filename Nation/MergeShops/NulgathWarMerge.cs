@@ -115,7 +115,7 @@ public class NulgathWarMerge
                         Nation.Supplies("Unidentified 26");
                         Nation.SwindleBulk(5);
 
-                        Nation.ResetSindles();
+                        Nation.ResetQuest(7551);
                         while (!Bot.ShouldExit && !Core.CheckInventory("Dark Makai Sigil"))
                         {
                             // Define the maps with their corresponding indexes

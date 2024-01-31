@@ -1,7 +1,7 @@
 /*
-name: RetreiveVoidAuras
+name: Retrieve Void Auras
 description: farms void auras via the "retrieve void auras" quest.
-tags: Retrieve, void aura
+tags: retrieve, void aura
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

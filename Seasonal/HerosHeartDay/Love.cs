@@ -47,6 +47,7 @@ public class Love
         Story.KillQuest(510, "citadel", "Inquisitor Guard");
 
         // Imp Ink (511)
+            Core.JoinSWF("mobius", "ChiralValley/town-Mobius-21Feb14.swf", "Slugfit", "Bottom");
         Story.KillQuest(511, "mobius", "Slugfit");
 
         // Heart Shaped Scale (512)

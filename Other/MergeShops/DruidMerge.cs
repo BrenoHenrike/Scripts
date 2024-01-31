@@ -62,7 +62,7 @@ public class DruidMerge
                 #endregion
 
                 case "Druid Fabric":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.RegisterQuests(800, 801);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))

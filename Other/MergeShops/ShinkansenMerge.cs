@@ -65,7 +65,7 @@ public class ShinkansenMerge
                 #endregion
 
                 case "Ninjo":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     Shink.Storyline();
                     Core.RegisterQuests(8124);

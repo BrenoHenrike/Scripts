@@ -76,6 +76,7 @@ public class CoreBLOD
         if (Core.CheckInventory("Blinding Light of Destiny"))
             return;
 
+        Core.AddDrop(40187);
         if (!Core.CheckInventory(40187)) // Get your Blinding Light of Destiny
         {
             Bot.Drops.Add(BLoDItems);
@@ -106,7 +107,6 @@ public class CoreBLOD
             UltimateWK();
 
             Core.ChainComplete(2180);
-            Bot.Drops.Pickup(40187);
         }
         Core.BuyItem(Bot.Map.Name, 1415, "Blinding Light of Destiny");
         Core.ToBank(40187);

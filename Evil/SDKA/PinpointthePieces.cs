@@ -1,7 +1,7 @@
 /*
-name: PinpointthePieces
-description: null
-tags: null
+name: Pinpoint the Pieces Quests
+description: This script will do "Pinpoint the Pieces" quest using the chosen method.
+tags: pinpoint, pieces, sdka, dagger, blade, broadsword, scythe, mace, bow
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

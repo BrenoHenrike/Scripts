@@ -901,10 +901,10 @@ public class Core13LoC
         if (!Story.QuestProgression(934))
         {
             Core.EnsureAccept(934);
-            if (!Core.CheckInventory(29373, toInv: false))
-                Core.KillMonster("sandport", "r6", "Left", 2153, "Horc Sell-Swords Defeated", 1);
+            while (!Bot.ShouldExit && !Core.CheckInventory(29373, toInv: false))
+                Core.KillMonster("sandport", "r6", "Left", 2153);
             while (!Bot.ShouldExit && !Core.CheckInventory(6686, 3, toInv: false))
-                Core.KillMonster("sandport", "r5", "Left", 536, "Horc Sell-Swords Defeated", 3);
+                Core.KillMonster("sandport", "r5", "Left", 536);
             Core.EnsureComplete(934);
         }
 
@@ -2332,7 +2332,14 @@ public class Core13LoC
         Story.ChainQuest(3797);
 
         //Find your way to Death's lair
-        Story.MapItemQuest(3798, "shadowattack", 2896);
+        if (!Story.QuestProgression(3798))
+        {
+            Core.EnsureAccept(3798);
+            Core.Join("shadowattack", "Boss", "Left");
+            Core.Jump("r15", "Left");
+            Bot.Wait.ForPickup(25903);
+            Core.EnsureComplete(3798);
+        }
 
         //Beat Death!
         Core.EquipClass(ClassType.Solo);

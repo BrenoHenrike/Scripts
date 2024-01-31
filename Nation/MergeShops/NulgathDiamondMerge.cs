@@ -1,7 +1,7 @@
 /*
-name: NulgathDiamondMerge
-description: null
-tags: null
+name: Nulgath Diamond Merge
+description: This bot will farm the items belonging to the selected mode for the Nulgath Diamond Merge [456] in /evilwarnul
+tags: nulgath, diamond, merge, evilwarnul, abyssal, priest, loyalty, nation, oversoul, witch, witchs, soulstealing, paladin, bearded, dire, monk, cleric, head, golden, hanzo, void, katana, katanas, horns, cyber, crystal, phoenix, blood, cloak, horned, worshipper, face, ranger, sheath, bow, morph, quiver, storm, knight, molten, dragonspear, formal, suit, circlet, cane
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -150,11 +150,11 @@ public class NulgathDiamondMerge
                     break;
 
                 case "Unidentified 27":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EnsureAccept(584);
                     Nation.Supplies("Unidentified 26");
 
-                    Nation.ResetSindles();
+                    Nation.ResetQuest(7551);
                     while (!Bot.ShouldExit && !Core.CheckInventory("Dark Makai Sigil"))
                     {
                         // Define the maps with their corresponding indexes
@@ -178,15 +178,13 @@ public class NulgathDiamondMerge
                                 break;
                         }
                     }
-
                     Bot.Wait.ForPickup("Dark Makai Sigil");
                     Core.EnsureComplete(584);
                     Bot.Wait.ForPickup(req.Name);
                     break;
 
                 case "Crystal Phoenix Blade of Nulgath":
-                    Core.FarmingLogger($"{req.Name}", quant);
-
+                    Core.FarmingLogger(req.Name, quant);
                     Nation.FarmDiamondofNulgath(13);
                     Nation.FarmDarkCrystalShard(50);
                     Nation.FarmTotemofNulgath(3);
@@ -199,13 +197,25 @@ public class NulgathDiamondMerge
                     Core.EnsureComplete(837, req.ID);
                     Bot.Wait.ForPickup(req.Name);
                     break;
+
+                case "Dragon Scale":
+                    Core.FarmingLogger(req.Name, quant);
+                    Core.EquipClass(ClassType.Farm);
+                    while (!Bot.ShouldExit && !Core.CheckInventory(11475, quant))
+                        Core.KillMonster("lair", "Hole", "Center", "*", isTemp: false, log: false);
+                    break;
+
+                case "Gold Star of Avarice":
+                    Core.FarmingLogger(req.Name, quant);
+                    Adv.BuyItem("tercessuinotlim", 1951, "Gold Star of Avarice");
+                    break;
             }
         }
     }
 
     public List<IOption> Select = new()
     {
-        new Option<bool>("13347", "Abyssal Priest of Nulgath", "Mode: [select] only\nShould the bot buy \"Abyssal Priest of Nulgath\" ?", false),
+       new Option<bool>("13347", "Abyssal Priest of Nulgath", "Mode: [select] only\nShould the bot buy \"Abyssal Priest of Nulgath\" ?", false),
         new Option<bool>("25215", "Loyalty Blade of the Nation", "Mode: [select] only\nShould the bot buy \"Loyalty Blade of the Nation\" ?", false),
         new Option<bool>("25239", "Oversoul Witch of Nulgath", "Mode: [select] only\nShould the bot buy \"Oversoul Witch of Nulgath\" ?", false),
         new Option<bool>("25240", "OverSoul Witch's Hat", "Mode: [select] only\nShould the bot buy \"OverSoul Witch's Hat\" ?", false),
@@ -228,6 +238,7 @@ public class NulgathDiamondMerge
         new Option<bool>("28031", "Golden Hanzo Katana Cape", "Mode: [select] only\nShould the bot buy \"Golden Hanzo Katana Cape\" ?", false),
         new Option<bool>("27848", "Golden Hanzo Void Cape", "Mode: [select] only\nShould the bot buy \"Golden Hanzo Void Cape\" ?", false),
         new Option<bool>("30208", "Cyber Crystal Phoenix Blade", "Mode: [select] only\nShould the bot buy \"Cyber Crystal Phoenix Blade\" ?", false),
+        new Option<bool>("344", "Blood Cloak", "Mode: [select] only\nShould the bot buy \"Blood Cloak\" ?", false),
         new Option<bool>("52883", "Horned Worshipper Face of Nulgath", "Mode: [select] only\nShould the bot buy \"Horned Worshipper Face of Nulgath\" ?", false),
         new Option<bool>("52884", "Horned Worshipper Visage of Nulgath", "Mode: [select] only\nShould the bot buy \"Horned Worshipper Visage of Nulgath\" ?", false),
         new Option<bool>("69968", "Blood Ranger", "Mode: [select] only\nShould the bot buy \"Blood Ranger\" ?", false),
@@ -238,5 +249,19 @@ public class NulgathDiamondMerge
         new Option<bool>("69970", "Blood Ranger Quiver", "Mode: [select] only\nShould the bot buy \"Blood Ranger Quiver\" ?", false),
         new Option<bool>("70001", "Storm Knight", "Mode: [select] only\nShould the bot buy \"Storm Knight\" ?", false),
         new Option<bool>("70002", "Storm Knight Helm", "Mode: [select] only\nShould the bot buy \"Storm Knight Helm\" ?", false),
+        new Option<bool>("69152", "Molten DragonSpear of Nulgath", "Mode: [select] only\nShould the bot buy \"Molten DragonSpear of Nulgath\" ?", false),
+        new Option<bool>("83410", "Formal Nation Suit", "Mode: [select] only\nShould the bot buy \"Formal Nation Suit\" ?", false),
+        new Option<bool>("83411", "Formal Nation Hair", "Mode: [select] only\nShould the bot buy \"Formal Nation Hair\" ?", false),
+        new Option<bool>("83412", "Formal Nation Locks", "Mode: [select] only\nShould the bot buy \"Formal Nation Locks\" ?", false),
+        new Option<bool>("83413", "Formal Nation Mask", "Mode: [select] only\nShould the bot buy \"Formal Nation Mask\" ?", false),
+        new Option<bool>("83414", "Formal Nation Circlet", "Mode: [select] only\nShould the bot buy \"Formal Nation Circlet\" ?", false),
+        new Option<bool>("83415", "Formal Nation Morph", "Mode: [select] only\nShould the bot buy \"Formal Nation Morph\" ?", false),
+        new Option<bool>("83416", "Formal Nation Visage", "Mode: [select] only\nShould the bot buy \"Formal Nation Visage\" ?", false),
+        new Option<bool>("83417", "Formal Nation Mask Morph", "Mode: [select] only\nShould the bot buy \"Formal Nation Mask Morph\" ?", false),
+        new Option<bool>("83418", "Formal Nation Circlet Visage", "Mode: [select] only\nShould the bot buy \"Formal Nation Circlet Visage\" ?", false),
+        new Option<bool>("83419", "Formal Nation Blade", "Mode: [select] only\nShould the bot buy \"Formal Nation Blade\" ?", false),
+        new Option<bool>("83420", "Formal Nation Blades", "Mode: [select] only\nShould the bot buy \"Formal Nation Blades\" ?", false),
+        new Option<bool>("83421", "Formal Nation Cane", "Mode: [select] only\nShould the bot buy \"Formal Nation Cane\" ?", false),
+        new Option<bool>("83422", "Formal Nation Cane Sheath", "Mode: [select] only\nShould the bot buy \"Formal Nation Cane Sheath\" ?", false),
     };
 }

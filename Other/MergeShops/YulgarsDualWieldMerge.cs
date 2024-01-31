@@ -119,7 +119,7 @@ public class YulgarsDualWieldMerge
                     break;
 
                 case "Blessed Coffee Cup":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.RegisterQuests(5405);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))

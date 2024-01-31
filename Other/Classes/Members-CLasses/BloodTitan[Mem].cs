@@ -1,7 +1,7 @@
 /*
 name: BloodTitan[Mem]
-description: null
-tags: null
+description: farms Bt then gets and ranks the blood titan class if you'r a member
+tags: blood titan, blood titan tokens, member, class
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

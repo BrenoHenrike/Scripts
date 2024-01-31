@@ -32,7 +32,6 @@ public class ShadowBlastArena
     public void Doall()
     {
         StoryLineP1();
-        StoryLineP2();
 
     }
 
@@ -62,55 +61,61 @@ public class ShadowBlastArena
                     Core.HuntMonster("shadowblast", "Minotaurofwar", "Nation Elite Defeated", 10);
                     break;
 
-                case 4736: // ravelyn Likes Your Style 4736
-                    Core.HuntMonster("shadowblast", "Shadowscythe Destroyer", "Shadowscythe Destroyer Vanquished");
+                case 4736: // Gravelyn Likes Your Style 4736
+                    Core.HuntMonster("shadowblast", "Shadow Destroyer", "Shadowscythe Destroyer Vanquished");
                     break;
             }
         }
     }
 
-    public void StoryLineP2()
+    public void EmblemofGravelyn(int quant = 100)
     {
-        if (Core.isCompletedBefore(4737) && Core.CheckInventory("Shadowscythe Round 4 Medal"))
+        if (Core.CheckInventory("Emblem of Gravelyn", quant))
             return;
 
-        if (!Core.isCompletedBefore(4750) || !Core.CheckInventory("Shadowscythe Round 4 Medal"))
+        if (!Core.CheckInventory("Shadowscythe Round 4 Medal"))
             StoryLineP1();
 
-        Story.PreLoad(this);
-
-        // Shadowscythe Recruits: Embrace the Shadow 4750
-        if (!Story.QuestProgression(4750))
+        Core.RegisterQuests(4750);
+        Core.FarmingLogger("Diamond Token of Dage", quant);
+        Core.AddDrop("Emblem of Gravelyn");
+        while (!Bot.ShouldExit & !Core.CheckInventory("Emblem of Gravelyn", quant))
         {
-            Core.EnsureAccept(4750);
             Core.HuntMonster("shadowblast", "Carnage", "Shadow Seal", 1, false);
             Core.HuntMonster("shadowblast", "Legion Fenrir", "Gem of Superiority", 1, false);
-            Core.EnsureComplete(4750);
-
+            Bot.Wait.ForPickup("Emblem of Gravelyn");
         }
+        Core.CancelRegisteredQuests();
+    }
 
-        // Shadowscythe Loyalty Rewarded 4737
-        if (!Story.QuestProgression(4737))
+    public void DiamondTokenofGravelyn(int quant = 100)
+    {
+        if (Core.CheckInventory("Diamond Token of Dage", quant))
+            return;
+
+        if (!Core.CheckInventory("Shadowscythe Round 4 Medal"))
+            StoryLineP1();
+
+        Core.AddDrop("Legion Token", "Diamond Token of Dage");
+        Core.FarmingLogger("Diamond Token of Dage", quant);
+        Core.RegisterQuests(4750);
+        while (!Bot.ShouldExit & !Core.CheckInventory("Diamond Token of Dage", quant))
         {
-            if (!Core.CheckInventory("Defeated Makai", 25))
-            {
-                Core.EquipClass(ClassType.Farm);
-                Core.KillMonster("tercessuinotlim", "m2", "Left", "*", "Defeated Makai", 25, false);
-                Core.JumpWait();
-                Core.Join("aqlesson");
-            }
+            Core.EquipClass(ClassType.Farm);
+            Core.KillMonster("tercessuinotlim", "m2", "Left", "*", "Defeated Makai", 25, false);
+
             Core.EquipClass(ClassType.Solo);
-            Core.KillMonster("aqlesson", "Frame9", "Right", "Carnax", "Carnax Eye", publicRoom: true);
-            Core.HuntMonster("deepchaos", "Kathool", "Kathool Tentacle", publicRoom: true);
+            Core.KillMonster("aqlesson", "Frame9", "Right", "Carnax", "Carnax Eye");
+            Core.HuntMonster("deepchaos", "Kathool", "Kathool Tentacle");
 
             //More then one item of the same name as drop btoh temp and non-temp.
             while (!Bot.ShouldExit && !Core.CheckInventory(33257))
-                Core.KillMonster("dflesson", "r12", "Right", "Fluffy the Dracolich", publicRoom: true);
+                Core.KillMonster("dflesson", "r12", "Right", "Fluffy the Dracolich", log: false);
 
             Core.HuntMonster("lair", "Red Dragon", "Red Dragon's Fang");
-            Core.HuntMonster("bloodtitan", "Blood Titan", "Blood Titan's Blade", publicRoom: true);
-            Bot.Drops.Pickup("Legion Token", "Diamond Token of Dage");
+            Core.HuntMonster("bloodtitan", "Blood Titan", "Blood Titan's Blade");
+            Bot.Wait.ForPickup("Diamond Token of Dage");
         }
-
+        Core.CancelRegisteredQuests();
     }
 }

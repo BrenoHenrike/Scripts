@@ -1,7 +1,7 @@
 /*
-name: IcestormArenaXP[1-100]
-description: null
-tags: null
+name: IceStorm Arena XP [1-100]
+description: This script will farm XP in /icestormarena.
+tags: experience, xp, level, leveling, farm, icestormarena, icestorm, arena
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

@@ -62,7 +62,7 @@ public class HBJudgementMerge
                 #endregion
 
                 case "Hollowborn Writ":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.RegisterQuests(8418);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))

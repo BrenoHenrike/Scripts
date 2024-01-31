@@ -73,7 +73,7 @@ public class GardenMerge
                     break;
 
                 case "Darkon's Debris 1952":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
                     Core.AddDrop("Darkon's Receipt");
 

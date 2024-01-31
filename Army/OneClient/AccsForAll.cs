@@ -30,21 +30,30 @@ public class ArmyFreeAcs
 
     public void FreeAcs()
     {
+        List<string> warnings = new();
         Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
 
         while (!Bot.ShouldExit && Army.doForAll())
         {
-
-            if (Story.QuestProgression(9444))
+            // Verified Email
+            if (Bot.Flash.CallGameFunction<bool>("world.myAvatar.isEmailVerified"))
             {
-                Core.Logger("Quest not avaible / is already completed.");
+                if (!Core.isCompletedBefore(9578))
+                {
+                    Core.EnsureAccept(9578);
+                    Bot.Quests.UpdateQuest(7522);
+                    Core.EquipClass(ClassType.Solo);
+                    Core.HuntMonster("borgars", "Burglinster", "Cookie Dough");
+                    Core.EnsureComplete(9578);
+                }
             }
             else
             {
-                Core.EnsureAccept(9444);
-                Core.HuntMonster("yulgar", "Agitated Orb", "Free ACs... and Yogurt");
-                Core.EnsureComplete(9444);
+                Core.Logger($"Unverified Email: {Core.Username()} - Skipping");
+                continue;
             }
+
+
         }
     }
 }
@@ -53,19 +62,21 @@ public class ArmyFreeAcs
 #region Preious years (just copy and paste, then comment out)
 
 #region 2023
-// while (Army.doForAll())
-//         {
 
-//             if (!Bot.Quests.IsAvailable(9444))
-//             {
-//                 Core.Logger("Quest not avaible / is already completed.");
-//                 return;
-//             }
+// while (!Bot.ShouldExit && Army.doForAll())
+// {
 
-//             Core.EnsureAccept(9444);
-//             Core.HuntMonster("eventhub", "Agitated Orb", "Free ACs... and Yogurt");
-//             Core.EnsureComplete(9444);
-//         }
+//     if (Story.QuestProgression(9444))
+//     {
+//         Core.Logger("Quest not avaible / is already completed.");
+//     }
+//     else
+//     {
+//         Core.EnsureAccept(9444);
+//         Core.HuntMonster("yulgar", "Agitated Orb", "Free ACs... and Yogurt");
+//         Core.EnsureComplete(9444);
+//     }
+// }
 #endregion 2023
 
 #endregion Preious years (just copy and paste, then comment out)

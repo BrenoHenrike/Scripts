@@ -1,7 +1,7 @@
 /*
 name: 0MaxBags
-description: null
-tags: null
+description: Farms the max stack of all the nation materials using various methods based off the pets / quest you have avaiable.
+tags: nation, nulgath, bags, all, 🖕
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

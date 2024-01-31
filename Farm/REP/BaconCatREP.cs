@@ -1,7 +1,7 @@
 /*
-name: BaconCatREP
-description: null
-tags: null
+name: Bacon Cat REP
+description: This script will farm Bacon Cat reputation to rank 10.
+tags: baconcat, bacon cat, reputation, rep, farm, rank
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

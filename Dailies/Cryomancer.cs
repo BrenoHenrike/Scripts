@@ -8,6 +8,7 @@ tags: daily, cryomancer, class, seasonal
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/Glacera.cs
 //cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/CoreFarms.cs
 using Skua.Core.Interfaces;
 
 public class Cryomancer
@@ -33,7 +34,7 @@ public class Cryomancer
         if (Core.CheckInventory("Cryomancer"))
         {
             if (rankUpClass)
-                Adv.RankUpClass("cryomancer");
+                Adv.RankUpClass("Cryomancer");
             return;
         }
 
@@ -41,7 +42,7 @@ public class Cryomancer
         Daily.Cryomancer();
 
         if (rankUpClass)
-            Adv.RankUpClass("cryomancer");
+            Adv.RankUpClass("Cryomancer");
     }
 
 }

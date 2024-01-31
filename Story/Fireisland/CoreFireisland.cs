@@ -213,7 +213,7 @@ public class CoreFireIsland
         //Parting the Waters
         if (!Story.QuestProgression(4138))
         {
-            Core.Logger("Quest needs to be abadoned before it can be completed adn reaccepted.");
+            Core.Logger("Quest needs to be abandoned before it can be completed and reaccepted.");
             Core.EnsureAccept(4138);
             Core.AbandonQuest(4138);
 
@@ -277,10 +277,28 @@ public class CoreFireIsland
         Story.KillQuest(4208, "phoenixrise", "Infernal Goblin");
 
         //Clear out the Caverns
-        Story.KillQuest(4209, "phoenixrise", new[] { "Pyrric Ursus", "Lava Troll", "Infernal Goblin", "Firestorm Tiger" });
+        if (!Story.QuestProgression(4209))
+        {
+            Core.EnsureAccept(4209);
+            Core.HuntMonster("phoenixrise", "Lava Troll", "Lava Troll Disarmed", 3);
+            Core.HuntMonster("phoenixrise", "Infernal Goblin", "Goblin Claws", 5);
+            Core.HuntMonster("phoenixrise", "Firestorm Tiger", "Tiger Fang", 4);
+            Core.HuntMonster("phoenixrise", "Pyrric Ursus", "Ursus Shard", 2);
+            Core.EnsureComplete(4209);
+
+        }
 
         //Strengthen the Survivors
-        Story.KillQuest(4210, "phoenixrise", new[] { "Infernal Goblin", "Firestorm Tiger", "Pyrric Ursus", "Lava Troll" });
+        if (!Story.QuestProgression(4210))
+        {
+            Core.EnsureAccept(4210);
+            Core.HuntMonster("phoenixrise", "Lava Troll", "Sacred Flame");
+            Core.HuntMonster("phoenixrise", "Infernal Goblin", "Lava Rune", 3);
+            Core.HuntMonster("phoenixrise", "Firestorm Tiger", "Tiger Claw", 4);
+            Core.HuntMonster("phoenixrise", "Pyrric Ursus", "Pyrric Gem", 2);
+            Core.EnsureComplete(4210);
+
+        }
 
         //Bridge to Salvation
         Story.KillQuest(4211, "phoenixrise", "Lava Troll");
@@ -317,7 +335,7 @@ public class CoreFireIsland
         Story.KillQuest(4220, "Fireforge", "Firestorm Corporal");
 
         //Round 6: Firestorm Tigers 4221
-        Story.KillQuest(4221, "Fireforge", "Armored Tiger|Firestorm Tiger");
+        Story.KillQuest(4221, "Fireforge", "Firestorm Tiger");
 
         //Round 7: Firestorm Cavalry 4222
         Story.KillQuest(4222, "Fireforge", "Tiger Cavalry");
@@ -354,7 +372,7 @@ public class CoreFireIsland
         Story.KillQuest(4232, "Lavarun", "Mega Tyndarius");
 
         //The Onslaught Fights On 4235
-        Story.KillQuest(4235, "Lavarun", "Firestorm Soldier|Firestorm Scout");
+        Story.KillQuest(4235, "Lavarun", "Firestorm Soldier");
     }
 
     public void Brimstone()
@@ -459,43 +477,63 @@ public class CoreFireIsland
             Core.Logger("You need to be a member for complete the /nightmare questline.");
             return;
         }
+
         Story.PreLoad(this);
 
         //Fear of Clowns? 4143
         Story.KillQuest(4143, "Nightmare", "Bobble Clown");
 
         //FEAR OF CLOWNS!!! 4144
-        Story.KillQuest(4144, "Nightmare", "Crazy Clown|Creepy Clown");
+        Story.KillQuest(4144, "Nightmare", "Crazy Clown");
 
         //Fear of Spiders 4145
-        Story.KillQuest(4145, "Nightmare", "Castle Spider|Cocoon Spider|Tomb Spider");
+        Story.KillQuest(4145, "Nightmare", "Castle Spider");
 
         //Fear of Snakes? 4146
-        Story.KillQuest(4146, "Nightmare", new[] { "Wrasp", "Sneak" });
+        if (!Story.QuestProgression(4146))
+        {
+            Core.EnsureAccept(4146);
+            Core.HuntMonster("Nightmare", "Wrasp", "Grappling Hook");
+            Core.HuntMonster("Nightmare", "Wrasp", "Rope");
+            Core.EnsureComplete(4146);
+        }
 
         //Fear of Falling? 4147
         Story.MapItemQuest(4147, "Nightmare", 3262);
 
         //Fear of Germs? 4148
-        Story.KillQuest(4148, "Nightmare", "Germs|Sewage Elemental");
+        Story.KillQuest(4148, "Nightmare", "Germs");
 
         //Fear of Needles? 4149
         Story.KillQuest(4149, "Nightmare", "Needle");
 
         //Fear of Dolls? 4150
-        Story.KillQuest(4150, "Nightmare", "Broken Toy|Undead Dolly");
+        Story.KillQuest(4150, "Nightmare", "Broken Toy");
 
         //Fear of Being Buried Alive? 4151
-        Story.KillQuest(4151, "Nightmare", new[] { "Unearthed Skeleton", "Rotfeeder Worm" });
+        if (!Story.QuestProgression(4151))
+        {
+            Core.EnsureAccept(4151);
+            Core.HuntMonster("Nightmare", "Unearthed Skeleton", "Skeleton Deboned", 8);
+            Core.HuntMonster("Nightmare", "Rotfeeder Worm", "Rotfeeder squished", 4);
+            Core.EnsureComplete(4151);
+        }
 
         //Fear of Burning? 4152
-        Story.KillQuest(4152, "Nightmare", "Fire Imp|Flame Elemental");
+        Story.KillQuest(4152, "Nightmare", "Fire Imp");
 
         //FEAR OF BURNING!!! 4153
         Story.KillQuest(4153, "Nightmare", "Flame Elemental");
 
         //Fear of Drowning? 4154
-        Story.KillQuest(4154, "Nightmare", new[] { "Anglerfish", "Deep Dweller", "Merdraconian" });
+        if (!Story.QuestProgression(4154))
+        {
+            Core.EnsureAccept(4154);
+            Core.HuntMonster("Nightmare", "Anglerfish", "Anglerfish Defeated", 6);
+            Core.HuntMonster("Nightmare", "Merdraconian", "Merdraconian Defeated", 6);
+            Core.HuntMonster("Nightmare", "Deep Dweller", "Deep Dweller defeated");
+            Core.EnsureComplete(4154);
+        }
 
         //Fear of Inadequacy? 4155
         Story.KillQuest(4155, "Nightmare", "Unearthed Skeleton");

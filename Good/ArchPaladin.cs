@@ -157,7 +157,7 @@ public class ArchPaladin
         // Righteous Seal
         if (!Story.QuestProgression(5469))
         {
-            Core.AddDrop("Scroll of Ethereal Slumber");
+            Core.AddDrop("Scroll of Ethereal Slumber", "Fists of Fire", "Holy Magic Attunement", "Ring of Mana Transposition");
             Core.EnsureAccept(5469);
             Xan.DoAll();
             Core.EquipClass(ClassType.Solo);

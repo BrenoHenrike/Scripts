@@ -47,37 +47,42 @@ public class TheRefreshingDeal
             return;
         }
 
-       Nation.DragonSlayerReward(); //required
+        Nation.DragonSlayerReward(); //required
         PCoD.GetPCoD();
 
-        Core.AddDrop("Gem of Nulgath", "Totem of Nulgath");
+        Core.AddDrop(Core.QuestRewards(4777));
 
-        Core.FarmingLogger("Gem of Nulgath", GemQuant);
-
-        while (!Bot.ShouldExit && !Core.CheckInventory("Gem of Nulgath", GemQuant))
+        if (GemQuant > 0)
         {
-            Core.EnsureAccept(4777);
-            Core.HuntMonster("graveyard", "Big Jack Sprat", "Bone Axe", isTemp: false);
-            Nation.FarmBloodGem(2);
-            Nation.FarmUni10(30);
-            Core.EnsureComplete(4777, 6136);
-            Bot.Wait.ForPickup("Gem of Nulgath");
+            Core.FarmingLogger("Gem of Nulgath", GemQuant);
+            while (!Bot.ShouldExit && !Core.CheckInventory("Gem of Nulgath", GemQuant))
+            {
+                Core.EnsureAccept(4777);
+                Core.HuntMonster("graveyard", "Big Jack Sprat", "Bone Axe", isTemp: false);
+                Nation.FarmBloodGem(2);
+                Nation.FarmUni10(30);
+                Core.EnsureComplete(4777, 6136);
+                Bot.Wait.ForPickup("Gem of Nulgath");
+            }
         }
 
-        Core.FarmingLogger("Totem of Nulgath", TotemQuant);
 
-        while (!Bot.ShouldExit && !Core.CheckInventory("Totem of Nulgath", TotemQuant))
+        if (TotemQuant > 0)
         {
-            Core.EnsureAccept(4777);
-            Core.HuntMonster("graveyard", "Big Jack Sprat", "Bone Axe", isTemp: false);
-            Nation.FarmBloodGem(2);
-            Nation.FarmUni10(30);
-            Core.EnsureComplete(4777, 5357);
-            Bot.Wait.ForPickup("Totem of Nulgath");
-        }
+            Core.FarmingLogger("Totem of Nulgath", TotemQuant);
+            while (!Bot.ShouldExit && !Core.CheckInventory("Totem of Nulgath", TotemQuant))
+            {
+                Core.EnsureAccept(4777);
+                Core.HuntMonster("graveyard", "Big Jack Sprat", "Bone Axe", isTemp: false);
+                Nation.FarmBloodGem(2);
+                Nation.FarmUni10(30);
+                Core.EnsureComplete(4777, 5357);
+                Bot.Wait.ForPickup("Totem of Nulgath");
+            }
 
-        if (Bot.Config!.Get<bool>("BankItems"))
-            Core.ToBank(Nation.bagDrops);
+            if (Bot.Config!.Get<bool>("BankItems"))
+                Core.ToBank(Nation.bagDrops);
+        }
     }
 }
 

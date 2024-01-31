@@ -73,7 +73,7 @@ public class ShadowrealmMerge
                 #endregion
 
                 case "Hollow Soul":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
@@ -86,14 +86,14 @@ public class ShadowrealmMerge
                     break;
 
                 case "Bone Dust":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                         Farm.BattleUnderB(req.Name, quant);
                     break;
 
                 case "Death's Oversight":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                         Core.KillMonster("shadowattack", "Boss", "Left", "Death", req.Name, quant, false);
@@ -105,7 +105,7 @@ public class ShadowrealmMerge
                     break;
 
                 case "Unmoulded Fiend Essence":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Adv.BuyItem("tercessuinotlim", 1951, "Unmoulded Fiend Essence", quant);
                     Bot.Wait.ForPickup(req.Name);
                     break;

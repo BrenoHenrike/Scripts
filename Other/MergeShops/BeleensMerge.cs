@@ -81,7 +81,7 @@ public class BeleensMerge
                     break;
 
                 case "Fuchsia Dye":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.AddDrop("Magenta Dye");
                     if (Core.IsMember)
@@ -117,7 +117,7 @@ public class BeleensMerge
                     break;
 
                 case "Zealith Reavers":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     LegionExercise3.Exercise(new[] { "Judgement Hammer", "Legion Token" });
                     LegionExercise4.Exercise(new[] { "Judgement Scythe", "Legion Token" });
                     CoreLegion.FarmLegionToken(50);
@@ -161,7 +161,7 @@ public class BeleensMerge
                     break;
 
                 case "Iron Dreadsaw":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     if (!Core.CheckInventory("Raw Dreadsaw"))
                     {
                        Nation.ApprovalAndFavor(10, 0);
@@ -181,7 +181,7 @@ public class BeleensMerge
                 case "Dual Manslayer of Taro":
                     if (Core.IsMember)
                     {
-                        Core.FarmingLogger($"{req.Name}", quant);
+                        Core.FarmingLogger(req.Name, quant);
                         Core.EquipClass(ClassType.Farm);
                         Core.RegisterQuests(625);
                         while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
@@ -255,7 +255,7 @@ public class BeleensMerge
                     if (Core.IsMember)
                     {
 
-                        Core.FarmingLogger($"{req.Name}", quant);
+                        Core.FarmingLogger(req.Name, quant);
                         Core.EquipClass(ClassType.Farm);
                         Core.EnsureAccept(2951);
                         while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
@@ -276,7 +276,7 @@ public class BeleensMerge
                     break;
 
                 case "Red Rose":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                         Core.HuntMonster("BattleWedding", "EbilCorp Ninja", "Love Token", 10, isTemp: false);
                     Adv.BuyItem("ArtixWedding", 788, req.Name);
@@ -297,7 +297,7 @@ public class BeleensMerge
                     break;
 
                 case "Reavers Of Good":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                         Core.HuntMonster("BrightFortress", "Dark Assassin", "Mirror Token", 35, isTemp: false);
                     Adv.BuyItem("BrightFortress", 795, req.Name);

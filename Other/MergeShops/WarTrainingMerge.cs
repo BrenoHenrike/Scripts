@@ -71,7 +71,7 @@ public class WarTrainingMerge
                 #endregion
 
                 case "Warfury Emblem":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     Emblem.WarfuryEmblemFarm(quant);
                     break;
@@ -79,13 +79,13 @@ public class WarTrainingMerge
                 case "WarFury Soldier's Morph":
                 case "WarFury Soldier's Armor":
                 case "WarFury Soldier's Blade":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
                     Core.HuntMonster("wartraining", "Varga", req.Name, isTemp: false);
                     break;
 
                 case "Enchanted Scale":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     DSG.EnchantedScaleandClaw(quant, 0);
                     break;
@@ -96,18 +96,18 @@ public class WarTrainingMerge
                         Core.Logger("Legion required.");
                         return;
                     }
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     FCA.FlameForgedMetal(quant);
                     break;
 
                 case "Void Scale":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     FCA.VoidScale(quant);
                     break;
 
                 case "Dragon Scale":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.HuntMonster("lair", "Bronze Draconian|Dark Draconian", req.Name, quant);
                     break;

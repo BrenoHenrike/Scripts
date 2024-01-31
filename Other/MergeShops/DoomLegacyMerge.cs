@@ -72,7 +72,7 @@ public class DoomLegacyMerge
                     break;
 
                 case "Salvaged Deadtech Node":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.RegisterQuests(7601);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
@@ -117,7 +117,7 @@ public class DoomLegacyMerge
                     break;
 
                 case "Zealous Badge":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     DWp3.DoomwoodPart3();
                     Core.RegisterQuests(7616);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))

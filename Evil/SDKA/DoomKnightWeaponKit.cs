@@ -1,7 +1,7 @@
 /*
-name: DoomKnightWeaponKit
-description: null
-tags: null
+name: DoomKnight Weapon Kit
+description: This script will farm DoomKnight Weapon Kit.
+tags: doomknight, doomknightwk, weapon kit, sdka, evil, corrupt spirit orb, ominous aura, grumpy warhammer
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

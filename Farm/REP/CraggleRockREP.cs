@@ -1,7 +1,7 @@
 /*
-name: CraggleRockREP
-description: null
-tags: null
+name: CraggleRock REP
+description: This script will farm CraggleRock reputation to rank 10.
+tags: craggle, rock, rep, reputation, rank
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
