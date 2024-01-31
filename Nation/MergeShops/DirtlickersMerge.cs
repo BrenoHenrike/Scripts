@@ -119,6 +119,10 @@ public class DirtlickersMerge
                     Nation.ApprovalAndFavor(quant, 0);
                     break;
 
+                case "Diamond of Nulgath":
+                    Nation.FarmDiamondofNulgath(300);
+                    break;
+                    
                 case "Totem of Nulgath":
                     Nation.FarmTotemofNulgath(quant);
                     break;
