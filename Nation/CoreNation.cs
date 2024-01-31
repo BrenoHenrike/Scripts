@@ -445,26 +445,26 @@ public class CoreNation
         {
             ItemBase? Reward = Bot.Quests.EnsureLoad(870)?.Rewards.Find(x => x.Name == item);
             string rewardName = Reward?.Name ?? string.Empty;
-            Core.FarmingLogger(rewardName, quant > 1 ? quant : Reward?.MaxStack ?? default(int));
-            while (!Bot.ShouldExit && !Core.CheckInventory(rewardName, quant > 1 ? quant : Reward?.MaxStack ?? default(int)))
+            Core.FarmingLogger(rewardName, quant > 1 ? quant : Reward?.MaxStack ?? default);
+            while (!Bot.ShouldExit && !Core.CheckInventory(rewardName, quant > 1 ? quant : Reward?.MaxStack ?? default))
             {
                 switch (rewardName)
                 {
                     case "Tainted Gem":
                         Supplies("Diamond of Nulgath", 45);
-                        ContractExchange(ContractExchangeRewards.Tainted_Gem, quant > 1 ? quant : Reward?.MaxStack ?? default(int));
+                        ContractExchange(ContractExchangeRewards.Tainted_Gem, quant > 1 ? quant : Reward?.MaxStack ?? default);
                         break;
                     case "Dark Crystal Shard":
                         Supplies("Diamond of Nulgath", 45);
-                        ContractExchange(ContractExchangeRewards.Dark_Crystal_Shard, quant > 1 ? quant : Reward?.MaxStack ?? default(int));
+                        ContractExchange(ContractExchangeRewards.Dark_Crystal_Shard, quant > 1 ? quant : Reward?.MaxStack ?? default);
                         break;
                     case "Gem of Nulgath":
                         Supplies("Diamond of Nulgath", 45);
-                        ContractExchange(ContractExchangeRewards.Gem_of_Nulgath, quant > 1 ? quant : Reward?.MaxStack ?? default(int));
+                        ContractExchange(ContractExchangeRewards.Gem_of_Nulgath, quant > 1 ? quant : Reward?.MaxStack ?? default);
                         break;
                     case "Blood Gem of the Archfiend":
                         Supplies("Diamond of Nulgath", 45);
-                        ContractExchange(ContractExchangeRewards.Blood_Gem_of_the_Archfiend, quant > 1 ? quant : Reward?.MaxStack ?? default(int));
+                        ContractExchange(ContractExchangeRewards.Blood_Gem_of_the_Archfiend, quant > 1 ? quant : Reward?.MaxStack ?? default);
                         break;
                 }
             }
@@ -1075,7 +1075,7 @@ public class CoreNation
     /// </summary>
     /// <param name="item">Item object</param>
     /// <param name="quant">Desired item quantity</param>
-    void LogMobItemQuant2(ItemBase item, int maxStack)
+    void LogMobItemQuant2(ItemBase item, int quant = 1)
     {
         // Check if the specified item is in inventory
         if (!Core.CheckInventory(item.Name))
@@ -1094,7 +1094,7 @@ public class CoreNation
         // If the quantity changes or increases during the interval, log the updated quantity
         if (currentQuant > startQuant)
         {
-            Core.FarmingLogger(item.Name, item.MaxStack);
+            Core.FarmingLogger(item.Name, quant > 1 ? item.MaxStack : 1);
 
             // Wait for a short period again (optional)
             Core.Sleep(1500);
