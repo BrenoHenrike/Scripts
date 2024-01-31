@@ -11,7 +11,7 @@ public class TenacityChallenge
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
-    private Dailies Daily = new();
+    private CoreDailies Daily = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
