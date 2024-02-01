@@ -446,7 +446,6 @@ public class CoreArchMage
             ArcaneLocus(1);
 
         Core.FarmingLogger("Unbound Tome", quant);
-        // int MaterialsQuant = quant - (Bot.Inventory.Items.FirstOrDefault(x => x.Name == "Unbound Tome")?.Quantity ?? 0);
 
         MysticScribingKit(quant);
         PrismaticEther(quant);
@@ -455,7 +454,7 @@ public class CoreArchMage
 
         Core.AddDrop("Unbound Tome");
         while (!Bot.ShouldExit
-        && Core.CheckInventory(new[] { "Mystic Scribing Kit", "Prismatic Ether", "Arcane Locus", "Dragon Runestone" })
+        && Core.CheckInventory(new[] { "Mystic Scribing Kit", "Prismatic Ether", "Arcane Locus" })
         && !Core.CheckInventory("Unbound Tome", quant))
         {
             Core.EnsureAccept(8912);
