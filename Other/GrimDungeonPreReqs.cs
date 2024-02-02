@@ -48,7 +48,6 @@ public class GrimDungeonPreReqs
         }
 
         // Smite the Boulder! (9463)
-
         if (!Story.QuestProgression(9463))
         {
             Core.EnsureAccept(9463);
