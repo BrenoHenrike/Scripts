@@ -43,7 +43,7 @@ public class FiendishStormOrbQuestPet
 
         SCM.BuyAllMerge("Cape of Lightning");
         Core.EquipClass(ClassType.Solo);
-        Core.HuntMonster("pride", "Valsarian", "BoltStriker Armro", isTemp: false);
+        Core.HuntMonster("pride", "Valsarian", "BoltStriker Armor", isTemp: false);
         Core.HuntMonster("queenreign", "Extriki", "LightningLord", isTemp: false);
 
         if (Core.CheckInventory(83720))
