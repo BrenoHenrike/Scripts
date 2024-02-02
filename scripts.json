@@ -9077,7 +9077,7 @@
       "null"
     ],
     "path": "Other/MergeShops/StormCacheMerge.cs",
-    "size": 3738,
+    "size": 4211,
     "fileName": "StormCacheMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/StormCacheMerge.cs"
   },
@@ -12891,6 +12891,23 @@
     "size": 1415,
     "fileName": "CarveTheUnidentifiedGemStone[Member].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/CarveTheUnidentifiedGemStone[Member].cs"
+  },
+  {
+    "name": "Fiendish Storm Orb Quest Pet",
+    "description": "This script will complete the \"Fiendish Storm Orb Quest Pet\" [9507] quest.",
+    "tags": [
+      "fiendish",
+      "cape of lightning",
+      "boltstriker",
+      "lightninglord",
+      "stormbringer",
+      "reaver",
+      "reavers"
+    ],
+    "path": "Nation/Various/FiendishStormOrbQuestPet.cs",
+    "size": 1723,
+    "fileName": "FiendishStormOrbQuestPet.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/FiendishStormOrbQuestPet.cs"
   },
   {
     "name": "PrimeFiendShardQuests",
