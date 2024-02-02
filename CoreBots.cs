@@ -3328,6 +3328,9 @@ public class CoreBots
                 SimpleQuestBypass((49, 25));
                 break;
 
+            case "wanders":
+                SimpleQuestBypass((176, 6));
+                break;
 
             case "kitsune":
                 SimpleQuestBypass((25, 22));

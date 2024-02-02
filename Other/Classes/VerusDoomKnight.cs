@@ -110,6 +110,7 @@ public class VerusDoomKnightClass
             Core.EnsureAccept(9417);
             Core.Logger("The map \"Wanders\", is a bit broke,\n" +
             "it will take a minute to hunt the mosnter");
+            Bot.Quests.UpdateQuest(3773);
             Core.HuntMonsterMapID("wanders", 46, "Trace of Light", 8, false); //i hate this map
             Adv.BoostHuntMonster("lightguardwar", "Extreme Noxus", "Trace of Dark", 8, false);
             Adv.BoostHuntMonster("eternalchaos", "Bandit Drakath", "Trace of Wind", 8, false);

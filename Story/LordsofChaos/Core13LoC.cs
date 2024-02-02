@@ -925,8 +925,6 @@ public class Core13LoC
         //Confront Duat
         Story.MapItemQuest(971, "pyramid", 304);
 
-        Bot.Quests.UpdateQuest(3773);
-
         //They've Gone Dark
         if (!Story.QuestProgression(972))
         {
@@ -979,7 +977,6 @@ public class Core13LoC
         if (!Story.QuestProgression(978))
         {
             Core.EnsureAccept(978);
-            Bot.Quests.UpdateQuest(3773);
             Core.HuntMonsterMapID("wanders", 46, "Sek-Duat Defeated");
             Core.EnsureComplete(978);
             //Editors Note: PLEASE stop breaking this
