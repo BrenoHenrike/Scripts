@@ -17,6 +17,7 @@ public class CombatTrophy
 
     public void ScriptMain(IScriptInterface bot)
     {
+        Core.BankingBlackList.AddRange(new[] { "The Secret 4", "Yoshino's Citrine", "Combat Trophy" });
         Core.SetOptions();
 
         DoCombatTrophy();

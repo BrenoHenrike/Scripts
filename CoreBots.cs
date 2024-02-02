@@ -3328,6 +3328,9 @@ public class CoreBots
                 SimpleQuestBypass((49, 25));
                 break;
 
+            case "wanders":
+                SimpleQuestBypass((176, 6));
+                break;
 
             case "kitsune":
                 SimpleQuestBypass((25, 22));
@@ -3382,7 +3385,6 @@ public class CoreBots
                 SimpleQuestBypass((126, 18));
                 break;
 
-            case "wanders":
             case "pyramid":
             case "djinn":
                 SimpleQuestBypass((36, 28));
