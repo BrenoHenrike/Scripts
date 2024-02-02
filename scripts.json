@@ -1791,6 +1791,25 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/CorruptDraconicParagon.cs"
   },
   {
+    "name": "Grimskull Dungeon Pre Reqs",
+    "description": "This script will complete the quest prereqs to unlock Grimskull Dungeon.",
+    "tags": [
+      "grim",
+      "dungeon",
+      "grimskull",
+      "trolling",
+      "rep",
+      "skullcrusher",
+      "gaol",
+      "grimgaol",
+      "gaolcell"
+    ],
+    "path": "Other/GrimDungeonPreReqs.cs",
+    "size": 2353,
+    "fileName": "GrimDungeonPreReqs.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/GrimDungeonPreReqs.cs"
+  },
+  {
     "name": "Shadow Dragon Defender",
     "description": "if \"Manticore Cub Pet\" is owned, it will buy \"Shadow Dragon Defender\"",
     "tags": [
