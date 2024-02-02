@@ -244,6 +244,7 @@ public class CoreFarms
         if (Bot.Player.Level < 30)
         {
             //i swear this is active yearround for a black friday "locked" quest according to the wiki.. keep undead warrior as a backup.. undead giant is slower but will work till we find a fillin - perhaps sluethhouseinn? used to be good years ago
+            //piggydrake quest
             if (Bot.Quests.IsAvailable(6979))
             {
                 Core.EquipClass(ClassType.Solo);
@@ -1989,26 +1990,29 @@ public class CoreFarms
         Core.ToggleAggro(false);
 
         Core.Logger($"Farming rank {rank}");
-
-        if (!Core.isCompletedBefore(5155))
+        Core.Logger("Checking if farm quests are unlocked--");
+        if (Core.isCompletedBefore(5157))
         {
-            Core.EnsureAccept(5155);
-            DeathPitToken();
-            Core.EnsureComplete(5155);
+            Core.Logger("Unlocking farm quets");
+            if (!Core.isCompletedBefore(5155))
+            {
+                Core.EnsureAccept(5155);
+                DeathPitToken();
+                Core.EnsureComplete(5155);
+            }
+
+            if (!Core.isCompletedBefore(5156))
+                Core.ChainComplete(5156);
+
+            if (!Core.isCompletedBefore(5157))
+            {
+                Core.EnsureAccept(5157);
+                RunDeathPitBrawl("Death Pit Token", 1, 1);
+                Core.EnsureComplete(5157);
+            }
         }
 
-        if (!Core.isCompletedBefore(5156))
-            Core.ChainComplete(5156);
-
-        if (!Core.isCompletedBefore(5157))
-        {
-            Core.EnsureAccept(5157);
-            RunDeathPitBrawl("Death Pit Token", 1, 1);
-            Core.EnsureComplete(5157);
-        }
-
-        Core.ToggleAggro(false);
-
+        Core.Logger("Rep Time");
         RunDeathPitBrawl();
 
         Core.CancelRegisteredQuests();
@@ -2018,28 +2022,49 @@ public class CoreFarms
 
     void RunDeathPitBrawl(string item = "Death Pit Token", int quant = 1, int rank = 10)
     {
-        Core.RegisterQuests(5156, 5157, 5165);
+        foreach (int QID in new[] { 5156, 5157, 5165 })
+        {
+            if (Bot.Quests.IsUnlocked(QID))
+                Core.RegisterQuests(QID);
+        }
+
+        int ExitAttempt = 1;
+        int Death = 1;
+
+    Start:
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant) || FactionRank("Death Pit Brawl") < rank)
         {
             while (!Bot.ShouldExit && Bot.Map.Name != "deathpitbrawl")
             {
                 Core.Logger("Joining Brawl");
-                Core.Join("DeathPitbrawl", "Enter0", "Spawn");
+                Core.Join("deathpitbrawl-9999999", "Enter0", "Spawn");
                 Core.Sleep();
             }
 
             int Move = 1;
             Core.PvPMove(5, "Morale0C", 228, 291);
             Core.Logger($"Move: {Move++}");
+            if (!Bot.Player.Alive)
+                goto RestartOnDeath;
             Core.PvPMove(4, "Morale0B", 936, 397);
+            if (!Bot.Player.Alive)
+                goto RestartOnDeath;
             Core.Logger($"Move: {Move++}");
             Core.PvPMove(7, "Morale0A", 946, 394);
+            if (!Bot.Player.Alive)
+                goto RestartOnDeath;
             Core.Logger($"Move: {Move++}");
             Core.PvPMove(9, "Crosslower", 948, 400);
+            if (!Bot.Player.Alive)
+                goto RestartOnDeath;
             Core.Logger($"Move: {Move++}");
             Core.PvPMove(14, "Crossupper", 903, 324);
+            if (!Bot.Player.Alive)
+                goto RestartOnDeath;
             Core.Logger($"Move: {Move++}");
             Core.PvPMove(18, "Resource1A", 482, 295);
+            if (!Bot.Player.Alive)
+                goto RestartOnDeath;
             Core.Logger($"Move: {Move++}, Restorers");
 
             foreach (int mon in new[] { 9, 10 })
@@ -2052,9 +2077,16 @@ public class CoreFarms
                     Core.Join("battleon");
                     return;
                 }
+
+                if (!Bot.Player.Alive)
+                    goto RestartOnDeath;
             }
 
+            if (!Bot.Player.Alive)
+                goto RestartOnDeath;
             Core.PvPMove(20, "Resource1B", 938, 400);
+            if (!Bot.Player.Alive)
+                goto RestartOnDeath;
             Core.Logger($"Move: {Move++}, Restorers room 2");
 
             foreach (int mon in new[] { 11, 12 })
@@ -2067,15 +2099,27 @@ public class CoreFarms
                     Core.Join("battleon");
                     return;
                 }
+                if (!Bot.Player.Alive)
+                    goto RestartOnDeath;
             }
 
+            if (!Bot.Player.Alive)
+                goto RestartOnDeath;
             Core.PvPMove(21, "Resource1A", 9, 435);
+            if (!Bot.Player.Alive)
+                goto RestartOnDeath;
             Core.Logger($"Move: {Move++}");
             Core.PvPMove(19, "Crossupper", 461, 315);
+            if (!Bot.Player.Alive)
+                goto RestartOnDeath;
             Core.Logger($"Move: {Move++}");
             Core.PvPMove(17, "Crosslower", 54, 339);
+            if (!Bot.Player.Alive)
+                goto RestartOnDeath;
             Core.Logger($"Move: {Move++}");
             Core.PvPMove(15, "Morale1A", 522, 286);
+            if (!Bot.Player.Alive)
+                goto RestartOnDeath;
             Core.Logger($"Move: {Move++}, Velm's Brawler");
 
             foreach (int mon in new[] { 13 })
@@ -2088,9 +2132,15 @@ public class CoreFarms
                     Core.Join("battleon");
                     return;
                 }
+                if (!Bot.Player.Alive)
+                    goto RestartOnDeath;
             }
 
+            if (!Bot.Player.Alive)
+                goto RestartOnDeath;
             Core.PvPMove(23, "Morale1B", 948, 403);
+            if (!Bot.Player.Alive)
+                goto RestartOnDeath;
             Core.Logger($"Move: {Move++}, Velm's Brawler");
 
             foreach (int mon in new[] { 14 })
@@ -2103,9 +2153,15 @@ public class CoreFarms
                     Core.Join("battleon");
                     return;
                 }
+                if (!Bot.Player.Alive)
+                    goto RestartOnDeath;
             }
 
+            if (!Bot.Player.Alive)
+                goto RestartOnDeath;
             Core.PvPMove(25, "Morale1C", 945, 397);
+            if (!Bot.Player.Alive)
+                goto RestartOnDeath;
             Core.Logger($"Move: {Move++}, Velm's Brawler");
 
             foreach (int mon in new[] { 15 })
@@ -2118,9 +2174,15 @@ public class CoreFarms
                     Core.Join("battleon");
                     return;
                 }
+                if (!Bot.Player.Alive)
+                    goto RestartOnDeath;
             }
 
+            if (!Bot.Player.Alive)
+                goto RestartOnDeath;
             Core.PvPMove(28, "Captain1", 943, 404);
+            if (!Bot.Player.Alive)
+                goto RestartOnDeath;
             Core.Logger($"Move: {Move++}, General Velm (B)");
 
             foreach (int mon in new[] { 16 })
@@ -2133,8 +2195,12 @@ public class CoreFarms
                     Core.Join("battleon");
                     return;
                 }
+                if (!Bot.Player.Alive)
+                    goto RestartOnDeath;
             }
 
+            if (!Bot.Player.Alive)
+                goto RestartOnDeath;
             Core.Sleep(5000);
 
             Bot.Wait.ForDrop(item, 40);
@@ -2143,14 +2209,54 @@ public class CoreFarms
             Core.Logger("Delaying exit");
             Core.Sleep();
 
-            while (Bot.Map.Name != "battleon" && !Bot.Drops.Exists(item))
+            if (!Bot.Player.Alive)
+                goto RestartOnDeath;
+            else goto Exit;
+
+
+            Exit:
+            while (!Bot.ShouldExit && Bot.Map.Name != "battleon")
             {
-                int i = 1;
-                Core.Logger($"Attemping Exit {i++}.");
+                Core.Logger($"Attempting Exit {ExitAttempt++}.");
                 Bot.Map.Join("battleon-999999");
+                Bot.Combat.CancelTarget();
+                Bot.Wait.ForCombatExit();
                 Core.Sleep(1500);
+                if (Bot.Map.Name != "battleon")
+                    Core.Logger("Failed!? HOW.. try agian");
+                else Core.Logger("Successful!");
+                goto Start;
+            }
+
+        RestartOnDeath:
+            Core.Logger($"Death: {Death++}, resetting");
+            while (!Bot.ShouldExit && !Bot.Player.Alive)
+            {
+                Bot.Wait.ForTrue(() => Bot.Player.Alive, 100);
+                Bot.Wait.ForCellChange("Enter0");
+                Core.Logger($"Attempting Exit {ExitAttempt++}.");
+                Bot.Map.Join("battleon-999999");
+                Bot.Wait.ForMapLoad("battleon");
+                Core.Sleep(1500);
+                if (Bot.Map.Name != "battleon")
+                    Core.Logger("Failed!? HOW.. try agian");
+                else
+                {
+                    Core.Logger("Successful!");
+                    goto Start;
+                }
             }
         }
+
+        foreach (string reward in new[] { "Yoshino's Citrine", "The Secret 4" })
+        {
+            if (item != reward && Bot.Inventory.Contains(reward))
+                Core.ToBank(reward);
+        }
+
+        Core.Logger($"Deaths:[{Death}]");
+        Death = 0;
+        ExitAttempt = 0;
     }
 
     public void DeathPitToken(string item = "Death Pit Token", int quant = 30, bool isTemp = false)
