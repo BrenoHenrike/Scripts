@@ -67,13 +67,22 @@ public class StormCacheMerge
                 case "Tonitrus Gem":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
-                    Core.RegisterQuests(4146);
+                    if (!Core.CheckInventory(Core.QuestRewards(4243)))
+                    {
+                        Core.AddDrop(Core.QuestRewards(4243));
+                        Core.EnsureAccept(4243);
+                        Core.HuntMonster("thunderfang", "Energy Elemental", "Gem Found");
+                        Core.EnsureComplete(4243);
+                    }
+                    // Core.RegisterQuests(4246);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("thunderfang", "Storm Draconian", "Storm Draconians Defeated", 8);
+                        Core.EnsureAccept(4246);
+                        Core.HuntMonster("thunderfang", "Storm Draconian", "Storm Draconian Defeated", 8);
+                        Core.EnsureComplete(4246);
                         Bot.Wait.ForPickup(req.Name);
                     }
-                    Core.CancelRegisteredQuests();
+                    // Core.CancelRegisteredQuests();
                     break;
 
             }
