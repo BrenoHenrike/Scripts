@@ -722,17 +722,36 @@ public class UnlockForgeEnhancements
 
     public void Absolution()
     {
-        // if (Core.isCompletedBefore(8743))
-        //     return;
+        if (Core.isCompletedBefore(8743))
+            return;
 
         Core.Logger("Unlocking Enhancement: Absolution");
 
-        // Farm.Experience(90);
-        // Farm.GoodREP(10);
-        // Farm.BlacksmithingREP(9, Bot.Config!.Get<bool>("UseGold"), Bot.Config!.Get<bool>("UseGold"));
+        Farm.Experience(90);
+        Farm.GoodREP(10);
+        Farm.BlacksmithingREP(9, Bot.Config!.Get<bool>("UseGold"), Bot.Config!.Get<bool>("UseGold"));
+
+        int SlimeSigil = 200;
+
+        // Define items and their corresponding deduction values
+        Dictionary<int, int> itemsToCheck = new()
+        {
+            { 39091, 100 },  // Ascended Paladin
+            { 39093, 50 },   // Ascended Paladin Staff
+            { 39094, 50 }    // Ascended Paladin Sword
+        };
+
+        // Check each item in the dictionary and deduct points if not found
+        foreach (var item in itemsToCheck)
+        {
+            if (Core.CheckInventory(item.Key))
+            {
+                SlimeSigil -= item.Value;
+            }
+        }
 
         Core.EquipClass(ClassType.Farm);
-        Core.KillMonster("therift", "r9", "Left", "Plague Spreader", "Slimed Sigil", 200, isTemp: false);
+        Core.KillMonster("therift", "r9", "Left", "Plague Spreader", "Slimed Sigil", SlimeSigil, isTemp: false);
         Adv.BuyItem("therift", 1399, "Ascended Paladin", shopItemID: 5244);
         Adv.BuyItem("therift", 1399, "Ascended Paladin Staff", shopItemID: 5246);
         Adv.BuyItem("therift", 1399, "Ascended Paladin Sword", shopItemID: 5247);

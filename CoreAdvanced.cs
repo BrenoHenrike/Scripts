@@ -46,6 +46,13 @@ public class CoreAdvanced
             return;
 
         Core.Join(map);
+
+        if (Bot.Player.InCombat || Bot.Player.HasTarget)
+        {
+            Core.JumpWait();
+            Bot.Wait.ForCombatExit();
+        }
+
         ShopItem? item = Core.parseShopItem(Core.GetShopItems(map, shopID).Where(x => shopItemID == 0 ? x.Name.ToLower() == itemName.ToLower() : x.ShopItemID == shopItemID).ToList(), shopID, itemName);
         if (item == null)
             return;
@@ -68,6 +75,13 @@ public class CoreAdvanced
             return;
 
         Core.Join(map);
+
+        if (Bot.Player.InCombat || Bot.Player.HasTarget)
+        {
+            Core.JumpWait();
+            Bot.Wait.ForCombatExit();
+        }
+
         ShopItem? item = Core.parseShopItem(Core.GetShopItems(map, shopID).Where(x => shopItemID == 0 ? x.ID == itemID : x.ShopItemID == shopItemID).ToList(), shopID, itemID.ToString());
         if (item == null)
             return;
