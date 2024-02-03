@@ -217,8 +217,8 @@ public class UnlockForgeEnhancements
                     HerosValiance();
                     break;
 
-                case ForgeQuestWeapon.ArcanasConcertoWIP:
-                    ArcanasConcertoWIP();
+                case ForgeQuestWeapon.ArcanasConcerto:
+                    ArcanasConcerto();
                     break;
 
                 case ForgeQuestWeapon.Elysium:
@@ -246,7 +246,7 @@ public class UnlockForgeEnhancements
                     Acheron();
                     HerosValiance();
                     Elysium();
-                    ArcanasConcertoWIP();
+                    ArcanasConcerto();
                     DauntLess();
                     Ravenous();
                     break;
@@ -528,7 +528,7 @@ public class UnlockForgeEnhancements
         Core.Logger("Enhancement Unlocked: Hero's Valiance");
     }
 
-    public void ArcanasConcertoWIP()
+    public void ArcanasConcerto()
     {
         if (Core.isCompletedBefore(8742))
             return;
@@ -722,20 +722,20 @@ public class UnlockForgeEnhancements
 
     public void Absolution()
     {
-        if (Core.isCompletedBefore(8743))
-            return;
+        // if (Core.isCompletedBefore(8743))
+        //     return;
 
         Core.Logger("Unlocking Enhancement: Absolution");
 
-        Farm.Experience(90);
-        Farm.GoodREP(10);
-        Farm.BlacksmithingREP(9, Bot.Config!.Get<bool>("UseGold"), Bot.Config!.Get<bool>("UseGold"));
+        // Farm.Experience(90);
+        // Farm.GoodREP(10);
+        // Farm.BlacksmithingREP(9, Bot.Config!.Get<bool>("UseGold"), Bot.Config!.Get<bool>("UseGold"));
 
         Core.EquipClass(ClassType.Farm);
         Core.KillMonster("therift", "r9", "Left", "Plague Spreader", "Slimed Sigil", 200, isTemp: false);
-        Adv.BuyItem("therift", 1399, 39091, shopItemID: 5244);
-        Adv.BuyItem("therift", 1399, 39093, shopItemID: 5246);
-        Adv.BuyItem("therift", 1399, 39094, shopItemID: 5247);
+        Adv.BuyItem("therift", 1399, "Ascended Paladin", shopItemID: 5244);
+        Adv.BuyItem("therift", 1399, "Ascended Paladin Staff", shopItemID: 5246);
+        Adv.BuyItem("therift", 1399, "Ascended Paladin Sword", shopItemID: 5247);
 
         Core.ChainComplete(8743);
         Core.Logger("Enhancement Unlocked: Absolution");
@@ -1063,7 +1063,7 @@ public enum ForgeQuestWeapon
     Acheron,
     HerosValiance,
     Elysium,
-    ArcanasConcertoWIP,
+    ArcanasConcerto,
     DauntLess,
     Ravenous,
     None,
