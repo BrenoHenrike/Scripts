@@ -159,7 +159,7 @@ public class SuppliesWheelArmy
             {
                 Army.AggroMonStop(true);
                 Core.JumpWait();
-                Nation.ResetQuest(7551);
+                Core.ResetQuest(7551);
                 while (!Bot.ShouldExit && !Core.CheckInventory("Dark Makai Rune"))
                 {
                     // Define the maps with their corresponding indexes

@@ -3979,6 +3979,18 @@ public class CoreBots
         return nr < 1000;
     }
 
+    public void ResetQuest(int QuestID = 0000)
+    {
+        // Dark makai and their Sigils / Runes are fucky... use this with the aproriate QuestID below:
+        // Swindles Return: 7551
+        // Diamond Exchange: 869
+
+        EnsureAccept(QuestID);
+        Bot.Wait.ForQuestAccept(QuestID, 20);
+        AbandonQuest(QuestID);
+        EnsureAccept(QuestID);
+    }
+
     /// <summary>
     /// Checks if the map is available for joining or it is seasonal and not yet released
     /// </summary>

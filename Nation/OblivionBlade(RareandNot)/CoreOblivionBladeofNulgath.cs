@@ -35,7 +35,7 @@ public class CoreOblivionBladeofNulgath
         Core.RegisterQuests(Core.CheckInventory("Oblivion Blade of Nulgath Pet") ? 1122 : 1109);
         if (!Core.CheckInventory("Oblivion Wrath Blade Of Nulgath"))
             Nation.FarmGemofNulgath(10);
-        Nation.ResetQuest(870);
+        Core.ResetQuest(870);
         Core.HuntMonster("tercessuinotlim", "Taro Blademaster", "Blade Master Rune");
         Core.CancelRegisteredQuests();
     }

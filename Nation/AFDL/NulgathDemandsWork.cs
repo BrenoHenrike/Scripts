@@ -119,7 +119,7 @@ public class NulgathDemandsWork
         Core.AddDrop("Unidentified 27");
         Nation.Supplies("Unidentified 26", 1);
         Core.EnsureAccept(584);
-        Nation.ResetQuest(7551);
+        Core.ResetQuest(7551);
         while (!Bot.ShouldExit && !Core.CheckInventory("Dark Makai Sigil"))
         {
             // Define the maps with their corresponding indexes
