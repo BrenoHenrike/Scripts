@@ -1337,6 +1337,7 @@ public class CoreFarms
 
             if (!Core.isCompletedBefore(2937))
             {
+                Core.ResetQuest(2937);
                 Core.Logger($"Doing Quest: [2937] - \"Find the Runes!\"");
                 Core.EquipClass(ClassType.Solo);
                 Core.EnsureAccept(2937);
