@@ -68,8 +68,11 @@ public class AweMerge
                 #endregion
 
                 case "Aura of Awe":
-                    if (!Bot.Player.IsMember)
+                    if (!Core.IsMember)
+                    {
+                        Core.Logger("You need to be member.");
                         break;
+                    }
 
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
