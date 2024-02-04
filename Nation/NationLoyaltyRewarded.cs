@@ -26,7 +26,7 @@ public class NationLoyaltyRewarded
     public void ScriptMain(IScriptInterface bot)
     {
         var questRewards = Core.QuestRewards(4749);
-        var acceptRequirements = Bot.Quests.EnsureLoad(4749)?.AcceptRequirements;
+        var acceptRequirements = Core.EnsureLoad(4749)?.AcceptRequirements;
 
         Core.BankingBlackList.AddRange(
             (questRewards != null ? questRewards.Select(item => item.ToString()) : Enumerable.Empty<string>())
@@ -47,7 +47,7 @@ public class NationLoyaltyRewarded
             var allRewards = Core.EnsureLoad(4749).Rewards;
             foreach (var item in allRewards)
             {
-                NLR(new[] { item.Name }, quantity == 0 ? (Bot.Quests.EnsureLoad(4749)?.Rewards.Find(x => x.Name == item.Name)?.MaxStack ?? 0) : quantity);
+                NLR(new[] { item.Name }, quantity == 0 ? (Core.EnsureLoad(4749)?.Rewards.Find(x => x.Name == item.Name)?.MaxStack ?? 0) : quantity);
             }
         }
         else

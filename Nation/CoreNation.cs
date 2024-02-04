@@ -443,7 +443,7 @@ public class CoreNation
 
         if (item != null)
         {
-            ItemBase? Reward = Bot.Quests.EnsureLoad(870)?.Rewards.Find(x => x.Name == item);
+            ItemBase? Reward = Core.EnsureLoad(870)?.Rewards.Find(x => x.Name == item);
             string rewardName = Reward?.Name ?? string.Empty;
             Core.FarmingLogger(rewardName, quant > 1 ? quant : Reward?.MaxStack ?? default);
             while (!Bot.ShouldExit && !Core.CheckInventory(rewardName, quant > 1 ? quant : Reward?.MaxStack ?? default))
@@ -473,7 +473,7 @@ public class CoreNation
         {
             foreach (string? thing in rewards)
             {
-                ItemBase? Reward = Bot.Quests.EnsureLoad(870)?.Rewards.Find(item => item.Name == thing) ?? new ItemBase();
+                ItemBase? Reward = Core.EnsureLoad(870)?.Rewards.Find(item => item.Name == thing) ?? new ItemBase();
                 Core.FarmingLogger(Reward.Name, quant);
                 while (!Bot.ShouldExit && !Core.CheckInventory(Reward.Name, quant > 1 ? quant : Reward.MaxStack))
                 {
@@ -1619,8 +1619,8 @@ public class CoreNation
         // NewWorldsNewOpportunities("Totem of Nulgath", quant);
         // VoidKightSwordQuest("Totem of Nulgath", quant);
         Core.Logger(Taro ? "Method choosen (if pets not owned): Taro" : "Method choosen (if pets not owned): Voucher Item");
-        Quest? TotemQuest = Bot.Quests.EnsureLoad(726);
-        if (Taro && !TotemQuest!.Upgrade || Core.IsMember)
+        Quest? TotemQuest = Core.EnsureLoad(726);
+        if (Taro && !TotemQuest!.Upgrade && TotemQuest != null && Bot.Quests.IsAvailable(TotemQuest.ID) || Core.IsMember)
         {
             Core.EquipClass(ClassType.Solo);
             while (!Bot.ShouldExit && !Core.CheckInventory("Totem of Nulgath", quant))

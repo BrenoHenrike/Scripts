@@ -585,7 +585,7 @@ public class CoreDailies
             Core.EnsureComplete(3319, 22332);
         else
         {
-            foreach (ItemBase Item in Bot.Quests.EnsureLoad(3319)!.Rewards)
+            foreach (ItemBase Item in Core.EnsureLoad(3319)!.Rewards)
             {
                 if (Core.CheckInventory(Item.ID, Item.MaxStack))
                     continue;

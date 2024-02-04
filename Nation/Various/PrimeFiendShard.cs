@@ -82,7 +82,7 @@ public class PrimeFiendShard
     {
         for (int questId = 9555; questId <= 9559; questId++)
         {
-            Quest? quest = Bot.Quests.EnsureLoad(questId);
+            Quest? quest = Core.EnsureLoad(questId);
 
             if (quest != null)
             {
@@ -141,7 +141,7 @@ public class PrimeFiendShard
             DirtlickersMerge.BuyAllMerge("Iron Dreadsaw");
 
             // Ensure requirements are unbanked
-            Quest? Quest = Bot.Quests.EnsureLoad(9555);
+            Quest? Quest = Core.EnsureLoad(9555);
             foreach (ItemBase Item in Quest!.Requirements)
                 while (!Bot.ShouldExit && !Core.CheckInventory(Item.ID))
                 {
@@ -162,7 +162,7 @@ public class PrimeFiendShard
             VoidSpartan.GetSpartan("Void Spartan");
 
             // Ensure requirements are unbanked
-            Quest? Quest = Bot.Quests.EnsureLoad(9556);
+            Quest? Quest = Core.EnsureLoad(9556);
             foreach (ItemBase Item in Quest!.Requirements)
                 while (!Bot.ShouldExit && !Core.CheckInventory(Item.ID))
                 {
@@ -183,7 +183,7 @@ public class PrimeFiendShard
             Nation.EssenceofNulgath(60);
 
             // Ensure requirements are unbanked
-            Quest? Quest = Bot.Quests.EnsureLoad(9557);
+            Quest? Quest = Core.EnsureLoad(9557);
             foreach (ItemBase Item in Quest!.Requirements)
                 while (!Bot.ShouldExit && !Core.CheckInventory(Item.ID))
                 {
@@ -205,7 +205,7 @@ public class PrimeFiendShard
             //ooga booga it wont complete
 
             // Ensure requirements are unbanked
-            Quest? Quest = Bot.Quests.EnsureLoad(9558);
+            Quest? Quest = Core.EnsureLoad(9558);
             foreach (ItemBase Item in Quest!.Requirements)
                 while (!Bot.ShouldExit && !Core.CheckInventory(Item.ID))
                 {
@@ -230,7 +230,7 @@ public class PrimeFiendShard
                 VHL.VHLChallenge(10);
 
             // Ensure requirements are unbanked
-            Quest? Quest = Bot.Quests.EnsureLoad(9559);
+            Quest? Quest = Core.EnsureLoad(9559);
             foreach (ItemBase Item in Quest!.Requirements)
                 while (!Bot.ShouldExit && !Core.CheckInventory(Item.ID))
                 {

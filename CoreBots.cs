@@ -1495,7 +1495,10 @@ public class CoreBots
         Quest QuestData = EnsureLoad(questID);
 
         if (QuestData.Upgrade && !IsMember)
+        {
             Logger($"\"{QuestData.Name}\" [{questID}] is member-only, stopping the bot.", stopBot: true);
+            return false;
+        }
 
         if (Bot.Quests.IsInProgress(questID))
             return true;
@@ -1503,36 +1506,25 @@ public class CoreBots
         if (questID <= 0)
             return false;
 
+        foreach (ItemBase item in QuestData.AcceptRequirements
+            .Concat(QuestData.Requirements)
+            .Where(item => !string.IsNullOrEmpty(item?.Name) 
+            && item != null 
+            && !Bot.Drops.ToPickupIDs.Contains(item.ID)))
+        {
+            if (!Bot.Inventory.Contains(item.ID))
+                Unbank(item.ID);
 
-        var requiredItemNames = QuestData.AcceptRequirements
-        .Concat(QuestData.Requirements)
-        .Select(item => item?.Name)
-        .Where(name => !string.IsNullOrEmpty(name))
-        .ToArray();
-
-        foreach (var itemName in requiredItemNames)
-            if (itemName != null && !Bot.Inventory.Contains(itemName))
-                Unbank(itemName);
-
-        if (QuestData.AcceptRequirements.Any())
-            foreach (ItemBase item in QuestData.AcceptRequirements)
-            {
-                if (!Bot.Drops.ToPickupIDs.Contains(item.ID))
-                    Bot.Drops.Add(item.ID);
-            }
-
-        if (QuestData.Requirements.Any())
-            foreach (ItemBase item in QuestData.Requirements)
-            {
-                if (!Bot.Drops.ToPickupIDs.Contains(item.ID))
-                    Bot.Drops.Add(item.ID);
-            }
-
+            if (!Bot.Drops.ToPickupIDs.Contains(item.ID))
+                Bot.Drops.Add(item.ID);
+        }
 
         Sleep(ActionDelay * 2);
         // Bot.Send.Packet($"%xt%zm%acceptQuest%{Bot.Map.RoomID}%{questID}%");
         return Bot.Quests.EnsureAccept(questID);
     }
+
+
 
 
     /// <summary>
@@ -1879,7 +1871,7 @@ public class CoreBots
         }
         catch
         {
-            QuestData = Bot.Quests.EnsureLoad(QuestID);
+            QuestData = EnsureLoad(QuestID);
             return QuestData?.Slot < 0 || Bot.Flash.CallGameFunction<int>("world.getQuestValue", QuestData!.Slot) >= QuestData.Value;
         }
     }

@@ -71,8 +71,8 @@ public class ArmyTemplatev4 //Rename This
         //~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~~-~-~
 
         //Edit these here replacing item# & "item" with the apropriate item name
-        ItemBase? Item1 = Bot.Quests.EnsureLoad(QuestID)?.Rewards.FirstOrDefault(x => x.Name == "Item");
-        ItemBase? Item2 = Bot.Quests.EnsureLoad(QuestID)?.Rewards.FirstOrDefault(x => x.Name == "Item");
+        ItemBase? Item1 = Core.EnsureLoad(QuestID)?.Rewards.FirstOrDefault(x => x.Name == "Item");
+        ItemBase? Item2 = Core.EnsureLoad(QuestID)?.Rewards.FirstOrDefault(x => x.Name == "Item");
         //add more itembases if needed, and if the quest is different change the QuetID in teh `EnsureLoad()`.
 
 
@@ -107,7 +107,7 @@ public class ArmyTemplatev4 //Rename This
             {
                 foreach (var rewardValue in Enum.GetValues(typeof(Rewards)).Cast<int>().Where(value => value != (int)Rewards.All))
                 {
-                    ItemBase? RewardID = Bot.Quests.EnsureLoad(QuestID)?.Rewards.FirstOrDefault(x => x.ID == rewardValue);
+                    ItemBase? RewardID = Core.EnsureLoad(QuestID)?.Rewards.FirstOrDefault(x => x.ID == rewardValue);
                     switch (rewardValue)
                     {
                         // add more cases if the quest has more rewards, and add them and their itemids to the enum below
