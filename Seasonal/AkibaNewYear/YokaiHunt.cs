@@ -1,7 +1,7 @@
 /*
 name: Yokai Hunt
 description: Completes the quests in yokaihunt.
-tags: yokai, seasonal, akiba-new-year, yokaihunt, story
+tags: yokai, seasonal, akiba-new-year, yokaihunt, story,baoyu lin, ai no miko,yue huang
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
@@ -25,6 +25,7 @@ public class YokaiHunt
     {
         AiNoMiko();
         YueHuang();
+        BaoyuLin();
 
     }
 
@@ -61,6 +62,8 @@ public class YokaiHunt
         if (Core.isCompletedBefore(9098) || !Core.isSeasonalMapActive("yokaihunt"))
             return;
 
+        AiNoMiko();
+
         Story.PreLoad(this);
 
         //Vitamoon (9092)
@@ -90,5 +93,30 @@ public class YokaiHunt
 
         //Elixir of the Moon (9098)
         Story.KillQuest(9098, "yokaihunt", "Elixir Etokoun");
+    }
+
+    public void BaoyuLin()
+    {
+        if (Core.isCompletedBefore(9575) || !Core.isSeasonalMapActive("yokaihunt"))
+            return;
+
+        YueHuang();
+
+        Story.PreLoad(this);
+
+        // Art of Resilience (9571)
+        Story.KillQuest(9571, "zhu", "Plum Treeant");
+
+        // Lucky Red (9572)
+        Story.KillQuest(9572, "shipwreck", new[] { "Gilded Merdraconian", "Lobthulhu" });
+
+        // Palm Soot (9573)
+        Story.KillQuest(9573, "burningbeach", "Lava Guardian");
+
+        // Hong of the West (9574)
+        Story.KillQuest(9574, "ashfallcamp", "Smoldur");
+
+        // Baihong Guan Ri (9575)
+        Story.KillQuest(9575, "yokaihunt", "Mutou Hong");
     }
 }

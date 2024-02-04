@@ -1,22 +1,21 @@
 /*
-name: Yue's Design Merge
-description: Farms all of the items from Yue's Design Merge.
-tags: yue-s-design-merge, seasonal, merge-shop, akiba-new-year
+name: Descendants Design Merge
+description: This bot will farm the items belonging to the selected mode for the Descendants Design Merge [2233] in /yokaihunt
+tags: descendants, design, merge, yokaihunt, oni, hatamoto, honored, horned, accessory, tassels, sheathed, katana, katanas, sheath, naginata, lunarian, astromancer, visor, terran, dragonlord, naturebound, qiang, prosperity, prosperous, fortune
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Seasonal/AkibaNewYear/YokaiHunt.cs
+//cs_include Scripts/Seasonal\AkibaNewYear\YokaiHunt.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
 
-public class YuesDesignMerge
+public class DescendantsDesignMerge
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
-    private CoreFarms Farm = new();
     private CoreAdvanced Adv = new();
     private static CoreAdvanced sAdv = new();
     private YokaiHunt YH = new();
@@ -30,7 +29,8 @@ public class YuesDesignMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Lunar Fragment", "Etokoun Residue" });
+        YH.DoAll();
+        Core.BankingBlackList.AddRange(new[] { "Lunar Fragment", "Etokoun Residue", "Baoyu's Red Envelope", "Baoyu's Flaming Envelope", "Baoyu's Rainbow Envelope" });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -39,7 +39,6 @@ public class YuesDesignMerge
 
     public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
-        YH.YueHuang();
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("yokaihunt", 2233, findIngredients, buyOnlyThis, buyMode: buyMode);
 
@@ -88,6 +87,43 @@ public class YuesDesignMerge
                     Core.CancelRegisteredQuests();
                     break;
 
+                case "Baoyu's Red Envelope":
+                    Core.FarmingLogger(req.Name, quant);
+                    Core.EquipClass(ClassType.Farm);
+                    Core.RegisterQuests(9572);
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
+                    {
+                        Core.HuntMonster("shipwreck", "Gilded Merdraconian", "Merdraconian Coins", 15, log: false);
+                        Core.HuntMonster("shipwreck", "Lobthulhu", "Lobthulu's Gold Bar", log: false);
+                        Bot.Wait.ForPickup(req.Name);
+                    }
+                    Core.CancelRegisteredQuests();
+                    break;
+
+                case "Baoyu's Flaming Envelope":
+                    Core.FarmingLogger(req.Name, quant);
+                    Core.EquipClass(ClassType.Solo);
+                    Core.RegisterQuests(9574);
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
+                    {
+                        Core.HuntMonster("ashfallcamp", "Smoldur", log: false);
+                        Bot.Wait.ForPickup(req.Name);
+                    }
+                    Core.CancelRegisteredQuests();
+                    break;
+
+                case "Baoyu's Rainbow Envelope":
+                    Core.FarmingLogger(req.Name, quant);
+                    Core.EquipClass(ClassType.Solo);
+                    Core.RegisterQuests(9575);
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
+                    {
+                        Core.HuntMonster("yokaihunt", "Mutou Hong", log: false);
+                        Bot.Wait.ForPickup(req.Name);
+                    }
+                    Core.CancelRegisteredQuests();
+                    break;
+
             }
         }
     }
@@ -110,5 +146,11 @@ public class YuesDesignMerge
         new Option<bool>("76153", "Lunarian Astromancer Helmet", "Mode: [select] only\nShould the bot buy \"Lunarian Astromancer Helmet\" ?", false),
         new Option<bool>("76154", "Lunarian Astromancer Helmet and Locks", "Mode: [select] only\nShould the bot buy \"Lunarian Astromancer Helmet and Locks\" ?", false),
         new Option<bool>("76155", "Lunarian Astromancer Visor", "Mode: [select] only\nShould the bot buy \"Lunarian Astromancer Visor\" ?", false),
+        new Option<bool>("83883", "Terran Dragonlord", "Mode: [select] only\nShould the bot buy \"Terran Dragonlord\" ?", false),
+        new Option<bool>("83884", "Terran Dragonlord Helm", "Mode: [select] only\nShould the bot buy \"Terran Dragonlord Helm\" ?", false),
+        new Option<bool>("83886", "Naturebound Qiang", "Mode: [select] only\nShould the bot buy \"Naturebound Qiang\" ?", false),
+        new Option<bool>("83887", "Terran Dragonlord of Prosperity", "Mode: [select] only\nShould the bot buy \"Terran Dragonlord of Prosperity\" ?", false),
+        new Option<bool>("83888", "Prosperous Terran Dragonlord Helm", "Mode: [select] only\nShould the bot buy \"Prosperous Terran Dragonlord Helm\" ?", false),
+        new Option<bool>("83890", "Qiang of Fortune", "Mode: [select] only\nShould the bot buy \"Qiang of Fortune\" ?", false),
     };
 }
