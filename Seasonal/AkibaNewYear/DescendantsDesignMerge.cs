@@ -78,13 +78,14 @@ public class DescendantsDesignMerge
                 case "Etokoun Residue":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
-                    Core.RegisterQuests(9097);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
+                        Core.EnsureAccept(9097);
                         Core.KillMonster("yokaihunt", "r6a", "Left", "*", "Etokoun Wrangled", log: false);
+                        Core.EnsureComplete(9097);
                         Bot.Wait.ForPickup(req.Name);
+
                     }
-                    Core.CancelRegisteredQuests();
                     break;
 
                 case "Baoyu's Red Envelope":
