@@ -1373,6 +1373,8 @@ public class CoreBots
         if (questCTS is not null)
             CancelRegisteredQuests();
 
+        Bot.Lite.ReacceptQuest = true;
+
         // Defining all the lists to be used=
         List<Quest> questData = EnsureLoad(questIDs);
         Dictionary<Quest, int> chooseQuests = new();
@@ -1479,6 +1481,7 @@ public class CoreBots
     /// </summary>
     public void CancelRegisteredQuests()
     {
+        Bot.Lite.ReacceptQuest = false;
         questCTS?.Cancel();
         Bot.Wait.ForTrue(() => questCTS == null, 30);
         AbandonQuest(registeredQuests!);
@@ -1508,8 +1511,8 @@ public class CoreBots
 
         foreach (ItemBase item in QuestData.AcceptRequirements
             .Concat(QuestData.Requirements)
-            .Where(item => !string.IsNullOrEmpty(item?.Name) 
-            && item != null 
+            .Where(item => !string.IsNullOrEmpty(item?.Name)
+            && item != null
             && !Bot.Drops.ToPickupIDs.Contains(item.ID)))
         {
             if (!Bot.Inventory.Contains(item.ID))
