@@ -16973,6 +16973,41 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AkibaNewYear/SenlinMas.cs"
   },
   {
+    "name": "Descendants Design Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Descendants Design Merge [2233] in /yokaihunt",
+    "tags": [
+      "descendants",
+      "design",
+      "merge",
+      "yokaihunt",
+      "oni",
+      "hatamoto",
+      "honored",
+      "horned",
+      "accessory",
+      "tassels",
+      "sheathed",
+      "katana",
+      "katanas",
+      "sheath",
+      "naginata",
+      "lunarian",
+      "astromancer",
+      "visor",
+      "terran",
+      "dragonlord",
+      "naturebound",
+      "qiang",
+      "prosperity",
+      "prosperous",
+      "fortune"
+    ],
+    "path": "Seasonal/AkibaNewYear/DescendantsDesignMerge.cs",
+    "size": 8945,
+    "fileName": "DescendantsDesignMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AkibaNewYear/DescendantsDesignMerge.cs"
+  },
+  {
     "name": "Bingwen's Quests",
     "description": "Completes Bingwen's Quests in akibacny.",
     "tags": [
@@ -16987,20 +17022,6 @@
     "size": 1976,
     "fileName": "Bingwen.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AkibaNewYear/Bingwen.cs"
-  },
-  {
-    "name": "Yue's Design Merge",
-    "description": "Farms all of the items from Yue's Design Merge.",
-    "tags": [
-      "yue-s-design-merge",
-      "seasonal",
-      "merge-shop",
-      "akiba-new-year"
-    ],
-    "path": "Seasonal/AkibaNewYear/YuesDesignMerge.cs",
-    "size": 6016,
-    "fileName": "YuesDesignMerge.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AkibaNewYear/YuesDesignMerge.cs"
   },
   {
     "name": "Zhu's Quests",
@@ -17109,10 +17130,13 @@
       "seasonal",
       "akiba-new-year",
       "yokaihunt",
-      "story"
+      "story",
+      "baoyu lin",
+      "ai no miko",
+      "yue huang"
     ],
     "path": "Seasonal/AkibaNewYear/YokaiHunt.cs",
-    "size": 2695,
+    "size": 3452,
     "fileName": "YokaiHunt.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AkibaNewYear/YokaiHunt.cs"
   },
