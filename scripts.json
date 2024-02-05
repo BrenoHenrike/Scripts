@@ -1613,23 +1613,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Jir'abinChallenge.cs"
   },
   {
-    "name": "Sepulchure's Dark DoomBlade",
-    "description": "This script will get Sepulchure's Dark DoomBlade.",
-    "tags": [
-      "sepulchure",
-      "doomblade",
-      "dark doomblade",
-      "doom seal",
-      "darkness shard",
-      "undead doomblade",
-      "doom blade"
-    ],
-    "path": "Other/SepulchuresDarkDoomBlade.cs",
-    "size": 1349,
-    "fileName": "SepulchuresDarkDoomBlade.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/SepulchuresDarkDoomBlade.cs"
-  },
-  {
     "name": "Elementa Dragon Slayer set",
     "description": "farms the \"Elemental Dragon Slayer\" set from Quest",
     "tags": [
@@ -7655,6 +7638,23 @@
     "size": 2111,
     "fileName": "ObsidianLightofDestiny.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Weapons/ObsidianLightofDestiny.cs"
+  },
+  {
+    "name": "Sepulchure's Dark DoomBlade",
+    "description": "This script will get Sepulchure's Dark DoomBlade.",
+    "tags": [
+      "sepulchure",
+      "doomblade",
+      "dark doomblade",
+      "doom seal",
+      "darkness shard",
+      "undead doomblade",
+      "doom blade"
+    ],
+    "path": "Other/Weapons/SepulchuresDarkDoomBlade.cs",
+    "size": 1349,
+    "fileName": "SepulchuresDarkDoomBlade.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Weapons/SepulchuresDarkDoomBlade.cs"
   },
   {
     "name": "GoldenBladeOfFate",
