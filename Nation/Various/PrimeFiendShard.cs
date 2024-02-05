@@ -219,7 +219,7 @@ public class PrimeFiendShard
         if (!Story.QuestProgression(9559))
         {
             Core.EnsureAccept(9559);
-            Nation.FarmUni13(1);
+            Nation.FarmUni13(13);
             Nation.FarmTaintedGem(750);
             Nation.FarmDarkCrystalShard(400);
             Nation.FarmDiamondofNulgath(1000);
