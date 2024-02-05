@@ -1613,6 +1613,23 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Jir'abinChallenge.cs"
   },
   {
+    "name": "Sepulchure's Dark DoomBlade",
+    "description": "This script will get Sepulchure's Dark DoomBlade.",
+    "tags": [
+      "sepulchure",
+      "doomblade",
+      "dark doomblade",
+      "doom seal",
+      "darkness shard",
+      "undead doomblade",
+      "doom blade"
+    ],
+    "path": "Other/SepulchuresDarkDoomBlade.cs",
+    "size": 1349,
+    "fileName": "SepulchuresDarkDoomBlade.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/SepulchuresDarkDoomBlade.cs"
+  },
+  {
     "name": "Elementa Dragon Slayer set",
     "description": "farms the \"Elemental Dragon Slayer\" set from Quest",
     "tags": [
@@ -10045,6 +10062,50 @@
     "size": 4882,
     "fileName": "SkullbreakerKnightMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/SkullbreakerKnightMerge.cs"
+  },
+  {
+    "name": "Vinaras Odd Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Vinaras Odd Merge [1539] in /curio",
+    "tags": [
+      "vinaras",
+      "odd",
+      "merge",
+      "curio",
+      "googly",
+      "head",
+      "great",
+      "mace",
+      "ode",
+      "to",
+      "joy",
+      "scythe",
+      "gold",
+      "empty",
+      "cauldron",
+      "cursed",
+      "bards",
+      "strange",
+      "cat",
+      "face",
+      "borked",
+      "dragon",
+      "control",
+      "seraph",
+      "avenger",
+      "necrotic",
+      "dark",
+      "infernal",
+      "companion",
+      "grandpapa",
+      "golden",
+      "sneevil",
+      "morph",
+      "papa"
+    ],
+    "path": "Other/MergeShops/VinarasOddMerge.cs",
+    "size": 4924,
+    "fileName": "VinarasOddMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/VinarasOddMerge.cs"
   },
   {
     "name": "Bonebreaker Merge",
