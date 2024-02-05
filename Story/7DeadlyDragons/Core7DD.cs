@@ -387,7 +387,7 @@ public class Core7DD
         Story.KillQuest(6003, "Maloth", "Golgar");
 
         // Hand over the Entry Code 6004
-        Story.KillQuest(6004, "Maloth", new[] { "Golgar", "Castle Guard", "Scroll Keeper", "Nervous Serf", "Locked Chest" });
+        Story.KillQuest(6004, "Maloth", new[] { "Castle Guard", "Scroll Keeper", "Nervous Serf", "Locked Chest", "Golgar" });
 
         // Confront the Dragon King 6005
         Story.KillQuest(6005, "Maloth", "Maloth");
