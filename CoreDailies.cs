@@ -428,7 +428,7 @@ public class CoreDailies
             Core.Logger("You already own The Collector. Skipped");
             return;
         }
-        if (CheckDaily(1316, true, true, "Tokens of Collection"))
+        if (CheckDaily(1316, true, true, "Token of Collection"))
         {
             Core.EquipClass(ClassType.Farm);
             Core.FarmingLogger("Token of Collection", 90);
@@ -437,9 +437,9 @@ public class CoreDailies
         if (Core.IsMember)
         {
             Core.FarmingLogger("Token of Collection", 90);
-            if (CheckDaily(1331, true, true, "Tokens of Collection"))
+            if (CheckDaily(1331, true, true, "Token of Collection"))
                 DailyRoutine(1331, "terrarium", "*", "This Is Definitely A Token", 2, false, "Enter", "Right");
-            if (CheckDaily(1332, true, true, "Tokens of Collection"))
+            if (CheckDaily(1332, true, true, "Token of Collection"))
                 DailyRoutine(1332, "terrarium", "*", "This Could Be A Token", 2, false, "r2", "Right");
         }
         if (Core.CheckInventory("Token of Collection", 90))
