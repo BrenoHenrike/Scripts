@@ -25,41 +25,28 @@ public class VoidBattleMageSet
         Core.SetOptions(false);
     }
 
-    int i = 0;
-
     public void GetSet()
     {
         War.Attack();
-        
+
         List<ItemBase> RewardOptions = Core.EnsureLoad(6694).Rewards;
 
         foreach (ItemBase item in RewardOptions)
             Bot.Drops.Add(item.Name);
 
-        string[] QuestRewards = RewardOptions.Select(x => x.Name).ToArray();
+        List<ItemBase> PreInv = new();
 
-        Core.EquipClass(ClassType.Farm);
         Core.RegisterQuests(6694);
-        foreach (ItemBase Reward in RewardOptions)
-        {
-            if (Core.CheckInventory(Reward.Name, toInv: false))
-                return;
-            else
-            {
-                Core.FarmingLogger(Reward.Name, 1);
-                while (!Bot.ShouldExit && !Core.CheckInventory(Reward.Name, toInv: false))
-                {
-                    Core.KillMonster("lairattack", "Eggs", "Left", "Flame Dragon General", log: false);
+        Core.EquipClass(ClassType.Solo);
 
-                    i++;
+        //the foreach can be simplified as such:
+        foreach (ItemBase Reward in RewardOptions.Where(item => item.Name != null))
+            Core.KillMonster("lairattack", "Eggs", "Left", "Flame Dragon General", Reward.Name);
 
-                    if (i % 5 == 0)
-                    {
-                        Core.JumpWait();
-                        Core.ToBank(QuestRewards);
-                    }
-                }
-            }
-        }
+        foreach (ItemBase item in RewardOptions)
+            Core.ToBank(item.ID);
+            
+        Core.CancelRegisteredQuests();
     }
+
 }

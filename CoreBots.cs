@@ -293,7 +293,7 @@ public class CoreBots
     }
 
     public List<string> BankingBlackList = new();
-    private List<string> EquipmentBeforeBot = new();
+    private readonly List<string> EquipmentBeforeBot = new();
     private bool joinedPrison = false;
     private bool prisonListernerActive = false;
     public string loadedBot = String.Empty;
@@ -1484,6 +1484,7 @@ public class CoreBots
         Bot.Lite.ReacceptQuest = false;
         questCTS?.Cancel();
         Bot.Wait.ForTrue(() => questCTS == null, 30);
+        Bot.Quests.UnregisterQuests(registeredQuests!);
         AbandonQuest(registeredQuests!);
         registeredQuests = null;
     }
@@ -1592,8 +1593,17 @@ public class CoreBots
     {
         if (questID <= 0)
             return false;
+
+        EnsureLoad(questID);
+
         Sleep();
-        return Bot.Quests.EnsureComplete(questID, itemID);
+
+        var questData = EnsureLoad(questID);
+        if (questData != null && questData.Requirements != null
+        && questData.Requirements.Any()
+        && CheckInventory(questData.Requirements.Select(x => x.ID).ToArray()))
+            return Bot.Quests.EnsureComplete(questID, itemID);
+        else return false;
     }
 
     /// <summary>
