@@ -127,7 +127,7 @@ public class FrostSpiritReaver
         {
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("Snowmore", "Jon S'Nooooooo", "Northern Crown", isTemp: false);
-            
+
             Core.EquipClass(ClassType.Farm);
             Core.HuntMonster("icestormarena", "Arctic Wolf", "Ice Needle", 30, isTemp: false);
             Core.AddDrop("Ice Diamond");
@@ -169,11 +169,8 @@ public class FrostSpiritReaver
             Core.EquipClass(ClassType.Solo);
             while (!Bot.ShouldExit && !Core.CheckInventory(new[] { 38915, 39011 }))
             {
-                foreach (int item in new[] { 38915, 39011 })
-                {
-                    ItemBase Item = Bot.Inventory.Items.First(x => x.ID == item);
-                    Core.HuntMonster("iceplane", "Enfield", Item.Name, 1, isTemp: false, log: false);
-                }
+                Core.HuntMonster("iceplane", "Enfield", "IceBreaker Mage", 1, false, false);
+                Core.HuntMonster("iceplane", "Enfield", "FrostSlayer", 1, false, false);
             }
         }
 
