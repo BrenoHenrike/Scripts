@@ -239,14 +239,15 @@ public class CoreDoomwood
             return;
 
         Story.PreLoad(this);
+        
         Core.EquipClass(ClassType.Farm);
         //1123    Level 1
         if (!Story.QuestProgression(1123))
         {
             Core.EnsureAccept(1123);
-            Core.KillMonster("temple", "r2", "up", "SlimeSkull", "Slimeskull Trophy", 5);
-            Core.KillMonster("temple", "r2", "up", "Doomwood Bonemuncher", "Munched Boneshard", 5);
-            Core.KillMonster("temple", "r2", "up", "Shelleton", "Shelleton Shrapnel", 5);
+            Core.KillMonster("temple", "r2", "Up", "SlimeSkull", "Slimeskull Trophy", 5);
+            Core.KillMonster("temple", "r2", "Up", "Doomwood Bonemuncher", "Munched Boneshard", 5);
+            Core.KillMonster("temple", "r2", "Up", "Shelleton", "Shelleton Shrapnel", 5);
             Core.EnsureComplete(1123);
         }
 
@@ -255,8 +256,8 @@ public class CoreDoomwood
         {
             Core.EnsureAccept(1124);
             Core.GetMapItem(456, 6, "temple");
-            Core.KillMonster("temple", "r3", "up", "Undead Mage", "Necrotic Rune", 10);
-            Core.KillMonster("temple", "r3", "up", "Doomwood Ectomancer", "Ecto-Covered Rune", 3);
+            Core.KillMonster("temple", "r3", "Up", "Undead Mage", "Necrotic Rune", 10);
+            Core.KillMonster("temple", "r3", "Up", "Doomwood Ectomancer", "Ecto-Covered Rune", 3);
             Core.EnsureComplete(1124);
         }
 
@@ -264,8 +265,8 @@ public class CoreDoomwood
         if (!Story.QuestProgression(1125))
         {
             Core.EnsureAccept(1125);
-            Core.KillMonster("temple", "r4", "up", "Ghoul", "Ghoulish Gear", 1);
-            Core.KillMonster("temple", "r4", "up", "Lich", "Haunted Habiliment", 1);
+            Core.KillMonster("temple", "r4", "Up", "Ghoul", "Ghoulish Gear");
+            Core.KillMonster("temple", "r4", "Up", "Lich", "Haunted Habiliment");
             Core.EnsureComplete(1125);
         }
 
@@ -274,7 +275,7 @@ public class CoreDoomwood
         {
             Core.EnsureAccept(1126);
             Core.GetMapItem(457, 8, "temple");
-            Core.KillMonster("temple", "r5", "up", "Skeletal Fire Mage", "Flame Extinguished", 10);
+            Core.KillMonster("temple", "r5", "Up", "Skeletal Fire Mage", "Flame Extinguished", 10);
             Core.EnsureComplete(1126);
         }
 
@@ -338,11 +339,11 @@ public class CoreDoomwood
         //1146    Recover the Pages
         Story.KillQuest(1146, "temple", "Doomwood Bonemuncher");
 
-        Core.EquipClass(ClassType.Solo);
         //1147    Reconstruct the Codex
+        Core.EquipClass(ClassType.Solo);
         Story.KillQuest(1147, "temple", "Cryptkeeper Lich");
 
-        //1148    Galvanize the Guardian
+        //1148 Galvanize the Guardian
         if (!Story.QuestProgression(1148))
         {
             Core.EnsureAccept(1148);
@@ -365,17 +366,17 @@ public class CoreDoomwood
         Story.MapItemQuest(1155, "lab", 488);
 
         //1156    Stringing Your Enemies Along
-        Story.KillQuest(1156, "lab", "Ant Giant|Giant Scorpion");
+        Story.KillQuest(1156, "lab", "Ant Giant");
 
         //1157    Out of Tune(ing Knobs)
         Story.MapItemQuest(1157, "lab", 489, 3);
         Story.KillQuest(1157, "lab", "Ant Giant");
 
         //1158    Code of Conduct-or
-        Story.KillQuest(1158, "lab", "Ant Giant|Giant Scorpion");
+        Story.KillQuest(1158, "lab", "Ant Giant");
 
         //1159    Sending Out an SOS to the World
-        Story.KillQuest(1159, "lab", "Ant Giant|Giant Scorpion");
+        Story.KillQuest(1159, "lab", "Ant Giant");
 
         //1160    This is FINAL ZAP!
         Story.MapItemQuest(1160, "lab", 490, 6);
@@ -385,7 +386,7 @@ public class CoreDoomwood
         Story.KillQuest(1161, "lab", "Giant Scorpion");
 
         //1162    Die, All of You!
-        Story.KillQuest(1162, "lab", "Ant Giant|Giant Scorpion");
+        Story.KillQuest(1162, "lab", "Ant Giant");
 
         //1163    Ample Amps Required
         Story.MapItemQuest(1163, "lab", 492, 10);
