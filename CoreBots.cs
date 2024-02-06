@@ -1610,7 +1610,8 @@ public class CoreBots
 
         var questData = EnsureLoad(questID);
         if (questData != null && questData.Requirements != null
-            && (!questData.Requirements.Any() || CheckInventory(questData.Requirements.Select(x => x.ID).ToArray())))
+        && (!questData.Requirements.Any()
+        || CheckInventory(questData.Requirements.Select(x => x.ID).ToArray())))
             return Bot.Quests.EnsureComplete(questID, itemID);
         else
             return false;
@@ -1623,14 +1624,17 @@ public class CoreBots
     public void EnsureComplete(params int[] questIDs)
     {
         EnsureLoad(questIDs);
-        foreach (var q in questIDs)
+
+        foreach (var questID in questIDs)
         {
-            var questData = EnsureLoad(q);
+            var questData = EnsureLoad(questID);
+
             if (questData != null && questData.Requirements != null
-            && questData.Requirements.Any()
-            && CheckInventory(questData.Requirements.Select(x => x.ID).ToArray()))
+                && (!questData.Requirements.Any()
+                || (questData.Requirements.All(r => r != null && r.ID > 0))
+                && CheckInventory(questData.Requirements.Select(x => x.ID).ToArray())))
             {
-                Bot.Quests.EnsureComplete(q);
+                Bot.Quests.EnsureComplete(questID);
                 Sleep();
             }
         }
