@@ -43,13 +43,32 @@ public class CruxShip
         }
 
         //Act 1 Complete 4600
-        Story.ChainQuest(4600);
+        if (!Story.QuestProgression(4600))
+        {
+            Core.Join("cruxship", "Enter", "Spawn");
+            //jumping here just autocompletes the quest..
+            Core.Jump("Cut1", "Left");
+            Bot.Wait.ForQuestComplete(4600);
+            Core.Jump("Enter", "Spawn");
+        }
 
-        //Defend the Ship! 4601
-        Story.ChainQuest(4601);
-
-        //Act 2 Complete 4602
-        Story.ChainQuest(4602);
+        //Defend the Ship! 4601 && Act 2 Complete 4602
+        if (!Bot.Quests.IsUnlocked(4603))
+        {
+            Core.EnsureAccept(4601, 4602);
+            Core.Join("cruxship", "Enter", "Spawn");
+            Core.Jump("r5", "Left");
+            Core.Sleep(1500);
+            Core.SendPackets($"%xt%zm%tryQuestComplete%{Bot.Map.RoomID}%4601%-1%false%1%wvz%");
+            Core.Sleep(1500);
+            Bot.Wait.ForQuestComplete(4601);
+            Core.SendPackets($"%xt%zm%moveToCell%{Bot.Map.RoomID}%Cut2%Left%");
+            Core.Sleep(1500);
+            Core.SendPackets($"%xt%zm%tryQuestComplete%{Bot.Map.RoomID}%4602%1%false%1%wvz%");
+            Bot.Wait.ForQuestComplete(4602);
+            Core.Sleep(1500);
+            Core.Jump("r6", "Left");
+        }
 
         //Treasure Hunters Attack! 4603
         Story.KillQuest(4603, "CruxShip", "Treasure Hunter");
@@ -58,7 +77,13 @@ public class CruxShip
         Story.MapItemQuest(4604, "CruxShip", 3902, 3);
 
         //Act 3 Complete 4605
-        Story.ChainQuest(4605);
+        if (!Story.QuestProgression(4605))
+        {
+            Core.Join("cruxship", "Enter", "Spawn");
+            //jumping here just autocompletes the quest..
+            Core.Jump("Cut3", "Left");
+            Bot.Wait.ForQuestComplete(4605);
+        }
 
         //Plague in the Pyramid 4606
         Story.KillQuest(4606, "CruxShip", "Shadow Locust");
@@ -91,7 +116,13 @@ public class CruxShip
         }
 
         //Act 4 Complete 4612
-        Story.ChainQuest(4612);
+        if (!Story.QuestProgression(4612))
+        {
+            Core.Join("cruxship", "Enter", "Spawn");
+            //jumping here just autocompletes the quest..
+            Core.Jump("Cut4", "Left");
+            Bot.Wait.ForQuestComplete(4612);
+        }
 
         //Apephyrx Rises 4613
         if (!Story.QuestProgression(4613))
@@ -103,7 +134,12 @@ public class CruxShip
         }
 
         //Act 5 Complete 4614
-        Story.ChainQuest(4614);
+        if (!Story.QuestProgression(4614))
+        {
+            //jumping here just autocompletes the quest..
+            Core.Jump("Cut5", "Left");
+            Bot.Wait.ForQuestComplete(4612);
+        }
 
         if (!badge)
             return;
