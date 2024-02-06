@@ -918,7 +918,7 @@ public class UnlockForgeEnhancements
         Adv.GearStore(true);
 
         Core.EquipClass(ClassType.Farm);
-        Core.HuntMonster("Towerofdoom10", "*", "Ethereal Essence", 250, isTemp: false);
+        Core.KillMonster("Towerofdoom10", "Enter", "Spawn", "*", "Ethereal Essence", 250, isTemp: false);
 
         Core.EnsureComplete(8824);
         if (Bot.Config!.Get<bool>("SellQuestClass"))
@@ -941,7 +941,7 @@ public class UnlockForgeEnhancements
         Adv.GearStore(true);
 
         Core.EquipClass(ClassType.Farm);
-        Core.HuntMonster("Towerofdoom10", "*", "Ethereal Essence", 250, isTemp: false);
+        Core.KillMonster("Towerofdoom10", "Enter", "Spawn", "*", "Ethereal Essence", 250, isTemp: false);
 
         Core.EnsureComplete(8825);
         if (Bot.Config!.Get<bool>("SellQuestClass"))
@@ -965,7 +965,7 @@ public class UnlockForgeEnhancements
         Adv.GearStore(true);
 
         Core.EquipClass(ClassType.Farm);
-        Core.HuntMonster("Towerofdoom10", "*", "Ethereal Essence", 650, isTemp: false);
+        Core.KillMonster("Towerofdoom10", "Enter", "Spawn", "*", "Ethereal Essence", 650, isTemp: false);
 
         Core.EnsureComplete(8826);
         if (Bot.Config!.Get<bool>("SellQuestClass"))
@@ -989,7 +989,7 @@ public class UnlockForgeEnhancements
         Adv.GearStore(true);
 
         Core.EquipClass(ClassType.Farm);
-        Core.HuntMonster("Towerofdoom10", "*", "Ethereal Essence", 650, isTemp: false);
+        Core.KillMonster("Towerofdoom10", "Enter", "Spawn", "*", "Ethereal Essence", 650, isTemp: false);
 
         Core.EnsureComplete(8827);
         if (Bot.Config!.Get<bool>("SellQuestClass"))
