@@ -3637,30 +3637,30 @@ public class CoreBots
             case "dagepvp":
             case "deathpitbrawl":
             // Room Limit: 1
-            case "finalbattle":
-            case "treetitanbattle":
+            case "baconcat":
+            case "baconcatb":
+            case "caroling":
+            case "chaosbattle":
+            case "chaoslord":
             case "chaosrealm":
-            case "vordredboss":
-            case "trickortreat":
+            case "darkthronehub":
             case "drakathfight":
             case "dragonfire":
-            case "darkthronehub":
-            case "malgor":
-            case "chaosbattle":
-            case "baconcatyou":
-            case "herotournament":
-            case "finalshowdown":
             case "dragonkoi":
-            case "chaoslord":
-            case "ravenscar":
-            case "nothing":
             case "falcontower":
-            case "baconcatb":
-            case "baconcat":
-            case "tlapd":
-            case "superslayin":
+            case "finalbattle":
+            case "finalshowdown":
+            case "herotournament":
             case "infernalarena":
-            case "caroling":
+            case "malgor":
+            case "nothing":
+            case "oaklore":
+            case "ravenscar":
+            case "superslayin":
+            case "treetitanbattle":
+            case "tlapd":
+            case "trickortreat":
+            case "vordredboss":
                 // Special
                 JumpWait();
                 map = strippedMap + "-999999";
