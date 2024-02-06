@@ -73,6 +73,7 @@ public class CoreVHL
             Core.AddDrop(ChallengeRewards);
         Core.AddDrop("Roentgenium of Nulgath");
 
+    Continue:
         Core.KillMonster("tercessuinotlim", "m4", "Right", "Shadow of Nulgath", "Hadean Onyx of Nulgath", isTemp: false);
 
         Core.FarmingLogger("Roentgenium of Nulgath", quant);
@@ -100,40 +101,22 @@ public class CoreVHL
             Nation.SwindleBulk(100);
             Nation.ApprovalAndFavor(300, 300);
 
-            if (!Core.CheckInventory("Elders' Blood"))
-                Core.Logger($"Not enough \"Elders' Blood\", please do the daily {2 - (Bot.Inventory.Items.FirstOrDefault(x =>
-              x.Name == "Elders' Blood" &&
-              x.Name != null)?.Quantity ?? 0)} more times (not today)");
-            else Core.EnsureComplete(5660);
 
+            Core.EnsureComplete(5660);
             Bot.Wait.ForPickup("Roentgenium of Nulgath");
+            Core.ToBank(ChallengeRewards);
+
+            if (Core.CheckInventory("Elders' Blood") && !Core.CheckInventory("Roentgenium of Nulgath", quant))
+                goto Continue;
+            else if (!Core.CheckInventory("Elders' Blood") && !Core.CheckInventory("Roentgenium of Nulgath", quant))
+            {
+                Core.Logger($"Not enough \"Elders' Blood\", please do the daily {2 - (Bot.Inventory.Items.FirstOrDefault(x =>
+                    x.Name == "Elders' Blood" &&
+                    x.Name != null)?.Quantity ?? 0)}");
+                FarmExtra();
+            }
+            else return;
         }
-        Core.ToBank(ChallengeRewards);
-
-        if (!Core.CheckInventory("Roentgenium of Nulgath", quant))
-        {
-            int quantity = Bot.Inventory.Items.FirstOrDefault(x => x.Name == "Roentgenium of Nulgath")?.Quantity ?? 0;
-
-            Core.Logger($"Roentgenium of Nulgath: ({quantity}/{quant})", "Not Enough Roent");
-            Core.Logger("Not enough \"Roentgenium of Nulgath\"\n" +
-                "maxing mats so it's easier tomorrow\n" +
-                "you can just leave this running");
-
-            // Farm Mats for Tomarrow.
-            Nation.FarmVoucher(false, true);
-            Farm.BlackKnightOrb();
-            Adv.BuyItem("citadel", 44, 38316, shopItemID: 22367);
-            Adv.BuyItem("yulgar", 16, "Aelita's Emerald");
-            Nation.FarmUni13(13);
-            Nation.FarmGemofNulgath(1000);
-            Nation.EmblemofNulgath(500);
-            Nation.EssenceofNulgath(60);
-            Nation.SwindleBulk(1000);
-            Nation.ApprovalAndFavor(5000, 5000);
-
-            Core.Logger("Materials max out! You should be good for tomorrow.", messageBox: true, stopBot: true);
-        }
-
     }
     private readonly string[] ChallengeRewards = { "Void Highlord Armor", "Helm of the Highlord", "Highlord's Void Wrap" };
 
@@ -165,6 +148,33 @@ public class CoreVHL
         Adv.BuyItem("tercessuinotlim", 1355, "Void Crystal B");
     }
 
+
+    private void FarmExtra(int quant = 15)
+    {
+        if (!Core.CheckInventory("Roentgenium of Nulgath", quant))
+        {
+            int quantity = Bot.Inventory.Items.FirstOrDefault(x => x.Name == "Roentgenium of Nulgath")?.Quantity ?? 0;
+
+            Core.Logger($"Roentgenium of Nulgath: ({quantity}/{quant})", "Not Enough Roent");
+            Core.Logger("Not enough \"Roentgenium of Nulgath\"\n" +
+                "maxing mats so it's easier tomorrow\n" +
+                "you can just leave this running");
+
+            // Farm Mats for Tomarrow.
+            Nation.FarmVoucher(false, true);
+            Farm.BlackKnightOrb();
+            Adv.BuyItem("citadel", 44, 38316, shopItemID: 22367);
+            Adv.BuyItem("yulgar", 16, "Aelita's Emerald");
+            Nation.FarmUni13(13);
+            Nation.FarmGemofNulgath(1000);
+            Nation.EmblemofNulgath(500);
+            Nation.EssenceofNulgath(60);
+            Nation.SwindleBulk(1000);
+            Nation.ApprovalAndFavor(5000, 5000);
+
+            Core.Logger("Materials max out! You should be good for tomorrow.", messageBox: true, stopBot: true);
+        }
+    }
     private void _SparrowMethod(int EldersBloodQuant)
     {
         if (!Bot.Config!.Get<bool>("SparrowMethod") || !Core.IsMember || !Core.CheckInventory(Nation.CragName) || Core.CheckInventory("Elders' Blood", EldersBloodQuant))
