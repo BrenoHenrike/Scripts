@@ -1341,7 +1341,7 @@ public class CoreNation
     /// <param name="farmDiamond">Whether or not farm Diamonds</param>
     public void DiamondExchange(bool farmDiamond = true)
     {
-        if ((!Core.CheckInventory("Diamond of Nulgath", 15) && !farmDiamond) || !Core.CheckInventory(CragName))
+        if ((!Core.CheckInventory("Diamond of Nulgath", 15) && !farmDiamond) || !Core.CheckInventory(CragName) || Core.CheckInventory(Uni(13), 13))
             return;
 
         Core.AddDrop("Diamond of Nulgath");
@@ -1349,33 +1349,31 @@ public class CoreNation
         if (farmDiamond)
             BambloozevsDrudgen("Diamond of Nulgath", 15);
 
-        Core.ResetQuest(869);
         Core.EquipClass(ClassType.Farm);
-        while (!Bot.ShouldExit && !Core.CheckInventory("Dark Makai Sigil"))
+        while (!Bot.ShouldExit && Core.CheckInventory("Diamond of Nulgath", 15) && !Core.CheckInventory(Uni(13), 13))
         {
-            // Define the maps with their corresponding indexes
-            var maps = new[] { ("tercessuinotlim", "m1"), (Core.IsMember ? "Nulgath" : "evilmarsh", "Field1") };
+            Core.ResetQuest(869);
+            if (Bot.Map.Name != "tercessuinotlim")
+                Core.Join("tercessuinotlim", "m1", "Left");
 
-            // Randomly select a map
-            var randomMapIndex = new Random().Next(0, maps.Length);
-            var selectedMap = maps[randomMapIndex];
+            if (Bot.Player.Cell != "m1")
+                Core.Jump("m1", "Left");
 
-            Core.Join(selectedMap.Item1, selectedMap.Item2, "Left");
-
-            while (!Bot.ShouldExit &&
-                (selectedMap.Item1 == "tercessuinotlim"
-                    ? (Core.IsMonsterAlive(2, useMapID: true) || Core.IsMonsterAlive(3, useMapID: true))
-                    : (Core.IsMonsterAlive(1, useMapID: true) || Core.IsMonsterAlive(2, useMapID: true))))
+            if (Bot.Player.CurrentClass!.Name == "ArchMage")
+                Bot.Options.AttackWithoutTarget = true;
+                
+            while (!Bot.ShouldExit && !Core.CheckInventory("Dark Makai Sigil"))
             {
                 if (!Bot.Player.InCombat)
-                    Core.Sleep();  // Use the built-in delay
+                    Core.Sleep();
                 Bot.Combat.Attack("*");
                 if (Core.CheckInventory("Dark Makai Sigil"))
                     break;
             }
+            Bot.Wait.ForPickup("Dark Makai Sigil");
+            Core.EnsureCompleteMulti(869);
         }
-        Bot.Wait.ForPickup("Dark Makai Sigil");
-        Core.EnsureComplete(869);
+        Bot.Options.AttackWithoutTarget = false;
     }
 
     /// <summary>
@@ -1388,7 +1386,7 @@ public class CoreNation
         string reward = rewardEnum.ToString().Replace("_", " ");
         if ((!Core.CheckInventory("Unidentified 13") && !farmUni13) || !Core.CheckInventory("Drudgen the Assistant"))
         {
-            if ((!Core.CheckInventory("Unidentified 13") && !farmUni13))
+            if (!Core.CheckInventory("Unidentified 13") && !farmUni13)
                 Core.Logger($"{farmUni13} is probably set to false, please have a dev change it");
             if (!Core.CheckInventory("Drudgen the Assistant"))
                 Core.Logger("Missing \"Drudgen the Assistant\"");
