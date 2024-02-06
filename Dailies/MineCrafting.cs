@@ -31,7 +31,7 @@ public class MineCrafting
     {
         BLOD.UnlockMineCrafting();
 
-        if (!Daily.CheckDaily(2091))
+        if (Daily.CheckDaily(2091))
         {
             if (!Core.CheckInventory("Blinding Light of Destiny", toInv: false))
             {
