@@ -1600,10 +1600,10 @@ public class CoreBots
 
         var questData = EnsureLoad(questID);
         if (questData != null && questData.Requirements != null
-        && questData.Requirements.Any()
-        && CheckInventory(questData.Requirements.Select(x => x.ID).ToArray()))
+            && (!questData.Requirements.Any() || CheckInventory(questData.Requirements.Select(x => x.ID).ToArray())))
             return Bot.Quests.EnsureComplete(questID, itemID);
-        else return false;
+        else
+            return false;
     }
 
     /// <summary>
