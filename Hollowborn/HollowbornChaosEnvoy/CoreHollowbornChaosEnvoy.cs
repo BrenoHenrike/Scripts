@@ -508,7 +508,7 @@ public class CoreHollowbornChaosEnvoy
     {
         Hollowborn_Chaos_Warrior = 74476,
         Hollowborn_Chaos_Morph = 74477,
-        Hollowborn_Chaoti_Wings = 74478,
+        Hollowborn_Chaotic_Wings = 74478,
         All,
         None
     }

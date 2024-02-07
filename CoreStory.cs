@@ -307,7 +307,7 @@ public class CoreStory
             }
         }
 
-        if (Core.isCompletedBefore(QuestID) && (TestBot ? QuestData.Once : true))
+        if (Core.isCompletedBefore(QuestID) && (!TestBot || QuestData.Once))
         {
             if (TestBot)
                 Core.Logger($"Skipped (Once = true): [{QuestID}] - \"{QuestData.Name}\"");
@@ -345,7 +345,7 @@ public class CoreStory
     public void LegacyQuestManager(Action questLogic, params int[] questIDs)
     {
         List<Quest> questData = Core.EnsureLoad(questIDs);
-        List<LegacyQuestObject> whereToGet = new List<LegacyQuestObject>();
+        List<LegacyQuestObject> whereToGet = new();
 
         //Core.DL_Enable();
         Core.DebugLogger(this, "-------------\t");
@@ -361,7 +361,7 @@ public class CoreStory
             Core.DebugLogger(this, $"{requiredQuestReward?.FirstOrDefault()?.Name}\t");
             Core.DebugLogger(this, "-------------\t");
 
-            if (requiredQuestReward?.Count() == 0 && quest.AcceptRequirements?.Count() > 0)
+            if (requiredQuestReward?.Count == 0 && quest.AcceptRequirements?.Count > 0)
             {
                 Core.Logger("The managed failed to find the location of \"" +
                 String.Join("\" + \"", quest.AcceptRequirements.Select(a => a.Name)) +
@@ -482,7 +482,7 @@ public class CoreStory
     {
         List<int> QuestIDs = new();
         string[] ScriptSlice = Core.CompiledScript();
-        if (ScriptSlice.Count() == 0)
+        if (ScriptSlice.Length == 0)
         {
             Core.Logger("PreLoad failed, cannot read Compiled Script. You might not be on the latest version of Skua");
             return;
@@ -546,19 +546,19 @@ public class CoreStory
                 continue;
 
             char[] digits = Line.SkipWhile(c => !Char.IsDigit(c)).TakeWhile(Char.IsDigit).ToArray();
-            string sQuestID = new string(digits);
+            string sQuestID = new(digits);
             int QuestID = int.Parse(sQuestID);
 
             if (!QuestIDs.Contains(QuestID) && !Bot.Quests.Tree.Exists(x => x.ID == QuestID))
                 QuestIDs.Add(QuestID);
         }
 
-        if (QuestIDs.Count() + Bot.Quests.Tree.Count() > Core.LoadedQuestLimit
+        if (QuestIDs.Count + Bot.Quests.Tree.Count > Core.LoadedQuestLimit
             && QuestIDs.Count < Core.LoadedQuestLimit)
         {
             Bot.Flash.SetGameObject("world.questTree", new ExpandoObject());
         }
-        else if (QuestIDs.Count > (Core.LoadedQuestLimit - Bot.Quests.Tree.Count()))
+        else if (QuestIDs.Count > (Core.LoadedQuestLimit - Bot.Quests.Tree.Count))
         {
             Core.Logger($"Found {QuestIDs.Count} Quests, this exceeds the max amount of loaded quests ({Core.LoadedQuestLimit}). No quests will be loaded.");
             return;
@@ -568,7 +568,7 @@ public class CoreStory
         if (QuestIDs.Count > 30)
             Core.Logger($"Estimated Loading Time: {Convert.ToInt32(QuestIDs.Count / 30 * 1.6)}s");
 
-        for (int i = 0; i < QuestIDs.Count; i = i + 30)
+        for (int i = 0; i < QuestIDs.Count; i += 30)
         {
             Bot.Quests.Load(QuestIDs.ToArray()[i..(QuestIDs.Count > i ? QuestIDs.Count : i + 30)]);
             Core.Sleep(1500);
@@ -601,7 +601,7 @@ public class CoreStory
             {
                 for (int i = CurrentRequirements.Count - 1; i >= 0; i--)
                 {
-                    if (j == 0 && (Core.CheckInventory(CurrentRequirements[i].Name, CurrentRequirements[i].Quantity)))
+                    if (j == 0 && Core.CheckInventory(CurrentRequirements[i].Name, CurrentRequirements[i].Quantity))
                     {
                         CurrentRequirements.RemoveAt(i);
                         continue;
@@ -623,7 +623,7 @@ public class CoreStory
             Core.Sleep();
         }
     }
-    private List<ItemBase> CurrentRequirements = new();
+    private readonly List<ItemBase> CurrentRequirements = new();
     private void _MonsterHunt(ref bool shouldRepeat, string monster, string itemName, int quantity, bool isTemp, int index)
     {
         Bot.Hunt.ForItem(monster, itemName, quantity, isTemp);

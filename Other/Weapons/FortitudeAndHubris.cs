@@ -14,7 +14,7 @@ public class FandH
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
 
-    public CoreStory Story = new CoreStory();
+    public CoreStory Story = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
