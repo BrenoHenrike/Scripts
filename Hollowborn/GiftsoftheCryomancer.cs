@@ -40,6 +40,7 @@ public class GiftsoftheCryomancer
             Core.HuntMonster("icedungeon", "Ice Crystal", "Ice Crystal Shard", 10);
             Core.ToBank(Core.QuestRewards(9589));
         }
+        Core.CancelRegisteredQuests();
 
     }
 }
