@@ -231,11 +231,11 @@ public class CoreNSOD
             Core.HuntMonster("timespace", "Astral Ephemerite", "Astral Ephemerite Essence", Essencequant, false, log: false);
 
             HuntMonsterBatch(Essencequant, false, true, true,
+                ("necrocavern", 5, "Chaos Vordred Essence"),
                 ("citadel", 21, "Belrot the Fiend Essence"),
                 ("greenguardwest", 22, "Black Knight Essence"),
                 ("mudluk", 18, "Tiger Leech Essence"),
                 ("aqlesson", 17, "Carnax Essence"),
-                ("necrocavern", 5, "Chaos Vordred Essence"),
                 ("hachiko", 10, "Dai Tengu Essence"),
                 ("timevoid", 12, "Unending Avatar Essence"),
                 ("dragonchallenge", 4, "Void Dragon Essence"),
@@ -251,7 +251,7 @@ public class CoreNSOD
     {
         Core.EquipClass(ClassType.Solo);
 
-        foreach (var monster in monsters)
+        foreach (var monster in monsters.Where(x => x.monster > 0))
             Core.HuntMonsterMapID(monster.map, monster.monster, monster.essence, quant, isTemp, publicRoom, log);
     }
 
