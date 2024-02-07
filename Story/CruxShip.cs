@@ -55,7 +55,7 @@ public class CruxShip
         //Defend the Ship! 4601 && Act 2 Complete 4602
         if (!Bot.Quests.IsUnlocked(4603))
         {
-            Core.EnsureAccept(4601, 4602);
+            Core.EnsureAcceptmultiple(false, new[] { 4601, 4602 });
             Core.Join("cruxship", "Enter", "Spawn");
             Core.Jump("r5", "Left");
             Core.Sleep(1500);

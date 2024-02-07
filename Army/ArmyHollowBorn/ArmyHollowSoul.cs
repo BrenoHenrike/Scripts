@@ -63,7 +63,7 @@ public class ArmyHollowSoul
 
         while (!Bot.ShouldExit && !Core.CheckInventory("Hollow Soul", quant))
         {
-            Core.EnsureAccept(7553, 7555);
+            Core.EnsureAcceptmultiple(false, new[ ]{7553, 7555});
 
             ArmyHunt(new[] { 3, 7, 11 }, new[] { "r2", "r4", "r6" }, "shadowrealm", "Darkseed", 8);
             ArmyHunt(new[] { 4, 8, 12 }, new[] { "r2", "r4", "r6" }, "shadowrealm", "Shadow Medallion", 5);

@@ -69,7 +69,7 @@ public class GravelynDoomFire
                 // Check for "Painful Memory Bubble"
                 if (!Core.CheckInventory("Painful Memory Bubble"))
                 {
-                    Core.EnsureAccept(5458, 5459, 5460, 5461);
+                    Core.EnsureAcceptmultiple(false, new[] { 5458, 5459, 5460, 5461 });
                     Core.KillMonster("swordhavenfalls", "r10", "Left", 1295, "Doomed Memories");
                     Core.EnsureComplete(5458);
                     Bot.Wait.ForPickup("Painful Memory Bubble");

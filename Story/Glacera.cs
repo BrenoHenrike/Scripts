@@ -350,7 +350,7 @@ public class GlaceraStory
         if (!Bot.Quests.IsUnlocked(5601))
         {
             //Fight For Kezeroth! && (Mega) Fight For Kezeroth!
-            Core.EnsureAccept(new[] { 5597, 5598, 5599, 5600 });
+            Core.EnsureAcceptmultiple(false, new[] { 5597, 5598, 5599, 5600 });
             Core.EquipClass(ClassType.Farm);
             Core.HuntMonster("icewindwar",  "Glaceran Defender", "FrostSpawn Medal", 10);
             Core.HuntMonster("icewindwar", "Glaceran Defender", "Mega Frostspawn Medal", 5);

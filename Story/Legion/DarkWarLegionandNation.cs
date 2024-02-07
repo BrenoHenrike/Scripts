@@ -188,7 +188,7 @@ public class DarkWarLegionandNation
         // Legion Badges && Legion Badges,Mega Legion Badges - 8578, 8579
         if (!Story.QuestProgression(8580))
         {
-            Core.EnsureAccept(new[] { 8578, 8579 });
+            Core.EnsureAcceptmultiple(false, new[] { 8578, 8579 });
             Core.KillMonster("darkwarnation", "Enter", "Spawn", "*", "Legion Badge", 5);
             Core.KillMonster("darkwarnation", "Enter", "Spawn", "*", "Mega Legion Badge", 3);
             Core.EnsureComplete(new[] { 8578, 8579 });

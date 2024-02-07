@@ -559,7 +559,7 @@ public class Frostvale
         // Monster Gems  7856 && Mega Monster Gems 7857
         if (!Bot.Quests.IsUnlocked(7858))
         {
-            Core.EnsureAccept(7856, 7857);
+            Core.EnsureAcceptmultiple(false, new[] { 7856, 7857 });
             Core.KillMonster("winterhorror", "Enter", "Spawn", "*", "Monster Gem", 5);
             Core.EnsureComplete(7856);
             Core.KillMonster("winterhorror", "Enter", "Spawn", "*", "Mega Monster Gem", 3);
@@ -1132,7 +1132,7 @@ public class Frostvale
         // 8446 and 8447 => Sluagh Medals && Mega Sluagh Medals
         if (!Core.isCompletedBefore(8448))
         {
-            Core.EnsureAccept(8446, 8447);
+            Core.EnsureAcceptmultiple(false, new[ ]{ 8446, 8447});
             Core.HuntMonster("otziwar", "Sluagh Warrior", "Sluagh Medals", 5);
             Core.EnsureComplete(8446);
             Core.HuntMonster("otziwar", "Sluagh Warrior", "Mega Sluagh Medals", 3);

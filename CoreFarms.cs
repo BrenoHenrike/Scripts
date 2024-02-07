@@ -777,9 +777,9 @@ public class CoreFarms
             // 2067 - Secret Order of Undead Slayers
             if (!Core.isCompletedBefore(2067))
             {
-                Core.EnsureAccept(2082);
+                Core.EnsureAccept(2067);
                 Core.BuyItem("doomwood", 276, "Bonegrinder Medal");
-                Core.EnsureComplete(2082);
+                Core.EnsureComplete(2067);
             }
 
             // 2082 - Essential Essences
@@ -1121,7 +1121,7 @@ public class CoreFarms
         // Core.RegisterQuests(794, 795, 796, 797, 798, 799, 800, 801); //A Necessary Sacrifice 794, Gorillaphant Poaching 795, Mustard and Pretzel Root 796, Thyme and a Half 797, Thistle Do Nicely 798, Pleased to Meat You 799, ArcanRobe 800, Ebony and Ivory Tusks 801
         while (!Bot.ShouldExit && FactionRank("Arcangrove") < rank)
         {
-            Core.EnsureAccept(794, 795, 796, 797, 798, 799, 800, 801); //A Necessary Sacrifice 794, Gorillaphant Poaching 795, Mustard and Pretzel Root 796, Thyme and a Half 797, Thistle Do Nicely 798, Pleased to Meat You 799, ArcanRobe 800, Ebony and Ivory Tusks 801
+            Core.EnsureAcceptmultiple(false, new[] { 794, 795, 796, 797, 798, 799, 800, 801 }); //A Necessary Sacrifice 794, Gorillaphant Poaching 795, Mustard and Pretzel Root 796, Thyme and a Half 797, Thistle Do Nicely 798, Pleased to Meat You 799, ArcanRobe 800, Ebony and Ivory Tusks 801
             Core.HuntMonster("arcangrove", "Seed Spitter", "Spool of Arcane Thread", 10);
             Core.HuntMonster("arcangrove", "Seed Spitter", "Defeated Seed Spitter", 10);
             Core.HuntMonster("arcangrove", "Seed Spitter", "Bundle of Thyme", 10);
@@ -1232,27 +1232,29 @@ public class CoreFarms
         Core.Logger("Using Non-Gold Method");
         // Core.Logger($"If you can't Solo SlugButter, Either use the Gold method or Run the AP Script (Found in: Good-ArchPaladin) as it can Solo the boss 👍");
 
-        // Core.RegisterQuests(2777);
+        Core.RegisterQuests(2777);
         while (!Bot.ShouldExit && FactionRank("Blacksmithing") < 4 && !UseGold)
         {
-            Core.EnsureAccept(2777);
+            // Core.EnsureAccept(2777);
             Core.HuntMonster("greenguardeast", "Wolf", "Furry Lost Sock", 2, log: false);
             Core.HuntMonster("greenguardwest", "Slime", "Slimy Lost Sock", 5, log: false);
-            Core.EnsureComplete(2777);
+            // Core.EnsureComplete(2777);
         }
-        // Core.CancelRegisteredQuests();
+        Core.CancelRegisteredQuests();
 
-        // Core.RegisterQuests(8736);
+        // Core.AbandonQuest(2777);
+
+        Core.RegisterQuests(8736);
         while (!Bot.ShouldExit && FactionRank("Blacksmithing") < rank && !UseGold)
         {
-            Core.EnsureAccept(8736);
+            // Core.EnsureAccept(8736);
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("hydrachallenge", "Hydra Head 25", "Hydra Scale Piece", 75, isTemp: false, log: false);
             Core.HuntMonster("maul", "Creature Creation", "Creature Shard", isTemp: false, log: false);
             Core.HuntMonster("towerofdoom", "Dread Klunk", "Monster Trophy", 15, isTemp: false, log: false);
-            Core.EnsureComplete(8736);
+            // Core.EnsureComplete(8736);
         }
-        // Core.CancelRegisteredQuests();
+        Core.CancelRegisteredQuests();
         ToggleBoost(BoostType.Reputation, false);
         Core.SavedState(false);
     }
@@ -1460,16 +1462,16 @@ public class CoreFarms
             ToggleBoost(BoostType.Reputation);
             Core.Logger($"Farming rank {rank}");
 
-            // Core.RegisterQuests(2204); //Do the 'do 2204
+            Core.RegisterQuests(2204); //Do the 'do 2204
             while (!Bot.ShouldExit && FactionRank("ChronoSpan") < rank)
             {
-                Core.EnsureAccept(2204); //Do the 'do 2204
+                // Core.EnsureAccept(2204); //Do the 'do 2204
                 Core.KillMonster("thespan", "r6", "Left", "Moglin Ghost", "Tin of Ghost Dust", 2, log: false);
                 Core.KillMonster("thespan", "r4", "Left", "Minx Fairy", "8 oz Fairy Glitter", 3, log: false);
                 Core.KillMonster("thespan", "r4", "Left", "Tog", "Tog Fang", 4, log: false);
-                Core.EnsureComplete(2204); //Do the 'do 2204
+                // Core.EnsureComplete(2204); //Do the 'do 2204
             }
-            // Core.CancelRegisteredQuests();
+            Core.CancelRegisteredQuests();
             ToggleBoost(BoostType.Reputation, false);
             Core.SavedState(false);
         }
@@ -1540,7 +1542,7 @@ public class CoreFarms
         {
             Core.EnsureAccept(7875);
             Core.HuntMonster("timevoid", "Unending Avatar", "Everlasting Scale");
-            Core.EnsureComplete(7875);
+            Core.EnsureComplete(787);
 
             Core.EnsureAccept(7876);
             Core.HuntMonster($"twilightedge", "ChaosWeaver Warrior", "Chaotic Arachnid's Flesh");
@@ -1664,7 +1666,7 @@ public class CoreFarms
         // Core.RegisterQuests(320, 321); //Warm and Furry 320, Shell Shock 321
         while (!Bot.ShouldExit && FactionRank("Dwarfhold") < rank)
         {
-            Core.EnsureAccept(320, 321); //Warm and Furry 320, Shell Shock 321
+            Core.EnsureAcceptmultiple(false, new[] { 320, 321 }); //Warm and Furry 320, Shell Shock 321
             Core.KillMonster("pines", "Enter", "Right", "Pine Grizzly", "Bear Skin", 5, log: false);
             Core.KillMonster("pines", "Enter", "Right", "Red Shell Turtle", "Red Turtle Shell", 5, log: false);
             Core.EnsureComplete(new[] { 320, 321 }); //Warm and Furry 320, Shell Shock 321
@@ -1717,7 +1719,7 @@ public class CoreFarms
 
         while (!Bot.ShouldExit && FactionRank("Elemental Master") < rank)
         {
-            Core.EnsureAccept(3050, 3298);
+            Core.EnsureAcceptmultiple(false, new[] { 3050, 3298 });
             Core.EquipClass(ClassType.Farm);
             foreach (var element in elementalItems)
             {
@@ -2713,7 +2715,7 @@ public class CoreFarms
             // Core.RegisterQuests(916, 917, 919, 921, 922); //Dissertations Bupers Camel 916, Crafty Creepers: A Favorite of Mine 917, Parched Pets 919, Oasis Ornaments 921, The Power of Pomade 922
             while (!Bot.ShouldExit && FactionRank("Sandsea") < rank)
             {
-                Core.EnsureAccept(916, 917, 919, 921, 922);
+                Core.EnsureAcceptmultiple(false, new[] { 916, 917, 919, 921, 922 });
                 Core.HuntMonster("sandsea", "Bupers Camel", "Bupers Camel Document", 10, log: false);
                 Core.HuntMonster("sandsea", "Bupers Camel", "Barrel of Desert Water", 10, log: false);
                 Core.HuntMonster("sandsea", "Bupers Camel", "Flexible Camel Spit", 7, log: false);
@@ -2764,7 +2766,7 @@ public class CoreFarms
         // Core.RegisterQuests(7665, 7666, 7669);
         while (!Bot.ShouldExit && FactionRank("Somnia") < rank)
         {
-            Core.EnsureAccept(7665, 7666, 7669);
+            Core.EnsureAcceptmultiple(false, new[] { 7665, 7666, 7669 });
             Core.HuntMonster("somnia", "Nightspore", "Dream Truffle", 8, log: false);
             Core.HuntMonster("somnia", "Orpheum Elemental", "Orphium Ore", 8, log: false);
             Core.HuntMonster("somnia", "Dream Larva", "Dreamsilk", 5, log: false);
@@ -2833,7 +2835,7 @@ public class CoreFarms
             // Core.RegisterQuests(3065, 3066, 3067, 3070, 3085, 3086, 3087);
             while (!Bot.ShouldExit && FactionRank("Swordhaven") < rank)
             {
-                Core.EnsureAccept(3065, 3066, 3067, 3070, 3085, 3086, 3087);
+                Core.EnsureAcceptmultiple(false, new[] { 3065, 3066, 3067, 3070, 3085, 3086, 3087 });
                 Core.HuntMonster("castle", "Castle Spider", "Eradicated Arachnid", 10, log: false);
                 Core.HuntMonster("castle", "Castle Spider", "Castle Spider Silk", 8, log: false);
                 Core.HuntMonster("castle", "Castle Spider", "Castle Spider Silk Yarn", 2, log: false);

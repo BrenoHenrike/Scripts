@@ -50,7 +50,7 @@ public class DarkFesta
         if (!Story.QuestProgression(6768))
         {
             //Just a Little Snack (6769)
-            Core.EnsureAccept(6768, 6769);
+            Core.EnsureAcceptmultiple(false, new[ ]{6768, 6769});
             Core.HuntMonster("darkfesta", "Bamboo Treeant", "Bamboo Leaves", 8);
             Core.EnsureComplete(6769);
             Core.EnsureComplete(6768);

@@ -147,7 +147,7 @@ public class Banished
 
         HikarisQuests();
         CoreQOM.TheBook();
-        
+
         Story.PreLoad(this);
 
         //Recover and Recycle (9040)
@@ -161,7 +161,7 @@ public class Banished
         if (!Story.QuestProgression(9042))
         {
             Core.EquipClass(ClassType.Farm);
-            Core.EnsureAccept(9042, 739);
+            Core.EnsureAcceptmultiple(false, new[] { 9042, 739 });
             Core.AddDrop("Racing Trophy");
             while (!Bot.ShouldExit && !Core.CheckInventory("Racing Trophy", 20))
                 Core.ChainComplete(746);

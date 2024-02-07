@@ -62,7 +62,7 @@ public class Bamboozle
         {
             if (!Core.CheckInventory("Dark Bloodstone"))
             {
-                Core.EnsureAccept(7280, 7281);
+                Core.EnsureAcceptmultiple(false, new[] { 7280, 7281 });
                 Core.HuntMonster("safiria", "Blood Maggot", "Blood Gem", 10);
                 Core.EnsureComplete(7281);
                 Bot.Wait.ForPickup("Dark Bloodstone");
@@ -84,7 +84,7 @@ public class Bamboozle
         {
             if (!Core.CheckInventory("Songstone"))
             {
-                Core.EnsureAccept(7285, 7297);
+                Core.EnsureAcceptmultiple(false, new[] { 7285, 7297 });
                 Core.GetMapItem(6909, 15, "mythsong");
                 Core.EnsureComplete(7297);
                 Bot.Wait.ForPickup("Songstone");

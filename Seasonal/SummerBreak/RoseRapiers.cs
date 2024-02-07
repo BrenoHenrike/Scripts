@@ -37,7 +37,7 @@ public class RoseRapiers
             Bot.Drops.Add(item.ID);
             while (!Bot.ShouldExit && !Core.CheckInventory(item.ID))
             {
-                Core.EnsureAccept(9275, 9276, 9277, 9278);
+                Core.EnsureAcceptmultiple(false, new[] { 9275, 9276, 9277, 9278 });
 
                 //Edit the Hunt Below\add more if needed
                 Core.HuntMonster("underglade", "Lunamoss", "Found the Rose Clue");

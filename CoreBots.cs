@@ -1404,7 +1404,7 @@ public class CoreBots
         }
 
         registeredQuests = questIDs;
-        EnsureAccept(questIDs);
+        EnsureAcceptmultiple(true, questIDs);
         questCTS = new();
         Task.Run(async () =>
         {
@@ -1418,14 +1418,14 @@ public class CoreBots
                     foreach (KeyValuePair<Quest, int> kvp in nonChooseQuests)
                     {
                         if (!Bot.Quests.IsInProgress(kvp.Key.ID))
-                            EnsureAccept(kvp.Key.ID);
+                            EnsureAccept(kvp.Key.ID, true);
                         if (Bot.Quests.CanCompleteFullCheck(kvp.Key.ID))
                         {
                             int amountTurnedIn = EnsureCompleteMulti(kvp.Key.ID);
                             if (amountTurnedIn == 0)
                                 continue;
                             await Task.Delay(ActionDelay);
-                            EnsureAccept(kvp.Key.ID);
+                            EnsureAccept(kvp.Key.ID, true);
                             nonChooseQuests[kvp.Key] = nonChooseQuests[kvp.Key] + amountTurnedIn;
                             Logger($"Quest completed x{nonChooseQuests[kvp.Key]} times: [{kvp.Key.ID}] \"{kvp.Key.Name}\"");
                         }
@@ -1435,7 +1435,7 @@ public class CoreBots
                     foreach (KeyValuePair<Quest, int> kvp in chooseQuests)
                     {
                         if (!Bot.Quests.IsInProgress(kvp.Key.ID))
-                            EnsureAccept(kvp.Key.ID);
+                            EnsureAccept(kvp.Key.ID, true);
 
                         if (Bot.Quests.CanCompleteFullCheck(kvp.Key.ID))
                         {
@@ -1455,14 +1455,14 @@ public class CoreBots
                             {
                                 EnsureCompleteMulti(kvp.Key.ID);
                                 await Task.Delay(ActionDelay);
-                                EnsureAccept(kvp.Key.ID);
+                                EnsureAccept(kvp.Key.ID, true);
                                 continue;
                             }
 
                             Bot.Drops.Add(kvp.Key.Rewards.Where(x => simpleRewards.Any(t => t.ID == x.ID)).Select(i => i.Name).ToArray());
                             EnsureCompleteMulti(kvp.Key.ID, simpleRewards.First().ID);
                             await Task.Delay(ActionDelay);
-                            EnsureAccept(kvp.Key.ID);
+                            EnsureAccept(kvp.Key.ID, true);
                             Logger($"Quest completed x{chooseQuests[kvp.Key]++} times: [{kvp.Key.ID}] \"{kvp.Key.Name}\" (Got \"{kvp.Key.Rewards.First(x => x.ID == simpleRewards.First().ID).Name}\")");
                         }
                     }
@@ -1494,9 +1494,12 @@ public class CoreBots
     /// Ensures you are out of combat before accepting the quest
     /// </summary>
     /// <param name="questID">ID of the quest to accept</param>
-    public bool EnsureAccept(int questID)
+    public bool EnsureAccept(int questID = 0, bool Registerquest = false)
     {
         Quest QuestData = EnsureLoad(questID);
+
+        if (Registerquest)
+            Bot.Lite.ReacceptQuest = true;
 
         if (QuestData.Upgrade && !IsMember)
             Logger($"\"{QuestData.Name}\" [{questID}] is member-only, stopping the bot.", stopBot: true);
@@ -1545,9 +1548,17 @@ public class CoreBots
     /// Accepts all the quests given
     /// </summary>
     /// <param name="questIDs">IDs of the quests</param>
-    public void EnsureAccept(params int[] questIDs)
+    public void EnsureAcceptmultiple(bool RegisterQuest = false, params int[]? questIDs)
     {
-        List<Quest> QuestData = EnsureLoad(questIDs);
+        if (questIDs == null || questIDs.Length == 0)
+        {
+            questIDs = new int[] { 0 }; // Default value
+        }
+
+        List<Quest> QuestData = EnsureLoad(questIDs?.Where(q => q > 0).ToArray() ?? Array.Empty<int>());
+
+        if (RegisterQuest)
+            Bot.Lite.ReacceptQuest = true;
 
         foreach (Quest quest in QuestData)
         {
@@ -1599,13 +1610,14 @@ public class CoreBots
     /// </summary>
     /// <param name="questID">ID of the quest to complete</param>
     /// <param name="itemID">ID of the choose-able reward item</param>
-    public bool EnsureComplete(int questID, int itemID = -1)
+    public bool EnsureComplete(int questID, int itemID = -1, bool RegisterQuest = false)
     {
         if (questID <= 0)
             return false;
 
         Quest questData = EnsureLoad(questID);
         EnsureLoad(questData.ID);
+        Bot.Lite.ReacceptQuest = false;
 
         Sleep();
 
@@ -1613,10 +1625,20 @@ public class CoreBots
                         && (!questData.Requirements.Any()
                         || questData.Requirements.All(r => r != null && r.ID > 0)
                         && CheckInventory(questData.Requirements.Select(x => x.ID).ToArray())))
-            return Bot.Quests.EnsureComplete(questID, itemID);
+        {
+            Bot.Quests.EnsureComplete(questID, itemID);
+            if (RegisterQuest)
+                Bot.Lite.ReacceptQuest = true;
+            return true;
+        }
         else
+        {
+            if (RegisterQuest)
+                Bot.Lite.ReacceptQuest = true;
             return false;
+        }
     }
+
 
     // <summary>
     /// Completes all the quests given but doesn't support quests with choose-able rewards

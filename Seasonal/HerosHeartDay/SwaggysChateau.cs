@@ -51,7 +51,7 @@ public class SwaggysChateau
         // Get Some Clues (6192)
         if (!Story.QuestProgression(6192))
         {
-            Core.EnsureAccept(6192, 6193, 6194, 6195);
+            Core.EnsureAcceptmultiple(false, new[ ]{6192, 6193, 6194, 6195});
             Core.HuntMonster("chateau", "Hopeless Romantic", "Pretty Flowers", 6, log: false);
             Core.HuntMonster("chateau", "Barista", "\"Hot Drink\"", 5, log: false);
             Core.HuntMonster("chateau", "Stray Foam", "Floor Cleaned", 6, log: false);
