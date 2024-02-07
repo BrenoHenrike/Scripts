@@ -1604,37 +1604,38 @@ public class CoreBots
         if (questID <= 0)
             return false;
 
-        EnsureLoad(questID);
+        Quest questData = EnsureLoad(questID);
+        EnsureLoad(questData.ID);
 
         Sleep();
 
-        var questData = EnsureLoad(questID);
         if (questData != null && questData.Requirements != null
-        && (!questData.Requirements.Any()
-        || CheckInventory(questData.Requirements.Select(x => x.ID).ToArray())))
+                        && (!questData.Requirements.Any()
+                        || questData.Requirements.All(r => r != null && r.ID > 0)
+                        && CheckInventory(questData.Requirements.Select(x => x.ID).ToArray())))
             return Bot.Quests.EnsureComplete(questID, itemID);
         else
             return false;
     }
 
-    /// <summary>
+    // <summary>
     /// Completes all the quests given but doesn't support quests with choose-able rewards
     /// </summary>
     /// <param name="questIDs">IDs of the quests</param>
     public void EnsureComplete(params int[] questIDs)
     {
-        EnsureLoad(questIDs);
+        List<Quest> questData = EnsureLoad(questIDs);
 
-        foreach (var questID in questIDs)
+        foreach (Quest questID in questData)
         {
-            var questData = EnsureLoad(questID);
+            EnsureLoad(questID.ID);
 
-            if (questData != null && questData.Requirements != null
-                && (!questData.Requirements.Any()
-                || (questData.Requirements.All(r => r != null && r.ID > 0))
-                && CheckInventory(questData.Requirements.Select(x => x.ID).ToArray())))
+            if (questData != null && questID.Requirements != null
+                && (!questID.Requirements.Any()
+                || questID.Requirements.All(r => r != null && r.ID > 0)
+                && CheckInventory(questID.Requirements.Select(x => x.ID).ToArray())))
             {
-                Bot.Quests.EnsureComplete(questID);
+                Bot.Quests.EnsureComplete(questID.ID);
                 Sleep();
             }
         }
@@ -1648,10 +1649,11 @@ public class CoreBots
     /// <param name="itemList">List of the items to get, if you want all just let it be null</param>
     public bool EnsureCompleteChoose(int questID, string[]? itemList = null)
     {
-        EnsureLoad(questID);
+        Quest quest = EnsureLoad(questID);
+
+        EnsureLoad(quest.ID);
         Sleep();
 
-        Quest quest = EnsureLoad(questID);
         if (quest is not null)
         {
             foreach (ItemBase item in quest.Rewards)
@@ -1826,9 +1828,9 @@ public class CoreBots
                 Gold = data.Gold,
                 XP = data.XP,
                 Status = null!, // Not found in QuestData
+                                //Active is based on Stat
                                 //Active is based on Status being NULL or not
-                AcceptRequirements = data.AcceptRequirements,
-                //Requirements cant be writen to
+                                //Requirements cant be writen to
                 Rewards = data.Rewards,
                 SimpleRewards = data.SimpleRewards,
             };
@@ -3240,7 +3242,7 @@ public class CoreBots
             cellPad = ("Enter", "Spawn");
         else
         {
-            blackListedCells.AddRange(new List<string>() { "Wait", "Blank" });
+            blackListedCells.AddRange(new List<string>() { "Wait", "Blank", "Out" });
             blackListedCells.AddRange(Bot.Map.Cells.Where(x => x.StartsWith("Cut")));
             var viableCells = Bot.Map.Cells.Except(blackListedCells);
             if (viableCells.Any())
