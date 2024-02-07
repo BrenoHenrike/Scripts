@@ -5,14 +5,6 @@ tags: Gifts of the Cryomancer, staff, bithday
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Hollowborn/MergeShops/ShadowrealmMerge.cs
-//cs_include Scripts/Story/AgeofRuin/CoreAOR.cs
-//cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
-//cs_include Scripts/Other/MergeShops/YulgarsUndineMerge.cs
-//cs_include Scripts/Hollowborn/MergeShops/DawnFortressMerge.cs
-//cs_include Scripts/Story/Hollowborn/CoreHollowbornStory.cs
 using Skua.Core.Interfaces;
 
 public class GiftsoftheCryomancer
@@ -20,8 +12,6 @@ public class GiftsoftheCryomancer
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
-    public CoreAdvanced Adv = new CoreAdvanced();
-    public ShadowrealmMerge SRM = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
