@@ -249,23 +249,26 @@ public class CoreBLOD
         Core.AddDrop("Cavern Celestite", "Undead Essence");
         if (farmSpiritOrbs)
         {
-            Core.RegisterQuests(2082, 2083); // Bone Some Dust & Essential Essences
+            Core.RegisterQuests(2082, 2083, 939); // Bone Some Dust, Essential Essences, Soul Searching
             Core.AddDrop("Bone Dust", "Undead Energy", "Spirit Orb");
         }
 
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
         {
-            Core.EnsureAccept(939);
-
             Core.KillMonster("battleundera", "r7", "Left", "Bone Terror", "Bone Terror Soul", log: false);
             Core.KillMonster("battleunderb", "r3", "Right", "Undead Champion", "Undead Champion Soul", log: false);
             Core.KillMonster("battleunderc", "r5", "Left", "Crystalized Jellyfish", "Jellyfish Soul", log: false);
-
-            Core.EnsureComplete(939);
             Bot.Wait.ForPickup(item);
-
         }
         Core.CancelRegisteredQuests();
+
+        /* 
+        using register quest + accept and complete seems to break
+        things.. not sure how to solve this besides just picking
+        
+             Core.EnsureAccept(939);
+             Core.EnsureComplete(939);
+        */
     }
 
     //Unused, here for archiving purposes I guess... ~Exe
