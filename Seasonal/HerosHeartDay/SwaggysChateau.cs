@@ -25,20 +25,20 @@ public class SwaggysChateau
     {
         if (Core.isCompletedBefore(6198))
             return;
-            
+
         if (!Core.isSeasonalMapActive("chateau"))
             return;
 
         Story.PreLoad(this);
 
         // LET'S PINKIFY (6188)
-        Story.MapItemQuest(6188, "chateau", new[] {5623, 5624, 5625, 5626});
+        Story.MapItemQuest(6188, "chateau", new[] { 5623, 5624, 5625, 5626 });
 
         // HEART-SHAPED FRUIT (6189)
         Story.KillQuest(6189, "chateau", "Love Shrub");
 
-        // Bear Hugs (6190)
-        Story.KillQuest(6190, "chateau", new[] {"Mood Slime", "Chinchilla"});
+        // CH-CH-CH-INCHILLA (AND SLIME) (6190)
+        Story.KillQuest(6190, "chateau", new[] { "Mood Slime", "Chinchilla" });
 
         // Pay the Cover Charge (6191)
         if (!Story.QuestProgression(6191))
@@ -51,7 +51,7 @@ public class SwaggysChateau
         // Get Some Clues (6192)
         if (!Story.QuestProgression(6192))
         {
-            Core.EnsureAcceptmultiple(false, new[ ]{6192, 6193, 6194, 6195});
+            Core.EnsureAcceptmultiple(false, new[] { 6192, 6193, 6194, 6195 });
             Core.HuntMonster("chateau", "Hopeless Romantic", "Pretty Flowers", 6, log: false);
             Core.HuntMonster("chateau", "Barista", "\"Hot Drink\"", 5, log: false);
             Core.HuntMonster("chateau", "Stray Foam", "Floor Cleaned", 6, log: false);
@@ -68,4 +68,6 @@ public class SwaggysChateau
         // Pinky the Unicorn??? (6198)
         Story.KillQuest(6198, "chateau", "Pinky");
     }
+
+   
 }
