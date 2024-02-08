@@ -65,7 +65,7 @@ public class CyseroMerge
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.HuntMonster("greenguardwest", "Slime", "Slimy Lost Sock", 5, true, false);
-                        Core.HuntMonster("greenguardwest", "Wolf", "Furry Lost Sock", 2, true, false);
+                        Core.HuntMonster("greenguardeast", "Wolf", "Furry Lost Sock", 2, true, false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
