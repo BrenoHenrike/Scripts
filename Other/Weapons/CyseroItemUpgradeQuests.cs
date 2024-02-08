@@ -221,8 +221,8 @@ public class CyseroItemUpgrade
 
             Core.EquipClass(ClassType.Farm);
             Farm.BattleUnderB("Bone Dust", 25);
-            Core.HuntMonster("Bloodtusk ", "Crystal Rock", "Polished Rocks", 3);
-            Core.HuntMonster("Bloodtusk ", "Crystal Rock", "Precious Gemstone", 3);
+            Core.HuntMonster("Bloodtusk ", "Crystal-Rock", "Polished Rocks", 3);
+            Core.HuntMonster("Bloodtusk ", "Crystal-Rock", "Precious Gemstone", 3);
             Core.HuntMonster("DarkFortress", "Wilhelm", "Ultra Shifting Plane Gem", 15, isTemp: false);
 
             Core.EnsureComplete(7067);
