@@ -105,8 +105,7 @@ public class SuppliesWheelArmy
         if (doSwindlesReturnDuring)
         {
             Core.Logger("Setting it so the Dark Makai rune can drop... why is aes s*t so broke.");
-            Core.EnsureAccept(7551);
-            Core.CancelRegisteredQuests();
+            Core.ResetQuest(7551);
         }
 
         foreach (Quest quest in QuestData)
@@ -136,10 +135,8 @@ public class SuppliesWheelArmy
 
 
         bool doBloodyChaos = Bot.Config!.Get<bool>("BloodyChaos");
-        bool doSwindlesReturnDuring = Bot.Config!.Get<bool>("SwindlesReturnDuring");
-        int[] questIDs = doSwindlesReturnDuring ? new[] { 2857, 7551 } : new[] { 2857 };
 
-        Core.RegisterQuests(questIDs);
+        Core.RegisterQuests(2857);
         Core.FarmingLogger(item, quant);
         Core.EquipClass(ClassType.Farm);
         bool AggroSet = false;
@@ -183,7 +180,16 @@ public class SuppliesWheelArmy
                             break;
                     }
                 }
+
                 Bot.Wait.ForPickup("Dark Makai Rune");
+
+                var ReturnRewards = Core.EnsureLoad(7551).Rewards;
+                ItemBase? ReturnRewardsItem = ReturnRewards.Find(x => x.Name == item);
+
+                if (ReturnRewards.Any(reward => reward.Name == item && reward.Name != "Receipt of Swindle"))
+                    Core.EnsureCompleteChoose(7551, new[] { ReturnRewardsItem!.Name });
+                else
+                    Core.EnsureCompleteChoose(7551, Core.QuestRewards(7551));
                 AggroSet = false;
             }
 
