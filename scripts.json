@@ -17,7 +17,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 119381,
+    "size": 119048,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -50,7 +50,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 199227,
+    "size": 199293,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -13038,12 +13038,15 @@
   },
   {
     "name": "YouMadBroBadge",
-    "description": "null",
+    "description": "Does the alcemy sh...t till it gets the badge",
     "tags": [
-      "null"
+      "alchemy",
+      "you mad bro",
+      "rep",
+      "badge"
     ],
     "path": "Other/Badges/YouMadBroBadge.cs",
-    "size": 2829,
+    "size": 2643,
     "fileName": "YouMadBroBadge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Badges/YouMadBroBadge.cs"
   },
