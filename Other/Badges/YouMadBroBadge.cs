@@ -56,15 +56,14 @@ public class YouMadBroBadge
                 while (!Core.CheckInventory(11475, 30))
                     Core.KillMonster("lair", "Hole", "Center", "*", isTemp: false, log: false);
                 Core.KillMonster("lair", "Enter", "Spawn", "*", "Ice Vapor", 30, isTemp: false);
-                Farm.DragonRunestone(1);
             }
             else
             {
                 Adv.BuyItem("alchemy", 397, 11475, 10, shopItemID: 1232);
                 Adv.BuyItem("alchemy", 397, 11478, 10, shopItemID: 1235);
-                Farm.DragonRunestone(1);
             }
-
+            //to make sure it aways has 1 DRS
+            Farm.DragonRunestone(1);
             Farm.AlchemyPacket("Dragon Scale", "Ice Vapor", trait: CoreFarms.AlchemyTraits.hOu);
         }
         Core.TrashCan("Dragon Scale", "Ice Vapor");
