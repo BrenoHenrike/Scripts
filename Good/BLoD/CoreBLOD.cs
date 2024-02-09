@@ -256,6 +256,7 @@ public class CoreBLOD
         if (farmNSOD)
             Core.KillMonster("battleunderc", "r5", "Left", "Crystalized Jellyfish", item, quant, false, false);
         else
+        {
             while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
             {
                 Core.KillMonster("battleunderc", "r5", "Left", "Crystalized Jellyfish", "Jellyfish Soul", log: false);
@@ -263,7 +264,8 @@ public class CoreBLOD
                 Core.KillMonster("battleunderb", "r3", "Right", "Undead Champion", "Undead Champion Soul", log: false);
                 Bot.Wait.ForPickup(item);
             }
-        Core.CancelRegisteredQuests();
+            Core.CancelRegisteredQuests();
+        }
 
         /* 
         using register quest + accept and complete seems to break
