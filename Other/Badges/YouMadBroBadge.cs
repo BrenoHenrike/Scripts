@@ -37,14 +37,11 @@ public class YouMadBroBadge
 
     public void Badge(bool useGold = true)
     {
-        // Check if the option is already set
         if (Core.HasWebBadge(badge))
         {
             Core.Logger($"Already have the {badge} badge");
             return;
         }
-
-        // Use the passed boolean parameter
 
         Farm.AlchemyREP();
         Core.EquipClass(ClassType.Farm);
