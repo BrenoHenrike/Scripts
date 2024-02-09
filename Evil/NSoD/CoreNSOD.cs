@@ -442,7 +442,7 @@ public class CoreNSOD
 
     public void CavernCelestite(int quant)
     {
-        BLOD.SoulSearching("Cavern Celestite", quant, false);
+        BLOD.SoulSearching("Cavern Celestite", quant, false, true);
     }
 
     public void PrimarchHilt(int quant)

@@ -236,7 +236,7 @@ public class CoreBLOD
         FarmFindingFrag(WeaponOfDestiny.Daggers, "Blinding Aura", quant);
     }
 
-    public void SoulSearching(string item = "Spirit Orb", int quant = 1, bool farmSpiritOrbs = true)
+    public void SoulSearching(string item = "Spirit Orb", int quant = 1, bool farmSpiritOrbs = true, bool farmNSOD = false)
     {
         if (Core.CheckInventory(item, quant))
             return;
@@ -253,13 +253,16 @@ public class CoreBLOD
             Core.AddDrop("Bone Dust", "Undead Energy", "Spirit Orb");
         }
 
-        while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
-        {
-            Core.KillMonster("battleundera", "r7", "Left", "Bone Terror", "Bone Terror Soul", log: false);
-            Core.KillMonster("battleunderb", "r3", "Right", "Undead Champion", "Undead Champion Soul", log: false);
-            Core.KillMonster("battleunderc", "r5", "Left", "Crystalized Jellyfish", "Jellyfish Soul", log: false);
-            Bot.Wait.ForPickup(item);
-        }
+        if (farmNSOD)
+            Core.KillMonster("battleunderc", "r5", "Left", "Crystalized Jellyfish", item, quant, false, false);
+        else
+            while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
+            {
+                Core.KillMonster("battleunderc", "r5", "Left", "Crystalized Jellyfish", "Jellyfish Soul", log: false);
+                Core.KillMonster("battleundera", "r7", "Left", "Bone Terror", "Bone Terror Soul", log: false);
+                Core.KillMonster("battleunderb", "r3", "Right", "Undead Champion", "Undead Champion Soul", log: false);
+                Bot.Wait.ForPickup(item);
+            }
         Core.CancelRegisteredQuests();
 
         /* 
