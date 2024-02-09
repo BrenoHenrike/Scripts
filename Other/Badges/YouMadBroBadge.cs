@@ -1,12 +1,13 @@
 /*
 name: YouMadBroBadge
-description: null
-tags: null
+description: Does the alcemy sh...t till it gets the badge
+tags: alchemy, you mad bro, rep, badge
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Options;
 
 public class YouMadBroBadge
 {
@@ -14,6 +15,14 @@ public class YouMadBroBadge
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
     public CoreAdvanced Adv = new();
+
+    public string OptionsStorage = "YouMadBro";
+    public bool DontPreconfigure = true;
+    public List<IOption> Options = new()
+    {
+        new Option<bool>("Use Gold", "Use Gold?", "Buy farming mats?", false),
+        CoreBots.Instance.SkipOptions,
+    };
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -39,33 +48,28 @@ public class YouMadBroBadge
         {
             Core.AddDrop("Ice Vapor");
             Core.AddDrop(11475); //dragon scale (2 items items have this name hence the id)
-            Core.FarmingLogger("Dragon Scale", 30);
-            Core.FarmingLogger("Ice Vapor", 2);
-            // while (!Core.CheckInventory(11475, 30) || !Core.CheckInventory("Ice Vapor", 30)) //uncomment this, and comment the line below out, if ice vapor ever gets fixed from only needing 1 and it never being used.
-            // while (!Core.CheckInventory(11475, 30) || !Core.CheckInventory("Ice Vapor", 2))
-            //     Core.KillMonster("lair", "Enter", "Spawn", "*", isTemp: false, log: false);
 
-
-            while (!Core.CheckInventory(11475, 30))
-                Core.KillMonster("lair", "Hole", "Center", "*", isTemp: false, log: false);
-            Core.KillMonster("lair", "Enter", "Spawn", "*", "Ice Vapor", 2, isTemp: false, log: false);
-
-            //incase they fix icevapor not being used V
-            // Core.KillMonster("lair", "Enter", "Spawn", "*", "Ice Vapor", 30, isTemp: false, log: false);
-
-            if (!Core.CheckInventory("Dragon Runestone", 30))
+            if (!Bot.Config!.Get<bool>("Use Gold"))
             {
-                Adv.BuyItem("alchemyacademy", 395, 62749, 30, 1, 8777);
-                Core.BuyItem("alchemyacademy", 395, "Dragon Runestone", 30, 8844);
+                Core.EquipClass(ClassType.Farm);
+                Core.FarmingLogger("Dragon Scale", 30);
+                while (!Core.CheckInventory(11475, 30))
+                    Core.KillMonster("lair", "Hole", "Center", "*", isTemp: false, log: false);
+                Core.KillMonster("lair", "Enter", "Spawn", "*", "Ice Vapor", 30, isTemp: false);
+                Farm.DragonRunestone(1);
+            }
+            else
+            {
+                Farm.DragonRunestone(11);
+                Core.BuyItem("alchemy", 397, 11475, 10, shopItemID: 1232);
+                Core.BuyItem("alchemy", 397, 11478, 10, shopItemID: 1235);
             }
 
-            Core.Join("alchemy"); //maybe you have to be here to get the badge?
-
-            Farm.AlchemyPacket("Dragon Scale", "Ice Vapor", trait: CoreFarms.AlchemyTraits.hOu, P2w: true);
+            Farm.AlchemyPacket("Dragon Scale", "Ice Vapor", trait: CoreFarms.AlchemyTraits.hOu);
         }
         Core.TrashCan("Dragon Scale", "Ice Vapor");
         Core.ToBank("Dragon Runestone", "Gold Voucher 100k");
     }
     // private string[] PotionsToSell = {"Life Potion", "Basic Crusader Elixir", "Basic Barrier Potion", "Basic Crusader Elixir", "Divine Elixir", "Barrier Potion", "Basic Barrier Potion", "Basic Divine Elixir", "Crusader Elixir"};
-    private string badge = "You mad bro?";
+    private readonly string badge = "You mad bro?";
 }

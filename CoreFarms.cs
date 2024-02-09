@@ -929,7 +929,7 @@ public class CoreFarms
     /// <param name="rank">The minimum rank to make the misture, use 0 for any rank.</param>
     /// <param name="loop">Whether loop till you run out of reagents</param>
     /// <param name="modifier">Some mistures have specific packet modifiers, default is Moose but you can find Man, mRe and others.</param>
-    public void AlchemyPacket(string reagent1, string reagent2, AlchemyRunes rune = AlchemyRunes.Gebo, int rank = 0, bool loop = true, string modifier = "Moose", AlchemyTraits trait = AlchemyTraits.APw, bool P2w = false)
+    public void AlchemyPacket(string reagent1, string reagent2, AlchemyRunes rune = AlchemyRunes.Gebo, int rank = 0, bool loop = true, string modifier = "Moose", AlchemyTraits trait = AlchemyTraits.APw)
     {
         if (rank != 0 && FactionRank("Alchemy") < rank)
             AlchemyREP(rank);
@@ -940,7 +940,7 @@ public class CoreFarms
             Core.Logger("Something went wrong, you do not own " + reagent1, messageBox: true, stopBot: true);
             return;
         }
-        if (!Core.CheckInventory(reagent2) || !Bot.Inventory.TryGetItem(reagent1, out var reg2))
+        if (!Core.CheckInventory(reagent2) || !Bot.Inventory.TryGetItem(reagent2, out var reg2))
         {
             Core.Logger("Something went wrong, you do not own " + reagent2, messageBox: true, stopBot: true);
             return;
@@ -955,37 +955,31 @@ public class CoreFarms
         Core.Logger($"Reagents: [{reagent1}], [{reagent2}].");
         Core.Logger($"Rune: {rune}.");
         Core.Logger($"Modifier: {modifier}.");
+        Core.Join("alchemy");
         int i = 1;
         if (loop)
         {
             while (!Bot.ShouldExit && Core.CheckInventory(new[] { reagent1, reagent2 }))
             {
-                if (P2w && !Core.CheckInventory("Dragon Runestone"))
+                if (!Core.CheckInventory(new[] { reagent1, reagent2 }))
                     break;
                 Packet();
                 Core.Logger($"Completed alchemy x{i++}");
             }
         }
         else Packet();
-        //Times alchemy was fixed: TO FUCKING MANY I HATE ARTIX
 
         void Packet()
         {
-            if (!P2w)
-                Core.Sleep(3500);
-            else Core.Sleep();
-            if (P2w && Core.CheckInventory("Dragon Runestone"))
-                Bot.Send.Packet($"%xt%zm%crafting%1%getAlchWait%{reagentid1}%{reagentid2}%true%Ready to Mix%{reagent1}%{reagent2}%{rune}%{trait}%");
-            else if (!P2w)
-                Bot.Send.Packet($"%xt%zm%crafting%1%getAlchWait%{reagentid1}%{reagentid2}%false%Ready to Mix%{reagent1}%{reagent2}%{rune}%{modifier}%");
-            if (P2w)
-                Core.Sleep(2500);
-            else Core.Sleep(11000);
-            if (P2w && Core.CheckInventory("Dragon Runestone"))
-                Bot.Send.Packet($"%xt%zm%crafting%1%checkAlchComplete%{reagentid1}%{reagentid2}%true%Mix Complete%{reagent1}%{reagent2}%{rune}%{trait}%");
-
-            else if (!P2w)
-                Bot.Send.Packet($"%xt%zm%crafting%1%checkAlchComplete%{reagentid1}%{reagentid2}%false%Mix Complete%{reagent1}%{reagent2}%{rune}%{modifier}%");
+            if (Core.CheckInventory("Dragon Runestone"))
+                // "%xt%zm%crafting%1%getAlchWait%11480%11477%true%Ready to Mix%Necrot%Doomatter%Gebo%Moose%"
+                Core.SendPackets($"%xt%zm%crafting%1%getAlchWait%{reagentid1}%{reagentid2}%true%Ready to Mix%{reagent1}%{reagent2}%{rune}%{modifier}%");
+            Core.Sleep();
+            if (Core.CheckInventory("Dragon Runestone"))
+                Core.SendPackets("{\"t\":\"xt\",\"b\":{\"r\":-1,\"o\":{\"bVerified\":true,\"cmd\":\"alchOnStart\"}}}", toClient: true);
+            Core.Sleep(4000);
+            if (Core.CheckInventory("Dragon Runestone"))
+                Core.SendPackets($"%xt%zm%crafting%1%checkAlchComplete%{reagentid1}%{reagentid2}%false%Mix Complete%{reagent1}%{reagent2}%{rune}%{modifier}%");
         }
 
     }
@@ -1043,10 +1037,10 @@ public class CoreFarms
             Core.Logger("Getting Pre-Ranking XP");
             if (!Core.CheckInventory(new[] { 11478, 11475, 7132 }))
             {
-                DragonRunestone(1);
-                Core.BuyItem("alchemyacademy", 397, 11475, 2, 1232);
-                Core.BuyItem("alchemyacademy", 397, 11478, 1, 1235);
-
+                DragonRunestone(2);
+                Core.BuyItem("alchemy", 397, 11475, 2, 1232);
+                Core.BuyItem("alchemy", 397, 11478, 1, 1235);
+                Core.Join("alchemy");
                 AlchemyPacket("Dragon Scale", "Ice Vapor", AlchemyRunes.Jera, loop: false, trait: CoreFarms.AlchemyTraits.hOu, P2w: true);
             }
         }
@@ -1059,13 +1053,14 @@ public class CoreFarms
         int i = 1;
         while (!Bot.ShouldExit && FactionRank("Alchemy") < rank)
         {
+
             if (goldMethod)
             {
                 if (!Core.CheckInventory(new[] { 11478, 11475, 7132 }))
                 {
                     DragonRunestone(25);
-                    Core.BuyItem("alchemyacademy", 397, 11475, 20, 1232);
-                    Core.BuyItem("alchemyacademy", 397, 11478, 10, 1235);
+                    Core.BuyItem("alchemy", 397, 11475, 20, 1232);
+                    Core.BuyItem("alchemy", 397, 11478, 10, 1235);
                 }
 
                 if (FactionRank("Alchemy") < 3)
