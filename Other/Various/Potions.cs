@@ -243,7 +243,7 @@ public class PotionBuyer
                     // }
                     Core.ToggleAggro(false);
                     Core.Join("alchemy");
-                    Farm.AlchemyPacket(reagent1, reagent2, trait: currTrait, P2w: true);
+                    Farm.AlchemyPacket(reagent1, reagent2, trait: currTrait);
                 }
             }
 
