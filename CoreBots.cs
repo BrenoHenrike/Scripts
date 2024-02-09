@@ -2555,12 +2555,13 @@ public class CoreBots
                     Bot.Combat.Attack(targetedMob?.MapID ?? Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault()?.MapID ?? 0);
                     Sleep();
 
+                    if (rejectElse)
+                        Bot.Drops.RejectExcept(item);
+
                     if (Item != null && Bot.Inventory.Contains(Item.ID) && Bot.Inventory.GetQuantity(Item.ID) >= quantity ||
                     Item != null && Bot.TempInv.Contains(Item.ID) && Bot.TempInv.GetQuantity(Item.ID) >= quantity)
                     {
                         Bot.Wait.ForPickup(item);
-                        if (rejectElse)
-                            Bot.Drops.RejectExcept(item);
                         Rest();
                         return;
                     }
@@ -3266,6 +3267,8 @@ public class CoreBots
         {
             blackListedCells.AddRange(new List<string>() { "Wait", "Blank", "Out" });
             blackListedCells.AddRange(Bot.Map.Cells.Where(x => x.StartsWith("Cut")));
+            if (!IsMember)
+                blackListedCells.Add("Eggs");
             var viableCells = Bot.Map.Cells.Except(blackListedCells);
             if (viableCells.Any())
                 cellPad.Item1 = viableCells.First();
