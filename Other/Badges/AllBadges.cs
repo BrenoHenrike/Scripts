@@ -133,7 +133,7 @@ public class AllBadges
         UC.Badge();
         G.Badge();
         FV.Badges();
-        YMBB.Badge(true);
+        YMBB.Badge();
         VHL.Badge();
         //add more as they are made.
     }

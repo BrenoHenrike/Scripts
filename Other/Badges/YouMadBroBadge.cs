@@ -35,26 +35,25 @@ public class YouMadBroBadge
         Core.SetOptions(false);
     }
 
-    public void Badge(bool useGold)
+    public void Badge(bool useGold = true)
     {
         // Check if the option is already set
-        if (Core.HasWebBadge("UseGold"))
+        if (Core.HasWebBadge(badge))
         {
-            Core.Logger("Already have the Use Gold badge");
+            Core.Logger($"Already have the {badge} badge");
             return;
         }
 
         // Use the passed boolean parameter
-        bool useGoldOption = useGold;
 
         Farm.AlchemyREP();
         Core.EquipClass(ClassType.Farm);
-        while (!Bot.ShouldExit && !Core.HasWebBadge("UseGold"))
+        while (!Bot.ShouldExit && !Core.HasWebBadge(badge))
         {
             Core.AddDrop("Ice Vapor");
             Core.AddDrop(11475); //dragon scale (2 items items have this name hence the id)
 
-            if (!useGoldOption)
+            if (!useGold)
             {
                 Core.EquipClass(ClassType.Farm);
                 Core.FarmingLogger("Dragon Scale", 30);
