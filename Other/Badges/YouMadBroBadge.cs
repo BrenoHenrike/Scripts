@@ -60,9 +60,9 @@ public class YouMadBroBadge
             }
             else
             {
-                Farm.DragonRunestone(11);
-                Core.BuyItem("alchemy", 397, 11475, 10, shopItemID: 1232);
-                Core.BuyItem("alchemy", 397, 11478, 10, shopItemID: 1235);
+                Adv.BuyItem("alchemy", 397, 11475, 10, shopItemID: 1232);
+                Adv.BuyItem("alchemy", 397, 11478, 10, shopItemID: 1235);
+                Farm.DragonRunestone(1);
             }
 
             Farm.AlchemyPacket("Dragon Scale", "Ice Vapor", trait: CoreFarms.AlchemyTraits.hOu);
