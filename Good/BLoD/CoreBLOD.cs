@@ -236,7 +236,7 @@ public class CoreBLOD
         FarmFindingFrag(WeaponOfDestiny.Daggers, "Blinding Aura", quant);
     }
 
-    public void SoulSearching(string item = "Spirit Orb", int quant = 1, bool farmSpiritOrbs = true, bool farmNSOD = false)
+    public void SoulSearching(string item = "Spirit Orb", int quant = 1, bool farmSpiritOrbs = true)
     {
         if (Core.CheckInventory(item, quant))
             return;
@@ -249,23 +249,22 @@ public class CoreBLOD
         Core.AddDrop("Cavern Celestite", "Undead Essence");
         if (farmSpiritOrbs)
         {
-            Core.RegisterQuests(2082, 2083, 939); // Bone Some Dust, Essential Essences, Soul Searching
+            Core.RegisterQuests(2082, 2083); // Bone Some Dust, Essential Essences
             Core.AddDrop("Bone Dust", "Undead Energy", "Spirit Orb");
         }
 
-        if (farmNSOD)
-            Core.KillMonster("battleunderc", "r5", "Left", "Crystalized Jellyfish", item, quant, false, false);
-        else
+        Core.RegisterQuests(939); //Soul Searching
+
+        while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
         {
-            while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
-            {
-                Core.KillMonster("battleunderc", "r5", "Left", "Crystalized Jellyfish", "Jellyfish Soul", log: false);
-                Core.KillMonster("battleundera", "r7", "Left", "Bone Terror", "Bone Terror Soul", log: false);
-                Core.KillMonster("battleunderb", "r3", "Right", "Undead Champion", "Undead Champion Soul", log: false);
-                Bot.Wait.ForPickup(item);
-            }
-            Core.CancelRegisteredQuests();
+            Core.KillMonster("battleunderc", "r5", "Left", "Crystalized Jellyfish", "Jellyfish Soul", log: false);
+            Core.KillMonster("battleundera", "r7", "Left", "Bone Terror", "Bone Terror Soul", log: false);
+            Core.KillMonster("battleunderb", "r3", "Right", "Undead Champion", "Undead Champion Soul", log: false);
+            Bot.Wait.ForPickup(item);
         }
+
+        Core.CancelRegisteredQuests();
+
 
         /* 
         using register quest + accept and complete seems to break
