@@ -187,6 +187,7 @@ public class ArmyTemplatev4 //Rename This
             Core.CancelRegisteredQuests();
         }
     }
+
     public void ArmyBits(string map, string[] cell, int[] MonsterMapIDs, string[] items, int quant, ClassType classToUse)
     {
         // Setting up private rooms and class
@@ -195,33 +196,45 @@ public class ArmyTemplatev4 //Rename This
         Core.EquipClass(classToUse);
         Core.AddDrop(items);
 
-        // Multi-target scenario
-        // Explanation: For each item you specified, target all specified MonsterMapIDs
         foreach (string item in items)
         {
-            // Aggro, divide on cells, and target specified MonsterMapIDs
+            bool inventoryConditionMet = Core.CheckInventory(item, quant);
+
+            if (inventoryConditionMet)
+                return;
+
             Army.AggroMonMIDs(MonsterMapIDs);
             Army.AggroMonStart(map);
             Army.DivideOnCells(cell);
+            Core.FarmingLogger(item, quant);
+            Bot.Player.SetSpawnPoint();
+            string DividedCell = Bot.Player.Cell;
 
-            while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
+            while (!Bot.ShouldExit && !inventoryConditionMet)
             {
-                foreach (int monsterMapID in MonsterMapIDs)
+                while (!Bot.ShouldExit && Bot.Player.Cell != DividedCell)
                 {
+                    Core.Jump(DividedCell);
+                    Core.Sleep();
+                    if (Bot.Player.Cell == DividedCell)
+                        break;
+                }
+
+                foreach (int monsterMapID in MonsterMapIDs)
                     if (Core.IsMonsterAlive(monsterMapID, useMapID: true))
                     {
                         Bot.Combat.Attack(monsterMapID);
                         Core.Sleep();
-                        if (Core.CheckInventory(item, quant))
-                            break;
-                    }
-                }
+                        inventoryConditionMet = Core.CheckInventory(item, quant);
 
+                        // Break out of the foreach loop
+                        if (inventoryConditionMet)
+                        {
+                            Army.AggroMonStop(true);
+                            break;
+                        }
+                    }
             }
-            // Clean up
-            Army.AggroMonStop(true);
-            Core.JumpWait();
-            Core.CancelRegisteredQuests();
         }
     }
     #endregion IgnoreME
