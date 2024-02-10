@@ -19,9 +19,9 @@ public class BankAllItems
     public List<IOption> Options = new()
     {
         new Option<string>("BlackList", "BlackList Items", "Fill in the items teh bot *shouldn't* bank, split with a , (comma)."),
-        new Option<bool>("BanknonAc", "BanknonAc","Bank non-AC items", false),
-        new Option<bool>("Inventory", "InventoryACBank","Bank all Ac Inventory Items", true),
-        new Option<bool>("House", "HouseACBank","Bank all Ac House Items", true)
+        new Option<bool>("BanknonAc", "BanknonAc", "Bank non-AC items", false),
+        new Option<bool>("Inventory", "InventoryACBank", "Bank all Ac Inventory Items", true),
+        new Option<bool>("House", "HouseACBank", "Bank all Ac House Items", true)
     };
 
 
@@ -59,7 +59,7 @@ public class BankAllItems
         Core.Logger("Finished inventory items, onto house items.");
 
         // Bank house items
-        BankItems(Bot.House.Items, blackListedItems, Bot.Config?.Get<bool>("BanknonAc") == true);
+        BankItems(Bot.House.Items, blackListedItems, Bot.Config?.Get<bool>("HouseACBank") == true);
     }
 
     private void BankItems(IEnumerable<InventoryItem> items, HashSet<string> blackList, bool bankNonAc)
