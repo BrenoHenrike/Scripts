@@ -44,7 +44,7 @@ public class BeleensDyeMerge
     public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         SwaggysChateau.CompleteStory();
-        
+
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("chateau", 1550, findIngredients, buyOnlyThis, buyMode: buyMode);
 
@@ -75,7 +75,7 @@ public class BeleensDyeMerge
 
                 case "Pink Potion":
                     Core.EquipClass(ClassType.Farm);
-                    Core.HuntMonster("chateau", "Zombie Dragon", req.Name, quant, isTemp: false);
+                    Core.HuntMonster("chateau", "Pinky", req.Name, quant, isTemp: false);
                     break;
 
                 case "Mr. Cuddles Pet":
@@ -97,7 +97,7 @@ public class BeleensDyeMerge
 
                 case "Chainsaw Katana":
                     Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster("darkoviahorde", "Pinky", req.Name, quant, isTemp: false);
+                    Core.HuntMonster("darkoviahorde", "Zombie Dragon", req.Name, quant, isTemp: false);
                     break;
 
                 case "Unarmed":
