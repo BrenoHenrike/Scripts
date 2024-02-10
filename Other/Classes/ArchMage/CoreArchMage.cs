@@ -148,8 +148,8 @@ public class CoreArchMage
         Core.EnsureAccept(8919);
         Core.Logger("Doing the extra quest for the 51% weapon \"Providence\"");
 
+        UnboundTome(31);
         BookOfArcana();
-        UnboundTome(30);
         BossItemCheck(2500, "Elemental Binding");
 
         Core.EquipClass(ClassType.Farm);
@@ -434,7 +434,9 @@ public class CoreArchMage
         }
     }
 
-    public void UnboundTome(int quant = 99)
+    //you'll need 35 for everything if ive done maths correctly
+    // 5 for the books, and 31 for lumina(30 + 1 for book)
+    public void UnboundTome(int quant = 36)
     {
         if (Core.CheckInventory("Unbound Tome", quant))
         {
