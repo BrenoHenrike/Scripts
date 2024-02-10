@@ -35,7 +35,7 @@ public class DrakelWarlord
             return;
         }
 
-        DPARM.BuyAllMerge("Drakel Warlord");
+        DPARM.BuyAllMerge("4555");
 
         if (rankUpClass)
             Adv.RankUpClass("Drakel Warlord");
