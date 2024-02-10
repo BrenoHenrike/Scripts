@@ -1100,7 +1100,7 @@ public class CoreFarms
         Core.SavedState(false);
     }
 
-    public void ArcangroveREP(int rank = 11)
+    public void ArcangroveREP(int rank = 10)
     {
         if (FactionRank("Arcangrove") >= rank)
             return;
