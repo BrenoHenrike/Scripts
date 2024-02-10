@@ -9501,7 +9501,7 @@
   },
   {
     "name": "Yguasu Falls Story",
-    "description": "This will complete the Love Spell story.",
+    "description": "This will complete the Yguasu Falls story.",
     "tags": [
       "story",
       "quest",
@@ -9511,7 +9511,7 @@
       "seasonal"
     ],
     "path": "Seasonal/HerosHeartDay/YguasuFalls.cs",
-    "size": 1637,
+    "size": 1608,
     "fileName": "YguasuFalls.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HerosHeartDay/YguasuFalls.cs"
   },
@@ -9685,7 +9685,7 @@
       "bolsa"
     ],
     "path": "Seasonal/HerosHeartDay/YguasuFallsMerge.cs",
-    "size": 5985,
+    "size": 6019,
     "fileName": "YguasuFallsMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HerosHeartDay/YguasuFallsMerge.cs"
   },
