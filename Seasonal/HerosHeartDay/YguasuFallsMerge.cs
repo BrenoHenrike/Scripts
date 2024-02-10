@@ -71,14 +71,15 @@ public class YguasuFallsMerge
 
                 case "Lovely Silk":
                     Core.FarmingLogger(req.Name, quant);
-                    Core.EquipClass(ClassType.Farm);
                     Core.RegisterQuests(9588);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("yguasu", "Lovely Mask", "Giggling Mask", 10);
-                        Core.HuntMonster("yguasu", "Lobisomen", "Wolfman Talisman", 10);
+                        Core.EquipClass(ClassType.Farm);
+                        Core.KillMonster("yguasu", "r3", "Left", "*", "Giggling Mask", 10);
+                        Core.KillMonster("yguasu", "r4", "Left", "*", "Wolfman Talisman", 10);
+                        
                         Core.EquipClass(ClassType.Solo);
-                        Core.HuntMonster("yguasu", "M'Boi", "M'Boi's Throat");
+                        Core.KillMonster("yguasu", "r5", "Left", "*", "M'Boi's Throat", 1);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
@@ -88,7 +89,7 @@ public class YguasuFallsMerge
                     Core.EquipClass(ClassType.Solo);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.ID, quant))
                         Core.KillMonster("yguasu", "r5", "Left", "M'Boi", log: false);
-                        Bot.Wait.ForPickup(req.ID);
+                    Bot.Wait.ForPickup(req.ID);
                     break;
 
             }
