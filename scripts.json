@@ -6,7 +6,7 @@
       "null"
     ],
     "path": "CoreAdvanced.cs",
-    "size": 115440,
+    "size": 115377,
     "fileName": "CoreAdvanced.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreAdvanced.cs"
   },
@@ -17,7 +17,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 119048,
+    "size": 117782,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -4241,7 +4241,7 @@
       "enchanted"
     ],
     "path": "Good/GearOfAwe/AweMerge.cs",
-    "size": 7254,
+    "size": 7248,
     "fileName": "AweMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/GearOfAwe/AweMerge.cs"
   },
@@ -5185,7 +5185,7 @@
       "solo"
     ],
     "path": "Legion/LegionTokens/FirstClassEntertainment.cs",
-    "size": 753,
+    "size": 729,
     "fileName": "FirstClassEntertainment.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/LegionTokens/FirstClassEntertainment.cs"
   },
@@ -21761,7 +21761,7 @@
       "null"
     ],
     "path": "Templates/Examples/Other/MergeExample.cs",
-    "size": 4681,
+    "size": 4675,
     "fileName": "MergeExample.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Templates/Examples/Other/MergeExample.cs"
   },
