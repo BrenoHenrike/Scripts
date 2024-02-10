@@ -689,7 +689,7 @@ public class CoreAdvanced
                 Core.Logger($"Best gear for {boostString} wasn't found!");
                 return String.Empty;
             }
-            else Core.Logger($"Best gear for {boostString} found: {toReturn.Name} ({(BestBoostValue - 1).ToString("+0.##%")})");
+            else Core.Logger($"Best gear for {boostString} found: {toReturn.Name} ({BestBoostValue - 1:+0.##%})");
 
             LastGenericBestGear = toReturn.Name;
             if (equipItem)
@@ -846,10 +846,10 @@ public class CoreAdvanced
                 //    Core.Logger($"Best gear against {boostString} wasn't found!");
                 //    return Array.Empty<string>();
                 case 1:
-                    Core.Logger($"Best gear against {boostString} found: {toReturn[0].Name} ({(BestBoostValue - 1).ToString("+0.##%")})");
+                    Core.Logger($"Best gear against {boostString} found: {toReturn[0].Name} ({BestBoostValue - 1:+0.##%})");
                     break;
                 case 2:
-                    Core.Logger($"Best gear against {boostString} found: {toReturn[0].Name} + {toReturn[1].Name} ({(BestBoostValue - 1).ToString("+0.##%")})");
+                    Core.Logger($"Best gear against {boostString} found: {toReturn[0].Name} + {toReturn[1].Name} ({BestBoostValue - 1:+0.##%})");
                     break;
                 default:
                     Core.Logger($"How the fuck did toReturn.Count get {toReturn.Count}. Please report");
@@ -1126,7 +1126,7 @@ public class CoreAdvanced
     /// <param name="Special">Example: WeaponSpecial.Spiral_Carve , replace Spiral_Carve with whatever weapon special you want to have it use</param>
     public void EnhanceItem(string[] items, EnhancementType type, CapeSpecial cSpecial = CapeSpecial.None, HelmSpecial hSpecial = HelmSpecial.None, WeaponSpecial wSpecial = WeaponSpecial.None)
     {
-        if (items.Count() == 0 || (Core.CBOBool("DisableAutoEnhance", out bool _disableAutoEnhance) && _disableAutoEnhance))
+        if (items.Length == 0 || (Core.CBOBool("DisableAutoEnhance", out bool _disableAutoEnhance) && _disableAutoEnhance))
             return;
 
         // If any of the items in the items array cant be found, return
@@ -1148,7 +1148,7 @@ public class CoreAdvanced
         List<InventoryItem> SelectedItems = Bot.Inventory.Items.FindAll(i => items.Contains(i.Name) && EnhanceableCatagories.Contains(i.Category));
 
         // If any of the items in the items array cant be enhanced, return
-        if (SelectedItems.Count != items.Count())
+        if (SelectedItems.Count != items.Length)
         {
             List<string> unEnhanceable = new();
 
@@ -1180,7 +1180,7 @@ public class CoreAdvanced
         if (e == null || (Bot.ShouldExit && e is OperationCanceledException))
             return;
         List<string> logs = Ioc.Default.GetRequiredService<ILogService>().GetLogs(LogType.Script);
-        logs = logs.Skip(logs.Count() > 5 ? (logs.Count() - 5) : logs.Count()).ToList();
+        logs = logs.Skip(logs.Count > 5 ? (logs.Count - 5) : logs.Count).ToList();
         Bot.Handlers.RegisterOnce(1, Bot => Bot.ShowMessageBox($"{caller} has crashed. Please fill in the Skua Bug Report/Request for under the topic: Crashed\n" +
                 $"Due to special handling for this type of crash, your script will continue without using {caller} in this instance.\n\n" +
                 "---------------------------------------------------" +
@@ -1566,7 +1566,7 @@ public class CoreAdvanced
         {
             bool specialOnCape = item.Category == ItemCategory.Cape && cSpecial != CapeSpecial.None;
             bool specialOnWeapon = item.ItemGroup == "Weapon" && wSpecial.ToString() != "None";
-            List<ShopItem> shopItems = Core.GetShopItems(map != null ? map : Bot.Map.Name, shopID);
+            List<ShopItem> shopItems = Core.GetShopItems(map ?? Bot.Map.Name, shopID);
 
             // Shopdata complete check
             if (!shopItems.Any(x => x.Category == ItemCategory.Enhancement) || shopItems.Count == 0)
