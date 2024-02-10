@@ -142,7 +142,7 @@ public class CoreArchMage
                 Core.CheckInventory("Providence", toInv: false))
             return;
 
-        if (Bot.Quests.IsUnlocked(8919))
+        if (!Bot.Quests.IsUnlocked(8919))
             GetAM(false);
 
         Core.EnsureAccept(8919);
@@ -452,7 +452,6 @@ public class CoreArchMage
         MysticScribingKit(quant);
         PrismaticEther(quant);
         ArcaneLocus(quant);
-
 
         Core.AddDrop("Unbound Tome");
         while (!Bot.ShouldExit
