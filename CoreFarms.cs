@@ -1100,7 +1100,7 @@ public class CoreFarms
         Core.SavedState(false);
     }
 
-    public void ArcangroveREP(int rank = 10)
+    public void ArcangroveREP(int rank = 11)
     {
         if (FactionRank("Arcangrove") >= rank)
             return;
@@ -1109,26 +1109,18 @@ public class CoreFarms
         Core.SavedState();
         ToggleBoost(BoostType.Reputation);
         Core.Logger($"Farming rank {rank}");
-        Core.Logger("This will Do First Get all the quest\n" +
-        "items for all 8 quests, then turn them in.");
-        Core.Sleep(2500);
-        //Restore this v when 1.2.4 comes out to fix mobs
-        // Core.RegisterQuests(794, 795, 796, 797, 798, 799, 800, 801); //A Necessary Sacrifice 794, Gorillaphant Poaching 795, Mustard and Pretzel Root 796, Thyme and a Half 797, Thistle Do Nicely 798, Pleased to Meat You 799, ArcanRobe 800, Ebony and Ivory Tusks 801
+        // A Necessary Sacrifice 794, Gorillaphant Poaching 795, Mustard and Pretzel Root 796
+        // Thyme and a Half 797, Thistle Do Nicely 798, Pleased to Meat You 799, ArcanRobe 800
+        // Ebony and Ivory Tusks 801
+        Core.RegisterQuests(794, 795, 796, 797, 798, 799, 800, 801);
         while (!Bot.ShouldExit && FactionRank("Arcangrove") < rank)
         {
-            Core.EnsureAcceptmultiple(false, new[] { 794, 795, 796, 797, 798, 799, 800, 801 }); //A Necessary Sacrifice 794, Gorillaphant Poaching 795, Mustard and Pretzel Root 796, Thyme and a Half 797, Thistle Do Nicely 798, Pleased to Meat You 799, ArcanRobe 800, Ebony and Ivory Tusks 801
-            Core.HuntMonster("arcangrove", "Seed Spitter", "Spool of Arcane Thread", 10);
-            Core.HuntMonster("arcangrove", "Seed Spitter", "Defeated Seed Spitter", 10);
-            Core.HuntMonster("arcangrove", "Seed Spitter", "Bundle of Thyme", 10);
-            Core.HuntMonster("arcangrove", "Seed Spitter", "Thistle", 5);
-            Core.HuntMonster("arcangrove", "Seed Spitter", "Pretzel Root", 4);
-            Core.HuntMonster("arcangrove", "Gorillaphant", "Lore-Strip Gorillaphant Steak", 8);
-            Core.HuntMonster("arcangrove", "Gorillaphant", "Slain Gorillaphant", 7);
-            Core.HuntMonster("arcangrove", "Gorillaphant", "Gorillaphant Tusk", 6);
-            Core.HuntMonster("arcangrove", "Gorillaphant", "Batch of Mustard Seeds", 3);
-            Core.EnsureComplete(794, 795, 796, 797, 798, 799, 800, 801); //A Necessary Sacrifice 794, Gorillaphant Poaching 795, Mustard and Pretzel Root 796, Thyme and a Half 797, Thistle Do Nicely 798, Pleased to Meat You 799, ArcanRobe 800, Ebony and Ivory Tusks 801
+            for (int i = 0; i < 10; i++)
+                Core.KillMonster("arcangrove", "Back", "Left", "*", log: false);
+            for (int i = 0; i < 10; i++)
+                Core.KillMonster("arcangrove", "Right", "Left", "*", log: false);
         }
-        // Core.CancelRegisteredQuests();
+        Core.CancelRegisteredQuests();
         ToggleBoost(BoostType.Reputation, false);
         Core.SavedState(false);
     }
