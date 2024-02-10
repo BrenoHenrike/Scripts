@@ -24,7 +24,7 @@ public class YguasuFalls
 
     public void DoStory()
     {
-        if (!Core.isSeasonalMapActive("yguasu") || Core.isCompletedBefore(7934))
+        if (!Core.isSeasonalMapActive("yguasu") || Core.isCompletedBefore(9587))
             return;
 
         Story.PreLoad(this);
