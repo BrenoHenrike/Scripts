@@ -6,6 +6,7 @@ tags: yguasu, falls, merge, yguasu, vestes, da, rainha, das, ondas, morph, turba
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Seasonal/HerosHeartDay/YguasuFalls.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
