@@ -80,7 +80,7 @@ public class MergeExample
                     Core.RegisterQuests(2939);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("dwakelcrashsite", "Mithril Man", "Evolution Of Awe", 13, log: false);
+                        Core.HuntMonster("crashsite", "Mithril Man", "Evolution Of Awe", 13, log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
