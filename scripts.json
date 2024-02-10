@@ -9500,6 +9500,22 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/MayThe4th/MawasStandMerge.cs"
   },
   {
+    "name": "Yguasu Falls Story",
+    "description": "This will complete the Love Spell story.",
+    "tags": [
+      "story",
+      "quest",
+      "hero",
+      "heart",
+      "yguasu falls",
+      "seasonal"
+    ],
+    "path": "Seasonal/HerosHeartDay/YguasuFalls.cs",
+    "size": 1637,
+    "fileName": "YguasuFalls.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HerosHeartDay/YguasuFalls.cs"
+  },
+  {
     "name": "Wubbles Merge Shop",
     "description": "This script farms the items from Wubbles Merge Shop.",
     "tags": [
@@ -9643,6 +9659,35 @@
     "size": 2655,
     "fileName": "Arcadia.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HerosHeartDay/Arcadia.cs"
+  },
+  {
+    "name": "Yguasu Falls Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Yguasu Falls Merge [2413] in /yguasu",
+    "tags": [
+      "yguasu",
+      "falls",
+      "merge",
+      "yguasu",
+      "vestes",
+      "da",
+      "rainha",
+      "das",
+      "ondas",
+      "morph",
+      "turbante",
+      "espírito",
+      "mãe",
+      "dágua",
+      "leque",
+      "leques",
+      "encantadas",
+      "ecantado",
+      "bolsa"
+    ],
+    "path": "Seasonal/HerosHeartDay/YguasuFallsMerge.cs",
+    "size": 5985,
+    "fileName": "YguasuFallsMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HerosHeartDay/YguasuFallsMerge.cs"
   },
   {
     "name": "Wheel of Love Story",
