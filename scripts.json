@@ -14911,13 +14911,34 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/CelestialRealmMerge.cs"
   },
   {
-    "name": "DeathPitArenaRepMerge",
-    "description": "null",
+    "name": "Death Pit Arena Rep Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Death Pit Arena Rep Merge [1261] in /deathpit",
     "tags": [
-      "null"
+      "death",
+      "pit",
+      "arena",
+      "rep",
+      "merge",
+      "deathpit",
+      "general",
+      "galls",
+      "velms",
+      "hungars",
+      "chuds",
+      "spinal",
+      "carnage",
+      "malice",
+      "drakel",
+      "chud",
+      "velm",
+      "hungar",
+      "gall",
+      "green",
+      "morph",
+      "warlord"
     ],
     "path": "Other/MergeShops/DeathPitArenaRepMerge.cs",
-    "size": 7764,
+    "size": 7962,
     "fileName": "DeathPitArenaRepMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/DeathPitArenaRepMerge.cs"
   },
@@ -20818,7 +20839,7 @@
       "deathpitarena"
     ],
     "path": "Other/Classes/Members-CLasses/DrakelWarlord[Mem].cs",
-    "size": 1261,
+    "size": 1251,
     "fileName": "DrakelWarlord[Mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/Members-CLasses/DrakelWarlord[Mem].cs"
   },
