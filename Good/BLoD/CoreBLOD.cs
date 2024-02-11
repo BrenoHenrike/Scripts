@@ -246,14 +246,12 @@ public class CoreBLOD
 
         Core.EquipClass(ClassType.Solo);
 
-        Core.AddDrop("Cavern Celestite", "Undead Essence");
-        if (farmSpiritOrbs)
-        {
-            Core.AddDrop("Bone Dust", "Undead Energy", "Spirit Orb");
-            Core.RegisterQuests(2082, 2083, 939); // Bone Some Dust, Essential Essences, Soul Searching
-        }
-        else
-            Core.RegisterQuests(939); //Soul Searching
+        Core.AddDrop(farmSpiritOrbs
+            ? new[] { "Bone Dust", "Undead Energy", "Cavern Celestite", "Undead Essence", "Spirit Orb" }
+            : new[] { "Cavern Celestite", "Undead Essence", item });
+
+        Core.RegisterQuests(farmSpiritOrbs ? new[] { 2082, 2083, 939 } : new[] { 939 });
+
 
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
         {
