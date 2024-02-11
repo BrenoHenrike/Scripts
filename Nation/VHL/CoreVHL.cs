@@ -77,7 +77,6 @@ public class CoreVHL
         Core.KillMonster("tercessuinotlim", "m4", "Right", "Shadow of Nulgath", "Hadean Onyx of Nulgath", isTemp: false);
 
         Core.FarmingLogger("Roentgenium of Nulgath", quant);
-        int CurrentRoent = Bot.Inventory.GetQuantity("Roentgenium of Nulgath");
         while (!Bot.ShouldExit && !Core.CheckInventory("Roentgenium of Nulgath", quant))
         {
             Core.EnsureAccept(5660);

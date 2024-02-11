@@ -161,17 +161,17 @@ public class CoreFarmerJoe
 
     public static void ScriptMain(IScriptInterface bot) => Core.RunCore();
     #region InvClasses
-    private readonly InventoryItem? ClassRogue = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == (Core.CheckInventory("Rogue (Rare)") ? "Rogue (Rare)" : "Rogue").ToLower().Trim() && i.Category == ItemCategory.Class);
-    private readonly InventoryItem? ClassMage = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == (Core.CheckInventory("Mage (Rare)") ? "Mage(Rare)" : "Mage").ToLower().Trim() && i.Category == ItemCategory.Class);
-    private readonly InventoryItem? ClassMasterRanger = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == ("Master Ranger").ToLower().Trim() && i.Category == ItemCategory.Class);
-    private readonly InventoryItem? ClassShaman = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == ("Shaman").ToLower().Trim() && i.Category == ItemCategory.Class);
-    private readonly InventoryItem? ClassScarletSorceress = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == ("Scarlet Sorceress").ToLower().Trim() && i.Category == ItemCategory.Class);
-    private readonly InventoryItem? ClassBlazeBinder = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == ("Blaze Binder").ToLower().Trim() && i.Category == ItemCategory.Class);
-    private readonly InventoryItem? ClassDragonSoulShinobi = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == ("DragonSoul Shinobi").ToLower().Trim() && i.Category == ItemCategory.Class);
-    private readonly InventoryItem? ClassArchPaladin = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == ("ArchPaladin").ToLower().Trim() && i.Category == ItemCategory.Class);
-    private readonly InventoryItem? ClassArchFiend = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == ("ArchFiend").ToLower().Trim() && i.Category == ItemCategory.Class);
-    private readonly InventoryItem? ClassGlacialBerserker = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == ("Glacial Berserker").ToLower().Trim() && i.Category == ItemCategory.Class);
-    private readonly InventoryItem? ClassDragonofTime = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == ("Dragon of Time").ToLower().Trim() && i.Category == ItemCategory.Class);
+    // private readonly InventoryItem? ClassRogue = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == (Core.CheckInventory("Rogue (Rare)") ? "Rogue (Rare)" : "Rogue").ToLower().Trim() && i.Category == ItemCategory.Class);
+    // private readonly InventoryItem? ClassMage = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == (Core.CheckInventory("Mage (Rare)") ? "Mage(Rare)" : "Mage").ToLower().Trim() && i.Category == ItemCategory.Class);
+    private readonly InventoryItem? ClassMasterRanger = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == "Master Ranger".ToLower().Trim() && i.Category == ItemCategory.Class || Bot.Bank.Contains(i.Name) && i.Name != null);
+    private readonly InventoryItem? ClassShaman = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == "Shaman".ToLower().Trim() && i.Category == ItemCategory.Class || Bot.Bank.Contains(i.Name) && i.Name != null);
+    private readonly InventoryItem? ClassScarletSorceress = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == "Scarlet Sorceress".ToLower().Trim() && i.Category == ItemCategory.Class || Bot.Bank.Contains(i.Name) && i.Name != null);
+    private readonly InventoryItem? ClassBlazeBinder = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == "Blaze Binder".ToLower().Trim() && i.Category == ItemCategory.Class || Bot.Bank.Contains(i.Name) && i.Name != null);
+    private readonly InventoryItem? ClassDragonSoulShinobi = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == "DragonSoul Shinobi".ToLower().Trim() && i.Category == ItemCategory.Class || Bot.Bank.Contains(i.Name) && i.Name != null);
+    private readonly InventoryItem? ClassArchPaladin = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == "ArchPaladin".ToLower().Trim() && i.Category == ItemCategory.Class || Bot.Bank.Contains(i.Name) && i.Name != null);
+    private readonly InventoryItem? ClassArchFiend = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == "ArchFiend".ToLower().Trim() && i.Category == ItemCategory.Class || Bot.Bank.Contains(i.Name) && i.Name != null);
+    private readonly InventoryItem? ClassGlacialBerserker = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == "Glacial Berserker".ToLower().Trim() && i.Category == ItemCategory.Class || Bot.Bank.Contains(i.Name) && i.Name != null);
+    private readonly InventoryItem? ClassDragonofTime = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == "Dragon of Time".ToLower().Trim() && i.Category == ItemCategory.Class || Bot.Bank.Contains(i.Name) && i.Name != null);
     #endregion InvClasses
     /// <summary>
     /// Executes a sequence of leveling and progression steps including class enhancements, item acquisition, and outfit setup.
@@ -229,7 +229,7 @@ public class CoreFarmerJoe
                 case 30:
                     if (Bot.Player.Level >= Level &&
                     Adv.HasMinimalBoost(GenericGearBoost.exp, 25) &&
-                    (Core.CheckInventory("Master Ranger") && ClassMasterRanger?.Quantity == 302500))
+                    Core.CheckInventory("Master Ranger") && ClassMasterRanger?.Quantity == 302500)
                     {
                         Core.Logger("Items owned: \"Awethur's Accoutrements\", \"Master Ranger\" continuing");
                         continue;
@@ -262,7 +262,7 @@ public class CoreFarmerJoe
 
                 case 45:
                     if (Bot.Player.Level >= Level &&
-                    (Core.CheckInventory("Shaman") && ClassShaman?.Quantity == 302500))
+                    Core.CheckInventory("Shaman") && ClassShaman?.Quantity == 302500)
                     {
                         Core.Logger("Items owned: \"Shaman\" continuing");
                         continue;
@@ -286,7 +286,7 @@ public class CoreFarmerJoe
                 case 50:
                     if (Bot.Player.Level >= Level &&
                     Core.CheckInventory("Burning Blade") &&
-                    (Core.CheckInventory("Scarlet Sorceress") && ClassScarletSorceress?.Quantity == 302500))
+                    Core.CheckInventory("Scarlet Sorceress") && ClassScarletSorceress?.Quantity == 302500)
                     {
                         Core.Logger("Items owned: \"Scarlet Sorceress\", \"Burning Blade\" continuing");
                         continue;
@@ -317,7 +317,7 @@ public class CoreFarmerJoe
 
                 case 55:
                     if (Bot.Player.Level >= Level &&
-                    (Core.CheckInventory("Blaze Binder") && ClassBlazeBinder?.Quantity == 302500))
+                    Core.CheckInventory("Blaze Binder") && ClassBlazeBinder?.Quantity == 302500)
                     {
                         Core.Logger("Items owned:  \"Blaze Binder\", continuing");
                         continue;
@@ -343,7 +343,7 @@ public class CoreFarmerJoe
 
                 case 60:
                     if (Bot.Player.Level >= Level &&
-                    (Core.CheckInventory("DragonSoul Shinobi") && ClassDragonSoulShinobi?.Quantity == 302500))
+                    Core.CheckInventory("DragonSoul Shinobi") && ClassDragonSoulShinobi?.Quantity == 302500)
                     {
                         Core.Logger("Items owned:  \"DragonSoul Shinobi\", continuing");
                         continue;
@@ -367,7 +367,7 @@ public class CoreFarmerJoe
                 case 65:
                     if (Bot.Player.Level >= Level &&
                     (Core.CheckInventory("ArchPaladin") && ClassArchPaladin?.Quantity == 302500) &&
-                    (Core.CheckInventory("Glacial Berserker") && ClassGlacialBerserker?.Quantity == 302500))
+                    Core.CheckInventory("Glacial Berserker") && ClassGlacialBerserker?.Quantity == 302500)
                     {
                         Core.Logger("Items owned: \"ArchPaladin\", continuing");
                         continue;
@@ -398,7 +398,7 @@ public class CoreFarmerJoe
                 case 75:
                     if (Bot.Player.Level >= Level &&
                     Core.CheckInventory("Archfiend DeathLord") &&
-                    (Core.CheckInventory("Archfiend") && ClassArchFiend?.Quantity == 302500))
+                    Core.CheckInventory("Archfiend") && ClassArchFiend?.Quantity == 302500)
                     {
                         Core.Logger("Items owned: \"Archfiend DeathLord\", \"ArchFiend\", continuing");
                         continue;
