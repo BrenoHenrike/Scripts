@@ -249,8 +249,8 @@ public class CoreBLOD
         Core.AddDrop("Cavern Celestite", "Undead Essence");
         if (farmSpiritOrbs)
         {
-            Core.RegisterQuests(2082, 2083); // Bone Some Dust, Essential Essences
             Core.AddDrop("Bone Dust", "Undead Energy", "Spirit Orb");
+            Core.RegisterQuests(2082, 2083); // Bone Some Dust, Essential Essences
         }
 
         Core.RegisterQuests(939); //Soul Searching
