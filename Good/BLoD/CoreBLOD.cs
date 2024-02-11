@@ -250,10 +250,10 @@ public class CoreBLOD
         if (farmSpiritOrbs)
         {
             Core.AddDrop("Bone Dust", "Undead Energy", "Spirit Orb");
-            Core.RegisterQuests(2082, 2083); // Bone Some Dust, Essential Essences
+            Core.RegisterQuests(2082, 2083, 939); // Bone Some Dust, Essential Essences, Soul Searching
         }
-
-        Core.RegisterQuests(939); //Soul Searching
+        else
+            Core.RegisterQuests(939); //Soul Searching
 
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
         {
