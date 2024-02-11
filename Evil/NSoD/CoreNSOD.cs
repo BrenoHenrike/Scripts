@@ -33,9 +33,9 @@ public class CoreNSOD
 
     public string OptionsStorage = "NecroticSwordOfDoomOptions";
     public bool DontPreconfigure = true;
-    public Option<bool> MaxStack = new Option<bool>("MaxStack", "Max Stack", "Max Stack Monster Essences in \"Retreive Void Auras\"\nRecommended setting: True", true);
-    public Option<bool> PreFarm = new Option<bool>("PreFarm", "Pre Farm Materials", "Farm all requiered items before merging everything. Not recommended if you already did a merge yourself.\nRecommended setting: False", false);
-    public Option<bool> GetSDKA = new Option<bool>("getSDKA", "Get SDKA first [Mem]", "If true, the bot will attempt to get SDKA first, so that it can use the fastest Void Aura farm available\nMember-Only\nRecommended setting: True", true);
+    public Option<bool> MaxStack = new("MaxStack", "Max Stack", "Max Stack Monster Essences in \"Retreive Void Auras\"\nRecommended setting: True", true);
+    public Option<bool> PreFarm = new("PreFarm", "Pre Farm Materials", "Farm all requiered items before merging everything. Not recommended if you already did a merge yourself.\nRecommended setting: False", false);
+    public Option<bool> GetSDKA = new("getSDKA", "Get SDKA first [Mem]", "If true, the bot will attempt to get SDKA first, so that it can use the fastest Void Aura farm available\nMember-Only\nRecommended setting: True", true);
 
     public string[] Essences =
     {
