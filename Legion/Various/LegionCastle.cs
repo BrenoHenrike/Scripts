@@ -33,9 +33,10 @@ public class GetLegionCastle
             return;
 
         Legion.FarmLegionToken(25000);
-        if (Core.CheckInventory("Shadow Shround", 15))
+        if (!Core.CheckInventory("Shadow Shroud", 15))
             Daily.ShadowShroud();
 
-        Core.BuyItem("Underworld", 238, "Legion Castle");
+        if (Core.CheckInventory("Shadow Shroud", 15))
+            Core.BuyItem("Underworld", 238, "Legion Castle");
     }
 }
