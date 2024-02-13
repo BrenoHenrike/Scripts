@@ -231,28 +231,28 @@ public class CoreNSOD
             Core.HuntMonster("timespace", "Astral Ephemerite", "Astral Ephemerite Essence", Essencequant, false, log: false);
 
             HuntMonsterBatch(Essencequant, false, true, true,
-                ("necrocavern", 5, "Chaos Vordred Essence"),
-                ("citadel", 21, "Belrot the Fiend Essence"),
-                ("greenguardwest", 22, "Black Knight Essence"),
-                ("mudluk", 18, "Tiger Leech Essence"),
-                ("aqlesson", 17, "Carnax Essence"),
-                ("hachiko", 10, "Dai Tengu Essence"),
-                ("timevoid", 12, "Unending Avatar Essence"),
-                ("dragonchallenge", 4, "Void Dragon Essence"),
-                ("maul", 17, "Creature Creation Essence")
-            );
+                   ("necrocavern", "Down", 5, "Chaos Vordred Essence"),
+                   ("citadel", "Left", 21, "Belrot the Fiend Essence"),
+                   ("greenguardwest", "Down", 22, "Black Knight Essence"),
+                   ("mudluk", "Down", 18, "Tiger Leech Essence"),
+                   ("aqlesson", "Right", 17, "Carnax Essence"),
+                   ("hachiko", "Left", 10, "Dai Tengu Essence"),
+                   ("timevoid", "Left", 12, "Unending Avatar Essence"),
+                   ("dragonchallenge", "Left", 4, "Void Dragon Essence"),
+                   ("maul", "Down", 17, "Creature Creation Essence")
+           );
 
             Core.EnsureCompleteMulti(4432);
             Bot.Wait.ForPickup("Void Aura");
         }
     }
 
-    private void HuntMonsterBatch(int quant, bool isTemp, bool publicRoom, bool log, params (string map, int monster, string essence)[] monsters)
+     private void HuntMonsterBatch(int quant, bool isTemp, bool publicRoom, bool log, params (string map, string pad, int monster, string essence)[] monsters)
     {
         Core.EquipClass(ClassType.Solo);
 
         foreach (var monster in monsters.Where(x => x.monster > 0))
-            Core.HuntMonsterMapID(monster.map, monster.monster, monster.essence, quant, isTemp, publicRoom, log);
+            Core.HuntMonsterMapID(monster.map, monster.monster, monster.essence, quant, isTemp, publicRoom, log, monster.pad);
     }
 
 
