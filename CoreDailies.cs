@@ -269,7 +269,7 @@ public class CoreDailies
             return;
         metals ??= HardCoreMetalsMetalsArray;
         Core.Logger($"Daily: Hard Core Metals ({string.Join('/', metals)})");
-        if (Core.CheckInventory(metals, quant))
+        if (Core.CheckInventory(metals, quant, toInv: false))
         {
             Core.Logger($"All metals were found with the needed quantity ({quant}). Skipped");
             if (ToBank)
