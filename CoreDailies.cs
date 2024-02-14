@@ -376,8 +376,9 @@ public class CoreDailies
             Core.Logger("Skipped");
             return;
         }
-        if (!Core.CheckInventory("Mad Weaponsmith", toInv: false) && Core.CheckInventory("C-Armor Token", 90))
+        if (!Core.CheckInventory("Mad Weaponsmith", toInv: false) && Core.CheckInventory("C-Armor Token", 90, false))
         {
+            Core.Unbank("C-Armor Token");
             Core.BuyItem("deadmoor", 500, "Mad Weaponsmith");
             return;
         }
@@ -566,7 +567,7 @@ public class CoreDailies
         Core.ToBank("Diamond of Nulgath", "Blood Gem of the Archfiend");
     }
 
-  public void TenacityChallenge(string? item = null)
+    public void TenacityChallenge(string? item = null)
     {
         if (!Core.CheckInventory("Nulgath Challenge Pet") || !CheckDaily(3319))
         {
