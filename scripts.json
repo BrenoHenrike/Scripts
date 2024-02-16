@@ -50,7 +50,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 117782,
+    "size": 118720,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -11748,7 +11748,7 @@
       "badge"
     ],
     "path": "Other/Badges/YouMadBroBadge.cs",
-    "size": 2713,
+    "size": 2724,
     "fileName": "YouMadBroBadge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Badges/YouMadBroBadge.cs"
   },
@@ -14922,7 +14922,7 @@
       "null"
     ],
     "path": "Other/Various/Potions.cs",
-    "size": 18484,
+    "size": 18359,
     "fileName": "Potions.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Various/Potions.cs"
   },
