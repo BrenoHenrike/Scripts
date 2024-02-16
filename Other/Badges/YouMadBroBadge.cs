@@ -66,7 +66,7 @@ public class YouMadBroBadge
             }
 
             //to make sure it always has 1 DRS
-            Farm.AlchemyPacket("Dragon Scale", "Ice Vapor", trait: CoreFarms.AlchemyTraits.hOu);
+            Farm.AlchemyPacket("Dragon Scale", "Ice Vapor", trait: CoreFarms.AlchemyTraits.hOu, YMB: true);
         }
         Core.TrashCan("Dragon Scale", "Ice Vapor");
         Core.ToBank("Dragon Runestone", "Gold Voucher 100k");

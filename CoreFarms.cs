@@ -929,7 +929,7 @@ public class CoreFarms
     /// <param name="rank">The minimum rank to make the misture, use 0 for any rank.</param>
     /// <param name="loop">Whether loop till you run out of reagents</param>
     /// <param name="modifier">Some mistures have specific packet modifiers, default is Moose but you can find Man, mRe and others.</param>
-    public void AlchemyPacket(string reagent1, string reagent2, AlchemyRunes rune = AlchemyRunes.Gebo, int rank = 0, bool loop = true, string modifier = "Moose", AlchemyTraits trait = AlchemyTraits.APw)
+    public void AlchemyPacket(string reagent1, string reagent2, AlchemyRunes rune = AlchemyRunes.Gebo, int rank = 0, bool loop = true, string modifier = "Moose", AlchemyTraits trait = AlchemyTraits.APw, bool YMB = false)
     {
         if (rank != 0 && FactionRank("Alchemy") < rank)
             AlchemyREP(rank);
@@ -955,6 +955,8 @@ public class CoreFarms
         Core.Logger($"Reagents: [{reagent1}], [{reagent2}].");
         Core.Logger($"Rune: {rune}.");
         Core.Logger($"Modifier: {modifier}.");
+        if (YMB)
+            Core.Logger("\"YouMadBro\" Mode: Enabled (this will only buy 1 Dragon Runestone as it doesnt use it :D)");
         Core.Join("alchemy");
         int i = 1;
         if (loop)
@@ -971,15 +973,32 @@ public class CoreFarms
 
         void Packet()
         {
+            /*  
+                YMB Mode: only uses 1 Dragon Runestone
+                Non-YMB Mode: uses 1 of each reagent + 1 Dragon Runestone.
+                Both Methods Have Been Tested. in YMB Badge & Potions.
+                Potions Can be gotten from either but specific potions must use the non-YMB mode. 
+            */
+
             if (Core.CheckInventory("Dragon Runestone"))
-                // "%xt%zm%crafting%1%getAlchWait%11480%11477%true%Ready to Mix%Necrot%Doomatter%Gebo%Moose%"
-                Core.SendPackets($"%xt%zm%crafting%1%getAlchWait%{reagentid1}%{reagentid2}%true%Ready to Mix%{reagent1}%{reagent2}%{rune}%{modifier}%");
+                Core.SendPackets(
+                    YMB ?
+                     $"%xt%zm%crafting%1%getAlchWait%{reagentid1}%{reagentid2}%true%Ready to Mix%{reagent1}%{reagent2}%{rune}%{modifier}%"
+                    : $"%xt%zm%crafting%1%getAlchWait%{reagentid1}%{reagentid2}%true%Ready to Mix%{reagent1}%{reagent2}%{rune}%{trait}%");
+           
             Core.Sleep();
+           
+            // This was the Required client packetfor alchemy (due to it not being here before.. and people spent billions of gold[sorry])
             if (Core.CheckInventory("Dragon Runestone"))
                 Core.SendPackets("{\"t\":\"xt\",\"b\":{\"r\":-1,\"o\":{\"bVerified\":true,\"cmd\":\"alchOnStart\"}}}", toClient: true);
+           
             Core.Sleep(4000);
+           
             if (Core.CheckInventory("Dragon Runestone"))
-                Core.SendPackets($"%xt%zm%crafting%1%checkAlchComplete%{reagentid1}%{reagentid2}%false%Mix Complete%{reagent1}%{reagent2}%{rune}%{modifier}%");
+                Core.SendPackets(
+                    YMB ?
+                    $"%xt%zm%crafting%1%checkAlchComplete%{reagentid1}%{reagentid2}%false%Mix Complete%{reagent1}%{reagent2}%{rune}%{modifier}%"
+                   : $"%xt%zm%crafting%1%checkAlchComplete%{reagentid1}%{reagentid2}%true%Mix Complete%{reagent1}%{reagent2}%{rune}%{trait}%");
         }
 
     }
