@@ -244,10 +244,9 @@ public class CoreDailies
                 int metalID = (int)Enum.Parse(typeof(MineCraftingMetalsEnum), metal);
                 Core.EnsureComplete(2091, metalID);
                 Bot.Wait.ForPickup(metal);
-                if (ToBank)
-                    Core.ToBank(metals);
-                break;
             }
+            if (ToBank && Core.CheckInventory(metal))
+                Core.ToBank(metals);
         }
 
         if (Bot.Quests.IsInProgress(2091))
@@ -267,7 +266,8 @@ public class CoreDailies
     {
         if (!Core.IsMember || !Core.isCompletedBefore(2090))
             return;
-        metals ??= HardCoreMetalsMetalsArray;
+        metals = HardCoreMetalsMetalsArray ?? Array.Empty<string>();
+
         Core.Logger($"Daily: Hard Core Metals ({string.Join('/', metals)})");
         if (Core.CheckInventory(metals, quant, toInv: false))
         {
@@ -294,10 +294,9 @@ public class CoreDailies
                 int metalID = (int)Enum.Parse(typeof(HardCoreMetalsEnum), metal);
                 Core.EnsureComplete(2098, metalID);
                 Bot.Wait.ForPickup(metal);
-                if (ToBank)
-                    Core.ToBank(metals);
-                break;
             }
+            if (ToBank && Core.CheckInventory(metal))
+                Core.ToBank(metals);
         }
         if (Bot.Quests.IsInProgress(2098))
             Core.Logger($"All desired metals were found with the needed quantity ({quant}), quest not completed");

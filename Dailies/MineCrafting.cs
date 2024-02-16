@@ -58,9 +58,20 @@ public class MineCrafting
 
         if (!Core.CheckInventory("Sepulchure's DoomKnight Armor", toInv: false))
         {
-            Daily.HardCoreMetals(new[] { "Rhodium" }, 2, true);
-            Daily.HardCoreMetals(new[] { "Beryllium" }, 1, true);
-            Daily.HardCoreMetals(new[] { "Chromium" }, 2, true);
+            Dictionary<string, int> hardcoreMetals = new()
+            {
+                { "Rhodium", 2 },
+                { "Beryllium", 1 },
+                { "Chromium", 2 }
+            };
+
+            foreach (var metal in hardcoreMetals) 
+            {
+                if (!Daily.CheckDailyv2(2098, false, metal.Key))
+                    return;
+
+                Daily.HardCoreMetals(new[] { metal.Key }, metal.Value, true); 
+            }
         }
         else Daily.HardCoreMetals(new[] { "Arsenic", "Beryllium", "Chromium", "Palladium", "Rhodium", "Rhodium", "Thorium", "Mercury" }, 10, ToBank: true);
     }
