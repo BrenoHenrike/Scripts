@@ -1,3 +1,8 @@
+/*
+name: Auto Attack Substitute
+description: as per the name, this is a substitute for the currently ~wack~ auto-atk/hunt button in teh menu-bar.
+tags: Auto-attack, auto, attack, auto attack, why are you attacking manualy?, wack, i hate tags, no wonder this didn't push
+*/
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 using Skua.Core.Interfaces;
