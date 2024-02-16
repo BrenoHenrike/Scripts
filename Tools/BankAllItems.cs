@@ -105,7 +105,7 @@ public class BankAllItems
                 }
                 else
                 {
-                    Core.ToHouseBank(itemName);
+                    Core.ToBank(itemName);
                 }
             }
 
