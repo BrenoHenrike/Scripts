@@ -54,39 +54,60 @@ public class BankAllItems
         Core.Join("whitemap");
 
         // Bank inventory items
-        BankItems(Bot.Inventory.Items, blackListedItems, Bot.Config?.Get<bool>("BanknonAc") == true);
+        if (Bot.Config!.Get<bool>("Inventory"))
+            BankItems(Bot.Inventory.Items, blackListedItems);
 
         Core.Logger("Finished inventory items, onto house items.");
 
         // Bank house items
-        BankItems(Bot.House.Items, blackListedItems, Bot.Config?.Get<bool>("HouseACBank") == true);
+        if (Bot.Config!.Get<bool>("House"))
+            BankItems(Bot.House.Items, blackListedItems, true);
     }
 
-    private void BankItems(IEnumerable<InventoryItem> items, HashSet<string> blackList, bool bankNonAc)
+    private void BankItems(IEnumerable<InventoryItem> items, HashSet<string> blackList, bool IsForHouse = false)
     {
         bool logged = false;
+        bool bankNonAc = Bot.Config!.Get<bool>("BanknonAc");
 
         foreach (var item in items)
         {
-            var itemName = item.Name; // Store the item name in a variable for better performance
+            var itemName = item.Name; 
 
-            if (item.Equipped || blackList.Contains(itemName))
+            if (item.Equipped || blackList.Contains(itemName) || !bankNonAc && !item.Coins)
                 continue;
 
-            if (Bot.Bank.FreeSlots == 0 && !item.Coins)
+            if (IsForHouse)
             {
-                if (!logged)
+                if (IsForHouse && bankNonAc && Bot.Bank.FreeSlots == 0 && !item.Coins)
                 {
-                    Core.Logger($"{Bot.Player.Username}'s Bank is full");
-                    logged = true;
+                    if (!logged)
+                    {
+                        Core.Logger($"{Bot.Player.Username}'s Bank is full");
+                        logged = true;
+                    }
+                    continue;
                 }
-                continue;
+                else
+                {
+                    Core.ToHouseBank(itemName);
+                }
             }
-
-            if (bankNonAc && !item.Coins)
-                Core.ToBank(itemName);
-            else if (item.Coins)
-                Core.ToBank(itemName);
+            else
+            {
+                if (!IsForHouse && bankNonAc && Bot.Bank.FreeSlots == 0 && !item.Coins)
+                {
+                    if (!logged)
+                    {
+                        Core.Logger($"{Bot.Player.Username}'s Bank is full");
+                        logged = true;
+                    }
+                    continue;
+                }
+                else
+                {
+                    Core.ToHouseBank(itemName);
+                }
+            }
 
             Core.Sleep();
         }
