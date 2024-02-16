@@ -4208,6 +4208,30 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/MergeShops/SevenCirclesMerge.cs"
   },
   {
+    "name": "Lich Kings Bounty Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Lich Kings Bounty Merge [1658] in /frozenlair",
+    "tags": [
+      "lich",
+      "kings",
+      "bounty",
+      "merge",
+      "frozenlair",
+      "legion",
+      "lords",
+      "scythe",
+      "masked",
+      "lord",
+      "",
+      "frozen",
+      "legionnaires",
+      "mini"
+    ],
+    "path": "Legion/MergeShops/LichKingsBountyMerge.cs",
+    "size": 5810,
+    "fileName": "LichKingsBountyMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/MergeShops/LichKingsBountyMerge.cs"
+  },
+  {
     "name": "SevenCirclesWarMerge",
     "description": "null",
     "tags": [
