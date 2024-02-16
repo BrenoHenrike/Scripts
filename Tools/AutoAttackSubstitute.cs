@@ -33,6 +33,7 @@ public class AutoAttackSubstitute
 
     public void AASubstitute()
     {
+        //Test To See if this goes through.. prayge
         AttackMode attackMode = Bot.Config?.Get<AttackMode>("AttackMode") ?? AttackMode.Attack_All_In_Cell;
         string[] dropsToPickupArray = Bot.Config?.Get<string>("DropsToPickup")?.Split(',')?.ToArray() ?? Array.Empty<string>();
         string? questsToAcceptString = Bot.Config?.Get<string>("QuestsToAccept");
