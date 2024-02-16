@@ -2826,6 +2826,24 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/TreasureChestSpam.cs"
   },
   {
+    "name": "Auto Attack Substitute",
+    "description": "as per the name, this is a substitute for the currently ~wack~ auto-atk/hunt button in teh menu-bar.",
+    "tags": [
+      "auto-attack",
+      "auto",
+      "attack",
+      "auto attack",
+      "why are you attacking manualy?",
+      "wack",
+      "i hate tags",
+      "no wonder this didn't push"
+    ],
+    "path": "Tools/AutoAttackSubstitute.cs",
+    "size": 7629,
+    "fileName": "AutoAttackSubstitute.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/AutoAttackSubstitute.cs"
+  },
+  {
     "name": "Wheel Of Doom Spam",
     "description": "Wastes (with a warning) your extra ACs on Wheel of Doom spins",
     "tags": [
