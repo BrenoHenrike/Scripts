@@ -2456,11 +2456,9 @@ public class CoreBots
     /// <param name="isTemp">Specifies whether the item is temporary.</param>
     public void KillNulgathFiendShard(string? item, int quant = 1, bool isTemp = false)
     {
-        if (item == null)
-        {
-            // Handle the case where 'item' is null, if necessary.
+        if (item == null || CheckInventory(item, quant))
             return;
-        }
+
         bool itemIsTemp = isTemp;
         bool originalAggroAll = Bot.Options.AggroAllMonsters;
         bool originalAggroMonsters = Bot.Options.AggroMonsters;
@@ -2469,54 +2467,48 @@ public class CoreBots
         Bot.Options.AggroAllMonsters = false;
         Bot.Options.AggroMonsters = false;
         Logger("Aggro settings temporarily modified: AggroAllMonsters and AggroMonsters set to false.");
-        Join("fiendshard");
-        Bot.Wait.ForMapLoad("fiendshard");
-        Monster? monster = Bot.Monsters.CurrentMonsters?.Find(m => m.MapID == 15);
-
-        if (Bot.Player.CurrentClass?.Name == "ArchMage")
-            Bot.Options.AttackWithoutTarget = true;
 
         while (!Bot.ShouldExit && !CheckInventory(item, quant))
         {
-            while (!Bot.ShouldExit && Bot.Player.Cell != "r9")
+            Join("fiendshard");
+            Monster? monster = Bot.Monsters.MapMonsters?.FirstOrDefault(m => m.Name == "Nulgath's Fiend Shard");
+
+            if (itemIsTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant))
             {
-                Jump("r9", "Left");
-                Sleep();
-            }
+                while (!Bot.ShouldExit && Bot.Player.Cell != "Enter")
+                {
+                    Jump("Enter", "Spawn");
+                    Sleep();
+                }
+                Bot.Wait.ForCellChange("Enter");
+                Bot.Wait.ForPickup(item);
 
-            while (!Bot.ShouldExit && IsMonsterAlive(15, useMapID: true) && Bot.Player.Cell == "r9" && !CheckInventory(item, quant))
+                // Restore the original Aggro settings
+                Bot.Options.AggroAllMonsters = originalAggroAll;
+                Bot.Options.AggroMonsters = originalAggroMonsters;
+                Bot.Options.AttackWithoutTarget = false;
+
+                Logger("Original Aggro settings restored: AggroAllMonsters and AggroMonsters set back to their original values.");
+                break;
+            }
+            else
             {
-                if (itemIsTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant))
-                {
-                    while (!Bot.ShouldExit && Bot.Player.Cell != "Enter")
-                    {
-                        Jump("Enter", "Spawn");
-                        Sleep();
-                    }
-                    Bot.Wait.ForCellChange("Enter");
-                    Bot.Wait.ForPickup(item);
-                    Logger("Temporary Aggro settings restored: AggroAllMonsters and AggroMonsters reset to original values.");
-                    break;
-                }
-                else
-                {
-                    if (Bot.Player.CurrentClass!.Name == "ArchMage")
-                        Bot.Options.AttackWithoutTarget = true;
+                Jump(Bot.Player.Cell != monster?.Cell ? "r9" : Bot.Player.Cell);
 
-                    if (IsMonsterAlive(15, useMapID: true))
-                        Bot.Combat.Attack(15);
-                    else Bot.Combat.Attack("*");
-                }
+                if (Bot.Player.CurrentClass!.Name == "ArchMage")
+                    Bot.Options.AttackWithoutTarget = true;
+
+                if (IsMonsterAlive(monster!.MapID, true))
+                    Bot.Kill.Monster(monster!.MapID);
+                else Bot.Kill.Monster("*");
             }
-
-            // Extra insurance to make sure it's at the enter cell.
-            Jump("Enter", "Spawn");
         }
+
         // Restore the original Aggro settings
         Bot.Options.AggroAllMonsters = originalAggroAll;
         Bot.Options.AggroMonsters = originalAggroMonsters;
-        Logger("Original Aggro settings restored: AggroAllMonsters and AggroMonsters set back to their original values.");
         Bot.Options.AttackWithoutTarget = false;
+        Logger("Original Aggro settings restored: AggroAllMonsters and AggroMonsters set back to their original values.");
     }
 
 
