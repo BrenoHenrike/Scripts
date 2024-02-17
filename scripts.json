@@ -6233,23 +6233,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/BlazeBeardStory.cs"
   },
   {
-    "name": "Yokai Treasure Story",
-    "description": "This script will finish the storyline in /yokaitreasure.",
-    "tags": [
-      "story",
-      "quest",
-      "yokai",
-      "tlapd",
-      "talk-like-a-pirate-day",
-      "seasonal",
-      "treasure"
-    ],
-    "path": "Seasonal/TalkLikeaPirateDay/YokaiTreasureStory.cs",
-    "size": 2103,
-    "fileName": "YokaiTreasureStory.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/YokaiTreasureStory.cs"
-  },
-  {
     "name": "Alpha Pirate Class",
     "description": "This will merge the Alpha Pirate Class Token.",
     "tags": [
@@ -6367,23 +6350,6 @@
     "size": 1207,
     "fileName": "PirateClass.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/PirateClass.cs"
-  },
-  {
-    "name": "Yokai Pirate Story",
-    "description": "This script will finish the storyline in /yokaipirate.",
-    "tags": [
-      "story",
-      "quest",
-      "yokai",
-      "tlapd",
-      "talk-like-a-pirate-day",
-      "seasonal",
-      "pirate"
-    ],
-    "path": "Seasonal/TalkLikeaPirateDay/YokaiPirateStory.cs",
-    "size": 2704,
-    "fileName": "YokaiPirateStory.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/YokaiPirateStory.cs"
   },
   {
     "name": "Sunken Treasure Quest Rewards",
@@ -10542,6 +10508,96 @@
     "size": 14485,
     "fileName": "CoreSepulchure.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/SepulchureSaga/CoreSepulchure.cs"
+  },
+  {
+    "name": "Yokai Pirate",
+    "description": "This script will complete \"Yokai Pirate\" storyline.",
+    "tags": [
+      "story",
+      "quest",
+      "saga",
+      "dragons",
+      "dragon",
+      "yokai",
+      "pirate",
+      "complete",
+      "all"
+    ],
+    "path": "Story/DragonsOfYokai/01YokaiPirate.cs",
+    "size": 625,
+    "fileName": "01YokaiPirate.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/DragonsOfYokai/01YokaiPirate.cs"
+  },
+  {
+    "name": "Haku Village",
+    "description": "This script will complete \"Haku Village\" storyline.",
+    "tags": [
+      "story",
+      "quest",
+      "saga",
+      "dragons",
+      "dragon",
+      "haku",
+      "village",
+      "complete",
+      "all"
+    ],
+    "path": "Story/DragonsOfYokai/03HakuVillage.cs",
+    "size": 625,
+    "fileName": "03HakuVillage.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/DragonsOfYokai/03HakuVillage.cs"
+  },
+  {
+    "name": "Yokai Treasure",
+    "description": "This script will complete \"Yokai Treasure\" storyline.",
+    "tags": [
+      "story",
+      "quest",
+      "saga",
+      "dragons",
+      "dragon",
+      "yokai",
+      "treasure",
+      "complete",
+      "all"
+    ],
+    "path": "Story/DragonsOfYokai/02YokaiTreasure.cs",
+    "size": 635,
+    "fileName": "02YokaiTreasure.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/DragonsOfYokai/02YokaiTreasure.cs"
+  },
+  {
+    "name": "Dragons Of Yokai",
+    "description": "This script will complete \"Dragons Of Yokai\" storyline.",
+    "tags": [
+      "story",
+      "quest",
+      "saga",
+      "dragons",
+      "dragon",
+      "yokai",
+      "haku",
+      "village",
+      "pirate",
+      "treasure",
+      "complete",
+      "all"
+    ],
+    "path": "Story/DragonsOfYokai/00DoAll.cs",
+    "size": 653,
+    "fileName": "00DoAll.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/DragonsOfYokai/00DoAll.cs"
+  },
+  {
+    "name": "null",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Story/DragonsOfYokai/CoreDOY.cs",
+    "size": 5342,
+    "fileName": "CoreDOY.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/DragonsOfYokai/CoreDOY.cs"
   },
   {
     "name": "Embersea",
@@ -14824,6 +14880,32 @@
     "size": 8713,
     "fileName": "CelestialRealmMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/CelestialRealmMerge.cs"
+  },
+  {
+    "name": "Haku Village Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Haku Village Merge [2414] in /hakuvillage",
+    "tags": [
+      "haku",
+      "village",
+      "merge",
+      "hakuvillage",
+      "stylish",
+      "qipao",
+      "modern",
+      "trend",
+      "bun",
+      "dragons",
+      "favor",
+      "fan",
+      "fans",
+      "elegant",
+      "vogue",
+      "elegance"
+    ],
+    "path": "Other/MergeShops/HakuVillageMerge.cs",
+    "size": 4552,
+    "fileName": "HakuVillageMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/HakuVillageMerge.cs"
   },
   {
     "name": "WarTrainingMerge",
@@ -19123,9 +19205,6 @@
     "name": "Yokai Treasure Merge",
     "description": "This bot will farm the items belonging to the selected mode for the Yokai Treasure Merge [2339] in /yokaitreasure",
     "tags": [
-      "tlapd",
-      "talk-like-a-pirate-day",
-      "seasonal",
       "yokai",
       "treasure",
       "merge",
@@ -19162,7 +19241,7 @@
       "battlepet"
     ],
     "path": "Seasonal/TalkLikeaPirateDay/MergeShops/YokaiTreasureMerge.cs",
-    "size": 7938,
+    "size": 7805,
     "fileName": "YokaiTreasureMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/MergeShops/YokaiTreasureMerge.cs"
   },
@@ -19202,7 +19281,7 @@
       "rapier"
     ],
     "path": "Seasonal/TalkLikeaPirateDay/MergeShops/YokaiPirateTreasuresMerge.cs",
-    "size": 7727,
+    "size": 7564,
     "fileName": "YokaiPirateTreasuresMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/MergeShops/YokaiPirateTreasuresMerge.cs"
   },
