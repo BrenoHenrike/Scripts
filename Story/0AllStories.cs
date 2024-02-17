@@ -444,14 +444,14 @@ public class AllStories
         Core.Logger($"Saga: Age Of Ruin - Complete");
         #endregion
 
-        #region DOY
-        DOY.DoAll();
-        Core.Logger($"Saga: Dragons Of Yokai - Complete");
-        #endregion
-
         #region Doomwood
         DW.CompleteDoomwood();
         Core.Logger($"Saga: Doomwood - Complete");
+        #endregion
+
+        #region DOY
+        DOY.DoAll();
+        Core.Logger($"Saga: Dragons Of Yokai - Complete");
         #endregion
 
         #region Elergy
