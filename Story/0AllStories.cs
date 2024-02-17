@@ -19,6 +19,8 @@ tags: story, quest, complete, all
 
 //cs_include Scripts/Story/Doomwood/CoreDoomwood.cs
 
+//cs_include Scripts/Story/DragonsOfYokai/CoreDOY.cs
+
 //cs_include Scripts/Story/ElegyofMadness(Darkon)/CoreAstravia.cs
 
 //cs_include Scripts/Story/FireIsland/CoreFireIsland.cs
@@ -207,6 +209,9 @@ public class AllStories
 
     // Doomwood (all parts)
     public CoreDoomwood DW = new();
+
+    // Dragons Of Yokai
+    public CoreDOY DOY = new();
 
     // Elergy of Madness - Darkon
     public CoreAstravia CoreAstravia = new();
@@ -437,6 +442,11 @@ public class AllStories
         #region AOR
         AOR.DoAll();
         Core.Logger($"Saga: Age Of Ruin - Complete");
+        #endregion
+
+        #region DOY
+        DOY.DoAll();
+        Core.Logger($"Saga: Dragons Of Yokai - Complete");
         #endregion
 
         #region Doomwood
