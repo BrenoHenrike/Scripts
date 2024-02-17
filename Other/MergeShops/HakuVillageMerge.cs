@@ -6,6 +6,8 @@ tags: haku, village, merge, hakuvillage, stylish, qipao, modern, trend, bun, dra
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/CoreStory.cs
+//cs_include Scripts/Story\DragonsOfYokai\CoreDOY.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
@@ -17,6 +19,7 @@ public class HakuVillageMerge
     private CoreFarms Farm = new();
     private CoreAdvanced Adv = new();
     private static CoreAdvanced sAdv = new();
+    private CoreDOY DOY = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
     public string[] MultiOptions = { "Generic", "Select" };
@@ -27,7 +30,7 @@ public class HakuVillageMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Tengu Feather"});
+        Core.BankingBlackList.AddRange(new[] { "Tengu Feather" });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -36,6 +39,7 @@ public class HakuVillageMerge
 
     public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
+        DOY.HakuVillage();
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("hakuvillage", 2414, findIngredients, buyOnlyThis, buyMode: buyMode);
 
