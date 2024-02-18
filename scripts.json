@@ -1978,6 +1978,19 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/GachaponMachineQuests.cs"
   },
   {
+    "name": "Dragons of Yokai Drops",
+    "description": "farms all drops from Dragons of Yokai saga maps.",
+    "tags": [
+      "yokai",
+      "dragons",
+      "drops"
+    ],
+    "path": "Other/DragonsOfYokaiDrops.cs",
+    "size": 5345,
+    "fileName": "DragonsOfYokaiDrops.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/DragonsOfYokaiDrops.cs"
+  },
+  {
     "name": "Astravian Oracle Set",
     "description": "does the follow quests to get the astravian oracle set",
     "tags": [
