@@ -56,9 +56,9 @@ public class FreeBoosts
             if (allQuantitiesMet)
                 break; // Exit the loop when all quantities are met.
 
-            InventoryItem? goldItem = Bot.Inventory.Items.Find(x => x.Name == "GOLD Boost! (10 min)");
-            InventoryItem? classItem = Bot.Inventory.Items.Find(x => x.Name == "CLASS Boost! (10 min)");
-            InventoryItem? repItem = Bot.Inventory.Items.Find(x => x.Name == "REPUTATION Boost! (10 min)");
+            InventoryItem? goldItem = Bot.Inventory.Items.FirstOrDefault(x => x.Name == "GOLD Boost! (10 min)");
+            InventoryItem? classItem = Bot.Inventory.Items.FirstOrDefault(x => x.Name == "CLASS Boost! (10 min)");
+            InventoryItem? repItem = Bot.Inventory.Items.FirstOrDefault(x => x.Name == "REPUTATION Boost! (10 min)");
 
             if (goldItem != null)
                 goldItem.Quantity = Math.Min(GoldBoostQuant, goldItem.MaxStack);
