@@ -276,9 +276,7 @@ public class DeadlyDragonsDrops
             string drop = rewards[i];
             if (Core.CheckInventory(drop, toInv: false))
             {
-                Core.Jump();
                 Core.RemoveDrop(drop);
-                Core.ToBank(drop);
                 continue;
             }
 
@@ -286,6 +284,12 @@ public class DeadlyDragonsDrops
 
             while (!Bot.ShouldExit && !Core.CheckInventory(drop))
                 Core.KillMonster(map, cell, pad, "*", log: false);
+        }
+
+        foreach (string drop in rewards)
+        {
+            Core.Jump();
+            Core.ToBank(drop);
         }
     }
 }
