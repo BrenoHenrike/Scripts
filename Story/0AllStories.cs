@@ -15,7 +15,7 @@ tags: story, quest, complete, all
 //cs_include Scripts/Other/MysteriousEgg.cs
 //cs_include Scripts/Other/ShadowDragonDefender.cs
 
-//cs_include Scripts/Story\AgeOfRuin\CoreAOR.cs
+//cs_include Scripts/Story/AgeOfRuin/CoreAOR.cs
 
 //cs_include Scripts/Story/Doomwood/CoreDoomwood.cs
 
@@ -26,7 +26,7 @@ tags: story, quest, complete, all
 //cs_include Scripts/Story/FireIsland/CoreFireIsland.cs
 //cs_include Scripts/Seasonal/Friday13th/Story/CoreFriday13th.cs
 
-//cs_include Scripts/Story\Hollowborn\CoreHollowbornStory.cs
+//cs_include Scripts/Story/Hollowborn/CoreHollowbornStory.cs
 
 //cs_include Scripts/Story/IsleOfFotia/CoreIsleOfFotia.cs
 
