@@ -2227,6 +2227,20 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FireAvatarFavorFarm.cs"
   },
   {
+    "name": "Seven Deadly Dragons Saga Drops",
+    "description": "get drops from all monsters from this saga.",
+    "tags": [
+      "deadly",
+      "seven",
+      "dragons",
+      "drops"
+    ],
+    "path": "Other/DeadlyDragonsSagaDrops.cs",
+    "size": 8534,
+    "fileName": "DeadlyDragonsSagaDrops.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/DeadlyDragonsSagaDrops.cs"
+  },
+  {
     "name": "Snowball Amberarms Drops",
     "description": "Farms \"All Drops\" From Quest",
     "tags": [
