@@ -1829,6 +1829,19 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Templates/MergeTemplate.cs"
   },
   {
+    "name": "Age Of Ruin Drops",
+    "description": "farms all acs drops from Age Of Ruin saga maps.",
+    "tags": [
+      "age",
+      "ruin",
+      "drops"
+    ],
+    "path": "Other/AgeOfRuinDrops.cs",
+    "size": 5824,
+    "fileName": "AgeOfRuinDrops.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/AgeOfRuinDrops.cs"
+  },
+  {
     "name": "Master of Your Craft",
     "description": "Farms \"All Drops\" From Quest",
     "tags": [
