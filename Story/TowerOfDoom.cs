@@ -5,6 +5,7 @@ tags: story, quest, tower-of-doom
 */
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Monsters;
 
 public class TowerOfDoom
 {
@@ -36,7 +37,11 @@ public class TowerOfDoom
 
         Core.EquipClass(ClassType.Solo);
         Core.EnsureAccept(3474 + Floor);
-        Core.KillMonster(Floor == 1 ? "towerofdoom" : "towerofdoom" + Floor.ToString(), "r10", "Left", "*", publicRoom: true);
+        Core.Join(Floor == 1 ? "towerofdoom" : $"towerofdoom{Floor}", "r10", "Left");
+        Monster? mob = Bot.Monsters.MapMonsters.FirstOrDefault(m => m.Cell == "r10");
+        // while (!Bot.ShouldExit && Core.IsMonsterAlive(mob!.MapID, true))
+        //     Bot.Kill.Monster(mob.MapID);
+        Core.KillMonster(Floor == 1 ? "towerofdoom" : $"towerofdoom{Floor}", "r10", "Left", mob!.Name, $"{mob!.Name} Defeated");
         Core.EnsureComplete(3474 + Floor);
     }
 }
