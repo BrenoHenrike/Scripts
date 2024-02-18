@@ -21,9 +21,9 @@ public class FreeBoosts
     public List<IOption> Options = new()
     {
         CoreBots.Instance.SkipOptions,
-        new Option<int>("GoldBoostQuant", "Gold Boost Quant", "Input the number of The Type of Boost For the Bot to Get [Max 9,999]", 9999),
-        new Option<int>("ClassBoostQuant", "Class Boost Quant", "Input the number of The Type of Boost For the Bot to Get [Max 9,999]", 9999),
-        new Option<int>("RepBoostQuant", "Rep Boost Quant", "Input the number of The Type of Boost For the Bot to Get [Max 9,999]", 9999)
+        new Option<int>("GoldBoostQuant", "Gold Boost Quant", "Input the number of The Type of Boost For the Bot to Get [Max 9999]", 9999),
+        new Option<int>("ClassBoostQuant", "Class Boost Quant", "Input the number of The Type of Boost For the Bot to Get [Max 9999]", 9999),
+        new Option<int>("RepBoostQuant", "Rep Boost Quant", "Input the number of The Type of Boost For the Bot to Get [Max 9999]", 9999)
     };
 
     public void ScriptMain(IScriptInterface bot)
@@ -45,9 +45,9 @@ public class FreeBoosts
 
         while (!Bot.ShouldExit)
         {
-            Core.KillMonster("nibbleon-100000", "r10", "Left", "Dark Makai", "Moglinberries", 3, isTemp: false, log: false);
-            Core.KillMonster("bloodtusk-100000", "r4", "Left", "Trollola Plant", "Trollola Nectar", 2, isTemp: false, log: false);
-            Core.KillMonster("mudluk-100000", "r3", "Left", "*", "Nimblestem", isTemp: false, log: false);
+            Core.KillMonster("nibbleon", "r10", "Left", "Dark Makai", "Moglinberries", 3, isTemp: false, log: false);
+            Core.KillMonster("bloodtusk", "r4", "Left", "Trollola Plant", "Trollola Nectar", 2, isTemp: false, log: false);
+            Core.KillMonster("cloister", "r2", "Left", "*", "Nimblestem", isTemp: false, log: false);
 
             bool allQuantitiesMet = Core.CheckInventory("GOLD Boost! (10 min)", GoldBoostQuant) &&
                                     Core.CheckInventory("CLASS Boost! (10 min)", ClassBoostQuant) &&
