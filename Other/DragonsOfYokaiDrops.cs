@@ -75,9 +75,6 @@ public class DragonsOfYokaiDrops
             "Loyal Alloy Tourne",
             "Moonlit Steel Back Rapier",
             "Moonlit Steel Rapier",
-            "Necro Crewmember's Keg", //Going rare
-            "Necro Crewmember's Knife", //Going rare
-            "Necro Crewmember's Knives", //Going rare
             "Pearl Dust Shuriken",
             "Tengu Feather Cap",
             "Tengu Feather Locks",
