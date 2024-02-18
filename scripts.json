@@ -16181,12 +16181,16 @@
   },
   {
     "name": "Archfiend",
-    "description": "null",
+    "description": "Gets and ranks the Archfiend Class",
     "tags": [
-      "null"
+      "archfiend",
+      "class",
+      "rankup",
+      "arch-fiend",
+      "yo mama"
     ],
     "path": "Nation/Various/Archfiend.cs",
-    "size": 3168,
+    "size": 3239,
     "fileName": "Archfiend.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/Archfiend.cs"
   },
