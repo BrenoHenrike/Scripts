@@ -283,46 +283,74 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/ShadowsOfWar/CoreSoWMats.cs"
   },
   {
-    "name": "InfiniteLegionDarkCaster",
-    "description": "null",
+    "name": "Infinite Legion Dark Caster (Class)",
+    "description": "This script will get Infinite Legion Dark Caster class and farm it to rank 10.",
     "tags": [
-      "null"
+      "ildc",
+      "infinite legion dc",
+      "dark caster",
+      "legion",
+      "class",
+      "dark birthday",
+      "undead legion"
     ],
     "path": "Legion/InfiniteLegionDarkCaster.cs",
-    "size": 1097,
+    "size": 1260,
     "fileName": "InfiniteLegionDarkCaster.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/InfiniteLegionDarkCaster.cs"
   },
   {
-    "name": "SoulForgeHammer",
-    "description": "null",
+    "name": "SoulForge Hammer",
+    "description": "This script will get SoulForge Hammer.",
     "tags": [
-      "null"
+      "soul",
+      "forge",
+      "soulforge",
+      "hammer",
+      "unlock soul forge",
+      "soul forge hammer",
+      "legion",
+      "dage",
+      "underworld"
     ],
     "path": "Legion/SoulForgeHammer.cs",
-    "size": 649,
+    "size": 774,
     "fileName": "SoulForgeHammer.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/SoulForgeHammer.cs"
   },
   {
-    "name": "DarkToken",
-    "description": "null",
+    "name": "Dark Token",
+    "description": "This script will farm Dark Tokens.",
     "tags": [
-      "null"
+      "darktoken",
+      "lf3",
+      "legion fealty 3",
+      "lr",
+      "seraphic medals",
+      "seraphic",
+      "dark token"
     ],
     "path": "Legion/DarkToken.cs",
-    "size": 836,
+    "size": 937,
     "fileName": "DarkToken.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/DarkToken.cs"
   },
   {
-    "name": "DiamondTokenofDage",
-    "description": "null",
+    "name": "Diamond Token of Dage",
+    "description": "This script will farm Diamond Tokens of Dage.",
     "tags": [
-      "null"
+      "diamond token",
+      "dage",
+      "diamond",
+      "token",
+      "lf3",
+      "legion fealty 3",
+      "lr",
+      "legion loyalty rewarded",
+      "shadowblast arena"
     ],
     "path": "Legion/DiamondTokenofDage.cs",
-    "size": 672,
+    "size": 817,
     "fileName": "DiamondTokenofDage.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/DiamondTokenofDage.cs"
   },
@@ -352,40 +380,57 @@
       "king"
     ],
     "path": "Legion/JoinLegion.cs",
-    "size": 847,
+    "size": 848,
     "fileName": "JoinLegion.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/JoinLegion.cs"
   },
   {
-    "name": "EmblemofDage",
-    "description": "null",
+    "name": "Emblem of Dage",
+    "description": "This script will farm Emblems of Dage.",
     "tags": [
-      "null"
+      "emblem",
+      "dage",
+      "lf3",
+      "legion fealty 3",
+      "shadowblast arena",
+      "legion recruits",
+      "the dark path waits"
     ],
     "path": "Legion/EmblemofDage.cs",
-    "size": 654,
+    "size": 777,
     "fileName": "EmblemofDage.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/EmblemofDage.cs"
   },
   {
-    "name": "DagePvP",
-    "description": "null",
+    "name": "Legion Combat Trophy",
+    "description": "This script will farm Legion Combat Trophies in /dagepvp.",
     "tags": [
-      "null"
+      "legion",
+      "combat",
+      "trophy",
+      "dage",
+      "pvp",
+      "dage pvp",
+      "dagepvp"
     ],
     "path": "Legion/DagePvP.cs",
-    "size": 914,
+    "size": 1028,
     "fileName": "DagePvP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/DagePvP.cs"
   },
   {
-    "name": "SwordMaster",
-    "description": "null",
+    "name": "SwordMaster (Class)",
+    "description": "This script will get SwordMaster class and rank it up to rank 10.",
     "tags": [
-      "null"
+      "sword master",
+      "swordmaster",
+      "legion",
+      "class",
+      "meditation",
+      "ynr"
     ],
     "path": "Legion/SwordMaster.cs",
-    "size": 1085,
+    "size": 1207,
     "fileName": "SwordMaster.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/SwordMaster.cs"
   },
@@ -4111,46 +4156,70 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/YamiNoRonin/YokaiSwordScroll.cs"
   },
   {
-    "name": "LegionExercise1",
-    "description": "null",
+    "name": "Legion Exercise Number 1",
+    "description": "This script will complete \"Legion Exercise Number 1\" quest.",
     "tags": [
-      "null"
+      "legion exercise",
+      "1",
+      "undead champion blade",
+      "legendary golden death blade"
     ],
     "path": "Legion/LegionExcercise/LegionExercise1.cs",
-    "size": 3079,
+    "size": 3210,
     "fileName": "LegionExercise1.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/LegionExcercise/LegionExercise1.cs"
   },
   {
-    "name": "LegionExercise4",
-    "description": "null",
+    "name": "Legion Exercise Number 4",
+    "description": "This script will complete \"Legion Exercise Number 4\" quest.",
     "tags": [
-      "null"
+      "legion",
+      "exercise",
+      "legion exercise",
+      "4",
+      "corrupted",
+      "corrupted dragon",
+      "corrupted dragon slayer",
+      "judgement",
+      "judgement scythe",
+      "painsaw",
+      "painsaw of eidolon",
+      "soul eater",
+      "soul eater advanced"
     ],
     "path": "Legion/LegionExcercise/LegionExercise4.cs",
-    "size": 2548,
+    "size": 2789,
     "fileName": "LegionExercise4.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/LegionExcercise/LegionExercise4.cs"
   },
   {
-    "name": "LegionExercise3",
-    "description": "null",
+    "name": "Legion Exercise Number 3",
+    "description": "This script will complete \"Legion Exercise Number 3\" quest.",
     "tags": [
-      "null"
+      "legion",
+      "exercise",
+      "legion exercise",
+      "3",
+      "judgement hammer"
     ],
     "path": "Legion/LegionExcercise/LegionExercise3.cs",
-    "size": 2687,
+    "size": 2801,
     "fileName": "LegionExercise3.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/LegionExcercise/LegionExercise3.cs"
   },
   {
-    "name": "LegionExercise2",
-    "description": "null",
+    "name": "Legion Exercise Number 2",
+    "description": "This script will complete \"Legion Exercise Number 2\" quest.",
     "tags": [
-      "null"
+      "legion exercise",
+      "2",
+      "executioner",
+      "executioner's judgement",
+      "legion",
+      "undead champion"
     ],
     "path": "Legion/LegionExcercise/LegionExercise2.cs",
-    "size": 2560,
+    "size": 2701,
     "fileName": "LegionExercise2.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/LegionExcercise/LegionExercise2.cs"
   },
@@ -4761,7 +4830,7 @@
       "undead legion merge"
     ],
     "path": "Legion/Various/ExaltedSoulCleaver.cs",
-    "size": 1576,
+    "size": 1583,
     "fileName": "ExaltedSoulCleaver.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/Various/ExaltedSoulCleaver.cs"
   },
@@ -4777,24 +4846,24 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/Various/LegionOverfiendBlade.cs"
   },
   {
-    "name": "null",
+    "name": "LegionFealty1",
     "description": "null",
     "tags": [
       "null"
     ],
     "path": "Legion/Revenant/LegionFealty1.cs",
-    "size": 675,
+    "size": 683,
     "fileName": "LegionFealty1.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/Revenant/LegionFealty1.cs"
   },
   {
-    "name": "null",
+    "name": "LegionFealty3",
     "description": "null",
     "tags": [
       "null"
     ],
     "path": "Legion/Revenant/LegionFealty3.cs",
-    "size": 667,
+    "size": 676,
     "fileName": "LegionFealty3.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/Revenant/LegionFealty3.cs"
   },
@@ -4827,13 +4896,13 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/Revenant/0LegionRevenant.cs"
   },
   {
-    "name": "null",
+    "name": "LegionFealty2",
     "description": "null",
     "tags": [
       "null"
     ],
     "path": "Legion/Revenant/LegionFealty2.cs",
-    "size": 669,
+    "size": 678,
     "fileName": "LegionFealty2.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/Revenant/LegionFealty2.cs"
   },
@@ -8736,24 +8805,79 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/MergeShops/ShadowrealmMerge.cs"
   },
   {
-    "name": "HollowbornLabMerge",
-    "description": "null",
+    "name": "Hollowborn Lab Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Hollowborn Lab Merge [2191] in /hbchallenge",
     "tags": [
-      "null"
+      "hollowborn",
+      "lab",
+      "merge",
+      "hbchallenge",
+      "creator",
+      "morph",
+      "module",
+      "",
+      "tanks",
+      "alchemist",
+      "alchemists",
+      "goggles",
+      "facemask",
+      "protective",
+      "gear",
+      "gasmask",
+      "shrunken",
+      "head",
+      "battlegear"
     ],
     "path": "Hollowborn/MergeShops/HollowbornLabMerge.cs",
-    "size": 6239,
+    "size": 6509,
     "fileName": "HollowbornLabMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/MergeShops/HollowbornLabMerge.cs"
   },
   {
-    "name": "HBJudgementMerge",
-    "description": "null",
+    "name": "Hollowborn Judgement Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Hollowborn Judgement Merge [2075] in /hbchallenge",
     "tags": [
-      "null"
+      "hollowborn",
+      "judgement",
+      "merge",
+      "hbchallenge",
+      "judge",
+      "in",
+      "officio",
+      "hel",
+      "fö",
+      "fös",
+      "crown",
+      "band",
+      "morph",
+      "judges",
+      "altare",
+      "devotionis",
+      "aequitas",
+      "judicii",
+      "dark",
+      "judicium",
+      "imaginem",
+      "jurisdictio",
+      "ex",
+      "vi",
+      "legis",
+      "punitio",
+      "virgam",
+      "luminum",
+      "consummatum",
+      "est",
+      "bis",
+      "idem",
+      "remissio",
+      "vade",
+      "mecum",
+      "lex",
+      "et",
+      "ordo"
     ],
     "path": "Hollowborn/MergeShops/HBJudgementMerge.cs",
-    "size": 6450,
+    "size": 6860,
     "fileName": "HBJudgementMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/MergeShops/HBJudgementMerge.cs"
   },
