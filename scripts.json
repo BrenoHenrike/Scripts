@@ -436,13 +436,18 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AllSeasonal.cs"
   },
   {
-    "name": "TradingandStuff(single)",
-    "description": "null",
+    "name": "Trading and Stuff (Single)",
+    "description": "This script will complete \"Trading and Stuff (Single)\" quest.",
     "tags": [
-      "null"
+      "trading and stuff",
+      "single",
+      "hollowborn oblivion blade",
+      "hollowborn",
+      "oblivion",
+      "blade"
     ],
     "path": "Hollowborn/TradingandStuff(single).cs",
-    "size": 2601,
+    "size": 2738,
     "fileName": "TradingandStuff(single).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/TradingandStuff(single).cs"
   },
@@ -471,13 +476,19 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/CoreHollowborn.cs"
   },
   {
-    "name": "HollowbornOblivionBlade",
-    "description": "null",
+    "name": "Hollowborn Oblivion Blade",
+    "description": "This script will get Hollowborn Oblivion Blade.",
     "tags": [
-      "null"
+      "hollowborn",
+      "oblivion",
+      "blade",
+      "summoning",
+      "summoning and stuff",
+      "lae",
+      "archfiend enchanted orbs"
     ],
     "path": "Hollowborn/HollowbornOblivionBlade.cs",
-    "size": 3107,
+    "size": 3238,
     "fileName": "HollowbornOblivionBlade.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/HollowbornOblivionBlade.cs"
   },
@@ -491,18 +502,23 @@
       "shadowrealm"
     ],
     "path": "Hollowborn/HollowbornReapersScythe.cs",
-    "size": 1116,
+    "size": 1118,
     "fileName": "HollowbornReapersScythe.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/HollowbornReapersScythe.cs"
   },
   {
-    "name": "TradingandStuff(Dual)",
-    "description": "null",
+    "name": "Trading and Stuff (Dual)",
+    "description": "This script will complete \"Trading and Stuff (Dual)\" quest.",
     "tags": [
-      "null"
+      "hollowborn oblivion blade",
+      "trading",
+      "trading and stuff",
+      "hollowborn",
+      "dual oblivion blade",
+      "dual"
     ],
     "path": "Hollowborn/TradingandStuff(Dual).cs",
-    "size": 2542,
+    "size": 2688,
     "fileName": "TradingandStuff(Dual).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/TradingandStuff(Dual).cs"
   },
