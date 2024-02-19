@@ -1,7 +1,7 @@
 /*
-name: TradingandStuff(Dual)
-description: null
-tags: null
+name: Trading and Stuff (Dual)
+description: This script will complete "Trading and Stuff (Dual)" quest.
+tags: hollowborn oblivion blade, trading, trading and stuff, hollowborn, dual oblivion blade, dual
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

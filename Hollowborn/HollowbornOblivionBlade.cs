@@ -1,7 +1,7 @@
 /*
-name: HollowbornOblivionBlade
-description: null
-tags: null
+name: Hollowborn Oblivion Blade
+description: This script will get Hollowborn Oblivion Blade.
+tags: hollowborn, oblivion, blade, summoning, summoning and stuff, lae, archfiend enchanted orbs
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
