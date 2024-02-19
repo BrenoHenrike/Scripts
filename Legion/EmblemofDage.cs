@@ -1,7 +1,7 @@
 /*
-name: EmblemofDage
-description: null
-tags: null
+name: Emblem of Dage
+description: This script will farm Emblems of Dage.
+tags: emblem, dage, lf3, legion fealty 3, shadowblast arena, legion recruits, the dark path waits
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

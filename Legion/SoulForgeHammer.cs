@@ -1,7 +1,7 @@
 /*
-name: SoulForgeHammer
-description: null
-tags: null
+name: SoulForge Hammer
+description: This script will get SoulForge Hammer.
+tags: soul, forge, soulforge, hammer, unlock soul forge, soul forge hammer, legion, dage, underworld
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

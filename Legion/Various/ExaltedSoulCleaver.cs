@@ -1,7 +1,7 @@
 /*
 name: Exalted Soul Cleaver
 description: This scripts farms the Exalted Soul Cleaver class.
-tags: exalted,soul,cleaver,legion,class,esc,dage,undead legion merge
+tags: exalted, soul, cleaver, legion, class, esc, dage, undead legion merge
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

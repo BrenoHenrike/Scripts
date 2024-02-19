@@ -1,7 +1,7 @@
 /*
-name: LegionExercise1
-description: null
-tags: null
+name: Legion Exercise Number 1
+description: This script will complete "Legion Exercise Number 1" quest.
+tags: legion exercise, 1, undead champion blade, legendary golden death blade
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

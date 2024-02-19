@@ -1,7 +1,7 @@
 /*
-name: SwordMaster
-description: null
-tags: null
+name: SwordMaster (Class)
+description: This script will get SwordMaster class and rank it up to rank 10.
+tags: sword master, swordmaster, legion, class, meditation, ynr
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

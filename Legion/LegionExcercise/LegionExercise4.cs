@@ -1,7 +1,7 @@
 /*
-name: LegionExercise4
-description: null
-tags: null
+name: Legion Exercise Number 4
+description: This script will complete "Legion Exercise Number 4" quest.
+tags: legion, exercise, legion exercise, 4, corrupted, corrupted dragon, corrupted dragon slayer, judgement, judgement scythe, painsaw, painsaw of eidolon, soul eater, soul eater advanced
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

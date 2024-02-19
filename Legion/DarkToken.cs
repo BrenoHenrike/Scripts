@@ -1,7 +1,7 @@
 /*
-name: DarkToken
-description: null
-tags: null
+name: Dark Token
+description: This script will farm Dark Tokens.
+tags: darktoken, lf3, legion fealty 3, lr, seraphic medals, seraphic, dark token
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

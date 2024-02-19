@@ -1,7 +1,7 @@
 /*
-name: DiamondTokenofDage
-description: null
-tags: null
+name: Diamond Token of Dage
+description: This script will farm Diamond Tokens of Dage.
+tags: diamond token, dage, diamond, token, lf3, legion fealty 3, lr, legion loyalty rewarded, shadowblast arena
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
