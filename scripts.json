@@ -55,7 +55,7 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
   {
-    "name": "ArchPaladin",
+    "name": "ArchPaladin (Class)",
     "description": "This bot farms the ArchPaladin class for you.",
     "tags": [
       "class",
@@ -70,12 +70,12 @@
       "undead"
     ],
     "path": "Good/ArchPaladin.cs",
-    "size": 10623,
+    "size": 10631,
     "fileName": "ArchPaladin.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/ArchPaladin.cs"
   },
   {
-    "name": "Paladin",
+    "name": "Paladin (Class)",
     "description": "This bot farms the Paladin class for you.",
     "tags": [
       "warrior",
@@ -84,7 +84,7 @@
       "class"
     ],
     "path": "Good/Paladin.cs",
-    "size": 1124,
+    "size": 1132,
     "fileName": "Paladin.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/Paladin.cs"
   },
