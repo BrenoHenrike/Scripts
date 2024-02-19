@@ -2148,6 +2148,26 @@ public class CoreNation
         VoidKightSwordQuest(member ? "Voucher of Nulgath" : "Voucher of Nulgath (non-mem)");
         Supplies(member ? "Voucher of Nulgath" : "Voucher of Nulgath (non-mem)", KeepVoucher: KeepVoucher);
     }
+
+    /// <summary>
+    ///  Farm Fiend Seal
+    /// </summary>
+    /// <param name="quant"></param>
+    public void FarmFiendSeal(int quant = 500)
+    {
+        NationRound4Medal();
+
+        Core.AddDrop("Fiend Seal");
+        Core.EquipClass(ClassType.Farm);
+        Core.FarmingLogger("Fiend Seal", quant);
+
+        // I think its required to drop the item, but I'm not sure
+        Core.RegisterQuests(4748);
+        while (!Bot.ShouldExit && !Core.CheckInventory("Fiend Seal", quant))
+        {
+            Core.HuntMonster("shadowblast", "Legion Fenrir", "Fiend Seal", 500, false, false);
+        }
+    }
 }
 
 public enum ChooseReward
