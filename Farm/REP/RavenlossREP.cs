@@ -1,7 +1,7 @@
 /*
-name: RavenlossREP
-description: null
-tags: null
+name: Ravenloss REP
+description: This script will farm Ravenloss reputation to rank 10.
+tags: raven loss, ravenloss, raven, loss, rep, rank, reputation
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

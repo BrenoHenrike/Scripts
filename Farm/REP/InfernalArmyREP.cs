@@ -1,7 +1,7 @@
 /*
-name: InfernalArmyREP
-description: null
-tags: null
+name: Infernal Army REP
+description: This script will farm Infernal Army reputation to rank 10.
+tags: infernalarmy, infernal army, infernal, army, rep, rank, reputation
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

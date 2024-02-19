@@ -1,7 +1,7 @@
 /*
-name: Mythsong
-description: null
-tags: null
+name: Mythsong REP
+description: This script will farm Mythsong reputation to rank 10.
+tags: myth, song, mythsong, myth song, rep, rank, reputation
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

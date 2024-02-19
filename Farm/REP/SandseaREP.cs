@@ -1,7 +1,7 @@
 /*
-name: SandseaREP
-description: null
-tags: null
+name: Sandsea REP
+description: This script will farm Sandsea reputation to rank 10.
+tags: sandsea, sand sea, rep, rank, reputation
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

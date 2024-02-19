@@ -1,7 +1,7 @@
 /*
-name: HorcREP
-description: null
-tags: null
+name: Horc REP
+description: This script will farm Horc reputation to rank 10.
+tags: horc, rep, rank, reputation
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

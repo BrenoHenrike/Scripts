@@ -1,7 +1,7 @@
 /*
-name: YokaiREP
-description: null
-tags: null
+name: Yokai REP
+description: This script will farm Yokai reputation to rank 10.
+tags: yokai, rep, rank, reputation
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
