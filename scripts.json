@@ -3206,7 +3206,7 @@
       "daily"
     ],
     "path": "Dailies/TenacityChallenge.cs",
-    "size": 728,
+    "size": 729,
     "fileName": "TenacityChallenge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/TenacityChallenge.cs"
   },
@@ -16756,14 +16756,19 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/AFDL/0DoAll.cs"
   },
   {
-    "name": "Teeth",
-    "description": "Teeth",
+    "name": "Teeth (Darkon)",
+    "description": "This script will farm Teeth using \"Sweet Dreams Are Made of Teeth\" quest.",
     "tags": [
       "darkon",
-      "teeth"
+      "teeth",
+      "sweet dreams are made of teeth",
+      "tooth",
+      "wisdom tooth",
+      "eridani",
+      "re"
     ],
     "path": "Darkon/Materials/Teeth.cs",
-    "size": 688,
+    "size": 829,
     "fileName": "Teeth.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/Materials/Teeth.cs"
   },
@@ -17132,24 +17137,35 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/TrollREP.cs"
   },
   {
-    "name": "DoomwoodREP",
-    "description": "null",
+    "name": "Doomwood REP",
+    "description": "This script will farm Doomwood reputation to rank 10.",
     "tags": [
-      "null"
+      "doomwood",
+      "doom",
+      "wood",
+      "reputation",
+      "rank",
+      "rep"
     ],
     "path": "Farm/REP/DoomwoodREP.cs",
-    "size": 589,
+    "size": 678,
     "fileName": "DoomwoodREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/DoomwoodREP.cs"
   },
   {
-    "name": "EmberseaREP",
-    "description": "null",
+    "name": "Embersea REP",
+    "description": "This script will farm Embersea reputation to rank 10.",
     "tags": [
-      "null"
+      "embersea",
+      "ember sea",
+      "ember",
+      "sea",
+      "reputation",
+      "rank",
+      "rep"
     ],
     "path": "Farm/REP/EmberseaREP.cs",
-    "size": 740,
+    "size": 840,
     "fileName": "EmberseaREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/EmberseaREP.cs"
   },
@@ -17165,13 +17181,19 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/Mythsong.cs"
   },
   {
-    "name": "EtherStormREP",
-    "description": "null",
+    "name": "EtherStorm REP",
+    "description": "This script will farm EtherStorm reputation to rank 10.",
     "tags": [
-      "null"
+      "ether",
+      "storm",
+      "etherstorm",
+      "ether storm",
+      "reputation",
+      "rep",
+      "rank"
     ],
     "path": "Farm/REP/EtherStormREP.cs",
-    "size": 595,
+    "size": 703,
     "fileName": "EtherStormREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/EtherStormREP.cs"
   },
@@ -17187,13 +17209,18 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/VampireREP.cs"
   },
   {
-    "name": "DeathPitBrawlRep",
-    "description": "null",
+    "name": "Death Pit Brawl REP",
+    "description": "This script will farm Death Pit Brawl reputation to rank 10.",
     "tags": [
-      "null"
+      "deathpitbrawl",
+      "deathpit",
+      "brawl",
+      "reputation",
+      "rep",
+      "rank"
     ],
     "path": "Farm/REP/DeathPitBrawlRep.cs",
-    "size": 824,
+    "size": 932,
     "fileName": "DeathPitBrawlRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/DeathPitBrawlRep.cs"
   },
@@ -17209,13 +17236,16 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/NecroCryptREP.cs"
   },
   {
-    "name": "DiabolicalREP",
-    "description": "null",
+    "name": "Diabolical REP",
+    "description": "This script will farm Diabolical reputation to rank 10.",
     "tags": [
-      "null"
+      "diabolical",
+      "rep",
+      "rank",
+      "reputation"
     ],
     "path": "Farm/REP/DiabolicalREP.cs",
-    "size": 906,
+    "size": 987,
     "fileName": "DiabolicalREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/DiabolicalREP.cs"
   },
@@ -17242,13 +17272,17 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/LoremasterREP.cs"
   },
   {
-    "name": "FishingREP",
-    "description": "null",
+    "name": "Fishing REP",
+    "description": "This script will farm Fishing reputation to rank 10.",
     "tags": [
-      "null"
+      "fish",
+      "fishing",
+      "rep",
+      "rank",
+      "reputation"
     ],
     "path": "Farm/REP/FishingREP.cs",
-    "size": 607,
+    "size": 688,
     "fileName": "FishingREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/FishingREP.cs"
   },
@@ -17264,13 +17298,18 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/InfernalArmyREP.cs"
   },
   {
-    "name": "DreadrockREP",
-    "description": "null",
+    "name": "Dreadrock REP",
+    "description": "This script will farm Dreadrock reputation to rank 10.",
     "tags": [
-      "null"
+      "dreadrock",
+      "dread",
+      "rock",
+      "reputation",
+      "rep",
+      "rank"
     ],
     "path": "Farm/REP/DreadrockREP.cs",
-    "size": 592,
+    "size": 684,
     "fileName": "DreadrockREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/DreadrockREP.cs"
   },
@@ -17333,13 +17372,16 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/NorthpointeREP.cs"
   },
   {
-    "name": "EvilREP",
-    "description": "null",
+    "name": "Evil REP",
+    "description": "This script will farm Evil reputation to rank 10.",
     "tags": [
-      "null"
+      "evil",
+      "rep",
+      "rank",
+      "reputation"
     ],
     "path": "Farm/REP/EvilREP.cs",
-    "size": 577,
+    "size": 646,
     "fileName": "EvilREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/EvilREP.cs"
   },
@@ -17355,24 +17397,33 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/SpellCraftingREP.cs"
   },
   {
-    "name": "DreadFireREP",
-    "description": "null",
+    "name": "Dreadfire REP",
+    "description": "This script will farm Dreadfire reputation to rank 10.",
     "tags": [
-      "null"
+      "dreadfire",
+      "dread",
+      "reputation",
+      "rank",
+      "rep"
     ],
     "path": "Farm/REP/DreadFireREP.cs",
-    "size": 592,
+    "size": 678,
     "fileName": "DreadFireREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/DreadFireREP.cs"
   },
   {
-    "name": "DwarfholdREP",
-    "description": "null",
+    "name": "Dwarfold REP",
+    "description": "This script will farm Dwarfhold reputation to rank 10.",
     "tags": [
-      "null"
+      "dwarfhold",
+      "dwarf hold",
+      "hold",
+      "reputation",
+      "rep",
+      "rank"
     ],
     "path": "Farm/REP/DwarfholdREP.cs",
-    "size": 592,
+    "size": 688,
     "fileName": "DwarfholdREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/DwarfholdREP.cs"
   },
@@ -17425,13 +17476,18 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/SandseaREP.cs"
   },
   {
-    "name": "DruidGroveREP",
-    "description": "null",
+    "name": "Druid Grove REP",
+    "description": "This script will farm Druid Grove reputation to rank 10.",
     "tags": [
-      "null"
+      "druid",
+      "grove",
+      "druidgrove",
+      "reputation",
+      "rep",
+      "rank"
     ],
     "path": "Farm/REP/DruidGroveREP.cs",
-    "size": 595,
+    "size": 692,
     "fileName": "DruidGroveREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/DruidGroveREP.cs"
   },
@@ -17478,13 +17534,18 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/BeastMasterREP[Mem].cs"
   },
   {
-    "name": "ElementalMasterREP",
-    "description": "null",
+    "name": "Elemental Master REP",
+    "description": "This script will farm Elemental Master reputation to rank 10.",
     "tags": [
-      "null"
+      "elemental",
+      "master",
+      "elementalmaster",
+      "rep",
+      "rank",
+      "reputation"
     ],
     "path": "Farm/REP/ElementalMasterREP.cs",
-    "size": 610,
+    "size": 722,
     "fileName": "ElementalMasterREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/ElementalMasterREP.cs"
   },
@@ -17539,13 +17600,16 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/MonsterHunterREP.cs"
   },
   {
-    "name": "GoodREP",
-    "description": "null",
+    "name": "Good REP",
+    "description": "This script will farm Good reputation to rank 10.",
     "tags": [
-      "null"
+      "good",
+      "rep",
+      "rank",
+      "reputation"
     ],
     "path": "Farm/REP/GoodREP.cs",
-    "size": 577,
+    "size": 646,
     "fileName": "GoodREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/GoodREP.cs"
   },
@@ -17578,24 +17642,27 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/BladeofAweREP.cs"
   },
   {
-    "name": "HollowbornREP",
+    "name": "Hollowborn REP",
     "description": "null",
     "tags": [
       "null"
     ],
     "path": "Farm/REP/HollowbornREP.cs",
-    "size": 668,
+    "size": 669,
     "fileName": "HollowbornREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/HollowbornREP.cs"
   },
   {
-    "name": "EternalREP",
-    "description": "null",
+    "name": "Eternal REP",
+    "description": "This script will farm Eternal reputation to rank 10.",
     "tags": [
-      "null"
+      "eternal",
+      "rep",
+      "rank",
+      "reputation"
     ],
     "path": "Farm/REP/EternalREP.cs",
-    "size": 792,
+    "size": 867,
     "fileName": "EternalREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/EternalREP.cs"
   },
@@ -17650,13 +17717,16 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/ThunderForgeREP.cs"
   },
   {
-    "name": "GlaceraREP",
-    "description": "null",
+    "name": "Glacera REP",
+    "description": "This script will farm Glacera reputation to rank 10.",
     "tags": [
-      "null"
+      "glacera",
+      "rank",
+      "rep",
+      "reputation"
     ],
     "path": "Farm/REP/GlaceraREP.cs",
-    "size": 948,
+    "size": 1023,
     "fileName": "GlaceraREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/GlaceraREP.cs"
   },
