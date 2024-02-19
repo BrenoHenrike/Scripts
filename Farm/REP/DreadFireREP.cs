@@ -1,7 +1,7 @@
 /*
-name: DreadFireREP
-description: null
-tags: null
+name: Dreadfire REP
+description: This script will farm Dreadfire reputation to rank 10.
+tags: dreadfire, dread, reputation, rank, rep
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

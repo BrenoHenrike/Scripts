@@ -1,7 +1,7 @@
 /*
-name: EvilREP
-description: null
-tags: null
+name: Evil REP
+description: This script will farm Evil reputation to rank 10.
+tags: evil, rep, rank, reputation
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

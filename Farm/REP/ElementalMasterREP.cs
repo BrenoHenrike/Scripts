@@ -1,7 +1,7 @@
 /*
-name: ElementalMasterREP
-description: null
-tags: null
+name: Elemental Master REP
+description: This script will farm Elemental Master reputation to rank 10.
+tags: elemental, master, elementalmaster, rep, rank, reputation
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

@@ -1,7 +1,7 @@
 /*
-name: DiabolicalREP
-description: null
-tags: null
+name: Diabolical REP
+description: This script will farm Diabolical reputation to rank 10.
+tags: diabolical, rep, rank, reputation
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

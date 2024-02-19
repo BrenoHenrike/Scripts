@@ -1,7 +1,7 @@
 /*
-name: DruidGroveREP
-description: null
-tags: null
+name: Druid Grove REP
+description: This script will farm Druid Grove reputation to rank 10.
+tags: druid, grove, druidgrove, reputation, rep, rank
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

@@ -1,7 +1,7 @@
 /*
-name: EmberseaREP
-description: null
-tags: null
+name: Embersea REP
+description: This script will farm Embersea reputation to rank 10.
+tags: embersea, ember sea, ember, sea, reputation, rank, rep
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

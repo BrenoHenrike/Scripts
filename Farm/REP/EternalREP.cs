@@ -1,7 +1,7 @@
 /*
-name: EternalREP
-description: null
-tags: null
+name: Eternal REP
+description: This script will farm Eternal reputation to rank 10.
+tags: eternal, rep, rank, reputation
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

@@ -1,7 +1,7 @@
 /*
-name: EtherStormREP
-description: null
-tags: null
+name: EtherStorm REP
+description: This script will farm EtherStorm reputation to rank 10.
+tags: ether, storm, etherstorm, ether storm, reputation, rep, rank
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
