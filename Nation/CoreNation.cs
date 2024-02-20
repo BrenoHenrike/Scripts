@@ -8,6 +8,7 @@ tags: null
 
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
+using Skua.Core.Models.Monsters;
 using Skua.Core.Models.Quests;
 
 public class CoreNation
@@ -320,8 +321,27 @@ public class CoreNation
         Core.AddDrop("Nulgath's Approval", "Archfiend's Favor");
 
         Core.EquipClass(ClassType.Farm);
-        Core.KillMonster("evilwarnul", "r2", "Down", "*", "Nulgath's Approval", quantApproval, false);
-        Core.KillMonster("evilwarnul", "r2", "Down", "*", "Archfiend's Favor", quantFavor, false);
+        while (!Bot.ShouldExit && (!Core.CheckInventory("Nulgath's Approval", quantApproval) || !Core.CheckInventory("Archfiend's Favor", quantFavor)))
+        {
+            if (Bot.Map.Name != "evilwarnul")
+                Core.Join("evilwarnul");
+            if (Bot.Player.Cell != "r2")
+                Core.Jump("r2", "Down");
+
+            foreach (Monster Mob in Bot.Monsters.CurrentAvailableMonsters.Where(m => m.Cell == "r2"))
+            {
+                while (!Bot.ShouldExit && Core.IsMonsterAlive(Mob.MapID, true))
+                {
+                    Bot.Combat.Attack(Mob.MapID);
+                    Core.Sleep();
+
+                    if (Core.CheckInventory("Nulgath's Approval", quantApproval) && Core.CheckInventory("Archfiend's Favor", quantFavor))
+                    {
+                        break;
+                    }
+                }
+            }
+        }
     }
 
     /// <summary>
@@ -1361,7 +1381,7 @@ public class CoreNation
 
             if (Bot.Player.CurrentClass!.Name == "ArchMage")
                 Bot.Options.AttackWithoutTarget = true;
-                
+
             while (!Bot.ShouldExit && !Core.CheckInventory("Dark Makai Sigil"))
             {
                 if (!Bot.Player.InCombat)

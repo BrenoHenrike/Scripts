@@ -47,12 +47,12 @@ public class AssistingCragAndBamboozle
 
         Core.SetOptions();
 
-        AssistingCandB(true);
+        AssistingCandB();
 
         Core.SetOptions(false);
     }
 
-    public void AssistingCandB(bool logSparrow = false)
+    public void AssistingCandB()
     {
         if (!Core.IsMember || !Core.CheckInventory(Nation.CragName))
             return;
@@ -64,8 +64,7 @@ public class AssistingCragAndBamboozle
 
         if (!Core.CheckInventory("Sparrow's Blood") && !Daily.CheckDaily(803, true, true, "Sparrow's Blood"))
         {
-            if (logSparrow)
-                Core.Logger("This bot requires you to have at least 1 Sparrow's Blood OR to have not done the Sparrow's Blood Daily yet");
+            Core.Logger("This bot requires you to have at least 1 Sparrow's Blood OR to have not done the Sparrow's Blood Daily yet");
             return;
         }
 
