@@ -4017,26 +4017,44 @@ public class CoreBots
         return nr < 1000;
     }
 
+    /// <summary>
+    /// Resets a quest by ensuring its loading, abandoning if active, and returning whether it was accepted.
+    /// </summary>
+    /// <param name="QuestID">The ID of the quest to reset.</param>
+    /// <returns>True if the quest was accepted, false otherwise.</returns>
     public bool ResetQuest(int QuestID = 0000)
     {
-        // Dark makai and their Sigils / Runes are fucky... use this with the aproriate QuestID below:
-        // Swindles Return: 7551
-        // Diamond Exchange: 869
-        Quest? Quest = Bot.Quests.EnsureLoad(QuestID);
+        /*
+        Dark makai and their Sigils / Runes are tricky... use this with the appropriate QuestID below:
+            - Swindles Return: 7551
+            - Diamond Exchange: 869
+            - add more as used.
+        */
 
-        if (Bot.Quests.Active.Contains(Quest!))
+        // Ensure the quest is loaded
+        Quest? quest = Bot.Quests.EnsureLoad(QuestID);
+
+        // Check if the quest is active
+        if (Bot.Quests.Active.Contains(quest!))
         {
+            // Abandon the quest if it's active
             AbandonQuest(QuestID);
         }
         else
         {
+            // Ensure and wait for quest acceptance
             EnsureAccept(QuestID);
             Bot.Wait.ForQuestAccept(QuestID, 20);
+
+            // Abandon the quest after acceptance
+            AbandonQuest(QuestID);
         }
-        AbandonQuest(QuestID);
-        // EnsureAccept(QuestID);
+
+        // Return whether the quest was accepted
         return EnsureAccept(QuestID);
     }
+
+
 
     /// <summary>
     /// Checks if the map is available for joining or it is seasonal and not yet released
