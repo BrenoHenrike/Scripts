@@ -830,7 +830,7 @@ public class CoreNation
                 while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
                 {
                     if (UltraAlteon)
-                        Core.HuntMonster("ultraalteon", "Ultra Alteon", item, quant, log: false);
+                        Core.KillMonster("ultraalteon", "r10", "Left", "*", log: false);
                     else
                         Core.KillEscherion(item, quant, log: false);
 
