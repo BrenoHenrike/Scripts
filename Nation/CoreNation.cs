@@ -756,8 +756,8 @@ public class CoreNation
                     while (!Bot.ShouldExit && Item != null && !Core.CheckInventory(Item.Name, Item.MaxStack))
                     {
                         if (UltraAlteon)
-                            Core.HuntMonster("ultraalteon", "Ultra Alteon", Item.Name, Item.MaxStack, log: false);
-                        else
+                            Core.KillMonster("ultraalteon", "r10", "Left", "Ultra Alteon", log: false);
+                        else 
                             Core.KillEscherion(Item.Name, Item.MaxStack, log: false);
 
                         if (item != "Voucher of Nulgath" && _sellMemVoucher && Core.CheckInventory("Voucher of Nulgath"))
