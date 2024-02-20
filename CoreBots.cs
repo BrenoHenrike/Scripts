@@ -4017,16 +4017,25 @@ public class CoreBots
         return nr < 1000;
     }
 
-    public void ResetQuest(int QuestID = 0000)
+    public bool ResetQuest(int QuestID = 0000)
     {
         // Dark makai and their Sigils / Runes are fucky... use this with the aproriate QuestID below:
         // Swindles Return: 7551
         // Diamond Exchange: 869
+        Quest? Quest = Bot.Quests.EnsureLoad(QuestID);
 
-        EnsureAccept(QuestID);
-        Bot.Wait.ForQuestAccept(QuestID, 20);
+        if (Bot.Quests.Active.Contains(Quest!))
+        {
+            AbandonQuest(QuestID);
+        }
+        else
+        {
+            EnsureAccept(QuestID);
+            Bot.Wait.ForQuestAccept(QuestID, 20);
+        }
         AbandonQuest(QuestID);
-        EnsureAccept(QuestID);
+        // EnsureAccept(QuestID);
+        return EnsureAccept(QuestID);
     }
 
     /// <summary>
