@@ -122,6 +122,6 @@ public class ArchfiendDeathLord
         Soul_Jacker_of_Nulgath = 54383,
         Archfiendish_Spear_of_Death = 54384,
         Undeathly_SoulReaper_of_Nulgath = 54385,
-        Dual_FiendLords_Claymores = 54385,
+        Dual_FiendLords_Claymores = 54386,
     };
 }
