@@ -108,7 +108,6 @@ public class FarmAllDailies
             Daily.GrumbleGrumble();
             Daily.TenacityChallenge();
             Daily.MonthlyTreasureChestKeys();
-            Daily.BallyhooAdRewards();
             Daily.PowerGem();
             Daily.DesignNotes();
             Daily.MoglinPets();
