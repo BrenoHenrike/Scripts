@@ -123,20 +123,25 @@ public class FarmHigure
         switch (item)
         {
             case "Darkon's Receipt":
-                Core.EquipClass(ClassType.Solo);
-                Core.RegisterQuests(7326);
-                Army.AggroMonCells("Boss2");
-                Army.AggroMonStart("tercessuinotlim");
-                Army.DivideOnCells("Boss2");
+                Core.EquipClass(ClassType.Farm);
+                Core.RegisterQuests(7324);
+                Army.AggroMonCells("Right", "LeftBack");
+                Army.AggroMonStart("arcangrove");
+                Army.DivideOnCells("Right", "LeftBack");
 
                 if (Bot.Player.CurrentClass?.Name == "ArchMage")
                     Bot.Options.AttackWithoutTarget = true;
 
                 while (!Bot.ShouldExit && !Core.CheckInventory("Darkon's Receipt", 66))
+                {
                     Bot.Combat.Attack("*");
+                    Core.Sleep();
+                }
                 Army.AggroMonStop(true);
                 Core.CancelRegisteredQuests();
+                Core.JumpWait();
                 break;
+
             case "La's Gratitude":
                 Core.RegisterQuests(8001);
                 Core.EquipClass(ClassType.Farm);
@@ -151,7 +156,9 @@ public class FarmHigure
                     Bot.Combat.Attack("*");
                 Army.AggroMonStop(true);
                 Core.CancelRegisteredQuests();
+                Core.JumpWait();
                 break;
+
             case "Astravian Medal":
                 Core.RegisterQuests(8257);
                 Core.EquipClass(ClassType.Farm);
@@ -166,7 +173,9 @@ public class FarmHigure
                     Bot.Combat.Attack("*");
                 Army.AggroMonStop(true);
                 Core.CancelRegisteredQuests();
+                Core.JumpWait();
                 break;
+
             case "A Melody":
                 Core.RegisterQuests(8396);
                 Core.EquipClass(ClassType.Farm);
@@ -181,7 +190,9 @@ public class FarmHigure
                     Bot.Combat.Attack("*");
                 Army.AggroMonStop(true);
                 Core.CancelRegisteredQuests();
+                Core.JumpWait();
                 break;
+
             case "Suki's Prestige":
                 Core.EquipClass(ClassType.Farm);
                 Core.RegisterQuests(8602);
@@ -196,7 +207,9 @@ public class FarmHigure
                     Bot.Combat.Attack("*");
                 Army.AggroMonStop(true);
                 Core.CancelRegisteredQuests();
+                Core.JumpWait();
                 break;
+
             case "Ancient Remnant":
                 Core.EquipClass(ClassType.Solo);
                 Core.RegisterQuests(8641);
@@ -230,13 +243,14 @@ public class FarmHigure
                 Army.AggroMonStop(true);
                 Core.CancelRegisteredQuests();
                 break;
+
             case "Mourning Flower":
                 Core.EquipClass(ClassType.Farm);
                 Core.RegisterQuests(8688);
                 Army.AggroMonCells("r11", "r9", "r6");
                 Army.AggroMonStart("genesisgarden");
                 Army.DivideOnCells("r11", "r9", "r6");
-                
+
                 if (Bot.Player.CurrentClass?.Name == "ArchMage")
                     Bot.Options.AttackWithoutTarget = true;
 
@@ -245,20 +259,22 @@ public class FarmHigure
                 Army.AggroMonStop(true);
                 Core.CancelRegisteredQuests();
                 break;
+
             case "Unfinished Musical Score":
                 Core.EquipClass(ClassType.Solo);
                 Army.AggroMonCells("r9");
                 Army.AggroMonStart("theworld");
                 Army.DivideOnCells("r9");
-                
+
                 if (Bot.Player.CurrentClass?.Name == "ArchMage")
                     Bot.Options.AttackWithoutTarget = true;
-                    
+
                 while (!Bot.ShouldExit && !Core.CheckInventory("Unfinished Musical Score", 66))
                     Bot.Combat.Attack("*");
                 Army.AggroMonStop(true);
                 Core.CancelRegisteredQuests();
                 break;
+
             case "Bounty Hunter Dubloon":
                 Core.EquipClass(ClassType.Solo);
                 Core.FarmingLogger("Bounty Hunter Dubloon", 222);
