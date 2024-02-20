@@ -619,9 +619,9 @@ public class CoreDailies
         Core.AddDrop("Sparrow's Blood");
         Core.EquipClass(ClassType.Farm);
         Core.EnsureAccept(803);
-        Core.HuntMonster("arcangrove", "Gorillaphant", "Blood Lily", 30);
-        Core.HuntMonster("arcangrove", "Seed Spitter", "Snapdrake", 17);
-        Core.HuntMonster("arcangrove", "Seed Spitter", "DOOM Dirt", 12);
+        Core.KillMonster("arcangrove", "Right", "Left", "*", "Blood Lily", 30);
+        Core.KillMonster("arcangrove", "Back", "Right", "*", "Snapdrake", 17);
+        Core.KillMonster("arcangrove", "Back", "Right", "*", "DOOM Dirt", 12);
         Core.EnsureComplete(803);
     }
 
