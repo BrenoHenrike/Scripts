@@ -1,7 +1,7 @@
 /*
-name: SwordhavenREP
-description: null
-tags: null
+name: Swordhaven REP
+description: This script will farm Swordhaven reputation to rank 10.
+tags: sword haven, swordhaven, sword, haven, rep, rank, reputation
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

@@ -1,7 +1,7 @@
 /*
-name: DagePvP
-description: null
-tags: null
+name: Legion Combat Trophy
+description: This script will farm Legion Combat Trophies in /dagepvp.
+tags: legion, combat, trophy, dage, pvp, dage pvp, dagepvp
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

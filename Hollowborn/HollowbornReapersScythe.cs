@@ -1,7 +1,7 @@
 /*
 name: Hollowborn Reaper's Scythe
 description: This script will farm Hollowborn Reaper's Scythe
-tags: hollowborn, reaper,scythe,shadowrealm
+tags: hollowborn, reaper, scythe, shadowrealm
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

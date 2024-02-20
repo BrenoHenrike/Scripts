@@ -1,5 +1,5 @@
 /*
-name: Paladin
+name: Paladin (Class)
 description: This bot farms the Paladin class for you.
 tags: warrior, healer, paladin, class
 */

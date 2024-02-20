@@ -1,7 +1,7 @@
 /*
-name: TreasureHunterREP
-description: null
-tags: null
+name: TreasureHunter REP
+description: This script will farm TreasureHunter reputation to rank 10.
+tags: treasure hunter, treasurehunter, treasure, hunter, rep, rank, reputation
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

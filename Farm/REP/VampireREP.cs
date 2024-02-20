@@ -1,7 +1,7 @@
 /*
-name: VampireREP
-description: null
-tags: null
+name: Vampire REP
+description: This script will farm Vampire reputation to rank 10.
+tags: vampire, rank, rep, reputation
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

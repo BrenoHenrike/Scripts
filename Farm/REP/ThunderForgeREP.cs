@@ -1,7 +1,7 @@
 /*
-name: ThunderForgeREP
-description: null
-tags: null
+name: ThunderForge REP
+description: This script will farm ThunderForge reputation to rank 10.
+tags: thunder forge, thunderforge, thunder, forge, rep, rank, reputation
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

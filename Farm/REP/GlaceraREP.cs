@@ -1,7 +1,7 @@
 /*
-name: GlaceraREP
-description: null
-tags: null
+name: Glacera REP
+description: This script will farm Glacera reputation to rank 10.
+tags: glacera, rank, rep, reputation
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

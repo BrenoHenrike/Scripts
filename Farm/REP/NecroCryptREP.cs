@@ -1,7 +1,7 @@
 /*
-name: NecroCryptREP
-description: null
-tags: null
+name: Necro Crypt REP
+description: This script will farm Necro Crypt reputation to rank 10.
+tags: necrocrypt, necro crypt, necro, crypt, rank, rep, reputation
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

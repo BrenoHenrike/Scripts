@@ -1,7 +1,7 @@
 /*
-name: null
+name: LegionFealty1
 description: null
-tags: null 
+tags: null
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

@@ -1,7 +1,7 @@
 /*
-name: HollowbornLabMerge
-description: null
-tags: null
+name: Hollowborn Lab Merge
+description: This bot will farm the items belonging to the selected mode for the Hollowborn Lab Merge [2191] in /hbchallenge
+tags: hollowborn, lab, merge, hbchallenge, creator, morph, module, , tanks, alchemist, alchemists, goggles, facemask, protective, gear, gasmask, shrunken, head, battlegear
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

@@ -1,7 +1,7 @@
 /*
-name: LegionExercise3
-description: null
-tags: null
+name: Legion Exercise Number 3
+description: This script will complete "Legion Exercise Number 3" quest.
+tags: legion, exercise, legion exercise, 3, judgement hammer
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

@@ -1,7 +1,7 @@
 /*
-name: DeathPitBrawlRep
-description: null
-tags: null
+name: Death Pit Brawl REP
+description: This script will farm Death Pit Brawl reputation to rank 10.
+tags: deathpitbrawl, deathpit, brawl, reputation, rep, rank
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

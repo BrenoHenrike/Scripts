@@ -1,7 +1,7 @@
 /*
-name: NorthpointeREP
-description: null
-tags: null
+name: Northpointe REP
+description: This script will farm Northpointe reputation to rank 10.
+tags: northpoint, northpointe, north point e, rep, rank, reputation
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

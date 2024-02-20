@@ -1,7 +1,7 @@
 /*
-name: GoodREP
-description: null
-tags: null
+name: Good REP
+description: This script will farm Good reputation to rank 10.
+tags: good, rep, rank, reputation
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

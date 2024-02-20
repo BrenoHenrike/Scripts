@@ -1,7 +1,7 @@
 /*
-name: LegionExercise2
-description: null
-tags: null
+name: Legion Exercise Number 2
+description: This script will complete "Legion Exercise Number 2" quest.
+tags: legion exercise, 2, executioner, executioner's judgement, legion, undead champion
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

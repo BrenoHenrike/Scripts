@@ -1,7 +1,7 @@
 /*
-name: InfiniteLegionDarkCaster
-description: null
-tags: null
+name: Infinite Legion Dark Caster (Class)
+description: This script will get Infinite Legion Dark Caster class and farm it to rank 10.
+tags: ildc, infinite legion dc, dark caster, legion, class, dark birthday, undead legion
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

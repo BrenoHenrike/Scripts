@@ -1,7 +1,7 @@
 /*
-name: TrollREP
-description: null
-tags: null
+name: Troll REP
+description: This script will farm Troll reputation to rank 10.
+tags: troll, rep, rank, reputation
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

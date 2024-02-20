@@ -1,7 +1,7 @@
 /*
-name: MysteriousDungeonREP
-description: null
-tags: null
+name: Mysterious Dungeon REP
+description: This script will farm Mysterious Dungeon reputation to rank 10.
+tags: mysterious, dungeon, mysterious dungeon, mysteriousdungeon, rep, rank, reputation
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

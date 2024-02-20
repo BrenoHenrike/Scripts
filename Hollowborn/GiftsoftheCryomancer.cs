@@ -1,7 +1,7 @@
 /*
 name: Gifts of the Cryomancer
 description: This script will farm all the rewards from the quest "Gifts of the Cryomancer"
-tags: Gifts of the Cryomancer, staff, bithday
+tags: gifts of the cryomancer, staff, bithday
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
