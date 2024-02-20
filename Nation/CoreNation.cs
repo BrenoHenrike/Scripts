@@ -720,16 +720,33 @@ public class CoreNation
         if (item != Uni(13) && Core.CheckInventory("Drudgen the Assistant"))
             Core.RegisterQuests(870);
 
+        Core.AddDrop(
+                    (item != null ? new[] { item } : Enumerable.Empty<string>())
+                    .Concat(Core.QuestRewards(9542))
+                    .Concat(
+                        SuppliesRewards.Concat(
+                            sellMemVoucher ? new[] { "Voucher of Nulgath" } : Enumerable.Empty<string>()
+                        ).Append("Relic of Chaos")
+                    )
+                    .Concat(
+                        returnPolicyDuringSupplies
+                            ? new[] { Uni(1), Uni(6), Uni(9), Uni(16), Uni(20) }
+                            : Enumerable.Empty<string>()
+                    )
+                    .ToArray()
+                );
+
+        if (returnPolicyDuringSupplies)
+            Core.ResetQuest(7551);
+
         Core.EquipClass(ClassType.Solo);
-
-        Core.AddDrop((item != null ? new[] { item } : Enumerable.Empty<string>()).Concat(Core.QuestRewards(9542)).Concat(SuppliesRewards.Concat(sellMemVoucher ? new[] { "Voucher of Nulgath" } : Enumerable.Empty<string>()).Append("Relic of Chaos")).ToArray());
-
         if (item == null)
         {
             foreach (string Thing in SuppliesRewards)
             {
                 var rewards = Core.EnsureLoad(2857).Rewards;
                 ItemBase? Item = rewards.Find(x => x.Name == Thing);
+
 
                 if (Core.CheckInventory(CragName))
                     BambloozevsDrudgen(Item!.Name, Item.MaxStack);
