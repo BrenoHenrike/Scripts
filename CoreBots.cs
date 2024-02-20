@@ -2503,7 +2503,8 @@ public class CoreBots
                 else Bot.Kill.Monster("*");
             }
         }
-
+        // insurance because it ditn jump back to spawn and got stuck aggroing
+        Jump("Enter", "Spawn");
         // Restore the original Aggro settings
         Bot.Options.AggroAllMonsters = originalAggroAll;
         Bot.Options.AggroMonsters = originalAggroMonsters;
