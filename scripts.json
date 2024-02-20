@@ -2461,7 +2461,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 93587,
+    "size": 93577,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -18304,7 +18304,7 @@
       "higure"
     ],
     "path": "Army/ArmySeasonal/ArmyHigure.cs",
-    "size": 22090,
+    "size": 22300,
     "fileName": "ArmyHigure.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmySeasonal/ArmyHigure.cs"
   },
