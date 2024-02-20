@@ -181,18 +181,18 @@ public class CoreVHL
 
         Core.Logger("Sparrow Method is enabled, the bot will now max out Totems, BloodGems, Uni19 and Vouchers in order to get another Elders' Blood. This may take a while");
 
-        ItemBase item = Core.EnsureLoad(7551).Rewards.Find(x => x.ID == 57446) ?? new ItemBase();
+        ItemBase? item = Core.EnsureLoad(7551).Rewards.FirstOrDefault(x => x.ID == 57446);
 
         Core.AddDrop("Totem of Nulgath", "Blood Gem of Nulgath", "Voucher of Nulgath", "Voucher of Nulgath (non-mem)");
         Nation.FarmTotemofNulgath();
         Nation.FarmBloodGem();
         if (!Core.CheckInventory("Unidentified 19"))
         {
-            Nation.SwindleReturn(item.Name, 6);
+            Nation.SwindleReturn(item!.Name, 6);
             Adv.BuyItem("tercessuinotlim", 1951, "Unidentified 19");
         }
         Nation.FarmVoucher(false);
         Nation.FarmVoucher(true);
-        ACAB.AssistingCandB();
+        ACAB.AssistingCandB(AssistingCragAndBamboozle.Rewards.Elders_Blood);
     }
 }

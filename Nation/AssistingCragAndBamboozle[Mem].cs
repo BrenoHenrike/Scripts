@@ -30,7 +30,7 @@ public class AssistingCragAndBamboozle
 
 
 
-    public string OptionsStorage = "FarmerJoePet";
+    public string OptionsStorage = "AssistingCragAndBamboozle";
     public bool DontPreconfigure = true;
     public List<IOption> Options = new()
     {
@@ -47,20 +47,20 @@ public class AssistingCragAndBamboozle
 
         Core.SetOptions();
 
-        AssistingCandB();
+        AssistingCandB(Bot.Config!.Get<Rewards>("PickReward"));
 
         Core.SetOptions(false);
     }
 
-    public void AssistingCandB()
+    public void AssistingCandB(Rewards reward = new())
     {
-        if (!Core.IsMember || !Core.CheckInventory(Nation.CragName))
+        if (!Core.IsMember || !Core.CheckInventory(Nation.CragName) || !Daily.CheckDaily(803, true, true, "Sparrow's Blood"))
             return;
 
-        ItemBase? Item = Bot.Inventory.Items.FirstOrDefault(x => x.ID == (int)Bot.Config!.Get<Rewards>("PickReward"));
-
-        if (Bot.Config!.Get<Rewards>("PickReward") != Rewards.Get_whats_not_maxed && Item != null && Core.CheckInventory(Item!.ID, Item!.MaxStack, toInv: false))
-            Core.Logger($"{Item!.Name.Replace("_", " ")}, {Item!.MaxStack}, Max stacked, please pick another item.", stopBot: true);
+        ItemBase? Item = Bot.Quests.EnsureLoad(5817)!.Rewards
+        .FirstOrDefault(r => (int)reward == 1
+        ? r.Quantity < r.MaxStack
+        : r.ID == (int)reward);
 
         if (!Core.CheckInventory("Sparrow's Blood") && !Daily.CheckDaily(803, true, true, "Sparrow's Blood"))
         {
@@ -72,7 +72,7 @@ public class AssistingCragAndBamboozle
                      "Sword of Nulgath", "Gem of Nulgath", "Tainted Gem", "Dark Crystal Shard", "Diamond of Nulgath",
                      "Totem of Nulgath", "Blood Gem of the Archfiend", "Unidentified 19", "Elders' Blood", "Voucher of Nulgath", "Voucher of Nulgath (non-mem)");
 
-
+        Core.FarmingLogger(Item!.Name, 1);
         bool continueFarming = true;
         while (continueFarming)
         {
@@ -96,7 +96,7 @@ public class AssistingCragAndBamboozle
 
             if (Bot.Config!.Get<Rewards>("PickReward") == Rewards.Get_whats_not_maxed)
             {
-                foreach (Rewards reward in rewardsToCheck)
+                foreach (Rewards Reward in rewardsToCheck)
                 {
                     string itemName = reward.ToString().Replace("_", " ");
                     int requiredCount = GetRequiredCount(reward);
@@ -131,9 +131,7 @@ public class AssistingCragAndBamboozle
             }
             if (!continueFarming)
                 Core.Logger($"Not enough \"Sparrow's Blood\", please do the daily 1 more time (not today)");
-
         }
-
     }
 
     private static int GetRequiredCount(Rewards reward)
