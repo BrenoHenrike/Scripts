@@ -39,7 +39,7 @@
       "null"
     ],
     "path": "CoreDailies.cs",
-    "size": 50163,
+    "size": 49206,
     "fileName": "CoreDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreDailies.cs"
   },
@@ -3306,7 +3306,7 @@
       "all"
     ],
     "path": "Dailies/0AllDailies.cs",
-    "size": 4264,
+    "size": 4224,
     "fileName": "0AllDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/0AllDailies.cs"
   },
@@ -3497,19 +3497,6 @@
     "size": 548,
     "fileName": "FreeDailyBoost[Mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/FreeDailyBoost[Mem].cs"
-  },
-  {
-    "name": "Ballyhoo Ad Rewards Daily",
-    "description": "realy just gets you 200-500 gold.. not realy usefull",
-    "tags": [
-      "ballyhoo",
-      "rewards",
-      "useless"
-    ],
-    "path": "Dailies/BallyhooAdRewards.cs",
-    "size": 599,
-    "fileName": "BallyhooAdRewards.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/BallyhooAdRewards.cs"
   },
   {
     "name": "Golden Inquisitor Daily",
