@@ -413,11 +413,7 @@ public class CoreFarms
         Core.RegisterQuests(7979, 7980, 7981);
 
         while (!Bot.ShouldExit && (level == 101 ? Bot.Player.Gold < gold : (Bot.Player.Level < level && Bot.Player.Gold < gold)))
-        {
-            Core.KillMonster("sevencircleswar", "Enter", "Right", "*", "Wrath Guards Defeated", 12);
-            Core.KillMonster("sevencircleswar", "Enter", "Right", "*", "War Medal", 5);
-            Core.KillMonster("sevencircleswar", "Enter", "Right", "*", "Mega War Medal", 3);
-        }
+            Core.KillMonster("sevencircleswar", "Enter", "Right", "*", log: false);
 
         Core.CancelRegisteredQuests();
         Core.SavedState(false);
@@ -985,15 +981,15 @@ public class CoreFarms
                     YMB ?
                      $"%xt%zm%crafting%1%getAlchWait%{reagentid1}%{reagentid2}%true%Ready to Mix%{reagent1}%{reagent2}%{rune}%{modifier}%"
                     : $"%xt%zm%crafting%1%getAlchWait%{reagentid1}%{reagentid2}%true%Ready to Mix%{reagent1}%{reagent2}%{rune}%{trait}%");
-           
+
             Core.Sleep();
-           
+
             // This was the Required client packetfor alchemy (due to it not being here before.. and people spent billions of gold[sorry])
             if (Core.CheckInventory("Dragon Runestone"))
                 Core.SendPackets("{\"t\":\"xt\",\"b\":{\"r\":-1,\"o\":{\"bVerified\":true,\"cmd\":\"alchOnStart\"}}}", toClient: true);
-           
+
             Core.Sleep(4000);
-           
+
             if (Core.CheckInventory("Dragon Runestone"))
                 Core.SendPackets(
                     YMB ?
