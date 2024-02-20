@@ -781,30 +781,6 @@ public class CoreDailies
         Core.ToBank(IWLQ.Name);
     }
 
-    public void BallyhooAdRewards()
-    {
-        if (AdCount() >= 3)
-            return;
-
-        Core.Logger($"Obtaining {3 - AdCount()} Ballyhoo Ad Reward{(AdCount() == 1 ? "" : "s")}");
-        while (AdCount() < 3)
-        {
-            int PreGold = Bot.Player.Gold;
-            int PreAC = PlayerAC();
-            Bot.Send.Packet($"%xt%zm%getAdReward%{Bot.Map.RoomID}%");
-            Core.Sleep();
-            Bot.Send.Packet($"%xt%zm%getAdData%{Bot.Map.RoomID}%");
-            Core.Sleep(1000);
-            if (Bot.Player.Gold != PreGold)
-                Core.Logger($"You received {Bot.Player.Gold - PreGold} Gold");
-            else if (PlayerAC() != PreAC)
-                Core.Logger($"You received {PlayerAC() - PreAC} AC!", messageBox: true);
-        }
-
-        int PlayerAC() => Bot.Flash.GetGameObject<int>("world.myAvatar.objData.intCoins");
-        int AdCount() => Bot.Flash.GetGameObject<int>("world.myAvatar.objData.iDailyAds");
-    }
-
     public void PowerGem()
     {
         if (!Bot.Flash.CallGameFunction<bool>("world.myAvatar.isEmailVerified"))
