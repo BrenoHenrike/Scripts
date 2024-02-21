@@ -741,7 +741,7 @@ public class CoreNation
                 );
 
         if (returnPolicyDuringSupplies)
-            Core.ResetQuest(7551);
+            Core.EnsureAccept(7551);
 
         Core.EquipClass(ClassType.Solo);
         if (item == null)
