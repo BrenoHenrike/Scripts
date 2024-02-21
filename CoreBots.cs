@@ -3657,7 +3657,6 @@ public class CoreBots
             case "dagepvp":
             case "deathpitbrawl":
             // Room Limit: 1
-            case "baconcat":
             case "baconcatb":
             case "caroling":
             case "chaosbattle":
@@ -3687,6 +3686,19 @@ public class CoreBots
                 tryJoin();
                 break;
             #endregion
+
+            #region baconcat.. is annoying
+            case "baconcat":
+                JumpWait();
+                map = strippedMap + "-999999";
+                if (!isCompletedBefore(5087))
+                    cell = "Enter";
+                if (!isCompletedBefore(5089))
+                    cell = "Enter2";
+                else cell = "Enter3";
+                tryJoin();
+                break;
+            #endregion baconcat.. is annoying
 
             #region Maps that cant be private and you must do yourself. (thanks AE)
             case "fearhouse":

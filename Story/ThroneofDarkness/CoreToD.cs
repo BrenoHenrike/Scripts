@@ -419,7 +419,13 @@ public class CoreToD
         Story.KillQuest(5089, "baconcat", "Yulgar Regular");
 
         // Forget the Mess
-        Story.KillQuest(5090, "baconcat", "Slime");
+        // Story.KillQuest(5090, "baconcat", "Slime");
+        if (!Story.QuestProgression(5090))
+        {
+            Core.EnsureAccept(5090);
+            Core.KillMonster("baconcat", "Enter3", "Spawn", "Slime", "Monster Defeated", 8);
+            Core.EnsureComplete(5090);
+        }
 
         // The Chosen One!
         Story.MapItemQuest(5091, "baconcat", 4473, 1);
