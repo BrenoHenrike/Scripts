@@ -2212,6 +2212,35 @@ public class CoreNation
         VoidKightSwordQuest(member ? "Voucher of Nulgath" : "Voucher of Nulgath (non-mem)");
         Supplies(member ? "Voucher of Nulgath" : "Voucher of Nulgath (non-mem)", KeepVoucher: KeepVoucher);
     }
+
+    /// <summary>
+    /// Farms Tainted Gems using Dreadrock Gem Exchange quest.
+    /// </summary>
+    /// <param name="quant">The quantity of Tainted Gems to farm.</param>
+    public void DreadrockGemExchange(int quant = 1000)
+    {
+        if (Core.CheckInventory("Tainted Gem", quant))
+            return;
+
+        if (!Core.CheckInventory("Unidentified 13"))
+        {
+            Core.FarmingLogger("Unidentified 13");
+            FarmUni13(1);
+        }
+
+        Core.AddDrop("Tainted Gem");
+
+        Core.EquipClass(ClassType.Farm);
+
+        Core.FarmingLogger("Tainted Gem", quant);
+
+        Core.RegisterQuests(4853);
+        while (!Bot.ShouldExit && !Core.CheckInventory("Tainted Gem", quant))
+        {
+            Core.KillMonster("dreadrock", "r3", "Bottom", "*", log: false);
+        }
+        Core.CancelRegisteredQuests();
+    }
 }
 
 public enum ChooseReward
