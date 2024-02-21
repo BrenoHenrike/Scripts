@@ -2461,7 +2461,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 94656,
+    "size": 95504,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -2564,6 +2564,25 @@
     "size": 1555,
     "fileName": "EmpoweringItems.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/EmpoweringItems.cs"
+  },
+  {
+    "name": "Dreadrock Gem Exchange (Tainted Gem Quest)",
+    "description": "This script will farm Tainted Gems using \"Dreadrock Gem Exhange\" quest.",
+    "tags": [
+      "tainted gem",
+      "dreadrock",
+      "dread rock",
+      "tainted",
+      "exchange",
+      "enntropy",
+      "shattered",
+      "polished",
+      "crystal"
+    ],
+    "path": "Nation/DreadrockGemExchange.cs",
+    "size": 654,
+    "fileName": "DreadrockGemExchange.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/DreadrockGemExchange.cs"
   },
   {
     "name": "KisstheVoid",
