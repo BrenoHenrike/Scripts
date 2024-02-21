@@ -234,7 +234,7 @@ public class CoreDailies
         Core.HuntMonster("stalagbite", "Balboa", "Axe of the Prospector", isTemp: false);
         Core.HuntMonster("stalagbite", "Balboa", "Raw Ore", 30);
 
-        Core.JumpWait();
+        Core.Jump("r2");
 
         foreach (string metal in metals)
         {
@@ -245,7 +245,7 @@ public class CoreDailies
                 Core.EnsureComplete(2091, metalID);
                 Bot.Wait.ForPickup(metal);
             }
-            if (ToBank && Core.CheckInventory(metal))
+            if (ToBank && Core.CheckInventory(metal, toInv: false))
                 Core.ToBank(metals);
         }
 
