@@ -27,8 +27,8 @@ public class PotionBuyer
         //Tonic
         new Option<bool>("farmFate", "Fate", "Should the bot farm Fate Tonics?", false),
         new Option<bool>("farmSage", "Sage", "Should the bot farm Sage Tonics?", false),
-        new Option<bool>("farmMight", "Might", "Should the bot farm Might Tonics?", false),
-
+        new Option<bool>("FarmMalic", "Might", "Should the bot farm Might Tonics?", false),
+        new Option<bool>("FarmMight", "Might", "Should the bot farm Might Tonics?", false),
         //Elixer
         new Option<bool>("farmBattle", "Battle", "Should the bot farm Battle Elixirs?", false),
         new Option<bool>("farmMalevolence", "Malevolence", "Should the bot farm Malevolence Elixirs?", false),
@@ -37,6 +37,7 @@ public class PotionBuyer
         new Option<bool>("farmDestruction", "Destruction", "Should the bot farm Potent Destruction Elixir?", false),
 
         //Potion
+        new Option<bool>("FarmMalic", "Malic", "Should the bot farm Malic Potions?", false),
         new Option<bool>("farmHonor", "Honor", "Should the bot farm Honor Potions?", false),
         new Option<bool>("farmBody", "Body", "Should the bot farm Body Tonics?", false),
         new Option<bool>("farmSoul", "Soul", "Should the bot farm Soul Potions?", false),
@@ -86,7 +87,7 @@ public class PotionBuyer
             Bot.Config!.Get<bool>("farmBody"),           Bot.Config!.Get<bool>("FarmSoul"),           Bot.Config!.Get<bool>("UnstableBattle"),
             Bot.Config!.Get<bool>("UnstableBody"),       Bot.Config!.Get<bool>("UnstableFate"),       Bot.Config!.Get<bool>("UnstableKeen"),
             Bot.Config!.Get<bool>("UnstableMastery"),    Bot.Config!.Get<bool>("UnstableMight"),      Bot.Config!.Get<bool>("UnstableVelocity"),
-            Bot.Config!.Get<bool>("UnstableWise"),       Bot.Config!.Get<bool>("farmMight") };
+            Bot.Config!.Get<bool>("UnstableWise"),       Bot.Config!.Get<bool>("farmMight"),          Bot.Config!.Get<bool>("FarmMalic") };
 
         if (!potionsFarm.Any(x => x) || potionQuant < 1 || potionQuant > 300)
         {
@@ -119,6 +120,7 @@ public class PotionBuyer
                     break;
 
                 case "Potent Honor Potion":
+                case "Potent Malice Potion":
                     currTrait = CoreFarms.AlchemyTraits.Dam;
                     BulkGrind("Chaoroot", "Chaos Entity");
                     break;
