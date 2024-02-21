@@ -10,7 +10,6 @@ using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Models.Monsters;
 using Skua.Core.Models.Quests;
-using Skua.Core.Models.Shops;
 
 public class CoreNation
 {
