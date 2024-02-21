@@ -783,10 +783,13 @@ public class CoreNation
                                 decimal calculatedAmount = Bot.Player.Gold / 100000M;
                                 int quantityToBuy = (int)calculatedAmount;
 
+                                quantityToBuy = Math.Min(quantityToBuy, 250);
+
                                 Core.EnsureAccept(2859);
                                 Core.BuyItem("yulgar", 41, "War-Torn Memorabilia", quantityToBuy);
                                 Core.EnsureCompleteMulti(2859);
                             }
+
                         }
                         if (returnPolicyDuringSupplies && Core.CheckInventory(new[] { Uni(1), Uni(6), Uni(9), Uni(16), Uni(20) }))
                         {
@@ -1225,10 +1228,13 @@ public class CoreNation
                     decimal calculatedAmount = Bot.Player.Gold / 100000M;
                     int quantityToBuy = (int)calculatedAmount;
 
+                    quantityToBuy = Math.Min(quantityToBuy, 250);
+
                     Core.EnsureAccept(2859);
                     Core.BuyItem("yulgar", 41, "War-Torn Memorabilia", quantityToBuy);
                     Core.EnsureCompleteMulti(2859);
                 }
+
             }
 
             if (returnPolicyDuringSupplies && Core.CheckInventory(new[] { Uni(1), Uni(6), Uni(9), Uni(16), Uni(20) }))
