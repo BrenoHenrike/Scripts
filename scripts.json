@@ -220,7 +220,7 @@
       "ravenous"
     ],
     "path": "Enhancement/UnlockForgeEnhancements.cs",
-    "size": 41155,
+    "size": 41149,
     "fileName": "UnlockForgeEnhancements.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Enhancement/UnlockForgeEnhancements.cs"
   },
@@ -2461,7 +2461,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 94655,
+    "size": 94654,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
