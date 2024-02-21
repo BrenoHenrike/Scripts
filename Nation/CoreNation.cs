@@ -10,6 +10,7 @@ using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Models.Monsters;
 using Skua.Core.Models.Quests;
+using Skua.Core.Models.Shops;
 
 public class CoreNation
 {
@@ -716,9 +717,12 @@ public class CoreNation
         bool sellMemVoucher = Core.CBOBool("Nation_SellMemVoucher", out bool _sellMemVoucher) && _sellMemVoucher;
         bool returnPolicyDuringSupplies = Core.CBOBool("Nation_ReturnPolicyDuringSupplies", out bool _returnSupplies) && _returnSupplies;
 
-        Core.RegisterQuests(Core.CheckInventory("Swindle Bilk's To Go Hut") ? new[] { 2857, 9542 } : new[] { 2857 });
-        if (item != Uni(13) && Core.CheckInventory("Drudgen the Assistant"))
-            Core.RegisterQuests(870);
+        Core.RegisterQuests(item != Uni(13) && Core.CheckInventory("Swindle Bilk's To Go Hut")
+                            ? (Core.CheckInventory("Drudgen the Assistant")
+                                ? new[] { 870, 2857, 9542 }
+                                : new[] { 2857, 9542 })
+                            : new[] { 2857 });
+
 
         Core.AddDrop(
                     (item != null ? new[] { item } : Enumerable.Empty<string>())
@@ -748,16 +752,15 @@ public class CoreNation
                 ItemBase? Item = rewards.Find(x => x.Name == Thing);
 
 
-                if (Core.CheckInventory(CragName))
+                if (!Core.CheckInventory(CragName))
                     BambloozevsDrudgen(Item!.Name, Item.MaxStack);
                 else
-                {    // Find the corresponding item in quest rewards
-
+                {
                     while (!Bot.ShouldExit && Item != null && !Core.CheckInventory(Item.Name, Item.MaxStack))
                     {
                         if (UltraAlteon)
                             Core.KillMonster("ultraalteon", "r10", "Left", "Ultra Alteon", log: false);
-                        else 
+                        else
                             Core.KillEscherion(Item.Name, Item.MaxStack, log: false);
 
                         if (item != "Voucher of Nulgath" && _sellMemVoucher && Core.CheckInventory("Voucher of Nulgath"))
@@ -773,6 +776,18 @@ public class CoreNation
                             Bot.Wait.ForPickup("Voucher of Nulgath");
                             Core.SellItem("Voucher of Nulgath", KeepVoucher ? 1 : 0, !KeepVoucher);
                             Bot.Wait.ForItemSell();
+
+                            if (Bot.Player.Gold >= 1000000)
+                            {
+                                Core.JumpWait();
+
+                                decimal calculatedAmount = Bot.Player.Gold / 100000M;
+                                int quantityToBuy = (int)calculatedAmount;
+
+                                Core.EnsureAccept(2859);
+                                Core.BuyItem("yulgar", 41, "War-Torn Memorabilia", quantityToBuy);
+                                Core.EnsureCompleteMulti(2859);
+                            }
                         }
                         if (returnPolicyDuringSupplies && Core.CheckInventory(new[] { Uni(1), Uni(6), Uni(9), Uni(16), Uni(20) }))
                         {
@@ -1203,6 +1218,18 @@ public class CoreNation
                 Bot.Drops.Pickup("Voucher of Nulgath");
                 Core.SellItem("Voucher of Nulgath", KeepVoucher ? 1 : 0, !KeepVoucher);
                 Bot.Wait.ForItemSell();
+
+                if (Bot.Player.Gold >= 1000000)
+                {
+                    Core.JumpWait();
+
+                    decimal calculatedAmount = Bot.Player.Gold / 100000M;
+                    int quantityToBuy = (int)calculatedAmount;
+
+                    Core.EnsureAccept(2859);
+                    Core.BuyItem("yulgar", 41, "War-Torn Memorabilia", quantityToBuy);
+                    Core.EnsureCompleteMulti(2859);
+                }
             }
 
             if (returnPolicyDuringSupplies && Core.CheckInventory(new[] { Uni(1), Uni(6), Uni(9), Uni(16), Uni(20) }))

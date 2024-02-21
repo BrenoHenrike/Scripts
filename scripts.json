@@ -50,7 +50,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 118720,
+    "size": 118458,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -2461,7 +2461,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 93577,
+    "size": 94655,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
