@@ -266,7 +266,8 @@ public class CoreDailies
     {
         if (!Core.IsMember || !Core.isCompletedBefore(2090))
             return;
-        metals = HardCoreMetalsMetalsArray ?? Array.Empty<string>();
+
+        metals ??= HardCoreMetalsMetalsArray;
 
         Core.Logger($"Daily: Hard Core Metals ({string.Join('/', metals)})");
         if (Core.CheckInventory(metals, quant, toInv: false))
@@ -295,7 +296,7 @@ public class CoreDailies
                 Core.EnsureComplete(2098, metalID);
                 Bot.Wait.ForPickup(metal);
             }
-            if (ToBank && Core.CheckInventory(metal))
+            if (ToBank && Core.CheckInventory(metal, toInv: false))
                 Core.ToBank(metals);
         }
         if (Bot.Quests.IsInProgress(2098))
