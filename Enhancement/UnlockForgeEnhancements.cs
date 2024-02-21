@@ -533,7 +533,7 @@ public class UnlockForgeEnhancements
         if (Core.isCompletedBefore(8742))
             return;
 
-        Core.Logger("Unlocking Enhancement: Arcana's Concerto (WIP)");
+        Core.Logger("Unlocking Enhancement: Arcana's Concerto");
 
         Astravia.CompleteCoreAstravia();
         Farm.Experience(100);
