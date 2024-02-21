@@ -752,7 +752,7 @@ public class CoreNation
                 ItemBase? Item = rewards.Find(x => x.Name == Thing);
 
 
-                if (!Core.CheckInventory(CragName))
+                if (Core.CheckInventory(CragName))
                     BambloozevsDrudgen(Item!.Name, Item.MaxStack);
                 else
                 {
