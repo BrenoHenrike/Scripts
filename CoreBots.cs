@@ -3229,6 +3229,7 @@ public class CoreBots
         while (!Bot.ShouldExit && Bot.Player.Cell != cell)
         {
             Bot.Map.Jump(cell, pad, false);
+            Bot.Wait.ForTrue(() => Bot.Player.Cell == cell, 20);
             Sleep();
 
             if (Bot.Player.Cell == cell)
@@ -3275,7 +3276,10 @@ public class CoreBots
         if (lastMapJW != Bot.Map.Name || lastCellPadJW != cellPad)
         {
             for (int i = 0; i < jumpCount; i++)
+            {
                 Jump(cellPad!.Item1, cellPad.Item2, true);
+                Bot.Wait.ForTrue(() => Bot.Player.Cell == cellPad!.Item1, 20);
+            }
 
             lastMapJW = Bot.Map.Name;
             lastCellPadJW = cellPad!;
@@ -3791,7 +3795,7 @@ public class CoreBots
                 Bot.Wait.ForMapLoad(strippedMap);
 
                 // Exponential Backoff
-                Sleep(Math.Max(1, 100 * rnd.Next((int)(Math.Pow(2, i / 2.0)))));
+                Sleep(Math.Max(1, 100 * rnd.Next((int)Math.Pow(2, i / 2.0))));
 
                 string? currentMap = Bot.Map.Name;
                 if (!String.IsNullOrEmpty(currentMap) && currentMap.ToLower() == strippedMap)
