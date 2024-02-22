@@ -452,11 +452,11 @@ public class CoreToD
         // Ghost Busting
         if (!Story.QuestProgression(5098))
         {
+            Core.EnsureAccept(5098);
             Core.Join("baconcat", "r11a", "Left");
             Core.Logger("Cutscene may have appeared... `Hunt` wil resume soon, please be patient.");
             Bot.Wait.ForCellChange("Cut1");
             Core.Sleep(2500);
-            Core.EnsureAccept(5098);
             Core.HuntMonsterMapID("baconcat", 41, "Oopy Defeated");
             Core.HuntMonsterMapID("baconcat", 40, "Bloopy Defeated");
             Core.HuntMonsterMapID("baconcat", 42, "Hoopy Defeated");
