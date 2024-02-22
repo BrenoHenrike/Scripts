@@ -562,8 +562,17 @@ public class CoreToD
         }
 
         // Bacon Cat Force Needs YOU!
-        Story.KillQuest(5119, "baconcatlair", new[] { "Cloud Shark", "Ice Cream Shark", "Sketchy Shark", "8-bit Shark", "Cat Clothed Shark" });
-
+        if (!Story.QuestProgression(5119))
+        {
+            Core.EnsureAccept(5119);
+            Core.HuntMonster("baconcatlair", "Cloud Shark", "Cloud Shark Farts", 3);
+            Core.HuntMonster("baconcatlair", "Ice Cream Shark", "Shark Sprinkles", 3);
+            Core.HuntMonster("baconcatlair", "Sketchy Shark", "College-Ruled Paper", 3);
+            Core.HuntMonster("baconcatlair", "8-bit Shark", "Great White DLC", 3);
+            Core.HuntMonster("baconcatlair", "Cat Clothed Shark", "Kittarian Costumes", 3);
+            Core.EnsureComplete(5119);
+        }
+        
         // Ziri Is Also Tough
         Story.KillQuest(5120, "baconcatlair", "Cloud Shark");
 
