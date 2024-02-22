@@ -13261,13 +13261,20 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/EtherstormEvilMerge.cs"
   },
   {
-    "name": "BloodTitanMerge[mem]",
-    "description": "null",
+    "name": "Blood Titan Merge [Mem]",
+    "description": "This bot will farm the items belonging to the selected mode for the Blood Titan Merge [617] in /classhalla",
     "tags": [
-      "null"
+      "blood",
+      "titan",
+      "merge",
+      "classhalla",
+      "horns",
+      "titans",
+      "gilded",
+      "crusher"
     ],
     "path": "Other/MergeShops/BloodTitanMerge[mem].cs",
-    "size": 3005,
+    "size": 4234,
     "fileName": "BloodTitanMerge[mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/BloodTitanMerge[mem].cs"
   },
@@ -21642,7 +21649,7 @@
       "class"
     ],
     "path": "Other/Classes/Members-CLasses/BloodTitan[Mem].cs",
-    "size": 1943,
+    "size": 979,
     "fileName": "BloodTitan[Mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/Members-CLasses/BloodTitan[Mem].cs"
   },
