@@ -64,13 +64,15 @@ public class BloodTitanMerge
                     Core.FarmingLogger(req.Name, quant);
                     Core.AddDrop(Core.EnsureLoad(9253).Requirements.Select(item => item.Name).Concat(Core.EnsureLoad(2908).Requirements.Select(item => item.Name)).ToArray());
                     Core.EquipClass(ClassType.Solo);
-                    Core.RegisterQuests(9253, 2908);
+                    Core.RegisterQuests(9253);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
+                        Core.EnsureAccept(2908);
                         Core.HuntMonster("bloodtitan", "Blood Titan", "Blood Titan's Phial", 1, false, false);
                         Core.HuntMonster("titandrakath", "Titan Drakath", "Titanic Drakath's Blood", 1, false, false);
                         Core.HuntMonster("desoloth", "Desoloth", "Desoloth's Blood", 1, false, false);
                         Core.HuntMonster("ultracarnax", "Ultra-Carnax", "Ultra Carnax's Blood", 1, false, false);
+                        Core.EnsureComplete(2908);
                         Bot.Wait.ForPickup("Blood Titan's Tribute");
                         Core.HuntMonster("bloodtitan", "Ultra Blood Titan", "Ultra Blood Titan Defeated", 1, false, false);
                         Bot.Wait.ForPickup(req.Name);
