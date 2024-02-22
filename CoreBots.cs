@@ -3697,6 +3697,7 @@ public class CoreBots
                     cell = "Enter2";
                 else cell = "Enter3";
                 tryJoin();
+                Bot.Wait.ForCellChange(cell);
                 break;
             #endregion baconcat.. is annoying
 
