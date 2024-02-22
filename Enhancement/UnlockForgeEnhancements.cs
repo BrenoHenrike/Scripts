@@ -1063,8 +1063,8 @@ public class UnlockForgeEnhancements
         {
             Core.EnsureAccept(5710);
             if (Core.IsMember)
-                Core.HuntMonster("darkfortress", "Dark Elemental", "Dark Gem", isTemp: false);
-            else Core.HuntMonster("ruins", "Dark Elemental", "Dark Gem", isTemp: false);
+                Core.HuntMonster("ruins", "Dark Elemental", "Dark Gem", isTemp: false);
+            else Core.HuntMonster("darkfortress", "Dark Elemental", "Dark Gem", isTemp: false);
             Core.EnsureComplete(5710);
             Bot.Wait.ForPickup(Reward.ID);
         }
