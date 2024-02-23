@@ -157,20 +157,28 @@ public class CoreNSOD
                 Bot.Options.AggroAllMonsters = false;  // Disable aggro all monsters (breaks stuff)
 
             // Disable aggro, Jump and wait, wait for combat exit, equip FarmClass
-            Core.Logger("Switching to FarmClass with aggro off");
-            Bot.Options.AggroMonsters = false;
-
+            if (Bot.Map.PlayerCount > 1)
+            {
+                Core.Logger("Switching to FarmClass with aggro off");
+                Bot.Options.AggroMonsters = false;
+            }
+            
             Core.EquipClass(ClassType.Farm);
 
             // Farm mob 1 for essence with aggro on
-            Core.Logger("Switching aggro on for mob 1");
-            Bot.Options.AggroMonsters = true;
+            if (Bot.Map.PlayerCount > 1)
+            {
+                Core.Logger("Switching aggro on for mob 1");
+                Bot.Options.AggroMonsters = true;
+            }
             Core.KillMonster("shadowrealmpast", "Enter", "Spawn", "*", "Empowered Essence", 50, false, log: false);
 
             // Disable aggro, Jump and wait, wait for combat exit, equip SoloClass
-            Core.Logger("Switching to SoloClass with aggro off");
-            Bot.Options.AggroMonsters = false;  // Set aggro off for mob 2
-
+            if (Bot.Map.PlayerCount > 1)
+            {
+                Core.Logger("Switching to SoloClass with aggro off");
+                Bot.Options.AggroMonsters = false;  // Set aggro off for mob 2}
+            }
             Core.EquipClass(ClassType.Solo);
 
             // Hunt mob 2 for essence with aggro off
@@ -247,7 +255,7 @@ public class CoreNSOD
         }
     }
 
-     private void HuntMonsterBatch(int quant, bool isTemp, bool publicRoom, bool log, params (string map, string pad, int monster, string essence)[] monsters)
+    private void HuntMonsterBatch(int quant, bool isTemp, bool publicRoom, bool log, params (string map, string pad, int monster, string essence)[] monsters)
     {
         Core.EquipClass(ClassType.Solo);
 
