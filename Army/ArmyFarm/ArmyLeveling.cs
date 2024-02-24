@@ -225,7 +225,7 @@ public class ArmyLeveling
                 CoreDOY.DoAll();
 
                 Core.RegisterQuests(9601, 9602, 9603, 9605, 9606);
-
+                Core.EquipClass(ClassType.Farm);
                 Army.AggroMonCells("r2", "r4", "r5", "r6", "r7", "r9");
                 Army.AggroMonStart("hakuwar");
                 Army.DivideOnCells("r2", "r4", "r5", "r6", "r7", "r9");
