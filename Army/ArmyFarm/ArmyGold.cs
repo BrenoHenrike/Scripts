@@ -274,9 +274,9 @@ public class ArmyGold
 
         Core.RegisterQuests(9601, 9602, 9603, 9605, 9606);
 
-        Army.AggroMonCells("r1", "r2", "r4",  "r5", "r6", "r7");
+        Army.AggroMonCells("r2", "r4", "r5", "r6", "r7", "r9");
         Army.AggroMonStart("hakuwar");
-        Army.DivideOnCells("r1", "r2", "r4",  "r5", "r6", "r7");
+        Army.DivideOnCells("r2", "r4", "r5", "r6", "r7", "r9");
 
         if (Bot.Player.CurrentClass!.Name == "ArchMage")
             Bot.Options.AttackWithoutTarget = true;
