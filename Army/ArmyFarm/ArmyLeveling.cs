@@ -12,6 +12,7 @@ tags: army, icestormarena, icestormunder, icewing, aggro
 //cs_include Scripts/Story/Legion/DarkWarLegionandNation.cs
 //cs_include Scripts/Story/Legion/SevenCircles(War).cs
 //cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
+//cs_include Scripts/Story/DragonsOfYokai/CoreDOY.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
 using Skua.Core.Models.Monsters;
@@ -29,6 +30,7 @@ public class ArmyLeveling
     public SevenCircles SC = new();
     private CoreSoW SoW = new();
     public CoreStory Story = new();
+    private CoreDOY CoreDOY = new();
 
     private static CoreBots sCore = new();
     private static CoreArmyLite sArmy = new();
@@ -58,7 +60,7 @@ public class ArmyLeveling
         Core.SetOptions(false);
     }
 
-    public void Level(int level = 100)
+    public void Level(int level = 101)
     {
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
@@ -219,6 +221,24 @@ public class ArmyLeveling
                 Army.waitForParty("whitemap");
                 break;
 
+            case MethodV2.HakuWar:
+                CoreDOY.DoAll();
+
+                Core.RegisterQuests(9601, 9602, 9603, 9605, 9606);
+
+                Army.AggroMonCells("r1", "r2", "r4", "r5", "r6", "r7");
+                Army.AggroMonStart("hakuwar");
+                Army.DivideOnCells("r1", "r2", "r4", "r5", "r6", "r7");
+
+                if (Bot.Player.CurrentClass!.Name == "ArchMage")
+                    Bot.Options.AttackWithoutTarget = true;
+
+                while (!Bot.ShouldExit && Bot.Player.Level < level)
+                    Bot.Combat.Attack("*");
+                Army.AggroMonStop(true);
+                Farm.ToggleBoost(BoostType.Gold, false);
+                Core.CancelRegisteredQuests();
+                break;
                 //add more cases
 
                 /*
@@ -252,6 +272,7 @@ public class ArmyLeveling
         ShadowBattleon_Baby_Mode = 6,
         ShadowBattleon_Lower_Levels = 7,
         ShadowBattleon_High_Levels = 8,
+        HakuWar = 9
     }
 
 

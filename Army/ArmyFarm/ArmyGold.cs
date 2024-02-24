@@ -12,6 +12,7 @@ tags: army, gold, battle ground e, dark war legion, dark war nation, seven circl
 //cs_include Scripts/Story/Legion/DarkWarLegionandNation.cs
 //cs_include Scripts/Story/Legion/SevenCircles(War).cs
 //cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
+//cs_include Scripts/Story/DragonsOfYokai/CoreDOY.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Models.Quests;
@@ -28,6 +29,7 @@ public class ArmyGold
     private DarkWarLegionandNation DWLN = new();
     public SevenCircles SC = new();
     private CoreSoW SoW = new();
+    private CoreDOY CoreDOY = new();
 
     private static CoreBots sCore = new();
     private static CoreArmyLite sArmy = new();
@@ -69,19 +71,33 @@ public class ArmyGold
         Farm.ToggleBoost(BoostType.Gold);
         Bot.Lite.ReacceptQuest = true;
 
-        if (((int)mapname == 0) || ((int)mapname == 1))
-            BGE(Bot.Config!.Get<Method>("mapname"));
-        else if ((int)mapname == 2)
-            DWL();
-        else if (((int)mapname == 3))
-            DWN();
-        else if ((int)mapname == 4)
-            SCW();
-        else if ((int)mapname == 5)
-            StreamWar();
-        else
-            foreach (int mapName in new[] { 6, 7, 8 })
+        switch ((int)mapname)
+        {
+            case 0:
+            case 1:
+                BGE(Bot.Config!.Get<Method>("mapname"));
+                break;
+            case 2:
+                DWL();
+                break;
+            case 3:
+                DWN();
+                break;
+            case 4:
+                SCW();
+                break;
+            case 5:
+                StreamWar();
+                break;
+            case 6:
+            case 7:
+            case 8:
                 ShadowBattleon();
+                break;
+            case 9:
+                HakuWar();
+                break;
+        }
 
         Bot.Lite.ReacceptQuest = false;
     }
@@ -104,12 +120,11 @@ public class ArmyGold
         if (Bot.Player.CurrentClass!.Name == "ArchMage")
             Bot.Options.AttackWithoutTarget = true;
 
-        while (!Bot.ShouldExit && Bot.Player.Gold < 100000000)
+        while (!Bot.ShouldExit && Bot.Player.Gold < 999999999)
             Bot.Combat.Attack("*");
         Army.AggroMonStop(true);
         Farm.ToggleBoost(BoostType.Gold, false);
         Core.CancelRegisteredQuests();
-        Army.waitForParty("whitemap");
     }
 
     public void DWL()
@@ -129,12 +144,11 @@ public class ArmyGold
         if (Bot.Player.CurrentClass!.Name == "ArchMage")
             Bot.Options.AttackWithoutTarget = true;
 
-        while (!Bot.ShouldExit && Bot.Player.Gold < 100000000)
+        while (!Bot.ShouldExit && Bot.Player.Gold < 999999999)
             Bot.Combat.Attack("*");
         Army.AggroMonStop(true);
         Farm.ToggleBoost(BoostType.Gold, false);
         Core.CancelRegisteredQuests();
-        Army.waitForParty("whitemap");
     }
 
     public void DWN()
@@ -151,12 +165,11 @@ public class ArmyGold
             Bot.Options.AttackWithoutTarget = true;
 
         // Army.SmartAggroMonStart("darkwarnation", "High Legion Inquisitor", "Legion Doomknight", "Legion Dread Knight");
-        while (!Bot.ShouldExit && Bot.Player.Gold < 100000000)
+        while (!Bot.ShouldExit && Bot.Player.Gold < 999999999)
             Bot.Combat.Attack("*");
         Army.AggroMonStop(true);
         Farm.ToggleBoost(BoostType.Gold, false);
         Core.CancelRegisteredQuests();
-        Army.waitForParty("whitemap");
     }
 
     public void SCW()
@@ -173,12 +186,11 @@ public class ArmyGold
             Bot.Options.AttackWithoutTarget = true;
 
         // Army.SmartAggroMonStart("sevencircleswar", "Wrath Guard", "Heresy Guard", "Violence Guard", "Treachery Guard");
-        while (!Bot.ShouldExit && Bot.Player.Gold < 100000000)
+        while (!Bot.ShouldExit && Bot.Player.Gold < 999999999)
             Bot.Combat.Attack("*");
         Army.AggroMonStop(true);
         Farm.ToggleBoost(BoostType.Gold, false);
         Core.CancelRegisteredQuests();
-        Army.waitForParty("whitemap");
     }
 
     public void StreamWar()
@@ -196,16 +208,14 @@ public class ArmyGold
         if (Bot.Player.CurrentClass!.Name == "ArchMage")
             Bot.Options.AttackWithoutTarget = true;
 
-        while (!Bot.ShouldExit && Bot.Player.Gold < 100000000)
+        while (!Bot.ShouldExit && Bot.Player.Gold < 999999999)
             Bot.Combat.Attack("*");
         Army.AggroMonStop(true);
         Farm.ToggleBoost(BoostType.Gold, false);
         Core.CancelRegisteredQuests();
 
         Core.ToBank("Prismatic Seams");
-        Army.waitForParty("whitemap");
     }
-
 
     public void ShadowBattleon()
     {
@@ -247,7 +257,7 @@ public class ArmyGold
         if (Bot.Player.CurrentClass!.Name == "ArchMage")
             Bot.Options.AttackWithoutTarget = true;
 
-        while (!Bot.ShouldExit && Bot.Player.Gold < 100000000)
+        while (!Bot.ShouldExit && Bot.Player.Gold < 999999999)
             Bot.Combat.Attack("*");
 
         Bot.Options.AttackWithoutTarget = false;
@@ -255,7 +265,27 @@ public class ArmyGold
         Core.CancelRegisteredQuests();
         Farm.ToggleBoost(BoostType.Gold, false);
         Core.JumpWait();
-        Army.waitForParty("whitemap");
+    }
+
+    public void HakuWar()
+    {
+        Core.PrivateRooms = true;
+        Core.PrivateRoomNumber = Army.getRoomNr();
+
+        Core.RegisterQuests(9601, 9602, 9603, 9605, 9606);
+
+        Army.AggroMonCells("r1", "r2", "r4",  "r5", "r6", "r7");
+        Army.AggroMonStart("hakuwar");
+        Army.DivideOnCells("r1", "r2", "r4",  "r5", "r6", "r7");
+
+        if (Bot.Player.CurrentClass!.Name == "ArchMage")
+            Bot.Options.AttackWithoutTarget = true;
+
+        while (!Bot.ShouldExit && Bot.Player.Gold < 999999999)
+            Bot.Combat.Attack("*");
+        Army.AggroMonStop(true);
+        Farm.ToggleBoost(BoostType.Gold, false);
+        Core.CancelRegisteredQuests();
     }
 
     void RequiredQuest(string map, int Quest)
@@ -288,12 +318,17 @@ public class ArmyGold
                 Core.Logger($"{QuestData.Name} [ {QuestData.ID}] Unlocked! Onto the gains.");
                 break;
 
+            case "hakuwar":
+                CoreDOY.DoAll();
+                break;
+
             case "Default":
                 //Example Case
                 break;
         }
         Core.JumpWait();
     }
+
 
     public enum Method
     {
@@ -305,7 +340,8 @@ public class ArmyGold
         StreamWar = 5,
         ShadowBattleon_Baby_Mode = 6,
         ShadowBattleon_Lower_Levels = 7,
-        ShadowBattleon_High_Levels = 8
+        ShadowBattleon_High_Levels = 8,
+        Haku_War = 9
 
     }
 }
