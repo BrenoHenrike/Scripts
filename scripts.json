@@ -10734,6 +10734,26 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/DragonsOfYokai/03HakuVillage.cs"
   },
   {
+    "name": "Haku War",
+    "description": "This script will complete \"Haku War\" storyline.",
+    "tags": [
+      "story",
+      "quest",
+      "saga",
+      "dragons",
+      "dragon",
+      "haku",
+      "war",
+      "hakuwar",
+      "complete",
+      "all"
+    ],
+    "path": "Story/DragonsOfYokai/04HakuWar.cs",
+    "size": 613,
+    "fileName": "04HakuWar.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/DragonsOfYokai/04HakuWar.cs"
+  },
+  {
     "name": "Yokai Treasure",
     "description": "This script will complete \"Yokai Treasure\" storyline.",
     "tags": [
@@ -10766,11 +10786,12 @@
       "village",
       "pirate",
       "treasure",
+      "war",
       "complete",
       "all"
     ],
     "path": "Story/DragonsOfYokai/00DoAll.cs",
-    "size": 653,
+    "size": 657,
     "fileName": "00DoAll.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/DragonsOfYokai/00DoAll.cs"
   },
@@ -10781,7 +10802,7 @@
       "null"
     ],
     "path": "Story/DragonsOfYokai/CoreDOY.cs",
-    "size": 5342,
+    "size": 6220,
     "fileName": "CoreDOY.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/DragonsOfYokai/CoreDOY.cs"
   },
