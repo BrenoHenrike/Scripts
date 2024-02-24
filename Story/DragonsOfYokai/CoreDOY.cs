@@ -23,6 +23,7 @@ public class CoreDOY
         YokaiPirate();
         YokaiTreasure();
         HakuVillage();
+        HakuWar();
     }
 
     public void YokaiPirate()
@@ -179,6 +180,40 @@ public class CoreDOY
         // Divine Derision (9599)
         Core.EquipClass(ClassType.Solo);
         Story.KillQuest(9599, "hakuvillage", "Dai Tengu");
+    }
+
+    public void HakuWar()
+    {
+        if (Core.isCompletedBefore(9607))
+            return;
+
+        HakuVillage();
+
+        Story.PreLoad(this);
+
+        Core.EquipClass(ClassType.Farm);
+
+        // Haku Medal (9601)
+        Story.KillQuest(9601, "hakuwar", "Dark Zmey");
+
+        // Tall Tails (9603)
+        Story.KillQuest(9603, "hakuwar", "Kitsune Spy");
+
+        // Flightless (9604)
+        Story.KillQuest(9604, "hakuwar", "Dark Zmey");
+
+        // NorthEast Ushitora (9605)
+        Story.KillQuest(9605, "hakuwar", "Mountain Oni");
+
+        // Zmey Gorynich (9606)
+        Story.KillQuest(9606, "hakuwar", "Zmey Warrior");
+
+        // Head Kukol'nyy (9607)
+        // if (!Core.isCompletedBefore(9607))
+        // {
+        //     Core.EquipClass(ClassType.Solo);
+        //     Story.KillQuest(9607, "hakuwar", "Zakhvatchik");
+        // }
     }
 
 }
