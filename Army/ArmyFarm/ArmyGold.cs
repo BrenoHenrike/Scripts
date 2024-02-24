@@ -269,11 +269,19 @@ public class ArmyGold
 
     public void HakuWar()
     {
+        Quest Quest = Core.EnsureLoad(9601);
+        if (Quest.XP < 6000)
+        {
+            Core.Logger("XP rates have been nerfed, swapping to method: SCW (its better)");
+            SCW();
+        }
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
 
+        CoreDOY.DoAll();
         Core.RegisterQuests(9601, 9602, 9603, 9605, 9606);
 
+        Core.EquipClass(ClassType.Farm);
         Army.AggroMonCells("r2", "r4", "r5", "r6", "r7", "r9");
         Army.AggroMonStart("hakuwar");
         Army.DivideOnCells("r2", "r4", "r5", "r6", "r7", "r9");

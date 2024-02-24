@@ -209,11 +209,11 @@ public class CoreDOY
         Story.KillQuest(9606, "hakuwar", "Zmey Warrior");
 
         // Head Kukol'nyy (9607)
-        // if (!Core.isCompletedBefore(9607))
-        // {
-        //     Core.EquipClass(ClassType.Solo);
-        //     Story.KillQuest(9607, "hakuwar", "Zakhvatchik");
-        // }
+        if (!Core.isCompletedBefore(9607))
+        {
+            Core.EquipClass(ClassType.Solo);
+            Story.KillQuest(9607, "hakuwar", "Zakhvatchik");
+        }
     }
 
 }
