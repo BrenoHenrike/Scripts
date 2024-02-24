@@ -50,6 +50,7 @@ tags: all classes,class,farm,complete,all
 //cs_include Scripts/Other/MergeShops/BloodAncientMerge.cs
 //cs_include Scripts/Other/Classes/Members-CLasses/BloodAncient[Mem].cs
 //cs_include Scripts/Other/Classes/Members-CLasses/BloodTitan[Mem].cs
+//cs_include Scripts/Other/MergeShops/BloodTitanMerge[Mem].cs
 //cs_include Scripts/Other/Classes/Members-CLasses/ChronoAssassin[Mem].cs
 //cs_include Scripts/Other/MergeShops/DeathPitArenaRepMerge.cs
 //cs_include Scripts/Other/Classes/Members-CLasses/DrakelWarlord[Mem].cs
