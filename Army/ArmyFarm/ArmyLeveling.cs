@@ -70,7 +70,6 @@ public class ArmyLeveling
 
         // Get the selected method from the configuration
         MethodV2 selectedMethod = Bot.Config!.Get<MethodV2>("LevelMethod");
-
         // Execute the selected method
         switch (selectedMethod)
         {
@@ -134,6 +133,7 @@ public class ArmyLeveling
                 break;
 
             case MethodV2.SevenCirclesWar:
+            HakuNerfed:
                 SC.CirclesWar(true);
                 Core.EquipClass(ClassType.Farm);
                 Army.waitForParty("whitemap");
@@ -222,6 +222,12 @@ public class ArmyLeveling
                 break;
 
             case MethodV2.HakuWar:
+                Quest Quest = Core.EnsureLoad(9601);
+                if (Quest.XP < 6000)
+                {
+                    Core.Logger("XP rates have been nerfed, swapping to method: SCW (its better)");
+                    goto HakuNerfed;
+                }
                 CoreDOY.DoAll();
 
                 Core.RegisterQuests(9601, 9602, 9603, 9605, 9606);

@@ -269,6 +269,12 @@ public class ArmyGold
 
     public void HakuWar()
     {
+        Quest Quest = Core.EnsureLoad(9601);
+        if (Quest.XP < 6000)
+        {
+            Core.Logger("XP rates have been nerfed, swapping to method: SCW (its better)");
+            SCW();
+        }
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
 
