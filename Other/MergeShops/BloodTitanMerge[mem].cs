@@ -9,7 +9,6 @@ tags: blood, titan, merge, classhalla, horns, titans, gilded, crusher
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
-using System.Linq;
 
 public class BloodTitanMerge
 {
