@@ -59,6 +59,9 @@ tags: all classes,class,farm,complete,all
 //cs_include Scripts/Seasonal/Frostvale/NorthlandsMonk.cs
 //cs_include Scripts/Seasonal/LuckyDay/LuckyDayShamrockFairMerge.cs
 //cs_include Scripts/Seasonal/LuckyDay/EvolvedLeprechaun.cs
+//cs_include Scripts/Seasonal/StaffBirthdays/DageTheEvil/Undervoid.cs
+//cs_include Scripts/Seasonal/StaffBirthdays/DageTheEvil/DarkBirthdayTokenMerge.cs
+//cs_include Scripts/Seasonal/StaffBirthdays/DageTheEvil/ExaltedHarbinger.cs
 //cs_include Scripts/Seasonal/MayThe4th/DarkLord.cs
 //cs_include Scripts/Seasonal/MayThe4th/MurderMoonStory.cs
 //cs_include Scripts/Seasonal/MayThe4th/MurderMoonMerge.cs
@@ -88,9 +91,12 @@ tags: all classes,class,farm,complete,all
 //cs_include Scripts/Other/Classes/DragonslayerGeneral.cs
 //cs_include Scripts/Other/Classes/Enforcer.cs
 //cs_include Scripts/Other/Classes/FrostSpiritReaver.cs
+//cs_include Scripts/Other/Classes/GrimNecromancer[600kAC].cs
 //cs_include Scripts/Other/Classes/HighSeasCommander[10y].cs
 //cs_include Scripts/Other/Classes/LightMage.cs
+//cs_include Scripts/Other/Classes/MechaJouster.cs
 //cs_include Scripts/Other/Classes/Necromancer.cs
+//cs_include Scripts/Other/Classes/ProtoSartorium.cs
 //cs_include Scripts/Other/Classes/ScarletSorceress.cs
 //cs_include Scripts/Other/Classes/Curio-Classes/AbyssalAngelsShadow.cs
 //cs_include Scripts/Chaos/ChaosAvengerPreReqs.cs
@@ -194,6 +200,7 @@ public class AllClasses
     private AlphaPirate APir = new();
     private DarkLord DL = new();
     private EvolvedLeprechaun EL = new();
+    private ExaltedHarbinger EH = new();
     private FrostvalBarbarian FB = new();
     private LegionSwordMasterAssassin LSMA = new();
     private NorthlandsMonk NM = new();
@@ -212,11 +219,14 @@ public class AllClasses
     private Enforcer Enf = new();
     private ExaltedSoulCleaver ESC = new();
     private FrostSpiritReaver FSR = new();
+    private GrimNecromancer GN = new();
     private HighSeasCommander HSC = new();
     private InfiniteLegionDC ILDC = new();
     private LightMage LM = new();
+    private MechaJouster MJ = new();
     private Necromancer Necro = new();
     private NeoMetalNecro NMN = new();
+    private ProtoSartorium PS = new();
     private ScarletSorceress SS = new();
     private SwordMaster SM = new();
     #endregion Various
@@ -347,6 +357,7 @@ public class AllClasses
         APir.GetAlphaPirate(rankUpClass);
         DL.GetDL(rankUpClass);
         EL.GetClass(rankUpClass);
+        EH.GetEH(rankUpClass);
         FB.GetFB(rankUpClass);
         LSMA.GetClass(rankUpClass);
         NM.GetNlMonk(rankUpClass);
@@ -370,11 +381,14 @@ public class AllClasses
         Enf.GetClass(rankUpClass);
         ESC.GetClass(rankUpClass);
         FSR.GetFSR(rankUpClass);
+        GN.GetGN(rankUpClass);
         HSC.GetHSC(rankUpClass);
         ILDC.GetILDC(rankUpClass);
         LM.GetLM(rankUpClass);
+        MJ.GetMJ(rankUpClass);
         Necro.GetNecromancer(rankUpClass);
         NMN.GetClass(rankUpClass);
+        PS.GetPS(rankUpClass);
         SS.GetSSorc(rankUpClass);
         SM.GetSwordMaster(rankUpClass);
 
