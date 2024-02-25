@@ -15461,6 +15461,21 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Armor/AureateAegisSet.cs"
   },
   {
+    "name": "MechaJouster (Class)",
+    "description": "This script will get MechaJouster class.",
+    "tags": [
+      "jouster",
+      "mechajouster",
+      "treasure potion",
+      "class",
+      "mecha jouster"
+    ],
+    "path": "Other/Classes/MechaJouster.cs",
+    "size": 1357,
+    "fileName": "MechaJouster.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/MechaJouster.cs"
+  },
+  {
     "name": "DragonslayerGeneral",
     "description": "null",
     "tags": [
@@ -15493,7 +15508,7 @@
       "all"
     ],
     "path": "Other/Classes/0AllClasses.cs",
-    "size": 15634,
+    "size": 16311,
     "fileName": "0AllClasses.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/0AllClasses.cs"
   },
@@ -15586,6 +15601,22 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/HighSeasCommander[10y].cs"
   },
   {
+    "name": "Grim Necromancer Class (600k AC)",
+    "description": "This script will get Grim Necromancer class which requires 600k ACs badge.",
+    "tags": [
+      "600k",
+      "grimnecromancer",
+      "grim necromancer",
+      "grimtea",
+      "grim tea",
+      "class"
+    ],
+    "path": "Other/Classes/GrimNecromancer[600kAC].cs",
+    "size": 2829,
+    "fileName": "GrimNecromancer[600kAC].cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/GrimNecromancer[600kAC].cs"
+  },
+  {
     "name": "FrostSpiritReaver",
     "description": "null",
     "tags": [
@@ -15655,6 +15686,21 @@
     "size": 1074,
     "fileName": "Dragonslayer.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/Dragonslayer.cs"
+  },
+  {
+    "name": "ProtoSartorium (Class)",
+    "description": "This script will get ProtoSartorium class.",
+    "tags": [
+      "proto sartorium",
+      "protosartorium",
+      "mithril man",
+      "dwakel",
+      "class"
+    ],
+    "path": "Other/Classes/ProtoSartorium.cs",
+    "size": 1134,
+    "fileName": "ProtoSartorium.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/ProtoSartorium.cs"
   },
   {
     "name": "TheWeaponParasite",
@@ -19867,6 +19913,24 @@
     "size": 5069,
     "fileName": "RandsMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/RandsMerge.cs"
+  },
+  {
+    "name": "Exalted Harbinger (Class)",
+    "description": "This script will get Exalted Harbinger class.",
+    "tags": [
+      "exalted",
+      "harbinger",
+      "exaltedharbinger",
+      "seasonal",
+      "dage",
+      "class",
+      "dark birthday token",
+      "darkbirthday"
+    ],
+    "path": "Seasonal/StaffBirthdays/DageTheEvil/ExaltedHarbinger.cs",
+    "size": 1405,
+    "fileName": "ExaltedHarbinger.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/ExaltedHarbinger.cs"
   },
   {
     "name": "Fortress Delve Story",
