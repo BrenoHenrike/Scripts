@@ -32,9 +32,9 @@ public class ExaltedHarbinger
 
     public void GetEH(bool rankUpClass = true)
     {
-        if (Core.CheckInventory("Exalted Harbinger"))
+        if (Core.CheckInventory("Exalted Harbinger") || !Core.isSeasonalMapActive("darkbirthday"))
         {
-            Core.Logger("You already own Exalted Harbinger");
+            Core.Logger("You already own Exalted Harbinger or the map is unavailable.");
 
             if (rankUpClass)
                 Adv.RankUpClass("Exalted Harbinger");
