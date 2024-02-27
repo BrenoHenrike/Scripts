@@ -69,7 +69,7 @@ public class GrimDungeonPreReqs
         if (!Story.QuestProgression(9465))
         {
             J6.J6(true);
-            Adv.BuyItem("hyperspace", 194, "J6 Hammer");
+            Adv.BuyItem("hyperspace", 194, "J6's Hammer");
             Core.EnsureAccept(9465);
             Core.GetMapItem(12329, map: "gaolcell");
             Core.EnsureComplete(9465);

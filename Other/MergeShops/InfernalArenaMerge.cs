@@ -33,7 +33,7 @@ public class InfernalArenaMerge
     {
         Core.BankingBlackList.AddRange(new[] { "Tainted Blade of Na'al", "Champion's Seal", "Tainted Dagger of Na'al",
          "Cervus Dente", "Infernal Krampus' Claw", "Infernal Emblem", "Axe of the Infernal Defiler", "Infernal Incantation",
-          "Scythe Shard", "Duo's Dinner", "Infernal Badge" });
+          "Scythe Shard", "Duo's Dinner", "Infernal Badge", "Scythe of Azalith" });
         Core.SetOptions();
 
         BuyAllMerge();
