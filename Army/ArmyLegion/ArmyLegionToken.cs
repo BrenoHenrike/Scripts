@@ -60,20 +60,42 @@ public class ArmyLegionToken
 
         // Legion.JoinLegion();
 
+        Core.PrivateRooms = true;
+        Core.PrivateRoomNumber = Army.getRoomNr();
 
         switch (Method.ToString())
         {
             case "Dreadrock":
-                Adv.BuyItem("underworld", 216, "Undead Champion");
+                if (Core.CheckInventory("Undead Champion"))
+                    Adv.BuyItem("underworld", 216, "Undead Champion");
 
-                questIDs = new() { 4849 };
-                monNames = new() { "Void Mercenary", "Fallen Hero", "Hollow Wraith", "Shadowknight", "Legion Sentinel" };
-                drops = new() { "Legion Token" };
-                map = "dreadrock";
-                classType = ClassType.Farm;
+                // Core.RegisterQuests(4849);
+                //setup Quest
+                Bot.Lite.ReacceptQuest = true;
+                Core.EnsureAccept(4849);
+
+                Core.EquipClass(ClassType.Farm);
+                Army.AggroMonCells("r3", "r4", "r5", "r6", "r8", "r8a");
+                Army.AggroMonStart("dreadrock");
+                Army.DivideOnCells("r3", "r4", "r5", "r6", "r8", "r8a");
+
+                if (Bot.Player.CurrentClass!.Name == "ArchMage")
+                    Bot.Options.AttackWithoutTarget = true;
 
                 while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
-                    Army.RunGeneratedAggroMon(map, monNames, questIDs, classType, drops);
+                {
+                    foreach (Monster Mob in Bot.Monsters.CurrentAvailableMonsters)
+                    {
+                        while (!Bot.ShouldExit && Core.IsMonsterAlive(Mob.MapID, true))
+                        {
+                            Bot.Combat.Attack(Mob.MapID);
+                            if (Bot.Quests.CanComplete(4849))
+                                Bot.Quests.Complete(4849);
+                        }
+                    }
+                }
+                Army.AggroMonStop(true);
+                Core.CancelRegisteredQuests();
                 break;
 
             case "Shogun_Paragon_Pet":
