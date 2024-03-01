@@ -62,11 +62,6 @@ public class AssistingCragAndBamboozle
         ? r.Quantity < r.MaxStack
         : r.ID == (int)reward);
 
-        if (!Core.CheckInventory("Sparrow's Blood") && !Daily.CheckDaily(803, true, true, "Sparrow's Blood"))
-        {
-            Core.Logger("This bot requires you to have at least 1 Sparrow's Blood OR to have not done the Sparrow's Blood Daily yet");
-            return;
-        }
 
         Core.AddDrop("Nulgath Larvae",
                      "Sword of Nulgath", "Gem of Nulgath", "Tainted Gem", "Dark Crystal Shard", "Diamond of Nulgath",
@@ -82,8 +77,10 @@ public class AssistingCragAndBamboozle
             if (!Core.CheckInventory("Tendurrr The Assistant"))
                 Core.KillMonster("tercessuinotlim", "m2", "Left", "*", "Tendurrr The Assistant", isTemp: false);
 
+            Daily.SparrowsBlood();
             if (!Core.CheckInventory("Sparrow's Blood"))
-                Daily.SparrowsBlood();
+                Core.Logger("This bot requires you to have at least 1 Sparrow's Blood", stopBot: true);
+
             Nation.EssenceofNulgath(20);
             Nation.ApprovalAndFavor(100, 100);
 
