@@ -70,7 +70,7 @@ public class AstraviaJudgeMerge
                     break;
 
                 case "Re's Party Attire":
-                    Core.HuntMonster("astraviajudgement", "La", req.Name, quant);
+                    Core.HuntMonster("astraviajudge", "La", req.Name, quant);
                     break;
             }
         }
