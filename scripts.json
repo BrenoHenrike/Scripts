@@ -18428,16 +18428,15 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Quests/ArmyUniqueQuarry.cs"
   },
   {
-    "name": "script name here",
-    "description": "Farms [InsertItem] using your army.",
+    "name": "null",
+    "description": "null",
     "tags": [
-      "army",
-      "[item]"
+      "null"
     ],
-    "path": "Army/Templates/ArmyTemplatev5.5.cs",
-    "size": 13187,
-    "fileName": "ArmyTemplatev5.5.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Templates/ArmyTemplatev5.5.cs"
+    "path": "Army/Templates/ArmyTemplatev6.cs",
+    "size": 16570,
+    "fileName": "ArmyTemplatev6.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Templates/ArmyTemplatev6.cs"
   },
   {
     "name": "Complete Elegy of Madness Story, then farm Higure sword",
