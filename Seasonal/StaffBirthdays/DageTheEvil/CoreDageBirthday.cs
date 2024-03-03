@@ -55,7 +55,7 @@ public class CoreDageBirthday
             Core.EnsureAccept(6223);
             // there are 2 "Void Energy" - `40070` [Wrong] & `43068` [Correct]
             while (!Bot.ShouldExit && !Core.CheckInventory(43068, 10))
-                Core.KillMonster("darkpath", "Enter", "Left", "*");
+                Core.KillMonster("darkpath", "r7", "Left", "Void Makai", log: false);
             Core.EnsureComplete(6223);
         }
 
