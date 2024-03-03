@@ -349,7 +349,7 @@ public class ArmyTemplatev6 //Rename This
         Core.AddDrop(Core.QuestRewards(QuestIDs));
         Core.EnsureAcceptmultiple(true, QuestIDs);
 
-        bool inventoryConditionMet = Core.CheckInventory(ItemandQuants.Select(tuple => tuple.Item1).ToArray());
+        bool inventoryConditionMet = ItemandQuants.All(t => Core.CheckInventory(t.Item1, t.Item2, toInv: true));
 
         if (inventoryConditionMet)
             return;
@@ -388,12 +388,14 @@ public class ArmyTemplatev6 //Rename This
                 if (Bot.Config!.Get<Rewards>("QuestRewards") == Rewards.Off)
                 {
                     foreach (int questID in QuestIDs)
+                    {
                         if (Bot.Quests.CanComplete(questID))
                             Bot.Quests.Complete(questID);
+                    }
                 }
 
                 // Checking inventory for each item
-                inventoryConditionMet = ItemandQuants.All(ItemandQuants => Core.CheckInventory(ItemandQuants.Item1, ItemandQuants.Item2));
+                inventoryConditionMet = ItemandQuants.All(t => Core.CheckInventory(t.Item1, t.Item2, toInv: true));
 
                 // Break out of the foreach loop
                 if (inventoryConditionMet)
@@ -410,5 +412,6 @@ public class ArmyTemplatev6 //Rename This
         Core.JumpWait();
         Core.CancelRegisteredQuests();
     }
+
     #endregion IgnoreME
 }
