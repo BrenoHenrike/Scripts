@@ -8,7 +8,7 @@ tags: badge, undervoid, conquest victor, war victor, famine vitor, death victor
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/Seasonal\StaffBirthdays\DageTheEvil\Undervoid.cs
+//cs_include Scripts/Seasonal\StaffBirthdays\DageTheEvil\CoreDageBirthday.cs
 using Skua.Core.Interfaces;
 
 public class UnderVoidBadgesAll
@@ -17,8 +17,7 @@ public class UnderVoidBadgesAll
     public CoreBots Core => CoreBots.Instance;
     public CoreDailies Daily = new();
     public CoreAdvanced Adv = new();
-    public UndervoidStory UndervoidStory = new();
-
+    private CoreDageBirthday Dage = new();
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
@@ -41,7 +40,7 @@ public class UnderVoidBadgesAll
         if (!Core.isSeasonalMapActive("undervoid"))
             return;
 
-        UndervoidStory.CompleteUnderVoid();
+        Dage.Undervoid();
         Core.EquipClass(ClassType.Solo);
         Core.AddDrop("Conquest's Pride");
 
@@ -70,7 +69,7 @@ public class UnderVoidBadgesAll
             return;
         }
 
-        UndervoidStory.CompleteUnderVoid();
+        Dage.Undervoid();
         Core.EquipClass(ClassType.Solo);
         Core.AddDrop("War's Pride");
 
@@ -100,7 +99,7 @@ public class UnderVoidBadgesAll
             return;
         }
 
-        UndervoidStory.CompleteUnderVoid();
+        Dage.Undervoid();
         Core.EquipClass(ClassType.Solo);
         Core.AddDrop("Famine's Pride");
 
@@ -130,7 +129,7 @@ public class UnderVoidBadgesAll
             return;
         }
 
-        UndervoidStory.CompleteUnderVoid();
+        Dage.Undervoid();
         Core.EquipClass(ClassType.Solo);
         Core.AddDrop("Death's Pride");
 

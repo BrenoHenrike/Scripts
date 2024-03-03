@@ -23,7 +23,7 @@ tags: seasonal, story, complete, all
 //cs_include Scripts/Story/MemetsRealm/CoreMemet.cs
 //cs_include Scripts/Seasonal/Mogloween/CoreMogloween.cs
 //cs_include Scripts/Seasonal/Mogloween/VampireLord(Class).cs
-//cs_include Scripts/Seasonal/StaffBirthdays/DageTheEvil/Undervoid.cs
+//cs_include Scripts/Seasonal\StaffBirthdays\DageTheEvil\CoreDageBirthday.cs
 //cs_include Scripts/Seasonal/StarFestival/StarFestival.cs
 //cs_include Scripts/Seasonal/SummerBreak/BeachPartyTokenItems.cs
 //cs_include Scripts/Seasonal/SummerBreak/BlazingBeach.cs
@@ -66,7 +66,7 @@ public class AllSeasonal
 
     public VampireLord VPL = new();
     public DageRecruitStory DageRecruit = new();
-    public UndervoidStory Undervoid = new();
+    private CoreDageBirthday Dage = new();
     public StarFestival StarFestival = new();
     public BeachPartyTokenItems BeachPartyTokenItems = new();
     public BlazingBeachStory BlazingBeach = new();
@@ -127,7 +127,7 @@ public class AllSeasonal
                 Pooka.CompletePooka();
                 DarkLord.GetDL();
                 MurderMoon.MurderMoonStory();
-                Undervoid.CompleteUnderVoid();
+                Dage.DoAll();
                 Core.Logger($"Scripts Finished for {DateTime.Now:MMMM}");
 
                 break;
