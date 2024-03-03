@@ -53,7 +53,9 @@ public class CoreDageBirthday
         if (!Story.QuestProgression(6223))
         {
             Core.EnsureAccept(6223);
-            Core.HuntMonster("darkpath", "Void Makai", "Void Energy", isTemp: true, log: false);
+            // there are 2 "Void Energy" - `40070` [Wrong] & `43068` [Correct]
+            while (!Bot.ShouldExit && !Core.CheckInventory(43068, 10))
+                Core.KillMonster("darkpath", "Enter", "Left", "*");
             Core.EnsureComplete(6223);
         }
 
