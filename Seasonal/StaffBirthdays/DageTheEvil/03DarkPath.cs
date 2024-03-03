@@ -12,7 +12,6 @@ public class DarkPath
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
-    private CoreStory Story = new();
     private CoreDageBirthday Dage = new();
 
     public void ScriptMain(IScriptInterface Bot)

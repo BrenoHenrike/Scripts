@@ -12,7 +12,6 @@ public class UndervoidStory
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreStory Story = new CoreStory();
     private CoreDageBirthday Dage = new();
 
     public void ScriptMain(IScriptInterface bot)
