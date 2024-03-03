@@ -103,7 +103,7 @@ public class ArmyTemplatev6 //Rename This
             //     ("item2", 2),
             //     // Add more items as needed
 
-            // }, ClassType.Solo, new[] { 0000 });
+            // }, ClassType.Solo, QuestIDs);
 
         }
 
@@ -146,7 +146,7 @@ public class ArmyTemplatev6 //Rename This
                 //     ("item2", 2),
                 //     // Add more items as needed
 
-                // }, ClassType.Solo, new[] { 0000 });
+                // }, ClassType.Solo, QuestIDs);
 
                 // --Max stack all--
                 if (Bot.Config!.Get<Rewards>("QuestRewards") == Rewards.All)
