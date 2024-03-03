@@ -1890,12 +1890,19 @@ public class CoreAdvanced
                 case "continuum chronomancer":
                 case "quantum chronomancer":
                 case "chaos avenger":
-                    if (!uVainglory() || !uValiance() || !uVim())
+                    if (!uPenitence()
+                    || !uDauntless() || !uRavenous() || !uValiance()
+                    || !uVim())
                         goto default;
 
                     type = EnhancementType.Lucky;
                     cSpecial = CapeSpecial.Vainglory;
-                    wSpecial = WeaponSpecial.Valiance;
+
+                    if (uRavenous())
+                        wSpecial = WeaponSpecial.Ravenous;
+                    else if (uDauntless())
+                        wSpecial = WeaponSpecial.Dauntless;
+                    else wSpecial = WeaponSpecial.Valiance;
                     hSpecial = HelmSpecial.Vim;
                     break;
                 #endregion
@@ -1904,7 +1911,7 @@ public class CoreAdvanced
 
                 case "doom metal necro":
                 case "neo metal necro":
-                    if ((!uLacerate() || !uForgeHelm() || !uLament()))
+                    if (!uLacerate() || !uForgeHelm() || !uLament())
                         goto default;
 
                     type = EnhancementType.Lucky;
@@ -1918,12 +1925,14 @@ public class CoreAdvanced
 
                 #region Lucky - Vainglory - Lacerate - Vim
                 case "yami no ronin":
-                    if ((!uVainglory() || !uLacerate() || !uVim()) || !uPraxis())
+                    if (!uVainglory() || !uDauntless() || uLacerate() || !uVim() || !uPraxis())
                         goto default;
 
                     type = EnhancementType.Lucky;
                     cSpecial = CapeSpecial.Vainglory;
-                    if (uLacerate())
+                    if (uDauntless())
+                        wSpecial = WeaponSpecial.Dauntless;
+                    else if (uLacerate())
                         wSpecial = WeaponSpecial.Lacerate;
                     else wSpecial = WeaponSpecial.Praxis;
                     hSpecial = HelmSpecial.Vim;
