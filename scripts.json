@@ -476,7 +476,7 @@
       "all"
     ],
     "path": "Seasonal/AllSeasonal.cs",
-    "size": 9299,
+    "size": 9287,
     "fileName": "AllSeasonal.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AllSeasonal.cs"
   },
@@ -15547,7 +15547,7 @@
       "all"
     ],
     "path": "Other/Classes/0AllClasses.cs",
-    "size": 16311,
+    "size": 16318,
     "fileName": "0AllClasses.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/0AllClasses.cs"
   },
@@ -18428,16 +18428,15 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Quests/ArmyUniqueQuarry.cs"
   },
   {
-    "name": "script name here",
-    "description": "Farms [InsertItem] using your army.",
+    "name": "null",
+    "description": "null",
     "tags": [
-      "army",
-      "[item]"
+      "null"
     ],
-    "path": "Army/Templates/ArmyTemplatev5.5.cs",
-    "size": 13187,
-    "fileName": "ArmyTemplatev5.5.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Templates/ArmyTemplatev5.5.cs"
+    "path": "Army/Templates/ArmyTemplatev6.cs",
+    "size": 16570,
+    "fileName": "ArmyTemplatev6.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Templates/ArmyTemplatev6.cs"
   },
   {
     "name": "Complete Elegy of Madness Story, then farm Higure sword",
@@ -19933,6 +19932,23 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/Yang/YangsFavorsMerge.cs"
   },
   {
+    "name": "Future Legion Story",
+    "description": "This will complete the Future Legion story.",
+    "tags": [
+      "story",
+      "quest",
+      "future",
+      "legion",
+      "legion",
+      "staff",
+      "birthday"
+    ],
+    "path": "Seasonal/StaffBirthdays/DageTheEvil/02FutureLegion.cs",
+    "size": 659,
+    "fileName": "02FutureLegion.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/02FutureLegion.cs"
+  },
+  {
     "name": "Rand's Merge",
     "description": "This bot will farm Rand's Approval in /seraph and buy items from the merge shop",
     "tags": [
@@ -19967,7 +19983,7 @@
       "darkbirthday"
     ],
     "path": "Seasonal/StaffBirthdays/DageTheEvil/ExaltedHarbinger.cs",
-    "size": 1477,
+    "size": 1484,
     "fileName": "ExaltedHarbinger.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/ExaltedHarbinger.cs"
   },
@@ -20003,21 +20019,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/LegionSwordMasterAssassin.cs"
   },
   {
-    "name": "Dark Path Story",
-    "description": "This script completes the storyline in darkpath and voidvault.",
-    "tags": [
-      "darkpath",
-      "voidvault",
-      "seasonal",
-      "dage",
-      "story"
-    ],
-    "path": "Seasonal/StaffBirthdays/DageTheEvil/DarkPath.cs",
-    "size": 2480,
-    "fileName": "DarkPath.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/DarkPath.cs"
-  },
-  {
     "name": "Nation War Chest Merge",
     "description": "This will complete the Nation War Chest story and farm Nation Defender Medals.",
     "tags": [
@@ -20050,7 +20051,7 @@
       "darkbirthday"
     ],
     "path": "Seasonal/StaffBirthdays/DageTheEvil/DarkBirthdayTokenMerge.cs",
-    "size": 15464,
+    "size": 15470,
     "fileName": "DarkBirthdayTokenMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/DarkBirthdayTokenMerge.cs"
   },
@@ -20070,6 +20071,21 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/FortressDelveMerge.cs"
   },
   {
+    "name": "Dark Path Story",
+    "description": "This script completes the storyline in darkpath and voidvault.",
+    "tags": [
+      "darkpath",
+      "voidvault",
+      "seasonal",
+      "dage",
+      "story"
+    ],
+    "path": "Seasonal/StaffBirthdays/DageTheEvil/03DarkPath.cs",
+    "size": 653,
+    "fileName": "03DarkPath.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/03DarkPath.cs"
+  },
+  {
     "name": "DageWar50Merge",
     "description": "null",
     "tags": [
@@ -20079,24 +20095,6 @@
     "size": 3148,
     "fileName": "DageWar50Merge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/DageWar50Merge.cs"
-  },
-  {
-    "name": "Undervoid Story",
-    "description": "This will complete the Undervoid story.",
-    "tags": [
-      "story",
-      "quest",
-      "void",
-      "nation",
-      "legion",
-      "underworld",
-      "staff",
-      "birthday"
-    ],
-    "path": "Seasonal/StaffBirthdays/DageTheEvil/Undervoid.cs",
-    "size": 1545,
-    "fileName": "Undervoid.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/Undervoid.cs"
   },
   {
     "name": "DagesBirthdayMerge",
@@ -20139,21 +20137,37 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/UnderworldTeamMerge.cs"
   },
   {
-    "name": "Future Legion Story",
-    "description": "This will complete the Future Legion story.",
+    "name": "null",
+    "description": "null",
     "tags": [
-      "story",
-      "quest",
-      "future",
-      "legion",
-      "legion",
-      "staff",
-      "birthday"
+      "null"
     ],
-    "path": "Seasonal/StaffBirthdays/DageTheEvil/FutureLegion.cs",
-    "size": 2372,
-    "fileName": "FutureLegion.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/FutureLegion.cs"
+    "path": "Seasonal/StaffBirthdays/DageTheEvil/CoreDageBirthday.cs",
+    "size": 5295,
+    "fileName": "CoreDageBirthday.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/CoreDageBirthday.cs"
+  },
+  {
+    "name": "Dage Birthday (All)",
+    "description": "This script will complete all the seasonal Dage Birthday storylines.",
+    "tags": [
+      "darkpath",
+      "dark path",
+      "futurelegion",
+      "future legion",
+      "undervoid",
+      "under void",
+      "dage",
+      "seasonal",
+      "birthday",
+      "march",
+      "story",
+      "all"
+    ],
+    "path": "Seasonal/StaffBirthdays/DageTheEvil/00DoAll.cs",
+    "size": 730,
+    "fileName": "00DoAll.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/00DoAll.cs"
   },
   {
     "name": "Dark War Nation Merge",
@@ -20180,7 +20194,7 @@
       "null"
     ],
     "path": "Seasonal/StaffBirthdays/DageTheEvil/FutureWarMerge.cs",
-    "size": 6380,
+    "size": 6377,
     "fileName": "FutureWarMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/FutureWarMerge.cs"
   },
@@ -20235,9 +20249,27 @@
       "death victor"
     ],
     "path": "Seasonal/StaffBirthdays/DageTheEvil/UnderVoidBadgesAll.cs",
-    "size": 4911,
+    "size": 4838,
     "fileName": "UnderVoidBadgesAll.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/UnderVoidBadgesAll.cs"
+  },
+  {
+    "name": "Undervoid Story",
+    "description": "This will complete the Undervoid story.",
+    "tags": [
+      "story",
+      "quest",
+      "void",
+      "nation",
+      "legion",
+      "underworld",
+      "staff",
+      "birthday"
+    ],
+    "path": "Seasonal/StaffBirthdays/DageTheEvil/01Undervoid.cs",
+    "size": 657,
+    "fileName": "01Undervoid.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/01Undervoid.cs"
   },
   {
     "name": "(Darkwarlegion War) Chest Merge",

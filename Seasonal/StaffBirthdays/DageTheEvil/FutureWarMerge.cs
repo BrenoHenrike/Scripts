@@ -8,7 +8,7 @@ tags: null
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Legion/CoreLegion.cs
-//cs_include Scripts/Seasonal//StaffBirthdays/DageTheEvil/FutureLegion.cs
+//cs_include Scripts/Seasonal\StaffBirthdays\DageTheEvil\CoreDageBirthday.cs
 
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
@@ -21,7 +21,7 @@ public class FutureWarMerge
     private CoreFarms Farm = new();
     private CoreAdvanced Adv = new();
     public CoreLegion Legion = new CoreLegion();
-    public FutureLegion FutureLegion = new();
+    private CoreDageBirthday Dage = new();
     private static CoreAdvanced sAdv = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
@@ -45,7 +45,7 @@ public class FutureWarMerge
         if (!Core.isSeasonalMapActive("futurewar"))
             return;
 
-        FutureLegion.DoStory();
+        Dage.FutureLegion();
 
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("futurewar", 1378, findIngredients, buyOnlyThis, buyMode: buyMode);

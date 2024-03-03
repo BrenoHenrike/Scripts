@@ -59,7 +59,7 @@ tags: all classes,class,farm,complete,all
 //cs_include Scripts/Seasonal/Frostvale/NorthlandsMonk.cs
 //cs_include Scripts/Seasonal/LuckyDay/LuckyDayShamrockFairMerge.cs
 //cs_include Scripts/Seasonal/LuckyDay/EvolvedLeprechaun.cs
-//cs_include Scripts/Seasonal/StaffBirthdays/DageTheEvil/Undervoid.cs
+//cs_include Scripts/Seasonal/StaffBirthdays/DageTheEvil/CoreDageBirthday.cs
 //cs_include Scripts/Seasonal/StaffBirthdays/DageTheEvil/DarkBirthdayTokenMerge.cs
 //cs_include Scripts/Seasonal/StaffBirthdays/DageTheEvil/ExaltedHarbinger.cs
 //cs_include Scripts/Seasonal/MayThe4th/DarkLord.cs
