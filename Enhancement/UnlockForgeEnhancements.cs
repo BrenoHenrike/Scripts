@@ -816,8 +816,8 @@ public class UnlockForgeEnhancements
         Core.EnsureAccept(8745);
 
         Circles.CirclesWar();
-        HOTLB.Indulgence(75);
-        HOTLB.Penance(75);
+        HOTLB.Indulgence(50);
+        HOTLB.Penance(50);
 
         Core.EnsureComplete(8745);
         Core.Logger("Enhancement Unlocked: Avarice");
