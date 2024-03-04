@@ -706,15 +706,15 @@ public class UnlockForgeEnhancements
 
         LOC.Kitsune();
         Farm.Experience(30);
-        Farm.BlacksmithingREP(3, Bot.Config!.Get<bool>("UseGold"), Bot.Config!.Get<bool>("UseGold"));
+        Farm.BlacksmithingREP(4, Bot.Config!.Get<bool>("UseGold"), Bot.Config!.Get<bool>("UseGold"));
 
         Core.EquipClass(ClassType.Solo);
         Core.EnsureAccept(8758);
 
-        Core.KillEscherion("1st Lord Of Chaos Staff");
-        Core.KillVath("Chaos Dragonlord Axe");
-        Core.KillKitsune("Hanzamune Dragon Koi Blade");
-        Core.HuntMonster("wolfwing", "Wolfwing", "Wrath of the Werepyre", isTemp: false);
+        Core.HuntMonster("lostruinswar", "Diabolical Warlord", "Prismatic Celestial Wings", isTemp: false);
+        Core.HuntMonster("lostruins", "Infernal Warlord", "Broken Wings", isTemp: false);
+        Core.HuntMonster("infernalspire", "Azkorath", "Shadow's Wings", isTemp: false);
+        Core.HuntMonster("infernalspire", "Malxas", "Wings Of Destruction", isTemp: false);
 
         Core.EnsureComplete(8758);
         Core.Logger($"Enhancement Unlocked: Forge (Cape)");
@@ -887,15 +887,16 @@ public class UnlockForgeEnhancements
             return;
 
         Core.Logger("Unlocking Enhancement: Forge (Helm)");
+        Farm.Experience(30);
         Farm.BlacksmithingREP(4, Bot.Config!.Get<bool>("UseGold"), Bot.Config!.Get<bool>("UseGold"));
 
         Core.EquipClass(ClassType.Solo);
         Core.EnsureAccept(8828);
 
-        Core.HuntMonster("lostruinswar", "Diabolical Warlord", "Prismatic Celestial Wings", isTemp: false);
-        Core.HuntMonster("lostruins", "Infernal Warlord", "Broken Wings", isTemp: false);
-        Core.HuntMonster("infernalspire", "Azkorath", "Shadow's Wings", isTemp: false);
-        Core.HuntMonster("infernalspire", "Malxas", "Wings Of Destruction", isTemp: false);
+        Core.KillEscherion("1st Lord Of Chaos Staff");
+        Core.KillVath("Chaos Dragonlord Axe");
+        Core.KillKitsune("Hanzamune Dragon Koi Blade");
+        Core.HuntMonster("wolfwing", "Wolfwing", "Wrath of the Werepyre", isTemp: false);
 
         Core.EnsureComplete(8828);
         Core.Logger("Enhancement Unlocked: Forge (Helm)");
