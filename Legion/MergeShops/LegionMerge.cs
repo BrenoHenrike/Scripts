@@ -40,7 +40,7 @@ public class LegionMerge
     public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("shadowblast", 1207, findIngredients, buyOnlyThis, buyMode: buyMode);
+        Adv.StartBuyAllMerge("shadowblast", 1207, findIngredients, buyOnlyThis, buyMode: buyMode, Group: "Last");
 
         #region Dont edit this part
         void findIngredients()
@@ -82,15 +82,9 @@ public class LegionMerge
     {
         new Option<bool>("33153", "Evolved Soul Mender", "Mode: [select] only\nShould the bot buy \"Evolved Soul Mender\" ?", false),
 
-        new Option<bool>("33163", "Legion Executioner [Emb/Dia ver.]", "Mode: [select] only\nShould the bot buy \"Legion Executioner\"\n[Emblemof Dage/Diamond Token] ?", false),
-        new Option<bool>("33173", "Legion Soulstealer [Emb/Dia ver.]", "Mode: [select] only\nShould the bot buy \"Legion Soulstealer\"\n[Emblemof Dage/Diamond Token]  ?", false),
-        new Option<bool>("33175", "Legion Soulstealer Hair [Emb/Dia ver.]", "Mode: [select] only\nShould the bot buy \"Legion Soulstealer Hair\"\n[Emblemof Dage/Diamond Token]  ?", false),
-        new Option<bool>("33174", "Legion Soulstealer Locks [Emb/Dia ver.]", "Mode: [select] only\nShould the bot buy \"Legion Soulstealer Locks\"\n[Emblemof Dage/Diamond Token]  ?", false),
-
-        // new Option<string>("Extra Line2", "vvvvvvv Legion Token Versions vvvvvvv", "blank", ""),
-        new Option<bool>("33163", "Legion Executioner [LT ver.]", "Mode: [select] only\nShould the bot buy \"Legion Executioner\"\n[Legion Tokens Version] ?", false),
-        new Option<bool>("33174", "Legion Soulstealer Locks [LT ver.]", "Mode: [select] only\nShould the bot buy \"Legion Soulstealer Locks\"\n[Legion Tokens Version] ?", false),
-        new Option<bool>("33175", "Legion Soulstealer Hair [LT ver.]", "Mode: [select] only\nShould the bot buy \"Legion Soulstealer Hair\"\n[Legion Tokens Version] ?", false),
-        new Option<bool>("33173", "Legion Soulstealer [LT ver.]", "Mode: [select] only\nShould the bot buy \"Legion Soulstealer\"\n[Legion Tokens Version] ?", false),
+        new Option<bool>("33163", "Legion Executioner", "Mode: [select] only\nShould the bot buy \"Legion Executioner\"\n[Emblemof Dage/Diamond Token] ?", false),
+        new Option<bool>("33173", "Legion Soulstealer", "Mode: [select] only\nShould the bot buy \"Legion Soulstealer\"\n[Emblemof Dage/Diamond Token]  ?", false),
+        new Option<bool>("33175", "Legion Soulstealer Hair", "Mode: [select] only\nShould the bot buy \"Legion Soulstealer Hair\"\n[Emblemof Dage/Diamond Token]  ?", false),
+        new Option<bool>("33174", "Legion Soulstealer Locks", "Mode: [select] only\nShould the bot buy \"Legion Soulstealer Locks\"\n[Emblemof Dage/Diamond Token]  ?", false),
     };
 }

@@ -159,7 +159,7 @@ public class CoreAdvanced
     /// <param name="map">The map where the shop can be loaded from</param>
     /// <param name="shopID">The shop ID to load the shopdata</param>
     /// <param name="findIngredients">A switch nested in a void that will explain this function where to get items</param>
-    public void StartBuyAllMerge(string map, int shopID, Action findIngredients, string? buyOnlyThis = null, string[]? itemBlackList = null, mergeOptionsEnum? buyMode = null)
+    public void StartBuyAllMerge(string map, int shopID, Action findIngredients, string? buyOnlyThis = null, string[]? itemBlackList = null, mergeOptionsEnum? buyMode = null, string Group = "First")
     {
         if (buyOnlyThis == null && buyMode == null)
             Bot.Config!.Configure();
@@ -174,13 +174,13 @@ public class CoreAdvanced
         else Core.Logger("Invalid setup detected for StartBuyAllMerge. Please report", messageBox: true, stopBot: true);
 
         matsOnly = mode == 2;
-        List<ShopItem> shopItems = Core.GetShopItems(map, shopID);
+        List<ShopItem> shopItems = Core.GetShopItems(map, shopID)
+                                    .GroupBy(item => item.ID)
+                                    .Select(group => Group == "First" ? group.First() : group.Last())
+                                    .ToList();
+
         List<ShopItem> items = new();
         bool memSkipped = false;
-
-        shopItems = shopItems.GroupBy(item => item.ID)
-                             .Select(group => group.First())
-                             .ToList();
 
         foreach (ShopItem item in shopItems)
         {
@@ -246,7 +246,7 @@ public class CoreAdvanced
                 if (!matsOnly && !Core.CheckInventory(item.ID, toInv: false))
                 {
                     Core.Logger($"Buying {item.Name} (#{t++}/{items.Count})");
-                    BuyItem(map, shopID, item.ID);
+                    BuyItem(map, shopID, item.ID, shopItemID: item.ShopItemID);
 
                     if (item.Coins)
                         Core.ToBank(item.Name);
