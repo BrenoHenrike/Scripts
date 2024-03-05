@@ -658,16 +658,16 @@ public class CoreNation
             Core.FarmingLogger(item, quant);
             while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
             {
-                Core.EnsureAccept(Bot.Quests.IsAvailable(2568) ? 2568 : 2566);
+                Core.EnsureAccept(2566);
                 Core.EquipClass(ClassType.Solo);
                 Core.HuntMonster("elemental", "Mana Golem", "Mana Energy for Nulgath", 13, isTemp: false);
 
                 Core.EquipClass(ClassType.Farm);
                 while (!Bot.ShouldExit && !Core.CheckInventory(item, quant) && Core.CheckInventory("Mana Energy for Nulgath"))
                 {
-                    Core.EnsureAccept(Bot.Quests.IsAvailable(2568) ? 2568 : 2566);
+                    Core.EnsureAccept(2566);
                     Core.HuntMonster("elemental", "Mana Falcon", "Charged Mana Energy for Nulgath", 5);
-                    Core.EnsureComplete(Bot.Quests.IsAvailable(2568) ? 2568 : 2566);
+                    Core.EnsureComplete(2566);
                     Bot.Wait.ForPickup(item);
                 }
                 if (Core.CheckInventory("Voucher of Nulgath (non-mem)") && Core.CheckInventory("Essence of Nulgath", 60))
@@ -678,7 +678,7 @@ public class CoreNation
         {
             foreach (string Drop in bagDrops)
             {
-                ItemBase? drop = Core.EnsureLoad(Bot.Quests.IsAvailable(2568) ? 2568 : 2566).Rewards.Find(x => x.Name == Drop);
+                ItemBase? drop = Core.EnsureLoad(2566).Rewards.Find(x => x.Name == Drop);
                 if (drop == null)
                     continue;
 
@@ -686,7 +686,7 @@ public class CoreNation
 
                 while (!Bot.ShouldExit && !Core.CheckInventory(drop.Name, drop.MaxStack))
                 {
-                    Core.EnsureAccept(Bot.Quests.IsAvailable(2568) ? 2568 : 2566);
+                    Core.EnsureAccept(2566);
                     Core.EquipClass(ClassType.Solo);
                     Core.HuntMonster("elemental", "Mana Golem", "Mana Energy for Nulgath", 13, isTemp: false);
                     Core.EquipClass(ClassType.Farm);
@@ -694,9 +694,9 @@ public class CoreNation
                     Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(drop.Name, drop.MaxStack) && Core.CheckInventory("Mana Energy for Nulgath"))
                     {
-                        Core.EnsureAccept(Bot.Quests.IsAvailable(2568) ? 2568 : 2566);
+                        Core.EnsureAccept(2566);
                         Core.HuntMonster("elemental", "Mana Falcon", "Charged Mana Energy for Nulgath", 5);
-                        Core.EnsureComplete(Bot.Quests.IsAvailable(2568) ? 2568 : 2566);
+                        Core.EnsureComplete(2566);
                         Bot.Wait.ForPickup(drop.Name);
                     }
                     if (Core.CheckInventory("Voucher of Nulgath (non-mem)") && Core.CheckInventory("Essence of Nulgath", 60))
