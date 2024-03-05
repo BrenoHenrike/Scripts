@@ -6,6 +6,7 @@ tags: farm, merge, shop, seasonal, lucky, evolved, leprechaun, rainbow, shard, g
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/CoreDailies.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
@@ -15,6 +16,7 @@ public class LuckyDayShamrockFairMerge
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
     private CoreFarms Farm = new();
+    public CoreDailies Daily = new();
     private CoreAdvanced Adv = new();
     private static CoreAdvanced sAdv = new();
 
@@ -76,10 +78,11 @@ public class LuckyDayShamrockFairMerge
                 case "Lucky Clover":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
-                    Core.RegisterQuests(1759);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
+                    while (!Bot.ShouldExit && !Daily.CheckDaily(Core.CheckInventory(971) ? 1761 : 1759) && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("rainbow", "Lucky Harms", "Clover Leaves", 1);
+                        Core.EnsureAccept(Core.CheckInventory(971) ? 1761 : 1759);
+                        Core.HuntMonster("rainbow", "Lucky Harms", "Clover Leaves");
+                        Core.EnsureComplete(Core.CheckInventory(971) ? 1761 : 1759);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
