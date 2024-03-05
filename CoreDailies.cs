@@ -992,7 +992,7 @@ public class CoreDailies
         Core.ToBank(frGiftIDs);
         Core.ToBank(frRewards[3..]);
 
-        //not sure how itll handle those hearts.. but its part of i
+        //not sure how itll handle those hearts.. but its part of i <-----ITS NOT PART OF IT MR TATO
         if (Core.CheckInventory("Happy Penguin") && !Core.HasWebBadge("Penguin BFF"))
             Core.ChainComplete(9108);
 
