@@ -993,7 +993,7 @@ public class CoreDailies
         Core.ToBank(frRewards[3..]);
 
         //not sure how itll handle those hearts.. but its part of i
-        if (Core.CheckInventory("Happy Penguin") && !Core.HasWebBadge($"Penguin 🤍BFF🤍"))
+        if (Core.CheckInventory("Happy Penguin") && !Core.HasWebBadge("Penguin BFF"))
             Core.ChainComplete(9108);
 
         #region Local methods
