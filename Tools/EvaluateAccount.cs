@@ -80,7 +80,7 @@ public class EvalAcc
             (badges != null ? $"Founder:\t\t\t\t{checkbox(badges.Contains(1))}\n" : String.Empty) +
             (gender != null ? $"Gender:\t\t\t\t{(gender[1] == 'M' ? "Male" : "Female")}\n" : String.Empty) +
 
-            $"\nMaxed Factions:\t\t\t{Bot.Reputation.FactionList.Count(f => f.Rank == 10)} out of 52\n" +
+            $"\nMaxed Factions:\t\t\t{Bot.Reputation.FactionList.Count(f => f.Rank == 10)} out of {Bot.Reputation.FactionList.Count}\n" +
             $"Joined Legion:\t\t\t{checkbox(Core.isCompletedBefore(793))}\n" +
             $"Treasure Potion Count:\t\t{Bot.Inventory.GetItem(18927)?.Quantity}\n\n" +
 
