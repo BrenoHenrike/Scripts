@@ -12822,7 +12822,7 @@
       "null"
     ],
     "path": "Other/FarmJoeKits/CoreFarmerJoe.cs",
-    "size": 37548,
+    "size": 38345,
     "fileName": "CoreFarmerJoe.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/CoreFarmerJoe.cs"
   },
@@ -15515,6 +15515,19 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/MechaJouster.cs"
   },
   {
+    "name": "Rustbucket (Class)",
+    "description": "This script will get ProtoSartorium class.",
+    "tags": [
+      "rustbucket",
+      "early game",
+      "class"
+    ],
+    "path": "Other/Classes/Rustbucket.cs",
+    "size": 1141,
+    "fileName": "Rustbucket.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/Rustbucket.cs"
+  },
+  {
     "name": "DragonslayerGeneral",
     "description": "null",
     "tags": [
@@ -15547,7 +15560,7 @@
       "all"
     ],
     "path": "Other/Classes/0AllClasses.cs",
-    "size": 16318,
+    "size": 16441,
     "fileName": "0AllClasses.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/0AllClasses.cs"
   },
