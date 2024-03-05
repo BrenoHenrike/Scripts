@@ -649,8 +649,7 @@ public class UnlockForgeEnhancements
 
         string[] DauntlessItems = { "ShadowLord's Helm", "Malgor the ShadowLord", "Malgor's ShadowFlame Blade", "Infernal Flame Pyromancer" };
 
-        if (!Core.CheckInventory(DauntlessItems) &&
-            !Core.CheckInventory("Malgor Insignia", 5) && !Core.CheckInventory("Avatar Tyndarius Insignia", 10))
+        if (!Core.CheckInventory(DauntlessItems))
         {
             Core.Logger("The only items I can get you are these: \"Malgor the ShadowLord\", and \"ShadowLord's Helm\".");
             SoW.CompleteCoreSoW();
@@ -664,7 +663,15 @@ public class UnlockForgeEnhancements
 
             SOWM.ElementalCore(20);
             Adv.GearStore(true);
+        }
 
+        if (Core.CheckInventory(DauntlessItems) && Core.CheckInventory("Malgor Insignia", 5) && Core.CheckInventory("Avatar Tyndarius Insignia", 10))
+        {
+            Core.ChainComplete(9172);
+            Core.Logger("Enhancement Unlocked: Dauntless");
+        }
+        else
+        {
             Core.Logger("Items still needed(the bot cannot farm these):");
             foreach (string item in DauntlessItems.Where(item => !Core.CheckInventory(item)))
                 Core.Logger($"Missing \"{item}\" x1");
@@ -672,11 +679,6 @@ public class UnlockForgeEnhancements
                 Core.Logger("Missing \"Avatar Tyndarius Insignia\" x10");
             if (!Core.CheckInventory("Malgor Insignia", 5))
                 Core.Logger("Missing \"Malgor Insignia\" x5");
-        }
-        else if (Core.CheckInventory(DauntlessItems) && Core.CheckInventory("Malgor Insignia", 5) && Core.CheckInventory("Avatar Tyndarius Insignia", 10))
-        {
-            Core.ChainComplete(9172);
-            Core.Logger("Enhancement Unlocked: Dauntless");
         }
     }
 
