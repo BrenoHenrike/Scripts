@@ -56,12 +56,12 @@ public class EvolvedBloodOrbItems
         if (!Core.CheckInventory("Platinum Coin of Nulgath: 2500") || !Core.CheckInventory(33196))
             return;
 
-        if (!Core.CheckInventory("Rustbucket"))
+        if (!Core.CheckInventory("RustBucket"))
         {
             Core.GetMapItem(12756, 1, "crashsite");
-            Bot.Wait.ForPickup("Rustbucket");
+            Bot.Wait.ForPickup("RustBucket");
         }
-        Adv.RankUpClass("Rustbucket");
+        Adv.RankUpClass("RustBucket");
 
         #endregion
 
