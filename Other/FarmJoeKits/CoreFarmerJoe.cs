@@ -37,6 +37,8 @@ tags: null
 //cs_include Scripts/Other/Classes/BloodSorceress.cs
 //cs_include Scripts/Other/Classes/DragonShinobi.cs
 //cs_include Scripts/Other/Classes/DragonOfTime.cs
+//cs_include Scripts/Other/Classes/Rustbucket.cs
+
 //cs_include Scripts/Good/ArchPaladin.cs
 //cs_include Scripts/Dailies/LordOfOrder.cs
 //cs_include Scripts/Legion/SwordMaster.cs
@@ -134,6 +136,7 @@ public class CoreFarmerJoe
     public BlazeBinder Bb = new();
     public ArchFiend AF = new();
     public Cryomancer Cryo = new();
+    public Rustbucket Rustbucket = new();
 
     //Weapons
     public DualChainSawKatanas DCSK = new();
@@ -172,6 +175,7 @@ public class CoreFarmerJoe
     private readonly InventoryItem? ClassArchFiend = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == "ArchFiend".ToLower().Trim() && i.Category == ItemCategory.Class || Bot.Bank.Contains(i.Name) && i.Name != null);
     private readonly InventoryItem? ClassGlacialBerserker = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == "Glacial Berserker".ToLower().Trim() && i.Category == ItemCategory.Class || Bot.Bank.Contains(i.Name) && i.Name != null);
     private readonly InventoryItem? ClassDragonofTime = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == "Dragon of Time".ToLower().Trim() && i.Category == ItemCategory.Class || Bot.Bank.Contains(i.Name) && i.Name != null);
+    private readonly InventoryItem? ClassRustbucket = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == "Rustbucket".ToLower().Trim() && i.Category == ItemCategory.Class || Bot.Bank.Contains(i.Name) && i.Name != null);
     #endregion InvClasses
     /// <summary>
     /// Executes a sequence of leveling and progression steps including class enhancements, item acquisition, and outfit setup.
@@ -229,9 +233,11 @@ public class CoreFarmerJoe
                 case 30:
                     if (Bot.Player.Level >= Level &&
                     Adv.HasMinimalBoost(GenericGearBoost.exp, 25) &&
-                    Core.CheckInventory("Master Ranger") && ClassMasterRanger?.Quantity == 302500)
+                    Core.CheckInventory("Master Ranger") && ClassMasterRanger?.Quantity == 302500 &&
+                    Core.CheckInventory("Rustbucket") && ClassRustbucket?.Quantity == 302500
+                    )
                     {
-                        Core.Logger("Items owned: \"Awethur's Accoutrements\", \"Master Ranger\" continuing");
+                        Core.Logger("Items owned: \"Awethur's Accoutrements\", \"Master Ranger\", \"Rustbucket\" ...continuing");
                         continue;
                     }
 
@@ -241,6 +247,12 @@ public class CoreFarmerJoe
                         Core.Logger("Getting Master Ranger");
                         SetClass(false, true, false);
                         MR.GetMR();
+                    }
+
+                    if (!Core.CheckInventory("Rustbucket") || !Core.CheckInventory(new[] { "ArchPaladin", "Glacial Berserker", "DragonSoul Shinobi", "Shaman" }, any: true))
+                    {
+                        Core.Logger("Getting Rustbucket");
+                        Rustbucket.GetRustbucket();
                     }
 
                     if (Bot.Player.Level < Level)
@@ -694,7 +706,7 @@ public class CoreFarmerJoe
         // if (!Core.CheckInventory("ArchPaladin"))
         //     soloClassesToCheck = new[] { "ArchPaladin", "Shaman", "Rogue (Rare)", "Rogue", "Healer (Rare)", "Healer" };
         // else
-        string[] soloClassesToCheck = new[] { "ArchPaladin", "Glacial Berserker", "DragonSoul Shinobi", "Shaman", "Rogue (Rare)", "Rogue", "Healer (Rare)", "Healer" };
+        string[] soloClassesToCheck = new[] { "ArchPaladin", "Glacial Berserker", "DragonSoul Shinobi", "Shaman", "Rustbucket", "Rogue (Rare)", "Rogue", "Healer (Rare)", "Healer" };
 
         string[] farmClassesToCheck = new[] { "Archfiend", "Blaze Binder", "Scarlet Sorceress", "Master Ranger", "Shaman", "Mage (Rare)", "Mage" };
 
