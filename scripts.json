@@ -2596,6 +2596,19 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/KisstheVoid.cs"
   },
   {
+    "name": "NulgathLarvae",
+    "description": "will do \"Nulgath (Larvae) [2566]\"",
+    "tags": [
+      "nulgath",
+      "larvae",
+      "nation"
+    ],
+    "path": "Nation/NulgathLarvae.cs",
+    "size": 569,
+    "fileName": "NulgathLarvae.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/NulgathLarvae.cs"
+  },
+  {
     "name": "Contract Exchange",
     "description": "null",
     "tags": [
@@ -2622,20 +2635,6 @@
     "size": 795,
     "fileName": "NewWorldsNewOpportunities.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/NewWorldsNewOpportunities.cs"
-  },
-  {
-    "name": "NulgathLarvaeAndKlunk",
-    "description": "will either do \"Nulgath (Klunk) [2568]\" or \"Nulgath (Larvae) [2566]\" depending on what is currently available.",
-    "tags": [
-      "nulgath",
-      "larvae",
-      "klunk",
-      "nation"
-    ],
-    "path": "Nation/NulgathLarvaeAndKlunk.cs",
-    "size": 669,
-    "fileName": "NulgathLarvaeAndKlunk.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/NulgathLarvaeAndKlunk.cs"
   },
   {
     "name": "TimeIsMoney",
