@@ -1,7 +1,7 @@
 /*
 name: Lucky Day Shamrock Fair Merge
-description: This will merge Rainbow Shard, Golden Ticket and Lucky Clovers.
-tags: farm, merge, shop, seasonal, lucky, evolved, leprechaun, rainbow, shard, golden, ticket, clover
+description: This bot will farm the items belonging to the selected mode for the Lucky Day Shamrock Fair Merge [256] in /rainbow
+tags: lucky, day, shamrock, fair, merge, rainbow, simple, celtic, three, leaf, clover, sneevos, mallet, bucket, o, gold, pot, pet, prismatic, cats, tail, mogorahilly, whack, hammer, sneevo, clown, box, head, shy, mog, heavy, william, sneevil, moglin, wallace, caledonia, chopper, shamrockin, scythe, caster, wrap, broadsword, on, your, back, destroyer, emerald, intricacy, cutthroat, double, claymore, celts, lycaena, wings, kellys, charm, viridian, twist, fortune, bringer, kismets, edge, malachite, cutter, fortunes, protector, luckee, golden, cleaver, evolved, leprechaun, luckiest, lorikeet, feathers, leprechauns, curse, scrooge, mcluck, paddle, pain, knight, knights, unicorn, noble, lady, lord, cane, rainbows, hunter, mace, reavers, bow
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -39,10 +39,11 @@ public class LuckyDayShamrockFairMerge
     public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         if (!Core.isSeasonalMapActive("rainbow"))
-            return;
 
+            return;
+            
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("rainbow", 256, findIngredients, buyOnlyThis, buyMode: buyMode, Group: "Last");
+        Adv.StartBuyAllMerge("rainbow", 256, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()
