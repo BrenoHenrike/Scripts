@@ -285,7 +285,7 @@ public class CoreDailies
         Core.HuntMonster("stalagbite", "Balboa", "Axe of the Prospector", 1, false);
         Core.HuntMonster("stalagbite", "Balboa", "Raw Ore", 30);
 
-        Core.JumpWait();
+        Core.Jump("r2");
 
         foreach (string metal in metals)
         {
