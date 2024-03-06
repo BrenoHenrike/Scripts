@@ -3393,6 +3393,9 @@ public class CoreBots
 
             case "titandrakath":
                 SimpleQuestBypass((470, 18));
+                JumpWait();
+                map = strippedMap + "-999999";
+                tryJoin();
                 break;
 
             case "desoloth":
