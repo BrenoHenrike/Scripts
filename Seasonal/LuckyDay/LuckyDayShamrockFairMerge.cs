@@ -42,7 +42,7 @@ public class LuckyDayShamrockFairMerge
             return;
 
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("rainbow", 256, findIngredients, buyOnlyThis, buyMode: buyMode);
+        Adv.StartBuyAllMerge("rainbow", 256, findIngredients, buyOnlyThis, buyMode: buyMode, Group: "Last");
 
         #region Dont edit this part
         void findIngredients()
