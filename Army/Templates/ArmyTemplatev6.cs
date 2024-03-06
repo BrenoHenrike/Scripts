@@ -115,14 +115,14 @@ public class ArmyTemplatev6 //Rename This
             // you can add more Questitem# item bases for each item you want
             // add more Quest#Item#
 
-            ItemBase? Quest1Item1 = Core.EnsureLoad(QuestIDs[1])?.Rewards.FirstOrDefault(x => x.Name == "Item");
-            ItemBase? Quest2Item1 = Core.EnsureLoad(QuestIDs[2])?.Rewards.FirstOrDefault(x => x.Name == "Item");
+            ItemBase? Quest1Item1 = Core.EnsureLoad(PickRewardQuest)?.Rewards.FirstOrDefault(x => x.Name == "Item");
+            ItemBase? Quest1Item2 = Core.EnsureLoad(PickRewardQuest)?.Rewards.FirstOrDefault(x => x.Name == "Item");
             //add more itembases if needed, and if the quest is different change the QuetID in teh `EnsureLoad()`.
 
             while (!Bot.ShouldExit
-         //Change the quant if u dont want max stack (replace the Item!.MaxStack with your desired quant)
-         && !Core.CheckInventory(Quest1Item1!.Name, Quest1Item1!.MaxStack)
-         && !Core.CheckInventory(Quest2Item1!.Name, Quest2Item1!.MaxStack))
+                    //Change the quant if u dont want max stack (replace the Item!.MaxStack with your desired quant)
+                    && !Core.CheckInventory(Quest1Item1!.Name, Quest1Item1!.MaxStack)
+                    && !Core.CheckInventory(Quest1Item2!.Name, Quest1Item2!.MaxStack))
             //add `&& !Core.CheckInventory(item!.Name, item!.MaxStack)` if more items are in the rewards.
             // 'QuestIDs' can be edited above and dont need to be inserted here vv
             {
@@ -150,9 +150,9 @@ public class ArmyTemplatev6 //Rename This
 
                 // --Max stack all--
                 if (Bot.Config!.Get<Rewards>("QuestRewards") == Rewards.All)
-                    foreach (var rewardValue in Enum.GetValues(typeof(Rewards)).Cast<int>().Where(value => value != (int)Rewards.All))
+                    foreach (var rewardValue in Enum.GetValues(typeof(Rewards)).Cast<int>().Where(value => value != (int)Rewards.All || value != (int)Rewards.Off))
                     {
-                        var rewardItem = Bot.Inventory.Items.FirstOrDefault(x => x.ID == rewardValue);
+                        ItemBase? rewardItem = Core.EnsureLoad(PickRewardQuest)?.Rewards.FirstOrDefault(x => x.ID == rewardValue);
 
                         //!!!dont change the quant here ----------------------------------vvvvv!!!
                         if (rewardItem != null && !Core.CheckInventory(rewardItem.Name, rewardItem.MaxStack))
@@ -165,7 +165,7 @@ public class ArmyTemplatev6 //Rename This
                 // --Max stack specific--
                 else if (Bot.Config!.Get<Rewards>("QuestRewards") != Rewards.All && Bot.Config!.Get<Rewards>("QuestRewards") != Rewards.Off)
                 {
-                    foreach (var rewardValue in Enum.GetValues(typeof(Rewards)).Cast<int>().Where(value => value != (int)Rewards.All))
+                    foreach (var rewardValue in Enum.GetValues(typeof(Rewards)).Cast<int>().Where(value => value != (int)Rewards.All || value != (int)Rewards.Off))
                     {
                         ItemBase? RewardID = Core.EnsureLoad(PickRewardQuest)?.Rewards.FirstOrDefault(x => x.ID == rewardValue);
                         switch (rewardValue)
