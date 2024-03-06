@@ -159,7 +159,7 @@ public class CoreAdvanced
     /// <param name="map">The map where the shop can be loaded from</param>
     /// <param name="shopID">The shop ID to load the shopdata</param>
     /// <param name="findIngredients">A switch nested in a void that will explain this function where to get items</param>
-    public void StartBuyAllMerge(string map, int shopID, Action findIngredients, string? buyOnlyThis = null, string[]? itemBlackList = null, mergeOptionsEnum? buyMode = null, string Group = "First")
+    public void StartBuyAllMerge(string map, int shopID, Action findIngredients, string? buyOnlyThis = null, string[]? itemBlackList = null, mergeOptionsEnum? buyMode = null, string Group = "First", int ShopItemID = 0)
     {
         if (buyOnlyThis == null && buyMode == null)
             Bot.Config!.Configure();
@@ -182,13 +182,16 @@ public class CoreAdvanced
         List<ShopItem> items = new();
         bool memSkipped = false;
 
-        foreach (ShopItem item in shopItems)
+        foreach (ShopItem item in shopItems.Where(item => item.Cost < 1))
         {
-            if (Core.CheckInventory(item.ID, toInv: false) ||
-                miscCatagories.Contains(item.Category) ||
-                (!String.IsNullOrEmpty(buyOnlyThis) && buyOnlyThis != item.Name) ||
-                (itemBlackList != null && itemBlackList.Any(b => b.ToLower() == item.Name.ToLower())))
+            if (Core.CheckInventory(item.ShopItemID, toInv: false) ||
+                    miscCatagories.Contains(item.Category) ||
+                    (!String.IsNullOrEmpty(buyOnlyThis) && buyOnlyThis != item.Name) ||
+                    (itemBlackList != null && itemBlackList.Any(b => b.ToLower() == item.Name.ToLower())))
+            {
+                Core.Logger($"we own it {item.Name}[{item.ID}][{item.ShopItemID}]");
                 continue;
+            }
 
             if (Core.IsMember || !item.Upgrade)
             {
@@ -199,6 +202,7 @@ public class CoreAdvanced
                 }
                 else if (mode != 1)
                     items.Add(item);
+
                 else if (item.Coins)
                     items.Add(item);
             }
@@ -243,10 +247,10 @@ public class CoreAdvanced
 
                 getIngredients(item, 1);
 
-                if (!matsOnly && !Core.CheckInventory(item.ID, toInv: false))
+                if (!matsOnly && !Core.CheckInventory(item.ShopItemID, toInv: false))
                 {
                     Core.Logger($"Buying {item.Name} (#{t++}/{items.Count})");
-                    BuyItem(map, shopID, item.ID, shopItemID: item.ShopItemID);
+                    BuyItem(map, shopID, item.ID, shopItemID: ShopItemID);
 
                     if (item.Coins)
                         Core.ToBank(item.Name);

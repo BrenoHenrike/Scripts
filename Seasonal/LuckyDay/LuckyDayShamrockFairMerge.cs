@@ -36,14 +36,14 @@ public class LuckyDayShamrockFairMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
+    public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null, int ShopItemID = new())
     {
         if (!Core.isSeasonalMapActive("rainbow"))
 
             return;
-            
+
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("rainbow", 256, findIngredients, buyOnlyThis, buyMode: buyMode);
+        Adv.StartBuyAllMerge("rainbow", 256, findIngredients, buyOnlyThis, buyMode: buyMode, ShopItemID: ShopItemID);
 
         #region Dont edit this part
         void findIngredients()
@@ -87,6 +87,9 @@ public class LuckyDayShamrockFairMerge
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
+                    
+                    if (!Core.CheckInventory(req.Name, quant))
+                        Core.Logger($"not enough {req.Name}");
                     break;
 
                 case "Rainbow Shard":
