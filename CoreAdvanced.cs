@@ -188,10 +188,7 @@ public class CoreAdvanced
                     miscCatagories.Contains(item.Category) ||
                     (!String.IsNullOrEmpty(buyOnlyThis) && buyOnlyThis != item.Name) ||
                     (itemBlackList != null && itemBlackList.Any(b => b.ToLower() == item.Name.ToLower())))
-            {
-                Core.Logger($"we own it {item.Name}[{item.ID}][{item.ShopItemID}]");
                 continue;
-            }
 
             if (Core.IsMember || !item.Upgrade)
             {
