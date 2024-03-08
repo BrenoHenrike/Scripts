@@ -117,8 +117,9 @@ tags: story, quest, complete, all
 //cs_include Scripts/Story/ExaltiaTower.cs
 //cs_include Scripts/Story/Extinction.cs
 
-//cs_include Scripts/Story/FrozenNorthlands.cs
 //cs_include Scripts/Story/FableForest.cs
+//cs_include Scripts/Story/Friendship.cs
+//cs_include Scripts/Story/FrozenNorthlands.cs
 
 //cs_include Scripts/Story/HuntersMoon.cs
 
@@ -327,8 +328,9 @@ public class AllStories
     public ExaltiaTower ExaltiaTower = new();
     public Extinction Extinction = new();
 
-    public FrozenNorthlands FrozenNorthlands = new();
     public FableForest FableForest = new();
+    public Friendship Friendship = new();
+    public FrozenNorthlands FrozenNorthlands = new();
 
     public Gamehaven Gamehaven = new();
     public GiantTaleStory GiantTaleStory = new();
@@ -728,11 +730,16 @@ public class AllStories
         Extinction.StoryLine();
         Core.Logger($"Story: Extinction - Complete");
 
+        FableForest.StoryLine();
+        Core.Logger($"Story: FableForest - Complete");
+
+        Friendship.CompleteStory();
+        Core.Logger($"Story: Friendship - Complete");
+
         FrozenNorthlands.Storyline();
         Core.Logger($"Story: Frozen Northlands - Complete");
 
-        FableForest.StoryLine();
-        Core.Logger($"Story: FableForest - Complete");
+
 
 
         HuntersMoon.StoryLine();
