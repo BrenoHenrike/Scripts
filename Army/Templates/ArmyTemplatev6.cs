@@ -40,8 +40,8 @@ public class ArmyTemplatev6 //Rename This
 
 
     // Comment out one of these depending:
-    readonly int[] QuestIDs = { 0000 };
-    readonly int PickRewardQuest = 0000;
+    readonly int[] QuestIDs = { 1, 2, 3, 4, 5 };
+    readonly int PickRewardQuest = 1;
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -95,7 +95,7 @@ public class ArmyTemplatev6 //Rename This
             // ArmyBits("map", new[] { "cell" }, new[] { 1, 2 }, new[] { "item" }, 1, ClassType.Solo, QuestIDs);
 
             // 3. Multi-target + mMlti (item-quant)s: (highlight lines 95-103 and press control+/ to uncomment it) vv
-            // ArmyBits("map", new[] { "cell", "cell" }, new[] { 1, 2, 3 }, new[]
+           ArmyBits("map", new[] { "cell", "cell" }, new[] { 1, 2, 3 }, new[] {("item", 99999)}, ClassType.Farm, QuestIDs);
             // {
 
             //     //Edit item and quants here
@@ -218,123 +218,7 @@ public class ArmyTemplatev6 //Rename This
     //ignore everything below here vvvvvv
     #region IgnoreME
 
-    // Use this one for when its a single map, and your just aggroing around (Example: Dreadrock LTs)
-    public void ArmyBits(string map, string[] cell, int MonsterMapID, string item, int quant, ClassType classToUse, int[] QuestIDs)
-    {
-        // Setting up private rooms and class
-        Core.PrivateRooms = true;
-        Core.PrivateRoomNumber = Army.getRoomNr();
-        Core.EquipClass(classToUse);
-
-        Core.AddDrop(item);
-        Core.AddDrop(Core.QuestRewards(QuestIDs));
-
-        Core.EnsureAcceptmultiple(true, QuestIDs);
-
-        // Single-target scenario
-        // Explanation: For each item you specified, target the specified MonsterMapID
-
-        // Aggro and divide on cells
-        Army.AggroMonMIDs(MonsterMapID);
-        Army.AggroMonStart(map);
-        Army.DivideOnCells(cell);
-
-        // Farm the specified item
-        while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
-        {
-            foreach (Monster Mob in Bot.Monsters.CurrentAvailableMonsters.Where(m => m.MapID == MonsterMapID))
-            {
-                while (!Bot.ShouldExit && Core.IsMonsterAlive(Mob.MapID, true))
-                {
-                    Bot.Combat.Attack(Mob.MapID);
-                    if (Bot.Config!.Get<Rewards>("QuestRewards") == Rewards.Off)
-                    {
-                        foreach (int Q in QuestIDs)
-                            if (Bot.Quests.CanComplete(Q))
-                                Bot.Quests.Complete(Q);
-                    }
-                    if (Core.CheckInventory(item, quant))
-                        return;
-                }
-            }
-        }
-
-        // Clean up
-        Army.AggroMonStop(true);
-        Core.JumpWait();
-        Core.CancelRegisteredQuests();
-    }
-
-    // Use this one for multi-mob farms (like VA's where there are multiple bosses)
-    public void ArmyBits(string map, string[] cell, int[] MonsterMapIDs, string item, int quant, ClassType classToUse, int[] QuestIDs)
-    {
-        // Setting up private rooms and class
-        Core.PrivateRooms = true;
-        Core.PrivateRoomNumber = Army.getRoomNr();
-        Core.EquipClass(classToUse);
-
-        Core.AddDrop(item);
-        Core.AddDrop(Core.QuestRewards(QuestIDs));
-
-        Core.EnsureAcceptmultiple(true, QuestIDs);
-
-
-        bool inventoryConditionMet = Core.CheckInventory(item, quant);
-
-        if (inventoryConditionMet)
-            return;
-
-        Army.AggroMonMIDs(MonsterMapIDs);
-        Army.AggroMonStart(map);
-        Army.DivideOnCells(cell);
-        Core.FarmingLogger(item, quant);
-        Bot.Player.SetSpawnPoint();
-        string dividedCell = Bot.Player.Cell;
-
-        while (!Bot.ShouldExit && !inventoryConditionMet)
-        {
-            foreach (int monsterMapID in MonsterMapIDs)
-            {
-                // Making sure you're on divided cell
-                while (!Bot.ShouldExit && Bot.Player.Cell != dividedCell)
-                {
-                    Core.Jump(dividedCell);
-                    Core.Sleep();
-                    if (Bot.Player.Cell == dividedCell)
-                        break;
-                }
-
-                // Attacking MID
-                while (!Bot.ShouldExit && Core.IsMonsterAlive(monsterMapID, useMapID: true))
-                    Bot.Combat.Attack(monsterMapID);
-
-                // Completing Quest
-                if (Bot.Config!.Get<Rewards>("QuestRewards") == Rewards.Off)
-                {
-                    foreach (int questID in QuestIDs)
-                        if (Bot.Quests.CanComplete(questID))
-                            Bot.Quests.Complete(questID);
-                }
-
-                inventoryConditionMet = Core.CheckInventory(item, quant);
-
-                // Break out of the foreach loop
-                if (inventoryConditionMet)
-                {
-                    Army.AggroMonStop(true);
-                    Core.JumpWait();
-                    return;
-                }
-            }
-        }
-
-        // Clean up
-        Army.AggroMonStop(true);
-        Core.JumpWait();
-        Core.CancelRegisteredQuests();
-    }
-
-    // Use for multiple item-quants
+    // Use for used for: MUltiple mobs, items, and quanities of those items.
     public void ArmyBits(string map, string[] cell, int[] MonsterMapIDs, (string, int)[] ItemandQuants, ClassType classToUse, int[] QuestIDs)
     {
         // Setting up private rooms and class
@@ -371,47 +255,69 @@ public class ArmyTemplatev6 //Rename This
         {
             foreach (int monsterMapID in MonsterMapIDs)
             {
-                // Making sure you're on the divided cell
-                while (!Bot.ShouldExit && Bot.Player.Cell != dividedCell)
-                {
-                    Core.Jump(dividedCell);
-                    Core.Sleep();
-                    if (Bot.Player.Cell == dividedCell)
-                        break;
-                }
-
-                // Attacking MID
                 while (!Bot.ShouldExit && Core.IsMonsterAlive(monsterMapID, useMapID: true))
+                {
+                    while (!Bot.ShouldExit && Bot.Player.Cell != dividedCell)
+                    {
+                        // Ensure the player is on the divided cell
+                        Core.Jump(dividedCell);
+                        Core.Sleep();
+                        if (Bot.Player.Cell == dividedCell)
+                            goto Attack;
+                    }
+
+                // Attack the monster
+                Attack:
                     Bot.Combat.Attack(monsterMapID);
 
-                // Completing Quest
-                if (Bot.Config!.Get<Rewards>("QuestRewards") == Rewards.Off)
-                {
-                    foreach (int questID in QuestIDs)
+                    // Check inventory conditions
+                    inventoryConditionMet = ItemandQuants.All(t => Core.CheckInventory(t.Item1, t.Item2, toInv: true));
+
+                    // Break loop if inventory condition is met
+                    if (inventoryConditionMet)
                     {
-                        if (Bot.Quests.CanComplete(questID))
-                            Bot.Quests.Complete(questID);
+                        // Clean up and exit
+                        Army.AggroMonStop(true);
+                        Core.JumpWait();
+                        goto CleanUp;
                     }
-                }
 
-                // Checking inventory for each item
-                inventoryConditionMet = ItemandQuants.All(t => Core.CheckInventory(t.Item1, t.Item2, toInv: true));
-
-                // Break out of the foreach loop
-                if (inventoryConditionMet)
-                {
-                    Army.AggroMonStop(true);
-                    Core.JumpWait();
-                    return;
+                    // Check and complete quests if conditions are met after attacking
+                    if (Bot.Quests?.CanComplete(QuestIDs.FirstOrDefault()) ?? false)
+                    {
+                        // Check if quest rewards are disabled
+                        if (Bot.Config!.Get<Rewards>("QuestRewards") == Rewards.Off)
+                        {
+                            // Iterate through quest IDs and complete them
+                            foreach (int questID in QuestIDs)
+                            {
+                                if (Bot.Quests!.CanComplete(questID))
+                                    Core.EnsureCompleteMulti(questID);
+                            }
+                        }
+                    }
                 }
             }
         }
 
-        // Clean up
+    // Clean up section
+    CleanUp:
         Army.AggroMonStop(true);
         Core.JumpWait();
         Core.CancelRegisteredQuests();
+
     }
 
     #endregion IgnoreME
+
+
+/* Tato Note
+    1. removed the other 2, as this one encompasses the same ideas.
+    2. its easier this way to keep track of things.
+*/
+
+/* ToDos: 
+    1. Seperate pick & non-pick into seperate templates. ETA: eventualy~
+    2. Clean up template, rewrite comments as they are outdated.
+*/
 }

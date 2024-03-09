@@ -282,7 +282,8 @@ public class ArmyGold
         Core.RegisterQuests(9601, 9602, 9603, 9605, 9606);
 
         Core.EquipClass(ClassType.Farm);
-        Army.AggroMonCells("r2", "r4", "r5", "r6", "r7", "r9");
+        Army.AggroMonMIDs(4, 5, 6, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 25, 26, 27);
+        // Army.AggroMonCells("r2", "r4", "r5", "r6", "r7", "r9");
         Army.AggroMonStart("hakuwar");
         Army.DivideOnCells("r2", "r4", "r5", "r6", "r7", "r9");
 
@@ -291,6 +292,7 @@ public class ArmyGold
 
         while (!Bot.ShouldExit && Bot.Player.Gold < 999999999)
             Bot.Combat.Attack("*");
+
         Army.AggroMonStop(true);
         Farm.ToggleBoost(BoostType.Gold, false);
         Core.CancelRegisteredQuests();
