@@ -20861,6 +20861,22 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/Nulgath/TempleSiegeMerge.cs"
   },
   {
+    "name": "Legion Barracks",
+    "description": "This script completes the storyline in \\legionbarracks.",
+    "tags": [
+      "legionbarracks",
+      "legion",
+      "barracks",
+      "seasonal",
+      "dage",
+      "story"
+    ],
+    "path": "Seasonal/StaffBirthdays/DageTheEvil/04LegionBarracks.cs",
+    "size": 669,
+    "fileName": "04LegionBarracks.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/04LegionBarracks.cs"
+  },
+  {
     "name": "Future Legion Story",
     "description": "This will complete the Future Legion story.",
     "tags": [
@@ -20898,7 +20914,7 @@
       "null"
     ],
     "path": "Seasonal/StaffBirthdays/DageTheEvil/CoreDageBirthday.cs",
-    "size": 5434,
+    "size": 6887,
     "fileName": "CoreDageBirthday.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/CoreDageBirthday.cs"
   },
@@ -20963,6 +20979,8 @@
       "future legion",
       "undervoid",
       "under void",
+      "legionbarracks",
+      "legion barracks",
       "dage",
       "seasonal",
       "birthday",
@@ -20971,7 +20989,7 @@
       "all"
     ],
     "path": "Seasonal/StaffBirthdays/DageTheEvil/00DoAll.cs",
-    "size": 730,
+    "size": 761,
     "fileName": "00DoAll.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/00DoAll.cs"
   },
@@ -21062,6 +21080,45 @@
     "size": 5411,
     "fileName": "UnderworldTeamMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/UnderworldTeamMerge.cs"
+  },
+  {
+    "name": "Legion Barracks Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Legion Barracks Merge [2420] in /legionbarracks",
+    "tags": [
+      "legion",
+      "barracks",
+      "merge",
+      "legionbarracks",
+      "skeletal",
+      "sacrificer",
+      "scowling",
+      "black",
+      "sun",
+      "penacho",
+      "skull",
+      "immortal",
+      "tepoztopilli",
+      "underworld",
+      "sentinel",
+      "ponytail",
+      "shroud",
+      "decima",
+      "render",
+      "renders",
+      "ptolomea",
+      "necromancer",
+      "blindfold",
+      "morph",
+      "possessed",
+      "kokytos",
+      "grand",
+      "antaeus",
+      "spear"
+    ],
+    "path": "Seasonal/StaffBirthdays/DageTheEvil/LegionBarracksMerge.cs",
+    "size": 6580,
+    "fileName": "LegionBarracksMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/LegionBarracksMerge.cs"
   },
   {
     "name": "DageWar50Merge",
