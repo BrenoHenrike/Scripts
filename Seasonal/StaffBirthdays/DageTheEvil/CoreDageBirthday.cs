@@ -30,6 +30,7 @@ public class CoreDageBirthday
         DarkPath();
         FutureLegion();
         Undervoid();
+        LegionBarracks();
     }
 
     public void DarkPath()
@@ -179,4 +180,51 @@ public class CoreDageBirthday
         //Conquer Death
         Story.KillQuest(3406, "undervoid", "Death");
     }
+
+    public void LegionBarracks()
+    {
+        if (Core.isCompletedBefore(9619) || !Core.isSeasonalMapActive("legionbarracks"))
+            return;
+
+        Story.PreLoad(this);
+
+        // Backroom Whispers (9611)
+        Story.KillQuest(9611, "legionbarracks", "Legion Evocator");
+
+        // Cur Dolorem Sentis (9612)
+        Story.MapItemQuest(9612, "legionbarracks", 12774, 3);
+
+        // Genuine Character (9608)
+        Story.KillQuest(9608, "legionbarracks", "Legion Knight");
+
+        // Seen the Light (9613)
+        Story.KillQuest(9613, "legionbarracks", "Sullied Master");
+
+        // Bad Beef (9614)
+        Story.KillQuest(9614, "legionbarracks", "Off-Duty Minos");
+
+        // Tomb of Memories (9615)
+        Story.KillQuest(9615, "legionbarracks", "Enlightened Master");
+
+        // Reap What's Sown (9616)
+        Story.KillQuest(9616, "legionbarracks", "Overdriven paladin");
+        Story.MapItemQuest(9616, "legionbarracks", 12775);
+
+
+        // Wails of Unrest (9617)
+        Story.KillQuest(9617, "legionbarracks", new[] { "Legion Evocator", "Legion Knight" });
+
+        // Lamenting Aestiua (9618)
+        Story.MapItemQuest(9618, "legionbarracks", new[] { 12776, 12777 });
+
+        // Unblemished Snow (9619)
+        if (!Core.isCompletedBefore(9619))
+        {
+            Core.EquipClass(ClassType.Solo);
+            Story.KillQuest(9619, "legionbarracks", "Paladin Arondight");
+        }
+
+    }
+
 }
+

@@ -1,14 +1,14 @@
 /*
-name: Dage Birthday (All)
-description: This script will complete all the seasonal Dage Birthday storylines.
-tags: darkpath,dark path,futurelegion,future legion,undervoid,under void,legionbarracks,legion barracks,dage,seasonal,birthday,march,story,all
+name: Legion Barracks
+description: This script completes the storyline in \legionbarracks.
+tags: legionbarracks,legion,barracks, seasonal, dage, story
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Seasonal\StaffBirthdays\DageTheEvil\CoreDageBirthday.cs
 using Skua.Core.Interfaces;
 
-public class DageBirthdayAll
+public class LegionBarracks
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
@@ -18,7 +18,7 @@ public class DageBirthdayAll
     {
         Core.SetOptions();
 
-        Dage.DoAll();
+        Dage.LegionBarracks();
         Core.SetOptions(false);
     }
 }
