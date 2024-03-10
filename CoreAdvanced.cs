@@ -184,7 +184,7 @@ public class CoreAdvanced
 
         foreach (ShopItem item in shopItems.Where(item => item.Cost < 1))
         {
-            if (Core.CheckInventory(item.ShopItemID, toInv: false) ||
+            if (Core.CheckInventory(item.ID, toInv: false) ||
                     miscCatagories.Contains(item.Category) ||
                     (!String.IsNullOrEmpty(buyOnlyThis) && buyOnlyThis != item.Name) ||
                     (itemBlackList != null && itemBlackList.Any(b => b.ToLower() == item.Name.ToLower())))
@@ -244,13 +244,13 @@ public class CoreAdvanced
 
                 getIngredients(item, 1);
 
-                if (!matsOnly && !Core.CheckInventory(item.ShopItemID, toInv: false))
+                if (!matsOnly && !Core.CheckInventory(item.ID, toInv: false))
                 {
                     Core.Logger($"Buying {item.Name} (#{t++}/{items.Count})");
                     BuyItem(map, shopID, item.ID, shopItemID: ShopItemID);
 
                     if (item.Coins)
-                        Core.ToBank(item.Name);
+                        Core.ToBank(item.ID);
                     else Core.Logger($"{item} could not be banked");
                 }
             }
