@@ -78,7 +78,7 @@ public class LegionBarracksMerge
                         Core.KillMonster("legionbarracks", "r4", "Left", "*", "Legion Cocytus Engraving", 6, log: false);
                         Core.HuntMonster("legionbarracks", "Overdriven paladin", "Paladin's Death Tag", 6, log: false);
                         Core.EquipClass(ClassType.Solo);
-                        Core.HuntMonster("legionbarracks", "Paladin Arondight", "Arondlight's Starlight", log: false);
+                        Core.HuntMonster("legionbarracks", "Paladin Arondight", "Arondight's Starlight", log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
