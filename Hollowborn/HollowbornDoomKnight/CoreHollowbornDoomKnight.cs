@@ -93,7 +93,7 @@ public class CoreHollowbornDoomKnight
         ADKReturns();
     }
 
-    public void ADK(int quant = 125)
+    public void ADK(int quant = 300)
     {
         if (Core.CheckInventory("Dark Fragment", quant))
             return;
