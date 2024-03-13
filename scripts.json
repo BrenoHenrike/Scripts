@@ -17586,6 +17586,22 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Materials/Unidentified13.cs"
   },
   {
+    "name": "Approval And Favor",
+    "description": "This script will farm Nulgath's Approval and Archfiend's Favor.",
+    "tags": [
+      "nulgath",
+      "approval",
+      "favor",
+      "archfiend",
+      "farm",
+      "mats"
+    ],
+    "path": "Nation/Materials/ApprovalAndFavor.cs",
+    "size": 572,
+    "fileName": "ApprovalAndFavor.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Materials/ApprovalAndFavor.cs"
+  },
+  {
     "name": "FiendToken",
     "description": "null",
     "tags": [
