@@ -69,7 +69,8 @@ public class CoreNation
     "Voucher of Nulgath (non-mem)",
     "Gem of Nulgath",
     "Unidentified 10",
-    "Essence of Nulgath"
+    "Essence of Nulgath",
+    "Receipt of Swindle"
     };
 
     /// <summary>
@@ -724,23 +725,21 @@ public class CoreNation
 
 
         Core.AddDrop(
-                    (item != null ? new[] { item } : Enumerable.Empty<string>())
-                    .Concat(Core.QuestRewards(9542))
-                    .Concat(
-                        SuppliesRewards.Concat(
-                            sellMemVoucher ? new[] { "Voucher of Nulgath" } : Enumerable.Empty<string>()
-                        ).Append("Relic of Chaos")
-                    )
-                    .Concat(
-                        returnPolicyDuringSupplies
-                            ? new[] { Uni(1), Uni(6), Uni(9), Uni(16), Uni(20) }
-                            : Enumerable.Empty<string>()
-                    )
-                    .ToArray()
-                );
+    // Include 'item' if it's not null
+    (item != null ? new[] { item } : Enumerable.Empty<string>())
+    .Concat(Core.QuestRewards(9542)) // Add quest rewards
 
-        if (returnPolicyDuringSupplies)
-            Core.EnsureAccept(7551);
+    // Concatenate supplies rewards including 'Voucher of Nulgath' if 'sellMemVoucher' is true
+    .Concat(SuppliesRewards.Concat(sellMemVoucher ? new[] { "Voucher of Nulgath" } : Enumerable.Empty<string>()).Append("Relic of Chaos"))
+
+    // Add additional items during supplies if 'returnPolicyDuringSupplies' is true, including 'Receipt of Swindle'
+    .Concat(returnPolicyDuringSupplies
+        ? new[] { Uni(1), Uni(6), Uni(9), Uni(16), Uni(20), "Receipt of Swindle" }
+        : Enumerable.Empty<string>()
+    )
+    .ToArray() // Convert to array for adding to the drop list
+);
+
 
         Core.EquipClass(ClassType.Solo);
         if (item == null)
@@ -927,13 +926,19 @@ public class CoreNation
         string[] selectedDrops = item != null ? new string[] { item } : bagDrops[..^11];
         Core.AddDrop(selectedDrops);
 
+        //add `Receipt of Swindle` from swindles return rewards.
+        Core.AddDrop("Receipt of Swindle");
+
+        //if running standalone, add the reward slection.
+        if (Reward != SwindlesReturnReward.None)
+            Core.AddDrop((int)Reward);
+
         // Check if return policy and sell voucher are active
         sellMemVoucher = Core.CBOBool("Nation_SellMemVoucher", out bool _sellMemVoucher) && _sellMemVoucher;
         returnPolicyDuringSupplies = Core.CBOBool("Nation_ReturnPolicyDuringSupplies", out bool _returnSupplies) && _returnSupplies;
 
         Core.Logger(returnPolicyDuringSupplies ? "Return Policy During Supplies: true" : "Return Policy During Supplies: false");
         Core.Logger($"Sell Voucher of Nulgath: {sellMemVoucher}");
-
 
         string[]? rPDSuni = null;
         if (returnPolicyDuringSupplies)
