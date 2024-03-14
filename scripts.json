@@ -16126,7 +16126,7 @@
       "enroaching shadows"
     ],
     "path": "Army/Quests/ArmyNSODDaily.cs",
-    "size": 3114,
+    "size": 3120,
     "fileName": "ArmyNSODDaily.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Quests/ArmyNSODDaily.cs"
   },
@@ -16155,7 +16155,7 @@
       "fealty"
     ],
     "path": "Army/ArmyLegion/ArmyLRFull.cs",
-    "size": 18287,
+    "size": 18329,
     "fileName": "ArmyLRFull.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyLegion/ArmyLRFull.cs"
   },
@@ -16231,7 +16231,7 @@
       "army"
     ],
     "path": "Army/ArmyNulgath/ArmyTaintedGem.cs",
-    "size": 3147,
+    "size": 3153,
     "fileName": "ArmyTaintedGem.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyNulgath/ArmyTaintedGem.cs"
   },
@@ -16257,7 +16257,7 @@
       "reagents"
     ],
     "path": "Army/ArmyNulgath/ArmySupplies.cs",
-    "size": 8228,
+    "size": 8230,
     "fileName": "ArmySupplies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyNulgath/ArmySupplies.cs"
   },
@@ -16284,7 +16284,7 @@
       "voucher item totem of nulgath"
     ],
     "path": "Army/ArmyNulgath/ArmyVoucherItemofNulgath.cs",
-    "size": 4462,
+    "size": 4464,
     "fileName": "ArmyVoucherItemofNulgath.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyNulgath/ArmyVoucherItemofNulgath.cs"
   },
@@ -16309,7 +16309,7 @@
       "army"
     ],
     "path": "Army/ArmyNulgath/ArmyBloodyChaos.cs",
-    "size": 6297,
+    "size": 6299,
     "fileName": "ArmyBloodyChaos.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyNulgath/ArmyBloodyChaos.cs"
   },
@@ -16328,7 +16328,7 @@
       "doom"
     ],
     "path": "Army/Various/ArmySmartVoidAuas.cs",
-    "size": 5846,
+    "size": 5848,
     "fileName": "ArmySmartVoidAuas.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmySmartVoidAuas.cs"
   },
@@ -16340,7 +16340,7 @@
       "prismatic seams"
     ],
     "path": "Army/Various/ArmyPrismaticSeams.cs",
-    "size": 2166,
+    "size": 2168,
     "fileName": "ArmyPrismaticSeams.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmyPrismaticSeams.cs"
   },
@@ -16354,7 +16354,7 @@
       "dso"
     ],
     "path": "Army/Various/ArmyPennyForYourThoughts.cs",
-    "size": 2358,
+    "size": 2360,
     "fileName": "ArmyPennyForYourThoughts.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmyPennyForYourThoughts.cs"
   },
@@ -16389,7 +16389,7 @@
       "errands"
     ],
     "path": "Army/Various/ArmyDarkonErrands.cs",
-    "size": 4733,
+    "size": 4735,
     "fileName": "ArmyDarkonErrands.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmyDarkonErrands.cs"
   },
@@ -16431,7 +16431,7 @@
       "\"elemental binding\""
     ],
     "path": "Army/Various/ArmyArchMageBossItems.cs",
-    "size": 6270,
+    "size": 6272,
     "fileName": "ArmyArchMageBossItems.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmyArchMageBossItems.cs"
   },
@@ -16447,7 +16447,7 @@
       "doall"
     ],
     "path": "Army/Various/ArmyLightCasterFull.cs",
-    "size": 4873,
+    "size": 4875,
     "fileName": "ArmyLightCasterFull.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmyLightCasterFull.cs"
   },
@@ -16509,7 +16509,7 @@
       "higure"
     ],
     "path": "Army/ArmySeasonal/ArmyHigure.cs",
-    "size": 22300,
+    "size": 22304,
     "fileName": "ArmyHigure.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmySeasonal/ArmyHigure.cs"
   },
@@ -16521,7 +16521,7 @@
       "[item]"
     ],
     "path": "Army/ArmySeasonal/ArmyPoly.cs",
-    "size": 4427,
+    "size": 4431,
     "fileName": "ArmyPoly.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmySeasonal/ArmyPoly.cs"
   },
@@ -16533,7 +16533,7 @@
       "army"
     ],
     "path": "Army/ArmyHollowBorn/ArmyHollowSoul.cs",
-    "size": 2971,
+    "size": 2973,
     "fileName": "ArmyHollowSoul.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyHollowBorn/ArmyHollowSoul.cs"
   },
@@ -16546,7 +16546,7 @@
       "army"
     ],
     "path": "Army/Classes/ArmyVoidHighlord.cs",
-    "size": 30963,
+    "size": 31005,
     "fileName": "ArmyVoidHighlord.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Classes/ArmyVoidHighlord.cs"
   },
@@ -16559,7 +16559,7 @@
       "army"
     ],
     "path": "Army/Classes/DragonofTimeArmy.cs",
-    "size": 31316,
+    "size": 31344,
     "fileName": "DragonofTimeArmy.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Classes/DragonofTimeArmy.cs"
   },
@@ -16590,7 +16590,7 @@
       "icestorm arena"
     ],
     "path": "Army/ArmyFarm/ArmyIceWing.cs",
-    "size": 2404,
+    "size": 2406,
     "fileName": "ArmyIceWing.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/ArmyIceWing.cs"
   },
@@ -16618,7 +16618,7 @@
       "aggro"
     ],
     "path": "Army/ArmyFarm/ArmyLeveling.cs",
-    "size": 12433,
+    "size": 12461,
     "fileName": "ArmyLeveling.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/ArmyLeveling.cs"
   },
@@ -22259,7 +22259,7 @@
       "blacksmithing"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyBlackSmithRep.cs",
-    "size": 4409,
+    "size": 4415,
     "fileName": "ArmyBlackSmithRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyBlackSmithRep.cs"
   },
@@ -22350,7 +22350,7 @@
       "aegis"
     ],
     "path": "Army/ArmyFarm/Rep/RepTemplate.cs",
-    "size": 2191,
+    "size": 2193,
     "fileName": "RepTemplate.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/RepTemplate.cs"
   },
@@ -22621,7 +22621,7 @@
       "aegis"
     ],
     "path": "Army/ArmyFarm/Rep/CoreArmyRep.cs",
-    "size": 10617,
+    "size": 10619,
     "fileName": "CoreArmyRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/CoreArmyRep.cs"
   },
