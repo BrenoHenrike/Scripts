@@ -70,7 +70,7 @@ public class ArmyPennyForYourThoughts
 
         while (!Bot.ShouldExit && !Core.CheckInventory("Dark Spirit Orb", 10500))
             Bot.Combat.Attack("*");
-        Army.waitForParty("whitemap", "Dark Spirit Orb");
+        //Army.waitForParty("whitemap", "Dark Spirit Orb");
         Army.AggroMonStop(true);
         Core.CancelRegisteredQuests();
     }

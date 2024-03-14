@@ -75,7 +75,7 @@ public class ArmyLeveling
         {
             case MethodV2.IceStormArena:
                 Core.EquipClass(ClassType.Farm);
-                Army.waitForParty("whitemap");
+                //Army.waitForParty("whitemap");
                 Army.AggroMonCells("r22");
                 Army.AggroMonStart("icestormarena");
                 Army.DivideOnCells("r22");
@@ -88,7 +88,7 @@ public class ArmyLeveling
                 Core.JumpWait();
                 Farm.ToggleBoost(BoostType.Experience, false);
                 Farm.ToggleBoost(BoostType.Gold, false);
-                Army.waitForParty("whitemap");
+                //Army.waitForParty("whitemap");
                 break;
 
             case MethodV2.IceStormUnder:
@@ -96,7 +96,7 @@ public class ArmyLeveling
                     Core.Logger("Player is below lvl 75, which is\n" +
                     "required for the map. --stopping", stopBot: true);
                 Core.EquipClass(ClassType.Farm);
-                Army.waitForParty("whitemap");
+                //Army.waitForParty("whitemap");
                 Army.AggroMonCells("r2");
                 Army.AggroMonStart("icestormunder");
                 Army.DivideOnCells("r2");
@@ -108,7 +108,7 @@ public class ArmyLeveling
                 Core.JumpWait();
                 Farm.ToggleBoost(BoostType.Experience, false);
                 Farm.ToggleBoost(BoostType.Gold, false);
-                Army.waitForParty("whitemap");
+                //Army.waitForParty("whitemap");
                 break;
 
             case MethodV2.IceWing:
@@ -116,7 +116,7 @@ public class ArmyLeveling
                     Core.Logger("Player is below lvl 75, required for\n" +
                     "the map --stopping", stopBot: true);
                 Core.EquipClass(ClassType.Solo);
-                Army.waitForParty("whitemap");
+                //Army.waitForParty("whitemap");
                 Army.AggroMonCells("Enter");
                 Army.AggroMonStart("icewing");
                 Army.DivideOnCells("Enter");
@@ -129,14 +129,14 @@ public class ArmyLeveling
                 Core.JumpWait();
                 Farm.ToggleBoost(BoostType.Experience, false);
                 Farm.ToggleBoost(BoostType.Gold, false);
-                Army.waitForParty("whitemap");
+                //Army.waitForParty("whitemap");
                 break;
 
             case MethodV2.SevenCirclesWar:
             HakuNerfed:
                 SC.CirclesWar(true);
                 Core.EquipClass(ClassType.Farm);
-                Army.waitForParty("whitemap");
+                //Army.waitForParty("whitemap");
                 Army.AggroMonCells("Enter", "r2", "r3");
                 Army.AggroMonStart("sevencircleswar");
                 Army.DivideOnCells("Enter", "r2", "r3");
@@ -149,14 +149,14 @@ public class ArmyLeveling
                 Core.JumpWait();
                 Farm.ToggleBoost(BoostType.Experience, false);
                 Farm.ToggleBoost(BoostType.Gold, false);
-                Army.waitForParty("whitemap");
+                //Army.waitForParty("whitemap");
                 break;
 
             case MethodV2.Streamwar:
                 SoW.TimestreamWar();
                 Core.EquipClass(ClassType.Farm);
                 Core.AddDrop("Prismatic Seams");
-                Army.waitForParty("whitemap");
+                //Army.waitForParty("whitemap");
                 Army.AggroMonCells("r3a");
                 Army.AggroMonStart("streamwar");
                 Army.DivideOnCells("r3a");
@@ -169,7 +169,7 @@ public class ArmyLeveling
                 Core.JumpWait();
                 Farm.ToggleBoost(BoostType.Experience, false);
                 Farm.ToggleBoost(BoostType.Gold, false);
-                Army.waitForParty("whitemap");
+                //Army.waitForParty("whitemap");
                 break;
 
 
@@ -218,7 +218,7 @@ public class ArmyLeveling
                 Core.JumpWait();
                 Farm.ToggleBoost(BoostType.Experience, false);
                 Farm.ToggleBoost(BoostType.Gold, false);
-                Army.waitForParty("whitemap");
+                //Army.waitForParty("whitemap");
                 break;
 
             case MethodV2.HakuWar:
@@ -250,7 +250,7 @@ public class ArmyLeveling
                 /*
                 case Method.Method:
                 Core.EquipClass(ClassType.ClassType);
-                Army.waitForParty("map");
+                //Army.waitForParty("map");
                 Army.AggroMonCells(cells);
                 Army.AggroMonStart("map");
                 Army.DivideOnCells("cell");
@@ -259,7 +259,7 @@ public class ArmyLeveling
                     Bot.Combat.Attack("*");
                 Army.AggroMonStop(true);
                 Core.JumpWait();
-                Army.waitForParty("whitemap");
+                //Army.waitForParty("whitemap");
                 break;
 
                 */
@@ -317,7 +317,7 @@ public class ArmyLeveling
                 break;
         }
         Core.JumpWait();
-        Army.waitForParty("Whitemap");
+        //Army.waitForParty("Whitemap");
     }
 
 }

@@ -74,14 +74,14 @@ public class ArmyBlackSmithRep
             Core.EquipClass(ClassType.Farm);
 
             Armykill("hydrachallenge", "Hydra Scale Piece", 75);
-            Army.waitForParty("maul");
+            //Army.waitForParty("maul");
 
             Core.EquipClass(ClassType.Solo);
             Armykill("maul", "Creature Shard");
-            Army.waitForParty("towerofdoom");
+            //Army.waitForParty("towerofdoom");
 
             Armykill("towerofdoom", "Monster Trophy", 15);
-            Army.waitForParty("hydrachallenge");
+            //Army.waitForParty("hydrachallenge");
 
             Core.EnsureComplete(8736);
         }

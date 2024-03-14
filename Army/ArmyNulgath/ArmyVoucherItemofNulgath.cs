@@ -114,7 +114,7 @@ public class ArmyVoucherItemofNulgath
         Core.EquipClass(ClassType.Farm);
         Core.FarmingLogger(item, quant);
 
-        Army.waitForParty("tercessuinotlim", item);
+        //Army.waitForParty("tercessuinotlim", item);
 
         Army.AggroMonMIDs(2, 3, 4, 5);
         Army.AggroMonStart("tercessuinotlim");

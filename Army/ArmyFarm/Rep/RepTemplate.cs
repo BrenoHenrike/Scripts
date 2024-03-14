@@ -75,7 +75,7 @@ public class ArmyRepTemplate
         Army.AggroMonStop(true);
         Farm.ToggleBoost(BoostType.Reputation, false);
         Core.CancelRegisteredQuests();
-        Army.waitForParty("whitemap");
+        //Army.waitForParty("whitemap");
     }
 }
 

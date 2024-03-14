@@ -107,7 +107,7 @@ public class ArchMageMatsArmy
         else
         {
             Core.Logger($"{item} Found.");
-            Army.waitForParty(map, item);
+            //Army.waitForParty(map, item);
         }
 
         if (Bot.Map.Name == "darkcarnax")
