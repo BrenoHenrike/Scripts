@@ -4271,7 +4271,7 @@
   },
   {
     "name": "Legion Revenant (Full)",
-    "description": "Does the entirety of the Legion Tevenant class garming from A to Z",
+    "description": "Does the entirety of the `Legion Revenant` class grind, from A to Z",
     "tags": [
       "legion",
       "revenant",
@@ -4282,7 +4282,7 @@
       "full"
     ],
     "path": "Legion/Revenant/0LegionRevenant.cs",
-    "size": 789,
+    "size": 790,
     "fileName": "0LegionRevenant.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/Revenant/0LegionRevenant.cs"
   },
