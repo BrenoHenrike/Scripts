@@ -1,7 +1,7 @@
 /*
 name: Undead Legion Merge
 description: This bot will farm the items belonging to the selected mode for the Undead Legion Merge [238] in /underworld
-tags: undead, legion, merge, underworld, frostbite, overlord, zealith, reavers, master, guiltius, legend, crown, face, judge, assassin, darkside, titan, cloak, exalted, champion, horns, archer, otherworldly, deathstare, deathdealer, shield, gutripper, skull, goggles, deathmask, apocalypse, dark, flaming, ultimate, lich, king, original, paragon, castle, soul, cleaver, smiling, dage, infinite, caster, loyal, warrior, swordmaster, draconic, plate, horned, spiked, guard, rhongomyniad, yami, no, ronin, sheathed, katana, shuriken, shurikens, healer, mage, hatmask, rogue, , dragonblade, nulgath, monsterhunter, monsterhunters, revenant, seven, circles, beast, ancient, wraiths, winged, bone, crusher, crushers, warlord, great, twisted, yulgars, inn, house, parabellum, armaments, hammer, back, armet, hollowborn, wrap
+tags: undead, legion, merge, underworld, frostbite, overlord, zealith, reavers, master, guiltius, legend, crown, face, judge, assassin, darkside, titan, cloak, exalted, champion, horns, archer, otherworldly, deathstare, deathdealer, shield, gutripper, skull, goggles, deathmask, apocalypse, dark, flaming, ultimate, lich, king, original, paragon, castle, soul, cleaver, smiling, dage, infinite, caster, loyal, warrior, swordmaster, draconic, plate, horned, spiked, guard, rhongomyniad, yami, no, ronin, sheathed, katana, shuriken, shurikens, healer, mage, hatmask, rogue, , dragonblade, nulgath, monsterhunter, monsterhunters, revenant, seven, circles, beast, ancient, wraiths, winged, bone, crusher, crushers, warlord, great, twisted, yulgars, inn, house, parabellum, armaments, hammer, back, armet, void, vigilante, maw, battlegear, awakened, deaths, requiem
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -44,7 +44,7 @@ public class UndeadLegionMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Legion Token", "Frosted Falchion", "Judgement Scythe", "Judgement Hammer", "Cursed Scimitar", "Essence of the Undead Legend", "Shadow Shroud", "DragonBlade of Nulgath", "Fallen MonsterHunter", "Fallen MonsterHunter Helm", "Fallen MonsterHunter Cape", "Fallen MonsterHunter Sword", "Exalted Crown", "Hollow Soul" });
+        Core.BankingBlackList.AddRange(new[] { "Legion Token", "Frosted Falchion", "Judgement Scythe", "Judgement Hammer", "Cursed Scimitar", "Essence of the Undead Legend", "Shadow Shroud", "DragonBlade of Nulgath", "Fallen MonsterHunter", "Fallen MonsterHunter Helm", "Fallen MonsterHunter Cape", "Fallen MonsterHunter Sword", "Exalted Crown", "Death's Requiem Staff" });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -123,17 +123,10 @@ public class UndeadLegionMerge
                     LR.ExaltedCrown();
                     break;
 
-                case "Hollow Soul":
+                case "Death's Requiem Staff":
                     Core.FarmingLogger(req.Name, quant);
-                    Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.EnsureAcceptmultiple(false, new[ ]{ 7553, 7555});
-                        Core.KillMonster("shadowrealm", "r2", "Left", "Gargrowl", "Darkseed", 8, log: false);
-                        Core.KillMonster("shadowrealm", "r2", "Left", "Shadow Guardian", "Shadow Medallion", 5, log: false);
-                        Core.EnsureComplete(7553);
-                        Core.EnsureComplete(7555);
-                    }
+                    Core.EquipClass(ClassType.Solo);
+                    Core.HuntMonster("cocytusbarracks", "Maleagant", req.Name, quant, false, false);
                     break;
 
             }
@@ -239,10 +232,12 @@ public class UndeadLegionMerge
         new Option<bool>("76757", "Underworld Parabellum Armet", "Mode: [select] only\nShould the bot buy \"Underworld Parabellum Armet\" ?", false),
         new Option<bool>("76756", "Underworld Parabellum", "Mode: [select] only\nShould the bot buy \"Underworld Parabellum\" ?", false),
         new Option<bool>("76953", "Dage the Lich King Guard", "Mode: [select] only\nShould the bot buy \"Dage the Lich King Guard\" ?", false),
-        new Option<bool>("81975", "HollowBorn Paragon", "Mode: [select] only\nShould the bot buy \"HollowBorn Paragon\" ?", false),
-        new Option<bool>("81976", "HollowBorn Paragon Helm", "Mode: [select] only\nShould the bot buy \"HollowBorn Paragon Helm\" ?", false),
-        new Option<bool>("81977", "Hollowborn Paragon Helmet", "Mode: [select] only\nShould the bot buy \"Hollowborn Paragon Helmet\" ?", false),
-        new Option<bool>("81978", "HollowBorn Paragon Cape", "Mode: [select] only\nShould the bot buy \"HollowBorn Paragon Cape\" ?", false),
-        new Option<bool>("81979", "HollowBorn Paragon Wrap", "Mode: [select] only\nShould the bot buy \"HollowBorn Paragon Wrap\" ?", false),
+        new Option<bool>("84399", "Void Vigilante of the Legion", "Mode: [select] only\nShould the bot buy \"Void Vigilante of the Legion\" ?", false),
+        new Option<bool>("84400", "Underworld Void Vigilante", "Mode: [select] only\nShould the bot buy \"Underworld Void Vigilante\" ?", false),
+        new Option<bool>("84401", "Void Legion Horned Maw", "Mode: [select] only\nShould the bot buy \"Void Legion Horned Maw\" ?", false),
+        new Option<bool>("84402", "Void Vigilante Blade", "Mode: [select] only\nShould the bot buy \"Void Vigilante Blade\" ?", false),
+        new Option<bool>("84403", "Void Vigilante Blades", "Mode: [select] only\nShould the bot buy \"Void Vigilante Blades\" ?", false),
+        new Option<bool>("84404", "Underworld Void Vigilante BattleGear", "Mode: [select] only\nShould the bot buy \"Underworld Void Vigilante BattleGear\" ?", false),
+        new Option<bool>("84479", "Awakened Death's Requiem Staff", "Mode: [select] only\nShould the bot buy \"Awakened Death's Requiem Staff\" ?", false),
     };
 }
