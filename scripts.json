@@ -20192,6 +20192,46 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/03DarkPath.cs"
   },
   {
+    "name": "Cocytus Barracks Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Cocytus Barracks Merge [2421] in /cocytusbarracks",
+    "tags": [
+      "cocytus",
+      "barracks",
+      "merge",
+      "cocytusbarracks",
+      "penitent",
+      "underworld",
+      "keeper",
+      "tower",
+      "bramble",
+      "blame",
+      "sullied",
+      "bangle",
+      "shield",
+      "acheron",
+      "usurper",
+      "lord",
+      "horns",
+      "halo",
+      "regalia",
+      "phantima",
+      "maiden",
+      "woe",
+      "defiler",
+      "ancients",
+      "defilers",
+      "shielded",
+      "ivory",
+      "overdriven",
+      "evocator",
+      "morph"
+    ],
+    "path": "Seasonal/StaffBirthdays/DageTheEvil/CocytusBarracksMerge.cs",
+    "size": 8962,
+    "fileName": "CocytusBarracksMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/CocytusBarracksMerge.cs"
+  },
+  {
     "name": "(Darkwarlegion War) Chest Merge",
     "description": "This will complete the Darkwarlegion War Chest story and farm Dark Victory Seals.",
     "tags": [
@@ -20219,7 +20259,7 @@
       "null"
     ],
     "path": "Seasonal/StaffBirthdays/DageTheEvil/CoreDageBirthday.cs",
-    "size": 6887,
+    "size": 8526,
     "fileName": "CoreDageBirthday.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/CoreDageBirthday.cs"
   },
@@ -20334,6 +20374,22 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/UnderworldTeamMerge.cs"
   },
   {
+    "name": "Cocytus Barracks",
+    "description": "This script completes the storyline in \\cocytusbarracks.",
+    "tags": [
+      "cocytusbarracks",
+      "cocytus",
+      "barracks",
+      "seasonal",
+      "dage",
+      "story"
+    ],
+    "path": "Seasonal/StaffBirthdays/DageTheEvil/05CocytusBarracks.cs",
+    "size": 675,
+    "fileName": "05CocytusBarracks.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/05CocytusBarracks.cs"
+  },
+  {
     "name": "Nation War Chest Merge",
     "description": "This will complete the Nation War Chest story and farm Nation Defender Medals.",
     "tags": [
@@ -20374,6 +20430,9 @@
       "under void",
       "legionbarracks",
       "legion barracks",
+      "cocytus",
+      "cocytus barracks",
+      "cocytusbarracks",
       "dage",
       "seasonal",
       "birthday",
@@ -20382,7 +20441,7 @@
       "all"
     ],
     "path": "Seasonal/StaffBirthdays/DageTheEvil/00DoAll.cs",
-    "size": 761,
+    "size": 803,
     "fileName": "00DoAll.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/00DoAll.cs"
   },
