@@ -31,6 +31,7 @@ public class CoreDageBirthday
         FutureLegion();
         Undervoid();
         LegionBarracks();
+        CocytusBarracks();
     }
 
     public void DarkPath()
@@ -222,6 +223,55 @@ public class CoreDageBirthday
         {
             Core.EquipClass(ClassType.Solo);
             Story.KillQuest(9619, "legionbarracks", "Paladin Arondight");
+        }
+
+    }
+
+    public void CocytusBarracks()
+    {
+        if (Core.isCompletedBefore(9632) || !Core.isSeasonalMapActive("cocytusbarracks"))
+            return;
+
+        LegionBarracks();
+
+        Story.PreLoad(this);
+
+        Core.EquipClass(ClassType.Farm);
+
+        // Cocytus Wails (9623)
+        Story.KillQuest(9623, "cocytusbarracks", new[] { "Legion Evocator", "Legion Knight" });
+
+        // Light Up Ice Cube (9624)
+        Story.MapItemQuest(9624, "cocytusbarracks", 12798, 6);
+
+        // Blessed Blind (9625)
+        Story.KillQuest(9625, "cocytusbarracks", "Overdriven Evocator");
+
+        // Falsified Hope (9626)
+        Story.KillQuest(9626, "cocytusbarracks", "Overdriven Knight");
+
+        // Saint of the Battlefield (9627)
+        Story.MapItemQuest(9627, "cocytusbarracks", 12799);
+        Story.KillQuest(9627, "cocytusbarracks", "Overdriven Paladin");
+
+        // River Bends (9628)
+        Story.MapItemQuest(9628, "cocytusbarracks", 12800);
+        Story.KillQuest(9628, "cocytusbarracks", new[] { "Legion Evocator", "Legion Knight" });
+
+        // Styx and Stones (9629)
+        Story.KillQuest(9629, "cocytusbarracks", new[] { "Overdriven Knight", "Overdriven Evocator" });
+
+        // Cry Me a River (9630)
+        Story.KillQuest(9630, "cocytusbarracks", "Mourner");
+
+        // Boiling Blood (9631)
+        Story.KillQuest(9631, "cocytusbarracks", "Cerberus Pup");
+
+        // The Knight of Summer Set (9632)
+        if (!Core.isCompletedBefore(9632))
+        {
+            Core.EquipClass(ClassType.Solo);
+            Story.KillQuest(9632, "cocytusbarracks", "Maleagant");
         }
 
     }
