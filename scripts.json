@@ -3978,11 +3978,16 @@
       "hammer",
       "back",
       "armet",
-      "hollowborn",
-      "wrap"
+      "void",
+      "vigilante",
+      "maw",
+      "battlegear",
+      "awakened",
+      "deaths",
+      "requiem"
     ],
     "path": "Legion/Various/UndeadLegionMerge.cs",
-    "size": 21282,
+    "size": 21233,
     "fileName": "UndeadLegionMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/Various/UndeadLegionMerge.cs"
   },
