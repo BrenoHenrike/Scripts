@@ -239,7 +239,7 @@ public class CoreDoomwood
             return;
 
         Story.PreLoad(this);
-        
+
         Core.EquipClass(ClassType.Farm);
         //1123    Level 1
         if (!Story.QuestProgression(1123))
@@ -512,6 +512,8 @@ public class CoreDoomwood
     {
         if (Core.isCompletedBefore(2077))
             return;
+
+        NecropolisDungeon();
 
         Story.PreLoad(this);
 
