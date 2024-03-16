@@ -59,7 +59,6 @@ public class LegionExercise1
             Core.HuntMonster("lair", "Water Draconian", "Water DracoHeart", isTemp: true, publicRoom: false);
             Core.HuntMonster("lair", "Venom Draconian", "Venom DracoHeart", isTemp: true, publicRoom: false);
             Core.HuntMonster("lair", "Purple Draconian", "Iron DracoHeart", isTemp: true, publicRoom: false);
-            Core.HuntMonster("Uppercity", "Chaotic Draconian", "Chaotic DracoHeart", isTemp: true, publicRoom: false);
             Core.EnsureComplete(821);
             Core.Logger($"Finished Quest {i++} Times");
         }
