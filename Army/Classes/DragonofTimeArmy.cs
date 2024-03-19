@@ -525,8 +525,7 @@ public class DoTArmy
     public void DoQuest10()
     {
         if (Core.CheckInventory(QuestRewards[20..21], toInv: false))
-            foreach (string reward in QuestRewards[20..21])
-                //Army.waitForParty("whitemap", reward);
+            return;
 
         else Core.Logger("Quest already complete / Items owned, butlering[hopefully]");
 
