@@ -250,7 +250,7 @@ public class CoreLegion
         LTDreadrock(quant);
     }
 
-    public void LTHardCoreParagon(int quant = 25000)
+    public void LTHardCoreParagon(int quant = 50000)
     {
         if (Core.CheckInventory("Legion Token", quant) || !Core.CheckInventory("Hardcore Paragon Pet"))
             return;
@@ -276,7 +276,7 @@ public class CoreLegion
 
     }
 
-    public void LTInfernalLegionBetrayal(int quant = 25000)
+    public void LTInfernalLegionBetrayal(int quant = 50000)
     {
         if (Core.CheckInventory("Legion Token", quant) || !Core.CheckInventory("Infernal Caladbolg"))
             return;
@@ -298,7 +298,7 @@ public class CoreLegion
         Core.CancelRegisteredQuests();
     }
 
-    public void LTUW3017(int quant = 25000)
+    public void LTUW3017(int quant = 50000)
     {
         if (Core.CheckInventory("Legion Token", quant) || !Core.CheckInventory("UW3017 Pet"))
             return;
@@ -320,7 +320,7 @@ public class CoreLegion
         Core.CancelRegisteredQuests();
     }
 
-    public void LTHolidayParagon(int quant = 25000)
+    public void LTHolidayParagon(int quant = 50000)
     {
 
         if (Core.CheckInventory("Legion Token", quant) || !Core.CheckInventory("Holiday Paragon Pet"))
@@ -343,7 +343,7 @@ public class CoreLegion
         Core.CancelRegisteredQuests();
     }
 
-    public void LTFestiveParagonDracolichRider(int quant = 25000)
+    public void LTFestiveParagonDracolichRider(int quant = 50000)
     {
         if (Core.CheckInventory("Legion Token", quant) || !Core.CheckInventory("Festive Paragon Dracolich Rider"))
             return;
@@ -366,7 +366,7 @@ public class CoreLegion
         Core.CancelRegisteredQuests();
     }
 
-    public void LTBrightParagon(int quant = 25000)
+    public void LTBrightParagon(int quant = 50000)
     {
         if (Core.CheckInventory("Legion Token", quant) || !Core.CheckInventory("Bright Paragon Pet"))
             return;
@@ -390,7 +390,7 @@ public class CoreLegion
         Core.CancelRegisteredQuests();
     }
 
-    public void LTShogunParagon(int quant = 25000)
+    public void LTShogunParagon(int quant = 50000)
     {
         if (Core.CheckInventory("Legion Token", quant)
             || (!Core.CheckInventory("Shogun Paragon Pet") && !Core.CheckInventory("Paragon Fiend Quest Pet") && !Core.CheckInventory("Paragon Ringbearer") && !Core.CheckInventory("Shogun Dage Pet")))
@@ -424,7 +424,7 @@ public class CoreLegion
         Core.CancelRegisteredQuests();
     }
 
-    public void LTFirstClassEntertainment(int quant = 25000, bool onlyWithParty = false, int partySize = 4, bool ReturnIfNoPeople = false)
+    public void LTFirstClassEntertainment(int quant = 50000, bool onlyWithParty = false, int partySize = 4, bool ReturnIfNoPeople = false)
     {
         if (Core.CheckInventory("Legion Token", quant))
             return;
@@ -453,7 +453,7 @@ public class CoreLegion
         Core.ToBank("Bone Sigil");
     }
 
-    public void LTDreadrock(int quant = 25000)
+    public void LTDreadrock(int quant = 50000)
     {
         if (Core.CheckInventory("Legion Token", quant))
             return;
@@ -474,7 +474,7 @@ public class CoreLegion
         Core.CancelRegisteredQuests();
     }
 
-    public void LTArcaneParagon(int quant = 25000)
+    public void LTArcaneParagon(int quant = 50000)
     {
         if (Core.CheckInventory("Legion Token", quant) || !Core.CheckInventory("Arcane Paragon Pet"))
             return;
@@ -497,7 +497,7 @@ public class CoreLegion
         Core.CancelRegisteredQuests();
     }
 
-    public void LTThanatosParagon(int quant = 25000)
+    public void LTThanatosParagon(int quant = 50000)
     {
         if (Core.CheckInventory("Legion Token", quant) || !Core.CheckInventory("Thanatos Paragon Pet"))
             return;
@@ -515,7 +515,7 @@ public class CoreLegion
         Core.CancelRegisteredQuests();
     }
 
-    public void LTDreadnaughtParagon(int quant = 25000)
+    public void LTDreadnaughtParagon(int quant = 50000)
     {
         if (Core.CheckInventory("Legion Token", quant) || !Core.CheckInventory("Paragon Dreadnaught Pet"))
             return;
@@ -535,7 +535,7 @@ public class CoreLegion
         Core.CancelRegisteredQuests();
     }
 
-    public void LTMountedParagonPet(int quant = 25000)
+    public void LTMountedParagonPet(int quant = 50000)
     {
         if (Core.CheckInventory("Legion Token", quant) || !Core.CheckInventory("Mounted Paragon Pet"))
             return;
@@ -557,7 +557,7 @@ public class CoreLegion
 
     }
 
-    public void LTAscendedParagon(int quant = 25000)
+    public void LTAscendedParagon(int quant = 50000)
     {
         if (Core.CheckInventory("Legion Token", quant) || !Core.CheckInventory("Ascended Paragon Pet"))
             return;
