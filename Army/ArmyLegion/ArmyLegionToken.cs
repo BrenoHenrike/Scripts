@@ -54,7 +54,7 @@ public class ArmyLegionToken
         Core.SetOptions(false);
     }
 
-    public void Setup(Method Method, int quant = 25000)
+    public void Setup(Method Method, int quant = 50001)
     {
         Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
 

@@ -227,7 +227,7 @@ public class CoreLegion
     }
 
     #region LegionTokens
-    public void FarmLegionToken(int quant = 25000)
+    public void FarmLegionToken(int quant = 50000)
     {
         if (Core.CheckInventory("Legion Token", quant))
             return;
