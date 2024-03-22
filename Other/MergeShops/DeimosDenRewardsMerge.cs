@@ -40,7 +40,7 @@ public class DeimosDenRewardsMerge
     public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("legionarena", 2418, findIngredients, buyOnlyThis, buyMode: buyMode);
+        Adv.StartBuyAllMerge("deimos", 2418, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()
