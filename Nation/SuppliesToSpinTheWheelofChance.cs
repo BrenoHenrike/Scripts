@@ -1,6 +1,6 @@
 /*
-name: SuppliesToSpinTheWheelofChance[+Ultra Alteon]
-description: Do "Supplies to Spin the Wheel" [*or* swindles bilk quests if u have it avaible.]
+name: SuppliesToSpinTheWheelofChance
+description: Does "Supplies to Spin the Wheel" [*or* swindles bilk quests if u have it avaible.]
 tags: swindles return policy, supplies to spin the wheel, swindles bilk, the assistant, nulgath, nation, supplies, Ultra Alteon, escherion
 
 */
