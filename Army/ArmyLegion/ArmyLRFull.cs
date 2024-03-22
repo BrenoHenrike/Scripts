@@ -382,7 +382,7 @@ public class ArmyLR
         Core.CancelRegisteredQuests();
     }
 
-    public void ArmyLTs(int quant = 50000)
+    public void ArmyLTs(int quant = 25000)
     {
         if (Core.CheckInventory("Legion Token", quant))
             return;
@@ -412,7 +412,7 @@ public class ArmyLR
         Core.EquipClass(classType);
         if (Core.CheckInventory(item))
             //Army.waitForParty("whitemap", item);
-            HandleMap(map, item, quant);
+        HandleMap(map, item, quant);
 
         if (Bot.Player.CurrentClass?.Name == "ArchMage")
             Bot.Options.AttackWithoutTarget = true;

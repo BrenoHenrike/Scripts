@@ -1745,7 +1745,7 @@ public class CoreFarms
         if (FactionRank("Embersea") >= rank)
             return;
 
-        Core.EquipClass(ClassType.Farm);
+        Core.EquipClass(ClassType.Solo);
         Core.SavedState();
         ToggleBoost(BoostType.Reputation);
         Core.Logger($"Farming rank {rank}");

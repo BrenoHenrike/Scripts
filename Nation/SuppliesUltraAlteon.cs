@@ -1,0 +1,25 @@
+/*
+name: SuppliesUltraAlteon
+description: kills Ultra Alteon for the item required for `Spin the Wheel`.
+tags: Ultra Alteon, supplies
+*/
+//cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/Nation/CoreNation.cs
+using Skua.Core.Interfaces;
+
+public class SuppliesUltraAlteon
+{
+    public CoreBots Core => CoreBots.Instance;
+    public CoreNation Nation = new();
+
+    public void ScriptMain(IScriptInterface bot)
+    {
+        Core.BankingBlackList.AddRange(Nation.SuppliesRewards);
+        Core.SetOptions();
+
+        Nation.Supplies(UltraAlteon :true);
+
+        Core.SetOptions(false);
+    }
+}
