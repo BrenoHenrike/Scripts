@@ -2611,13 +2611,13 @@ public class CoreAdvanced
                 case "warrior (rare)":
                 case "warriorscythe general":
                 case "yami no ronin":
+                case "arachnomancer":
                     type = EnhancementType.Lucky;
                     wSpecial = WeaponSpecial.Mana_Vamp;
                     break;
                 #endregion
 
                 #region Lucky - Awe Blast
-                case "arachnomancer":
                 case "bard":
                 case "chrono assassin":
                 case "chronomancer":
