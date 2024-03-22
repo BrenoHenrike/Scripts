@@ -3538,12 +3538,20 @@
   },
   {
     "name": "SuppliesToSpinTheWheelofChance",
-    "description": "null",
+    "description": "Do \"Supplies to Spin the Wheel\" [*or* swindles bilk quests if u have it avaible.]",
     "tags": [
-      "null"
+      "swindles return policy",
+      "supplies to spin the wheel",
+      "swindles bilk",
+      "the assistant",
+      "nulgath",
+      "nation",
+      "supplies",
+      "ultra alteon",
+      "escherion"
     ],
     "path": "Nation/SuppliesToSpinTheWheelofChance.cs",
-    "size": 557,
+    "size": 1427,
     "fileName": "SuppliesToSpinTheWheelofChance.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/SuppliesToSpinTheWheelofChance.cs"
   },
