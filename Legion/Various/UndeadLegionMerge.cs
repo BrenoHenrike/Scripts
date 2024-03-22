@@ -33,7 +33,7 @@ public class UndeadLegionMerge
     public CoreLR LR = new CoreLR();
     public LegionExercise3 LegionExercise3 = new();
     public LegionExercise4 LegionExercise4 = new();
-    public DragonBladeofNulgath DBoN = new();
+    public DragonBladeofNulgath DBoN = new DragonBladeofNulgath();
 
     public List<IOption> Generic = sAdv.MergeOptions;
     public string[] MultiOptions = { "Generic", "Select" };
