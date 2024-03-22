@@ -625,7 +625,7 @@ public class UnlockForgeEnhancements
         Farm.BlacksmithingREP(10, Bot.Config!.Get<bool>("UseGold"), Bot.Config!.Get<bool>("UseGold"));
 
         Core.EnsureAccept(8821);
-        CorNSOD.BonesVoidRealm(15);
+        CorNSOD.BonesVoidRealm(20);
         YNR.BlademasterSwordScroll();
         NDW.NDWQuest(new[] { "Archfiend Essence Fragment" }, 3);
         Awescended.GetAwe();
