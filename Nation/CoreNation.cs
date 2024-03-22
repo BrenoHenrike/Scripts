@@ -712,7 +712,7 @@ public class CoreNation
     /// </summary>
     /// <param name="item">Desired item name.</param>
     /// <param name="quant">Desired item quantity.</param>
-    public void Supplies(string? item = null, int quant = 1, bool UltraAlteon = false, bool KeepVoucher = false)
+    public void Supplies(string? item = null, int quant = 1, bool UltraAlteon = false, bool KeepVoucher = false, bool AssistantDuring = false)
     {
         bool sellMemVoucher = Core.CBOBool("Nation_SellMemVoucher", out bool _sellMemVoucher) && _sellMemVoucher;
         bool returnPolicyDuringSupplies = Core.CBOBool("Nation_ReturnPolicyDuringSupplies", out bool _returnSupplies) && _returnSupplies;
@@ -751,7 +751,7 @@ public class CoreNation
 
 
                 if (Core.CheckInventory(CragName))
-                    BambloozevsDrudgen(Item!.Name, Item.MaxStack);
+                    BambloozevsDrudgen(Item!.Name, Item.MaxStack, AssistantDuring: AssistantDuring);
                 else
                 {
                     while (!Bot.ShouldExit && Item != null && !Core.CheckInventory(Item.Name, Item.MaxStack))
@@ -775,7 +775,7 @@ public class CoreNation
                             Core.SellItem("Voucher of Nulgath", KeepVoucher ? 1 : 0, !KeepVoucher);
                             Bot.Wait.ForItemSell();
 
-                            if (Bot.Player.Gold >= 1000000)
+                            if (Bot.Player.Gold >= 1000000 && AssistantDuring)
                             {
                                 Core.JumpWait();
 
@@ -1152,7 +1152,7 @@ public class CoreNation
     /// </summary>
     /// <param name="item">Desired item name</param>
     /// <param name="quant">Desired item quantity</param>
-    public void BambloozevsDrudgen(string? item = null, int quant = 1, bool KeepVoucher = false)
+    public void BambloozevsDrudgen(string? item = null, int quant = 1, bool KeepVoucher = false, bool AssistantDuring = false)
     {
         if (!Core.CheckInventory(CragName) || Core.CheckInventory(item, quant))
             return;
@@ -1226,7 +1226,7 @@ public class CoreNation
                 Core.SellItem("Voucher of Nulgath", KeepVoucher ? 1 : 0, !KeepVoucher);
                 Bot.Wait.ForItemSell();
 
-                if (Bot.Player.Gold >= 1000000)
+                if (Bot.Player.Gold >= 1000000 && AssistantDuring)
                 {
                     Core.JumpWait();
 
