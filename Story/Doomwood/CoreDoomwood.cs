@@ -496,11 +496,11 @@ public class CoreDoomwood
         if (!Bot.Quests.IsUnlocked(2061))
         {
             Core.EnsureAccept(2060);
-            Core.KillMonster("necrodungeon", "r22", "Down", 889);
-            Core.KillMonster("necrodungeon", "r22", "Down", 890);
-            Core.KillMonster("necrodungeon", "r22", "Down", 891);
-            Core.KillMonster("necrodungeon", "r22", "Down", 892);
-            Core.KillMonster("necrodungeon", "r22", "Down", 893);
+            Core.HuntMonsterMapID("necrodungeon", 49, "Dracolich Head 1 Defeated!");
+            Core.HuntMonsterMapID("necrodungeon", 50, "Dracolich Head 2 Defeated!");
+            Core.HuntMonsterMapID("necrodungeon", 46, "Dracolich Head 3 Defeated!");
+            Core.HuntMonsterMapID("necrodungeon", 47, "Dracolich Head 4 Defeated!");
+            Core.HuntMonsterMapID("necrodungeon", 48, "Dracolich Head 5 Defeated!");
             Core.EnsureComplete(2060);
         }
 
