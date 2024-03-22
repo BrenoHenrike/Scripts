@@ -48,7 +48,7 @@ public class ArmyLegionToken
         Method? method = Bot.Config?.Get<Method>("Method");
         if (method != null)
         {
-            Setup(method.Value, 50001);
+            Setup(method.Value, 25001);
         }
 
         Core.SetOptions(false);
