@@ -248,7 +248,7 @@ public class CoreHollowbornLichKing
         // Check if we should return early based on inventory conditions and 'completeOnce' flag
         bool shouldReturnEarly = (HeatTreatmentReward == HeatTreatmentRewards.All && Core.CheckInventory(rewards, toInv: false))
             || HeatTreatmentReward == HeatTreatmentRewards.None
-            || (Core.CheckInventory((int)HeatTreatmentReward, toInv: false) && !completeOnce);
+            || (Core.CheckInventory((int)HeatTreatmentReward, quant) && !completeOnce);
 
         if (shouldReturnEarly)
         {
