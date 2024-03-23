@@ -85,7 +85,7 @@ public class CoreHollowbornLichKing
         { "Heat Treatment", (9639, () => HeatTreatment(getAllDrops ? HeatTreatmentRewards.All : Bot.Config!.Get<HeatTreatmentRewards>("Heat Treatment"), !getAllDrops && BankAfter)) },
         { "Counterblow", (9640, () => Counterblow(getAllDrops ? CounterblowRewards.All : Bot.Config!.Get<CounterblowRewards>("Counterblow"), !getAllDrops && BankAfter)) },
     };
-        string[] questOrder = { "Draftless", "Flow Stress", "HeatTreatment", "Counterblow" };
+        string[] questOrder = { "Draftless", "Flow Stress", "Heat Treatment", "Counterblow" };
 
 
         foreach (var quest in questOrder)
@@ -159,7 +159,7 @@ public class CoreHollowbornLichKing
                 if (DraftlessReward == DraftlessRewards.All && Core.CheckInventory(rewards) || rewardSelection == DraftlessRewards.Soul_Fragment && !Core.CheckInventory("Soul Fragment", quant))
                 {
                     if (rewardSelection == DraftlessRewards.Soul_Fragment)
-                        Core.EnsureCompleteMulti(9637, (int)rewardSelection);
+                        Core.EnsureComplete(9637, 84835);
                     Core.EnsureCompleteChoose(9637, rewards);
                     Core.Logger("In The Flow Stress quest completed.");
                 }
@@ -220,7 +220,7 @@ public class CoreHollowbornLichKing
                 if (rewardSelection == FlowStressRewards.All && !Core.CheckInventory(rewards) || rewardSelection == FlowStressRewards.Lich_King_Fragment && !Core.CheckInventory("Lich King Fragment", quant))
                 {
                     if (rewardSelection == FlowStressRewards.Lich_King_Fragment)
-                        Core.EnsureCompleteMulti(9638, (int)rewardSelection);
+                        Core.EnsureComplete(9638, 84836);
                     Core.EnsureCompleteChoose(9638, rewards);
                     Core.Logger("In The Flow Stress quest completed.");
                 }
