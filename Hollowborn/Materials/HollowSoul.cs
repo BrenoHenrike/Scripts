@@ -42,7 +42,7 @@ public class HollowSoul
         // Core.RegisterQuests(7553, 7555);
         while (!Bot.ShouldExit && !Core.CheckInventory("Hollow Soul", HSQuant))
         {
-            Core.EnsureAcceptmultiple(false, new[ ]{ 7553, 7555});
+            Core.EnsureAcceptmultiple(false, new[] { 7553, 7555 });
             Core.KillMonster("shadowrealm", "r2", "Left", "Gargrowl", "Darkseed", 8, log: false);
             Core.KillMonster("shadowrealm", "r2", "Left", "Shadow Guardian", "Shadow Medallion", 5, log: false);
             Core.EnsureComplete(new[] { 7553, 7555 });

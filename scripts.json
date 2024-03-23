@@ -50,7 +50,7 @@
       "null"
     ],
     "path": "CoreDailies.cs",
-    "size": 49273,
+    "size": 49860,
     "fileName": "CoreDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreDailies.cs"
   },
@@ -931,6 +931,21 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/PowerGem.cs"
   },
   {
+    "name": "NCS Gem",
+    "description": "This script will complete the daily quest for NCS Gem.",
+    "tags": [
+      "daily",
+      "ncs",
+      "hollowborn",
+      "a lovely quest-ion",
+      "shadow realm"
+    ],
+    "path": "Dailies/NCSGem.cs",
+    "size": 564,
+    "fileName": "NCSGem.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/NCSGem.cs"
+  },
+  {
     "name": "Break Into the Hoard Daily",
     "description": "does the quest `break into the hoard` for the rewards",
     "tags": [
@@ -1073,7 +1088,7 @@
       "all"
     ],
     "path": "Dailies/0AllDailies.cs",
-    "size": 4224,
+    "size": 4253,
     "fileName": "0AllDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/0AllDailies.cs"
   },
@@ -4358,16 +4373,35 @@
       "hammer",
       "back",
       "armet",
+      "hollowborn",
+      "wrap",
       "void",
       "vigilante",
       "maw",
       "battlegear",
       "awakened",
       "deaths",
-      "requiem"
+      "requiem",
+      "ops",
+      "armed",
+      "breach",
+      "morph",
+      "briefcase",
+      "tactical",
+      "gear",
+      "ghost",
+      "drone",
+      "cold",
+      "steel",
+      "kukri",
+      "kukris",
+      "rifle",
+      "rifles",
+      "quest",
+      "pet"
     ],
     "path": "Legion/MergeShops/UndeadLegionMerge.cs",
-    "size": 21233,
+    "size": 24638,
     "fileName": "UndeadLegionMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/MergeShops/UndeadLegionMerge.cs"
   },
@@ -15299,7 +15333,7 @@
       "hollowborn"
     ],
     "path": "Hollowborn/Materials/HollowSoul.cs",
-    "size": 1623,
+    "size": 1624,
     "fileName": "HollowSoul.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/Materials/HollowSoul.cs"
   },
@@ -15564,6 +15598,21 @@
     "size": 1800,
     "fileName": "3UniqueQuarry.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/HollowbornChaosEnvoy/3UniqueQuarry.cs"
+  },
+  {
+    "name": "Hollowborn LoveCaster Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Hollowborn LoveCaster Merge [2422] in /shadowrealm",
+    "tags": [
+      "hollowborn",
+      "lovecaster",
+      "merge",
+      "shadowrealm",
+      "tophat"
+    ],
+    "path": "Hollowborn/MergeShops/HollowbornLoveCasterMerge.cs",
+    "size": 3986,
+    "fileName": "HollowbornLoveCasterMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/MergeShops/HollowbornLoveCasterMerge.cs"
   },
   {
     "name": "Shadowrealm Merge",
