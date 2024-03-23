@@ -192,7 +192,7 @@ public class CoreHollowbornLichKing
 
         if (shouldReturnEarly)
         {
-            Core.Logger("Conditions met to skip In The Flow Stress quest.");
+            Core.Logger("Conditions met to skip `Flow Stress` quest.");
             return;
         }
 
@@ -212,7 +212,7 @@ public class CoreHollowbornLichKing
             if (completeOnce)
             {
                 Core.EnsureComplete(9638);
-                Core.Logger("In The Flow Stress quest completed.");
+                Core.Logger("Flow Stress quest completed.");
                 return;
             }
             else
