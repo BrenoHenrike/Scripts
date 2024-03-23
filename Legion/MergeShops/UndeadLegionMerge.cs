@@ -1,13 +1,15 @@
 /*
 name: Undead Legion Merge
 description: This bot will farm the items belonging to the selected mode for the Undead Legion Merge [238] in /underworld
-tags: undead, legion, merge, underworld, frostbite, overlord, zealith, reavers, master, guiltius, legend, crown, face, judge, assassin, darkside, titan, cloak, exalted, champion, horns, archer, otherworldly, deathstare, deathdealer, shield, gutripper, skull, goggles, deathmask, apocalypse, dark, flaming, ultimate, lich, king, original, paragon, castle, soul, cleaver, smiling, dage, infinite, caster, loyal, warrior, swordmaster, draconic, plate, horned, spiked, guard, rhongomyniad, yami, no, ronin, sheathed, katana, shuriken, shurikens, healer, mage, hatmask, rogue, , dragonblade, nulgath, monsterhunter, monsterhunters, revenant, seven, circles, beast, ancient, wraiths, winged, bone, crusher, crushers, warlord, great, twisted, yulgars, inn, house, parabellum, armaments, hammer, back, armet, void, vigilante, maw, battlegear, awakened, deaths, requiem
+tags: undead, legion, merge, underworld, frostbite, overlord, zealith, reavers, master, guiltius, legend, crown, face, judge, assassin, darkside, titan, cloak, exalted, champion, horns, archer, otherworldly, deathstare, deathdealer, shield, gutripper, skull, goggles, deathmask, apocalypse, dark, flaming, ultimate, lich, king, original, paragon, castle, soul, cleaver, smiling, dage, infinite, caster, loyal, warrior, swordmaster, draconic, plate, horned, spiked, guard, rhongomyniad, yami, no, ronin, sheathed, katana, shuriken, shurikens, healer, mage, hatmask, rogue, , dragonblade, nulgath, monsterhunter, monsterhunters, revenant, seven, circles, beast, ancient, wraiths, winged, bone, crusher, crushers, warlord, great, twisted, yulgars, inn, house, parabellum, armaments, hammer, back, armet, hollowborn, wrap, void, vigilante, maw, battlegear, awakened, deaths, requiem, ops, armed, breach, morph, briefcase, tactical, gear, ghost, drone, cold, steel, kukri, kukris, rifle, rifles, quest, pet
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreDailies.cs
+//cs_include Scripts/Hollowborn/CoreHollowborn.cs
+//cs_include Scripts/Hollowborn\Materials\HollowSoul.cs
 //cs_include Scripts/Legion/CoreLegion.cs
 //cs_include Scripts/Legion/Revenant/CoreLR.cs
 //cs_include Scripts/Legion/InfiniteLegionDarkCaster.cs
@@ -34,6 +36,7 @@ public class UndeadLegionMerge
     public LegionExercise3 LegionExercise3 = new();
     public LegionExercise4 LegionExercise4 = new();
     public DragonBladeofNulgath DBoN = new DragonBladeofNulgath();
+    private HollowSoul HS = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
     public string[] MultiOptions = { "Generic", "Select" };
@@ -44,7 +47,7 @@ public class UndeadLegionMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Legion Token", "Frosted Falchion", "Judgement Scythe", "Judgement Hammer", "Cursed Scimitar", "Essence of the Undead Legend", "Shadow Shroud", "DragonBlade of Nulgath", "Fallen MonsterHunter", "Fallen MonsterHunter Helm", "Fallen MonsterHunter Cape", "Fallen MonsterHunter Sword", "Exalted Crown", "Death's Requiem Staff" });
+        Core.BankingBlackList.AddRange(new[] { "Legion Token", "Frosted Falchion", "Judgement Scythe", "Judgement Hammer", "Cursed Scimitar", "Essence of the Undead Legend", "Shadow Shroud", "DragonBlade of Nulgath", "Fallen MonsterHunter", "Fallen MonsterHunter Helm", "Fallen MonsterHunter Cape", "Fallen MonsterHunter Sword", "Exalted Crown", "Hollow Soul", "Death's Requiem Staff" });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -123,6 +126,10 @@ public class UndeadLegionMerge
                     LR.ExaltedCrown();
                     break;
 
+                case "Hollow Soul":
+                    HS.GetYaSoulsHeeeere(quant);
+                    break;
+
                 case "Death's Requiem Staff":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
@@ -135,7 +142,7 @@ public class UndeadLegionMerge
 
     public List<IOption> Select = new()
     {
-        new Option<bool>("6522", "Frostbite", "Mode: [select] only\nShould the bot buy \"Frostbite\" ?", false),
+       new Option<bool>("6522", "Frostbite", "Mode: [select] only\nShould the bot buy \"Frostbite\" ?", false),
         new Option<bool>("6519", "Undead Legion OverLord", "Mode: [select] only\nShould the bot buy \"Undead Legion OverLord\" ?", false),
         new Option<bool>("2188", "Zealith Reavers", "Mode: [select] only\nShould the bot buy \"Zealith Reavers\" ?", false),
         new Option<bool>("6921", "Blade Master", "Mode: [select] only\nShould the bot buy \"Blade Master\" ?", false),
@@ -232,6 +239,11 @@ public class UndeadLegionMerge
         new Option<bool>("76757", "Underworld Parabellum Armet", "Mode: [select] only\nShould the bot buy \"Underworld Parabellum Armet\" ?", false),
         new Option<bool>("76756", "Underworld Parabellum", "Mode: [select] only\nShould the bot buy \"Underworld Parabellum\" ?", false),
         new Option<bool>("76953", "Dage the Lich King Guard", "Mode: [select] only\nShould the bot buy \"Dage the Lich King Guard\" ?", false),
+        new Option<bool>("81975", "HollowBorn Paragon", "Mode: [select] only\nShould the bot buy \"HollowBorn Paragon\" ?", false),
+        new Option<bool>("81976", "HollowBorn Paragon Helm", "Mode: [select] only\nShould the bot buy \"HollowBorn Paragon Helm\" ?", false),
+        new Option<bool>("81977", "Hollowborn Paragon Helmet", "Mode: [select] only\nShould the bot buy \"Hollowborn Paragon Helmet\" ?", false),
+        new Option<bool>("81978", "HollowBorn Paragon Cape", "Mode: [select] only\nShould the bot buy \"HollowBorn Paragon Cape\" ?", false),
+        new Option<bool>("81979", "HollowBorn Paragon Wrap", "Mode: [select] only\nShould the bot buy \"HollowBorn Paragon Wrap\" ?", false),
         new Option<bool>("84399", "Void Vigilante of the Legion", "Mode: [select] only\nShould the bot buy \"Void Vigilante of the Legion\" ?", false),
         new Option<bool>("84400", "Underworld Void Vigilante", "Mode: [select] only\nShould the bot buy \"Underworld Void Vigilante\" ?", false),
         new Option<bool>("84401", "Void Legion Horned Maw", "Mode: [select] only\nShould the bot buy \"Void Legion Horned Maw\" ?", false),
@@ -239,5 +251,21 @@ public class UndeadLegionMerge
         new Option<bool>("84403", "Void Vigilante Blades", "Mode: [select] only\nShould the bot buy \"Void Vigilante Blades\" ?", false),
         new Option<bool>("84404", "Underworld Void Vigilante BattleGear", "Mode: [select] only\nShould the bot buy \"Underworld Void Vigilante BattleGear\" ?", false),
         new Option<bool>("84479", "Awakened Death's Requiem Staff", "Mode: [select] only\nShould the bot buy \"Awakened Death's Requiem Staff\" ?", false),
+        new Option<bool>("84920", "Flaming Lich King Skull", "Mode: [select] only\nShould the bot buy \"Flaming Lich King Skull\" ?", false),
+        new Option<bool>("84921", "Undead Lich King Cloak", "Mode: [select] only\nShould the bot buy \"Undead Lich King Cloak\" ?", false),
+        new Option<bool>("84740", "Underworld Dark Ops", "Mode: [select] only\nShould the bot buy \"Underworld Dark Ops\" ?", false),
+        new Option<bool>("84741", "Armed Underworld Dark Ops", "Mode: [select] only\nShould the bot buy \"Armed Underworld Dark Ops\" ?", false),
+        new Option<bool>("84742", "Underworld Dark Breach Ops", "Mode: [select] only\nShould the bot buy \"Underworld Dark Breach Ops\" ?", false),
+        new Option<bool>("84743", "Underworld Dark Ops Helm", "Mode: [select] only\nShould the bot buy \"Underworld Dark Ops Helm\" ?", false),
+        new Option<bool>("84744", "Underworld Dark Ops Morph", "Mode: [select] only\nShould the bot buy \"Underworld Dark Ops Morph\" ?", false),
+        new Option<bool>("84745", "Underworld Dark Ops Mask", "Mode: [select] only\nShould the bot buy \"Underworld Dark Ops Mask\" ?", false),
+        new Option<bool>("84746", "Dark Ops Briefcase", "Mode: [select] only\nShould the bot buy \"Dark Ops Briefcase\" ?", false),
+        new Option<bool>("84747", "Dark Ops Tactical Gear", "Mode: [select] only\nShould the bot buy \"Dark Ops Tactical Gear\" ?", false),
+        new Option<bool>("84748", "Dark Ops Ghost Drone", "Mode: [select] only\nShould the bot buy \"Dark Ops Ghost Drone\" ?", false),
+        new Option<bool>("84751", "Dark Ops Cold Steel Kukri", "Mode: [select] only\nShould the bot buy \"Dark Ops Cold Steel Kukri\" ?", false),
+        new Option<bool>("84752", "Dark Ops Cold Steel Kukris", "Mode: [select] only\nShould the bot buy \"Dark Ops Cold Steel Kukris\" ?", false),
+        new Option<bool>("84753", "Underworld Dark Ops Rifle", "Mode: [select] only\nShould the bot buy \"Underworld Dark Ops Rifle\" ?", false),
+        new Option<bool>("84754", "Underworld Dark Ops Rifles", "Mode: [select] only\nShould the bot buy \"Underworld Dark Ops Rifles\" ?", false),
+        new Option<bool>("84900", "Hollowborn Paragon Quest Pet", "Mode: [select] only\nShould the bot buy \"Hollowborn Paragon Quest Pet\" ?", false),
     };
 }
