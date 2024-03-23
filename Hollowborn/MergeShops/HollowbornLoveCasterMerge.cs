@@ -67,7 +67,7 @@ public class HollowbornLoveCasterMerge
                 #endregion
 
                 case "NCS Gem":
-                    Daily.NCSGem();
+                    Daily.NCSGem(quant);
                     Core.Logger($"{req.Name} is a daily drop, you need {quant - Bot.Inventory.GetQuantity(req.Name)} more to buy this item. Run the script again tomorrow if you don't have enough.");
                     break;
 
