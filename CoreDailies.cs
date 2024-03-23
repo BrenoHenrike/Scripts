@@ -946,6 +946,23 @@ public class CoreDailies
                     Core.ToBank(item.ID);
     }
 
+    public void NCSGem()
+    {
+        Core.Logger("Daily: NCS Gem");
+        if (Core.CheckInventory("NCS Gem", 15))
+            return;
+        if (!CheckDaily(9642, true, true, "NCS Gem"))
+            return;
+
+        Core.AddDrop("NCS Gem");
+        Core.EquipClass(ClassType.Farm);
+        Core.EnsureAccept(9642);
+        Core.HuntMonster("shadowrealm", "Shadow Lord", "Lovely Favor", log: false);
+        Core.HuntMonster("shadowrealm", "Shadow Makai", "Lovely Request", 100, log: false);
+        Core.EnsureComplete(9642);
+        Core.ToBank("NCS Gem");
+    }
+
 
 #nullable enable
     #region Friendship
