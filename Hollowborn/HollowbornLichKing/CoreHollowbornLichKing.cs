@@ -128,8 +128,8 @@ public class CoreHollowbornLichKing
         // Check if we should return early based on inventory conditions and 'completeOnce' flag
         bool shouldReturnEarly = (DraftlessReward == DraftlessRewards.All && Core.CheckInventory(rewards, toInv: false))
             || DraftlessReward == DraftlessRewards.None
-            || rewardSelection == DraftlessRewards.Soul_Fragment && Core.CheckInventory("Soul Fragment", quant)
-            || (Core.CheckInventory((int)DraftlessReward, toInv: false) && !completeOnce);
+            || (rewardSelection == DraftlessRewards.Soul_Fragment && Core.CheckInventory("Soul Fragment", quant))
+            || (Core.CheckInventory((int)DraftlessReward, quant) && !completeOnce);
 
         if (shouldReturnEarly)
         {
@@ -160,7 +160,7 @@ public class CoreHollowbornLichKing
                 {
                     if (rewardSelection == DraftlessRewards.Soul_Fragment)
                         Core.EnsureComplete(9637, 84835);
-                    Core.EnsureCompleteChoose(9637, rewards);
+                    else Core.EnsureCompleteChoose(9637, rewards);
                     Core.Logger("Draftless quest completed.");
                 }
                 else
@@ -187,8 +187,8 @@ public class CoreHollowbornLichKing
         // Check if we should return early based on inventory conditions and 'completeOnce' flag
         bool shouldReturnEarly = (FlowStressreward == FlowStressRewards.All && Core.CheckInventory(rewards, toInv: false))
             || FlowStressreward == FlowStressRewards.None
-            || rewardSelection == FlowStressRewards.Lich_King_Fragment && Core.CheckInventory("Lich King Fragment", quant)
-            || (Core.CheckInventory((int)FlowStressreward, toInv: false) && !completeOnce);
+            || (rewardSelection == FlowStressRewards.Lich_King_Fragment && Core.CheckInventory("Lich King Fragment", quant))
+            || (Core.CheckInventory((int)FlowStressreward, quant) && !completeOnce);
 
         if (shouldReturnEarly)
         {
@@ -221,7 +221,7 @@ public class CoreHollowbornLichKing
                 {
                     if (rewardSelection == FlowStressRewards.Lich_King_Fragment)
                         Core.EnsureComplete(9638, 84836);
-                    Core.EnsureCompleteChoose(9638, rewards);
+                    else Core.EnsureCompleteChoose(9638, rewards);
                     Core.Logger("Flow Stress quest completed.");
                 }
                 else
