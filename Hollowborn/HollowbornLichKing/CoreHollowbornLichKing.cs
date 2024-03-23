@@ -133,7 +133,7 @@ public class CoreHollowbornLichKing
 
         if (shouldReturnEarly)
         {
-            Core.Logger("Quest rewards are already obtained or conditions met. Exiting Stirring Discord.");
+            Core.Logger("Conditions met to skip `Draftless` quest.");
             return; // Signal to exit
         }
 
@@ -161,7 +161,7 @@ public class CoreHollowbornLichKing
                     if (rewardSelection == DraftlessRewards.Soul_Fragment)
                         Core.EnsureComplete(9637, 84835);
                     Core.EnsureCompleteChoose(9637, rewards);
-                    Core.Logger("In The Flow Stress quest completed.");
+                    Core.Logger("Draftless quest completed.");
                 }
                 else
                 {
@@ -222,12 +222,12 @@ public class CoreHollowbornLichKing
                     if (rewardSelection == FlowStressRewards.Lich_King_Fragment)
                         Core.EnsureComplete(9638, 84836);
                     Core.EnsureCompleteChoose(9638, rewards);
-                    Core.Logger("In The Flow Stress quest completed.");
+                    Core.Logger("Flow Stress quest completed.");
                 }
                 else
                 {
                     Core.EnsureComplete(9638, (int)FlowStressreward);
-                    Core.Logger("In The Flow Stress quest completed.");
+                    Core.Logger("Flow Stress quest completed.");
                     break;
                 }
             }
@@ -252,7 +252,7 @@ public class CoreHollowbornLichKing
 
         if (shouldReturnEarly)
         {
-            Core.Logger("Conditions met to skip In The Flow Stress quest.");
+            Core.Logger("Conditions met to skip Heat Treatment quest.");
             return;
         }
 
@@ -272,7 +272,7 @@ public class CoreHollowbornLichKing
             if (completeOnce)
             {
                 Core.EnsureComplete(9639);
-                Core.Logger("In The Flow Stress quest completed.");
+                Core.Logger("Heat Treatment quest completed.");
                 return;
             }
             else
