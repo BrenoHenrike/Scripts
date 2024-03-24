@@ -226,9 +226,10 @@ public class CoreHollowbornLichKing
 
             Core.EnsureAccept(9638);
 
-            Legion.FarmLegionToken(1000);
             AnotherOneBitesTheDust.SoulSand(1);
             Draftless(DraftlessRewards.Soul_Fragment, false, 6);
+            Legion.FarmLegionToken(1000);
+
 
             if (completeOnce)
             {
@@ -295,10 +296,11 @@ public class CoreHollowbornLichKing
                 break;
 
             Core.EnsureAccept(9639);
-            Legion.FarmLegionToken(10000);
-            LetItBurn.SoulEssence(1);
             FlowStress(FlowStressRewards.Lich_King_Fragment, false, 6);
             Draftless(DraftlessRewards.Soul_Fragment, false, 24);
+            LetItBurn.SoulEssence(1);
+            Legion.FarmLegionToken(10000);
+
 
             if (completeOnce)
             {
