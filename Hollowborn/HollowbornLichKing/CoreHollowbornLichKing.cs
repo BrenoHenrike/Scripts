@@ -144,7 +144,7 @@ public class CoreHollowbornLichKing
         Core.AddDrop(rewards);
         Core.AddDrop("Soul Fragment");
         Core.Logger($"Reward Chosen: {Bot.Config!.Get<DraftlessRewards>("Draftless")}");
-        int DraftlessTurnin = 0;
+        int DraftlessTurnin = 1;
         while (!Bot.ShouldExit)
         {
             Core.EnsureAccept(9637);
@@ -209,7 +209,7 @@ public class CoreHollowbornLichKing
         Core.AddDrop(rewards);
         Core.AddDrop("Lich King Fragment");
         Core.Logger($"Reward Chosen: {FlowStressreward}");
-        int FlowStressTurnin = 0;
+        int FlowStressTurnin = 1;
         while (!Bot.ShouldExit)
         {
             Core.EnsureAccept(9638);
@@ -275,7 +275,7 @@ public class CoreHollowbornLichKing
         Core.AddDrop(rewards);
 
         Core.Logger($"Reward Chosen: {HeatTreatmentReward}");
-        int HeatTreatmentTurnin = 0;
+        int HeatTreatmentTurnin = 1;
         while (!Bot.ShouldExit)
         {
             Core.EnsureAccept(9639);
@@ -336,7 +336,7 @@ public class CoreHollowbornLichKing
 
         Core.AddDrop(rewards);
         Core.Logger($"Reward Chosen: {CounterblowReward}");
-        int CounterblowTurnin = 0;
+        int CounterblowTurnin = 1;
         while (!Bot.ShouldExit)
         {
             Core.EnsureAccept(9640);
