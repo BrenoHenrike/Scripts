@@ -40,7 +40,7 @@ public class HollowbornOblivionBlade
 
         Core.EnsureAccept(7294);
         Farm.Experience(80);
-        Nation.FarmVoucher(false);
+        Nation.FarmVoucher(false, true);
         ArchFiendEnchantedOrbs();
         Nation.FarmUni13();
         Nation.DiamondEvilWar(500);
