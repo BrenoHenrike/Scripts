@@ -150,6 +150,9 @@ public class CoreHollowbornLichKing
 
         while (!Bot.ShouldExit)
         {
+            if ((DraftlessReward == DraftlessRewards.All && Core.CheckInventory(rewards)) || (DraftlessReward == DraftlessRewards.Soul_Fragment && Core.CheckInventory("Soul Fragment", quant)) || (DraftlessReward != DraftlessRewards.All && DraftlessReward != DraftlessRewards.Soul_Fragment && Core.CheckInventory((int)DraftlessReward, toInv: false)))
+                break;
+
             Core.EnsureAccept(9637);
 
             Legion.FarmLegionToken(100);
@@ -178,7 +181,6 @@ public class CoreHollowbornLichKing
                         Core.EnsureComplete(9637, (int)DraftlessReward);
                         Core.Logger($"Draftless quest completed x{DraftlessTurnin++}.");
                     }
-                    break;
                 }
             }
         }
@@ -219,6 +221,9 @@ public class CoreHollowbornLichKing
         int FlowStressTurnin = 1;
         while (!Bot.ShouldExit)
         {
+            if ((flowStressReward == FlowStressRewards.All && Core.CheckInventory(rewards)) || (flowStressReward == FlowStressRewards.Lich_King_Fragment && Core.CheckInventory("Lich King Fragment", quant)) || (flowStressReward != FlowStressRewards.All && flowStressReward != FlowStressRewards.Lich_King_Fragment && Core.CheckInventory((int)flowStressReward, toInv: false)))
+                break;
+
             Core.EnsureAccept(9638);
 
             Legion.FarmLegionToken(1000);
@@ -247,7 +252,6 @@ public class CoreHollowbornLichKing
                         Core.EnsureComplete(9638, (int)flowStressReward);
                         Core.Logger($"Flow Stress quest completed x{FlowStressTurnin++}.");
                     }
-                    break;
                 }
             }
         }
@@ -287,6 +291,9 @@ public class CoreHollowbornLichKing
 
         while (!Bot.ShouldExit)
         {
+            if ((HeatTreatmentReward == HeatTreatmentRewards.All && Core.CheckInventory(rewards)) || (HeatTreatmentReward != HeatTreatmentRewards.All && Core.CheckInventory((int)HeatTreatmentReward, toInv: false)))
+                break;
+
             Core.EnsureAccept(9639);
             Legion.FarmLegionToken(10000);
             LetItBurn.SoulEssence(1);
@@ -313,7 +320,6 @@ public class CoreHollowbornLichKing
                         Core.EnsureComplete(9639, (int)HeatTreatmentReward);
                         Core.Logger($"Heat Treatment quest completed x{HeatTreatmentTurnin++}.");
                     }
-                    break;
                 }
             }
         }
@@ -352,6 +358,9 @@ public class CoreHollowbornLichKing
 
         while (!Bot.ShouldExit)
         {
+            if ((CounterblowReward == CounterblowRewards.All && Core.CheckInventory(rewards)) || (CounterblowReward != CounterblowRewards.All && Core.CheckInventory((int)CounterblowReward, toInv: false)))
+                break;
+
             Core.EnsureAccept(9640);
             FlowStress(FlowStressRewards.Lich_King_Fragment, false, 12);
             Draftless(DraftlessRewards.Soul_Fragment, false, 36);
@@ -380,7 +389,6 @@ public class CoreHollowbornLichKing
                         Core.EnsureComplete(9640, (int)CounterblowReward);
                         Core.Logger($"Counterblow quest completed x{CounterblowTurnin++}.");
                     }
-                    break;
                 }
             }
         }
