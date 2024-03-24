@@ -113,7 +113,9 @@ public class CoreHollowbornLichKing
                 action();
 
                 if (BankAfter)
-                    Core.ToBank(Core.QuestRewards(order));
+                {
+                    Core.ToBank(Core.QuestRewards(order).Except("Soul Fragment", "Lich King Fragment"));
+                }
             }
             Core.CancelRegisteredQuests();
         }
@@ -121,18 +123,15 @@ public class CoreHollowbornLichKing
 
     public void Draftless(DraftlessRewards rewardSelection = DraftlessRewards.All, bool completeOnce = false, int quant = 1)
     {
-        Core.Logger(quant > 1 ? "~~Draftless~~[Farm Mode]" : "~~Draftless~~");
+        Core.Logger(quant > 1 ? $"~~Draftless~~[Farm Mode], Soul Fragment: {quant}" : "~~Draftless~~");
         string[] rewards = Core.QuestRewards(9637).Except("Soul Fragment");
-        if (quant > 1)
-            rewardSelection = DraftlessRewards.Soul_Fragment;
-        else
-            rewardSelection = Bot.Config!.Get<DraftlessRewards>("Draftless");
+        DraftlessRewards DraftlessReward = quant > 1 ? DraftlessRewards.Soul_Fragment : Bot.Config!.Get<DraftlessRewards>("Draftless");
 
         bool shouldReturnEarly =
-                                rewardSelection == DraftlessRewards.None
-                                || (rewardSelection == DraftlessRewards.Soul_Fragment && Core.CheckInventory("Soul Fragment", quant))
-                                || (rewardSelection != DraftlessRewards.All && Core.CheckInventory((int)rewardSelection, toInv: false) && !completeOnce)
-                                || (rewardSelection == DraftlessRewards.All && Core.CheckInventory(rewards, toInv: false));
+                                DraftlessReward == DraftlessRewards.None
+                                || (quant > 1 && DraftlessReward == DraftlessRewards.Soul_Fragment && Core.CheckInventory("Soul Fragment", quant))
+                                || (DraftlessReward != DraftlessRewards.All && Core.CheckInventory((int)DraftlessReward, toInv: false) && !completeOnce)
+                                || (DraftlessReward == DraftlessRewards.All && Core.CheckInventory(rewards, toInv: false));
 
         if (shouldReturnEarly)
         {
@@ -165,16 +164,16 @@ public class CoreHollowbornLichKing
             }
             else
             {
-                if (rewardSelection == DraftlessRewards.All && !Core.CheckInventory(rewards) || rewardSelection == DraftlessRewards.Soul_Fragment && !Core.CheckInventory("Soul Fragment", quant))
+                if (DraftlessReward == DraftlessRewards.All && !Core.CheckInventory(rewards) || DraftlessReward == DraftlessRewards.Soul_Fragment && !Core.CheckInventory("Soul Fragment", quant))
                 {
-                    if (rewardSelection == DraftlessRewards.Soul_Fragment)
+                    if (DraftlessReward == DraftlessRewards.Soul_Fragment)
                         Core.EnsureComplete(9638, 84836);
                     else Core.EnsureCompleteChoose(9638, rewards);
                     Core.Logger($"Flow Stress quest completed x{DraftlessTurnin++}.");
                 }
                 else
                 {
-                    Core.EnsureComplete(9638, (int)rewardSelection);
+                    Core.EnsureComplete(9638, (int)DraftlessReward);
                     Core.Logger($"Flow Stress quest completed x{DraftlessTurnin++}.");
                     break;
                 }
@@ -184,7 +183,7 @@ public class CoreHollowbornLichKing
 
     public void FlowStress(FlowStressRewards rewardSelection = FlowStressRewards.All, bool completeOnce = false, int quant = 1)
     {
-        Core.Logger(quant > 1 ? "~~FlowStress~~[Farm Mode]" : "~~FlowStress~~");
+        Core.Logger(quant > 1 ? $"~~FlowStress~~[Farm Mode], Lich King Fragment: {quant}" : "~~FlowStress~~");
         if (!Core.isCompletedBefore(9637))
         {
             Core.Logger("Quest not unlocked [9638], doing \"Draftless\"");
@@ -193,16 +192,13 @@ public class CoreHollowbornLichKing
 
         string[] rewards = Core.QuestRewards(9638).Except("Lich King Fragment");
 
-        if (quant > 1)
-            rewardSelection = FlowStressRewards.Lich_King_Fragment;
-        else
-            rewardSelection = Bot.Config!.Get<FlowStressRewards>("Flow Stress");
+        FlowStressRewards flowStressReward = quant > 1 ? FlowStressRewards.Lich_King_Fragment : Bot.Config!.Get<FlowStressRewards>("Flow Stress");
 
         bool shouldReturnEarly =
-                                (rewardSelection == FlowStressRewards.All && Core.CheckInventory(rewards, toInv: false))
-                                || (rewardSelection == FlowStressRewards.None)
-                                || (rewardSelection == FlowStressRewards.Lich_King_Fragment && Core.CheckInventory("Lich King Fragment", quant))
-                                || (Core.CheckInventory((int)rewardSelection, quant) && !completeOnce);
+                                (flowStressReward == FlowStressRewards.All && Core.CheckInventory(rewards, toInv: false))
+                                || (flowStressReward == FlowStressRewards.None)
+                                || (quant > 1 && flowStressReward == FlowStressRewards.Lich_King_Fragment && Core.CheckInventory("Lich King Fragment", quant))
+                                || (Core.CheckInventory((int)flowStressReward, quant) && !completeOnce);
 
         if (shouldReturnEarly)
         {
@@ -216,7 +212,7 @@ public class CoreHollowbornLichKing
 
         Core.AddDrop(rewards);
         Core.AddDrop("Lich King Fragment");
-        Core.Logger($"Reward Chosen: {rewardSelection}");
+        Core.Logger($"Reward Chosen: {flowStressReward}");
         int FlowStressTurnin = 1;
         while (!Bot.ShouldExit)
         {
@@ -234,16 +230,16 @@ public class CoreHollowbornLichKing
             }
             else
             {
-                if (rewardSelection == FlowStressRewards.All && !Core.CheckInventory(rewards) || rewardSelection == FlowStressRewards.Lich_King_Fragment && !Core.CheckInventory("Lich King Fragment", quant))
+                if (flowStressReward == FlowStressRewards.All && !Core.CheckInventory(rewards) || flowStressReward == FlowStressRewards.Lich_King_Fragment && !Core.CheckInventory("Lich King Fragment", quant))
                 {
-                    if (rewardSelection == FlowStressRewards.Lich_King_Fragment)
+                    if (flowStressReward == FlowStressRewards.Lich_King_Fragment)
                         Core.EnsureComplete(9638, 84836);
                     else Core.EnsureCompleteChoose(9638, rewards);
                     Core.Logger($"Flow Stress quest completed x{FlowStressTurnin++}.");
                 }
                 else
                 {
-                    Core.EnsureComplete(9638, (int)rewardSelection);
+                    Core.EnsureComplete(9638, (int)flowStressReward);
                     Core.Logger($"Flow Stress quest completed x{FlowStressTurnin++}.");
                     break;
                 }

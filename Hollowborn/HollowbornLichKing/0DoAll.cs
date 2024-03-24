@@ -31,6 +31,9 @@ tags: hollowborn Lich King, hollowborn, doall, do all
 
 
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
+using Skua.Core.Models.Quests;
+using System.Linq;
 
 public class HBLK0
 {
