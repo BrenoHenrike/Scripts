@@ -39,7 +39,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 200676,
+    "size": 200732,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -83,7 +83,7 @@
       "null"
     ],
     "path": "Legion/CoreLegion.cs",
-    "size": 33998,
+    "size": 34075,
     "fileName": "CoreLegion.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/CoreLegion.cs"
   },
@@ -3946,7 +3946,7 @@
       "null"
     ],
     "path": "Legion/Various/LetitBurn(SoulEssence).cs",
-    "size": 1923,
+    "size": 1861,
     "fileName": "LetitBurn(SoulEssence).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/Various/LetitBurn(SoulEssence).cs"
   },
@@ -15333,7 +15333,7 @@
       "hollowborn"
     ],
     "path": "Hollowborn/Materials/HollowSoul.cs",
-    "size": 1683,
+    "size": 1585,
     "fileName": "HollowSoul.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/Materials/HollowSoul.cs"
   },
@@ -15543,7 +15543,7 @@
       "null"
     ],
     "path": "Hollowborn/HollowbornLichKing/CoreHollowbornLichKing.cs",
-    "size": 16841,
+    "size": 17021,
     "fileName": "CoreHollowbornLichKing.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/HollowbornLichKing/CoreHollowbornLichKing.cs"
   },
