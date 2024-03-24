@@ -173,8 +173,11 @@ public class CoreHollowbornLichKing
                 }
                 else
                 {
-                    Core.EnsureComplete(9637, (int)DraftlessReward);
-                    Core.Logger($"Draftless quest completed x{DraftlessTurnin++}.");
+                    if (DraftlessReward != DraftlessRewards.All || DraftlessReward != DraftlessRewards.Soul_Fragment)
+                    {
+                        Core.EnsureComplete(9637, (int)DraftlessReward);
+                        Core.Logger($"Draftless quest completed x{DraftlessTurnin++}.");
+                    }
                     break;
                 }
             }
@@ -239,8 +242,11 @@ public class CoreHollowbornLichKing
                 }
                 else
                 {
-                    Core.EnsureComplete(9638, (int)flowStressReward);
-                    Core.Logger($"Flow Stress quest completed x{FlowStressTurnin++}.");
+                    if (flowStressReward != FlowStressRewards.All || flowStressReward != FlowStressRewards.Lich_King_Fragment)
+                    {
+                        Core.EnsureComplete(9638, (int)flowStressReward);
+                        Core.Logger($"Flow Stress quest completed x{FlowStressTurnin++}.");
+                    }
                     break;
                 }
             }
@@ -294,15 +300,18 @@ public class CoreHollowbornLichKing
             }
             else
             {
-                if (rewardSelection == HeatTreatmentRewards.All && !Core.CheckInventory(rewards))
+                if (HeatTreatmentReward == HeatTreatmentRewards.All && !Core.CheckInventory(rewards))
                 {
                     Core.EnsureCompleteChoose(9639, rewards);
                     Core.Logger($"Heat Treatment quest completed x{HeatTreatmentTurnin++}.");
                 }
                 else
                 {
-                    Core.EnsureComplete(9639, (int)HeatTreatmentReward);
-                    Core.Logger($"Heat Treatment quest completed x{HeatTreatmentTurnin++}.");
+                    if (HeatTreatmentReward != HeatTreatmentRewards.All)
+                    {
+                        Core.EnsureComplete(9639, (int)HeatTreatmentReward);
+                        Core.Logger($"Heat Treatment quest completed x{HeatTreatmentTurnin++}.");
+                    }
                     break;
                 }
             }
@@ -357,15 +366,18 @@ public class CoreHollowbornLichKing
             }
             else
             {
-                if (rewardSelection == CounterblowRewards.All && !Core.CheckInventory(rewards))
+                if (CounterblowReward == CounterblowRewards.All && !Core.CheckInventory(rewards))
                 {
                     Core.EnsureCompleteChoose(9640, rewards);
                     Core.Logger($"Counterblow quest completed x{CounterblowTurnin++}.");
                 }
                 else
                 {
-                    Core.EnsureComplete(9640, (int)CounterblowReward);
-                    Core.Logger($"Counterblow quest completed x{CounterblowTurnin++}.");
+                    if (CounterblowReward != CounterblowRewards.All)
+                    {
+                        Core.EnsureComplete(9640, (int)CounterblowReward);
+                        Core.Logger($"Counterblow quest completed x{CounterblowTurnin++}.");
+                    }
                     break;
                 }
             }
