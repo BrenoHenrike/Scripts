@@ -17,9 +17,9 @@ public class HollowSoul
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
-    public CoreAdvanced Adv = new CoreAdvanced();
-    public CoreHollowborn HB = new CoreHollowborn();
+    public CoreFarms Farm = new ();
+    public CoreAdvanced Adv = new ();
+    public CoreHollowborn HB = new ();
     public CoreNation Nation = new();
 
     public void ScriptMain(IScriptInterface bot)
@@ -36,11 +36,9 @@ public class HollowSoul
         if (Core.CheckInventory("Hollow Soul", HSQuant))
             return;
 
-        Core.FarmingLogger("Hollow Soul", HSQuant);
         Core.EquipClass(ClassType.Farm);
-        Core.AddDrop("Hollow Soul");
         Core.RegisterQuests(7553, 7555);
-        Core.KillMonster("shadowrealm", "r2", "Left", "*", "Hollow Soul", HSQuant, isTemp: false, log: false);
+        Core.KillMonster("shadowrealm", "r2", "Left", "*", "Hollow Soul", HSQuant, isTemp: false);
         Core.CancelRegisteredQuests();
         // while (!Bot.ShouldExit && !Core.CheckInventory("Hollow Soul", HSQuant))
         // {

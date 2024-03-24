@@ -1687,6 +1687,7 @@ public class CoreBots
                     if (Bot.Drops.Exists(item.ID))
                         Bot.Drops.Pickup(item.Name);
                     Bot.Wait.ForPickup(item.Name);
+                    Bot.Wait.ForQuestComplete(questID);
                     return completed;
                 }
             }

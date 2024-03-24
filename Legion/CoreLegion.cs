@@ -234,8 +234,9 @@ public class CoreLegion
         //banking Lts as ae fucked the quant when updating teh cap
         if (!Bot.Bank.Contains("Legion Token"))
         {
-            Core.Logger("Banking [then unbanking if farm is needed] LTs\n" +
-         "as when AE updated the cap, they broke shit");
+            Core.OneTimeMessage("Legion Token stack fix", "Banking [then unbanking if farm is needed] LTs\n" +
+                                "as when AE updated the cap, they broke shit", messageBox: false);
+
             Core.ToBank("Legion Token");
         }
 
