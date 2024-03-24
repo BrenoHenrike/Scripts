@@ -41,7 +41,7 @@ public class HollowSoul
         Core.AddDrop("Hollow Soul");
         Core.RegisterQuests(7553, 7555);
         Core.KillMonster("shadowrealm", "r2", "Left", "*", "Hollow Soul", HSQuant, isTemp: false, log: false);
-
+        Core.CancelRegisteredQuests();
         // while (!Bot.ShouldExit && !Core.CheckInventory("Hollow Soul", HSQuant))
         // {
 
