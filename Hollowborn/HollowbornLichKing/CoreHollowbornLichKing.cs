@@ -125,7 +125,6 @@ public class CoreHollowbornLichKing
         string[] rewards = Core.QuestRewards(9637).Except("Soul Fragment");
         DraftlessRewards DraftlessReward = Bot.Config!.Get<DraftlessRewards>("Draftless");
 
-        // Check if we should return early based on inventory conditions and 'completeOnce' flag
         bool shouldReturnEarly = (DraftlessReward == DraftlessRewards.All && Core.CheckInventory(rewards, toInv: false))
             || DraftlessReward == DraftlessRewards.None
             || (rewardSelection == DraftlessRewards.Soul_Fragment && Core.CheckInventory("Soul Fragment", quant))
@@ -134,12 +133,13 @@ public class CoreHollowbornLichKing
         if (shouldReturnEarly)
         {
             Core.Logger("Conditions met to skip `Draftless` quest.");
-            return; // Signal to exit
+            return; 
         }
 
         Core.AddDrop(rewards);
         Core.AddDrop("Soul Fragment");
         Core.Logger($"Reward Chosen: {Bot.Config!.Get<DraftlessRewards>("Draftless")}");
+        int DraftlessTurnin = 0;
         while (!Bot.ShouldExit)
         {
             Core.EnsureAccept(9637);
@@ -151,8 +151,8 @@ public class CoreHollowbornLichKing
             if (completeOnce)
             {
                 Core.EnsureComplete(9637);
-                Core.Logger("Draftless quest completed.");
-                return;
+                Core.Logger($"Draftless quest completed x{DraftlessTurnin++}.");
+                break;
             }
             else
             {
@@ -161,16 +161,17 @@ public class CoreHollowbornLichKing
                     if (rewardSelection == DraftlessRewards.Soul_Fragment)
                         Core.EnsureComplete(9637, 84835);
                     else Core.EnsureCompleteChoose(9637, rewards);
-                    Core.Logger("Draftless quest completed.");
+                    Core.Logger($"Draftless quest completed x{DraftlessTurnin++}.");
                 }
                 else
                 {
                     Core.EnsureComplete(9637, (int)DraftlessReward);
-                    Core.Logger("Draftless quest completed.");
+                    Core.Logger($"Draftless quest completed x{DraftlessTurnin++}.");
                     break;
                 }
             }
         }
+        DraftlessTurnin = 0;
     }
 
     public void FlowStress(FlowStressRewards rewardSelection = FlowStressRewards.All, bool completeOnce = false, int quant = 1)
@@ -199,6 +200,7 @@ public class CoreHollowbornLichKing
         Core.AddDrop(rewards);
         Core.AddDrop("Lich King Fragment");
         Core.Logger($"Reward Chosen: {FlowStressreward}");
+        int FlowStressTurnin = 0;
         while (!Bot.ShouldExit)
         {
             Core.EnsureAccept(9638);
@@ -212,8 +214,8 @@ public class CoreHollowbornLichKing
             if (completeOnce)
             {
                 Core.EnsureComplete(9638);
-                Core.Logger("Flow Stress quest completed.");
-                return;
+                Core.Logger($"Flow Stress quest completed x{FlowStressTurnin++}.");
+                break;
             }
             else
             {
@@ -222,16 +224,17 @@ public class CoreHollowbornLichKing
                     if (rewardSelection == FlowStressRewards.Lich_King_Fragment)
                         Core.EnsureComplete(9638, 84836);
                     else Core.EnsureCompleteChoose(9638, rewards);
-                    Core.Logger("Flow Stress quest completed.");
+                    Core.Logger($"Flow Stress quest completed x{FlowStressTurnin++}.");
                 }
                 else
                 {
                     Core.EnsureComplete(9638, (int)FlowStressreward);
-                    Core.Logger("Flow Stress quest completed.");
+                    Core.Logger($"Flow Stress quest completed x{FlowStressTurnin++}.");
                     break;
                 }
             }
         }
+        FlowStressTurnin = 0;
     }
 
     public void HeatTreatment(HeatTreatmentRewards rewardSelection = HeatTreatmentRewards.All, bool completeOnce = false, int quant = 1)
@@ -259,37 +262,37 @@ public class CoreHollowbornLichKing
         Core.AddDrop(rewards);
 
         Core.Logger($"Reward Chosen: {HeatTreatmentReward}");
+        int HeatTreatmentTurnin = 0;
         while (!Bot.ShouldExit)
         {
             Core.EnsureAccept(9639);
-            //Kill area
             Legion.FarmLegionToken(10000);
             LetItBurn.SoulEssence(1);
             FlowStress(FlowStressRewards.Lich_King_Fragment, false, 6);
             Draftless(DraftlessRewards.Soul_Fragment, false, 24);
-            //Kill area
 
             if (completeOnce)
             {
                 Core.EnsureComplete(9639);
-                Core.Logger("Heat Treatment quest completed.");
-                return;
+                Core.Logger($"Heat Treatment quest completed x{HeatTreatmentTurnin++}.");
+                break;
             }
             else
             {
                 if (rewardSelection == HeatTreatmentRewards.All && !Core.CheckInventory(rewards))
                 {
-                    Core.EnsureCompleteChoose(9639, Core.QuestRewards(9639));
-                    Core.Logger("In The Flow Stress quest completed.");
+                    Core.EnsureCompleteChoose(9639, rewards);
+                    Core.Logger($"In The Flow Stress quest completed x{HeatTreatmentTurnin++}.");
                 }
                 else
                 {
                     Core.EnsureComplete(9639, (int)HeatTreatmentReward);
-                    Core.Logger("In The Flow Stress quest completed.");
+                    Core.Logger($"In The Flow Stress quest completed x{HeatTreatmentTurnin++}.");
                     break;
                 }
             }
         }
+        HeatTreatmentTurnin = 0;
     }
 
     public void Counterblow(CounterblowRewards rewardSelection = CounterblowRewards.All, bool completeOnce = false, int quant = 1)
@@ -316,6 +319,7 @@ public class CoreHollowbornLichKing
 
         Core.AddDrop(rewards);
         Core.Logger($"Reward Chosen: {CounterblowReward}");
+        int CounterblowTurnin = 0;
         while (!Bot.ShouldExit)
         {
             Core.EnsureAccept(9640);
@@ -331,24 +335,25 @@ public class CoreHollowbornLichKing
             if (completeOnce)
             {
                 Core.EnsureComplete(9640);
-                Core.Logger("Counterblow quest completed.");
+                Core.Logger($"Counterblow quest completed x{CounterblowTurnin++}.");
                 return;
             }
             else
             {
                 if (rewardSelection == CounterblowRewards.All && !Core.CheckInventory(rewards))
                 {
-                    Core.EnsureCompleteChoose(9640, Core.QuestRewards(9640));
-                    Core.Logger("Counterblow quest completed.");
+                    Core.EnsureCompleteChoose(9640, rewards);
+                    Core.Logger($"Counterblow quest completed x{CounterblowTurnin++}.");
                 }
                 else
                 {
                     Core.EnsureComplete(9640, (int)CounterblowReward);
-                    Core.Logger("Counterblow quest completed.");
+                    Core.Logger($"Counterblow quest completed x{CounterblowTurnin++}.");
                     break;
                 }
             }
         }
+        CounterblowTurnin = 0;
     }
 
     public enum DraftlessRewards
