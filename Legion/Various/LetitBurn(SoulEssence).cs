@@ -17,11 +17,11 @@ public class LetItBurn
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
-    public CoreLegion Legion = new CoreLegion();
-    public CoreAdvanced Adv = new CoreAdvanced();
-    public AnotherOneBitesTheDust SSand = new AnotherOneBitesTheDust();
-    public LegionBonfire Bon = new LegionBonfire();
+    public CoreFarms Farm = new();
+    public CoreLegion Legion = new();
+    public CoreAdvanced Adv = new();
+    public AnotherOneBitesTheDust SSand = new();
+    public LegionBonfire Bon = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -32,7 +32,7 @@ public class LetItBurn
         Core.SetOptions(false);
     }
 
-    private string[] rewards = { "Legion Undead Spawn", "Legion Undead Visor", "Legion Forge Banisher", "Legion Spawn Bonker" };
+    private readonly string[] rewards = { "Legion Undead Spawn", "Legion Undead Visor", "Legion Forge Banisher", "Legion Spawn Bonker" };
 
     public void SoulEssence(int quant = 50)
     {
