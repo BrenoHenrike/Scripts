@@ -946,7 +946,7 @@ public class CoreDailies
                     Core.ToBank(item.ID);
     }
 
-    public void NCSGem(int quant = 15)
+    public void NCSGem(bool merge = false, int quant = 15)
     {
         Core.Logger("Daily: NCS Gem");
         if (Core.CheckInventory("NCS Gem", quant))
@@ -960,7 +960,8 @@ public class CoreDailies
         Core.HuntMonster("shadowrealm", "Shadow Lord", "Lovely Favor", log: false);
         Core.HuntMonster("shadowrealm", "Shadow Makai", "Lovely Request", 100, log: false);
         Core.EnsureComplete(9642);
-        Core.ToBank("NCS Gem");
+        if (!merge)
+            Core.ToBank("NCS Gem");
     }
 
 
