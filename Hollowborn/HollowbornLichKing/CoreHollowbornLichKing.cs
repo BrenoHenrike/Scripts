@@ -85,7 +85,7 @@ public class CoreHollowbornLichKing
         { "Heat Treatment", (9639, () => HeatTreatment(getAllDrops ? HeatTreatmentRewards.All : Bot.Config!.Get<HeatTreatmentRewards>("Heat Treatment"), !getAllDrops && BankAfter)) },
         { "Counterblow", (9640, () => Counterblow(getAllDrops ? CounterblowRewards.All : Bot.Config!.Get<CounterblowRewards>("Counterblow"), !getAllDrops && BankAfter)) },
     };
-        string[] questOrder = { "Draftless", "Flow Stress", "HeatTreatment", "Counterblow" };
+        string[] questOrder = { "Draftless", "Flow Stress", "Heat Treatment", "Counterblow" };
 
 
         foreach (var quest in questOrder)
@@ -128,12 +128,12 @@ public class CoreHollowbornLichKing
         // Check if we should return early based on inventory conditions and 'completeOnce' flag
         bool shouldReturnEarly = (DraftlessReward == DraftlessRewards.All && Core.CheckInventory(rewards, toInv: false))
             || DraftlessReward == DraftlessRewards.None
-            || rewardSelection == DraftlessRewards.Soul_Fragment && Core.CheckInventory("Soul Fragment", quant)
-            || (Core.CheckInventory((int)DraftlessReward, toInv: false) && !completeOnce);
+            || (rewardSelection == DraftlessRewards.Soul_Fragment && Core.CheckInventory("Soul Fragment", quant))
+            || (Core.CheckInventory((int)DraftlessReward, quant) && !completeOnce);
 
         if (shouldReturnEarly)
         {
-            Core.Logger("Quest rewards are already obtained or conditions met. Exiting Stirring Discord.");
+            Core.Logger("Conditions met to skip `Draftless` quest.");
             return; // Signal to exit
         }
 
@@ -159,9 +159,9 @@ public class CoreHollowbornLichKing
                 if (DraftlessReward == DraftlessRewards.All && Core.CheckInventory(rewards) || rewardSelection == DraftlessRewards.Soul_Fragment && !Core.CheckInventory("Soul Fragment", quant))
                 {
                     if (rewardSelection == DraftlessRewards.Soul_Fragment)
-                        Core.EnsureCompleteMulti(9637, (int)rewardSelection);
-                    Core.EnsureCompleteChoose(9637, rewards);
-                    Core.Logger("In The Flow Stress quest completed.");
+                        Core.EnsureComplete(9637, 84835);
+                    else Core.EnsureCompleteChoose(9637, rewards);
+                    Core.Logger("Draftless quest completed.");
                 }
                 else
                 {
@@ -187,12 +187,12 @@ public class CoreHollowbornLichKing
         // Check if we should return early based on inventory conditions and 'completeOnce' flag
         bool shouldReturnEarly = (FlowStressreward == FlowStressRewards.All && Core.CheckInventory(rewards, toInv: false))
             || FlowStressreward == FlowStressRewards.None
-            || rewardSelection == FlowStressRewards.Lich_King_Fragment && Core.CheckInventory("Lich King Fragment", quant)
-            || (Core.CheckInventory((int)FlowStressreward, toInv: false) && !completeOnce);
+            || (rewardSelection == FlowStressRewards.Lich_King_Fragment && Core.CheckInventory("Lich King Fragment", quant))
+            || (Core.CheckInventory((int)FlowStressreward, quant) && !completeOnce);
 
         if (shouldReturnEarly)
         {
-            Core.Logger("Conditions met to skip In The Flow Stress quest.");
+            Core.Logger("Conditions met to skip `Flow Stress` quest.");
             return;
         }
 
@@ -212,7 +212,7 @@ public class CoreHollowbornLichKing
             if (completeOnce)
             {
                 Core.EnsureComplete(9638);
-                Core.Logger("In The Flow Stress quest completed.");
+                Core.Logger("Flow Stress quest completed.");
                 return;
             }
             else
@@ -220,14 +220,14 @@ public class CoreHollowbornLichKing
                 if (rewardSelection == FlowStressRewards.All && !Core.CheckInventory(rewards) || rewardSelection == FlowStressRewards.Lich_King_Fragment && !Core.CheckInventory("Lich King Fragment", quant))
                 {
                     if (rewardSelection == FlowStressRewards.Lich_King_Fragment)
-                        Core.EnsureCompleteMulti(9638, (int)rewardSelection);
-                    Core.EnsureCompleteChoose(9638, rewards);
-                    Core.Logger("In The Flow Stress quest completed.");
+                        Core.EnsureComplete(9638, 84836);
+                    else Core.EnsureCompleteChoose(9638, rewards);
+                    Core.Logger("Flow Stress quest completed.");
                 }
                 else
                 {
                     Core.EnsureComplete(9638, (int)FlowStressreward);
-                    Core.Logger("In The Flow Stress quest completed.");
+                    Core.Logger("Flow Stress quest completed.");
                     break;
                 }
             }
@@ -248,11 +248,11 @@ public class CoreHollowbornLichKing
         // Check if we should return early based on inventory conditions and 'completeOnce' flag
         bool shouldReturnEarly = (HeatTreatmentReward == HeatTreatmentRewards.All && Core.CheckInventory(rewards, toInv: false))
             || HeatTreatmentReward == HeatTreatmentRewards.None
-            || (Core.CheckInventory((int)HeatTreatmentReward, toInv: false) && !completeOnce);
+            || (Core.CheckInventory((int)HeatTreatmentReward, quant) && !completeOnce);
 
         if (shouldReturnEarly)
         {
-            Core.Logger("Conditions met to skip In The Flow Stress quest.");
+            Core.Logger("Conditions met to skip Heat Treatment quest.");
             return;
         }
 
@@ -272,7 +272,7 @@ public class CoreHollowbornLichKing
             if (completeOnce)
             {
                 Core.EnsureComplete(9639);
-                Core.Logger("In The Flow Stress quest completed.");
+                Core.Logger("Heat Treatment quest completed.");
                 return;
             }
             else
