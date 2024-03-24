@@ -130,7 +130,7 @@ public class CoreHollowbornLichKing
         bool shouldReturnEarly =
                                 DraftlessReward == DraftlessRewards.None
                                 || (quant > 1 && DraftlessReward == DraftlessRewards.Soul_Fragment && Core.CheckInventory("Soul Fragment", quant))
-                                || (DraftlessReward != DraftlessRewards.All && Core.CheckInventory((int)DraftlessReward, toInv: false) && !completeOnce)
+                                || (DraftlessReward != DraftlessRewards.All && DraftlessReward != DraftlessRewards.Soul_Fragment && Core.CheckInventory((int)DraftlessReward, toInv: false) && !completeOnce)
                                 || (DraftlessReward == DraftlessRewards.All && Core.CheckInventory(rewards, toInv: false));
 
         if (shouldReturnEarly)
@@ -201,7 +201,7 @@ public class CoreHollowbornLichKing
                                 (flowStressReward == FlowStressRewards.All && Core.CheckInventory(rewards, toInv: false))
                                 || (flowStressReward == FlowStressRewards.None)
                                 || (quant > 1 && flowStressReward == FlowStressRewards.Lich_King_Fragment && Core.CheckInventory("Lich King Fragment", quant))
-                                || (Core.CheckInventory((int)flowStressReward, quant) && !completeOnce);
+                                || (flowStressReward != FlowStressRewards.All && flowStressReward != FlowStressRewards.Lich_King_Fragment && Core.CheckInventory((int)flowStressReward, quant) && !completeOnce);
 
         if (shouldReturnEarly)
         {
@@ -268,7 +268,8 @@ public class CoreHollowbornLichKing
         bool shouldReturnEarly =
                                 (HeatTreatmentReward == HeatTreatmentRewards.All && Core.CheckInventory(rewards, toInv: false))
                                 || (HeatTreatmentReward == HeatTreatmentRewards.None)
-                                || (Core.CheckInventory((int)HeatTreatmentReward, quant) && !completeOnce);
+                                || (HeatTreatmentReward != HeatTreatmentRewards.All && Core.CheckInventory((int)HeatTreatmentReward, quant) && !completeOnce);
+
 
         if (shouldReturnEarly)
         {
@@ -333,7 +334,8 @@ public class CoreHollowbornLichKing
         bool shouldReturnEarly =
                                 (CounterblowReward == CounterblowRewards.All && Core.CheckInventory(rewards, quant, toInv: false))
                                 || (CounterblowReward == CounterblowRewards.None)
-                                || (Core.CheckInventory((int)CounterblowReward, quant) && !completeOnce);
+                                || (CounterblowReward != CounterblowRewards.All && Core.CheckInventory((int)CounterblowReward, quant) && !completeOnce);
+
 
         if (shouldReturnEarly)
         {
