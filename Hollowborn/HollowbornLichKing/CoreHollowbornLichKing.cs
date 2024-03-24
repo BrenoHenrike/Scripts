@@ -123,7 +123,7 @@ public class CoreHollowbornLichKing
 
     public void Draftless(DraftlessRewards rewardSelection = DraftlessRewards.All, bool completeOnce = false, int quant = 1)
     {
-        Core.Logger("~~Draftless~~");
+        Core.Logger(quant > 1 ? "~~Draftless~~[Farm Mode]" : "~~Draftless~~");
         string[] rewards = Core.QuestRewards(9637).Except("Soul Fragment");
         DraftlessRewards DraftlessReward = Bot.Config!.Get<DraftlessRewards>("Draftless");
 
@@ -182,7 +182,7 @@ public class CoreHollowbornLichKing
 
     public void FlowStress(FlowStressRewards rewardSelection = FlowStressRewards.All, bool completeOnce = false, int quant = 1)
     {
-        Core.Logger("~~FlowStress~~");
+        Core.Logger(quant > 1 ? "~~FlowStress~~[Farm Mode]" : "~~FlowStress~~");
         if (!Core.isCompletedBefore(9637))
         {
             Core.Logger("Quest not unlocked [9638], doing \"Draftless\"");
@@ -245,10 +245,9 @@ public class CoreHollowbornLichKing
         }
     }
 
-
     public void HeatTreatment(HeatTreatmentRewards rewardSelection = HeatTreatmentRewards.All, bool completeOnce = false, int quant = 1)
     {
-        Core.Logger("~~HeatTreatment~~");
+        Core.Logger(quant > 1 ? "~~HeatTreatment~~[Farm Mode]" : "~~HeatTreatment~~");
         if (!Core.isCompletedBefore(9638))
         {
             Core.Logger("Quest not unlocked [9639], doing \"Flow Stress\"");
@@ -310,7 +309,7 @@ public class CoreHollowbornLichKing
 
     public void Counterblow(CounterblowRewards rewardSelection = CounterblowRewards.All, bool completeOnce = false, int quant = 1)
     {
-        Core.Logger("~~Counterblow~~");
+        Core.Logger(quant > 1 ? "~~Counterblow~~[Farm Mode]" : "~~Counterblow~~");
         if (!Core.isCompletedBefore(9639))
         {
             Core.Logger("Quest not unlocked [9640], doing \"In The Flow Stress\"");
