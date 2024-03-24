@@ -175,7 +175,7 @@ public class CoreHollowbornLichKing
 
     public void FlowStress(FlowStressRewards rewardSelection = FlowStressRewards.All, bool completeOnce = false, int quant = 1)
     {
-        if (!Core.isCompletedBefore(9638))
+        if (!Core.isCompletedBefore(9637))
         {
             Core.Logger("Quest not unlocked [9638], doing \"Draftless\"");
             Draftless(completeOnce: true);
@@ -236,7 +236,7 @@ public class CoreHollowbornLichKing
 
     public void HeatTreatment(HeatTreatmentRewards rewardSelection = HeatTreatmentRewards.All, bool completeOnce = false, int quant = 1)
     {
-        if (!Core.isCompletedBefore(9639))
+        if (!Core.isCompletedBefore(9638))
         {
             Core.Logger("Quest not unlocked [9639], doing \"Flow Stress\"");
             Draftless(completeOnce: true);
@@ -294,7 +294,7 @@ public class CoreHollowbornLichKing
 
     public void Counterblow(CounterblowRewards rewardSelection = CounterblowRewards.All, bool completeOnce = false, int quant = 1)
     {
-        if (!Core.isCompletedBefore(9640))
+        if (!Core.isCompletedBefore(9639))
         {
             Core.Logger("Quest not unlocked [9640], doing \"In The Flow Stress\"");
             FlowStress(completeOnce: true);
@@ -386,10 +386,10 @@ public class CoreHollowbornLichKing
     }
     public enum HeatTreatmentRewards
     {
-        Hollowborn_Benevolent_Locks = 74485,
-        Hollowborn_Malignant_Locks = 74488,
-        Hollowborn_Face_of_Chaos = 74491,
-        Hollowborn_Gaze_of_Chaos = 74492,
+        Hollowborn_Lich_King = 84881,
+        Hollowborn_Lich_Kings_Horns = 84883,
+        Hollowborn_Lich_Kings_Hood = 84884,
+        Hollowborn_Lich_Kings_Cloak = 84887,
         All,
         None
     }
