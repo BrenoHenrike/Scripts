@@ -167,14 +167,14 @@ public class CoreHollowbornLichKing
                 if (DraftlessReward == DraftlessRewards.All && !Core.CheckInventory(rewards) || DraftlessReward == DraftlessRewards.Soul_Fragment && !Core.CheckInventory("Soul Fragment", quant))
                 {
                     if (DraftlessReward == DraftlessRewards.Soul_Fragment)
-                        Core.EnsureComplete(9638, 84836);
-                    else Core.EnsureCompleteChoose(9638, rewards);
-                    Core.Logger($"Flow Stress quest completed x{DraftlessTurnin++}.");
+                        Core.EnsureComplete(9637, 84835);
+                    else Core.EnsureCompleteChoose(9637, rewards);
+                    Core.Logger($"Draftless quest completed x{DraftlessTurnin++}.");
                 }
                 else
                 {
-                    Core.EnsureComplete(9638, (int)DraftlessReward);
-                    Core.Logger($"Flow Stress quest completed x{DraftlessTurnin++}.");
+                    Core.EnsureComplete(9637, (int)DraftlessReward);
+                    Core.Logger($"Draftless quest completed x{DraftlessTurnin++}.");
                     break;
                 }
             }
@@ -297,12 +297,12 @@ public class CoreHollowbornLichKing
                 if (rewardSelection == HeatTreatmentRewards.All && !Core.CheckInventory(rewards))
                 {
                     Core.EnsureCompleteChoose(9639, rewards);
-                    Core.Logger($"In The Flow Stress quest completed x{HeatTreatmentTurnin++}.");
+                    Core.Logger($"Heat Treatment quest completed x{HeatTreatmentTurnin++}.");
                 }
                 else
                 {
                     Core.EnsureComplete(9639, (int)HeatTreatmentReward);
-                    Core.Logger($"In The Flow Stress quest completed x{HeatTreatmentTurnin++}.");
+                    Core.Logger($"Heat Treatment quest completed x{HeatTreatmentTurnin++}.");
                     break;
                 }
             }
