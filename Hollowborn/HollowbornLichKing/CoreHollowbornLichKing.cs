@@ -156,6 +156,8 @@ public class CoreHollowbornLichKing
             if (DraftlessReward == DraftlessRewards.All)
                 foreach (string item in rewards)
                     Core.Logger(Core.CheckInventory(item, toInv: false) ? $"{item}: ✅" : $"{item} ❌");
+            if (DraftlessReward == DraftlessRewards.Soul_Fragment)
+                Core.FarmingLogger("Soul Fragment", quant);
 
             if ((DraftlessReward == DraftlessRewards.All && Core.CheckInventory(rewards, toInv: false))
             || (DraftlessReward == DraftlessRewards.Soul_Fragment && Core.CheckInventory("Soul Fragment", quant))
@@ -230,6 +232,8 @@ public class CoreHollowbornLichKing
             if (flowStressReward == FlowStressRewards.All)
                 foreach (string item in rewards)
                     Core.Logger(Core.CheckInventory(item, toInv: false) ? $"{item}: ✅" : $"{item} ❌");
+            if (flowStressReward == FlowStressRewards.Lich_King_Fragment)
+                Core.FarmingLogger("Lich King Fragment", quant);
 
             if ((flowStressReward == FlowStressRewards.All && Core.CheckInventory(rewards))
             || (flowStressReward == FlowStressRewards.Lich_King_Fragment && Core.CheckInventory("Lich King Fragment", quant))
