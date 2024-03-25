@@ -66,6 +66,11 @@ public class CoreHollowbornLichKing
             new Option<CounterblowRewards>("Counterblow", "Counterblow Reward", "Reward Selection for Counterblow", CounterblowRewards.All)
     };
 
+    int DraftlessTurnin = 1;
+    int FlowStressTurnin = 1;
+    int HeatTreatmentTurnin = 1;
+    int CounterblowTurnin = 1;
+
     public void ScriptMain(IScriptInterface Bot)
     {
         Core.RunCore();
@@ -142,14 +147,15 @@ public class CoreHollowbornLichKing
 
         if (shouldReturnEarly)
         {
-            Core.Logger("Conditions met to skip `Draftless` quest.");
+            Core.Logger(DraftlessReward == DraftlessRewards.Soul_Fragment
+            ? $"Soul Fragment: {Bot.Inventory.Items?.FirstOrDefault(x => x.Name == "Soul Fragment")?.Quantity ?? 0} / {quant} Continuing"
+            : "Conditions met to skip `Draftless` quest.");
             return;
         }
 
         Core.AddDrop(rewards);
         Core.AddDrop("Soul Fragment");
         Core.Logger($"Reward Chosen: {Bot.Config!.Get<DraftlessRewards>("Draftless")}");
-        int DraftlessTurnin = 1;
 
         while (!Bot.ShouldExit)
         {
@@ -219,14 +225,15 @@ public class CoreHollowbornLichKing
 
         if (shouldReturnEarly)
         {
-            Core.Logger("Conditions met to skip `Flow Stress` quest.");
+            Core.Logger(flowStressReward == FlowStressRewards.Lich_King_Fragment
+            ? $"Lich King Fragment: {Bot.Inventory.Items?.FirstOrDefault(x => x.Name == "Soul Fragment")?.Quantity ?? 0} / {quant} Continuing"
+            : "Conditions met to skip `Flow Stress` quest.");
             return;
         }
 
         Core.AddDrop(rewards);
         Core.AddDrop("Lich King Fragment");
         Core.Logger($"Reward Chosen: {flowStressReward}");
-        int FlowStressTurnin = 1;
         while (!Bot.ShouldExit)
         {
             if (flowStressReward == FlowStressRewards.All)
@@ -300,7 +307,6 @@ public class CoreHollowbornLichKing
         Core.AddDrop(rewards);
 
         Core.Logger($"Reward Chosen: {HeatTreatmentReward}");
-        int HeatTreatmentTurnin = 1;
 
         while (!Bot.ShouldExit)
         {
@@ -370,7 +376,6 @@ public class CoreHollowbornLichKing
 
         Core.AddDrop(rewards);
         Core.Logger($"Reward Chosen: {CounterblowReward}");
-        int CounterblowTurnin = 1;
 
         while (!Bot.ShouldExit)
         {
