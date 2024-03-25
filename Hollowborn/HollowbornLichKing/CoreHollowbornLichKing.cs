@@ -130,7 +130,7 @@ public class CoreHollowbornLichKing
 
     public void Draftless(DraftlessRewards rewardSelection = DraftlessRewards.All, bool completeOnce = false, int quant = 1)
     {
-        Core.Logger(quant > 1 ? $"~~Draftless~~[Farm Mode], Soul Fragment: {quant}" : "~~Draftless~~");
+        Core.Logger(quant > 1 ? $"~~Draftless~~[Farm Mode], Soul Fragment: {Bot.Inventory.Items?.FirstOrDefault(x => x.Name == "Soul Fragment")?.Quantity ?? 0} / {quant}" : "~~Draftless [Set/Story Mode]~~");
         string[] rewards = Core.QuestRewards(9637).Except("Soul Fragment");
         DraftlessRewards DraftlessReward = quant > 1 ? DraftlessRewards.Soul_Fragment : Bot.Config!.Get<DraftlessRewards>("Draftless");
 
@@ -146,10 +146,6 @@ public class CoreHollowbornLichKing
             return;
         }
 
-        if (rewardSelection != DraftlessRewards.Soul_Fragment)
-            foreach (string item in rewards)
-                Core.Logger(Core.CheckInventory(item, toInv: false) ? $"{item}: ✅" : $"{item} ❌");
-
         Core.AddDrop(rewards);
         Core.AddDrop("Soul Fragment");
         Core.Logger($"Reward Chosen: {Bot.Config!.Get<DraftlessRewards>("Draftless")}");
@@ -157,7 +153,13 @@ public class CoreHollowbornLichKing
 
         while (!Bot.ShouldExit)
         {
-            if ((DraftlessReward == DraftlessRewards.All && Core.CheckInventory(rewards)) || (DraftlessReward == DraftlessRewards.Soul_Fragment && Core.CheckInventory("Soul Fragment", quant)) || (DraftlessReward != DraftlessRewards.All && DraftlessReward != DraftlessRewards.Soul_Fragment && Core.CheckInventory((int)DraftlessReward, toInv: false)))
+            if (DraftlessReward == DraftlessRewards.All)
+                foreach (string item in rewards)
+                    Core.Logger(Core.CheckInventory(item, toInv: false) ? $"{item}: ✅" : $"{item} ❌");
+
+            if ((DraftlessReward == DraftlessRewards.All && Core.CheckInventory(rewards, toInv: false))
+            || (DraftlessReward == DraftlessRewards.Soul_Fragment && Core.CheckInventory("Soul Fragment", quant))
+            || (DraftlessReward != DraftlessRewards.All && DraftlessReward != DraftlessRewards.Soul_Fragment && Core.CheckInventory((int)DraftlessReward, toInv: false)))
                 break;
 
             Core.EnsureAccept(9637);
@@ -190,12 +192,13 @@ public class CoreHollowbornLichKing
                     }
                 }
             }
+            Bot.Wait.ForPickup("Soul Fragment");
         }
     }
 
     public void FlowStress(FlowStressRewards rewardSelection = FlowStressRewards.All, bool completeOnce = false, int quant = 1)
     {
-        Core.Logger(quant > 1 ? $"~~FlowStress~~[Farm Mode], Lich King Fragment: {quant}" : "~~FlowStress~~");
+        Core.Logger(quant > 1 ? $"~~FlowStress~~[Farm Mode], Lich King Fragment: {Bot.Inventory.Items?.FirstOrDefault(x => x.Name == "Soul Fragment")?.Quantity ?? 0} / {quant}" : "~~FlowStress [Set/Story Mode]~~");
         if (!Core.isCompletedBefore(9637))
         {
             Core.Logger("Quest not unlocked [9638], doing \"Draftless\"");
@@ -218,25 +221,26 @@ public class CoreHollowbornLichKing
             return;
         }
 
-        if (rewardSelection != FlowStressRewards.Lich_King_Fragment)
-            foreach (string item in rewards)
-                Core.Logger(Core.CheckInventory(item, toInv: false) ? $"{item}: ✅" : $"{item} ❌");
-
         Core.AddDrop(rewards);
         Core.AddDrop("Lich King Fragment");
         Core.Logger($"Reward Chosen: {flowStressReward}");
         int FlowStressTurnin = 1;
         while (!Bot.ShouldExit)
         {
-            if ((flowStressReward == FlowStressRewards.All && Core.CheckInventory(rewards)) || (flowStressReward == FlowStressRewards.Lich_King_Fragment && Core.CheckInventory("Lich King Fragment", quant)) || (flowStressReward != FlowStressRewards.All && flowStressReward != FlowStressRewards.Lich_King_Fragment && Core.CheckInventory((int)flowStressReward, toInv: false)))
+            if (flowStressReward == FlowStressRewards.All)
+                foreach (string item in rewards)
+                    Core.Logger(Core.CheckInventory(item, toInv: false) ? $"{item}: ✅" : $"{item} ❌");
+
+            if ((flowStressReward == FlowStressRewards.All && Core.CheckInventory(rewards))
+            || (flowStressReward == FlowStressRewards.Lich_King_Fragment && Core.CheckInventory("Lich King Fragment", quant))
+            || (flowStressReward != FlowStressRewards.All && flowStressReward != FlowStressRewards.Lich_King_Fragment && Core.CheckInventory((int)flowStressReward, toInv: false)))
                 break;
 
             Core.EnsureAccept(9638);
 
-            AnotherOneBitesTheDust.SoulSand(1);
             Draftless(DraftlessRewards.Soul_Fragment, false, 6);
+            AnotherOneBitesTheDust.SoulSand(1);
             Legion.FarmLegionToken(1000);
-
 
             if (completeOnce)
             {
@@ -262,12 +266,13 @@ public class CoreHollowbornLichKing
                     }
                 }
             }
+            Bot.Wait.ForPickup("Lich King Fragment");
         }
     }
 
     public void HeatTreatment(HeatTreatmentRewards rewardSelection = HeatTreatmentRewards.All, bool completeOnce = false, int quant = 1)
     {
-        Core.Logger(quant > 1 ? "~~HeatTreatment~~[Farm Mode]" : "~~HeatTreatment~~");
+        Core.Logger(quant > 1 ? "~~HeatTreatment~~[Farm Mode]" : "~~HeatTreatment [Set/Story Mode]~~");
         if (!Core.isCompletedBefore(9638))
         {
             Core.Logger("Quest not unlocked [9639], doing \"Flow Stress\"");
@@ -282,15 +287,11 @@ public class CoreHollowbornLichKing
                                 || (HeatTreatmentReward == HeatTreatmentRewards.None)
                                 || (HeatTreatmentReward != HeatTreatmentRewards.All && Core.CheckInventory((int)HeatTreatmentReward, quant) && !completeOnce);
 
-
         if (shouldReturnEarly)
         {
             Core.Logger("Conditions met to skip Heat Treatment quest.");
             return;
         }
-
-        foreach (string item in rewards)
-            Core.Logger(Core.CheckInventory(item, toInv: false) ? $"{item}: ✅" : $"{item} ❌");
 
         Core.AddDrop(rewards);
 
@@ -299,7 +300,12 @@ public class CoreHollowbornLichKing
 
         while (!Bot.ShouldExit)
         {
-            if ((HeatTreatmentReward == HeatTreatmentRewards.All && Core.CheckInventory(rewards)) || (HeatTreatmentReward != HeatTreatmentRewards.All && Core.CheckInventory((int)HeatTreatmentReward, toInv: false)))
+            if (HeatTreatmentReward == HeatTreatmentRewards.All)
+                foreach (string item in rewards)
+                    Core.Logger(Core.CheckInventory(item, toInv: false) ? $"{item}: ✅" : $"{item} ❌");
+
+            if ((HeatTreatmentReward == HeatTreatmentRewards.All && Core.CheckInventory(rewards))
+            || (HeatTreatmentReward != HeatTreatmentRewards.All && Core.CheckInventory((int)HeatTreatmentReward, toInv: false)))
                 break;
 
             Core.EnsureAccept(9639);
@@ -336,7 +342,7 @@ public class CoreHollowbornLichKing
 
     public void Counterblow(CounterblowRewards rewardSelection = CounterblowRewards.All, bool completeOnce = false, int quant = 1)
     {
-        Core.Logger(quant > 1 ? "~~Counterblow~~[Farm Mode]" : "~~Counterblow~~");
+        Core.Logger(quant > 1 ? "~~Counterblow~~[Farm Mode]" : "~~Counterblow [Set/Story Mode]~~");
         if (!Core.isCompletedBefore(9639))
         {
             Core.Logger("Quest not unlocked [9640], doing \"In The Flow Stress\"");
@@ -358,16 +364,18 @@ public class CoreHollowbornLichKing
             return;
         }
 
-        foreach (string item in rewards)
-            Core.Logger(Core.CheckInventory(item, toInv: false) ? $"{item}: ✅" : $"{item} ❌");
-
         Core.AddDrop(rewards);
         Core.Logger($"Reward Chosen: {CounterblowReward}");
         int CounterblowTurnin = 1;
 
         while (!Bot.ShouldExit)
         {
-            if ((CounterblowReward == CounterblowRewards.All && Core.CheckInventory(rewards)) || (CounterblowReward != CounterblowRewards.All && Core.CheckInventory((int)CounterblowReward, toInv: false)))
+            if (CounterblowReward == CounterblowRewards.All)
+                foreach (string item in rewards)
+                    Core.Logger(Core.CheckInventory(item, toInv: false) ? $"{item}: ✅" : $"{item} ❌");
+
+            if ((CounterblowReward == CounterblowRewards.All && Core.CheckInventory(rewards))
+            || (CounterblowReward != CounterblowRewards.All && Core.CheckInventory((int)CounterblowReward, toInv: false)))
                 break;
 
             Core.EnsureAccept(9640);
