@@ -186,8 +186,8 @@ public class CoreLegion
         Core.EquipClass(ClassType.Farm);
         //Adv.BestGear(RacialGearBoost.Undead);
 
-        Core.KillMonster("evilwardage", "r8", "Left", "*", "Dage's Approval", quantApproval, false, shouldLog);
-        Core.KillMonster("evilwardage", "r8", "Left", "*", "Dage's Favor", quantFavor, false, shouldLog);
+        Core.KillMonster("underworld", "r16", "Left", "*", "Dage's Approval", quantApproval, false, shouldLog);
+        Core.KillMonster("underworld", "r16", "Left", "*", "Dage's Favor", quantFavor, false, shouldLog);
     }
 
     public void BoneSigil(int quant = 1)
