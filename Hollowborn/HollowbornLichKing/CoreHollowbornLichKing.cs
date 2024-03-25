@@ -94,11 +94,18 @@ public class CoreHollowbornLichKing
 
             //Quest/Item Requirements:
             Legion.JoinLegion();
+
             if (!Core.CheckInventory("Undead Champion"))
                 Adv.BuyItem("underworld", 216, "Undead Champion");
-            UndeadLegionMerge.BuyAllMerge("Ultimate Lich King");
-            UndeadLegionMerge.BuyAllMerge("Ultimate Lich King Helm");
-            HB.HardcoreContract();
+
+            if (!Core.CheckInventory("Ultimate Lich King"))
+                UndeadLegionMerge.BuyAllMerge("Ultimate Lich King");
+
+            if (!Core.CheckInventory("Ultimate Lich King Helm"))
+                UndeadLegionMerge.BuyAllMerge("Ultimate Lich King Helm");
+
+            if (!Core.CheckInventory(55157))
+                HB.HardcoreContract();
             //Requirements:
 
             if (!string.IsNullOrEmpty(questConfig))
