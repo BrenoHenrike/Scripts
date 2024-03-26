@@ -287,7 +287,7 @@ public class CoreHollowbornLichKing
         if (!Core.isCompletedBefore(9638))
         {
             Core.Logger("Quest not unlocked [9639], doing \"Flow Stress\"");
-            Draftless(completeOnce: true);
+            FlowStress(completeOnce: true);
         }
 
         string[] rewards = Core.QuestRewards(9639);
@@ -355,8 +355,8 @@ public class CoreHollowbornLichKing
         Core.Logger(quant > 1 ? "~~Counterblow~~[Farm Mode]" : "~~Counterblow [Set/Story Mode]~~");
         if (!Core.isCompletedBefore(9639))
         {
-            Core.Logger("Quest not unlocked [9640], doing \"In The Flow Stress\"");
-            FlowStress(completeOnce: true);
+            Core.Logger("Quest not unlocked [9640], doing \"Heat Treatment\"");
+            HeatTreatment(completeOnce: true);
         }
 
         string[] rewards = Core.QuestRewards(9640);
