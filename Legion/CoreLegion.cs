@@ -408,7 +408,8 @@ public class CoreLegion
         { "Shogun Paragon Pet", 5755 },
         { "Shogun Dage Pet", 5756 },
         { "Paragon Fiend Quest Pet", 0 },
-        { "Paragon Ringbearer", 7073 }
+        { "Paragon Ringbearer", 7073 },
+        {"Hollowborn Paragon Quest Pet", 9649}
     };
 
         bool hasRequiredItems = petIds.Keys.Any(key => Core.CheckInventory(key));
