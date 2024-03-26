@@ -125,7 +125,7 @@ public class CoreLR
             Core.KillMonster("necrodungeon", "r22", "Down", "*", "Dracolich Contract", 1000, false, publicRoom: true);
 
             Core.EnsureComplete(6897);
-            Bot.Drops.Pickup("Revenant's Spellscroll");
+            Bot.Wait.ForPickup("Revenant's Spellscroll");
             Core.Logger($"Completed x{i++}");
         }
     }
@@ -166,7 +166,7 @@ public class CoreLR
             Core.KillMonster("doomwood", "r6", "Right", "*", "Doomwood Cohort Conquered", 500, false);
 
             Core.EnsureComplete(6898);
-            Bot.Drops.Pickup("Conquest Wreath");
+            Bot.Wait.ForPickup("Conquest Wreath");
             Core.Logger($"Completed x{i++}");
         }
     }
@@ -190,8 +190,7 @@ public class CoreLR
         {
             Core.EnsureAccept(6899);
 
-            Farm.Gold(500000);
-            Core.BuyItem("underworld", 216, "Hooded Legion Cowl");
+            Adv.BuyItem("underworld", 216, "Hooded Legion Cowl");
 
             Legion.FarmLegionToken(4000);
 
@@ -204,7 +203,7 @@ public class CoreLR
             Legion.DarkToken(100);
 
             Core.EnsureComplete(6899);
-            Bot.Drops.Pickup("Exalted Crown");
+            Bot.Wait.ForPickup("Exalted Crown");
             Core.Logger($"Completed x{i++}");
         }
     }
