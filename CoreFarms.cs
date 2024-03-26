@@ -753,7 +753,7 @@ public class CoreFarms
         ExitAttempt = 0;
     }
 
-    public void BattleUnderB(string item = "Bone Dust", int quant = 1, bool isTemp = false)
+    public void BattleUnderB(string item = "Bone Dust", int quant = 10000, bool isTemp = false)
     {
         if (Core.CheckInventory(item, quant))
             return;
