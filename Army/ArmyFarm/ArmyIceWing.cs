@@ -70,7 +70,8 @@ public class IceWingLevelingArmy
         Core.EquipClass(classType);
         //Army.waitForParty(map, item);
         Core.FarmingLogger(item, quant);
-
+        
+        Core.Join(map);
         Bot.Player.SetSpawnPoint();
 
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
