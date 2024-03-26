@@ -145,6 +145,15 @@ public class CoreBots
         Bot.Lite.DisableRedWarning = true;
         Bot.Lite.CharacterSelectScreen = false;
 
+        //adding sommore
+        Bot.Lite.CustomDropsUI = true;
+        Bot.Lite.DisableDamageStrobe= true;
+        Bot.Lite.DisableMonsterAnimation = true;
+        Bot.Lite.DisableWeaponAnimation = true;
+        Bot.Lite.DisableSkillAnimations = true;
+        Bot.Lite.SmoothBackground = true;
+        Bot.Lite.ShowMonsterType = true;
+
         CollectData(changeTo);
 
         // These things need to be taken care of too, but less priority
