@@ -51,7 +51,7 @@ public class ArmyDarkToken
         Core.SetOptions(false);
     }
 
-    public void Setup(int quant = 600)
+    public void Setup(int quant = 10000)
     {
         if (Core.CheckInventory("Dark Token", quant))
             return;

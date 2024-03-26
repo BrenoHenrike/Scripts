@@ -56,7 +56,7 @@ public class CoreLegion
         Core.CancelRegisteredQuests();
     }
 
-    public void DarkToken(int quant = 600)
+    public void DarkToken(int quant = 10000)
     {
         if (Core.CheckInventory("Dark Token", quant))
             return;
