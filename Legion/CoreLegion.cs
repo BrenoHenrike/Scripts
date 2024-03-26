@@ -403,53 +403,52 @@ public class CoreLegion
 
     public void LTShogunParagon(int quant = 50000)
     {
-        Dictionary<string, int> petIds = new()
+        // Dictionary of pet names and IDs
+        var petIds = new Dictionary<string, int>
     {
         { "Shogun Paragon Pet", 5755 },
         { "Shogun Dage Pet", 5756 },
         { "Paragon Fiend Quest Pet", 0 },
         { "Paragon Ringbearer", 7073 },
-        {"Hollowborn Paragon Quest Pet", 9649}
+        { "Hollowborn Paragon Quest Pet", 9649 }
     };
 
+        // Check if required items are present in inventory
         bool hasRequiredItems = petIds.Keys.Any(key => Core.CheckInventory(key));
         if (Core.CheckInventory("Legion Token", quant) || (!hasRequiredItems && !Core.CheckInventory("Shogun Dage Pet")))
         {
             return;
         }
 
-        int QuestID = 0;
-        var paragonPet = Bot.Inventory.Items.FirstOrDefault(x => x.Name == "Paragon Fiend Quest Pet");
-        if (petIds.TryGetValue("Paragon Fiend Quest Pet", out int paragonPetId) && paragonPet != null)
-        {
-            QuestID = paragonPet.ID == 47578 ? 6750 :
-                     paragonPet.ID == 47614 ? 6756 :
-                     paragonPetId;
-        }
-        else
-        {
-            foreach (var kvp in petIds)
-            {
-                if (Core.CheckInventory(kvp.Key))
-                {
-                    QuestID = kvp.Value;
-                    break;
-                }
-            }
-        }
+        // Check if any of the specified pet names are present in inventory
+        var item = Bot.Inventory.Items.Any(x => petIds.ContainsKey(x.Name));
 
+        // Determine the QuestID based on the pet's ID or the first available pet ID
+        int QuestID = petIds.TryGetValue("Paragon Fiend Quest Pet", out int paragonPetId) && Bot.Inventory.Items.FirstOrDefault(x => x.Name == "Paragon Fiend Quest Pet")?.ID is int paragonPetID
+            ? paragonPetID switch
+            {
+                47578 => 6750,
+                47614 => 6756,
+                _ => paragonPetId
+            }
+            : petIds.FirstOrDefault(kvp => Core.CheckInventory(kvp.Key)).Value;
+
+        // Equip class, log farming, add drop, and register quests
         Core.EquipClass(ClassType.Farm);
         Core.FarmingLogger("Legion Token", quant);
         Core.AddDrop("Legion Token");
         Core.RegisterQuests(QuestID);
 
+        // Hunt monsters until the desired quantity of Legion Tokens is obtained
         while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
         {
             Core.HuntMonster("fotia", "*", log: false);
         }
 
+        // Cancel registered quests
         Core.CancelRegisteredQuests();
     }
+
 
 
 
