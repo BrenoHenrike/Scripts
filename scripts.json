@@ -83,7 +83,7 @@
       "null"
     ],
     "path": "Legion/CoreLegion.cs",
-    "size": 34075,
+    "size": 34077,
     "fileName": "CoreLegion.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/CoreLegion.cs"
   },
@@ -16320,7 +16320,7 @@
       "seraphicwardage"
     ],
     "path": "Army/ArmyLegion/ArmyDarkToken.cs",
-    "size": 2221,
+    "size": 2223,
     "fileName": "ArmyDarkToken.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyLegion/ArmyDarkToken.cs"
   },
