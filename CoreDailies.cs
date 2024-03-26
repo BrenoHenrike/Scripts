@@ -955,9 +955,10 @@ public class CoreDailies
             return;
 
         Core.AddDrop("NCS Gem");
-        Core.EquipClass(ClassType.Farm);
         Core.EnsureAccept(9642);
+        Core.EquipClass(ClassType.Solo);
         Core.HuntMonster("shadowrealm", "Shadow Lord", "Lovely Favor", log: false);
+        Core.EquipClass(ClassType.Farm);
         Core.HuntMonster("shadowrealm", "Shadow Makai", "Lovely Request", 100, log: false);
         Core.EnsureComplete(9642);
         if (!merge)

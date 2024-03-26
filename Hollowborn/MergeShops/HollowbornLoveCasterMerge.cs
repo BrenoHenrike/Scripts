@@ -81,7 +81,7 @@ public class HollowbornLoveCasterMerge
                     Core.RegisterQuests(9643);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.KillMonster("sewerpink", "r2", "Left", "*", log: false);
+                        Core.KillMonster("sewerpink", "Sewer1", "Left", "*", log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
