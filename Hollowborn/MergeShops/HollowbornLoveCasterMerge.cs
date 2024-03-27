@@ -10,7 +10,7 @@ tags: hollowborn, lovecaster, merge, shadowrealm, tophat
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Hollowborn/CoreHollowborn.cs
 //cs_include Scripts/Nation/CoreNation.cs
-//cs_include Scripts/Hollowborn\Materials\HollowSoul.cs
+//cs_include Scripts/Hollowborn/Materials/HollowSoul.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
