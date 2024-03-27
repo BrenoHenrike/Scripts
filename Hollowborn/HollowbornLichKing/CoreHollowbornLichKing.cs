@@ -137,7 +137,7 @@ public class CoreHollowbornLichKing
     {
         Core.Logger(quant > 1 ? $"~~Draftless~~[Farm Mode], Soul Fragment: {Bot.Inventory.Items?.FirstOrDefault(x => x.Name == "Soul Fragment")?.Quantity ?? 0} / {quant}" : "~~Draftless [Set/Story Mode]~~");
         string[] rewards = Core.QuestRewards(9637).Except("Soul Fragment");
-        DraftlessRewards DraftlessReward = quant > 1 ? DraftlessRewards.Soul_Fragment : Bot.Config!.Get<DraftlessRewards>("Draftless");
+        DraftlessRewards DraftlessReward = quant > 1 ? DraftlessRewards.Soul_Fragment : rewardSelection;
 
         bool shouldReturnEarly =
                                 DraftlessReward == DraftlessRewards.None
@@ -215,7 +215,7 @@ public class CoreHollowbornLichKing
 
         string[] rewards = Core.QuestRewards(9638).Except("Lich King Fragment");
 
-        FlowStressRewards flowStressReward = quant > 1 ? FlowStressRewards.Lich_King_Fragment : Bot.Config!.Get<FlowStressRewards>("Flow Stress");
+        FlowStressRewards flowStressReward = quant > 1 ? FlowStressRewards.Lich_King_Fragment : rewardSelection;
 
         bool shouldReturnEarly =
                                 (flowStressReward == FlowStressRewards.All && Core.CheckInventory(rewards, toInv: false))
@@ -291,7 +291,7 @@ public class CoreHollowbornLichKing
         }
 
         string[] rewards = Core.QuestRewards(9639);
-        HeatTreatmentRewards HeatTreatmentReward = Bot.Config!.Get<HeatTreatmentRewards>("Heat Treatment");
+        HeatTreatmentRewards HeatTreatmentReward = rewardSelection;
 
         bool shouldReturnEarly =
                                 (HeatTreatmentReward == HeatTreatmentRewards.All && Core.CheckInventory(rewards, toInv: false))
@@ -350,7 +350,7 @@ public class CoreHollowbornLichKing
         }
     }
 
-    public void Counterblow(CounterblowRewards rewardSelection = CounterblowRewards.All, bool completeOnce = false, int quant = 1)
+    public void Counterblow(CounterblowRewards rewardSelection, bool completeOnce = false, int quant = 1)
     {
         Core.Logger(quant > 1 ? "~~Counterblow~~[Farm Mode]" : "~~Counterblow [Set/Story Mode]~~");
         if (!Core.isCompletedBefore(9639))
@@ -360,7 +360,7 @@ public class CoreHollowbornLichKing
         }
 
         string[] rewards = Core.QuestRewards(9640);
-        CounterblowRewards CounterblowReward = Bot.Config!.Get<CounterblowRewards>("Counterblow");
+        CounterblowRewards CounterblowReward = rewardSelection;
 
         bool shouldReturnEarly =
                                 (CounterblowReward == CounterblowRewards.All && Core.CheckInventory(rewards, quant, toInv: false))
