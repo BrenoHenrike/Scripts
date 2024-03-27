@@ -15333,7 +15333,7 @@
       "hollowborn"
     ],
     "path": "Hollowborn/Materials/HollowSoul.cs",
-    "size": 1240,
+    "size": 1585,
     "fileName": "HollowSoul.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/Materials/HollowSoul.cs"
   },
@@ -15540,7 +15540,7 @@
       "hollowborn caladbolg battle companion"
     ],
     "path": "Hollowborn/HollowbornLichKing/PayHomagetoCaladbolgAgain.cs",
-    "size": 3168,
+    "size": 3163,
     "fileName": "PayHomagetoCaladbolgAgain.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/HollowbornLichKing/PayHomagetoCaladbolgAgain.cs"
   },
@@ -15564,7 +15564,7 @@
       "null"
     ],
     "path": "Hollowborn/HollowbornLichKing/CoreHollowbornLichKing.cs",
-    "size": 20770,
+    "size": 20935,
     "fileName": "CoreHollowbornLichKing.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/HollowbornLichKing/CoreHollowbornLichKing.cs"
   },
