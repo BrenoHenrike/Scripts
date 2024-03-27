@@ -15545,15 +15545,15 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/HollowbornLichKing/PayHomagetoCaladbolgAgain.cs"
   },
   {
-    "name": "Hollowborn Lich King - Flow Stress",
-    "description": "does the 'Flow Stress' part of hollowborn Lich King",
+    "name": "Hollowborn Lich King - Heat Treatment",
+    "description": "does the 'Heat Treatment' part of hollowborn Lich King",
     "tags": [
       "hollowborn lich king",
       "hollowborn",
-      "flow stress"
+      "heat treatment"
     ],
     "path": "Hollowborn/HollowbornLichKing/3HeatTreatment.cs",
-    "size": 1836,
+    "size": 1845,
     "fileName": "3HeatTreatment.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/HollowbornLichKing/3HeatTreatment.cs"
   },
