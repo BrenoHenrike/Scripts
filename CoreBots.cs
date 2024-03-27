@@ -147,7 +147,7 @@ public class CoreBots
 
         //adding sommore
         Bot.Lite.CustomDropsUI = true;
-        Bot.Lite.DisableDamageStrobe= true;
+        Bot.Lite.DisableDamageStrobe = true;
         Bot.Lite.DisableMonsterAnimation = true;
         Bot.Lite.DisableWeaponAnimation = true;
         Bot.Lite.DisableSkillAnimations = true;
@@ -4929,14 +4929,21 @@ public class CoreBots
         if (_FarmGear.Count > 0)
             FarmGear = _FarmGear.ToArray();
 
-        //Best set order modification
+        // Best set order modification
         string[] bestSet = {
-            "Necrotic Sword of Doom",
-            "Polly Roger",
-            "Head of the legion Beast",
-            "Fire Champion's Armor",
-            "Awescended Omni Wings"
-        };
+                        "Necrotic Sword of Doom",
+                        "Polly Roger",
+                        "Head of the legion Beast",
+
+                        CheckInventory("Radiant Goddess of War")
+                        ? "Radiant Goddess of War"
+                        : "Fire Champion's Armor",
+
+                        "Awescended Omni Wings"
+                    };
+                    
+        Unbank(bestSet);
+
         if (SoloGear.All(x => bestSet.Contains(x)))
             SoloGear = bestSet.Concat(new[] { _GroundItem1 }).ToArray();
         if (FarmGear.All(x => bestSet.Contains(x)))
