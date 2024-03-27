@@ -36,7 +36,6 @@ public class HBLK3
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
-    private CoreHollowbornLichKing HBLK = new();
     private static CoreHollowbornLichKing sHBLK = new();
 
     public string OptionsStorage = sHBLK.OptionsStorage;
@@ -47,7 +46,7 @@ public class HBLK3
     {
         Core.SetOptions();
 
-        sHBLK.FlowStress(CoreHollowbornLichKing.FlowStressRewards.All);
+        sHBLK.HeatTreatment(CoreHollowbornLichKing.HeatTreatmentRewards.All);
 
         Core.SetOptions(false);
     }

@@ -36,7 +36,6 @@ public class HBLK2
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
-    private CoreHollowbornLichKing HBLK = new();
     private static CoreHollowbornLichKing sHBLK = new();
 
     public string OptionsStorage = sHBLK.OptionsStorage;
@@ -47,7 +46,7 @@ public class HBLK2
     {
         Core.SetOptions();
 
-        sHBLK.Draftless(CoreHollowbornLichKing.DraftlessRewards.All);
+        sHBLK.FlowStress(CoreHollowbornLichKing.FlowStressRewards.All);
 
         Core.SetOptions(false);
     }

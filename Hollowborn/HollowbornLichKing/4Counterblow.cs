@@ -36,7 +36,6 @@ public class HBLK4
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
-    private CoreHollowbornLichKing HBLK = new();
     private static CoreHollowbornLichKing sHBLK = new();
 
     public string OptionsStorage = sHBLK.OptionsStorage;
