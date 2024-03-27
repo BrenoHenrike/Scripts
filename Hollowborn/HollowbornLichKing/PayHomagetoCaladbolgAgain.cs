@@ -52,18 +52,18 @@ public class PayHomagetoCaladbolgAgain
         Core.SetOptions(false);
     }
 
-    public void GetRewards(int QuestID = 9641)
+    public void GetRewards()
     {
-        if (Core.EnsureLoad(QuestID).Rewards.All(reward => Core.CheckInventory(reward.Name, toInv: false)))
+        if (Core.EnsureLoad(9641).Rewards.All(reward => Core.CheckInventory(reward.Name, toInv: false)))
             return;
+
+        List<ItemBase> RewardOptions = Core.EnsureLoad(9641).Rewards;
+
+        foreach (ItemBase item in RewardOptions)
+            Core.AddDrop(item.ID);
 
         Caladbolg.GetCaladbolg(false);
         CoreHollowbornLichKing.Counterblow(CoreHollowbornLichKing.CounterblowRewards.Altar_Of_the_Hollowborn_Caladbolg);
-
-        List<ItemBase> RewardOptions = Core.EnsureLoad(QuestID).Rewards;
-
-        foreach (ItemBase item in RewardOptions)
-            Core.AddDrop(item.Name);
 
         foreach (ItemBase Reward in RewardOptions)
         {
@@ -71,16 +71,18 @@ public class PayHomagetoCaladbolgAgain
                 return;
 
             Core.Logger(Core.CheckInventory(Reward.ID, toInv: false) ? $"{Reward.Name}: ✅" : $"{Reward.Name} ❌");
-            Core.RegisterQuests(QuestID);
+            // Core.ResetQuest(9641);
             while (!Bot.ShouldExit && !Core.CheckInventory(Reward.ID))
             {
+                Core.EnsureAccept(9641);
                 Legion.FarmLegionToken(5);
                 HS.GetYaSoulsHeeeere(1);
+                Core.EnsureCompleteMulti(9641);
             }
-            Core.CancelRegisteredQuests();
 
             Core.JumpWait();
             Core.ToBank(Reward.Name);
         }
+        Core.CancelRegisteredQuests();
     }
 }

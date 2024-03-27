@@ -17,9 +17,9 @@ public class HollowSoul
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new ();
-    public CoreAdvanced Adv = new ();
-    public CoreHollowborn HB = new ();
+    public CoreFarms Farm = new();
+    public CoreAdvanced Adv = new();
+    public CoreHollowborn HB = new();
     public CoreNation Nation = new();
 
     public void ScriptMain(IScriptInterface bot)
@@ -36,19 +36,22 @@ public class HollowSoul
         if (Core.CheckInventory("Hollow Soul", HSQuant))
             return;
 
+        Core.FarmingLogger("Hollow Soul", HSQuant);
         Core.EquipClass(ClassType.Farm);
         Core.RegisterQuests(7553, 7555);
-        Core.KillMonster("shadowrealm", "r2", "Left", "*", "Hollow Soul", HSQuant, isTemp: false);
-        Core.CancelRegisteredQuests();
-        // while (!Bot.ShouldExit && !Core.CheckInventory("Hollow Soul", HSQuant))
-        // {
+        Core.Join("Shadowrealm", "r2", "Left");
+        Bot.Player.SetSpawnPoint();
+        while (!Bot.ShouldExit && !Core.CheckInventory("Hollow Soul", HSQuant))
+        {
+            foreach (int MapID in Bot.Monsters.CurrentAvailableMonsters
+                    .Where(x => Core.IsMonsterAlive(x.MapID, useMapID: true))
+                    .Select(m => m.MapID))
 
-        // Core.KillMonster("shadowrealm", "r2", "Left", "*", "Hollow Soul", HSQuant, isTemp: false, log: false);
-        //     if (Core.CheckInventory("Hollow Soul", HSQuant))
-        //     {
-        //         Core.JumpWait();
-        //         break;
-        //     }
-        // }
+            {
+                Bot.Kill.Monster(MapID);
+                if (Core.CheckInventory("Hollow Soul", HSQuant))
+                    break;
+            }
+        }
     }
 }
