@@ -232,13 +232,13 @@ public class CoreLegion
     public void FarmLegionToken(int quant = 50000)
     {
         //banking Lts as ae fucked the quant when updating teh cap
-        if (!Bot.Bank.Contains("Legion Token"))
-        {
-            Core.OneTimeMessage("Legion Token stack fix", "Banking [then unbanking if farm is needed] LTs\n" +
-                                "as when AE updated the cap, they broke shit", messageBox: false);
+        // if (!Bot.Bank.Contains("Legion Token"))
+        // {
+        //     Core.OneTimeMessage("Legion Token stack fix", "Banking [then unbanking if farm is needed] LTs\n" +
+        //                         "as when AE updated the cap, they broke shit", messageBox: false);
 
-            Core.ToBank("Legion Token");
-        }
+        //     Core.ToBank("Legion Token");
+        // }
 
         if (Core.CheckInventory("Legion Token", quant))
             return;
