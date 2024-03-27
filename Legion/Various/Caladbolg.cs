@@ -73,7 +73,7 @@ public class Caladbolg
         while (!Bot.ShouldExit && !Core.CheckInventory(target))
         {
             Legion.FarmLegionToken(5);
-            Core.HuntMonster("underworld", "Dark Makai", "Soul Shard");
+            Core.KillMonster("underworld", "r9", "Left", "*", "Soul Shard", log: false);
         }
         Core.CancelRegisteredQuests();
     }
