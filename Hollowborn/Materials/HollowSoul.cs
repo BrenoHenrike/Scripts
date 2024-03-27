@@ -42,16 +42,6 @@ public class HollowSoul
         Core.Join("Shadowrealm", "r2", "Left");
         Bot.Player.SetSpawnPoint();
         while (!Bot.ShouldExit && !Core.CheckInventory("Hollow Soul", HSQuant))
-        {
-            foreach (int MapID in Bot.Monsters.CurrentAvailableMonsters
-                    .Where(x => Core.IsMonsterAlive(x.MapID, useMapID: true))
-                    .Select(m => m.MapID))
-
-            {
-                Bot.Kill.Monster(MapID);
-                if (Core.CheckInventory("Hollow Soul", HSQuant))
-                    break;
-            }
-        }
+            Core.KillMonster("shadowrealm", "r2", "Left", "*");
     }
 }
