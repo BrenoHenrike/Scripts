@@ -1,7 +1,7 @@
 /*
 name: Pay Homage to Caladbolg (Again)
-description: farms quest rewards from `quest name here` in /mapname
-tags: mapname, questgivername, quest rewards
+description: farms the requirements, and does the quest "Pay Homage to Caladbolg (Again)"
+tags: Pay Homage to Caladbolg (Again), Caladbolg, hollowborn, hollowborn, lich, king, hollowborn lich king, Hollowborn Caladbolg, Dual Hollowborn Caladbolgs, Hollowborn Caladbolg Companion, Hollowborn Caladbolg Battle Companion
 */
 
 //cs_include Scripts/CoreBots.cs
