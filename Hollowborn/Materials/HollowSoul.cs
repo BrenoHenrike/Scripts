@@ -42,6 +42,6 @@ public class HollowSoul
         Core.Join("Shadowrealm", "r2", "Left");
         Bot.Player.SetSpawnPoint();
         while (!Bot.ShouldExit && !Core.CheckInventory("Hollow Soul", HSQuant))
-            Core.KillMonster("shadowrealm", "r2", "Left", "*");
+            Core.KillMonster("shadowrealm", "r2", "Left", "*", log: false);
     }
 }
