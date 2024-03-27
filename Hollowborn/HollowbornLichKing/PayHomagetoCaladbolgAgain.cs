@@ -54,8 +54,12 @@ public class PayHomagetoCaladbolgAgain
 
     public void GetRewards()
     {
-        if (Core.EnsureLoad(9641).Rewards.All(reward => Core.CheckInventory(reward.Name, toInv: false)))
+        if (Core.EnsureLoad(9641).Rewards.All(reward => Core.CheckInventory(reward.Name, toInv: false))
+        || !Core.CheckInventory("Altar Of Caladbolg"))
+        {
+            Core.Logger(!Core.CheckInventory("Altar Of Caladbolg") ? "This bot requires you to have a \"Altar Of Caladbolg\". Stopping the bot." : "All rewards owned, stopping the bot");
             return;
+        }
 
         List<ItemBase> RewardOptions = Core.EnsureLoad(9641).Rewards;
 
