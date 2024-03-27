@@ -3979,7 +3979,7 @@
       "null"
     ],
     "path": "Legion/Various/Caladbolg.cs",
-    "size": 2617,
+    "size": 2618,
     "fileName": "Caladbolg.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/Various/Caladbolg.cs"
   },
@@ -15524,6 +15524,19 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/HollowbornLichKing/0DoAll.cs"
   },
   {
+    "name": "Pay Homage to Caladbolg (Again)",
+    "description": "farms quest rewards from `quest name here` in /mapname",
+    "tags": [
+      "mapname",
+      "questgivername",
+      "quest rewards"
+    ],
+    "path": "Hollowborn/HollowbornLichKing/PayHomagetoCaladbolgAgain.cs",
+    "size": 2958,
+    "fileName": "PayHomagetoCaladbolgAgain.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/HollowbornLichKing/PayHomagetoCaladbolgAgain.cs"
+  },
+  {
     "name": "Hollowborn Lich King - Flow Stress",
     "description": "does the 'Flow Stress' part of hollowborn Lich King",
     "tags": [
@@ -19316,7 +19329,7 @@
       "quest rewards"
     ],
     "path": "Templates/Examples/Quests/QuestReward[Random]Template.cs",
-    "size": 1891,
+    "size": 2010,
     "fileName": "QuestReward[Random]Template.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Templates/Examples/Quests/QuestReward[Random]Template.cs"
   },
