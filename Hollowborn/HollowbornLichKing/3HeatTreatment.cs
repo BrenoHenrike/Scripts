@@ -1,7 +1,7 @@
 /*
-name: Hollowborn Lich King - Flow Stress
-description: does the 'Flow Stress' part of hollowborn Lich King 
-tags: hollowborn Lich King, hollowborn, Flow Stress
+name: Hollowborn Lich King - Heat Treatment
+description: does the 'Heat Treatment' part of hollowborn Lich King 
+tags: hollowborn Lich King, hollowborn, Heat Treatment
 */
 
 //cs_include Scripts/Hollowborn/HollowbornLichKing/CoreHollowbornLichKing.cs
