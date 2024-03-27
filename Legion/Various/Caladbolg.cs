@@ -33,7 +33,7 @@ public class Caladbolg
         Core.SetOptions(false);
     }
 
-    public void GetCaladbolg(bool otherRewards = true)
+    public void GetCaladbolg(bool otherRewards = false)
     {
         string[] target = otherRewards ? new[] { "Caladbolg", "Caladboogly", "Dual Caladbolgs" } : new[] { "Caladbolg" };
         if (Core.CheckInventory(target))
