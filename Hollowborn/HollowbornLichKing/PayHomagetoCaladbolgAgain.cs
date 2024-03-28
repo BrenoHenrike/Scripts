@@ -32,7 +32,6 @@ tags: Pay Homage to Caladbolg (Again), Caladbolg, hollowborn, hollowborn, lich, 
 
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
-using Skua.Core.Models.Quests;
 
 public class PayHomagetoCaladbolgAgain
 {
