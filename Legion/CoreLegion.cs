@@ -410,7 +410,7 @@ public class CoreLegion
         { "Shogun Dage Pet", 5756 },
         { "Paragon Fiend Quest Pet", 0 },
         { "Paragon Ringbearer", 7073 },
-        { "Hollowborn Paragon Quest Pet", 9649 }
+        { "Hollowborn Paragon Quest Pet", 1 }
     };
 
         // Check if required items are present in inventory
@@ -431,7 +431,19 @@ public class CoreLegion
                 47614 => 6756,
                 _ => paragonPetId
             }
-            : petIds.FirstOrDefault(kvp => Core.CheckInventory(kvp.Key)).Value;
+            : petIds.TryGetValue("Hollowborn Paragon Quest Pet", out int hollowbornPetId) &&
+                Bot.Inventory.Items.FirstOrDefault(x => x.Name == "Hollowborn Paragon Quest Pet")?.ID is int hollowbornPetID
+                ? hollowbornPetID switch
+                {
+                    84965 => 9662, // (ac)
+                    84900 => 9663, // (0ac)
+                    _ => -1 // Default case to handle any unexpected input values
+                }
+                : petIds.FirstOrDefault(kvp => Core.CheckInventory(kvp.Key)).Value;
+
+
+
+
 
         // Equip class, log farming, add drop, and register quests
         Core.EquipClass(ClassType.Farm);
