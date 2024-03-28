@@ -83,7 +83,7 @@
       "null"
     ],
     "path": "Legion/CoreLegion.cs",
-    "size": 34651,
+    "size": 35120,
     "fileName": "CoreLegion.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/CoreLegion.cs"
   },
@@ -4415,6 +4415,31 @@
     "size": 6412,
     "fileName": "SevenCirclesMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/MergeShops/SevenCirclesMerge.cs"
+  },
+  {
+    "name": "Forgotten Tombs Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Forgotten Tombs Merge [1124] in /legioncrypt",
+    "tags": [
+      "forgotten",
+      "tombs",
+      "merge",
+      "legioncrypt",
+      "seraphic",
+      "grave",
+      "digger",
+      "tools",
+      "accoutrements",
+      "pistol",
+      "jade",
+      "mages",
+      "cursed",
+      "sorcerers",
+      "underworld"
+    ],
+    "path": "Legion/MergeShops/ForgottenTombsMerge.cs",
+    "size": 5617,
+    "fileName": "ForgottenTombsMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/MergeShops/ForgottenTombsMerge.cs"
   },
   {
     "name": "Lich Kings Bounty Merge",
