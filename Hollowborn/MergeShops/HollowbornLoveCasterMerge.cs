@@ -19,7 +19,6 @@ public class HollowbornLoveCasterMerge
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
-    private CoreFarms Farm = new();
     private CoreAdvanced Adv = new();
     private CoreDailies Daily = new();
     private static CoreAdvanced sAdv = new();
