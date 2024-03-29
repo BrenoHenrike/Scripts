@@ -466,6 +466,7 @@ public class CoreLegion
             if (Core.CheckInventory("Legion Token", quant))
                 break;
         }
+        Core.CancelRegisteredQuests();
     }
 
 
