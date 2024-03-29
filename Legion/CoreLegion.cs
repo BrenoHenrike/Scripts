@@ -403,63 +403,71 @@ public class CoreLegion
 
     public void LTShogunParagon(int quant = 50000)
     {
-        // Dictionary of pet names and IDs
-        var petIds = new Dictionary<string, int>
-    {
-        { "Shogun Paragon Pet", 5755 },
-        { "Shogun Dage Pet", 5756 },
-        { "Paragon Fiend Quest Pet", 0 },
-        { "Paragon Ringbearer", 7073 },
-        { "Hollowborn Paragon Quest Pet", 1 }
-    };
+        List<int> Quests = new(); // Initializes a list to store quest IDs
+        bool HasQuestPet = false; // Variable to track if the player has the required pet
 
-        // Check if required items are present in inventory
-        bool hasRequiredItems = petIds.Keys.Any(key => Core.CheckInventory(key));
-        if (Core.CheckInventory("Legion Token", quant) || (!hasRequiredItems && !Core.CheckInventory("Shogun Dage Pet")))
+        // Loop for TimeforSpringCleaningQuestIDs
+        foreach (int TimeforSpringCleaningQuestID in new[] { 9663, 9649, 9646, 7073, 6750, 6756, 5756, 5755 })
         {
-            return;
+            Quest? QID = Bot.Quests.EnsureLoad(TimeforSpringCleaningQuestID); // Loads the quest
+            ItemBase AcceptReq = QID!.AcceptRequirements[0]; // Retrieves the first accept requirement
+
+            HasQuestPet = Core.CheckInventory(AcceptReq.ID); // Checks if the player has the required pet
+            if (HasQuestPet)
+            {
+                Quests.Add(QID.ID); // Adds the quest ID to the RegQuests list
+                Core.Logger($"Pet Owned: {AcceptReq}\n" +
+                            $"Using QID: {TimeforSpringCleaningQuestID} for {QID.Name}"); // Logs a message
+                break; // Exits the loop after finding the first quest with the required pet
+            }
         }
 
-        // Check if any of the specified pet names are present in inventory
-        var item = Bot.Inventory.Items.Any(x => petIds.ContainsKey(x.Name));
+        // Loop for CAPQuestIDs
+        foreach (int CAPQuestID in new[] { 9662, 9648, 9645, 7072, 6754, 6749, 5754, 5753 })
+        {
+            Quest? QID = Bot.Quests.EnsureLoad(CAPQuestID); // Loads the quest
+            ItemBase AcceptReq = QID!.AcceptRequirements[0]; // Retrieves the first accept requirement
 
-        // Determine the QuestID based on the pet's ID or the first available pet ID
-        int QuestID = petIds.TryGetValue("Paragon Fiend Quest Pet", out int paragonPetId) && Bot.Inventory.Items.FirstOrDefault(x => x.Name == "Paragon Fiend Quest Pet")?.ID is int paragonPetID
-            ? paragonPetID switch
+            HasQuestPet = Core.CheckInventory(AcceptReq.ID); // Checks if the player has the required pet
+            if (HasQuestPet)
             {
-                47578 => 6750,
-                47614 => 6756,
-                _ => paragonPetId
+                Quests.Add(QID.ID); // Adds the quest ID to the RegQuests list
+                Core.Logger($"Pet Owned: {AcceptReq}\n" +
+                            $"Using QID: {CAPQuestID} for {QID.Name}"); // Logs a message
+                break; // Exits the loop after finding the first quest with the required pet
             }
-            : petIds.TryGetValue("Hollowborn Paragon Quest Pet", out int hollowbornPetId) &&
-                Bot.Inventory.Items.FirstOrDefault(x => x.Name == "Hollowborn Paragon Quest Pet")?.ID is int hollowbornPetID
-                ? hollowbornPetID switch
-                {
-                    84965 => 9662, // (ac)
-                    84900 => 9663, // (0ac)
-                    _ => -1 // Default case to handle any unexpected input values
-                }
-                : petIds.FirstOrDefault(kvp => Core.CheckInventory(kvp.Key)).Value;
+        }
 
-
-
-
+        if (!HasQuestPet)
+            return;
 
         // Equip class, log farming, add drop, and register quests
         Core.EquipClass(ClassType.Farm);
         Core.FarmingLogger("Legion Token", quant);
         Core.AddDrop("Legion Token");
-        Core.RegisterQuests(QuestID);
 
         // Hunt monsters until the desired quantity of Legion Tokens is obtained
         while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
         {
-            Core.HuntMonster("fotia", "*", log: false);
-        }
+            Core.EnsureAcceptmultiple(true, Quests.ToArray());
 
-        // Cancel registered quests
-        Core.CancelRegisteredQuests();
+            Core.KillMonster("fotia", "Enter", "Spawn", "*", "Nothing Heard", 10, log: false);
+            Core.KillMonster("fotia", "Enter", "Spawn", "*", "Nothing To See", 10, log: false);
+            Core.KillMonster("fotia", "Enter", "Spawn", "*", "Area Secured and Quiet", 10, log: false);
+            Core.KillMonster("fotia", "Enter", "Spawn", "*", "Fotia Spirit Extinguished", 7, log: false);
+            Core.KillMonster("fotia", "Enter", "Spawn", "*", "Fotia Elemental Vanquished", 5, log: false);
+            Core.KillMonster("fotia", "r5", "Left", "Femme Cult Worshiper", "Femme Cult Worshipper's Soul", 2, log: false);
+
+
+            foreach (int QID in Quests)
+                if (Bot.Quests.CanComplete(QID))
+                    Core.EnsureCompleteMulti(QID);
+
+            if (Core.CheckInventory("Legion Token", quant))
+                break;
+        }
     }
+
 
 
 
