@@ -170,7 +170,7 @@ public class CoreHollowbornChaosEnvoy
 
     public void InTheBeastsShadow(InTheBeastsShadowRewards rewardSelection = InTheBeastsShadowRewards.None, bool completeOnce = false)
     {
-        if (!Core.isCompletedBefore(8999))
+        if (!Core.isCompletedBefore(8998))
         {
             Core.Logger("Quest not unlocked [8999], doing \"Stirring Discord\"");
             StirringDiscord(completeOnce: true);
@@ -234,7 +234,7 @@ public class CoreHollowbornChaosEnvoy
 
     public void UniqueQuarry(UniqueQuarryRewards rewardSelection = UniqueQuarryRewards.None, bool completeOnce = false)
     {
-        if (!Core.isCompletedBefore(9000))
+        if (!Core.isCompletedBefore(8999))
         {
             Core.Logger("Quest not unlocked [9000], doing \"In The Beasts Shadow\"");
             InTheBeastsShadow(completeOnce: true);
@@ -307,7 +307,7 @@ public class CoreHollowbornChaosEnvoy
 
     public void WaveringIllusions(WaveringIllusionsRewards rewardSelection = WaveringIllusionsRewards.None, bool completeOnce = false)
     {
-        if (!Core.isCompletedBefore(9001))
+        if (!Core.isCompletedBefore(9000))
         {
             Core.Logger("Quest not unlocked [9001], doing \"Unique Quarry\"");
             UniqueQuarry(completeOnce: true);
@@ -381,7 +381,7 @@ public class CoreHollowbornChaosEnvoy
 
     public void ShadowsOfDisdain(ShadowsOfDisdainRewards rewardSelection = ShadowsOfDisdainRewards.None, bool completeOnce = false)
     {
-        if (!Core.isCompletedBefore(9002))
+        if (!Core.isCompletedBefore(9001))
         {
             Core.Logger("Quest not unlocked [9002], doing \"Wavering Illusions\"");
             WaveringIllusions(completeOnce: true);
@@ -451,7 +451,7 @@ public class CoreHollowbornChaosEnvoy
 
     public void PersistingMayhem(PersistingMayhemRewards rewardSelection = PersistingMayhemRewards.None, bool completeOnce = false)
     {
-        if (!Core.isCompletedBefore(9003))
+        if (!Core.isCompletedBefore(9002))
         {
             Core.Logger("Quest not unlocked [9003], doing \"Shadows of Disdain\"");
             ShadowsOfDisdain(completeOnce: true);
