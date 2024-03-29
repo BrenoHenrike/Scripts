@@ -50,7 +50,7 @@ public class CoreHollowbornChaosEnvoy
         new Option<bool>(
             "getAll", "Get all items",
             "Some quests need to be done multiple times in order to get everything, "+
-            "if true the bot will continue untill it has everything from that quest before moving on" +
+            "if true the bot will continue until it has everything from that quest before moving on" +
             "\nRecommended setting: True",
             true),
             new Option<bool>("BankAfter", "Bank Rewards", "bank Rewards after", true),
