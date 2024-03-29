@@ -9,7 +9,6 @@ tags: blood gem of the archfiend, army
 //cs_include Scripts/Army/CoreArmyLite.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
-using Skua.Core.Models.Monsters;
 
 public class ArmyBloodyChaos
 {
