@@ -439,9 +439,9 @@ public class CoreDailies
         {
             Core.FarmingLogger("Token of Collection", 90);
             if (CheckDaily(1331, true, true, "Token of Collection"))
-                DailyRoutine(1331, "terrarium", "*", "This Is Definitely A Token", 2, false, "Enter", "Right");
+                DailyRoutine(1331, "terrarium", "Killer Cricket", "This Is Definitely A Token", 2, false, "Enter", "Right");
             if (CheckDaily(1332, true, true, "Token of Collection"))
-                DailyRoutine(1332, "terrarium", "*", "This Could Be A Token", 2, false, "r2", "Right");
+                DailyRoutine(1332, "terrarium", "Killer Cricket", "This Could Be A Token", 2, false, "r2", "Right");
         }
         if (Core.CheckInventory("Token of Collection", 90))
             Core.BuyItem("Collection", 324, 30250, shopItemID: 3511);
