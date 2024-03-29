@@ -15,10 +15,8 @@ public class ArmyBloodyChaos
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private static CoreBots Core => CoreBots.Instance;
-    private readonly CoreFarms Farm = new();
     private readonly CoreArmyLite Army = new();
 
-    private static readonly CoreBots sCore = new();
     private static readonly CoreArmyLite sArmy = new();
 
     public string OptionsStorage = "ArmyBloodyChaos";
@@ -60,7 +58,7 @@ public class ArmyBloodyChaos
         Core.RegisterQuests(7816, 2857); //
         while (!Bot.ShouldExit && !Core.CheckInventory("Blood Gem of the Archfiend", quant))
         {
-            ArmyHunt("hydrachallenge", Bot.Config!.Get<Cell>("mob") == Cell.h85 ? new[] { 29, 30, 31 } : new[] { 32, 33, 34 }, "Hydra Scale Piece", 200);
+            ArmyHunt("hydrachallenge", mob == Cell.h85 ? new[] { 29, 30, 31 } : new[] { 32, 33, 34 }, "Hydra Scale Piece", 200);
             ArmyHunt("stalagbite", new[] { 7, 8 }, "Shattered Legendary Sword of Dragon Control");
             ArmyHunt("escherion", new[] { 2, 3 }, "Escherion's Helm");
         }
@@ -81,7 +79,7 @@ public class ArmyBloodyChaos
         //Army.waitForParty(map, item);
         Core.FarmingLogger(item, quant);
 
-        switch (Bot.Map.Name)
+        switch (map)
         {
             case "stalagbite":
                 Army.AggroMonMIDs(7, 8);
@@ -94,7 +92,7 @@ public class ArmyBloodyChaos
                     {
                         Core.Jump("r2");
                         Core.Sleep();
-                        
+
                         if (Bot.Player.Cell == "r2")
                             break;
                     }
@@ -117,7 +115,7 @@ public class ArmyBloodyChaos
                     {
                         Core.Jump("Boss");
                         Core.Sleep();
-                        
+
                         if (Bot.Player.Cell == "Boss")
                             break;
                     }
@@ -140,7 +138,7 @@ public class ArmyBloodyChaos
                     {
                         Core.Jump(Bot.Config!.Get<Cell>("mob") == Cell.h85 ? "h85" : "h90");
                         Core.Sleep();
-                        
+
                         if (Bot.Player.Cell == (Bot.Config!.Get<Cell>("mob") == Cell.h85 ? "h85" : "h90"))
                             break;
                     }
