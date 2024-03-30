@@ -65,8 +65,5 @@ public class EbilArt
             Story.KillQuest(9659, "ebilart", "Ebil AI Blender");
             Core.EquipClass(ClassType.Farm);
         }
-
-        // // Glaring Errors (9666) -- BADGE QUEST
-        // Story.MapItemQuest(9666, "ebilart", 12883, 17);
     }
 }
