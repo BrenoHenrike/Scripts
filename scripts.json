@@ -10138,7 +10138,7 @@
       "art gallery"
     ],
     "path": "Seasonal/AprilFools/EbilArt.cs",
-    "size": 2078,
+    "size": 1967,
     "fileName": "EbilArt.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AprilFools/EbilArt.cs"
   },
@@ -10188,6 +10188,25 @@
     "size": 2839,
     "fileName": "3DBattleon.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AprilFools/3DBattleon.cs"
+  },
+  {
+    "name": "Art-ificial Error Badge",
+    "description": "This script will get the Art-ificial Error Badge.",
+    "tags": [
+      "art",
+      "artificial",
+      "error",
+      "ai no miko",
+      "ai",
+      "ebilart",
+      "badge",
+      "seasonal",
+      "april-fools"
+    ],
+    "path": "Seasonal/AprilFools/ArtIficialErrorBadge.cs",
+    "size": 1016,
+    "fileName": "ArtIficialErrorBadge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AprilFools/ArtIficialErrorBadge.cs"
   },
   {
     "name": "Super Slayin Badge",
