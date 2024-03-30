@@ -24,7 +24,7 @@ public class EbilArt
 
     public void StoryLine()
     {
-        if (Core.isCompletedBefore(9666) || !Core.isSeasonalMapActive("ebilart"))
+        if (Core.isCompletedBefore(9659) || !Core.isSeasonalMapActive("ebilart"))
             return;
 
         Story.PreLoad(this);
@@ -66,7 +66,7 @@ public class EbilArt
             Core.EquipClass(ClassType.Farm);
         }
 
-        // Glaring Errors (9666)
-        Story.MapItemQuest(9666, "ebilart", 12883, 17);
+        // // Glaring Errors (9666) -- BADGE QUEST
+        // Story.MapItemQuest(9666, "ebilart", 12883, 17);
     }
 }
