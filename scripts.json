@@ -10138,7 +10138,7 @@
       "art gallery"
     ],
     "path": "Seasonal/AprilFools/EbilArt.cs",
-    "size": 2057,
+    "size": 2078,
     "fileName": "EbilArt.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AprilFools/EbilArt.cs"
   },
@@ -10202,6 +10202,28 @@
     "size": 1385,
     "fileName": "SuperSLAYIN'Badge(GardenQuest).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AprilFools/SuperSLAYIN'Badge(GardenQuest).cs"
+  },
+  {
+    "name": "Duplication Error Badge Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Duplication Error Badge Merge [2426] in /ebilart",
+    "tags": [
+      "duplication",
+      "error",
+      "badge",
+      "merge",
+      "ebilart",
+      "ai",
+      "oh",
+      "no",
+      "miko",
+      "guest",
+      "",
+      "ultimate"
+    ],
+    "path": "Seasonal/AprilFools/DuplicationErrorBadgeMerge.cs",
+    "size": 3845,
+    "fileName": "DuplicationErrorBadgeMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AprilFools/DuplicationErrorBadgeMerge.cs"
   },
   {
     "name": "Vegetable Token Farm",
