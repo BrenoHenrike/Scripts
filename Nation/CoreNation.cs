@@ -357,7 +357,7 @@ public class CoreNation
         if (Item == null || Core.CheckInventory(Item.Name, quant))
             return;
 
-        Core.AddDrop(Receipt);
+        Core.AddDrop(Receipt, item);
 
         sellMemVoucher = Core.CBOBool("Nation_SellMemVoucher", out bool _sellMemVoucher) && _sellMemVoucher;
 
