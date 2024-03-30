@@ -10124,6 +10124,25 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AprilFools/NeighBeleenMerge.cs"
   },
   {
+    "name": "Chairman Platinum's Evolving Environmental Art Gallery",
+    "description": "This script will finish the storyline in /ebilart.",
+    "tags": [
+      "ebilart",
+      "ebil",
+      "art",
+      "ebil art",
+      "april fools",
+      "seasonal",
+      "story",
+      "ai",
+      "art gallery"
+    ],
+    "path": "Seasonal/AprilFools/EbilArt.cs",
+    "size": 2057,
+    "fileName": "EbilArt.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AprilFools/EbilArt.cs"
+  },
+  {
     "name": "Magic magicmeadow Story",
     "description": "This will finish the Magic magicmeadow storyline.",
     "tags": [
