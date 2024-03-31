@@ -15724,6 +15724,22 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/HollowbornLichKing/2FlowStress.cs"
   },
   {
+    "name": "Lesser Hollowborn Caladbolg",
+    "description": "This script will get Lesser Hollowborn Caladbolg by completing \"How Much For One Rib?\" quest.",
+    "tags": [
+      "lesser caladbolg",
+      "caladbolg",
+      "hollowborn",
+      "dark unicorn rib",
+      "how much for one rib",
+      "quest"
+    ],
+    "path": "Hollowborn/HollowbornLichKing/LesserHollowbornCaladbolg.cs",
+    "size": 2472,
+    "fileName": "LesserHollowbornCaladbolg.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/HollowbornLichKing/LesserHollowbornCaladbolg.cs"
+  },
+  {
     "name": "Hollowborn Chaos Envoy - Shadow Of Disdain",
     "description": "does the 'shadow of disdain' part of hollowborn chaos envoy",
     "tags": [
