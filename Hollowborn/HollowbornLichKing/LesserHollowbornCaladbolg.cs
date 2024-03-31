@@ -56,7 +56,7 @@ public class LesserHollowbornCaladbolg
         while (!Bot.ShouldExit && !Core.CheckInventory("Lesser Hollowborn Caladbolg"))
         {
             Core.EnsureAccept(9665);
-            Adv.BoostHuntMonster("doomvault", "Binky", "Dark Unicorn Rib", isTemp: false, log: false);
+            Core.HuntMonster("doomvault", "Binky", "Dark Unicorn Rib", isTemp: false, log: false);
             Core.EnsureComplete(9665);
         }
         Core.Logger("RNG gods have smiled upon you! Banking the weapon.");
