@@ -48,11 +48,13 @@ public class LesserHollowbornCaladbolg
             return;
 
 
-        Core.AddDrop("Lesser Hollowborn Caladbolg");
+        Core.AddDrop("Lesser Hollowborn Caladbolg", "Darkon's Receipt", "Ingredients?");
 
         CoreHollowbornLichKing.Counterblow(CoreHollowbornLichKing.CounterblowRewards.Altar_Of_the_Hollowborn_Caladbolg);
 
         Core.EquipClass(ClassType.Solo);
+        // for darkon receipts v
+        Core.RegisterQuests(7325);
         while (!Bot.ShouldExit && !Core.CheckInventory("Lesser Hollowborn Caladbolg"))
         {
             Core.EnsureAccept(9665);
