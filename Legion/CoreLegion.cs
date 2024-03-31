@@ -403,6 +403,12 @@ public class CoreLegion
 
     public void LTShogunParagon(int quant = 50000)
     {
+        if (Core.CheckInventory("Legion Token", quant))
+        {
+            Core.FarmingLogger("Legion Token", quant);
+            return;
+        }
+
         List<int> Quests = new(); // Initializes a list to store quest IDs
         bool HasQuestPet = false; // Variable to track if the player has the required pet
 
@@ -449,6 +455,12 @@ public class CoreLegion
         // Hunt monsters until the desired quantity of Legion Tokens is obtained
         while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
         {
+            if (Core.CheckInventory("Legion Token", quant))
+            {
+                Core.Logger("Legion Tokens maxed!");
+                break;
+            }
+
             Core.EnsureAcceptmultiple(true, Quests.ToArray());
 
             Core.KillMonster("fotia", "Enter", "Spawn", "*", "Nothing Heard", 10, log: false);
@@ -458,13 +470,9 @@ public class CoreLegion
             Core.KillMonster("fotia", "Enter", "Spawn", "*", "Fotia Elemental Vanquished", 5, log: false);
             Core.KillMonster("fotia", "r5", "Left", "Femme Cult Worshiper", "Femme Cult Worshipper's Soul", 2, log: false);
 
-
             foreach (int QID in Quests)
                 if (Bot.Quests.CanComplete(QID))
                     Core.EnsureCompleteMulti(QID);
-
-            if (Core.CheckInventory("Legion Token", quant))
-                break;
         }
         Core.CancelRegisteredQuests();
     }
