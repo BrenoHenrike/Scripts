@@ -57,8 +57,9 @@ public class LesserHollowbornCaladbolg
         Core.RegisterQuests(7325, 9665);
         while (!Bot.ShouldExit && !Core.CheckInventory("Lesser Hollowborn Caladbolg"))
             Core.HuntMonster("doomvault", "Binky", "Dark Unicorn Rib", isTemp: false, log: false);
+Core.CancelRegisteredQuests(); 
         Core.Logger("RNG gods have smiled upon you! Banking the weapon.");
         Core.ToBank("Lesser Hollowborn Caladbolg");
-        Core.CancelRegisteredQuests();
+        
     }
 }
