@@ -98,19 +98,7 @@ public class CoreHollowbornLichKing
             string questConfig = Bot.Config?.Get<string>(quest) ?? string.Empty;
 
             //Quest/Item Requirements:
-            Legion.JoinLegion();
-
-            if (!Core.CheckInventory("Undead Champion"))
-                Adv.BuyItem("underworld", 216, "Undead Champion");
-
-            if (!Core.CheckInventory("Ultimate Lich King"))
-                UndeadLegionMerge.BuyAllMerge("Ultimate Lich King");
-
-            if (!Core.CheckInventory("Ultimate Lich King Helm"))
-                UndeadLegionMerge.BuyAllMerge("Ultimate Lich King Helm");
-
-            if (!Core.CheckInventory(55157))
-                HB.HardcoreContract();
+            CheckReqs();
             //Requirements:
 
             if (!string.IsNullOrEmpty(questConfig))
@@ -137,7 +125,7 @@ public class CoreHollowbornLichKing
     {
         Core.Logger(quant > 1 ? $"~~Draftless~~[Farm Mode], Soul Fragment: {Bot.Inventory.Items?.FirstOrDefault(x => x.Name == "Soul Fragment")?.Quantity ?? 0} / {quant}" : "~~Draftless [Set/Story Mode]~~");
         string[] rewards = Core.QuestRewards(9637).Except("Soul Fragment");
-                
+
         DraftlessRewards DraftlessReward;
         DraftlessReward = rewardSelection;
 
@@ -159,6 +147,7 @@ public class CoreHollowbornLichKing
         Core.AddDrop("Soul Fragment");
         Core.Logger($"Reward Chosen: {Bot.Config!.Get<DraftlessRewards>("Draftless")}");
 
+        CheckReqs();
         while (!Bot.ShouldExit)
         {
             if (DraftlessReward == DraftlessRewards.All)
@@ -237,6 +226,7 @@ public class CoreHollowbornLichKing
         Core.AddDrop(rewards);
         Core.AddDrop("Lich King Fragment");
         Core.Logger($"Reward Chosen: {FlowStressReward}");
+        CheckReqs();
         while (!Bot.ShouldExit)
         {
             if (FlowStressReward == FlowStressRewards.All)
@@ -294,7 +284,7 @@ public class CoreHollowbornLichKing
         }
 
         string[] rewards = Core.QuestRewards(9639);
-       
+
         HeatTreatmentRewards HeatTreatmentReward;
         HeatTreatmentReward = rewardSelection;
 
@@ -313,6 +303,7 @@ public class CoreHollowbornLichKing
 
         Core.Logger($"Reward Chosen: {HeatTreatmentReward}");
 
+        CheckReqs();
         while (!Bot.ShouldExit)
         {
             if (HeatTreatmentReward == HeatTreatmentRewards.All)
@@ -383,6 +374,7 @@ public class CoreHollowbornLichKing
         Core.AddDrop(rewards);
         Core.Logger($"Reward Chosen: {CounterblowReward}");
 
+        CheckReqs();
         while (!Bot.ShouldExit)
         {
             if (CounterblowReward == CounterblowRewards.All)
@@ -424,6 +416,27 @@ public class CoreHollowbornLichKing
                 }
             }
         }
+    }
+
+
+    private void CheckReqs()
+    {
+        Farm.Experience(95);
+
+        //Quest/Item Requirements:
+        Legion.JoinLegion();
+
+        if (!Core.CheckInventory("Undead Champion"))
+            Adv.BuyItem("underworld", 216, "Undead Champion");
+
+        if (!Core.CheckInventory("Ultimate Lich King"))
+            UndeadLegionMerge.BuyAllMerge("Ultimate Lich King");
+
+        if (!Core.CheckInventory("Ultimate Lich King Helm"))
+            UndeadLegionMerge.BuyAllMerge("Ultimate Lich King Helm");
+
+        if (!Core.CheckInventory(55157))
+            HB.HardcoreContract();
     }
 
     public enum DraftlessRewards
