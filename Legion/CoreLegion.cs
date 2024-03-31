@@ -403,7 +403,15 @@ public class CoreLegion
 
     public void LTShogunParagon(int quant = 50000)
     {
+        if (Core.CheckInventory("Legion Token", quant))
+        {
+            Core.FarmingLogger("Legion Token", quant);
+            return;
+        }
+
         List<int> Quests = new(); // Initializes a list to store quest IDs
+        List<(ItemBase, int)> QuestItems = new(); // Initializes a list to store quest items
+
         bool HasQuestPet = false; // Variable to track if the player has the required pet
 
         // Loop for TimeforSpringCleaningQuestIDs
@@ -441,30 +449,62 @@ public class CoreLegion
         if (!HasQuestPet)
             return;
 
+        foreach (int questID in Quests)
+        {
+            Quest quest = Core.EnsureLoad(questID);
+            foreach (ItemBase requirement in quest.Requirements)
+            {
+                // Retrieve the ItemBase object based on the name
+                ItemBase? Reqs = Bot.Quests.EnsureLoad(questID)?.Requirements.FirstOrDefault(i => i.Name == requirement.Name);
+
+                if (Reqs != null)
+                {
+                    // Add the quantity and the ItemBase object as a tuple to QuestItems list
+                    QuestItems.Add((Reqs, requirement.Quantity));
+                }
+                else
+                {
+                    // Log a message indicating the missing requirement
+                    Core.Logger($"Missing requirement '{requirement.Name}' for quest '{quest.Name}'.");
+                }
+            }
+        }
+
         // Equip class, log farming, add drop, and register quests
         Core.EquipClass(ClassType.Farm);
         Core.FarmingLogger("Legion Token", quant);
         Core.AddDrop("Legion Token");
-
         // Hunt monsters until the desired quantity of Legion Tokens is obtained
         while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
         {
-            Core.EnsureAcceptmultiple(true, Quests.ToArray());
+            Core.EnsureAcceptmultiple(false, Quests.ToArray());
 
-            Core.KillMonster("fotia", "Enter", "Spawn", "*", "Nothing Heard", 10, log: false);
-            Core.KillMonster("fotia", "Enter", "Spawn", "*", "Nothing To See", 10, log: false);
-            Core.KillMonster("fotia", "Enter", "Spawn", "*", "Area Secured and Quiet", 10, log: false);
-            Core.KillMonster("fotia", "Enter", "Spawn", "*", "Fotia Spirit Extinguished", 7, log: false);
-            Core.KillMonster("fotia", "Enter", "Spawn", "*", "Fotia Elemental Vanquished", 5, log: false);
-            Core.KillMonster("fotia", "r5", "Left", "Femme Cult Worshiper", "Femme Cult Worshipper's Soul", 2, log: false);
-
+            foreach ((ItemBase QuestItem, int ItemQuant) in QuestItems)
+            {
+                Core.KillMonster("fotia",
+                // Set cell:
+                    QuestItem.Name == "Femme Cult Worshipper's Soul" ? "r5" : "Enter",
+                // Set Pad:
+                    QuestItem.Name == "Femme Cult Worshipper's Soul" ? "Left" : "Spawn",
+                // Set Mob:
+                    QuestItem.Name == "Femme Cult Worshipper's Soul" ? "Femme Cult Worshiper" : "*",
+                // Set ItemName:
+                    QuestItem.Name,
+                // Set ItemName Quant:
+                    ItemQuant,
+                    log: false);
+            }
 
             foreach (int QID in Quests)
+            {
                 if (Bot.Quests.CanComplete(QID))
                     Core.EnsureCompleteMulti(QID);
+            }
 
             if (Core.CheckInventory("Legion Token", quant))
-                break;
+            {
+                Core.Logger("Legion Tokens maxed!");
+            }
         }
         Core.CancelRegisteredQuests();
     }
