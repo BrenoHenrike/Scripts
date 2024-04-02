@@ -4941,7 +4941,7 @@ public class CoreBots
 
                         "Awescended Omni Wings"
                     };
-                    
+
         Unbank(bestSet);
 
         if (SoloGear.All(x => bestSet.Contains(x)))
@@ -5098,26 +5098,49 @@ public class CoreBots
 
                     Bot.ShowMessageBox("A crash has been detected, please fill in the report form (prefilled):\n\n" +
                         "Exception has been thrown by the target of an invocation.System.OperationCanceledException: The operation was canceled.\n  " +
-                            @"at Skua.Core.Scripts.ScriptInterface.GetRekt() in C:\Repo\Skua\Skua.Core\Scripts\ScriptInterface.cs:line 175" + "\n  " +
-                            @"at Skua.Core.Scripts.ScriptInterface.Rek(String message) in C:\Repo\Skua\Skua.Core\Scripts\ScriptInterface.cs:line 162" + "\n  " +
-                            "at IWonderIfYouReadThis.ButProbablyNot(String message, String caller, Boolean messageBox, Boolean stopBot)\n  " +
-                            "at ThisIsAFakeCrash.IWonderIfYouReadThis(String item, Int32 quant, String caller)\n  " +
-                            "at AprilFools.ThisIsAFakeCrash(Int32 quant)\n  " +
-                            "at CoreBots.AprilFools(IScriptInterface bot)",
-                            "Script Crashed", "Open Form", "Close Window"
-                            );
+                        @"at Skua.Core.Scripts.ScriptInterface.GetRekt() in C:\Repo\Skua\Skua.Core\Scripts\ScriptInterface.cs:line 175" + "\n  " +
+                        @"at Skua.Core.Scripts.ScriptInterface.Rek(String message) in C:\Repo\Skua\Skua.Core\Scripts\ScriptInterface.cs:line 162" + "\n  " +
+                        "at IWonderIfYouReadThis.ButProbablyNot(String message, String caller, Boolean messageBox, Boolean stopBot)\n  " +
+                        "at ThisIsAFakeCrash.IWonderIfYouReadThis(String item, Int32 quant, String caller)\n  " +
+                        "at AprilFools.ThisIsAFakeCrash(Int32 quant)\n  " +
+                        "at CoreBots.AprilFools(IScriptInterface bot)",
+                        "Script Crashed", "Open Form", "Close Window"
+                    );
 
-                    Process.Start("explorer", "\"https://www.youtube.com/watch?v=dQw4w9WgXcQ\"");
+                    string[] youtubeLinks = 
+                            {
+                                "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+                                "https://www.youtube.com/watch?v=UtlaTNI1TaU",
+                                "https://www.youtube.com/watch?v=DuwY8U1AY7k",
+                                "https://www.youtube.com/watch?v=ykwqXuMPsoc",
+                                "https://www.youtube.com/watch?v=oavMtUWDBTM",
+                                "https://www.youtube.com/watch?v=LH5ay10RTGY",
+                                "https://www.youtube.com/watch?v=sSTXrRXjdR8"
+                            };
+
+                    Random random = new();
+                    string randomLink = youtubeLinks[random.Next(youtubeLinks.Length)];
+
+                    try
+                    {
+                        Process.Start("explorer", $"\"{randomLink}\"");
+                    }
+                    catch (Exception ex)
+                    {
+                        Bot.Log($"Error opening YouTube link: {ex.Message}");
+                    }
                     break;
 
+
+
                 case 5:
-                    for (int i = 0; i < 15; i++)
+                    for (int i = 0; i < 3; i++)
                     {
                         // Doesnt actually, ofc
-                        Process.Start("cmd", "/C echo DDOSing \"https://game.aq.com/\" (104.18.2.150) via port 9001 & timeout 15 > nul /NOBREAK");
+                        Process.Start("cmd", "/C echo DDOSing \"https://game.aq.com/\" (104.18.2.150) via port 9001 & timeout 10 > nul /NOBREAK");
                         Sleep(200);
                     }
-                    Sleep(15000);
+                    Sleep(11000);
                     break;
             }
             Bot.ShowMessageBox("April Fools!", "April Fools!");
