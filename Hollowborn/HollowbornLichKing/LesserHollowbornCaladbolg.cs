@@ -49,7 +49,7 @@ public class LesserHollowbornCaladbolg
             return;
 
 
-        Core.AddDrop("Lesser Hollowborn Caladbolg", "Darkon's Receipt", "Ingredients?");
+        Core.AddDrop("Lesser Hollowborn Caladbolg", "Darkon's Receipt", "Ingredients?", "Hollow Soul");
 
         CoreHollowbornLichKing.Counterblow(CoreHollowbornLichKing.CounterblowRewards.Altar_Of_the_Hollowborn_Caladbolg);
 
