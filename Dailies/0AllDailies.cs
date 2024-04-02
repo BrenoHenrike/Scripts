@@ -78,7 +78,7 @@ public class FarmAllDailies
             Daily.CryptoToken();
             Core.Logger("Recommended Dailies finished!");
         }
-        else if (Set == DailySet.All)
+        else
         {
             Core.Logger($"Doing selected set of dailies: All");
             LOO.GetLoO();
@@ -94,7 +94,6 @@ public class FarmAllDailies
             Daily.CryptoToken();
             Daily.ShadowShroud();
             MineCrafting.DoMinecrafting();
-
             Daily.SparrowsBlood();
             Daily.BeastMasterChallenge();
             Daily.FungiforaFunGuy();
@@ -112,8 +111,11 @@ public class FarmAllDailies
             Daily.PowerGem();
             Daily.DesignNotes();
             Daily.MoglinPets();
-            FR.CompleteStory();
-            Daily.Friendships();
+            if (Set == DailySet.All)
+            {
+                FR.CompleteStory();
+                Daily.Friendships();
+            }
             Daily.DagesScrollFragment();
             Core.Logger("\"All\" Dailies finished!");
         }
@@ -122,6 +124,7 @@ public class FarmAllDailies
     public enum DailySet
     {
         Recommended,
-        All
+        All,
+        All_Without_Friendship
     }
 }
