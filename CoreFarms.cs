@@ -1496,7 +1496,6 @@ public class CoreFarms
         {
             foreach (Monster mob in Bot.Monsters.MapMonsters.Where(x => x.ID == 560))
             {
-                Core.Logger($"{mob}");
                 while (Bot.Player.Cell != mob.Cell)
                 {
                     Core.Jump(mob.Cell, "left");
