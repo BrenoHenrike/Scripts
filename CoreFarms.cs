@@ -1489,17 +1489,28 @@ public class CoreFarms
         ToggleBoost(BoostType.Reputation);
         Core.Logger($"Farming rank {rank}");
         Core.AddDrop("Empowered Voidstone");
+        Core.RegisterQuests(7277);
         //Star of the Sandsea 7277
+        Core.Join("wanders");
         while (!Bot.ShouldExit && FactionRank("CraggleRock") < rank)
         {
-            if (Bot.Map.Name != "wanders")
-                Core.Join("wanders");
-            if (Bot.Player.Cell != "r3")
-                Core.Jump("r3");
+            foreach (Monster mob in Bot.Monsters.MapMonsters.Where(x => x.ID == 560))
+            {
+                Core.Logger($"{mob}");
+                while (Bot.Player.Cell != mob.Cell)
+                {
+                    Core.Jump(mob.Cell, "left");
+                    Core.Sleep();
+                }
+                while (!Bot.ShouldExit && Core.IsMonsterAlive(mob.MapID, useMapID: true))
+                {
+                    Bot.Combat.Attack(mob.MapID);
+                    Core.Sleep();
+                }
 
-            Core.EnsureAccept(7277);
-            Core.KillMonster("wanders", "r3", "Down", "Kalestri Worshiper", "Star of the Sandsea", log: false);
-            Core.EnsureComplete(7277);
+                if (FactionRank("CraggleRock") >= rank)
+                    break;
+            }
         }
         ToggleBoost(BoostType.Reputation, false);
         Core.SavedState(false);

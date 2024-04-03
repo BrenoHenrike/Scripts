@@ -3382,6 +3382,12 @@ public class CoreBots
                 break;
 
             case "wanders":
+                //2 spawn cells makes joining fucky
+                if (cell == "Enter")
+                {
+                    cell = "Enter2";
+                    pad = "Down";
+                }
                 SimpleQuestBypass((176, 6));
                 break;
 
@@ -5107,7 +5113,7 @@ public class CoreBots
                         "Script Crashed", "Open Form", "Close Window"
                     );
 
-                    string[] youtubeLinks = 
+                    string[] youtubeLinks =
                             {
                                 "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
                                 "https://www.youtube.com/watch?v=UtlaTNI1TaU",
