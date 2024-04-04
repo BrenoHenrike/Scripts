@@ -8,6 +8,7 @@ tags: pinpoint, pieces, sdka, dagger, blade, broadsword, scythe, mace, bow
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/Evil/SDKA/CoreSDKA.cs
+//cs_include Scripts/CoreStory.cs
 using System.Collections.Generic;
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;

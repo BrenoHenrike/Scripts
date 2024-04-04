@@ -8,6 +8,7 @@ tags: dark spirit orbs, dso, penny, doomcoin, shadow creeper enchant, maul
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/Evil/SDKA/CoreSDKA.cs
+//cs_include Scripts/CoreStory.cs
 using Skua.Core.Interfaces;
 
 public class DSOPenny

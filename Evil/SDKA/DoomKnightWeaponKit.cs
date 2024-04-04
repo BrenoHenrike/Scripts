@@ -8,6 +8,7 @@ tags: doomknight, doomknightwk, weapon kit, sdka, evil, corrupt spirit orb, omin
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/Evil/SDKA/CoreSDKA.cs
+//cs_include Scripts/CoreStory.cs
 using Skua.Core.Interfaces;
 public class DoomKnightWeaponKit
 {

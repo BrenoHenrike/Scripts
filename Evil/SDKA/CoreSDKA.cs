@@ -7,6 +7,7 @@ tags: null
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreDailies.cs
+//cs_include Scripts/CoreStory.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
 
@@ -18,6 +19,7 @@ public class CoreSDKA
     public CoreFarms Farm = new();
     public CoreAdvanced Adv = new();
     public CoreDailies Daily = new();
+    public CoreStory Story = new();
 
     public string OptionsStorage = "SupulchuresDoomKnightArmorOptions";
     public bool DontPreconfigure = true;
@@ -106,7 +108,7 @@ public class CoreSDKA
 
     public void UnlockHardCoreMetals()
     {
-        if (!Core.IsMember || Core.isCompletedBefore(2098))
+        if (!Core.IsMember || Story.QuestProgression(2098))
         {
             Core.Logger(message: !Core.IsMember ? "Not a member, skipping." : "Hard Core Metals already unlocked, skipping.");
             return;
@@ -118,7 +120,7 @@ public class CoreSDKA
                      "DoomCoin", "Shadow Creeper Enchant", "Shadow Serpent Scythe",
                      "Dark Skull", "Corrupt Spirit Orb");
 
-        if (!Core.isCompletedBefore(2087))
+        if (!Story.QuestProgression(2087))
         {
             Core.Logger("Sepulchure's Armor [2069]");
             DSO(40);
@@ -129,7 +131,7 @@ public class CoreSDKA
             Core.ToBank("Experimental Dark Item");
         }
 
-        if (!Core.isCompletedBefore(2088))
+        if (!Story.QuestProgression(2088))
         {
             Core.Logger("The Doom that Looms [2087]");
             if (!Core.CheckInventory(2083))
@@ -152,7 +154,7 @@ public class CoreSDKA
                 Core.ToBank("DoomKnight");
         }
 
-        if (!Core.isCompletedBefore(2089))
+        if (!Story.QuestProgression(2089))
         {
             Core.Logger("Toiling with Terror [2088]");
             Daily.EldersBlood();
@@ -165,13 +167,13 @@ public class CoreSDKA
             Core.ToBank("Elders' Blood");
         }
 
-        if (!Core.isCompletedBefore(2090))
+        if (!Story.QuestProgression(2090))
         {
             Core.Logger("Quest: A Penny for your Foughts [2089]");
             Penny(1, true);
         }
 
-        if (!Core.isCompletedBefore(2098))
+        if (!Story.QuestProgression(2098))
         {
             Core.Logger("Quest: Dark Spirit Donation [2090]");
             Core.EnsureAccept(2090);
@@ -393,7 +395,7 @@ public class CoreSDKA
                 Core.BuyItem("dwarfhold", 434, "Accursed Arsenic of Doom");
             }
 
-            if (!Core.isCompletedBefore(2144))
+            if (!Story.QuestProgression(2144))
             {
                 Core.Logger("Unlocking Weapon Kit quests");
                 Core.EnsureAccept(2137);

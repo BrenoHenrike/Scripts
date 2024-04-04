@@ -8,6 +8,7 @@ tags: unlock, hardcore, metals, vayle, quest, sdka, sepulchure, doom that looms,
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/Evil/SDKA/CoreSDKA.cs
+//cs_include Scripts/CoreStory.cs
 using Skua.Core.Interfaces;
 
 public class UnlockHardCoreMetals_Vayle_Quests
