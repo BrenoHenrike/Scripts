@@ -120,9 +120,9 @@ public class CoreSDKA
                      "DoomCoin", "Shadow Creeper Enchant", "Shadow Serpent Scythe",
                      "Dark Skull", "Corrupt Spirit Orb");
 
+        #region DoQuests
         if (!Story.QuestProgression(2087))
         {
-            Core.Logger("Sepulchure's Armor [2069]");
             DSO(40);
             Core.BuyItem("shadowfall", 100, "DoomKnight Hood");
             Core.AddDrop("Experimental Dark Item");
@@ -133,7 +133,6 @@ public class CoreSDKA
 
         if (!Story.QuestProgression(2087))
         {
-            Core.Logger("The Doom that Looms [2087]");
             if (!Core.CheckInventory(2083))
             {
                 Core.Logger("You don't have the DoomKnight Class, Getting it for you. (+warrior/Healer if those aren't R10)");
@@ -156,7 +155,6 @@ public class CoreSDKA
 
         if (!Story.QuestProgression(2088))
         {
-            Core.Logger("Toiling with Terror [2088]");
             Daily.EldersBlood();
 
             if (!Core.CheckInventory("Elders' Blood"))
@@ -169,18 +167,17 @@ public class CoreSDKA
 
         if (!Story.QuestProgression(2089))
         {
-            Core.Logger("Quest: A Penny for your Foughts [2089]");
             Penny(1, true);
         }
 
         if (!Story.QuestProgression(2090))
         {
-            Core.Logger("Quest: Dark Spirit Donation [2090]");
             Core.EnsureAccept(2090);
             DSO(100);
             Core.HuntMonster("necrocavern", "Shadow Imp", "Dark Skull", isTemp: false);
             Core.EnsureComplete(2090);
         }
+        #endregion DoQuests
     }
 
     public void FarmDSO(int quant = 10500)
