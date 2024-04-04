@@ -108,7 +108,7 @@ public class CoreSDKA
 
     public void UnlockHardCoreMetals()
     {
-        if (!Core.IsMember || Story.QuestProgression(2098))
+        if (!Core.IsMember || Story.QuestProgression(2090))
         {
             Core.Logger(message: !Core.IsMember ? "Not a member, skipping." : "Hard Core Metals already unlocked, skipping.");
             return;
@@ -131,7 +131,7 @@ public class CoreSDKA
             Core.ToBank("Experimental Dark Item");
         }
 
-        if (!Story.QuestProgression(2088))
+        if (!Story.QuestProgression(2087))
         {
             Core.Logger("The Doom that Looms [2087]");
             if (!Core.CheckInventory(2083))
@@ -154,7 +154,7 @@ public class CoreSDKA
                 Core.ToBank("DoomKnight");
         }
 
-        if (!Story.QuestProgression(2089))
+        if (!Story.QuestProgression(2088))
         {
             Core.Logger("Toiling with Terror [2088]");
             Daily.EldersBlood();
@@ -167,13 +167,13 @@ public class CoreSDKA
             Core.ToBank("Elders' Blood");
         }
 
-        if (!Story.QuestProgression(2090))
+        if (!Story.QuestProgression(2089))
         {
             Core.Logger("Quest: A Penny for your Foughts [2089]");
             Penny(1, true);
         }
 
-        if (!Story.QuestProgression(2098))
+        if (!Story.QuestProgression(2090))
         {
             Core.Logger("Quest: Dark Spirit Donation [2090]");
             Core.EnsureAccept(2090);
