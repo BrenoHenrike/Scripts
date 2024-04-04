@@ -4935,18 +4935,17 @@ public class CoreBots
         if (_FarmGear.Count > 0)
             FarmGear = _FarmGear.ToArray();
 
-        // Best set order modification
+        var item = Bot.Inventory.Items.Concat(Bot.Bank.Items)
+                     .FirstOrDefault(x => x.Name == "Infernal ArchFiend" || x.Name == "Celestial ArchFiend" || x.Name == "Radiant Goddess of War");
+        var itemName = item?.Name;
+
         string[] bestSet = {
-                        "Necrotic Sword of Doom",
-                        "Polly Roger",
-                        "Head of the legion Beast",
-
-                        CheckInventory("Radiant Goddess of War")
-                        ? "Radiant Goddess of War"
-                        : "Fire Champion's Armor",
-
-                        "Awescended Omni Wings"
-                    };
+                            "Necrotic Sword of Doom",
+                            itemName ?? "Polly Roger",
+                            itemName ?? "Head of the legion Beast",
+                            itemName ?? "Fire Champion's Armor",
+                            "Awescended Omni Wings"
+                            };
 
         Unbank(bestSet);
 
