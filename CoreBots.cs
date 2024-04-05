@@ -2530,11 +2530,10 @@ public class CoreBots
 
         if (log)
             FarmingLogger(item, quantity);
-        if (Bot.Map.PlayerCount > 1)
-            Bot.Options.AggroMonsters = true;
+
         while (!Bot.ShouldExit && !CheckInventory(item, quantity))
         {
-            if (Bot.Map.PlayerCount > 0)
+            if (Bot.Map.PlayerCount > 1)
                 Bot.Options.AggroMonsters = true;
             else
                 Bot.Options.AggroMonsters = false;
@@ -2562,11 +2561,11 @@ public class CoreBots
                 if (rejectElse)
                     Bot.Drops.RejectExcept(item);
 
-                if (Item == null || CheckInventory(item, quantity))
+                if (Item == null || CheckInventory(Item.Name, quantity))
                 {
                     Bot.Options.AggroMonsters = false;
                     if (Item != null)
-                        Bot.Wait.ForPickup(item);
+                        Bot.Wait.ForPickup(Item.Name);
                     Rest();
                     break;
                 }
