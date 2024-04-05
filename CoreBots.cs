@@ -9,6 +9,7 @@ using Skua.Core.Interfaces;
 using Skua.Core.Models;
 using Skua.Core.Models.Items;
 using Skua.Core.Models.Monsters;
+using Skua.Core.Models.Players;
 using Skua.Core.Models.Quests;
 using Skua.Core.Models.Servers;
 using Skua.Core.Models.Shops;
@@ -2529,10 +2530,18 @@ public class CoreBots
         {
             foreach (Monster mob in Bot.Monsters.CurrentAvailableMonsters)
             {
-                if (Bot.Map.PlayerNames?.Count > 1 && !PublicDifficult && PrivateRooms && !inPublicRoom())
+                if (Bot.Map.PlayerNames != null && Bot.Map.PlayerNames.Where(x => x != null && x != Bot.Player.Username).Any() && !PublicDifficult && PrivateRooms)
+                {
+                    // Enable aggro on monsters if conditions are met
                     Bot.Options.AggroMonsters = true;
+                }
                 else
+                {
+                    // Disable aggro on monsters
                     Bot.Options.AggroMonsters = false;
+                }
+
+
                 Monster? targetedMob = (name == "*") ? mob : Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault(x => x.Name.FormatForCompare() == name.FormatForCompare());
 
                 ItemBase? Item =
