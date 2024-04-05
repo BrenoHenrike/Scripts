@@ -2530,20 +2530,14 @@ public class CoreBots
 
         if (log)
             FarmingLogger(item, quantity);
-
-        while (!Bot.ShouldExit &&
-       ((!Bot.Inventory.Contains(item) && Bot.Inventory.GetQuantity(item) < quantity) ||
-        (!Bot.TempInv.Contains(item) && Bot.TempInv.GetQuantity(item) < quantity)))
+        if (Bot.Map.PlayerCount > 1)
+            Bot.Options.AggroMonsters = true;
+        while (!Bot.ShouldExit && !CheckInventory(item, quantity))
         {
-            // For some stupid fkin reason te bot will (once it has [item, quant] jump wait...
-            // this is to mitigate that (the jump will still hapen.. but this will atelst let u farm still))
-            while (!Bot.ShouldExit && Bot.Player.Cell != cell && cell != null)
-            {
-                Jump(cell, "Left");
-                Sleep();
-                if (Bot.Player.Cell == cell)
-                    break;
-            }
+            if (Bot.Map.PlayerCount > 0)
+                Bot.Options.AggroMonsters = true;
+            else
+                Bot.Options.AggroMonsters = false;
 
             foreach (Monster mob in Bot.Monsters.CurrentAvailableMonsters)
             {
@@ -2553,24 +2547,32 @@ public class CoreBots
                 isTemp ? Bot.TempInv.Items.FirstOrDefault(x => x.Name.FormatForCompare() == item.FormatForCompare())
                 : Bot.Inventory.Items.FirstOrDefault(x => x.Name.FormatForCompare() == item.FormatForCompare());
 
-                while (!Bot.ShouldExit && IsMonsterAlive(targetedMob?.MapID ?? 0, true))
+                #region insurance
+                while (!Bot.ShouldExit && Bot.Player.Cell != cell && cell != null)
                 {
-                    Bot.Combat.Attack(targetedMob?.MapID ?? Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault()?.MapID ?? 0);
+                    Jump(cell, "Left");
                     Sleep();
+                    if (Bot.Player.Cell == cell)
+                        break;
+                }
+                #endregion insurance
 
-                    if (rejectElse)
-                        Bot.Drops.RejectExcept(item);
+                Bot.Kill.Monster(targetedMob?.MapID ?? Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault()?.MapID ?? 0);
 
-                    if (Item != null && Bot.Inventory.Contains(Item.ID) && Bot.Inventory.GetQuantity(Item.ID) >= quantity ||
-                    Item != null && Bot.TempInv.Contains(Item.ID) && Bot.TempInv.GetQuantity(Item.ID) >= quantity)
-                    {
+                if (rejectElse)
+                    Bot.Drops.RejectExcept(item);
+
+                if (Item == null || CheckInventory(item, quantity))
+                {
+                    Bot.Options.AggroMonsters = false;
+                    if (Item != null)
                         Bot.Wait.ForPickup(item);
-                        Rest();
-                        return;
-                    }
+                    Rest();
+                    break;
                 }
             }
         }
+        Bot.Options.AggroMonsters = false;
     }
 
 
@@ -3269,7 +3271,7 @@ public class CoreBots
             cellPad = ("Enter", "Spawn");
         else
         {
-            blackListedCells.AddRange(new List<string>() { "Wait", "Blank", "Out" });
+            blackListedCells.AddRange(new List<string>() { "Wait", "Blank", "Out", "moveFrame" });
             blackListedCells.AddRange(Bot.Map.Cells.Where(x => x.StartsWith("Cut")));
             if (!IsMember)
                 blackListedCells.Add("Eggs");
