@@ -648,12 +648,6 @@ public class CoreBots
                 Logger($"{item} moved from bank");
             }
         }
-
-        // while (!Bot.ShouldExit && Bot.Player.Cell != CellandPadBefore.Item1)
-        // {
-        //     Jump(CellandPadBefore.Item1, CellandPadBefore.Item2);
-        //     Sleep();
-        // }
     }
 
     /// <summary>
@@ -2571,6 +2565,7 @@ public class CoreBots
             }
         }
         Bot.Options.AggroMonsters = false;
+        JumpWait();
     }
 
 
