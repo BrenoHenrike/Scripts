@@ -987,7 +987,7 @@ public class CoreDailies
 
         // Battleodium
         if (Core.isCompletedBefore(793))
-            handleFriendship("Dage the Evil", frGift.Crached_Opal);
+            handleFriendship("Dage the Evil", frGift.Cracked_Opal);
         handleFriendship("Gravelyn", frGift.Blood_Roseberry);
         handleFriendship("Nulgath", frGift.Apples);
         handleFriendship("Twig", frGift.Melons);
@@ -1075,7 +1075,7 @@ public class CoreDailies
                             Core.BuyItem("battleodium", 2236, "Chaos Diemond");
                             break;
 
-                        case frGift.Crached_Opal:
+                        case frGift.Cracked_Opal:
                             Core.EquipClass(ClassType.Farm);
                             Core.KillMonster("battleodium", "r6", "Left", "Vileture", "Melons", 1, false, false);
                             Core.KillMonster("battleodium", "r6", "Left", "Diemond", "Opals", 1, false, false);
@@ -1254,7 +1254,7 @@ public class CoreDailies
         Turqoise = 76289,
         Chaos_Diemond = 76355,
         A_Fish = 76322,
-        Crached_Opal = 76657,
+        Cracked_Opal = 76657,
         Blood_Roseberry = 76658,
     };
 
