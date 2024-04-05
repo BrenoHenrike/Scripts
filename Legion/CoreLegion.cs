@@ -10,6 +10,7 @@ tags: null
 using Skua.Core.Interfaces;
 using Skua.Core.Models;
 using Skua.Core.Models.Items;
+using Skua.Core.Models.Monsters;
 using Skua.Core.Models.Quests;
 
 public class CoreLegion
@@ -804,21 +805,12 @@ public class CoreLegion
 
                 Core.FarmingLogger("Sword Scroll Fragment", ScrollQuant);
 
-                while (!Bot.ShouldExit)
+                foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
                 {
-                    Bot.Kill.Monster(17);
-                    Bot.Wait.ForCombatExit();
-                    Bot.Kill.Monster(18);
-                    Bot.Wait.ForCombatExit();
-                    if (!Core.IsMonsterAlive("Blade Master"))
-                    {
-                        Bot.Combat.CancelTarget();
-                        Core.Logger("Blade Masters killed, moving on.");
-                        break;
-                    }
-                    if (!Bot.Player.Alive)
-                        goto RestartOnDeath;
+                    Bot.Kill.Monster(MID.MapID);
+                    Bot.Combat.CancelTarget();
                 }
+
                 if (!Bot.Player.Alive)
                     goto RestartOnDeath;
 
@@ -826,19 +818,12 @@ public class CoreLegion
                 if (!Bot.Player.Alive)
                     goto RestartOnDeath;
 
-                while (!Bot.ShouldExit)
+                foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
                 {
-                    Bot.Kill.Monster(19);
-                    Bot.Wait.ForCombatExit();
-                    Bot.Kill.Monster(20);
-                    Bot.Wait.ForCombatExit();
-                    if (!Core.IsMonsterAlive("Blade Master"))
-                    {
-                        Bot.Combat.CancelTarget();
-                        Core.Logger("Blade Masters killed, moving on.");
-                        break;
-                    }
+                    Bot.Kill.Monster(MID.MapID);
+                    Bot.Combat.CancelTarget();
                 }
+
                 if (!Bot.Player.Alive)
                     goto RestartOnDeath;
 
@@ -859,21 +844,12 @@ public class CoreLegion
             if (!Bot.Player.Alive)
                 goto RestartOnDeath;
 
-            while (!Bot.ShouldExit && !canSoloBoss)
+            foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
             {
-                Bot.Kill.Monster(21);
-                Bot.Wait.ForCombatExit();
-                Bot.Kill.Monster(22);
-                Bot.Wait.ForCombatExit();
-                if (!Core.IsMonsterAlive("Legion Guard"))
-                {
-                    Bot.Combat.CancelTarget();
-                    Core.Logger("Blade Masters killed, moving on.");
-                    break;
-                }
-                if (!Bot.Player.Alive)
-                    goto RestartOnDeath;
+                Bot.Kill.Monster(MID.MapID);
+                Bot.Combat.CancelTarget();
             }
+
             if (!Bot.Player.Alive)
                 goto RestartOnDeath;
 
@@ -881,21 +857,12 @@ public class CoreLegion
             if (!Bot.Player.Alive)
                 goto RestartOnDeath;
 
-            while (!Bot.ShouldExit && !canSoloBoss)
+            foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
             {
-                Bot.Kill.Monster(23);
-                Bot.Wait.ForCombatExit();
-                Bot.Kill.Monster(24);
-                Bot.Wait.ForCombatExit();
-                if (!Core.IsMonsterAlive("Legion Guard"))
-                {
-                    Bot.Combat.CancelTarget();
-                    Core.Logger("Legion Guards killed, moving on.");
-                    break;
-                }
-                if (!Bot.Player.Alive)
-                    goto RestartOnDeath;
+                Bot.Kill.Monster(MID.MapID);
+                Bot.Combat.CancelTarget();
             }
+
             if (!Bot.Player.Alive)
                 goto RestartOnDeath;
 
@@ -903,21 +870,12 @@ public class CoreLegion
             if (!Bot.Player.Alive)
                 goto RestartOnDeath;
 
-            while (!Bot.ShouldExit && !canSoloBoss)
+            foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
             {
-                Bot.Kill.Monster(25);
-                Bot.Wait.ForCombatExit();
-                Bot.Kill.Monster(26);
-                Bot.Wait.ForCombatExit();
-                if (!Core.IsMonsterAlive("Legion Guard"))
-                {
-                    Bot.Combat.CancelTarget();
-                    Core.Logger("Legion Guards killed, moving on.");
-                    break;
-                }
-                if (!Bot.Player.Alive)
-                    goto RestartOnDeath;
+                Bot.Kill.Monster(MID.MapID);
+                Bot.Combat.CancelTarget();
             }
+
             if (!Bot.Player.Alive)
                 goto RestartOnDeath;
 
@@ -925,19 +883,12 @@ public class CoreLegion
             if (!Bot.Player.Alive)
                 goto RestartOnDeath;
 
-            while (!Bot.ShouldExit)
+            foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
             {
-                Bot.Kill.Monster(27);
-                Bot.Wait.ForCombatExit();
-                if (!Core.IsMonsterAlive("Dage the Evil"))
-                {
-                    Bot.Combat.CancelTarget();
-                    Core.Logger("Dage the Evil, getting trophies.");
-                    break;
-                }
-                if (!Bot.Player.Alive)
-                    goto RestartOnDeath;
+                Bot.Kill.Monster(MID.MapID);
+                Bot.Combat.CancelTarget();
             }
+
             if (!Bot.Player.Alive)
                 goto RestartOnDeath;
 

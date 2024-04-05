@@ -525,18 +525,12 @@ public class CoreFarms
         "as you get rewarded 10 rather then 3\n" +
         "Combat Trophies");
 
-
-        // if (Core.CBOBool("PvP_SoloPvPBoss", out bool _canSoloBoss))
-        //     canSoloBoss = !_canSoloBoss;
-
         Core.AddDrop(item, "The Secret 4", "Yoshino's Citrine");
 
         Core.EquipClass(ClassType.Solo);
         Core.FarmingLogger(item, quant);
-        // Core.Logger($"Farming {quant} {item}. SoloBoss = {canSoloBoss}");
         Core.ConfigureAggro(false);
 
-    // Bot.Events.PlayerDeath += PVPDeath;
     Start:
         Core.EquipClass(ClassType.Solo);
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
@@ -544,6 +538,7 @@ public class CoreFarms
             Core.Join("bludrutbrawl", "Enter0", "Spawn");
             Core.Sleep(2500);
 
+            #region GotoMobsRoom1
             Core.PvPMove(5, "Morale0C");
             if (!Bot.Player.Alive)
                 goto RestartOnDeath;
@@ -556,53 +551,39 @@ public class CoreFarms
             Core.PvPMove(9, "Crosslower");
             if (!Bot.Player.Alive)
                 goto RestartOnDeath;
-
             Core.PvPMove(14, "Crossupper", 528, 255);
             if (!Bot.Player.Alive)
                 goto RestartOnDeath;
             Core.PvPMove(18, "Resource1A");
             if (!Bot.Player.Alive)
                 goto RestartOnDeath;
-
-            while (!Bot.ShouldExit)
+            #endregion GotoMobsRoom1
+            foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
             {
-                Bot.Kill.Monster(9);
+                Bot.Kill.Monster(MID.MapID);
                 Bot.Combat.CancelTarget();
-                Bot.Wait.ForCombatExit();
-                Bot.Kill.Monster(10);
-                Bot.Wait.ForCombatExit();
-                if (!Core.IsMonsterAlive(313))
-                {
-                    Bot.Combat.CancelTarget();
-                    Core.Logger("(B) Defensive Restorers killed, moving on.");
-                    break;
-                }
-                if (!Bot.Player.Alive)
-                    goto RestartOnDeath;
             }
+
+            #region GotoMobsRoom2
+            if (!Bot.Player.Alive)
+                goto RestartOnDeath;
             if (!Bot.Player.Alive)
                 goto RestartOnDeath;
 
             Core.PvPMove(20, "Resource1B");
+
             if (!Bot.Player.Alive)
                 goto RestartOnDeath;
-
-            while (!Bot.ShouldExit)
+            #endregion GotoMobsRoom2
+            foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
             {
-                Bot.Kill.Monster(11);
-                Bot.Wait.ForCombatExit();
-                Bot.Kill.Monster(12);
+                Bot.Kill.Monster(MID.MapID);
                 Bot.Combat.CancelTarget();
-                Bot.Wait.ForCombatExit();
-                if (!Core.IsMonsterAlive(313))
-                {
-                    Bot.Combat.CancelTarget();
-                    Core.Logger("(B) Defensive Restorers killed, moving on.");
-                    break;
-                }
-                if (!Bot.Player.Alive)
-                    goto RestartOnDeath;
             }
+
+            #region GotoMobsRoom3
+            if (!Bot.Player.Alive)
+                goto RestartOnDeath;
 
             if (!Bot.Player.Alive)
                 goto RestartOnDeath;
@@ -618,21 +599,16 @@ public class CoreFarms
             Core.PvPMove(15, "Morale1A", 862, 268);
             if (!Bot.Player.Alive)
                 goto RestartOnDeath;
-
-            while (!Bot.ShouldExit)
+            #endregion GotoMobsRoom3
+            foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
             {
-                Bot.Kill.Monster(13);
+                Bot.Kill.Monster(MID.MapID);
                 Bot.Combat.CancelTarget();
-                Bot.Wait.ForCombatExit();
-                if (!Core.IsMonsterAlive(311))
-                {
-                    Bot.Combat.CancelTarget();
-                    Core.Logger("(B) Brawlers killed, moving on.");
-                    break;
-                }
-                if (!Bot.Player.Alive)
-                    goto RestartOnDeath;
             }
+
+            #region GotoMobsRoom4
+            if (!Bot.Player.Alive)
+                goto RestartOnDeath;
 
             if (!Bot.Player.Alive)
                 goto RestartOnDeath;
@@ -640,20 +616,17 @@ public class CoreFarms
             if (!Bot.Player.Alive)
                 goto RestartOnDeath;
 
-            while (!Bot.ShouldExit)
+            #endregion GotoMobsRoom4
+            foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
             {
-                Bot.Kill.Monster(14);
+                Bot.Kill.Monster(MID.MapID);
                 Bot.Combat.CancelTarget();
-                Bot.Wait.ForCombatExit();
-                if (!Core.IsMonsterAlive(311))
-                {
-                    Bot.Combat.CancelTarget();
-                    Core.Logger("(B) Brawlers killed, moving on.");
-                    break;
-                }
-                if (!Bot.Player.Alive)
-                    goto RestartOnDeath;
             }
+
+            #region GotoMobsRoom5
+            if (!Bot.Player.Alive)
+                goto RestartOnDeath;
+
 
             if (!Bot.Player.Alive)
                 goto RestartOnDeath;
@@ -661,41 +634,33 @@ public class CoreFarms
             if (!Bot.Player.Alive)
                 goto RestartOnDeath;
 
-            while (!Bot.ShouldExit)
+            #endregion GotoMobsRoom5
+            foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
             {
-                Bot.Kill.Monster(15);
+                Bot.Kill.Monster(MID.MapID);
                 Bot.Combat.CancelTarget();
-                Bot.Wait.ForCombatExit();
-                if (!Core.IsMonsterAlive(311))
-                {
-                    Bot.Combat.CancelTarget();
-                    Core.Logger("(B) Brawlers killed, moving on.");
-                    break;
-                }
-                if (!Bot.Player.Alive)
-                    goto RestartOnDeath;
             }
+
+            #region GotoMobsRoom6
+            if (!Bot.Player.Alive)
+                goto RestartOnDeath;
+
 
             if (!Bot.Player.Alive)
                 goto RestartOnDeath;
             Core.PvPMove(28, "Captain1", 528, 255);
             if (!Bot.Player.Alive)
                 goto RestartOnDeath;
-
-            while (!Bot.ShouldExit)
+            #endregion GotoMobsRoom6
+            foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
             {
-                Bot.Kill.Monster(16);
+                Bot.Kill.Monster(MID.MapID);
                 Bot.Combat.CancelTarget();
-                Bot.Wait.ForCombatExit();
-                if (!Core.IsMonsterAlive(309))
-                {
-                    Bot.Combat.CancelTarget();
-                    Core.Logger("Team B Captain killed, moving on.");
-                    break;
-                }
-                if (!Bot.Player.Alive)
-                    goto RestartOnDeath;
             }
+
+            #region Exit
+            if (!Bot.Player.Alive)
+                goto RestartOnDeath;
 
             Bot.Wait.ForDrop(item, 40);
             Core.Sleep(1500);
@@ -706,7 +671,6 @@ public class CoreFarms
             if (!Bot.Player.Alive)
                 goto RestartOnDeath;
             else goto Exit;
-
 
             Exit:
             while (!Bot.ShouldExit && Bot.Map.Name != "battleon")
@@ -751,7 +715,10 @@ public class CoreFarms
         Core.Logger($"Deaths:[{Death}]");
         Death = 0;
         ExitAttempt = 0;
+        #endregion Exit
+
     }
+
 
     public void BattleUnderB(string item = "Bone Dust", int quant = 10000, bool isTemp = false)
     {
@@ -2081,10 +2048,11 @@ public class CoreFarms
                 goto RestartOnDeath;
             Core.Logger($"Move: {Move++}, Restorers");
 
-            foreach (int mon in new[] { 9, 10 })
+
+            foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
             {
-                while (!Bot.ShouldExit && Core.IsMonsterAlive(mon, useMapID: true))
-                    Bot.Combat.Attack(mon);
+                while (!Bot.ShouldExit && Core.IsMonsterAlive(MID.MapID, useMapID: true))
+                    Bot.Kill.Monster(MID.MapID);
 
                 if (Core.CheckInventory(item, quant) && FactionRank("Death Pit Brawl") >= rank)
                 {
@@ -2103,10 +2071,10 @@ public class CoreFarms
                 goto RestartOnDeath;
             Core.Logger($"Move: {Move++}, Restorers room 2");
 
-            foreach (int mon in new[] { 11, 12 })
+            foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
             {
-                while (!Bot.ShouldExit && Core.IsMonsterAlive(mon, useMapID: true))
-                    Bot.Combat.Attack(mon);
+                while (!Bot.ShouldExit && Core.IsMonsterAlive(MID.MapID, useMapID: true))
+                    Bot.Kill.Monster(MID.MapID);
 
                 if (Core.CheckInventory(item, quant) && FactionRank("Death Pit Brawl") >= rank)
                 {
@@ -2136,10 +2104,10 @@ public class CoreFarms
                 goto RestartOnDeath;
             Core.Logger($"Move: {Move++}, Velm's Brawler");
 
-            foreach (int mon in new[] { 13 })
+            foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
             {
-                while (!Bot.ShouldExit && Core.IsMonsterAlive(mon, useMapID: true))
-                    Bot.Combat.Attack(mon);
+                while (!Bot.ShouldExit && Core.IsMonsterAlive(MID.MapID, useMapID: true))
+                    Bot.Kill.Monster(MID.MapID);
 
                 if (Core.CheckInventory(item, quant) && FactionRank("Death Pit Brawl") >= rank)
                 {
@@ -2157,10 +2125,10 @@ public class CoreFarms
                 goto RestartOnDeath;
             Core.Logger($"Move: {Move++}, Velm's Brawler");
 
-            foreach (int mon in new[] { 14 })
+            foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
             {
-                while (!Bot.ShouldExit && Core.IsMonsterAlive(mon, useMapID: true))
-                    Bot.Combat.Attack(mon);
+                while (!Bot.ShouldExit && Core.IsMonsterAlive(MID.MapID, useMapID: true))
+                    Bot.Kill.Monster(MID.MapID);
 
                 if (Core.CheckInventory(item, quant) && FactionRank("Death Pit Brawl") >= rank)
                 {
@@ -2178,10 +2146,10 @@ public class CoreFarms
                 goto RestartOnDeath;
             Core.Logger($"Move: {Move++}, Velm's Brawler");
 
-            foreach (int mon in new[] { 15 })
+            foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
             {
-                while (!Bot.ShouldExit && Core.IsMonsterAlive(mon, useMapID: true))
-                    Bot.Combat.Attack(mon);
+                while (!Bot.ShouldExit && Core.IsMonsterAlive(MID.MapID, useMapID: true))
+                    Bot.Kill.Monster(MID.MapID);
 
                 if (Core.CheckInventory(item, quant) && FactionRank("Death Pit Brawl") >= rank)
                 {
@@ -2199,10 +2167,10 @@ public class CoreFarms
                 goto RestartOnDeath;
             Core.Logger($"Move: {Move++}, General Velm (B)");
 
-            foreach (int mon in new[] { 16 })
+            foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
             {
-                while (!Bot.ShouldExit && Core.IsMonsterAlive(mon, useMapID: true))
-                    Bot.Combat.Attack(mon);
+                while (!Bot.ShouldExit && Core.IsMonsterAlive(MID.MapID, useMapID: true))
+                    Bot.Kill.Monster(MID.MapID);
 
                 if (Core.CheckInventory(item, quant) && FactionRank("Death Pit Brawl") >= rank)
                 {
