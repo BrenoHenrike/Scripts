@@ -147,12 +147,11 @@ public class CoreVHL
         Adv.BuyItem("tercessuinotlim", 1355, "Void Crystal B");
     }
 
-
-    private void FarmExtra(int quant = 15)
+    private void FarmExtra(int quant = 25)
     {
         if (!Core.CheckInventory("Roentgenium of Nulgath", quant))
         {
-            int quantity = Bot.Inventory.Items.FirstOrDefault(x => x.Name == "Roentgenium of Nulgath")?.Quantity ?? 0;
+            int quantity = Bot.Inventory.Items.Concat(Bot.Bank.Items).FirstOrDefault(x => x.Name == "Roentgenium of Nulgath")?.Quantity ?? 0;
 
             Core.Logger($"Roentgenium of Nulgath: ({quantity}/{quant})", "Not Enough Roent");
             Core.Logger("Not enough \"Roentgenium of Nulgath\"\n" +
