@@ -2533,13 +2533,12 @@ public class CoreBots
 
         while (!Bot.ShouldExit && !CheckInventory(item, quantity))
         {
-            if (Bot.Map.PlayerCount > 1)
-                Bot.Options.AggroMonsters = true;
-            else
-                Bot.Options.AggroMonsters = false;
-
             foreach (Monster mob in Bot.Monsters.CurrentAvailableMonsters)
             {
+                if (Bot.Map.PlayerNames?.Count > 1 && !PublicDifficult && PrivateRooms && !inPublicRoom())
+                    Bot.Options.AggroMonsters = true;
+                else
+                    Bot.Options.AggroMonsters = false;
                 Monster? targetedMob = (name == "*") ? mob : Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault(x => x.Name.FormatForCompare() == name.FormatForCompare());
 
                 ItemBase? Item =
