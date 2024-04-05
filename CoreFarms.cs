@@ -139,15 +139,22 @@ public class CoreFarms
         Core.Logger($"Farming {goldQuant} gold using HonorHall Method");
 
         Core.RegisterQuests(3992, 3993);
+        Core.Join("honorhall", "r1", "Left");
         while (!Bot.ShouldExit && Bot.Player.Gold < goldQuant)
         {
-            Core.KillMonster("honorhall", "r1", "Center", "Ice Demon", "Battleground E Opponent Defeated", 10, log: false);
-            Core.KillMonster("honorhall", "r1", "Center", "Ice Demon", "HonorHall Opponent Defeated", 10, log: false);
+            while (!Bot.ShouldExit && Bot.Player.Cell != "r1")
+            {
+                Core.Jump("r1", "Left");
+                Core.Sleep();
+            }
+            foreach (int MonsterMapID in new[] { 1, 2 })
+                while (!Bot.ShouldExit && Core.IsMonsterAlive(MonsterMapID, useMapID: true))
+                    Bot.Combat.Attack(MonsterMapID);
         }
         Core.CancelRegisteredQuests();
         Core.SavedState(false);
     }
-
+    
     /// <summary>
     /// Farms Gold in Battle Ground E with quests Level 46-60 and 61-75
     /// </summary>
