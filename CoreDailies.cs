@@ -654,6 +654,7 @@ public class CoreDailies
             return;
         Core.EquipClass(ClassType.Farm);
         DailyRoutine(6187, "boxes", "Sneevil", "Metal Ore", cell: "Closet", pad: "Center");
+        Core.Jump("Wait", "Left");
         Core.ToBank("Crypto Token");
     }
 
