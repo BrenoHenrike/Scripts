@@ -29,16 +29,7 @@ public class DefaultTemplate
 
     public void Example()
     {
-        if (Core.CheckInventory("item", 1))
-            return;
+        Core.KillVath("Legendary Sword of Dragon Contro   l", isTemp: false);
 
-
-        Core.RegisterQuests(000);
-        while (!Bot.ShouldExit && Core.CheckInventory("item", 1))
-        {
-            Core.HuntMonster("map", "mob", "item", 1, isTemp: false, log: false);
-            Core.KillMonster("map", "cell", "pad", "mob", "item", 1, isTemp: false, log: false);
-        }
-        Core.CancelRegisteredQuests();
     }
 }
