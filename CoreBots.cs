@@ -632,6 +632,7 @@ public class CoreBots
         while (!Bot.ShouldExit && Bot.Player.InCombat)
         {
             JumpWait();
+            Sleep();
         }
 
         if (Bot.Flash.GetGameObject("ui.mcPopup.currentLabel") != "\"Bank\"")
