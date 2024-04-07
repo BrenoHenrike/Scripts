@@ -13,6 +13,7 @@ tags: all classes,class,farm,complete,all
 //cs_include Scripts/Other/Classes/Daily-Classes/BlazeBinder.cs
 //cs_include Scripts/Dailies/LordOfOrder.cs
 //cs_include Scripts/Nation/CoreNation.cs
+//cs_include Scripts/Hollowborn/CoreHollowborn.cs
 //cs_include Scripts/Story/Nation/CitadelRuins.cs
 //cs_include Scripts/Story/DragonFableOrigins.cs
 //cs_include Scripts/Story/RavenlossSaga.cs
@@ -80,7 +81,8 @@ tags: all classes,class,farm,complete,all
 //cs_include Scripts/Other/Concerts/DoomMetalNecro.cs
 //cs_include Scripts/Legion/LegionExcercise/LegionExercise3.cs
 //cs_include Scripts/Legion/LegionExcercise/LegionExercise4.cs
-//cs_include Scripts/Legion/Various/UndeadLegionMerge.cs
+//cs_include Scripts/Legion/MergeShops/UndeadLegionMerge.cs
+//cs_include Scripts/Hollowborn\Materials\HollowSoul.cs
 //cs_include Scripts/Legion/Various/ExaltedSoulCleaver.cs
 //cs_include Scripts/Nation/Various/Archfiend.cs
 //cs_include Scripts/Other/Classes/BloodSorceress.cs
