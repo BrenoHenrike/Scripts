@@ -628,7 +628,11 @@ public class CoreBots
 
         // (string, string) CellandPadBefore = ($"{Bot.Player.Cell}", $"{Bot.Player.Pad}");
 
-        JumpWait();
+       
+        while (!Bot.ShouldExit && Bot.Player.InCombat)
+        {
+            JumpWait();
+        }
 
         if (Bot.Flash.GetGameObject("ui.mcPopup.currentLabel") != "\"Bank\"")
             Bot.Bank.Open();
@@ -2246,7 +2250,7 @@ public class CoreBots
         if (Bot.Player.CurrentClass?.Name == "ArchMage")
             Bot.Options.AttackWithoutTarget = true;
 
-            bool PreFarmKill = false;
+        bool PreFarmKill = false;
 
         if (item == null)
         {
