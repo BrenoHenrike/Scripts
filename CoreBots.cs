@@ -2160,34 +2160,28 @@ public class CoreBots
 
         // DebugLogger(this);
         Join("escherion", "Boss", "Left", publicRoom: publicRoom);
-
+        if (Bot.Player.Cell != "Boss")
+        {
+            Jump("Boss", "Left");
+            Sleep();
+        }
         if (Bot.Player.CurrentClass?.Name == "ArchMage")
             Bot.Options.AttackWithoutTarget = true;
 
         if (item != null)
             FarmingLogger(item, quant);
 
+        bool PreFarmKill = false;
+
+        Monster? Staff = Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault(x => x.MapID == 2);
+        Monster? Escherion = Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault(x => x.MapID == 3);
+
         if (item == null)
         {
-            // DebugLogger(this);
             if (log)
                 Logger("Killing Escherion");
-            while (!Bot.ShouldExit && CheckInventory(item, quant))
-            {
-                while (!Bot.ShouldExit && Bot.Player.Cell != "Boss")
-                {
-                    // DebugLogger(this);
-                    Jump("Boss", "Left");
-                    Sleep();
-                }
-                // DebugLogger(this);
-                while (!Bot.ShouldExit && IsMonsterAlive("Staff of Inversion"))
-                {
-                    Bot.Kill.Monster("Staff of Inversion");
-                    Bot.Combat.Attack("Escherion");
-                    Sleep(1000);
-                }
-            }
+
+            _KillEscherion();
         }
         else
         {
@@ -2195,25 +2189,45 @@ public class CoreBots
                 AddDrop(item);
             if (log)
                 Logger($"Killing Escherion for {item} ({dynamicQuant(item, isTemp)}/{quant}) [Temp = {isTemp}]");
+
             while (!Bot.ShouldExit && !CheckInventory(item, quant))
             {
-                while (!Bot.ShouldExit && Bot.Player.Cell != "Boss")
-                {
-                    // DebugLogger(this);
-                    Jump("Boss", "Left");
-                    Sleep();
-                }
-                // DebugLogger(this);
-                while (!Bot.ShouldExit && IsMonsterAlive("Staff of Inversion"))
-                    Bot.Kill.Monster("Staff of Inversion");
-                Bot.Combat.Attack("Escherion");
-                Sleep(1000);
+                _KillEscherion();
             }
+
             Rest();
-            // DebugLogger(this);
             Bot.Wait.ForPickup(item);
         }
         Bot.Options.AttackWithoutTarget = false;
+
+        void _KillEscherion()
+        {
+            if (Bot.Player.Cell != "Boss")
+            {
+                Jump("Boss", "Left");
+                Sleep();
+            }
+
+            // Initialize combat (to set hp)
+            if (!PreFarmKill)
+            {
+                Bot.Kill.Monster(Staff!.MapID);
+                PreFarmKill = true;
+            }
+
+            Staff = Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault(x => x.MapID == 2);
+
+            if (Staff?.State == 1)
+            {
+                Bot.Kill.Monster(Staff!.MapID);
+                Bot.Combat.CancelTarget();
+            }
+            else if (Staff?.State == 0)
+            {
+                Bot.Combat.Attack(Escherion!.MapID);
+                Sleep();
+            }
+        }
     }
 
     /// <summary>
@@ -2231,6 +2245,8 @@ public class CoreBots
 
         if (Bot.Player.CurrentClass?.Name == "ArchMage")
             Bot.Options.AttackWithoutTarget = true;
+
+            bool PreFarmKill = false;
 
         if (item == null)
         {
@@ -2252,10 +2268,27 @@ public class CoreBots
 
         void _killVath()
         {
-            if (IsMonsterAlive("Stalagbite"))
-                Bot.Kill.Monster("Stalagbite");
-            Bot.Combat.Attack("Vath");
-            Sleep(1000);
+            Monster? Vath = Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault(x => x.MapID == 7);
+            Monster? Stalagbite = Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault(x => x.MapID == 8);
+            // Initialize combat (to set hp)
+            if (!PreFarmKill)
+            {
+                Bot.Kill.Monster(Stalagbite!.MapID);
+                PreFarmKill = true;
+            }
+
+            Stalagbite = Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault(x => x.MapID == 8);
+
+            if (Stalagbite?.State == 1)
+            {
+                Bot.Kill.Monster(Stalagbite!.MapID);
+                Stalagbite = Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault(x => x.MapID == 8);
+            }
+            else if (Stalagbite?.State == 0)
+            {
+                Bot.Combat.Attack(Vath!.MapID);
+                // Sleep();
+            }
         }
         Rest();
     }

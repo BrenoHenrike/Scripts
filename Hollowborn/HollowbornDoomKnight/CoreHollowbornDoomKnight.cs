@@ -86,7 +86,7 @@ public class CoreHollowbornDoomKnight
 
         if (Bot.Config!.Get<bool>("PreFarm"))
         {
-            ADK();
+            ADK(130);
             ADKRises();
         }
         ADKFalls();
