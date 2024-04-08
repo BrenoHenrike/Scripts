@@ -29,7 +29,7 @@ public class MaxAllDarkon
         Darkon.WheelofFortune(MaxStack: true);
         Darkon.SukisPrestiege(MaxStack: true);
         Darkon.Teeth(MaxStack: true);
-        Darkon.UnfinishedMusicalScore(MaxStack: true);
+        Darkon.UnfinishedMusicalScore(300);
 
         Core.SetOptions(false);
     }

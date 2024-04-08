@@ -10,6 +10,8 @@ tags: null
 //cs_include Scripts/Story/ElegyofMadness(Darkon)/CoreAstravia.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
+using Skua.Core.Models.Quests;
+using Skua.Core.Models.Shops;
 
 public class CoreDarkon
 {
@@ -27,9 +29,10 @@ public class CoreDarkon
 
     public void FirstErrand(int Quantity = 222, bool MaxStack = false)
     {
-        ItemBase? Item = Bot.Inventory.Items.Concat(Bot.Bank.Items).FirstOrDefault(x => x.Name == "Darkon's Receipt");
+        Quest? Quest = Bot.Quests.EnsureLoad(7325);
         if (MaxStack)
-            Quantity = Item!.MaxStack;
+            Quantity = Quest?.Rewards.FirstOrDefault(x => x.Name == "Darkon's Receipt")?.MaxStack ?? Quantity;
+
         if (Core.CheckInventory("Darkon's Receipt", Quantity))
             return;
 
@@ -45,9 +48,9 @@ public class CoreDarkon
 
     public void SecondErrand(int Quantity = 222, bool escapeWhile = false, bool MaxStack = false)
     {
-        ItemBase? Item = Bot.Inventory.Items.Concat(Bot.Bank.Items).FirstOrDefault(x => x.Name == "Darkon's Receipt");
+        Quest? Quest = Bot.Quests.EnsureLoad(7325);
         if (MaxStack)
-            Quantity = Item!.MaxStack;
+            Quantity = Quest?.Rewards.FirstOrDefault(x => x.Name == "Darkon's Receipt")?.MaxStack ?? Quantity;
         if (Core.CheckInventory("Darkon's Receipt", Quantity))
             return;
 
@@ -90,9 +93,9 @@ public class CoreDarkon
 
     public void ThirdErrand(int Quantity = 222, bool MaxStack = false)
     {
-        ItemBase? Item = Bot.Inventory.Items.Concat(Bot.Bank.Items).FirstOrDefault(x => x.Name == "Darkon's Receipt");
+        Quest? Quest = Bot.Quests.EnsureLoad(7325);
         if (MaxStack)
-            Quantity = Item!.MaxStack;
+            Quantity = Quest?.Rewards.FirstOrDefault(x => x.Name == "Darkon's Receipt")?.MaxStack ?? Quantity;
         if (Core.CheckInventory("Darkon's Receipt", Quantity))
             return;
 
@@ -114,9 +117,10 @@ public class CoreDarkon
 
     public void Teeth(int Quantity = 300, bool MaxStack = false)
     {
-        ItemBase? Item = Bot.Inventory.Items.Concat(Bot.Bank.Items).FirstOrDefault(x => x.Name == "Teeth");
+        Quest? Quest = Bot.Quests.EnsureLoad(7780);
         if (MaxStack)
-            Quantity = Item!.MaxStack;
+            Quantity = Quest?.Rewards.FirstOrDefault(x => x.Name == "Teeth")?.MaxStack ?? Quantity;
+
         if (Core.CheckInventory("Teeth", Quantity))
             return;
 
@@ -162,9 +166,9 @@ public class CoreDarkon
 
     public void AstravianMedal(int Quantity = 300, bool MaxStack = false)
     {
-        ItemBase? Item = Bot.Inventory.Items.Concat(Bot.Bank.Items).FirstOrDefault(x => x.Name == "Astravian Medal");
+        Quest? Quest = Bot.Quests.EnsureLoad(8257);
         if (MaxStack)
-            Quantity = Item!.MaxStack;
+            Quantity = Quest?.Rewards.FirstOrDefault(x => x.Name == "Astravian Medal")?.MaxStack ?? Quantity;
         if (Core.CheckInventory("Astravian Medal", Quantity))
             return;
 
@@ -189,9 +193,10 @@ public class CoreDarkon
 
     public void AMelody(int Quantity = 300, bool MaxStack = false)
     {
-        ItemBase? Item = Bot.Inventory.Items.Concat(Bot.Bank.Items).FirstOrDefault(x => x.Name == "A Melody");
+        Quest? Quest = Bot.Quests.EnsureLoad(8257);
         if (MaxStack)
-            Quantity = Item!.MaxStack;
+            Quantity = Quest?.Rewards.FirstOrDefault(x => x.Name == "A Melody")?.MaxStack ?? Quantity;
+
         if (Core.CheckInventory("A Melody", Quantity))
             return;
 
@@ -213,9 +218,10 @@ public class CoreDarkon
 
     public void BanditsCorrespondence(int Quantity = 3000, bool MaxStack = false)
     {
-        ItemBase? Item = Bot.Inventory.Items.Concat(Bot.Bank.Items).FirstOrDefault(x => x.Name == "Bandit's Correspondence");
+        Quest? Quest = Bot.Quests.EnsureLoad(8531);
         if (MaxStack)
-            Quantity = Item!.MaxStack;
+            Quantity = Quest?.Rewards.FirstOrDefault(x => x.Name == "Bandit's Correspondence")?.MaxStack ?? Quantity;
+
         if (Core.CheckInventory("Bandit's Correspondence", Quantity))
             return;
 
@@ -226,7 +232,6 @@ public class CoreDarkon
         Core.RegisterQuests(8531);
         while (!Bot.ShouldExit && !Core.CheckInventory("Bandit's Correspondence", Quantity))
         {
-
             Core.EquipClass(ClassType.Farm);
             Core.HuntMonster("eridanipast", "Bandit", "Bandit Contraband", 12, log: false);
             Core.HuntMonster("eridanipast", "Dog", "Dogs Confiscated", 12, log: false);
@@ -240,9 +245,10 @@ public class CoreDarkon
 
     public void SukisPrestiege(int Quantity = 300, bool MaxStack = false)
     {
-        ItemBase? Item = Bot.Inventory.Items.Concat(Bot.Bank.Items).FirstOrDefault(x => x.Name == "Suki's Prestige");
+        Quest? Quest = Bot.Quests.EnsureLoad(8602);
         if (MaxStack)
-            Quantity = Item!.MaxStack;
+            Quantity = Quest?.Rewards.FirstOrDefault(x => x.Name == "Suki's Prestige")?.MaxStack ?? Quantity;
+
         if (Core.CheckInventory("Suki's Prestige", Quantity))
             return;
 
@@ -266,9 +272,10 @@ public class CoreDarkon
 
     public void AncientRemnant(int Quantity = 300, bool MaxStack = false)
     {
-        ItemBase? Item = Bot.Inventory.Items.Concat(Bot.Bank.Items).FirstOrDefault(x => x.Name == "Ancient Remnant");
+        Quest? Quest = Bot.Quests.EnsureLoad(8641);
         if (MaxStack)
-            Quantity = Item!.MaxStack;
+            Quantity = Quest?.Rewards.FirstOrDefault(x => x.Name == "Ancient Remnant")?.MaxStack ?? Quantity;
+
         if (Core.CheckInventory("Ancient Remnant", Quantity))
             return;
 
@@ -293,13 +300,13 @@ public class CoreDarkon
 
     public void WheelofFortune(int FlowerQuantity = 1000, int ScaleQuantity = 1000, bool MaxStack = false)
     {
-        ItemBase? Flower = Bot.Inventory.Items.Concat(Bot.Bank.Items).FirstOrDefault(x => x.Name == "Mourning Flower");
-        ItemBase? Scale = Bot.Inventory.Items.Concat(Bot.Bank.Items).FirstOrDefault(x => x.Name == "Jus Divinum Scale");
+        Quest? Quest = Bot.Quests.EnsureLoad(8641);
         if (MaxStack)
         {
-            FlowerQuantity = Flower!.MaxStack;
-            ScaleQuantity = Scale!.MaxStack;
+            FlowerQuantity = Quest?.Rewards.FirstOrDefault(x => x.Name == "Mourning Flower")?.MaxStack ?? FlowerQuantity;
+            ScaleQuantity = Quest?.Rewards.FirstOrDefault(x => x.Name == "Jus Divinum Scale")?.MaxStack ?? ScaleQuantity;
         }
+
         if (Core.CheckInventory("Mourning Flower", FlowerQuantity) && Core.CheckInventory("Jus Divinum Scale", ScaleQuantity))
             return;
 
@@ -328,11 +335,8 @@ public class CoreDarkon
         Core.CancelRegisteredQuests();
     }
 
-    public void UnfinishedMusicalScore(int Quantity = 300, bool MaxStack = false)
+    public void UnfinishedMusicalScore(int Quantity = 300)
     {
-        ItemBase? Item = Bot.Inventory.Items.Concat(Bot.Bank.Items).FirstOrDefault(x => x.Name == "Unfinished Musical Score");
-        if (MaxStack)
-            Quantity = Item!.MaxStack;
         if (Core.CheckInventory("Unfinished Musical Score", Quantity))
             return;
 
