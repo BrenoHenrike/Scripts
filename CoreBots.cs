@@ -2503,7 +2503,6 @@ public class CoreBots
         bool itemIsTemp = isTemp;
         bool originalAggroAll = Bot.Options.AggroAllMonsters;
         bool originalAggroMonsters = Bot.Options.AggroMonsters;
-        bool PreFarmKill;
         // Backup current Aggro settings
         Bot.Options.AggroAllMonsters = false;
         Bot.Options.AggroMonsters = false;
