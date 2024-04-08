@@ -628,7 +628,7 @@ public class CoreBots
 
         // (string, string) CellandPadBefore = ($"{Bot.Player.Cell}", $"{Bot.Player.Pad}");
 
-       
+
         while (!Bot.ShouldExit && Bot.Player.InCombat)
         {
             JumpWait();
@@ -2257,8 +2257,7 @@ public class CoreBots
         {
             if (log)
                 Logger("Killing Vath");
-            while (!Bot.ShouldExit && IsMonsterAlive("Vath"))
-                _killVath();
+            _killVath();
         }
         else
         {
@@ -2320,8 +2319,7 @@ public class CoreBots
         {
             if (log)
                 Logger("Killing Kitsune");
-            while (!Bot.ShouldExit && IsMonsterAlive("Kitsune"))
-                Bot.Combat.Attack("Kitsune");
+            Bot.Kill.Monster("Kitsune");
         }
         else
         {
@@ -2505,7 +2503,7 @@ public class CoreBots
         bool itemIsTemp = isTemp;
         bool originalAggroAll = Bot.Options.AggroAllMonsters;
         bool originalAggroMonsters = Bot.Options.AggroMonsters;
-
+        bool PreFarmKill;
         // Backup current Aggro settings
         Bot.Options.AggroAllMonsters = false;
         Bot.Options.AggroMonsters = false;
@@ -2516,6 +2514,7 @@ public class CoreBots
             Join("fiendshard");
             Monster? monster = Bot.Monsters.MapMonsters?.FirstOrDefault(m => m.Name == "Nulgath's Fiend Shard");
 
+            // If we have the item
             if (itemIsTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant))
             {
                 while (!Bot.ShouldExit && Bot.Player.Cell != "Enter")
@@ -2536,12 +2535,12 @@ public class CoreBots
             }
             else
             {
-                Jump(Bot.Player.Cell != monster?.Cell ? "r9" : Bot.Player.Cell);
+                Jump(monster!.Cell);
 
                 if (Bot.Player.CurrentClass!.Name == "ArchMage")
                     Bot.Options.AttackWithoutTarget = true;
 
-                if (IsMonsterAlive(monster!.MapID, true))
+                if (monster!.HP >= 0)
                     Bot.Kill.Monster(monster!.MapID);
                 else Bot.Kill.Monster("*");
             }

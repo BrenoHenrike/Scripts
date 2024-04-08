@@ -214,20 +214,26 @@ public class CoreNation
                     if (!Core.CheckInventory("Slugfit Horn", 5) || !Core.CheckInventory("Cyclops Horn", 3))
                     {
                         Core.JoinSWF("mobius-999999", "ChiralValley/town-Mobius-21Feb14.swf", "Slugfit", "Bottom");
-
-                        foreach ((string, string, int) MobItemQuant in new[] { ("Slugfit", "Slugfit Horn", 5), ("Cyclops Warlord", "Cyclops Horn", 3) })
+                        Bot.Kill.Monster("Slugfit");
+                        Bot.Kill.Monster("Cyclops Warlord");
+                        foreach ((string mobName, string itemName, int quantity) in new[] { ("Slugfit", "Slugfit Horn", 5), ("Cyclops Warlord", "Cyclops Horn", 3) })
                         {
-                            while (!Bot.ShouldExit && !Core.CheckInventory(MobItemQuant.Item2, MobItemQuant.Item3))
+                            while (!Bot.ShouldExit && !Core.CheckInventory(itemName, quantity))
                             {
-                                if (Core.IsMonsterAlive(MobItemQuant.Item2 == "Slugfit Horn" ? 10 : 9, true))
-                                    Bot.Combat.Attack(MobItemQuant.Item2 == "Slugfit Horn" ? 10 : 9);
-                                else Bot.Combat.Attack(MobItemQuant.Item2 == "Slugfit Horn" ? 9 : 10);
-                                if (Bot.TempInv.Contains(MobItemQuant.Item2) && Bot.TempInv.GetQuantity(MobItemQuant.Item2) >= MobItemQuant.Item3)
+                                int mapId = mobName == "Slugfit" ? 10 : 9; // Determine the map ID based on the mob name
+                                if (Bot.Monsters.CurrentAvailableMonsters.Any(monster => monster.Name == mobName && monster.HP > 0))
+                                    Bot.Combat.Attack(mapId);
+                                else
+                                    Bot.Combat.Attack(mapId == 10 ? 9 : 10);
+
+                                if (Bot.TempInv.Contains(itemName) && Bot.TempInv.GetQuantity(itemName) >= quantity)
                                     continue;
+
                                 Core.Sleep();
                             }
-                            Bot.Wait.ForPickup(MobItemQuant.Item2);
+                            Bot.Wait.ForPickup(itemName);
                         }
+
                     }
                     Core.KillMonster("tercessuinotlim-999999", "m2", "Top", "*", "Makai Fang", 5, log: false);
                     Core.KillMonster("hydra-999999", "Rune2", "Left", "*", "Imp Flame", 3, log: false);
@@ -245,20 +251,27 @@ public class CoreNation
                 if (!Core.CheckInventory("Slugfit Horn", 5) || !Core.CheckInventory("Cyclops Horn", 3))
                 {
                     Core.JoinSWF("mobius", "ChiralValley/town-Mobius-21Feb14.swf", "Slugfit", "Bottom");
+                    Bot.Kill.Monster("Slugfit");
+                    Bot.Kill.Monster("Cyclops Warlord");
 
-                    foreach ((string, string, int) MobItemQuant in new[] { ("Slugfit", "Slugfit Horn", 5), ("Cyclops Warlord", "Cyclops Horn", 3) })
+                    foreach ((string mobName, string itemName, int quantity) in new[] { ("Slugfit", "Slugfit Horn", 5), ("Cyclops Warlord", "Cyclops Horn", 3) })
                     {
-                        while (!Bot.ShouldExit && !Core.CheckInventory(MobItemQuant.Item2, MobItemQuant.Item3))
+                        while (!Bot.ShouldExit && !Core.CheckInventory(itemName, quantity))
                         {
-                            if (Core.IsMonsterAlive(MobItemQuant.Item2 == "Slugfit Horn" ? 10 : 9, true))
-                                Bot.Combat.Attack(MobItemQuant.Item2 == "Slugfit Horn" ? 10 : 9);
-                            else Bot.Combat.Attack(MobItemQuant.Item2 == "Slugfit Horn" ? 9 : 10);
-                            if (Bot.TempInv.Contains(MobItemQuant.Item2) && Bot.TempInv.GetQuantity(MobItemQuant.Item2) >= MobItemQuant.Item3)
+                            int mapId = mobName == "Slugfit" ? 10 : 9; // Determine the map ID based on the mob name
+                            if (Bot.Monsters.CurrentAvailableMonsters.Any(monster => monster.Name == mobName && monster.HP > 0))
+                                Bot.Combat.Attack(mapId);
+                            else
+                                Bot.Combat.Attack(mapId == 10 ? 9 : 10);
+
+                            if (Bot.TempInv.Contains(itemName) && Bot.TempInv.GetQuantity(itemName) >= quantity)
                                 continue;
+
                             Core.Sleep();
                         }
-                        Bot.Wait.ForPickup(MobItemQuant.Item2);
+                        Bot.Wait.ForPickup(itemName);
                     }
+
                 }
 
                 Core.KillMonster("tercessuinotlim", "m2", "top", "*", "Makai Fang", 5);
@@ -386,9 +399,9 @@ public class CoreNation
 
                 Core.Join(selectedMap.Item1, selectedMap.Item2, "Left");
                 while (!Bot.ShouldExit &&
-                    (selectedMap.Item1 == "tercessuinotlim"
-                        ? (Core.IsMonsterAlive(2, useMapID: true) || Core.IsMonsterAlive(3, useMapID: true))
-                        : (Core.IsMonsterAlive(1, useMapID: true) || Core.IsMonsterAlive(2, useMapID: true))))
+                       (selectedMap.Item1 == "tercessuinotlim"
+                           ? Bot.Monsters.CurrentAvailableMonsters.Any(monster => monster.HP > 0 && (monster.MapID == 2 || monster.MapID == 3))
+                           : Bot.Monsters.CurrentAvailableMonsters.Any(monster => monster.HP > 0 && (monster.MapID == 1 || monster.MapID == 2))))
                 {
                     if (!Bot.Player.InCombat)
                         Core.Sleep();  // Use the built-in delay
@@ -807,9 +820,9 @@ public class CoreNation
                                 Core.Join(selectedMap.Item1, selectedMap.Item2, "Left");
 
                                 while (!Bot.ShouldExit &&
-                                    (selectedMap.Item1 == "tercessuinotlim"
-                                        ? (Core.IsMonsterAlive(2, useMapID: true) || Core.IsMonsterAlive(3, useMapID: true))
-                                        : (Core.IsMonsterAlive(1, useMapID: true) || Core.IsMonsterAlive(2, useMapID: true))))
+                                       (selectedMap.Item1 == "tercessuinotlim"
+                                           ? Bot.Monsters.CurrentAvailableMonsters.Any(monster => monster.HP > 0 && (monster.MapID == 2 || monster.MapID == 3))
+                                           : Bot.Monsters.CurrentAvailableMonsters.Any(monster => monster.HP > 0 && (monster.MapID == 1 || monster.MapID == 2))))
                                 {
                                     if (!Bot.Player.InCombat)
                                         Core.Sleep();  // Use the built-in delay
@@ -818,6 +831,7 @@ public class CoreNation
                                         break;
                                 }
                             }
+
 
                             Bot.Wait.ForPickup("Dark Makai Rune");
 
@@ -881,9 +895,9 @@ public class CoreNation
                             Core.Join(selectedMap.Item1, selectedMap.Item2, "Left");
 
                             while (!Bot.ShouldExit &&
-                                (selectedMap.Item1 == "tercessuinotlim"
-                                    ? (Core.IsMonsterAlive(2, useMapID: true) || Core.IsMonsterAlive(3, useMapID: true))
-                                    : (Core.IsMonsterAlive(1, useMapID: true) || Core.IsMonsterAlive(2, useMapID: true))))
+                                   (selectedMap.Item1 == "tercessuinotlim"
+                                       ? Bot.Monsters.CurrentAvailableMonsters.Any(monster => monster.HP > 0 && (monster.MapID == 2 || monster.MapID == 3))
+                                       : Bot.Monsters.CurrentAvailableMonsters.Any(monster => monster.HP > 0 && (monster.MapID == 1 || monster.MapID == 2))))
                             {
                                 if (!Bot.Player.InCombat)
                                     Core.Sleep();  // Use the built-in delay
@@ -892,6 +906,7 @@ public class CoreNation
                                     break;
                             }
                         }
+
 
                         Bot.Wait.ForPickup("Dark Makai Rune");
 
@@ -1002,9 +1017,9 @@ public class CoreNation
                             Core.Join(selectedMap.Item1, selectedMap.Item2, "Left");
 
                             while (!Bot.ShouldExit &&
-                                (selectedMap.Item1 == "tercessuinotlim"
-                                    ? (Core.IsMonsterAlive(2, useMapID: true) || Core.IsMonsterAlive(3, useMapID: true))
-                                    : (Core.IsMonsterAlive(1, useMapID: true) || Core.IsMonsterAlive(2, useMapID: true))))
+                                   (selectedMap.Item1 == "tercessuinotlim"
+                                       ? Bot.Monsters.CurrentAvailableMonsters.Any(monster => monster.HP > 0 && (monster.MapID == 2 || monster.MapID == 3))
+                                       : Bot.Monsters.CurrentAvailableMonsters.Any(monster => monster.HP > 0 && (monster.MapID == 1 || monster.MapID == 2))))
                             {
                                 if (!Bot.Player.InCombat)
                                     Core.Sleep();  // Use the built-in delay
@@ -1064,9 +1079,9 @@ public class CoreNation
                         Core.Join(selectedMap.Item1, selectedMap.Item2, "Left");
 
                         while (!Bot.ShouldExit &&
-                            (selectedMap.Item1 == "tercessuinotlim"
-                                ? (Core.IsMonsterAlive(2, useMapID: true) || Core.IsMonsterAlive(3, useMapID: true))
-                                : (Core.IsMonsterAlive(1, useMapID: true) || Core.IsMonsterAlive(2, useMapID: true))))
+                               (selectedMap.Item1 == "tercessuinotlim"
+                                   ? Bot.Monsters.CurrentAvailableMonsters.Any(monster => monster.HP > 0 && (monster.MapID == 2 || monster.MapID == 3))
+                                   : Bot.Monsters.CurrentAvailableMonsters.Any(monster => monster.HP > 0 && (monster.MapID == 1 || monster.MapID == 2))))
                         {
                             if (!Bot.Player.InCombat)
                                 Core.Sleep();  // Use the built-in delay
@@ -1075,6 +1090,7 @@ public class CoreNation
                                 break;
                         }
                     }
+
                     Bot.Wait.ForPickup("Dark Makai Rune");
 
 
@@ -1259,9 +1275,9 @@ public class CoreNation
                     Core.Join(selectedMap.Item1, selectedMap.Item2, "Left");
 
                     while (!Bot.ShouldExit &&
-                        (selectedMap.Item1 == "tercessuinotlim"
-                            ? (Core.IsMonsterAlive(2, useMapID: true) || Core.IsMonsterAlive(3, useMapID: true))
-                            : (Core.IsMonsterAlive(1, useMapID: true) || Core.IsMonsterAlive(2, useMapID: true))))
+                           (selectedMap.Item1 == "tercessuinotlim"
+                               ? Bot.Monsters.CurrentAvailableMonsters.Any(monster => monster.HP > 0 && (monster.MapID == 2 || monster.MapID == 3))
+                               : Bot.Monsters.CurrentAvailableMonsters.Any(monster => monster.HP > 0 && (monster.MapID == 1 || monster.MapID == 2))))
                     {
                         if (!Bot.Player.InCombat)
                             Core.Sleep();  // Use the built-in delay
@@ -1270,6 +1286,7 @@ public class CoreNation
                             break;
                     }
                 }
+
 
                 Bot.Wait.ForPickup("Dark Makai Rune");
 

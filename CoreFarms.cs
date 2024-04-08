@@ -241,7 +241,7 @@ public class CoreFarms
             Core.CancelRegisteredQuests();
         }
 
-        if (Bot.Player.Level < 30)
+        while (!Bot.ShouldExit && Bot.Player.Level < 30)
         {
             //i swear this is active yearround for a black friday "locked" quest according to the wiki.. keep undead warrior as a backup.. undead giant is slower but will work till we find a fillin - perhaps sluethhouseinn? used to be good years ago
             //piggydrake quest
@@ -260,7 +260,7 @@ public class CoreFarms
                         Bot.Wait.ForCellChange("Tax");
                     }
 
-                    while (!Bot.ShouldExit && Core.IsMonsterAlive(7, true) && Bot.Monsters.CurrentAvailableMonsters.Exists(m => m.MapID == 7))
+                    while (!Bot.ShouldExit && Bot.Player.Level < 30)
                     {
                         Bot.Kill.Monster(7);
 
@@ -268,8 +268,6 @@ public class CoreFarms
                         {
                             Core.Jump("Tax");
                             Core.Sleep();
-                            // if (Bot.Player.Cell == "Tax")
-                            //     break;  // Removed unnecessary break statement
                         }
 
                         if (Bot.Player.Level >= 30)
@@ -1468,11 +1466,9 @@ public class CoreFarms
                     Core.Jump(mob.Cell, "left");
                     Core.Sleep();
                 }
-                while (!Bot.ShouldExit && Core.IsMonsterAlive(mob.MapID, useMapID: true))
-                {
-                    Bot.Combat.Attack(mob.MapID);
-                    Core.Sleep();
-                }
+
+                Bot.Kill.Monster(mob.MapID);
+                Core.Sleep();
 
                 if (FactionRank("CraggleRock") >= rank)
                     break;
@@ -2051,8 +2047,7 @@ public class CoreFarms
 
             foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
             {
-                while (!Bot.ShouldExit && Core.IsMonsterAlive(MID.MapID, useMapID: true))
-                    Bot.Kill.Monster(MID.MapID);
+                Bot.Kill.Monster(MID.MapID);
 
                 if (Core.CheckInventory(item, quant) && FactionRank("Death Pit Brawl") >= rank)
                 {
@@ -2073,8 +2068,7 @@ public class CoreFarms
 
             foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
             {
-                while (!Bot.ShouldExit && Core.IsMonsterAlive(MID.MapID, useMapID: true))
-                    Bot.Kill.Monster(MID.MapID);
+                Bot.Kill.Monster(MID.MapID);
 
                 if (Core.CheckInventory(item, quant) && FactionRank("Death Pit Brawl") >= rank)
                 {
@@ -2106,7 +2100,6 @@ public class CoreFarms
 
             foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
             {
-                while (!Bot.ShouldExit && Core.IsMonsterAlive(MID.MapID, useMapID: true))
                     Bot.Kill.Monster(MID.MapID);
 
                 if (Core.CheckInventory(item, quant) && FactionRank("Death Pit Brawl") >= rank)
@@ -2127,7 +2120,6 @@ public class CoreFarms
 
             foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
             {
-                while (!Bot.ShouldExit && Core.IsMonsterAlive(MID.MapID, useMapID: true))
                     Bot.Kill.Monster(MID.MapID);
 
                 if (Core.CheckInventory(item, quant) && FactionRank("Death Pit Brawl") >= rank)
@@ -2148,7 +2140,6 @@ public class CoreFarms
 
             foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
             {
-                while (!Bot.ShouldExit && Core.IsMonsterAlive(MID.MapID, useMapID: true))
                     Bot.Kill.Monster(MID.MapID);
 
                 if (Core.CheckInventory(item, quant) && FactionRank("Death Pit Brawl") >= rank)
@@ -2169,7 +2160,6 @@ public class CoreFarms
 
             foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
             {
-                while (!Bot.ShouldExit && Core.IsMonsterAlive(MID.MapID, useMapID: true))
                     Bot.Kill.Monster(MID.MapID);
 
                 if (Core.CheckInventory(item, quant) && FactionRank("Death Pit Brawl") >= rank)
