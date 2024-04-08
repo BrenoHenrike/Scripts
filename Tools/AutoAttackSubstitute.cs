@@ -77,34 +77,18 @@ public class AutoAttackSubstitute
                         if (monstersArray.Length == 0)
                         {
                             foreach (Monster mob in Bot.Monsters.CurrentAvailableMonsters
-                                .Where(m => m.Name != null && m.HP > 0 && m.Cell == Bot.Player.Cell))
+                                .Where(m => m.Name != null && m.Cell == Bot.Player.Cell))
                             {
-                                // Attack the monster while it is alive and the bot should not exit
-                                while (!Bot.ShouldExit && mob.HP > 0)
-                                {
-                                    Bot.Combat.Attack(mob.MapID);
-
-                                    // Check if the monster is still alive, continue attacking if true
-                                    if (mob.HP > 0)
-                                        continue;
-                                }
+                                    Bot.Kill.Monster(mob.MapID);
                             }
                         }
                         else
                         {
                             // If monstersArray is not empty, attack only specified monsters in the cell
                             foreach (Monster mob in Bot.Monsters.CurrentAvailableMonsters
-                                .Where(m => m?.Name != null && m.HP > 0 && m.Cell == Bot.Player.Cell && monstersArray.Contains(m.Name)))
+                                .Where(m => m?.Name != null && m.Cell == Bot.Player.Cell && monstersArray.Contains(m.Name)))
                             {
-                                // Attack the specified monster while it is alive and the bot should not exit
-                                while (!Bot.ShouldExit && mob.HP > 0)
-                                {
-                                    Bot.Combat.Attack(mob.MapID);
-
-                                    // Check if the specified monster is still alive, continue attacking if true
-                                    if (mob.HP > 0)
-                                        continue;
-                                }
+                                Bot.Kill.Monster(mob.MapID);
                             }
                         }
                     }

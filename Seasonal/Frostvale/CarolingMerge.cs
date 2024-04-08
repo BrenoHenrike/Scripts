@@ -79,8 +79,7 @@ public class CarolingMerge
 
                         for (int killCount = 0; killCount < 3 && !Bot.ShouldExit; killCount++)
                         {
-                            while (!Bot.ShouldExit && Bot.Monsters.CurrentAvailableMonsters.Any(monster => monster.HP > 0 && monster.MapID == 1))
-                                Bot.Combat.Attack(1);
+                            Bot.Kill.Monster(1);
 
                             Core.Logger($"Kill: {killCount + 1}/3, {(killCount < 2 ? "Swapping Map at 3" : "Swapping map to respawn mob")}");
                             Bot.Wait.ForMonsterSpawn(1);

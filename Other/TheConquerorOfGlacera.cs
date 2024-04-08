@@ -63,9 +63,9 @@ public class TheConquerorOfGlacera
                     Core.Sleep();
                 }
 
-                foreach (Monster mob in Bot.Monsters.CurrentAvailableMonsters.Where(m => m.Cell == "r2" && m.HP > 0))
+                foreach (Monster mob in Bot.Monsters.CurrentAvailableMonsters.Where(m => m.Cell == "r2"))
                 {
-                    Bot.Combat.Attack(mob.MapID);
+                    Bot.Kill.Monster(mob.MapID);
                     if (Core.CheckInventory("Glaceran Gem", 500))
                         break;
                 }
