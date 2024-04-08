@@ -61,7 +61,7 @@
       "null"
     ],
     "path": "Darkon/CoreDarkon.cs",
-    "size": 11669,
+    "size": 14374,
     "fileName": "CoreDarkon.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/CoreDarkon.cs"
   },
@@ -3775,6 +3775,20 @@
     "size": 4719,
     "fileName": "GenesisGardenMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/MergeShops/GenesisGardenMerge.cs"
+  },
+  {
+    "name": "0MaxDarkonMats",
+    "description": "Max all of the Darkon materials",
+    "tags": [
+      "darkon",
+      "max",
+      "all",
+      "new class"
+    ],
+    "path": "Darkon/Materials/0MaxDarkonMats.cs",
+    "size": 1099,
+    "fileName": "0MaxDarkonMats.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/Materials/0MaxDarkonMats.cs"
   },
   {
     "name": "Teeth (Darkon)",
