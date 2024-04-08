@@ -1022,7 +1022,7 @@
       "tower-of-doom"
     ],
     "path": "Story/TowerOfDoom.cs",
-    "size": 1533,
+    "size": 1413,
     "fileName": "TowerOfDoom.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/TowerOfDoom.cs"
   },
@@ -2004,7 +2004,7 @@
       "conqueror"
     ],
     "path": "Other/TheConquerorOfGlacera.cs",
-    "size": 2774,
+    "size": 2767,
     "fileName": "TheConquerorOfGlacera.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/TheConquerorOfGlacera.cs"
   },
@@ -2515,7 +2515,7 @@
       "no wonder this didn't push"
     ],
     "path": "Tools/AutoAttackSubstitute.cs",
-    "size": 7629,
+    "size": 7404,
     "fileName": "AutoAttackSubstitute.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/AutoAttackSubstitute.cs"
   },
@@ -3139,7 +3139,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 96640,
+    "size": 96494,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -4642,7 +4642,7 @@
       "null"
     ],
     "path": "Story/LordsofChaos/Core13LoC.cs",
-    "size": 81626,
+    "size": 81496,
     "fileName": "Core13LoC.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/LordsofChaos/Core13LoC.cs"
   },
@@ -5419,7 +5419,7 @@
       "null"
     ],
     "path": "Story/IsleOfFotia/CoreIsleOfFotia.cs",
-    "size": 8501,
+    "size": 8422,
     "fileName": "CoreIsleOfFotia.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/IsleOfFotia/CoreIsleOfFotia.cs"
   },
@@ -7050,7 +7050,7 @@
       "citadel-ruins"
     ],
     "path": "Story/Nation/CitadelRuins.cs",
-    "size": 9723,
+    "size": 9786,
     "fileName": "CitadelRuins.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Nation/CitadelRuins.cs"
   },
@@ -15471,7 +15471,7 @@
       "zorbak"
     ],
     "path": "Seasonal/Frostvale/CarolingMerge.cs",
-    "size": 9844,
+    "size": 9810,
     "fileName": "CarolingMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/CarolingMerge.cs"
   },
@@ -17264,7 +17264,7 @@
       "null"
     ],
     "path": "Nation/MergeShops/NulgathWarMerge.cs",
-    "size": 9351,
+    "size": 9749,
     "fileName": "NulgathWarMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/MergeShops/NulgathWarMerge.cs"
   },
@@ -17799,7 +17799,7 @@
       "fragment"
     ],
     "path": "Nation/AFDL/NulgathDemandsWork.cs",
-    "size": 6098,
+    "size": 6163,
     "fileName": "NulgathDemandsWork.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/AFDL/NulgathDemandsWork.cs"
   },
@@ -18173,7 +18173,7 @@
       "null"
     ],
     "path": "Nation/Various/TarosManslayer.cs",
-    "size": 3053,
+    "size": 3117,
     "fileName": "TarosManslayer.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/TarosManslayer.cs"
   },
@@ -22543,7 +22543,7 @@
       "grim"
     ],
     "path": "Seasonal/TalkLikeaPirateDay/MergeShops/NavalTopHatMerge.cs",
-    "size": 10490,
+    "size": 11092,
     "fileName": "NavalTopHatMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/MergeShops/NavalTopHatMerge.cs"
   },
@@ -22709,7 +22709,7 @@
       "toxic"
     ],
     "path": "Seasonal/TalkLikeaPirateDay/MergeShops/BarnaclesBandanasMerge.cs",
-    "size": 4597,
+    "size": 5132,
     "fileName": "BarnaclesBandanasMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/MergeShops/BarnaclesBandanasMerge.cs"
   },
@@ -22880,7 +22880,7 @@
       "beard"
     ],
     "path": "Seasonal/TalkLikeaPirateDay/MergeShops/LegendaryNavalTopHatsMerge.cs",
-    "size": 11120,
+    "size": 11640,
     "fileName": "LegendaryNavalTopHatsMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/MergeShops/LegendaryNavalTopHatsMerge.cs"
   },
