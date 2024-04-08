@@ -86,12 +86,12 @@ public class ArmyLegionToken
                 {
                     foreach (Monster Mob in Bot.Monsters.CurrentAvailableMonsters)
                     {
-                        while (!Bot.ShouldExit && Core.IsMonsterAlive(Mob.MapID, true))
-                        {
+                        while (!Bot.ShouldExit && Mob.HP >= 0)
                             Bot.Combat.Attack(Mob.MapID);
-                            if (Bot.Quests.CanComplete(4849))
-                                Bot.Quests.Complete(4849);
-                        }
+                        if (Bot.Quests.CanComplete(4849))
+                            Bot.Quests.Complete(4849);
+                        if (Core.CheckInventory("Legion Token", quant))
+                            break;
                     }
                 }
                 Army.AggroMonStop(true);
