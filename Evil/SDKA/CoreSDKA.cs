@@ -368,7 +368,7 @@ public class CoreSDKA
                 && !Core.CheckInventory("Ominous Aura", 2))
                 DoomMerge("Ominous Aura", 2);
 
-            if (!Core.CheckInventory("Accursed Arsenic of Doom"))
+            if (!Core.CheckInventory(12476))
             {
                 if (!Core.CheckInventory("Accursed Arsenic"))
                 {
@@ -388,10 +388,10 @@ public class CoreSDKA
                     FarmDSO(CSOQuantity * 100);
                 DoomMerge("Corrupt Spirit Orb", CSOQuantity);
                 DoomMerge("Ominous Aura", 2);
-                Core.BuyItem("dwarfhold", 434, "Accursed Arsenic of Doom");
+                Core.BuyItem("dwarfhold", 434, 12476, shopItemID: 1198);
             }
 
-            if (!Story.QuestProgression(2144))
+            if (!Story.QuestProgression(2137))
             {
                 Core.Logger("Unlocking Weapon Kit quests");
                 Core.EnsureAccept(2137);
