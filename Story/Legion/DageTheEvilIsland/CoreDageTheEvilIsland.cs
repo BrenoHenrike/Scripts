@@ -64,7 +64,7 @@ public class CoreDageTheEvilIsland
         }
 
         //Test 4: Dark Battleground 4088
-        Story.KillQuest(4088, "DarkFortress", new[] { "Cloaked Fiend|Dark Elemental|Dark Makai|Infernalfiend" });
+        Story.KillQuest(4088, "DarkFortress", new[] { "Cloaked Fiend" });
 
         //Test 5: Shadows Within Shadows 4089
         Story.KillQuest(4089, "DarkFortress", "Dark Elemental");
@@ -145,7 +145,7 @@ public class CoreDageTheEvilIsland
         Story.MapItemQuest(4191, "LegionCrypt", 3297);
 
         //Spiky Situation 4192
-        Story.KillQuest(4192, "LegionCrypt", new[] { "Gravedigger", "Undead Infantry|Legion Doomknight" });
+        Story.KillQuest(4192, "LegionCrypt", new[] { "Gravedigger", "Legion Doomknight" });
         //Run it Back Again 4193
         Story.KillQuest(4193, "LegionCrypt", "Legion Doomknight");
 
@@ -262,7 +262,7 @@ public class CoreDageTheEvilIsland
         Story.KillQuest(5649, "Laken", "Mad Scientist");
 
         //Find the Door Code 5650
-        Story.KillQuest(5650, "Laken", "Augmented Guard|Mad Scientist");
+        Story.KillQuest(5650, "Laken", "Mad Scientist");
 
         //Find the Lab 5651
         Story.MapItemQuest(5651, "Laken", 5123);
