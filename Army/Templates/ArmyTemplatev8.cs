@@ -14,7 +14,7 @@ using Skua.Core.Models.Monsters;
 using Skua.Core.Models.Quests;
 using Skua.Core.Options;
 
-public class ArmyTemplatev6 //Rename This
+public class ArmyTemplatev8 //Rename This.. ye we skipped one (v7 was private)
 {
     private static IScriptInterface Bot => IScriptInterface.Instance;
     private static CoreBots Core => CoreBots.Instance;
@@ -95,7 +95,7 @@ public class ArmyTemplatev6 //Rename This
             // ArmyBits("map", new[] { "cell" }, new[] { 1, 2 }, new[] { "item" }, 1, ClassType.Solo, QuestIDs);
 
             // 3. Multi-target + mMlti (item-quant)s: (highlight lines 95-103 and press control+/ to uncomment it) vv
-           ArmyBits("map", new[] { "cell", "cell" }, new[] { 1, 2, 3 }, new[] {("item", 99999)}, ClassType.Farm, QuestIDs);
+            ArmyBits("map", new[] { "cell", "cell" }, new[] { 1, 2, 3 }, new[] { ("item", 99999) }, ClassType.Farm, QuestIDs);
             // {
 
             //     //Edit item and quants here
@@ -242,58 +242,59 @@ public class ArmyTemplatev6 //Rename This
         Army.AggroMonStart(map);
         Army.DivideOnCells(cell);
 
-        // Logging the items for farming
-        foreach (var (item, quant) in ItemandQuants)
-        {
-            Core.FarmingLogger(item, quant);
-        }
 
         Bot.Player.SetSpawnPoint();
         string dividedCell = Bot.Player.Cell;
 
         while (!Bot.ShouldExit && !inventoryConditionMet)
         {
-            foreach (int monsterMapID in MonsterMapIDs)
+            foreach (Monster monster in Bot.Monsters.MapMonsters.Where(x => MonsterMapIDs.Contains(x.MapID) && x != null))
             {
-                while (!Bot.ShouldExit && Core.IsMonsterAlive(monsterMapID, useMapID: true))
+                while (!Bot.ShouldExit && Bot.Player.Cell != dividedCell)
                 {
-                    while (!Bot.ShouldExit && Bot.Player.Cell != dividedCell)
+                    // Ensure the player is on the divided cell
+                    Core.Jump(dividedCell);
+                    Core.Sleep();
+                    if (Bot.Player.Cell == dividedCell)
+                        break;
+                }
+
+                foreach (var pair in ItemandQuants)
+                    Core.Logger($"- \"{pair.Item1}\", {Bot.Inventory.GetQuantity(pair.Item1)} / {pair.Item2}");
+
+                Core.Sleep();
+
+                #region Pickone
+                // Farming
+                Bot.Combat.Attack(monster.ID);
+
+                // Single Target: 
+                Bot.Kill.Monster(monster.MapID);
+                #endregion Pickone
+
+                // Check inventory conditions
+                inventoryConditionMet = ItemandQuants.All(t => Core.CheckInventory(t.Item1, t.Item2, toInv: true));
+
+                // Break loop if inventory condition is met
+                if (inventoryConditionMet)
+                {
+                    // Clean up and exit
+                    Army.AggroMonStop(true);
+                    Core.JumpWait();
+                    goto CleanUp;
+                }
+
+                // Check and complete quests if conditions are met after attacking
+                if (Bot.Quests?.CanComplete(QuestIDs.FirstOrDefault()) ?? false)
+                {
+                    // Check if quest rewards are disabled
+                    if (Bot.Config!.Get<Rewards>("QuestRewards") == Rewards.Off)
                     {
-                        // Ensure the player is on the divided cell
-                        Core.Jump(dividedCell);
-                        Core.Sleep();
-                        if (Bot.Player.Cell == dividedCell)
-                            goto Attack;
-                    }
-
-                // Attack the monster
-                Attack:
-                    Bot.Combat.Attack(monsterMapID);
-
-                    // Check inventory conditions
-                    inventoryConditionMet = ItemandQuants.All(t => Core.CheckInventory(t.Item1, t.Item2, toInv: true));
-
-                    // Break loop if inventory condition is met
-                    if (inventoryConditionMet)
-                    {
-                        // Clean up and exit
-                        Army.AggroMonStop(true);
-                        Core.JumpWait();
-                        goto CleanUp;
-                    }
-
-                    // Check and complete quests if conditions are met after attacking
-                    if (Bot.Quests?.CanComplete(QuestIDs.FirstOrDefault()) ?? false)
-                    {
-                        // Check if quest rewards are disabled
-                        if (Bot.Config!.Get<Rewards>("QuestRewards") == Rewards.Off)
+                        // Iterate through quest IDs and complete them
+                        foreach (int questID in QuestIDs)
                         {
-                            // Iterate through quest IDs and complete them
-                            foreach (int questID in QuestIDs)
-                            {
-                                if (Bot.Quests!.CanComplete(questID))
-                                    Core.EnsureCompleteMulti(questID);
-                            }
+                            if (Bot.Quests!.CanComplete(questID))
+                                Core.EnsureCompleteMulti(questID);
                         }
                     }
                 }
@@ -311,13 +312,45 @@ public class ArmyTemplatev6 //Rename This
     #endregion IgnoreME
 
 
-/* Tato Note
-    1. removed the other 2, as this one encompasses the same ideas.
-    2. its easier this way to keep track of things.
-*/
+    /* Tato Note
+        1. removed the other 2, as this one encompasses the same ideas.
+        2. its easier this way to keep track of things.
+    */
 
-/* ToDos: 
-    1. Seperate pick & non-pick into seperate templates. ETA: eventualy~
-    2. Clean up template, rewrite comments as they are outdated.
+    /* ToDos: 
+        1. Seperate pick & non-pick into seperate templates. ETA: eventualy~
+        2. Clean up template, rewrite comments as they are outdated.
+    */
+
+    /* Tato Note 2:
+    `IsMosnterAlive` is now broke, as monster aways return "Alive = true" (even when killed), so we have to either:
+        A. do a single kill first to have the client set thier HP
+        B. have the mob have already been killed (do a `PreFarm` kill)
+    SO if something has `IsMosnterAlive` before the while or the farm itself do a single kill by making sure you're within the map, and cell and do a Bot.Kill.Monster(MonsterMapID);
+
+    #region Example:   
+
+        // vprefarmkillv
+        // --------------
+        Bot.Kill.Monster(M.MapID);
+        // --------------
+
+        // --proceed to farm now that we've set the mobs HP--
+        while(!Bot.ShouldExit && M.HP > 0)
+        {
+            // -stuff-
+            // Single Target(bosses?):  
+                Bot.Combat.Attack(M.MapID);
+
+            // Multi-Target(farming shit)      
+                Bot.Combat.Attack(M.ID);
+            Core.Sleep(0;
+            // -stuff-
+
+            if(checkinv("Item", quant))
+                break;
+        }
+        // --proceed to farm now that we've set the mobs HP--
+    #endregion Example:    
 */
 }
