@@ -108,7 +108,7 @@ public class CoreSDKA
 
     public void UnlockHardCoreMetals()
     {
-        if (!Core.IsMember || Story.QuestProgression(2090))
+        if (!Core.IsMember || Core.isCompletedBefore(2090))
         {
             Core.Logger(message: !Core.IsMember ? "Not a member, skipping." : "Hard Core Metals already unlocked, skipping.");
             return;
@@ -121,18 +121,20 @@ public class CoreSDKA
                      "Dark Skull", "Corrupt Spirit Orb");
 
         #region DoQuests
-        if (!Story.QuestProgression(2087))
+        if (!Story.QuestProgression(2069))
         {
+            Core.EnsureAccept(2069);
             DSO(40);
             Core.BuyItem("shadowfall", 100, "DoomKnight Hood");
             Core.AddDrop("Experimental Dark Item");
-            Core.ChainComplete(2069);
+            Core.EnsureComplete(2069);
             Bot.Wait.ForPickup("Experimental Dark Item");
             Core.ToBank("Experimental Dark Item");
         }
 
         if (!Story.QuestProgression(2087))
         {
+            Core.EnsureAccept(2087);
             if (!Core.CheckInventory(2083))
             {
                 Core.Logger("You don't have the DoomKnight Class, Getting it for you. (+warrior/Healer if those aren't R10)");
@@ -148,27 +150,26 @@ public class CoreSDKA
             Adv.RankUpClass("DoomKnight");
             Core.EquipClass(ClassType.Solo);
 
-            Core.ChainComplete(2087);
+            Core.EnsureComplete(2087);
             if (Core.SoloClass != "DoomKnight")
                 Core.ToBank("DoomKnight");
         }
 
         if (!Story.QuestProgression(2088))
         {
+            Core.EnsureAccept(2088);
             Daily.EldersBlood();
 
             if (!Core.CheckInventory("Elders' Blood"))
                 Core.Logger($"Not enough \"Elders' Blood\", please do the daily upon daily reset.", messageBox: true, stopBot: true);
 
             Core.HuntMonster("battleundera", "Bone Terror", "Shadow Terror Axe", isTemp: false);
-            Core.ChainComplete(2088);
+            Core.EnsureComplete(2088);
             Core.ToBank("Elders' Blood");
         }
 
-        if (!Story.QuestProgression(2089))
-        {
-            Penny(1, true);
-        }
+        // 2089
+        Penny(1, true);
 
         if (!Story.QuestProgression(2090))
         {
@@ -216,20 +217,18 @@ public class CoreSDKA
             }
 
             foreach (int mob in new[] { 9, 10, 23 })
-                while (!Bot.ShouldExit && Core.IsMonsterAlive(mob, useMapID: true))
-                {
-                    Core.EnsureAccept(2089);
-                    Bot.Combat.Attack(mob);
-                    if (Core.CheckInventory("Dark Spirit Orb", quant))
-                        break;
-                    //purely because registerquest is a bit borked
-                    while (!Bot.ShouldExit && Bot.Quests.CanCompleteFullCheck(2089))
-                        Core.EnsureComplete(2089);
+            {
+                Core.EnsureAccept(2089);
+                Bot.Kill.Monster(mob);
+                if (Core.CheckInventory("Dark Spirit Orb", quant))
+                    break;
+                //purely because registerquest is a bit borked
+                if (Bot.Quests.CanCompleteFullCheck(2089))
+                    Core.EnsureCompleteMulti(2089);
+                if (oneTime)
+                    return;
+            }
 
-                }
-
-            if (oneTime)
-                return;
         }
         Core.CancelRegisteredQuests();
         Bot.Wait.ForPickup("Dark Spirit Orb");
