@@ -3535,7 +3535,7 @@
       "null"
     ],
     "path": "Legion/CoreLegion.cs",
-    "size": 35277,
+    "size": 36051,
     "fileName": "CoreLegion.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/CoreLegion.cs"
   },
@@ -19003,7 +19003,7 @@
       "legion token"
     ],
     "path": "Legion/LegionTokens/TimeforSomeSpringCleaning[AnyPet].cs",
-    "size": 671,
+    "size": 1241,
     "fileName": "TimeforSomeSpringCleaning[AnyPet].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/LegionTokens/TimeforSomeSpringCleaning[AnyPet].cs"
   },
