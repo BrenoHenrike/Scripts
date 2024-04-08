@@ -10,6 +10,7 @@ tags: doompirate, haul, merge, doompirate, shadowscythe, admiral, empire, fleet,
 //cs_include Scripts/Seasonal\TalkLikeaPirateDay\DoomPirateStory.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
+using Skua.Core.Models.Monsters;
 using Skua.Core.Options;
 
 public class DoomPirateHaulMerge
@@ -67,31 +68,33 @@ public class DoomPirateHaulMerge
                 case "Gallaeon's Piece of Eight":
                     Core.FarmingLogger(req.Name, quant);
                     Core.RegisterQuests(9355);
-                    int[] monsterIDs = new[] { 5, 4, 7, 6, 9, 8, 11, 10 };
+                    Core.EquipClass(ClassType.Solo);
+                    Core.Join("doompirate", "r5", "Left");
                     while (!Bot.ShouldExit && !Core.CheckInventory("Gallaeon's Piece of Eight", 99))
                     {
-                        Core.EquipClass(ClassType.Solo);
-                        Core.Join("doompirate");
+                    Restartkills:
                         while (!Bot.ShouldExit && Bot.Player.Cell != "r5")
                         {
                             Core.Jump("r5", "Left");
+                            Bot.Player.SetSpawnPoint();
                             Core.Sleep();
                         }
-                        Bot.Player.SetSpawnPoint();
 
-
-                        while (!Bot.ShouldExit && !Core.CheckInventory("Gallaeon's Piece of Eight", 99))
+                        foreach (int mob in new[] { 5, 4, 7, 6, 9, 8, 11, 10 })
                         {
-                            foreach (int MonsterID in monsterIDs)
+                            Monster? M = Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault(x => x != null && x.MapID == mob);
+                            Core.Logger($"Killing: {M?.MapID}");
+                            Bot.Kill.Monster(M!.MapID);
+                            Core.Logger($"Killed: {M?.MapID}");
+                            while (!Bot.ShouldExit && !Bot.Player.Alive)
                             {
-                                if (Core.IsMonsterAlive(MonsterID, useMapID: true))
-                                    while (!Bot.ShouldExit && Core.IsMonsterAlive(MonsterID, useMapID: true))
-                                        Bot.Combat.Attack(MonsterID);
-                                else
-                                    Bot.Combat.Attack(12);
+                                Core.Logger("Player died, restarting room");
+                                Bot.Wait.ForTrue(() => Bot.Player.Alive, 40);
+                                goto Restartkills;
                             }
                         }
 
+                        Bot.Kill.Monster(12);
                     }
                     break;
 
