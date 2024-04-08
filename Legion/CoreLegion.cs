@@ -402,7 +402,7 @@ public class CoreLegion
         Core.CancelRegisteredQuests();
     }
 
-    public void LTShogunParagon(int quant = 50000)
+    public void LTShogunParagon(int quant = 50000, bool DoClearaPath = false, bool Logger = false)
     {
         if (Core.CheckInventory("Legion Token", quant))
         {
@@ -412,76 +412,117 @@ public class CoreLegion
 
         List<int> Quests = new(); // Initializes a list to store quest IDs
         List<(ItemBase, int)> QuestItems = new(); // Initializes a list to store quest items
-
+        List<string> Rewards = new();
         bool HasQuestPet = false; // Variable to track if the player has the required pet
 
-        // Loop for TimeforSpringCleaningQuestIDs
-        foreach (int TimeforSpringCleaningQuestID in new[] { 9663, 9649, 9646, 7073, 6750, 6756, 5756, 5755 })
+        // Define pairs of quest IDs with their respective accept requirements
+        (int, int)[] questPairs = new[]
         {
-            Quest? QID = Bot.Quests.EnsureLoad(TimeforSpringCleaningQuestID); // Loads the quest
-            ItemBase AcceptReq = QID!.AcceptRequirements[0]; // Retrieves the first accept requirement
+    (9663, 9662),
+    (9649, 9648),
+    (9646, 9645),
+    (7073, 7072),
+    (6750, 6754),
+    (6756, 6749),
+    (5756, 5754),
+    (5755, 5753)
+};
 
-            HasQuestPet = Core.CheckInventory(AcceptReq.ID); // Checks if the player has the required pet
-            if (HasQuestPet)
+        // Process quest pairs
+        foreach ((int firstQuestID, int secondQuestID) in questPairs)
+        {
+            // Process the first quest in the pair
+            Quest? firstQID = Bot.Quests.EnsureLoad(firstQuestID);
+            if (firstQID != null)
             {
-                Quests.Add(QID.ID); // Adds the quest ID to the RegQuests list
-                Core.Logger($"Pet Owned: {AcceptReq}\n" +
-                            $"Using QID: {TimeforSpringCleaningQuestID} for {QID.Name}"); // Logs a message
-                break; // Exits the loop after finding the first quest with the required pet
+                ItemBase? firstAcceptReq = firstQID.AcceptRequirements.FirstOrDefault();
+                HasQuestPet = Core.CheckInventory(firstAcceptReq?.ID ?? 0);
+                if (HasQuestPet)
+                {
+                    Core.Logger($"Pet Owned: {firstAcceptReq}\n" +
+                                $"Using QID: {firstQuestID} for {firstQID.Name}");
+                    Quests.Add(firstQID.ID);
+                    Core.AddDrop(firstQID.Rewards.Select(item => item.Name).Distinct().ToArray());
+                }
             }
-        }
+            else
+            {
+                Core.Logger($"Failed to load quest with ID: {firstQuestID}");
+                return;
+            }
 
-        // Loop for CAPQuestIDs
-        foreach (int CAPQuestID in new[] { 9662, 9648, 9645, 7072, 6754, 6749, 5754, 5753 })
-        {
-            Quest? QID = Bot.Quests.EnsureLoad(CAPQuestID); // Loads the quest
-            ItemBase AcceptReq = QID!.AcceptRequirements[0]; // Retrieves the first accept requirement
+            if (!DoClearaPath && HasQuestPet)
+            {
+                // If the player has the required pet from the first quest, break the loop and proceed to the next pair
+                break;
+            }
 
-            HasQuestPet = Core.CheckInventory(AcceptReq.ID); // Checks if the player has the required pet
+            // Process the second quest in the pair
+            Quest? secondQID = Bot.Quests.EnsureLoad(secondQuestID);
+            if (secondQID != null)
+            {
+                ItemBase? secondAcceptReq = secondQID.AcceptRequirements.FirstOrDefault();
+                HasQuestPet = Core.CheckInventory(secondAcceptReq?.ID ?? 0);
+                if (HasQuestPet)
+                {
+                    Core.Logger($"Pet Owned: {secondAcceptReq}\n" +
+                                $"Using QID: {secondQuestID} for {secondQID.Name}");
+                    Quests.Add(secondQID.ID);
+                    Core.AddDrop(secondQID.Rewards.Select(item => item.Name).Distinct().ToArray());
+                }
+            }
+            else
+            {
+                Core.Logger($"Failed to load quest with ID: {secondQuestID}");
+                return;
+            }
+
             if (HasQuestPet)
             {
-                Quests.Add(QID.ID); // Adds the quest ID to the RegQuests list
-                Core.Logger($"Pet Owned: {AcceptReq}\n" +
-                            $"Using QID: {CAPQuestID} for {QID.Name}"); // Logs a message
-                break; // Exits the loop after finding the first quest with the required pet
+                // If the player has the required pet from the second quest, break the loop and proceed to the next pair
+                break;
             }
         }
 
         if (!HasQuestPet)
+        {
             return;
+        }
 
         foreach (int questID in Quests)
         {
             Quest quest = Core.EnsureLoad(questID);
             foreach (ItemBase requirement in quest.Requirements)
             {
-                // Retrieve the ItemBase object based on the name
-                ItemBase? Reqs = Bot.Quests.EnsureLoad(questID)?.Requirements.FirstOrDefault(i => i.Name == requirement.Name);
-
-                if (Reqs != null)
+                ItemBase? reqs = Bot.Quests.EnsureLoad(questID)?.Requirements.FirstOrDefault(i => i.Name == requirement.Name);
+                if (reqs != null)
                 {
-                    // Add the quantity and the ItemBase object as a tuple to QuestItems list
-                    QuestItems.Add((Reqs, requirement.Quantity));
+                    QuestItems.Add((reqs, requirement.Quantity));
                 }
                 else
                 {
-                    // Log a message indicating the missing requirement
                     Core.Logger($"Missing requirement '{requirement.Name}' for quest '{quest.Name}'.");
                 }
             }
         }
 
+
         // Equip class, log farming, add drop, and register quests
         Core.EquipClass(ClassType.Farm);
         Core.FarmingLogger("Legion Token", quant);
         Core.AddDrop("Legion Token");
+        Core.RegisterQuests(Quests.ToArray());
         // Hunt monsters until the desired quantity of Legion Tokens is obtained
         while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
         {
-            Core.EnsureAcceptmultiple(false, Quests.ToArray());
-
             foreach ((ItemBase QuestItem, int ItemQuant) in QuestItems)
             {
+                if (Bot.TempInv.Contains(QuestItem.ID, ItemQuant))
+                {
+                    Core.Logger($"{QuestItem.Name} owned x {ItemQuant} skipping");
+                    continue;
+                }
+
                 Core.KillMonster("fotia",
                 // Set cell:
                     QuestItem.Name == "Femme Cult Worshipper's Soul" ? "r5" : "Enter",
@@ -493,18 +534,13 @@ public class CoreLegion
                     QuestItem.Name,
                 // Set ItemName Quant:
                     ItemQuant,
-                    log: false);
-            }
-
-            foreach (int QID in Quests)
-            {
-                if (Bot.Quests.CanComplete(QID))
-                    Core.EnsureCompleteMulti(QID);
+                     log: Logger);
             }
 
             if (Core.CheckInventory("Legion Token", quant))
             {
                 Core.Logger("Legion Tokens maxed!");
+                break;
             }
         }
         Core.CancelRegisteredQuests();
