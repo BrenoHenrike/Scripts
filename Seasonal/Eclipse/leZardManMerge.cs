@@ -36,6 +36,7 @@ public class leZardManMerge
 
     public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
+        Farm.Experience(95);
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("battleon", 2428, findIngredients, buyOnlyThis, buyMode: buyMode);
 
