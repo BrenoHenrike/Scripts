@@ -4503,6 +4503,17 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmyElementalBindings.cs"
   },
   {
+    "name": "null",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Army/Templates/ArmyTemplatev8.cs",
+    "size": 14777,
+    "fileName": "ArmyTemplatev8.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Templates/ArmyTemplatev8.cs"
+  },
+  {
     "name": "ArmyAggromonCreatorAutoReward",
     "description": "start the script, input the information in the options window, and let it go (read descriptions carefully)",
     "tags": [
@@ -4516,17 +4527,6 @@
     "size": 10080,
     "fileName": "ArmyAggromonCreatorAutoReward.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Templates/ArmyAggromonCreatorAutoReward.cs"
-  },
-  {
-    "name": "null",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Army/Templates/ArmyTemplatev6.cs",
-    "size": 13629,
-    "fileName": "ArmyTemplatev6.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Templates/ArmyTemplatev6.cs"
   },
   {
     "name": "Army Bone Dust",
