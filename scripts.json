@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 117602,
+    "size": 116725,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -50,7 +50,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 203382,
+    "size": 203235,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -61,7 +61,7 @@
       "null"
     ],
     "path": "Darkon/CoreDarkon.cs",
-    "size": 14242,
+    "size": 14240,
     "fileName": "CoreDarkon.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/CoreDarkon.cs"
   },
@@ -3139,7 +3139,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 95845,
+    "size": 96640,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -4015,7 +4015,7 @@
       "legion arena"
     ],
     "path": "Army/ArmyLegion/ArmyLegionToken.cs",
-    "size": 16972,
+    "size": 16994,
     "fileName": "ArmyLegionToken.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyLegion/ArmyLegionToken.cs"
   },
