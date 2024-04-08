@@ -71,12 +71,13 @@ public class leZardManMerge
 
                 case "Cosmic Aura":
                     Core.FarmingLogger(req.Name, quant);
-                    Core.EquipClass(ClassType.Farm);
                     Core.RegisterQuests(9679);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.KillMonster("dreadspace", "r16", "Left", "Trobble", "Star Scrap Metal", 10);
+                    Core.EquipClass(ClassType.Solo);
                         Core.HuntMonsterMapID("whitehole", 49, "Vortex Essence", 12);
+                    Core.EquipClass(ClassType.Farm);
+                        Core.KillMonster("dreadspace", "r16", "Left", "Trobble", "Star Scrap Metal", 10);
                         Core.HuntMonster("blackholesun", "Black Light Elemental", "Black Light Aura", 7);
                         Bot.Wait.ForPickup(req.Name);
                     }
