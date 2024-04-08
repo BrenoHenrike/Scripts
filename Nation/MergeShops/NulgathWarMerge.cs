@@ -129,16 +129,24 @@ public class NulgathWarMerge
 
                             while (!Bot.ShouldExit &&
                                 (selectedMap.Item1 == "tercessuinotlim"
-                                    ? (Core.IsMonsterAlive(2, useMapID: true) || Core.IsMonsterAlive(3, useMapID: true))
-                                    : (Core.IsMonsterAlive(1, useMapID: true) || Core.IsMonsterAlive(2, useMapID: true))))
+                                    ? Bot.Monsters.CurrentAvailableMonsters.Any(monster => monster.HP > 0 && (monster.MapID == 2 || monster.MapID == 3))
+                                    : Bot.Monsters.CurrentAvailableMonsters.Any(monster => monster.HP > 0 && (monster.MapID == 1 || monster.MapID == 2))))
                             {
+                                while (!Bot.ShouldExit && Bot.Player.Cell != selectedMap.Item2)
+                                {
+                                    Core.Jump(selectedMap.Item2);
+                                    Core.Sleep();
+                                    if (Bot.Player.Cell == selectedMap.Item2)
+                                        break;
+                                }
+
                                 if (!Bot.Player.InCombat)
-                                    Core.Sleep();  // Use the built-in delay
-                                Bot.Combat.Attack("*");
+                                    Bot.Combat.Attack("*");
                                 if (Core.CheckInventory("Dark Makai Sigil"))
                                     break;
                             }
                         }
+
                         Bot.Wait.ForPickup("Dark Makai Sigil");
                         Bot.Wait.ForPickup(req.Name);
                     }

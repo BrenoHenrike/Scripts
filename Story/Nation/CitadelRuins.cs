@@ -218,8 +218,8 @@ public class CitadelRuins
 
                 while (!Bot.ShouldExit &&
                     (selectedMap.Item1 == "tercessuinotlim"
-                        ? (Core.IsMonsterAlive(2, useMapID: true) || Core.IsMonsterAlive(3, useMapID: true))
-                        : (Core.IsMonsterAlive(1, useMapID: true) || Core.IsMonsterAlive(2, useMapID: true))))
+                        ? Bot.Monsters.CurrentAvailableMonsters.Any(monster => monster.HP > 0 && (monster.MapID == 2 || monster.MapID == 3))
+                        : Bot.Monsters.CurrentAvailableMonsters.Any(monster => monster.HP > 0 && (monster.MapID == 1 || monster.MapID == 2))))
                 {
                     if (!Bot.Player.InCombat)
                         Core.Sleep();  // Use the built-in delay
@@ -228,7 +228,6 @@ public class CitadelRuins
                         break;
                 }
             }
-
             Bot.Wait.ForPickup("Dark Makai Sigil");
             Core.EnsureComplete(668);
         }

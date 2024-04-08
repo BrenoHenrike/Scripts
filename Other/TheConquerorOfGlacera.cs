@@ -11,6 +11,7 @@ tags: glacera,karok,wings,fallen,runed,glaceran,loyalty,sigil,frigid,scythe,veng
 //cs_include Scripts/Other\Classes\FrostSpiritReaver.cs
 //cs_include Scripts/Story\Glacera.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Monsters;
 
 public class TheConquerorOfGlacera
 {
@@ -56,22 +57,20 @@ public class TheConquerorOfGlacera
                     Core.Sleep();
                 }
 
-
                 while (!Bot.ShouldExit && Bot.Player.Cell != "r2")
                 {
                     Core.Jump("r2");
                     Core.Sleep();
                 }
 
-                foreach (int mob in new[] { 1, 2, 3 })
-                    while (!Bot.ShouldExit && Core.IsMonsterAlive(mob, useMapID: true))
-                    {
-                        Bot.Combat.Attack(mob);
-                        if (Core.CheckInventory("Glaceran Gem", 500))
-                            break;
-                    }
-
+                foreach (Monster mob in Bot.Monsters.CurrentAvailableMonsters.Where(m => m.Cell == "r2" && m.HP > 0))
+                {
+                    Bot.Combat.Attack(mob.MapID);
+                    if (Core.CheckInventory("Glaceran Gem", 500))
+                        break;
+                }
             }
+
             Core.CancelRegisteredQuests();
             Bot.Wait.ForPickup("Glaceran Gem");
         }

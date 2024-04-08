@@ -2367,9 +2367,9 @@ public class Core13LoC
                 Core.Sleep();
             }
 
-            while (!Bot.ShouldExit && Core.IsMonsterAlive(1, useMapID: true))
+            while (!Bot.ShouldExit)
             {
-                Bot.Combat.Attack(1);
+                Bot.Kill.Monster(1);
                 if (Core.CheckInventory(26875))
                     break;
             }
@@ -2393,9 +2393,9 @@ public class Core13LoC
                 Core.Sleep();
             }
 
-            while (!Bot.ShouldExit && Core.IsMonsterAlive(14, useMapID: true))
+            while (!Bot.ShouldExit)
             {
-                Bot.Combat.Attack(14);
+                Bot.Kill.Monster(14);
                 if (Core.CheckInventory(26876))
                     break;
             }
@@ -2414,9 +2414,9 @@ public class Core13LoC
             if (Bot.Player.Cell != "r9")
                 Core.Jump("r9");
 
-            while (!Bot.ShouldExit && Core.IsMonsterAlive(23, useMapID: true))
+            while (!Bot.ShouldExit)
             {
-                Bot.Combat.Attack(23);
+                 Bot.Kill.Monster(23);
                 if (Core.CheckInventory(26877))
                     break;
             }

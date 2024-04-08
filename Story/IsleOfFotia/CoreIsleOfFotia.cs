@@ -275,8 +275,7 @@ public class CoreIsleOfFotia
         Core.EnsureAccept(3036);
 
         // Kill the monster until the flower drop is obtained
-        while (!Bot.ShouldExit && Core.IsMonsterAlive(8, useMapID: true))
-            Bot.Combat.Attack(8);
+        Bot.Kill.Monster(8);
 
         // If the drop is obtained, set the Mourner Gender and return the MonsterMapID
         if (Core.CheckInventory(18762))

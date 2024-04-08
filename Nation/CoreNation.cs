@@ -343,17 +343,12 @@ public class CoreNation
                 Core.Jump("r2", "Down");
 
             foreach (Monster Mob in Bot.Monsters.CurrentAvailableMonsters.Where(m => m.Cell == "r2"))
-            {
-                while (!Bot.ShouldExit && Core.IsMonsterAlive(Mob.MapID, true))
-                {
-                    Bot.Combat.Attack(Mob.MapID);
+            {               
+                    Bot.Kill.Monster(Mob.MapID);
                     Core.Sleep();
 
                     if (Core.CheckInventory("Nulgath's Approval", quantApproval) && Core.CheckInventory("Archfiend's Favor", quantFavor))
-                    {
                         break;
-                    }
-                }
             }
         }
     }
