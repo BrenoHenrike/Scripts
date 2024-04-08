@@ -61,7 +61,7 @@
       "null"
     ],
     "path": "Darkon/CoreDarkon.cs",
-    "size": 14374,
+    "size": 14242,
     "fileName": "CoreDarkon.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/CoreDarkon.cs"
   },
@@ -3786,7 +3786,7 @@
       "new class"
     ],
     "path": "Darkon/Materials/0MaxDarkonMats.cs",
-    "size": 1099,
+    "size": 1088,
     "fileName": "0MaxDarkonMats.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/Materials/0MaxDarkonMats.cs"
   },
