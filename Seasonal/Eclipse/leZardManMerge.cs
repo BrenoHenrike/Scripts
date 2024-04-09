@@ -77,8 +77,8 @@ public class leZardManMerge
                     {
                         Core.EquipClass(ClassType.Solo);
                         Core.HuntMonsterMapID("whitehole", 49, "Vortex Essence", 12);
+                        Core.KillMonster("dreadspace", "r22", "Left", "Troblor", "Star Scrap Metal", 10);
                         Core.EquipClass(ClassType.Farm);
-                        Core.KillMonster("dreadspace", "r16", "Left", "Troblor", "Star Scrap Metal", 10);
                         Core.HuntMonster("blackholesun", "Black Light Elemental", "Black Light Aura", 7);
                         Bot.Wait.ForPickup(req.Name);
                     }
