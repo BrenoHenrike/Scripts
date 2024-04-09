@@ -2139,7 +2139,7 @@ public class CoreBots
             if (log)
                 Logger($"Killing {monster.Name}");
 
-            else Bot.Kill.Monster(monster);
+           Bot.Kill.Monster(monster);
             Rest();
             return;
         }

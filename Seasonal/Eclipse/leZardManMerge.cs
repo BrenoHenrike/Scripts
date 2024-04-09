@@ -75,11 +75,17 @@ public class leZardManMerge
                     Core.RegisterQuests(9679);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.EquipClass(ClassType.Solo);
-                        Core.HuntMonsterMapID("whitehole", 49, "Vortex Essence", 12);
-                        Core.KillMonster("dreadspace", "r22", "Left", "Troblor", "Star Scrap Metal", 10);
                         Core.EquipClass(ClassType.Farm);
                         Core.HuntMonster("blackholesun", "Black Light Elemental", "Black Light Aura", 7);
+                        while (!Bot.ShouldExit && !Core.CheckInventory("Star Scrap Metal", 10))
+                        {
+                            Core.EnsureAccept(4289);
+                            Core.KillMonster("dreadspace", "r12", "Left", "*", "Golden Spork of Justice");
+                            Core.EnsureCompleteMulti(4289);
+                            Bot.Wait.ForPickup("Star Scrap Metal");
+                        }
+                        Core.EquipClass(ClassType.Solo);
+                        Core.HuntMonsterMapID("whitehole", 49, "Vortex Essence", 12);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();

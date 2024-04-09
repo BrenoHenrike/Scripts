@@ -6,6 +6,8 @@ tags: null
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
+using Skua.Core.Models.Quests;
 
 public class CoreSepulchure
 {
@@ -57,6 +59,12 @@ public class CoreSepulchure
         Story.KillQuest(6336, "scarsgarde", new[] { "Garde Watch", "Garde Pikeman" });
 
         // False Hoods 6337
+        if (!Story.QuestProgression(6337))
+        {
+            Quest? dothis = Bot.Quests.EnsureLoad(6337);
+            foreach (ItemBase Item in dothis!.Requirements)
+                Core.HuntMonster("scarsgarde", "Garde Watch", Item.Name, Item.Quantity, Item.Temp);
+        }
         Story.KillQuest(6337, "scarsgarde", new[] { "Garde Watch", "Garde Watch", "Garde Watch", "Garde Watch", "Garde Watch", "Garde Watch", "Garde Watch" });
 
         // Pass for Real 6338
