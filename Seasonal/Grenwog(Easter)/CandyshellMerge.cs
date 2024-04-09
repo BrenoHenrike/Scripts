@@ -64,43 +64,43 @@ public class CandyshellMerge
 
                 case "Chocolate Eggshells":
                     Core.EquipClass(ClassType.Farm);
-                    Core.HuntMonster("GreenguardEast", "Gurushroom", req.Name, quant, isTemp: false);
+                    Core.HuntMonster("GreenguardEast", "Gurushroom", req.Name, quant, req.Temp);
                     break;
 
                 case "Creme Eggshells":
                     Core.EquipClass(ClassType.Farm);
-                    Core.HuntMonster("GreenShell", "Tsukumogami", req.Name, quant, isTemp: false);
+                    Core.HuntMonster("GreenShell", "Tsukumogami", req.Name, quant, req.Temp);
                     break;
 
                 case "Caramel Eggshells":
                     Core.EquipClass(ClassType.Farm);
-                    Core.HuntMonster("GreenguardWest", "Kittarian", req.Name, quant, isTemp: false);
+                    Core.HuntMonster("GreenguardWest", "Kittarian", req.Name, quant, req.Temp);
                     break;
 
                 case "Rainbow Eggshells":
                     Core.EquipClass(ClassType.Farm);
-                    Core.HuntMonster("Greendragon", "Greenguard Dragon", req.Name, quant, isTemp: false);
+                    Core.HuntMonster("Greendragon", "Greenguard Dragon", req.Name, quant, req.Temp);
                     break;
 
                 case "Shadow Eggshells":
                 case "DraGrenwog Scale":
                     Core.EquipClass(ClassType.Farm);
-                    Core.HuntMonster("Grenwog", "Grenwog", req.Name, quant, isTemp: false);
+                    Core.HuntMonster("Grenwog", "Grenwog", req.Name, quant, req.Temp);
                     break;
 
                 case "Chaotic Eggshells":
                     Core.EquipClass(ClassType.Farm);
-                    Core.HuntMonster("Grenstory", "Imposter Egg", req.Name, quant, isTemp: false);
+                    Core.HuntMonster("Grenstory", "Imposter Egg", req.Name, quant, req.Temp);
                     break;
 
                 case "Golden Eggshells":
                     Core.EquipClass(ClassType.Farm);
-                    Core.HuntMonster("Greed", "Treasure Pile", req.Name, quant, isTemp: false);
+                    Core.HuntMonster("Greed", "Treasure Pile", req.Name, quant, req.Temp);
                     break;
 
                 case "Anti-Neggshells":
                     Core.EquipClass(ClassType.Farm);
-                    Core.HuntMonster("Greymoor", "Spooky Treeant", req.Name, quant, isTemp: false);
+                    Core.HuntMonster("Greymoor", "Spooky Treeant", req.Name, quant, req.Temp);
                     break;
 
             }
