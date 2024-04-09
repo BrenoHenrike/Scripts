@@ -5,7 +5,9 @@ tags: lezard, man, merge, battleon, void, stareater, blackout, stareaters, morph
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/Story/Summer2015AdventureMap/CoreSummer.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
@@ -15,6 +17,7 @@ public class leZardManMerge
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
     private CoreFarms Farm = new();
+    public CoreSummer Coll = new();
     private CoreAdvanced Adv = new();
     private static CoreAdvanced sAdv = new();
 
@@ -37,6 +40,8 @@ public class leZardManMerge
     public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         Farm.Experience(95);
+        //for `Star Scrap Metal`
+        Coll.Deadmoor();
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("battleon", 2428, findIngredients, buyOnlyThis, buyMode: buyMode);
 
@@ -80,7 +85,7 @@ public class leZardManMerge
                         while (!Bot.ShouldExit && !Core.CheckInventory("Star Scrap Metal", 10))
                         {
                             Core.EnsureAccept(4289);
-                            Core.KillMonster("dreadspace", "r12", "Left", "*", "Golden Spork of Justice");
+                            Core.KillMonster("dreadspace", "r20", "Right", "*", "Golden Spork of Justice");
                             Core.EnsureCompleteMulti(4289);
                             Bot.Wait.ForPickup("Star Scrap Metal");
                         }
