@@ -774,7 +774,13 @@ public class CoreSoW
         Story.KillQuest(8184, "fireinvasion", "Shadefire Major");
 
         // Darkness in Swordhaven
-        Story.KillQuest(8185, "fireinvasion", new[] { "Shadefire Elemental", "Shadowfire Tiger" });
+        if(!Story.QuestProgression(8185))
+        {
+            Core.EnsureAccept(8185);
+            Core.KillMonster("fireinvasion", "r8", "Top", "Shadefire Elemental", "Elemental Slain", 7);
+            Core.KillMonster("fireinvasion", "r7", "Top", "Shadowfire Tiger", "Tiger Slain", 7);
+            Core.EnsureComplete(8185);
+        }
 
         // Extinguish the Flames
         Story.KillQuest(8186, "fireinvasion", "Living Shadowflame");
