@@ -2076,6 +2076,7 @@ public class CoreBots
                 Logger($"Hunting {monster}");
 
             Bot.Hunt.Monster(monster);
+            Bot.Wait.ForMonsterDeath();
             Rest();
         }
         else
@@ -2088,9 +2089,14 @@ public class CoreBots
 
             while (!Bot.ShouldExit && (isTemp ? !Bot.TempInv.Contains(item, quant) : !CheckInventory(item, quant)))
             {
-                if (!Bot.Combat.StopAttacking)
-                    Bot.Hunt.Monster(monster);
+                // if (!Bot.Combat.StopAttacking)
+                Bot.Hunt.Monster(monster);
 
+                if (isTemp ? !Bot.TempInv.Contains(item, quant) : !CheckInventory(item, quant))
+                {
+                    Bot.Wait.ForPickup(item);
+                    break;
+                }
                 Sleep();
                 Rest();
             }
@@ -2562,6 +2568,7 @@ public class CoreBots
         if (log)
             FarmingLogger(item, quantity);
 
+        Monster? targetedMob = new();
         while (!Bot.ShouldExit && !CheckInventory(item, quantity))
         {
             foreach (Monster mob in Bot.Monsters.CurrentAvailableMonsters)
@@ -2577,9 +2584,6 @@ public class CoreBots
                     Bot.Options.AggroMonsters = false;
                 }
 
-
-                Monster? targetedMob = (name == "*") ? mob : Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault(x => x.Name.FormatForCompare() == name.FormatForCompare());
-
                 ItemBase? Item =
                 isTemp ? Bot.TempInv.Items.FirstOrDefault(x => x.Name.FormatForCompare() == item.FormatForCompare())
                 : Bot.Inventory.Items.FirstOrDefault(x => x.Name.FormatForCompare() == item.FormatForCompare());
@@ -2594,7 +2598,8 @@ public class CoreBots
                 }
                 #endregion insurance
 
-                Bot.Kill.Monster(targetedMob?.MapID ?? Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault()?.MapID ?? 0);
+                targetedMob = (name == "*") ? mob : Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault(x => x.Name.FormatForCompare() == name.FormatForCompare());
+                Bot.Kill.Monster(targetedMob!.MapID);
 
                 if (rejectElse)
                     Bot.Drops.RejectExcept(item);
@@ -2609,6 +2614,7 @@ public class CoreBots
                 }
             }
         }
+        Bot.Wait.ForPickup(item);
         Bot.Options.AggroMonsters = false;
         JumpWait();
     }
