@@ -4984,21 +4984,6 @@ public class CoreBots
         var item = Bot.Inventory.Items.Concat(Bot.Bank.Items)
                      .FirstOrDefault(x => x.Name == "Infernal ArchFiend" || x.Name == "Celestial ArchFiend" || x.Name == "Radiant Goddess of War");
         var itemName = item?.Name;
-
-        string[] bestSet = {
-                            "Necrotic Sword of Doom",
-                            itemName ?? "Polly Roger",
-                            itemName ?? "Head of the legion Beast",
-                            itemName ?? "Fire Champion's Armor",
-                            "Awescended Omni Wings"
-                            };
-
-        Unbank(bestSet);
-
-        if (SoloGear.All(x => bestSet.Contains(x)))
-            SoloGear = bestSet.Concat(new[] { _GroundItem1 }).ToArray();
-        if (FarmGear.All(x => bestSet.Contains(x)))
-            FarmGear = bestSet.Concat(new[] { _GroundItem2 }).ToArray();
     }
 
     public string CBO_Path() => Path.Combine(ClientFileSources.SkuaOptionsDIR, $"CBO_Storage({Username()}).txt");
