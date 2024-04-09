@@ -3535,7 +3535,7 @@
       "null"
     ],
     "path": "Legion/CoreLegion.cs",
-    "size": 36051,
+    "size": 36075,
     "fileName": "CoreLegion.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/CoreLegion.cs"
   },
@@ -3990,6 +3990,22 @@
     "size": 8112,
     "fileName": "ArmyUniqueQuarry.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Quests/ArmyUniqueQuarry.cs"
+  },
+  {
+    "name": "ArmySingleRib",
+    "description": "Uses an army to kill binky in /doomvault to complet ethe `Single Rib` quest.",
+    "tags": [
+      "single",
+      "rib",
+      "binky",
+      "legion",
+      "tokens",
+      ""
+    ],
+    "path": "Army/ArmyLegion/ArmySingleRib.cs",
+    "size": 4180,
+    "fileName": "ArmySingleRib.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyLegion/ArmySingleRib.cs"
   },
   {
     "name": "Army Legion Token",
