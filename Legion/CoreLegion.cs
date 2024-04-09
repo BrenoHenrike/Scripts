@@ -280,6 +280,7 @@ public class CoreLegion
             Core.EnsureComplete(3394);
         }
 
+        // A Single Rib
         Core.RegisterQuests(3393);
         while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
             Adv.BoostHuntMonster("doomvault", "Binky", "Dark Unicorn Rib", isTemp: false, log: false);
