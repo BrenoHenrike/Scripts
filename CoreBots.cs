@@ -2087,12 +2087,12 @@ public class CoreBots
                 Logger($"Hunting {monster} for {item}, ({dynamicQuant(item, isTemp)}/{quant}) [Temp = {isTemp}]");
 
 
-            while (!Bot.ShouldExit && (isTemp ? !Bot.TempInv.Contains(item, quant) : !CheckInventory(item, quant)))
+            while (!Bot.ShouldExit && isTemp ? !Bot.TempInv.Contains(item, quant) : !CheckInventory(item, quant))
             {
-                // if (!Bot.Combat.StopAttacking)
-                Bot.Hunt.Monster(monster);
+                if (!Bot.Combat.StopAttacking)
+                    Bot.Hunt.Monster(monster);
 
-                if (isTemp ? !Bot.TempInv.Contains(item, quant) : !CheckInventory(item, quant))
+                if (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant))
                 {
                     Bot.Wait.ForPickup(item);
                     break;
@@ -2139,7 +2139,7 @@ public class CoreBots
             if (log)
                 Logger($"Killing {monster.Name}");
 
-           Bot.Kill.Monster(monster);
+            Bot.Kill.Monster(monster);
             Rest();
             return;
         }
