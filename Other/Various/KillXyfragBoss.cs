@@ -1,11 +1,12 @@
 /*
 name: KillXyrfragBoss
-description: null
+description: If Legion Revenant is equipped, taunt Xyfrag after "BLEEEEEEEEEEEECCH" is seen on the screen.
 tags: null
 */
 //cs_include Scripts/CoreBots.cs
 
 using Skua.Core.Interfaces;
+
 
 public class KillXyfragBoss
 {
@@ -16,7 +17,8 @@ public class KillXyfragBoss
     {
         Core.SetOptions();
 
-        KillXyfrag();
+        Core.OneTimeMessage("Requirements", "If \"Legion Revenant\" is equipped and \"Scroll of Enrage\" is in your inventory, this bot will taunt Xyfrag after \"BLEEEEEEEEEEEECCH\" is seen on the screen.", forcedMessageBox: true);
+		KillXyfrag();
         
         Core.SetOptions(false);
     }
@@ -26,12 +28,17 @@ public class KillXyfragBoss
 
         if (item != null && (isTemp ? Bot.TempInv.Contains(item, quant) : Core.CheckInventory(item, quant)))
             return;
-
-        if(Bot.Player.CurrentClass.Name == "Legion Revenant"){
+    
+		if(Bot.Player.CurrentClass.Name == "Legion Revenant"){
             Core.Equip("Scroll of Enrage");
-
             Bot.Events.ExtensionPacketReceived += XyfragListener;
         }
+		
+		else {
+			
+			Core.Logger("This bot requires you to have \"Legion Revenant\" equipped.", messageBox: true, stopBot: true);
+			return;
+		}
 
         Core.Join("voidxyfrag", publicRoom: true);
       
