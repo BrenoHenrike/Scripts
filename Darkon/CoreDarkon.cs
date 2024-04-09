@@ -207,8 +207,8 @@ public class CoreDarkon
         while (!Bot.ShouldExit && !Core.CheckInventory("A Melody", Quantity))
         {
             Core.EquipClass(ClassType.Farm);
-            Core.HuntMonster("astraviajudge", "Trumpeter", "Brass", 10, log: false);
-            Core.HuntMonster("astraviajudge", "Hand", "Sinew", 10, log: false);
+            Core.KillMonster("astraviajudge", "r3", "Left", "*", "Brass", 10, log: false);
+            Core.KillMonster("astraviajudge", "r2", "Left", "*", "Sinew", 10, log: false);
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("astraviajudge", "La", "Knight's Favor", log: false);
             Bot.Wait.ForPickup("A Melody");
