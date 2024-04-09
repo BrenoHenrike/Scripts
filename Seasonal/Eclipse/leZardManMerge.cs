@@ -70,7 +70,7 @@ public class leZardManMerge
                     Core.EquipClass(ClassType.Farm);
                     Core.RegisterQuests(9678);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                        Core.KillMonster("starsinc", "r2", "Left", "Living Star", "Star Dust", 30);
+                        Core.KillMonster("starsinc", "r2", "Left", "*", "Star Dust", 30, log: false);
                     Bot.Wait.ForPickup(req.Name);
                     Core.CancelRegisteredQuests();
                     break;
@@ -85,7 +85,7 @@ public class leZardManMerge
                         while (!Bot.ShouldExit && !Core.CheckInventory("Star Scrap Metal", 10))
                         {
                             Core.EnsureAccept(4289);
-                            Core.KillMonster("dreadspace", "r20", "Right", "*", "Golden Spork of Justice");
+                            Core.KillMonster("dreadspace", "r20", "Right", "*", "Golden Spork of Justice", log: false);
                             Core.EnsureCompleteMulti(4289);
                             Bot.Wait.ForPickup("Star Scrap Metal");
                         }
