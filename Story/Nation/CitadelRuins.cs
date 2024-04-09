@@ -218,8 +218,8 @@ public class CitadelRuins
 
                 while (!Bot.ShouldExit &&
                     (selectedMap.Item1 == "tercessuinotlim"
-                        ? Bot.Monsters.CurrentAvailableMonsters.Any(monster => monster.HP > 0 && (monster.MapID == 2 || monster.MapID == 3))
-                        : Bot.Monsters.CurrentAvailableMonsters.Any(monster => monster.HP > 0 && (monster.MapID == 1 || monster.MapID == 2))))
+                        ? Bot.Monsters.CurrentAvailableMonsters.Any(monster => monster.HP >= 0 && (monster.MapID == 2 || monster.MapID == 3))
+                        : Bot.Monsters.CurrentAvailableMonsters.Any(monster => monster.HP >= 0 && (monster.MapID == 1 || monster.MapID == 2))))
                 {
                     if (!Bot.Player.InCombat)
                         Core.Sleep();  // Use the built-in delay
