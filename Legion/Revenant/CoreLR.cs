@@ -85,6 +85,10 @@ public class CoreLR
         ConquestWreath();
         ExaltedCrown();
 
+        //if you used insignias other quests arent unlocked(yes people have done this...)
+        if (!Core.isCompletedBefore(6900))
+            ExaltedCrown(1);
+
         Core.ChainComplete(6900);
         Bot.Wait.ForDrop("Legion Revenant", 20);
         Bot.Wait.ForPickup("Legion Revenant", 20);
@@ -133,6 +137,9 @@ public class CoreLR
     //Legion Fealty 2
     public void ConquestWreath(int quant = 6)
     {
+        if (!Core.isCompletedBefore(6898))
+            RevenantSpellscroll(1);
+
         if (Core.CheckInventory("Conquest Wreath", quant))
             return;
 
@@ -174,6 +181,9 @@ public class CoreLR
     //Legion Fealty 3
     public void ExaltedCrown(int quant = 10)
     {
+        if (!Core.isCompletedBefore(6899))
+            ConquestWreath(1);
+
         if (Core.CheckInventory("Exalted Crown", quant))
             return;
 
