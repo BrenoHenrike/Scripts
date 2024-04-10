@@ -55,6 +55,7 @@ tags: all classes,class,farm,complete,all
 //cs_include Scripts/Other/Classes/Members-CLasses/ChronoAssassin[Mem].cs
 //cs_include Scripts/Other/MergeShops/DeathPitArenaRepMerge.cs
 //cs_include Scripts/Other/Classes/Members-CLasses/DrakelWarlord[Mem].cs
+//cs_include Scripts/Other/Classes/Members-CLasses/Renegade[Mem].cs
 //cs_include Scripts/Seasonal/Frostvale/Frostvale.cs
 //cs_include Scripts/Seasonal/Frostvale/FrostvalBarbarian.cs
 //cs_include Scripts/Seasonal/Frostvale/NorthlandsMonk.cs
@@ -196,6 +197,7 @@ public class AllClasses
     private DrakelWarlord DW = new();
     private LegionDoomKnight LDK = new();
     private LegendaryElementalWarrior LEW = new();
+    private Renegade Ren = new();
     private UndeadSlayer US = new();
     #endregion Member
 
@@ -349,6 +351,7 @@ public class AllClasses
         DW.GetClass(rankUpClass);
         LDK.GetLDK(rankUpClass);
         LEW.GetLEW(rankUpClass);
+        Ren.Getclass(rankUpClass);
         US.GetUS(rankUpClass);
 
         Core.Logger("=== Member Classes - Completed! ===");
