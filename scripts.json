@@ -9028,6 +9028,31 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/UndineCommissaryMerge.cs"
   },
   {
+    "name": "Blood Moon Lycan Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Blood Moon Lycan Merge [1488] in /bloodwarlycan",
+    "tags": [
+      "blood",
+      "moon",
+      "lycan",
+      "merge",
+      "bloodwarlycan",
+      "alpha",
+      "surfboard",
+      "lunar",
+      "blaze",
+      "werepyre",
+      "warrior",
+      "morph",
+      "wings",
+      "weretato",
+      "pet"
+    ],
+    "path": "Other/MergeShops/BloodMoonLycanMerge.cs",
+    "size": 4803,
+    "fileName": "BloodMoonLycanMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/BloodMoonLycanMerge.cs"
+  },
+  {
     "name": "BonecastleMerge",
     "description": "null",
     "tags": [
