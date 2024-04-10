@@ -8416,7 +8416,7 @@
       "all"
     ],
     "path": "Other/Classes/0AllClasses.cs",
-    "size": 16550,
+    "size": 16687,
     "fileName": "0AllClasses.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/0AllClasses.cs"
   },
@@ -21245,6 +21245,20 @@
     "size": 979,
     "fileName": "BloodTitan[Mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/Members-CLasses/BloodTitan[Mem].cs"
+  },
+  {
+    "name": "Renegade[Mem]",
+    "description": "This script will get Renegade class.",
+    "tags": [
+      "renegade",
+      "member",
+      "class",
+      "metrea"
+    ],
+    "path": "Other/Classes/Members-CLasses/Renegade[Mem].cs",
+    "size": 974,
+    "fileName": "Renegade[Mem].cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/Members-CLasses/Renegade[Mem].cs"
   },
   {
     "name": "Drakel Warlord (Member) Class",
