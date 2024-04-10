@@ -29,7 +29,7 @@ public class CoreDarkon
 
     public void FirstErrand(int Quantity = 222, bool MaxStack = false)
     {
-        Quest? Quest = Bot.Quests.EnsureLoad(7325);
+        Quest? Quest = Bot.Quests.EnsureLoad(7324);
         if (MaxStack)
             Quantity = Quest?.Rewards.FirstOrDefault(x => x.Name == "Darkon's Receipt")?.MaxStack ?? Quantity;
 
@@ -93,7 +93,7 @@ public class CoreDarkon
 
     public void ThirdErrand(int Quantity = 222, bool MaxStack = false)
     {
-        Quest? Quest = Bot.Quests.EnsureLoad(7325);
+        Quest? Quest = Bot.Quests.EnsureLoad(7326);
         if (MaxStack)
             Quantity = Quest?.Rewards.FirstOrDefault(x => x.Name == "Darkon's Receipt")?.MaxStack ?? Quantity;
         if (Core.CheckInventory("Darkon's Receipt", Quantity))
@@ -143,9 +143,10 @@ public class CoreDarkon
 
     public void LasGratitude(int Quantity = 300, bool MaxStack = false)
     {
-        ItemBase? Item = Bot.Inventory.Items.Concat(Bot.Bank.Items).FirstOrDefault(x => x.Name == "La's Gratitude");
+        Quest? Quest = Bot.Quests.EnsureLoad(8001);
         if (MaxStack)
-            Quantity = Item!.MaxStack;
+            Quantity = Quest?.Rewards.FirstOrDefault(x => x.Name == "La's Gratitude")?.MaxStack ?? Quantity;
+
         if (Core.CheckInventory("La's Gratitude", Quantity))
             return;
 
@@ -169,6 +170,7 @@ public class CoreDarkon
         Quest? Quest = Bot.Quests.EnsureLoad(8257);
         if (MaxStack)
             Quantity = Quest?.Rewards.FirstOrDefault(x => x.Name == "Astravian Medal")?.MaxStack ?? Quantity;
+
         if (Core.CheckInventory("Astravian Medal", Quantity))
             return;
 
@@ -193,7 +195,7 @@ public class CoreDarkon
 
     public void AMelody(int Quantity = 300, bool MaxStack = false)
     {
-        Quest? Quest = Bot.Quests.EnsureLoad(8257);
+        Quest? Quest = Bot.Quests.EnsureLoad(8396);
         if (MaxStack)
             Quantity = Quest?.Rewards.FirstOrDefault(x => x.Name == "A Melody")?.MaxStack ?? Quantity;
 
@@ -300,7 +302,7 @@ public class CoreDarkon
 
     public void WheelofFortune(int FlowerQuantity = 1000, int ScaleQuantity = 1000, bool MaxStack = false)
     {
-        Quest? Quest = Bot.Quests.EnsureLoad(8641);
+        Quest? Quest = Bot.Quests.EnsureLoad(8688);
         if (MaxStack)
         {
             FlowerQuantity = Quest?.Rewards.FirstOrDefault(x => x.Name == "Mourning Flower")?.MaxStack ?? FlowerQuantity;
@@ -310,12 +312,10 @@ public class CoreDarkon
         if (Core.CheckInventory("Mourning Flower", FlowerQuantity) && Core.CheckInventory("Jus Divinum Scale", ScaleQuantity))
             return;
 
-        bool shouldLog = true;
         if (FlowerQuantity > 0 && ScaleQuantity > 0)
         {
-            Core.Logger($"Farming Mourning Flower ({Bot.Inventory.GetQuantity("Mourning Flower")}/{FlowerQuantity}) " +
-                            $"and Jus Divinum Scale ({Bot.Inventory.GetQuantity("Jus Divinum Scale")}/{ScaleQuantity})");
-            shouldLog = false;
+            Core.Logger($"Farming Mourning Flower ({Core.dynamicQuant("Mourning Flower", false)}/{FlowerQuantity}) " +
+                            $"and Jus Divinum Scale ({Core.dynamicQuant("Jus Divinum Scale", false)}/{ScaleQuantity})");
         }
 
         Core.AddDrop("Mourning Flower", "Jus Divinum Scale");
@@ -327,10 +327,10 @@ public class CoreDarkon
         || !Core.CheckInventory("Jus Divinum Scale", ScaleQuantity))
         {
             Core.EquipClass(ClassType.Farm);
-            Core.HuntMonster("genesisgarden", "Long-eared Beast", "Beast Subject", 7, shouldLog);
-            Core.HuntMonster("genesisgarden", "Undead Humanoid", "Humanoid Subject", 7, shouldLog);
+            Core.HuntMonster("genesisgarden", "Long-eared Beast", "Beast Subject", 7, log: false);
+            Core.HuntMonster("genesisgarden", "Undead Humanoid", "Humanoid Subject", 7, log: false);
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("genesisgarden", "Ancient Mecha", "Replacement Parts", 7, shouldLog);
+            Core.HuntMonster("genesisgarden", "Ancient Mecha", "Replacement Parts", 7, log: false);
         }
         Core.CancelRegisteredQuests();
     }

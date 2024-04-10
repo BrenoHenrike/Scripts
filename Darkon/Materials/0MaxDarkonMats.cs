@@ -20,7 +20,18 @@ public class MaxAllDarkon
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
+        Core.BankingBlackList.AddRange(new[]
+            { "A Melody", "Ancient Remnant", "Bandit's Correspondence",
+                "Darkon's Receipt", "La's Gratitude", "Mourning Flower",
+                "Jus Divinum Scale", "Unfinished Musical Score", "Teeth"
+            });
+        GetAllMats();
 
+        Core.SetOptions(false);
+    }
+
+    public void GetAllMats()
+    {
         Darkon.AMelody(MaxStack: true);
         Darkon.AncientRemnant(MaxStack: true);
         Darkon.BanditsCorrespondence(MaxStack: true);
@@ -30,7 +41,5 @@ public class MaxAllDarkon
         Darkon.SukisPrestiege(MaxStack: true);
         Darkon.Teeth(MaxStack: true);
         Darkon.UnfinishedMusicalScore(300);
-
-        Core.SetOptions(false);
     }
 }
