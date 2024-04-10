@@ -24,7 +24,7 @@ public class Bludrut
 
     public void StoryLine()
     {
-        if (Core.isCompletedBefore(1693))
+        if ((Core.IsMember && Core.isCompletedBefore(1692)) || (!Core.IsMember && Core.isCompletedBefore(102)))
             return;
 
         Story.PreLoad(this);
@@ -101,9 +101,6 @@ public class Bludrut
 
             //Sad Farewells 1692
             Story.MapItemQuest(1692, "bludrut2", 893);
-
-            //Ectoamber 1693
-            Story.KillQuest(1693, "bludrut", "Rattlebones");
         }
 
     }
