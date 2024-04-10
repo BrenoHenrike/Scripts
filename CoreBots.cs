@@ -2123,7 +2123,7 @@ public class CoreBots
 
         Join(map, publicRoom: publicRoom);
 
-        Monster? monster = Bot.Monsters.MapMonsters?.Find(m => m.MapID == monsterMapID);
+        Monster? monster = Bot.Monsters.MapMonsters.FirstOrDefault(m => m.MapID == monsterMapID);
         if (monster == null)
         {
             Logger($"Failed to find monsterMapID {monsterMapID} in {map}");
