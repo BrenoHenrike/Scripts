@@ -50,7 +50,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 202813,
+    "size": 202777,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -3535,7 +3535,7 @@
       "null"
     ],
     "path": "Legion/CoreLegion.cs",
-    "size": 36075,
+    "size": 35660,
     "fileName": "CoreLegion.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/CoreLegion.cs"
   },
@@ -19887,7 +19887,7 @@
       "null"
     ],
     "path": "Legion/Revenant/CoreLR.cs",
-    "size": 7275,
+    "size": 7288,
     "fileName": "CoreLR.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/Revenant/CoreLR.cs"
   },
