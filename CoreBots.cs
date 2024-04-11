@@ -2604,7 +2604,7 @@ public class CoreBots
                 if (rejectElse)
                     Bot.Drops.RejectExcept(item);
 
-                if (Item == null || CheckInventory(Item.Name, quantity))
+                if (Item == null || CheckInventory(Item.ID, quantity))
                 {
                     Bot.Options.AggroMonsters = false;
                     if (Item != null)
@@ -2614,7 +2614,6 @@ public class CoreBots
                 }
             }
         }
-        Bot.Wait.ForPickup(item);
         Bot.Options.AggroMonsters = false;
         JumpWait();
     }
