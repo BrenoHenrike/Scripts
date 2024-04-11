@@ -183,6 +183,7 @@ public class CoreLR
     {
         if (!Core.isCompletedBefore(6899))
             ConquestWreath(1);
+            
 
         if (Core.CheckInventory("Exalted Crown", quant))
             return;

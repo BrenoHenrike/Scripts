@@ -176,19 +176,11 @@ public class CoreLegion
 
         Core.AddDrop("Dage's Approval", "Dage's Favor");
 
-        bool shouldLog = true;
-        if (quantApproval > 0 && quantFavor > 0)
-        {
-            Core.Logger($"Farming Dage's Approval ({Bot.Inventory.GetQuantity("Dage's Approval")}/{quantApproval}) " +
-                            $"and Dage's Favor ({Bot.Inventory.GetQuantity("Dage's Favor")}/{quantFavor})");
-            shouldLog = false;
-        }
 
         Core.EquipClass(ClassType.Farm);
-        //Adv.BestGear(RacialGearBoost.Undead);
 
-        Core.KillMonster("underworld", "r16", "Left", "*", "Dage's Approval", quantApproval, false, shouldLog);
-        Core.KillMonster("underworld", "r16", "Left", "*", "Dage's Favor", quantFavor, false, shouldLog);
+        foreach ((string, int) pair in new[] { ("Dage's Approval", quantApproval), ("Dage's Favor", quantFavor) })
+            Core.KillMonster("underworld", "r16", "Left", "*", pair.Item1, pair.Item2, false);
     }
 
     public void BoneSigil(int quant = 1)
