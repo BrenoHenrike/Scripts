@@ -99,49 +99,71 @@ public class ArmyLegionToken
                 break;
 
             case "Shogun_Paragon_Pet":
+                // Check if the player owns the Shogun Paragon Pet
                 if (!Core.CheckInventory("Shogun Paragon Pet"))
                     Core.Logger("Pet not owned, stopping", stopBot: true);
 
-                //Adv.BestGear(RacialGearBoost.Elemental);
-
+                // Clear existing monster names and add Fotia Elemental and Fotia Spirit
                 monNames.Clear();
                 monNames.AddRange(new[] { "Fotia Elemental", "Fotia Spirit" });
 
+                // Clear existing drops and add Legion Token or Legion Token and Hollow Soul based on quest completion
                 drops.Clear();
-                drops.Add("Legion Token");
+                drops.AddRange(Core.CheckInventory("Hollowborn Paragon Quest Pet") ? new[] { "Legion Token" } : new[] { "Legion Token", "Hollow Soul" });
 
+                // Set map to "fotia" and classType to Farm
                 map = "fotia";
                 classType = ClassType.Farm;
                 Adv.SmartEnhance(Core.FarmClass);
 
-                int paragonFiendPetID = -1;
-                bool hasInfernalCaladbolg = Core.CheckInventory("Infernal Caladbolg");
-                bool hasShogunParagonPet = Core.CheckInventory("Shogun Paragon Pet");
-                bool hasShogunDagePet = Core.CheckInventory("Shogun Dage Pet");
-                bool hasParagonFiendPet = Core.CheckInventory("Paragon Fiend Quest Pet");
+                // Initialize lists to store quest IDs, quest items, and rewards
+                List<int> Quests = new();
+                List<(ItemBase, int)> QuestItems = new();
+                List<string> Rewards = new();
 
-                if (hasInfernalCaladbolg)
-                    questIDs = new() { 3722, 5755 };
-                else if (hasShogunParagonPet)
-                    questIDs = new() { 5755 };
-                else if (hasShogunDagePet)
-                    questIDs = new() { 5756 };
-                else if (hasParagonFiendPet)
+                // Variable to track if the player has the required pet
+                bool HasQuestPet = false;
+
+                // Define quest IDs required for the pet
+                int[] PetQuests = { 9649, 9646, 9663, 7073, 6750, 6756, 5756, 5755 };
+
+                // Loop through each quest ID and check if the player has the required pet
+                foreach (int Q in PetQuests)
                 {
-                    paragonFiendPetID = Bot.Inventory.GetItem("Paragon Fiend Quest Pet")!.ID;
-                    if (paragonFiendPetID == 47578)
-                        questIDs = new() { 6750 };
-                    else if (paragonFiendPetID == 47614)
-                        questIDs = new() { 6756 };
+                    // Load quest and check if it exists
+                    Quest? firstQID = Bot.Quests.EnsureLoad(Q);
+                    if (firstQID != null)
+                    {
+                        // Get the accept requirement item for the quest
+                        ItemBase? firstAcceptReq = firstQID.AcceptRequirements.FirstOrDefault();
+                        HasQuestPet = Core.CheckInventory(firstAcceptReq?.ID ?? 0);
+                        if (HasQuestPet)
+                        {
+                            // Log pet ownership and add quest ID and rewards
+                            Core.Logger($"Pet Owned: {firstAcceptReq}\n" +
+                                        $"Using QID: {firstQID.ID} for {firstQID.Name}");
+                            Quests.Add(firstQID.ID);
+                            Core.AddDrop(firstQID.Rewards.Select(item => item.Name).Distinct().ToArray());
+                        }
+                    }
+                    else
+                    {
+                        // Log if failed to load quest
+                        Core.Logger($"Failed to load quest with ID: {Q}");
+                        return;
+                    }
+
+                    // Exit loop if player doesn't have the required pet
+                    if (!HasQuestPet)
+                    {
+                        break;
+                    }
                 }
-                else if (Core.CheckInventory("Paragon Ringbearer"))
-                    questIDs = new() { 7073 };
 
+                // Continue running the bot until Legion Token is acquired
                 while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
-                    Army.RunGeneratedAggroMon(map, monNames, questIDs, classType, drops);
+                    Army.RunGeneratedAggroMon(map, monNames, Quests, classType, drops);
                 break;
-
-
 
             case "Thanatos_Paragon_Pet":
                 if (!Core.CheckInventory("Thanatos Paragon Pet"))
