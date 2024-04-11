@@ -3535,7 +3535,7 @@
       "null"
     ],
     "path": "Legion/CoreLegion.cs",
-    "size": 35660,
+    "size": 35742,
     "fileName": "CoreLegion.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/CoreLegion.cs"
   },
@@ -4031,7 +4031,7 @@
       "legion arena"
     ],
     "path": "Army/ArmyLegion/ArmyLegionToken.cs",
-    "size": 16994,
+    "size": 18318,
     "fileName": "ArmyLegionToken.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyLegion/ArmyLegionToken.cs"
   },
