@@ -53,9 +53,9 @@ public class BrightOak
 
         // Map: Rivensylth
         // Equip spirit animal packets
-        Core.SendPackets("%xt%zm%getMapItem%104347%3935%");
+        Core.SendPackets($"%xt%zm%getMapItem%{Bot.Map.RoomID}%3935%");
         Core.Sleep();
-        Core.SendPackets("%xt%zm%equipItem%104347%32057%");
+        Core.SendPackets($"%xt%zm%equipItem%{Bot.Map.RoomID}%32057%");
 
         // Take to the Skies 
         Story.MapItemQuest(4637, "Rivensylth", 3944);
