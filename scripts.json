@@ -3139,7 +3139,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 96506,
+    "size": 96155,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -18052,7 +18052,7 @@
       "null"
     ],
     "path": "Nation/Materials/TotemofNulgath.cs",
-    "size": 920,
+    "size": 904,
     "fileName": "TotemofNulgath.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Materials/TotemofNulgath.cs"
   },
@@ -18949,7 +18949,7 @@
       "null"
     ],
     "path": "Evil/SDKA/CoreSDKA.cs",
-    "size": 25602,
+    "size": 25644,
     "fileName": "CoreSDKA.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/SDKA/CoreSDKA.cs"
   },
@@ -20906,7 +20906,7 @@
       "brightoak"
     ],
     "path": "Story/QueenofMonsters/Extra/BrightOak.cs",
-    "size": 14724,
+    "size": 14746,
     "fileName": "BrightOak.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/QueenofMonsters/Extra/BrightOak.cs"
   },
