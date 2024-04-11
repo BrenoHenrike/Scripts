@@ -169,7 +169,7 @@ public class CoreSDKA
         }
 
         // 2089
-        Penny(1, true);
+        Penny(Bot.Inventory.GetQuantity("Dark Spirit Orb") + 1, true);
 
         if (!Story.QuestProgression(2090))
         {
@@ -202,7 +202,7 @@ public class CoreSDKA
         Core.FarmingLogger("Dark Spirit Orb", quant);
 
         // Core.RegisterQuests(2089);
-        while (!Bot.ShouldExit && (!Core.CheckInventory("Dark Spirit Orb", quant)))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Dark Spirit Orb", quant))
         {
             while (!Bot.ShouldExit && Bot.Map.Name != "maul")
             {
