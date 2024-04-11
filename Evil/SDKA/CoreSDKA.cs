@@ -201,33 +201,28 @@ public class CoreSDKA
 
         Core.FarmingLogger("Dark Spirit Orb", quant);
 
+        Core.Join("maul", "r7", "Left");
         // Core.RegisterQuests(2089);
         while (!Bot.ShouldExit && (!Core.CheckInventory("Dark Spirit Orb", quant)))
         {
-            while (!Bot.ShouldExit && Bot.Map.Name != "maul")
-            {
-                Core.Join("maul", "r7", "Left");
-                Core.Sleep();
-            }
-
-            while (!Bot.ShouldExit && Bot.Player.Cell != "r7")
-            {
-                Core.Jump("r7");
-                Core.Sleep();
-            }
-            Core.EnsureAccept(2089);
+            Core.EnsureAccept(2089, true);
             while (!Bot.ShouldExit && !Core.CheckInventory("DoomCoin", 20))
             {
-                foreach (int mob in new[] { 9, 10, 23 })
-                    Bot.Kill.Monster(mob);
+                while (!Bot.ShouldExit && Bot.Player.Cell != "r7")
+                {
+                    Core.Jump("r7");
+                    Core.Sleep();
+                }
+                Bot.Kill.Monster("Shelleton");
+
+                if (Bot.Quests.CanCompleteFullCheck(2089))
+                {
+                    Core.EnsureCompleteMulti(2089);
+                    Bot.Wait.ForPickup("Dark Spirit Orb");
+                    if (oneTime)
+                        return;
+                }
             }
-            if (Bot.Quests.CanCompleteFullCheck(2089))
-            {
-                Core.EnsureCompleteMulti(2089);
-                Bot.Wait.ForPickup("Dark Spirit Orb");
-            }
-            if (oneTime)
-                return;
         }
     }
 
