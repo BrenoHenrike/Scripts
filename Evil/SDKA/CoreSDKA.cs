@@ -215,25 +215,18 @@ public class CoreSDKA
                 Core.Jump("r7");
                 Core.Sleep();
             }
-
-            foreach (int mob in new[] { 9, 10, 23 })
+            Core.EnsureAccept(2089);
+            while (!Bot.ShouldExit && !Core.CheckInventory("DoomCoin", 20))
             {
-                Core.EnsureAccept(2089);
-                Bot.Kill.Monster(mob);
-                if (Core.CheckInventory("Dark Spirit Orb", quant))
-                    break;
-                //purely because registerquest is a bit borked
-                if (Bot.Quests.CanCompleteFullCheck(2089))
-                {
-                    Core.EnsureCompleteMulti(2089);
-                    Bot.Wait.ForPickup("Dark Spirit Orb");
-                }
-
+                foreach (int mob in new[] { 9, 10, 23 })
+                    Bot.Kill.Monster(mob);
             }
+            if (Bot.Quests.CanCompleteFullCheck(2089))
+                Core.EnsureCompleteMulti(2089);
             if (oneTime)
                 return;
+            Bot.Wait.ForPickup("Dark Spirit Orb");
         }
-        Core.CancelRegisteredQuests();
     }
 
     public void DSO(int quant = 10500)
