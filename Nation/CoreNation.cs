@@ -343,12 +343,12 @@ public class CoreNation
                 Core.Jump("r2", "Down");
 
             foreach (Monster Mob in Bot.Monsters.CurrentAvailableMonsters.Where(m => m.Cell == "r2"))
-            {               
-                    Bot.Kill.Monster(Mob.MapID);
-                    Core.Sleep();
+            {
+                Bot.Kill.Monster(Mob.MapID);
+                Core.Sleep();
 
-                    if (Core.CheckInventory("Nulgath's Approval", quantApproval) && Core.CheckInventory("Archfiend's Favor", quantFavor))
-                        break;
+                if (Core.CheckInventory("Nulgath's Approval", quantApproval) && Core.CheckInventory("Archfiend's Favor", quantFavor))
+                    break;
             }
         }
     }
@@ -1696,7 +1696,7 @@ public class CoreNation
     /// Farms Totem of Nulgath with the best method available.
     /// </summary>
     /// <param name="quant">Desired quantity, 100 = max stack.</param>
-    public void FarmTotemofNulgath(int quant = 100, bool Taro = true)
+    public void FarmTotemofNulgath(int quant = 100) //, bool Taro = true)
     {
         // Check if Totem of Nulgath is already in inventory
         if (Core.CheckInventory("Totem of Nulgath", quant))
@@ -1704,25 +1704,17 @@ public class CoreNation
 
         // NewWorldsNewOpportunities("Totem of Nulgath", quant);
         // VoidKightSwordQuest("Totem of Nulgath", quant);
-        Core.Logger(Taro ? "Method choosen (if pets not owned): Taro" : "Method choosen (if pets not owned): Voucher Item");
-        Quest? TotemQuest = Core.EnsureLoad(726);
-        if (Taro && !TotemQuest!.Upgrade && TotemQuest != null && Bot.Quests.IsAvailable(TotemQuest.ID) || Core.IsMember)
+        // Core.Logger(Taro ? "Method choosen (if pets not owned): Taro" : "Method choosen (if pets not owned): Voucher Item");
+        Core.RegisterQuests(726);
+        while (!Bot.ShouldExit && !Core.CheckInventory("Totem of Nulgath", quant))
         {
             Core.EquipClass(ClassType.Solo);
-            while (!Bot.ShouldExit && !Core.CheckInventory("Totem of Nulgath", quant))
-            {
-                Core.EnsureAccept(726);
-                EssenceofNulgath(25);
-                Core.EquipClass(ClassType.Solo);
-                Core.HuntMonster("tercessuinotlim", "Taro Blademaster", "Taro's Manslayer", isTemp: false);
-                Core.EnsureComplete(726);
-            }
+            Core.HuntMonster("tercessuinotlim", "Taro Blademaster", "Taro's Manslayer", isTemp: false);
+            
+            EssenceofNulgath(25);
         }
-        else
-        {
-            while (!Bot.ShouldExit && !Core.CheckInventory("Totem of Nulgath", quant))
-                VoucherItemTotemofNulgath(VoucherItemTotem.Totem_of_Nulgath);
-        }
+        // while (!Bot.ShouldExit && !Core.CheckInventory("Totem of Nulgath", quant))
+                // VoucherItemTotemofNulgath(VoucherItemTotem.Totem_of_Nulgath);
     }
 
     /// <summary>
