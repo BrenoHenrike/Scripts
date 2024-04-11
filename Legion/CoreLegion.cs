@@ -411,15 +411,15 @@ public class CoreLegion
         // Define pairs of quest IDs with their respective accept requirements
         (int, int)[] questPairs = new[]
         {
-    (9663, 9662),
-    (9649, 9648),
-    (9646, 9645),
-    (7073, 7072),
-    (6750, 6754),
-    (6756, 6749),
-    (5756, 5754),
-    (5755, 5753)
-};
+            (9649, 9648), //hb
+            (9646, 9645), //hb
+            (9663, 9662),
+            (7073, 7072),
+            (6750, 6754),
+            (6756, 6749),
+            (5756, 5754),
+            (5755, 5753)
+        };
 
         // Process quest pairs
         foreach ((int firstQuestID, int secondQuestID) in questPairs)
