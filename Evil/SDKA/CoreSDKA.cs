@@ -222,10 +222,12 @@ public class CoreSDKA
                     Bot.Kill.Monster(mob);
             }
             if (Bot.Quests.CanCompleteFullCheck(2089))
+            {
                 Core.EnsureCompleteMulti(2089);
+                Bot.Wait.ForPickup("Dark Spirit Orb");
+            }
             if (oneTime)
                 return;
-            Bot.Wait.ForPickup("Dark Spirit Orb");
         }
     }
 
