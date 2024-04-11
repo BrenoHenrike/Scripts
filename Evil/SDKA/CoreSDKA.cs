@@ -224,14 +224,16 @@ public class CoreSDKA
                     break;
                 //purely because registerquest is a bit borked
                 if (Bot.Quests.CanCompleteFullCheck(2089))
+                {
                     Core.EnsureCompleteMulti(2089);
-                if (oneTime)
-                    return;
-            }
+                    Bot.Wait.ForPickup("Dark Spirit Orb");
+                }
 
+            }
+            if (oneTime)
+                return;
         }
         Core.CancelRegisteredQuests();
-        Bot.Wait.ForPickup("Dark Spirit Orb");
     }
 
     public void DSO(int quant = 10500)
