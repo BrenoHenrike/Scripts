@@ -1987,6 +1987,8 @@ public class CoreBots
 
             if (targetedMob != null)
             {
+                ToggleAggro(true);
+                Bot.Combat.StopAttacking = false;
                 Bot.Kill.Monster(targetedMob.MapID);
             }
         }
@@ -2002,8 +2004,10 @@ public class CoreBots
             }
         }
 
+        Bot.Combat.StopAttacking = true;
+        ToggleAggro(false);
+        JumpWait();
         Rest();
-        // ToggleAggro(false);
         Bot.Options.AttackWithoutTarget = false;
     }
 
@@ -2045,7 +2049,11 @@ public class CoreBots
             if (log)
                 Logger($"Killing {monster}");
             ToggleAggro(true);
+            Bot.Combat.StopAttacking = false;
             Bot.Kill.Monster(monster);
+            Bot.Combat.StopAttacking = true;
+            ToggleAggro(false);
+            JumpWait();
             Rest();
         }
         else _KillForItem(monster.Name, item, quant, isTemp, log: log, cell: cell);
@@ -2074,10 +2082,12 @@ public class CoreBots
         {
             if (log)
                 Logger($"Hunting {monster}");
-
+            Bot.Combat.StopAttacking = false;
             Bot.Hunt.Monster(monster);
             Bot.Wait.ForMonsterDeath();
             Bot.Combat.StopAttacking = true;
+            ToggleAggro(false);
+            JumpWait();
             Rest();
         }
         else
@@ -2097,6 +2107,7 @@ public class CoreBots
                 {
                     Bot.Combat.StopAttacking = true;
                     Bot.Wait.ForPickup(item);
+                    JumpWait();
                     break;
                 }
                 Sleep();
@@ -2140,8 +2151,11 @@ public class CoreBots
         {
             if (log)
                 Logger($"Killing {monster.Name}");
-
+            Bot.Combat.StopAttacking = false;
             Bot.Kill.Monster(monster);
+            Bot.Combat.StopAttacking = true;
+            ToggleAggro(false);
+            JumpWait();
             Rest();
             return;
         }
@@ -2152,10 +2166,22 @@ public class CoreBots
 
         while (!Bot.ShouldExit && (isTemp ? !Bot.TempInv.Contains(item, quant) : !CheckInventory(item, quant)))
         {
-            if (!Bot.Combat.StopAttacking)
-                Bot.Combat.Attack(monster);
+            Bot.Combat.StopAttacking = false;
+            Bot.Combat.Attack(monster);
+
+            if (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant))
+            {
+                Bot.Combat.StopAttacking = true;
+                Bot.Wait.ForPickup(item);
+                JumpWait();
+                break;
+            }
             Sleep();
             Rest();
+            // if (!Bot.Combat.StopAttacking)
+            //     Bot.Combat.Attack(monster);
+            // Sleep();
+            // Rest();
         }
 
     }
