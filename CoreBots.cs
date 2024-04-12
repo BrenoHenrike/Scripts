@@ -2077,6 +2077,7 @@ public class CoreBots
 
             Bot.Hunt.Monster(monster);
             Bot.Wait.ForMonsterDeath();
+            Bot.Combat.StopAttacking = true;
             Rest();
         }
         else
@@ -2089,11 +2090,12 @@ public class CoreBots
 
             while (!Bot.ShouldExit && isTemp ? !Bot.TempInv.Contains(item, quant) : !CheckInventory(item, quant))
             {
-                if (!Bot.Combat.StopAttacking)
-                    Bot.Hunt.Monster(monster);
+                Bot.Combat.StopAttacking = false;
+                Bot.Hunt.Monster(monster);
 
                 if (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant))
                 {
+                    Bot.Combat.StopAttacking = true;
                     Bot.Wait.ForPickup(item);
                     break;
                 }
