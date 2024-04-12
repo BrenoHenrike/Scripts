@@ -1970,7 +1970,6 @@ public class CoreBots
 
         if (item == null)
         {
-
             if (log)
                 Logger($"Killing {monster}");
 
@@ -2590,31 +2589,19 @@ public class CoreBots
 
     public void _KillForItem(string name, string item, int quantity, bool isTemp = false, bool rejectElse = false, bool log = true, string? cell = null)
     {
-        if (CheckInventory(item, quantity))
+        if (item != null && (isTemp ? Bot.TempInv.Contains(item, quantity) : CheckInventory(item, quantity)))
             return;
 
         if (log)
             FarmingLogger(item, quantity);
 
         Monster? targetedMob = new();
-        while (!Bot.ShouldExit && !CheckInventory(item, quantity))
+
+        while (!Bot.ShouldExit && item != null && (isTemp ? !Bot.TempInv.Contains(item, quantity) : !CheckInventory(item, quantity)))
         {
             foreach (Monster mob in Bot.Monsters.CurrentAvailableMonsters)
             {
-                if (Bot.Map.PlayerNames != null && Bot.Map.PlayerNames.Where(x => x != null && x != Bot.Player.Username).Any() && !PublicDifficult && PrivateRooms)
-                {
-                    // Enable aggro on monsters if conditions are met
-                    Bot.Options.AggroMonsters = true;
-                }
-                else
-                {
-                    // Disable aggro on monsters
-                    Bot.Options.AggroMonsters = false;
-                }
-
-                ItemBase? Item =
-                isTemp ? Bot.TempInv.Items.FirstOrDefault(x => x.Name.FormatForCompare() == item.FormatForCompare())
-                : Bot.Inventory.Items.FirstOrDefault(x => x.Name.FormatForCompare() == item.FormatForCompare());
+                Bot.Options.AggroMonsters = Bot.Map.PlayerNames!.Where(x => x != null && x != Bot.Player.Username).Any() && !PublicDifficult && PrivateRooms;
 
                 #region insurance
                 while (!Bot.ShouldExit && Bot.Player.Cell != cell && cell != null)
@@ -2630,20 +2617,26 @@ public class CoreBots
                 Bot.Kill.Monster(targetedMob!.MapID);
 
                 if (rejectElse)
-                    Bot.Drops.RejectExcept(item);
+                    Bot.Drops.RejectExcept(item!);
 
-                if (Item == null || CheckInventory(Item.ID, quantity))
+                if (item == null || isTemp ? Bot.TempInv.Contains(item!, quantity) : CheckInventory(item, quantity))
                 {
                     Bot.Options.AggroMonsters = false;
-                    if (Item != null)
-                        Bot.Wait.ForPickup(Item.Name);
-                    Rest();
-                    break;
+                    Bot.Combat.StopAttacking = true;
+                    Bot.Wait.ForPickup(item!);
+                    while (!Bot.ShouldExit && Bot.Player.InCombat)
+                    {
+                        JumpWait();
+                        Sleep();
+                        if (!Bot.Player.InCombat)
+                            break;
+                    }
                 }
             }
         }
         Bot.Options.AggroMonsters = false;
-        JumpWait();
+        Sleep();
+        Rest();
     }
 
 
