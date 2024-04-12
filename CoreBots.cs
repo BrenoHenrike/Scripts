@@ -2587,7 +2587,7 @@ public class CoreBots
     }
 
 
-    public void _KillForItem(string name, string item, int quantity, bool isTemp = false, bool rejectElse = false, bool log = true, string? cell = null)
+    public void _KillForItem(string name, string? item, int quantity, bool isTemp = false, bool rejectElse = false, bool log = true, string? cell = null)
     {
         if (item != null && (isTemp ? Bot.TempInv.Contains(item, quantity) : CheckInventory(item, quantity)))
             return;
@@ -2602,6 +2602,18 @@ public class CoreBots
             foreach (Monster mob in Bot.Monsters.CurrentAvailableMonsters)
             {
                 Bot.Options.AggroMonsters = Bot.Map.PlayerNames!.Where(x => x != null && x != Bot.Player.Username).Any() && !PublicDifficult && PrivateRooms;
+
+                if (item == null || isTemp ? Bot.TempInv.Contains(item!, quantity) : CheckInventory(item, quantity))
+                {
+                    Bot.Options.AggroMonsters = false;
+                    Bot.Combat.StopAttacking = true;
+                    JumpWait();
+                    if (!isTemp)
+                        Bot.Wait.ForPickup(item!);
+                    Sleep();
+                    Rest();
+                    break;
+                }
 
                 #region insurance
                 while (!Bot.ShouldExit && Bot.Player.Cell != cell && cell != null)
@@ -2618,25 +2630,8 @@ public class CoreBots
 
                 if (rejectElse)
                     Bot.Drops.RejectExcept(item!);
-
-                if (item == null || isTemp ? Bot.TempInv.Contains(item!, quantity) : CheckInventory(item, quantity))
-                {
-                    Bot.Options.AggroMonsters = false;
-                    Bot.Combat.StopAttacking = true;
-                    Bot.Wait.ForPickup(item!);
-                    while (!Bot.ShouldExit && Bot.Player.InCombat)
-                    {
-                        JumpWait();
-                        Sleep();
-                        if (!Bot.Player.InCombat)
-                            break;
-                    }
-                }
             }
         }
-        Bot.Options.AggroMonsters = false;
-        Sleep();
-        Rest();
     }
 
 
@@ -3102,11 +3097,12 @@ public class CoreBots
             return;
         }
 
-        while (!Bot.ShouldExit && (Bot.Player.HasTarget || Bot.Player.InCombat))
+        while (!Bot.ShouldExit && Bot.Player.InCombat)
         {
-            Bot.Combat.CancelTarget();
-            Bot.Wait.ForCombatExit();
-            Bot.Combat.Exit();
+            if (Bot.Player.HasTarget)
+                Bot.Combat.CancelTarget();
+            if (Bot.Player.InCombat)
+                Bot.Combat.Exit();
             JumpWait();
             Sleep();
         }
@@ -3335,7 +3331,7 @@ public class CoreBots
             cellPad = ("Enter", "Spawn");
         else
         {
-            blackListedCells.AddRange(new List<string>() { "Wait", "Blank", "Out", "moveFrame" });
+            blackListedCells.AddRange(new List<string>() { "Wait", "Blank", "Out", "moveFrame", });
             blackListedCells.AddRange(Bot.Map.Cells.Where(x => x.StartsWith("Cut")));
             if (!IsMember)
                 blackListedCells.Add("Eggs");
@@ -3399,14 +3395,9 @@ public class CoreBots
         if (Bot.Map.Name != null && Bot.Map.Name.ToLower() == strippedMap && !ignoreCheck)
             return;
 
-        //if aggro/aggroall is  enable when joining a map, disable it
-        bool pauseAggro = Bot.Options.AggroMonsters || Bot.Options.AggroAllMonsters;
-        if (pauseAggro)
-        {
-            ToggleAggro(false);
-            JumpWait();
-            Bot.Wait.ForCombatExit();
-        }
+        //if aggro/aggroall is enabled when joining a map, disable it [forced]
+        Bot.Options.AggroMonsters = false;
+        Bot.Options.AggroAllMonsters = false;
 
         Sleep();
 
