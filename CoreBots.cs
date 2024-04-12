@@ -3297,7 +3297,7 @@ public class CoreBots
     /// </summary>
     public void JumpWait()
     {
-        if (!Bot.Player.InCombat)
+        if (!Bot.Player.InCombat || Bot.Options.AggroMonsters)
             return;
 
         Bot.Options.AttackWithoutTarget = false;
