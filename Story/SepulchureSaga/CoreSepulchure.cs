@@ -65,7 +65,6 @@ public class CoreSepulchure
             foreach (ItemBase Item in dothis!.Requirements)
                 Core.HuntMonster("scarsgarde", "Garde Watch", Item.Name, Item.Quantity, Item.Temp);
         }
-        Story.KillQuest(6337, "scarsgarde", new[] { "Garde Watch", "Garde Watch", "Garde Watch", "Garde Watch", "Garde Watch", "Garde Watch", "Garde Watch" });
 
         // Pass for Real 6338
         Story.MapItemQuest(6338, "scarsgarde", new[] { 5866, 5867 });
@@ -245,7 +244,7 @@ public class CoreSepulchure
         {
             Core.EnsureAccept(6381);
             Core.Join("ebonslate", "r11", "Left");
-            Bot.Combat.Attack("Dethrix");
+            Bot.Kill.Monster("Dethrix");
             Core.Sleep(10000);
         }
 
