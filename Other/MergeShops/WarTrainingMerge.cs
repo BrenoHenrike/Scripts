@@ -109,7 +109,7 @@ public class WarTrainingMerge
                 case "Dragon Scale":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
-                    Core.HuntMonster("lair", "Bronze Draconian|Dark Draconian", req.Name, quant);
+                    Core.HuntMonster("lair", "Bronze Draconian", req.Name, quant);
                     break;
             }
         }

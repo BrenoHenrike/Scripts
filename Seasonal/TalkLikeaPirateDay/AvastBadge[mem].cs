@@ -91,8 +91,8 @@ public class AvastBadge
                 }
                 Core.BuyItem("Greenguardwest", 363, "Fishin' Hooks");
             }
-            Core.HuntMonster("akiba", "Kage Nopperabo|Ninja Nopperabo|Samurai Nopperabo", "Hook Sword", isTemp: false);
-            // Story.KillQuest(2391, "akiba", "Kage Nopperabo|Ninja Nopperabo|Samurai Nopperabo", "Hook Sword", isTemp: false);
+            Core.HuntMonster("akiba", "Kage Nopperabo", "Hook Sword", isTemp: false);
+            // Story.KillQuest(2391, "akiba", "Kage Nopperabo", "Hook Sword", isTemp: false);
             Core.EnsureComplete(2391);
         }
 

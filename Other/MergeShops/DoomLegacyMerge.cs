@@ -77,7 +77,7 @@ public class DoomLegacyMerge
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.EquipClass(ClassType.Farm);
-                        Core.HuntMonster("thorngarde", "CryptHacker|NecroDrone", "Deadtech Power Core", 7);
+                        Core.HuntMonster("thorngarde", "CryptHacker", "Deadtech Power Core", 7);
                         Core.HuntMonster("thorngarde", "CryptHacker", "CryptHacker Circuitry", 15);
                         Core.HuntMonster("thorngarde", "NecroMech", "NecroMech Targeting Systems", 5);
 

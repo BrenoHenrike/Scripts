@@ -90,7 +90,7 @@ public class SpoilsofLightMerge
                     {
                         Core.HuntMonster(
                             "lightguardwar",
-                            "Citadel Crusader|Lightguard Cast",
+                            "Citadel Crusader",
                             "Lightguard Medals",
                             5
                         );
@@ -107,7 +107,7 @@ public class SpoilsofLightMerge
                     {
                         Core.HuntMonster(
                             "lightguardwar",
-                            "Citadel Crusader|Lightguard Cast",
+                            "Citadel Crusader",
                             "Bone Marrow",
                             3
                         );
@@ -124,7 +124,7 @@ public class SpoilsofLightMerge
                     {
                         Core.HuntMonster(
                             "lightguardwar",
-                            "Citadel Crusader|Lightguard Paladin",
+                            "Citadel Crusader",
                             "Gunpowder",
                             3
                         );

@@ -97,7 +97,7 @@ public class DeathPitArenaRepMerge
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         //Do You Even Brawl 5155
-                        Core.HuntMonster("deathpit", "Velm's Restorer|Velm's Brawler", "Death Pit Token");
+                        Core.HuntMonster("deathpit", "Velm's Restorer", "Death Pit Token");
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();

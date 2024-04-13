@@ -39,7 +39,7 @@ public class Gamehaven
         Story.KillQuest(942, "gamehaven", "Evil Arcade Machine");
 
         // Strategy Guides are Key
-        Story.KillQuest(943, "gamehaven", "Evil Console Machine|Evil Arcade Machine");
+        Story.KillQuest(943, "gamehaven", "Evil Console Machine");
 
         // Investigate the Storage Room
         Story.MapItemQuest(944, "gamehaven", 269);

@@ -91,7 +91,7 @@ public class BrightshadowMerge
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.HuntMonster("brightshadow", "Brightfall Light", "BrightFall Light", 5);
-                        Core.HuntMonster("brightshadow", "Brightfall Guard|Shadowflame Paladin", "BrightFall Dark", 10);
+                        Core.HuntMonster("brightshadow", "Brightfall Guard", "BrightFall Dark", 10);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();

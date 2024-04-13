@@ -90,7 +90,7 @@ public class AshfallCampMerge
 
                 case "Defender Badge":
                     Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster("ashfallcamp", "Blackrawk|Infernus|Smoldur", req.Name, quant, false);
+                    Core.HuntMonster("ashfallcamp", "Blackrawk", req.Name, quant, false);
                     break;
 
                 case "Flame Claws":
@@ -159,7 +159,7 @@ public class AshfallCampMerge
                 case "Melted Glass":
                 case "Copper Wire":
                     Core.EquipClass(ClassType.Farm);
-                    Core.HuntMonster("pride", "Cellar Guard|Drakel Guard|Elite Guard", req.Name, quant, false);
+                    Core.HuntMonster("pride", "Cellar Guard", req.Name, quant, false);
                     break;
 
             }

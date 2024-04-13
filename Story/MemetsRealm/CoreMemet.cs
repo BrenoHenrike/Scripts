@@ -233,7 +233,7 @@ public class MemetsRealm
         Story.KillQuest(6660, "spookeasy", "*");
 
         //A Nocturnal Vacation (6661)
-        Story.KillQuest(6661, "spookeasy", "Nightmare Goo|Nightmare Shade");
+        Story.KillQuest(6661, "spookeasy", "Nightmare Goo");
     }
 
     public void DreamMaster()
@@ -249,7 +249,7 @@ public class MemetsRealm
         Story.KillQuest(6662, "dreammaster", "Prison Wall");
 
         //Freedom! (6663)
-        Story.KillQuest(6663, "dreammaster", "Guard Llama|Sparkle Guard");
+        Story.KillQuest(6663, "dreammaster", "Guard Llama");
         Story.MapItemQuest(6663, "dreammaster", 6176);
 
         //Make the Glitter Fade (6664)
@@ -284,10 +284,10 @@ public class MemetsRealm
         Story.KillQuest(4143, "Nightmare", "Bobble Clown");
 
         //FEAR OF CLOWNS!!! 4144
-        Story.KillQuest(4144, "Nightmare", "Crazy Clown|Creepy Clown");
+        Story.KillQuest(4144, "Nightmare", "Crazy Clown");
 
         //Fear of Spiders 4145
-        Story.KillQuest(4145, "Nightmare", "Castle Spider|Cocoon Spider|Tomb Spider");
+        Story.KillQuest(4145, "Nightmare", "Castle Spider");
 
         //Fear of Snakes? 4146
         Story.KillQuest(4146, "Nightmare", new[] { "Wrasp", "Sneak" });
@@ -296,19 +296,19 @@ public class MemetsRealm
         Story.MapItemQuest(4147, "Nightmare", 3262);
 
         //Fear of Germs? 4148
-        Story.KillQuest(4148, "Nightmare", "Germs|Sewage Elemental");
+        Story.KillQuest(4148, "Nightmare", "Germs");
 
         //Fear of Needles? 4149
         Story.KillQuest(4149, "Nightmare", "Needle");
 
         //Fear of Dolls? 4150
-        Story.KillQuest(4150, "Nightmare", "Broken Toy|Undead Dolly");
+        Story.KillQuest(4150, "Nightmare", "Broken Toy");
 
         //Fear of Being Buried Alive? 4151
         Story.KillQuest(4151, "Nightmare", new[] { "Unearthed Skeleton", "Rotfeeder Worm" });
 
         //Fear of Burning? 4152
-        Story.KillQuest(4152, "Nightmare", "Fire Imp|Flame Elemental");
+        Story.KillQuest(4152, "Nightmare", "Fire Imp");
 
         //FEAR OF BURNING!!! 4153
         Story.KillQuest(4153, "Nightmare", "Flame Elemental");

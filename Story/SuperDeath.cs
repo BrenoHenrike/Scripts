@@ -30,11 +30,11 @@ public class SuperDeath
         Story.PreLoad(this);
 
         //SMASH a Path 8015
-        Story.KillQuest(8015, "SuperDeath", "Shadow Cave Yeti|Shadow Collector");
+        Story.KillQuest(8015, "SuperDeath", "Shadow Cave Yeti");
 
         //Cold Open the Portal 8016
         Story.MapItemQuest(8016, "SuperDeath", 8330);
-        Story.KillQuest(8016, "SuperDeath", new[] { "Shadow Cave Yeti|Shadow Collector", "Shadow Lava Crab", "Shadow Collector", "Shadow Cave Yeti" });
+        Story.KillQuest(8016, "SuperDeath", new[] { "Shadow Cave Yeti", "Shadow Lava Crab", "Shadow Collector", "Shadow Cave Yeti" });
 
         //VolcaNO Thank You 8017
         Story.KillQuest(8017, "SuperDeath", "Igneous Lava Crab");
@@ -73,7 +73,7 @@ public class SuperDeath
         Story.KillQuest(8028, "SuperDeath", "Charries");
 
         //Shadow Realm Cleansing 8029
-        Story.KillQuest(8029, "SuperDeath", "Shadow Cave Bandit|Shadow Goo Pup");
+        Story.KillQuest(8029, "SuperDeath", "Shadow Cave Bandit");
 
         //Forging the Shadow Key 8030
         Story.KillQuest(8030, "SuperDeath", new[] { "Shadow Mutant", "Shadow Scorpion", "Shadow Cave Bandit", "Shadow Goo Pup" });
