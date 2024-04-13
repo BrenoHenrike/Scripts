@@ -1520,30 +1520,34 @@ public class CoreBots
             return false;
 
 
-        var requiredItemNames = QuestData.AcceptRequirements
-        .Concat(QuestData.Requirements)
-        .Select(item => item?.Name)
-        .Where(name => !string.IsNullOrEmpty(name))
-        .ToArray();
+        ItemBase[] requiredItems = QuestData.AcceptRequirements
+                .Concat(QuestData.Requirements)
+                .Where(item => item != null && !string.IsNullOrEmpty(item.Name))
+                .ToArray();
 
-        foreach (var itemName in requiredItemNames)
-            if (itemName != null && !Bot.Inventory.Contains(itemName))
-                Unbank(itemName);
-
-        if (QuestData.AcceptRequirements.Any())
-            foreach (ItemBase item in QuestData.AcceptRequirements)
+        foreach (ItemBase item in requiredItems)
+        {
+            if (item != null && !item.Temp && !Bot.Inventory.Items.Concat(Bot.Bank.Items).Any(i => i.ID == item.ID))
             {
-                if (!Bot.Drops.ToPickupIDs.Contains(item.ID))
-                    Bot.Drops.Add(item.ID);
+                Unbank(item.ID);
             }
+        }
 
-        if (QuestData.Requirements.Any())
-            foreach (ItemBase item in QuestData.Requirements)
+        foreach (ItemBase item in QuestData.AcceptRequirements)
+        {
+            if (!Bot.Drops.ToPickupIDs.Contains(item.ID))
             {
-                if (!Bot.Drops.ToPickupIDs.Contains(item.ID))
-                    Bot.Drops.Add(item.ID);
+                Bot.Drops.Add(item.ID);
             }
+        }
 
+        foreach (ItemBase item in QuestData.Requirements)
+        {
+            if (!Bot.Drops.ToPickupIDs.Contains(item.ID))
+            {
+                Bot.Drops.Add(item.ID);
+            }
+        }
 
         Sleep(ActionDelay * 2);
         // Bot.Send.Packet($"%xt%zm%acceptQuest%{Bot.Map.RoomID}%{questID}%");
@@ -2080,7 +2084,9 @@ public class CoreBots
         if (item == null)
         {
             if (log)
+            {
                 Logger($"Hunting {monster}");
+            }
             Bot.Combat.StopAttacking = false;
             Bot.Hunt.Monster(monster);
             Bot.Wait.ForMonsterDeath();
@@ -2092,9 +2098,13 @@ public class CoreBots
         else
         {
             if (!isTemp)
+            {
                 AddDrop(item);
+            }
             if (log)
+            {
                 Logger($"Hunting {monster} for {item}, ({dynamicQuant(item, isTemp)}/{quant}) [Temp = {isTemp}]");
+            }
 
 
             while (!Bot.ShouldExit && isTemp ? !Bot.TempInv.Contains(item, quant) : !CheckInventory(item, quant))

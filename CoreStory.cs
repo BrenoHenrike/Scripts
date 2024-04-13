@@ -6,6 +6,7 @@ tags: null
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
+using Skua.Core.Models.Monsters;
 using Skua.Core.Models.Quests;
 using System.Diagnostics;
 using System.Dynamic;
@@ -41,12 +42,18 @@ public class CoreStory
     {
         Quest QuestData = Core.EnsureLoad(QuestID);
         if (QuestProgression(QuestID, GetReward, Reward))
+        {
             return;
+        }
 
         SmartKillMonster(QuestID, MapName, MonsterName);
         if (AutoCompleteQuest)
+        {
             foreach (ItemBase item in QuestData.Requirements)
+            {
                 Bot.Wait.ForPickup(item.ID);
+            }
+        }
         TryComplete(QuestData, AutoCompleteQuest);
 
         void SmartKillMonster(int questID, string map, string monster)
@@ -70,14 +77,21 @@ public class CoreStory
     /// <param name="AutoCompleteQuest">If the method should turn in the quest for you when the quest can be completed</param>
     public void KillQuest(int QuestID, string MapName, string[] MonsterNames, bool GetReward = true, string Reward = "All", bool AutoCompleteQuest = true)
     {
+
         Quest QuestData = Core.EnsureLoad(QuestID);
         if (QuestProgression(QuestID, GetReward, Reward))
+        {
             return;
+        }
 
         SmartKillMonster(QuestID, MapName, MonsterNames);
         if (AutoCompleteQuest)
+        {
             foreach (ItemBase item in QuestData.Requirements)
+            {
                 Bot.Wait.ForPickup(item.ID);
+            }
+        }
         TryComplete(QuestData, AutoCompleteQuest);
 
         void SmartKillMonster(int questID, string map, string[] monsters)
@@ -86,7 +100,9 @@ public class CoreStory
             _AddRequirement(questID);
             Core.Join(map);
             foreach (string monster in monsters)
+            {
                 _SmartKill(monster, 20);
+            }
             CurrentRequirements.Clear();
         }
     }
@@ -106,7 +122,9 @@ public class CoreStory
         Quest QuestData = Core.EnsureLoad(QuestID);
 
         if (QuestProgression(QuestID, GetReward, Reward))
+        {
             return;
+        }
 
         Core.EnsureAccept(QuestID);
         Core.GetMapItem(MapItemID, Amount, MapName);
@@ -128,11 +146,15 @@ public class CoreStory
         Quest QuestData = Core.EnsureLoad(QuestID);
 
         if (QuestProgression(QuestID, GetReward, Reward))
+        {
             return;
+        }
 
         Core.EnsureAccept(QuestID);
         foreach (int MapItemID in MapItemIDs)
+        {
             Core.GetMapItem(MapItemID, Amount, MapName);
+        }
         TryComplete(QuestData, AutoCompleteQuest);
     }
 
@@ -189,11 +211,15 @@ public class CoreStory
     private void TryComplete(Quest QuestData, bool AutoCompleteQuest)
     {
         if (!Bot.Quests.CanComplete(QuestData.ID))
+        {
             return;
+        }
 
         Core.Sleep();
         if (AutoCompleteQuest)
+        {
             Core.EnsureComplete(QuestData.ID);
+        }
         Bot.Wait.ForQuestComplete(QuestData.ID);
         Core.Logger($"Completed Quest: [{QuestData.ID}] - \"{QuestData.Name}\"", "QuestProgression");
         Core.Sleep(1500);
@@ -400,17 +426,14 @@ public class CoreStory
         {
             LegacyQuestObject? runQuestData = whereToGet.Find(d => d.desiredQuestID == questID);
 
-            Core.DebugLogger(this);
             if (runQuestData == null)
             {
                 Core.Logger("runQuestData is NULL");
                 return;
             }
             Quest questData = Core.EnsureLoad(questID);
-            Core.DebugLogger(this);
 
             int[] requiredReward = runQuestData.requiredQuestReward!.Select(i => i.ID).ToArray();
-            Core.DebugLogger(this);
             if (runQuestData.desiredQuestReward.Count == 0 && questID != finalItemQuest.desiredQuestID)
             {
                 if (!Core.CheckInventory(requiredReward))
@@ -418,39 +441,31 @@ public class CoreStory
                 return;
             }
 
-            Core.DebugLogger(this);
             int[] desiredReward = runQuestData.desiredQuestReward.Select(i => i.ID).ToArray();
             if (questID != finalItemQuest.desiredQuestID ? Core.CheckInventory(desiredReward) : Core.CheckInventory(Core.EnsureLoad(finalItemQuest.desiredQuestID).Rewards.Select(x => x.ID).ToArray()))
             {
                 Core.Logger($"Already Completed: [{questID}] - \"{questData.Name}\"", "QuestProgression");
                 return;
             }
-            Core.DebugLogger(this);
 
             if (!Core.CheckInventory(requiredReward))
                 runQuest(runQuestData.requiredQuestID);
 
             if (_LegacyQuestStop)
                 return;
-            Core.DebugLogger(this);
 
             Core.Logger($"Doing Quest: [{questID}] - \"{questData.Name}\"", "QuestProgression");
             Core.EnsureAccept(questID);
             Core.AddDrop(desiredReward);
 
-            Core.DebugLogger(this);
             LegacyQuestID = questID;
             questLogic();
-            Core.DebugLogger(this);
 
             TryComplete(questData, LegacyQuestAutoComplete);
-            Core.DebugLogger(this);
             foreach (int i in desiredReward)
                 Bot.Wait.ForPickup(i);
-            Core.DebugLogger(this);
             if (questID == finalItemQuest.desiredQuestID)
                 Bot.Drops.Pickup(Core.EnsureLoad(finalItemQuest.desiredQuestID).Rewards.Select(x => x.ID).ToArray());
-            Core.DebugLogger(this);
 
             LegacyQuestAutoComplete = true;
         }
@@ -589,11 +604,15 @@ public class CoreStory
         for (int j = 0; j < iterations; j++)
         {
             if (CurrentRequirements.Count == 0)
+            {
                 break;
+            }
             if (CurrentRequirements.Count == 1)
             {
                 if (_RepeatCheck(ref repeat, 0))
+                {
                     break;
+                }
                 _MonsterHunt(ref repeat, monster, CurrentRequirements[0].Name, CurrentRequirements[0].Quantity, CurrentRequirements[0].Temp, 0);
                 break;
             }
@@ -609,14 +628,18 @@ public class CoreStory
                     if (j != 0 && Core.CheckInventory(CurrentRequirements[i].Name))
                     {
                         if (_RepeatCheck(ref repeat, i))
+                        {
                             break;
+                        }
                         _MonsterHunt(ref repeat, monster, CurrentRequirements[i].Name, CurrentRequirements[i].Quantity, CurrentRequirements[i].Temp, i);
                         break;
                     }
                 }
             }
             if (!repeat)
+            {
                 break;
+            }
 
             Bot.Hunt.Monster(monster);
             Bot.Drops.Pickup(CurrentRequirements.Where(item => !item.Temp).Select(item => item.Name).ToArray());
@@ -626,10 +649,43 @@ public class CoreStory
     private readonly List<ItemBase> CurrentRequirements = new();
     private void _MonsterHunt(ref bool shouldRepeat, string monster, string itemName, int quantity, bool isTemp, int index)
     {
-        Bot.Hunt.ForItem(monster, itemName, quantity, isTemp);
+        if (isTemp ? Bot.TempInv.Contains(itemName, quantity) : Core.CheckInventory(itemName, quantity))
+        {
+            CurrentRequirements.RemoveAt(index);
+            shouldRepeat = false;
+            return;
+        }
+
+        Monster? M = Bot.Monsters.MapMonsters.FirstOrDefault(x => x.Name.FormatForCompare() == monster.FormatForCompare());
+        while (!Bot.ShouldExit && isTemp ? !Bot.TempInv.Contains(itemName!, quantity) : !Core.CheckInventory(itemName, quantity))
+        {
+            if (Bot.Player.Cell != M!.Cell)
+            {
+                Core.Jump(M!.Cell, Bot.Player.Pad);
+                Core.Sleep();
+                Bot.Wait.ForCellChange(M!.Cell);
+            }
+
+            if (itemName == null || isTemp ? Bot.TempInv.Contains(itemName!, quantity) : Core.CheckInventory(itemName, quantity))
+            {
+                Bot.Options.AggroMonsters = false;
+                Bot.Combat.StopAttacking = true;
+                Core.JumpWait();
+                if (!isTemp)
+                {
+                    Bot.Wait.ForPickup(itemName!);
+                }
+                Core.Sleep();
+                Core.Rest();
+                break;
+            }
+
+            else Bot.Kill.Monster(M!.MapID);
+        }
         CurrentRequirements.RemoveAt(index);
         shouldRepeat = false;
     }
+
     private bool _RepeatCheck(ref bool shouldRepeat, int index)
     {
         if (Core.CheckInventory(CurrentRequirements[index].Name, CurrentRequirements[index].Quantity))
@@ -655,7 +711,9 @@ public class CoreStory
                 if (!CurrentRequirements.Where(i => i.Name == item.Name).Any())
                 {
                     if (!item.Temp)
+                    {
                         reqItems.Add(item.Name);
+                    }
                     CurrentRequirements.Add(item);
                 }
             });
