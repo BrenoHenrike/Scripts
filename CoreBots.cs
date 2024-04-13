@@ -3751,7 +3751,6 @@ public class CoreBots
             case "infernalarena":
             case "malgor":
             case "nothing":
-            case "oaklore":
             case "ravenscar":
             case "superslayin":
             case "treetitanbattle":
