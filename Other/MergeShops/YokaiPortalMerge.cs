@@ -70,7 +70,7 @@ public class YokaiPortalMerge
                     {
                         Core.EquipClass(ClassType.Farm);
                         Core.HuntMonster("yokaiportal", "Kitsune Spirits", "Kitsune Spirit Incense", 15, log: false);
-                        Core.HuntMonster("yokaiportal", "Puppeted Dragonling", "Puppeted Dragonling", 15, log: false);
+                        Core.HuntMonster("yokaiportal", "Puppeted Dragonling", "Draconic Red String", 15, log: false);
                         Core.EquipClass(ClassType.Solo);
                         Core.HuntMonster("yokaiportal", "Kitsune Kukol'nyy", "Lord Kitsune's Red String", log: false);
                         Bot.Wait.ForPickup(req.Name);
