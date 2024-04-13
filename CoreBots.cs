@@ -464,7 +464,7 @@ public class CoreBots
     }
 
     public List<string> GetLogs(LogType type = LogType.Script)
-        => (_logService ??= Ioc.Default.GetRequiredService<ILogService>()).GetLogs(LogType.Script);
+        => (_logService ??= Ioc.Default.GetRequiredService<ILogService>()).GetLogs(type);
     private ILogService? _logService;
 
     public void ScriptMain(IScriptInterface Bot)
