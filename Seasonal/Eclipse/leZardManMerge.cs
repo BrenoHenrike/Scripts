@@ -82,7 +82,7 @@ public class leZardManMerge
                     {
                         Core.EquipClass(ClassType.Farm);
                         Core.HuntMonster("blackholesun", "Black Light Elemental", "Black Light Aura", 7);
-                        Core.KillMonster("dreadspace", "r22", "Left", "Troblor", "Star Scrap Metal", 10);
+                        Core.KillMonster("dreadspace", "r22", "Left", "Troblor", "Star Scrap Metal", 10, isTemp: false);
                         // while (!Bot.ShouldExit && !Core.CheckInventory("Star Scrap Metal", 10))
                         // {
                         //     Core.EnsureAccept(4289);
