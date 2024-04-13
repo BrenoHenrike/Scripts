@@ -50,7 +50,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 203364,
+    "size": 203336,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -263,7 +263,7 @@
       "gamehaven"
     ],
     "path": "Story/GameHaven.cs",
-    "size": 1841,
+    "size": 1821,
     "fileName": "GameHaven.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/GameHaven.cs"
   },
@@ -328,7 +328,7 @@
       "dream-palace"
     ],
     "path": "Story/DreamPalace.cs",
-    "size": 1386,
+    "size": 1316,
     "fileName": "DreamPalace.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/DreamPalace.cs"
   },
@@ -381,7 +381,7 @@
       "superdeath"
     ],
     "path": "Story/SuperDeath.cs",
-    "size": 2620,
+    "size": 2571,
     "fileName": "SuperDeath.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/SuperDeath.cs"
   },
@@ -434,7 +434,7 @@
       "musty-cave"
     ],
     "path": "Story/MustyCave.cs",
-    "size": 2563,
+    "size": 2531,
     "fileName": "MustyCave.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/MustyCave.cs"
   },
@@ -805,7 +805,7 @@
       "castle-tunnels"
     ],
     "path": "Story/CastleTunnels.cs",
-    "size": 2020,
+    "size": 2008,
     "fileName": "CastleTunnels.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/CastleTunnels.cs"
   },
@@ -1721,7 +1721,7 @@
       "mega shadow medal"
     ],
     "path": "Other/ShadowflameWarMedal.cs",
-    "size": 1547,
+    "size": 1511,
     "fileName": "ShadowflameWarMedal.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/ShadowflameWarMedal.cs"
   },
@@ -5630,7 +5630,7 @@
       "null"
     ],
     "path": "Story/MemetsRealm/CoreMemet.cs",
-    "size": 12674,
+    "size": 12559,
     "fileName": "CoreMemet.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/MemetsRealm/CoreMemet.cs"
   },
@@ -6208,7 +6208,7 @@
       "null"
     ],
     "path": "Story/Hollowborn/CoreHollowbornStory.cs",
-    "size": 4022,
+    "size": 3927,
     "fileName": "CoreHollowbornStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Hollowborn/CoreHollowbornStory.cs"
   },
@@ -8706,7 +8706,7 @@
       "visor"
     ],
     "path": "Other/MergeShops/StarsincMerge.cs",
-    "size": 7232,
+    "size": 7211,
     "fileName": "StarsincMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/StarsincMerge.cs"
   },
@@ -9147,7 +9147,7 @@
       "null"
     ],
     "path": "Other/MergeShops/DoomLegacyMerge.cs",
-    "size": 10669,
+    "size": 10658,
     "fileName": "DoomLegacyMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/DoomLegacyMerge.cs"
   },
@@ -9227,7 +9227,7 @@
       "null"
     ],
     "path": "Other/MergeShops/DreadspaceReplicatorMerge.cs",
-    "size": 9751,
+    "size": 9709,
     "fileName": "DreadspaceReplicatorMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/DreadspaceReplicatorMerge.cs"
   },
@@ -9934,7 +9934,7 @@
       "null"
     ],
     "path": "Other/MergeShops/SuperDeathMerge.cs",
-    "size": 6176,
+    "size": 6154,
     "fileName": "SuperDeathMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/SuperDeathMerge.cs"
   },
@@ -10176,7 +10176,7 @@
       "warlord"
     ],
     "path": "Other/MergeShops/DeathPitArenaRepMerge.cs",
-    "size": 7962,
+    "size": 7947,
     "fileName": "DeathPitArenaRepMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/DeathPitArenaRepMerge.cs"
   },
@@ -10306,7 +10306,7 @@
       "null"
     ],
     "path": "Other/MergeShops/WarTrainingMerge.cs",
-    "size": 6849,
+    "size": 6834,
     "fileName": "WarTrainingMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/WarTrainingMerge.cs"
   },
@@ -10942,7 +10942,7 @@
       "stone"
     ],
     "path": "Other/MergeShops/AshfallCampMerge.cs",
-    "size": 9956,
+    "size": 9914,
     "fileName": "AshfallCampMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/AshfallCampMerge.cs"
   },
@@ -11051,7 +11051,7 @@
       "null"
     ],
     "path": "Other/MergeShops/SpoilsofLightMerge.cs",
-    "size": 7336,
+    "size": 7285,
     "fileName": "SpoilsofLightMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/SpoilsofLightMerge.cs"
   },
@@ -11215,7 +11215,7 @@
       "null"
     ],
     "path": "Other/MergeShops/BrightshadowMerge.cs",
-    "size": 9173,
+    "size": 9153,
     "fileName": "BrightshadowMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/BrightshadowMerge.cs"
   },
@@ -11706,7 +11706,7 @@
       "null"
     ],
     "path": "Other/Badges/CtrlAltDelMemberBadge.cs",
-    "size": 2009,
+    "size": 1989,
     "fileName": "CtrlAltDelMemberBadge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Badges/CtrlAltDelMemberBadge.cs"
   },
@@ -15690,7 +15690,7 @@
       "frostvale"
     ],
     "path": "Seasonal/Frostvale/WinterHorrorWarRewardsMerge.cs",
-    "size": 4780,
+    "size": 4760,
     "fileName": "WinterHorrorWarRewardsMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/WinterHorrorWarRewardsMerge.cs"
   },
@@ -16064,7 +16064,7 @@
       "member"
     ],
     "path": "Seasonal/TalkLikeaPirateDay/AvastBadge[mem].cs",
-    "size": 6756,
+    "size": 6688,
     "fileName": "AvastBadge[mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/AvastBadge[mem].cs"
   },
@@ -16108,7 +16108,7 @@
       "pirate"
     ],
     "path": "Seasonal/TalkLikeaPirateDay/BlazeBeardStory.cs",
-    "size": 3343,
+    "size": 3328,
     "fileName": "BlazeBeardStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/BlazeBeardStory.cs"
   },
