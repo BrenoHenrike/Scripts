@@ -48,7 +48,7 @@ public class LightoviaCave
         Story.PreLoad(this);
 
         //Defeat the Imbalanced 7132
-        Story.KillQuest(7132, "LightoviaCave", "Imbalanced Knight|Imbalanced Mage");
+        Story.KillQuest(7132, "LightoviaCave", "Imbalanced Knight");
 
         //Free the Lycans 7133
         Story.MapItemQuest(7133, "LightoviaCave", 6767, 6);
