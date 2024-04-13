@@ -24,6 +24,7 @@ public class CoreDOY
         YokaiTreasure();
         HakuVillage();
         HakuWar();
+        YokaiPortal();
     }
 
     public void YokaiPirate()
@@ -215,5 +216,54 @@ public class CoreDOY
             Story.KillQuest(9607, "hakuwar", "Zakhvatchik");
         }
     }
+
+    public void YokaiPortal()
+    {
+        if (Core.isCompletedBefore(9676))
+            return;
+
+        HakuWar();
+
+        Story.PreLoad(this);
+
+        Core.EquipClass(ClassType.Farm);
+
+        // Tense Reunion (9667)
+        Story.MapItemQuest(9667, "yokaiportal", new[] { 12982, 12983, 12984 });
+
+        // Kimon (9668)
+        Story.KillQuest(9668, "yokaiportal", "Oni Spirits");
+
+        // Shrine of Love (9669)
+        Story.MapItemQuest(9669, "yokaiportal", new[] { 12985, 12986 });
+
+        // Hoshi no Tama (9670)
+        Story.KillQuest(9670, "yokaiportal", "Kitsune Spirits");
+
+        // Childish Nostalgia (9671)
+        Story.MapItemQuest(9671, "yokaiportal", new[] { 12987, 12988 });
+
+        // Simple Wishes (9672)
+        Story.KillQuest(9672, "yokaiportal", "Snake Shikigami");
+        Story.MapItemQuest(9672, "yokaiportal", new[] { 12989, 12995, 12990 });
+
+        // Left Behind (9673)
+        Story.KillQuest(9673, "yokaiportal", "Puppeted Dragonling");
+
+        // Our Love (9674)
+        Story.MapItemQuest(9674, "yokaiportal", new[] { 12991, 12992, 12993 });
+
+        // Amano Iwato (9675)
+        Story.KillQuest(9675, "yokaiportal", new[] { "Kitsune Spirits", "Puppeted Dragonling" });
+        Story.MapItemQuest(9675, "yokaiportal", 12994);
+
+        // Corrupted Protector (9676)
+        if (!Core.isCompletedBefore(9676))
+        {
+            Core.EquipClass(ClassType.Solo);
+            Story.KillQuest(9676, "yokaiportal", "Kitsune Kukol'nyy");
+        }
+    }
+
 
 }

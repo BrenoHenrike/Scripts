@@ -1,14 +1,14 @@
 /*
-name: Dragons Of Yokai
-description: This script will complete "Dragons Of Yokai" storyline.
-tags: story, quest, saga,dragons,dragon,yokai,haku,village,pirate,treasure,war,portal, complete, all
+name: Yokai Portal
+description: This script will complete "Yokai Portal" storyline.
+tags: story, quest,saga,dragons,dragon,yokai,portal,yokaiportal, complete, all
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/DragonsOfYokai/CoreDOY.cs
 using Skua.Core.Interfaces;
 
-public class DragonsOfYokai
+public class YokaiPortal
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
@@ -18,7 +18,7 @@ public class DragonsOfYokai
     {
         Core.SetOptions();
 
-        DOY.DoAll();
+        DOY.YokaiPortal();
         Core.SetOptions(false);
     }
 }
