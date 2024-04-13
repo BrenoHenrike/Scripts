@@ -147,13 +147,13 @@ public class CoreBots
         Bot.Lite.CharacterSelectScreen = false;
 
         //adding sommore
-        Bot.Lite.CustomDropsUI = true;
-        Bot.Lite.DisableDamageStrobe = true;
-        Bot.Lite.DisableMonsterAnimation = true;
-        Bot.Lite.DisableWeaponAnimation = true;
-        Bot.Lite.DisableSkillAnimations = true;
-        Bot.Lite.SmoothBackground = true;
-        Bot.Lite.ShowMonsterType = true;
+        // Bot.Lite.CustomDropsUI = true;
+        // Bot.Lite.DisableDamageStrobe = true;
+        // Bot.Lite.DisableMonsterAnimation = true;
+        // Bot.Lite.DisableWeaponAnimation = true;
+        // Bot.Lite.DisableSkillAnimations = true;
+        // Bot.Lite.SmoothBackground = true;
+        // Bot.Lite.ShowMonsterType = true;
 
         CollectData(changeTo);
 
@@ -3101,8 +3101,6 @@ public class CoreBots
         {
             if (Bot.Player.HasTarget)
                 Bot.Combat.CancelTarget();
-            if (Bot.Player.InCombat)
-                Bot.Combat.Exit();
             JumpWait();
             Sleep();
         }
