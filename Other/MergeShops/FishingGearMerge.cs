@@ -1,7 +1,7 @@
 /*
 name: Fishing Gear Merge
-description: This bot will farm all/selected/allAC items or materials for the Fishing Gear Merge shop in /greenguardwest
-tags: fishing, chips, gear, greenguard, west, merge
+description: This bot will farm the items belonging to the selected mode for the Fishing Gear Merge [363] in /greenguardwest
+tags: fishing, gear, merge, greenguardwest, super, pole, crabcake, yaga, hatfish, rod, backstrap, shrimp, fishin, hooks, fishy, amp, shield, old, boot, tackle, box, fish, suit, tail, floppy, mystery, gaping, head, hillbilly, overalls, fishermans, fisherwomans, xtreme, jersey, fisher, for, food, lure, order
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -38,7 +38,6 @@ public class FishingGearMerge
     {
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("greenguardwest", 363, findIngredients, buyOnlyThis, buyMode: buyMode);
-        Core.TrashCan("Fishing Bait", "Fishing Dynamite");
 
         #region Dont edit this part
         void findIngredients()
@@ -60,6 +59,7 @@ public class FishingGearMerge
                     break;
                 #endregion
 
+
                 case "Fishin' Chips":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
@@ -71,7 +71,7 @@ public class FishingGearMerge
                         Core.EnsureComplete(1682);
                     }
 
-                    bool legendDailyDone = Core.IsMember ? Bot.Quests.IsDailyComplete(1684) : true;
+                    bool legendDailyDone = !Core.IsMember || Bot.Quests.IsDailyComplete(1684);
                     bool nonLegendDailyDone = Bot.Quests.IsDailyComplete(1683);
                     if (!legendDailyDone)
                         Core.EnsureAccept(1684);
@@ -130,6 +130,7 @@ public class FishingGearMerge
                     }
                     Core.CancelRegisteredQuests();
                     break;
+
 
             }
         }
