@@ -5009,6 +5009,26 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/7DeadlyDragons/03Greed.cs"
   },
   {
+    "name": "Yokai Portal",
+    "description": "This script will complete \"Yokai Portal\" storyline.",
+    "tags": [
+      "story",
+      "quest",
+      "saga",
+      "dragons",
+      "dragon",
+      "yokai",
+      "portal",
+      "yokaiportal",
+      "complete",
+      "all"
+    ],
+    "path": "Story/DragonsOfYokai/05YokaiPortal.cs",
+    "size": 637,
+    "fileName": "05YokaiPortal.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/DragonsOfYokai/05YokaiPortal.cs"
+  },
+  {
     "name": "Dragons Of Yokai",
     "description": "This script will complete \"Dragons Of Yokai\" storyline.",
     "tags": [
@@ -5023,11 +5043,12 @@
       "pirate",
       "treasure",
       "war",
+      "portal",
       "complete",
       "all"
     ],
     "path": "Story/DragonsOfYokai/00DoAll.cs",
-    "size": 657,
+    "size": 664,
     "fileName": "00DoAll.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/DragonsOfYokai/00DoAll.cs"
   },
@@ -5038,7 +5059,7 @@
       "null"
     ],
     "path": "Story/DragonsOfYokai/CoreDOY.cs",
-    "size": 6205,
+    "size": 7730,
     "fileName": "CoreDOY.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/DragonsOfYokai/CoreDOY.cs"
   },
@@ -10092,6 +10113,36 @@
     "size": 8422,
     "fileName": "TowerofWindsMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/TowerofWindsMerge.cs"
+  },
+  {
+    "name": "Yokai Portal Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Yokai Portal Merge [2429] in /yokaiportal",
+    "tags": [
+      "yokai",
+      "portal",
+      "merge",
+      "yokaiportal",
+      "amethyst",
+      "noble",
+      "plate",
+      "earring",
+      "war",
+      "march",
+      "shikigami",
+      "katanas",
+      "katana",
+      "sheath",
+      "jade",
+      "dragonguard",
+      "ruby",
+      "kitsune",
+      "duelist",
+      "banner"
+    ],
+    "path": "Other/MergeShops/YokaiPortalMerge.cs",
+    "size": 9913,
+    "fileName": "YokaiPortalMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/YokaiPortalMerge.cs"
   },
   {
     "name": "VokunMerge",
