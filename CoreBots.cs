@@ -607,14 +607,13 @@ public class CoreBots
 
     public void CheckSpaces(ref int counter, params string[] items)
     {
-        int count = 0;
         foreach (string s in items)
         {
             if (CheckInventory(s, toInv: false))
-                count++;
+                counter++;
         }
-        if (Bot.Inventory.FreeSlots < (items.Length - count))
-            Logger($"Not enough free slots, please clear {(items.Length - count)} slot" + ((items.Length - count) > 1 ? "s" : ""), messageBox: true, stopBot: true);
+        if (Bot.Inventory.FreeSlots < (items.Length - counter))
+            Logger($"Not enough free slots, please clear {items.Length - counter} slot" + ((items.Length - counter) > 1 ? "s" : ""), messageBox: true, stopBot: true);
     }
 
     /// <summary>
