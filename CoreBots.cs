@@ -2649,10 +2649,12 @@ public class CoreBots
         => mon != null && (mon.Alive || !KilledMonsters.Contains(mon.MapID));
     public bool IsMonsterAlive(string monsterName)
         => Bot.Monsters.CurrentMonsters.Where(m => m.Name == monsterName).Any(m => IsMonsterAlive(m));
-    public bool IsMonsterAlive(int monsterID)
-        => Bot.Monsters.CurrentMonsters.Where(m => m.ID == monsterID).Any(m => IsMonsterAlive(m));
-    public bool IsMonsterAlive(int monsterMapID, bool useMapID)
-        => IsMonsterAlive(Bot.Monsters.CurrentMonsters.Find(m => m.MapID == monsterMapID));
+    public bool IsMonsterAlive(int monsterID, bool useMapID)
+    {
+        if (useMapID)
+            return IsMonsterAlive(Bot.Monsters.CurrentMonsters.Find(m => m.MapID == monsterID));
+        else return Bot.Monsters.CurrentMonsters.Where(m => m.ID == monsterID).Any(m => IsMonsterAlive(m));
+    }
 
 
     private readonly List<int> KilledMonsters = new();
