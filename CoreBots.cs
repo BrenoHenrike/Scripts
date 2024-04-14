@@ -2006,11 +2006,11 @@ public class CoreBots
             }
         }
 
+        Bot.Options.AttackWithoutTarget = false;
         Bot.Combat.StopAttacking = true;
         ToggleAggro(false);
         JumpWait();
         Rest();
-        Bot.Options.AttackWithoutTarget = false;
     }
 
 
@@ -2073,9 +2073,14 @@ public class CoreBots
     public void HuntMonster(string map, string monster, string? item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
     {
         if (item != null && (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
+        {
             return;
-
+        }
         Join(map, publicRoom: publicRoom);
+
+        //*insurance**
+        Bot.Wait.ForMapLoad(map);
+        Monster? M = Bot.Monsters.MapMonsters.FirstOrDefault(x => x.Name.FormatForCompare() == monster.FormatForCompare());
 
         if (Bot.Player.CurrentClass?.Name == "ArchMage")
             Bot.Options.AttackWithoutTarget = true;
@@ -2084,11 +2089,10 @@ public class CoreBots
         {
             if (log)
             {
-                Logger($"Hunting {monster}");
+                Logger($"Hunting {M!.Name} [{M!.ID}]");
             }
             Bot.Combat.StopAttacking = false;
-            Bot.Hunt.Monster(monster);
-            Bot.Wait.ForMonsterDeath();
+            Bot.Hunt.Monster(M!.ID);
             Bot.Combat.StopAttacking = true;
             ToggleAggro(false);
             JumpWait();
@@ -2102,26 +2106,27 @@ public class CoreBots
             }
             if (log)
             {
-                Logger($"Hunting {monster} for {item}, ({dynamicQuant(item, isTemp)}/{quant}) [Temp = {isTemp}]");
+                Logger($"Hunting {M!.Name} [{M!.ID}] for {item}, ({dynamicQuant(item, isTemp)}/{quant}) [Temp = {isTemp}]");
             }
 
-
-            while (!Bot.ShouldExit && isTemp ? !Bot.TempInv.Contains(item, quant) : !CheckInventory(item, quant))
+            while (!Bot.ShouldExit && isTemp ? !Bot.TempInv.Contains(item, quant) : !Bot.Inventory.Contains(item, quant))
             {
                 Bot.Combat.StopAttacking = false;
-                Bot.Hunt.Monster(monster);
-
-                if (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant))
+                foreach (Monster MM in Bot.Monsters.MapMonsters.Where(x => x.Name.FormatForCompare() == monster.FormatForCompare()))
                 {
-                    Bot.Combat.StopAttacking = true;
-                    Bot.Wait.ForPickup(item);
-                    JumpWait();
-                    break;
+                    if (isTemp ? Bot.TempInv.Contains(item, quant) : Bot.Inventory.Contains(item, quant))
+                    {
+                        Bot.Combat.StopAttacking = true;
+                        if (!isTemp)
+                            Bot.Wait.ForPickup(item);
+                        JumpWait();
+                        break;
+                    }
+                    Bot.Hunt.Monster(MM.Name);
+                    Sleep();
+                    Rest();
                 }
-                Sleep();
-                Rest();
             }
-
         }
         Bot.Options.AttackWithoutTarget = false;
     }
@@ -2604,18 +2609,13 @@ public class CoreBots
         if (log)
             FarmingLogger(item, quantity);
 
-        Monster? targetedMob = new();
-
-        while (!Bot.ShouldExit && item != null && (isTemp ? !Bot.TempInv.Contains(item, quantity) : !CheckInventory(item, quantity)))
+        while (!Bot.ShouldExit && item != null && (isTemp ? !Bot.TempInv.Contains(item, quantity) : !Bot.Inventory.Contains(item, quantity)))
         {
-            foreach (Monster mob in Bot.Monsters.CurrentAvailableMonsters)
+            foreach (Monster mob in Bot.Monsters.MapMonsters.Where(x => (name == "*" || x.Name.FormatForCompare() == name.FormatForCompare()) && x.Cell == cell))
             {
-                Bot.Options.AggroMonsters = Bot.Map.PlayerNames!.Where(x => x != null && x != Bot.Player.Username).Any() && !PublicDifficult && PrivateRooms;
-
-                if (item == null || isTemp ? Bot.TempInv.Contains(item!, quantity) : CheckInventory(item, quantity))
+                if (item == null || isTemp ? Bot.TempInv.Contains(item!, quantity) : Bot.Inventory.Contains(item, quantity))
                 {
                     Bot.Options.AggroMonsters = false;
-                    Bot.Combat.StopAttacking = true;
                     JumpWait();
                     if (!isTemp)
                         Bot.Wait.ForPickup(item!);
@@ -2623,22 +2623,24 @@ public class CoreBots
                     Rest();
                     break;
                 }
+                Bot.Options.AggroMonsters = Bot.Map.PlayerNames!.Where(x => x != null && x != Bot.Player.Username).Any() && !PublicDifficult && PrivateRooms;
 
-                #region insurance
-                while (!Bot.ShouldExit && Bot.Player.Cell != cell && cell != null)
+                if (cell != null && Bot.Player.Cell != cell)
                 {
                     Jump(cell, "Left");
-                    Sleep();
-                    if (Bot.Player.Cell == cell)
-                        break;
                 }
-                #endregion insurance
 
-                targetedMob = (name == "*") ? mob : Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault(x => x.Name.FormatForCompare() == name.FormatForCompare());
-                Bot.Kill.Monster(targetedMob!.MapID);
+                else
+                {
+                    Bot.Kill.Monster(mob!.Name == "*" ? "*" : mob!.Name);
+                    if (Bot.Player.HasTarget)
+                        Bot.Combat.CancelTarget();
+                }
 
                 if (rejectElse)
+                {
                     Bot.Drops.RejectExcept(item!);
+                }
             }
         }
     }
