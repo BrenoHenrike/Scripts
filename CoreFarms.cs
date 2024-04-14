@@ -370,11 +370,27 @@ public class CoreFarms
 
         //Between level 75 and 100
         while (NotYetLevel(100))
-            Core.KillMonster(Core.IsMember ? "nightmare" : "icestormunder", Core.IsMember ? "r13" : "r2", Core.IsMember ? "left" : "Top", "*", log: false);
+            Core.KillMonster(
+                Core.IsMember
+                ? "nightmare"
+                : "icestormunder",
+
+                Core.IsMember
+                ? "r13"
+                : "r2",
+
+                Core.IsMember
+                ? "left"
+                : "Top",
+
+                Core.IsMember
+                ? "Nothing"
+                : "Frost Spirit",
+
+                log: false);
 
         Core.ToggleAggro(false);
         Core.JumpWait();
-        Bot.Wait.ForCombatExit();
         Core.Rest();
 
         if (rankUpClass)
@@ -2100,7 +2116,7 @@ public class CoreFarms
 
             foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
             {
-                    Bot.Kill.Monster(MID.MapID);
+                Bot.Kill.Monster(MID.MapID);
 
                 if (Core.CheckInventory(item, quant) && FactionRank("Death Pit Brawl") >= rank)
                 {
@@ -2120,7 +2136,7 @@ public class CoreFarms
 
             foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
             {
-                    Bot.Kill.Monster(MID.MapID);
+                Bot.Kill.Monster(MID.MapID);
 
                 if (Core.CheckInventory(item, quant) && FactionRank("Death Pit Brawl") >= rank)
                 {
@@ -2140,7 +2156,7 @@ public class CoreFarms
 
             foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
             {
-                    Bot.Kill.Monster(MID.MapID);
+                Bot.Kill.Monster(MID.MapID);
 
                 if (Core.CheckInventory(item, quant) && FactionRank("Death Pit Brawl") >= rank)
                 {
@@ -2160,7 +2176,7 @@ public class CoreFarms
 
             foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
             {
-                    Bot.Kill.Monster(MID.MapID);
+                Bot.Kill.Monster(MID.MapID);
 
                 if (Core.CheckInventory(item, quant) && FactionRank("Death Pit Brawl") >= rank)
                 {
