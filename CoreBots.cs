@@ -924,7 +924,7 @@ public class CoreBots
         else
             Logger($"Failed at buying {buy_quant}/{quant} {item.Name}", "BuyItem");
 
-        async void RelogRequieredListener(dynamic packet)
+        void RelogRequieredListener(dynamic packet)
         {
             string type = packet["params"].type;
             dynamic data = packet["params"].dataObj;
@@ -935,7 +935,7 @@ public class CoreBots
                 {
                     case "Item is not buyable. Item Inventory full. Re-login to syncronize your real bag slot amount.":
                         Logger("Inventory de-sync (AE Issue) detected, reloggin so the bot can continue");
-                        await Relogin();
+                        Relogin();
                         break;
                 }
             }
@@ -2950,11 +2950,11 @@ public class CoreBots
     /// <summary>
     /// Logs the player out and then in again to the same server. Disables Options.AutoRelogin temporarily 
     /// </summary>
-    public async Task Relogin()
+    public void Relogin()
     {
         if (Bot.Options.ReloginServer == null || !Bot.Servers.EnsureRelogin(Bot.Options.ReloginServer))
         {
-            var servers = await Bot.Servers.GetServers(true);
+            var servers = Bot.Servers.GetServers(true).Result;
             if (servers.Count == 0)
                 Logger("Failed to relogin: could not fetch server details" + (Bot.Options.ReloginServer == null ? '.' : " or the find the server you've set in Options > Game."), messageBox: true, stopBot: true);
             Bot.Servers.EnsureRelogin(servers.First(s => s.Name != "Class Test Realm").Name);
