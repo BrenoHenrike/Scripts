@@ -30,7 +30,7 @@ public class HallofClassesMerge
     public void ScriptMain(IScriptInterface bot)
     {
         Core.BankingBlackList.AddRange(new[] { "Sword and Scroll Badge " });
-        Core.SetOptions();
+        Core.DebugLogger(this);
 
         BuyAllMerge();
 
@@ -69,8 +69,10 @@ public class HallofClassesMerge
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         //Studying the Bard 7495
+                        Core.EquipClass(ClassType.Farm);
                         Core.KillMonster("palooza", "Act6", "Left", "Music Pirate", "Lo-Fi Recording", 4);
-                        Core.HuntMonster("Stairway", "Elwood Bruise", "Scroll: O'Carolan's Reel");
+                        Core.EquipClass(ClassType.Solo);
+                        Core.KillMonster("Stairway", "r8", "Right", "*", "Scroll: O'Carolan's Reel");
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
