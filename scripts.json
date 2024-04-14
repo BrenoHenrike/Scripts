@@ -21416,39 +21416,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/Daily-Classes/BlazeBinder.cs"
   },
   {
-    "name": "FarmerJoeKitClasses[WIP]",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Other/FarmJoeKits/Old Joes/4FarmerJoeKitClasses[WIP].cs",
-    "size": 5265,
-    "fileName": "4FarmerJoeKitClasses[WIP].cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/Old Joes/4FarmerJoeKitClasses[WIP].cs"
-  },
-  {
-    "name": "FarmerJoeOutfitandPet",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Other/FarmJoeKits/Old Joes/5FarmerJoeOutfitandPet.cs",
-    "size": 4569,
-    "fileName": "5FarmerJoeOutfitandPet.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/Old Joes/5FarmerJoeOutfitandPet.cs"
-  },
-  {
-    "name": "FarmerJoeEndGame[WIP]",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Other/FarmJoeKits/Old Joes/3FarmerJoeEndGame[WIP].cs",
-    "size": 4573,
-    "fileName": "3FarmerJoeEndGame[WIP].cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/Old Joes/3FarmerJoeEndGame[WIP].cs"
-  },
-  {
     "name": "Basic Weapon Kit",
     "description": "This script farms the max quantity of Basic Weapon Kits.",
     "tags": [
