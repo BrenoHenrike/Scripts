@@ -1111,7 +1111,7 @@ public class CoreBots
         }
     }
 
-    private int _CalcBuyQuantity(ShopItem item, int requestedQuant, bool old = false)
+    private int _CalcBuyQuantity(ShopItem item, int requestedQuant)
     {
         if (requestedQuant > item.MaxStack)
         {
