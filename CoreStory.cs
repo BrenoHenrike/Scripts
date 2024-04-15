@@ -61,7 +61,7 @@ public class CoreStory
             Core.EnsureAccept(questID);
             _AddRequirement(questID);
             Core.Join(map);
-            _SmartKill(monster, 20);
+            _SmartKill(monster.FormatForCompare(), 20);
             CurrentRequirements.Clear();
         }
     }
@@ -101,7 +101,7 @@ public class CoreStory
             Core.Join(map);
             foreach (string monster in monsters)
             {
-                _SmartKill(monster, 20);
+                _SmartKill(monster.FormatForCompare(), 20);
             }
             CurrentRequirements.Clear();
         }
