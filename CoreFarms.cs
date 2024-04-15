@@ -369,7 +369,7 @@ public class CoreFarms
         }
 
         //Between level 75 and 100
-        while (NotYetLevel(100))
+        while (NotYetLevel(level))
             Core.KillMonster(
                 Core.IsMember
                 ? "nightmare"
@@ -384,8 +384,8 @@ public class CoreFarms
                 : "Top",
 
                 Core.IsMember
-                ? "Nothing"
-                : "Frost Spirit",
+                ? "*"
+                : "*",
 
                 log: false);
 
