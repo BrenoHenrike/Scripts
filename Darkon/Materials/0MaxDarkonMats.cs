@@ -16,6 +16,7 @@ public class MaxAllDarkon
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreDarkon Darkon => new();
+    public CoreAdvanced Adv = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -40,6 +41,10 @@ public class MaxAllDarkon
         Darkon.WheelofFortune(MaxStack: true);
         Darkon.SukisPrestiege(MaxStack: true);
         Darkon.Teeth(MaxStack: true);
+        Darkon.AstravianMedal(MaxStack: true);
         Darkon.UnfinishedMusicalScore(300);
+        Core.Logger($"This will require {(22 - Core.dynamicQuant("Darkon's Instant Noodle", false)) * 2222222} gold");
+        Adv.BuyItem("garden", 1831, "Darkon's Instant Noodle", 22);
+
     }
 }
