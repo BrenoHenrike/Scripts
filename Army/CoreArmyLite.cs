@@ -364,7 +364,7 @@ public class CoreArmyLite
                 _SmartAggroMonCells.Add(cell);
 
             if (username == p)
-                Core.Jump(cell);
+                Core.Jump(cell, "Left");
             cellCount = cellCount == cells.Length - 1 ? 0 : cellCount + 1;
         }
     }
