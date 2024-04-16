@@ -279,3 +279,4 @@ Base = Warrior (Rare) = 1 | 2 | 3 | 4 = Use if Available
 Base = WarriorScythe General = 1 | 2 | 3 | 4 = Use if Available
 Base = Witch = 1 | 2 | 3 | 4 = Use if Available
 Solo = Yami no Ronin = 2 M>60S | 1 | 1 | 4 | 1 | 1 | 4 = 250
+Tato = gae
