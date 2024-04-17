@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 203542,
+    "size": 203724,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -50,7 +50,7 @@
       "null"
     ],
     "path": "CoreDailies.cs",
-    "size": 49970,
+    "size": 49967,
     "fileName": "CoreDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreDailies.cs"
   },
@@ -13376,7 +13376,7 @@
       "all"
     ],
     "path": "Other/Classes/0AllClasses.cs",
-    "size": 16837,
+    "size": 16980,
     "fileName": "0AllClasses.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/0AllClasses.cs"
   },
@@ -13416,6 +13416,22 @@
     "size": 2420,
     "fileName": "HighSeasCommander[10y].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/HighSeasCommander[10y].cs"
+  },
+  {
+    "name": "SkyCharged Grenadier (9years Membership)",
+    "description": "This script farms the SkyCharged Grenadier class.",
+    "tags": [
+      "skycharged",
+      "grenadier",
+      "9years",
+      "member",
+      "sky charged",
+      "captain stratos"
+    ],
+    "path": "Other/Classes/SkyChargedGrenadier[9yMem].cs",
+    "size": 2173,
+    "fileName": "SkyChargedGrenadier[9yMem].cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/SkyChargedGrenadier[9yMem].cs"
   },
   {
     "name": "LightMage",

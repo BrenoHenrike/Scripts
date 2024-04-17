@@ -103,6 +103,7 @@ tags: all classes,class,farm,complete,all
 //cs_include Scripts/Other/Classes/ProtoSartorium.cs
 //cs_include Scripts/Other/Classes/Rustbucket.cs
 //cs_include Scripts/Other/Classes/ScarletSorceress.cs
+//cs_include Scripts/Other/Classes/SkyChargedGrenadier[9yMem].cs
 //cs_include Scripts/Other/Classes/Curio-Classes/AbyssalAngelsShadow.cs
 //cs_include Scripts/Chaos/ChaosAvengerPreReqs.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
@@ -236,6 +237,7 @@ public class AllClasses
     private ProtoSartorium PS = new();
     private Rustbucket RB = new();
     private ScarletSorceress SS = new();
+    private SkyChargedGrenadier SCG = new();
     private SwordMaster SM = new();
     #endregion Various
 
@@ -401,6 +403,7 @@ public class AllClasses
         PS.GetPS(rankUpClass);
         RB.GetRustbucket(rankUpClass);
         SS.GetSSorc(rankUpClass);
+        SCG.GetSCG(rankUpClass);
         SM.GetSwordMaster(rankUpClass);
 
         Core.Logger("=== Various Classes - Completed! ===");
