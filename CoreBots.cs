@@ -2102,21 +2102,18 @@ public class CoreBots
 
             while (!Bot.ShouldExit && isTemp ? !Bot.TempInv.Contains(item, quant) : !Bot.Inventory.Contains(item, quant))
             {
-                Bot.Combat.StopAttacking = false;
-                foreach (Monster MM in Bot.Monsters.MapMonsters.Where(x => x.Name.FormatForCompare() == monster.FormatForCompare()))
+                if (isTemp ? Bot.TempInv.Contains(item, quant) : Bot.Inventory.Contains(item, quant))
                 {
-                    if (isTemp ? Bot.TempInv.Contains(item, quant) : Bot.Inventory.Contains(item, quant))
-                    {
-                        Bot.Combat.StopAttacking = true;
-                        if (!isTemp)
-                            Bot.Wait.ForPickup(item);
-                        JumpWait();
-                        break;
-                    }
-                    Bot.Hunt.Monster(MM.Name);
-                    Sleep();
-                    Rest();
+                    Bot.Combat.StopAttacking = true;
+                    Bot.Options.AttackWithoutTarget = false;
+                    if (!isTemp)
+                        Bot.Wait.ForPickup(item);
+                    JumpWait();
+                    break;
                 }
+                Bot.Hunt.Monster(M!.Name);
+                Sleep();
+                Rest();
             }
         }
         Bot.Options.AttackWithoutTarget = false;
@@ -2615,9 +2612,6 @@ public class CoreBots
 
         while (!Bot.ShouldExit && item != null && (isTemp ? !Bot.TempInv.Contains(item, quantity) : !CheckInventory(item, quantity)))
         {
-            // Bot.Options.AggroMonsters = Bot.Map.PlayerNames!.Where(x => x != null && x != Bot.Player.Username).Any();
-            // foreach (Monster mob in Bot.Monsters.CurrentAvailableMonsters) //.Where(x => (name == "*" || x.Name.FormatForCompare() == name.FormatForCompare()) && x.Cell == cell))
-            // {
             if (item == null || isTemp ? Bot.TempInv.Contains(item!, quantity) : Bot.Inventory.Contains(item, quantity))
             {
                 Bot.Options.AggroMonsters = false;
@@ -2638,15 +2632,9 @@ public class CoreBots
             }
 
             Bot.Kill.Monster(name.FormatForCompare());
-            // while (!Bot.ShouldExit && Bot.Player.HasTarget || Bot.Player.InCombat)
-            // {
-            //     Bot.Combat.CancelTarget();
-            //     Bot.Combat.StopAttacking = true;
-            // }
 
             if (rejectElse)
                 Bot.Drops.RejectExcept(item!);
-            // }
         }
     }
 
