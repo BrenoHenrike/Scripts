@@ -1965,8 +1965,6 @@ public class CoreBots
         Join(map, cell, pad, publicRoom: publicRoom);
         Jump(cell, pad);
 
-
-
         Monster? Monster = Bot.Monsters.MapMonsters.FirstOrDefault(x => x.Name.FormatForCompare() == monster.FormatForCompare());
 
         if (Bot.Player.CurrentClass?.Name == "ArchMage")
@@ -2624,10 +2622,15 @@ public class CoreBots
             if (item == null || isTemp ? Bot.TempInv.Contains(item!, quantity) : Bot.Inventory.Contains(item, quantity))
             {
                 Bot.Options.AggroMonsters = false;
-                JumpWait();
+                while (!Bot.ShouldExit && Bot.Player.InCombat)
+                {
+                    JumpWait();
+                    Sleep();
+                    if (!Bot.Player.InCombat)
+                        break;
+                }
                 if (!isTemp)
                     Bot.Wait.ForPickup(item!);
-                Sleep();
                 Rest();
                 break;
             }
