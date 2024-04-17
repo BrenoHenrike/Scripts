@@ -13376,7 +13376,7 @@
       "all"
     ],
     "path": "Other/Classes/0AllClasses.cs",
-    "size": 16687,
+    "size": 16837,
     "fileName": "0AllClasses.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/0AllClasses.cs"
   },
@@ -15558,6 +15558,22 @@
     "size": 2712,
     "fileName": "Zoda.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/MayThe4th/Zoda.cs"
+  },
+  {
+    "name": "Shadow Dragon Shinobi (Seasonal) Class",
+    "description": "This script farms the Shadow Dragon Shinobi class.",
+    "tags": [
+      "seasonal",
+      "class",
+      "shadow",
+      "dragon",
+      "black friday",
+      "shinobi"
+    ],
+    "path": "Seasonal/BlackFriday/ShadowDragonShinobi.cs",
+    "size": 1310,
+    "fileName": "ShadowDragonShinobi.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/BlackFriday/ShadowDragonShinobi.cs"
   },
   {
     "name": "Technocaster Merge",

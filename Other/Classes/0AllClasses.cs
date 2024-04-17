@@ -56,6 +56,7 @@ tags: all classes,class,farm,complete,all
 //cs_include Scripts/Other/MergeShops/DeathPitArenaRepMerge.cs
 //cs_include Scripts/Other/Classes/Members-CLasses/DrakelWarlord[Mem].cs
 //cs_include Scripts/Other/Classes/Members-CLasses/Renegade[Mem].cs
+//cs_include Scripts/Seasonal/BlackFriday/ShadowDragonShinobiMerge.cs
 //cs_include Scripts/Seasonal/Frostvale/Frostvale.cs
 //cs_include Scripts/Seasonal/Frostvale/FrostvalBarbarian.cs
 //cs_include Scripts/Seasonal/Frostvale/NorthlandsMonk.cs
@@ -210,6 +211,7 @@ public class AllClasses
     private LegionSwordMasterAssassin LSMA = new();
     private NorthlandsMonk NM = new();
     private PirateClass Pirate = new();
+    private ShadowDragonShinobi SDS = new();
     private VampireLord VL = new();
     #endregion Seasonal
 
@@ -368,8 +370,9 @@ public class AllClasses
         FB.GetFB(rankUpClass);
         LSMA.GetClass(rankUpClass);
         NM.GetNlMonk(rankUpClass);
-        VL.GetClass(rankUpClass);
         Pirate.GetPirate(rankUpClass);
+        SDS.GetClass(rankUpClass);
+        VL.GetClass(rankUpClass);
 
         Core.Logger("=== Seasonal Classes - Completed! ===");
     }
