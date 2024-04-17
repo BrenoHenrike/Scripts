@@ -380,7 +380,7 @@ public class CoreFarms
                 : "r2",
 
                 Core.IsMember
-                ? "left"
+                ? "Left"
                 : "Top",
 
                 Core.IsMember
@@ -1479,7 +1479,7 @@ public class CoreFarms
             {
                 while (Bot.Player.Cell != mob.Cell)
                 {
-                    Core.Jump(mob.Cell, "left");
+                    Core.Jump(mob.Cell, "Left");
                     Core.Sleep();
                 }
 

@@ -1966,6 +1966,7 @@ public class CoreBots
         Jump(cell, pad);
 
 
+
         Monster? Monster = Bot.Monsters.MapMonsters.FirstOrDefault(x => x.Name.FormatForCompare() == monster.FormatForCompare());
 
         if (Bot.Player.CurrentClass?.Name == "ArchMage")
@@ -3313,6 +3314,7 @@ public class CoreBots
         if (!ignoreCheck && Bot.Player.Cell == cell)
             return;
 
+        pad = char.ToUpper(pad[0]) + pad[1..];
         while (!Bot.ShouldExit && Bot.Player.Cell != cell)
         {
             Bot.Map.Jump(cell, pad, false);
@@ -3406,6 +3408,7 @@ public class CoreBots
         map = map.Replace(" ", "").Replace('I', 'i');
         map = map.ToLower() == "tercess" ? "tercessuinotlim" : map.ToLower();
         string strippedMap = map.Contains('-') ? map.Split('-').First() : map;
+        pad = char.ToUpper(pad[0]) + pad[1..];
 
         if (Bot.Map.Name != null && Bot.Map.Name.ToLower() == strippedMap && !ignoreCheck)
             return;

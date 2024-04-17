@@ -224,7 +224,7 @@ public class CoreArchMage
         Core.HuntMonster("mafic", "*", "Emblazoned Basalt", 200, false);
 
         Core.EquipClass(ClassType.Solo);
-        Core.KillMonster("underlair", "r6", "left", "Void Draconian", "Dense Dragon Crystal", 200, false);
+        Core.KillMonster("underlair", "r6", "Left", "Void Draconian", "Dense Dragon Crystal", 200, false);
 
         Core.EnsureComplete(8914);
         Bot.Wait.ForPickup("Book of Fire");

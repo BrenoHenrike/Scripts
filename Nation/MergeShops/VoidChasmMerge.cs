@@ -109,10 +109,10 @@ public class VoidChasmMerge
                         Core.AddDrop("Void Remnant");
                         Core.EnsureAccept(9553);
                         Core.EquipClass(ClassType.Solo);
-                        Core.KillMonster("voidchasm", "r10", "left", "Carcano", "Carcano's Teratoma");
-                        Core.KillMonster("voidchasm", "r9", "left", "Carnage", "Bloodied Chainlink");
+                        Core.KillMonster("voidchasm", "r10", "Left", "Carcano", "Carcano's Teratoma");
+                        Core.KillMonster("voidchasm", "r9", "Left", "Carnage", "Bloodied Chainlink");
                         Core.EquipClass(ClassType.Farm);
-                        Core.KillMonster("voidchasm", "r7", "left", "The Hushed", "Defunct Seal of Approval", 6);
+                        Core.KillMonster("voidchasm", "r7", "Left", "The Hushed", "Defunct Seal of Approval", 6);
                         Core.EnsureComplete(9553);
                         Bot.Wait.ForPickup(req.Name);
                     }

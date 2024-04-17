@@ -671,9 +671,9 @@ public class CoreDoomwood
         if (!Story.QuestProgression(7611))
         {
             Core.EnsureAccept(7611);
-            Core.KillMonster("techdungeon", "r4", "left", "DoomBorg Guard", "Guard Armor Piece", 5);
-            Core.KillMonster("techdungeon", "r4", "left", "DoomBorg Guard", "Guard Helm");
-            Core.KillMonster("techdungeon", "r4", "left", "DoomBorg Guard", "Deadtech Polearm");
+            Core.KillMonster("techdungeon", "r4", "Left", "DoomBorg Guard", "Guard Armor Piece", 5);
+            Core.KillMonster("techdungeon", "r4", "Left", "DoomBorg Guard", "Guard Helm");
+            Core.KillMonster("techdungeon", "r4", "Left", "DoomBorg Guard", "Deadtech Polearm");
             Core.EnsureComplete(7611);
         }
 
@@ -924,7 +924,7 @@ public class CoreDoomwood
         {
             Core.EquipClass(ClassType.Farm);
             Core.EnsureAccept(2126);
-            Core.KillMonster("doomwar", "r5", "left", "*", "Fallen Friend Defeated", 4);
+            Core.KillMonster("doomwar", "r5", "Left", "*", "Fallen Friend Defeated", 4);
             Core.EnsureComplete(2126);
         }
 

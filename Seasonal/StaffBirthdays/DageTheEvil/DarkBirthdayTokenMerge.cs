@@ -92,7 +92,7 @@ public class DarkBirthdayTokenMerge
                         Core.RegisterQuests(3408);
                         while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                         {
-                            Core.KillMonster("underworld", "r8", "left", "*", "Dread Head", 20, log: false);
+                            Core.KillMonster("underworld", "r8", "Left", "*", "Dread Head", 20, log: false);
                             Bot.Wait.ForPickup(req.Name);
                         }
                         Core.CancelRegisteredQuests();

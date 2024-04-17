@@ -82,7 +82,7 @@ public class MoltenForgeMerge
                     Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.KillMonster("battleundere", "r9", "left", "*", req.Name, quant, isTemp: false);
+                        Core.KillMonster("battleundere", "r9", "Left", "*", req.Name, quant, isTemp: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
