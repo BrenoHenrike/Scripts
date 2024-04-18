@@ -557,6 +557,23 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/DreadForest.cs"
   },
   {
+    "name": "Death's Realm Story",
+    "description": "This will finish the storyline in /deathsrealm.",
+    "tags": [
+      "story",
+      "quest",
+      "death",
+      "deaths",
+      "realm",
+      "deathsrealm",
+      "deaths realm"
+    ],
+    "path": "Story/DeathsRealm.cs",
+    "size": 2730,
+    "fileName": "DeathsRealm.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/DeathsRealm.cs"
+  },
+  {
     "name": "Borgars Story",
     "description": "This will complete the Borgars story.",
     "tags": [
@@ -1355,7 +1372,7 @@
       "all"
     ],
     "path": "Story/0AllStories.cs",
-    "size": 27844,
+    "size": 28021,
     "fileName": "0AllStories.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/0AllStories.cs"
   },
