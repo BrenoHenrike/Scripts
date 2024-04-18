@@ -961,8 +961,6 @@ public class CoreDailies
         Core.EquipClass(ClassType.Farm);
         Core.HuntMonster("shadowrealm", "Shadow Makai", "Lovely Request", 100, log: false);
         Core.EnsureComplete(9642);
-        if (!merge)
-            Core.ToBank("NCS Gem");
     }
 
 
