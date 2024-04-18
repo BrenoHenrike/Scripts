@@ -24,7 +24,6 @@ public class ArmyBlackSmithRep
     public CoreAdvanced Adv => new();
     private CoreArmyLite Army = new();
 
-    private static CoreBots sCore = new();
     private static CoreArmyLite sArmy = new();
 
     public string OptionsStorage = "ArmyBlackSmithRep";
