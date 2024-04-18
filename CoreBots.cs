@@ -1983,7 +1983,7 @@ public class CoreBots
                     break;
             }
 
-            Bot.Kill.Monster(monster == "*" ? monster : Monster!.Name);
+            Bot.Kill.Monster(monster == "*" ? monster.FormatForCompare() : Monster!.Name);
         }
         else
         {
@@ -2000,11 +2000,7 @@ public class CoreBots
             JumpWait();
             Rest();
         }
-
-
     }
-
-
 
     /// <summary>
     /// Kills a monster using it's ID
@@ -2042,7 +2038,7 @@ public class CoreBots
             if (log)
                 Logger($"Killing {monster}");
             ToggleAggro(true);
-            Bot.Kill.Monster(monster);
+            Bot.Kill.Monster(monster.ID);
             ToggleAggro(false);
             JumpWait();
             Rest();
@@ -2085,7 +2081,7 @@ public class CoreBots
                     break;
             }
 
-            Bot.Kill.Monster(M!.Name);
+            Bot.Kill.Monster(monster == "*" ? "*" : M!.Name);
             JumpWait();
             Rest();
             return;
@@ -2100,15 +2096,15 @@ public class CoreBots
 
             while (!Bot.ShouldExit && isTemp ? !Bot.TempInv.Contains(item, quant) : !Bot.Inventory.Contains(item, quant))
             {
-                while (!Bot.ShouldExit && Bot.Player.Cell != M!.Cell)
+                while (!Bot.ShouldExit && Bot.Player.Cell != (monster == "*" ? Bot.Monsters.MapMonsters[0]?.Cell : M?.Cell))
                 {
-                    Jump(M!.Cell, "Left");
-                    Bot.Wait.ForCellChange(M!.Cell);
-                    if (Bot.Player.Cell == M!.Cell)
+                    Jump((monster == "*" ? Bot.Monsters.MapMonsters[0]?.Cell : M?.Cell) ?? throw new InvalidOperationException(), "Left");
+                    Bot.Wait.ForCellChange((monster == "*" ? Bot.Monsters.MapMonsters[0]?.Cell : M?.Cell) ?? throw new InvalidOperationException());
+                    if (Bot.Player.Cell == (monster == "*" ? Bot.Monsters.MapMonsters[0]?.Cell : M?.Cell))
                         break;
                 }
 
-                Bot.Combat.Attack(M!.Name);
+                Bot.Kill.Monster(monster == "*" ? "*" : M!.Name);
                 Sleep();
 
                 if (isTemp ? Bot.TempInv.Contains(item, quant) : Bot.Inventory.Contains(item, quant))
@@ -2643,7 +2639,7 @@ public class CoreBots
                     break;
             }
 
-            Bot.Combat.Attack(name.FormatForCompare());
+            Bot.Combat.Attack(name == "*" ? "*" : name.FormatForCompare());
             Sleep();
 
             if (rejectElse)
