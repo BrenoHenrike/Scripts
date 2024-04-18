@@ -13387,7 +13387,7 @@
       "all"
     ],
     "path": "Other/Classes/0AllClasses.cs",
-    "size": 17045,
+    "size": 17107,
     "fileName": "0AllClasses.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/0AllClasses.cs"
   },
@@ -16365,6 +16365,22 @@
     "size": 675,
     "fileName": "10MasqueradeStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Mogloween/10MasqueradeStory.cs"
+  },
+  {
+    "name": "(Class) Pumpkin Lord",
+    "description": "This script will get Pumpkin Lord class.",
+    "tags": [
+      "class",
+      "mogloween",
+      "seasonal",
+      "pumpkin",
+      "pumpkin lord",
+      "pumpkinlord"
+    ],
+    "path": "Seasonal/Mogloween/PumkinLord(Class).cs",
+    "size": 1052,
+    "fileName": "PumkinLord(Class).cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Mogloween/PumkinLord(Class).cs"
   },
   {
     "name": "Mystcroft Forest Story",
