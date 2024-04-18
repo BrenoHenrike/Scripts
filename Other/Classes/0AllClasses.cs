@@ -215,6 +215,7 @@ public class AllClasses
     private NorthlandsMonk NM = new();
     private PirateClass Pirate = new();
     private ShadowDragonShinobi SDS = new();
+    private PumpkinLord PL = new();
     private VampireLord VL = new();
     #endregion Seasonal
 
@@ -376,6 +377,7 @@ public class AllClasses
         NM.GetNlMonk(rankUpClass);
         Pirate.GetPirate(rankUpClass);
         SDS.GetClass(rankUpClass);
+        PL.GetClass(rankUpClass);
         VL.GetClass(rankUpClass);
 
         Core.Logger("=== Seasonal Classes - Completed! ===");
