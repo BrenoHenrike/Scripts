@@ -128,6 +128,8 @@ tags: story, quest, complete, all
 //cs_include Scripts/Story/Glacera.cs
 //cs_include Scripts/Story/Guru.cs
 
+//cs_include Scripts/Story/IcePlane.cs
+
 //cs_include Scripts/Story/J6Saga.cs
 
 //cs_include Scripts/Story/Lair.cs
@@ -338,6 +340,8 @@ public class AllStories
     public Guru Guru = new();
 
     public HuntersMoon HuntersMoon = new();
+
+    public IcePlane IcePlane = new();
 
     public Lair Lair = new();
     public Lightguard Lightguard = new();
@@ -759,6 +763,10 @@ public class AllStories
 
         Guru.StoryLine();
         Core.Logger($"Story: Guru - Complete");
+
+
+        IcePlane.StoryLine();
+        Core.Logger($"Story: Ice Plane - Complete");
 
 
         J6Saga.J6();
