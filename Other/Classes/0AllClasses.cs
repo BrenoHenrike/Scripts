@@ -57,6 +57,7 @@ tags: all classes,class,farm,complete,all
 //cs_include Scripts/Other/Classes/Members-CLasses/DrakelWarlord[Mem].cs
 //cs_include Scripts/Other/Classes/Members-CLasses/Renegade[Mem].cs
 //cs_include Scripts/Seasonal/BlackFriday/ShadowDragonShinobiMerge.cs
+//cs_include Scripts/Seasonal/BlackFriday/ShadowDragonShinobi.cs
 //cs_include Scripts/Seasonal/Frostvale/Frostvale.cs
 //cs_include Scripts/Seasonal/Frostvale/FrostvalBarbarian.cs
 //cs_include Scripts/Seasonal/Frostvale/NorthlandsMonk.cs
