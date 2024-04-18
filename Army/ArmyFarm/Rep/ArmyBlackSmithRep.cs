@@ -137,7 +137,7 @@ public class ArmyBlackSmithRep
             case "towerofdoom":
                 Army.AggroMonCells("r10");
                 Army.AggroMonStart(map);
-                Army.DivideOnCells("f10");
+                Army.DivideOnCells("r10");
                 break;
         }
     }
