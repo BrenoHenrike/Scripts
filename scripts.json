@@ -1158,6 +1158,24 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Shattersword.cs"
   },
   {
+    "name": "Ice Plane Story",
+    "description": "This will finish the Ice Plane Story.",
+    "tags": [
+      "story",
+      "quest",
+      "ice plane",
+      "iceplane",
+      "ice",
+      "plane",
+      "glace",
+      "quetzal"
+    ],
+    "path": "Story/IcePlane.cs",
+    "size": 1816,
+    "fileName": "IcePlane.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/IcePlane.cs"
+  },
+  {
     "name": "Dragon Fable Origins Story",
     "description": "This will finish the Dragon Fable Origins Story.",
     "tags": [
@@ -1337,7 +1355,7 @@
       "all"
     ],
     "path": "Story/0AllStories.cs",
-    "size": 27680,
+    "size": 27844,
     "fileName": "0AllStories.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/0AllStories.cs"
   },
