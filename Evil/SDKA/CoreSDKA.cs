@@ -196,33 +196,30 @@ public class CoreSDKA
         if (Core.CheckInventory("Dark Spirit Orb", quant) && !oneTime)
             return;
 
+        Core.Logger(oneTime 
+        ? $"oneTime set to: {oneTime}" 
+        : $"Farming \"Dark Spirit Orb\" {Core.dynamicQuant("Dark Spirit Orb", false)} / {quant}");
+
         Core.AddDrop("DoomCoin", "Dark Spirit Orb", "Shadow Creeper Enchant");
         Core.EquipClass(ClassType.Farm);
-
-        Core.FarmingLogger("Dark Spirit Orb", quant);
-
-        Core.Join("maul", "r7", "Left");
-        // Core.RegisterQuests(2089);
-        while (!Bot.ShouldExit && !Core.CheckInventory("Dark Spirit Orb", quant))
+        if (oneTime)
+        {
+            Core.EnsureAccept(2089);
+            Core.KillMonster("maul", "r7", "left", "Shelleton", "DoomCoin", 20, false);
+            Core.EnsureComplete(2089);
+            Bot.Wait.ForQuestComplete(2089);
+            Bot.Wait.ForPickup("Dark Spirit Orb");
+            return;
+        }
+        else
         {
             Core.EnsureAccept(2089, true);
-            while (!Bot.ShouldExit && !Core.CheckInventory("DoomCoin", 20))
-            {
-                while (!Bot.ShouldExit && Bot.Player.Cell != "r7")
-                {
-                    Core.Jump("r7");
-                    Core.Sleep();
-                }
-                Bot.Kill.Monster("Shelleton");
-
-                if (Bot.Quests.CanCompleteFullCheck(2089))
-                {
-                    Core.EnsureCompleteMulti(2089);
-                    Bot.Wait.ForPickup("Dark Spirit Orb");
-                    if (oneTime)
-                        return;
-                }
-            }
+            Core.KillMonster("maul", "r7", "left", "Shelleton", "Dark Spirit Orb", quant, false);
+            Bot.Wait.ForQuestComplete(2089);
+            Bot.Wait.ForPickup("Dark Spirit Orb");
+            Bot.Lite.ReacceptQuest = false;
+            Core.AbandonQuest(2089);
+            return;
         }
     }
 
