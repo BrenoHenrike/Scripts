@@ -557,6 +557,23 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/DreadForest.cs"
   },
   {
+    "name": "Death's Realm Story",
+    "description": "This will finish the storyline in /deathsrealm.",
+    "tags": [
+      "story",
+      "quest",
+      "death",
+      "deaths",
+      "realm",
+      "deathsrealm",
+      "deaths realm"
+    ],
+    "path": "Story/DeathsRealm.cs",
+    "size": 2730,
+    "fileName": "DeathsRealm.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/DeathsRealm.cs"
+  },
+  {
     "name": "Borgars Story",
     "description": "This will complete the Borgars story.",
     "tags": [
@@ -1158,6 +1175,24 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Shattersword.cs"
   },
   {
+    "name": "Ice Plane Story",
+    "description": "This will finish the Ice Plane Story.",
+    "tags": [
+      "story",
+      "quest",
+      "ice plane",
+      "iceplane",
+      "ice",
+      "plane",
+      "glace",
+      "quetzal"
+    ],
+    "path": "Story/IcePlane.cs",
+    "size": 1816,
+    "fileName": "IcePlane.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/IcePlane.cs"
+  },
+  {
     "name": "Dragon Fable Origins Story",
     "description": "This will finish the Dragon Fable Origins Story.",
     "tags": [
@@ -1337,7 +1372,7 @@
       "all"
     ],
     "path": "Story/0AllStories.cs",
-    "size": 27680,
+    "size": 28021,
     "fileName": "0AllStories.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/0AllStories.cs"
   },

@@ -100,6 +100,7 @@ tags: story, quest, complete, all
 
 //cs_include Scripts/Story/DarkCarnax.cs
 //cs_include Scripts/Story/DarkDungeon.cs
+//cs_include Scripts/Story/DeathsRealm.cs
 //cs_include Scripts/Story/DeerHunt.cs
 //cs_include Scripts/Story/DjinnGate.cs
 //cs_include Scripts/Story/DjinnGuard.cs
@@ -127,6 +128,8 @@ tags: story, quest, complete, all
 //cs_include Scripts/Story/GiantTaleStory.cs
 //cs_include Scripts/Story/Glacera.cs
 //cs_include Scripts/Story/Guru.cs
+
+//cs_include Scripts/Story/IcePlane.cs
 
 //cs_include Scripts/Story/J6Saga.cs
 
@@ -311,6 +314,7 @@ public class AllStories
 
     public DarkCarnaxStory DarkCarnax = new();
     public DarkDungeon DarkDungeon = new();
+    public DeathsRealm DeathsRealm = new();
     public DeerHunt DeerHunt = new();
     public DjinnGateStory DjinnGateStory = new();
     public DjinnGuard DjinnGuard = new();
@@ -338,6 +342,8 @@ public class AllStories
     public Guru Guru = new();
 
     public HuntersMoon HuntersMoon = new();
+
+    public IcePlane IcePlane = new();
 
     public Lair Lair = new();
     public Lightguard Lightguard = new();
@@ -681,6 +687,9 @@ public class AllStories
             Core.Logger($"Story: DeadFly - Complete");
         }
 
+        DeathsRealm.StoryLine();
+        Core.Logger($"Story: Death's Realm - Complete");
+
         DeerHunt.StoryLine();
         Core.Logger($"Story: Deer Hunt - Complete");
 
@@ -759,6 +768,10 @@ public class AllStories
 
         Guru.StoryLine();
         Core.Logger($"Story: Guru - Complete");
+
+
+        IcePlane.StoryLine();
+        Core.Logger($"Story: Ice Plane - Complete");
 
 
         J6Saga.J6();
