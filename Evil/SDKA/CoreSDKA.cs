@@ -196,8 +196,8 @@ public class CoreSDKA
         if (Core.CheckInventory("Dark Spirit Orb", quant) && !oneTime)
             return;
 
-        Core.Logger(oneTime 
-        ? $"oneTime set to: {oneTime}" 
+        Core.Logger(oneTime
+        ? $"oneTime set to: {oneTime}"
         : $"Farming \"Dark Spirit Orb\" {Core.dynamicQuant("Dark Spirit Orb", false)} / {quant}");
 
         Core.AddDrop("DoomCoin", "Dark Spirit Orb", "Shadow Creeper Enchant");
@@ -213,11 +213,11 @@ public class CoreSDKA
         }
         else
         {
-            Core.EnsureAccept(2089, true);
+            Core.RegisterQuests(2089);
             Core.KillMonster("maul", "r7", "left", "Shelleton", "Dark Spirit Orb", quant, false);
             Bot.Wait.ForQuestComplete(2089);
             Bot.Wait.ForPickup("Dark Spirit Orb");
-            Bot.Lite.ReacceptQuest = false;
+            Core.CancelRegisteredQuests();
             Core.AbandonQuest(2089);
             return;
         }
