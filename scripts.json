@@ -436,7 +436,7 @@
       "member"
     ],
     "path": "Story/Safiria[Member].cs",
-    "size": 3110,
+    "size": 3122,
     "fileName": "Safiria[Member].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Safiria[Member].cs"
   },
@@ -825,7 +825,7 @@
       "dark-carnax"
     ],
     "path": "Story/DarkCarnax.cs",
-    "size": 3918,
+    "size": 3921,
     "fileName": "DarkCarnax.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/DarkCarnax.cs"
   },
@@ -1385,7 +1385,7 @@
       "doom-vault-b"
     ],
     "path": "Story/DoomVaultB.cs",
-    "size": 4313,
+    "size": 4316,
     "fileName": "DoomVaultB.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/DoomVaultB.cs"
   },
@@ -1435,7 +1435,7 @@
       "ravenous"
     ],
     "path": "Enhancement/UnlockForgeEnhancements.cs",
-    "size": 41094,
+    "size": 41097,
     "fileName": "UnlockForgeEnhancements.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Enhancement/UnlockForgeEnhancements.cs"
   },
@@ -2087,7 +2087,7 @@
       "null"
     ],
     "path": "Darkon/CoreDarkon.cs",
-    "size": 14231,
+    "size": 14234,
     "fileName": "CoreDarkon.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/CoreDarkon.cs"
   },
@@ -2954,7 +2954,7 @@
       "evil"
     ],
     "path": "Evil/VordredsArmor.cs",
-    "size": 7523,
+    "size": 7526,
     "fileName": "VordredsArmor.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/VordredsArmor.cs"
   },
@@ -3416,7 +3416,7 @@
       "khasaanda"
     ],
     "path": "Dailies/LordOfOrder.cs",
-    "size": 10400,
+    "size": 10403,
     "fileName": "LordOfOrder.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/LordOfOrder.cs"
   },
@@ -3448,7 +3448,7 @@
       "undead"
     ],
     "path": "Good/ArchPaladin.cs",
-    "size": 10631,
+    "size": 10634,
     "fileName": "ArchPaladin.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/ArchPaladin.cs"
   },
@@ -6787,7 +6787,7 @@
       "null"
     ],
     "path": "Hollowborn/HollowbornDoomKnight/CoreHollowbornDoomKnight.cs",
-    "size": 7758,
+    "size": 7767,
     "fileName": "CoreHollowbornDoomKnight.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/HollowbornDoomKnight/CoreHollowbornDoomKnight.cs"
   },
@@ -8742,7 +8742,7 @@
       "mergeshop"
     ],
     "path": "Darkon/MergeShops/GardenMerge.cs",
-    "size": 11023,
+    "size": 11026,
     "fileName": "GardenMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/MergeShops/GardenMerge.cs"
   },
@@ -11507,7 +11507,7 @@
       "long"
     ],
     "path": "Other/MergeShops/GrimGiftMerge.cs",
-    "size": 8719,
+    "size": 8722,
     "fileName": "GrimGiftMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/GrimGiftMerge.cs"
   },
@@ -19094,7 +19094,7 @@
       "null"
     ],
     "path": "Good/GearOfAwe/CoreAwe.cs",
-    "size": 2099,
+    "size": 2102,
     "fileName": "CoreAwe.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/GearOfAwe/CoreAwe.cs"
   },
@@ -19750,7 +19750,7 @@
       "null"
     ],
     "path": "Legion/YamiNoRonin/CoreYnR.cs",
-    "size": 8041,
+    "size": 8044,
     "fileName": "CoreYnR.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/YamiNoRonin/CoreYnR.cs"
   },
@@ -19815,7 +19815,7 @@
       "null"
     ],
     "path": "Legion/Various/WorthyOfTheBlade.cs",
-    "size": 1762,
+    "size": 1765,
     "fileName": "WorthyOfTheBlade.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/Various/WorthyOfTheBlade.cs"
   },
@@ -21605,7 +21605,7 @@
       "null"
     ],
     "path": "Other/Classes/ArchMage/CoreArchMage.cs",
-    "size": 21778,
+    "size": 21790,
     "fileName": "CoreArchMage.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/ArchMage/CoreArchMage.cs"
   },
