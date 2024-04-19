@@ -100,7 +100,13 @@ public class UndeadLegionMerge
                     break;
 
                 case "Essence of the Undead Legend":
-                    Core.Logger($"{req.Name} Is seasonal item from Dage's Dark Birthday Shop");
+                    if (!Core.isSeasonalMapActive("DarkBirthday"))
+                    {
+                        Core.Logger($"{req.Name} Is seasonal item from Dage's Dark Birthday Shop, failing over to next item");
+                        return;
+                    }
+
+                    Core.Logger("\"DarkBirthday\" is a seasonal map aviable during dage's birthday");
                     Adv.BuyItem("DarkBirthday", 376, req.Name);
                     break;
 
