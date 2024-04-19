@@ -51,7 +51,7 @@ public class CoreAwe
         {
             Core.EnsureAccept(questID);
             if (Map.ToLower() == "doomvault" || Map.ToLower() == "doomvaultb")
-                Adv.KillUltra(Map, Map.ToLower().EndsWith('b') ? "r26" : "r5", "Left", Monster, $"{Item} Shard", ShardAmount, false);
+                Core.KillMonster(Map, Map.ToLower().EndsWith('b') ? "r26" : "r5", "Left", Monster, $"{Item} Shard", ShardAmount, false);
             else
                 Adv.BoostHuntMonster(Map, Monster, $"{Item} Shard", ShardAmount, false);
             Core.EnsureComplete(questID);

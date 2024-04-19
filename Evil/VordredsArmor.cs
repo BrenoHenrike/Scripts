@@ -103,7 +103,7 @@ public class VordredArmor
         {
             Core.EnsureAccept(8379);
             Core.HuntMonster("desolich", "Desolich", "Desolich's Skull", 5, isTemp: false);
-            Adv.KillUltra("doomvaultb", "r26", "Left", "Undead Raxgore", "Undead Raxgore's Skull", 10, isTemp: false);
+            Core.KillMonster("doomvaultb", "r26", "Left", "Undead Raxgore", "Undead Raxgore's Skull", 10, isTemp: false);
             Core.HuntMonster("frozenlair", "Legion Lich Lord", "Legion Lich Lord's Skull", 15, isTemp: false);
             Core.HuntMonster("thevoid", "Reaper", "Reaper's Skull", 20, isTemp: false);
             Core.EnsureComplete(8379);

@@ -84,7 +84,7 @@ public class CoreDarkon
 
             if (!EnoughPeople && Core.IsMember)
                 Core.HuntMonster("ultravoid", "Ultra Kathool", "Ingredients?", 22, false, publicRoom: true, log: false);
-            else Adv.KillUltra("doomvault", "r5", "Left", "Binky", "Ingredients?", 22, false, publicRoom: true, log: false);
+            else Core.KillMonster("doomvault", "r5", "Left", "Binky", "Ingredients?", 22, false, publicRoom: true, log: false);
 
             Bot.Wait.ForPickup("Darkon's Receipt");
         }

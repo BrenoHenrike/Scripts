@@ -490,14 +490,14 @@ public class CoreArchMage
                 case "Vital Exanima":
                     Adv.GearStore();
                     Core.BossClass();
-                    Adv.KillUltra("dage", "Boss", "Right", "Dage the Evil", item, isTemp: false);
+                    Core.KillMonster("dage", "Boss", "Right", "Dage the Evil", item, isTemp: false);
                     Adv.GearStore(true);
                     break;
 
                 case "Everlight Flame":
                     Adv.GearStore();
                     Core.BossClass();
-                    Adv.KillUltra("fireavatar", "r9", "Left", "Avatar Tyndarius", item, isTemp: false);
+                    Core.KillMonster("fireavatar", "r9", "Left", "Avatar Tyndarius", item, isTemp: false);
                     Adv.GearStore(true);
                     break;
 
@@ -506,7 +506,7 @@ public class CoreArchMage
                     {
                         Bot.Events.RunToArea += DarkCarnaxMove;
                         Core.Logger("You might need to babysit this one due to the laser");
-                        Adv.KillUltra("darkcarnax", "Boss", "Right", "Nightmare Carnax", "Calamitous Ruin", isTemp: false);
+                        Core.KillMonster("darkcarnax", "Boss", "Right", "Nightmare Carnax", "Calamitous Ruin", isTemp: false);
                         Bot.Events.RunToArea -= DarkCarnaxMove;
                     }
                     else Item("darkcarnax", "Nightmare Carnax", item, quant);
@@ -515,7 +515,7 @@ public class CoreArchMage
                 case "The Mortal Coil":
                     Adv.GearStore();
                     Core.DodgeClass();
-                    Adv.KillUltra("tercessuinotlim", "Boss2", "Right", "Nulgath", item, isTemp: false);
+                    Core.KillMonster("tercessuinotlim", "Boss2", "Right", "Nulgath", item, isTemp: false);
                     Adv.GearStore(true);
                     break;
 

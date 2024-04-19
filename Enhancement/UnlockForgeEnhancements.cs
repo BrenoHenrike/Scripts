@@ -842,7 +842,7 @@ public class UnlockForgeEnhancements
         {
             Core.AddDrop("Night Mare Scythe");
             Core.EnsureAccept(3270);
-            Adv.KillUltra("doomvault", "r5", "Left", "Binky", "Yulgar's Lost Scythe");
+            Core.KillMonster("doomvault", "r5", "Left", "Binky", "Yulgar's Lost Scythe");
             Core.EnsureComplete(3270);
         }
         Core.HuntMonster("frozenlair", "Legion Lich Lord", "Sapphire Orb", 100, isTemp: false);

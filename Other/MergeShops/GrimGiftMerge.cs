@@ -95,7 +95,7 @@ public class GrimGiftMerge
 
                 case "Binky's Uni-horn":
                     Core.EquipClass(ClassType.Solo);
-                    Adv.KillUltra("doomvault", "r5", "Left", "Binky", req.Name, quant, req.Temp, publicRoom: true);
+                    Core.KillMonster("doomvault", "r5", "Left", "Binky", req.Name, quant, req.Temp, publicRoom: true);
                     break;
 
                 case "Grimskull's Face":

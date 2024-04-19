@@ -215,7 +215,7 @@ public class LordOfOrder
             Core.EnsureAccept(7164);
 
             Core.EquipClass(ClassType.Solo);
-            Adv.KillUltra("doomvaultb", "r26", "Left", "Undead Raxgore", "Weapon Imprint", 15, false, log: false);
+            Core.KillMonster("doomvaultb", "r26", "Left", "Undead Raxgore", "Weapon Imprint", 15, false, log: false);
             Farm.FishingREP(7);
             Core.BuyItem("greenguardwest", 363, "Lure of Order");
             Adv.GearStore();

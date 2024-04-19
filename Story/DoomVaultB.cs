@@ -119,7 +119,7 @@ public class DoomVaultB
         if (!Story.QuestProgression(3004))
         {
             Core.EnsureAccept(3004);
-            Adv.KillUltra("doomvaultb", "r26", "Left", "Undead Raxgore", "Raxgore Slain", publicRoom: false);
+            Core.KillMonster("doomvaultb", "r26", "Left", "Undead Raxgore", "Raxgore Slain", publicRoom: false);
             Core.EnsureComplete(3004);
         }
     }

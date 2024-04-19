@@ -87,7 +87,7 @@ public class DarkCarnaxStory
 
         Core.RegisterQuests(8872);
         while (!Bot.ShouldExit && !Core.CheckInventory("Synthetic Viscera", quant))
-            Adv.KillUltra("DarkCarnax", "Boss", "Right", "Nightmare Carnax");
+            Core.KillMonster("DarkCarnax", "Boss", "Right", "Nightmare Carnax");
         Core.CancelRegisteredQuests();
         Bot.Options.AttackWithoutTarget = false;
         Adv.GearStore(true);
