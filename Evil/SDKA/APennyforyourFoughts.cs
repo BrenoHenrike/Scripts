@@ -15,9 +15,11 @@ public class DSOPenny
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreSDKA SDKA = new CoreSDKA();
+    public CoreSDKA SDKA = new();
+    
     public void ScriptMain(IScriptInterface bot)
     {
+        Core.BankingBlackList.AddRange(new[] { "DoomCoin", "Dark Spirit Orb", "Shadow Creeper Enchant" });
         Core.SetOptions();
 
         SDKA.Penny();
