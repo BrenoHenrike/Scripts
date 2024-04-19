@@ -2229,8 +2229,8 @@ public class CoreBots
 
         bool PreFarmKill = false;
 
-        Monster? Staff = Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault(x => x.MapID == 2);
-        Monster? Escherion = Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault(x => x.MapID == 3);
+        Monster? Staff = Bot.Monsters.MapMonsters.FirstOrDefault(x => x.MapID == 2);
+        Monster? Escherion = Bot.Monsters.MapMonsters.FirstOrDefault(x => x.MapID == 3);
 
         if (item == null)
         {
@@ -2271,7 +2271,7 @@ public class CoreBots
                 PreFarmKill = true;
             }
 
-            Staff = Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault(x => x.MapID == 2);
+            Staff = Bot.Monsters.MapMonsters.FirstOrDefault(x => x.MapID == 2);
 
             if (Staff?.State == 1)
             {
@@ -2323,8 +2323,8 @@ public class CoreBots
 
         void _killVath()
         {
-            Monster? Vath = Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault(x => x.MapID == 7);
-            Monster? Stalagbite = Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault(x => x.MapID == 8);
+            Monster? Vath = Bot.Monsters.MapMonsters.FirstOrDefault(x => x.MapID == 7);
+            Monster? Stalagbite = Bot.Monsters.MapMonsters.FirstOrDefault(x => x.MapID == 8);
             // Initialize combat (to set hp)
             if (!PreFarmKill)
             {
@@ -2332,12 +2332,12 @@ public class CoreBots
                 PreFarmKill = true;
             }
 
-            Stalagbite = Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault(x => x.MapID == 8);
+            Stalagbite = Bot.Monsters.MapMonsters.FirstOrDefault(x => x.MapID == 8);
 
             if (Stalagbite?.State == 1)
             {
                 Bot.Kill.Monster(Stalagbite!.MapID);
-                Stalagbite = Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault(x => x.MapID == 8);
+                Stalagbite = Bot.Monsters.MapMonsters.FirstOrDefault(x => x.MapID == 8);
             }
             else if (Stalagbite?.State == 0)
             {
