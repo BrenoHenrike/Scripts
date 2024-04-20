@@ -14346,7 +14346,7 @@
       "all"
     ],
     "path": "Other/Badges/AllBadges.cs",
-    "size": 4938,
+    "size": 5102,
     "fileName": "AllBadges.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Badges/AllBadges.cs"
   },
@@ -14442,6 +14442,22 @@
     "size": 800,
     "fileName": "Committed.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Badges/Committed.cs"
+  },
+  {
+    "name": "Yokai Ascension Badge",
+    "description": "This will get the Yokai Ascension badge.",
+    "tags": [
+      "badge",
+      "yokai",
+      "ascension",
+      "dragons",
+      "dragons of yokai",
+      "yokai realm"
+    ],
+    "path": "Other/Badges/YokaiAscension.cs",
+    "size": 933,
+    "fileName": "YokaiAscension.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Badges/YokaiAscension.cs"
   },
   {
     "name": "Gravelyn's Warrior Badge",
