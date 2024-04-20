@@ -271,6 +271,8 @@ public class CoreDOY
         if (Core.isCompletedBefore(9689))
             return;
 
+        YokaiPortal();
+
         Story.PreLoad(this);
 
         Core.EquipClass(ClassType.Farm);
