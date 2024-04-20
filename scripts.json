@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 204396,
+    "size": 204609,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -3896,6 +3896,26 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/DragonsOfYokai/04HakuWar.cs"
   },
   {
+    "name": "Yokai Realm",
+    "description": "This script will complete \"Yokai Realm\" storyline.",
+    "tags": [
+      "story",
+      "quest",
+      "saga",
+      "dragons",
+      "dragon",
+      "yokai",
+      "realm",
+      "yokairealm",
+      "complete",
+      "all"
+    ],
+    "path": "Story/DragonsOfYokai/06YokaiRealm.cs",
+    "size": 631,
+    "fileName": "06YokaiRealm.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/DragonsOfYokai/06YokaiRealm.cs"
+  },
+  {
     "name": "Haku Village",
     "description": "This script will complete \"Haku Village\" storyline.",
     "tags": [
@@ -3960,7 +3980,7 @@
       "null"
     ],
     "path": "Story/DragonsOfYokai/CoreDOY.cs",
-    "size": 7730,
+    "size": 9775,
     "fileName": "CoreDOY.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/DragonsOfYokai/CoreDOY.cs"
   },
@@ -11409,6 +11429,34 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/NightmareCarnaxMerge.cs"
   },
   {
+    "name": "Yokai Realm Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Yokai Realm Merge [2431] in /yokairealm",
+    "tags": [
+      "yokai",
+      "realm",
+      "merge",
+      "yokairealm",
+      "bujin",
+      "doomknight",
+      "hairbun",
+      "oni",
+      "doomed",
+      "artillery",
+      "array",
+      "necrotic",
+      "dao",
+      "doom",
+      "usagi",
+      "battle",
+      "fan",
+      "fans"
+    ],
+    "path": "Other/MergeShops/YokaiRealmMerge.cs",
+    "size": 5079,
+    "fileName": "YokaiRealmMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/YokaiRealmMerge.cs"
+  },
+  {
     "name": "CelestialChampMerge",
     "description": "null",
     "tags": [
@@ -11724,10 +11772,24 @@
       "fans",
       "elegant",
       "vogue",
-      "elegance"
+      "elegance",
+      "sacred",
+      "forest",
+      "dragon",
+      "dragoness",
+      "morph",
+      "tail",
+      "wings",
+      "cleyera",
+      "sakaki",
+      "katana",
+      "katanas",
+      "cypress",
+      "fang",
+      "fangs"
     ],
     "path": "Other/MergeShops/HakuVillageMerge.cs",
-    "size": 4700,
+    "size": 7779,
     "fileName": "HakuVillageMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/HakuVillageMerge.cs"
   },
@@ -14284,7 +14346,7 @@
       "all"
     ],
     "path": "Other/Badges/AllBadges.cs",
-    "size": 4938,
+    "size": 5102,
     "fileName": "AllBadges.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Badges/AllBadges.cs"
   },
@@ -14380,6 +14442,22 @@
     "size": 800,
     "fileName": "Committed.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Badges/Committed.cs"
+  },
+  {
+    "name": "Yokai Ascension Badge",
+    "description": "This will get the Yokai Ascension badge.",
+    "tags": [
+      "badge",
+      "yokai",
+      "ascension",
+      "dragons",
+      "dragons of yokai",
+      "yokai realm"
+    ],
+    "path": "Other/Badges/YokaiAscension.cs",
+    "size": 933,
+    "fileName": "YokaiAscension.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Badges/YokaiAscension.cs"
   },
   {
     "name": "Gravelyn's Warrior Badge",
