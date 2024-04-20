@@ -358,7 +358,8 @@ public class CoreStory
         }
 
         Core.Logger($"Doing Quest: [{QuestID}] - \"{QuestData.Name}\"");
-        Core.EquipClass(ClassType.Solo);
+        // disabled force-solo as _monsterHunt should be good enough to handle already having the item if u get multiple or have them.
+        // Core.EquipClass(ClassType.Solo);
         PreviousQuestState = false;
         return false;
     }
@@ -657,7 +658,7 @@ public class CoreStory
         }
 
         Monster? M = Bot.Monsters.MapMonsters.FirstOrDefault(x => x.Name.FormatForCompare() == monster.FormatForCompare());
-        while (!Bot.ShouldExit && isTemp ? !Bot.TempInv.Contains(itemName!, quantity) : !Core.CheckInventory(itemName, quantity))
+        while (!Bot.ShouldExit && isTemp ? !Bot.TempInv.Contains(itemName!, quantity) : !Bot.Inventory.Contains(itemName!, quantity))
         {
             if (Bot.Player.Cell != M!.Cell)
             {
@@ -666,7 +667,7 @@ public class CoreStory
                 Bot.Wait.ForCellChange(M!.Cell);
             }
 
-            if (itemName == null || isTemp ? Bot.TempInv.Contains(itemName!, quantity) : Core.CheckInventory(itemName, quantity))
+            if (itemName == null || isTemp ? Bot.TempInv.Contains(itemName!, quantity) : Bot.Inventory.Contains(itemName, quantity))
             {
                 Bot.Options.AggroMonsters = false;
                 Bot.Combat.StopAttacking = true;
@@ -679,8 +680,8 @@ public class CoreStory
                 Core.Rest();
                 break;
             }
-
-            else Bot.Kill.Monster(M!.MapID);
+            Bot.Combat.Attack(M!.Name);
+            Core.Sleep();
         }
         CurrentRequirements.RemoveAt(index);
         shouldRepeat = false;

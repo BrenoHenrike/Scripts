@@ -309,19 +309,17 @@ public class CoreDOY
         Story.KillQuest(9687, "yokairealm", new[] { "Oni Spirits", "Kitsune Spirits" });
 
         // Kojutsu (9688)
-        if (!Core.isCompletedBefore(9688))
+        if (!Story.QuestProgression(9688))
         {
-            Core.EquipClass(ClassType.Solo);
-            Story.KillQuest(9688, "yokairealm", "Inugami", AutoCompleteQuest: false);
-            Core.EquipClass(ClassType.Farm);
+        Core.EquipClass(ClassType.Solo);
+            Story.KillQuest(9688, "yokairealm", "Inugami");
         }
 
         // Ame no Murakumo (9689)
-        if (!Core.isCompletedBefore(9689))
+        if (!Story.QuestProgression(9689))
         {
-            Core.EquipClass(ClassType.Solo);
-            Story.KillQuest(9689, "yokairealm", "Mikoto Kukol'nyy", AutoCompleteQuest: false);
-            Core.EquipClass(ClassType.Farm);
+        Core.EquipClass(ClassType.Solo);
+            Story.KillQuest(9689, "yokairealm", "Mikoto Kukol'nyy");
         }
     }
 
