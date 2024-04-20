@@ -1502,7 +1502,7 @@ public class CoreBots
     /// </summary>
     /// <param name="questID">ID of the quest to accept</param>
     public bool EnsureAccept(int questID = 0, bool Registerquest = false)
-    {       
+    {
         Quest QuestData = EnsureLoad(questID);
 
         if (Registerquest)
@@ -1523,15 +1523,20 @@ public class CoreBots
                 .Where(item => item != null && !string.IsNullOrEmpty(item.Name))
                 .ToArray();
 
-        foreach (ItemBase item in requiredItems)
+        foreach (ItemBase item in requiredItems.Where(x => !x.Temp))
         {
             if (item != null && !item.Temp && !Bot.Inventory.Items.Concat(Bot.Bank.Items).Any(i => i.ID == item.ID))
             {
+                while (!Bot.ShouldExit && Bot.Player.InCombat)
+                {
+                    JumpWait();
+                    Sleep();
+                }
                 Unbank(item.ID);
             }
         }
 
-        foreach (ItemBase item in QuestData.AcceptRequirements)
+        foreach (ItemBase item in QuestData.AcceptRequirements.Where(x => !x.Temp))
         {
             if (!Bot.Drops.ToPickupIDs.Contains(item.ID))
             {
@@ -1539,7 +1544,7 @@ public class CoreBots
             }
         }
 
-        foreach (ItemBase item in QuestData.Requirements)
+        foreach (ItemBase item in QuestData.Requirements.Where(x => !x.Temp))
         {
             if (!Bot.Drops.ToPickupIDs.Contains(item.ID))
             {
