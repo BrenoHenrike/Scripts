@@ -1502,7 +1502,7 @@ public class CoreBots
     /// </summary>
     /// <param name="questID">ID of the quest to accept</param>
     public bool EnsureAccept(int questID = 0, bool Registerquest = false)
-    {
+    {       
         Quest QuestData = EnsureLoad(questID);
 
         if (Registerquest)
@@ -2023,7 +2023,7 @@ public class CoreBots
         Join(map, cell, pad, publicRoom: publicRoom);
         Jump(cell, pad);
 
-        Monster? monster = Bot.Monsters.CurrentMonsters?.Find(m => m.ID == monsterID);
+        Monster? monster = Bot.Monsters.MapMonsters?.FirstOrDefault(m => m.ID == monsterID);
         if (monster == null)
         {
             Logger($"Monster [{monsterID}] not found. Something is wrong. Stopping bot", messageBox: true, stopBot: true);
