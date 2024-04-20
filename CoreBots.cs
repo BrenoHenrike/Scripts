@@ -1523,15 +1523,20 @@ public class CoreBots
                 .Where(item => item != null && !string.IsNullOrEmpty(item.Name))
                 .ToArray();
 
-        foreach (ItemBase item in requiredItems)
+        foreach (ItemBase item in requiredItems.Where(x => !x.Temp))
         {
             if (item != null && !item.Temp && !Bot.Inventory.Items.Concat(Bot.Bank.Items).Any(i => i.ID == item.ID))
             {
+                while (!Bot.ShouldExit && Bot.Player.InCombat)
+                {
+                    JumpWait();
+                    Sleep();
+                }
                 Unbank(item.ID);
             }
         }
 
-        foreach (ItemBase item in QuestData.AcceptRequirements)
+        foreach (ItemBase item in QuestData.AcceptRequirements.Where(x => !x.Temp))
         {
             if (!Bot.Drops.ToPickupIDs.Contains(item.ID))
             {
@@ -1539,7 +1544,7 @@ public class CoreBots
             }
         }
 
-        foreach (ItemBase item in QuestData.Requirements)
+        foreach (ItemBase item in QuestData.Requirements.Where(x => !x.Temp))
         {
             if (!Bot.Drops.ToPickupIDs.Contains(item.ID))
             {
@@ -2023,7 +2028,7 @@ public class CoreBots
         Join(map, cell, pad, publicRoom: publicRoom);
         Jump(cell, pad);
 
-        Monster? monster = Bot.Monsters.CurrentMonsters?.Find(m => m.ID == monsterID);
+        Monster? monster = Bot.Monsters.MapMonsters?.FirstOrDefault(m => m.ID == monsterID);
         if (monster == null)
         {
             Logger($"Monster [{monsterID}] not found. Something is wrong. Stopping bot", messageBox: true, stopBot: true);
@@ -2224,7 +2229,7 @@ public class CoreBots
         if (Bot.Player.CurrentClass?.Name == "ArchMage")
             Bot.Options.AttackWithoutTarget = true;
 
-        if (item != null)
+        if (item != null && log)
             FarmingLogger(item, quant);
 
         bool PreFarmKill = false;
@@ -2243,14 +2248,13 @@ public class CoreBots
         {
             if (!isTemp)
                 AddDrop(item);
-            if (log)
-                Logger($"Killing Escherion for {item} ({dynamicQuant(item, isTemp)}/{quant}) [Temp = {isTemp}]");
 
+            Bot.Options.AggroMonsters = true;
             while (!Bot.ShouldExit && !CheckInventory(item, quant))
-            {
                 _KillEscherion();
-            }
 
+            Bot.Options.AggroMonsters = false;
+            JumpWait();
             Rest();
             Bot.Wait.ForPickup(item);
         }
@@ -2268,12 +2272,13 @@ public class CoreBots
             if (!PreFarmKill)
             {
                 Bot.Kill.Monster(Staff!.MapID);
+                Bot.Wait.ForMonsterSpawn(Staff.MapID);
                 PreFarmKill = true;
             }
 
             Staff = Bot.Monsters.MapMonsters.FirstOrDefault(x => x.MapID == 2);
 
-            if (Staff?.State == 1)
+            if (Staff?.State == 1 || Staff!.State == 2)
             {
                 Bot.Kill.Monster(Staff!.MapID);
                 Bot.Combat.CancelTarget();
@@ -2308,7 +2313,9 @@ public class CoreBots
         {
             if (log)
                 Logger("Killing Vath");
+            Bot.Options.AggroMonsters = true;
             _killVath();
+            Bot.Options.AggroMonsters = false;
         }
         else
         {
@@ -2316,36 +2323,42 @@ public class CoreBots
                 AddDrop(item);
             if (log)
                 Logger($"Killing Vath for {item} ({dynamicQuant(item, isTemp)}/{quant}) [Temp = {isTemp}]");
+            Bot.Options.AggroMonsters = true;
             while (!Bot.ShouldExit && !CheckInventory(item, quant))
                 _killVath();
+            Bot.Options.AggroMonsters = false;
+            JumpWait();
         }
         Bot.Options.AttackWithoutTarget = false;
+        Rest();
 
         void _killVath()
         {
             Monster? Vath = Bot.Monsters.MapMonsters.FirstOrDefault(x => x.MapID == 7);
             Monster? Stalagbite = Bot.Monsters.MapMonsters.FirstOrDefault(x => x.MapID == 8);
+
             // Initialize combat (to set hp)
             if (!PreFarmKill)
             {
                 Bot.Kill.Monster(Stalagbite!.MapID);
+                Bot.Wait.ForMonsterSpawn(Stalagbite!.MapID);
                 PreFarmKill = true;
             }
 
             Stalagbite = Bot.Monsters.MapMonsters.FirstOrDefault(x => x.MapID == 8);
+            Vath = Bot.Monsters.MapMonsters.FirstOrDefault(x => x.MapID == 7);
 
-            if (Stalagbite?.State == 1)
+            if (Stalagbite?.State == 1 || Stalagbite?.State == 2)
             {
                 Bot.Kill.Monster(Stalagbite!.MapID);
-                Stalagbite = Bot.Monsters.MapMonsters.FirstOrDefault(x => x.MapID == 8);
+                Bot.Combat.CancelTarget();
             }
             else if (Stalagbite?.State == 0)
             {
                 Bot.Combat.Attack(Vath!.MapID);
-                // Sleep();
+                Sleep();
             }
         }
-        Rest();
     }
 
     /// <summary>
