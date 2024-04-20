@@ -1,7 +1,7 @@
 /*
 name: Haku Village Merge
 description: This bot will farm the items belonging to the selected mode for the Haku Village Merge [2414] in /hakuvillage
-tags: haku, village, merge, hakuvillage, stylish, qipao, modern, trend, bun, dragons, favor, fan, fans, elegant, vogue, elegance
+tags: haku, village, merge, hakuvillage, stylish, qipao, modern, trend, bun, dragons, favor, fan, fans, elegant, vogue, elegance, sacred, forest, dragon, dragoness, morph, tail, wings, cleyera, sakaki, katana, katanas, cypress, fang, fangs
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -30,7 +30,7 @@ public class HakuVillageMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Tengu Feather" });
+        Core.BankingBlackList.AddRange(new[] { "Tengu Feather", "Mikoto's Puppet String", "Yokai Realm Moss" });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -78,6 +78,24 @@ public class HakuVillageMerge
                     Core.CancelRegisteredQuests();
                     break;
 
+                case "Mikoto's Puppet String":
+                    DOY.YokaiRealm();
+                    Core.FarmingLogger(req.Name, quant);
+                    Core.EquipClass(ClassType.Solo);
+                    Core.RegisterQuests(9690);
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
+                    {
+                        Core.HuntMonster("yokairealm", "Mikoto Kukol'nyy", "Mikoto's Red String", 3, log: false);
+                        Bot.Wait.ForPickup(req.Name);
+                    }
+                    Core.CancelRegisteredQuests();
+                    break;
+
+                case "Yokai Realm Moss":
+                    Core.FarmingLogger(req.Name, quant);
+                    Core.EquipClass(ClassType.Farm);
+                    Core.HuntMonster("yokairealm", "Snake Shikigami", req.Name, quant, false, false);
+                    break;
             }
         }
     }
@@ -94,5 +112,19 @@ public class HakuVillageMerge
         new Option<bool>("83962", "Vogue Trend Bun", "Mode: [select] only\nShould the bot buy \"Vogue Trend Bun\" ?", false),
         new Option<bool>("83963", "Dragon's Elegance Fan", "Mode: [select] only\nShould the bot buy \"Dragon's Elegance Fan\" ?", false),
         new Option<bool>("83964", "Dragon's Elegance Fans", "Mode: [select] only\nShould the bot buy \"Dragon's Elegance Fans\" ?", false),
+        new Option<bool>("83832", "Sacred Forest Dragon", "Mode: [select] only\nShould the bot buy \"Sacred Forest Dragon\" ?", false),
+        new Option<bool>("83835", "Sacred Forest Dragon Hair", "Mode: [select] only\nShould the bot buy \"Sacred Forest Dragon Hair\" ?", false),
+        new Option<bool>("83836", "Sacred Forest Dragoness Locks", "Mode: [select] only\nShould the bot buy \"Sacred Forest Dragoness Locks\" ?", false),
+        new Option<bool>("83837", "Forest Dragon Morph", "Mode: [select] only\nShould the bot buy \"Forest Dragon Morph\" ?", false),
+        new Option<bool>("83838", "Forest Dragoness Visage", "Mode: [select] only\nShould the bot buy \"Forest Dragoness Visage\" ?", false),
+        new Option<bool>("83839", "Sacred Forest Dragon Morph", "Mode: [select] only\nShould the bot buy \"Sacred Forest Dragon Morph\" ?", false),
+        new Option<bool>("83840", "Sacred Forest Dragoness Visage", "Mode: [select] only\nShould the bot buy \"Sacred Forest Dragoness Visage\" ?", false),
+        new Option<bool>("83842", "Sacred Forest Dragon Tail", "Mode: [select] only\nShould the bot buy \"Sacred Forest Dragon Tail\" ?", false),
+        new Option<bool>("83843", "Sacred Forest Dragon Wings", "Mode: [select] only\nShould the bot buy \"Sacred Forest Dragon Wings\" ?", false),
+        new Option<bool>("83844", "Sacred Forest Dragon Wings and Tail", "Mode: [select] only\nShould the bot buy \"Sacred Forest Dragon Wings and Tail\" ?", false),
+        new Option<bool>("83847", "Cleyera Sakaki Katana", "Mode: [select] only\nShould the bot buy \"Cleyera Sakaki Katana\" ?", false),
+        new Option<bool>("83848", "Cleyera Sakaki Katanas", "Mode: [select] only\nShould the bot buy \"Cleyera Sakaki Katanas\" ?", false),
+        new Option<bool>("83850", "Cypress Dragon Fang", "Mode: [select] only\nShould the bot buy \"Cypress Dragon Fang\" ?", false),
+        new Option<bool>("83851", "Cypress Dragon Fangs", "Mode: [select] only\nShould the bot buy \"Cypress Dragon Fangs\" ?", false),
     };
 }

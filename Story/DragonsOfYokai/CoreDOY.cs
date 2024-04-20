@@ -25,6 +25,7 @@ public class CoreDOY
         HakuVillage();
         HakuWar();
         YokaiPortal();
+        YokaiRealm();
     }
 
     public void YokaiPirate()
@@ -262,6 +263,63 @@ public class CoreDOY
         {
             Core.EquipClass(ClassType.Solo);
             Story.KillQuest(9676, "yokaiportal", "Kitsune Kukol'nyy");
+        }
+    }
+
+    public void YokaiRealm()
+    {
+        if (Core.isCompletedBefore(9689))
+            return;
+
+        Story.PreLoad(this);
+
+        Core.EquipClass(ClassType.Farm);
+
+        // Tail End (9680)
+        Story.MapItemQuest(9680, "yokairealm", new[] { 13036, 13037 });
+        Story.KillQuest(9680, "yokairealm", "Snake Shikigami");
+
+        // A Thousand Hills (9681)
+        Story.MapItemQuest(9681, "yokairealm", new[] { 13038, 13039 });
+        Story.KillQuest(9681, "yokairealm", "Snake Shikigami");
+
+        // Mount the Land and Skies (9682)
+        Story.MapItemQuest(9682, "yokairealm", new[] { 13040, 13041 });
+        Story.KillQuest(9682, "yokairealm", "Puppeted Dragonling");
+
+        // Distant Shores (9683)
+        Story.MapItemQuest(9683, "yokairealm", new[] { 13042, 13043 });
+        Story.KillQuest(9683, "yokairealm", "Dark Zmey");
+
+        // Taizi (9684)
+        Story.MapItemQuest(9684, "yokairealm", 13044);
+        Story.KillQuest(9684, "yokairealm", new[] { "Puppeted Dragonling", "Dark Zmey" });
+
+        // Begrudged Oni (9685)
+        Story.MapItemQuest(9685, "yokairealm", new[] { 13045, 13046 });
+        Story.KillQuest(9685, "yokairealm", "Oni Spirits");
+
+        // Lingering Discord (9686)
+        Story.MapItemQuest(9686, "yokairealm", 13047);
+        Story.KillQuest(9686, "yokairealm", "Kitsune Spirits");
+
+        // Yokai's Cycle (9687)
+        Story.KillQuest(9687, "yokairealm", new[] { "Oni Spirits", "Kitsune Spirits" });
+
+        // Kojutsu (9688)
+        if (!Core.isCompletedBefore(9688))
+        {
+            Core.EquipClass(ClassType.Solo);
+            Story.KillQuest(9688, "yokairealm", "Inugami", AutoCompleteQuest: false);
+            Core.EquipClass(ClassType.Farm);
+        }
+
+        // Ame no Murakumo (9689)
+        if (!Core.isCompletedBefore(9689))
+        {
+            Core.EquipClass(ClassType.Solo);
+            Story.KillQuest(9689, "yokairealm", "Mikoto Kukol'nyy", AutoCompleteQuest: false);
+            Core.EquipClass(ClassType.Farm);
         }
     }
 
