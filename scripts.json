@@ -14748,6 +14748,19 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Various/DarkScrollTreasureHunt.cs"
   },
   {
+    "name": "The Green WeaponSnack",
+    "description": "farms quest rewards from `quest name here` in /mapname",
+    "tags": [
+      "green",
+      "weaponsnack",
+      ""
+    ],
+    "path": "Other/Various/TheGreenWeaponSnack.cs",
+    "size": 1836,
+    "fileName": "TheGreenWeaponSnack.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Various/TheGreenWeaponSnack.cs"
+  },
+  {
     "name": "ShadowslayerSummoningRitual",
     "description": "null",
     "tags": [
