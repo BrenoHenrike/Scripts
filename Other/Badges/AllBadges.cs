@@ -17,6 +17,7 @@ tags: badge, complete, all
 //cs_include Scripts/Story/ShadowVault.cs
 //cs_include Scripts/Story/SkyGuardSaga.cs
 //cs_include Scripts/Story/UnderGroundLab.cs
+//cs_include Scripts/Story/DragonsOfYokai/CoreDOY.cs
 //cs_include Scripts/Story/Doomwood/CoreDoomwood.cs
 //cs_include Scripts/Story/QueenofMonsters/CoreQOM.cs
 //cs_include Scripts/Story/QueenofMonsters/Extra/CelestialArena.cs
@@ -51,6 +52,7 @@ tags: badge, complete, all
 //cs_include Scripts/Other/Badges/ThiefofChaos.cs
 //cs_include Scripts/Other/Badges/Goal.cs
 //cs_include Scripts/Other/Badges/UltraCarnax.cs
+//cs_include Scripts/Other/Badges/YokaiAscension.cs
 //cs_include Scripts/Story/MagicThief.cs
 //cs_include Scripts/Story/Glacera.cs
 //cs_include Scripts/Seasonal/Frostvale/Frostvale.cs
@@ -93,6 +95,7 @@ public class AllBadges
     public UltraCarnaxBadge UC = new();
     public GoalBadge G = new();
     public FrostvaleBadges FV = new();
+    private YokaiAscension YA = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -135,6 +138,7 @@ public class AllBadges
         FV.Badges();
         YMBB.Badge();
         VHL.Badge();
+        YA.Badge();
         //add more as they are made.
     }
 }
