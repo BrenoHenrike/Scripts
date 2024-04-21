@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 204609,
+    "size": 207192,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -1617,7 +1617,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 95999,
+    "size": 87072,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -2246,7 +2246,7 @@
       "null"
     ],
     "path": "Army/CoreArmyLite.cs",
-    "size": 40931,
+    "size": 40921,
     "fileName": "CoreArmyLite.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/CoreArmyLite.cs"
   },
@@ -3728,7 +3728,7 @@
       "citadel-ruins"
     ],
     "path": "Story/Nation/CitadelRuins.cs",
-    "size": 9788,
+    "size": 8575,
     "fileName": "CitadelRuins.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Nation/CitadelRuins.cs"
   },
@@ -7349,7 +7349,7 @@
       "cane"
     ],
     "path": "Nation/MergeShops/NulgathDiamondMerge.cs",
-    "size": 15431,
+    "size": 14124,
     "fileName": "NulgathDiamondMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/MergeShops/NulgathDiamondMerge.cs"
   },
@@ -7470,7 +7470,7 @@
       "null"
     ],
     "path": "Nation/MergeShops/NulgathWarMerge.cs",
-    "size": 9751,
+    "size": 7964,
     "fileName": "NulgathWarMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/MergeShops/NulgathWarMerge.cs"
   },
@@ -7513,7 +7513,7 @@
       "fragment"
     ],
     "path": "Nation/AFDL/NulgathDemandsWork.cs",
-    "size": 6165,
+    "size": 4748,
     "fileName": "NulgathDemandsWork.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/AFDL/NulgathDemandsWork.cs"
   },
@@ -7872,7 +7872,7 @@
       "null"
     ],
     "path": "Nation/Various/TarosManslayer.cs",
-    "size": 3093,
+    "size": 1827,
     "fileName": "TarosManslayer.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/TarosManslayer.cs"
   },
@@ -9912,7 +9912,7 @@
       "army"
     ],
     "path": "Army/Classes/ArmyVoidHighlord.cs",
-    "size": 31005,
+    "size": 30586,
     "fileName": "ArmyVoidHighlord.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Classes/ArmyVoidHighlord.cs"
   },
@@ -9927,7 +9927,7 @@
       "do it yourself"
     ],
     "path": "Army/Templates/ArmyAggromonCreatorAutoReward.cs",
-    "size": 10080,
+    "size": 10106,
     "fileName": "ArmyAggromonCreatorAutoReward.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Templates/ArmyAggromonCreatorAutoReward.cs"
   },
@@ -10005,7 +10005,7 @@
       "army"
     ],
     "path": "Army/ArmyNulgath/ArmyBloodyChaos.cs",
-    "size": 6063,
+    "size": 5304,
     "fileName": "ArmyBloodyChaos.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyNulgath/ArmyBloodyChaos.cs"
   },
@@ -10032,7 +10032,7 @@
       "reagents"
     ],
     "path": "Army/ArmyNulgath/ArmySupplies.cs",
-    "size": 8534,
+    "size": 7252,
     "fileName": "ArmySupplies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyNulgath/ArmySupplies.cs"
   },
@@ -10373,7 +10373,7 @@
       "elemental binding"
     ],
     "path": "Army/Various/ArmyElementalBindings.cs",
-    "size": 1976,
+    "size": 2304,
     "fileName": "ArmyElementalBindings.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmyElementalBindings.cs"
   },
@@ -10496,7 +10496,7 @@
       "\"elemental binding\""
     ],
     "path": "Army/Various/ArmyArchMageBossItems.cs",
-    "size": 6272,
+    "size": 6437,
     "fileName": "ArmyArchMageBossItems.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmyArchMageBossItems.cs"
   },
