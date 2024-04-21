@@ -67,62 +67,115 @@ public class ArmyBloodyChaos
 
     void ArmyHunt(string map, int[] monsters, string item, int quant = 1)
     {
-        Core.PrivateRooms = true;
-        Core.PrivateRoomNumber = Army.getRoomNr();
-
         if (Bot.Config!.Get<bool>("sellToSync"))
             Army.SellToSync(item, quant);
 
         Core.AddDrop(item);
 
-        Core.EquipClass(ClassType.Solo);
         //Army.waitForParty(map, item);
         Core.FarmingLogger(item, quant);
 
         switch (map)
         {
             case "stalagbite":
+                Core.EquipClass(ClassType.Solo);
+                bool PrekillVath = false;
+                Core.Join("stalagbite", "r2", "Left");
+
+                Monster? Vath = Bot.Monsters.MapMonsters.FirstOrDefault(x => x.MapID == 7);
+                Monster? Stalagbite = Bot.Monsters.MapMonsters.FirstOrDefault(x => x.MapID == 8);
+
                 Army.AggroMonMIDs(7, 8);
                 Army.DivideOnCells("r2");
                 Army.AggroMonStart("stalagbite");
 
                 while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
-                    Core.KillVath(item, quant, false);
+                {
+                    // Initialize combat (to set hp)
+                    if (!PrekillVath)
+                    {
+                        Bot.Kill.Monster(Stalagbite!.MapID);
+                        Bot.Wait.ForMonsterSpawn(Stalagbite!.MapID);
+                        PrekillVath = true;
+                    }
 
+                    Stalagbite = Bot.Monsters.MapMonsters.FirstOrDefault(x => x.MapID == 8);
+                    Vath = Bot.Monsters.MapMonsters.FirstOrDefault(x => x.MapID == 7);
+
+                    if (Stalagbite?.State == 1 || Stalagbite?.State == 2)
+                    {
+                        Bot.Kill.Monster(Stalagbite!.MapID);
+                        Bot.Combat.CancelTarget();
+                    }
+                    else if (Stalagbite?.State == 0)
+                    {
+                        Bot.Combat.Attack(Vath!.MapID);
+                        Core.Sleep();
+                    }
+                }
                 Army.AggroMonStop(true);
                 Core.JumpWait();
                 break;
 
             case "escherion":
+                Core.Join("escherion", "Boss", "Left");
+                Core.EquipClass(ClassType.Solo);
+                Monster? Staff = Bot.Monsters.MapMonsters.FirstOrDefault(x => x.MapID == 2);
+                Monster? Escherion = Bot.Monsters.MapMonsters.FirstOrDefault(x => x.MapID == 3);
+                bool PrekillEscherion = false;
+
                 Army.AggroMonMIDs(2, 3);
                 Army.DivideOnCells("Boss");
                 Army.AggroMonStart("escherion");
 
                 while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
-                    Core.KillEscherion(item, quant, false);
-                    
+                {
+                    if (Bot.Player.Cell != "Boss")
+                    {
+                        Core.Jump("Boss", "Left");
+                        Core.Sleep();
+                    }
+
+                    // Initialize combat (to set hp)
+                    if (!PrekillEscherion)
+                    {
+                        Bot.Kill.Monster(Staff!.MapID);
+                        Bot.Wait.ForMonsterSpawn(Staff.MapID);
+                        PrekillEscherion = true;
+                    }
+
+                    Staff = Bot.Monsters.MapMonsters.FirstOrDefault(x => x.MapID == 2);
+                    Escherion = Bot.Monsters.MapMonsters.FirstOrDefault(x => x.MapID == 3);
+
+                    if (Staff?.State == 1 || Staff!.State == 2)
+                    {
+                        Bot.Kill.Monster(Staff!.MapID);
+                        Bot.Combat.CancelTarget();
+                    }
+                    else if (Staff?.State == 0)
+                    {
+                        Bot.Combat.Attack(Escherion!.MapID);
+                        Core.Sleep();
+                    }
+                }
+
                 Army.AggroMonStop(true);
                 Core.JumpWait();
                 break;
 
             case "hydrachallenge":
                 Army.AggroMonMIDs(monsters);
-                Army.DivideOnCells(Bot.Config!.Get<Cell>("mob") == Cell.h85 ? "h85" : "h90");
                 Army.AggroMonStart("hydrachallenge");
+                Army.DivideOnCells(Bot.Config!.Get<Cell>("mob") == Cell.h85 ? "h85" : "h90");
 
                 while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
                 {
-                    while (!Bot.ShouldExit && Bot.Player.Cell != (Bot.Config.Get<Cell>("mob") == Cell.h85 ? "h85" : "h90"))
-                    {
-                        Core.Jump(Bot.Config!.Get<Cell>("mob") == Cell.h85 ? "h85" : "h90");
-                        Core.Sleep();
-
-                        if (Bot.Player.Cell == (Bot.Config!.Get<Cell>("mob") == Cell.h85 ? "h85" : "h90"))
-                            break;
-                    }
-
-                    Bot.Combat.Attack(Bot.Config!.Get<Cell>("mob") == Cell.h85 ? "Hydra Head 85" : "Hydra Head 90");
+                    Bot.Combat.Attack("*");
+                    Core.Sleep();
                 }
+
+                Army.AggroMonStop(true);
+                Core.JumpWait();
                 break;
 
             default:
