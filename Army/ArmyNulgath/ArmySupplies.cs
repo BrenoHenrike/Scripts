@@ -169,9 +169,9 @@ public class SuppliesWheelArmy
                     Core.Join(selectedMap.Item1, selectedMap.Item2, "Left");
 
                     while (!Bot.ShouldExit &&
-                        (selectedMap.Item1 == "tercessuinotlim"
-                            ? (Core.IsMonsterAlive(2, useMapID: true) || Core.IsMonsterAlive(3, useMapID: true))
-                            : (Core.IsMonsterAlive(1, useMapID: true) || Core.IsMonsterAlive(2, useMapID: true))))
+                             (selectedMap.Item1 == "tercessuinotlim"
+                                 ? Bot.Monsters.MapMonsters.Any(monster => monster.HP >= 0 && (monster.MapID == 2 || monster.MapID == 3))
+                                 : Bot.Monsters.MapMonsters.Any(monster => monster.HP >= 0 && (monster.MapID == 1 || monster.MapID == 2))))
                     {
                         if (!Bot.Player.InCombat)
                             Core.Sleep();  // Use the built-in delay
@@ -187,9 +187,19 @@ public class SuppliesWheelArmy
                 ItemBase? ReturnRewardsItem = ReturnRewards.Find(x => x.Name == item);
 
                 if (ReturnRewards.Any(reward => reward.Name == item && reward.Name != "Receipt of Swindle"))
-                    Core.EnsureCompleteChoose(7551, new[] { ReturnRewardsItem!.Name });
+                    Core.EnsureComplete(7551, ReturnRewardsItem!.ID);
                 else
-                    Core.EnsureCompleteChoose(7551, Core.QuestRewards(7551));
+                {
+                    foreach (ItemBase Item in ReturnRewards)
+                    {
+                        if (Core.CheckInventory(Item.ID, Item.MaxStack))
+                            continue;
+
+                        Core.EnsureComplete(7551, Item.ID);
+                        break;
+                    }
+                }
+
                 AggroSet = false;
             }
 
