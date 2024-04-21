@@ -221,7 +221,7 @@ public class CoreArchMage
         Core.EquipClass(ClassType.Farm);
         Core.HuntMonster("fireavatar", "Shadefire Cavalry", "ShadowFire Wisps", 200, false);
         Core.HuntMonster("fotia", "Femme Cult Worshiper", "Spark of Life", 200, false);
-        Core.HuntMonster("mafic", "*", "Emblazoned Basalt", 200, false);
+        Core.HuntMonster("mafic", "Living Fire", "Emblazoned Basalt", 200, false);
 
         Core.EquipClass(ClassType.Solo);
         Core.KillMonster("underlair", "r6", "Left", "Void Draconian", "Dense Dragon Crystal", 200, false);
