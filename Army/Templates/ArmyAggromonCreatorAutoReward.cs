@@ -12,6 +12,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
+using Skua.Core.Models.Monsters;
 using Skua.Core.Models.Quests;
 using Skua.Core.Options;
 
@@ -200,9 +201,9 @@ public class ArmyAggromonCreatorAutoReward
             if (Bot.Config!.Get<bool>("ContinuousLogging") && Bot.Player.Alive)
                 Core.Logger($"Item and Quantities:{string.Join("", ItemandQuants.Select(pair => $"\n(\"{pair.Item1}\", {Bot.Inventory.GetQuantity(pair.Item1)} / {pair.Item2})"))}");
 
-            foreach (int monsterMapID in MonsterMapIDs)
+            foreach (Monster mon in Bot.Monsters.CurrentAvailableMonsters)
             {
-                while (!Bot.ShouldExit && Core.IsMonsterAlive(monsterMapID, useMapID: true))
+                while (!Bot.ShouldExit && mon != null && mon.HP >= 0)
                 {
                     while (!Bot.ShouldExit && Bot.Player.Cell != dividedCell)
                     {
@@ -215,7 +216,7 @@ public class ArmyAggromonCreatorAutoReward
 
                 // Attack the monster
                 Attack:
-                    Bot.Combat.Attack(monsterMapID);
+                    Bot.Combat.Attack(mon.MapID);
 
                     // Check inventory conditions
                     inventoryConditionMet = ItemandQuants.All(t => Core.CheckInventory(t.Item1, t.Item2));

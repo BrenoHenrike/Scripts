@@ -8,6 +8,7 @@ tags: blood gem of the archfiend, army
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Army/CoreArmyLite.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Monsters;
 using Skua.Core.Options;
 
 public class ArmyBloodyChaos
@@ -86,21 +87,10 @@ public class ArmyBloodyChaos
                 Army.AggroMonStart("stalagbite");
 
                 while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
-                {
-                    while (!Bot.ShouldExit && Bot.Player.Cell != "r2")
-                    {
-                        Core.Jump("r2");
-                        Core.Sleep();
+                    Core.KillVath(item, quant, false);
 
-                        if (Bot.Player.Cell == "r2")
-                            break;
-                    }
-
-                    if (Core.IsMonsterAlive("Stalagbite"))
-                        Bot.Kill.Monster("Stalagbite");
-                    else Bot.Combat.Attack("Vath");
-                    Core.Sleep(1000);
-                }
+                Army.AggroMonStop(true);
+                Core.JumpWait();
                 break;
 
             case "escherion":
@@ -109,21 +99,10 @@ public class ArmyBloodyChaos
                 Army.AggroMonStart("escherion");
 
                 while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
-                {
-                    while (!Bot.ShouldExit && Bot.Player.Cell != "Boss")
-                    {
-                        Core.Jump("Boss");
-                        Core.Sleep();
-
-                        if (Bot.Player.Cell == "Boss")
-                            break;
-                    }
-
-                    if (Core.IsMonsterAlive("Staff of Inversion"))
-                        Bot.Kill.Monster("Staff of Inversion");
-                    else Bot.Combat.Attack("Escherion");
-                    Core.Sleep(1000);
-                }
+                    Core.KillEscherion(item, quant, false);
+                    
+                Army.AggroMonStop(true);
+                Core.JumpWait();
                 break;
 
             case "hydrachallenge":

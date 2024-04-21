@@ -733,7 +733,7 @@ public class CoreArmyLite
             }
 
             // Attack any monster that is alive.
-            if (!Bot.Combat.StopAttacking && Bot.Monsters.CurrentMonsters.Any(m => Core.IsMonsterAlive(m)))
+            if (!Bot.Combat.StopAttacking && Bot.Monsters.CurrentMonsters.Any(m => m.State != 0))
                 PriorityAttack("*");
 
             Core.Rest();

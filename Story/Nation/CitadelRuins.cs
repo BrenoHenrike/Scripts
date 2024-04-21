@@ -205,30 +205,7 @@ public class CitadelRuins
             Nation.Supplies("Claw of Nulgath");
 
             Core.ResetQuest(7551);
-            while (!Bot.ShouldExit && !Core.CheckInventory("Dark Makai Sigil"))
-            {
-                // Define the maps with their corresponding indexes
-                var maps = new[] { ("tercessuinotlim", "m1"), (Core.IsMember ? "Nulgath" : "evilmarsh", "Field1") };
-
-                // Randomly select a map
-                var randomMapIndex = new Random().Next(0, maps.Length);
-                var selectedMap = maps[randomMapIndex];
-
-                Core.Join(selectedMap.Item1, selectedMap.Item2, "Left");
-
-                while (!Bot.ShouldExit &&
-                    (selectedMap.Item1 == "tercessuinotlim"
-                        ? Bot.Monsters.CurrentAvailableMonsters.Any(monster => monster.HP >= 0 && (monster.MapID == 2 || monster.MapID == 3))
-                        : Bot.Monsters.CurrentAvailableMonsters.Any(monster => monster.HP >= 0 && (monster.MapID == 1 || monster.MapID == 2))))
-                {
-                    if (!Bot.Player.InCombat)
-                        Core.Sleep();  // Use the built-in delay
-                    Bot.Combat.Attack("*");
-                    if (Core.CheckInventory("Dark Makai Sigil"))
-                        break;
-                }
-            }
-            Bot.Wait.ForPickup("Dark Makai Sigil");
+            Core.DarkMakaiItem("Dark Makai Sigil");
             Core.EnsureComplete(668);
         }
     }

@@ -516,20 +516,7 @@ public class VHLArmy
         Army.AggroMonStart("escherion");
         Army.DivideOnCells("Boss");
 
-        while (!Bot.ShouldExit && Core.CheckInventory(item, quant))
-        {
-            while (!Bot.ShouldExit && Bot.Player.Cell != "Boss")
-            {
-                Core.Jump("Boss", "Left");
-                Core.Sleep();
-            }
-
-            while (!Bot.ShouldExit && Core.IsMonsterAlive("Staff of Inversion"))
-                Bot.Kill.Monster("Staff of Inversion");
-
-            Bot.Combat.Attack("Escherion");
-            Core.Sleep(1000);
-        }
+        Core.KillEscherion(item, quant, false);
 
         Army.AggroMonStop(true);
         Core.CancelRegisteredQuests();

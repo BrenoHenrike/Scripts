@@ -382,31 +382,7 @@ public class CoreNation
             Supplies("Unidentified 16");
             Supplies("Unidentified 20");
             Core.ResetQuest(7551);
-            #region makai rune
-            while (!Bot.ShouldExit && !Core.CheckInventory("Dark Makai Rune"))
-            {
-                // Define the maps with their corresponding indexes
-                var maps = new[] { ("tercessuinotlim", "m1"), (Core.IsMember ? "Nulgath" : "evilmarsh", "Field1") };
-
-                // Randomly select a map
-                var randomMapIndex = new Random().Next(0, maps.Length);
-                var selectedMap = maps[randomMapIndex];
-
-                Core.Join(selectedMap.Item1, selectedMap.Item2, "Left");
-                while (!Bot.ShouldExit &&
-                       (selectedMap.Item1 == "tercessuinotlim"
-                           ? Bot.Monsters.MapMonsters.Any(monster => monster.HP >= 0 && (monster.MapID == 2 || monster.MapID == 3))
-                           : Bot.Monsters.MapMonsters.Any(monster => monster.HP >= 0 && (monster.MapID == 1 || monster.MapID == 2))))
-                {
-                    if (!Bot.Player.InCombat)
-                        Core.Sleep();  // Use the built-in delay
-                    Bot.Combat.Attack("*");
-                    if (Core.CheckInventory("Dark Makai Rune"))
-                        break;
-                }
-            }
-            Bot.Wait.ForPickup("Dark Makai Rune");
-            #endregion makai rune
+            Core.DarkMakaiItem("Dark Makai Rune");
             Core.EnsureComplete(7551, Item.ID);
             if (Item.Name != "Voucher of Nulgath" && sellMemVoucher)
                 Core.SellItem("Voucher of Nulgath", all: true);
@@ -803,33 +779,7 @@ public class CoreNation
                         if (returnPolicyDuringSupplies && Core.CheckInventory(new[] { Uni(1), Uni(6), Uni(9), Uni(16), Uni(20) }))
                         {
                             Core.ResetQuest(7551);
-                            while (!Bot.ShouldExit && !Core.CheckInventory("Dark Makai Rune"))
-                            {
-                                // Define the maps with their corresponding indexes
-                                var maps = new[] { ("tercessuinotlim", "m1"), (Core.IsMember ? "Nulgath" : "evilmarsh", "Field1") };
-
-                                // Randomly select a map
-                                var randomMapIndex = new Random().Next(0, maps.Length);
-                                var selectedMap = maps[randomMapIndex];
-
-                                Core.Join(selectedMap.Item1, selectedMap.Item2, "Left");
-
-                                while (!Bot.ShouldExit &&
-                                       (selectedMap.Item1 == "tercessuinotlim"
-                                           ? Bot.Monsters.MapMonsters.Any(monster => monster.HP >= 0 && (monster.MapID == 2 || monster.MapID == 3))
-                                           : Bot.Monsters.MapMonsters.Any(monster => monster.HP >= 0 && (monster.MapID == 1 || monster.MapID == 2))))
-                                {
-                                    if (!Bot.Player.InCombat)
-                                        Core.Sleep();  // Use the built-in delay
-                                    Bot.Combat.Attack("*");
-                                    if (Core.CheckInventory("Dark Makai Rune"))
-                                        break;
-                                }
-                            }
-
-
-                            Bot.Wait.ForPickup("Dark Makai Rune");
-
+                            Core.DarkMakaiItem("Dark Makai Rune");
                             var ReturnRewards = Core.EnsureLoad(7551).Rewards;
                             ItemBase? ReturnRewardsItem = rewards.Find(x => x.Name == item);
 
@@ -878,33 +828,7 @@ public class CoreNation
                     if (returnPolicyDuringSupplies && Core.CheckInventory(new[] { Uni(1), Uni(6), Uni(9), Uni(16), Uni(20) }))
                     {
                         Core.ResetQuest(7551);
-                        while (!Bot.ShouldExit && !Core.CheckInventory("Dark Makai Rune"))
-                        {
-                            // Define the maps with their corresponding indexes
-                            var maps = new[] { ("tercessuinotlim", "m1"), (Core.IsMember ? "Nulgath" : "evilmarsh", "Field1") };
-
-                            // Randomly select a map
-                            var randomMapIndex = new Random().Next(0, maps.Length);
-                            var selectedMap = maps[randomMapIndex];
-
-                            Core.Join(selectedMap.Item1, selectedMap.Item2, "Left");
-
-                            while (!Bot.ShouldExit &&
-                                   (selectedMap.Item1 == "tercessuinotlim"
-                                       ? Bot.Monsters.MapMonsters.Any(monster => monster.HP >= 0 && (monster.MapID == 2 || monster.MapID == 3))
-                                       : Bot.Monsters.MapMonsters.Any(monster => monster.HP >= 0 && (monster.MapID == 1 || monster.MapID == 2))))
-                            {
-                                if (!Bot.Player.InCombat)
-                                    Core.Sleep();  // Use the built-in delay
-                                Bot.Combat.Attack("*");
-                                if (Core.CheckInventory("Dark Makai Rune"))
-                                    break;
-                            }
-                        }
-
-
-                        Bot.Wait.ForPickup("Dark Makai Rune");
-
+                        Core.DarkMakaiItem("Dark Makai Rune");
                         var ReturnRewards = Core.EnsureLoad(7551).Rewards;
                         ItemBase? ReturnRewardsItem = rewards.Find(x => x.Name == item);
 
@@ -1000,31 +924,7 @@ public class CoreNation
 
                         Core.FarmingLogger(Item2.Name, Item2.MaxStack);
                         Core.EnsureAccept(7551);
-                        while (!Bot.ShouldExit && !Core.CheckInventory("Dark Makai Rune"))
-                        {
-                            // Define the maps with their corresponding indexes
-                            var maps = new[] { ("tercessuinotlim", "m1"), (Core.IsMember ? "Nulgath" : "evilmarsh", "Field1") };
-
-                            // Randomly select a map
-                            var randomMapIndex = new Random().Next(0, maps.Length);
-                            var selectedMap = maps[randomMapIndex];
-
-                            Core.Join(selectedMap.Item1, selectedMap.Item2, "Left");
-
-                            while (!Bot.ShouldExit &&
-                                   (selectedMap.Item1 == "tercessuinotlim"
-                                       ? Bot.Monsters.MapMonsters.Any(monster => monster.HP >= 0 && (monster.MapID == 2 || monster.MapID == 3))
-                                       : Bot.Monsters.MapMonsters.Any(monster => monster.HP >= 0 && (monster.MapID == 1 || monster.MapID == 2))))
-                            {
-                                if (!Bot.Player.InCombat)
-                                    Core.Sleep();  // Use the built-in delay
-                                Bot.Combat.Attack("*");
-                                if (Core.CheckInventory("Dark Makai Rune"))
-                                    break;
-                            }
-                        }
-                        Bot.Wait.ForPickup("Dark Makai Rune");
-
+                        Core.DarkMakaiItem("Dark Makai Rune");
                         if (Reward != SwindlesReturnReward.None)
                             Core.EnsureComplete(7551, Item2.ID);
                     }
@@ -1061,34 +961,7 @@ public class CoreNation
 
                     Core.FarmingLogger(Item2.Name, Item2.MaxStack);
                     Core.EnsureAccept(7551);
-
-                    while (!Bot.ShouldExit && !Core.CheckInventory("Dark Makai Rune"))
-                    {
-                        // Define the maps with their corresponding indexes
-                        var maps = new[] { ("tercessuinotlim", "m1"), (Core.IsMember ? "Nulgath" : "evilmarsh", "Field1") };
-
-                        // Randomly select a map
-                        var randomMapIndex = new Random().Next(0, maps.Length);
-                        var selectedMap = maps[randomMapIndex];
-
-                        Core.Join(selectedMap.Item1, selectedMap.Item2, "Left");
-
-                        while (!Bot.ShouldExit &&
-                               (selectedMap.Item1 == "tercessuinotlim"
-                                   ? Bot.Monsters.MapMonsters.Any(monster => monster.HP >= 0 && (monster.MapID == 2 || monster.MapID == 3))
-                                   : Bot.Monsters.MapMonsters.Any(monster => monster.HP >= 0 && (monster.MapID == 1 || monster.MapID == 2))))
-                        {
-                            if (!Bot.Player.InCombat)
-                                Core.Sleep();  // Use the built-in delay
-                            Bot.Combat.Attack("*");
-                            if (Core.CheckInventory("Dark Makai Rune"))
-                                break;
-                        }
-                    }
-
-                    Bot.Wait.ForPickup("Dark Makai Rune");
-
-
+                    Core.DarkMakaiItem("Dark Makai Rune");
                     if (Reward != SwindlesReturnReward.None)
                         Core.EnsureComplete(7551, (int)Reward);
                 }
@@ -1258,33 +1131,7 @@ public class CoreNation
             if (returnPolicyDuringSupplies && Core.CheckInventory(new[] { Uni(1), Uni(6), Uni(9), Uni(16), Uni(20) }))
             {
                 Core.ResetQuest(7551);
-                while (!Bot.ShouldExit && !Core.CheckInventory("Dark Makai Rune"))
-                {
-                    // Define the maps with their corresponding indexes
-                    var maps = new[] { ("tercessuinotlim", "m1"), (Core.IsMember ? "Nulgath" : "evilmarsh", "Field1") };
-
-                    // Randomly select a map
-                    var randomMapIndex = new Random().Next(0, maps.Length);
-                    var selectedMap = maps[randomMapIndex];
-
-                    Core.Join(selectedMap.Item1, selectedMap.Item2, "Left");
-
-                    while (!Bot.ShouldExit &&
-                           (selectedMap.Item1 == "tercessuinotlim"
-                               ? Bot.Monsters.MapMonsters.Any(monster => monster.HP >= 0 && (monster.MapID == 2 || monster.MapID == 3))
-                               : Bot.Monsters.MapMonsters.Any(monster => monster.HP >= 0 && (monster.MapID == 1 || monster.MapID == 2))))
-                    {
-                        if (!Bot.Player.InCombat)
-                            Core.Sleep();  // Use the built-in delay
-                        Bot.Combat.Attack("*");
-                        if (Core.CheckInventory("Dark Makai Rune"))
-                            break;
-                    }
-                }
-
-
-                Bot.Wait.ForPickup("Dark Makai Rune");
-
+                Core.DarkMakaiItem("Dark Makai Rune");
                 if (item != null && rewardItemIds.TryGetValue(item, out int itemId))
                     Core.EnsureCompleteMulti(7551, itemId);
                 else
@@ -1441,24 +1288,7 @@ public class CoreNation
         while (!Bot.ShouldExit && Core.CheckInventory("Diamond of Nulgath", 15) && !Core.CheckInventory(Uni(13), 13))
         {
             Core.ResetQuest(869);
-            if (Bot.Map.Name != "tercessuinotlim")
-                Core.Join("tercessuinotlim", "m1", "Left");
-
-            if (Bot.Player.Cell != "m1")
-                Core.Jump("m1", "Left");
-
-            if (Bot.Player.CurrentClass!.Name == "ArchMage")
-                Bot.Options.AttackWithoutTarget = true;
-
-            while (!Bot.ShouldExit && !Core.CheckInventory("Dark Makai Sigil"))
-            {
-                if (!Bot.Player.InCombat)
-                    Core.Sleep();
-                Bot.Combat.Attack("*");
-                if (Core.CheckInventory("Dark Makai Sigil"))
-                    break;
-            }
-            Bot.Wait.ForPickup("Dark Makai Sigil");
+            Core.DarkMakaiItem("Dark Makai Sigil");
             Core.EnsureCompleteMulti(869);
         }
         Bot.Options.AttackWithoutTarget = false;
@@ -1710,11 +1540,11 @@ public class CoreNation
         {
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("tercessuinotlim", "Taro Blademaster", "Taro's Manslayer", isTemp: false);
-            
+
             EssenceofNulgath(25);
         }
         // while (!Bot.ShouldExit && !Core.CheckInventory("Totem of Nulgath", quant))
-                // VoucherItemTotemofNulgath(VoucherItemTotem.Totem_of_Nulgath);
+        // VoucherItemTotemofNulgath(VoucherItemTotem.Totem_of_Nulgath);
     }
 
     /// <summary>

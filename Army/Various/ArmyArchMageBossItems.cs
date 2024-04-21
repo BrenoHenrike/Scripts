@@ -132,14 +132,20 @@ public class ArchMageMatsArmy
         {
             while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
             {
-                while (!Bot.ShouldExit && Bot.Player.Cell != cell)
+                foreach (Monster mon in Bot.Monsters.MapMonsters.Where(x => x.ID == 1 || x.ID == 2))
                 {
-                    Core.Jump(cell);
-                    Core.Sleep();
+                    bool shouldExit = false;
+
+                    while (!Bot.ShouldExit && mon.HP >= 0 && !shouldExit)
+                    {
+                        Bot.Combat.Attack(mon.MapID);
+                        Core.Sleep();
+                        shouldExit = Core.CheckInventory(item, quant);
+                    }
+
+                    if (shouldExit)
+                        break;
                 }
-                foreach (int MonsterMapID in new[] { 1, 2 })
-                    if (Core.IsMonsterAlive(MonsterMapID, useMapID: true))
-                        Bot.Combat.Attack(MonsterMapID);
             }
         }
         else

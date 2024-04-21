@@ -9,6 +9,7 @@ tags: army, elemental binding
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Army/CoreArmyLite.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Monsters;
 
 public class ArmyElementalBinding
 {
@@ -63,9 +64,20 @@ public class ArmyElementalBinding
                 Core.Sleep();
             }
 
-            foreach (int MonsterMapID in new[] { 1, 2 })
-                while (!Bot.ShouldExit && Core.IsMonsterAlive(MonsterMapID, useMapID: true))
-                    Bot.Combat.Attack(MonsterMapID);
+            foreach (Monster mon in Bot.Monsters.MapMonsters.Where(x => x.ID == 1 || x.ID == 2))
+            {
+                bool shouldExit = false;
+
+                while (!Bot.ShouldExit && mon.HP >= 0 && !shouldExit)
+                {
+                    Bot.Combat.Attack(mon.MapID);
+                    Core.Sleep();
+                    shouldExit = Core.CheckInventory("Elemental Binding", 2500);
+                }
+
+                if (shouldExit)
+                    break;
+            }
         }
         Army.AggroMonStop(true);
         Core.CancelRegisteredQuests();
