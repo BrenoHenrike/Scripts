@@ -1584,8 +1584,8 @@ public class CoreBots
             if (Bot.Quests.IsInProgress(quest.ID) || quest.ID <= 0)
                 continue;
 
-            var requiredItemNames = quest.AcceptRequirements
-                .Concat(quest.Requirements)
+            var requiredItemNames = quest.AcceptRequirements.Where(x => !x.Temp)
+                .Concat(quest.Requirements.Where(x => !x.Temp))
                 .Select(item => item?.Name)
                 .Where(name => !string.IsNullOrEmpty(name))
                 .ToArray();
@@ -1594,22 +1594,22 @@ public class CoreBots
                 if (itemName != null && !Bot.Inventory.Contains(itemName))
                     Unbank(itemName);
 
-            foreach (ItemBase item in quest.AcceptRequirements)
+            foreach (ItemBase item in quest.AcceptRequirements.Where(x => !x.Temp))
             {
                 if (item == null)
                     continue;
 
-                if (!Bot.Drops.ToPickupIDs.Contains(item?.ID ?? 0) && item?.Name != null)
-                    Bot.Drops.Add(item?.ID ?? 0);  // Adjusted to use 0 as the default value
+                if (!Bot.Drops.ToPickupIDs.Contains(item.ID) && item?.Name != null)
+                    Bot.Drops.Add(item.ID);  // Adjusted to use 0 as the default value
             }
 
-            foreach (ItemBase item in quest.Requirements)
+            foreach (ItemBase item in quest.Requirements.Where(x => !x.Temp))
             {
                 if (item == null)
                     continue;
 
-                if (!Bot.Drops.ToPickupIDs.Contains(item?.ID ?? 0) && item?.Name != null)
-                    Bot.Drops.Add(item?.ID ?? 0);  // Adjusted to use 0 as the default value
+                if (!Bot.Drops.ToPickupIDs.Contains(item.ID) && item?.Name != null)
+                    Bot.Drops.Add(item.ID);  // Adjusted to use 0 as the default value
             }
 
             Sleep(ActionDelay * 2);
