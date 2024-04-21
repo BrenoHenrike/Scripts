@@ -101,7 +101,7 @@ public class CoreBots
         if (changeTo)
         {
             Bot.Events.ScriptStopping += CrashDetector;
-            SkuaVersionChecker("1.2.4");
+            SkuaVersionChecker("1.2.4.0");
 
             loadedBot = Bot.Manager.LoadedScript.Replace("\\", "/").Split("/Scripts/").Last().Replace(".cs", "");
             Logger($"Bot Started [{loadedBot}]");
