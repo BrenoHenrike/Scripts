@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 207192,
+    "size": 207248,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -10005,7 +10005,7 @@
       "army"
     ],
     "path": "Army/ArmyNulgath/ArmyBloodyChaos.cs",
-    "size": 5304,
+    "size": 7380,
     "fileName": "ArmyBloodyChaos.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyNulgath/ArmyBloodyChaos.cs"
   },
