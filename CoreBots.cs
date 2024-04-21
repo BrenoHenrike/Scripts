@@ -2062,6 +2062,13 @@ public class CoreBots
     /// <param name="isTemp">Whether the item is temporary</param>
     public void HuntMonster(string map, string monster, string? item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
     {
+        if (string.IsNullOrEmpty(monster) || monster == "*")
+        {
+            Logger($"Monster: \"{monster}\" - {item} is invalid for Core.Hunt\n" +
+            $"Please Ping Tato with the correct \"\"mob\" - \"cell\" - \"left\"\"\n" +
+            $"for this specific item along with the script and\n" +
+            $"a SCREENSHOT of the logs [button] > scripts tab.", stopBot: true);
+        }
         if (item != null && (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
             return;
 
