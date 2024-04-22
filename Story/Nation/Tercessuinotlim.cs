@@ -69,7 +69,7 @@ public class Tercessuinotlim
             Core.EnsureAccept(8472);
             Core.HuntMonster("Fiendshard", "Dirtlicker", "Dirtlicker's Dignity Decimated");
             Core.HuntMonster("citadel", "Death's Head", "Death's Head Demolished");
-            Core.HuntMonster("ShadowBlast", "CaesarIsTheDark|Carnage", "Shadowblaster Shamed", 10);
+            Core.HuntMonster("ShadowBlast", "CaesarisTheDark", "Shadowblaster Shamed", 10);
             Core.HuntMonster("QuibbleHunt", "Skew", "Skew Straightened Out");
             Core.HuntMonster("ShadowBlast", "Crag and Bamboozle", "Crag and Bamboozle Cowering");
             Core.HuntMonster("ShadowBlast", "Grimlord Boss", "Grimlord Left Groveling");
