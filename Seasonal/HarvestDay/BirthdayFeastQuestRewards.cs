@@ -88,7 +88,7 @@ public class BirthdayFeastQuestRewards
                 while (!Bot.ShouldExit && !Core.CheckInventory(Reward.Name, toInv: false))
                 {
                     Core.HuntMonster("celestialrealm", "Celestial Bird of Paradise", "Celestial Artifact", 6, log: false);
-                    Core.HuntMonster("celestialrealm", "Infernal Imp| Infernal Knight", "Infernal Artifact", 6, log: false);
+                    Core.HuntMonster("celestialrealm", "Infernal Imp", "Infernal Artifact", 6, log: false);
 
                     i++;
 

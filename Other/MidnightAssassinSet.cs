@@ -50,8 +50,8 @@ public class MidnightAssassinSet
 
         while (!Bot.ShouldExit && !Core.CheckInventory(rewards))
         {
-            Core.HuntMonster("bloodwarlycan", "Vampiric Knight|Crypt Guardian", "Vampire Medal", 5);
-            Core.HuntMonster("bloodwarlycan", "Vampiric Knight|Crypt Guardian", "Mega Vampire Medal", 3);
+            Core.HuntMonster("bloodwarlycan", "Vampiric Knight", "Vampire Medal", 5);
+            Core.HuntMonster("bloodwarlycan", "Vampiric Knight", "Mega Vampire Medal", 3);
             Bot.Wait.ForPickup("*");
         }
 

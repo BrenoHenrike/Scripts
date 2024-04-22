@@ -27,7 +27,7 @@ public class FlockMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Golden Egg", "Golden Feather", "Chicken Claw", "Chickenwing ArmBlade "});
+        Core.BankingBlackList.AddRange(new[] { "Golden Egg", "Golden Feather", "Chicken Claw", "Chickenwing ArmBlade " });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -68,7 +68,7 @@ public class FlockMerge
                     Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("battlefowl", "Chicken|Sabertooth Chicken", isTemp: false, log: false);
+                        Core.HuntMonster("battlefowl", "Chicken", isTemp: false, log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
