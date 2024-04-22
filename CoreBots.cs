@@ -2784,7 +2784,6 @@ public class CoreBots
         Bot.Options.AggroMonsters = false;
         Logger("Aggro settings temporarily modified: AggroAllMonsters and AggroMonsters set to false.");
 
-        bool PreFarmKill = false;
         while (!Bot.ShouldExit && !CheckInventory(item, quant))
         {
             Join("fiendshard");
