@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 207777,
+    "size": 207897,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -1617,7 +1617,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 87072,
+    "size": 87083,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -2283,7 +2283,7 @@
       "set"
     ],
     "path": "Other/ShadowedWarMageSet.cs",
-    "size": 1948,
+    "size": 2044,
     "fileName": "ShadowedWarMageSet.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/ShadowedWarMageSet.cs"
   },
@@ -2336,7 +2336,7 @@
       "drops"
     ],
     "path": "Other/EternalDragonDrops.cs",
-    "size": 2105,
+    "size": 2221,
     "fileName": "EternalDragonDrops.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/EternalDragonDrops.cs"
   },
@@ -2528,7 +2528,7 @@
       "twilly"
     ],
     "path": "Other/LoreBowl.cs",
-    "size": 1641,
+    "size": 1716,
     "fileName": "LoreBowl.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/LoreBowl.cs"
   },
@@ -3540,7 +3540,7 @@
       "null"
     ],
     "path": "Legion/CoreLegion.cs",
-    "size": 35742,
+    "size": 35756,
     "fileName": "CoreLegion.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/CoreLegion.cs"
   },
@@ -8292,7 +8292,7 @@
       "null"
     ],
     "path": "Nation/Various/TheGameofGemstones(Gold[Members]).cs",
-    "size": 1644,
+    "size": 1647,
     "fileName": "TheGameofGemstones(Gold[Members]).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/TheGameofGemstones(Gold[Members]).cs"
   },
@@ -10884,7 +10884,7 @@
       "null"
     ],
     "path": "Other/MergeShops/CrystalBrightMerge.cs",
-    "size": 3765,
+    "size": 3779,
     "fileName": "CrystalBrightMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/CrystalBrightMerge.cs"
   },
@@ -14114,7 +14114,7 @@
       "light"
     ],
     "path": "Other/Armor/FiendofLight.cs",
-    "size": 2442,
+    "size": 2453,
     "fileName": "FiendofLight.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Armor/FiendofLight.cs"
   },
@@ -22266,7 +22266,7 @@
       "birthday"
     ],
     "path": "Seasonal/StaffBirthdays/DageTheEvil/DarkWarLegionMerge.cs",
-    "size": 7060,
+    "size": 6961,
     "fileName": "DarkWarLegionMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/DarkWarLegionMerge.cs"
   },
@@ -22402,7 +22402,7 @@
       "birthday"
     ],
     "path": "Seasonal/StaffBirthdays/DageTheEvil/DarkWarNationMerge.cs",
-    "size": 8241,
+    "size": 8123,
     "fileName": "DarkWarNationMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/DarkWarNationMerge.cs"
   },
