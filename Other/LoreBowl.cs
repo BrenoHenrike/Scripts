@@ -53,7 +53,7 @@ public class LoreBowl
 
     private void Drops()
     {
-        if (Core.CheckInventory(LoreBowlItems, toInv: false))
+        if (!Core.isSeasonalMapActive("punt") || Core.CheckInventory(LoreBowlItems, toInv: false))
             return;
 
         Bot.Drops.Add(LoreBowlItems);
@@ -62,7 +62,7 @@ public class LoreBowl
         {
             Core.FarmingLogger(item, 1);
             while (!Bot.ShouldExit && !Core.CheckInventory(item, toInv: false))
-                Core.HuntMonster("punt", "*", isTemp: false, log: false);
+                Core.KillMonster("punt", "Enter", "Spawn", "Undead Defender", item, isTemp: false, log: false);
             Core.ToBank(LoreBowlItems);
         }
 

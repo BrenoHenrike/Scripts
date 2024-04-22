@@ -47,11 +47,14 @@ public class ShadowedWarMageSet
         Core.EquipClass(ClassType.Solo);
 
         Bot.Events.ItemDropped += ItemDropped;
-        Core.Logger($"Farm for the Shadowed War-Mage set started. Farming to get {rewards.Count() - count} more item" + ((rewards.Count() - count) > 1 ? "s" : ""));
+        Core.Logger($"Farm for the Shadowed War-Mage set started. Farming to get {rewards.Length - count} more item" + ((rewards.Length - count) > 1 ? "s" : ""));
         while (!Bot.ShouldExit && !Core.CheckInventory(rewards))
         {
-            Core.HuntMonster("timestream", "ShadowKnight Gar", "*");
-            Bot.Wait.ForPickup("*");
+            foreach (string item in rewards)
+            {
+                Core.HuntMonster("timestream", "ShadowKnight Gar", item, isTemp: false);
+                Bot.Wait.ForPickup(item);
+            }
         }
 
         Bot.Events.ItemDropped -= ItemDropped;
