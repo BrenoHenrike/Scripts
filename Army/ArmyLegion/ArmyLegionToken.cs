@@ -114,7 +114,7 @@ public class ArmyLegionToken
                 // Set map to "fotia" and classType to Farm
                 map = "fotia";
                 classType = ClassType.Farm;
-                Adv.SmartEnhance(Core.FarmClass);
+                // Adv.SmartEnhance(Core.FarmClass);
 
                 // Initialize lists to store quest IDs, quest items, and rewards
                 List<int> Quests = new();
@@ -136,15 +136,16 @@ public class ArmyLegionToken
                     {
                         // Get the accept requirement item for the quest
                         ItemBase? firstAcceptReq = firstQID.AcceptRequirements.FirstOrDefault();
-                        HasQuestPet = Core.CheckInventory(firstAcceptReq?.ID ?? 0);
+                        HasQuestPet = Core.CheckInventory(firstAcceptReq!.ID);
                         if (HasQuestPet)
                         {
                             // Log pet ownership and add quest ID and rewards
-                            Core.Logger($"Pet Owned: {firstAcceptReq}\n" +
+                            Core.Logger($"Pet Owned: {firstAcceptReq?.Name}\n" +
                                         $"Using QID: {firstQID.ID} for {firstQID.Name}");
                             Quests.Add(firstQID.ID);
                             Core.AddDrop(firstQID.Rewards.Select(item => item.Name).Distinct().ToArray());
                         }
+                        else Core.Logger($"Dont own: {firstAcceptReq.Name} [{firstAcceptReq.ID}]");
                     }
                     else
                     {
@@ -154,7 +155,7 @@ public class ArmyLegionToken
                     }
 
                     // Exit loop if player doesn't have the required pet
-                    if (!HasQuestPet)
+                    if (HasQuestPet)
                     {
                         break;
                     }
