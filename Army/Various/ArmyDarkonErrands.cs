@@ -52,15 +52,15 @@ public class ArmyDarkonErrands
         switch (Method)
         {
             case Method.First_Errands_Strong_Team:
-                ArmyHunt("towerofdoom7", new[] { "Dread Gorillaphant" }, "Darkon's Receipt", ClassType.Farm, false, 22, Method.First_Errands_Strong_Team);
+                ArmyHunt("towerofdoom7", new[] { "Dread Gorillaphant" }, "Darkon's Receipt", ClassType.Farm, false, 222, Method.First_Errands_Strong_Team);
                 break;
 
             case Method.First_Errands_Weak_Team:
-                ArmyHunt("maparcangrove", new[] { "Gorillaphant" }, "Darkon's Receipt", ClassType.Farm, false, 22, Method.First_Errands_Weak_Team);
+                ArmyHunt("maparcangrove", new[] { "Gorillaphant" }, "Darkon's Receipt", ClassType.Farm, false, 222, Method.First_Errands_Weak_Team);
                 break;
 
             case Method.Second_Errands:
-                ArmyHunt("doomvault", new[] { "Binky" }, "Darkon's Receipt", ClassType.Solo, false, 22, Method.Second_Errands);
+                ArmyHunt("doomvault", new[] { "Binky" }, "Darkon's Receipt", ClassType.Solo, false, 222, Method.Second_Errands);
                 break;
 
             case Method.Third_Errands:
@@ -85,6 +85,7 @@ public class ArmyDarkonErrands
             Army.SellToSync(item, quant);
 
         Core.AddDrop(item);
+        Core.EquipClass(classType);
 
         //Army.waitForParty(map, item);
         Core.FarmingLogger(item, quant);
@@ -126,7 +127,7 @@ public class ArmyDarkonErrands
         if (Bot.Player.CurrentClass?.Name == "ArchMage")
             Bot.Options.AttackWithoutTarget = true;
 
-        while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
+        while (!Bot.ShouldExit && isTemp ? !Bot.TempInv.Contains(item, quant) : !Core.CheckInventory(item, quant))
             Bot.Combat.Attack("*");
 
         Core.CancelRegisteredQuests();
