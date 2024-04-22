@@ -446,7 +446,7 @@ public class UnlockForgeEnhancements
 
         Core.HuntMonster("shadowattack", "Death", "Death's Power", 3, isTemp: false);
         Core.KillEscherion("Chaotic Power", 7);
-        Core.HuntMonster("shadowrealmpast", "*", "Empowered Essence", 50, isTemp: false);
+        Core.HuntMonster("shadowrealmpast", "Pure Shadowscythe", "Empowered Essence", 50, isTemp: false);
         Core.HuntMonster("undergroundlabb", "Ultra Battle Gem", "Gem Power", 25, false);
         Adv.BuyItem("alchemyacademy", 2116, "Power Tonic", 10);
 
