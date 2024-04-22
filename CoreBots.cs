@@ -2011,7 +2011,7 @@ public class CoreBots
             Join(map, cell, pad, publicRoom: publicRoom);
             Jump(cell, pad);
 
-            Monster? Monster = monster == "*" ? Bot.Monsters.MapMonsters.FirstOrDefault() : Bot.Monsters.MapMonsters.FirstOrDefault(x => x.Name.FormatForCompare() == monster.FormatForCompare());
+            Monster? Monster = monster == "*" ? Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault() : Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault(x => x.Name.FormatForCompare() == monster.FormatForCompare());
 
             if (Monster == null)
             {
