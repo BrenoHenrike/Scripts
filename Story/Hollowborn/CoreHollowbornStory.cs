@@ -61,7 +61,7 @@ public class CoreHollowbornStory
         Story.KillQuest(8296, "trygve", "Vindicator Recruit");
 
         //Othala (8297)
-        Story.KillQuest(8297, "trygve", new[] { "Blood Eagle|", "Vindicator Recruit" });
+        Story.KillQuest(8297, "trygve", new[] { "Blood Eagle", "Vindicator Recruit" });
 
         //Isa, Reversed (8298)
         Story.KillQuest(8298, "trygve", "Gramiel");
