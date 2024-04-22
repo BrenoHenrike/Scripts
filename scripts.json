@@ -2435,7 +2435,7 @@
       "set"
     ],
     "path": "Other/MidnightAssassinSet.cs",
-    "size": 2119,
+    "size": 2089,
     "fileName": "MidnightAssassinSet.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MidnightAssassinSet.cs"
   },
@@ -3684,7 +3684,7 @@
       "null"
     ],
     "path": "Story/Hollowborn/CoreHollowbornStory.cs",
-    "size": 3917,
+    "size": 3918,
     "fileName": "CoreHollowbornStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Hollowborn/CoreHollowbornStory.cs"
   },
@@ -12850,7 +12850,7 @@
       "null"
     ],
     "path": "Other/MergeShops/FlockMerge.cs",
-    "size": 3997,
+    "size": 3979,
     "fileName": "FlockMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/FlockMerge.cs"
   },
@@ -18409,7 +18409,7 @@
       "harvest-day"
     ],
     "path": "Seasonal/HarvestDay/BirthdayFeastQuestRewards.cs",
-    "size": 7174,
+    "size": 7157,
     "fileName": "BirthdayFeastQuestRewards.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HarvestDay/BirthdayFeastQuestRewards.cs"
   },
