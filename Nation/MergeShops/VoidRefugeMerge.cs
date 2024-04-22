@@ -67,8 +67,8 @@ public class VoidRefugeMerge
 
                 case "Venomous Fang Blade":
                     Core.FarmingLogger(req.Name, quant);
-                    Core.HuntMonster("tercessuinotlim", "Ninja Spy", "Spy’s Info", isTemp: false, log: false);
-                    Core.HuntMonster("citadel", "Inquisitor Captain", "Captain’s Info", isTemp: false, log: false);
+                    Core.HuntMonster("tercessuinotlim", "Ninja Spy", "Spy's Info", isTemp: false, log: false);
+                    Core.HuntMonster("citadel", "Inquisitor Captain", "Captain's Info", isTemp: false, log: false);
                     Core.HuntMonster("lairattack", "Flame Dragon General", "Broken Fang Blade", isTemp: false, log: false);
                     Core.GetMapItem(12571, map: "museum");
                     break;

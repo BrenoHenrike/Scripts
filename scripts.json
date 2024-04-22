@@ -7444,7 +7444,7 @@
       "unstable"
     ],
     "path": "Nation/MergeShops/VoidRefugeMerge.cs",
-    "size": 13451,
+    "size": 13447,
     "fileName": "VoidRefugeMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/MergeShops/VoidRefugeMerge.cs"
   },
@@ -14748,19 +14748,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Various/DarkScrollTreasureHunt.cs"
   },
   {
-    "name": "The Green WeaponSnack",
-    "description": "farms quest rewards from `quest name here` in /mapname",
-    "tags": [
-      "green",
-      "weaponsnack",
-      ""
-    ],
-    "path": "Other/Various/TheGreenWeaponSnack.cs",
-    "size": 1836,
-    "fileName": "TheGreenWeaponSnack.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Various/TheGreenWeaponSnack.cs"
-  },
-  {
     "name": "ShadowslayerSummoningRitual",
     "description": "null",
     "tags": [
@@ -18192,6 +18179,25 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AprilFools/GardenQuestMerge(VegetableToken).cs"
   },
   {
+    "name": "The Green WeaponSnack",
+    "description": "farms quest rewards from `The Green WeaponSnack` in /gardenquest",
+    "tags": [
+      "green",
+      "weaponsnack",
+      "cucumber",
+      "salt",
+      "sugar",
+      "spices",
+      "pickle",
+      "pickle pullover",
+      "pickle face"
+    ],
+    "path": "Seasonal/AprilFools/TheGreenWeaponSnack.cs",
+    "size": 2049,
+    "fileName": "TheGreenWeaponSnack.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AprilFools/TheGreenWeaponSnack.cs"
+  },
+  {
     "name": "Super Slayin Badge",
     "description": "This will get the Super Slayin Badge.",
     "tags": [
@@ -20209,7 +20215,7 @@
       "member"
     ],
     "path": "Story/LordsofChaos/ChoasFinaleBonus[Mem]/DeadlyDungeon[Mem].cs",
-    "size": 3355,
+    "size": 3760,
     "fileName": "DeadlyDungeon[Mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/LordsofChaos/ChoasFinaleBonus[Mem]/DeadlyDungeon[Mem].cs"
   },
