@@ -1,7 +1,7 @@
 /*
 name: The Green WeaponSnack
-description: farms quest rewards from `quest name here` in /mapname
-tags: Green, WeaponSnack, 
+description: farms quest rewards from `The Green WeaponSnack` in /gardenquest
+tags: Green, WeaponSnack, cucumber, salt, sugar, spices,pickle,pickle pullover,pickle face
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -26,6 +26,8 @@ public class TheGreenWeaponSnack
 
     public void GetRewards()
     {
+        if (!Core.isSeasonalMapActive("gardenquest") || Core.CheckInventory(Core.QuestRewards(QuestID), toInv: false))
+            return;
 
         List<ItemBase> RewardOptions = Core.EnsureLoad(QuestID).Rewards;
 
