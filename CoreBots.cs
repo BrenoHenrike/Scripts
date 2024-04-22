@@ -2035,7 +2035,8 @@ public class CoreBots
                         break;
                 }
 
-                Bot.Kill.Monster(monster == "*" ? monster.FormatForCompare() : Monster.Name);
+                Bot.Kill.Monster(monster == "*" ? "*" : Monster!.Name);
+
             }
             else
             {
