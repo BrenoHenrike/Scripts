@@ -7,6 +7,7 @@ tags: story, quest, chaos-saga, 13-lords-of-chaos, chaos-finale, deadly-dungeon,
 //cs_include Scripts/CoreStory.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
+using Skua.Core.Models.Quests;
 
 public class DeadlyDungeon
 {
@@ -82,14 +83,25 @@ public class DeadlyDungeon
         if (!Story.QuestProgression(3698))
         {
             Core.EnsureAccept(3698);
-            ItemBase Item = Bot.Inventory.Items.First(x => x.ID == 24738);
+            Quest? quest = Bot.Quests.EnsureLoad(3698);
 
-            if (Item != null && Core.CheckInventory(Item.ID, 100))
-                Core.SellItem(Item.Name, 1);
+            if (quest != null)
+            {
+                ItemBase? Item = quest.Requirements.FirstOrDefault();
 
-            Core.HuntMonster("deadlydungeon", "Dire Draugr", Item?.Name, 100, isTemp: false);
+                if (Item != null)
+                {
+                    if (Core.CheckInventory(Item.ID, 100))
+                        Core.SellItem(Item.Name, 1);
 
-            Core.EnsureComplete(3698);
+                    Core.HuntMonster("deadlydungeon", "Dire Draugr", Item.Name, 100, isTemp: false);
+                    Core.EnsureComplete(3698);
+                }
+                else
+                    Core.Logger($"Quest {quest.Name} returned no requirements.");
+            }
+            else
+                Core.Logger("Quest could not be loaded.");
         }
 
 
