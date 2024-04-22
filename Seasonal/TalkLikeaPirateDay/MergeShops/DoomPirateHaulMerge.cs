@@ -83,9 +83,17 @@ public class DoomPirateHaulMerge
                         foreach (int mob in new[] { 5, 4, 7, 6, 9, 8, 11, 10 })
                         {
                             Monster? M = Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault(x => x != null && x.MapID == mob);
-                            Core.Logger($"Killing: {M?.MapID}");
-                            Bot.Kill.Monster(M!.MapID);
-                            Core.Logger($"Killed: {M?.MapID}");
+                            if (M != null)
+                            {
+                                Core.Logger($"Killing: {M.MapID}");
+                                Bot.Kill.Monster(M.MapID);
+                                Core.Logger($"Killed: {M.MapID}");
+                            }
+                            else
+                            {
+                                Core.Logger($"No monster found with MapID: {mob}, something went wrong. Restarting room");
+                                goto Restartkills;
+                            }
                             while (!Bot.ShouldExit && !Bot.Player.Alive)
                             {
                                 Core.Logger("Player died, restarting room");
