@@ -1964,6 +1964,7 @@ public class CoreBots
     /// <param name="log">Whether it will log that it is killing the monster</param>
     public void KillMonster(string map, string cell, string pad, string monster, string? item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
     {
+        item = item!.FormatForCompare();
         if (item != null && (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
             return;
 
@@ -2023,6 +2024,7 @@ public class CoreBots
     /// <param name="log">Whether it will log that it is killing the monster</param>
     public void KillMonster(string map, string cell, string pad, int monsterID, string? item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
     {
+        item = item!.FormatForCompare();
         if (item != null && (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
             return;
         if (!isTemp && item != null)
@@ -2065,6 +2067,7 @@ public class CoreBots
     /// <param name="isTemp">Whether the item is temporary</param>
     public void HuntMonster(string map, string monster, string? item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
     {
+        item = item!.FormatForCompare();
         if (string.IsNullOrEmpty(monster) || monster == "*")
         {
             Logger($"Monster: \"{monster}\" - {item} is invalid for Core.Hunt\n" +
@@ -2109,29 +2112,45 @@ public class CoreBots
             if (log)
                 Logger($"Hunting {M!.Name} [{M!.ID}] for {item}, ({dynamicQuant(item, isTemp)}/{quant}) [Temp = {isTemp}]");
 
-            while (!Bot.ShouldExit && isTemp ? !Bot.TempInv.Contains(item, quant) : !Bot.Inventory.Contains(item, quant))
+            while (!Bot.ShouldExit && isTemp ? !Bot.TempInv.Contains(item!, quant) : !Bot.Inventory.Contains(item!, quant))
             {
-                while (!Bot.ShouldExit && Bot.Player.Cell != (monster == "*" ? Bot.Monsters.MapMonsters[0]?.Cell : M?.Cell))
+                if (item == null || isTemp ? Bot.TempInv.Contains(item!, quant) : Bot.Inventory.Contains(item, quant))
                 {
-                    Jump((monster == "*" ? Bot.Monsters.MapMonsters[0]?.Cell : M?.Cell) ?? throw new InvalidOperationException(), "Left");
-                    Bot.Wait.ForCellChange((monster == "*" ? Bot.Monsters.MapMonsters[0]?.Cell : M?.Cell) ?? throw new InvalidOperationException());
-                    if (Bot.Player.Cell == (monster == "*" ? Bot.Monsters.MapMonsters[0]?.Cell : M?.Cell))
-                        break;
-                }
-
-                Bot.Kill.Monster(monster == "*" ? "*" : M!.Name);
-                Sleep();
-
-                if (isTemp ? Bot.TempInv.Contains(item, quant) : Bot.Inventory.Contains(item, quant))
-                {
-                    Bot.Combat.StopAttacking = true;
-                    Bot.Options.AttackWithoutTarget = false;
+                    Bot.Options.AggroMonsters = false;
+                    while (!Bot.ShouldExit && Bot.Player.InCombat)
+                    {
+                        JumpWait();
+                        Sleep();
+                        if (!Bot.Player.InCombat)
+                            break;
+                    }
                     if (!isTemp)
-                        Bot.Wait.ForPickup(item);
-                    JumpWait();
+                        Bot.Wait.ForPickup(item!);
                     Rest();
                     break;
                 }
+
+                while (!Bot.ShouldExit && Bot.Player.Cell != M!.Cell)
+                {
+                    Jump(M!.Cell, "Left");
+                    Bot.Wait.ForCellChange(M!.Cell);
+                    if (Bot.Player.Cell == M!.Cell)
+                        break;
+                }
+
+                Bot.Combat.Attack(monster == "*" ? "*" : M!.Name);
+                Sleep();
+
+                // if (isTemp ? Bot.TempInv.Contains(item, quant) : Bot.Inventory.Contains(item, quant))
+                // {
+                //     Bot.Combat.StopAttacking = true;
+                //     Bot.Options.AttackWithoutTarget = false;
+                //     if (!isTemp)
+                //         Bot.Wait.ForPickup(item);
+                //     JumpWait();
+                //     Rest();
+                //     break;
+                // }
             }
         }
         Bot.Options.AttackWithoutTarget = false;
@@ -2150,11 +2169,11 @@ public class CoreBots
     /// <param name="log">Whether it will log that it is killing the monster</param>
     public void HuntMonsterMapID(string map, int monsterMapID, string? item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false, string pad = "Left")
     {
+        item = item!.FormatForCompare();
         if (item != null && (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
             return;
 
         Join(map, publicRoom: publicRoom);
-
         Monster? monster = Bot.Monsters.MapMonsters.FirstOrDefault(m => m.MapID == monsterMapID);
         if (monster == null)
         {
@@ -2177,7 +2196,7 @@ public class CoreBots
                     break;
             }
 
-            while (!Bot.ShouldExit && isTemp ? !Bot.TempInv.Contains(item!, quant) : !CheckInventory(item, quant))
+            while (!Bot.ShouldExit && isTemp ? !Bot.TempInv.Contains(item!, quant) : !CheckInventory(item!, quant))
                 Bot.Combat.Attack(monster.MapID);
             JumpWait();
             Rest();
@@ -2227,6 +2246,7 @@ public class CoreBots
     /// <param name="isTemp">Whether the item is temporary</param>
     public void KillEscherion(string? item = null, int quant = 1, bool isTemp = false, bool log = true, bool publicRoom = false)
     {
+        item = item!.FormatForCompare();
         if (item != null && (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
             return;
 
@@ -2310,6 +2330,7 @@ public class CoreBots
     /// <param name="isTemp">Whether the item is temporary</param>
     public void KillVath(string? item = null, int quant = 1, bool isTemp = false, bool log = true)
     {
+        item = item!.FormatForCompare();
         if (item != null && (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
             return;
 
@@ -2380,6 +2401,7 @@ public class CoreBots
     /// <param name="isTemp">Whether the item is temporary</param>
     public void KillKitsune(string? item = null, int quant = 1, bool isTemp = false, bool log = true)
     {
+        item = item!.FormatForCompare();
         if (item != null && (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
             return;
 
@@ -2446,6 +2468,7 @@ public class CoreBots
     /// <param name="Phase">Which phase of the boss to kill>
     public void KillTrigoras(string item, int quant = 1, int Phase = 1, bool isTemp = false)
     {
+        item = item!.FormatForCompare();
         if (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant))
             return;
 
@@ -2468,6 +2491,7 @@ public class CoreBots
 
     public void KillDoomKitten(string? item = null, int quant = 1, bool isTemp = false, bool log = true)
     {
+        item = item!.FormatForCompare();
         if (item != null)
         {
             bool hasItem = isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant);
@@ -2549,6 +2573,7 @@ public class CoreBots
     /// <param name="log">Specifies whether to log the process.</param>
     public void KillXiang(string item, int quant = 1, bool ultra = false, bool isTemp = false, bool log = true)
     {
+        item = item!.FormatForCompare();
         if (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant))
             return;
 
@@ -2572,6 +2597,7 @@ public class CoreBots
     /// <param name="isTemp">Specifies whether the item is temporary.</param>
     public void KillNulgathFiendShard(string? item, int quant = 1, bool isTemp = false)
     {
+        item = item!.FormatForCompare();
         if (item == null || CheckInventory(item, quant))
             return;
 
@@ -2583,6 +2609,7 @@ public class CoreBots
         Bot.Options.AggroMonsters = false;
         Logger("Aggro settings temporarily modified: AggroAllMonsters and AggroMonsters set to false.");
 
+        bool PreFarmKill = false;
         while (!Bot.ShouldExit && !CheckInventory(item, quant))
         {
             Join("fiendshard");
@@ -2609,14 +2636,23 @@ public class CoreBots
             }
             else
             {
-                Jump(monster!.Cell);
+                if (Bot.Player.Cell != monster!.Cell)
+                    Jump(monster!.Cell);
+
+                // Initialize combat (to set hp)
+                if (!PreFarmKill)
+                {
+                    Bot.Kill.Monster(monster!.MapID);
+                    Bot.Wait.ForMonsterSpawn(monster.MapID);
+                    PreFarmKill = true;
+                }
 
                 if (Bot.Player.CurrentClass!.Name == "ArchMage")
                     Bot.Options.AttackWithoutTarget = true;
 
-                if (monster!.HP >= 0)
-                    Bot.Kill.Monster(monster!.MapID);
-                else Bot.Kill.Monster("*");
+                if (monster!.State == 1 || monster!.State == 2)
+                    Bot.Combat.Attack(monster!.MapID);
+                else Bot.Combat.Attack("*");
             }
         }
         // insurance because it ditn jump back to spawn and got stuck aggroing
@@ -2631,6 +2667,8 @@ public class CoreBots
 
     public void _KillForItem(string name, string? item, int quantity, bool isTemp = false, bool rejectElse = false, bool log = true, string? cell = null)
     {
+        item = item!.FormatForCompare();
+
         if (item != null && (isTemp ? Bot.TempInv.Contains(item, quantity) : CheckInventory(item, quantity)))
             return;
 
@@ -2670,8 +2708,6 @@ public class CoreBots
                 Bot.Drops.RejectExcept(item!);
         }
     }
-
-
 
     public bool IsMonsterAlive(Monster? mon)
         => mon != null && (mon.Alive || !KilledMonsters.Contains(mon.MapID));
