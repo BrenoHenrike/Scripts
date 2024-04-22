@@ -2011,7 +2011,7 @@ public class CoreBots
             Join(map, cell, pad, publicRoom: publicRoom);
             Jump(cell, pad);
 
-            Monster? Monster = Bot.Monsters.MapMonsters.FirstOrDefault(x => x.Name.FormatForCompare() == monster.FormatForCompare());
+            Monster? Monster = monster == "*" ? Bot.Monsters.MapMonsters.FirstOrDefault() : Bot.Monsters.MapMonsters.FirstOrDefault(x => x.Name.FormatForCompare() == monster.FormatForCompare());
 
             if (Monster == null)
             {
@@ -2220,8 +2220,7 @@ public class CoreBots
 
             //*insurance**
             Bot.Wait.ForMapLoad(map);
-            Monster? M = Bot.Monsters.MapMonsters.FirstOrDefault(x => x.Name.FormatForCompare() == monster.FormatForCompare());
-
+            Monster? M = monster == "*" ? Bot.Monsters.MapMonsters.FirstOrDefault() : Bot.Monsters.MapMonsters.FirstOrDefault(x => x.Name.FormatForCompare() == monster.FormatForCompare());
             if (M == null)
             {
                 Logger("Monster object is null.", stopBot: true);
