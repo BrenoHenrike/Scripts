@@ -52,7 +52,7 @@ public class FiendofLight
         while (!Bot.ShouldExit && !Core.CheckInventory(chosenReward))
         {
             Core.EnsureAccept(6408);
-            Core.HuntMonster("darkplane", "*", "Crystallized Memory", 10);
+            Core.HuntMonster("darkplane", "Light Spirit", "Crystallized Memory", 10);
             Core.EnsureCompleteChoose(6408, chosenReward);
         }
     }

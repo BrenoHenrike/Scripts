@@ -67,9 +67,11 @@ public class EternalDragonDrops
         //Can't Solo section
         if (!Bot.Config!.Get<bool>("CanSolo"))
             while (!Bot.ShouldExit && !Core.CheckInventory(NonMemDrops))
-                Core.HuntMonster("deadlines", "Eternal Dragon", "*", isTemp: false, publicRoom: true);
+                foreach (string item in NonMemDrops)
+                    Core.HuntMonster("deadlines", "Eternal Dragon", item, isTemp: false, publicRoom: true);
         else
             while (!Bot.ShouldExit && !Core.CheckInventory(NonMemDrops))
-                Core.HuntMonster("deadlines", "Eternal Dragon", "*", isTemp: false);
+                foreach (string item in NonMemDrops)
+                    Core.HuntMonster("deadlines", "Eternal Dragon", item, isTemp: false);
     }
 }

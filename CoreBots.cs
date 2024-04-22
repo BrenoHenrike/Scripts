@@ -2177,7 +2177,8 @@ public class CoreBots
                     break;
             }
 
-            Bot.Kill.Monster(monster.MapID);
+            while (!Bot.ShouldExit && isTemp ? !Bot.TempInv.Contains(item!, quant) : !CheckInventory(item, quant))
+                Bot.Combat.Attack(monster.MapID);
             JumpWait();
             Rest();
             return;

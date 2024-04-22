@@ -43,7 +43,7 @@ public class TheGameofGemstones
             Core.KillMonster("Catacombs", "Boss2", "Left", "Dr. De'Sawed", "Phantasmia's Charoite", isTemp: false);
             Farm.BludrutBrawlBoss("Yoshino's Citrine", 1);
             Core.HuntMonster("Wolfwing", "Wolfwing", "Tendou's Moonstone", isTemp: false);
-            Core.HuntMonster("baconcatyou", "*", "Asuka's Ruby", isTemp: false);
+            Core.HuntMonsterMapID("baconcatyou", 1, "Asuka's Ruby", isTemp: false);
         }
         Core.CancelRegisteredQuests();
     }

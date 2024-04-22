@@ -1183,7 +1183,7 @@ public class CoreNation
             if (Bot.Quests.IsAvailable(3826) && !Core.CheckInventory(25026))
             {
                 Core.EnsureAccept(3826);
-                Core.HuntMonster("alteonbattle", "*", "Seal of Light");
+                Core.HuntMonster("alteonbattle", "Ultra Alteon", "Seal of Light");
                 Core.EnsureComplete(3826);
             }
             Core.EnsureComplete(5816);
