@@ -314,6 +314,9 @@ public class CoreBots
     private bool StopBot(bool crashed)
     {
         Bot.Options.AttackWithoutTarget = false;
+        Bot.Lite.ReacceptQuest = false;
+        Bot.Options.AggroAllMonsters = false;
+        Bot.Options.AggroMonsters = false;
         CancelRegisteredQuests();
         AbandonQuest(Bot.Quests.Active.Select(x => x.ID).ToArray());
         StopBotAsync();
