@@ -2263,29 +2263,13 @@ public class CoreBots
                 if (log)
                     Logger($"Hunting {M!.Name} [{M!.ID}] for {item}, ({dynamicQuant(item, isTemp)}/{quant}) [Temp = {isTemp}]");
 
-                while (!Bot.ShouldExit && isTemp ? !Bot.TempInv.Contains(item, quant) : !Bot.Inventory.Contains(item, quant))
+                while (!Bot.ShouldExit && isTemp ? !Bot.TempInv.Contains(item, quant) : !CheckInventory(item, quant))
                 {
-                    while (!Bot.ShouldExit && Bot.Player.Cell != (monster == "*" ? Bot.Monsters.MapMonsters[0]?.Cell : M?.Cell))
-                    {
-                        Jump((monster == "*" ? Bot.Monsters.MapMonsters[0]?.Cell : M?.Cell) ?? throw new InvalidOperationException(), "Left");
-                        Bot.Wait.ForCellChange((monster == "*" ? Bot.Monsters.MapMonsters[0]?.Cell : M?.Cell) ?? throw new InvalidOperationException());
-                        if (Bot.Player.Cell == (monster == "*" ? Bot.Monsters.MapMonsters[0]?.Cell : M?.Cell))
-                            break;
-                    }
+                    if (Bot.Player.Cell != M?.Cell)
+                        Jump(M!.Cell, "Left");
 
-                    Bot.Kill.Monster(monster == "*" ? "*" : M!.Name);
+                    Bot.Combat.Attack(monster == "*" ? "*" : M!.Name);
                     Sleep();
-
-                    if (isTemp ? Bot.TempInv.Contains(item, quant) : Bot.Inventory.Contains(item, quant))
-                    {
-                        Bot.Combat.StopAttacking = true;
-                        Bot.Options.AttackWithoutTarget = false;
-                        if (!isTemp)
-                            Bot.Wait.ForPickup(item);
-                        JumpWait();
-                        Rest();
-                        break;
-                    }
                 }
             }
             Bot.Options.AttackWithoutTarget = false;

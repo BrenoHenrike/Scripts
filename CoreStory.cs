@@ -650,7 +650,7 @@ public class CoreStory
     private readonly List<ItemBase> CurrentRequirements = new();
     private void _MonsterHunt(ref bool shouldRepeat, string monster, string itemName, int quantity, bool isTemp, int index)
     {
-        if (isTemp ? Bot.TempInv.Contains(itemName, quantity) : Core.CheckInventory(itemName, quantity))
+        if (itemName == null || isTemp ? Bot.TempInv.Contains(itemName!, quantity) : Core.CheckInventory(itemName, quantity))
         {
             CurrentRequirements.RemoveAt(index);
             shouldRepeat = false;
@@ -663,26 +663,14 @@ public class CoreStory
             if (Bot.Player.Cell != M!.Cell)
             {
                 Core.Jump(M!.Cell, Bot.Player.Pad);
-                Core.Sleep();
                 Bot.Wait.ForCellChange(M!.Cell);
             }
 
-            if (itemName == null || isTemp ? Bot.TempInv.Contains(itemName!, quantity) : Bot.Inventory.Contains(itemName, quantity))
-            {
-                Bot.Options.AggroMonsters = false;
-                Bot.Combat.StopAttacking = true;
-                Core.JumpWait();
-                if (!isTemp)
-                {
-                    Bot.Wait.ForPickup(itemName!);
-                }
-                Core.Sleep();
-                Core.Rest();
-                break;
-            }
             Bot.Combat.Attack(M!.Name);
             Core.Sleep();
         }
+        if (!isTemp)
+            Bot.Wait.ForPickup(itemName!);
         CurrentRequirements.RemoveAt(index);
         shouldRepeat = false;
     }
