@@ -7947,13 +7947,23 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/SinoftheAbyssMatsPreFarm[NoInsignia].cs"
   },
   {
-    "name": "VoidWarlock",
-    "description": "null",
+    "name": "Void Warlock",
+    "description": "This script farms the Void Warlock set from the [Tools for the Job] and [Corrupted Touch] quests",
     "tags": [
-      "null"
+      "void",
+      "warlock",
+      "tools",
+      "job",
+      "corrupted",
+      "touch",
+      "quest",
+      "rewards",
+      "tools for the job",
+      "corrupted touch",
+      "voidwarlock"
     ],
     "path": "Nation/Various/VoidWarlock.cs",
-    "size": 2740,
+    "size": 3224,
     "fileName": "VoidWarlock.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/VoidWarlock.cs"
   },
