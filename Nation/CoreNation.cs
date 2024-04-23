@@ -218,19 +218,19 @@ public class CoreNation
                     {
                         Core.JoinSWF("mobius-999999", "ChiralValley/town-Mobius-21Feb14.swf", "Slugfit", "Bottom");
 
-                        Bot.Kill.Monster("Slugfit");
-                        Bot.Kill.Monster("Cyclops Warlord");
                         foreach ((string mobName, string itemName, int quantity) in new[] { ("Slugfit", "Slugfit Horn", 5), ("Cyclops Warlord", "Cyclops Horn", 3) })
                         {
                             while (!Bot.ShouldExit && !Core.CheckInventory(itemName, quantity))
                             {
-                                int mapId = mobName == "Slugfit" ? 10 : 9; // Determine the map ID based on the mob name
-                                if (Bot.Monsters.CurrentAvailableMonsters.Any(monster => monster.Name == mobName && monster.HP > 0))
-                                    Bot.Combat.Attack(mapId);
+                                if (!Core.CheckInventory(itemName, quantity))
+                                {
+                                    int mapId = mobName == "Slugfit" ? 10 : 9; // Determine the map ID based on the mob name
+                                    if (Bot.Monsters.CurrentAvailableMonsters.Any(monster => monster.Name == mobName))
+                                        Bot.Combat.Attack(mobName);
+                                    else
+                                        Core.Sleep();
+                                }
                                 else
-                                    Bot.Combat.Attack(mapId == 10 ? 9 : 10);
-
-                                if (Bot.TempInv.Contains(itemName) && Bot.TempInv.GetQuantity(itemName) >= quantity)
                                     break;
 
                                 Core.Sleep();
@@ -255,20 +255,20 @@ public class CoreNation
                 if (!Core.CheckInventory("Slugfit Horn", 5) || !Core.CheckInventory("Cyclops Horn", 3))
                 {
                     Core.JoinSWF("mobius", "ChiralValley/town-Mobius-21Feb14.swf", "Slugfit", "Bottom");
-                    Bot.Kill.Monster("Slugfit");
-                    Bot.Kill.Monster("Cyclops Warlord");
 
                     foreach ((string mobName, string itemName, int quantity) in new[] { ("Slugfit", "Slugfit Horn", 5), ("Cyclops Warlord", "Cyclops Horn", 3) })
                     {
                         while (!Bot.ShouldExit && !Core.CheckInventory(itemName, quantity))
                         {
-                            int mapId = mobName == "Slugfit" ? 10 : 9; // Determine the map ID based on the mob name
-                            if (Bot.Monsters.CurrentAvailableMonsters.Any(monster => monster.Name == mobName && monster.HP > 0))
-                                Bot.Combat.Attack(mapId);
+                            if (!Core.CheckInventory(itemName, quantity))
+                            {
+                                int mapId = mobName == "Slugfit" ? 10 : 9; // Determine the map ID based on the mob name
+                                if (Bot.Monsters.CurrentAvailableMonsters.Any(monster => monster.Name == mobName))
+                                    Bot.Combat.Attack(mobName);
+                                else
+                                    Core.Sleep();
+                            }
                             else
-                                Bot.Combat.Attack(mapId == 10 ? 9 : 10);
-
-                            if (Bot.TempInv.Contains(itemName) && Bot.TempInv.GetQuantity(itemName) >= quantity)
                                 break;
 
                             Core.Sleep();
