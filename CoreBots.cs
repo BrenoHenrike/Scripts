@@ -1978,12 +1978,6 @@ public class CoreBots
                 return;
             }
 
-            if (Bot.Monsters == null)
-            {
-                Logger("Bot.Monsters object is null.");
-                return;
-            }
-
             if (Bot.Player == null)
             {
                 Logger("Bot.Player object is null.");
@@ -1996,12 +1990,6 @@ public class CoreBots
                 return;
             }
 
-            if (Bot.Monsters.MapMonsters == null)
-            {
-                Logger("Bot.Monsters.MapMonsters object is null.");
-                return;
-            }
-
             if (item != null && (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
                 return;
 
@@ -2010,6 +1998,18 @@ public class CoreBots
 
             Join(map, cell, pad, publicRoom: publicRoom);
             Jump(cell, pad);
+
+            if (Bot.Monsters == null)
+            {
+                Logger("Bot.Monsters object is null.");
+                return;
+            }
+
+            if (Bot.Monsters.CurrentAvailableMonsters == null)
+            {
+                Logger("Bot.Monsters.CurrentAvailableMonsters object is null.");
+                return;
+            }
 
             Monster? Monster = monster == "*" ? Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault() : Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault(x => x.Name.FormatForCompare() == monster.FormatForCompare());
 
@@ -2091,12 +2091,6 @@ public class CoreBots
                 return;
             }
 
-            if (Bot.Monsters == null)
-            {
-                Logger("Bot.Monsters object is null.");
-                return;
-            }
-
             if (Bot.Player == null)
             {
                 Logger("Bot.Player object is null.");
@@ -2109,12 +2103,6 @@ public class CoreBots
                 return;
             }
 
-            if (Bot.Monsters.MapMonsters == null)
-            {
-                Logger("Bot.Monsters.MapMonsters object is null.");
-                return;
-            }
-
             if (item != null && (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
                 return;
 
@@ -2124,7 +2112,19 @@ public class CoreBots
             Join(map, cell, pad, publicRoom: publicRoom);
             Jump(cell, pad);
 
-            Monster? monster = Bot.Monsters.MapMonsters?.FirstOrDefault(m => m.ID == monsterID);
+            if (Bot.Monsters == null)
+            {
+                Logger("Bot.Monsters object is null.");
+                return;
+            }
+
+            if (Bot.Monsters.CurrentAvailableMonsters == null)
+            {
+                Logger("Bot.Monsters.CurrentAvailableMonsters object is null.");
+                return;
+            }
+
+            Monster? monster = Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault(m => m.ID == monsterID);
             if (monster == null)
             {
                 Logger($"Monster [{monsterID}] not found. Something is wrong. Stopping bot", messageBox: true, stopBot: true);
@@ -2181,12 +2181,6 @@ public class CoreBots
                 return;
             }
 
-            if (Bot.Monsters == null)
-            {
-                Logger("Bot.Monsters object is null.", stopBot: true);
-                return;
-            }
-
             if (Bot.Player == null)
             {
                 Logger("Bot.Player object is null.", stopBot: true);
@@ -2196,12 +2190,6 @@ public class CoreBots
             if (Bot.Player.CurrentClass == null)
             {
                 Logger("Bot.Player.CurrentClass object is null.", stopBot: true);
-                return;
-            }
-
-            if (Bot.Monsters.MapMonsters == null)
-            {
-                Logger("Bot.Monsters.MapMonsters object is null.", stopBot: true);
                 return;
             }
 
@@ -2221,6 +2209,19 @@ public class CoreBots
 
             //*insurance**
             Bot.Wait.ForMapLoad(map);
+
+            if (Bot.Monsters == null)
+            {
+                Logger("Bot.Monsters object is null.", stopBot: true);
+                return;
+            }
+
+            if (Bot.Monsters.MapMonsters == null)
+            {
+                Logger("Bot.Monsters.MapMonsters object is null.", stopBot: true);
+                return;
+            }
+
             Monster? M = monster == "*" ? Bot.Monsters.MapMonsters.FirstOrDefault() : Bot.Monsters.MapMonsters.FirstOrDefault(x => x.Name.FormatForCompare() == monster.FormatForCompare());
             if (M == null)
             {
@@ -2320,12 +2321,6 @@ public class CoreBots
                 return;
             }
 
-            if (Bot.Monsters == null)
-            {
-                Logger("Bot.Monsters object is null.", stopBot: true);
-                return;
-            }
-
             if (Bot.Player == null)
             {
                 Logger("Bot.Player object is null.", stopBot: true);
@@ -2338,16 +2333,23 @@ public class CoreBots
                 return;
             }
 
+            if (item != null && (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
+                return;
+
+            Join(map, publicRoom: publicRoom);
+
+
+            if (Bot.Monsters == null)
+            {
+                Logger("Bot.Monsters object is null.", stopBot: true);
+                return;
+            }
+
             if (Bot.Monsters.MapMonsters == null)
             {
                 Logger("Bot.Monsters.MapMonsters object is null.", stopBot: true);
                 return;
             }
-
-            if (item != null && (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
-                return;
-
-            Join(map, publicRoom: publicRoom);
 
             Monster? monster = Bot.Monsters.MapMonsters.FirstOrDefault(m => m.MapID == monsterMapID);
             if (monster == null)
