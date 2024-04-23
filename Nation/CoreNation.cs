@@ -235,9 +235,9 @@ public class CoreNation
                         }
 
                     }
-                    Core.KillMonster("tercessuinotlim-999999", "m2", "Top", "*", "Makai Fang", 5, log: false);
-                    Core.KillMonster("hydra-999999", "Rune2", "Left", "*", "Imp Flame", 3, log: false);
-                    Core.HuntMonster("greenguardwest-999999", "Big Bad Boar", "Wereboar Tusk", 2, log: false);
+                    Core.KillMonster("tercessuinotlim", "m2", "Top", "*", "Makai Fang", 5, log: false);
+                    Core.KillMonster("hydra", "Rune2", "Left", "*", "Imp Flame", 3, log: false);
+                    Core.HuntMonster("greenguardwest", "Big Bad Boar", "Wereboar Tusk", 2, log: false);
                 }
             }
             Core.Logger("all items quant maxed");
