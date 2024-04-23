@@ -220,20 +220,16 @@ public class CoreNation
 
                         foreach ((string mobName, string itemName, int quantity) in new[] { ("Slugfit", "Slugfit Horn", 5), ("Cyclops Warlord", "Cyclops Horn", 3) })
                         {
+                            if (Core.CheckInventory(itemName, quantity))
+                                continue;
+
                             while (!Bot.ShouldExit && !Core.CheckInventory(itemName, quantity))
                             {
-                                if (!Core.CheckInventory(itemName, quantity))
-                                {
-                                    int mapId = mobName == "Slugfit" ? 10 : 9; // Determine the map ID based on the mob name
-                                    if (Bot.Monsters.CurrentAvailableMonsters.Any(monster => monster.Name == mobName))
-                                        Bot.Combat.Attack(mobName);
-                                    else
-                                        Core.Sleep();
-                                }
+                                int mapId = mobName == "Slugfit" ? 10 : 9; // Determine the map ID based on the mob name
+                                if (Bot.Monsters.CurrentAvailableMonsters.Any(monster => monster.Name == mobName))
+                                    Bot.Combat.Attack(mobName);
                                 else
-                                    break;
-
-                                Core.Sleep();
+                                    Core.Sleep();
                             }
                             Bot.Wait.ForPickup(itemName);
                         }
