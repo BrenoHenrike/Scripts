@@ -231,7 +231,7 @@ public class CoreNation
                                     Bot.Combat.Attack(mapId == 10 ? 9 : 10);
 
                                 if (Bot.TempInv.Contains(itemName) && Bot.TempInv.GetQuantity(itemName) >= quantity)
-                                    continue;
+                                    break;
 
                                 Core.Sleep();
                             }
