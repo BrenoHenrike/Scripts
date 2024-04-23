@@ -56,11 +56,11 @@ public class VoidWarlock
 
             Core.FarmingLogger(reward.Name, 1);
             Core.EnsureAccept(6683);
+            Core.HuntMonster("northlands", "Aisha's Drake", "Brittney's Winter Diamond", 1, false);
+            Nation.FarmUni13(2);
             Nation.FarmVoucher(false);
             Nation.FarmBloodGem(90);
             Nation.SwindleBulk(100);
-            Core.HuntMonster("northlands", "Aisha's Drake", "Brittney's Winter Diamond", 1, false);
-            Nation.FarmUni13(2);
             Core.EnsureComplete(6683, reward.ID);
             Core.JumpWait();
             Core.ToBank(reward.Name);

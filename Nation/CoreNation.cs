@@ -217,6 +217,7 @@ public class CoreNation
                     if (!Core.CheckInventory("Slugfit Horn", 5) || !Core.CheckInventory("Cyclops Horn", 3))
                     {
                         Core.JoinSWF("mobius-999999", "ChiralValley/town-Mobius-21Feb14.swf", "Slugfit", "Bottom");
+
                         Bot.Kill.Monster("Slugfit");
                         Bot.Kill.Monster("Cyclops Warlord");
                         foreach ((string mobName, string itemName, int quantity) in new[] { ("Slugfit", "Slugfit Horn", 5), ("Cyclops Warlord", "Cyclops Horn", 3) })
@@ -268,7 +269,7 @@ public class CoreNation
                                 Bot.Combat.Attack(mapId == 10 ? 9 : 10);
 
                             if (Bot.TempInv.Contains(itemName) && Bot.TempInv.GetQuantity(itemName) >= quantity)
-                                continue;
+                                break;
 
                             Core.Sleep();
                         }
