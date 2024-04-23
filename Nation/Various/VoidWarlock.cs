@@ -1,12 +1,13 @@
 /*
-name: VoidWarlock
-description: null
-tags: null
+name: Void Warlock
+description: This script farms the Void Warlock set from the [Tools for the Job] and [Corrupted Touch] quests
+tags: void,warlock,tools,job,corrupted,touch,quest,rewards, tools for the job, corrupted touch,voidwarlock
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/Nation/CoreNation.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
 
 public class VoidWarlock
 {
@@ -17,9 +18,6 @@ public class VoidWarlock
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.BankingBlackList.AddRange(Nation.bagDrops);
-        Core.BankingBlackList.AddRange(Rewards);
-        Core.BankingBlackList.AddRange(Rewards2);
         Core.SetOptions();
 
         GetWarlock();
@@ -27,52 +25,55 @@ public class VoidWarlock
         Core.SetOptions(false);
     }
 
-    public readonly string[] Rewards =
+    public void GetWarlock(string? singleToolReward = null, string? singleTouchReward = null)
     {
-        "Void Warlock",
-        "Void Warlock Scythe",
-        "Void Warlock Staff",
-        "Void Warlock Overfiend Blade",
-        "Void Warlock Overfiend Blade Pet",
-        "Void Warlock Crown"
-    };
+        List<ItemBase> ToolsRewards;
+        List<ItemBase> TouchRewards;
+        if (singleToolReward == null)
+            ToolsRewards = Core.EnsureLoad(6683).Rewards;
+        else
+            ToolsRewards = Core.EnsureLoad(6683).Rewards.Where(r => r.Name == singleToolReward).ToList();
 
-    public readonly string[] Rewards2 =
-    {
-        "Void Warlock Helm",
-        "Void Warlock Hood",
-        "Void Warlock Cape",
-        "Void Warlock Tendrils Cape",
-        "Void Warlock Tendrils",
-        "Void Warlock Horns",
-    };
+        if (singleTouchReward == null)
+            TouchRewards = Core.EnsureLoad(6684).Rewards;
+        else
+            TouchRewards = Core.EnsureLoad(6684).Rewards.Where(r => r.Name == singleTouchReward).ToList();
 
-    public void GetWarlock()
-    {
+        foreach (ItemBase item in ToolsRewards)
+            Core.AddDrop(item.Name);
+
+        foreach (ItemBase item in TouchRewards)
+            Core.AddDrop(item.Name);
+
         Core.AddDrop(Nation.bagDrops);
-        Core.AddDrop(Rewards);
-        Core.AddDrop(Rewards2);
         Core.AddDrop("Brittney's Winter Diamond");
 
-        int i = 1;
         Core.Logger("Starting [Tools for the Job] Quest");
-        while (!Bot.ShouldExit && !Core.CheckInventory(Rewards, toInv: false))
+        foreach (ItemBase reward in ToolsRewards)
         {
+            if (Core.CheckInventory(reward.Name, toInv: false))
+                return;
+
+            Core.FarmingLogger(reward.Name, 1);
+            Core.EnsureAccept(6683);
             Nation.FarmVoucher(false);
             Nation.FarmBloodGem(90);
             Nation.SwindleBulk(100);
             Core.HuntMonster("northlands", "Aisha's Drake", "Brittney's Winter Diamond", 1, false);
             Nation.FarmUni13(2);
-
-            Core.EnsureAccept(6683);
-            Core.EnsureCompleteChoose(6683);
-            Core.Logger($"Completed x{i++}");
+            Core.EnsureComplete(6683, reward.ID);
+            Core.JumpWait();
+            Core.ToBank(reward.Name);
         }
         Core.Logger("All drops acquired from [Tools for the Job] Quest");
-        i = 1;
+
         Core.Logger("Starting [Corrupted Touch] Quest");
-        while (!Bot.ShouldExit && !Core.CheckInventory(Rewards2, toInv: false))
+        foreach (ItemBase reward in ToolsRewards)
         {
+            if (Core.CheckInventory(reward.Name, toInv: false))
+                return;
+            Core.FarmingLogger(reward.Name, 1);
+            Core.EnsureAccept(6684);
             Nation.FarmUni13();
             Nation.FarmVoucher(true);
             Nation.FarmDiamondofNulgath(75);
@@ -80,11 +81,11 @@ public class VoidWarlock
             Nation.SwindleBulk(75);
             Nation.ApprovalAndFavor(1000, 0);
             Core.HuntMonster("northlands", "Aisha's Drake", "Brittney's Winter Diamond", 1, false);
-
-            Core.EnsureAccept(6684);
-            Core.EnsureCompleteChoose(6684);
-            Core.Logger($"Completed x{i++}");
+            Core.EnsureComplete(6684, reward.ID);
+            Core.JumpWait();
+            Core.ToBank(reward.Name);
         }
         Core.Logger("All drops acquired from [Corrupted Touch] Quest");
     }
 }
+
