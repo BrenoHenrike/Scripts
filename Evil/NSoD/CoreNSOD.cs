@@ -155,10 +155,10 @@ public class CoreNSOD
         while (!Bot.ShouldExit && !Core.CheckInventory("Void Aura", quant))
         {
             Core.EquipClass(ClassType.Farm);
-            Core.KillMonster("shadowrealmpast", "Enter", "Spawn", "*", "Empowered Essence", 50, false, log: false);
+            Core.KillMonster("shadowrealmpast", "Enter", "Spawn", "*", "Empowered Essence", 50, false);
 
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonsterMapID("shadowrealmpast", 11, "Malignant Essence", 3, false, log: false);
+            Core.HuntMonsterMapID("shadowrealmpast", 11, "Malignant Essence", 3, false);
         }
         Core.CancelRegisteredQuests();
     }

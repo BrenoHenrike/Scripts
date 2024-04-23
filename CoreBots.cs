@@ -2344,7 +2344,6 @@ public class CoreBots
 
             Join(map, publicRoom: publicRoom);
 
-
             if (Bot.Monsters == null)
             {
                 Logger("Bot.Monsters object is null.", stopBot: true);
@@ -2888,29 +2887,8 @@ public class CoreBots
 
             while (!Bot.ShouldExit && item != null && (isTemp ? !Bot.TempInv.Contains(item, quantity) : !CheckInventory(item, quantity)))
             {
-                if (item == null || isTemp ? Bot.TempInv.Contains(item!, quantity) : Bot.Inventory.Contains(item, quantity))
-                {
-                    Bot.Options.AggroMonsters = false;
-                    while (!Bot.ShouldExit && Bot.Player.InCombat)
-                    {
-                        JumpWait();
-                        Sleep();
-                        if (!Bot.Player.InCombat)
-                            break;
-                    }
-                    if (!isTemp)
-                        Bot.Wait.ForPickup(item!);
-                    Rest();
-                    break;
-                }
-
-                while (!Bot.ShouldExit && cell != null && Bot.Player.Cell != cell)
-                {
+                if (cell != null && Bot.Player.Cell != cell)
                     Jump(cell, "Left");
-                    Bot.Wait.ForCellChange(cell);
-                    if (Bot.Player.Cell == cell)
-                        break;
-                }
 
                 Bot.Combat.Attack(name == "*" ? "*" : name.FormatForCompare());
                 Sleep();
