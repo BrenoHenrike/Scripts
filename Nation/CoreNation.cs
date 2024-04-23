@@ -207,6 +207,9 @@ public class CoreNation
             ItemBase[] QuestRewards = Core.EnsureLoad(Core.CheckInventory("Bounty Hunter's Drone Pet") ? 6183 : 6697).Rewards.ToArray();
             foreach (var Item in QuestRewards)
             {
+                if (Core.CheckInventory(Item.Name, Item.MaxStack))
+                    continue;
+
                 Core.FarmingLogger(Item.Name, Item.MaxStack);
 
                 while (!Bot.ShouldExit && !Core.CheckInventory(Item.ID, Item.MaxStack))
@@ -235,9 +238,9 @@ public class CoreNation
                         }
 
                     }
-                    Core.KillMonster("tercessuinotlim", "m2", "Top", "*", "Makai Fang", 5, log: false);
-                    Core.KillMonster("hydra", "Rune2", "Left", "*", "Imp Flame", 3, log: false);
-                    Core.HuntMonster("greenguardwest", "Big Bad Boar", "Wereboar Tusk", 2, log: false);
+                    Core.KillMonster("tercessuinotlim", "m2", "Top", "*", "Makai Fang", 5);
+                    Core.KillMonster("hydra", "Rune2", "Left", "*", "Imp Flame", 3);
+                    Core.HuntMonster("greenguardwest", "Big Bad Boar", "Wereboar Tusk", 2);
                 }
             }
             Core.Logger("all items quant maxed");
