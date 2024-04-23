@@ -2273,6 +2273,7 @@ public class CoreBots
                 }
             }
             Bot.Options.AttackWithoutTarget = false;
+            Bot.Wait.ForPickup(item);
         }
         catch (NullReferenceException ex)
         {
@@ -2402,6 +2403,7 @@ public class CoreBots
                 }
                 Rest();
             }
+            Bot.Wait.ForPickup(item!);
         }
         catch (NullReferenceException ex)
         {
