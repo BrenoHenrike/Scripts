@@ -235,11 +235,11 @@ public class CoreDarkon
         while (!Bot.ShouldExit && !Core.CheckInventory("Bandit's Correspondence", Quantity))
         {
             Core.EquipClass(ClassType.Farm);
-            Core.KillMonster("eridanipast", "r3", "Left", "Dog", "Dogs Confiscated", 12, log: false);
-            Core.KillMonster("eridanipast", "r9", "Left", "Bandit", "Bandit Contraband", 12, log: false);
+            Core.KillMonster("eridanipast", "r3", "Left", "Dog", "Dogs Confiscated", 12);
+            Core.KillMonster("eridanipast", "r9", "Left", "Bandit", "Bandit Contraband", 12);
 
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonsterMapID("eridanipast", 19, "Seraphic Sparred", log: false);
+            Core.HuntMonsterMapID("eridanipast", 19, "Seraphic Sparred");
             Bot.Wait.ForPickup("Bandit's Correspondence");
         }
         Core.CancelRegisteredQuests();

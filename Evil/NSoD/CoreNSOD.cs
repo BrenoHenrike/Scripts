@@ -148,50 +148,20 @@ public class CoreNSOD
 
         Core.AddDrop("Void Aura");
 
+        Core.FarmingLogger("Void Aura", quant);
+        Bot.Options.AggroAllMonsters = false;
+        Bot.Options.AggroMonsters = false;
         Core.RegisterQuests(4439);
         while (!Bot.ShouldExit && !Core.CheckInventory("Void Aura", quant))
         {
-            Core.FarmingLogger("Void Aura", quant);
-
-            if (Bot.Options.AggroAllMonsters)
-                Bot.Options.AggroAllMonsters = false;  // Disable aggro all monsters (breaks stuff)
-
-            // Disable aggro, Jump and wait, wait for combat exit, equip FarmClass
-            if (Bot.Map.PlayerCount > 1)
-            {
-                Core.Logger("Switching to FarmClass with aggro off");
-                Bot.Options.AggroMonsters = false;
-            }
-            
             Core.EquipClass(ClassType.Farm);
-
-            // Farm mob 1 for essence with aggro on
-            if (Bot.Map.PlayerCount > 1)
-            {
-                Core.Logger("Switching aggro on for mob 1");
-                Bot.Options.AggroMonsters = true;
-            }
             Core.KillMonster("shadowrealmpast", "Enter", "Spawn", "*", "Empowered Essence", 50, false, log: false);
 
-            // Disable aggro, Jump and wait, wait for combat exit, equip SoloClass
-            if (Bot.Map.PlayerCount > 1)
-            {
-                Core.Logger("Switching to SoloClass with aggro off");
-                Bot.Options.AggroMonsters = false;  // Set aggro off for mob 2}
-            }
             Core.EquipClass(ClassType.Solo);
-
-            // Hunt mob 2 for essence with aggro off
             Core.HuntMonsterMapID("shadowrealmpast", 11, "Malignant Essence", 3, false, log: false);
         }
-
-        // Reset Aggros both to off
-        Bot.Options.AggroAllMonsters = false;
-        Bot.Options.AggroMonsters = false;
         Core.CancelRegisteredQuests();
     }
-
-
 
     public void GatheringUnstableEssences(int quant = 7500)
     {

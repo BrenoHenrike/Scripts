@@ -2011,6 +2011,8 @@ public class CoreBots
                 return;
             }
 
+            Bot.Options.AggroAllMonsters = false;
+            Bot.Options.AggroMonsters = false;
             Monster? Monster = monster == "*" ? Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault() : Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault(x => x.Name.FormatForCompare() == monster.FormatForCompare());
 
             if (Monster == null)
@@ -2124,6 +2126,8 @@ public class CoreBots
                 return;
             }
 
+            Bot.Options.AggroAllMonsters = false;
+            Bot.Options.AggroMonsters = false;
             Monster? monster = Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault(m => m.ID == monsterID);
             if (monster == null)
             {
@@ -2222,6 +2226,8 @@ public class CoreBots
                 return;
             }
 
+            Bot.Options.AggroAllMonsters = false;
+            Bot.Options.AggroMonsters = false;
             Monster? M = monster == "*" ? Bot.Monsters.MapMonsters.FirstOrDefault() : Bot.Monsters.MapMonsters.FirstOrDefault(x => x.Name.FormatForCompare() == monster.FormatForCompare());
             if (M == null)
             {
@@ -2351,6 +2357,8 @@ public class CoreBots
                 return;
             }
 
+            Bot.Options.AggroAllMonsters = false;
+            Bot.Options.AggroMonsters = false;
             Monster? monster = Bot.Monsters.MapMonsters.FirstOrDefault(m => m.MapID == monsterMapID);
             if (monster == null)
             {
