@@ -2043,7 +2043,9 @@ public class CoreBots
 
             Bot.Options.AggroAllMonsters = false;
             Bot.Options.AggroMonsters = false;
-            Monster? Monster = monster == "*" ? Bot.Monsters.MapMonsters.FirstOrDefault(x => x.Cell == cell) : Bot.Monsters.MapMonsters.FirstOrDefault(x => x.Name.FormatForCompare() == monster.FormatForCompare() && x.Cell == cell);
+            Monster? Monster = monster == "*" 
+            ? Bot.Monsters.MapMonsters.FirstOrDefault(x => x.Cell == cell) 
+            : Bot.Monsters.MapMonsters.FirstOrDefault(x => x.Name.FormatForCompare() == monster.FormatForCompare() && x.Cell == cell);
 
             if (Monster == null)
             {
