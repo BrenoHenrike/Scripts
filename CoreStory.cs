@@ -658,13 +658,10 @@ public class CoreStory
         }
 
         Monster? M = Bot.Monsters.MapMonsters.FirstOrDefault(x => x.Name.FormatForCompare() == monster.FormatForCompare());
-        while (!Bot.ShouldExit && isTemp ? !Bot.TempInv.Contains(itemName!, quantity) : !Bot.Inventory.Contains(itemName!, quantity))
+        while (!Bot.ShouldExit && isTemp ? !Bot.TempInv.Contains(itemName!, quantity) : !Core.CheckInventory(itemName!, quantity))
         {
             if (Bot.Player.Cell != M!.Cell)
-            {
                 Core.Jump(M!.Cell, Bot.Player.Pad);
-                Bot.Wait.ForCellChange(M!.Cell);
-            }
 
             Bot.Combat.Attack(M!.Name);
             Core.Sleep();
