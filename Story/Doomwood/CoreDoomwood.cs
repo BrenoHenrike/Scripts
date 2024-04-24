@@ -65,7 +65,14 @@ public class CoreDoomwood
         Story.ChainQuest(1080);
 
         //1064    Bony Battalion
-        Story.KillQuest(1064, "doomwood", new[] { "Doomwood Ectomancer", "Doomwood Bonemuncher", "Doomwood Soldier" });
+        if (!Story.QuestProgression(1064))
+        {
+            Core.EnsureAccept(1064);
+            Core.HuntMonster("doomwood", "Doomwood Ectomancer", "Ball of Ectoplasm");
+            Core.HuntMonster("doomwood", "Doomwood Bonemuncher", "Bonespike Collar");
+            Core.KillMonster("doomwood", "r8", "Right", "Doomwood Soldier", "Warrior Reinforced");
+            Core.EnsureComplete(1064);
+        }
 
         //1065    Warrior Rez-queue
         Story.MapItemQuest(1065, "doomwood", 423, 5);
