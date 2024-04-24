@@ -1533,21 +1533,15 @@ public class CoreBots
         if (questID <= 0)
             return false;
 
-
-        ItemBase[] requiredItems = QuestData.AcceptRequirements
-                .Concat(QuestData.Requirements)
+        ItemBase[] requiredItems = QuestData.AcceptRequirements.Where(x => !x.Temp)
+                .Concat(QuestData.Requirements.Where(x => !x.Temp))
                 .Where(item => item != null && !string.IsNullOrEmpty(item.Name))
                 .ToArray();
 
         foreach (ItemBase item in requiredItems.Where(x => !x.Temp))
         {
-            if (item != null && !item.Temp && !Bot.Inventory.Items.Concat(Bot.Bank.Items).Any(i => i.ID == item.ID))
+            if (item != null && !Bot.Inventory.Items.Any(i => i.ID == item.ID))
             {
-                while (!Bot.ShouldExit && Bot.Player.InCombat)
-                {
-                    JumpWait();
-                    Sleep();
-                }
                 Unbank(item.ID);
             }
         }
@@ -1901,7 +1895,6 @@ public class CoreBots
                 Gold = data.Gold,
                 XP = data.XP,
                 Status = null!, // Not found in QuestData
-                                //Active is based on Stat
                                 //Active is based on Status being NULL or not
                                 //Requirements cant be writen to
                 Rewards = data.Rewards,
@@ -2043,8 +2036,8 @@ public class CoreBots
 
             Bot.Options.AggroAllMonsters = false;
             Bot.Options.AggroMonsters = false;
-            Monster? Monster = monster == "*" 
-            ? Bot.Monsters.MapMonsters.FirstOrDefault(x => x.Cell == cell) 
+            Monster? Monster = monster == "*"
+            ? Bot.Monsters.MapMonsters.FirstOrDefault(x => x.Cell == cell)
             : Bot.Monsters.MapMonsters.FirstOrDefault(x => x.Name.FormatForCompare() == monster.FormatForCompare() && x.Cell == cell);
 
             if (Monster == null)
