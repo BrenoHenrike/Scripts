@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 221923,
+    "size": 223457,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -1617,7 +1617,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 86785,
+    "size": 86792,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -2246,7 +2246,7 @@
       "null"
     ],
     "path": "Army/CoreArmyLite.cs",
-    "size": 40921,
+    "size": 40918,
     "fileName": "CoreArmyLite.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/CoreArmyLite.cs"
   },
@@ -14963,7 +14963,7 @@
       "null"
     ],
     "path": "Evil/NSoD/CoreNSOD.cs",
-    "size": 16906,
+    "size": 16904,
     "fileName": "CoreNSOD.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/NSoD/CoreNSOD.cs"
   },
