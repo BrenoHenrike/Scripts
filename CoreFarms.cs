@@ -702,11 +702,10 @@ public class CoreFarms
 
         RestartOnDeath:
             Core.Logger($"Death: {Death++}, resetting");
-            while (!Bot.ShouldExit && !Bot.Player.Alive)
+            while (!Bot.ShouldExit)
             {
                 Bot.Wait.ForTrue(() => Bot.Player.Alive, 100);
-                Bot.Wait.ForCellChange("Enter0");
-                Core.Logger($"Attempting Exit {ExitAttempt++}.");
+                Core.Logger($"Attempting Death Exit {ExitAttempt++}.");
                 Bot.Map.Join("battleon-999999");
                 Bot.Wait.ForMapLoad("battleon");
                 Core.Sleep(1500);
