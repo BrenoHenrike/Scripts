@@ -68,9 +68,9 @@ public class CoreDoomwood
         if (!Story.QuestProgression(1064))
         {
             Core.EnsureAccept(1064);
-            Core.HuntMonster("doomwood", "Doomwood Ectomancer", "Ball of Ectoplasm");
-            Core.HuntMonster("doomwood", "Doomwood Bonemuncher", "Bonespike Collar");
-            Core.KillMonster("doomwood", "r8", "Right", "Doomwood Soldier", "Warrior Reinforced");
+            Core.HuntMonster("doomwood", "Doomwood Ectomancer", "Ball of Ectoplasm", 3);
+            Core.HuntMonster("doomwood", "Doomwood Bonemuncher", "Bonespike Collar", 4);
+            Core.KillMonster("doomwood", "r8", "Right", "Doomwood Soldier", "Distal Fingerbone", 4);
             Core.EnsureComplete(1064);
         }
 
