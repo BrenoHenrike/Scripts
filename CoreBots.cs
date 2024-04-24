@@ -630,31 +630,38 @@ public class CoreBots
 
         // (string, string) CellandPadBefore = ($"{Bot.Player.Cell}", $"{Bot.Player.Pad}");
 
-        while (!Bot.ShouldExit && Bot.Player.InCombat)
-        {
+        DebugLogger(this);
+        if (Bot.Player.InCombat)
             JumpWait();
-            Sleep();
-        }
 
         if (Bot.Flash.GetGameObject("ui.mcPopup.currentLabel") != "\"Bank\"")
             Bot.Bank.Open();
 
+        DebugLogger(this);
         foreach (string item in items)
         {
+            DebugLogger(this);
             if (Bot.Bank.Contains(item))
             {
+                DebugLogger(this);
                 Sleep();
+                DebugLogger(this);
                 if (Bot.Inventory.FreeSlots == 0 && Bot.Inventory.Slots != 0 && Bot.Inventory.UsedSlots <= Bot.Inventory.Slots)
                     Logger($"Your inventory is full ({Bot.Inventory.UsedSlots}/{Bot.Inventory.Slots}), please clean it and restart the bot", messageBox: true, stopBot: true);
 
+                DebugLogger(this);
                 if (!Bot.Bank.EnsureToInventory(item))
                 {
+                    DebugLogger(this);
                     Logger($"Failed to unbank {item}, skipping it", messageBox: true);
                     continue;
                 }
+                DebugLogger(this);
                 Logger($"{item} moved from bank");
             }
+            DebugLogger(this);
         }
+        DebugLogger(this);
     }
 
     /// <summary>
@@ -1335,9 +1342,15 @@ public class CoreBots
     /// <param name="items">Items to add</param>
     public void AddDrop(params string[] items)
     {
+        DebugLogger(this);
         if (items == null || items.Length == 0)
+        {
+            DebugLogger(this);
             return;
+        }
+        DebugLogger(this);
         Unbank(items);
+        DebugLogger(this);
         Bot.Drops.Add(items);
     }
 
@@ -1574,28 +1587,39 @@ public class CoreBots
             questIDs = new int[] { 0 }; // Default value
         }
 
+        DebugLogger(this);
         List<Quest> QuestData = EnsureLoad(questIDs?.Where(q => q > 0).ToArray() ?? Array.Empty<int>());
 
         if (RegisterQuest)
             Bot.Lite.ReacceptQuest = true;
 
+        DebugLogger(this);
         foreach (Quest quest in QuestData)
         {
+            DebugLogger(this);
             if (quest.Upgrade && !IsMember)
                 Logger($"\"{quest.Name}\" [{quest.ID}] is member-only, stopping the bot.", stopBot: true);
 
+            DebugLogger(this);
             if (Bot.Quests.IsInProgress(quest.ID) || quest.ID <= 0)
                 continue;
 
+            DebugLogger(this);
             var requiredItemNames = quest.AcceptRequirements.Where(x => !x.Temp)
                 .Concat(quest.Requirements.Where(x => !x.Temp))
                 .Select(item => item?.Name)
                 .Where(name => !string.IsNullOrEmpty(name))
                 .ToArray();
 
+            DebugLogger(this);
             foreach (var itemName in requiredItemNames)
+            {
                 if (itemName != null && !Bot.Inventory.Contains(itemName))
+                {
+                    DebugLogger(this);
                     Unbank(itemName);
+                }
+            }
 
             foreach (ItemBase item in quest.AcceptRequirements.Where(x => !x.Temp))
             {
@@ -1608,16 +1632,23 @@ public class CoreBots
 
             foreach (ItemBase item in quest.Requirements.Where(x => !x.Temp))
             {
+                DebugLogger(this);
                 if (item == null)
                     continue;
 
+                DebugLogger(this);
                 if (!Bot.Drops.ToPickupIDs.Contains(item.ID) && item?.Name != null)
-                    Bot.Drops.Add(item.ID);  // Adjusted to use 0 as the default value
+                {
+                    DebugLogger(this);
+                    Bot.Drops.Add(item.ID);
+                }
             }
 
+            DebugLogger(this);
             Sleep(ActionDelay * 2);
             // Bot.Send.Packet($"%xt%zm%acceptQuest%{Bot.Map.RoomID}%{quest.ID}%");
             Bot.Quests.EnsureAccept(quest.ID);
+            DebugLogger(this);
         }
     }
 
@@ -1997,7 +2028,6 @@ public class CoreBots
                 AddDrop(item);
 
             Join(map, cell, pad, publicRoom: publicRoom);
-            Jump(cell, pad);
 
             if (Bot.Monsters == null)
             {
@@ -2013,7 +2043,7 @@ public class CoreBots
 
             Bot.Options.AggroAllMonsters = false;
             Bot.Options.AggroMonsters = false;
-            Monster? Monster = monster == "*" ? Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault() : Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault(x => x.Name.FormatForCompare() == monster.FormatForCompare());
+            Monster? Monster = monster == "*" ? Bot.Monsters.MapMonsters.FirstOrDefault(x => x.Cell == cell) : Bot.Monsters.MapMonsters.FirstOrDefault(x => x.Name.FormatForCompare() == monster.FormatForCompare() && x.Cell == cell);
 
             if (Monster == null)
             {
@@ -2044,15 +2074,23 @@ public class CoreBots
             {
                 if (Monster.Name != null)
                 {
+                    DebugLogger(this);
                     _KillForItem(Monster.Name, item, quant, isTemp, log: log, cell: cell);
+                    DebugLogger(this);
                 }
                 else
                 {
+                    DebugLogger(this);
                     _KillForItem(monster.FormatForCompare(), item, quant, isTemp, log: log, cell: cell);
+                    DebugLogger(this);
                 }
+                DebugLogger(this);
                 Bot.Options.AttackWithoutTarget = false;
+                DebugLogger(this);
                 ToggleAggro(false);
+                DebugLogger(this);
                 JumpWait();
+                DebugLogger(this);
                 Rest();
             }
         }
@@ -2210,10 +2248,13 @@ public class CoreBots
             if (item != null && (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
                 return;
 
+            DebugLogger(this);
             Join(map, publicRoom: publicRoom);
 
+            DebugLogger(this);
             //*insurance**
             Bot.Wait.ForMapLoad(map);
+            DebugLogger(this);
 
             if (Bot.Monsters == null)
             {
@@ -2228,9 +2269,13 @@ public class CoreBots
             }
             #endregion Bullshit
 
+            DebugLogger(this);
             Bot.Options.AggroAllMonsters = false;
+            DebugLogger(this);
             Bot.Options.AggroMonsters = false;
-            Monster? M = monster == "*" ? Bot.Monsters.MapMonsters.FirstOrDefault() : Bot.Monsters.MapMonsters.FirstOrDefault(x => x.Name.FormatForCompare() == monster.FormatForCompare());
+            DebugLogger(this);
+            Monster? M = Bot.Monsters.MapMonsters.FirstOrDefault(m => m.Name == monster);
+
             if (M == null)
             {
                 Logger("Monster object is null.", stopBot: true);
@@ -2244,39 +2289,47 @@ public class CoreBots
             {
                 if (log)
                     Logger($"Killing  \"{M!.Name}\", MID: {M!.MapID}");
-                while (!Bot.ShouldExit && Bot.Player.Cell != M!.Cell)
-                {
+                if (Bot.Player.Cell != M!.Cell)
                     Jump(M!.Cell, "Left");
-                    Bot.Wait.ForCellChange(M!.Cell);
-                    if (Bot.Player.Cell == M!.Cell)
-                        break;
-                }
 
-                Bot.Kill.Monster(monster == "*" ? "*" : M!.Name);
+                Bot.Kill.Monster(M!.Name);
+                Bot.Options.AttackWithoutTarget = false;
                 JumpWait();
                 Rest();
                 return;
             }
-            else
+            else if (item != null)
             {
+                DebugLogger(this);
                 if (!isTemp)
                     AddDrop(item);
 
+                DebugLogger(this);
                 if (log)
                     Logger($"Hunting {M!.Name} [{M!.ID}] for {item}, ({dynamicQuant(item, isTemp)}/{quant}) [Temp = {isTemp}]");
 
-                while (!Bot.ShouldExit && isTemp ? !Bot.TempInv.Contains(item, quant) : !CheckInventory(item, quant))
+                DebugLogger(this);
+                while (!Bot.ShouldExit && isTemp ? !Bot.TempInv.Contains(item, quant) : !Bot.Inventory.Contains(item, quant))
                 {
-                    if (Bot.Player.Cell != M?.Cell)
+                    DebugLogger(this);
+                    if (Bot.Player.Cell != M!.Cell)
+                    {
+                        DebugLogger(this);
                         Jump(M!.Cell, "Left");
+                    }
 
-                    Bot.Combat.Attack(monster == "*" ? "*" : M!.Name);
+                    DebugLogger(this);
+                    Bot.Combat.Attack(M!.Name);
+                    DebugLogger(this);
                     Sleep();
+                    DebugLogger(this);
                 }
+                DebugLogger(this);
             }
+            DebugLogger(this);
             Bot.Options.AttackWithoutTarget = false;
-            Bot.Wait.ForDrop(item);
-            Bot.Wait.ForPickup(item);
+            DebugLogger(this);
+            JumpWait();
         }
         catch (NullReferenceException ex)
         {
@@ -2382,27 +2435,22 @@ public class CoreBots
 
                 while (!Bot.ShouldExit && (isTemp ? !Bot.TempInv.Contains(item!, quant) : !CheckInventory(item, quant)))
                 {
-                    while (!Bot.ShouldExit && Bot.Player.Cell != monster.Cell)
-                    {
+                    if (Bot.Player.Cell != monster.Cell)
                         Jump(monster.Cell, pad);
-                        Bot.Wait.ForCellChange(monster.Cell);
-                        if (Bot.Player.Cell == monster.Cell)
-                            break;
-                    }
 
                     Bot.Combat.Attack(monster!.MapID);
                     Sleep();
 
-                    if (item == null || isTemp ? Bot.TempInv.Contains(item!, quant) : Bot.Inventory.Contains(item, quant))
-                    {
-                        Bot.Options.AggroMonsters = false;
-                        JumpWait();
-                        if (!isTemp)
-                            Bot.Wait.ForPickup(item!);
-                        Sleep();
-                        Rest();
-                        break;
-                    }
+                    // if (item == null || isTemp ? Bot.TempInv.Contains(item!, quant) : Bot.Inventory.Contains(item, quant))
+                    // {
+                    //     Bot.Options.AggroMonsters = false;
+                    //     JumpWait();
+                    //     if (!isTemp)
+                    //         Bot.Wait.ForPickup(item!);
+                    //     Sleep();
+                    //     Rest();
+                    //     break;
+                    // }
                 }
                 Rest();
             }
@@ -2868,23 +2916,34 @@ public class CoreBots
                 return;
             }
 
+            DebugLogger(this);
             if (item != null && (isTemp ? Bot.TempInv.Contains(item, quantity) : CheckInventory(item, quantity)))
+            {
+                DebugLogger(this);
                 return;
-
+            }
             if (log)
                 FarmingLogger(item, quantity);
 
-            while (!Bot.ShouldExit && item != null && (isTemp ? !Bot.TempInv.Contains(item, quantity) : !CheckInventory(item, quantity)))
+            while (!Bot.ShouldExit && (isTemp ? !Bot.TempInv.Contains(item!, quantity) : !CheckInventory(item, quantity)))
             {
+                DebugLogger(this);
                 if (cell != null && Bot.Player.Cell != cell)
+                {
+                    DebugLogger(this);
                     Jump(cell, "Left");
+                }
 
-                Bot.Combat.Attack(name == "*" ? "*" : name.FormatForCompare());
+                DebugLogger(this);
+                Bot.Combat.Attack(name);
+                DebugLogger(this);
                 Sleep();
 
+                DebugLogger(this);
                 if (rejectElse)
                     Bot.Drops.RejectExcept(item!);
             }
+            DebugLogger(this);
         }
         catch (NullReferenceException ex)
         {
@@ -3706,7 +3765,7 @@ public class CoreBots
                 lastCellPadJW = cellPad!;
 
                 Sleep(ExitCombatDelay < 200 ? ExitCombatDelay : ExitCombatDelay - 200);
-                Bot.Wait.ForCombatExit();
+                // Bot.Wait.ForCombatExit();
             }
 
             // while (!Bot.ShouldExit && Bot.Player.InCombat)
@@ -4112,6 +4171,7 @@ public class CoreBots
                 // PvP
                 case "bludrutbrawl":
                 case "dagepvp":
+                case "legionpvp":
                 case "deathpitbrawl":
                 // Room Limit: 1
                 case "baconcatb":
@@ -4136,7 +4196,6 @@ public class CoreBots
                 case "tlapd":
                 case "trickortreat":
                 case "vordredboss":
-                case "legionpvp":
                     // Special
                     JumpWait();
                     map = strippedMap + "-999999";
