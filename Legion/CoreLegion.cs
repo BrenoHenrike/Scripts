@@ -819,7 +819,7 @@ public class CoreLegion
             if (ScrollQuant > 0)
                 Core.Logger($"Fragment: {Bot.Inventory.GetQuantity("Sword Scroll Fragment")} / {ScrollQuant}");
 
-            Core.Join("dagepvp", "Enter0", "Spawn", ignoreCheck: true);
+            Core.Join("dagepvp", "Enter0", "Spawn");
             Core.Sleep(2500);
 
             Core.PvPMove(1, "r2", 475, 269);
@@ -946,11 +946,10 @@ public class CoreLegion
 
         RestartOnDeath:
             Core.Logger($"Death: {Death++}, resetting");
-            while (!Bot.ShouldExit && !Bot.Player.Alive)
+            while (!Bot.ShouldExit)
             {
                 Bot.Wait.ForTrue(() => Bot.Player.Alive, 100);
-                Bot.Wait.ForCellChange("Enter0");
-                Core.Logger($"Attempting Exit {ExitAttempt++}.");
+                Core.Logger($"Attempting Death Exit {ExitAttempt++}.");
                 Bot.Map.Join("battleon-999999");
                 Bot.Wait.ForMapLoad("battleon");
                 Core.Sleep(1500);
