@@ -519,7 +519,6 @@ public class CoreNation
     {
         if (Core.CheckInventory("Emblem of Nulgath", quant))
             return;
-
         NationRound4Medal();
 
         Core.AddDrop("Fiend Seal", "Gem of Domination", "Emblem of Nulgath");
@@ -531,7 +530,7 @@ public class CoreNation
         while (!Bot.ShouldExit && !Core.CheckInventory("Emblem of Nulgath", quant))
         {
             Core.HuntMonster("shadowblast", "Shadowrise Guard", "Gem of Domination", isTemp: false);
-            Core.HuntMonster("shadowblast", "Legion Fenrir", "Fiend Seal", 25, false);
+            Core.HuntMonster("shadowblast", "Legion Fenrir", "Fiend Seal", 25, isTemp: false);
         }
     }
 
