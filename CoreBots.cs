@@ -2173,6 +2173,7 @@ public class CoreBots
     {
         try
         {
+            #region Bullshit
             if (Bot == null)
             {
                 Logger("Bot object is null.", stopBot: true);
@@ -2225,6 +2226,7 @@ public class CoreBots
                 Logger("Bot.Monsters.MapMonsters object is null.", stopBot: true);
                 return;
             }
+            #endregion Bullshit
 
             Bot.Options.AggroAllMonsters = false;
             Bot.Options.AggroMonsters = false;
@@ -2273,6 +2275,7 @@ public class CoreBots
                 }
             }
             Bot.Options.AttackWithoutTarget = false;
+            Bot.Wait.ForDrop(item);
             Bot.Wait.ForPickup(item);
         }
         catch (NullReferenceException ex)
@@ -4133,6 +4136,7 @@ public class CoreBots
                 case "tlapd":
                 case "trickortreat":
                 case "vordredboss":
+                case "legionpvp":
                     // Special
                     JumpWait();
                     map = strippedMap + "-999999";
