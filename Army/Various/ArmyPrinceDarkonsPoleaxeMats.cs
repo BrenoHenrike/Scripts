@@ -69,41 +69,6 @@ public class ArmyPrinceDarkonsPoleaxeMats
         Core.FarmingLogger(item, quant);
 
         Army.StartFarm(item, quant, new int[] { 1, 2, 3, 4 } );
-        // bool needSendDone = true;
-        // int countCheck = 0;
-        // int[] skills = new int[] { 1, 2, 3, 4 };
-        // int skillIndex = 0;
-        // while (!Bot.ShouldExit)
-        // {
-        //     if (Core.CheckInventory(item, quant) && needSendDone)
-        //     {
-        //         Army.sendDone();
-        //         needSendDone = false;
-        //     }
-        //     if (!needSendDone && Army.isDone() && countCheck == 10)
-        //     {
-        //         break;
-        //     }
-        //     countCheck++;
-        //     if (countCheck > 10) countCheck = 0;
-        //     // if (countCheck > 10)
-        //     // {
-        //     //     countCheck = 0;
-        //     // }
-        //     if (!Bot.Player.HasTarget)
-        //         Bot.Combat.Attack("*");
-        //     else if (Bot.Player.HasTarget)
-        //     {
-        //         Bot.Skills.UseSkill(skills[skillIndex]);
-        //         skillIndex++;
-        //         if (skillIndex >= skills.Length) skillIndex = 0;
-        //         // if (skillIndex >= skills.Length)
-        //         //     skillIndex = 0;
-        //     }
-
-        //     Bot.Sleep(100);
-        // }
-
 
         Core.CancelRegisteredQuests();
         Army.AggroMonStop(true);
