@@ -1568,19 +1568,12 @@ public class CoreNation
         // Register the quest depending on whether Relic of Chaos supplies are used
         Core.RegisterQuests(relic ? new[] { 7816, 2857 } : new[] { 7816 });
 
+        Core.EquipClass(ClassType.Solo);
         // Continue farming until the desired quantity is reached
         while (!Bot.ShouldExit && !Core.CheckInventory("Blood Gem of the Archfiend", quant))
         {
-            // Equip Solo class and kill Escherion
-            Core.EquipClass(ClassType.Solo);
             Core.KillEscherion("Escherion's Helm", isTemp: false);
-
-            // Equip Solo class and kill Vath
-            Core.EquipClass(ClassType.Solo);
             Core.KillVath("Shattered Legendary Sword of Dragon Control", isTemp: false);
-
-            // Equip Solo class and hunt Hydra Head 85
-            Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("hydrachallenge", "Hydra Head 85", "Hydra Scale Piece", 200, false);
         }
 
