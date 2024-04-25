@@ -1509,7 +1509,7 @@
       "archfiend enchanted orbs"
     ],
     "path": "Hollowborn/HollowbornOblivionBlade.cs",
-    "size": 3244,
+    "size": 3246,
     "fileName": "HollowbornOblivionBlade.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/HollowbornOblivionBlade.cs"
   },
@@ -1568,7 +1568,7 @@
       "dual"
     ],
     "path": "Hollowborn/TradingandStuff(Dual).cs",
-    "size": 2688,
+    "size": 2689,
     "fileName": "TradingandStuff(Dual).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/TradingandStuff(Dual).cs"
   },
@@ -1691,7 +1691,7 @@
       "null"
     ],
     "path": "Nation/EmpoweringItems.cs",
-    "size": 1555,
+    "size": 1556,
     "fileName": "EmpoweringItems.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/EmpoweringItems.cs"
   },
@@ -7283,7 +7283,7 @@
       "enchanted nulgath nation house"
     ],
     "path": "Nation/MergeShops/DirtlickersMerge.cs",
-    "size": 9524,
+    "size": 9525,
     "fileName": "DirtlickersMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/MergeShops/DirtlickersMerge.cs"
   },
@@ -7813,7 +7813,7 @@
       "null"
     ],
     "path": "Nation/Various/YulgathsInn.cs",
-    "size": 1389,
+    "size": 1390,
     "fileName": "YulgathsInn.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/YulgathsInn.cs"
   },
@@ -7963,7 +7963,7 @@
       "voidwarlock"
     ],
     "path": "Nation/Various/VoidWarlock.cs",
-    "size": 3224,
+    "size": 3225,
     "fileName": "VoidWarlock.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/VoidWarlock.cs"
   },
@@ -8036,7 +8036,7 @@
       "null"
     ],
     "path": "Nation/Various/VoidShogun.cs",
-    "size": 2382,
+    "size": 2383,
     "fileName": "VoidShogun.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/VoidShogun.cs"
   },
@@ -8071,7 +8071,7 @@
       "nulgath"
     ],
     "path": "Nation/Various/EnchantedNulgathNationHouse.cs",
-    "size": 2538,
+    "size": 2539,
     "fileName": "EnchantedNulgathNationHouse.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/EnchantedNulgathNationHouse.cs"
   },
@@ -8104,7 +8104,7 @@
       "null"
     ],
     "path": "Nation/Various/JuggernautItems.cs",
-    "size": 4461,
+    "size": 4437,
     "fileName": "JuggernautItems.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/JuggernautItems.cs"
   },
@@ -8126,7 +8126,7 @@
       "null"
     ],
     "path": "Nation/Various/TendurrrTheAssistantQuests.cs",
-    "size": 3430,
+    "size": 3431,
     "fileName": "TendurrrTheAssistantQuests.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/TendurrrTheAssistantQuests.cs"
   },
@@ -8137,7 +8137,7 @@
       "null"
     ],
     "path": "Nation/Various/VoidPaladin.cs",
-    "size": 4903,
+    "size": 4904,
     "fileName": "VoidPaladin.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/VoidPaladin.cs"
   },
@@ -8302,7 +8302,7 @@
       "null"
     ],
     "path": "Nation/Various/TheGameofGemstones(Gold[Members]).cs",
-    "size": 1647,
+    "size": 1648,
     "fileName": "TheGameofGemstones(Gold[Members]).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/TheGameofGemstones(Gold[Members]).cs"
   },
@@ -8342,7 +8342,7 @@
       "member"
     ],
     "path": "Nation/Various/ImpossibleEmpoweredItemsofNulgath.cs",
-    "size": 1655,
+    "size": 1656,
     "fileName": "ImpossibleEmpoweredItemsofNulgath.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/ImpossibleEmpoweredItemsofNulgath.cs"
   },
@@ -8452,7 +8452,7 @@
       "null"
     ],
     "path": "Nation/OblivionBlade(RareandNot)/CoreOblivionBladeofNulgath.cs",
-    "size": 7431,
+    "size": 7436,
     "fileName": "CoreOblivionBladeofNulgath.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/OblivionBlade(RareandNot)/CoreOblivionBladeofNulgath.cs"
   },
@@ -13749,7 +13749,7 @@
       "weapon"
     ],
     "path": "Other/Weapons/WrathofNulgath.cs",
-    "size": 2427,
+    "size": 1710,
     "fileName": "WrathofNulgath.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Weapons/WrathofNulgath.cs"
   },
