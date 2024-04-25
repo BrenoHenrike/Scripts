@@ -45,7 +45,7 @@ public class WrathofNulgath
         OverfiendBlade();
         Nation.FarmVoucher(false, true);
         Nation.FarmVoucher(true, true);
-        Nation.FarmUni13();
+        Nation.FarmUni13(1);
         Nation.FarmTaintedGem(80);
         Nation.FarmDarkCrystalShard(60);
         Nation.FarmDiamondofNulgath(100);
