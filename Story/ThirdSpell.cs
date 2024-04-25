@@ -118,7 +118,7 @@ public class ThirdSpell
                         break;
 
                     case 4491: // 4491|Mother Knows The Sun
-                        Core.HuntMonster("thirdspell", "Solar Incarnation", "Heart of the Sun Received");
+                        Core.HuntMonster("thirdspell", "Solar Incarnation ", "Heart of the Sun Received");
                         break;
 
                     case 4492: // 4492|Selfishness
@@ -309,7 +309,7 @@ public class ThirdSpell
             Core.Logger("Token: Heart of the Sun");
             Core.EnsureAccept(4491);
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("thirdspell", "Solar Incarnation", "Heart of the Sun Received");
+            Core.HuntMonster("thirdspell", "Solar Incarnation ", "Heart of the Sun Received");
             Core.EnsureComplete(4491);
             Bot.Wait.ForPickup("Heart of the Sun");
         }
