@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 222149,
+    "size": 221237,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -341,7 +341,7 @@
       "thirdspell"
     ],
     "path": "Story/ThirdSpell.cs",
-    "size": 18300,
+    "size": 18302,
     "fileName": "ThirdSpell.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ThirdSpell.cs"
   },
@@ -13749,7 +13749,7 @@
       "weapon"
     ],
     "path": "Other/Weapons/WrathofNulgath.cs",
-    "size": 2426,
+    "size": 2427,
     "fileName": "WrathofNulgath.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Weapons/WrathofNulgath.cs"
   },
