@@ -10,7 +10,7 @@ tags: wrathofnulgath,wrath,ravenous,weapon
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Nation/CoreNation.cs
 //cs_include Scripts/Nation/Various/JuggernautItems.cs
-//cs_include Scripts/Story\Legion\DarkWarLegionandNation.cs
+//cs_include Scripts/Story/Legion/DarkWarLegionandNation.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 using Skua.Core.Interfaces;
 
@@ -22,6 +22,7 @@ public class WrathofNulgath
     public CoreAdvanced Adv = new();
     public CoreStory Story = new();
     public CoreNation Nation = new();
+    public JuggernautItemsofNulgath juggernaut = new();
     private DarkWarLegionandNation DWLN = new();
 
     public void ScriptMain(IScriptInterface bot)
@@ -42,7 +43,7 @@ public class WrathofNulgath
 
         Core.Logger("Farming Wrath of Nulgath.");
 
-        OverfiendBlade();
+        juggernaut.JuggItems(reward: JuggernautItemsofNulgath.RewardsSelection.Overfiend_Blade_of_Nulgath);
         Nation.FarmVoucher(false, true);
         Nation.FarmVoucher(true, true);
         Nation.FarmUni13(1);
@@ -51,30 +52,6 @@ public class WrathofNulgath
         Nation.FarmDiamondofNulgath(100);
         Adv.BuyItem("darkwarnation", 2123, "Wrath of Nulgath");
         Bot.Wait.ForPickup("Wrath of Nulgath");
-        //...why are we enhancing it?
-        // Adv.EnhanceItem("Wrath of Nulgath", EnhancementType.Lucky, CapeSpecial.None, HelmSpecial.None, WeaponSpecial.Spiral_Carve);
-    }
-
-    public void OverfiendBlade()
-    {
-        if (Core.CheckInventory("Overfiend Blade of Nulgath"))
-            return;
-
-        Core.AddDrop("Overfiend Blade of Nulgath");
-
-        Nation.SwindleBulk(50);
-        Farm.Experience(30);
-        Nation.FarmUni13();
-        Nation.FarmDiamondofNulgath(13);
-        Nation.FarmDarkCrystalShard(50);
-        Nation.FarmTotemofNulgath(3);
-        Nation.FarmGemofNulgath(20);
-        Nation.FarmVoucher(false, true);
-
-        Core.EnsureAccept(837);
-        Core.HuntMonster("underworld", "Undead Bruiser", "Undead Bruiser Rune");
-        Core.EnsureComplete(837, 6138);
-        Bot.Wait.ForPickup("Overfiend Blade of Nulgath");
     }
 }
 

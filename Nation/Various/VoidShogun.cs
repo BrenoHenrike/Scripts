@@ -64,7 +64,7 @@ public class VoidShogun
         {
             Core.EnsureAccept(6484);
 
-            Nation.FarmUni13();
+            Nation.FarmUni13(1);
             Nation.FarmBloodGem(7);
             Nation.Supplies("Unidentified 24");
 

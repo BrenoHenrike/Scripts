@@ -75,7 +75,7 @@ public class VoidPaladin
             Nation.EmblemofNulgath(2);
             Nation.SwindleBulk(35);
             Nation.FarmTotemofNulgath(1);
-            Nation.FarmUni13();
+            Nation.FarmUni13(1);
 
             if (!Core.CheckInventory("Scroll of Underworld"))
             {

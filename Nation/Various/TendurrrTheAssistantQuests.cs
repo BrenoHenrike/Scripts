@@ -46,7 +46,7 @@ public class TendurrrTheAssistantQuests
         if (!Core.CheckInventory("Tendurrr The Assistant"))
             Core.KillMonster("tercessuinotlim", "m2", "Left", "*", "Tendurrr The Assistant", isTemp: false);
 
-        Nation.FarmUni13();
+        Nation.FarmUni13(1);
 
 
         var Count = 0;

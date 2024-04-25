@@ -30,7 +30,7 @@ public class TheGameofGemstones
         if (!Core.IsMember)
             return;
 
-        Nation.FarmUni13();
+        Nation.FarmUni13(1);
         if (!Core.CheckInventory("Tendurrr The Assistant"))
             Core.KillMonster("tercessuinotlim", "m2", "Left", "*", "Tendurrr The Assistant", isTemp: false);
 

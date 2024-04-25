@@ -74,7 +74,7 @@ public class VoidWarlock
                 return;
             Core.FarmingLogger(reward.Name, 1);
             Core.EnsureAccept(6684);
-            Nation.FarmUni13();
+            Nation.FarmUni13(1);
             Nation.FarmVoucher(true);
             Nation.FarmDiamondofNulgath(75);
             Nation.FarmGemofNulgath(100);

@@ -15,7 +15,7 @@ public class JuggernautItemsofNulgath
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
+    public CoreFarms Farm = new();
     public CoreNation Nation = new();
 
 
@@ -48,10 +48,10 @@ public class JuggernautItemsofNulgath
 
 
         List<ItemBase> RewardOptions = Core.EnsureLoad(837).Rewards;
-        List<string> RewardsList = new List<string>();
+        List<string> RewardsList = new();
         foreach (Skua.Core.Models.Items.ItemBase Item in RewardOptions)
             RewardsList.Add(Item.Name);
-        Count = RewardsList.Count();
+        Count = RewardsList.Count;
         var rewards = Core.EnsureLoad(837).Rewards;
         ItemBase? item = rewards.Find(x => x.ID == (int)reward) ?? null;
         int defaultId = 0;
@@ -67,7 +67,7 @@ public class JuggernautItemsofNulgath
                 Core.Logger($"Farming All {x++}/{Count}");
             else Core.Logger($"... {reward} ...");
 
-            Nation.FarmUni13();
+            Nation.FarmUni13(1);
             Core.EnsureAccept(837);
             Nation.FarmDiamondofNulgath(13);
             Nation.FarmDarkCrystalShard(50);

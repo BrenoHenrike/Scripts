@@ -42,7 +42,7 @@ public class HollowbornOblivionBlade
         Farm.Experience(80);
         Nation.FarmVoucher(false, true);
         ArchFiendEnchantedOrbs();
-        Nation.FarmUni13();
+        Nation.FarmUni13(1);
         Nation.DiamondEvilWar(500);
         if (!Core.CheckInventory("Unidentified 25"))
         {
@@ -80,7 +80,7 @@ public class HollowbornOblivionBlade
             Core.BuyItem("tercessuinotlim", 1951, "Unmoulded Fiend Essence");
             Core.BuyItem("tercessuinotlim", 1951, "Unidentified 25");
         }
-        Nation.FarmUni13();
+        Nation.FarmUni13(1);
         Nation.DiamondEvilWar(150);
         Nation.FarmBloodGem(10);
         Nation.FarmVoucher(false);
