@@ -4875,49 +4875,25 @@ public class CoreBots
     /// <param name="item">The name of the item to obtain.</param>
     /// <param name="quantity">The quantity of the item to obtain.</param>
     /// <param name="isTemp">Specifies whether the item is temporary.</param>
-    public void DarkMakaiItem(string? item = null, int quantity = 1, bool isTemp = false)
+    public void DarkMakaiItem(string? item = null, int quantity = 1, bool isTemp = true)
     {
         if (Bot.ShouldExit || string.IsNullOrEmpty(item) || (isTemp ? Bot.TempInv.Contains(item, quantity) : CheckInventory(item, quantity)))
             return;
 
-        while (!Bot.ShouldExit && (isTemp ? !Bot.TempInv.Contains(item!, quantity) : !CheckInventory(item, quantity)))
+        var maps = new[] { ("tercessuinotlim", "m1"), (IsMember ? "Nulgath" : "evilmarsh", "Field1") };
+        var randomMapIndex = new Random().Next(0, maps.Length);
+        var selectedMap = maps[randomMapIndex];
+
+        Join(selectedMap.Item1, selectedMap.Item2, "Left");
+
+        while (!Bot.ShouldExit && isTemp ? !Bot.TempInv.Contains(item!, quantity) : !CheckInventory(item, quantity))
         {
-            var maps = new[] { ("tercessuinotlim", "m1"), (IsMember ? "Nulgath" : "evilmarsh", "Field1") };
-            var randomMapIndex = new Random().Next(0, maps.Length);
-            var selectedMap = maps[randomMapIndex];
+            if (Bot.Player.Cell != selectedMap.Item2)
+                Jump(selectedMap.Item2);
 
-            Join(selectedMap.Item1, selectedMap.Item2, "Left");
-
-            while (!Bot.ShouldExit &&
-                (selectedMap.Item1 == "tercessuinotlim"
-                    ? Bot.Monsters.CurrentAvailableMonsters.Any(monster => monster.HP >= 0 && (monster.MapID == 2 || monster.MapID == 3))
-                    : Bot.Monsters.CurrentAvailableMonsters.Any(monster => monster.HP >= 0 && (monster.MapID == 1 || monster.MapID == 2))))
-            {
-                while (!Bot.ShouldExit && Bot.Player.Cell != selectedMap.Item2)
-                {
-                    Jump(selectedMap.Item2);
-                    Bot.Wait.ForTrue(() => Bot.Player.Cell == selectedMap.Item2, 20);
-                }
-
-                Bot.Combat.Attack("*");
-                Sleep();
-
-                if (item == null || isTemp ? Bot.TempInv.Contains(item!, quantity) : Bot.Inventory.Contains(item, quantity))
-                {
-                    Bot.Options.AggroMonsters = false;
-                    while (!Bot.ShouldExit && Bot.Player.InCombat)
-                    {
-                        JumpWait();
-                        Sleep();
-                    }
-                    if (!isTemp)
-                        Bot.Wait.ForPickup(item!);
-                    Rest();
-                    break;
-                }
-            }
+            Bot.Combat.Attack("*");
+            Sleep();
         }
-
         Bot.Wait.ForDrop(item!);
         Bot.Wait.ForPickup(item!);
     }
