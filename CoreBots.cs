@@ -2282,7 +2282,10 @@ public class CoreBots
         if (item == null)
         {
             if (Bot.Player.Cell != M!.Cell)
+            {
                 Jump(M!.Cell, "Left");
+                Bot.Wait.ForCellChange(M!.Cell);
+            }
 
             M = Bot.Monsters.MapMonsters.FirstOrDefault(m => m != null && m.Name.FormatForCompare() == monster.FormatForCompare());
             Bot.Kill.Monster(M!.Name);
@@ -2307,10 +2310,13 @@ public class CoreBots
                 M = Bot.Monsters.MapMonsters.FirstOrDefault(m => m != null && m.Name.FormatForCompare() == monster.FormatForCompare());
 
                 DebugLogger(this);
-                if (M!.Cell != null &&  Bot.Player.Cell != M!.Cell)
+
+                if (Bot.Player.Cell != M!.Cell)
                 {
-                    DebugLogger(this);
                     Jump(M!.Cell, "Left");
+                    DebugLogger(this);
+                    Bot.Wait.ForCellChange(M!.Cell);
+                    DebugLogger(this);
                 }
 
                 DebugLogger(this);
