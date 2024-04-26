@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 221361,
+    "size": 221511,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -14152,7 +14152,7 @@
       "hero-s-valiance"
     ],
     "path": "Other/Armor/FireChampionsArmor.cs",
-    "size": 3083,
+    "size": 2985,
     "fileName": "FireChampionsArmor.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Armor/FireChampionsArmor.cs"
   },
