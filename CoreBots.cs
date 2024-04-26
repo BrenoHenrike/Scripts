@@ -1143,7 +1143,7 @@ public class CoreBots
 
     public int PointsToLevel(int points) => RepCPLevel.First(kvp => points <= kvp.Value).Key;
 
-    private Dictionary<int, int> RepCPLevel = new()
+    private readonly Dictionary<int, int> RepCPLevel = new()
     {
         { 1, 0 },
         { 2, 900 },
@@ -2037,8 +2037,8 @@ public class CoreBots
         Bot.Options.AggroAllMonsters = false;
         Bot.Options.AggroMonsters = false;
         Monster? Monster = monster == "*"
-        ? Bot.Monsters.MapMonsters.FirstOrDefault(x => x.Cell == cell)
-        : Bot.Monsters.MapMonsters.FirstOrDefault(x => x.Name.FormatForCompare() == monster.FormatForCompare() && x.Cell == cell);
+        ? Bot.Monsters.MapMonsters.FirstOrDefault(x => x != null && x.Cell == cell)
+        : Bot.Monsters.MapMonsters.FirstOrDefault(x => x.Name.FormatForCompare() == monster.FormatForCompare() && x != null && x.Cell == cell);
 
         // if (Monster == null)
         // {
@@ -2046,7 +2046,7 @@ public class CoreBots
         //     return;
         // }
 
-        if (Bot.Player.CurrentClass.Name == "ArchMage")
+        if (Bot.Player.CurrentClass!.Name == "ArchMage")
             Bot.Options.AttackWithoutTarget = true;
 
         if (item == null)
@@ -2067,7 +2067,7 @@ public class CoreBots
         }
         else
         {
-            if (Monster.Name != null)
+            if (Monster!.Name != null)
             {
                 DebugLogger(this);
                 _KillForItem(Monster.Name, item, quant, isTemp, log: log, cell: cell);
@@ -2145,7 +2145,6 @@ public class CoreBots
             AddDrop(item);
 
         Join(map, cell, pad, publicRoom: publicRoom);
-        Jump(cell, pad);
 
         // if (Bot.Monsters == null)
         // {
@@ -2161,14 +2160,15 @@ public class CoreBots
 
         Bot.Options.AggroAllMonsters = false;
         Bot.Options.AggroMonsters = false;
-        Monster? monster = Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault(m => m.ID == monsterID);
+        Monster? monster = Bot.Monsters.MapMonsters.FirstOrDefault(m => m != null && m.Cell == cell && m.ID == monsterID);
+
         // if (monster == null)
         // {
         //     Logger($"Monster [{monsterID}] not found. Something is wrong. Stopping bot", messageBox: true, stopBot: true);
         //     return;
         // }
 
-        if (Bot.Player.CurrentClass.Name == "ArchMage")
+        if (Bot.Player.CurrentClass!.Name == "ArchMage")
             Bot.Options.AttackWithoutTarget = true;
 
         if (item == null)
@@ -2176,12 +2176,12 @@ public class CoreBots
             if (log)
                 Logger($"Killing {monster}");
             ToggleAggro(true);
-            Bot.Kill.Monster(monster.ID);
+            Bot.Kill.Monster(monster!.ID);
             ToggleAggro(false);
             JumpWait();
             Rest();
         }
-        else _KillForItem(monster.Name, item, quant, isTemp, log: log, cell: cell);
+        else _KillForItem(monster!.Name, item, quant, isTemp, log: log, cell: cell);
         Bot.Options.AttackWithoutTarget = false;
         // }
         // catch (NullReferenceException ex)
@@ -2268,7 +2268,7 @@ public class CoreBots
         DebugLogger(this);
         Bot.Options.AggroMonsters = false;
         DebugLogger(this);
-        Monster? M = Bot.Monsters.MapMonsters.FirstOrDefault(m => m.Name == monster);
+        Monster? M = Bot.Monsters.MapMonsters.FirstOrDefault(m => m != null && m.Name.FormatForCompare() == monster.FormatForCompare());
 
         // if (M == null)
         // {
@@ -2281,11 +2281,10 @@ public class CoreBots
 
         if (item == null)
         {
-            if (log)
-                Logger($"Killing  \"{M!.Name}\", MID: {M!.MapID}");
             if (Bot.Player.Cell != M!.Cell)
                 Jump(M!.Cell, "Left");
 
+            M = Bot.Monsters.MapMonsters.FirstOrDefault(m => m != null && m.Name.FormatForCompare() == monster.FormatForCompare());
             Bot.Kill.Monster(M!.Name);
             Bot.Options.AttackWithoutTarget = false;
             JumpWait();
@@ -2300,13 +2299,15 @@ public class CoreBots
 
             DebugLogger(this);
             if (log)
-                Logger($"Hunting {M!.Name} [{M!.ID}] for {item}, ({dynamicQuant(item, isTemp)}/{quant}) [Temp = {isTemp}]");
+                FarmingLogger(item, quant);
 
             DebugLogger(this);
             while (!Bot.ShouldExit && isTemp ? !Bot.TempInv.Contains(item, quant) : !Bot.Inventory.Contains(item, quant))
             {
+                M = Bot.Monsters.MapMonsters.FirstOrDefault(m => m != null && m.Name.FormatForCompare() == monster.FormatForCompare());
+
                 DebugLogger(this);
-                if (Bot.Player.Cell != M!.Cell)
+                if (M!.Cell != null &&  Bot.Player.Cell != M!.Cell)
                 {
                     DebugLogger(this);
                     Jump(M!.Cell, "Left");
@@ -2374,7 +2375,7 @@ public class CoreBots
         //         return;
         //     }
 
-        if (item != null && (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
+        if (item == null || (item != null && (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant))))
             return;
 
         Join(map, publicRoom: publicRoom);
@@ -2405,17 +2406,12 @@ public class CoreBots
 
         if (item == null)
         {
-            if (log)
-                Logger($"Killing  \"{monster.Name}\", MID: {monster.MapID}");
-            while (!Bot.ShouldExit && Bot.Player.Cell != monster.Cell)
-            {
+            if (Bot.Player.Cell != monster!.Cell)
                 Jump(monster.Cell, pad);
-                Bot.Wait.ForCellChange(monster.Cell);
-                if (Bot.Player.Cell == monster.Cell)
-                    break;
-            }
 
-            Bot.Kill.Monster(monster.MapID);
+            monster = Bot.Monsters.MapMonsters.FirstOrDefault(m => m.MapID == monsterMapID);
+
+            Bot.Kill.Monster(monster!.MapID);
             JumpWait();
             Rest();
             return;
@@ -2425,11 +2421,13 @@ public class CoreBots
             if (!isTemp)
                 AddDrop(item);
             if (log)
-                Logger($"Killing {monster.Name} for {item}, ({dynamicQuant(item, isTemp)}/{quant}) [Temp = {isTemp}]");
+                FarmingLogger(item, quant);
 
             while (!Bot.ShouldExit && (isTemp ? !Bot.TempInv.Contains(item!, quant) : !CheckInventory(item, quant)))
             {
-                if (Bot.Player.Cell != monster.Cell)
+                monster = Bot.Monsters.MapMonsters.FirstOrDefault(m => m.MapID == monsterMapID);
+
+                if (Bot.Player.Cell != monster!.Cell)
                     Jump(monster.Cell, pad);
 
                 Bot.Combat.Attack(monster!.MapID);
@@ -2448,7 +2446,7 @@ public class CoreBots
             }
             Rest();
         }
-        Bot.Wait.ForPickup(item!);
+        // Bot.Wait.ForPickup(item!);
         // }
         // catch (NullReferenceException ex)
         // {
@@ -2939,10 +2937,11 @@ public class CoreBots
             {
                 DebugLogger(this);
                 Jump(cell, "Left");
+                Bot.Wait.ForCellChange(cell);
             }
 
             DebugLogger(this);
-            Bot.Combat.Attack(name);
+            Bot.Combat.Attack(name.FormatForCompare());
             DebugLogger(this);
             Sleep();
 
@@ -3019,7 +3018,7 @@ public class CoreBots
         }
     }
 
-    private List<int> KilledDungeonMonsters = new();
+    private readonly List<int> KilledDungeonMonsters = new();
     private void CleanKilledDungeonMonstersList(string map)
         => KilledMonsters.Clear();
     private void KilledDungeonMonsterListener(int monsterMapID)
@@ -4989,7 +4988,7 @@ public class CoreBots
                                                     $"entry.290078150={path}&" +
                                                      "entry.1803231651=It+stopped+at+the+wrong+time+(crash)&" +
                                                     $"entry.1954840906={ScriptLogs.Skip(ScriptLogs.Count - 6).Join("\n")}&" +
-                                                    $"entry.285894207={e.ToString()}\"");
+                                                    $"entry.285894207={e}\"");
                     }
                     break;
 
