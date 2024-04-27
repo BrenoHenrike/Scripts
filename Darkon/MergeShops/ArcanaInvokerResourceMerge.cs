@@ -116,27 +116,22 @@ public class ArcanaInvokerResourceMerge
                 #endregion
 
                 case "Staff of Inversion":
-                    Core.FarmingLogger(req.Name, quant);
                     Core.KillEscherion(req.Name, 1, false);
                     break;
 
                 case "BattleMage Armor":
-                    Core.FarmingLogger(req.Name, quant);
                     Adv.BuyItem("castleroof", 749, req.Name, 1);
                     break;
 
                 case "Nightlocke War Staff":
-                    Core.FarmingLogger(req.Name, quant);
                     Core.KillMonster("aqw3d", "r13", "Left", "Nightlocke Staff", req.Name, quant, req.Temp);
                     break;
 
                 case "Calamitous Warlic's Tome":
-                    Core.FarmingLogger(req.Name, quant);
                     Core.KillMonster("ruinedcrown", "r10", "Left", "Calamitous Warlic", req.Name, quant, req.Temp);
                     break;
 
                 case "Dishpan Cleric Costume":
-                    Core.FarmingLogger(req.Name, quant);
                     Core.KillMonster("cleric", "Frame3", "Left", "Chaos Dragon", req.Name, quant, req.Temp);
                     break;
 
@@ -147,39 +142,32 @@ public class ArcanaInvokerResourceMerge
                     break;
 
                 case "Battle Cleric of the Dragon":
-                    Core.FarmingLogger(req.Name, quant);
                     TerminaTempleMerge.BuyAllMerge(req.Name);
                     break;
 
                 case "Amia's Cult Secret":
-                    Core.FarmingLogger(req.Name, quant);
                     Core.KillMonster("fotia", "r6", "Left", "Amia the Cult Leader", req.Name, quant, req.Temp);
                     break;
 
                 case "Queen's Sage Scythe":
-                    Core.FarmingLogger(req.Name, quant);
                     GooseMerge.BuyAllMerge(req.Name);
                     break;
 
                 case "ShadowFlame Empress":
-                    Core.FarmingLogger(req.Name, quant);
                     BrightForestMerge.BuyAllMerge(req.Name);
                     break;
 
                 case "Fragment of the Queen":
-                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
                     Bot.Quests.UpdateQuest(8094);
                     Core.HuntMonster("transformation", "Queen of Monsters", "Fragment of the Queen", 13, false);
                     break;
 
                 case "Empress' Finger's Ring":
-                    Core.FarmingLogger(req.Name, quant);
                     Core.HuntMonsterMapID("firstobservatory", 13, req.Name, 1);
                     break;
 
                 case "King Klunk's Crown":
-                    Core.FarmingLogger(req.Name, quant);
                     Core.HuntMonster("evilwarnul", "Laken", req.Name, 1, false);
                     break;
 
@@ -197,7 +185,6 @@ public class ArcanaInvokerResourceMerge
                     break;
 
                 case "Zealous Crown":
-                    Core.FarmingLogger(req.Name, quant);
                     DLM.BuyAllMerge(req.Name);
                     break;
 
@@ -208,17 +195,14 @@ public class ArcanaInvokerResourceMerge
                     break;
 
                 case "Blessed Abezeth":
-                    Core.FarmingLogger(req.Name, quant);
                     CCM.BuyAllMerge(req.Name);
                     break;
 
                 case "Inquisitor of the Light":
-                    Core.FarmingLogger(req.Name, quant);
                     SOLM.BuyAllMerge(req.Name);
                     break;
 
                 case "Divine Guardian Of Aegis":
-                    Core.FarmingLogger(req.Name, quant);
                     AOTM.BuyAllMerge(req.Name);
                     break;
 
@@ -262,7 +246,6 @@ public class ArcanaInvokerResourceMerge
                     break;
 
                 case "Sphinx Sentinel":
-                    Core.FarmingLogger(req.Name, quant);
                     CM.BuyAllMerge(req.Name);
                     break;
 
@@ -367,17 +350,14 @@ public class ArcanaInvokerResourceMerge
                     break;
 
                 case "Enchanted Martial Artist's Gi":
-                    Core.FarmingLogger(req.Name, quant);
                     SSM.BuyAllMerge(req.Name);
                     break;
 
                 case "Strong Axe of Golmoth":
-                    Core.FarmingLogger(req.Name, quant);
                     DPM.BuyAllMerge(req.Name);
                     break;
 
                 case "Fortitude Tonic":
-                    Core.FarmingLogger(req.Name, quant);
                     PotionBuyer.INeedYourStrongestPotions(new[] { req.Name }, null, quant);
                     break;
 
@@ -424,7 +404,6 @@ public class ArcanaInvokerResourceMerge
                     break;
 
                 case "Enchanted DeathKnight":
-                    Core.FarmingLogger(req.Name, quant);
                     BCM.BuyAllMerge(req.Name);
                     break;
 
@@ -435,7 +414,6 @@ public class ArcanaInvokerResourceMerge
                     break;
 
                 case "Celestial Wings of Guiding":
-                    Core.FarmingLogger(req.Name, quant);
                     CRM.BuyAllMerge(req.Name);
                     break;
 
@@ -532,138 +510,113 @@ public class ArcanaInvokerResourceMerge
                     break;
 
                 case "Rising Star Token":
-                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
                     Core.HuntMonster("herolobby", "Training Partner", req.Name, quant, false);
                     break;
 
                 case "Dark Stars":
-                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
                     Core.HuntMonster("deadlines", "Eternal Dragon", req.Name, quant, false);
                     break;
 
                 case "Star Sapphire Fragment":
-                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
                     Core.HuntMonster("skytower", "Star Sapphire", req.Name, quant, false);
                     break;
 
                 case "Moon Rock Fragments":
-                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.KillMonster("lunacove", "r2", "Right", "*", req.Name, quant, false);
                     break;
 
                 case "Blood Moon Warrior":
-                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
                     Core.HuntMonster("marchosiasfight", "Marchosias", req.Name, quant, false);
                     break;
 
                 case "Celestial Khopesh":
-                    Core.FarmingLogger(req.Name, quant);
                     MoonlightKhopeshMerge.BuyAllMerge(req.Name);
                     break;
 
                 case "The Moon's Reflection":
-                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
                     Core.HuntMonster("Astravia", "The Moon", req.Name, quant, false);
                     break;
 
                 case "Golden Sun Seal":
-                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
                     Core.HuntMonster("titanattack", "Titanic Paladin", req.Name, quant, false);
                     break;
 
                 case "Sun Zone Chit":
-                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
                     Core.KillMonster("sunlightzone", "r9", "Right", "*", req.Name, quant, false);
                     break;
 
                 case "Armor of the Sun":
-                    Core.FarmingLogger(req.Name, quant);
                     ThirdspellMerge.BuyAllMerge(req.Name);
                     break;
 
                 case "The Sun's Enlightenment":
-                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
                     Core.HuntMonster("Astravia", "The Sun", req.Name, quant, false);
                     break;
 
                 case "Trumpet":
-                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
                     Core.HuntMonster("astraviajudge", "Trumpeter", req.Name, quant, false);
                     break;
 
                 case "Judgment Tonic":
-                    Core.FarmingLogger(req.Name, quant);
                     PotionBuyer.INeedYourStrongestPotions(new[] { req.Name }, null, quant);
                     break;
 
                 case "Enchanted Lance of Doom Reborn":
-                    Core.FarmingLogger(req.Name, quant);
                     ShadowMerge.BuyAllMerge(req.Name);
                     break;
 
                 case "Minos' Sentence":
-                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
                     Core.HuntMonster("judgement", "Minos", req.Name, quant, false);
                     break;
 
                 case "Darkon's Receipt":
-                    Core.FarmingLogger(req.Name, quant);
                     Darkon.FarmReceipt(quant);
                     break;
 
                 case "Teeth":
-                    Core.FarmingLogger(req.Name, quant);
                     Darkon.Teeth(quant);
                     break;
 
                 case "La's Gratitude":
-                    Core.FarmingLogger(req.Name, quant);
                     Darkon.LasGratitude(quant);
                     break;
 
                 case "Astravian Medal":
-                    Core.FarmingLogger(req.Name, quant);
                     Darkon.AstravianMedal(quant);
                     break;
 
                 case "A Melody":
-                    Core.FarmingLogger(req.Name, quant);
                     Darkon.AMelody(quant);
                     break;
 
                 case "Bandit's Correspondence":
-                    Core.FarmingLogger(req.Name, quant);
                     Darkon.BanditsCorrespondence(quant);
                     break;
 
                 case "Suki's Prestige":
-                    Core.FarmingLogger(req.Name, quant);
                     Darkon.SukisPrestiege(quant);
                     break;
 
                 case "Ancient Remnant":
-                    Core.FarmingLogger(req.Name, quant);
                     Darkon.AncientRemnant(quant);
                     break;
 
                 case "Mourning Flower":
-                    Core.FarmingLogger(req.Name, quant);
                     Darkon.WheelofFortune(quant);
                     break;
 
                 case "Unfinished Musical Score":
-                    Core.FarmingLogger(req.Name, quant);
                     Darkon.UnfinishedMusicalScore(quant);
                     break;
 
