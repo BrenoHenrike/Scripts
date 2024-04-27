@@ -33,7 +33,7 @@ public class InfernalArena
         "so the script wont go past that mob.\n" +
         "[DO IT YOURSELF]", messageBox: false);
 
-        if (Core.isCompletedBefore(ReturnEarly ? 9376 : 9373))
+        if (Core.isCompletedBefore(ReturnEarly ? 9376 : 9377))
             return;
 
         CAQuests.DoAll();
@@ -132,16 +132,18 @@ public class InfernalArena
         Story.KillQuest(9376, "infernalarena", "Azalith's Scythe");
         Bot.Options.AttackWithoutTarget = false;
 
-        if (ReturnEarly)
-            return;
-        // Lord of the Scarred Barrens  9377
-        Core.JumpWait();
-        Core.DodgeClass();
-        Core.Logger("Boss: [Na'al]");
-        Core.Logger("this may take an hr or 2... or u may first try\n" +
-        "it so good luck(a kill has been gotten with vhl\n" +
-        "so its confirmd able to be done...)");
-        Story.KillQuest(9377, "infernalarena", "Na'al");
+        if (!ReturnEarly)
+        {
+            // Lord of the Scarred Barrens  9377
+            Core.JumpWait();
+            // Core.DodgeClass();
+            Core.BossClass("Void Highlord");
+            Core.Logger("Boss: [Na'al]");
+            Core.Logger("this may take an hr or 2... or u may first try\n" +
+            "it so good luck(a kill has been gotten with vhl\n" +
+            "so its confirmd able to be done...)");
+            Story.KillQuest(9377, "infernalarena", "Na'al");
+        }
         #endregion Fuck these guysa
     }
 }

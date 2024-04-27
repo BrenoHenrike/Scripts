@@ -2032,16 +2032,16 @@ public class CoreAdvanced
                     break;
                 #endregion
 
-                #region Lucky - Lament - Valiance - Vim
+                #region Lucky - Vainglory - Dauntless/Valiance - Anima
                 case "void highlord":
                 case "void highlord (ioda)":
-                    if (!uLament() || !uValiance() || !uVim())
+                    if (!uAnima() || (!uDauntless() || !uValiance()) || !uVainglory())
                         goto default;
 
                     type = EnhancementType.Lucky;
-                    cSpecial = CapeSpecial.Lament;
-                    wSpecial = WeaponSpecial.Valiance;
-                    hSpecial = HelmSpecial.Vim;
+                    cSpecial = CapeSpecial.Vainglory;
+                    wSpecial = !uDauntless() ? WeaponSpecial.Valiance : WeaponSpecial.Dauntless;
+                    hSpecial = HelmSpecial.Anima;
                     break;
                 #endregion
 
