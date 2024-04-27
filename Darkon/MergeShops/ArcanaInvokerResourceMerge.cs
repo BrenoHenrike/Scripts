@@ -123,7 +123,7 @@ public class ArcanaInvokerResourceMerge
                     break;
 
                 case "BattleMage Armor":
-                    Adv.BuyItem("castleroof", 749, req.Name, 1);
+                    Adv.BuyItem("castleroof", 749, req.Name, 1, shopItemID: 12773);
                     break;
 
                 case "Nightlocke War Staff":

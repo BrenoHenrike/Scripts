@@ -51,8 +51,8 @@ public class ArcanaInvoker
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm => new CoreFarms();
-    public CoreAdvanced Adv = new CoreAdvanced();
+    public CoreFarms Farm => new();
+    public CoreAdvanced Adv = new();
     public CoreAstravia Astravia = new();
     public ArcanaInvokerResourceMerge AIRM = new();
     public CoreStory Story = new();
