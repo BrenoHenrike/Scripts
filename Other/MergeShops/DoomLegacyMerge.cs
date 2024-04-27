@@ -41,6 +41,7 @@ public class DoomLegacyMerge
 
     public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
+        DWp3.DoomwoodPart3();
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("stonewood", 1899, findIngredients, buyOnlyThis, buyMode: buyMode);
 
@@ -113,12 +114,11 @@ public class DoomLegacyMerge
                 case "Cryptborg Torpedo":
                 case "Cryptborg Blade":
                 case "Cryptborg Helm":
-                    Core.HuntMonster("techdungeon", "Kalron the Cryptborg", req.Name, isTemp: false);
+                    Core.HuntMonster("techdungeon", "Kalron the Cryptborg", req.Name, quant, isTemp: false);
                     break;
 
                 case "Zealous Badge":
                     Core.FarmingLogger(req.Name, quant);
-                    DWp3.DoomwoodPart3();
                     Core.RegisterQuests(7616);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
