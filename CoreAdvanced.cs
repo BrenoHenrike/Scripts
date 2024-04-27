@@ -2035,7 +2035,7 @@ public class CoreAdvanced
                 #region Lucky - Vainglory - Dauntless/Valiance - Anima
                 case "void highlord":
                 case "void highlord (ioda)":
-                    if (!uAnima() || (!uDauntless() || !uValiance()) || !uVainglory())
+                    if (!uAnima() || !uValiance() || !uVainglory())
                         goto default;
 
                     type = EnhancementType.Lucky;
