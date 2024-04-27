@@ -321,7 +321,7 @@ public class CoreAdvanced
             }
         }
     }
-    public List<ItemCategory> miscCatagories = new() { ItemCategory.Note, ItemCategory.Item, ItemCategory.Resource, ItemCategory.QuestItem, ItemCategory.ServerUse };
+    public List<ItemCategory> miscCatagories = new() { ItemCategory.Note, ItemCategory.Item, ItemCategory.QuestItem, ItemCategory.ServerUse };
     public ItemBase externalItem = new();
     public int externalQuant = 0;
     public bool matsOnly = false;

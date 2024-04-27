@@ -27,8 +27,9 @@ public class PotionBuyer
         //Tonic
         new Option<bool>("farmFate", "Fate", "Should the bot farm Fate Tonics?", false),
         new Option<bool>("farmSage", "Sage", "Should the bot farm Sage Tonics?", false),
-        new Option<bool>("FarmMalic", "Might", "Should the bot farm Might Tonics?", false),
         new Option<bool>("FarmMight", "Might", "Should the bot farm Might Tonics?", false),
+        new Option<bool>("FarmFortitude", "Fortitude", "Should the bot farm Fortitude Tonics?", false),
+        new Option<bool>("FarmJudgement", "Judgement", "Should the bot farm Judgement Tonics?", false),
         //Elixer
         new Option<bool>("farmBattle", "Battle", "Should the bot farm Battle Elixirs?", false),
         new Option<bool>("farmMalevolence", "Malevolence", "Should the bot farm Malevolence Elixirs?", false),
@@ -50,7 +51,7 @@ public class PotionBuyer
         new Option<bool>("UnstableVelocity", "Unstable Velocity Elixir", "Should the bot farm Soul Potions?", false),
         new Option<bool>("UnstableWise", "Unstable Wise Tonic", "Should the bot farm Soul Potions?", false),
 
-        //Other        
+        //Other          
         new Option<bool>("buyFeli", "Felicitous Philtre", "Should the bot buy Felicitous Philtre?", false),
         new Option<bool>("buyEndu", "Endurance Draught", "Should the bot buy Endurance Draught?", false)
 
@@ -78,16 +79,18 @@ public class PotionBuyer
             "Potent Destruction Elixir", "Body Tonic", "Soul Potion", "Unstable Battle Elixir",
             "Unstable Body Tonic", "Unstable Fate Tonic", "Unstable Keen Elixir",
             "Unstable Mastery Tonic", "Unstable Might Tonic", "Unstable Velocity Elixir",
-            "Unstable Wise Tonic", "Might Tonic"};
+            "Unstable Wise Tonic", "Might Tonic", "Fortitude Tonic", "Judgment Tonic"};
 
-        potionsFarm ??= new[] {                         Bot.Config!.Get<bool>("farmFate"),           Bot.Config!.Get<bool>("farmSage"),
+        potionsFarm ??= new[] {                          Bot.Config!.Get<bool>("farmFate"),           Bot.Config!.Get<bool>("farmSage"),
             Bot.Config!.Get<bool>("farmBattle"),         Bot.Config!.Get<bool>("farmMalevolence"),    Bot.Config!.Get<bool>("farmHonor"),
             Bot.Config!.Get<bool>("farmDivine"),         Bot.Config!.Get<bool>("farmRevitalize"),
             Bot.Config!.Get<bool>("buyFeli"),            Bot.Config!.Get<bool>("buyEndu"),            Bot.Config!.Get<bool>("farmDestruction"),
             Bot.Config!.Get<bool>("farmBody"),           Bot.Config!.Get<bool>("FarmSoul"),           Bot.Config!.Get<bool>("UnstableBattle"),
             Bot.Config!.Get<bool>("UnstableBody"),       Bot.Config!.Get<bool>("UnstableFate"),       Bot.Config!.Get<bool>("UnstableKeen"),
             Bot.Config!.Get<bool>("UnstableMastery"),    Bot.Config!.Get<bool>("UnstableMight"),      Bot.Config!.Get<bool>("UnstableVelocity"),
-            Bot.Config!.Get<bool>("UnstableWise"),       Bot.Config!.Get<bool>("farmMight"),          Bot.Config!.Get<bool>("FarmMalic") };
+            Bot.Config!.Get<bool>("UnstableWise"),       Bot.Config!.Get<bool>("farmMight"),          Bot.Config!.Get<bool>("FarmMalic"),
+            Bot.Config!.Get<bool>("FarmFortitude"),      Bot.Config!.Get<bool>("FarmJudgement") 
+            };
 
         if (!potionsFarm.Any(x => x) || potionQuant < 1 || potionQuant > 300)
         {
@@ -112,6 +115,10 @@ public class PotionBuyer
 
             switch (potion)
             {
+                case "Judgment Tonic":
+                    currTrait = CoreFarms.AlchemyTraits.Wis;
+                    BulkGrind("Dragon Scale", "Moglin Tears");
+                    break;
 
                 case "Potent Malevolence Elixir":
                 case "Potent Battle Elixir":
@@ -128,6 +135,11 @@ public class PotionBuyer
                 case "Might Tonic":
                     currTrait = CoreFarms.AlchemyTraits.Dam;
                     BulkGrind("Chaos Entity", "Rhison Blood");
+                    break;
+
+                case "Fortitude Tonics":
+                    currTrait = CoreFarms.AlchemyTraits.End;
+                    BulkGrind("Necrot", "Roc Tongue");
                     break;
 
                 case "Sage Tonic":
