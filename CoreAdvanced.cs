@@ -182,7 +182,7 @@ public class CoreAdvanced
         List<ShopItem> items = new();
         bool memSkipped = false;
 
-        foreach (ShopItem item in shopItems.Where(item => !item.Coins))
+        foreach (ShopItem item in shopItems)
         {
             if (Core.CheckInventory(item.ID, toInv: false) ||
                     miscCatagories.Contains(item.Category) ||
