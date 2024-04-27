@@ -33,7 +33,7 @@ public class InfernalArena
         "so the script wont go past that mob.\n" +
         "[DO IT YOURSELF]", messageBox: false);
 
-        if (Core.isCompletedBefore(9373))
+        if (Core.isCompletedBefore(ReturnEarly ? 9376 : 9373))
             return;
 
         CAQuests.DoAll();
