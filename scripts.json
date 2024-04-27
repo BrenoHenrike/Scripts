@@ -13601,6 +13601,23 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/ProtoSartorium.cs"
   },
   {
+    "name": "Arcana Invoker (Class)",
+    "description": "This script will get Arcana Invoker class.",
+    "tags": [
+      "arcana",
+      "invoker",
+      "class",
+      "arcana invoker",
+      "darkon",
+      "astravia",
+      "garden"
+    ],
+    "path": "Other/Classes/ArcanaInvoker[Non-Insignia].cs",
+    "size": 5595,
+    "fileName": "ArcanaInvoker[Non-Insignia].cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/ArcanaInvoker[Non-Insignia].cs"
+  },
+  {
     "name": "LevelAllClasses",
     "description": "null",
     "tags": [
@@ -13710,23 +13727,6 @@
     "size": 1180,
     "fileName": "Necromancer.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/Necromancer.cs"
-  },
-  {
-    "name": "Arcana Invoker (Class)",
-    "description": "This script will get Arcana Invoker class.",
-    "tags": [
-      "arcana",
-      "invoker",
-      "class",
-      "arcana invoker",
-      "darkon",
-      "astravia",
-      "garden"
-    ],
-    "path": "Other/Classes/ArcanaInvoker.cs",
-    "size": 5595,
-    "fileName": "ArcanaInvoker.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/ArcanaInvoker.cs"
   },
   {
     "name": "Grim Necromancer Class (600k AC)",
