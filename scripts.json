@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 221511,
+    "size": 221434,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -20332,7 +20332,7 @@
       "dungeon"
     ],
     "path": "Story/QueenofMonsters/Extra/InfernalArena.cs",
-    "size": 5113,
+    "size": 5134,
     "fileName": "InfernalArena.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/QueenofMonsters/Extra/InfernalArena.cs"
   },
