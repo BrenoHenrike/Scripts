@@ -124,6 +124,7 @@ public class ArcanaInvokerResourceMerge
                     break;
 
                 case "Nightlocke War Staff":
+                    Core.EquipClass(ClassType.Solo);
                     Core.KillMonster("aqw3d", "r13", "Left", "Nightlocke Staff", req.Name, quant, req.Temp);
                     break;
 
@@ -358,7 +359,7 @@ public class ArcanaInvokerResourceMerge
                     break;
 
                 case "Fortitude Tonic":
-                    PotionBuyer.INeedYourStrongestPotions(new[] { req.Name }, null, quant);
+                    Adv.BuyItem("alchemyacademy", 2116, req.Name, quant, shopItemID: 9782);
                     break;
 
                 case "Strong Drag's Intact Wing":
@@ -568,7 +569,7 @@ public class ArcanaInvokerResourceMerge
                     break;
 
                 case "Judgment Tonic":
-                    PotionBuyer.INeedYourStrongestPotions(new[] { req.Name }, null, quant);
+                    Adv.BuyItem("alchemyacademy", 2114, req.Name, quant, shopItemID: 9726);
                     break;
 
                 case "Enchanted Lance of Doom Reborn":
