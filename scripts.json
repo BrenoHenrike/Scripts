@@ -17,7 +17,7 @@
       "null"
     ],
     "path": "CoreAdvanced.cs",
-    "size": 118252,
+    "size": 118229,
     "fileName": "CoreAdvanced.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreAdvanced.cs"
   },
@@ -8818,6 +8818,66 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/MergeShops/TheWorldHouseMerge.cs"
   },
   {
+    "name": "Arcana Invoker Resource Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Arcana Invoker Resource Merge [2434] in /arcana",
+    "tags": [
+      "arcana",
+      "invoker",
+      "resource",
+      "merge",
+      "arcana",
+      "magicians",
+      "desire",
+      "high",
+      "priestess",
+      "intuition",
+      "empress",
+      "initiative",
+      "emperors",
+      "authority",
+      "hierophants",
+      "servitude",
+      "lovers",
+      "embrace",
+      "chariots",
+      "triumph",
+      "justices",
+      "righteousness",
+      "hermits",
+      "solitude",
+      "wheel",
+      "fortunes",
+      "destiny",
+      "strengths",
+      "fortitude",
+      "hanged",
+      "mans",
+      "discernment",
+      "deaths",
+      "mortality",
+      "temperances",
+      "frugality",
+      "devilish",
+      "temptation",
+      "towers",
+      "upheaval",
+      "stars",
+      "hope",
+      "moons",
+      "illusion",
+      "suns",
+      "optimism",
+      "judgements",
+      "absolution",
+      "worlds",
+      "voyage"
+    ],
+    "path": "Darkon/MergeShops/ArcanaInvokerResourceMerge.cs",
+    "size": 35117,
+    "fileName": "ArcanaInvokerResourceMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/MergeShops/ArcanaInvokerResourceMerge.cs"
+  },
+  {
     "name": "Genesis Garden Merge",
     "description": "Genesis Garden Merge",
     "tags": [
@@ -11042,6 +11102,33 @@
     "size": 5500,
     "fileName": "PlagueGearMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/PlagueGearMerge.cs"
+  },
+  {
+    "name": "Thirdspell Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Thirdspell Merge [892] in /thirdspell",
+    "tags": [
+      "thirdspell",
+      "merge",
+      "thirdspell",
+      "fiery",
+      "flaring",
+      "flame",
+      "floating",
+      "sun",
+      "flare",
+      "loyal",
+      "solar",
+      "entity",
+      "morph",
+      "ephemerite",
+      "mace",
+      "stingers",
+      "lance"
+    ],
+    "path": "Other/MergeShops/ThirdspellMerge.cs",
+    "size": 4479,
+    "fileName": "ThirdspellMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/ThirdspellMerge.cs"
   },
   {
     "name": "ChronoMerge",
@@ -13625,6 +13712,23 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/Necromancer.cs"
   },
   {
+    "name": "Arcana Invoker (Class)",
+    "description": "This script will get Arcana Invoker class.",
+    "tags": [
+      "arcana",
+      "invoker",
+      "class",
+      "arcana invoker",
+      "darkon",
+      "astravia",
+      "garden"
+    ],
+    "path": "Other/Classes/ArcanaInvoker.cs",
+    "size": 5595,
+    "fileName": "ArcanaInvoker.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/ArcanaInvoker.cs"
+  },
+  {
     "name": "Grim Necromancer Class (600k AC)",
     "description": "This script will get Grim Necromancer class which requires 600k ACs badge.",
     "tags": [
@@ -14703,7 +14807,7 @@
       "null"
     ],
     "path": "Other/Various/Potions.cs",
-    "size": 18633,
+    "size": 19274,
     "fileName": "Potions.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Various/Potions.cs"
   },
@@ -15061,6 +15165,28 @@
     "size": 9334,
     "fileName": "ExtraCreditMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/BackToSchool/ExtraCreditMerge.cs"
+  },
+  {
+    "name": "Archive of Time Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Archive of Time Merge [1347] in /cathedral",
+    "tags": [
+      "archive",
+      "of",
+      "time",
+      "merge",
+      "cathedral",
+      "aegis",
+      "guardian",
+      "savior",
+      "divine",
+      "guardians",
+      "scythe",
+      "wings"
+    ],
+    "path": "Seasonal/NewYear/ArchiveofTimeMerge.cs",
+    "size": 5143,
+    "fileName": "ArchiveofTimeMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/NewYear/ArchiveofTimeMerge.cs"
   },
   {
     "name": "Time Retaliate Merge",
@@ -16504,6 +16630,25 @@
     "size": 1052,
     "fileName": "PumpkinLord(Class).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Mogloween/PumpkinLord(Class).cs"
+  },
+  {
+    "name": "Moonlight Khopesh Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Moonlight Khopesh Merge [1175] in /bot.map.name",
+    "tags": [
+      "moonlight",
+      "khopesh",
+      "merge",
+      "bot.map.name",
+      "moonlit",
+      "great",
+      "lunar",
+      "stellar",
+      "celestial"
+    ],
+    "path": "Seasonal/Mogloween/MoonlightKhopeshMerge.cs",
+    "size": 3436,
+    "fileName": "MoonlightKhopeshMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Mogloween/MoonlightKhopeshMerge.cs"
   },
   {
     "name": "Mystcroft Forest Story",
