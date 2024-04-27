@@ -4894,7 +4894,7 @@ public class CoreBots
     /// <param name="isTemp">Specifies whether the item is temporary.</param>
     public void DarkMakaiItem(string? item = null, int quantity = 1, bool isTemp = true)
     {
-        if (Bot.ShouldExit || string.IsNullOrEmpty(item) || (isTemp ? Bot.TempInv.Contains(item, quantity) : CheckInventory(item, quantity)))
+        if (string.IsNullOrEmpty(item) || (isTemp ? Bot.TempInv.Contains(item, quantity) : CheckInventory(item, quantity)))
             return;
 
         var maps = new[] { ("tercessuinotlim", "m1"), (IsMember ? "Nulgath" : "evilmarsh", "Field1") };
@@ -4908,11 +4908,9 @@ public class CoreBots
             if (Bot.Player.Cell != selectedMap.Item2)
                 Jump(selectedMap.Item2);
 
-            Bot.Combat.Attack("*");
+            Bot.Combat.Attack("Dark Makai");
             Sleep();
         }
-        Bot.Wait.ForDrop(item!);
-        Bot.Wait.ForPickup(item!);
     }
 
     #endregion
