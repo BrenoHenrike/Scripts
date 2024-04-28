@@ -86,7 +86,7 @@ tags: all classes,class,farm,complete,all
 //cs_include Scripts/Legion/LegionExcercise/LegionExercise3.cs
 //cs_include Scripts/Legion/LegionExcercise/LegionExercise4.cs
 //cs_include Scripts/Legion/MergeShops/UndeadLegionMerge.cs
-//cs_include Scripts/Hollowborn\Materials\HollowSoul.cs
+//cs_include Scripts/Hollowborn/Materials/HollowSoul.cs
 //cs_include Scripts/Legion/Various/ExaltedSoulCleaver.cs
 //cs_include Scripts/Nation/Various/Archfiend.cs
 //cs_include Scripts/Other/Classes/BloodSorceress.cs
@@ -152,6 +152,30 @@ tags: all classes,class,farm,complete,all
 //cs_include Scripts/Story/Borgars.cs
 //cs_include Scripts/Story/ElegyofMadness(Darkon)/CoreAstravia.cs
 //cs_include Scripts/Other/Classes/DragonOfTime.cs
+//cs_include Scripts/Other/MergeShops/GooseMerge.cs
+//cs_include Scripts/Story/ShadowsOfChaos/CoreSoC.cs
+//cs_include Scripts/Other/MergeShops/BrightForestMerge.cs
+//cs_include Scripts/Story/QueenofMonsters/Extra/InfernalArena.cs
+//cs_include Scripts/Other/MergeShops/DoomLegacyMerge.cs
+//cs_include Scripts/Other/MergeShops/CelestialChallengerMerge.cs
+//cs_include Scripts/Other/MergeShops/SpoilsofLightMerge.cs
+//cs_include Scripts/Seasonal/NewYear/ArchiveofTimeMerge.cs
+//cs_include Scripts/Other/MergeShops/CrocriverMerge.cs
+//cs_include Scripts/Other/MergeShops/SuperSlayinMerge.cs
+//cs_include Scripts/Story/DreamPalace.cs
+//cs_include Scripts/Other/MergeShops/DreampalaceMerge.cs
+//cs_include Scripts/Other/MergeShops/BonecastleMerge.cs
+//cs_include Scripts/Other/MergeShops/CelestialRealmMerge.cs
+//cs_include Scripts/Other/MergeShops/3LittleWolvesHousesMerge.cs
+//cs_include Scripts/Other/Various/Potions.cs
+//cs_include Scripts/Story/CruxShip.cs
+//cs_include Scripts/Seasonal/Mogloween/MoonlightKhopeshMerge.cs
+//cs_include Scripts/Other/MergeShops/ThirdspellMerge.cs
+//cs_include Scripts/Seasonal/Friday13th/MergeShops/ShadowMerge.cs
+//cs_include Scripts/Darkon/MergeShops/ArcanaInvokerResourceMerge.cs
+//cs_include Scripts/Seasonal/BlackFriday/ShadowofDoom/CoreShadowofDoom.cs
+//cs_include Scripts/Story/FableForest.cs
+//cs_include Scripts/Other/Classes/ArcanaInvoker[Non-Insignia].cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
@@ -245,6 +269,7 @@ public class AllClasses
     #endregion Various
 
     #region End game
+    private ArcanaInvoker AI = new();
     private CoreArchMage AM = new();
     private ArchPaladin AP = new();
     private ChaosAvengerClass CAV = new();
@@ -417,6 +442,7 @@ public class AllClasses
     {
         Core.Logger("=== Doing End Game Classes ===");
 
+        AI.GetAI(rankUpClass);
         AM.GetAM(rankUpClass);
         AP.GetAP(rankUpClass);
         CAV.GetClass(rankUpClass);
@@ -426,6 +452,7 @@ public class AllClasses
         VDK.GetClass(rankUpClass);
         VHL.GetVHL(rankUpClass);
         YNR.GetYnR(rankUpClass);
+
 
         Core.Logger("=== End Game Classes - Completed! ===");
     }

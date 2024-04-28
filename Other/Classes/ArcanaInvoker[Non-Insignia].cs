@@ -93,7 +93,7 @@ public class ArcanaInvoker
             Core.KillMonster("oaklore", "r1", "Spawn", "Undead Infantry", "0 - The Fool's Humble Beginnings", 1, false);
             foreach (ItemBase req in Core.EnsureLoad(9693).Requirements.Where(x => x.Name != "0 - The Fool's Humble Beginnings"))
             {
-                Core.Logger(req.Name + "  ");
+                Core.Logger(req.Name);
                 AIRM.BuyAllMerge(req.Name);
             }
             Core.EnsureComplete(9693);
@@ -106,7 +106,7 @@ public class ArcanaInvoker
             ItemBase[] reqs = Core.EnsureLoad(9694).Requirements.ToArray();
             foreach (ItemBase req in reqs)
             {
-                Core.Logger(req.Name + "  ");
+                Core.Logger(req.Name);
                 AIRM.BuyAllMerge(req.Name);
             }
             Core.EnsureComplete(9694);
@@ -119,7 +119,7 @@ public class ArcanaInvoker
             ItemBase[] reqs = Core.EnsureLoad(9695).Requirements.ToArray();
             foreach (ItemBase req in reqs)
             {
-                Core.Logger(req.Name + "  ");
+                Core.Logger(req.Name);
                 AIRM.BuyAllMerge(req.Name);
             }
             Core.EnsureComplete(9695);
@@ -132,7 +132,7 @@ public class ArcanaInvoker
             ItemBase[] reqs = Core.EnsureLoad(9696).Requirements.ToArray();
             foreach (ItemBase req in reqs)
             {
-                Core.Logger(req.Name + "  ");
+                Core.Logger(req.Name);
                 AIRM.BuyAllMerge(req.Name);
             }
             Core.EnsureComplete(9696);
@@ -145,7 +145,7 @@ public class ArcanaInvoker
             ItemBase[] reqs = Core.EnsureLoad(9697).Requirements.ToArray();
             foreach (ItemBase req in reqs)
             {
-                Core.Logger(req.Name + "  ");
+                Core.Logger(req.Name);
                 AIRM.BuyAllMerge(req.Name);
             }
             Core.EnsureComplete(9697);
