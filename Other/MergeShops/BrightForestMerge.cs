@@ -73,9 +73,9 @@ public class BrightForestMerge
                     {
                         //The Shadows Recede 7768
                         Core.EquipClass(ClassType.Farm);
-                        Core.HuntMonster("BrightForest", "Shadowflame Scout", "ShadowFlame Troops \"Informed\"", 30);
+                        Core.HuntMonster("BrightForest", "Shadowflame Scout", "ShadowFlame Troops \"Informed\"", 30, log: false);
                         Core.EquipClass(ClassType.Solo);
-                        Core.HuntMonster("BrightForest", "ShadowFlame Dragon", "ShadowFlame Dragon \"Informed\"");
+                        Core.HuntMonster("BrightForest", "ShadowFlame Dragon", "ShadowFlame Dragon \"Informed\"", log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
