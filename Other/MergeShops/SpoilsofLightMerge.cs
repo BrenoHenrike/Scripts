@@ -88,12 +88,7 @@ public class SpoilsofLightMerge
                     Core.RegisterQuests(6560, 6561);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster(
-                            "lightguardwar",
-                            "Citadel Crusader",
-                            "Lightguard Medals",
-                            5
-                        );
+                        Core.HuntMonster("lightguardwar", "Citadel Crusader", "Lightguard Medals", 5, log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
