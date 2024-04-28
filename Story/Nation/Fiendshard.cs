@@ -33,7 +33,8 @@ public class Fiendshard_Story
 
         Originul.Originul_Questline();
 
-        //used quest progs for mobs/room optimization
+        Core.Logger("Making sure portal quest is done.. appaerntly its required...? (though not stated?)");
+        Core.Join("tercessuinotlim");
 
         // Sneak Attack
         if (!Story.QuestProgression(7892))
