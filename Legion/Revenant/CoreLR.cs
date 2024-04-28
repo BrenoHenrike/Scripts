@@ -97,9 +97,9 @@ public class CoreLR
     }
 
     //Legion Fealty 1
-    public void RevenantSpellscroll(int quant = 20)
+    public void RevenantSpellscroll(int quant = 20, bool forquest = false)
     {
-        if (Core.CheckInventory("Revenant's Spellscroll", quant))
+        if (!forquest && Core.CheckInventory("Revenant's Spellscroll", quant))
             return;
 
         Legion.JoinLegion();
@@ -113,7 +113,7 @@ public class CoreLR
         int i = 1;
         Core.Logger($"Farming {quant} Revenant's Spellscroll");
         Bot.Quests.UpdateQuest(2060);
-        while (!Bot.ShouldExit && !Core.CheckInventory("Revenant's Spellscroll", quant))
+        while (!Bot.ShouldExit && ((forquest && !Story.QuestProgression(6897)) || !Core.CheckInventory("Revenant's Spellscroll", quant)))
         {
             Core.EnsureAccept(6897);
 
@@ -131,16 +131,19 @@ public class CoreLR
             Core.EnsureComplete(6897);
             Bot.Wait.ForPickup("Revenant's Spellscroll");
             Core.Logger($"Completed x{i++}");
+
+            if (forquest)
+                return;
         }
     }
 
     //Legion Fealty 2
-    public void ConquestWreath(int quant = 6)
+    public void ConquestWreath(int quant = 6, bool forquest = false)
     {
-        if (!Core.isCompletedBefore(6898))
-            RevenantSpellscroll(1);
+        if (!Story.QuestProgression(6898))
+            RevenantSpellscroll(1, true);
 
-        if (Core.CheckInventory("Conquest Wreath", quant))
+        if ((forquest && Story.QuestProgression(6898)) || Core.CheckInventory("Conquest Wreath", quant))
             return;
 
         Legion.JoinLegion();
@@ -153,7 +156,7 @@ public class CoreLR
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} Conquest Wreath");
         Bot.Quests.UpdateQuest(4614);
-        while (!Bot.ShouldExit && !Core.CheckInventory("Conquest Wreath", quant))
+        while (!Bot.ShouldExit && ((forquest && !Story.QuestProgression(6898)) || !Core.CheckInventory("Conquest Wreath", quant)))
         {
             Core.EnsureAccept(6898);
             //Adv.BestGear(RacialGearBoost.Undead);
@@ -175,17 +178,19 @@ public class CoreLR
             Core.EnsureComplete(6898);
             Bot.Wait.ForPickup("Conquest Wreath");
             Core.Logger($"Completed x{i++}");
+
+            if (forquest)
+                return;
         }
     }
 
     //Legion Fealty 3
-    public void ExaltedCrown(int quant = 10)
+    public void ExaltedCrown(int quant = 10, bool forquest = false)
     {
-        if (!Core.isCompletedBefore(6899))
-            ConquestWreath(1);
-            
+        if (!Story.QuestProgression(6899))
+            ConquestWreath(1, true);
 
-        if (Core.CheckInventory("Exalted Crown", quant))
+        if ((forquest && Story.QuestProgression(6899)) || Core.CheckInventory("Exalted Crown", quant))
             return;
 
         Legion.JoinLegion();
@@ -197,7 +202,7 @@ public class CoreLR
 
         int i = 1;
         Core.Logger($"Farming {quant} Exalted Crown");
-        while (!Bot.ShouldExit && !Core.CheckInventory("Exalted Crown", quant))
+        while (!Bot.ShouldExit && ((forquest && !Story.QuestProgression(6899)) || !Core.CheckInventory("Exalted Crown", quant)))
         {
             Core.EnsureAccept(6899);
 
@@ -216,6 +221,9 @@ public class CoreLR
             Core.EnsureComplete(6899);
             Bot.Wait.ForPickup("Exalted Crown");
             Core.Logger($"Completed x{i++}");
+
+            if (forquest)
+                return;
         }
     }
 }
