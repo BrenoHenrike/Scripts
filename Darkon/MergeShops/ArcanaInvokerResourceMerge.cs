@@ -171,11 +171,11 @@ public class ArcanaInvokerResourceMerge
                     break;
 
                 case "Empress' Finger's Ring":
-                    Core.HuntMonsterMapID("firstobservatory", 13, req.Name, 1);
+                    Core.HuntMonsterMapID("firstobservatory", 13, req.Name, quant, req.Temp);
                     break;
 
                 case "King Klunk's Crown":
-                    Core.HuntMonster("evilwarnul", "Laken", req.Name, 1, false);
+                    Core.HuntMonster("evilwarnul", "Laken", req.Name, 1, req.Temp);
                     break;
 
                 case "Crowned Skull of Na'al":
@@ -349,6 +349,13 @@ public class ArcanaInvokerResourceMerge
                     Core.EquipClass(ClassType.Farm);
                     Core.KillMonster("finalbattle", "r2", "Left", "*", req.Name, quant, false, false);
                     break;
+
+                case "Divine Elixir":
+                    Core.FarmingLogger(req.Name, quant);
+                    Core.EquipClass(ClassType.Solo);
+                    Core.HuntMonster("poisonforest", "Xavier Lionfang", "Divine Elixir", 55, false, false);
+                    break;
+
 
                 case "Ultra Lobthulu's Fortune":
                     Core.FarmingLogger(req.Name, quant);

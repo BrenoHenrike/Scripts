@@ -91,8 +91,13 @@ public class ArcanaInvoker
             Core.EnsureAccept(9693);
             // ItemBase[] reqs = Core.EnsureLoad(9693).Requirements.ToArray();
             Core.KillMonster("oaklore", "r1", "Spawn", "Undead Infantry", "0 - The Fool's Humble Beginnings", 1, false);
-            foreach (ItemBase req in Core.EnsureLoad(9693).Requirements.Where(x => x.Name != "0 - The Fool's Humble Beginnings"))
+            foreach (ItemBase req in Core.EnsureLoad(9693).Requirements
+                    .Where(x => x.Name != "0 - The Fool's Humble Beginnings")
+                    .OrderBy(x => int.Parse(x.Name.Split(' ')[0])))
             {
+                if (Core.CheckInventory(req.Name, req.Quantity))
+                    continue;
+
                 Core.Logger(req.Name);
                 AIRM.BuyAllMerge(req.Name);
             }
@@ -103,11 +108,18 @@ public class ArcanaInvoker
         if (!Story.QuestProgression(9694))
         {
             Core.EnsureAccept(9694);
-            ItemBase[] reqs = Core.EnsureLoad(9694).Requirements.ToArray();
-            foreach (ItemBase req in reqs)
+
+            foreach (ItemBase req in Core.EnsureLoad(9694).Requirements
+                    .OrderBy(x => int.Parse(x.Name.Split(' ')[0]))
+                    .ToArray())
             {
-                Core.Logger(req.Name);
-                AIRM.BuyAllMerge(req.Name);
+                if (Core.CheckInventory(req.Name, req.Quantity))
+                    continue;
+
+                while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, req.Quantity))
+                    AIRM.BuyAllMerge(req.Name);
+
+                Bot.Wait.ForPickup(req.Name);
             }
             Core.EnsureComplete(9694);
         }
@@ -116,11 +128,17 @@ public class ArcanaInvoker
         if (!Story.QuestProgression(9695))
         {
             Core.EnsureAccept(9695);
-            ItemBase[] reqs = Core.EnsureLoad(9695).Requirements.ToArray();
-            foreach (ItemBase req in reqs)
+            foreach (ItemBase req in Core.EnsureLoad(9695).Requirements
+                    .OrderBy(x => int.Parse(x.Name.Split(' ')[0]))
+                    .ToArray())
             {
+                if (Core.CheckInventory(req.Name, req.Quantity))
+                    continue;
+
                 Core.Logger(req.Name);
-                AIRM.BuyAllMerge(req.Name);
+                while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, req.Quantity))
+                    AIRM.BuyAllMerge(req.Name);
+                Bot.Wait.ForPickup(req.Name);
             }
             Core.EnsureComplete(9695);
         }
@@ -132,8 +150,13 @@ public class ArcanaInvoker
             ItemBase[] reqs = Core.EnsureLoad(9696).Requirements.ToArray();
             foreach (ItemBase req in reqs)
             {
+                if (Core.CheckInventory(req.Name, req.Quantity))
+                    continue;
+
                 Core.Logger(req.Name);
-                AIRM.BuyAllMerge(req.Name);
+                while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, req.Quantity))
+                    AIRM.BuyAllMerge(req.Name);
+                Bot.Wait.ForPickup(req.Name);
             }
             Core.EnsureComplete(9696);
         }
@@ -142,11 +165,17 @@ public class ArcanaInvoker
         if (!Story.QuestProgression(9697))
         {
             Core.EnsureAccept(9697);
-            ItemBase[] reqs = Core.EnsureLoad(9697).Requirements.ToArray();
-            foreach (ItemBase req in reqs)
+            foreach (ItemBase req in Core.EnsureLoad(9697).Requirements
+                    .OrderBy(x => int.Parse(x.Name.Split(' ')[0]))
+                    .ToArray())
             {
+                if (Core.CheckInventory(req.Name, req.Quantity))
+                    continue;
+
                 Core.Logger(req.Name);
-                AIRM.BuyAllMerge(req.Name);
+                while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, req.Quantity))
+                    AIRM.BuyAllMerge(req.Name);
+                Bot.Wait.ForPickup(req.Name);
             }
             Core.EnsureComplete(9697);
         }
