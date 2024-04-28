@@ -46,7 +46,6 @@ tags: arcana,invoker,class,arcana invoker,darkon,astravia,garden
 //cs_include Scripts/Story\FableForest.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
-using Skua.Core.Models.Quests;
 
 public class ArcanaInvoker
 {
@@ -76,6 +75,16 @@ public class ArcanaInvoker
             return;
         }
 
+        DoStory();
+
+        Adv.BuyItem("arcana", 2436, "Arcana Invoker");
+
+        if (rankUpClass)
+            Adv.RankUpClass("Arcana Invoker");
+    }
+
+    public void DoStory()
+    {
         if (Core.isCompletedBefore(9697))
             return;
 
@@ -179,10 +188,5 @@ public class ArcanaInvoker
             }
             Core.EnsureComplete(9697);
         }
-
-        Adv.BuyItem("arcana", 2436, "Arcana Invoker");
-
-        if (rankUpClass)
-            Adv.RankUpClass("Arcana Invoker");
     }
 }
