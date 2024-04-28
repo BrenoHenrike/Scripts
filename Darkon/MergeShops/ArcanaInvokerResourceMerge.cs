@@ -42,6 +42,7 @@ tags: arcana, invoker, resource, merge, arcana, magicians, desire, high, prieste
 //cs_include Scripts/Story/ElegyofMadness(Darkon)/CoreAstravia.cs
 //cs_include Scripts/Darkon\CoreDarkon.cs
 //cs_include Scripts/Seasonal\BlackFriday\ShadowofDoom\CoreShadowofDoom.cs
+//cs_include Scripts/Story\FableForest.cs
 
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
@@ -75,6 +76,7 @@ public class ArcanaInvokerResourceMerge
     public ThirdspellMerge ThirdspellMerge = new();
     public CoreDarkon Darkon => new();
     public CoreShadowofDoom CoreShadowofDoom = new();
+    public FableForest FableForest = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
     public string[] MultiOptions = { "Generic", "Select" };
@@ -95,6 +97,7 @@ public class ArcanaInvokerResourceMerge
     public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
         CoreShadowofDoom.DoAll();
+        FableForest.StoryLine();
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("arcana", 2434, findIngredients, buyOnlyThis, buyMode: buyMode);
 
