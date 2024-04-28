@@ -29,6 +29,8 @@ using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
+using System.Text;
 
 public class CoreBots
 {
@@ -3096,11 +3098,29 @@ public class CoreBots
     }
 
 
-    /// <summary>
-    /// Logs a line of text to the script log with time, method from where it's called and a message
-    /// </summary>
+    // /// <summary>
+    // /// Logs a line of text to the script log with time, method from where it's called and a message
+    // /// </summary>
+    // public void Logger(string message = "", [CallerMemberName] string caller = "", bool messageBox = false, bool stopBot = false)
+    // {
+    //     Bot.Log($"[{DateTime.Now:HH:mm:ss}] ({caller})  {message}");
+    //     if (LoggerInChat && Bot.Player.LoggedIn)
+    //         Bot.Send.ClientModerator(message.Replace('[', '(').Replace(']', ')'), caller);
+    //     if (messageBox & !ForceOffMessageboxes)
+    //         Message(message, caller);
+    //     if (stopBot)
+    //     {
+    //         scriptFinished = false;
+    //         Bot.Stop(true);
+    //     }
+    // }
+
+    //testing
     public void Logger(string message = "", [CallerMemberName] string caller = "", bool messageBox = false, bool stopBot = false)
     {
+        // Word wrap the message
+        message = WordWrap(message, 50); // Adjust the line length as needed
+
         Bot.Log($"[{DateTime.Now:HH:mm:ss}] ({caller})  {message}");
         if (LoggerInChat && Bot.Player.LoggedIn)
             Bot.Send.ClientModerator(message.Replace('[', '(').Replace(']', ')'), caller);
@@ -3111,6 +3131,27 @@ public class CoreBots
             scriptFinished = false;
             Bot.Stop(true);
         }
+    }
+
+    // Word wrap function
+    public static string WordWrap(string input, int lineLength)
+    {
+        StringBuilder sb = new();
+        int length = 0;
+
+        foreach (string word in input.Split(' '))
+        {
+            if (length + word.Length > lineLength)
+            {
+                sb.AppendLine();
+                length = 0;
+            }
+
+            sb.Append(word + " ");
+            length += word.Length + 1;
+        }
+
+        return sb.ToString().Trim();
     }
 
     public void FarmingLogger(string? item, int quant = 1, [CallerMemberName] string caller = "")
