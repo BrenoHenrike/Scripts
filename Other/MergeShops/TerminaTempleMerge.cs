@@ -77,7 +77,7 @@ public class TerminaTempleMerge
                     Core.RegisterQuests(9215);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("terminatemple", "Termina Defender", "Defender Sparred With", 8);
+                        Core.HuntMonster("terminatemple", "Termina Defender", "Defender Sparred With", 8, log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
