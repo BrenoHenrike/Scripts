@@ -97,9 +97,9 @@ public class CoreLR
     }
 
     //Legion Fealty 1
-    public void RevenantSpellscroll(int quant = 20)
+    public void RevenantSpellscroll(int quant = 20, bool forquest = false)
     {
-        if (Core.CheckInventory("Revenant's Spellscroll", quant))
+        if ((forquest && Core.isCompletedBefore(6897)) || Core.CheckInventory("Revenant's Spellscroll", quant))
             return;
 
         Legion.JoinLegion();
@@ -135,12 +135,12 @@ public class CoreLR
     }
 
     //Legion Fealty 2
-    public void ConquestWreath(int quant = 6)
+    public void ConquestWreath(int quant = 6, bool forquest = false)
     {
         if (!Core.isCompletedBefore(6898))
-            RevenantSpellscroll(1);
+            RevenantSpellscroll(1, true);
 
-        if (Core.CheckInventory("Conquest Wreath", quant))
+        if ((forquest && Core.isCompletedBefore(6898)) || Core.CheckInventory("Conquest Wreath", quant))
             return;
 
         Legion.JoinLegion();
@@ -179,13 +179,12 @@ public class CoreLR
     }
 
     //Legion Fealty 3
-    public void ExaltedCrown(int quant = 10)
+    public void ExaltedCrown(int quant = 10, bool forquest = false)
     {
         if (!Core.isCompletedBefore(6899))
-            ConquestWreath(1);
-            
+            ConquestWreath(1, true);
 
-        if (Core.CheckInventory("Exalted Crown", quant))
+        if ((forquest && Core.isCompletedBefore(6899)) || Core.CheckInventory("Exalted Crown", quant))
             return;
 
         Legion.JoinLegion();
