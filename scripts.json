@@ -771,7 +771,7 @@
       "fable-forest"
     ],
     "path": "Story/FableForest.cs",
-    "size": 1882,
+    "size": 2347,
     "fileName": "FableForest.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/FableForest.cs"
   },
@@ -8873,7 +8873,7 @@
       "voyage"
     ],
     "path": "Darkon/MergeShops/ArcanaInvokerResourceMerge.cs",
-    "size": 32673,
+    "size": 32792,
     "fileName": "ArcanaInvokerResourceMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/MergeShops/ArcanaInvokerResourceMerge.cs"
   },
@@ -12404,7 +12404,7 @@
       "null"
     ],
     "path": "Other/MergeShops/GooseMerge.cs",
-    "size": 4048,
+    "size": 3932,
     "fileName": "GooseMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/GooseMerge.cs"
   },
