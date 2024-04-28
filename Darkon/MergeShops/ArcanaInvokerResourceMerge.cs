@@ -167,7 +167,7 @@ public class ArcanaInvokerResourceMerge
                 case "Fragment of the Queen":
                     Core.EquipClass(ClassType.Solo);
                     Bot.Quests.UpdateQuest(8094);
-                    Core.HuntMonster("transformation", "Queen of Monsters", "Fragment of the Queen", 13, false);
+                    Core.HuntMonster("transformation", "Queen of Monsters", req.Name, quant, req.Temp);
                     break;
 
                 case "Empress' Finger's Ring":
@@ -175,7 +175,7 @@ public class ArcanaInvokerResourceMerge
                     break;
 
                 case "King Klunk's Crown":
-                    Core.HuntMonster("evilwarnul", "Laken", req.Name, 1, req.Temp);
+                    Core.HuntMonster("evilwarnul", "Laken", req.Name, quant, req.Temp);
                     break;
 
                 case "Crowned Skull of Na'al":
@@ -198,7 +198,7 @@ public class ArcanaInvokerResourceMerge
                 case "Lich Emperor's Catalyst":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster("warundead", "Lich Emperor", req.Name, quant, false, false);
+                    Core.HuntMonster("warundead", "Lich Emperor", req.Name, quant, req.Temp, false);
                     break;
 
                 case "Blessed Abezeth":
