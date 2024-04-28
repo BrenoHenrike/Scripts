@@ -76,6 +76,16 @@ public class ArcanaInvoker
             return;
         }
 
+        DoStory();
+        
+        Adv.BuyItem("arcana", 2436, "Arcana Invoker");
+
+        if (rankUpClass)
+            Adv.RankUpClass("Arcana Invoker");
+    }
+
+    public void DoStory()
+    {
         if (Core.isCompletedBefore(9697))
             return;
 
@@ -150,10 +160,5 @@ public class ArcanaInvoker
             }
             Core.EnsureComplete(9697);
         }
-
-        Adv.BuyItem("arcana", 2436, "Arcana Invoker");
-
-        if (rankUpClass)
-            Adv.RankUpClass("Arcana Invoker");
     }
 }
