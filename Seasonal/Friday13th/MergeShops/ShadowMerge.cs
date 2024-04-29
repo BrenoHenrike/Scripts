@@ -65,8 +65,8 @@ public class ShadowMerge
                     Core.RegisterQuests(9421, 9422);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.KillMonster("shadowbattleon", "r7", "Left", "Doomed Troll", "Shadow Hunt Medal", 5, log: false);
-                        Core.KillMonster("shadowbattleon", "r7", "Left", "Doomed Troll", "Mega Shadow Hunt Medal", 3, log: false);
+                        Core.KillMonster("shadowbattleon", "r7", "Left", "*", "Shadow Hunt Medal", 5, log: false);
+                        Core.KillMonster("shadowbattleon", "r7", "Left", "*", "Mega Shadow Hunt Medal", 3, log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
