@@ -27,7 +27,7 @@ public class ShadowMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "A Whisper"});
+        Core.BankingBlackList.AddRange(new[] { "A Whisper" });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -65,7 +65,8 @@ public class ShadowMerge
                     Core.RegisterQuests(9421, 9422);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("shadowbattleon", "Doomed Troll", log: false);
+                        Core.HuntMonster("shadowbattleon", "Doomed Troll", "Shadow Hunt Medal", 5, log: false);
+                        Core.HuntMonster("shadowbattleon", "Doomed Troll", "Mega Shadow Hunt Medal", 3, log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
