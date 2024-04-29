@@ -2045,6 +2045,8 @@ public class CoreAdvanced
                     break;
                 #endregion
 
+
+
                 #region Lucky - Avarice - Dauntless - Anima
                 case "flame dragon warrior":
                     if (!uAvarice() || !uDauntless() || !uAnima())
@@ -2123,6 +2125,7 @@ public class CoreAdvanced
                 #region Wizard - Vainglory - Valiance - Pneuma
                 case "archmage":
                 case "darklord":
+                case "Arcana Invoker":
                     if (!uVainglory() || !uValiance() || !uPneuma())
                         goto default;
 
@@ -2732,6 +2735,7 @@ public class CoreAdvanced
                 case "classic legion doomknight":
                 case "legion doomknight":
                 case "legion doomknight tester":
+                case "Arcana Invoker":
                     type = EnhancementType.Wizard;
                     wSpecial = WeaponSpecial.Spiral_Carve;
                     break;

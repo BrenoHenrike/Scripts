@@ -245,6 +245,7 @@ public class ArcanaInvokerResourceMerge
 
                 case "Racing Trophy":
                     Core.FarmingLogger(req.Name, quant);
+                    Core.AddDrop("Racing Trophy");
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.ChainComplete(746);
@@ -437,7 +438,7 @@ public class ArcanaInvokerResourceMerge
                     Core.RegisterQuests(5405);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("sandsea", "Oasis Monkey", "Pally Luwak Beans");
+                        Core.HuntMonster("sandsea", "Oasis Monkey", "Pally Luwak Beans", log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
@@ -494,8 +495,8 @@ public class ArcanaInvokerResourceMerge
                     Core.RegisterQuests(3317);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("fableforest", "Earth Elemental", "Earth Aura", 5);
-                        Core.HuntMonster("fableforest", "Undead Satyr", "Satyr Hoof", 5);
+                        Core.HuntMonster("fableforest", "Earth Elemental", "Earth Aura", 5, log: false);
+                        Core.HuntMonster("fableforest", "Undead Satyr", "Satyr Hoof", 5, log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
