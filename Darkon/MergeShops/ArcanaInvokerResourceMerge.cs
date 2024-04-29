@@ -582,7 +582,7 @@ public class ArcanaInvokerResourceMerge
 
                 case "The Sun's Enlightenment":
                     Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster("Astravia", "The Sun", req.Name, quant, false);
+                    Core.HuntMonster("astraviacastle", "The Sun", req.Name, quant, false);
                     break;
 
                 case "Trumpet":
