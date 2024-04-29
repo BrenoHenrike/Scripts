@@ -80,8 +80,8 @@ public class FableForestMerge
                     Core.RegisterQuests(3317);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("fableforest", "Earth Elemental", "Earth Aura", 5);
-                        Core.HuntMonster("fableforest", "Undead Satyr", "Satyr Hoof", 5);
+                        Core.HuntMonster("fableforest", "Earth Elemental", "Earth Aura", 5, log: false);
+                        Core.HuntMonster("fableforest", "Undead Satyr", "Satyr Hoof", 5, log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
