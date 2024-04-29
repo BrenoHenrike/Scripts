@@ -93,7 +93,7 @@ public class CoreArchMage
 
         Core.Logger("The bot will now farm all requierments for ArchMage");
         SoW.CompleteCoreSoW();
-        if (Core.isCompletedBefore(9126))
+        if (!Core.isCompletedBefore(9126))
             Core.Logger("Quests must be completed upto 9126 (9123 > 9126) manualy as they require a dodge class.", stopBot: true);
         QOM.TheReshaper();
 
