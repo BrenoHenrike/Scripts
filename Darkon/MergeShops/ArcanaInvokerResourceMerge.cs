@@ -564,10 +564,11 @@ public class ArcanaInvokerResourceMerge
 
                 case "Sun Zone Chit":
                     Core.RegisterQuests(9252);
-                    Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
+                        Core.EquipClass(ClassType.Solo);
                         Core.HuntMonster("sunlightzone", "Marine Snow", "Marine Sample", log: false);
+                        Core.EquipClass(ClassType.Farm);
                         Core.HuntMonster("sunlightzone", "Infernal Illusion", "Infernal Sample", 10, log: false);
                         Core.HuntMonster("sunlightzone", "Seraphic Illusion", "Seraphic Sample", 10, log: false);
                         Bot.Wait.ForPickup(req.Name);
