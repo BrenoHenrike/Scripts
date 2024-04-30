@@ -30,7 +30,7 @@ public class MoonlightKhopeshMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Khonsu Seal"});
+        Core.BankingBlackList.AddRange(new[] { "Khonsu Seal" });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -64,7 +64,7 @@ public class MoonlightKhopeshMerge
 
                 case "Khonsu Seal":
                     Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster("cruxship", "Apephryx", req.Name, req.Quantity, false);
+                    Core.HuntMonster("cruxship", "Apephryx", req.Name, quant, false);
                     break;
 
             }
