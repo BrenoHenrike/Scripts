@@ -95,7 +95,6 @@ public class ArcanaInvoker
 
         Story.PreLoad(this);
 
-
         // Your Garden (9693)
         if (!Story.QuestProgression(9693))
         {
