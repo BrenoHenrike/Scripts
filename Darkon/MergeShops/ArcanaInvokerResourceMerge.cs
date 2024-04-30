@@ -638,7 +638,7 @@ public class ArcanaInvokerResourceMerge
                     break;
 
                 case "Mourning Flower":
-                    Darkon.WheelofFortune(quant);
+                    Darkon.WheelofFortune(quant, 0);
                     break;
 
                 case "Unfinished Musical Score":
