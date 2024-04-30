@@ -4272,7 +4272,6 @@ public class CoreBots
 
                 #region Maps that cant be private and you must do yourself. (thanks AE)
                 case "fearhouse":
-                case "buyhouse":
                 case "warehouse":
 
                     DialogResult ForcePublic = Bot.ShowMessageBox(
