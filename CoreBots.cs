@@ -4255,6 +4255,15 @@ public class CoreBots
                     break;
                 #endregion
 
+                #region BuyHouse (for a merge)
+                case "buyhouse":
+                Logger("This is a public map.. and non-privateable, so blame ae for that.. tho its required for some things so this will be forced public");
+                    JumpWait();
+                    Bot.Map.Join(map);
+                    Bot.Wait.ForMapLoad(map);
+                    break;
+                #endregion BuyHouse (for a merge)
+
                 #region baconcat.. is annoying
                 case "baconcat":
                     JumpWait();
@@ -4272,7 +4281,6 @@ public class CoreBots
                 #region Maps that cant be private and you must do yourself. (thanks AE)
                 case "fearhouse":
                 case "warehouse":
-
                     DialogResult ForcePublic = Bot.ShowMessageBox(
                                         $"Do you want to join the Following map: \"{map}\"\n" +
                                         "using a public room?\n" +
@@ -4281,7 +4289,7 @@ public class CoreBots
                                     );
 
                     if (ForcePublic.Value == 1)
-                        Logger("Unfortunitaly AE forgot to make these maps public only\n" +
+                        Logger("Unfortunitaly AE forgot to make these maps privateable only\n" +
                         "to continue \"yes\" must be selcted, otherwise for `allstories` just comment it out with 2 /'s", stopBot: true);
                     else
                     {
