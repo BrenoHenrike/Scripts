@@ -3728,7 +3728,7 @@
       "citadel-ruins"
     ],
     "path": "Story/Nation/CitadelRuins.cs",
-    "size": 8575,
+    "size": 8567,
     "fileName": "CitadelRuins.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Nation/CitadelRuins.cs"
   },
@@ -8873,7 +8873,7 @@
       "voyage"
     ],
     "path": "Darkon/MergeShops/ArcanaInvokerResourceMerge.cs",
-    "size": 33702,
+    "size": 33772,
     "fileName": "ArcanaInvokerResourceMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/MergeShops/ArcanaInvokerResourceMerge.cs"
   },
