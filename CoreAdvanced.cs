@@ -1574,6 +1574,7 @@ public class CoreAdvanced
         void _AutoEnhance(InventoryItem item, int shopID, string? map = null)
         {
             bool specialOnCape = item.Category == ItemCategory.Cape && cSpecial != CapeSpecial.None;
+            bool specialOnHelm = item.Category == ItemCategory.Helm && hSpecial != HelmSpecial.None;
             bool specialOnWeapon = item.ItemGroup == "Weapon" && wSpecial.ToString() != "None";
             List<ShopItem> shopItems = Core.GetShopItems(map ?? Bot.Map.Name, shopID);
 
@@ -1635,6 +1636,9 @@ public class CoreAdvanced
                     availableEnh.Add(enh);
                 // Weapon if wSpecial
                 else if (specialOnWeapon && enhName.Contains(wSpecial.ToString().Replace("_", "").ToLower()))
+                    availableEnh.Add(enh);
+                //Helm if hSpecial
+                else if (specialOnHelm && enhName.Contains(hSpecial.ToString().Replace("_", "").ToLower()))
                     availableEnh.Add(enh);
                 // Class
                 else if (item.Category == ItemCategory.Class && enhName.Contains("armor"))
@@ -2872,6 +2876,7 @@ public enum WeaponSpecial // Proc ID
     Praxis = 14,
     Dauntless = 15
 }
+
 public enum HelmSpecial //Enhancement Pattern ID
 {
     None = 0,
@@ -2880,6 +2885,7 @@ public enum HelmSpecial //Enhancement Pattern ID
     Examen = 26,
     Anima = 28,
     Pneuma = 27,
+    Hearty = 32
 }
 
 public enum mergeOptionsEnum
