@@ -414,8 +414,7 @@ public class ArmyLR
             //Army.waitForParty("whitemap", item);
         HandleMap(map, item, quant);
 
-        if (Bot.Player.CurrentClass?.Name == "ArchMage")
-            Bot.Options.AttackWithoutTarget = true;
+        
 
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
             Bot.Combat.Attack("*");

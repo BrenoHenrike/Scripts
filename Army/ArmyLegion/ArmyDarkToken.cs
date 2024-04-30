@@ -67,8 +67,7 @@ public class ArmyDarkToken
         Core.RegisterQuests(6248, 6249, 6251);
         Army.SmartAggroMonStart("seraphicwardage", new[] { "Seraphic Commander, Seraphic Soldier" });
         
-        if (Bot.Player.CurrentClass?.Name == "ArchMage")
-            Bot.Options.AttackWithoutTarget = true;
+        
             
         while (!Bot.ShouldExit && !Core.CheckInventory("Dark Token", quant))
             Bot.Combat.Attack("*");

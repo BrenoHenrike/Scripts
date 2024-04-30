@@ -64,8 +64,7 @@ public class ArmyLowTideMergeReqs
 
         Core.RegisterQuests(8846);
         
-        if (Bot.Player.CurrentClass?.Name == "ArchMage")
-            Bot.Options.AttackWithoutTarget = true;
+        
             
         while (!Bot.ShouldExit)
             Bot.Combat.Attack("*");

@@ -120,8 +120,7 @@ public class ArmyVoucherItemofNulgath
         Army.AggroMonStart("tercessuinotlim");
         Army.DivideOnCells("Enter", "m1", "m2");
 
-        if (Bot.Player.CurrentClass?.Name == "ArchMage")
-            Bot.Options.AttackWithoutTarget = true;
+        
 
         // Attack monsters until the inventory is filled with the specified quantity
         while (!Core.CheckInventory(item, quant) && !Bot.ShouldExit)

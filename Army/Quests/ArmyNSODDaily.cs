@@ -62,8 +62,7 @@ public class ArmyNSoDDaily
         //Army.waitForParty("Icestormarena", "Glacial Pinion");
         Army.SmartAggroMonStart("icewing", "Warlord Icewing");
 
-        if (Bot.Player.CurrentClass?.Name == "ArchMage")
-            Bot.Options.AttackWithoutTarget = true;
+        
 
         while (!Bot.ShouldExit && !Core.CheckInventory("Glacial Pinion"))
             Bot.Combat.Attack("*");
@@ -73,8 +72,7 @@ public class ArmyNSoDDaily
         //Army.waitForParty("hydrachallenge", "Hydra Eyeball");
         Army.SmartAggroMonStart("hydrachallenge", "Hydra Head 90");
 
-        if (Bot.Player.CurrentClass?.Name == "ArchMage")
-            Bot.Options.AttackWithoutTarget = true;
+        
 
         while (!Bot.ShouldExit && !Core.CheckInventory("Hydra Eyeball", 3))
             Bot.Combat.Attack("*");
@@ -84,8 +82,7 @@ public class ArmyNSoDDaily
         //Army.waitForParty("voidflibbi", "Flibbitigiblets");
         Army.SmartAggroMonStart("voidflibbi", "Flibbitiestgibbet");
 
-        if (Bot.Player.CurrentClass?.Name == "ArchMage")
-            Bot.Options.AttackWithoutTarget = true;
+        
 
         while (!Bot.ShouldExit && !Core.CheckInventory("Flibbitigiblets"))
             Bot.Combat.Attack("*");

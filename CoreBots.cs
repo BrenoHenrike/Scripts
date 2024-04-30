@@ -2047,8 +2047,9 @@ public class CoreBots
         //     return;
         // }
 
-        if (Bot.Player.CurrentClass!.Name == "ArchMage")
-            Bot.Options.AttackWithoutTarget = true;
+        //turns out vv was cuasing a null crash when item == null & you die..
+        // if (Bot.Player.CurrentClass!.Name == "ArchMage")
+        //     Bot.Options.AttackWithoutTarget = true;
 
         if (item == null)
         {
@@ -2277,8 +2278,8 @@ public class CoreBots
         //     return;
         // }
 
-        if (Bot.Player.CurrentClass?.Name == "ArchMage")
-            Bot.Options.AttackWithoutTarget = true;
+        // if (Bot.Player.CurrentClass?.Name == "ArchMage")
+        //     Bot.Options.AttackWithoutTarget = true;
 
         if (item == null)
         {
@@ -2382,7 +2383,7 @@ public class CoreBots
         //         return;
         //     }
 
-        if (item == null || (item != null && (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant))))
+        if (item != null && (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
             return;
 
         Join(map, publicRoom: publicRoom);
@@ -2407,9 +2408,6 @@ public class CoreBots
         //     Logger($"Failed to find monsterMapID {monsterMapID} in {map}", stopBot: true);
         //     return;
         // }
-
-        if (Bot.Player.CurrentClass?.Name == "ArchMage")
-            Bot.Options.AttackWithoutTarget = true;
 
         if (item == null)
         {
@@ -2483,8 +2481,6 @@ public class CoreBots
             Jump("Boss", "Left");
             Sleep();
         }
-        if (Bot.Player.CurrentClass?.Name == "ArchMage")
-            Bot.Options.AttackWithoutTarget = true;
 
         if (item != null && log)
             FarmingLogger(item, quant);
@@ -2559,8 +2555,7 @@ public class CoreBots
 
         Join("stalagbite", "r2", "Left");
 
-        if (Bot.Player.CurrentClass?.Name == "ArchMage")
-            Bot.Options.AttackWithoutTarget = true;
+        
 
         bool PreFarmKill = false;
 
@@ -2627,8 +2622,7 @@ public class CoreBots
         Bot.Events.ExtensionPacketReceived += KitsuneListener;
 
 
-        if (Bot.Player.CurrentClass?.Name == "ArchMage")
-            Bot.Options.AttackWithoutTarget = true;
+        
 
         if (item == null)
         {
@@ -2692,8 +2686,7 @@ public class CoreBots
         EquipClass(ClassType.Solo);
         Join("trigoras");
 
-        if (Bot.Player.CurrentClass?.Name == "ArchMage")
-            Bot.Options.AttackWithoutTarget = true;
+        
 
         while (!Bot.ShouldExit && !CheckInventory(item, quant))
         {
@@ -2822,8 +2815,7 @@ public class CoreBots
             Jump("r9", "Left");
             Sleep();
         }
-        if (Bot.Player.CurrentClass?.Name == "ArchMage")
-            Bot.Options.AttackWithoutTarget = true;
+        
 
         if (item != null && log)
             FarmingLogger(item, quant);

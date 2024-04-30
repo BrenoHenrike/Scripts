@@ -76,8 +76,7 @@ public class ArmyEmblemOfNulgath
         Army.AggroMonStart("shadowblast");
         Army.DivideOnCells("r13", "r14", "r15", "r16", "r17", "r4");
 
-        if (Bot.Player.CurrentClass?.Name == "ArchMage")
-            Bot.Options.AttackWithoutTarget = true;
+        
 
         while (!Bot.ShouldExit)
             Bot.Combat.Attack("*");

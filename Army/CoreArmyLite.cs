@@ -1014,8 +1014,7 @@ public class CoreArmyLite
 
     public void PriorityAttack(string attNoPrio)
     {
-        if (Bot.Player.CurrentClass?.Name == "ArchMage")
-            Bot.Options.AttackWithoutTarget = true;
+        
 
         if (_attackPriority.Count == 0)
         {

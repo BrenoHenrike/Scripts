@@ -67,8 +67,7 @@ public class ArmyRepTemplate
         Core.EquipClass(ClassType.Farm);
         Core.RegisterQuests(RegisterQuests);
         
-        if (Bot.Player.CurrentClass?.Name == "ArchMage")
-            Bot.Options.AttackWithoutTarget = true;
+        
             
         while (!Bot.ShouldExit && Farm.FactionRank(repname) < 10)
             Bot.Combat.Attack("*");

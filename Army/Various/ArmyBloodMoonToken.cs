@@ -55,8 +55,7 @@ public class ArmyBloodMoonToken
         Army.AggroMonStart("bloodmoon");
         Army.DivideOnCells("r4a", "r12a", "r12a", "r12a", "r12a", "r12a", "r12a");
 
-        if (Bot.Player.CurrentClass?.Name == "ArchMage")
-            Bot.Options.AttackWithoutTarget = true;
+        
 
         while (!Bot.ShouldExit)
             Bot.Combat.Attack("*");
