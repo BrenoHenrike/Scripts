@@ -2039,7 +2039,7 @@ public class CoreBots
         Bot.Options.AggroMonsters = false;
         Monster? Monster = monster == "*"
         ? Bot.Monsters.MapMonsters.FirstOrDefault(x => x != null && x.Cell == cell)
-        : Bot.Monsters.MapMonsters.FirstOrDefault(x => x.Name.FormatForCompare() == monster.FormatForCompare() && x != null && x.Cell == cell);
+        : Bot.Monsters.MapMonsters.FirstOrDefault(x => x.Name == monster && x != null && x.Cell == cell);
 
         // if (Monster == null)
         // {
@@ -2077,7 +2077,7 @@ public class CoreBots
             else
             {
                 DebugLogger(this);
-                _KillForItem(monster.FormatForCompare(), item, quant, isTemp, log: log, cell: cell);
+                _KillForItem(monster, item, quant, isTemp, log: log, cell: cell);
                 DebugLogger(this);
             }
             DebugLogger(this);
@@ -2948,7 +2948,7 @@ public class CoreBots
             }
 
             DebugLogger(this);
-            Bot.Combat.Attack(name.FormatForCompare());
+            Bot.Combat.Attack(name);
             DebugLogger(this);
             Sleep();
 
@@ -4257,7 +4257,7 @@ public class CoreBots
 
                 #region BuyHouse (for a merge)
                 case "buyhouse":
-                Logger("This is a public map.. and non-privateable, so blame ae for that.. tho its required for some things so this will be forced public");
+                    Logger("This is a public map.. and non-privateable, so blame ae for that.. tho its required for some things so this will be forced public");
                     JumpWait();
                     Bot.Map.Join(map);
                     Bot.Wait.ForMapLoad(map);

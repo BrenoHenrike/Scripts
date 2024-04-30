@@ -2125,7 +2125,7 @@ public class CoreAdvanced
                 #region Wizard - Vainglory - Valiance - Pneuma
                 case "archmage":
                 case "darklord":
-                case "Arcana Invoker":
+                case "arcana invoker":
                     if (!uVainglory() || !uValiance() || !uPneuma())
                         goto default;
 
@@ -2735,7 +2735,7 @@ public class CoreAdvanced
                 case "classic legion doomknight":
                 case "legion doomknight":
                 case "legion doomknight tester":
-                case "Arcana Invoker":
+                case "arcana invoker":
                     type = EnhancementType.Wizard;
                     wSpecial = WeaponSpecial.Spiral_Carve;
                     break;
