@@ -774,7 +774,7 @@ public class CoreSoW
         Story.KillQuest(8184, "fireinvasion", "Shadefire Major");
 
         // Darkness in Swordhaven
-        if(!Story.QuestProgression(8185))
+        if (!Story.QuestProgression(8185))
         {
             Core.EnsureAccept(8185);
             Core.KillMonster("fireinvasion", "r8", "Top", "Shadefire Elemental", "Elemental Slain", 7);
