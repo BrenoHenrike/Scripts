@@ -237,8 +237,8 @@ public class CitadelRuins
         }
 
         //grab a clue
+        Story.MapItemQuest(6175, "citadelruins", 5593, 5);
         Story.KillQuest(6175, "citadelruins", "Inquisitor Hobo");
-        Story.MapItemQuest(6175, "citadelruins", 5593, Amount: 5);
         Core.Sleep(2500);
 
         //unlock the door

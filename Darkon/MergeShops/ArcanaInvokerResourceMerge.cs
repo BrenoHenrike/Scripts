@@ -77,6 +77,7 @@ public class ArcanaInvokerResourceMerge
     public CoreDarkon Darkon => new();
     public CoreShadowofDoom CoreShadowofDoom = new();
     public FableForest FableForest = new();
+    public VoidRefuge VR = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
     public string[] MultiOptions = { "Generic", "Select" };
@@ -462,6 +463,7 @@ public class ArcanaInvokerResourceMerge
                     break;
 
                 case "Fiendish Remains":
+                    VR.Storyline();
                     Core.FarmingLogger(req.Name, quant);
                     Core.RegisterQuests(9532);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
