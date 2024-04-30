@@ -239,7 +239,7 @@ public class CoreDarkon
             Core.KillMonster("eridanipast", "r9", "Left", "Bandit", "Bandit Contraband", 12, log: false);
 
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonsterMapID("eridanipast", 19, "Seraphic Sparred");
+            Core.HuntMonsterMapID("eridanipast", 19, "Seraphic Sparred", log: false);
             Bot.Wait.ForPickup("Bandit's Correspondence");
         }
         Core.CancelRegisteredQuests();
