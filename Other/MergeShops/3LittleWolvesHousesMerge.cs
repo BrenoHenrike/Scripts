@@ -68,9 +68,9 @@ public class ThreeLittleWolvesHousesMerge
                     Core.RegisterQuests(6915);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("farm", "Treeant", "Wooden Planks", 5);
-                        Core.HuntMonster("bloodtusk", "Rhison", "Glue");
-                        Core.HuntMonster("crashsite", "ProtoSartorium", "Nails", 10);
+                        Core.HuntMonster("farm", "Treeant", "Wooden Planks", 5, log: false);
+                        Core.HuntMonster("bloodtusk", "Rhison", "Glue", log: false);
+                        Core.HuntMonster("crashsite", "ProtoSartorium", "Nails", 10, log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
