@@ -1009,9 +1009,15 @@ public class CoreDailies
         Core.ToBank(frGiftIDs);
         Core.ToBank(frRewards[3..]);
 
-        //not sure how itll handle those hearts.. but its part of i <-----ITS NOT PART OF IT MR TATO
-        if (Core.CheckInventory("Happy Penguin") && !Core.HasWebBadge("Penguin BFF"))
-            Core.ChainComplete(9108);
+        if (!Core.HasWebBadge("Penguin BFF"))
+        {
+            if (Core.CheckInventory("Happy Penguin"))
+            {
+                Core.ChainComplete(9108);
+                Core.ToBank("Happy Penguin");
+            }
+            Core.Logger("🥺 we don't have the cute little penguin so no badge for you...");
+        }
 
         #region Local methods
         void handleFriendship(string npc, params frGift[] gifts)
