@@ -59,6 +59,7 @@ public class ArcanaInvoker
 
     public void ScriptMain(IScriptInterface bot)
     {
+        Core.BankingBlackList?.AddRange(Core.QuestRewards(9693, 9694, 9695, 9696, 9697));
         Core.SetOptions();
 
         GetAI();
