@@ -2270,6 +2270,7 @@ public class CoreAdvanced
                     hSpecial = CurrentHelmSpecial();
                     break;
                 #endregion
+                #endregion
 
                 #region Unassigned Region
 
