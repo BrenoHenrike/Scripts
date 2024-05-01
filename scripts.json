@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 222438,
+    "size": 222298,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -2235,7 +2235,7 @@
       "custom"
     ],
     "path": "Army/0AggroMonReader.cs",
-    "size": 5488,
+    "size": 5388,
     "fileName": "0AggroMonReader.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/0AggroMonReader.cs"
   },
@@ -2246,7 +2246,7 @@
       "null"
     ],
     "path": "Army/CoreArmyLite.cs",
-    "size": 40818,
+    "size": 40718,
     "fileName": "CoreArmyLite.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/CoreArmyLite.cs"
   },
@@ -2259,7 +2259,7 @@
       "army"
     ],
     "path": "Army/0CustomAggroMon.cs",
-    "size": 11142,
+    "size": 11042,
     "fileName": "0CustomAggroMon.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/0CustomAggroMon.cs"
   },
@@ -8873,7 +8873,7 @@
       "voyage"
     ],
     "path": "Darkon/MergeShops/ArcanaInvokerResourceMerge.cs",
-    "size": 33932,
+    "size": 34237,
     "fileName": "ArcanaInvokerResourceMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/MergeShops/ArcanaInvokerResourceMerge.cs"
   },
@@ -10301,7 +10301,7 @@
       "seven circles war"
     ],
     "path": "Army/ArmyFarm/ArmyGold.cs",
-    "size": 11612,
+    "size": 10812,
     "fileName": "ArmyGold.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/ArmyGold.cs"
   },
@@ -10314,7 +10314,7 @@
       "battleunderb"
     ],
     "path": "Army/ArmyFarm/ArmyBattleUnderB.cs",
-    "size": 2012,
+    "size": 1912,
     "fileName": "ArmyBattleUnderB.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/ArmyBattleUnderB.cs"
   },
@@ -20879,7 +20879,7 @@
       "null"
     ],
     "path": "Templates/Examples/ItemGathering/EmptyTemplate[Basics].cs",
-    "size": 2995,
+    "size": 1230,
     "fileName": "EmptyTemplate[Basics].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Templates/Examples/ItemGathering/EmptyTemplate[Basics].cs"
   },
