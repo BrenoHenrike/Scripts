@@ -1807,6 +1807,18 @@ public class CoreAdvanced
             switch (className)
             {
 
+                #region Luck - Arcanas Concerto - Forge - Absolution
+                case "lord of order":
+                    if (!uArcanasConcerto() || !uForgeHelm() || !uAbsolution())
+                        goto default;
+
+                    type = EnhancementType.Lucky;
+                    wSpecial = WeaponSpecial.Arcanas_Concerto;
+                    hSpecial = HelmSpecial.Forge;
+                    cSpecial = CapeSpecial.Absolution;
+                    break;
+                #endregion
+
                 #region Ravenous
                 case "PlaceHodler":
                     if (!uRavenous())
@@ -1910,12 +1922,9 @@ public class CoreAdvanced
 
                     type = EnhancementType.Lucky;
                     cSpecial = CapeSpecial.Vainglory;
+                    wSpecial = uRavenous() ? WeaponSpecial.Ravenous :
+                                uDauntless() ? WeaponSpecial.Dauntless : WeaponSpecial.Valiance;
 
-                    if (uRavenous())
-                        wSpecial = WeaponSpecial.Ravenous;
-                    else if (uDauntless())
-                        wSpecial = WeaponSpecial.Dauntless;
-                    else wSpecial = WeaponSpecial.Valiance;
                     hSpecial = HelmSpecial.Vim;
                     break;
                 #endregion
@@ -1928,11 +1937,9 @@ public class CoreAdvanced
                         goto default;
 
                     type = EnhancementType.Lucky;
-                    cSpecial = CapeSpecial.Vainglory;
-                    if (uLacerate())
-                        wSpecial = WeaponSpecial.Lacerate;
+                    cSpecial = uLament() ? CapeSpecial.Lament : CapeSpecial.Vainglory;
+                    wSpecial = WeaponSpecial.Lacerate;
                     hSpecial = HelmSpecial.Forge;
-                    cSpecial = CapeSpecial.Lament;
                     break;
                 #endregion Lucky - lacerate - forge
 
@@ -1943,11 +1950,9 @@ public class CoreAdvanced
 
                     type = EnhancementType.Lucky;
                     cSpecial = CapeSpecial.Vainglory;
-                    if (uDauntless())
-                        wSpecial = WeaponSpecial.Dauntless;
-                    else if (uLacerate())
-                        wSpecial = WeaponSpecial.Lacerate;
-                    else wSpecial = WeaponSpecial.Praxis;
+                    wSpecial = uDauntless() ? WeaponSpecial.Dauntless :
+                    uLacerate() ? WeaponSpecial.Lacerate :
+                    WeaponSpecial.Praxis;
                     hSpecial = HelmSpecial.Vim;
                     break;
                 #endregion
@@ -1987,6 +1992,7 @@ public class CoreAdvanced
                     type = EnhancementType.Lucky;
                     cSpecial = CapeSpecial.Vainglory;
                     wSpecial = WeaponSpecial.Valiance;
+                    hSpecial = CurrentHelmSpecial();
                     break;
                 #endregion
 
@@ -2087,6 +2093,8 @@ public class CoreAdvanced
                     type = EnhancementType.Lucky;
                     cSpecial = CapeSpecial.Penitence;
                     //wSpecial = WeaponSpecial.Valiance; // Should no longer be set like this
+                    wSpecial = CurrentWeaponSpecial();
+                    hSpecial = CurrentHelmSpecial();
                     break;
                 #endregion
 
@@ -2097,6 +2105,7 @@ public class CoreAdvanced
 
                     type = EnhancementType.Lucky;
                     wSpecial = WeaponSpecial.Valiance;
+                    hSpecial = CurrentHelmSpecial();
                     break;
                 #endregion
 
@@ -2104,14 +2113,18 @@ public class CoreAdvanced
 
                 #region Wizard Region
 
-                #region Wizard - Forge - Spiral Carve
+                #region Wizard -  Valiance|Praxis - Pneuna - Vainglory|Lament
                 case "lightcaster":
-                    if (!uForgeCape())
-                        goto default;
+                    if (!uPraxis() || !uPneuma() || !uLament())
+                    {
+                        if (!uVainglory() || !uValiance())
+                            goto default;
+                    }
 
                     type = EnhancementType.Wizard;
-                    cSpecial = CapeSpecial.Forge;
-                    wSpecial = WeaponSpecial.Spiral_Carve;
+                    cSpecial = !uLament() ? CapeSpecial.Vainglory : CapeSpecial.Lament;
+                    wSpecial = !uPraxis() ? WeaponSpecial.Valiance : WeaponSpecial.Praxis;
+                    hSpecial = !uPneuma() ? CurrentHelmSpecial() : HelmSpecial.Pneuma;
                     break;
                 #endregion
 
@@ -2123,6 +2136,7 @@ public class CoreAdvanced
                     type = EnhancementType.Wizard;
                     cSpecial = CapeSpecial.Forge;
                     wSpecial = WeaponSpecial.Awe_Blast;
+                    hSpecial = CurrentHelmSpecial();
                     break;
                 #endregion
 
@@ -2246,6 +2260,15 @@ public class CoreAdvanced
                     break;
 
                 #endregion
+
+                #region Absolution
+                case "frostval barbarian":
+                    if (!uAbsolution())
+                        goto default;
+                    cSpecial = CapeSpecial.Absolution;
+                    wSpecial = CurrentWeaponSpecial();
+                    hSpecial = CurrentHelmSpecial();
+                    break;
                 #endregion
 
                 #region Unassigned Region
@@ -2331,7 +2354,6 @@ public class CoreAdvanced
                 case "exalted soul cleaver":
                 case "firelord summoner":
                 case "frost spiritreaver":
-                case "frostval barbarian":
                 case "glacial berserker test":
                 case "glacial warlord":
                 case "grim necromancer":
@@ -2362,7 +2384,6 @@ public class CoreAdvanced
                 case "leprechaun":
                 case "lightcaster test":
                 case "lightmage":
-                case "lord of order":
                 case "love caster":
                 case "lycan":
                 case "mage (rare)":
