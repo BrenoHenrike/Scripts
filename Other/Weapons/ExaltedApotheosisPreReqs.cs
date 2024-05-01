@@ -27,9 +27,9 @@ public class ExaltedApotheosisPreReqs
 
     public void ScriptMain(IScriptInterface bot)
     {
+        Core.BankingBlackList.AddRange(new[] { "Ezrajal Insignia", "Warden Insignia", "Engineer Insignia" });
         Core.SetOptions();
 
-        Core.BankingBlackList.AddRange(new[] { "Ezrajal Insignia", "Warden Insignia", "Engineer Insignia" });
         PreReqs();
 
         Core.SetOptions(false);
@@ -44,38 +44,35 @@ public class ExaltedApotheosisPreReqs
         // }
 
         /// No ultras required
-        if (!Core.CheckInventory(new[] { "Thaumaturgus Alpha", "Apostate Alpha" }))
+        // if (!Core.CheckInventory(new[] { "Thaumaturgus Alpha", "Apostate Alpha" }))
+        // {
+        //     Core.EquipClass(ClassType.Farm);
+        //     Core.KillMonster("timeinn", "r3", "Top", "Energy Elemental", "Exalted Node", 300, isTemp: false);
+        //     Core.EquipClass(ClassType.Solo);
+        //     Core.KillMonster("timeinn", "r7", "Bottom", "The Warden", "Exalted Relic Piece", 10, isTemp: false);
+        //     Core.KillMonster("timeinn", "r8", "Left", "The Engineer", "Exalted Artillery Shard", 10, isTemp: false);
+        //     Core.KillMonster("timeinn", "r6", "Left", "Ezrajal", "Exalted Forgemetal", 10, isTemp: false);
+
+        //     Adv.BuyItem("timeinn", 2010, "Apostate Alpha");
+        //     Adv.BuyItem("timeinn", 2010, "Thaumaturgus Alpha");
+
+        //     Core.EquipClass(ClassType.Farm);
+        //     Core.KillMonster("timeinn", "r3", "Top", "Energy Elemental", "Exalted Node", 300, isTemp: false);
+
+        //     Core.Logger("Got all prerequisites! Kill the ultra bosses manually for insignias next to complete Exalted Apotheosis.");
+        // }
+
+        if (!Core.CheckInventory("Ezrajal Insignia", 24) || !Core.CheckInventory("Warden Insignia", 24) || !Core.CheckInventory("Engineer Insignia", 16))
         {
-            Core.EquipClass(ClassType.Farm);
-            Core.KillMonster("timeinn", "r3", "Top", "Energy Elemental", "Exalted Node", 300, isTemp: false);
-            Core.EquipClass(ClassType.Solo);
-            Core.KillMonster("timeinn", "r7", "Bottom", "The Warden", "Exalted Relic Piece", 10, isTemp: false);
-            Core.KillMonster("timeinn", "r8", "Left", "The Engineer", "Exalted Artillery Shard", 10, isTemp: false);
-            Core.KillMonster("timeinn", "r6", "Left", "Ezrajal", "Exalted Forgemetal", 10, isTemp: false);
-
-            Adv.BuyItem("timeinn", 2010, "Apostate Alpha");
-            Adv.BuyItem("timeinn", 2010, "Thaumaturgus Alpha");
-
-            Core.EquipClass(ClassType.Farm);
-            Core.KillMonster("timeinn", "r3", "Top", "Energy Elemental", "Exalted Node", 300, isTemp: false);
-
-            Core.Logger("Got all prerequisites! Kill the ultra bosses manually\n" +
-            "for insignias next to complete Exalted Apotheosis.");
-        }
-
-        if (!Core.CheckInventory("Ezrajal Insignia", 24) && !Core.CheckInventory("Warden Insignia", 24) && !Core.CheckInventory("Engineer Insignia", 16))
-        {
-            Core.Logger($"{Bot.Inventory.GetQuantity("Ezrajal Insignia") / 24}");
-            Core.Logger($"{Bot.Inventory.GetQuantity("Warden Insignia") / 24}");
-            Core.Logger($"{Bot.Inventory.GetQuantity("Engineer Insignia") / 16}");
-            Core.Logger(
-            "Please obtain the rest of the insignias\n" +
-            "with your army to complete the merge.\n" +
-            "Currently our boats can't do the Ultra Bosses\n" +
-            "for you until CoreArmy is finished.", stopBot: true);
+            Core.Logger("First if");
+            Core.Logger($" Ezrajal Insignia: {Core.dynamicQuant("Ezrajal Insignia", false)} / 24");
+            Core.Logger($" Warden Insignia: {Core.dynamicQuant("Warden Insignia", false)} / 24");
+            Core.Logger($" Engineer Insignia: {Core.dynamicQuant("Engineer Insignia", false)} / 16");
+            Core.Logger("Please obtain the rest of the insignias with your army to complete the merge. Skua will *not* be able to do ULTRAs for you. (not sorry)", stopBot: true);
         }
         else
         {
+            Core.Logger("2nd if");
             //Ensure shop is loaded:
             Core.Join("timeinn");
             Bot.Shops.Load(2010);
