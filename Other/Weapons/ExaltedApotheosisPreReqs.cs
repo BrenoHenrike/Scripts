@@ -63,7 +63,7 @@ public class ExaltedApotheosisPreReqs
             "for insignias next to complete Exalted Apotheosis.");
         }
 
-        if (Core.CheckInventory("Ezrajal Insignia", 24) && Core.CheckInventory("Warden Insignia", 24) && Core.CheckInventory("Engineer Insignia", 16))
+        if (!Core.CheckInventory("Ezrajal Insignia", 24) && !Core.CheckInventory("Warden Insignia", 24) && !Core.CheckInventory("Engineer Insignia", 16))
         {
             Core.Logger($"{Bot.Inventory.GetQuantity("Ezrajal Insignia") / 24}");
             Core.Logger($"{Bot.Inventory.GetQuantity("Warden Insignia") / 24}");
