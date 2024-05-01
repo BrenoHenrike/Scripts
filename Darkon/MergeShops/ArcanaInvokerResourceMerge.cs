@@ -44,6 +44,8 @@ tags: arcana, invoker, resource, merge, arcana, magicians, desire, high, prieste
 //cs_include Scripts/Seasonal\BlackFriday\ShadowofDoom\CoreShadowofDoom.cs
 //cs_include Scripts/Story\FableForest.cs
 //cs_include Scripts/Story\Nation\VoidRefuge.cs
+//cs_include Scripts/Story\AgeOfRuin\CoreAOR.cs
+//cs_include Scripts/Story\ShadowsOfWar\CoreSoW.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
@@ -78,6 +80,7 @@ public class ArcanaInvokerResourceMerge
     public CoreShadowofDoom CoreShadowofDoom = new();
     public FableForest FableForest = new();
     public VoidRefuge VR = new();
+    private CoreAOR AOR = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
     public string[] MultiOptions = { "Generic", "Select" };
@@ -99,6 +102,8 @@ public class ArcanaInvokerResourceMerge
     {
         CoreShadowofDoom.DoAll();
         FableForest.StoryLine();
+        AOR.SunlightZone();
+        
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("arcana", 2434, findIngredients, buyOnlyThis, buyMode: buyMode);
 

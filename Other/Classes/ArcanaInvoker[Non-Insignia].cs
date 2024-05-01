@@ -45,6 +45,8 @@ tags: arcana,invoker,class,arcana invoker,darkon,astravia,garden
 //cs_include Scripts/Seasonal\BlackFriday\ShadowofDoom\CoreShadowofDoom.cs
 //cs_include Scripts/Story\FableForest.cs
 //cs_include Scripts/Story\Nation\VoidRefuge.cs
+//cs_include Scripts/Story\AgeOfRuin\CoreAOR.cs
+//cs_include Scripts/Story\ShadowsOfWar\CoreSoW.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 
