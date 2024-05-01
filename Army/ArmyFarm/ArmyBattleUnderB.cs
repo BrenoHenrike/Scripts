@@ -61,8 +61,7 @@ public class ArmyBoneDust
         Army.AggroMonStart("battleunderb");
         Army.DivideOnCells("Enter", "r1", "r2");
 
-        if (Bot.Player.CurrentClass!.Name == "ArchMage")
-            Bot.Options.AttackWithoutTarget = true;
+        
 
         while (!Bot.ShouldExit)
             Bot.Combat.Attack("*");

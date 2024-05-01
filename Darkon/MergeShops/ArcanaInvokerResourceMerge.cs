@@ -378,7 +378,9 @@ public class ArcanaInvokerResourceMerge
                     break;
 
                 case "Fortitude Tonic":
-                    Adv.BuyItem("alchemyacademy", 2116, req.Name, quant, shopItemID: 9782);
+                    //need : 11, shop sells x14, costs 2 500k vouchers
+                    Adv.BuyItem("alchemyacademy", 2115, "Gold Voucher 500k", 2);
+                    Core.BuyItem("alchemyacademy", 2116, req.Name, quant, shopItemID: 9782);
                     break;
 
                 case "Strong Drag's Intact Wing":
@@ -596,8 +598,10 @@ public class ArcanaInvokerResourceMerge
                     Core.HuntMonster("astraviajudge", "Trumpeter", req.Name, quant, false);
                     break;
 
-                case "Judgment Tonic":
-                    Adv.BuyItem("alchemyacademy", 2114, req.Name, quant, shopItemID: 9726);
+                case "Judgement Tonic":
+                    // need: x20, shop sells x10 for x1 500k Voucher
+                    Adv.BuyItem("alchemyacademy", 2115, "Gold Voucher 500k", 2);
+                    Core.BuyItem("alchemyacademy", 2114, req.Name, quant, shopItemID: 9726);
                     break;
 
                 case "Enchanted Lance of Doom Reborn":

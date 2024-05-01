@@ -177,8 +177,7 @@ public class CoreArmyLite
 
         SmartAggroMonStart(map, monNames.ToArray());
 
-        if (Bot.Player.CurrentClass!.Name == "ArchMage")
-            Bot.Options.AttackWithoutTarget = true;
+        
 
         while (!Bot.ShouldExit)
             Bot.Combat.Attack("*");

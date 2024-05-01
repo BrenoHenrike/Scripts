@@ -117,8 +117,7 @@ public class ArmyGold
         Army.AggroMonStart("battlegrounde");
         Army.DivideOnCells("r4", "r3", "r2", "r1");
 
-        if (Bot.Player.CurrentClass!.Name == "ArchMage")
-            Bot.Options.AttackWithoutTarget = true;
+        
 
         while (!Bot.ShouldExit && Bot.Player.Gold < 999999999)
             Bot.Combat.Attack("*");
@@ -135,14 +134,12 @@ public class ArmyGold
         Army.AggroMonStart("darkwarlegion");
         Army.DivideOnCells("Enter", "r2", "r3");
 
-        if (Bot.Player.CurrentClass!.Name == "ArchMage")
-            Bot.Options.AttackWithoutTarget = true;
+        
 
         Core.RegisterQuests(8584, 8585, 8586, 8587); //Nation Badges 8584, Mega Nation Badges 8585, A Nation Defeated 8586, ManSlayer? More Like ManSLAIN 8587
                                                      // Army.SmartAggroMonStart("darkwarlegion", "Bloodfiend", "Dreadfiend", "Infernal Fiend", "Manslayer Fiend", "Void Fiend");
 
-        if (Bot.Player.CurrentClass!.Name == "ArchMage")
-            Bot.Options.AttackWithoutTarget = true;
+        
 
         while (!Bot.ShouldExit && Bot.Player.Gold < 999999999)
             Bot.Combat.Attack("*");
@@ -161,8 +158,7 @@ public class ArmyGold
         Army.AggroMonStart("darkwarnation");
         Army.DivideOnCells("Enter", "r2", "r3");
 
-        if (Bot.Player.CurrentClass!.Name == "ArchMage")
-            Bot.Options.AttackWithoutTarget = true;
+        
 
         // Army.SmartAggroMonStart("darkwarnation", "High Legion Inquisitor", "Legion Doomknight", "Legion Dread Knight");
         while (!Bot.ShouldExit && Bot.Player.Gold < 999999999)
@@ -182,8 +178,7 @@ public class ArmyGold
         Army.AggroMonStart("sevencircleswar");
         Army.DivideOnCells("Enter", "r2", "r3");
 
-        if (Bot.Player.CurrentClass!.Name == "ArchMage")
-            Bot.Options.AttackWithoutTarget = true;
+        
 
         // Army.SmartAggroMonStart("sevencircleswar", "Wrath Guard", "Heresy Guard", "Violence Guard", "Treachery Guard");
         while (!Bot.ShouldExit && Bot.Player.Gold < 999999999)
@@ -205,8 +200,7 @@ public class ArmyGold
 
         Core.RegisterQuests(8814, 8815);
 
-        if (Bot.Player.CurrentClass!.Name == "ArchMage")
-            Bot.Options.AttackWithoutTarget = true;
+        
 
         while (!Bot.ShouldExit && Bot.Player.Gold < 999999999)
             Bot.Combat.Attack("*");
@@ -254,8 +248,7 @@ public class ArmyGold
 
         Core.Logger("This method is insane atm.. if the rate is ever complete sh*t please use SCW");
 
-        if (Bot.Player.CurrentClass!.Name == "ArchMage")
-            Bot.Options.AttackWithoutTarget = true;
+        
 
         while (!Bot.ShouldExit && Bot.Player.Gold < 999999999)
             Bot.Combat.Attack("*");
@@ -287,8 +280,7 @@ public class ArmyGold
         Army.AggroMonStart("hakuwar");
         Army.DivideOnCells("r2", "r4", "r5", "r6", "r7", "r9");
 
-        if (Bot.Player.CurrentClass!.Name == "ArchMage")
-            Bot.Options.AttackWithoutTarget = true;
+        
 
         while (!Bot.ShouldExit && Bot.Player.Gold < 999999999)
             Bot.Combat.Attack("*");
