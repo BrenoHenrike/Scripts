@@ -290,11 +290,11 @@ public class CoreDarkon
         {
             Core.JumpWait();
             Core.EquipClass(ClassType.Farm);
-            Core.KillMonster("firstobservatory", "r7", "Left", "Ancient Creature", "Creature Samples", 6);
-            Core.KillMonster("firstobservatory", "r6", "Left", "Ancient Turret", "Turret Pieces", 12);
+            Core.KillMonster("firstobservatory", "r7", "Left", "Ancient Creature", "Creature Samples", 6, log: false);
+            Core.KillMonster("firstobservatory", "r6", "Left", "Ancient Turret", "Turret Pieces", 12, log: false);
             Core.JumpWait();
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster($"firstobservatory", "Empress’ Finger", "Alprecha Observed");
+            Core.HuntMonster($"firstobservatory", "Empress’ Finger", "Alprecha Observed", log: false);
             Bot.Wait.ForPickup("Ancient Remnant");
         }
         Core.CancelRegisteredQuests();
