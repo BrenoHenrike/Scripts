@@ -167,7 +167,7 @@ public class CoreAstravia
         //Desperado
         Story.KillQuest(7999, "astravia", "Creature 27");
 
-        //Zugzwang
+        //Isolani
         Story.KillQuest(8000, "astravia", "The Moon");
     }
 
