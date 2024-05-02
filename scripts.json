@@ -5177,7 +5177,7 @@
       "null"
     ],
     "path": "Story/ElegyofMadness(Darkon)/CoreAstravia.cs",
-    "size": 15904,
+    "size": 15903,
     "fileName": "CoreAstravia.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ElegyofMadness(Darkon)/CoreAstravia.cs"
   },
@@ -8783,19 +8783,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/ShadowsOfWar/Materials/Acquiescence.cs"
   },
   {
-    "name": "Astravia Merge",
-    "description": "Astravia Merge",
-    "tags": [
-      "astravia",
-      "merge",
-      "mergeshop"
-    ],
-    "path": "Darkon/MergeShops/AstraviaMerge.cs",
-    "size": 4255,
-    "fileName": "AstraviaMerge.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/MergeShops/AstraviaMerge.cs"
-  },
-  {
     "name": "Garden Merge",
     "description": "Garden Merge",
     "tags": [
@@ -8834,6 +8821,46 @@
     "size": 3596,
     "fileName": "FirstObservatoryMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/MergeShops/FirstObservatoryMerge.cs"
+  },
+  {
+    "name": "Astravian Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Astravian Merge [1987] in /astravia",
+    "tags": [
+      "astravian",
+      "merge",
+      "astravia",
+      "gold",
+      "voucher",
+      "k",
+      "moons",
+      "amalgamation",
+      "hallowed",
+      "cloak",
+      "officer",
+      "officers",
+      "",
+      "carltons",
+      "taliss",
+      "kaspers",
+      "rosas",
+      "mercenarys",
+      "boomstick",
+      "karmic",
+      "battlegear",
+      "urban",
+      "duelist",
+      "morph",
+      "rebel",
+      "katana",
+      "katanas",
+      "reversed",
+      "sheath",
+      "sheathe"
+    ],
+    "path": "Darkon/MergeShops/AstravianMerge.cs",
+    "size": 7163,
+    "fileName": "AstravianMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/MergeShops/AstravianMerge.cs"
   },
   {
     "name": "The World House Merge",
