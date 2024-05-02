@@ -97,6 +97,21 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AranxQuests.cs"
   },
   {
+    "name": "Draco Con Story",
+    "description": "This will finish the Draco Con story.",
+    "tags": [
+      "story",
+      "quest",
+      "dracocon",
+      "draco",
+      "con"
+    ],
+    "path": "Story/DracoCon.cs",
+    "size": 2881,
+    "fileName": "DracoCon.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/DracoCon.cs"
+  },
+  {
     "name": "Queen Reign Story",
     "description": "This will finish the Queen Reign Story.",
     "tags": [
@@ -1372,7 +1387,7 @@
       "all"
     ],
     "path": "Story/0AllStories.cs",
-    "size": 28021,
+    "size": 28182,
     "fileName": "0AllStories.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/0AllStories.cs"
   },
@@ -2581,6 +2596,24 @@
     "size": 5403,
     "fileName": "DragonsOfYokaiDrops.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/DragonsOfYokaiDrops.cs"
+  },
+  {
+    "name": "Treasure Hunt Quest Rewards",
+    "description": "This script will get the rewards from the Treasure Hunt Quest.",
+    "tags": [
+      "treasure",
+      "hunt",
+      "quest",
+      "rewards",
+      "draco con",
+      "bob macguffin",
+      "spiked slayer mace",
+      "drakka defender"
+    ],
+    "path": "Other/TreasureHuntQuestRewards.cs",
+    "size": 2017,
+    "fileName": "TreasureHuntQuestRewards.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/TreasureHuntQuestRewards.cs"
   },
   {
     "name": "Vampireof Vokun Daily",
@@ -19327,6 +19360,25 @@
     "size": 9918,
     "fileName": "Awescended.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/GearOfAwe/Awescended.cs"
+  },
+  {
+    "name": "Classic Blade of Awe",
+    "description": "This bot will farm Classic Blade of Awe.",
+    "tags": [
+      "classic",
+      "blade",
+      "blade of awe",
+      "awe",
+      "good",
+      "weapon",
+      "original treasure chest",
+      "mysterious chest",
+      "unlocking the chest"
+    ],
+    "path": "Good/GearOfAwe/ClassicBladeOfAwe.cs",
+    "size": 2472,
+    "fileName": "ClassicBladeOfAwe.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/GearOfAwe/ClassicBladeOfAwe.cs"
   },
   {
     "name": "Helm of Awe",
