@@ -1082,7 +1082,11 @@ public class CoreDailies
                         case frGift.Cracked_Opal:
                             Core.EquipClass(ClassType.Farm);
                             Core.KillMonster("battleodium", "r6", "Left", "Vileture", "Melons", 1, false, false);
-                            Core.KillMonster("battleodium", "r6", "Left", "Diemond", "Opals", 1, false, false);
+                            while (!Bot.ShouldExit && !Core.CheckInventory(76288))
+                            {
+                                Core.KillMonster("battleodium", "r6", "Left", "Diemond", log: false);
+                                Bot.Drops.Pickup(76288);
+                            }
                             Core.BuyItem("battleodium", 2236, "Cracked Opal");
                             break;
 
