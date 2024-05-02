@@ -107,6 +107,7 @@ tags: story, quest, complete, all
 //cs_include Scripts/Story/DoomVault.cs
 //cs_include Scripts/Story/DoomVaultB.cs
 //cs_include Scripts/Story/Downward.cs
+//cs_include Scripts/Story/DracoCon.cs
 //cs_include Scripts/Story/DragonFableOrigins.cs
 //cs_include Scripts/Story/DragonRoad[Upholder].cs
 //cs_include Scripts/Story/DreamPalace.cs
@@ -321,6 +322,7 @@ public class AllStories
     public DoomVaultA DoomVaultA = new();
     public DoomVaultB DoomVaultB = new();
     public Downward Downward = new();
+    public DracoCon DracoCon = new();
     public DragonFableOrigins DragonFableOrigins = new();
     public DragonRoad DragonRoad = new();
     public DreamPalace DreamPalace = new();
@@ -707,6 +709,9 @@ public class AllStories
 
         Downward.StoryLine();
         Core.Logger($"Story: Downward - Complete");
+
+        DracoCon.StoryLine();
+        Core.Logger($"Story: Draco Con - Complete");
 
         DragonFableOrigins.DragonFableOriginsAll();
         Core.Logger($"Saga: Dragon Fable Origins - Complete");
