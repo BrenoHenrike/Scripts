@@ -79,8 +79,7 @@ public class ArmyLegionToken
                 Army.AggroMonStart("dreadrock");
                 Army.DivideOnCells("r3", "r4", "r5", "r6", "r8", "r8a");
 
-                if (Bot.Player.CurrentClass!.Name == "ArchMage")
-                    Bot.Options.AttackWithoutTarget = true;
+                
 
                 while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
                 {

@@ -129,9 +129,6 @@ public class FarmHigure
                 Army.AggroMonStart("arcangrove");
                 Army.DivideOnCells("Right", "LeftBack");
 
-                if (Bot.Player.CurrentClass?.Name == "ArchMage")
-                    Bot.Options.AttackWithoutTarget = true;
-
                 while (!Bot.ShouldExit && !Core.CheckInventory("Darkon's Receipt", 66))
                 {
                     Bot.Combat.Attack("*");
@@ -149,9 +146,6 @@ public class FarmHigure
                 Army.AggroMonStart("astravia");
                 Army.DivideOnCells("r6", "r7", "r8");
 
-                if (Bot.Player.CurrentClass?.Name == "ArchMage")
-                    Bot.Options.AttackWithoutTarget = true;
-
                 while (!Bot.ShouldExit && !Core.CheckInventory("La's Gratitude", 66))
                     Bot.Combat.Attack("*");
                 Army.AggroMonStop(true);
@@ -165,9 +159,6 @@ public class FarmHigure
                 Army.AggroMonCells("r11", "r6", "r3", "r4");
                 Army.AggroMonStart("astraviacastle");
                 Army.DivideOnCells("r11", "r6", "r3", "r4");
-
-                if (Bot.Player.CurrentClass?.Name == "ArchMage")
-                    Bot.Options.AttackWithoutTarget = true;
 
                 while (!Bot.ShouldExit && !Core.CheckInventory("Astravian Medal", 66))
                     Bot.Combat.Attack("*");
@@ -183,9 +174,6 @@ public class FarmHigure
                 Army.AggroMonStart("astraviajudge");
                 Army.DivideOnCells("r11", "r3", "r2");
 
-                if (Bot.Player.CurrentClass?.Name == "ArchMage")
-                    Bot.Options.AttackWithoutTarget = true;
-
                 while (!Bot.ShouldExit && !Core.CheckInventory("A Melody", 66))
                     Bot.Combat.Attack("*");
                 Army.AggroMonStop(true);
@@ -200,9 +188,6 @@ public class FarmHigure
                 Army.AggroMonStart("astraviapast");
                 Army.DivideOnCells("r4", "r7", "r8", "r6");
 
-                if (Bot.Player.CurrentClass?.Name == "ArchMage")
-                    Bot.Options.AttackWithoutTarget = true;
-
                 while (!Bot.ShouldExit && !Core.CheckInventory("Suki's Prestige", 66))
                     Bot.Combat.Attack("*");
                 Army.AggroMonStop(true);
@@ -216,9 +201,6 @@ public class FarmHigure
                 Army.AggroMonCells("r10a", "r6", "r7");
                 Army.AggroMonStart("firstobservatory");
                 Army.DivideOnCells("r10a", "r6", "r7");
-
-                if (Bot.Player.CurrentClass?.Name == "ArchMage")
-                    Bot.Options.AttackWithoutTarget = true;
 
                 while (!Bot.ShouldExit && !Core.CheckInventory("Ancient Remnant", 66))
                 {
@@ -251,9 +233,6 @@ public class FarmHigure
                 Army.AggroMonStart("genesisgarden");
                 Army.DivideOnCells("r11", "r9", "r6");
 
-                if (Bot.Player.CurrentClass?.Name == "ArchMage")
-                    Bot.Options.AttackWithoutTarget = true;
-
                 while (!Bot.ShouldExit && !Core.CheckInventory("Mourning Flower", 66))
                     Bot.Combat.Attack("*");
                 Army.AggroMonStop(true);
@@ -265,9 +244,6 @@ public class FarmHigure
                 Army.AggroMonCells("r9");
                 Army.AggroMonStart("theworld");
                 Army.DivideOnCells("r9");
-
-                if (Bot.Player.CurrentClass?.Name == "ArchMage")
-                    Bot.Options.AttackWithoutTarget = true;
 
                 while (!Bot.ShouldExit && !Core.CheckInventory("Unfinished Musical Score", 66))
                     Bot.Combat.Attack("*");

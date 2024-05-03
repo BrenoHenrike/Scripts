@@ -306,9 +306,6 @@ public class ArmyLR
             Army.AggroMonStart("darkwarnation");
             Army.DivideOnCells("r2", "r3", "r4");
 
-            if (Bot.Player.CurrentClass?.Name == "ArchMage")
-                Bot.Options.AttackWithoutTarget = true;
-
             while (!Bot.ShouldExit && Bot.Player.Gold < quant)
                 Bot.Combat.Attack("*");
         }

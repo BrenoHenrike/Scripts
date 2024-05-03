@@ -2022,6 +2022,8 @@ public class CoreBots
             AddDrop(item);
 
         Join(map, cell, pad, publicRoom: publicRoom);
+        if (Bot.Player.Cell != cell)
+            Jump(cell, pad);
 
         // if (Bot.Monsters == null)
         // {
@@ -2040,16 +2042,6 @@ public class CoreBots
         Monster? Monster = monster == "*"
         ? Bot.Monsters.MapMonsters.FirstOrDefault(x => x != null && x.Cell == cell)
         : Bot.Monsters.MapMonsters.FirstOrDefault(x => x.Name == monster && x != null && x.Cell == cell);
-
-        // if (Monster == null)
-        // {
-        //     Logger("Monster object is null.");
-        //     return;
-        // }
-
-        //turns out vv was cuasing a null crash when item == null & you die..
-        // if (Bot.Player.CurrentClass!.Name == "ArchMage")
-        //     Bot.Options.AttackWithoutTarget = true;
 
         if (item == null)
         {
@@ -2269,16 +2261,7 @@ public class CoreBots
         DebugLogger(this);
         Bot.Options.AggroMonsters = false;
         DebugLogger(this);
-        Monster? M = Bot.Monsters.MapMonsters.FirstOrDefault(m => m != null && m.Name.FormatForCompare() == monster.FormatForCompare());
-
-        // if (M == null)
-        // {
-        //     Logger("Monster object is null.", stopBot: true);
-        //     return;
-        // }
-
-        // if (Bot.Player.CurrentClass?.Name == "ArchMage")
-        //     Bot.Options.AttackWithoutTarget = true;
+        Monster? M = Bot.Monsters.MapMonsters.FirstOrDefault(m => m != null && m.Name == monster);
 
         if (item == null)
         {
@@ -2288,9 +2271,8 @@ public class CoreBots
                 Bot.Wait.ForCellChange(M!.Cell);
             }
 
-            M = Bot.Monsters.MapMonsters.FirstOrDefault(m => m != null && m.Name.FormatForCompare() == monster.FormatForCompare());
+            M = Bot.Monsters.MapMonsters.FirstOrDefault(m => m != null && m.Name == monster);
             Bot.Kill.Monster(M!.Name);
-            Bot.Options.AttackWithoutTarget = false;
             JumpWait();
             Rest();
             return;
@@ -2306,9 +2288,9 @@ public class CoreBots
                 FarmingLogger(item, quant);
 
             DebugLogger(this);
-            while (!Bot.ShouldExit && isTemp ? !Bot.TempInv.Contains(item, quant) : !Bot.Inventory.Contains(item, quant))
+            while (!Bot.ShouldExit && isTemp ? !Bot.TempInv.Contains(item, quant) : !CheckInventory(item, quant))
             {
-                M = Bot.Monsters.MapMonsters.FirstOrDefault(m => m != null && m.Name.FormatForCompare() == monster.FormatForCompare());
+                M = Bot.Monsters.MapMonsters.FirstOrDefault(m => m != null && m.Name == monster);
 
                 DebugLogger(this);
 
