@@ -2274,9 +2274,9 @@ public class CoreAdvanced
 
                 #region Lucky - Vainglory - Dauntless|Mana Vamp - Examen
                 case "arachnomancer":
-                    if (!uDauntless() || !uVainglory() || !uExamen())
+                    if (!uVainglory() || !uExamen())
                         goto default;
-
+                        
                     type = EnhancementType.Lucky;
                     cSpecial = CapeSpecial.Vainglory;
                     wSpecial = uDauntless() ? WeaponSpecial.Dauntless : WeaponSpecial.Mana_Vamp;
