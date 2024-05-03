@@ -126,7 +126,7 @@ public class InfernalArena
 
         // Unrepentant Culler 9376
         Core.JumpWait();
-        Core.DodgeClass(Core.CheckInventory("Yami no Ronin") ? "Yami no Rinon" : "Lord of Order");
+        Core.DodgeClass(Core.CheckInventory("Yami no Ronin") ? "Yami no Ronin" : "Lord of Order");
         Core.Logger("Boss: [Azalith's Scythe]");
         Bot.Options.AttackWithoutTarget = true;
         Story.KillQuest(9376, "infernalarena", "Azalith's Scythe");
