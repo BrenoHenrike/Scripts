@@ -2261,15 +2261,29 @@ public class CoreAdvanced
 
                 #endregion
 
-                #region Absolution
+                #region Fighter - Absolution - Valiance|Awe Blast - CurrentHelm
                 case "frostval barbarian":
-                    if (!uAbsolution())
+                    if (!uAbsolution() || !uValiance())
                         goto default;
+                    type = EnhancementType.Fighter;
                     cSpecial = CapeSpecial.Absolution;
-                    wSpecial = CurrentWeaponSpecial();
+                    wSpecial = uValiance() ? WeaponSpecial.Valiance : WeaponSpecial.Awe_Blast;
                     hSpecial = CurrentHelmSpecial();
                     break;
                 #endregion
+
+                #region Lucky - Vainglory - Dauntless|Mana Vamp - Examen
+                case "arachnomancer":
+                    if (!uDauntless() || !uVainglory() || !uExamen())
+                        goto default;
+
+                    type = EnhancementType.Lucky;
+                    cSpecial = CapeSpecial.Vainglory;
+                    wSpecial = uDauntless() ? WeaponSpecial.Dauntless : WeaponSpecial.Mana_Vamp;
+                    hSpecial = HelmSpecial.Examen;
+                    break;
+                #endregion
+
                 #endregion
 
                 #region Unassigned Region
@@ -2279,7 +2293,6 @@ public class CoreAdvanced
                 case "alpha doommega":
                 case "alpha omega":
                 case "alpha pirate":
-                case "arachnomancer":
                 case "arcane dark caster":
                 case "assassin":
                 case "barber":
