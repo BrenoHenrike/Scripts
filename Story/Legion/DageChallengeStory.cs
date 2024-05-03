@@ -69,8 +69,8 @@ public class DageChallengeStory
         {
             //Power of the Undead Legion
             Core.EnsureAccept(8546);
-            Core.HuntMonster("legionarena", "legion fiend rider", "Fiend Rider's Approval");
-            Core.HuntMonster("frozenlair", "lich lord", "Lich Lord's Approval");
+            Core.HuntMonster("legionarena", "Legion Fiend Rider", "Fiend Rider's Approval");
+            Core.HuntMonster("frozenlair", "Lich Lord", "Lich Lord's Approval");
             Core.HuntMonster("dagefortress", "Grrrberus", "Grrrberus's Grr Grrr");
             Core.EnsureComplete(8546);
             Bot.Wait.ForPickup("Underworld Accolade");
