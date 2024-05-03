@@ -57,7 +57,6 @@ public class ClassicBladeOfAwe
         Core.Logger("Getting Original Treasure Chest");
         Core.AddDrop("Original Treasure Chest");
 
-        Core.EnsureAccept(9704); // Mysterious Chest
         Core.EquipClass(ClassType.Solo);
         if (!Bot.Quests.IsUnlocked(9704))
         {
@@ -65,6 +64,7 @@ public class ClassicBladeOfAwe
             Core.HuntMonster("banished", "Desterrat Moya", "Apocryphal Blade Of The Truth", isTemp: false);
             Core.EnsureComplete(8757);
         }
+        Core.EnsureAccept(9704); // Mysterious Chest
         Core.HuntMonster("summon", "Blood Minion", "Protector of Lore", isTemp: false);
         THQ.DoQuest(true);
         Core.EquipClass(ClassType.Farm);
