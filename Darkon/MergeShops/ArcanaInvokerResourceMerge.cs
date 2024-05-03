@@ -200,6 +200,11 @@ public class ArcanaInvokerResourceMerge
                     DLM.BuyAllMerge(req.Name);
                     break;
 
+                case "Judgment Tonic":
+                    PotionBuyer.// Call the method with specific parameters to farm Judgment Tonics with a quantity of 50
+                    INeedYourStrongestPotions(new[] { "Judgment Tonic" }, new bool[] { true }, quant, true, true);
+                    break;
+
                 case "Lich Emperor's Catalyst":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
@@ -378,9 +383,8 @@ public class ArcanaInvokerResourceMerge
                     break;
 
                 case "Fortitude Tonic":
-                    //need : 11, shop sells x14, costs 2 500k vouchers
-                    Adv.BuyItem("alchemyacademy", 2115, "Gold Voucher 500k", 2);
-                    Core.BuyItem("alchemyacademy", 2116, req.Name, quant, shopItemID: 9782);
+                    PotionBuyer.// Call the method with specific parameters to farm Fortitude Tonics with a quantity of 50
+                    INeedYourStrongestPotions(new[] { "Fortitude Tonic" }, new bool[] { true }, quant, true, true);
                     break;
 
                 case "Strong Drag's Intact Wing":
@@ -596,12 +600,6 @@ public class ArcanaInvokerResourceMerge
                 case "Trumpet":
                     Core.EquipClass(ClassType.Solo);
                     Core.HuntMonster("astraviajudge", "Trumpeter", req.Name, quant, false);
-                    break;
-
-                case "Judgement Tonic":
-                    // need: x20, shop sells x10 for x1 500k Voucher
-                    Adv.BuyItem("alchemyacademy", 2115, "Gold Voucher 500k", 2);
-                    Core.BuyItem("alchemyacademy", 2114, req.Name, quant, shopItemID: 9726);
                     break;
 
                 case "Enchanted Lance of Doom Reborn":
