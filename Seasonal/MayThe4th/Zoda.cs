@@ -70,7 +70,7 @@ public class Zoda
 
         // Search the Pit (8651)
         Core.EquipClass(ClassType.Solo);
-        Story.KillQuest(8651, "zorbaspit", "Zorblatt");
+        Story.KillQuest(8651, "zorbaspit", "ZorBLATT");
     }
 
     public void AssembledSword()
