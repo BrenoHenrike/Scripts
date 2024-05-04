@@ -126,7 +126,7 @@ public class FrostSpiritReaver
         while (!Bot.ShouldExit && !Core.CheckInventory("Ice-Ninth", quant))
         {
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("Snowmore", "Jon S'Nooooooo", "Northern Crown", isTemp: false);
+            Core.HuntMonster("Snowmore", "Jon S'NOOOOOOO", "Northern Crown", isTemp: false);
 
             Core.EquipClass(ClassType.Farm);
             Core.HuntMonster("icestormarena", "Arctic Wolf", "Ice Needle", 30, isTemp: false);
