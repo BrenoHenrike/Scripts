@@ -568,7 +568,7 @@ public class CoreToD
             Core.HuntMonster("baconcatlair", "Cloud Shark", "Cloud Shark Farts", 3);
             Core.HuntMonster("baconcatlair", "Ice Cream Shark", "Shark Sprinkles", 3);
             Core.HuntMonster("baconcatlair", "Sketchy Shark", "College-Ruled Paper", 3);
-            Core.HuntMonster("baconcatlair", "8-bit Shark", "Great White DLC", 3);
+            Core.HuntMonster("baconcatlair", "8-Bit Shark", "Great White DLC", 3);
             Core.HuntMonster("baconcatlair", "Cat Clothed Shark", "Kittarian Costumes", 3);
             Core.EnsureComplete(5119);
         }
