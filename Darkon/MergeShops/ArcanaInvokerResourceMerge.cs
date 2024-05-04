@@ -103,8 +103,7 @@ public class ArcanaInvokerResourceMerge
         CoreShadowofDoom.DoAll();
         FableForest.StoryLine();
         AOR.SunlightZone();
-        CoreAstravia.AstraviaCastle();
-        
+
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("arcana", 2434, findIngredients, buyOnlyThis, buyMode: buyMode);
 
@@ -567,6 +566,7 @@ public class ArcanaInvokerResourceMerge
                     break;
 
                 case "The Moon's Reflection":
+                    Bot.Quests.UpdateQuest(8000);
                     Core.EquipClass(ClassType.Solo);
                     Core.HuntMonster("Astravia", "The Moon", req.Name, quant, false);
                     break;
@@ -595,6 +595,7 @@ public class ArcanaInvokerResourceMerge
                     break;
 
                 case "The Sun's Enlightenment":
+                    Bot.Quests.UpdateQuest(8256);
                     Core.EquipClass(ClassType.Solo);
                     Core.HuntMonster("astraviacastle", "The Sun", req.Name, quant, false);
                     break;
