@@ -5504,7 +5504,7 @@
       "null"
     ],
     "path": "Story/ThroneofDarkness/CoreToD.cs",
-    "size": 47477,
+    "size": 47470,
     "fileName": "CoreToD.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ThroneofDarkness/CoreToD.cs"
   },
@@ -8933,7 +8933,7 @@
       "voyage"
     ],
     "path": "Darkon/MergeShops/ArcanaInvokerResourceMerge.cs",
-    "size": 34224,
+    "size": 34225,
     "fileName": "ArcanaInvokerResourceMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/MergeShops/ArcanaInvokerResourceMerge.cs"
   },
@@ -12803,7 +12803,7 @@
       "null"
     ],
     "path": "Other/MergeShops/ParadoxPortalMerge.cs",
-    "size": 3634,
+    "size": 3635,
     "fileName": "ParadoxPortalMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/ParadoxPortalMerge.cs"
   },
