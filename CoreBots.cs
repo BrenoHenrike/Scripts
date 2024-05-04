@@ -2737,7 +2737,7 @@ public class CoreBots
                         Bot.Combat.Attack("*");
                 }
                 else
-                    HuntMonster("doomkitten", "Doomkitten", item, quant, isTemp, log);
+                    HuntMonster("doomkitten", "DoomKitten", item, quant, isTemp, log);
                 return; // Exit the method after handling the class.
             }
         }
@@ -2748,7 +2748,7 @@ public class CoreBots
             return; // Stop execution as the bot doesn't have any of the required classes.
         }
 
-        HuntMonster("doomkitten", "Doomkitten", item, quant, isTemp, log);
+        HuntMonster("doomkitten", "DoomKitten", item, quant, isTemp, log);
     }
 
     /// <summary>
