@@ -80,6 +80,7 @@ public class ArcanaInvokerResourceMerge
     public FableForest FableForest = new();
     public VoidRefuge VR = new();
     private CoreAOR AOR = new();
+    private CoreAstravia CoreAstravia = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
     public string[] MultiOptions = { "Generic", "Select" };
@@ -102,7 +103,8 @@ public class ArcanaInvokerResourceMerge
         CoreShadowofDoom.DoAll();
         FableForest.StoryLine();
         AOR.SunlightZone();
-
+        CoreAstravia.AstraviaCastle();
+        
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("arcana", 2434, findIngredients, buyOnlyThis, buyMode: buyMode);
 
