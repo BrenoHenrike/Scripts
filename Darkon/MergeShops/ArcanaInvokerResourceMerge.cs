@@ -238,7 +238,7 @@ public class ArcanaInvokerResourceMerge
                 case "Time Heart":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster("portalmazec", "Vorefax", req.Name, quant, false, false);
+                    Core.HuntMonster("portalmazec", "Vorefax ", req.Name, quant, false, false);
                     break;
 
                 case "Storm Heart":

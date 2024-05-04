@@ -326,7 +326,7 @@ public class CoreToD
         Story.KillQuest(5048, "portalmaze", "ChronoLord");
 
         // Vorefax
-        Story.KillQuest(5049, "portalmaze", "Vorefax");
+        Story.KillQuest(5049, "portalmaze", "Vorefax ");
 
         // The Death of Time
         Story.KillQuest(5050, "portalmaze", "Mors Temporis");
@@ -572,7 +572,7 @@ public class CoreToD
             Core.HuntMonster("baconcatlair", "Cat Clothed Shark", "Kittarian Costumes", 3);
             Core.EnsureComplete(5119);
         }
-        
+
         // Ziri Is Also Tough
         Story.KillQuest(5120, "baconcatlair", "Cloud Shark");
 

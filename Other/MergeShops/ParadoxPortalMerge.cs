@@ -65,7 +65,7 @@ public class ParadoxPortalMerge
                 case "Paradox Core":
                 case "Time Heart":
                     Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster("portalmazec", "Vorefax", req.Name, quant, isTemp: false);
+                    Core.HuntMonster("portalmazec", "Vorefax ", req.Name, quant, isTemp: false);
                     break;
 
 
