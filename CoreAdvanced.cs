@@ -98,7 +98,10 @@ public class CoreAdvanced
                 if (Core.CheckInventory(req.ID, req.Quantity))
                     continue;
 
-                if (Core.GetShopItems(map, shopID).Any(x => req.ID == x.ID))
+                if (req.Name == "Dragon Runestone" && !Core.GetShopItems(map, shopID).Any(x => req.ID == x.ID))
+                    Farm.DragonRunestone(req.Quantity);
+
+                else if (Core.GetShopItems(map, shopID).Any(x => req.ID == x.ID))
                     BuyItem(map, shopID, req.ID, req.Quantity * quant);
             }
         }
@@ -1808,7 +1811,7 @@ public class CoreAdvanced
             {
 
                 #region Lucky Region
-             
+
                 #region Luck - Arcanas Concerto|Awe Blast - Forge - Absolution
                 case "lord of order":
                     if (!uForgeHelm() || !uAbsolution())
@@ -2114,7 +2117,7 @@ public class CoreAdvanced
 
                 #region Wizard Region
 
-               #region Wizard -  Valiance|Praxis - Pneuna - Vainglory|Lament
+                #region Wizard -  Valiance|Praxis - Pneuna - Vainglory|Lament
                 case "lightcaster":
                     if (!uValiance() || !uPneuma() || !uVainglory())
                     {
@@ -2276,7 +2279,7 @@ public class CoreAdvanced
                 case "arachnomancer":
                     if (!uVainglory() || !uExamen())
                         goto default;
-                        
+
                     type = EnhancementType.Lucky;
                     cSpecial = CapeSpecial.Vainglory;
                     wSpecial = uDauntless() ? WeaponSpecial.Dauntless : WeaponSpecial.Mana_Vamp;

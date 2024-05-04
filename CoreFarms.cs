@@ -1018,8 +1018,8 @@ public class CoreFarms
         Core.FarmingLogger("Dragon Runestone", quant);
 
         Gold((100000 * (quant - Bot.Inventory.GetQuantity("Dragon Runestone"))) - Bot.Inventory.GetQuantity("Gold Voucher 100k"));
-        Core.BuyItem("Alchemy", 395, "Gold Voucher 100k", quant - Bot.Inventory.GetQuantity("Dragon Runestone"));
-        Core.BuyItem("Alchemy", 395, "Dragon Runestone", quant, 8844);
+        Core.BuyItem("alchemyacademy", 395, "Gold Voucher 100k", quant - Bot.Inventory.GetQuantity("Dragon Runestone"));
+        Core.BuyItem("alchemyacademy", 395, "Dragon Runestone", quant, 8844);
     }
 
     public void AlchemyREP(int rank = 10, bool goldMethod = true)
