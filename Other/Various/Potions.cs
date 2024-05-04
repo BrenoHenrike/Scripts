@@ -255,12 +255,12 @@ public class PotionBuyer
                 case "Judgment Tonic":
                     Core.DebugLogger(this);
                     currTrait = CoreFarms.AlchemyTraits.Wis;
-                    BulkGrind("Dragon Scale", "Moglin Tears");
+                    BulkGrind("Dragon Scale", "Moglin Tears", AlchemyRunes.Jera);
                     break;
 
                 case "Fortitude Tonic":
                     currTrait = CoreFarms.AlchemyTraits.End;
-                    BulkGrind("Necrot", "Roc Tongue");
+                    BulkGrind("Necrot", "Roc Tongue", AlchemyRunes.Fehu);
                     break;
 
                 default:
@@ -268,7 +268,7 @@ public class PotionBuyer
                     break;
             }
 
-            void BulkGrind(string reagent1, string reagent2)
+            void BulkGrind(string reagent1, string reagent2, AlchemyRunes AlchemyRune = AlchemyRunes.Gebo)
             {
                 while (!Bot.ShouldExit && !Core.CheckInventory(Potion, PotionQuant))
                 {
@@ -284,7 +284,7 @@ public class PotionBuyer
                     // }
                     Core.ToggleAggro(false);
                     Core.Join("alchemy");
-                    Farm.AlchemyPacket(reagent1, reagent2, trait: currTrait);
+                    Farm.AlchemyPacket(reagent1, reagent2, AlchemyRune, trait: currTrait);
                 }
             }
 
