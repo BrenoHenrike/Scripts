@@ -1012,9 +1012,7 @@ public class CoreArmyLite
     }
 
     public void PriorityAttack(string attNoPrio)
-    {
-        
-
+    {    
         if (_attackPriority.Count == 0)
         {
             Bot.Combat.Attack(attNoPrio);
@@ -1023,7 +1021,7 @@ public class CoreArmyLite
 
         foreach (string mon in _attackPriority)
         {
-            var _mon = Bot.Monsters.CurrentMonsters.Find(m => m.Name.Trim().ToLower() == mon.ToLower() && Core.IsMonsterAlive(m));
+            var _mon = Bot.Monsters.CurrentMonsters.Find(m => m.Name.Trim().ToLower() == mon.ToLower() && m.Name != null && m.Cell == Bot.Player.Cell);
             if (_mon != null)
             {
                 Bot.Combat.Attack(_mon);
