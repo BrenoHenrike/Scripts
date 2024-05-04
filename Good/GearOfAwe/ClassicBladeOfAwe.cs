@@ -65,7 +65,7 @@ public class ClassicBladeOfAwe
             Core.EnsureComplete(8757);
         }
         Core.EnsureAccept(9704); // Mysterious Chest
-        Core.HuntMonster("summon", "Blood Minion", "Protector of Lore", isTemp: false);
+        Core.HuntMonster("summon", "Blood minion", "Protector of Lore", isTemp: false);
         THQ.DoQuest(true);
         Core.EquipClass(ClassType.Farm);
         Core.HuntMonster("marsh2", "Thrax Ironhide", "Tyrant Blade", isTemp: false);
