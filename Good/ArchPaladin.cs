@@ -85,7 +85,7 @@ public class ArchPaladin
                     Core.Jump("r12", "Left"); // map is aggro af this is a safe cell.
 
                 Core.HuntMonster("dragonheart", "Proto-Air Dracolich", "Zephyrus Manifesto", isTemp: false);
-                Core.HuntMonster("northstar", "Karok the Fallen", "Karok's Glaceran Gem", isTemp: false, publicRoom: true);
+                Core.HuntMonster("northstar", "Karok The Fallen", "Karok's Glaceran Gem", isTemp: false, publicRoom: true);
                 Core.EquipClass(ClassType.Farm);
                 Core.HuntMonster("thirdspell", "Mana Phoenix", "Nightmare Kibble", 200, false);
                 Core.HuntMonster("thunderfang", "Lightning Ball", "Condensed Energy", isTemp: false);

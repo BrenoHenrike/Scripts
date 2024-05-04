@@ -110,7 +110,7 @@ public class FrostSpiritReaver
         {
             Core.Logger("Getting the quest item requirements for \"Cold Hearted\"");
 
-            Core.HuntMonster("Northstar", "Karok the Fallen", "Karok's Glaceran Gem", isTemp: false);
+            Core.HuntMonster("Northstar", "Karok The Fallen", "Karok's Glaceran Gem", isTemp: false);
             Adv.BuyItem("Glacera", 1055, "Scythe of Vengeance");
             Adv.BuyItem("Glacera", 1055, "Cold Scythe of Vengeance");
             Adv.BuyItem("Glacera", 1055, "Frigid Scythe of Vengeance");

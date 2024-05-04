@@ -86,7 +86,7 @@ public class FrostvalBarbarian
             Core.AddDrop("Glaceran Key");
             Core.EnsureAccept(3971);
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("northstar", "Karok the Fallen", "Karok defeated", 1);
+            Core.HuntMonster("northstar", "Karok The Fallen", "Karok defeated", 1);
             Core.EnsureComplete(3971);
         }
         if (!Core.CheckInventory("Infernal Ice Heart"))

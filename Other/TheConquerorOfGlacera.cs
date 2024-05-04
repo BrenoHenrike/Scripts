@@ -34,7 +34,7 @@ public class TheConquerorOfGlacera
             return;
 
         // Pet Prereq
-        Core.HuntMonster("northstar", "Karok the Fallen", "Karok Companion", isTemp: false);
+        Core.HuntMonster("northstar", "Karok The Fallen", "Karok Companion", isTemp: false);
 
         Core.EnsureAccept(9492);
 

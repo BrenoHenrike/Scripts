@@ -731,7 +731,7 @@ public class Frostvale
         Story.KillQuest(5616, "icepike", "Chained Kezeroth");
 
         // Karok still Stands
-        Story.KillQuest(5617, "icepike", "Karok the Fallen");
+        Story.KillQuest(5617, "icepike", "Karok The Fallen");
     }
 
     public void FrostvalPastPresentandFuture()
@@ -1132,7 +1132,7 @@ public class Frostvale
         // 8446 and 8447 => Sluagh Medals && Mega Sluagh Medals
         if (!Core.isCompletedBefore(8448))
         {
-            Core.EnsureAcceptmultiple(false, new[ ]{ 8446, 8447});
+            Core.EnsureAcceptmultiple(false, new[] { 8446, 8447 });
             Core.HuntMonster("otziwar", "Sluagh Warrior", "Sluagh Medals", 5);
             Core.EnsureComplete(8446);
             Core.HuntMonster("otziwar", "Sluagh Warrior", "Mega Sluagh Medals", 3);

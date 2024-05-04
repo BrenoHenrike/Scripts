@@ -259,7 +259,7 @@ public class CoreArchMage
         }
         Core.EquipClass(ClassType.Solo);
         Core.HuntMonster("icepike", "Chained Kezeroth", "Rimeblossom", 100, false);
-        Core.HuntMonster("icepike", "Karok the Fallen", "Starlit Frost", 100, false);
+        Core.HuntMonster("icepike", "Karok The Fallen", "Starlit Frost", 100, false);
         Core.HuntMonster("icedungeon", "Shade of Kyanos", "Temporal Floe", 100, false);
 
         Core.EnsureComplete(8915);

@@ -113,7 +113,7 @@ public class TowerofWindsMerge
                 case "Karok's Glaceran Gem":
                     Core.EnsureAccept(3955);
                     Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster("northstar", "Karok the Fallen", req.Name, quant, isTemp: false);
+                    Core.HuntMonster("northstar", "Karok The Fallen", req.Name, quant, isTemp: false);
                     break;
 
 
