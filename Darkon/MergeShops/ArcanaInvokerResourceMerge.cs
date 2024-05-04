@@ -457,7 +457,7 @@ public class ArcanaInvokerResourceMerge
                 case "Northern Crown":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster("snowmore", "Jon S'Nooooooo", req.Name, quant, false, false);
+                    Core.HuntMonster("snowmore", "Jon S'NOOOOOOO", req.Name, quant, false, false);
                     break;
 
                 case "Azkorath's Wing":
