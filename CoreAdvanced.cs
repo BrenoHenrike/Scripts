@@ -1807,13 +1807,15 @@ public class CoreAdvanced
             switch (className)
             {
 
-                #region Luck - Arcanas Concerto - Forge - Absolution
+                #region Lucky Region
+             
+                #region Luck - Arcanas Concerto|Awe Blast - Forge - Absolution
                 case "lord of order":
-                    if (!uArcanasConcerto() || !uForgeHelm() || !uAbsolution())
+                    if (!uForgeHelm() || !uAbsolution())
                         goto default;
 
                     type = EnhancementType.Lucky;
-                    wSpecial = WeaponSpecial.Arcanas_Concerto;
+                    wSpecial = uArcanasConcerto() ? WeaponSpecial.Arcanas_Concerto : WeaponSpecial.Awe_Blast;
                     hSpecial = HelmSpecial.Forge;
                     cSpecial = CapeSpecial.Absolution;
                     break;
@@ -1830,7 +1832,6 @@ public class CoreAdvanced
                     break;
                 #endregion Ravenous
 
-                #region Lucky Region
 
                 #region Lucky - Forge - Spiral Carve
                 case "corrupted chronomancer":
@@ -2113,17 +2114,16 @@ public class CoreAdvanced
 
                 #region Wizard Region
 
-                #region Wizard -  Valiance|Praxis - Pneuna - Vainglory|Lament
+               #region Wizard -  Valiance|Praxis - Pneuna - Vainglory|Lament
                 case "lightcaster":
-                    if (!uPraxis() || !uPneuma() || !uLament())
+                    if (!uValiance() || !uPneuma() || !uVainglory())
                     {
-                        if (!uVainglory() || !uValiance())
+                        if (!uLament() || !uPraxis())
                             goto default;
                     }
-
                     type = EnhancementType.Wizard;
-                    cSpecial = !uLament() ? CapeSpecial.Vainglory : CapeSpecial.Lament;
-                    wSpecial = !uPraxis() ? WeaponSpecial.Valiance : WeaponSpecial.Praxis;
+                    cSpecial = !uVainglory() ? CapeSpecial.Lament : CapeSpecial.Vainglory;
+                    wSpecial = !uValiance() ? WeaponSpecial.Praxis : WeaponSpecial.Valiance;
                     hSpecial = !uPneuma() ? CurrentHelmSpecial() : HelmSpecial.Pneuma;
                     break;
                 #endregion
