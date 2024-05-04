@@ -20,109 +20,141 @@ public class PotionBuyer
     public bool DontPreconfigure = true;
     public List<IOption> Options = new()
     {
-        new Option<bool>("BuyReagents", "Buy Reagents?", "Use gold to buy the reagents for the potions [ this takes **ALOT** of gold.].", false),
-        new Option<int>("potionQuant", "Potion Quantity", "Desired stack amount [max - 300]", 300),
+        new Option<bool>("BuyReagents", "Buy Reagents?", "Use gold to buy the reagents for the Potions [ this takes **ALOT** of gold.].", false),
+        new Option<int>("PotionQuant", "Potion Quantity", "Desired stack amount [max - 300]", 0),
         CoreBots.Instance.SkipOptions,
 
         //Tonic
-        new Option<bool>("farmFate", "Fate", "Should the bot farm Fate Tonics?", false),
-        new Option<bool>("farmSage", "Sage", "Should the bot farm Sage Tonics?", false),
-        new Option<bool>("FarmMight", "Might", "Should the bot farm Might Tonics?", false),
-        new Option<bool>("FarmFortitude", "Fortitude", "Should the bot farm Fortitude Tonics?", false),
-        new Option<bool>("FarmJudgement", "Judgement", "Should the bot farm Judgement Tonics?", false),
-        //Elixer
-        new Option<bool>("farmBattle", "Battle", "Should the bot farm Battle Elixirs?", false),
-        new Option<bool>("farmMalevolence", "Malevolence", "Should the bot farm Malevolence Elixirs?", false),
-        new Option<bool>("farmDivine", "Divine", "Should the bot farm Unstable Divine Elixers?", false),
-        new Option<bool>("farmRevitalize", "Revitalize", "Should the bot farm Potent Revitalize Elixirs", false),
-        new Option<bool>("farmDestruction", "Destruction", "Should the bot farm Potent Destruction Elixir?", false),
+        new Option<bool>("FarmFate", "Fate", "Should the bot Farm Fate Tonics?", false),
+        new Option<bool>("FarmSage", "Sage", "Should the bot Farm Sage Tonics?", false),
+        new Option<bool>("FarmMight", "Might", "Should the bot Farm Might Tonics?", false),
+        new Option<bool>("FarmFortitude", "Fortitude", "Should the bot Farm Fortitude Tonics?", false),
+        new Option<bool>("FarmJudgment", "Judgment", "Should the bot Farm Judgment Tonics?", false),
+
+        //Elixir
+        new Option<bool>("FarmBattle", "Battle", "Should the bot Farm Battle Elixirs?", false),
+        new Option<bool>("FarmMalevolence", "Malevolence", "Should the bot Farm Malevolence Elixirs?", false),
+        new Option<bool>("FarmDivine", "Divine", "Should the bot Farm Unstable Divine Elixers?", false),
+        new Option<bool>("FarmRevitalize", "Revitalize", "Should the bot Farm Potent Revitalize Elixirs", false),
+        new Option<bool>("FarmDestruction", "Destruction", "Should the bot Farm Potent Destruction Elixir?", false),
+        new Option<bool>("FarmFelicitousPhiltre", "Felicitous Philtre", "Should the bot Farm Felicitous Philtre?", false),
+        new Option<bool>("FarmEnduranceDraught", "Endurance Draught", "Should the bot Farm Endurance Draught?", false),
 
         //Potion
-        new Option<bool>("FarmMalic", "Malic", "Should the bot farm Malic Potions?", false),
-        new Option<bool>("farmHonor", "Honor", "Should the bot farm Honor Potions?", false),
-        new Option<bool>("farmBody", "Body", "Should the bot farm Body Tonics?", false),
-        new Option<bool>("farmSoul", "Soul", "Should the bot farm Soul Potions?", false),
-        new Option<bool>("UnstableBattle", "Unstable Battle Elixir", "Should the bot farm Soul Potions?", false),
-        new Option<bool>("UnstableBody", "Unstable Body Tonic", "Should the bot farm Soul Potions?", false),
-        new Option<bool>("UnstableFate", "Unstable Fate Tonic ", "Should the bot farm Soul Potions?", false),
-        new Option<bool>("UnstableKeen", "Unstable Keen Elixir", "Should the bot farm Soul Potions?", false),
-        new Option<bool>("UnstableMastery", "Unstable Mastery Tonic", "Should the bot farm Soul Potions?", false),
-        new Option<bool>("UnstableMight", "Unstable Might Tonic ", "Should the bot farm Soul Potions?", false),
-        new Option<bool>("UnstableVelocity", "Unstable Velocity Elixir", "Should the bot farm Soul Potions?", false),
-        new Option<bool>("UnstableWise", "Unstable Wise Tonic", "Should the bot farm Soul Potions?", false),
+        new Option<bool>("FarmMalic", "Malic", "Should the bot Farm Malic Potions?", false),
+        new Option<bool>("FarmHonor", "Honor", "Should the bot Farm Honor Potions?", false),
+        new Option<bool>("FarmBody", "Body", "Should the bot Farm Body Tonics?", false),
+        new Option<bool>("FarmSoul", "Soul", "Should the bot Farm Soul Potions?", false),
 
         //Other          
         new Option<bool>("buyFeli", "Felicitous Philtre", "Should the bot buy Felicitous Philtre?", false),
         new Option<bool>("buyEndu", "Endurance Draught", "Should the bot buy Endurance Draught?", false)
-
     };
 
     public void ScriptMain(IScriptInterface bot)
     {
         Core.BankingBlackList.Add("Dragon Runestone");
         Core.SetOptions();
-        INeedYourStrongestPotions(null, null, Bot.Config!.Get<int>("potionQuant"));
+        INeedYourStrongestPotions(null, null, Bot.Config!.Get<int>("PotionQuant"), Bot.Config!.Get<bool>("BuyReagents"));
 
         Core.SetOptions(false);
     }
 
-    public void INeedYourStrongestPotions(string[]? potions = null, bool[]? potionsFarm = null, int potionQuant = 300)
+    public void INeedYourStrongestPotions(string[]? Potions = null, bool[]? PotionsFarm = null, int PotionQuant = 300, bool BuyReagents = false, bool Seperate = false)
     {
+        Core.DebugLogger(this);
+        BuyReagents = Bot.Config!.Get<bool>("BuyReagents") != false || BuyReagents == true;
+
+        Core.DebugLogger(this);
         Farm.AlchemyREP();
+        Core.DebugLogger(this);
         Farm.GoodREP();
 
-        Core.Logger(Bot.Config!.Get<bool>("BuyReagents") ? "Method Choose: Buy Reagents" : "Farm Reagents");
-
-        potions ??= new[] { "Fate Tonic", "Sage Tonic", "Potent Battle Elixir",
-            "Potent Malevolence Elixir","Potent Honor Potion", "Unstable Divine Elixir",
-            "Potent Revitalize Elixir", "Felicitous Philtre", "Endurance Draught",
-            "Potent Destruction Elixir", "Body Tonic", "Soul Potion", "Unstable Battle Elixir",
-            "Unstable Body Tonic", "Unstable Fate Tonic", "Unstable Keen Elixir",
-            "Unstable Mastery Tonic", "Unstable Might Tonic", "Unstable Velocity Elixir",
-            "Unstable Wise Tonic", "Might Tonic", "Fortitude Tonic", "Judgment Tonic"};
-
-        potionsFarm ??= new[] {                          Bot.Config!.Get<bool>("farmFate"),           Bot.Config!.Get<bool>("farmSage"),
-            Bot.Config!.Get<bool>("farmBattle"),         Bot.Config!.Get<bool>("farmMalevolence"),    Bot.Config!.Get<bool>("farmHonor"),
-            Bot.Config!.Get<bool>("farmDivine"),         Bot.Config!.Get<bool>("farmRevitalize"),
-            Bot.Config!.Get<bool>("buyFeli"),            Bot.Config!.Get<bool>("buyEndu"),            Bot.Config!.Get<bool>("farmDestruction"),
-            Bot.Config!.Get<bool>("farmBody"),           Bot.Config!.Get<bool>("FarmSoul"),           Bot.Config!.Get<bool>("UnstableBattle"),
-            Bot.Config!.Get<bool>("UnstableBody"),       Bot.Config!.Get<bool>("UnstableFate"),       Bot.Config!.Get<bool>("UnstableKeen"),
-            Bot.Config!.Get<bool>("UnstableMastery"),    Bot.Config!.Get<bool>("UnstableMight"),      Bot.Config!.Get<bool>("UnstableVelocity"),
-            Bot.Config!.Get<bool>("UnstableWise"),       Bot.Config!.Get<bool>("farmMight"),          Bot.Config!.Get<bool>("FarmMalic"),
-            Bot.Config!.Get<bool>("FarmFortitude"),      Bot.Config!.Get<bool>("FarmJudgement") 
+        Core.Logger(BuyReagents ? "Method Choose: Buy Reagents" : "Farm Reagents");
+        Core.DebugLogger(this);
+        if (!Seperate)
+            Potions = new[]
+            {
+            "Judgment Tonic", "Fortitude Tonic",
+            "Fate Tonic", "Sage Tonic", "Potent Battle Elixir", "Potent Malevolence Elixir",
+            "Potent Honor Potion", "Unstable Divine Elixir", "Potent Revitalize Elixir",
+            "Felicitous Philtre", "Endurance Draught", "Potent Destruction Elixir",
+            "Body Tonic", "Soul Potion", "Unstable Battle Elixir", "Unstable Body Tonic",
+            "Unstable Fate Tonic", "Unstable Keen Elixir", "Unstable Mastery Tonic",
+            "Unstable Might Tonic", "Unstable Wise Tonic", "Might Tonic", "Malic Potion"
             };
 
-        if (!potionsFarm.Any(x => x) || potionQuant < 1 || potionQuant > 300)
+        Core.DebugLogger(this);
+        if (!Seperate)
+            PotionsFarm = new[]
+                {
+            Bot.Config!.Get<bool>("FarmJudgment"), Bot.Config!.Get<bool>("FarmFortitude"),
+            Bot.Config!.Get<bool>("FarmFate"), Bot.Config!.Get<bool>("FarmSage"),
+            Bot.Config!.Get<bool>("FarmBattle"), Bot.Config!.Get<bool>("FarmMalevolence"),
+            Bot.Config!.Get<bool>("FarmHonor"), Bot.Config!.Get<bool>("FarmDivine"),
+            Bot.Config!.Get<bool>("FarmRevitalize"), Bot.Config!.Get<bool>("FarmEnduranceDraught"),
+            Bot.Config!.Get<bool>("buyFeli"), Bot.Config!.Get<bool>("buyEndu"),
+            Bot.Config!.Get<bool>("FarmDestruction"),Bot.Config!.Get<bool>("FarmBody"),
+            Bot.Config!.Get<bool>("FarmSoul"), Bot.Config!.Get<bool>("UnstableBattle"),
+            Bot.Config!.Get<bool>("UnstableBody"), Bot.Config!.Get<bool>("UnstableFate"),
+            Bot.Config!.Get<bool>("UnstableKeen"), Bot.Config!.Get<bool>("UnstableMastery"),
+            Bot.Config!.Get<bool>("UnstableMight"), Bot.Config!.Get<bool>("UnstableWise"),
+            Bot.Config!.Get<bool>("FarmMight"), Bot.Config!.Get<bool>("FarmMalic")
+        };
+        Core.DebugLogger(this);
+
+        if (!Seperate && !PotionsFarm!.Any(x => x) || PotionQuant < 1 || PotionQuant > 300)
         {
-            Core.Logger("No potions were selected to farm or you entered an invalid number of potions to farm[<100], the bot will now stop", messageBox: true, stopBot: true);
+            Core.DebugLogger(this);
+            Core.Logger($"No Potions were selected to Farm or you entered an invalid number of Potions to Farm[{Bot.Config!.Get<int>("PotionQuant")} / 300], the bot will now stop", messageBox: true, stopBot: true);
             return;
         }
 
-        Core.AddDrop(potions);
+        Core.DebugLogger(this);
+        Core.AddDrop(Potions!);
+        Core.DebugLogger(this);
         Core.AddDrop("Potent Malice Potion");
+        Core.DebugLogger(this);
 
-        for (int t = 0; t < potions.Length; t++)
+        for (int t = 0; t < Potions!.Length; t++)
         {
-            if (potionsFarm != null && !potionsFarm[t])
+            Core.DebugLogger(this);
+            if (PotionsFarm != null && !PotionsFarm[t] && !Seperate)
+            {
+                Core.DebugLogger(this);
+                Core.Logger($"{t}: {PotionsFarm[t]}");
                 continue;
+            }
 
-            string potion = potions[t];
-            if (Core.CheckInventory(potion, potionQuant))
+            Core.DebugLogger(this);
+            string Potion = Potions[t];
+            Core.DebugLogger(this);
+            Core.Logger($"{t}: {Potion}");
+
+            if (Core.CheckInventory(Potion, PotionQuant))
+            {
+                Core.DebugLogger(this);
+                Core.FarmingLogger(Potion, PotionQuant);
                 continue;
-            Core.FarmingLogger(potion, potionQuant);
+            }
 
+            Core.DebugLogger(this);
+            Core.FarmingLogger(Potion, PotionQuant);
+
+            Core.DebugLogger(this);
             var currTrait = CoreFarms.AlchemyTraits.Int;
 
-            switch (potion)
+            switch (Potion)
             {
-                case "Judgment Tonic":
-                    currTrait = CoreFarms.AlchemyTraits.Wis;
-                    BulkGrind("Dragon Scale", "Moglin Tears");
+                case "Fate Tonic":
+                case "Sage Tonic":
+                    currTrait = Potion == "Sage Tonic" ? CoreFarms.AlchemyTraits.Int : CoreFarms.AlchemyTraits.Luc;
+                    BulkGrind("Arashtite Ore", "Dried Slime");
                     break;
 
-                case "Potent Malevolence Elixir":
                 case "Potent Battle Elixir":
-                    currTrait = potion == "Potent Malevolence Elixir" ? CoreFarms.AlchemyTraits.SPw : CoreFarms.AlchemyTraits.APw;
+                case "Potent Malevolence Elixir":
+                    currTrait = Potion == "Potent Malevolence Elixir" ? CoreFarms.AlchemyTraits.SPw : CoreFarms.AlchemyTraits.APw;
                     BulkGrind("Doomatter", "Chaoroot");
                     break;
 
@@ -137,15 +169,14 @@ public class PotionBuyer
                     BulkGrind("Chaos Entity", "Rhison Blood");
                     break;
 
-                case "Fortitude Tonics":
-                    currTrait = CoreFarms.AlchemyTraits.End;
-                    BulkGrind("Necrot", "Roc Tongue");
-                    break;
-
-                case "Sage Tonic":
-                case "Fate Tonic":
-                    currTrait = potion == "Sage Tonic" ? CoreFarms.AlchemyTraits.Int : CoreFarms.AlchemyTraits.Luc;
-                    BulkGrind("Arashtite Ore", "Dried Slime");
+                case "Unstable Divine Elixir":
+                    if (PotionQuant > 99)
+                    {
+                        Core.Logger($"Max quant for [{Potion}] is [{PotionQuant}] -Adjusting");
+                        PotionQuant = 99;
+                    }
+                    currTrait = CoreFarms.AlchemyTraits.hOu;
+                    BulkGrind("Dragon Scale", "Lemurphant Tears");
                     break;
 
                 case "Potent Revitalize Elixir":
@@ -153,14 +184,16 @@ public class PotionBuyer
                     BulkGrind("Chaoroot", "Lemurphant Tears");
                     break;
 
-                case "Felicitous Philtre": // No Farm method
-                    Core.Logger($"item: [{potion}] doesn't currently have a farm method, forced to buy.");
-                    Adv.BuyItem("alchemyacademy", 2036, "Felicitous Philtre", potionQuant);
+                case "Felicitous Philtre":
+                    // No Farm method
+                    Core.Logger($"item: [{Potion}] doesn't currently have a Farm method, forced to buy.");
+                    Adv.BuyItem("alchemyacademy", 2036, "Felicitous Philtre", PotionQuant);
                     break;
 
-                case "Endurance Draught": // No Farm method
-                    Core.Logger($"item: [{potion}] doesn't currently have a farm method, forced to buy.");
-                    Adv.BuyItem("alchemyacademy", 2036, "Endurance Draught", potionQuant);
+                case "Endurance Draught":
+                    // No Farm method
+                    Core.Logger($"item: [{Potion}] doesn't currently have a Farm method, forced to buy.");
+                    Adv.BuyItem("alchemyacademy", 2036, "Endurance Draught", PotionQuant);
                     break;
 
                 case "Potent Destruction Elixir":
@@ -176,16 +209,6 @@ public class PotionBuyer
                 case "Soul Potion":
                     currTrait = CoreFarms.AlchemyTraits.Dam;
                     BulkGrind("Necrot", "Nimblestem");
-                    break;
-
-                case "Unstable Divine Elixir":
-                    if (potionQuant > 99)
-                    {
-                        Core.Logger($"Max quant for [{potion}] is [{potionQuant}] -Adjusting");
-                        potionQuant = 99;
-                    }
-                    currTrait = CoreFarms.AlchemyTraits.hOu;
-                    BulkGrind("Dragon Scale", "Lemurphant Tears");
                     break;
 
                 case "Unstable Battle Elixir":
@@ -229,21 +252,25 @@ public class PotionBuyer
                     BulkGrind("Moglin Tears", "Rhison Blood");
                     break;
 
-                //For other scripts:
+                case "Judgment Tonic":
+                    Core.DebugLogger(this);
+                    currTrait = CoreFarms.AlchemyTraits.Wis;
+                    BulkGrind("Dragon Scale", "Moglin Tears");
+                    break;
 
-                case "Bright Tonic":
-                    currTrait = CoreFarms.AlchemyTraits.Int;
-                    BulkGrind("Arashtite Ore", "Dried Slime");
+                case "Fortitude Tonic":
+                    currTrait = CoreFarms.AlchemyTraits.End;
+                    BulkGrind("Necrot", "Roc Tongue");
                     break;
 
                 default:
-                    Core.Logger("The bot was not taught how to make " + potion);
+                    Core.Logger("The bot was not taught how to make " + Potion);
                     break;
             }
 
             void BulkGrind(string reagent1, string reagent2)
             {
-                while (!Bot.ShouldExit && !Core.CheckInventory(potion, potionQuant))
+                while (!Bot.ShouldExit && !Core.CheckInventory(Potion, PotionQuant))
                 {
                     // if (!Core.CheckInventory(reagent1, 1) || !Core.CheckInventory(reagent2, 1) || !Core.CheckInventory("Dragon Runestone", 30))
                     // {

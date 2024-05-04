@@ -549,9 +549,6 @@ public class VHLArmy
             Army.AggroMonStart("elemental");
             Army.DivideOnCells(manaEnergyNeeded ? "r5" : "r3");
 
-            if (Bot.Player.CurrentClass?.Name == "ArchMage")
-                Bot.Options.AttackWithoutTarget = true;
-
             while (!Bot.ShouldExit && Core.CheckInventory("Mana Energy for Nulgath"))
             {
                 Bot.Combat.Attack("*");

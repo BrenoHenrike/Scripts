@@ -80,8 +80,7 @@ public class ArmyLeveling
                 Army.AggroMonStart("icestormarena");
                 Army.DivideOnCells("r22");
                 Core.RegisterQuests();
-                if (Bot.Player.CurrentClass!.Name == "ArchMage")
-                    Bot.Options.AttackWithoutTarget = true;
+                
                 while (!Bot.ShouldExit && Bot.Player.Level < level)
                     Bot.Combat.Attack("*");
                 Army.AggroMonStop(true);
@@ -100,8 +99,7 @@ public class ArmyLeveling
                 Army.AggroMonCells("r2");
                 Army.AggroMonStart("icestormunder");
                 Army.DivideOnCells("r2");
-                if (Bot.Player.CurrentClass!.Name == "ArchMage")
-                    Bot.Options.AttackWithoutTarget = true;
+                
                 while (!Bot.ShouldExit && Bot.Player.Level < level)
                     Bot.Combat.Attack("Frost Spirit");
                 Army.AggroMonStop(true);
@@ -121,8 +119,7 @@ public class ArmyLeveling
                 Army.AggroMonStart("icewing");
                 Army.DivideOnCells("Enter");
                 Core.RegisterQuests(Core.IsMember ? 6635 : 6632);
-                if (Bot.Player.CurrentClass!.Name == "ArchMage")
-                    Bot.Options.AttackWithoutTarget = true;
+                
                 while (!Bot.ShouldExit && Bot.Player.Level < level)
                     Bot.Combat.Attack("*");
                 Army.AggroMonStop(true);
@@ -141,8 +138,7 @@ public class ArmyLeveling
                 Army.AggroMonStart("sevencircleswar");
                 Army.DivideOnCells("Enter", "r2", "r3");
                 Core.RegisterQuests(7979, 7980, 7981);
-                if (Bot.Player.CurrentClass!.Name == "ArchMage")
-                    Bot.Options.AttackWithoutTarget = true;
+                
                 while (!Bot.ShouldExit && Bot.Player.Level < level)
                     Bot.Combat.Attack("*");
                 Army.AggroMonStop(true);
@@ -161,8 +157,7 @@ public class ArmyLeveling
                 Army.AggroMonStart("streamwar");
                 Army.DivideOnCells("r3a");
                 Core.RegisterQuests(8814, 8815);
-                if (Bot.Player.CurrentClass!.Name == "ArchMage")
-                    Bot.Options.AttackWithoutTarget = true;
+                
                 while (!Bot.ShouldExit && Bot.Player.Level < level)
                     Bot.Combat.Attack("*");
                 Army.AggroMonStop(true);
@@ -208,8 +203,7 @@ public class ArmyLeveling
 
                 Core.Logger("This method is optimized. If the rate is ever poor, please use SCW.");
 
-                if (Bot.Player.CurrentClass!.Name == "ArchMage")
-                    Bot.Options.AttackWithoutTarget = true;
+                
 
                 while (!Bot.ShouldExit && Bot.Player.Level < level)
                     Bot.Combat.Attack("*");
@@ -236,8 +230,7 @@ public class ArmyLeveling
                 Army.AggroMonStart("hakuwar");
                 Army.DivideOnCells("r2", "r4", "r5", "r6", "r7", "r9");
 
-                if (Bot.Player.CurrentClass!.Name == "ArchMage")
-                    Bot.Options.AttackWithoutTarget = true;
+                
 
                 while (!Bot.ShouldExit && Bot.Player.Level < level)
                     Bot.Combat.Attack("*");

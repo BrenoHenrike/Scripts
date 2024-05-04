@@ -64,9 +64,6 @@ public class ArmySwagTokensF2p
                 Army.DivideOnCells("r3", "Enter");
                 Army.AggroMonIDs(701, 703);
 
-                if (Bot.Player.CurrentClass?.Name == "ArchMage")
-                    Bot.Options.AttackWithoutTarget = true;
-
                 while (!Bot.ShouldExit && !Core.CheckInventory("Super-Fan Swag Token D", 500))
                     Bot.Combat.Attack("*");
                 Army.AggroMonStop();
