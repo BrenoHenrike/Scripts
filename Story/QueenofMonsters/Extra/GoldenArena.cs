@@ -48,7 +48,7 @@ public class GoldenArena
         Story.KillQuest(6081, "GoldenArena", "Blessed Gladius");
 
         //Fallen Champion Badge 6082
-        Story.KillQuest(6082, "northstar", "Karok the Fallen");
+        Story.KillQuest(6082, "northstar", "Karok The Fallen");
 
         //Ascension Laurel Challenge 6083
         Story.KillQuest(6083, "GoldenArena", "Blessed Karok");

@@ -44,7 +44,7 @@ public class LowDRArmors
 
         if (armorConfig == Armors.Dark_FrostSpawn_Mage || armorConfig == Armors.All && !Core.CheckInventory("Dark FrostSpawn Mage"))
         {
-            Core.HuntMonster("northstar", "Karok the Fallen", "Dark FrostSpawn Mage", isTemp: false);
+            Core.HuntMonster("northstar", "Karok The Fallen", "Dark FrostSpawn Mage", isTemp: false);
         }
 
         if (armorConfig == Armors.Feral_DoomKnight || armorConfig == Armors.All && !Core.CheckInventory("Feral DoomKnight"))
