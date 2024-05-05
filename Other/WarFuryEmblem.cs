@@ -39,8 +39,7 @@ public class WarfuryEmblem
         //Adv.BestGear(RacialGearBoost.Human);
 
         Core.RegisterQuests(8204);
-        while (!Bot.ShouldExit && !Core.CheckInventory("Warfury Emblem", quant))
-            Core.HuntMonster("wartraining", "Warfury Soldier", log: false);
+        Core.HuntMonster("wartraining", "Warfury Soldier", "Warfury Emblem", quant, log: false);
         Core.CancelRegisteredQuests();
     }
 }
