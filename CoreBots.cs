@@ -2261,7 +2261,7 @@ public class CoreBots
         DebugLogger(this);
         Bot.Options.AggroMonsters = false;
         DebugLogger(this);
-        Monster? M = Bot.Monsters.MapMonsters.FirstOrDefault(m => m != null && m.Name == monster);
+        Monster? M = Bot.Monsters.MapMonsters.FirstOrDefault(m => m != null && m.Name.FormatForCompare() == monster.FormatForCompare());
 
         if (item == null)
         {
@@ -2271,8 +2271,8 @@ public class CoreBots
                 Bot.Wait.ForCellChange(M!.Cell);
             }
 
-            M = Bot.Monsters.MapMonsters.FirstOrDefault(m => m != null && m.Name == monster);
-            Bot.Kill.Monster(M!.Name);
+            M = Bot.Monsters.MapMonsters.FirstOrDefault(m => m != null && m.Name.FormatForCompare() == monster.FormatForCompare());
+            Bot.Kill.Monster(M!.Name.FormatForCompare());
             JumpWait();
             Rest();
             return;
@@ -2290,7 +2290,7 @@ public class CoreBots
             DebugLogger(this);
             while (!Bot.ShouldExit && isTemp ? !Bot.TempInv.Contains(item, quant) : !CheckInventory(item, quant))
             {
-                M = Bot.Monsters.MapMonsters.FirstOrDefault(m => m != null && m.Name == monster);
+                M = Bot.Monsters.MapMonsters.FirstOrDefault(m => m != null && m.Name.FormatForCompare() == monster.FormatForCompare());
 
                 DebugLogger(this);
 
@@ -2303,7 +2303,7 @@ public class CoreBots
                 }
 
                 DebugLogger(this);
-                Bot.Combat.Attack(M!.Name);
+                Bot.Combat.Attack(M!.Name.FormatForCompare());
                 DebugLogger(this);
                 Sleep();
                 DebugLogger(this);
