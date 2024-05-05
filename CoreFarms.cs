@@ -905,10 +905,11 @@ public class CoreFarms
     /// <param name="rank">The minimum rank to make the misture, use 0 for any rank.</param>
     /// <param name="loop">Whether loop till you run out of reagents</param>
     /// <param name="modifier">Some mistures have specific packet modifiers, default is Moose but you can find Man, mRe and others.</param>
-    public void AlchemyPacket(string reagent1, string reagent2, AlchemyRunes rune = AlchemyRunes.Gebo, int rank = 0, bool loop = true, string modifier = "Moose", AlchemyTraits trait = AlchemyTraits.APw, bool YMB = false)
+    public void AlchemyPacket(string reagent1, string reagent2, AlchemyRunes rune = AlchemyRunes.Gebo, int rank = 0, bool loop = true, string modifier = "Moose", AlchemyTraits trait = AlchemyTraits.APw, bool YMB = false, string? item = null, int quant = 1)
     {
-        if (rank != 0 && FactionRank("Alchemy") < rank)
+        if (rank != 0 && FactionRank("Alchemy") < rank || (item != null && Core.CheckInventory(item)))
             AlchemyREP(rank);
+
 
         // Core.Join("Alchemy");
         if (!Core.CheckInventory(reagent1) || !Bot.Inventory.TryGetItem(reagent1, out var reg1))
@@ -939,7 +940,7 @@ public class CoreFarms
         {
             while (!Bot.ShouldExit && Core.CheckInventory(new[] { reagent1, reagent2 }))
             {
-                if (!Core.CheckInventory(new[] { reagent1, reagent2 }))
+                if (!Core.CheckInventory(new[] { reagent1, reagent2 }) || (item != null && Core.CheckInventory(item, quant)))
                     break;
                 Packet();
                 Core.Logger($"Completed alchemy x{i++}");
