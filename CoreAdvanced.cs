@@ -99,7 +99,11 @@ public class CoreAdvanced
                     continue;
 
                 if (req.Name == "Dragon Runestone" && !Core.GetShopItems(map, shopID).Any(x => req.ID == x.ID))
+                {
                     Farm.DragonRunestone(req.Quantity);
+                    //reload to close teh shop to load the next so it properly gets the shopitemdata
+                    Bot.Map.Reload();
+                }
 
                 else if (Core.GetShopItems(map, shopID).Any(x => req.ID == x.ID))
                     BuyItem(map, shopID, req.ID, req.Quantity * quant);
