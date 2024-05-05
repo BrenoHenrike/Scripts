@@ -70,7 +70,9 @@ public class CoreLegion
         Core.RegisterQuests(6248, 6249, 6251);
         while (!Bot.ShouldExit && !Core.CheckInventory("Dark Token", quant))
         {
-            Core.HuntMonster("seraphicwardage", "Seraphic Commander", log: false);
+            Core.HuntMonster("seraphicwardage", "Seraphic Commander", "Seraphic Medals", 5, log: false);
+            Core.HuntMonster("seraphicwardage", "Seraphic Commander", "Mega Seraphic Medals", 3, log: false);
+            Core.HuntMonster("seraphicwardage", "Seraphic Commander", "Seraphic Commanders Slain", 6, log: false);
         }
         Core.CancelRegisteredQuests();
     }
