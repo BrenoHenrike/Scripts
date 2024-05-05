@@ -919,7 +919,7 @@ public class CoreBots
 
         Bot.Events.ExtensionPacketReceived -= RelogRequieredListener;
 
-        if (buy_quant > quant && (CheckInventory(item.Name, buy_quant)))
+        if (buy_quant > quant && CheckInventory(item.Name, buy_quant))
         {
             // Sell spares
             // This only occurs when you buy sth with stack limits, but want less then the stack limit.
