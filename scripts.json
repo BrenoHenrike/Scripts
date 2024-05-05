@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 221914,
+    "size": 221912,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -2650,7 +2650,7 @@
       "emblem"
     ],
     "path": "Other/WarFuryEmblem.cs",
-    "size": 1294,
+    "size": 1234,
     "fileName": "WarFuryEmblem.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/WarFuryEmblem.cs"
   },
@@ -14867,7 +14867,7 @@
       "null"
     ],
     "path": "Other/Various/Potions.cs",
-    "size": 19266,
+    "size": 19265,
     "fileName": "Potions.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Various/Potions.cs"
   },
