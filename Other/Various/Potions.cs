@@ -375,7 +375,7 @@ public class PotionBuyer
                         break;
 
                     case "Dragon Scale":
-                        Bot.Drops.Add(11475);
+                        Core.AddDrop(11475);
                         if (!BuyReagents)
                         {
                             while (!Bot.ShouldExit && !Core.CheckInventory(11475, ingreQuant))
