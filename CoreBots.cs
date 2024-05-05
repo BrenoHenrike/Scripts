@@ -2235,6 +2235,12 @@ public class CoreBots
         if (item != null && (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
             return;
 
+        if (item == null)
+        {
+            Logger($"Item set to: {item}");
+            OneTimeMessage("HuntMonster Possible issue", "if this just hunts once, or starts and afks (sitting at the monster), that means the \"item\" was set to null(or is empty), @tato2 on disc with the script & what item its farming(preferably with screenshots of the `Logs > scripts tab`).");
+        }
+
         DebugLogger(this);
         Join(map, publicRoom: publicRoom);
 
