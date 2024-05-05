@@ -347,7 +347,7 @@ public class PotionBuyer
                                 Core.HuntMonster("Creepy", "Fear Feeder", ingredient, ingreQuant, isTemp: false);
                             else Core.HuntMonster("maul", "Creature Creation", ingredient, ingreQuant, isTemp: false);
                         }
-                        else Adv.BuyItem("tercessuinotlim", 1951, 11477, ingreQuant, 10, 7910);
+                        else Adv.BuyItem("alchemyacademy", 397, 11477, ingreQuant, 2, 1234);
                         break;
 
                     case "Chaoroot":
@@ -394,7 +394,7 @@ public class PotionBuyer
                     case "Necrot":
                         if (!BuyReagents)
                             Core.HuntMonster("deathsrealm", "Skeleton Fighter", ingredient, ingreQuant, isTemp: false, log: false);
-                        else Adv.BuyItem("tercessuinotlim", 1951, 11480, ingreQuant, 10, 7909);
+                        else Adv.BuyItem("alchemyacademy", 397, 11480, ingreQuant, 2, 1237);
                         break;
 
                     case "Rhison Blood":
