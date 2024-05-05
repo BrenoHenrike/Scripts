@@ -2041,7 +2041,7 @@ public class CoreBots
         Bot.Options.AggroMonsters = false;
         Monster? Monster = monster == "*"
         ? Bot.Monsters.MapMonsters.FirstOrDefault(x => x != null && x.Cell == cell)
-        : Bot.Monsters.MapMonsters.FirstOrDefault(x => x.Name == monster && x != null && x.Cell == cell);
+        : Bot.Monsters.MapMonsters.FirstOrDefault(x => x.Name.FormatForCompare() == monster.FormatForCompare() && x != null && x.Cell == cell);
 
         if (item == null)
         {
@@ -2303,7 +2303,7 @@ public class CoreBots
                 }
 
                 DebugLogger(this);
-                Bot.Combat.Attack(M!.Name.FormatForCompare());
+                Bot.Combat.Attack(M!.Name);
                 DebugLogger(this);
                 Sleep();
                 DebugLogger(this);
@@ -2602,9 +2602,6 @@ public class CoreBots
         Join("kitsune", "Boss", "Left");
         Bot.Events.ExtensionPacketReceived += KitsuneListener;
 
-
-
-
         if (item == null)
         {
             if (log)
@@ -2618,7 +2615,7 @@ public class CoreBots
             if (log)
                 Logger($"Killing Kitsune for {item} ({dynamicQuant(item, isTemp)}/{quant}) [Temp = {isTemp}]");
             while (!Bot.ShouldExit && !CheckInventory(item, quant))
-                Bot.Combat.Attack("Kitsune");
+                Bot.Combat.Attack("*");
         }
         Bot.Events.ExtensionPacketReceived -= KitsuneListener;
 
@@ -2666,8 +2663,6 @@ public class CoreBots
 
         EquipClass(ClassType.Solo);
         Join("trigoras");
-
-
 
         while (!Bot.ShouldExit && !CheckInventory(item, quant))
         {
@@ -5833,8 +5828,13 @@ public static class UtilExtensionsS
         => source.ToList().Find(match: Match);
     public static bool TryFind<T>(this IEnumerable<T> source, Predicate<T> Match, out T? toReturn)
         => (toReturn = source.Find(Match)) != null;
-    public static string FormatForCompare(this string input)
-        => input.Trim().ToLower().Normalize(System.Text.NormalizationForm.FormKD);
+    public static string FormatForCompare(this string input) => new string(input
+    .Trim()
+    .ToLowerInvariant()
+    .Normalize(System.Text.NormalizationForm.FormKD)
+    .Where(c => !char.IsWhiteSpace(c) && c != '\'' && (c == '_' || c == '-' || !char.IsPunctuation(c)))
+    .ToArray());
+
 }
 
 #nullable disable
