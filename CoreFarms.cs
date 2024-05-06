@@ -1011,7 +1011,7 @@ public class CoreFarms
     {
         if (Core.CheckInventory("Dragon Runestone", quant))
             return;
-            Core.Join("alchemyacademy");
+        Core.Join("alchemyacademy");
 
         Core.ToggleAggro(false);
         Core.JumpWait();
@@ -2318,15 +2318,7 @@ public class CoreFarms
 
         Core.RegisterQuests(5597, 5598, 5599, 5600);
         while (!Bot.ShouldExit && FactionRank("Glacera") < rank)
-        {
-            while (!Bot.ShouldExit && !Core.CheckInventory("World Ender Medal", 10)
-            && !Core.CheckInventory("Mega World Ender Medal", 5))
-                Core.HuntMonster("icewindwar", "Frost Invader", log: false);
-
-            while (!Bot.ShouldExit && !Core.CheckInventory("Frostspawn Medal", 10)
-            && !Core.CheckInventory("Mega Frostspawn Medal", 5))
-                Core.HuntMonster("icewindwar", "Glaceran Defender", log: false);
-        }
+            Core.KillMonster("icewindwar", "r5", "Left", "*", log: false);
         Core.CancelRegisteredQuests();
         ToggleBoost(BoostType.Reputation, false);
         Core.SavedState(false);
