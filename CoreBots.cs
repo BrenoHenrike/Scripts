@@ -1356,14 +1356,20 @@ public class CoreBots
     }
 
     /// <summary>
-    /// Adds drops to the pickup list, un-bank the items.
+    /// Adds drops to the pickup list and un-banks the items.
     /// </summary>
-    /// <param name="items">Items to add</param>
+    /// <param name="items">Items to add.</param>
     public void AddDrop(params int[] items)
     {
+        if (items == null || items.Length == 0)
+        {
+            DebugLogger(this);
+            return;
+        }
         Unbank(items);
         Bot.Drops.Add(items);
     }
+
 
     /// <summary>
     /// Removes drops from the pickup list.
@@ -2197,32 +2203,6 @@ public class CoreBots
     /// <param name="isTemp">Whether the item is temporary</param>
     public void HuntMonster(string map, string monster, string? item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
     {
-        // try
-        // {
-        //     #region Bullshit
-        //     if (Bot == null)
-        //     {
-        //         Logger("Bot object is null.", stopBot: true);
-        //         return;
-        //     }
-
-        //     if (Bot.TempInv == null)
-        //     {
-        //         Logger("Bot.TempInv object is null.", stopBot: true);
-        //         return;
-        //     }
-
-        //     if (Bot.Player == null)
-        //     {
-        //         Logger("Bot.Player object is null.", stopBot: true);
-        //         return;
-        //     }
-
-        //     if (Bot.Player.CurrentClass == null)
-        //     {
-        //         Logger("Bot.Player.CurrentClass object is null.", stopBot: true);
-        //         return;
-        //     }
 
         if (string.IsNullOrEmpty(monster))
         {
@@ -2245,19 +2225,6 @@ public class CoreBots
         //*insurance**
         Bot.Wait.ForMapLoad(map);
         DebugLogger(this);
-
-        // if (Bot.Monsters == null)
-        // {
-        //     Logger("Bot.Monsters object is null.", stopBot: true);
-        //     return;
-        // }
-
-        // if (Bot.Monsters.MapMonsters == null)
-        // {
-        //     Logger("Bot.Monsters.MapMonsters object is null.", stopBot: true);
-        //     return;
-        // }
-        // #endregion Bullshit
 
         DebugLogger(this);
         Bot.Options.AggroAllMonsters = false;
@@ -2303,16 +2270,8 @@ public class CoreBots
         Bot.Options.AttackWithoutTarget = false;
         DebugLogger(this);
         JumpWait();
-        // }
-        // catch (NullReferenceException ex)
-        // {
-        //     Logger($"A null reference exception occurred: {ex.Message}. StackTrace: {ex.StackTrace}", stopBot: true);
-        // }
-        // catch (Exception ex)
-        // {
-        //     Logger($"An unexpected error occurred: {ex.Message}. StackTrace: {ex.StackTrace}", stopBot: true);
-        // }
     }
+
 
     /// <summary>
     /// Kills a monster using it's MapID
@@ -3748,7 +3707,7 @@ public class CoreBots
                 cellPad = ("Enter", "Spawn");
             else
             {
-                blackListedCells.AddRange(new List<string>() { "Wait", "Blank", "Out", "moveFrame", "CutMikoOrochi"});
+                blackListedCells.AddRange(new List<string>() { "Wait", "Blank", "Out", "moveFrame", "CutMikoOrochi" });
                 blackListedCells.AddRange(Bot.Map.Cells.Where(x => x.StartsWith("Cut")));
                 if (!IsMember)
                     blackListedCells.Add("Eggs");
