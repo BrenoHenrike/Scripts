@@ -75,6 +75,7 @@ public class CoreAdvanced
             return;
 
         Core.Join(map);
+        Bot.Wait.ForMapLoad(map);
 
         if (Bot.Player.InCombat || Bot.Player.HasTarget)
         {
@@ -98,11 +99,14 @@ public class CoreAdvanced
                 if (Core.CheckInventory(req.ID, req.Quantity))
                     continue;
 
-                if (req.Name == "Dragon Runestone" && !Core.GetShopItems(map, shopID).Any(x => req.ID == x.ID))
+                if (Bot.Shops.IsLoaded)
+                    Core.Jump(Bot.Player.Cell, Bot.Player.Pad);
+                    
+                if (req.Name == "Dragon Runestone")
                 {
-                    Farm.DragonRunestone(req.Quantity);
+                    Core.Logger("1");
+                    Farm.DragonRunestone(req.Quantity * quant);
                     //reload to close teh shop to load the next so it properly gets the shopitemdata
-                    Bot.Map.Reload();
                 }
 
                 else if (Core.GetShopItems(map, shopID).Any(x => req.ID == x.ID))
