@@ -114,7 +114,7 @@ public class CoreStory
             Core.Join(map);
             foreach (string monster in monsters)
             {
-                _SmartKill(monster.FormatForCompare(), 20);
+                _SmartKill(monster, 20);
             }
             CurrentRequirements.Clear();
         }
