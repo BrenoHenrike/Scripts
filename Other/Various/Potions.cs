@@ -94,11 +94,11 @@ public class PotionBuyer
             Bot.Config!.Get<bool>("FarmHonor"), Bot.Config!.Get<bool>("FarmDivine"),
             Bot.Config!.Get<bool>("FarmRevitalize"), Bot.Config!.Get<bool>("FarmEnduranceDraught"),
             Bot.Config!.Get<bool>("buyFeli"), Bot.Config!.Get<bool>("FarmDestruction"),
-            Bot.Config!.Get<bool>("FarmBody"), Bot.Config!.Get<bool>("FarmSoul"), 
+            Bot.Config!.Get<bool>("FarmBody"), Bot.Config!.Get<bool>("FarmSoul"),
             Bot.Config!.Get<bool>("UnstableBattle"), Bot.Config!.Get<bool>("UnstableBody"),
             Bot.Config!.Get<bool>("UnstableFate"), Bot.Config!.Get<bool>("UnstableKeen"),
-            Bot.Config!.Get<bool>("UnstableMastery"), Bot.Config!.Get<bool>("UnstableMight"), 
-            Bot.Config!.Get<bool>("UnstableWise"), Bot.Config!.Get<bool>("FarmMight"), 
+            Bot.Config!.Get<bool>("UnstableMastery"), Bot.Config!.Get<bool>("UnstableMight"),
+            Bot.Config!.Get<bool>("UnstableWise"), Bot.Config!.Get<bool>("FarmMight"),
             Bot.Config!.Get<bool>("FarmMalic")
             };
         Core.DebugLogger(this);
@@ -308,9 +308,7 @@ public class PotionBuyer
                             Core.HuntMonster("twig", "Sweetish Fish", ingredient, ingreQuant, isTemp: false);
                         else
                         {
-                            // Adv.BuyItem("alchemyacademy", 395, 7132, ingreQuant, 1, 8844);
-                            Adv.BuyItem("alchemyacademy", 395, 62749, 1, 1, 8777);
-                            Core.BuyItem("alchemyacademy", 395, "Dragon Runestone", 1, 8844);
+                            // Farm.DragonRunestone(ingreQuant);
                             Adv.BuyItem("alchemyacademy", 397, 11472, ingreQuant, 2, 1229);
                         }
                         break;
@@ -382,7 +380,10 @@ public class PotionBuyer
                                 Core.KillMonster("lair", "Hole", "Center", "*", isTemp: false, log: false);
                         }
                         else if (!Core.CheckInventory(11475, ingreQuant))
+                        {
+                            
                             Adv.BuyItem("alchemyacademy", 397, 11475, ingreQuant, 2, 1232);
+                        }
                         break;
 
                     case "Roc Tongue":
