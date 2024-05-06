@@ -7,6 +7,7 @@ tags: null
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/Other\Various\Potions.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Models.Monsters;
@@ -20,6 +21,7 @@ public class DefaultTemplate
     private CoreAdvanced Adv = new();
     private CoreFarms Farm = new();
     private CoreStory Story = new();
+    private PotionBuyer PotionBuyer = new();
 
     public void ScriptMain(IScriptInterface Bot)
     {
@@ -32,17 +34,8 @@ public class DefaultTemplate
 
     public void Example()
     {
-        if (Core.CheckInventory("item", 1))
-            return;
+        PotionBuyer.INeedYourStrongestPotions(new[] { "Judgment Tonic" }, new bool[] { true }, 50, true, true);
 
 
-        Core.RegisterQuests(000);
-        while (!Bot.ShouldExit && Core.CheckInventory("item", 1))
-        {
-            Core.HuntMonster("map", "mob", "item", 1, isTemp: false, log: false);
-            Core.HuntMonsterMapID("map", 1, "item", 1, isTemp: false, log: false);
-            Core.KillMonster("map", "cell", "pad", "mob", "item", 1, isTemp: false, log: false);
-        }
-        Core.CancelRegisteredQuests();
     }
 }
