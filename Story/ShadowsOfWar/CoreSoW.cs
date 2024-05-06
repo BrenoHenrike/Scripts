@@ -557,7 +557,7 @@ public class CoreSoW
             Core.EnsureAccept(7422);
             Core.Join("Darkally", "r2", "Left");
             while (!Bot.ShouldExit && !Core.CheckInventory(53855, 10))
-                Core.KillMonster("Darkally", "Dark Makai", "r2", "Left");
+                Core.KillMonster("Darkally", "r2", "Left", "Dark Makai");
             Core.EnsureComplete(7422);
         }
 
