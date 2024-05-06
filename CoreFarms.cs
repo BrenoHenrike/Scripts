@@ -1011,6 +1011,7 @@ public class CoreFarms
     {
         if (Core.CheckInventory("Dragon Runestone", quant))
             return;
+            Core.Join("alchemyacademy");
 
         Core.ToggleAggro(false);
         Core.JumpWait();
@@ -1021,6 +1022,7 @@ public class CoreFarms
         Gold((100000 * (quant - Bot.Inventory.GetQuantity("Dragon Runestone"))) - Bot.Inventory.GetQuantity("Gold Voucher 100k"));
         Core.BuyItem("alchemyacademy", 395, "Gold Voucher 100k", quant - Bot.Inventory.GetQuantity("Dragon Runestone"));
         Core.BuyItem("alchemyacademy", 395, "Dragon Runestone", quant, 8844);
+        Bot.Wait.ForPickup("Dragon Runestone");
     }
 
     public void AlchemyREP(int rank = 10, bool goldMethod = true)
