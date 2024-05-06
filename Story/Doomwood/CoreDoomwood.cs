@@ -671,8 +671,8 @@ public class CoreDoomwood
         Story.KillQuest(7609, "techdungeon", "NecroMech");
 
         //7610    Ew, Rats
-        Story.KillQuest(7610, "techdungeon", "Rotting Rat");
         Story.MapItemQuest(7610, "techdungeon", 7515, 6);
+        Story.KillQuest(7610, "techdungeon", "Rotting Rat");
 
         //7611    Grab Their Gear
         if (!Story.QuestProgression(7611))
@@ -691,8 +691,8 @@ public class CoreDoomwood
         Story.MapItemQuest(7613, "techdungeon", 7516);
 
         //7614    Head on Out
-        Story.KillQuest(7614, "techdungeon", "DoomBorg Guard");
         Story.MapItemQuest(7614, "techdungeon", 7517);
+        Story.KillQuest(7614, "techdungeon", "DoomBorg Guard");
 
         //7615    Take Him Down
         Story.KillQuest(7615, "techdungeon", "Kalron the Cryptborg");

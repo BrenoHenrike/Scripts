@@ -2224,7 +2224,7 @@ public class CoreBots
         //         return;
         //     }
 
-        if (string.IsNullOrEmpty(monster) || monster == "*")
+        if (string.IsNullOrEmpty(monster))
         {
             Logger($"Monster: \"{monster}\" - {item} is invalid for Core.Hunt\n" +
             $"Please Ping Tato with the correct \"\"mob\" - \"cell\" - \"left\"\"\n" +
@@ -2264,23 +2264,9 @@ public class CoreBots
         DebugLogger(this);
         Bot.Options.AggroMonsters = false;
         DebugLogger(this);
-        Monster? M = Bot.Monsters.MapMonsters.FirstOrDefault(m => m != null && m.Name.FormatForCompare() == monster.FormatForCompare());
+        Monster? M = Bot.Monsters.MapMonsters.Find(m => m != null && m.Name.FormatForCompare() == monster.FormatForCompare());
 
-        if (item == null)
-        {
-            if (Bot.Player.Cell != M!.Cell)
-            {
-                Jump(M!.Cell, "Left");
-                Bot.Wait.ForCellChange(M!.Cell);
-            }
-
-            M = Bot.Monsters.MapMonsters.FirstOrDefault(m => m != null && m.Name.FormatForCompare() == monster.FormatForCompare());
-            Bot.Kill.Monster(M!.Name.FormatForCompare());
-            JumpWait();
-            Rest();
-            return;
-        }
-        else if (item != null)
+        if (item != null)
         {
             DebugLogger(this);
             if (!isTemp)
@@ -2293,7 +2279,7 @@ public class CoreBots
             DebugLogger(this);
             while (!Bot.ShouldExit && isTemp ? !Bot.TempInv.Contains(item, quant) : !CheckInventory(item, quant))
             {
-                M = Bot.Monsters.MapMonsters.FirstOrDefault(m => m != null && m.Name.FormatForCompare() == monster.FormatForCompare());
+                // M = Bot.Monsters.MapMonsters.Find(m => m != null && m.Name.FormatForCompare() == monster.FormatForCompare());
 
                 DebugLogger(this);
 
@@ -3762,7 +3748,7 @@ public class CoreBots
                 cellPad = ("Enter", "Spawn");
             else
             {
-                blackListedCells.AddRange(new List<string>() { "Wait", "Blank", "Out", "moveFrame", });
+                blackListedCells.AddRange(new List<string>() { "Wait", "Blank", "Out", "moveFrame", "CutMikoOrochi"});
                 blackListedCells.AddRange(Bot.Map.Cells.Where(x => x.StartsWith("Cut")));
                 if (!IsMember)
                     blackListedCells.Add("Eggs");

@@ -40,28 +40,41 @@ public class CoreStory
     /// <param name="AutoCompleteQuest">If the method should turn in the quest for you when the quest can be completed</param>
     public void KillQuest(int QuestID, string MapName, string MonsterName, bool GetReward = true, string Reward = "All", bool AutoCompleteQuest = true)
     {
+        Core.DebugLogger(this);
         Quest QuestData = Core.EnsureLoad(QuestID);
         if (QuestProgression(QuestID, GetReward, Reward))
         {
+            Core.DebugLogger(this);
             return;
         }
+        Core.DebugLogger(this);
 
         SmartKillMonster(QuestID, MapName, MonsterName);
+        Core.DebugLogger(this);
         if (AutoCompleteQuest)
         {
+            Core.DebugLogger(this);
             foreach (ItemBase item in QuestData.Requirements)
             {
+                Core.DebugLogger(this);
                 Bot.Wait.ForPickup(item.ID);
             }
         }
+        Core.DebugLogger(this);
         TryComplete(QuestData, AutoCompleteQuest);
+        Core.DebugLogger(this);
 
         void SmartKillMonster(int questID, string map, string monster)
         {
+            Core.DebugLogger(this);
             Core.EnsureAccept(questID);
+            Core.DebugLogger(this);
             _AddRequirement(questID);
+            Core.DebugLogger(this);
             Core.Join(map);
-            _SmartKill(monster.FormatForCompare(), 20);
+            Core.DebugLogger(this);
+            _SmartKill(monster, 20);
+            Core.DebugLogger(this);
             CurrentRequirements.Clear();
         }
     }
@@ -597,41 +610,58 @@ public class CoreStory
     {
         if (monster == null)
         {
+            Core.DebugLogger(this);
             Core.Logger("ERROR: monster is null, please report", stopBot: true);
+            Core.DebugLogger(this);
             return;
         }
 
+        Core.DebugLogger(this);
         bool repeat = true;
+        Core.DebugLogger(this);
         for (int j = 0; j < iterations; j++)
         {
+            Core.DebugLogger(this);
             if (CurrentRequirements.Count == 0)
             {
+                Core.DebugLogger(this);
                 break;
             }
             if (CurrentRequirements.Count == 1)
             {
+                Core.DebugLogger(this);
                 if (_RepeatCheck(ref repeat, 0))
                 {
+                    Core.DebugLogger(this);
                     break;
                 }
+                Core.DebugLogger(this);
                 _MonsterHunt(ref repeat, monster, CurrentRequirements[0].Name, CurrentRequirements[0].Quantity, CurrentRequirements[0].Temp, 0);
+                Core.DebugLogger(this);
                 break;
             }
             else
             {
+                Core.DebugLogger(this);
                 for (int i = CurrentRequirements.Count - 1; i >= 0; i--)
                 {
+                    Core.DebugLogger(this);
                     if (j == 0 && Core.CheckInventory(CurrentRequirements[i].Name, CurrentRequirements[i].Quantity))
                     {
+                        Core.DebugLogger(this);
                         CurrentRequirements.RemoveAt(i);
+                        Core.DebugLogger(this);
                         continue;
                     }
                     if (j != 0 && Core.CheckInventory(CurrentRequirements[i].Name))
                     {
+                        Core.DebugLogger(this);
                         if (_RepeatCheck(ref repeat, i))
                         {
+                            Core.DebugLogger(this);
                             break;
                         }
+                        Core.DebugLogger(this);
                         _MonsterHunt(ref repeat, monster, CurrentRequirements[i].Name, CurrentRequirements[i].Quantity, CurrentRequirements[i].Temp, i);
                         break;
                     }
@@ -639,9 +669,11 @@ public class CoreStory
             }
             if (!repeat)
             {
+                Core.DebugLogger(this);
                 break;
             }
 
+            Core.DebugLogger(this);
             Bot.Hunt.Monster(monster);
             Bot.Drops.Pickup(CurrentRequirements.Where(item => !item.Temp).Select(item => item.Name).ToArray());
             Core.Sleep();
@@ -652,24 +684,30 @@ public class CoreStory
     {
         if (itemName == null || isTemp ? Bot.TempInv.Contains(itemName!, quantity) : Core.CheckInventory(itemName, quantity))
         {
+            Core.DebugLogger(this);
             CurrentRequirements.RemoveAt(index);
             shouldRepeat = false;
             return;
         }
 
-        Monster? M = Bot.Monsters.MapMonsters.FirstOrDefault(x => x.Name.FormatForCompare() == monster.FormatForCompare());
-        while (!Bot.ShouldExit && isTemp ? !Bot.TempInv.Contains(itemName!, quantity) : !Core.CheckInventory(itemName!, quantity))
+        Monster? M = Bot.Monsters.MapMonsters.Find(x => x.Name.FormatForCompare() == monster.FormatForCompare());
+        while (!Bot.ShouldExit && itemName != null && isTemp ? !Bot.TempInv.Contains(itemName, quantity) : !Core.CheckInventory(itemName, quantity))
         {
+            Core.DebugLogger(this);
             if (Bot.Player.Cell != M!.Cell)
                 Core.Jump(M!.Cell, Bot.Player.Pad);
-
-            Bot.Combat.Attack(M!.Name);
+            Core.DebugLogger(this);
+            Bot.Combat.Attack(M);
             Core.Sleep();
         }
+        Core.DebugLogger(this);
         if (!isTemp)
             Bot.Wait.ForPickup(itemName!);
+        Core.DebugLogger(this);
         CurrentRequirements.RemoveAt(index);
+        Core.DebugLogger(this);
         shouldRepeat = false;
+        Core.DebugLogger(this);
     }
 
     private bool _RepeatCheck(ref bool shouldRepeat, int index)
