@@ -78,7 +78,7 @@ public class PotionBuyer
             "Judgment Tonic", "Fortitude Tonic",
             "Fate Tonic", "Sage Tonic", "Potent Battle Elixir", "Potent Malevolence Elixir",
             "Potent Honor Potion", "Unstable Divine Elixir", "Potent Revitalize Elixir",
-            "Felicitous Philtre", "Endurance Draught", "Potent Destruction Elixir",
+            "Endurance Draught", "Felicitous Philtre", "Potent Destruction Elixir",
             "Body Tonic", "Soul Potion", "Unstable Battle Elixir", "Unstable Body Tonic",
             "Unstable Fate Tonic", "Unstable Keen Elixir", "Unstable Mastery Tonic",
             "Unstable Might Tonic", "Unstable Wise Tonic", "Might Tonic", "Malic Potion"
@@ -87,20 +87,20 @@ public class PotionBuyer
         Core.DebugLogger(this);
         if (!Seperate)
             PotionsFarm = new[]
-                {
+            {
             Bot.Config!.Get<bool>("FarmJudgment"), Bot.Config!.Get<bool>("FarmFortitude"),
             Bot.Config!.Get<bool>("FarmFate"), Bot.Config!.Get<bool>("FarmSage"),
             Bot.Config!.Get<bool>("FarmBattle"), Bot.Config!.Get<bool>("FarmMalevolence"),
             Bot.Config!.Get<bool>("FarmHonor"), Bot.Config!.Get<bool>("FarmDivine"),
             Bot.Config!.Get<bool>("FarmRevitalize"), Bot.Config!.Get<bool>("FarmEnduranceDraught"),
-            Bot.Config!.Get<bool>("buyFeli"), Bot.Config!.Get<bool>("buyEndu"),
-            Bot.Config!.Get<bool>("FarmDestruction"),Bot.Config!.Get<bool>("FarmBody"),
-            Bot.Config!.Get<bool>("FarmSoul"), Bot.Config!.Get<bool>("UnstableBattle"),
-            Bot.Config!.Get<bool>("UnstableBody"), Bot.Config!.Get<bool>("UnstableFate"),
-            Bot.Config!.Get<bool>("UnstableKeen"), Bot.Config!.Get<bool>("UnstableMastery"),
-            Bot.Config!.Get<bool>("UnstableMight"), Bot.Config!.Get<bool>("UnstableWise"),
-            Bot.Config!.Get<bool>("FarmMight"), Bot.Config!.Get<bool>("FarmMalic")
-        };
+            Bot.Config!.Get<bool>("buyFeli"), Bot.Config!.Get<bool>("FarmDestruction"),
+            Bot.Config!.Get<bool>("FarmBody"), Bot.Config!.Get<bool>("FarmSoul"), 
+            Bot.Config!.Get<bool>("UnstableBattle"), Bot.Config!.Get<bool>("UnstableBody"),
+            Bot.Config!.Get<bool>("UnstableFate"), Bot.Config!.Get<bool>("UnstableKeen"),
+            Bot.Config!.Get<bool>("UnstableMastery"), Bot.Config!.Get<bool>("UnstableMight"), 
+            Bot.Config!.Get<bool>("UnstableWise"), Bot.Config!.Get<bool>("FarmMight"), 
+            Bot.Config!.Get<bool>("FarmMalic")
+            };
         Core.DebugLogger(this);
 
         if (!Seperate && !PotionsFarm!.Any(x => x) || PotionQuant < 1 || PotionQuant > 300)
