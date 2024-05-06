@@ -2168,8 +2168,6 @@ public class CoreBots
         //     return;
         // }
 
-
-
         if (item == null)
         {
             if (log)
@@ -2203,20 +2201,32 @@ public class CoreBots
     /// <param name="isTemp">Whether the item is temporary</param>
     public void HuntMonster(string map, string monster, string? item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
     {
-
-        if (string.IsNullOrEmpty(monster))
+        bool HasWarnedMon = false;
+        bool HasWarnedItem = false;
+        if ((string.IsNullOrEmpty(monster) && !HasWarnedMon) || (item == null && !HasWarnedItem))
         {
-            Logger($"Monster: \"{monster}\" - {item} is invalid for Core.Hunt\n" +
-            $"Please Ping Tato with the correct \"\"mob\" - \"cell\" - \"left\"\"\n" +
-            $"for this specific item along with the script and\n" +
-            $"a SCREENSHOT of the `Logs` [button] > scripts tab.", stopBot: true);
+            string message = string.IsNullOrEmpty(monster) ?
+                $"Monster: \"{monster}\" - {item} is invalid for Core.Hunt\n" +
+                $"Please Ping Tato with the correct \"\"mob\" - \"cell\" - \"left\"\"\n" +
+                $"for this specific item along with the script and\n" +
+                $"a SCREENSHOT of the `Logs` [button] > scripts tab." :
+                $"Item set to: {item}, if this just hunts once\n" +
+                ", or starts and afks (sitting at the monster),\n" +
+                "that means the \"item\" was set to null(or is empty),\n" +
+                "@tato2 on discord with the script & what item its farming\n" +
+                "(preferably with screenshots of the `Logs > scripts tab`).";
+
+            Logger(message, "READ AND PING @tato2 ON DISCORD PLS", messageBox: true, stopBot: true);
+
+            if (string.IsNullOrEmpty(monster))
+                HasWarnedMon = true;
+            else
+                HasWarnedItem = true;
         }
 
         if (item != null && (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
             return;
 
-        if (item == null)
-            Logger($"Item set to: {item}, if this just hunts once, or starts and afks (sitting at the monster), that means the \"item\" was set to null(or is empty), @tato2 on disc with the script & what item its farming(preferably with screenshots of the `Logs > scripts tab`).", messageBox: false);
 
         DebugLogger(this);
         Join(map, publicRoom: publicRoom);
