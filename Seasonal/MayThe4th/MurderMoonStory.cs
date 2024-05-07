@@ -66,7 +66,8 @@ public class MurderMoon
             else
                 Core.Equip("Darkside");
             InventoryItem? EquippedWeapon = Bot.Inventory.Items.Find(i => i != null && i.Equipped && Adv.WeaponCatagories.Contains(i.Category));
-            Adv.EnhanceItem(EquippedWeapon!.Name, EnhancementType.Wizard, Adv.CurrentCapeSpecial(), Adv.CurrentHelmSpecial(), WeaponSpecial.Elysium); Story.KillQuest(9224, "murdermoon", "Fourth Lynaria");
+            Adv.EnhanceItem(EquippedWeapon!.Name, EnhancementType.Wizard, Adv.CurrentCapeSpecial(), Adv.CurrentHelmSpecial(), WeaponSpecial.Elysium);
+            Story.KillQuest(9224, "murdermoon", "Fourth Lynaria");
             Core.EquipClass(ClassType.Farm);
         }
     }
