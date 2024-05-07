@@ -36,7 +36,7 @@ public class CoreArchMage
     public List<IOption> Options = new()
     {
         new Option<bool>("lumina_elementi", "Lumina Elementi", "Todo the last quest or not, for the 51% wep(takes awhileand will require aditional boss items.) [On by default]", true),
-        new Option<bool>("cosmetics", "Get Cosmetics", "Gets the cosmetic rewards (redoes quests if you don't have them, disable to just get ArchMage and the weapon) [On by default]", true),
+        new Option<bool>("cosmetics", "Get Cosmetics", "Gets the cosmetic rewards (redoes quests if you don't have them, disable to just get ArchMage and the weapon) [On by default]", false),
         new Option<bool>("army", "Armying?", "use when running on 4 accounts at once only, will probably get out of sync.) [Off by default]", false),
         CoreBots.Instance.SkipOptions,
     };
@@ -137,11 +137,12 @@ public class CoreArchMage
             LuminaElementi();
     }
 
-    public void LuminaElementi(bool standalone = false)
+    public void LuminaElementi(bool standalone = false, bool Extras = false)
     {
-        if (standalone || Bot.Config!.Get<bool>("cosmetics") ?
+        bool GetCosmetics = Bot.Config!.Get<bool>("cosmetics") || Extras == true;
+        if (standalone || GetCosmetics ?
                 Core.CheckInventory(Core.EnsureLoad(8919).Rewards.Select(x => x.ID).ToArray(), toInv: false) :
-                Core.CheckInventory("Providence", toInv: false))
+                Core.CheckInventory("Providence"))
             return;
 
         if (!Bot.Quests.IsUnlocked(8919))
@@ -152,10 +153,10 @@ public class CoreArchMage
 
         UnboundTome(31);
         BookOfArcana();
+
         BossItemCheck(2500, "Elemental Binding");
 
-        Core.EquipClass(ClassType.Farm);
-        SOWM.PrismaticSeams();
+        SOWM.PrismaticSeams(2000);
 
         Core.FarmingLogger("Unbound Thread", 100);
         //Fallen Branches 8869
@@ -208,8 +209,9 @@ public class CoreArchMage
     public void BookOfFire(bool Extras = false)
     {
         //Book of Fire: Immolation
-        if (Extras ?
-                Core.CheckInventory(new[] { "Book of Fire", "Arcane Floating Sigil", "Sheathed Archmage's Staff" }, toInv: false) :
+        bool GetCosmetics = Bot.Config!.Get<bool>("cosmetics") || Extras == true;
+        if (GetCosmetics ?
+                Core.CheckInventory(Core.EnsureLoad(8914).Rewards.Select(x => x.ID).ToArray(), toInv: false) :
                 Core.CheckInventory("Book of Fire"))
             return;
 
@@ -235,8 +237,9 @@ public class CoreArchMage
 
     public void BookOfIce(bool Extras = false)
     {
-        if (Extras ?
-                Core.CheckInventory(new[] { "Book of Ice", "Archmage's Cowl", "Archmage's Cowl and Locks" }, toInv: false) :
+        bool GetCosmetics = Bot.Config!.Get<bool>("cosmetics") || Extras == true;
+        if (GetCosmetics ?
+                Core.CheckInventory(Core.EnsureLoad(8915).Rewards.Select(x => x.ID).ToArray(), toInv: false) :
                 Core.CheckInventory("Book of Ice"))
             return;
 
@@ -270,8 +273,9 @@ public class CoreArchMage
 
     public void BookOfAether(bool Extras = false)
     {
-        if (Extras ?
-                Core.CheckInventory(new[] { "Book of Aether", "Archmage's Staff" }, toInv: false) :
+        bool GetCosmetics = Bot.Config!.Get<bool>("cosmetics") || Extras == true;
+        if (GetCosmetics ?
+                Core.CheckInventory(Core.EnsureLoad(8916).Rewards.Select(x => x.ID).ToArray(), toInv: false) :
                 Core.CheckInventory("Book of Aether"))
             return;
 
@@ -295,9 +299,10 @@ public class CoreArchMage
 
     public void BookOfArcana(bool Extras = false)
     {
-        if (Extras ?
-                Core.CheckInventory(new[] { "Book of Arcana", "Archmage's Robes" }, toInv: false) :
-                Core.CheckInventory("Book of Arcana") && !Extras)
+        bool GetCosmetics = Bot.Config!.Get<bool>("cosmetics") || Extras == true;
+        if (GetCosmetics ?
+                Core.CheckInventory(Core.EnsureLoad(8917).Rewards.Select(x => x.ID).ToArray(), toInv: false) :
+                Core.CheckInventory("Book of Arcana"))
             return;
 
         Core.FarmingLogger("Book of Arcana", 1);
@@ -442,7 +447,7 @@ public class CoreArchMage
     {
         if (Core.CheckInventory("Unbound Tome", quant))
         {
-            Core.Logger("We have enough Unbound Tomes.");
+            Core.FarmingLogger("Unbound Tome", quant);
             return;
         }
 
@@ -587,7 +592,7 @@ public class CoreArchMage
         "Arcane Sigil",
         "Archmage"
     };
-    private string[] BossDrops = {
+    private readonly string[] BossDrops = {
         "Void Essentia",
         "Vital Exanima",
         "Everlight Flame",
@@ -598,7 +603,7 @@ public class CoreArchMage
         "Undying Resolve",
         "Elemental Binding"
     };
-    private string[] Cosmetics = {
+    private readonly string[] Cosmetics = {
         "Arcane Sigil",
         "Arcane Floating Sigil",
         "Sheathed Archmage's Staff",
