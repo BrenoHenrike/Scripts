@@ -55,7 +55,7 @@ public class MurderMoon
         // Liberty's Ghost (9224)
         if (!Story.QuestProgression(9224))
         {
-            if ((!Core.CheckInventory("Dark Lord") && !Core.CheckInventory("Dark Side")) || !Core.isCompletedBefore(8821))
+            if ((!Core.CheckInventory("Dark Lord") && !Core.CheckInventory("Darkside")) || !Core.isCompletedBefore(8821))
             {
                 Core.Logger("This quest requires either Dark Lord or Darkside class and Elysium enhancement, use army.");
                 return;
