@@ -8533,7 +8533,7 @@
       "developer"
     ],
     "path": "Tools/ForDevelopers/MergeTemplateHelper.cs",
-    "size": 8774,
+    "size": 8808,
     "fileName": "MergeTemplateHelper.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/ForDevelopers/MergeTemplateHelper.cs"
   },
@@ -15726,6 +15726,23 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Grenwog(Easter)/GrenstoryMerge.cs"
   },
   {
+    "name": "Zoda's Quests",
+    "description": "This script will complete Zoda's Quests in /zorbaspalace.",
+    "tags": [
+      "zodas",
+      "zorbas",
+      "palace",
+      "seasonal",
+      "story",
+      "quests",
+      "may4th"
+    ],
+    "path": "Seasonal/MayThe4th/TwigguHunt.cs",
+    "size": 1609,
+    "fileName": "TwigguHunt.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/MayThe4th/TwigguHunt.cs"
+  },
+  {
     "name": "Murder Moon Merge",
     "description": "This bot will farm the items belonging to the selected mode for the Murder Moon Merge [1998] in /murdermoon",
     "tags": [
@@ -15858,7 +15875,7 @@
       "may-the-4th"
     ],
     "path": "Seasonal/MayThe4th/MurderMoonStory.cs",
-    "size": 1402,
+    "size": 2318,
     "fileName": "MurderMoonStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/MayThe4th/MurderMoonStory.cs"
   },
@@ -15877,6 +15894,38 @@
     "size": 2451,
     "fileName": "DarkLord.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/MayThe4th/DarkLord.cs"
+  },
+  {
+    "name": "GL-24Ks Loot Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the GL-24Ks Loot Merge [2437] in /twigguhunt",
+    "tags": [
+      "gl-24ks",
+      "gl 24ks",
+      "loot",
+      "merge",
+      "twigguhunt",
+      "gold",
+      "voucher",
+      "k",
+      "glk",
+      "cloaked",
+      "visor",
+      "cloak",
+      "pronged",
+      "spear",
+      "spears",
+      "gilded",
+      "seraphic",
+      "fourth",
+      "morph",
+      "beard",
+      "beacon",
+      "glst"
+    ],
+    "path": "Seasonal/MayThe4th/GL24KsLootMerge.cs",
+    "size": 7552,
+    "fileName": "GL24KsLootMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/MayThe4th/GL24KsLootMerge.cs"
   },
   {
     "name": "Zoda's Quests",
