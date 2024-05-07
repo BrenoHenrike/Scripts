@@ -2205,17 +2205,7 @@ public class CoreBots
         bool HasWarnedItem = false;
         if ((string.IsNullOrEmpty(monster) && !HasWarnedMon) || (item == null && !HasWarnedItem))
         {
-            string message = string.IsNullOrEmpty(monster) ?
-                $"Monster: \"{monster}\" - {item} is invalid for Core.Hunt\n" +
-                $"Please Ping Tato with the correct \"\"mob\" - \"cell\" - \"left\"\"\n" +
-                $"for this specific item along with the script and\n" +
-                $"a SCREENSHOT of the `Logs` [button] > scripts tab." :
-                $"Item set to: {item}, if this just hunts once\n" +
-                ", or starts and afks (sitting at the monster),\n" +
-                "that means the \"item\" was set to null(or is empty),\n" +
-                "@tato2 on discord with the script & what item its farming\n" +
-                "(preferably with screenshots of the `Logs > scripts tab`).";
-
+            string message = string.IsNullOrEmpty(monster) ? "Monster: \"" + monster + "\" - " + item + " is invalid for Core.Hunt Please Ping Tato with the correct \"\"Monster\" - \"Cell\" - \"Pad\"\" for this specific item along with the script and a SCREENSHOT of the `Logs` [button] > scripts tab." : "Item set to: []" + item + "], if this just hunts once, or starts and afks (sitting at the monster), that means the \"item\" was set to null(or is empty), @tato2 on discord with the script & what item its farming (preferably with screenshots of the `Logs > scripts tab`).";
             Logger(message, "READ AND PING @tato2 ON DISCORD PLS", messageBox: true, stopBot: true);
 
             if (string.IsNullOrEmpty(monster))
@@ -2242,8 +2232,18 @@ public class CoreBots
         Bot.Options.AggroMonsters = false;
         DebugLogger(this);
         Monster? M = Bot.Monsters.MapMonsters.Find(m => m != null && m.Name.FormatForCompare() == monster.FormatForCompare());
+        if (item == null)
+        {
+            if (Bot.Player.Cell != M!.Cell)
+                Jump(M.Cell, "Left");
 
-        if (item != null)
+
+            Bot.Kill.Monster(M);
+            JumpWait();
+            Rest();
+            return;
+        }
+        else if (item != null)
         {
             DebugLogger(this);
             if (!isTemp)
@@ -2256,8 +2256,6 @@ public class CoreBots
             DebugLogger(this);
             while (!Bot.ShouldExit && isTemp ? !Bot.TempInv.Contains(item, quant) : !CheckInventory(item, quant))
             {
-                // M = Bot.Monsters.MapMonsters.Find(m => m != null && m.Name.FormatForCompare() == monster.FormatForCompare());
-
                 DebugLogger(this);
 
                 if (Bot.Player.Cell != M!.Cell)
