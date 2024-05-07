@@ -2448,7 +2448,7 @@ public class Core13LoC
         {
             Core.EnsureAccept(3881);
             while (!Bot.ShouldExit && !Core.CheckInventory("Prince Drakath Defeated"))
-                Core.HuntMonster("finalshowdown", "Prince Drakath");
+                Core.HuntMonsterMapID("finalshowdown", 1);
             Core.EnsureComplete(3881);
         }
     }
