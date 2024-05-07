@@ -8,6 +8,7 @@ tags: story, quest, seasonal, murder, moon, may-the-4th
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
 
 public class MurderMoon
 {
@@ -64,8 +65,8 @@ public class MurderMoon
                 Core.Equip("Dark Lord");
             else
                 Core.Equip("Darkside");
-            Adv.EnhanceEquipped(EnhancementType.Wizard, wSpecial: WeaponSpecial.Elysium);
-            Story.KillQuest(9224, "murdermoon", "Fourth Lynaria");
+            InventoryItem? EquippedWeapon = Bot.Inventory.Items.Find(i => i != null && i.Equipped && Adv.WeaponCatagories.Contains(i.Category));
+            Adv.EnhanceItem(EquippedWeapon!.Name, EnhancementType.Wizard, Adv.CurrentCapeSpecial(), Adv.CurrentHelmSpecial(), WeaponSpecial.Elysium); Story.KillQuest(9224, "murdermoon", "Fourth Lynaria");
             Core.EquipClass(ClassType.Farm);
         }
     }
