@@ -7259,7 +7259,7 @@
       "null"
     ],
     "path": "Nation/VHL/CoreVHL.cs",
-    "size": 7907,
+    "size": 7547,
     "fileName": "CoreVHL.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/VHL/CoreVHL.cs"
   },
@@ -8363,7 +8363,7 @@
       "void chasm"
     ],
     "path": "Nation/Various/PrimeFiendShard.cs",
-    "size": 9775,
+    "size": 9620,
     "fileName": "PrimeFiendShard.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/PrimeFiendShard.cs"
   },
