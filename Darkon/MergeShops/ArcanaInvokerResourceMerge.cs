@@ -271,7 +271,7 @@ public class ArcanaInvokerResourceMerge
                 case "Dread Deadmoor BattleAxe":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster("deadmoor", "Nightmarer", req.Name, quant, false, false);
+                    Core.HuntMonster("deadmoor", "Nightmare", req.Name, quant, false, false);
                     break;
 
                 case "SMU Brutalcorn's Horn":
