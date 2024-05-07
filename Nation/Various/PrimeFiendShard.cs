@@ -231,12 +231,7 @@ public class PrimeFiendShard
 
             // Ensure requirements are unbanked
             Quest? Quest = Core.EnsureLoad(9559);
-            foreach (ItemBase Item in Quest!.Requirements)
-                while (!Bot.ShouldExit && !Core.CheckInventory(Item.ID))
-                {
-                    Core.Unbank(Item.ID);
-                    Core.Sleep();
-                }
+            Core.Unbank(Core.EnsureLoad(8916).Requirements.Select(x => x.ID).ToArray());
             Core.EnsureComplete(9559);
         }
     }
