@@ -226,8 +226,12 @@ public class PrimeFiendShard
             Nation.FarmTotemofNulgath(60);
             Nation.FarmGemofNulgath(300);
             Nation.FarmBloodGem(100);
-            while (!Bot.ShouldExit && !Core.CheckInventory("Roentgenium of Nulgath", 10) && Core.CheckInventory("Elders' Blood"))
+            while (!Bot.ShouldExit && !Core.CheckInventory("Roentgenium of Nulgath", 10))
+            {
                 VHL.VHLChallenge(10);
+                if (!Core.CheckInventory("Elders' Blood"))
+                    break;
+            }
 
             // Ensure requirements are unbanked
             Quest? Quest = Core.EnsureLoad(9559);

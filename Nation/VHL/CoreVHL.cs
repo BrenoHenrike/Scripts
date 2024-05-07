@@ -81,7 +81,7 @@ public class CoreVHL
         {
             Core.EnsureAccept(5660);
 
-            if (!Core.CheckInventory("Elders' Blood", ((quant - (Bot.Inventory.Items.FirstOrDefault(x => x.Name == "Elders' Blood" && x.Name != null)?.Quantity ?? 0)) > 5 ? 5 : (quant - (Bot.Inventory.Items.FirstOrDefault(x => x.Name == "Elders' Blood" && x.Name != null)?.Quantity ?? 0)))))
+            if (!Core.CheckInventory("Elders' Blood", (quant - (Bot.Inventory.Items.FirstOrDefault(x => x.Name == "Elders' Blood" && x.Name != null)?.Quantity ?? 0)) > 5 ? 5 : (quant - (Bot.Inventory.Items.FirstOrDefault(x => x.Name == "Elders' Blood" && x.Name != null)?.Quantity ?? 0))))
             {
                 Daily.EldersBlood();
                 _SparrowMethod((quant - (Bot.Inventory.Items.FirstOrDefault(x => x.Name == "Elders' Blood"
