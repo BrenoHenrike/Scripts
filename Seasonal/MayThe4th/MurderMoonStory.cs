@@ -56,6 +56,7 @@ public class MurderMoon
         // Liberty's Ghost (9224)
         if (!Story.QuestProgression(9224))
         {
+            Adv.GearStore();
             if ((!Core.CheckInventory("Dark Lord") && !Core.CheckInventory("Darkside")) || !Core.isCompletedBefore(8821))
             {
                 Core.Logger("This quest requires either Dark Lord or Darkside class and Elysium enhancement, use army.");
@@ -66,8 +67,9 @@ public class MurderMoon
             else
                 Core.Equip("Darkside");
             InventoryItem? EquippedWeapon = Bot.Inventory.Items.Find(i => i != null && i.Equipped && Adv.WeaponCatagories.Contains(i.Category));
-            Adv.EnhanceItem(EquippedWeapon!.Name, EnhancementType.Wizard, Adv.CurrentCapeSpecial(), Adv.CurrentHelmSpecial(), WeaponSpecial.Elysium); Story.KillQuest(9224, "murdermoon", "Fourth Lynaria");
-            Core.EquipClass(ClassType.Farm);
+            Adv.EnhanceItem(EquippedWeapon!.Name, EnhancementType.Wizard, wSpecial: WeaponSpecial.Elysium);
+            Story.KillQuest(9224, "murdermoon", "Fourth Lynaria");
+            Adv.GearStore(true);
         }
     }
 }
