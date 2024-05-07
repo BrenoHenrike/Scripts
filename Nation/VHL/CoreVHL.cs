@@ -81,11 +81,10 @@ public class CoreVHL
         {
             Core.EnsureAccept(5660);
 
-            if (!Core.CheckInventory("Elders' Blood", ((quant - (Bot.Inventory.Items.FirstOrDefault(x => x.Name == "Elders' Blood" && x.Name != null)?.Quantity ?? 0)) > 5 ? 5 : (quant - (Bot.Inventory.Items.FirstOrDefault(x => x.Name == "Elders' Blood" && x.Name != null)?.Quantity ?? 0)))))
+            if (!Core.CheckInventory("Elders' Blood", quant - Core.dynamicQuant("Elders' Blood", false) > 5 ? 5 : (quant - Core.dynamicQuant("Elders' Blood", false))))
             {
                 Daily.EldersBlood();
-                _SparrowMethod((quant - (Bot.Inventory.Items.FirstOrDefault(x => x.Name == "Elders' Blood"
-                && x.Name != null)?.Quantity ?? 0)) > 5 ? 5 : (quant - (Bot.Inventory.Items.FirstOrDefault(x => x.Name == "Elders' Blood" && x.Name != null)?.Quantity ?? 0)));
+                _SparrowMethod((quant - Core.dynamicQuant("Elders' Blood", false)) > 5 ? 5 : (quant - Core.dynamicQuant("Elders' Blood", false)));
             }
 
 
@@ -109,9 +108,7 @@ public class CoreVHL
                 goto Continue;
             else if (!Core.CheckInventory("Elders' Blood") && !Core.CheckInventory("Roentgenium of Nulgath", quant))
             {
-                Core.Logger($"Not enough \"Elders' Blood\", please do the daily {2 - (Bot.Inventory.Items.FirstOrDefault(x =>
-                    x.Name == "Elders' Blood" &&
-                    x.Name != null)?.Quantity ?? 0)}");
+                Core.Logger($"Not enough \"Elders' Blood\", please do the daily {2 - Core.dynamicQuant("Elders' Blood", false)}");
                 FarmExtra();
             }
             else return;
