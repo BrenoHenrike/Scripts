@@ -6,6 +6,7 @@ tags: null
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 using System.Globalization;
+using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using CommunityToolkit.Mvvm.DependencyInjection;
@@ -101,7 +102,7 @@ public class CoreAdvanced
 
                 if (Bot.Shops.IsLoaded)
                     Core.Jump(Bot.Player.Cell, Bot.Player.Pad);
-                    
+
                 if (req.Name == "Dragon Runestone")
                 {
                     Core.Logger("1");
@@ -1290,7 +1291,8 @@ public class CoreAdvanced
         ItemCategory.Cape,
 
     };
-    private readonly ItemCategory[] WeaponCatagories = EnhanceableCatagories[..12];
+
+    public readonly ItemCategory[] WeaponCatagories = EnhanceableCatagories[..12];
 
     private void AutoEnhance(List<InventoryItem> ItemList, EnhancementType type, CapeSpecial cSpecial, HelmSpecial hSpecial, WeaponSpecial wSpecial)
     {
@@ -2196,6 +2198,8 @@ public class CoreAdvanced
                 case "vampire lord":
                 case "enchanted vampire lord":
                 case "royal vampire lord":
+                case "darkside":
+                case "dark lord":
                     if (!uAvarice() || !uElysium() || !uPneuma())
                         goto default;
 
@@ -2353,9 +2357,7 @@ public class CoreAdvanced
                 case "dark cryomancer":
                 case "dark harbinger":
                 case "dark legendary hero":
-                case "dark lord":
                 case "darkblood stormking":
-                case "darkside":
                 case "deathknight lord":
                 case "deathknight":
                 case "defender":
