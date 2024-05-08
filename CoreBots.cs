@@ -4351,7 +4351,6 @@ public class CoreBots
 
     public void CutSceneFixer(string map, string? cell, string cutsceneCell, string pad = "Left")
     {
-
         if (string.IsNullOrWhiteSpace(map))
         {
             Logger("Invalid map parameter. Map is required.");
@@ -4367,9 +4366,9 @@ public class CoreBots
         Logger($"CutSceneFixer Started. Cell:\"[{cell}]\"");
 
         // Ensure the bot is in the correct map (either "doomvault" or "doomvaultb")
-        while (Bot.Map.Name != "doomvault" && Bot.Map.Name != "doomvaultb")
+        while (!Bot.ShouldExit && (map == "doomvault" && Bot.Map.Name != "doomvault" || map == "doomvaultb" && Bot.Map.Name != "doomvaultb"))
         {
-            while (!Bot.ShouldExit && (Bot.Player.InCombat || Bot.Player.HasTarget))
+            if (Bot.Player.InCombat || Bot.Player.HasTarget)
             {
                 Bot.Combat.Exit();
                 Bot.Combat.CancelTarget();
@@ -4378,12 +4377,6 @@ public class CoreBots
 
             // Join the correct map based on the provided map parameter
             Join(map);
-        }
-
-        if (!string.IsNullOrEmpty(cell) && Bot.Player.Cell != cell)
-        {
-            Jump(cell);
-            Bot.Wait.ForCellChange(cell);
         }
 
         // Handle different cases for cutsceneCell
@@ -4404,7 +4397,7 @@ public class CoreBots
 
         if (Bot.Player.Cell == cutsceneCell)
         {
-            Logger($"Player not in Cell: \"{cell}\", required for this quest.\nAttempting to fix");
+            Logger($"Player not in Cell: \"{cell}\", \nAttempting to fix");
 
             // Fix the map if needed
             if (Bot.Map.Name != map)
