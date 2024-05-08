@@ -74,6 +74,7 @@ public class SevenCircles
         if (StopForGoldFarm)
             return;
 
+        // Bot.Events.CellChanged += CutSceneFixer;
         //Wrath Against the Machine  
         Story.KillQuest(7982, "sevencircleswar", "Wrath");
         //Blasphemy? Blasphe-you!
@@ -94,27 +95,12 @@ public class SevenCircles
         if (excludeBoss)
             return;
 
-        Bot.Events.CellChanged += CutSceneFixer;
         //The Beast
         if (!Story.QuestProgression(7990))
         {
             Core.EnsureAccept(7990);
             Core.KillMonster("sevencircleswar", "r17", "Left", "The Beast", "The Beast Defeated");
             Core.EnsureComplete(7990);
-        }
-        Bot.Events.CellChanged -= CutSceneFixer;
-
-        void CutSceneFixer(string map, string cell, string pad)
-        {
-            if (map == "sevencircleswar" && cell != "r17")
-            {
-                while (!Bot.ShouldExit && Bot.Player.Cell != "r17")
-                {
-                    Core.Sleep(2500);
-                    Core.Jump("r17", "Left");
-                    Core.Sleep(2500);
-                }
-            }
         }
     }
 

@@ -1995,32 +1995,6 @@ public class CoreBots
     /// <param name="log">Whether it will log that it is killing the monster</param>
     public void KillMonster(string map, string cell, string pad, string monster, string? item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
     {
-        // try
-        // {
-        //     if (Bot == null)
-        //     {
-        //         Logger("Bot object is null.");
-        //         return;
-        //     }
-
-        //     if (Bot.TempInv == null)
-        //     {
-        //         Logger("Bot.TempInv object is null.");
-        //         return;
-        //     }
-
-        //     if (Bot.Player == null)
-        //     {
-        //         Logger("Bot.Player object is null.");
-        //         return;
-        //     }
-
-        //     if (Bot.Player.CurrentClass == null)
-        //     {
-        //         Logger("Bot.Player.CurrentClass object is null.");
-        //         return;
-        //     }
-
         if (item != null && (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
             return;
 
@@ -2030,18 +2004,6 @@ public class CoreBots
         Join(map, cell, pad, publicRoom: publicRoom);
         if (Bot.Player.Cell != cell)
             Jump(cell, pad);
-
-        // if (Bot.Monsters == null)
-        // {
-        //     Logger("Bot.Monsters object is null.");
-        //     return;
-        // }
-
-        // if (Bot.Monsters.CurrentAvailableMonsters == null)
-        // {
-        //     Logger("Bot.Monsters.CurrentAvailableMonsters object is null.");
-        //     return;
-        // }
 
         Bot.Options.AggroAllMonsters = false;
         Bot.Options.AggroMonsters = false;
@@ -2088,15 +2050,6 @@ public class CoreBots
             DebugLogger(this);
             Rest();
         }
-        // }
-        // catch (NullReferenceException ex)
-        // {
-        //     Logger($"An error occurred: {ex.Message}. StackTrace: {ex.StackTrace}", stopBot: true);
-        // }
-        // catch (Exception ex)
-        // {
-        //     Logger($"An unexpected error occurred: {ex.Message}. StackTrace: {ex.StackTrace}", stopBot: true);
-        // }
     }
 
     /// <summary>
@@ -2234,11 +2187,13 @@ public class CoreBots
         Monster? M = Bot.Monsters.MapMonsters.Find(m => m != null && m.Name.FormatForCompare() == monster.FormatForCompare());
         if (item == null)
         {
-            if (Bot.Player.Cell != M!.Cell)
+            while (!Bot.ShouldExit && Bot.Player.Cell != M!.Cell)
+            {
                 Jump(M.Cell, "Left");
+                Bot.Wait.ForCellChange(M.Cell);
+            }
 
-
-            Bot.Kill.Monster(M);
+            Bot.Kill.Monster(M!);
             JumpWait();
             Rest();
             return;
@@ -2258,12 +2213,10 @@ public class CoreBots
             {
                 DebugLogger(this);
 
-                if (Bot.Player.Cell != M!.Cell)
+                while (!Bot.ShouldExit && Bot.Player.Cell != M!.Cell)
                 {
-                    Jump(M!.Cell, "Left");
-                    DebugLogger(this);
-                    Bot.Wait.ForCellChange(M!.Cell);
-                    DebugLogger(this);
+                    Jump(M.Cell, "Left");
+                    Bot.Wait.ForCellChange(M.Cell);
                 }
 
                 DebugLogger(this);
@@ -2814,44 +2767,6 @@ public class CoreBots
 
     public void _KillForItem(string name, string? item, int quantity, bool isTemp = false, bool rejectElse = false, bool log = true, string? cell = null)
     {
-        // try
-        // {
-        //     if (Bot == null)
-        //     {
-        //         Logger("Bot object is null.", stopBot: true);
-        //         return;
-        //     }
-
-        //     if (Bot.TempInv == null)
-        //     {
-        //         Logger("Bot.TempInv object is null.", stopBot: true);
-        //         return;
-        //     }
-
-        //     if (Bot.Player == null)
-        //     {
-        //         Logger("Bot.Player object is null.", stopBot: true);
-        //         return;
-        //     }
-
-        //     if (Bot.Inventory == null)
-        //     {
-        //         Logger("Bot.Inventory object is null.", stopBot: true);
-        //         return;
-        //     }
-
-        //     if (Bot.Combat == null)
-        //     {
-        //         Logger("Bot.Combat object is null.", stopBot: true);
-        //         return;
-        //     }
-
-        //     if (Bot.Drops == null)
-        //     {
-        //         Logger("Bot.Drops object is null.", stopBot: true);
-        //         return;
-        //     }
-
         DebugLogger(this);
         if (item != null && (isTemp ? Bot.TempInv.Contains(item, quantity) : CheckInventory(item, quantity)))
         {
@@ -2864,10 +2779,11 @@ public class CoreBots
         while (!Bot.ShouldExit && (isTemp ? !Bot.TempInv.Contains(item!, quantity) : !CheckInventory(item, quantity)))
         {
             DebugLogger(this);
-            if (cell != null && Bot.Player.Cell != cell)
+            while (!Bot.ShouldExit && cell != null && Bot.Player.Cell != cell)
             {
                 DebugLogger(this);
                 Jump(cell, "Left");
+                DebugLogger(this);
                 Bot.Wait.ForCellChange(cell);
             }
 
@@ -2881,17 +2797,7 @@ public class CoreBots
                 Bot.Drops.RejectExcept(item!);
         }
         DebugLogger(this);
-        // }
-        // catch (NullReferenceException ex)
-        // {
-        //     Logger($"A null reference exception occurred: {ex.Message}. StackTrace: {ex.StackTrace}", stopBot: true);
-        // }
-        // catch (Exception ex)
-        // {
-        //     Logger($"An unexpected error occurred: {ex.Message}. StackTrace: {ex.StackTrace}", stopBot: true);
-        // }
     }
-
 
 
     public bool IsMonsterAlive(Monster? mon)

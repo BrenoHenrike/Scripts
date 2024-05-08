@@ -694,10 +694,13 @@ public class CoreStory
         while (!Bot.ShouldExit && itemName != null && isTemp ? !Bot.TempInv.Contains(itemName, quantity) : !Core.CheckInventory(itemName, quantity))
         {
             Core.DebugLogger(this);
-            if (Bot.Player.Cell != M!.Cell)
+            while (!Bot.ShouldExit && Bot.Player.Cell != M!.Cell || Bot.Player.Cell.StartsWith("Cut") || Bot.Player.Cell.StartsWith("init"))
+            {
                 Core.Jump(M!.Cell, Bot.Player.Pad);
+                Bot.Wait.ForCellChange(M!.Cell);
+            }
             Core.DebugLogger(this);
-            Bot.Combat.Attack(M);
+            Bot.Combat.Attack(M!);
             Core.Sleep();
         }
         Core.DebugLogger(this);
