@@ -19,7 +19,7 @@ public class ArmyDarkonErrands
 
     public string OptionsStorage = "ArmyDarkonErrands";
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         new Option<Method>("Method", "Which method to get Darkon's Receipt?", "Choose your method", Method.First_Errands_Weak_Team),
         sArmy.player1,
@@ -38,32 +38,40 @@ public class ArmyDarkonErrands
 
         Core.SetOptions(disableClassSwap: false);
 
-        Setup(Bot.Config.Get<Method>("Method"), 222);
+        Setup(Bot.Config!.Get<Method>("Method"));
 
         Core.SetOptions(false);
     }
 
-
-    public void Setup(Method Method, int quant = 222)
+    public void Setup(Method Method, int quant = 1)
     {
-        Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
+        Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players");
 
         Core.EquipClass(ClassType.Solo);
-        if (Method.ToString() == "Third_Errands")
-            ArmyHunt("tercessuinotlim", new[] { "Nulgath" }, "Darkon's Receipt", ClassType.Solo, false, quant, Method.Third_Errands);
 
-        else if (Method.ToString() == "Second_Errands")
-            ArmyHunt("doomvault", new[] { "Binky" }, "Darkon's Receipt", ClassType.Solo, false, quant, Method.Second_Errands);
+        switch (Method)
+        {
+            case Method.First_Errands_Strong_Team:
+                ArmyHunt("towerofdoom7", new[] { "Dread Gorillaphant" }, "Darkon's Receipt", ClassType.Farm, false, 222, Method.First_Errands_Strong_Team);
+                break;
 
-        else if (Method.ToString() == "First_Errands_Strong_Team")
-        {
-            ArmyHunt("towerofdoom7", new[] { "Dread Gorillaphant" }, "Darkon's Receipt", ClassType.Farm, false, quant, Method.First_Errands_Strong_Team);
-        }
-        else
-        {
-            ArmyHunt("maparcangrove", new[] { "Gorillaphant" }, "Darkon's Receipt", ClassType.Farm, false, quant, Method.First_Errands_Weak_Team);
+            case Method.First_Errands_Weak_Team:
+                ArmyHunt("maparcangrove", new[] { "Gorillaphant" }, "Darkon's Receipt", ClassType.Farm, false, 222, Method.First_Errands_Weak_Team);
+                break;
+
+            case Method.Second_Errands:
+                ArmyHunt("doomvault", new[] { "Binky" }, "Darkon's Receipt", ClassType.Solo, false, 222, Method.Second_Errands);
+                break;
+
+            case Method.Third_Errands:
+                ArmyHunt("tercessuinotlim", new[] { "Nulgath" }, "Darkon's Receipt", ClassType.Solo, false, 1, Method.Third_Errands);
+                break;
+
+            default:
+                break;
         }
     }
+
 
     void ArmyHunt(string map, string[] monsters, string item, ClassType classType, bool isTemp = false, int quant = 1, Method Method = Method.None)
     {
@@ -77,28 +85,55 @@ public class ArmyDarkonErrands
             Army.SellToSync(item, quant);
 
         Core.AddDrop(item);
+        Core.EquipClass(classType);
 
-        Army.waitForParty(map, item);
+        //Army.waitForParty(map, item);
         Core.FarmingLogger(item, quant);
 
-        if (Method.ToString() == "First_Errands_Strong_Team")
-            Core.RegisterQuests(7324);
-        else if (Method.ToString() == "First_Errands_Weak_Team")
-            Core.RegisterQuests(7324);
-        else if (Method.ToString() == "Second_Errands")
-            Core.RegisterQuests(7325);
-        else if (Method.ToString() == "Third_Errands")
-            Core.RegisterQuests(7326);
+        switch (Method)
+        {
+            case Method.First_Errands_Strong_Team:
+                Core.RegisterQuests(7324);
+                Army.AggroMonCells("r2", "r5");
+                Army.AggroMonStart("towerofdoom7");
+                Army.DivideOnCells("r2", "r5");
+                break;
 
-        Army.SmartAggroMonStart(map, monsters);
+            case Method.First_Errands_Weak_Team:
+                Core.EquipClass(ClassType.Farm);
+                Core.RegisterQuests(7324);
+                Army.AggroMonCells("Right", "LeftBack");
+                Army.AggroMonStart("arcangrove");
+                Army.DivideOnCells("Right", "LeftBack");
+                break;
 
-        while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
+            case Method.Second_Errands:
+                Core.EquipClass(ClassType.Solo);
+                Core.RegisterQuests(7325);
+                Army.AggroMonCells("r5");
+                Army.AggroMonStart("Binky");
+                Army.DivideOnCells("r5");
+                break;
+
+            case Method.Third_Errands:
+                Core.EquipClass(ClassType.Farm);
+                Core.RegisterQuests(7326);
+                Army.AggroMonCells("Boss2");
+                Army.AggroMonStart("tercessuinotlim");
+                Army.DivideOnCells("Boss2");
+                break;
+        }
+
+        
+
+        while (!Bot.ShouldExit && isTemp ? !Bot.TempInv.Contains(item, quant) : !Core.CheckInventory(item, quant))
             Bot.Combat.Attack("*");
 
         Core.CancelRegisteredQuests();
         Army.AggroMonStop(true);
         Core.JumpWait();
     }
+
 
     public enum Method
     {

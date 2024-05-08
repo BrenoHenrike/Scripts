@@ -1,7 +1,7 @@
 /*
-name: HBJudgementMerge
-description: null
-tags: null
+name: Hollowborn Judgement Merge
+description: This bot will farm the items belonging to the selected mode for the Hollowborn Judgement Merge [2075] in /hbchallenge
+tags: hollowborn, judgement, merge, hbchallenge, judge, in, officio, hel, fö, fös, crown, band, morph, judges, altare, devotionis, aequitas, judicii, dark, judicium, imaginem, jurisdictio, ex, vi, legis, punitio, virgam, luminum, consummatum, est, bis, idem, remissio, vade, mecum, lex, et, ordo
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -62,7 +62,7 @@ public class HBJudgementMerge
                 #endregion
 
                 case "Hollowborn Writ":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.RegisterQuests(8418);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))

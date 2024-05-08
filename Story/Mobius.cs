@@ -85,13 +85,13 @@ public class Mobius
         Story.MapItemQuest(2354, "mobius", 1465);
 
         //Grains of Chaos 2355
-        Story.KillQuest(2355, "mobius", "Chaos Sp-Eye");
+        Story.KillQuest(2355, "mobius", "Chaos Sp-eye");
 
         //Call of the Sun 2356
         Story.MapItemQuest(2356, "mobius", 1461, 10);
 
         //Shattered Past 2357
-        Story.KillQuest(2357, "mobius", "Chaos Sp-Eye");
+        Story.KillQuest(2357, "mobius", "Chaos Sp-eye");
 
         //The Spoiler 2358
         Story.MapItemQuest(2358, "mobius", 1462, 10);
@@ -128,7 +128,7 @@ public class Mobius
         LoC.Vath();
 
         //You'll Poke Your Eye Out 3366
-        Story.KillQuest(3366, "mobius", "Chaos Sp-Eye");
+        Story.KillQuest(3366, "mobius", "Chaos Sp-eye");
 
         //Imp-roved Arrows 3367
         Story.KillQuest(3367, "mobius", "Fire Imp");

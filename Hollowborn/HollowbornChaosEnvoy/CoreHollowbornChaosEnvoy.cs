@@ -50,7 +50,7 @@ public class CoreHollowbornChaosEnvoy
         new Option<bool>(
             "getAll", "Get all items",
             "Some quests need to be done multiple times in order to get everything, "+
-            "if true the bot will continue untill it has everything from that quest before moving on" +
+            "if true the bot will continue until it has everything from that quest before moving on" +
             "\nRecommended setting: True",
             true),
             new Option<bool>("BankAfter", "Bank Rewards", "bank Rewards after", true),
@@ -73,136 +73,68 @@ public class CoreHollowbornChaosEnvoy
     {
         bool getAllDrops = Bot.Config!.Get<bool>("getAll");
         bool BankAfter = Bot.Config!.Get<bool>("BankAfter");
+        bool optionsLogged = false;
 
-        string? stirringDiscord = Bot.Config!.Get<string>("Stirring Discord");
-        string? inTheBeastsShadow = Bot.Config!.Get<string>("In The Beasts Shadow");
-        string? uniqueQuarry = Bot.Config!.Get<string>("Unique Quarry");
-        string? waveringIllusions = Bot.Config!.Get<string>("Wavering Illusions");
-        string? shadowsOfDisdain = Bot.Config!.Get<string>("Shadows Of Disdain");
-        string? persistingMayhem = Bot.Config!.Get<string>("Persisting Mayhem");
+        var questDictionary = new Dictionary<string, (int Order, Action Action)>
+    {
+        { "Stirring Discord", (8998, () => StirringDiscord(getAllDrops ? StirringDiscordRewards.All : Bot.Config!.Get<StirringDiscordRewards>("Stirring Discord"), !getAllDrops && BankAfter)) },
+        { "In The Beasts Shadow", (8999, () => InTheBeastsShadow(getAllDrops ? InTheBeastsShadowRewards.All : Bot.Config!.Get<InTheBeastsShadowRewards>("In The Beasts Shadow"), !getAllDrops && BankAfter)) },
+        { "Unique Quarry", (9000, () => UniqueQuarry(getAllDrops ? UniqueQuarryRewards.All : Bot.Config!.Get<UniqueQuarryRewards>("Unique Quarry"), !getAllDrops && BankAfter)) },
+        { "Wavering Illusions", (9001, () => WaveringIllusions(getAllDrops ? WaveringIllusionsRewards.All : Bot.Config!.Get<WaveringIllusionsRewards>("Wavering Illusions"), !getAllDrops && BankAfter)) },
+        { "Shadows Of Disdain", (9002, () => ShadowsOfDisdain(getAllDrops ? ShadowsOfDisdainRewards.All : Bot.Config!.Get<ShadowsOfDisdainRewards>("Shadows Of Disdain"), !getAllDrops && BankAfter)) },
+        { "Persisting Mayhem", (9003, () => PersistingMayhem(getAllDrops ? PersistingMayhemRewards.All : Bot.Config!.Get<PersistingMayhemRewards>("Persisting Mayhem"), !getAllDrops && BankAfter)) }
+    };
 
-        if (stirringDiscord != null &&
-            inTheBeastsShadow != null &&
-            uniqueQuarry != null &&
-            waveringIllusions != null &&
-            shadowsOfDisdain != null &&
-            persistingMayhem != null)
-            Core.Logger($"Options Selected:\n" +
-                $"\t\tStirring Discord:  [{stirringDiscord.Replace("_", " ")}]\n" +
-                $"\t\tIn The Beasts Shadow: [{inTheBeastsShadow.Replace("_", " ")}]\n" +
-                $"\t\tUnique Quarry:  [{uniqueQuarry.Replace("_", " ")}\n" +
-                $"\t\tWavering Illusions:  [{waveringIllusions.Replace("_", " ")}]\n" +
-                $"\t\tShadows Of Disdain:  [{shadowsOfDisdain.Replace("_", " ")}]\n" +
-                $"\t\tPersisting Mayhem: [{persistingMayhem.Replace("_", " ")}]\n");
+        string[] questOrder = { "Stirring Discord", "In The Beasts Shadow", "Unique Quarry", "Wavering Illusions", "Shadows Of Disdain", "Persisting Mayhem" };
 
-
-
-        if (getAllDrops)
+        foreach (var quest in questOrder)
         {
-            StirringDiscord(StirringDiscordRewards.All);
-            if (BankAfter)
+            string questConfig = Bot.Config?.Get<string>(quest) ?? string.Empty;
+            if (!string.IsNullOrEmpty(questConfig))
             {
-                foreach (string item in Core.QuestRewards(8998))
+                if (!optionsLogged)
                 {
-                    if (Core.CheckInventory(item, toInv: false))
-                        Core.ToBank(item);
+                    Core.Logger($"Options Selected:\n{string.Join("\n", questOrder.Select(q => $"\t{q.Replace("_", " ")}: [{Bot.Config?.Get<string>(q)?.Replace("_", " ") ?? string.Empty}]"))}");
+                    optionsLogged = true;
+                }
+
+                var (order, action) = questDictionary[quest];
+                action();
+
+                if (BankAfter)
+                {
+                    Core.ToBank(Core.QuestRewards(order));
                 }
             }
-
-            InTheBeastsShadow(InTheBeastsShadowRewards.All);
-            if (BankAfter)
-            {
-                foreach (string item in Core.QuestRewards(8999))
-                {
-                    if (Core.CheckInventory(item, toInv: false))
-                        Core.ToBank(item);
-                }
-            }
-
-            UniqueQuarry(UniqueQuarryRewards.All, false);
-            if (BankAfter)
-            {
-                foreach (string item in Core.QuestRewards(9000))
-                {
-                    if (Core.CheckInventory(item, toInv: false))
-                        Core.ToBank(item);
-                }
-            }
-
-            WaveringIllusions(WaveringIllusionsRewards.All);
-            if (BankAfter)
-            {
-                foreach (string item in Core.QuestRewards(9001))
-                {
-                    if (Core.CheckInventory(item, toInv: false))
-                        Core.ToBank(item);
-                }
-            }
-
-            ShadowsOfDisdain(ShadowsOfDisdainRewards.All);
-            if (BankAfter)
-            {
-                foreach (string item in Core.QuestRewards(9002))
-                {
-                    if (Core.CheckInventory(item, toInv: false))
-                        Core.ToBank(item);
-                }
-            }
-
-            PersistingMayhem(PersistingMayhemRewards.All);
-            if (BankAfter)
-            {
-                foreach (string item in Core.QuestRewards(9003))
-                {
-                    if (Core.CheckInventory(item, toInv: false))
-                        Core.ToBank(item);
-                }
-            }
-        }
-        else
-        {
-            StirringDiscord(Bot.Config!.Get<StirringDiscordRewards>("Stirring Discord"), true);
-            if (BankAfter)
-                Core.ToBank((int)Bot.Config!.Get<StirringDiscordRewards>("Stirring Discord"));
-
-            InTheBeastsShadow(Bot.Config!.Get<InTheBeastsShadowRewards>("In The Beasts Shadow"), true);
-            if (BankAfter)
-                Core.ToBank((int)Bot.Config!.Get<InTheBeastsShadowRewards>("In The Beasts Shadow"));
-
-            UniqueQuarry(Bot.Config!.Get<UniqueQuarryRewards>("Unique Quarry"), true);
-            if (BankAfter)
-                Core.ToBank((int)Bot.Config!.Get<UniqueQuarryRewards>("Unique Quarry"));
-
-            WaveringIllusions(Bot.Config!.Get<WaveringIllusionsRewards>("Wavering Illusions"), true);
-            if (BankAfter)
-                Core.ToBank((int)Bot.Config!.Get<WaveringIllusionsRewards>("Wavering Illusions"));
-
-            ShadowsOfDisdain(Bot.Config!.Get<ShadowsOfDisdainRewards>("Shadows Of Disdain"), true);
-            if (BankAfter)
-                Core.ToBank((int)Bot.Config!.Get<ShadowsOfDisdainRewards>("Shadows Of Disdain"));
-
-            PersistingMayhem(Bot.Config!.Get<PersistingMayhemRewards>("Persisting Mayhem"), true);
-            if (BankAfter)
-                Core.ToBank((int)Bot.Config!.Get<PersistingMayhemRewards>("Persisting Mayhem"));
+            Core.CancelRegisteredQuests();
         }
     }
+
+
 
     public void StirringDiscord(StirringDiscordRewards rewardSelection = StirringDiscordRewards.None, bool completeOnce = false)
     {
         string[] rewards = Core.QuestRewards(8998);
+        StirringDiscordRewards discordReward = Bot.Config!.Get<StirringDiscordRewards>("Stirring Discord");
 
-        if ((Bot.Config!.Get<StirringDiscordRewards>("Stirring Discord") == StirringDiscordRewards.All && Core.CheckInventory(rewards))
-        || Bot.Config!.Get<StirringDiscordRewards>("Stirring Discord") == StirringDiscordRewards.None
-        || Core.CheckInventory((int)Bot.Config!.Get<StirringDiscordRewards>("Stirring Discord")))
-            return;
+        // Check if we should return early based on inventory conditions and 'completeOnce' flag
+        bool shouldReturnEarly = (discordReward == StirringDiscordRewards.All && Core.CheckInventory(rewards, toInv: false))
+            || discordReward == StirringDiscordRewards.None
+            || (Core.CheckInventory((int)discordReward, toInv: false) && !completeOnce);
+
+        if (shouldReturnEarly)
+        {
+            Core.Logger("Quest rewards are already obtained or conditions met. Exiting Stirring Discord.");
+            return; // Signal to exit
+        }
 
         Core.AddDrop(rewards);
 
         HB.HardcoreContract();
         Farm.Experience(75);
 
-        Core.Logger($"Reward Choosen: {Bot.Config!.Get<StirringDiscordRewards>("Stirring Discord")}");
-        while (!Bot.ShouldExit && !Core.CheckInventory(rewards))
+        Core.Logger($"Reward Chosen: {Bot.Config!.Get<StirringDiscordRewards>("Stirring Discord")}");
+        while (!Bot.ShouldExit)
         {
             Core.EnsureAccept(7158);
             Core.EnsureAccept(8998);
@@ -213,41 +145,55 @@ public class CoreHollowbornChaosEnvoy
             Core.HuntMonster("chaosboss", "Ultra Chaos Warlord", "Chaotic War Essence", 15, false);
             Adv.BuyItem("crownsreach", 1383, "Chaotic Knight Helm");
 
-
-
-            // Check if all rewards are collected or the specific item is collected
-            if (completeOnce && !Core.CheckInventory((int)Bot.Config!.Get<StirringDiscordRewards>("Stirring Discord")))
-                Core.EnsureComplete(8998, (int)Bot.Config!.Get<StirringDiscordRewards>("Stirring Discord"));
-            else if (rewardSelection == StirringDiscordRewards.All)
-                Core.EnsureCompleteChoose(8998, Core.QuestRewards(8998));
-            // Exit the loop if the condition is met
-            else if ((completeOnce && Core.CheckInventory(((int)Bot.Config!.Get<StirringDiscordRewards>("Stirring Discord")))
-            || (!completeOnce && Core.CheckInventory(rewards))))
-                break;
+            if (completeOnce)
+            {
+                Core.EnsureComplete(8998);
+                Core.Logger("Stirring Discord quest completed.");
+                return;
+            }
+            else
+            {
+                if (rewardSelection == StirringDiscordRewards.All && !Core.CheckInventory(rewards))
+                {
+                    Core.EnsureCompleteChoose(8998, Core.QuestRewards(8998));
+                    Core.Logger("Stirring Discord quest completed.");
+                }
+                else
+                {
+                    Core.EnsureComplete(8998, (int)Bot.Config!.Get<StirringDiscordRewards>("Stirring Discord"));
+                    Core.Logger("Stirring Discord quest completed.");
+                    break;
+                }
+            }
         }
-        Core.CancelRegisteredQuests();
     }
 
     public void InTheBeastsShadow(InTheBeastsShadowRewards rewardSelection = InTheBeastsShadowRewards.None, bool completeOnce = false)
     {
-        if (!Bot.Quests.IsUnlocked(8999))
+        if (!Core.isCompletedBefore(8998))
+        {
             Core.Logger("Quest not unlocked [8999], doing \"Stirring Discord\"");
-
-        StirringDiscord(completeOnce: true);
+            StirringDiscord(completeOnce: true);
+        }
 
         string[] rewards = Core.QuestRewards(8999);
+        InTheBeastsShadowRewards beastsShadowReward = Bot.Config!.Get<InTheBeastsShadowRewards>("In The Beasts Shadow");
 
-        if ((Bot.Config!.Get<InTheBeastsShadowRewards>("In The Beasts Shadow") == InTheBeastsShadowRewards.All && Core.CheckInventory(rewards))
-        || Bot.Config!.Get<InTheBeastsShadowRewards>("In The Beasts Shadow") == InTheBeastsShadowRewards.None
-        || Core.CheckInventory((int)Bot.Config!.Get<InTheBeastsShadowRewards>("In The Beasts Shadow")))
+        // Check if we should return early based on inventory conditions and 'completeOnce' flag
+        bool shouldReturnEarly = (beastsShadowReward == InTheBeastsShadowRewards.All && Core.CheckInventory(rewards, toInv: false))
+            || beastsShadowReward == InTheBeastsShadowRewards.None
+            || (Core.CheckInventory((int)beastsShadowReward, toInv: false) && !completeOnce);
+
+        if (shouldReturnEarly)
+        {
+            Core.Logger("Conditions met to skip In The Beasts Shadow quest.");
             return;
+        }
 
         Core.AddDrop(rewards);
-
-
         Farm.Experience(75);
 
-        Core.Logger($"Reward Choosen: {Bot.Config!.Get<InTheBeastsShadowRewards>("In The Beasts Shadow")}");
+        Core.Logger($"Reward Chosen: {beastsShadowReward}");
         while (!Bot.ShouldExit)
         {
             Core.EnsureAccept(8999);
@@ -263,43 +209,56 @@ public class CoreHollowbornChaosEnvoy
             Core.EquipClass(ClassType.Farm);
             Core.KillMonster("mountdoomskull", "b1", "Left", "*", "Fragment of Mount Doomskull", 1000, isTemp: false);
 
-            // Check if all rewards are collected or the specific item is collected
-            if (completeOnce && !Core.CheckInventory((int)Bot.Config!.Get<InTheBeastsShadowRewards>("In The Beasts Shadow")))
-                Core.EnsureComplete(8999, (int)Bot.Config!.Get<InTheBeastsShadowRewards>("In The Beasts Shadow"));
-            else if (rewardSelection == InTheBeastsShadowRewards.All)
-                Core.EnsureCompleteChoose(8999, Core.QuestRewards(8999));
-            // Exit the loop if the condition is met
-            else if ((completeOnce && Core.CheckInventory(((int)Bot.Config!.Get<InTheBeastsShadowRewards>("In The Beasts Shadow")))
-            || (!completeOnce && Core.CheckInventory(rewards))))
-                break;
+            if (completeOnce)
+            {
+                Core.EnsureComplete(8999);
+                Core.Logger("In The Beasts Shadow quest completed.");
+                return;
+            }
+            else
+            {
+                if (rewardSelection == InTheBeastsShadowRewards.All && !Core.CheckInventory(rewards))
+                {
+                    Core.EnsureCompleteChoose(8999, Core.QuestRewards(8999));
+                    Core.Logger("In The Beasts Shadow quest completed.");
+                }
+                else
+                {
+                    Core.EnsureComplete(8999, (int)beastsShadowReward);
+                    Core.Logger("In The Beasts Shadow quest completed.");
+                    break;
+                }
+            }
         }
-        Core.CancelRegisteredQuests();
     }
 
     public void UniqueQuarry(UniqueQuarryRewards rewardSelection = UniqueQuarryRewards.None, bool completeOnce = false)
     {
-        if (!Bot.Quests.IsUnlocked(9000))
+        if (!Core.isCompletedBefore(8999))
         {
             Core.Logger("Quest not unlocked [9000], doing \"In The Beasts Shadow\"");
             InTheBeastsShadow(completeOnce: true);
         }
 
         string[] rewards = Core.QuestRewards(9000);
+        UniqueQuarryRewards quarryReward = Bot.Config!.Get<UniqueQuarryRewards>("Unique Quarry");
 
-        if ((Bot.Config!.Get<UniqueQuarryRewards>("Unique Quarry") == UniqueQuarryRewards.All && Core.CheckInventory(rewards))
-        || Bot.Config!.Get<UniqueQuarryRewards>("Unique Quarry") == UniqueQuarryRewards.None
-        || Core.CheckInventory((int)Bot.Config!.Get<UniqueQuarryRewards>("Unique Quarry")))
+        // Check if we should return early based on inventory conditions and 'completeOnce' flag
+        bool shouldReturnEarly = (quarryReward == UniqueQuarryRewards.All && Core.CheckInventory(rewards, toInv: false))
+            || quarryReward == UniqueQuarryRewards.None
+            || (Core.CheckInventory((int)quarryReward) && !completeOnce);
+
+        if (shouldReturnEarly)
+        {
+            Core.Logger("Conditions met to skip Unique Quarry quest.");
             return;
+        }
 
         Core.AddDrop(rewards);
-
-        if (!Bot.Quests.IsUnlocked(9000))
-            InTheBeastsShadow(completeOnce: true);
-
         Farm.Experience(75);
         ADG.AscendedGear("Ascended Face of Chaos");
 
-        Core.Logger($"Reward Choosen: {Bot.Config!.Get<UniqueQuarryRewards>("Unique Quarry")}");
+        Core.Logger($"Reward Chosen: {quarryReward}");
         while (!Bot.ShouldExit)
         {
             Core.EnsureAccept(9000);
@@ -323,46 +282,60 @@ public class CoreHollowbornChaosEnvoy
                 Core.BuyItem("tercessuinotlim", 1951, "Chaoroot", 30);
             }
 
-
-            // Check if all rewards are collected or the specific item is collected
-            if (completeOnce && !Core.CheckInventory((int)Bot.Config!.Get<UniqueQuarryRewards>("Unique Quarry")))
-                Core.EnsureComplete(9000, (int)Bot.Config!.Get<UniqueQuarryRewards>("Unique Quarry"));
-            else if (rewardSelection == UniqueQuarryRewards.All)
-                Core.EnsureCompleteChoose(9000, Core.QuestRewards(9000));
-            // Exit the loop if the condition is met
-            else if ((completeOnce && Core.CheckInventory(((int)Bot.Config!.Get<UniqueQuarryRewards>("Unique Quarry")))
-            || (!completeOnce && Core.CheckInventory(rewards))))
-                break;
+            if (completeOnce)
+            {
+                Core.EnsureComplete(9000);
+                Core.Logger("Unique Quarry quest completed.");
+                return;
+            }
+            else
+            {
+                if (rewardSelection == UniqueQuarryRewards.All && !Core.CheckInventory(rewards))
+                {
+                    Core.EnsureCompleteChoose(9000, Core.QuestRewards(9000));
+                    Core.Logger("Unique Quarry quest completed.");
+                }
+                else
+                {
+                    Core.EnsureComplete(9000, (int)quarryReward);
+                    Core.Logger("Unique Quarry quest completed.");
+                    break;
+                }
+            }
         }
     }
 
     public void WaveringIllusions(WaveringIllusionsRewards rewardSelection = WaveringIllusionsRewards.None, bool completeOnce = false)
     {
-        if (!Bot.Quests.IsUnlocked(9001))
+        if (!Core.isCompletedBefore(9000))
         {
             Core.Logger("Quest not unlocked [9001], doing \"Unique Quarry\"");
             UniqueQuarry(completeOnce: true);
         }
 
         string[] rewards = Core.QuestRewards(9001);
+        WaveringIllusionsRewards illusionsReward = Bot.Config!.Get<WaveringIllusionsRewards>("Wavering Illusions");
 
-        if ((Bot.Config!.Get<WaveringIllusionsRewards>("Wavering Illusions") == WaveringIllusionsRewards.All && Core.CheckInventory(rewards))
-        || Bot.Config!.Get<WaveringIllusionsRewards>("Wavering Illusions") == WaveringIllusionsRewards.None
-        || Core.CheckInventory((int)Bot.Config!.Get<WaveringIllusionsRewards>("Wavering Illusions"), toInv: false))
+        // Check if we should return early based on inventory conditions and 'completeOnce' flag
+        bool shouldReturnEarly = (illusionsReward == WaveringIllusionsRewards.All && Core.CheckInventory(rewards, toInv: false))
+            || illusionsReward == WaveringIllusionsRewards.None
+            || (illusionsReward != WaveringIllusionsRewards.All && Core.CheckInventory((int)illusionsReward, toInv: false));
+
+        if (shouldReturnEarly)
+        {
+            Core.Logger("Conditions met to skip Wavering Illusions quest.");
             return;
+        }
 
         Core.AddDrop(rewards);
-
-        if (!Bot.Quests.IsUnlocked(9001))
-            UniqueQuarry();
-
         Farm.Experience(80);
         QOM.TheQueensSecrets();
         Core.HuntMonster("finalbattle", "Drakath", "Drakath Wings", isTemp: false);
 
-        Core.Logger($"Reward Choosen: {Bot.Config!.Get<WaveringIllusionsRewards>("Wavering Illusions")}");
+        Core.Logger($"Reward Chosen: {illusionsReward}");
         if (!Core.CheckInventory("Supreme Arcane Staff of Chaos"))
         {
+            Core.Logger("Hunting for Supreme Arcane Staff of Chaos.");
             Core.HuntMonster("ledgermayne", "Ledgermayne", "The Supreme Arcane Staff", isTemp: false); // Can buyback
             Adv.BuyItem("deepforest", 1999, "Supreme Arcane Staff of Chaos");
         }
@@ -383,47 +356,62 @@ public class CoreHollowbornChaosEnvoy
 
             Core.BuyItem("downbelow", 2004, "Chaos PuppetMaster");
 
-            // Check if all rewards are collected or the specific item is collected
-            if (completeOnce && !Core.CheckInventory((int)Bot.Config!.Get<WaveringIllusionsRewards>("Wavering Illusions")))
-                Core.EnsureComplete(9001, (int)Bot.Config!.Get<WaveringIllusionsRewards>("Wavering Illusions"));
-            else if (rewardSelection == WaveringIllusionsRewards.All)
-                Core.EnsureCompleteChoose(9001, Core.QuestRewards(9001));
-            // Exit the loop if the condition is met
-            else if ((completeOnce && Core.CheckInventory(((int)Bot.Config!.Get<WaveringIllusionsRewards>("Wavering Illusions")))
-            || (!completeOnce && Core.CheckInventory(rewards))))
-                break;
+            if (completeOnce)
+            {
+                Core.EnsureComplete(9001);
+                Core.Logger("Wavering Illusions quest completed.");
+                return;
+            }
+            else
+            {
+                if (rewardSelection == WaveringIllusionsRewards.All && !Core.CheckInventory(rewards))
+                {
+                    Core.EnsureCompleteChoose(9001, Core.QuestRewards(9001));
+                    Core.Logger("Wavering Illusions quest completed.");
+                }
+                else
+                {
+                    Core.EnsureComplete(9001, (int)illusionsReward);
+                    Core.Logger("Wavering Illusions quest completed.");
+                    break;
+                }
+            }
         }
-        Core.CancelRegisteredQuests();
     }
 
     public void ShadowsOfDisdain(ShadowsOfDisdainRewards rewardSelection = ShadowsOfDisdainRewards.None, bool completeOnce = false)
     {
-        if (!Bot.Quests.IsUnlocked(9002))
+        if (!Core.isCompletedBefore(9001))
         {
             Core.Logger("Quest not unlocked [9002], doing \"Wavering Illusions\"");
             WaveringIllusions(completeOnce: true);
         }
 
         string[] rewards = Core.QuestRewards(9002);
+        ShadowsOfDisdainRewards disdainReward = Bot.Config!.Get<ShadowsOfDisdainRewards>("Shadows Of Disdain");
 
-        if ((Bot.Config!.Get<ShadowsOfDisdainRewards>("Shadows Of Disdain") == ShadowsOfDisdainRewards.All && Core.CheckInventory(rewards))
-        || Bot.Config!.Get<ShadowsOfDisdainRewards>("Shadows Of Disdain") == ShadowsOfDisdainRewards.None
-        || Core.CheckInventory((int)Bot.Config!.Get<ShadowsOfDisdainRewards>("Shadows Of Disdain"), toInv: false))
+        // Check if we should return early based on inventory conditions and 'completeOnce' flag
+        bool shouldReturnEarly = (disdainReward == ShadowsOfDisdainRewards.All && Core.CheckInventory(rewards, toInv: false))
+            || disdainReward == ShadowsOfDisdainRewards.None
+            || (disdainReward != ShadowsOfDisdainRewards.All && Core.CheckInventory((int)disdainReward, toInv: false));
+
+        if (shouldReturnEarly)
+        {
+            Core.Logger("Conditions met to skip Shadows Of Disdain quest.");
             return;
+        }
 
         Core.AddDrop(rewards);
-
-        if (!Bot.Quests.IsUnlocked(9002))
-            WaveringIllusions();
-
         Farm.Experience(95);
         ED.getSet();
 
         if (!Core.CheckInventory("Titan Drakath"))
+        {
+            Core.Logger("Hunting for Titan Drakath.");
             TGM.BuyAllMerge("Titan Drakath");
+        }
 
-
-        Core.Logger($"Reward Choosen: {Bot.Config!.Get<ShadowsOfDisdainRewards>("Shadows Of Disdain")}");
+        Core.Logger($"Reward Chosen: {disdainReward}");
         while (!Bot.ShouldExit)
         {
             Core.EnsureAccept(9002);
@@ -438,70 +426,89 @@ public class CoreHollowbornChaosEnvoy
 
             Adv.BuyItem("transformation", 2002, "Chaorrupted Usurper");
 
-
-            // Check if all rewards are collected or the specific item is collected
-            if (completeOnce && !Core.CheckInventory((int)Bot.Config!.Get<ShadowsOfDisdainRewards>("Shadows Of Disdain")))
-                Core.EnsureComplete(9002, (int)Bot.Config!.Get<ShadowsOfDisdainRewards>("Shadows Of Disdain"));
-            else if (rewardSelection == ShadowsOfDisdainRewards.All)
-                Core.EnsureCompleteChoose(9002, Core.QuestRewards(9002));
-            // Exit the loop if the condition is met
-            else if ((completeOnce && Core.CheckInventory(((int)Bot.Config!.Get<ShadowsOfDisdainRewards>("Shadows Of Disdain")))
-            || (!completeOnce && Core.CheckInventory(rewards))))
-                break;
+            if (completeOnce)
+            {
+                Core.EnsureComplete(9002);
+                Core.Logger("Shadows Of Disdain quest completed.");
+                return;
+            }
+            else
+            {
+                if (rewardSelection == ShadowsOfDisdainRewards.All && !Core.CheckInventory(rewards))
+                {
+                    Core.EnsureCompleteChoose(9002, Core.QuestRewards(9002));
+                    Core.Logger("Shadows Of Disdain quest completed.");
+                }
+                else
+                {
+                    Core.EnsureComplete(9002, (int)disdainReward);
+                    Core.Logger("Shadows Of Disdain quest completed.");
+                    break;
+                }
+            }
         }
-
-        Core.CancelRegisteredQuests();
     }
 
     public void PersistingMayhem(PersistingMayhemRewards rewardSelection = PersistingMayhemRewards.None, bool completeOnce = false)
     {
-        if (!Bot.Quests.IsUnlocked(9003))
+        if (!Core.isCompletedBefore(9002))
         {
             Core.Logger("Quest not unlocked [9003], doing \"Shadows of Disdain\"");
             ShadowsOfDisdain(completeOnce: true);
         }
 
         string[] rewards = Core.QuestRewards(9003);
+        PersistingMayhemRewards mayhemReward = Bot.Config!.Get<PersistingMayhemRewards>("Persisting Mayhem");
 
-        if ((Bot.Config!.Get<PersistingMayhemRewards>("Persisting Mayhem") == PersistingMayhemRewards.All && Core.CheckInventory(rewards))
-        || Bot.Config!.Get<PersistingMayhemRewards>("Persisting Mayhem") == PersistingMayhemRewards.None
-        || Core.CheckInventory((int)Bot.Config!.Get<PersistingMayhemRewards>("Persisting Mayhem"), toInv: false))
+        Core.Logger($"Reward Chosen: {mayhemReward}");
+
+        // Check if we should return early based on inventory conditions and 'completeOnce' flag
+        bool shouldReturnEarly = (mayhemReward == PersistingMayhemRewards.All && Core.CheckInventory(rewards, toInv: false))
+            || mayhemReward == PersistingMayhemRewards.None
+            || (mayhemReward != PersistingMayhemRewards.All && Core.CheckInventory((int)mayhemReward, toInv: false));
+
+        if (shouldReturnEarly)
+        {
+            Core.Logger("Persisting Mayhem quest conditions met. Exiting.");
             return;
+        }
 
         Core.AddDrop(rewards);
-
-        if (!Bot.Quests.IsUnlocked(9003))
-            ShadowsOfDisdain();
-
         Farm.Experience(95);
 
-        Core.EquipClass(ClassType.Solo);
-
-        Core.Logger($"Reward Choosen: {Bot.Config!.Get<PersistingMayhemRewards>("Persisting Mayhem")}");
         while (!Bot.ShouldExit)
         {
             Core.EnsureAccept(9003);
             Core.HuntMonster("ultradrakath", "Champion of Chaos", "Trace of Chaos", 13, isTemp: false, publicRoom: true);
 
-            // Check if all rewards are collected or the specific item is collected
-            if (completeOnce && !Core.CheckInventory((int)Bot.Config!.Get<PersistingMayhemRewards>("Persisting Mayhem")))
-                Core.EnsureComplete(9002, (int)Bot.Config!.Get<PersistingMayhemRewards>("Persisting Mayhem"));
-            else if (rewardSelection == PersistingMayhemRewards.All)
-                Core.EnsureCompleteChoose(9002, Core.QuestRewards(9002));
-            // Exit the loop if the condition is met
-            else if ((completeOnce && Core.CheckInventory(((int)Bot.Config!.Get<PersistingMayhemRewards>("Persisting Mayhem")))
-            || (!completeOnce && Core.CheckInventory(rewards))))
-                break;
+            if (completeOnce)
+            {
+                Core.EnsureComplete(9003);
+                Core.Logger("Persisting Mayhem quest completed.");
+                return;
+            }
+            else
+            {
+                if (rewardSelection == PersistingMayhemRewards.All && !Core.CheckInventory(rewards))
+                {
+                    Core.EnsureCompleteChoose(9003, Core.QuestRewards(9003));
+                    Core.Logger("Persisting Mayhem quest completed.");
+                }
+                else
+                {
+                    Core.EnsureComplete(9003, (int)mayhemReward);
+                    Core.Logger("Persisting Mayhem quest completed.");
+                    break;
+                }
+            }
         }
-
-        Core.CancelRegisteredQuests();
     }
 
     public enum StirringDiscordRewards
     {
         Hollowborn_Chaos_Warrior = 74476,
         Hollowborn_Chaos_Morph = 74477,
-        Hollowborn_Chaoti_Wings = 74478,
+        Hollowborn_Chaotic_Wings = 74478,
         All,
         None
     }

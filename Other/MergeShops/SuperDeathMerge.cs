@@ -70,8 +70,8 @@ public class SuperDeathMerge
                     Core.RegisterQuests(8033);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("superdeath", "Cave Yeti|Rider", "Normal Monsters Defeated", 5);
-                        Core.HuntMonster("superdeath", "Shadow Mutant|Shadow Scorpion", "Shadow Monsters Defeated", 5);
+                        Core.HuntMonster("superdeath", "Cave Yeti", "Normal Monsters Defeated", 5);
+                        Core.HuntMonster("superdeath", "Shadow Mutant", "Shadow Monsters Defeated", 5);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();

@@ -8,6 +8,7 @@ tags: null
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreFarms.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
 
 public class Core13LoC
 {
@@ -71,7 +72,7 @@ public class Core13LoC
         Story.MapItemQuest(179, "castleundead", 38, 5);
 
         //Defend the Throne
-        Story.KillQuest(180, "castleundead", "*");
+        Story.KillQuest(180, "castleundead", "Skeletal Viking");
 
         //The Arrival of Drakath cutscene
         if (!Bot.Quests.IsUnlocked(196))
@@ -80,9 +81,9 @@ public class Core13LoC
             Core.Join("Shadowfall");
             Core.SendPackets("%xt%zm%updateQuest%73922%43%1%");
             Bot.Send.Packet($"%xt%zm%updateQuest%188220%41%{(Core.HeroAlignment > 1 ? 1 : Core.HeroAlignment)}%");
-            Bot.Sleep(2000);
+            Core.Sleep(2000);
             Core.Join("shadowfall");
-            Bot.Sleep(2000);
+            Core.Sleep(2000);
 
             //ShadowFall Quest1
             Story.ChainQuest(195);
@@ -234,7 +235,7 @@ public class Core13LoC
         Story.KillQuest(325, "pines", "Pine Grizzly");
 
         //Leather Feathers
-        Story.KillQuest(326, "pines", "Leatherwing");
+        Story.KillQuest(326, "pines", "LeatherWing");
 
         //Follow your Nose!
         if (!Story.QuestProgression(327) || !Core.isCompletedBefore(323))
@@ -285,7 +286,7 @@ public class Core13LoC
         {
             Core.Join("dwarfhold", "rdoor", "Right");
             Core.EnsureComplete(343);
-            Bot.Sleep(2500);
+            Core.Sleep(2500);
         }
 
         //Rock me Amadeus
@@ -322,7 +323,7 @@ public class Core13LoC
 
             Core.Join("vath");
             Core.Jump("CutCap", "Left");
-            Bot.Sleep(2500);
+            Core.Sleep(2500);
             Bot.Quests.UpdateQuest(354);
 
             if (!Core.CheckInventory("Thermite"))
@@ -591,7 +592,7 @@ public class Core13LoC
         {
             Core.EnsureAccept(564);
             Core.KillMonster("lycanwar", "Boss", "Left", "Edvard");
-            Bot.Sleep(5000);
+            Core.Sleep(5000);
             Story.MapItemQuest(564, "chaoscave", 107);
         }
 
@@ -900,10 +901,10 @@ public class Core13LoC
         if (!Story.QuestProgression(934))
         {
             Core.EnsureAccept(934);
-            if (!Core.CheckInventory(29373, toInv: false))
-                Core.KillMonster("sandport", "r6", "Left", 2153, "Horc Sell-Swords Defeated", 1);
+            while (!Bot.ShouldExit && !Core.CheckInventory(29373, toInv: false))
+                Core.KillMonster("sandport", "r6", "Left", 2153);
             while (!Bot.ShouldExit && !Core.CheckInventory(6686, 3, toInv: false))
-                Core.KillMonster("sandport", "r5", "Left", 536, "Horc Sell-Swords Defeated", 3);
+                Core.KillMonster("sandport", "r5", "Left", 536);
             Core.EnsureComplete(934);
         }
 
@@ -923,8 +924,6 @@ public class Core13LoC
 
         //Confront Duat
         Story.MapItemQuest(971, "pyramid", 304);
-
-        Bot.Quests.UpdateQuest(3773);
 
         //They've Gone Dark
         if (!Story.QuestProgression(972))
@@ -978,7 +977,6 @@ public class Core13LoC
         if (!Story.QuestProgression(978))
         {
             Core.EnsureAccept(978);
-            Bot.Quests.UpdateQuest(3773);
             Core.HuntMonsterMapID("wanders", 46, "Sek-Duat Defeated");
             Core.EnsureComplete(978);
             //Editors Note: PLEASE stop breaking this
@@ -1049,7 +1047,7 @@ public class Core13LoC
         if (!Story.QuestProgression(1234))
         {
             Core.EnsureAccept(1234);
-            Core.HuntMonster("bloodtusk", "Crystal-Rock", "Polished Rocks", 3);
+            Core.HuntMonsterMapID("bloodtusk", 21, "Polished Rocks", 3);
             Core.HuntMonster("crossroads", "Lemurphant", "Lemurphant Ivory", 5);
             Core.HuntMonster("crossroads", "Chinchilizard", "Liz-Leather Thongs", 5);
             Story.MapItemQuest(1234, "crossroads", 525);
@@ -1094,14 +1092,14 @@ public class Core13LoC
         Story.MapItemQuest(1281, "ravinetemple", new[] { 555, 556 }, 10);
 
         //Tears of the Mountain
-        Story.KillQuest(1282, "ravinetemple", "*");
+        Story.KillQuest(1282, "ravinetemple", "Temple Guardian");
 
         //Defend the UnderMountain
-        Story.KillQuest(1283, "ravinetemple", "*");
+        Story.KillQuest(1283, "ravinetemple", "Temple Guardian");
         Story.MapItemQuest(1283, "ravinetemple", 557, 10);
 
         //Alliance Defiance
-        Story.KillQuest(1284, "ravinetemple", "*");
+        Story.KillQuest(1284, "ravinetemple", "Temple Guardian");
 
         //Scout and Return
         Story.MapItemQuest(1375, "alliance", new[] { 679, 680 });
@@ -1196,12 +1194,10 @@ public class Core13LoC
         if (!Story.QuestProgression(1473))
         {
             Core.EnsureAccept(1473);
-            Adv.KillUltra("dreamnexus", "r17a", "Up", "Khasaanda", "Khasaanda Defeated!", publicRoom: false);
-            Bot.Events.CellChanged -= CutSceneFixer;
+            Core.KillMonster("dreamnexus", "r17a", "Up", "Khasaanda", "Khasaanda Defeated!", publicRoom: false);
             Core.EnsureComplete(1473);
             Bot.Wait.ForQuestComplete(1473);
         }
-
     }
 
     private void CutSceneFixer(string map, string cell, string pad)
@@ -1210,9 +1206,9 @@ public class Core13LoC
         {
             while (!Bot.ShouldExit && Bot.Player.Cell != "r17a")
             {
-                Bot.Sleep(2500);
+                Core.Sleep(2500);
                 Core.Jump("r17a");
-                Bot.Sleep(2500);
+                Core.Sleep(2500);
             }
         }
 
@@ -1222,9 +1218,9 @@ public class Core13LoC
             {
                 while (!Bot.ShouldExit && Bot.Player.Cell != "r1")
                 {
-                    Bot.Sleep(2500);
+                    Core.Sleep(2500);
                     Core.Jump("r1");
-                    Bot.Sleep(2500);
+                    Core.Sleep(2500);
                 }
             }
 
@@ -1232,18 +1228,18 @@ public class Core13LoC
             {
                 while (!Bot.ShouldExit && Bot.Player.Cell != "r4")
                 {
-                    Bot.Sleep(2500);
+                    Core.Sleep(2500);
                     Core.Jump("r4");
-                    Bot.Sleep(2500);
+                    Core.Sleep(2500);
                 }
             }
             else if (Core.isCompletedBefore(3878))
             {
                 while (!Bot.ShouldExit && Bot.Player.Cell != "r9")
                 {
-                    Bot.Sleep(2500);
+                    Core.Sleep(2500);
                     Core.Jump("r9");
-                    Bot.Sleep(2500);
+                    Core.Sleep(2500);
                 }
             }
         }
@@ -1256,9 +1252,9 @@ public class Core13LoC
         // {
         //     while (!Bot.ShouldExit && Bot.Player.Cell != "InsertCell")
         //     {
-        //         Bot.Sleep(2500);
+        //         Core.Sleep(2500);
         //         Core.Jump("Cell");
-        //         Bot.Sleep(2500);
+        //         Core.Sleep(2500);
         //     }
         // }
     }
@@ -1304,9 +1300,7 @@ public class Core13LoC
 
         //She Who asks 1
         if (!Story.QuestProgression(1230))
-        {
             Story.ChainQuest(1230);
-        }
 
         //The Troll Inside
         if (!Story.QuestProgression(1231))
@@ -1324,10 +1318,10 @@ public class Core13LoC
         {
             Core.EnsureAccept(1240);
             Core.Join("crossroads");
-            Bot.Sleep(2000);
+            Core.Sleep(2000);
             Core.Join("crossroads");
             Core.Jump("CutE", "Left");
-            Bot.Sleep(2000);
+            Core.Sleep(2000);
             Core.EnsureComplete(1240);
         }
 
@@ -1342,18 +1336,17 @@ public class Core13LoC
         Story.MapItemQuest(1275, "ravinetemple", new[] { 555, 556 }, 10);
 
         //Learn More of the Ore
-        Story.KillQuest(1276, "ravinetemple", "*");
+        Story.KillQuest(1276, "ravinetemple", "Temple Guardian");
 
         //Too Little, Too Late. Still Needed
-        Story.KillQuest(1277, "ravinetemple", "*");
+        Story.KillQuest(1277, "ravinetemple", "Temple Guardian");
         Story.MapItemQuest(1277, "ravinetemple", 557, 10);
 
         //Alliance Defiance
-        Story.KillQuest(1278, "ravinetemple", "*");
+        Story.KillQuest(1278, "ravinetemple", "Temple Guardian");
 
         //The Headquartes of Good and Evil
         Story.MapItemQuest(1369, "alliance", new[] { 679, 680 });
-
 
         //Treat Nullification, Good and Bad
         Story.KillQuest(1370, "alliance", new[] { "Good Soldier", "Evil Soldier" });
@@ -1633,7 +1626,7 @@ public class Core13LoC
         //Chaos Beast Kathool
         Story.KillQuest(2517, "deepchaos", "Kathool");
 
-        Bot.Sleep(2500);
+        Core.Sleep(2500);
 
         //Starry, Starry Night
         if (!Story.QuestProgression(2518))
@@ -2021,6 +2014,12 @@ public class Core13LoC
             Bot.Wait.ForMapLoad("mirrorportal");
             Core.EnsureComplete(3187);
             Bot.Wait.ForPickup("Shriekward Potion");
+            Core.SellItem("Shriekward Potion", all: true);
+
+            Core.Logger("Fixing soemthing with teh chaos harpy, one moment");
+            Core.Join("whitemap");
+            Core.Join("mirrorportal");
+
         }
 
         //Horror Takes Flight
@@ -2028,15 +2027,17 @@ public class Core13LoC
         {
             Core.EquipClass(ClassType.Solo);
             Core.EnsureAccept(3188);
-            Core.BuyItem("mirrorportal", 774, "Shriekward Potion", 1);
-            Core.Equip("Shriekward Potion");
-            Bot.Skills.UseSkill(5);
+            Core.BuyItem("mirrorportal", 774, "Shriekward Potion", 99);
             Core.HuntMonsterMapID("mirrorportal", 1, "Chaos Harpy Defeated");
             Core.EnsureComplete(3188);
             if (Core.CheckInventory("Shriekward Potion"))
             {
                 Core.JumpWait();
-                Core.SendPackets($"%xt%zm%unequipItem%{Bot.Map.RoomID}%{20771}%");
+                if (Bot.Inventory.IsEquipped(20771))
+                {
+                    Core.SendPackets($"%xt%zm%unequipItem%{Bot.Map.RoomID}%{20771}%");
+                    Core.Sleep();
+                }
                 Core.SellItem("Shriekward Potion", all: true);
             }
         }
@@ -2046,7 +2047,7 @@ public class Core13LoC
         {
             Adv.GearStore();
             Core.EnsureAccept(3189);
-            Core.KillXiang("Chaos Lord Xiang Defeated");
+            Core.KillXiang("Chaos Lord Xiang Defeated", isTemp: true);
             Core.EnsureComplete(3189);
             Adv.GearStore(true);
         }
@@ -2328,7 +2329,14 @@ public class Core13LoC
         Story.ChainQuest(3797);
 
         //Find your way to Death's lair
-        Story.MapItemQuest(3798, "shadowattack", 2896);
+        if (!Story.QuestProgression(3798))
+        {
+            Core.EnsureAccept(3798);
+            Core.Join("shadowattack", "Boss", "Left");
+            Core.Jump("r15", "Left");
+            Bot.Wait.ForPickup(25903);
+            Core.EnsureComplete(3798);
+        }
 
         //Beat Death!
         Core.EquipClass(ClassType.Solo);
@@ -2346,8 +2354,25 @@ public class Core13LoC
         if (!Story.QuestProgression(3876))
         {
             Core.EnsureAccept(3876);
-            while (!Bot.ShouldExit && !Core.CheckInventory(26875))
-                Core.HuntMonsterMapID("finalbattle", 1);
+
+            while (Bot.Map.Name != "finalbattle")
+            {
+                Core.Join("finalbattle");
+                Core.Sleep();
+            }
+
+            while (Bot.Player.Cell != "r1")
+            {
+                Core.Jump("r1");
+                Core.Sleep();
+            }
+
+            while (!Bot.ShouldExit)
+            {
+                Bot.Kill.Monster(1);
+                if (Core.CheckInventory(26875))
+                    break;
+            }
             Core.EnsureComplete(3876);
         }
 
@@ -2355,8 +2380,26 @@ public class Core13LoC
         if (!Story.QuestProgression(3877))
         {
             Core.EnsureAccept(3877);
-            while (!Bot.ShouldExit && !Core.CheckInventory(26876))
-                Core.HuntMonsterMapID("finalbattle", 14);
+
+            while (Bot.Map.Name != "finalbattle")
+            {
+                Core.Join("finalbattle");
+                Core.Sleep();
+            }
+
+            while (Bot.Player.Cell != "r4")
+            {
+                Core.Jump("r4");
+                Core.Sleep();
+            }
+
+            while (!Bot.ShouldExit)
+            {
+                Bot.Kill.Monster(14);
+                if (Core.CheckInventory(26876))
+                    break;
+            }
+
             Core.EnsureComplete(3877);
         }
 
@@ -2364,8 +2407,20 @@ public class Core13LoC
         if (!Story.QuestProgression(3878))
         {
             Core.EnsureAccept(3878);
-            while (!Bot.ShouldExit && !Core.CheckInventory(26877))
-                Core.HuntMonsterMapID("finalbattle", 23);
+
+            if (Bot.Map.Name != "finalbattle")
+                Core.Join("finalbattle");
+
+            if (Bot.Player.Cell != "r9")
+                Core.Jump("r9");
+
+            while (!Bot.ShouldExit)
+            {
+                 Bot.Kill.Monster(23);
+                if (Core.CheckInventory(26877))
+                    break;
+            }
+
             Core.EnsureComplete(3878);
             Bot.Wait.ForMapLoad("confrontation");
         }
@@ -2393,7 +2448,7 @@ public class Core13LoC
         {
             Core.EnsureAccept(3881);
             while (!Bot.ShouldExit && !Core.CheckInventory("Prince Drakath Defeated"))
-                Core.HuntMonster("finalshowdown", "Prince Drakath");
+                Core.HuntMonsterMapID("finalshowdown", 1);
             Core.EnsureComplete(3881);
         }
     }

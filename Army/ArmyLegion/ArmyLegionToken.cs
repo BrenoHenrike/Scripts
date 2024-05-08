@@ -45,77 +45,125 @@ public class ArmyLegionToken
         Core.BankingBlackList.Add("Legion Token");
         Core.SetOptions(disableClassSwap: false);
 
-        Setup(Bot.Config.Get<Method>("Method"), 25001);
+        Method? method = Bot.Config?.Get<Method>("Method");
+        if (method != null)
+        {
+            Setup(method.Value, 50001);
+        }
 
         Core.SetOptions(false);
     }
 
-    public void Setup(Method Method, int quant = 25000)
+    public void Setup(Method Method, int quant = 50001)
     {
         Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
 
-        Legion.JoinLegion();
+        // Legion.JoinLegion();
 
+        Core.PrivateRooms = true;
+        Core.PrivateRoomNumber = Army.getRoomNr();
 
         switch (Method.ToString())
         {
             case "Dreadrock":
-                Adv.BuyItem("underworld", 216, "Undead Champion");
+                if (Core.CheckInventory("Undead Champion"))
+                    Adv.BuyItem("underworld", 216, "Undead Champion");
 
-                questIDs = new() { 4849 };
-                monNames = new() { "Void Mercenary", "Fallen Hero", "Hollow Wraith", "Shadowknight", "Legion Sentinel" };
-                drops = new() { "Legion Token" };
-                map = "dreadrock";
-                classType = ClassType.Farm;
+                // Core.RegisterQuests(4849);
+                //setup Quest
+                Bot.Lite.ReacceptQuest = true;
+                Core.EnsureAccept(4849);
+
+                Core.EquipClass(ClassType.Farm);
+                Army.AggroMonCells("r3", "r4", "r5", "r6", "r8", "r8a");
+                Army.AggroMonStart("dreadrock");
+                Army.DivideOnCells("r3", "r4", "r5", "r6", "r8", "r8a");
+
+                
 
                 while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
-                    Army.RunGeneratedAggroMon(map, monNames, questIDs, classType, drops);
+                {
+                    foreach (Monster Mob in Bot.Monsters.CurrentAvailableMonsters)
+                    {
+                        while (!Bot.ShouldExit && Mob.HP >= 0)
+                            Bot.Combat.Attack(Mob.MapID);
+                        if (Bot.Quests.CanComplete(4849))
+                            Bot.Quests.Complete(4849);
+                        if (Core.CheckInventory("Legion Token", quant))
+                            break;
+                    }
+                }
+                Army.AggroMonStop(true);
+                Core.CancelRegisteredQuests();
                 break;
 
             case "Shogun_Paragon_Pet":
+                // Check if the player owns the Shogun Paragon Pet
                 if (!Core.CheckInventory("Shogun Paragon Pet"))
                     Core.Logger("Pet not owned, stopping", stopBot: true);
 
-                //Adv.BestGear(RacialGearBoost.Elemental);
-
+                // Clear existing monster names and add Fotia Elemental and Fotia Spirit
                 monNames.Clear();
                 monNames.AddRange(new[] { "Fotia Elemental", "Fotia Spirit" });
 
+                // Clear existing drops and add Legion Token or Legion Token and Hollow Soul based on quest completion
                 drops.Clear();
-                drops.Add("Legion Token");
+                drops.AddRange(Core.CheckInventory("Hollowborn Paragon Quest Pet") ? new[] { "Legion Token" } : new[] { "Legion Token", "Hollow Soul" });
 
+                // Set map to "fotia" and classType to Farm
                 map = "fotia";
                 classType = ClassType.Farm;
-                Adv.SmartEnhance(Core.FarmClass);
+                // Adv.SmartEnhance(Core.FarmClass);
 
-                int paragonFiendPetID = -1;
-                bool hasInfernalCaladbolg = Core.CheckInventory("Infernal Caladbolg");
-                bool hasShogunParagonPet = Core.CheckInventory("Shogun Paragon Pet");
-                bool hasShogunDagePet = Core.CheckInventory("Shogun Dage Pet");
-                bool hasParagonFiendPet = Core.CheckInventory("Paragon Fiend Quest Pet");
+                // Initialize lists to store quest IDs, quest items, and rewards
+                List<int> Quests = new();
+                List<(ItemBase, int)> QuestItems = new();
+                List<string> Rewards = new();
 
-                if (hasInfernalCaladbolg)
-                    questIDs = new() { 3722, 5755 };
-                else if (hasShogunParagonPet)
-                    questIDs = new() { 5755 };
-                else if (hasShogunDagePet)
-                    questIDs = new() { 5756 };
-                else if (hasParagonFiendPet)
+                // Variable to track if the player has the required pet
+                bool HasQuestPet = false;
+
+                // Define quest IDs required for the pet
+                int[] PetQuests = { 9649, 9646, 9663, 7073, 6750, 6756, 5756, 5755 };
+
+                // Loop through each quest ID and check if the player has the required pet
+                foreach (int Q in PetQuests)
                 {
-                    paragonFiendPetID = Bot.Inventory.GetItem("Paragon Fiend Quest Pet")!.ID;
-                    if (paragonFiendPetID == 47578)
-                        questIDs = new() { 6750 };
-                    else if (paragonFiendPetID == 47614)
-                        questIDs = new() { 6756 };
+                    // Load quest and check if it exists
+                    Quest? firstQID = Bot.Quests.EnsureLoad(Q);
+                    if (firstQID != null)
+                    {
+                        // Get the accept requirement item for the quest
+                        ItemBase? firstAcceptReq = firstQID.AcceptRequirements.FirstOrDefault();
+                        HasQuestPet = Core.CheckInventory(firstAcceptReq!.ID);
+                        if (HasQuestPet)
+                        {
+                            // Log pet ownership and add quest ID and rewards
+                            Core.Logger($"Pet Owned: {firstAcceptReq?.Name}\n" +
+                                        $"Using QID: {firstQID.ID} for {firstQID.Name}");
+                            Quests.Add(firstQID.ID);
+                            Core.AddDrop(firstQID.Rewards.Select(item => item.Name).Distinct().ToArray());
+                        }
+                        else Core.Logger($"Dont own: {firstAcceptReq.Name} [{firstAcceptReq.ID}]");
+                    }
+                    else
+                    {
+                        // Log if failed to load quest
+                        Core.Logger($"Failed to load quest with ID: {Q}");
+                        return;
+                    }
+
+                    // Exit loop if player doesn't have the required pet
+                    if (HasQuestPet)
+                    {
+                        break;
+                    }
                 }
-                else if (Core.CheckInventory("Paragon Ringbearer"))
-                    questIDs = new() { 7073 };
 
+                // Continue running the bot until Legion Token is acquired
                 while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
-                    Army.RunGeneratedAggroMon(map, monNames, questIDs, classType, drops);
+                    Army.RunGeneratedAggroMon(map, monNames, Quests, classType, drops);
                 break;
-
-
 
             case "Thanatos_Paragon_Pet":
                 if (!Core.CheckInventory("Thanatos Paragon Pet"))
@@ -355,7 +403,7 @@ public class ArmyLegionToken
         void PlayerAFK()
         {
             Core.Logger("Anti-AFK engaged");
-            Bot.Sleep(1500);
+            Core.Sleep(1500);
             Bot.Send.Packet("%xt%zm%afk%1%false%");
         }
     }

@@ -42,7 +42,7 @@ public class DarkLord
 
         MMS.MurderMoonStory();
 
-        Core.AddDrop($"Cyber Crystal", "S Ring", "Fifth Lord’s Filtrinator", "Dark Helmet", "Dotty");
+        Core.AddDrop($"Cyber Crystal", "S Ring", "Fifth Lord's Filtrinator", "Dark Helmet", "Dotty");
 
         //Cyber Crystal x66
         Core.EquipClass(ClassType.Farm);
@@ -56,7 +56,7 @@ public class DarkLord
         Core.HuntMonster("murdermoon", "Fifth Sepulchure", "S Ring", 15, false);
 
         //Fifth Lord's Filtrinator x15
-        Core.HuntMonster($"murdermoon", "Fifth Sepulchure", "Fifth Lord’s Filtrinator", 15, false);
+        Core.HuntMonster($"murdermoon", "Fifth Sepulchure", "Fifth Lord's Filtrinator", 15, false);
 
         //Dark Helmet x1
         Bot.Quests.UpdateQuest(7484);
@@ -66,7 +66,7 @@ public class DarkLord
         Core.HuntMonster("zorbaspalace", "Zorba the Bakk", "Dotty", 15, false);
 
         //Gold Voucher 25k x4
-        Core.BuyItem("murdermoon", 1998, "Gold Voucher 25k", 4);
+        Adv.BuyItem("murdermoon", 1998, "Gold Voucher 25k", 4);
 
         //Buying the Dark Lord
         Core.BuyItem("murdermoon", 1998, "Dark Lord");

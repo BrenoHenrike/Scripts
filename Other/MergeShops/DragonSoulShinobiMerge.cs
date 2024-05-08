@@ -65,13 +65,13 @@ public class DragonSoulShinobiMerge
                 #endregion
 
                 case "Dragon Shinobi Token":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     Yokai.Quests();
                     Core.RegisterQuests(7924);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("shadowfortress", "1st Head Of Orochi", "Perfect Orochi Scales", 10, isTemp: false);
+                        Core.HuntMonster("shadowfortress", "1st Head of Orochi", "Perfect Orochi Scales", 10, isTemp: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();

@@ -40,7 +40,7 @@ public class DoomVaultA
         if (!Story.QuestProgression(2952))
         {
             Core.EnsureAccept(2952);
-            Core.HuntMonsterMapID("doomvault", 1, "Soldier Slain", 5, log: false);
+            Core.HuntMonsterMapID("doomvault", 1, "Soldier Slain", 5);
             Core.EnsureComplete(2952);
         }
 
@@ -48,7 +48,7 @@ public class DoomVaultA
         if (!Story.QuestProgression(2953))
         {
             Core.EnsureAccept(2953);
-            Core.HuntMonsterMapID("doomvault", 4, "Fighter Slain", 5, log: false);
+            Core.HuntMonsterMapID("doomvault", 4, "Fighter Slain", 6);
             Core.EnsureComplete(2953);
         }
 
@@ -56,25 +56,25 @@ public class DoomVaultA
         if (!Story.QuestProgression(2954))
         {
             Core.EnsureAccept(2954);
-            Core.HuntMonsterMapID("doomvault", 6, "Mage Slain", 10, log: false);
+            Core.HuntMonsterMapID("doomvault", 6, "Mage Slain", 10);
             Core.EnsureComplete(2954);
         }
 
         // A Close Shave 2955
         if (!Story.QuestProgression(2955))
         {
-            InitFix("r8");
+            Core.CutSceneFixer("doomvault", "r8", "initRoom");
             Core.EnsureAccept(2955);
-            Core.HuntMonsterMapID("doomvault", 13, "Shelleton Slain", 8, log: false);
+            Core.HuntMonsterMapID("doomvault", 13, "Shelleton Slain", 8);
             Core.EnsureComplete(2955);
         }
 
         // Eye Spy a Victim 2965
         if (!Story.QuestProgression(2965))
         {
-            InitFix("r10");
+            Core.CutSceneFixer("doomvault", "r10", "initRoom");
             Core.EnsureAccept(2965);
-            Core.HuntMonsterMapID("doomvault", 18, "Spyball Slain", 6, log: false);
+            Core.HuntMonsterMapID("doomvault", 18, "Spyball Slain", 6);
             Core.EnsureComplete(2965);
         }
 
@@ -83,8 +83,8 @@ public class DoomVaultA
         {
             Core.EquipClass(ClassType.Solo);
             Core.EnsureAccept(2966);
-            InitFix("r14");
-            Core.HuntMonsterMapID("doomvault", 21, "Hand of the Princess", log: false);
+            Core.CutSceneFixer("doomvault", "r14", "initRoom");
+            Core.HuntMonsterMapID("doomvault", 21, "Hand of the Princess");
             Core.EnsureComplete(2966);
             Core.EquipClass(ClassType.Farm);
         }
@@ -93,7 +93,7 @@ public class DoomVaultA
         if (!Story.QuestProgression(2967))
         {
             Core.EnsureAccept(2967);
-            Core.HuntMonsterMapID("doomvault", 22, "Ectomancer Slain", 10, log: false);
+            Core.HuntMonsterMapID("doomvault", 22, "Ectomancer Slain", 10);
             Core.EnsureComplete(2967);
         }
 
@@ -101,7 +101,7 @@ public class DoomVaultA
         if (!Story.QuestProgression(2968))
         {
             Core.EnsureAccept(2968);
-            Core.HuntMonsterMapID("doomvault", 25, "Stone Key", log: false);
+            Core.HuntMonsterMapID("doomvault", 25, "Stone Key");
             Core.EnsureComplete(2968);
         }
 
@@ -109,7 +109,7 @@ public class DoomVaultA
         if (!Story.QuestProgression(2969))
         {
             Core.EnsureAccept(2969);
-            Core.HuntMonsterMapID("doomvault", 30, "Grim Soul", 50, log: false);
+            Core.HuntMonsterMapID("doomvault", 30, "Grim Soul", 50);
             Core.EnsureComplete(2969);
         }
 
@@ -117,7 +117,7 @@ public class DoomVaultA
         if (!Story.QuestProgression(2970))
         {
             Core.EnsureAccept(2970);
-            Core.HuntMonsterMapID("doomvault", 34, "Princess Key", log: false);
+            Core.HuntMonsterMapID("doomvault", 34, "Princess Key");
             Core.EnsureComplete(2970);
         }
 
@@ -126,8 +126,8 @@ public class DoomVaultA
         {
             Core.EquipClass(ClassType.Solo);
             Core.EnsureAccept(2971);
-            InitFix("r24");
-            Core.HuntMonsterMapID("doomvault", 37, "Angler Slain", log: false);
+            Core.CutSceneFixer("doomvault", "r24", "initRoom");
+            Core.HuntMonsterMapID("doomvault", 37, "Angler Slain");
             Core.EnsureComplete(2971);
             Core.EquipClass(ClassType.Farm);
         }
@@ -136,7 +136,7 @@ public class DoomVaultA
         if (!Story.QuestProgression(2974))
         {
             Core.EnsureAccept(2974);
-            Core.HuntMonsterMapID("doomvault", 38, "Mage Slain", 5, log: false);
+            Core.HuntMonsterMapID("doomvault", 38, "Mage Slain", 5);
             Core.EnsureComplete(2974);
         }
 
@@ -144,7 +144,7 @@ public class DoomVaultA
         if (!Story.QuestProgression(2981))
         {
             Core.EnsureAccept(2981);
-            Core.HuntMonsterMapID("doomvault", 45, "Lich Slain", 3, log: false);
+            Core.HuntMonsterMapID("doomvault", 45, "Lich Slain", 3);
             Core.EnsureComplete(2981);
         }
 
@@ -152,7 +152,7 @@ public class DoomVaultA
         if (!Story.QuestProgression(2982))
         {
             Core.EnsureAccept(2982);
-            Core.HuntMonsterMapID("doomvault", 48, "Fighter Slain", 7, log: false);
+            Core.HuntMonsterMapID("doomvault", 48, "Fighter Slain", 7);
             Core.EnsureComplete(2982);
         }
 
@@ -160,7 +160,7 @@ public class DoomVaultA
         if (!Story.QuestProgression(2983))
         {
             Core.EnsureAccept(2983);
-            Core.HuntMonsterMapID("doomvault", 51, "Ectomancer Slain", 3, log: false);
+            Core.HuntMonsterMapID("doomvault", 51, "Ectomancer Slain", 3);
             Core.EnsureComplete(2983);
         }
 
@@ -168,7 +168,7 @@ public class DoomVaultA
         if (!Story.QuestProgression(3006))
         {
             Core.EnsureAccept(3006);
-            Core.HuntMonsterMapID("doomvault", 54, "Shelleton Slain", 3, log: false);
+            Core.HuntMonsterMapID("doomvault", 54, "Shelleton Slain", 3);
             Core.EnsureComplete(3006);
         }
 
@@ -176,7 +176,7 @@ public class DoomVaultA
         if (!Story.QuestProgression(3007))
         {
             Core.EnsureAccept(3007);
-            Core.HuntMonsterMapID("doomvault", 58, "Raxgore's Key", log: false);
+            Core.HuntMonsterMapID("doomvault", 58, "Raxgore's Key");
             Core.EnsureComplete(3007);
         }
 
@@ -185,26 +185,9 @@ public class DoomVaultA
         {
             Core.EquipClass(ClassType.Solo);
             Core.EnsureAccept(3008);
-            InitFix("r36");
-            Core.HuntMonsterMapID("doomvault", 60, "King Slayer", log: false);
+            Core.CutSceneFixer("doomvault", "r36", "initRoom");
+            Core.HuntMonsterMapID("doomvault", 60, "King Slayer");
             Core.EnsureComplete(3008);
         }
-    }
-
-    void InitFix(string cell, string pad = "Left")
-    {
-        Bot.Sleep(2500);
-        if (Bot.Player.Cell != "init")
-            return;
-
-        Core.Logger("looks like the cutscene broke again, initiating cell fix");
-        if (Bot.Map.Name != "doomvault")
-            Core.Join("doomvault", cell, pad);
-        while (!Bot.ShouldExit && Bot.Player.Cell != cell)
-        {
-            Core.Jump(cell);
-            Bot.Sleep(Core.ActionDelay);
-        }
-        Core.Logger($"{Bot.Player.Cell} Fixed.");
     }
 }

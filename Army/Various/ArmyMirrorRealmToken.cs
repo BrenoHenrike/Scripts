@@ -17,7 +17,7 @@ public class ArmyMirrorRealmToken
 
     public string OptionsStorage = "ArmyMirrorRealmToken";
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         new Option<Method>("Method", "Which method to farm Mirror Realm Token?", "Choose your method", Method.Kill_Weak_Mob),
         sArmy.player1,
@@ -35,7 +35,7 @@ public class ArmyMirrorRealmToken
         Core.BankingBlackList.Add("Mirror Realm Token");
         Core.SetOptions();
 
-        Setup(Bot.Config.Get<Method>("Method"), 300);
+        Setup(Bot.Config?.Get<Method>("Method") ?? default(Method), 300);
 
         Core.SetOptions(false);
     }
@@ -60,6 +60,8 @@ public class ArmyMirrorRealmToken
             Core.RegisterQuests(3188);
             Army.SmartAggroMonStart("mirrorportal", "Chaos Harpy");
         }
+
+        
 
         while (!Bot.ShouldExit && (!Core.CheckInventory("Mirror Realm Token", 300)))
             Bot.Combat.Attack("*");

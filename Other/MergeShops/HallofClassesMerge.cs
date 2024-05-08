@@ -1,7 +1,7 @@
 /*
-name: HallofClassesMerge
-description: null
-tags: null
+name: Hall of Classes Merge
+description: This bot will farm the items belonging to the selected mode for the Hall of Classes Merge [1876] in /classhall
+tags: hall, of, classes, merge, classhall, shinobi, x, headband, , masked, katana, katanas, battle, berserker, blooded, faceguard, horned, wee, training, dummy, draconic, cuirass, gold, experienced, combatant, morph, metamorphosis, steel, winglets, silver, stream
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -30,7 +30,6 @@ public class HallofClassesMerge
     public void ScriptMain(IScriptInterface bot)
     {
         Core.BankingBlackList.AddRange(new[] { "Sword and Scroll Badge " });
-        Core.SetOptions();
 
         BuyAllMerge();
 
@@ -69,8 +68,10 @@ public class HallofClassesMerge
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         //Studying the Bard 7495
+                        Core.EquipClass(ClassType.Farm);
                         Core.KillMonster("palooza", "Act6", "Left", "Music Pirate", "Lo-Fi Recording", 4);
-                        Core.HuntMonster("Stairway", "Elwood Bruise", "Scroll: O'Carolan's Reel");
+                        Core.EquipClass(ClassType.Solo);
+                        Core.KillMonster("Stairway", "r8", "Right", "*", "Scroll: O'Carolan's Reel");
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
@@ -99,5 +100,16 @@ public class HallofClassesMerge
         new Option<bool>("54590", "Battle Berserker Horned Faceguard", "Mode: [select] only\nShould the bot buy \"Battle Berserker Horned Faceguard\" ?", false),
         new Option<bool>("54591", "Battle Berserker Horned Helmet", "Mode: [select] only\nShould the bot buy \"Battle Berserker Horned Helmet\" ?", false),
         new Option<bool>("54585", "Wee Training Dummy", "Mode: [select] only\nShould the bot buy \"Wee Training Dummy\" ?", false),
+        new Option<bool>("84104", "Draconic Cuirass", "Mode: [select] only\nShould the bot buy \"Draconic Cuirass\" ?", false),
+        new Option<bool>("84105", "Draconic Cuirass Helm", "Mode: [select] only\nShould the bot buy \"Draconic Cuirass Helm\" ?", false),
+        new Option<bool>("84106", "Gold Draconic Cuirass Helm", "Mode: [select] only\nShould the bot buy \"Gold Draconic Cuirass Helm\" ?", false),
+        new Option<bool>("84107", "Experienced Combatant Morph", "Mode: [select] only\nShould the bot buy \"Experienced Combatant Morph\" ?", false),
+        new Option<bool>("84108", "Experienced Combatant Visage", "Mode: [select] only\nShould the bot buy \"Experienced Combatant Visage\" ?", false),
+        new Option<bool>("84111", "Draconic Metamorphosis Morph", "Mode: [select] only\nShould the bot buy \"Draconic Metamorphosis Morph\" ?", false),
+        new Option<bool>("84112", "Draconic Metamorphosis Visage", "Mode: [select] only\nShould the bot buy \"Draconic Metamorphosis Visage\" ?", false),
+        new Option<bool>("84113", "Draconic Cuirass Cape", "Mode: [select] only\nShould the bot buy \"Draconic Cuirass Cape\" ?", false),
+        new Option<bool>("84115", "Steel Winglets", "Mode: [select] only\nShould the bot buy \"Steel Winglets\" ?", false),
+        new Option<bool>("84116", "Silver Stream Sword", "Mode: [select] only\nShould the bot buy \"Silver Stream Sword\" ?", false),
+        new Option<bool>("84117", "Silver Stream Swords", "Mode: [select] only\nShould the bot buy \"Silver Stream Swords\" ?", false),
     };
 }

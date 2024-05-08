@@ -1,7 +1,7 @@
 /*
-name: BuyScrolls
-description: null
-tags: null
+name: Buy Scrolls
+description: This script will buy the selected scrolls.
+tags: scroll, enrage, mystic, parchment, spellcraft, decay
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -16,7 +16,7 @@ public class BuyScrolls
     public CoreFarms Farm = new();
 
     public string OptionsStorage = "BuyScrolls";
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         new Option<bool>("UseMysticParchment", "Use Mystic Parchment", "Use Mystic Parchment instead of gold To Buy Ink", false),
         new Option<Scrolls>("scrollSelect", "Scroll of", "Select the scroll of your choise"),
@@ -66,7 +66,7 @@ public class BuyScrolls
                 Core.EnsureAccept((int)scroll);
                 Core.EnsureCompleteMulti((int)scroll, Bot.Inventory.GetQuantity(_scroll) - ((int)Math.Ceiling((float)quant / (float)questData.Rewards.First().Quantity)));
                 Bot.Wait.ForPickup(_scroll);
-                Bot.Sleep(500);
+                Core.Sleep(500);
                 Core.Logger($"You now own {Bot.Inventory.GetQuantity(_scroll)} of the requested {quant} {_scroll}'s");
             }
             Core.Logger($"Buying complete, you now own {quant} {_scroll}'s");
@@ -77,7 +77,7 @@ public class BuyScrolls
             {
                 if (!Core.CheckInventory(ink))
                 {
-                    Core.KillMonster("tercessuinotlim", "m2", "Top", "Dark Makai", "Mystic Parchment", ((quant / 5) / 2) - (Bot.Inventory.GetQuantity("Mystic Parchment")), isTemp: false);
+                    Core.KillMonster("tercessuinotlim", "m2", "Left", "*", "Mystic Parchment", ((quant / 5) / 2) - (Bot.Inventory.GetQuantity("Mystic Parchment")), isTemp: false);
                     Core.BuyItem("spellcraft", 549, ink);
                 }
                 Core.EnsureAccept((int)scroll);

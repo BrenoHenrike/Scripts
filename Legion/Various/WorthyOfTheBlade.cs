@@ -46,9 +46,9 @@ public class WorthyBlade
         while (!Bot.ShouldExit && (!Core.CheckInventory("Binky's Uni-horn")))
         {
             Core.EquipClass(ClassType.Solo);
-            Adv.KillUltra("doomvault", "r5", "Left", "Binky", "Binky's Uni-horn", isTemp: false, publicRoom: true);
+            Core.KillMonster("doomvault", "r5", "Left", "Binky", "Binky's Uni-horn", isTemp: false, publicRoom: true);
         }
-        Bot.Sleep(1500);
+        Core.Sleep(1500);
         Core.EnsureComplete(6738);
     }
 }

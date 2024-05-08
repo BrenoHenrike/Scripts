@@ -13,9 +13,9 @@ public class CitadelRuins
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
+    public CoreFarms Farm = new();
     public CoreNation Nation = new();
-    public CoreStory Story = new CoreStory();
+    public CoreStory Story = new();
 
     public string[] rewards = { "Purified Claymore of Destiny", "Good Iron Wing 1", "Spinal Tap of Retribution", "Purified Claw of Nulgath", "Mage's Gratitude" };
 
@@ -203,13 +203,9 @@ public class CitadelRuins
             Core.EnsureAccept(668);
             Nation.FarmTaintedGem(7);
             Nation.Supplies("Claw of Nulgath");
-            
-            string[] locations = new[] { "tercessuinotlim", Core.IsMember ? "Nulgath" : "evilmarsh" };
-            string location = locations[new Random().Next(locations.Length)];
-            string cell = location == "tercessuinotlim" ? (new Random().Next(2) == 0 ? "m1" : "m2") : "Field1";
-            Core.KillMonster(location, cell, "Left", "Dark Makai", "Dark Makai Sigil", log: false);
 
-            Bot.Wait.ForPickup("Dark Makai Sigil");
+            Core.ResetQuest(7551);
+            Core.DarkMakaiItem("Dark Makai Sigil");
             Core.EnsureComplete(668);
         }
     }
@@ -241,9 +237,9 @@ public class CitadelRuins
         }
 
         //grab a clue
+        Story.MapItemQuest(6175, "citadelruins", 5593, 5);
         Story.KillQuest(6175, "citadelruins", "Inquisitor Hobo");
-        Story.MapItemQuest(6175, "citadelruins", 5593, Amount: 5);
-        Bot.Sleep(2500);
+        Core.Sleep(2500);
 
         //unlock the door
         if (!Story.QuestProgression(6176))

@@ -82,7 +82,7 @@ public class AvastBadge
                             if (Bot.Inventory.IsMaxStack("Fishing Bait"))
                                 Bot.Drops.Remove("Fishing Bait");
                             Bot.Send.Packet($"%xt%zm%FishCast%1%Dynamite%30%");
-                            Bot.Sleep(3500);
+                            Core.Sleep(3500);
                             Core.SendPackets("%xt%zm%getFish%1%false%");
                         }
                         Core.HuntMonster("Greenguardwest", "Slime", "Slime Sauce");
@@ -91,8 +91,8 @@ public class AvastBadge
                 }
                 Core.BuyItem("Greenguardwest", 363, "Fishin' Hooks");
             }
-            Core.HuntMonster("akiba", "Kage Nopperabo|Ninja Nopperabo|Samurai Nopperabo", "Hook Sword", isTemp: false);
-            // Story.KillQuest(2391, "akiba", "Kage Nopperabo|Ninja Nopperabo|Samurai Nopperabo", "Hook Sword", isTemp: false);
+            Core.HuntMonster("akiba", "Kage Nopperabo", "Hook Sword", isTemp: false);
+            // Story.KillQuest(2391, "akiba", "Kage Nopperabo", "Hook Sword", isTemp: false);
             Core.EnsureComplete(2391);
         }
 

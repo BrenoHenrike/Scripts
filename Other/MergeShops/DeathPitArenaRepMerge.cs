@@ -1,11 +1,10 @@
 /*
-name: DeathPitArenaRepMerge
-description: null
-tags: null
+name: Death Pit Arena Rep Merge
+description: This bot will farm the items belonging to the selected mode for the Death Pit Arena Rep Merge [1261] in /deathpit
+tags: death, pit, arena, rep, merge, deathpit, general, galls, velms, hungars, chuds, spinal, carnage, malice, drakel, chud, velm, hungar, gall, green, morph, warlord
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
@@ -13,12 +12,11 @@ using Skua.Core.Options;
 
 public class DeathPitArenaRepMerge
 {
-    public IScriptInterface Bot => IScriptInterface.Instance;
-    public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new();
-    public CoreStory Story = new();
-    public CoreAdvanced Adv = new();
-    public static CoreAdvanced sAdv = new();
+    private IScriptInterface Bot => IScriptInterface.Instance;
+    private CoreBots Core => CoreBots.Instance;
+    private CoreFarms Farm = new();
+    private CoreAdvanced Adv = new();
+    private static CoreAdvanced sAdv = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
     public string[] MultiOptions = { "Generic", "Select" };
@@ -27,13 +25,12 @@ public class DeathPitArenaRepMerge
     //              If true, it will not stop the script if the default case triggers and the user chose to only get mats
     private bool dontStopMissingIng = false;
 
-    public void ScriptMain(IScriptInterface bot)
+    public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Death Pit Arena Medal", "General Gall Medal", "General Velm Medal", "General Hun'Gar Medal", "General Chud Medal " });
+        Core.BankingBlackList.AddRange(new[] { "Death Pit Arena Medal", "General Gall Medal", "General Velm Medal", "General Hun'Gar Medal", "General Chud Medal"});
         Core.SetOptions();
 
         BuyAllMerge();
-
         Core.SetOptions(false);
     }
 
@@ -100,7 +97,7 @@ public class DeathPitArenaRepMerge
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         //Do You Even Brawl 5155
-                        Core.HuntMonster("deathpit", "Velm's Restorer|Velm's Brawler", "Death Pit Token");
+                        Core.HuntMonster("deathpit", "Velm's Restorer", "Death Pit Token");
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();

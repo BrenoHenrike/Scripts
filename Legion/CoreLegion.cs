@@ -9,6 +9,9 @@ tags: null
 //cs_include Scripts/CoreStory.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models;
+using Skua.Core.Models.Items;
+using Skua.Core.Models.Monsters;
+using Skua.Core.Models.Quests;
 
 public class CoreLegion
 {
@@ -54,7 +57,7 @@ public class CoreLegion
         Core.CancelRegisteredQuests();
     }
 
-    public void DarkToken(int quant = 600)
+    public void DarkToken(int quant = 10000)
     {
         if (Core.CheckInventory("Dark Token", quant))
             return;
@@ -67,7 +70,9 @@ public class CoreLegion
         Core.RegisterQuests(6248, 6249, 6251);
         while (!Bot.ShouldExit && !Core.CheckInventory("Dark Token", quant))
         {
-            Core.HuntMonster("seraphicwardage", "Seraphic Commander", log: false);
+            Core.HuntMonster("seraphicwardage", "Seraphic Commander", "Seraphic Medals", 5, log: false);
+            Core.HuntMonster("seraphicwardage", "Seraphic Commander", "Mega Seraphic Medals", 3, log: false);
+            Core.HuntMonster("seraphicwardage", "Seraphic Commander", "Seraphic Commanders Slain", 6, log: false);
         }
         Core.CancelRegisteredQuests();
     }
@@ -87,13 +92,9 @@ public class CoreLegion
         Core.RegisterQuests(4743);
         while (!Bot.ShouldExit && !Core.CheckInventory("Diamond Token of Dage", quant))
         {
-            if (!Core.CheckInventory("Defeated Makai", 25))
-            {
-                Core.EquipClass(ClassType.Farm);
-                Core.KillMonster("tercessuinotlim", "m2", "Bottom", "Dark Makai", "Defeated Makai", 25, false);
-                Core.Jump();
-                Core.Join("aqlesson");
-            }
+            Core.EquipClass(ClassType.Farm);
+            Core.KillMonster("tercessuinotlim", "m2", "Left", "*", "Defeated Makai", 25, false);
+
             Core.EquipClass(ClassType.Solo);
             //Adv.BestGear(RacialGearBoost.Chaos);
             Core.KillMonster("aqlesson", "Frame9", "Right", "Carnax", "Carnax Eye", publicRoom: true);
@@ -101,13 +102,14 @@ public class CoreLegion
 
             //More then one item of the same name as drop btoh temp and non-temp.
             while (!Bot.ShouldExit && !Core.CheckInventory(33257))
-                Core.KillMonster("dflesson", "r12", "Right", "Fluffy the Dracolich", publicRoom: true);
+                Core.KillMonster("dflesson", "r12", "Right", "Fluffy the Dracolich", log: false, publicRoom: true);
 
             //Adv.BestGear(RacialGearBoost.Dragonkin);
             Core.HuntMonster("lair", "Red Dragon", "Red Dragon's Fang");
             //Adv.BestGear(RacialGearBoost.Human);
             Core.HuntMonster("bloodtitan", "Blood Titan", "Blood Titan's Blade", publicRoom: true);
-            Bot.Drops.Pickup("Legion Token", "Diamond Token of Dage");
+            foreach (string drop in new[] { "Legion Token", "Diamond Token of Dage" })
+                Bot.Wait.ForPickup(drop);
         }
         Core.CancelRegisteredQuests();
     }
@@ -176,19 +178,11 @@ public class CoreLegion
 
         Core.AddDrop("Dage's Approval", "Dage's Favor");
 
-        bool shouldLog = true;
-        if (quantApproval > 0 && quantFavor > 0)
-        {
-            Core.Logger($"Farming Dage's Approval ({Bot.Inventory.GetQuantity("Dage's Approval")}/{quantApproval}) " +
-                            $"and Dage's Favor ({Bot.Inventory.GetQuantity("Dage's Favor")}/{quantFavor})");
-            shouldLog = false;
-        }
 
         Core.EquipClass(ClassType.Farm);
-        //Adv.BestGear(RacialGearBoost.Undead);
 
-        Core.KillMonster("evilwardage", "r8", "Left", "*", "Dage's Approval", quantApproval, false, shouldLog);
-        Core.KillMonster("evilwardage", "r8", "Left", "*", "Dage's Favor", quantFavor, false, shouldLog);
+        foreach ((string, int) pair in new[] { ("Dage's Approval", quantApproval), ("Dage's Favor", quantFavor) })
+            Core.KillMonster("underworld", "r16", "Left", "*", pair.Item1, pair.Item2, false);
     }
 
     public void BoneSigil(int quant = 1)
@@ -230,8 +224,17 @@ public class CoreLegion
     }
 
     #region LegionTokens
-    public void FarmLegionToken(int quant = 25000)
+    public void FarmLegionToken(int quant = 50000)
     {
+        //banking Lts as ae fucked the quant when updating teh cap
+        // if (!Bot.Bank.Contains("Legion Token"))
+        // {
+        //     Core.OneTimeMessage("Legion Token stack fix", "Banking [then unbanking if farm is needed] LTs\n" +
+        //                         "as when AE updated the cap, they broke shit", messageBox: false);
+
+        //     Core.ToBank("Legion Token");
+        // }
+
         if (Core.CheckInventory("Legion Token", quant))
             return;
 
@@ -253,7 +256,7 @@ public class CoreLegion
         LTDreadrock(quant);
     }
 
-    public void LTHardCoreParagon(int quant = 25000)
+    public void LTHardCoreParagon(int quant = 50000)
     {
         if (Core.CheckInventory("Legion Token", quant) || !Core.CheckInventory("Hardcore Paragon Pet"))
             return;
@@ -271,6 +274,7 @@ public class CoreLegion
             Core.EnsureComplete(3394);
         }
 
+        // A Single Rib
         Core.RegisterQuests(3393);
         while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
             Adv.BoostHuntMonster("doomvault", "Binky", "Dark Unicorn Rib", isTemp: false, log: false);
@@ -279,7 +283,7 @@ public class CoreLegion
 
     }
 
-    public void LTInfernalLegionBetrayal(int quant = 25000)
+    public void LTInfernalLegionBetrayal(int quant = 50000)
     {
         if (Core.CheckInventory("Legion Token", quant) || !Core.CheckInventory("Infernal Caladbolg"))
             return;
@@ -295,13 +299,13 @@ public class CoreLegion
         Core.RegisterQuests(Core.CheckInventory("Shogun Paragon Pet") ? new[] { 3722, 5755 } : new[] { 3722 });
         while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
         {
-            Core.HuntMonster("fotia", "*", "Betrayer Extinguished", 5);
+            Core.HuntMonster("fotia", "Fotia Elemental", "Betrayer Extinguished", 5);
             Core.HuntMonster("evilwardage", "Dreadfiend of Nulgath", "Fiend Felled", 2);
         }
         Core.CancelRegisteredQuests();
     }
 
-    public void LTUW3017(int quant = 25000)
+    public void LTUW3017(int quant = 50000)
     {
         if (Core.CheckInventory("Legion Token", quant) || !Core.CheckInventory("UW3017 Pet"))
             return;
@@ -323,7 +327,7 @@ public class CoreLegion
         Core.CancelRegisteredQuests();
     }
 
-    public void LTHolidayParagon(int quant = 25000)
+    public void LTHolidayParagon(int quant = 50000)
     {
 
         if (Core.CheckInventory("Legion Token", quant) || !Core.CheckInventory("Holiday Paragon Pet"))
@@ -346,7 +350,7 @@ public class CoreLegion
         Core.CancelRegisteredQuests();
     }
 
-    public void LTFestiveParagonDracolichRider(int quant = 25000)
+    public void LTFestiveParagonDracolichRider(int quant = 50000)
     {
         if (Core.CheckInventory("Legion Token", quant) || !Core.CheckInventory("Festive Paragon Dracolich Rider"))
             return;
@@ -369,7 +373,7 @@ public class CoreLegion
         Core.CancelRegisteredQuests();
     }
 
-    public void LTBrightParagon(int quant = 25000)
+    public void LTBrightParagon(int quant = 50000)
     {
         if (Core.CheckInventory("Legion Token", quant) || !Core.CheckInventory("Bright Paragon Pet"))
             return;
@@ -393,41 +397,155 @@ public class CoreLegion
         Core.CancelRegisteredQuests();
     }
 
-    public void LTShogunParagon(int quant = 25000)
+    public void LTShogunParagon(int quant = 50000, bool DoClearaPath = false, bool Logger = false)
     {
-        if (Core.CheckInventory("Legion Token", quant)
-            || (!Core.CheckInventory("Shogun Paragon Pet") && !Core.CheckInventory("Paragon Fiend Quest Pet") && !Core.CheckInventory("Paragon Ringbearer") && !Core.CheckInventory("Shogun Dage Pet")))
-            return;
-
-        JoinLegion();
-
-        int QuestID = 0;
-        if (Core.CheckInventory("Shogun Paragon Pet"))
-            QuestID = 5755;
-        else if (Core.CheckInventory("Shogun Dage Pet"))
-            QuestID = 5756;
-        else if (Core.CheckInventory("Paragon Fiend Quest Pet"))
+        if (Core.CheckInventory("Legion Token", quant))
         {
-            if (Bot.Inventory.GetItem("Paragon Fiend Quest Pet")!.ID == 47578)
-                QuestID = 6750;
-            else if (Bot.Inventory.GetItem("Paragon Fiend Quest Pet")!.ID == 47614)
-                QuestID = 6756;
+            Core.FarmingLogger("Legion Token", quant);
+            return;
         }
-        else if (Core.CheckInventory("Paragon Ringbearer"))
-            QuestID = 7073;
 
+        List<int> Quests = new(); // Initializes a list to store quest IDs
+        List<(ItemBase, int)> QuestItems = new(); // Initializes a list to store quest items
+        List<string> Rewards = new();
+        bool HasQuestPet = false; // Variable to track if the player has the required pet
+
+        // Define pairs of quest IDs with their respective accept requirements
+        (int, int)[] questPairs = new[]
+        {
+            (9649, 9648), //hb
+            (9646, 9645), //hb
+            (9663, 9662),
+            (7073, 7072),
+            (6750, 6754),
+            (6756, 6749),
+            (5756, 5754),
+            (5755, 5753)
+        };
+
+        // Process quest pairs
+        foreach ((int firstQuestID, int secondQuestID) in questPairs)
+        {
+            // Process the first quest in the pair
+            Quest? firstQID = Bot.Quests.EnsureLoad(firstQuestID);
+            if (firstQID != null)
+            {
+                ItemBase? firstAcceptReq = firstQID.AcceptRequirements.FirstOrDefault();
+                HasQuestPet = Core.CheckInventory(firstAcceptReq?.ID ?? 0);
+                if (HasQuestPet)
+                {
+                    Core.Logger($"Pet Owned: {firstAcceptReq}\n" +
+                                $"Using QID: {firstQuestID} for {firstQID.Name}");
+                    Quests.Add(firstQID.ID);
+                    Core.AddDrop(firstQID.Rewards.Select(item => item.Name).Distinct().ToArray());
+                }
+            }
+            else
+            {
+                Core.Logger($"Failed to load quest with ID: {firstQuestID}");
+                return;
+            }
+
+            if (!DoClearaPath && HasQuestPet)
+            {
+                // If the player has the required pet from the first quest, break the loop and proceed to the next pair
+                break;
+            }
+
+            // Process the second quest in the pair
+            Quest? secondQID = Bot.Quests.EnsureLoad(secondQuestID);
+            if (secondQID != null)
+            {
+                ItemBase? secondAcceptReq = secondQID.AcceptRequirements.FirstOrDefault();
+                HasQuestPet = Core.CheckInventory(secondAcceptReq?.ID ?? 0);
+                if (HasQuestPet)
+                {
+                    Core.Logger($"Pet Owned: {secondAcceptReq}\n" +
+                                $"Using QID: {secondQuestID} for {secondQID.Name}");
+                    Quests.Add(secondQID.ID);
+                    Core.AddDrop(secondQID.Rewards.Select(item => item.Name).Distinct().ToArray());
+                }
+            }
+            else
+            {
+                Core.Logger($"Failed to load quest with ID: {secondQuestID}");
+                return;
+            }
+
+            if (HasQuestPet)
+            {
+                // If the player has the required pet from the second quest, break the loop and proceed to the next pair
+                break;
+            }
+        }
+
+        if (!HasQuestPet)
+        {
+            return;
+        }
+
+        foreach (int questID in Quests)
+        {
+            Quest quest = Core.EnsureLoad(questID);
+            foreach (ItemBase requirement in quest.Requirements)
+            {
+                ItemBase? reqs = Bot.Quests.EnsureLoad(questID)?.Requirements.FirstOrDefault(i => i.Name == requirement.Name);
+                if (reqs != null)
+                {
+                    QuestItems.Add((reqs, requirement.Quantity));
+                }
+                else
+                {
+                    Core.Logger($"Missing requirement '{requirement.Name}' for quest '{quest.Name}'.");
+                }
+            }
+        }
+
+
+        // Equip class, log farming, add drop, and register quests
         Core.EquipClass(ClassType.Farm);
-        //Adv.BestGear(GenericGearBoost.dmgAll);
-
         Core.FarmingLogger("Legion Token", quant);
         Core.AddDrop("Legion Token");
-        Core.RegisterQuests(QuestID);
+        Core.RegisterQuests(Quests.ToArray());
+        // Hunt monsters until the desired quantity of Legion Tokens is obtained
         while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
-            Core.HuntMonster("fotia", "*", log: false);
+        {
+            foreach ((ItemBase QuestItem, int ItemQuant) in QuestItems)
+            {
+                if (Bot.TempInv.Contains(QuestItem.ID, ItemQuant))
+                {
+                    Core.Logger($"{QuestItem.Name} owned x {ItemQuant} skipping");
+                    continue;
+                }
+
+                Core.KillMonster("fotia",
+                // Set cell:
+                    QuestItem.Name == "Femme Cult Worshipper's Soul" ? "r5" : "Enter",
+                // Set Pad:
+                    QuestItem.Name == "Femme Cult Worshipper's Soul" ? "Left" : "Spawn",
+                // Set Mob:
+                    QuestItem.Name == "Femme Cult Worshipper's Soul" ? "Femme Cult Worshiper" : "*",
+                // Set ItemName:
+                    QuestItem.Name,
+                // Set ItemName Quant:
+                    ItemQuant,
+                     log: Logger);
+            }
+
+            if (Core.CheckInventory("Legion Token", quant))
+            {
+                Core.Logger("Legion Tokens maxed!");
+                break;
+            }
+        }
         Core.CancelRegisteredQuests();
     }
 
-    public void LTFirstClassEntertainment(int quant = 25000, bool onlyWithParty = false, int partySize = 4, bool ReturnIfNoPeople = false)
+
+
+
+
+    public void LTFirstClassEntertainment(int quant = 50000, bool onlyWithParty = false, int partySize = 4, bool ReturnIfNoPeople = false)
     {
         if (Core.CheckInventory("Legion Token", quant))
             return;
@@ -456,7 +574,7 @@ public class CoreLegion
         Core.ToBank("Bone Sigil");
     }
 
-    public void LTDreadrock(int quant = 25000)
+    public void LTDreadrock(int quant = 50000)
     {
         if (Core.CheckInventory("Legion Token", quant))
             return;
@@ -477,7 +595,7 @@ public class CoreLegion
         Core.CancelRegisteredQuests();
     }
 
-    public void LTArcaneParagon(int quant = 25000)
+    public void LTArcaneParagon(int quant = 50000)
     {
         if (Core.CheckInventory("Legion Token", quant) || !Core.CheckInventory("Arcane Paragon Pet"))
             return;
@@ -500,7 +618,7 @@ public class CoreLegion
         Core.CancelRegisteredQuests();
     }
 
-    public void LTThanatosParagon(int quant = 25000)
+    public void LTThanatosParagon(int quant = 50000)
     {
         if (Core.CheckInventory("Legion Token", quant) || !Core.CheckInventory("Thanatos Paragon Pet"))
             return;
@@ -518,7 +636,7 @@ public class CoreLegion
         Core.CancelRegisteredQuests();
     }
 
-    public void LTDreadnaughtParagon(int quant = 25000)
+    public void LTDreadnaughtParagon(int quant = 50000)
     {
         if (Core.CheckInventory("Legion Token", quant) || !Core.CheckInventory("Paragon Dreadnaught Pet"))
             return;
@@ -538,7 +656,7 @@ public class CoreLegion
         Core.CancelRegisteredQuests();
     }
 
-    public void LTMountedParagonPet(int quant = 25000)
+    public void LTMountedParagonPet(int quant = 50000)
     {
         if (Core.CheckInventory("Legion Token", quant) || !Core.CheckInventory("Mounted Paragon Pet"))
             return;
@@ -560,7 +678,7 @@ public class CoreLegion
 
     }
 
-    public void LTAscendedParagon(int quant = 25000)
+    public void LTAscendedParagon(int quant = 50000)
     {
         if (Core.CheckInventory("Legion Token", quant) || !Core.CheckInventory("Ascended Paragon Pet"))
             return;
@@ -687,6 +805,10 @@ public class CoreLegion
         Core.EquipClass(ClassType.Solo);
         // Core.Logger($"Farming {quant} {item}. SoloBoss = {canSoloBoss}");
 
+        int ExitAttempt = 1;
+        int Death = 1;
+
+    Start:
         while (!Bot.ShouldExit &&
                 !Core.CheckInventory("Legion Combat Trophy", TrophyQuant) ||
                 !Core.CheckInventory("Technique Observed", TechniqueQuant) ||
@@ -699,8 +821,8 @@ public class CoreLegion
             if (ScrollQuant > 0)
                 Core.Logger($"Fragment: {Bot.Inventory.GetQuantity("Sword Scroll Fragment")} / {ScrollQuant}");
 
-            Core.Join("dagepvp", "Enter0", "Spawn", ignoreCheck: true);
-            Bot.Sleep(2500);
+            Core.Join("dagepvp", "Enter0", "Spawn");
+            Core.Sleep(2500);
 
             Core.PvPMove(1, "r2", 475, 269);
             Core.PvPMove(4, "r4", 963, 351);
@@ -714,141 +836,137 @@ public class CoreLegion
 
                 Core.FarmingLogger("Sword Scroll Fragment", ScrollQuant);
 
-                while (!Bot.ShouldExit)
+                foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
                 {
-                    Bot.Kill.Monster(17);
-                    Bot.Wait.ForCombatExit();
-                    Bot.Kill.Monster(18);
-                    Bot.Wait.ForCombatExit();
-                    if (!Core.IsMonsterAlive("Blade Master"))
-                    {
-                        Bot.Combat.CancelTarget();
-                        Core.Logger("Blade Masters killed, moving on.");
-                        break;
-                    }
+                    Bot.Kill.Monster(MID.MapID);
+                    Bot.Combat.CancelTarget();
                 }
+
+                if (!Bot.Player.Alive)
+                    goto RestartOnDeath;
 
                 Core.PvPMove(20, "r11", 943, 391);
+                if (!Bot.Player.Alive)
+                    goto RestartOnDeath;
 
-                while (!Bot.ShouldExit)
+                foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
                 {
-                    Bot.Kill.Monster(19);
-                    Bot.Wait.ForCombatExit();
-                    Bot.Kill.Monster(20);
-                    Bot.Wait.ForCombatExit();
-                    if (!Core.IsMonsterAlive("Blade Master"))
-                    {
-                        Bot.Combat.CancelTarget();
-                        Core.Logger("Blade Masters killed, moving on.");
-                        break;
-                    }
+                    Bot.Kill.Monster(MID.MapID);
+                    Bot.Combat.CancelTarget();
                 }
+
+                if (!Bot.Player.Alive)
+                    goto RestartOnDeath;
 
                 Core.PvPMove(21, "r10", 9, 397);
+                if (!Bot.Player.Alive)
+                    goto RestartOnDeath;
                 Core.PvPMove(19, "r7", 7, 392);
+                if (!Bot.Player.Alive)
+                    goto RestartOnDeath;
                 Core.PvPMove(14, "r6", 482, 483);
+                if (!Bot.Player.Alive)
+                    goto RestartOnDeath;
             }
+            if (!Bot.Player.Alive)
+                goto RestartOnDeath;
 
             Core.PvPMove(12, "r12", 758, 338);
+            if (!Bot.Player.Alive)
+                goto RestartOnDeath;
 
-            while (!Bot.ShouldExit && !canSoloBoss)
+            foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
             {
-                Bot.Kill.Monster(21);
-                Bot.Wait.ForCombatExit();
-                Bot.Kill.Monster(22);
-                Bot.Wait.ForCombatExit();
-                if (!Core.IsMonsterAlive("Legion Guard"))
-                {
-                    Bot.Combat.CancelTarget();
-                    Core.Logger("Blade Masters killed, moving on.");
-                    break;
-                }
+                Bot.Kill.Monster(MID.MapID);
+                Bot.Combat.CancelTarget();
             }
+
+            if (!Bot.Player.Alive)
+                goto RestartOnDeath;
 
             Core.PvPMove(23, "r13", 933, 394);
+            if (!Bot.Player.Alive)
+                goto RestartOnDeath;
 
-            while (!Bot.ShouldExit && !canSoloBoss)
+            foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
             {
-                Bot.Kill.Monster(23);
-                Bot.Wait.ForCombatExit();
-                Bot.Kill.Monster(24);
-                Bot.Wait.ForCombatExit();
-                if (!Core.IsMonsterAlive("Legion Guard"))
-                {
-                    Bot.Combat.CancelTarget();
-                    Core.Logger("Legion Guards killed, moving on.");
-                    break;
-                }
+                Bot.Kill.Monster(MID.MapID);
+                Bot.Combat.CancelTarget();
             }
+
+            if (!Bot.Player.Alive)
+                goto RestartOnDeath;
 
             Core.PvPMove(25, "r14", 846, 181);
+            if (!Bot.Player.Alive)
+                goto RestartOnDeath;
 
-            while (!Bot.ShouldExit && !canSoloBoss)
+            foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
             {
-                Bot.Kill.Monster(25);
-                Bot.Wait.ForCombatExit();
-                Bot.Kill.Monster(26);
-                Bot.Wait.ForCombatExit();
-                if (!Core.IsMonsterAlive("Legion Guard"))
-                {
-                    Bot.Combat.CancelTarget();
-                    Core.Logger("Legion Guards killed, moving on.");
-                    break;
-                }
+                Bot.Kill.Monster(MID.MapID);
+                Bot.Combat.CancelTarget();
             }
+
+            if (!Bot.Player.Alive)
+                goto RestartOnDeath;
 
             Core.PvPMove(28, "r15", 941, 348);
+            if (!Bot.Player.Alive)
+                goto RestartOnDeath;
 
-            while (!Bot.ShouldExit)
+            foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
             {
-                Bot.Kill.Monster(27);
-                Bot.Wait.ForCombatExit();
-                if (!Core.IsMonsterAlive("Dage the Evil"))
-                {
-                    Bot.Combat.CancelTarget();
-                    Core.Logger("Dage the Evil, getting trophies.");
-                    break;
-                }
+                Bot.Kill.Monster(MID.MapID);
+                Bot.Combat.CancelTarget();
             }
 
+            if (!Bot.Player.Alive)
+                goto RestartOnDeath;
+
             Bot.Wait.ForDrop("Legion Combat Trophy", 40);
-            Bot.Sleep(Core.ActionDelay);
+            Core.Sleep();
             Bot.Wait.ForPickup("Legion Combat Trophy");
 
             Core.Logger("Delaying exit");
-            Bot.Sleep(7500);
+            Core.Sleep(7500);
+            goto Exit;
 
-            while (Bot.Map.Name != "battleon")
+
+        Exit:
+            while (!Bot.ShouldExit && Bot.Map.Name != "battleon")
             {
-                int i = 1;
-                Core.Logger($"Attemping Exit {i++}.");
-                Core.Join("battleon-999999");
-                Bot.Sleep(1500);
+                Core.Logger($"Attempting Exit {ExitAttempt++}.");
+                Bot.Map.Join("battleon-999999");
+                Bot.Combat.CancelTarget();
+                Bot.Wait.ForCombatExit();
+                Core.Sleep(1500);
+                if (Bot.Map.Name != "battleon")
+                    Core.Logger("Failed!? HOW.. try agian");
+                else Core.Logger("Successful!");
+                goto Start;
             }
+
+        RestartOnDeath:
+            Core.Logger($"Death: {Death++}, resetting");
+            while (!Bot.ShouldExit)
+            {
+                Bot.Wait.ForTrue(() => Bot.Player.Alive, 100);
+                Core.Logger($"Attempting Death Exit {ExitAttempt++}.");
+                Bot.Map.Join("battleon-999999");
+                Bot.Wait.ForMapLoad("battleon");
+                Core.Sleep(1500);
+                if (Bot.Map.Name != "battleon")
+                    Core.Logger("Failed!? HOW.. try agian");
+                else
+                {
+                    Core.Logger("Successful!");
+                    goto Start;
+                }
+            }
+
+            Core.Logger($"Deaths:[{Death}]");
+            Death = 0;
+            ExitAttempt = 0;
         }
     }
-    // Bot.Events.PlayerDeath -= PVPDeath;
-
-
-    // private void PVPDeath()
-    // {
-    //     Core.DebugLogger(this);
-    //     Bot.Wait.ForCellChange("Enter0");
-    //     Core.DebugLogger(this);
-
-    //     Core.Logger("Player Died in PvP, resetting");
-    //     Core.DebugLogger(this);
-    //     while (!Bot.ShouldExit && !Bot.Player.Alive)
-    //     {
-    //         Core.DebugLogger(this);
-    //         Bot.Wait.ForTrue(() => Bot.Player.Alive, 20);
-    //     }
-    //     Core.DebugLogger(this);
-    //     Bot.Sleep(2500);
-    //     Core.DebugLogger(this);
-    //     Bot.Map.Join("battleon-999999");
-    //     Core.DebugLogger(this);
-    //     BludrutBrawlBoss();
-    //     Core.DebugLogger(this);
-    // }
 }

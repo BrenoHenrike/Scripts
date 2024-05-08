@@ -33,7 +33,7 @@ public class Caladbolg
         Core.SetOptions(false);
     }
 
-    public void GetCaladbolg(bool otherRewards = true)
+    public void GetCaladbolg(bool otherRewards = false)
     {
         string[] target = otherRewards ? new[] { "Caladbolg", "Caladboogly", "Dual Caladbolgs" } : new[] { "Caladbolg" };
         if (Core.CheckInventory(target))
@@ -69,11 +69,11 @@ public class Caladbolg
 
         Core.AddDrop(Core.EnsureLoad(Core.CheckInventory(11953) ? 1960 : 3419).Rewards.Select(x => x.Name).ToArray());
 
-        Core.RegisterQuests((Core.CheckInventory(11953) ? 1960 : 3419));
+        Core.RegisterQuests(Core.CheckInventory(11953) ? 1960 : 3419);
         while (!Bot.ShouldExit && !Core.CheckInventory(target))
         {
             Legion.FarmLegionToken(5);
-            Core.HuntMonster("underworld", "Dark Makai", "Soul Shard");
+            Core.KillMonster("underworld", "r9", "Left", "*", "Soul Shard", log: false);
         }
         Core.CancelRegisteredQuests();
     }

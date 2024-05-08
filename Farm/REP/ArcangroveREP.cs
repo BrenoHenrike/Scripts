@@ -1,7 +1,7 @@
 /*
-name: ArcangroveREP
-description: null
-tags: null
+name: Arcangrove REP
+description: This script will farm Arcangrove reputation to rank 10.
+tags: arcangrove, rep, reputation, farm, rank
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

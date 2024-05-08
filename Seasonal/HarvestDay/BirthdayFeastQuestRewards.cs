@@ -20,7 +20,7 @@ public class BirthdayFeastQuestRewards
     public string OptionsStorage = "BirthdayFeast";
 
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         CoreBots.Instance.SkipOptions,
         new Option<bool>("ArlettesQuests", "ArlettesQuests Rewards", "Farms All \"Arlette's Birthday Quest (8385)\" Rewards.", false),
@@ -88,7 +88,7 @@ public class BirthdayFeastQuestRewards
                 while (!Bot.ShouldExit && !Core.CheckInventory(Reward.Name, toInv: false))
                 {
                     Core.HuntMonster("celestialrealm", "Celestial Bird of Paradise", "Celestial Artifact", 6, log: false);
-                    Core.HuntMonster("celestialrealm", "Infernal Imp| Infernal Knight", "Infernal Artifact", 6, log: false);
+                    Core.HuntMonster("celestialrealm", "Infernal Imp", "Infernal Artifact", 6, log: false);
 
                     i++;
 

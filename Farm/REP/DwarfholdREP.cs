@@ -1,7 +1,7 @@
 /*
-name: DwarfholdREP
-description: null
-tags: null
+name: Dwarfold REP
+description: This script will farm Dwarfhold reputation to rank 10.
+tags: dwarfhold, dwarf hold, hold, reputation, rep, rank
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

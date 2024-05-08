@@ -106,11 +106,11 @@ public class DawnFortressMerge
                     break;
 
                 case "Hollow Soul":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.EnsureAccept(7553, 7555);
+                        Core.EnsureAcceptmultiple(false, new[ ]{ 7553, 7555});
                         Core.KillMonster("shadowrealm", "r2", "Left", "Gargrowl", "Darkseed", 8, log: false);
                         Core.KillMonster("shadowrealm", "r2", "Left", "Shadow Guardian", "Shadow Medallion", 5, log: false);
                         Core.EnsureComplete(7553);
@@ -120,7 +120,7 @@ public class DawnFortressMerge
                     break;
 
                 case "Bone Dust":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                         Farm.BattleUnderB(req.Name, quant);

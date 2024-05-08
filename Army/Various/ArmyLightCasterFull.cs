@@ -39,7 +39,7 @@ public class ArmyLightCaster
 
     public string OptionsStorage = "ArmyLightCaster";
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         new Option<bool>("sellToSync", "Sell to Sync", "Sell items to make sure the army stays syncronized.\nIf off, there is a higher chance your army might desyncornize", false),
         sArmy.player1,
@@ -72,7 +72,7 @@ public class ArmyLightCaster
 
         while (!Bot.ShouldExit && !Core.CheckInventory(new[] { 38153, 31058 }))
         {
-            Core.EnsureAccept(4510, 4511, 4512);
+            Core.EnsureAcceptmultiple(false, new[ ]{4510, 4511, 4512});
             if (!Core.CheckInventory(30266))
                 ArmyHunt("lostruinswar", new[] { "Fallen Knight" }, "Trapped Spirits", ClassType.Farm, isTemp: false, 500);
             if (!Core.CheckInventory(31019))
@@ -105,10 +105,12 @@ public class ArmyLightCaster
         Core.AddDrop(item);
 
         Core.EquipClass(classType);
-        Army.waitForParty(map, item);
+        //Army.waitForParty(map, item);
         Core.FarmingLogger(item, quant);
 
         Army.SmartAggroMonStart(map, monsters);
+
+        
 
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
             Bot.Combat.Attack("*");
@@ -120,7 +122,7 @@ public class ArmyLightCaster
     public void PlayerAFK()
     {
         Core.Logger("Anti-AFK engaged");
-        Bot.Sleep(1500);
+        Core.Sleep(1500);
         Bot.Send.Packet("%xt%zm%afk%1%false%");
     }
 

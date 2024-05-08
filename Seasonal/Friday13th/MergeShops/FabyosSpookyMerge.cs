@@ -40,10 +40,7 @@ public class FabyosSpookyMerge
 
     public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
-        if (!F13.Friday13thCheck("Fabyos Spooky Merge"))
-            return;
-
-        F13.Oddities();
+       F13.Oddities();
 
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("oddities", 2135, findIngredients, buyOnlyThis, buyMode: buyMode);

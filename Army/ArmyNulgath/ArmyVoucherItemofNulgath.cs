@@ -3,7 +3,6 @@ name: Army Totem And Gem
 description: Uses an army to farm Totems Of Nulgath or Gem of Nulgath from "voucher item totem of nulgath"
 tags: totems of nulgath, gem of nulgath, army, voucher item totem of nulgath
 */
-
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/Army/CoreArmyLite.cs
@@ -27,7 +26,7 @@ public class ArmyVoucherItemofNulgath
 
     public string OptionsStorage = "ArmyTotemAndGem";
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         sArmy.player1,
         sArmy.player2,
@@ -100,7 +99,7 @@ public class ArmyVoucherItemofNulgath
             Core.EnsureAccept(QuestID);
             FarmTotems();
             // Add a delay between monster kills to avoid spamming server requests
-            Bot.Sleep(Core.ActionDelay);
+            Core.Sleep();
             Core.EnsureComplete(4778, (int)reward);
         }
     }
@@ -115,18 +114,20 @@ public class ArmyVoucherItemofNulgath
         Core.EquipClass(ClassType.Farm);
         Core.FarmingLogger(item, quant);
 
-        Army.waitForParty("tercessuinotlim", item);
+        //Army.waitForParty("tercessuinotlim", item);
 
         Army.AggroMonMIDs(2, 3, 4, 5);
         Army.AggroMonStart("tercessuinotlim");
-        Army.DivideOnCells("m1", "m2");
+        Army.DivideOnCells("Enter", "m1", "m2");
+
+        
 
         // Attack monsters until the inventory is filled with the specified quantity
         while (!Core.CheckInventory(item, quant) && !Bot.ShouldExit)
         {
             Bot.Combat.Attack("*");
             // Add a delay between attacks to avoid spamming server requests
-            Bot.Sleep(Core.ActionDelay);
+            Core.Sleep();
         }
 
         Army.AggroMonStop(true);

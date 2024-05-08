@@ -23,16 +23,14 @@ public class ArmySmartVoidAuras
 
     public string OptionsStorage = "RVAArmy";
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         new Option<bool>("sellToSync", "Sell to Sync", "Sell items to make sure the army stays syncronized.\nIf off, there is a higher chance your army might desyncornize", false),
         sArmy.player1,
         sArmy.player2,
         sArmy.player3,
         sArmy.player4,
-        sArmy.player5,
-        sArmy.player6,
-        sArmy.player7,
+        //limit to 4 due to /dragonchallenge
         sArmy.packetDelay,
         CoreBots.Instance.SkipOptions
     };
@@ -143,10 +141,12 @@ public class ArmySmartVoidAuras
         Core.AddDrop(item);
 
         Core.EquipClass(classType);
-        Army.waitForParty(map, item);
+        //Army.waitForParty(map, item);
         Core.FarmingLogger(item, quant);
 
         Army.SmartAggroMonStart(map, monsters);
+
+        
 
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
             Bot.Combat.Attack("*");
@@ -158,7 +158,7 @@ public class ArmySmartVoidAuras
     public void PlayerAFK()
     {
         Core.Logger("Anti-AFK engaged");
-        Bot.Sleep(1500);
+        Core.Sleep(1500);
         Bot.Send.Packet("%xt%zm%afk%1%false%");
     }
 }

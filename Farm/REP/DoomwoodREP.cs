@@ -1,7 +1,7 @@
 /*
-name: DoomwoodREP
-description: null
-tags: null
+name: Doomwood REP
+description: This script will farm Doomwood reputation to rank 10.
+tags: doomwood, doom, wood, reputation, rank, rep
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

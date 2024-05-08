@@ -68,7 +68,8 @@ public class CoreLR
 
     public void GetLR(bool rankUpClass)
     {
-        if (Core.CheckInventory("Legion Revenant"))
+        // Tests for IODA LR since it does not provide the badge and currently has the same ID as normal LR
+        if (Core.CheckInventory("Legion Revenant") && Core.Badges.Contains("Legion Revenant"))
             return;
 
         Legion.JoinLegion();
@@ -84,6 +85,10 @@ public class CoreLR
         ConquestWreath();
         ExaltedCrown();
 
+        //if you used insignias other quests arent unlocked(yes people have done this...)
+        if (!Core.isCompletedBefore(6900))
+            ExaltedCrown(1);
+
         Core.ChainComplete(6900);
         Bot.Wait.ForDrop("Legion Revenant", 20);
         Bot.Wait.ForPickup("Legion Revenant", 20);
@@ -92,46 +97,12 @@ public class CoreLR
     }
 
     //Legion Fealty 1
-    public void RevenantSpellscroll(int quant = 20)
+    public void RevenantSpellscroll(int quant = 20, bool forquest = false)
     {
-        if (Core.CheckInventory("Revenant's Spellscroll", quant))
+        if (!forquest && Core.CheckInventory("Revenant's Spellscroll", quant))
             return;
 
         Legion.JoinLegion();
-
-        bool hasDarkCaster = false;
-        if (Core.CheckInventory(new[] { "Love Caster", "Legion Revenant" }, any: true))
-            hasDarkCaster = true;
-        else
-        {
-            List<InventoryItem> InventoryData = Bot.Inventory.Items;
-            foreach (InventoryItem Item in InventoryData)
-            {
-                if (Item.Name.Contains("Dark Caster") && Item.Category == ItemCategory.Class)
-                {
-                    hasDarkCaster = true;
-                    break;
-                }
-            }
-
-            if (!hasDarkCaster)
-            {
-                List<InventoryItem> BankData = Bot.Bank.Items;
-                foreach (InventoryItem Item in BankData)
-                {
-                    if (Item.Name.Contains("Dark Caster") && Item.Category == ItemCategory.Class)
-                    {
-                        hasDarkCaster = true;
-                        Core.Unbank(Item.Name);
-                        break;
-                    }
-                }
-            }
-        }
-        if (!hasDarkCaster)
-        {
-            ILDC.GetILDC(false);
-        }
 
         Core.AddDrop("Legion Token");
         Core.AddDrop(LR);
@@ -142,7 +113,7 @@ public class CoreLR
         int i = 1;
         Core.Logger($"Farming {quant} Revenant's Spellscroll");
         Bot.Quests.UpdateQuest(2060);
-        while (!Bot.ShouldExit && !Core.CheckInventory("Revenant's Spellscroll", quant))
+        while (!Bot.ShouldExit && ((forquest && !Story.QuestProgression(6897)) || !Core.CheckInventory("Revenant's Spellscroll", quant)))
         {
             Core.EnsureAccept(6897);
 
@@ -158,15 +129,21 @@ public class CoreLR
             Core.KillMonster("necrodungeon", "r22", "Down", "*", "Dracolich Contract", 1000, false, publicRoom: true);
 
             Core.EnsureComplete(6897);
-            Bot.Drops.Pickup("Revenant's Spellscroll");
+            Bot.Wait.ForPickup("Revenant's Spellscroll");
             Core.Logger($"Completed x{i++}");
+
+            if (forquest)
+                return;
         }
     }
 
     //Legion Fealty 2
-    public void ConquestWreath(int quant = 6)
+    public void ConquestWreath(int quant = 6, bool forquest = false)
     {
-        if (Core.CheckInventory("Conquest Wreath", quant))
+        if (!Story.QuestProgression(6898))
+            RevenantSpellscroll(1, true);
+
+        if ((forquest && Story.QuestProgression(6898)) || Core.CheckInventory("Conquest Wreath", quant))
             return;
 
         Legion.JoinLegion();
@@ -179,7 +156,7 @@ public class CoreLR
         Core.EquipClass(ClassType.Farm);
         Core.Logger($"Farming {quant} Conquest Wreath");
         Bot.Quests.UpdateQuest(4614);
-        while (!Bot.ShouldExit && !Core.CheckInventory("Conquest Wreath", quant))
+        while (!Bot.ShouldExit && ((forquest && !Story.QuestProgression(6898)) || !Core.CheckInventory("Conquest Wreath", quant)))
         {
             Core.EnsureAccept(6898);
             //Adv.BestGear(RacialGearBoost.Undead);
@@ -199,15 +176,21 @@ public class CoreLR
             Core.KillMonster("doomwood", "r6", "Right", "*", "Doomwood Cohort Conquered", 500, false);
 
             Core.EnsureComplete(6898);
-            Bot.Drops.Pickup("Conquest Wreath");
+            Bot.Wait.ForPickup("Conquest Wreath");
             Core.Logger($"Completed x{i++}");
+
+            if (forquest)
+                return;
         }
     }
 
     //Legion Fealty 3
-    public void ExaltedCrown(int quant = 10)
+    public void ExaltedCrown(int quant = 10, bool forquest = false)
     {
-        if (Core.CheckInventory("Exalted Crown", quant))
+        if (!Story.QuestProgression(6899))
+            ConquestWreath(1, true);
+
+        if ((forquest && Story.QuestProgression(6899)) || Core.CheckInventory("Exalted Crown", quant))
             return;
 
         Legion.JoinLegion();
@@ -219,12 +202,11 @@ public class CoreLR
 
         int i = 1;
         Core.Logger($"Farming {quant} Exalted Crown");
-        while (!Bot.ShouldExit && !Core.CheckInventory("Exalted Crown", quant))
+        while (!Bot.ShouldExit && ((forquest && !Story.QuestProgression(6899)) || !Core.CheckInventory("Exalted Crown", quant)))
         {
             Core.EnsureAccept(6899);
 
-            Farm.Gold(500000);
-            Core.BuyItem("underworld", 216, "Hooded Legion Cowl");
+            Adv.BuyItem("underworld", 216, "Hooded Legion Cowl");
 
             Legion.FarmLegionToken(4000);
 
@@ -237,8 +219,11 @@ public class CoreLR
             Legion.DarkToken(100);
 
             Core.EnsureComplete(6899);
-            Bot.Drops.Pickup("Exalted Crown");
+            Bot.Wait.ForPickup("Exalted Crown");
             Core.Logger($"Completed x{i++}");
+
+            if (forquest)
+                return;
         }
     }
 }

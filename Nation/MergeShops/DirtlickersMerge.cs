@@ -76,7 +76,7 @@ public class DirtlickersMerge
                     Core.FarmingLogger(req.Name, quant);
                     Core.AddDrop("Cemaros' Amethyst", "Aluminium", "NUE Necronomicon");
                     Nation.FarmUni10(400);
-                    Nation.FarmUni13();
+                    Nation.FarmUni13(1);
                     Nation.FarmVoucher(false);
                     Nation.FarmDiamondofNulgath(300);
                     Nation.FarmDarkCrystalShard(250);
@@ -119,6 +119,10 @@ public class DirtlickersMerge
                     Nation.ApprovalAndFavor(quant, 0);
                     break;
 
+                case "Diamond of Nulgath":
+                    Nation.FarmDiamondofNulgath(300);
+                    break;
+                    
                 case "Totem of Nulgath":
                     Nation.FarmTotemofNulgath(quant);
                     break;

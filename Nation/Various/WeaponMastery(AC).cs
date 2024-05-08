@@ -5,6 +5,8 @@ tags: evolved, warlord, orb, hammer, axe, nation, nulgath, underfiend
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreStory.cs
+//cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Nation/CoreNation.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 using Skua.Core.Interfaces;
@@ -60,8 +62,7 @@ public class WeaponMasteryAC
             if (!Core.CheckInventory("Underfriend Blade of Nulgath"))
             {
                 Core.EquipClass(ClassType.Solo);
-                while (!Bot.ShouldExit && !Core.CheckInventory("Mirror Realm Token", 10))
-                    Core.HuntMonsterMapID("mirrorportal", 1);
+                Core.HuntMonsterMapID("mirrorportal", 1, "Mirror Realm Token", 10, false);
 
                 Farm.Gold(100000);
                 Core.BuyItem("mirrorportal", 618, "Underfriend Blade of Nulgath");

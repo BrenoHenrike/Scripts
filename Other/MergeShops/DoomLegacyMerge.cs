@@ -41,6 +41,7 @@ public class DoomLegacyMerge
 
     public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
+        DWp3.DoomwoodPart3();
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("stonewood", 1899, findIngredients, buyOnlyThis, buyMode: buyMode);
 
@@ -68,16 +69,16 @@ public class DoomLegacyMerge
                 case "ShadowScythe Trooper's Helm":
                 case "ShadowScythe Trooper's Cape":
                 case "ShadowScythe Blade":
-                    Core.KillMonster("thorngarde", "Enter", "Spawn", 4541, req.Name, isTemp: false);
+                    Core.HuntMonsterMapID("thorngarde", 2, req.Name, isTemp: false);
                     break;
 
                 case "Salvaged Deadtech Node":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.RegisterQuests(7601);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.EquipClass(ClassType.Farm);
-                        Core.HuntMonster("thorngarde", "CryptHacker|NecroDrone", "Deadtech Power Core", 7);
+                        Core.HuntMonster("thorngarde", "CryptHacker", "Deadtech Power Core", 7);
                         Core.HuntMonster("thorngarde", "CryptHacker", "CryptHacker Circuitry", 15);
                         Core.HuntMonster("thorngarde", "NecroMech", "NecroMech Targeting Systems", 5);
 
@@ -94,7 +95,7 @@ public class DoomLegacyMerge
                 case "ShadowScythe Rogue's Cape":
                 case "ShadowScythe Reversed Daggers":
                 case "ShadowScythe Daggers":
-                    Core.KillMonster("thorngarde", "r2", "Left", 4541, req.Name, isTemp: false);
+                    Core.HuntMonsterMapID("thorngarde", 3, req.Name, isTemp: false);
                     break;
 
                 case "ShadowScythe Mage":
@@ -102,7 +103,7 @@ public class DoomLegacyMerge
                 case "ShadowScythe Mage's Hat + Locks":
                 case "ShadowScythe Mage's Rune":
                 case "ShadowScythe Staff":
-                    Core.KillMonster("thorngarde", "r2", "Left", 4542, req.Name, isTemp: false);
+                    Core.HuntMonsterMapID("thorngarde", 5, req.Name, isTemp: false);
                     break;
 
                 case "Zealous Paladin":
@@ -113,19 +114,18 @@ public class DoomLegacyMerge
                 case "Cryptborg Torpedo":
                 case "Cryptborg Blade":
                 case "Cryptborg Helm":
-                    Core.HuntMonster("techdungeon", "Kalron the Cryptborg", req.Name, isTemp: false);
+                    Core.HuntMonster("techdungeon", "Kalron the Cryptborg", req.Name, quant, isTemp: false);
                     break;
 
                 case "Zealous Badge":
-                    Core.FarmingLogger($"{req.Name}", quant);
-                    DWp3.DoomwoodPart3();
+                    Core.FarmingLogger(req.Name, quant);
                     Core.RegisterQuests(7616);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.EquipClass(ClassType.Solo);
-                        Core.HuntMonster("techdungeon", "Kalron the Cryptborg", "Immutable Dedication", 7);
+                        Core.HuntMonster("techdungeon", "Kalron the Cryptborg", "Immutable Dedication", 7, log: false);
                         Core.EquipClass(ClassType.Farm);
-                        Core.HuntMonster("techdungeon", "DoomBorg Guard", "Paladin Armor Scraps", 30);
+                        Core.HuntMonster("techdungeon", "DoomBorg Guard", "Paladin Armor Scraps", 30, log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();

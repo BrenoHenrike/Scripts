@@ -1,7 +1,7 @@
 /*
-name: HollowbornOblivionBlade
-description: null
-tags: null
+name: Hollowborn Oblivion Blade
+description: This script will get Hollowborn Oblivion Blade.
+tags: hollowborn, oblivion, blade, summoning, summoning and stuff, lae, archfiend enchanted orbs
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -40,9 +40,9 @@ public class HollowbornOblivionBlade
 
         Core.EnsureAccept(7294);
         Farm.Experience(80);
-        Nation.FarmVoucher(false);
+        Nation.FarmVoucher(false, true);
         ArchFiendEnchantedOrbs();
-        Nation.FarmUni13();
+        Nation.FarmUni13(1);
         Nation.DiamondEvilWar(500);
         if (!Core.CheckInventory("Unidentified 25"))
         {
@@ -80,7 +80,7 @@ public class HollowbornOblivionBlade
             Core.BuyItem("tercessuinotlim", 1951, "Unmoulded Fiend Essence");
             Core.BuyItem("tercessuinotlim", 1951, "Unidentified 25");
         }
-        Nation.FarmUni13();
+        Nation.FarmUni13(1);
         Nation.DiamondEvilWar(150);
         Nation.FarmBloodGem(10);
         Nation.FarmVoucher(false);

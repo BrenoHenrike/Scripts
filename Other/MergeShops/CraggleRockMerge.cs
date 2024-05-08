@@ -63,7 +63,7 @@ public class CraggleRockMerge
 
                 case "Empowered Voidstone":
                     Core.RegisterQuests(7277);
-                    Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
@@ -74,20 +74,23 @@ public class CraggleRockMerge
                     break;
 
                 case "Ice Diamond":
-                    Core.RegisterQuests(7279);
-                    Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
                     Core.EquipClass(ClassType.Farm);
+                    Core.RegisterQuests(7279);
+                    Core.FarmingLogger(req.Name, quant);
+                    Core.AddDrop("Ice Diamond");
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("kingcoal", "Snow Golem", "Frozen Coal", 10);
-                        Bot.Wait.ForPickup(req.Name);
+                        Core.EnsureAccept(7279);
+                        Core.KillMonster("kingcoal", "r1", "Left", "*", "Frozen Coal", 10, log: false);
+                        Core.EnsureComplete(7279);
+                        Bot.Wait.ForPickup("Ice Diamond");
                     }
                     Core.CancelRegisteredQuests();
                     break;
 
                 case "Dark Bloodstone":
                     Core.RegisterQuests(7281);
-                    Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
@@ -99,7 +102,7 @@ public class CraggleRockMerge
 
                 case "Butterfly Sapphire":
                     Core.RegisterQuests(7287);
-                    Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
@@ -112,7 +115,7 @@ public class CraggleRockMerge
                 case "Understone":
                     Bot.Quests.UpdateQuest(939);
                     Core.RegisterQuests(7289);
-                    Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
@@ -124,7 +127,7 @@ public class CraggleRockMerge
 
                 case "Rainbow Moonstone":
                     Core.RegisterQuests(7291);
-                    Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {

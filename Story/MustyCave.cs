@@ -30,7 +30,7 @@ public class MustyCave
         Story.PreLoad(this);
 
         //Killer Robots! (7034)
-        Story.KillQuest(7034, "redfurvalley", "Guard Drone|Harvester Drone");
+        Story.KillQuest(7034, "redfurvalley", "Guard Drone");
         //Full Bellies (7035)
         Story.KillQuest(7035, "redfurvalley", "Harvester Drone");
         //They're Waaatching (7036)
@@ -53,7 +53,7 @@ public class MustyCave
         //Investigation Time (7044)
         Story.MapItemQuest(7044, "mustycave", new[] { 6591, 6592, 6593, 6594 });
         //Get Revenge (7045)
-        Story.KillQuest(7045, "mustycave", "Guard Drone|Harvester Drone");
+        Story.KillQuest(7045, "mustycave", "Guard Drone");
         //Key the Guards (7046)
         Story.KillQuest(7046, "mustycave", "Guard Drone");
         //Time to Teleport (7047)

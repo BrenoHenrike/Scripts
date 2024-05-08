@@ -1,7 +1,7 @@
 /*
-name: Leveling
-description: null
-tags: null
+name: Leveling [1-100]
+description: This script will farm XP to max level.
+tags: levelling, leveling, level, xp, experience, farm, exp
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

@@ -23,7 +23,7 @@ public class ArmyBoneDust
 
     public string OptionsStorage = "ArmyBattleUnderB";
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         sArmy.player1,
         sArmy.player2,
@@ -60,6 +60,8 @@ public class ArmyBoneDust
         Army.AggroMonMIDs(1, 2, 3, 4, 5, 6, 7);
         Army.AggroMonStart("battleunderb");
         Army.DivideOnCells("Enter", "r1", "r2");
+
+        
 
         while (!Bot.ShouldExit)
             Bot.Combat.Attack("*");

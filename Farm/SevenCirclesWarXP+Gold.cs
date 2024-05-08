@@ -1,7 +1,7 @@
 /*
-name: SevenCirclesWarXP+Gold
-description: null
-tags: null
+name: Seven Circles War XP + Gold
+description: This script will farm XP and Gold using SevenCirclesWar method.
+tags: seven, 7, circles, war, gold, xp, exp, experience, farm, max, 100, level, leveling
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -29,7 +29,7 @@ public class SevenCirclesWarXP
 
     public void DoSevenCirclesWarXP()
     {
-        SC.Circles();
+        SC.CirclesWar(true, true);
 
         //Adv.BestGear(GenericGearBoost.exp);
         //Adv.BestGear(GenericGearBoost.gold);

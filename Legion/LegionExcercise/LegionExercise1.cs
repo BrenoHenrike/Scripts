@@ -1,7 +1,7 @@
 /*
-name: LegionExercise1
-description: null
-tags: null
+name: Legion Exercise Number 1
+description: This script will complete "Legion Exercise Number 1" quest.
+tags: legion exercise, 1, undead champion blade, legendary golden death blade
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -48,10 +48,10 @@ public class LegionExercise1
 
         Core.Logger($"Potato Prediction Inc. Decided: {displayPercentage} is The Chance for Desired Rewards.");
 
+        Core.EquipClass(ClassType.Farm);
         while (!Bot.ShouldExit && !Core.CheckInventory(new[] { "Undead Champion Blade", "Legendary Golden Death Blade" }))
         {
             Core.EnsureAccept(821);
-            Core.EquipClass(ClassType.Farm);
             Core.HuntMonster("lair", "Water Draconian", "Flawless DracoHorn", 40, isTemp: false, publicRoom: false);
             Core.HuntMonster("lair", "Golden Draconian", "Golden DracoHeart", isTemp: true, publicRoom: false);
             Core.HuntMonster("lair", "Dark Draconian", "Dark DracoHeart", isTemp: true, publicRoom: false);
@@ -59,7 +59,6 @@ public class LegionExercise1
             Core.HuntMonster("lair", "Water Draconian", "Water DracoHeart", isTemp: true, publicRoom: false);
             Core.HuntMonster("lair", "Venom Draconian", "Venom DracoHeart", isTemp: true, publicRoom: false);
             Core.HuntMonster("lair", "Purple Draconian", "Iron DracoHeart", isTemp: true, publicRoom: false);
-            Core.HuntMonster("Uppercity", "Chaotic Draconian", "Chaotic DracoHeart", isTemp: true, publicRoom: false);
             Core.EnsureComplete(821);
             Core.Logger($"Finished Quest {i++} Times");
         }

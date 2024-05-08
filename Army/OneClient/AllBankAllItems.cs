@@ -18,19 +18,20 @@ public class ArmyBankAllItems
     private CoreBots Core => CoreBots.Instance;
     private BankAllItems BAI = new();
     private CoreArmyLite Army = new();
-
+    
     public void ScriptMain(IScriptInterface Bot)
     {
         Core.SetOptions();
 
-        CheckACs();
+        AllBankAll();
 
         Core.SetOptions(false);
     }
 
-    public void CheckACs()
+    public void AllBankAll()
     {
-        while (Army.doForAll())
+        while (!Bot.ShouldExit && Army.doForAll())
             BAI.BankAll();
+
     }
 }

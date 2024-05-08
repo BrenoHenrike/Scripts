@@ -70,7 +70,7 @@ public class CrystalBrightMerge
                     Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("dreamforest", "*", "Carnival Ticket", 300);
+                        Core.KillMonster("dreamforest", "r3", "Left", "*", "Carnival Ticket", 300);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     break;

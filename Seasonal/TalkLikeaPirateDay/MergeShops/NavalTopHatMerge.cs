@@ -8,6 +8,7 @@ tags: talk-like-a-pirate-day,seasonal,naval, top, hat, merge, pirates, bearded, 
 //cs_include Scripts/CoreAdvanced.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
+using Skua.Core.Models.Monsters;
 using Skua.Core.Options;
 
 public class NavalTopHatMerge
@@ -87,9 +88,25 @@ public class NavalTopHatMerge
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
+                    {
                         foreach (int mon in new[] { 3, 7, 15, 10 })
-                            if (Core.IsMonsterAlive(mon, useMapID: true))
-                                Core.HuntMonsterMapID("tlapd", mon, req.Name, quant, isTemp: false);
+                        {
+                            Monster? M = Bot.Monsters.MapMonsters.FirstOrDefault(x => x != null && x.MapID == mon);
+                            if (M == null)
+                                continue;
+
+                            if (Bot.Map.Name != "tlapd")
+                                Core.Join("tlapd");
+                            if (Bot.Player.Cell != M!.Cell)
+                                Core.Jump(M.Cell);
+
+                            if (M != null && M.HP >= 0)
+                                Bot.Hunt.Monster(M.MapID);
+
+                            if (Core.CheckInventory(req.Name, quant))
+                                break;
+                        }
+                    }
                     break;
             }
         }

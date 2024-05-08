@@ -54,13 +54,17 @@ public class Borgars
         // Piece of Cake 7517
         if (!Story.QuestProgression(7517))
         {
-            Core.EnsureAccept(7517);
             // The Cake is NOT a lie! 7518
-            Core.EnsureAccept(7518);
-            Core.HuntMonster("portalmaze", "Time Wraith", "Time Fragment", 10);
-            Bot.Wait.ForDrop("Slice of Cake");
-            Core.EnsureComplete(7518);
-            Core.EnsureComplete(7517);
+            if (!Core.CheckInventory(54728))
+            {
+                Core.EnsureAccept(7518);
+                Core.HuntMonster("portalmaze", "Time Wraith", "Time Fragment", 10);
+                // "Slice of Cake"
+                Bot.Wait.ForDrop(54728);
+                Core.EnsureComplete(7518);
+            }
+
+            Story.ChainQuest(7517);
         }
 
         // A Health Nut 7519

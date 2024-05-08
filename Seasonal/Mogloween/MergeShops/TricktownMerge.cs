@@ -127,8 +127,8 @@ public class TricktownMerge
         new Option<bool>("71636", "Diabolical Ornate Shrine", "Mode: [select] only\nShould the bot buy \"Diabolical Ornate Shrine\" ?", false),
         new Option<bool>("71637", "Devoured Sinner's Blade", "Mode: [select] only\nShould the bot buy \"Devoured Sinner's Blade\" ?", false),
         new Option<bool>("71638", "Devoured Sinner's Blades", "Mode: [select] only\nShould the bot buy \"Devoured Sinner's Blades\" ?", false),
-        new Option<bool>("71639", "Diabolical Sinner’s Blade", "Mode: [select] only\nShould the bot buy \"Diabolical Sinner’s Blade\" ?", false),
-        new Option<bool>("71640", "Diabolical Sinner’s Blades", "Mode: [select] only\nShould the bot buy \"Diabolical Sinner’s Blades\" ?", false),
+        new Option<bool>("71639", "Diabolical Sinner's Blade", "Mode: [select] only\nShould the bot buy \"Diabolical Sinner's Blade\" ?", false),
+        new Option<bool>("71640", "Diabolical Sinner's Blades", "Mode: [select] only\nShould the bot buy \"Diabolical Sinner's Blades\" ?", false),
         new Option<bool>("71641", "Diabolical ManSplitter", "Mode: [select] only\nShould the bot buy \"Diabolical ManSplitter\" ?", false),
     };
 }

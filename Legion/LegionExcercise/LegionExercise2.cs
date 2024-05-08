@@ -1,7 +1,7 @@
 /*
-name: LegionExercise2
-description: null
-tags: null
+name: Legion Exercise Number 2
+description: This script will complete "Legion Exercise Number 2" quest.
+tags: legion exercise, 2, executioner, executioner's judgement, legion, undead champion
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -55,7 +55,7 @@ public class LegionExercise2
             Core.EquipClass(ClassType.Farm);
             Core.HuntMonster("darkoviagrave", "Skeletal Fire Mage", "Charred Skull", 20, isTemp: false, publicRoom: false);
             Core.HuntMonster("mudluk", "Tiger Leech", "Intact Tiger Leech Hide", publicRoom: false);
-            Bot.Sleep(2500);
+            Core.Sleep(2500);
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("sewer", "Grumble", "Grumble's Curse", isTemp: false, publicRoom: false);
             Core.EnsureComplete(822);

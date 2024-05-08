@@ -23,7 +23,7 @@ public class ArmyLowTideMergeReqs
 
     public string OptionsStorage = "ArmyLowTideMergeReqs";
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         sArmy.player1,
         sArmy.player2,
@@ -63,6 +63,9 @@ public class ArmyLowTideMergeReqs
         Army.DivideOnCells("r4", "r5", "r6");
 
         Core.RegisterQuests(8846);
+        
+        
+            
         while (!Bot.ShouldExit)
             Bot.Combat.Attack("*");
 

@@ -1,7 +1,7 @@
 /*
-name: 0SmartVoidAuras
+name: Smart Void Auras
 description: farms void auras via what ever the current best method you have to farm them..
-tags: smart, gathering, unstable, essences, commanding, shadow, essences, retrieve, void, auras
+tags: smart, gathering, unstable, essences, commanding, shadow, essences, retrieve, void aura
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

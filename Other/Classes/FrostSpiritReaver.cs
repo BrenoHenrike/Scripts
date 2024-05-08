@@ -10,6 +10,7 @@ tags: null
 //cs_include Scripts/Story/Glacera.cs
 //cs_include Scripts/CoreDailies.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
 
 public class FrostSpiritReaver
 {
@@ -87,7 +88,7 @@ public class FrostSpiritReaver
         //////////////////////////////////////////////
         #region "Quest Prerequisites 
 
-        if (!Core.CheckInventory("25464") && Core.CheckInventory(new[] { 27437, 27525 }, any: true))
+        if (!Core.CheckInventory(25464) && Core.CheckInventory(new[] { 27437, 27525 }, any: true))
         {
             //Frost Sigil
             Core.BuyItem("icedungeon", Core.CheckInventory(27437) ? 2294 : 2295, 25464, shopItemID: Core.CheckInventory(27437) ? 48001 : 48002);
@@ -109,7 +110,7 @@ public class FrostSpiritReaver
         {
             Core.Logger("Getting the quest item requirements for \"Cold Hearted\"");
 
-            Core.HuntMonster("Northstar", "Karok the Fallen", "Karok's Glaceran Gem", isTemp: false);
+            Core.HuntMonster("Northstar", "Karok The Fallen", "Karok's Glaceran Gem", isTemp: false);
             Adv.BuyItem("Glacera", 1055, "Scythe of Vengeance");
             Adv.BuyItem("Glacera", 1055, "Cold Scythe of Vengeance");
             Adv.BuyItem("Glacera", 1055, "Frigid Scythe of Vengeance");
@@ -124,12 +125,17 @@ public class FrostSpiritReaver
         Core.RegisterQuests(7920);
         while (!Bot.ShouldExit && !Core.CheckInventory("Ice-Ninth", quant))
         {
+            Core.EquipClass(ClassType.Solo);
+            Core.HuntMonster("Snowmore", "Jon S'NOOOOOOO", "Northern Crown", isTemp: false);
+
+            Core.EquipClass(ClassType.Farm);
             Core.HuntMonster("icestormarena", "Arctic Wolf", "Ice Needle", 30, isTemp: false);
-            Core.HuntMonster("Snowmore", "Jon S'Nooooooo", "Northern Crown", isTemp: false);
-            while (!Bot.ShouldExit && !Core.CheckInventory("Ice Diamond", 3))
+            Core.AddDrop("Ice Diamond");
+            Core.FarmingLogger("Ice Diamond", 100);
+            while (!Bot.ShouldExit && !Core.CheckInventory("Ice Diamond", 100))
             {
                 Core.EnsureAccept(7279);
-                Core.HuntMonster("kingcoal", "Snow Golem", "Frozen Coal", 10, log: false);
+                Core.KillMonster("kingcoal", "r1", "Left", "*", "Frozen Coal", 10, log: false);
                 Core.EnsureComplete(7279);
                 Bot.Wait.ForPickup("Ice Diamond");
             }
@@ -146,17 +152,29 @@ public class FrostSpiritReaver
         if (Core.CheckInventory("Glaceran Attunement", quant))
             return;
 
+        //to unlock the quest
+        if (!Core.isCompletedBefore(7921))
+        {
+            Core.Logger("Doing prerequisets for \"Cold Blooded\" [1x \"Ice Ninth\"]");
+            IceNinth(1);
+        }
+
+        Farm.GlaceraREP();
+
         if (!Core.CheckInventory(new[] { 38915, 39011 }))
         {
             //IceBreaker Mage & FrostSlayer
-            Core.Logger("Getting the quest item requirements for \"Cold Blooded\"");
+            Core.Logger("Getting the quest items required to start \"Cold Blooded\"");
             Core.AddDrop(38915, 39011);
             Core.EquipClass(ClassType.Solo);
             while (!Bot.ShouldExit && !Core.CheckInventory(new[] { 38915, 39011 }))
-                Core.HuntMonster("iceplane", "Enfield", isTemp: false, log: false);
+            {
+                Core.HuntMonster("iceplane", "Enfield", "IceBreaker Mage", 1, false, false);
+                Core.HuntMonster("iceplane", "Enfield", "FrostSlayer", 1, false, false);
+            }
         }
 
-        else Core.Logger("Got the requirements for \"Cold Blooded\"");
+        else Core.Logger("Got the Item requirements for \"Cold Blooded\"");
 
         Core.AddDrop("Glaceran Attunement");
         Core.FarmingLogger("Glaceran Attunement", quant);

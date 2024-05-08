@@ -40,7 +40,7 @@ public class BeachPartyTokenItems
         while (!Bot.ShouldExit && !Core.CheckInventory(rewards, toInv: false))
         {
             Core.KillMonster("beachparty", "r3", "Left", "*", "Tiki Tokens", 5, false);
-            Bot.Sleep(Core.ActionDelay);
+            Core.Sleep();
         }
         Core.CancelRegisteredQuests();
         Core.ToBank(rewards);

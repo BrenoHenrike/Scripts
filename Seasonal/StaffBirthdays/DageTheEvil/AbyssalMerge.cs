@@ -128,8 +128,8 @@ public class AbyssalMerge
         new Option<bool>("68531", "Legion Malignant Blade", "Mode: [select] only\nShould the bot buy \"Legion Malignant Blade\" ?", false),
         new Option<bool>("68532", "Legion Malignant Blades", "Mode: [select] only\nShould the bot buy \"Legion Malignant Blades\" ?", false),
         new Option<bool>("76685", "Ascended Legion Evoker", "Mode: [select] only\nShould the bot buy \"Ascended Legion Evoker\" ?", false),
-        new Option<bool>("76686", "Ascended Legion Evoker’s Hair", "Mode: [select] only\nShould the bot buy \"Ascended Legion Evoker’s Hair\" ?", false),
-        new Option<bool>("76687", "Ascended Legion Evoker’s Locks", "Mode: [select] only\nShould the bot buy \"Ascended Legion Evoker’s Locks\" ?", false),
-        new Option<bool>("76688", "Ascended Legion Evoker’s Staff", "Mode: [select] only\nShould the bot buy \"Ascended Legion Evoker’s Staff\" ?", false),
+        new Option<bool>("76686", "Ascended Legion Evoker's Hair", "Mode: [select] only\nShould the bot buy \"Ascended Legion Evoker's Hair\" ?", false),
+        new Option<bool>("76687", "Ascended Legion Evoker's Locks", "Mode: [select] only\nShould the bot buy \"Ascended Legion Evoker's Locks\" ?", false),
+        new Option<bool>("76688", "Ascended Legion Evoker's Staff", "Mode: [select] only\nShould the bot buy \"Ascended Legion Evoker's Staff\" ?", false),
     };
 }

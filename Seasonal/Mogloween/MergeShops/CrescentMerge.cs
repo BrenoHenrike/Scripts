@@ -29,7 +29,7 @@ public class CrescentMerge
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Royce's Direclaw", "Spectral Lycan", "Spectral Lycan’s Hood", "Spectral Lycan’s Morph", "Spectral Lycan’s Backfur", "Howling Spectral Lycan", "Spectral Ground Flames", "Spectral Lycan’s Spear", "Spectral Lycan’s Claws " });
+        Core.BankingBlackList.AddRange(new[] { "Royce's Direclaw", "Spectral Lycan", "Spectral Lycan's Hood", "Spectral Lycan's Morph", "Spectral Lycan's Backfur", "Howling Spectral Lycan", "Spectral Ground Flames", "Spectral Lycan's Spear", "Spectral Lycan's Claws " });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -66,13 +66,13 @@ public class CrescentMerge
 
                 case "Royce's Direclaw":
                 case "Spectral Lycan":
-                case "Spectral Lycan’s Hood":
-                case "Spectral Lycan’s Morph":
-                case "Spectral Lycan’s Backfur":
+                case "Spectral Lycan's Hood":
+                case "Spectral Lycan's Morph":
+                case "Spectral Lycan's Backfur":
                 case "Howling Spectral Lycan":
                 case "Spectral Ground Flames":
-                case "Spectral Lycan’s Spear":
-                case "Spectral Lycan’s Claws":
+                case "Spectral Lycan's Spear":
+                case "Spectral Lycan's Claws":
                     Core.EquipClass(ClassType.Solo);
                     Core.HuntMonster("crescentmoon", "Royce", req.Name, quant, false);
                     break;

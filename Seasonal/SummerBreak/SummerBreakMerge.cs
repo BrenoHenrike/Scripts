@@ -81,7 +81,7 @@ public class SummerBreakMerge
                     break;
 
                 case "Summer Sizzle Lotion":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.RegisterQuests(8794);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))

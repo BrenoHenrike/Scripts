@@ -37,7 +37,9 @@ public class BeetleQuests
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Beetle Warlord Pet", "Beetle General Pet", "Beetle EXP" });
+        if (Bot.Config!.Get<bool>("GetCosmetics"))
+            Core.BankingBlackList.AddRange(Core.QuestRewards(9077, 9078));
+        else Core.BankingBlackList.AddRange(new[] { "Beetle Warlord Pet", "Beetle General Pet", "Beetle EXP" });
         Core.SetOptions();
 
         if (Bot.Config!.Get<bool>("GetCosmetics"))
@@ -67,7 +69,8 @@ public class BeetleQuests
             return;
         }
 
-        TSM.BuyAllMerge("Beetle General Pet");
+        if (!Core.CheckInventory(75653))
+            TSM.BuyAllMerge("Beetle General Pet");
 
         if (!Core.CheckInventory(75663))
         {
@@ -94,10 +97,11 @@ public class BeetleQuests
 
         Core.AddDrop("Baby Chaos Dragon", "Reaper's Soul");
         List<ItemBase> RewardOptions = Core.EnsureLoad(9078).Rewards;
+        RewardOptions.RemoveAll(item => item.Name == "Beetle EXP");
 
         if (!string.IsNullOrEmpty(rewardItemName))
         {
-            ItemBase? rewardItem = RewardOptions.Find(item => item.Name.Equals(rewardItemName, StringComparison.OrdinalIgnoreCase));
+            ItemBase? rewardItem = RewardOptions.FirstOrDefault(x => x.Name == rewardItemName);
             if (rewardItem == null)
             {
                 Core.Logger("The specified reward item name is not available as a reward.");
@@ -105,12 +109,9 @@ public class BeetleQuests
             }
 
             Core.AddDrop(rewardItem.Name);
-            int rewardItemQuantity = Bot.Inventory.GetItem(rewardItem.ID)?.Quantity ?? 0;
 
-            if (rewardItemQuantity >= 1)
-                return;
-
-            while (rewardItemQuantity < quant)
+            Core.FarmingLogger(rewardItem.Name, rewardItem.MaxStack);
+            while (!Bot.ShouldExit && !Core.CheckInventory(rewardItem.ID, quant))
             {
                 Core.EnsureAccept(9078);
                 Nation.FarmTotemofNulgath(1);
@@ -120,17 +121,15 @@ public class BeetleQuests
                 Core.HuntMonster("thevoid", "Reaper", "Reaper's Soul", isTemp: false);
                 Core.EnsureComplete(9078, rewardItem.ID);
                 Core.ToBank(rewardItem.ID);
-
-                rewardItemQuantity = Bot.Inventory.GetItem(rewardItem.ID)?.Quantity ?? 0;
             }
         }
         else
         {
+            Core.AddDrop(Core.QuestRewards(9078));
             foreach (ItemBase item in RewardOptions)
             {
-                int itemQuantity = Bot.Inventory.GetItem(item.ID)?.Quantity ?? 0;
-
-                while (itemQuantity < item.MaxStack)
+                Core.FarmingLogger(item.Name, item.MaxStack);
+                while (!Bot.ShouldExit && !Core.CheckInventory(item.ID, item.MaxStack))
                 {
                     Core.EnsureAccept(9078);
                     Nation.FarmTotemofNulgath(1);
@@ -140,8 +139,6 @@ public class BeetleQuests
                     Core.HuntMonster("thevoid", "Reaper", "Reaper's Soul", isTemp: false);
                     Core.EnsureComplete(9078, item.ID);
                     Core.ToBank(item.ID);
-
-                    itemQuantity = Core.CheckInventory(item.ID, toInv: false) ? Bot.Inventory.GetItem(item.ID)?.Quantity ?? 0 : item.MaxStack;
                 }
             }
         }
@@ -152,10 +149,12 @@ public class BeetleQuests
         TSM.BuyAllMerge("Beetle General Pet");
 
         List<ItemBase> RewardOptions = Core.EnsureLoad(9076).Rewards;
-        foreach (ItemBase item in RewardOptions)
-            Core.AddDrop(item.Name);
+        RewardOptions.RemoveAll(item => item.Name == "Beetle EXP");
+        Core.AddDrop(Core.QuestRewards(9076));
+        
         foreach (ItemBase item in RewardOptions)
         {
+            Core.FarmingLogger(item.Name, item.MaxStack);
             while (!Bot.ShouldExit && !Core.CheckInventory(item.ID, toInv: false))
             {
                 Core.EnsureAccept(9076);

@@ -1,6 +1,6 @@
 /*
 name: script name here
-description: Farms [InsertItem]  using your army.
+description: Farms [InsertItem] using your army.
 tags: army, [item]
 */
 //cs_include Scripts/CoreBots.cs
@@ -21,7 +21,7 @@ public class ArmyPoly
 
     public string OptionsStorage = "ArmyPoly";
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         sArmy.player1,
         sArmy.player2,
@@ -77,13 +77,14 @@ public class ArmyPoly
             while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
                 Bot.Combat.Attack(MonsterMapID);
 
-            // Wait for the party
-            Army.waitForParty("whitemap", item);
-        }
+            // Clean up
+            Army.AggroMonStop(true);
+            Core.JumpWait();
+            Core.CancelRegisteredQuests();
 
-        // Clean up
-        Army.AggroMonStop(true);
-        Core.CancelRegisteredQuests();
+            // Wait for the party
+            //Army.waitForParty(map, item);
+        }
     }
 
     public void ArmyBits(string map, string[] cell, int[] MonsterMapIDs, string[] items, int quant)
@@ -104,15 +105,18 @@ public class ArmyPoly
                 Army.AggroMonStart(map);
                 Army.DivideOnCells(cell);
                 Army.AggroMonMIDs(MonsterMapIDs);
-
+                    
                 // Farm the specified item
                 while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
                     Bot.Combat.Attack("*");
-
-                // Wait for the party
-                Army.waitForParty(map, item);
             }
-            Army.waitForParty("whitemap", item);
+            // Clean up
+            Army.AggroMonStop(true);
+            Core.JumpWait();
+            Core.CancelRegisteredQuests();
+
+            // Wait for the party
+            //Army.waitForParty(map, item);
         }
 
         // Clean up

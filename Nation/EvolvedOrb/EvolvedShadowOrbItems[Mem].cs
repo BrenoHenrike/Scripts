@@ -143,7 +143,7 @@ public class EvolvedShadowOrbItems
         Nation.Supplies("Random Weapon of Nulgath");
         Nation.FarmVoucher(false);
         Nation.FarmTotemofNulgath(10);
-        Potion.INeedYourStrongestPotions(new[] { "Potent Destruction Elixir" }, potionQuant: 15);
+        Adv.BuyItem("alchemyacademy", 2036, 12056, 15, shopItemID: 9827);
         Core.EnsureComplete(4775);
         Bot.Wait.ForPickup("Evolved Shadow Spear of Nulgath");
     }

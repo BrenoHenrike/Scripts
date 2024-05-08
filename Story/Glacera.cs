@@ -142,7 +142,7 @@ public class GlaceraStory
         Story.KillQuest(3935, "frozentower", "Ice Wolf");
 
         // Drive Back the Invaders
-        if(!Story.QuestProgression(3936))
+        if (!Story.QuestProgression(3936))
         {
             Core.EnsureAccept(3936);
             Core.HuntMonster("frozentower", "Frost Invader", "FrostSpawn Invader defeated", 10);
@@ -150,7 +150,7 @@ public class GlaceraStory
         }
 
         // Defeat the FrostSpawn Invaders
-        if(!Story.QuestProgression(3937))
+        if (!Story.QuestProgression(3937))
         {
             Core.EnsureAccept(3937);
             Core.HuntMonster("frozentower", "Frost Fangbeast", "Fangbeasts defeated", 15);
@@ -276,7 +276,7 @@ public class GlaceraStory
         Story.KillQuest(3970, "northstar", "The Queen's Gift");
 
         // Defeat Karok!
-        Story.KillQuest(3971, "northstar", "Karok the Fallen");
+        Story.KillQuest(3971, "northstar", "Karok The Fallen");
     }
 
 
@@ -350,9 +350,9 @@ public class GlaceraStory
         if (!Bot.Quests.IsUnlocked(5601))
         {
             //Fight For Kezeroth! && (Mega) Fight For Kezeroth!
-            Core.EnsureAccept(new[] { 5597, 5598, 5599, 5600 });
+            Core.EnsureAcceptmultiple(false, new[] { 5597, 5598, 5599, 5600 });
             Core.EquipClass(ClassType.Farm);
-            Core.HuntMonster("icewindwar",  "Glaceran Defender", "FrostSpawn Medal", 10);
+            Core.HuntMonster("icewindwar", "Glaceran Defender", "FrostSpawn Medal", 10);
             Core.HuntMonster("icewindwar", "Glaceran Defender", "Mega Frostspawn Medal", 5);
 
             //Fight For Karok! && (Mega) Fight For Karok!

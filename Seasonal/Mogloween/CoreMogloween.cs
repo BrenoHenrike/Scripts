@@ -40,6 +40,7 @@ public class CoreMogloween
         That();
         NecroCarnival();
         TrickTown();
+        CursedCastle();
     }
 
     public void Mogloween()
@@ -624,8 +625,15 @@ public class CoreMogloween
         Story.KillQuest(8370, "necrocarnival", "Mooch Treeant");
 
         //Witch Soup 8371
-        Story.MapItemQuest(8371, "necrocarnival", 9256);
-        Story.KillQuest(8371, "necrocarnival", new[] { "Mooch Treeant", "Gummy Tapeworm", "Skeleclown" });
+        if (!Story.QuestProgression(8371))
+        {
+            Core.EnsureAccept(8371);
+            Story.MapItemQuest(8371, "necrocarnival", 9256);
+            Core.HuntMonster("necrocarnival", "Mooch Treeant", "Sticky Bark", 10);
+            Core.HuntMonster("necrocarnival", "Gummy Tapeworm", "Gum Eye", 10);
+            Core.HuntMonster("necrocarnival", "Skeleclown", "Finger Tips", 10);
+            Core.EnsureComplete(8371);
+        }
 
         //Written Promise 8372
         Story.MapItemQuest(8372, "necrocarnival", 9257, 7);
@@ -683,7 +691,13 @@ public class CoreMogloween
         Story.KillQuest(8931, "tricktown", "Decay Spirit");
 
         // Messy Unrest 8932
-        Story.KillQuest(8932, "tricktown", new[] { "Decay Spirit", "Playful Ghost" });
+        if (!Story.QuestProgression(8932))
+        {
+            Core.EnsureAccept(8932);
+            Core.HuntMonster("tricktown", "Decay Spirit", "Decay Spirit Calmed", 6);
+            Core.HuntMonster("tricktown", "Playful Ghost", "Ghosts Silenced", 6);
+            Core.EnsureComplete(8932);
+        }
 
         // Plain Monster 8933
         Story.MapItemQuest(8933, "tricktown", 10808);
@@ -695,5 +709,54 @@ public class CoreMogloween
 
         // The Fruits of Labor 8935
         Story.KillQuest(8935, "tricktown", "Madam Ester");
+    }
+
+    public void CursedCastle()
+    {
+        if (!Core.isSeasonalMapActive("cursedcastle"))
+            return;
+        if (Core.isCompletedBefore(9454))
+            return;
+
+        Core.EquipClass(ClassType.Farm);
+
+        // Ghoul Fungi 9445
+        Story.KillQuest(9445, "cursedcastle", "Luminous Fungus");
+        Story.MapItemQuest(9445, "cursedcastle", 12272);
+
+        // Grotesque Guardian 9446
+        Story.KillQuest(9446, "cursedcastle", "Noble Gargoyle");
+        Story.MapItemQuest(9446, "cursedcastle", 12273);
+
+        // Dragon Instinct 9447
+        Story.MapItemQuest(9447, "cursedcastle", new[] { 12274, 12275 });
+
+        // The Uninvited 9448
+        Story.KillQuest(9448, "cursedcastle", "Noble Ghost");
+        Story.MapItemQuest(9448, "cursedcastle", 12276);
+
+        // Room Service 9449
+        Story.MapItemQuest(9449, "cursedcastle", new[] { 12277, 12278, 12279 });
+
+        // Newborn's Teething 9450
+        Story.KillQuest(9450, "cursedcastle", "Bone Dragonling");
+        Story.MapItemQuest(9450, "cursedcastle", 12280);
+
+        Core.EquipClass(ClassType.Solo);
+
+        // Sadistic Solicitations 9451
+        Story.KillQuest(9451, "cursedcastle", "Noble Ghost");
+        Story.MapItemQuest(9451, "cursedcastle", 12281);
+
+        // Stomping on Eggshells 9452
+        Story.KillQuest(9452, "cursedcastle", "Dragonlord Coledale");
+        Story.MapItemQuest(9452, "cursedcastle", 12282);
+
+        // Stone Clad Clan 9453
+        Story.KillQuest(9453, "cursedcastle", "Noble Gargoyle");
+        Story.MapItemQuest(9453, "cursedcastle", 12283);
+
+        // Restless Waltz 9454
+        Story.KillQuest(9454, "cursedcastle", "Unborn Brood");
     }
 }

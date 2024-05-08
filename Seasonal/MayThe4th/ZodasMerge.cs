@@ -30,7 +30,7 @@ public class ZodasMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Light Blade of the Rebellion", "Zorblatt’s Pizza Slice", "Dark Blade of the Fifth", "Chaos Blade of the Imperium" });
+        Core.BankingBlackList.AddRange(new[] { "Light Blade of the Rebellion", "Zorblatt's Pizza Slice", "Dark Blade of the Fifth", "Chaos Blade of the Imperium" });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -77,7 +77,7 @@ public class ZodasMerge
                     Core.CancelRegisteredQuests();
                     break;
 
-                case "Zorblatt’s Pizza Slice":
+                case "Zorblatt's Pizza Slice":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
                     Core.RegisterQuests(8651);

@@ -63,13 +63,13 @@ public class ShorinzanMerge
                 #endregion
 
                 case "Deepest Desire":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.RegisterQuests(8753);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.HuntMonster("Tercessuinotlim", "Tainted Elemental", "Tainted Essence Collected", 10);
-                        Core.KillMonster("tercessuinotlim", "m2", "Top", "Dark Makai", "Makai Essence Collected", 20);
+                        Core.KillMonster("tercessuinotlim", "m2", "Left", "*", "Makai Essence Collected", 20);
                         Core.HuntMonster("necrodungeon", "SlimeSkull", "Necropolis Soul Collected", 15);
                         Core.EquipClass(ClassType.Solo);
                         Core.HuntMonster("necrodungeon", "5 Headed Dracolich", "Dracolich Soul Collected", 15);
@@ -80,22 +80,22 @@ public class ShorinzanMerge
                     break;
 
                 case "Hidden Hope":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
                     Core.RegisterQuests(8751);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.KillMonster($"battleunderb", "Enter", "Spawn", "*", "Bundle O’ Bones", 30);
+                        Core.KillMonster($"battleunderb", "Enter", "Spawn", "*", "Bundle O' Bones", 30);
                         Core.EquipClass(ClassType.Solo);
-                        Core.HuntMonsterMapID($"Odokuro", 1, "Odokuro’s Occipital");
-                        Core.HuntMonster($"bonecastle", "Vaden", "Vaden’s Other Arm");
-                        Core.HuntMonster($"vordredboss", "Vordred", "Vordred’s Skull(s)", 3);
+                        Core.HuntMonsterMapID($"Odokuro", 1, "Odokuro's Occipital");
+                        Core.HuntMonster($"bonecastle", "Vaden", "Vaden's Other Arm");
+                        Core.HuntMonster($"vordredboss", "Vordred", "Vordred's Skull(s)", 3);
                     }
                     Core.CancelRegisteredQuests();
                     break;
 
                 case "Simple Wish":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.RegisterQuests(8748);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))

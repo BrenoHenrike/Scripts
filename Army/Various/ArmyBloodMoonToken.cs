@@ -17,7 +17,7 @@ public class ArmyBloodMoonToken
 
     public string OptionsStorage = "ArmyBloodMoonToken";
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         sArmy.player1,
         sArmy.player2,
@@ -54,6 +54,8 @@ public class ArmyBloodMoonToken
         Army.AggroMonCells("r4a", "r12a");
         Army.AggroMonStart("bloodmoon");
         Army.DivideOnCells("r4a", "r12a", "r12a", "r12a", "r12a", "r12a", "r12a");
+
+        
 
         while (!Bot.ShouldExit)
             Bot.Combat.Attack("*");

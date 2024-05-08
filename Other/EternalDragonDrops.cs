@@ -13,7 +13,7 @@ public class EternalDragonDrops
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
 
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         CoreBots.Instance.SkipOptions,
         new Option<bool>("CanSolo", "Can solo boss?", "unchecking this will take you to public room", false),
@@ -67,9 +67,11 @@ public class EternalDragonDrops
         //Can't Solo section
         if (!Bot.Config!.Get<bool>("CanSolo"))
             while (!Bot.ShouldExit && !Core.CheckInventory(NonMemDrops))
-                Core.HuntMonster("deadlines", "Eternal Dragon", "*", isTemp: false, publicRoom: true);
+                foreach (string item in NonMemDrops)
+                    Core.HuntMonster("deadlines", "Eternal Dragon", item, isTemp: false, publicRoom: true);
         else
             while (!Bot.ShouldExit && !Core.CheckInventory(NonMemDrops))
-                Core.HuntMonster("deadlines", "Eternal Dragon", "*", isTemp: false);
+                foreach (string item in NonMemDrops)
+                    Core.HuntMonster("deadlines", "Eternal Dragon", item, isTemp: false);
     }
 }

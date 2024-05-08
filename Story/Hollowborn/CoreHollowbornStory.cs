@@ -22,6 +22,7 @@ public class CoreHollowbornStory
     {
         Trygve();
         NeoFortress();
+        ShadowslayerD();
     }
 
     public void Trygve()
@@ -32,14 +33,14 @@ public class CoreHollowbornStory
         Story.PreLoad(this);
 
         //Wunjo, Reversed (8289)
-        Story.KillQuest(8289, "trygve", "Vindicator Recruit|Vindicator Soldier");
+        Story.KillQuest(8289, "trygve", "Vindicator Recruit");
 
         //Berkana (8290)
         Story.KillQuest(8290, "trygve", "Blood Eagle");
         Story.MapItemQuest(8290, "trygve", 9036);
 
         //Algiz, Reversed (8291)
-        Story.KillQuest(8291, "trygve", "Vindicator Recruit|Vindicator Soldier");
+        Story.KillQuest(8291, "trygve", "Vindicator Recruit");
         Story.MapItemQuest(8291, "trygve", 9037);
 
         //Gebo (8292)
@@ -48,7 +49,7 @@ public class CoreHollowbornStory
 
         //Eihwaz (8293)
         Story.MapItemQuest(8293, "trygve", 9039, 3);
-        Story.KillQuest(8293, "trygve", "Vindicator Recruit|Vindicator Soldier");
+        Story.KillQuest(8293, "trygve", "Vindicator Recruit");
 
         //Hagalaz (8294)
         Story.MapItemQuest(8294, "trygve", 9040, 8);
@@ -57,10 +58,10 @@ public class CoreHollowbornStory
         Story.KillQuest(8295, "trygve", new[] { "Rune Boar", "Blood Eagle" });
 
         //Thurisaz (8296)
-        Story.KillQuest(8296, "trygve", "Vindicator Recruit|Vindicator Soldier");
+        Story.KillQuest(8296, "trygve", "Vindicator Recruit");
 
         //Othala (8297)
-        Story.KillQuest(8297, "trygve", new[] { "Blood Eagle|Rune Boar", "Vindicator Recruit|Vindicator Soldier" });
+        Story.KillQuest(8297, "trygve", new[] { "Blood Eagle", "Vindicator Recruit" });
 
         //Isa, Reversed (8298)
         Story.KillQuest(8298, "trygve", "Gramiel");
@@ -104,6 +105,21 @@ public class CoreHollowbornStory
 
         //Tales from the Past 9290
         Story.MapItemQuest(9290, "neofortress", 11808);
+    }
+
+    public void ShadowslayerD()
+    {
+        if (Core.isCompletedBefore(9489))
+            return;
+
+        Story.PreLoad(this);
+
+        // Remnant of Will 9487
+        Story.KillQuest(9487, "hbchallenge", "Sentient Hollow");
+        // Stake Your Life 9488
+        Story.KillQuest(9488, "hbchallenge", "Hollowborn Vampire");
+        // Hollow Howl 9489     
+        Story.KillQuest(9489, "hbchallenge", "Hollowborn Lycan");
     }
 
 

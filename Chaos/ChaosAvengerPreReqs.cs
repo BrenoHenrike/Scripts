@@ -27,12 +27,15 @@ public class ChaosAvengerClass
         Core.SetOptions(false);
     }
 
-    public void GetClass()
+    public void GetClass(bool rankup = true)
     {
         //Progress Check
-        if (Core.CheckInventory("Empowered Chaos Avenger's GreatSword"))
+        if (Core.CheckInventory("Empowered Chaos Avenger's GreatSword") || Core.CheckInventory("Chaos Avenger"))
+        {
+            if (rankup)
+                Adv.RankUpClass("Chaos Avenger");
             return;
-
+        }
         //Preload Quests
         if (!Core.isCompletedBefore(3881))
             Story.PreLoad(this);
@@ -48,6 +51,10 @@ public class ChaosAvengerClass
         FragmentsoftheLordsB();
         FragmentoftheQueen();
         CompleteandBuy();
+
+
+        if (rankup)
+            Adv.RankUpClass("Chaos Avenger");
     }
 
     public void ParallelChaosAmulet()

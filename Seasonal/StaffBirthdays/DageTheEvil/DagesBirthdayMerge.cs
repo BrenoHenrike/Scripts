@@ -75,7 +75,7 @@ public class DagesBirthdayMerge
                         Core.RegisterQuests(3408);
                         while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                         {
-                            Core.KillMonster("underworld", "r8", "left", "*", "Dread Head", 20, log: false);
+                            Core.KillMonster("underworld", "r8", "Left", "*", "Dread Head", 20, log: false);
                             Bot.Wait.ForPickup(req.Name);
                         }
                         Core.CancelRegisteredQuests();
@@ -93,17 +93,9 @@ public class DagesBirthdayMerge
                     Core.HuntMonster("undervoid", "Conquest", req.Name, quant, false);
                     break;
 
-                    // case "Death's Scythe":
-                    //     Core.FarmingLogger(req.Name, quant);
-                    //     Core.EquipClass(ClassType.Farm);
-                    //     Core.RegisterQuests(0000);
-                    //     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    //     {
-                    //         Core.Logger("This item is not setup yet");
-                    //         Bot.Wait.ForPickup(req.Name);
-                    //     }
-                    //     Core.CancelRegisteredQuests();
-                    //     break;
+                    case "Death's Scythe":
+                        Core.Logger("This Merge Items Reuires the 300ac version of `Death's Scythe`, buy it yourself, then rerun.");
+                        break;
 
             }
         }

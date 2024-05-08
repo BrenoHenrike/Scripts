@@ -1,7 +1,7 @@
 /*
 name: Gold Farm
 description: honor hall for members, BGE for f2p
-tags: gold, battle ground e, honor hall, Berserker Bunny
+tags: gold, battle ground e, honor hall, berserker bunny
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

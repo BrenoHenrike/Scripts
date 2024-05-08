@@ -44,7 +44,7 @@ public class YulgathsInn
         Nation.FarmTaintedGem(200);
         Nation.FarmDarkCrystalShard(250);
         Nation.FarmDiamondofNulgath(200);
-        Nation.FarmUni13();
+        Nation.FarmUni13(1);
         Nation.FarmVoucher(false);
         // Into:
         Core.BuyItem("archportal", 1211, "Yulgath's Inn");

@@ -1,6 +1,5 @@
-using System.Reflection.PortableExecutable;
 /*
-name: Paladin
+name: Paladin (Class)
 description: This bot farms the Paladin class for you.
 tags: warrior, healer, paladin, class
 */
@@ -42,5 +41,6 @@ public class Paladin
 
         if (rankUpClass)
             Adv.RankUpClass("Paladin");
-    }
+    }    
 }
+//why isnt this pushing to  people

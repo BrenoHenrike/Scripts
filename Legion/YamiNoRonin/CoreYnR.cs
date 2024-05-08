@@ -123,7 +123,7 @@ public class CoreYnR
         }
         FlameForgedMetal(13);
         Core.EquipClass(ClassType.Solo);
-        Adv.KillUltra("doomvaultb", "r26", "Left", "Undead Raxgore", "Weapon Imprint", 15, false);
+        Core.KillMonster("doomvaultb", "r26", "Left", "Undead Raxgore", "Weapon Imprint", 15, false);
 
         Core.EnsureComplete(7444);
     }

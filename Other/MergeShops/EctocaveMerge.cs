@@ -77,7 +77,7 @@ public class EctocaveMerge
                         break;
 
                     Core.EquipClass(ClassType.Farm);
-                    Core.HuntMonster("ectocave", "Ektorax", req.Name, quant);
+                    Core.HuntMonster("ectocave", "Ektorax", req.Name, quant, req.Temp);
                     break;
 
                 case "Pure Ichor Gem":
@@ -89,7 +89,7 @@ public class EctocaveMerge
                     Core.RegisterQuests(3873);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("ectocave", "Ichor Draconian", "Uncut Ichor Gem", 50);
+                        Core.HuntMonster("ectocave", "Ichor Draconian", "Uncut Ichor Gem", 50, req.Temp);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
@@ -97,7 +97,7 @@ public class EctocaveMerge
 
                 case "Slime":
                     Core.EquipClass(ClassType.Farm);
-                    Core.HuntMonster("ectocave", "Swamp Lurker", req.Name, quant);
+                    Core.HuntMonster("ectocave", "Swamp Lurker", req.Name, quant, req.Temp);
                     break;
 
                 case "Dragon Rogue Klinge":
@@ -108,7 +108,7 @@ public class EctocaveMerge
                     Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("ectocave", "Ektorax", req.Name, quant);
+                        Core.HuntMonster("ectocave", "Ektorax", req.Name, quant, req.Temp);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     break;
@@ -116,7 +116,7 @@ public class EctocaveMerge
                 case "Piece of Fabric":
                 case "Bone":
                     Core.EquipClass(ClassType.Farm);
-                    Core.HuntMonster("ectocave", "Ichor Draconian", req.Name, quant);
+                    Core.HuntMonster("ectocave", "Ichor Draconian", req.Name, quant, req.Temp);
                     break;
 
             }

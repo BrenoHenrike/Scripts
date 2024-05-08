@@ -88,12 +88,7 @@ public class SpoilsofLightMerge
                     Core.RegisterQuests(6560, 6561);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster(
-                            "lightguardwar",
-                            "Citadel Crusader|Lightguard Cast",
-                            "Lightguard Medals",
-                            5
-                        );
+                        Core.HuntMonster("lightguardwar", "Citadel Crusader", "Lightguard Medals", 5, log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
@@ -105,12 +100,7 @@ public class SpoilsofLightMerge
                     Core.RegisterQuests(6562, 6563);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster(
-                            "lightguardwar",
-                            "Citadel Crusader|Lightguard Cast",
-                            "Bone Marrow",
-                            3
-                        );
+                        Core.HuntMonster("lightguardwar", "Citadel Crusader", "Bone Marrow", 3, log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
@@ -124,7 +114,7 @@ public class SpoilsofLightMerge
                     {
                         Core.HuntMonster(
                             "lightguardwar",
-                            "Citadel Crusader|Lightguard Paladin",
+                            "Citadel Crusader",
                             "Gunpowder",
                             3
                         );

@@ -17,7 +17,7 @@ public class LowDRCapes
 
     public string OptionsStorage = "1%Capes";
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         CoreBots.Instance.SkipOptions,
         new Option<Capes>("Capes", "Choose Your Capes", "Extra Capes can be added as long as they are 1% or lower drop chance.", Capes.None),
@@ -34,45 +34,47 @@ public class LowDRCapes
 
     public void GetItem()
     {
-        if (Bot.Config.Get<Capes>("Capes") == Capes.None)
+        Capes? capeConfig = Bot.Config?.Get<Capes>("Capes");
+
+        if (capeConfig == null || capeConfig == Capes.None)
         {
             Core.Logger($"\"None\" Selected, Stopping.");
             return;
         }
 
-        Core.FarmingLogger($"{Bot.Config.Get<Capes>("Capes").ToString()}", 1);
+        Core.FarmingLogger($"{capeConfig.ToString()}", 1);
 
-        if (Bot.Config.Get<Capes>("Capes") == Capes.Infinity_Shield_Cape || Bot.Config.Get<Capes>("Capes") == Capes.All && !Core.CheckInventory("Infinity Shield Cape"))
+        if (capeConfig == Capes.Infinity_Shield_Cape || capeConfig == Capes.All && !Core.CheckInventory("Infinity Shield Cape"))
         {
             Core.HuntMonster("whitehole", "Mehensi Serpent", "Infinity Shield Cape", isTemp: false);
         }
 
-        if (Bot.Config.Get<Capes>("Capes") == Capes.Drakath_Wings || Bot.Config.Get<Capes>("Capes") == Capes.All && !Core.CheckInventory("Drakath Wings"))
+        if (capeConfig == Capes.Drakath_Wings || capeConfig == Capes.All && !Core.CheckInventory("Drakath Wings"))
         {
             Core.HuntMonster("finalbattle", "Drakath", "Drakath Wings", isTemp: false);
         }
 
-        if (Bot.Config.Get<Capes>("Capes") == Capes.Chaotic_Champion_Wings || Bot.Config.Get<Capes>("Capes") == Capes.All && !Core.CheckInventory("Chaotic Champion Wings"))
+        if (capeConfig == Capes.Chaotic_Champion_Wings || capeConfig == Capes.All && !Core.CheckInventory("Chaotic Champion Wings"))
         {
             Core.HuntMonster("finalbattle", "Drakath", "Chaotic Champion Wings", isTemp: false);
         }
 
-        if (Bot.Config.Get<Capes>("Capes") == Capes.Wings_Of_Destruction || Bot.Config.Get<Capes>("Capes") == Capes.All && !Core.CheckInventory("Wings Of Destruction"))
+        if (capeConfig == Capes.Wings_Of_Destruction || capeConfig == Capes.All && !Core.CheckInventory("Wings Of Destruction"))
         {
             Core.HuntMonster("infernalspire", "Malxas", "Wings Of Destruction", isTemp: false);
         }
 
-        if (Bot.Config.Get<Capes>("Capes") == Capes.ShadowScythe_Warlocks_Demonic_Flames || Bot.Config.Get<Capes>("Capes") == Capes.All && !Core.CheckInventory("ShadowScythe Warlock's Demonic Flames"))
+        if (capeConfig == Capes.ShadowScythe_Warlocks_Demonic_Flames || capeConfig == Capes.All && !Core.CheckInventory("ShadowScythe Warlock's Demonic Flames"))
         {
             Core.HuntMonster("innershadows", "Krahen", "ShadowScythe Warlock's Demonic Flames", isTemp: false);
         }
 
-        if (Bot.Config.Get<Capes>("Capes") == Capes.ShadowScythe_Warlocks_Flames || Bot.Config.Get<Capes>("Capes") == Capes.All && !Core.CheckInventory("ShadowScythe Warlock's Flames"))
+        if (capeConfig == Capes.ShadowScythe_Warlocks_Flames || capeConfig == Capes.All && !Core.CheckInventory("ShadowScythe Warlock's Flames"))
         {
             Core.HuntMonster("innershadows", "Krahen", "ShadowScythe Warlock's Flames", isTemp: false);
         }
 
-        if (Bot.Config.Get<Capes>("Capes") == Capes.Skull_Pauldrons_of_Vordred || Bot.Config.Get<Capes>("Capes") == Capes.All && !Core.CheckInventory("Skull Pauldrons of Vordred"))
+        if (capeConfig == Capes.Skull_Pauldrons_of_Vordred || capeConfig == Capes.All && !Core.CheckInventory("Skull Pauldrons of Vordred"))
         {
             Core.HuntMonster("vordredboss", "Vordred", "Skull Pauldrons of Vordred", isTemp: false);
         }

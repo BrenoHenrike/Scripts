@@ -26,7 +26,7 @@ public class TheDarkBox
     public void Example()
     {
         List<ItemBase> RewardOptions = Core.EnsureLoad(8375).Rewards;
-        List<string> RewardsList = new List<string>();
+        List<string> RewardsList = new();
         foreach (Skua.Core.Models.Items.ItemBase Item in RewardOptions)
             RewardsList.Add(Item.Name);
 

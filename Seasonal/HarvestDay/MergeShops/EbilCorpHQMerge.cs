@@ -4,6 +4,7 @@ description: This will get all or selected items on this merge shop.
 tags: ebil-corp-hq-merge, seasonal, harvest-day
 */
 //cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Seasonal/HarvestDay/CoreHarvestDay.cs
@@ -100,7 +101,6 @@ public class EbilHQMerge
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.HuntMonster("ebilcorphq", "Master Chairman", req.Name, isTemp: false);
-                        Core.Logger("This item is not setup yet");
                         Bot.Wait.ForPickup(req.Name);
                     }
                     break;

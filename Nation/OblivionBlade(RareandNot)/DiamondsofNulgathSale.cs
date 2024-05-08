@@ -20,7 +20,7 @@ public class DiamondsofNulgathSale
 
     public string OptionsStorage = "DiamondsofNulgathSale";
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         CoreBots.Instance.SkipOptions,
         new Option<int>("DiamondQuant", "Diamond Quant", "Diamond of Nulgath quant", 00),
@@ -30,7 +30,7 @@ public class DiamondsofNulgathSale
     {
         Core.SetOptions();
 
-        COBoN.DiamondsofNulgathSale(Bot.Config.Get<int>("DiamondQuant"));
+        COBoN.DiamondsofNulgathSale(Bot.Config?.Get<int>("DiamondQuant") ?? default(int));
 
         Core.SetOptions(false);
     }

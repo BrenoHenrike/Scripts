@@ -76,6 +76,7 @@ public class CoreBLOD
         if (Core.CheckInventory("Blinding Light of Destiny"))
             return;
 
+        Core.AddDrop(40187);
         if (!Core.CheckInventory(40187)) // Get your Blinding Light of Destiny
         {
             Bot.Drops.Add(BLoDItems);
@@ -106,7 +107,6 @@ public class CoreBLOD
             UltimateWK();
 
             Core.ChainComplete(2180);
-            Bot.Drops.Pickup(40187);
         }
         Core.BuyItem(Bot.Map.Name, 1415, "Blinding Light of Destiny");
         Core.ToBank(40187);
@@ -126,7 +126,7 @@ public class CoreBLOD
         Story.BuyQuest(2067, "doomwood", 276, "Bonegrinder Medal");
 
         // 2082 - Essential Essences
-        if(!Story.QuestProgression(2082))
+        if (!Story.QuestProgression(2082))
         {
             Core.EnsureAccept(2082);
             Core.HuntMonster("battleunderb", "Skeleton Warrior", "Undead Essence", 25, isTemp: false);
@@ -134,7 +134,7 @@ public class CoreBLOD
         }
 
         // 2083 - Bust some Dust
-        if(!Story.QuestProgression(2083))
+        if (!Story.QuestProgression(2083))
         {
             Core.EnsureAccept(2083);
             Core.HuntMonster("battleunderb", "Skeleton Warrior", "Bone Dust", 40, isTemp: false);
@@ -154,16 +154,16 @@ public class CoreBLOD
 
     #region Materials
 
-    public void SpiritOrb(int quant)
+    public void SpiritOrb(int quant = 65000)
     {
         if (Core.CheckInventory("Spirit Orb", quant))
             return;
 
-        farmFindingFrag(WeaponOfDestiny.Blade, "Spirit Orb", quant);
-        farmFindingFrag(WeaponOfDestiny.Broadsword, "Spirit Orb", quant);
+        FarmFindingFrag(WeaponOfDestiny.Blade, "Spirit Orb", quant > 65000 ? 65000 : quant);
+        FarmFindingFrag(WeaponOfDestiny.Broadsword, "Spirit Orb", quant > 65000 ? 65000 : quant);
 
         // Default
-        SoulSearching("Spirit Orb", quant);
+        SoulSearching("Spirit Orb", quant > 65000 ? 65000 : quant);
     }
 
     public void LoyalSpiritOrb(int quant)
@@ -171,16 +171,16 @@ public class CoreBLOD
         if (Core.CheckInventory("Loyal Spirit Orb", quant))
             return;
 
-        farmFindingFrag(WeaponOfDestiny.Blade, "Loyal Spirit Orb", quant);
-        farmFindingFrag(WeaponOfDestiny.Daggers, "Loyal Spirit Orb", quant);
-        farmFindingFrag(WeaponOfDestiny.Scythe, "Loyal Spirit Orb", quant);
-        farmUltimateWK("Loyal Spirit Orb", quant);
+        FarmFindingFrag(WeaponOfDestiny.Blade, "Loyal Spirit Orb", quant);
+        FarmFindingFrag(WeaponOfDestiny.Daggers, "Loyal Spirit Orb", quant);
+        FarmFindingFrag(WeaponOfDestiny.Scythe, "Loyal Spirit Orb", quant);
+        FarmUltimateWK("Loyal Spirit Orb", quant);
 
         // Default
-        if (!Core.CheckInventory("Loyal Spirit Orb", quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Loyal Spirit Orb", quant))
         {
             Core.FarmingLogger("Loyal Spirit Orb", quant);
-            SpiritOrb(100 * quant);
+            SpiritOrb(100 * (quant - (Bot.Inventory.Items.FirstOrDefault(x => x.Name == "Loyal Spirit Orb")?.Quantity ?? 0)));
             LightMerge("Loyal Spirit Orb", quant);
         }
     }
@@ -190,16 +190,17 @@ public class CoreBLOD
         if (Core.CheckInventory("Bright Aura", quant))
             return;
 
-        farmFindingFrag(WeaponOfDestiny.Bow, "Bright Aura", quant);
-        farmFindingFrag(WeaponOfDestiny.Broadsword, "Bright Aura", quant);
-        farmFindingFrag(WeaponOfDestiny.Scythe, "Bright Aura", quant);
-        farmUltimateWK("Bright Aura", quant);
+        FarmFindingFrag(WeaponOfDestiny.Bow, "Bright Aura", quant);
+        FarmFindingFrag(WeaponOfDestiny.Broadsword, "Bright Aura", quant);
+        FarmFindingFrag(WeaponOfDestiny.Scythe, "Bright Aura", quant);
+        FarmUltimateWK("Bright Aura", quant);
 
         // Default
-        if (!Core.CheckInventory("Bright Aura", quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Bright Aura", quant))
         {
             Core.FarmingLogger("Bright Aura", quant);
-            LoyalSpiritOrb(50 * quant);
+            LoyalSpiritOrb(50 * (quant - (Bot.Inventory.Items.FirstOrDefault(x => x.Name == "Bright Aura")?.Quantity ?? 0)));
+
             LightMerge("Bright Aura", quant);
         }
     }
@@ -209,13 +210,13 @@ public class CoreBLOD
         if (Core.CheckInventory("Brilliant Aura", quant))
             return;
 
-        farmFindingFrag(WeaponOfDestiny.Mace, "Brilliant Aura", quant);
+        FarmFindingFrag(WeaponOfDestiny.Mace, "Brilliant Aura", quant);
 
         // Default
-        if (!Core.CheckInventory("Brilliant Aura", quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory("Brilliant Aura", quant))
         {
             Core.FarmingLogger("Brilliant Aura", quant);
-            BrightAura(25 * quant);
+            BrightAura(25 * (quant - (Bot.Inventory.Items.FirstOrDefault(x => x.Name == "Brilliant Aura")?.Quantity ?? 0)));
             LightMerge("Brilliant Aura", quant);
         }
     }
@@ -225,17 +226,17 @@ public class CoreBLOD
         if (Core.CheckInventory("Blinding Aura", quant))
             return;
 
-        farmFindingFrag(WeaponOfDestiny.Scythe, "Blinding Aura", quant);
+        FarmFindingFrag(WeaponOfDestiny.Scythe, "Blinding Aura", quant);
 
         // Default (any of these)
-        farmFindingFrag(WeaponOfDestiny.Blade, "Blinding Aura", quant);
-        farmFindingFrag(WeaponOfDestiny.Broadsword, "Blinding Aura", quant);
-        farmFindingFrag(WeaponOfDestiny.Bow, "Blinding Aura", quant);
-        farmFindingFrag(WeaponOfDestiny.Mace, "Blinding Aura", quant);
-        farmFindingFrag(WeaponOfDestiny.Daggers, "Blinding Aura", quant);
+        FarmFindingFrag(WeaponOfDestiny.Blade, "Blinding Aura", quant);
+        FarmFindingFrag(WeaponOfDestiny.Broadsword, "Blinding Aura", quant);
+        FarmFindingFrag(WeaponOfDestiny.Bow, "Blinding Aura", quant);
+        FarmFindingFrag(WeaponOfDestiny.Mace, "Blinding Aura", quant);
+        FarmFindingFrag(WeaponOfDestiny.Daggers, "Blinding Aura", quant);
     }
 
-    public void SoulSearching(string item, int quant, bool farmSpiritOrbs = true)
+    public void SoulSearching(string item = "Spirit Orb", int quant = 1, bool farmSpiritOrbs = true)
     {
         if (Core.CheckInventory(item, quant))
             return;
@@ -244,25 +245,32 @@ public class CoreBLOD
             BattleUnder.BattleUnderC();
 
         Core.EquipClass(ClassType.Solo);
-        Core.FarmingLogger(item, quant);
 
-        Core.AddDrop("Cavern Celestite", "Undead Essence");
-        if (farmSpiritOrbs)
-        {
-            Core.RegisterQuests(939, 2082, 2083); // + Bone Some Dust & Essential Essences
-            Core.AddDrop("Bone Dust", "Undead Energy", "Spirit Orb");
-        }
-        else Core.RegisterQuests(939);
+        Core.AddDrop(farmSpiritOrbs
+            ? new[] { "Bone Dust", "Undead Energy", "Cavern Celestite", "Undead Essence", "Spirit Orb" }
+            : new[] { "Cavern Celestite", "Undead Essence", item });
+
+        Core.RegisterQuests(farmSpiritOrbs ? new[] { 2082, 2083, 939 } : new[] { 939 });
+
 
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
         {
-            Core.HuntMonster("battleundera", "Bone Terror", "Bone Terror Soul", log: false);
-            Core.HuntMonster("battleunderb", "Undead Champion", "Undead Champion Soul", log: false);
-            Core.HuntMonster("battleunderc", "Crystalized Jellyfish", "Jellyfish Soul", log: false);
-
+            Core.KillMonster("battleunderc", "r5", "Left", "Crystalized Jellyfish", "Jellyfish Soul", log: false);
+            Core.KillMonster("battleundera", "r7", "Left", "Bone Terror", "Bone Terror Soul", log: false);
+            Core.KillMonster("battleunderb", "r3", "Right", "Undead Champion", "Undead Champion Soul", log: false);
             Bot.Wait.ForPickup(item);
         }
+
         Core.CancelRegisteredQuests();
+
+
+        /* 
+        using register quest + accept and complete seems to break
+        things.. not sure how to solve this besides just picking
+        
+             Core.EnsureAccept(939);
+             Core.EnsureComplete(939);
+        */
     }
 
     //Unused, here for archiving purposes I guess... ~Exe
@@ -304,18 +312,19 @@ public class CoreBLOD
         Core.FarmingLogger(item, quant);
 
         Core.RegisterQuests(quest);
-        Core.KillMonster("battleunderb", "Enter", "Spawn", "*", item, quant, log: false, isTemp: false);
+        while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
+            Core.KillMonster("battleunderb", "Enter", "Spawn", "Skeleton Warrior", item, quant, log: false, isTemp: false);
         Core.CancelRegisteredQuests();
     }
 
-    private void farmFindingFrag(WeaponOfDestiny weapon, string item, int quant)
+    private void FarmFindingFrag(WeaponOfDestiny weapon, string item, int quant)
     {
         if (!Core.CheckInventory(item, quant) && Core.isCompletedBefore(2163) &&
             (Core.CheckInventory($"Blinding {weapon} of Destiny") || Core.CheckInventory(40187))) // Basically means you can buy it from the final shop
             FindingFragments(weapon, item, quant);
     }
 
-    private void farmUltimateWK(string item, int quant)
+    private void FarmUltimateWK(string item, int quant)
     {
         if (!Core.CheckInventory(item, quant) && Bot.Quests.IsUnlocked(2163))
             UltimateWK(item, quant);
@@ -334,9 +343,9 @@ public class CoreBLOD
         Core.FarmingLogger("Basic Wepon Kit", quant);
         Core.AddDrop("Basic Weapon Kit");
 
-        Core.RegisterQuests(2136);
         while (!Bot.ShouldExit && !Core.CheckInventory("Basic Weapon Kit", quant))
         {
+            Core.EnsureAccept(2136);
             Core.KillMonster("forest", "Forest3", "Left", "*", "Zardman's StoneHammer", 1, false);
             Core.KillMonster("noobshire", "North", "Left", "Horc Noob", "Noob Blade Oil");
             Core.KillMonster("farm", "Crop1", "Right", "Scarecrow", "Burlap Cloth", 4);
@@ -346,10 +355,10 @@ public class CoreBLOD
             Core.HuntMonster("pyramid", "Golden Scarab", "Golden Lacquer Finish");
             Core.HuntMonster("lair", "Bronze Draconian", "Bronze Brush");
             Core.HuntMonster("bloodtusk", "Rock", "Rocky Stone Sharpener");
+            Core.EnsureComplete(2136);
 
             Bot.Wait.ForPickup("Basic Weapon Kit");
         }
-        Core.CancelRegisteredQuests();
     }
 
     public void AdvancedWK(int quant = 1)
@@ -360,9 +369,9 @@ public class CoreBLOD
         Core.FarmingLogger("Advanced Weapon Kit", quant);
         Core.AddDrop("Advanced Weapon Kit");
 
-        Core.RegisterQuests(2162);
         while (!Bot.ShouldExit && !Core.CheckInventory("Advanced Weapon Kit", quant))
         {
+            Core.EnsureAccept(2162);
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("hachiko", "Dai Tengu", "Superior Blade Oil");
             Core.HuntMonster("airstorm", "Lightning Ball", "Shining Lacquer Finish");
@@ -373,11 +382,11 @@ public class CoreBLOD
             Core.KillMonster("safiria", "c3", "Left", "Chaos Lycan", "WolfClaw Hammer", 1, false);
             Core.KillMonster("lycan", "r4", "Left", "Chaos Vampire Knight", "Silver Brush");
             Core.KillMonster("sandport", "r3", "Right", "Tomb Robber", "Leather Case");
-            Core.KillMonster("pines", "Path1", "Left", "Leatherwing", "Leatherwing Hide", 10);
+            Core.KillMonster("pines", "Path1", "Left", "LeatherWing", "Leatherwing Hide", 10);
+            Core.EnsureComplete(2162);
 
             Bot.Wait.ForPickup("Advanced Weapon Kit");
         }
-        Core.CancelRegisteredQuests();
     }
 
     public void UltimateWK(string item = "Ultimate Weapon Kit", int quant = 1)
@@ -388,9 +397,9 @@ public class CoreBLOD
         Core.AddDrop("Ultimate Weapon Kit", "Blinding Light Fragments", "Bright Aura", "Spirit Orb", "Loyal Spirit Orb");
         Core.FarmingLogger(item, quant);
 
-        Core.RegisterQuests(2163);
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
         {
+            Core.EnsureAccept(2163);
             Core.EquipClass(ClassType.Farm);
             Core.KillMonster("dragonplane", "r2", "Right", "Earth Elemental", "Great Ornate Warhammer", 1, false, false);
 
@@ -402,10 +411,10 @@ public class CoreBLOD
             Core.KillMonster("citadel", "m14", "Left", "Grand Inquisitor", "Blinding Lacquer Finish", log: false);
             Core.HuntMonster("djinn", "Harpy", "Suede Travel Case", log: false);
             Core.KillMonster("roc", "Enter", "Spawn", "Rock Roc", "Sharp Stone Sharpener", log: false);
+            Core.EnsureComplete(2163);
 
             Bot.Wait.ForPickup(item);
         }
-        Core.CancelRegisteredQuests();
     }
 
     #endregion
@@ -441,7 +450,7 @@ public class CoreBLOD
 
         List<ItemBase> weaponReqs = (LightMergeShopItems ??= Core.GetShopItems("necropolis", 422)).First(item => item.Name == weaponName).Requirements;
 
-        getMergeRequirements(weaponReqs, weaponReqs.First(item => item.Name == weapon + " of Destiny").ID);
+        GetMergeRequirements(weaponReqs, weaponReqs.First(item => item.Name == weapon + " of Destiny").ID);
         LightMerge(weaponName);
     }
 
@@ -455,12 +464,12 @@ public class CoreBLOD
         ItemBase metal = weaponReqs.First(req => req.Name.EndsWith("of Destiny"));
         UpgradeMetal((MineCraftingMetalsEnum)Enum.Parse(typeof(MineCraftingMetalsEnum), metal.Name.Split(' ')[1]));
 
-        getMergeRequirements(weaponReqs, metal.ID);
+        GetMergeRequirements(weaponReqs, metal.ID);
         LightMerge(weaponName);
     }
 
     // Dynamic way of getting all the requierments via the shop info, which will work for different quants or combinations
-    private void getMergeRequirements(List<ItemBase> requirements, params int[] exceptions)
+    private void GetMergeRequirements(List<ItemBase> requirements, params int[] exceptions)
     {
         foreach (ItemBase req in requirements.Where(r => !exceptions.Contains(r.ID)))
         {

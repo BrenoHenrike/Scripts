@@ -19,7 +19,7 @@ public class AggroMonReader
     private static CoreArmyLite sArmy = new();
 
     public string OptionsStorage = "AggroMonReader";
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         sArmy.player1,
         sArmy.player2,
@@ -157,6 +157,8 @@ public class AggroMonReader
         Core.RegisterQuests(questIDs.ToArray());
         Core.Logger($"AggroMonBot \"{file[0]}\" initiated", caller);
 
+        
+            
         while (!Bot.ShouldExit)
             Bot.Combat.Attack("*");
         Core.CancelRegisteredQuests();

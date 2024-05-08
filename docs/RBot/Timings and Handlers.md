@@ -15,13 +15,13 @@ If you enable `SafeTimings` as recommended, you can ignore most of this document
 If you would simply like to pause exeuction for a specific length of time, you can do this easily using:
 
 ```csharp
-bot.Sleep(time);
+Core.Sleep(time);
 ```
 
 where `time` is the time in milliseconds to sleep. For example,
 
 ```csharp
-bot.Sleep(1000);
+Core.Sleep(1000);
 ```
 
 will sleep the bot for 1000 milliseconds (1 second).

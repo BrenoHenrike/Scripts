@@ -73,7 +73,7 @@ public class GardenMerge
                     break;
 
                 case "Darkon's Debris 1952":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
                     Core.AddDrop("Darkon's Receipt");
 
@@ -88,7 +88,7 @@ public class GardenMerge
                             while (!Bot.ShouldExit && Bot.Player.Cell != "r5")
                             {
                                 Core.Jump("r5", "Left");
-                                Bot.Sleep(Core.ActionDelay);
+                                Core.Sleep();
                             }
 
                             EnoughPeople = Bot.Map.CellPlayers?.Count >= 3;
@@ -96,7 +96,7 @@ public class GardenMerge
                             if (!EnoughPeople && Core.IsMember)
                                 Core.HuntMonster("ultravoid", "Ultra Kathool", "Ingredients?", 22, false, publicRoom: true);
                             else
-                                Adv.KillUltra("doomvault", "r5", "Left", "Binky", "Ingredients?", 22, false, publicRoom: true);
+                                Core.KillMonster("doomvault", "r5", "Left", "Binky", "Ingredients?", 22, false, publicRoom: true);
 
                             Bot.Wait.ForPickup("Darkon's Receipt");
                         }

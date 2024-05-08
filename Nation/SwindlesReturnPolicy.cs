@@ -31,55 +31,33 @@ public class SwindlesReturnPolicy
         Core.BankingBlackList.AddRange(Nation.Receipt);
         Core.SetOptions();
 
-        RewardsSelection rewardSelect = Bot.Config?.Get<RewardsSelection>("RewardSelect") ?? RewardsSelection.All;
-        DoSwindlesReturnPolicy(rewardSelect);
+        DoSwindlesReturnPolicy(Bot.Config!.Get<RewardsSelection>("RewardSelect"));
 
         Core.SetOptions(false);
     }
 
     public void DoSwindlesReturnPolicy(RewardsSelection? reward = null, bool getAll = false)
     {
-        Core.Logger($"Reward set to {(reward.HasValue ? reward.Value.ToString() : "null")}");
+        Core.Logger($"Reward set to {(reward.HasValue ? reward.Value.ToString().Replace("_", " ") : null)}");
 
-        if (reward == RewardsSelection.All)
+        if (reward == RewardsSelection.All || reward == null)
             getAll = true;
-
-        Quest rewardQuest = Core.EnsureLoad(7551);
-        if (rewardQuest == null)
-        {
-            Core.Logger("Quest with ID 7551 not found.");
-            return;
-        }
-
-        string? targetItemName = reward.HasValue ? reward.Value.ToString().Replace("_", " ") : null;
 
         if (!getAll)
         {
-            if (reward == null)
-            {
-                Core.Logger("Reward is null. Please select a valid reward.");
-                return;
-            }
-
-            ItemBase? item = rewardQuest.Rewards.Find(x => x.Name == targetItemName);
+            ItemBase? item = Core.EnsureLoad(7551).Rewards.Find(x => x.Name == reward!.Value.ToString().Replace("_", " "));
             if (item == null)
             {
-                Core.Logger($"Reward with name {targetItemName} not found in Quest Rewards.");
+                Core.Logger($"Reward with name {reward!.Value.ToString().Replace("_", " ")} not found in Quest Rewards.");
                 return;
             }
 
-            Core.AddDrop(item.ID);
-
-            if (Core.CheckInventory(item.Name, item.MaxStack))
-                return;
-
-            Nation.SwindleReturn(item.Name, item.MaxStack); // Fix the argument here
+            Nation.SwindleReturn(item.Name ?? null, item.MaxStack); // Fix the argument here
         }
         else
         {
-            foreach (ItemBase thing in rewardQuest.Rewards)
+            foreach (ItemBase thing in Core.EnsureLoad(7551).Rewards)
             {
-                Core.AddDrop(thing.ID);
 
                 if (Core.CheckInventory(thing.Name, thing.MaxStack))
                     continue;
@@ -91,42 +69,6 @@ public class SwindlesReturnPolicy
         Core.CancelRegisteredQuests();
     }
 
-
-    // public ItemBase? SwindleReturn(RewardsSelection? reward = null, string? itemName = null, int quantity = 1)
-    // {
-    //     Core.RegisterQuests(641, 907); // Quest IDs for the pets you want to register
-
-    //     string? targetItemName = reward.HasValue ? reward.Value.ToString().Replace("_", " ") : itemName;
-
-    //     while (Bot.Inventory.GetQuantity(targetItemName ?? "") < quantity)
-    //     {
-    //         if (reward != null)
-    //             DoSwindlesReturnPolicy(reward, true);
-    //         else
-    //             DoSwindlesReturnPolicy(RewardsSelection.All, true);
-
-    //         ItemBase? item = Core.EnsureLoad(7551)?.Rewards.Find(x => x.Name == targetItemName);
-    //         if (item != null)
-    //         {
-    //             Core.AddDrop(item.ID);
-
-    //             if (!Core.CheckInventory(item.Name, item.MaxStack))
-    //                 return item;
-    //         }
-    //         else
-    //             // Handle the case where 'item' is null (item not found)
-    //             Core.Logger($"Item with name {targetItemName} not found in Quest Rewards.");
-
-    //     }
-
-    //     return null;
-    // }
-
-
-
-
-
-
     public enum RewardsSelection
     {
         Dark_Crystal_Shard = 4770,
@@ -134,7 +76,7 @@ public class SwindlesReturnPolicy
         Gem_of_Nulgath = 6136,
         Blood_Gem_of_the_Archfiend = 22332,
         Tainted_Gem = 4769,
-        All = 9999
+        All = 0
     }
 
 }

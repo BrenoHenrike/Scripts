@@ -1,15 +1,17 @@
 /*
-name: PinpointthePieces
-description: null
-tags: null
+name: Pinpoint the Pieces Quests
+description: This script will do "Pinpoint the Pieces" quest using the chosen method.
+tags: pinpoint, pieces, sdka, dagger, blade, broadsword, scythe, mace, bow
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/Evil/SDKA/CoreSDKA.cs
+//cs_include Scripts/CoreStory.cs
 using System.Collections.Generic;
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
 using Skua.Core.Options;
 
 public class PinpointthePieces_Any
@@ -20,7 +22,7 @@ public class PinpointthePieces_Any
 
     public string OptionStorage = "Pinpoint_the_Pieces";
 
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         new Option<PinpointIDs>("questID", "Quest ID", "ID of the desired Pinpoint quest to do.", PinpointIDs.Dagger)
     };
@@ -36,22 +38,25 @@ public class PinpointthePieces_Any
     public void Pinpoint()
     {
         Core.EquipClass(ClassType.Farm);
-        int i = 1;
-        int questID = (int)Bot.Config.Get<PinpointIDs>("questID");
-        while (!Bot.ShouldExit)
-        {
-            SDKA.PinpointthePieces(questID);
-            Core.Logger($"Completed x{i++}");
-        }
-    }
-}
 
-public enum PinpointIDs
-{
-    Dagger = 2181,
-    Blade = 2182,
-    Broadsword = 2183,
-    Scythe = 2184,
-    Mace = 2185,
-    Bow = 2186
+        PinpointIDs questID = Bot.Config?.Get<PinpointIDs>("questID") ?? default;
+        ItemBase[] QuestRewards = Core.EnsureLoad((int)questID).Rewards.ToArray();
+
+        foreach (ItemBase reward in QuestRewards)
+        {
+            while (!Bot.ShouldExit && !Core.CheckInventory(reward.ID, reward.MaxStack))
+                SDKA.PinpointthePieces((int)questID, new[] { reward.Name }, new[] { reward.MaxStack });
+        }
+
+    }
+
+    public enum PinpointIDs
+    {
+        Dagger = 2181,
+        Blade = 2182,
+        Broadsword = 2183,
+        Scythe = 2184,
+        Mace = 2185,
+        Bow = 2186
+    }
 }

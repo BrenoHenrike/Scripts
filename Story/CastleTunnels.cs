@@ -40,7 +40,7 @@ public class CastleTunnels
         Story.MapItemQuest(5246, "CastleTunnels", 4599, 4);
 
         //Gotta get that Blood 5247
-        Story.KillQuest(5247, "CastleTunnels", "Blood Maggot|Vampire Bat");
+        Story.KillQuest(5247, "CastleTunnels", "Blood Maggot");
 
         //Feed the Shrine 5248
         Story.MapItemQuest(5248, "CastleTunnels", 4600);

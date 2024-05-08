@@ -79,11 +79,11 @@ public class StarFestival
         {
             Core.EquipClass(ClassType.Farm);
             Core.EnsureAccept(8751);
-            Core.KillMonster($"battleunderb", "Enter", "Spawn", "*", "Bundle O’ Bones", 30);
+            Core.KillMonster($"battleunderb", "Enter", "Spawn", "*", "Bundle O' Bones", 30);
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonsterMapID($"Odokuro", 1, "Odokuro’s Occipital");
-            Core.HuntMonster($"bonecastle", "Vaden", "Vaden’s Other Arm");
-            Core.HuntMonster($"vordredboss", "Vordred", "Vordred’s Skull(s)", 3);
+            Core.HuntMonsterMapID($"Odokuro", 1, "Odokuro's Occipital");
+            Core.HuntMonster($"bonecastle", "Vaden", "Vaden's Other Arm");
+            Core.HuntMonster($"vordredboss", "Vordred", "Vordred's Skull(s)", 3);
             Core.EnsureComplete(8751);
         }
 
@@ -104,7 +104,7 @@ public class StarFestival
         {
             Core.EnsureAccept(8753);
             Core.HuntMonster("Tercessuinotlim", "Tainted Elemental", "Tainted Essence Collected", 10);
-            Core.KillMonster("tercessuinotlim", "m2", "Top", "Dark Makai", "Makai Essence Collected", 20);
+            Core.KillMonster("tercessuinotlim", "m2", "Left", "*", "Makai Essence Collected", 20);
             Core.HuntMonster("necrodungeon", "5 Headed Dracolich", "Dracolich Soul Collected", 15);
             Core.HuntMonster("necrodungeon", "SlimeSkull", "Necropolis Soul Collected", 15);
             Core.HuntMonster("necrodungeon", "Doom Overlord", "Doom Power Catalyst", 2);
@@ -119,7 +119,7 @@ public class StarFestival
             Core.HuntMonster("astraviajudge", "La", "Righteous Requiem");
             Core.HuntMonster("theworld", "Ti", "Gentle Glissando");
             Core.HuntMonster("theworld", "Re", "Reckless Rhapsody");
-            Core.HuntMonster($"theworld", "Encore Darkon", "Conductor’s Canata");
+            Core.HuntMonster($"theworld", "Encore Darkon", "Conductor's Canata");
             Core.EnsureComplete(8754);
         }
 
@@ -128,9 +128,9 @@ public class StarFestival
         {
             Core.EnsureAccept(8755);
             Bot.Quests.UpdateQuest(8094);
-            Core.HuntMonster($"transformation", "Queen of Monsters", "Queen’s Remnant");
+            Core.HuntMonster($"transformation", "Queen of Monsters", "Queen's Remnant");
             Core.HuntMonsterMapID("transformation", 16, "Terrestrial Chaos", 30);
-            Core.HuntMonster($"lagunabeach", "Heart of Chaos", "Heart’s Remnant");
+            Core.HuntMonster($"lagunabeach", "Heart of Chaos", "Heart's Remnant");
             Core.HuntMonster($"lagunabeach", "Chaos Kelp", "Aquatic Chaos", 25);
             Core.EnsureComplete(8755);
         }

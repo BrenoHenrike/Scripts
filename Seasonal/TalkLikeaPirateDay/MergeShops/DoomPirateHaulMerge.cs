@@ -10,6 +10,7 @@ tags: doompirate, haul, merge, doompirate, shadowscythe, admiral, empire, fleet,
 //cs_include Scripts/Seasonal\TalkLikeaPirateDay\DoomPirateStory.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
+using Skua.Core.Models.Monsters;
 using Skua.Core.Options;
 
 public class DoomPirateHaulMerge
@@ -65,18 +66,52 @@ public class DoomPirateHaulMerge
                 #endregion
 
                 case "Gallaeon's Piece of Eight":
-                    Core.Logger($"{req.Name}" + " requires ultra boss, you need to prefarm it yourself.");
+                    Core.FarmingLogger(req.Name, quant);
+                    Core.RegisterQuests(9355);
+                    Core.EquipClass(ClassType.Solo);
+                    Core.Join("doompirate", "r5", "Left");
+                    while (!Bot.ShouldExit && !Core.CheckInventory("Gallaeon's Piece of Eight", 99))
+                    {
+                    Restartkills:
+                        while (!Bot.ShouldExit && Bot.Player.Cell != "r5")
+                        {
+                            Core.Jump("r5", "Left");
+                            Bot.Player.SetSpawnPoint();
+                            Core.Sleep();
+                        }
+
+                        foreach (int mob in new[] { 5, 4, 7, 6, 9, 8, 11, 10 })
+                        {
+                            Monster? M = Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault(x => x != null && x.MapID == mob);
+                            if (M != null)
+                            {
+                                Core.Logger($"Killing: {M.MapID}");
+                                Bot.Kill.Monster(M.MapID);
+                                Core.Logger($"Killed: {M.MapID}");
+                            }
+                            else
+                            {
+                                Core.Logger($"No monster found with MapID: {mob}, something went wrong. Restarting room");
+                                goto Restartkills;
+                            }
+                            while (!Bot.ShouldExit && !Bot.Player.Alive)
+                            {
+                                Core.Logger("Player died, restarting room");
+                                Bot.Wait.ForTrue(() => Bot.Player.Alive, 40);
+                                goto Restartkills;
+                            }
+                        }
+
+                        Bot.Kill.Monster(12);
+                    }
                     break;
 
                 case "Doom Doubloon":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
                     Core.RegisterQuests(9354);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster("doompirate", "Gallaeon", log: false);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
+                    Core.HuntMonsterMapID("doompirate", 3, req.Name, quant, log: false);
+                    Bot.Wait.ForPickup(req.Name);
                     Core.CancelRegisteredQuests();
                     break;
 

@@ -1,5 +1,5 @@
 /*
-name: ArchPaladin
+name: ArchPaladin (Class)
 description: This bot farms the ArchPaladin class for you.
 tags: class, good, tank, hp, templar, support, survivability, figher, healer, undead
 */
@@ -63,7 +63,7 @@ public class ArchPaladin
                 BLOD.UnlockMineCrafting();
                 Farm.BattleUnderB("Undead Energy", 1000);
                 Core.EquipClass(ClassType.Solo);
-                Adv.KillUltra("doomvault", "r5", "Left", "Binky", "Binky's Uni-horn", isTemp: false, publicRoom: true);
+                Core.KillMonster("doomvault", "r5", "Left", "Binky", "Binky's Uni-horn", isTemp: false, publicRoom: true);
                 Core.HuntMonster("banished", "Desterrat Moya", "Desterrat Moya Tentacle", publicRoom: true);
                 Core.HuntMonster("dreadhaven", "Dreadhaven General", "Dreadhaven Helm");
                 Adv.GearStore();
@@ -85,7 +85,7 @@ public class ArchPaladin
                     Core.Jump("r12", "Left"); // map is aggro af this is a safe cell.
 
                 Core.HuntMonster("dragonheart", "Proto-Air Dracolich", "Zephyrus Manifesto", isTemp: false);
-                Core.HuntMonster("northstar", "Karok the Fallen", "Karok's Glaceran Gem", isTemp: false, publicRoom: true);
+                Core.HuntMonster("northstar", "Karok The Fallen", "Karok's Glaceran Gem", isTemp: false, publicRoom: true);
                 Core.EquipClass(ClassType.Farm);
                 Core.HuntMonster("thirdspell", "Mana Phoenix", "Nightmare Kibble", 200, false);
                 Core.HuntMonster("thunderfang", "Lightning Ball", "Condensed Energy", isTemp: false);
@@ -157,7 +157,7 @@ public class ArchPaladin
         // Righteous Seal
         if (!Story.QuestProgression(5469))
         {
-            Core.AddDrop("Scroll of Ethereal Slumber");
+            Core.AddDrop("Scroll of Ethereal Slumber", "Fists of Fire", "Holy Magic Attunement", "Ring of Mana Transposition");
             Core.EnsureAccept(5469);
             Xan.DoAll();
             Core.EquipClass(ClassType.Solo);

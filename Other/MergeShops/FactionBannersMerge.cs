@@ -86,7 +86,7 @@ public class FactionBannersMerge
                 case "Northern Crown":
                 case "Winter Throne":
                     Core.FarmingLogger(req.Name, quant);
-                    Core.HuntMonster("snowmore", "Jon S'Nooooooo", req.Name, quant, false, false); ;
+                    Core.HuntMonster("snowmore", "Jon S'NOOOOOOO", req.Name, quant, false, false); ;
                     Bot.Wait.ForPickup(req.Name);
                     break;
 

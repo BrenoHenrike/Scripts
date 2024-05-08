@@ -29,7 +29,7 @@ public class ArmyDarkToken
 
     public string OptionsStorage = "ArmyDarkToken";
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         sArmy.player1,
         sArmy.player2,
@@ -51,7 +51,7 @@ public class ArmyDarkToken
         Core.SetOptions(false);
     }
 
-    public void Setup(int quant = 600)
+    public void Setup(int quant = 10000)
     {
         if (Core.CheckInventory("Dark Token", quant))
             return;
@@ -66,6 +66,9 @@ public class ArmyDarkToken
 
         Core.RegisterQuests(6248, 6249, 6251);
         Army.SmartAggroMonStart("seraphicwardage", new[] { "Seraphic Commander, Seraphic Soldier" });
+        
+        
+            
         while (!Bot.ShouldExit && !Core.CheckInventory("Dark Token", quant))
             Bot.Combat.Attack("*");
         Core.CancelRegisteredQuests();

@@ -1,14 +1,15 @@
 /*
-name: 1GetAllRanks
-description: null
-tags: null
+name: Get All Ranks
+description: This script will get all reputations to rank 10.
+tags: all reps, reputation, rank, all ranks, farm, rep, reps
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/Story/LordsofChaos/Core13LoC.cs    
 //cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
-//cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
+
 using Skua.Core.Interfaces;
 public class GetAllRanks
 {
@@ -34,12 +35,17 @@ public class GetAllRanks
     {
         //Adv.BestGear(GenericGearBoost.dmgAll);
         //Adv.BestGear(GenericGearBoost.rep);
+
+        //Required Stories add when needed.
+        Core.Logger("Doing Required Stories for the reps, let tato know if another is required.");
         TOD.FourthDimensionalPyramid();
         TOD.BaconCatFortress();
         TOD.LaserSharkInvasion();
+        TOD.DeathPitPVP();
         LOC.Wolfwing();
         LOC.Kimberly();
         LOC.Lionfang();
+
 
         Farm.GetAllRanks();
 

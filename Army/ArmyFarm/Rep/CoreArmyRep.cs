@@ -51,7 +51,7 @@ public class CoreArmyRep
 
     public void ArmyAegisRep() => RunArmyRep("Aegis", "skytower", new[] { "r4", "r6", "r7" }, new[] { "r4", "r6", "r7" }, new[] { 4900, 4910, 4914 });
     public void ArmyArcangroveRep() => RunArmyRep("Arcangrove", "arcangrove", new[] { "Left", "Back", "Right", "LeftBack" }, new[] { "Left", "Back", "Right", "LeftBack" }, new[] { 794, 795, 796, 797, 798, 799, 800, 801 });
-    public void ArmyBaconCatRep() => RunArmyRep("BaconCatu", "baconcatlair", new[] { "r9", "r10", "r11", "r12", "r13" }, new[] { "r9", "r10", "r11", "r12", "r13" }, new[] { 5121 });
+    public void ArmyBaconCatRep() => RunArmyRep("BaconCat", "baconcatlair", new[] { "r4" }, new[] { "r4" }, new[] { 5112, 5120 });
     public void ArmyDoomWoodRep() => RunArmyRep("DoomWood", "shadowfallwar", new[] { "Garden2", "Garden1", "Bonus" }, new[] { "Garden2", "Garden1", "Bonus" }, new[] { 1151, 1152, 1153 });
     public void ArmyCraggleRockRep() => RunArmyRep("CraggleRock", "wanders", new[] { "r2", "r3", "r5", "r7" }, new[] { "r2", "r3", "r5", "r7" }, new[] { 7277 });
     public void ArmyChaosMilitiaRep() => RunArmyRep("Chaos Militia", "citadel", new[] { "m1", "m5", "m9" }, new[] { "m1", "m5", "m9" }, new[] { 5775 });
@@ -62,7 +62,7 @@ public class CoreArmyRep
     public void ArmyDruidGroveRep() => RunArmyRep("Druid Grove", "bloodtusk", new string[] { "r8", "r3", "r18" }, new string[] { "r8", "r3", "r18" }, new int[] { 3049 });
     public void ArmyDwarfholdRep() => RunArmyRep("Dwarfhold", "pines", new string[] { "Enter", "Mountain" }, new string[] { "Enter", "Mountain" }, new int[] { 320, 321 });
     public void ArmyElementalMasterRep() => RunArmyRep("Elemental Master", "gilead", new[] { "r8", "r3", "r4" }, new string[] { "r8", "r3", "r4" }, new int[] { 3050, 3298 });
-    public void ArmyEtherstormRep() => RunArmyRep("Etherstorm", "etherwardes", new string[] { "Enter", "r3", "r2" }, new string[] { "Enter", "r3", "r2" }, new int[] { 3050, 3298 });
+    public void ArmyEtherstormRep() => RunArmyRep("Etherstorm", "etherwardes", new string[] { "Enter", "r3", "r2" }, new string[] { "Enter", "r3", "r2" }, new int[] { 1721 });
     public void ArmyEmberseaRep() => RunArmyRep("Embersea", "fireforge", new string[] { "r5", "r8", "r7" }, new string[] { "r5", "r8", "r7" }, new int[] { 4227, 4228, 4229 });
     public void ArmyEternalRep() => RunArmyRep("Eternal", "fourdpyramid", new[] { "r10", "r11" }, new[] { "r10", "r11" }, new int[] { 5198, 5208 });
     public void ArmyGoodEvilRep() { int goodRank = FactionRank("Good"); int evilRank = FactionRank("Evil"); string repname = "Good"; string AggroMonStart = goodRank < 4 || evilRank < 4 ? "castleundead" : "swordhavenbridge"; string[] Cells = goodRank < 4 || evilRank < 4 ? new[] { "Bridge" } : new string[] { "Enter", "Bright", "Hall" }; int[] quests = goodRank < 4 || evilRank < 4 ? new[] { 364, 369 } : new int[] { 367, 372 }; RunArmyRep(repname, AggroMonStart, Cells, Cells, quests); }
@@ -79,7 +79,7 @@ public class CoreArmyRep
     public void ArmyTreasureHunterRep() => RunArmyRep("TreasureHunter", "stalagbite", new[] { "Enter", "r1" }, new[] { "Enter", "r1" }, new[] { 6593 });
     public void ArmyTrollRep() => RunArmyRep("Troll", "bloodtuskwar", new[] { "r6", "r3", "r2" }, new[] { "r6", "r3", "r2" }, new[] { 1263 });
     public void ArmyLoremasterRep() => RunArmyRep("Loremaster", Core.IsMember ? "druids" : "wardwarf", new[] { Core.IsMember ? "r5" : "r2", Core.IsMember ? "r5" : "r4" }, new[] { Core.IsMember ? "r5" : "r2", Core.IsMember ? "r5" : "r4" }, Core.IsMember ? new[] { 3032 } : new[] { 7505 });
-    public void ArmyLycanRep() => RunArmyRep("Lycan", "Lycan", new[] { "r4", "r5" }, new[] { "r4", "r5" }, new[] { 532, 537 });
+    public void ArmyLycanRep() => RunArmyRep("Lycan", "Lycan", new[] { "r4", "r5" }, new[] { "r4", "r5" }, new[] { 537 });
     public void ArmyMonsterHunterRep() => RunArmyRep("Monster Hunter", "pilgrimage", new[] { "r5", "r7", "r8", "r9" }, new[] { "r5", "r7", "r8", "r9" }, new[] { 5849, 5850 });
 
     #region Time of year restricted
@@ -130,16 +130,8 @@ public class CoreArmyRep
     void RunArmyRep(string repname, string AggroMonStart, string[] AggroMonCells, string[] DivideOnCells, int[] RegisterQuests)
     {
         Core.DL_Enable();
-        // Core.DebugLogger(this);
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
-
-        // if (FactionRank(repname) >= 10)
-        // {
-        //     Core.Logger($"{Bot.Player.Username} is rank 10, butlering the rest.");
-        //     Army.waitForParty("whitemap");
-        //     return;
-        // }
 
         switch (repname)
         {
@@ -168,35 +160,27 @@ public class CoreArmyRep
                 break;
         }
 
-        // Core.DebugLogger(this);
         Farm.ToggleBoost(BoostType.Reputation);
-        // Core.DebugLogger(this);
         Core.EquipClass(ClassType.Farm);
-        // Core.DebugLogger(this);
         Core.RegisterQuests(RegisterQuests);
-        // Core.DebugLogger(this);
 
         Army.AggroMonCells(AggroMonCells);
-        // Core.DebugLogger(this);
         Army.AggroMonStart(AggroMonStart);
-        // Core.DebugLogger(this);
         Army.DivideOnCells(DivideOnCells);
-        // Core.DebugLogger(this);
 
+        
+            
         while (!Bot.ShouldExit && FactionRank(repname) < 10)
             Bot.Combat.Attack("*");
-        // Core.DebugLogger(this);
-        Army.AggroMonStop(true);
-        // Core.DebugLogger(this);
-        Farm.ToggleBoost(BoostType.Reputation, false);
-        // Core.DebugLogger(this);
-        Core.CancelRegisteredQuests();
 
-        // Core.DebugLogger(this);
+        // Clean up
+        Army.AggroMonStop(true);
         Core.JumpWait();
-        // Core.DebugLogger(this);
-        Army.waitForParty("whitemap");
-        // Core.DebugLogger(this);
+        Core.CancelRegisteredQuests();
+        Farm.ToggleBoost(BoostType.Reputation, false);
+
+        // Wait for the party
+        //Army.waitForParty("whitemap");
     }
     public int FactionRank(string faction) => Bot.Reputation.GetRank(faction);
 }

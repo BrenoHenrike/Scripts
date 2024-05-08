@@ -1,7 +1,7 @@
 /*
-name: SomniaREP
-description: null
-tags: null
+name: Somnia REP
+description: This script will farm Somnia reputation to rank 10.
+tags: somnia, rep, rank, reputation
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

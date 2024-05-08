@@ -24,12 +24,18 @@ public class J6Saga
         Core.SetOptions(false);
     }
 
-    public void J6()
+    public void J6(bool ReTurnWithHammer = false)
     {
         if (Core.isCompletedBefore(2858))
+        {
+            Core.Logger("Story Complete.");
             return;
+        }
 
         Story.PreLoad(this);
+
+        if (ReTurnWithHammer)
+            Core.AddDrop(5194);
 
         //J6 Quiz Game
         Story.ChainQuest(674);
@@ -48,6 +54,9 @@ public class J6Saga
         //Mission1
         Story.KillQuest(698, "forest", "Zardman Grunt");
 
+        if (ReTurnWithHammer)
+            return;
+
         //Mission2
         Story.KillQuest(699, "boxes", "Sneeviltron");
 
@@ -60,7 +69,7 @@ public class J6Saga
         Story.KillQuest(1171, "moonyard", "Junkyard Wall");
 
         if (!Core.isCompletedBefore(1172))
-            Bot.Sleep(5000);
+            Core.Sleep(5000);
 
         //I'm on the Hunt, I'm after 58-Sr3
         Story.MapItemQuest(1172, "moonyard", 495);
@@ -104,7 +113,7 @@ public class J6Saga
             Bot.Combat.CancelTarget();
             Core.JumpWait();
             Bot.Wait.ForCombatExit();
-            Core.Logger("Joining Whitemap to amke sure your outa xantown as the mobs\n" + 
+            Core.Logger("Joining Whitemap to amke sure your outa xantown as the mobs\n" +
             "are aggressive.. and you amy potentialy be stuck there");
             Core.Join("whitemap");
             Core.SellItem("Auxiliary Clue 3");
@@ -115,8 +124,8 @@ public class J6Saga
         {
             Core.EnsureAccept(2831);
             Bot.Quests.UpdateQuest(811);
-            Core.KillMonster("sandsea", "r8", "Left", "*", "Cactus Creeper Oil", 3);
-            Core.KillMonster("cloister", "r7", "Left", "Acornent", "Acornent Oil", 3);
+            Core.HuntMonster("sandsea", "Cactus Creeper", "Cactus Creeper Oil", 3);
+            Core.KillMonster("cloister", "r2", "Right", "*", "Acornent Oil", 3);
             Bot.Quests.UpdateQuest(1176);
             if (!Core.CheckInventory("Robo Dog Oil", 3))
             {
@@ -212,7 +221,7 @@ public class J6Saga
         {
             Core.Jump("R10");
             Core.Join("alley");
-            Bot.Sleep(2000);
+            Core.Sleep(2000);
         }
         //Save the Girl
         Story.KillQuest(2851, "alley", "Thug Minion");

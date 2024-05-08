@@ -68,15 +68,18 @@ public class AweMerge
                 #endregion
 
                 case "Aura of Awe":
-                    if (!Bot.Player.IsMember)
+                    if (!Core.IsMember)
+                    {
+                        Core.Logger("You need to be member.");
                         break;
+                    }
 
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
                     Core.RegisterQuests(2939);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("dwakelcrashsite", "Mithril Man", "Evolution Of Awe", 13, log: false);
+                        Core.HuntMonster("crashsite", "Mithril Man", "Evolution Of Awe", 13, log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();

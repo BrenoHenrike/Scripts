@@ -62,9 +62,11 @@ public class Yulecat
 
         if (Core.IsMember)
             while (!Bot.ShouldExit && !Core.CheckInventory(MemDrops))
-                Core.HuntMonster("yulecat", "Kitty Yu Yule", "*", isTemp: false);
+                foreach (string drop in MemDrops)
+                    Core.HuntMonster("yulecat", "Kitty Yu Yule", drop, isTemp: false);
         else
             while (!Bot.ShouldExit && !Core.CheckInventory(Drops))
-                Core.HuntMonster("yulecat", "Kitty Yu Yule", "*", isTemp: false);
+                foreach (string drop in Drops)
+                    Core.HuntMonster("yulecat", "Kitty Yu Yule", drop, isTemp: false);
     }
 }

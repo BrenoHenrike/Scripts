@@ -20,7 +20,7 @@ public class EnchantedVictoryBladeWeapons
         Core.SetOptions();
         Core.BankingBlackList.AddRange(new[] { "Enchanted Mana Blade", "Bright Aura Gem", "Amulet of Glory", "Arcane Blade of Glory", "Enchanted Shadow Blade", "Dark Aura Gem", "Amulet of Despair", "Shadow Blade of Despair" });
 
-GetBoth();
+        GetBoth();
 
         Core.SetOptions(false);
     }
@@ -29,7 +29,7 @@ GetBoth();
     {
         GetWeapon(VictoryBladeStyles.ArcaneBladeOfGlory);
         GetWeapon(VictoryBladeStyles.ShadowBladeOfDespair);
-        
+
     }
 
     public void GetWeapon(VictoryBladeStyles Method = VictoryBladeStyles.Smart)
@@ -59,10 +59,10 @@ GetBoth();
             return;
 
         TypeAuraGem(doGlory ? "bright" : "dark");
-        Bot.Sleep(Core.ActionDelay);
+        Core.Sleep();
         Adv.BuyItem("river", 1213, doGlory ? "Enchanted Mana Blade" : "Enchanted Shadow Blade");
         AmuletOfType(doGlory ? "glory" : "despair");
-        Bot.Sleep(Core.ActionDelay);
+        Core.Sleep();
         Adv.BuyItem("river", 1213, doGlory ? "Arcane Blade of Glory" : "Shadow Blade of Despair");
     }
 
@@ -85,7 +85,7 @@ GetBoth();
             Core.EnsureComplete(4811);
             Bot.Wait.ForPickup("Enchantment Rune");
         }
-        Bot.Sleep(Core.ActionDelay);
+        Core.Sleep();
         Adv.BuyItem("river", 1213, "Enchanted Victory Blade");
     }
 
@@ -116,7 +116,7 @@ GetBoth();
     public void AmuletOfType(string type)
     {
         type = Captialize(type.Trim());
-        ItemBase Amulet = Bot.Inventory.GetItem($"Amulet of " + type);
+        ItemBase? Amulet = Bot.Inventory.GetItem($"Amulet of " + type);
         if (type != "Glory" && type != "Despair")
         {
             Core.Logger("Invalid paramater. Expected \"Glory\" or \"Despair\"");

@@ -48,7 +48,6 @@ public class RankUpAll
         if (Core.CBOBool("DisableAutoEnhance", out bool _disableAutoEnhance) && _disableAutoEnhance)
             Core.Logger("This bot requires Smart Enhance to work properly, please modify your CBO settings", messageBox: true, stopBot: true);
 
-        Adv.GearStore();
 
         foreach (string Class in SelectedClasses)
         {
@@ -58,7 +57,5 @@ public class RankUpAll
             if (BankClasses.Contains(Class))
                 Core.ToBank(Class);
         }
-
-        Adv.GearStore(true);
     }
 }

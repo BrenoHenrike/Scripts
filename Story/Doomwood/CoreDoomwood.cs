@@ -65,7 +65,14 @@ public class CoreDoomwood
         Story.ChainQuest(1080);
 
         //1064    Bony Battalion
-        Story.KillQuest(1064, "doomwood", new[] { "Doomwood Ectomancer", "Doomwood Bonemuncher", "Doomwood Soldier" });
+        if (!Story.QuestProgression(1064))
+        {
+            Core.EnsureAccept(1064);
+            Core.HuntMonster("doomwood", "Doomwood Ectomancer", "Ball of Ectoplasm", 3);
+            Core.HuntMonster("doomwood", "Doomwood Bonemuncher", "Bonespike Collar", 4);
+            Core.KillMonster("doomwood", "r8", "Right", "Doomwood Soldier", "Distal Fingerbone", 4);
+            Core.EnsureComplete(1064);
+        }
 
         //1065    Warrior Rez-queue
         Story.MapItemQuest(1065, "doomwood", 423, 5);
@@ -85,7 +92,7 @@ public class CoreDoomwood
         Story.KillQuest(1068, "doomwood", "Undead Paladin");
 
         //1069    Camouflage: Skelly-Style
-        if(!Story.QuestProgression(1069))
+        if (!Story.QuestProgression(1069))
         {
             Core.EnsureAccept(1069);
             Core.HuntMonster("doomwood", "Doomwood Bonemuncher", "Muncher Mandibles", 5);
@@ -161,7 +168,12 @@ public class CoreDoomwood
         Story.KillQuest(1088, "doomwood", new[] { "Doomwood Soldier", "Doomwood Soldier" });
 
         //1090    An IDeal Seal
-        Story.KillQuest(1090, "necrotower", "DoomWood Bonemuncher");
+        if (!Story.QuestProgression(1090))
+        {
+            Core.EnsureAccept(1090);
+            Core.HuntMonsterMapID("necrotower", 4, "Seal Components");
+            Core.EnsureComplete(1090);
+        }
 
         //1091    Need for Speed (Reading)!
         Story.MapItemQuest(1091, "necrotower", 438);
@@ -234,14 +246,15 @@ public class CoreDoomwood
             return;
 
         Story.PreLoad(this);
+
         Core.EquipClass(ClassType.Farm);
         //1123    Level 1
         if (!Story.QuestProgression(1123))
         {
             Core.EnsureAccept(1123);
-            Core.KillMonster("temple", "r2", "up", "SlimeSkull", "Slimeskull Trophy", 5);
-            Core.KillMonster("temple", "r2", "up", "Doomwood Bonemuncher", "Munched Boneshard", 5);
-            Core.KillMonster("temple", "r2", "up", "Shelleton", "Shelleton Shrapnel", 5);
+            Core.KillMonster("temple", "r2", "Up", "SlimeSkull", "Slimeskull Trophy", 5);
+            Core.KillMonster("temple", "r2", "Up", "Doomwood Bonemuncher", "Munched Boneshard", 5);
+            Core.KillMonster("temple", "r2", "Up", "Shelleton", "Shelleton Shrapnel", 5);
             Core.EnsureComplete(1123);
         }
 
@@ -250,8 +263,8 @@ public class CoreDoomwood
         {
             Core.EnsureAccept(1124);
             Core.GetMapItem(456, 6, "temple");
-            Core.KillMonster("temple", "r3", "up", "Undead Mage", "Necrotic Rune", 10);
-            Core.KillMonster("temple", "r3", "up", "Doomwood Ectomancer", "Ecto-Covered Rune", 3);
+            Core.KillMonster("temple", "r3", "Up", "Undead Mage", "Necrotic Rune", 10);
+            Core.KillMonster("temple", "r3", "Up", "Doomwood Ectomancer", "Ecto-Covered Rune", 3);
             Core.EnsureComplete(1124);
         }
 
@@ -259,8 +272,8 @@ public class CoreDoomwood
         if (!Story.QuestProgression(1125))
         {
             Core.EnsureAccept(1125);
-            Core.KillMonster("temple", "r4", "up", "Ghoul", "Ghoulish Gear", 1);
-            Core.KillMonster("temple", "r4", "up", "Lich", "Haunted Habiliment", 1);
+            Core.KillMonster("temple", "r4", "Up", "Ghoul", "Ghoulish Gear");
+            Core.KillMonster("temple", "r4", "Up", "Lich", "Haunted Habiliment");
             Core.EnsureComplete(1125);
         }
 
@@ -269,7 +282,7 @@ public class CoreDoomwood
         {
             Core.EnsureAccept(1126);
             Core.GetMapItem(457, 8, "temple");
-            Core.KillMonster("temple", "r5", "up", "Skeletal Fire Mage", "Flame Extinguished", 10);
+            Core.KillMonster("temple", "r5", "Up", "Skeletal Fire Mage", "Flame Extinguished", 10);
             Core.EnsureComplete(1126);
         }
 
@@ -333,17 +346,19 @@ public class CoreDoomwood
         //1146    Recover the Pages
         Story.KillQuest(1146, "temple", "Doomwood Bonemuncher");
 
-        Core.EquipClass(ClassType.Solo);
         //1147    Reconstruct the Codex
+        Core.EquipClass(ClassType.Solo);
         Story.KillQuest(1147, "temple", "Cryptkeeper Lich");
 
-        //1148    Galvanize the Guardian
+        //1148 Galvanize the Guardian
         if (!Story.QuestProgression(1148))
         {
             Core.EnsureAccept(1148);
-            Core.KillMonster("temple", "r2", "up", "Shelleton", "Basilisk's Scale", isTemp: false);
-            Core.KillMonster("temple", "r2", "up", "Shelleton", "Scroll of Magic Inversion", isTemp: false);
+            //wiki says these 2 arent temps... but they are :hmst:
+            Core.KillMonster("temple", "r2", "Up", "Shelleton", "Basilisk's Scale");
+            Core.KillMonster("temple", "r2", "Up", "Shelleton", "Scroll of Magic Inversion");
             Core.JumpWait();
+            Core.Jump("Enter", "Spawn");
             Core.BuyItem("temple", 287, "Scroll of Cure Petrification");
             Core.EnsureComplete(1148);
         }
@@ -360,17 +375,17 @@ public class CoreDoomwood
         Story.MapItemQuest(1155, "lab", 488);
 
         //1156    Stringing Your Enemies Along
-        Story.KillQuest(1156, "lab", "Ant Giant|Giant Scorpion");
+        Story.KillQuest(1156, "lab", "Ant Giant");
 
         //1157    Out of Tune(ing Knobs)
         Story.MapItemQuest(1157, "lab", 489, 3);
         Story.KillQuest(1157, "lab", "Ant Giant");
 
         //1158    Code of Conduct-or
-        Story.KillQuest(1158, "lab", "Ant Giant|Giant Scorpion");
+        Story.KillQuest(1158, "lab", "Ant Giant");
 
         //1159    Sending Out an SOS to the World
-        Story.KillQuest(1159, "lab", "Ant Giant|Giant Scorpion");
+        Story.KillQuest(1159, "lab", "Ant Giant");
 
         //1160    This is FINAL ZAP!
         Story.MapItemQuest(1160, "lab", 490, 6);
@@ -380,7 +395,7 @@ public class CoreDoomwood
         Story.KillQuest(1161, "lab", "Giant Scorpion");
 
         //1162    Die, All of You!
-        Story.KillQuest(1162, "lab", "Ant Giant|Giant Scorpion");
+        Story.KillQuest(1162, "lab", "Ant Giant");
 
         //1163    Ample Amps Required
         Story.MapItemQuest(1163, "lab", 492, 10);
@@ -488,11 +503,11 @@ public class CoreDoomwood
         if (!Bot.Quests.IsUnlocked(2061))
         {
             Core.EnsureAccept(2060);
-            Core.KillMonster("necrodungeon", "r22", "Down", 889);
-            Core.KillMonster("necrodungeon", "r22", "Down", 890);
-            Core.KillMonster("necrodungeon", "r22", "Down", 891);
-            Core.KillMonster("necrodungeon", "r22", "Down", 892);
-            Core.KillMonster("necrodungeon", "r22", "Down", 893);
+            Core.HuntMonsterMapID("necrodungeon", 49, "Dracolich Head 1 Defeated!");
+            Core.HuntMonsterMapID("necrodungeon", 50, "Dracolich Head 2 Defeated!");
+            Core.HuntMonsterMapID("necrodungeon", 46, "Dracolich Head 3 Defeated!");
+            Core.HuntMonsterMapID("necrodungeon", 47, "Dracolich Head 4 Defeated!");
+            Core.HuntMonsterMapID("necrodungeon", 48, "Dracolich Head 5 Defeated!");
             Core.EnsureComplete(2060);
         }
 
@@ -504,6 +519,8 @@ public class CoreDoomwood
     {
         if (Core.isCompletedBefore(2077))
             return;
+
+        NecropolisDungeon();
 
         Story.PreLoad(this);
 
@@ -616,6 +633,8 @@ public class CoreDoomwood
         if (Core.isCompletedBefore(7653))
             return;
 
+        Thornsgarde();
+
         Story.PreLoad(this);
 
         //7603    Defeat the Deadtech
@@ -644,22 +663,24 @@ public class CoreDoomwood
         if (Core.isCompletedBefore(7636))
             return;
 
+        Stonewood();
+
         Story.PreLoad(this);
 
         //7609    Find the Keys
         Story.KillQuest(7609, "techdungeon", "NecroMech");
 
         //7610    Ew, Rats
-        Story.KillQuest(7610, "techdungeon", "Rotting Rat");
         Story.MapItemQuest(7610, "techdungeon", 7515, 6);
+        Story.KillQuest(7610, "techdungeon", "Rotting Rat");
 
         //7611    Grab Their Gear
         if (!Story.QuestProgression(7611))
         {
             Core.EnsureAccept(7611);
-            Core.KillMonster("techdungeon", "r4", "left", "DoomBorg Guard", "Guard Armor Piece", 5);
-            Core.KillMonster("techdungeon", "r4", "left", "DoomBorg Guard", "Guard Helm");
-            Core.KillMonster("techdungeon", "r4", "left", "DoomBorg Guard", "Deadtech Polearm");
+            Core.KillMonster("techdungeon", "r4", "Left", "DoomBorg Guard", "Guard Armor Piece", 5);
+            Core.KillMonster("techdungeon", "r4", "Left", "DoomBorg Guard", "Guard Helm");
+            Core.KillMonster("techdungeon", "r4", "Left", "DoomBorg Guard", "Deadtech Polearm");
             Core.EnsureComplete(7611);
         }
 
@@ -670,8 +691,8 @@ public class CoreDoomwood
         Story.MapItemQuest(7613, "techdungeon", 7516);
 
         //7614    Head on Out
-        Story.KillQuest(7614, "techdungeon", "DoomBorg Guard");
         Story.MapItemQuest(7614, "techdungeon", 7517);
+        Story.KillQuest(7614, "techdungeon", "DoomBorg Guard");
 
         //7615    Take Him Down
         Story.KillQuest(7615, "techdungeon", "Kalron the Cryptborg");
@@ -681,6 +702,8 @@ public class CoreDoomwood
     {
         if (Core.isCompletedBefore(7636))
             return;
+
+        TechDungeon();
 
         Story.PreLoad(this);
 
@@ -692,7 +715,7 @@ public class CoreDoomwood
             Core.EnsureComplete(7623);
             Core.Logger("Cutscene > Wait > Jump > Continue");
             Bot.Wait.ForCellChange("Cut2");
-            Bot.Sleep(2500);
+            Core.Sleep(2500);
             Core.JumpWait();
         }
 
@@ -715,7 +738,7 @@ public class CoreDoomwood
             Core.EnsureComplete(7625);
             Core.Logger("Cutscene > Wait > Jump > Continue");
             Bot.Wait.ForCellChange("Cut2");
-            Bot.Sleep(2500);
+            Core.Sleep(2500);
             Core.JumpWait();
         }
 
@@ -735,7 +758,7 @@ public class CoreDoomwood
             Core.GetMapItem(7531, 6, "stonewooddeep");
             Core.EnsureComplete(7627);
             Core.Jump("r2");
-            Bot.Sleep(2500);
+            Core.Sleep(2500);
             Core.Jump("r3");
         }
 
@@ -795,7 +818,7 @@ public class CoreDoomwood
             Story.MapItemQuest(7635, "stonewooddeep", 7533);
             Core.Logger("Cutscene > Wait > Jump > Continue");
             Bot.Wait.ForCellChange("Cut2");
-            Bot.Sleep(2500);
+            Core.Sleep(2500);
             Core.JumpWait();
         }
 
@@ -808,6 +831,8 @@ public class CoreDoomwood
     {
         if (Core.isCompletedBefore(7653))
             return;
+
+        StonewoodForest();
 
         Story.PreLoad(this);
 
@@ -858,6 +883,8 @@ public class CoreDoomwood
         if (Core.isCompletedBefore(2128))
             return;
 
+        TechFortress();
+
         Story.PreLoad(this);
 
         //2093    Undead Assault
@@ -900,11 +927,11 @@ public class CoreDoomwood
         Story.KillQuest(2125, "doomwar", "Zombie Dragon");
 
         //2126    Defeat Your Fallen Friends
-        Core.EquipClass(ClassType.Farm);
         if (!Story.QuestProgression(2126))
         {
+            Core.EquipClass(ClassType.Farm);
             Core.EnsureAccept(2126);
-            Core.KillMonster("doomwar", "r5", "left", "*", "Fallen Friend Defeated", 4);
+            Core.KillMonster("doomwar", "r5", "Left", "*", "Fallen Friend Defeated", 4);
             Core.EnsureComplete(2126);
         }
 

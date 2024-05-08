@@ -66,5 +66,21 @@ public class FableForest
 
         // Guidance from the Guardian 3313
         Story.KillQuest(3313, "fableforest", "Forest Guardian");
+
+        // // Get Fired Up 3314
+        // Story.KillQuest(0000, "fableforest", "mob");
+
+        // // Marine Biology 3315
+        // Story.KillQuest(0000, "fableforest", "mob");
+
+        // // Air Current Affairs 3316
+        // Story.KillQuest(0000, "fableforest", "mob");
+
+        // // Back to your Roots 3317
+        // Story.KillQuest(0000, "fableforest", "mob");
+
+        // // Classified Chaos 3318
+        // Story.KillQuest(0000, "fableforest", "mob");
+
     }
 }

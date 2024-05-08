@@ -72,8 +72,8 @@ public class WinterHorrorWarRewardsMerge
                     Core.RegisterQuests(7856, 7857);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("winterhorror", "Chillybones|FrostBite", "Monster Gem", 5);
-                        Core.HuntMonster("winterhorror", "Chillybones|FrostBite", "Mega Monster Gem", 3);
+                        Core.HuntMonster("winterhorror", "Chillybones", "Monster Gem", 5);
+                        Core.HuntMonster("winterhorror", "Chillybones", "Mega Monster Gem", 3);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();

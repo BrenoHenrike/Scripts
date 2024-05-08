@@ -23,7 +23,7 @@ public class ArchMageMatsArmy
 
     public bool DontPreconfigure = true;
     public string OptionsStorage = "BossDrops";
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         new Option<bool>("sellToSync", "Sell to Sync", "Sell items to make sure the army stays syncronized.\nIf off, there is a higher chance your army might desyncornize", false),
         sArmy.player1,
@@ -107,7 +107,7 @@ public class ArchMageMatsArmy
         else
         {
             Core.Logger($"{item} Found.");
-            Army.waitForParty(map, item);
+            //Army.waitForParty(map, item);
         }
 
         if (Bot.Map.Name == "darkcarnax")
@@ -120,7 +120,7 @@ public class ArchMageMatsArmy
                 while (!Bot.ShouldExit && Bot.Player.Cell != cell)
                 {
                     Core.Jump(cell);
-                    Bot.Sleep(Core.ActionDelay);
+                    Core.Sleep();
                 }
                 Bot.Combat.Attack(MonID);
             }
@@ -132,14 +132,20 @@ public class ArchMageMatsArmy
         {
             while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
             {
-                while (!Bot.ShouldExit && Bot.Player.Cell != cell)
+                foreach (Monster mon in Bot.Monsters.MapMonsters.Where(x => x.ID == 1 || x.ID == 2))
                 {
-                    Core.Jump(cell);
-                    Bot.Sleep(Core.ActionDelay);
+                    bool shouldExit = false;
+
+                    while (!Bot.ShouldExit && mon.HP >= 0 && !shouldExit)
+                    {
+                        Bot.Combat.Attack(mon.MapID);
+                        Core.Sleep();
+                        shouldExit = Core.CheckInventory(item, quant);
+                    }
+
+                    if (shouldExit)
+                        break;
                 }
-                foreach (int MonsterMapID in new[] { 1, 2 })
-                    if (Core.IsMonsterAlive(MonsterMapID, useMapID: true))
-                        Bot.Combat.Attack(MonsterMapID);
             }
         }
         else
@@ -149,7 +155,7 @@ public class ArchMageMatsArmy
                 while (!Bot.ShouldExit && Bot.Player.Cell != cell)
                 {
                     Core.Jump(cell);
-                    Bot.Sleep(Core.ActionDelay);
+                    Core.Sleep();
                 }
                 Bot.Combat.Attack(MonID);
             }
@@ -162,22 +168,22 @@ public class ArchMageMatsArmy
 
     void DarkCarnaxMove(string zone)
     {
-        Bot.Sleep(Core.ActionDelay);
+        Core.Sleep();
         switch (zone.ToLower())
         {
             case "a":
                 //Move to the right
-                Bot.Sleep(1500);
+                Core.Sleep(1500);
                 Bot.Player.WalkTo(Bot.Random.Next(600, 930), Bot.Random.Next(380, 475));
                 break;
             case "b":
                 //Move to the left
-                Bot.Sleep(1500);
+                Core.Sleep(1500);
                 Bot.Player.WalkTo(Bot.Random.Next(25, 325), Bot.Random.Next(380, 475));
                 break;
             default:
                 //Move to the center
-                Bot.Sleep(1500);
+                Core.Sleep(1500);
                 Bot.Player.WalkTo(Bot.Random.Next(325, 600), Bot.Random.Next(380, 475));
                 break;
         }
@@ -185,7 +191,7 @@ public class ArchMageMatsArmy
     public void PlayerAFK()
     {
         Core.Logger("Anti-AFK engaged");
-        Bot.Sleep(1500);
+        Core.Sleep(1500);
         Bot.Send.Packet("%xt%zm%afk%1%false%");
     }
 

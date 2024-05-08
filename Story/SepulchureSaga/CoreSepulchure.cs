@@ -6,6 +6,8 @@ tags: null
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
+using Skua.Core.Models.Quests;
 
 public class CoreSepulchure
 {
@@ -57,7 +59,12 @@ public class CoreSepulchure
         Story.KillQuest(6336, "scarsgarde", new[] { "Garde Watch", "Garde Pikeman" });
 
         // False Hoods 6337
-        Story.KillQuest(6337, "scarsgarde", new[] { "Garde Watch", "Garde Watch", "Garde Watch", "Garde Watch", "Garde Watch", "Garde Watch", "Garde Watch" });
+        if (!Story.QuestProgression(6337))
+        {
+            Quest? dothis = Bot.Quests.EnsureLoad(6337);
+            foreach (ItemBase Item in dothis!.Requirements)
+                Core.HuntMonster("scarsgarde", "Garde Watch", Item.Name, Item.Quantity, Item.Temp);
+        }
 
         // Pass for Real 6338
         Story.MapItemQuest(6338, "scarsgarde", new[] { 5866, 5867 });
@@ -237,8 +244,8 @@ public class CoreSepulchure
         {
             Core.EnsureAccept(6381);
             Core.Join("ebonslate", "r11", "Left");
-            Bot.Combat.Attack("Dethrix");
-            Bot.Sleep(10000);
+            Bot.Kill.Monster("Dethrix");
+            Core.Sleep(10000);
         }
 
         // Please Fix Me 6382

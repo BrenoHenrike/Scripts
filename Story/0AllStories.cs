@@ -15,16 +15,18 @@ tags: story, quest, complete, all
 //cs_include Scripts/Other/MysteriousEgg.cs
 //cs_include Scripts/Other/ShadowDragonDefender.cs
 
-//cs_include Scripts/Story\AgeOfRuin\CoreAOR.cs
+//cs_include Scripts/Story/AgeOfRuin/CoreAOR.cs
 
 //cs_include Scripts/Story/Doomwood/CoreDoomwood.cs
+
+//cs_include Scripts/Story/DragonsOfYokai/CoreDOY.cs
 
 //cs_include Scripts/Story/ElegyofMadness(Darkon)/CoreAstravia.cs
 
 //cs_include Scripts/Story/FireIsland/CoreFireIsland.cs
 //cs_include Scripts/Seasonal/Friday13th/Story/CoreFriday13th.cs
 
-//cs_include Scripts/Story\Hollowborn\CoreHollowbornStory.cs
+//cs_include Scripts/Story/Hollowborn/CoreHollowbornStory.cs
 
 //cs_include Scripts/Story/IsleOfFotia/CoreIsleOfFotia.cs
 
@@ -48,7 +50,9 @@ tags: story, quest, complete, all
 //cs_include Scripts/Story/Nation/Fiendshard.cs
 //cs_include Scripts/Story/Nation/FiendPast.cs
 //cs_include Scripts/Story/Nation/Originul.cs
+//cs_include Scripts/Story/Nation/ShadowBlastArena.cs
 //cs_include Scripts/Story/Nation/Tercessuinotlim.cs
+//cs_include Scripts/Story/Nation/VoidRefuge.cs
 
 //cs_include Scripts/Story/QueenofMonsters/CoreQoM.cs
 //cs_include Scripts/Story/QueenofMonsters/Extra/BrightOak.cs
@@ -96,12 +100,14 @@ tags: story, quest, complete, all
 
 //cs_include Scripts/Story/DarkCarnax.cs
 //cs_include Scripts/Story/DarkDungeon.cs
+//cs_include Scripts/Story/DeathsRealm.cs
 //cs_include Scripts/Story/DeerHunt.cs
 //cs_include Scripts/Story/DjinnGate.cs
 //cs_include Scripts/Story/DjinnGuard.cs
 //cs_include Scripts/Story/DoomVault.cs
 //cs_include Scripts/Story/DoomVaultB.cs
 //cs_include Scripts/Story/Downward.cs
+//cs_include Scripts/Story/DracoCon.cs
 //cs_include Scripts/Story/DragonFableOrigins.cs
 //cs_include Scripts/Story/DragonRoad[Upholder].cs
 //cs_include Scripts/Story/DreamPalace.cs
@@ -113,8 +119,9 @@ tags: story, quest, complete, all
 //cs_include Scripts/Story/ExaltiaTower.cs
 //cs_include Scripts/Story/Extinction.cs
 
-//cs_include Scripts/Story/FrozenNorthlands.cs
 //cs_include Scripts/Story/FableForest.cs
+//cs_include Scripts/Story/Friendship.cs
+//cs_include Scripts/Story/FrozenNorthlands.cs
 
 //cs_include Scripts/Story/HuntersMoon.cs
 
@@ -123,11 +130,14 @@ tags: story, quest, complete, all
 //cs_include Scripts/Story/Glacera.cs
 //cs_include Scripts/Story/Guru.cs
 
+//cs_include Scripts/Story/IcePlane.cs
+
 //cs_include Scripts/Story/J6Saga.cs
 
 //cs_include Scripts/Story/Lair.cs
 //cs_include Scripts/Story/Lightguard[MEM].cs
 //cs_include Scripts/Story/LightoviaCave.cs
+//cs_include Scripts/Story/LostVilla.cs
 
 //cs_include Scripts/Story/Manor.cs
 //cs_include Scripts/Story/Marsh2[MEM].cs
@@ -205,6 +215,9 @@ public class AllStories
     // Doomwood (all parts)
     public CoreDoomwood DW = new();
 
+    // Dragons Of Yokai
+    public CoreDOY DOY = new();
+
     // Elergy of Madness - Darkon
     public CoreAstravia CoreAstravia = new();
 
@@ -240,8 +253,9 @@ public class AllStories
     public FiendPast FiendPast = new();
     public Fiendshard_Story Fiendshard_Story = new();
     public Originul_Story Originul_Story = new();
-
+    public ShadowBlastArena ShadowBlastArena = new();
     public Tercessuinotlim Tercessuinotlim = new();
+    public VoidRefuge VoidRefuge = new();
 
     // Queen of Monsters
     public CoreQOM QOM => new();
@@ -301,12 +315,14 @@ public class AllStories
 
     public DarkCarnaxStory DarkCarnax = new();
     public DarkDungeon DarkDungeon = new();
+    public DeathsRealm DeathsRealm = new();
     public DeerHunt DeerHunt = new();
     public DjinnGateStory DjinnGateStory = new();
     public DjinnGuard DjinnGuard = new();
     public DoomVaultA DoomVaultA = new();
     public DoomVaultB DoomVaultB = new();
     public Downward Downward = new();
+    public DracoCon DracoCon = new();
     public DragonFableOrigins DragonFableOrigins = new();
     public DragonRoad DragonRoad = new();
     public DreamPalace DreamPalace = new();
@@ -318,8 +334,9 @@ public class AllStories
     public ExaltiaTower ExaltiaTower = new();
     public Extinction Extinction = new();
 
-    public FrozenNorthlands FrozenNorthlands = new();
     public FableForest FableForest = new();
+    public Friendship Friendship = new();
+    public FrozenNorthlands FrozenNorthlands = new();
 
     public Gamehaven Gamehaven = new();
     public GiantTaleStory GiantTaleStory = new();
@@ -328,9 +345,12 @@ public class AllStories
 
     public HuntersMoon HuntersMoon = new();
 
+    public IcePlane IcePlane = new();
+
     public Lair Lair = new();
     public Lightguard Lightguard = new();
     public LightoviaCave LightoviaCave = new();
+    public LostVilla LostVilla = new();
 
     public Manor Manor = new();
     public Marsh2 Marsh2 = new();
@@ -439,6 +459,11 @@ public class AllStories
         Core.Logger($"Saga: Doomwood - Complete");
         #endregion
 
+        #region DOY
+        DOY.DoAll();
+        Core.Logger($"Saga: Dragons Of Yokai - Complete");
+        #endregion
+
         #region Elergy
         CoreAstravia.CompleteCoreAstravia();
         Core.Logger($"Saga: Elergy of Madness - Complete");
@@ -494,14 +519,23 @@ public class AllStories
         CitadelRuins.DoAll();
         Core.Logger($"Story: Citadel Ruins - Complete");
 
-        Fiendshard_Story.Fiendshard_Questline();
+        Fiendshard_Story.Fiendshard_QuestlineP1();
         Core.Logger($"Story: Fiendshard - Complete");
 
         FiendPast.DoAll();
         Core.Logger($"Story: Fiend Past - Complete");
 
+        Originul_Story.Originul_Questline();
+        Core.Logger($"Story: Originul - Complete");
+
+        ShadowBlastArena.Doall();
+        Core.Logger($"Story: ShadowBlast Arena - Complete");
+
         Tercessuinotlim.JadziaQuests();
         Core.Logger($"Story: Tercessuinotlim - Complete");
+
+        VoidRefuge.Storyline();
+        Core.Logger($"Story: Void Refuge - Complete");
         #endregion
 
         #region QoM
@@ -655,6 +689,9 @@ public class AllStories
             Core.Logger($"Story: DeadFly - Complete");
         }
 
+        DeathsRealm.StoryLine();
+        Core.Logger($"Story: Death's Realm - Complete");
+
         DeerHunt.StoryLine();
         Core.Logger($"Story: Deer Hunt - Complete");
 
@@ -672,6 +709,9 @@ public class AllStories
 
         Downward.StoryLine();
         Core.Logger($"Story: Downward - Complete");
+
+        DracoCon.StoryLine();
+        Core.Logger($"Story: Draco Con - Complete");
 
         DragonFableOrigins.DragonFableOriginsAll();
         Core.Logger($"Saga: Dragon Fable Origins - Complete");
@@ -704,11 +744,16 @@ public class AllStories
         Extinction.StoryLine();
         Core.Logger($"Story: Extinction - Complete");
 
+        FableForest.StoryLine();
+        Core.Logger($"Story: FableForest - Complete");
+
+        Friendship.CompleteStory();
+        Core.Logger($"Story: Friendship - Complete");
+
         FrozenNorthlands.Storyline();
         Core.Logger($"Story: Frozen Northlands - Complete");
 
-        FableForest.StoryLine();
-        Core.Logger($"Story: FableForest - Complete");
+
 
 
         HuntersMoon.StoryLine();
@@ -730,6 +775,10 @@ public class AllStories
         Core.Logger($"Story: Guru - Complete");
 
 
+        IcePlane.StoryLine();
+        Core.Logger($"Story: Ice Plane - Complete");
+
+
         J6Saga.J6();
         Core.Logger($"Sage: J6 - Complete");
 
@@ -745,6 +794,9 @@ public class AllStories
 
         LightoviaCave.LightoviaCaveQuests();
         Core.Logger($"Story: LightoviaCave - Complete");
+
+        LostVilla.Storyline();
+        Core.Logger($"Story: Lost Villa - Complete");
 
 
         Manor.StoryLine();

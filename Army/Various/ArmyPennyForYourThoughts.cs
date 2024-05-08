@@ -24,7 +24,7 @@ public class ArmyPennyForYourThoughts
     private string[] Loot = { "DoomCoin", "Dark Spirit Orb" };
     public string OptionsStorage = "ArmyPenny";
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         sArmy.player1,
         sArmy.player2,
@@ -64,10 +64,12 @@ public class ArmyPennyForYourThoughts
             Core.RegisterQuests(2089);
         else Core.Logger("Player is not member, farm will continue\n" +
         "but you wont get the spirit orbs");
+
         
+
         while (!Bot.ShouldExit && !Core.CheckInventory("Dark Spirit Orb", 10500))
             Bot.Combat.Attack("*");
-        Army.waitForParty("whitemap", "Dark Spirit Orb");
+        //Army.waitForParty("whitemap", "Dark Spirit Orb");
         Army.AggroMonStop(true);
         Core.CancelRegisteredQuests();
     }

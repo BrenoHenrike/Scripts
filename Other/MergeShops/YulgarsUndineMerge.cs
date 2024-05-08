@@ -96,7 +96,7 @@ public class YulgarsUndineMerge
         new Option<bool>("78296", "Envenomed Gauntlet", "Mode: [select] only\nShould the bot buy \"Envenomed Gauntlet\" ?", false),
         new Option<bool>("78295", "Envenomed Whip of Agony", "Mode: [select] only\nShould the bot buy \"Envenomed Whip of Agony\" ?", false),
         new Option<bool>("78288", "Elven Assassin's Scarf", "Mode: [select] only\nShould the bot buy \"Elven Assassin's Scarf\" ?", false),
-        new Option<bool>("78290", "Elven Assassin’s Scarf + Locks", "Mode: [select] only\nShould the bot buy \"Elven Assassin’s Scarf + Locks\" ?", false),
+        new Option<bool>("78290", "Elven Assassin's Scarf + Locks", "Mode: [select] only\nShould the bot buy \"Elven Assassin's Scarf + Locks\" ?", false),
         new Option<bool>("78292", "Nightshade Assassin Guardian", "Mode: [select] only\nShould the bot buy \"Nightshade Assassin Guardian\" ?", false),
         new Option<bool>("78287", "Elven Assassin's Hair", "Mode: [select] only\nShould the bot buy \"Elven Assassin's Hair\" ?", false),
         new Option<bool>("78289", "Elven Assassin Locks", "Mode: [select] only\nShould the bot buy \"Elven Assassin Locks\" ?", false),

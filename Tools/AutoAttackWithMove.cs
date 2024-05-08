@@ -42,6 +42,7 @@ public class AAWithMove
                 break;
         }
 
+        
 
         while (!Bot.ShouldExit)
             Bot.Combat.Attack("*");

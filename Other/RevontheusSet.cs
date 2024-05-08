@@ -15,7 +15,7 @@ public class RevontheusSet
 
     public bool DontPreconfigure = true;
     public string OptionsStorage = "RevontheusSet";
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         CoreBots.Instance.SkipOptions,
         new Option<bool>("Equip", "Equip the revontheus set?", "", false),
@@ -48,7 +48,7 @@ public class RevontheusSet
         Core.EquipClass(ClassType.Solo);
 
         while (!Bot.ShouldExit && !Core.CheckInventory(Set))
-            Core.KillMonster("underworld", "r10", "left", "Undead Legend", log: false);
+            Core.KillMonster("underworld", "r10", "Left", "Undead Legend", log: false);
 
         if (Bot.Config!.Get<bool>("Equip"))
             Core.Equip(Set);

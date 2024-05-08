@@ -25,6 +25,8 @@ public class CoreSoWMats
         if (Core.CheckInventory("Dragon's Tear"))
             return;
 
+        Core.FarmingLogger("Dragon's Tear", 1);
+
         Willpower(10);
         GarishRemnant(30);
         PrismaticSeams(100);
@@ -71,6 +73,7 @@ public class CoreSoWMats
         Core.FarmingLogger("Elemental Core", Quantity);
         Core.AddDrop("Elemental Core");
 
+        Adv.GearStore();
         Core.BossClass();
 
         Core.RegisterQuests(9126);
@@ -81,6 +84,7 @@ public class CoreSoWMats
             Core.HuntMonster("manacradle", "The Mainyu", "Licorice Scale", log: false);
         }
         Core.CancelRegisteredQuests();
+        Adv.GearStore(true);
     }
 
     public void GarishRemnant(int Quantity = 1000)

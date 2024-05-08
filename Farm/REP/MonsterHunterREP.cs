@@ -1,7 +1,7 @@
 /*
-name: MonsterHunterREP
-description: null
-tags: null
+name: Monster Hunter REP
+description: This script will farm Monster Hunter reputation to rank 10.
+tags: monster, hunter, monsterhunter, monster hunter, rep, rank, reputation
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

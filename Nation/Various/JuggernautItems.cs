@@ -15,13 +15,13 @@ public class JuggernautItemsofNulgath
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
+    public CoreFarms Farm = new();
     public CoreNation Nation = new();
 
 
     public string OptionsStorage = "Reward Select";
     public bool DontPreconfigure = false;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         CoreBots.Instance.SkipOptions,
         new Option<RewardsSelection>("RewardsSelection", "Select Your Quest Reward", "Select Your Quest Reward for The JuggerNaught items of Nulgath quest.", RewardsSelection.Oblivion_of_Nulgath),
@@ -33,7 +33,7 @@ public class JuggernautItemsofNulgath
         Core.BankingBlackList.AddRange(Rewards);
         Core.SetOptions();
 
-        JuggItems(Bot.Config.Get<RewardsSelection>("RewardsSelection"));
+        JuggItems(Bot.Config?.Get<RewardsSelection>("RewardsSelection") ?? default);
 
         Core.SetOptions(false);
     }
@@ -46,18 +46,20 @@ public class JuggernautItemsofNulgath
         var Count = 0;
         int x = 1;
 
+
         List<ItemBase> RewardOptions = Core.EnsureLoad(837).Rewards;
-        List<string> RewardsList = new List<string>();
+        List<string> RewardsList = new();
         foreach (Skua.Core.Models.Items.ItemBase Item in RewardOptions)
             RewardsList.Add(Item.Name);
-        Count = RewardsList.Count();
+        Count = RewardsList.Count;
         var rewards = Core.EnsureLoad(837).Rewards;
-        ItemBase item = rewards.Find(x => x.ID == (int)reward) ?? null;
-
+        ItemBase? item = rewards.Find(x => x.ID == (int)reward) ?? null;
+        int defaultId = 0;
+        int itemId = item?.ID ?? defaultId;
         while (!Bot.ShouldExit &&
                 (reward == RewardsSelection.All ?
                     !Core.CheckInventory(rewards.Select(x => x.Name).ToArray(), toInv: false) :
-                    !Core.CheckInventory(item.ID, toInv: false)
+                    !Core.CheckInventory(itemId, toInv: false)
                 )
               )
         {
@@ -65,7 +67,7 @@ public class JuggernautItemsofNulgath
                 Core.Logger($"Farming All {x++}/{Count}");
             else Core.Logger($"... {reward} ...");
 
-            Nation.FarmUni13();
+            Nation.FarmUni13(1);
             Core.EnsureAccept(837);
             Nation.FarmDiamondofNulgath(13);
             Nation.FarmDarkCrystalShard(50);
@@ -75,7 +77,7 @@ public class JuggernautItemsofNulgath
             Nation.SwindleBulk(50);
             Core.HuntMonster("underworld", "Undead Bruiser", "Undead Bruiser Rune");
 
-            if (Bot.Config.Get<RewardsSelection>("RewardsSelection") == RewardsSelection.All)
+            if (Bot.Config?.Get<RewardsSelection>("RewardsSelection") == RewardsSelection.All)
                 Core.EnsureCompleteChoose(837);
             else Core.EnsureComplete(837, (int)reward);
         }

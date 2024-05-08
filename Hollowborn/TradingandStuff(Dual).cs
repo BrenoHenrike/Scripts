@@ -1,7 +1,7 @@
 /*
-name: TradingandStuff(Dual)
-description: null
-tags: null
+name: Trading and Stuff (Dual)
+description: This script will complete "Trading and Stuff (Dual)" quest.
+tags: hollowborn oblivion blade, trading, trading and stuff, hollowborn, dual oblivion blade, dual
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -68,7 +68,7 @@ public class TradingandStuffDual
             Core.BuyItem("tercessuinotlim", 1951, "Unmoulded Fiend Essence");
             Core.BuyItem("tercessuinotlim", 1951, "Unidentified 25");
         }
-        Nation.FarmUni13();
+        Nation.FarmUni13(1);
         Nation.DiamondEvilWar(150);
         Nation.FarmBloodGem(10);
         Nation.FarmVoucher(false);

@@ -41,12 +41,23 @@ public class Tutorial
             "Travel"
         };
 
-        Core.Join("oaklore-9999999");
+        Core.Logger("need to reset teh map (join > exit > rejoin) for it not to get stuck");
+        Core.Join("oaklore", "r1", "Left");
+        Core.Join("whitemap");
+        Core.Join("oaklore", "r1", "Left");
+
+        //insurance
+        while (!Bot.ShouldExit && Bot.Player.Cell != "r1")
+        {
+            Core.Sleep();
+            Core.Jump("r1", "Left");
+        }
+
         for (int i = 0; Achievements.Length > i; i++)
         {
             Core.Logger("Achievement - " + Achievements[i]);
             Core.SetAchievement(22 + i);
-            Bot.Sleep(Core.ActionDelay);
+            Core.Sleep();
         }
     }
 }

@@ -1,7 +1,7 @@
 /*
-name: PetTamerREP.CS
-description: null
-tags: null
+name: Pet Tamer REP
+description: This script will farm Pet Tamer reputation to rank 10.
+tags: pet, tamer, pettamer, pet tamer, rank, rep, reputation
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

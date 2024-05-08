@@ -35,6 +35,7 @@ public class CoreOblivionBladeofNulgath
         Core.RegisterQuests(Core.CheckInventory("Oblivion Blade of Nulgath Pet") ? 1122 : 1109);
         if (!Core.CheckInventory("Oblivion Wrath Blade Of Nulgath"))
             Nation.FarmGemofNulgath(10);
+        Core.ResetQuest(870);
         Core.HuntMonster("tercessuinotlim", "Taro Blademaster", "Blade Master Rune");
         Core.CancelRegisteredQuests();
     }
@@ -45,7 +46,7 @@ public class CoreOblivionBladeofNulgath
             return;
 
         Quest QuestData = Core.EnsureLoad(Core.CheckInventory("Oblivion Blade of Nulgath Pet") ? 2557 : 868);
-        ItemBase[] RequiredItems = QuestData.Requirements.ToArray();
+        _ = QuestData.Requirements.ToArray();
         ItemBase[] QuestReward = QuestData.Rewards.ToArray();
         foreach (ItemBase Item in QuestReward)
             Core.AddDrop(Item.Name);
@@ -78,7 +79,7 @@ public class CoreOblivionBladeofNulgath
         Nation.FarmDiamondofNulgath(10);
         Nation.FarmDarkCrystalShard(5);
         Nation.SwindleBulk(5);
-        Nation.FarmUni13();
+        Nation.FarmUni13(1);
         Core.HuntMonster("lair", "Onyx Lava Dragon", "Phoenix Blade", isTemp: false);
         Core.HuntMonster("underworld", "Undead Bruiser", "Undead Bruiser Sigil");
 
@@ -146,7 +147,7 @@ public class CoreOblivionBladeofNulgath
 
         Nation.Supplies("Voucher of Nulgath");
         Nation.Supplies("Voucher of Nulgath (non-mem)");
-        Nation.FarmUni13();
+        Nation.FarmUni13(1);
         Core.HuntMonster("Evilmarsh", "Tainte Elemental", "Tainted Rune of Evil");
         Bot.Wait.ForPickup("Champion Blade of Nulgath");
 
@@ -200,7 +201,7 @@ public class CoreOblivionBladeofNulgath
         Core.HuntMonster("Tercessuinotlim", "Ninja Spy", "The Secret 2", isTemp: false);
         EmpoweringStuff();
         Nation.FarmDiamondofNulgath(13);
-        Nation.FarmUni13();
+        Nation.FarmUni13(1);
 
         Core.CancelRegisteredQuests();
     }
@@ -215,12 +216,12 @@ public class CoreOblivionBladeofNulgath
         if (!Core.CheckInventory("Unidentified Item of Nulgath"))
         {
             Core.EnsureAccept(623);
-            Nation.FarmUni13();
+            Nation.FarmUni13(1);
             Core.HuntMonster("willowcreek", "Hidden Spy", "The Secret 1", isTemp: false);
         }
 
         Core.EnsureAccept(558);
-        Nation.FarmUni13();
+        Nation.FarmUni13(1);
         Nation.FarmDiamondofNulgath(10);
         Core.HuntMonster("underworld", "Undead Bruiser", "Undead Bruiser Sigil");
         Core.EnsureComplete(558);

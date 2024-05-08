@@ -31,7 +31,11 @@ public class Arachnomancer
     public void GetArach(bool rankUpClass = true)
     {
         if (Core.CheckInventory("Arachnomancer"))
+        {
+            if (rankUpClass)
+                Adv.RankUpClass("Arachnomancer");
             return;
+        }
 
         RavenlossSaga.DoAll();
         Farm.RavenlossREP();

@@ -28,7 +28,7 @@ public class ArmyEmblemofDage
 
     public string OptionsStorage = "ArmyEmblemofDage";
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         sArmy.player1,
         sArmy.player2,
@@ -66,6 +66,9 @@ public class ArmyEmblemofDage
 
         Core.RegisterQuests(4742);
         Army.SmartAggroMonStart("shadowblast", "Carnage", "Shadowrise Guard");
+        
+        
+            
         while (!Bot.ShouldExit && !Core.CheckInventory("Emblem of Dage", quant))
             Bot.Combat.Attack("*");
         Core.CancelRegisteredQuests();

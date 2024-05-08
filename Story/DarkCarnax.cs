@@ -44,7 +44,7 @@ public class DarkCarnaxStory
             Core.HuntMonster("deadmoor", "Nightmare", "Nightmare Mane", isTemp: false);
             Core.HuntMonster("somnia", "NightWyrm", "NightWyrm Chitin", isTemp: false);
             Core.Logger("Fearhouse is a force public map.. enough though the wiki says otherwise... sorry");
-            Core.HuntMonster("fearhouse-1", "All Fears", "Sheer Horror", isTemp: false);
+            Core.HuntMonster("fearhouse", "All Fears", "Sheer Horror", isTemp: false);
             Core.EnsureComplete(8871);
         }
         if (forUltra)
@@ -87,7 +87,7 @@ public class DarkCarnaxStory
 
         Core.RegisterQuests(8872);
         while (!Bot.ShouldExit && !Core.CheckInventory("Synthetic Viscera", quant))
-            Adv.KillUltra("DarkCarnax", "Boss", "Right", "Nightmare Carnax");
+            Core.KillMonster("DarkCarnax", "Boss", "Right", "Nightmare Carnax");
         Core.CancelRegisteredQuests();
         Bot.Options.AttackWithoutTarget = false;
         Adv.GearStore(true);

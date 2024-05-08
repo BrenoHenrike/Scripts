@@ -29,7 +29,7 @@ public class ArmyElementalMasterRep
 
     public string OptionsStorage = "ArmyElementalMasterRep";
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         sArmy.player1,
         sArmy.player2,

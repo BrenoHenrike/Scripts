@@ -26,7 +26,7 @@ public class ArmyUniqueQuarry
 
     public string OptionsStorage = "ArmyUniqueQuarry";
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         new Option<int>("armysize","Players", "Input the minimum of players to wait for", 1),
         sArmy.player1,
@@ -52,7 +52,7 @@ public class ArmyUniqueQuarry
     public void Setup()
     {
         Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
-        
+
         Quest QuestData = Core.EnsureLoad(9000);
         ItemBase[] RequiredItems = QuestData.Requirements.ToArray();
         ItemBase[] QuestReward = QuestData.Rewards.ToArray();
@@ -100,8 +100,14 @@ public class ArmyUniqueQuarry
         WaitCheck();
         AggroSetup(map);
 
-        foreach (string monster in monsters)
-            Army.SmartAggroMonStart(map, monsters);
+        if (monsters != null)
+        {
+            foreach (string monster in monsters)
+                if (map != null)
+                    Army.SmartAggroMonStart(map, monster);
+        }
+
+        
 
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
             Bot.Combat.Attack("*");
@@ -112,12 +118,29 @@ public class ArmyUniqueQuarry
 
         void WaitCheck()
         {
-            while (Bot.Map.PlayerCount < Bot.Config.Get<int>("armysize"))
+            if (Bot.Config != null)
             {
-                Core.Logger($"Waiting for the squad. [{Bot.Map.PlayerNames.Count}/{Bot.Config.Get<int>("armysize")}]");
-                Bot.Sleep(5000);
+                int armySize = Bot.Config.Get<int>("armysize");
+                if (armySize == 0)
+                {
+                    throw new InvalidOperationException("Your army size is 0 somehow?");
+                }
+
+                while (Bot.Map.PlayerCount < armySize)
+                {
+                    var playerNames = Bot.Map.PlayerNames;
+                    if (playerNames != null)
+                    {
+                        Core.Logger($"Waiting for the squad. [{playerNames.Count}/{armySize}]");
+                    }
+                    Core.Sleep(5000);
+                }
+                var finalPlayerNames = Bot.Map.PlayerNames;
+                if (finalPlayerNames != null)
+                {
+                    Core.Logger($"Squad All Gathered [{finalPlayerNames.Count}/{armySize}]");
+                }
             }
-            Core.Logger($"Squad All Gathered [{Bot.Map.PlayerNames.Count}/{Bot.Config.Get<int>("armysize")}]");
         }
     }
 
@@ -128,7 +151,8 @@ public class ArmyUniqueQuarry
 
         if (Bot.Map.Name == "chaoswar")
         {
-            if (Bot.Config.Get<int>("armysize") <= 3)
+            int armySize = Bot.Config?.Get<int>("armysize") ?? default(int);
+            if (armySize <= 3)
             {
                 Army.AggroMonCells("r2");
                 Army.AggroMonStart("chaoswar");
@@ -167,7 +191,7 @@ public class ArmyUniqueQuarry
             }
         }
         else Core.AddDrop(Loot);
-
+F
         Core.EquipClass(ClassType.Farm);
         Core.RegisterQuests(questID);
 

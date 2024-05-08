@@ -39,6 +39,9 @@ public class LordOfOrder
         Core.Logger("Daily: Lord Of Order Class");
         if (Bot.Quests.IsDailyComplete(7156))
         {
+            if (rankUpClass)
+                Adv.RankUpClass("Lord Of Order");
+
             Core.Logger("Daily Quest unavailable right now");
             return;
         }
@@ -93,12 +96,7 @@ public class LordOfOrder
 
             Core.EquipClass(ClassType.Solo);
 
-            if (!Core.CheckInventory("Chaoroot", 15))
-            {
-                Farm.Gold(600000);
-                Core.BuyItem("tercessuinotlim", 1951, "Receipt of Swindle", 2);
-                Core.BuyItem("tercessuinotlim", 1951, "Chaoroot", 15);
-            }
+            Adv.BuyItem("tercessuinotlim", 1951, "Chaoroot", 15);
             Core.HuntMonster("chaosboss", "Ultra Chaos Warlord", "Chaotic War Essence", 15, false, log: false);
             Core.HuntMonster("shadowgates", "Chaorruption", "Chaorrupting Particles", 15, false, log: false);
             Core.HuntMonster("stormtemple", "Chaos Lord Lionfang", "Purified Raindrop", 45, false, publicRoom: true, log: false);
@@ -118,6 +116,8 @@ public class LordOfOrder
             Bot.Quests.UpdateQuest(4361);
             Core.HuntMonster("treetitanbattle", "Dakka the Dire Dragon", "Dakka's Crystal", isTemp: false, log: false);
             Core.HuntMonster("andre", "Giant Necklace", "Andre's Necklace Fragment", isTemp: false, log: false);
+            // Perma-Aggroed mob escape.
+            Core.JumpWait();
             Core.HuntMonster("desolich", "Desolich", "Desolich's Skull", isTemp: false, publicRoom: true, log: false);
 
             Core.EnsureComplete(7159);
@@ -215,11 +215,11 @@ public class LordOfOrder
             Core.EnsureAccept(7164);
 
             Core.EquipClass(ClassType.Solo);
-            Adv.KillUltra("doomvaultb", "r26", "Left", "Undead Raxgore", "Weapon Imprint", 15, false, log: false);
+            Core.KillMonster("doomvaultb", "r26", "Left", "Undead Raxgore", "Weapon Imprint", 15, false, log: false);
             Farm.FishingREP(7);
             Core.BuyItem("greenguardwest", 363, "Lure of Order");
             Adv.GearStore();
-            Core.KillXiang("Quixotic Mana Essence", 10, ultra: true, isTemp: false);
+            Core.KillXiang("Quixotic Mana Essence", 10, true);
             Adv.GearStore(true);
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("yasaris", "Serepthys", "Inversion Infusion", 5, false, log: false);

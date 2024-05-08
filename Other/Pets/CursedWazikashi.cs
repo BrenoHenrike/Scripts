@@ -4,6 +4,8 @@ description: gets the pet
 tags: Cursed Wazikashi, Pet
 */
 //cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/CoreFarms.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 
@@ -11,6 +13,7 @@ public class CursedWazikashi
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
+    public CoreAdvanced Adv = new CoreAdvanced();
 
     public void ScriptMain(IScriptInterface Bot)
     {
@@ -33,7 +36,9 @@ public class CursedWazikashi
             Core.GetMapItem(12046, 1, "museum");
 
         // Crescent's Confession[DoomKitten]
+        Adv.GearStore();
         Core.KillDoomKitten("Crescent's Confession");
+        Adv.GearStore(true);
 
         //Steel Amulet
         Core.EquipClass(ClassType.Farm);

@@ -40,7 +40,7 @@ public class BlazeBeard
             switch (Story.LegacyQuestID)
             {
                 case 4514:
-                    Core.HuntMonster("CrashSite", "Barrier Bot|Dwakel Blaster", "Dwakel Scrap Metal", 10);
+                    Core.HuntMonster("CrashSite", "Barrier Bot", "Dwakel Scrap Metal", 10);
                     break;
 
                 case 4515:

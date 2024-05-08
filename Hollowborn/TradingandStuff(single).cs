@@ -1,7 +1,7 @@
 /*
-name: TradingandStuff(single)
-description: null
-tags: null
+name: Trading and Stuff (Single)
+description: This script will complete "Trading and Stuff (Single)" quest.
+tags: trading and stuff, single, hollowborn oblivion blade, hollowborn, oblivion, blade
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -61,6 +61,8 @@ public class TradingandStuffSingle
         if (Core.CheckInventory("ArchFiend Enchanted Orbs"))
             return;
 
+        Core.Logger("Farming ArchFiend Enchanted Orbs.");
+
         HB.FreshSouls(1, 100);
         if (!Core.CheckInventory("Unidentified 25"))
         {
@@ -68,7 +70,7 @@ public class TradingandStuffSingle
             Core.BuyItem("tercessuinotlim", 1951, "Unmoulded Fiend Essence");
             Core.BuyItem("tercessuinotlim", 1951, "Unidentified 25");
         }
-        Nation.FarmUni13();
+        Nation.FarmUni13(1);
         Nation.DiamondEvilWar(150);
         Nation.FarmBloodGem(10);
         Nation.FarmVoucher(false);

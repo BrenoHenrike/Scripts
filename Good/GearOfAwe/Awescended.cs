@@ -150,7 +150,7 @@ public class Awescended
                 while (!Core.CheckInventory("Vaden's Helm"))
                 {
                     Core.BuyItem("bonecastlec", 1242, "Vaden's Helm", shopItemID: 4363);
-                    Bot.Sleep(500);
+                    Core.Sleep(500);
                 }
             }
             Core.EquipClass(ClassType.Farm);

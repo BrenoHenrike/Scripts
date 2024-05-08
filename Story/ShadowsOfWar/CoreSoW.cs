@@ -557,7 +557,7 @@ public class CoreSoW
             Core.EnsureAccept(7422);
             Core.Join("Darkally", "r2", "Left");
             while (!Bot.ShouldExit && !Core.CheckInventory(53855, 10))
-                Core.HuntMonster("Darkally", "Dark Makai");
+                Core.KillMonster("Darkally", "r2", "Left", "Dark Makai");
             Core.EnsureComplete(7422);
         }
 
@@ -728,7 +728,7 @@ public class CoreSoW
 
         // Awaken Lady Fiamme
         Story.MapItemQuest(8139, "shadowfireplane", 8542);
-        Bot.Sleep(5000);
+        Core.Sleep(5000);
 
         // Destroy the Barrier
         if (!Story.QuestProgression(8140))
@@ -774,7 +774,13 @@ public class CoreSoW
         Story.KillQuest(8184, "fireinvasion", "Shadefire Major");
 
         // Darkness in Swordhaven
-        Story.KillQuest(8185, "fireinvasion", new[] { "Shadefire Elemental", "Shadowfire Tiger" });
+        if (!Story.QuestProgression(8185))
+        {
+            Core.EnsureAccept(8185);
+            Core.KillMonster("fireinvasion", "r8", "Top", "Shadefire Elemental", "Elemental Slain", 7);
+            Core.KillMonster("fireinvasion", "r7", "Top", "Shadowfire Tiger", "Tiger Slain", 7);
+            Core.EnsureComplete(8185);
+        }
 
         // Extinguish the Flames
         Story.KillQuest(8186, "fireinvasion", "Living Shadowflame");
@@ -1134,10 +1140,12 @@ public class CoreSoW
 
         if (Core.CheckInventory(new[] { "Yami no Ronin", "TimeKeeper", "Void Highlord", "Void HighLord (IoDA)" }, any: true))
         {
-            Core.BossClass();
+            Adv.GearStore();
+            Core.DodgeClass();
 
             // Cognitive Dissonance 9124
             Story.KillQuest(9124, "manacradle", "Malgor");
+            Adv.GearStore(true);
 
             // Your Hero 9125
             Story.KillQuest(9125, "manacradle", "The Mainyu");

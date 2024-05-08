@@ -1,7 +1,7 @@
 /*
-name: AlchemyREP
-description: null
-tags: null
+name: Alchemy REP
+description: This script will farm Alchemy reputation to rank 10.
+tags: alchemy, rep, reputation, farm
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -14,7 +14,7 @@ public class AlchemyREP
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public string OptionsStorage = "AlchemyREP";
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         new Option<bool>("goldMethod", "use Gold?", "Using gold (cost 7.000.000 without boosts rank 1 to 10)", false)
     };

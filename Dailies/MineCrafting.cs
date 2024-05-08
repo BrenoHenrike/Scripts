@@ -1,33 +1,24 @@
 /*
 name: Mine Crafting Daily
-description: Mine Crafting
-tags: daily, mine crafting, metal
+description: Automatically does the MineCrafting quest for you and picks what metals are needed.
+tags: daily, mine, crafting, metal, barium, copper, silver, aluminum, gold, iron, platinum, BLOD
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Story/BattleUnder.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
+//cs_include Scripts/Story/BattleUnder.cs
 using Skua.Core.Interfaces;
-using Skua.Core.Options;
 
 public class MineCrafting
 {
-    public IScriptInterface Bot => IScriptInterface.Instance;
-    public CoreBots Core => CoreBots.Instance;
-    public CoreDailies Daily = new();
-    public CoreBLOD BLOD = new();
+    private static IScriptInterface Bot => IScriptInterface.Instance;
+    private static CoreBots Core => CoreBots.Instance;
+    private readonly CoreDailies Daily = new();
+    private readonly CoreBLOD BLOD = new();
 
-    public string OptionsStorage = "MineCrafting(Daily)";
-    public bool DontPreconfigure = true;
-
-    public List<IOption> Options = new()
-    {
-        new Option<MineCraftingMetalsEnum>("metals", "Which Metal", "Select the metal you wish to get here")
-    };
-
-    public void ScriptMain(IScriptInterface bot)
+    public void ScriptMain(IScriptInterface Bot)
     {
         Core.SetOptions();
 
@@ -40,22 +31,48 @@ public class MineCrafting
     {
         BLOD.UnlockMineCrafting();
 
-        if (!Core.CheckInventory("Blinding Light of Destiny") && !Daily.CheckDaily(2091, false))
-            Daily.MineCrafting(new[] { "Barium", "Copper", "Silver" }, 1, ToBank: true);
-        
-        else if (!Core.CheckInventory("Necrotic Sword of Doom") && !Daily.CheckDaily(2091, false))
-            Daily.MineCrafting(new[] { "Barium" }, 4, ToBank: true);
-        
-        else if (!Core.CheckInventory("Sepulchure's DoomKnight Armor") && Core.IsMember)
+        if (Daily.CheckDaily(2091))
         {
-            Daily.HardCoreMetals(new[] { "rhodium " }, 2, true);
-            Daily.HardCoreMetals(new[] { "Beryllium  " }, 1, true);
-            Daily.HardCoreMetals(new[] { "Chromium " }, 2, true);
+            if (!Core.CheckInventory("Blinding Light of Destiny", toInv: false))
+            {
+                Core.Logger("Blinding Light of Destiny not owned yet getting metals");
+                Daily.MineCrafting(new[] { "Barium", "Copper", "Silver" }, 1, ToBank: true);
+            }
+            else if (!Core.CheckInventory("Necrotic Sword of Doom", toInv: false))
+            {
+                Core.Logger("NSoD not owned yet getting metals");
+                Daily.MineCrafting(new[] { "Barium" }, 4, ToBank: true);
+            }
+            else
+            {
+                Core.Logger("BLoD & NSoD owned, getting extra metals.");
+                Daily.MineCrafting(new[] { "Aluminum", "Barium", "Gold", "Iron", "Copper", "Silver", "Platinum" }, 10, ToBank: true);
+            }
         }
-        
-        else if (Core.IsMember)
-            Daily.HardCoreMetals(new[] { "Arsenic", "Beryllium", "Chromium", "Palladium", "Rhodium", "Rhodium", "Thorium", "Mercury" }, 10, ToBank: true);
-        
-        else Daily.MineCrafting(new[] { "Aluminum", "Barium", "Gold", "Iron", "Copper", "Silver", "Platinum" }, 10, ToBank: true);
+        Core.Logger("Finished MineCrafting, Checking HardCore Metals(mem)");
+        if (!Core.IsMember || Daily.CheckDaily(2090))
+        {
+            Core.Logger(!Core.IsMember ? "Membership required for SDK + HardCoreMetals stopping." : "Daily already complete, try tomarrow.");
+            return;
+        }
+
+        if (!Core.CheckInventory("Sepulchure's DoomKnight Armor", toInv: false))
+        {
+            Dictionary<string, int> hardcoreMetals = new()
+            {
+                { "Rhodium", 2 },
+                { "Beryllium", 1 },
+                { "Chromium", 2 }
+            };
+
+            foreach (var metal in hardcoreMetals) 
+            {
+                if (!Daily.CheckDailyv2(2098, false, metal.Key))
+                    return;
+
+                Daily.HardCoreMetals(new[] { metal.Key }, metal.Value, true); 
+            }
+        }
+        else Daily.HardCoreMetals(new[] { "Arsenic", "Beryllium", "Chromium", "Palladium", "Rhodium", "Rhodium", "Thorium", "Mercury" }, 10, ToBank: true);
     }
 }

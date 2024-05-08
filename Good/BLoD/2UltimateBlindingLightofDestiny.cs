@@ -69,8 +69,9 @@ public class UltimateBLoD
         Core.RegisterQuests(7654);
         while (!Bot.ShouldExit && !Core.CheckInventory("Shard of An Orb", quant))
         {
-
-            Core.KillMonster($"dflesson", "r12", "Right", "Fluffy the Dracolich", "Fluffy’s Bones", 10, isTemp: false);
+            //More then one item of the same name as drop btoh temp and non-temp.
+            while (!Bot.ShouldExit && !Core.CheckInventory(55903, 10))
+                Core.KillMonster("dflesson","r12", "Right", "Fluffy the Dracolich", log: false);
             Core.KillMonster("dflesson", "r3", "Right", "Fire Elemental", "Fire Elemental's Bracer", 5, isTemp: false);
             Core.KillMonster("dflesson", "r6", "Right", "Tog", "Tog Claw", 5, isTemp: false);
 

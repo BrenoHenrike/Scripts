@@ -47,15 +47,16 @@ public class CoreAwe
         Core.AddDrop($"{Item} Shard", $"{Item} Fragment");
         Core.FarmingLogger($"{Item} Fragment", FragmentAmount);
 
-        Core.RegisterQuests(questID);
         while (!Bot.ShouldExit && !Core.CheckInventory($"{Item} Fragment", FragmentAmount))
         {
+            Core.EnsureAccept(questID);
             if (Map.ToLower() == "doomvault" || Map.ToLower() == "doomvaultb")
-                Adv.KillUltra(Map, Map.ToLower().EndsWith('b') ? "r26" : "r5", "Left", Monster, $"{Item} Shard", ShardAmount, false);
+                Core.KillMonster(Map, Map.ToLower().EndsWith('b') ? "r26" : "r5", "Left", Monster, $"{Item} Shard", ShardAmount, false);
             else
                 Adv.BoostHuntMonster(Map, Monster, $"{Item} Shard", ShardAmount, false);
+            Core.EnsureComplete(questID);
+            Bot.Wait.ForPickup($"{Item} Fragment");
         }
-        Core.CancelRegisteredQuests();
 
         Core.BuyItem("museum", 1129, $"{Item} Relic");
     }

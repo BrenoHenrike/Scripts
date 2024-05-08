@@ -452,37 +452,37 @@ public class CoreSummer
                                     Core.HuntMonster("livingdungeon", "Root of Evil", "Wooden Ring Piece", 5);
                                     Core.EnsureComplete(4377);
                                     Bot.Wait.ForPickup("Wooden Ring");
-                                    Bot.Sleep(1000);
+                                    Core.Sleep(1000);
                                 }
                                 Core.HuntMonster("livingdungeon", "Evil Plant Horror", "Evil Plant Horror Leaf", 6);
                                 Core.EnsureComplete(4378);
                                 Bot.Wait.ForPickup("Salad!");
-                                Bot.Sleep(1000);
+                                Core.Sleep(1000);
                             }
                             Core.HuntMonster("livingdungeon", "Weeping Widowmaker", "Widowmaker deboned", 5);
                             Core.EnsureComplete(4379);
                             Bot.Wait.ForPickup("Weeping Widowmaker Bone");
-                            Bot.Sleep(1000);
+                            Core.Sleep(1000);
                         }
                         Core.HuntMonster("livingdungeon", "Chia Warrior", "Chia Warrior defeated", 3);
                         Core.EnsureComplete(4380);
                         Bot.Wait.ForPickup("Chia in a pot!");
-                        Bot.Sleep(1000);
+                        Core.Sleep(1000);
                     }
                     Core.HuntMonster("livingdungeon", "Evil Tree Faerie", "Fairy Purse", 5);
                     Core.EnsureComplete(4381);
                     Bot.Wait.ForPickup("Fairy Phone");
-                    Bot.Sleep(1000);
+                    Core.Sleep(1000);
                 }
                 Core.HuntMonster("livingdungeon", "Vulchurion", "Vulchurion Feather", 3);
                 Core.EnsureComplete(4382);
                 Bot.Wait.ForPickup("Vulchurion Quill");
-                Bot.Sleep(1000);
+                Core.Sleep(1000);
             }
             Core.HuntMonster("livingdungeon", "Drayko", "Drayko Defeated... again");
             Core.EnsureComplete(4383);
             Bot.Wait.ForPickup("Drarko's Medalion");
-            Bot.Sleep(1000);
+            Core.Sleep(1000);
         }
         // DRAGON vs TITAN Rematch! - 4384
         if (!Story.QuestProgression(4384))

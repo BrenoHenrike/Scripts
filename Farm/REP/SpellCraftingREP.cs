@@ -1,7 +1,7 @@
 /*
-name: SpellCraftingREP
-description: null
-tags: null
+name: SpellCrafting REP
+description: This script will farm SpellCrafting reputation to rank 10.
+tags: spell crafting, spellcrafting, rep, spell, spellcraft, rep, rank, reputation
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

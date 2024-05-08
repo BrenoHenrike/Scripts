@@ -131,17 +131,17 @@ public class SeaVoiceMerge
 
     public void AttackVoiceInTheSea(string itemName, int quant)
     {
-        Bot.Options.AttackWithoutTarget = true;  // Enable AttackWithoutTarget
 
         // Register the quest
-        Core.RegisterQuests(9347);
+        Core.RegisterQuests(9349);
         Core.EquipClass(ClassType.Solo);
         Core.AddDrop("Algal Bloom");
         Core.Unbank("Algal Bloom");
+        Bot.Options.AttackWithoutTarget = true;  // Enable AttackWithoutTarget
         while (!Bot.ShouldExit && !Core.CheckInventory(itemName, quant))
         {
             // Join the map "seavoice"
-            if (Bot.Player.Cell != "seavoice")
+            if (Bot.Map.Name != "seavoice")
             {
                 Core.Join("seavoice", "r2", "Left");
                 Bot.Wait.ForMapLoad("seavoice");
@@ -151,7 +151,7 @@ public class SeaVoiceMerge
             if (Bot.Player.Cell != "r2" || Bot.Player.Pad != "Left")
             {
                 Core.Jump("r2", "Left");
-                Bot.Wait.ForMapLoad("seavoice");
+                Core.Sleep(2500);
             }
 
             // Attack the monster

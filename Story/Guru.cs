@@ -36,7 +36,7 @@ public class Guru
         Story.KillQuest(48, "Guru", "Trobble");
 
         //Flying Tails 49
-        Story.KillQuest(49, "Guru", "Leatherwing");
+        Story.KillQuest(49, "Guru", "LeatherWing");
 
         //Mixing Pot 50
         Story.KillQuest(50, "Guru", "Guru Chest");

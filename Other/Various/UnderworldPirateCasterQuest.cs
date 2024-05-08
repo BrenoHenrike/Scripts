@@ -35,7 +35,7 @@ public class UnderWorldPirateCasterQuset
 
         while (!Bot.ShouldExit && !Core.CheckInventory(Rewards, toInv: false))
         {
-            //Underworld Pirate Caster’s Pet Chest 7086
+            //Underworld Pirate Caster's Pet Chest 7086
             Core.EnsureAccept(7086);
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("styx", "Cerberus", "Cerberus Conquered");

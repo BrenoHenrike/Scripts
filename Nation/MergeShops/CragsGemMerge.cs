@@ -73,13 +73,16 @@ public class CragsGemMerge
                     break;
 
                 case "Ice Diamond":
-                    Core.FarmingLogger(req.Name, quant);
-                    Core.EquipClass(ClassType.Farm);
+                Core.EquipClass(ClassType.Farm);
                     Core.RegisterQuests(7279);
+                    Core.FarmingLogger(req.Name, quant);
+                    Core.AddDrop("Ice Diamond");
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("kingcoal", "Snow Golem", log: false);
-                        Bot.Wait.ForPickup(req.Name);
+                        Core.EnsureAccept(7279);
+                        Core.KillMonster("kingcoal", "r1", "Left", "*", "Frozen Coal", 10, log: false);
+                        Core.EnsureComplete(7279);
+                        Bot.Wait.ForPickup("Ice Diamond");
                     }
                     Core.CancelRegisteredQuests();
                     break;

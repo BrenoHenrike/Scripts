@@ -64,7 +64,7 @@ public class FirePlaneWarMerge
                 #endregion
 
                 case "Elemental Embers":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.RegisterQuests(8125, 8126);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.ID, quant))
@@ -77,7 +77,7 @@ public class FirePlaneWarMerge
                     break;
 
                 case "Burnt Cinders":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
                     Core.RegisterQuests(8131);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.ID, quant))
@@ -89,7 +89,7 @@ public class FirePlaneWarMerge
                     break;
 
                 case "Seared Ashes":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.ID, quant))
                     {
@@ -99,7 +99,7 @@ public class FirePlaneWarMerge
                     break;
 
                 case "ShadowFlame Flamberge":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.ID, quant))
                     {
@@ -109,7 +109,7 @@ public class FirePlaneWarMerge
                     break;
 
                 case "Refulgent Flamberge":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.ID, quant))
                     {
@@ -119,7 +119,7 @@ public class FirePlaneWarMerge
                     break;
 
                 case "ShadowFlame Great Harp":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.ID, quant))
                     {
@@ -129,7 +129,7 @@ public class FirePlaneWarMerge
                     break;
 
                 case "Vulcan Great Harp":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.ID, quant))
                     {

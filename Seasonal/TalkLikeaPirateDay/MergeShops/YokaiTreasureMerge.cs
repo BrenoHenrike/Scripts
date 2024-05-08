@@ -1,14 +1,13 @@
 /*
 name: Yokai Treasure Merge
 description: This bot will farm the items belonging to the selected mode for the Yokai Treasure Merge [2339] in /yokaitreasure
-tags:tlapd,talk-like-a-pirate-day,seasonal, yokai, treasure, merge, yokaitreasure, tengu, admiral, daitengu, bearded, feather, cap, morph, typhoon, cutlasses, dragonslayer, commanders, pistol, pistols, boomstick, boomsticks, shinobi, pirate, master, stealthy, sea, masked, moonlit, steel, rapiers, iron, flight, doomtech, moglin, minion, battlepet
+tags: yokai, treasure, merge, yokaitreasure, tengu, admiral, daitengu, bearded, feather, cap, morph, typhoon, cutlasses, dragonslayer, commanders, pistol, pistols, boomstick, boomsticks, shinobi, pirate, master, stealthy, sea, masked, moonlit, steel, rapiers, iron, flight, doomtech, moglin, minion, battlepet
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/Seasonal\TalkLikeaPirateDay\YokaiPirateStory.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Seasonal\TalkLikeaPirateDay\YokaiTreasureStory.cs
+//cs_include Scripts/Story\DragonsOfYokai\CoreDOY.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
@@ -20,8 +19,7 @@ public class YokaiTreasureMerge
     private CoreFarms Farm = new();
     private CoreAdvanced Adv = new();
     private static CoreAdvanced sAdv = new();
-    private YokaiTreasureStory YTS = new();
-
+    private CoreDOY DOY = new();
     public List<IOption> Generic = sAdv.MergeOptions;
     public string[] MultiOptions = { "Generic", "Select" };
     public string OptionsStorage = sAdv.OptionsStorage;
@@ -40,7 +38,7 @@ public class YokaiTreasureMerge
 
     public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
-        YTS.Storyline();
+        DOY.YokaiTreasure();
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("yokaitreasure", 2339, findIngredients, buyOnlyThis, buyMode: buyMode);
 

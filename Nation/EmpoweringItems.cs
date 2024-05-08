@@ -37,7 +37,7 @@ public class EmpoweringItems
         Core.AddDrop("Death Scythe of Nulgath");
 
         Core.EnsureAccept(558);
-        Nation.FarmUni13();
+        Nation.FarmUni13(1);
         Nation.FarmDiamondofNulgath(10);
         if (!Core.CheckInventory(4867))
         {

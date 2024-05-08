@@ -118,11 +118,11 @@ public class TreasureChestSpam
 
             Bot.Shops.BuyItem(8939, 6483);
 
-            Bot.Sleep(Core.ActionDelay);
+            Core.Sleep();
             var preKeyItems = Bot.Inventory.Items;
 
             Core.ChainComplete(1238);
-            Bot.Sleep(Core.ActionDelay);
+            Core.Sleep();
 
             var newItems = Bot.Inventory.Items.Except(preKeyItems);
             foreach (var item in newItems)

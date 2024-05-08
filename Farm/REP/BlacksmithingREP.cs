@@ -1,7 +1,7 @@
 /*
-name: BlacksmithingREP
-description: null
-tags: null
+name: Blacksmithing REP
+description: This script will farm Blacksmithing reputation to rank 10.
+tags: blacksmith, rep, reputation, rank, farm
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -20,7 +20,7 @@ public class BlacksmithingREP
 
     public string OptionsStorage = "BlackSmithRepGold";
 
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         new Option<bool>("UseGold", "Use Gold To Get Rep?", "Will Farm the Quest \"Intrepid Investing\" which costs 500k/ turnin, if you dont have the gold the bot will farm it.", false),
         new Option<bool>("BulkFarmGold", "Pre-Farm Gold(100m)", "Bulk Turnin after farming 100m Gold.", false),
@@ -34,7 +34,7 @@ public class BlacksmithingREP
 
         //Adv.BestGear(GenericGearBoost.dmgAll);
         //Adv.BestGear(GenericGearBoost.rep);
-        Farm.BlacksmithingREP(10, Bot.Config!.Get<bool>("UseGold") ? true : false, Bot.Config!.Get<bool>("UseGold") ? true : false);
+        Farm.BlacksmithingREP(10, Bot.Config!.Get<bool>("UseGold"), Bot.Config!.Get<bool>("UseGold"));
 
         Core.SetOptions(false);
     }

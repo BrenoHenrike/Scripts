@@ -1,7 +1,7 @@
 /*
-name: YulgarsDualWieldMerge
-description: null
-tags: null
+name: Yulgar's Dual Wield Merge
+description: This bot will farm the items belonging to the selected mode for the Yulgar’s Dual Wield Merge [1311] in /nostalgiaquest
+tags: yulgar, dual, wield, merge, nostalgiaquest, boom, went, dynamite, thewicked, oblivion, nulgath, maces, overlords, doomblade, blessed, coffee, cup, party, slasher, birthday, rapier, skulls, unarmed, frostbite, rocks, phoenix, shadow, spear, guardian, virtue, leviasea, iron, dreadsaw, blood, destruction, painsaw, eidolon, hanzamune, dragon, koi, ugly, stick, balrog, legendary, magma, saw, overfiend, bone, honor, guards, ceremonial, legion, alteons, pride, ddog, sea, serpent, eternity, blinding, light, destiny, crystal, claymore, dark, soulreaper, grumpy, warhammer, maximillians, whip, pencil, endless, scribbles, warpforce, war, shovel, k, godly, mace, ancients, grand, inquisitor, kneecappers, morning, stars, black, knight, cruel, midnight, platinum, star, big, blisters, chainsaw, , golden, hydra, crusader, bloodrivers, breaker, reignbringers, balors, cruelty, default, spears, undead, plague, mighty, dragons, necrotic, doom, burning, abezeth, awe, abaddons, terrors, kroms, brutalities, burn, it, down, terror, dragonblades, shadowreapers, cyseros, potatoes, kuros, wrath, lilith, katana, mammoth, crusher, prismatic, corpse, maker, excavated, glaive, fate, affliction, hex, shadowworn, bane, hollowborn, loyalty, nation, revontheus, risoluto, soul, fiendish, spirithunter, katanas
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -15,6 +15,17 @@ tags: null
 //cs_include Scripts/Nation/Various/DragonBlade[mem].cs
 //cs_include Scripts/Other/Weapons/ShadowReaperOfDoom.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
+//cs_include Scripts/Nation\Various\TheLeeryContract[Member].cs
+//cs_include Scripts/Other\Weapons\GoldenBladeOfFate.cs
+//cs_include Scripts/Hollowborn/CoreHollowborn.cs
+//cs_include Scripts/Hollowborn\HollowbornOblivionBlade.cs
+//cs_include Scripts/Story/BattleUnder.cs
+//cs_include Scripts/Good/BLoD/CoreBLOD.cs
+//cs_include Scripts/Nation/Various/TarosManslayer.cs
+//cs_include Scripts/Nation/Various/PurifiedClaymoreOfDestiny.cs
+//cs_include Scripts/Nation\MergeShops\NulgathDiamondMerge.cs
+//cs_include Scripts/Other\MergeShops\SpiritHunterMerge[Mem].cs
+//cs_include Scripts/Story\Bludrut.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
@@ -34,6 +45,11 @@ public class YulgarsDualWieldMerge
     public SRoD SRoD = new();
     public JuggernautItemsofNulgath juggernaut = new();
     public CoreLegion Legion = new();
+    private TheLeeryContract TLC = new();
+    private GoldenBladeOfFate GBOF = new();
+    private HollowbornOblivionBlade HOB = new();
+    private NulgathDiamondMerge NDM = new();
+    private SpiritHunterMerge SHM = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
     public string[] MultiOptions = { "Generic", "Select" };
@@ -44,6 +60,7 @@ public class YulgarsDualWieldMerge
 
     public void ScriptMain(IScriptInterface bot)
     {
+        Core.BankingBlackList.AddRange(new[] { "Weapon Reflection", "Boom Went The Dynamite", "TheWicked", "Oblivion of Nulgath", "Overlord's DoomBlade", "Blessed Coffee Cup", "Party Slasher Birthday Sword", "Rapier of Skulls", "Unarmed", "Frostbite", "A Rock", "Phoenix Blade of Nulgath", "Shadow Spear of Nulgath", "Guardian of Virtue", "Leviasea Sword", "Iron Dreadsaw", "Blood Axe Of Destruction", "PainSaw of Eidolon", "Hanzamune Dragon Koi Blade", "Ugly Stick", "Balrog Blade", "Legendary Magma Sword", "Dragon Saw", "Overfiend Blade of Nulgath", "Bone Sword", "Honor Guard's Blade", "Ceremonial Legion Blade", "Alteon's Pride", "Ddog Sea Serpent Sword", "Eternity Blade", "Blinding Light of Destiny", "Crystal Claymore", "Dark Crystal Claymore", "Soulreaper of Nulgath", "Grumpy Warhammer", "Crystal Phoenix Blade of Nulgath", "Maximillian's Whip", "Mystic Pencil of Endless Scribbles", "WarpForce War Shovel 20K", "Godly Mace of the Ancients", "Mace of the Grand Inquisitor", "KneeCapper", "Morning Star", "Axe of the Black Knight", "Cruel Axe of Midnight", "Platinum Axe of Destiny", "Star Sword", "Big 100K", "Blister's Chainsaw 08", "Golden Phoenix Sword", "Hydra Blade", "Crusader Sword", "Bloodriver", "Star Sword Breaker", "ReignBringer", "Balor's Cruelty", "Default Sword", "Iron Spear", "Undead Plague Spear", "Mighty Sword Of The Dragons", "Necrotic Sword of Doom", "Burning Blade Of Abezeth", "Blade of Awe", "Abaddon's Terror", "Krom's Brutality", "Burn it Down", "Shadow Terror Axe", "DragonBlade of Nulgath", "ShadowReaper Of Doom", "Cysero's Potato", "Kuro's Wrath", "Lilith Katana", "Mammoth Crusher Blade", "Light Prismatic Katana", "Corpse Maker of Nulgath", "Excavated Glaive: Sword", "Golden Blade of Fate", "Blade of Affliction", "Hex Blade of Nulgath", "Shadowworn", "Bane of Nulgath", "Hollowborn Oblivion Blade", "Loyalty Blade of the Nation", "Katana of Revontheus", "Risoluto", "Soul Terror Sword", "Fiendish Blood Blade", "SpiritHunter Katana" });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -55,7 +72,7 @@ public class YulgarsDualWieldMerge
     {
         if (!Core.CheckInventory("Golden 8th Birthday Candle"))
             Core.BuyItem(Bot.Map.Name, 1317, "Golden 8th Birthday Candle");
-        Bot.Sleep(1500);
+        Core.Sleep(1500);
         if (!Core.CheckInventory("Golden 8th Birthday Candle"))
         {
             Core.Logger("Golden Candle not found - stopping bot.", messageBox: true);
@@ -119,11 +136,11 @@ public class YulgarsDualWieldMerge
                     break;
 
                 case "Blessed Coffee Cup":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.RegisterQuests(5405);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                        Core.HuntMonster("sandsea", "Oasis Monkey", "Pally Luwak Beans");
+                        Core.HuntMonster("sandsea", "Oasis Monkey", "Pally Luwak Beans", log: false);
                     Core.CancelRegisteredQuests();
                     break;
 
@@ -577,6 +594,7 @@ public class YulgarsDualWieldMerge
                     break;
 
                 case "Shadow Terror Axe":
+                case "Soul Terror Sword":
                     Core.EquipClass(ClassType.Solo);
                     Core.HuntMonster("battleundera", "Bone Terror", req.Name, isTemp: false);
                     break;
@@ -594,13 +612,108 @@ public class YulgarsDualWieldMerge
                     SRoD.ShadowReaperOfDoom();
                     break;
 
+                case "Cysero's Potato":
+                    Core.FarmingLogger(req.Name, quant);
+                    Core.EquipClass(ClassType.Farm);
+                    Core.RegisterQuests(5528);
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
+                    {
+                        Core.HuntMonster("nostalgiaquest", "Zardman Grunt", "Enchanted Rubber Ducky", log: false);
+                        Bot.Wait.ForPickup(req.Name);
+                    }
+                    Core.CancelRegisteredQuests();
+                    break;
+
+                case "Kuro's Wrath":
+                    Core.FarmingLogger(req.Name, quant);
+                    Core.EquipClass(ClassType.Farm);
+                    Core.HuntMonster("river", "Kuro", req.Name, quant, false, false);
+                    break;
+
+                case "Lilith Katana":
+                    Core.FarmingLogger(req.Name, quant);
+                    Core.EquipClass(ClassType.Solo);
+                    Core.HuntMonster("elemental", "Mana Golem", req.Name, quant, false, false);
+                    break;
+
+                case "Mammoth Crusher Blade":
+                    Core.FarmingLogger(req.Name, quant);
+                    Core.EquipClass(ClassType.Farm);
+                    Core.HuntMonster("lair", "Bronze Draconian", req.Name, quant, false, false);
+                    break;
+
+                case "Light Prismatic Katana":
+                    Core.FarmingLogger(req.Name, quant);
+                    Adv.BuyItem("akiba", 131, req.Name, quant);
+                    break;
+
+                case "Corpse Maker of Nulgath":
+                    Core.FarmingLogger(req.Name, quant);
+                    TLC.QuestItems(TheLeeryContract.RewardsSelection.Corpse_Maker_of_Nulgath);
+                    break;
+
+                case "Excavated Glaive: Sword":
+                    Core.FarmingLogger(req.Name, quant);
+                    Adv.BuyItem("artistalley", 753, req.Name, quant);
+                    break;
+
+                case "Golden Blade of Fate":
+                    Core.FarmingLogger(req.Name, quant);
+                    GBOF.GetGBoF();
+                    break;
+
+                case "Blade of Affliction":
+                    Core.FarmingLogger(req.Name, quant);
+                    Core.BuyItem("Tercessuinotlim", 68, req.Name, quant);
+                    break;
+
+                case "Hex Blade of Nulgath":
+                case "Bane of Nulgath":
+                    Nation.NulgathLarvae(req.Name, quant);
+                    break;
+
+                case "Shadowworn":
+                    Core.FarmingLogger(req.Name, quant);
+                    Core.EquipClass(ClassType.Solo);
+                    Core.HuntMonster("shadowrealmpast", "Shadow Lord", req.Name, quant, false, false);
+                    break;
+
+                case "Hollowborn Oblivion Blade":
+                    Core.FarmingLogger(req.Name, quant);
+                    HOB.GetBlade();
+                    break;
+
+                case "Loyalty Blade of the Nation":
+                    NDM.BuyAllMerge(req.Name);
+                    break;
+
+                case "Katana of Revontheus":
+                    Core.Logger($"{req.Name} is rare, it can't be farmed.");
+                    break;
+
+                case "Risoluto":
+                    Core.FarmingLogger(req.Name, quant);
+                    Core.EquipClass(ClassType.Solo);
+                    Core.HuntMonster("necrocavern", "Chaos Vordred", req.Name, quant, false, false);
+                    break;
+
+                case "Fiendish Blood Blade":
+                    Core.FarmingLogger(req.Name, quant);
+                    Core.EquipClass(ClassType.Solo);
+                    Core.HuntMonster("bludrut4", "Groglurk", req.Name, quant, false, false);
+                    break;
+
+                case "SpiritHunter Katana":
+                    SHM.BuyAllMerge(req.Name);
+                    break;
+
             }
         }
     }
 
     public List<IOption> Select = new()
     {
-        new Option<bool>("37250", "Dual Boom Went The Dynamite", "Mode: [select] only\nShould the bot buy \"Dual Boom Went The Dynamite\" ?", false),
+         new Option<bool>("37250", "Dual Boom Went The Dynamite", "Mode: [select] only\nShould the bot buy \"Dual Boom Went The Dynamite\" ?", false),
         new Option<bool>("37249", "Dual TheWicked", "Mode: [select] only\nShould the bot buy \"Dual TheWicked\" ?", false),
         new Option<bool>("37248", "Dual Oblivion of Nulgath Maces", "Mode: [select] only\nShould the bot buy \"Dual Oblivion of Nulgath Maces\" ?", false),
         new Option<bool>("37244", "Dual Overlord's DoomBlade", "Mode: [select] only\nShould the bot buy \"Dual Overlord's DoomBlade\" ?", false),
@@ -669,5 +782,24 @@ public class YulgarsDualWieldMerge
         new Option<bool>("50927", "Dual Shadow Terror Axes", "Mode: [select] only\nShould the bot buy \"Dual Shadow Terror Axes\" ?", false),
         new Option<bool>("50928", "Dual DragonBlades of Nulgath", "Mode: [select] only\nShould the bot buy \"Dual DragonBlades of Nulgath\" ?", false),
         new Option<bool>("50929", "Dual ShadowReapers Of Doom", "Mode: [select] only\nShould the bot buy \"Dual ShadowReapers Of Doom\" ?", false),
+        new Option<bool>("85140", "Cysero's Potatoes", "Mode: [select] only\nShould the bot buy \"Cysero's Potatoes\" ?", false),
+        new Option<bool>("85109", "Dual Kuro's Wrath", "Mode: [select] only\nShould the bot buy \"Dual Kuro's Wrath\" ?", false),
+        new Option<bool>("85110", "Dual Lilith Katana", "Mode: [select] only\nShould the bot buy \"Dual Lilith Katana\" ?", false),
+        new Option<bool>("85111", "Dual Mammoth Crusher Blade", "Mode: [select] only\nShould the bot buy \"Dual Mammoth Crusher Blade\" ?", false),
+        new Option<bool>("85112", "Dual Light Prismatic Katana", "Mode: [select] only\nShould the bot buy \"Dual Light Prismatic Katana\" ?", false),
+        new Option<bool>("85113", "Dual Corpse Maker of Nulgath", "Mode: [select] only\nShould the bot buy \"Dual Corpse Maker of Nulgath\" ?", false),
+        new Option<bool>("85114", "Dual Excavated Glaive: Sword", "Mode: [select] only\nShould the bot buy \"Dual Excavated Glaive: Sword\" ?", false),
+        new Option<bool>("85115", "Dual Golden Blade of Fate", "Mode: [select] only\nShould the bot buy \"Dual Golden Blade of Fate\" ?", false),
+        new Option<bool>("85116", "Dual Blade of Affliction", "Mode: [select] only\nShould the bot buy \"Dual Blade of Affliction\" ?", false),
+        new Option<bool>("37202", "Dual Hex Blade of Nulgath", "Mode: [select] only\nShould the bot buy \"Dual Hex Blade of Nulgath\" ?", false),
+        new Option<bool>("37206", "Dual Shadowworn", "Mode: [select] only\nShould the bot buy \"Dual Shadowworn\" ?", false),
+        new Option<bool>("85246", "Dual Bane of Nulgath", "Mode: [select] only\nShould the bot buy \"Dual Bane of Nulgath\" ?", false),
+        new Option<bool>("85247", "Dual Hollowborn Oblivion Blade", "Mode: [select] only\nShould the bot buy \"Dual Hollowborn Oblivion Blade\" ?", false),
+        new Option<bool>("85248", "Dual Loyalty Blade of the Nation", "Mode: [select] only\nShould the bot buy \"Dual Loyalty Blade of the Nation\" ?", false),
+        new Option<bool>("85300", "Dual Katana of Revontheus", "Mode: [select] only\nShould the bot buy \"Dual Katana of Revontheus\" ?", false),
+        new Option<bool>("85301", "Dual Risoluto", "Mode: [select] only\nShould the bot buy \"Dual Risoluto\" ?", false),
+        new Option<bool>("85302", "Dual Soul Terror Sword", "Mode: [select] only\nShould the bot buy \"Dual Soul Terror Sword\" ?", false),
+        new Option<bool>("85303", "Dual Fiendish Blood Blade", "Mode: [select] only\nShould the bot buy \"Dual Fiendish Blood Blade\" ?", false),
+        new Option<bool>("85304", "SpiritHunter Katanas", "Mode: [select] only\nShould the bot buy \"SpiritHunter Katanas\" ?", false),
     };
 }

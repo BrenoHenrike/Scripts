@@ -12,8 +12,8 @@ public class Bamboozle
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreStory Story = new CoreStory();
-    public BattleUnder Under = new BattleUnder();
+    public CoreStory Story = new();
+    public BattleUnder Under = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -45,10 +45,12 @@ public class Bamboozle
         //Ice Diamond
         if (!Story.QuestProgression(7278))
         {
+            Core.EnsureAccept(7278);
+            Core.AddDrop("Ice Diamond");
             if (!Core.CheckInventory("Ice Diamond"))
             {
-                Core.EnsureAccept(7278, 7279);
-                Core.HuntMonster("kingcoal", "Snow Golem", "Frozen Coal", 10);
+                Core.EnsureAccept(7279);
+                Core.KillMonster("kingcoal", "r1", "Left", "*", "Frozen Coal", 10, log: false);
                 Core.EnsureComplete(7279);
                 Bot.Wait.ForPickup("Ice Diamond");
             }
@@ -60,7 +62,7 @@ public class Bamboozle
         {
             if (!Core.CheckInventory("Dark Bloodstone"))
             {
-                Core.EnsureAccept(7280, 7281);
+                Core.EnsureAcceptmultiple(false, new[] { 7280, 7281 });
                 Core.HuntMonster("safiria", "Blood Maggot", "Blood Gem", 10);
                 Core.EnsureComplete(7281);
                 Bot.Wait.ForPickup("Dark Bloodstone");
@@ -82,7 +84,7 @@ public class Bamboozle
         {
             if (!Core.CheckInventory("Songstone"))
             {
-                Core.EnsureAccept(7285, 7297);
+                Core.EnsureAcceptmultiple(false, new[] { 7285, 7297 });
                 Core.GetMapItem(6909, 15, "mythsong");
                 Core.EnsureComplete(7297);
                 Bot.Wait.ForPickup("Songstone");

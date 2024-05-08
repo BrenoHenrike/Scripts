@@ -1,7 +1,7 @@
 /*
-name: HollowbornREP
-description: null
-tags: null
+name: Hollowborn REP
+description: This script will farm Hollowborn reputation to rank 10.
+tags: hollow, born, hollowborn, hollow born, lae, rep, rank, reputation
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

@@ -134,9 +134,6 @@ public class ArmyLR
         Core.Logger("Dark War Nation/Legion Story");
         DWLN.DoBoth();
 
-        Core.Logger("Dark Caster Check");
-        DarkCasterCheck();
-
         /* PREFARM ZONE */
 
         /* Step 1: Evil Rank 10 */
@@ -195,13 +192,13 @@ public class ArmyLR
         while (!Bot.ShouldExit && !Core.CheckInventory("Revenant's Spellscroll", quant))
         {
             ArmyHunt("judgement", "Aeacus Empowered", ClassType.Solo, 50, false);
-            // Army.waitForParty("revenant");
+            // //Army.waitForParty("revenant");
             ArmyHunt("revenant", "Tethered Soul", ClassType.Farm, 300);
-            // Army.waitForParty("shadowrealmpast");
+            // //Army.waitForParty("shadowrealmpast");
             ArmyHunt("shadowrealmpast", "Darkened Essence", ClassType.Farm, 500);
-            // Army.waitForParty("necrodungeon");
+            // //Army.waitForParty("necrodungeon");
             ArmyHunt("necrodungeon", "Dracolich Contract", ClassType.Farm, 1000);
-            // Army.waitForParty("judgement");
+            // //Army.waitForParty("judgement");
 
             Bot.Wait.ForPickup("Revenant's Spellscroll");
         }
@@ -221,25 +218,25 @@ public class ArmyLR
         while (!Bot.ShouldExit && !Core.CheckInventory("Conquest Wreath", quant))
         {
             ArmyHunt("doomvault", "Grim Cohort Conquered", ClassType.Farm, 500);
-            // Army.waitForParty("mummies");
+            // //Army.waitForParty("mummies");
             ArmyHunt("mummies", "Ancient Cohort Conquered", ClassType.Farm, 500);
-            // Army.waitForParty("wrath");
+            // //Army.waitForParty("wrath");
             ArmyHunt("wrath", "Pirate Cohort Conquered", ClassType.Farm, 500);
-            // Army.waitForParty("doomwar");
+            // //Army.waitForParty("doomwar");
             ArmyHunt("doomwar", "Battleon Cohort Conquered", ClassType.Farm, 500);
-            // Army.waitForParty("overworld");
+            // //Army.waitForParty("overworld");
             ArmyHunt("overworld", "Mirror Cohort Conquered", ClassType.Farm, 500);
-            // Army.waitForParty("deathpits");
+            // //Army.waitForParty("deathpits");
             ArmyHunt("deathpits", "Darkblood Cohort Conquered", ClassType.Farm, 500);
-            // Army.waitForParty("maxius");
+            // //Army.waitForParty("maxius");
             ArmyHunt("maxius", "Vampire Cohort Conquered", ClassType.Farm, 500);
-            // Army.waitForParty("curseshore");
+            // //Army.waitForParty("curseshore");
             ArmyHunt("curseshore", "Spirit Cohort Conquered", ClassType.Farm, 500);
-            // Army.waitForParty("dragonbone");
+            // //Army.waitForParty("dragonbone");
             ArmyHunt("dragonbone", "Dragon Cohort Conquered", ClassType.Farm, 500);
-            // Army.waitForParty("doomwood");
+            // //Army.waitForParty("doomwood");
             ArmyHunt("doomwood", "Doomwood Cohort Conquered", ClassType.Farm, 500);
-            // Army.waitForParty("doomvault");
+            // //Army.waitForParty("doomvault");
 
             Bot.Wait.ForPickup("Conquest Wreath");
         }
@@ -276,7 +273,7 @@ public class ArmyLR
             return;
 
         Farm.ToggleBoost(BoostType.Reputation);
-        // Army.waitForParty("swordhavenbridge");
+        // //Army.waitForParty("swordhavenbridge");
         while (!Bot.ShouldExit && (Farm.FactionRank("Good") < 4 && Farm.FactionRank("Evil") < 4))
             ArmyHunt("swordhavenbridge", "Slime in a Jar", ClassType.Farm, 6, true);
         Core.CancelRegisteredQuests();
@@ -289,7 +286,7 @@ public class ArmyLR
             return;
 
         Farm.ToggleBoost(BoostType.Reputation);
-        // Army.waitForParty("castleundead");
+        // //Army.waitForParty("castleundead");
         while (!Bot.ShouldExit && (Farm.FactionRank("Good") < 10 && Farm.FactionRank("Evil") < 10))
             ArmyHunt("castleundead", "Replacement Tibia", ClassType.Farm, 6, true);
         Core.CancelRegisteredQuests();
@@ -323,7 +320,7 @@ public class ArmyLR
     {
         if (Core.CheckInventory("Dage's Favor", quant))
             return;
-        // Army.waitForParty("evilwarnul");
+        // //Army.waitForParty("evilwarnul");
         while (!Bot.ShouldExit && !Core.CheckInventory("Dage's Favor", quant))
             ArmyHunt("evilwarnul", "Dage's Favor", ClassType.Farm, quant);
     }
@@ -337,7 +334,7 @@ public class ArmyLR
         Core.FarmingLogger("Emblem of Dage", quant);
         Core.EquipClass(ClassType.Farm);
 
-        // Army.waitForParty("shadowblast");
+        // //Army.waitForParty("shadowblast");
         while (!Bot.ShouldExit && !Core.CheckInventory("Emblem of Dage", quant))
         {
             ArmyHunt("shadowblast", "Legion Seal", ClassType.Farm, 25);
@@ -376,7 +373,7 @@ public class ArmyLR
 
         Core.FarmingLogger("Dark Token", quant);
         Core.AddDrop("Dark Token");
-        // Army.waitForParty("seraphicwardage");
+        // //Army.waitForParty("seraphicwardage");
         while (!Bot.ShouldExit && !Core.CheckInventory("Dark Token", quant))
             ArmyHunt("seraphicwardage", "Seraphic Commanders Slain", ClassType.Farm, 6);
         Core.CancelRegisteredQuests();
@@ -388,53 +385,16 @@ public class ArmyLR
             return;
 
         Core.FarmingLogger("Legion Token", quant);
-        // Army.waitForParty("dreadrock");
+        // //Army.waitForParty("dreadrock");
         while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
             ArmyHunt("dreadrock", "Legion Token", ClassType.Farm, quant);
         Core.CancelRegisteredQuests();
     }
 
-    void DarkCasterCheck()
-    {
-        bool hasDarkCaster = false;
-        if (Core.CheckInventory(new[] { "Love Caster", "Legion Revenant" }, any: true))
-            hasDarkCaster = true;
-        else
-        {
-            List<InventoryItem> InventoryData = Bot.Inventory.Items;
-            foreach (InventoryItem Item in InventoryData)
-            {
-                if (Item.Name.Contains("Dark Caster") && Item.Category == ItemCategory.Class)
-                {
-                    hasDarkCaster = true;
-                    break;
-                }
-            }
-            if (!hasDarkCaster)
-            {
-                List<InventoryItem> BankData = Bot.Bank.Items;
-                foreach (InventoryItem Item in BankData)
-                {
-                    if (Item.Name.Contains("Dark Caster") && Item.Category == ItemCategory.Class)
-                    {
-                        hasDarkCaster = true;
-                        Core.Unbank(Item.Name);
-                        break;
-                    }
-                }
-            }
-        }
-        if (!hasDarkCaster)
-        {
-            ArmyLTs(2000);
-            ILDC.GetILDC(false);
-        }
-    }
-
     void PlayerAFK()
     {
         Core.Logger("Anti-AFK engaged");
-        Bot.Sleep(1500);
+        Core.Sleep(1500);
         Bot.Send.Packet("%xt%zm%afk%1%false%");
     }
 
@@ -448,8 +408,10 @@ public class ArmyLR
 
         Core.EquipClass(classType);
         if (Core.CheckInventory(item))
-            Army.waitForParty("whitemap", item);
+            //Army.waitForParty("whitemap", item);
         HandleMap(map, item, quant);
+
+        
 
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
             Bot.Combat.Attack("*");
@@ -530,7 +492,7 @@ public class ArmyLR
             case "tercessuinotlim":
                 Army.AggroMonMIDs(1, 3, 4, 5);
                 Army.AggroMonStart(map);
-                Army.DivideOnCells("m1", "m2");
+                Army.DivideOnCells("Enter", "m1", "m2");
                 break;
 
             case "aqlesson":

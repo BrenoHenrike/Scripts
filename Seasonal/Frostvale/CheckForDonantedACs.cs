@@ -15,12 +15,12 @@ using CommunityToolkit.Mvvm.DependencyInjection;
 
 public class CheckForDonatedACs
 {
-    private IScriptInterface Bot => IScriptInterface.Instance;
-    private CoreBots Core => CoreBots.Instance;
-    private CoreFarms Farm = new();
-    private ChillysQuest CQ = new();
-    private CoreDailies Daily = new();
-    private CoreArmyLite Army = new();
+    private static IScriptInterface Bot => IScriptInterface.Instance;
+    private static CoreBots Core => CoreBots.Instance;
+    private readonly CoreFarms Farm = new();
+    private readonly ChillysQuest CQ = new();
+    private readonly CoreDailies Daily = new();
+    private readonly CoreArmyLite Army = new();
 
     public void ScriptMain(IScriptInterface Bot)
     {
@@ -39,13 +39,25 @@ public class CheckForDonatedACs
         List<string> oldACs = new();
         List<string> newACs = new();
         List<string> warnings = new();
-        if (!firstTime)
+
+        if (firstTime)
+            File.WriteAllText(logPath, string.Empty);
+        else
             oldACs = File.ReadAllLines(logPath).ToList();
 
         Bot.Events.ExtensionPacketReceived += ACsListener;
+
         while (Army.doForAll())
         {
-            Bot.Sleep(2000);
+            Core.Sleep(2000);
+            Bot.Wait.ForMapLoad("battleon");
+
+            //just adding all the checks sometimes u still get your char as a flame.. and unlaoded ._.
+            while (!Bot.ShouldExit && Bot.Player.LoggedIn && !Bot.Player.Loaded && Bot.Player.Playing && Bot.Map.Loaded)
+                Core.Sleep(1500);
+
+            Bot.Send.Packet($"%xt%zm%house%1%{Bot.Player.Username}%");
+            Bot.Wait.ForMapLoad("house");
 
             Daily.WheelofDoom();
             Daily.MonthlyTreasureChestKeys();
@@ -72,19 +84,23 @@ public class CheckForDonatedACs
             double accountAgeInDays = DateTime.Now.Subtract(creationDate).TotalDays;
             if (accountAgeInDays < (double)14)
             {
-                Core.Logger($"Account too young: {Core.Username()} ({accountAgeInDays.ToString()}/14 days) - Skipping");
-                warnings.Add($"- {Core.Username()}: account is too young ({accountAgeInDays.ToString()}/14 days)");
+                Core.Logger($"Account too young: {Core.Username()} ({accountAgeInDays}/14 days) - Skipping");
+                warnings.Add($"- {Core.Username()}: account is too young ({accountAgeInDays}/14 days)");
                 continue;
             }
 
             // Verified Email
             if (Bot.Flash.CallGameFunction<bool>("world.myAvatar.isEmailVerified"))
-                // Participation Quest
+            {
+                //Edit for future years quests vv
+                // Participation Quest 9493
                 CQ.ChillysParticipation();
+                Bot.Wait.ForQuestComplete(9493);
+            }
             else
             {
                 Core.Logger($"Unverified Email: {Core.Username()} - Skipping");
-                warnings.Add($"- {Core.Username()}: email is unverified ({Bot.Flash.GetGameObject("world.myAvatar.objData.strEmail")[1..^1]})");
+                warnings.Add($"- {Core.Username()}: email is unverified ({Bot.Flash.GetGameObject("world.myAvatar.objData.strEmail")?[1..^1]})");
                 continue;
             }
         }
@@ -100,15 +116,13 @@ public class CheckForDonatedACs
         }
         Core.WriteFile(logPath, writeACs);
 
-        if (newACs.Count() == 0)
-            Bot.ShowMessageBox($"We checked {Army.doForAllAccountDetails.Count() / 2} accounts, but none of them have gained any {(firstTime ? "ACs" : "more ACs since last time")}." +
-            $"{(warnings.Count() > 0 ? "\n\nPlease be aware of the following things:\n" + String.Join('\n', warnings) : "")}",
-            (Bot.Random.Next(1, 100) == 100 ? "No Maidens" : "No ACs"));
+        if (newACs.Count == 0)
+            Bot.ShowMessageBox($"We checked {Army.doForAllAccountDetails!.Length} accounts, but none of them have gained any {(firstTime ? "ACs" : "more ACs since last time")}." +
+            $"{(warnings.Count > 0 ? "\n\nPlease be aware of the following things:\n" + String.Join('\n', warnings) : "")}",
+            Bot.Random.Next(1, 100) == 100 ? "No Maidens" : "No ACs");
         else
-        {
-            Bot.ShowMessageBox($"{newACs.Count()} out of {Army.doForAllAccountDetails.Count() / 2} accounts received ACs! Below you will find more details:\n\n" + String.Join('\n', ACs) +
-            $"{(warnings.Count() > 0 ? "\n\nPlease be aware of the following things:\n" + String.Join('\n', warnings) : "")}", "Got ACs!");
-        }
+            Bot.ShowMessageBox($"{newACs.Count} out of {Army.doForAllAccountDetails!.Length} accounts received ACs! Below you will find more details:\n\n" + String.Join('\n', ACs) +
+            $"{(warnings.Count > 0 ? "\n\nPlease be aware of the following things:\n" + string.Join('\n', warnings) : "")}", "Got ACs!");
 
         void ACsListener(dynamic packet)
         {
@@ -137,19 +151,19 @@ public class CheckForDonatedACs
             }
         }
     }
-    private Dictionary<string, int> Months = new()
-    {
-        { "Jan", 1 },
-        { "Feb", 2 },
-        { "Mar", 3 },
-        { "May", 4 },
-        { "Apr", 5 },
-        { "Jun", 6 },
-        { "Jul", 7 },
-        { "Aug", 8 },
-        { "Sep", 9 },
-        { "Oct", 10},
-        { "Nov", 11},
-        { "Dec", 12}
-    };
+    private readonly Dictionary<string, int> Months = new()
+        {
+            { "Jan", 1 },
+            { "Feb", 2 },
+            { "Mar", 3 },
+            { "Apr", 4 },
+            { "May", 5 },
+            { "Jun", 6 },
+            { "Jul", 7 },
+            { "Aug", 8 },
+            { "Sep", 9 },
+            { "Oct", 10 },
+            { "Nov", 11 },
+            { "Dec", 12 }
+        };
 }

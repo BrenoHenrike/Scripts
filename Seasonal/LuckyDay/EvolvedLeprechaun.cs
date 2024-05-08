@@ -7,6 +7,7 @@ tags: seasonal,class,leprechaun,lucky day,shamrock
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Seasonal\LuckyDay\LuckyDayShamrockFairMerge.cs
+//cs_include Scripts/CoreDailies.cs
 using Skua.Core.Interfaces;
 
 public class EvolvedLeprechaun

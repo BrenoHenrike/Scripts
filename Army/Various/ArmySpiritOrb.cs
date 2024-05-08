@@ -23,7 +23,7 @@ public class ArmySpiritOrb
 
     public string OptionsStorage = "ArmySpiritOrb";
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         new Option<int>("amount","Amount", "Input the amount of spirit orbs to farm", 65000),
         sArmy.player1,
@@ -41,7 +41,7 @@ public class ArmySpiritOrb
         Core.BankingBlackList.AddRange(Loot);
         Core.SetOptions();
 
-        Setup(Bot.Config.Get<int>("amount"));
+        Setup(Bot.Config?.Get<int>("amount") ?? default(int));
 
         Core.SetOptions(false);
     }
@@ -59,6 +59,9 @@ public class ArmySpiritOrb
 
         Core.RegisterQuests(2082, 2083);
         Army.SmartAggroMonStart("battleunderb", "Skeleton Warrior", "Skeleton Fighter", "Undead Champion");
+
+        
+
         while (!Bot.ShouldExit && !Core.CheckInventory("Spirit Orb", quant))
             Bot.Combat.Attack("*");
         Army.AggroMonStop(true);

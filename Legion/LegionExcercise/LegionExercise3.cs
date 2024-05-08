@@ -1,7 +1,7 @@
 /*
-name: LegionExercise3
-description: null
-tags: null
+name: Legion Exercise Number 3
+description: This script will complete "Legion Exercise Number 3" quest.
+tags: legion, exercise, legion exercise, 3, judgement hammer
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -59,7 +59,7 @@ public class LegionExercise3
                     Core.HuntMonster("Uppercity", "Chaos Egg", publicRoom: false, log: false);
             }
             Core.HuntMonster("Mobius", "Chaos Sp-Eye", "Chaorrupted Essence", 50, isTemp: false, publicRoom: false);
-            Bot.Sleep(2500);
+            Core.Sleep(2500);
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("Underworld", "Dreadfiend Of Nulgath", "Darkness Core", publicRoom: false);
             Core.EnsureComplete(823);

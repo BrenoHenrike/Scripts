@@ -7,8 +7,6 @@ tags: null
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/Nation/CoreNation.cs
 using Skua.Core.Interfaces;
-using System.Linq;
-
 public class DirtyDeedsDoneDirtCheap
 {
     public CoreBots Core => CoreBots.Instance;

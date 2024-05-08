@@ -1,7 +1,7 @@
 /*
-name: CombatTrophy
-description: null
-tags: null
+name: Combat Trophy
+description: This script will farm Combat Trophies in /bludrutbtawl
+tags: combat, trophy, pvp, bludrut, brawl
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -17,6 +17,7 @@ public class CombatTrophy
 
     public void ScriptMain(IScriptInterface bot)
     {
+        Core.BankingBlackList.AddRange(new[] { "The Secret 4", "Yoshino's Citrine", "Combat Trophy" });
         Core.SetOptions();
 
         DoCombatTrophy();

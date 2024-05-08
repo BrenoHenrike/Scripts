@@ -86,7 +86,7 @@ public class DeerHuntMerge
                     Core.EquipClass(ClassType.Solo);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.KillMonster("deerhunt", "r8", "left", "Zweinichthirsch");
+                        Core.KillMonster("deerhunt", "r8", "Left", "Zweinichthirsch");
                         Bot.Wait.ForPickup(req.Name);
                     }
                     break;

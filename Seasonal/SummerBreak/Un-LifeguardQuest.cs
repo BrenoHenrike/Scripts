@@ -36,7 +36,7 @@ public class UnLifeGuardQuest
         while (!Bot.ShouldExit && Core.CheckInventory(rewards))
         {
             Core.HuntMonster("summerbreak", "Cyborg Shark", "Cyborg Shark Tooth", 7, false);
-            Bot.Sleep(Core.ActionDelay);
+            Core.Sleep();
         }
         Core.CancelRegisteredQuests();
     }

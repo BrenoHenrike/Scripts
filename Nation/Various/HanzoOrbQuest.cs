@@ -54,7 +54,7 @@ public class HanzoOrbQuest
                 {
                     Core.HuntMonster("graveyard", "Big Jack Sprat", "Jacked Eye", 5);
                     Core.HuntMonster("marsh", "Dreadspider", "Dreadspider Silk");
-                    Core.KillMonster("tercessuinotlim", "m2",  "Top", "Dark Makai", "Makai Fang", 5);
+                    Core.KillMonster("tercessuinotlim", "m2", "Left", "*", "Makai Fang", 5);
                     Core.HuntMonster("bludrut", "Rattlebones", "Rattle Bones", 3);
                 }
             }
@@ -65,7 +65,7 @@ public class HanzoOrbQuest
             {
                 Core.HuntMonster("graveyard", "Big Jack Sprat", "Jacked Eye", 5);
                 Core.HuntMonster("marsh", "Dreadspider", "Dreadspider Silk");
-                Core.KillMonster("tercessuinotlim", "m2",  "Top", "Dark Makai", "Makai Fang", 5);
+                Core.KillMonster("tercessuinotlim", "m2", "Left", "*", "Makai Fang", 5);
                 Core.HuntMonster("bludrut", "Rattlebones", "Rattle Bones", 3);
             }
         }

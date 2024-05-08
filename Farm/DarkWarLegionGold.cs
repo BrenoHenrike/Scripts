@@ -1,11 +1,13 @@
 /*
-name: DarkWarLegionGold
-description: null
-tags: null
+name: Dark War Legion Gold
+description: Gold farm using Dark War Legion Method
+tags: gold, farm, dark, war, legion
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/CoreStory.cs
+//cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 //cs_include Scripts/Story/Legion/DarkWarLegionandNation.cs
 using Skua.Core.Interfaces;
 

@@ -9,6 +9,7 @@ tags: null
 //cs_include Scripts/Legion/CoreLegion.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/Legion/SevenCircles(War).cs
+//cs_include Scripts/Legion\MergeShops\SevenCirclesMerge.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
@@ -21,6 +22,7 @@ public class SevenCirclesWarMerge
     public CoreLegion Legion = new();
     private CoreAdvanced Adv = new();
     public SevenCircles Circles = new();
+    public SevenCirclesMerge SevenCirclesMerge = new();
     private static CoreAdvanced sAdv = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
@@ -125,6 +127,13 @@ public class SevenCirclesWarMerge
                     while (!Bot.ShouldExit && !Core.CheckInventory("Essence of Violence", quant))
                         Core.KillMonster("sevencircleswar", "r9", "Left", "Violence Guard", log: false);
                     Core.CancelRegisteredQuests();
+                    break;
+
+                //these come from circles not war:
+                case "Stare of Greed":
+                case "Gluttony's Maw":
+                case "Aspect of Luxuria":
+                    SevenCirclesMerge.BuyAllMerge(req.Name);
                     break;
 
             }

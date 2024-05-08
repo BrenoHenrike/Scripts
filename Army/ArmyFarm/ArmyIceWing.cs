@@ -22,7 +22,7 @@ public class IceWingLevelingArmy
 
     public bool DontPreconfigure = true;
     public string OptionsStorage = "ArmyIceWing";
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         sArmy.player1,
         sArmy.player2,
@@ -30,7 +30,7 @@ public class IceWingLevelingArmy
         sArmy.player4,
         sArmy.player5,
         sArmy.player6,
-		sArmy.player7,
+        sArmy.player7,
         CoreBots.Instance.SkipOptions,
     };
 
@@ -62,15 +62,16 @@ public class IceWingLevelingArmy
     {
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
-        
+
         PlayerAFK();
         if (!isTemp)
             Core.AddDrop(item);
 
         Core.EquipClass(classType);
-        Army.waitForParty(map, item);
+        //Army.waitForParty(map, item);
         Core.FarmingLogger(item, quant);
         
+        Core.Join(map);
         Bot.Player.SetSpawnPoint();
 
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
@@ -83,7 +84,7 @@ public class IceWingLevelingArmy
     public void PlayerAFK()
     {
         Core.Logger("Anti-AFK engaged");
-        Bot.Sleep(1500);
+        Core.Sleep(1500);
         Bot.Send.Packet("%xt%zm%afk%1%false%");
     }
 }

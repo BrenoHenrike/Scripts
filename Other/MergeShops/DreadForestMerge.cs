@@ -62,7 +62,7 @@ public class DreadForestMerge
                 #endregion
 
                 case "Enchanted Crystal":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.RegisterQuests(8722);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
@@ -77,7 +77,7 @@ public class DreadForestMerge
                     break;
 
                 case "Blade of Dread":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
@@ -88,7 +88,7 @@ public class DreadForestMerge
                     break;
 
                 case "Greatsword of Dread":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
@@ -99,7 +99,7 @@ public class DreadForestMerge
                     break;
 
                 case "Dagger of Dread":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
@@ -110,7 +110,7 @@ public class DreadForestMerge
                     break;
 
                 case "Daggers of Dread":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
@@ -121,18 +121,18 @@ public class DreadForestMerge
                     break;
 
                 case "High Axe of Dread":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("dreadforest", $"Noble’s Servant", req.Name, isTemp: false);
+                        Core.HuntMonster($"dreadforest", "Noble’s Servant", req.Name, isTemp: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
                     break;
 
                 case "Greataxe of Dread":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.RegisterQuests(8722);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
@@ -144,7 +144,7 @@ public class DreadForestMerge
                     break;
 
                 case "Poleaxe of Dread":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.RegisterQuests(8722);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
@@ -156,7 +156,7 @@ public class DreadForestMerge
                     break;
 
                 case "Axes of Dread":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.RegisterQuests(8722);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
@@ -168,7 +168,7 @@ public class DreadForestMerge
                     break;
 
                 case "Handaxe of Dread":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
@@ -179,7 +179,7 @@ public class DreadForestMerge
                     break;
 
                 case "Handaxes of Dread":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {

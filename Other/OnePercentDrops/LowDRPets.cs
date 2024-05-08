@@ -17,7 +17,7 @@ public class LowDRPets
 
     public string OptionsStorage = "1%Pets";
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         CoreBots.Instance.SkipOptions,
         new Option<Pets>("Pets", "Choose Your Pets", "Extra Pets can be added as long as they are 1% or lower drop chance.", Pets.None),
@@ -34,15 +34,17 @@ public class LowDRPets
 
     public void GetItem()
     {
-        if (Bot.Config.Get<Pets>("Pets") == Pets.None)
+        Pets? petConfig = Bot.Config?.Get<Pets>("Pets");
+
+        if (petConfig == null || petConfig == Pets.None)
         {
             Core.Logger($"\"None\" Selected, Stopping.");
             return;
         }
 
-        Core.FarmingLogger($"{Bot.Config.Get<Pets>("Pets").ToString()}", 1);
+        Core.FarmingLogger($"{petConfig}", 1);
 
-        if (Bot.Config.Get<Pets>("Pets") == Pets.Akriloth_Pet || Bot.Config.Get<Pets>("Pets") == Pets.All && !Core.CheckInventory("Akriloth Pet"))
+        if ((petConfig == Pets.Akriloth_Pet || petConfig == Pets.All) && !Core.CheckInventory("Akriloth Pet"))
         {
             Core.HuntMonster("gravestrike", "Ultra Akriloth", "Akriloth Pet", isTemp: false);
         }

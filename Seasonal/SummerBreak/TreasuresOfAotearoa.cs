@@ -41,7 +41,7 @@ public class TreasuresOfAotearoa
 
                 Core.HuntMonster("burningbeach", "Water Goblin", "Stolen Egg", 5, log: false);
 
-                Core.EnsureComplete(questID, item.ID);
+                Core.EnsureComplete(questID, item?.ID ?? default);
             }
         }
 

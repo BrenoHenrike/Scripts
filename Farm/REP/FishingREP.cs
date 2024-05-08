@@ -1,7 +1,7 @@
 /*
-name: FishingREP
-description: null
-tags: null
+name: Fishing REP
+description: This script will farm Fishing reputation to rank 10.
+tags: fish, fishing, rep, rank, reputation
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

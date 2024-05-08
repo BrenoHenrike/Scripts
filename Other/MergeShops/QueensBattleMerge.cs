@@ -99,6 +99,7 @@ public class QueensBattleMerge
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
                     Core.HuntMonster("queenbattle", "Queen of Monsters", req.Name, quant, false, false);
+                    break;
             }
         }
     }

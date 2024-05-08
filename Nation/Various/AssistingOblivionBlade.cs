@@ -34,7 +34,7 @@ public class AssistingOblivionBlade
             return;
 
         if (!Core.CheckInventory("Tendurrr The Assistant"))
-            Core.KillMonster("tercessuinotlim", "m2", "Top", "Dark Makai", "Tendurrr The Assistant", isTemp: false);
+            Core.KillMonster("tercessuinotlim", "m2", "Left", "*", "Tendurrr The Assistant", isTemp: false);
 
         List<ItemBase> RewardOptions = Core.EnsureLoad(5818).Rewards;
         List<string> RewardsList = new();
@@ -54,7 +54,7 @@ public class AssistingOblivionBlade
                 Core.KillMonster("boxes", "Fort2", "Left", "*", "Cubes", 50, false);
                 Core.KillMonster("shadowblast", "r13", "Left", "*", "Fiend Seal", 10, false);
                 Farm.BattleUnderB(quant: 200);
-                Bot.Sleep(Core.ActionDelay);
+                Core.Sleep();
             }
         }
         Core.CancelRegisteredQuests();

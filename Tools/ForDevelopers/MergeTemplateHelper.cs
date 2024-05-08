@@ -23,7 +23,7 @@ public class MergeTemplateHelper
     public static CoreAdvanced sAdv = new();
 
     public string OptionsStorage = "MergeTemplateHelper";
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         new Option<string>("", "Dev-Only", "This bot is to help us make merge bots, the average user wont find any use in this bot", ""),
         new Option<string>("", " ", "", ""),
@@ -100,9 +100,14 @@ public class MergeTemplateHelper
         }
 
         List<ShopItem> shopItems = Core.GetShopItems(map, shopID);
+
+        shopItems = shopItems.GroupBy(item => item.ID)
+                             .Select(group => group.First())
+                             .ToList();
+
         string output = String.Empty;
         List<string> itemsToLearn = new();
-        string scriptName = Bot.Shops.Name.Replace("Merge", "").Replace("merge", "").Replace("shop", "").Replace("Shop", "").Replace("'", "").Trim() + " Merge";
+        string scriptName = Bot.Shops.Name.Replace("Merge", "").Replace("merge", "").Replace(",", "").Replace("’", "").Replace("shop", "").Replace("-", "").Replace("_", "").Replace("Shop", "").Replace("'", "").Trim() + " Merge";
         string className = scriptName.Replace(" ", "");
         string[] multipliedTagsBlacklist = tagsBlacklist.Select(x => x + 's').ToArray();
 
@@ -208,7 +213,7 @@ public class MergeTemplateHelper
         string[] content = new[] { scriptInfo }
                             .Concat(MergeTemplate[5..itemsIndex])
                             .Concat(new[] { output })
-                            .Concat(MergeTemplate[(MergeTemplate.Count() - 4)..(MergeTemplate.Count() - 1)])
+                            .Concat(MergeTemplate[(MergeTemplate.Length - 4)..(MergeTemplate.Length - 1)])
                             .Concat(shopItemNames.ToArray())
                             .Concat(new[] { "}" })
                             .ToArray();

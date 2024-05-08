@@ -1,7 +1,7 @@
 /*
-name: DeathPitArenaREP
-description: null
-tags: null
+name: Death Pit Arena REP
+description: This script will farm Death Pit Arena reputation to rank 10.
+tags: deathpitarena, deathpit, arena, reputation, rep, rank
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

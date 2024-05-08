@@ -43,7 +43,7 @@ public class CoreHollowbornDoomKnight
 
     public string OptionsStorage = "HollowbornDoomKnightOptions";
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         new Option<bool>("PreFarm", "Pre Farm Dark-/Doom Fragments", "Recommended setting: False", false),
         CoreBots.Instance.SkipOptions,
@@ -86,14 +86,14 @@ public class CoreHollowbornDoomKnight
 
         if (Bot.Config!.Get<bool>("PreFarm"))
         {
-            ADK();
+            ADK(130);
             ADKRises();
         }
         ADKFalls();
         ADKReturns();
     }
 
-    public void ADK(int quant = 125)
+    public void ADK(int quant = 300)
     {
         if (Core.CheckInventory("Dark Fragment", quant))
             return;
@@ -149,18 +149,20 @@ public class CoreHollowbornDoomKnight
             Bot.Quests.UpdateQuest(3008);
             if (Core.IsMember)
                 Core.HuntMonster("ultravoid", "Ultra Kathool", "Ingredients?", 10, false, log: false);
-            else Adv.KillUltra("doomvault", "r5", "Left", "Binky", "Ingredients?", 10, false, log: false);
+            else Core.KillMonster("doomvault", "r5", "Left", "Binky", "Ingredients?", 10, false, log: false);
 
             Core.EnsureComplete(8414);
         }
     }
 
-    public void ADKFalls()
+    public void ADKFalls(bool RGRoW = false)
     {
         if (Core.CheckInventory(ADKFallsItems))
             return;
 
         Core.AddDrop(ADKFallsItems);
+        if (RGRoW)
+            Core.AddDrop(new[] { "Hollowborn DoomBlade", "Hollowborn Empress' Blade" });
 
         // Requirements
         HB.HardcoreContract();
@@ -187,7 +189,7 @@ public class CoreHollowbornDoomKnight
         Bot.Quests.UpdateQuest(3008);
         Core.SetAchievement(18);
         Bot.Quests.UpdateQuest(3004);
-        Adv.KillUltra("doomvaultb", "r26", "Left", "Undead Raxgore", "Weapon Imprint", 1, false);
+        Core.KillMonster("doomvaultb", "r26", "Left", "Undead Raxgore", "Weapon Imprint", 1, false);
 
         Core.EnsureComplete(8415);
     }
@@ -221,7 +223,7 @@ public class CoreHollowbornDoomKnight
         Bot.Quests.UpdateQuest(3008);
         Core.SetAchievement(18);
         Bot.Quests.UpdateQuest(3004);
-        Adv.KillUltra("doomvaultb", "r26", "Left", "Undead Raxgore", "Weapon Imprint", 12, false);
+        Core.KillMonster("doomvaultb", "r26", "Left", "Undead Raxgore", "Weapon Imprint", 12, false);
         Adv.BoostHuntMonster("Desolich", "Desolich", "Desolich's Dark Horn", 3, false, publicRoom: true);
 
         Core.EnsureComplete(8416);

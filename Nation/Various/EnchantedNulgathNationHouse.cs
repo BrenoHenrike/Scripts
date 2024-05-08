@@ -39,7 +39,7 @@ public class EnhancedNulgathNationHouse
         if (!Core.CheckInventory("Nulgath Nation House"))
         {
             Nation.FarmUni10(400);
-            Nation.FarmUni13();
+            Nation.FarmUni13(1);
             Nation.FarmVoucher(false);
             Nation.FarmDiamondofNulgath(300);
             Nation.FarmDarkCrystalShard(250);

@@ -41,8 +41,8 @@ public class ShadowflameWarMedal
         Core.RegisterQuests(7685, 7686);
         while (!Bot.ShouldExit && !Core.CheckInventory("ShadowFlame War Medal", quant))
         {
-            Core.HuntMonster("chaosamulet", "Shadowflame Warrior|Shadowflame Scout", "Shadow Medal", 5);
-            Core.HuntMonster("chaosamulet", "Shadowflame Warrior|Shadowflame Scout", "Mega Shadow Medal", 3);
+            Core.HuntMonster("chaosamulet", "Shadowflame Warrior", "Shadow Medal", 5);
+            Core.HuntMonster("chaosamulet", "Shadowflame Warrior", "Mega Shadow Medal", 3);
             Bot.Wait.ForPickup("ShadowFlame War Medal");
         }
         Core.CancelRegisteredQuests();

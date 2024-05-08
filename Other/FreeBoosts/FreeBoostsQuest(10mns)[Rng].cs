@@ -21,9 +21,9 @@ public class FreeBoosts
     public List<IOption> Options = new()
     {
         CoreBots.Instance.SkipOptions,
-        new Option<int>("GoldBoostQuant", "Gold Boost Quant", "Input the number of The Type of Boost For the Bot to Get [Max 9,999]", 9999),
-        new Option<int>("ClassBoostQuant", "Class Boost Quant", "Input the number of The Type of Boost For the Bot to Get [Max 9,999]", 9999),
-        new Option<int>("RepBoostQuant", "Rep Boost Quant", "Input the number of The Type of Boost For the Bot to Get [Max 9,999]", 9999)
+        new Option<int>("GoldBoostQuant", "Gold Boost Quant", "Input the number of The Type of Boost For the Bot to Get [Max 9999]", 9999),
+        new Option<int>("ClassBoostQuant", "Class Boost Quant", "Input the number of The Type of Boost For the Bot to Get [Max 9999]", 9999),
+        new Option<int>("RepBoostQuant", "Rep Boost Quant", "Input the number of The Type of Boost For the Bot to Get [Max 9999]", 9999)
     };
 
     public void ScriptMain(IScriptInterface bot)
@@ -45,9 +45,10 @@ public class FreeBoosts
 
         while (!Bot.ShouldExit)
         {
-            Core.KillMonster("nibbleon-100000", "r10", "Left", "Dark Makai", "Moglinberries", 3, isTemp: false, log: false);
-            Core.KillMonster("bloodtusk-100000", "r4", "Left", "Trollola Plant", "Trollola Nectar", 2, isTemp: false, log: false);
-            Core.KillMonster("mudluk-100000", "r3", "Left", "*", "Nimblestem", isTemp: false, log: false);
+            while (!Bot.ShouldExit && !Core.CheckInventory(11476, 2))
+                Core.KillMonster("bloodtusk", "r4", "Left", "Trollola Plant", log: false);
+            Core.KillMonster("nibbleon", "r10", "Left", "*", "Moglinberries", 3, isTemp: false, log: false);
+            Core.KillMonster("cloister", "r2", "Left", "*", "Nimblestem", isTemp: false, log: false);
 
             bool allQuantitiesMet = Core.CheckInventory("GOLD Boost! (10 min)", GoldBoostQuant) &&
                                     Core.CheckInventory("CLASS Boost! (10 min)", ClassBoostQuant) &&
@@ -56,9 +57,9 @@ public class FreeBoosts
             if (allQuantitiesMet)
                 break; // Exit the loop when all quantities are met.
 
-            InventoryItem? goldItem = Bot.Inventory.Items.Find(x => x.Name == "GOLD Boost! (10 min)");
-            InventoryItem? classItem = Bot.Inventory.Items.Find(x => x.Name == "CLASS Boost! (10 min)");
-            InventoryItem? repItem = Bot.Inventory.Items.Find(x => x.Name == "REPUTATION Boost! (10 min)");
+            InventoryItem? goldItem = Bot.Inventory.Items.FirstOrDefault(x => x.Name == "GOLD Boost! (10 min)");
+            InventoryItem? classItem = Bot.Inventory.Items.FirstOrDefault(x => x.Name == "CLASS Boost! (10 min)");
+            InventoryItem? repItem = Bot.Inventory.Items.FirstOrDefault(x => x.Name == "REPUTATION Boost! (10 min)");
 
             if (goldItem != null)
                 goldItem.Quantity = Math.Min(GoldBoostQuant, goldItem.MaxStack);

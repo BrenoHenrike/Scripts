@@ -1,7 +1,7 @@
 /*
-name: SmartEnhance
-description: null
-tags: null
+name: Smart Enhance
+description: This script will enhance your equipped gear with optimal enhancements.
+tags: smart, enhancement, enhance, enh, gear, equip
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -29,6 +29,7 @@ public class SmartEnhance
         if (Core.CBOBool("DisableAutoEnhance", out bool _disableAutoEnhance) && _disableAutoEnhance)
             return;
 
-        Adv.SmartEnhance(Bot.Player.CurrentClass.Name);
+        string className = Bot.Player.CurrentClass?.Name ?? string.Empty;
+        Adv.SmartEnhance(className);
     }
 }

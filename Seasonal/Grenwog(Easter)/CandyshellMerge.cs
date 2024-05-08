@@ -1,7 +1,7 @@
 /*
-name: CandyShellMerge
-description: Farms materials and items from the candyshell mergeshop
-tags: merge, grenwog
+name: Candyshell Merge
+description: This bot will farm the items belonging to the selected mode for the Candyshell Merge [1873] in /grenwog
+tags: candyshell, merge, grenwog, chocolate, egg, creme, caramel, rainbow, shadow, chaos, golden, antinegg, evil, bunny, suit, ears, pet, white, rabbit, smile, worshipper, hoodie, , greatsword, egghunter, berserker, berserkers, drone, dracogrenwog, slayer, soft, gray, cut, side, resting, dracospear, dracosword, dracoswords
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -27,7 +27,7 @@ public class CandyshellMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Chocolate Eggshells", "Creme Eggshells", "Caramel Eggshells", "Rainbow Eggshells", "Shadow Eggshells", "Chaotic Eggshells", "Golden Eggshells", "Anti-Neggshells" });
+        Core.BankingBlackList.AddRange(new[] { "Chocolate Eggshells", "Creme Eggshells", "Caramel Eggshells", "Rainbow Eggshells", "Shadow Eggshells", "Chaotic Eggshells", "Golden Eggshells", "Anti-Neggshells", "DraGrenwog Scale" });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -64,42 +64,43 @@ public class CandyshellMerge
 
                 case "Chocolate Eggshells":
                     Core.EquipClass(ClassType.Farm);
-                    Core.HuntMonster("GreenguardEast", "Gurushroom", req.Name, quant, isTemp: false);
+                    Core.HuntMonster("GreenguardEast", "Gurushroom", req.Name, quant, req.Temp);
                     break;
 
                 case "Creme Eggshells":
                     Core.EquipClass(ClassType.Farm);
-                    Core.HuntMonster("GreenShell", "Tsukumogami", req.Name, quant, isTemp: false);
+                    Core.HuntMonster("GreenShell", "Tsukumogami", req.Name, quant, req.Temp);
                     break;
 
                 case "Caramel Eggshells":
                     Core.EquipClass(ClassType.Farm);
-                    Core.HuntMonster("GreenguardWest", "Kittarian", req.Name, quant, isTemp: false);
+                    Core.HuntMonster("GreenguardWest", "Kittarian", req.Name, quant, req.Temp);
                     break;
 
                 case "Rainbow Eggshells":
                     Core.EquipClass(ClassType.Farm);
-                    Core.HuntMonster("Greendragon", "Greenguard Dragon", req.Name, quant, isTemp: false);
+                    Core.HuntMonster("Greendragon", "Greenguard Dragon", req.Name, quant, req.Temp);
                     break;
 
                 case "Shadow Eggshells":
+                case "DraGrenwog Scale":
                     Core.EquipClass(ClassType.Farm);
-                    Core.HuntMonster("Grenwog", "Grenwog", req.Name, quant, isTemp: false);
+                    Core.HuntMonster("Grenwog", "Grenwog", req.Name, quant, req.Temp);
                     break;
 
                 case "Chaotic Eggshells":
                     Core.EquipClass(ClassType.Farm);
-                    Core.HuntMonster("Grenstory", "Imposter Egg", req.Name, quant, isTemp: false);
+                    Core.HuntMonster("Grenstory", "Imposter Egg", req.Name, quant, req.Temp);
                     break;
 
                 case "Golden Eggshells":
                     Core.EquipClass(ClassType.Farm);
-                    Core.HuntMonster("Greed", "Treasure Pile", req.Name, quant, isTemp: false);
+                    Core.HuntMonster("Greed", "Treasure Pile", req.Name, quant, req.Temp);
                     break;
 
                 case "Anti-Neggshells":
                     Core.EquipClass(ClassType.Farm);
-                    Core.HuntMonster("Greymoor", "Spooky Treeant", req.Name, quant, isTemp: false);
+                    Core.HuntMonster("Greymoor", "Spooky Treeant", req.Name, quant, req.Temp);
                     break;
 
             }
@@ -108,7 +109,7 @@ public class CandyshellMerge
 
     public List<IOption> Select = new()
     {
-        new Option<bool>("54254", "Chocolate Egg", "Mode: [select] only\nShould the bot buy \"Chocolate Egg\" ?", false),
+         new Option<bool>("54254", "Chocolate Egg", "Mode: [select] only\nShould the bot buy \"Chocolate Egg\" ?", false),
         new Option<bool>("54252", "Creme Egg", "Mode: [select] only\nShould the bot buy \"Creme Egg\" ?", false),
         new Option<bool>("54253", "Caramel Egg", "Mode: [select] only\nShould the bot buy \"Caramel Egg\" ?", false),
         new Option<bool>("54251", "Rainbow Egg", "Mode: [select] only\nShould the bot buy \"Rainbow Egg\" ?", false),
@@ -134,5 +135,14 @@ public class CandyshellMerge
         new Option<bool>("60148", "EggHunter Berserker's Cape", "Mode: [select] only\nShould the bot buy \"EggHunter Berserker's Cape\" ?", false),
         new Option<bool>("60149", "EggHunter Berserker's Polearm", "Mode: [select] only\nShould the bot buy \"EggHunter Berserker's Polearm\" ?", false),
         new Option<bool>("60150", "EggHunter Berserker's Drone Pet", "Mode: [select] only\nShould the bot buy \"EggHunter Berserker's Drone Pet\" ?", false),
+        new Option<bool>("85185", "DracoGrenwog Slayer", "Mode: [select] only\nShould the bot buy \"DracoGrenwog Slayer\" ?", false),
+        new Option<bool>("85188", "Soft Gray Cut Mask", "Mode: [select] only\nShould the bot buy \"Soft Gray Cut Mask\" ?", false),
+        new Option<bool>("85189", "Soft Gray Locks Mask", "Mode: [select] only\nShould the bot buy \"Soft Gray Locks Mask\" ?", false),
+        new Option<bool>("85190", "DracoGrenwog Slayer Helm", "Mode: [select] only\nShould the bot buy \"DracoGrenwog Slayer Helm\" ?", false),
+        new Option<bool>("85192", "DracoGrenwog Side Blades", "Mode: [select] only\nShould the bot buy \"DracoGrenwog Side Blades\" ?", false),
+        new Option<bool>("85193", "Resting Grenwog DracoSpear", "Mode: [select] only\nShould the bot buy \"Resting Grenwog DracoSpear\" ?", false),
+        new Option<bool>("85195", "Grenwog DracoSword", "Mode: [select] only\nShould the bot buy \"Grenwog DracoSword\" ?", false),
+        new Option<bool>("85196", "Grenwog DracoSwords", "Mode: [select] only\nShould the bot buy \"Grenwog DracoSwords\" ?", false),
+        new Option<bool>("85197", "Grenwog DracoSpear", "Mode: [select] only\nShould the bot buy \"Grenwog DracoSpear\" ?", false),
     };
 }

@@ -1,7 +1,7 @@
 /*
-name: BeastMasterREP[Mem]
-description: null
-tags: null
+name: BeastMaster REP
+description: This script will farm BeastMaster reputation to rank 10.
+tags: beastmaster, beast master, reputation, rep, farm, rank
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

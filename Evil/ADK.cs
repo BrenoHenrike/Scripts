@@ -1,7 +1,7 @@
 /*
 name: Arch DoomKnight (ADK)
 description: This script farms the Arch DoomKnight Armor.
-tags: adk,archdoomknight,doomknight,a means to an end,armor,boost,evil,shadowvault,shadow vault,gathering power,death's door, chaotic lords
+tags: adk, archdoomknight, doomknight, a means to an end, armor, boost, evil, shadowvault, shadow vault, gathering power, death's door, chaotic lords
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -142,7 +142,7 @@ public class ArchDoomKnight
         Core.HuntMonster("dreamnexus", "Khasaanda", "Soul of Chaos Armor", isTemp: false);
         Core.HuntMonster("stormtemple", "Chaos Lord Lionfang", "Chaos Lionfang Armor", isTemp: false);
         Core.HuntMonster("swordhavenfalls", "Chaos Lord Alteon", "Shorn Chaos King Crown", isTemp: false);
-        Core.KillXiang("Xiang Chaos", isTemp: false);
+        Core.KillXiang("Xiang Chaos");
 
         //Drakath's Sword (Free Player)
         while (!Bot.ShouldExit && !Core.CheckInventory(25286))

@@ -1,7 +1,7 @@
 /*
-name: PrinceDarkonsPoleaxePreReqs
-description: null
-tags: null
+name: Prince Darkon's Poleaxe Pre Reqs
+description: This script will farm Prince Darkon's Poleaxe Pre-Reqs.
+tags: darkon, poleaxe, prereqs, teeth, melody, receipt, gratitude, astravian medal, prince
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

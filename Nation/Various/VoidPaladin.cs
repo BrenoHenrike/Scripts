@@ -75,7 +75,7 @@ public class VoidPaladin
             Nation.EmblemofNulgath(2);
             Nation.SwindleBulk(35);
             Nation.FarmTotemofNulgath(1);
-            Nation.FarmUni13();
+            Nation.FarmUni13(1);
 
             if (!Core.CheckInventory("Scroll of Underworld"))
             {
@@ -99,7 +99,7 @@ public class VoidPaladin
             return;
 
         Core.AddDrop("Void Paladin");
-        Core.Logger("Starting [Deeper and Deeper into Darkness] Quest");
+        Core.Logger("Farming Void Paladin.");
 
         Core.EnsureAccept(5827);
 

@@ -1,7 +1,7 @@
 /*
-name: BloodTitanMerge[mem]
-description: null
-tags: null
+name: Blood Titan Merge [Mem]
+description: This bot will farm the items belonging to the selected mode for the Blood Titan Merge [617] in /classhalla
+tags: blood, titan, merge, classhalla, horns, titans, gilded, crusher
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -31,15 +31,11 @@ public class BloodTitanMerge
         Core.SetOptions();
 
         BuyAllMerge();
-
         Core.SetOptions(false);
     }
 
     public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
-        if (!Core.IsMember)
-            return;
-
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("classhalla", 617, findIngredients, buyOnlyThis, buyMode: buyMode);
 
@@ -65,10 +61,24 @@ public class BloodTitanMerge
 
                 case "Blood Titan Token":
                     Core.FarmingLogger(req.Name, quant);
-                    Core.EquipClass(ClassType.Farm);
-                    Core.RegisterQuests(2908);
+                    Core.AddDrop(Core.EnsureLoad(9253).Requirements.Select(item => item.Name).Concat(Core.EnsureLoad(2908).Requirements.Select(item => item.Name)).ToArray());
+                    Core.EquipClass(ClassType.Solo);
+                    Core.RegisterQuests(9253);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                        Core.HuntMonster("dwarfhold", "Albino Bat", "Bat Wing", 3);
+                    {
+                        if (!Core.CheckInventory("Blood Titan's Tribute"))
+                        {
+                            Core.EnsureAccept(2908);
+                            Core.HuntMonster("bloodtitan", "Blood Titan", "Blood Titan's Phial", 1, false, false);
+                            Core.HuntMonster("titandrakath", "Titan Drakath", "Titanic Drakath's Blood", 1, false, false);
+                            Core.HuntMonster("desoloth", "Desoloth", "Desoloth's Blood", 1, false, false);
+                            Core.HuntMonster("ultracarnax", "Ultra-Carnax", "Ultra Carnax's Blood", 1, false, false);
+                            Core.EnsureComplete(2908);
+                            Bot.Wait.ForPickup("Blood Titan's Tribute");
+                        }
+                        Core.HuntMonster("bloodtitan", "Ultra Blood Titan", "Ultra Blood Titan Defeated", 1, false, false);
+                        Bot.Wait.ForPickup(req.Name);
+                    }
                     Core.CancelRegisteredQuests();
                     break;
 
@@ -80,5 +90,7 @@ public class BloodTitanMerge
     {
         new Option<bool>("16641", "Blood Titan", "Mode: [select] only\nShould the bot buy \"Blood Titan\" ?", false),
         new Option<bool>("16650", "Blood Titan Horns", "Mode: [select] only\nShould the bot buy \"Blood Titan Horns\" ?", false),
+        new Option<bool>("17253", "Titan's Gilded Crusher", "Mode: [select] only\nShould the bot buy \"Titan's Gilded Crusher\" ?", false),
+        new Option<bool>("48200", "Blood Titan Armor", "Mode: [select] only\nShould the bot buy \"Blood Titan Armor\" ?", false),
     };
 }

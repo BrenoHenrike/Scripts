@@ -44,9 +44,9 @@ public class TendurrrTheAssistantQuests
         Core.AddDrop(Rewards);
 
         if (!Core.CheckInventory("Tendurrr The Assistant"))
-            Core.KillMonster("tercessuinotlim", "m2", "Top", "Dark Makai", "Tendurrr The Assistant", isTemp: false);
+            Core.KillMonster("tercessuinotlim", "m2", "Left", "*", "Tendurrr The Assistant", isTemp: false);
 
-        Nation.FarmUni13();
+        Nation.FarmUni13(1);
 
 
         var Count = 0;

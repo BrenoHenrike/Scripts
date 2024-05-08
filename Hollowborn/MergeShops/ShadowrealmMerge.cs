@@ -36,7 +36,11 @@ public class ShadowrealmMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Hollow Soul", "Bone Dust", "Death's Oversight", "Death's Scythe", "Unmoulded Fiend Essence", "Poisonous Rogue", "Nightshade Thorn Assasasin", "Elven Assassin's Locks", "Elven Assassin's Locks + Scarf", "Elven Assassin's Hair", "Elven Assassin’s Scarf", "Poisonous Thorn Wreath", "Nightshade Assassin Guardian", "Reversed Blade of Thorns", "Reversed Daggers of Thorns", "Envenomed Whip of Agony", "Envenomed Gauntlet", "Gold Voucher 25k", "Dawn Vindicator Archer", "Vindicator Archer's Hat + Locks", "Gilded Scout's Quiver", "Bright Bow of the Dawn", "Vindicator Scout's Bow", "Dawn Vindicator General", "Vindicator General's Hood", "Vindicator General's Hood + Locks", "Blessed Rune of Vindication", "Blessed Shield of Vindication", "Blessed Hammer of the Dawn", "Blessed Hammers of the Dawn", "Battlegear of Vindication" });
+        Core.BankingBlackList.AddRange(new[] { "Hollow Soul", "Bone Dust",
+         "Death's Oversight", "Death's Scythe", "Unmoulded Fiend Essence",
+          "Poisonous Rogue", "Nightshade Thorn Assasasin", "Elven Assassin's Locks",
+           "Elven Assassin's Locks + Scarf", "Elven Assassin's Hair", "Elven Assassin's Scarf",
+            "Poisonous Thorn Wreath", "Nightshade Assassin Guardian", "Reversed Blade of Thorns", "Reversed Daggers of Thorns", "Envenomed Whip of Agony", "Envenomed Gauntlet", "Gold Voucher 25k", "Dawn Vindicator Archer", "Vindicator Archer's Hat + Locks", "Gilded Scout's Quiver", "Bright Bow of the Dawn", "Vindicator Scout's Bow", "Dawn Vindicator General", "Vindicator General's Hood", "Vindicator General's Hood + Locks", "Blessed Rune of Vindication", "Blessed Shield of Vindication", "Blessed Hammer of the Dawn", "Blessed Hammers of the Dawn", "Battlegear of Vindication" });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -69,11 +73,11 @@ public class ShadowrealmMerge
                 #endregion
 
                 case "Hollow Soul":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.EnsureAccept(7553, 7555);
+                        Core.EnsureAcceptmultiple(false, new[ ]{ 7553, 7555});
                         Core.KillMonster("shadowrealm", "r2", "Left", "Gargrowl", "Darkseed", 8, log: false);
                         Core.KillMonster("shadowrealm", "r2", "Left", "Shadow Guardian", "Shadow Medallion", 5, log: false);
                         Core.EnsureComplete(7553);
@@ -82,14 +86,14 @@ public class ShadowrealmMerge
                     break;
 
                 case "Bone Dust":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                         Farm.BattleUnderB(req.Name, quant);
                     break;
 
                 case "Death's Oversight":
-                    Core.FarmingLogger($"{req.Name}", quant);
+                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                         Core.KillMonster("shadowattack", "Boss", "Left", "Death", req.Name, quant, false);
@@ -101,6 +105,7 @@ public class ShadowrealmMerge
                     break;
 
                 case "Unmoulded Fiend Essence":
+                    Core.FarmingLogger(req.Name, quant);
                     Adv.BuyItem("tercessuinotlim", 1951, "Unmoulded Fiend Essence", quant);
                     Bot.Wait.ForPickup(req.Name);
                     break;
@@ -108,7 +113,7 @@ public class ShadowrealmMerge
                 case "Elven Assassin's Locks + Scarf":
                 case "Elven Assassin's Locks":
                 case "Elven Assassin's Hair":
-                case "Elven Assassin’s Scarf":
+                case "Elven Assassin's Scarf":
                 case "Poisonous Thorn Wreath":
                 case "Nightshade Assassin Guardian":
                 case "Reversed Blade of Thorns":

@@ -174,7 +174,13 @@ public class CoreQOM
         Story.KillQuest(5384, "infernalspire", "Azkorath");
 
         //Clear the Invaders
-        Story.KillQuest(5385, "infernalspire", new[] { "Infernal Knight", "Grievous Fiend" });
+        if (!Story.QuestProgression(5385))
+        {
+            Core.EnsureAccept(5385);
+            Core.HuntMonster("infernalspire", "Infernal Knight", "Infernal Knight Slain", 8);
+            Core.HuntMonster("infernalspire", "Grievous Fiend", "Grievous Fiend Slain", 8);
+            Core.EnsureComplete(5385);
+        }
 
         //Find the Weapon
         Story.MapItemQuest(5386, "infernalspire", 4735);
@@ -601,8 +607,13 @@ public class CoreQOM
         Story.KillQuest(5852, "Pilgrimage", new[] { "Extrikiti", "Extrikiti" });
 
         //Gather a Scouting Party
-        Story.MapItemQuest(5853, "Pilgrimage", 5290, 6);
-        Story.MapItemQuest(5853, "Pilgrimage", 5291);
+        if (!Story.QuestProgression(5853))
+        {
+            Core.EnsureAccept(5853);
+            Core.GetMapItem(5290, 6, "pilgrimage");
+            Core.GetMapItem(5291, map: "pilgrimage");
+            Core.EnsureComplete(5853);
+        }
 
         //Defeat the Parasites
         Story.MapItemQuest(5854, "Pilgrimage", 5292);
@@ -707,7 +718,7 @@ public class CoreQOM
             Core.EnsureAccept(5867);
             Core.HuntMonster("brightoak", "Hootbear", "Hootbear Feathers", 2);
             Core.HuntMonster("BrokenWoods", "Urstrix", "Urstrix Feathers", 2);
-            Core.HuntMonster("pines", "Leatherwing", "Leatherwing Claws", 2);
+            Core.HuntMonster("pines", "LeatherWing", "LeatherWing Claws", 2);
             Core.HuntMonster("BrokenWoods", "SpiderWing", "SpiderWing Claws", 2);
             Core.EnsureComplete(5867);
         }

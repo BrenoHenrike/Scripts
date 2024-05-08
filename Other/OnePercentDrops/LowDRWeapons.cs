@@ -17,7 +17,7 @@ public class LowDRWeapons
 
     public string OptionsStorage = "1%Weapons";
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         CoreBots.Instance.SkipOptions,
         new Option<Weapons>("Weapons", "Choose Your Weapons", "Extra Weapons can be added as long as they are 1% or lower drop chance.", Weapons.None),
@@ -34,7 +34,7 @@ public class LowDRWeapons
 
     public void GetItem(string? item = null)
     {
-        if (Bot.Config.Get<Weapons>("Weapons") == Weapons.None)
+        if (Bot.Config!.Get<Weapons>("Weapons") == Weapons.None)
         {
             Core.Logger($"\"None\" Selected, Stopping.");
             return;
@@ -65,16 +65,16 @@ public class LowDRWeapons
             Core.HuntMonster("lostruinswar", "Diabolical Warlord", "Burning Blade");
 
         if (Bot.Config.Get<Weapons>("Weapons") == Weapons.Deaths_Bright_Blade || Bot.Config.Get<Weapons>("Weapons") == Weapons.All)
-            Core.HuntMonster("tercessuinotlim", "Death's Head", "Death's Bright Blade", isTemp: false);
+            Core.HuntMonster("citadel", "Death's Head", "Death's Bright Blade", isTemp: false);
 
         if (Bot.Config.Get<Weapons>("Weapons") == Weapons.Deaths_Scythe || Bot.Config.Get<Weapons>("Weapons") == Weapons.All && !Core.CheckInventory(25117))
             Core.HuntMonster("shadowattack", "Death", "Death's Scythe", isTemp: false);
 
         if (Bot.Config.Get<Weapons>("Weapons") == Weapons.Bone_Claws_of_Turmoil || Bot.Config.Get<Weapons>("Weapons") == Weapons.All)
-            Core.HuntMonster("cloister", "Acornment", "Bone Claws of Turmoil", isTemp: false);
+            Core.HuntMonster("cloister", "Acornent", "Bone Claws of Turmoil", isTemp: false);
 
         if (Bot.Config.Get<Weapons>("Weapons") == Weapons.Diamonds_Of_Time || Bot.Config.Get<Weapons>("Weapons") == Weapons.All)
-            Core.HuntMonster("cloister", "Acornment", "Diamonds Of Time", isTemp: false);
+            Core.HuntMonster("cloister", "Acornent", "Diamonds Of Time", isTemp: false);
 
         if (Bot.Config.Get<Weapons>("Weapons") == Weapons.Underworldly_Dark_Wand || Bot.Config.Get<Weapons>("Weapons") == Weapons.All)
             Core.HuntMonster("legionarena", "Exalted Legion Champion", "Underworldly Dark Wand", isTemp: false);

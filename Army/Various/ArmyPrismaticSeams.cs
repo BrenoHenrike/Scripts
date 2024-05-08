@@ -23,7 +23,7 @@ public class ArmyPrimaticSeams
 
     public string OptionsStorage = "CustomAggroMon";
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         sArmy.player1,
         sArmy.player2,
@@ -63,12 +63,14 @@ public class ArmyPrimaticSeams
         Army.AggroMonMIDs(1, 2, 15, 3, 4, 14, 8, 9, 10, 11, 12, 13);
         Army.AggroMonStart("streamwar");
         Army.DivideOnCells("r2", "r3", "r3a");
-
         Core.RegisterQuests(8814, 8815);
+
+        
+
         while (!Bot.ShouldExit && !Core.CheckInventory("Prismatic Seams", 2000))
             Bot.Combat.Attack("*");
 
-        Army.waitForParty("streamwar", "Prismatic Seams");
+        //Army.waitForParty("streamwar", "Prismatic Seams");
         Army.AggroMonStop(true);
         Core.CancelRegisteredQuests();
     }

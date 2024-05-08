@@ -50,7 +50,7 @@ public class ArchfiendDeathLord
         else if (OnlyArmor && Reward == RewardChoice.All)
             Core.Logger("With \"OnlyArmor\" Please Select the \"Archfiend DeathLord\" Option from the list.", messageBox: true, stopBot: true);
 
-        Fiendshard.Fiendshard_Questline();
+        Fiendshard.Fiendshard_QuestlineP1();
 
         if (Reward == RewardChoice.All)
         {
@@ -122,6 +122,6 @@ public class ArchfiendDeathLord
         Soul_Jacker_of_Nulgath = 54383,
         Archfiendish_Spear_of_Death = 54384,
         Undeathly_SoulReaper_of_Nulgath = 54385,
-        Dual_FiendLords_Claymores = 54385,
+        Dual_FiendLords_Claymores = 54386,
     };
 }

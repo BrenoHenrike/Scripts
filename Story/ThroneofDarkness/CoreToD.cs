@@ -326,7 +326,7 @@ public class CoreToD
         Story.KillQuest(5048, "portalmaze", "ChronoLord");
 
         // Vorefax
-        Story.KillQuest(5049, "portalmaze", "Vorefax");
+        Story.KillQuest(5049, "portalmaze", "Vorefax ");
 
         // The Death of Time
         Story.KillQuest(5050, "portalmaze", "Mors Temporis");
@@ -452,11 +452,11 @@ public class CoreToD
         // Ghost Busting
         if (!Story.QuestProgression(5098))
         {
+            Core.EnsureAccept(5098);
             Core.Join("baconcat", "r11a", "Left");
             Core.Logger("Cutscene may have appeared... `Hunt` wil resume soon, please be patient.");
             Bot.Wait.ForCellChange("Cut1");
-            Bot.Sleep(2500);
-            Core.EnsureAccept(5098);
+            Core.Sleep(2500);
             Core.HuntMonsterMapID("baconcat", 41, "Oopy Defeated");
             Core.HuntMonsterMapID("baconcat", 40, "Bloopy Defeated");
             Core.HuntMonsterMapID("baconcat", 42, "Hoopy Defeated");
@@ -562,7 +562,16 @@ public class CoreToD
         }
 
         // Bacon Cat Force Needs YOU!
-        Story.KillQuest(5119, "baconcatlair", new[] { "Cloud Shark", "Ice Cream Shark", "Sketchy Shark", "8-bit Shark", "Cat Clothed Shark" });
+        if (!Story.QuestProgression(5119))
+        {
+            Core.EnsureAccept(5119);
+            Core.HuntMonster("baconcatlair", "Cloud Shark", "Cloud Shark Farts", 3);
+            Core.HuntMonster("baconcatlair", "Ice Cream Shark", "Shark Sprinkles", 3);
+            Core.HuntMonster("baconcatlair", "Sketchy Shark", "College-Ruled Paper", 3);
+            Core.HuntMonster("baconcatlair", "8-Bit Shark", "Great White DLC", 3);
+            Core.HuntMonster("baconcatlair", "Cat Clothed Shark", "Kittarian Costumes", 3);
+            Core.EnsureComplete(5119);
+        }
 
         // Ziri Is Also Tough
         Story.KillQuest(5120, "baconcatlair", "Cloud Shark");
@@ -750,19 +759,47 @@ public class CoreToD
         Story.PreLoad(this);
 
         // Hunt for the Infinity Codex
-        Story.KillQuest(5166, "whitehole", "Vortex Mage");
+        if (!Story.QuestProgression(5166))
+        {
+            Core.EnsureAccept(5166);
+            Core.KillMonster("whitehole", "r2", "Left", "Vortex Mage", "Infinity Text Page", 8);
+            Core.EnsureComplete(5166);
+        }
 
         // Sacrific and Survival
-        Story.KillQuest(5167, "whitehole", new[] { "Vortex Naga", "Vortex Hawk" });
+        if (!Story.QuestProgression(5167))
+        {
+            Core.EnsureAccept(5167);
+            Core.HuntMonster("whitehole", "Vortex Naga", "Naga Slain", 3);
+            Core.HuntMonster("whitehole", "Vortex Hawk", "Hawk Slain", 3);
+            Core.EnsureComplete(5167);
+        }
 
         // The Cartouche of Isis
-        Story.KillQuest(5168, "whitehole", "Gate Goblin");
+        if (!Story.QuestProgression(5168))
+        {
+            Core.EnsureAccept(5168);
+            Core.HuntMonster("whitehole", "Gate Goblin", "Balm Cartouche");
+            Core.EnsureComplete(5168);
+        }
 
         // The Cartouche of Ma'at
-        Story.KillQuest(5169, "whitehole", "Vortex Walker");
+        if (!Story.QuestProgression(5169))
+        {
+            Core.EnsureAccept(5169);
+            Core.HuntMonster("whitehole", "Vortex Walker", "Scale Cartouche Fragment", 5);
+            Core.EnsureComplete(5169);
+        }
 
         // Bound to Do Good
-        Story.KillQuest(5170, "whitehole", new[] { "Dimensional Crystal", "Gate Goblin", "Vortex Matter" });
+        if (!Story.QuestProgression(5170))
+        {
+            Core.EnsureAccept(5170);
+            Core.HuntMonster("whitehole", "Dimensional Crystal", "Quartz", 3);
+            Core.HuntMonster("whitehole", "Gate Goblin", "Lime", 2);
+            Core.HuntMonster("whitehole", "Vortex Matter", "Natron");
+            Core.EnsureComplete(5170);
+        }
 
         // Honor the Goddess Isis
         Story.MapItemQuest(5171, "whitehole", 4539);
@@ -782,28 +819,58 @@ public class CoreToD
         Story.MapItemQuest(5173, "whitehole", 4542);
 
         // Duty is light as a feather
-        Story.KillQuest(5174, "whitehole", "Vortex Hawk");
+        if (!Story.QuestProgression(5174))
+        {
+            Core.EnsureAccept(5174);
+            Core.HuntMonster("whitehole", "Vortex Hawk", "Feather of Ma'at");
+            Core.EnsureComplete(5174);
+        }
 
         // Judgement... or Justice?
-        Story.KillQuest(5175, "whitehole", "Hand of Ma'at");
+        if (!Story.QuestProgression(5175))
+        {
+            Core.EnsureAccept(5175);
+            Core.HuntMonster("whitehole", "Hand of Ma'at", "Judgement Passed");
+            Core.EnsureComplete(5175);
+        }
 
         // The Cartouche of Thoth
-        Story.KillQuest(5176, "whitehole", "Vortex Mage");
+        if (!Story.QuestProgression(5176))
+        {
+            Core.EnsureAccept(5176);
+            Core.HuntMonster("whitehole", "Vortex Mage", "Scroll Cartouche");
+            Core.EnsureComplete(5176);
+        }
 
         // Make Your Mark
         Story.MapItemQuest(5177, "whitehole", 4541, 4);
 
         // The Cartouche of Kebechet
-        Story.KillQuest(5178, "whitehole", "Vortex Naga");
+        if (!Story.QuestProgression(5178))
+        {
+            Core.EnsureAccept(5178);
+            Core.HuntMonster("whitehole", "Vortex Naga", "Cartouche Fragment", 6);
+            Core.EnsureComplete(5178);
+        }
 
         // Honor the Goddess Kebechet
         Story.MapItemQuest(5179, "whitehole", 4543);
 
         // Destroy to Purify
-        Story.KillQuest(5180, "whitehole", "Vortex Crystal");
+        if (!Story.QuestProgression(5180))
+        {
+            Core.EnsureAccept(5180);
+            Core.HuntMonster("whitehole", "Vortex Crystal", "Natron", 5);
+            Core.EnsureComplete(5180);
+        }
 
         // Guardian of the Vortex
-        Story.KillQuest(5181, "whitehole", "Vortex Guardian");
+        if (!Story.QuestProgression(5181))
+        {
+            Core.EnsureAccept(5181);
+            Core.HuntMonster("whitehole", "Vortex Guardian", "Guardian Slain");
+            Core.EnsureComplete(5181);
+        }
 
         // Stick with it
         if (!Story.QuestProgression(5182))
@@ -833,7 +900,12 @@ public class CoreToD
         Story.MapItemQuest(5185, "whitehole", 4545, 4);
 
         // Serpent of the Stars
-        Story.KillQuest(5186, "whitehole", "Mehensi Serpent");
+        if (!Story.QuestProgression(5186))
+        {
+            Core.EnsureAccept(5186);
+            Core.HuntMonster("whitehole", "Mehensi Serpent", "Mehen Slain");
+            Core.EnsureComplete(5186);
+        }
 
         // The Infinity Shield
         Story.MapItemQuest(5187, "whitehole", 4546);
@@ -875,8 +947,8 @@ public class CoreToD
         Story.MapItemQuest(5195, "fourdpyramid", 4559, 1);
 
         // A Jarring Solution
+        Story.KillQuest(5196, "fourdpyramid", new[] { "Nega Mummy", "Guardian of Anubyx" });
         Story.MapItemQuest(5196, "fourdpyramid", 4560, 1);
-        Story.KillQuest(5196, "fourdpyramid", new[] { "Guardian of Anubyx", "Nega Mummy" });
 
         // Ra of Light
         Story.MapItemQuest(5197, "fourdpyramid", 4561, 1);
@@ -1259,7 +1331,7 @@ public class CoreToD
         while (!Bot.ShouldExit && (Bot.Player.Cell == "Cut4" || Bot.Player.Cell == "Cut5"))
         {
             Core.JumpWait();
-            Bot.Sleep(Core.ActionDelay);
+            Core.Sleep();
         }
 
         // Defeat ... Wait. What?

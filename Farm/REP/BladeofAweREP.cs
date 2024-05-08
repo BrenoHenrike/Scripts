@@ -1,7 +1,7 @@
 /*
-name: BladeofAweREP
-description: null
-tags: null
+name: Blade of Awe REP
+description: This script will farm Blade of Awe reputation to rank 10.
+tags: boa, bladeofawe, awe, reputation, rep, rank, farm
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

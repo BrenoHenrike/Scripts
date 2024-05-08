@@ -85,25 +85,7 @@ public class HeadoftheLegionBeast
 
         Adv.BuyItem("sevencircleswar", 1984, "Helms of the Seven Circles");
 
-        void CircleHelm(string helm, bool war = false)
-        {
-            if (Core.CheckInventory(helm))
-                return;
 
-            Core.FarmingLogger(helm, 1);
-            Legion.FarmLegionToken(1500);
-
-            if (war)
-            {
-                Penance(10);
-                Adv.BuyItem("sevencircleswar", 1984, helm);
-            }
-            else
-            {
-                Indulgence(10);
-                Adv.BuyItem("sevencircles", 1980, helm);
-            }
-        }
     }
 
     public void EssenceWrath(int quant = 300)
@@ -119,6 +101,26 @@ public class HeadoftheLegionBeast
         while (!Bot.ShouldExit && !Core.CheckInventory("Essence of Wrath", quant))
             Core.KillMonster("sevencircleswar", "Enter", "Spawn", "Wrath Guard", "Wrath Guards Defeated", 12);
         Core.CancelRegisteredQuests();
+    }
+    
+    public void CircleHelm(string helm, bool war = false)
+    {
+        if (Core.CheckInventory(helm))
+            return;
+
+        Core.FarmingLogger(helm, 1);
+        Legion.FarmLegionToken(1500);
+
+        if (war)
+        {
+            Penance(10);
+            Adv.BuyItem("sevencircleswar", 1984, helm);
+        }
+        else
+        {
+            Indulgence(10);
+            Adv.BuyItem("sevencircles", 1980, helm);
+        }
     }
 
     public void EssenceViolence(int quant = 300)

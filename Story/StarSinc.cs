@@ -45,12 +45,12 @@ public class StarSinc
             {
                 case 4400: // Weaken his Powers
                     Core.Logger("Nova Badge 1");
-                    Core.HuntMonster("starsinc", "Star Sprites", "Stardust", 15, log: false);
+                    Core.HuntMonster("starsinc", "Star Sprites", "Stardust", 15);
                     break;
 
                 case 4401: // Light and Dark
                     Core.Logger("Nova Badge 2");
-                    Core.HuntMonster("starsinc", "Star Sprites", "Sprite Magic Essence", 7, log: false);
+                    Core.HuntMonster("starsinc", "Star Sprites", "Sprite Magic Essence", 7);
                     break;
 
                 case 4402: // Paintings Give Him Strength
@@ -65,44 +65,50 @@ public class StarSinc
 
                 case 4404: // Slay the Light and Dark
                     Core.Logger("Nova Badge 5");
-                    Core.HuntMonster("starsinc", "Infernal Imp", "Darkness Fragment", 5, log: false);
-                    Core.HuntMonster("starsinc", "Living Star", "Light Fragment", 5, log: false);
+                    Core.HuntMonster("starsinc", "Infernal Imp", "Darkness Fragment", 5);
+                    Core.HuntMonster("starsinc", "Living Star", "Light Fragment", 5);
                     break;
 
                 case 4405: // Chaos Fragments
                     Core.Logger("Nova Badge 6");
-                    Core.KillMonster("watchtower", "Frame2", "Left", "Chaos Spider", "Chaos Fragment", 10, log: false);
+                    Core.KillMonster("watchtower", "Frame2", "Left", "Chaos Spider", "Chaos Fragment", 10);
                     break;
 
                 case 4406: // Kill Them All
                     Core.Logger("Nova Badge 7");
-                    Core.HuntMonster("starsinc", "Star Sprites", "Monster Killed", 15, log: false);
+                    Core.HuntMonster("starsinc", "Star Sprites", "Monster Killed", 15);
                     break;
 
                 case 4407: // Get Rid of Those Guards
                     Core.Logger("Nova Badge 8");
-                    Core.HuntMonster("starsinc", "Fortress Guard", "Guard Slain", 5, log: false);
+                    Core.HuntMonster("starsinc", "Fortress Guard", "Guard Slain", 5);
                     break;
 
                 case 4408: // Breach the Gate
                     Core.Logger("Nova Badge 9");
-                    Core.HuntMonster("starsinc", "Fortress Guard", "Guard's Key", log: false);
+                    Core.HuntMonster("starsinc", "Fortress Guard", "Guard's Key");
                     break;
 
                 case 4409: // Defeat the Prime Dominus
                     Core.Logger("Nova Badge 10");
                     Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster("starsinc", "Prime Dominus", "Prime Defeated", isTemp: false, log: false);
+                    Core.HuntMonster("starsinc", "Prime Dominus", "Prime Defeated", isTemp: false);
+                    Core.Join("whitemap");
+                    Core.Logger("Resetting map");
                     break;
 
                 case 4410: // Place the Beacons
+                    Core.EquipClass(ClassType.Solo);
                     Core.Logger("Nova Badge 11");
                     Core.GetMapItem(3609, 6, "starsinc");
+                    Core.Logger("Resetting map");
+                    Core.Join("whitemap");
                     break;
 
                 case 4412: // Retrieve the Core
                     Core.Logger("SuperNova Badge");
-                    Core.HuntMonster("starsinc", "Final", "Final Defeated", log: false);
+                    Core.EquipClass(ClassType.Solo);
+                    Core.HuntMonster("starsinc", "Final", "Final Defeated");
                     break;
             }
         }

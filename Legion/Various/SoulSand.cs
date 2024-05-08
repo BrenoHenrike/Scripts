@@ -15,9 +15,9 @@ public class AnotherOneBitesTheDust
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
-    public CoreLegion Legion = new CoreLegion();
-    public CoreAdvanced Adv = new CoreAdvanced();
+    public CoreFarms Farm = new();
+    public CoreLegion Legion = new();
+    public CoreAdvanced Adv = new();
     public SeraphicWar_Story SeraphicWar = new();
 
     public void ScriptMain(IScriptInterface bot)
@@ -46,6 +46,7 @@ public class AnotherOneBitesTheDust
             Legion.ApprovalAndFavor(0, 400);
             Legion.DarkToken(80);
             Core.EnsureComplete(7991);
+            Bot.Wait.ForPickup("Soul Sand");
         }
     }
 }

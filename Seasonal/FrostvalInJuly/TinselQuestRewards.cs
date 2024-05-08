@@ -16,14 +16,10 @@ public class TinselQuestRewards
     {
         Core.SetOptions();
 
-        DoQuest();
+        //Gift Theft?! NOT COOL.
+        AutoReward(8177);
 
         Core.SetOptions(true);
-    }
-
-    public void DoQuest()
-    {
-        AutoReward(8177);
     }
 
     public void AutoReward(int questID = 0000)

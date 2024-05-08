@@ -19,7 +19,7 @@ public class BehemothBlade
 
     public bool DontPreconfigure = true;
     public string OptionsStorage = "BehemothBlade";
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         CoreBots.Instance.SkipOptions,
         new Option<Blade>("BladeChoice", "Choose Your Version", "Choose between Behemoth Blade of Shadow, Light, or both", Blade.Both),
@@ -38,13 +38,17 @@ public class BehemothBlade
 
     public void Blades()
     {
-        if (Bot.Config.Get<Blade>("BladeChoice") == Blade.Both)
+        Blade bladeChoice = Bot.Config?.Get<Blade>("BladeChoice") ?? default;
+
+        if (bladeChoice == Blade.Both)
         {
             BehemothBladeof("Shadow");
             BehemothBladeof("Light");
         }
-
-        else BehemothBladeof("$Bot.Config.Get<Blade>(\"BladeChoice\").ToString()");
+        else
+        {
+            BehemothBladeof(bladeChoice.ToString());
+        }
 
     }
 
@@ -67,7 +71,8 @@ public class BehemothBlade
             Core.BuyItem("battleon", 222, "Steel Afterlife");
         }
         Farm.BludrutBrawlBoss(quant: 500);
-        Core.BuyItem("battleon", 222, $"Behemoth Blade of {Bot.Config.Get<Blade>("BladeChoice").ToString()}");
+        string bladeChoice = Bot.Config?.Get<Blade>("BladeChoice").ToString() ?? string.Empty;
+        Core.BuyItem("battleon", 222, $"Behemoth Blade of {bladeChoice}");
     }
 
     enum Blade

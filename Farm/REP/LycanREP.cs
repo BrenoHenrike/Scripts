@@ -1,7 +1,7 @@
 /*
-name: LycanREP
-description: null
-tags: null
+name: Lycan REP
+description: This script will farm Lycan reputation to rank 10.
+tags: lycan, rep, rank, reputation
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

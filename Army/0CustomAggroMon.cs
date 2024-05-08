@@ -20,7 +20,7 @@ public class CustomAggroMon
     private static CoreArmyLite sArmy = new();
 
     public string OptionsStorage = "CustomAggroMon";
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         new Option<string>("map", "Map Name",
                            "Please provide the map you wish to join."),
@@ -72,14 +72,14 @@ public class CustomAggroMon
 
     public void MakeAggroMon()
     {
-        string map = Bot.Config.Get<string>("map");
+        string? map = Bot.Config!.Get<string>("map");
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
         Core.Join(map);
 
         var _monData = Bot.Monsters.MapMonsters;
         List<string> _monDataNames = _monData.Select(m => m.Name).ToList();
-        string monsters = Bot.Config.Get<string>("monsters");
+        string? monsters = Bot.Config.Get<string>("monsters");
         if (String.IsNullOrEmpty(monsters) || String.IsNullOrWhiteSpace(monsters))
             monsters = getMonsters();
         string[] monsterList = monsters.Split(',');
@@ -94,7 +94,12 @@ public class CustomAggroMon
         foreach (string s in monsterList)
         {
             if (Int32.TryParse(s, out int monID) && Bot.Monsters.TryGetMonster(monID, out var Monster))
-                monNames.Add(Monster.Name);
+            {
+                if (Monster != null)
+                {
+                    monNames.Add(Monster.Name);
+                }
+            }
             else remainder.Add(s);
         }
 
@@ -115,33 +120,51 @@ public class CustomAggroMon
         if (monNames.Count == 0)
             Core.Logger("No monsters were found based on your input. The bot will now stop.", messageBox: true, stopBot: true);
 
-        string[] quests = Bot.Config.Get<string>("quests").Split(',');
-        List<int> questIDs = new();
-        foreach (string q in quests)
-        {
-            if (!Int32.TryParse(q.Trim(), out int ID) || questIDs.Contains(ID))
-                continue;
-            questIDs.Add(ID);
-        }
+        List<string> drops = new List<string>();
+        List<int> questIDs = new List<int>();
 
-        List<string> drops = Bot.Config.Get<string>("drops").Split(',').ToList();
+
+        if (Bot.Config != null)
+        {
+            string questsConfig = Bot.Config.Get<string>("quests") ?? string.Empty;
+            if (!string.IsNullOrEmpty(questsConfig))
+            {
+                string[] quests = questsConfig.Split(',');
+                foreach (string q in quests)
+                {
+                    if (!Int32.TryParse(q.Trim(), out int ID) || questIDs.Contains(ID))
+                        continue;
+                    questIDs.Add(ID);
+                }
+            }
+
+            string dropsConfig = Bot.Config.Get<string>("drops") ?? string.Empty;
+            if (!string.IsNullOrEmpty(dropsConfig))
+            {
+                drops = dropsConfig.Split(',').ToList();
+            }
+        }
 
 
         GenerateFile();
 
 
-        if (drops == null || drops.Count() == 0 || drops.All(x => String.IsNullOrEmpty(x)))
+        if (drops == null || drops.Count == 0 || drops.All(x => String.IsNullOrEmpty(x)))
             Bot.Drops.Stop();
         else Core.AddDrop(drops.ToArray());
 
-        ClassType classtype = Bot.Config.Get<ClassType>("classtype");
-        if (classtype != ClassType.None)
-            Core.EquipClass(classtype);
+        ClassType? classtype = Bot.Config?.Get<ClassType>("classtype");
+        if (classtype.HasValue && classtype.Value != ClassType.None)
+            Core.EquipClass(classtype.Value);
 
         if (questIDs.Count > 0)
             Core.RegisterQuests(questIDs.ToArray());
 
-        Army.SmartAggroMonStart(map, monNames.ToArray());
+        if (!string.IsNullOrEmpty(map) && monNames != null && monNames.Count > 0)
+            Army.SmartAggroMonStart(map, monNames.ToArray());
+
+        
+
         while (!Bot.ShouldExit)
             Bot.Combat.Attack("*");
         Army.AggroMonStop(true);
@@ -216,7 +239,7 @@ public class CustomAggroMon
                 template[dropsIndex] = $"{spaces}private List<string> drops = new() {{ \"{String.Join("\", \"", drops)}\" }};";
             }
             int mapIndex = FetchIndex("private string map = \"\";");
-            template[mapIndex] = $"{spaces}private string map = \"{map.ToLower().Trim()}\";";
+            template[mapIndex] = $"{spaces}private string map = \"{map?.ToLower().Trim()}\";";
             int classTypeIndex = FetchIndex("private ClassType classtype = ClassType.None;");
             template[classTypeIndex] = $"{spaces}private ClassType classtype = ClassType.{Bot.Config.Get<ClassType>("classtype")};";
 

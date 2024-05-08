@@ -20,7 +20,7 @@ public class EmpoweredWeaponsofNulgath
 
     public string OptionsStorage = "EmpoweredWeaponofN";
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         CoreBots.Instance.SkipOptions,
         new Option<EmpoweredItems>("EmpoweredWep", "Choose Weapon", "Choose, and the bot will Farm the Appropriate item.", EmpoweredItems.Empowered_Overfiend_Blade),
@@ -31,7 +31,7 @@ public class EmpoweredWeaponsofNulgath
         Core.BankingBlackList.AddRange(Nation.bagDrops);
         Core.SetOptions();
 
-        GetEmpoweredItem(Bot.Config.Get<EmpoweredItems>("EmpoweredWep"));
+        GetEmpoweredItem(Bot.Config?.Get<EmpoweredItems>("EmpoweredWep") ?? default);
 
         Core.SetOptions(false);
     }
@@ -46,7 +46,7 @@ public class EmpoweredWeaponsofNulgath
 
         foreach (EmpoweredItems item in (EmpoweredItems[])Enum.GetValues(typeof(EmpoweredItems)))
         {
-            switch (Bot.Config.Get<EmpoweredItems>("EmpoweredWep"))
+            switch (Bot.Config?.Get<EmpoweredItems>("EmpoweredWep") ?? default)
             {
                 //Empowered Bloodletter 8696
                 case EmpoweredItems.Empowered_Bloodletter:

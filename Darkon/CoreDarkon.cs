@@ -10,6 +10,8 @@ tags: null
 //cs_include Scripts/Story/ElegyofMadness(Darkon)/CoreAstravia.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
+using Skua.Core.Models.Quests;
+using Skua.Core.Models.Shops;
 
 public class CoreDarkon
 {
@@ -23,10 +25,14 @@ public class CoreDarkon
         Core.RunCore();
     }
 
-    public void FarmReceipt(int Quantity = 222) => FirstErrand(Quantity);
+    public void FarmReceipt(int Quantity = 222, bool MaxStack = false) => FirstErrand(Quantity, MaxStack: MaxStack);
 
-    public void FirstErrand(int Quantity = 222)
+    public void FirstErrand(int Quantity = 222, bool MaxStack = false)
     {
+        Quest? Quest = Bot.Quests.EnsureLoad(7324);
+        if (MaxStack)
+            Quantity = Quest?.Rewards.FirstOrDefault(x => x.Name == "Darkon's Receipt")?.MaxStack ?? Quantity;
+
         if (Core.CheckInventory("Darkon's Receipt", Quantity))
             return;
 
@@ -36,12 +42,15 @@ public class CoreDarkon
 
         Core.RegisterQuests(7324);
         while (!Bot.ShouldExit && !Core.CheckInventory("Darkon's Receipt", Quantity))
-            Core.HuntMonster("portalmaze", "Jurassic Monkey", "Banana", 22, false, log: false);
+            Core.HuntMonster("arcangrove", "Gorillaphant", "Banana", 22, false, log: false);
         Core.CancelRegisteredQuests();
     }
 
-    public void SecondErrand(int Quantity = 222, bool escapeWhile = false)
+    public void SecondErrand(int Quantity = 222, bool escapeWhile = false, bool MaxStack = false)
     {
+        Quest? Quest = Bot.Quests.EnsureLoad(7325);
+        if (MaxStack)
+            Quantity = Quest?.Rewards.FirstOrDefault(x => x.Name == "Darkon's Receipt")?.MaxStack ?? Quantity;
         if (Core.CheckInventory("Darkon's Receipt", Quantity))
             return;
 
@@ -60,7 +69,7 @@ public class CoreDarkon
                 while (!Bot.ShouldExit && Bot.Player.Cell != "r5")
                 {
                     Core.Jump("r5", "Left");
-                    Bot.Sleep(5000);
+                    Core.Sleep(5000);
                 }
                 if (Bot.Map.PlayerCount >= 3)
                     EnoughPeople = true;
@@ -75,15 +84,18 @@ public class CoreDarkon
 
             if (!EnoughPeople && Core.IsMember)
                 Core.HuntMonster("ultravoid", "Ultra Kathool", "Ingredients?", 22, false, publicRoom: true, log: false);
-            else Adv.KillUltra("doomvault", "r5", "Left", "Binky", "Ingredients?", 22, false, publicRoom: true, log: false);
+            else Core.KillMonster("doomvault", "r5", "Left", "Binky", "Ingredients?", 22, false, publicRoom: true, log: false);
 
             Bot.Wait.ForPickup("Darkon's Receipt");
         }
         Core.CancelRegisteredQuests();
     }
 
-    public void ThirdErrand(int Quantity = 222)
+    public void ThirdErrand(int Quantity = 222, bool MaxStack = false)
     {
+        Quest? Quest = Bot.Quests.EnsureLoad(7326);
+        if (MaxStack)
+            Quantity = Quest?.Rewards.FirstOrDefault(x => x.Name == "Darkon's Receipt")?.MaxStack ?? Quantity;
         if (Core.CheckInventory("Darkon's Receipt", Quantity))
             return;
 
@@ -94,14 +106,21 @@ public class CoreDarkon
         Core.RegisterQuests(7326);
         while (!Bot.ShouldExit && !Core.CheckInventory("Darkon's Receipt", Quantity))
         {
+            Adv.GearStore();
+            Core.DodgeClass();
             Core.HuntMonster("tercessuinotlim", "Nulgath", "Nulgath's mask", 1, false, publicRoom: true);
             Bot.Wait.ForPickup("Darkon's Receipt");
         }
+        Adv.GearStore(true);
         Core.CancelRegisteredQuests();
     }
 
-    public void Teeth(int Quantity = 300)
+    public void Teeth(int Quantity = 300, bool MaxStack = false)
     {
+        Quest? Quest = Bot.Quests.EnsureLoad(7780);
+        if (MaxStack)
+            Quantity = Quest?.Rewards.FirstOrDefault(x => x.Name == "Teeth")?.MaxStack ?? Quantity;
+
         if (Core.CheckInventory("Teeth", Quantity))
             return;
 
@@ -122,8 +141,12 @@ public class CoreDarkon
         Core.CancelRegisteredQuests();
     }
 
-    public void LasGratitude(int Quantity = 300)
+    public void LasGratitude(int Quantity = 300, bool MaxStack = false)
     {
+        Quest? Quest = Bot.Quests.EnsureLoad(8001);
+        if (MaxStack)
+            Quantity = Quest?.Rewards.FirstOrDefault(x => x.Name == "La's Gratitude")?.MaxStack ?? Quantity;
+
         if (Core.CheckInventory("La's Gratitude", Quantity))
             return;
 
@@ -142,8 +165,12 @@ public class CoreDarkon
         Core.CancelRegisteredQuests();
     }
 
-    public void AstravianMedal(int Quantity = 300)
+    public void AstravianMedal(int Quantity = 300, bool MaxStack = false)
     {
+        Quest? Quest = Bot.Quests.EnsureLoad(8257);
+        if (MaxStack)
+            Quantity = Quest?.Rewards.FirstOrDefault(x => x.Name == "Astravian Medal")?.MaxStack ?? Quantity;
+
         if (Core.CheckInventory("Astravian Medal", Quantity))
             return;
 
@@ -166,8 +193,12 @@ public class CoreDarkon
         Core.CancelRegisteredQuests();
     }
 
-    public void AMelody(int Quantity = 300)
+    public void AMelody(int Quantity = 300, bool MaxStack = false)
     {
+        Quest? Quest = Bot.Quests.EnsureLoad(8396);
+        if (MaxStack)
+            Quantity = Quest?.Rewards.FirstOrDefault(x => x.Name == "A Melody")?.MaxStack ?? Quantity;
+
         if (Core.CheckInventory("A Melody", Quantity))
             return;
 
@@ -175,11 +206,11 @@ public class CoreDarkon
         Astravia.AstraviaJudgement();
         Core.FarmingLogger("A Melody", Quantity);
         Core.RegisterQuests(8396);
-        while (!Bot.ShouldExit && (!Core.CheckInventory("A Melody", Quantity)))
+        while (!Bot.ShouldExit && !Core.CheckInventory("A Melody", Quantity))
         {
             Core.EquipClass(ClassType.Farm);
-            Core.HuntMonster("astraviajudge", "Trumpeter", "Brass", 10, log: false);
-            Core.HuntMonster("astraviajudge", "Hand", "Sinew", 10, log: false);
+            Core.KillMonster("astraviajudge", "r3", "Left", "*", "Brass", 10, log: false);
+            Core.KillMonster("astraviajudge", "r2", "Left", "*", "Sinew", 10, log: false);
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("astraviajudge", "La", "Knight's Favor", log: false);
             Bot.Wait.ForPickup("A Melody");
@@ -187,8 +218,12 @@ public class CoreDarkon
         Core.CancelRegisteredQuests();
     }
 
-    public void BanditsCorrespondence(int Quantity = 3000)
+    public void BanditsCorrespondence(int Quantity = 3000, bool MaxStack = false)
     {
+        Quest? Quest = Bot.Quests.EnsureLoad(8531);
+        if (MaxStack)
+            Quantity = Quest?.Rewards.FirstOrDefault(x => x.Name == "Bandit's Correspondence")?.MaxStack ?? Quantity;
+
         if (Core.CheckInventory("Bandit's Correspondence", Quantity))
             return;
 
@@ -199,10 +234,9 @@ public class CoreDarkon
         Core.RegisterQuests(8531);
         while (!Bot.ShouldExit && !Core.CheckInventory("Bandit's Correspondence", Quantity))
         {
-
             Core.EquipClass(ClassType.Farm);
-            Core.HuntMonster("eridanipast", "Bandit", "Bandit Contraband", 12, log: false);
-            Core.HuntMonster("eridanipast", "Dog", "Dogs Confiscated", 12, log: false);
+            Core.KillMonster("eridanipast", "r3", "Left", "Dog", "Dogs Confiscated", 12, log: false);
+            Core.KillMonster("eridanipast", "r9", "Left", "Bandit", "Bandit Contraband", 12, log: false);
 
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonsterMapID("eridanipast", 19, "Seraphic Sparred", log: false);
@@ -211,8 +245,12 @@ public class CoreDarkon
         Core.CancelRegisteredQuests();
     }
 
-    public void SukisPrestiege(int Quantity = 300)
+    public void SukisPrestiege(int Quantity = 300, bool MaxStack = false)
     {
+        Quest? Quest = Bot.Quests.EnsureLoad(8602);
+        if (MaxStack)
+            Quantity = Quest?.Rewards.FirstOrDefault(x => x.Name == "Suki's Prestige")?.MaxStack ?? Quantity;
+
         if (Core.CheckInventory("Suki's Prestige", Quantity))
             return;
 
@@ -234,8 +272,12 @@ public class CoreDarkon
         Core.CancelRegisteredQuests();
     }
 
-    public void AncientRemnant(int Quantity = 300)
+    public void AncientRemnant(int Quantity = 300, bool MaxStack = false)
     {
+        Quest? Quest = Bot.Quests.EnsureLoad(8641);
+        if (MaxStack)
+            Quantity = Quest?.Rewards.FirstOrDefault(x => x.Name == "Ancient Remnant")?.MaxStack ?? Quantity;
+
         if (Core.CheckInventory("Ancient Remnant", Quantity))
             return;
 
@@ -248,27 +290,32 @@ public class CoreDarkon
         {
             Core.JumpWait();
             Core.EquipClass(ClassType.Farm);
-            Core.KillMonster("firstobservatory", "r7", "Left", "Ancient Creature", "Creature Samples", 6);
-            Core.KillMonster("firstobservatory", "r6", "Left", "Ancient Turret", "Turret Pieces", 12);
+            Core.KillMonster("firstobservatory", "r7", "Left", "Ancient Creature", "Creature Samples", 6, log: false);
+            Core.KillMonster("firstobservatory", "r6", "Left", "Ancient Turret", "Turret Pieces", 12, log: false);
             Core.JumpWait();
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster($"firstobservatory", "Empress’ Finger", "Alprecha Observed");
+            Core.HuntMonster($"firstobservatory", "Empress’ Finger", "Alprecha Observed", log: false);
             Bot.Wait.ForPickup("Ancient Remnant");
         }
         Core.CancelRegisteredQuests();
     }
 
-    public void WheelofFortune(int FlowerQuantity = 1000, int ScaleQuantity = 1000)
+    public void WheelofFortune(int FlowerQuantity = 1000, int ScaleQuantity = 1000, bool MaxStack = false)
     {
+        Quest? Quest = Bot.Quests.EnsureLoad(8688);
+        if (MaxStack)
+        {
+            FlowerQuantity = Quest?.Rewards.FirstOrDefault(x => x.Name == "Mourning Flower")?.MaxStack ?? FlowerQuantity;
+            ScaleQuantity = Quest?.Rewards.FirstOrDefault(x => x.Name == "Jus Divinum Scale")?.MaxStack ?? ScaleQuantity;
+        }
+
         if (Core.CheckInventory("Mourning Flower", FlowerQuantity) && Core.CheckInventory("Jus Divinum Scale", ScaleQuantity))
             return;
 
-        bool shouldLog = true;
         if (FlowerQuantity > 0 && ScaleQuantity > 0)
         {
-            Core.Logger($"Farming Mourning Flower ({Bot.Inventory.GetQuantity("Mourning Flower")}/{FlowerQuantity}) " +
-                            $"and Jus Divinum Scale ({Bot.Inventory.GetQuantity("Jus Divinum Scale")}/{ScaleQuantity})");
-            shouldLog = false;
+            Core.Logger($"Farming Mourning Flower ({Core.dynamicQuant("Mourning Flower", false)}/{FlowerQuantity}) " +
+                            $"and Jus Divinum Scale ({Core.dynamicQuant("Jus Divinum Scale", false)}/{ScaleQuantity})");
         }
 
         Core.AddDrop("Mourning Flower", "Jus Divinum Scale");
@@ -280,10 +327,10 @@ public class CoreDarkon
         || !Core.CheckInventory("Jus Divinum Scale", ScaleQuantity))
         {
             Core.EquipClass(ClassType.Farm);
-            Core.HuntMonster("genesisgarden", "Long-eared Beast", "Beast Subject", 7, shouldLog);
-            Core.HuntMonster("genesisgarden", "Undead Humanoid", "Humanoid Subject", 7, shouldLog);
+            Core.HuntMonster("genesisgarden", "Long-eared Beast", "Beast Subject", 7, log: false);
+            Core.HuntMonster("genesisgarden", "Undead Humanoid", "Humanoid Subject", 7, log: false);
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("genesisgarden", "Ancient Mecha", "Replacement Parts", 7, shouldLog);
+            Core.HuntMonster("genesisgarden", "Ancient Mecha", "Replacement Parts", 7, log: false);
         }
         Core.CancelRegisteredQuests();
     }

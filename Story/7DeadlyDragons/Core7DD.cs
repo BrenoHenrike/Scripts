@@ -149,7 +149,7 @@ public class Core7DD
         Story.KillQuest(5934, "Greed", "Sneevil Looter");
 
         // Jumping in Puddles 5935
-        Story.MapItemQuest(5935, "Greed", 5372);
+        Story.MapItemQuest(5935, "Greed", 5372, AutoCompleteQuest: false);
 
         // Pick the Right Chest 5936
         Story.MapItemQuest(5936, "Greed", 5373);
@@ -387,7 +387,7 @@ public class Core7DD
         Story.KillQuest(6003, "Maloth", "Golgar");
 
         // Hand over the Entry Code 6004
-        Story.KillQuest(6004, "Maloth", new[] { "Golgar", "Castle Guard", "Scroll Keeper", "Nervous Serf", "Locked Chest" });
+        Story.KillQuest(6004, "Maloth", new[] { "Castle Guard", "Scroll Keeper", "Nervous Serf", "Locked Chest", "Golgar" });
 
         // Confront the Dragon King 6005
         Story.KillQuest(6005, "Maloth", "Maloth");
@@ -424,7 +424,7 @@ public class Core7DD
                 Core.HuntMonster("Doomwood", "Doomwood Ectomancer", "Dried Wasabi Powder", 4, true);
                 Core.GetMapItem(428, 1, "lightguard");
                 Core.EnsureComplete(1075);
-                Bot.Sleep(5000);
+                Core.Sleep(5000);
             }
             Core.EnsureComplete(6113);
         }

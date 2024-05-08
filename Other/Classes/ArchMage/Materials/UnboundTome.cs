@@ -27,7 +27,7 @@ public class UnboundTome
     {
         Core.SetOptions();
 
-        AM.UnboundTome(99);
+        AM.UnboundTome();
 
         Core.SetOptions(false);
     }

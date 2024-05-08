@@ -44,7 +44,7 @@ public class CoreAstravia
         Story.PreLoad(this);
 
         Core.Join("Garden");
-        Bot.Sleep(2000);
+        Core.Sleep(2000);
 
         //Lost Breadcrumbs
         Story.KillQuest(7769, "eridani", "Maggot-Like Creature");
@@ -167,7 +167,7 @@ public class CoreAstravia
         //Desperado
         Story.KillQuest(7999, "astravia", "Creature 27");
 
-        //Zugzwang
+        //Isolani
         Story.KillQuest(8000, "astravia", "The Moon");
     }
 

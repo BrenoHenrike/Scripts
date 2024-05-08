@@ -16,18 +16,18 @@ public class TheAssistant
 
     public string OptionsStorage = "TheAssistant";
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new List<IOption>()
+    public List<IOption> Options = new()
     {
         CoreBots.Instance.SkipOptions,
         new Option<SwindlesReturnReward>("ChooseReward", "Choose Your Quest Reward", "if `returnPolicyDuringSupplies` is enabled in CoreBot Options, Choose the Reward here", (int)SwindlesReturnReward.None),
     };
 
 
-    public void ScriptMain(IScriptInterface bot)
+    public void ScriptMain(IScriptInterface Bot)
     {
         Core.SetOptions();
 
-        Nation.TheAssistant(Reward: bot.Config.Get<SwindlesReturnReward>("ChooseReward"));
+        Nation.TheAssistant(Reward: Bot.Config?.Get<SwindlesReturnReward>("ChooseReward") ?? default);
 
         Core.SetOptions(false);
     }

@@ -1,7 +1,7 @@
 /*
-name: LoremasterREP
-description: null
-tags: null
+name: Loremaster REP
+description: This script will farm Loremaster reputation to rank 10.
+tags: lore, master, loremaster, lore master, rep, rank, reputation
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

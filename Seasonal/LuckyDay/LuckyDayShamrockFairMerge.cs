@@ -1,11 +1,12 @@
 /*
 name: Lucky Day Shamrock Fair Merge
-description: This will merge Rainbow Shard, Golden Ticket and Lucky Clovers.
-tags: farm, merge, shop, seasonal, lucky, evolved, leprechaun, rainbow, shard, golden, ticket, clover
+description: This bot will farm the items belonging to the selected mode for the Lucky Day Shamrock Fair Merge [256] in /rainbow
+tags: lucky, day, shamrock, fair, merge, rainbow, simple, celtic, three, leaf, clover, sneevos, mallet, bucket, o, gold, pot, pet, prismatic, cats, tail, mogorahilly, whack, hammer, sneevo, clown, box, head, shy, mog, heavy, william, sneevil, moglin, wallace, caledonia, chopper, shamrockin, scythe, caster, wrap, broadsword, on, your, back, destroyer, emerald, intricacy, cutthroat, double, claymore, celts, lycaena, wings, kellys, charm, viridian, twist, fortune, bringer, kismets, edge, malachite, cutter, fortunes, protector, luckee, golden, cleaver, evolved, leprechaun, luckiest, lorikeet, feathers, leprechauns, curse, scrooge, mcluck, paddle, pain, knight, knights, unicorn, noble, lady, lord, cane, rainbows, hunter, mace, reavers, bow
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/CoreDailies.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
@@ -15,6 +16,7 @@ public class LuckyDayShamrockFairMerge
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
     private CoreFarms Farm = new();
+    public CoreDailies Daily = new();
     private CoreAdvanced Adv = new();
     private static CoreAdvanced sAdv = new();
 
@@ -34,13 +36,13 @@ public class LuckyDayShamrockFairMerge
         Core.SetOptions(false);
     }
 
-    public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
+    public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null, int ShopItemID = new())
     {
         if (!Core.isSeasonalMapActive("rainbow"))
             return;
 
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge("rainbow", 256, findIngredients, buyOnlyThis, buyMode: buyMode);
+        Adv.StartBuyAllMerge("rainbow", 256, findIngredients, buyOnlyThis, buyMode: buyMode, ShopItemID: ShopItemID);
 
         #region Dont edit this part
         void findIngredients()
@@ -76,13 +78,17 @@ public class LuckyDayShamrockFairMerge
                 case "Lucky Clover":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
-                    Core.RegisterQuests(1759);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
+                    while (!Bot.ShouldExit && Daily.CheckDaily(Core.CheckInventory(971) ? 1761 : 1759) && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("rainbow", "Lucky Harms", "Clover Leaves", 1);
+                        Core.EnsureAccept(Core.CheckInventory(971) ? 1761 : 1759);
+                        Core.HuntMonster("rainbow", "Lucky Harms", "Clover Leaves");
+                        Core.EnsureComplete(Core.CheckInventory(971) ? 1761 : 1759);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
+                    
+                    if (!Core.CheckInventory(req.Name, quant))
+                        Core.Logger($"not enough {req.Name}");
                     break;
 
                 case "Rainbow Shard":

@@ -13,6 +13,7 @@ tags: all classes,class,farm,complete,all
 //cs_include Scripts/Other/Classes/Daily-Classes/BlazeBinder.cs
 //cs_include Scripts/Dailies/LordOfOrder.cs
 //cs_include Scripts/Nation/CoreNation.cs
+//cs_include Scripts/Hollowborn/CoreHollowborn.cs
 //cs_include Scripts/Story/Nation/CitadelRuins.cs
 //cs_include Scripts/Story/DragonFableOrigins.cs
 //cs_include Scripts/Story/RavenlossSaga.cs
@@ -50,17 +51,25 @@ tags: all classes,class,farm,complete,all
 //cs_include Scripts/Other/MergeShops/BloodAncientMerge.cs
 //cs_include Scripts/Other/Classes/Members-CLasses/BloodAncient[Mem].cs
 //cs_include Scripts/Other/Classes/Members-CLasses/BloodTitan[Mem].cs
+//cs_include Scripts/Other/MergeShops/BloodTitanMerge[Mem].cs
 //cs_include Scripts/Other/Classes/Members-CLasses/ChronoAssassin[Mem].cs
 //cs_include Scripts/Other/MergeShops/DeathPitArenaRepMerge.cs
 //cs_include Scripts/Other/Classes/Members-CLasses/DrakelWarlord[Mem].cs
+//cs_include Scripts/Other/Classes/Members-CLasses/Renegade[Mem].cs
+//cs_include Scripts/Seasonal/BlackFriday/ShadowDragonShinobiMerge.cs
+//cs_include Scripts/Seasonal/BlackFriday/ShadowDragonShinobi.cs
 //cs_include Scripts/Seasonal/Frostvale/Frostvale.cs
 //cs_include Scripts/Seasonal/Frostvale/FrostvalBarbarian.cs
 //cs_include Scripts/Seasonal/Frostvale/NorthlandsMonk.cs
 //cs_include Scripts/Seasonal/LuckyDay/LuckyDayShamrockFairMerge.cs
 //cs_include Scripts/Seasonal/LuckyDay/EvolvedLeprechaun.cs
+//cs_include Scripts/Seasonal/StaffBirthdays/DageTheEvil/CoreDageBirthday.cs
+//cs_include Scripts/Seasonal/StaffBirthdays/DageTheEvil/DarkBirthdayTokenMerge.cs
+//cs_include Scripts/Seasonal/StaffBirthdays/DageTheEvil/ExaltedHarbinger.cs
 //cs_include Scripts/Seasonal/MayThe4th/DarkLord.cs
 //cs_include Scripts/Seasonal/MayThe4th/MurderMoonStory.cs
 //cs_include Scripts/Seasonal/MayThe4th/MurderMoonMerge.cs
+//cs_include Scripts/Seasonal/Mogloween/PumpkinLord(Class).cs
 //cs_include Scripts/Seasonal/Mogloween/VampireLord(Class).cs
 //cs_include Scripts/Legion/Various/SoulSand.cs
 //cs_include Scripts/Legion/Various/LegionBonfire.cs
@@ -76,7 +85,8 @@ tags: all classes,class,farm,complete,all
 //cs_include Scripts/Other/Concerts/DoomMetalNecro.cs
 //cs_include Scripts/Legion/LegionExcercise/LegionExercise3.cs
 //cs_include Scripts/Legion/LegionExcercise/LegionExercise4.cs
-//cs_include Scripts/Legion/Various/UndeadLegionMerge.cs
+//cs_include Scripts/Legion/MergeShops/UndeadLegionMerge.cs
+//cs_include Scripts/Hollowborn/Materials/HollowSoul.cs
 //cs_include Scripts/Legion/Various/ExaltedSoulCleaver.cs
 //cs_include Scripts/Nation/Various/Archfiend.cs
 //cs_include Scripts/Other/Classes/BloodSorceress.cs
@@ -87,10 +97,15 @@ tags: all classes,class,farm,complete,all
 //cs_include Scripts/Other/Classes/DragonslayerGeneral.cs
 //cs_include Scripts/Other/Classes/Enforcer.cs
 //cs_include Scripts/Other/Classes/FrostSpiritReaver.cs
+//cs_include Scripts/Other/Classes/GrimNecromancer[600kAC].cs
 //cs_include Scripts/Other/Classes/HighSeasCommander[10y].cs
 //cs_include Scripts/Other/Classes/LightMage.cs
+//cs_include Scripts/Other/Classes/MechaJouster.cs
 //cs_include Scripts/Other/Classes/Necromancer.cs
+//cs_include Scripts/Other/Classes/ProtoSartorium.cs
+//cs_include Scripts/Other/Classes/Rustbucket.cs
 //cs_include Scripts/Other/Classes/ScarletSorceress.cs
+//cs_include Scripts/Other/Classes/SkyChargedGrenadier[9yMem].cs
 //cs_include Scripts/Other/Classes/Curio-Classes/AbyssalAngelsShadow.cs
 //cs_include Scripts/Chaos/ChaosAvengerPreReqs.cs
 //cs_include Scripts/Good/BLoD/CoreBLOD.cs
@@ -137,7 +152,33 @@ tags: all classes,class,farm,complete,all
 //cs_include Scripts/Story/Borgars.cs
 //cs_include Scripts/Story/ElegyofMadness(Darkon)/CoreAstravia.cs
 //cs_include Scripts/Other/Classes/DragonOfTime.cs
+//cs_include Scripts/Other/MergeShops/GooseMerge.cs
+//cs_include Scripts/Story/ShadowsOfChaos/CoreSoC.cs
+//cs_include Scripts/Other/MergeShops/BrightForestMerge.cs
+//cs_include Scripts/Story/QueenofMonsters/Extra/InfernalArena.cs
+//cs_include Scripts/Other/MergeShops/DoomLegacyMerge.cs
+//cs_include Scripts/Other/MergeShops/CelestialChallengerMerge.cs
+//cs_include Scripts/Other/MergeShops/SpoilsofLightMerge.cs
+//cs_include Scripts/Seasonal/NewYear/ArchiveofTimeMerge.cs
+//cs_include Scripts/Other/MergeShops/CrocriverMerge.cs
+//cs_include Scripts/Other/MergeShops/SuperSlayinMerge.cs
+//cs_include Scripts/Story/DreamPalace.cs
+//cs_include Scripts/Other/MergeShops/DreampalaceMerge.cs
+//cs_include Scripts/Other/MergeShops/BonecastleMerge.cs
+//cs_include Scripts/Other/MergeShops/CelestialRealmMerge.cs
+//cs_include Scripts/Other/MergeShops/3LittleWolvesHousesMerge.cs
+//cs_include Scripts/Other/Various/Potions.cs
+//cs_include Scripts/Story/CruxShip.cs
+//cs_include Scripts/Seasonal/Mogloween/MoonlightKhopeshMerge.cs
+//cs_include Scripts/Other/MergeShops/ThirdspellMerge.cs
+//cs_include Scripts/Seasonal/Friday13th/MergeShops/ShadowMerge.cs
+//cs_include Scripts/Darkon/MergeShops/ArcanaInvokerResourceMerge.cs
+//cs_include Scripts/Seasonal/BlackFriday/ShadowofDoom/CoreShadowofDoom.cs
+//cs_include Scripts/Story/FableForest.cs
+//cs_include Scripts/Other/Classes/ArcanaInvoker[Non-Insignia].cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
+using Skua.Core.Options;
 
 public class AllClasses
 {
@@ -149,7 +190,7 @@ public class AllClasses
     private BlazeBinder BB = new();
     private Cryomancer Cryo = new();
     private LordOfOrder LOO = new();
-    #endregion
+    #endregion Dailies
 
     #region Rep
     private Arachnomancer Arach = new();
@@ -169,7 +210,7 @@ public class AllClasses
     private StoneCrusher SC = new();
     private ThiefOfHours TOH = new();
     private TrollSpellsmith TS = new();
-    #endregion
+    #endregion Rep
 
     #region Member
     private AlphaOmega AO = new();
@@ -184,19 +225,23 @@ public class AllClasses
     private DrakelWarlord DW = new();
     private LegionDoomKnight LDK = new();
     private LegendaryElementalWarrior LEW = new();
+    private Renegade Ren = new();
     private UndeadSlayer US = new();
-    #endregion
+    #endregion Member
 
     #region Seasonal
     private AlphaPirate APir = new();
     private DarkLord DL = new();
     private EvolvedLeprechaun EL = new();
+    private ExaltedHarbinger EH = new();
     private FrostvalBarbarian FB = new();
     private LegionSwordMasterAssassin LSMA = new();
     private NorthlandsMonk NM = new();
     private PirateClass Pirate = new();
+    private ShadowDragonShinobi SDS = new();
+    private PumpkinLord PL = new();
     private VampireLord VL = new();
-    #endregion
+    #endregion Seasonal
 
     #region Various
     private AbyssalAngelsShadow AAS = new();
@@ -209,16 +254,22 @@ public class AllClasses
     private Enforcer Enf = new();
     private ExaltedSoulCleaver ESC = new();
     private FrostSpiritReaver FSR = new();
+    private GrimNecromancer GN = new();
     private HighSeasCommander HSC = new();
     private InfiniteLegionDC ILDC = new();
     private LightMage LM = new();
+    private MechaJouster MJ = new();
     private Necromancer Necro = new();
     private NeoMetalNecro NMN = new();
+    private ProtoSartorium PS = new();
+    private Rustbucket RB = new();
     private ScarletSorceress SS = new();
+    private SkyChargedGrenadier SCG = new();
     private SwordMaster SM = new();
-    #endregion
+    #endregion Various
 
     #region End game
+    private ArcanaInvoker AI = new();
     private CoreArchMage AM = new();
     private ArchPaladin AP = new();
     private ChaosAvengerClass CAV = new();
@@ -228,144 +279,180 @@ public class AllClasses
     private VerusDoomKnightClass VDK = new();
     private CoreVHL VHL = new();
     private CoreYnR YNR = new();
-    #endregion
+    #endregion End game
+
+
+    public string OptionsStorage = "GetAllClasses";
+    public bool DontPreconfigure = true;
+    public List<IOption> Options = new()
+    {
+        new Option<bool>("RankALL", "Rankup All Classes", "wether to Rankup the class to 10 after acquiring it", true),
+        CoreBots.Instance.SkipOptions,
+    };
 
     public void ScriptMain(IScriptInterface Bot)
     {
+        int GoldBoostID = Bot.Boosts.GetBoostID(BoostType.Gold, true);
+        int ClassBoostID = Bot.Boosts.GetBoostID(BoostType.Class, true);
+        int ExperienceBoostID = Bot.Boosts.GetBoostID(BoostType.Experience, true);
+        int ReputationBoostID = Bot.Boosts.GetBoostID(BoostType.Reputation, true);
+
+        Core.BankingBlackList.AddRange(
+            Bot.Inventory.Items
+                .Where(x => x.ID == GoldBoostID || x.ID == ClassBoostID || x.ID == ExperienceBoostID || x.ID == ReputationBoostID)
+                .Cast<ItemBase>()
+                .Select(item => item.Name)
+        );
+
+
         Core.SetOptions();
-        Core.DL_Enable();
+
         GetAllClasses();
+
         Core.SetOptions(false);
     }
 
     public void GetAllClasses()
     {
-        DailyClasses();
-        RepClasses();
-        MemClasses();
-        SeasonalClasses();
-        VariousClasses();
-        EndGameClasses();
+        bool rankUpClass = Bot.Config!.Get<bool>("RankALL");
+
+        DailyClasses(rankUpClass);
+        RepClasses(rankUpClass);
+        MemClasses(rankUpClass);
+        SeasonalClasses(rankUpClass);
+        VariousClasses(rankUpClass);
+        EndGameClasses(rankUpClass);
     }
 
-    public void DailyClasses()
+    public void DailyClasses(bool rankUpClass)
     {
         Core.Logger("=== Doing Daily Classes ===");
 
-        BB.GetClass();
+        BB.GetClass(rankUpClass);
         Daily.CollectorClass();
-        Cryo.DoCryomancer();
+        Cryo.DoCryomancer(rankUpClass);
         Daily.DeathKnightLord();
-        LOO.GetLoO();
+        LOO.GetLoO(rankUpClass);
         Daily.Pyromancer();
         Daily.ShadowScytheClass();
 
         Core.Logger("=== Daily Classes - Completed! ===");
     }
 
-    public void RepClasses()
+    public void RepClasses(bool rankUpClass)
     {
         Core.Logger("=== Doing Reputation Classes ===");
 
-        Arach.GetArach();
-        CS.GetCS();
-        DBSK.GetDSK();
-        ED.GetClass();
-        EI.GetEI();
-        ES.GetES();
-        GB.GetGB();
-        HE.GetHE();
-        IC.GetIC();
-        Lycan.GetLycan();
-        MR.GetMR();
-        Pal.GetPaladin();
-        RBM.GetRBM();
-        Shaman.GetShaman();
-        SC.GetSC();
-        TOH.GetToH();
-        TS.GetTS();
+        Arach.GetArach(rankUpClass);
+        CS.GetCS(CSvariant.Mystic, rankUpClass);
+        DBSK.GetDSK(rankUpClass);
+        ED.GetClass(rankUpClass);
+        EI.GetEI(rankUpClass);
+        ES.GetES(rankUpClass);
+        GB.GetGB(rankUpClass);
+        HE.GetHE(rankUpClass);
+        IC.GetIC(rankUpClass);
+        Lycan.GetLycan(rankUpClass);
+        MR.GetMR(rankUpClass);
+        Pal.GetPaladin(rankUpClass);
+        RBM.GetRBM(rankUpClass);
+        Shaman.GetShaman(rankUpClass);
+        SC.GetSC(rankUpClass);
+        TOH.GetToH(rankUpClass);
+        TS.GetTS(rankUpClass);
 
         Core.Logger("=== Reputation Classes - Completed! ===");
     }
 
-    private void MemClasses()
+    private void MemClasses(bool rankUpClass)
     {
         if (!Core.IsMember)
             return;
 
         Core.Logger("=== Doing Member Classes ===");
 
-        AO.GetAlphaOmega();
-        Acolyte.GetAcolyte();
-        Bard.GetBard();
-        BM.GetBM();
-        BA.GetBAnc();
-        BT.Getclass();
-        CA.GetChronoAss();
-        DK.GetDK();
-        DoomK.GetDoomKnight();
-        DW.GetClass();
-        LDK.GetLDK();
-        LEW.GetLEW();
-        US.GetUS();
+        AO.GetAlphaOmega(rankUpClass);
+        Acolyte.GetAcolyte(rankUpClass);
+        Bard.GetBard(rankUpClass);
+        BM.GetBM(rankUpClass);
+        BA.GetBAnc(rankUpClass);
+        BT.Getclass(rankUpClass);
+        CA.GetChronoAss(rankUpClass);
+        DK.GetDK(rankUpClass);
+        DoomK.GetDoomKnight(rankUpClass);
+        DW.GetClass(rankUpClass);
+        LDK.GetLDK(rankUpClass);
+        LEW.GetLEW(rankUpClass);
+        Ren.Getclass(rankUpClass);
+        US.GetUS(rankUpClass);
 
         Core.Logger("=== Member Classes - Completed! ===");
     }
 
-    private void SeasonalClasses()
+    private void SeasonalClasses(bool rankUpClass)
     {
         Core.Logger("=== Doing Seasonal Classes ===");
 
-        APir.GetAlphaPirate();
-        DL.GetDL();
-        EL.GetClass();
-        FB.GetFB();
-        LSMA.GetClass();
-        NM.GetNlMonk();
-        VL.GetClass();
-        Pirate.GetPirate();
+        APir.GetAlphaPirate(rankUpClass);
+        DL.GetDL(rankUpClass);
+        EL.GetClass(rankUpClass);
+        EH.GetEH(rankUpClass);
+        FB.GetFB(rankUpClass);
+        LSMA.GetClass(rankUpClass);
+        NM.GetNlMonk(rankUpClass);
+        Pirate.GetPirate(rankUpClass);
+        SDS.GetClass(rankUpClass);
+        PL.GetClass(rankUpClass);
+        VL.GetClass(rankUpClass);
 
         Core.Logger("=== Seasonal Classes - Completed! ===");
     }
 
-    private void VariousClasses()
+    private void VariousClasses(bool rankUpClass)
     {
         Core.Logger("=== Doing Various Classes ===");
 
-        AAS.GetAbyssal();
-        AF.GetArchfiend();
-        BS.GetBSorc();
-        DMN.GetClass();
-        DS.GetDragonslayer();
-        DSG.GetDSGeneral();
-        DSS.GetDSS();
-        Enf.GetClass();
-        ESC.GetClass();
-        FSR.GetFSR();
-        HSC.GetHSC();
-        ILDC.GetILDC();
-        LM.GetLM();
-        Necro.GetNecromancer();
-        NMN.GetClass();
-        SS.GetSSorc();
-        SM.GetSwordMaster();
+        AAS.GetAbyssal(rankUpClass);
+        AF.GetArchfiend(rankUpClass);
+        BS.GetBSorc(rankUpClass);
+        DMN.GetClass(rankUpClass);
+        DS.GetDragonslayer(rankUpClass);
+        DSG.GetDSGeneral(rankUpClass);
+        DSS.GetDSS(rankUpClass);
+        Enf.GetClass(rankUpClass);
+        ESC.GetClass(rankUpClass);
+        FSR.GetFSR(rankUpClass);
+        GN.GetGN(rankUpClass);
+        HSC.GetHSC(rankUpClass);
+        ILDC.GetILDC(rankUpClass);
+        LM.GetLM(rankUpClass);
+        MJ.GetMJ(rankUpClass);
+        Necro.GetNecromancer(rankUpClass);
+        NMN.GetClass(rankUpClass);
+        PS.GetPS(rankUpClass);
+        RB.GetRustbucket(rankUpClass);
+        SS.GetSSorc(rankUpClass);
+        SCG.GetSCG(rankUpClass);
+        SM.GetSwordMaster(rankUpClass);
 
         Core.Logger("=== Various Classes - Completed! ===");
     }
 
-    private void EndGameClasses()
+    private void EndGameClasses(bool rankUpClass)
     {
         Core.Logger("=== Doing End Game Classes ===");
 
-        AM.GetAM();
-        AP.GetAP();
-        CAV.GetClass();
-        DOT.GetDoT();
-        LC.GetLC();
-        LR.GetLR(true);
-        VDK.GetClass();
-        VHL.GetVHL();
-        YNR.GetYnR();
+        AI.GetAI(rankUpClass);
+        AM.GetAM(rankUpClass);
+        AP.GetAP(rankUpClass);
+        CAV.GetClass(rankUpClass);
+        DOT.GetDoT(rankUpClass, doExtra: false);
+        LC.GetLC(rankUpClass);
+        LR.GetLR(rankUpClass);
+        VDK.GetClass(rankUpClass);
+        VHL.GetVHL(rankUpClass);
+        YNR.GetYnR(rankUpClass);
+
 
         Core.Logger("=== End Game Classes - Completed! ===");
     }
