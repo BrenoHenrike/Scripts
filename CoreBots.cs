@@ -70,7 +70,7 @@ public class CoreBots
     // [Can Change] Whether you wish to equip solo equipment
     public bool SoloGearOn { get; set; } = true;
     // [Can Change] Names of your soloing equipment
-    public string[] SoloGear { get; set; } = Array.Empty<string>();
+    public string[] SoloGear { get; set; } = [];
     // [Can Change] Name of your farming class
     public string FarmClass { get; set; } = "Generic";
     // [Can Change] Mode of farming class, if it has multiple. 
@@ -78,7 +78,7 @@ public class CoreBots
     // [Can Change] Whether you wish to equip farm equipment
     public bool FarmGearOn { get; set; } = true;
     // [Can Change] Names of your farming equipment
-    public string[] FarmGear { get; set; } = Array.Empty<string>();
+    public string[] FarmGear { get; set; } = [];
     // [Can Change] Some Sagas use the hero alignment to give extra reputation, change to your desired rep (Alignment.Evil or Alignment.Good).
     public int HeroAlignment { get; set; } = (int)Alignment.Evil;
 
@@ -303,8 +303,8 @@ public class CoreBots
         }
     }
 
-    public List<string> BankingBlackList = new();
-    private readonly List<string> EquipmentBeforeBot = new();
+    public List<string> BankingBlackList = [];
+    private readonly List<string> EquipmentBeforeBot = [];
     private bool joinedPrison = false;
     private bool prisonListernerActive = false;
     public string loadedBot = String.Empty;
@@ -1204,7 +1204,7 @@ public class CoreBots
         if (Bot.Shops.ID != shopID || Bot.Shops.Items == null)
         {
             Bot.ShowMessageBox("Failed to load shop the shop and get it's data" + reinstallCleanFlash, "Shop Data Loading Failed");
-            return new();
+            return [];
         }
         return Bot.Shops.Items;
     }
@@ -1407,8 +1407,8 @@ public class CoreBots
 
         // Defining all the lists to be used=
         List<Quest> questData = EnsureLoad(questIDs);
-        Dictionary<Quest, int> chooseQuests = new();
-        Dictionary<Quest, int> nonChooseQuests = new();
+        Dictionary<Quest, int> chooseQuests = [];
+        Dictionary<Quest, int> nonChooseQuests = [];
 
         foreach (Quest q in questData)
         {
@@ -1585,11 +1585,11 @@ public class CoreBots
     {
         if (questIDs == null || questIDs.Length == 0)
         {
-            questIDs = new int[] { 0 }; // Default value
+            questIDs = [0]; // Default value
         }
 
         DebugLogger(this);
-        List<Quest> QuestData = EnsureLoad(questIDs?.Where(q => q > 0).ToArray() ?? Array.Empty<int>());
+        List<Quest> QuestData = EnsureLoad(questIDs?.Where(q => q > 0).ToArray() ?? []);
 
         if (RegisterQuest)
             Bot.Lite.ReacceptQuest = true;
@@ -1841,7 +1841,7 @@ public class CoreBots
             if (toReturn == null || !toReturn.Any())
             {
                 Logger($"Failed to get the Quest Object for questIDs {String.Join(" | ", questIDs)}" + reinstallCleanFlash, "EnsureLoad B.4", messageBox: true, stopBot: true);
-                return new();
+                return [];
             }
         }
 
@@ -1940,15 +1940,15 @@ public class CoreBots
     public string[] QuestRewards(params int[] questIDs)
     {
         if (questIDs.Length == 0)
-            return Array.Empty<string>();
-        List<string> toReturn = new();
+            return [];
+        List<string> toReturn = [];
         foreach (var q in EnsureLoad(questIDs))
         {
             if (q.Rewards == null || q.Rewards.Count == 0)
                 continue;
             toReturn.AddRange(q.Rewards.Select(i => i.Name));
         }
-        return toReturn.ToArray();
+        return [.. toReturn];
     }
 
     /// <summary>
@@ -2591,8 +2591,8 @@ public class CoreBots
             if (hasItem) return;
         }
 
-        List<string> DOTClasses = new()
-        {
+        List<string> DOTClasses =
+        [
         "ShadowStalker of Time",
         "ShadowWeaver of Time",
         "ShadowWalker of Time",
@@ -2607,7 +2607,7 @@ public class CoreBots
         "Shadow Dragon Shinobi",
         "Legion Revenant",
         "Void Highlord",
-    };
+    ];
 
         // Check if the bot has any of the classes from the DOTClasses list
         bool hasAnyClass = DOTClasses.Any(c => CheckInventory(c));
@@ -2812,7 +2812,7 @@ public class CoreBots
     }
 
 
-    private readonly List<int> KilledMonsters = new();
+    private readonly List<int> KilledMonsters = [];
     private void CleanKilledMonstersList(string map)
         => KilledMonsters.Clear();
     private void KilledMonsterListener(int monsterMapID)
@@ -2855,7 +2855,7 @@ public class CoreBots
         }
     }
 
-    private readonly List<int> KilledDungeonMonsters = new();
+    private readonly List<int> KilledDungeonMonsters = [];
     private void CleanKilledDungeonMonstersList(string map)
         => KilledMonsters.Clear();
     private void KilledDungeonMonsterListener(int monsterMapID)
@@ -2873,8 +2873,8 @@ public class CoreBots
     /// </summary>
     public bool isUpholder()
     {
-        string[] upholder = new string[]
-        {
+        string[] upholder =
+        [
             "1st Upholder",
             "2nd Upholder",
             "3rd Upholder",
@@ -2890,7 +2890,7 @@ public class CoreBots
             "13th Upholder",
             "14th Upholder",
             "15th Upholder",
-        };
+        ];
 
         foreach (string badge in upholder)
             if (HasWebBadge(badge))
@@ -3008,9 +3008,8 @@ public class CoreBots
         {
             foreach (string cs in currentScript.Where(x => x.StartsWith("//cs_include")).ToArray())
             {
-                List<string> pathParts = new() { ClientFileSources.SkuaDIR };
-                pathParts.AddRange(cs.Replace("//cs_include ", "").Replace("\\", "/").Split('/'));
-                includedScript = File.ReadAllLines(Path.Combine(pathParts.ToArray()));
+                List<string> pathParts = [ClientFileSources.SkuaDIR, .. cs.Replace("//cs_include ", "").Replace("\\", "/").Split('/')];
+                includedScript = File.ReadAllLines(Path.Combine([.. pathParts]));
 
                 if (includedScript.Any(line => line.Trim() == $"public class {_class}"))
                     break;
@@ -3394,8 +3393,8 @@ public class CoreBots
         get
         {
             if (CharacterID <= 0)
-                return new();
-            return JsonConvert.DeserializeObject<List<Badge>>(GetRequest($"https://account.aq.com/CharPage/Badges?ccid={CharacterID}")) ?? new();
+                return [];
+            return JsonConvert.DeserializeObject<List<Badge>>(GetRequest($"https://account.aq.com/CharPage/Badges?ccid={CharacterID}")) ?? [];
         }
     }
 
@@ -3449,10 +3448,10 @@ public class CoreBots
 
     public int[] FromTo(int from, int to)
     {
-        List<int> toReturn = new();
+        List<int> toReturn = [];
         for (int i = from; i < to + 1; i++)
             toReturn.Add(i);
-        return toReturn.ToArray();
+        return [.. toReturn];
     }
 
     public void BankACMisc()
@@ -3465,8 +3464,8 @@ public class CoreBots
 
         // Add extra (Misc) Items that *shouldnt* be banked (seperated by a comma ","),
         // by their itemid here  vvvvv 
-        int?[] Extras = { 18927, 38575 };
-        List<ItemCategory> whiteList = new() { ItemCategory.Note, ItemCategory.Item, ItemCategory.Resource, ItemCategory.QuestItem };
+        int?[] Extras = [18927, 38575];
+        List<ItemCategory> whiteList = [ItemCategory.Note, ItemCategory.Item, ItemCategory.Resource, ItemCategory.QuestItem];
 
         // If boosts are not enabled, bank those too
         if (!Bot.Boosts.Enabled && (CBO_Active() ||
@@ -3486,7 +3485,7 @@ public class CoreBots
 
     public void BankACUnenhancedGear()
     {
-        List<ItemCategory> Whitelisted = new() { ItemCategory.Class, ItemCategory.Helm, ItemCategory.Cape };
+        List<ItemCategory> Whitelisted = [ItemCategory.Class, ItemCategory.Helm, ItemCategory.Cape];
         ToBank(Bot.Inventory.Items.Where(i =>
             (Whitelisted.Contains(i.Category) ||
             i.ItemGroup == "Weapon") &&
@@ -4145,7 +4144,7 @@ public class CoreBots
                 if (ButlerOnMe())
                 {
                     string[] lockedMaps =
-                    {
+                    [
                     "tercessuinotlim",
                     "doomvaultb",
                     "doomvault",
@@ -4171,7 +4170,7 @@ public class CoreBots
                     "voidxyfrag",
                     "voidnerfkitten",
                     "seavoice"
-                };
+                ];
                     if (lockedMaps.Contains(strippedMap))
                         WriteFile(ButlerLogPath(), Bot.Map.FullName);
                 }
@@ -4509,7 +4508,7 @@ public class CoreBots
     /// Checks if the room you're in is a public room or not
     /// </summary>
     /// <returns>If room number is less than 1000</returns>
-    public bool inPublicRoom()
+    public bool InPublicRoom()
     {
         Bot.Wait.ForMapLoad(Bot.Map.Name);
         if (!Int32.TryParse(Bot.Map.FullName.Split('-').Last(), out int nr))
@@ -4623,7 +4622,7 @@ public class CoreBots
     {
         JumpWait();
 
-        string[] classesToCheck = new[] { "TimeKeeper", "Chaos Avenger", "Void Highlord", "Void HighLord (IoDA)", "Yami no Ronin", "ArchPaladin" };
+        string[] classesToCheck = ["TimeKeeper", "Chaos Avenger", "Void Highlord", "Void HighLord (IoDA)", "Yami no Ronin", "ArchPaladin"];
 
         foreach (string Class in classesToCheck)
         {
@@ -4706,7 +4705,7 @@ public class CoreBots
     {
         JumpWait();
 
-        string[] classesToCheck = new[] { "Yami no Ronin", "Chrono Assassin" };
+        string[] classesToCheck = ["Yami no Ronin", "Chrono Assassin"];
 
         foreach (string Class in classesToCheck)
         {
@@ -4919,7 +4918,7 @@ public class CoreBots
             return false;
         }
 
-        if (!Int32.TryParse(identity[^4..], out int _numbers))
+        if (!Int32.TryParse(identity[^4..], out _))
         {
             FaultyInput("It's missing the 4 digits at the end");
             return false;
@@ -4947,24 +4946,14 @@ public class CoreBots
         void FaultyInput(string text) => Bot.ShowMessageBox($"Invalid Discord username detected:\n{text}!", "Invalid AutoReport Identity");
     }
 
-    public class LockedQuestData
+    public class LockedQuestData(Quest q, int currentValue)
     {
-        public int ID { get; set; }
-        public string Name { get; set; }
+        public int ID { get; set; } = q.ID;
+        public string Name { get; set; } = q.Name;
 
-        public int ExpectedValue { get; set; }
-        public int CurrentValue { get; set; }
-        public int Slot { get; set; }
-
-        public LockedQuestData(Quest q, int currentValue)
-        {
-            ID = q.ID;
-            Name = q.Name;
-
-            ExpectedValue = q.Value - 1;
-            CurrentValue = currentValue;
-            Slot = q.Slot;
-        }
+        public int ExpectedValue { get; set; } = q.Value - 1;
+        public int CurrentValue { get; set; } = currentValue;
+        public int Slot { get; set; } = q.Slot;
     }
 
     #endregion
@@ -5053,7 +5042,7 @@ public class CoreBots
 
         // Creating ReadMe.txt
         string[] ReadMe =
-        {
+        [
             "Welcome and thank you for using Skua's Master Bots!",
             "",
             "=== Basic Information ===",
@@ -5123,7 +5112,7 @@ public class CoreBots
                         "· Purple\t\t- Contributor to RBot.",
                     "Thanks to you, for reading this far down. ReadMe's are usually a drag so I tried to keep it to the point.",
                     "And thanks to everyone who has put time and effort RBot/Skua and the Master Bots! ~ Exelot",
-        };
+        ];
         WriteFile(readMePath, ReadMe);
 
         // Opening ReadMe.txt
@@ -5168,7 +5157,7 @@ public class CoreBots
                     botPath = botPath.Replace("Nulgath\\", "Nation\\");
 
                 string[] allowedPathStarters =
-                {
+                [
                     "Army",
                     "Chaos",
                     "Dailies",
@@ -5187,7 +5176,7 @@ public class CoreBots
                     "Templates",
                     "Tools",
                     "WIP"
-                };
+                ];
 
                 if (!allowedPathStarters.Any(x => botPath.StartsWith(x)))
                     botPath = "CustomPath\\" + botPath.Split("\\").Last();
@@ -5301,12 +5290,12 @@ public class CoreBots
                     }
 
                     string[] fileContent =
-                    {
+                    [
                     $"UserID: {UserID}",
                     $"genericDataConsent: {genericData}",
                     $"scriptNameConsent: {scriptNameData}",
                     $"stopTimeConsent: {stopTimeData}"
-                };
+                ];
 
                     WriteFile(path, fileContent);
 
@@ -5342,7 +5331,7 @@ public class CoreBots
         if (!CBO_Active())
             return;
 
-        CBOList = File.ReadAllLines(CBO_Path()).ToList();
+        CBOList = [.. File.ReadAllLines(CBO_Path())];
 
         //Generic
         if (CBOBool("PrivateRooms", out bool _PrivateRooms))
@@ -5395,7 +5384,7 @@ public class CoreBots
             LoadedQuestLimit = _LoadedQuestLimit;
 
         //Class Equipment
-        List<string> _SoloGear = new();
+        List<string> _SoloGear = [];
         if (CBOString("Helm1Select", out string _Helm1))
             _SoloGear.Add(_Helm1);
         if (CBOString("Armor1Select", out string _Armor1))
@@ -5409,9 +5398,9 @@ public class CoreBots
         if (CBOString("GroundItem1Select", out string _GroundItem1))
             _SoloGear.Add(_GroundItem1);
         if (_SoloGear.Count > 0)
-            SoloGear = _SoloGear.ToArray();
+            SoloGear = [.. _SoloGear];
 
-        List<string> _FarmGear = new();
+        List<string> _FarmGear = [];
         if (CBOString("Helm2Select", out string _Helm2))
             _FarmGear.Add(_Helm2);
         if (CBOString("Armor2Select", out string _Armor2))
@@ -5425,7 +5414,7 @@ public class CoreBots
         if (CBOString("GroundItem2Select", out string _GroundItem2))
             _FarmGear.Add(_GroundItem2);
         if (_FarmGear.Count > 0)
-            FarmGear = _FarmGear.ToArray();
+            FarmGear = [.. _FarmGear];
 
         var item = Bot.Inventory.Items.Concat(Bot.Bank.Items)
                      .FirstOrDefault(x => x.Name == "Infernal ArchFiend" || x.Name == "Celestial ArchFiend" || x.Name == "Radiant Goddess of War");
@@ -5472,7 +5461,7 @@ public class CoreBots
         return true;
     }
 
-    private List<string> CBOList = new();
+    private List<string> CBOList = [];
 
     public bool OneTimeMessage(string internalName, string message, bool messageBox = true, bool forcedMessageBox = false, bool yesAndNo = false)
     {
@@ -5490,7 +5479,7 @@ public class CoreBots
     }
     private readonly static string OTM_File = Path.Combine(ClientFileSources.SkuaDIR, "OneTimeMessages.txt");
     private bool OTM_Contains(string line) => File.Exists(OTM_File) && File.ReadAllLines(OTM_File).Contains(line);
-    private void OTM_Write(string line) => WriteFile(OTM_File, File.Exists(OTM_File) ? File.ReadAllLines(OTM_File).Append(line).ToArray() : new[] { line });
+    private void OTM_Write(string line) => WriteFile(OTM_File, File.Exists(OTM_File) ? [.. File.ReadAllLines(OTM_File), line] : new[] { line });
 
     #endregion
 
@@ -5590,7 +5579,7 @@ public class CoreBots
                     );
 
                     string[] youtubeLinks =
-                            {
+                            [
                                 "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
                                 "https://www.youtube.com/watch?v=UtlaTNI1TaU",
                                 "https://www.youtube.com/watch?v=DuwY8U1AY7k",
@@ -5598,7 +5587,7 @@ public class CoreBots
                                 "https://www.youtube.com/watch?v=oavMtUWDBTM",
                                 "https://www.youtube.com/watch?v=LH5ay10RTGY",
                                 "https://www.youtube.com/watch?v=sSTXrRXjdR8"
-                            };
+                            ];
 
                     Random random = new();
                     string randomLink = youtubeLinks[random.Next(youtubeLinks.Length)];
@@ -5683,7 +5672,7 @@ public static class UtilExtensionsS
         => source.ToList().Find(match: Match);
     public static bool TryFind<T>(this IEnumerable<T> source, Predicate<T> Match, out T? toReturn)
         => (toReturn = source.Find(Match)) != null;
-    public static string FormatForCompare(this string input) => new string(input
+    public static string FormatForCompare(this string input) => new(input
     .Trim()
     .ToLowerInvariant()
     .Normalize(System.Text.NormalizationForm.FormKD)
