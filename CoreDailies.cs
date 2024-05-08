@@ -125,13 +125,20 @@ public class CoreDailies
     }
 
 
-    //new one
     /// <summary>
-    /// Checks if the daily is complete, if not will add the specified drops and unbank if necessary
+    /// Checks if a daily, weekly, or monthly quest is complete and handles item banking and drop list.
     /// </summary>
-    /// <param name="quest">ID of the quest</param>
-    /// <param name="items">Items to add to drop grabber and unbank</param>
-    /// <returns></returns>
+    /// <param name="quest">The quest ID to check.</param>
+    /// <param name="any">Unused parameter, defaulting to true.</param>
+    /// <param name="shouldUnBank">Determines if items should be unbanked, defaulting to true.</param>
+    /// <param name="items">An array of item names to check and handle.</param>
+    /// <returns>True if the quest is not complete; otherwise, false.</returns>
+    /// <remarks>
+    /// This method first checks if the specified quest is already completed. If so, it logs a message and returns false.
+    /// If the quest is not completed, it then checks the provided items. If a single item is provided and it's at max stack in the inventory, it logs a message and returns false.
+    /// If multiple items are provided, it checks each item and unbanks them if necessary, then adds them to the drop list.
+    /// The method also adds quest rewards and requirements to the drop list, excluding 'Arrow' and items already in the inventory.
+    /// </remarks>
     public bool CheckDaily(int quest, bool any = true, bool shouldUnBank = true, params string[] items)
     {
         if (Bot.Quests.IsDailyComplete(quest))
