@@ -9,6 +9,7 @@ tags: null
 //cs_include Scripts/Legion/CoreLegion.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/Legion/SevenCircles(War).cs
+//cs_include Scripts/Legion\HeadOfTheLegionBeast.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
@@ -21,6 +22,7 @@ public class SevenCirclesWarMerge
     public CoreLegion Legion = new();
     private CoreAdvanced Adv = new();
     public SevenCircles Circles = new();
+    public HeadoftheLegionBeast HeadoftheLegionBeast = new();
     private static CoreAdvanced sAdv = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
@@ -89,6 +91,11 @@ public class SevenCirclesWarMerge
                     //Adv.BestGear(RacialGearBoost.Undead);
                     Adv.SmartEnhance(Core.SoloClass);
                     Core.HuntMonster("sevencircleswar", "The Beast", req.Name, quant, isTemp: false, publicRoom: true);
+                    break;
+
+                case "Stare of Greed":
+                    Core.FarmingLogger(req.Name, quant);
+                    HeadoftheLegionBeast.CircleHelm(req.Name, true);
                     break;
 
                 case "Souls of Heresy":
