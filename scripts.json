@@ -5912,7 +5912,7 @@
       "null"
     ],
     "path": "Story/AgeOfRuin/CoreAOR.cs",
-    "size": 12819,
+    "size": 12896,
     "fileName": "CoreAOR.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/CoreAOR.cs"
   },
@@ -11538,6 +11538,26 @@
     "size": 4924,
     "fileName": "VinarasOddMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/VinarasOddMerge.cs"
+  },
+  {
+    "name": "Panopticon Gear Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Panopticon Gear Merge [2439] in /trenchobserve",
+    "tags": [
+      "panopticon",
+      "gear",
+      "merge",
+      "trenchobserve",
+      "teuthi",
+      "amp",
+      "rhizo",
+      "countenance",
+      "artillery",
+      "armament"
+    ],
+    "path": "Other/MergeShops/PanopticonGearMerge.cs",
+    "size": 4565,
+    "fileName": "PanopticonGearMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/PanopticonGearMerge.cs"
   },
   {
     "name": "Djinn Gate Merge",
