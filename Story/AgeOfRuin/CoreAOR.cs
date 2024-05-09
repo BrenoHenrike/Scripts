@@ -327,7 +327,7 @@ public class CoreAOR
         }
     }
 
-    public void DeepWater()
+    public void DeepWater(bool panopticonMerge = false)
     {
         if (Core.isCompletedBefore(9338))
             return;
@@ -354,6 +354,8 @@ public class CoreAOR
 
         // Guardian Spirits (9332)
         Story.KillQuest(9332, "trenchobserve", "Venerated Wraith");
+        if (panopticonMerge)
+            return;
 
         // Enemy in Need (9333)
         Story.MapItemQuest(9333, "trenchobserve", 11978, 4);
