@@ -2065,31 +2065,6 @@ public class CoreBots
     /// <param name="log">Whether it will log that it is killing the monster</param>
     public void KillMonster(string map, string cell, string pad, int monsterID, string? item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
     {
-        // try
-        // {
-        //     if (Bot == null)
-        //     {
-        //         Logger("Bot object is null.");
-        //         return;
-        //     }
-
-        //     if (Bot.TempInv == null)
-        //     {
-        //         Logger("Bot.TempInv object is null.");
-        //         return;
-        //     }
-
-        //     if (Bot.Player == null)
-        //     {
-        //         Logger("Bot.Player object is null.");
-        //         return;
-        //     }
-
-        //     if (Bot.Player.CurrentClass == null)
-        //     {
-        //         Logger("Bot.Player.CurrentClass object is null.");
-        //         return;
-        //     }
 
         if (item != null && (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
             return;
@@ -2099,27 +2074,9 @@ public class CoreBots
 
         Join(map, cell, pad, publicRoom: publicRoom);
 
-        // if (Bot.Monsters == null)
-        // {
-        //     Logger("Bot.Monsters object is null.");
-        //     return;
-        // }
-
-        // if (Bot.Monsters.CurrentAvailableMonsters == null)
-        // {
-        //     Logger("Bot.Monsters.CurrentAvailableMonsters object is null.");
-        //     return;
-        // }
-
         Bot.Options.AggroAllMonsters = false;
         Bot.Options.AggroMonsters = false;
         Monster? monster = Bot.Monsters.MapMonsters.FirstOrDefault(m => m != null && m.Cell == cell && m.ID == monsterID);
-
-        // if (monster == null)
-        // {
-        //     Logger($"Monster [{monsterID}] not found. Something is wrong. Stopping bot", messageBox: true, stopBot: true);
-        //     return;
-        // }
 
         if (item == null)
         {
@@ -2133,16 +2090,55 @@ public class CoreBots
         }
         else _KillForItem(monster!.Name, item, quant, isTemp, log: log, cell: cell);
         Bot.Options.AttackWithoutTarget = false;
-        // }
-        // catch (NullReferenceException ex)
-        // {
-        //     Logger($"An error occurred: {ex.Message}. StackTrace: {ex.StackTrace}", stopBot: true);
-        // }
-        // catch (Exception ex)
-        // {
-        //     Logger($"An unexpected error occurred: {ex.Message}. StackTrace: {ex.StackTrace}", stopBot: true);
-        // }
     }
+
+    /// <summary>
+    /// Attempts to kill a specified monster and optionally collects a specified item.
+    /// </summary>
+    /// <param name="map">The map where the monster is located.</param>
+    /// <param name="cell">The cell within the map to find the monster.</param>
+    /// <param name="pad">The pad within the cell where the monster is located.</param>
+    /// <param name="monsterID">The ID of the monster to kill.</param>
+    /// <param name="itemID">The ID of the item to collect (optional).</param>
+    /// <param name="quant">The quantity of the item to collect (default is 1).</param>
+    /// <param name="isTemp">Whether the item is temporary (default is true).</param>
+    /// <param name="log">Whether to log the action (default is true).</param>
+    /// <param name="publicRoom">Whether to join a public room (default is false).</param>
+    /// <remarks>
+    /// This method checks if the item is already in the inventory or temporary inventory.
+    /// If not, it adds the item to the drop list, joins the specified map, cell, and pad,
+    /// and then proceeds to kill the monster. If an item ID is provided, it will also attempt
+    /// to collect the specified item. The method handles aggro settings and logging.
+    /// </remarks>
+    public void KillMonster(string map, string cell, string pad, int monsterID, int itemID = 0, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
+    {
+
+        if (itemID != 0 && (isTemp ? Bot.TempInv.Contains(itemID, quant) : CheckInventory(itemID, quant)))
+            return;
+
+        if (!isTemp && itemID != 0)
+            AddDrop(itemID);
+
+        Join(map, cell, pad, publicRoom: publicRoom);
+
+        Bot.Options.AggroAllMonsters = false;
+        Bot.Options.AggroMonsters = false;
+        Monster? monster = Bot.Monsters.MapMonsters.FirstOrDefault(m => m != null && m.Cell == cell && m.ID == monsterID);
+
+        if (itemID == 0)
+        {
+            if (log)
+                Logger($"Killing {monster}");
+            ToggleAggro(true);
+            Bot.Kill.Monster(monster!.ID);
+            ToggleAggro(false);
+            JumpWait();
+            Rest();
+        }
+        else _KillForItem(monster!.Name, itemID, quant, isTemp, log: log, cell: cell);
+        Bot.Options.AttackWithoutTarget = false;
+    }
+
 
     /// <summary>
     /// Joins a map and hunt for the monster
@@ -2795,6 +2791,40 @@ public class CoreBots
             DebugLogger(this);
             if (rejectElse)
                 Bot.Drops.RejectExcept(item!);
+        }
+        DebugLogger(this);
+    }
+
+    public void _KillForItem(string name, int itemID = 0, int quantity = 1, bool isTemp = false, bool rejectElse = false, bool log = true, string? cell = null)
+    {
+        DebugLogger(this);
+        if (itemID != 0 && (isTemp ? Bot.TempInv.Contains(itemID, quantity) : CheckInventory(itemID, quantity)))
+        {
+            DebugLogger(this);
+            return;
+        }
+        if (log)
+            FarmingLogger(itemID.ToString(), quantity);
+
+        while (!Bot.ShouldExit && (isTemp ? !Bot.TempInv.Contains(itemID, quantity) : !CheckInventory(itemID, quantity)))
+        {
+            DebugLogger(this);
+            while (!Bot.ShouldExit && cell != null && Bot.Player.Cell != cell)
+            {
+                DebugLogger(this);
+                Jump(cell, "Left");
+                DebugLogger(this);
+                Bot.Wait.ForCellChange(cell);
+            }
+
+            DebugLogger(this);
+            Bot.Combat.Attack(name);
+            DebugLogger(this);
+            Sleep();
+
+            DebugLogger(this);
+            if (rejectElse)
+                Bot.Drops.RejectExcept(itemID);
         }
         DebugLogger(this);
     }
