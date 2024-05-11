@@ -35,9 +35,10 @@ public class CoreAOR
         SeaVoice();
     }
 
-    public void TerminaTemple()
+    private bool isSeaVoiceCalled = false;
+    public void TerminaTemple(bool seaVoice = false)
     {
-        if (Core.isCompletedBefore(9214))
+        if (Core.isCompletedBefore(seaVoice ? 9351 : 9214))
             return;
 
         SoW.ManaCradle();
@@ -51,6 +52,15 @@ public class CoreAOR
         // Loaded Resume (9214)
         Story.KillQuest(9214, "terminatemple", "Clandestine Guard");
         Story.MapItemQuest(9214, "terminatemple", new[] { 11628, 11629, 11630 });
+
+        if (!isSeaVoiceCalled)
+        {
+            isSeaVoiceCalled = true;
+            SeaVoice();
+        }
+        // Mopping Up (9351)
+        if (isSeaVoiceCalled)
+            Story.MapItemQuest(9351, "terminatemple", new[] { 12050, 12051 });
     }
 
     public void AshrayVillage()
@@ -406,5 +416,7 @@ public class CoreAOR
                     "Dead Sea 9348\n" +
                     "Dry Spell 9349\n" +
                     "Blooming Sea 9347 (Rare)\n");
+
+        TerminaTemple(true);
     }
 }
