@@ -6,7 +6,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 117507,
+    "size": 117724,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -5912,7 +5912,7 @@
       "null"
     ],
     "path": "Story/AgeOfRuin/CoreAOR.cs",
-    "size": 13146,
+    "size": 12896,
     "fileName": "CoreAOR.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/CoreAOR.cs"
   },
@@ -9434,7 +9434,7 @@
       "reputation"
     ],
     "path": "Farm/REP/SkyeREP.cs",
-    "size": 643,
+    "size": 771,
     "fileName": "SkyeREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/SkyeREP.cs"
   },
@@ -11889,6 +11889,27 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/ExtinctionGamesMerge.cs"
   },
   {
+    "name": "Skye Emissarys Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Skye Emissarys Merge [2441] in /balemorale",
+    "tags": [
+      "skye",
+      "emissarys",
+      "merge",
+      "balemorale",
+      "gold",
+      "voucher",
+      "k",
+      "halcyon",
+      "virtue",
+      "scepter",
+      "coronation"
+    ],
+    "path": "Other/MergeShops/SkyeEmissarysMerge.cs",
+    "size": 5235,
+    "fileName": "SkyeEmissarysMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/SkyeEmissarysMerge.cs"
+  },
+  {
     "name": "ArchFiendWarlordMerge",
     "description": "null",
     "tags": [
@@ -12170,6 +12191,27 @@
     "size": 5187,
     "fileName": "EtherstormEvilMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/EtherstormEvilMerge.cs"
+  },
+  {
+    "name": "Lord Granvilles Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Lord Granvilles Merge [2442] in /balemorale",
+    "tags": [
+      "lord",
+      "granvilles",
+      "merge",
+      "balemorale",
+      "gold",
+      "voucher",
+      "k",
+      "defender",
+      "defenders",
+      "sheathed",
+      "noble"
+    ],
+    "path": "Other/MergeShops/LordGranvillesMerge.cs",
+    "size": 3507,
+    "fileName": "LordGranvillesMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/LordGranvillesMerge.cs"
   },
   {
     "name": "DruidMerge",
@@ -21572,7 +21614,7 @@
       "aegis"
     ],
     "path": "Army/ArmyFarm/Rep/CoreArmyRep.cs",
-    "size": 11345,
+    "size": 11602,
     "fileName": "CoreArmyRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/CoreArmyRep.cs"
   },
