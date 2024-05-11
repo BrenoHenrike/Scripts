@@ -24,7 +24,7 @@ public class CoreAOR
 
     public void DoAll()
     {
-        TerminaTemple();
+        TerminaTemple(true);
         AshrayVillage();
         SunlightZone();
         TwilightZone();
@@ -52,6 +52,9 @@ public class CoreAOR
         // Loaded Resume (9214)
         Story.KillQuest(9214, "terminatemple", "Clandestine Guard");
         Story.MapItemQuest(9214, "terminatemple", new[] { 11628, 11629, 11630 });
+
+        if (!seaVoice)
+            return;
 
         if (!isSeaVoiceCalled)
         {
