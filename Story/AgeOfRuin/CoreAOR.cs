@@ -415,6 +415,7 @@ public class CoreAOR
 
         SeaVoice();
 
-
+        Core.Logger("Story [WIP]/ not made yet @bogi pls make when not drinkin :thumbsup:", stopBot: true);
+        return;
     }
 }
