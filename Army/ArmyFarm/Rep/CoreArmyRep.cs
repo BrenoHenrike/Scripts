@@ -164,9 +164,9 @@ public class CoreArmyRep
                     return;
                 }
 
-                if (!Core.isCompletedBefore(8965))
+                if (!Core.isCompletedBefore(9350))
                 {
-                    Core.Logger("Quest \"Rippling Heartbeat [8965]\" Not complete (you have to do this yourself), cannot continue the rep");
+                    Core.Logger("Quest \"Frenzy Feast [9350]\" Not complete (you have to do this yourself), cannot continue the rep");
                     return;
                 }
 

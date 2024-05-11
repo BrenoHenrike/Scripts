@@ -387,7 +387,7 @@ public class CoreAOR
 
     public void SeaVoice()
     {
-        if (Core.isCompletedBefore(8965))
+        if (Core.isCompletedBefore(9350))
             return;
 
         DeepWater();
