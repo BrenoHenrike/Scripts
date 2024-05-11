@@ -1566,6 +1566,12 @@ public class CoreFarms
             return;
         }
 
+        if (!Core.isCompletedBefore(8965))
+        {
+            Core.Logger("Quest \"Rippling Heartbeat [8965]\" Not complete (you have to do this yourself), cannot continue the rep");
+            return;
+        }
+
         if (FactionRank("Skye") >= rank)
             return;
 

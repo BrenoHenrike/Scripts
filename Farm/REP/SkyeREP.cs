@@ -6,19 +6,23 @@ tags: Skye, rep, rank, reputation
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/CoreStory.cs
+//cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
+//cs_include Scripts/Story/AgeOfRuin/CoreAOR.cs
 using Skua.Core.Interfaces;
 public class Skye
 {
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new CoreFarms();
     public CoreAdvanced Adv = new();
+    private CoreAOR AOR = new();
+    private CoreSoW SoW = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
-        //Adv.BestGear(GenericGearBoost.dmgAll);
-        //Adv.BestGear(GenericGearBoost.rep);
+        AOR.SeaVoice();
         Farm.SkyeREP();
 
         Core.SetOptions(false);

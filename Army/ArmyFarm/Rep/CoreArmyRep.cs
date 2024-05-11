@@ -164,6 +164,12 @@ public class CoreArmyRep
                     return;
                 }
 
+                if (!Core.isCompletedBefore(8965))
+                {
+                    Core.Logger("Quest \"Rippling Heartbeat [8965]\" Not complete (you have to do this yourself), cannot continue the rep");
+                    return;
+                }
+
                 foreach (int Q in new[] { 9713, 9714 })
                     if (!Dailies.CheckDaily(Q))
                         Core.EnsureAccept(Q);

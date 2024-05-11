@@ -407,15 +407,4 @@ public class CoreAOR
                     "Dry Spell 9349\n" +
                     "Blooming Sea 9347 (Rare)\n");
     }
-
-    public void Balemorale()
-    {
-        if (Core.isCompletedBefore(9125))
-            return;
-
-        SeaVoice();
-
-        Core.Logger("Story [WIP]/ not made yet @bogi pls make when not drinkin :thumbsup:", stopBot: true);
-        return;
-    }
 }
