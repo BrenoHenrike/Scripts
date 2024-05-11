@@ -4081,6 +4081,7 @@ public class CoreBots
 
                 #region Always Private
                 // PvP
+                case "doompirate":
                 case "bludrutbrawl":
                 case "dagepvp":
                 case "legionpvp":
