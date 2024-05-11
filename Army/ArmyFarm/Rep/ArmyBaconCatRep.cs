@@ -11,6 +11,7 @@ tags: army, reputation, baconcat
 //cs_include Scripts/Army/CoreArmyLite.cs
 //cs_include Scripts/Story/RavenlossSaga.cs
 //cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
+//cs_include Scripts/CoreDailies.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;

@@ -13,6 +13,7 @@ tags: army, reputation, all reputation
 //cs_include Scripts/Story/RavenlossSaga.cs
 //cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
 //cs_include Scripts/Seasonal/HarvestDay/CoreHarvestDay.cs
+//cs_include Scripts/CoreDailies.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
 

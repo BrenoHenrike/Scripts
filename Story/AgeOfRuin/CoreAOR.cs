@@ -407,4 +407,14 @@ public class CoreAOR
                     "Dry Spell 9349\n" +
                     "Blooming Sea 9347 (Rare)\n");
     }
+
+    public void Balemorale()
+    {
+        if (Core.isCompletedBefore(9125))
+            return;
+
+        SeaVoice();
+
+
+    }
 }

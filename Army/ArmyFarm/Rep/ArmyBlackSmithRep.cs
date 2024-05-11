@@ -11,6 +11,7 @@ tags: army, reputation, blacksmithing
 //cs_include Scripts/Army/ArmyFarm/Rep/CoreArmyRep.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 //cs_include Scripts/Story/RavenlossSaga.cs
+//cs_include Scripts/CoreDailies.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Models.Quests;

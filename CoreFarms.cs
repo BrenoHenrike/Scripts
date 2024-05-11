@@ -1558,6 +1558,30 @@ public class CoreFarms
         Core.SavedState(false);
     }
 
+    public void SkyeREP(int rank = 10)
+    {
+        if (!Core.isCompletedBefore(9125))
+        {
+            Core.Logger("Quest \"Your Hero [9125]\" Not complete (you have to do this yourself), cannot continue the rep");
+            return;
+        }
+
+        if (FactionRank("Skye") >= rank)
+            return;
+
+        Core.EquipClass(ClassType.Farm);
+        Core.SavedState();
+        ToggleBoost(BoostType.Reputation);
+        Core.Logger($"Farming rank {rank}");
+
+        Core.RegisterQuests(9709, 9710, 9711, 9717);
+        while (!Bot.ShouldExit && FactionRank("Skye") < rank)
+            Core.KillMonster("balemorale", "r10", "Bottom", "*", log: false);
+        Core.CancelRegisteredQuests();
+        ToggleBoost(BoostType.Reputation, false);
+        Core.SavedState(false);
+    }
+
     public void DoomWoodREP(int rank = 10)
     {
         if (FactionRank("DoomWood") >= rank)

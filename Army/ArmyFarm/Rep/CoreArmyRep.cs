@@ -6,6 +6,7 @@ tags: army, reputation, aegis
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 //cs_include Scripts/Army/CoreArmyLite.cs
@@ -25,6 +26,7 @@ public class CoreArmyRep
     private CoreArmyLite Army = new();
     public Core13LoC LOC => new();
     public RavenlossSaga RavenlossSaga => new();
+    public CoreDailies Dailies => new();
 
     private static CoreBots sCore = new();
     private static CoreArmyLite sArmy = new();
@@ -81,7 +83,7 @@ public class CoreArmyRep
     public void ArmyLoremasterRep() => RunArmyRep("Loremaster", Core.IsMember ? "druids" : "wardwarf", new[] { Core.IsMember ? "r5" : "r2", Core.IsMember ? "r5" : "r4" }, new[] { Core.IsMember ? "r5" : "r2", Core.IsMember ? "r5" : "r4" }, Core.IsMember ? new[] { 3032 } : new[] { 7505 });
     public void ArmyLycanRep() => RunArmyRep("Lycan", "Lycan", new[] { "r4", "r5" }, new[] { "r4", "r5" }, new[] { 537 });
     public void ArmyMonsterHunterRep() => RunArmyRep("Monster Hunter", "pilgrimage", new[] { "r5", "r7", "r8", "r9" }, new[] { "r5", "r7", "r8", "r9" }, new[] { 5849, 5850 });
-
+    public void ArmySkyeRep() => RunArmyRep("Skye", "balemorale", new[] { "r2", "r4", "r6", "r7", "r9", "r10" }, new[] { "r2", "r4", "r6", "r7", "r9", "r10" }, new[] { 9709, 9710, 9711, 9717 });
     #region Time of year restricted
     public void ArmyBrethwrenRep()
     {
@@ -126,6 +128,7 @@ public class CoreArmyRep
         ArmySwordhavenRep();
         ArmyTreasureHunterRep();
         ArmyTrollRep();
+        ArmySkyeRep();
     }
     void RunArmyRep(string repname, string AggroMonStart, string[] AggroMonCells, string[] DivideOnCells, int[] RegisterQuests)
     {
@@ -137,12 +140,12 @@ public class CoreArmyRep
         {
             case "Mythsong":
                 LOC.Kimberly();
-                // Core.DebugLogger(this);
                 break;
+
             case "RavenLoss":
                 RavenlossSaga.TwilightEdge();
-                // Core.DebugLogger(this);
                 break;
+
             case "Monster Hunter":
                 if (!Bot.Quests.IsAvailable(5850))
                 {
@@ -151,12 +154,24 @@ public class CoreArmyRep
                     Core.KillMonster("pilgrimage", "r5", "Left", "Urstrix", "Urstrix Captured", 4, log: false);
                     Core.EnsureComplete(5849);
                 }
-                // Core.DebugLogger(this);
                 break;
+
+            case "Skye":
+                //story goes here .. vv then the dailies
+                if (!Core.isCompletedBefore(9125))
+                {
+                    Core.Logger("Quest \"Your Hero [9125]\" Not complete (you have to do this yourself), cannot continue the rep", stopBot: true);
+                    return;
+                }
+
+                foreach (int Q in new[] { 9713, 9714 })
+                    if (!Dailies.CheckDaily(Q))
+                        Core.EnsureAccept(Q);
+                break;
+
             // Add more cases for other faction-specific actions as needed.
             default:
                 // Handle the default case if needed.
-                // Core.DebugLogger(this);
                 break;
         }
 
@@ -168,10 +183,15 @@ public class CoreArmyRep
         Army.AggroMonStart(AggroMonStart);
         Army.DivideOnCells(DivideOnCells);
 
-        
-            
+
         while (!Bot.ShouldExit && FactionRank(repname) < 10)
-            Bot.Combat.Attack("*");
+        {
+            if (!Bot.Player.HasTarget)
+                Bot.Combat.Attack("*");
+            if (Bot.Player.Target != null && Bot.Player.Target.HP > 0)
+                Bot.Combat.CancelTarget();
+            Core.Sleep();
+        }
 
         // Clean up
         Army.AggroMonStop(true);
