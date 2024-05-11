@@ -407,7 +407,7 @@ public class CoreAOR
 
         if (!Core.isCompletedBefore(9125))
         {
-            Core.Logger(" \"Your Hero\" Quest *REQUIRED* to start SeaVoice quests");
+            Core.Logger(" \"Your Hero\" [9125] Quest *REQUIRED* to start SeaVoice quests");
             return;
         }
 
@@ -415,12 +415,7 @@ public class CoreAOR
 
         if (!Core.isCompletedBefore(9348))
         {
-            Core.Logger("all Seavoice Quests are\n" +
-                        "ultra boss quests (not doable):\n" +
-                        "Voice in the Sea(Badge Quest)\n" +
-                        "Dead Sea 9348\n" +
-                        "Dry Spell 9349\n" +
-                        "Blooming Sea 9347 (Rare)\n");
+            Core.Logger(" \"Dead Sea\" [9348] Quest needs to be completed manually.");
             return;
         }
 
