@@ -400,7 +400,7 @@ public class CoreAOR
 
     public void SeaVoice()
     {
-        if (Core.isCompletedBefore(9350))
+        if (Core.isCompletedBefore(9348))
             return;
 
         DeepWater();
@@ -413,12 +413,16 @@ public class CoreAOR
 
         Story.PreLoad(this);
 
-        Core.Logger("all Seavoice Quests are\n" +
-                    "ultra boss quests (not doable):\n" +
-                    "Voice in the Sea(Badge Quest)\n" +
-                    "Dead Sea 9348\n" +
-                    "Dry Spell 9349\n" +
-                    "Blooming Sea 9347 (Rare)\n");
+        if (!Core.isCompletedBefore(9348))
+        {
+            Core.Logger("all Seavoice Quests are\n" +
+                        "ultra boss quests (not doable):\n" +
+                        "Voice in the Sea(Badge Quest)\n" +
+                        "Dead Sea 9348\n" +
+                        "Dry Spell 9349\n" +
+                        "Blooming Sea 9347 (Rare)\n");
+            return;
+        }
 
         TerminaTemple(true);
     }
