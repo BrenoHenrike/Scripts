@@ -2732,6 +2732,24 @@ public class CoreFarms
         //Core.CancelRegisteredQuests();
     }
 
+    public void SkyeREP(int rank = 10)
+    {
+        if (FactionRank("Skye") >= rank)
+            return;
+
+        Core.SavedState();
+        ToggleBoost(BoostType.Reputation);
+        Core.Logger($"Farming rank {rank}");
+
+        Core.RegisterQuests(9718);
+        while (!Bot.ShouldExit && FactionRank("Skye") < rank)
+            Core.HuntMonster("ashray", "Kitefin Shark Bait", log: false);
+        Bot.Wait.ForQuestComplete(9718);
+        Core.CancelRegisteredQuests();
+        ToggleBoost(BoostType.Reputation, false);
+        Core.SavedState(false);
+    }    
+
     public void SomniaREP(int rank = 10)
     {
         if (FactionRank("Somnia") >= rank)
