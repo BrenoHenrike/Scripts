@@ -29,10 +29,6 @@ public class TarosManslayer
 
     public void GuardianTaro(bool ManslayerOnly = true)
     {
-
-        Core.OneTimeMessage("Dark Makai Rune/Sigil Solution", "Randomizing location for \"Dark Makai\"\n" +
-        "as the drop can randomly stop showing up", forcedMessageBox: false);
-
         if (ManslayerOnly)
         {
             Rewards = new[] { "Taro's Manslayer" };
