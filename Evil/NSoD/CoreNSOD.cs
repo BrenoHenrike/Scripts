@@ -229,7 +229,7 @@ public class CoreNSOD
         Core.EquipClass(ClassType.Solo);
 
         foreach (var monster in monsters.Where(x => x.monster > 0))
-            Core.HuntMonsterMapID(monster.map, monster.monster, monster.essence, quant, isTemp, publicRoom, log, monster.pad);
+            Core.HuntMonsterMapID(monster.map, monster.monster, monster.essence, quant, isTemp, log, publicRoom);
     }
 
 
