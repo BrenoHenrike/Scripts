@@ -2243,66 +2243,22 @@ public class CoreBots
     /// <param name="log">Whether it will log that it is killing the monster</param>
     public void HuntMonsterMapID(string map, int monsterMapID, string? item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false, string pad = "Left")
     {
-        // try
-        // {
-        //     if (Bot == null)
-        //     {
-        //         Logger("Bot object is null.", stopBot: true);
-        //         return;
-        //     }
-
-        //     if (Bot.TempInv == null)
-        //     {
-        //         Logger("Bot.TempInv object is null.", stopBot: true);
-        //         return;
-        //     }
-
-        //     if (Bot.Player == null)
-        //     {
-        //         Logger("Bot.Player object is null.", stopBot: true);
-        //         return;
-        //     }
-
-        //     if (Bot.Player.CurrentClass == null)
-        //     {
-        //         Logger("Bot.Player.CurrentClass object is null.", stopBot: true);
-        //         return;
-        //     }
 
         if (item != null && (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
             return;
 
         Join(map, publicRoom: publicRoom);
 
-        // if (Bot.Monsters == null)
-        // {
-        //     Logger("Bot.Monsters object is null.", stopBot: true);
-        //     return;
-        // }
-
-        // if (Bot.Monsters.MapMonsters == null)
-        // {
-        //     Logger("Bot.Monsters.MapMonsters object is null.", stopBot: true);
-        //     return;
-        // }
-
         Bot.Options.AggroAllMonsters = false;
         Bot.Options.AggroMonsters = false;
-        Monster? monster = Bot.Monsters.MapMonsters.FirstOrDefault(m => m.MapID == monsterMapID);
-        // if (monster == null)
-        // {
-        //     Logger($"Failed to find monsterMapID {monsterMapID} in {map}", stopBot: true);
-        //     return;
-        // }
+        Monster? monster = Bot.Monsters.MapMonsters.FirstOrDefault(m => m != null && m.MapID == monsterMapID);
 
         if (item == null)
         {
             if (Bot.Player.Cell != monster!.Cell)
                 Jump(monster.Cell, pad);
 
-            monster = Bot.Monsters.MapMonsters.FirstOrDefault(m => m.MapID == monsterMapID);
-
-            Bot.Kill.Monster(monster!.MapID);
+            Bot.Kill.Monster(monster);
             JumpWait();
             Rest();
             return;
@@ -2316,37 +2272,17 @@ public class CoreBots
 
             while (!Bot.ShouldExit && (isTemp ? !Bot.TempInv.Contains(item!, quant) : !CheckInventory(item, quant)))
             {
-                monster = Bot.Monsters.MapMonsters.FirstOrDefault(m => m.MapID == monsterMapID);
-
                 if (Bot.Player.Cell != monster!.Cell)
+                {
                     Jump(monster.Cell, pad);
+                    Bot.Wait.ForCellChange(monster.Cell);
+                }
 
-                Bot.Combat.Attack(monster!.MapID);
+                Bot.Combat.Attack(monster);
                 Sleep();
-
-                // if (item == null || isTemp ? Bot.TempInv.Contains(item!, quant) : Bot.Inventory.Contains(item, quant))
-                // {
-                //     Bot.Options.AggroMonsters = false;
-                //     JumpWait();
-                //     if (!isTemp)
-                //         Bot.Wait.ForPickup(item!);
-                //     Sleep();
-                //     Rest();
-                //     break;
-                // }
             }
             Rest();
         }
-        // Bot.Wait.ForPickup(item!);
-        // }
-        // catch (NullReferenceException ex)
-        // {
-        //     Logger($"A null reference exception occurred: {ex.Message}. StackTrace: {ex.StackTrace}", stopBot: true);
-        // }
-        // catch (Exception ex)
-        // {
-        //     Logger($"An unexpected error occurred: {ex.Message}. StackTrace: {ex.StackTrace}", stopBot: true);
-        // }
     }
 
     /// <summary>
