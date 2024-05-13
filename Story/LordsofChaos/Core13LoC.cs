@@ -1634,13 +1634,11 @@ public class Core13LoC
             Core.EnsureComplete(2518);
         }
 
-        //Chaos Lord Iadoa
         if (!Story.QuestProgression(2519))
-        {
-            if (!Core.CheckInventory("Dragonoid of Hours"))
                 Core.HuntMonster("mqlesson", "Dragonoid", "Dragonoid of Hours", isTemp: false);
-            Story.KillQuest(2519, "timespace", "Chaos Lord Iadoa");
-        }
+
+        //Chaos Lord Iadoa
+        Story.KillQuest(2519, "timespace", "Chaos Lord Iadoa");
 
         if (Core.IsMember)
         {
