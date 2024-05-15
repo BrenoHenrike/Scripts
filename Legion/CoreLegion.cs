@@ -838,7 +838,8 @@ public class CoreLegion
 
                 foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
                 {
-                    Bot.Kill.Monster(MID.MapID);
+                    Core.Logger($"Killing: {MID}");
+                    Bot.Kill.Monster(MID);
                     Bot.Combat.CancelTarget();
                 }
 
@@ -851,6 +852,7 @@ public class CoreLegion
 
                 foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
                 {
+                    Core.Logger($"Killing: {MID}");
                     Bot.Kill.Monster(MID.MapID);
                     Bot.Combat.CancelTarget();
                 }
@@ -877,7 +879,8 @@ public class CoreLegion
 
             foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
             {
-                Bot.Kill.Monster(MID.MapID);
+                Core.Logger($"Killing: {MID}");
+                Bot.Kill.Monster(MID);
                 Bot.Combat.CancelTarget();
             }
 
@@ -890,7 +893,8 @@ public class CoreLegion
 
             foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
             {
-                Bot.Kill.Monster(MID.MapID);
+                Core.Logger($"Killing: {MID}");
+                Bot.Kill.Monster(MID);
                 Bot.Combat.CancelTarget();
             }
 
@@ -903,7 +907,8 @@ public class CoreLegion
 
             foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
             {
-                Bot.Kill.Monster(MID.MapID);
+                Core.Logger($"Killing: {MID}");
+                Bot.Kill.Monster(MID);
                 Bot.Combat.CancelTarget();
             }
 
@@ -916,7 +921,8 @@ public class CoreLegion
 
             foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
             {
-                Bot.Kill.Monster(MID.MapID);
+                Core.Logger($"Killing: {MID}");
+                Bot.Kill.Monster(MID);
                 Bot.Combat.CancelTarget();
             }
 
@@ -942,8 +948,14 @@ public class CoreLegion
                 Core.Sleep(1500);
                 if (Bot.Map.Name != "battleon")
                     Core.Logger("Failed!? HOW.. try agian");
-                else Core.Logger("Successful!");
-                goto Start;
+                else
+                {
+                    Core.Logger("Successful!");
+                    Core.Logger($"Deaths:[{Death}]");
+                    Death = 0;
+                    ExitAttempt = 0;
+                    goto Start;
+                }
             }
 
         RestartOnDeath:
@@ -960,13 +972,13 @@ public class CoreLegion
                 else
                 {
                     Core.Logger("Successful!");
+                    Core.Logger($"Deaths:[{Death}]");
+                    Death = 0;
+                    ExitAttempt = 0;
                     goto Start;
                 }
             }
 
-            Core.Logger($"Deaths:[{Death}]");
-            Death = 0;
-            ExitAttempt = 0;
         }
     }
 }
