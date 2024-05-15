@@ -838,15 +838,8 @@ public class CoreLegion
 
                 foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
                 {
-                    foreach (Monster M in Bot.Monsters.CurrentAvailableMonsters.Where(m => m.State == 0))
-                    {
-                        Bot.Combat.Attack(M);
-                        Core.Sleep(1500);
-                    }
-                    Core.Logger($"Killing: {MID}");
-                    if (MID.State != 0)
-                        Bot.Kill.Monster(MID);
-                    Bot.Combat.CancelTarget();
+                    Bot.Kill.Monster(MID.MapID);
+                    Core.Logger($"Killed {MID}");
                 }
 
                 if (!Bot.Player.Alive)
@@ -858,15 +851,8 @@ public class CoreLegion
 
                 foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
                 {
-                    foreach (Monster M in Bot.Monsters.CurrentAvailableMonsters.Where(m => m.State == 0))
-                    {
-                        Bot.Combat.Attack(M);
-                        Core.Sleep(1500);
-                    }
-                    Core.Logger($"Killing: {MID}");
-                    if (MID.State != 0)
-                        Bot.Kill.Monster(MID);
-                    Bot.Combat.CancelTarget();
+                    Bot.Kill.Monster(MID.MapID);
+                    Core.Logger($"Killed {MID}");
                 }
 
                 if (!Bot.Player.Alive)
@@ -891,15 +877,8 @@ public class CoreLegion
 
             foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
             {
-                foreach (Monster M in Bot.Monsters.CurrentAvailableMonsters.Where(m => m.State == 0))
-                {
-                    Bot.Combat.Attack(M);
-                    Core.Sleep(1500);
-                }
-                Core.Logger($"Killing: {MID}");
-                if (MID.State != 0)
-                    Bot.Kill.Monster(MID);
-                Bot.Combat.CancelTarget();
+                Bot.Kill.Monster(MID.MapID);
+                Core.Logger($"Killed {MID}");
             }
 
             if (!Bot.Player.Alive)
@@ -911,15 +890,8 @@ public class CoreLegion
 
             foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
             {
-                foreach (Monster M in Bot.Monsters.CurrentAvailableMonsters.Where(m => m.State == 0))
-                {
-                    Bot.Combat.Attack(M);
-                    Core.Sleep(1500);
-                }
-                Core.Logger($"Killing: {MID}");
-                if (MID.State != 0)
-                    Bot.Kill.Monster(MID);
-                Bot.Combat.CancelTarget();
+                Bot.Kill.Monster(MID.MapID);
+                Core.Logger($"Killed {MID}");
             }
 
             if (!Bot.Player.Alive)
@@ -931,15 +903,8 @@ public class CoreLegion
 
             foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
             {
-                foreach (Monster M in Bot.Monsters.CurrentAvailableMonsters.Where(m => m.State == 0))
-                {
-                    Bot.Combat.Attack(M);
-                    Core.Sleep(1500);
-                }
-                Core.Logger($"Killing: {MID}");
-                if (MID.State != 0)
-                    Bot.Kill.Monster(MID);
-                Bot.Combat.CancelTarget();
+                Bot.Kill.Monster(MID.MapID);
+                Core.Logger($"Killed {MID}");
             }
 
             if (!Bot.Player.Alive)
@@ -951,15 +916,8 @@ public class CoreLegion
 
             foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
             {
-                foreach (Monster M in Bot.Monsters.CurrentAvailableMonsters.Where(m => m.State == 0))
-                {
-                    Bot.Combat.Attack(M);
-                    Core.Sleep(1500);
-                }
-                Core.Logger($"Killing: {MID}");
-                if (MID.State != 0)
-                    Bot.Kill.Monster(MID);
-                Bot.Combat.CancelTarget();
+                Bot.Kill.Monster(MID.MapID);
+                Core.Logger($"Killed {MID}");
             }
 
             if (!Bot.Player.Alive)
