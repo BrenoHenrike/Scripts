@@ -838,8 +838,14 @@ public class CoreLegion
 
                 foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
                 {
+                    foreach (Monster M in Bot.Monsters.CurrentAvailableMonsters.Where(m => m.State == 0))
+                    {
+                        Bot.Combat.Attack(M);
+                        Core.Sleep(1500);
+                    }
                     Core.Logger($"Killing: {MID}");
-                    Bot.Kill.Monster(MID);
+                    if (MID.State != 0)
+                        Bot.Kill.Monster(MID);
                     Bot.Combat.CancelTarget();
                 }
 
@@ -852,8 +858,14 @@ public class CoreLegion
 
                 foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
                 {
+                    foreach (Monster M in Bot.Monsters.CurrentAvailableMonsters.Where(m => m.State == 0))
+                    {
+                        Bot.Combat.Attack(M);
+                        Core.Sleep(1500);
+                    }
                     Core.Logger($"Killing: {MID}");
-                    Bot.Kill.Monster(MID.MapID);
+                    if (MID.State != 0)
+                        Bot.Kill.Monster(MID);
                     Bot.Combat.CancelTarget();
                 }
 
@@ -879,8 +891,14 @@ public class CoreLegion
 
             foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
             {
+                foreach (Monster M in Bot.Monsters.CurrentAvailableMonsters.Where(m => m.State == 0))
+                {
+                    Bot.Combat.Attack(M);
+                    Core.Sleep(1500);
+                }
                 Core.Logger($"Killing: {MID}");
-                Bot.Kill.Monster(MID);
+                if (MID.State != 0)
+                    Bot.Kill.Monster(MID);
                 Bot.Combat.CancelTarget();
             }
 
@@ -893,8 +911,14 @@ public class CoreLegion
 
             foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
             {
+                foreach (Monster M in Bot.Monsters.CurrentAvailableMonsters.Where(m => m.State == 0))
+                {
+                    Bot.Combat.Attack(M);
+                    Core.Sleep(1500);
+                }
                 Core.Logger($"Killing: {MID}");
-                Bot.Kill.Monster(MID);
+                if (MID.State != 0)
+                    Bot.Kill.Monster(MID);
                 Bot.Combat.CancelTarget();
             }
 
@@ -907,8 +931,14 @@ public class CoreLegion
 
             foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
             {
+                foreach (Monster M in Bot.Monsters.CurrentAvailableMonsters.Where(m => m.State == 0))
+                {
+                    Bot.Combat.Attack(M);
+                    Core.Sleep(1500);
+                }
                 Core.Logger($"Killing: {MID}");
-                Bot.Kill.Monster(MID);
+                if (MID.State != 0)
+                    Bot.Kill.Monster(MID);
                 Bot.Combat.CancelTarget();
             }
 
@@ -921,8 +951,14 @@ public class CoreLegion
 
             foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
             {
+                foreach (Monster M in Bot.Monsters.CurrentAvailableMonsters.Where(m => m.State == 0))
+                {
+                    Bot.Combat.Attack(M);
+                    Core.Sleep(1500);
+                }
                 Core.Logger($"Killing: {MID}");
-                Bot.Kill.Monster(MID);
+                if (MID.State != 0)
+                    Bot.Kill.Monster(MID);
                 Bot.Combat.CancelTarget();
             }
 
