@@ -1461,6 +1461,10 @@ public class CoreAdvanced
                     if (!uPneuma())
                         Fail();
                     break;
+                case HelmSpecial.Hearty;
+                    if (!uHearty())
+                        Fail();
+                    break;
                 default:
                     Core.Logger($"Enhancement Failed:\tInvalid \"HelmSpecial\" given, received {(int)hSpecial} | {hSpecial}");
                     return;
@@ -1762,6 +1766,10 @@ public class CoreAdvanced
         => Core.isCompletedBefore(9171);
     private bool uRavenous()
         => Core.isCompletedBefore(9560);
+    private bool uHearty()
+    {
+        return !Core.isCompletedBefore(9466) && Farm.FactionRank("Grimskull") < 7;
+    }
 
     #endregion
 
@@ -2099,16 +2107,15 @@ public class CoreAdvanced
                     break;
                 #endregion
 
-                #region Lucky - Penitence - Valiance - None
+                #region Lucky - Penitence - Praxis|AweBlast - Hearty|ForgeHelm 
                 case "archpaladin":
-                    if (!uPenitence() || !uValianceExtra())
+                    if (!uPenitence() || !uForgeHelm())
                         goto default;
-
+                        
                     type = EnhancementType.Lucky;
                     cSpecial = CapeSpecial.Penitence;
-                    //wSpecial = WeaponSpecial.Valiance; // Should no longer be set like this
-                    wSpecial = CurrentWeaponSpecial();
-                    hSpecial = CurrentHelmSpecial();
+                    wSpecial = uPraxis() ? WeaponSpecial.Praxis : WeaponSpecial.Awe_Blast;
+                    hSpecial = uHearty() ? HelmSpecial.Hearty : HelmSpecial.Forge;
                     break;
                 #endregion
 
