@@ -1461,7 +1461,7 @@ public class CoreAdvanced
                     if (!uPneuma())
                         Fail();
                     break;
-                case HelmSpecial.Hearty;
+                case HelmSpecial.Hearty:
                     if (!uHearty())
                         Fail();
                     break;
@@ -2111,7 +2111,7 @@ public class CoreAdvanced
                 case "archpaladin":
                     if (!uPenitence() || !uForgeHelm())
                         goto default;
-                        
+
                     type = EnhancementType.Lucky;
                     cSpecial = CapeSpecial.Penitence;
                     wSpecial = uPraxis() ? WeaponSpecial.Praxis : WeaponSpecial.Awe_Blast;
