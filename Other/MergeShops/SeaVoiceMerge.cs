@@ -6,8 +6,13 @@ tags: seavoice, merge, seavoice, midnight, glaucus, sage, mystic, morph, compani
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
+using System.Dynamic;
+using Newtonsoft.Json;
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Auras;
 using Skua.Core.Models.Items;
+using Skua.Core.Models.Monsters;
+using Skua.Core.Models.Skills;
 using Skua.Core.Options;
 
 public class SeaVoiceMerge
@@ -131,37 +136,157 @@ public class SeaVoiceMerge
 
     public void AttackVoiceInTheSea(string itemName, int quant)
     {
+        // Define the possible solo classes
+        string[] PossibleSoloClasses = new[] { "Chaos Avenger", "Verus Doomknight", "Void Highlord", "ArchPaladin" };
+
+        if (!Core.CheckInventory(PossibleSoloClasses, any: true))
+            Core.Logger("no Soloing classes found stopping (go get AP atleast and rerun)", stopBot: true);
 
         // Register the quest
         Core.RegisterQuests(9349);
         Core.EquipClass(ClassType.Solo);
         Core.AddDrop("Algal Bloom");
         Core.Unbank("Algal Bloom");
-        Bot.Options.AttackWithoutTarget = true;  // Enable AttackWithoutTarget
+        Adv.GearStore();
         while (!Bot.ShouldExit && !Core.CheckInventory(itemName, quant))
         {
-            // Join the map "seavoice"
-            if (Bot.Map.Name != "seavoice")
-            {
-                Core.Join("seavoice", "r2", "Left");
-                Bot.Wait.ForMapLoad("seavoice");
-            }
+            // Find the first available class in inventory or bank
+            string? selectedClass = PossibleSoloClasses.FirstOrDefault(className =>
+                Bot.Inventory.Items.Any(item => item.Name == className) ||
+                Bot.Bank.Items.Any(item => item.Name == className)
+            );
 
-            // Ensure we're in the correct cell "r2", "Left"
-            if (Bot.Player.Cell != "r2" || Bot.Player.Pad != "Left")
-            {
-                Core.Jump("r2", "Left");
-                Core.Sleep(2500);
-            }
+            Core.Logger($"Soloing \"Voice of the Sea\" with {selectedClass}");
 
-            // Attack the monster
-            while (!Bot.ShouldExit && !Bot.Player.InCombat)
-                Bot.Combat.Attack("Voice in the Sea");
+            Adv.SmartEnhance(selectedClass);
+
+            // Call the KillThing method with the specified parameters
+            KillThing(
+                map: "seavoice",
+                mobMapID: 1,
+                targetAuraName: "Oxidize",
+                ItemUsed: 78994,
+                Class: selectedClass,
+                item: itemName,
+                quant: quant,
+                isTemp: false
+            );
+        }
+        Adv.GearStore(true);
+        Core.CancelRegisteredQuests();  // Unregister the quest
+
+    }
+    
+    public void KillThing(string? map = null, int mobMapID = 1, string? targetAuraName = null, int ItemUsed = 1, string? Class = null, string? item = null, int quant = 1, bool isTemp = false)
+    {
+        Adv.BuyItem("seavoice", 2320, "Vigil", 1000, 12023);
+        // ItemCheckingAndBuying();
+
+        Core.Join(map);
+        Bot.Wait.ForMapLoad(map!);
+        Bot.Wait.ForTrue(() => Bot.Player.Loaded, 20);
+
+        Core.Logger($"map: {map}");
+        Core.Logger($"mobMapID: {mobMapID}");
+        Core.Logger($"targetAuraName: {targetAuraName}");
+        Core.Logger($"ItemUsed: {ItemUsed} [Vigil]");
+        Core.Logger($"Class: {Class}");
+        Core.Logger($"item: {item}");
+        Core.Logger($"quant: {quant}");
+        Core.Logger($"isTemp: {isTemp}");
+
+        Core.Equip(Class!);
+        if (Class == "Void Highlord")
+            Bot.Skills.StartAdvanced("Void HighLord", true, ClassUseMode.Def);
+        Core.Equip(ItemUsed);
+        Core.Logger($"{ItemUsed} [Vigil] Equiped? {Bot.Inventory.IsEquipped("Vigil")}");
+
+        Monster? mob = Bot.Monsters.MapMonsters.FirstOrDefault(m => m.MapID == mobMapID);
+        if (targetAuraName != null)
+        {
+            Aura? targetAura = Bot.Target.Auras.Concat(Bot.Self.Auras).FirstOrDefault(a => a.Name == targetAuraName);
         }
 
-        Bot.Options.AttackWithoutTarget = false;  // Disable AttackWithoutTarget
-        Core.CancelRegisteredQuests();  // Unregister the quest
+        if (Bot.Player.Cell != mob!.Cell)
+            Core.Jump(mob.Cell);
+
+        #region  UltraSpeaker
+        // if (map == "ultraspeaker")
+        // {
+        //     Random random = new();
+        //     int xpos = random.Next(1, 30);
+        //     int ypos = random.Next(1, 30);
+        //     Bot.Player.WalkTo(x: xpos, y: ypos);
+        // }
+        #endregion
+        Bot.Player.SetSpawnPoint();
+
+        while (!Bot.ShouldExit && item != null && isTemp ? !Bot.TempInv.Contains(item!, quant) : !Core.CheckInventory(item!, quant))
+        {
+            //Check if/move to /in mob cell && Bot.Player.Alive)
+            if (Bot.Player.Cell != mob.Cell)
+                Core.Jump(mob.Cell);
+
+            #region  UltraSpeaker
+            if (map == "ultraspeaker")
+            {
+                while (!Bot.ShouldExit && !Bot.Player.Alive)
+                    Core.Sleep();
+            }
+            #endregion
+
+            if (targetAuraName != null)
+                AuraHandling(targetAuraName);
+
+            if (Bot.Player.Alive && !Bot.Self.HasActiveAura(targetAuraName!) && !Bot.Target.HasActiveAura(targetAuraName!))
+                Bot.Combat.Attack(mob);
+            Core.Sleep();
+
+            if (isTemp ? Bot.TempInv.Contains(item!, quant) : Core.CheckInventory(item, quant))
+            {
+                break;
+            }
+        }
+
+        void AuraHandling(string? targetAuraName)
+        {
+            foreach (Aura A in Bot.Target.Auras.Concat(Bot.Self.Auras))
+            {
+                if (targetAuraName == null)
+                    continue;
+
+                switch (A.Name)
+                {
+                    case "Oxidize":
+                        while (!Bot.ShouldExit && !Bot.Self.HasActiveAura("Vigil"))
+                        {
+                            UsePotion();
+                            Core.Sleep();
+
+                            // Check if targetAura is not null before accessing its SecondsRemaining() method
+                            // Assuming `targetAura` is the aura you're referring to
+                            if (Bot.Self.HasActiveAura("Vigil"))
+                            {
+                                Core.Logger($"Vigil Active!");
+                                break;
+                            }
+                        }
+                        break;
+
+                    case null:
+                        break;
+                }
+            }
+        }
+
+        void UsePotion()
+        {
+            var skill = Bot.Flash.GetArrayObject<dynamic>("world.actions.active", 5);
+            if (skill == null) return;
+            Bot.Flash.CallGameFunction("world.testAction", JsonConvert.DeserializeObject<ExpandoObject>(JsonConvert.SerializeObject(skill))!);
+        }
     }
+
 
     public List<IOption> Select = new()
     {
