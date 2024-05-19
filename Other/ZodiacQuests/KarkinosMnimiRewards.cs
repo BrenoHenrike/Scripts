@@ -1,7 +1,7 @@
 /*
 name: Karkinos Mnimi Quest Rewards
 description: This script will get the "Karkinos Mnimi" [9195] quest rewards in /arcangrove.
-tags: karkinos,mnimi,quest rewards,july,seasonal,arcangrove,zodiac,kylokos
+tags: karkinos,mnimi,quest rewards,arcangrove,zodiac,kylokos
 */
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;
@@ -28,11 +28,9 @@ public class KarkinosMnimi
 
     public void AutoReward(int questID = 9195)
     {
-        if (!Bot.Quests.IsAvailable(questID) || Core.CheckInventory(Core.QuestRewards(questID)))
-        {
-            Core.Logger("The quest is not available yet or you already have all the rewards.");
+        if (Core.CheckInventory(Core.QuestRewards(questID)))
             return;
-        }
+
 
         List<ItemBase> RewardOptions = Core.EnsureLoad(questID).Rewards;
 

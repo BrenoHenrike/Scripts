@@ -1,14 +1,14 @@
 /*
-name: Pisces Venaris Mater Rewards
-description: farms quest rewards from Pisces Venaris Mater` in /arcangrove
-tags: quest reward, Kylokos,pisces,venaris,mater,arcangrove,zodiac
+name: Leonine Regalia Rewards
+description: farms quest rewards from Leonine Regalia in /arcangrove
+tags: quest reward, Kylokos,leonineregalia,leonine,regalia,arcangrove,zodiac
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 
-public class PiscesVenarisMater
+public class LeonineRegalia
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
@@ -24,10 +24,10 @@ public class PiscesVenarisMater
 
     public void GetRewards()
     {
-        if (Core.CheckInventory(Core.QuestRewards(9145)))
+        if (Core.CheckInventory(Core.QuestRewards(9196)))
             return;
 
-        List<ItemBase> RewardOptions = Core.EnsureLoad(9145).Rewards;
+        List<ItemBase> RewardOptions = Core.EnsureLoad(9196).Rewards;
 
         foreach (ItemBase item in RewardOptions)
             Core.AddDrop(item.ID);
@@ -41,13 +41,13 @@ public class PiscesVenarisMater
 
             while (!Bot.ShouldExit && !Core.CheckInventory(Reward.Name))
             {
-                Core.EnsureAccept(9145);
-                Core.KillMonster("natatorium", "r5", "Left", "Anglerfish", "Anglerfish Star Shard", 10, isTemp: false, log: false);
-                Core.KillMonster("natatorium", "r2", "Left", "Merdraconian", "Merdraconian Star Shard", 10, isTemp: false, log: false);
-                Core.EnsureComplete(9145, Reward.ID);
+                Core.EnsureAccept(9196);
+                Core.HuntMonster("onslaughttower", "Golden Caster", "Burning Star Shard", 25, false, false);
+                Core.HuntMonster("onslaughttower", "Maximillian Lionfang", "Regal Star Shard", 1, false, false);
+                Core.EnsureComplete(9196, Reward.ID);
                 Core.ToBank(Reward.ID);
             }
         }
-        Core.Logger("all rewards gathered.");
+        Core.Logger("All rewards gathered.");
     }
 }
