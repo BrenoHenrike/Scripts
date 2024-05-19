@@ -13130,10 +13130,11 @@
       "midnight",
       "abyssal",
       "deep_water",
-      "trench_observation"
+      "trench_observation",
+      "balemorale"
     ],
     "path": "Story/AgeOfRuin/00DoAll.cs",
-    "size": 819,
+    "size": 830,
     "fileName": "00DoAll.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/00DoAll.cs"
   },
