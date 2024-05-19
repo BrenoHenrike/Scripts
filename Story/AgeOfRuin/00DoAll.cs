@@ -1,7 +1,7 @@
 /*
 name: Age Of Ruin (All)
 description: This script completes the full Age Of Ruin saga.
-tags: age,ruin,saga,story,quest,termina,temple,ashray,village,sunlight,twilight,zone,yulgar,aria,midnight,abyssal,deep_water,trench_observation
+tags: age,ruin,saga,story,quest,termina,temple,ashray,village,sunlight,twilight,zone,yulgar,aria,midnight,abyssal,deep_water,trench_observation,balemorale
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
