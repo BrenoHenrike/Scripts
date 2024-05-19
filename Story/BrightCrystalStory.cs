@@ -88,7 +88,7 @@ public class BrightCrystalStory
         if (!Story.QuestProgression(4967))
         {
             Core.EnsureAccept(4967);
-            Core.HuntMonsterMapID("dreamforest", 23, "Geist Defated");
+            Core.HuntMonsterMapID("dreamforest", 23, "Geist Defeated");
             Core.EnsureComplete(4967);
         }
     }
