@@ -1,7 +1,7 @@
 /*
 name: Skye Emissarys Merge
 description: This bot will farm the items belonging to the selected mode for the Skye Emissarys Merge [2441] in /balemorale
-tags: skye, emissarys, merge, balemorale, gold, voucher, k, halcyon, virtue, scepter, coronation
+tags: skye, emissarys, merge, balemorale, gold, voucher, k, halcyon, virtue, scepter, coronation, electrowave, scholar, shockwave, morph, scholars, ac, royal, dc, paralyzer, bow, longsword, longswords, hand
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -27,7 +27,7 @@ public class SkyeEmissarysMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Pristine Deepsea Pearl", "Deepdark Pearl" });
+        Core.BankingBlackList.AddRange(new[] { "Pristine Deepsea Pearl", "Deepdark Pearl", "Electrojolt Scholar", "Tattered Court Mage Robe", "Victoria's Fletching", "Royal Electrojolt Scholar" });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -83,6 +83,22 @@ public class SkyeEmissarysMerge
                     Core.CancelRegisteredQuests();
                     break;
 
+                case "Electrojolt Scholar":
+                case "Royal Electrojolt Scholar":
+                    Adv.BuyItem("balemorale", 2443, req.Name, quant);
+                    break;
+
+                case "Tattered Court Mage Robe":
+                    Core.FarmingLogger(req.Name, quant);
+                    Core.EquipClass(ClassType.Farm);
+                    Core.HuntMonster("balemorale", "Chaos Crystal", req.Name, quant, req.Temp, false);
+                    break;
+
+                case "Victoria's Fletching":
+                    Core.FarmingLogger(req.Name, quant);
+                    Core.EquipClass(ClassType.Solo);
+                    Core.HuntMonster("balemorale", "Queen Victoria", req.Name, quant, req.Temp, false);
+                    break;
             }
         }
     }
@@ -101,5 +117,20 @@ public class SkyeEmissarysMerge
         new Option<bool>("67398", "Halcyon Skye Axes", "Mode: [select] only\nShould the bot buy \"Halcyon Skye Axes\" ?", false),
         new Option<bool>("85950", "Halcyon Coronation Axe", "Mode: [select] only\nShould the bot buy \"Halcyon Coronation Axe\" ?", false),
         new Option<bool>("85951", "Halcyon Coronation Axes", "Mode: [select] only\nShould the bot buy \"Halcyon Coronation Axes\" ?", false),
+        new Option<bool>("85876", "Electrowave Scholar", "Mode: [select] only\nShould the bot buy \"Electrowave Scholar\" ?", false),
+        new Option<bool>("85878", "Shockwave Scholar", "Mode: [select] only\nShould the bot buy \"Shockwave Scholar\" ?", false),
+        new Option<bool>("85879", "Electrowave Scholar Morph", "Mode: [select] only\nShould the bot buy \"Electrowave Scholar Morph\" ?", false),
+        new Option<bool>("85883", "Scholar's AC Gauntlet", "Mode: [select] only\nShould the bot buy \"Scholar's AC Gauntlet\" ?", false),
+        new Option<bool>("85885", "Royal Electrowave Scholar", "Mode: [select] only\nShould the bot buy \"Royal Electrowave Scholar\" ?", false),
+        new Option<bool>("85887", "Royal Shockwave Scholar", "Mode: [select] only\nShould the bot buy \"Royal Shockwave Scholar\" ?", false),
+        new Option<bool>("85888", "Royal Electrowave Scholar Morph", "Mode: [select] only\nShould the bot buy \"Royal Electrowave Scholar Morph\" ?", false),
+        new Option<bool>("85892", "Scholar's DC Gauntlet", "Mode: [select] only\nShould the bot buy \"Scholar's DC Gauntlet\" ?", false),
+        new Option<bool>("85893", "Shockwave Paralyzer Bow", "Mode: [select] only\nShould the bot buy \"Shockwave Paralyzer Bow\" ?", false),
+        new Option<bool>("67389", "Halcyon Skye Longsword", "Mode: [select] only\nShould the bot buy \"Halcyon Skye Longsword\" ?", false),
+        new Option<bool>("67390", "Halcyon Skye Longswords", "Mode: [select] only\nShould the bot buy \"Halcyon Skye Longswords\" ?", false),
+        new Option<bool>("67395", "Halcyon Skye Hand Axe", "Mode: [select] only\nShould the bot buy \"Halcyon Skye Hand Axe\" ?", false),
+        new Option<bool>("67396", "Halcyon Skye Hand Axes", "Mode: [select] only\nShould the bot buy \"Halcyon Skye Hand Axes\" ?", false),
+        new Option<bool>("86005", "Scholar's AC Gauntlets", "Mode: [select] only\nShould the bot buy \"Scholar's AC Gauntlets\" ?", false),
+        new Option<bool>("86006", "Scholar's DC Gauntlets", "Mode: [select] only\nShould the bot buy \"Scholar's DC Gauntlets\" ?", false),
     };
 }
