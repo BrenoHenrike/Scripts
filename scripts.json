@@ -17163,6 +17163,23 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Badges/GravelynsWarrior.cs"
   },
   {
+    "name": "Leonine Regalia Rewards",
+    "description": "farms quest rewards from Leonine Regalia in /arcangrove",
+    "tags": [
+      "quest reward",
+      "kylokos",
+      "leonineregalia",
+      "leonine",
+      "regalia",
+      "arcangrove",
+      "zodiac"
+    ],
+    "path": "Other/ZodiacQuests/LeonineRegaliaRewards.cs",
+    "size": 1664,
+    "fileName": "LeonineRegaliaRewards.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/ZodiacQuests/LeonineRegaliaRewards.cs"
+  },
+  {
     "name": "Aries Chrysomallus Rewards",
     "description": "does the \"aries chrysomallus\" quest for the rewards.",
     "tags": [
@@ -17170,26 +17187,21 @@
       "quest rewards",
       "darkblood starshard",
       "kolyaban",
-      "april",
-      "seasonal",
       "arcangrove",
       "kylokos",
       "zodiac"
     ],
     "path": "Other/ZodiacQuests/AriesChrysomallusRewards.cs",
-    "size": 1885,
+    "size": 1721,
     "fileName": "AriesChrysomallusRewards.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/ZodiacQuests/AriesChrysomallusRewards.cs"
   },
   {
-    "name": "Kylokos Quest Rewards",
-    "description": "farms quest rewards from Pisces Venaris Mater` in /natatorium",
+    "name": "Pisces Venaris Mater Rewards",
+    "description": "farms quest rewards from Pisces Venaris Mater` in /arcangrove",
     "tags": [
-      "natatorium",
       "quest reward",
       "kylokos",
-      "march",
-      "seasonal",
       "pisces",
       "venaris",
       "mater",
@@ -17197,7 +17209,7 @@
       "zodiac"
     ],
     "path": "Other/ZodiacQuests/PiscesVenarisMaterRewards.cs",
-    "size": 1885,
+    "size": 1715,
     "fileName": "PiscesVenarisMaterRewards.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/ZodiacQuests/PiscesVenarisMaterRewards.cs"
   },
@@ -17208,14 +17220,12 @@
       "karkinos",
       "mnimi",
       "quest rewards",
-      "july",
-      "seasonal",
       "arcangrove",
       "zodiac",
       "kylokos"
     ],
     "path": "Other/ZodiacQuests/KarkinosMnimiRewards.cs",
-    "size": 1463,
+    "size": 1298,
     "fileName": "KarkinosMnimiRewards.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/ZodiacQuests/KarkinosMnimiRewards.cs"
   },
