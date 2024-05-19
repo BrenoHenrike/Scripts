@@ -682,7 +682,9 @@ public class CoreStory
     private readonly List<ItemBase> CurrentRequirements = new();
     private void _MonsterHunt(ref bool shouldRepeat, string monster, string itemName, int quantity, bool isTemp, int index)
     {
-        if (itemName == null || isTemp ? Bot.TempInv.Contains(itemName!, quantity) : Core.CheckInventory(itemName, quantity))
+        // Check if the item is already in inventory
+        bool itemInInventory = itemName != null && (isTemp ? Bot.TempInv.Contains(itemName, quantity) : Core.CheckInventory(itemName, quantity));
+        if (itemInInventory)
         {
             Core.DebugLogger(this);
             CurrentRequirements.RemoveAt(index);
@@ -690,28 +692,57 @@ public class CoreStory
             return;
         }
 
-        Monster? M = Bot.Monsters.MapMonsters.Find(x => x.Name.FormatForCompare() == monster.FormatForCompare());
-        while (!Bot.ShouldExit && itemName != null && isTemp ? !Bot.TempInv.Contains(itemName, quantity) : !Core.CheckInventory(itemName, quantity))
+        // Find the target monster by name
+        Monster? FindMonster()
+        {
+            return Bot.Monsters.MapMonsters.Find(x => x.Name.FormatForCompare() == monster.FormatForCompare());
+        }
+
+        // Ensure player is in the correct cell and not in a cutscene or initialization state
+        void EnsurePlayerInCorrectCell(Monster targetMonster)
+        {
+            while (!Bot.ShouldExit && (Bot.Player.Cell != targetMonster.Cell || Bot.Player.Cell.StartsWith("Cut") || Bot.Player.Cell.StartsWith("init")))
+            {
+                Core.Jump(targetMonster.Cell, Bot.Player.Pad);
+                Bot.Wait.ForCellChange(targetMonster.Cell);
+            }
+        }
+
+        // Find the target monster
+        Monster? targetMonster = FindMonster();
+        if (targetMonster == null)
         {
             Core.DebugLogger(this);
-            while (!Bot.ShouldExit && Bot.Player.Cell != M!.Cell || Bot.Player.Cell.StartsWith("Cut") || Bot.Player.Cell.StartsWith("init"))
-            {
-                Core.Jump(M!.Cell, Bot.Player.Pad);
-                Bot.Wait.ForCellChange(M!.Cell);
-            }
-            Core.DebugLogger(this);
-            Bot.Combat.Attack(M!);
-            Core.Sleep();
+            shouldRepeat = false;
+            return;
         }
-        Core.DebugLogger(this);
+
+        // Main loop for hunting the monster until the item is acquired
+        while (!Bot.ShouldExit && !itemInInventory)
+        {
+            Core.DebugLogger(this);
+            EnsurePlayerInCorrectCell(targetMonster);
+            Core.DebugLogger(this);
+            Bot.Combat.Attack(targetMonster);
+            Core.Sleep();
+
+            // Update itemInInventory status after attempting to get the item
+            itemInInventory = itemName != null && (isTemp ? Bot.TempInv.Contains(itemName, quantity) : Core.CheckInventory(itemName, quantity));
+        }
+
+        // Handle item pickup if not temporary
         if (!isTemp)
+        {
             Bot.Wait.ForPickup(itemName!);
+        }
+
         Core.DebugLogger(this);
         CurrentRequirements.RemoveAt(index);
         Core.DebugLogger(this);
         shouldRepeat = false;
         Core.DebugLogger(this);
     }
+
 
     private bool _RepeatCheck(ref bool shouldRepeat, int index)
     {
