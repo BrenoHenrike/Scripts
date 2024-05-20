@@ -39,6 +39,7 @@ public class CoreAOR
         AbyssalZone();
         DeepWater();
         SeaVoice();
+        Balemorale();
     }
 
     private bool isSeaVoiceCalled = false;
@@ -458,6 +459,62 @@ public class CoreAOR
         }
 
         TerminaTemple(true);
+    }
+
+    public void Balemorale()
+    {
+        if (Core.isCompletedBefore(9729))
+            return;
+
+        TerminaTemple(true);
+
+        Story.PreLoad(this);
+
+        Core.EquipClass(ClassType.Farm);
+
+        // Estrangement (9719)
+        Story.MapItemQuest(9719, "balemorale", 12933);
+
+        // Searchlights (9720)
+        Story.KillQuest(9720, "balemorale", "Lightguard Paladin");
+
+        // Queensmen (9721)
+        Story.KillQuest(9721, "balemorale", "Noble's Knight");
+
+        // Cellar Secrets (9722)
+        Story.MapItemQuest(9722, "balemorale", new[] { 13177, 13178 });
+
+        // Chaotic Roots (9723)
+        Story.KillQuest(9723, "balemorale", "Chaos Spider");
+        Story.MapItemQuest(9723, "balemorale", new[] { 13179, 13180 });
+
+        // Eroding Era (9724)
+        Story.KillQuest(9724, "balemorale", "Chaos Crystal");
+
+        // Old Wolf (9725)
+        Story.MapItemQuest(9725, "balemorale", 13181, 5);
+        Story.MapItemQuest(9725, "balemorale", 13182);
+
+        // Abandoned Cradle (9726)
+        Story.KillQuest(9726, "balemorale", new[] { "Chaos Spider", "Chaos Crystal" });
+        Story.MapItemQuest(9726, "balemorale", 13183);
+
+        // Shockwaves (9727)
+        Story.KillQuest(9727, "balemorale", "Skye Warrior");
+
+        // Sleight of Hand(9728)
+        Story.MapItemQuest(9728, "balemorale", 13184, 7);
+        Story.MapItemQuest(9728, "balemorale", 13185);
+
+        // Double Fianchetto (9729)
+        if (!Story.QuestProgression(9729))
+        {
+            Core.EquipClass(ClassType.Solo);
+            Core.EnsureAccept(9729);
+            Core.HuntMonster("balemorale", "Queen Victoria", "Queen Victoria Defeated");
+            Core.EnsureComplete(9729);
+            Core.EquipClass(ClassType.Farm);
+        }
     }
 
 
