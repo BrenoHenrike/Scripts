@@ -1939,7 +1939,7 @@ public class CoreAdvanced
                 case "chaos avenger":
                     if (!uPenitence()
                     || !uDauntless() || !uRavenous() || !uValiance()
-                    || !uVim())
+                    || !uAnima())
                         goto default;
 
                     type = EnhancementType.Lucky;
@@ -1947,7 +1947,7 @@ public class CoreAdvanced
                     wSpecial = uRavenous() ? WeaponSpecial.Ravenous :
                                 uDauntless() ? WeaponSpecial.Dauntless : WeaponSpecial.Valiance;
 
-                    hSpecial = HelmSpecial.Vim;
+                    hSpecial = HelmSpecial.Anima;
                     break;
                 #endregion
 
