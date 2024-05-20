@@ -564,7 +564,7 @@ public class CoreSoW
         if (!Story.QuestProgression(7423))
         {
             Core.EnsureAccept(7423);
-            Core.KillMonster("Darkally", "r2", "Left", 4452, "Shredded Shadow", 9);
+            Core.HuntMonster("Darkally", "Creeping Shadow", "Shredded Shadow", 9, true);
             Core.EnsureComplete(7423);
         }
 
