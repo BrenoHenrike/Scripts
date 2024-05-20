@@ -373,7 +373,7 @@ public class CoreSoC
         if (!Story.QuestProgression(7764))
         {
             Core.EnsureAccept(7764);
-            Core.KillMonster("BrightForestPast", "r8", "Left", 4631, "Twisted Treeant Slain", 10);
+            Core.KillMonster("BrightForestPast", "r8", "Left", "Twisted Treeant", "Twisted Treeant Slain", 10);
             Core.EnsureComplete(7764);
         }
 
@@ -382,7 +382,7 @@ public class CoreSoC
         {
             Core.EnsureAccept(7765);
             Core.GetMapItem(7757, 1, "BrightForestPast");
-            Core.KillMonster("BrightForestPast", "r8", "Left", 4633, "Purified Oil", 8);
+            Core.KillMonster("BrightForestPast", "r8", "Left", "Treeant", "Purified Oil", 8);
             Core.EnsureComplete(7765);
         }
 
