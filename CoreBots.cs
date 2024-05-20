@@ -2095,7 +2095,7 @@ public class CoreBots
         // Define method to find the target monster by ID
         Monster? FindMonster()
         {
-            return Bot.Monsters.MapMonsters.FirstOrDefault(m => m != null && m.Cell == cell && m.MapID == MonsterMapID);
+            return Bot.Monsters.MapMonsters.FirstOrDefault(m => m != null && m.Cell == cell && (m.MapID == MonsterMapID || m.ID == MonsterMapID));
         }
 
         // Define method to log message and ensure player is in the correct cell
@@ -2179,7 +2179,7 @@ public class CoreBots
         // Define method to find the target monster by ID
         Monster? FindMonster()
         {
-            return Bot.Monsters.MapMonsters.FirstOrDefault(m => m != null && m.Cell == cell && m.MapID == MonsterMapID);
+            return Bot.Monsters.MapMonsters.FirstOrDefault(m => m != null && m.Cell == cell && (m.MapID == MonsterMapID || m.ID == MonsterMapID));
         }
 
         // Define method to log message and ensure player is in the correct cell
@@ -2386,7 +2386,7 @@ public class CoreBots
 
         Bot.Options.AggroAllMonsters = false;
         Bot.Options.AggroMonsters = false;
-        Monster? monster = Bot.Monsters.MapMonsters.FirstOrDefault(m => m != null && m.MapID == monsterMapID);
+        Monster? monster = Bot.Monsters.MapMonsters.FirstOrDefault(m => m != null && (m.MapID == monsterMapID || m.ID == monsterMapID));
 
         if (item == null)
         {
