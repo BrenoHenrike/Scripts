@@ -11,7 +11,7 @@ tags: age,of,ruin,saga,story,quest,balemorale,castle,bale morale
 //cs_include Scripts/Story\AgeOfRuin\CoreAOR.cs
 using Skua.Core.Interfaces;
 
-public class BaleMorale
+public class Balemorale
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;

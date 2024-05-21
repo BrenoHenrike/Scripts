@@ -502,7 +502,7 @@ public class CoreAOR
         // Shockwaves (9727)
         Story.KillQuest(9727, "balemorale", "Skye Warrior");
 
-        // Sleight of Hand(9728)
+        // Sleight of Hand (9728)
         Story.MapItemQuest(9728, "balemorale", 13184, 7);
         Story.MapItemQuest(9728, "balemorale", 13185);
 
