@@ -49,7 +49,7 @@ public class BloodWarLycanMerge
         {
             ItemBase req = Adv.externalItem;
             int quant = Adv.externalQuant;
-            int currentQuant = req.Temp ? Bot.TempInv.GetQuantity(req.Name) : Bot.Inventory.GetQuantity(req.Name);
+            int currentQuant = req.Temp ? Bot.TempInv.GetQuantity(req.ID) : Bot.Inventory.GetQuantity(req.ID);
             if (req == null)
             {
                 Core.Logger("req is NULL");
@@ -65,10 +65,10 @@ public class BloodWarLycanMerge
                 #endregion
 
                 case "Sapphires":
-                    Core.RegisterQuests(6070, 6071, 6073);
-                    Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
+                    Core.FarmingLogger(req.Name, req.Quantity);
                     Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
+                    Core.RegisterQuests(6070, 6071, 6073);
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.ID, quant))
                     {
                         Core.HuntMonster("bloodwarlycan", "Blood Guardian", "Vampire Medal", 5, log: false);
                         Core.HuntMonster("bloodwarlycan", "Blood Guardian", "Mega Vampire Medal", 3, log: false);
@@ -77,10 +77,10 @@ public class BloodWarLycanMerge
                     break;
 
                 case "Rubies":
-                    Core.RegisterQuests(6068, 6069, 6072);
-                    Core.Logger($"Farming {req.Name} ({currentQuant}/{quant})");
+                    Core.FarmingLogger(req.Name, req.Quantity);
                     Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
+                    Core.RegisterQuests(6068, 6069, 6072);
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.ID, quant))
                     {
                         Core.HuntMonster("bloodwarvamp", "Lunar Blazebinder", "Lycan Medal", 5, log: false);
                         Core.HuntMonster("bloodwarvamp", "Lunar Blazebinder", "Mega Lycan Medal", 3, log: false);
