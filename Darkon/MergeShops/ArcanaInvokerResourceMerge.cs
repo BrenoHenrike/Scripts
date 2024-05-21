@@ -80,7 +80,6 @@ public class ArcanaInvokerResourceMerge
     public FableForest FableForest = new();
     public VoidRefuge VR = new();
     private CoreAOR AOR = new();
-    private CoreAstravia CoreAstravia = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
     public string[] MultiOptions = { "Generic", "Select" };
