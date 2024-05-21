@@ -77,14 +77,18 @@ public class CoreAdvanced
 
         Core.Join(map);
         Bot.Wait.ForMapLoad(map);
+        Core.DebugLogger(this);
 
         if (Bot.Player.InCombat || Bot.Player.HasTarget)
         {
+            Core.DebugLogger(this);
             Core.JumpWait();
             Bot.Wait.ForCombatExit();
         }
 
+        Core.DebugLogger(this);
         ShopItem? item = Core.parseShopItem(Core.GetShopItems(map, shopID).Where(x => shopItemID == 0 ? x.ID == itemID : x.ShopItemID == shopItemID).ToList(), shopID, itemID.ToString());
+        Core.DebugLogger(this);
         if (item == null)
             return;
 
@@ -97,26 +101,28 @@ public class CoreAdvanced
         {
             foreach (ItemBase req in item.Requirements)
             {
-                if (Core.CheckInventory(req.ID, req.Quantity))
+                if (Core.CheckInventory(req.ID, req.Quantity * quant))
                     continue;
 
-                if (Bot.Shops.IsLoaded)
-                    Core.Jump(Bot.Player.Cell, Bot.Player.Pad);
+                // Core.Jump(Bot.Player.Cell, Bot.Player.Pad);
 
-                if (req.Name == "Dragon Runestone")
+                switch (req.ID)
                 {
-                    Core.Logger("1");
-                    Farm.DragonRunestone(req.Quantity * quant);
-                    //reload to close teh shop to load the next so it properly gets the shopitemdata
+                    case 7132:
+                        Farm.DragonRunestone(req.Quantity * quant);
+                        // Farm.DragonRunestone(req.Quantity);
+                        break;
+
+                    default:
+                        if (Core.GetShopItems(map, shopID).Any(x => req.ID == x.ID))
+                            BuyItem(map, shopID, req.ID, req.Quantity * quant);
+                        break;
                 }
-
-                else if (Core.GetShopItems(map, shopID).Any(x => req.ID == x.ID))
-                    BuyItem(map, shopID, req.ID, req.Quantity * quant);
             }
-        }
 
-        GetItemReq(item, quant);
-        Core._BuyItem(map, shopID, item, quant);
+            GetItemReq(item, quant);
+            Core._BuyItem(map, shopID, item, quant);
+        }
     }
 
     /// <summary>
@@ -281,13 +287,13 @@ public class CoreAdvanced
             {
                 if (matsOnly)
                 {
-                    if (Bot.Inventory.IsMaxStack(req.Name))
+                    if (Bot.Inventory.IsMaxStack(req.ID))
                         externalQuant = req.MaxStack;
                     else
                     {
                         if (req.Temp)
-                            externalQuant = Bot.TempInv.GetQuantity(req.Name) + req.Quantity;
-                        else externalQuant = Bot.Inventory.GetQuantity(req.Name) + req.Quantity;
+                            externalQuant = Bot.TempInv.GetQuantity(req.ID) + req.Quantity;
+                        else externalQuant = Bot.Inventory.GetQuantity(req.ID) + req.Quantity;
                     }
                 }
                 else if (MaxStackOneItems.Contains(req.Name))

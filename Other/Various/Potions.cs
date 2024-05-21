@@ -22,6 +22,7 @@ public class PotionBuyer
     {
         new Option<bool>("BuyReagents", "Buy Reagents?", "Use gold to buy the reagents for the Potions [ this takes **ALOT** of gold.].", false),
         new Option<int>("PotionQuant", "Potion Quantity", "Desired stack amount [max - 300]", 0),
+        new Option<bool>("MaxAll", "Max all Potions iwthin the script.", "as the name says", false),
         CoreBots.Instance.SkipOptions,
 
         //Tonic
@@ -55,93 +56,127 @@ public class PotionBuyer
     {
         Core.BankingBlackList.Add("Dragon Runestone");
         Core.SetOptions();
-        INeedYourStrongestPotions(null, null, Bot.Config!.Get<int>("PotionQuant"), Bot.Config!.Get<bool>("BuyReagents"));
+        // INeedYourStrongestPotions(null, null, PotionQuant: Bot.Config!.Get<int>("PotionQuant"), BuyReagents: Bot.Config!.Get<bool>("BuyReagents"));
+
+        INeedYourStrongestPotions(
+            Potions: Bot.Config!.Get<bool>("MaxAll") ?
+                        new[]
+                        {
+                            "Judgment Tonic", "Fortitude Tonic", "Fate Tonic", "Sage Tonic", "Potent Battle Elixir",
+                            "Potent Malevolence Elixir", "Potent Honor Potion", "Unstable Divine Elixir",
+                            "Potent Revitalize Elixir", "Endurance Draught", "Felicitous Philtre", "Potent Destruction Elixir",
+                            "Body Tonic", "Soul Potion", "Unstable Battle Elixir", "Unstable Body Tonic", "Unstable Fate Tonic",
+                            "Unstable Keen Elixir", "Unstable Mastery Tonic", "Unstable Might Tonic", "Unstable Wise Tonic",
+                            "Might Tonic", "Malic Potion"
+                        } : null,
+                        PotionsFarm: Bot.Config!.Get<bool>("MaxAll") ?
+                        new[]
+                        {
+                            true, true, true, true, true, true, true, true, true, true, true, true,
+                            true, true, true, true, true, true, true, true, true, true, true, true
+                        } : null,
+                        PotionQuant: Bot.Config!.Get<bool>("MaxAll") ? 300 : Bot.Config!.Get<int>("PotionQuant"),
+                        BuyReagents: Bot.Config!.Get<bool>("BuyReagents")
+                        );
 
         Core.SetOptions(false);
     }
 
     public void INeedYourStrongestPotions(string[]? Potions = null, bool[]? PotionsFarm = null, int PotionQuant = 300, bool BuyReagents = false, bool Seperate = false)
     {
-        Core.DebugLogger(this);
         BuyReagents = Bot.Config!.Get<bool>("BuyReagents") || BuyReagents != false;
 
-        Core.DebugLogger(this);
         Farm.AlchemyREP();
-        Core.DebugLogger(this);
         Farm.GoodREP();
 
         Core.Logger(BuyReagents ? "Method Choose: Buy Reagents" : "Farm Reagents");
-        Core.DebugLogger(this);
-        if (!Seperate)
+
+        bool maxAll = Bot.Config!.Get<bool>("MaxAll");
+
+        // Set default potion names if Potions array is not provided
+        if (!Seperate || Potions == null && PotionsFarm == null)
+        {
             Potions = new[]
             {
-            "Judgment Tonic", "Fortitude Tonic",
-            "Fate Tonic", "Sage Tonic", "Potent Battle Elixir", "Potent Malevolence Elixir",
-            "Potent Honor Potion", "Unstable Divine Elixir", "Potent Revitalize Elixir",
-            "Endurance Draught", "Felicitous Philtre", "Potent Destruction Elixir",
+            "Judgment Tonic", "Fortitude Tonic", "Fate Tonic", "Sage Tonic", "Potent Battle Elixir",
+            "Potent Malevolence Elixir", "Potent Honor Potion", "Unstable Divine Elixir",
+            "Potent Revitalize Elixir", "Endurance Draught", "Felicitous Philtre", "Potent Destruction Elixir",
             "Body Tonic", "Soul Potion", "Unstable Battle Elixir", "Unstable Body Tonic",
             "Unstable Fate Tonic", "Unstable Keen Elixir", "Unstable Mastery Tonic",
             "Unstable Might Tonic", "Unstable Wise Tonic", "Might Tonic", "Malic Potion"
-            };
+        };
+        }
 
-        Core.DebugLogger(this);
-        if (!Seperate)
+        if (maxAll)
+        {
+            // If MaxAll is enabled, log a message indicating that other options are being overridden
+            Core.Logger("MaxAll option is enabled. Other potion farming options will be overridden.");
+
+            // Set all individual potion farming options to true and PotionQuant to 300
             PotionsFarm = new[]
             {
-            Bot.Config!.Get<bool>("FarmJudgment"), Bot.Config!.Get<bool>("FarmFortitude"),
-            Bot.Config!.Get<bool>("FarmFate"), Bot.Config!.Get<bool>("FarmSage"),
-            Bot.Config!.Get<bool>("FarmBattle"), Bot.Config!.Get<bool>("FarmMalevolence"),
-            Bot.Config!.Get<bool>("FarmHonor"), Bot.Config!.Get<bool>("FarmDivine"),
-            Bot.Config!.Get<bool>("FarmRevitalize"), Bot.Config!.Get<bool>("FarmEnduranceDraught"),
-            Bot.Config!.Get<bool>("buyFeli"), Bot.Config!.Get<bool>("FarmDestruction"),
-            Bot.Config!.Get<bool>("FarmBody"), Bot.Config!.Get<bool>("FarmSoul"),
-            Bot.Config!.Get<bool>("UnstableBattle"), Bot.Config!.Get<bool>("UnstableBody"),
-            Bot.Config!.Get<bool>("UnstableFate"), Bot.Config!.Get<bool>("UnstableKeen"),
-            Bot.Config!.Get<bool>("UnstableMastery"), Bot.Config!.Get<bool>("UnstableMight"),
-            Bot.Config!.Get<bool>("UnstableWise"), Bot.Config!.Get<bool>("FarmMight"),
-            Bot.Config!.Get<bool>("FarmMalic")
+            true, true, true, true, true, true, true, true, true, true, true, true,
+            true, true, true, true, true, true, true, true, true, true, true, true
+        };
+
+            PotionQuant = 300;
+        }
+        else
+        {
+            // Allow individual potion farming options to be set based on configuration
+            if (!Seperate || Potions == null && PotionsFarm == null)
+            {
+                PotionsFarm = new[]
+                {
+                Bot.Config!.Get<bool>("FarmJudgment"), Bot.Config!.Get<bool>("FarmFortitude"),
+                Bot.Config!.Get<bool>("FarmFate"), Bot.Config!.Get<bool>("FarmSage"),
+                Bot.Config!.Get<bool>("FarmBattle"), Bot.Config!.Get<bool>("FarmMalevolence"),
+                Bot.Config!.Get<bool>("FarmHonor"), Bot.Config!.Get<bool>("FarmDivine"),
+                Bot.Config!.Get<bool>("FarmRevitalize"), Bot.Config!.Get<bool>("FarmEnduranceDraught"),
+                Bot.Config!.Get<bool>("buyFeli"), Bot.Config!.Get<bool>("FarmDestruction"),
+                Bot.Config!.Get<bool>("FarmBody"), Bot.Config!.Get<bool>("FarmSoul"),
+                Bot.Config!.Get<bool>("UnstableBattle"), Bot.Config!.Get<bool>("UnstableBody"),
+                Bot.Config!.Get<bool>("UnstableFate"), Bot.Config!.Get<bool>("UnstableKeen"),
+                Bot.Config!.Get<bool>("UnstableMastery"), Bot.Config!.Get<bool>("UnstableMight"),
+                Bot.Config!.Get<bool>("UnstableWise"), Bot.Config!.Get<bool>("FarmMight"),
+                Bot.Config!.Get<bool>("FarmMalic")
             };
-        Core.DebugLogger(this);
+            }
+        }
+
 
         if (!Seperate && !PotionsFarm!.Any(x => x) || PotionQuant < 1 || PotionQuant > 300)
         {
-            Core.DebugLogger(this);
             Core.Logger($"No Potions were selected to Farm or you entered an invalid number of Potions to Farm[{Bot.Config!.Get<int>("PotionQuant")} / 300], the bot will now stop", messageBox: true, stopBot: true);
             return;
         }
 
-        Core.DebugLogger(this);
+        for (int i = 0; i < Potions!.Length; i++)
+            Core.Logger($"- {Potions[i]} x {Core.dynamicQuant(Potions[i], false)}/ {PotionQuant}");
+
         Core.AddDrop(Potions!);
-        Core.DebugLogger(this);
         Core.AddDrop("Potent Malice Potion");
-        Core.DebugLogger(this);
 
         for (int t = 0; t < Potions!.Length; t++)
         {
-            Core.DebugLogger(this);
             if (PotionsFarm != null && !PotionsFarm[t] && !Seperate)
             {
-                Core.DebugLogger(this);
                 Core.Logger($"{t}: {PotionsFarm[t]}");
+                Core.Sleep();
                 continue;
             }
 
-            Core.DebugLogger(this);
             string Potion = Potions[t];
-            Core.DebugLogger(this);
             Core.Logger($"{t}: {Potion}");
 
             if (Core.CheckInventory(Potion, PotionQuant))
             {
-                Core.DebugLogger(this);
                 Core.FarmingLogger(Potion, PotionQuant);
                 continue;
             }
 
-            Core.DebugLogger(this);
             Core.FarmingLogger(Potion, PotionQuant);
 
-            Core.DebugLogger(this);
             var currTrait = CoreFarms.AlchemyTraits.Int;
 
             switch (Potion)
@@ -253,7 +288,6 @@ public class PotionBuyer
                     break;
 
                 case "Judgment Tonic":
-                    Core.DebugLogger(this);
                     currTrait = CoreFarms.AlchemyTraits.Wis;
                     BulkGrind("Dragon Scale", "Moglin Tears", AlchemyRunes.Jera);
                     break;
@@ -304,13 +338,12 @@ public class PotionBuyer
                         break;
 
                     case "Moglin Tears":
-                        if (Bot.Player.IsMember || !BuyReagents)
+                        if (!Core.IsMember && !BuyReagents)
+                            Core.Logger("Farming map is members only, buying the materials");
+                            
+                        if (!BuyReagents && Core.IsMember)
                             Core.HuntMonster("twig", "Sweetish Fish", ingredient, ingreQuant, isTemp: false);
-                        else
-                        {
-                            // Farm.DragonRunestone(ingreQuant);
-                            Adv.BuyItem("alchemyacademy", 397, 11472, ingreQuant, 2, 1229);
-                        }
+                        else Adv.BuyItem("alchemyacademy", 397, 11472, ingreQuant, 2, 1229);
                         break;
                     case "Lemurphant Tears":
                         if (!BuyReagents)
@@ -380,10 +413,7 @@ public class PotionBuyer
                                 Core.KillMonster("lair", "Hole", "Center", "*", isTemp: false, log: false);
                         }
                         else if (!Core.CheckInventory(11475, ingreQuant))
-                        {
-                            
                             Adv.BuyItem("alchemyacademy", 397, 11475, ingreQuant, 2, 1232);
-                        }
                         break;
 
                     case "Roc Tongue":
@@ -411,4 +441,5 @@ public class PotionBuyer
             }
         }
     }
+
 }

@@ -884,6 +884,9 @@ public class CoreBots
         JumpWait();
         Bot.Events.ExtensionPacketReceived += RelogRequieredListener;
 
+        Bot.Shops.Load(shopID);
+        Bot.Wait.ForActionCooldown(GameActions.LoadShop);
+
         dynamic sItem = new ExpandoObject();
         for (int i = 0; i < 5; i++)
         {
@@ -907,7 +910,6 @@ public class CoreBots
                 return;
             }
         }
-
         Sleep();
 
         if (Bot.Options.SafeTimings)
@@ -2923,7 +2925,7 @@ public class CoreBots
             {
                 foreach (var monster in Bot.Monsters.MapMonsters.Where(x => x != null && x.Cell == cell))
                 {
-                    Logger($"Attacking Monster ID: {monster.MapID}");
+                    // Logger($"Attacking Monster ID: {monster.MapID}");
                     Bot.Combat.Attack(monster);
                     DebugLogger(this);
                     Bot.Wait.ForMonsterDeath();
@@ -2937,7 +2939,7 @@ public class CoreBots
             {
                 foreach (var targetMonster in Bot.Monsters.MapMonsters.Where(x => x != null && x.Cell == cell && x.Name.FormatForCompare() == name.FormatForCompare()))
                 {
-                    Logger($"Attacking Monster ID: {targetMonster.MapID}");
+                    // Logger($"Attacking Monster ID: {targetMonster.MapID}");
 
                     Bot.Combat.Attack(targetMonster);
                     DebugLogger(this);
