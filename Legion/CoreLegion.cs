@@ -805,8 +805,8 @@ public class CoreLegion
         Core.EquipClass(ClassType.Solo);
         // Core.Logger($"Farming {quant} {item}. SoloBoss = {canSoloBoss}");
 
-        int ExitAttempt = 1;
-        int Death = 1;
+        int ExitAttempt = 0;
+        int Death = 0;
 
     Start:
         while (!Bot.ShouldExit &&
@@ -945,8 +945,6 @@ public class CoreLegion
                 else
                 {
                     Core.Logger("Successful!");
-                    Core.Logger($"Deaths:[{Death}]");
-                    Death = 0;
                     ExitAttempt = 0;
                     goto Start;
                 }
@@ -958,17 +956,16 @@ public class CoreLegion
             {
                 Bot.Wait.ForTrue(() => Bot.Player.Alive, 100);
                 Core.Logger($"Attempting Death Exit {ExitAttempt++}.");
+
                 Bot.Map.Join("battleon-999999");
                 Bot.Wait.ForMapLoad("battleon");
-                Core.Sleep(1500);
+
                 if (Bot.Map.Name != "battleon")
                     Core.Logger("Failed!? HOW.. try agian");
                 else
                 {
                     Core.Logger("Successful!");
-                    Core.Logger($"Deaths:[{Death}]");
-                    Death = 0;
-                    ExitAttempt = 0;
+                    Core.Logger($"Deaths before Sucess:[{Death}]");
                     goto Start;
                 }
             }
