@@ -6,7 +6,7 @@
       "null"
     ],
     "path": "CoreAdvanced.cs",
-    "size": 121158,
+    "size": 121300,
     "fileName": "CoreAdvanced.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreAdvanced.cs"
   },
@@ -50,7 +50,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 226999,
+    "size": 227095,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -1348,7 +1348,7 @@
       "null"
     ],
     "path": "Legion/CoreLegion.cs",
-    "size": 36143,
+    "size": 35972,
     "fileName": "CoreLegion.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/CoreLegion.cs"
   },
@@ -17463,7 +17463,7 @@
       "null"
     ],
     "path": "Other/Various/Potions.cs",
-    "size": 19107,
+    "size": 21175,
     "fileName": "Potions.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Various/Potions.cs"
   },
@@ -19953,7 +19953,7 @@
       "null"
     ],
     "path": "Other/MergeShops/BloodWarLycanMerge.cs",
-    "size": 4613,
+    "size": 4571,
     "fileName": "BloodWarLycanMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/BloodWarLycanMerge.cs"
   },
