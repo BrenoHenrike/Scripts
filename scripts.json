@@ -3336,6 +3336,21 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/TheConquerorOfGlacera.cs"
   },
   {
+    "name": "Security Plushies Quest Rewards",
+    "description": "farms quest rewards from `Security Plushies` [9731] in /balemorale",
+    "tags": [
+      "balemorale",
+      "lady laidronette cavendish",
+      "security plushies",
+      "quest",
+      "rewards"
+    ],
+    "path": "Other/SecurityPlushiesQuestReward.cs",
+    "size": 1564,
+    "fileName": "SecurityPlushiesQuestReward.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/SecurityPlushiesQuestReward.cs"
+  },
+  {
     "name": "coin collector set",
     "description": "Farms the coin collector set from hollowhalls",
     "tags": [
