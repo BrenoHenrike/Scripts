@@ -98,10 +98,6 @@ public class ArmyLegionToken
                 break;
 
             case "Shogun_Paragon_Pet":
-                // Check if the player owns the Shogun Paragon Pet
-                if (!Core.CheckInventory("Shogun Paragon Pet"))
-                    Core.Logger("Pet not owned, stopping", stopBot: true);
-
                 // Clear existing monster names and add Fotia Elemental and Fotia Spirit
                 monNames.Clear();
                 monNames.AddRange(new[] { "Fotia Elemental", "Fotia Spirit" });
@@ -150,7 +146,7 @@ public class ArmyLegionToken
                     {
                         // Log if failed to load quest
                         Core.Logger($"Failed to load quest with ID: {Q}");
-                        return;
+                        continue;
                     }
 
                     // Exit loop if player doesn't have the required pet
