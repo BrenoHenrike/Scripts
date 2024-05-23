@@ -6,7 +6,7 @@
       "null"
     ],
     "path": "CoreAdvanced.cs",
-    "size": 121187,
+    "size": 121300,
     "fileName": "CoreAdvanced.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreAdvanced.cs"
   },
@@ -17,7 +17,7 @@
       "null"
     ],
     "path": "CoreStory.cs",
-    "size": 32803,
+    "size": 32823,
     "fileName": "CoreStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreStory.cs"
   },
@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreDailies.cs",
-    "size": 50987,
+    "size": 51028,
     "fileName": "CoreDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreDailies.cs"
   },
@@ -39,7 +39,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 117628,
+    "size": 117708,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -50,7 +50,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 226612,
+    "size": 227095,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -72,7 +72,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 87578,
+    "size": 87677,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -1348,7 +1348,7 @@
       "null"
     ],
     "path": "Legion/CoreLegion.cs",
-    "size": 35936,
+    "size": 35972,
     "fileName": "CoreLegion.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/CoreLegion.cs"
   },
@@ -3135,7 +3135,7 @@
       "null"
     ],
     "path": "Darkon/CoreDarkon.cs",
-    "size": 14195,
+    "size": 14270,
     "fileName": "CoreDarkon.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/CoreDarkon.cs"
   },
@@ -3884,7 +3884,7 @@
       "null"
     ],
     "path": "Nation/OblivionBlade(RareandNot)/CoreOblivionBladeofNulgath.cs",
-    "size": 7418,
+    "size": 7436,
     "fileName": "CoreOblivionBladeofNulgath.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/OblivionBlade(RareandNot)/CoreOblivionBladeofNulgath.cs"
   },
@@ -4995,7 +4995,7 @@
       "null"
     ],
     "path": "Nation/VHL/CoreVHL.cs",
-    "size": 7539,
+    "size": 7547,
     "fileName": "CoreVHL.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/VHL/CoreVHL.cs"
   },
@@ -5727,7 +5727,7 @@
       "null"
     ],
     "path": "Evil/NSoD/CoreNSOD.cs",
-    "size": 16881,
+    "size": 16891,
     "fileName": "CoreNSOD.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/NSoD/CoreNSOD.cs"
   },
@@ -5822,7 +5822,7 @@
       "null"
     ],
     "path": "Evil/SDKA/CoreSDKA.cs",
-    "size": 25291,
+    "size": 25396,
     "fileName": "CoreSDKA.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/SDKA/CoreSDKA.cs"
   },
@@ -6174,7 +6174,7 @@
       "null"
     ],
     "path": "Good/BLoD/CoreBLOD.cs",
-    "size": 22407,
+    "size": 22439,
     "fileName": "CoreBLOD.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/CoreBLOD.cs"
   },
@@ -8108,7 +8108,7 @@
       "null"
     ],
     "path": "Seasonal/HarvestDay/CoreHarvestDay.cs",
-    "size": 23517,
+    "size": 23587,
     "fileName": "CoreHarvestDay.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/HarvestDay/CoreHarvestDay.cs"
   },
@@ -9817,7 +9817,7 @@
       "null"
     ],
     "path": "Seasonal/Mogloween/CoreMogloween.cs",
-    "size": 23363,
+    "size": 23395,
     "fileName": "CoreMogloween.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Mogloween/CoreMogloween.cs"
   },
@@ -10366,7 +10366,7 @@
       "null"
     ],
     "path": "Seasonal/NewYear/CoreNewYear.cs",
-    "size": 9437,
+    "size": 9453,
     "fileName": "CoreNewYear.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/NewYear/CoreNewYear.cs"
   },
@@ -10609,7 +10609,7 @@
       "legion token"
     ],
     "path": "Legion/LegionTokens/TimeforSomeSpringCleaning[AnyPet].cs",
-    "size": 1235,
+    "size": 1241,
     "fileName": "TimeforSomeSpringCleaning[AnyPet].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/LegionTokens/TimeforSomeSpringCleaning[AnyPet].cs"
   },
@@ -10705,7 +10705,7 @@
       "null"
     ],
     "path": "Legion/Revenant/CoreLR.cs",
-    "size": 7682,
+    "size": 7761,
     "fileName": "CoreLR.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/Revenant/CoreLR.cs"
   },
@@ -11036,7 +11036,7 @@
       "null"
     ],
     "path": "Legion/YamiNoRonin/CoreYnR.cs",
-    "size": 7936,
+    "size": 8044,
     "fileName": "CoreYnR.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/YamiNoRonin/CoreYnR.cs"
   },
@@ -11593,7 +11593,7 @@
       "null"
     ],
     "path": "Story/MemetsRealm/CoreMemet.cs",
-    "size": 12535,
+    "size": 12559,
     "fileName": "CoreMemet.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/MemetsRealm/CoreMemet.cs"
   },
@@ -11690,7 +11690,7 @@
       "null"
     ],
     "path": "Story/DragonsOfYokai/CoreDOY.cs",
-    "size": 9529,
+    "size": 9649,
     "fileName": "CoreDOY.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/DragonsOfYokai/CoreDOY.cs"
   },
@@ -11897,7 +11897,7 @@
       "null"
     ],
     "path": "Story/7DeadlyDragons/Core7DD.cs",
-    "size": 14783,
+    "size": 14815,
     "fileName": "Core7DD.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/7DeadlyDragons/Core7DD.cs"
   },
@@ -12174,7 +12174,7 @@
       "null"
     ],
     "path": "Story/ShadowsOfWar/CoreSoW.cs",
-    "size": 37267,
+    "size": 37341,
     "fileName": "CoreSoW.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfWar/CoreSoW.cs"
   },
@@ -12361,7 +12361,7 @@
       "null"
     ],
     "path": "Story/Summer2015AdventureMap/CoreSummer.cs",
-    "size": 24651,
+    "size": 24683,
     "fileName": "CoreSummer.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Summer2015AdventureMap/CoreSummer.cs"
   },
@@ -12432,7 +12432,7 @@
       "null"
     ],
     "path": "Story/QueenofMonsters/CoreQOM.cs",
-    "size": 32041,
+    "size": 32059,
     "fileName": "CoreQOM.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/QueenofMonsters/CoreQOM.cs"
   },
@@ -12764,7 +12764,7 @@
       "null"
     ],
     "path": "Story/IsleOfFotia/CoreIsleOfFotia.cs",
-    "size": 8412,
+    "size": 8422,
     "fileName": "CoreIsleOfFotia.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/IsleOfFotia/CoreIsleOfFotia.cs"
   },
@@ -12879,7 +12879,7 @@
       "null"
     ],
     "path": "Story/LordsofChaos/Core13LoC.cs",
-    "size": 81119,
+    "size": 81246,
     "fileName": "Core13LoC.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/LordsofChaos/Core13LoC.cs"
   },
@@ -13179,7 +13179,7 @@
       "null"
     ],
     "path": "Story/AgeOfRuin/CoreAOR.cs",
-    "size": 20359,
+    "size": 20471,
     "fileName": "CoreAOR.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/CoreAOR.cs"
   },
@@ -13500,7 +13500,7 @@
       "null"
     ],
     "path": "Story/ElegyofMadness(Darkon)/CoreAstravia.cs",
-    "size": 15871,
+    "size": 15903,
     "fileName": "CoreAstravia.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ElegyofMadness(Darkon)/CoreAstravia.cs"
   },
@@ -13555,7 +13555,7 @@
       "null"
     ],
     "path": "Story/Fireisland/CoreFireisland.cs",
-    "size": 18341,
+    "size": 18349,
     "fileName": "CoreFireisland.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Fireisland/CoreFireisland.cs"
   },
@@ -13783,7 +13783,7 @@
       "null"
     ],
     "path": "Story/SepulchureSaga/CoreSepulchure.cs",
-    "size": 14641,
+    "size": 14665,
     "fileName": "CoreSepulchure.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/SepulchureSaga/CoreSepulchure.cs"
   },
@@ -14014,7 +14014,7 @@
       "null"
     ],
     "path": "Story/ThroneofDarkness/CoreToD.cs",
-    "size": 47379,
+    "size": 47470,
     "fileName": "CoreToD.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ThroneofDarkness/CoreToD.cs"
   },
@@ -14209,7 +14209,7 @@
       "null"
     ],
     "path": "Story/Doomwood/CoreDoomwood.cs",
-    "size": 30445,
+    "size": 30461,
     "fileName": "CoreDoomwood.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Doomwood/CoreDoomwood.cs"
   },
@@ -14261,7 +14261,7 @@
       "null"
     ],
     "path": "Hollowborn/HollowbornDoomKnight/CoreHollowbornDoomKnight.cs",
-    "size": 7761,
+    "size": 7767,
     "fileName": "CoreHollowbornDoomKnight.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/HollowbornDoomKnight/CoreHollowbornDoomKnight.cs"
   },
@@ -14374,7 +14374,7 @@
       "null"
     ],
     "path": "Hollowborn/HollowbornLichKing/CoreHollowbornLichKing.cs",
-    "size": 21005,
+    "size": 21013,
     "fileName": "CoreHollowbornLichKing.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/HollowbornLichKing/CoreHollowbornLichKing.cs"
   },
@@ -14414,7 +14414,7 @@
       "null"
     ],
     "path": "Hollowborn/HollowbornChaosEnvoy/CoreHollowbornChaosEnvoy.cs",
-    "size": 24044,
+    "size": 24052,
     "fileName": "CoreHollowbornChaosEnvoy.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/HollowbornChaosEnvoy/CoreHollowbornChaosEnvoy.cs"
   },
@@ -14519,7 +14519,7 @@
       "inserthere"
     ],
     "path": "Hollowborn/HollowbornPaladin/CoreHollowbornPaladin.cs",
-    "size": 7510,
+    "size": 7599,
     "fileName": "CoreHollowbornPaladin.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/HollowbornPaladin/CoreHollowbornPaladin.cs"
   },
@@ -20554,7 +20554,7 @@
       "null"
     ],
     "path": "Other/FarmJoeKits/CoreFarmerJoe.cs",
-    "size": 37520,
+    "size": 37548,
     "fileName": "CoreFarmerJoe.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/CoreFarmerJoe.cs"
   },
@@ -20839,7 +20839,7 @@
       "aegis"
     ],
     "path": "Army/ArmyFarm/Rep/CoreArmyRep.cs",
-    "size": 10673,
+    "size": 11596,
     "fileName": "CoreArmyRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/CoreArmyRep.cs"
   },
@@ -21237,7 +21237,7 @@
       "null"
     ],
     "path": "Seasonal/BlackFriday/ShadowofDoom/CoreShadowofDoom.cs",
-    "size": 3493,
+    "size": 3516,
     "fileName": "CoreShadowofDoom.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/BlackFriday/ShadowofDoom/CoreShadowofDoom.cs"
   },
@@ -21370,7 +21370,7 @@
       "null"
     ],
     "path": "Seasonal/StaffBirthdays/DageTheEvil/CoreDageBirthday.cs",
-    "size": 8510,
+    "size": 8526,
     "fileName": "CoreDageBirthday.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/CoreDageBirthday.cs"
   },
@@ -22066,7 +22066,7 @@
       "null"
     ],
     "path": "Seasonal/Friday13th/Story/CoreFriday13th.cs",
-    "size": 33569,
+    "size": 33633,
     "fileName": "CoreFriday13th.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Friday13th/Story/CoreFriday13th.cs"
   },
@@ -23375,7 +23375,7 @@
       "null"
     ],
     "path": "Story/Legion/DageTheEvilIsland/CoreDageTheEvilIsland.cs",
-    "size": 11012,
+    "size": 11014,
     "fileName": "CoreDageTheEvilIsland.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Legion/DageTheEvilIsland/CoreDageTheEvilIsland.cs"
   },
@@ -24162,7 +24162,7 @@
       "null"
     ],
     "path": "Other/Classes/ArchMage/CoreArchMage.cs",
-    "size": 22343,
+    "size": 22349,
     "fileName": "CoreArchMage.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/ArchMage/CoreArchMage.cs"
   },
