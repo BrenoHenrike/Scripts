@@ -16,8 +16,6 @@ using Skua.Core.Models.Servers;
 using System.Diagnostics;
 using System.Text;
 using System.Xml;
-using System;
-using System.IO;
 
 public class CoreArmyLite
 {
@@ -29,65 +27,11 @@ public class CoreArmyLite
         Core.RunCore();
     }
 
-    #region Army Logging
-    public ArmyLogging armyLogging = new ArmyLogging();
-
-    public void setLogName(string name)
-    {
-        armyLogging.setLogName(name);
-    }
-    public void registerMessage(string message)
-    {
-        armyLogging.registerMessage(message);
-        if (Bot.Config.Get<string>("player1").ToLower() == Bot.Player.Username.ToLower())
-        {
-            armyLogging.ClearLogFile();
-        }
-    }
-    public void sendDone()
-    {
-        try
-        {
-            armyLogging.WriteLog($"{Bot.Player.Username.ToLower()}:done:{armyLogging.message}");
-        }
-        catch { }
-    }
-
-    public bool isDone()
-    {
-        try
-        {
-            List<string> lines = armyLogging.ReadLog();
-            string joinedString = string.Join(Environment.NewLine, lines);
-            string[] players = Players();
-            foreach (string pl in players)
-            {
-                if (!joinedString.Contains($"{pl.ToLower()}:done:{armyLogging.message}"))
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-        catch { return false; }
-
-    }
-    #endregion Army Logging
-
     #region Aggro Mon
 #nullable enable
 
     public int AggroMonPacketDelay { get; set; } = 500;
-    public void initArmy()
-    {
 
-        Bot.Events.ScriptStopping += Events_ScriptStopping;
-
-        bool Events_ScriptStopping(Exception? e)
-        {
-            return true;
-        }
-    }
     /// <summary>
     /// Starts the AggroMon. Jumps to the specified map and starts sending the AggroPacket.
     /// </summary>
@@ -97,8 +41,6 @@ public class CoreArmyLite
             AggroMonStop();
 
         Core.Join(map);
-
-        waitForPartyCell("Enter");
 
         List<string> _AggroMonCells = this._AggroMonCells;
         List<string> _AggroMonNames = this._AggroMonNames;
@@ -353,40 +295,6 @@ public class CoreArmyLite
     #endregion
     #region Utility
 
-    public void StartFarm(string item, int quant, params int[] skillList)
-    {
-        bool needSendDone = true;
-        int countCheck = 0;
-        int[] skills = skillList == null || skillList.Length == 0 ? new int[] { 1, 2, 3, 4 } : skillList;
-        int skillIndex = 0;
-        while (!Bot.ShouldExit)
-        {
-            if (Core.CheckInventory(item, quant) && needSendDone)
-            {
-                sendDone();
-                needSendDone = false;
-            }
-            if (!needSendDone && isDone() && countCheck == 10)
-            {
-                break;
-            }
-            countCheck++;
-            if (countCheck > 10) countCheck = 0;
-
-            // killing monster
-            if (!Bot.Player.HasTarget)
-                Bot.Combat.Attack("*");
-            else if (Bot.Player.HasTarget)
-            {
-                Bot.Skills.UseSkill(skills[skillIndex]);
-                skillIndex++;
-                if (skillIndex >= skills.Length) skillIndex = 0;
-            }
-
-            Bot.Sleep(100);
-        }
-    }
-
     /// <summary>
     /// Sets a random Room Number to ensure armies join the same room.
     /// </summary>
@@ -483,53 +391,6 @@ public class CoreArmyLite
             }
         }
         return players.ToArray();
-    }
-
-    public void waitForPartyCell(string? cell = null, string? pad = null)
-    {
-        int i = 0;
-        if (cell != null)
-            Core.Jump(cell, pad != null ? pad : "Left");
-
-        Bot.Events.PlayerAFK += PlayerAFK;
-        string[] players = Players();
-        int partySize = players.Length;
-
-
-        while (!Bot.ShouldExit &&
-               (cell != null && Bot.Map.CellPlayers != null && Bot.Map.CellPlayers.Count() > 0
-                   ? Bot.Map.CellPlayers.Count()
-                   : Bot.Map.PlayerCount) != partySize)
-        {
-            Bot.Sleep(300);
-            i++;
-
-            if (i >= 5 && DateTime.Now.Second % 5 == 0)
-            {
-                if (cell != null && Bot.Map.PlayerNames != null && Bot.Map.PlayerNames.Count() > 0)
-                {
-                    List<string> missingPlayers = players.Except(Bot.Map.PlayerNames).ToList();
-                    if (missingPlayers.Count() == 1 && missingPlayers[0] == Bot.Player.Username)
-                    {
-                        Core.Logger("Bugged lobby, we were the only one missing?");
-                        break;
-                    }
-                    Core.Logger($"[{Bot.Map.CellPlayers.Count()}/{partySize}] Waiting for {String.Join(" & ", missingPlayers)}");
-                }
-                else
-                {
-                    Core.Logger($"[{Bot.Map.PlayerCount}/{partySize}] Waiting for the rest of the party");
-                }
-                i = 0;
-            }
-        }
-
-        void PlayerAFK()
-        {
-            Core.Logger("Anti-AFK engaged");
-            Core.Sleep(1500);
-            Bot.Send.Packet("%xt%zm%afk%1%false%");
-        }
     }
 
     public void waitForParty(string map, string? item = null, int playerMax = -1)
@@ -1281,62 +1142,4 @@ public class CoreArmyLite
     private string commFile() => Path.Combine(CoreBots.ButlerLogDir, $"{Core.Username().ToLower()}~!{b_playerName}.txt");
     public string? b_breakOnMap = null;
     #endregion
-}
-
-
-public class ArmyLogging
-{
-    private static readonly object lockObject = new object();
-    private string logFilePath;
-    public string message;
-
-    public void setLogName(string fileName){
-        logFilePath = Path.Combine(ClientFileSources.SkuaOptionsDIR, fileName + ".log");
-        ClearLogFile();
-    }
-
-    public void registerMessage(string msg)
-    {
-        message = msg;
-    }
-
-    public void WriteLog(string logMessage)
-    {
-        lock (lockObject)
-        {
-            using (StreamWriter w = File.AppendText(logFilePath))
-            {
-                w.WriteLine($"{logMessage}");
-            }
-        }
-    }
-
-    public List<string> ReadLog()
-    {
-        List<string> lines = new List<string>();
-        lock (lockObject)
-        {
-            using (StreamReader r = File.OpenText(logFilePath))
-            {
-                string line;
-                while ((line = r.ReadLine()) != null)
-                {
-                    lines.Add(line);
-                }
-            }
-        }
-        return lines;
-    }
-
-
-    public void ClearLogFile()
-    {
-        lock (lockObject)
-        {
-            using (FileStream fs = File.Open(logFilePath, FileMode.Create, FileAccess.Write))
-            {
-                // File is truncated and cleared
-            }
-        }
-    }
 }
