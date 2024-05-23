@@ -49,8 +49,8 @@ public class CoreHollowbornLichKing
 
     public string OptionsStorage = "HollowbornLichKing";
     public bool DontPreconfigure = true;
-    public List<IOption> Options = new()
-    {
+    public List<IOption> Options =
+    [
         new Option<bool>(
             "getAll", "Get all items",
             "Some quests need to be done multiple times in order to get everything, "+
@@ -64,7 +64,7 @@ public class CoreHollowbornLichKing
             new Option<FlowStressRewards>("Flow Stress", "FlowStress Reward", "Reward Selection for Flow Stress", FlowStressRewards.All),
             new Option<HeatTreatmentRewards>("Heat Treatment", "Heat Treatment Reward", "Reward Selection for Heat Treatment", HeatTreatmentRewards.All),
             new Option<CounterblowRewards>("Counterblow", "Counterblow Reward", "Reward Selection for Counterblow", CounterblowRewards.All)
-    };
+    ];
 
     int DraftlessTurnin = 1;
     int FlowStressTurnin = 1;
@@ -90,7 +90,7 @@ public class CoreHollowbornLichKing
         { "Heat Treatment", (9639, () => HeatTreatment(getAllDrops ? HeatTreatmentRewards.All : Bot.Config!.Get<HeatTreatmentRewards>("Heat Treatment"), !getAllDrops && BankAfter)) },
         { "Counterblow", (9640, () => Counterblow(getAllDrops ? CounterblowRewards.All : Bot.Config!.Get<CounterblowRewards>("Counterblow"), !getAllDrops && BankAfter)) },
     };
-        string[] questOrder = { "Draftless", "Flow Stress", "Heat Treatment", "Counterblow" };
+        string[] questOrder = ["Draftless", "Flow Stress", "Heat Treatment", "Counterblow"];
 
 
         foreach (var quest in questOrder)

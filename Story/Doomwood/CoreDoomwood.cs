@@ -591,11 +591,11 @@ public class CoreDoomwood
 
         //7595    Find my Stuff
         Story.KillQuest(7595, "thorngarde", "NecroDrone");
-        Story.MapItemQuest(7595, "thorngarde", new[] { 7487, 7488 });
+        Story.MapItemQuest(7595, "thorngarde", [7487, 7488]);
 
         //7596    Save my Friends
         Story.KillQuest(7596, "thorngarde", "NecroMech");
-        Story.MapItemQuest(7596, "thorngarde", new[] { 7489, 7490, 7491 });
+        Story.MapItemQuest(7596, "thorngarde", [7489, 7490, 7491]);
 
         //7597    Pull the Wires
         Story.KillQuest(7597, "thorngarde", "CryptHacker");

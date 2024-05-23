@@ -13,7 +13,7 @@ public class CoreQOM
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new();
-    public CoreFarms Farm = new CoreFarms();
+    public CoreFarms Farm = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -280,7 +280,7 @@ public class CoreQOM
         Story.MapItemQuest(5493, "SafiriaInvasion", 4897, 9);
 
         //Here, Doggy Doggy
-        Story.MapItemQuest(5494, "SafiriaInvasion", new[] { 4898, 4899 });
+        Story.MapItemQuest(5494, "SafiriaInvasion", [4898, 4899]);
         Story.KillQuest(5494, "SafiriaInvasion", "Blood Maggot");
 
         //Ma'alech

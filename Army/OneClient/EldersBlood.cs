@@ -34,7 +34,7 @@ public class ArmyEldersBlood
 
     public void EldersBlood(bool randomServers)
     {
-        while (!Bot.ShouldExit && Army.doForAll(randomServers))
+        while (!Bot.ShouldExit && Army.DoForAll(randomServers))
             Dailies.EldersBlood();
     }
 }

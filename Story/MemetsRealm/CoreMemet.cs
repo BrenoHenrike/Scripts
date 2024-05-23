@@ -190,7 +190,7 @@ public class MemetsRealm
         Story.KillQuest(6097, "moonlab", "Infected Cat");
 
         //Keep on Going (6098)
-        Story.MapItemQuest(6098, "moonlab", new[] { 5529, 5530 });
+        Story.MapItemQuest(6098, "moonlab", [5529, 5530]);
 
         //Find the Source (6099)
         Story.KillQuest(6099, "moonlab", "Mutated Slime Mold");
@@ -200,7 +200,7 @@ public class MemetsRealm
         Story.KillQuest(6100, "moonlab", new[] { "Infected Scientist", "Infected Scientist" });
 
         //Clear More Mold (6101)
-        Story.MapItemQuest(6101, "moonlab", new[] { 5532, 5533 });
+        Story.MapItemQuest(6101, "moonlab", [5532, 5533]);
 
         //Defeat the Escapee! (6102)
         Story.KillQuest(6102, "moonlab", "Escaped Experiment");
@@ -262,7 +262,7 @@ public class MemetsRealm
         Story.KillQuest(6666, "dreammaster", "Sparkle Guard");
 
         //Open the Door (6667)
-        Story.MapItemQuest(6667, "dreammaster", new[] { 6177, 6178 });
+        Story.MapItemQuest(6667, "dreammaster", [6177, 6178]);
 
         //Calico Dreams (6668)
         Story.KillQuest(6668, "dreammaster", "Calico Cobby");

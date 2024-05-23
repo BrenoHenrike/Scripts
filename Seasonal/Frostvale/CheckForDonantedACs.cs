@@ -47,7 +47,7 @@ public class CheckForDonatedACs
 
         Bot.Events.ExtensionPacketReceived += ACsListener;
 
-        while (Army.doForAll())
+        while (Army.DoForAll())
         {
             Core.Sleep(2000);
             Bot.Wait.ForMapLoad("battleon");

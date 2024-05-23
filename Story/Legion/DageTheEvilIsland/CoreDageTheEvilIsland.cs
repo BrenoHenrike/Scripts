@@ -156,7 +156,7 @@ public class CoreDageTheEvilIsland
         Story.KillQuest(4195, "LegionCrypt", "Brutus");
     }
 
-    public string[] RequiredItems = { "Envy Token V", "Envy Token IV", "Envy Token III", "Envy Token II", "Envy Token I" };
+    public string[] RequiredItems = ["Envy Token V", "Envy Token IV", "Envy Token III", "Envy Token II", "Envy Token I"];
 
     public void EnvyMap()
     {

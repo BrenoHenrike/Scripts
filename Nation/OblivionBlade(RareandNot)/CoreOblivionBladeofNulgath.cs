@@ -16,7 +16,7 @@ public class CoreOblivionBladeofNulgath
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
-    public CoreAdvanced Adv = new CoreAdvanced();
+    public CoreAdvanced Adv = new();
     public CoreNation Nation = new();
 
 
@@ -47,7 +47,7 @@ public class CoreOblivionBladeofNulgath
 
         Quest QuestData = Core.EnsureLoad(Core.CheckInventory("Oblivion Blade of Nulgath Pet") ? 2557 : 868);
         _ = QuestData.Requirements.ToArray();
-        ItemBase[] QuestReward = QuestData.Rewards.ToArray();
+        ItemBase[] QuestReward = [.. QuestData.Rewards];
         foreach (ItemBase Item in QuestReward)
             Core.AddDrop(Item.Name);
         Core.AddDrop("Mana Energy for Nulgath");

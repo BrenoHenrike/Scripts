@@ -28,7 +28,7 @@ public class CoreBLOD
     }
 
     public string[] BLoDItems =
-    {
+    [
         "Blinding Light of Destiny",
         "Get Your Blinding Light of Destiny",
         // Coppers
@@ -69,7 +69,7 @@ public class CoreBLOD
         "Bright Aura",
         "Brilliant Aura",
         "Blinding Aura",
-    };
+    ];
 
     public void BlindingLightOfDestiny(BLODMethod method = BLODMethod.Optimized)
     {
@@ -248,9 +248,9 @@ public class CoreBLOD
 
         Core.AddDrop(farmSpiritOrbs
             ? new[] { "Bone Dust", "Undead Energy", "Cavern Celestite", "Undead Essence", "Spirit Orb" }
-            : new[] { "Cavern Celestite", "Undead Essence", item });
+            : ["Cavern Celestite", "Undead Essence", item]);
 
-        Core.RegisterQuests(farmSpiritOrbs ? new[] { 2082, 2083, 939 } : new[] { 939 });
+        Core.RegisterQuests(farmSpiritOrbs ? [2082, 2083, 939] : [939]);
 
 
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
@@ -557,7 +557,7 @@ public class CoreBLOD
             Core.EnsureAccept(upgradeMetalQuest);
 
             if (!Core.CheckInventory((int)metal))
-                Daily.MineCrafting(new[] { metal.ToString() });
+                Daily.MineCrafting([metal.ToString()]);
             if (!Core.CheckInventory((int)metal))
                 Core.Logger($"Can't complete {fullMetalName.Split(' ')[..2].Join(' ')} Enchantment (missing {metal}).\n" +
                             "This requires a daily, please run the bot again after the daily reset has occurred.", messageBox: true, stopBot: true);

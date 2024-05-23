@@ -54,11 +54,11 @@ public class CoreAOR
 
         // Familiar Faces (9213)
         Story.KillQuest(9213, "terminatemple", "Termina Defender");
-        Story.MapItemQuest(9213, "terminatemple", new[] { 11625, 11626, 11627 });
+        Story.MapItemQuest(9213, "terminatemple", [11625, 11626, 11627]);
 
         // Loaded Resume (9214)
         Story.KillQuest(9214, "terminatemple", "Clandestine Guard");
-        Story.MapItemQuest(9214, "terminatemple", new[] { 11628, 11629, 11630 });
+        Story.MapItemQuest(9214, "terminatemple", [11628, 11629, 11630]);
 
         if (!seaVoice)
             return;
@@ -70,7 +70,7 @@ public class CoreAOR
         }
         // Mopping Up (9351)
         if (isSeaVoiceCalled)
-            Story.MapItemQuest(9351, "terminatemple", new[] { 12050, 12051 });
+            Story.MapItemQuest(9351, "terminatemple", [12050, 12051]);
     }
 
     public void AshrayVillage()
@@ -87,7 +87,7 @@ public class CoreAOR
 
         // Angry Angler (9226)
         Story.KillQuest(9226, "ashray", "Ashray Fisherman");
-        Story.MapItemQuest(9226, "ashray", new[] { 11663, 11664 });
+        Story.MapItemQuest(9226, "ashray", [11663, 11664]);
 
         // Slimy Scavenger (9227)
         Story.KillQuest(9227, "ashray", "Ghostly Eel");
@@ -112,7 +112,7 @@ public class CoreAOR
         Story.MapItemQuest(9232, "ashray", 11668);
 
         // Duck Dive (9233)
-        Story.MapItemQuest(9233, "ashray", new[] { 11669, 11670 });
+        Story.MapItemQuest(9233, "ashray", [11669, 11670]);
 
         // Faces in the Foam (9234)
         Story.KillQuest(9234, "ashray", "Seafoam Elemental");
@@ -135,7 +135,7 @@ public class CoreAOR
 
         // Efficient Division (9244)
         Story.KillQuest(9244, "sunlightzone", "Blighted Water");
-        Story.MapItemQuest(9244, "sunlightzone", new[] { 11705, 11706 });
+        Story.MapItemQuest(9244, "sunlightzone", [11705, 11706]);
 
         // Tech Illiterate (9245)
         Story.KillQuest(9245, "sunlightzone", "Spectral Jellyfish");
@@ -145,7 +145,7 @@ public class CoreAOR
         Story.KillQuest(9246, "sunlightzone", new[] { "Spectral Jellyfish", "Blighted Water" });
 
         // Shared History (9247)
-        Story.MapItemQuest(9247, "sunlightzone", new[] { 11708, 11709, 11710 });
+        Story.MapItemQuest(9247, "sunlightzone", [11708, 11709, 11710]);
 
         // Flat Scares (9248)
         Story.KillQuest(9248, "sunlightzone", "Astravian Illusion");
@@ -186,7 +186,7 @@ public class CoreAOR
         Story.KillQuest(9261, "twilightzone", new[] { "Whale Louse", "Polymelia Lamprey" });
 
         // Morning Stretches (9262)
-        Story.MapItemQuest(9262, "twilightzone", new[] { 11751, 11752 });
+        Story.MapItemQuest(9262, "twilightzone", [11751, 11752]);
 
         // Natural Empathy (9263)
         Story.KillQuest(9263, "twilightzone", "Decay Spirit");
@@ -195,7 +195,7 @@ public class CoreAOR
         Story.KillQuest(9264, "twilightzone", "Ice Guardian");
 
         // Whale Watching (9265)
-        Story.MapItemQuest(9265, "twilightzone", new[] { 11753, 11754, 11755 });
+        Story.MapItemQuest(9265, "twilightzone", [11753, 11754, 11755]);
 
         // Exhausted Spirits (9266)
         Story.KillQuest(9266, "twilightzone", new[] { "Decay Spirit", "Ice Guardian" });
@@ -254,7 +254,7 @@ public class CoreAOR
         Story.PreLoad(this);
 
         // Motivation Malady (9292)
-        Story.MapItemQuest(9292, "midnightzone", new[] { 11842, 11843, 11844 });
+        Story.MapItemQuest(9292, "midnightzone", [11842, 11843, 11844]);
 
         // Radical Renovation (9293)
         Story.KillQuest(9293, "midnightzone", "Polymelia Lamprey");
@@ -382,7 +382,7 @@ public class CoreAOR
         Story.KillQuest(9333, "trenchobserve", "Seabase Turret");
 
         // Here Lies Shadow (9334)
-        Story.MapItemQuest(9334, "trenchobserve", new[] { 11979, 11981 });
+        Story.MapItemQuest(9334, "trenchobserve", [11979, 11981]);
         Story.MapItemQuest(9334, "trenchobserve", 11980, 2);
 
         // Nature's White Noise (9335)
@@ -425,7 +425,7 @@ public class CoreAOR
             Core.EnsureAccept(9348);
 
             // Define the possible solo classes
-            string[] PossibleSoloClasses = new[] { "Chaos Avenger", "Verus Doomknight", "Void Highlord", "ArchPaladin" };
+            string[] PossibleSoloClasses = ["Chaos Avenger", "Verus Doomknight", "Void Highlord", "ArchPaladin"];
 
             if (!Core.CheckInventory(PossibleSoloClasses, any: true))
                 Core.Logger("no Soloing classes found stopping (go get AP atleast and rerun)", stopBot: true);
@@ -482,11 +482,11 @@ public class CoreAOR
         Story.KillQuest(9721, "balemorale", "Noble's Knight");
 
         // Cellar Secrets (9722)
-        Story.MapItemQuest(9722, "balemorale", new[] { 13177, 13178 });
+        Story.MapItemQuest(9722, "balemorale", [13177, 13178]);
 
         // Chaotic Roots (9723)
         Story.KillQuest(9723, "balemorale", "Chaos Spider");
-        Story.MapItemQuest(9723, "balemorale", new[] { 13179, 13180 });
+        Story.MapItemQuest(9723, "balemorale", [13179, 13180]);
 
         // Eroding Era (9724)
         Story.KillQuest(9724, "balemorale", "Chaos Crystal");

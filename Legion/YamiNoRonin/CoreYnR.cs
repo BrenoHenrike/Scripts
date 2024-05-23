@@ -99,9 +99,7 @@ public class CoreYnR
             return;
 
         Core.Logger("Checking which method to use");
-        if (!Core.isCompletedBefore(793))
-            nonLegion = true;
-        else nonLegion = false;
+        nonLegion = !Core.isCompletedBefore(793);
 
         Core.FarmingLogger("Folded Steel", 1);
         Core.AddDrop("Folded Steel");
@@ -151,9 +149,7 @@ public class CoreYnR
             return;
 
         Core.Logger("Checking which method to use");
-        if (!Core.isCompletedBefore(793))
-            nonLegion = true;
-        else nonLegion = false;
+        nonLegion = !Core.isCompletedBefore(793);
 
         SOW.DarkAlly();
         Core.FarmingLogger("Blademaster Sword Scroll", 1);

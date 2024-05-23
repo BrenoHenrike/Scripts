@@ -72,7 +72,7 @@ public class CoreNewYear
         Story.KillQuest(1528, "newyearlab", "Chaorrupted Polar Bear");
 
         //SHUTDOWN Sequence (1530)
-        Story.MapItemQuest(1530, "newyearlab", new[] { 764, 765, 766, 767 });
+        Story.MapItemQuest(1530, "newyearlab", [764, 765, 766, 767]);
 
         //Chronomancy and Chaos (1531)
         Story.KillQuest(1531, "newyearlab", "Iadoa");
@@ -182,7 +182,7 @@ public class CoreNewYear
         Story.KillQuest(6144, "everfrost", "Arctic Wolf");
 
         //Find the Sled 6145
-        Story.MapItemQuest(6145, "everfrost", new[] { 5565, 5566 });
+        Story.MapItemQuest(6145, "everfrost", [5565, 5566]);
         Story.MapItemQuest(6145, "everfrost", 5567, 2);
 
         //It's Sledding Time 6146

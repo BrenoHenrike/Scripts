@@ -30,7 +30,7 @@ public class ArmyBankAllItems
 
     public void AllBankAll()
     {
-        while (!Bot.ShouldExit && Army.doForAll())
+        while (!Bot.ShouldExit && Army.DoForAll())
             BAI.BankAll();
 
     }

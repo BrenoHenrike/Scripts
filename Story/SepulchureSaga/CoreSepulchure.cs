@@ -67,7 +67,7 @@ public class CoreSepulchure
         }
 
         // Pass for Real 6338
-        Story.MapItemQuest(6338, "scarsgarde", new[] { 5866, 5867 });
+        Story.MapItemQuest(6338, "scarsgarde", [5866, 5867]);
         Story.KillQuest(6338, "scarsgarde", new[] { "Garde Knight", "Garde Pikeman", "Garde Knight" });
 
         // Hidden in Plain Sight 6339
@@ -116,7 +116,7 @@ public class CoreSepulchure
         Story.KillQuest(6348, "scarsgarde", new[] { "Garde Watch", "Garde Watch", "Garde Watch", "Garde Watch", "Garde Watch", "Garde Watch", "Garde Watch" });
 
         // Pass for Real 6349
-        Story.MapItemQuest(6349, "scarsgarde", new[] { 5866, 5867 });
+        Story.MapItemQuest(6349, "scarsgarde", [5866, 5867]);
         Story.KillQuest(6349, "scarsgarde", new[] { "Garde Knight", "Garde Pikeman", "Garde Knight" });
 
         // Hidden in Plain Sight 6350
@@ -285,7 +285,7 @@ public class CoreSepulchure
         Story.KillQuest(6392, "ebondungeon", "Elite Dungeon Guard");
 
         // Find Lynaria 6393
-        Story.MapItemQuest(6393, "ebondungeon", new[] { 5903, 5904 });
+        Story.MapItemQuest(6393, "ebondungeon", [5903, 5904]);
 
         // Destroy Dethrix 6394
         Core.EquipClass(ClassType.Solo);

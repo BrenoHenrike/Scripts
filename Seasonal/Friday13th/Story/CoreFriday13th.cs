@@ -107,7 +107,7 @@ public class CoreFriday13th
         Story.KillQuest(3108, "Vampirates", "Vampirate");
 
         // Now Where Are Those Landmarks? 3109
-        Story.MapItemQuest(3109, "TreasureIsland", new[] { 1986, 1987, 1988, 1989 });
+        Story.MapItemQuest(3109, "TreasureIsland", [1986, 1987, 1988, 1989]);
 
         // X Marks The Spot 3110
         Story.MapItemQuest(3110, "TreasureIsland", 1958);
@@ -541,14 +541,14 @@ public class CoreFriday13th
         Story.KillQuest(5051, "Wormhole", new[] { "Goth Girl", "Vamp Boy" });
 
         // They're Not Red Shirts - They're Deadshirts! 5052
-        Story.MapItemQuest(5052, "Wormhole", new[] { 4420, 4421, 4422 });
+        Story.MapItemQuest(5052, "Wormhole", [4420, 4421, 4422]);
         Story.KillQuest(5052, "Wormhole", "Deadshirt");
 
         // Curses! 5053
         Story.KillQuest(5053, "Wormhole", "Cursed Alien");
 
         // Computers Don't Lie 5054
-        Story.MapItemQuest(5054, "Wormhole", new[] { 4423, 4424, 4425, 4426 });
+        Story.MapItemQuest(5054, "Wormhole", [4423, 4424, 4425, 4426]);
 
         // Beam Me Up! 5055
         Story.KillQuest(5055, "Wormhole", new[] { "Undead Astronaut", "Undead Astronaut" });
@@ -664,17 +664,17 @@ public class CoreFriday13th
         Story.KillQuest(6261, "Gonnagetcha", "Restless Spirit");
 
         // What are They Looking For? 6262
-        Story.MapItemQuest(6262, "Gonnagetcha", new[] { 5738, 5739 });
+        Story.MapItemQuest(6262, "Gonnagetcha", [5738, 5739]);
 
         // Cysero was Right! 6263
         Story.KillQuest(6263, "Gonnagetcha", new[] { "Murkonian", "Murkonian" });
 
         // Explore the Black Knight's Cabin 6264
-        Story.MapItemQuest(6264, "Gonnagetcha", new[] { 5740, 5741 });
+        Story.MapItemQuest(6264, "Gonnagetcha", [5740, 5741]);
         Story.KillQuest(6264, "Gonnagetcha", "Black Knight Spirit");
 
         // Get Through the Mirror 6265
-        Story.MapItemQuest(6265, "Gonnagetcha", new[] { 5742, 5743 });
+        Story.MapItemQuest(6265, "Gonnagetcha", [5742, 5743]);
 
         // Rescue the Campers 6266
         Story.MapItemQuest(6266, "Gonnagetcha", 5744, 6);
@@ -725,7 +725,7 @@ public class CoreFriday13th
         Story.KillQuest(6414, "Greymoor", "Spooky Treeant");
 
         // Surprise! 6415
-        Story.MapItemQuest(6415, "Greymoor", new[] { 5913, 5914 });
+        Story.MapItemQuest(6415, "Greymoor", [5913, 5914]);
 
         // First Aid Supplies 6416
         Story.KillQuest(6416, "Greymoor", "Spooky Treeant");
@@ -876,7 +876,7 @@ public class CoreFriday13th
         Story.KillQuest(8223, "Deadfly", "Grave Flies");
 
         // Follow the Swarm 8224
-        Story.MapItemQuest(8224, "Deadfly", new[] { 8769, 8770 });
+        Story.MapItemQuest(8224, "Deadfly", [8769, 8770]);
 
         // Find Emily 8225
         Story.MapItemQuest(8225, "Deadfly", 8771);

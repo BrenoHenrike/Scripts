@@ -17,12 +17,12 @@ public class CoreLR
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
-    public CoreAdvanced Adv = new CoreAdvanced();
-    public CoreStory Story = new CoreStory();
-    public CoreLegion Legion = new CoreLegion();
-    public InfiniteLegionDC ILDC = new InfiniteLegionDC();
-    public SeraphicWar_Story Seraph = new SeraphicWar_Story();
+    public CoreFarms Farm = new();
+    public CoreAdvanced Adv = new();
+    public CoreStory Story = new();
+    public CoreLegion Legion = new();
+    public InfiniteLegionDC ILDC = new();
+    public SeraphicWar_Story Seraph = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -30,21 +30,21 @@ public class CoreLR
     }
 
     public string[] LR =
-    {
+    [
         "Exalted Crown",
         "Revenant's Spellscroll",
         "Conquest Wreath",
         "Legion Revenant"
-    };
+    ];
     public string[] LF1 =
-    {
+    [
         "Aeacus Empowered",
         "Tethered Soul",
         "Darkened Essence",
         "Dracolich Contract"
-    };
+    ];
     public string[] LF2 =
-    {
+    [
         "Grim Cohort Conquered",
         "Ancient Cohort Conquered",
         "Pirate Cohort Conquered",
@@ -55,16 +55,16 @@ public class CoreLR
         "Spirit Cohort Conquered",
         "Dragon Cohort Conquered",
         "Doomwood Cohort Conquered",
-    };
+    ];
     public string[] LF3 =
-    {
+    [
         "Hooded Legion Cowl",
         "Legion Token",
         "Dage's Favor",
         "Emblem of Dage",
         "Diamond Token of Dage",
         "Dark Token"
-    };
+    ];
 
     public void GetLR(bool rankUpClass)
     {

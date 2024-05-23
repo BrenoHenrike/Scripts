@@ -385,7 +385,7 @@ public class CoreStory
     public void LegacyQuestManager(Action questLogic, params int[] questIDs)
     {
         List<Quest> questData = Core.EnsureLoad(questIDs);
-        List<LegacyQuestObject> whereToGet = new();
+        List<LegacyQuestObject> whereToGet = [];
 
         //Core.DL_Enable();
         Core.DebugLogger(this, "-------------\t");
@@ -509,7 +509,7 @@ public class CoreStory
     /// </summary>
     public void PreLoad(Object _this, [CallerMemberName] string caller = "")
     {
-        List<int> QuestIDs = new();
+        List<int> QuestIDs = [];
         string[] ScriptSlice = Core.CompiledScript();
         if (ScriptSlice.Length == 0)
         {
@@ -547,7 +547,7 @@ public class CoreStory
 
         ScriptSlice = ScriptSlice[methodStartIndex..methodEndIndex];
 
-        string[] SearchParam = {
+        string[] SearchParam = [
             "Story.KillQuest",
             "Story.MapItemQuest",
             "Story.BuyQuest",
@@ -557,7 +557,7 @@ public class CoreStory
             "Core.EnsureComplete",
             "Core.EnsureCompleteChoose",
             "Core.ChainComplete"
-        };
+        ];
 
         foreach (string Line in ScriptSlice)
         {
@@ -679,7 +679,7 @@ public class CoreStory
             Core.Sleep();
         }
     }
-    private readonly List<ItemBase> CurrentRequirements = new();
+    private readonly List<ItemBase> CurrentRequirements = [];
     private void _MonsterHunt(ref bool shouldRepeat, string monster, string itemName, int quantity, bool isTemp, int index)
     {
         // Check if the item is already in inventory
@@ -762,11 +762,11 @@ public class CoreStory
             lastQuestID = questID;
             Quest quest = Core.EnsureLoad(questID);
 
-            List<string> reqItems = new();
+            List<string> reqItems = [];
             quest.AcceptRequirements.ForEach(item => reqItems.Add(item.Name));
             quest.Requirements.ForEach(item =>
             {
-                if (!CurrentRequirements.Where(i => i.Name == item.Name).Any())
+                if (!CurrentRequirements.Any(i => i.Name == item.Name))
                 {
                     if (!item.Temp)
                     {

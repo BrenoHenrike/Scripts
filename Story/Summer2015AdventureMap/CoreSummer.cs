@@ -172,7 +172,7 @@ public class CoreSummer
         Story.MapItemQuest(4301, "deadmoor", 3459);
 
         // 4302 Bone Breaking Bonds
-        Story.MapItemQuest(4302, "deadmoor", new[] { 3449, 3450, 3451, 3452, 3453, 3454 });
+        Story.MapItemQuest(4302, "deadmoor", [3449, 3450, 3451, 3452, 3453, 3454]);
 
         // 4303 Last Shreds of Humanity
         Story.KillQuest(4303, "deadmoor", "Toxic Souleater");
@@ -184,7 +184,7 @@ public class CoreSummer
         Story.KillQuest(4305, "deadmoor", "Geist");
 
         // 4306 The Last Caretaker
-        Story.MapItemQuest(4306, "deadmoor", new[] { 3458, 3460, 3461, 3462, 3463, 3464, 3465 });
+        Story.MapItemQuest(4306, "deadmoor", [3458, 3460, 3461, 3462, 3463, 3464, 3465]);
 
         // 4307 The Confrontation
         Story.KillQuest(4307, "deadmoor", "Banshee Mallora");
@@ -294,10 +294,10 @@ public class CoreSummer
         Story.KillQuest(1297, "Terrarium", "Death on Wings");
 
         // Can you find them?
-        Story.MapItemQuest(1298, "Terrarium", new[] { 589, 590, 591, 592, 593 });
+        Story.MapItemQuest(1298, "Terrarium", [589, 590, 591, 592, 593]);
 
         // You've Been Looking Everywhere!
-        Story.MapItemQuest(1299, "Terrarium", new[] { 593, 594, 595, 596, 604 });
+        Story.MapItemQuest(1299, "Terrarium", [593, 594, 595, 596, 604]);
 
         // Go for Grease!
         Story.KillQuest(1300, "Terrarium", "Death on Wings");
