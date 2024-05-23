@@ -38,22 +38,22 @@ public class ScriptMainCleaner
         Bot.Log("Directory Count:\t" + dirCount);
         Bot.Log("File Count:\t" + fileCount);
         Bot.Log("Line Count:\t" + lineCount);
-        if (GotNull.Count() > 0)
+        if (GotNull.Count > 0)
         {
             Bot.Log("---------------");
-            Bot.Log($"Scriptreader got NULL [{GotNull.Count()}]");
+            Bot.Log($"Scriptreader got NULL [{GotNull.Count}]");
             GotNull.ForEach(x => Bot.Log("    " + x));
         }
-        if (NoSetOptions.Count() > 0)
+        if (NoSetOptions.Count > 0)
         {
             Bot.Log("---------------");
-            Bot.Log($"No Core.SetOptions [{NoSetOptions.Count()}]");
+            Bot.Log($"No Core.SetOptions [{NoSetOptions.Count}]");
             NoSetOptions.ForEach(x => Bot.Log("    " + x));
         }
-        if (TooManyInScriptMain.Count() > 0)
+        if (TooManyInScriptMain.Count > 0)
         {
             Bot.Log("---------------");
-            Bot.Log($"Too many items in ScriptMain [{TooManyInScriptMain.Count()}]");
+            Bot.Log($"Too many items in ScriptMain [{TooManyInScriptMain.Count}]");
             TooManyInScriptMain.ForEach(x => Bot.Log("    " + x));
         }
 
@@ -61,7 +61,7 @@ public class ScriptMainCleaner
         {
             string[] files = Directory.GetFiles(path);
             string[] dirs = Directory.GetDirectories(path);
-            Bot.Log($"[{DateTime.Now:HH:mm:ss}] ({removeDir(path) ?? "Scripts"})  {(dirs.Count() > 0 ? $"{dirs.Count()} Director{(dirs.Count() == 1 ? "y" : "ies")} & " : "")}{files.Count()} File{(files.Count() == 1 ? "" : "s")}");
+            Bot.Log($"[{DateTime.Now:HH:mm:ss}] ({removeDir(path) ?? "Scripts"})  {(dirs.Length > 0 ? $"{dirs.Length} Director{(dirs.Length == 1 ? "y" : "ies")} & " : "")}{files.Length} File{(files.Length == 1 ? "" : "s")}");
             foreach (var file in files)
             {
                 if (Extensions.Any(e => file.EndsWith(e)))
@@ -72,7 +72,7 @@ public class ScriptMainCleaner
                     continue;
 
                 string[]? __file = File.ReadAllLines(file);
-                lineCount = lineCount + __file.Count();
+                lineCount = lineCount + __file.Length;
                 List<string>? inner = __file
                                 .SkipWhile(l => !l.StartsWith("    public void ScriptMain"))
                                 .TakeWhile(l => !l.StartsWith("    }"))
@@ -106,7 +106,7 @@ public class ScriptMainCleaner
                         !l.Trim().StartsWith('"')
                     ).ToList();
 
-                if (inner.Count() > 1)
+                if (inner.Count > 1)
                 {
                     TooManyInScriptMain.Add(_file);
                     Bot.Log("---------------");
@@ -132,7 +132,7 @@ public class ScriptMainCleaner
         string? removeDir(string path)
         {
             string? toReturn = path.Replace(ClientFileSources.SkuaScriptsDIR, "");
-            return toReturn.Count() > 0 ? toReturn[1..] : null;
+            return toReturn.Length > 0 ? toReturn[1..] : null;
         }
     }
 

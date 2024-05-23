@@ -187,7 +187,7 @@ public class GenQueuedOneClientScript
 
         List<string> newFile = new();
         newFile.AddRange(csIncludes);
-        if (options.Count() > 0)
+        if (options.Count > 0)
             newFile.Add("using Skua.Core.Options;");
 
         InputDialogViewModel diag = new("Name the bot", "What is the name you wish to give the bot. (case-sensitive)", false);
@@ -204,9 +204,9 @@ public class GenQueuedOneClientScript
             "    private CoreBots Core => CoreBots.Instance;",
         });
         newFile.AddRange(classes);
-        if (staticClasses.Count() > 0)
+        if (staticClasses.Count > 0)
             newFile.AddRange(staticClasses);
-        if (options.Count() > 0)
+        if (options.Count > 0)
         {
             newFile.AddRange(new List<string>() {
                 "",

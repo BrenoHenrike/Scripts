@@ -141,7 +141,7 @@ public class EnchantedVictoryBladeWeapons
     {
         if (String.IsNullOrEmpty(input))
             return input;
-        if (input.Count() == 1)
+        if (input.Length == 1)
             return Char.ToUpper(input[0]).ToString();
         return Char.ToUpper(input[0]) + input.Substring(1).ToLower();
     }

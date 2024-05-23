@@ -58,7 +58,7 @@ public class ShadowslayerSummoningRitual
         {
             if (!Core.CheckInventory(item, toInv: false))
             {
-                Core.Logger($"Getting {item}. Rewards Left: {Rewards.Count() - count} more item" + ((Rewards.Count() - count) > 1 ? "s" : ""));
+                Core.Logger($"Getting {item}. Rewards Left: {Rewards.Length - count} more item" + ((Rewards.Length - count) > 1 ? "s" : ""));
 
                 Scroll.BuyScroll(Scrolls.SpiritRend, 30);
                 Scroll.BuyScroll(Scrolls.Eclipse, 15);

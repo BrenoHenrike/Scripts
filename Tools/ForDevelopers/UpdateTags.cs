@@ -70,7 +70,7 @@ public class UpdateTags
             string[] dirs = Directory.GetDirectories(path);
             string _path = removeDir(path) ?? "Scripts";
 
-            Bot.Log($"[{DateTime.Now:HH:mm:ss}] ({_path})  {(dirs.Count() > 0 ? $"{dirs.Count()} Director{(dirs.Count() == 1 ? "y" : "ies")} & " : "")}{files.Count()} File{(files.Count() == 1 ? "" : "s")}");
+            Bot.Log($"[{DateTime.Now:HH:mm:ss}] ({_path})  {(dirs.Length > 0 ? $"{dirs.Length} Director{(dirs.Length == 1 ? "y" : "ies")} & " : "")}{files.Length} File{(files.Length == 1 ? "" : "s")}");
 
             // Go over every file in the directory
             foreach (var file in files)
@@ -201,7 +201,7 @@ public class UpdateTags
         string? removeDir(string path)
         {
             string? toReturn = path.Replace(ClientFileSources.SkuaScriptsDIR, "");
-            return toReturn.Count() > 0 ? toReturn[1..] : null;
+            return toReturn.Length > 0 ? toReturn[1..] : null;
         }
 
         bool hasProperty(string file, List<string> fileData, string prop, out string propData)

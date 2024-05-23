@@ -43,7 +43,7 @@ public class MindBreakingItIn
             Adv.RankUpClass("MindBreaker");
         }
 
-        for (int i = 0; i < Rewards.Count(); i++)
+        for (int i = 0; i < Rewards.Length; i++)
         {
             if (!Core.CheckInventory(Rewards[i]))
             {

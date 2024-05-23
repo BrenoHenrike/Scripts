@@ -48,7 +48,7 @@ public class SummarizeStats
         var hours24 = data.Where(x => (lastItem.TimeStamp - x.TimeStamp).TotalHours <= 24);
 
         Bot.Log("Basic Statistics\n");
-        Bot.Log("Dataset size:\t\t" + data.Count());
+        Bot.Log("Dataset size:\t\t" + data.Count);
         Bot.Log("First datapoint:\t\t" + data.First().TimeStamp);
         Bot.Log("Last datapoint:\t\t" + lastItem.TimeStamp);
         Bot.Log("User Count (Total):\t" + data.DistinctBy(x => x.UserID).Count());

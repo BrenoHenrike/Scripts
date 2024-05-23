@@ -117,7 +117,7 @@ public class EvalAcc
             $"51% DMG All Weapons:\t\t{dmgAll51Items} out of 22\n\n" +
 
             $"Awe   \u200AEnhancements Unlocked:\t{checkbox(Core.isCompletedBefore(2937))}\n" +
-            $"Forge Enhancements Unlocked:\t{forgeEnhIDs.Count(q => Core.isCompletedBefore(q))} out of {forgeEnhIDs.Count()}"
+            $"Forge Enhancements Unlocked:\t{forgeEnhIDs.Count(q => Core.isCompletedBefore(q))} out of {forgeEnhIDs.Length}"
 
             , "Evaluation Complete");
 
@@ -140,7 +140,7 @@ public class EvalAcc
                 miscItems += _miscItems = list.Count(item => (string)item.sIcon == "iibag");
                 int _houseItems = 0;
                 houseItems += _houseItems = list.Count(item => houseCat.Contains((string)item.sType));
-                equipment += list.Count() - _miscItems - _houseItems - _classes;
+                equipment += list.Count - _miscItems - _houseItems - _classes;
                 hmClasses += list.Count(item => (string)item.sIcon == "iiclass" && this.hmClasses.Contains((string)item.sName));
 
                 for (int i = 0; i < racial75Items.Length; i++)

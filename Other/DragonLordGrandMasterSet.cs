@@ -37,7 +37,7 @@ public class DragonLordGrandMasterSet
 
         Core.RegisterQuests(6689);
         Bot.Events.ItemDropped += ItemDropped;
-        Core.Logger($"Farm for the DragonLord GrandMaster set started. Farming to get {rewards.Count() - count} more item" + ((rewards.Count() - count) > 1 ? "s" : ""));
+        Core.Logger($"Farm for the DragonLord GrandMaster set started. Farming to get {rewards.Length - count} more item" + ((rewards.Length - count) > 1 ? "s" : ""));
 
         while (!Core.CheckInventory(rewards))
         {

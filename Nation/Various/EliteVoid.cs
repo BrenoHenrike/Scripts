@@ -41,7 +41,7 @@ public class EliteVoid
 
         CitadelRuins.CasparillasQuests();
 
-        for (int i = 0; i < ChooseRewardQuest.Count(); i++)
+        for (int i = 0; i < ChooseRewardQuest.Length; i++)
         {
             if (!Core.CheckInventory(ChooseRewardQuest[i]))
             {
