@@ -1562,7 +1562,7 @@ public class CoreFarms
     {
         if (!Core.isCompletedBefore(9125))
         {
-            Core.Logger("Quest \"Your Hero [9125]\" Not complete (you have to do this yourself), cannot continue the rep");
+            Core.Logger("Quest \"Your Hero [9125]\" Not complete (Run \"09SeaVoice\"), cannot continue the rep");
             return;
         }
 
