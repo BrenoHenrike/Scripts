@@ -33,7 +33,7 @@ public class ArmyFreeAcs
         List<string> warnings = new();
         Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
 
-        while (!Bot.ShouldExit && Army.DoForAll())
+        while (!Bot.ShouldExit && Army.doForAll())
         {
             // Verified Email
             if (Bot.Flash.CallGameFunction<bool>("world.myAvatar.isEmailVerified"))

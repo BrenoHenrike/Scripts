@@ -14,8 +14,8 @@ public class Core13LoC
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreStory Story = new();
-    public CoreAdvanced Adv = new();
+    public CoreStory Story = new CoreStory();
+    public CoreAdvanced Adv = new CoreAdvanced();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -196,7 +196,7 @@ public class Core13LoC
         Story.KillQuest(270, "relativity", "Head Gargoyle");
 
         //The Lake Hydra
-        Story.MapItemQuest(271, "hydra", [50, 51, 52]);
+        Story.MapItemQuest(271, "hydra", new[] { 50, 51, 52 });
 
         //Escherion
         if (!Story.QuestProgression(272))
@@ -1087,7 +1087,7 @@ public class Core13LoC
 
         //Has the Land Been Tainted?
         Story.MapItemQuest(1281, "ravinetemple", 554, 5);
-        Story.MapItemQuest(1281, "ravinetemple", [555, 556], 10);
+        Story.MapItemQuest(1281, "ravinetemple", new[] { 555, 556 }, 10);
 
         //Tears of the Mountain
         Story.KillQuest(1282, "ravinetemple", "Temple Guardian");
@@ -1100,7 +1100,7 @@ public class Core13LoC
         Story.KillQuest(1284, "ravinetemple", "Temple Guardian");
 
         //Scout and Return
-        Story.MapItemQuest(1375, "alliance", [679, 680]);
+        Story.MapItemQuest(1375, "alliance", new[] { 679, 680 });
 
         //Good and Evil Not Always Right
         if (!Story.QuestProgression(1376))
@@ -1162,7 +1162,7 @@ public class Core13LoC
         Story.KillQuest(1460, "orecavern", "Naga Baas");
 
         //Know the Nexus
-        Story.MapItemQuest(1469, "dreamnexus", [734, 735, 736, 737]);
+        Story.MapItemQuest(1469, "dreamnexus", new[] { 734, 735, 736, 737 });
 
         //Secure a Route Home
         if (!Story.QuestProgression(1470))
@@ -1331,7 +1331,7 @@ public class Core13LoC
 
         //Evidence of Chaos
         Story.MapItemQuest(1275, "ravinetemple", 554, 5);
-        Story.MapItemQuest(1275, "ravinetemple", [555, 556], 10);
+        Story.MapItemQuest(1275, "ravinetemple", new[] { 555, 556 }, 10);
 
         //Learn More of the Ore
         Story.KillQuest(1276, "ravinetemple", "Temple Guardian");
@@ -1344,7 +1344,7 @@ public class Core13LoC
         Story.KillQuest(1278, "ravinetemple", "Temple Guardian");
 
         //The Headquartes of Good and Evil
-        Story.MapItemQuest(1369, "alliance", [679, 680]);
+        Story.MapItemQuest(1369, "alliance", new[] { 679, 680 });
 
         //Treat Nullification, Good and Bad
         Story.KillQuest(1370, "alliance", new[] { "Good Soldier", "Evil Soldier" });
@@ -1394,7 +1394,7 @@ public class Core13LoC
         Story.KillQuest(1455, "orecavern", "Naga Baas");
 
         //Know the Nexus
-        Story.MapItemQuest(1464, "dreamnexus", [734, 735, 736, 737]);
+        Story.MapItemQuest(1464, "dreamnexus", new[] { 734, 735, 736, 737 });
 
         //Secure a Route Home
         if (!Story.QuestProgression(1465))
@@ -1426,7 +1426,7 @@ public class Core13LoC
         Story.PreLoad(this);
 
         //Time to Learn the Truth
-        Story.MapItemQuest(2239, "thespan", [1358, 1359, 1360, 1361, 1362, 1363]);
+        Story.MapItemQuest(2239, "thespan", new[] { 1358, 1359, 1360, 1361, 1362, 1363 });
 
         //Gain Access to Doors
         Story.KillQuest(2240, "timelibrary", new[] { "Sneak", "Tog", "Shadowscythe" });
@@ -1488,7 +1488,7 @@ public class Core13LoC
         Story.KillQuest(2256, "timevoid", new[] { "Void Phoenix", "Time-Travel Fairy" });
 
         //Clock of the Long Now
-        Story.MapItemQuest(2257, "timevoid", [1440, 1441, 1442, 1443]);
+        Story.MapItemQuest(2257, "timevoid", new[] { 1440, 1441, 1442, 1443 });
 
         //Unending Avatar
         Story.KillQuest(2258, "timevoid", "Unending Avatar", AutoCompleteQuest: false);
@@ -1505,11 +1505,11 @@ public class Core13LoC
 
         //Bolster the Elements
         Story.KillQuest(2379, "aqlesson", new[] { "Eternite Ore", "Water Elemental" });
-        Story.MapItemQuest(2379, "aqlesson", [1470, 1471], 3);
+        Story.MapItemQuest(2379, "aqlesson", new[] { 1470, 1471 }, 3);
 
         //Maintain Elemental Strength
         Story.KillQuest(2380, "aqlesson", new[] { "Ice Elemental", "Fire Elemental" });
-        Story.MapItemQuest(2380, "aqlesson", [1473, 1472], 3);
+        Story.MapItemQuest(2380, "aqlesson", new[] { 1473, 1472 }, 3);
 
         //Rescue the Innocent
         Story.KillQuest(2381, "aqlesson", "Void Dragon");
@@ -1692,7 +1692,7 @@ public class Core13LoC
         Story.MapItemQuest(2621, "blackhorn", 1619);
 
         //Lion Hunting
-        Story.MapItemQuest(2622, "onslaughttower", [1620, 1621, 1622, 1623]);
+        Story.MapItemQuest(2622, "onslaughttower", new[] { 1620, 1621, 1622, 1623 });
 
         //Secret Of The Death Fog
         Story.KillQuest(2623, "onslaughttower", "Golden Caster");
@@ -1957,7 +1957,7 @@ public class Core13LoC
 
         //Nope, Still a Ghost
         Story.KillQuest(3167, "reddeath", "Reddeath Moglin");
-        Story.MapItemQuest(3167, "reddeath", [2178, 2179]);
+        Story.MapItemQuest(3167, "reddeath", new[] { 2178, 2179 });
 
         //First We Need a Beacon...
         Story.MapItemQuest(3168, "reddeath", 2180);

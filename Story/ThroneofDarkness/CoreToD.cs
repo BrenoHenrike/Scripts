@@ -24,9 +24,9 @@ public class CoreToD
 
     public void CompleteToD()
     {
-        int[] questIDs = [4992, 5050, 5108, 5120, 5154, 5165, 5187, 5212, 5313, 5332, 5434, 5451];
+        int[] questIDs = { 4992, 5050, 5108, 5120, 5154, 5165, 5187, 5212, 5313, 5332, 5434, 5451 };
         if (Core.IsMember)
-            questIDs = [.. questIDs, .. new[] { 5010, 5022, 5083 }];
+            questIDs = questIDs.Concat(new[] { 5010, 5022, 5083 }).ToArray();
         Core.EnsureLoad(questIDs);
         if (questIDs.All(qID => Core.isCompletedBefore(qID)))
             return;
@@ -197,7 +197,7 @@ public class CoreToD
         Story.KillQuest(5000, "towersilver", new[] { "Flying Spyball", "Fallen DeathKnight", "Undead Warrior", "Undead Knight", "Undead Guard" });
 
         // Or... Not.
-        Story.MapItemQuest(5001, "towersilver", [4368, 4369, 4370, 4371, 4372,]);
+        Story.MapItemQuest(5001, "towersilver", new[] { 4368, 4369, 4370, 4371, 4372, });
 
         // Mirror, Mirror
         Story.MapItemQuest(5002, "towersilver", 4373, 3);
@@ -635,7 +635,7 @@ public class CoreToD
         Story.PreLoad(this);
 
         // Mingle
-        Story.MapItemQuest(5133, "DeathPit", [4484, 4485, 4486, 4487, 4488, 4489, 4490, 4491]);
+        Story.MapItemQuest(5133, "DeathPit", new[] { 4484, 4485, 4486, 4487, 4488, 4489, 4490, 4491 });
 
         // Those Dummies
         Story.KillQuest(5134, "DeathPit", "Training Dummy");
@@ -1232,7 +1232,7 @@ public class CoreToD
 
         // The Key To Success
         Story.KillQuest(5315, "towerofmirrors", "Silver Elemental");
-        Story.MapItemQuest(5315, "towerofmirrors", [4691, 4692]);
+        Story.MapItemQuest(5315, "towerofmirrors", new[] { 4691, 4692 });
 
         // Phanatics
         Story.KillQuest(5316, "towerofmirrors", new[] { "Phans", "Phans" });
@@ -1248,7 +1248,7 @@ public class CoreToD
 
         // True Love
         Story.KillQuest(5318, "towerofmirrors", "Silver Elemental");
-        Story.MapItemQuest(5318, "towerofmirrors", [4687, 4693]);
+        Story.MapItemQuest(5318, "towerofmirrors", new[] { 4687, 4693 });
 
         // Turn to the Left
         Story.KillQuest(5319, "towerofmirrors", new[] { "Runway Wraith", "Runway Wraith", "Runway Wraith", "Runway Wraith" });
@@ -1264,7 +1264,7 @@ public class CoreToD
 
         // Or Maybe THIS Is True Love
         Story.KillQuest(5321, "towerofmirrors", "Silver Elemental");
-        Story.MapItemQuest(5321, "towerofmirrors", [4688, 4694]);
+        Story.MapItemQuest(5321, "towerofmirrors", new[] { 4688, 4694 });
 
         // Those Harpies!
         Story.KillQuest(5322, "towerofmirrors", new[] { "Pageant Mom", "Pageant Mom" });
@@ -1280,7 +1280,7 @@ public class CoreToD
 
         // Oh Sure, Why Not
         Story.KillQuest(5324, "towerofmirrors", "Silver Elemental");
-        Story.MapItemQuest(5324, "towerofmirrors", [4689, 4695]);
+        Story.MapItemQuest(5324, "towerofmirrors", new[] { 4689, 4695 });
 
         // Behind the Scenes
         if (!Story.QuestProgression(5325))
@@ -1302,7 +1302,7 @@ public class CoreToD
 
         // Oh, I Give Up
         Story.KillQuest(5327, "towerofmirrors", "Silver Elemental");
-        Story.MapItemQuest(5327, "towerofmirrors", [4690, 4696]);
+        Story.MapItemQuest(5327, "towerofmirrors", new[] { 4690, 4696 });
 
         // We Gotta Wendi-GO
         if (!Story.QuestProgression(5328))
@@ -1374,7 +1374,7 @@ public class CoreToD
         Story.KillQuest(5432, "cursedshop", "Grandfather Clock");
 
         //Dr. Darkwood's Robe
-        Story.MapItemQuest(5433, "cursedshop", [4804, 4805]);
+        Story.MapItemQuest(5433, "cursedshop", new[] { 4804, 4805 });
 
         //defeat the arcane sentinel
         Story.MapItemQuest(5434, "cursedshop", 4806);
@@ -1408,7 +1408,7 @@ public class CoreToD
         Story.KillQuest(5432, "cursedshop", "Grandfather Clock");
 
         //Dr. Darkwood's Robe
-        Story.MapItemQuest(5433, "cursedshop", [4804, 4805]);
+        Story.MapItemQuest(5433, "cursedshop", new[] { 4804, 4805 });
 
         //defeat the arcane sentinel
         Story.MapItemQuest(5434, "cursedshop", 4806);
@@ -1427,7 +1427,7 @@ public class CoreToD
         Story.MapItemQuest(5441, "MysteriousDungeon", 4809);
 
         //seeking answers
-        Story.MapItemQuest(5442, "MysteriousDungeon", [4810, 4811, 4812, 4813, 4814, 4815, 4816]);
+        Story.MapItemQuest(5442, "MysteriousDungeon", new[] { 4810, 4811, 4812, 4813, 4814, 4815, 4816 });
 
         //Curses!        
         Story.MapItemQuest(5443, "MysteriousDungeon", 4817);

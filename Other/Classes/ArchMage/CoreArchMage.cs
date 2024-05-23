@@ -33,13 +33,13 @@ public class CoreArchMage
 
     public bool DontPreconfigure = true;
     public string OptionsStorage = "ArchMage";
-    public List<IOption> Options =
-    [
+    public List<IOption> Options = new()
+    {
         new Option<bool>("lumina_elementi", "Lumina Elementi", "Todo the last quest or not, for the 51% wep(takes awhileand will require aditional boss items.) [On by default]", true),
         new Option<bool>("cosmetics", "Get Cosmetics", "Gets the cosmetic rewards (redoes quests if you don't have them, disable to just get ArchMage and the weapon) [On by default]", false),
         new Option<bool>("army", "Armying?", "use when running on 4 accounts at once only, will probably get out of sync.) [Off by default]", false),
         CoreBots.Instance.SkipOptions,
-    ];
+    };
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -577,7 +577,7 @@ public class CoreArchMage
     }
 
 
-    private readonly string[] RequiredItems = [
+    private readonly string[] RequiredItems = {
         "ArchMage",
         "Providence",
         "Mystic Scribing Kit",
@@ -591,8 +591,8 @@ public class CoreArchMage
         "Book of Arcana",
         "Arcane Sigil",
         "Archmage"
-    ];
-    private readonly string[] BossDrops = [
+    };
+    private readonly string[] BossDrops = {
         "Void Essentia",
         "Vital Exanima",
         "Everlight Flame",
@@ -602,8 +602,8 @@ public class CoreArchMage
         "Insatiable Hunger",
         "Undying Resolve",
         "Elemental Binding"
-    ];
-    private readonly string[] Cosmetics = [
+    };
+    private readonly string[] Cosmetics = {
         "Arcane Sigil",
         "Arcane Floating Sigil",
         "Sheathed Archmage's Staff",
@@ -618,7 +618,7 @@ public class CoreArchMage
         "Sheathed Providence",
         "Prismatic Sigil",
         "Astral Mantle"
-    ];
+    };
     private bool army = false;
 
 

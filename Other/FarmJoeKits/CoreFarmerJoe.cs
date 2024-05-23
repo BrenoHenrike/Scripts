@@ -151,13 +151,13 @@ public class CoreFarmerJoe
 
     public string OptionsStorage = "FarmerJoePet";
     public bool DontPreconfigure = true;
-    public List<IOption> Options =
-    [
+    public List<IOption> Options = new()
+    {
         new Option<bool>("OutFit", "Get a Pre-Made Outfit, Curtious of the Community", "We are farmers, bum ba dum bum bum bum bum", false),
         new Option<bool>("EquipOutfit", "Equip outfit at the end?", "Yay or Nay", false),
         new Option<PetChoice>("PetChoice", "Choose Your Pet", "Extra stuff to choose, if you have any suggestions -form in disc, and put it under request. or dm Tato(the retarded one on disc)", PetChoice.None),
         CoreBots.Instance.SkipOptions,
-    ];
+    };
 
     public static void ScriptMain(IScriptInterface bot) => Core.RunCore();
     #region InvClasses
@@ -694,9 +694,9 @@ public class CoreFarmerJoe
         // if (!Core.CheckInventory("ArchPaladin"))
         //     soloClassesToCheck = new[] { "ArchPaladin", "Shaman", "Rogue (Rare)", "Rogue", "Healer (Rare)", "Healer" };
         // else
-        string[] soloClassesToCheck = ["ArchPaladin", "Glacial Berserker", "DragonSoul Shinobi", "Shaman", "Rogue (Rare)", "Rogue", "Healer (Rare)", "Healer"];
+        string[] soloClassesToCheck = new[] { "ArchPaladin", "Glacial Berserker", "DragonSoul Shinobi", "Shaman", "Rogue (Rare)", "Rogue", "Healer (Rare)", "Healer" };
 
-        string[] farmClassesToCheck = ["Archfiend", "Blaze Binder", "Scarlet Sorceress", "Master Ranger", "Shaman", "Mage (Rare)", "Mage"];
+        string[] farmClassesToCheck = new[] { "Archfiend", "Blaze Binder", "Scarlet Sorceress", "Master Ranger", "Shaman", "Mage (Rare)", "Mage" };
 
         if (swapToSoloClass && (Core.SoloClass == "Generic" || soloClassesToCheck.Contains(Core.SoloClass)))
         {
@@ -799,8 +799,8 @@ public class CoreFarmerJoe
     /// </remarks>
     public void DmgOverTimeEnh()
     {
-        string[] itemsToCheck =
-        [
+        string[] itemsToCheck = new[]
+        {
         "ShadowStalker of Time",
         "ShadowWeaver of Time",
         "ShadowWalker of Time",
@@ -815,7 +815,7 @@ public class CoreFarmerJoe
         "DragonSoul Shinobi",
         "Shadow Dragon Shinobi",
         "Legion Revenant"
-    ];
+    };
 
         foreach (string item in itemsToCheck)
         {

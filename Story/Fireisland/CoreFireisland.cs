@@ -168,7 +168,7 @@ public class CoreFireIsland
         //Restore the Lady of Waters
         if (!Story.QuestProgression(4130))
         {
-            Story.MapItemQuest(4130, "feverfew", [3246, 3247]);
+            Story.MapItemQuest(4130, "feverfew", new[] { 3246, 3247 });
             Core.HuntMonster("feverfew", "Coral Creeper", "Statue Torso");
             Core.HuntMonster("feverfew", "Twisted Undine", "Statue Base");
             Core.HuntMonster("feverfew", "Salamander", "Statue Core");

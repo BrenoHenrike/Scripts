@@ -63,7 +63,7 @@ public class CoreHarvestDay
         //Unboiling Water (131)
         if (!Story.QuestProgression(131))
         {
-            Core.EnsureAcceptmultiple(false, [131, 420]);
+            Core.EnsureAcceptmultiple(false, new[] { 131, 420 });
             Core.GetMapItem(31, 1, "harvest");
             Core.EnsureComplete(420);
             Core.EnsureComplete(131);
@@ -72,7 +72,7 @@ public class CoreHarvestDay
         //The Corn has Ears (132)
         if (!Story.QuestProgression(132))
         {
-            Core.EnsureAcceptmultiple(false, [132, 421]);
+            Core.EnsureAcceptmultiple(false, new[] { 132, 421 });
             Core.HuntMonster("harvest", "Corn Stalker", "Corn Stalker Ears", 8, log: false);
             Core.EnsureComplete(421);
             Core.EnsureComplete(132);
@@ -81,7 +81,7 @@ public class CoreHarvestDay
         //An Apple a Day (133)
         if (!Story.QuestProgression(133))
         {
-            Core.EnsureAcceptmultiple(false, [133, 422]);
+            Core.EnsureAcceptmultiple(false, new[] { 133, 422 });
             Core.HuntMonster("harvest", "Bad Apple", "Worm", 5, log: false);
             Core.EnsureComplete(422);
             Core.EnsureComplete(133);
@@ -90,7 +90,7 @@ public class CoreHarvestDay
         //Whine n' Cheese (134)
         if (!Story.QuestProgression(134))
         {
-            Core.EnsureAcceptmultiple(false, [134, 423]);
+            Core.EnsureAcceptmultiple(false, new[ ]{134, 423});
             Core.HuntMonster("harvest", "Grapes of Wrath", "Whine", 8, log: false);
             Core.EnsureComplete(423);
             Core.EnsureComplete(134);
@@ -407,7 +407,7 @@ public class CoreHarvestDay
         Story.KillQuest(7200, "bloodtusk", "Rhison");
 
         // Test Sample #1 7201
-        Story.MapItemQuest(7201, "meatlab", [6834, 6835]);
+        Story.MapItemQuest(7201, "meatlab", new[] { 6834, 6835 });
 
         // Spice it Up 7202
         if (!Story.QuestProgression(7202))
@@ -419,13 +419,13 @@ public class CoreHarvestDay
         }
 
         // Test Sample #2 7203
-        Story.MapItemQuest(7203, "meatlab", [6836, 6837]);
+        Story.MapItemQuest(7203, "meatlab", new[] { 6836, 6837 });
 
         // Tenderize 7204
         Story.KillQuest(7204, "pirates", "Fishwing");
 
         // Test Sample #3 7205
-        Story.MapItemQuest(7205, "meatlab", [6838, 6839]);
+        Story.MapItemQuest(7205, "meatlab", new[] { 6838, 6839 });
 
         // Meat Multiplication 7206
         Story.KillQuest(7206, "guru", "Trobble");
@@ -488,7 +488,7 @@ public class CoreHarvestDay
         Story.KillQuest(7790, "gothicdream", new[] { "Spooky Lantern", "Bat Garland" });
 
         // Sleepytime Gear 7791
-        Story.MapItemQuest(7791, "gothicdream", [7820, 7821]);
+        Story.MapItemQuest(7791, "gothicdream", new[] { 7820, 7821 });
         Story.KillQuest(7791, "gothicdream", new[] { "Spooky Lantern", "Bat Garland" });
 
         // Too Bright 7792
@@ -666,7 +666,7 @@ public class CoreHarvestDay
         Story.PreLoad(this);
 
         // 8972 Angriest Birds
-        Story.MapItemQuest(8972, "birdswithharms", [10913, 10924]);
+        Story.MapItemQuest(8972, "birdswithharms", new[] { 10913, 10924 });
 
         // 8973 Harms in Arms
         if (!Story.QuestProgression(8973))

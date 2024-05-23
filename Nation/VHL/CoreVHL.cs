@@ -32,15 +32,15 @@ public class CoreVHL
 
     public string OptionsStorage = "VoidHighLordOptions";
     public bool DontPreconfigure = true;
-    public List<IOption> Options =
-    [
+    public List<IOption> Options = new()
+    {
         new Option<bool>("SparrowMethod", "Use Sparrow's Blood Method",
             "When possible, it will use \"Assisting Crag and Bamboozle\" to get an additional Elders' Blood per day.\n" +
             "Needs Crag and Bamboozle and is Legend-Only.\n" +
             "Will not be done if you don't meed the conditions\n" +
             "Recommended setting: True", true),
         CoreBots.Instance.SkipOptions
-    ];
+    };
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -114,7 +114,7 @@ public class CoreVHL
             else return;
         }
     }
-    private readonly string[] ChallengeRewards = ["Void Highlord Armor", "Helm of the Highlord", "Highlord's Void Wrap"];
+    private readonly string[] ChallengeRewards = { "Void Highlord Armor", "Helm of the Highlord", "Highlord's Void Wrap" };
 
     public void VHLCrystals()
     {

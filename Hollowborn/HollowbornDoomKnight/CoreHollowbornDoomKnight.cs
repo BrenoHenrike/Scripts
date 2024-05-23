@@ -43,40 +43,40 @@ public class CoreHollowbornDoomKnight
 
     public string OptionsStorage = "HollowbornDoomKnightOptions";
     public bool DontPreconfigure = true;
-    public List<IOption> Options =
-    [
+    public List<IOption> Options = new()
+    {
         new Option<bool>("PreFarm", "Pre Farm Dark-/Doom Fragments", "Recommended setting: False", false),
         CoreBots.Instance.SkipOptions,
-    ];
+    };
 
     public void ScriptMain(IScriptInterface bot)
     {
         Core.RunCore();
     }
 
-    public string[] ADKItems = [
+    public string[] ADKItems = {
         "Hollowborn Doom Visage",
         "Hollowborn DoomKnight Helm",
         "Hollowborn DoomKnight Hood",
         "Hollowborn Doom Cloak",
         "Hollowborn Doom Cape"
-    ];
+    };
 
-    public string[] ADKRisesItems = [
+    public string[] ADKRisesItems = {
         "Doom Fragment",
         "Classic Hollowborn DoomKnight"
-    ];
-    public string[] ADKFallsItems = [
+    };
+    public string[] ADKFallsItems = {
         "Hollowborn Empress' Blade",
         "Hollowborn DoomBlade"
-    ];
+    };
 
-    public string[] ADKReturnsItems = [
+    public string[] ADKReturnsItems = {
         "Hollowborn DoomKnight",
         "Hollowborn Sepulchure's Helm",
         "Hollowborn Doom Shade",
         "Hollowborn Sword of Doom"
-    ];
+    };
 
     public void GetAll()
     {

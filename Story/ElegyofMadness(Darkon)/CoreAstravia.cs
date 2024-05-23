@@ -436,13 +436,13 @@ public class CoreAstravia
         Story.KillQuest(8635, "FirstObservatory", "Ancient Creature");
 
         //Libra Shamash
-        Story.MapItemQuest(8636, "FirstObservatory", [10086, 10087]);
+        Story.MapItemQuest(8636, "FirstObservatory", new[] { 10086, 10087 });
 
         //Auriga
         Story.KillQuest(8637, "FirstObservatory", new[] { "Ancient Creature", "Ancient Turret" });
 
         //Pisces Alrescha
-        Story.MapItemQuest(8638, "FirstObservatory", [10088, 10089]);
+        Story.MapItemQuest(8638, "FirstObservatory", new[] { 10088, 10089 });
 
         //Pisces Alpherg
         Story.MapItemQuest(8639, "FirstObservatory", 10090);
@@ -473,13 +473,13 @@ public class CoreAstravia
         Story.KillQuest(8679, "genesisgarden", "Drago's Soldier");
 
         //The High Priestess 8680
-        Story.MapItemQuest(8680, "genesisgarden", MapItemIDs: [10197, 10198, 10199]);
+        Story.MapItemQuest(8680, "genesisgarden", MapItemIDs: new[] { 10197, 10198, 10199 });
 
         //The Empress, Reversed 8681
         Story.KillQuest(8681, "genesisgarden", "Drago's Soldier");
 
         //The Emperor 8682
-        Story.MapItemQuest(8682, "genesisgarden", MapItemIDs: [10200, 10201]);
+        Story.MapItemQuest(8682, "genesisgarden", MapItemIDs: new[] { 10200, 10201 });
 
         //The Hierophant 8683
         Story.MapItemQuest(8683, "genesisgarden", 10202, 5);

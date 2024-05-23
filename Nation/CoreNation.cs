@@ -36,7 +36,7 @@ public class CoreNation
     /// All principal drops from Nulgath
     /// </summary>
     public string[] bagDrops =
-    [
+    {
         "Dark Crystal Shard",
         "Diamond of Nulgath",
         "Gem of Nulgath",
@@ -58,10 +58,10 @@ public class CoreNation
         "Archfiend's Favor",
         "Unidentified 34",
         "Essence of Nulgath"
-    ];
+    };
 
     public string[] SuppliesRewards =
-    [
+    {
     "Tainted Gem",
     "Dark Crystal Shard",
     "Diamond of Nulgath",
@@ -71,18 +71,18 @@ public class CoreNation
     "Unidentified 10",
     "Essence of Nulgath",
     "Receipt of Swindle"
-    ];
+    };
 
     /// <summary>
     /// Drops from the bosses that used to give acess to tercess
     /// </summary>
-    public string[] tercessBags = ["Bone Dust"];
+    public string[] tercessBags = { "Bone Dust" };
 
     /// <summary>
     /// List of Betrayal Blades
     /// </summary>
     public string[] betrayalBlades =
-    [
+    {
         "1st Betrayal Blade of Nulgath",
         "2nd Betrayal Blade of Nulgath",
         "3rd Betrayal Blade of Nulgath",
@@ -91,21 +91,21 @@ public class CoreNation
         "6th Betrayal Blade of Nulgath",
         "7th Betrayal Blade of Nulgath",
         "8th Betrayal Blade of Nulgath"
-    ];
+    };
 
     /// <summary>
     /// Shadow Blast Arena medals
     /// </summary>
     public string[] nationMedals =
-    [
+    {
         "Nation Round 1 Medal",
         "Nation Round 2 Medal",
         "Nation Round 3 Medal",
         "Nation Round 4 Medal"
-    ];
+    };
 
     public string[] Receipt =
-    [
+    {
         "Unidentified 1",
         "Unidentified 6",
         "Unidentified 9",
@@ -116,13 +116,13 @@ public class CoreNation
         "Diamond of Nulgath",
         "Gem of Nulgath",
         "Blood Gem of the Archfiend"
-    ];
+    };
 
     /// <summary>
     /// Misc items to accept during Bloody Chaos if turned on
     /// </summary>
     public string[] BloodyChaosSupplies =
-    [
+    {
         "Tainted Gem",
         "Dark Crystal Shard",
         "Diamond of Nulgath",
@@ -132,26 +132,26 @@ public class CoreNation
         "Unidentified 13",
         "Gem of Nulgath",
         "Relic of Chaos"
-    ];
+    };
 
     public string[] SwindlesReturn =
-    [
+    {
         "Unidentified 1",
         "Unidentified 6",
         "Unidentified 9",
         "Unidentified 16",
         "Unidentified 20",
-    ];
+    };
 
     public string[] SwindlesReturnRewards =
-    [
+    {
         "Tainted Gem",
         "Dark Crystal Shard",
         "Diamond of Nulgath",
         "Gem of Nulgath",
         "Blood Gem of the Archfiend",
         "Receipt of Swindle"
-    ];
+    };
 
     public string Uni(int nr)
         => $"Unidentified {nr}";
@@ -204,7 +204,7 @@ public class CoreNation
         Core.RegisterQuests(Core.CheckInventory("Bounty Hunter's Drone Pet") ? 6183 : 6697);
         if (item == null)
         {
-            ItemBase[] QuestRewards = [.. Core.EnsureLoad(Core.CheckInventory("Bounty Hunter's Drone Pet") ? 6183 : 6697).Rewards];
+            ItemBase[] QuestRewards = Core.EnsureLoad(Core.CheckInventory("Bounty Hunter's Drone Pet") ? 6183 : 6697).Rewards.ToArray();
             foreach (var Item in QuestRewards)
             {
                 if (Core.CheckInventory(Item.Name, Item.MaxStack))
@@ -443,7 +443,7 @@ public class CoreNation
             return;
         }
 
-        string?[] rewards = ["Tainted Gem", "Dark Crystal Shard", "Gem of Nulgath", "Blood Gem of the Archfiend"];
+        string?[] rewards = { "Tainted Gem", "Dark Crystal Shard", "Gem of Nulgath", "Blood Gem of the Archfiend" };
 
         Core.EquipClass(ClassType.Farm);
         Core.AddDrop(Core.QuestRewards(870));
@@ -710,8 +710,8 @@ public class CoreNation
         Core.RegisterQuests(item != Uni(13) && Core.CheckInventory("Swindle Bilk's To Go Hut")
                             ? (Core.CheckInventory("Drudgen the Assistant")
                                 ? new[] { 870, 2857, 9542 }
-                                : [2857, 9542])
-                            : [2857]);
+                                : new[] { 2857, 9542 })
+                            : new[] { 2857 });
 
 
         Core.AddDrop(
@@ -893,7 +893,7 @@ public class CoreNation
             return;
 
         // List of available drops for "The Assistant" quest
-        string[] selectedDrops = item != null ? [item] : bagDrops[..^11];
+        string[] selectedDrops = item != null ? new string[] { item } : bagDrops[..^11];
         Core.AddDrop(selectedDrops);
 
         //add `Receipt of Swindle` from swindles return rewards.
@@ -913,7 +913,7 @@ public class CoreNation
         string[]? rPDSuni = null;
         if (returnPolicyDuringSupplies)
         {
-            rPDSuni = [Uni(1), Uni(6), Uni(9), Uni(16), Uni(20)];
+            rPDSuni = new[] { Uni(1), Uni(6), Uni(9), Uni(16), Uni(20) };
             Core.AddDrop(rPDSuni);
             Core.AddDrop("Blood Gem of Nulgath");
         }
@@ -1078,7 +1078,7 @@ public class CoreNation
             return;
 
         Core.AddDrop("Relic of Chaos", "Tainted Core");
-        Core.AddDrop(string.IsNullOrEmpty(item) ? bagDrops : [item]);
+        Core.AddDrop(string.IsNullOrEmpty(item) ? bagDrops : new string[] { item });
 
         bool hasOBoNPet = Core.IsMember && Core.CheckInventory("Oblivion Blade of Nulgath") &&
                           Bot.Inventory.Items.Any(obon => obon.Category == Skua.Core.Models.Items.ItemCategory.Pet && obon.Name == "Oblivion Blade of Nulgath");
@@ -1528,11 +1528,11 @@ public class CoreNation
     /// </summary>
     public void DragonSlayerReward()
     {
-        int[] questIds = [165, 166, 167, 168, 169];
-        string[] questMonsterNames = ["Water Draconian", "Hole", "Ledge", "Red Dragon", "Hole"];
-        string[] questMonsterItems = ["Dragonslayer Veteran Medal", "Dragonslayer Sergeant Medal", "Dragonslayer Captain Medal", "Dragonslayer Marshal Medal", "Wisp of Dragonspirit"];
-        int[] requiredQuantities = [8, 8, 8, 8, 12];
-        ClassType[] questClasses = [ClassType.Farm, ClassType.Farm, ClassType.Farm, ClassType.Solo, ClassType.Farm];
+        int[] questIds = { 165, 166, 167, 168, 169 };
+        string[] questMonsterNames = { "Water Draconian", "Hole", "Ledge", "Red Dragon", "Hole" };
+        string[] questMonsterItems = { "Dragonslayer Veteran Medal", "Dragonslayer Sergeant Medal", "Dragonslayer Captain Medal", "Dragonslayer Marshal Medal", "Wisp of Dragonspirit" };
+        int[] requiredQuantities = { 8, 8, 8, 8, 12 };
+        ClassType[] questClasses = { ClassType.Farm, ClassType.Farm, ClassType.Farm, ClassType.Solo, ClassType.Farm };
 
         for (int i = 0; i < questIds.Length; i++)
         {
@@ -1597,7 +1597,7 @@ public class CoreNation
 
         Core.FarmingLogger("Blood Gem of the Archfiend", quant);
 
-        Core.RegisterQuests(relic ? [7816, 2857] : [7816]);
+        Core.RegisterQuests(relic ? new[] { 7816, 2857 } : new[] { 7816 });
 
         Core.EquipClass(ClassType.Solo);
         while (!Bot.ShouldExit && !Core.CheckInventory("Blood Gem of the Archfiend", quant))
@@ -1929,7 +1929,7 @@ public class CoreNation
     /// <param name="quant">Desired item quantity.</param>
     public void CarveUniGemStone(string? item = null, int quant = 1000)
     {
-        string[] questDrops = ["Tainted Gem", "Dark Crystal Shard", "Diamond of Nulgath", "Gem of Nulgath", "Blood Gem of the Archfiend"];
+        string[] questDrops = { "Tainted Gem", "Dark Crystal Shard", "Diamond of Nulgath", "Gem of Nulgath", "Blood Gem of the Archfiend" };
 
         // Check if the player is a member and has the desired items or item.
         if (!Core.IsMember)
@@ -2055,7 +2055,7 @@ public class CoreNation
             throw new ArgumentException($"'{nameof(item)}' cannot be null or empty.", nameof(item));
         }
 
-        string[] rPDSuni = [Uni1(1), Uni1(6), Uni1(9), Uni1(16), Uni1(20)];
+        string[] rPDSuni = new[] { Uni1(1), Uni1(6), Uni1(9), Uni1(16), Uni1(20) };
         Core.AddDrop(rPDSuni);
         Core.AddDrop("Blood Gem of Nulgath");
     }

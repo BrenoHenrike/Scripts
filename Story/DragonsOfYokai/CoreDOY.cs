@@ -38,7 +38,7 @@ public class CoreDOY
         Core.EquipClass(ClassType.Farm);
 
         // Wokou 9378
-        Story.MapItemQuest(9378, "yokaipirate", [12133, 12134, 12135]);
+        Story.MapItemQuest(9378, "yokaipirate", new[] { 12133, 12134, 12135 });
 
         // Shanty Sha-N-Ti 9379
         Story.KillQuest(9379, "yokaipirate", "Disguised Pirate");
@@ -48,7 +48,7 @@ public class CoreDOY
         {
             Core.EnsureAccept(9380);
             Core.HuntMonster("yokaipirate", "Serpent Warrior", "Serpent Badge", 7);
-            Story.MapItemQuest(9380, "yokaipirate", [12136, 12137]);
+            Story.MapItemQuest(9380, "yokaipirate", new[] { 12136, 12137 });
         }
 
         // Fashion Fathoms 9381
@@ -104,7 +104,7 @@ public class CoreDOY
         Core.EquipClass(ClassType.Farm);
 
         // All Hands Report (9396)
-        Story.MapItemQuest(9396, "yokaitreasure", [12162, 12163, 12164]);
+        Story.MapItemQuest(9396, "yokaitreasure", new[] { 12162, 12163, 12164 });
 
         // Starving Ghosts (9397)
         Story.KillQuest(9397, "yokaitreasure", "Needle Mouth");
@@ -113,7 +113,7 @@ public class CoreDOY
         Story.KillQuest(9398, "yokaitreasure", "Quicksilver");
 
         // Onmyoji Maiden (9399)
-        Story.MapItemQuest(9399, "yokaitreasure", [12165, 12166]);
+        Story.MapItemQuest(9399, "yokaitreasure", new[] { 12165, 12166 });
 
         // Proper Parley (9400)
         Story.KillQuest(9400, "yokaitreasure", "Imperial Warrior");
@@ -160,7 +160,7 @@ public class CoreDOY
         Story.MapItemQuest(9592, "hakuvillage", 12707);
 
         // Inari Boom (9593)
-        Story.MapItemQuest(9593, "hakuvillage", [12708, 12709]);
+        Story.MapItemQuest(9593, "hakuvillage", new[] { 12708, 12709 });
         Story.KillQuest(9593, "hakuvillage", "Kitsune Spy");
 
         // Cui Niao (9594)
@@ -230,29 +230,29 @@ public class CoreDOY
         Core.EquipClass(ClassType.Farm);
 
         // Tense Reunion (9667)
-        Story.MapItemQuest(9667, "yokaiportal", [12982, 12983, 12984]);
+        Story.MapItemQuest(9667, "yokaiportal", new[] { 12982, 12983, 12984 });
 
         // Kimon (9668)
         Story.KillQuest(9668, "yokaiportal", "Oni Spirits");
 
         // Shrine of Love (9669)
-        Story.MapItemQuest(9669, "yokaiportal", [12985, 12986]);
+        Story.MapItemQuest(9669, "yokaiportal", new[] { 12985, 12986 });
 
         // Hoshi no Tama (9670)
         Story.KillQuest(9670, "yokaiportal", "Kitsune Spirits");
 
         // Childish Nostalgia (9671)
-        Story.MapItemQuest(9671, "yokaiportal", [12987, 12988]);
+        Story.MapItemQuest(9671, "yokaiportal", new[] { 12987, 12988 });
 
         // Simple Wishes (9672)
         Story.KillQuest(9672, "yokaiportal", "Snake Shikigami");
-        Story.MapItemQuest(9672, "yokaiportal", [12989, 12995, 12990]);
+        Story.MapItemQuest(9672, "yokaiportal", new[] { 12989, 12995, 12990 });
 
         // Left Behind (9673)
         Story.KillQuest(9673, "yokaiportal", "Puppeted Dragonling");
 
         // Our Love (9674)
-        Story.MapItemQuest(9674, "yokaiportal", [12991, 12992, 12993]);
+        Story.MapItemQuest(9674, "yokaiportal", new[] { 12991, 12992, 12993 });
 
         // Amano Iwato (9675)
         Story.KillQuest(9675, "yokaiportal", new[] { "Kitsune Spirits", "Puppeted Dragonling" });
@@ -278,19 +278,19 @@ public class CoreDOY
         Core.EquipClass(ClassType.Farm);
 
         // Tail End (9680)
-        Story.MapItemQuest(9680, "yokairealm", [13036, 13037]);
+        Story.MapItemQuest(9680, "yokairealm", new[] { 13036, 13037 });
         Story.KillQuest(9680, "yokairealm", "Snake Shikigami");
 
         // A Thousand Hills (9681)
-        Story.MapItemQuest(9681, "yokairealm", [13038, 13039]);
+        Story.MapItemQuest(9681, "yokairealm", new[] { 13038, 13039 });
         Story.KillQuest(9681, "yokairealm", "Snake Shikigami");
 
         // Mount the Land and Skies (9682)
-        Story.MapItemQuest(9682, "yokairealm", [13040, 13041]);
+        Story.MapItemQuest(9682, "yokairealm", new[] { 13040, 13041 });
         Story.KillQuest(9682, "yokairealm", "Puppeted Dragonling");
 
         // Distant Shores (9683)
-        Story.MapItemQuest(9683, "yokairealm", [13042, 13043]);
+        Story.MapItemQuest(9683, "yokairealm", new[] { 13042, 13043 });
         Story.KillQuest(9683, "yokairealm", "Dark Zmey");
 
         // Taizi (9684)
@@ -298,7 +298,7 @@ public class CoreDOY
         Story.KillQuest(9684, "yokairealm", new[] { "Puppeted Dragonling", "Dark Zmey" });
 
         // Begrudged Oni (9685)
-        Story.MapItemQuest(9685, "yokairealm", [13045, 13046]);
+        Story.MapItemQuest(9685, "yokairealm", new[] { 13045, 13046 });
         Story.KillQuest(9685, "yokairealm", "Oni Spirits");
 
         // Lingering Discord (9686)

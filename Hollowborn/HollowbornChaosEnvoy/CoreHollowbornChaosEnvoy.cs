@@ -45,8 +45,8 @@ public class CoreHollowbornChaosEnvoy
 
     public string OptionsStorage = "HollowbornChaosEnvoy";
     public bool DontPreconfigure = true;
-    public List<IOption> Options =
-    [
+    public List<IOption> Options = new()
+    {
         new Option<bool>(
             "getAll", "Get all items",
             "Some quests need to be done multiple times in order to get everything, "+
@@ -62,7 +62,7 @@ public class CoreHollowbornChaosEnvoy
             new Option<WaveringIllusionsRewards>("Wavering Illusions", "Wavering Illusions Reward", "Reward Selection for Stirring Discord", WaveringIllusionsRewards.None),
             new Option<ShadowsOfDisdainRewards>("Shadows Of Disdain", "Shadows Of Disdain Reward", "Reward Selection for Stirring Discord", ShadowsOfDisdainRewards.None),
             new Option<PersistingMayhemRewards>("Persisting Mayhem", "Persisting Mayhem Reward", "Reward Selection for Stirring Discord", PersistingMayhemRewards.None),
-    ];
+    };
 
     public void ScriptMain(IScriptInterface Bot)
     {
@@ -85,7 +85,7 @@ public class CoreHollowbornChaosEnvoy
         { "Persisting Mayhem", (9003, () => PersistingMayhem(getAllDrops ? PersistingMayhemRewards.All : Bot.Config!.Get<PersistingMayhemRewards>("Persisting Mayhem"), !getAllDrops && BankAfter)) }
     };
 
-        string[] questOrder = ["Stirring Discord", "In The Beasts Shadow", "Unique Quarry", "Wavering Illusions", "Shadows Of Disdain", "Persisting Mayhem"];
+        string[] questOrder = { "Stirring Discord", "In The Beasts Shadow", "Unique Quarry", "Wavering Illusions", "Shadows Of Disdain", "Persisting Mayhem" };
 
         foreach (var quest in questOrder)
         {

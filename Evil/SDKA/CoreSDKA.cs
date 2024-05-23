@@ -23,12 +23,12 @@ public class CoreSDKA
 
     public string OptionsStorage = "SupulchuresDoomKnightArmorOptions";
     public bool DontPreconfigure = true;
-    public List<IOption> Options =
-    [
+    public List<IOption> Options = new()
+    {
         CoreBots.Instance.SkipOptions,
         new Option<SDKAQuest>("SelectedQuest", "Dark Spirit Orbs Quest",
             "Which quest should the bot use to farm Dark Spirit Orbs with?\nRecommended setting: A Penny for Your Foughts", SDKAQuest.APennyforYourFoughts),
-    ];
+    };
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -36,7 +36,7 @@ public class CoreSDKA
     }
 
     public string[] SDKAItems =
-    [
+    {
         "Sepulchure's DoomKnight Armor",
         // Arsenics
         "Arsenic",
@@ -87,7 +87,7 @@ public class CoreSDKA
         "Dark Skull",
         "Shadow Creeper Enchant",
         "Shadow Serpent Scythe"
-    ];
+    };
 
     public void DoAll()
     {
@@ -364,7 +364,7 @@ public class CoreSDKA
                     Core.FarmingLogger("Accursed Arsenic");
                     Core.EnsureAccept(2110);
                     Core.HuntMonster("bludrut4", "Shadow Serpent", "Dark Energy", 26, false);
-                    Daily.HardCoreMetals(["Arsenic"]);
+                    Daily.HardCoreMetals(new[] { "Arsenic" });
                     if (!Core.CheckInventory("Arsenic"))
                         Core.Logger("Can't complete Accursed Arsenic Hex (Missing Arsenic).\n" +
                             "This requires a daily, please run the bot again after the daily reset has occurred.", messageBox: true, stopBot: true);
@@ -429,7 +429,7 @@ public class CoreSDKA
                     Core.AddDrop("Calamitous Chromium");
                     Core.EnsureAccept(2112);
                     Core.HuntMonster("bludrut4", "Shadow Serpent", "Dark Energy", 26, false);
-                    Daily.HardCoreMetals(["Chromium"]);
+                    Daily.HardCoreMetals(new[] { "Chromium" });
                     if (!Core.CheckInventory("Chromium"))
                         Core.Logger("Can't complete Calamitous Chromium Hex (Missing Chromium).\n" +
                             "This requires a daily, please run the bot again after the daily reset has occurred.", messageBox: true, stopBot: true);
@@ -492,7 +492,7 @@ public class CoreSDKA
                     Core.AddDrop("Reprehensible Rhodium");
                     Core.EnsureAccept(2114);
                     Core.HuntMonster("bludrut4", "Shadow Serpent", "Dark Energy", 26, false);
-                    Daily.HardCoreMetals(["Rhodium"]);
+                    Daily.HardCoreMetals(new[] { "Rhodium" });
                     if (!Core.CheckInventory("Rhodium"))
                         Core.Logger("Can't complete Reprehensible Rhodium Hex (Missing Rhodium).\n" +
                             "This requires a daily, please run the bot again after the daily reset has occurred.", messageBox: true, stopBot: true);
@@ -544,7 +544,7 @@ public class CoreSDKA
 
         Core.Logger(Core.CheckInventory("Doom Aura") ? "Doom Aura found." : "Farming for Doom Aura");
 
-        PinpointthePieces(2181, ["Doom Aura"], [1]);
+        PinpointthePieces(2181, new[] { "Doom Aura" }, new[] { 1 });
 
         if (!Core.CheckInventory("Experimental Dark Item"))
         {
@@ -570,7 +570,7 @@ public class CoreSDKA
         if (!Core.CheckInventory("Necrotic Daggers of Destruction", 1)) // Assuming third argument is toInv
             NecroticDaggers();
 
-        PinpointthePieces(2181, ["Ominous Aura"], [quant]);
+        PinpointthePieces(2181, new[] { "Ominous Aura" }, new[] { quant });
     }
 
     public void PinpointBroadsword(int quant = 1)
@@ -581,7 +581,7 @@ public class CoreSDKA
         if (!Core.CheckInventory("Necrotic Broadsword of Bane", 1, false))
             NecroticBroadsword();
 
-        PinpointthePieces(2183, ["Diabolical Aura"], [quant]);
+        PinpointthePieces(2183, new[] { "Diabolical Aura" }, new[] { quant });
     }
 
     public void PinpointBow(int quantDSO, int quantCSO)
@@ -597,7 +597,7 @@ public class CoreSDKA
         Core.FarmingLogger("Corrupt Spirit Orb", quantCSO);
 
         // Process each item individually
-        PinpointthePieces(2186, ["Dark Spirit Orb", "Corrupt Spirit Orb"], [quantDSO, quantCSO]);
+        PinpointthePieces(2186, new string[] { "Dark Spirit Orb", "Corrupt Spirit Orb" }, new int[] { quantDSO, quantCSO });
     }
 
     public void PinpointthePieces(int quest, string[]? items = null, int[]? quants = null)

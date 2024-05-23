@@ -240,7 +240,7 @@ public class CoreMogloween
         // [[Catacombs]]
 
         //Tricks Trail Trackin 2459
-        Story.MapItemQuest(2459, "catacombs", [1525, 1526, 1527, 1528, 1529, 1530]);
+        Story.MapItemQuest(2459, "catacombs", new[] { 1525, 1526, 1527, 1528, 1529, 1530 });
 
         //Cultivate Answers 2460
         Story.KillQuest(2460, "catacombs", "Scorpion Cultist");
@@ -491,7 +491,7 @@ public class CoreMogloween
         Story.KillQuest(7141, "masquerade", "Kitchen Brownie");
 
         //Things are Getting Hairy 7142
-        Story.MapItemQuest(7142, "masquerade", [6779, 6780, 6781, 6782, 6783]);
+        Story.MapItemQuest(7142, "masquerade", new[] { 6779, 6780, 6781, 6782, 6783 });
 
         //Let 'em Loose 7143
         Story.MapItemQuest(7143, "masquerade", 6784);
@@ -729,14 +729,14 @@ public class CoreMogloween
         Story.MapItemQuest(9446, "cursedcastle", 12273);
 
         // Dragon Instinct 9447
-        Story.MapItemQuest(9447, "cursedcastle", [12274, 12275]);
+        Story.MapItemQuest(9447, "cursedcastle", new[] { 12274, 12275 });
 
         // The Uninvited 9448
         Story.KillQuest(9448, "cursedcastle", "Noble Ghost");
         Story.MapItemQuest(9448, "cursedcastle", 12276);
 
         // Room Service 9449
-        Story.MapItemQuest(9449, "cursedcastle", [12277, 12278, 12279]);
+        Story.MapItemQuest(9449, "cursedcastle", new[] { 12277, 12278, 12279 });
 
         // Newborn's Teething 9450
         Story.KillQuest(9450, "cursedcastle", "Bone Dragonling");

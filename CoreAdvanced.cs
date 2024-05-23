@@ -155,13 +155,13 @@ public class CoreAdvanced
             {
                 case "alchemy":
                 case "blacksmith":
-                    theMethod.Invoke(Farm, [rank, true]);
+                    theMethod.Invoke(Farm, new object[] { rank, true });
                     break;
                 case "bladeofawe":
-                    theMethod.Invoke(Farm, [rank, false]);
+                    theMethod.Invoke(Farm, new object[] { rank, false });
                     break;
                 default:
-                    theMethod.Invoke(Farm, [rank]);
+                    theMethod.Invoke(Farm, new object[] { rank });
                     break;
             }
         }
@@ -197,7 +197,7 @@ public class CoreAdvanced
                                     .Select(group => Group == "First" ? group.First() : group.Last())
                                     .ToList();
 
-        List<ShopItem> items = [];
+        List<ShopItem> items = new();
         bool memSkipped = false;
 
         foreach (ShopItem item in shopItems)
@@ -339,25 +339,25 @@ public class CoreAdvanced
             }
         }
     }
-    public List<ItemCategory> miscCatagories = [ItemCategory.Note, ItemCategory.Item, ItemCategory.QuestItem, ItemCategory.ServerUse];
+    public List<ItemCategory> miscCatagories = new() { ItemCategory.Note, ItemCategory.Item, ItemCategory.QuestItem, ItemCategory.ServerUse };
     public ItemBase externalItem = new();
     public int externalQuant = 0;
     public bool matsOnly = false;
-    public List<string> MaxStackOneItems = [];
-    public List<string> AltFarmItems = [];
+    public List<string> MaxStackOneItems = new();
+    public List<string> AltFarmItems = new();
 
     /// <summary>
     /// The list of ScriptOptions for any merge script.
     /// </summary>
-    public List<IOption> MergeOptions =
-    [
+    public List<IOption> MergeOptions = new()
+    {
         new Option<mergeOptionsEnum>("mode", "Select the mode to use", "Regardless of the mode you pick, the bot wont (attempt to) buy Legend-only items if you're not a Legend.\n" +
                                                                      "Select the Mode Explanation item to get more information", mergeOptionsEnum.all),
         new Option<string>(" ", "Mode Explanation [all]", "Mode [all]: \t\tYou get all the items from shop, even if non-AC ones if any.", "click here"),
         new Option<string>(" ", "Mode Explanation [acOnly]", "Mode [acOnly]: \tYou get all the AC tagged items from the shop.", "click here"),
         new Option<string>(" ", "Mode Explanation [mergeMats]", "Mode [mergeMats]: \tYou dont buy any items but instead get the materials to buy them yourself, this way you can choose.", "click here"),
         new Option<string>(" ", "Mode Explanation [select]", "Mode [select]: \tYou are able to select what items you get and which ones you dont in the Select Category below.", "click here"),
-    ];
+    };
 
     /// <summary>
     /// The name of ScriptOptions for any merge script.
@@ -984,7 +984,7 @@ public class CoreAdvanced
                 EnhanceEquipped(ReEnhanceAfter, ReCEnhanceAfter, ReHEnhanceAfter, ReWEnhanceAfter);
         }
     }
-    private readonly List<string> ReEquippedItems = [];
+    private readonly List<string> ReEquippedItems = new();
     private EnhancementType ReEnhanceAfter = EnhancementType.Lucky;
     private CapeSpecial ReCEnhanceAfter = CapeSpecial.None;
     private HelmSpecial ReHEnhanceAfter = HelmSpecial.None;
@@ -1137,7 +1137,7 @@ public class CoreAdvanced
 
         try
         {
-            AutoEnhance([SelectedItem], type, cSpecial, hSpecial, wSpecial);
+            AutoEnhance(new() { SelectedItem }, type, cSpecial, hSpecial, wSpecial);
         }
         catch (Exception e)
         {
@@ -1157,7 +1157,7 @@ public class CoreAdvanced
             return;
 
         // If any of the items in the items array cant be found, return
-        List<string>? notFound = [];
+        List<string>? notFound = new();
         foreach (string item in items)
             if (!Core.CheckInventory(item))
                 notFound.Add(item);
@@ -1177,7 +1177,7 @@ public class CoreAdvanced
         // If any of the items in the items array cant be enhanced, return
         if (SelectedItems.Count != items.Length)
         {
-            List<string> unEnhanceable = [];
+            List<string> unEnhanceable = new();
 
             foreach (string item in items)
                 if (!Bot.Inventory.Items.Any(i => i.Name == item && EnhanceableCatagories.Contains(i.Category)))
@@ -1278,7 +1278,7 @@ public class CoreAdvanced
     }
 
     private static readonly ItemCategory[] EnhanceableCatagories =
-    [
+    {
         ItemCategory.Sword,
         ItemCategory.Axe,
         ItemCategory.Dagger,
@@ -1296,7 +1296,7 @@ public class CoreAdvanced
         ItemCategory.Helm,
         ItemCategory.Cape,
 
-    ];
+    };
 
     public readonly ItemCategory[] WeaponCatagories = EnhanceableCatagories[..12];
 
@@ -1643,7 +1643,7 @@ public class CoreAdvanced
             else
                 Core.Logger($"Searching Enhancement:\t{type} - \"{item.Name}\"");
 
-            List<ShopItem> availableEnh = [];
+            List<ShopItem> availableEnh = new();
 
             // Filters
             foreach (ShopItem enh in shopItems)
@@ -1689,7 +1689,8 @@ public class CoreAdvanced
             else
             {
                 // Sorting by level (descending)
-                List<ShopItem> sortedList = [.. availableEnh.OrderByDescending(x => x.Level).ThenByDescending(x => x.Upgrade ? 1 : 0)];
+                List<ShopItem> sortedList = availableEnh.OrderByDescending(x => x.Level)
+                    .ThenByDescending(x => x.Upgrade ? 1 : 0).ToList();
                 bestEnhancement = sortedList[0];
             }
 

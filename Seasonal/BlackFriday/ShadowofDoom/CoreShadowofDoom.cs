@@ -70,7 +70,7 @@ public class CoreShadowofDoom
 
         // Equivalent Exchange 9434
         Story.KillQuest(9434, "camlan", "Ouro Spawn");
-        Story.MapItemQuest(9434, "camlan", [12249, 12250]);
+        Story.MapItemQuest(9434, "camlan", new[] { 12249, 12250 });
 
         // Mouth of the Snake Den 9435
         Story.KillQuest(9435, "camlan", new[] { "Ouro Spawn", "Possessed Armor" });
@@ -80,13 +80,13 @@ public class CoreShadowofDoom
         Story.KillQuest(9436, "camlan", "Tainted Wraith");
 
         // Guileless Sneers 9437
-        Story.MapItemQuest(9437, "camlan", [12252, 12253,  12254]);
+        Story.MapItemQuest(9437, "camlan", new[] { 12252, 12253,  12254});
 
         // Shadows of Aminion 9438
         Story.KillQuest(9438, "camlan", "Doomed Elf");
 
         // Come to Light 9439
-        Story.MapItemQuest(9439, "camlan", [12255, 12256]);
+        Story.MapItemQuest(9439, "camlan", new[] { 12255, 12256 });
         Story.KillQuest(9439, "camlan", "Ouro Spawn");
 
         // It's in the Blood 9440

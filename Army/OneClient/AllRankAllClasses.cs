@@ -30,7 +30,7 @@ public class AllRankAllClasses
 
     public void DoTheThing()
     {
-        while (!Bot.ShouldExit && Army.DoForAll())
+        while (!Bot.ShouldExit && Army.doForAll())
             RUA.RankUpAllClasses();
     }
 }

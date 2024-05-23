@@ -26,13 +26,13 @@ public class CoreHollowbornPaladin
     public IScriptInterface Bot => IScriptInterface.Instance;
 
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new();
-    public CoreHollowborn HB = new();
-    public CoreBLOD BLOD = new();
-    public CoreStory Story = new();
-    public AscendedDrakathGear ADG = new();
+    public CoreFarms Farm = new CoreFarms();
+    public CoreHollowborn HB = new CoreHollowborn();
+    public CoreBLOD BLOD = new CoreBLOD();
+    public CoreStory Story = new CoreStory();
+    public AscendedDrakathGear ADG = new AscendedDrakathGear();
     public CoreNation Nation = new();
-    public Artixpointe APointe = new();
+    public Artixpointe APointe = new Artixpointe();
     public CoreDailies Daily = new();
 
     public void ScriptMain(IScriptInterface bot)
@@ -41,7 +41,7 @@ public class CoreHollowbornPaladin
     }
 
     public string[] PostSummoningItems =
-    [
+    {
         "Classic Hollowborn Paladin Armor",
         "Hollowborn Paladin Visor",
         "Hollowborn Paladin Hood",
@@ -51,7 +51,7 @@ public class CoreHollowbornPaladin
         "Dual Hollowborn Shadows of Fate",
         "Hollowborn Daimyo Battlepet",
         "Hollowborn Daimyo"
-    ];
+    };
 
     public void GetAll()
     {
@@ -84,7 +84,7 @@ public class CoreHollowbornPaladin
         HBShadowOfFate();
         Farm.Experience();
 
-        ItemBase[] Rewards = [.. Core.EnsureLoad(7560).Rewards];
+        ItemBase[] Rewards = Core.EnsureLoad(7560).Rewards.ToArray();
         ItemBase Item = Rewards.Find(x => x.Name == item) ?? new ItemBase(); // Ensure item is not null
         Core.AddDrop(item);
         while (!Bot.ShouldExit && !Core.CheckInventory(Item.ID))
@@ -168,7 +168,7 @@ public class CoreHollowbornPaladin
             Core.EnsureAccept(4812);
             Core.EquipClass(ClassType.Farm);
             Core.HuntMonster("graveyard", "Skeletal Warrior", "Broken Dream Catcher", 10);
-            Core.EnsureCompleteChoose(4812, ["Dark Aura Gem"]);
+            Core.EnsureCompleteChoose(4812, new[] { "Dark Aura Gem" });
         }
         Core.EquipClass(ClassType.Solo);
         Core.HuntMonster("necrocavern", "Shadow Dragon", "Shadow Dragon Soul", 1, false);

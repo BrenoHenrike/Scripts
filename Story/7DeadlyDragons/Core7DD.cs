@@ -161,7 +161,7 @@ public class Core7DD
         Story.MapItemQuest(5938, "Greed", 5374, 5);
 
         // Disarm the Trap 5939
-        Story.MapItemQuest(5939, "Greed", [5377, 5378]);
+        Story.MapItemQuest(5939, "Greed", new[] { 5377, 5378 });
 
         // Crystal-eyes 5940
         Story.KillQuest(5940, "Greed", new[] { "Ice Crystal", "Glacial Horror" });
@@ -262,7 +262,7 @@ public class Core7DD
         Story.KillQuest(5961, "Lust", "Devoted Admirer");
 
         // Fighting the Feeling 5962
-        Story.MapItemQuest(5962, "Lust", [5405, 5406, 5407, 5408, 5409]);
+        Story.MapItemQuest(5962, "Lust", new[] { 5405, 5406, 5407, 5408, 5409 });
 
         // Love Potion #9.1 5963
         Story.KillQuest(5963, "Lust", "Golden Vase");
@@ -271,7 +271,7 @@ public class Core7DD
         Story.KillQuest(5964, "Lust", "Enamored Guard");
 
         // Gird your Loins 5965
-        Story.MapItemQuest(5965, "Lust", [5410, 5411]);
+        Story.MapItemQuest(5965, "Lust", new[] { 5410, 5411 });
         Story.KillQuest(5965, "Lust", "Devoted Admirer");
 
         // Get the Keys 5966
@@ -305,7 +305,7 @@ public class Core7DD
         Story.KillQuest(5974, "Lust", "Elite Guard");
 
         // No Pillow Unturned 5975
-        Story.MapItemQuest(5975, "Lust", [5416, 5417]);
+        Story.MapItemQuest(5975, "Lust", new[] { 5416, 5417 });
 
         // Take Down Killek 5976
         Story.KillQuest(5976, "Lust", "Killek Deadchewer");

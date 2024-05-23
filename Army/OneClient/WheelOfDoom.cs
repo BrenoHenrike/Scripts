@@ -34,7 +34,7 @@ public class ArmyWheelofDoom
 
     public void WheelOfDoom(bool randomServers)
     {
-        while (!Bot.ShouldExit && Army.DoForAll(randomServers))
+        while (!Bot.ShouldExit && Army.doForAll(randomServers))
             Dailies.WheelofDoom();
     }
 }

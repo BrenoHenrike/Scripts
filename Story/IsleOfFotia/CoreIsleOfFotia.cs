@@ -151,7 +151,7 @@ public class CoreIsleOfFotia
         if (!Story.QuestProgression(3036))
         {
             int mournerGenderResult = CheckMournerGender();
-            Monster MonsterName = Bot.Monsters.MapMonsters.First(X => X.MapID == mournerGenderResult);
+            Monster MonsterName = Bot.Monsters.MapMonsters.Where(X => X.MapID == mournerGenderResult).First();
 
             if (mournerGenderResult == -1)
                 Core.Logger("how tf did u manage this? your genderless >.>", stopBot: true);
@@ -235,7 +235,7 @@ public class CoreIsleOfFotia
             if (Core.CheckInventory("Palace Map"))
                 return;
 
-            string[] MapPieces = ["Left Map Piece", "Right Map Piece", "Center Map Piece"];
+            string[] MapPieces = { "Left Map Piece", "Right Map Piece", "Center Map Piece" };
             Core.AddDrop(MapPieces);
 
             if (!Core.CheckInventory("Left Map Piece"))

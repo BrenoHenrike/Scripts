@@ -12,9 +12,9 @@ using Skua.Core.Models.Quests;
 public class CoreDailies
 {
     // [Can Change] Default metals to be acquired by MineCrafting quest
-    public string[] MineCraftingMetalsArray = ["Barium", "Copper", "Silver"];
+    public string[] MineCraftingMetalsArray = { "Barium", "Copper", "Silver" };
     // [Can Change] Default metals to be acquired by Hard Core Metals quest
-    public string[] HardCoreMetalsMetalsArray = ["Arsenic", "Chromium", "Rhodium"];
+    public string[] HardCoreMetalsMetalsArray = { "Arsenic", "Chromium", "Rhodium" };
     // [Can Change] Skip daily if you own max stack of reward
     public bool SkipOnMaxStack = true;
 
@@ -171,7 +171,7 @@ public class CoreDailies
             }
             else
             {
-                List<string> itemsToAdd = [];
+                List<string> itemsToAdd = new();
                 foreach (string item in items)
                 {
                     InventoryItem? invItem = Bot.Inventory.Items.Find(x => x.Name == item);
@@ -225,7 +225,7 @@ public class CoreDailies
             Core.Logger($"All metals were found with the needed quantity ({quant}).");
 
             // Sort metals in the desired order
-            metals = [.. metals.OrderBy(metal => Array.IndexOf(metals, metal))];
+            metals = metals.OrderBy(metal => Array.IndexOf(metals, metal)).ToArray();
 
             if (ToBank)
                 Core.ToBank(metals);
@@ -568,7 +568,7 @@ public class CoreDailies
         if (!Core.CheckInventory(4845))
             return;
         Core.Logger("Daily: Grumble Grumble (Blood Gem of the Archfiend)");
-        if (!CheckDaily(592, false, false, ["Diamond of Nulgath", "Blood Gem of the Archfiend"]))
+        if (!CheckDaily(592, false, false, new[] { "Diamond of Nulgath", "Blood Gem of the Archfiend" }))
             return;
         Core.ChainComplete(592);
         Core.ToBank("Diamond of Nulgath", "Blood Gem of the Archfiend");
@@ -588,7 +588,7 @@ public class CoreDailies
         Core.HuntMonster("deathpits", "Ghastly Darkblood", "Dark Runes", 6);
         Core.HuntMonster("evilwardage", "Bloodfiend", "Blood Runes", 7);
         if (item != null)
-            Core.EnsureCompleteChoose(3319, [item]);
+            Core.EnsureCompleteChoose(3319, new[] { item });
         if (!Core.CheckInventory("Blood Gem of the Archfiend", 100))
             Core.EnsureComplete(3319, 22332);
         else
@@ -769,7 +769,7 @@ public class CoreDailies
             return;
 
         Quest quest = Core.EnsureLoad(4069);
-        Dictionary<ItemBase, int> CompareDict = [];
+        Dictionary<ItemBase, int> CompareDict = new();
         List<InventoryItem> InventoryData = Bot.Inventory.Items;
 
         foreach (ItemBase item in quest.Rewards)
@@ -846,7 +846,7 @@ public class CoreDailies
     public void MoglinPets()
     {
         Core.Logger("Daily: Moglin Pets");
-        string[] pets = ["Twig Pet", "Twilly Pet", "Zorbak Pet"];
+        string[] pets = { "Twig Pet", "Twilly Pet", "Zorbak Pet" };
         if (Core.CheckInventory(pets, toInv: false))
             return;
 
@@ -936,7 +936,7 @@ public class CoreDailies
         //Buying BoneBreaker Fortress Map
         Core.BuyItem("battleon", 1046, 27222);
 
-        ItemBase[] QuestReward = [.. Core.EnsureLoad(3898).Rewards];
+        ItemBase[] QuestReward = Core.EnsureLoad(3898).Rewards.ToArray();
 
         if (KeepReward)
             Core.AddDrop("BoneBreaker Medallion");
@@ -1191,7 +1191,7 @@ public class CoreDailies
             if (_friendshipInfo == null)
             {
                 Core.Logger("Something went wrong, friendshipInfo is null");
-                friends = [];
+                friends = new();
                 return false;
             }
             friends = JsonConvert.DeserializeObject<List<FriendshipInfo>>(_friendshipInfo)!;
@@ -1226,7 +1226,7 @@ public class CoreDailies
     public int[] frGiftIDs = ((frGift[])Enum.GetValues(typeof(frGift))).Select(x => (int)x).ToArray();
     public string[] frGiftNames = ((frGift[])Enum.GetValues(typeof(frGift))).Select(x => x.ToString()).ToArray();
     public string[] frRewards =
-    [
+    {
         "Gold Voucher 25k",
         "Gold Voucher 100k",
         "Gold Voucher 500k",
@@ -1245,7 +1245,7 @@ public class CoreDailies
         "Legion Token",
         "Void Aura",
         "Unidentified 10",
-    ];
+    };
 
     private enum frGift
     {

@@ -38,7 +38,7 @@ public class CoreNSOD
     public Option<bool> GetSDKA = new("getSDKA", "Get SDKA first [Mem]", "If true, the bot will attempt to get SDKA first, so that it can use the fastest Void Aura farm available\nMember-Only\nRecommended setting: True", true);
 
     public string[] Essences =
-    [
+    {
         "Astral Ephemerite Essence",
         "Belrot the Fiend Essence",
         "Black Knight Essence",
@@ -49,7 +49,7 @@ public class CoreNSOD
         "Unending Avatar Essence",
         "Void Dragon Essence",
         "Creature Creation Essence"
-    ];
+    };
 
     public void ScriptMain(IScriptInterface bot) => Core.RunCore();
 
@@ -379,7 +379,7 @@ public class CoreNSOD
         Core.Unbank("Barium", "Barium of Doom");
         int i = 0;
 
-        string[] Blades = ["Unenhanced Doom Blade", "Energized Blade", "Necrotic Sword's Blade"];
+        string[] Blades = { "Unenhanced Doom Blade", "Energized Blade", "Necrotic Sword's Blade" };
         if (Core.CheckInventory(new[] { "Unenhanced Aura", "Energized Aura", "Necrotic Sword's Aura" }, any: true))
             i++;
 
@@ -392,7 +392,7 @@ public class CoreNSOD
             return;
 
         BLOD.UnlockMineCrafting();
-        Daily.MineCrafting(["Barium"], 4 - i);
+        Daily.MineCrafting(new[] { "Barium" }, 4 - i);
     }
 
     public void BonesVoidRealm(int quant)

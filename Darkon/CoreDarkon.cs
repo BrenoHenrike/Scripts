@@ -71,7 +71,9 @@ public class CoreDarkon
                     Core.Jump("r5", "Left");
                     Core.Sleep(5000);
                 }
-                EnoughPeople = Bot.Map.PlayerCount >= 3;
+                if (Bot.Map.PlayerCount >= 3)
+                    EnoughPeople = true;
+                else EnoughPeople = false;
             }
 
             if (!EnoughPeople && !Core.IsMember && escapeWhile)

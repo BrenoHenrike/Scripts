@@ -78,7 +78,7 @@ public class MultiQuestAggromonTemplate  //<-- replace
         Core.EquipClass(ClassType.Farm);
         Core.FarmingLogger(item, quant);
 
-        Army.WaitForParty(map, item);
+        Army.waitForParty(map, item);
         Core.EnsureAccept(questID);
         Armyshit(map, MonsterMapID);
 
@@ -87,7 +87,7 @@ public class MultiQuestAggromonTemplate  //<-- replace
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
             Bot.Combat.Attack("*");
 
-        Army.WaitForParty("whitemap", item);
+        Army.waitForParty("whitemap", item);
         Army.AggroMonStop(true);
         Core.JumpWait();
         Core.EnsureComplete(questID);

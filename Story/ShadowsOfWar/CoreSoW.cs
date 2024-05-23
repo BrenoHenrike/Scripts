@@ -17,15 +17,15 @@ public class CoreSoW
     public CoreStory Story = new();
     public CoreAdvanced Adv = new();
 
-    public string[] MainyuDrops = ["Mainyu Tail", "Mainyu Wings", "ShadowFlame Eviscerator Greatsword", "ShadowFlame Eviscerator Greatswords"];
+    public string[] MainyuDrops = { "Mainyu Tail", "Mainyu Wings", "ShadowFlame Eviscerator Greatsword", "ShadowFlame Eviscerator Greatswords" };
     //update this when wiki is updated. vvvv
 
     public string[] MalgorDrops =
-    [
+    {
         "Shadowflame Vanguard Spear", "Shadowflame Vanguard Armet Locks", "Shadowflame Vanguard Armet",
         "Shadowflame Shroud", "ShadowFlame Dragon Blade", "Shadowflame Devastation", "Shadow Dragonscale Blade",
         "Shadow DragonMaster's Tail + Blades", "Shadow DragonMaster's Helm", "Shadow DragonMaster"
-    ];
+    };
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -183,7 +183,7 @@ public class CoreSoW
         Story.MapItemQuest(6874, "granitecove", 6433);
 
         //Gather Information (6875)
-        Story.MapItemQuest(6875, "granitecove", [6434, 6435, 6436]);
+        Story.MapItemQuest(6875, "granitecove", new[] { 6434, 6435, 6436 });
 
         //Find the Missing Pages (6876)
         Story.KillQuest(6876, "granitecove", "Jungle Treeant");
@@ -893,7 +893,7 @@ public class CoreSoW
             return;
 
         // 8778 Mental Damage Sponge
-        Story.MapItemQuest(8778, "ruinedcrown", [10380, 10382, 10383]);
+        Story.MapItemQuest(8778, "ruinedcrown", new[] { 10380, 10382, 10383 });
 
         // 8779 Scraping the Barrel
         Story.KillQuest(8779, "ruinedcrown", new[] { "Mana-Burdened Minion", "Mana-Burdened Knight" });
@@ -943,7 +943,7 @@ public class CoreSoW
         RuinedCrown();
 
         // 8803|Mood Pendulum
-        Story.MapItemQuest(8803, "Timekeep", [10455, 10456, 10457]);
+        Story.MapItemQuest(8803, "Timekeep", new[] { 10455, 10456, 10457 });
 
         // 8804|Bug Issue
         Story.KillQuest(8804, "Timekeep", "Decaying Locust");
@@ -958,7 +958,7 @@ public class CoreSoW
         Story.KillQuest(8807, "Timekeep", "Mana-Burdened Mage");
 
         // 8808|Caution! Wet Floor
-        Story.MapItemQuest(8808, "Timekeep", [10459, 10460]);
+        Story.MapItemQuest(8808, "Timekeep", new[] { 10459, 10460 });
 
         // 8809|Reflection in the Puddle
         Story.KillQuest(8809, "Timekeep", "Mumbler");
@@ -1021,23 +1021,23 @@ public class CoreSoW
         Story.KillQuest(8860, "DeadLines", "Frenzied Mana");
 
         //Eternal Flame 8861
-        Story.MapItemQuest(8861, "DeadLines", [10603, 10604]);
+        Story.MapItemQuest(8861, "DeadLines", new[] { 10603, 10604 });
         Story.KillQuest(8861, "DeadLines", "Shadowfall Warrior");
 
         //The Wolf Cries 8862
-        Story.MapItemQuest(8862, "DeadLines", [10605, 10606]);
+        Story.MapItemQuest(8862, "DeadLines", new[] { 10605, 10606 });
         Story.KillQuest(8862, "DeadLines", "Swordhaven Knight");
 
         //Breaking Down 8863
-        Story.MapItemQuest(8863, "DeadLines", [10607, 10608]);
+        Story.MapItemQuest(8863, "DeadLines", new[] { 10607, 10608 });
         Story.KillQuest(8863, "DeadLines", "Shadowfall Warrior");
 
         //Growth Through Hardship 8864
-        Story.MapItemQuest(8864, "DeadLines", [10609, 10610]);
+        Story.MapItemQuest(8864, "DeadLines", new[] { 10609, 10610 });
         Story.KillQuest(8864, "DeadLines", "Swordhaven Knight");
 
         //Arteries 8865
-        Story.MapItemQuest(8865, "DeadLines", [10611, 10612]);
+        Story.MapItemQuest(8865, "DeadLines", new[] { 10611, 10612 });
         Story.KillQuest(8865, "DeadLines", "Frenzied Mana");
 
         //Paranoiac 8866

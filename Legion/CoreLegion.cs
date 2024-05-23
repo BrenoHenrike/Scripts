@@ -27,12 +27,12 @@ public class CoreLegion
     }
 
     public string[] legionMedals =
-    [
+    {
         "Legion Round 1 Medal",
         "Legion Round 2 Medal",
         "Legion Round 3 Medal",
         "Legion Round 4 Medal"
-    ];
+    };
 
     public void EmblemofDage(int quant = 500)
     {
@@ -296,7 +296,7 @@ public class CoreLegion
         Core.FarmingLogger("Legion Token", quant);
         Core.AddDrop("Legion Token");
 
-        Core.RegisterQuests(Core.CheckInventory("Shogun Paragon Pet") ? [3722, 5755] : [3722]);
+        Core.RegisterQuests(Core.CheckInventory("Shogun Paragon Pet") ? new[] { 3722, 5755 } : new[] { 3722 });
         while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
         {
             Core.HuntMonster("fotia", "Fotia Elemental", "Betrayer Extinguished", 5);
@@ -405,14 +405,14 @@ public class CoreLegion
             return;
         }
 
-        List<int> Quests = []; // Initializes a list to store quest IDs
-        List<(ItemBase, int)> QuestItems = []; // Initializes a list to store quest items
-        List<string> Rewards = [];
+        List<int> Quests = new(); // Initializes a list to store quest IDs
+        List<(ItemBase, int)> QuestItems = new(); // Initializes a list to store quest items
+        List<string> Rewards = new();
         bool HasQuestPet = false; // Variable to track if the player has the required pet
 
         // Define pairs of quest IDs with their respective accept requirements
-        (int, int)[] questPairs =
-        [
+        (int, int)[] questPairs = new[]
+        {
             (9649, 9648), //hb
             (9646, 9645), //hb
             (9663, 9662),
@@ -421,7 +421,7 @@ public class CoreLegion
             (6756, 6749),
             (5756, 5754),
             (5755, 5753)
-        ];
+        };
 
         // Process quest pairs
         foreach ((int firstQuestID, int secondQuestID) in questPairs)
@@ -506,7 +506,7 @@ public class CoreLegion
         Core.EquipClass(ClassType.Farm);
         Core.FarmingLogger("Legion Token", quant);
         Core.AddDrop("Legion Token");
-        Core.RegisterQuests([.. Quests]);
+        Core.RegisterQuests(Quests.ToArray());
         // Hunt monsters until the desired quantity of Legion Tokens is obtained
         while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
         {

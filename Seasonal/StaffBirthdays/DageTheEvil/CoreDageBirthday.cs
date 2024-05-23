@@ -104,7 +104,7 @@ public class CoreDageBirthday
         Story.PreLoad(this);
 
         //Examine the Area 5724
-        Story.MapItemQuest(5724, "futurelegion", [5162, 5163, 5164]);
+        Story.MapItemQuest(5724, "futurelegion", new[] { 5162, 5163, 5164 });
         Story.KillQuest(5724, "futurelegion", "UW3017 Gunner");
 
         //Get the Key 5725
@@ -216,7 +216,7 @@ public class CoreDageBirthday
         Story.KillQuest(9617, "legionbarracks", new[] { "Legion Evocator", "Legion Knight" });
 
         // Lamenting Aestiua (9618)
-        Story.MapItemQuest(9618, "legionbarracks", [12776, 12777]);
+        Story.MapItemQuest(9618, "legionbarracks", new[] { 12776, 12777 });
 
         // Unblemished Snow (9619)
         if (!Core.isCompletedBefore(9619))
