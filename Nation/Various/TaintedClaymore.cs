@@ -11,7 +11,7 @@ public class TaintedClaymore
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
+    public CoreFarms Farm = new();
     public CoreStory Story = new();
 
     public void ScriptMain(IScriptInterface bot)

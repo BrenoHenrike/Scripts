@@ -17,9 +17,9 @@ public class TradingandStuffDual
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
-    public CoreAdvanced Adv = new CoreAdvanced();
-    public CoreHollowborn HB = new CoreHollowborn();
+    public CoreFarms Farm = new();
+    public CoreAdvanced Adv = new();
+    public CoreHollowborn HB = new();
     public CoreNation Nation = new();
 
     public void ScriptMain(IScriptInterface bot)

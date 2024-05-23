@@ -32,10 +32,10 @@ public class UndeadLegionMerge
     public static CoreAdvanced sAdv = new();
     public CoreDailies Daily = new();
     public CoreLegion Legion = new();
-    public CoreLR LR = new CoreLR();
+    public CoreLR LR = new();
     public LegionExercise3 LegionExercise3 = new();
     public LegionExercise4 LegionExercise4 = new();
-    public DragonBladeofNulgath DBoN = new DragonBladeofNulgath();
+    public DragonBladeofNulgath DBoN = new();
     private HollowSoul HS = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;

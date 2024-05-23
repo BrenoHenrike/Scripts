@@ -12,9 +12,9 @@ using Skua.Core.Interfaces;
 public class VampireREP
 {
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
-    public Core13LoC LOC = new Core13LoC();
-    public CoreAdvanced Adv = new CoreAdvanced();
+    public CoreFarms Farm = new();
+    public Core13LoC LOC = new();
+    public CoreAdvanced Adv = new();
 
     public void ScriptMain(IScriptInterface bot)
     {

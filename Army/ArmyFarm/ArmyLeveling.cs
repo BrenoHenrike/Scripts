@@ -37,7 +37,7 @@ public class ArmyLeveling
 
     public bool DontPreconfigure = true;
     public string OptionsStorage = "Army Leveling";
-    public List<IOption> Options = new List<IOption>
+    public List<IOption> Options = new()
     {
         new Option<MethodV2>("LevelMethod", "Map selection", "Which map to farm Experience?", MethodV2.IceStormArena),
         sArmy.player1,

@@ -24,7 +24,7 @@ public class GreenEggs
     public void GetGreenEggs()
     {
         List<ItemBase> RewardOptions = Core.EnsureLoad(5785).Rewards;
-        List<string> RewardsList = new List<string>();
+        List<string> RewardsList = new();
         foreach (Skua.Core.Models.Items.ItemBase Item in RewardOptions)
             RewardsList.Add(Item.Name);
 

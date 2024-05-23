@@ -18,7 +18,7 @@ public class PirateClass
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreAdvanced Adv = new CoreAdvanced();
+    public CoreAdvanced Adv = new();
     private BlazeBeardMerge BBM = new();
 
     public void ScriptMain(IScriptInterface bot)

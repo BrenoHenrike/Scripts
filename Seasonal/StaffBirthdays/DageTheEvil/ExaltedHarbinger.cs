@@ -17,8 +17,8 @@ public class ExaltedHarbinger
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
-    public CoreAdvanced Adv = new CoreAdvanced();
+    public CoreFarms Farm = new();
+    public CoreAdvanced Adv = new();
     private DarkBirthdayTokenMerge DBTM = new();
 
     public void ScriptMain(IScriptInterface bot)

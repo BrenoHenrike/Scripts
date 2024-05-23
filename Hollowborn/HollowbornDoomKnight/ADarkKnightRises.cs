@@ -31,7 +31,7 @@ public class ADKRises
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreHollowbornDoomKnight HDK = new CoreHollowbornDoomKnight();
+    public CoreHollowbornDoomKnight HDK = new();
 
     public void ScriptMain(IScriptInterface bot)
     {

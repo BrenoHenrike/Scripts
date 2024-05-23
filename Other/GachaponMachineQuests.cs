@@ -15,10 +15,10 @@ public class GachaponMachine
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
+    public CoreFarms Farm = new();
     public Eden Eden = new();
 
-    public CoreAdvanced Adv = new CoreAdvanced();
+    public CoreAdvanced Adv = new();
 
     public void ScriptMain(IScriptInterface bot)
     {

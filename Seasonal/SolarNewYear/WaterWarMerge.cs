@@ -18,7 +18,7 @@ public class WaterWarMerge
     private CoreBots Core => CoreBots.Instance;
     private CoreFarms Farm = new();
     private CoreAdvanced Adv = new();
-    public CoreStory Story = new CoreStory();
+    public CoreStory Story = new();
     private WaterWar WW = new();
     private static CoreAdvanced sAdv = new();
 

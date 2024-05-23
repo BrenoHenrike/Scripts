@@ -14,8 +14,8 @@ public class CompleteTheNewWorld
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreStory Story = new CoreStory();
-    public CoreFarms Farm = new CoreFarms();
+    public CoreStory Story = new();
+    public CoreFarms Farm = new();
     public CoreQOM QOM => new();
     public void ScriptMain(IScriptInterface bot)
     {

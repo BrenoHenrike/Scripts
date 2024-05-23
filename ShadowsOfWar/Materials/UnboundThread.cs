@@ -15,7 +15,7 @@ public class UnboundThread
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreSoWMats SOWM = new CoreSoWMats();
+    public CoreSoWMats SOWM = new();
 
     public void ScriptMain(IScriptInterface bot)
     {

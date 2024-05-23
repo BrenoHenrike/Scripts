@@ -19,7 +19,7 @@ public class ArmySingleRib
     private static CoreBots Core => CoreBots.Instance;
     private readonly CoreArmyLite Army = new();
     private static readonly CoreArmyLite sArmy = new();
-    public CoreLegion Legion = new CoreLegion();
+    public CoreLegion Legion = new();
 
     // Comment out one of these depending:
     readonly int[] QuestIDs = { 3393 };

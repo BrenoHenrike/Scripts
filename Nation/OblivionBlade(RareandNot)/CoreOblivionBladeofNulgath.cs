@@ -16,7 +16,7 @@ public class CoreOblivionBladeofNulgath
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
-    public CoreAdvanced Adv = new CoreAdvanced();
+    public CoreAdvanced Adv = new();
     public CoreNation Nation = new();
 
 

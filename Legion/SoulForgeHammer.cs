@@ -15,7 +15,7 @@ public class SoulForgeHammer
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
-    public CoreLegion Legion = new CoreLegion();
+    public CoreLegion Legion = new();
 
     public void ScriptMain(IScriptInterface bot)
     {

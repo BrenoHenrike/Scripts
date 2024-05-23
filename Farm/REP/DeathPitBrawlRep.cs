@@ -13,7 +13,7 @@ using Skua.Core.Interfaces;
 public class DeathPitBrawlREP
 {
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
+    public CoreFarms Farm = new();
     public CoreToD CoreToD = new();
     public CoreAdvanced Adv = new();
 

@@ -17,7 +17,7 @@ public class ArchFiendSpear
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
-    public CoreAdvanced Adv = new CoreAdvanced();
+    public CoreAdvanced Adv = new();
     public CoreNation Nation = new();
     public CoreHollowborn HB = new();
     public WillpowerExtraction Will = new();

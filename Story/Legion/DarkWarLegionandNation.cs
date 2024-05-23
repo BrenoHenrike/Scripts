@@ -16,7 +16,7 @@ public class DarkWarLegionandNation
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
     public Core13LoC LOC => new();
-    public CoreStory Story = new CoreStory();
+    public CoreStory Story = new();
 
     public void ScriptMain(IScriptInterface bot)
     {

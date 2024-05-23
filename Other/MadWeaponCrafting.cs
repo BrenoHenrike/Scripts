@@ -29,7 +29,7 @@ public class MadWeaponCrafting
     public void GetAll()
     {
         List<ItemBase> RewardOptions = Core.EnsureLoad(7070).Rewards;
-        List<string> RewardsList = new List<string>();
+        List<string> RewardsList = new();
         List<string> RewardList = RewardOptions.Select(x => x.Name).ToList();
         string[] Rewards = RewardList.ToArray();
 

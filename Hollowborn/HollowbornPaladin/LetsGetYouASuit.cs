@@ -25,11 +25,11 @@ public class LetsGetYouASuit
     public IScriptInterface Bot => IScriptInterface.Instance;
 
     public CoreBots Core => CoreBots.Instance;
-    public CoreHollowborn HB = new CoreHollowborn();
-    public CoreHollowbornPaladin HBPal = new CoreHollowbornPaladin();
-    public CoreBLOD BLOD = new CoreBLOD();
-    public CoreStory Story = new CoreStory();
-    public CoreFarms Farm = new CoreFarms();
+    public CoreHollowborn HB = new();
+    public CoreHollowbornPaladin HBPal = new();
+    public CoreBLOD BLOD = new();
+    public CoreStory Story = new();
+    public CoreFarms Farm = new();
 
     public void ScriptMain(IScriptInterface bot)
     {

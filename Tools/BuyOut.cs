@@ -53,7 +53,7 @@ public class BuyOut
         BuyEnums mode = Bot.Config?.Get<BuyEnums>("mode") ?? default(BuyEnums);
         Core.Logger($"User chose mode {mode}.");
 
-        List<Tuple<int, string>> bought = new List<Tuple<int, string>>();
+        List<Tuple<int, string>> bought = new();
         foreach ((string map_name, int shop_id) in map_names.Zip(shop_ids))
         {
             string map = map_name == "-" ? Bot.Map.Name : map_name;

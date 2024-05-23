@@ -15,7 +15,7 @@ public class BanditsCorrespondence
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreDarkon Darkon = new CoreDarkon();
+    public CoreDarkon Darkon = new();
 
     public void ScriptMain(IScriptInterface bot)
     {

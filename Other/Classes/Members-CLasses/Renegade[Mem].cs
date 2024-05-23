@@ -12,7 +12,7 @@ public class Renegade
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
-    public CoreAdvanced Adv = new CoreAdvanced();
+    public CoreAdvanced Adv = new();
 
     public void ScriptMain(IScriptInterface Bot)
     {

@@ -13,7 +13,7 @@ public class ProofOFRecruitmentQuest
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
+    public CoreFarms Farm = new();
     public CoreNation Nation = new();
 
     string[] RequiredItems = { "ArchToken I", "ArchToken II", "Portal Key", "ArchToken III", "ArchToken IV", "ArchToken V", "ArchToken VI", "ArchToken VII", "ArchToken VIII", "ArchToken IX", "ArchToken X", "ArchToken XI" };

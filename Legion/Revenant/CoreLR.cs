@@ -17,12 +17,12 @@ public class CoreLR
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
-    public CoreAdvanced Adv = new CoreAdvanced();
-    public CoreStory Story = new CoreStory();
-    public CoreLegion Legion = new CoreLegion();
-    public InfiniteLegionDC ILDC = new InfiniteLegionDC();
-    public SeraphicWar_Story Seraph = new SeraphicWar_Story();
+    public CoreFarms Farm = new();
+    public CoreAdvanced Adv = new();
+    public CoreStory Story = new();
+    public CoreLegion Legion = new();
+    public InfiniteLegionDC ILDC = new();
+    public SeraphicWar_Story Seraph = new();
 
     public void ScriptMain(IScriptInterface bot)
     {

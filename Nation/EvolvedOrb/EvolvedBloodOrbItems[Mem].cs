@@ -16,8 +16,8 @@ public class EvolvedBloodOrbItems
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
-    private CoreAdvanced Adv = new CoreAdvanced();
-    private CoreFarms Farm = new CoreFarms();
+    private CoreAdvanced Adv = new();
+    private CoreFarms Farm = new();
     private CoreNation Nation = new();
     private EvolvedBloodOrb EBO = new();
     public JuggernautItemsofNulgath juggernaut = new();

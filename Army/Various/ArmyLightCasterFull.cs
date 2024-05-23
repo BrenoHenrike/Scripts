@@ -28,12 +28,12 @@ public class ArmyLightCaster
     public CoreFarms Farm = new();
     public CoreAdvanced Adv => new();
     private CoreArmyLite Army = new();
-    public LightMage LM = new LightMage();
-    public BurningBladeOfAbezeth BBOA = new BurningBladeOfAbezeth();
-    public AvatarOfDeathsScythe AODS = new AvatarOfDeathsScythe();
-    public GuardianOfSpiritsBlade GOSB = new GuardianOfSpiritsBlade();
-    public LanceOfTime LOT = new LanceOfTime();
-    public BurningBlade BB = new BurningBlade();
+    public LightMage LM = new();
+    public BurningBladeOfAbezeth BBOA = new();
+    public AvatarOfDeathsScythe AODS = new();
+    public GuardianOfSpiritsBlade GOSB = new();
+    public LanceOfTime LOT = new();
+    public BurningBlade BB = new();
     private static CoreBots sCore = new();
     private static CoreArmyLite sArmy = new();
 

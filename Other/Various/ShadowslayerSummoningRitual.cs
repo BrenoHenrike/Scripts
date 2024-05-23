@@ -40,7 +40,7 @@ public class ShadowslayerSummoningRitual
         ShadowStory.Storyline();
         
         List<ItemBase> RewardOptions = Core.EnsureLoad(8835).Rewards;
-        List<string> RewardsList = new List<string>();
+        List<string> RewardsList = new();
         foreach (Skua.Core.Models.Items.ItemBase Item in RewardOptions)
             RewardsList.Add(Item.Name);
 

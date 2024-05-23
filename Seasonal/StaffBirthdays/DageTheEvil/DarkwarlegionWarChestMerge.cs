@@ -20,7 +20,7 @@ public class DarkwarlegionWarChestMerge
     public CoreStory Story = new();
     public CoreAdvanced Adv = new();
     public static CoreAdvanced sAdv = new();
-    public CoreLegion Legion = new CoreLegion();
+    public CoreLegion Legion = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
     public string[] MultiOptions = { "Generic", "Select" };

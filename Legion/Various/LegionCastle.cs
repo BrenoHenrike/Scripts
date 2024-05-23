@@ -17,7 +17,7 @@ public class GetLegionCastle
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreDailies Daily = new();
-    public CoreLegion Legion = new CoreLegion();
+    public CoreLegion Legion = new();
 
     public void ScriptMain(IScriptInterface bot)
     {

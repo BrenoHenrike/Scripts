@@ -25,7 +25,7 @@ public class VulcarsMerge
     public CoreStory Story = new();
     public CoreAdvanced Adv = new();
     public static CoreAdvanced sAdv = new();
-    public CoreLegion Legion = new CoreLegion();
+    public CoreLegion Legion = new();
     public AnotherOneBitesTheDust SSand = new();
     public LetItBurn LetItBurn = new();
 

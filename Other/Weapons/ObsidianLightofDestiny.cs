@@ -18,10 +18,10 @@ public class ObsidianLightofDestiny
     public IScriptInterface Bot => IScriptInterface.Instance;
 
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
-    public CoreStory Story = new CoreStory();
-    public CoreAdvanced Adv = new CoreAdvanced();
-    public CoreBLOD BLOD = new CoreBLOD();
+    public CoreFarms Farm = new();
+    public CoreStory Story = new();
+    public CoreAdvanced Adv = new();
+    public CoreBLOD BLOD = new();
     public CoreDoomwood DW = new();
 
     public void ScriptMain(IScriptInterface bot)

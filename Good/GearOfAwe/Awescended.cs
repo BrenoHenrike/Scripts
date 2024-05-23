@@ -36,21 +36,21 @@ public class Awescended
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
-    public CoreStory Story = new CoreStory();
-    public CoreAdvanced Adv = new CoreAdvanced();
-    public ArmorOfAwe AweArmor = new ArmorOfAwe();
-    public HelmOfAwe Helm = new HelmOfAwe();
-    public SEP Pal = new SEP();
-    public FandH FaH = new FandH();
-    public SRoD SRoD = new SRoD();
-    public GetSDD SDD = new GetSDD();
-    public DrakathArmorBot Armor = new DrakathArmorBot();
-    public SepulchuresOriginalHelm Seppy = new SepulchuresOriginalHelm();
-    public ArchDoomKnight ADK = new ArchDoomKnight();
-    public J6Saga J6 = new J6Saga();
-    public BattleUnder Under = new BattleUnder();
-    public Bamboozle Bam = new Bamboozle();
+    public CoreFarms Farm = new();
+    public CoreStory Story = new();
+    public CoreAdvanced Adv = new();
+    public ArmorOfAwe AweArmor = new();
+    public HelmOfAwe Helm = new();
+    public SEP Pal = new();
+    public FandH FaH = new();
+    public SRoD SRoD = new();
+    public GetSDD SDD = new();
+    public DrakathArmorBot Armor = new();
+    public SepulchuresOriginalHelm Seppy = new();
+    public ArchDoomKnight ADK = new();
+    public J6Saga J6 = new();
+    public BattleUnder Under = new();
+    public Bamboozle Bam = new();
     public DjinnGateStory Djinn = new();
 
     public void ScriptMain(IScriptInterface bot)

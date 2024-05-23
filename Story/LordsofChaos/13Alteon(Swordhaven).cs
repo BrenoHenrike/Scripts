@@ -14,9 +14,9 @@ public class SagaSwordhaven
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreAdvanced Adv = new CoreAdvanced();
-    public Core13LoC LOC => new Core13LoC();
-    public CoreFarms Farm = new CoreFarms();
+    public CoreAdvanced Adv = new();
+    public Core13LoC LOC => new();
+    public CoreFarms Farm = new();
 
     public void ScriptMain(IScriptInterface bot)
     {

@@ -30,7 +30,7 @@ public class CorruptDraconicParagon
     public void GetAll()
     {
         List<ItemBase> RewardOptions = Core.EnsureLoad(7428).Rewards;
-        List<string> RewardsList = new List<string>();
+        List<string> RewardsList = new();
         List<string> RewardList = RewardOptions.Select(x => x.Name).ToList();
         string[] Rewards = RewardList.ToArray();
 

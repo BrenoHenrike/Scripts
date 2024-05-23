@@ -19,7 +19,7 @@ public class DarkHandMerge1
     public CoreFarms Farm = new();
     public CoreStory Story = new();
     public CoreAdvanced Adv = new();
-    public CoreLegion Legion = new CoreLegion();
+    public CoreLegion Legion = new();
     public static CoreAdvanced sAdv = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;

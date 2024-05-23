@@ -11,7 +11,7 @@ public class UltraCarnaxBadge
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
-    public CoreStory Story = new CoreStory();
+    public CoreStory Story = new();
 
     public void ScriptMain(IScriptInterface Bot)
     {

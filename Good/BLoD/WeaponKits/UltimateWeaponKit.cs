@@ -15,8 +15,8 @@ public class UltimateWeaponKit
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreBLOD BLOD = new CoreBLOD();
-    public CoreStory Story = new CoreStory();
+    public CoreBLOD BLOD = new();
+    public CoreStory Story = new();
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();

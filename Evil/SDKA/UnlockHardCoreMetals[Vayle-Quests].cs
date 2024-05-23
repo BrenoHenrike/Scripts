@@ -15,7 +15,7 @@ public class UnlockHardCoreMetals_Vayle_Quests
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreSDKA SDKA = new CoreSDKA();
+    public CoreSDKA SDKA = new();
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();

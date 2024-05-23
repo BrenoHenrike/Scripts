@@ -13,7 +13,7 @@ using Skua.Core.Interfaces;
 public class GlaceraREP
 {
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
+    public CoreFarms Farm = new();
     public CoreAdvanced Adv = new();
     public GlaceraStory GlaceraStory = new();
 

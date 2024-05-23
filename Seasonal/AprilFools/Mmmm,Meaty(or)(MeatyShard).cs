@@ -12,7 +12,7 @@ public class MmmmMeatyQuest
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreStory Story = new CoreStory();
+    public CoreStory Story = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -30,7 +30,7 @@ public class MmmmMeatyQuest
         if (!Core.isSeasonalMapActive("MeateorTown"))
             return;
         List<ItemBase> RewardOptions = Core.EnsureLoad(8613).Rewards;
-        List<string> RewardsList = new List<string>();
+        List<string> RewardsList = new();
         foreach (Skua.Core.Models.Items.ItemBase Item in RewardOptions)
             RewardsList.Add(Item.Name);
 

@@ -120,8 +120,8 @@ public class CustomAggroMon
         if (monNames.Count == 0)
             Core.Logger("No monsters were found based on your input. The bot will now stop.", messageBox: true, stopBot: true);
 
-        List<string> drops = new List<string>();
-        List<int> questIDs = new List<int>();
+        List<string> drops = new();
+        List<int> questIDs = new();
 
 
         if (Bot.Config != null)

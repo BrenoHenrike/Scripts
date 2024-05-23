@@ -16,8 +16,8 @@ public class EvovledHexOrbItems
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
-    private CoreAdvanced Adv = new CoreAdvanced();
-    private CoreFarms Farm = new CoreFarms();
+    private CoreAdvanced Adv = new();
+    private CoreFarms Farm = new();
     private CoreNation Nation = new();
     private EvolvedHexOrb EHO = new();
     private PotionBuyer Potion = new();

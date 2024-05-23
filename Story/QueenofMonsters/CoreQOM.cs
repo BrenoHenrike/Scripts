@@ -13,7 +13,7 @@ public class CoreQOM
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreStory Story = new();
-    public CoreFarms Farm = new CoreFarms();
+    public CoreFarms Farm = new();
 
     public void ScriptMain(IScriptInterface bot)
     {

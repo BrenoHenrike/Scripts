@@ -22,7 +22,7 @@ public class SummerBreakMerge
     public CoreAdvanced Adv = new();
     public static CoreAdvanced sAdv = new();
     public CoreNation Nation = new();
-    public CoreLegion Legion = new CoreLegion();
+    public CoreLegion Legion = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
     public string[] MultiOptions = { "Generic", "Select" };

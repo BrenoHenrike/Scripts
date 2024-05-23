@@ -11,7 +11,7 @@ using Skua.Core.Interfaces;
 public class YokaiREP
 {
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
+    public CoreFarms Farm = new();
     public CoreAdvanced Adv = new();
 
     public void ScriptMain(IScriptInterface bot)

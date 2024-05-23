@@ -17,9 +17,9 @@ public class SwirlingTheAbyss
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
+    public CoreFarms Farm = new();
     public CoreNation Nation = new();
-    public Fiendshard_Story Fiendshard = new Fiendshard_Story();
+    public Fiendshard_Story Fiendshard = new();
 
     public void ScriptMain(IScriptInterface bot)
     {

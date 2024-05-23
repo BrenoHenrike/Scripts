@@ -29,7 +29,7 @@ public class MindBreakingItIn
     public void GetRewards()
     {
         List<ItemBase> RewardOptions = Core.EnsureLoad(7672).Rewards;
-        List<string> RewardsList = new List<string>();
+        List<string> RewardsList = new();
         List<string> RewardList = RewardOptions.Select(x => x.Name).ToList();
         string[] Rewards = RewardList.ToArray();
 

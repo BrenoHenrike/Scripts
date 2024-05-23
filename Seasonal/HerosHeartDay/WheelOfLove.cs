@@ -12,7 +12,7 @@ public class WheeleOfLove
 {
     public CoreBots Core => CoreBots.Instance;
     public IScriptInterface Bot => IScriptInterface.Instance;
-    public CoreStory Story = new CoreStory();
+    public CoreStory Story = new();
 
     public void ScriptMain(IScriptInterface Bot)
     {
@@ -73,7 +73,7 @@ public class WheeleOfLove
     public void WheelOfLoveQuest()
     {
         List<ItemBase> RewardOptions = Core.EnsureLoad(5694).Rewards;
-        List<string> RewardsList = new List<string>();
+        List<string> RewardsList = new();
         foreach (Skua.Core.Models.Items.ItemBase Item in RewardOptions)
             RewardsList.Add(Item.Name);
 

@@ -21,7 +21,7 @@ public class AstraviaPastMerge
     public CoreStory Story = new();
     public CoreAdvanced Adv = new();
     public static CoreAdvanced sAdv = new();
-    public CoreDarkon Darkon = new CoreDarkon();
+    public CoreDarkon Darkon = new();
     public CoreAstravia CoreAstravia = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;

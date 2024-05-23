@@ -9,7 +9,7 @@ using Skua.Core.Interfaces;
 public class SwagTokenA
 {
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
+    public CoreFarms Farm = new();
 
     public void ScriptMain(IScriptInterface bot)
     {

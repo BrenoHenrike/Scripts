@@ -12,7 +12,7 @@ using Skua.Core.Interfaces;
 public class EmberseaREP
 {
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
+    public CoreFarms Farm = new();
     public CoreAdvanced Adv = new();
     public CoreFireIsland FI = new();
 

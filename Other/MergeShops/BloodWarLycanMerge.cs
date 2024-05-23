@@ -28,7 +28,7 @@ public class BloodWarLycanMerge
     //              If true, it will not stop the script if the default case triggers and the user chose to only get mats
     private bool dontStopMissingIng = false;
 
-    public BloodMoon BloodMoonQuests = new BloodMoon();
+    public BloodMoon BloodMoonQuests = new();
 
     public void ScriptMain(IScriptInterface bot)
     {

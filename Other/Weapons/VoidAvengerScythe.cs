@@ -22,9 +22,9 @@ public class VoidAvengerScythe
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
-    public CoreAdvanced Adv = new CoreAdvanced();
-    public CoreStory Story = new CoreStory();
+    public CoreFarms Farm = new();
+    public CoreAdvanced Adv = new();
+    public CoreStory Story = new();
     public CoreNation Nation = new();
     public CoreNSOD NSoD = new();
     public JuggernautItemsofNulgath juggernaut = new();

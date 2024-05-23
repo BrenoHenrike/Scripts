@@ -12,9 +12,9 @@ using Skua.Core.Interfaces;
 public class InfiniteLegionDC
 {
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
-    public CoreAdvanced Adv = new CoreAdvanced();
-    public CoreLegion Legion = new CoreLegion();
+    public CoreFarms Farm = new();
+    public CoreAdvanced Adv = new();
+    public CoreLegion Legion = new();
 
     public void ScriptMain(IScriptInterface bot)
     {

@@ -22,9 +22,9 @@ public class EvolvedOrb
 {
     public CoreBots Core => CoreBots.Instance;
     public CoreNation Nation = new();
-    public EvolvedBloodOrb EBO = new EvolvedBloodOrb();
-    public EvolvedHexOrb EHO = new EvolvedHexOrb();
-    public EvolvedShadowOrb ESO = new EvolvedShadowOrb();
+    public EvolvedBloodOrb EBO = new();
+    public EvolvedHexOrb EHO = new();
+    public EvolvedShadowOrb ESO = new();
     public EvolvedShadowOrbItems ESOItems = new();
 
     public void ScriptMain(IScriptInterface bot)

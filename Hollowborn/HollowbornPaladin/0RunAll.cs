@@ -25,9 +25,9 @@ public class HBPalAll
     public IScriptInterface Bot => IScriptInterface.Instance;
 
     public CoreBots Core => CoreBots.Instance;
-    public CoreHollowborn HB = new CoreHollowborn();
-    public CoreHollowbornPaladin HBPal = new CoreHollowbornPaladin();
-    public CoreStory Story = new CoreStory();
+    public CoreHollowborn HB = new();
+    public CoreHollowbornPaladin HBPal = new();
+    public CoreStory Story = new();
 
     public void ScriptMain(IScriptInterface bot)
     {

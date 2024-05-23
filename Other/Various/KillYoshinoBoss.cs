@@ -14,7 +14,7 @@ public class KillYoshinoBoss
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
-    public CoreAdvanced Adv = new CoreAdvanced();
+    public CoreAdvanced Adv = new();
 
     public void ScriptMain(IScriptInterface Bot)
     {

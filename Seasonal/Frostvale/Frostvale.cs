@@ -12,7 +12,7 @@ public class Frostvale
 {
     public CoreBots Core => CoreBots.Instance;
     public IScriptInterface Bot => IScriptInterface.Instance;
-    public CoreStory Story = new CoreStory();
+    public CoreStory Story = new();
     public GlaceraStory GlaceraStory = new();
     public void ScriptMain(IScriptInterface Bot)
     {

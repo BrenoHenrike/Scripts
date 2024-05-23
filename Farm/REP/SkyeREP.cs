@@ -13,7 +13,7 @@ using Skua.Core.Interfaces;
 public class Skye
 {
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
+    public CoreFarms Farm = new();
     public CoreAdvanced Adv = new();
     private CoreAOR AOR = new();
     private CoreSoW SoW = new();

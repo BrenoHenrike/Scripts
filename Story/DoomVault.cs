@@ -13,7 +13,7 @@ public class DoomVaultA
     public IScriptInterface Bot => IScriptInterface.Instance;
 
     public CoreBots Core => CoreBots.Instance;
-    public CoreStory Story = new CoreStory();
+    public CoreStory Story = new();
     public CoreAdvanced Adv = new();
     public CoreFarms Farm = new();
 

@@ -20,7 +20,7 @@ public class FutureWarMerge
     private CoreBots Core => CoreBots.Instance;
     private CoreFarms Farm = new();
     private CoreAdvanced Adv = new();
-    public CoreLegion Legion = new CoreLegion();
+    public CoreLegion Legion = new();
     private CoreDageBirthday Dage = new();
     private static CoreAdvanced sAdv = new();
 

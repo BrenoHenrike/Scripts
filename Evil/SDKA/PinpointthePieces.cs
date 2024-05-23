@@ -18,7 +18,7 @@ public class PinpointthePieces_Any
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreSDKA SDKA = new CoreSDKA();
+    public CoreSDKA SDKA = new();
 
     public string OptionStorage = "Pinpoint_the_Pieces";
 

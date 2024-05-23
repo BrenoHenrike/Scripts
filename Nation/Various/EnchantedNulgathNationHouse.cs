@@ -16,11 +16,11 @@ public class EnhancedNulgathNationHouse
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
+    public CoreFarms Farm = new();
     public CoreDailies Daily = new();
     public CoreNation Nation = new();
-    public CoreBLOD BLOD = new CoreBLOD();
-    public CoreStory Story = new CoreStory();
+    public CoreBLOD BLOD = new();
+    public CoreStory Story = new();
     public void ScriptMain(IScriptInterface bot)
     {
         Core.BankingBlackList.AddRange(Nation.bagDrops);

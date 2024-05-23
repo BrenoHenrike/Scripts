@@ -13,7 +13,7 @@ public class SenlinMas
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
     private CoreStory Story = new();
-    private CoreFarms Farm = new CoreFarms();
+    private CoreFarms Farm = new();
 
     public void ScriptMain(IScriptInterface Bot)
     {

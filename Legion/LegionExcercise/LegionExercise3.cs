@@ -14,9 +14,9 @@ public class LegionExercise3
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreAdvanced Adv = new CoreAdvanced();
-    public CoreLegion Legion = new CoreLegion();
-    public CoreStory Story = new CoreStory();
+    public CoreAdvanced Adv = new();
+    public CoreLegion Legion = new();
+    public CoreStory Story = new();
 
     private string[] Rewards = { "Judgement Hammer", "Legion Token" };
 

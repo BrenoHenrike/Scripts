@@ -25,14 +25,14 @@ public class TheDarkSacrifice
     public IScriptInterface Bot => IScriptInterface.Instance;
 
     public CoreBots Core => CoreBots.Instance;
-    public CoreHollowborn HB = new CoreHollowborn();
-    public CoreHollowbornPaladin HBPal = new CoreHollowbornPaladin();
-    public AscendedDrakathGear ADG = new AscendedDrakathGear();
+    public CoreHollowborn HB = new();
+    public CoreHollowbornPaladin HBPal = new();
+    public AscendedDrakathGear ADG = new();
     public CoreNation Nation = new();
-    public Artixpointe APointe = new Artixpointe();
-    public CoreFarms Farm = new CoreFarms();
+    public Artixpointe APointe = new();
+    public CoreFarms Farm = new();
     public CoreDailies Daily = new();
-    public CoreStory Story = new CoreStory();
+    public CoreStory Story = new();
 
     public void ScriptMain(IScriptInterface bot)
     {

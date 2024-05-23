@@ -20,7 +20,7 @@ public class MogloweenSeasonalMerge
     public CoreFarms Farm = new();
     public CoreStory Story = new();
     public CoreAdvanced Adv = new();
-    public CoreLegion Legion = new CoreLegion();
+    public CoreLegion Legion = new();
     public CoreNation Nation = new();
     public static CoreAdvanced sAdv = new();
 

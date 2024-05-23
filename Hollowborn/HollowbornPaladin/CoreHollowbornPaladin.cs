@@ -26,13 +26,13 @@ public class CoreHollowbornPaladin
     public IScriptInterface Bot => IScriptInterface.Instance;
 
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
-    public CoreHollowborn HB = new CoreHollowborn();
-    public CoreBLOD BLOD = new CoreBLOD();
-    public CoreStory Story = new CoreStory();
-    public AscendedDrakathGear ADG = new AscendedDrakathGear();
+    public CoreFarms Farm = new();
+    public CoreHollowborn HB = new();
+    public CoreBLOD BLOD = new();
+    public CoreStory Story = new();
+    public AscendedDrakathGear ADG = new();
     public CoreNation Nation = new();
-    public Artixpointe APointe = new Artixpointe();
+    public Artixpointe APointe = new();
     public CoreDailies Daily = new();
 
     public void ScriptMain(IScriptInterface bot)

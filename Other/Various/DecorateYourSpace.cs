@@ -25,7 +25,7 @@ public class DecorateYourSpace
     public void Getthestuff()
     {
         List<ItemBase> RewardOptions = Core.EnsureLoad(7782).Rewards;
-        List<string> RewardsList = new List<string>();
+        List<string> RewardsList = new();
         foreach (Skua.Core.Models.Items.ItemBase Item in RewardOptions)
             RewardsList.Add(Item.Name);
 

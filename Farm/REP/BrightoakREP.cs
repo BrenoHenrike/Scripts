@@ -14,7 +14,7 @@ using Skua.Core.Interfaces;
 public class BrightoakREP
 {
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
+    public CoreFarms Farm = new();
     public BrightOak BrightOak = new();
     public CoreAdvanced Adv = new();
 

@@ -13,7 +13,7 @@ using Skua.Core.Interfaces;
 public class BrethwrenREPFarm
 {
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
+    public CoreFarms Farm = new();
     public CoreStory Story = new();
     public CoreHarvestDay HarvestDay = new();
     public CoreAdvanced Adv = new();

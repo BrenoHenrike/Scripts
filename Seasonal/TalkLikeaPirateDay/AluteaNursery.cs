@@ -84,7 +84,7 @@ public class AluteaNursery
     public void AluteaNurseryRewards()
     {
         List<ItemBase> RewardOptions = Core.EnsureLoad(8858).Rewards;
-        List<string> RewardsList = new List<string>();
+        List<string> RewardsList = new();
         List<string> RewardList = RewardOptions.Select(x => x.Name).ToList();
 
         string[] Rewards = RewardsList.ToArray();

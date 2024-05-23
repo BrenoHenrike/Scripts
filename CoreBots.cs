@@ -5895,7 +5895,7 @@ public static class UtilExtensionsS
         => source.ToList().Find(match: Match);
     public static bool TryFind<T>(this IEnumerable<T> source, Predicate<T> Match, out T? toReturn)
         => (toReturn = source.Find(Match)) != null;
-    public static string FormatForCompare(this string input) => new string(input
+    public static string FormatForCompare(this string input) => new(input
     .Trim()
     .ToLowerInvariant()
     .Normalize(System.Text.NormalizationForm.FormKD)

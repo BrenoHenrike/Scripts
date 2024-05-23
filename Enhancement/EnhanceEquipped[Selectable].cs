@@ -13,8 +13,8 @@ public class EnhanceEquippedSelect
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
-    public CoreAdvanced Adv = new CoreAdvanced();
+    public CoreFarms Farm = new();
+    public CoreAdvanced Adv = new();
 
     public string OptionsStorage = "EnhanceEquipSelect";
     public List<IOption> Options = new()

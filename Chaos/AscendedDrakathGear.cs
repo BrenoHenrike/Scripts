@@ -21,9 +21,9 @@ public class AscendedDrakathGear
     public IScriptInterface Bot => IScriptInterface.Instance;
 
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
-    public DrakathArmorBot DA = new DrakathArmorBot();
-    public TowerOfDoom TOD = new TowerOfDoom();
+    public CoreFarms Farm = new();
+    public DrakathArmorBot DA = new();
+    public TowerOfDoom TOD = new();
 
     public void ScriptMain(IScriptInterface bot)
     {

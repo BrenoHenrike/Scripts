@@ -13,7 +13,7 @@ public class ChaorrupterUnlocked
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreAdvanced Adv = new CoreAdvanced();
+    public CoreAdvanced Adv = new();
     //public ChaosWarMerge CWM = new();
 
     public void ScriptMain(IScriptInterface bot)

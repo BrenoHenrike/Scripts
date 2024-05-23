@@ -14,9 +14,9 @@ public class SagaHorc
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreAdvanced Adv = new CoreAdvanced();
-    public CoreFarms Farm = new CoreFarms();
-    public Core13LoC LOC => new Core13LoC();
+    public CoreAdvanced Adv = new();
+    public CoreFarms Farm = new();
+    public Core13LoC LOC => new();
 
     public void ScriptMain(IScriptInterface bot)
     {

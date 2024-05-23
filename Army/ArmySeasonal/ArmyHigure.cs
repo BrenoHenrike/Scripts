@@ -24,7 +24,7 @@ public class FarmHigure
     private CoreAdvanced Adv => new();
     private CoreArmyLite Army = new();
     private static CoreArmyLite sArmy = new();
-    public CoreAstravia Astravia => new CoreAstravia();
+    public CoreAstravia Astravia => new();
 
     public string OptionsStorage = "ArmyHigure";
     public List<IOption> Options = new()

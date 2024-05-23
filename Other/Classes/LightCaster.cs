@@ -20,14 +20,14 @@ public class LightCaster
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
-    public CoreFarms Farm = new CoreFarms();
-    public CoreAdvanced Adv = new CoreAdvanced();
-    public LightMage LM = new LightMage();
-    public AvatarOfDeathsScythe AODS = new AvatarOfDeathsScythe();
-    public GuardianOfSpiritsBlade GOSB = new GuardianOfSpiritsBlade();
-    public LanceOfTime LOT = new LanceOfTime();
-    public BurningBlade BB = new BurningBlade();
-    public BurningBladeOfAbezeth BBOA = new BurningBladeOfAbezeth();
+    public CoreFarms Farm = new();
+    public CoreAdvanced Adv = new();
+    public LightMage LM = new();
+    public AvatarOfDeathsScythe AODS = new();
+    public GuardianOfSpiritsBlade GOSB = new();
+    public LanceOfTime LOT = new();
+    public BurningBlade BB = new();
+    public BurningBladeOfAbezeth BBOA = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
