@@ -2025,6 +2025,7 @@ public class CoreBots
                 Jump(cell, pad);
                 Bot.Wait.ForCellChange(cell);
             }
+            Bot.Player.SetSpawnPoint();
         }
 
         Monster? targetMonster = FindMonster();
@@ -2109,6 +2110,7 @@ public class CoreBots
                 Jump(cell, pad);
                 Bot.Wait.ForCellChange(cell);
             }
+            Bot.Player.SetSpawnPoint();
         }
 
         // Find the target monster by ID
@@ -2135,10 +2137,11 @@ public class CoreBots
             while (!(isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
             {
                 Bot.Kill.Monster(targetMonster);
-                Bot.Wait.ForPickup(item);
+                Sleep();
             }
             Rest();
         }
+        Bot.Wait.ForPickup(item);
 
         // Reset attack option
         Bot.Options.AttackWithoutTarget = false;
@@ -2193,6 +2196,7 @@ public class CoreBots
                 Jump(cell, pad);
                 Bot.Wait.ForCellChange(cell);
             }
+            Bot.Player.SetSpawnPoint();
         }
 
         // Find the target monster by ID
@@ -2219,10 +2223,11 @@ public class CoreBots
             while (!(isTemp ? Bot.TempInv.Contains(ItemID, quant) : CheckInventory(ItemID, quant)))
             {
                 Bot.Kill.Monster(targetMonster);
-                Bot.Wait.ForPickup(ItemID);
+                Sleep();
             }
             Rest();
         }
+        Bot.Wait.ForPickup(ItemID);
 
         // Reset attack option
         Bot.Options.AttackWithoutTarget = false;
@@ -2314,6 +2319,7 @@ public class CoreBots
                 Jump(cell, "Left");
                 Bot.Wait.ForCellChange(cell);
             }
+            Bot.Player.SetSpawnPoint();
         }
 
         Monster? targetMonster = FindMonster();
@@ -2339,9 +2345,9 @@ public class CoreBots
             if (log)
                 FarmingLogger(item, quant);
 
+            LogAndJump($"Hunting {targetMonster}", targetMonster.Cell);
             while (!Bot.ShouldExit && (isTemp ? !Bot.TempInv.Contains(item, quant) : !CheckInventory(item, quant)))
             {
-                LogAndJump($"Hunting {targetMonster}", targetMonster.Cell);
                 Bot.Combat.Attack(targetMonster);
                 Sleep();
             }
@@ -2386,6 +2392,7 @@ public class CoreBots
                 Jump(cell, pad);
                 Bot.Wait.ForCellChange(cell);
             }
+            Bot.Player.SetSpawnPoint();
         }
 
         Monster? targetMonster = FindMonster();
@@ -2411,9 +2418,9 @@ public class CoreBots
             if (log)
                 FarmingLogger(item, quant);
 
+            LogAndJump($"Hunting {targetMonster}", targetMonster.Cell);
             while (!Bot.ShouldExit && (isTemp ? !Bot.TempInv.Contains(item, quant) : !CheckInventory(item, quant)))
             {
-                LogAndJump($"Hunting {targetMonster}", targetMonster.Cell);
                 Bot.Combat.Attack(targetMonster);
                 Sleep();
             }
@@ -2957,6 +2964,7 @@ public class CoreBots
                 Bot.Drops.RejectExcept(item);
         }
         DebugLogger(this);
+        Bot.Wait.ForPickup(item);
     }
 
 
