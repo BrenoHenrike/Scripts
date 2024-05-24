@@ -3816,7 +3816,7 @@ public class CoreBots
                 cellPad = ("Enter", "Spawn");
             else
             {
-                blackListedCells.AddRange(new List<string>() { "Wait", "Blank", "Out", "moveFrame", "CutMikoOrochi", "innitRoom", "Hut" });
+                blackListedCells.AddRange(new List<string>() { "Wait", "Blank", "Out", "moveFrame", "CutMikoOrochi", "innitRoom" });
                 blackListedCells.AddRange(Bot.Map.Cells.Where(x => x.StartsWith("Cut")));
 
                 #region AI is Aggressive (aways)
@@ -3943,6 +3943,9 @@ public class CoreBots
                 //     break;
 
                 #region Simple Quest Bypasses
+                case "marsh2":
+                    SimpleQuestBypass((58, 5));
+                    break;
 
                 case "nightmare":
                     SimpleQuestBypass((192, 9));
