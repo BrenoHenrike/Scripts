@@ -2287,22 +2287,8 @@ public class CoreBots
     /// <param name="isTemp">Whether the item is temporary</param>
     public void HuntMonster(string map, string monster, string? item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
     {
-        // bool HasWarnedMon = false;
-        // bool HasWarnedItem = false;
-        // if ((string.IsNullOrEmpty(monster) && !HasWarnedMon) || (item == null && !HasWarnedItem))
-        // {
-        //     string message = string.IsNullOrEmpty(monster) ? "Monster: \"" + monster + "\" - " + item + " is invalid for Core.Hunt Please Ping Tato with the correct \"\"Monster\" - \"Cell\" - \"Pad\"\" for this specific item along with the script and a SCREENSHOT of the `Logs` [button] > scripts tab." : "Item set to: []" + item + "], if this just hunts once, or starts and afks (sitting at the monster), that means the \"item\" was set to null(or is empty), @tato2 on discord with the script & what item its farming (preferably with screenshots of the `Logs > scripts tab`).";
-        //     Logger(message, "READ AND PING @tato2 ON DISCORD PLS", messageBox: true, stopBot: true);
-
-        //     if (string.IsNullOrEmpty(monster))
-        //         HasWarnedMon = true;
-        //     else
-        //         HasWarnedItem = true;
-        // }
-
         if (item != null && (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
             return;
-
 
         DebugLogger(this);
         Join(map, publicRoom: publicRoom);
@@ -2312,58 +2298,57 @@ public class CoreBots
         Bot.Wait.ForMapLoad(map);
         DebugLogger(this);
 
-        DebugLogger(this);
         Bot.Options.AggroAllMonsters = false;
-        DebugLogger(this);
         Bot.Options.AggroMonsters = false;
-        DebugLogger(this);
-        Monster? M = Bot.Monsters.MapMonsters.Find(m => m != null && m.Name.FormatForCompare() == monster.FormatForCompare());
-        if (item == null)
-        {
-            while (!Bot.ShouldExit && Bot.Player.Cell != M!.Cell)
-            {
-                Jump(M.Cell, "Left");
-                Bot.Wait.ForCellChange(M.Cell);
-            }
 
-            Bot.Kill.Monster(M!);
-            JumpWait();
-            Rest();
-            return;
+        Monster? FindMonster()
+        {
+            return Bot.Monsters.MapMonsters.FirstOrDefault(x => x != null && x.Name.FormatForCompare() == monster.FormatForCompare());
         }
-        else if (item != null)
+
+        void LogAndJump(string message, string cell)
+        {
+            if (log) Logger(message);
+            while (!Bot.ShouldExit && Bot.Player.Cell != cell)
+            {
+                Jump(cell, "Left");
+                Bot.Wait.ForCellChange(cell);
+            }
+        }
+
+        Monster? targetMonster = FindMonster();
+
+        if (targetMonster == null)
         {
             DebugLogger(this);
+            return;
+        }
+
+        if (item == null)
+        {
+            LogAndJump($"Hunting {targetMonster}", targetMonster.Cell);
+            Bot.Kill.Monster(targetMonster);
+            JumpWait();
+            Rest();
+        }
+        else
+        {
             if (!isTemp)
                 AddDrop(item);
 
-            DebugLogger(this);
             if (log)
                 FarmingLogger(item, quant);
 
-            DebugLogger(this);
-            while (!Bot.ShouldExit && isTemp ? !Bot.TempInv.Contains(item, quant) : !CheckInventory(item, quant))
+            while (!Bot.ShouldExit && (isTemp ? !Bot.TempInv.Contains(item, quant) : !CheckInventory(item, quant)))
             {
-                DebugLogger(this);
-
-                while (!Bot.ShouldExit && Bot.Player.Cell != M!.Cell)
-                {
-                    Jump(M.Cell, "Left");
-                    Bot.Wait.ForCellChange(M.Cell);
-                }
-
-                DebugLogger(this);
-                Bot.Combat.Attack(M!.Name);
-                DebugLogger(this);
+                LogAndJump($"Hunting {targetMonster}", targetMonster.Cell);
+                Bot.Combat.Attack(targetMonster);
                 Sleep();
-                DebugLogger(this);
             }
-            DebugLogger(this);
+
+            Bot.Options.AttackWithoutTarget = false;
+            JumpWait();
         }
-        DebugLogger(this);
-        Bot.Options.AttackWithoutTarget = false;
-        DebugLogger(this);
-        JumpWait();
     }
 
 
@@ -2380,7 +2365,6 @@ public class CoreBots
     /// <param name="log">Whether it will log that it is killing the monster</param>
     public void HuntMonsterMapID(string map, int monsterMapID, string? item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false, string pad = "Left")
     {
-
         if (item != null && (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
             return;
 
@@ -2388,39 +2372,56 @@ public class CoreBots
 
         Bot.Options.AggroAllMonsters = false;
         Bot.Options.AggroMonsters = false;
-        Monster? monster = Bot.Monsters.MapMonsters.FirstOrDefault(m => m != null && (m.MapID == monsterMapID || m.ID == monsterMapID));
+
+        Monster? FindMonster()
+        {
+            return Bot.Monsters.MapMonsters.FirstOrDefault(m => m != null && (m.MapID == monsterMapID || m.ID == monsterMapID));
+        }
+
+        void LogAndJump(string message, string cell)
+        {
+            if (log) Logger(message);
+            while (!Bot.ShouldExit && Bot.Player.Cell != cell)
+            {
+                Jump(cell, pad);
+                Bot.Wait.ForCellChange(cell);
+            }
+        }
+
+        Monster? targetMonster = FindMonster();
+
+        if (targetMonster == null)
+        {
+            DebugLogger(this);
+            return;
+        }
 
         if (item == null)
         {
-            if (Bot.Player.Cell != monster!.Cell)
-                Jump(monster.Cell, pad);
-
-            Bot.Kill.Monster(monster);
+            LogAndJump($"Hunting {targetMonster}", targetMonster.Cell);
+            Bot.Kill.Monster(targetMonster);
             JumpWait();
             Rest();
-            return;
         }
         else
         {
             if (!isTemp)
                 AddDrop(item);
+
             if (log)
                 FarmingLogger(item, quant);
 
-            while (!Bot.ShouldExit && (isTemp ? !Bot.TempInv.Contains(item!, quant) : !CheckInventory(item, quant)))
+            while (!Bot.ShouldExit && (isTemp ? !Bot.TempInv.Contains(item, quant) : !CheckInventory(item, quant)))
             {
-                if (Bot.Player.Cell != monster!.Cell)
-                {
-                    Jump(monster.Cell, pad);
-                    Bot.Wait.ForCellChange(monster.Cell);
-                }
-
-                Bot.Combat.Attack(monster);
+                LogAndJump($"Hunting {targetMonster}", targetMonster.Cell);
+                Bot.Combat.Attack(targetMonster);
                 Sleep();
             }
+
             Rest();
         }
     }
+
 
     /// <summary>
     /// Kill Escherion for the desired item
