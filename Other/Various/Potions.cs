@@ -44,10 +44,11 @@ public class PotionBuyer
         //Potion
         new Option<bool>("FarmMalic", "Malic", "Should the bot Farm Malic Potions?", false),
         new Option<bool>("FarmHonor", "Honor", "Should the bot Farm Honor Potions?", false),
+        new Option<bool>("FarmLife", "Life", "Should the bot Potent Life Potion?", false),
         new Option<bool>("FarmBody", "Body", "Should the bot Farm Body Tonics?", false),
         new Option<bool>("FarmSoul", "Soul", "Should the bot Farm Soul Potions?", false),
 
-        //Other          
+        //Other          Potent Life Potion
         new Option<bool>("buyFeli", "Felicitous Philtre", "Should the bot buy Felicitous Philtre?", false),
         new Option<bool>("buyEndu", "Endurance Draught", "Should the bot buy Endurance Draught?", false)
     };
@@ -67,13 +68,13 @@ public class PotionBuyer
                             "Potent Revitalize Elixir", "Endurance Draught", "Felicitous Philtre", "Potent Destruction Elixir",
                             "Body Tonic", "Soul Potion", "Unstable Battle Elixir", "Unstable Body Tonic", "Unstable Fate Tonic",
                             "Unstable Keen Elixir", "Unstable Mastery Tonic", "Unstable Might Tonic", "Unstable Wise Tonic",
-                            "Might Tonic", "Malic Potion"
+                            "Might Tonic", "Malic Potion", "Potent Life Potion"
                         } : null,
                         PotionsFarm: Bot.Config!.Get<bool>("MaxAll") ?
                         new[]
                         {
                             true, true, true, true, true, true, true, true, true, true, true, true,
-                            true, true, true, true, true, true, true, true, true, true, true, true
+                            true, true, true, true, true, true, true, true, true, true, true, true, true
                         } : null,
                         PotionQuant: Bot.Config!.Get<bool>("MaxAll") ? 300 : Bot.Config!.Get<int>("PotionQuant"),
                         BuyReagents: Bot.Config!.Get<bool>("BuyReagents")
@@ -103,7 +104,7 @@ public class PotionBuyer
             "Potent Revitalize Elixir", "Endurance Draught", "Felicitous Philtre", "Potent Destruction Elixir",
             "Body Tonic", "Soul Potion", "Unstable Battle Elixir", "Unstable Body Tonic",
             "Unstable Fate Tonic", "Unstable Keen Elixir", "Unstable Mastery Tonic",
-            "Unstable Might Tonic", "Unstable Wise Tonic", "Might Tonic", "Malic Potion"
+            "Unstable Might Tonic", "Unstable Wise Tonic", "Might Tonic", "Malic Potion","Potent Life Potion"
         };
         }
 
@@ -116,7 +117,7 @@ public class PotionBuyer
             PotionsFarm = new[]
             {
             true, true, true, true, true, true, true, true, true, true, true, true,
-            true, true, true, true, true, true, true, true, true, true, true, true
+            true, true, true, true, true, true, true, true, true, true, true, true, true
         };
 
             PotionQuant = 300;
@@ -139,7 +140,7 @@ public class PotionBuyer
                 Bot.Config!.Get<bool>("UnstableFate"), Bot.Config!.Get<bool>("UnstableKeen"),
                 Bot.Config!.Get<bool>("UnstableMastery"), Bot.Config!.Get<bool>("UnstableMight"),
                 Bot.Config!.Get<bool>("UnstableWise"), Bot.Config!.Get<bool>("FarmMight"),
-                Bot.Config!.Get<bool>("FarmMalic")
+                Bot.Config!.Get<bool>("FarmLife"), Bot.Config!.Get<bool>("FarmLife")
             };
             }
         }
@@ -197,6 +198,11 @@ public class PotionBuyer
                 case "Potent Malice Potion":
                     currTrait = CoreFarms.AlchemyTraits.Dam;
                     BulkGrind("Chaoroot", "Chaos Entity");
+                    break;
+
+                case "Potent Life Potion":
+                    currTrait = CoreFarms.AlchemyTraits.Hea;
+                    BulkGrind("Dragon Scale", "Searbush");
                     break;
 
                 case "Might Tonic":
@@ -340,7 +346,7 @@ public class PotionBuyer
                     case "Moglin Tears":
                         if (!Core.IsMember && !BuyReagents)
                             Core.Logger("Farming map is members only, buying the materials");
-                            
+
                         if (!BuyReagents && Core.IsMember)
                             Core.HuntMonster("twig", "Sweetish Fish", ingredient, ingreQuant, isTemp: false);
                         else Adv.BuyItem("alchemyacademy", 397, 11472, ingreQuant, 2, 1229);

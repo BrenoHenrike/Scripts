@@ -1003,7 +1003,8 @@ public class CoreFarms
         Str = 10,
         Cri = 11,
         Dex = 12,
-        Wis = 13
+        Wis = 13,
+        Hea = 14
         //more to be added by request
     };
 
