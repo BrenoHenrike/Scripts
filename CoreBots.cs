@@ -30,7 +30,6 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Text;
-using Skua.Core.Models.Auras;
 
 public class CoreBots
 {
@@ -2442,6 +2441,7 @@ public class CoreBots
         if (item != null && (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
             return;
 
+        // DebugLogger(this);
         Join("escherion", "Boss", "Left", publicRoom: publicRoom);
         if (Bot.Player.Cell != "Boss")
         {
@@ -2452,19 +2452,17 @@ public class CoreBots
         if (item != null && log)
             FarmingLogger(item, quant);
 
-        bool preFarmKill = false;
-        Monster? staff = FindMonster(2);
-        Monster? escherion = FindMonster(3);
+        bool PreFarmKill = false;
 
-        if (staff == null || escherion == null)
-        {
-            DebugLogger(this);
-            return;
-        }
+        Monster? Staff = Bot.Monsters.MapMonsters.FirstOrDefault(x => x.MapID == 2);
+        Monster? Escherion = Bot.Monsters.MapMonsters.FirstOrDefault(x => x.MapID == 3);
 
         if (item == null)
         {
-            LogAndKillEscherion("Killing Escherion", staff, escherion, ref preFarmKill);
+            if (log)
+                Logger("Killing Escherion");
+
+            _KillEscherion();
         }
         else
         {
@@ -2472,9 +2470,7 @@ public class CoreBots
                 AddDrop(item);
 
             while (!Bot.ShouldExit && !CheckInventory(item, quant))
-            {
-                LogAndKillEscherion($"Hunting {item}", staff, escherion, ref preFarmKill);
-            }
+                _KillEscherion();
 
             JumpWait();
             Rest();
@@ -2482,38 +2478,34 @@ public class CoreBots
         }
         Bot.Options.AttackWithoutTarget = false;
 
-        void LogAndKillEscherion(string message, Monster staff, Monster escherion, ref bool preFarmKill)
+        void _KillEscherion()
         {
-            if (log) Logger(message);
             if (Bot.Player.Cell != "Boss")
             {
                 Jump("Boss", "Left");
                 Sleep();
             }
 
-            if (!preFarmKill)
+            // Initialize combat (to set hp)
+            if (!PreFarmKill)
             {
-                Bot.Kill.Monster(staff);
-                Bot.Wait.ForMonsterSpawn(staff.MapID);
-                preFarmKill = true;
+                Bot.Kill.Monster(Staff!.MapID);
+                Bot.Wait.ForMonsterSpawn(Staff.MapID);
+                PreFarmKill = true;
             }
 
-            staff = FindMonster(2);
-            if (staff?.State == 1 || staff?.State == 2)
+            Staff = Bot.Monsters.MapMonsters.FirstOrDefault(x => x.MapID == 2);
+
+            if (Staff?.State == 1 || Staff!.State == 2)
             {
-                Bot.Kill.Monster(staff);
+                Bot.Kill.Monster(Staff!.MapID);
                 Bot.Combat.CancelTarget();
             }
-            else if (staff?.State == 0)
+            else if (Staff?.State == 0)
             {
-                Bot.Combat.Attack(escherion.MapID);
+                Bot.Combat.Attack(Escherion!.MapID);
                 Sleep();
             }
-        }
-
-        Monster? FindMonster(int mapID)
-        {
-            return Bot.Monsters.MapMonsters.FirstOrDefault(x => x != null && x.MapID == mapID);
         }
     }
 
@@ -2530,69 +2522,56 @@ public class CoreBots
 
         Join("stalagbite", "r2", "Left");
 
-        bool preFarmKill = false;
 
-        Monster? FindMonster(int mapID)
-        {
-            return Bot.Monsters.MapMonsters.FirstOrDefault(x => x != null && x.MapID == mapID);
-        }
 
-        void LogAndKillVath(string message, ref bool preFarmKill)
-        {
-            if (log) Logger(message);
-            Monster? stalagbite = FindMonster(8);
-            Monster? vath = FindMonster(7);
-
-            if (stalagbite == null || vath == null)
-            {
-                DebugLogger(this);
-                return;
-            }
-
-            if (!preFarmKill)
-            {
-                Bot.Kill.Monster(stalagbite);
-                Bot.Wait.ForMonsterSpawn(stalagbite.MapID);
-                preFarmKill = true;
-            }
-
-            stalagbite = FindMonster(8);
-            vath = FindMonster(7);
-
-            if (stalagbite?.State == 1 || stalagbite?.State == 2)
-            {
-                Bot.Kill.Monster(stalagbite);
-                Bot.Combat.CancelTarget();
-            }
-            else if (stalagbite?.State == 0)
-            {
-                Bot.Combat.Attack(vath);
-                Sleep();
-            }
-        }
+        bool PreFarmKill = false;
 
         if (item == null)
         {
-            LogAndKillVath("Killing Vath", ref preFarmKill);
+            if (log)
+                Logger("Killing Vath");
+            _killVath();
         }
         else
         {
             if (!isTemp)
                 AddDrop(item);
-
             if (log)
                 Logger($"Killing Vath for {item} ({dynamicQuant(item, isTemp)}/{quant}) [Temp = {isTemp}]");
-
             while (!Bot.ShouldExit && !CheckInventory(item, quant))
-            {
-                LogAndKillVath($"Hunting {item}", ref preFarmKill);
-            }
-
+                _killVath();
             JumpWait();
         }
-
         Bot.Options.AttackWithoutTarget = false;
         Rest();
+
+        void _killVath()
+        {
+            Monster? Vath = Bot.Monsters.MapMonsters.FirstOrDefault(x => x.MapID == 7);
+            Monster? Stalagbite = Bot.Monsters.MapMonsters.FirstOrDefault(x => x.MapID == 8);
+
+            // Initialize combat (to set hp)
+            if (!PreFarmKill)
+            {
+                Bot.Kill.Monster(Stalagbite!.MapID);
+                Bot.Wait.ForMonsterSpawn(Stalagbite!.MapID);
+                PreFarmKill = true;
+            }
+
+            Stalagbite = Bot.Monsters.MapMonsters.FirstOrDefault(x => x.MapID == 8);
+            Vath = Bot.Monsters.MapMonsters.FirstOrDefault(x => x.MapID == 7);
+
+            if (Stalagbite?.State == 1 || Stalagbite?.State == 2)
+            {
+                Bot.Kill.Monster(Stalagbite!.MapID);
+                Bot.Combat.CancelTarget();
+            }
+            else if (Stalagbite?.State == 0)
+            {
+                Bot.Combat.Attack(Vath!.MapID);
+                Sleep();
+            }
+        }
     }
 
     /// <summary>
@@ -2611,42 +2590,46 @@ public class CoreBots
 
         if (item == null)
         {
-            if (log) Logger("Killing Kitsune");
+            if (log)
+                Logger("Killing Kitsune");
             Bot.Kill.Monster("Kitsune");
         }
         else
         {
-            if (!isTemp) AddDrop(item);
-            if (log) Logger($"Killing Kitsune for {item} ({dynamicQuant(item, isTemp)}/{quant}) [Temp = {isTemp}]");
+            if (!isTemp)
+                AddDrop(item);
+            if (log)
+                Logger($"Killing Kitsune for {item} ({dynamicQuant(item, isTemp)}/{quant}) [Temp = {isTemp}]");
             while (!Bot.ShouldExit && !CheckInventory(item, quant))
-            {
                 Bot.Combat.Attack("*");
-                Sleep();
-            }
         }
-
         Bot.Events.ExtensionPacketReceived -= KitsuneListener;
 
-        Bot.Options.AttackWithoutTarget = false;
-        Rest();
-    }
-
-    private void KitsuneListener(dynamic packet)
-    {
-        string type = packet["params"].type;
-        dynamic data = packet["params"].dataObj;
-        if (type is not null && type == "json")
+        void KitsuneListener(dynamic packet)
         {
-            string cmd = data.cmd.ToString();
-            if (cmd == "ct" && data.a is not null)
+            string type = packet["params"].type;
+            dynamic data = packet["params"].dataObj;
+            if (type is not null and "json")
             {
-                foreach (var a in data.a)
+                string cmd = data.cmd.ToString();
+                switch (cmd)
                 {
-                    if (a?.aura is not null && (string)a.aura["nam"] == "Shapeshifted")
-                    {
-                        Bot.Combat.StopAttacking = ((string)a.cmd)[^0] == '+';
+                    case "ct":
+                        if (data.a is not null)
+                        {
+                            foreach (var a in data.a)
+                            {
+                                if (a is null)
+                                    continue;
+
+                                if (a.aura is not null && (string)a.aura["nam"] is "Shapeshifted")
+                                {
+                                    Bot.Combat.StopAttacking = ((string)a.cmd)[^0] == '+';
+                                    break;
+                                }
+                            }
+                        }
                         break;
-                    }
                 }
             }
         }
