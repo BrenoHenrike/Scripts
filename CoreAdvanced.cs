@@ -2312,6 +2312,16 @@ public class CoreAdvanced
                     break;
                 #endregion
 
+                #region Healer - Valiance - Current - Current
+
+                #endregion
+                case "healer":
+                case "healer (rare)":
+                    type = EnhancementType.Healer;
+                    cSpecial = CurrentCapeSpecial();
+                    wSpecial = uValiance() ? WeaponSpecial.Valiance : WeaponSpecial.Awe_Blast;
+                    hSpecial = CurrentHelmSpecial();
+                    break;
                 #endregion
 
                 #region Unassigned Region
@@ -2399,8 +2409,6 @@ public class CoreAdvanced
                 case "grim necromancer":
                 case "grunge rocker":
                 case "guardian":
-                case "healer (rare)":
-                case "healer":
                 case "heavy metal necro":
                 case "heavy metal rockstar":
                 case "heroic naval commander":
@@ -2759,8 +2767,6 @@ public class CoreAdvanced
                 case "dragon knight":
                 case "firelord summoner":
                 case "grim necromancer":
-                case "healer":
-                case "healer (rare)":
                 case "highseas commander":
                 case "infinity knight":
                 case "interstellar knight":
