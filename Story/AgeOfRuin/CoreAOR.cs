@@ -520,7 +520,7 @@ public class CoreAOR
 
     public void Castleeblana()
     {
-        if (Core.isCompletedBefore(9742))
+        if (Core.isCompletedBefore(9741))
             return;
 
         Balemorale();
@@ -563,19 +563,6 @@ public class CoreAOR
         // Miserable Monsoon 9741
         Core.EquipClass(ClassType.Solo);
         Story.KillQuest(9741, "castleeblana", "Warden Indradeep");
-
-        // Our Rain 9742
-        if (!Story.QuestProgression(9742))
-        {
-            Core.EnsureAccept(9742);
-            Core.EquipClass(ClassType.Farm);
-            Core.KillMonster("castleeblana", "r6", "Left", "*", "Gorta's Soul", 12);
-            Core.KillMonster("castleeblana", "r5", "Left", "*", "Raven's Bauble", 12);
-            Core.EquipClass(ClassType.Solo);
-            Core.KillMonster("castleeblana", "r10", "Left", "Warden Indradeep", "Rainfall Inscription");
-            Core.EnsureComplete(9742);
-        }
-
     }
 
 
