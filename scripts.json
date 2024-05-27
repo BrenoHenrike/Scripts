@@ -13146,10 +13146,11 @@
       "abyssal",
       "deep_water",
       "trench_observation",
-      "balemorale"
+      "balemorale",
+      "castle_eblana"
     ],
     "path": "Story/AgeOfRuin/00DoAll.cs",
-    "size": 830,
+    "size": 844,
     "fileName": "00DoAll.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/00DoAll.cs"
   },
