@@ -561,6 +561,7 @@ public class CoreAOR
         Story.KillQuest(9740, "castleeblana", "Skye Warrior");
 
         // Miserable Monsoon 9741
+        Core.EquipClass(ClassType.Solo);
         Story.KillQuest(9741, "castleeblana", "Warden Indradeep");
 
         // Our Rain 9742
