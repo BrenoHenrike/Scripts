@@ -809,21 +809,28 @@ public class CoreArmyLite
                 while (!Bot.ShouldExit && (Bot.Player.HasTarget || Bot.Player.InCombat))
                 {
                     Bot.Options.AttackWithoutTarget = false;
+                    Bot.Combat.Exit();
                     Bot.Combat.CancelTarget();
-                    Core.Sleep();
                     Core.JumpWait();
                 }
+                
 
                 // Do these things if that fails
                 string stopLocation = Core.CustomStopLocation?.Trim().ToLower() ?? string.Empty;
-                if (!string.IsNullOrWhiteSpace(stopLocation))
-                    Core.Join(stopLocation, "Enter", "Spawn", false, false);
-                else Core.Join("whitemap");
+                if (!string.IsNullOrWhiteSpace(stopLocation)) {
+                    Core.Logger(stopLocation);
+                    if (stopLocation.Equals("home") || stopLocation.Equals("house"))
+                        Bot.Send.Packet($"%xt%zm%house%1%{Core.Username()}%");
+                    else 
+                        Core.Join(stopLocation, "Enter", "Spawn", false, false);
+                } else 
+                    Core.Join("whitemap");
+                
 
                 Core.Logger($"Could not find {playerName}. Check if \"{playerName}\" is in the same server with you.", "tryGoto");
                 if (b_shouldHibernate)
                     Core.Logger($"The bot will now hibernate and try to /goto to {playerName} every {hibernateTimer} seconds.", "tryGoto");
-
+                
                 int min = 1;
                 while (!Bot.ShouldExit)
                 {
