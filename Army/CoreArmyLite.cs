@@ -1023,7 +1023,7 @@ public class CoreArmyLite
 
         foreach (string mon in _attackPriority)
         {
-            var _mon = Bot.Monsters.CurrentMonsters.Find(m => m.Name.Trim().ToLower() == mon.ToLower() && m.Name != null && m.Cell == Bot.Player.Cell);
+            var _mon = Bot.Monsters.CurrentMonsters.Find(m => m.Name.FormatForCompare() == mon.FormatForCompare() && m.Name != null && m.Cell == Bot.Player.Cell);
             if (_mon != null)
             {
                 Bot.Combat.Attack(_mon);
