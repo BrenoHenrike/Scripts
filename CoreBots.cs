@@ -338,6 +338,7 @@ public class CoreBots
                         string? toSend = null;
                         Bot.Events.ExtensionPacketReceived += modifyPacket;
                         Bot.Send.Packet($"%xt%zm%house%1%{Username()}%");
+                        Bot.Wait.ForMapLoad("house");
                         Task.Run(() =>
                         {
                             Bot.Wait.ForMapLoad("house");
@@ -711,18 +712,32 @@ public class CoreBots
         if (Bot.Flash.GetGameObject("ui.mcPopup.currentLabel") != "\"Bank\"")
             Bot.Bank.Open();
 
+        // Whitelist categories and items
+        List<ItemCategory> whiteList = new() { ItemCategory.Note, ItemCategory.Item, ItemCategory.Resource, ItemCategory.QuestItem };
+        int?[] Extras = { 18927, 38575 }; // Items that shouldn't be banked
+
         foreach (string? item in items)
         {
             if (item == null || item == SoloClass || item == FarmClass)
                 continue;
 
+            if (!Bot.Inventory.Items.Any(x => x.Name == item))
+            {
+                Logger($"{item} not found in inventory, skipping it");
+                continue;
+            }
+
+            var inventoryItem = Bot.Inventory.Items.First(x => x.Name == item);
+
+            // Check if item is equipped
             if (Bot.Inventory.IsEquipped(item))
             {
                 Logger("Can't bank an equipped item");
                 continue;
             }
 
-            if (Bot.Inventory.Contains(item))
+            // Check if item is in whitelist and not in blacklist or Extras
+            if ((whiteList.Contains(inventoryItem.Category) || inventoryItem.Coins) && !BankingBlackList.Contains(item) && !Extras.Contains(inventoryItem.ID))
             {
                 if (!Bot.Inventory.EnsureToBank(item))
                 {
@@ -733,6 +748,7 @@ public class CoreBots
             }
         }
     }
+
 
     public void ToHouseBank(params string?[]? items)
     {

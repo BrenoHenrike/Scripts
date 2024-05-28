@@ -177,7 +177,7 @@ public class CoreArmyLite
 
         SmartAggroMonStart(map, monNames.ToArray());
 
-        
+
 
         while (!Bot.ShouldExit)
             Bot.Combat.Attack("*");
@@ -492,11 +492,13 @@ public class CoreArmyLite
             randomServers ?
             Bot.Servers.ServerList.Where(x => !BlacklistedServers.Contains(x.Name.ToLower()) && !x.Upgrade && x.Online).ToArray()[Bot.Random.Next(1, 5)] :
             Bot.Servers.CachedServers.First(x => x.Name == Bot.Options.ReloginServer));
-
-            Bot.Wait.ForMapLoad("battleon");
-            while (!Bot.Player.Loaded) { }
         }
-        else Core.Join("battleon-999999");
+
+        Bot.Wait.ForMapLoad("battleon");
+        while (!Bot.ShouldExit && !Bot.Player.Loaded) { Bot.Wait.ForTrue(() => Bot.Player.Loaded, 20); }
+
+        Bot.Send.Packet($"%xt%zm%house%1%{Core.Username()}%");
+        Bot.Wait.ForMapLoad("house");
 
         Core.ReadCBO();
         Core.IsMember = Bot.Player.IsMember;
@@ -1012,7 +1014,7 @@ public class CoreArmyLite
     }
 
     public void PriorityAttack(string attNoPrio)
-    {    
+    {
         if (_attackPriority.Count == 0)
         {
             Bot.Combat.Attack(attNoPrio);
