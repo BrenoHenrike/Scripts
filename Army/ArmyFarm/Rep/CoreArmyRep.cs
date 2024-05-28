@@ -189,13 +189,22 @@ public class CoreArmyRep
         Army.AggroMonStart(AggroMonStart);
         Army.DivideOnCells(DivideOnCells);
 
+        (string, string) Dividedcell = (Bot.Player.Cell, Bot.Player.Pad);
+        Bot.Player.SetSpawnPoint();
 
         while (!Bot.ShouldExit && FactionRank(repname) < 10)
         {
-            if (!Bot.Player.HasTarget)
-                Bot.Combat.Attack("*");
-            if (Bot.Player.Target != null && Bot.Player.Target.HP > 0)
-                Bot.Combat.CancelTarget();
+            while (!Bot.ShouldExit && !Bot.Player.Alive)
+                Bot.Wait.ForTrue(() => Bot.Player.Alive, 20);
+
+            while (!Bot.ShouldExit && Bot.Player.Cell != Dividedcell.Item1)
+            {
+                Core.Jump(Dividedcell.Item1, Dividedcell.Item2);
+                Bot.Wait.ForCellChange(Dividedcell.Item1);
+                Core.Sleep();
+            }
+
+            Bot.Combat.Attack("*");
             Core.Sleep();
         }
 

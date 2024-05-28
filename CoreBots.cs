@@ -1452,7 +1452,9 @@ public class CoreBots
         }
 
         registeredQuests = questIDs;
-        EnsureAcceptmultiple(true, questIDs);
+        // if (questIDs.Length > 1)
+        //     EnsureAcceptmultiple(true, questIDs);
+        // else EnsureAccept(questIDs[1], true);
         questCTS = new();
         Task.Run(async () =>
         {
