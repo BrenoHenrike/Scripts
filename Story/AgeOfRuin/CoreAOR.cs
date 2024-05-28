@@ -40,6 +40,7 @@ public class CoreAOR
         DeepWater();
         SeaVoice();
         Balemorale();
+        Castleeblana();
     }
 
     private bool isSeaVoiceCalled = false;
@@ -515,6 +516,53 @@ public class CoreAOR
             Core.EnsureComplete(9729);
             Core.EquipClass(ClassType.Farm);
         }
+    }
+
+    public void Castleeblana()
+    {
+        if (Core.isCompletedBefore(9741))
+            return;
+
+        Balemorale();
+
+        Story.PreLoad(this);
+
+        Core.EquipClass(ClassType.Farm);
+
+        // Skye's Raindrops 9732 
+        Story.KillQuest(9732, "castleeblana", "Skye Warrior");
+
+        // Doctor's Orders 9733 
+        Story.MapItemQuest(9733, "castleeblana", 13202, 5);
+        Story.MapItemQuest(9733, "castleeblana", 13203);
+
+        // Shockwave's Ripples 9734
+        Story.KillQuest(9734, "castleeblana", "Skye Executor");
+
+        // Caretaker's Shadow 9735 
+        Story.MapItemQuest(9735, "castleeblana", 13204);
+        Story.KillQuest(9735, "castleeblana", new[] { "Skye Warrior", "Skye Executor" });
+
+        // Harbinger's Tears 9736 
+        Story.KillQuest(9736, "castleeblana", "Bananach Raven");
+
+        // Spectre of Hunger 9737 
+        Story.MapItemQuest(9737, "castleeblana", 13205);
+        Story.KillQuest(9737, "castleeblana", "Fear Gorta");
+
+        // InnJustice 9738 
+        Story.MapItemQuest(9738, "castleeblana", 13206);
+        Story.KillQuest(9738, "castleeblana", new[] { "Bananach Raven", "Fear Gorta" });
+
+        // Find Shelter in... 9739 
+        Story.MapItemQuest(9739, "castleeblana", new[] { 13207, 13208 });
+
+        // Heavy Handed 9740 
+        Story.KillQuest(9740, "castleeblana", "Skye Warrior");
+
+        // Miserable Monsoon 9741
+        Core.EquipClass(ClassType.Solo);
+        Story.KillQuest(9741, "castleeblana", "Warden Indradeep");
     }
 
 

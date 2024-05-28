@@ -6,7 +6,7 @@
       "null"
     ],
     "path": "CoreAdvanced.cs",
-    "size": 121300,
+    "size": 121600,
     "fileName": "CoreAdvanced.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreAdvanced.cs"
   },
@@ -50,7 +50,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 226605,
+    "size": 226627,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -13146,10 +13146,11 @@
       "abyssal",
       "deep_water",
       "trench_observation",
-      "balemorale"
+      "balemorale",
+      "castle_eblana"
     ],
     "path": "Story/AgeOfRuin/00DoAll.cs",
-    "size": 830,
+    "size": 844,
     "fileName": "00DoAll.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/00DoAll.cs"
   },
@@ -13173,13 +13174,33 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/10Balemorale.cs"
   },
   {
+    "name": "Castle eblana",
+    "description": "This script completes the storyline in /castleeblana.",
+    "tags": [
+      "age",
+      "of",
+      "ruin",
+      "saga",
+      "story",
+      "quest",
+      "castleeblana",
+      "castle",
+      "eblana",
+      "castle eblana"
+    ],
+    "path": "Story/AgeOfRuin/11Castleeblana.cs",
+    "size": 760,
+    "fileName": "11Castleeblana.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/11Castleeblana.cs"
+  },
+  {
     "name": "null",
     "description": "null",
     "tags": [
       "null"
     ],
     "path": "Story/AgeOfRuin/CoreAOR.cs",
-    "size": 20471,
+    "size": 22008,
     "fileName": "CoreAOR.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/CoreAOR.cs"
   },
@@ -20030,6 +20051,32 @@
     "size": 3719,
     "fileName": "WorldCoreMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/WorldCoreMerge.cs"
+  },
+  {
+    "name": "Felixs Gilded Gear Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Felixs Gilded Gear Merge [2446] in /castleeblana",
+    "tags": [
+      "felixs",
+      "gilded",
+      "gear",
+      "merge",
+      "castleeblana",
+      "gold",
+      "voucher",
+      "k",
+      "skye",
+      "warrior",
+      "warriors",
+      "cloak",
+      "speirling",
+      "warden",
+      "east",
+      "gaheris"
+    ],
+    "path": "Other/MergeShops/FelixsGildedGearMerge.cs",
+    "size": 5556,
+    "fileName": "FelixsGildedGearMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/FelixsGildedGearMerge.cs"
   },
   {
     "name": "AprilFools2019WarMerge",

@@ -2480,7 +2480,7 @@ public class CoreBots
 
         void _KillEscherion()
         {
-            if (Bot.Player.Cell != "Boss")
+            while (!Bot.ShouldExit && Bot.Player.Cell != "Boss")
             {
                 Jump("Boss", "Left");
                 Sleep();
