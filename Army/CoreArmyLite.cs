@@ -21,6 +21,7 @@ using System.Xml;
 using ClientServerUsingNamedPipes.Client;
 using ClientServerUsingNamedPipes.Interfaces;
 using ClientServerUsingNamedPipes.Server;
+using ClientServerUsingNamedPipes.Utilities;
 
 public class CoreArmyLite
 {
@@ -398,14 +399,16 @@ public class CoreArmyLite
         return players.ToArray();
     }
 
-    public void waitForParty(string map, string? item = null, int playerMax = -1, [CallerMemberName] string caller = "")
+    public void waitForParty(string map, string caller, string? item = null, int playerMax = -1)
     {
         Bot.Events.PlayerAFK += PlayerAFK;
         string[] players = Players();
         int partySize = players.Length;
         List<string> playersWhoHaveBeenHere = new() { Bot.Player.Username };
         int playerCount = 1;
+        FileInfo waitFile = new FileInfo(Path.Combine(CoreBots.ButlerLogDir, $"{caller}.txt"));
 
+        FileStream fileStream = null;
         int logCount = 0;
         int butlerTimer = 0;
         bool hasWaited = false;
@@ -415,20 +418,36 @@ public class CoreArmyLite
         Core.Join(map);
         int dynamicPartySize = playerMax == -1 ? partySize : playerMax;
 
-        ICommunication communication;
+        ICommunication communication = null;
 
-        if (Core.Username().Equals(players[0])) {
+        if (!waitFile.Exists || !IsFileLocked(waitFile)) {
+            if (!waitFile.Exists) fileStream = waitFile.Create(); // Creates and locks the file if it doesn't exist
+            else fileStream = waitFile.Open(FileMode.Open, FileAccess.Read, FileShare.None); // Opens and locks the file if it already exists
+            
+            // Start server
             communication = new PipeServer(caller, players.Length);
             ((PipeServer) communication).MessageReceivedEvent += ServerMessageReceived;
             communication.Start();
             for(var i = 0; i <= players.Length - 1; i++) {
                 ((PipeServer) communication).StartNamedPipeServer();
             }
-        } else {
+            
+            Bot.Events.ScriptStopping += exception => { 
+                ResetServer();
+                return true;
+            };
+            Bot.Events.Logout += ResetServer;
+        } else { // Start client
             communication = new PipeClient(caller);
             ((PipeClient) communication).ConnectedToServerEvent += ConnectedToServer;
             ((PipeClient) communication).MessageReceivedEvent += ClientMessageReceived;
             communication.Start();
+            
+            Bot.Events.ScriptStopping += exception => { 
+                ResetClient();
+                return true;
+            };
+            Bot.Events.Logout += ResetClient;
         }
 
         while (!Bot.ShouldExit && !shouldStart) {
@@ -477,12 +496,44 @@ public class CoreArmyLite
         Core.Sleep(3500); //To make sure everyone attack at the same time, to avoid deaths
         
         communication.Stop();
-        
+        fileStream?.Close(); //Releases the file
+
+        void ResetServer() {
+            fileStream.Close();
+            communication.Stop();
+            
+        }
+        void ResetClient() {
+            communication.Stop();
+            
+        }
+
         void PlayerAFK()
         {
             Core.Logger("Anti-AFK engaged");
             Core.Sleep(1500);
             Bot.Send.Packet("%xt%zm%afk%1%false%");
+        }
+
+        bool IsFileLocked(FileInfo file) {
+            try
+            {
+                using(FileStream stream = file.Open(FileMode.Open, FileAccess.Read, FileShare.None))
+                {
+                    stream.Close();
+                }
+            }
+            catch (IOException)
+            {
+                //the file is unavailable because it is:
+                //still being written to
+                //or being processed by another thread
+                //or does not exist (has already been processed)
+                return true;
+            }
+
+            //file is not locked
+            return false;
         }
 
         void ServerMessageReceived(object? o, MessageReceivedEventArgs messageReceivedEventArgs) {
