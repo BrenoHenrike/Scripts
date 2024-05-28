@@ -102,7 +102,7 @@ public class FarmHigure
             Core.FarmingLogger(item, quant);
             HandleItem(item);
             // After obtaining the item, you can call waitForParty again to butler them separately
-            //Army.waitForParty("whitemap", item, quant);
+            Army.waitForParty("whitemap", item, quant);
         }
 
         // Ensure items are in inventory and buy the sword
@@ -335,7 +335,7 @@ public class FarmHigure
     //         if (Core.CheckInventory(item, remainingQuantity))
     //         {
     //             // Skip to the next case if you already have enough of this item
-    //             //Army.waitForParty("whitemap", item);
+    //             Army.waitForParty("whitemap", item);
     //             continue;
     //         }
 

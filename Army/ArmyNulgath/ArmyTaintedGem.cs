@@ -71,7 +71,7 @@ public class ArmyTaintedGem
             Bot.Wait.ForPickup("Tained Gem");
         }
         Core.CancelRegisteredQuests();
-        //Army.waitForParty("whitemap", "Tainted Gem");
+        Army.waitForParty("whitemap", "Tainted Gem");
 
     }
 
@@ -90,7 +90,7 @@ public class ArmyTaintedGem
 
         Core.JumpWait();
         Core.Sleep(2000);
-        //Army.waitForParty("boxes", "Cubes");
+        Army.waitForParty("boxes", "Cubes");
     }
 
     public void IceCube()
@@ -108,6 +108,6 @@ public class ArmyTaintedGem
 
         Core.JumpWait();
         Core.Sleep(2000);
-        //Army.waitForParty("mountfrost", "Ice Cubes");
+        Army.waitForParty("mountfrost", "Ice Cubes");
     }
 }

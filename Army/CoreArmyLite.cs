@@ -399,14 +399,14 @@ public class CoreArmyLite
         return players.ToArray();
     }
 
-    public void waitForParty(string map, string caller, string? item = null, int playerMax = -1)
+    public void waitForParty(string map, string? item = null, int playerMax = -1, string? callerClass = "", [CallerMemberName] string? caller = "")
     {
         Bot.Events.PlayerAFK += PlayerAFK;
         string[] players = Players();
         int partySize = players.Length;
         List<string> playersWhoHaveBeenHere = new() { Bot.Player.Username };
         int playerCount = 1;
-        FileInfo waitFile = new FileInfo(Path.Combine(CoreBots.ButlerLogDir, $"{caller}.txt"));
+        FileInfo waitFile = new FileInfo(Path.Combine(CoreBots.ButlerLogDir, $"{(callerClass == "" ? caller : callerClass)}.txt"));
 
         FileStream fileStream = null;
         int logCount = 0;
@@ -539,6 +539,7 @@ public class CoreArmyLite
         void ServerMessageReceived(object? o, MessageReceivedEventArgs messageReceivedEventArgs) {
             var server = (PipeServer) o;
             var message = messageReceivedEventArgs.Message;
+            Core.Logger(message);
             if (message.Contains("Connected:")) {
                 var name = message.Replace("Connected:", "");
                 if (!playersWhoHaveBeenHere.Contains(name) && 
@@ -557,6 +558,7 @@ public class CoreArmyLite
         void ClientMessageReceived(object? o, MessageReceivedEventArgs messageReceivedEventArgs) {
             var client = (PipeClient) o;
             var message = messageReceivedEventArgs.Message;
+            Core.Logger(message);
             if (message.Contains("Start")) {
                 shouldStart = true;
             }

@@ -59,7 +59,7 @@ public class ArmyNSoDDaily
         Core.EquipClass(ClassType.Solo);
         Core.EnsureAccept(8653);
 
-        //Army.waitForParty("Icestormarena", "Glacial Pinion");
+        Army.waitForParty("Icestormarena", "Glacial Pinion");
         Army.SmartAggroMonStart("icewing", "Warlord Icewing");
 
         
@@ -69,7 +69,7 @@ public class ArmyNSoDDaily
         Army.AggroMonStop();
         Core.JumpWait();
 
-        //Army.waitForParty("hydrachallenge", "Hydra Eyeball");
+        Army.waitForParty("hydrachallenge", "Hydra Eyeball");
         Army.SmartAggroMonStart("hydrachallenge", "Hydra Head 90");
 
         
@@ -79,7 +79,7 @@ public class ArmyNSoDDaily
         Army.AggroMonStop();
         Core.JumpWait();
 
-        //Army.waitForParty("voidflibbi", "Flibbitigiblets");
+        Army.waitForParty("voidflibbi", "Flibbitigiblets");
         Army.SmartAggroMonStart("voidflibbi", "Flibbitiestgibbet");
 
         
