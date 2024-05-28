@@ -2049,13 +2049,9 @@ public class CoreBots
         {
             LogAndJump($"Killing {targetMonster}");
             if (targetMonster != null)
-            {
                 Bot.Kill.Monster(targetMonster);
-            }
             else
-            {
                 Sleep();
-            }
         }
         else
         {
@@ -2152,7 +2148,17 @@ public class CoreBots
             LogAndJump($"Killing monster with ID {MonsterMapID} for item '{item}' (quantity: {quant}, temp: {isTemp}).");
             while (!(isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
             {
-                Bot.Kill.Monster(targetMonster);
+                while (!Bot.ShouldExit && !Bot.Player.Alive)
+                    Sleep();
+
+                while (!Bot.ShouldExit && Bot.Player.Cell != targetMonster.Cell)
+                {
+                    Jump(targetMonster.Cell, "Left");
+                    Bot.Wait.ForCellChange(targetMonster.Cell);
+                    Sleep();
+                }
+
+                Bot.Combat.Attack(targetMonster);
                 Sleep();
             }
             Rest();
@@ -2238,7 +2244,17 @@ public class CoreBots
             LogAndJump($"Killing monster with ID {MonsterMapID} for item '{ItemID}' (quantity: {quant}, temp: {isTemp}).");
             while (!(isTemp ? Bot.TempInv.Contains(ItemID, quant) : CheckInventory(ItemID, quant)))
             {
-                Bot.Kill.Monster(targetMonster);
+                while (!Bot.ShouldExit && !Bot.Player.Alive)
+                    Sleep();
+
+                while (!Bot.ShouldExit && Bot.Player.Cell != targetMonster.Cell)
+                {
+                    Jump(targetMonster.Cell, "Left");
+                    Bot.Wait.ForCellChange(targetMonster.Cell);
+                    Sleep();
+                }
+
+                Bot.Combat.Attack(targetMonster);
                 Sleep();
             }
             Rest();
@@ -2249,7 +2265,7 @@ public class CoreBots
         Bot.Options.AttackWithoutTarget = false;
     }
 
-
+    #region Old KillMonster
     /// <summary>
     /// Attempts to kill a specified monster and optionally collects a specified item.
     /// </summary>
@@ -2296,7 +2312,7 @@ public class CoreBots
     //     else _KillForItem(monster!.Name, itemID, quant, isTemp, log: log, cell: cell);
     //     Bot.Options.AttackWithoutTarget = false;
     // }
-
+    #endregion
 
     /// <summary>
     /// Joins a map and hunt for the monster
@@ -2364,6 +2380,16 @@ public class CoreBots
             LogAndJump($"Hunting {targetMonster}", targetMonster.Cell);
             while (!Bot.ShouldExit && (isTemp ? !Bot.TempInv.Contains(item, quant) : !CheckInventory(item, quant)))
             {
+                while (!Bot.ShouldExit && !Bot.Player.Alive)
+                    Sleep();
+
+                while (!Bot.ShouldExit && Bot.Player.Cell != targetMonster.Cell)
+                {
+                    Jump(targetMonster.Cell, "Left");
+                    Bot.Wait.ForCellChange(targetMonster.Cell);
+                    Sleep();
+                }
+
                 Bot.Combat.Attack(targetMonster);
                 Sleep();
             }
@@ -2437,6 +2463,16 @@ public class CoreBots
             LogAndJump($"Hunting {targetMonster}", targetMonster.Cell);
             while (!Bot.ShouldExit && (isTemp ? !Bot.TempInv.Contains(item, quant) : !CheckInventory(item, quant)))
             {
+                while (!Bot.ShouldExit && !Bot.Player.Alive)
+                    Sleep();
+
+                while (!Bot.ShouldExit && Bot.Player.Cell != targetMonster.Cell)
+                {
+                    Jump(targetMonster.Cell, "Left");
+                    Bot.Wait.ForCellChange(targetMonster.Cell);
+                    Sleep();
+                }
+
                 Bot.Combat.Attack(targetMonster);
                 Sleep();
             }
@@ -2941,6 +2977,7 @@ public class CoreBots
                     Jump(cell, "Left");
                     DebugLogger(this);
                     Bot.Wait.ForCellChange(cell);
+                    Sleep();
                 }
             }
 
@@ -3018,7 +3055,7 @@ public class CoreBots
         DebugLogger(this);
     }
 
-
+    #region  IsMonsterAlive
     public bool IsMonsterAlive(Monster? mon)
         => mon != null && (mon.Alive || !KilledMonsters.Contains(mon.MapID));
     public bool IsMonsterAlive(string monsterName)
@@ -3081,6 +3118,7 @@ public class CoreBots
         => KilledMonsters.Add(monsterMapID);
 
     #endregion
+    #endregion IsMonsterAlive
 
     #region Utility
 
@@ -3573,9 +3611,9 @@ public class CoreBots
 
             default:
                 Bot.Inventory.EquipItem(item.ID);
+                Bot.Wait.ForActionCooldown(GameActions.EquipItem);
                 break;
         }
-
         Bot.Wait.ForItemEquip(item.ID);
         Sleep();
         if (logEquip)
@@ -3739,168 +3777,89 @@ public class CoreBots
     /// <param name="pad">Pad to jump to</param>
     public void Jump(string cell = "Enter", string pad = "Spawn", bool ignoreCheck = false)
     {
-        try
+        if (!ignoreCheck && Bot.Player.Cell == cell)
+            return;
+
+        pad = char.ToUpper(pad[0]) + pad[1..];
+        while (!Bot.ShouldExit && Bot.Player.Cell != cell)
         {
-            if (Bot == null)
+            Bot.Map.Jump(cell, pad, false);
+            Bot.Wait.ForTrue(() => Bot.Player.Cell == cell, 20);
+            Sleep();
+
+            if (Bot.Player.Cell == cell)
             {
-                Logger("Bot is null.");
-                return;
+                Bot.Player.SetSpawnPoint(cell, pad);
+                break;
             }
-
-            if (Bot.Player == null)
-            {
-                Logger("Bot.Player is null.");
-                return;
-            }
-
-            if (Bot.Map == null)
-            {
-                Logger("Bot.Map is null.");
-                return;
-            }
-
-            Bot.Player.SetSpawnPoint(cell, pad);
-            if (!ignoreCheck && Bot.Player.Cell == cell)
-                return;
-
-            pad = char.ToUpper(pad[0]) + pad[1..];
-            while (!Bot.ShouldExit && Bot.Player.Cell != cell)
-            {
-                Bot.Map.Jump(cell, pad, false);
-                Bot.Wait.ForTrue(() => Bot.Player.Cell == cell, 20);
-                Sleep();
-
-                if (Bot.Player.Cell == cell)
-                    break;
-            }
-        }
-        catch (Exception ex)
-        {
-            Logger($"An error occurred: {ex.Message}. StackTrace: {ex.StackTrace}");
         }
     }
 
     /// <summary>
-    /// Searches for a cell without monsters and jumps to it. If non is found it jumps twice in its current cell. <see cref="ExitCombatDelay"/>
+    /// Searches for a cell without monsters and jumps to it. If none is found, it jumps twice in the current cell.
+    /// This method is designed to help the player exit combat by moving to a non-combat cell.
+    /// The <see cref="ExitCombatDelay"/> is used to determine the delay before exiting combat.
     /// </summary>
     public void JumpWait()
     {
-        try
+        if (!Bot.Player.InCombat && !Bot.Player.HasTarget) // AggroMonsters is off?
+            return;
+
+        Bot.Options.AttackWithoutTarget = false;
+        HashSet<string> blackListedCells = Bot.Monsters.MapMonsters.Select(monster => monster.Cell).ToHashSet();
+
+        if (!blackListedCells.Contains(Bot.Player.Cell))
+            return;
+
+        ToggleAggro(false);
+
+        (string?, string) cellPad = (null, "Left");
+        int jumpCount = 1;
+
+        if (!blackListedCells.Contains("Enter"))
         {
-            if (Bot == null)
+            cellPad = ("Enter", "Spawn");
+        }
+        else
+        {
+            blackListedCells.UnionWith(new List<string> { "Wait", "Blank", "Out", "moveFrame", "CutMikoOrochi", "innitRoom" });
+            blackListedCells.UnionWith(Bot.Map.Cells.Where(x => x.StartsWith("Cut")));
+
+            #region AI is Aggressive (always)
+            if (Bot.Map.Name == "pyrewatch")
+                blackListedCells.UnionWith(new[] { "r3", "r4", "r5", "r7", "r12" });
+            #endregion
+
+            if (!IsMember)
+                blackListedCells.Add("Eggs");
+
+            var viableCells = Bot.Map.Cells.Except(blackListedCells);
+            if (viableCells.Any())
             {
-                Logger("Bot is null.");
-                return;
+                cellPad.Item1 = viableCells.First();
             }
-
-            if (Bot.Player == null)
-            {
-                Logger("Bot.Player is null.");
-                return;
-            }
-
-            if (Bot.Options == null)
-            {
-                Logger("Bot.Options is null.");
-                return;
-            }
-
-            if (Bot.Monsters == null)
-            {
-                Logger("Bot.Monsters is null.");
-                return;
-            }
-
-            if (Bot.Map == null)
-            {
-                Logger("Bot.Map is null.");
-                return;
-            }
-
-            if (Bot.Combat == null)
-            {
-                Logger("Bot.Combat is null.");
-                return;
-            }
-
-            if (!Bot.Player.InCombat && !Bot.Player.HasTarget) // AggroMonsters is off?
-                return;
-
-            Bot.Options.AttackWithoutTarget = false;
-            List<string> blackListedCells = Bot.Monsters.MapMonsters.Select(monster => monster.Cell).ToList();
-            if (!blackListedCells.Contains(Bot.Player.Cell))
-                return;
-
-            ToggleAggro(false);
-
-            (string?, string) cellPad = (null, "Left");
-            int jumpCount = 1;
-
-            if (!blackListedCells.Contains("Enter"))
-                cellPad = ("Enter", "Spawn");
             else
             {
-                blackListedCells.AddRange(new List<string>() { "Wait", "Blank", "Out", "moveFrame", "CutMikoOrochi", "innitRoom" });
-                blackListedCells.AddRange(Bot.Map.Cells.Where(x => x.StartsWith("Cut")));
-
-                #region AI is Aggressive (aways)
-                foreach (string map in new[] { "pyrewatch" })
-                {
-                    switch (map)
-                    {
-                        case "pyrewatch":
-                            if (Bot.Map.Name == "pyrewatch")
-                                blackListedCells.AddRange(new[] { "r3", "r4", "r5", "r7", "r12" });
-                            break;
-
-                            //add more when found
-                    }
-                }
-                #endregion
-
-                if (!IsMember)
-                    blackListedCells.Add("Eggs");
-                var viableCells = Bot.Map.Cells.Except(blackListedCells);
-                if (viableCells.Any())
-                    cellPad.Item1 = viableCells.First();
-                else
-                {
-                    cellPad = (Bot.Player.Cell, Bot.Player.Pad);
-                    jumpCount = 2;
-                }
+                cellPad = (Bot.Player.Cell, Bot.Player.Pad);
+                jumpCount = 2;
             }
-
-            if (lastMapJW != Bot.Map.Name || lastCellPadJW != cellPad)
-            {
-                for (int i = 0; i < jumpCount; i++)
-                {
-                    Jump(cellPad!.Item1, cellPad.Item2, true);
-                    Bot.Wait.ForTrue(() => Bot.Player.Cell == cellPad!.Item1, 20);
-                }
-
-                lastMapJW = Bot.Map.Name;
-                lastCellPadJW = cellPad!;
-
-                Sleep(ExitCombatDelay < 200 ? ExitCombatDelay : ExitCombatDelay - 200);
-                // Bot.Wait.ForCombatExit();
-            }
-
-            // while (!Bot.ShouldExit && Bot.Player.InCombat)
-            // {
-            //     // Logger("still in combat, trying to exit combat.. agian");
-            //     //Extra jump if player still in combat due to auto-aggro cells
-
-            //     Bot.Combat.CancelTarget();
-
-            //     if (!Bot.Player.InCombat)
-            //         break;
-            // }
         }
-        catch (Exception ex)
+
+        if (lastMapJW != Bot.Map.Name || lastCellPadJW != cellPad)
         {
-            Logger($"An error occurred: {ex.Message}. StackTrace: {ex.StackTrace}");
+            for (int i = 0; i < jumpCount; i++)
+            {
+                Jump(cellPad!.Item1, cellPad.Item2, true);
+                Bot.Wait.ForTrue(() => Bot.Player.Cell == cellPad!.Item1, 20);
+            }
+
+            lastMapJW = Bot.Map.Name;
+            lastCellPadJW = cellPad!;
+
+            Sleep(ExitCombatDelay < 200 ? ExitCombatDelay : ExitCombatDelay - 200);
         }
     }
+
     private string lastMapJW = String.Empty;
     private (string, string) lastCellPadJW = (String.Empty, String.Empty);
 
@@ -3914,478 +3873,452 @@ public class CoreBots
     /// <param name="ignoreCheck">If set to true, the bot will not check if the player is already in the given room</param>
     public void Join(string? map, string cell = "Enter", string pad = "Spawn", bool publicRoom = false, bool ignoreCheck = false)
     {
-        try
+        map = map!.Replace(" ", "").Replace('I', 'i');
+        map = map.ToLower() == "tercess" ? "tercessuinotlim" : map.ToLower();
+        string strippedMap = map.Contains('-') ? map.Split('-').First() : map;
+        pad = char.ToUpper(pad[0]) + pad[1..];
+
+        if (Bot.Map.Name != null && Bot.Map.Name.ToLower() == strippedMap && !ignoreCheck)
+            return;
+
+        //if aggro/aggroall is enabled when joining a map, disable it [forced]
+        Bot.Options.AggroMonsters = false;
+        Bot.Options.AggroAllMonsters = false;
+
+        Sleep();
+
+        switch (strippedMap)
         {
-            if (map == null)
-            {
-                Logger("Map is null.");
-                return;
-            }
+            default:
+                if (Bot.Map.Name == "pyrewatch")
+                    JumpWait();
+                tryJoin();
+                break;
 
-            if (Bot.Map == null)
-            {
-                Logger("Bot.Map is null.");
-                return;
-            }
+            // case "map":
+            //     SimpleQuestBypass((000, 000));
+            //     break;
 
-            if (Bot.Options == null)
-            {
-                Logger("Bot.Options is null.");
-                return;
-            }
+            #region Simple Quest Bypasses
+            case "marsh2":
+                SimpleQuestBypass((58, 5));
+                break;
 
-            if (Bot.Wait == null)
-            {
-                Logger("Bot.Wait is null.");
-                return;
-            }
+            case "nightmare":
+                SimpleQuestBypass((192, 9));
+                break;
 
-            map = map.Replace(" ", "").Replace('I', 'i');
-            map = map.ToLower() == "tercess" ? "tercessuinotlim" : map.ToLower();
-            string strippedMap = map.Contains('-') ? map.Split('-').First() : map;
-            pad = char.ToUpper(pad[0]) + pad[1..];
-
-            if (Bot.Map.Name != null && Bot.Map.Name.ToLower() == strippedMap && !ignoreCheck)
-                return;
-
-            //if aggro/aggroall is enabled when joining a map, disable it [forced]
-            Bot.Options.AggroMonsters = false;
-            Bot.Options.AggroAllMonsters = false;
-
-            Sleep();
-
-            switch (strippedMap)
-            {
-                default:
-                    if (Bot.Map.Name == "pyrewatch")
-                        JumpWait();
-                    tryJoin();
-                    break;
-
-                // case "map":
-                //     SimpleQuestBypass((000, 000));
-                //     break;
-
-                #region Simple Quest Bypasses
-                case "marsh2":
-                    SimpleQuestBypass((58, 5));
-                    break;
-
-                case "nightmare":
-                    SimpleQuestBypass((192, 9));
-                    break;
-
-                case "ascendeclipse":
-                    if (!CheckInventory("Rite of Ascension"))
-                        Logger("Item Required is a server-side check, cannot ghost it.");
-                    else
-                    {
-                        SendPackets($"%xt%zm%dungeonQueue%{Bot.Map.RoomID}%{map}-{PrivateRoomNumber}%");
-                        Bot.Wait.ForMapLoad(map);
-                    }
-                    break;
-
-                case "solsticemoon":
-                case "midnightsun":
+            case "ascendeclipse":
+                if (!CheckInventory("Rite of Ascension"))
+                    Logger("Item Required is a server-side check, cannot ghost it.");
+                else
+                {
                     SendPackets($"%xt%zm%dungeonQueue%{Bot.Map.RoomID}%{map}-{PrivateRoomNumber}%");
                     Bot.Wait.ForMapLoad(map);
-                    break;
+                }
+                break;
 
-                case "temple":
-                    SimpleQuestBypass((49, 25));
-                    break;
+            case "solsticemoon":
+            case "midnightsun":
+                SendPackets($"%xt%zm%dungeonQueue%{Bot.Map.RoomID}%{map}-{PrivateRoomNumber}%");
+                Bot.Wait.ForMapLoad(map);
+                break;
 
-                case "wanders":
-                    //2 spawn cells makes joining fucky
-                    if (cell == "Enter")
-                    {
-                        cell = "Enter2";
-                        pad = "Down";
-                    }
-                    SimpleQuestBypass((176, 6));
-                    break;
+            case "temple":
+                SimpleQuestBypass((49, 25));
+                break;
 
-                case "kitsune":
-                    SimpleQuestBypass((25, 22));
-                    break;
+            case "wanders":
+                //2 spawn cells makes joining fucky
+                if (cell == "Enter")
+                {
+                    cell = "Enter2";
+                    pad = "Down";
+                }
+                SimpleQuestBypass((176, 6));
+                break;
 
-                case "elemental":
-                    SimpleQuestBypass((32, 35));
-                    break;
+            case "kitsune":
+                SimpleQuestBypass((25, 22));
+                break;
 
-                case "twilightedge":
-                    SimpleQuestBypass((156, 1));
-                    break;
+            case "elemental":
+                SimpleQuestBypass((32, 35));
+                break;
 
-                case "dragonkoiz":
-                    SimpleQuestBypass((25, 22));
-                    break;
+            case "twilightedge":
+                SimpleQuestBypass((156, 1));
+                break;
 
-                case "titandrakath":
-                    SimpleQuestBypass((470, 18));
+            case "dragonkoiz":
+                SimpleQuestBypass((25, 22));
+                break;
+
+            case "titandrakath":
+                SimpleQuestBypass((470, 18));
+                JumpWait();
+                map = strippedMap + "-999999";
+                tryJoin();
+                break;
+
+            case "desoloth":
+                SimpleQuestBypass((56, 35));
+                break;
+
+            case "xancave":
+                SimpleQuestBypass((53, 35));
+                break;
+
+            case "shadowgrove":
+                SimpleQuestBypass((315, 7));
+                break;
+
+            case "stalagbite":
+                SimpleQuestBypass((22, 35));
+                break;
+
+            case "maloth":
+                SimpleQuestBypass((246, 23));
+                break;
+
+            case "originul":
+            case "fiendshard":
+                SimpleQuestBypass((387, 16));
+                break;
+
+            case "mummies":
+                SimpleQuestBypass((97, 16));
+                break;
+
+            case "doomvault":
+                SimpleQuestBypass((126, 18));
+                break;
+
+            case "pyramid":
+            case "djinn":
+                SimpleQuestBypass((36, 28));
+                break;
+
+            case "ultradrakath":
+                SimpleQuestBypass((182, 5));
+                break;
+
+            case "backroom":
+                SimpleQuestBypass((402, 12));
+                break;
+
+            case "venomvaults":
+                SimpleQuestBypass((117, 7));
+                break;
+
+            case "chaoscave":
+            case "lycanwar":
+                SimpleQuestBypass((26, 22));
+                break;
+
+            case "timespace":
+                SimpleQuestBypass((100, 14));
+                break;
+
+            case "transformation":
+                SimpleQuestBypass((405, 12));
+                break;
+
+            case "ebilcorphq":
+                SimpleQuestBypass((431, 9));
+                break;
+
+            case "necrodungeon":
+                SimpleQuestBypass((77, 18));
+                break;
+
+            case "oddities":
+                SimpleQuestBypass((456, 13));
+                break;
+
+            case "stormtemple":
+                SimpleQuestBypass((117, 17));
+                break;
+
+            case "championdrakath":
+                SimpleQuestBypass((182, 7));
+                break;
+
+            case "glacera":
+                SimpleQuestBypass((225, 21));
+                break;
+
+            case "ultratyndarius":
+                SimpleQuestBypass((412, 22));
+                break;
+
+            case "Creepy":
+                tryJoin();
+                Bot.Wait.ForCellChange("Cut1");
+                JumpWait();
+                Bot.Wait.ForCellChange("Skip");
+                JumpWait();
+                break;
+
+            case "towerofdoom":
+            case "towerofdoom2":
+            case "towerofdoom3":
+            case "towerofdoom4":
+            case "towerofdoom5":
+            case "towerofdoom6":
+            case "towerofdoom7":
+            case "towerofdoom8":
+            case "towerofdoom9":
+            case "towerofdoom10":
+                SimpleQuestBypass((159, 10));
+                break;
+
+            case "onslaughttower":
+                tryJoin();
+                if (!CheckInventory(2047))
+                {
+                    SendPackets("%xt%zm%getMapItem%169031%67%");
+                    Sleep(2500);
+                    SendPackets("%xt%zm%equipItem%169031%2047%");
+                }
+                else
+                {
                     JumpWait();
-                    map = strippedMap + "-999999";
-                    tryJoin();
-                    break;
-
-                case "desoloth":
-                    SimpleQuestBypass((56, 35));
-                    break;
-
-                case "xancave":
-                    SimpleQuestBypass((53, 35));
-                    break;
-
-                case "shadowgrove":
-                    SimpleQuestBypass((315, 7));
-                    break;
-
-                case "stalagbite":
-                    SimpleQuestBypass((22, 35));
-                    break;
-
-                case "maloth":
-                    SimpleQuestBypass((246, 23));
-                    break;
-
-                case "originul":
-                case "fiendshard":
-                    SimpleQuestBypass((387, 16));
-                    break;
-
-                case "mummies":
-                    SimpleQuestBypass((97, 16));
-                    break;
-
-                case "doomvault":
-                    SimpleQuestBypass((126, 18));
-                    break;
-
-                case "pyramid":
-                case "djinn":
-                    SimpleQuestBypass((36, 28));
-                    break;
-
-                case "ultradrakath":
-                    SimpleQuestBypass((182, 5));
-                    break;
-
-                case "backroom":
-                    SimpleQuestBypass((402, 12));
-                    break;
-
-                case "venomvaults":
-                    SimpleQuestBypass((117, 7));
-                    break;
-
-                case "chaoscave":
-                case "lycanwar":
-                    SimpleQuestBypass((26, 22));
-                    break;
-
-                case "timespace":
-                    SimpleQuestBypass((100, 14));
-                    break;
-
-                case "transformation":
-                    SimpleQuestBypass((405, 12));
-                    break;
-
-                case "ebilcorphq":
-                    SimpleQuestBypass((431, 9));
-                    break;
-
-                case "necrodungeon":
-                    SimpleQuestBypass((77, 18));
-                    break;
-
-                case "oddities":
-                    SimpleQuestBypass((456, 13));
-                    break;
-
-                case "stormtemple":
-                    SimpleQuestBypass((117, 17));
-                    break;
-
-                case "championdrakath":
-                    SimpleQuestBypass((182, 7));
-                    break;
-
-                case "glacera":
-                    SimpleQuestBypass((225, 21));
-                    break;
-
-                case "ultratyndarius":
-                    SimpleQuestBypass((412, 22));
-                    break;
-
-                case "Creepy":
-                    tryJoin();
-                    Bot.Wait.ForCellChange("Cut1");
-                    JumpWait();
-                    Bot.Wait.ForCellChange("Skip");
-                    JumpWait();
-                    break;
-
-                case "towerofdoom":
-                case "towerofdoom2":
-                case "towerofdoom3":
-                case "towerofdoom4":
-                case "towerofdoom5":
-                case "towerofdoom6":
-                case "towerofdoom7":
-                case "towerofdoom8":
-                case "towerofdoom9":
-                case "towerofdoom10":
-                    SimpleQuestBypass((159, 10));
-                    break;
-
-                case "onslaughttower":
-                    tryJoin();
-                    if (!CheckInventory(2047))
-                    {
-                        SendPackets("%xt%zm%getMapItem%169031%67%");
-                        Sleep(2500);
-                        SendPackets("%xt%zm%equipItem%169031%2047%");
-                    }
-                    else
-                    {
-                        JumpWait();
-                        SendPackets("%xt%zm%equipItem%169031%2047%");
-                    }
-                    break;
+                    SendPackets("%xt%zm%equipItem%169031%2047%");
+                }
+                break;
 
 
-                case "wolfwing":
-                    SimpleQuestBypass((26, 23));
-                    break;
+            case "wolfwing":
+                SimpleQuestBypass((26, 23));
+                break;
 
-                case "manacradle":
-                    SimpleQuestBypass((488, 20));
-                    break;
+            case "manacradle":
+                SimpleQuestBypass((488, 20));
+                break;
 
-                case "shadowattack":
-                    SimpleQuestBypass((175, 18));
-                    break;
+            case "shadowattack":
+                SimpleQuestBypass((175, 18));
+                break;
 
-                case "dreadhaven":
-                    SimpleQuestBypass((175, 20));
-                    break;
+            case "dreadhaven":
+                SimpleQuestBypass((175, 20));
+                break;
 
-                case "darkoviaforest":
-                case "lycan":
-                case "safiria":
-                    SimpleQuestBypass((26, 23));
-                    break;
+            case "darkoviaforest":
+            case "lycan":
+            case "safiria":
+                SimpleQuestBypass((26, 23));
+                break;
 
-                #endregion
+            #endregion
 
-                #region Private Simple Quest Bypasses
-                case "celestialarenab":
-                case "celestialarenac":
-                case "celestialarenad":
-                    PrivateSimpleQuestBypass((249, 20));
-                    break;
+            #region Private Simple Quest Bypasses
+            case "celestialarenab":
+            case "celestialarenac":
+            case "celestialarenad":
+                PrivateSimpleQuestBypass((249, 20));
+                break;
 
-                case "confrontation":
-                    PrivateSimpleQuestBypass((175, 20));
-                    break;
-                #endregion
+            case "confrontation":
+                PrivateSimpleQuestBypass((175, 20));
+                break;
+            #endregion
 
-                #region Ghost Item Bypasses
+            #region Ghost Item Bypasses
 
-                case "nostalgiaquest":
-                    GhostItemBypass(37378, "NostalgiaQuest Map Bypass");
-                    break;
+            case "nostalgiaquest":
+                GhostItemBypass(37378, "NostalgiaQuest Map Bypass");
+                break;
 
-                case "revenant":
-                    GhostItemBypass(47465, "Revenant Map Bypass", category: ItemCategory.Class);
-                    break;
+            case "revenant":
+                GhostItemBypass(47465, "Revenant Map Bypass", category: ItemCategory.Class);
+                break;
 
-                #endregion
+            #endregion
 
-                #region Special Cases
-                case "tercessuinotlim":
+            #region Special Cases
+            case "tercessuinotlim":
 
-                    //to avoid black screen in `tercessuinotlim
-                    if (!isCompletedBefore(9540))
-                    {
-                        OneTimeMessage("WARNING!", "This map now requires a 1 time completion of \"Beyond the Portal\"\n" +
-                        "not sure why it loads tercessuinotlim first. but ge tover it :|", messageBox: false);
+                //to avoid black screen in `tercessuinotlim
+                if (!isCompletedBefore(9540))
+                {
+                    OneTimeMessage("WARNING!", "This map now requires a 1 time completion of \"Beyond the Portal\"\n" +
+                    "not sure why it loads tercessuinotlim first. but ge tover it :|", messageBox: false);
 
-                        SimpleQuestBypass((15, 8), (542, 2));
-                        Join("citadel");
-                        EnsureAccept(9540);
-                        KillMonster("citadel", "m22", "Left", "Death's Head", "Death's Head Bested");
-                        EnsureComplete(9540);
-                    }
+                    SimpleQuestBypass((15, 8), (542, 2));
+                    Join("citadel");
+                    EnsureAccept(9540);
+                    KillMonster("citadel", "m22", "Left", "Death's Head", "Death's Head Bested");
+                    EnsureComplete(9540);
+                }
 
-                    //for taro to show up
-                    if (!isCompletedBefore(9541))
-                        ChainComplete(9541);
+                //for taro to show up
+                if (!isCompletedBefore(9541))
+                    ChainComplete(9541);
 
-                    Jump("m22", "Left");
-                    tryJoin();
+                Jump("m22", "Left");
+                tryJoin();
 
-                    //leave incase more shit breaks reinstate this vv
-                    // Jump("Enter", "Left");
+                //leave incase more shit breaks reinstate this vv
+                // Jump("Enter", "Left");
 
-                    //vv may no longer be needed as jump has a while check now that works wonders (hopefully)
-                    // Jump(cell, pad);
-                    break;
+                //vv may no longer be needed as jump has a while check now that works wonders (hopefully)
+                // Jump(cell, pad);
+                break;
 
-                case "doomvaultb":
-                    SetAchievement(18);
-                    SimpleQuestBypass((127, 26), (126, 18)); //3004 + 3008
-                    break;
+            case "doomvaultb":
+                SetAchievement(18);
+                SimpleQuestBypass((127, 26), (126, 18)); //3004 + 3008
+                break;
 
-                case "prison":
-                    joinedPrison = true;
-                    JumpWait();
-                    tryJoin();
-                    joinedPrison = false;
-                    break;
+            case "prison":
+                joinedPrison = true;
+                JumpWait();
+                tryJoin();
+                joinedPrison = false;
+                break;
 
-                case "hyperium":
-                    JumpWait();
-                    Bot.Send.Packet($"%xt%zm%serverUseItem%{Bot.Map.RoomID}%+%5041%525,275%{(PrivateRooms ? (map + "-" + PrivateRoomNumber) : map)}%");
-                    Bot.Wait.ForMapLoad("hyperium");
-                    break;
+            case "hyperium":
+                JumpWait();
+                Bot.Send.Packet($"%xt%zm%serverUseItem%{Bot.Map.RoomID}%+%5041%525,275%{(PrivateRooms ? (map + "-" + PrivateRoomNumber) : map)}%");
+                Bot.Wait.ForMapLoad("hyperium");
+                break;
 
-                case "moonyard":
-                    JumpWait();
-                    Bot.Send.Packet($"%xt%zm%serverUseItem%{Bot.Map.RoomID}%+%5041%525,275%{(PrivateRooms ? (map + "-" + PrivateRoomNumber) : map)}%");
-                    Bot.Wait.ForMapLoad("hyperium");
-                    Jump("R10");
-                    Bot.Map.Join(PrivateRooms ? $"{map}-" + PrivateRoomNumber : strippedMap);
-                    Bot.Wait.ForMapLoad(strippedMap);
-                    Sleep();
-                    Bot.Wait.ForItemEquip(8733);
-                    Bot.Wait.ForCellChange("MoonCut");
-                    break;
+            case "moonyard":
+                JumpWait();
+                Bot.Send.Packet($"%xt%zm%serverUseItem%{Bot.Map.RoomID}%+%5041%525,275%{(PrivateRooms ? (map + "-" + PrivateRoomNumber) : map)}%");
+                Bot.Wait.ForMapLoad("hyperium");
+                Jump("R10");
+                Bot.Map.Join(PrivateRooms ? $"{map}-" + PrivateRoomNumber : strippedMap);
+                Bot.Wait.ForMapLoad(strippedMap);
+                Sleep();
+                Bot.Wait.ForItemEquip(8733);
+                Bot.Wait.ForCellChange("MoonCut");
+                break;
 
-                case "moonyardb":
-                    JumpWait();
-                    Bot.Send.Packet($"%xt%zm%serverUseItem%{Bot.Map.RoomID}%+%5041%525,275%{(PrivateRooms ? ("hyperium-" + PrivateRoomNumber) : "hyperium")}%");
-                    Bot.Wait.ForMapLoad("hyperium");
-                    Jump("R10");
-                    Bot.Map.Join(PrivateRooms ? "moonyard-" + PrivateRoomNumber : "moonyard");
-                    Bot.Wait.ForMapLoad("moonyard");
-                    Bot.Wait.ForItemEquip("j5");
-                    SimpleQuestBypass((28, 35));
-                    Bot.Map.Join(PrivateRooms ? $"{map}-" + PrivateRoomNumber : map);
-                    Bot.Wait.ForMapLoad(strippedMap);
-                    break;
+            case "moonyardb":
+                JumpWait();
+                Bot.Send.Packet($"%xt%zm%serverUseItem%{Bot.Map.RoomID}%+%5041%525,275%{(PrivateRooms ? ("hyperium-" + PrivateRoomNumber) : "hyperium")}%");
+                Bot.Wait.ForMapLoad("hyperium");
+                Jump("R10");
+                Bot.Map.Join(PrivateRooms ? "moonyard-" + PrivateRoomNumber : "moonyard");
+                Bot.Wait.ForMapLoad("moonyard");
+                Bot.Wait.ForItemEquip("j5");
+                SimpleQuestBypass((28, 35));
+                Bot.Map.Join(PrivateRooms ? $"{map}-" + PrivateRoomNumber : map);
+                Bot.Wait.ForMapLoad(strippedMap);
+                break;
 
-                case "icestormarena":
-                    JumpWait();
-                    Bot.Map.Join(PrivateRooms ? $"{map}-" + PrivateRoomNumber : map);
-                    Bot.Wait.ForMapLoad("icestormarena");
-                    Bot.Send.ClientPacket("{\"t\":\"xt\",\"b\":{\"r\":-1,\"o\":{\"cmd\":\"levelUp\",\"intExpToLevel\":\"0\",\"intLevel\":100}}}", type: "json");
-                    Sleep();
-                    Jump(cell);
-                    break;
+            case "icestormarena":
+                JumpWait();
+                Bot.Map.Join(PrivateRooms ? $"{map}-" + PrivateRoomNumber : map);
+                Bot.Wait.ForMapLoad("icestormarena");
+                Bot.Send.ClientPacket("{\"t\":\"xt\",\"b\":{\"r\":-1,\"o\":{\"cmd\":\"levelUp\",\"intExpToLevel\":\"0\",\"intLevel\":100}}}", type: "json");
+                Sleep();
+                Jump(cell);
+                break;
 
-                #endregion
+            #endregion
 
-                #region Always Private
-                // PvP
-                case "doompirate":
-                case "bludrutbrawl":
-                case "dagepvp":
-                case "legionpvp":
-                case "deathpitbrawl":
-                // Room Limit: 1
-                case "baconcatb":
-                case "caroling":
-                case "chaosbattle":
-                case "chaoslord":
-                case "chaosrealm":
-                case "darkthronehub":
-                case "drakathfight":
-                case "dragonfire":
-                case "dragonkoi":
-                case "falcontower":
-                case "finalbattle":
-                case "finalshowdown":
-                case "herotournament":
-                case "infernalarena":
-                case "malgor":
-                case "nothing":
-                case "ravenscar":
-                case "superslayin":
-                case "treetitanbattle":
-                case "tlapd":
-                case "trickortreat":
-                case "vordredboss":
-                    // Special
-                    JumpWait();
-                    map = strippedMap + "-999999";
-                    tryJoin();
-                    break;
-                #endregion
+            #region Always Private
+            // PvP
+            case "doompirate":
+            case "bludrutbrawl":
+            case "dagepvp":
+            case "legionpvp":
+            case "deathpitbrawl":
+            // Room Limit: 1
+            case "baconcatb":
+            case "caroling":
+            case "chaosbattle":
+            case "chaoslord":
+            case "chaosrealm":
+            case "darkthronehub":
+            case "drakathfight":
+            case "dragonfire":
+            case "dragonkoi":
+            case "falcontower":
+            case "finalbattle":
+            case "finalshowdown":
+            case "herotournament":
+            case "infernalarena":
+            case "malgor":
+            case "nothing":
+            case "ravenscar":
+            case "superslayin":
+            case "treetitanbattle":
+            case "tlapd":
+            case "trickortreat":
+            case "vordredboss":
+                // Special
+                JumpWait();
+                map = strippedMap + "-999999";
+                tryJoin();
+                break;
+            #endregion
 
-                #region BuyHouse (for a merge)
-                case "buyhouse":
-                    Logger("This is a public map.. and non-privateable, so blame ae for that.. tho its required for some things so this will be forced public");
+            #region BuyHouse (for a merge)
+            case "buyhouse":
+                Logger("This is a public map.. and non-privateable, so blame ae for that.. tho its required for some things so this will be forced public");
+                JumpWait();
+                Bot.Map.Join(map);
+                Bot.Wait.ForMapLoad(map);
+                break;
+            #endregion BuyHouse (for a merge)
+
+            #region baconcat.. is annoying
+            case "baconcat":
+                JumpWait();
+                map = strippedMap + "-999999";
+                if (!isCompletedBefore(5087))
+                    cell = "Enter";
+                if (!isCompletedBefore(5089))
+                    cell = "Enter2";
+                else cell = "Enter3";
+                tryJoin();
+                Bot.Wait.ForCellChange(cell);
+                break;
+            #endregion baconcat.. is annoying
+
+            #region Maps that cant be private and you must do yourself. (thanks AE)
+            case "fearhouse":
+            case "warehouse":
+                DialogResult ForcePublic = Bot.ShowMessageBox(
+                                    $"Do you want to join the Following map: \"{map}\"\n" +
+                                    "using a public room?\n" +
+                                    "(Bot will stop otherwise)", "PublicRoom Only",
+                                    "Yes", "No"
+                                );
+
+                if (ForcePublic.Value == 1)
+                    Logger("Unfortunitaly AE forgot to make these maps privateable only\n" +
+                    "to continue \"yes\" must be selcted, otherwise for `allstories` just comment it out with 2 /'s", stopBot: true);
+                else
+                {
+                    Logger("You've Chosen to bot publicly... good luck in this *public only* map.");
                     JumpWait();
                     Bot.Map.Join(map);
                     Bot.Wait.ForMapLoad(map);
-                    break;
-                #endregion BuyHouse (for a merge)
+                }
+                break;
+            #endregion
 
-                #region baconcat.. is annoying
-                case "baconcat":
-                    JumpWait();
-                    map = strippedMap + "-999999";
-                    if (!isCompletedBefore(5087))
-                        cell = "Enter";
-                    if (!isCompletedBefore(5089))
-                        cell = "Enter2";
-                    else cell = "Enter3";
-                    tryJoin();
-                    Bot.Wait.ForCellChange(cell);
-                    break;
-                #endregion baconcat.. is annoying
-
-                #region Maps that cant be private and you must do yourself. (thanks AE)
-                case "fearhouse":
-                case "warehouse":
-                    DialogResult ForcePublic = Bot.ShowMessageBox(
-                                        $"Do you want to join the Following map: \"{map}\"\n" +
-                                        "using a public room?\n" +
-                                        "(Bot will stop otherwise)", "PublicRoom Only",
-                                        "Yes", "No"
-                                    );
-
-                    if (ForcePublic.Value == 1)
-                        Logger("Unfortunitaly AE forgot to make these maps privateable only\n" +
-                        "to continue \"yes\" must be selcted, otherwise for `allstories` just comment it out with 2 /'s", stopBot: true);
-                    else
-                    {
-                        Logger("You've Chosen to bot publicly... good luck in this *public only* map.");
-                        JumpWait();
-                        Bot.Map.Join(map);
-                        Bot.Wait.ForMapLoad(map);
-                    }
-                    break;
+            #region Bypass Banned
+            // This doesn't mean that you cant do a bypass inside the boat itself, it just can't be in Join because it fucks up CanBuy
+            // Write the ID that can be used for the bypass in a comment after it, so people can easily
+            // fetch it if they are gonna used a banned map
+            case "downbelow": // 8107
+                goto default;
                 #endregion
+        }
 
-                #region Bypass Banned
-                // This doesn't mean that you cant do a bypass inside the boat itself, it just can't be in Join because it fucks up CanBuy
-                // Write the ID that can be used for the bypass in a comment after it, so people can easily
-                // fetch it if they are gonna used a banned map
-                case "downbelow": // 8107
-                    goto default;
-                    #endregion
-            }
-
-            if (strippedMap == Bot.Map.Name?.ToLower())
+        if (strippedMap == Bot.Map.Name?.ToLower())
+        {
+            if (ButlerOnMe())
             {
-                if (ButlerOnMe())
+                string[] lockedMaps =
                 {
-                    string[] lockedMaps =
-                    {
                     "tercessuinotlim",
                     "doomvaultb",
                     "doomvault",
@@ -4412,180 +4345,175 @@ public class CoreBots
                     "voidnerfkitten",
                     "seavoice"
                 };
-                    if (lockedMaps.Contains(strippedMap))
-                        WriteFile(ButlerLogPath(), Bot.Map.FullName);
-                }
-
-                Jump(cell, pad);
-                Sleep(1500);
+                if (lockedMaps.Contains(strippedMap))
+                    WriteFile(ButlerLogPath(), Bot.Map.FullName);
             }
 
-            void tryJoin()
+            Jump(cell, pad);
+            Sleep(1500);
+        }
+
+        void tryJoin()
+        {
+            try
+            {
+                if (Bot.Events == null)
+                {
+                    Logger("Bot.Events is null.");
+                    return;
+                }
+
+                if (Bot.Options == null)
+                {
+                    Logger("Bot.Options is null.");
+                    return;
+                }
+
+                if (Bot.Wait == null)
+                {
+                    Logger("Bot.Wait is null.");
+                    return;
+                }
+
+                if (Bot.Map == null)
+                {
+                    Logger("Bot.Map is null.");
+                    return;
+                }
+
+                if (Bot.Player == null)
+                {
+                    Logger("Bot.Player is null.");
+                    return;
+                }
+
+                Bot.Events.ExtensionPacketReceived += MapIsMemberLocked;
+                bool hasMapNumber = map.Contains('-') && Int32.TryParse(map.Split('-').Last(), out int result) && result >= 1000;
+                Random rnd = new();
+                for (int i = 0; i < 20; i++)
+                {
+                    if (Bot.Options.SafeTimings)
+                        Bot.Wait.ForActionCooldown(GameActions.Transfer);
+                    if (hasMapNumber)
+                        Bot.Map.Join(map, cell, pad, ignoreCheck);
+                    else
+                        Bot.Map.Join((publicRoom && PublicDifficult) || !PrivateRooms ? map : $"{map}-{PrivateRoomNumber}", cell, pad, ignoreCheck);
+                    Bot.Wait.ForMapLoad(strippedMap);
+
+                    // Exponential Backoff
+                    Sleep(Math.Max(1, 100 * rnd.Next((int)Math.Pow(2, i / 2.0))));
+
+                    string? currentMap = Bot.Map.Name;
+                    if (!String.IsNullOrEmpty(currentMap) && currentMap.ToLower() == strippedMap)
+                    {
+                        if (Bot.Options.SafeTimings)
+                        {
+                            if (!Bot.Wait.ForMapLoad(map, 20) && !Bot.ShouldExit)
+                                Bot.Map.Jump(Bot.Player.Cell, Bot.Player.Pad, false);
+                            else
+                                Bot.Map.Jump(cell, pad, false);
+                            Sleep(Bot.Options.ActionDelay);
+                        }
+                        break;
+                    }
+
+                    if (i == 19)
+                        Logger($"Failed to join {map}");
+                }
+
+                Bot.Events.ExtensionPacketReceived -= MapIsMemberLocked;
+            }
+            catch (Exception ex)
+            {
+                Logger($"An error occurred: {ex.Message}. StackTrace: {ex.StackTrace}");
+            }
+
+            void MapIsMemberLocked(dynamic packet)
             {
                 try
                 {
-                    if (Bot.Events == null)
+                    if (packet == null)
                     {
-                        Logger("Bot.Events is null.");
+                        Logger("Packet is null.");
                         return;
                     }
 
-                    if (Bot.Options == null)
+                    string type = packet["params"].type;
+                    dynamic data = packet["params"].dataObj;
+                    if (type is not null and "str")
                     {
-                        Logger("Bot.Options is null.");
-                        return;
-                    }
-
-                    if (Bot.Wait == null)
-                    {
-                        Logger("Bot.Wait is null.");
-                        return;
-                    }
-
-                    if (Bot.Map == null)
-                    {
-                        Logger("Bot.Map is null.");
-                        return;
-                    }
-
-                    if (Bot.Player == null)
-                    {
-                        Logger("Bot.Player is null.");
-                        return;
-                    }
-
-                    Bot.Events.ExtensionPacketReceived += MapIsMemberLocked;
-                    bool hasMapNumber = map.Contains('-') && Int32.TryParse(map.Split('-').Last(), out int result) && result >= 1000;
-                    Random rnd = new();
-                    for (int i = 0; i < 20; i++)
-                    {
-                        if (Bot.Options.SafeTimings)
-                            Bot.Wait.ForActionCooldown(GameActions.Transfer);
-                        if (hasMapNumber)
-                            Bot.Map.Join(map, cell, pad, ignoreCheck);
-                        else
-                            Bot.Map.Join((publicRoom && PublicDifficult) || !PrivateRooms ? map : $"{map}-{PrivateRoomNumber}", cell, pad, ignoreCheck);
-                        Bot.Wait.ForMapLoad(strippedMap);
-
-                        // Exponential Backoff
-                        Sleep(Math.Max(1, 100 * rnd.Next((int)Math.Pow(2, i / 2.0))));
-
-                        string? currentMap = Bot.Map.Name;
-                        if (!String.IsNullOrEmpty(currentMap) && currentMap.ToLower() == strippedMap)
+                        string cmd = data[0];
+                        switch (cmd)
                         {
-                            if (Bot.Options.SafeTimings)
-                            {
-                                if (!Bot.Wait.ForMapLoad(map, 20) && !Bot.ShouldExit)
-                                    Bot.Map.Jump(Bot.Player.Cell, Bot.Player.Pad, false);
-                                else
-                                    Bot.Map.Jump(cell, pad, false);
-                                Sleep(Bot.Options.ActionDelay);
-                            }
-                            break;
+                            case "warning":
+                                if (Convert.ToString(packet).Contains("is an Membership-Only Map"))
+                                {
+                                    Logger($" \"{map}\" requires membership to access it. Stopping the Bot.", stopBot: true);
+                                    Bot.Events.ExtensionPacketReceived -= MapIsMemberLocked;
+                                }
+                                break;
                         }
-
-                        if (i == 19)
-                            Logger($"Failed to join {map}");
                     }
-
-                    Bot.Events.ExtensionPacketReceived -= MapIsMemberLocked;
                 }
                 catch (Exception ex)
                 {
                     Logger($"An error occurred: {ex.Message}. StackTrace: {ex.StackTrace}");
                 }
-
-                void MapIsMemberLocked(dynamic packet)
-                {
-                    try
-                    {
-                        if (packet == null)
-                        {
-                            Logger("Packet is null.");
-                            return;
-                        }
-
-                        string type = packet["params"].type;
-                        dynamic data = packet["params"].dataObj;
-                        if (type is not null and "str")
-                        {
-                            string cmd = data[0];
-                            switch (cmd)
-                            {
-                                case "warning":
-                                    if (Convert.ToString(packet).Contains("is an Membership-Only Map"))
-                                    {
-                                        Logger($" \"{map}\" requires membership to access it. Stopping the Bot.", stopBot: true);
-                                        Bot.Events.ExtensionPacketReceived -= MapIsMemberLocked;
-                                    }
-                                    break;
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        Logger($"An error occurred: {ex.Message}. StackTrace: {ex.StackTrace}");
-                    }
-                }
-            }
-            void SimpleQuestBypass(params (int, int)[] slotValues)
-            {
-                try
-                {
-                    if (Bot.Quests == null)
-                    {
-                        Logger("Bot.Quests is null.");
-                        return;
-                    }
-
-                    foreach ((int, int) sV in slotValues)
-                        Bot.Quests.UpdateQuest(sV.Item2, sV.Item1);
-                    Sleep();
-                    tryJoin();
-                }
-                catch (Exception ex)
-                {
-                    Logger($"An error occurred: {ex.Message}\n{ex.StackTrace}");
-                }
-            }
-
-            void PrivateSimpleQuestBypass(params (int, int)[] slotValues)
-            {
-                try
-                {
-                    map = strippedMap + "-999999";
-                    SimpleQuestBypass(slotValues);
-                }
-                catch (Exception ex)
-                {
-                    Logger($"An error occurred: {ex.Message}\n{ex.StackTrace}");
-                }
-            }
-
-            void GhostItemBypass(int ID, string name = "Ghost Item", int quantity = 1, bool temp = false, ItemCategory category = ItemCategory.Unknown, string? description = null, int level = 1, params (string, object)[] extraInfo)
-            {
-                try
-                {
-                    if (Bot.Inventory == null)
-                    {
-                        Logger("Bot.Inventory is null.");
-                        return;
-                    }
-
-                    if (!CheckInventory(ID))
-                        GhostItem(ID, name);
-                    Sleep();
-                    tryJoin();
-                }
-                catch (Exception ex)
-                {
-                    Logger($"An error occurred: {ex.Message}\n{ex.StackTrace}");
-                }
             }
         }
-        catch (Exception ex)
+        void SimpleQuestBypass(params (int, int)[] slotValues)
         {
-            Logger($"An error occurred: {ex.Message}\n{ex.StackTrace}");
+            try
+            {
+                if (Bot.Quests == null)
+                {
+                    Logger("Bot.Quests is null.");
+                    return;
+                }
+
+                foreach ((int, int) sV in slotValues)
+                    Bot.Quests.UpdateQuest(sV.Item2, sV.Item1);
+                Sleep();
+                tryJoin();
+            }
+            catch (Exception ex)
+            {
+                Logger($"An error occurred: {ex.Message}\n{ex.StackTrace}");
+            }
+        }
+
+        void PrivateSimpleQuestBypass(params (int, int)[] slotValues)
+        {
+            try
+            {
+                map = strippedMap + "-999999";
+                SimpleQuestBypass(slotValues);
+            }
+            catch (Exception ex)
+            {
+                Logger($"An error occurred: {ex.Message}\n{ex.StackTrace}");
+            }
+        }
+
+        void GhostItemBypass(int ID, string name = "Ghost Item", int quantity = 1, bool temp = false, ItemCategory category = ItemCategory.Unknown, string? description = null, int level = 1, params (string, object)[] extraInfo)
+        {
+            try
+            {
+                if (Bot.Inventory == null)
+                {
+                    Logger("Bot.Inventory is null.");
+                    return;
+                }
+
+                if (!CheckInventory(ID))
+                    GhostItem(ID, name);
+                Sleep();
+                tryJoin();
+            }
+            catch (Exception ex)
+            {
+                Logger($"An error occurred: {ex.Message}\n{ex.StackTrace}");
+            }
         }
     }
 

@@ -867,6 +867,11 @@ public class CoreLegion
                 Core.PvPMove(14, "r6", 482, 483);
                 if (!Bot.Player.Alive)
                     goto RestartOnDeath;
+
+                if (Core.CheckInventory("Legion Combat Trophy", TrophyQuant)
+                && Core.CheckInventory("Technique Observed", TechniqueQuant)
+                && !Core.CheckInventory("Sword Scroll Fragment", ScrollQuant))
+                    goto RestartOnDeath;
             }
             if (!Bot.Player.Alive)
                 goto RestartOnDeath;
