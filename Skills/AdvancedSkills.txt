@@ -46,6 +46,10 @@ Base = Chrono Chaorruptor = 5 | 2 | 3 | 1 | 1 | 1 | 3 | 1 | 4 | 3 | 1 | 1 | 1 | 
 Base = Chrono Commandant = 4 | 1 | 1 | 1 | 1 | 2 | 3 = 250
 Base = Chrono DataKnight = 1 | 2 | 3 | 1 | 2S | 3S | 1 | 2S | 3S | 1 | 4 = 250
 Base = Chrono DragonKnight = 1 | 1 | 1 | 1 | 1 | 4 | 2 | 3 = 250
+Atk = Chrono ShadowSlayer = 3 | 3 | 3 | 3 | 3 | 3 | 4 | 1 = 250
+Def = Chrono ShadowSlayer = 2 | 3 | 2 | 3 | 2 | 3 | 2 | 3 | 2 | 3 | 4 | 1 = 250
+Atk = Chrono ShadowHunter = 3 | 3 | 3 | 3 | 3 | 3 | 4 | 1 = 250
+Def = Chrono ShadowHunter = 2 | 3 | 2 | 3 | 2 | 3 | 2 | 3 | 2 | 3 | 4 | 1 = 250
 Base = Chronomancer = 2 | 4 | 1 | 1 | 1 | 1 | 2 | 1 | 1 | 1 | 1 | 1 | 3 = 250
 Solo = Chronomancer =  1 | 2S | 4 | 1 | 1 | 1 | 1 | 2H<60S | 1 | 1 | 1 | 3 = 120
 Base = ChronoCommander = = 4 | 1 | 1 | 1 | 1 | 2 | 3 = 250
