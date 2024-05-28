@@ -17274,6 +17274,24 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/ZodiacQuests/KarkinosMnimiRewards.cs"
   },
   {
+    "name": "Harmonic Savant Rewards",
+    "description": "farms quest rewards from Harmonic Savant` in /arcangrove",
+    "tags": [
+      "quest reward",
+      "kylokos",
+      "harmonic",
+      "savant",
+      "harmonic libra",
+      "libra",
+      "arcangrove",
+      "zodiac"
+    ],
+    "path": "Other/ZodiacQuests/HarmonicSavantRewards.cs",
+    "size": 1807,
+    "fileName": "HarmonicSavantRewards.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/ZodiacQuests/HarmonicSavantRewards.cs"
+  },
+  {
     "name": "DarknessShard",
     "description": "null",
     "tags": [
