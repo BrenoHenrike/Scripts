@@ -431,11 +431,8 @@ public class CoreArmyLite
                 ResetServer();
                 throw;
             }
-            
-            Bot.Events.ScriptStopping += exception => { 
-                ResetServer();
-                return true;
-            };
+
+            Bot.Events.ScriptStopping += ResetServerBool;
             Bot.Events.Logout += ResetServer;
         } else { // Start client
             try {
@@ -447,11 +444,8 @@ public class CoreArmyLite
                 ResetClient();
                 throw;
             }
-            
-            Bot.Events.ScriptStopping += exception => { 
-                ResetClient();
-                return true;
-            };
+
+            Bot.Events.ScriptStopping += ResetClientBool;
             Bot.Events.Logout += ResetClient;
         }
 
@@ -506,11 +500,23 @@ public class CoreArmyLite
         void ResetServer() {
             fileStream?.Close();
             communication?.Stop();
-            
+
+            Bot.Events.ScriptStopping -= ResetServerBool;
+            Bot.Events.Logout -= ResetServer;
+        }
+        bool ResetServerBool(Exception? e) {
+            ResetServer();
+            return true;
         }
         void ResetClient() {
             communication?.Stop();
-            
+
+            Bot.Events.ScriptStopping -= ResetClientBool;
+            Bot.Events.Logout -= ResetClient;
+        }
+        bool ResetClientBool(Exception? e) {
+            ResetClient();
+            return true;
         }
 
         void PlayerAFK()
