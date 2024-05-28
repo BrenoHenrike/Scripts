@@ -818,7 +818,6 @@ public class CoreArmyLite
                 // Do these things if that fails
                 string stopLocation = Core.CustomStopLocation?.Trim().ToLower() ?? string.Empty;
                 if (!string.IsNullOrWhiteSpace(stopLocation)) {
-                    Core.Logger(stopLocation);
                     if (stopLocation.Equals("home") || stopLocation.Equals("house"))
                         Bot.Send.Packet($"%xt%zm%house%1%{Core.Username()}%");
                     else 
