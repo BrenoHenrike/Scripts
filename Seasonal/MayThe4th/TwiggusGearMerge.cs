@@ -1,7 +1,7 @@
 /*
 name: Twiggus Gear Merge
 description: This bot will farm the items belonging to the selected mode for the Twiggus Gear Merge [2272] in /murdermoon
-tags: twiggus, gear, merge, murdermoon, astravian, enforcer, cap, flapped, enforce, cloaked, complete, halo, mace, sickle, sickles, backhand, lil, twiggu, guest, baby, pod, pet
+tags: twiggus, gear, merge, murdermoon, gold, voucher, k, astravian, enforcer, cap, flapped, cloaked, complete, halo, mace, sickle, sickles, backhand, lil, twiggu, guest, hoverpram, thruster, baby, pod, pet, murder, moon, base, hideout
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -27,7 +27,7 @@ public class TwiggusGearMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Fwog Egg", "Astravian Enforcer Crescent Halo", "Large Hoverpram Shard", "Hoverpram Fragments" });
+        Core.BankingBlackList.AddRange(new[] { "Fwog Egg", "Astravian Enforcer Crescent Halo", "Large Hoverpram Shard", "Hoverpram Fragments", "Cyber Crystal", "Salvaged Droid Part" });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -87,19 +87,45 @@ public class TwiggusGearMerge
                     Core.HuntMonster("zorbaspit", "Zorblatt", req.Name, quant, req.Temp);
                     break;
 
+                case "Cyber Crystal":
+                    Core.FarmingLogger(req.Name, quant);
+                    Core.EquipClass(ClassType.Farm);
+                    Core.RegisterQuests(8065);
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
+                    {
+                        Core.KillMonster("murdermoon", "r2", "Left", "Tempest Soldier", "Tempest Soldier Badge", 5, log: false);
+                        Bot.Wait.ForPickup(req.Name);
+                    }
+                    Core.CancelRegisteredQuests();
+                    break;
+
+                case "Salvaged Droid Part":
+                    Core.FarmingLogger(req.Name, quant);
+                    Core.EquipClass(ClassType.Farm);
+                    Core.RegisterQuests(9703);
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
+                    {
+                        Core.KillMonster("twigguhunt", "r2", "Down", "*", "Broken Droid Part", 300, log: false);
+                        Bot.Wait.ForPickup(req.Name);
+                    }
+                    Core.CancelRegisteredQuests();
+                    break;
+
             }
         }
     }
 
     public List<IOption> Select = new()
     {
+        new Option<bool>("57304", "Gold Voucher 25k", "Mode: [select] only\nShould the bot buy \"Gold Voucher 25k\" ?", false),
+        new Option<bool>("61043", "Gold Voucher 500k", "Mode: [select] only\nShould the bot buy \"Gold Voucher 500k\" ?", false),
         new Option<bool>("77676", "Astravian Enforcer", "Mode: [select] only\nShould the bot buy \"Astravian Enforcer\" ?", false),
         new Option<bool>("77678", "Astravian Enforcer Hair", "Mode: [select] only\nShould the bot buy \"Astravian Enforcer Hair\" ?", false),
         new Option<bool>("77679", "Astravian Enforcer Locks", "Mode: [select] only\nShould the bot buy \"Astravian Enforcer Locks\" ?", false),
         new Option<bool>("77680", "Astravian Enforcer Cap", "Mode: [select] only\nShould the bot buy \"Astravian Enforcer Cap\" ?", false),
         new Option<bool>("77681", "Astravian Enforcer Cap and Locks", "Mode: [select] only\nShould the bot buy \"Astravian Enforcer Cap and Locks\" ?", false),
         new Option<bool>("77682", "Astravian Enforcer Flapped Cap", "Mode: [select] only\nShould the bot buy \"Astravian Enforcer Flapped Cap\" ?", false),
-        new Option<bool>("77683", "Astravian Enforce Flapped Cap and Locks", "Mode: [select] only\nShould the bot buy \"Astravian Enforce Flapped Cap and Locks\" ?", false),
+        new Option<bool>("77683", "Astravian Enforcer Flapped Cap and Locks", "Mode: [select] only\nShould the bot buy \"Astravian Enforcer Flapped Cap and Locks\" ?", false),
         new Option<bool>("77684", "Astravian Enforcer Helm", "Mode: [select] only\nShould the bot buy \"Astravian Enforcer Helm\" ?", false),
         new Option<bool>("77677", "Astravian Cloaked Enforcer", "Mode: [select] only\nShould the bot buy \"Astravian Cloaked Enforcer\" ?", false),
         new Option<bool>("77685", "Astravian Enforcer Cape", "Mode: [select] only\nShould the bot buy \"Astravian Enforcer Cape\" ?", false),
@@ -110,6 +136,9 @@ public class TwiggusGearMerge
         new Option<bool>("77693", "Astravian Enforcer Backhand Sickle", "Mode: [select] only\nShould the bot buy \"Astravian Enforcer Backhand Sickle\" ?", false),
         new Option<bool>("77694", "Astravian Enforcer Backhand Sickles", "Mode: [select] only\nShould the bot buy \"Astravian Enforcer Backhand Sickles\" ?", false),
         new Option<bool>("77738", "L'il Twiggu Guest", "Mode: [select] only\nShould the bot buy \"L'il Twiggu Guest\" ?", false),
+        new Option<bool>("77919", "Hoverpram Thruster", "Mode: [select] only\nShould the bot buy \"Hoverpram Thruster\" ?", false),
         new Option<bool>("77737", "Baby Twiggu's Pod Pet", "Mode: [select] only\nShould the bot buy \"Baby Twiggu's Pod Pet\" ?", false),
+        new Option<bool>("86008", "Murder Moon Base", "Mode: [select] only\nShould the bot buy \"Murder Moon Base\" ?", false),
+        new Option<bool>("86007", "Twiggu's Hideout", "Mode: [select] only\nShould the bot buy \"Twiggu's Hideout\" ?", false),
     };
 }
