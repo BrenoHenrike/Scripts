@@ -2315,6 +2315,8 @@ public class CoreAdvanced
                 #region Healer - Valiance - Current - Current
 
                 #endregion
+
+                #region Healer - Current - Valiance/Awe - Current
                 case "healer":
                 case "healer (rare)":
                     type = EnhancementType.Healer;
@@ -2322,6 +2324,18 @@ public class CoreAdvanced
                     wSpecial = uValiance() ? WeaponSpecial.Valiance : WeaponSpecial.Awe_Blast;
                     hSpecial = CurrentHelmSpecial();
                     break;
+                #endregion
+
+                #region Luck - Vim - Lam - Rav
+                case "Chrono ShadowSlayer":
+                case "Chrono ShadowHunter":
+                    type = EnhancementType.Lucky;
+                    cSpecial = uLament() ? CapeSpecial.Lament : (uForgeCape() ? CapeSpecial.Forge : CurrentCapeSpecial());
+                    wSpecial = uRavenous() ? WeaponSpecial.Ravenous : (uArcanasConcerto() ? WeaponSpecial.Arcanas_Concerto : (uForgeWeapon() ? WeaponSpecial.Forge : WeaponSpecial.Awe_Blast));
+                    hSpecial = uVim() ? HelmSpecial.Vim : (uForgeHelm() ? HelmSpecial.Forge : CurrentHelmSpecial());
+                    break;
+                #endregion
+
                 #endregion
 
                 #region Unassigned Region
