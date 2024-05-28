@@ -4,24 +4,19 @@ description: null
 tags: null
 */
 //cs_include Scripts/CoreBots.cs
-using CommunityToolkit.Mvvm.DependencyInjection;
 using Newtonsoft.Json;
 using Skua.Core.Interfaces;
-using Skua.Core.Models;
 using Skua.Core.Models.Monsters;
 using Skua.Core.Models.Players;
 using Skua.Core.Options;
-using Skua.Core.ViewModels;
 using Skua.Core.Models.Servers;
 using System.Diagnostics;
-using System.IO.Pipes;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Xml;
 using ClientServerUsingNamedPipes.Client;
 using ClientServerUsingNamedPipes.Interfaces;
 using ClientServerUsingNamedPipes.Server;
-using ClientServerUsingNamedPipes.Utilities;
 
 public class CoreArmyLite
 {
@@ -421,15 +416,20 @@ public class CoreArmyLite
         ICommunication communication = null;
 
         if (!waitFile.Exists || !IsFileLocked(waitFile)) {
-            if (!waitFile.Exists) fileStream = waitFile.Create(); // Creates and locks the file if it doesn't exist
-            else fileStream = waitFile.Open(FileMode.Open, FileAccess.Read, FileShare.None); // Opens and locks the file if it already exists
+            try {
+                if (!waitFile.Exists) fileStream = waitFile.Create(); // Creates and locks the file if it doesn't exist
+                else fileStream = waitFile.Open(FileMode.Open, FileAccess.Read, FileShare.None); // Opens and locks the file if it already exists
             
-            // Start server
-            communication = new PipeServer(caller, players.Length);
-            ((PipeServer) communication).MessageReceivedEvent += ServerMessageReceived;
-            communication.Start();
-            for(var i = 0; i <= players.Length - 1; i++) {
-                ((PipeServer) communication).StartNamedPipeServer();
+                // Start server
+                communication = new PipeServer(caller, players.Length);
+                ((PipeServer) communication).MessageReceivedEvent += ServerMessageReceived;
+                communication.Start();
+                for(var i = 0; i <= players.Length - 1; i++) {
+                    ((PipeServer) communication).StartNamedPipeServer();
+                }
+            } catch {
+                ResetServer();
+                throw;
             }
             
             Bot.Events.ScriptStopping += exception => { 
@@ -438,10 +438,15 @@ public class CoreArmyLite
             };
             Bot.Events.Logout += ResetServer;
         } else { // Start client
-            communication = new PipeClient(caller);
-            ((PipeClient) communication).ConnectedToServerEvent += ConnectedToServer;
-            ((PipeClient) communication).MessageReceivedEvent += ClientMessageReceived;
-            communication.Start();
+            try {
+                communication = new PipeClient(caller);
+                ((PipeClient) communication).ConnectedToServerEvent += ConnectedToServer;
+                ((PipeClient) communication).MessageReceivedEvent += ClientMessageReceived;
+                communication.Start();
+            } catch (Exception e) {
+                ResetClient();
+                throw;
+            }
             
             Bot.Events.ScriptStopping += exception => { 
                 ResetClient();
@@ -499,12 +504,12 @@ public class CoreArmyLite
         fileStream?.Close(); //Releases the file
 
         void ResetServer() {
-            fileStream.Close();
-            communication.Stop();
+            fileStream?.Close();
+            communication?.Stop();
             
         }
         void ResetClient() {
-            communication.Stop();
+            communication?.Stop();
             
         }
 
