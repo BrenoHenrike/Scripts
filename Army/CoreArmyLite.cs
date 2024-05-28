@@ -494,8 +494,10 @@ public class CoreArmyLite
             Core.Logger($"Party complete [{partySize}/{partySize}]");
         Core.Sleep(3500); //To make sure everyone attack at the same time, to avoid deaths
         
-        communication.Stop();
-        fileStream?.Close(); //Releases the file
+        if (communication is PipeServer)
+            ResetServer();
+        else 
+            ResetClient();
 
         void ResetServer() {
             fileStream?.Close();
