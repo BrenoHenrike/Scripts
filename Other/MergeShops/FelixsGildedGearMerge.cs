@@ -75,7 +75,7 @@ public class FelixsGildedGearMerge
                         Core.KillMonster("castleeblana", "r6", "Left", "*", "Gorta's Soul", 12, false);
                         Core.KillMonster("castleeblana", "r5", "Left", "*", "Raven's Bauble", 12, false);
                         Core.EquipClass(ClassType.Solo);
-                        Core.KillMonster("castleeblana", "r10", "Left", "Warden Indradeep", "Rainfall Inscription", false);
+                        Core.KillMonster("castleeblana", "r10", "Left", "Warden Indradeep", "Rainfall Inscription", isTemp: false);
                         Core.EnsureComplete(9742);
                         Bot.Wait.ForPickup(req.Name);
                     }
