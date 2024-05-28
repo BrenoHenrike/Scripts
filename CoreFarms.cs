@@ -5,6 +5,7 @@ tags: null
 */
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models;
 using Skua.Core.Models.Factions;
 using Skua.Core.Models.Items;
 using Skua.Core.Models.Monsters;
@@ -2975,7 +2976,7 @@ public class CoreFarms
             while (!Bot.ShouldExit && FactionRank("Vampire") < rank)
             {
                 Core.HuntMonster("safiria", "Twisted Paw", "Twisted Paw's Head", log: false);
-                Bot.Wait.ForQuestComplete(522);
+                Bot.Wait.ForActionCooldown(GameActions.TryQuestComplete);
             }
             Core.CancelRegisteredQuests();
             ToggleBoost(BoostType.Reputation, false);
@@ -2997,7 +2998,7 @@ public class CoreFarms
         while (!Bot.ShouldExit && FactionRank("Yokai") < rank)
         {
             Core.HuntMonster("dragonkoiz", "Pockey Chew", "Piece of Pockey", 3, log: false);
-            Bot.Wait.ForQuestComplete(383);
+            Bot.Wait.ForActionCooldown(GameActions.TryQuestComplete);
         }
         Core.CancelRegisteredQuests();
         ToggleBoost(BoostType.Reputation, false);
