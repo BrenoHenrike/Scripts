@@ -820,7 +820,7 @@ public class CoreArmyLite
                     Bot.Combat.CancelAutoAttack();
                     Bot.Combat.CancelTarget();
                     Bot.Map.Jump(Bot.Player.Cell, Bot.Player.Pad);
-                    Thread.Sleep(300);
+                    Core.Sleep(300);
                     Bot.Map.Jump(Bot.Player.Cell, Bot.Player.Pad);
                     repeats++;
                 }
