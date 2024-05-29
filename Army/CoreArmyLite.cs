@@ -814,12 +814,15 @@ public class CoreArmyLite
             // Try to go to the followed player
             if (!tryGoto(playerName))
             {
-                while (!Bot.ShouldExit && (Bot.Player.HasTarget || Bot.Player.InCombat))
+                int repeats = 0; //Repeats is so that it doesn't get stuck forever
+                while (!Bot.ShouldExit && ((Bot.Player.HasTarget || Bot.Player.InCombat) && repeats < 5)) 
                 {
-                    Bot.Options.AttackWithoutTarget = false;
-                    Bot.Combat.Exit();
+                    Bot.Combat.CancelAutoAttack();
                     Bot.Combat.CancelTarget();
-                    Core.JumpWait();
+                    Bot.Map.Jump(Bot.Player.Cell, Bot.Player.Pad);
+                    Thread.Sleep(300);
+                    Bot.Map.Jump(Bot.Player.Cell, Bot.Player.Pad);
+                    repeats++;
                 }
                 
 
