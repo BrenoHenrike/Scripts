@@ -4793,10 +4793,13 @@ public class CoreBots
     {
         JumpWait();
 
-        string[] classesToCheck = new[] { "TimeKeeper", "Chaos Avenger", "Void Highlord", "Void HighLord (IoDA)", "Yami no Ronin", "ArchPaladin" };
+        string[] classesToCheck = new[] { "TimeKeeper", "Chaos Avenger", "VerusDoomKnight", "Void Highlord", "Void HighLord (IoDA)", "Yami no Ronin", "ArchPaladin" };
 
         foreach (string Class in classesToCheck)
         {
+            if (!CheckInventory(Class))
+                continue;
+
             switch (Class)
             {
                 case "TimeKeeper":
@@ -4832,15 +4835,10 @@ public class CoreBots
                     EquipClass(ClassType.Solo);
                     break;
             }
-
-            if (!CheckInventory(Class))
-                Logger($"{Class} Not Found, skipping");
-            else
-            {
-                Bot.Wait.ForItemEquip(CheckInventory(Class) ? Class : SoloClass);
-                Logger($"Using {Bot.Player.CurrentClass?.Name}");
-                break;
-            }
+            Bot.Wait.ForActionCooldown(GameActions.EquipItem);
+            Bot.Wait.ForItemEquip(CheckInventory(Class) ? Class : SoloClass);
+            Logger($"Using {Class}");
+            break;
         }
 
 
