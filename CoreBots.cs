@@ -950,7 +950,9 @@ public class CoreBots
             Logger($"Bought {buy_quant} {item.Name}, now at {quant} {item.Name}", "BuyItem");
         }
         else
+        {
             Logger($"Failed at buying {buy_quant}/{quant} {item.Name}", "BuyItem");
+        }
 
         void RelogRequieredListener(dynamic packet)
         {
@@ -964,6 +966,8 @@ public class CoreBots
                     case "Item is not buyable. Item Inventory full. Re-login to syncronize your real bag slot amount.":
                         Logger("Inventory de-sync (AE Issue) detected, reloggin so the bot can continue");
                         Relogin();
+                        if (Bot.Inventory.FreeSlots < 1)
+                            Logger($"Inventory Slots: {Bot.Inventory.UsedSlots}/{Bot.Inventory.Slots}, Free: {Bot.Inventory.FreeSlots}. Clean your inventory... stopping", stopBot: true);
                         break;
                 }
             }
