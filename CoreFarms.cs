@@ -120,7 +120,7 @@ public class CoreFarms
         ToggleBoost(BoostType.Gold);
 
         HonorHall(quant);
-        BattleGroundE(quant);
+        LovePotion(quant);
         BerserkerBunny(quant);
 
         ToggleBoost(BoostType.Gold, false);
@@ -147,6 +147,36 @@ public class CoreFarms
         }
         Core.CancelRegisteredQuests();
         Core.SavedState(false);
+    }
+
+    public void LovePotion(int goldQuant = 100000000)
+    {
+        if (Bot.Player.Level < 61 || Bot.Player.Gold >= goldQuant)
+            return;
+
+        Core.EquipClass(ClassType.Farm);
+        Core.SavedState();
+        Core.Logger($"Farming {goldQuant} gold using \"A Lovely An-Sewer [Love Potion]\" method");
+
+        #region  Side Quests that require stories and may not be unlocked:
+        List<int> QuestIDs = new() { 9643 };
+        foreach (int q in new[] { 4319, 4328 })
+        {
+            if (!Core.isCompletedBefore(q))
+                continue;
+
+            QuestIDs.Add(q);
+        }
+        #endregion
+
+        Core.RegisterQuests(QuestIDs.ToArray());
+        while (!Bot.ShouldExit && Bot.Player.Gold < goldQuant)
+        {
+            Core.KillMonster("pinksewer", "sewer2", "Left", "Pink Rat", "Love Reagent", 12, log: false);
+        }
+        Core.CancelRegisteredQuests();
+        Core.SavedState(false);
+
     }
 
     /// <summary>
