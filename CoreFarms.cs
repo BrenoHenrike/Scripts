@@ -151,7 +151,7 @@ public class CoreFarms
 
     public void LovePotion(int goldQuant = 100000000)
     {
-        if (Bot.Player.Level < 61 || Bot.Player.Gold >= goldQuant)
+        if (Bot.Player.Gold >= goldQuant)
             return;
 
         Core.EquipClass(ClassType.Farm);
