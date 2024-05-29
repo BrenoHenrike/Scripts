@@ -121,7 +121,7 @@ public class CoreFarms
 
         HonorHall(quant);
         LovePotion(quant);
-        BerserkerBunny(quant);
+        // BerserkerBunny(quant);
 
         ToggleBoost(BoostType.Gold, false);
     }
