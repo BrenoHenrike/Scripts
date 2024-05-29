@@ -2019,6 +2019,9 @@ public class CoreBots
     /// <param name="log">Whether it will log that it is killing the monster</param>
     public void KillMonster(string map, string cell, string pad, string monster, string? item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
     {
+        pad = char.ToUpper(pad[0]) + (char.IsUpper(pad[0]) ? pad[1..].ToLower() : pad[1..]);
+        cell = char.ToUpper(cell[0]) + (char.IsUpper(cell[0]) ? cell[1..].ToLower() : cell[1..]);
+
         if (item != null && (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
             return;
 
@@ -2093,6 +2096,9 @@ public class CoreBots
     /// <param name="log">Whether it will log that it is killing the monster</param>
     public void KillMonster(string map, string cell, string pad, int MonsterMapID, string? item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
     {
+        pad = char.ToUpper(pad[0]) + (char.IsUpper(pad[0]) ? pad[1..].ToLower() : pad[1..]);
+        cell = char.ToUpper(cell[0]) + (char.IsUpper(cell[0]) ? cell[1..].ToLower() : cell[1..]);
+
         // Check if the item is already in inventory
         if (item != null && (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
             return;
@@ -2189,6 +2195,9 @@ public class CoreBots
     /// <param name="log">Whether it will log that it is killing the monster</param>
     public void KillMonster(string map, string cell, string pad, int MonsterMapID, int ItemID = 0, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
     {
+        pad = char.ToUpper(pad[0]) + (char.IsUpper(pad[0]) ? pad[1..].ToLower() : pad[1..]);
+        cell = char.ToUpper(cell[0]) + (char.IsUpper(cell[0]) ? cell[1..].ToLower() : cell[1..]);
+        
         // Check if the item is already in inventory
         if (ItemID == 0 && (isTemp ? Bot.TempInv.Contains(ItemID, quant) : CheckInventory(ItemID, quant)))
             return;
@@ -3882,7 +3891,9 @@ public class CoreBots
         map = map!.Replace(" ", "").Replace('I', 'i');
         map = map.ToLower() == "tercess" ? "tercessuinotlim" : map.ToLower();
         string strippedMap = map.Contains('-') ? map.Split('-').First() : map;
-        pad = char.ToUpper(pad[0]) + pad[1..];
+        pad = char.ToUpper(pad[0]) + (char.IsUpper(pad[0]) ? pad[1..].ToLower() : pad[1..]);
+        cell = char.ToUpper(cell[0]) + (char.IsUpper(cell[0]) ? cell[1..].ToLower() : cell[1..]);
+
 
         if (Bot.Map.Name != null && Bot.Map.Name.ToLower() == strippedMap && !ignoreCheck)
             return;
