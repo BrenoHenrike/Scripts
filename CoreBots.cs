@@ -2020,8 +2020,8 @@ public class CoreBots
     /// <param name="log">Whether it will log that it is killing the monster</param>
     public void KillMonster(string map, string cell, string pad, string monster, string? item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
     {
+        cell = Bot.Map.Cells.FirstOrDefault(c => c.Equals(cell, StringComparison.OrdinalIgnoreCase)) ?? cell;
         pad = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(pad.ToLower());
-        cell = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(cell.ToLower());
 
         if (item != null && (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
             return;
@@ -2098,7 +2098,7 @@ public class CoreBots
     public void KillMonster(string map, string cell, string pad, int MonsterMapID, string? item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
     {
         pad = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(pad.ToLower());
-        cell = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(cell.ToLower());
+        cell = Bot.Map.Cells.FirstOrDefault(c => c.Equals(cell, StringComparison.OrdinalIgnoreCase)) ?? cell;
 
         // Check if the item is already in inventory
         if (item != null && (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
@@ -2197,7 +2197,7 @@ public class CoreBots
     public void KillMonster(string map, string cell, string pad, int MonsterMapID, int ItemID = 0, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
     {
         pad = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(pad.ToLower());
-        cell = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(cell.ToLower());
+        cell = Bot.Map.Cells.FirstOrDefault(c => c.Equals(cell, StringComparison.OrdinalIgnoreCase)) ?? cell;
 
         // Check if the item is already in inventory
         if (ItemID == 0 && (isTemp ? Bot.TempInv.Contains(ItemID, quant) : CheckInventory(ItemID, quant)))
@@ -3793,10 +3793,12 @@ public class CoreBots
     /// <param name="pad">Pad to jump to</param>
     public void Jump(string cell = "Enter", string pad = "Spawn", bool ignoreCheck = false)
     {
+        cell = Bot.Map.Cells.FirstOrDefault(c => c.Equals(cell, StringComparison.OrdinalIgnoreCase)) ?? cell;
+        pad = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(pad.ToLower());
+
         if (!ignoreCheck && Bot.Player.Cell == cell)
             return;
 
-        pad = char.ToUpper(pad[0]) + pad[1..];
         while (!Bot.ShouldExit && Bot.Player.Cell != cell)
         {
             Bot.Map.Jump(cell, pad, false);
@@ -3892,8 +3894,11 @@ public class CoreBots
         map = map!.Replace(" ", "").Replace('I', 'i');
         map = map.ToLower() == "tercess" ? "tercessuinotlim" : map.ToLower();
         string strippedMap = map.Contains('-') ? map.Split('-').First() : map;
+        cell = Bot.Map.Cells.FirstOrDefault(c => c.Equals(cell, StringComparison.OrdinalIgnoreCase)) ?? cell;
         pad = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(pad.ToLower());
-        cell = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(cell.ToLower());
+
+        // Fuzzy matching for the cell string
+
 
 
         if (Bot.Map.Name != null && Bot.Map.Name.ToLower() == strippedMap && !ignoreCheck)
@@ -4625,6 +4630,9 @@ public class CoreBots
         Bot.Wait.ForMapLoad(map);
         Sleep();
 
+        cell = Bot.Map.Cells.FirstOrDefault(c => c.Equals(cell, StringComparison.OrdinalIgnoreCase)) ?? cell;
+        pad = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(pad.ToLower());
+        
         Jump(cell, pad);
     }
 
@@ -4823,7 +4831,7 @@ public class CoreBots
         {
             foreach (string Class in classesToCheck)
             {
-                if (!CheckInventory(Class))
+                if (!CheckInventory(Class, toInv: Class != "TimeKeeper" || SoloClass == Class))
                     continue;
 
                 switch (Class)
