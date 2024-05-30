@@ -42,7 +42,7 @@ public class JirabinChallenge
 
     public void RunedWoods()
     {
-        if (Core.isCompletedBefore(3986))
+        if (Core.isCompletedBefore(3987))
             return;
 
         Story.PreLoad(this);
@@ -67,27 +67,54 @@ public class JirabinChallenge
         }
 
         //Discover the Darkness 3980
-        Story.KillQuest(3980, "runedwoods", "Frask");
-        Story.KillQuest(3980, "doomwood", new[] { "Doomwood Bonemuncher", "Doomwood Ectomancer" });
+        if (!Story.QuestProgression(3980))
+        {
+            Core.EnsureAccept(3980);
+            Core.HuntMonster("runedwoods", "Frask", "Frask Scale", 3);
+            Core.HuntMonster("doomwood", "Doomwood Bonemuncher", "Bonemuncher Fang", 8);
+            Core.HuntMonster("doomwood", "Doomwood Ectomancer", "Ectomancer Orb");
+            Core.EnsureComplete(3980);
+        }
 
         //Shoot for Victory 3981
-        Story.KillQuest(3981, "uppercity", "Drow Assassin");
-        Story.KillQuest(3981, "runedwoods", "Frask");
+        if (!Story.QuestProgression(3981))
+        {
+            Core.EnsureAccept(3981);
+            Core.HuntMonster("uppercity", "Drow Assassin", "Assassin Bowstring", 6);
+            Core.HuntMonster("runedwoods", "Frask", "Frask Legbone", 6);
+            Core.EnsureComplete(3981);
+        }
 
         //Find the Frasks! 3982
-        Story.KillQuest(3982, "sandsea", "Sandsea Frask");
-        Story.KillQuest(3982, "pines", "Dwarfhold Frask");
-        Story.KillQuest(3982, "hacchiko", "Yokai Frask");
+        if (!Story.QuestProgression(3982))
+        {
+            Core.EnsureAccept(3982);
+            Core.HuntMonster("sandsea", "Sandsea Frask", "Sandsea Frask Cleared", 4);
+            Core.HuntMonster("pines", "Dwarfhold Frask", "Dwarfhold Frask Cleared", 4);
+            Core.HuntMonster("hachiko", "Yokai Frask ", "Yokai Frask Cleared", 4);
+            Core.EnsureComplete(3982);
+        }
 
         //Analogues for Rath 3983
-        Story.KillQuest(3983, "runedwoods", "Jies");
-        Story.KillQuest(3983, "cloister", new[] { "Karasu", "Wendigo" });
+        if (!Story.QuestProgression(3983))
+        {
+            Core.EnsureAccept(3983);
+            Core.HuntMonster("runedwoods", "Jies", "Jiess Rubble", 5);
+            Core.HuntMonster("cloister", "Karasu", "Karasu Wing", 4);
+            Core.HuntMonster("cloister", "Wendigo", "Wendigo Fur");
+            Core.EnsureComplete(3983);
+        }
 
         //The Shades Grow Darker 3984
-        Story.KillQuest(3984, "northlands", "Northlands Shade");
-        Story.KillQuest(3984, "mythsong", "Mythsong Shade");
-        Story.KillQuest(3984, "pines", "Dwarfhold Shade");
-        Story.KillQuest(3984, "darkoviagrave", "Darkovia Shade");
+        if (!Story.QuestProgression(3984))
+        {
+            Core.EnsureAccept(3984);
+            Core.HuntMonster("northlands", "Northlands Shade", "Northlands Shades Cleared", 3);
+            Core.HuntMonster("mythsong", "Mythsong Shade", "Mythsong Shades Cleared", 3);
+            Core.HuntMonster("pines", "Dwarfhold Shade", "Dwarfhold Shades Cleared", 3);
+            Core.HuntMonster("darkoviagrave", "Darkovia Shade", "Darkovia Shades Cleared", 3);
+            Core.EnsureComplete(3984);
+        }
 
         //Discover the Void 3985
         Story.KillQuest(3985, "void", new[] { "Void Elemental", "Void Bear" });
@@ -95,6 +122,8 @@ public class JirabinChallenge
         //Confront Jir'abin 3986
         Story.KillQuest(3986, "runedwoods", "Jir'abin");
 
+        // The Void Expands 3987
+        Story.ChainQuest(3987);
     }
 
     public void DetherTombs()
@@ -106,6 +135,9 @@ public class JirabinChallenge
 
         Story.PreLoad(this);
 
+        // Za'nar Week 2 - 1 3995
+        Story.ChainQuest(3995);
+
         //Enter the Tomb 3996
         Story.KillQuest(3996, "dethertombs", "Sand Frask");
 
@@ -116,7 +148,7 @@ public class JirabinChallenge
         Story.MapItemQuest(3998, "dethertombs", 3132, 12);
 
         //Find the Missing Pages 3999
-        Story.KillQuest(3999, "dethertombs", new[] { "De'ther Shade" });
+        Story.KillQuest(3999, "dethertombs", new[] { "De'ther Shade", "De'ther Shade" });
 
         //Find the Resonator Components 4000
         Story.KillQuest(4000, "dethertombs", new[] { "Sand Frask", "Tomb Drifter" });
