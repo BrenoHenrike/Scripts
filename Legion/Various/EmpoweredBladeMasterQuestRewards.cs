@@ -33,7 +33,7 @@ public class EmpoweredBladeMaster
     {
         CoreBots.Instance.SkipOptions,
         new Option<bool>("GetAllRewards", "Pick Automatically", "if true, does the quest till you have all the rewards possible. otherwise Gets selcted item", false),
-        new Option<rewards>("RewardSelect", "Choose Your Reward", "", rewards.Empowered_Blade_Master)
+        new Option<Rewards>("RewardSelect", "Choose Your Reward", "", Rewards.Empowered_Blade_Master)
     };
 
     public void ScriptMain(IScriptInterface bot)
@@ -74,7 +74,7 @@ public class EmpoweredBladeMaster
             DageInsignia(30);
             if (!Bot.Config!.Get<bool>("GetAllRewards"))
             {
-                Core.EnsureComplete(8554, (int)Bot.Config.Get<rewards>("RewardSelect"));
+                Core.EnsureComplete(8554, (int)Bot.Config.Get<Rewards>("RewardSelect"));
                 return;
             }
             Core.JumpWait();
@@ -121,7 +121,7 @@ public class EmpoweredBladeMaster
         }
     }
 
-    public enum rewards
+    public enum Rewards
     {
         Empowered_Blade_Master = 68470,
         Empowered_Blade_Masters_Katana = 68471,

@@ -39,7 +39,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 118714,
+    "size": 118717,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -50,7 +50,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 224570,
+    "size": 225129,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -3645,7 +3645,7 @@
       "jir'abin"
     ],
     "path": "Other/Jir'abinChallenge.cs",
-    "size": 5202,
+    "size": 6492,
     "fileName": "Jir'abinChallenge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Jir'abinChallenge.cs"
   },
