@@ -2046,10 +2046,9 @@ public class CoreBots
                     .Where(x => x != null && x.Cell == cell)
                     .ToList();
             }
-
             // Otherwise, return all mobs in the specified cell that match the name (case-insensitive)
             return Bot.Monsters.MapMonsters
-                .Where(x => x != null && x.Cell == cell && x.Name.Equals(monster, StringComparison.OrdinalIgnoreCase))
+                .Where(x => x != null && x.Cell == cell && x.Name.FormatForCompare() == monster.FormatForCompare())
                 .ToList();
         }
 
