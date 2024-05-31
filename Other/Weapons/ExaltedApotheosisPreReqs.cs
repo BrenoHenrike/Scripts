@@ -64,7 +64,6 @@ public class ExaltedApotheosisPreReqs
 
         if (!Core.CheckInventory("Ezrajal Insignia", 24) || !Core.CheckInventory("Warden Insignia", 24) || !Core.CheckInventory("Engineer Insignia", 16))
         {
-            Core.Logger("First if");
             Core.Logger($" Ezrajal Insignia: {Core.dynamicQuant("Ezrajal Insignia", false)} / 24");
             Core.Logger($" Warden Insignia: {Core.dynamicQuant("Warden Insignia", false)} / 24");
             Core.Logger($" Engineer Insignia: {Core.dynamicQuant("Engineer Insignia", false)} / 16");
@@ -72,14 +71,19 @@ public class ExaltedApotheosisPreReqs
         }
         else
         {
-            Core.Logger("2nd if");
             //Ensure shop is loaded:
             Core.Join("timeinn");
-            Bot.Shops.Load(2010);
+            while (!Bot.ShouldExit && Bot.Shops.Name != "Exaltia Merge ")
+            {
+                Bot.Shops.Load(2010);
+                Bot.Wait.ForTrue(() => Bot.Shops.Name == "Exaltia Merge ", 20);
+                Core.Sleep();
+            }
 
+            Bot.Wait.ForActionCooldown(Skua.Core.Models.GameActions.LoadShop);
             ShopItem? ExaltedApo = Bot.Shops.Items.Find(x => x.Name == "Exalted Apotheosis");
 
-            while (!Bot.ShouldExit && !Core.CheckInventory(ExaltedApo!.ID))
+            while (!Bot.ShouldExit && !Core.CheckInventory("Exalted Apotheosis"))
             {
                 // Define the weapon pairs in each tier
                 string[][] weaponPairs = new[]
@@ -99,30 +103,30 @@ public class ExaltedApotheosisPreReqs
 
                     foreach (string wep in pair)
                     {
-                        ShopItem? WepData = Bot.Shops.Items.Find(x => x.Name == wep);
+                        ShopItem? WepData = Bot.Shops.Items.FirstOrDefault(x => x.Name == wep);
 
                         // Check if the weapon has any requirements before buying
-                        if (WepData?.Requirements == null || WepData.Requirements.All(req => Core.CheckInventory(req.ID)))
+                        if (WepData?.Requirements.Count > 0 && WepData.Requirements.All(req => Core.CheckInventory(req.ID)))
                         {
                             Core.KillMonster("timeinn", "r3", "Top", "Energy Elemental", "Exalted Node", 300, isTemp: false);
                             Adv.BuyItem("timeinn", 2010, wep);
 
-                            if (Core.CheckInventory(ExaltedApo!.ID))
+                            if (Core.CheckInventory("Exalted Apotheosis"))
                                 break;
                         }
                     }
                 }
-                if (Core.CheckInventory(ExaltedApo!.ID))
+                if (Core.CheckInventory("Exalted Apotheosis"))
                     Core.Logger("Congratulations on completing the Exalted Apotheosis weapon!");
                 else
-                    foreach (var item in ExaltedApo.Requirements)
+                    foreach (var item in ExaltedApo!.Requirements)
                     {
                         if (Core.CheckInventory(item.ID, toInv: false))
                             continue;
                         else Core.Logger($"Mising {item.Name}, {item.Quantity}");
                     }
             }
-            Bot.Wait.ForPickup(ExaltedApo!.ID);
+            Bot.Wait.ForPickup("Exalted Apotheosis");
         }
     }
 }
