@@ -5905,38 +5905,12 @@ public static class UtilExtensionsS
         => source.ToList().Find(match: Match);
     public static bool TryFind<T>(this IEnumerable<T> source, Predicate<T> Match, out T? toReturn)
         => (toReturn = source.Find(Match)) != null;
-    // public static string FormatForCompare(this string input) => new(input
-    // .Trim()
-    // .ToLowerInvariant()
-    // .Normalize(System.Text.NormalizationForm.FormKD)
-    // .Where(c => !char.IsWhiteSpace(c) && c != '\'' && (c == '_' || c == '-' || !char.IsPunctuation(c)))
-    // .ToArray());
-
-    public static string FormatForCompare(this string input)
-    {
-        // Normalize the input string to Form KD
-        string normalized = input.Trim().ToLowerInvariant().Normalize(System.Text.NormalizationForm.FormKD);
-        StringBuilder stringBuilder = new();
-
-        foreach (char c in normalized)
-        {
-            // Retain only letters, digits, underscore, and hyphen
-            if (!char.IsWhiteSpace(c) && c != '\'' && (char.IsLetterOrDigit(c) || c == '_' || c == '-'))
-            {
-                // Append the character if it is not a non-spacing mark (diacritic)
-                if (char.GetUnicodeCategory(c) != System.Globalization.UnicodeCategory.NonSpacingMark)
-                {
-                    stringBuilder.Append(c);
-                }
-            }
-        }
-
-        string result = stringBuilder.ToString();
-
-        // Further normalization to remove any remaining diacritics
-        return new string(result.Normalize(System.Text.NormalizationForm.FormC).Where(c => char.GetUnicodeCategory(c) != System.Globalization.UnicodeCategory.NonSpacingMark).ToArray());
-    }
-
+    public static string FormatForCompare(this string input) => new(input
+    .Trim()
+    .ToLowerInvariant()
+    .Normalize(System.Text.NormalizationForm.FormKD)
+    .Where(c => !char.IsWhiteSpace(c) && c != '\'' && (c == '_' || c == '-' || !char.IsPunctuation(c)))
+    .ToArray());
 
 }
 

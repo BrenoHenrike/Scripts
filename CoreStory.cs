@@ -686,17 +686,16 @@ public class CoreStory
         bool itemInInventory = itemName != null && (isTemp ? Bot.TempInv.Contains(itemName, quantity) : Core.CheckInventory(itemName, quantity));
         if (itemInInventory)
         {
+            Core.DebugLogger(this);
             CurrentRequirements.RemoveAt(index);
             shouldRepeat = false;
             return;
         }
 
-        // Find all target monsters by name
-        List<Monster> FindMonsters()
+        // Find the target monster by name
+        Monster? FindMonster()
         {
-            return Bot.Monsters.MapMonsters
-                .Where(x => x != null && x.Name.FormatForCompare() == monster.FormatForCompare())
-                .ToList();
+            return Bot.Monsters.MapMonsters.Find(x => x.Name.FormatForCompare() == monster.FormatForCompare());
         }
 
         // Ensure player is in the correct cell and not in a cutscene or initialization state
@@ -709,54 +708,26 @@ public class CoreStory
             }
         }
 
-        // Find all target monsters
-        List<Monster> targetMonsters = FindMonsters();
-        if (!targetMonsters.Any())
+        // Find the target monster
+        Monster? targetMonster = FindMonster();
+        if (targetMonster == null)
         {
+            Core.DebugLogger(this);
             shouldRepeat = false;
             return;
         }
 
-        // Create a comma-separated list of unique monster names enclosed in double quotes for logging
-        string monsterList = string.Join(", ", targetMonsters.Select(m => $"\"{m.Name}\"").Distinct());
-
-        // Enclose the item name in double quotes
-        string formattedItemName = $"\"{itemName}\"";
-
-        // Log the details of the monsters being killed if there are any unique monsters
-        if (!string.IsNullOrEmpty(monsterList))
+        // Main loop for hunting the monster until the item is acquired
+        while (!Bot.ShouldExit && !itemInInventory)
         {
-            Core.Logger($"Killing {monsterList} for {formattedItemName} (quantity: {Core.dynamicQuant(itemName, isTemp)}/{quantity})");
-        }
+            Core.DebugLogger(this);
+            EnsurePlayerInCorrectCell(targetMonster);
+            Core.DebugLogger(this);
+            Bot.Combat.Attack(targetMonster);
+            Core.Sleep();
 
-        // Main loop for hunting the monsters until the item is acquired
-        while (!Bot.ShouldExit)
-        {
-            foreach (var targetMonster in targetMonsters)
-            {
-                // Exit the loop early if the item is already in inventory
-                if (itemName != null && (isTemp ? Bot.TempInv.Contains(itemName, quantity) : Core.CheckInventory(itemName, quantity)))
-                {
-                    itemInInventory = true;
-                    break;
-                }
-
-                // Ensure the player is in the correct cell and alive
-                while (!Bot.ShouldExit && !Bot.Player.Alive)
-                    Core.Sleep();
-
-                EnsurePlayerInCorrectCell(targetMonster);
-
-                // Log the action and attack the target monster
-                Bot.Combat.Attack(targetMonster);
-
-                Bot.Wait.ForMonsterDeath(20);
-                Bot.Combat.CancelTarget();
-            }
-
-            // Break the main loop if the item is in inventory
-            if (itemInInventory)
-                break;
+            // Update itemInInventory status after attempting to get the item
+            itemInInventory = itemName != null && (isTemp ? Bot.TempInv.Contains(itemName, quantity) : Core.CheckInventory(itemName, quantity));
         }
 
         // Handle item pickup if not temporary
@@ -765,8 +736,11 @@ public class CoreStory
             Bot.Wait.ForPickup(itemName!);
         }
 
+        Core.DebugLogger(this);
         CurrentRequirements.RemoveAt(index);
+        Core.DebugLogger(this);
         shouldRepeat = false;
+        Core.DebugLogger(this);
     }
 
 
