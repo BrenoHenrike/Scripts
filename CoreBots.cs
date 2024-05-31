@@ -3048,11 +3048,12 @@ public class CoreBots
             DebugLogger(this);
             if (name == "*")
             {
-                foreach (var monster in Bot.Monsters.MapMonsters.Where(x => x != null && x.Cell == cell && x.Name.FormatForCompare() == name.FormatForCompare()))
+                foreach (var monster in Bot.Monsters.MapMonsters.Where(x => x != null && x.Cell == cell))
                 {
                     if (CheckInventory(item, quantity))
                         break;
 
+                    Logger($"Attacking Monster ID: {monster}");
                     Bot.Combat.Attack(monster);
                     DebugLogger(this);
                     Bot.Wait.ForMonsterDeath(20);
@@ -3063,10 +3064,12 @@ public class CoreBots
             }
             else
             {
-                foreach (var targetMonster in Bot.Monsters.MapMonsters.Where(x => x != null && x.Cell == cell && x.Name.FormatForCompare() == name.FormatForCompare()))
+                foreach (var targetMonster in Bot.Monsters.MapMonsters.Where(x => x != null && x.Cell == cell && x.Name.Equals(name, StringComparison.OrdinalIgnoreCase)))
                 {
                     if (CheckInventory(item, quantity))
                         break;
+
+                    Logger($"Attacking Monster ID: {targetMonster}");
 
                     Bot.Combat.Attack(targetMonster);
                     DebugLogger(this);
