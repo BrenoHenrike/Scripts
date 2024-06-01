@@ -3029,6 +3029,7 @@ public class CoreBots
         if (log)
             FarmingLogger(item, quantity);
 
+        if (log) Logger($"Attacking Monster ID: {name}");
         while (!Bot.ShouldExit && item != null && (isTemp ? !Bot.TempInv.Contains(item, quantity) : !CheckInventory(item, quantity)))
         {
             DebugLogger(this);
@@ -3052,7 +3053,6 @@ public class CoreBots
                     if (CheckInventory(item, quantity))
                         break;
 
-                    Logger($"Attacking Monster ID: {monster}");
                     Bot.Combat.Attack(monster);
                     DebugLogger(this);
                     Bot.Wait.ForMonsterDeath(20);
@@ -3068,7 +3068,6 @@ public class CoreBots
                     if (CheckInventory(item, quantity))
                         break;
 
-                    Logger($"Attacking Monster ID: {targetMonster}");
 
                     Bot.Combat.Attack(targetMonster);
                     DebugLogger(this);
