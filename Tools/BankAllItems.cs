@@ -39,6 +39,7 @@ public class BankAllItems
 
     public void BankAll(bool Inventory, bool House, bool BanknonAc, string BlackList)
     {
+
         var blackListedItems = new HashSet<string>();
 
         // Split the BlackList string into an array
@@ -53,6 +54,7 @@ public class BankAllItems
         blackListedItems.UnionWith(Core.SoloGear);
         blackListedItems.Add(Core.FarmClass);
         blackListedItems.UnionWith(Core.FarmGear);
+        blackListedItems.UnionWith(Core.BankingBlackList);
 
         Core.Logger($"BlackList: {string.Join(", ", blackListedItems.Where(item => !string.IsNullOrEmpty(item)))}");
 
