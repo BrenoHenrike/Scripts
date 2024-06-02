@@ -1787,7 +1787,7 @@ public class CoreAdvanced
     /// <param name="className">Name of the class you wish to enhance</param>
     public void SmartEnhance(string? className)
     {
-        if (String.IsNullOrEmpty(className))
+        if (string.IsNullOrEmpty(className))
             return;
         if (!Core.CheckInventory(className))
         {
