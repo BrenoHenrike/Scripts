@@ -20383,6 +20383,34 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/DeepTrobbleMerge.cs"
   },
   {
+    "name": "Sidhes Devotee Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Sidhes Devotee Merge [2447] in /castleeblana",
+    "tags": [
+      "sidhes",
+      "devotee",
+      "merge",
+      "castleeblana",
+      "wrap",
+      "ensnared",
+      "devotees",
+      "goblet",
+      "mugs",
+      "brigand",
+      "bandana",
+      "misty",
+      "faes",
+      "moon",
+      "pistol",
+      "pistols",
+      "leanan",
+      "minions"
+    ],
+    "path": "Other/MergeShops/SidhesDevoteeMerge.cs",
+    "size": 5649,
+    "fileName": "SidhesDevoteeMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/SidhesDevoteeMerge.cs"
+  },
+  {
     "name": "SkullbreakerKnightMerge",
     "description": "null",
     "tags": [
