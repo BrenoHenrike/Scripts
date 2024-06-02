@@ -161,7 +161,7 @@ public class ThreeLittleWolvesHousesMerge
                     Core.FarmingLogger(req.Name, quant);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.BuyItem("citadel", 44, 48761);
+                        Core.BuyItem("citadel", 44, 48761, Log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     break;
@@ -170,7 +170,7 @@ public class ThreeLittleWolvesHousesMerge
                     Core.FarmingLogger(req.Name, quant);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.BuyItem("seraph", 1133, 48762);
+                        Core.BuyItem("seraph", 1133, 48762, Log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     break;
@@ -179,7 +179,7 @@ public class ThreeLittleWolvesHousesMerge
                     Core.FarmingLogger(req.Name, quant);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.BuyItem("dragonkoiz", 95, 48763);
+                        Core.BuyItem("dragonkoiz", 95, 48763, Log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     break;
