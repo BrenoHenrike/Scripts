@@ -70,8 +70,8 @@ public class DiogonsMerge
                     Core.RegisterQuests(9751);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Adv.BuyItem("tercessuinotlim", 1951, "Doomatter");
-                        Adv.BuyItem("ectocave", 2449, "Toxian Metal");
+                        Adv.BuyItem("tercessuinotlim", 1951, "Doomatter", Log: false);
+                        Adv.BuyItem("ectocave", 2449, "Toxian Metal", Log: false);
                         FarmToxicGem(5);
                         Bot.Wait.ForPickup(req.Name);
                     }
