@@ -73,7 +73,7 @@ public class GachaponMerge
                     Core.RegisterQuests(7781);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Adv.BuyItem("onsen", 1926, "Gachapon Coin");
+                        Adv.BuyItem("onsen", 1926, "Gachapon Coin", Log: false);
                         Core.HuntMonster("yokaigrave", "Skello Kitty", "Skello Kitty Bone");
                         Bot.Wait.ForPickup(req.Name);
                     }

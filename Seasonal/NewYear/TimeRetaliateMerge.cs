@@ -88,7 +88,7 @@ public class TimeRetaliateMerge
                     Core.FarmingLogger(req.Name, quant);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Adv.BuyItem("battleunderb", 1990, "Gold Voucher 25k", quant);
+                        Adv.BuyItem("battleunderb", 1990, "Gold Voucher 25k", quant, Log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     break;

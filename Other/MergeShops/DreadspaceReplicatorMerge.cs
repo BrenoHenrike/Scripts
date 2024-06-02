@@ -127,7 +127,7 @@ public class DreadspaceReplicatorMerge
                     Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Adv.BuyItem("necropolis", 422, "Daimyo");
+                        Adv.BuyItem("necropolis", 422, "Daimyo", Log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     break;
