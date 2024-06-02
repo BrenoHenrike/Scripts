@@ -102,7 +102,7 @@ public class DiogonsMerge
         Core.RegisterQuests(9750);
         while (!Bot.ShouldExit && !Core.CheckInventory("Toxic Gem", quant))
         {
-            Core.HuntMonster("extriki", "Extriki", "Extriki’s ShardA", log: false);
+            Core.HuntMonster("extriki", "Extriki", "Extriki’s Shard", log: false);
             Bot.Wait.ForPickup("Toxic Gem");
         }
         Core.CancelRegisteredQuests();
