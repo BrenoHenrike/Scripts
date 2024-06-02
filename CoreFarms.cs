@@ -1304,68 +1304,68 @@ public class CoreFarms
             Core.CancelRegisteredQuests();
             Core.SavedState(false);
         }
+    }
 
-        void UnlockBoA()
+    public void UnlockBoA()
+    {
+        if (Core.isCompletedBefore(2937))
+            return;
+
+        if (!Core.isCompletedBefore(2933))
         {
-            if (Core.isCompletedBefore(2937))
-                return;
-
-            if (!Core.isCompletedBefore(2933))
-            {
-                Core.Logger($"Doing Quest: [2933] - \"Find the Stonewrit!\"");
-                Core.EquipClass(ClassType.Solo);
-                Core.EnsureAccept(2933);
-                Core.HuntMonster("j6", "Sketchy Dragon", "Stonewrit Found!", 1, false, log: false);
-                Core.EnsureComplete(2933);
-                Core.Logger($"Completed Quest: [2933] - \"Find the Stonewrit!\"");
-            }
-            else Core.Logger($"Already Completed: [2933] - \"Find the Stonewrit!\"");
-
-            if (!Core.isCompletedBefore(2934))
-            {
-                Core.Logger($"Doing Quest: [2934] - \"Find the Handle!\"");
-                Core.EquipClass(ClassType.Solo);
-                Core.EnsureAccept(2934);
-                Core.HuntMonster("gilead", "Fire Elemental", "Handle Found!", 1, false, log: false);
-                Core.EnsureComplete(2934);
-                Core.Logger($"Completed Quest: [2934] - \"Find the Handle!\"");
-            }
-            else Core.Logger($"Already Completed: [2934] - \"Find the Handle!\"");
-
-            if (!Core.isCompletedBefore(2935))
-            {
-                Core.Logger($"Doing Quest: [2935] - \"Find the Hilt!\"");
-                Core.EquipClass(ClassType.Farm);
-                Core.EnsureAccept(2935);
-                Core.HuntMonster("castleundead", "Skeletal Viking", "Hilt Found!", 1, false, log: false);
-                Core.EnsureComplete(2935);
-                Core.Logger($"Completed Quest: [2935] - \"Find the Hilt!\"");
-            }
-            else Core.Logger($"Already Completed: [2935] - \"Find the Hilt!\"");
-
-            if (!Core.isCompletedBefore(2936))
-            {
-                Core.Logger($"Doing Quest: [2936] - \"Find the Blade!\"");
-                Core.EquipClass(ClassType.Farm);
-                Core.EnsureAccept(2936);
-                Core.HuntMonster("hydra", "Hydra Head", "Blade Found!", 1, false, log: false);
-                Core.EnsureComplete(2936);
-                Core.Logger($"Completed Quest: [2936] - \"Find the Blade!\"");
-            }
-            else Core.Logger($"Already Completed: [2936] - \"Find the Blade!\"");
-
-            if (!Core.isCompletedBefore(2937))
-            {
-                Core.ResetQuest(2937);
-                Core.Logger($"Doing Quest: [2937] - \"Find the Runes!\"");
-                Core.EquipClass(ClassType.Solo);
-                Core.EnsureAccept(2937);
-                Core.KillEscherion("Runes Found!", log: false);
-                Core.EnsureComplete(2937);
-                Core.Logger($"Completed Quest: [2937] - \"Find the Runes!\"");
-            }
-            else Core.Logger($"Already Completed: [2937] - \"Find the Runes!\"");
+            Core.Logger($"Doing Quest: [2933] - \"Find the Stonewrit!\"");
+            Core.EquipClass(ClassType.Solo);
+            Core.EnsureAccept(2933);
+            Core.HuntMonster("j6", "Sketchy Dragon", "Stonewrit Found!", 1, false, log: false);
+            Core.EnsureComplete(2933);
+            Core.Logger($"Completed Quest: [2933] - \"Find the Stonewrit!\"");
         }
+        else Core.Logger($"Already Completed: [2933] - \"Find the Stonewrit!\"");
+
+        if (!Core.isCompletedBefore(2934))
+        {
+            Core.Logger($"Doing Quest: [2934] - \"Find the Handle!\"");
+            Core.EquipClass(ClassType.Solo);
+            Core.EnsureAccept(2934);
+            Core.HuntMonster("gilead", "Fire Elemental", "Handle Found!", 1, false, log: false);
+            Core.EnsureComplete(2934);
+            Core.Logger($"Completed Quest: [2934] - \"Find the Handle!\"");
+        }
+        else Core.Logger($"Already Completed: [2934] - \"Find the Handle!\"");
+
+        if (!Core.isCompletedBefore(2935))
+        {
+            Core.Logger($"Doing Quest: [2935] - \"Find the Hilt!\"");
+            Core.EquipClass(ClassType.Farm);
+            Core.EnsureAccept(2935);
+            Core.HuntMonster("castleundead", "Skeletal Viking", "Hilt Found!", 1, false, log: false);
+            Core.EnsureComplete(2935);
+            Core.Logger($"Completed Quest: [2935] - \"Find the Hilt!\"");
+        }
+        else Core.Logger($"Already Completed: [2935] - \"Find the Hilt!\"");
+
+        if (!Core.isCompletedBefore(2936))
+        {
+            Core.Logger($"Doing Quest: [2936] - \"Find the Blade!\"");
+            Core.EquipClass(ClassType.Farm);
+            Core.EnsureAccept(2936);
+            Core.HuntMonster("hydra", "Hydra Head", "Blade Found!", 1, false, log: false);
+            Core.EnsureComplete(2936);
+            Core.Logger($"Completed Quest: [2936] - \"Find the Blade!\"");
+        }
+        else Core.Logger($"Already Completed: [2936] - \"Find the Blade!\"");
+
+        if (!Core.isCompletedBefore(2937))
+        {
+            Core.ResetQuest(2937);
+            Core.Logger($"Doing Quest: [2937] - \"Find the Runes!\"");
+            Core.EquipClass(ClassType.Solo);
+            Core.EnsureAccept(2937);
+            Core.KillEscherion("Runes Found!", log: false);
+            Core.EnsureComplete(2937);
+            Core.Logger($"Completed Quest: [2937] - \"Find the Runes!\"");
+        }
+        else Core.Logger($"Already Completed: [2937] - \"Find the Runes!\"");
     }
 
     public void BrethwrenREP(int rank = 10)
