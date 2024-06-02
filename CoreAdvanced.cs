@@ -41,7 +41,7 @@ public class CoreAdvanced
     /// <param name="quant">Desired quantity</param>
     /// <param name="shopQuant">How many items you get for 1 buy</param>
     /// <param name="shopItemID">Use this for Merge shops that has 2 or more of the item with the same name and you need the second/third/etc., be aware that it will re-log you after to prevent ghost buy. To get the ShopItemID use the built in loader of Skua</param>
-    public void BuyItem(string map, int shopID, string itemName, int quant = 1, int shopItemID = 0)
+    public void BuyItem(string map, int shopID, string itemName, int quant = 1, int shopItemID = 0, bool Log = true)
     {
         if (Core.CheckInventory(itemName, quant))
             return;
@@ -58,7 +58,7 @@ public class CoreAdvanced
         if (item == null)
             return;
 
-        _BuyItem(map, shopID, item, quant);
+        _BuyItem(map, shopID, item, quant, Log);
     }
 
     /// <summary>
@@ -70,7 +70,7 @@ public class CoreAdvanced
     /// <param name="quant">Desired quantity</param>
     /// <param name="shopQuant">How many items you get for 1 buy</param>
     /// <param name="shopItemID">Use this for Merge shops that has 2 or more of the item with the same name and you need the second/third/etc., be aware that it will relog you after to prevent ghost buy. To get the ShopItemID use the built in loader of Skua</param>
-    public void BuyItem(string map, int shopID, int itemID, int quant = 1, int shopQuant = 1, int shopItemID = 0)
+    public void BuyItem(string map, int shopID, int itemID, int quant = 1, int shopQuant = 1, int shopItemID = 0, bool Log = true)
     {
         if (Core.CheckInventory(itemID, quant))
             return;
@@ -92,10 +92,10 @@ public class CoreAdvanced
         if (item == null)
             return;
 
-        _BuyItem(map, shopID, item, quant);
+        _BuyItem(map, shopID, item, quant, Log);
     }
 
-    private void _BuyItem(string map, int shopID, ShopItem item, int quant = 1)
+    private void _BuyItem(string map, int shopID, ShopItem item, int quant = 1, bool Log = true)
     {
         if (item.Requirements != null)
         {
@@ -115,13 +115,13 @@ public class CoreAdvanced
 
                     default:
                         if (Core.GetShopItems(map, shopID).Any(x => req.ID == x.ID))
-                            BuyItem(map, shopID, req.ID, req.Quantity * quant);
+                            BuyItem(map, shopID, req.ID, req.Quantity * quant, Log: Log);
                         break;
                 }
             }
 
             GetItemReq(item, quant);
-            Core._BuyItem(map, shopID, item, quant);
+            Core._BuyItem(map, shopID, item, quant, Log);
         }
     }
 
@@ -177,7 +177,7 @@ public class CoreAdvanced
     /// <param name="map">The map where the shop can be loaded from</param>
     /// <param name="shopID">The shop ID to load the shopdata</param>
     /// <param name="findIngredients">A switch nested in a void that will explain this function where to get items</param>
-    public void StartBuyAllMerge(string map, int shopID, Action findIngredients, string? buyOnlyThis = null, string[]? itemBlackList = null, mergeOptionsEnum? buyMode = null, string Group = "First", int ShopItemID = 0)
+    public void StartBuyAllMerge(string map, int shopID, Action findIngredients, string? buyOnlyThis = null, string[]? itemBlackList = null, mergeOptionsEnum? buyMode = null, string Group = "First", int ShopItemID = 0, bool Log = true)
     {
         if (buyOnlyThis == null && buyMode == null)
             Bot.Config!.Configure();
@@ -265,7 +265,7 @@ public class CoreAdvanced
                 if (!matsOnly && !Core.CheckInventory(item.ID, toInv: false))
                 {
                     Core.Logger($"Buying {item.Name} (#{t++}/{items.Count})");
-                    BuyItem(map, shopID, item.ID, shopItemID: ShopItemID);
+                    BuyItem(map, shopID, item.ID, shopItemID: ShopItemID, Log: Log);
 
                     if (item.Coins)
                         Core.ToBank(item.ID);
@@ -316,7 +316,7 @@ public class CoreAdvanced
                             Core.Sleep();
 
                             if (!matsOnly)
-                                BuyItem(map, shopID, selectedItem.ID, (Bot.Inventory.GetQuantity(selectedItem.ID) + selectedItem.Quantity));
+                                BuyItem(map, shopID, selectedItem.ID, Bot.Inventory.GetQuantity(selectedItem.ID) + selectedItem.Quantity, Log: Log);
                             else break;
                         }
                     }
@@ -326,7 +326,7 @@ public class CoreAdvanced
                         Core.Sleep();
 
                         if (!matsOnly)
-                            BuyItem(map, shopID, selectedItem.ID, req.Quantity);
+                            BuyItem(map, shopID, selectedItem.ID, req.Quantity, Log: Log);
                     }
                 }
                 else

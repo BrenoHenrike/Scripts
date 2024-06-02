@@ -860,14 +860,14 @@ public class CoreBots
     /// <param name="quant">Desired quantity</param>
     /// <param name="shopQuant">How many items you get for 1 buy</param>
     /// <param name="shopItemID">Use this for Merge shops that has 2 or more of the item with the same name and you need the second/third/etc., be aware that it will re-log you after to prevent ghost buy. To get the ShopItemID use the built in loader of Skua</param>
-    public void BuyItem(string map, int shopID, string itemName, int quant = 1, int shopItemID = 0)
+    public void BuyItem(string map, int shopID, string itemName, int quant = 1, int shopItemID = 0, bool Log = true)
     {
         if (CheckInventory(itemName, quant))
             return;
         _CheckInventorySpace();
 
         ShopItem? item = parseShopItem(GetShopItems(map, shopID).Where(x => shopItemID == 0 ? x.Name.ToLower() == itemName.ToLower() : x.ShopItemID == shopItemID).ToList(), shopID, itemName, shopItemID);
-        _BuyItem(map, shopID, item, quant);
+        _BuyItem(map, shopID, item, quant, Log);
     }
 
     /// <summary>
@@ -879,17 +879,17 @@ public class CoreBots
     /// <param name="quant">Desired quantity</param>
     /// <param name="shopQuant">How many items you get for 1 buy</param>
     /// <param name="shopItemID">Use this for Merge shops that has 2 or more of the item with the same name and you need the second/third/etc., be aware that it will relog you after to prevent ghost buy. To get the ShopItemID use the built in loader of Skua</param>
-    public void BuyItem(string map, int shopID, int itemID, int quant = 1, int shopItemID = 0)
+    public void BuyItem(string map, int shopID, int itemID, int quant = 1, int shopItemID = 0, bool Log = true)
     {
         if (CheckInventory(itemID, quant))
             return;
         _CheckInventorySpace();
 
         ShopItem? item = parseShopItem(GetShopItems(map, shopID).Where(x => shopItemID == 0 ? x.ID == itemID : x.ShopItemID == shopItemID).ToList(), shopID, itemID.ToString(), shopItemID);
-        _BuyItem(map, shopID, item, quant);
+        _BuyItem(map, shopID, item, quant, Log);
     }
 
-    public void _BuyItem(string map, int shopID, ShopItem? item, int quant)
+    public void _BuyItem(string map, int shopID, ShopItem? item, int quant, bool Log = true)
     {
         int buy_quant;
 
@@ -948,11 +948,13 @@ public class CoreBots
         }
         else if (CheckInventory(item.Name, quant))
         {
-            Logger($"Bought {buy_quant} {item.Name}, now at {quant} {item.Name}", "BuyItem");
+            if (Log)
+                Logger($"Bought {buy_quant} {item.Name}, now at {quant} {item.Name}", "BuyItem");
         }
         else
         {
-            Logger($"Failed at buying {buy_quant}/{quant} {item.Name}", "BuyItem");
+            if (Log)
+                Logger($"Failed at buying {buy_quant}/{quant} {item.Name}", "BuyItem");
         }
 
         void RelogRequieredListener(dynamic packet)
@@ -1070,7 +1072,7 @@ public class CoreBots
                     int total_quant = buy_count * req.Quantity;
 
                     if (GetShopItems(map, shopID).Any(x => req.ID == x.ID))
-                        BuyItem(map, shopID, req.ID, total_quant);
+                        BuyItem(map, shopID, req.ID, total_quant, Log: Log);
 
                     if (!CheckInventory(req.ID, total_quant))
                     {
