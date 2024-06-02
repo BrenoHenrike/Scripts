@@ -60,6 +60,7 @@ public class DiogonsMerge
                 #endregion
 
                 case "Toxic Gem":
+                    Core.FarmingLogger(req.Name, quant);
                     FarmToxicGem(quant);
                     break;
 
@@ -83,7 +84,6 @@ public class DiogonsMerge
 
     public void FarmToxicGem(int quant = 500)
     {
-        Core.FarmingLogger("Toxic Gem", quant);
         Core.EquipClass(ClassType.Solo);
         if (!Core.CheckInventory("Toxian Gas Mask"))
         {
