@@ -17207,6 +17207,22 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Badges/GravelynsWarrior.cs"
   },
   {
+    "name": "Verdant Virgo Rewards",
+    "description": "farms quest rewards from Verdant Virgo` in /arcangrove",
+    "tags": [
+      "quest reward",
+      "kylokos",
+      "verdant",
+      "virgo",
+      "arcangrove",
+      "zodiac"
+    ],
+    "path": "Other/ZodiacQuests/VerdantVirgoRewards.cs",
+    "size": 1627,
+    "fileName": "VerdantVirgoRewards.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/ZodiacQuests/VerdantVirgoRewards.cs"
+  },
+  {
     "name": "Leonine Regalia Rewards",
     "description": "farms quest rewards from Leonine Regalia in /arcangrove",
     "tags": [
