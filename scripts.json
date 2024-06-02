@@ -20159,6 +20159,31 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/BarricadeDefenseMerge.cs"
   },
   {
+    "name": "Diogons Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Diogons Merge [2449] in /ectocave",
+    "tags": [
+      "diogons",
+      "merge",
+      "ectocave",
+      "toxian",
+      "metal",
+      "strider",
+      "masked",
+      "panama",
+      "morph",
+      "radiation",
+      "vessel",
+      "radioactive",
+      "warning",
+      "synthesis",
+      "armblades"
+    ],
+    "path": "Other/MergeShops/DiogonsMerge.cs",
+    "size": 6492,
+    "fileName": "DiogonsMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/DiogonsMerge.cs"
+  },
+  {
     "name": "QueensReignMerge",
     "description": "null",
     "tags": [
