@@ -467,7 +467,7 @@ public class CoreAOR
         if (Core.isCompletedBefore(9729))
             return;
 
-        SeaVoice();
+        TerminaTemple(true);
 
         Story.PreLoad(this);
 
