@@ -121,27 +121,38 @@ public class CoreVHL
         if (Core.CheckInventory("Void Crystal A") && Core.CheckInventory("Void Crystal B"))
             return;
 
-        Core.Logger("Obtaining Void Crystal A & Void Crystal B");
         Core.AddDrop(Nation.bagDrops);
-
-        if (!Core.CheckInventory("Elders' Blood", 2))
-            Daily.EldersBlood();
-        _SparrowMethod(2);
-
         Nation.FarmUni13(1);
-        Nation.FarmUni10(200);
-        Nation.FarmGemofNulgath(150);
-        Nation.FarmDarkCrystalShard(200);
-        Nation.FarmDiamondofNulgath(200);
-        Nation.FarmBloodGem(30);
-        Nation.FarmTotemofNulgath(15);
-        Nation.SwindleBulk(200);
+        if (!Core.CheckInventory("Void Crystal A"))
+        {
+            Core.Logger("Obtaining Void Crystal A ");
+            Nation.FarmUni10(200);
+            Nation.SwindleBulk(200);
+            Nation.FarmDarkCrystalShard(200);
+            Nation.FarmGemofNulgath(150);
+            Adv.BuyItem("tercessuinotlim", 1355, "Void Crystal A");
+        }
+        if (!Core.CheckInventory("Void Crystal B"))
+        {
+            Core.Logger("Obtaining Void Crystal B");
+            if (!Core.CheckInventory("Elders' Blood", 2))
+                Daily.EldersBlood();
+            _SparrowMethod(2);
 
-        if (!Core.CheckInventory("Elders' Blood", 2))
-            Core.Logger($"Not enough \"Elders' Blood\", please do the daily {2 - Bot.Inventory.GetQuantity("Elders' Blood")} more times (not today)", messageBox: true, stopBot: true);
 
-        Adv.BuyItem("tercessuinotlim", 1355, "Void Crystal A");
-        Adv.BuyItem("tercessuinotlim", 1355, "Void Crystal B");
+            if (!Core.CheckInventory("Elders' Blood", 2))
+            {
+                Core.Logger($"Not enough \"Elders' Blood\", please do the daily {2 - Bot.Inventory.GetQuantity("Elders' Blood")} more times (not today)");
+                FarmExtra();
+            }
+            else
+            {
+                Nation.FarmTotemofNulgath(15);
+                Nation.FarmDiamondofNulgath(200);
+                Nation.FarmBloodGem(30);
+                Adv.BuyItem("tercessuinotlim", 1355, "Void Crystal B");
+            }
+        }
     }
 
     private void FarmExtra(int quant = 25)
