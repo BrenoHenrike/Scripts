@@ -2989,7 +2989,7 @@ public class CoreBots
             }
         }
 
-        void LogMonsterId(Monster monster) => Logger($"Attacking MonsterMapID: {monster.MapID}");
+        void LogMonsterId(Monster monster) => Logger($"Attacking MonsterMapID: {monster}");
 
         DebugLogger(this);
         if (HasItem()) return;
@@ -3029,9 +3029,11 @@ public class CoreBots
             return;
         }
         if (log)
+        {
             FarmingLogger(item, quantity);
+            if (name != "*") Logger($"Attacking Monster ID: {name}");
+        }
 
-        if (log) Logger($"Attacking Monster ID: {name}");
         while (!Bot.ShouldExit && item != null && (isTemp ? !Bot.TempInv.Contains(item, quantity) : !CheckInventory(item, quantity)))
         {
             DebugLogger(this);
