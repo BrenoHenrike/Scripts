@@ -50,7 +50,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 227112,
+    "size": 227138,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -72,7 +72,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 87677,
+    "size": 87761,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -4298,7 +4298,7 @@
       "quests"
     ],
     "path": "Nation/Various/HanzoOrbQuest.cs",
-    "size": 2403,
+    "size": 2499,
     "fileName": "HanzoOrbQuest.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/HanzoOrbQuest.cs"
   },
