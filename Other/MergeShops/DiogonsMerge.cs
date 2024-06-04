@@ -84,6 +84,9 @@ public class DiogonsMerge
 
     public void FarmToxicGem(int quant = 500)
     {
+        if (Core.CheckInventory("Toxic Gem", quant))
+            return;
+
         Core.EquipClass(ClassType.Solo);
         if (!Core.CheckInventory("Toxian Gas Mask"))
         {
