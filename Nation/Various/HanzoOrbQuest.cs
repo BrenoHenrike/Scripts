@@ -52,10 +52,10 @@ public class HanzoOrbQuest
             {
                 while (!Bot.ShouldExit && (!Core.CheckInventory(item) || !Bot.Inventory.IsMaxStack(item)))
                 {
-                    Core.HuntMonster("graveyard", "Big Jack Sprat", "Jacked Eye", 5);
-                    Core.HuntMonster("marsh", "Dreadspider", "Dreadspider Silk");
-                    Core.KillMonster("tercessuinotlim", "m2", "Left", "*", "Makai Fang", 5);
-                    Core.HuntMonster("bludrut", "Rattlebones", "Rattle Bones", 3);
+                    Core.HuntMonster("graveyard", "Big Jack Sprat", "Jacked Eye", 5, log: false);
+                    Core.HuntMonster("marsh", "Dreadspider", "Dreadspider Silk", log: false);
+                    Core.KillMonster("tercessuinotlim", "m2", "Left", "*", "Makai Fang", 5, log: false);
+                    Core.HuntMonster("bludrut", "Rattlebones", "Rattle Bones", 3, log: false);
                 }
             }
         }
@@ -63,10 +63,10 @@ public class HanzoOrbQuest
         {
             while (!Bot.ShouldExit && !Core.CheckInventory(Reward, quant))
             {
-                Core.HuntMonster("graveyard", "Big Jack Sprat", "Jacked Eye", 5);
-                Core.HuntMonster("marsh", "Dreadspider", "Dreadspider Silk");
-                Core.KillMonster("tercessuinotlim", "m2", "Left", "*", "Makai Fang", 5);
-                Core.HuntMonster("bludrut", "Rattlebones", "Rattle Bones", 3);
+                Core.HuntMonster("graveyard", "Big Jack Sprat", "Jacked Eye", 5, log: false);
+                Core.HuntMonster("marsh", "Dreadspider", "Dreadspider Silk", log: false);
+                Core.KillMonster("tercessuinotlim", "m2", "Left", "*", "Makai Fang", 5, log: false);
+                Core.HuntMonster("bludrut", "Rattlebones", "Rattle Bones", 3, log: false);
             }
         }
         Core.CancelRegisteredQuests();
