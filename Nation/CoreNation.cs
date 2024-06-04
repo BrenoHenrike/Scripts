@@ -235,9 +235,9 @@ public class CoreNation
                         }
 
                     }
-                    Core.KillMonster("tercessuinotlim", "m2", "Top", "*", "Makai Fang", 5);
-                    Core.KillMonster("hydra", "Rune2", "Left", "*", "Imp Flame", 3);
-                    Core.HuntMonster("greenguardwest", "Big Bad Boar", "Wereboar Tusk", 2);
+                    Core.KillMonster("tercessuinotlim", "m2", "Top", "*", "Makai Fang", 5, log: false);
+                    Core.KillMonster("hydra", "Rune2", "Left", "*", "Imp Flame", 3, log: false);
+                    Core.HuntMonster("greenguardwest", "Big Bad Boar", "Wereboar Tusk", 2, log: false);
                 }
             }
             Core.Logger("all items quant maxed");
@@ -274,7 +274,7 @@ public class CoreNation
 
                 }
 
-                Core.KillMonster("tercessuinotlim", "m2", "top", "*", "Makai Fang", 5);
+                Core.KillMonster("tercessuinotlim", "m2", "top", "*", "Makai Fang", 5, log: false);
                 Core.KillMonster("hydra", "Rune2", "Left", "*", "Imp Flame", 3, log: false);
                 Core.HuntMonster("greenguardwest", "Big Bad Boar", "Wereboar Tusk", 2, log: false);
             }
@@ -1292,9 +1292,9 @@ public class CoreNation
 
             // Equip the Farm class and hunt monsters for quest completion
             Core.EquipClass(ClassType.Farm);
-            Core.KillMonster("tercessuinotlim", "m2", "Left", "*", "Makai Fang", 5);
-            Core.HuntMonster("hydra", "Fire Imp", "Imp Flame", 3);
-            Core.HuntMonster("battleunderc", "Crystalized Jellyfish", "Aquamarine of Nulgath", 3, false);
+            Core.KillMonster("tercessuinotlim", "m2", "Left", "*", "Makai Fang", 5, log: false);
+            Core.HuntMonster("hydra", "Fire Imp", "Imp Flame", 3, log: false);
+            Core.HuntMonster("battleunderc", "Crystalized Jellyfish", "Aquamarine of Nulgath", 3, false, log: false);
 
             // Pick up any dropped items
             Bot.Drops.Pickup(bagDrops);
