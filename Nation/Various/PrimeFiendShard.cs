@@ -51,7 +51,6 @@ tags: prime fiend shard, nation, ravenous, fiend shard, nulgath, voidchasm, void
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Quests;
 using Skua.Core.Models.Items;
-using System.Collections.Generic;
 
 public class PrimeFiendShard
 {
