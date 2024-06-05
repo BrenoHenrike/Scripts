@@ -4348,7 +4348,7 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/TheLeeryContract[Member].cs"
   },
   {
-    "name": "PrimeFiendShardQuests",
+    "name": "Prime Fiend Shard Quests",
     "description": "This script will complete the storyline from the prime fiend shard",
     "tags": [
       "prime fiend shard",
@@ -4360,7 +4360,7 @@
       "void chasm"
     ],
     "path": "Nation/Various/PrimeFiendShard.cs",
-    "size": 9660,
+    "size": 9663,
     "fileName": "PrimeFiendShard.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/PrimeFiendShard.cs"
   },
