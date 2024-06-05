@@ -2439,10 +2439,7 @@ public class CoreBots
             if (!isTemp)
                 AddDrop(item);
 
-            if (log)
-                FarmingLogger(item, quant);
-
-            LogAndJump($"Hunting {targetMonster}", targetMonster.Cell);
+            LogAndJump($"Hunting {targetMonster}, for {item}, {dynamicQuant(item, isTemp)}/{quant}", targetMonster.Cell);
             while (!Bot.ShouldExit && (isTemp ? !Bot.TempInv.Contains(item, quant) : !CheckInventory(item, quant)))
             {
                 while (!Bot.ShouldExit && !Bot.Player.Alive)
@@ -2522,10 +2519,7 @@ public class CoreBots
             if (!isTemp)
                 AddDrop(item);
 
-            if (log)
-                FarmingLogger(item, quant);
-
-            LogAndJump($"Hunting {targetMonster}", targetMonster.Cell);
+            LogAndJump($"Hunting {targetMonster}, for {item}, {dynamicQuant(item, isTemp)}/{quant}", targetMonster.Cell);
             while (!Bot.ShouldExit && (isTemp ? !Bot.TempInv.Contains(item, quant) : !CheckInventory(item, quant)))
             {
                 while (!Bot.ShouldExit && !Bot.Player.Alive)
@@ -3029,10 +3023,8 @@ public class CoreBots
             return;
         }
         if (log)
-        {
-            FarmingLogger(item, quantity);
-            if (name != "*") Logger($"Attacking Monster ID: {name}");
-        }
+            if (name != "*")
+                Logger($"Attacking Monster: {name}, for {item}  {dynamicQuant(item, isTemp)}/{quantity}");
 
         while (!Bot.ShouldExit && item != null && (isTemp ? !Bot.TempInv.Contains(item, quantity) : !CheckInventory(item, quantity)))
         {
