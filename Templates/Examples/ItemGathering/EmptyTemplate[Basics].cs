@@ -33,29 +33,34 @@ public class DefaultTemplate
         Core.SetOptions(false);
     }
 
-    public void Example()
+    public void Example(bool TestMode = false)
     {
-        if (Core.CheckInventory("item", 1))
-            return;
-
-        #region General Item Farming with quest included
-        Core.RegisterQuests(000);
-        while (!Bot.ShouldExit && Core.CheckInventory("item", 1))
+        if (TestMode)
         {
-            Core.HuntMonster("map", "mob", "item", 1, isTemp: false, log: false);
-            Core.HuntMonsterMapID("map", 1, "item", 1, isTemp: false, log: false);
-            Core.KillMonster("map", "cell", "pad", "mob", "item", 1, isTemp: false, log: false);
+            if (Core.CheckInventory("item", 1))
+                return;
+
+            #region General Item Farming with quest included
+            Core.RegisterQuests(000);
+            while (!Bot.ShouldExit && Core.CheckInventory("item", 1))
+            {
+                Core.HuntMonster("map", "mob", "item", 1, isTemp: false, log: false);
+                Core.HuntMonsterMapID("map", 1, "item", 1, isTemp: false, log: false);
+                Core.KillMonster("map", "cell", "pad", "mob", "item", 1, isTemp: false, log: false);
+            }
+            Core.CancelRegisteredQuests();
+            #endregion
+
+            #region Story Mode:
+            Story.KillQuest(000, "mapname", "MonsterName");
+            Story.KillQuest(000, "mapname", new[] { "Monstername", "Monstername" });
+            Story.MapItemQuest(000, "mapname", 1, 1);
+            Story.MapItemQuest(000, "mapname", new[] { 000, 000, 000, });
+            Story.ChainQuest(000);
+            #endregion
         }
-        Core.CancelRegisteredQuests();
-        #endregion
-
-        #region Story Mode:
-        Story.KillQuest(000, "mapname", "MonsterName");
-        Story.KillQuest(000, "mapname", new[] { "Monstername", "Monstername" });
-        Story.MapItemQuest(000, "mapname", 1, 1);
-        Story.MapItemQuest(000, "mapname", new[] { 000, 000, 000, });
-        Story.ChainQuest(000);
-        #endregion
-
     }
 }
+
+
+
