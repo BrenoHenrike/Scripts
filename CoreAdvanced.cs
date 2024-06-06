@@ -1970,21 +1970,7 @@ public class CoreAdvanced
                     hSpecial = HelmSpecial.Forge;
                     break;
                 #endregion Lucky - lacerate - forge
-
-                #region Lucky - Vainglory - Lacerate - Vim
-                case "yami no ronin":
-                    if (!uVainglory() || !uDauntless() || uLacerate() || !uVim() || !uPraxis())
-                        goto default;
-
-                    type = EnhancementType.Lucky;
-                    cSpecial = CapeSpecial.Vainglory;
-                    wSpecial = uDauntless() ? WeaponSpecial.Dauntless :
-                    uLacerate() ? WeaponSpecial.Lacerate :
-                    WeaponSpecial.Praxis;
-                    hSpecial = HelmSpecial.Vim;
-                    break;
-                #endregion
-
+               
                 #region Lucky - Vainglory - Valiance - Anima
                 case "nechronomancer":
                 case "necrotic chronomancer":
