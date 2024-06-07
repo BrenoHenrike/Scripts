@@ -173,6 +173,14 @@ public class CoreArchMage
         }
         Core.CancelRegisteredQuests();
 
+        foreach ((int ItemID, int ShopItemID) Enh in new[] { (71629, 43050), (70752, 42601) })
+        {
+            if (Core.CheckInventory(Enh.ItemID))
+                continue;
+
+            Adv.BuyItem("forge", 2142, Enh.ItemID, shopItemID: Enh.ShopItemID);
+        }
+
         Core.EnsureComplete(8919);
         Bot.Wait.ForPickup("Providence");
         Core.Logger("Weapon obtained: \"Providence\" [51% damage to all]");
