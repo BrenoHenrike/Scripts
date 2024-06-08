@@ -19734,6 +19734,32 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/InfernalArenaMerge.cs"
   },
   {
+    "name": "Sunset Treasures Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Sunset Treasures Merge [2451] in /sunsetdunes",
+    "tags": [
+      "sunset",
+      "treasures",
+      "merge",
+      "sunsetdunes",
+      "gold",
+      "voucher",
+      "k",
+      "phoenixs",
+      "glory",
+      "golden",
+      "phoenix",
+      "wings",
+      "fury",
+      "great",
+      "firebirds",
+      "spear"
+    ],
+    "path": "Other/MergeShops/SunsetTreasuresMerge.cs",
+    "size": 5456,
+    "fileName": "SunsetTreasuresMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/SunsetTreasuresMerge.cs"
+  },
+  {
     "name": "Lord Granvilles Merge",
     "description": "This bot will farm the items belonging to the selected mode for the Lord Granvilles Merge [2442] in /balemorale",
     "tags": [
