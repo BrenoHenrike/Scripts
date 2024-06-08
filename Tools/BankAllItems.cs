@@ -29,6 +29,11 @@ public class BankAllItems
 
     public void ScriptMain(IScriptInterface bot)
     {
+        if (!string.IsNullOrEmpty(Bot.Config!.Get<string>("BlackList")))
+        {
+            string[] blackListItems = Bot.Config!.Get<string>("BlackList").Split(',');
+            Core.BankingBlackList.AddRange(blackListItems);
+        }
 
         Core.SetOptions();
 
@@ -54,7 +59,6 @@ public class BankAllItems
         blackListedItems.UnionWith(Core.SoloGear);
         blackListedItems.Add(Core.FarmClass);
         blackListedItems.UnionWith(Core.FarmGear);
-        blackListedItems.UnionWith(Core.BankingBlackList);
 
         Core.Logger($"BlackList: {string.Join(", ", blackListedItems.Where(item => !string.IsNullOrEmpty(item)))}");
 
