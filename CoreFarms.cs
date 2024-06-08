@@ -176,7 +176,6 @@ public class CoreFarms
         }
         Core.CancelRegisteredQuests();
         Core.SavedState(false);
-
     }
 
     /// <summary>
@@ -240,6 +239,7 @@ public class CoreFarms
             return;
 
         Core.EquipClass(ClassType.Farm);
+        ToggleBoost(BoostType.Gold);
         Core.SavedState();
         Core.Logger($"Farming {goldQuant}  using DarkWarLegion Method");
 
@@ -248,6 +248,7 @@ public class CoreFarms
             Core.KillMonster("darkwarlegion", "r2", "Left", "*", "Nation Badge", 5, log: false);
         Core.CancelRegisteredQuests();
         Core.SavedState(false);
+        ToggleBoost(BoostType.Gold, false);
     }
     #endregion
 
@@ -450,6 +451,11 @@ public class CoreFarms
             return;
         }
 
+        if (Bot.Player.Level < level)
+            ToggleBoost(BoostType.Experience);
+        if (Bot.Player.Gold < gold)
+            ToggleBoost(BoostType.Gold);
+
         Core.AddDrop("Essence of Wrath", "Souls of Heresy");
         Core.EquipClass(ClassType.Farm);
         Core.SavedState();
@@ -461,6 +467,8 @@ public class CoreFarms
             Core.KillMonster("sevencircleswar", "Enter", "Right", "*", log: false);
 
         Core.CancelRegisteredQuests();
+        ToggleBoost(BoostType.Experience, false);
+        ToggleBoost(BoostType.Gold, false);
         Core.SavedState(false);
     }
 
@@ -475,12 +483,15 @@ public class CoreFarms
             return;
 
         Core.EquipClass(ClassType.Farm);
+        if (Bot.Player.Level < level)
+            ToggleBoost(BoostType.Experience);
         Core.SavedState();
 
         Core.RegisterQuests(6294, 6295);
         while (!Bot.ShouldExit && Bot.Player.Level < level)
             Core.KillMonster("Firewar", "r2", "Right", "*", log: false);
         Core.CancelRegisteredQuests();
+            ToggleBoost(BoostType.Experience, false);
         Core.SavedState(false);
     }
     #endregion
