@@ -687,7 +687,7 @@
       "null"
     ],
     "path": "Tools/BankAllItems.cs",
-    "size": 3537,
+    "size": 3718,
     "fileName": "BankAllItems.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/BankAllItems.cs"
   },
@@ -20696,7 +20696,7 @@
       "null"
     ],
     "path": "Other/FarmJoeKits/CoreFarmerJoe.cs",
-    "size": 37548,
+    "size": 41850,
     "fileName": "CoreFarmerJoe.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/CoreFarmerJoe.cs"
   },
@@ -20710,7 +20710,7 @@
       "legend"
     ],
     "path": "Other/FarmJoeKits/1MemberFarmsKit.cs",
-    "size": 20566,
+    "size": 25949,
     "fileName": "1MemberFarmsKit.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/1MemberFarmsKit.cs"
   },
@@ -20721,7 +20721,7 @@
       "null"
     ],
     "path": "Other/FarmJoeKits/0FarmerJoeDoAll.cs",
-    "size": 4461,
+    "size": 7799,
     "fileName": "0FarmerJoeDoAll.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/0FarmerJoeDoAll.cs"
   },
