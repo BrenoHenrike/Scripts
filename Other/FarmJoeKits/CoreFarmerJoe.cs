@@ -44,7 +44,6 @@ tags: null
 //cs_include Scripts/Story/Tutorial.cs
 //cs_include Scripts/Story/XansLair.cs
 //cs_include Scripts/Story/Yokai.cs
-//cs_include Scripts/Other/FarmJoeKits/CoreFarmerJoe.cs
 //cs_include Scripts/Tools/BankAllItems.cs
 //cs_include Scripts/Story/Friendship.cs
 //cs_include Scripts/Other/Classes/REP-based/MasterRanger.cs
