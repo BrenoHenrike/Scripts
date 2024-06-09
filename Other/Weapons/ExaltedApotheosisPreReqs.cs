@@ -67,7 +67,8 @@ public class ExaltedApotheosisPreReqs
             Core.Logger($" Ezrajal Insignia: {Core.dynamicQuant("Ezrajal Insignia", false)} / 24");
             Core.Logger($" Warden Insignia: {Core.dynamicQuant("Warden Insignia", false)} / 24");
             Core.Logger($" Engineer Insignia: {Core.dynamicQuant("Engineer Insignia", false)} / 16");
-            Core.Logger("Please obtain the rest of the insignias with your army to complete the merge. Skua will *not* be able to do ULTRAs for you. (not sorry)", stopBot: true);
+            Core.Logger("Please obtain the rest of the insignias with your army to complete the merge. Skua will *not* be able to do ULTRAs for you. (not sorry)");
+            return;
         }
         else
         {
