@@ -412,12 +412,7 @@ public class CoreAOR
             return;
 
         DeepWater();
-
-        if (!Core.isCompletedBefore(9125))
-        {
-            Core.Logger(" \"Your Hero\" [9125] Quest *REQUIRED* to start SeaVoice quests");
-            return;
-        }
+        SoW.ManaCradle();
 
         Story.PreLoad(this);
 
