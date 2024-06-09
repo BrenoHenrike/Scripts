@@ -2588,7 +2588,7 @@ public class CoreBots
             Bot.Wait.ForPickup(item);
         }
 
-        void _KillEscherion(string item = null, bool isTemp = false)
+        void _KillEscherion(string? item = null, bool isTemp = false)
         {
             if (Bot.Map.Name is not "escherion")
             {
