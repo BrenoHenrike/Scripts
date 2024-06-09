@@ -141,6 +141,7 @@ tags: null
 //cs_include Scripts/Story/DjinnGate.cs
 //cs_include Scripts/Other/Weapons/FortitudeAndHubris.cs
 
+//cs_include Scripts/Other\Weapons\ExaltedApotheosisPreReqs.cs
 
 
 
@@ -159,6 +160,7 @@ public class CoreFarmerJoe
     public SynderesMerge SM = new();
     public ArchfiendDeathLord AFDeath = new();
     private UnlockForgeEnhancements UnlockForgeEnhancements = new();
+    private ExaltedApotheosisPreReqs ExaltedApotheosisPreReqs = new();
 
     //Cores
     public static CoreBots Core => CoreBots.Instance;
@@ -523,22 +525,57 @@ public class CoreFarmerJoe
         LOO.GetLoO();
         Core.ToBank(Core.EnsureLoad(7156).Rewards.Select(i => i.Name).ToArray());
 
-
         #region More Classes
         Core.Logger("P3 - 4: Improving Efficiency, and more Classes");
         SC.GetSC();
         #endregion More Classes
 
+        /*
+        Lv 75
+        Forge Weapons: Forge, Lacerate, Smite, Praxis
+        Forge Helms: Forge, Vim, Examen, Anima, Pneuma
+        */
+        // Weapons Enh
+        UnlockForgeEnhancements.ForgeWeaponEnhancement();
+        UnlockForgeEnhancements.Lacerate();
+        UnlockForgeEnhancements.Smite();
+        UnlockForgeEnhancements.Praxis();
+        // Helmets Enh
+        UnlockForgeEnhancements.ForgeHelmEnhancement();
+        UnlockForgeEnhancements.Vim();
+        UnlockForgeEnhancements.Examen();
+        UnlockForgeEnhancements.Anima();
+        UnlockForgeEnhancements.Pneuma();
 
         Farm.Experience(80);
         SetClass(true, false, true);
         CAQ.DoAll();
         BBOA.GetBBoA();
 
+        /*
+        Lv to 90
+        Forge Capes: Forge, Absolution, Vainglory, Avarice, Penitence, Lament
+        Dragon of Time
+        YnR
+        */
+        Farm.Experience(90);
+        SRM.BuyAllMerge("Hollowborn Reaper's Scythe");
+        UnlockForgeEnhancements.ForgeCapeEnhancement();
+        UnlockForgeEnhancements.Absolution();
+        UnlockForgeEnhancements.Avarice();
+        UnlockForgeEnhancements.Lament();
+        UnlockForgeEnhancements.Vainglory();
+        SetClass(true, false, true);
+        YNR.GetYnR();
+
+        SetClass(true, false, true);
+        DoT.GetDoT();
+
         // Leveling to 100
         Core.Logger("P4 Leveling to 100");
         SetClass(true, false, true);
         Farm.Experience();
+
     }
 
 
@@ -553,37 +590,22 @@ public class CoreFarmerJoe
         if (Bot.Config!.Get<bool>("OutFit"))
             Outfit();
 
-        SRM.BuyAllMerge("Hollowborn Reaper's Scythe");
-        SetClass(true, false, true);
-        YNR.GetYnR();
-
-        SetClass(true, false, true);
-        DoT.GetDoT();
-
         SetClass(true, false, true);
 
+        #region  Prefarm some non-Skua-able items:       
 
-        //Forge Enhancements
-        //Cape:
-        UnlockForgeEnhancements.ForgeCapeEnhancement();
-        UnlockForgeEnhancements.Absolution();
-        UnlockForgeEnhancements.Avarice();
-        UnlockForgeEnhancements.Lament();
-        UnlockForgeEnhancements.Vainglory();
-
-        //Weapon:
-        UnlockForgeEnhancements.ForgeWeaponEnhancement();
-        UnlockForgeEnhancements.Lacerate();
-        UnlockForgeEnhancements.Smite();
-        UnlockForgeEnhancements.Praxis();
+        //Prep for remaning Enh:
         UnlockForgeEnhancements.HerosValiance();
+        UnlockForgeEnhancements.Elysium();
+        UnlockForgeEnhancements.ArcanasConcerto();
+        UnlockForgeEnhancements.Ravenous();
+        UnlockForgeEnhancements.DauntLess();
 
-        //Helm:
-        UnlockForgeEnhancements.ForgeHelmEnhancement();
-        UnlockForgeEnhancements.Vim();
-        UnlockForgeEnhancements.Examen();
-        UnlockForgeEnhancements.Anima();
-        UnlockForgeEnhancements.Pneuma();
+        // Apotheosis:
+        ExaltedApotheosisPreReqs.PreReqs();
+
+
+        #endregion Prefarm some non-Skua-able items:   
 
         #endregion Ending & Extras
     }
