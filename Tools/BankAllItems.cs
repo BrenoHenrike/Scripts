@@ -29,11 +29,11 @@ public class BankAllItems
 
     public void ScriptMain(IScriptInterface bot)
     {
-        if (!string.IsNullOrEmpty(Bot.Config!.Get<string>("BlackList")))
-        {
-            string[] blackListItems = Bot.Config!.Get<string>("BlackList").Split(',');
-            Core.BankingBlackList.AddRange(blackListItems);
-        }
+        string[] blackListItems = Array.Empty<string>();
+        var blackList = Bot.Config!.Get<string>("BlackList");
+        if (!string.IsNullOrEmpty(blackList))
+            blackListItems = blackList.Split(',');
+
 
         Core.SetOptions();
 
