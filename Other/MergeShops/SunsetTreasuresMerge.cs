@@ -1,7 +1,7 @@
 /*
 name: Sunset Treasures Merge
 description: This bot will farm the items belonging to the selected mode for the Sunset Treasures Merge [2451] in /sunsetdunes
-tags: sunset, treasures, merge, sunsetdunes, gold, voucher, k, phoenixs, glory, golden, phoenix, wings, fury, great, firebirds, spear
+tags: sunset, treasures, merge, sunsetdunes, phoenixs, glory, golden, phoenix, wings, fury, great, firebirds, spear, immortal, in, flames
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -27,14 +27,14 @@ public class SunsetTreasuresMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Anqa's Feather", "Glowing Ember", "Golden Firebird's Spear", "Golden Firebird's Blade", "Golden Firebird's Blades" });
+        Core.BankingBlackList.AddRange(new[] { "Anqa's Feather", "Glowing Ember", "Golden Firebird's Spear", "Golden Firebird's Blade", "Golden Firebird's Blades", "Miniature Phoenix Guest" });
         if (Bot.ShowMessageBox("this script requires you to kill an ultra, so just run this on like 7 accounds... continue?", "**WARNING**", true) is not true)
             Bot.Stop();
 
         Core.SetOptions();
 
         BuyAllMerge();
-        
+
         Core.SetOptions(false);
     }
 
@@ -68,6 +68,7 @@ public class SunsetTreasuresMerge
                 case "Golden Firebird's Spear":
                 case "Golden Firebird's Blade":
                 case "Golden Firebird's Blades":
+                case "Miniature Phoenix Guest":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
                     //incase u get teh otehr drops along the way vvv
@@ -96,5 +97,6 @@ public class SunsetTreasuresMerge
         new Option<bool>("86279", "Firebird's Fury Spear", "Mode: [select] only\nShould the bot buy \"Firebird's Fury Spear\" ?", false),
         new Option<bool>("86281", "Firebird's Fury Blade", "Mode: [select] only\nShould the bot buy \"Firebird's Fury Blade\" ?", false),
         new Option<bool>("86306", "Firebird's Fury Blades", "Mode: [select] only\nShould the bot buy \"Firebird's Fury Blades\" ?", false),
+        new Option<bool>("86302", "Immortal Phoenix in Flames", "Mode: [select] only\nShould the bot buy \"Immortal Phoenix in Flames\" ?", false),
     };
 }
