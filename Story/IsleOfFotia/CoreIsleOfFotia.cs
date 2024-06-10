@@ -150,18 +150,7 @@ public class CoreIsleOfFotia
         // The Power of Flowers 3036
         if (!Story.QuestProgression(3036))
         {
-            int mournerGenderResult = CheckMournerGender();
-            Monster MonsterName = Bot.Monsters.MapMonsters.Where(X => X.MapID == mournerGenderResult).First();
-
-            if (mournerGenderResult == -1)
-                Core.Logger("how tf did u manage this? your genderless >.>", stopBot: true);
-            else Core.Logger($"Setting Mourner to: [{MonsterName.Name}], MID: [{MonsterName.MapID}]");
-
-            Core.EnsureAccept(3036);
-
-            Core.HuntMonsterMapID("judgement", MonsterName.MapID, "Delivered Asphodel Flower", 8);
-
-            Core.EnsureComplete(3036);
+            FlowerPower("Delivered Asphodel Flower", 8, true);
         }
 
         //The Time for Judgment 3038
@@ -266,27 +255,37 @@ public class CoreIsleOfFotia
         }
     }
 
-    int CheckMournerGender()
+    public void FlowerPower(string? item = null, int quant = 1, bool isTemp = false)
     {
-        Core.Join("judgement", "r5", "Left");
-        Core.Logger("Testing if AE swapped the gender on the quest again...");
-        Core.Logger($"Current Charracter Gender: {Bot.Flash.GetGameObject<string>("world.myAvatar.objData.strGender")}");
-
         Core.EnsureAccept(3036);
 
-        // Kill the monster until the flower drop is obtained
-        Bot.Kill.Monster(8);
+        while (!Bot.ShouldExit && (isTemp ? !Bot.TempInv.Contains("Delivered Asphodel Flower", quant) : !Bot.Inventory.Contains("Delivered Asphodel Flower", quant)))
+        {
+            if (Bot.Map.Name != "judgement")
+            {
+                Core.Join("judgement");
+                Bot.Wait.ForActionCooldown(Skua.Core.Models.GameActions.Transfer);
+            }
 
-        // If the drop is obtained, set the Mourner Gender and return the MonsterMapID
-        if (Core.CheckInventory(18762))
-        {
-            Core.Logger("Mourner to kill: Female");
-            return 4;
+            if (Bot.Player.Cell != "r5")
+            {
+                Core.Jump("r5", "Left");
+                Bot.Wait.ForCellChange("r5");
+                Bot.Player.SetSpawnPoint();
+            }
+
+            foreach (var mob in Bot.Monsters.CurrentAvailableMonsters.Where(x => x != null && x.Name.EndsWith("Mourner")))
+            {
+                Bot.Kill.Monster(mob);
+                Bot.Wait.ForMonsterDeath();
+                if (isTemp ? Bot.TempInv.Contains("Delivered Asphodel Flower", quant) : Bot.Inventory.Contains("Delivered Asphodel Flower", quant))
+                {
+                    break;
+                }
+            }
         }
-        else
-        {
-            Core.Logger("Mourner to kill: Male");
-            return 2;
-        }
+
+        Core.EnsureComplete(3036);
     }
+
 }
