@@ -72,7 +72,7 @@ public class SunsetTreasuresMerge
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
                     //incase u get teh otehr drops along the way vvv
-                    Core.AddDrop(new[] { "Glowing Ember", "Golden Firebird's Spear", "Golden Firebird's Blade", "Golden Firebird's Blades" });
+                    Core.AddDrop(new[] { "Glowing Ember", "Golden Firebird's Spear", "Golden Firebird's Blade", "Golden Firebird's Blades", "Miniature Phoenix Guest" });
                     Core.RegisterQuests(9752);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                         Core.HuntMonster("sunsetdunes", "Anqa", req.Name, quant, req.Temp);
