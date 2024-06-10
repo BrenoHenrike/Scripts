@@ -8,6 +8,8 @@ tags: master of your craft, drops
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
+using Skua.Core.Models.Quests;
 
 public class MasterofYourCraft
 {
@@ -22,7 +24,7 @@ public class MasterofYourCraft
         Core.BankingBlackList.AddRange(Rewards);
         Core.SetOptions();
 
-        MOYC();
+        Moyc();
 
         Core.SetOptions(false);
     }
@@ -37,24 +39,40 @@ public class MasterofYourCraft
         "Master Trainer's Sword",
     };
 
-    public void MOYC()
+    public void Moyc()
     {
-        Core.AddDrop(Rewards);
+        var quest = Bot.Quests.EnsureLoad(3051);
+        var rewards = quest.Rewards.ToArray();
 
-        if (Core.CheckInventory("Dragon of Time"))
+        if (!Core.CheckInventory("Dragon of Time"))
         {
-            Bot.Inventory.EquipItem("Dragon of Time");
-            Adv.SmartEnhance("Dragon of Time");
+            Core.Logger("Missing \"Dragon of Time\", to continue", stopBot: true);
         }
 
-        int i = 1;
-        while (!Bot.ShouldExit && !Core.CheckInventory(Rewards, toInv: false))
+        Core.Unbank("Dragon of Time");
+        Core.Equip("Dragon of Time");
+        Adv.SmartEnhance("Dragon of Time");
+
+        foreach (var reward in rewards)
         {
-            Core.EnsureAccept(3051);
+            if (Core.CheckInventory(reward.ID, toInv: false))
+            {
+                continue;
+            }
+            Core.AddDrop(reward.ID);
+        }
+
+        Core.RegisterQuests(quest.ID);
+        while (!Bot.ShouldExit && rewards.Any(reward => !Core.CheckInventory(reward.ID)))
+        {
             Core.HuntMonster("chchallenge", "Training Golem", "Rounds Won");
-            Core.EnsureComplete(3051);
-            Core.ToBank(Rewards);
-            Core.Logger($"Completed x{i++}");
+            foreach (var reward in rewards)
+            {
+                if (Bot.Inventory.Contains(reward.ID))
+                {
+                    Core.ToBank(reward.ID);
+                }
+            }
         }
     }
 
