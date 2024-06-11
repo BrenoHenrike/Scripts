@@ -788,193 +788,315 @@ public class CoreLegion
         Core.CancelRegisteredQuests();
     }
 
-    public void DagePvP(int TrophyQuant, int TechniqueQuant, int ScrollQuant, bool canSoloBoss = true)
+    public void DagePvP(int trophyQuant, int techniqueQuant, int scrollQuant, bool canSoloBoss = true)
     {
-        if (Core.CheckInventory("Legion Combat Trophy", TrophyQuant) &&
-            Core.CheckInventory("Technique Observed", TechniqueQuant) &&
-            Core.CheckInventory("Sword Scroll Fragment", ScrollQuant))
+        if (Core.CheckInventory("Legion Combat Trophy", trophyQuant) &&
+            Core.CheckInventory("Technique Observed", techniqueQuant) &&
+            Core.CheckInventory("Sword Scroll Fragment", scrollQuant))
             return;
 
         if (Core.CBOBool("PvP_SoloPvPBoss", out bool _canSoloBoss))
             canSoloBoss = !_canSoloBoss;
 
-        // Bot.Options.RestPackets = true;
-        // Bot.Events.PlayerDeath += PVPDeath;
-
         Core.AddDrop("Legion Combat Trophy", "Technique Observed", "Sword Scroll Fragment");
         Core.EquipClass(ClassType.Solo);
-        // Core.Logger($"Farming {quant} {item}. SoloBoss = {canSoloBoss}");
 
-        int ExitAttempt = 0;
-        int Death = 0;
+        int exitAttempt = 0;
+        bool FarmComplete = false;
 
     Start:
-        while (!Bot.ShouldExit &&
-                !Core.CheckInventory("Legion Combat Trophy", TrophyQuant) ||
-                !Core.CheckInventory("Technique Observed", TechniqueQuant) ||
-                !Core.CheckInventory("Sword Scroll Fragment", ScrollQuant))
+        while (!Bot.ShouldExit && !FarmComplete)
         {
-            if (TrophyQuant > 0)
-                Core.Logger($"Trophy: {Bot.Inventory.GetQuantity("Legion Combat Trophy")} / {TrophyQuant}");
-            if (TechniqueQuant > 0)
-                Core.Logger($"Technique: {Bot.Inventory.GetQuantity("Technique Observed")} / {TechniqueQuant}");
-            if (ScrollQuant > 0)
-                Core.Logger($"Fragment: {Bot.Inventory.GetQuantity("Sword Scroll Fragment")} / {ScrollQuant}");
+            Core.DebugLogger(this);
+            LogFarmingProgress();
 
-            Core.Join("dagepvp", "Enter0", "Spawn");
-            Core.Sleep(2500);
+            Core.DebugLogger(this);
+            Core.Join("dagepvp-999999", "Enter0", "Spawn");
 
+            Core.DebugLogger(this);
             Core.PvPMove(1, "r2", 475, 269);
+            Core.DebugLogger(this);
             Core.PvPMove(4, "r4", 963, 351);
+            Core.DebugLogger(this);
             Core.PvPMove(7, "r5", 849, 177);
+            Core.DebugLogger(this);
             Core.PvPMove(9, "r6", 937, 389);
 
-            if (!Core.CheckInventory("Sword Scroll Fragment", ScrollQuant))
+            Core.DebugLogger(this);
+            FarmScrollArea();
+            Core.DebugLogger(this);
+            if (trophyQuant == 0 && techniqueQuant == 0)
             {
-                Core.PvPMove(11, "r7", 513, 286);
-                Core.PvPMove(15, "r10", 832, 347);
-
-                Core.FarmingLogger("Sword Scroll Fragment", ScrollQuant);
-
-                foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
-                {
-                    Bot.Kill.Monster(MID.MapID);
-                    Core.Logger($"Killed {MID}");
-                }
-
-                if (!Bot.Player.Alive)
-                    goto RestartOnDeath;
-
-                Core.PvPMove(20, "r11", 943, 391);
-                if (!Bot.Player.Alive)
-                    goto RestartOnDeath;
-
-                foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
-                {
-                    Bot.Kill.Monster(MID.MapID);
-                    Core.Logger($"Killed {MID}");
-                }
-
-                if (!Bot.Player.Alive)
-                    goto RestartOnDeath;
-
-                Core.PvPMove(21, "r10", 9, 397);
-                if (!Bot.Player.Alive)
-                    goto RestartOnDeath;
-                Core.PvPMove(19, "r7", 7, 392);
-                if (!Bot.Player.Alive)
-                    goto RestartOnDeath;
-                Core.PvPMove(14, "r6", 482, 483);
-                if (!Bot.Player.Alive)
-                    goto RestartOnDeath;
-
-                if (Core.CheckInventory("Legion Combat Trophy", TrophyQuant)
-                && Core.CheckInventory("Technique Observed", TechniqueQuant)
-                && !Core.CheckInventory("Sword Scroll Fragment", ScrollQuant))
-                    goto RestartOnDeath;
+                Exit("Enter0", exitAttempt: ref exitAttempt);
+                goto Start;
             }
-            if (!Bot.Player.Alive)
-                goto RestartOnDeath;
 
+            Core.DebugLogger(this);
+            if (!Bot.Player.Alive)
+            {
+                Core.DebugLogger(this, "He's Dead Jim");
+                Exit("Enter0", exitAttempt: ref exitAttempt);
+                goto Start;
+            }
+
+            Core.DebugLogger(this);
+            Core.PvPMove(19, "r7", 7, 392);
+            Core.DebugLogger(this);
+            Core.PvPMove(14, "r6", 482, 483);
+            Core.DebugLogger(this);
             Core.PvPMove(12, "r12", 758, 338);
-            if (!Bot.Player.Alive)
-                goto RestartOnDeath;
 
-            foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
+            Core.DebugLogger(this);
+            if (!Bot.Player.Alive)
             {
-                Bot.Kill.Monster(MID.MapID);
-                Core.Logger($"Killed {MID}");
+                Core.DebugLogger(this, "He's Dead Jim");
+                Exit("Enter0", exitAttempt: ref exitAttempt);
+                goto Start;
             }
+            Core.DebugLogger(this);
+            PVPKilling();
 
+            Core.DebugLogger(this);
             if (!Bot.Player.Alive)
-                goto RestartOnDeath;
-
+            {
+                Core.DebugLogger(this, "He's Dead Jim");
+                Exit("Enter0", exitAttempt: ref exitAttempt);
+                goto Start;
+            }
+            Core.DebugLogger(this);
             Core.PvPMove(23, "r13", 933, 394);
-            if (!Bot.Player.Alive)
-                goto RestartOnDeath;
 
-            foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
+            Core.DebugLogger(this);
+            if (!Bot.Player.Alive)
             {
-                Bot.Kill.Monster(MID.MapID);
-                Core.Logger($"Killed {MID}");
+                Core.DebugLogger(this, "He's Dead Jim");
+                Exit("Enter0", exitAttempt: ref exitAttempt);
+                goto Start;
             }
+            Core.DebugLogger(this);
+            PVPKilling();
 
+            Core.DebugLogger(this);
             if (!Bot.Player.Alive)
-                goto RestartOnDeath;
-
+            {
+                Core.DebugLogger(this, "He's Dead Jim");
+                Exit("Enter0", exitAttempt: ref exitAttempt);
+                goto Start;
+            }
+            Core.DebugLogger(this);
             Core.PvPMove(25, "r14", 846, 181);
-            if (!Bot.Player.Alive)
-                goto RestartOnDeath;
 
-            foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
+            Core.DebugLogger(this);
+            if (!Bot.Player.Alive)
             {
-                Bot.Kill.Monster(MID.MapID);
-                Core.Logger($"Killed {MID}");
+                Core.DebugLogger(this, "He's Dead Jim");
+                Exit("Enter0", exitAttempt: ref exitAttempt);
+                goto Start;
             }
+            Core.DebugLogger(this);
+            PVPKilling();
 
+            Core.DebugLogger(this);
             if (!Bot.Player.Alive)
-                goto RestartOnDeath;
-
+            {
+                Core.DebugLogger(this, "He's Dead Jim");
+                Exit("Enter0", exitAttempt: ref exitAttempt);
+                goto Start;
+            }
+            Core.DebugLogger(this);
             Core.PvPMove(28, "r15", 941, 348);
-            if (!Bot.Player.Alive)
-                goto RestartOnDeath;
 
-            foreach (Monster MID in Bot.Monsters.CurrentAvailableMonsters)
+            Core.DebugLogger(this);
+            if (!Bot.Player.Alive)
             {
-                Bot.Kill.Monster(MID.MapID);
-                Core.Logger($"Killed {MID}");
+                Core.DebugLogger(this, "He's Dead Jim");
+                Exit("Enter0", exitAttempt: ref exitAttempt);
+                goto Start;
+            }
+            Core.DebugLogger(this);
+            PVPKilling();
+
+            Core.DebugLogger(this);
+            if (!Bot.Player.Alive)
+            {
+                Core.DebugLogger(this, "He's Dead Jim");
+                Exit("Enter0", exitAttempt: ref exitAttempt);
+                goto Start;
             }
 
-            if (!Bot.Player.Alive)
-                goto RestartOnDeath;
-
+            Core.DebugLogger(this);
             Bot.Wait.ForDrop("Legion Combat Trophy", 40);
+            Core.DebugLogger(this);
             Core.Sleep();
+            Core.DebugLogger(this);
             Bot.Wait.ForPickup("Legion Combat Trophy");
 
+            Core.DebugLogger(this);
             Core.Logger("Delaying exit");
+            Core.DebugLogger(this);
             Core.Sleep(7500);
-            goto Exit;
 
+            Core.DebugLogger(this);
+            Exit("Enter0", exitAttempt: ref exitAttempt);
 
-        Exit:
+            Core.DebugLogger(this);
+            FarmComplete = CheckInventoryCompletion();
+        }
+
+        void LogFarmingProgress()
+        {
+            Core.DebugLogger(this);
+            if (trophyQuant > 0)
+                Core.FarmingLogger("Legion Combat Trophy", trophyQuant);
+            Core.DebugLogger(this);
+            if (techniqueQuant > 0)
+                Core.FarmingLogger("Technique Observed", techniqueQuant);
+            Core.DebugLogger(this);
+            if (scrollQuant > 0)
+                Core.FarmingLogger("Sword Scroll Fragment", scrollQuant);
+            Core.DebugLogger(this);
+        }
+
+        bool CheckInventoryCompletion()
+        {
+            Core.DebugLogger(this);
+            return Core.CheckInventory("Legion Combat Trophy", trophyQuant) &&
+                   Core.CheckInventory("Technique Observed", techniqueQuant) &&
+                   Core.CheckInventory("Sword Scroll Fragment", scrollQuant);
+        }
+
+        void FarmScrollArea()
+        {
+            if (scrollQuant == 0)
+                return;
+
+            Core.PvPMove(11, "r7", 513, 286);
+            Core.DebugLogger(this);
+            Core.PvPMove(15, "r10", 832, 347);
+            Core.DebugLogger(this);
+
+            PVPKilling();
+            Core.DebugLogger(this);
+
+            if (!Bot.Player.Alive)
+            {
+                Core.DebugLogger(this, "He's Dead Jim");
+                Exit("Enter0", exitAttempt: ref exitAttempt);
+            }
+
+            Core.PvPMove(20, "r11", 943, 391);
+            Core.DebugLogger(this);
+
+            PVPKilling();
+            Core.DebugLogger(this);
+
+            Core.DebugLogger(this);
+            if (!Bot.Player.Alive)
+            {
+                Core.DebugLogger(this, "He's Dead Jim");
+                Exit("Enter0", exitAttempt: ref exitAttempt);
+            }
+
+            Core.DebugLogger(this);
+            Core.PvPMove(21, "r10", 9, 397);
+        }
+
+        void Exit(string? cell, ref int exitAttempt)
+        {
+            if (!Bot.Player.Alive)
+            {
+                Core.DebugLogger(this, "player's a sleep they'll wake soon");
+                while (!Bot.ShouldExit && !Bot.Player.Alive)
+                {
+                    Core.Sleep();
+                }
+                Core.DebugLogger(this);
+
+                Bot.Wait.ForCellChange(cell);
+                Core.DebugLogger(this);
+            }
+
             while (!Bot.ShouldExit && Bot.Map.Name != "battleon")
             {
-                Core.Logger($"Attempting Exit {ExitAttempt++}.");
-                Bot.Map.Join("battleon-999999");
-                Bot.Combat.CancelTarget();
-                Bot.Wait.ForCombatExit();
-                Core.Sleep(1500);
-                if (Bot.Map.Name != "battleon")
-                    Core.Logger("Failed!? HOW.. try agian");
-                else
-                {
-                    Core.Logger("Successful!");
-                    ExitAttempt = 0;
-                    goto Start;
-                }
-            }
+                if (Bot.Player.HasTarget)
+                    Bot.Combat.CancelTarget();
+                Core.DebugLogger(this);
 
-        RestartOnDeath:
-            Core.Logger($"Death: {Death++}, resetting");
-            while (!Bot.ShouldExit)
-            {
-                Bot.Wait.ForTrue(() => Bot.Player.Alive, 100);
-                Core.Logger($"Attempting Death Exit {ExitAttempt++}.");
-
-                Bot.Map.Join("battleon-999999");
+                Core.Join("battleon-999999");
+                Core.DebugLogger(this);
                 Bot.Wait.ForMapLoad("battleon");
 
+                Core.DebugLogger(this);
                 if (Bot.Map.Name != "battleon")
-                    Core.Logger("Failed!? HOW.. try agian");
-                else
-                {
-                    Core.Logger("Successful!");
-                    Core.Logger($"Deaths before Sucess:[{Death}]");
-                    goto Start;
-                }
+                    Core.Logger("Failed!? HOW.. try again");
+                Core.DebugLogger(this);
             }
 
+            Core.DebugLogger(this);
+            exitAttempt++;
         }
+
+        void PVPKilling()
+        {
+            foreach (Monster mob in Bot.Monsters.CurrentAvailableMonsters)
+            {
+                Monster monster = Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault(x => x.MapID == mob.MapID);
+                Core.DebugLogger(this);
+                Bot.Combat.Attack(monster);
+                Core.DebugLogger(this);
+                Bot.Combat.CancelAutoAttack();
+                Core.DebugLogger(this);
+                Core.Logger($"Mob {mob.MapID} Tagged, Waiting on Mob to have State == 2: {monster.MapID}: state: {monster.State}");
+                Core.DebugLogger(this);
+                while (!Bot.ShouldExit && monster.State != 2 && Bot.Player.Alive)
+                {
+                    Core.DebugLogger(this);
+                    monster = Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault(x => x.MapID == mob.MapID);
+                    Core.DebugLogger(this);
+                    Core.Sleep();
+                    Core.DebugLogger(this);
+                    if (!Bot.Player.Alive)
+                    {
+                        Core.DebugLogger(this, "He's Dead Jim");
+                        Exit("Enter0", exitAttempt: ref exitAttempt);
+                    }
+                }
+                Core.DebugLogger(this);
+                Core.Logger($"Killing {monster}");
+                Core.DebugLogger(this);
+                while (!Bot.ShouldExit && monster.State is 1 or 2)
+                {
+                    Core.DebugLogger(this);
+                    monster = Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault(x => x.MapID == mob.MapID);
+                    Core.DebugLogger(this);
+                    Bot.Combat.Attack(monster);
+                    Core.DebugLogger(this);
+                    Core.Sleep();
+                    Core.DebugLogger(this);
+                    if (monster.State == 0)
+                    {
+                        Bot.Combat.CancelTarget();
+                        Core.DebugLogger(this);
+                        Core.Logger($"Killed {monster}");
+                        Core.DebugLogger(this);
+                        break;
+                    }
+                    Core.DebugLogger(this);
+                    if (!Bot.Player.Alive)
+                    {
+                        Core.DebugLogger(this, "He's Dead Jim");
+                        Exit("Enter0", exitAttempt: ref exitAttempt);
+                    }
+                }
+                Core.DebugLogger(this);
+                if (!Bot.Player.Alive)
+                {
+                    Core.DebugLogger(this, "He's Dead Jim");
+                    Exit("Enter0", exitAttempt: ref exitAttempt);
+                }
+            }
+        }
+
+
     }
 }
