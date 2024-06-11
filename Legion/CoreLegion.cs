@@ -1038,65 +1038,21 @@ public class CoreLegion
 
         void PVPKilling()
         {
-            foreach (Monster mob in Bot.Monsters.CurrentAvailableMonsters)
+            foreach (Monster mob in Bot.Monsters.CurrentAvailableMonsters.Where(x => Core.IsMonsterAlive(x)))
             {
-                Monster monster = Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault(x => x.MapID == mob.MapID);
-                Core.DebugLogger(this);
-                Bot.Combat.Attack(monster);
-                Core.DebugLogger(this);
-                Bot.Combat.CancelAutoAttack();
-                Core.DebugLogger(this);
-                Core.Logger($"Mob {mob.MapID} Tagged, Waiting on Mob to have State == 2: {monster.MapID}: state: {monster.State}");
-                Core.DebugLogger(this);
-                while (!Bot.ShouldExit && monster.State != 2 && Bot.Player.Alive)
-                {
-                    Core.DebugLogger(this);
-                    monster = Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault(x => x.MapID == mob.MapID);
-                    Core.DebugLogger(this);
-                    Core.Sleep();
-                    Core.DebugLogger(this);
-                    if (!Bot.Player.Alive)
-                    {
-                        Core.DebugLogger(this, "He's Dead Jim");
-                        Exit("Enter0", exitAttempt: ref exitAttempt);
-                    }
-                }
-                Core.DebugLogger(this);
-                Core.Logger($"Killing {monster}");
-                Core.DebugLogger(this);
-                while (!Bot.ShouldExit && monster.State is 1 or 2)
-                {
-                    Core.DebugLogger(this);
-                    monster = Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault(x => x.MapID == mob.MapID);
-                    Core.DebugLogger(this);
-                    Bot.Combat.Attack(monster);
-                    Core.DebugLogger(this);
-                    Core.Sleep();
-                    Core.DebugLogger(this);
-                    if (monster.State == 0)
-                    {
-                        Bot.Combat.CancelTarget();
-                        Core.DebugLogger(this);
-                        Core.Logger($"Killed {monster}");
-                        Core.DebugLogger(this);
-                        break;
-                    }
-                    Core.DebugLogger(this);
-                    if (!Bot.Player.Alive)
-                    {
-                        Core.DebugLogger(this, "He's Dead Jim");
-                        Exit("Enter0", exitAttempt: ref exitAttempt);
-                    }
-                }
-                Core.DebugLogger(this);
+                Core.Logger($"Killing {mob}");
+                Bot.Kill.Monster(mob);
                 if (!Bot.Player.Alive)
                 {
                     Core.DebugLogger(this, "He's Dead Jim");
                     Exit("Enter0", exitAttempt: ref exitAttempt);
                 }
+                Core.DebugLogger(this);
+                Core.Logger($"Killed {mob}");
+
+                Core.DebugLogger(this);
             }
+            Core.DebugLogger(this);
         }
-
-
     }
 }
