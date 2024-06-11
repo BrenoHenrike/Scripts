@@ -71,19 +71,27 @@ public class CoreIsleOfFotia
             Story.MapItemQuest(2949, "Fotia", 1838);
             Core.HuntMonster("Fotia", "Amia the Cult Leader", "Amia Defeated");
             Bot.Wait.ForCellChange("Cut2");
-            
+
             if (Bot.Player.Cell == "r2")
                 Core.JumpWait();
 
-            if (Bot.Quests.TryGetQuest(2949, out var quest) && quest.Active)
+            if (Bot.Quests.TryGetQuest(2949, out var quest) && quest != null && quest.Active)
             {
                 Core.EnsureComplete(quest.ID);
                 Bot.Wait.ForActionCooldown(Skua.Core.Models.GameActions.TryQuestComplete);
             }
             else
             {
-                Bot.Wait.ForActionCooldown(Skua.Core.Models.GameActions.TryQuestComplete);
-                Bot.Wait.ForQuestComplete(quest.ID);
+                if (quest != null)
+                {
+                    Bot.Wait.ForActionCooldown(Skua.Core.Models.GameActions.TryQuestComplete);
+                    Bot.Wait.ForQuestComplete(quest.ID);
+                }
+                else
+                {
+                    Core.Logger("Quest not found, stopping bot.", stopBot: true);
+                    return;
+                }
             }
         }
     }
