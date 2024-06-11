@@ -42,6 +42,11 @@ public class MasterofYourCraft
     public void Moyc()
     {
         var quest = Bot.Quests.EnsureLoad(3051);
+        if (quest == null)
+        {
+            Core.Logger("Quest \"Master of Your Craft\" not found", stopBot: true);
+            return;
+        }
         var rewards = quest.Rewards.ToArray();
 
         if (!Core.CheckInventory("Dragon of Time"))
