@@ -4774,6 +4774,7 @@ public class CoreBots
             Sleep(2500);
             Bot.Send.Packet($"%xt%zm%mtcid%{Bot.Map.RoomID}%{mtcid}%");
         }
+        Bot.Wait.ForCellChange(cell);
     }
 
     /// <summary>
