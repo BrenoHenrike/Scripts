@@ -19741,9 +19741,6 @@
       "treasures",
       "merge",
       "sunsetdunes",
-      "gold",
-      "voucher",
-      "k",
       "phoenixs",
       "glory",
       "golden",
@@ -19752,10 +19749,13 @@
       "fury",
       "great",
       "firebirds",
-      "spear"
+      "spear",
+      "immortal",
+      "in",
+      "flames"
     ],
     "path": "Other/MergeShops/SunsetTreasuresMerge.cs",
-    "size": 5456,
+    "size": 5702,
     "fileName": "SunsetTreasuresMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/SunsetTreasuresMerge.cs"
   },
