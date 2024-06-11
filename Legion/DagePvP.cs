@@ -21,7 +21,7 @@ public class LegionCombatTrophy
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
-
+        Core.BankingBlackList.AddRange(new[] { "Legion Trophy", "Technique Observed", "Sword Scroll Fragment" });
         DoLegionCombatTrophy();
 
         Core.SetOptions(false);
@@ -30,6 +30,8 @@ public class LegionCombatTrophy
     public void DoLegionCombatTrophy()
     {
         Bot.Options.LagKiller = false;
+        Core.BankACMisc();
+        // Core.DL_Enable();
         //Adv.BestGear(RacialGearBoost.Undead);
         //order of quants: Trophy - Technique - Scroll
         Legion.DagePvP(4000, 50, 1000);
