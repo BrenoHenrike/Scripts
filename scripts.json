@@ -1284,7 +1284,7 @@
       "dagepvp"
     ],
     "path": "Legion/DagePvP.cs",
-    "size": 1017,
+    "size": 1186,
     "fileName": "DagePvP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/DagePvP.cs"
   },
@@ -1362,7 +1362,7 @@
       "null"
     ],
     "path": "Legion/CoreLegion.cs",
-    "size": 40254,
+    "size": 38188,
     "fileName": "CoreLegion.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/CoreLegion.cs"
   },
