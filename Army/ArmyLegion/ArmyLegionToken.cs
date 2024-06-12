@@ -69,10 +69,7 @@ public class ArmyLegionToken
                 if (Core.CheckInventory("Undead Champion"))
                     Adv.BuyItem("underworld", 216, "Undead Champion");
 
-                // Core.RegisterQuests(4849);
-                //setup Quest
-                Bot.Lite.ReacceptQuest = true;
-                Core.EnsureAccept(4849);
+                Core.RegisterQuests(4849);
 
                 Core.EquipClass(ClassType.Farm);
                 Army.AggroMonCells("r3", "r4", "r5", "r6", "r8", "r8a");
