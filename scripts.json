@@ -13791,6 +13791,24 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Legion/DarkWarLegionandNation.cs"
   },
   {
+    "name": "Ravenscar Story",
+    "description": "This will finish the Ravenscar Story quests.",
+    "tags": [
+      "story",
+      "quest",
+      "legion",
+      "ravenscar",
+      "raven scar",
+      "raven",
+      "scar",
+      "dage"
+    ],
+    "path": "Story/Legion/Ravenscar.cs",
+    "size": 1455,
+    "fileName": "Ravenscar.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Legion/Ravenscar.cs"
+  },
+  {
     "name": "Alden",
     "description": "This will finish the Alden quest.",
     "tags": [
