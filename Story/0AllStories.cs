@@ -34,6 +34,7 @@ tags: story, quest, complete, all
 //cs_include Scripts/Story/Legion/DageTheEvilIsland/CoreDageTheEvilIsland.cs
 //cs_include Scripts/Story/Legion/DageChallengeStory.cs
 //cs_include Scripts/Story/Legion/DarkWarLegionandNation.cs
+//cs_include Scripts/Story/Legion/Ravenscar.cs
 //cs_include Scripts/Story/Legion/SeraphicWar.cs
 //cs_include Scripts/Story/Legion/SevenCircles(War).cs
 //cs_include Scripts/Story/Legion/WorldSoul.cs
@@ -237,6 +238,7 @@ public class AllStories
     public CoreDageTheEvilIsland DageIsland = new();
     public DageChallengeStory DageChallengeStory = new();
     public DarkWarLegionandNation DarkWar = new();
+    public Ravenscar Ravenscar = new();
     public SeraphicWar_Story SeraphicWar_Story = new();
     public SevenCircles SevenCircles = new();
     public WorldSoul WorldSoul = new();
@@ -501,6 +503,9 @@ public class AllStories
         DarkWar.DarkWarLegion();
         DarkWar.DarkWarNation();
         Core.Logger($"Story: Dark War - Complete");
+
+        Ravenscar.Storyline();
+        Core.Logger($"Story: Ravenscar - Complete");
 
         SeraphicWar_Story.SeraphicWar_Questline();
         Core.Logger($"Story: Seraphic War - Complete");
