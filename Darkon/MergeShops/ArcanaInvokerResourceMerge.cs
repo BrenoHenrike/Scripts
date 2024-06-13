@@ -45,6 +45,7 @@ tags: arcana, invoker, resource, merge, arcana, magicians, desire, high, prieste
 //cs_include Scripts/Story\FableForest.cs
 //cs_include Scripts/Story\Nation\VoidRefuge.cs
 //cs_include Scripts/Story\AgeOfRuin\CoreAOR.cs
+//cs_include Scripts/Story\SepulchureSaga\CoreSepulchure.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
@@ -80,6 +81,7 @@ public class ArcanaInvokerResourceMerge
     public FableForest FableForest = new();
     public VoidRefuge VR = new();
     private CoreAOR AOR = new();
+    public CoreSepulchure CoreSS = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
     public string[] MultiOptions = { "Generic", "Select" };
@@ -99,9 +101,13 @@ public class ArcanaInvokerResourceMerge
 
     public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
+        //prolly more storylines missing, add as found
         CoreShadowofDoom.DoAll();
         FableForest.StoryLine();
         AOR.SunlightZone();
+        CoreSS.CompleteSS();
+        //prolly more storylines missing, add as found
+        
 
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("arcana", 2434, findIngredients, buyOnlyThis, buyMode: buyMode);
