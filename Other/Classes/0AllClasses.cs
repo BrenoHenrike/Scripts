@@ -178,6 +178,7 @@ tags: all classes,class,farm,complete,all
 //cs_include Scripts/Other/Classes/ArcanaInvoker[Non-Insignia].cs
 //cs_include Scripts/Story\Nation\VoidRefuge.cs
 //cs_include Scripts/Story\AgeOfRuin\CoreAOR.cs
+//cs_include Scripts/Story\SepulchureSaga\CoreSepulchure.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
