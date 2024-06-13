@@ -627,7 +627,7 @@
       "me"
     ],
     "path": "Tools/InsertNameHeresUltraPrep.cs",
-    "size": 20165,
+    "size": 20275,
     "fileName": "InsertNameHeresUltraPrep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/InsertNameHeresUltraPrep.cs"
   },
@@ -16019,7 +16019,7 @@
       "voyage"
     ],
     "path": "Darkon/MergeShops/ArcanaInvokerResourceMerge.cs",
-    "size": 34342,
+    "size": 34592,
     "fileName": "ArcanaInvokerResourceMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/MergeShops/ArcanaInvokerResourceMerge.cs"
   },
@@ -16779,7 +16779,7 @@
       "garden"
     ],
     "path": "Other/Classes/ArcanaInvoker[Non-Insignia].cs",
-    "size": 7811,
+    "size": 7871,
     "fileName": "ArcanaInvoker[Non-Insignia].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/ArcanaInvoker[Non-Insignia].cs"
   },
