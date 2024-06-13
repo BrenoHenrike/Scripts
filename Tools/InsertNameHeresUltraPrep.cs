@@ -185,7 +185,7 @@ public class InsertNameHeresUltraPrep
     public void Example()
     {
         Core.Logger("This script is made to help you prep for InsertNamehere's \"ULTRAS - INSERTNAMEHERE.gbot\" on `Grim Li`. First run and fill this script out, once its finished, you can Access your item (for easy copy paste) in `Documents > Skua > options > UltraPrep`, open that and u can simply copy paste names of items. Set your safe pot to: `Potent Malevolence Elixir` as its what this script grabs.");
-        
+
         //prepare inventory
         Core.Logger("Preparing Inventory!!");
 
@@ -233,7 +233,11 @@ public class InsertNameHeresUltraPrep
         // Dictionary with players and their corresponding classes
         Dictionary<string, List<string>> PlayersandItems = new()
         {
-            { Bot.Config!.Get<string>("Player1"), new List<string> { "Legion Revenant", "ArchPaladin", "StoneCrusher", Core.CheckInventory("Chaos Avenger") ? "Chaos Avenger" : "Verus DoomKnight", Bot.Config.Get<string>("Player1_Pet") } },
+            { Bot.Config!.Get<string>("Player1"), new List<string> { "Legion Revenant", "ArchPaladin", "StoneCrusher",
+                Core.CheckInventory("Chaos Avenger") ? "Chaos Avenger" : (Core.CheckInventory("Classic Legion DoomKnight") ?"Classic Legion DoomKnight" : "Legion DoomKnight" ),
+                Bot.Config.Get<string>("Player1_Pet") } },
+
+
             { Bot.Config!.Get<string>("Player2"), new List<string> { "Quantum Chronomancer", "Legion Revenant", Core.CheckInventory("Chaos Avenger") ? "Chaos Avenger" : "Verus DoomKnight", "StoneCrusher", Bot.Config.Get<string>("Player2_Pet") } },
             { Bot.Config!.Get<string>("Player3"), new List<string> { "Lord Of Order", "Legion Revenant", Bot.Config.Get<string>("Player3_Pet") } },
             { Bot.Config!.Get<string>("Player4"), new List<string> { "ArchPaladin", "LightCaster", "Verus DoomKnight", Bot.Config.Get<string>("Player4_Pet") } }
