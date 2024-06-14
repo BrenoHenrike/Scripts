@@ -108,7 +108,7 @@ public class InfernalArena
         // Reviled Returner 9373
         //this ones barely soloable so gl
         Core.JumpWait();
-        Core.BossClass("Void Highlord");
+        Core.BossClass(Core.CheckInventory("Void HighLord (IoDA)") ? "Void HighLord (IoDA)" : "Void Highlord");
         Core.Logger("Boss: [Deadly Duo]");
         Story.KillQuest(9373, "infernalarena", "Deadly Duo");
 
@@ -137,12 +137,14 @@ public class InfernalArena
             // Lord of the Scarred Barrens  9377
             Core.JumpWait();
             // Core.DodgeClass();
-            Core.BossClass("Void Highlord");
+            Core.BossClass(Core.CheckInventory("Void HighLord (IoDA)") ? "Void HighLord (IoDA)" : "Void Highlord");
             Core.Logger("Boss: [Na'al]");
             Core.Logger("this may take an hr or 2... or u may first try\n" +
             "it so good luck(a kill has been gotten with vhl\n" +
             "so its confirmd able to be done...)");
+            Core.EnsureAccept(9377);
             Story.KillQuest(9377, "infernalarena", "Na'al");
+            Core.EnsureComplete(9377);
         }
         #endregion Fuck these guysa
     }

@@ -71,7 +71,7 @@ public class InfernalArenaMerge
                 case "Champion's Seal":
                 case "Tainted Dagger of Na'al":
                     Core.FarmingLogger(req.Name, quant);
-                    Core.BossClass();
+                    Core.BossClass(Core.CheckInventory("Void HighLord (IoDA)") ? "Void HighLord (IoDA)" : "Void Highlord");
                     Core.HuntMonster("infernalarena", "Na'al", req.Name, quant, false, false);
                     break;
 
