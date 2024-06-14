@@ -62,8 +62,10 @@ public class CoreSepulchure
         if (!Story.QuestProgression(6337))
         {
             Quest? dothis = Bot.Quests.EnsureLoad(6337);
+            Core.EnsureAccept(dothis.ID);
             foreach (ItemBase Item in dothis!.Requirements)
                 Core.HuntMonster("scarsgarde", "Garde Watch", Item.Name, Item.Quantity, Item.Temp);
+            Core.EnsureComplete(dothis.ID);
         }
 
         // Pass for Real 6338
