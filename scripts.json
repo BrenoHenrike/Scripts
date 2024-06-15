@@ -17547,6 +17547,25 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Various/ShadowslayerSummoningRitual.cs"
   },
   {
+    "name": "Twilly Supports You!",
+    "description": "This script does the quest [9779] \"Twilly Supports You!\" and gets the rewards.",
+    "tags": [
+      "twilly",
+      "supports",
+      "you",
+      "quest",
+      "9779",
+      "rewards",
+      "chickencow",
+      "take twilly's money",
+      "extremely enthusiastic hero"
+    ],
+    "path": "Other/Various/TwillySupportsYou.cs",
+    "size": 1610,
+    "fileName": "TwillySupportsYou.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Various/TwillySupportsYou.cs"
+  },
+  {
     "name": "UnderworldPirateCasterQuest",
     "description": "null",
     "tags": [
