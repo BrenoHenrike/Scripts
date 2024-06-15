@@ -20174,6 +20174,32 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/WorldCoreMerge.cs"
   },
   {
+    "name": "Loughshine Loot Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Loughshine Loot Merge [2452] in /loughshine",
+    "tags": [
+      "loughshine",
+      "loot",
+      "merge",
+      "loughshine",
+      "gold",
+      "voucher",
+      "k",
+      "skye",
+      "executor",
+      "backhanded",
+      "speirling",
+      "warden",
+      "west",
+      "wardens",
+      "cowled",
+      "guardian"
+    ],
+    "path": "Other/MergeShops/LoughshineLootMerge.cs",
+    "size": 6557,
+    "fileName": "LoughshineLootMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/LoughshineLootMerge.cs"
+  },
+  {
     "name": "Felixs Gilded Gear Merge",
     "description": "This bot will farm the items belonging to the selected mode for the Felixs Gilded Gear Merge [2446] in /castleeblana",
     "tags": [
