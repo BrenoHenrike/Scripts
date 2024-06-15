@@ -24,7 +24,7 @@ public class TwillySupportsYou
 
     public void GetDrops()
     {
-        if (!Core.CheckInventory("Twilly Supports You!") || Core.CheckInventory(Core.EnsureLoad(9779).Rewards.Select(x => x.Name).ToArray(), toInv: true))
+        if (!Core.CheckInventory("Twilly Supports You!") || Core.CheckInventory(Core.EnsureLoad(9779).Rewards.Select(x => x.Name).ToArray(), toInv: false))
         {
             Core.Logger("You either don't have the \"Twilly Supports You!\" pet or already have the rewards.");
             return;
