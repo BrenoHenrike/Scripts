@@ -3875,13 +3875,14 @@ public class CoreBots
     public void Jump(string cell = "Enter", string pad = "Spawn", bool ignoreCheck = false)
     {
         cell = Bot.Map.Cells.FirstOrDefault(c => c.Equals(cell, StringComparison.OrdinalIgnoreCase)) ?? cell;
-        pad = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(pad.ToLower());
+        pad = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(pad.ToLower()) ?? pad;
 
         if (!ignoreCheck && Bot.Player.Cell == cell)
             return;
 
         while (!Bot.ShouldExit && Bot.Player.Cell != cell)
         {
+            // Bot.Send.Packet($"%xt%zm%moveToCell%{Bot.Map.RoomID}%{cell}%{pad}%");
             Bot.Map.Jump(cell, pad, false);
             Bot.Wait.ForTrue(() => Bot.Player.Cell == cell, 20);
             Sleep();
@@ -4239,33 +4240,39 @@ public class CoreBots
 
             #region Special Cases
             case "tercessuinotlim":
+                var prereqQuest1 = Bot.Quests.HasBeenCompleted(9540);
+                var prereqQuest2 = Bot.Quests.HasBeenCompleted(9541);
 
-                //to avoid black screen in `tercessuinotlim
-                if (!isCompletedBefore(9540))
+                if (!prereqQuest1)
                 {
-                    OneTimeMessage("WARNING!", "This map now requires a 1 time completion of \"Beyond the Portal\"\n" +
-                    "not sure why it loads tercessuinotlim first. but ge tover it :|", messageBox: false);
+                    OneTimeMessage(
+                        "WARNING!",
+                        "This map now requires a one-time completion of \"Beyond the Portal\"\n" +
+                        "Not sure why it loads tercessuinotlim first, but get over it :|",
+                        messageBox: false
+                    );
 
                     SimpleQuestBypass((15, 8), (542, 2));
                     Join("citadel");
+                    Jump("m22", "Left");
                     EnsureAccept(9540);
                     KillMonster("citadel", "m22", "Left", "Death's Head", "Death's Head Bested");
                     EnsureComplete(9540);
+
+                    prereqQuest1 = true;
                 }
 
-                //for taro to show up
-                if (!isCompletedBefore(9541))
+                if (!prereqQuest2)
+                {
                     ChainComplete(9541);
+
+                    prereqQuest2 = true;
+                }
 
                 Jump("m22", "Left");
                 tryJoin();
-
-                //leave incase more shit breaks reinstate this vv
-                // Jump("Enter", "Left");
-
-                //vv may no longer be needed as jump has a while check now that works wonders (hopefully)
-                // Jump(cell, pad);
                 break;
+
 
             case "doomvaultb":
                 SetAchievement(18);
