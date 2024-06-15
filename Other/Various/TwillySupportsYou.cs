@@ -7,6 +7,7 @@ tags: twilly, supports, you, quest, 9779, rewards,chickencow,take twilly's money
 
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
+using Skua.Core.Utils;
 
 public class TwillySupportsYou
 {
@@ -32,15 +33,15 @@ public class TwillySupportsYou
 
         List<ItemBase> RewardOptions = Core.EnsureLoad(9779).Rewards;
 
-        foreach (ItemBase item in RewardOptions)
-            Core.AddDrop(item.Name);
+        foreach (ItemBase item in RewardOptions.Where(x => x != null && !Core.CheckInventory(x.ID, toInv: false)))
+            Bot.Drops.Add(item.ID);
 
         Core.EquipClass(ClassType.Farm);
 
         foreach (ItemBase Reward in RewardOptions)
         {
-            if (Core.CheckInventory(Reward.Name, toInv: false))
-                return;
+            if (Core.CheckInventory(Reward.ID, toInv: false))
+                continue;
 
             Core.FarmingLogger(Reward.Name, 1);
 
@@ -50,7 +51,7 @@ public class TwillySupportsYou
 
             Core.EnsureComplete(9779, Reward.ID);
             Core.JumpWait();
-            Core.ToBank(Reward.Name);
+            Core.ToBank(Reward.ID);
         }
 
     }
