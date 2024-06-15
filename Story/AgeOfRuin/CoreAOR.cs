@@ -41,6 +41,7 @@ public class CoreAOR
         SeaVoice();
         Balemorale();
         Castleeblana();
+        Loughshine();
     }
 
     private bool isSeaVoiceCalled = false;
@@ -558,6 +559,56 @@ public class CoreAOR
         // Miserable Monsoon 9741
         Core.EquipClass(ClassType.Solo);
         Story.KillQuest(9741, "castleeblana", "Warden Indradeep");
+    }
+
+    public void Loughshine()
+    {
+        if (Core.isCompletedBefore(9764))
+            return;
+
+        Castleeblana();
+
+        Story.PreLoad(this);
+
+        // Wicker Magic (9755)
+        Story.KillQuest(9755, "loughshine", "Skye Cailleach");
+        Story.MapItemQuest(9755, "loughshine", 13273);
+
+        // Maigh Eo (9756)
+        Story.KillQuest(9756, "loughshine", "Scorched Elder Yew");
+
+        // Resentment Harbour (9757)
+        Story.MapItemQuest(9757, "loughshine", 13274, 5);
+        Story.MapItemQuest(9757, "loughshine", 13275);
+
+        // Wisened Yew (9758)
+        Story.KillQuest(9758, "loughshine", new[] { "Scorched Elder Yew", "Skye Cailleach" });
+
+        // Dragonflare (9759)
+        Story.MapItemQuest(9759, "loughshine", 13276);
+
+        // Shock Scatter (9760)
+        Story.KillQuest(9760, "loughshine", "Skye Executor");
+
+        // Grace of Three (9761)
+        Story.KillQuest(9761, "loughshine", "Energy Elemental");
+        Story.MapItemQuest(9761, "loughshine", 13277);
+
+        // Iubhair (9762)
+        Story.MapItemQuest(9762, "loughshine", 13278, 5);
+        Story.MapItemQuest(9762, "loughshine", 13279);
+
+        // Parting the Clouds (9763)
+        Story.KillQuest(9763, "loughshine", new[] { "Energy Elemental", "Skye Executor" });
+        Story.MapItemQuest(9763, "loughshine", 13280);
+
+        // Arrester (9764)
+        if (!Story.QuestProgression(9764))
+        {
+            Core.EquipClass(ClassType.Solo);
+            Story.KillQuest(9764, "loughshine", "Warden Iseul");
+            Core.EquipClass(ClassType.Farm);
+        }
     }
 
 
