@@ -2279,6 +2279,7 @@ public class CoreAdvanced
 
                 #region  Healer - None - Valiance - Nine
                 case "obsidian paladin chronomancer":
+                case "paladin chronomancer":
                     if (!uValiance())
                         goto default;
 
@@ -2879,6 +2880,7 @@ public class CoreAdvanced
 
                 #region Healer - Mana Vamp
                 case "obsidian paladin chronomancer":
+                case "paladin chronomancer":
                     type = EnhancementType.Healer;
                     wSpecial = WeaponSpecial.Mana_Vamp;
                     break;
