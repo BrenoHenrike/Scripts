@@ -146,13 +146,15 @@ public class VerusDoomKnightClass
             if (!Core.CheckInventory("Deadly Duo's Decayed Denture"))
                 Core.Logger("InfernalArena is a **SOLO ONLY** map!");
             Adv.GearStore();
-            Core.BossClass("Archpaladin");
+            Core.BossClass(Core.CheckInventory(new[] { "Void Highlord", "Void Highlord (IoDA)" }, any: true)
+            ? (Core.CheckInventory("Void Highlord (IoDA)")
+            ? "Void Highlord (IoDA)" : "Void Highlord")
+            : "ArchPaladin");
             Core.JumpWait();
             Core.Sleep();
-            Adv.BoostHuntMonster("infernalarena", "Deadly Duo", "Deadly Duo's Decayed Denture", 10, false);
+            Core.HuntMonster("infernalarena", "Deadly Duo", "Deadly Duo's Decayed Denture", 10, false);
             Core.JumpWait();
             Adv.GearStore(true);
-            Core.EquipClass(ClassType.Solo);
 
             if (!Core.CheckInventory("Xyfrag's Slimy Tooth", 5) || !Core.CheckInventory("Nerfkitten's Fang", 3) || !Core.CheckInventory("Maw of the Sea", 10))
             {
