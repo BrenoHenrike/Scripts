@@ -111,28 +111,28 @@ public class VHLArmy
         {
             PreReqs();
             VHL.VHLChallenge(10);
-            // //Army.waitForParty("whitemap", "Roentgenium of Nulgath");
+            // Army.waitForParty("whitemap", "Roentgenium of Nulgath");
             // Core.SendPackets($"%xt%zm%house%1%{Bot.Player.Username}%");
         }
 
         //======================Last 700 Tainted Gems====================
         Escherion("Tainted Gem", 700 - (100 * Bot.Inventory.GetQuantity("Roentgenium of Nulgath")));
-        // //Army.waitForParty("whitemap", "Tainted Gem");
+        // Army.waitForParty("whitemap", "Tainted Gem");
         // Core.SendPackets($"%xt%zm%house%1%{Bot.Player.Username}%");
 
         //=======================Last 2 Uni 13===========================
         Larvae("Unidentified 13", 15 - Bot.Inventory.GetQuantity("Roentgenium of Nulgath"));
-        // //Army.waitForParty("whitemap", "Unidentified 13");
+        // Army.waitForParty("whitemap", "Unidentified 13");
         // Core.SendPackets($"%xt%zm%house%1%{Bot.Player.Username}%");
 
         //=============DCS check in case somehow not enough==============
         DCSCheck();
-        // //Army.waitForParty("whitemap", "Dark Crystal Shard");
+        // Army.waitForParty("whitemap", "Dark Crystal Shard");
         // Core.SendPackets($"%xt%zm%house%1%{Bot.Player.Username}%");
 
         //========================Blood Gems============================
         BloodGems(30);
-        // //Army.waitForParty("whitemap", "Blood Gem");
+        // Army.waitForParty("whitemap", "Blood Gem");
         // Core.SendPackets($"%xt%zm%house%1%{Bot.Player.Username}%");
 
         //Check for elder blood here in case previous part of the farm
@@ -140,7 +140,7 @@ public class VHLArmy
         ElderBloodChecking();
 
         //========================Last 5 Roents========================
-        // //Army.waitForParty("whitemap", "Roentgenium of Nulgath");
+        // Army.waitForParty("whitemap", "Roentgenium of Nulgath");
         // Core.SendPackets($"%xt%zm%house%1%{Bot.Player.Username}%");
         VHL.VHLChallenge(15);
 
@@ -190,32 +190,32 @@ public class VHLArmy
         ArchfiendsFavorAndNulgathsApproval(4500);
         foreach (string reward in new[] { "Archfiends Favor", "Nulgaths Approval" })
         {
-            // //Army.waitForParty("whitemap", reward);
+            // Army.waitForParty("whitemap", reward);
             // Core.SendPackets($"%xt%zm%house%1%{Bot.Player.Username}%");
         }
 
         Emblems(quantity: 300);
-        // //Army.waitForParty("whitemap", "Emblem of Nulgath");
+        // Army.waitForParty("whitemap", "Emblem of Nulgath");
         // Core.SendPackets($"%xt%zm%house%1%{Bot.Player.Username}%");
 
         Larvae("Unidentified 13", 15 - Bot.Inventory.GetQuantity("Roentgenium of Nulgath"));
-        // //Army.waitForParty("whitemap", "Unidentified 13");
+        // Army.waitForParty("whitemap", "Unidentified 13");
         // Core.SendPackets($"%xt%zm%house%1%{Bot.Player.Username}%");
 
         FarmGemsofNulgath(quant: 450);
-        // //Army.waitForParty("whitemap", "Gem of Nulgath");
+        // Army.waitForParty("whitemap", "Gem of Nulgath");
         // Core.SendPackets($"%xt%zm%house%1%{Bot.Player.Username}%");
 
         FarmTotemsOfNulgath(quant: 15);
-        // //Army.waitForParty("whitemap", "Totem of Nulgath");
+        // Army.waitForParty("whitemap", "Totem of Nulgath");
         // Core.SendPackets($"%xt%zm%house%1%{Bot.Player.Username}%");
 
         Escherion("Tainted Gem", 1000 - (100 * Bot.Inventory.GetQuantity("Roentgenium of Nulgath")));
-        // //Army.waitForParty("whitemap", "Tainted Gem");
+        // Army.waitForParty("whitemap", "Tainted Gem");
         // Core.SendPackets($"%xt%zm%house%1%{Bot.Player.Username}%");
 
         Escherion("Voucher of Nulgath (non-mem)", 1);
-        // //Army.waitForParty("whitemap", "Voucher of Nulgath (non-mem)");
+        // Army.waitForParty("whitemap", "Voucher of Nulgath (non-mem)");
         // Core.SendPackets($"%xt%zm%house%1%{Bot.Player.Username}%");
 
         /* Farm lvl 80 and get minimum gold required to 
@@ -257,7 +257,7 @@ public class VHLArmy
             {
                 Core.JumpWait();
                 Core.SendPackets($"%xt%zm%house%1%{Bot.Player.Username}%");
-                //Army.waitForParty("evilwarnul", reward);
+                Army.waitForParty("evilwarnul", reward);
             }
 
             Core.Logger($"\"Archfiend's Favor\", x{ArchfiendsFavorQuan}, obtained");
@@ -302,7 +302,7 @@ public class VHLArmy
 
         if (Core.CheckInventory(item, quantity))
         {
-            //Army.waitForParty("shadowblast", item);
+            Army.waitForParty("shadowblast", item);
             Core.Logger($"{item}, x{quantity}, obtained");
             return;
         }
@@ -339,7 +339,7 @@ public class VHLArmy
 
         if (Core.CheckInventory(item, quant))
         {
-            //Army.waitForParty("tercessuinotlim", item);
+            Army.waitForParty("tercessuinotlim", item);
             Core.Logger($"{item}, x{quant}, obtained");
             return;
         }
@@ -375,7 +375,7 @@ public class VHLArmy
 
         if (Core.CheckInventory(item, quant))
         {
-            //Army.waitForParty("tercessuinotlim", item);
+            Army.waitForParty("tercessuinotlim", item);
             Core.Logger($"{item}, x{quant}, obtained");
             return;
         }
@@ -403,7 +403,7 @@ public class VHLArmy
 
         if (Core.CheckInventory(item, quant))
         {
-            //Army.waitForParty("tercessuinotlim", item);
+            Army.waitForParty("tercessuinotlim", item);
             Core.Logger($"{item}, x{quant}, obtained");
             return;
         }
@@ -471,7 +471,7 @@ public class VHLArmy
 
         if (Core.CheckInventory("Blood Gem of the Archfiend", quantity))
         {
-            //Army.waitForParty("tercessuinotlim", "Blood Gem of the Archfiend");
+            Army.waitForParty("tercessuinotlim", "Blood Gem of the Archfiend");
             Core.Logger($"\"Blood Gem of the Archfiend\", x{quantity}, obtained");
             return;
         }
@@ -495,7 +495,7 @@ public class VHLArmy
 
         if (Core.CheckInventory(item, quant))
         {
-            //Army.waitForParty("escherion", item);
+            Army.waitForParty("escherion", item);
             Core.Logger($"{item}, x{quant}, obtained");
             return;
         }
@@ -526,7 +526,7 @@ public class VHLArmy
 
         if (Core.CheckInventory(item, quant))
         {
-            //Army.waitForParty("elemental", item);
+            Army.waitForParty("elemental", item);
             Core.Logger($"{item}, x{quant}, obtained");
             return;
         }

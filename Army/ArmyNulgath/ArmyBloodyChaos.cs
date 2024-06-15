@@ -72,7 +72,8 @@ public class ArmyBloodyChaos
 
         Core.AddDrop(item);
 
-        //Army.waitForParty(map, item);
+        Core.EquipClass(ClassType.Solo);
+        Army.waitForParty(map, item);
         Core.FarmingLogger(item, quant);
 
         switch (map)

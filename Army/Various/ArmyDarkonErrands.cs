@@ -87,7 +87,7 @@ public class ArmyDarkonErrands
         Core.AddDrop(item);
         Core.EquipClass(classType);
 
-        //Army.waitForParty(map, item);
+        Army.waitForParty(map, item);
         Core.FarmingLogger(item, quant);
 
         switch (Method)

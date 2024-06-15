@@ -74,7 +74,7 @@ public class ArmyHollowSoul
 
         Core.CancelRegisteredQuests();
         Army.AggroMonStop(true);
-        //Army.waitForParty("whitemap", "Hollow Soul");
+        Army.waitForParty("whitemap", "Hollow Soul");
     }
 
     void ArmyHunt(int[] MonsterMapIDs, string[] cells, string aggroMonStart, string itemName, int quant = 1)

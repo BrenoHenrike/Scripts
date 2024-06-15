@@ -4,18 +4,19 @@ description: null
 tags: null
 */
 //cs_include Scripts/CoreBots.cs
-using CommunityToolkit.Mvvm.DependencyInjection;
 using Newtonsoft.Json;
 using Skua.Core.Interfaces;
-using Skua.Core.Models;
 using Skua.Core.Models.Monsters;
 using Skua.Core.Models.Players;
 using Skua.Core.Options;
-using Skua.Core.ViewModels;
 using Skua.Core.Models.Servers;
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Xml;
+using ClientServerUsingNamedPipes.Client;
+using ClientServerUsingNamedPipes.Interfaces;
+using ClientServerUsingNamedPipes.Server;
 
 public class CoreArmyLite
 {
@@ -393,61 +394,197 @@ public class CoreArmyLite
         return players.ToArray();
     }
 
-    public void waitForParty(string map, string? item = null, int playerMax = -1)
+    public void waitForParty(string map, string? item = null, int playerMax = -1, string? callerClass = "", [CallerMemberName] string? caller = "")
     {
         Bot.Events.PlayerAFK += PlayerAFK;
         string[] players = Players();
         int partySize = players.Length;
         List<string> playersWhoHaveBeenHere = new() { Bot.Player.Username };
         int playerCount = 1;
+        FileInfo waitFile = new FileInfo(Path.Combine(CoreBots.ButlerLogDir, $"{(callerClass == "" ? caller : callerClass)}.txt"));
 
+        FileStream fileStream = null;
         int logCount = 0;
         int butlerTimer = 0;
         bool hasWaited = false;
-
+        bool shouldStart = false;
+        string butlerName = "";
+        
         Core.Join(map);
         int dynamicPartySize = playerMax == -1 ? partySize : playerMax;
 
-        while (playerCount < dynamicPartySize)
-        {
-            if (Bot.Map.PlayerNames != null)
-                foreach (var name in Bot.Map.PlayerNames)
-                    if (!playersWhoHaveBeenHere.Contains(name) && players.Select(x => x.ToLower().Trim()).Contains(name.ToLower()))
-                        playersWhoHaveBeenHere.Add(name);
-            playerCount = playersWhoHaveBeenHere.Count;
+        ICommunication communication = null;
+
+        if (!waitFile.Exists || !IsFileLocked(waitFile)) {
+            try {
+                if (!waitFile.Exists) fileStream = waitFile.Create(); // Creates and locks the file if it doesn't exist
+                else fileStream = waitFile.Open(FileMode.Open, FileAccess.Read, FileShare.None); // Opens and locks the file if it already exists
+            
+                // Start server
+                communication = new PipeServer(caller, players.Length);
+                ((PipeServer) communication).MessageReceivedEvent += ServerMessageReceived;
+                communication.Start();
+                for(var i = 0; i <= players.Length - 1; i++) {
+                    ((PipeServer) communication).StartNamedPipeServer();
+                }
+            } catch {
+                ResetServer();
+                throw;
+            }
+
+            Bot.Events.ScriptStopping += ResetServerBool;
+            Bot.Events.Logout += ResetServer;
+        } else { // Start client
+            try {
+                communication = new PipeClient(caller);
+                ((PipeClient) communication).ConnectedToServerEvent += ConnectedToServer;
+                ((PipeClient) communication).MessageReceivedEvent += ClientMessageReceived;
+                communication.Start();
+            } catch (Exception e) {
+                ResetClient();
+                throw;
+            }
+
+            Bot.Events.ScriptStopping += ResetClientBool;
+            Bot.Events.Logout += ResetClient;
+        }
+
+        while (!Bot.ShouldExit && !shouldStart) {
+            if (communication is PipeServer server) {
+                playerCount = playersWhoHaveBeenHere.Count;
+                shouldStart = playerCount >= dynamicPartySize;
+                if (shouldStart) {
+                    server.SendMessage("Start");
+                    break;
+                }
+            }
 
             logCount++;
-            if (logCount == 15)
-            {
-                Core.Logger($"Waiting for the party{(item == null ? String.Empty : (" to farm " + item))} [{playerCount}/{dynamicPartySize}]");
+            if (logCount == 15) {
+                Core.Logger(
+                    $"Waiting for the party{(item == null ? String.Empty : (" to farm " + item))} [{playerCount}/{dynamicPartySize}]");
                 hasWaited = true;
                 logCount = 0;
             }
+
             Core.Sleep(1000);
 
-            if (playersWhoHaveBeenHere.Count == (dynamicPartySize - 1))
-                butlerTimer++;
-            if (butlerTimer >= 30)
-            {
+            if (communication is PipeServer server1) {
+                if (playersWhoHaveBeenHere.Count == (dynamicPartySize - 1))
+                    butlerTimer++;
+                if (butlerTimer >= 30) {
+                    string toFollow = players.First(p =>
+                        !playersWhoHaveBeenHere.Any(n => n.ToLower() == p.ToLower().Trim()));
+                    server1.SendMessage($"Butler:{toFollow}");
+                    butlerName = toFollow;
+                }
+            }
+
+            if (butlerName != "") {
                 b_breakOnMap = Bot.Map.Name;
-                string toFollow = players.First(p => !playersWhoHaveBeenHere.Any(n => n.ToLower() == p.ToLower().Trim()));
-                Core.Logger($"Missing {toFollow}, initiating Butler.cs");
+                Core.Logger($"Missing {butlerName}, initiating Butler.cs");
                 Core.Logger("Butler active until in map /" + b_breakOnMap);
-                Butler(toFollow, roomNr: getRoomNr());
-                Core.Logger($"{toFollow} has joined {b_breakOnMap}. continuing");
-                Bot.Events.PlayerAFK -= PlayerAFK;
-                break;
+                Butler(butlerName, roomNr: getRoomNr());
+                Core.Logger($"{butlerName} has joined {b_breakOnMap}. continuing");
+                butlerTimer = 0;
+                butlerName = "";
             }
         }
         if (hasWaited)
             Core.Logger($"Party complete [{partySize}/{partySize}]");
         Core.Sleep(3500); //To make sure everyone attack at the same time, to avoid deaths
+        
+        if (communication is PipeServer)
+            ResetServer();
+        else 
+            ResetClient();
+
+        void ResetServer() {
+            fileStream?.Close();
+            communication?.Stop();
+
+            Bot.Events.ScriptStopping -= ResetServerBool;
+            Bot.Events.Logout -= ResetServer;
+        }
+        bool ResetServerBool(Exception? e) {
+            ResetServer();
+            return true;
+        }
+        void ResetClient() {
+            communication?.Stop();
+
+            Bot.Events.ScriptStopping -= ResetClientBool;
+            Bot.Events.Logout -= ResetClient;
+        }
+        bool ResetClientBool(Exception? e) {
+            ResetClient();
+            return true;
+        }
 
         void PlayerAFK()
         {
             Core.Logger("Anti-AFK engaged");
             Core.Sleep(1500);
             Bot.Send.Packet("%xt%zm%afk%1%false%");
+        }
+
+        bool IsFileLocked(FileInfo file) {
+            try
+            {
+                using(FileStream stream = file.Open(FileMode.Open, FileAccess.Read, FileShare.None))
+                {
+                    stream.Close();
+                }
+            }
+            catch (IOException)
+            {
+                //the file is unavailable because it is:
+                //still being written to
+                //or being processed by another thread
+                //or does not exist (has already been processed)
+                return true;
+            }
+
+            //file is not locked
+            return false;
+        }
+
+        void ServerMessageReceived(object? o, MessageReceivedEventArgs messageReceivedEventArgs) {
+            var server = (PipeServer) o;
+            var message = messageReceivedEventArgs.Message;
+            Core.Logger(message);
+            if (message.Contains("Connected:")) {
+                var name = message.Replace("Connected:", "");
+                if (!playersWhoHaveBeenHere.Contains(name) && 
+                    players.Select(x => x.ToLower().Trim()).Contains(name.ToLower())) {
+                    playersWhoHaveBeenHere.Add(name);
+                    server.SendMessage($"Count:{playersWhoHaveBeenHere.Count}");
+                }
+            }
+        }
+
+        void ConnectedToServer(object? o, ConnectedToServerEventArgs connectedToServerEventArgs ) {
+            PipeClient client = (PipeClient) o;
+            client.SendMessage($"Connected:{Core.Username()}");
+        }
+
+        void ClientMessageReceived(object? o, MessageReceivedEventArgs messageReceivedEventArgs) {
+            var client = (PipeClient) o;
+            var message = messageReceivedEventArgs.Message;
+            Core.Logger(message);
+            if (message.Contains("Start")) {
+                shouldStart = true;
+            }
+
+            if (message.Contains("Count:")) {
+                var count = int.Parse(message.Replace("Count:", ""));
+                playerCount = count;
+            }
+            
+            if (message.Contains("Butler:")) {
+                var name = message.Replace("Butler:", "");
+                butlerName = name;
+            }
         }
     }
 
@@ -679,24 +816,33 @@ public class CoreArmyLite
             // Try to go to the followed player
             if (!tryGoto(playerName))
             {
-                while (!Bot.ShouldExit && (Bot.Player.HasTarget || Bot.Player.InCombat))
+                int repeats = 0; //Repeats is so that it doesn't get stuck forever
+                while (!Bot.ShouldExit && ((Bot.Player.HasTarget || Bot.Player.InCombat) && repeats < 5)) 
                 {
-                    Bot.Options.AttackWithoutTarget = false;
+                    Bot.Combat.CancelAutoAttack();
                     Bot.Combat.CancelTarget();
-                    Core.Sleep();
-                    Core.JumpWait();
+                    Bot.Map.Jump(Bot.Player.Cell, Bot.Player.Pad);
+                    Core.Sleep(300);
+                    Bot.Map.Jump(Bot.Player.Cell, Bot.Player.Pad);
+                    repeats++;
                 }
+                
 
                 // Do these things if that fails
                 string stopLocation = Core.CustomStopLocation?.Trim().ToLower() ?? string.Empty;
-                if (!string.IsNullOrWhiteSpace(stopLocation))
-                    Core.Join(stopLocation, "Enter", "Spawn", false, false);
-                else Core.Join("whitemap");
+                if (!string.IsNullOrWhiteSpace(stopLocation)) {
+                    if (stopLocation.Equals("home") || stopLocation.Equals("house"))
+                        Bot.Send.Packet($"%xt%zm%house%1%{Core.Username()}%");
+                    else 
+                        Core.Join(stopLocation, "Enter", "Spawn", false, false);
+                } else 
+                    Core.Join("whitemap");
+                
 
                 Core.Logger($"Could not find {playerName}. Check if \"{playerName}\" is in the same server with you.", "tryGoto");
                 if (b_shouldHibernate)
                     Core.Logger($"The bot will now hibernate and try to /goto to {playerName} every {hibernateTimer} seconds.", "tryGoto");
-
+                
                 int min = 1;
                 while (!Bot.ShouldExit)
                 {
@@ -1137,8 +1283,11 @@ public class CoreArmyLite
         Bot.Events.ExtensionPacketReceived -= CopyWalkListener;
 
         // Delete communication files
-        if (File.Exists(commFile()))
-            File.Delete(commFile());
+        try { //Causes exception if multiple clients tries to delete at once
+            if (File.Exists(commFile()))
+                File.Delete(commFile());
+        } catch (Exception e) {
+        }
     }
 
     private string commFile() => Path.Combine(CoreBots.ButlerLogDir, $"{Core.Username().ToLower()}~!{b_playerName}.txt");

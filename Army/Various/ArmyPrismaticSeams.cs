@@ -70,7 +70,7 @@ public class ArmyPrimaticSeams
         while (!Bot.ShouldExit && !Core.CheckInventory("Prismatic Seams", 2000))
             Bot.Combat.Attack("*");
 
-        //Army.waitForParty("streamwar", "Prismatic Seams");
+        Army.waitForParty("streamwar", "Prismatic Seams");
         Army.AggroMonStop(true);
         Core.CancelRegisteredQuests();
     }
