@@ -4588,7 +4588,6 @@ public class CoreBots
                 Logger($"An error occurred: {ex.Message}\n{ex.StackTrace}");
             }
         }
-
         void PrivateSimpleQuestBypass(params (int, int)[] slotValues)
         {
             try
@@ -4601,7 +4600,6 @@ public class CoreBots
                 Logger($"An error occurred: {ex.Message}\n{ex.StackTrace}");
             }
         }
-
         void GhostItemBypass(int ID, string name = "Ghost Item", int quantity = 1, bool temp = false, ItemCategory category = ItemCategory.Unknown, string? description = null, int level = 1, params (string, object)[] extraInfo)
         {
             try
