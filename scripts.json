@@ -13169,10 +13169,11 @@
       "deep_water",
       "trench_observation",
       "balemorale",
-      "castle_eblana"
+      "castle_eblana",
+      "loughshine"
     ],
     "path": "Story/AgeOfRuin/00DoAll.cs",
-    "size": 844,
+    "size": 855,
     "fileName": "00DoAll.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/00DoAll.cs"
   },
@@ -13222,7 +13223,7 @@
       "null"
     ],
     "path": "Story/AgeOfRuin/CoreAOR.cs",
-    "size": 21858,
+    "size": 23467,
     "fileName": "CoreAOR.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/CoreAOR.cs"
   },
@@ -13283,6 +13284,26 @@
     "size": 727,
     "fileName": "07AbyssalZone.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/07AbyssalZone.cs"
+  },
+  {
+    "name": "Loughshine",
+    "description": "This script completes the storyline in /loughshine.",
+    "tags": [
+      "age",
+      "of",
+      "ruin",
+      "saga",
+      "story",
+      "quest",
+      "loughshine",
+      "lough shine",
+      "ruins of loughshine",
+      "caoimhe"
+    ],
+    "path": "Story/AgeOfRuin/12Loughshine.cs",
+    "size": 761,
+    "fileName": "12Loughshine.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/12Loughshine.cs"
   },
   {
     "name": "Midnight Zone",
