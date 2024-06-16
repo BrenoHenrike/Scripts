@@ -31,6 +31,8 @@ public class SuppliesWheelArmy
     new Option<bool>("sellToSync", "Sell to Sync", "Sell \"Relic of Chaos\" to make sure the army stays synchronized. If off, there is a higher chance your army might desynchronize", false),
     new Option<bool>("SwindlesReturnDuring", "Do Swindles Return", "Accept the Swindles Returns items, and goes to kill a makai for the rune, during the quest.", false),
     new Option<bool>("BloodyChaos", "Do Bloody Chaos", "Accept and complete the 'Bloody Chaos' quest for 'Blood Gem of the Archfiend'", false),
+    new Option<ClassType>("ClassType", "Class Type", "Farm/Solo/None", ClassType.None),
+
     sArmy.player1,
     sArmy.player2,
     sArmy.player3,
@@ -138,7 +140,7 @@ public class SuppliesWheelArmy
 
         Core.RegisterQuests(2857);
         Core.FarmingLogger(item, quant);
-        Core.EquipClass(ClassType.Farm);
+        Core.EquipClass(Bot.Config.Get<ClassType>("ClassType"));
         bool AggroSet = false;
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
         {
@@ -214,4 +216,5 @@ public class SuppliesWheelArmy
         h90 = 0,
         h85 = 1
     }
+
 }
