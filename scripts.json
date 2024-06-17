@@ -627,7 +627,7 @@
       "me"
     ],
     "path": "Tools/InsertNameHeresUltraPrep.cs",
-    "size": 20275,
+    "size": 20274,
     "fileName": "InsertNameHeresUltraPrep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/InsertNameHeresUltraPrep.cs"
   },
@@ -701,7 +701,7 @@
       "null"
     ],
     "path": "Tools/BankAllItems.cs",
-    "size": 3695,
+    "size": 3962,
     "fileName": "BankAllItems.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/BankAllItems.cs"
   },
@@ -5250,7 +5250,7 @@
       "reagents"
     ],
     "path": "Army/ArmyNulgath/ArmySupplies.cs",
-    "size": 7252,
+    "size": 7366,
     "fileName": "ArmySupplies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyNulgath/ArmySupplies.cs"
   },
