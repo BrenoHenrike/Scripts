@@ -217,7 +217,7 @@ public class InsertNameHeresUltraPrep
         var combinedBlacklist = blacklistOptions.Concat(currentPlayerPets);
 
         // Bank all items with the generated blacklist
-        BankAllItems.BankAll(true, false, false, string.Join(",", combinedBlacklist));
+        BankAllItems.BankAll(true, true, false, string.Join(",", combinedBlacklist));
 
         #region  Unbanking Required items
         // Iterate through options and unbank items for each option except those starting with "player"
