@@ -104,8 +104,7 @@ public class PrimeFiendShard
         if (Core.isCompletedBefore(9559))
             return;
 
-        Core.Logger("If you're going to use insingias for the roents\n" +
-        "please do so before starting the script, as it will stop otherwise if dont have them.");
+        Core.Logger("If you're going to use insingias for the roents, please do so before starting the script, as it will stop otherwise if dont have them.");
 
         VHL.GetVHL();
 
@@ -237,5 +236,12 @@ public class PrimeFiendShard
             Core.Unbank(Core.EnsureLoad(8916).Requirements.Select(x => x.ID).ToArray());
             Core.EnsureComplete(9559);
         }
+
+        var filteredReceipts = Nation.Receipt.Where(item => !item.StartsWith("Unidentified")).ToArray();
+        Core.ToBank(filteredReceipts);
+        Core.ToBank(Nation.tercessBags);
+        Core.ToBank(Nation.bagDrops);
+        Core.ToBank(Nation.SuppliesRewards);
+        Core.ToBank(Nation.SwindlesReturnRewards);
     }
 }
