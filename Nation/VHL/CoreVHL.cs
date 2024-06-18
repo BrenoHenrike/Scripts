@@ -50,15 +50,21 @@ public class CoreVHL
     public void GetVHL(bool rankUpClass = true)
     {
         if (Core.CheckInventory("Void Highlord"))
+        {
+            if (rankUpClass)
+                Adv.RankUpClass("Void Highlord");
             return;
+        }
 
         VHLChallenge(15);
         VHLCrystals();
 
-        Adv.BuyItem("tercessuinotlim", 1355, "Void Highlord");
-
-        if (rankUpClass)
-            Adv.RankUpClass("Void Highlord");
+        if (Core.CheckInventory("Roentgenium of Nulgath", 15) && Core.CheckInventory(new[] { "Void Crystal A", "Void Crystal B" }))
+        {
+            Adv.BuyItem("tercessuinotlim", 1355, "Void Highlord");
+            if (rankUpClass)
+                Adv.RankUpClass("Void Highlord");
+        }
     }
 
     public void VHLChallenge(int quant)
@@ -74,19 +80,18 @@ public class CoreVHL
         Core.AddDrop("Roentgenium of Nulgath");
 
     Continue:
-        Core.KillMonster("tercessuinotlim", "m4", "Right", "Shadow of Nulgath", "Hadean Onyx of Nulgath", isTemp: false);
 
         Core.FarmingLogger("Roentgenium of Nulgath", quant);
         while (!Bot.ShouldExit && !Core.CheckInventory("Roentgenium of Nulgath", quant))
         {
             Core.EnsureAccept(5660);
 
+            Core.KillMonster("tercessuinotlim", "m4", "Right", "Shadow of Nulgath", "Hadean Onyx of Nulgath", isTemp: false);
             if (!Core.CheckInventory("Elders' Blood", quant - Core.dynamicQuant("Elders' Blood", false) > 5 ? 5 : (quant - Core.dynamicQuant("Elders' Blood", false))))
             {
                 Daily.EldersBlood();
                 _SparrowMethod((quant - Core.dynamicQuant("Elders' Blood", false)) > 5 ? 5 : (quant - Core.dynamicQuant("Elders' Blood", false)));
             }
-
 
             Nation.FarmVoucher(false);
             Farm.BlackKnightOrb();
@@ -110,8 +115,8 @@ public class CoreVHL
             {
                 Core.Logger($"Not enough \"Elders' Blood\", please do the daily {2 - Core.dynamicQuant("Elders' Blood", false)}");
                 FarmExtra();
+                return;
             }
-            else return;
         }
     }
     private readonly string[] ChallengeRewards = { "Void Highlord Armor", "Helm of the Highlord", "Highlord's Void Wrap" };
@@ -178,7 +183,7 @@ public class CoreVHL
             Nation.SwindleBulk(1000);
             Nation.ApprovalAndFavor(5000, 5000);
 
-            Core.Logger("Materials max out! You should be good for tomorrow.", messageBox: true, stopBot: true);
+            Core.Logger("Materials max out! You should be good for tomorrow.");
         }
     }
     private void _SparrowMethod(int EldersBloodQuant)
