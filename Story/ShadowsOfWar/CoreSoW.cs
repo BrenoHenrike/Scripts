@@ -1150,7 +1150,6 @@ public class CoreSoW
 
             // Your Hero 9125
             Story.KillQuest(9125, "manacradle", "The Mainyu");
-            Core.ToBank(MainyuDrops.Concat(MalgorDrops).ToArray());
         }
         else Core.Logger($"Cant do these last quests\n" +
         "as they require Yami no Ronin/TimeKeeper\n" +
@@ -1158,6 +1157,7 @@ public class CoreSoW
         "todo it manualy with an group/army\n" +
         "(this quest is required for seavoice story and beyond.)", stopBot: true);
 
+        Core.ToBank(MainyuDrops.Concat(MalgorDrops).ToArray());
         #region GroupBoss Quest
         // These 2 arent needed.
         // Once Upon Another Time 9126
