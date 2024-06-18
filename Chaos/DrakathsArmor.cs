@@ -37,6 +37,11 @@ public class DrakathArmorBot
     {
         LOC.Complete13LOC();
         DrakathArmorQuest();
+        if (!Core.CheckInventory("Dage's Scroll Fragment", 13))
+        {
+            Core.Logger("Cannot continue with \"DrakathArmor\" not enough \"Dage's Scroll Fragment\"");
+            return;
+        }
         Core.BuyItem(Bot.Map.Name, 994, "Original Drakath Armor");
         Core.BuyItem(Bot.Map.Name, 994, "Drakath Armor");
     }
@@ -83,7 +88,7 @@ public class DrakathArmorBot
         {
             Daily.DagesScrollFragment();
             if (!Core.CheckInventory("Dage's Scroll Fragment", 13))
-                Core.Logger($"You own \"Dage's Scroll Fragment\" ({Bot.Inventory.GetQuantity("Dage's Scroll Fragment")}/13) [Daily Quest]. Bot can not continue.", messageBox: true, stopBot: true);
+                Core.Logger($"You own \"Dage's Scroll Fragment\" ({Bot.Inventory.GetQuantity("Dage's Scroll Fragment")}/13) [Daily Quest]. Bot can not continue.");
             else Core.EnsureComplete(3882);
         }
         else Core.EnsureComplete(3882);

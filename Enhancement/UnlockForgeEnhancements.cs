@@ -498,7 +498,9 @@ public class UnlockForgeEnhancements
 
         FCA.GetFireChampsArmor();
         DOT.GetDoT(doExtra: false);
-        ED.getSet();
+        ED.getSet(true, "Drakath the Eternal");
+        if (!Core.CheckInventory("Drakath the Eternal") && !Core.CheckInventory("Drakath Armor"))
+            Core.Logger("Cannot \"Finish\" `Heros Valiance` quest, missing \"Drakath the Eternal\". we'll continue farming it though..");
         LOO.GetLoO();
 
         if (!Core.CheckInventory(23689))
@@ -524,8 +526,12 @@ public class UnlockForgeEnhancements
 
         Adv.BuyItem("darkthronehub", 1303, "ArchPaladin Armor");
 
-        Core.EnsureComplete(8741);
-        Core.Logger("Enhancement Unlocked: Hero's Valiance");
+        if (Core.CheckInventory("Drakath the Eternal"))
+        {
+            Core.EnsureComplete(8741);
+            Core.Logger("Enhancement Unlocked: Hero's Valiance");
+        }
+        else Core.Logger("Could not complete \"Hero's Valiance\", Try again tomarrow after then \"Dage's Scroll Fragment\" Daily.");
     }
 
     public void ArcanasConcerto()
@@ -680,6 +686,7 @@ public class UnlockForgeEnhancements
             if (!Core.CheckInventory("Malgor Insignia", 5))
                 Core.Logger("Missing \"Malgor Insignia\" x5");
         }
+        Core.ToBank(SoW.MalgorDrops.Concat(SoW.MainyuDrops).ToArray());
     }
 
     public void Ravenous()

@@ -38,16 +38,23 @@ public class EternalDrakath
         Core.SetOptions(false);
     }
 
-    public void getSet()
+    public void getSet(bool singleitem = false, string? item = null)
     {
-        if (Core.CheckInventory(Rewards))
+        if (item != null && Core.CheckInventory(item) || Core.CheckInventory(Rewards))
             return;
 
-        Core.AddDrop(Rewards);
+        if (item != null)
+            Core.AddDrop(new[] { item });
+        else
+            Core.AddDrop(Rewards);
         Core.AddDrop(25286);
 
         Armor.DrakathArmor();
-
+        if (Core.CheckInventory("Drakath Armor")) //"Drakath the Eternal"
+        {
+            Core.Logger("Cannot continue with \"Drakath Armor\" not enough \"Dage's Scroll Fragment\", cannot complete \"Drakath the Eternal\".");
+            return;
+        }
         Core.EquipClass(ClassType.Solo);
         while (!Bot.ShouldExit && !Core.CheckInventory(25286))
             Core.HuntMonster("ultradrakath", "Champion of Chaos");
@@ -95,5 +102,11 @@ public class EternalDrakath
             Core.CancelRegisteredQuests();
         }
         Core.EnsureComplete(8457);
+        if (singleitem && Core.CheckInventory(item))
+        {
+            Bot.Wait.ForDrop(item);
+            Bot.Wait.ForPickup(item);
+            return;
+        }
     }
 }
