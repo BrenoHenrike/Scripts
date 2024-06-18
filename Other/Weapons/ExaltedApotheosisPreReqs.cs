@@ -83,9 +83,9 @@ public class ExaltedApotheosisPreReqs
                         ShopItem? WepData = Bot.Shops.Items.FirstOrDefault(x => x.Name == wep);
 
                         // Check if the weapon has any requirements before buying
-                        if (WepData?.Requirements.Count > 0 && !WepData.Requirements.All(req => Core.CheckInventory(req.ID)))
+                        if (WepData != null && WepData.Requirements.Count > 0 && !WepData.Requirements.All(req => Core.CheckInventory(req.ID)))
                         {
-                            int ExaltedNodequant = WepData.Requirements.FirstOrDefault(x => x.Name == "Exalted Node").Quantity;
+                            int ExaltedNodequant = WepData.Requirements.FirstOrDefault(x => x.Name == "Exalted Node")?.Quantity ?? 0;
                             Core.KillMonster("timeinn", "r3", "Bottom", "*", "Exalted Node", ExaltedNodequant, isTemp: false);
                             Adv.BuyItem("timeinn", 2010, wep);
 
