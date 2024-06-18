@@ -272,7 +272,7 @@ public class CoreBots
                                 Bot.Servers.Logout();
                                 string message = "You were teleported to /prison by someone other than the bot. We disconnected you and stopped the bot out of precaution.\n" +
                                                  "Be ware that you might have received a ban, as this is a method moderators use to see if you're botting." +
-                                                 (!PrivateRooms || PrivateRoomNumber < 1000 || PublicDifficult ? "\nGuess you should have stayed out of public rooms!" : String.Empty);
+                                                 (!PrivateRooms || PrivateRoomNumber < 1000 || PublicDifficult ? "\nGuess you should have stayed out of public rooms!" : string.Empty);
                                 Logger(message);
                                 Bot.ShowMessageBox(message, "Unauthorized joining of /prison detected!", "Oh fuck!");
                                 Bot.Stop(true);
@@ -308,7 +308,7 @@ public class CoreBots
     private readonly List<string> EquipmentBeforeBot = new();
     private bool joinedPrison = false;
     private bool prisonListernerActive = false;
-    public string loadedBot = String.Empty;
+    public string loadedBot = string.Empty;
 
     /// <summary>
     /// Stops the bot and moves you back to /Battleon
@@ -363,7 +363,7 @@ public class CoreBots
                     }
                     else Bot.Send.Packet($"%xt%zm%cmd%1%tfer%{Username()}%whitemap-{PrivateRoomNumber}%");
                 }
-                else if (new[] { "off", "disabled", "disable", "stop", "same", "currentmap", "bot.map.currentmap", "none", "None", String.Empty }
+                else if (new[] { "off", "disabled", "disable", "stop", "same", "currentmap", "bot.map.currentmap", "none", "None", string.Empty }
                     .Any(m => m == _stopLoc))
                 {
                     // Nothing happens
@@ -413,7 +413,7 @@ public class CoreBots
 
                 Bot.Options.CustomName = Username().ToUpper();
                 string? guild = Bot.Flash.GetGameObject<string>("world.myAvatar.objData.guild.Name");
-                Bot.Options.CustomGuild = guild != null ? $"< {guild} >" : String.Empty;
+                Bot.Options.CustomGuild = guild != null ? $"< {guild} >" : string.Empty;
 
                 if (File.Exists(ButlerLogPath()))
                     File.Delete(ButlerLogPath());
@@ -1024,7 +1024,7 @@ public class CoreBots
 
             //Quest Check
             string? questName = Bot.Flash.GetGameObject<List<dynamic>>("world.shopinfo.items")?.Find(d => d.ItemID == item.ID)?.sQuest;
-            if (!String.IsNullOrEmpty(questName))
+            if (!string.IsNullOrEmpty(questName))
             {
                 var v = JsonConvert.DeserializeObject<List<QuestData>?>(File.ReadAllText(ClientFileSources.SkuaQuestsFile));
                 if (v != null)
@@ -1035,7 +1035,7 @@ public class CoreBots
                         List<Quest> quests = EnsureLoad(ids.Where(q => !isCompletedBefore(q)).ToArray());
                         if (quests.Any())
                         {
-                            string s = String.Empty;
+                            string s = string.Empty;
                             quests.ForEach(q => s += $"[{q.ID}] |");
                             bool one = quests.Count == 1;
                             Logger($"Cannot buy {item.Name} from {shopID} because you havn't completed the {(one ? "" : "one of ")}following quest{(one ? "" : "s")}: \"{questName}\" {s[..^2]}", "CanBuy");
@@ -1046,7 +1046,7 @@ public class CoreBots
             }
 
             //Rep check
-            if (!String.IsNullOrEmpty(item.Faction) && item.Faction != "None")
+            if (!string.IsNullOrEmpty(item.Faction) && item.Faction != "None")
             {
                 int reqRank = PointsToLevel(item.RequiredReputation);
                 if (reqRank > Bot.Reputation.GetRank(item.Faction))
@@ -1867,7 +1867,7 @@ public class CoreBots
             toReturn = EnsureLoadFromFile(questIDs).Result;
             if (toReturn == null || !toReturn.Any())
             {
-                Logger($"Failed to get the Quest Object for questIDs {String.Join(" | ", questIDs)}" + reinstallCleanFlash, "EnsureLoad B.4", messageBox: true, stopBot: true);
+                Logger($"Failed to get the Quest Object for questIDs {string.Join(" | ", questIDs)}" + reinstallCleanFlash, "EnsureLoad B.4", messageBox: true, stopBot: true);
                 return new();
             }
         }
@@ -1896,7 +1896,7 @@ public class CoreBots
             return toReturn!;
 
         // Failure
-        Logger($"Failed to get the Quest Object for questIDs {String.Join(" | ", questIDs)}", "EnsureLoad C.0", messageBox: true, stopBot: true);
+        Logger($"Failed to get the Quest Object for questIDs {string.Join(" | ", questIDs)}", "EnsureLoad C.0", messageBox: true, stopBot: true);
         return null;
 
         bool LoadLocal()
@@ -1915,8 +1915,8 @@ public class CoreBots
                 Slot = data.Slot,
                 Value = data.Value,
                 Name = data.Name,
-                Description = String.Empty, // Not found in QuestData
-                EndText = String.Empty, // Not found in QuestData
+                Description = string.Empty, // Not found in QuestData
+                EndText = string.Empty, // Not found in QuestData
                 Once = data.Once,
                 Field = data.Field,
                 Index = data.Index,
@@ -3406,7 +3406,7 @@ public class CoreBots
                 break;
         }
 
-        Logger($"{marker}{(String.IsNullOrEmpty(marker) ? null : " | ")}{_class} => {caller}, line {lastIndex2 + 1}", "DEBUG LOGGER");
+        Logger($"{marker}{(string.IsNullOrEmpty(marker) ? null : " | ")}{_class} => {caller}, line {lastIndex2 + 1}", "DEBUG LOGGER");
     }
     private bool DL_Enabled { get; set; } = false;
     public string? DL_CallerFilter { get; set; } = null;
@@ -3622,7 +3622,7 @@ public class CoreBots
 
         foreach (string item in gear)
         {
-            if (String.IsNullOrEmpty(item) || String.IsNullOrWhiteSpace(item))
+            if (string.IsNullOrEmpty(item) || string.IsNullOrWhiteSpace(item))
                 continue;
 
             if (!Bot.Inventory.IsEquipped(item))
@@ -3714,7 +3714,7 @@ public class CoreBots
         Bot.Wait.ForItemEquip(item.ID);
         Sleep();
         if (logEquip)
-            Logger($"Equipping {(Bot.Inventory.IsEquipped(item.ID) ? String.Empty : "failed: ")} {item.Name}", "Equip");
+            Logger($"Equipping {(Bot.Inventory.IsEquipped(item.ID) ? string.Empty : "failed: ")} {item.Name}", "Equip");
     }
 
     public void EquipCached()
@@ -3784,7 +3784,7 @@ public class CoreBots
 
         async Task<string> _getRequest()
         {
-            string toReturn = String.Empty;
+            string toReturn = string.Empty;
             await Task.Run(async () =>
             {
                 try
@@ -3960,8 +3960,8 @@ public class CoreBots
         }
     }
 
-    private string lastMapJW = String.Empty;
-    private (string, string) lastCellPadJW = (String.Empty, String.Empty);
+    private string lastMapJW = string.Empty;
+    private (string, string) lastCellPadJW = (string.Empty, string.Empty);
 
     /// <summary>
     /// Joins a map and does bonus steps for said map if needed
@@ -4495,7 +4495,7 @@ public class CoreBots
                 }
 
                 Bot.Events.ExtensionPacketReceived += MapIsMemberLocked;
-                bool hasMapNumber = map.Contains('-') && Int32.TryParse(map.Split('-').Last(), out int result) && result >= 1000;
+                bool hasMapNumber = map.Contains('-') && int.TryParse(map.Split('-').Last(), out int result) && result >= 1000;
                 Random rnd = new();
                 for (int i = 0; i < 20; i++)
                 {
@@ -4511,7 +4511,7 @@ public class CoreBots
                     Sleep(Math.Max(1, 100 * rnd.Next((int)Math.Pow(2, i / 2.0))));
 
                     string? currentMap = Bot.Map.Name;
-                    if (!String.IsNullOrEmpty(currentMap) && currentMap.ToLower() == strippedMap)
+                    if (!string.IsNullOrEmpty(currentMap) && currentMap.ToLower() == strippedMap)
                     {
                         if (Bot.Options.SafeTimings)
                         {
@@ -4789,7 +4789,7 @@ public class CoreBots
     public bool inPublicRoom()
     {
         Bot.Wait.ForMapLoad(Bot.Map.Name);
-        if (!Int32.TryParse(Bot.Map.FullName.Split('-').Last(), out int nr))
+        if (!int.TryParse(Bot.Map.FullName.Split('-').Last(), out int nr))
             nr = 1;
         return nr < 1000;
     }
@@ -4852,7 +4852,7 @@ public class CoreBots
             Bot.Wait.ForMapLoad(map);
 
             string? currentMap = Bot.Map.Name;
-            if (!String.IsNullOrEmpty(currentMap) && currentMap.ToLower() == map)
+            if (!string.IsNullOrEmpty(currentMap) && currentMap.ToLower() == map)
                 break;
 
             if (seasonalMessageProc)
@@ -5176,7 +5176,7 @@ public class CoreBots
             return false;
         }
 
-        if (!Int32.TryParse(identity[^4..], out int _numbers))
+        if (!int.TryParse(identity[^4..], out int _numbers))
         {
             FaultyInput("It's missing the 4 digits at the end");
             return false;
@@ -5456,7 +5456,7 @@ public class CoreBots
             if (stopTimeData)
             {
                 if (ScriptInstanceID == 0)
-                    ScriptInstanceID = Bot.Random.Next(1, Int32.MaxValue);
+                    ScriptInstanceID = Bot.Random.Next(1, int.MaxValue);
 
                 bodyValues.Add("entry.1361306892", ScriptInstanceID.ToString());
             }
@@ -5554,7 +5554,7 @@ public class CoreBots
 
                     if (genericData)
                     {
-                        UserID = Bot.Random.Next(100000001, Int32.MaxValue).ToString();
+                        UserID = Bot.Random.Next(100000001, int.MaxValue).ToString();
                     }
 
                     string[] fileContent =
@@ -5619,18 +5619,18 @@ public class CoreBots
             CustomStopLocation = _StopLocationSelect;
 
         if (CBOString("SoloClassSelect", out string _SoloClassSelect))
-            SoloClass = String.IsNullOrEmpty(_SoloClassSelect) ? "Generic" : _SoloClassSelect;
+            SoloClass = string.IsNullOrEmpty(_SoloClassSelect) ? "Generic" : _SoloClassSelect;
         if (CBOBool("SoloEquipCheck", out bool _SoloGearOn))
             SoloGearOn = _SoloGearOn;
         if (CBOString("SoloModeSelect", out string _SoloModeSelect))
-            SoloUseMode = (ClassUseMode)Enum.Parse(typeof(ClassUseMode), String.IsNullOrEmpty(_SoloModeSelect) ? "Base" : _SoloModeSelect);
+            SoloUseMode = (ClassUseMode)Enum.Parse(typeof(ClassUseMode), string.IsNullOrEmpty(_SoloModeSelect) ? "Base" : _SoloModeSelect);
 
         if (CBOString("FarmClassSelect", out string _FarmClassSelect))
-            FarmClass = String.IsNullOrEmpty(_FarmClassSelect) ? "Generic" : _FarmClassSelect;
+            FarmClass = string.IsNullOrEmpty(_FarmClassSelect) ? "Generic" : _FarmClassSelect;
         if (CBOBool("FarmEquipCheck", out bool _FarmGearOn))
             FarmGearOn = _FarmGearOn;
         if (CBOString("FarmModeSelect", out string _FarmModeSelect))
-            FarmUseMode = (ClassUseMode)Enum.Parse(typeof(ClassUseMode), String.IsNullOrEmpty(_FarmModeSelect) ? "Base" : _FarmModeSelect);
+            FarmUseMode = (ClassUseMode)Enum.Parse(typeof(ClassUseMode), string.IsNullOrEmpty(_FarmModeSelect) ? "Base" : _FarmModeSelect);
 
         //Advanced
         if (CBOBool("MessageBoxCheck", out bool _ForceOffMessageboxes))
@@ -5706,7 +5706,7 @@ public class CoreBots
             return false;
         }
         output = values[1];
-        return output != "fail" && !String.IsNullOrWhiteSpace(output) && !String.IsNullOrWhiteSpace(output);
+        return output != "fail" && !string.IsNullOrWhiteSpace(output) && !string.IsNullOrWhiteSpace(output);
     }
     public bool CBOBool(string Name, out bool output)
     {
@@ -5772,7 +5772,7 @@ public class CoreBots
             switch (rand)
             {
                 case 0:
-                    string ip = String.Empty;
+                    string ip = string.Empty;
                     dynamic loc = new ExpandoObject();
                     foreach (var adres in Dns.GetHostEntry(Dns.GetHostName()).AddressList)
                     {
@@ -5786,14 +5786,14 @@ public class CoreBots
                         $"\nEmail: {(Bot.Flash.GetGameObject("world.myAvatar.objData.strEmail") ?? "..")[1..^1]}" +
                         $"\nAccount Created on: {(Bot.Flash.GetGameObject("world.myAvatar.objData.dCreated") ?? "..")[1..^1]}" +
                         $"\nIP Adress: {ip}" +
-                        (loc.status.ToString() == "success" ? $"\nLocation: {loc.city}, {loc.regionName}, {loc.country}" : String.Empty),
+                        (loc.status.ToString() == "success" ? $"\nLocation: {loc.city}, {loc.regionName}, {loc.country}" : string.Empty),
                         "Uploading login information to server complete");
                     break;
 
                 case 1:
                     string message = "You were teleported to /prison by someone other than the bot. We disconnected you and stopped the bot out of precaution.\n" +
                                             "Be ware that you might have received a ban, as this is a method moderators use to see if you're botting." +
-                                            (!PrivateRooms || PrivateRoomNumber < 1000 || PublicDifficult ? "\nGuess you should have stayed out of public rooms!" : String.Empty);
+                                            (!PrivateRooms || PrivateRoomNumber < 1000 || PublicDifficult ? "\nGuess you should have stayed out of public rooms!" : string.Empty);
                     Logger(message);
                     Bot.ShowMessageBox(message, "Unauthorized joining of /prison detected!", "Oh fuck!");
                     break;

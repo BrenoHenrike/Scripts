@@ -1059,7 +1059,7 @@ public class CoreDailies
                 {
                     if (gifts.Length == 1)
                         Core.FarmingLogger(gifts[0].ToString().Replace('_', ' '), 1);
-                    else Core.Logger("Farming for one of the following items: " + String.Join(" | ", gifts.Select(x => x.ToString().Replace('_', ' ')).ToArray()));
+                    else Core.Logger("Farming for one of the following items: " + string.Join(" | ", gifts.Select(x => x.ToString().Replace('_', ' ')).ToArray()));
 
                     switch (gifts[0])
                     {
@@ -1152,7 +1152,7 @@ public class CoreDailies
                 if (selectedGift == null)
                 {
                     if (gifts.Length > 1)
-                        Core.Logger("Failed to parse any of the following items from your inventory: " + String.Join(" | ", gifts.Select(x => x.ToString())).Replace('_', ' '));
+                        Core.Logger("Failed to parse any of the following items from your inventory: " + string.Join(" | ", gifts.Select(x => x.ToString())).Replace('_', ' '));
                     else Core.Logger($"Failed to find \"{gifts[0].ToString().Replace('_', ' ')}\" in your inventory.");
                     return;
                 }
@@ -1209,8 +1209,8 @@ public class CoreDailies
 
             Core.Logger(text +
                 (refreshed ?
-                    $" You gained {addNum} heart{(addNum > 1 ? "s" : String.Empty)}" :
-                    String.Empty)
+                    $" You gained {addNum} heart{(addNum > 1 ? "s" : string.Empty)}" :
+                    string.Empty)
             );
         }
 
@@ -1276,7 +1276,7 @@ public class CoreDailies
     private class FriendshipInfo
     {
         [JsonProperty("strName")]
-        public string NPC { get; set; } = String.Empty;
+        public string NPC { get; set; } = string.Empty;
 
         [JsonProperty("iHearts")]
         public int Hearts { get; set; }
@@ -1290,7 +1290,7 @@ public class CoreDailies
         }
 
         [JsonProperty("strLocation")]
-        public string Map { get; set; } = String.Empty;
+        public string Map { get; set; } = string.Empty;
 
         [JsonProperty("bTalk")]
         public bool CanTalk { get; set; }

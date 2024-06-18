@@ -93,7 +93,7 @@ public class MergeTemplateHelper
         int shopID = Bot.Config.Get<int>("shopID");
         bool genFile = Bot.Config!.Get<bool>("genFile");
 
-        if (shopID == 0 || String.IsNullOrEmpty(map) || String.IsNullOrWhiteSpace(map))
+        if (shopID == 0 || string.IsNullOrEmpty(map) || string.IsNullOrWhiteSpace(map))
         {
             Core.Logger("Please fill in the starting form");
             return;
@@ -105,7 +105,7 @@ public class MergeTemplateHelper
                              .Select(group => group.First())
                              .ToList();
 
-        string output = String.Empty;
+        string output = string.Empty;
         List<string> itemsToLearn = new();
         string scriptName = Bot.Shops.Name.Replace("Merge", "").Replace("merge", "").Replace(",", "").Replace("’", "").Replace("shop", "").Replace("-", "").Replace("_", "").Replace("Shop", "").Replace("'", "").Trim() + " Merge";
         string className = scriptName.Replace(" ", "");
@@ -133,7 +133,7 @@ public class MergeTemplateHelper
                 continue;
 
             shopItemNames.Add($"        new Option<bool>(\"{item.ID}\", \"{item.Name}\", \"Mode: [select] only\\nShould the bot buy \\\"{item.Name}\\\" ?\", false),");
-            tags.AddRange(item.Name.ToLower().Split(' ', StringSplitOptions.RemoveEmptyEntries).Select(x => new String(x.Where(Char.IsLetter).ToArray())).Except(tags).Except(tagsBlacklist).Except(multipliedTagsBlacklist));
+            tags.AddRange(item.Name.ToLower().Split(' ', StringSplitOptions.RemoveEmptyEntries).Select(x => new string(x.Where(char.IsLetter).ToArray())).Except(tags).Except(tagsBlacklist).Except(multipliedTagsBlacklist));
 
             foreach (ItemBase req in item.Requirements)
             {
@@ -196,7 +196,7 @@ public class MergeTemplateHelper
             Core.Logger("Failed to find blackListIndex");
             return;
         }
-        MergeTemplate[blackListIndex] = "        Core.BankingBlackList.AddRange(new[] { \"" + String.Join("\", \"", itemsToLearn) + "\"});";
+        MergeTemplate[blackListIndex] = "        Core.BankingBlackList.AddRange(new[] { \"" + string.Join("\", \"", itemsToLearn) + "\"});";
 
         int startIndex = Array.IndexOf(MergeTemplate, "        Adv.StartBuyAllMerge(\"map\", 1234, findIngredients, buyOnlyThis, buyMode: buyMode);");
         if (startIndex < 0)

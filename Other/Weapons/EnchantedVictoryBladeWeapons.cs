@@ -139,11 +139,11 @@ public class EnchantedVictoryBladeWeapons
 
     private string Captialize(string input)
     {
-        if (String.IsNullOrEmpty(input))
+        if (string.IsNullOrEmpty(input))
             return input;
         if (input.Length == 1)
-            return Char.ToUpper(input[0]).ToString();
-        return Char.ToUpper(input[0]) + input.Substring(1).ToLower();
+            return char.ToUpper(input[0]).ToString();
+        return char.ToUpper(input[0]) + input.Substring(1).ToLower();
     }
 }
 

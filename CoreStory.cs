@@ -273,20 +273,20 @@ public class CoreStory
                 prevQuestReq ??=
                     prevQuest == null || prevQuest.Requirements.All(r => Core.CheckInventory(r.ID, r.Quantity)) ?
                         null :
-                        String.Join(',', prevQuest.Requirements.Where(r => !Core.CheckInventory(r.ID, r.Quantity)).Select(i => i.Name));
+                        string.Join(',', prevQuest.Requirements.Where(r => !Core.CheckInventory(r.ID, r.Quantity)).Select(i => i.Name));
                 prevQuestAReq ??=
                     prevQuest == null || prevQuest.AcceptRequirements.All(r => Core.CheckInventory(r.ID, r.Quantity)) ?
                         null :
-                        String.Join(',', prevQuest.Requirements.Where(r => !Core.CheckInventory(r.ID, r.Quantity)).Select(i => i.Name));
+                        string.Join(',', prevQuest.Requirements.Where(r => !Core.CheckInventory(r.ID, r.Quantity)).Select(i => i.Name));
                 prevQuestExplain ??=
                     prevQuest == null ?
-                        String.Empty :
+                        string.Empty :
                         $"Quest \"{prevQuest.Name}\" [{prevQuest.ID}] appears to have failed to turn in somehow.|" +
                         (prevQuestReq == null ?
-                            String.Empty :
+                            string.Empty :
                             $"Missing QuestItems: {prevQuestReq}|") +
                         (prevQuestAReq == null ?
-                            String.Empty :
+                            string.Empty :
                             $"Missing AcceptRequirements: {prevQuestAReq}|");
 
                 if (lastFailedQuestID != QuestData.ID)
@@ -331,8 +331,8 @@ public class CoreStory
                             url +=
                                 $"&entry.77289389={prevQuest.ID}&" +
                                 $"entry.2130921787={prevQuest.Name}&" +
-                                $"entry.1966808403={prevQuestReq ?? String.Empty}&" +
-                                $"entry.914792808={prevQuestAReq ?? String.Empty}";
+                                $"entry.1966808403={prevQuestReq ?? string.Empty}&" +
+                                $"entry.914792808={prevQuestAReq ?? string.Empty}";
                         url += "\"";
 
                         Process p = new();
@@ -404,7 +404,7 @@ public class CoreStory
             if (requiredQuestReward?.Count == 0 && quest.AcceptRequirements?.Count > 0)
             {
                 Core.Logger("The managed failed to find the location of \"" +
-                String.Join("\" + \"", quest.AcceptRequirements.Select(a => a.Name)) +
+                string.Join("\" + \"", quest.AcceptRequirements.Select(a => a.Name)) +
                 $"\" for Quest ID {quest.ID}, is the function missing a Quest ID?",
                 messageBox: true);
                 return;
@@ -507,7 +507,7 @@ public class CoreStory
     /// <summary>
     /// Put this at the start of your story script so that the bot will load all quests that are used in the bot. This will speed up any progression checks tremendiously.
     /// </summary>
-    public void PreLoad(Object _this, [CallerMemberName] string caller = "")
+    public void PreLoad(object _this, [CallerMemberName] string caller = "")
     {
         List<int> QuestIDs = new();
         string[] ScriptSlice = Core.CompiledScript();
@@ -574,7 +574,7 @@ public class CoreStory
             if (!SearchParam.Any(x => EdittedLine.StartsWith(x)))
                 continue;
 
-            char[] digits = Line.SkipWhile(c => !Char.IsDigit(c)).TakeWhile(Char.IsDigit).ToArray();
+            char[] digits = Line.SkipWhile(c => !char.IsDigit(c)).TakeWhile(char.IsDigit).ToArray();
             string sQuestID = new(digits);
             int QuestID = int.Parse(sQuestID);
 

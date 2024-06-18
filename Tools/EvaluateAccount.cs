@@ -75,18 +75,18 @@ public class EvalAcc
         // The actual output
         Bot.ShowMessageBox(
             $"Level:\t\t\t\t{Bot.Player.Level}\n" +
-            (accAge != null ? $"Account Age:\t\t\t{(int)(accAge.Value.TotalDays / 365.2425)} years, {(int)(accAge.Value.TotalDays - ((int)(accAge.Value.TotalDays / 365.2425) * 365.2425)) / 30} months\n" : String.Empty) +
-            (badges != null ? $"Beta Tester:\t\t\t{checkbox(badges.Contains(2))}\n" : String.Empty) +
-            (badges != null ? $"Founder:\t\t\t\t{checkbox(badges.Contains(1))}\n" : String.Empty) +
-            (gender != null ? $"Gender:\t\t\t\t{(gender[1] == 'M' ? "Male" : "Female")}\n" : String.Empty) +
+            (accAge != null ? $"Account Age:\t\t\t{(int)(accAge.Value.TotalDays / 365.2425)} years, {(int)(accAge.Value.TotalDays - ((int)(accAge.Value.TotalDays / 365.2425) * 365.2425)) / 30} months\n" : string.Empty) +
+            (badges != null ? $"Beta Tester:\t\t\t{checkbox(badges.Contains(2))}\n" : string.Empty) +
+            (badges != null ? $"Founder:\t\t\t\t{checkbox(badges.Contains(1))}\n" : string.Empty) +
+            (gender != null ? $"Gender:\t\t\t\t{(gender[1] == 'M' ? "Male" : "Female")}\n" : string.Empty) +
 
             $"\nMaxed Factions:\t\t\t{Bot.Reputation.FactionList.Count(f => f.Rank == 10)} out of {Bot.Reputation.FactionList.Count}\n" +
             $"Joined Legion:\t\t\t{checkbox(Core.isCompletedBefore(793))}\n" +
             $"Treasure Potion Count:\t\t{Bot.Inventory.GetItem(18927)?.Quantity}\n\n" +
 
             $"Current Gold:\t\t\t{ToKMB((int)Math.Round((double)Bot.Player.Gold / 100000d) * 100000)}\n" +
-            $"Current ACs:\t\t\t{ToKMB((int)Math.Floor((double)ACs / 1000d) * 1000)}{(ACs > 0 ? "+" : String.Empty)}\n" +
-            $"Spent ACs:\t\t\t{ToKMB((int)Math.Floor((double)usedACs / 1000d) * 1000)}{(usedACs > 0 ? "+" : String.Empty)}\n" +
+            $"Current ACs:\t\t\t{ToKMB((int)Math.Floor((double)ACs / 1000d) * 1000)}{(ACs > 0 ? "+" : string.Empty)}\n" +
+            $"Spent ACs:\t\t\t{ToKMB((int)Math.Floor((double)usedACs / 1000d) * 1000)}{(usedACs > 0 ? "+" : string.Empty)}\n" +
             $"Extra Slots:\t\t\t{extraSlots} slots worth {extraSlots * 200} ACs\n\n" +
 
             $"Total Badge Count:\t\t{badges?.Count}\n" +
@@ -187,12 +187,12 @@ public class EvalAcc
             string[] time = output[3].Split(':');
             return DateTime.Now.Subtract(
                 new DateTime(
-                    Int32.Parse(output[5]),
+                    int.Parse(output[5]),
                     Months.First(x => x.Key == output[1]).Value,
-                    Int32.Parse(output[2]),
-                    Int32.Parse(time[0]),
-                    Int32.Parse(time[1]),
-                    Int32.Parse(time[2]),
+                    int.Parse(output[2]),
+                    int.Parse(time[0]),
+                    int.Parse(time[1]),
+                    int.Parse(time[2]),
                     DateTimeKind.Unspecified));
         }
 
@@ -210,7 +210,7 @@ public class EvalAcc
 
         string importantItemCheckbox(int tabs, params string[] items)
         {
-            string _tabs = String.Empty;
+            string _tabs = string.Empty;
             for (int t = 0; t < tabs; t++)
                 _tabs += '\t';
             return $"{items[0]}:{_tabs}{checkbox(Core.CheckInventory(items, 1, true, false))}\n";

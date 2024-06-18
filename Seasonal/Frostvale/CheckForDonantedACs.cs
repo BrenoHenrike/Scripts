@@ -73,12 +73,12 @@ public class CheckForDonatedACs
             string[] output = _output[1..^1].Split(' ');
             string[] time = output[3].Split(':');
             var creationDate = new DateTime(
-                Int32.Parse(output[5]),
+                int.Parse(output[5]),
                 Months.First(x => x.Key == output[1]).Value,
-                Int32.Parse(output[2]),
-                Int32.Parse(time[0]),
-                Int32.Parse(time[1]),
-                Int32.Parse(time[2]),
+                int.Parse(output[2]),
+                int.Parse(time[0]),
+                int.Parse(time[1]),
+                int.Parse(time[2]),
                 DateTimeKind.Unspecified
                 );
             double accountAgeInDays = DateTime.Now.Subtract(creationDate).TotalDays;
@@ -118,10 +118,10 @@ public class CheckForDonatedACs
 
         if (newACs.Count == 0)
             Bot.ShowMessageBox($"We checked {Army.doForAllAccountDetails!.Length} accounts, but none of them have gained any {(firstTime ? "ACs" : "more ACs since last time")}." +
-            $"{(warnings.Count > 0 ? "\n\nPlease be aware of the following things:\n" + String.Join('\n', warnings) : "")}",
+            $"{(warnings.Count > 0 ? "\n\nPlease be aware of the following things:\n" + string.Join('\n', warnings) : "")}",
             Bot.Random.Next(1, 100) == 100 ? "No Maidens" : "No ACs");
         else
-            Bot.ShowMessageBox($"{newACs.Count} out of {Army.doForAllAccountDetails!.Length} accounts received ACs! Below you will find more details:\n\n" + String.Join('\n', ACs) +
+            Bot.ShowMessageBox($"{newACs.Count} out of {Army.doForAllAccountDetails!.Length} accounts received ACs! Below you will find more details:\n\n" + string.Join('\n', ACs) +
             $"{(warnings.Count > 0 ? "\n\nPlease be aware of the following things:\n" + string.Join('\n', warnings) : "")}", "Got ACs!");
 
         void ACsListener(dynamic packet)
@@ -139,9 +139,9 @@ public class CheckForDonatedACs
                         string text = data[2].ToString();
                         if (text.Contains("AdventureCoins from other players. Happy Frostval!"))
                         {
-                            int ac = Int32.Parse(text.Split(' ')[2]);
+                            int ac = int.Parse(text.Split(' ')[2]);
                             Core.Logger($"{Core.Username()} has received {ac} ACs!");
-                            int acLog = Int32.Parse((oldACs.Find(x => x.StartsWith(Core.Username())) ?? "a:0").Split(':').Last()) + ac;
+                            int acLog = int.Parse((oldACs.Find(x => x.StartsWith(Core.Username())) ?? "a:0").Split(':').Last()) + ac;
 
                             ACs.Add($"{Core.Username()}: +{ac} (received {acLog} ACs total)");
                             newACs.Add($"{Core.Username()}:{acLog}");

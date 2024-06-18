@@ -99,8 +99,8 @@ public class ScriptMainCleaner
 
                 inner = inner.Where(l =>
                         !l.Contains("Core.SetOptions(") &&
-                        !String.IsNullOrEmpty(l) &&
-                        !String.IsNullOrWhiteSpace(l) &&
+                        !string.IsNullOrEmpty(l) &&
+                        !string.IsNullOrWhiteSpace(l) &&
                         !l.Contains("Core.BankingBlackList") &&
                         !l.Trim().StartsWith("//") &&
                         !l.Trim().StartsWith('"')

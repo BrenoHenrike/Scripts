@@ -159,7 +159,7 @@ public class GenQueuedOneClientScript
                 continue;
             }
 
-            string spaces = new String(script[scriptMainIndex].TakeWhile(c => c == ' ').ToArray()) ?? String.Empty;
+            string spaces = new string(script[scriptMainIndex].TakeWhile(c => c == ' ').ToArray()) ?? string.Empty;
             int scriptMainEnd = Array.IndexOf(script, spaces + "}", scriptMainIndex);
             if (scriptMainEnd < 0)
             {
@@ -169,7 +169,7 @@ public class GenQueuedOneClientScript
 
             foreach (var line in script[(scriptMainIndex + 1)..scriptMainEnd])
             {
-                if (!lineBlackList.Any(l => line.ToLower().Contains(l)) && !String.IsNullOrEmpty(line) && !String.IsNullOrWhiteSpace(line) && !line.Trim().StartsWith("//"))
+                if (!lineBlackList.Any(l => line.ToLower().Contains(l)) && !string.IsNullOrEmpty(line) && !string.IsNullOrWhiteSpace(line) && !line.Trim().StartsWith("//"))
                 {
                     methods.Add($"            {(line.Contains('.') ? "" : className + ".")}{line.Trim()}");
                     if (line.Contains('.') && !line.Contains("Core"))
@@ -210,7 +210,7 @@ public class GenQueuedOneClientScript
         {
             newFile.AddRange(new List<string>() {
                 "",
-                $"    public string[] MultiOptions = {{ {String.Join(", ", optionNames)} }};",
+                $"    public string[] MultiOptions = {{ {string.Join(", ", optionNames)} }};",
                 $"    public string OptionsStorage = \"Generated_{botName}\";"
             });
             newFile.AddRange(options);
@@ -237,7 +237,7 @@ public class GenQueuedOneClientScript
             Directory.CreateDirectory(Path.Combine(ClientFileSources.SkuaScriptsDIR, "Generated"));
         Core.WriteFile(Path.Combine(ClientFileSources.SkuaScriptsDIR, "Army", "OneClient", "Generated", botName + ".cs"), newFile);
 
-        Bot.ShowMessageBox($"File Path:\n- Scripts/Army/OneClient/Generated/{botName}.cs\n\nIt does the following bots in the same order:\n- {String.Join("\n- ", scriptNames)}", "Script is succesfully generated");
+        Bot.ShowMessageBox($"File Path:\n- Scripts/Army/OneClient/Generated/{botName}.cs\n\nIt does the following bots in the same order:\n- {string.Join("\n- ", scriptNames)}", "Script is succesfully generated");
     }
 
     private string[] lineBlackList = {
@@ -256,7 +256,7 @@ public class GenQueuedOneClientScript
     {
         string toReturn = "";
         foreach (char c in input)
-            if (Char.IsLetter(c) || Char.IsNumber(c))
+            if (char.IsLetter(c) || char.IsNumber(c))
                 toReturn += c;
         return toReturn;
     }

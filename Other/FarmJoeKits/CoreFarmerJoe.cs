@@ -620,7 +620,7 @@ public class CoreFarmerJoe
         // Easy Difficulty Stuff
         ShirtAndHat();
         ServersAreDown();
-        Adv.SmartEnhance(Bot.Player.CurrentClass?.Name ?? String.Empty);
+        Adv.SmartEnhance(Bot.Player.CurrentClass?.Name ?? string.Empty);
 
         // Extra Stuff
         Pets();

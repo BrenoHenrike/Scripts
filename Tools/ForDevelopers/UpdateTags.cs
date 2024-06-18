@@ -139,7 +139,7 @@ public class UpdateTags
                             string[] _tags = _prop.Split(',', StringSplitOptions.TrimEntries);
                             for (int i = 0; i < _tags.Length; i++)
                                 _tags[i] = _tags[i] == _tags[i].ToUpper() ? _tags[i] : _tags[i].ToLower();
-                            newData.Add("tags: " + String.Join(", ", _tags));
+                            newData.Add("tags: " + string.Join(", ", _tags));
                         }
                         else newData.Add($"{prop}: {_prop.Replace("  ", " ").Trim()}");
                     }
@@ -172,11 +172,11 @@ public class UpdateTags
             {
                 bool tags = prop == "tags";
                 InputDialogViewModel diag = new(
-                    "Script " + Char.ToUpper(prop[0]) + prop.Substring(1),
+                    "Script " + char.ToUpper(prop[0]) + prop.Substring(1),
                     $"[ {file} ]\n" +
                     $"Please provide an acurate {prop} of this script\n\n" +
-                    "Methods and Classes inside file:\n·  " + String.Join("\n·  ", data),
-                    tags ? "Don't forget to use , [comma] as a divider when adding multiple tags." : String.Empty,
+                    "Methods and Classes inside file:\n·  " + string.Join("\n·  ", data),
+                    tags ? "Don't forget to use , [comma] as a divider when adding multiple tags." : string.Empty,
                     false
                 );
                 if (Ioc.Default.GetRequiredService<IDialogService>().ShowDialog(diag) != true)
@@ -193,7 +193,7 @@ public class UpdateTags
                     for (int i = 0; i < _tags.Length; i++)
                         _tags[i] = _tags[i] == _tags[i].ToUpper() ? _tags[i] : _tags[i].ToLower();
                 }
-                list.Add(prop + ": " + (tags ? String.Join(", ", _tags!) : diag.DialogTextInput));
+                list.Add(prop + ": " + (tags ? string.Join(", ", _tags!) : diag.DialogTextInput));
                 return true;
             }
         }
@@ -211,14 +211,14 @@ public class UpdateTags
                 l.Contains(':') &&
                 !l.TrimEnd().EndsWith("null") &&
                 l != "name: " + file.Replace('\\', '/').Split('/').Last().Replace(".cs", "") &&
-                !String.IsNullOrWhiteSpace(l.Split(':').Last()) &&
-                !String.IsNullOrEmpty(l.Split(':').Last())
+                !string.IsNullOrWhiteSpace(l.Split(':').Last()) &&
+                !string.IsNullOrEmpty(l.Split(':').Last())
                 ))
             {
                 propData = _fileData.First(l => l.StartsWith(prop.ToLower()) && l.Contains(':')).Split(prop.ToLower() + ':').Last();
                 return true;
             }
-            propData = String.Empty;
+            propData = string.Empty;
             return false;
         }
     }

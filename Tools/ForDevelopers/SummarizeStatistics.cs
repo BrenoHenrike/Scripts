@@ -62,7 +62,7 @@ public class SummarizeStats
 
         int cTop = Bot.Config!.Get<int>("topAll");
         Bot.Log($"\nTop {cTop} scripts (All Time)");
-        var topAll = data.Where(x => !String.IsNullOrEmpty(x.ScriptPath)).GroupBy(x => x.ScriptPath?.Replace('\\', '/').Replace(".cs", "")).OrderByDescending(x => x.Count());
+        var topAll = data.Where(x => !string.IsNullOrEmpty(x.ScriptPath)).GroupBy(x => x.ScriptPath?.Replace('\\', '/').Replace(".cs", "")).OrderByDescending(x => x.Count());
         for (int i = 0; i < cTop;)
         {
             var script = topAll.Skip(i++).First();
@@ -71,7 +71,7 @@ public class SummarizeStats
 
         int c31 = Bot.Config!.Get<int>("top31");
         Bot.Log($"\nTop {c31} scripts (31 Days)");
-        var top31 = days31.Where(x => !String.IsNullOrEmpty(x.ScriptPath)).GroupBy(x => x.ScriptPath?.Replace('\\', '/').Replace(".cs", "")).OrderByDescending(x => x.Count());
+        var top31 = days31.Where(x => !string.IsNullOrEmpty(x.ScriptPath)).GroupBy(x => x.ScriptPath?.Replace('\\', '/').Replace(".cs", "")).OrderByDescending(x => x.Count());
         for (int i = 0; i < c31;)
         {
             var script = top31.Skip(i++).First();
@@ -97,15 +97,15 @@ public class SummarizeStats
                 CultureInfo.CreateSpecificCulture("en-US")
             ).AddHours(1);
 
-            UserID = Int32.Parse(input[1]);
-            ScriptPath = String.IsNullOrEmpty(input[2]) ? null : input[2];
+            UserID = int.Parse(input[1]);
+            ScriptPath = string.IsNullOrEmpty(input[2]) ? null : input[2];
             Start = (input[3]) switch
             {
                 "Start" => true,
                 "Stop" => false,
                 _ => null
             };
-            InstanceID = String.IsNullOrEmpty(input[4]) ? null : Int32.Parse(input[4]);
+            InstanceID = string.IsNullOrEmpty(input[4]) ? null : int.Parse(input[4]);
         }
     }
 }

@@ -502,7 +502,7 @@ public class CoreBLOD
 
     public void UpgradeMetal(MineCraftingMetalsEnum metal)
     {
-        string fullMetalName = String.Empty;
+        string fullMetalName = string.Empty;
         int upgradeMetalQuest = 0;
         int forgeKeyQuest = 0;
         switch (metal)

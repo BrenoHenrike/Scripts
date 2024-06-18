@@ -80,7 +80,7 @@ public class CustomAggroMon
         var _monData = Bot.Monsters.MapMonsters;
         List<string> _monDataNames = _monData.Select(m => m.Name).ToList();
         string? monsters = Bot.Config.Get<string>("monsters");
-        if (String.IsNullOrEmpty(monsters) || String.IsNullOrWhiteSpace(monsters))
+        if (string.IsNullOrEmpty(monsters) || string.IsNullOrWhiteSpace(monsters))
             monsters = getMonsters();
         string[] monsterList = monsters.Split(',');
 
@@ -93,7 +93,7 @@ public class CustomAggroMon
         List<string> remainder = new();
         foreach (string s in monsterList)
         {
-            if (Int32.TryParse(s, out int monID) && Bot.Monsters.TryGetMonster(monID, out var Monster))
+            if (int.TryParse(s, out int monID) && Bot.Monsters.TryGetMonster(monID, out var Monster))
             {
                 if (Monster != null)
                 {
@@ -114,7 +114,7 @@ public class CustomAggroMon
 
         if (remainder2.Count > 0)
         {
-            Core.Logger($"The bot was unable to find the following monster{(remainder2.Count == 1 ? "" : "s")}: " + String.Join('|', remainder2));
+            Core.Logger($"The bot was unable to find the following monster{(remainder2.Count == 1 ? "" : "s")}: " + string.Join('|', remainder2));
         }
 
         if (monNames.Count == 0)
@@ -132,7 +132,7 @@ public class CustomAggroMon
                 string[] quests = questsConfig.Split(',');
                 foreach (string q in quests)
                 {
-                    if (!Int32.TryParse(q.Trim(), out int ID) || questIDs.Contains(ID))
+                    if (!int.TryParse(q.Trim(), out int ID) || questIDs.Contains(ID))
                         continue;
                     questIDs.Add(ID);
                 }
@@ -149,7 +149,7 @@ public class CustomAggroMon
         GenerateFile();
 
 
-        if (drops == null || drops.Count == 0 || drops.All(x => String.IsNullOrEmpty(x)))
+        if (drops == null || drops.Count == 0 || drops.All(x => string.IsNullOrEmpty(x)))
             Bot.Drops.Stop();
         else Core.AddDrop(drops.ToArray());
 
@@ -189,13 +189,13 @@ public class CustomAggroMon
                         if (!_cells.Contains(cell))
                             _cells.Add(cell);
 
-                    _monsters.Add($"     Cell count: {_cells.Count}{(_mon.Race == "None" ? String.Empty : $", Race-Type: {_mon.Race}")}, HP: {_mon.MaxHP}");
+                    _monsters.Add($"     Cell count: {_cells.Count}{(_mon.Race == "None" ? string.Empty : $", Race-Type: {_mon.Race}")}, HP: {_mon.MaxHP}");
                 }
             }
 
             InputDialogViewModel monDiag = new("Monsters in /" + map,
                     "Please tell us what monsters you would wanna aggromon? (Names/IDs)\n\n" +
-                    String.Join('\n', _monsters) +
+                    string.Join('\n', _monsters) +
                     "\n\nDont forget to use , as a divider if you wish to use more than one\nmonster.", false);
             if (Ioc.Default.GetRequiredService<IDialogService>().ShowDialog(monDiag) != true)
                 Bot.Stop(true);
@@ -228,15 +228,15 @@ public class CustomAggroMon
             if (questIDs.Count > 0)
             {
                 int questIndex = FetchIndex("private List<int> questIDs = new() { };");
-                template[questIndex] = $"{spaces}private List<int> questIDs = new() {{ {String.Join(", ", questIDs)} }};";
+                template[questIndex] = $"{spaces}private List<int> questIDs = new() {{ {string.Join(", ", questIDs)} }};";
             }
             int monsterIndex = FetchIndex("private List<string> monNames = new() { };");
-            template[monsterIndex] = $"{spaces}private List<string> monNames = new() {{ \"{String.Join("\", \"", monNames)}\" }};";
+            template[monsterIndex] = $"{spaces}private List<string> monNames = new() {{ \"{string.Join("\", \"", monNames)}\" }};";
 
             if (drops.Count > 0)
             {
                 int dropsIndex = FetchIndex("private List<string> drops = new() { };");
-                template[dropsIndex] = $"{spaces}private List<string> drops = new() {{ \"{String.Join("\", \"", drops)}\" }};";
+                template[dropsIndex] = $"{spaces}private List<string> drops = new() {{ \"{string.Join("\", \"", drops)}\" }};";
             }
             int mapIndex = FetchIndex("private string map = \"\";");
             template[mapIndex] = $"{spaces}private string map = \"{map?.ToLower().Trim()}\";";
@@ -266,7 +266,7 @@ public class CustomAggroMon
     {
         string toReturn = "";
         foreach (char c in input)
-            if (Char.IsLetter(c))
+            if (char.IsLetter(c))
                 toReturn += c;
         return toReturn;
     }

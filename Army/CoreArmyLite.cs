@@ -133,7 +133,7 @@ public class CoreArmyLite
     /// 
     /// </summary>
     public string AggroMonPacket(params int[] MonsterMapIDs)
-        => $"%xt%zm%aggroMon%{Bot.Map.RoomID}%{String.Join('%', MonsterMapIDs)}%";
+        => $"%xt%zm%aggroMon%{Bot.Map.RoomID}%{string.Join('%', MonsterMapIDs)}%";
 
     public void SmartAggroMonStart(string map, params string?[] monsters)
     {
@@ -171,7 +171,7 @@ public class CoreArmyLite
         if (questIDs.Count > 0)
             Core.RegisterQuests(questIDs.ToArray());
 
-        if (drops == null || drops.Count == 0 || drops.All(x => String.IsNullOrEmpty(x)))
+        if (drops == null || drops.Count == 0 || drops.All(x => string.IsNullOrEmpty(x)))
             Bot.Drops.Stop();
         else Core.AddDrop(drops.ToArray());
 
@@ -246,7 +246,7 @@ public class CoreArmyLite
 
 
     public bool isPartyLeader()
-        => Core.Username().ToLower() == (getPartyLeader() ?? String.Empty).ToLower();
+        => Core.Username().ToLower() == (getPartyLeader() ?? string.Empty).ToLower();
 
     private int getPartyID()
         => Bot.Flash.GetGameObject<int>("world.partyID");
@@ -380,7 +380,7 @@ public class CoreArmyLite
                     break;
 
                 string? player = Bot.Config.Get<string>("player" + i++);
-                if (String.IsNullOrEmpty(player))
+                if (string.IsNullOrEmpty(player))
                     break;
 
                 players.Add(player.ToLower().Trim());
@@ -419,7 +419,7 @@ public class CoreArmyLite
             logCount++;
             if (logCount == 15)
             {
-                Core.Logger($"Waiting for the party{(item == null ? String.Empty : (" to farm " + item))} [{playerCount}/{dynamicPartySize}]");
+                Core.Logger($"Waiting for the party{(item == null ? string.Empty : (" to farm " + item))} [{playerCount}/{dynamicPartySize}]");
                 hasWaited = true;
                 logCount = 0;
             }
@@ -618,7 +618,7 @@ public class CoreArmyLite
     public void Butler(string playerName, bool LockedMaps = true, ClassType classType = ClassType.Farm, bool CopyWalk = false, int roomNr = 1, bool rejectDrops = true, string? attackPriority = null, int hibernateTimer = 0)
     {
         // Double checking the playername and assigning it so all functions can read it
-        if (playerName == "Insert Name" || String.IsNullOrEmpty(playerName))
+        if (playerName == "Insert Name" || string.IsNullOrEmpty(playerName))
             Core.Logger("No name was inserted, stopping the bot.", messageBox: true, stopBot: true);
         playerName = playerName.Trim().ToLower();
         this.b_playerName = playerName;
@@ -629,7 +629,7 @@ public class CoreArmyLite
         b_hibernationTimer = hibernateTimer;
         b_shouldHibernate = b_hibernationTimer > 0;
 
-        if (!String.IsNullOrEmpty(attackPriority))
+        if (!string.IsNullOrEmpty(attackPriority))
             _attackPriority.AddRange(attackPriority.Split(',', StringSplitOptions.TrimEntries));
 
         // Creating directory and file to communicate with the followed player.
@@ -1037,11 +1037,11 @@ public class CoreArmyLite
     private async void MapNumberParses(string map)
     {
         // Wait untill the full name I.E. "battleon-12345" is set
-        if (String.IsNullOrEmpty(Bot.Map.FullName))
+        if (string.IsNullOrEmpty(Bot.Map.FullName))
         {
             for (int a = 0; a < 10; a++)
             {
-                if (!String.IsNullOrEmpty(Bot.Map.FullName))
+                if (!string.IsNullOrEmpty(Bot.Map.FullName))
                     break;
                 await Task.Delay(Core.ActionDelay);
                 if (a == 9)
@@ -1049,7 +1049,7 @@ public class CoreArmyLite
             }
         }
 
-        if (!Int32.TryParse(Bot.Map.FullName.Split('-').Last(), out int mapNr) || map == b_prevRoom || !Bot.Map.PlayerExists(b_playerName!))
+        if (!int.TryParse(Bot.Map.FullName.Split('-').Last(), out int mapNr) || map == b_prevRoom || !Bot.Map.PlayerExists(b_playerName!))
             return;
 
         // If the number is the same number as on the previous map

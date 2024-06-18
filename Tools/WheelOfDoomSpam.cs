@@ -46,7 +46,7 @@ public class WheelOfDoomSpam
             {
                 if (Ioc.Default.GetRequiredService<IDialogService>().ShowDialog(diag) == true)
                 {
-                    amount = Int32.Parse(diag.DialogTextInput);
+                    amount = int.Parse(diag.DialogTextInput);
                     if (amount <= 0)
                         Bot.ShowMessageBox("Please provide a number greater than zero (0) in order to continue.", "Invalid input");
                     else

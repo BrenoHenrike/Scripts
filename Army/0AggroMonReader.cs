@@ -95,7 +95,7 @@ public class AggroMonReader
         if (cells.Count == 1)
             Core.Logger("Cell parsed, will move to the following cell: " + cells.First(), caller);
         else if (cells.Count >= 2)
-            Core.Logger("Cells parsed, will devide amongst the following cell: " + String.Join(", ", cells), caller);
+            Core.Logger("Cells parsed, will devide amongst the following cell: " + string.Join(", ", cells), caller);
 
         List<int> MMIDs = new();
         foreach (string p in packets)
@@ -103,24 +103,24 @@ public class AggroMonReader
             string[] d = p.Split('%');
             for (int i = 5; i < d.Length; i++)
             {
-                if (Int32.TryParse(d[i], out int id) && !MMIDs.Contains(id))
+                if (int.TryParse(d[i], out int id) && !MMIDs.Contains(id))
                     MMIDs.Add(id);
             }
         }
-        Core.Logger("Packets parsed, will aggro the following IDs: " + String.Join(", ", MMIDs), caller);
+        Core.Logger("Packets parsed, will aggro the following IDs: " + string.Join(", ", MMIDs), caller);
 
         List<int> questIDs = new();
         if (quests != null)
         {
             foreach (string q in quests)
             {
-                if (Int32.TryParse(q, out int id) && !questIDs.Contains(id))
+                if (int.TryParse(q, out int id) && !questIDs.Contains(id))
                     questIDs.Add(id);
             }
             if (questIDs.Count == 1)
                 Core.Logger("Quest ID parsed, will register the following quest: " + questIDs.First(), caller);
             else if (questIDs.Count >= 2)
-                Core.Logger("Quest IDs parsed, will register the following quests: " + String.Join(", ", questIDs), caller);
+                Core.Logger("Quest IDs parsed, will register the following quests: " + string.Join(", ", questIDs), caller);
         }
 
         List<string> toAddDrop = new();
@@ -138,7 +138,7 @@ public class AggroMonReader
         if (toAddDrop.Count == 1)
             Core.Logger("Drop parsed, will pickup the following item: " + toAddDrop.First(), caller);
         else if (toAddDrop.Count >= 2)
-            Core.Logger("Drops parsed, will pickup the following items: " + String.Join(", ", toAddDrop), caller);
+            Core.Logger("Drops parsed, will pickup the following items: " + string.Join(", ", toAddDrop), caller);
 
         #endregion
 

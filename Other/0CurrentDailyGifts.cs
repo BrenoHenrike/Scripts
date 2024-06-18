@@ -257,7 +257,7 @@ public class CurrentDailyGifts
         Core.Logger($"Daily Gift from {monster} in /{map.ToLower()}, " +
             (expiresAt == Permanent ? "they're permanent. " :
             $"available untill {expiresAt.ToString(formatInfo)[..10]}. ") +
-            $"This monster drops the following items:\n[{DateTime.Now:HH:mm:ss}] (GetGift) \"" + String.Join("\" | \"", items) + "\"");
+            $"This monster drops the following items:\n[{DateTime.Now:HH:mm:ss}] (GetGift) \"" + string.Join("\" | \"", items) + "\"");
 
         foreach (string item in items)
         {
@@ -323,7 +323,7 @@ public class CurrentDailyGifts
         Core.Logger($"Daily Gift from {monster.Name} in /{map.ToLower()}, " +
             (expiresAt == Permanent ? "they're permanent. " :
             $"available untill {expiresAt.ToString(formatInfo)[..10]}. ") +
-            $"This monster drops the following items:\n[{DateTime.Now:HH:mm:ss}] (GetGift) \"" + String.Join("\" | \"", items) + "\"");
+            $"This monster drops the following items:\n[{DateTime.Now:HH:mm:ss}] (GetGift) \"" + string.Join("\" | \"", items) + "\"");
 
         foreach (string item in items)
         {
