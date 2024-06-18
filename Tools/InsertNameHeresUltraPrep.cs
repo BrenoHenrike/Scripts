@@ -133,6 +133,30 @@ public class InsertNameHeresUltraPrep
     private BankAllItems BankAllItems = new();
     private UnlockForgeEnhancements UnlockForgeEnhancements = new();
 
+    private string[] UltraItems = new[]
+    {
+        //Ultra Drops:
+        "Ezrajal Insignia",
+        "Warden Insignia",
+        "Engineer Insignia",
+        "Nulgath Insignia",
+        "Kala Insignia",
+        "Avatar Tyndarius Insignia",
+        "Iara Insignia",
+        "Champion Drakath Insignia",
+        "Malgor Insignia",
+        "King Drago Insignia",
+        "Avatar Tyndarius Insignia",
+        "Malgor Insignia",
+
+        //Required Items:
+        "Scroll of Life Steal",
+        "Scroll of Enrage",
+        "Potent Malevolence Elixir"
+    };
+
+
+
     public bool DontPreconfigure = true;
     public string OptionsStorage = "UltraPrep";
 
@@ -175,6 +199,7 @@ public class InsertNameHeresUltraPrep
 
     public void ScriptMain(IScriptInterface Bot)
     {
+        Core.BankingBlackList.AddRange(UltraItems);
         Core.SetOptions();
 
         Example();
@@ -250,8 +275,13 @@ public class InsertNameHeresUltraPrep
                 continue;
 
             foreach (var Item in player.Value)
-                if (!Bot.Inventory.Contains(Item))
-                    Core.Unbank(Item);
+            {
+                if (Bot.Inventory.Contains(Item))
+                    continue;
+
+                while (!Bot.ShouldExit && !Bot.Inventory.Contains(Item))
+                    Bot.Wait.ForTrue(() => Bot.Bank.EnsureToInventory(Item), 20);
+            }
         }
         #endregion  Unbanking Required items
 
@@ -371,49 +401,5 @@ public class InsertNameHeresUltraPrep
         Scroll.BuyScroll(Scrolls.Enrage, 1000);
         Adv.BuyItem("terminatemple", 2328, "Scroll of Life Steal", 99);
         #endregion  Potions & Scrolls
-    }
-
-
-    public void RemoveLineIfContains(string fileName, string lineToRemove)
-    {
-        // Construct the full file path
-        string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Skua", fileName);
-
-        // Check if the file exists
-        if (File.Exists(filePath))
-        {
-            // Read all lines from the file
-            string[] lines = File.ReadAllLines(filePath);
-
-            // Find the index of the line to remove
-            int indexToRemove = Array.FindIndex(lines, line => line.Contains(lineToRemove));
-
-            // If the line exists, remove it
-            if (indexToRemove != -1)
-            {
-                // Create a new array without the line to remove
-                string[] newLines = new string[lines.Length - 1];
-                int j = 0;
-                for (int i = 0; i < lines.Length; i++)
-                {
-                    if (i != indexToRemove)
-                    {
-                        newLines[j++] = lines[i];
-                    }
-                }
-
-                // Write the modified contents back to the file
-                File.WriteAllLines(filePath, newLines);
-                Core.Logger($"Line containing '{lineToRemove}' removed from the file. This will make the OTM Option Reappear.");
-            }
-            else
-            {
-                Core.Logger($"Line containing '{lineToRemove}' not found in the file");
-            }
-        }
-        else
-        {
-            Core.Logger($"File '{filePath}' not found.");
-        }
     }
 }
