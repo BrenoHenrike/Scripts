@@ -37,31 +37,6 @@ public class ExaltedApotheosisPreReqs
 
     public void PreReqs()
     {
-        // if (Core.CheckInventory("Exalted Node", 300, toInv: false) && Core.CheckInventory("Thaumaturgus Alpha", toInv: false) && Core.CheckInventory("Apostate Alpha", toInv: false))
-        // {
-        //     Core.Logger("Got all prerequisites! Kill the ultra bosses manually for insignias next to complete Exalted Apotheosis.");
-        //     return;
-        // }
-
-        /// No ultras required
-        // if (!Core.CheckInventory(new[] { "Thaumaturgus Alpha", "Apostate Alpha" }))
-        // {
-        //     Core.EquipClass(ClassType.Farm);
-        //     Core.KillMonster("timeinn", "r3", "Top", "Energy Elemental", "Exalted Node", 300, isTemp: false);
-        //     Core.EquipClass(ClassType.Solo);
-        //     Core.KillMonster("timeinn", "r7", "Bottom", "The Warden", "Exalted Relic Piece", 10, isTemp: false);
-        //     Core.KillMonster("timeinn", "r8", "Left", "The Engineer", "Exalted Artillery Shard", 10, isTemp: false);
-        //     Core.KillMonster("timeinn", "r6", "Left", "Ezrajal", "Exalted Forgemetal", 10, isTemp: false);
-
-        //     Adv.BuyItem("timeinn", 2010, "Apostate Alpha");
-        //     Adv.BuyItem("timeinn", 2010, "Thaumaturgus Alpha");
-
-        //     Core.EquipClass(ClassType.Farm);
-        //     Core.KillMonster("timeinn", "r3", "Top", "Energy Elemental", "Exalted Node", 300, isTemp: false);
-
-        //     Core.Logger("Got all prerequisites! Kill the ultra bosses manually for insignias next to complete Exalted Apotheosis.");
-        // }
-
         if (!Core.CheckInventory("Ezrajal Insignia", 24) || !Core.CheckInventory("Warden Insignia", 24) || !Core.CheckInventory("Engineer Insignia", 16))
         {
             Core.Logger($" Ezrajal Insignia: {Core.dynamicQuant("Ezrajal Insignia", false)} / 24");
@@ -84,6 +59,7 @@ public class ExaltedApotheosisPreReqs
             Bot.Wait.ForActionCooldown(Skua.Core.Models.GameActions.LoadShop);
             ShopItem? ExaltedApo = Bot.Shops.Items.Find(x => x.Name == "Exalted Apotheosis");
 
+            Core.EquipClass(ClassType.Farm);
             while (!Bot.ShouldExit && !Core.CheckInventory("Exalted Apotheosis"))
             {
                 // Define the weapon pairs in each tier
@@ -107,9 +83,10 @@ public class ExaltedApotheosisPreReqs
                         ShopItem? WepData = Bot.Shops.Items.FirstOrDefault(x => x.Name == wep);
 
                         // Check if the weapon has any requirements before buying
-                        if (WepData?.Requirements.Count > 0 && WepData.Requirements.All(req => Core.CheckInventory(req.ID)))
+                        if (WepData?.Requirements.Count > 0 && !WepData.Requirements.All(req => Core.CheckInventory(req.ID)))
                         {
-                            Core.KillMonster("timeinn", "r3", "Top", "Energy Elemental", "Exalted Node", 300, isTemp: false);
+                            int ExaltedNodequant = WepData.Requirements.FirstOrDefault(x => x.Name == "Exalted Node").Quantity;
+                            Core.KillMonster("timeinn", "r3", "Bottom", "*", "Exalted Node", ExaltedNodequant, isTemp: false);
                             Adv.BuyItem("timeinn", 2010, wep);
 
                             if (Core.CheckInventory("Exalted Apotheosis"))
