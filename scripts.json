@@ -50,7 +50,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 228493,
+    "size": 228483,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -72,7 +72,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 87785,
+    "size": 87935,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -301,7 +301,7 @@
       "army"
     ],
     "path": "Army/0CustomAggroMon.cs",
-    "size": 11019,
+    "size": 11015,
     "fileName": "0CustomAggroMon.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/0CustomAggroMon.cs"
   },
@@ -317,7 +317,7 @@
       "custom"
     ],
     "path": "Army/0AggroMonReader.cs",
-    "size": 5388,
+    "size": 5384,
     "fileName": "0AggroMonReader.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/0AggroMonReader.cs"
   },
@@ -328,7 +328,7 @@
       "null"
     ],
     "path": "Army/CoreArmyLite.cs",
-    "size": 40849,
+    "size": 40847,
     "fileName": "CoreArmyLite.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/CoreArmyLite.cs"
   },
@@ -568,7 +568,7 @@
       "IODA"
     ],
     "path": "Tools/WheelOfDoomSpam.cs",
-    "size": 5048,
+    "size": 5046,
     "fileName": "WheelOfDoomSpam.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/WheelOfDoomSpam.cs"
   },
@@ -627,7 +627,7 @@
       "me"
     ],
     "path": "Tools/InsertNameHeresUltraPrep.cs",
-    "size": 20274,
+    "size": 19495,
     "fileName": "InsertNameHeresUltraPrep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/InsertNameHeresUltraPrep.cs"
   },
@@ -641,7 +641,7 @@
       "modes"
     ],
     "path": "Tools/BuyOut.cs",
-    "size": 4496,
+    "size": 4494,
     "fileName": "BuyOut.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/BuyOut.cs"
   },
@@ -658,7 +658,7 @@
       "AC"
     ],
     "path": "Tools/TreasureChestSpam.cs",
-    "size": 6252,
+    "size": 6250,
     "fileName": "TreasureChestSpam.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/TreasureChestSpam.cs"
   },
@@ -690,7 +690,7 @@
       "seasonal"
     ],
     "path": "Tools/EvaluateAccount.cs",
-    "size": 12254,
+    "size": 12244,
     "fileName": "EvaluateAccount.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/EvaluateAccount.cs"
   },
@@ -1207,7 +1207,7 @@
       "ravenous"
     ],
     "path": "Enhancement/UnlockForgeEnhancements.cs",
-    "size": 41113,
+    "size": 41672,
     "fileName": "UnlockForgeEnhancements.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Enhancement/UnlockForgeEnhancements.cs"
   },
@@ -2814,7 +2814,7 @@
       "original drakath armor"
     ],
     "path": "Chaos/DrakathsArmor.cs",
-    "size": 3068,
+    "size": 3248,
     "fileName": "DrakathsArmor.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Chaos/DrakathsArmor.cs"
   },
@@ -2868,7 +2868,7 @@
       "set"
     ],
     "path": "Chaos/EternalDrakathSet.cs",
-    "size": 3219,
+    "size": 3833,
     "fileName": "EternalDrakathSet.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Chaos/EternalDrakathSet.cs"
   },
@@ -4374,7 +4374,7 @@
       "void chasm"
     ],
     "path": "Nation/Various/PrimeFiendShard.cs",
-    "size": 9663,
+    "size": 9970,
     "fileName": "PrimeFiendShard.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/PrimeFiendShard.cs"
   },
@@ -6438,7 +6438,7 @@
       "null"
     ],
     "path": "Tools/ForDevelopers/SummarizeStatistics.cs",
-    "size": 4534,
+    "size": 4530,
     "fileName": "SummarizeStatistics.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/ForDevelopers/SummarizeStatistics.cs"
   },
@@ -7449,7 +7449,7 @@
       "frostvale"
     ],
     "path": "Seasonal/Frostvale/CheckForDonantedACs.cs",
-    "size": 6561,
+    "size": 6547,
     "fileName": "CheckForDonantedACs.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/CheckForDonantedACs.cs"
   },
@@ -12196,7 +12196,7 @@
       "null"
     ],
     "path": "Story/ShadowsOfWar/CoreSoW.cs",
-    "size": 37425,
+    "size": 37421,
     "fileName": "CoreSoW.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfWar/CoreSoW.cs"
   },
