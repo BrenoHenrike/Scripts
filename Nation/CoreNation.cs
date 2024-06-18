@@ -413,7 +413,7 @@ public void SwindleBulk(int quant = 1000)
 
     int attemptCount = 1;
     Core.AddDrop("Cubes", "Tainted Gem");
-    Core.AddDrop(Nation.bagDrops);
+    Core.AddDrop(bagDrops);
 
     while (!Bot.ShouldExit && !Core.CheckInventory("Tainted Gem", quant))
     {

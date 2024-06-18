@@ -131,7 +131,7 @@ public class CoreAdvanced
     /// <param name="item">The ShopItem object containing all the information</param>
     public void GetItemReq(ShopItem item, int quant = 1)
     {
-        if (!String.IsNullOrEmpty(item.Faction) && item.Faction != "None" && item.RequiredReputation > 0)
+        if (!string.IsNullOrEmpty(item.Faction) && item.Faction != "None" && item.RequiredReputation > 0)
             runRep(item.Faction, Core.PointsToLevel(item.RequiredReputation));
         Farm.Experience(item.Level);
         if (!item.Coins)
@@ -204,7 +204,7 @@ public class CoreAdvanced
         {
             if (Core.CheckInventory(item.ID, toInv: false) ||
                     miscCatagories.Contains(item.Category) ||
-                    (!String.IsNullOrEmpty(buyOnlyThis) && buyOnlyThis != item.Name) ||
+                    (!string.IsNullOrEmpty(buyOnlyThis) && buyOnlyThis != item.Name) ||
                     (itemBlackList != null && itemBlackList.Any(b => b.ToLower() == item.Name.ToLower())))
                 continue;
 
@@ -1068,7 +1068,7 @@ public class CoreAdvanced
 
     public float GetBoostFloat(InventoryItem item, string boostType)
     {
-        if (String.IsNullOrEmpty(item.Meta) || !item.Meta.Contains(boostType))
+        if (string.IsNullOrEmpty(item.Meta) || !item.Meta.Contains(boostType))
             return 0F;
         return _getBoostFloat(item, boostType);
     }
