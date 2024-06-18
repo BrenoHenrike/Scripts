@@ -148,6 +148,7 @@ public class InsertNameHeresUltraPrep
         "King Drago Insignia",
         "Avatar Tyndarius Insignia",
         "Malgor Insignia",
+        "Volcanic Essence",
 
         //Required Items:
         "Scroll of Life Steal",
