@@ -336,7 +336,7 @@ public class CoreNation
 
         Core.FarmingLogger("Nulgath's Approval", quantApproval);
         Core.FarmingLogger("Archfiend's Favor", quantFavor);
-        
+
         Core.EquipClass(ClassType.Farm);
         while (!Bot.ShouldExit && (!Core.CheckInventory("Nulgath's Approval", quantApproval) || !Core.CheckInventory("Archfiend's Favor", quantFavor)))
         {
@@ -396,41 +396,47 @@ public class CoreNation
     }
 
     /// <summary>
-    /// Farms Tainted Gem with Swindle Bulk quest.
-    /// </summary>
-    /// <param name="quant">Desired quantity, 1000 = max stack</param>
-    public void SwindleBulk(int quant = 1000)
+/// Farms Tainted Gem with Swindle Bulk quest.
+/// </summary>
+/// <param name="quant">Desired quantity, 1000 = max stack</param>
+public void SwindleBulk(int quant = 1000)
+{
+    if (Core.CheckInventory("Tainted Gem", quant))
+        return;
+
+    Core.EquipClass(ClassType.Farm);
+    Core.FarmingLogger("Tainted Gem", quant);
+
+    int questId = quant % 25 == 0 ? 7817 : 569;
+    int cubeKillCount = quant % 25 == 0 ? 500 : 25;
+    int snowGolemKillCount = quant % 25 == 0 ? 6 : 1;
+
+    int attemptCount = 1;
+    Core.AddDrop("Cubes", "Tainted Gem");
+    Core.AddDrop(Nation.bagDrops);
+
+    while (!Bot.ShouldExit && !Core.CheckInventory("Tainted Gem", quant))
     {
-        if (Core.CheckInventory("Tainted Gem", quant))
-            return;
+        Core.EnsureAccept(questId);
+        Core.KillMonster("boxes", "Fort2", "Left", "*", "Cubes", cubeKillCount, false, log: false);
+        Core.KillMonster("mountfrost", "War", "Left", "Snow Golem", "Ice Cubes", snowGolemKillCount, log: false);
+        Core.EnsureComplete(questId);
 
-        Core.EquipClass(ClassType.Farm);
-        Core.Logger($"Farming {quant} Tainted Gems");
+        Bot.Drops.Pickup("Tainted Gem");
+        Core.Logger($"Completed x{attemptCount++}");
 
-        int i = 1;
-        Core.AddDrop("Cubes", "Tainted Gem");
-        Core.AddDrop(bagDrops);
-
-        int cubeKillCount = quant % 25 == 0 ? 500 : 25;
-        int snowGolemKillCount = quant % 25 == 0 ? 6 : 1;
-
-        while (!Bot.ShouldExit && !Core.CheckInventory("Tainted Gem", quant))
+        if (Bot.Inventory.IsMaxStack("Tainted Gem"))
         {
-            int questId = quant % 25 == 0 ? 7817 : 569;
-            Core.EnsureAccept(questId);
-            Core.KillMonster("boxes", "Fort2", "Left", "*", "Cubes", cubeKillCount, false, log: false);
-            Core.KillMonster("mountfrost", "War", "Left", "Snow Golem", "Ice Cubes", snowGolemKillCount, log: false);
-            Core.EnsureComplete(questId);
-
-            Bot.Drops.Pickup("Tainted Gem");
-            Core.Logger($"Completed x{i++}");
-
-            if (Bot.Inventory.IsMaxStack("Tainted Gem"))
-                Core.Logger("Max Stack Hit.");
-            else
-                Core.Logger($"Tainted Gem: {Bot.Inventory.GetQuantity("Tainted Gem")}/{quant}");
+            Core.Logger("Max Stack Hit.");
+            break;
+        }
+        else
+        {
+            Core.Logger($"Tainted Gem: {Bot.Inventory.GetQuantity("Tainted Gem")}/{quant}");
         }
     }
+}
+
 
     /// <summary>
     /// Farms specified items or a specific item in the specified location.
@@ -627,9 +633,11 @@ public class CoreNation
         if (Core.CheckInventory("Essence of Nulgath", quant))
             return;
 
+        Core.FarmingLogger("Essence of Nulgath", quant);
+
         Core.AddDrop("Essence of Nulgath");
         Core.EquipClass(ClassType.Farm);
-        Core.KillMonster("tercessuinotlim", "m2", "Left", "*", "Essence of Nulgath", quant, false);
+        Core.KillMonster("tercessuinotlim", "m2", "Left", "*", "Essence of Nulgath", quant, false, false);
         Core.JumpWait();
     }
 
