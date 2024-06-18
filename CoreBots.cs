@@ -611,66 +611,67 @@ public class CoreBots
         return !any;
     }
 
-    public void CheckSpaces(ref int counter, params string[] items)
+    /// <summary>
+    /// Checks if there is enough space in the inventory for specified items and logs a message if space is insufficient.
+    /// </summary>
+    /// <param name="counter">Reference to a counter variable tracking successful checks.</param>
+    /// <param name="items">Items to check for space in the inventory.</param>
+    public void CheckIfYouHaveSpace(ref int counter, params string[] items)
     {
-        foreach (string s in items)
-        {
-            if (CheckInventory(s, toInv: false))
+        foreach (var item in items)
+            if (CheckInventory(item, toInv: false))
                 counter++;
-        }
-        if (Bot.Inventory.FreeSlots < (items.Length - counter))
-            Logger($"Not enough free slots, please clear {items.Length - counter} slot" + ((items.Length - counter) > 1 ? "s" : ""), messageBox: true, stopBot: true);
+
+        int requiredSlots = items.Length - counter;
+        if (Bot.Inventory.FreeSlots < requiredSlots)
+            Logger($"Not enough free slot{(requiredSlots != 1 ? "s" : "")}, please clear {requiredSlots} slot{(requiredSlots != 1 ? "s" : "")}", messageBox: true, stopBot: true);
     }
 
     /// <summary>
-    /// Move items from bank to inventory
+    /// Moves items from the bank to the inventory.
     /// </summary>
-    /// <param name="items">Items to move</param>
+    /// <param name="items">The items to move.</param>
     public void Unbank(params string[] items)
     {
         if (items == null || items.Length == 0)
             return;
 
-        // (string, string) CellandPadBefore = ($"{Bot.Player.Cell}", $"{Bot.Player.Pad}");
-
-        DebugLogger(this);
         if (Bot.Player.InCombat)
             JumpWait();
 
         if (Bot.Flash.GetGameObject("ui.mcPopup.currentLabel") != "\"Bank\"")
             Bot.Bank.Open();
 
-        DebugLogger(this);
-        foreach (string item in items)
+        foreach (var item in items)
         {
-            DebugLogger(this);
+            if (Bot.Inventory.Contains(item))
+                continue;
+
             if (Bot.Bank.Contains(item))
             {
-                DebugLogger(this);
                 Sleep();
-                DebugLogger(this);
                 if (Bot.Inventory.FreeSlots == 0 && Bot.Inventory.Slots != 0 && Bot.Inventory.UsedSlots <= Bot.Inventory.Slots)
-                    Logger($"Your inventory is full ({Bot.Inventory.UsedSlots}/{Bot.Inventory.Slots}), please clean it and restart the bot", messageBox: true, stopBot: true);
-
-                DebugLogger(this);
-                if (!Bot.Bank.EnsureToInventory(item))
                 {
-                    DebugLogger(this);
+                    Logger($"Your inventory is full ({Bot.Inventory.UsedSlots}/{Bot.Inventory.Slots}), please clean it and restart the bot", messageBox: true, stopBot: true);
+                    return;
+                }
+
+                if (!Bot.Wait.ForTrue(() => Bot.Bank.EnsureToInventory(item), 20))
+                {
                     Logger($"Failed to unbank {item}, skipping it", messageBox: true);
                     continue;
                 }
-                DebugLogger(this);
+
                 Logger($"{item} moved from bank");
             }
-            DebugLogger(this);
         }
-        DebugLogger(this);
     }
 
+
     /// <summary>
-    /// Move items from bank to inventory
+    /// Moves items from the bank to the inventory.
     /// </summary>
-    /// <param name="items">Items to move</param>
+    /// <param name="items">The items to move.</param>
     public void Unbank(params int[] items)
     {
         if (items == null)
@@ -678,26 +679,34 @@ public class CoreBots
 
         JumpWait();
 
-        if (Bot.Flash.GetGameObject("ui.mcPopup.currentLabel") != "\"Bank\"")
+        var currentLabel = Bot.Flash.GetGameObject("ui.mcPopup.currentLabel");
+        if (currentLabel != "\"Bank\"")
             Bot.Bank.Open();
 
-        foreach (int item in items)
+        foreach (var item in items)
         {
+            if (Bot.Inventory.Contains(item))
+                continue;
+
             if (Bot.Bank.Contains(item))
             {
-                Sleep();
                 if (Bot.Inventory.FreeSlots == 0 && Bot.Inventory.Slots != 0 && Bot.Inventory.UsedSlots <= Bot.Inventory.Slots)
+                {
                     Logger($"Your inventory is full ({Bot.Inventory.UsedSlots}/{Bot.Inventory.Slots}), please clean it and restart the bot", messageBox: true, stopBot: true);
+                    return;
+                }
 
-                if (!Bot.Bank.EnsureToInventory(item))
+                if (!Bot.Wait.ForTrue(() => Bot.Bank.EnsureToInventory(item), 20))
                 {
                     Logger($"Failed to unbank {Bot.Bank.GetItem(item)?.Name ?? item.ToString()}, skipping it", messageBox: true);
                     continue;
                 }
+
                 Logger($"{Bot.Inventory.GetItem(item)?.Name ?? item.ToString()} moved from bank");
             }
         }
     }
+
 
     /// <summary>
     /// Move items from inventory to bank
@@ -719,7 +728,7 @@ public class CoreBots
 
         foreach (string? item in items)
         {
-            if (item == null || item == SoloClass || item == FarmClass)
+            if (item == null || item == SoloClass || item == FarmClass || FarmGear.Contains(item) || SoloGear.Contains(item))
                 continue;
 
             if (!Bot.Inventory.Items.Any(x => x.Name == item))
