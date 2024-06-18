@@ -334,6 +334,9 @@ public class CoreNation
 
         Core.AddDrop("Nulgath's Approval", "Archfiend's Favor");
 
+        Core.FarmingLogger("Nulgath's Approval", quantApproval);
+        Core.FarmingLogger("Archfiend's Favor", quantFavor);
+        
         Core.EquipClass(ClassType.Farm);
         while (!Bot.ShouldExit && (!Core.CheckInventory("Nulgath's Approval", quantApproval) || !Core.CheckInventory("Archfiend's Favor", quantFavor)))
         {
