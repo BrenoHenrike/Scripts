@@ -500,7 +500,7 @@ public class CoreAdvanced
 
         if (itemInv == null)
         {
-            Core.Logger($"Can't level up \"{className}\" because you do not own it.");
+            Core.Logger($"Can't level up \"{className}\" because you don't own it.");
             return;
         }
 
