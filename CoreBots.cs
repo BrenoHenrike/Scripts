@@ -618,7 +618,7 @@ public class CoreBots
     /// <param name="items">Items to check for space in the inventory.</param>
     public void CheckSpaces(ref int counter, params string[] items)
     {
-        foreach (var item in items)
+        foreach (string item in items)
             if (CheckInventory(item, toInv: false))
                 counter++;
 
