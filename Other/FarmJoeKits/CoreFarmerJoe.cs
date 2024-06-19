@@ -362,9 +362,9 @@ public class CoreFarmerJoe
                         SS.GetSSorc();
                     }
 
-                    if (!Core.CheckInventory("Burning Blaze"))
+                    if (!Core.CheckInventory("Burning Blade"))
                     {
-                        Core.Logger("Getting Burning Blaze");
+                        Core.Logger("Getting Burning Blade");
                         SetClass(false, true, true);
                         BB.GetBurningBlade();
                     }
