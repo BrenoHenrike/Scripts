@@ -3262,6 +3262,10 @@ public class CoreBots
         return false;
     }
 
+    /// <summary>
+    /// Retrieves the username from a game object or falls back to the player's username.
+    /// </summary>
+    /// <returns>The username string.</returns>
     public string Username()
     {
         try
@@ -3346,12 +3350,25 @@ public class CoreBots
         return sb.ToString().Trim();
     }
 
+    /// <summary>
+    /// Logs farming activity for a specified item.
+    /// </summary>
+    /// <param name="item">The name of the item being farmed (nullable).</param>
+    /// <param name="quant">The desired quantity of the item to farm (default is 1).</param>
+    /// <param name="caller">Automatically provided by the compiler to indicate the calling member (optional).</param>
     public void FarmingLogger(string? item, int quant = 1, [CallerMemberName] string caller = "")
     {
         int quantity = string.IsNullOrEmpty(item) ? 0 : Bot.TempInv.GetQuantity(item) + Bot.Inventory.GetQuantity(item);
         Logger($"Farming {item} ({quantity}/{quant})", caller);
     }
 
+    /// <summary>
+    /// Logs debug information based on various filters and script context.
+    /// </summary>
+    /// <param name="_this">The instance or type associated with the logging context.</param>
+    /// <param name="marker">Optional marker for categorizing the log entry (default is null).</param>
+    /// <param name="caller">Automatically provided by the compiler to indicate the calling member (optional).</param>
+    /// <param name="lineNumber">Automatically provided by the compiler to indicate the line number where the method is called (optional).</param>
     public void DebugLogger(object _this, string? marker = null, [CallerMemberName] string? caller = null, [CallerLineNumber] int lineNumber = 0)
     {
         if (!DL_Enabled || (DL_MarkerFilter != null && DL_MarkerFilter != marker) || (DL_CallerFilter != null && DL_CallerFilter != caller))
@@ -3439,14 +3456,29 @@ public class CoreBots
         Bot.Handlers.RegisterOnce(1, (Bot) => Bot.ShowMessageBox(message, caption));
     }
 
+    /// <summary>
+    /// Retrieves the quantity of an item from either temporary or regular inventory based on a condition.
+    /// </summary>
+    /// <param name="item">The name or identifier of the item to query.</param>
+    /// <param name="isTemp">Specifies whether to check temporary inventory (<c>true</c>) or regular inventory (<c>false</c>).</param>
+    /// <returns>The quantity of the specified item in the chosen inventory.</returns>
     public int dynamicQuant(string item, bool isTemp) => isTemp ? Bot.TempInv.GetQuantity(item) : Bot.Inventory.GetQuantity(item);
 
+    /// <summary>
+    /// Configures the aggro mode.
+    /// </summary>
+    /// <param name="status">The desired aggro status (default is true).</param>
     public void ConfigureAggro(bool status = true)
     {
         Logger("Configuring aggro");
         last_aggro_status = status;
     }
 
+
+    /// <summary>
+    /// Toggles the aggro mode on or off.
+    /// </summary>
+    /// <param name="enable">True to enable aggro mode, false to disable.</param>
     public void ToggleAggro(bool enable)
     {
         try
@@ -3463,7 +3495,6 @@ public class CoreBots
                 {
                     // If was previously aggro when untoggled
                     // Set aggro back and flip last aggro
-                    //Logger("Flipping aggro to False");
                     last_aggro_status = false;
                     Bot.Options.AggroMonsters = true;
                 }
@@ -3478,7 +3509,6 @@ public class CoreBots
                 {
                     // If currently aggro, set last aggro to true
                     // and flip current aggro status
-                    //Logger("Flipping aggro to False");
                     last_aggro_status = true;
                     Bot.Options.AggroMonsters = false;
                 }
@@ -3508,6 +3538,9 @@ public class CoreBots
         }
     }
 
+    /// <summary>
+    /// Initiates resting for the bot's player character if conditions allow.
+    /// </summary>
     public void Rest()
     {
         try
@@ -3526,6 +3559,7 @@ public class CoreBots
             Logger($"An error occurred: {ex.Message}\n{ex.StackTrace}");
         }
     }
+
 
     /// <summary>
     /// Logs the player out and then in again to the same server. Disables Options.AutoRelogin temporarily 
@@ -3624,6 +3658,10 @@ public class CoreBots
     }
     private bool logEquip = true;
 
+    /// <summary>
+    /// Equips multiple items by their names from the bot's inventory if not already equipped.
+    /// </summary>
+    /// <param name="gear">Names of items to equip.</param>
     public void Equip(params string[] gear)
     {
         if (gear == null || gear.Length == 0)
@@ -3653,6 +3691,10 @@ public class CoreBots
         }
     }
 
+    /// <summary>
+    /// Equips multiple items by their IDs from the bot's inventory if not already equipped.
+    /// </summary>
+    /// <param name="gear">IDs of items to equip.</param>
     public void Equip(params int[] gear)
     {
         if (gear == null || gear.Length == 0)
@@ -3680,6 +3722,10 @@ public class CoreBots
         }
     }
 
+    /// <summary>
+    /// Handles the equipping process for a specific inventory item.
+    /// </summary>
+    /// <param name="item">Inventory item to equip.</param>
     private void _Equip(InventoryItem? item)
     {
         if (item == null)
@@ -3726,6 +3772,9 @@ public class CoreBots
             Logger($"Equipping {(Bot.Inventory.IsEquipped(item.ID) ? string.Empty : "failed: ")} {item.Name}", "Equip");
     }
 
+    /// <summary>
+    /// Equips items cached before bot operation.
+    /// </summary>
     public void EquipCached()
     {
         Equip(EquipmentBeforeBot.ToArray());
@@ -3741,6 +3790,12 @@ public class CoreBots
         Sleep(ActionDelay * 2);
     }
 
+    /// <summary>
+    /// Checks if a specific achievement is obtained.
+    /// </summary>
+    /// <param name="ID">The ID of the achievement to check.</param>
+    /// <param name="ia">Optional parameter for the achievement identifier (default is "ia0").</param>
+    /// <returns>True if the achievement is obtained; otherwise, false.</returns>
     public bool HasAchievement(int ID, string ia = "ia0") => Bot.Flash.CallGameFunction<bool>("world.getAchievement", ia, ID);
 
     public void SetAchievement(int ID, string ia = "ia0")
@@ -3748,9 +3803,20 @@ public class CoreBots
         if (!HasAchievement(ID, ia))
             Bot.Send.Packet($"%xt%zm%setAchievement%{Bot.Map.RoomID}%{ia}%{ID}%1%");
     }
-
+    /// <summary>
+    /// Checks if the bot has a web badge with the specified ID.
+    /// </summary>
+    /// <param name="badgeID">The ID of the web badge to check.</param>
+    /// <returns>True if the bot has the web badge; otherwise, false.</returns>
     public bool HasWebBadge(int badgeID) => Badges.Contains(badgeID);
+
+    /// <summary>
+    /// Checks if the bot has a web badge with the specified name.
+    /// </summary>
+    /// <param name="badgeName">The name of the web badge to check.</param>
+    /// <returns>True if the bot has the web badge; otherwise, false.</returns>
     public bool HasWebBadge(string badgeName) => Badges.Contains(badgeName);
+
 
     public List<Badge> Badges
     {
@@ -3787,6 +3853,11 @@ public class CoreBots
         }
     }
 
+    /// <summary>
+    /// Performs a GET request to the specified URL and retrieves the response as a string.
+    /// </summary>
+    /// <param name="url">The URL to send the GET request to.</param>
+    /// <returns>The response content as a string.</returns>
     public string GetRequest(string url)
     {
         return _getRequest().Result;
@@ -3806,10 +3877,22 @@ public class CoreBots
         }
     }
 
+    /// <summary>
+    /// Sets the saved state to the specified status.
+    /// </summary>
+    /// <param name="on">True to turn on saved state; false to turn it off (default is true).</param>
     public void SavedState(bool on = true)
-    { }
+    {
+        // Method implementation intentionally left blank as it is currently unused.
+    }
 
 
+    /// <summary>
+    /// Generates an array of integers from a starting value to an ending value (inclusive).
+    /// </summary>
+    /// <param name="from">The starting integer value.</param>
+    /// <param name="to">The ending integer value.</param>
+    /// <returns>An array of integers from 'from' to 'to' (inclusive).</returns>
     public int[] FromTo(int from, int to)
     {
         List<int> toReturn = new();
@@ -3818,6 +3901,9 @@ public class CoreBots
         return toReturn.ToArray();
     }
 
+    /// <summary>
+    /// Banks miscellaneous AC items based on specified conditions and exemptions.
+    /// </summary>
     public void BankACMisc()
     {
 
@@ -3847,6 +3933,9 @@ public class CoreBots
             .ToArray());
     }
 
+    /// <summary>
+    /// Banks unenhanced AdventureCoins (AC) gear based on specified whitelist and conditions.
+    /// </summary>
     public void BankACUnenhancedGear()
     {
         List<ItemCategory> Whitelisted = new() { ItemCategory.Class, ItemCategory.Helm, ItemCategory.Cape };
@@ -3865,7 +3954,10 @@ public class CoreBots
     public bool DontPreconfigure = true;
 
     public const string reinstallCleanFlash = ". If the issue persists, try the following things in the order they are here:\n - Restart the client.\n - Restart your computer.\n - Reinstall CleanFlash";
-
+   
+    /// <summary>
+    /// Displays a message indicating that files starting with "Core" are for storage purposes and stops the bot.
+    /// </summary>
     public void RunCore()
     {
         Bot.ShowMessageBox("Files that start with the word \"Core\" are not meant to be run, these are for storage. Please select the correct script.", "Core File Info");
