@@ -162,30 +162,29 @@ public class CoreVHL
 
     private void FarmExtra(int quant = 25)
     {
-        if (!Core.CheckInventory("Roentgenium of Nulgath", quant))
-        {
-            int quantity = Bot.Inventory.Items.Concat(Bot.Bank.Items).FirstOrDefault(x => x.Name == "Roentgenium of Nulgath")?.Quantity ?? 0;
+        if (Core.CheckInventory("Roentgenium of Nulgath", quant))
+            return;
 
-            Core.Logger($"Roentgenium of Nulgath: ({quantity}/{quant})", "Not Enough Roent");
-            Core.Logger("Not enough \"Roentgenium of Nulgath\"\n" +
-                "maxing mats so it's easier tomorrow\n" +
-                "you can just leave this running");
+        int quantity = Core.dynamicQuant("Roentgenium of Nulgath", false);
 
-            // Farm Mats for Tomarrow.
-            Nation.FarmVoucher(false, true);
-            Farm.BlackKnightOrb();
-            Adv.BuyItem("citadel", 44, 38316, shopItemID: 22367);
-            Adv.BuyItem("yulgar", 16, "Aelita's Emerald");
-            Nation.FarmUni13(13);
-            Nation.FarmGemofNulgath(1000);
-            Nation.EmblemofNulgath(500);
-            Nation.EssenceofNulgath(60);
-            Nation.SwindleBulk(1000);
-            Nation.ApprovalAndFavor(5000, 5000);
+        Core.Logger($"Roentgenium of Nulgath: {Core.dynamicQuant("Roentgenium of Nulgath", false)}/{quant}", "Not Enough Roent");
+        Core.Logger("Not enough \"Roentgenium of Nulgath\", maxing mats so it's easier tomorrow. You can just leave this running!");
 
-            Core.Logger("Materials max out! You should be good for tomorrow.");
-        }
+        // Farm Mats for Tomarrow.
+        Nation.FarmVoucher(false, true);
+        Farm.BlackKnightOrb();
+        Adv.BuyItem("citadel", 44, 38316, shopItemID: 22367);
+        Adv.BuyItem("yulgar", 16, "Aelita's Emerald");
+        Nation.FarmUni13(13);
+        Nation.FarmGemofNulgath(1000);
+        Nation.EmblemofNulgath(500);
+        Nation.EssenceofNulgath(60);
+        Nation.SwindleBulk(1000);
+        Nation.ApprovalAndFavor(5000, 5000);
+
+        Core.Logger("Materials max out! You should be good for tomorrow.");
     }
+
     private void _SparrowMethod(int EldersBloodQuant)
     {
         if (!Bot.Config!.Get<bool>("SparrowMethod") || !Core.IsMember || !Core.CheckInventory(Nation.CragName) || Core.CheckInventory("Elders' Blood", EldersBloodQuant))
