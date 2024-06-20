@@ -48,7 +48,7 @@ public class Banished
         Core.EquipClass(ClassType.Solo);
         //Adv.BestGear(GenericGearBoost.dmgAll);
 
-        // he First Task
+        // The First Task
         Story.KillQuest(7875, "timevoid", "Unending Avatar");
 
         // The Second Task

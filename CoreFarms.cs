@@ -1458,42 +1458,42 @@ public class CoreFarms
         if (FactionRank("Chaos") >= rank)
             return;
 
-            Core.EquipClass(ClassType.Farm);
-            Core.SavedState();
-            ToggleBoost(BoostType.Reputation);
-            Core.Logger($"Farming rank {rank}");
+        Core.EquipClass(ClassType.Farm);
+        Core.SavedState();
+        ToggleBoost(BoostType.Reputation);
+        Core.Logger($"Farming rank {rank}");
 
-            Core.RegisterQuests(3594); //Embrace Your Chaos 3594
-            while (!Bot.ShouldExit && FactionRank("Chaos") < rank)
-                Core.KillMonster("mountdoomskull", "b1", "Left", "*", log: false);
-            Bot.Wait.ForQuestComplete(3594);
-            Core.CancelRegisteredQuests();
-            ToggleBoost(BoostType.Reputation, false);
-            Core.SavedState(false);
+        Core.RegisterQuests(3594); //Embrace Your Chaos 3594
+        while (!Bot.ShouldExit && FactionRank("Chaos") < rank)
+            Core.KillMonster("mountdoomskull", "b1", "Left", "*", log: false);
+        Bot.Wait.ForQuestComplete(3594);
+        Core.CancelRegisteredQuests();
+        ToggleBoost(BoostType.Reputation, false);
+        Core.SavedState(false);
     }
 
     public void ChronoSpanREP(int rank = 10)
     {
         if (FactionRank("ChronoSpan") >= rank)
             return;
-       
-            Core.EquipClass(ClassType.Farm);
-            Core.SavedState();
-            ToggleBoost(BoostType.Reputation);
-            Core.Logger($"Farming rank {rank}");
 
-            Core.RegisterQuests(2204); //Do the 'do 2204
-            while (!Bot.ShouldExit && FactionRank("ChronoSpan") < rank)
-            {
-                // Core.EnsureAccept(2204); //Do the 'do 2204
-                Core.KillMonster("thespan", "r6", "Left", "Moglin Ghost", "Tin of Ghost Dust", 2, log: false);
-                Core.KillMonster("thespan", "r4", "Left", "Minx Fairy", "8 oz Fairy Glitter", 3, log: false);
-                Core.KillMonster("thespan", "r4", "Left", "Tog", "Tog Fang", 4, log: false);
-                // Core.EnsureComplete(2204); //Do the 'do 2204
-            }
-            Core.CancelRegisteredQuests();
-            ToggleBoost(BoostType.Reputation, false);
-            Core.SavedState(false);
+        Core.EquipClass(ClassType.Farm);
+        Core.SavedState();
+        ToggleBoost(BoostType.Reputation);
+        Core.Logger($"Farming rank {rank}");
+
+        Core.RegisterQuests(2204); //Do the 'do 2204
+        while (!Bot.ShouldExit && FactionRank("ChronoSpan") < rank)
+        {
+            // Core.EnsureAccept(2204); //Do the 'do 2204
+            Core.KillMonster("thespan", "r6", "Left", "Moglin Ghost", "Tin of Ghost Dust", 2, log: false);
+            Core.KillMonster("thespan", "r4", "Left", "Minx Fairy", "8 oz Fairy Glitter", 3, log: false);
+            Core.KillMonster("thespan", "r4", "Left", "Tog", "Tog Fang", 4, log: false);
+            // Core.EnsureComplete(2204); //Do the 'do 2204
+        }
+        Core.CancelRegisteredQuests();
+        ToggleBoost(BoostType.Reputation, false);
+        Core.SavedState(false);
     }
 
     public void CraggleRockREP(int rank = 10)
@@ -1568,7 +1568,7 @@ public class CoreFarms
         {
             Core.EnsureAccept(7875);
             Core.HuntMonster("timevoid", "Unending Avatar", "Everlasting Scale");
-            Core.EnsureComplete(787);
+            Core.EnsureComplete(7875);
 
             Core.EnsureAccept(7876);
             Core.HuntMonster($"twilightedge", "ChaosWeaver Warrior", "Chaotic Arachnid's Flesh");
@@ -1703,7 +1703,7 @@ public class CoreFarms
         if (FactionRank("Dwarfhold") >= rank)
             return;
 
-        
+
         if (!Bot.Quests.IsUnlocked(320))
         {
             // Seven Sisters
@@ -1849,7 +1849,7 @@ public class CoreFarms
             Core.HuntMonsterMapID("fourdpyramid", 19, "White Gem", 2, log: false);
             Core.HuntMonsterMapID("fourdpyramid", 20, "Black Gem", 2, log: false);
             Core.EnsureComplete(5198);
-        } 
+        }
         // Core.CancelRegisteredQuests();
         ToggleBoost(BoostType.Reputation, false);
         Core.SavedState(false);
@@ -1860,25 +1860,25 @@ public class CoreFarms
         if (FactionRank("Etherstorm") >= rank)
             return;
 
-        
-            Core.EquipClass(ClassType.Farm);
-            Core.SavedState();
-            ToggleBoost(BoostType.Reputation);
-            Core.Logger($"Farming rank {rank}");
 
-            // Core.RegisterQuests(1721); //Defend Your Master! 1721
-            while (!Bot.ShouldExit && FactionRank("Etherstorm") < rank)
-            {
-                Core.EnsureAccept(1721);
-                Core.HuntMonster("etherwardes", "Water Dragon Warrior", "Water Dragon Tears", 3, log: false);
-                Core.HuntMonster("etherwardes", "Fire Dragon Warrior", "Fire Dragon Flames", 3, log: false);
-                Core.HuntMonster("etherwardes", "Air Dragon Warrior", "Air Dragon Breaths", 3, log: false);
-                Core.HuntMonster("etherwardes", "Earth Dragon Warrior", "Earth Dragon Claws", 3, log: false);
-                Core.EnsureComplete(1721);
-            }
-            // Core.CancelRegisteredQuests();
-            ToggleBoost(BoostType.Reputation, false);
-            Core.SavedState(false);
+        Core.EquipClass(ClassType.Farm);
+        Core.SavedState();
+        ToggleBoost(BoostType.Reputation);
+        Core.Logger($"Farming rank {rank}");
+
+        // Core.RegisterQuests(1721); //Defend Your Master! 1721
+        while (!Bot.ShouldExit && FactionRank("Etherstorm") < rank)
+        {
+            Core.EnsureAccept(1721);
+            Core.HuntMonster("etherwardes", "Water Dragon Warrior", "Water Dragon Tears", 3, log: false);
+            Core.HuntMonster("etherwardes", "Fire Dragon Warrior", "Fire Dragon Flames", 3, log: false);
+            Core.HuntMonster("etherwardes", "Air Dragon Warrior", "Air Dragon Breaths", 3, log: false);
+            Core.HuntMonster("etherwardes", "Earth Dragon Warrior", "Earth Dragon Claws", 3, log: false);
+            Core.EnsureComplete(1721);
+        }
+        // Core.CancelRegisteredQuests();
+        ToggleBoost(BoostType.Reputation, false);
+        Core.SavedState(false);
     }
 
     public void EvilREP(int rank = 10)
@@ -1886,40 +1886,40 @@ public class CoreFarms
         if (FactionRank("Evil") >= rank)
             return;
 
-            Core.ChangeAlignment(Alignment.Evil);
-            Core.EquipClass(ClassType.Farm);
-            Core.SavedState();
-            ToggleBoost(BoostType.Reputation);
-            Core.Logger($"Farming rank {rank}");
+        Core.ChangeAlignment(Alignment.Evil);
+        Core.EquipClass(ClassType.Farm);
+        Core.SavedState();
+        ToggleBoost(BoostType.Reputation);
+        Core.Logger($"Farming rank {rank}");
 
-            Core.RegisterQuests(364); //Youthanize 364
-            while (!Bot.ShouldExit && FactionRank("Evil") < 4)
-                Core.HuntMonster("swordhavenbridge", "Slime", "Youthanize", log: false);
-            Core.CancelRegisteredQuests();
+        Core.RegisterQuests(364); //Youthanize 364
+        while (!Bot.ShouldExit && FactionRank("Evil") < 4)
+            Core.HuntMonster("swordhavenbridge", "Slime", "Youthanize", log: false);
+        Core.CancelRegisteredQuests();
 
-            // Core.RegisterQuests(Core.IsMember ? 366 : 367); //Dangerous Decor 366, Bone-afide 367
+        // Core.RegisterQuests(Core.IsMember ? 366 : 367); //Dangerous Decor 366, Bone-afide 367
 
-            if (!Core.IsMember)
-                Core.RegisterQuests(367); //Youthanize 364
-            while (!Bot.ShouldExit && FactionRank("Evil") < rank)
+        if (!Core.IsMember)
+            Core.RegisterQuests(367); //Youthanize 364
+        while (!Bot.ShouldExit && FactionRank("Evil") < rank)
+        {
+            if (Core.IsMember)
             {
-                if (Core.IsMember)
-                {
-                    Core.EnsureAccept(366);
-                    Core.HuntMonster("sleuthhound", "Chair", "Chair", 4, log: false);
-                    Core.HuntMonster("sleuthhound", "Table", "Table", 2, log: false);
-                    Core.HuntMonster("sleuthhound", "Bookcase", "Bookcase", log: false);
-                    Core.EnsureComplete(366);
-                }
-                else
-                {
-                    Core.KillMonster("castleundead", "Enter", "Left", "*", "Replacement Tibia", 6, log: false);
-                    Core.KillMonster("castleundead", "Enter", "Left", "*", "Phalanges", 3, log: false);
-                }
+                Core.EnsureAccept(366);
+                Core.HuntMonster("sleuthhound", "Chair", "Chair", 4, log: false);
+                Core.HuntMonster("sleuthhound", "Table", "Table", 2, log: false);
+                Core.HuntMonster("sleuthhound", "Bookcase", "Bookcase", log: false);
+                Core.EnsureComplete(366);
             }
-            Core.CancelRegisteredQuests();
-            ToggleBoost(BoostType.Reputation, false);
-            Core.SavedState(false);
+            else
+            {
+                Core.KillMonster("castleundead", "Enter", "Left", "*", "Replacement Tibia", 6, log: false);
+                Core.KillMonster("castleundead", "Enter", "Left", "*", "Phalanges", 3, log: false);
+            }
+        }
+        Core.CancelRegisteredQuests();
+        ToggleBoost(BoostType.Reputation, false);
+        Core.SavedState(false);
     }
 
     public void FishingREP(int rank = 10, bool shouldDerp = false, bool TrashBait = true, bool GetBoosts = true)
@@ -2436,24 +2436,24 @@ public class CoreFarms
         if (FactionRank("Horc") >= rank)
             return;
 
-       
-            Core.EquipClass(ClassType.Farm);
-            Core.SavedState();
-            ToggleBoost(BoostType.Reputation);
-            Core.Logger($"Farming rank {rank}");
 
-            // Core.RegisterQuests(1265);
-            while (!Bot.ShouldExit && FactionRank("Horc") < rank)
-            {
-                Core.EnsureAccept(1265);
-                Core.HuntMonster("bloodtuskwar", "Chaotic Lemurphant", "Chaorrupted Eye", 3, log: false);
-                Core.HuntMonster("bloodtuskwar", "Chaotic Horcboar", "Chaorrupted Tentacle", 5, log: false);
-                Core.HuntMonster("bloodtuskwar", "Chaotic Chinchilizard", "Chaorrupted Tusk", 5, log: false);
-                Core.EnsureComplete(1265);
-            }
-            // Core.CancelRegisteredQuests();
-            ToggleBoost(BoostType.Reputation, false);
-            Core.SavedState(false);
+        Core.EquipClass(ClassType.Farm);
+        Core.SavedState();
+        ToggleBoost(BoostType.Reputation);
+        Core.Logger($"Farming rank {rank}");
+
+        // Core.RegisterQuests(1265);
+        while (!Bot.ShouldExit && FactionRank("Horc") < rank)
+        {
+            Core.EnsureAccept(1265);
+            Core.HuntMonster("bloodtuskwar", "Chaotic Lemurphant", "Chaorrupted Eye", 3, log: false);
+            Core.HuntMonster("bloodtuskwar", "Chaotic Horcboar", "Chaorrupted Tentacle", 5, log: false);
+            Core.HuntMonster("bloodtuskwar", "Chaotic Chinchilizard", "Chaorrupted Tusk", 5, log: false);
+            Core.EnsureComplete(1265);
+        }
+        // Core.CancelRegisteredQuests();
+        ToggleBoost(BoostType.Reputation, false);
+        Core.SavedState(false);
     }
 
     public void LoremasterREP(int rank = 10)
@@ -2514,24 +2514,24 @@ public class CoreFarms
         if (FactionRank("Lycan") >= rank)
             return;
 
-      
-            if (!Core.isCompletedBefore(537))
-            {
-                Core.Logger("Can't do farming quest [Sanguine] (/lycan)", messageBox: true);
-                return;
-            }
 
-            Core.EquipClass(ClassType.Solo);
-            Core.SavedState();
-            ToggleBoost(BoostType.Reputation);
-            Core.Logger($"Farming rank {rank}");
+        if (!Core.isCompletedBefore(537))
+        {
+            Core.Logger("Can't do farming quest [Sanguine] (/lycan)", messageBox: true);
+            return;
+        }
 
-            Core.RegisterQuests(537); //Sanguine 537
-            while (!Bot.ShouldExit && FactionRank("Lycan") < rank)
-                Core.HuntMonster("lycan", "Sanguine", "Sanguine Mask", log: false);
-            Core.CancelRegisteredQuests();
-            ToggleBoost(BoostType.Reputation, false);
-            Core.SavedState(false);
+        Core.EquipClass(ClassType.Solo);
+        Core.SavedState();
+        ToggleBoost(BoostType.Reputation);
+        Core.Logger($"Farming rank {rank}");
+
+        Core.RegisterQuests(537); //Sanguine 537
+        while (!Bot.ShouldExit && FactionRank("Lycan") < rank)
+            Core.HuntMonster("lycan", "Sanguine", "Sanguine Mask", log: false);
+        Core.CancelRegisteredQuests();
+        ToggleBoost(BoostType.Reputation, false);
+        Core.SavedState(false);
     }
 
     public void InfernalArmyREP(int rank = 10)
@@ -2653,19 +2653,19 @@ public class CoreFarms
     {
         if (FactionRank("Northpointe") >= rank)
             return;
-       
-            Core.EquipClass(ClassType.Farm);
-            ToggleBoost(BoostType.Reputation);
-            Core.SavedState();
-            Core.Logger($"Farming rank {rank}");
 
-            Core.RegisterQuests(4027); //Sage Advice 4027
-            while (!Bot.ShouldExit && FactionRank("Northpointe") < rank)
-                Core.HuntMonster("northpointe", "Grim Stalker", "Bunch of Sage", 10, log: false);
-            Bot.Wait.ForQuestComplete(4027);
-            Core.CancelRegisteredQuests();
-            ToggleBoost(BoostType.Reputation, false);
-            Core.SavedState(false);
+        Core.EquipClass(ClassType.Farm);
+        ToggleBoost(BoostType.Reputation);
+        Core.SavedState();
+        Core.Logger($"Farming rank {rank}");
+
+        Core.RegisterQuests(4027); //Sage Advice 4027
+        while (!Bot.ShouldExit && FactionRank("Northpointe") < rank)
+            Core.HuntMonster("northpointe", "Grim Stalker", "Bunch of Sage", 10, log: false);
+        Bot.Wait.ForQuestComplete(4027);
+        Core.CancelRegisteredQuests();
+        ToggleBoost(BoostType.Reputation, false);
+        Core.SavedState(false);
     }
 
     public void PetTamerREP(int rank = 10)
@@ -2691,22 +2691,22 @@ public class CoreFarms
         if (FactionRank("Ravenloss") >= rank)
             return;
 
-            if (!Bot.Quests.IsAvailable(3445))
-            {
-                Core.Logger("Quest Locked Run: \"Story/RavenlossSaga.cs\"", messageBox: true);
-                return;
-            }
-            Core.EquipClass(ClassType.Farm);
-            Core.SavedState();
-            ToggleBoost(BoostType.Reputation);
-            Core.Logger($"Farming rank {rank}");
+        if (!Bot.Quests.IsAvailable(3445))
+        {
+            Core.Logger("Quest Locked Run: \"Story/RavenlossSaga.cs\"", messageBox: true);
+            return;
+        }
+        Core.EquipClass(ClassType.Farm);
+        Core.SavedState();
+        ToggleBoost(BoostType.Reputation);
+        Core.Logger($"Farming rank {rank}");
 
-            Core.RegisterQuests(3445); //Slay the Spiderkin 3445
-            while (!Bot.ShouldExit && FactionRank("Ravenloss") < rank)
-                Core.HuntMonster("twilightedge", "ChaosWeaver Mage", "ChaosWeaver Slain", 10, log: false);
-            Core.CancelRegisteredQuests();
-            ToggleBoost(BoostType.Reputation, false);
-            Core.SavedState(false);
+        Core.RegisterQuests(3445); //Slay the Spiderkin 3445
+        while (!Bot.ShouldExit && FactionRank("Ravenloss") < rank)
+            Core.HuntMonster("twilightedge", "ChaosWeaver Mage", "ChaosWeaver Slain", 10, log: false);
+        Core.CancelRegisteredQuests();
+        ToggleBoost(BoostType.Reputation, false);
+        Core.SavedState(false);
     }
 
     public void SandseaREP(int rank = 10)
