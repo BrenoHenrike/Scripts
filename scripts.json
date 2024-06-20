@@ -6,7 +6,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 116120,
+    "size": 115549,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -2126,7 +2126,7 @@
       "banished"
     ],
     "path": "Story/Banished.cs",
-    "size": 5257,
+    "size": 5258,
     "fileName": "Banished.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Banished.cs"
   },
