@@ -207,7 +207,7 @@ public class CoreNSOD
             Core.EquipClass(ClassType.Farm);
             Core.HuntMonster("timespace", "Astral Ephemerite", "Astral Ephemerite Essence", Essencequant, false, log: false);
 
-            HuntMonsterBatch(Essencequant, false, true, true,
+            HuntMonsterBatch(Essencequant, false, false, true,
                    ("necrocavern", "Down", 5, "Chaos Vordred Essence"),
                    ("citadel", "Left", 21, "Belrot the Fiend Essence"),
                    ("greenguardwest", "Down", 22, "Black Knight Essence"),
