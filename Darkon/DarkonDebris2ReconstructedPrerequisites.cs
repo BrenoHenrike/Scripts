@@ -44,7 +44,7 @@ public class DarkonDebris2ReconstructedPrerequisites
             Darkon.WheelofFortune(22, 0);
             if (!Core.CheckInventory("Darkon Insignia", 20))
             {
-                Core.Logger(" x20 \"Darkon Insignia\" is Required to continue quest, our Bots cannot *currently* kill this mob Untill CoreArmy is Released and a script is made.", messageBox: true);
+                Core.Logger(" x20 \"Darkon Insignia\" is Required to continue the quest, our Bots cannot *currently* kill this mob, use Grim (different client) & @InsertNameHere's ultra bot", messageBox: true);
                 return;
             }
             else Core.BuyItem("ultradarkon", 2147, "Darkon's Debris 2 (Reconstructed)");

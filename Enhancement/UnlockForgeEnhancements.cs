@@ -565,7 +565,7 @@ public class UnlockForgeEnhancements
             Darkon.WheelofFortune(22, 0);
             if (!Core.CheckInventory("Darkon Insignia", 20))
             {
-                Core.Logger(" x20 \"Darkon Insignia\" is Required to continue quest, our Bots cannot *currently* kill this mob Untill CoreArmy is Released and a script is made.", messageBox: true);
+                Core.Logger(" x20 \"Darkon Insignia\" is Required to continue quest, our Bots cannot *currently* kill this mob, use Grim (different client) & @InsertNameHere's ultra bot", messageBox: true);
                 return;
             }
             else Core.BuyItem("ultradarkon", 2147, "Darkon's Debris 2 (Reconstructed)");
@@ -573,12 +573,12 @@ public class UnlockForgeEnhancements
 
         if (!Core.CheckInventory("King Drago Insignia", 5))
         {
-            Core.Logger(" x5 \"King Drago Insignia\" is required to continue quest, our Bots cannot *currently* kill this mob untill CoreArmy is Released and a script is made.", messageBox: true);
+            Core.Logger(" x5 \"King Drago Insignia\" is required to continue quest, our Bots cannot *currently* kill this mob, use Grim (different client) & @InsertNameHere's ultra bot", messageBox: true);
             return;
         }
         if (!Core.CheckInventory("Darkon Insignia", 5))
         {
-            Core.Logger(" x5 \"Darkon Insignia\" is required to continue quest, our Bots cannot *currently* kill this mob untill CoreArmy is Released and a script is made.", messageBox: true);
+            Core.Logger(" x5 \"Darkon Insignia\" is required to continue quest, our Bots cannot *currently* kill this mob, use Grim (different client) & @InsertNameHere's ultra bot", messageBox: true);
             return;
         }
         Core.ChainComplete(8742);
