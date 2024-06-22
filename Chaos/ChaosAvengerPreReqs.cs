@@ -9,7 +9,9 @@ tags: chaos avenger, class, prerequisites
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Items;
 using Skua.Core.Models.Monsters;
+using Skua.Core.Models.Quests;
 
 public class ChaosAvengerClass
 {
@@ -19,8 +21,18 @@ public class ChaosAvengerClass
     public CoreFarms Farm = new();
     public CoreAdvanced Adv = new();
     public Core13LoC LOC => new();
+
+    string[] CavItems = new[]{"Fragment of the Dragon",
+                                            "Fragment of the Queen",
+                                            "Fragments of the Lords B",
+                                            "Fragments of the Lords A",
+                                            "Fragment of Mount Doomskull",
+                                            "Parallel Chaos Amulet"}
+
     public void ScriptMain(IScriptInterface bot)
     {
+        Core.BankingBlackList.AddRange(CavItems);
+
         Core.SetOptions();
 
         GetClass();
@@ -50,9 +62,8 @@ public class ChaosAvengerClass
         FragmentsoftheLordsA();
         FragmentsoftheLordsB();
         FragmentoftheQueen();
-        // ParallelChaosAmulet();
+        ParallelChaosAmulet();
         CompleteandBuy();
-
 
         if (rankup)
             Adv.RankUpClass("Chaos Avenger");
@@ -171,13 +182,17 @@ public class ChaosAvengerClass
 
     public void CompleteandBuy()
     {
+        if(!Core.)
         if (Bot.Quests.CanComplete(8301))
         {
             Core.EnsureComplete(8301);
             Bot.Wait.ForQuestComplete(8301);
             Adv.BuyItem("championdrakath", 2056, "Chaos Avenger");
         }
-        else if (!Core.CheckInventory("Champion Drakath Insignia", 20))
+        if (!Core.CheckInventory("Champion Drakath Insignia", 20))
+        {
             Core.Logger("You need 20x Champion Drakath Insignia for the Parallel Chaos Amulet (You can get 5x once a week)");
+            return;
+        }
     }
 }
