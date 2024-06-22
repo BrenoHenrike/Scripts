@@ -60,6 +60,9 @@ public class ChaosAvengerClass
 
     public void ParallelChaosAmulet()
     {
+        if (Core.CheckInventory("Parallel Chaos Amulet"))
+            return;
+
         if (Core.CheckInventory("Champion Drakath Insignia", 20))
         {
             //ensure your in the map
