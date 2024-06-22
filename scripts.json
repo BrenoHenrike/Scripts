@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreAdvanced.cs",
-    "size": 122658,
+    "size": 122778,
     "fileName": "CoreAdvanced.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreAdvanced.cs"
   },
@@ -732,7 +732,7 @@
       "prerequisites"
     ],
     "path": "Chaos/ChaosAvengerPreReqs.cs",
-    "size": 6056,
+    "size": 5786,
     "fileName": "ChaosAvengerPreReqs.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Chaos/ChaosAvengerPreReqs.cs"
   },
