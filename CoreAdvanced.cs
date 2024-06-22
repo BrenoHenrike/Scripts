@@ -495,7 +495,8 @@ public class CoreAdvanced
     /// <param name="ClassName">Name of the class you want it to rank up</param>
     public void RankUpClass(string className, bool gearRestore = true)
     {
-        Bot.Wait.ForPickup(className, 20);
+        while (!Bot.ShouldExit && !Bot.Inventory.Contains(className))
+            Bot.Wait.ForTrue(() => Bot.Inventory.Contains(className), 20);
         InventoryItem? itemInv = Bot.Inventory.Items.Find(i => i.Name.Equals(className, StringComparison.Ordinal) && i.Category == ItemCategory.Class);
 
         if (itemInv == null)
@@ -1944,7 +1945,7 @@ public class CoreAdvanced
                 case "quantum chronomancer":
                 case "chaos avenger":
                     if (!uPenitence()
-                    || !uDauntless() || !uRavenous() || !uValiance()
+                    || (!uDauntless() || !uValiance()) || !uRavenous() || !uValiance()
                     || !uAnima())
                         goto default;
 
