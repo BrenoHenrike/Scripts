@@ -2077,7 +2077,7 @@ public class CoreBots
         List<Monster> targetMonsters = FindMonsters();
         if (item == null)
         {
-            foreach (var targetMonster in targetMonsters)
+            foreach (Monster targetMonster in targetMonsters)
             {
                 while (!Bot.ShouldExit && !Bot.Player.Alive)
                     Sleep();
@@ -2178,7 +2178,7 @@ public class CoreBots
         // Handle the scenario where no item is specified
         if (item == null)
         {
-            foreach (var targetMonster in targetMonsters)
+            foreach (Monster targetMonster in targetMonsters)
             {
                 while (!Bot.ShouldExit && !Bot.Player.Alive)
                     Sleep();
@@ -2197,7 +2197,7 @@ public class CoreBots
             LogAndJump($"Killing monsters with ID {MonsterMapID} for item '{item}' (quantity: {quant}, temp: {isTemp}).");
             while (!Bot.ShouldExit && !(isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
             {
-                foreach (var targetMonster in targetMonsters)
+                foreach (Monster targetMonster in targetMonsters)
                 {
                     while (!Bot.ShouldExit && !Bot.Player.Alive)
                         Sleep();
@@ -2294,7 +2294,7 @@ public class CoreBots
         // Handle the scenario where no item is specified
         if (ItemID == 0)
         {
-            foreach (var targetMonster in targetMonsters)
+            foreach (Monster targetMonster in targetMonsters)
             {
                 while (!Bot.ShouldExit && !Bot.Player.Alive)
                     Sleep();
@@ -2310,7 +2310,7 @@ public class CoreBots
             LogAndJump($"Killing monsters with ID {MonsterMapID} for item '{ItemID}' (quantity: {quant}, temp: {isTemp}).");
             while (!Bot.ShouldExit && !(isTemp ? Bot.TempInv.Contains(ItemID, quant) : CheckInventory(ItemID, quant)))
             {
-                foreach (var targetMonster in targetMonsters)
+                foreach (Monster targetMonster in targetMonsters)
                 {
                     while (!Bot.ShouldExit && !Bot.Player.Alive)
                         Sleep();
@@ -3102,11 +3102,10 @@ public class CoreBots
             }
             else
             {
-                foreach (var targetMonster in Bot.Monsters.MapMonsters.Where(x => x != null && x.Cell == cell && x.Name.Equals(name, StringComparison.OrdinalIgnoreCase)))
+                foreach (Monster targetMonster in Bot.Monsters.MapMonsters.Where(x => x != null && x.Cell == cell && x.Name.Equals(name, StringComparison.OrdinalIgnoreCase)))
                 {
-                    if (CheckInventory(item, quantity))
+                    if (item != null && (isTemp ? Bot.TempInv.Contains(item, quantity) : CheckInventory(item, quantity)))
                         break;
-
 
                     Bot.Combat.Attack(targetMonster);
                     DebugLogger(this);
@@ -3954,7 +3953,7 @@ public class CoreBots
     public bool DontPreconfigure = true;
 
     public const string reinstallCleanFlash = ". If the issue persists, try the following things in the order they are here:\n - Restart the client.\n - Restart your computer.\n - Reinstall CleanFlash";
-   
+
     /// <summary>
     /// Displays a message indicating that files starting with "Core" are for storage purposes and stops the bot.
     /// </summary>
