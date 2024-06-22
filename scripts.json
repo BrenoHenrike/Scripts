@@ -108,7 +108,7 @@
       "ravenous"
     ],
     "path": "Enhancement/UnlockForgeEnhancements.cs",
-    "size": 41672,
+    "size": 41699,
     "fileName": "UnlockForgeEnhancements.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Enhancement/UnlockForgeEnhancements.cs"
   },
@@ -151,7 +151,7 @@
       "prerequisites"
     ],
     "path": "Darkon/DarkonDebris2ReconstructedPrerequisites.cs",
-    "size": 1797,
+    "size": 1810,
     "fileName": "DarkonDebris2ReconstructedPrerequisites.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/DarkonDebris2ReconstructedPrerequisites.cs"
   },
