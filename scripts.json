@@ -39,7 +39,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 233545,
+    "size": 233631,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -732,7 +732,7 @@
       "prerequisites"
     ],
     "path": "Chaos/ChaosAvengerPreReqs.cs",
-    "size": 5786,
+    "size": 5868,
     "fileName": "ChaosAvengerPreReqs.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Chaos/ChaosAvengerPreReqs.cs"
   },
@@ -3720,7 +3720,7 @@
       "khasaanda"
     ],
     "path": "Dailies/LordOfOrder.cs",
-    "size": 10719,
+    "size": 10582,
     "fileName": "LordOfOrder.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/LordOfOrder.cs"
   },
