@@ -9,6 +9,7 @@ tags: chaos avenger, class, prerequisites
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Monsters;
 
 public class ChaosAvengerClass
 {
@@ -44,12 +45,12 @@ public class ChaosAvengerClass
         LOC.Hero();
 
         Core.EnsureAccept(8301);
-        //ParallelChaosAmulet();
         FragmentoftheDragon();
         FragmentofMountDoomskull();
         FragmentsoftheLordsA();
         FragmentsoftheLordsB();
         FragmentoftheQueen();
+        // ParallelChaosAmulet();
         CompleteandBuy();
 
 
@@ -59,114 +60,109 @@ public class ChaosAvengerClass
 
     public void ParallelChaosAmulet()
     {
-        if (!Core.CheckInventory("Parallel Chaos Amulet"))
+        if (Core.CheckInventory("Champion Drakath Insignia", 20))
         {
-            if (Core.CheckInventory("Champion Drakath Insignia", 20))
-            {
-                Core.BuyItem("championdrakath", 2055, "Parallel Chaos Amulet");
-                return;
-            }
-            else if (Bot.Quests.IsAvailable(7979))
-            {
-                Core.EnsureAccept(8300);
-                //Adv.BestGear(RacialGearBoost.Chaos);
-                Core.EquipClass(ClassType.Solo);
-                Core.KillMonster("championdrakath", "r2", "Left", "Champion Drakath", "Champion Drakath Defeated");
-                Core.EnsureComplete(8300);
-                ParallelChaosAmulet();
-            }
+            //ensure your in the map
+            Core.Join("championdrakath");
+            Core.BuyItem("championdrakath", 2055, "Parallel Chaos Amulet");
+            return;
+        }
+        else
+        {
+            Core.Logger("not enough insigs");
+            Bot.Stop();
         }
     }
 
     public void FragmentoftheDragon()
     {
-        if (!Core.CheckInventory("Fragment of the Dragon"))
-        {
-            Core.EquipClass(ClassType.Solo);
-            Core.KillMonster("chaoslord", "r2", "Left", "*", "Fragment of the Dragon", isTemp: false);
-        }
+        if (Core.CheckInventory("Fragment of the Dragon"))
+            return;
 
+        Core.EquipClass(ClassType.Solo);
+        Core.Join("chaoslord");
+        Core.Jump("r2", "Left");
+        Monster? kys = Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault(x => x != null && (x.Name == Bot.Player.Username || x.Name.ToLower() == "skua bot"));
+        Core.KillMonster("chaoslord", "r2", "Left", kys.Name, "Fragment of the Dragon", isTemp: false);
     }
 
     public void FragmentofMountDoomskull()
     {
-        if (!Core.CheckInventory("Fragment of Mount Doomskull", 1300))
-        {
-            Core.EquipClass(ClassType.Farm);
-            //Adv.BestGear(RacialGearBoost.Chaos);
-            Core.HuntMonster("mountdoomskull", "Chaorrupted Rogue", "Fragment of Mount Doomskull", 1300, isTemp: false);
-        }
+        if (Core.CheckInventory("Fragment of Mount Doomskull", 1300))
+            return;
 
+        Core.EquipClass(ClassType.Farm);
+        Core.HuntMonster("mountdoomskull", "Chaorrupted Rogue", "Fragment of Mount Doomskull", 1300, isTemp: false);
     }
 
     public void FragmentsoftheLordsA()
     {
-        if (!Core.CheckInventory("Fragments of the Lords A"))
-        {
-            Core.EquipClass(ClassType.Solo);
-            bool Ledgermayne = true;
+        if (Core.CheckInventory("Fragments of the Lords A"))
+            return;
 
-            //Escherion's Robe
-            Core.KillEscherion("Escherion's Robe");
+        Core.EquipClass(ClassType.Solo);
+        bool Ledgermayne = true;
 
-            //Vath's Chaotic Dragonlord Armor
-            Core.KillVath("Vath's Chaotic Dragonlord Armor");
+        //Escherion's Robe
+        Core.KillEscherion("Escherion's Robe");
 
-            //Chaos Shogun Armor
-            Core.KillKitsune("Chaos Shogun Armor");
+        //Vath's Chaotic Dragonlord Armor
+        Core.KillVath("Vath's Chaotic Dragonlord Armor");
 
-            //Wolfwing Armor
-            Core.HuntMonster("wolfwing", "Wolfwing", "Wolfwing Armor", isTemp: false);
+        //Chaos Shogun Armor
+        Core.KillKitsune("Chaos Shogun Armor");
 
-            //Discordia Armor
-            Core.HuntMonster("palooza", "Chaos Lord Discordia", "Discordia Armor", isTemp: false);
+        //Wolfwing Armor
+        Core.HuntMonster("wolfwing", "Wolfwing", "Wolfwing Armor", isTemp: false);
 
-            //Ledgermayne (Armor)
-            Core.HuntMonster("Ledgermayne", "Ledgermayne", "Ledgermayne", isTemp: !Ledgermayne, publicRoom: Ledgermayne);
+        //Discordia Armor
+        Core.HuntMonster("palooza", "Chaos Lord Discordia", "Discordia Armor", isTemp: false);
 
-            Core.BuyItem("championdrakath", 2055, "Fragments of the Lords A");
-        }
+        //Ledgermayne (Armor)
+        Core.HuntMonster("Ledgermayne", "Ledgermayne", "Ledgermayne", isTemp: !Ledgermayne, publicRoom: Ledgermayne);
+
+        Core.BuyItem("championdrakath", 2055, "Fragments of the Lords A");
     }
 
     public void FragmentsoftheLordsB()
     {
-        if (!Core.CheckInventory("Fragments of the Lords B"))
-        {
-            Core.EquipClass(ClassType.Solo);
+        if (Core.CheckInventory("Fragments of the Lords B"))
+            return;
 
-            //Tibicenas (Armor)
-            Core.HuntMonster("djinn", "Tibicenas", "Tibicenas", isTemp: false);
+        Core.EquipClass(ClassType.Solo);
 
-            //Soul of Chaos Armor
-            Core.HuntMonster("dreamnexus", "Khasaanda", "Soul of Chaos Armor", isTemp: false);
+        //Tibicenas (Armor)
+        Core.HuntMonster("djinn", "Tibicenas", "Tibicenas", isTemp: false);
 
-            //Iadoa (Armor)
-            Core.HuntMonster("mqlesson", "Dragonoid", "Dragonoid of Hours", isTemp: false);
-            Core.HuntMonster("timespace", "Chaos Lord Iadoa", "Iadoa", isTemp: false);
+        //Soul of Chaos Armor
+        Core.HuntMonster("dreamnexus", "Khasaanda", "Soul of Chaos Armor", isTemp: false);
 
-            //Chaos Lionfang Armor
-            Core.HuntMonster("stormtemple", "Chaos Lord Lionfang", "Chaos Lionfang Armor", isTemp: false);
+        //Iadoa (Armor)
+        Core.HuntMonster("mqlesson", "Dragonoid", "Dragonoid of Hours", isTemp: false);
+        Core.HuntMonster("timespace", "Chaos Lord Iadoa", "Iadoa", isTemp: false);
 
-            //Chaos Lord Alteon (Armor)
-            Core.HuntMonster("swordhavenfalls", "Chaos Lord Alteon", "Chaos Lord Alteon", isTemp: false);
+        //Chaos Lionfang Armor
+        Core.HuntMonster("stormtemple", "Chaos Lord Lionfang", "Chaos Lionfang Armor", isTemp: false);
 
-            //Xiang Chaos
-            Adv.GearStore();
-            Core.KillXiang("Xiang Chaos");
-            Adv.GearStore(true);
+        //Chaos Lord Alteon (Armor)
+        Core.HuntMonster("swordhavenfalls", "Chaos Lord Alteon", "Chaos Lord Alteon", isTemp: false);
 
-            Core.BuyItem("championdrakath", 2055, "Fragments of the Lords B");
-        }
+        //Xiang Chaos
+        Adv.GearStore();
+        Core.KillXiang("Xiang Chaos");
+        Adv.GearStore(true);
+
+        Core.BuyItem("championdrakath", 2055, "Fragments of the Lords B");
     }
 
     public void FragmentoftheQueen()
     {
-        if (!Core.CheckInventory("Fragment of the Queen", 13))
-        {
-            Core.EquipClass(ClassType.Solo);
-            Bot.Quests.UpdateQuest(8094);
-            Core.HuntMonster("transformation", "Queen of Monsters", "Fragment of the Queen", 13, false);
-        }
+        if (Core.CheckInventory("Fragment of the Queen", 13))
+            return;
+
+        Bot.Quests.UpdateQuest(8094);
+        Core.EquipClass(ClassType.Solo);
+        Core.HuntMonster("transformation", "Queen of Monsters", "Fragment of the Queen", 13, false);
 
     }
 
@@ -175,8 +171,8 @@ public class ChaosAvengerClass
         if (Bot.Quests.CanComplete(8301))
         {
             Core.EnsureComplete(8301);
-            Core.Relogin();
-            Core.BuyItem("championdrakath", 2056, "Chaos Avenger");
+            Bot.Wait.ForQuestComplete(8301);
+            Adv.BuyItem("championdrakath", 2056, "Chaos Avenger");
         }
         else if (!Core.CheckInventory("Champion Drakath Insignia", 20))
             Core.Logger("You need 20x Champion Drakath Insignia for the Parallel Chaos Amulet (You can get 5x once a week)");
