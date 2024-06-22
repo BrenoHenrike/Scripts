@@ -27,7 +27,7 @@ public class ChaosAvengerClass
                                             "Fragments of the Lords B",
                                             "Fragments of the Lords A",
                                             "Fragment of Mount Doomskull",
-                                            "Parallel Chaos Amulet"}
+                                            "Parallel Chaos Amulet"};
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -182,17 +182,18 @@ public class ChaosAvengerClass
 
     public void CompleteandBuy()
     {
-        if(!Core.)
-        if (Bot.Quests.CanComplete(8301))
+        if (!Core.CheckInventory(CavItems))
         {
-            Core.EnsureComplete(8301);
-            Bot.Wait.ForQuestComplete(8301);
-            Adv.BuyItem("championdrakath", 2056, "Chaos Avenger");
-        }
-        if (!Core.CheckInventory("Champion Drakath Insignia", 20))
-        {
-            Core.Logger("You need 20x Champion Drakath Insignia for the Parallel Chaos Amulet (You can get 5x once a week)");
+            foreach (string item in CavItems.Where(x => !Core.CheckInventory(x)))
+                Core.Logger($"Missing: {item}");
             return;
         }
+
+        //insurance:
+        Core.Unbank(CavItems);
+
+        Core.EnsureComplete(8301);
+        Bot.Wait.ForQuestComplete(8301);
+        Adv.BuyItem("championdrakath", 2056, "Chaos Avenger");
     }
 }

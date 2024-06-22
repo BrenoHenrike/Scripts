@@ -495,9 +495,8 @@ public class CoreAdvanced
     /// <param name="ClassName">Name of the class you want it to rank up</param>
     public void RankUpClass(string className, bool gearRestore = true)
     {
-        while (!Bot.ShouldExit && !Bot.Inventory.Contains(className))
-            Core.Sleep();
-            
+        Bot.Wait.ForTrue(() => Bot.Inventory.Contains(className), 20);
+
         InventoryItem? itemInv = Bot.Inventory.Items.Find(i => i.Name.Equals(className, StringComparison.Ordinal) && i.Category == ItemCategory.Class);
 
         if (itemInv == null)
