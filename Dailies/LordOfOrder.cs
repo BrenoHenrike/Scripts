@@ -33,20 +33,26 @@ public class LordOfOrder
 
     public void GetLoO(bool rankUpClass = true, bool getExtras = false)
     {
-        if (Core.CheckInventory(50741, toInv: false && !getExtras) || (getExtras && Core.CheckInventory(Core.QuestRewards(7165), toInv: false)) || (!Core.CheckInventory(50741) && !Bot.Quests.IsDailyComplete(7156)))
+
+        if (!Core.CheckInventory(50741) && Bot.Quests.IsDailyComplete(7156))
         {
-            if (!Core.CheckInventory(50741) && !Bot.Quests.IsDailyComplete(7156))
-                Core.Logger("Daily Quest unavailable right now");
-
-            if (Core.CheckInventory(50741, toInv: false && !getExtras) || (getExtras && Core.CheckInventory(Core.QuestRewards(7165), toInv: false)))
-                Core.Logger("All desired rewards owned for LOO.");
-
-            if (rankUpClass)
-                Adv.RankUpClass("Lord Of Order");
-
+            Core.Logger("Daily Quest unavailable right now");
             return;
         }
-        
+
+        if (Core.CheckInventory(50741, toInv: false && !getExtras) || (getExtras && Core.CheckInventory(Core.QuestRewards(7165), toInv: false)))
+        {
+            Core.Logger("All desired rewards owned for LOO.");
+            return;
+        }
+
+        if (Core.CheckInventory(50741) && rankUpClass)
+        {
+            Adv.RankUpClass("Lord Of Order");
+            return;
+        }
+
+
         Story.PreLoad(this);
         Core.Logger("Daily: Lord Of Order Class");
 
