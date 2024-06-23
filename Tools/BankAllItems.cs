@@ -61,15 +61,17 @@ public class BankAllItems
         blackListedItems.UnionWith(Core.FarmGear);
         blackListedItems.UnionWith(Core.BankingBlackList);
 
-        Core.Logger($"BlackList: {string.Join(", ", blackListedItems.Where(item => !string.IsNullOrEmpty(item)))}");
-
+        int BlackListCount = blackListedItems.Count;
+        Core.Logger($"[{blackListedItems.Where(x => Bot.Inventory.Contains(x)).Count()}x Bag Spaces used] BlackList: {string.Join(", ", blackListedItems.Where(item => !string.IsNullOrEmpty(item)))}");
         foreach (var (items, isForHouse) in itemsToBank)
         {
             var filter = items.Where(item => !blackListedItems.Contains(item.Name)
                                              && (bankNonAc || item.Coins) && !item.Equipped);
-
             foreach (var item in filter)
             {
+                if (Bot.Inventory.Contains(item.ID))
+                    BlackListCount--;
+
                 if (bankNonAc && Bot.Bank.FreeSlots == 0 && !item.Coins)
                 {
                     if (!logged)
@@ -104,7 +106,7 @@ public class BankAllItems
                     {
                         Core.ToBank(item.ID);
                     }
-                }
+                }            
             }
 
             Core.Logger($"{(isForHouse ? "House" : "Inventory")} Items: {(filter.Any() ? "✅" : "No items blacklisted")}");
