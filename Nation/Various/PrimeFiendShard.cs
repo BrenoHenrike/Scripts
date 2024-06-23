@@ -122,7 +122,7 @@ public class PrimeFiendShard
             {
                 Core.AddDrop("Dual Dragonbone Axe of Nulgath");
                 Core.Logger("Farming Dual Dragonbone Axe of Nulgath.");
-                // Combat Style: Dragonbone Axe 629
+                // Combat Style: Dragonbone Axe 629 - requires 1x uni 13
                 Core.EnsureAccept(629);
                 Nation.FarmUni13(1);
                 Nation.FarmTaintedGem(13);
@@ -132,6 +132,8 @@ public class PrimeFiendShard
                 Core.HuntMonster("evilmarsh", "Tainted Elemental", "Tainted Rune of Evil", log: false);
                 Core.EnsureComplete(629);
             }
+            // 9559 requires x13 uni 13
+            Nation.FarmUni13(13);
             Nation.EssenceofNulgath(20);
             Nation.FarmDiamondofNulgath(20);
             Adv.BuyItem("shadowblast", 1206, "Nation Soulstealer", shopItemID: 4175);

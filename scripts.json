@@ -503,7 +503,7 @@
       "me"
     ],
     "path": "Tools/InsertNameHeresUltraPrep.cs",
-    "size": 19523,
+    "size": 19528,
     "fileName": "InsertNameHeresUltraPrep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/InsertNameHeresUltraPrep.cs"
   },
@@ -587,7 +587,7 @@
       "null"
     ],
     "path": "Tools/BankAllItems.cs",
-    "size": 3962,
+    "size": 4201,
     "fileName": "BankAllItems.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/BankAllItems.cs"
   },
@@ -761,7 +761,7 @@
       "set"
     ],
     "path": "Chaos/EternalDrakathSet.cs",
-    "size": 3833,
+    "size": 3834,
     "fileName": "EternalDrakathSet.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Chaos/EternalDrakathSet.cs"
   },
@@ -19285,7 +19285,7 @@
       "void chasm"
     ],
     "path": "Nation/Various/PrimeFiendShard.cs",
-    "size": 9970,
+    "size": 10065,
     "fileName": "PrimeFiendShard.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/PrimeFiendShard.cs"
   },

@@ -50,7 +50,7 @@ public class EternalDrakath
         Core.AddDrop(25286);
 
         Armor.DrakathArmor();
-        if (Core.CheckInventory("Drakath Armor")) //"Drakath the Eternal"
+        if (!Core.CheckInventory("Drakath Armor")) //"Drakath the Eternal"
         {
             Core.Logger("Cannot continue with \"Drakath Armor\" not enough \"Dage's Scroll Fragment\", cannot complete \"Drakath the Eternal\".");
             return;
