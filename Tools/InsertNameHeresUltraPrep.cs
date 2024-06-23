@@ -299,7 +299,7 @@ public class InsertNameHeresUltraPrep
         string[] enhancementNames =
             {
             "Health Vamp/AweBlast", "ForgeWeapon", "Lacerate", "Smite", "Valiance", "ArcanasConcerto",
-            "Absolution", "Vainglory", "Avarice", "ForgeCape", "Elysium", "Acheron",
+            "Absolution", "Vainglory", "Avarice", "ForgeCape", "Elysium", "Acheron[P2W]",
             "Penitence", "Lament", "Vim", "Examen", "ForgeHelm", "Pneuma", "Anima",
             "Dauntless", "Praxis", "Ravenous"
             };
