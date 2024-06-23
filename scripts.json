@@ -10616,17 +10616,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/08DeepWater.cs"
   },
   {
-    "name": "null",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Story/AgeOfRuin/CoreAOR.cs",
-    "size": 25044,
-    "fileName": "CoreAOR.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/CoreAOR.cs"
-  },
-  {
     "name": "Ashray Village",
     "description": "This script completes the storyline in /ashray.",
     "tags": [
