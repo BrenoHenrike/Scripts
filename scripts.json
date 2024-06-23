@@ -15859,6 +15859,34 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/EternalChaosMerge.cs"
   },
   {
+    "name": "NaoiseGrave Loot Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the NaoiseGrave Loot Merge [2453] in /naoisegrave",
+    "tags": [
+      "naoisegrave",
+      "loot",
+      "merge",
+      "naoisegrave",
+      "gold",
+      "voucher",
+      "k",
+      "antistorm",
+      "warbeast",
+      "skull",
+      "war",
+      "beast",
+      "warbeasts",
+      "energy",
+      "fist",
+      "fists",
+      "tank",
+      "tanks"
+    ],
+    "path": "Other/MergeShops/NaoiseGraveLootMerge.cs",
+    "size": 5788,
+    "fileName": "NaoiseGraveLootMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/NaoiseGraveLootMerge.cs"
+  },
+  {
     "name": "StormCacheMerge",
     "description": "null",
     "tags": [
