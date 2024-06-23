@@ -629,22 +629,22 @@ public class CoreAOR
         Story.KillQuest(9769, "naoisegrave", "Energy Elemental");
         Story.MapItemQuest(9769, "naoisegrave", 13297);
 
-        // Glacial Seal (9770)
-        Story.MapItemQuest(9770, "naoisegrave", new[] { 13298, 13299 });
+        // Glacial Seal (9774)
+        Story.MapItemQuest(9774, "naoisegrave", new[] { 13298, 13299 });
 
-        // The Cold Wind Guides (9771)
-        Story.KillQuest(9771, "naoisegrave", new[] { "Energy Elemental", "Bananach Raven" });
-        Story.MapItemQuest(9771, "naoisegrave", 13300);
+        // The Cold Wind Guides (9770)
+        Story.KillQuest(9770, "naoisegrave", new[] { "Energy Elemental", "Bananach Raven" });
+        Story.MapItemQuest(9770, "naoisegrave", 13300);
 
-        // Cold Callers (9772)
-        Story.KillQuest(9772, "naoisegrave", "Ice Guardian");
+        // Cold Callers (9771)
+        Story.KillQuest(9771, "naoisegrave", "Ice Guardian");
 
-        // Destinies Lost (9773)
-        Story.KillQuest(9773, "naoisegrave", "Bone Dragonling");
+        // Destinies Lost (9772)
+        Story.KillQuest(9772, "naoisegrave", "Bone Dragonling");
 
-        // Of The Sorrows (9774)
-        Story.KillQuest(9774, "naoisegrave", "Warden Iseul");
-        Story.MapItemQuest(9774, "naoisegrave", 13301);
+        // Of The Sorrows (9773)
+        Story.KillQuest(9773, "naoisegrave", "Warden Iseul");
+        Story.MapItemQuest(9773, "naoisegrave", 13301);
 
         // Cold-Blooded Torture (9775)
         Story.KillQuest(9775, "naoisegrave", "Ice Guardian");
