@@ -8,12 +8,12 @@ tags: null
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Story\ShadowsOfWar\CoreSoW.cs
-using System.Dynamic;
-using Newtonsoft.Json;
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Auras;
 using Skua.Core.Models.Monsters;
 using Skua.Core.Models.Skills;
+using System.Dynamic;
+using Newtonsoft.Json;
 
 public class CoreAOR
 {
