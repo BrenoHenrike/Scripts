@@ -10565,10 +10565,12 @@
       "trench_observation",
       "balemorale",
       "castle_eblana",
-      "loughshine"
+      "loughshine",
+      "naoise grave",
+      "naoisegrave"
     ],
     "path": "Story/AgeOfRuin/00DoAll.cs",
-    "size": 855,
+    "size": 880,
     "fileName": "00DoAll.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/00DoAll.cs"
   },
@@ -10620,7 +10622,7 @@
       "null"
     ],
     "path": "Story/AgeOfRuin/CoreAOR.cs",
-    "size": 23467,
+    "size": 25044,
     "fileName": "CoreAOR.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/CoreAOR.cs"
   },
@@ -10701,6 +10703,24 @@
     "size": 761,
     "fileName": "12Loughshine.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/12Loughshine.cs"
+  },
+  {
+    "name": "Naoise Grave",
+    "description": "This script completes the st oryline in /naoisegrave.",
+    "tags": [
+      "age",
+      "of",
+      "ruin",
+      "saga",
+      "story",
+      "quest",
+      "naoisegrave",
+      "queen victoria alteon"
+    ],
+    "path": "Story/AgeOfRuin/13NaoiseGrave.cs",
+    "size": 750,
+    "fileName": "13NaoiseGrave.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/13NaoiseGrave.cs"
   },
   {
     "name": "Balemorale Castle",
