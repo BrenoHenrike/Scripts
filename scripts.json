@@ -38,6 +38,17 @@
     "tags": [
       "null"
     ],
+    "path": "CoreAOR.cs",
+    "size": 25044,
+    "fileName": "CoreAOR.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreAOR.cs"
+  },
+  {
+    "name": "null",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
     "path": "CoreBots.cs",
     "size": 233631,
     "fileName": "CoreBots.cs",
@@ -10614,17 +10625,6 @@
     "size": 752,
     "fileName": "08DeepWater.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/08DeepWater.cs"
-  },
-  {
-    "name": "null",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Story/AgeOfRuin/CoreAOR.cs",
-    "size": 25044,
-    "fileName": "CoreAOR.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/CoreAOR.cs"
   },
   {
     "name": "Ashray Village",
