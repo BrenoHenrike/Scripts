@@ -499,8 +499,11 @@ public class UnlockForgeEnhancements
         FCA.GetFireChampsArmor();
         DOT.GetDoT(doExtra: false);
         ED.getSet(true, "Drakath the Eternal");
-        if (!Core.CheckInventory("Drakath the Eternal") && !Core.CheckInventory("Drakath Armor"))
-            Core.Logger("Cannot \"Finish\" `Heros Valiance` quest, missing \"Drakath the Eternal\". we'll continue farming it though..");
+        if (!Core.CheckInventory("Drakath the Eternal"))
+            Core.Logger("Cannot \"Finish\" `Heros Valiance quest. We'll continue farming it though...\n" +
+            $"\"Drakath Armor\": x{Bot.Inventory.GetQuantity("Drakath Armor")}\n" +
+            $"\"Dage's Scroll Fragment\" x{Bot.Inventory.GetQuantity("Dage's Scroll Fragment")}\n"+
+            $"\"Drakath the Eternal\" x{Bot.Inventory.GetQuantity("Drakath the Eternal")}");;
         LOO.GetLoO();
 
         if (!Core.CheckInventory(23689))

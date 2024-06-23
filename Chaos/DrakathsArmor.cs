@@ -39,7 +39,7 @@ public class DrakathArmorBot
         DrakathArmorQuest();
         if (!Core.CheckInventory("Dage's Scroll Fragment", 13))
         {
-            Core.Logger("Cannot continue with \"DrakathArmor\" not enough \"Dage's Scroll Fragment\"");
+            Core.Logger("Cannot continue with \"Drakath Armor\" not enough \"Dage's Scroll Fragment\"");
             return;
         }
         Core.BuyItem(Bot.Map.Name, 994, "Original Drakath Armor");
