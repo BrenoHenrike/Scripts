@@ -42,6 +42,7 @@ public class CoreAOR
         Balemorale();
         Castleeblana();
         Loughshine();
+        NaoiseGrave();
     }
 
     private bool isSeaVoiceCalled = false;
@@ -607,6 +608,55 @@ public class CoreAOR
         {
             Core.EquipClass(ClassType.Solo);
             Story.KillQuest(9764, "loughshine", "Warden Iseul");
+            Core.EquipClass(ClassType.Farm);
+        }
+    }
+
+    public void NaoiseGrave()
+    {
+        if (Core.isCompletedBefore(9777))
+            return;
+
+        Loughshine();
+
+        Story.PreLoad(this);
+
+        // Till When? (9768)
+        Story.KillQuest(9768, "naoisegrave", "Bananach Raven");
+        Story.MapItemQuest(9768, "naoisegrave", 13296);
+
+        // Energetic Feud (9769)
+        Story.KillQuest(9769, "naoisegrave", "Energy Elemental");
+        Story.MapItemQuest(9769, "naoisegrave", 13297);
+
+        // Glacial Seal (9770)
+        Story.MapItemQuest(9770, "naoisegrave", new[] { 13298, 13299 });
+
+        // The Cold Wind Guides (9771)
+        Story.KillQuest(9771, "naoisegrave", new[] { "Energy Elemental", "Bananach Raven" });
+        Story.MapItemQuest(9771, "naoisegrave", 13300);
+
+        // Cold Callers (9772)
+        Story.KillQuest(9772, "naoisegrave", "Ice Guardian");
+
+        // Destinies Lost (9773)
+        Story.KillQuest(9773, "naoisegrave", "Bone Dragonling");
+
+        // Of The Sorrows (9774)
+        Story.KillQuest(9774, "naoisegrave", "Warden Iseul");
+        Story.MapItemQuest(9774, "naoisegrave", 13301);
+
+        // Cold-Blooded Torture (9775)
+        Story.KillQuest(9775, "naoisegrave", "Ice Guardian");
+
+        // Echoing Cries (9776)
+        Story.KillQuest(9776, "naoisegrave", "Bone Dragonling");
+
+        // Dragon's Seal (9777)
+        if (!Story.QuestProgression(9777))
+        {
+            Core.EquipClass(ClassType.Solo);
+            Story.KillQuest(9777, "naoisegrave", "Volgritian");
             Core.EquipClass(ClassType.Farm);
         }
     }
