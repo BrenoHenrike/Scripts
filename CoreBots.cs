@@ -2082,10 +2082,12 @@ public class CoreBots
                 while (!Bot.ShouldExit && !Bot.Player.Alive)
                     Sleep();
                 LogAndJump($"Killing {targetMonster}");
-                if (targetMonster != null)
-                    Bot.Combat.Attack(targetMonster);
-                Bot.Wait.ForMonsterDeath(20);
-                Bot.Combat.CancelTarget();
+                bool ded = false;
+                Bot.Events.MonsterKilled += b => ded = true;
+                while (!Bot.ShouldExit && !ded)
+                    if (!Bot.Combat.StopAttacking)
+                        Bot.Combat.Attack(monster);
+                return;
             }
         }
         else
@@ -2097,6 +2099,7 @@ public class CoreBots
             else
                 _KillForItem(monster, item, quant, isTemp, log: log, cell: cell);
 
+            DebugLogger(this);
             DebugLogger(this);
             Bot.Options.AttackWithoutTarget = false;
             DebugLogger(this);
@@ -2460,8 +2463,11 @@ public class CoreBots
                     Bot.Wait.ForCellChange(targetMonster.Cell);
                     Sleep();
                 }
-
-                Bot.Combat.Attack(targetMonster);
+                bool ded = false;
+                Bot.Events.MonsterKilled += b => ded = true;
+                while (!Bot.ShouldExit && !ded)
+                    if (!Bot.Combat.StopAttacking)
+                        Bot.Combat.Attack(targetMonster);
                 Sleep();
             }
 
@@ -2540,8 +2546,11 @@ public class CoreBots
                     Bot.Wait.ForCellChange(targetMonster.Cell);
                     Sleep();
                 }
-
-                Bot.Combat.Attack(targetMonster);
+                bool ded = false;
+                Bot.Events.MonsterKilled += b => ded = true;
+                while (!Bot.ShouldExit && !ded)
+                    if (!Bot.Combat.StopAttacking)
+                        Bot.Combat.Attack(targetMonster);
                 Sleep();
             }
 
@@ -3092,7 +3101,11 @@ public class CoreBots
                     if (CheckInventory(item, quantity))
                         break;
 
-                    Bot.Combat.Attack(monster);
+                    bool ded = false;
+                    Bot.Events.MonsterKilled += b => ded = true;
+                    while (!Bot.ShouldExit && !ded)
+                        if (!Bot.Combat.StopAttacking)
+                            Bot.Combat.Attack(monster);
                     DebugLogger(this);
                     Bot.Wait.ForMonsterDeath(20);
                     Bot.Combat.CancelTarget();
@@ -3107,11 +3120,16 @@ public class CoreBots
                     if (item != null && (isTemp ? Bot.TempInv.Contains(item, quantity) : CheckInventory(item, quantity)))
                         break;
 
-                    Bot.Combat.Attack(targetMonster);
+                    bool ded = false;
+                    Bot.Events.MonsterKilled += b => ded = true;
+                    while (!Bot.ShouldExit && !ded)
+                        if (!Bot.Combat.StopAttacking)
+                            Bot.Combat.Attack(targetMonster);
+
                     DebugLogger(this);
-                    Bot.Wait.ForMonsterDeath(20);
+                    // Bot.Wait.ForMonsterDeath(20);
                     // Bot.Wait.ForMonsterSpawn(targetMonster.MapID);
-                    Bot.Combat.CancelTarget();
+                    // Bot.Combat.CancelTarget();
                     Sleep();
                     DebugLogger(this);
                 }
@@ -3149,7 +3167,11 @@ public class CoreBots
             }
 
             DebugLogger(this);
-            Bot.Combat.Attack(name);
+            bool ded = false;
+            Bot.Events.MonsterKilled += b => ded = true;
+            while (!Bot.ShouldExit && !ded && itemID > 0 && (isTemp ? !Bot.TempInv.Contains(itemID, quantity) : !CheckInventory(itemID, quantity)))
+                if (!Bot.Combat.StopAttacking)
+                    Bot.Combat.Attack(name);
             DebugLogger(this);
             Sleep();
 
@@ -3993,6 +4015,7 @@ public class CoreBots
                 break;
             }
         }
+        GC.Collect();
     }
 
     /// <summary>
@@ -4720,6 +4743,7 @@ public class CoreBots
                 Logger($"An error occurred: {ex.Message}\n{ex.StackTrace}");
             }
         }
+        GC.Collect();
     }
 
     public void CutSceneFixer(string map, string? cell, string cutsceneCell, string pad = "Left")

@@ -723,7 +723,11 @@ public class CoreStory
             Core.DebugLogger(this);
             EnsurePlayerInCorrectCell(targetMonster);
             Core.DebugLogger(this);
-            Bot.Combat.Attack(targetMonster);
+            bool ded = false;
+            Bot.Events.MonsterKilled += b => ded = true;
+            while (!Bot.ShouldExit && !ded)
+                if (!Bot.Combat.StopAttacking)
+                    Bot.Combat.Attack(targetMonster);
             Core.Sleep();
 
             // Update itemInInventory status after attempting to get the item
