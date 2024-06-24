@@ -1153,7 +1153,7 @@ public class CoreSoW
         }
         else Core.Logger($"Cant do these last quests\n" +
         "as they require Yami no Ronin/TimeKeeper\n" +
-        "or a *realy good* dodge class... or for you\n" +
+        "or a *really good* dodge class... or for you\n" +
         "todo it manualy with an group/army\n" +
         "(this quest is required for seavoice story and beyond.)", stopBot: true);
 
