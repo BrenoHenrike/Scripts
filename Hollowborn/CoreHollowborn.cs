@@ -40,7 +40,7 @@ public class CoreHollowborn
         HumanSoul(50);
 
         Core.EquipClass(ClassType.Solo);
-        Core.HuntMonster("doomwood", "Undead Paladin", "Fallen Soul", 13, false);
+        Core.KillMonster("doomwood", "r10", "right", "Undead Paladin", "Fallen Soul", 13, false);
 
         Core.EnsureComplete(7556);
     }
