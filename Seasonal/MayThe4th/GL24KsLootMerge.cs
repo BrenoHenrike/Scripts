@@ -114,7 +114,6 @@ public class GL24KsLootMerge
 
     public List<IOption> Select = new()
     {
-        new Option<bool>("57304", "Gold Voucher 25k", "Mode: [select] only\nShould the bot buy \"Gold Voucher 25k\" ?", false),
         new Option<bool>("85548", "GL-24K", "Mode: [select] only\nShould the bot buy \"GL-24K\" ?", false),
         new Option<bool>("85549", "Cloaked GL-24K", "Mode: [select] only\nShould the bot buy \"Cloaked GL-24K\" ?", false),
         new Option<bool>("85550", "GL-24K Helm", "Mode: [select] only\nShould the bot buy \"GL-24K Helm\" ?", false),
