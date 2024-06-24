@@ -142,8 +142,7 @@ public class CoreFarms
         Core.RegisterQuests(3992, 3993);
         while (!Bot.ShouldExit && Bot.Player.Gold < goldQuant)
         {
-            Core.KillMonster("honorhall", "r1", "Center", "Ice Demon", "Battleground E Opponent Defeated", 10, log: false);
-            Core.KillMonster("honorhall", "r1", "Center", "Ice Demon", "HonorHall Opponent Defeated", 10, log: false);
+            Core.KillMonster("honorhall", "r1", "Center", "Ice Demon");
         }
         Core.CancelRegisteredQuests();
         Core.SavedState(false);
