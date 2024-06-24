@@ -5566,7 +5566,7 @@
       "glst"
     ],
     "path": "Seasonal/MayThe4th/GL24KsLootMerge.cs",
-    "size": 7552,
+    "size": 7424,
     "fileName": "GL24KsLootMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/MayThe4th/GL24KsLootMerge.cs"
   },
@@ -5655,7 +5655,7 @@
       "hideout"
     ],
     "path": "Seasonal/MayThe4th/TwiggusGearMerge.cs",
-    "size": 8423,
+    "size": 8165,
     "fileName": "TwiggusGearMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/MayThe4th/TwiggusGearMerge.cs"
   },
@@ -15882,7 +15882,7 @@
       "tanks"
     ],
     "path": "Other/MergeShops/NaoiseGraveLootMerge.cs",
-    "size": 5788,
+    "size": 5660,
     "fileName": "NaoiseGraveLootMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/NaoiseGraveLootMerge.cs"
   },
@@ -16016,7 +16016,7 @@
       "gaheris"
     ],
     "path": "Other/MergeShops/FelixsGildedGearMerge.cs",
-    "size": 5571,
+    "size": 5443,
     "fileName": "FelixsGildedGearMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/FelixsGildedGearMerge.cs"
   },
@@ -16402,7 +16402,7 @@
       "guardian"
     ],
     "path": "Other/MergeShops/LoughshineLootMerge.cs",
-    "size": 6557,
+    "size": 6429,
     "fileName": "LoughshineLootMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/LoughshineLootMerge.cs"
   },
