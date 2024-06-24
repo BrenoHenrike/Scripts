@@ -352,7 +352,8 @@ public class CoreFireIsland
         Story.KillQuest(4226, "Fireforge", "Flamewing");
 
         //Final Round: Tyndarius Tigermaster 4230
-        Story.KillQuest(4230, "Fireforge", "Tyndarius");
+        Story.KillQuest(4230, "Fireforge", "Tyndarius", AutoCompleteQuest: false);
+
     }
 
     public void Lavarun()
