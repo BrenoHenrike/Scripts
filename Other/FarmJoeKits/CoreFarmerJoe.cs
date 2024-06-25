@@ -535,17 +535,18 @@ public class CoreFarmerJoe
         Forge Weapons: Forge, Lacerate, Smite, Praxis
         Forge Helms: Forge, Vim, Examen, Anima, Pneuma
         */
-        // Weapons Enh
-        UnlockForgeEnhancements.ForgeWeaponEnhancement();
-        UnlockForgeEnhancements.Lacerate();
-        UnlockForgeEnhancements.Smite();
-        UnlockForgeEnhancements.Praxis();
         // Helmets Enh
         UnlockForgeEnhancements.ForgeHelmEnhancement();
         UnlockForgeEnhancements.Vim();
         UnlockForgeEnhancements.Examen();
         UnlockForgeEnhancements.Anima();
         UnlockForgeEnhancements.Pneuma();
+        
+        // Weapons Enh
+        UnlockForgeEnhancements.ForgeWeaponEnhancement();
+        UnlockForgeEnhancements.Lacerate();
+        UnlockForgeEnhancements.Smite();
+        UnlockForgeEnhancements.Praxis();
 
         Farm.Experience(80);
         SetClass(true, false, true);
