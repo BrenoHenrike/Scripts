@@ -7,8 +7,8 @@ tags: age,ruin,saga,story,quest,termina,temple,ashray,village,sunlight,twilight,
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/Story\ShadowsOfWar\CoreSoW.cs
-//cs_include Scripts/Story\AgeOfRuin\CoreAOR.cs
+//cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
+//cs_include Scripts/Story/AgeOfRuin/CoreAOR.cs
 using Skua.Core.Interfaces;
 
 public class AgeOfRuinAll

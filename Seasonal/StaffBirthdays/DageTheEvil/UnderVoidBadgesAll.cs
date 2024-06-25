@@ -8,7 +8,7 @@ tags: badge, undervoid, conquest victor, war victor, famine vitor, death victor
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/Seasonal\StaffBirthdays\DageTheEvil\CoreDageBirthday.cs
+//cs_include Scripts/Seasonal/StaffBirthdays/DageTheEvil/CoreDageBirthday.cs
 using Skua.Core.Interfaces;
 
 public class UnderVoidBadgesAll

@@ -41,7 +41,7 @@ tags: void, chasm, merge, voidchasm, abyssal, gravity, ball, balls, midnight, fi
 //cs_include Scripts/Nation/MergeShops/DilligasMerge.cs
 //cs_include Scripts/Nation/MergeShops/DirtlickersMerge.cs
 //cs_include Scripts/Other/Weapons/WrathofNulgath.cs
-//cs_include Scripts/Story\Legion\DarkWarLegionandNation.cs
+//cs_include Scripts/Story/Legion/DarkWarLegionandNation.cs
 //cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 //cs_include Scripts/Story/Nation/VoidChasm.cs
 //cs_include Scripts/Nation/Various/ArchfiendDeathLord.cs

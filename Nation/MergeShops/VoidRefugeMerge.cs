@@ -7,8 +7,8 @@ tags: void, refuge, merge, voidrefuge, envenomed, edge, nulgath, enchanted, carn
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/Story\Nation\VoidRefuge.cs
-//cs_include Scripts/Nation\CoreNation.cs
+//cs_include Scripts/Story/Nation/VoidRefuge.cs
+//cs_include Scripts/Nation/CoreNation.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;

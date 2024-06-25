@@ -7,7 +7,7 @@ tags: refreshing,deal,gem,totem,nulgath,nation,crag,bamboozle,quest
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Nation/CoreNation.cs
-//cs_include Scripts/Nation\Various\PurifiedClaymoreOfDestiny.cs
+//cs_include Scripts/Nation/Various/PurifiedClaymoreOfDestiny.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
 

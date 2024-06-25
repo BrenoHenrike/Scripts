@@ -8,7 +8,7 @@ tags: merge-shop, pirate, class, tlapd, talk-like-a-pirate-day, seasonal
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Seasonal/TalkLikeaPirateDay/BlazeBeardStory.cs
-//cs_include Scripts/Seasonal\TalkLikeaPirateDay\MergeShops\BlazeBeardMerge.cs
+//cs_include Scripts/Seasonal/TalkLikeaPirateDay/MergeShops/BlazeBeardMerge.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Models.Quests;

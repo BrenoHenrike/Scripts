@@ -5,7 +5,7 @@ tags: darkpath,dark path,futurelegion,future legion,undervoid,under void,legionb
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Seasonal\StaffBirthdays\DageTheEvil\CoreDageBirthday.cs
+//cs_include Scripts/Seasonal/StaffBirthdays/DageTheEvil/CoreDageBirthday.cs
 using Skua.Core.Interfaces;
 
 public class DageBirthdayAll

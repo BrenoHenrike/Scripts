@@ -7,7 +7,7 @@ tags: new year, chronogem, merge, chronogem, quantum, centurion, galea, chrono, 
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Seasonal\NewYear\CoreNewYear.cs
+//cs_include Scripts/Seasonal/NewYear/CoreNewYear.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;

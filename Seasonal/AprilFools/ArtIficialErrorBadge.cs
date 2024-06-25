@@ -5,7 +5,7 @@ tags: art,artificial,error,ai no miko,ai,ebilart, badge, seasonal, april-fools
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Seasonal\AprilFools\EbilArt.cs
+//cs_include Scripts/Seasonal/AprilFools/EbilArt.cs
 using Skua.Core.Interfaces;
 
 public class ArtificialErrorBadge

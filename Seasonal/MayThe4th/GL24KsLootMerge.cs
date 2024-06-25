@@ -7,7 +7,7 @@ tags: gl-24ks,gl 24ks, loot, merge, twigguhunt, gold, voucher, k, glk, cloaked, 
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/Seasonal\MayThe4th\MurderMoonStory.cs
+//cs_include Scripts/Seasonal/MayThe4th/MurderMoonStory.cs
 //cs_include Scripts/Seasonal/MayThe4th/TwigguHunt.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;

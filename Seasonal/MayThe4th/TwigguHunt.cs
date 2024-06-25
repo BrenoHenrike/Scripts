@@ -7,7 +7,7 @@ tags: zodas,zorbas,palace,seasonal,story,quests,may4th
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/Seasonal\MayThe4th\MurderMoonStory.cs
+//cs_include Scripts/Seasonal/MayThe4th/MurderMoonStory.cs
 using Skua.Core.Interfaces;
 
 public class TwigguHunt

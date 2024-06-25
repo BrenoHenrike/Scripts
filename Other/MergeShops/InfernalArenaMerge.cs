@@ -7,7 +7,7 @@ tags: infernal, arena, merge, infernalarena, tainted, naal, cervus, malus, skull
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Story\QueenofMonsters\Extra\InfernalArena.cs
+//cs_include Scripts/Story/QueenofMonsters/Extra/InfernalArena.cs
 //cs_include Scripts/Story/QueenofMonsters/Extra/CelestialArena.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;

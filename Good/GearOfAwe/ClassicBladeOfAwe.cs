@@ -7,8 +7,8 @@ tags:classic,blade,blade of awe,awe,good,weapon,original treasure chest,mysterio
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/Story\DracoCon.cs
-//cs_include Scripts/Other\TreasureHuntQuestRewards.cs
+//cs_include Scripts/Story/DracoCon.cs
+//cs_include Scripts/Other/TreasureHuntQuestRewards.cs
 using Skua.Core.Interfaces;
 
 public class ClassicBladeOfAwe

@@ -5,7 +5,7 @@ tags: burning sword of doom, blazing light of destiny, blaze of awe, pre reqs, l
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/Farm\BuyScrolls.cs
+//cs_include Scripts/Farm/BuyScrolls.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
 

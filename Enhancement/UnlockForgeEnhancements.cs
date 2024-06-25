@@ -107,7 +107,7 @@ tags: lacerate, smite, herosvaliance, arcanasconcerto, elysium, acheron, absolut
 //cs_include Scripts/Nation/MergeShops/VoidChasmMerge.cs
 //cs_include Scripts/Story/Nation/VoidChasm.cs
 //cs_include Scripts/Nation/MergeShops/NationMerge.cs
-//cs_include Scripts/Nation\NationLoyaltyRewarded.cs
+//cs_include Scripts/Nation/NationLoyaltyRewarded.cs
 
 
 using Skua.Core.Interfaces;

@@ -8,7 +8,7 @@ tags: ancient,class,vitae
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Story/Safiria[Member].cs
-//cs_include Scripts/Other\MergeShops\BloodAncientMerge.cs
+//cs_include Scripts/Other/MergeShops/BloodAncientMerge.cs
 using Skua.Core.Interfaces;
 
 public class BloodAncient

@@ -5,7 +5,7 @@ tags: undine, commissary, merge, sunlightzone, fas, casual, ensemble, mis, docto
 */
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/AgeofRuin/CoreAOR.cs
-//cs_include Scripts/Story\ShadowsOfWar\CoreSoW.cs
+//cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs

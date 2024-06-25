@@ -7,7 +7,7 @@ tags: soulreaper of nulgath, member
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Nation/CoreNation.cs
-//cs_include Scripts/Nation\Various\TheLeeryContract[Member].cs
+//cs_include Scripts/Nation/Various/TheLeeryContract[Member].cs
 using Skua.Core.Interfaces;
 
 public class ImpossibleEmpoweredItemsofNulgath

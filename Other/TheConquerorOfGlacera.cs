@@ -8,8 +8,8 @@ tags: glacera,karok,wings,fallen,runed,glaceran,loyalty,sigil,frigid,scythe,veng
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreDailies.cs
-//cs_include Scripts/Other\Classes\FrostSpiritReaver.cs
-//cs_include Scripts/Story\Glacera.cs
+//cs_include Scripts/Other/Classes/FrostSpiritReaver.cs
+//cs_include Scripts/Story/Glacera.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Monsters;
 

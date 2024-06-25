@@ -7,7 +7,7 @@ tags: royal, wentira, merge, wentira, pesugihan, boar, crown, maned, morph, ritu
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Seasonal\IndonesianDay\Wentira.cs
+//cs_include Scripts/Seasonal/IndonesianDay/Wentira.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;

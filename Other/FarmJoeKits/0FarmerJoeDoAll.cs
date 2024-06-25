@@ -141,7 +141,7 @@ tags: null
 //cs_include Scripts/Story/Nation/Bamboozle.cs
 //cs_include Scripts/Story/DjinnGate.cs
 //cs_include Scripts/Other/Weapons/FortitudeAndHubris.cs
-//cs_include Scripts/Other\Weapons\ExaltedApotheosisPreReqs.cs
+//cs_include Scripts/Other/Weapons/ExaltedApotheosisPreReqs.cs
 
 
 using Skua.Core.Interfaces;

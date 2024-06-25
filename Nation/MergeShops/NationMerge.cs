@@ -7,7 +7,7 @@ tags: nation, merge, shadowblast, polish, pet, soulstealer, horned, void, execut
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Nation/CoreNation.cs
-//cs_include Scripts/Nation\NationLoyaltyRewarded.cs
+//cs_include Scripts/Nation/NationLoyaltyRewarded.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;

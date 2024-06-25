@@ -11,8 +11,8 @@ tags: dirtlicker, archportal, merge, nulgath, ennh, enchanted nulgath nation hou
 //cs_include Scripts/Nation/CoreNation.cs
 //cs_include Scripts/Story/BattleUnder.cs
 //cs_include Scripts/Good/BLOD/CoreBLOD.cs
-//cs_include Scripts/Nation\Various\TheLeeryContract[Member].cs
-//cs_include Scripts/Nation\Various\JuggernautItems.cs
+//cs_include Scripts/Nation/Various/TheLeeryContract[Member].cs
+//cs_include Scripts/Nation/Various/JuggernautItems.cs
 
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;

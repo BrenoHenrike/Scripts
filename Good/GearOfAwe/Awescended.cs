@@ -29,7 +29,7 @@ tags: awe, scension, awescended, omni, gear
 //cs_include Scripts/Chaos/DrakathsArmor.cs
 //cs_include Scripts/Evil/SepulchuresOriginalHelm.cs
 //cs_include Scripts/Evil/ADK.cs
-//cs_include Scripts/Story\DjinnGate.cs
+//cs_include Scripts/Story/DjinnGate.cs
 using Skua.Core.Interfaces;
 
 public class Awescended

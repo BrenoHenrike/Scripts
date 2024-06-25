@@ -7,7 +7,7 @@ tags: poisonous,deal,dark,crystal,shard,tainted,gem,nulgath,nation,crag,bamboozl
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Nation/CoreNation.cs
-//cs_include Scripts/Nation\Various\TaintedClaymore.cs
+//cs_include Scripts/Nation/Various/TaintedClaymore.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
 

@@ -8,8 +8,8 @@ tags: exalted,harbinger,exaltedharbinger,seasonal,dage,class,dark birthday token
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Legion/CoreLegion.cs
-//cs_include Scripts/Seasonal\StaffBirthdays\DageTheEvil\CoreDageBirthday.cs
-//cs_include Scripts/Seasonal\StaffBirthdays\DageTheEvil\DarkBirthdayTokenMerge.cs
+//cs_include Scripts/Seasonal/StaffBirthdays/DageTheEvil/CoreDageBirthday.cs
+//cs_include Scripts/Seasonal/StaffBirthdays/DageTheEvil/DarkBirthdayTokenMerge.cs
 
 using Skua.Core.Interfaces;
 

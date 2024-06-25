@@ -25,8 +25,8 @@ tags: versus,verus,doomKnight,vdk, class
 
 //cs_include Scripts/Other/MergeShops/TerminaTempleMerge.cs
 
-//cs_include Scripts/Seasonal\TalkLikeaPirateDay\DoomPirateStory.cs
-//cs_include Scripts/Seasonal\TalkLikeaPirateDay\MergeShops\DoomPirateHaulMerge.cs
+//cs_include Scripts/Seasonal/TalkLikeaPirateDay/DoomPirateStory.cs
+//cs_include Scripts/Seasonal/TalkLikeaPirateDay/MergeShops/DoomPirateHaulMerge.cs
 
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;

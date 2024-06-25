@@ -8,7 +8,7 @@ tags: fiendish, cape of lightning, boltstriker,lightninglord,stormbringer,reaver
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Story/ThunderFang.cs
-//cs_include Scripts/Other\MergeShops\StormCacheMerge.cs
+//cs_include Scripts/Other/MergeShops/StormCacheMerge.cs
 using Skua.Core.Interfaces;
 
 public class FiendishStormOrbQuestPet

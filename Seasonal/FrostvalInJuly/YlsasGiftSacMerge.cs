@@ -7,7 +7,7 @@ tags: ylsas, gift, sac, merge, icestorm, winter, assassin, , bangs, bandana, shu
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Seasonal\FrostvalInJuly\IceStorm.cs
+//cs_include Scripts/Seasonal/FrostvalInJuly/IceStorm.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;

@@ -16,7 +16,7 @@ tags: exalted, soul, cleaver, legion, class, esc, dage, undead legion merge
 //cs_include Scripts/Legion/LegionExcercise/LegionExercise4.cs
 //cs_include Scripts/Nation/CoreNation.cs
 //cs_include Scripts/Nation/Various/DragonBlade[mem].cs
-//cs_include Scripts/Legion\Various\UndeadLegionMerge.cs
+//cs_include Scripts/Legion/Various/UndeadLegionMerge.cs
 using Skua.Core.Interfaces;
 
 public class ExaltedSoulCleaver

@@ -15,9 +15,9 @@ tags: null
 //cs_include Scripts/Story/QueenofMonsters/CoreQOM.cs
 
 
-//cs_include Scripts/Legion\MergeShops\UndeadLegionMerge.cs
-//cs_include Scripts/Legion\Various\SoulSand.cs
-//cs_include Scripts/Hollowborn\Materials\HollowSoul.cs
+//cs_include Scripts/Legion/MergeShops/UndeadLegionMerge.cs
+//cs_include Scripts/Legion/Various/SoulSand.cs
+//cs_include Scripts/Hollowborn/Materials/HollowSoul.cs
 //cs_include Scripts/Legion/Various/LetitBurn(SoulEssence).cs
 
 //cs_include Scripts/Legion/InfiniteLegionDarkCaster.cs

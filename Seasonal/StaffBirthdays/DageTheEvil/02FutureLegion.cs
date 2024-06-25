@@ -5,7 +5,7 @@ tags: story, quest, future, legion, legion, staff, birthday
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Seasonal\StaffBirthdays\DageTheEvil\CoreDageBirthday.cs
+//cs_include Scripts/Seasonal/StaffBirthdays/DageTheEvil/CoreDageBirthday.cs
 using Skua.Core.Interfaces;
 
 public class FutureLegion

@@ -7,7 +7,7 @@ tags: doompirate, haul, merge, doompirate, shadowscythe, admiral, empire, fleet,
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/Seasonal\TalkLikeaPirateDay\DoomPirateStory.cs
+//cs_include Scripts/Seasonal/TalkLikeaPirateDay/DoomPirateStory.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Models.Monsters;

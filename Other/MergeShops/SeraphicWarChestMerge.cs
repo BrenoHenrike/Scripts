@@ -7,7 +7,7 @@ tags: seraphic, war, chest, merge, seraphicwardage, ada, statue, laken, blood, l
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Story\Legion\SeraphicWar.cs
+//cs_include Scripts/Story/Legion/SeraphicWar.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
