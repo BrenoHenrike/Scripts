@@ -91,7 +91,6 @@ public class NaoiseGraveLootMerge
 
     public List<IOption> Select = new()
     {
-        new Option<bool>("57304", "Gold Voucher 25k", "Mode: [select] only\nShould the bot buy \"Gold Voucher 25k\" ?", false),
         new Option<bool>("86499", "Anti-Storm Warbeast", "Mode: [select] only\nShould the bot buy \"Anti-Storm Warbeast\" ?", false),
         new Option<bool>("86501", "Anti-Storm Warbeast Skull", "Mode: [select] only\nShould the bot buy \"Anti-Storm Warbeast Skull\" ?", false),
         new Option<bool>("86500", "Anti-Storm War Beast Helm", "Mode: [select] only\nShould the bot buy \"Anti-Storm War Beast Helm\" ?", false),

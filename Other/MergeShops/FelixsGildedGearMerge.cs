@@ -88,7 +88,6 @@ public class FelixsGildedGearMerge
 
     public List<IOption> Select = new()
     {
-        new Option<bool>("57304", "Gold Voucher 25k", "Mode: [select] only\nShould the bot buy \"Gold Voucher 25k\" ?", false),
         new Option<bool>("85901", "Skye Warrior", "Mode: [select] only\nShould the bot buy \"Skye Warrior\" ?", false),
         new Option<bool>("85902", "Skye Warrior Mask", "Mode: [select] only\nShould the bot buy \"Skye Warrior Mask\" ?", false),
         new Option<bool>("85903", "Skye Warrior's Cloak", "Mode: [select] only\nShould the bot buy \"Skye Warrior's Cloak\" ?", false),

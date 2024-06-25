@@ -100,7 +100,6 @@ public class LoughshineLootMerge
 
     public List<IOption> Select = new()
     {
-        new Option<bool>("57304", "Gold Voucher 25k", "Mode: [select] only\nShould the bot buy \"Gold Voucher 25k\" ?", false),
         new Option<bool>("86037", "Skye Executor", "Mode: [select] only\nShould the bot buy \"Skye Executor\" ?", false),
         new Option<bool>("86038", "Skye Executor Hooded Visage", "Mode: [select] only\nShould the bot buy \"Skye Executor Hooded Visage\" ?", false),
         new Option<bool>("86039", "Skye Executor Hood", "Mode: [select] only\nShould the bot buy \"Skye Executor Hood\" ?", false),

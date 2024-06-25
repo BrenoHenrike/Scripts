@@ -117,8 +117,6 @@ public class TwiggusGearMerge
 
     public List<IOption> Select = new()
     {
-        new Option<bool>("57304", "Gold Voucher 25k", "Mode: [select] only\nShould the bot buy \"Gold Voucher 25k\" ?", false),
-        new Option<bool>("61043", "Gold Voucher 500k", "Mode: [select] only\nShould the bot buy \"Gold Voucher 500k\" ?", false),
         new Option<bool>("77676", "Astravian Enforcer", "Mode: [select] only\nShould the bot buy \"Astravian Enforcer\" ?", false),
         new Option<bool>("77678", "Astravian Enforcer Hair", "Mode: [select] only\nShould the bot buy \"Astravian Enforcer Hair\" ?", false),
         new Option<bool>("77679", "Astravian Enforcer Locks", "Mode: [select] only\nShould the bot buy \"Astravian Enforcer Locks\" ?", false),
