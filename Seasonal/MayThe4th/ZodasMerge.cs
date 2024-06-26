@@ -7,7 +7,7 @@ tags: zodas, merge, zorbaspalace, augmented, light, rebellion, dark, fifth, chao
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Seasonal\MayThe4th\Zoda.cs
+//cs_include Scripts/Seasonal/MayThe4th/Zoda.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;

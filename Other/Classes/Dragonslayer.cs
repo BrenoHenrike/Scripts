@@ -7,7 +7,7 @@ tags: galanoth,class,lair,dsg,general,slayer
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/Story\Lair.cs
+//cs_include Scripts/Story/Lair.cs
 using Skua.Core.Interfaces;
 
 public class Dragonslayer

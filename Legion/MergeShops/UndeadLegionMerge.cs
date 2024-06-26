@@ -9,7 +9,7 @@ tags: undead, legion, merge, underworld, frostbite, overlord, zealith, reavers, 
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/Hollowborn/CoreHollowborn.cs
-//cs_include Scripts/Hollowborn\Materials\HollowSoul.cs
+//cs_include Scripts/Hollowborn/Materials/HollowSoul.cs
 //cs_include Scripts/Legion/CoreLegion.cs
 //cs_include Scripts/Legion/Revenant/CoreLR.cs
 //cs_include Scripts/Legion/InfiniteLegionDarkCaster.cs

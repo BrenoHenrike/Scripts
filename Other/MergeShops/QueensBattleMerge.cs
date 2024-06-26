@@ -8,7 +8,7 @@ tags: queens, battle, merge, queenbattle, st, chaoslord, prime, chaoslords, tatt
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/QueenofMonsters/Extra/OrbHunt.cs
-//cs_include Scripts/Story\QueenofMonsters\Extra\QueenBattle.cs
+//cs_include Scripts/Story/QueenofMonsters/Extra/QueenBattle.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;

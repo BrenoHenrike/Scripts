@@ -8,7 +8,7 @@ tags: legion, merge, staff, birthday, dage, evil, seasonal, event, darkbirthday
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Legion/CoreLegion.cs
-//cs_include Scripts/Seasonal\StaffBirthdays\DageTheEvil\CoreDageBirthday.cs
+//cs_include Scripts/Seasonal/StaffBirthdays/DageTheEvil/CoreDageBirthday.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;

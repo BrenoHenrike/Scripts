@@ -5,7 +5,7 @@ tags: star,festival,yokai,river,story,seasonal
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Seasonal\StarFestival\Akiba.cs
+//cs_include Scripts/Seasonal/StarFestival/Akiba.cs
 using Skua.Core.Interfaces;
 
 public class YokaiRiver

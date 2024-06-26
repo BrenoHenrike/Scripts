@@ -6,7 +6,7 @@ tags: sepulchure,doomblade,dark doomblade,doom seal,darkness shard,undead doombl
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreDailies.cs
-//cs_include Scripts/Other\Materials\DarknessShard.cs
+//cs_include Scripts/Other/Materials/DarknessShard.cs
 using Skua.Core.Interfaces;
 
 public class GetSDDB

@@ -7,7 +7,7 @@ tags: snowview-merge, seasonal, frostvale
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Story/Glacera.cs
-//cs_include Scripts/Seasonal\Frostvale\Frostvale.cs
+//cs_include Scripts/Seasonal/Frostvale/Frostvale.cs
 //cs_include Scripts/CoreStory.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;

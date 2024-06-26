@@ -7,7 +7,7 @@ tags: haku, village, merge, hakuvillage, stylish, qipao, modern, trend, bun, dra
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Story\DragonsOfYokai\CoreDOY.cs
+//cs_include Scripts/Story/DragonsOfYokai/CoreDOY.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;

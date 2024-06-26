@@ -9,10 +9,10 @@ tags: Do, not, find, me
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreDailies.cs
-//cs_include Scripts/Other\Various\Potions.cs
-//cs_include Scripts/Farm\BuyScrolls.cs
-//cs_include Scripts/Tools\BankAllItems.cs
-//cs_include Scripts/Enhancement\UnlockForgeEnhancements.cs
+//cs_include Scripts/Other/Various/Potions.cs
+//cs_include Scripts/Farm/BuyScrolls.cs
+//cs_include Scripts/Tools/BankAllItems.cs
+//cs_include Scripts/Enhancement/UnlockForgeEnhancements.cs
 
 
 //cs_include Scripts/Legion/CoreLegion.cs
@@ -114,7 +114,7 @@ tags: Do, not, find, me
 //cs_include Scripts/Nation/MergeShops/VoidChasmMerge.cs
 //cs_include Scripts/Story/Nation/VoidChasm.cs
 //cs_include Scripts/Nation/MergeShops/NationMerge.cs
-//cs_include Scripts/Nation\NationLoyaltyRewarded.cs
+//cs_include Scripts/Nation/NationLoyaltyRewarded.cs
 #endregion
 
 using Skua.Core.Interfaces;

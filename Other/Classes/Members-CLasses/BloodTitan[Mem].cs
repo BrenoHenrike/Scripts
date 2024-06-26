@@ -6,7 +6,7 @@ tags: blood titan, blood titan tokens, member, class
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/Other\MergeShops\BloodTitanMerge[Mem].cs
+//cs_include Scripts/Other/MergeShops/BloodTitanMerge[Mem].cs
 using Skua.Core.Interfaces;
 
 public class BloodTitan

@@ -6,7 +6,7 @@ tags: tlapd,talk-like-a-pirate-day,seasonal,legendary, naval, top, hats, merge, 
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/Seasonal\TalkLikeaPirateDay\MergeShops\NavalTopHatMerge.cs
+//cs_include Scripts/Seasonal/TalkLikeaPirateDay/MergeShops/NavalTopHatMerge.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Models.Monsters;

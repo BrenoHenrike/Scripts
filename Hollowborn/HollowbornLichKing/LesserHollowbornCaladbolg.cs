@@ -13,10 +13,10 @@ tags: lesser caladbolg, Caladbolg, hollowborn,dark unicorn rib,how much for one 
 //cs_include Scripts/Legion/CoreLegion.cs
 //cs_include Scripts/Legion/Revenant/CoreLR.cs
 //cs_include Scripts/Story/QueenofMonsters/CoreQOM.cs
-//cs_include Scripts/Hollowborn\HollowbornLichKing\CoreHollowbornLichKing.cs
-//cs_include Scripts/Legion\MergeShops\UndeadLegionMerge.cs
-//cs_include Scripts/Legion\Various\SoulSand.cs
-//cs_include Scripts/Hollowborn\Materials\HollowSoul.cs
+//cs_include Scripts/Hollowborn/HollowbornLichKing/CoreHollowbornLichKing.cs
+//cs_include Scripts/Legion/MergeShops/UndeadLegionMerge.cs
+//cs_include Scripts/Legion/Various/SoulSand.cs
+//cs_include Scripts/Hollowborn/Materials/HollowSoul.cs
 //cs_include Scripts/Legion/Various/LetitBurn(SoulEssence).cs
 //cs_include Scripts/Legion/InfiniteLegionDarkCaster.cs
 //cs_include Scripts/Story/Legion/SeraphicWar.cs

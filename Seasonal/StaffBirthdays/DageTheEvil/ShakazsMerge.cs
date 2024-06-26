@@ -8,7 +8,7 @@ tags: siegefortress, merge, dage, staff birthday
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Seasonal/StaffBirthdays/Nulgath/TempleSiege.cs
-//cs_include Scripts/Seasonal\StaffBirthdays\Nulgath\TempleDelve.cs
+//cs_include Scripts/Seasonal/StaffBirthdays/Nulgath/TempleDelve.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;

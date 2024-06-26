@@ -6,7 +6,7 @@ tags: yokai, pirate, treasures, merge, yokaipirate, coastal, raider, raiders, ba
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/Story\DragonsOfYokai\CoreDOY.cs
+//cs_include Scripts/Story/DragonsOfYokai/CoreDOY.cs
 //cs_include Scripts/CoreStory.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;

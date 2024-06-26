@@ -4,7 +4,7 @@ description: This script farms the Drakel Warlord class.
 tags: warlord,member,class,deathpitarena
 */
 //cs_include Scripts/CoreBots.cs
-//cs_include Scripts/Other\MergeShops\DeathPitArenaRepMerge.cs
+//cs_include Scripts/Other/MergeShops/DeathPitArenaRepMerge.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs

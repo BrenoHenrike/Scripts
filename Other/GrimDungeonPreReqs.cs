@@ -8,11 +8,11 @@ tags: grim,dungeon,grimskull,trolling,rep,skullcrusher,gaol,grimgaol,gaolcell
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Story/DoomVault.cs
-//cs_include Scripts/Story\DoomVaultB.cs
-//cs_include Scripts/Other\MergeShops\InfernalArenaMerge.cs
-//cs_include Scripts/Story\QueenofMonsters\Extra\InfernalArena.cs
+//cs_include Scripts/Story/DoomVaultB.cs
+//cs_include Scripts/Other/MergeShops/InfernalArenaMerge.cs
+//cs_include Scripts/Story/QueenofMonsters/Extra/InfernalArena.cs
 //cs_include Scripts/Story/QueenofMonsters/Extra/CelestialArena.cs
-//cs_include Scripts/Story\J6Saga.cs
+//cs_include Scripts/Story/J6Saga.cs
 using Skua.Core.Interfaces;
 
 public class GrimDungeonPreReqs

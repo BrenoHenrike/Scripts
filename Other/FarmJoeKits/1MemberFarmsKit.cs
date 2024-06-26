@@ -141,22 +141,22 @@ tags: member, kit, expire, legend
 //cs_include Scripts/Story/Nation/Bamboozle.cs
 //cs_include Scripts/Story/DjinnGate.cs
 //cs_include Scripts/Other/Weapons/FortitudeAndHubris.cs
-//cs_include Scripts/Other\Weapons\ExaltedApotheosisPreReqs.cs
-//cs_include Scripts/Seasonal\Friday13th\TrobbolierPet[mem].cs
+//cs_include Scripts/Other/Weapons/ExaltedApotheosisPreReqs.cs
+//cs_include Scripts/Seasonal/Friday13th/TrobbolierPet[mem].cs
 //cs_include Scripts/Seasonal/Friday13th/Story/CoreFriday13th.cs
-//cs_include Scripts/Other\CoinCollectorSet[Member].cs
-//cs_include Scripts/Seasonal\Friday13th\TheLostKnightAndBackupBlade[Mem].cs
-//cs_include Scripts/Seasonal\Friday13th\SpellRaiser[Mem].cs
-//cs_include Scripts/Nation\Various\ArchfiendDragonEgg[Mem].cs
-//cs_include Scripts/Nation\Various\DragonBlade[mem].cs
-//cs_include Scripts/Other\MergeShops\BonecastleTowerMerge.cs
-//cs_include Scripts/Other\Classes\Curio-Classes\LegendaryElementalWarrior[mem].cs
-//cs_include Scripts/Other\Classes\Members-CLasses\ChronoAssassin[Mem].cs
-//cs_include Scripts/Other\MergeShops\TachyonMerge.cs
-//cs_include Scripts/Story\CruxShip.cs
-//cs_include Scripts/Nation\Various\TendurrrTheAssistantQuests.cs
-//cs_include Scripts/Nation\Various\TarosPrismaticManslayers.cs
-//cs_include Scripts/Nation\EvolvedOrb\EvolvedShadowOrb[Mem].cs
+//cs_include Scripts/Other/CoinCollectorSet[Member].cs
+//cs_include Scripts/Seasonal/Friday13th/TheLostKnightAndBackupBlade[Mem].cs
+//cs_include Scripts/Seasonal/Friday13th/SpellRaiser[Mem].cs
+//cs_include Scripts/Nation/Various/ArchfiendDragonEgg[Mem].cs
+//cs_include Scripts/Nation/Various/DragonBlade[mem].cs
+//cs_include Scripts/Other/MergeShops/BonecastleTowerMerge.cs
+//cs_include Scripts/Other/Classes/Curio-Classes/LegendaryElementalWarrior[mem].cs
+//cs_include Scripts/Other/Classes/Members-CLasses/ChronoAssassin[Mem].cs
+//cs_include Scripts/Other/MergeShops/TachyonMerge.cs
+//cs_include Scripts/Story/CruxShip.cs
+//cs_include Scripts/Nation/Various/TendurrrTheAssistantQuests.cs
+//cs_include Scripts/Nation/Various/TarosPrismaticManslayers.cs
+//cs_include Scripts/Nation/EvolvedOrb/EvolvedShadowOrb[Mem].cs
 using Skua.Core.Interfaces;
 
 public class MemberFarm

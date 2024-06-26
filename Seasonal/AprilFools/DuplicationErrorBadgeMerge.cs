@@ -7,7 +7,7 @@ tags: duplication, error, badge, merge, ebilart, ai, oh, no, miko, guest, , ulti
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Seasonal\AprilFools\EbilArt.cs
+//cs_include Scripts/Seasonal/AprilFools/EbilArt.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;

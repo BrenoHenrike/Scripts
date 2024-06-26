@@ -9,7 +9,7 @@ tags: null
 //cs_include Scripts/Legion/CoreLegion.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/Legion/SevenCircles(War).cs
-//cs_include Scripts/Legion\MergeShops\SevenCirclesMerge.cs
+//cs_include Scripts/Legion/MergeShops/SevenCirclesMerge.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;

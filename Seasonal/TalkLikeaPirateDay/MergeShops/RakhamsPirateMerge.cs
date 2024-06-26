@@ -7,7 +7,7 @@ tags: talk-like-a-pirate-day,seasonal,tlapd,rakham, pirate, merge, pirates, blun
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreStory.cs
-//cs_include Scripts/Story\Pirates[Member].cs
+//cs_include Scripts/Story/Pirates[Member].cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
