@@ -35,6 +35,7 @@ public class ForTheCraterGood
             CHM.BuyAllMerge("Big Crater");
         }
 
+        Core.AddDrop(Core.QuestRewards(9782));
         Core.EnsureAccept(9782);
 
         // Space Helm
@@ -77,5 +78,7 @@ public class ForTheCraterGood
             Bot.Quests.UpdateQuest(4361);
             Core.HuntMonster("treetitanbattle", "Dakka the Dire Dragon", "Living Tree Titan", 1, false);
         }
+
+        Core.EnsureComplete(9782);
     }
 }
