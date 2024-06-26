@@ -185,9 +185,10 @@ public class InsertNameHeresUltraPrep
         new Option<string>("HealthVamp", "HealthVamp Weapon", "Weapon for HealthVamp", ""),
 
         // Helm options
-        new Option<string>("Wizard Helm", "Wizard Helm", "Helm for Wizard", ""),
-        new Option<string>("Luck Helm", "Luck Helm", "Helm for Luck", ""),
-        new Option<string>("Forge Helm", "Forge Helm", "Helm for Forge", ""),
+        new Option<string>("Wizard", "Wizard Helm", "Helm for Wizard", ""),
+        new Option<string>("Luck", "Luck Helm", "Helm for Luck", ""),
+        new Option<string>("Forge", "Forge Helm", "Helm for Forge", ""),
+        new Option<string>("Healer", "Healer Helm", "Helm for Healer", ""),
 
         // Cape options
         new Option<string>("Absolution", "Absolution Cape", "Cape for Absolution", ""),
@@ -386,7 +387,8 @@ public class InsertNameHeresUltraPrep
         // Hspecial x3
         Adv.EnhanceItem(Bot.Config!.Get<string>("Wizard"), EnhancementType.Wizard, hSpecial: HelmSpecial.None);
         Adv.EnhanceItem(Bot.Config!.Get<string>("Luck"), EnhancementType.Lucky, hSpecial: HelmSpecial.None);
-        Adv.EnhanceItem(Bot.Config!.Get<string>("ForgeHelm"), EnhancementType.Lucky, hSpecial: HelmSpecial.Forge);
+        Adv.EnhanceItem(Bot.Config!.Get<string>("Forge"), EnhancementType.Lucky, hSpecial: HelmSpecial.Forge);
+        Adv.EnhanceItem(Bot.Config!.Get<string>("Healer"), EnhancementType.Healer, hSpecial: HelmSpecial.None);
 
         // Cspecial x5
         Adv.EnhanceItem(Bot.Config!.Get<string>("Absolution"), EnhancementType.Lucky, cSpecial: CapeSpecial.Absolution);
