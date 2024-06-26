@@ -76,7 +76,9 @@ public class ForTheCraterGood
         {
             Core.EquipClass(ClassType.Solo);
             Bot.Quests.UpdateQuest(4361);
-            Core.HuntMonster("treetitanbattle", "Dakka the Dire Dragon", "Living Tree Titan", 1, false);
+            Core.FarmingLogger("Living Tree Titan");
+            while (!Core.CheckInventory(30203))
+                Core.HuntMonster("treetitanbattle", "Dakka the Dire Dragon", log: false);
         }
 
         Core.EnsureComplete(9782);
