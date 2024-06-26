@@ -39,7 +39,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 235843,
+    "size": 235767,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -7553,6 +7553,22 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AprilFools/DERP!Badge.cs"
   },
   {
+    "name": "For The Crater Good Quest",
+    "description": "This will finish the For The Crater Good Quest.",
+    "tags": [
+      "quest",
+      "crater",
+      "big crater",
+      "summer-break",
+      "the crater good",
+      "rock bottom"
+    ],
+    "path": "Seasonal/SummerBreak/ForTheCraterGoodQuest.cs",
+    "size": 2543,
+    "fileName": "ForTheCraterGoodQuest.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/SummerBreak/ForTheCraterGoodQuest.cs"
+  },
+  {
     "name": "Rose Rapiers",
     "description": "does the quests in /summerhub (part of the thorny scavenger clue) for both rose rapiers",
     "tags": [
@@ -7749,6 +7765,21 @@
     "size": 1570,
     "fileName": "TreasuresOfAotearoa.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/SummerBreak/TreasuresOfAotearoa.cs"
+  },
+  {
+    "name": "Crater House Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Crater House Merge [2301] in /uppercity",
+    "tags": [
+      "crater",
+      "house",
+      "merge",
+      "uppercity",
+      "big"
+    ],
+    "path": "Seasonal/SummerBreak/CraterHouseMerge.cs",
+    "size": 3170,
+    "fileName": "CraterHouseMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/SummerBreak/CraterHouseMerge.cs"
   },
   {
     "name": "Burning Beach Story",
