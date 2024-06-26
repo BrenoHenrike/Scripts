@@ -470,8 +470,11 @@ public class CoreAdvanced
             bool ded = false;
             Bot.Events.MonsterKilled += b => ded = true;
             while (!Bot.ShouldExit && !ded)
+            {
+                Core.Jump(cell, pad);
                 if (!Bot.Combat.StopAttacking)
                     Bot.Combat.Attack(monster);
+            }
             Core.Rest();
             return;
         }

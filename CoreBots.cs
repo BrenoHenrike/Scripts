@@ -1288,7 +1288,7 @@ public class CoreBots
 
         item.sType = category == ItemCategory.Unknown ? "Item" : category.ToString();
         #region icon switch
-        item.sIcon = (category) switch
+        item.sIcon = category switch
         {
             ItemCategory.Sword => "iwsword",
             ItemCategory.Axe => "iwaxe",
@@ -2081,12 +2081,14 @@ public class CoreBots
             {
                 while (!Bot.ShouldExit && !Bot.Player.Alive)
                     Sleep();
-                LogAndJump($"Killing {targetMonster}");
                 bool ded = false;
                 Bot.Events.MonsterKilled += b => ded = true;
                 while (!Bot.ShouldExit && !ded)
+                {
+                    LogAndJump($"Killing {targetMonster}");
                     if (!Bot.Combat.StopAttacking)
                         Bot.Combat.Attack(monster);
+                }
                 return;
             }
         }
@@ -2466,8 +2468,11 @@ public class CoreBots
                 bool ded = false;
                 Bot.Events.MonsterKilled += b => ded = true;
                 while (!Bot.ShouldExit && !ded)
+                {
+                    LogAndJump($"Hunting {targetMonster}, for {item}, {dynamicQuant(item, isTemp)}/{quant}", targetMonster.Cell);
                     if (!Bot.Combat.StopAttacking)
                         Bot.Combat.Attack(targetMonster);
+                }
                 Sleep();
             }
 
@@ -2540,18 +2545,21 @@ public class CoreBots
                 while (!Bot.ShouldExit && !Bot.Player.Alive)
                     Sleep();
 
-                while (!Bot.ShouldExit && Bot.Player.Cell != targetMonster.Cell)
-                {
-                    Jump(targetMonster.Cell, "Left");
-                    Bot.Wait.ForCellChange(targetMonster.Cell);
-                    Sleep();
-                }
                 bool ded = false;
                 Bot.Events.MonsterKilled += b => ded = true;
                 while (!Bot.ShouldExit && !ded)
+                {
+                    if (Bot.Player.Cell != targetMonster.Cell)
+                    {
+                        Jump(targetMonster.Cell, "Left");
+                        Bot.Wait.ForCellChange(targetMonster.Cell);
+                        Sleep();
+                    }
+
                     if (!Bot.Combat.StopAttacking)
                         Bot.Combat.Attack(targetMonster);
-                Sleep();
+                    Sleep();
+                }
             }
 
             Rest();
@@ -3035,7 +3043,7 @@ public class CoreBots
             }
         }
 
-        void LogMonsterId(Monster monster) => Logger($"Attacking MonsterMapID: {monster}");
+        void LogMonsterId(Monster monster) { if (log) Logger($"Attacking MonsterMapID: {monster}"); }
 
         DebugLogger(this);
         if (HasItem()) return;
@@ -3055,9 +3063,16 @@ public class CoreBots
                 if (Bot.ShouldExit || HasItem()) break;
 
                 DebugLogger(this);
-                MoveToCell(monster);
                 LogMonsterId(monster);
-                Bot.Kill.Monster(monster);
+                bool ded = false;
+                Bot.Events.MonsterKilled += b => ded = true;
+                while (!Bot.ShouldExit && !ded)
+                {
+                    MoveToCell(monster);
+
+                    if (!Bot.Combat.StopAttacking)
+                        Bot.Combat.Attack(monster);
+                }
                 if (rejectElse) Bot.Drops.RejectExcept(item);
                 Sleep();
                 DebugLogger(this);
@@ -3081,19 +3096,6 @@ public class CoreBots
         while (!Bot.ShouldExit && item != null && (isTemp ? !Bot.TempInv.Contains(item, quantity) : !CheckInventory(item, quantity)))
         {
             DebugLogger(this);
-            if (cell != null)
-            {
-                while (!Bot.ShouldExit && Bot.Player.Cell != cell)
-                {
-                    DebugLogger(this);
-                    Jump(cell, "Left");
-                    DebugLogger(this);
-                    Bot.Wait.ForCellChange(cell);
-                    Sleep();
-                }
-            }
-
-            DebugLogger(this);
             if (name == "*")
             {
                 foreach (var monster in Bot.Monsters.MapMonsters.Where(x => x != null && x.Cell == cell))
@@ -3104,8 +3106,18 @@ public class CoreBots
                     bool ded = false;
                     Bot.Events.MonsterKilled += b => ded = true;
                     while (!Bot.ShouldExit && !ded)
+                    {
+                        if (Bot.Player.Cell != cell)
+                        {
+                            DebugLogger(this);
+                            Jump(cell, "Left");
+                            DebugLogger(this);
+                            Bot.Wait.ForCellChange(cell);
+                            Sleep();
+                        }
                         if (!Bot.Combat.StopAttacking)
                             Bot.Combat.Attack(monster);
+                    }
                     DebugLogger(this);
                     Bot.Wait.ForMonsterDeath(20);
                     Bot.Combat.CancelTarget();
@@ -3123,8 +3135,18 @@ public class CoreBots
                     bool ded = false;
                     Bot.Events.MonsterKilled += b => ded = true;
                     while (!Bot.ShouldExit && !ded)
+                    {
+                        if (Bot.Player.Cell != cell)
+                        {
+                            DebugLogger(this);
+                            Jump(cell, "Left");
+                            DebugLogger(this);
+                            Bot.Wait.ForCellChange(cell);
+                            Sleep();
+                        }
                         if (!Bot.Combat.StopAttacking)
                             Bot.Combat.Attack(targetMonster);
+                    }
 
                     DebugLogger(this);
                     // Bot.Wait.ForMonsterDeath(20);
@@ -3158,20 +3180,23 @@ public class CoreBots
         while (!Bot.ShouldExit && (isTemp ? !Bot.TempInv.Contains(itemID, quantity) : !CheckInventory(itemID, quantity)))
         {
             DebugLogger(this);
-            while (!Bot.ShouldExit && cell != null && Bot.Player.Cell != cell)
-            {
-                DebugLogger(this);
-                Jump(cell, "Left");
-                DebugLogger(this);
-                Bot.Wait.ForCellChange(cell);
-            }
+
 
             DebugLogger(this);
             bool ded = false;
             Bot.Events.MonsterKilled += b => ded = true;
             while (!Bot.ShouldExit && !ded && itemID > 0 && (isTemp ? !Bot.TempInv.Contains(itemID, quantity) : !CheckInventory(itemID, quantity)))
+            {
+                if (cell != null && Bot.Player.Cell != cell)
+                {
+                    DebugLogger(this);
+                    Jump(cell, "Left");
+                    DebugLogger(this);
+                    Bot.Wait.ForCellChange(cell);
+                }
                 if (!Bot.Combat.StopAttacking)
                     Bot.Combat.Attack(name);
+            }
             DebugLogger(this);
             Sleep();
 
