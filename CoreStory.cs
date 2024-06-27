@@ -729,6 +729,7 @@ public class CoreStory
                 EnsurePlayerInCorrectCell(targetMonster);
                 if (!Bot.Combat.StopAttacking)
                     Bot.Combat.Attack(targetMonster);
+                Core.Sleep();
             }
             Core.Sleep();
 

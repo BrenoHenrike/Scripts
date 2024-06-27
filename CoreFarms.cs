@@ -623,8 +623,9 @@ public class CoreFarms
                         goto RestartOnDeath;
                     if (!Bot.Combat.StopAttacking)
                         Bot.Combat.Attack(MID);
-                    Bot.Combat.CancelTarget();
+                    Core.Sleep();
                 }
+                Bot.Combat.CancelTarget();
             }
 
             #region GotoMobsRoom2
@@ -648,8 +649,9 @@ public class CoreFarms
                         goto RestartOnDeath;
                     if (!Bot.Combat.StopAttacking)
                         Bot.Combat.Attack(MID);
-                    Bot.Combat.CancelTarget();
+                    Core.Sleep();
                 }
+                Bot.Combat.CancelTarget();
             }
 
             #region GotoMobsRoom3
@@ -681,8 +683,9 @@ public class CoreFarms
                         goto RestartOnDeath;
                     if (!Bot.Combat.StopAttacking)
                         Bot.Combat.Attack(MID);
-                    Bot.Combat.CancelTarget();
+                    Core.Sleep();
                 }
+                Bot.Combat.CancelTarget();
             }
 
             #region GotoMobsRoom4
@@ -706,8 +709,9 @@ public class CoreFarms
                         goto RestartOnDeath;
                     if (!Bot.Combat.StopAttacking)
                         Bot.Combat.Attack(MID);
-                    Bot.Combat.CancelTarget();
+                    Core.Sleep();
                 }
+                Bot.Combat.CancelTarget();
             }
 
             #region GotoMobsRoom5
@@ -732,8 +736,9 @@ public class CoreFarms
                         goto RestartOnDeath;
                     if (!Bot.Combat.StopAttacking)
                         Bot.Combat.Attack(MID);
-                    Bot.Combat.CancelTarget();
+                    Core.Sleep();
                 }
+                Bot.Combat.CancelTarget();
             }
 
             #region GotoMobsRoom6
@@ -757,8 +762,9 @@ public class CoreFarms
                         goto RestartOnDeath;
                     if (!Bot.Combat.StopAttacking)
                         Bot.Combat.Attack(MID);
-                    Bot.Combat.CancelTarget();
+                    Core.Sleep();
                 }
+                Bot.Combat.CancelTarget();
             }
 
             #region Exit
@@ -2207,7 +2213,9 @@ public class CoreFarms
                         goto RestartOnDeath;
                     if (!Bot.Combat.StopAttacking)
                         Bot.Combat.Attack(MID);
+                    Core.Sleep();
                 }
+                Bot.Combat.CancelTarget();
 
                 if (Core.CheckInventory(item, quant) && FactionRank("Death Pit Brawl") >= rank)
                 {
@@ -2236,6 +2244,7 @@ public class CoreFarms
                         goto RestartOnDeath;
                     if (!Bot.Combat.StopAttacking)
                         Bot.Combat.Attack(MID);
+                    Core.Sleep();
                 }
 
                 if (Core.CheckInventory(item, quant) && FactionRank("Death Pit Brawl") >= rank)
@@ -2276,7 +2285,9 @@ public class CoreFarms
                         goto RestartOnDeath;
                     if (!Bot.Combat.StopAttacking)
                         Bot.Combat.Attack(MID);
+                    Core.Sleep();
                 }
+                Bot.Combat.CancelTarget();
 
                 if (Core.CheckInventory(item, quant) && FactionRank("Death Pit Brawl") >= rank)
                 {
@@ -2304,7 +2315,9 @@ public class CoreFarms
                         goto RestartOnDeath;
                     if (!Bot.Combat.StopAttacking)
                         Bot.Combat.Attack(MID);
+                    Core.Sleep();
                 }
+                Bot.Combat.CancelTarget();
 
                 if (Core.CheckInventory(item, quant) && FactionRank("Death Pit Brawl") >= rank)
                 {
@@ -2332,7 +2345,9 @@ public class CoreFarms
                         goto RestartOnDeath;
                     if (!Bot.Combat.StopAttacking)
                         Bot.Combat.Attack(MID);
+                    Core.Sleep();
                 }
+                Bot.Combat.CancelTarget();
 
                 if (Core.CheckInventory(item, quant) && FactionRank("Death Pit Brawl") >= rank)
                 {
@@ -2360,7 +2375,9 @@ public class CoreFarms
                         goto RestartOnDeath;
                     if (!Bot.Combat.StopAttacking)
                         Bot.Combat.Attack(MID);
+                    Core.Sleep();
                 }
+                Bot.Combat.CancelTarget();
 
                 if (Core.CheckInventory(item, quant) && FactionRank("Death Pit Brawl") >= rank)
                 {

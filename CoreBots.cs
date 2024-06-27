@@ -2088,6 +2088,7 @@ public class CoreBots
                     LogAndJump($"Killing {targetMonster}");
                     if (!Bot.Combat.StopAttacking)
                         Bot.Combat.Attack(monster);
+                    Sleep();
                 }
                 return;
             }
@@ -3072,6 +3073,7 @@ public class CoreBots
 
                     if (!Bot.Combat.StopAttacking)
                         Bot.Combat.Attack(monster);
+                    Sleep();
                 }
                 if (rejectElse) Bot.Drops.RejectExcept(item);
                 Sleep();

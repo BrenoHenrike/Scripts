@@ -474,6 +474,7 @@ public class CoreAdvanced
                 Core.Jump(cell, pad);
                 if (!Bot.Combat.StopAttacking)
                     Bot.Combat.Attack(monster);
+                    Core.Sleep();
             }
             Core.Rest();
             return;
