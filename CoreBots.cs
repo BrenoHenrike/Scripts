@@ -2470,7 +2470,7 @@ public class CoreBots
                 Bot.Events.MonsterKilled += b => ded = true;
                 while (!Bot.ShouldExit && !ded)
                 {
-                    LogAndJump($"Hunting {targetMonster}, for {item}, {dynamicQuant(item, isTemp)}/{quant}", targetMonster.Cell);
+                    Jump(targetMonster.Cell, "Left");
                     if (!Bot.Combat.StopAttacking)
                         Bot.Combat.Attack(targetMonster);
                 }
