@@ -721,27 +721,19 @@ public class CoreStory
         while (!Bot.ShouldExit && !itemInInventory)
         {
             Core.DebugLogger(this);
-            Core.DebugLogger(this);
-            bool ded = false;
-            Bot.Events.MonsterKilled += b => ded = true;
-            while (!Bot.ShouldExit && !ded)
-            {
-                EnsurePlayerInCorrectCell(targetMonster);
-                if (!Bot.Combat.StopAttacking)
-                    Bot.Combat.Attack(targetMonster);
-                Core.Sleep();
-            }
+            EnsurePlayerInCorrectCell(targetMonster);
+            Bot.Combat.Attack(targetMonster);
             Core.Sleep();
 
             // Update itemInInventory status after attempting to get the item
             itemInInventory = itemName != null && (isTemp ? Bot.TempInv.Contains(itemName, quantity) : Core.CheckInventory(itemName, quantity));
+            if (itemInInventory)
+                break;
         }
 
         // Handle item pickup if not temporary
         if (!isTemp)
-        {
             Bot.Wait.ForPickup(itemName!);
-        }
 
         Core.DebugLogger(this);
         CurrentRequirements.RemoveAt(index);
