@@ -370,7 +370,7 @@ public class CoreNation
 
         Core.AddDrop(Receipt);
         if (item != null)
-            Core.AddDrop(item);
+            Core.AddDrop(Item.ID);
 
         sellMemVoucher = Core.CBOBool("Nation_SellMemVoucher", out bool _sellMemVoucher) && _sellMemVoucher;
 
@@ -391,7 +391,6 @@ public class CoreNation
                 Core.SellItem("Voucher of Nulgath", all: true);
 
             Core.FarmingLogger(Item.Name, quant);
-
         }
     }
 

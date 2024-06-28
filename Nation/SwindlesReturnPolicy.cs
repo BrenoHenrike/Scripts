@@ -51,14 +51,12 @@ public class SwindlesReturnPolicy
                 Core.Logger($"Reward with name {reward!.Value.ToString().Replace("_", " ")} not found in Quest Rewards.");
                 return;
             }
-
-            Nation.SwindleReturn(item.Name ?? null, item.MaxStack); // Fix the argument here
+            Nation.SwindleReturn(item.Name, item.MaxStack); // Fix the argument here
         }
         else
         {
             foreach (ItemBase thing in Core.EnsureLoad(7551).Rewards)
             {
-
                 if (Core.CheckInventory(thing.Name, thing.MaxStack))
                     continue;
 
