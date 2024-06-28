@@ -2460,12 +2460,6 @@ public class CoreBots
                 while (!Bot.ShouldExit && !Bot.Player.Alive)
                     Sleep();
 
-                while (!Bot.ShouldExit && Bot.Player.Cell != targetMonster.Cell)
-                {
-                    Jump(targetMonster.Cell, "Left");
-                    Bot.Wait.ForCellChange(targetMonster.Cell);
-                    Sleep();
-                }
                 bool ded = false;
                 Bot.Events.MonsterKilled += b => ded = true;
                 while (!Bot.ShouldExit && !ded)
@@ -2550,13 +2544,7 @@ public class CoreBots
                 Bot.Events.MonsterKilled += b => ded = true;
                 while (!Bot.ShouldExit && !ded)
                 {
-                    if (Bot.Player.Cell != targetMonster.Cell)
-                    {
-                        Jump(targetMonster.Cell, "Left");
-                        Bot.Wait.ForCellChange(targetMonster.Cell);
-                        Sleep();
-                    }
-
+                    Jump(targetMonster.Cell, "Left");
                     if (!Bot.Combat.StopAttacking)
                         Bot.Combat.Attack(targetMonster);
                     Sleep();
@@ -2581,11 +2569,7 @@ public class CoreBots
 
         // DebugLogger(this);
         Join("escherion", publicRoom: publicRoom);
-        if (Bot.Player.Cell is not "Boss")
-        {
-            Jump("Boss", "Left");
-            Sleep();
-        }
+        Jump("Boss", "Left");
 
         if (item is not null && log)
             FarmingLogger(item, quant);
@@ -2674,9 +2658,10 @@ public class CoreBots
         if (item is not null && (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
             return;
 
-        Join("stalagbite", "r2", "Left");
+        Join("stalagbite");
         Bot.Wait.ForMapLoad("stalagbite");
-
+        Jump("r2", "Left");
+        Bot.Wait.ForCellChange("r2");
         bool PreFarmKill = false;
 
         Monster? Vath = Bot.Monsters.MapMonsters.FirstOrDefault(x => x.MapID is 7);
