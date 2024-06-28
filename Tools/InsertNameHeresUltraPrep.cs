@@ -217,13 +217,25 @@ public class InsertNameHeresUltraPrep
         Core.Logger("Preparing Inventory!!");
 
         // Dictionary to store players and their associated pets
-        Dictionary<string, string> PlayersAndPets = new()
+        Dictionary<string, string> PlayersAndPets = new();
+
+        // List of player keys
+        var playerKeys = new[] { "Player1", "Player2", "Player3", "Player4" };
+
+        foreach (var playerKey in playerKeys)
         {
-            { Bot.Config!.Get<string>("Player1"), Bot.Config.Get<string>("Player1_Pet") },
-            { Bot.Config!.Get<string>("Player2"), Bot.Config.Get<string>("Player2_Pet") },
-            { Bot.Config!.Get<string>("Player3"), Bot.Config.Get<string>("Player3_Pet") },
-            { Bot.Config!.Get<string>("Player4"), Bot.Config.Get<string>("Player4_Pet") }
-        };
+            var playerName = Bot.Config?.Get<string>(playerKey);
+            var petName = Bot.Config?.Get<string>($"{playerKey}_Pet");
+
+            if (!string.IsNullOrEmpty(playerName) && !string.IsNullOrEmpty(petName))
+                PlayersAndPets.Add(playerName, petName);
+
+            else
+            {
+                Core.Logger($"Player {playerKey} is missing a pet or name.");
+                return;
+            }
+        }
 
         // Retrieve options excluding those related to players
         var blacklistOptions = Options
@@ -253,22 +265,67 @@ public class InsertNameHeresUltraPrep
             if (option.Name.StartsWith("player", StringComparison.OrdinalIgnoreCase))
                 continue; // Skip options starting with "player"
 
-            string itemName = Bot.Config!.Get<string>(option.Name);
-            Core.Unbank(itemName);
+            string? itemNameNullable = Bot.Config!.Get<string>(option.Name);
+            if (itemNameNullable != null)
+                Core.Unbank(itemNameNullable);
         }
 
         // Dictionary with players and their corresponding classes
-        Dictionary<string, List<string>> PlayersandItems = new()
+        Dictionary<string, List<string>> PlayersandItems = new();
+        var playerKeyList = new[] { "Player1", "Player2", "Player3", "Player4" };
+
+        foreach (var playerKey in playerKeyList)
         {
-            { Bot.Config!.Get<string>("Player1"), new List<string> { "Legion Revenant", "ArchPaladin", "StoneCrusher",
-                Core.CheckInventory("Chaos Avenger") ? "Chaos Avenger" : (Core.CheckInventory("Classic Legion DoomKnight") ?"Classic Legion DoomKnight" : "Legion DoomKnight" ),
-                Bot.Config.Get<string>("Player1_Pet") } },
-
-
-            { Bot.Config!.Get<string>("Player2"), new List<string> { "Quantum Chronomancer", "Legion Revenant", Core.CheckInventory("Chaos Avenger") ? "Chaos Avenger" : "Verus DoomKnight", "StoneCrusher", Bot.Config.Get<string>("Player2_Pet") } },
-            { Bot.Config!.Get<string>("Player3"), new List<string> { "Lord Of Order", "Legion Revenant", Bot.Config.Get<string>("Player3_Pet") } },
-            { Bot.Config!.Get<string>("Player4"), new List<string> { "ArchPaladin", "LightCaster", "Verus DoomKnight", Bot.Config.Get<string>("Player4_Pet") } }
-        };
+            var playerName = Bot.Config!.Get<string>(playerKey);
+            if (playerName != null)
+            {
+                var items = new List<string>();
+                switch (playerKey)
+                {
+                    case "Player1":
+                        items.Add("Legion Revenant");
+                        items.Add("ArchPaladin");
+                        items.Add("StoneCrusher");
+                        if (Core.CheckInventory("Chaos Avenger"))
+                            items.Add("Chaos Avenger");
+                        else if (Core.CheckInventory("Classic Legion DoomKnight"))
+                            items.Add("Classic Legion DoomKnight");
+                        else
+                            items.Add("Legion DoomKnight");
+                        var player1Pet = Bot.Config.Get<string>("Player1_Pet");
+                        if (player1Pet != null) items.Add(player1Pet);
+                        break;
+                    case "Player2":
+                        items.Add("Quantum Chronomancer");
+                        items.Add("Legion Revenant");
+                        if (Core.CheckInventory("Chaos Avenger"))
+                            items.Add("Chaos Avenger");
+                        else
+                            items.Add("Verus DoomKnight");
+                        items.Add("StoneCrusher");
+                        var player2Pet = Bot.Config.Get<string>("Player2_Pet");
+                        if (player2Pet != null)
+                            items.Add(player2Pet);
+                        break;
+                    case "Player3":
+                        items.Add("Lord Of Order");
+                        items.Add("Legion Revenant");
+                        var player3Pet = Bot.Config.Get<string>("Player3_Pet");
+                        if (player3Pet != null)
+                            items.Add(player3Pet);
+                        break;
+                    case "Player4":
+                        items.Add("ArchPaladin");
+                        items.Add("LightCaster");
+                        items.Add("Verus DoomKnight");
+                        var player4Pet = Bot.Config.Get<string>("Player4_Pet");
+                        if (player4Pet != null)
+                            items.Add(player4Pet);
+                        break;
+                }
+                PlayersandItems.Add(playerName, items);
+            }
+        }
 
         // Iterate through the dictionary
         foreach (var player in PlayersandItems)
@@ -373,29 +430,29 @@ public class InsertNameHeresUltraPrep
 
 
         // Wspecial x8 (x9 with Hvamp)
-        Adv.EnhanceItem(Bot.Config!.Get<string>("Dauntless"), EnhancementType.Lucky, wSpecial: WeaponSpecial.Dauntless);
-        Adv.EnhanceItem(Bot.Config!.Get<string>("Valiance"), EnhancementType.Lucky, wSpecial: WeaponSpecial.Valiance);
-        Adv.EnhanceItem(Bot.Config!.Get<string>("Arcanas_Concerto"), EnhancementType.Lucky, wSpecial: WeaponSpecial.Arcanas_Concerto);
-        Adv.EnhanceItem(Bot.Config!.Get<string>("Awe_Blast"), EnhancementType.Lucky, wSpecial: WeaponSpecial.Awe_Blast);
-        Adv.EnhanceItem(Bot.Config!.Get<string>("Praxis"), EnhancementType.Lucky, wSpecial: WeaponSpecial.Praxis);
-        Adv.EnhanceItem(Bot.Config!.Get<string>("Ravenous"), EnhancementType.Lucky, wSpecial: WeaponSpecial.Ravenous);
-        Adv.EnhanceItem(Bot.Config!.Get<string>("Elysium"), EnhancementType.Lucky, wSpecial: WeaponSpecial.Elysium);
-        Adv.EnhanceItem(Bot.Config!.Get<string>("Lacerate"), EnhancementType.Lucky, wSpecial: WeaponSpecial.Lacerate);
-        Adv.EnhanceItem(Bot.Config!.Get<string>("HealthVamp"), EnhancementType.Lucky, wSpecial: WeaponSpecial.Health_Vamp);
+        Adv.EnhanceItem(Bot.Config!.Get<string>("Dauntless")!, EnhancementType.Lucky, wSpecial: WeaponSpecial.Dauntless);
+        Adv.EnhanceItem(Bot.Config!.Get<string>("Valiance")!, EnhancementType.Lucky, wSpecial: WeaponSpecial.Valiance);
+        Adv.EnhanceItem(Bot.Config!.Get<string>("Arcanas_Concerto")!, EnhancementType.Lucky, wSpecial: WeaponSpecial.Arcanas_Concerto);
+        Adv.EnhanceItem(Bot.Config!.Get<string>("Awe_Blast")!, EnhancementType.Lucky, wSpecial: WeaponSpecial.Awe_Blast);
+        Adv.EnhanceItem(Bot.Config!.Get<string>("Praxis")!, EnhancementType.Lucky, wSpecial: WeaponSpecial.Praxis);
+        Adv.EnhanceItem(Bot.Config!.Get<string>("Ravenous")!, EnhancementType.Lucky, wSpecial: WeaponSpecial.Ravenous);
+        Adv.EnhanceItem(Bot.Config!.Get<string>("Elysium")!, EnhancementType.Lucky, wSpecial: WeaponSpecial.Elysium);
+        Adv.EnhanceItem(Bot.Config!.Get<string>("Lacerate")!, EnhancementType.Lucky, wSpecial: WeaponSpecial.Lacerate);
+        Adv.EnhanceItem(Bot.Config!.Get<string>("HealthVamp")!, EnhancementType.Lucky, wSpecial: WeaponSpecial.Health_Vamp);
 
 
         // Hspecial x3
-        Adv.EnhanceItem(Bot.Config!.Get<string>("Wizard"), EnhancementType.Wizard, hSpecial: HelmSpecial.None);
-        Adv.EnhanceItem(Bot.Config!.Get<string>("Luck"), EnhancementType.Lucky, hSpecial: HelmSpecial.None);
-        Adv.EnhanceItem(Bot.Config!.Get<string>("Forge"), EnhancementType.Lucky, hSpecial: HelmSpecial.Forge);
-        Adv.EnhanceItem(Bot.Config!.Get<string>("Healer"), EnhancementType.Healer, hSpecial: HelmSpecial.None);
+        Adv.EnhanceItem(Bot.Config!.Get<string>("Wizard")!, EnhancementType.Wizard, hSpecial: HelmSpecial.None);
+        Adv.EnhanceItem(Bot.Config!.Get<string>("Luck")!, EnhancementType.Lucky, hSpecial: HelmSpecial.None);
+        Adv.EnhanceItem(Bot.Config!.Get<string>("Forge")!, EnhancementType.Lucky, hSpecial: HelmSpecial.Forge);
+        Adv.EnhanceItem(Bot.Config!.Get<string>("Healer")!, EnhancementType.Healer, hSpecial: HelmSpecial.None);
 
         // Cspecial x5
-        Adv.EnhanceItem(Bot.Config!.Get<string>("Absolution"), EnhancementType.Lucky, cSpecial: CapeSpecial.Absolution);
-        Adv.EnhanceItem(Bot.Config!.Get<string>("Avarice"), EnhancementType.Lucky, cSpecial: CapeSpecial.Avarice);
-        Adv.EnhanceItem(Bot.Config!.Get<string>("Penitence"), EnhancementType.Lucky, cSpecial: CapeSpecial.Penitence);
-        Adv.EnhanceItem(Bot.Config!.Get<string>("Vainglory"), EnhancementType.Lucky, cSpecial: CapeSpecial.Vainglory);
-        Adv.EnhanceItem(Bot.Config!.Get<string>("Lament"), EnhancementType.Lucky, cSpecial: CapeSpecial.Lament);
+        Adv.EnhanceItem(Bot.Config!.Get<string>("Absolution")!, EnhancementType.Lucky, cSpecial: CapeSpecial.Absolution);
+        Adv.EnhanceItem(Bot.Config!.Get<string>("Avarice")!, EnhancementType.Lucky, cSpecial: CapeSpecial.Avarice);
+        Adv.EnhanceItem(Bot.Config!.Get<string>("Penitence")!, EnhancementType.Lucky, cSpecial: CapeSpecial.Penitence);
+        Adv.EnhanceItem(Bot.Config!.Get<string>("Vainglory")!, EnhancementType.Lucky, cSpecial: CapeSpecial.Vainglory);
+        Adv.EnhanceItem(Bot.Config!.Get<string>("Lament")!, EnhancementType.Lucky, cSpecial: CapeSpecial.Lament);
         #endregion Enhancment Unlock Checking
 
         #region  Potions & Scrolls
