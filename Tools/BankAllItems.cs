@@ -31,8 +31,12 @@ public class BankAllItems
     {
         Core.SetOptions();
 
-        BankAll(Bot.Config!.Get<bool>("Inventory"), Bot.Config!.Get<bool>("House"), Bot.Config!.Get<bool>("BanknonAc"), Bot.Config!.Get<string>("BlackList"));
-
+        BankAll(
+            Bot.Config!.Get<bool>("Inventory"),
+            Bot.Config!.Get<bool>("House"),
+            Bot.Config!.Get<bool>("BanknonAc"),
+            Bot.Config!.Get<string>("BlackList") ?? string.Empty
+        );
         Core.SetOptions(false);
     }
 
@@ -106,7 +110,7 @@ public class BankAllItems
                     {
                         Core.ToBank(item.ID);
                     }
-                }            
+                }
             }
 
             Core.Logger($"{(isForHouse ? "House" : "Inventory")} Items: {(filter.Any() ? "✅" : "No items blacklisted")}");

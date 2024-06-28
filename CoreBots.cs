@@ -2225,8 +2225,8 @@ public class CoreBots
             }
             Rest();
         }
-        Bot.Wait.ForPickup(item);
-
+        if (item != null)
+            Bot.Wait.ForPickup(item);
         // Reset attack option
         Bot.Options.AttackWithoutTarget = false;
     }
@@ -2626,11 +2626,11 @@ public class CoreBots
             Escherion = Bot.Monsters.MapMonsters.FirstOrDefault(x => x.MapID is 3);
 
             if (Staff is not null && Escherion is not null)
-                Bot.Combat.Attack(Staff.State is 1 or 2
-                ? Staff
-                : Escherion is not null && Staff.State is 0
-                ? Escherion
-                : null);
+            {
+                var target = Staff.State is 1 or 2 ? Staff : Escherion is not null && Staff.State is 0 ? Escherion : null;
+                if (target is not null)
+                    Bot.Combat.Attack(target);
+            }
             Sleep();
 
 
@@ -2722,12 +2722,13 @@ public class CoreBots
             //     Sleep();
             // }
 
-            Bot.Wait.ForMonsterSpawn(Stalagbite?.Name);
-            if (Stalagbite is not null && Vath is not null)
-                Bot.Combat.Attack(Stalagbite.State is 1 or 2
-                ? Stalagbite
-                : Vath);
-            Sleep();
+            if (Stalagbite != null)
+            {
+                Bot.Wait.ForMonsterSpawn(Stalagbite.Name);
+                if (Vath is not null)
+                    Bot.Combat.Attack(Stalagbite.State is 1 or 2 ? Stalagbite : Vath);
+                Sleep();
+            }
         }
     }
 
@@ -3076,7 +3077,7 @@ public class CoreBots
             DebugLogger(this);
             return;
         }
-        if (log)
+        if (log && item != null)
             if (name != "*")
                 Logger($"Attacking Monster: {name}, for {item}  {dynamicQuant(item, isTemp)}/{quantity}");
 
@@ -3094,7 +3095,7 @@ public class CoreBots
                     Bot.Events.MonsterKilled += b => ded = true;
                     while (!Bot.ShouldExit && !ded)
                     {
-                        if (Bot.Player.Cell != cell)
+                        if (cell != null && Bot.Player.Cell != cell)
                         {
                             DebugLogger(this);
                             Jump(cell, "Left");
