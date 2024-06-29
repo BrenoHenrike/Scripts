@@ -888,7 +888,7 @@ public class CoreDoomwood
         Story.PreLoad(this);
 
         //2093    Undead Assault
-        Story.KillQuest(2093, "battleundera", "Skeletal Soldier");
+        Story.KillQuest(2093, "battleundera", "Skeletal Soldier", AutoCompleteQuest: false);
 
         //2094    Skull Crusher Mountain
         Story.KillQuest(2094, "battleundera", "Skeletal Ice Mage");

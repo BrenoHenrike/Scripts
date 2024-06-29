@@ -135,7 +135,7 @@ public class InsertNameHeresUltraPrep
 
     private string[] UltraItems = new[]
     {
-        //Ultra Drops:
+        //Ultra Drops: [we're gonna bank/keep them banked]
         "Ezrajal Insignia",
         "Warden Insignia",
         "Engineer Insignia",
@@ -149,8 +149,12 @@ public class InsertNameHeresUltraPrep
         "Avatar Tyndarius Insignia",
         "Malgor Insignia",
         "Volcanic Essence",
+        "Darkon Insignia",
+        "Dage the Evil Insignia",
+        
 
         //Required Items:
+        "The First Speaker Silenced",
         "Scroll of Life Steal",
         "Scroll of Enrage",
         "Potent Malevolence Elixir"
@@ -201,7 +205,7 @@ public class InsertNameHeresUltraPrep
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(UltraItems);
+        Core.BankingBlackList.AddRange(UltraItems.TakeLast(3));
         Core.SetOptions();
 
         Example();
@@ -214,8 +218,11 @@ public class InsertNameHeresUltraPrep
         Core.Logger("This script is made to help you prep for InsertNamehere's \"ULTRAS - INSERTNAMEHERE.gbot\" on `Grim Li`. First run and fill this script out, once its finished, you can Access your item (for easy copy paste) in `Documents > Skua > options > UltraPrep`, open that and u can simply copy paste names of items. Set your safe pot to: `Potent Malevolence Elixir` as its what this script grabs.");
 
         //prepare inventory
-        Core.Logger("Preparing Inventory!!");
-
+        Core.Logger("Preparing Inventory!! (insignias will be kept in bank, as they will be auto-added by the quest.)");
+        
+        //bank insigs upto, but not including the required items.
+        Core.ToBank(UltraItems[..14]);
+        
         // Dictionary to store players and their associated pets
         Dictionary<string, string> PlayersAndPets = new();
 
