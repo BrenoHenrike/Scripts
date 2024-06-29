@@ -23,6 +23,7 @@ public class CoreHollowbornStory
         Trygve();
         NeoFortress();
         ShadowslayerD();
+        Shadowrealm();
     }
 
     public void Trygve()
@@ -120,6 +121,67 @@ public class CoreHollowbornStory
         Story.KillQuest(9488, "hbchallenge", "Hollowborn Vampire");
         // Hollow Howl 9489     
         Story.KillQuest(9489, "hbchallenge", "Hollowborn Lycan");
+    }
+
+    public void Shadowrealm()
+    {
+
+        if (Core.isCompletedBefore(9793))
+            return;
+
+        Story.PreLoad(this);
+
+        // The First Crumb (9783)
+        Story.KillQuest(9783, "bonecastle", "Undead Guard");
+
+        // Return to Lifeblood (9784)
+        Story.KillQuest(9784, "lycan", "Sanguine");
+
+        // Nohairatu (9785)
+        Story.KillQuest(9785, "umbral", "Rapaxi");
+
+        // Bony Hodgepodge (9786)
+        Story.KillQuest(9786, "battleundera", "Bone Terror");
+
+        // Red Risk (9787)
+        if (!Story.QuestProgression(9787))
+        {
+            Core.EnsureAccept(9787);
+            Core.KillMonster("shadowrise", "r15", "Left", "Infernal Warrior", "Marred Armor Piece");
+            Core.EnsureComplete(9787);
+        }
+        // Story.KillQuest(9787, "shadowrise", "Infernal Warrior");
+
+        // Knuckle Levity (9788)
+        if (!Story.QuestProgression(9788))
+        {
+            Core.EquipClass(ClassType.Solo);
+            Story.KillQuest(9788, "dagerecruit", "Nuckelavee");
+        }
+
+        // Grudge Ghost (9790)
+        if (!Story.QuestProgression(9790))
+        {
+            Core.EquipClass(ClassType.Solo);
+            Story.KillQuest(9790, "darkally", "Underfiend");
+        }
+
+        // Inverted Expectation (9791)
+        if (!Story.QuestProgression(9791))
+        {
+            Core.EquipClass(ClassType.Solo);
+            Story.KillQuest(9791, "yasaris", "Avatar of Anubyx");
+        }
+
+        // Die Angry (9792)
+        if (!Story.QuestProgression(9792))
+        {
+            Core.EquipClass(ClassType.Solo);
+            Story.KillQuest(9792, "wrath", "Gorgorath");
+        }
+
+        // Treasure Death (9793)
+        Story.MapItemQuest(9793, "greed", 13314);
     }
 
 
