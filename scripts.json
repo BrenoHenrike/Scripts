@@ -173,7 +173,7 @@
       "null"
     ],
     "path": "Legion/CoreLegion.cs",
-    "size": 38188,
+    "size": 38251,
     "fileName": "CoreLegion.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/CoreLegion.cs"
   },
@@ -777,7 +777,7 @@
       "set"
     ],
     "path": "Chaos/EternalDrakathSet.cs",
-    "size": 3834,
+    "size": 3850,
     "fileName": "EternalDrakathSet.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Chaos/EternalDrakathSet.cs"
   },
