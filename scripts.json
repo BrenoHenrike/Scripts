@@ -10372,6 +10372,34 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/MergeShops/ShadowrealmMerge.cs"
   },
   {
+    "name": "Eddens Treasures Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Eddens Treasures Merge [2455] in /greed",
+    "tags": [
+      "eddens",
+      "treasures",
+      "merge",
+      "greed",
+      "gold",
+      "voucher",
+      "k",
+      "hollowborn",
+      "bodyguard",
+      "fists",
+      "claws",
+      "battle",
+      "companion",
+      "treasure",
+      "hunter",
+      "bag",
+      "necklace",
+      "necklaces"
+    ],
+    "path": "Hollowborn/MergeShops/EddensTreasuresMerge.cs",
+    "size": 5739,
+    "fileName": "EddensTreasuresMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/MergeShops/EddensTreasuresMerge.cs"
+  },
+  {
     "name": "Hollowborn Merge",
     "description": "This bot will farm the items belonging to the selected mode for the Hollowborn Merge [1887] in /hbchallenge",
     "tags": [
