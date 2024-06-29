@@ -3124,7 +3124,7 @@ public class CoreBots
                     Bot.Events.MonsterKilled += b => ded = true;
                     while (!Bot.ShouldExit && !ded)
                     {
-                        if (Bot.Player.Cell != cell)
+                        if (cell != null && Bot.Player.Cell != cell)
                         {
                             DebugLogger(this);
                             Jump(cell, "Left");
@@ -3147,10 +3147,12 @@ public class CoreBots
 
             DebugLogger(this);
             if (rejectElse)
-                Bot.Drops.RejectExcept(item);
+                if (item != null)
+                    Bot.Drops.RejectExcept(item);
         }
         DebugLogger(this);
-        Bot.Wait.ForPickup(item);
+        if (item != null)
+            Bot.Wait.ForPickup(item);
     }
 
 
