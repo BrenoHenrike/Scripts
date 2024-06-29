@@ -653,6 +653,22 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/TradingandStuff(single).cs"
   },
   {
+    "name": "Lazure's Reawakening",
+    "description": "This script will complete the Lazure's Reawakening quest.",
+    "tags": [
+      "hollowborn",
+      "lae",
+      "lazure",
+      "reawakening",
+      "lazure's awakened skull",
+      "quest"
+    ],
+    "path": "Hollowborn/LazuresReawakening.cs",
+    "size": 2548,
+    "fileName": "LazuresReawakening.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/LazuresReawakening.cs"
+  },
+  {
     "name": "Hollowborn Reaper's Scythe",
     "description": "This script will farm Hollowborn Reaper's Scythe",
     "tags": [
@@ -10356,6 +10372,34 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/MergeShops/ShadowrealmMerge.cs"
   },
   {
+    "name": "Eddens Treasures Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Eddens Treasures Merge [2455] in /greed",
+    "tags": [
+      "eddens",
+      "treasures",
+      "merge",
+      "greed",
+      "gold",
+      "voucher",
+      "k",
+      "hollowborn",
+      "bodyguard",
+      "fists",
+      "claws",
+      "battle",
+      "companion",
+      "treasure",
+      "hunter",
+      "bag",
+      "necklace",
+      "necklaces"
+    ],
+    "path": "Hollowborn/MergeShops/EddensTreasuresMerge.cs",
+    "size": 5739,
+    "fileName": "EddensTreasuresMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/MergeShops/EddensTreasuresMerge.cs"
+  },
+  {
     "name": "Hollowborn Merge",
     "description": "This bot will farm the items belonging to the selected mode for the Hollowborn Merge [1887] in /hbchallenge",
     "tags": [
@@ -12008,6 +12052,25 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/IsleOfFotia/03Styx.cs"
   },
   {
+    "name": "Shadowrealm",
+    "description": "This script will complete the Whispering Helmet's storyline in /shadowrealm.",
+    "tags": [
+      "hollowborn",
+      "saga",
+      "lae",
+      "whispering",
+      "helmet",
+      "whispering helmet",
+      "treasure",
+      "hunt",
+      "treasure hunt"
+    ],
+    "path": "Story/Hollowborn/03Shadowrealm.cs",
+    "size": 691,
+    "fileName": "03Shadowrealm.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Hollowborn/03Shadowrealm.cs"
+  },
+  {
     "name": "Trygve",
     "description": "This script will complete the storyline in /trygve.",
     "tags": [
@@ -12029,7 +12092,7 @@
       "null"
     ],
     "path": "Story/Hollowborn/CoreHollowbornStory.cs",
-    "size": 3917,
+    "size": 5675,
     "fileName": "CoreHollowbornStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Hollowborn/CoreHollowbornStory.cs"
   },
@@ -12041,10 +12104,14 @@
       "saga",
       "trygve",
       "neofortress",
-      "lae"
+      "lae",
+      "treasure hunt",
+      "lae birthday",
+      "shadowrealm",
+      "whispering helmet"
     ],
     "path": "Story/Hollowborn/00DoAll.cs",
-    "size": 606,
+    "size": 663,
     "fileName": "00DoAll.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Hollowborn/00DoAll.cs"
   },
