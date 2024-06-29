@@ -102,7 +102,7 @@ public class EternalDrakath
             Core.CancelRegisteredQuests();
         }
         Core.EnsureComplete(8457);
-        if (singleitem && Core.CheckInventory(item))
+        if (singleitem && item != null && Core.CheckInventory(item))
         {
             Bot.Wait.ForDrop(item);
             Bot.Wait.ForPickup(item);
