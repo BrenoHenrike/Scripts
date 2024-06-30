@@ -61,7 +61,6 @@ public class LazuresReawakening
         // Shadow's Eye
         if (!Core.CheckInventory("Shadow's Eye", 2000))
         {
-            Core.AddDrop("Shadow's Eye");
             Core.EquipClass(ClassType.Farm);
             Core.KillMonster("shadowrealm", "r2", "Left", "*", "Shadow's Eye", 2000, false);
         }
@@ -69,7 +68,6 @@ public class LazuresReawakening
         // Chaoroot Vitamer
         if (!Core.CheckInventory("Chaoroot Vitamer", 1500))
         {
-            Core.AddDrop("Chaoroot Vitamer");
             Core.EquipClass(ClassType.Farm);
             Core.KillMonster("hbchallenge", "r5", "Left", "*", "Chaoroot Vitamer", 1500, false);
         }

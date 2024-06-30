@@ -1012,7 +1012,9 @@ public class CoreLegion
                 }
                 Core.DebugLogger(this);
 
-                Bot.Wait.ForCellChange(cell);
+                if (cell != string.Empty && cell != null)
+                    Bot.Wait.ForCellChange(cell);
+
                 Core.DebugLogger(this);
             }
 
