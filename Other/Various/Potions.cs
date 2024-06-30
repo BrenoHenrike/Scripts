@@ -155,8 +155,12 @@ public class PotionBuyer
         for (int i = 0; i < Potions!.Length; i++)
             Core.Logger($"- {Potions[i]} x {Core.dynamicQuant(Potions[i], false)}/ {PotionQuant}");
 
-        Core.AddDrop(Potions!);
-        Core.AddDrop("Potent Malice Potion");
+        Core.AddDrop(Potions);
+
+        //2ndary potions that are obtained alongside the normal versions, to be banked and added as a drop.
+        string[] SecondaryPotions = new[] {"Potent Malice Potion", "Potent Soul Potion"};
+        Core.ToBank(SecondaryPotions);
+        Bot.Drops.Add(SecondaryPotions);
 
         for (int t = 0; t < Potions!.Length; t++)
         {
