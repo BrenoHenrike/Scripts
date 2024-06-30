@@ -221,22 +221,25 @@ public class CoreStory
 
     public void QuestComplete(int questID) => TryComplete(Core.EnsureLoad(questID), true);
 
-    private void TryComplete(Quest QuestData, bool AutoCompleteQuest)
+    private void TryComplete(Quest questData, bool autoCompleteQuest)
     {
-        if (!Bot.Quests.CanComplete(QuestData.ID))
+        if (!Bot.Quests.CanComplete(questData.ID))
         {
             return;
         }
 
         Core.Sleep();
-        if (AutoCompleteQuest)
+
+        if (questData.Once && !QuestProgression(questData.ID) || autoCompleteQuest)
         {
-            Core.EnsureComplete(QuestData.ID);
+            Core.EnsureComplete(questData.ID);
         }
-        Bot.Wait.ForQuestComplete(QuestData.ID);
-        Core.Logger($"Completed Quest: [{QuestData.ID}] - \"{QuestData.Name}\"", "QuestProgression");
+
+        Bot.Wait.ForQuestComplete(questData.ID);
+        Core.Logger($"Completed Quest: [{questData.ID}] - \"{questData.Name}\"", "QuestProgression");
         Core.Sleep(1500);
     }
+
 
     /// <summary>
     /// Skeleton of KillQuest, MapItemQuest, BuyQuest and ChainQuest. Only needs to be used inside a script if the quest spans across multiple maps
