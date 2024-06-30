@@ -1975,6 +1975,131 @@ public class CoreFarms
         Core.SavedState(false);
     }
 
+    //old fishing rep, rever if something broke
+    // public void FishingREP(int rank = 10, bool shouldDerp = false, bool TrashBait = true, bool GetBoosts = true)
+    // {
+    //     if (FactionRank("Fishing") >= rank)
+    //     {
+    //         Core.DebugLogger(this);
+    //         if (TrashBait)
+    //             Core.TrashCan("Fishing Bait", "Fishing Dynamite");
+    //         return;
+    //     }
+
+    //     if (GetBoosts && FactionRank("Fishing") < 2)
+    //     {
+    //         Core.Logger("Getting some boosters to make this quicker");
+    //         GetBoost(10997, "REPUTATION Boost! (10 min)", 5, 1615, true);
+    //     }
+
+    //     Bot.Events.ExtensionPacketReceived += FishingWaiter;
+
+    //     // ToggleBoost(BoostType.Reputation);
+    //     Core.AddDrop("Fishing Bait", "Fishing Dynamite");
+    //     Core.EquipClass(ClassType.Farm);
+    //     Core.SavedState();
+    //     Core.Logger($"Farming rank {rank}");
+    //     #region Prefarm xp
+    //     Core.Logger("Pre-Ranking XP(This is Required)");
+    //     Core.EnsureAccept(1682);
+    //     Core.KillMonster("greenguardwest", "West4", "Right", "Slime", "Faith's Fi'shtick", 1, log: false);
+    //     Core.EnsureComplete(1682);
+    //     Core.Join("fishing");
+    //     #endregion Prefarm xp
+    //     int WaitTimer = 0;
+
+
+    //     while (!Bot.ShouldExit && FactionRank("Fishing") < 2)
+    //     {
+    //         Core.Logger("Fishing Rank < 2, gotta do bait first");
+    //         GetBaitandDynamite(20, 0);
+    //         Core.Logger($"Fishing With: Fishing Bait");
+    //         Core.Logger($"0 Xp means a Failed Catch, common at lower Fishing (Non-Faction) ranks (Minigame)");
+
+    //         int Bait = Bot.Inventory.GetQuantity("Fishing Bait");
+    //         int FishAttempt = 1;
+    //         while (!Bot.ShouldExit && Core.CheckInventory("Fishing Bait"))
+    //         {
+    //             Bot.Send.Packet("%xt%zm%FishCast%1%Net%30%");
+    //             Core.Logger($"Fishing Timer: {WaitTimer}");
+    //             Core.Sleep(WaitTimer == 0 ? 10000 : WaitTimer);
+    //             Bot.Events.ExtensionPacketReceived += FishingWaiter;
+    //             if (Bait != Bait - 1)
+    //                 Core.Logger($"Cast: x{FishAttempt++}");
+    //             Core.Logger($"Fishing Timer: {WaitTimer}");
+    //             Core.Sleep(WaitTimer);
+    //         }
+    //         WaitTimer = 0;
+    //     }
+
+    //     while (!Bot.ShouldExit && FactionRank("Fishing") < rank && (!shouldDerp || !Core.HasAchievement(14)))
+    //     {
+    //         GetBaitandDynamite(0, 20);
+    //         Core.Logger($"Fishing With: Dynamite");
+    //         int Dyamnite = Bot.Inventory.GetQuantity("Fishing Dynamite");
+    //         int FishAttempt = 1;
+    //         while (!Bot.ShouldExit && Core.CheckInventory("Fishing Dynamite") && FactionRank("Fishing") < rank && (!shouldDerp || !Core.HasAchievement(14)))
+    //         {
+    //             Bot.Send.Packet($"%xt%zm%FishCast%1%Dynamite%30%");
+    //             Bot.Events.ExtensionPacketReceived += W => WaitTimer;
+    //             Core.Logger($"Fishing Timer: {WaitTimer}");
+    //             Core.Sleep(WaitTimer == 0 ? 3500 : WaitTimer);
+    //             Core.SendPackets("%xt%zm%getFish%1%false%");
+    //             if (Dyamnite != Dyamnite - 1)
+    //                 Core.Logger($"Cast: x{FishAttempt++}");
+    //         }
+    //         WaitTimer = 0;
+    //     }
+    //     if (TrashBait)
+    //         Core.TrashCan(new[] { "Fishing Bait", "Fishing Dynamite" });
+    //     Core.SavedState(false);
+    //     Core.CancelRegisteredQuests();
+    //     // ToggleBoost(BoostType.Reputation, false);
+    //     Bot.Events.ExtensionPacketReceived -= FishingWaiter;
+
+    //     void FishingWaiter(dynamic packet)
+    //     {
+    //         string type = packet["params"].type;
+    //         dynamic data = packet["params"].dataObj;
+    //         if (type is not null and "json")
+    //         {
+    //             string cmd = data.cmd.ToString();
+    //             switch (cmd)
+    //             {
+    //                 case "castWait":
+    //                     if (data.wait is not null)
+    //                     {
+    //                         WaitTimer = data.wait;
+    //                         Core.Logger($"Derp Moosefish: {data.derp}\n" +
+    //                         $"Wait Timer: {WaitTimer}");
+    //                     }
+    //                     break;
+
+    //                 case "CatchResult":
+    //                     if (data.catchResult is not null)
+    //                     {
+    //                         Core.Sleep(data.wait);
+    //                         foreach (var fish in data.catchResult)
+    //                         {
+    //                             if (fish is null)
+    //                                 continue;
+
+    //                             if (fish.rep != null)
+    //                                 Core.Logger($"Fish: {fish.rep}");
+    //                             if (fish.frame != null)
+    //                                 Core.Logger($"Fish: {fish.frame}");
+
+    //                         }
+    //                         if (data.catchResult.endTime != null)
+    //                             Core.Logger($"{data.catchResult.endTime}");
+    //                     }
+    //                     break;
+    //             }
+    //         }
+    //     }
+    // }
+
+    //new fishing rep with lsitner
     public void FishingREP(int rank = 10, bool shouldDerp = false, bool TrashBait = true, bool GetBoosts = true)
     {
         if (FactionRank("Fishing") >= rank)
@@ -1993,18 +2118,19 @@ public class CoreFarms
 
         Bot.Events.ExtensionPacketReceived += FishingWaiter;
 
-        // ToggleBoost(BoostType.Reputation);
         Core.AddDrop("Fishing Bait", "Fishing Dynamite");
         Core.EquipClass(ClassType.Farm);
         Core.SavedState();
         Core.Logger($"Farming rank {rank}");
+
         #region Prefarm xp
         Core.Logger("Pre-Ranking XP(This is Required)");
         Core.EnsureAccept(1682);
         Core.KillMonster("greenguardwest", "West4", "Right", "Slime", "Faith's Fi'shtick", 1, log: false);
         Core.EnsureComplete(1682);
-        Core.Join("fishing");
         #endregion Prefarm xp
+
+        int waitTimer = 3500;
 
         while (!Bot.ShouldExit && FactionRank("Fishing") < 2)
         {
@@ -2013,101 +2139,121 @@ public class CoreFarms
             Core.Logger($"Fishing With: Fishing Bait");
             Core.Logger($"0 Xp means a Failed Catch, common at lower Fishing (Non-Faction) ranks (Minigame)");
 
-            int Bait = Bot.Inventory.GetQuantity("Fishing Bait");
-            int FishAttempt = 1;
+            int bait = Bot.Inventory.GetQuantity("Fishing Bait");
+            int Successfull = 1;
+            int Failed = 1;
+            int StartingRep = FactionRep("Fishing");
+            int CurrentRep = FactionRep("Fishing");
             while (!Bot.ShouldExit && Core.CheckInventory("Fishing Bait"))
             {
                 Bot.Send.Packet("%xt%zm%FishCast%1%Net%30%");
-                Bot.Wait.ForQuestComplete(6641);
-                // Core.Sleep(10000);
-                if (Bait != Bait - 1)
-                    Core.Logger($"Cast: x{FishAttempt++}");
+                Core.Logger($"CatchTimer™ Delay: {waitTimer}ms");
+                Core.Sleep(waitTimer == 3500 ? 10000 : waitTimer);
+                CurrentRep = FactionRep("Fishing");
+                Core.Logger(CurrentRep > StartingRep ? $"Successfull! [Dynamite Cast x{Successfull++}]" : $"Failed! [Dynamite Cast x{Failed++}]");
+                Core.Logger($"Set CatchTimer™: {waitTimer}ms");
             }
+            waitTimer = 0;
         }
 
         while (!Bot.ShouldExit && FactionRank("Fishing") < rank && (!shouldDerp || !Core.HasAchievement(14)))
         {
             GetBaitandDynamite(0, 20);
             Core.Logger($"Fishing With: Dynamite");
-            int Dyamnite = Bot.Inventory.GetQuantity("Fishing Dynamite");
-            int FishAttempt = 1;
+            int dynamite = Bot.Inventory.GetQuantity("Fishing Dynamite");
+            int Successfull = 1;
+            int Failed = 1;
+            int StartingRep = FactionRep("Fishing");
+            int CurrentRep = FactionRep("Fishing");
             while (!Bot.ShouldExit && Core.CheckInventory("Fishing Dynamite") && FactionRank("Fishing") < rank && (!shouldDerp || !Core.HasAchievement(14)))
             {
                 Bot.Send.Packet($"%xt%zm%FishCast%1%Dynamite%30%");
-                // Core.Sleep(3500);
-                Bot.Wait.ForQuestComplete(9901);
+                Core.Logger($"CatchTimer™ Delay: {waitTimer}ms");
+                Core.Sleep(waitTimer == 3500 ? 3500 : waitTimer);
                 Core.SendPackets("%xt%zm%getFish%1%false%");
-                if (Dyamnite != Dyamnite - 1)
-                    Core.Logger($"Cast: x{FishAttempt++}");
+                CurrentRep = FactionRep("Fishing");
+                Core.Logger(CurrentRep > StartingRep ? $"Successfull! [Dynamite Cast x{Successfull++}]" : $"Failed! [Dynamite Cast x{Failed++}]");
+                Core.Logger($"Set CatchTimer™: {waitTimer}ms");
             }
         }
+
+        waitTimer = 0;
         if (TrashBait)
             Core.TrashCan(new[] { "Fishing Bait", "Fishing Dynamite" });
         Core.SavedState(false);
         Core.CancelRegisteredQuests();
-        // ToggleBoost(BoostType.Reputation, false);
         Bot.Events.ExtensionPacketReceived -= FishingWaiter;
-    }
 
-    void FishingWaiter(dynamic packet)
-    {
-        string type = packet["params"].type;
-        dynamic data = packet["params"].dataObj;
-        if (type is not null and "json")
+        void FishingWaiter(dynamic packet)
         {
-            string cmd = data.cmd.ToString();
-            switch (cmd)
+            string type = packet["params"].type;
+            dynamic data = packet["params"].dataObj;
+            if (type is not null && type == "json")
             {
-                case "castWait":
-                    if (data.castWait is not null)
-                    {
-                        foreach (int a in data.wait)
+                string cmd = data.cmd.ToString();
+                switch (cmd)
+                {
+                    case "castWait":
+                        if (data.wait is not null)
                         {
-                            if (a > 0)
-                            {
-                                Core.Logger($"Sleep Time: {a}");
-                                Bot.Sleep(a);
-                            }
+                            waitTimer = data.wait;
+                            Core.Logger($"Derp Moosefish: {data.derp}, Next Wait: {waitTimer}ms");
                         }
+                        break;
+                }
+
+                /*
+                Fishing Json packet:
+
+                "t": "xt",
+                "b": {
+                    "r": -1,
+                    "o": {
+                        "cmd": "castWait",
+                        "derp": false,
+                        "wait": 2800
                     }
-                    break;
+                }
+
+                */
             }
         }
-
     }
+
 
     public void GetBaitandDynamite(int FishingBaitQuant, int FishingDynamiteQuant)
     {
         if (Core.CheckInventory("Fishing Bait", FishingBaitQuant) && Core.CheckInventory("Fishing Dynamite", FishingDynamiteQuant))
         {
             Core.JumpWait();
+            Core.Join("fishing");
+            while (!Bot.ShouldExit && !Bot.Player.Loaded)
+            { int i = 0; Core.Logger($"Waiting for play to load {i++}"); Core.Sleep(1000); }
             return;
         }
 
         if (FishingBaitQuant > 0)
         {
+            Core.RegisterQuests(1682);
             Core.FarmingLogger("Fishing Bait", FishingBaitQuant);
             while (!Bot.ShouldExit && FishingBaitQuant != 0 && !Core.CheckInventory("Fishing Bait", FishingBaitQuant))
             {
-                Core.EnsureAccept(1682);
                 Core.KillMonster("greenguardwest", "West3", "Right", "Frogzard", "Fishing Bait", FishingBaitQuant, isTemp: false, log: false);
-                Core.EnsureComplete(1682);
-                Core.Logger($"Fishing Bait: {Bot.Inventory.GetQuantity("Fishing Bait")}/{FishingBaitQuant}");
             }
         }
 
         if (FishingDynamiteQuant > 0)
         {
+            Core.RegisterQuests(1682);
             Core.FarmingLogger("Fishing Dynamite", FishingDynamiteQuant);
             while (!Bot.ShouldExit && FishingDynamiteQuant != 0 && !Core.CheckInventory("Fishing Dynamite", FishingDynamiteQuant))
             {
-                Core.EnsureAccept(1682);
                 Core.KillMonster("greenguardwest", "West4", "Right", "Slime", "Faith's Fi'shtick", 1, log: false);
-                Core.EnsureComplete(1682);
-                Core.Logger($"Fishing Dynamite: {Bot.Inventory.GetQuantity("Fishing Dynamite")}/{FishingDynamiteQuant}");
             }
         }
 
+        Bot.Quests.UnregisterQuests(1682);
+        Core.AbandonQuest(1682);
         Core.Logger("Returing to Fishing Map");
         Core.Join("fishing");
         while (!Bot.ShouldExit && !Bot.Player.Loaded)
@@ -3292,6 +3438,11 @@ public class CoreFarms
     }
 
     public int FactionRank(string faction) => Bot.Reputation.GetRank(faction);
+    public int FactionRep(string faction) =>
+    Bot.Reputation.FactionList
+        .FirstOrDefault(f => string.Equals(f.Name, faction, StringComparison.OrdinalIgnoreCase))
+        ?.Rep ?? 0;
+
 
     #endregion
 }
