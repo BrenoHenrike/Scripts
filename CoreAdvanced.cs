@@ -474,7 +474,7 @@ public class CoreAdvanced
                 Core.Jump(cell, pad);
                 if (!Bot.Combat.StopAttacking)
                     Bot.Combat.Attack(monster);
-                    Core.Sleep();
+                Core.Sleep();
             }
             Core.Rest();
             return;
@@ -536,6 +536,7 @@ public class CoreAdvanced
                 Farm.ToggleBoost(BoostType.Class);
 
                 Farm.IcestormArena(Bot.Player.Level, true);
+                Core.JumpWait();
                 Core.Logger($"\"{itemInv.Name}\" is now Rank 10");
 
                 Farm.ToggleBoost(BoostType.Class, false);
