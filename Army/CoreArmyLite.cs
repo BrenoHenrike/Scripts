@@ -295,6 +295,48 @@ public class CoreArmyLite
     #endregion
     #region Utility
 
+    //new one that may break shit
+    // /// <summary>
+    //     /// Generates a random 5-digit Room Number to ensure armies join the same room.
+    //     /// </summary>
+    //     public int getRoomNr()
+    //     {
+    //         const string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    //         string combinedDigits = "";
+
+    //         // Convert machine name to hex and filter to get combinedDigits
+    //         foreach (char c in Convert.ToHexString(Encoding.Default.GetBytes(Environment.MachineName)))
+    //         {
+    //             if (char.IsDigit(c))
+    //                 combinedDigits += c;
+    //             else if (char.IsLetter(c) && alphabet.Contains(c))
+    //                 combinedDigits += alphabet.IndexOf(c);
+
+    //             if (combinedDigits.Length >= 36)
+    //                 break;
+    //         }
+
+    //         // Ensure combinedDigits has exactly 5 digits
+    //         while (!Bot.ShouldExit && combinedDigits.Length != 5)
+    //         {
+    //             // Adjust length to 5 digits
+    //             if (combinedDigits.Length < 5)
+    //             {
+    //                 // Add random digits to reach 5 digits
+    //                 combinedDigits += new Random().Next(0, 10).ToString();
+    //             }
+    //             else if (combinedDigits.Length > 5)
+    //             {
+    //                 // Trim excess digits if somehow more than 5
+    //                 combinedDigits = combinedDigits.Substring(0, 5);
+    //             }
+    //         }
+
+    //         return int.Parse(combinedDigits);
+    //     }
+
+
+    //maybe thisll fix it??
     /// <summary>
     /// Sets a random Room Number to ensure armies join the same room.
     /// </summary>
