@@ -522,6 +522,8 @@ public class CoreAdvanced
             if (gearRestore)
                 GearStore();
 
+            Core.JumpWait();
+
             SmartEnhance(itemInv.Name);
             var classItem = Bot.Inventory.Items.Find(i => i.Name.Equals(itemInv.Name, StringComparison.Ordinal) && i.Category == ItemCategory.Class);
             if (classItem?.EnhancementLevel == 0)
@@ -536,8 +538,6 @@ public class CoreAdvanced
                 Farm.ToggleBoost(BoostType.Class);
 
                 Farm.IcestormArena(Bot.Player.Level, true);
-                Core.JumpWait();
-                Bot.Wait.ForTrue(() => !Bot.Player.InCombat, 20);
                 Core.Logger($"\"{itemInv.Name}\" is now Rank 10");
 
                 Farm.ToggleBoost(BoostType.Class, false);
@@ -1814,6 +1814,9 @@ public class CoreAdvanced
             return;
         }
 
+        if (Bot.Player.InCombat)
+            Core.JumpWait();
+
         // Error correction
         className = className.ToLower().Trim();
         InventoryItem? SelectedClass = Bot.Inventory.Items.Find(i => i.Name.ToLower() == className && i.Category == ItemCategory.Class);
@@ -1839,16 +1842,6 @@ public class CoreAdvanced
         {
             Core.Logger($"SmartEnhance Failed: 'type' for {className} is NULL");
             return;
-        }
-
-        while (!Bot.ShouldExit && Bot.Player.InCombat && Bot.Self.Auras.Count > 0)
-        {
-            if (Bot.Self.Auras.Count > 0)
-                Core.Logger($"Waiting for x{Bot.Self.Auras.Count} to disapear.. ass appearntly it considers us in combat?");
-            if (Bot.Player.HasTarget)
-                Bot.Combat.CancelTarget();
-            Core.JumpWait();
-            Core.Sleep();
         }
 
         // If the class isn't enhanced yet, enhance it with the enhancement type
