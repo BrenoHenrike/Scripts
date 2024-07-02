@@ -49,6 +49,8 @@ public class RankUpAll
             Core.Logger("This bot requires Smart Enhance to work properly, please modify your CBO settings", messageBox: true, stopBot: true);
 
 
+        Core.Logger($"Classes to Rank: \"{string.Join("\", \"", SelectedClasses)}\"");
+
         foreach (string Class in SelectedClasses)
         {
             if (Core.CheckInventory(Class))
