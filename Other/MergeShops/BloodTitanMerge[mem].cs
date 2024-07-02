@@ -1,7 +1,7 @@
 /*
 name: Blood Titan Merge [Mem]
 description: This bot will farm the items belonging to the selected mode for the Blood Titan Merge [617] in /classhalla
-tags: blood, titan, merge, classhalla, horns, titans, gilded, crusher
+tags: blood, titan, merge, classhallc, horns, titans, gilded, crusher
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
