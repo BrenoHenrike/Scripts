@@ -296,81 +296,83 @@ public class CoreArmyLite
     #region Utility
 
     //new one that may break shit
-    // /// <summary>
-    //     /// Generates a random 5-digit Room Number to ensure armies join the same room.
-    //     /// </summary>
-    //     public int getRoomNr()
-    //     {
-    //         const string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    //         string combinedDigits = "";
-
-    //         // Convert machine name to hex and filter to get combinedDigits
-    //         foreach (char c in Convert.ToHexString(Encoding.Default.GetBytes(Environment.MachineName)))
-    //         {
-    //             if (char.IsDigit(c))
-    //                 combinedDigits += c;
-    //             else if (char.IsLetter(c) && alphabet.Contains(c))
-    //                 combinedDigits += alphabet.IndexOf(c);
-
-    //             if (combinedDigits.Length >= 36)
-    //                 break;
-    //         }
-
-    //         // Ensure combinedDigits has exactly 5 digits
-    //         while (!Bot.ShouldExit && combinedDigits.Length != 5)
-    //         {
-    //             // Adjust length to 5 digits
-    //             if (combinedDigits.Length < 5)
-    //             {
-    //                 // Add random digits to reach 5 digits
-    //                 combinedDigits += new Random().Next(0, 10).ToString();
-    //             }
-    //             else if (combinedDigits.Length > 5)
-    //             {
-    //                 // Trim excess digits if somehow more than 5
-    //                 combinedDigits = combinedDigits.Substring(0, 5);
-    //             }
-    //         }
-
-    //         return int.Parse(combinedDigits);
-    //     }
-
-
-    //maybe thisll fix it??
     /// <summary>
-    /// Sets a random Room Number to ensure armies join the same room.
+    /// Generates a random 5-digit Room Number to ensure armies join the same room.
     /// </summary>
     public int getRoomNr()
     {
-        string Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        const string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         string combinedDigits = "";
 
+        // Convert machine name to hex and filter to get combinedDigits
         foreach (char c in Convert.ToHexString(Encoding.Default.GetBytes(Environment.MachineName)))
         {
             if (char.IsDigit(c))
+            {
                 combinedDigits += c;
-            else if (char.IsLetter(c) && Alphabet.Contains(c))
-                combinedDigits += Alphabet.IndexOf(c);
+            }
+            else if (char.IsLetter(c) && alphabet.Contains(c))
+            {
+                combinedDigits += alphabet.IndexOf(c);
+            }
 
             if (combinedDigits.Length >= 36)
+            {
                 break;
+            }
         }
 
-        while (!Bot.ShouldExit && combinedDigits.Length < 4)
+        // Ensure combinedDigits has exactly 5 digits
+        while (combinedDigits.Length < 5)
         {
-            combinedDigits = (int.Parse(combinedDigits) * (DateTime.Now.Hour - DateTimeOffset.UtcNow.Hour) * DateTime.Today.Day).ToString();
+            combinedDigits += new Random().Next(0, 10).ToString();
         }
 
-        while (!Bot.ShouldExit && combinedDigits.Length >= 6)
+        if (combinedDigits.Length > 5)
         {
-            long firstHalf = long.Parse(combinedDigits[..(combinedDigits.Length / 2)]);
-            long secondHalf = long.Parse(combinedDigits[(combinedDigits.Length / 2)..]);
-            combinedDigits = (firstHalf + secondHalf).ToString();
-            if (combinedDigits.Length <= 4)
-                combinedDigits = (long.Parse(combinedDigits) * DateTime.Today.Day).ToString();
+            combinedDigits = combinedDigits.Substring(0, 5);
         }
+
         return int.Parse(combinedDigits);
     }
+
+
+
+    // //(old) maybe thisll fix it??
+    // /// <summary>
+    // /// Sets a random Room Number to ensure armies join the same room.
+    // /// </summary>
+    // public int getRoomNr()
+    // {
+    //     string Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    //     string combinedDigits = "";
+
+    //     foreach (char c in Convert.ToHexString(Encoding.Default.GetBytes(Environment.MachineName)))
+    //     {
+    //         if (char.IsDigit(c))
+    //             combinedDigits += c;
+    //         else if (char.IsLetter(c) && Alphabet.Contains(c))
+    //             combinedDigits += Alphabet.IndexOf(c);
+
+    //         if (combinedDigits.Length >= 36)
+    //             break;
+    //     }
+
+    //     while (!Bot.ShouldExit && combinedDigits.Length < 4)
+    //     {
+    //         combinedDigits = (int.Parse(combinedDigits) * (DateTime.Now.Hour - DateTimeOffset.UtcNow.Hour) * DateTime.Today.Day).ToString();
+    //     }
+
+    //     while (!Bot.ShouldExit && combinedDigits.Length >= 6)
+    //     {
+    //         long firstHalf = long.Parse(combinedDigits[..(combinedDigits.Length / 2)]);
+    //         long secondHalf = long.Parse(combinedDigits[(combinedDigits.Length / 2)..]);
+    //         combinedDigits = (firstHalf + secondHalf).ToString();
+    //         if (combinedDigits.Length <= 4)
+    //             combinedDigits = (long.Parse(combinedDigits) * DateTime.Today.Day).ToString();
+    //     }
+    //     return int.Parse(combinedDigits);
+    // }
 
     /// <summary>
     /// Spreads players around the input cells, if no cells are set - will spread to any cell that has a monster in it. 
@@ -382,7 +384,7 @@ public class CoreArmyLite
         string[] _players = Players();
 
         // If no paramaters are given, select all cells that have monsters in them
-        if ((cells == null || cells.Length == 0))
+        if (cells == null || cells.Length == 0)
         {
             List<Monster> monsters = Bot.Monsters.MapMonsters;
             if (monsters == null || monsters.Count == 0)
