@@ -24,7 +24,7 @@ public class EasterEggHouse
     {
         if (Bot.House.Contains("Easter Egg House"))
         {
-            Core.Logger("You already own this House, Stopping Bot.");
+            Core.Logger("You already own this house, stopping bot.");
             return;
         }
 
