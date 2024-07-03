@@ -9764,6 +9764,22 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/ForDevelopers/SummarizeStatistics.cs"
   },
   {
+    "name": "Treasure Hunt file Generator",
+    "description": "Generates a file containg the accepting/requirements for the specified quest.",
+    "tags": [
+      "generator",
+      "treasure",
+      "hunt",
+      "treasure hunt",
+      "stupid ae shit",
+      "weekly"
+    ],
+    "path": "Tools/ForDevelopers/TreasureHunterGenerator.cs",
+    "size": 6790,
+    "fileName": "TreasureHunterGenerator.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/ForDevelopers/TreasureHunterGenerator.cs"
+  },
+  {
     "name": "Script Main Cleaner",
     "description": "Checks all scripts we have to see if there are any that break format",
     "tags": [
@@ -14345,56 +14361,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Armor/FiendofLight.cs"
   },
   {
-    "name": "Lazure's Reawakening",
-    "description": "This script will complete the Lazure's Reawakening quest.",
-    "tags": [
-      "hollowborn",
-      "lae",
-      "lazure",
-      "reawakening",
-      "lazure's awakened skull",
-      "quest"
-    ],
-    "path": "Other/Treasure Hunts/LazuresReawakening.cs",
-    "size": 2460,
-    "fileName": "LazuresReawakening.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Treasure Hunts/LazuresReawakening.cs"
-  },
-  {
-    "name": "Dark Scroll Treasure Hunt",
-    "description": "such a treasure hunt condensed to (by lucK) 2 minutes of your time...",
-    "tags": [
-      "dark scroll",
-      "amethyst gem",
-      "lilbro dell'inferno",
-      "amethyst inferno tome",
-      "inferno tome",
-      "burning seal",
-      "deciphered scroll",
-      "the point",
-      "the point sword"
-    ],
-    "path": "Other/Treasure Hunts/DarkScroll.cs",
-    "size": 3259,
-    "fileName": "DarkScroll.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Treasure Hunts/DarkScroll.cs"
-  },
-  {
-    "name": "IconicArtifactQuest",
-    "description": "Does the IconicArtifactQuest Quest, for the \"Krenos Spirit Katana\"",
-    "tags": [
-      "iconicartifactquest",
-      "treasure",
-      "hunt",
-      "treasure hunt",
-      "krenos spirit katana"
-    ],
-    "path": "Other/Treasure Hunts/IconicArtifactQuest.cs",
-    "size": 1535,
-    "fileName": "IconicArtifactQuest.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Treasure Hunts/IconicArtifactQuest.cs"
-  },
-  {
     "name": "Titan Strike Gear Merge",
     "description": "This bot will farm the items belonging to the selected mode for the Titan Strike Gear Merge [2154] in /titanstrike",
     "tags": [
@@ -18245,6 +18211,56 @@
     "size": 3555,
     "fileName": "BattleConcert2023.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Concerts/BattleConcert2023.cs"
+  },
+  {
+    "name": "Lazure's Reawakening",
+    "description": "This script will complete the Lazure's Reawakening quest.",
+    "tags": [
+      "hollowborn",
+      "lae",
+      "lazure",
+      "reawakening",
+      "lazure's awakened skull",
+      "quest"
+    ],
+    "path": "Other/TreasureHunts/LazuresReawakening.cs",
+    "size": 2461,
+    "fileName": "LazuresReawakening.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/TreasureHunts/LazuresReawakening.cs"
+  },
+  {
+    "name": "Dark Scroll Treasure Hunt",
+    "description": "such a treasure hunt condensed to (by lucK) 2 minutes of your time...",
+    "tags": [
+      "dark scroll",
+      "amethyst gem",
+      "lilbro dell'inferno",
+      "amethyst inferno tome",
+      "inferno tome",
+      "burning seal",
+      "deciphered scroll",
+      "the point",
+      "the point sword"
+    ],
+    "path": "Other/TreasureHunts/DarkScroll.cs",
+    "size": 3259,
+    "fileName": "DarkScroll.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/TreasureHunts/DarkScroll.cs"
+  },
+  {
+    "name": "IconicArtifactQuest",
+    "description": "Does the IconicArtifactQuest Quest, for the Krenos Spirit Katana",
+    "tags": [
+      "iconicartifactquest",
+      "treasure",
+      "hunt",
+      "treasure hunt",
+      "krenos spirit katana"
+    ],
+    "path": "Other/TreasureHunts/IconicArtifactQuest.cs",
+    "size": 1533,
+    "fileName": "IconicArtifactQuest.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/TreasureHunts/IconicArtifactQuest.cs"
   },
   {
     "name": "Karkinos Mnimi Quest Rewards",
