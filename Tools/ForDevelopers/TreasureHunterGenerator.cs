@@ -179,11 +179,6 @@ public class TreasureHunterGenerator
 
         Core.Logger($"Generated script '{scriptName}' and saved to: {newFilePath}");
 
-        // // Popup confirmation to open the file, explicitly using System.Windows.Forms.DialogResult
-        // if (Bot.ShowMessageBox($"The file '{scriptName}.cs' has been generated. Path is {newFilePath}\n\nPress OK to open the file",
-        //                                         "File Generated", "OK").Text == "OK")
-        //     Process.Start("explorer", newFilePath);
-
         // Ask the user if they want to open the file
         if (Bot.ShowMessageBox($"File has been generated. Do you want to open it?\n\nPath: {newFilePath}", "Open Generated File", "Yes", "No").Text == "Yes")
             Process.Start("explorer", newFilePath);
