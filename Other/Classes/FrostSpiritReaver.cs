@@ -122,9 +122,9 @@ public class FrostSpiritReaver
         //////////////////////////////////////////////
 
 
-        Core.RegisterQuests(7920);
         while (!Bot.ShouldExit && !Core.CheckInventory("Ice-Ninth", quant))
         {
+            Core.EnsureAccept(7920);
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("Snowmore", "Jon S'NOOOOOOO", "Northern Crown", isTemp: false);
 
@@ -139,9 +139,9 @@ public class FrostSpiritReaver
                 Core.EnsureComplete(7279);
                 Bot.Wait.ForPickup("Ice Diamond");
             }
+            Core.EnsureComplete(7920);
             Bot.Wait.ForPickup("Ice-Ninth");
         }
-        Core.CancelRegisteredQuests();
         Core.ToBank(Core.QuestRewards(7920));
         Core.Unbank("Ice-Ninth");
     }
