@@ -653,22 +653,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/TradingandStuff(single).cs"
   },
   {
-    "name": "Lazure's Reawakening",
-    "description": "This script will complete the Lazure's Reawakening quest.",
-    "tags": [
-      "hollowborn",
-      "lae",
-      "lazure",
-      "reawakening",
-      "lazure's awakened skull",
-      "quest"
-    ],
-    "path": "Hollowborn/LazuresReawakening.cs",
-    "size": 2460,
-    "fileName": "LazuresReawakening.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/LazuresReawakening.cs"
-  },
-  {
     "name": "Hollowborn Reaper's Scythe",
     "description": "This script will farm Hollowborn Reaper's Scythe",
     "tags": [
@@ -14361,6 +14345,56 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Armor/FiendofLight.cs"
   },
   {
+    "name": "Lazure's Reawakening",
+    "description": "This script will complete the Lazure's Reawakening quest.",
+    "tags": [
+      "hollowborn",
+      "lae",
+      "lazure",
+      "reawakening",
+      "lazure's awakened skull",
+      "quest"
+    ],
+    "path": "Other/Treasure Hunts/LazuresReawakening.cs",
+    "size": 2460,
+    "fileName": "LazuresReawakening.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Treasure Hunts/LazuresReawakening.cs"
+  },
+  {
+    "name": "Dark Scroll Treasure Hunt",
+    "description": "such a treasure hunt condensed to (by lucK) 2 minutes of your time...",
+    "tags": [
+      "dark scroll",
+      "amethyst gem",
+      "lilbro dell'inferno",
+      "amethyst inferno tome",
+      "inferno tome",
+      "burning seal",
+      "deciphered scroll",
+      "the point",
+      "the point sword"
+    ],
+    "path": "Other/Treasure Hunts/DarkScroll.cs",
+    "size": 3259,
+    "fileName": "DarkScroll.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Treasure Hunts/DarkScroll.cs"
+  },
+  {
+    "name": "IconicArtifactQuest",
+    "description": "Does the IconicArtifactQuest Quest, for the \"Krenos Spirit Katana\"",
+    "tags": [
+      "iconicartifactquest",
+      "treasure",
+      "hunt",
+      "treasure hunt",
+      "krenos spirit katana"
+    ],
+    "path": "Other/Treasure Hunts/IconicArtifactQuest.cs",
+    "size": 1535,
+    "fileName": "IconicArtifactQuest.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Treasure Hunts/IconicArtifactQuest.cs"
+  },
+  {
     "name": "Titan Strike Gear Merge",
     "description": "This bot will farm the items belonging to the selected mode for the Titan Strike Gear Merge [2154] in /titanstrike",
     "tags": [
@@ -18007,25 +18041,6 @@
     "size": 4471,
     "fileName": "ShadowslayerSummoningRitual.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Various/ShadowslayerSummoningRitual.cs"
-  },
-  {
-    "name": "Dark Scroll Treasure Hunt",
-    "description": "such a treasure hunt condensed to (by lucK) 2 minutes of your time...",
-    "tags": [
-      "dark scroll",
-      "amethyst gem",
-      "lilbro dell'inferno",
-      "amethyst inferno tome",
-      "inferno tome",
-      "burning seal",
-      "deciphered scroll",
-      "the point",
-      "the point sword"
-    ],
-    "path": "Other/Various/DarkScrollTreasureHunt.cs",
-    "size": 3271,
-    "fileName": "DarkScrollTreasureHunt.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Various/DarkScrollTreasureHunt.cs"
   },
   {
     "name": "DeepTrobbleTreasureChest",
