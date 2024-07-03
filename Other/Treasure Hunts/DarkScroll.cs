@@ -8,7 +8,7 @@ tags: dark scroll, amethyst gem, lilbro dell'inferno, amethyst inferno tome, inf
 //cs_include Scripts/CoreAdvanced.cs
 using Skua.Core.Interfaces;
 
-public class DarkScrollTreasureHunt
+public class DarkScroll
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
