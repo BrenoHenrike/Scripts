@@ -39,7 +39,7 @@ public class TreasureHunterGenerator
     public void GenerateTreasureHuntScript()
     {
         // Retrieve script name from config
-        string scriptName = Bot.Config.Get<string>("ScriptName");
+        string? scriptName = Bot.Config!.Get<string>("ScriptName");
         if (string.IsNullOrEmpty(scriptName))
         {
             Core.Logger("Script name is not set in the config.");
@@ -53,15 +53,30 @@ public class TreasureHunterGenerator
         // Adjust the path according to your specific folder structure within Documents
         string newFilePath = Path.Combine(documentsPath, "Skua", "Scripts", "Other", "TreasureHunts", $"{scriptName}.cs");
 
-        // Ensure the directory exists
-        Directory.CreateDirectory(Path.GetDirectoryName(newFilePath));
+        // Get the directory name and ensure it is not null
+        string? directoryName = Path.GetDirectoryName(newFilePath);
+        if (directoryName != null)
+            Directory.CreateDirectory(directoryName);
+        else
+            Core.Logger("Error, directory name is null.");
 
-        // Retrieve required item names
+        // Ensure quest is loaded
         int questID = Bot.Config.Get<int>("QuestID");
-        var requiredItems = Bot.Quests.EnsureLoad(questID).Requirements
-            .Concat(Bot.Quests.EnsureLoad(questID).AcceptRequirements)
-            .Where(req => req.Name != null) // Filter out null names
-            .Select(req => req.Name); // Select just the name without quotes
+        var quest = Bot.Quests.EnsureLoad(questID);
+
+        // Select the Name property from Requirements, which is a List<ItemBase>
+        var requirementNames = quest?.Requirements?
+            .Where(req => req.Name != null)
+            .Select(req => req.Name) ?? Enumerable.Empty<string>();
+
+        // Assuming AcceptRequirements is a List<ItemBase> (or similar) and you want to select the Name property
+        // Handling it similarly to Requirements
+        var acceptRequirementNames = quest?.AcceptRequirements?
+            .Where(item => item.Name != null)
+            .Select(item => item.Name) ?? Enumerable.Empty<string>();
+
+        // Concatenate both sequences
+        var requiredItems = requirementNames.Concat(acceptRequirementNames);
 
         // Additional checks and logic before foreach statement
         string checksAndLogic = $@"
