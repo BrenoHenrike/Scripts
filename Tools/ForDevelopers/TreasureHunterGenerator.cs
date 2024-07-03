@@ -1,7 +1,7 @@
 /*
-name: null
-description: null
-tags: null
+name: Treasure Hunt file Generator
+description: Generates a file containg the accepting/requirements for the specified quest.
+tags: generator, treasure, hunt, treasure hunt, stupid ae shit, weekly
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
