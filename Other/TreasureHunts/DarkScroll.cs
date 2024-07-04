@@ -39,10 +39,8 @@ public class DarkScroll
             {
                 Core.Logger($"Step 2 Libro dell'Inferno");
                 if (!Core.CheckInventory("Libro dell'Inferno"))
-                {
-                    Core.SendPackets("%xt%zm%house%1%zazul%");
-                    Core.BuyItem(Bot.Map.Name, 336, "Libro dell'Inferno");
-                }
+                    Core.BuyItem("zazul", 336, "Libro dell'Inferno");
+
                 Core.EquipClass(ClassType.Solo);
                 Adv.GearStore();
                 Core.Logger($"Step 3 Amethyst Gem");
