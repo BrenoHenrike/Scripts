@@ -109,7 +109,7 @@ public class FrostSpiritReaver
         if (!Core.CheckInventory("Fallen Scythe of Vengeance"))
         {
             Core.Logger("Getting the quest item requirements for \"Cold Hearted\"");
-
+            Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("Northstar", "Karok The Fallen", "Karok's Glaceran Gem", isTemp: false);
             Adv.BuyItem("Glacera", 1055, "Scythe of Vengeance");
             Adv.BuyItem("Glacera", 1055, "Cold Scythe of Vengeance");
@@ -160,7 +160,6 @@ public class FrostSpiritReaver
         }
 
         Farm.GlaceraREP();
-
         if (!Core.CheckInventory(new[] { 38915, 39011 }))
         {
             //IceBreaker Mage & FrostSlayer
@@ -176,10 +175,10 @@ public class FrostSpiritReaver
 
         else Core.Logger("Got the Item requirements for \"Cold Blooded\"");
 
-        Core.AddDrop("Glaceran Attunement");
+        Core.AddDrop(59216);
         Core.FarmingLogger("Glaceran Attunement", quant);
         Core.RegisterQuests(7921);
-        while (!Bot.ShouldExit && !Core.CheckInventory("Glaceran Attunement", quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory(59216, quant))
         {
             Core.EquipClass(ClassType.Solo);
             Core.HuntMonster("cryowar", "Super-Charged Karok", "Glacial Crystal", 100, isTemp: false, log: false);
@@ -188,12 +187,11 @@ public class FrostSpiritReaver
             Core.EquipClass(ClassType.Farm);
             Core.HuntMonster("frozenlair", "Frozen Legionnaire", "Ice Spike", 20, isTemp: false, log: false);
             Core.HuntMonster("frozenlair", "Frozen Legionnaire", "Ice Splinter", 20, isTemp: false, log: false);
-
-            Bot.Wait.ForPickup("Glaceran Attunement");
         }
+        Bot.Wait.ForPickup("Glaceran Attunement");
         Core.CancelRegisteredQuests();
         Core.ToBank(Core.QuestRewards(7921));
-        Core.Unbank("Glaceran Attunement");
+        Core.Unbank(59216);
     }
 
     public void Tokens(int Token1 = 300, int Token2 = 300, int Token3 = 300, int Token4 = 300)
