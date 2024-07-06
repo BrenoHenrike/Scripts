@@ -1,4 +1,3 @@
-using System.Reflection.PortableExecutable;
 /*
 name: Eternal Drakath Set
 description: Gets the Eternal Drakath Set
