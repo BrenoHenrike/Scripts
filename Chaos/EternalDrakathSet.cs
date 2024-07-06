@@ -96,10 +96,11 @@ public class EternalDrakath
             Core.EquipClass(ClassType.Solo);
             Core.AddDrop("Reality Shard");
 
+            Core.Logger("Farming Reality Shards");
             Core.RegisterQuests(8455);
             while (!Bot.ShouldExit && !Core.CheckInventory("Reality Shard", 200))
             {
-                Core.HuntMonster("eternalchaos", "Eternal Drakath", "Eternal Drakath Defeated", 1);
+                Core.HuntMonster("eternalchaos", "Eternal Drakath", "Eternal Drakath Defeated", 1, log: false);
                 Bot.Wait.ForPickup("Reality Shard");
             }
             Core.CancelRegisteredQuests();
