@@ -10835,6 +10835,26 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/04TwilightZone.cs"
   },
   {
+    "name": "Nova Shrine",
+    "description": "This script will complete \"Nova Shrine\" storyline.",
+    "tags": [
+      "story",
+      "quest",
+      "saga",
+      "dragons",
+      "dragon",
+      "nova",
+      "shrine",
+      "yokairealm",
+      "complete",
+      "all"
+    ],
+    "path": "Story/DragonsOfYokai/07NovaShrine.cs",
+    "size": 631,
+    "fileName": "07NovaShrine.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/DragonsOfYokai/07NovaShrine.cs"
+  },
+  {
     "name": "Dragons Of Yokai",
     "description": "This script will complete \"Dragons Of Yokai\" storyline.",
     "tags": [
@@ -10982,7 +11002,7 @@
       "null"
     ],
     "path": "Story/DragonsOfYokai/CoreDOY.cs",
-    "size": 9649,
+    "size": 10406,
     "fileName": "CoreDOY.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/DragonsOfYokai/CoreDOY.cs"
   },
@@ -14288,7 +14308,7 @@
       "null"
     ],
     "path": "Other/Weapons/ExaltedApotheosisPreReqs.cs",
-    "size": 5031,
+    "size": 5188,
     "fileName": "ExaltedApotheosisPreReqs.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Weapons/ExaltedApotheosisPreReqs.cs"
   },
@@ -20565,7 +20585,7 @@
   },
   {
     "name": "Ultimate Light of Destiny",
-    "description": "This bot will do the entire farm for the Sanctified Light of Destiny. Note",
+    "description": "This bot will do the entire farm for the Sanctified Light of Destiny. *Note* it uses dailies due to BLOD",
     "tags": [
       "BLOD",
       "ULOD",
@@ -20579,7 +20599,7 @@
       "good"
     ],
     "path": "Good/BLoD/2UltimateBlindingLightofDestiny.cs",
-    "size": 4132,
+    "size": 4133,
     "fileName": "2UltimateBlindingLightofDestiny.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/2UltimateBlindingLightofDestiny.cs"
   },
@@ -20620,7 +20640,7 @@
   },
   {
     "name": "Sanctified Light of Destiny",
-    "description": "This bot will do the entire farm for the Sanctified Light of Destiny. Note",
+    "description": "This bot will do the entire farm for the Sanctified Light of Destiny *Note*",
     "tags": [
       "BLOD",
       "SLOD",
@@ -20634,13 +20654,13 @@
       "good"
     ],
     "path": "Good/BLoD/1SanctifiedLightofDestiny.cs",
-    "size": 1464,
+    "size": 1465,
     "fileName": "1SanctifiedLightofDestiny.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/1SanctifiedLightofDestiny.cs"
   },
   {
     "name": "Blinding Light of Destiny (Full)",
-    "description": "This bot will do the entire farm for the Blinding Light of Destiny. Note",
+    "description": "This bot will do the entire farm for the Blinding Light of Destiny *Note*",
     "tags": [
       "BLOD",
       "blinding",
@@ -20667,7 +20687,7 @@
       "blinding light fragments"
     ],
     "path": "Good/BLoD/0TheBlindingLightofDestiny.cs",
-    "size": 1588,
+    "size": 1589,
     "fileName": "0TheBlindingLightofDestiny.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/0TheBlindingLightofDestiny.cs"
   },
@@ -23028,6 +23048,21 @@
     "size": 732,
     "fileName": "SecondErrand.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/Materials/Errands/SecondErrand.cs"
+  },
+  {
+    "name": "TouchMass",
+    "description": "gets u the million kills for the `Touch Mass` badge",
+    "tags": [
+      "touch",
+      "mass",
+      "badge",
+      "starfield",
+      "badge"
+    ],
+    "path": "Army/Various/Badges/TouchMass.cs",
+    "size": 5040,
+    "fileName": "TouchMass.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/Badges/TouchMass.cs"
   },
   {
     "name": "Army Dreadfire Rep",

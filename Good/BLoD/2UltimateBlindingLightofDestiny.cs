@@ -1,6 +1,6 @@
 /*
 name: Ultimate Light of Destiny
-description: This bot will do the entire farm for the Sanctified Light of Destiny. Note: it uses dailies due to BLOD
+description: This bot will do the entire farm for the Sanctified Light of Destiny. *Note* it uses dailies due to BLOD
 tags: BLOD, ULOD, blinding, ultimate, light, destiny, undead, 75, damage, good
 */
 //cs_include Scripts/CoreBots.cs

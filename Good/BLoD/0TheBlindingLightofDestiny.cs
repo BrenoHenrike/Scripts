@@ -1,6 +1,6 @@
 /*
 name: Blinding Light of Destiny (Full)
-description: This bot will do the entire farm for the Blinding Light of Destiny. Note: it uses dailies!
+description: This bot will do the entire farm for the Blinding Light of Destiny *Note*: it uses dailies!
 tags: BLOD, blinding, light, destiny, undead, 75, damage, good, soul searching, minecrafting, metals, spirit orb, aura, loyal, blinding, bright, brilliant, weapon kit, finding fragments, bone some dust, essential essences, light merge, blinding light fragments
 */
 //cs_include Scripts/CoreBots.cs

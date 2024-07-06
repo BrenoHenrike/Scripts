@@ -26,6 +26,7 @@ public class CoreDOY
         HakuWar();
         YokaiPortal();
         YokaiRealm();
+        NovaShrine();
     }
 
     public void YokaiPirate()
@@ -311,17 +312,43 @@ public class CoreDOY
         // Kojutsu (9688)
         if (!Story.QuestProgression(9688))
         {
-        Core.EquipClass(ClassType.Solo);
+            Core.EquipClass(ClassType.Solo);
             Story.KillQuest(9688, "yokairealm", "Inugami");
         }
 
         // Ame no Murakumo (9689)
         if (!Story.QuestProgression(9689))
         {
-        Core.EquipClass(ClassType.Solo);
+            Core.EquipClass(ClassType.Solo);
             Story.KillQuest(9689, "yokairealm", "Mikoto Kukol'nyy");
         }
     }
 
+    public void NovaShrine()
+    {
+        if (Core.isCompletedBefore(9802))
+            return;
+
+        Story.PreLoad(this);
+
+        Core.EquipClass(ClassType.Farm);
+
+        // Byakko 9798
+        Story.KillQuest(9798, "lavarun", "Firestorm Tiger");
+
+        // Suzaku 9799
+        Story.KillQuest(9799, "dreampalace", "Flaming Harpy");
+
+        // Genbu 9800
+        Story.KillQuest(9800, "yokaitreasure", "Quicksilver");
+        Story.KillQuest(9800, "hakuvillage", "Nagami");
+
+        // Seiryu 9801
+        Story.KillQuest(9801, "novashrine", new[] {"Zmey Warrior", "Zakhvatchik"});
+
+        // Hoshiyoru 9802
+        Core.EquipClass(ClassType.Solo);
+        Story.KillQuest(9802, "novashrine", "Nova Empyrean");
+    }
 
 }
