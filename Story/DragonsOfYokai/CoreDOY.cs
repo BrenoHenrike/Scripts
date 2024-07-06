@@ -340,7 +340,7 @@ public class CoreDOY
         Story.KillQuest(9799, "dreampalace", "Flaming Harpy");
 
         // Genbu 9800
-        Story.KillQuest(9800, "yokaitreasure", "Quicksilver ");
+        Story.KillQuest(9800, "yokaitreasure", "Quicksilver");
         Story.KillQuest(9800, "hakuvillage", "Nagami");
 
         // Seiryu 9801
