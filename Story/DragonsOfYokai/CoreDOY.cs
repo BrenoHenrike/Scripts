@@ -349,7 +349,7 @@ public class CoreDOY
         }
 
         // Seiryu 9801
-        Story.KillQuest(9801, "novashrine", new[] { "Zmey Warrior", "Zakhvatchik" });
+        Story.KillQuest(9801, "hakuwar", new[] { "Zmey Warrior", "Zakhvatchik" });
 
         // Hoshiyoru 9802
         Core.EquipClass(ClassType.Solo);
