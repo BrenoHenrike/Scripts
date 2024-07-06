@@ -65,6 +65,7 @@ public class ExaltedApotheosisPreReqs
                 // Define the weapon pairs in each tier
                 string[][] weaponPairs = new[]
                 {
+                    new[] { "Apostate Alpha", "Thaumaturgus Alpha" },
                     new[] { "Apostate Omega", "Thaumaturgus Omega" },
                     new[] { "Apostate Ultima", "Thaumaturgus Ultima" },
                     new[] { "Exalted Penultima", "Exalted Unity" }
@@ -72,7 +73,7 @@ public class ExaltedApotheosisPreReqs
 
                 foreach (string[] pair in weaponPairs)
                 {
-                    bool hasPairInInventory = pair.Any(wep => Bot.Inventory.Contains(wep));
+                    bool hasPairInInventory = pair.All(wep => Bot.Inventory.Contains(wep));
 
                     // Check if the pair is already in the inventory
                     if (hasPairInInventory)
@@ -80,13 +81,24 @@ public class ExaltedApotheosisPreReqs
 
                     foreach (string wep in pair)
                     {
-                        ShopItem? WepData = Bot.Shops.Items.FirstOrDefault(x => x.Name == wep);
+                        ShopItem? wepData = Bot.Shops.Items.FirstOrDefault(x => x.Name == wep);
 
                         // Check if the weapon has any requirements before buying
-                        if (WepData != null && WepData.Requirements.Count > 0 && !WepData.Requirements.All(req => Core.CheckInventory(req.ID)))
+                        if (wepData != null && wepData.Requirements.Count > 0)
                         {
-                            int ExaltedNodequant = WepData.Requirements.FirstOrDefault(x => x.Name == "Exalted Node")?.Quantity ?? 0;
-                            Core.KillMonster("timeinn", "r3", "Bottom", "*", "Exalted Node", ExaltedNodequant, isTemp: false);
+                            foreach (ItemBase req in wepData.Requirements)
+                            {
+                                if (!Core.CheckInventory(req.ID, req.Quantity))
+                                {
+                                    // Farm the required quantity of Exalted Nodes
+                                    if (req.Name == "Exalted Node")
+                                    {
+                                        Core.KillMonster("timeinn", "r3", "Bottom", "*", "Exalted Node", req.Quantity, isTemp: false);
+                                    }
+                                }
+                            }
+
+                            // Buy the weapon after fulfilling requirements
                             Adv.BuyItem("timeinn", 2010, wep);
 
                             if (Core.CheckInventory("Exalted Apotheosis"))
@@ -94,17 +106,24 @@ public class ExaltedApotheosisPreReqs
                         }
                     }
                 }
+
                 if (Core.CheckInventory("Exalted Apotheosis"))
+                {
                     Core.Logger("Congratulations on completing the Exalted Apotheosis weapon!");
+                }
                 else
-                    foreach (var item in ExaltedApo!.Requirements)
+                {
+                    foreach (ItemBase item in ExaltedApo.Requirements)
                     {
                         if (Core.CheckInventory(item.ID, toInv: false))
                             continue;
-                        else Core.Logger($"Mising {item.Name}, {item.Quantity}");
+                        else
+                            Core.Logger($"Missing {item.Name}, {item.Quantity}");
                     }
+                }
             }
             Bot.Wait.ForPickup("Exalted Apotheosis");
+
         }
     }
 }
