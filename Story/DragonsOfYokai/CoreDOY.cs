@@ -340,11 +340,16 @@ public class CoreDOY
         Story.KillQuest(9799, "dreampalace", "Flaming Harpy");
 
         // Genbu 9800
-        Story.KillQuest(9800, "yokaitreasure", "Quicksilver");
-        Story.KillQuest(9800, "hakuvillage", "Nagami");
+        if (!Story.QuestProgression(9800))
+        {
+            Core.EnsureAccept(9800);
+            Core.KillMonster("yokaitreasure", "r3", "Left", "Quicksilver", "Silver Scales", 15);
+            Core.KillMonster("hakuvillage", "r4", "Left", "Nagami", "Nagami Scales", 15);
+            Core.EnsureComplete(9800);
+        }
 
         // Seiryu 9801
-        Story.KillQuest(9801, "novashrine", new[] {"Zmey Warrior", "Zakhvatchik"});
+        Story.KillQuest(9801, "novashrine", new[] { "Zmey Warrior", "Zakhvatchik" });
 
         // Hoshiyoru 9802
         Core.EquipClass(ClassType.Solo);
