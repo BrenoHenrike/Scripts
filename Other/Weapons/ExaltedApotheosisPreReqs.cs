@@ -111,7 +111,7 @@ public class ExaltedApotheosisPreReqs
                 {
                     Core.Logger("Congratulations on completing the Exalted Apotheosis weapon!");
                 }
-                else
+                else if (ExaltedApo != null)
                 {
                     foreach (ItemBase item in ExaltedApo.Requirements)
                     {
@@ -121,9 +121,14 @@ public class ExaltedApotheosisPreReqs
                             Core.Logger($"Missing {item.Name}, {item.Quantity}");
                     }
                 }
+                else
+                {
+                    Core.Logger("Exalted Apotheosis item not found in shop.");
+                }
             }
-            Bot.Wait.ForPickup("Exalted Apotheosis");
-
         }
+        Bot.Wait.ForPickup("Exalted Apotheosis");
+
     }
 }
+
