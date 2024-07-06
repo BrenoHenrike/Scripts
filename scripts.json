@@ -10835,6 +10835,26 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/04TwilightZone.cs"
   },
   {
+    "name": "Nova Shrine",
+    "description": "This script will complete \"Nova Shrine\" storyline.",
+    "tags": [
+      "story",
+      "quest",
+      "saga",
+      "dragons",
+      "dragon",
+      "nova",
+      "shrine",
+      "yokairealm",
+      "complete",
+      "all"
+    ],
+    "path": "Story/DragonsOfYokai/07NovaShrine.cs",
+    "size": 631,
+    "fileName": "07NovaShrine.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/DragonsOfYokai/07NovaShrine.cs"
+  },
+  {
     "name": "Dragons Of Yokai",
     "description": "This script will complete \"Dragons Of Yokai\" storyline.",
     "tags": [
@@ -10982,7 +11002,7 @@
       "null"
     ],
     "path": "Story/DragonsOfYokai/CoreDOY.cs",
-    "size": 9649,
+    "size": 10407,
     "fileName": "CoreDOY.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/DragonsOfYokai/CoreDOY.cs"
   },
