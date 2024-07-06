@@ -23030,6 +23030,21 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/Materials/Errands/SecondErrand.cs"
   },
   {
+    "name": "TouchMass",
+    "description": "gets u the million kills for the `Touch Mass` badge",
+    "tags": [
+      "touch",
+      "mass",
+      "badge",
+      "starfield",
+      "badge"
+    ],
+    "path": "Army/Various/Badges/TouchMass.cs",
+    "size": 5040,
+    "fileName": "TouchMass.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/Badges/TouchMass.cs"
+  },
+  {
     "name": "Army Dreadfire Rep",
     "description": "Farm reputation with your army. Faction",
     "tags": [
