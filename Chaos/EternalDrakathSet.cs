@@ -1,3 +1,4 @@
+using System.Reflection.PortableExecutable;
 /*
 name: Eternal Drakath Set
 description: Gets the Eternal Drakath Set
@@ -56,8 +57,10 @@ public class EternalDrakath
             return;
         }
         Core.EquipClass(ClassType.Solo);
+        if (!Core.CheckInventory(25286))
+            Core.Logger("Farming Drakath's Sword");
         while (!Bot.ShouldExit && !Core.CheckInventory(25286))
-            Core.HuntMonster("ultradrakath", "Champion of Chaos");
+            Core.HuntMonster("ultradrakath", "Champion of Chaos", log: false);
 
         Core.EnsureAccept(8457);
 
