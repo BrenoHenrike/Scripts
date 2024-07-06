@@ -20565,7 +20565,7 @@
   },
   {
     "name": "Ultimate Light of Destiny",
-    "description": "This bot will do the entire farm for the Sanctified Light of Destiny. Note",
+    "description": "This bot will do the entire farm for the Sanctified Light of Destiny. *Note* it uses dailies due to BLOD",
     "tags": [
       "BLOD",
       "ULOD",
@@ -20579,7 +20579,7 @@
       "good"
     ],
     "path": "Good/BLoD/2UltimateBlindingLightofDestiny.cs",
-    "size": 4132,
+    "size": 4133,
     "fileName": "2UltimateBlindingLightofDestiny.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/2UltimateBlindingLightofDestiny.cs"
   },
@@ -20620,7 +20620,7 @@
   },
   {
     "name": "Sanctified Light of Destiny",
-    "description": "This bot will do the entire farm for the Sanctified Light of Destiny. Note",
+    "description": "This bot will do the entire farm for the Sanctified Light of Destiny *Note*",
     "tags": [
       "BLOD",
       "SLOD",
@@ -20634,13 +20634,13 @@
       "good"
     ],
     "path": "Good/BLoD/1SanctifiedLightofDestiny.cs",
-    "size": 1464,
+    "size": 1465,
     "fileName": "1SanctifiedLightofDestiny.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/1SanctifiedLightofDestiny.cs"
   },
   {
     "name": "Blinding Light of Destiny (Full)",
-    "description": "This bot will do the entire farm for the Blinding Light of Destiny. Note",
+    "description": "This bot will do the entire farm for the Blinding Light of Destiny *Note*",
     "tags": [
       "BLOD",
       "blinding",
@@ -20667,7 +20667,7 @@
       "blinding light fragments"
     ],
     "path": "Good/BLoD/0TheBlindingLightofDestiny.cs",
-    "size": 1588,
+    "size": 1589,
     "fileName": "0TheBlindingLightofDestiny.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/0TheBlindingLightofDestiny.cs"
   },
