@@ -78,7 +78,7 @@ public class ArmySingleRib
         }
 
         Core.AddDrop(Core.QuestRewards(QuestIDs));
-        Core.EnsureAcceptmultiple(true, QuestIDs);
+        Core.RegisterQuests(QuestIDs);
 
         bool inventoryConditionMet = ItemandQuants.All(t => Core.CheckInventory(t.Item1, t.Item2, toInv: true));
 

@@ -1470,7 +1470,7 @@ public class CoreBots
         registeredQuests = questIDs;
         // if (questIDs.Length > 1)
         //     EnsureAcceptmultiple(true, questIDs);
-        // else EnsureAccept(questIDs[1], true);
+        // else EnsureAccept(questIDs[1]);
         questCTS = new();
         Task.Run(async () =>
         {
@@ -1553,12 +1553,9 @@ public class CoreBots
     /// Ensures you are out of combat before accepting the quest
     /// </summary>
     /// <param name="questID">ID of the quest to accept</param>
-    public bool EnsureAccept(int questID = 0, bool Registerquest = false)
+    public bool EnsureAccept(int questID = 0)
     {
         Quest QuestData = EnsureLoad(questID);
-
-        if (Registerquest)
-            Bot.Lite.ReacceptQuest = true;
 
         if (QuestData.Upgrade && !IsMember)
             Logger($"\"{QuestData.Name}\" [{questID}] is member-only, stopping the bot.", stopBot: true);
@@ -2413,7 +2410,7 @@ public class CoreBots
 
         Monster? FindMonster()
         {
-            return Bot.Monsters.MapMonsters.FirstOrDefault(x => x != null && x.Name.FormatForCompare() == monster.FormatForCompare());
+            return Bot.Monsters.MapMonsters.Find(x => x != null && x.Name.FormatForCompare() == monster.FormatForCompare());
         }
 
         void LogAndJump(string message, string cell)
@@ -2455,16 +2452,13 @@ public class CoreBots
 
                 bool ded = false;
                 Bot.Events.MonsterKilled += b => ded = true;
-                while (!Bot.ShouldExit && !ded)
+                while (!Bot.ShouldExit && !ded || isTemp ? !Bot.TempInv.Contains(item, quant) : !CheckInventory(item, quant))
                 {
                     Jump(targetMonster.Cell, "Left");
-                    if (!Bot.Combat.StopAttacking)
-                        Bot.Combat.Attack(targetMonster);
+                    Bot.Combat.Attack(targetMonster);
+                    Sleep();
                 }
-                Sleep();
             }
-
-            Bot.Options.AttackWithoutTarget = false;
             JumpWait();
         }
     }
@@ -2535,7 +2529,7 @@ public class CoreBots
 
                 bool ded = false;
                 Bot.Events.MonsterKilled += b => ded = true;
-                while (!Bot.ShouldExit && !ded)
+                while (!Bot.ShouldExit && !ded || isTemp ? !Bot.TempInv.Contains(item, quant) : !CheckInventory(item, quant))
                 {
                     Jump(targetMonster.Cell, "Left");
                     if (!Bot.Combat.StopAttacking)
