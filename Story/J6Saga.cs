@@ -129,6 +129,7 @@ public class J6Saga
             Bot.Quests.UpdateQuest(1176);
             if (!Core.CheckInventory("Robo Dog Oil", 3))
             {
+                //##THIS IS REQUIRED, DO NOT DELETE, THE J6 MAPS ARE FUCKY.. SUPRISE SUPRISE##
                 Core.Jump("R10");
                 Core.Join("moonyard");
                 Core.Jump("MoonCut", "Left");
