@@ -93,13 +93,14 @@ public class ThreeLittleWolvesHousesMerge
 
                 case "Decor Material":
                     Core.FarmingLogger(req.Name, quant);
-                    Core.EquipClass(ClassType.Farm);
                     Core.RegisterQuests(6917);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
+                        Core.EquipClass(ClassType.Farm);
                         Core.HuntMonster("farm", "Scarecrow", "Fabric", 5);
-                        Core.HuntMonster("goose", "Can of Paint", "Paint", 5);
                         Core.HuntMonster("undergroundlabb", "Window", "Glass", 5);
+                        Core.EquipClass(ClassType.Solo);
+                        Core.HuntMonster("goose", "Can of Paint", "Paint", 5);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
