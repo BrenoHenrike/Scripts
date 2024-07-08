@@ -1476,66 +1476,59 @@ public class CoreBots
         {
             while (!Bot.ShouldExit && !questCTS.IsCancellationRequested)
             {
-                try
+                await Task.Delay(ActionDelay);
+
+                // Quests that dont need a choice
+                foreach (KeyValuePair<Quest, int> kvp in nonChooseQuests)
                 {
-                    await Task.Delay(ActionDelay);
-
-                    // Quests that dont need a choice
-                    foreach (KeyValuePair<Quest, int> kvp in nonChooseQuests)
+                    if (!Bot.Quests.IsInProgress(kvp.Key.ID))
+                        EnsureAccept(kvp.Key.ID);
+                    if (Bot.Quests.CanCompleteFullCheck(kvp.Key.ID))
                     {
-                        if (!Bot.Quests.IsInProgress(kvp.Key.ID))
-                            EnsureAccept(kvp.Key.ID, true);
-                        if (Bot.Quests.CanCompleteFullCheck(kvp.Key.ID))
-                        {
-                            int amountTurnedIn = EnsureCompleteMulti(kvp.Key.ID);
-                            if (amountTurnedIn == 0)
-                                continue;
-                            await Task.Delay(ActionDelay);
-                            EnsureAccept(kvp.Key.ID, true);
-                            nonChooseQuests[kvp.Key] = nonChooseQuests[kvp.Key] + amountTurnedIn;
-                            Logger($"Quest completed x{nonChooseQuests[kvp.Key]} times: [{kvp.Key.ID}] \"{kvp.Key.Name}\"");
-                        }
-                    }
-
-                    // Quests that need a choice
-                    foreach (KeyValuePair<Quest, int> kvp in chooseQuests)
-                    {
-                        if (!Bot.Quests.IsInProgress(kvp.Key.ID))
-                            EnsureAccept(kvp.Key.ID, true);
-
-                        if (Bot.Quests.CanCompleteFullCheck(kvp.Key.ID))
-                        {
-                            // Finding the list of items you dont have yet.
-                            List<SimpleReward> simpleRewards =
-                                kvp.Key.SimpleRewards.Where(r => r.Type == 2 &&
-                                    !CheckInventory(r.ID, toInv: false)).ToList();
-
-                            // If you have at least 1 of each item, start finding items that you dont have max stack of yet
-                            if (simpleRewards.Count == 0)
-                            {
-                                List<int> matches = kvp.Key.Rewards.Where(x => !CheckInventory(x.ID, x.MaxStack, toInv: false)).Select(i => i.ID).ToList();
-                                simpleRewards =
-                                    kvp.Key.SimpleRewards.Where(r => r.Type == 2 && matches.Contains(r.ID)).ToList();
-                            }
-                            if (simpleRewards.Count == 0)
-                            {
-                                EnsureCompleteMulti(kvp.Key.ID);
-                                await Task.Delay(ActionDelay);
-                                EnsureAccept(kvp.Key.ID, true);
-                                continue;
-                            }
-
-                            Bot.Drops.Add(kvp.Key.Rewards.Where(x => simpleRewards.Any(t => t.ID == x.ID)).Select(i => i.Name).ToArray());
-                            EnsureCompleteMulti(kvp.Key.ID, simpleRewards.First().ID);
-                            await Task.Delay(ActionDelay);
-                            EnsureAccept(kvp.Key.ID, true);
-                            Logger($"Quest completed x{chooseQuests[kvp.Key]++} times: [{kvp.Key.ID}] \"{kvp.Key.Name}\" (Got \"{kvp.Key.Rewards.First(x => x.ID == simpleRewards.First().ID).Name}\")");
-                        }
+                        int amountTurnedIn = EnsureCompleteMulti(kvp.Key.ID);
+                        if (amountTurnedIn == 0)
+                            continue;
+                        await Task.Delay(ActionDelay);
+                        EnsureAccept(kvp.Key.ID);
+                        nonChooseQuests[kvp.Key] = nonChooseQuests[kvp.Key] + amountTurnedIn;
+                        Logger($"Quest completed x{nonChooseQuests[kvp.Key]} times: [{kvp.Key.ID}] \"{kvp.Key.Name}\"");
                     }
                 }
-                catch
-                {
 
+                // Quests that need a choice
+                foreach (KeyValuePair<Quest, int> kvp in chooseQuests)
+                {
+                    if (!Bot.Quests.IsInProgress(kvp.Key.ID))
+                        EnsureAccept(kvp.Key.ID);
+
+                    if (Bot.Quests.CanCompleteFullCheck(kvp.Key.ID))
+                    {
+                        // Finding the list of items you dont have yet.
+                        List<SimpleReward> simpleRewards =
+                            kvp.Key.SimpleRewards.Where(r => r.Type == 2 &&
+                                !CheckInventory(r.ID, toInv: false)).ToList();
+
+                        // If you have at least 1 of each item, start finding items that you dont have max stack of yet
+                        if (simpleRewards.Count == 0)
+                        {
+                            List<int> matches = kvp.Key.Rewards.Where(x => !CheckInventory(x.ID, x.MaxStack, toInv: false)).Select(i => i.ID).ToList();
+                            simpleRewards =
+                                kvp.Key.SimpleRewards.Where(r => r.Type == 2 && matches.Contains(r.ID)).ToList();
+                        }
+                        if (simpleRewards.Count == 0)
+                        {
+                            EnsureCompleteMulti(kvp.Key.ID);
+                            await Task.Delay(ActionDelay);
+                            EnsureAccept(kvp.Key.ID);
+                            continue;
+                        }
+
+                        Bot.Drops.Add(kvp.Key.Rewards.Where(x => simpleRewards.Any(t => t.ID == x.ID)).Select(i => i.Name).ToArray());
+                        EnsureCompleteMulti(kvp.Key.ID, simpleRewards.First().ID);
+                        await Task.Delay(ActionDelay);
+                        EnsureAccept(kvp.Key.ID);
+                        Logger($"Quest completed x{chooseQuests[kvp.Key]++} times: [{kvp.Key.ID}] \"{kvp.Key.Name}\" (Got \"{kvp.Key.Rewards.First(x => x.ID == simpleRewards.First().ID).Name}\")");
+                    }
                 }
             }
             questCTS = null;
