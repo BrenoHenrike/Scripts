@@ -44,15 +44,14 @@ public class TheGreenWeaponSnack
             Core.Logger(Core.CheckInventory(Reward.ID, toInv: false) ? $"{Reward.Name}: ✅" : $"{Reward.Name} ❌");
 
             Core.FarmingLogger(Reward.Name, 1);
+            Core.RegisterQuests(QuestID);
             while (!Bot.ShouldExit && !Core.CheckInventory(Reward.ID))
             {
-                Core.EnsureAccept(QuestID, true);
                 Core.KillMonster("gardenquest", "r2", "Right", "Overconfident Radish", "Spices", 10, false, false);
                 Core.KillMonster("gardenquest", "r3", "Right", "Silly Karrot", "Salt + Sugar", 10, false, false);
                 Core.KillMonster("gardenquest", "r7", "Right", "Vegetable Prince", "Cucumber", 10, false, false);
-                Core.EnsureCompleteMulti(QuestID);
             }
-
+            Core.CancelRegisteredQuests();
             Core.JumpWait();
             Core.ToBank(Reward.Name);
         }
