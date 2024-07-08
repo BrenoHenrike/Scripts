@@ -647,6 +647,8 @@ public class CoreNation
     /// <param name="quant">Desired item quantity</param>
     public void NulgathLarvae(string? item = null, int quant = 1)
     {
+        Quest VoucherItem = Bot.Quests.EnsureLoad(4778);
+        ItemBase VoucherItemReward = VoucherItem.Rewards.FirstOrDefault(x => x.Name == item);
         Bot.Drops.Add(bagDrops);
         Bot.Drops.Add("Mana Energy for Nulgath");
         if (item != null)
@@ -656,18 +658,18 @@ public class CoreNation
             {
                 Core.EnsureAccept(2566);
                 Core.EquipClass(ClassType.Solo);
-                Core.HuntMonster("elemental", "Mana Golem", "Mana Energy for Nulgath", 13, false, false);
+                Core.HuntMonster("elemental", "Mana Golem", "Mana Energy for Nulgath", 13, false);
 
                 Core.EquipClass(ClassType.Farm);
                 while (!Bot.ShouldExit && !Core.CheckInventory(item, quant) && Core.CheckInventory("Mana Energy for Nulgath"))
                 {
                     Core.EnsureAccept(2566);
-                    Core.HuntMonster("elemental", "Mana Falcon", "Charged Mana Energy for Nulgath", 5, log: false);
+                    Core.HuntMonster("elemental", "Mana Falcon", "Charged Mana Energy for Nulgath", 5);
                     Core.EnsureComplete(2566);
                     Bot.Wait.ForPickup(item);
                 }
                 if (Core.CheckInventory("Voucher of Nulgath (non-mem)") && Core.CheckInventory("Essence of Nulgath", 60))
-                    Core.EnsureCompleteMulti(4778);
+                    Core.EnsureCompleteMulti(4778, itemID: item == "Totem of Nulgath" || item == "Gem of Nulgath" ? VoucherItemReward.ID : -1);
             }
         }
         else
@@ -696,7 +698,7 @@ public class CoreNation
                         Bot.Wait.ForPickup(drop.Name);
                     }
                     if (Core.CheckInventory("Voucher of Nulgath (non-mem)") && Core.CheckInventory("Essence of Nulgath", 60))
-                        Core.EnsureCompleteMulti(4778);
+                        Core.EnsureCompleteMulti(4778, itemID: item == "Totem of Nulgath" || item == "Gem of Nulgath" ? VoucherItemReward.ID : -1);
                 }
             }
         }
