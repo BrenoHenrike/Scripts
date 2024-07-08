@@ -14,7 +14,7 @@ public class FishingGearMerge
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
-    private CoreFarms Farm = new();
+    private static CoreFarms Farm = new();
     private CoreAdvanced Adv = new();
     private static CoreAdvanced sAdv = new();
 
@@ -24,6 +24,12 @@ public class FishingGearMerge
     // [Can Change] This should only be changed by the author.
     //              If true, it will not stop the script if the default case triggers and the user chose to only get mats
     private bool dontStopMissingIng = false;
+
+    int waitTimer = 3500;
+    int successful = 1;
+    int failed = 1;
+    int startingRep = Farm.FactionRep("Fishing");
+    int currentRep = Farm.FactionRep("Fishing");
 
     public void ScriptMain(IScriptInterface Bot)
     {
@@ -36,6 +42,7 @@ public class FishingGearMerge
 
     public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
+        Farm.FishingREP(2);
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("greenguardwest", 363, findIngredients, buyOnlyThis, buyMode: buyMode);
 
@@ -64,58 +71,40 @@ public class FishingGearMerge
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
 
-                    if (Farm.FactionRank("Fishing") <= 1)
-                    {
-                        Core.EnsureAccept(1682);
-                        Core.KillMonster("greenguardwest", "West4", "Right", "Slime", "Faith's Fi'shtick", 1, log: false);
-                        Core.EnsureComplete(1682);
-                    }
-
                     bool legendDailyDone = !Core.IsMember || Bot.Quests.IsDailyComplete(1684);
                     bool nonLegendDailyDone = Bot.Quests.IsDailyComplete(1683);
+
                     if (!legendDailyDone)
                         Core.EnsureAccept(1684);
                     if (!nonLegendDailyDone)
-                        Core.EnsureComplete(1683);
+                        Core.EnsureAccept(1683);
 
+                    Bot.Events.ExtensionPacketReceived += FishingWaiter;
                     Core.RegisterQuests(1682, 1614, 1615);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        if (Farm.FactionRank("Fishing") < 2)
+                        Farm.GetBaitandDynamite(0, 20);
+                        Core.Join("fishing");
+                        while (!Bot.ShouldExit && !Bot.Player.Loaded)
+                        { int i = 0; Core.Logger($"Waiting for play to load {i++}"); Core.Sleep(); }
+                        while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant) && Core.CheckInventory("Fishing Dynamite"))
                         {
-                            Core.KillMonster("greenguardwest", "West3", "Right", "Frogzard", "Fishing Bait", 20, false, false);
-                            Core.Join("fishing");
-
-                            while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant) && Core.CheckInventory("Fishing Bait"))
-                            {
-                                Bot.Send.Packet("%xt%zm%FishCast%1%Net%30%");
-                                Core.Sleep(10000);
-                            }
+                            Core.Sleep();
+                            Bot.Send.Packet("%xt%zm%FishCast%1%Dynamite%30%");
+                            Core.Logger($"CatchTimer™ Delay: {waitTimer}ms");
+                            Core.Sleep(waitTimer);
+                            Bot.Send.Packet("%xt%zm%getFish%1%false%");
                         }
-                        else
-                        {
-                            Core.KillMonster("greenguardwest", "West4", "Right", "Slime", "Fishing Dynamite", 20, false, false);
-                            Core.Join("fishing");
+                        Bot.Events.ExtensionPacketReceived -= FishingWaiter;
+                        waitTimer = 0;
 
-                            while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant) && Core.CheckInventory("Fishing Dynamite"))
-                            {
-                                Bot.Send.Packet($"%xt%zm%FishCast%1%Dynamite%30%");
-                                Core.Sleep(3500);
-                                Core.SendPackets("%xt%zm%getFish%1%false%");
-                            }
-                        }
-
+                        // Hunt monsters based on temporary inventory
                         while (!Bot.ShouldExit && Bot.TempInv.Contains("Fish Caught", 30))
-                        {
-                            Core.HuntMonster("swordhaven", "Slime", "Slime Sauce", 1, log: false);
-                            Core.Sleep();
-                        }
+                            Core.HuntMonster("greenguardwest", "Slime", log: false);
                         while (!Bot.ShouldExit && Bot.TempInv.Contains("Endangered Fish", 5))
-                        {
-                            Core.HuntMonster("nexus", "Frogzard", "Greenguard Seal", 1, log: false);
-                            Core.Sleep();
-                        }
+                            Core.HuntMonster("greenguardwest", "Frogzard", log: false);
 
+                        // Complete daily quests if conditions are met
                         if (!legendDailyDone && Bot.Quests.CanCompleteFullCheck(1684))
                         {
                             Core.EnsureComplete(1684);
@@ -126,12 +115,58 @@ public class FishingGearMerge
                             Core.EnsureComplete(1683);
                             nonLegendDailyDone = true;
                         }
+
                         Bot.Wait.ForPickup(req.Name);
                     }
+
                     Core.CancelRegisteredQuests();
                     break;
 
+            }
+        }
 
+        void FishingWaiter(dynamic packet)
+        {
+            var type = packet["params"].type;
+            var data = packet["params"].dataObj;
+
+            if (type is not null && type == "json")
+            {
+                var cmd = data.cmd.ToString();
+
+                switch (cmd)
+                {
+                    case "castWait":
+                        if (data.wait is not null)
+                        {
+                            waitTimer = data.wait;
+                            Core.Logger($"Derp Moosefish: {data.derp}, Set CatchTimer™: {waitTimer}ms");
+                        }
+                        break;
+
+
+                    //idt this one works
+                    case "CatchResult":
+                        foreach (var c in data.catchResult)
+                        {
+                            if (c is null || (string)c["act"] == null || (int)c["myRep"] == 0)
+                                continue;
+
+                            switch ((string)c["act"])
+                            {
+                                case "Miss":
+                                case "CatchPole":
+                                    Core.Logger($"{(string)c["act"]}");
+                                    break;
+                            }
+
+                            if ((int)c["myRep"] != 0)
+                            {
+                                Core.Logger($"{(int)c["myRep"]}");
+                            }
+                        }
+                        break;
+                }
             }
         }
     }
