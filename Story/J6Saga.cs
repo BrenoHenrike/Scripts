@@ -129,6 +129,10 @@ public class J6Saga
             Bot.Quests.UpdateQuest(1176);
             if (!Core.CheckInventory("Robo Dog Oil", 3))
             {
+                Core.Jump("R10");
+                Core.Join("moonyard");
+                Core.Jump("MoonCut", "Left");
+                Core.Join("moonyardb");
                 Core.KillMonster("moonyardb", "r4", "Left", "*", "Robo Dog Oil", 3);
             }
             Core.KillMonster("farm", "Crop1", "Left", "*", "Scarecrow Canola Oil", 3);
