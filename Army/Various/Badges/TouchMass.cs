@@ -46,8 +46,8 @@ public class TouchMass
     public void ScriptMain(IScriptInterface Bot)
     {
         Core.SetOptions(disableClassSwap: true);
-
-        StupidQuest();
+        Core.Logger("Disabled Due to possible bans :D.. told ya'al this was AE's bait.. noone listened");
+        // StupidQuest();
 
         Core.SetOptions(false);
     }
