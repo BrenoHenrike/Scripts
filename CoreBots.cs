@@ -2019,7 +2019,7 @@ public class CoreBots
     /// <param name="quant">Desired quantity of the item</param>
     /// <param name="isTemp">Whether the item is temporary</param>
     /// <param name="log">Whether it will log that it is killing the monster</param>
-    public void KillMonster(string map, string cell, string pad, string monster, string? item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
+    public void `KillMonster(string map, string cell, string pad, string monster, string? item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
     {
         cell = Bot.Map.Cells.FirstOrDefault(c => c.Equals(cell, StringComparison.OrdinalIgnoreCase)) ?? cell;
         pad = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(pad.ToLower());
@@ -3040,7 +3040,7 @@ public class CoreBots
                 LogMonsterId(monster);
                 bool ded = false;
                 Bot.Events.MonsterKilled += b => ded = true;
-                while (!Bot.ShouldExit && !ded)
+                while (!Bot.ShouldExit && !ded ||| !HasItem(item))
                 {
                     MoveToCell(monster);
 
@@ -3080,7 +3080,7 @@ public class CoreBots
 
                     bool ded = false;
                     Bot.Events.MonsterKilled += b => ded = true;
-                    while (!Bot.ShouldExit && !ded)
+                    while (!Bot.ShouldExit && !ded || isTemp ? !Bot.TempInv.Contains(item, quantity) : !CheckInventory(item, quantity))
                     {
                         if (cell != null && Bot.Player.Cell != cell)
                         {
@@ -3109,7 +3109,7 @@ public class CoreBots
 
                     bool ded = false;
                     Bot.Events.MonsterKilled += b => ded = true;
-                    while (!Bot.ShouldExit && !ded)
+                    while (!Bot.ShouldExit && !ded || isTemp ? !Bot.TempInv.Contains(item, quantity) : !CheckInventory(item, quantity))
                     {
                         if (cell != null && Bot.Player.Cell != cell)
                         {
