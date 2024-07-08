@@ -636,13 +636,8 @@ public class CoreBots
         if (items == null || items.Length == 0)
             return;
 
-        while (!Bot.ShouldExit && Bot.Player.InCombat)
-        {
-            if (Bot.Player.HasTarget)
-                Bot.Combat.CancelTarget();
+        if (Bot.Player.InCombat)
             JumpWait();
-            Sleep();
-        }
 
         if (Bot.Flash.GetGameObject("ui.mcPopup.currentLabel") != "\"Bank\"")
             Bot.Bank.Open();
@@ -1431,124 +1426,7 @@ public class CoreBots
     #endregion
 
     #region Quest
-    // private CancellationTokenSource? questCTS = null;
-    // /// <summary>
-    // /// This will register quests to be completed while doing something else, i.e. while in combat.
-    // /// If it has quests already registered, it will cancel them first and then register the new quests.
-    // /// </summary>
-    // /// <param name="questIDs">ID of the quests to be completed.</param>
-    // public void RegisterQuests(params int[] questIDs)
-    // {
-    //     if (questCTS is not null)
-    //         CancelRegisteredQuests();
-
-    //     Bot.Lite.ReacceptQuest = true;
-
-    //     // Defining all the lists to be used=
-    //     List<Quest> questData = EnsureLoad(questIDs);
-    //     Dictionary<Quest, int> chooseQuests = new();
-    //     Dictionary<Quest, int> nonChooseQuests = new();
-
-    //     foreach (Quest q in questData)
-    //     {
-    //         bool shouldBreak = false;
-    //         // Removing quests that you can't accept
-    //         foreach (ItemBase req in q.AcceptRequirements)
-    //         {
-    //             if (!CheckInventory(req.Name))
-    //             {
-    //                 Logger($"Missing requirement {req.Name} for \"{q.Name}\" [{q.ID}]");
-    //                 shouldBreak = true;
-    //                 break;
-    //             }
-    //         }
-    //         if (shouldBreak)
-    //             break;
-
-    //         // Separating the quests into choose and non-choose
-    //         if (q.SimpleRewards.Any(r => r.Type == 2))
-    //             chooseQuests.Add(q, 0);
-    //         else
-    //             nonChooseQuests.Add(q, 0);
-    //     }
-
-    //     registeredQuests = questIDs;
-    //     // if (questIDs.Length > 1)
-    //     //     EnsureAcceptmultiple(true, questIDs);
-    //     // else EnsureAccept(questIDs[1], true);
-    //     questCTS = new();
-    //     Task.Run(async () =>
-    //     {
-    //         while (!Bot.ShouldExit && !questCTS.IsCancellationRequested)
-    //         {
-    //             try
-    //             {
-    //                 await Task.Delay(ActionDelay);
-
-    //                 // Quests that dont need a choice
-    //                 foreach (KeyValuePair<Quest, int> kvp in nonChooseQuests)
-    //                 {
-    //                     if (!Bot.Quests.IsInProgress(kvp.Key.ID))
-    //                         EnsureAccept(kvp.Key.ID, true);
-    //                     if (Bot.Quests.CanCompleteFullCheck(kvp.Key.ID))
-    //                     {
-    //                         int amountTurnedIn = EnsureCompleteMulti(kvp.Key.ID);
-    //                         if (amountTurnedIn == 0)
-    //                             continue;
-    //                         await Task.Delay(ActionDelay);
-    //                         EnsureAccept(kvp.Key.ID, true);
-    //                         nonChooseQuests[kvp.Key] = nonChooseQuests[kvp.Key] + amountTurnedIn;
-    //                         Logger($"Quest completed x{nonChooseQuests[kvp.Key]} times: [{kvp.Key.ID}] \"{kvp.Key.Name}\"");
-    //                     }
-    //                 }
-
-    //                 // Quests that need a choice
-    //                 foreach (KeyValuePair<Quest, int> kvp in chooseQuests)
-    //                 {
-    //                     if (!Bot.Quests.IsInProgress(kvp.Key.ID))
-    //                         EnsureAccept(kvp.Key.ID, true);
-
-    //                     if (Bot.Quests.CanCompleteFullCheck(kvp.Key.ID))
-    //                     {
-    //                         // Finding the list of items you dont have yet.
-    //                         List<SimpleReward> simpleRewards =
-    //                             kvp.Key.SimpleRewards.Where(r => r.Type == 2 &&
-    //                                 !CheckInventory(r.ID, toInv: false)).ToList();
-
-    //                         // If you have at least 1 of each item, start finding items that you dont have max stack of yet
-    //                         if (simpleRewards.Count == 0)
-    //                         {
-    //                             List<int> matches = kvp.Key.Rewards.Where(x => !CheckInventory(x.ID, x.MaxStack, toInv: false)).Select(i => i.ID).ToList();
-    //                             simpleRewards =
-    //                                 kvp.Key.SimpleRewards.Where(r => r.Type == 2 && matches.Contains(r.ID)).ToList();
-    //                         }
-    //                         if (simpleRewards.Count == 0)
-    //                         {
-    //                             EnsureCompleteMulti(kvp.Key.ID);
-    //                             await Task.Delay(ActionDelay);
-    //                             EnsureAccept(kvp.Key.ID, true);
-    //                             continue;
-    //                         }
-
-    //                         Bot.Drops.Add(kvp.Key.Rewards.Where(x => simpleRewards.Any(t => t.ID == x.ID)).Select(i => i.Name).ToArray());
-    //                         EnsureCompleteMulti(kvp.Key.ID, simpleRewards.First().ID);
-    //                         await Task.Delay(ActionDelay);
-    //                         EnsureAccept(kvp.Key.ID, true);
-    //                         Logger($"Quest completed x{chooseQuests[kvp.Key]++} times: [{kvp.Key.ID}] \"{kvp.Key.Name}\" (Got \"{kvp.Key.Rewards.First(x => x.ID == simpleRewards.First().ID).Name}\")");
-    //                     }
-    //                 }
-    //             }
-    //             catch
-    //             {
-
-    //             }
-    //         }
-    //         questCTS = null;
-    //     });
-    // }
-
     private CancellationTokenSource? questCTS = null;
-
     /// <summary>
     /// This will register quests to be completed while doing something else, i.e. while in combat.
     /// If it has quests already registered, it will cancel them first and then register the new quests.
@@ -1561,7 +1439,7 @@ public class CoreBots
 
         Bot.Lite.ReacceptQuest = true;
 
-        // Defining all the lists to be used
+        // Defining all the lists to be used=
         List<Quest> questData = EnsureLoad(questIDs);
         Dictionary<Quest, int> chooseQuests = new();
         Dictionary<Quest, int> nonChooseQuests = new();
@@ -1572,15 +1450,15 @@ public class CoreBots
             // Removing quests that you can't accept
             foreach (ItemBase req in q.AcceptRequirements)
             {
-                if (CheckInventory(req.Name))
-                    continue;
-
-                Logger($"Missing requirement {req.Name} for \"{q.Name}\" [{q.ID}]");
-                shouldBreak = true;
-                break;
+                if (!CheckInventory(req.Name))
+                {
+                    Logger($"Missing requirement {req.Name} for \"{q.Name}\" [{q.ID}]");
+                    shouldBreak = true;
+                    break;
+                }
             }
             if (shouldBreak)
-                continue;
+                break;
 
             // Separating the quests into choose and non-choose
             if (q.SimpleRewards.Any(r => r.Type == 2))
@@ -1590,6 +1468,9 @@ public class CoreBots
         }
 
         registeredQuests = questIDs;
+        // if (questIDs.Length > 1)
+        //     EnsureAcceptmultiple(true, questIDs);
+        // else EnsureAccept(questIDs[1], true);
         questCTS = new();
         Task.Run(async () =>
         {
@@ -1599,20 +1480,19 @@ public class CoreBots
                 {
                     await Task.Delay(ActionDelay);
 
-                    // Quests that don't need a choice
+                    // Quests that dont need a choice
                     foreach (KeyValuePair<Quest, int> kvp in nonChooseQuests)
                     {
                         if (!Bot.Quests.IsInProgress(kvp.Key.ID))
-                            EnsureAccept(kvp.Key.ID);
-
+                            EnsureAccept(kvp.Key.ID, true);
                         if (Bot.Quests.CanCompleteFullCheck(kvp.Key.ID))
                         {
                             int amountTurnedIn = EnsureCompleteMulti(kvp.Key.ID);
                             if (amountTurnedIn == 0)
                                 continue;
                             await Task.Delay(ActionDelay);
-                            EnsureAccept(kvp.Key.ID);
-                            nonChooseQuests[kvp.Key] += amountTurnedIn;
+                            EnsureAccept(kvp.Key.ID, true);
+                            nonChooseQuests[kvp.Key] = nonChooseQuests[kvp.Key] + amountTurnedIn;
                             Logger($"Quest completed x{nonChooseQuests[kvp.Key]} times: [{kvp.Key.ID}] \"{kvp.Key.Name}\"");
                         }
                     }
@@ -1621,15 +1501,16 @@ public class CoreBots
                     foreach (KeyValuePair<Quest, int> kvp in chooseQuests)
                     {
                         if (!Bot.Quests.IsInProgress(kvp.Key.ID))
-                            EnsureAccept(kvp.Key.ID);
+                            EnsureAccept(kvp.Key.ID, true);
 
                         if (Bot.Quests.CanCompleteFullCheck(kvp.Key.ID))
                         {
-                            // Finding the list of items you don't have yet.
+                            // Finding the list of items you dont have yet.
                             List<SimpleReward> simpleRewards =
-                                kvp.Key.SimpleRewards.Where(r => r.Type == 2 && !CheckInventory(r.ID, toInv: false)).ToList();
+                                kvp.Key.SimpleRewards.Where(r => r.Type == 2 &&
+                                    !CheckInventory(r.ID, toInv: false)).ToList();
 
-                            // If you have at least 1 of each item, start finding items that you don't have max stack of yet
+                            // If you have at least 1 of each item, start finding items that you dont have max stack of yet
                             if (simpleRewards.Count == 0)
                             {
                                 List<int> matches = kvp.Key.Rewards.Where(x => !CheckInventory(x.ID, x.MaxStack, toInv: false)).Select(i => i.ID).ToList();
@@ -1640,27 +1521,26 @@ public class CoreBots
                             {
                                 EnsureCompleteMulti(kvp.Key.ID);
                                 await Task.Delay(ActionDelay);
-                                EnsureAccept(kvp.Key.ID);
+                                EnsureAccept(kvp.Key.ID, true);
                                 continue;
                             }
 
                             Bot.Drops.Add(kvp.Key.Rewards.Where(x => simpleRewards.Any(t => t.ID == x.ID)).Select(i => i.Name).ToArray());
                             EnsureCompleteMulti(kvp.Key.ID, simpleRewards.First().ID);
                             await Task.Delay(ActionDelay);
-                            EnsureAccept(kvp.Key.ID);
+                            EnsureAccept(kvp.Key.ID, true);
                             Logger($"Quest completed x{chooseQuests[kvp.Key]++} times: [{kvp.Key.ID}] \"{kvp.Key.Name}\" (Got \"{kvp.Key.Rewards.First(x => x.ID == simpleRewards.First().ID).Name}\")");
                         }
                     }
                 }
-                catch (Exception ex)
+                catch
                 {
-                    Logger($"An error occurred with RegQuest: {ex.Message}. StackTrace: {ex.StackTrace}");
+
                 }
             }
             questCTS = null;
         });
     }
-
 
     /// <summary>
     /// Cancels the current registered quests.
@@ -1677,7 +1557,7 @@ public class CoreBots
     private int[]? registeredQuests = null;
 
     /// <summary>
-    /// Acceptes the "questID", with the option to `Registerquest` (turn on ReacceptQuest)
+    /// Ensures you are out of combat before accepting the quest
     /// </summary>
     /// <param name="questID">ID of the quest to accept</param>
     public bool EnsureAccept(int questID = 0, bool Registerquest = false)
@@ -1918,7 +1798,7 @@ public class CoreBots
     /// <param name="itemID">ID of the choose-able reward item</param>
     public int EnsureCompleteMulti(int questID, int amount = -1, int itemID = -1)
     {
-        Quest quest = EnsureLoad(questID);
+        var quest = EnsureLoad(questID);
 
         int turnIns;
         if (quest.Once || !string.IsNullOrEmpty(quest.Field))
@@ -1934,8 +1814,7 @@ public class CoreBots
         Bot.Flash.CallGameFunction("world.tryQuestComplete", questID, itemID, false, turnIns);
 
         if (Bot.Options.SafeTimings)
-            Bot.Wait.ForActionCooldown(GameActions.TryQuestComplete);
-        // Bot.Wait.ForQuestComplete(questID);
+            Bot.Wait.ForQuestComplete(questID);
 
         return !Bot.Quests.IsInProgress(questID) ? turnIns : 0;
     }
