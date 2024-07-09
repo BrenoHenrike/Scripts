@@ -3102,47 +3102,51 @@ public class CoreBots
             }
             else
             {
-                foreach (Monster targetMonster in Bot.Monsters.MapMonsters.Where(x => x != null && x.Cell == cell && x.Name.Equals(name, StringComparison.OrdinalIgnoreCase)))
-                {
-                    if (item != null && (isTemp ? Bot.TempInv.Contains(item, quantity) : CheckInventory(item, quantity)))
-                        break;
-
-                    bool ded = false;
-                    Bot.Events.MonsterKilled += b => ded = true;
-                    while (!Bot.ShouldExit && !ded || isTemp ? !Bot.TempInv.Contains(item, quantity) : !CheckInventory(item, quantity))
-                    {
-                        if (cell != null && Bot.Player.Cell != cell)
-                        {
-                            DebugLogger(this);
-                            Jump(cell, "Left");
-                            DebugLogger(this);
-                            Bot.Wait.ForCellChange(cell);
-                            Sleep();
-                        }
-                        if (!Bot.Combat.StopAttacking)
-                            Bot.Combat.Attack(targetMonster);
-                    }
-
-                    DebugLogger(this);
-                    // Bot.Wait.ForMonsterDeath(20);
-                    // Bot.Wait.ForMonsterSpawn(targetMonster.MapID);
-                    // Bot.Combat.CancelTarget();
-                    Sleep();
-                    DebugLogger(this);
-                }
-            }
-
-            DebugLogger(this);
-            if (rejectElse)
                 if (item != null)
-                    Bot.Drops.RejectExcept(item);
+                {
+                    foreach (Monster targetMonster in Bot.Monsters.MapMonsters.Where(x => x != null && x.Cell == cell && x.Name.Equals(name, StringComparison.OrdinalIgnoreCase)))
+                    {
+                        if (isTemp ? Bot.TempInv.Contains(item, quantity) : CheckInventory(item, quantity))
+                            break;
+
+                        bool ded = false;
+                        Bot.Events.MonsterKilled += b => ded = true;
+                        while (!Bot.ShouldExit && !ded || isTemp ? !Bot.TempInv.Contains(item, quantity) : !CheckInventory(item, quantity))
+                        {
+                            if (cell != null && Bot.Player.Cell != cell)
+                            {
+                                DebugLogger(this);
+                                Jump(cell, "Left");
+                                DebugLogger(this);
+                                Bot.Wait.ForCellChange(cell);
+                                Sleep();
+                            }
+                            if (!Bot.Combat.StopAttacking)
+                                Bot.Combat.Attack(targetMonster);
+                        }
+
+                        DebugLogger(this);
+                        Sleep();
+                        DebugLogger(this);
+                    }
+                }
+                else
+                {
+                    Logger("Item is null.");
+                    return;
+                }
+
+                DebugLogger(this);
+                if (rejectElse)
+                    if (item != null)
+                        Bot.Drops.RejectExcept(item);
+            }
+            DebugLogger(this);
+            if (item != null)
+                Bot.Wait.ForPickup(item);
         }
-        DebugLogger(this);
-        if (item != null)
-            Bot.Wait.ForPickup(item);
+
     }
-
-
     public void _KillForItem(string name, int itemID = 0, int quantity = 1, bool isTemp = false, bool rejectElse = false, bool log = true, string? cell = null)
     {
         DebugLogger(this);
