@@ -23,9 +23,8 @@ public class FrostBladeMaster
 
     public void SagaName()
     {
-        if (Core.isCompletedBefore(6992) || Core.isSeasonalMapActive("akibalight"))
-        {
-            
+        if (Core.isCompletedBefore(6992) || !Core.isSeasonalMapActive("akibalight"))
+        {            
             Core.Logger("You've already completed this storyline");
             
             return;
