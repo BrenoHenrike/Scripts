@@ -647,8 +647,18 @@ public class CoreNation
     /// <param name="quant">Desired item quantity</param>
     public void NulgathLarvae(string? item = null, int quant = 1)
     {
-        Quest VoucherItem = Bot.Quests.EnsureLoad(4778);
-        ItemBase VoucherItemReward = VoucherItem.Rewards.FirstOrDefault(x => x.Name == item);
+        Quest? voucherItem = Bot.Quests.EnsureLoad(4778);
+        if (voucherItem == null)
+        {
+            Core.Logger("Voucher Item: Totem of Nulgath quest not found.");
+            return;
+        }
+        ItemBase? VoucherItemReward = voucherItem.Rewards.FirstOrDefault(x => x.Name == item);
+        if (VoucherItemReward == null)
+        {
+            Core.Logger($"Item '{item}' not found in rewards.");
+            return;
+        }
         Bot.Drops.Add(bagDrops);
         Bot.Drops.Add("Mana Energy for Nulgath");
         if (item != null)
