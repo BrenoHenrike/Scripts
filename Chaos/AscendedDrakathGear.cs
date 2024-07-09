@@ -7,8 +7,8 @@ tags: ascended drakath, set, drakath, ascended blade of awe, ascended light of d
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/Good/BLoD/CoreBLOD.cs
 //cs_include Scripts/CoreStory.cs
+//cs_include Scripts/Good/BLoD/CoreBLOD.cs
 //cs_include Scripts/Nation/CoreNation.cs
 //cs_include Scripts/Chaos/DrakathsArmor.cs
 //cs_include Scripts/Story/BattleUnder.cs

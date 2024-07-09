@@ -37,7 +37,10 @@ public class DragonBladeofNulgath
     public void GetDragonBlade()
     {
         if (Core.CheckInventory("DragonBlade of Nulgath") || (!Core.IsMember))
+        {
+            Core.Logger($"{(Core.CheckInventory("DragonBlade of Nulgath") ? "\"DragonBlade of Nulgath\" owned" : "Not an Member canat get \"DragonBlade of Nulgath\"")}");
             return;
+        }
 
         Core.AddDrop(Nation.bagDrops);
         Core.AddDrop(TwistedItems);

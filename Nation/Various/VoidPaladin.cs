@@ -139,7 +139,6 @@ public class VoidPaladin
             Core.ChainComplete(5828);
         else if (Core.CheckInventory("Ascended Light of Destiny"))
             Core.ChainComplete(5829);
-        Bot.Drops.Pickup("Void Light of Destiny");
     }
 
     public readonly string[] CyberVoidSet =
@@ -160,6 +159,5 @@ public class VoidPaladin
         Core.EnsureAccept(6625);
         Core.HuntMonster("dreadspace", "Undead Space Warrior", "Powerpack", 5);
         Core.EnsureComplete(6625);
-        Bot.Drops.Pickup(CyberVoidSet);
     }
 }
