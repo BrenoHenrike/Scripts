@@ -17127,6 +17127,39 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/DiplomatMerge.cs"
   },
   {
+    "name": "Nova Shrine Gifts Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Nova Shrine Gifts Merge [2458] in /novashrine",
+    "tags": [
+      "nova",
+      "shrine",
+      "gifts",
+      "merge",
+      "novashrine",
+      "gold",
+      "voucher",
+      "k",
+      "star",
+      "light",
+      "destiny",
+      "celestial",
+      "paladin",
+      "winged",
+      "nightsky",
+      "cloak",
+      "lights",
+      "stella",
+      "empyrean",
+      "wings",
+      "tail",
+      "empyreans",
+      "claws"
+    ],
+    "path": "Other/MergeShops/NovaShrineGiftsMerge.cs",
+    "size": 9320,
+    "fileName": "NovaShrineGiftsMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/NovaShrineGiftsMerge.cs"
+  },
+  {
     "name": "Rabbit Merge",
     "description": "This bot will farm the items belonging to the selected mode for the Rabbit Merge [1178] in /rivensylth",
     "tags": [
@@ -19586,7 +19619,7 @@
       "null"
     ],
     "path": "Nation/Various/DragonBlade[mem].cs",
-    "size": 2637,
+    "size": 2828,
     "fileName": "DragonBlade[mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/DragonBlade[mem].cs"
   },
@@ -19608,7 +19641,7 @@
       "null"
     ],
     "path": "Nation/Various/VoidPaladin.cs",
-    "size": 4894,
+    "size": 4803,
     "fileName": "VoidPaladin.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/VoidPaladin.cs"
   },
