@@ -25,7 +25,7 @@ public class YokaiRiver
 
     public void Storyline()
     {
-        if (Core.isCompletedBefore(6448) || !Core.isSeasonalMapActive("yokairiver"))
+        if (Core.isCompletedBefore(6448) || !Core.isSeasonalMapActive("yokaistarriver"))
             return;
 
         Akiba.Storyline();
@@ -33,20 +33,20 @@ public class YokaiRiver
         Story.PreLoad(this);
 
         // Gather the Spirits (6443)
-        Story.KillQuest(6443, "yokairiver", "Ghostly Chickencow");
+        Story.KillQuest(6443, "yokaistarriver", "Ghostly Chickencow");
         Story.MapItemQuest(6443, "yokairiver", 5949, 5);
 
         // Spiders and Dreamsilk (6444)
-        Story.KillQuest(6444, "yokairiver", "Spirit Spider");
+        Story.KillQuest(6444, "yokaistarriver", "Spirit Spider");
 
         // Dye-ing to Reunite (6445)
-        Story.KillQuest(6445, "yokairiver", "Fallen Star");
+        Story.KillQuest(6445, "yokaistarriver", "Fallen Star");
 
         // Clear Water to Clear Skies (6446)
-        Story.KillQuest(6446, "yokairiver", "Funa-yurei");
+        Story.KillQuest(6446, "yokaistarriver", "Funa-yurei");
 
         // 1,000 Cranes to 1,000 Wishes (6447)
-        Story.MapItemQuest(6447, "yokairiver", 5950, 18);
+        Story.MapItemQuest(6447, "yokaistarriver", 5950, 18);
 
         // Slay Uji No Hashihime (6448)
         Story.KillQuest(6448, "yokaistarriver", "Uji No Hashihime");
