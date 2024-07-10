@@ -11,7 +11,7 @@ tags: hollowborn, lae, lazure, reawakening, lazure's awakened skull,quest
 //cs_include Scripts/Hollowborn/CoreHollowborn.cs
 //cs_include Scripts/Nation/CoreNation.cs
 //cs_include Scripts/Story/Hollowborn/CoreHollowbornStory.cs
-//cs_include Scripts/Hollowborn\Materials\HollowSoul.cs
+//cs_include Scripts/Hollowborn/Materials/HollowSoul.cs
 using Skua.Core.Interfaces;
 
 public class LazuresReawakening

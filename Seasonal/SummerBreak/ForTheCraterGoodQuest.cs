@@ -6,7 +6,7 @@ tags: quest, crater,big crater, summer-break,the crater good,rock bottom
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
-//cs_include Scripts/Seasonal\SummerBreak\CraterHouseMerge.cs
+//cs_include Scripts/Seasonal/SummerBreak/CraterHouseMerge.cs
 using Skua.Core.Interfaces;
 
 public class ForTheCraterGood
