@@ -34,6 +34,7 @@ public class TouchMass
     public bool DontPreconfigure = true;
     public List<IOption> Options = new()
     {
+        new Option<bool>("DisableWarning", "Dsiable Botbait Warning", "Y/N", false),
         sArmy.player1,
         sArmy.player2,
         sArmy.player3,
@@ -43,12 +44,14 @@ public class TouchMass
         CoreBots.Instance.SkipOptions,
     };
 
-    public void ScriptMain(IScriptInterface Bot)
+    public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions(disableClassSwap: true);
-        Core.Logger("Disabled Due to possible bans :D.. told ya'al this was AE's bait.. noone listened");
-        // StupidQuest();
-
+        if (!Bot.Config.Get<bool>("DisableWarning"))
+            if (Bot.ShowMessageBox("This is Possible BotBait as having millions of stars defeated so early is sorta sus... Continue anyway???", "AE Bot Bait", true) == true)
+                StupidQuest();
+            else
+                StupidQuest();
         Core.SetOptions(false);
     }
 
