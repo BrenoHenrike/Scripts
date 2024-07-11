@@ -26,8 +26,6 @@ public class FishingGearMerge
     private bool dontStopMissingIng = false;
 
     int waitTimer = 3500;
-    int successful = 1;
-    int failed = 1;
     int startingRep = Farm.FactionRep("Fishing");
     int currentRep = Farm.FactionRep("Fishing");
 

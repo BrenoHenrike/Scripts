@@ -647,8 +647,18 @@ public class CoreNation
     /// <param name="quant">Desired item quantity</param>
     public void NulgathLarvae(string? item = null, int quant = 1)
     {
-        Quest VoucherItem = Bot.Quests.EnsureLoad(4778);
-        ItemBase VoucherItemReward = VoucherItem.Rewards.FirstOrDefault(x => x.Name == item);
+        Quest? voucherItem = Bot.Quests.EnsureLoad(2566);
+        if (voucherItem == null)
+        {
+            Core.Logger("Nulgath Larvae quest not found.");
+            return;
+        }
+        ItemBase? VoucherItemReward = voucherItem.Rewards.FirstOrDefault(x => x.Name == item);
+        if (VoucherItemReward == null)
+        {
+            Core.Logger($"Item '{item}' not found in rewards.");
+            return;
+        }
         Bot.Drops.Add(bagDrops);
         Bot.Drops.Add("Mana Energy for Nulgath");
         if (item != null)
@@ -669,7 +679,10 @@ public class CoreNation
                     Bot.Wait.ForPickup(item);
                 }
                 if (Core.CheckInventory("Voucher of Nulgath (non-mem)") && Core.CheckInventory("Essence of Nulgath", 60))
+                {
+                    Core.EnsureAccept(4778);
                     Core.EnsureCompleteMulti(4778, itemID: item == "Totem of Nulgath" || item == "Gem of Nulgath" ? VoucherItemReward.ID : -1);
+                }
             }
         }
         else
@@ -698,7 +711,10 @@ public class CoreNation
                         Bot.Wait.ForPickup(drop.Name);
                     }
                     if (Core.CheckInventory("Voucher of Nulgath (non-mem)") && Core.CheckInventory("Essence of Nulgath", 60))
+                    {
+                        Core.EnsureAccept(4778);
                         Core.EnsureCompleteMulti(4778, itemID: item == "Totem of Nulgath" || item == "Gem of Nulgath" ? VoucherItemReward.ID : -1);
+                    }
                 }
             }
         }

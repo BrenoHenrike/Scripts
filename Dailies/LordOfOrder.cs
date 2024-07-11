@@ -61,7 +61,7 @@ public class LordOfOrder
         Core.Logger("Daily: Lord Of Order Class");
 
         // Heart of Servitude
-        if (!Story.QuestProgression(7156))
+        if (!Core.isCompletedBefore(7156))
         {
             Core.EnsureAccept(7156);
 
@@ -86,7 +86,7 @@ public class LordOfOrder
         }
 
         // Spirit of Justice
-        if (!Story.QuestProgression(7157))
+        if (!Core.isCompletedBefore(7157))
         {
             Core.EnsureAccept(7157);
 
@@ -102,7 +102,7 @@ public class LordOfOrder
         }
 
         // Purification of Chaos
-        if (!Story.QuestProgression(7158))
+        if (!Core.isCompletedBefore(7158))
         {
             Core.EnsureAccept(7158);
 
@@ -119,7 +119,7 @@ public class LordOfOrder
         }
 
         // Steadfast Will
-        if (!Story.QuestProgression(7159))
+        if (!Core.isCompletedBefore(7159))
         {
             Core.EnsureAccept(7159);
 
@@ -138,7 +138,7 @@ public class LordOfOrder
         }
 
         // Strike of Order
-        if (!Story.QuestProgression(7160))
+        if (!Core.isCompletedBefore(7160))
         {
             Core.EnsureAccept(7160);
 
@@ -167,7 +167,7 @@ public class LordOfOrder
         }
 
         // Harmony
-        if (!Story.QuestProgression(7161))
+        if (!Core.isCompletedBefore(7161))
         {
             Core.EnsureAccept(7161);
 
@@ -185,7 +185,7 @@ public class LordOfOrder
         }
 
         // Ordinance
-        if (!Story.QuestProgression(7162))
+        if (!Core.isCompletedBefore(7162))
         {
             Core.EnsureAccept(7162);
 
@@ -204,7 +204,7 @@ public class LordOfOrder
         }
 
         // Axiom
-        if (!Story.QuestProgression(7163))
+        if (!Core.isCompletedBefore(7163))
         {
             Core.EnsureAccept(7163);
 
@@ -222,7 +222,7 @@ public class LordOfOrder
         }
 
         // Blessing of Order
-        if (!Story.QuestProgression(7164))
+        if (!Core.isCompletedBefore(7164))
         {
             Core.EnsureAccept(7164);
 
