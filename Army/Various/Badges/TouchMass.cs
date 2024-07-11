@@ -47,7 +47,7 @@ public class TouchMass
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions(disableClassSwap: true);
-        if (!Bot.Config.Get<bool>("DisableWarning"))
+        if (bot.Config != null && !bot.Config.Get<bool>("DisableWarning"))
             if (Bot.ShowMessageBox("This is Possible BotBait as having millions of stars defeated so early is sorta sus... Continue anyway???", "AE Bot Bait", true) == true)
                 StupidQuest();
             else
