@@ -45,90 +45,95 @@ public class ExaltedApotheosisPreReqs
             Core.Logger("Please obtain the rest of the insignias with your army to complete the merge. Skua will *not* be able to do ULTRAs for you. (not sorry)");
             return;
         }
-        else
+
+        // Ensure shop is loaded:
+        Core.Join("timeinn");
+        while (!Bot.ShouldExit && Bot.Shops.Name != "Exaltia Merge")
         {
-            //Ensure shop is loaded:
-            Core.Join("timeinn");
-            while (!Bot.ShouldExit && Bot.Shops.Name != "Exaltia Merge ")
+            Bot.Shops.Load(2010);
+            Bot.Wait.ForTrue(() => Bot.Shops.Name == "Exaltia Merge", 20);
+            Core.Sleep();
+        }
+
+        Bot.Wait.ForActionCooldown(Skua.Core.Models.GameActions.LoadShop);
+        ShopItem? exaltedApo = Bot.Shops.Items.Find(x => x.Name == "Exalted Apotheosis");
+
+        Core.EquipClass(ClassType.Farm);
+        while (!Bot.ShouldExit && !Core.CheckInventory("Exalted Apotheosis"))
+        {
+            // Define the weapon pairs in each tier
+            string[][] weaponPairs = new[]
             {
-                Bot.Shops.Load(2010);
-                Bot.Wait.ForTrue(() => Bot.Shops.Name == "Exaltia Merge ", 20);
-                Core.Sleep();
-            }
+            new[] { "Apostate Alpha", "Thaumaturgus Alpha" },
+            new[] { "Apostate Omega", "Thaumaturgus Omega" },
+            new[] { "Apostate Ultima", "Thaumaturgus Ultima" },
+            new[] { "Exalted Penultima", "Exalted Unity" }
+        };
 
-            Bot.Wait.ForActionCooldown(Skua.Core.Models.GameActions.LoadShop);
-            ShopItem? ExaltedApo = Bot.Shops.Items.Find(x => x.Name == "Exalted Apotheosis");
-
-            Core.EquipClass(ClassType.Farm);
-            while (!Bot.ShouldExit && !Core.CheckInventory("Exalted Apotheosis"))
+            foreach (string[] pair in weaponPairs)
             {
-                // Define the weapon pairs in each tier
-                string[][] weaponPairs = new[]
+                bool hasPairInInventory = pair.All(wep => Bot.Inventory.Contains(wep));
+
+                // Check if the pair is already in the inventory
+                if (hasPairInInventory)
+                    continue;
+
+                foreach (string wep in pair)
                 {
-                    new[] { "Apostate Alpha", "Thaumaturgus Alpha" },
-                    new[] { "Apostate Omega", "Thaumaturgus Omega" },
-                    new[] { "Apostate Ultima", "Thaumaturgus Ultima" },
-                    new[] { "Exalted Penultima", "Exalted Unity" }
-                };
+                    ShopItem? wepData = Bot.Shops.Items.FirstOrDefault(x => x.Name == wep);
 
-                foreach (string[] pair in weaponPairs)
-                {
-                    bool hasPairInInventory = pair.All(wep => Bot.Inventory.Contains(wep));
-
-                    // Check if the pair is already in the inventory
-                    if (hasPairInInventory)
-                        continue;
-
-                    foreach (string wep in pair)
+                    // Check if the weapon has any requirements before buying
+                    if (wepData != null && wepData.Requirements.Count > 0)
                     {
-                        ShopItem? wepData = Bot.Shops.Items.FirstOrDefault(x => x.Name == wep);
-
-                        // Check if the weapon has any requirements before buying
-                        if (wepData != null && wepData.Requirements.Count > 0)
+                        bool canBuy = true;
+                        foreach (ItemBase req in wepData.Requirements)
                         {
-                            foreach (ItemBase req in wepData.Requirements)
+                            if (!Core.CheckInventory(req.ID, req.Quantity))
                             {
-                                if (!Core.CheckInventory(req.ID, req.Quantity))
+                                // Farm the required quantity of Exalted Nodes
+                                if (req.Name == "Exalted Node")
+                                    Core.KillMonster("timeinn", "r3", "Bottom", "*", "Exalted Node", req.Quantity, isTemp: false);
+                                else
                                 {
-                                    // Farm the required quantity of Exalted Nodes
-                                    if (req.Name == "Exalted Node")
-                                    {
-                                        Core.KillMonster("timeinn", "r3", "Bottom", "*", "Exalted Node", req.Quantity, isTemp: false);
-                                    }
+                                    Core.Logger($"Missing {req.Name} x{req.Quantity}, Bot Cannot farm this.");
+                                    canBuy = false;
                                 }
                             }
+                        }
 
-                            // Buy the weapon after fulfilling requirements
+                        // Buy the weapon after fulfilling requirements
+                        if (canBuy && wepData.Requirements.All(req => Core.CheckInventory(req.ID, req.Quantity)))
                             Adv.BuyItem("timeinn", 2010, wep);
 
-                            if (Core.CheckInventory("Exalted Apotheosis"))
-                                break;
-                        }
+                        if (Core.CheckInventory("Exalted Apotheosis"))
+                            break;
                     }
                 }
 
                 if (Core.CheckInventory("Exalted Apotheosis"))
+                    break;
+            }
+
+            if (Core.CheckInventory("Exalted Apotheosis"))
+            {
+                Core.Logger("Congratulations on completing the Exalted Apotheosis weapon!");
+                break;
+            }
+            else if (exaltedApo != null)
+            {
+                foreach (ItemBase item in exaltedApo.Requirements)
                 {
-                    Core.Logger("Congratulations on completing the Exalted Apotheosis weapon!");
-                }
-                else if (ExaltedApo != null)
-                {
-                    foreach (ItemBase item in ExaltedApo.Requirements)
-                    {
-                        if (Core.CheckInventory(item.ID, toInv: false))
-                            continue;
-                        else
-                            Core.Logger($"Missing {item.Name}, {item.Quantity}");
-                    }
-                }
-                else
-                {
-                    Core.Logger("Exalted Apotheosis item not found in shop.");
+                    if (!Core.CheckInventory(item.ID, item.Quantity))
+                        Core.Logger($"Missing {item.Name}, x{item.Quantity}");
                 }
             }
+            else
+            {
+                Core.Logger("Exalted Apotheosis item not found in shop.");
+            }
         }
-        Bot.Wait.ForPickup("Exalted Apotheosis");
 
+        Bot.Wait.ForPickup("Exalted Apotheosis");
     }
 }
 
