@@ -27,7 +27,7 @@ public class ExaltedApotheosisPreReqs
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Ezrajal Insignia", "Warden Insignia", "Engineer Insignia" });
+        Core.BankingBlackList.AddRange(new[] { "Ezrajal Insignia", "Warden Insignia", "Engineer Insignia", "Exalted Relic Piece", "Exalted Artillery Shard", "Exalted Forgemetal" });
         Core.SetOptions();
 
         PreReqs();
@@ -37,15 +37,6 @@ public class ExaltedApotheosisPreReqs
 
     public void PreReqs()
     {
-        if (!Core.CheckInventory("Ezrajal Insignia", 24) || !Core.CheckInventory("Warden Insignia", 24) || !Core.CheckInventory("Engineer Insignia", 16))
-        {
-            Core.Logger($" Ezrajal Insignia: {Core.dynamicQuant("Ezrajal Insignia", false)} / 24");
-            Core.Logger($" Warden Insignia: {Core.dynamicQuant("Warden Insignia", false)} / 24");
-            Core.Logger($" Engineer Insignia: {Core.dynamicQuant("Engineer Insignia", false)} / 16");
-            Core.Logger("Please obtain the rest of the insignias with your army to complete the merge. Skua will *not* be able to do ULTRAs for you. (not sorry)");
-            return;
-        }
-
         // Ensure shop is loaded:
         Core.Join("timeinn");
         while (!Bot.ShouldExit && Bot.Shops.Name != "Exaltia Merge")
@@ -135,5 +126,6 @@ public class ExaltedApotheosisPreReqs
 
         Bot.Wait.ForPickup("Exalted Apotheosis");
     }
+
 }
 
