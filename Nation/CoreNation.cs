@@ -641,10 +641,10 @@ public class CoreNation
     }
 
     /// <summary>
-    /// Does Nulgath Larvae quest for the desired item
+    /// Farms the specified item or all items from the Nulgath Larvae quest.
     /// </summary>
-    /// <param name="item">Desired item name</param>
-    /// <param name="quant">Desired item quantity</param>
+    /// <param name="item">The item to farm. If null, all items are farmed.</param>
+    /// <param name="quant">The quantity of the item to farm.</param>
     public void NulgathLarvae(string? item = null, int quant = 1)
     {
         Quest? larvaeQuest = Bot.Quests.EnsureLoad(2566);
@@ -674,22 +674,16 @@ public class CoreNation
         else
         {
             // Farming for all drops
-            foreach (var reward in larvaeQuest.Rewards)
+            foreach (var reward in larvaeQuest.Rewards.Where(x => !Core.CheckInventory(x.ID, x.MaxStack, false)))
                 FarmItem(larvaeQuest, voucherQuest, reward.Name, reward.MaxStack);
         }
 
         void FarmItem(Quest? larvaeQuest, Quest? voucherQuest, string item, int quant)
         {
-            int itemId = -1;
+            int itemId = voucherQuest?.Rewards.FirstOrDefault(x => x.Name == item)?.ID ?? -1;
             bool shouldFarm4778 = item != null && voucherQuest != null && voucherQuest.Rewards.Any(x => x.Name == item);
 
-            if (voucherQuest != null && item != null && voucherQuest.Rewards.Any(x => x.Name == item))
-                itemId = voucherQuest.Rewards.First(x => x.Name == item).ID;
-
-
-            Bot.Drops.Add("Mana Energy for Nulgath");
-            if (item != null)
-                Bot.Drops.Add(item);
+            Bot.Drops.Add("Mana Energy for Nulgath", item ?? string.Empty);
 
             Core.FarmingLogger(item, quant);
             while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
@@ -704,14 +698,12 @@ public class CoreNation
                     Core.EnsureAccept(2566);
                     Core.HuntMonster("elemental", "Mana Falcon", "Charged Mana Energy for Nulgath", 5);
                     Core.EnsureComplete(2566);
-                    if (item != null)
-                        Bot.Wait.ForPickup(item);
+                    Bot.Wait.ForPickup(item ?? string.Empty);
                     if (shouldFarm4778 && Core.CheckInventory("Voucher of Nulgath (non-mem)") && Core.CheckInventory("Essence of Nulgath", 60))
                     {
                         Core.EnsureAccept(4778);
                         Core.EnsureCompleteMulti(4778, itemId);
-                        if (item != null)
-                            Bot.Wait.ForPickup(item);
+                        Bot.Wait.ForPickup(item ?? string.Empty);
                     }
                 }
             }
