@@ -647,73 +647,63 @@ public class CoreNation
     /// <param name="quant">Desired item quantity</param>
     public void NulgathLarvae(string? item = null, int quant = 1)
     {
-        Quest? voucherItem = Bot.Quests.EnsureLoad(2566);
-        if (voucherItem == null)
+        Quest? larvaeQuest = Bot.Quests.EnsureLoad(2566);
+        if (larvaeQuest == null)
         {
             Core.Logger("Nulgath Larvae quest not found.");
             return;
         }
-        ItemBase? VoucherItemReward = voucherItem.Rewards.FirstOrDefault(x => x.Name == item);
-        if (VoucherItemReward == null)
-        {
-            Core.Logger($"Item '{item}' not found in rewards.");
-            return;
-        }
-        Bot.Drops.Add(bagDrops);
-        Bot.Drops.Add("Mana Energy for Nulgath");
+
+        Quest? voucherQuest = Bot.Quests.EnsureLoad(4778);
+        if (voucherQuest == null)
+            Core.Logger("Voucher quest not found.");
+
         if (item != null)
         {
+            // Farming for a specific item
+            FarmItem(larvaeQuest, voucherQuest, item, quant);
+        }
+        else
+        {
+            // Farming for all drops
+            foreach (var reward in larvaeQuest.Rewards)
+                FarmItem(larvaeQuest, voucherQuest, reward.Name, reward.MaxStack);
+        }
+
+        void FarmItem(Quest? larvaeQuest, Quest? voucherQuest, string item, int quant)
+        {
+            int itemId = -1;
+            bool shouldFarm4778 = item != null && voucherQuest != null && voucherQuest.Rewards.Any(x => x.Name == item);
+
+            if (voucherQuest != null && item != null && voucherQuest.Rewards.Any(x => x.Name == item))
+                itemId = voucherQuest.Rewards.First(x => x.Name == item).ID;
+
+
+            Bot.Drops.Add("Mana Energy for Nulgath");
+            if (item != null)
+                Bot.Drops.Add(item);
+
             Core.FarmingLogger(item, quant);
             while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
             {
                 Core.EnsureAccept(2566);
                 Core.EquipClass(ClassType.Solo);
-                Core.HuntMonster("elemental", "Mana Golem", "Mana Energy for Nulgath", 13, false);
-
+                Core.HuntMonster("elemental", "Mana Golem", "Mana Energy for Nulgath", 13, isTemp: false);
                 Core.EquipClass(ClassType.Farm);
+
                 while (!Bot.ShouldExit && !Core.CheckInventory(item, quant) && Core.CheckInventory("Mana Energy for Nulgath"))
                 {
                     Core.EnsureAccept(2566);
                     Core.HuntMonster("elemental", "Mana Falcon", "Charged Mana Energy for Nulgath", 5);
                     Core.EnsureComplete(2566);
-                    Bot.Wait.ForPickup(item);
-                }
-                if (Core.CheckInventory("Voucher of Nulgath (non-mem)") && Core.CheckInventory("Essence of Nulgath", 60))
-                {
-                    Core.EnsureAccept(4778);
-                    Core.EnsureCompleteMulti(4778, itemID: item == "Totem of Nulgath" || item == "Gem of Nulgath" ? VoucherItemReward.ID : -1);
-                }
-            }
-        }
-        else
-        {
-            foreach (string Drop in bagDrops)
-            {
-                ItemBase? drop = Core.EnsureLoad(2566).Rewards.Find(x => x.Name == Drop);
-                if (drop == null)
-                    continue;
-
-                Core.FarmingLogger(drop.Name, drop.MaxStack);
-
-                while (!Bot.ShouldExit && !Core.CheckInventory(drop.Name, drop.MaxStack))
-                {
-                    Core.EnsureAccept(2566);
-                    Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster("elemental", "Mana Golem", "Mana Energy for Nulgath", 13, isTemp: false);
-                    Core.EquipClass(ClassType.Farm);
-
-                    Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(drop.Name, drop.MaxStack) && Core.CheckInventory("Mana Energy for Nulgath"))
-                    {
-                        Core.EnsureAccept(2566);
-                        Core.HuntMonster("elemental", "Mana Falcon", "Charged Mana Energy for Nulgath", 5);
-                        Core.EnsureComplete(2566);
-                        Bot.Wait.ForPickup(drop.Name);
-                    }
-                    if (Core.CheckInventory("Voucher of Nulgath (non-mem)") && Core.CheckInventory("Essence of Nulgath", 60))
+                    if (item != null)
+                        Bot.Wait.ForPickup(item);
+                    if (shouldFarm4778 && Core.CheckInventory("Voucher of Nulgath (non-mem)") && Core.CheckInventory("Essence of Nulgath", 60))
                     {
                         Core.EnsureAccept(4778);
-                        Core.EnsureCompleteMulti(4778, itemID: item == "Totem of Nulgath" || item == "Gem of Nulgath" ? VoucherItemReward.ID : -1);
+                        Core.EnsureCompleteMulti(4778, itemId);
+                        if (item != null)
+                            Bot.Wait.ForPickup(item);
                     }
                 }
             }
