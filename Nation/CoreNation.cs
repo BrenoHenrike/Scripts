@@ -660,6 +660,14 @@ public class CoreNation
 
         if (item != null)
         {
+            // Check if the item is a valid drop from quest 2566
+            bool isValidItem = larvaeQuest.Rewards.Any(reward => reward.Name == item);
+            if (!isValidItem)
+            {
+                Core.Logger($"{item} is not a valid drop from Nulgath Larvae quest.");
+                return;
+            }
+
             // Farming for a specific item
             FarmItem(larvaeQuest, voucherQuest, item, quant);
         }
