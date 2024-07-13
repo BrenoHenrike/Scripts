@@ -43,6 +43,7 @@ public class CoreAOR
         Castleeblana();
         Loughshine();
         NaoiseGrave();
+        LiaTaraHill();
     }
 
     private bool isSeaVoiceCalled = false;
@@ -661,7 +662,59 @@ public class CoreAOR
         }
     }
 
+    public void LiaTaraHill()
+    {
+        if (Core.isCompletedBefore(9814))
+            return;
 
+        NaoiseGrave();
+
+        Story.PreLoad(this);
+
+        // At Ease (9805)
+        Story.KillQuest(9805, "liatarahill", "Undead Garde");
+
+        // Greenguard Daisy (9806)
+        Story.KillQuest(9806, "liatarahill", "Garde Wraith");
+
+        // True Nature (9807)
+        Story.KillQuest(9807, "liatarahill", new[] { "Undead Garde", "Garde Wraith" });
+
+        // Deafly Pride (9808)
+        Story.MapItemQuest(9808, "liatarahill", new[] { 13364, 13365 });
+
+        // King of Briars and Smoke (9809)
+        if (!Story.QuestProgression(9809))
+        {
+            Core.EquipClass(ClassType.Solo);
+            Story.KillQuest(9809, "liatarahill", "King Duncan");
+            Core.EquipClass(ClassType.Farm);
+        }
+
+        // Last Snowfall (9810)
+        Story.KillQuest(9810, "liatarahill", new[] { "Undead Garde", "Garde Wraith" });
+        Story.MapItemQuest(9810, "liatarahill", 13368);
+
+        // Spring Melt (9811)
+        Story.KillQuest(9811, "liatarahill", "Ice Guardian");
+        Story.MapItemQuest(9811, "liatarahill", 13366);
+
+        // Connla (9812)
+        Story.KillQuest(9812, "liatarahill", "Skye Cailleach");
+
+        // Dumha na nGiall (9813)
+        Story.KillQuest(9813, "liatarahill", new[] { "Ice Guardian", "Skye Cailleach" });
+        Story.MapItemQuest(9813, "liatarahill", 13367);
+
+        // Changeling (9814)
+        if (!Story.QuestProgression(9814))
+        {
+            Core.EquipClass(ClassType.Solo);
+            Story.KillQuest(9814, "liatarahill", "Warden Illaria");
+            Core.EquipClass(ClassType.Farm);
+        }
+
+    }
     public void KillThing(string? map = null, int mobMapID = 1, string? targetAuraName = null, int ItemUsed = 1, string? Class = null, string? item = null, int quant = 1, bool isTemp = false)
     {
         Adv.BuyItem("seavoice", 2320, "Vigil", 1000, 12023);
