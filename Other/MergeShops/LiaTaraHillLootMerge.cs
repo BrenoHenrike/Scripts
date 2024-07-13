@@ -76,7 +76,7 @@ public class LiaTaraHillLootMerge
                     {
                         Core.EquipClass(ClassType.Farm);
                         Core.HuntMonster("liatarahill", "Undead Garde", "Garde's Brooch", 9, log: false);
-                        Core.HuntMonster("liatarahill", "Garde Wraith", "Garde's Blossoms", 9, log: false);
+                        Core.HuntMonster("liatarahill", "Garde Wraith", "Ghost Blossoms", 9, log: false);
                         Core.EquipClass(ClassType.Solo);
                         Core.HuntMonster("liatarahill", "Warden Illaria", "Illaria's Amulet", log: false);
                         Bot.Wait.ForPickup(req.Name);
