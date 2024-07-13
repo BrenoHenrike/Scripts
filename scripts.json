@@ -17042,6 +17042,33 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/HakuVillageMerge.cs"
   },
   {
+    "name": "LiaTaraHill Loot Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the LiaTaraHill Loot Merge [2460] in /liatarahill",
+    "tags": [
+      "liatarahill",
+      "loot",
+      "merge",
+      "liatarahill",
+      "gold",
+      "voucher",
+      "k",
+      "skye",
+      "cailleach",
+      "plasma",
+      "orbs",
+      "warden",
+      "south",
+      "wardens",
+      "ornate",
+      "obelisk",
+      "shattered"
+    ],
+    "path": "Other/MergeShops/LiaTaraHillLootMerge.cs",
+    "size": 5104,
+    "fileName": "LiaTaraHillLootMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/LiaTaraHillLootMerge.cs"
+  },
+  {
     "name": "Deep Trobble Merge",
     "description": "This bot will farm the items belonging to the selected mode for the Deep Trobble Merge [2338] in /pirates",
     "tags": [
