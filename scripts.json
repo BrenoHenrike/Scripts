@@ -7254,13 +7254,34 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/09SeaVoice.cs"
   },
   {
+    "name": "The Hill of Lia Tara",
+    "description": "This script completes the st oryline in /liatarahill.",
+    "tags": [
+      "age",
+      "of",
+      "ruin",
+      "saga",
+      "story",
+      "quest",
+      "liatarahill",
+      "lia tara",
+      "liatara",
+      "hill",
+      "queen victoria alteon"
+    ],
+    "path": "Story/AgeOfRuin/14LiaTaraHill.cs",
+    "size": 780,
+    "fileName": "14LiaTaraHill.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/14LiaTaraHill.cs"
+  },
+  {
     "name": "null",
     "description": "null",
     "tags": [
       "null"
     ],
     "path": "Story/AgeOfRuin/CoreAOR.cs",
-    "size": 25044,
+    "size": 26746,
     "fileName": "CoreAOR.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/CoreAOR.cs"
   },
@@ -7290,10 +7311,14 @@
       "castle_eblana",
       "loughshine",
       "naoise grave",
-      "naoisegrave"
+      "naoisegrave",
+      "lia tara",
+      "liatara",
+      "hill",
+      "hill of lia tara"
     ],
     "path": "Story/AgeOfRuin/00DoAll.cs",
-    "size": 880,
+    "size": 919,
     "fileName": "00DoAll.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/00DoAll.cs"
   },
