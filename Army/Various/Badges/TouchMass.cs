@@ -34,7 +34,6 @@ public class TouchMass
     public bool DontPreconfigure = true;
     public List<IOption> Options = new()
     {
-        new Option<bool>("DisableWarning", "Dsiable Botbait Warning", "Y/N", false),
         sArmy.player1,
         sArmy.player2,
         sArmy.player3,
@@ -47,13 +46,6 @@ public class TouchMass
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions(disableClassSwap: true);
-        if (bot.Config != null && !bot.Config.Get<bool>("DisableWarning"))
-        {
-            if (Bot.ShowMessageBox("This is Possible BotBait as having millions of stars defeated so early is sorta sus... Continue anyway???", "AE Bot Bait", true) == true)
-                return;
-            else
-                StupidQuest();
-        }
         StupidQuest();
         Core.SetOptions(false);
     }
