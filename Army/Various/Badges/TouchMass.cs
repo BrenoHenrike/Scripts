@@ -48,10 +48,13 @@ public class TouchMass
     {
         Core.SetOptions(disableClassSwap: true);
         if (bot.Config != null && !bot.Config.Get<bool>("DisableWarning"))
+        {
             if (Bot.ShowMessageBox("This is Possible BotBait as having millions of stars defeated so early is sorta sus... Continue anyway???", "AE Bot Bait", true) == true)
-                StupidQuest();
+                return;
             else
                 StupidQuest();
+        }
+        StupidQuest();
         Core.SetOptions(false);
     }
 
