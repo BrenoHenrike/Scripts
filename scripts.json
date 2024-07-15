@@ -2046,17 +2046,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/GravelynDoomFire.cs"
   },
   {
-    "name": "null",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Army/CoreArmyLite.cs",
-    "size": 44151,
-    "fileName": "CoreArmyLite.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/CoreArmyLite.cs"
-  },
-  {
     "name": "Aggro Monster Creator",
     "description": "This bot will allow you to start a custom AggroMon bot. It also allows you to save it to a file for later.",
     "tags": [
