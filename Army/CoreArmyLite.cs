@@ -782,8 +782,8 @@ public class CoreArmyLite
                 break;
             }
             #region Combat Area
-                if (Bot.Monsters.MapMonsters.Any(x => x != null && x.Cell == Bot.Player.Cell))
-                    PriorityAttack(attackPriority ?? "*");
+            if (Bot.Monsters.MapMonsters.Any(x => x != null && x.Cell == Bot.Player.Cell))
+                PriorityAttack(attackPriority ?? "*");
             #endregion Combat Area
         }
         ButlerStop();
@@ -1103,20 +1103,26 @@ public class CoreArmyLite
 
     public void PriorityAttack(string attNoPrio)
     {
-        if (_attackPriority != null || _attackPriority.Count > 0)
+        if (_attackPriority != null && _attackPriority.Count > 0)
         {
             Bot.Combat.Attack(attNoPrio);
             Core.Sleep();
             return;
         }
 
-        foreach (string mon in _attackPriority)
+        if (_attackPriority != null && _attackPriority.Count > 0)
         {
-            Monster _mon = Bot.Monsters.CurrentMonsters.Find(m => m.Name.FormatForCompare() == mon.FormatForCompare() && m.Name != null && m.Cell == Bot.Player.Cell);
-            if (_mon != null)
+            foreach (string mon in _attackPriority)
             {
-                Bot.Combat.Attack(_mon);
-                continue;
+                if (mon != null)
+                {
+                    Monster? _mon = Bot.Monsters.CurrentMonsters.Find(m => m.Name != null && m.Name.FormatForCompare() == mon.FormatForCompare() && m.Cell == Bot.Player.Cell);
+                    if (_mon != null)
+                    {
+                        Bot.Combat.Attack(_mon);
+                        continue;
+                    }
+                }
             }
         }
         Core.Sleep();

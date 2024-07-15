@@ -6070,12 +6070,18 @@ public static class UtilExtensionsS
         => source.ToList().Find(match: Match);
     public static bool TryFind<T>(this IEnumerable<T> source, Predicate<T> Match, out T? toReturn)
         => (toReturn = source.Find(Match)) != null;
-    public static string FormatForCompare(this string input) => new(input
-    .Trim()
-    .ToLowerInvariant()
-    .Normalize(System.Text.NormalizationForm.FormKD)
-    .Where(c => !char.IsWhiteSpace(c) && c != '\'' && (c == '_' || c == '-' || !char.IsPunctuation(c)))
-    .ToArray());
+    public static string FormatForCompare(this string? input)
+    {
+        if (input == null)
+            return string.Empty; // Handle null input by returning an empty string
+
+        return new string(input
+            .Trim()
+            .ToLowerInvariant()
+            .Normalize(System.Text.NormalizationForm.FormKD)
+            .Where(c => !char.IsWhiteSpace(c) && c != '\'' && (c == '_' || c == '-' || !char.IsPunctuation(c)))
+            .ToArray());
+    }
 
 }
 
