@@ -24,6 +24,7 @@ public class Butler
         new Option<string>("playerName", "Player Name", "Insert the name of the player to follow", ""),
         CoreBots.Instance.SkipOptions,
         new Option<bool>("lockedMaps", "Locked Zone Handling", "When the followed account goes in to a locked map, this function allows the Butler to follow that account.", true),
+        new Option<string>("lockedMapsList", "Custom Locked Maps", "Fill in the Maps that the bot will check (in order), if the player is not in the current map, split with a , (comma)."),
         new Option<ClassType>("classType", "Class Type", "This uses the farm or solo class set in [Options] > [CoreBots]", ClassType.Farm),
         new Option<string>("attackPriority", "Attack Priority", "Fill in the monsters that the bot should prioritize (in order), split with a , (comma)."),
         new Option<bool>("copyWalk", "Copy Walk", "Set to true if you want to move to the same position of the player you follow.", false),
@@ -48,6 +49,7 @@ public class Butler
         Army.Butler(
             Bot.Config!.Get<string>("playerName")!,
             Bot.Config!.Get<bool>("lockedMaps"),
+            Bot.Config.Get<string>("lockedMapsList"),
             Bot.Config.Get<ClassType>("classType"),
             Bot.Config!.Get<bool>("copyWalk"),
             roomNr,
