@@ -1,3 +1,4 @@
+using System.Reflection.PortableExecutable;
 /*
 name: null
 description: null
@@ -783,7 +784,7 @@ public class CoreArmyLite
             }
             #region Combat Area
             if (Bot.Monsters.MapMonsters.Any(x => x != null && x.Cell == Bot.Player.Cell))
-                PriorityAttack(attackPriority ?? "*");
+                PriorityAttack();
             #endregion Combat Area
         }
         ButlerStop();
@@ -1101,15 +1102,8 @@ public class CoreArmyLite
         // }
     }
 
-    public void PriorityAttack(string attNoPrio)
+    public void PriorityAttack()
     {
-        if (_attackPriority != null && _attackPriority.Count > 0)
-        {
-            Bot.Combat.Attack(attNoPrio);
-            Core.Sleep();
-            return;
-        }
-
         if (_attackPriority != null && _attackPriority.Count > 0)
         {
             foreach (string mon in _attackPriority)
@@ -1125,7 +1119,10 @@ public class CoreArmyLite
                 }
             }
         }
+        Bot.Combat.Attack("*");
+
         Core.Sleep();
+        return;
     }
 
     private async void MapNumberParses(string map)
