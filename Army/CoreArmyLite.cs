@@ -1104,25 +1104,33 @@ public class CoreArmyLite
 
     public void PriorityAttack()
     {
+        bool priorityMonsterFound = false; // Flag to indicate if a priority monster has been found and attacked
+
         if (_attackPriority != null && _attackPriority.Count > 0)
         {
             foreach (string mon in _attackPriority)
             {
                 if (mon != null)
                 {
+                    // Attempt to find a monster from the priority list in the same cell as the player
                     Monster? _mon = Bot.Monsters.CurrentMonsters.Find(m => m.Name != null && m.Name.FormatForCompare() == mon.FormatForCompare() && m.Cell == Bot.Player.Cell);
                     if (_mon != null)
                     {
-                        Bot.Combat.Attack(_mon);
-                        continue;
+                        Bot.Combat.Attack(_mon); // Attack the found priority monster
+                        priorityMonsterFound = true; // Set the flag to true
+                        break; // Exit the loop as we've found and attacked a priority monster
                     }
                 }
             }
         }
-        Bot.Combat.Attack("*");
 
-        Core.Sleep();
-        return;
+        // If no priority monster was found and attacked, attack any monster
+        if (!priorityMonsterFound)
+        {
+            Bot.Combat.Attack("*");
+        }
+
+        Core.Sleep(); // Sleep after the attack actions
     }
 
     private async void MapNumberParses(string map)
