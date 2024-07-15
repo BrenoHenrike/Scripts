@@ -659,13 +659,14 @@ public class CoreArmyLite
     };
     #endregion
     #region Butler
-    public void Butler(string playerName, bool LockedMaps = true, ClassType classType = ClassType.Farm, bool CopyWalk = false, int roomNr = 1, bool rejectDrops = true, string? attackPriority = null, int hibernateTimer = 0)
+    public void Butler(string playerName, bool LockedMaps = true, string? LockedMapsList = null, ClassType classType = ClassType.Farm, bool CopyWalk = false, int roomNr = 1, bool rejectDrops = true, string? attackPriority = null, int hibernateTimer = 0)
     {
+        #region no need to read
         // Double checking the playername and assigning it so all functions can read it
         if (playerName == "Insert Name" || string.IsNullOrEmpty(playerName))
             Core.Logger("No name was inserted, stopping the bot.", messageBox: true, stopBot: true);
         playerName = playerName.Trim().ToLower();
-        this.b_playerName = playerName;
+        b_playerName = playerName;
 
         // Assigning params to private objects.
         b_doLockedMaps = LockedMaps;
@@ -675,6 +676,10 @@ public class CoreArmyLite
 
         if (!string.IsNullOrEmpty(attackPriority))
             _attackPriority.AddRange(attackPriority.Split(',', StringSplitOptions.TrimEntries));
+
+
+        if (!string.IsNullOrEmpty(LockedMapsList))
+            _LockedMapsList.AddRange(LockedMapsList.Split(',', StringSplitOptions.TrimEntries));
 
         // Creating directory and file to communicate with the followed player.
         if (!Directory.Exists(CoreBots.ButlerLogDir))
@@ -717,10 +722,10 @@ public class CoreArmyLite
         if (!rejectDrops)
             Bot.Drops.Stop();
 
+        #endregion no need to read
 
-        while (!Bot.ShouldExit)
+        while (!Bot.ShouldExit && tryGoto(playerName))
         {
-            // Try to go to the followed player
             if (!tryGoto(playerName))
             {
                 while (!Bot.ShouldExit && (Bot.Player.HasTarget || Bot.Player.InCombat))
@@ -776,13 +781,10 @@ public class CoreArmyLite
                 b_breakOnMap = null;
                 break;
             }
-
-            // Attack any monster that is alive.
-            if (!Bot.Combat.StopAttacking && Bot.Monsters.CurrentMonsters.Any(m => m.HP >= 0))
-                PriorityAttack("*");
-
-            Core.Rest();
-            Core.Sleep();
+            #region Combat Area
+                if (Bot.Monsters.MapMonsters.Any(x => x != null && x.Cell == Bot.Player.Cell))
+                    PriorityAttack(attackPriority ?? "*");
+            #endregion Combat Area
         }
         ButlerStop();
     }
@@ -792,12 +794,16 @@ public class CoreArmyLite
     private int b_hibernationTimer = 0;
     private bool b_shouldHibernate = true;
     private List<string> _attackPriority = new();
+    private List<string> _LockedMapsList = new();
 
     private bool tryGoto(string userName)
     {
         // If you're in the same map and same cell, don't do anything
-        if (Bot.Map.PlayerExists(userName) && Bot.Map.TryGetPlayer(userName, out PlayerInfo? playerObject) && playerObject != null && playerObject.Cell == Bot.Player.Cell)
+        if (Bot.Map.PlayerExists(userName) && Bot.Map.TryGetPlayer(userName, out PlayerInfo? playerObject) && playerObject != null && playerObject.Cell != Bot.Player.Cell)
+        {
+            Bot.Player.Goto(userName);
             return true;
+        }
 
         if (b_doLockedMaps)
             Bot.Events.ExtensionPacketReceived += LockedZoneListener;
@@ -812,15 +818,19 @@ public class CoreArmyLite
             Core.ToggleAggro(false);
 
             Bot.Player.Goto(userName);
-            Core.Sleep(1000);
+            Core.Sleep();
 
             if (LockedZoneWarning)
                 break;
 
             if (Bot.Map.PlayerExists(userName))
             {
-                if (Bot.Map.TryGetPlayer(userName, out playerObject) && playerObject != null && playerObject.Cell == Bot.Player.Cell)
+                if (Bot.Map.TryGetPlayer(userName, out playerObject) && playerObject != null)
+                {
+                    if (playerObject.Cell != Bot.Player.Cell)
+                        Bot.Player.Goto(userName);
                     Bot.Player.SetSpawnPoint();
+                }
                 Core.ToggleAggro(true);
                 return true;
             }
@@ -937,66 +947,13 @@ public class CoreArmyLite
             new { Map = "voidnerfkitten", LevelRequired = 80 }
         };
 
+
         int maptry = 1;
-        int mapCount = Core.IsMember ? NonMemMaps.Length + MemMaps.Length : NonMemMaps.Length;
+        int mapCount = _LockedMapsList.Count == 0 ? (Core.IsMember ? NonMemMaps.Length + MemMaps.Length : NonMemMaps.Length) : (_LockedMapsList.Count);
 
-        foreach (string map in VerusMaps)
+        if (_LockedMapsList.Count == 0)
         {
-            Core.Logger($"[{(maptry.ToString().Length == 1 ? "0" : "")}{maptry++}/{mapCount}] Searching for {b_playerName} in /{map}", "LockedZoneHandler");
-            Core.Join(map);
-
-            if (!Bot.Map.PlayerExists(b_playerName!))
-                continue;
-            else
-                return;
-        }
-
-        foreach (string map in EventMaps)
-        {
-            if (!Core.isSeasonalMapActive(map))
-                continue;
-
-            Core.Logger($"[{(maptry.ToString().Length == 1 ? "0" : "")}{maptry++}/{mapCount}] Searching for {b_playerName} in /{map}", "LockedZoneHandler");
-            Core.Join(map);
-
-            if (!Bot.Map.PlayerExists(b_playerName!))
-                continue;
-            else
-                return;
-        }
-
-        foreach (var mapInfo in levelLockedMaps)
-        {
-            if (Bot.Player.Level < mapInfo.LevelRequired)
-            {
-                Core.Logger($"Not a high enough level.\n" +
-                $"required: {mapInfo.LevelRequired}, your's: {Bot.Player.Level}");
-                continue;
-            }
-
-            Core.Logger($"[{(maptry.ToString().Length == 1 ? "0" : "")}{maptry++}/{mapCount}] Searching for {b_playerName} in /{mapInfo.Map}", "LockedZoneHandler");
-            Core.Join(mapInfo.Map);
-
-            if (!Bot.Map.PlayerExists(b_playerName!))
-                continue;
-            else
-                return;
-        }
-
-        foreach (string map in NonMemMaps)
-        {
-            Core.Logger($"[{(maptry.ToString().Length == 1 ? "0" : "")}{maptry++}/{mapCount}] Searching for {b_playerName} in /{map}", "LockedZoneHandler");
-            Core.Join(map);
-
-            if (!Bot.Map.PlayerExists(b_playerName!))
-                continue;
-            else
-                return;
-        }
-
-        if (Core.IsMember)
-        {
-            foreach (string map in MemMaps)
+            foreach (string map in VerusMaps)
             {
                 Core.Logger($"[{(maptry.ToString().Length == 1 ? "0" : "")}{maptry++}/{mapCount}] Searching for {b_playerName} in /{map}", "LockedZoneHandler");
                 Core.Join(map);
@@ -1004,10 +961,97 @@ public class CoreArmyLite
                 if (!Bot.Map.PlayerExists(b_playerName!))
                     continue;
                 else
+                {
+                    Core.Logger($"{b_playerName!} Found!");
                     return;
+                }
+            }
+
+            foreach (string map in EventMaps)
+            {
+                if (!Core.isSeasonalMapActive(map))
+                    continue;
+
+                Core.Logger($"[{(maptry.ToString().Length == 1 ? "0" : "")}{maptry++}/{mapCount}] Searching for {b_playerName} in /{map}", "LockedZoneHandler");
+                Core.Join(map);
+
+                if (!Bot.Map.PlayerExists(b_playerName!))
+                    continue;
+                else
+                {
+                    Core.Logger($"{b_playerName!} Found!");
+                    return;
+                }
+            }
+
+            foreach (var mapInfo in levelLockedMaps)
+            {
+                if (Bot.Player.Level < mapInfo.LevelRequired)
+                {
+                    Core.Logger($"Not a high enough level.\n" +
+                    $"required: {mapInfo.LevelRequired}, your's: {Bot.Player.Level}");
+                    continue;
+                }
+
+                Core.Logger($"[{(maptry.ToString().Length == 1 ? "0" : "")}{maptry++}/{mapCount}] Searching for {b_playerName} in /{mapInfo.Map}", "LockedZoneHandler");
+                Core.Join(mapInfo.Map);
+
+                if (!Bot.Map.PlayerExists(b_playerName!))
+                    continue;
+                else
+                {
+                    Core.Logger($"{b_playerName!} Found!");
+                    return;
+                }
+            }
+
+            foreach (string map in NonMemMaps)
+            {
+                Core.Logger($"[{(maptry.ToString().Length == 1 ? "0" : "")}{maptry++}/{mapCount}] Searching for {b_playerName} in /{map}", "LockedZoneHandler");
+                Core.Join(map);
+
+                if (!Bot.Map.PlayerExists(b_playerName!))
+                    continue;
+                else
+                {
+                    Core.Logger($"{b_playerName!} Found!");
+                    return;
+                }
+            }
+
+            if (Core.IsMember)
+            {
+                foreach (string map in MemMaps)
+                {
+                    Core.Logger($"[{(maptry.ToString().Length == 1 ? "0" : "")}{maptry++}/{mapCount}] Searching for {b_playerName} in /{map}", "LockedZoneHandler");
+                    Core.Join(map);
+
+                    if (!Bot.Map.PlayerExists(b_playerName!))
+                        continue;
+                    else
+                    {
+                        Core.Logger($"{b_playerName!} Found!");
+                        return;
+                    }
+                }
             }
         }
+        else
+        {
+            foreach (string map in _LockedMapsList)
+            {
+                Core.Logger($"[{(maptry.ToString().Length == 1 ? "0" : "")}{maptry++}/{mapCount}] Searching for {b_playerName} in /{map}", "LockedZoneHandler");
+                if (Bot.Map.Name != map)
+                    Core.Join(map);
 
+                if (!Bot.Map.PlayerExists(b_playerName!))
+                    continue;
+
+                Core.Logger($"{b_playerName!} Found!");
+                return;
+            }
+
+        }
         Core.Join("whitemap");
         Core.Logger($"Could not find {b_playerName} in any of the maps within the LockedZoneHandler.", "LockedZoneHandler");
         if (b_shouldHibernate)
@@ -1059,22 +1103,22 @@ public class CoreArmyLite
 
     public void PriorityAttack(string attNoPrio)
     {
-        if (_attackPriority.Count == 0)
+        if (_attackPriority != null || _attackPriority.Count > 0)
         {
             Bot.Combat.Attack(attNoPrio);
+            Core.Sleep();
             return;
         }
 
         foreach (string mon in _attackPriority)
         {
-            var _mon = Bot.Monsters.CurrentMonsters.Find(m => m.Name.FormatForCompare() == mon.FormatForCompare() && m.Name != null && m.Cell == Bot.Player.Cell);
+            Monster _mon = Bot.Monsters.CurrentMonsters.Find(m => m.Name.FormatForCompare() == mon.FormatForCompare() && m.Name != null && m.Cell == Bot.Player.Cell);
             if (_mon != null)
             {
                 Bot.Combat.Attack(_mon);
-                return;
+                continue;
             }
         }
-        Bot.Combat.Attack(attNoPrio);
         Core.Sleep();
     }
 
