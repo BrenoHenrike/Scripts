@@ -129,7 +129,7 @@ public class MergeTemplateHelper
 
         foreach (ShopItem item in shopItems)
         {
-            if (Adv.miscCatagories.Contains(item.Category) || item.Requirements == null)
+            if (Adv.miscCatagories.Contains(item.Category) || item.Requirements == null || item.Name.StartsWith("Gold Voucher"))
                 continue;
 
             shopItemNames.Add($"        new Option<bool>(\"{item.ID}\", \"{item.Name}\", \"Mode: [select] only\\nShould the bot buy \\\"{item.Name}\\\" ?\", false),");
