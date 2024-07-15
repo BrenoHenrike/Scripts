@@ -724,7 +724,7 @@ public class CoreArmyLite
 
         #endregion no need to read
 
-        while (!Bot.ShouldExit && tryGoto(playerName))
+        while (!Bot.ShouldExit)
         {
             if (!tryGoto(playerName))
             {
