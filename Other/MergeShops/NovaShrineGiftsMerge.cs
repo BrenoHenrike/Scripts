@@ -183,7 +183,6 @@ public class NovaShrineGiftsMerge
 
     public List<IOption> Select = new()
     {
-        new Option<bool>("57304", "Gold Voucher 25k", "Mode: [select] only\nShould the bot buy \"Gold Voucher 25k\" ?", false),
         new Option<bool>("86372", "Star Light of Destiny", "Mode: [select] only\nShould the bot buy \"Star Light of Destiny\" ?", false),
         new Option<bool>("86846", "Celestial Paladin", "Mode: [select] only\nShould the bot buy \"Celestial Paladin\" ?", false),
         new Option<bool>("86847", "Celestial Paladin Winged Helm", "Mode: [select] only\nShould the bot buy \"Celestial Paladin Winged Helm\" ?", false),
