@@ -19313,9 +19313,6 @@
       "treasures",
       "merge",
       "greed",
-      "gold",
-      "voucher",
-      "k",
       "hollowborn",
       "bodyguard",
       "fists",
@@ -19326,10 +19323,13 @@
       "hunter",
       "bag",
       "necklace",
-      "necklaces"
+      "necklaces",
+      "krenos",
+      "spirit",
+      "katanas"
     ],
     "path": "Hollowborn/MergeShops/EddensTreasuresMerge.cs",
-    "size": 5739,
+    "size": 7158,
     "fileName": "EddensTreasuresMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/MergeShops/EddensTreasuresMerge.cs"
   },
