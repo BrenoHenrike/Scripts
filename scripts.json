@@ -2052,7 +2052,7 @@
       "null"
     ],
     "path": "Army/CoreArmyLite.cs",
-    "size": 42149,
+    "size": 43943,
     "fileName": "CoreArmyLite.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/CoreArmyLite.cs"
   },
@@ -3385,7 +3385,7 @@
       "goto"
     ],
     "path": "Tools/Butler.cs",
-    "size": 11140,
+    "size": 11383,
     "fileName": "Butler.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/Butler.cs"
   },
