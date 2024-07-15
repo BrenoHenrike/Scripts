@@ -34,6 +34,7 @@ public class CavernCelestite
 
     private int GetMaxStack()
     {
+        // Uses ternary operator for Tato to understand
         return Bot.Quests.EnsureLoad(939)?.Rewards.FirstOrDefault(reward => reward.Name.Equals("Cavern Celestite"))?.MaxStack ?? 1;
     }
 
