@@ -252,6 +252,7 @@ public class CoreBLOD
 
         Core.RegisterQuests(farmSpiritOrbs ? new[] { 2082, 2083, 939 } : new[] { 939 });
 
+        Core.FarmingLogger(item, quant);
 
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
         {
