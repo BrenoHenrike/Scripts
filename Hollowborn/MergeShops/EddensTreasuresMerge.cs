@@ -1,7 +1,7 @@
 /*
 name: Eddens Treasures Merge
 description: This bot will farm the items belonging to the selected mode for the Eddens Treasures Merge [2455] in /greed
-tags: eddens, treasures, merge, greed, gold, voucher, k, hollowborn, bodyguard, fists, claws, battle, companion, treasure, hunter, bag, necklace, necklaces
+tags: eddens, treasures, merge, greed, hollowborn, bodyguard, fists, claws, battle, companion, treasure, hunter, bag, necklace, necklaces, krenos, spirit, katanas
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -30,7 +30,7 @@ public class EddensTreasuresMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Cursed Ring", "Frozen Diamond" });
+        Core.BankingBlackList.AddRange(new[] { "Cursed Ring", "Frozen Diamond", "Krenos Spirit Katana", "Energy Dragon Scale" });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -87,6 +87,29 @@ public class EddensTreasuresMerge
                     Core.CancelRegisteredQuests();
                     break;
 
+                case "Krenos Spirit Katana":
+                    Core.FarmingLogger(req.Name, quant);
+                    Core.RegisterQuests(9804);
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
+                    {
+                        Core.EquipClass(ClassType.Solo);
+                        Core.HuntMonster("shimazu", "Shimazu", "First Rune", log: false);
+                        Core.GetMapItem(13328, map: "evilmarsh");
+                        Core.HuntMonster("seraphicwarlaken", "Rayce", "Third Rune", log: false);
+                        Core.EquipClass(ClassType.Farm);
+                        Core.HuntMonster("pyrewatch", "Firestorm Major", "Fourth Rune", log: false);
+                        Core.GetMapItem(13329, map: "icewindpass");
+                        Bot.Wait.ForPickup(req.Name);
+                    }
+                    Core.CancelRegisteredQuests();
+                    break;
+
+                case "Energy Dragon Scale":
+                    Core.FarmingLogger(req.Name, quant);
+                    Core.EquipClass(ClassType.Solo);
+                    Core.HuntMonster("thunderfang", "Tonitru", req.Name, quant, req.Temp, false);
+                    break;
+
             }
         }
     }
@@ -106,5 +129,6 @@ public class EddensTreasuresMerge
         new Option<bool>("86737", "Hollowborn Treasure Hunter Bag", "Mode: [select] only\nShould the bot buy \"Hollowborn Treasure Hunter Bag\" ?", false),
         new Option<bool>("86738", "Hollowborn Treasure Hunter Necklace", "Mode: [select] only\nShould the bot buy \"Hollowborn Treasure Hunter Necklace\" ?", false),
         new Option<bool>("86739", "Hollowborn Treasure Hunter Necklaces", "Mode: [select] only\nShould the bot buy \"Hollowborn Treasure Hunter Necklaces\" ?", false),
+        new Option<bool>("67461", "Krenos Spirit Katanas", "Mode: [select] only\nShould the bot buy \"Krenos Spirit Katanas\" ?", false),
     };
 }
