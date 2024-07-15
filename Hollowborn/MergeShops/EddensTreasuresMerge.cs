@@ -116,8 +116,6 @@ public class EddensTreasuresMerge
 
     public List<IOption> Select = new()
     {
-        new Option<bool>("57304", "Gold Voucher 25k", "Mode: [select] only\nShould the bot buy \"Gold Voucher 25k\" ?", false),
-        new Option<bool>("61043", "Gold Voucher 500k", "Mode: [select] only\nShould the bot buy \"Gold Voucher 500k\" ?", false),
         new Option<bool>("86701", "Hollowborn Bodyguard", "Mode: [select] only\nShould the bot buy \"Hollowborn Bodyguard\" ?", false),
         new Option<bool>("86702", "Hollowborn Bodyguard Helm", "Mode: [select] only\nShould the bot buy \"Hollowborn Bodyguard Helm\" ?", false),
         new Option<bool>("86705", "Hollowborn Bodyguard Fists", "Mode: [select] only\nShould the bot buy \"Hollowborn Bodyguard Fists\" ?", false),
