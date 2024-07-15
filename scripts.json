@@ -14200,7 +14200,7 @@
       "null"
     ],
     "path": "Good/BLoD/CoreBLOD.cs",
-    "size": 22451,
+    "size": 22493,
     "fileName": "CoreBLOD.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/CoreBLOD.cs"
   },
@@ -14242,6 +14242,25 @@
     "size": 1912,
     "fileName": "FindingFragments.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/FindingFragments.cs"
+  },
+  {
+    "name": "Cavern Celestite",
+    "description": "This script farms the desired quantity of Cavern Celestite.",
+    "tags": [
+      "cavern",
+      "celestite",
+      "BLOD",
+      "blinding",
+      "light",
+      "destiny",
+      "good",
+      "soul searching",
+      "nsod"
+    ],
+    "path": "Good/BLoD/CavernCelestite.cs",
+    "size": 1498,
+    "fileName": "CavernCelestite.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/CavernCelestite.cs"
   },
   {
     "name": "Spirit Orbs",
