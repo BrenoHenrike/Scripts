@@ -437,7 +437,7 @@
       "shadow-slayer"
     ],
     "path": "Story/ShadowSlayerK.cs",
-    "size": 7131,
+    "size": 7119,
     "fileName": "ShadowSlayerK.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowSlayerK.cs"
   },
@@ -6751,7 +6751,7 @@
       "null"
     ],
     "path": "Story/QueenofMonsters/CoreQOM.cs",
-    "size": 32049,
+    "size": 32036,
     "fileName": "CoreQOM.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/QueenofMonsters/CoreQOM.cs"
   },
@@ -6917,7 +6917,7 @@
       "null"
     ],
     "path": "Story/7DeadlyDragons/Core7DD.cs",
-    "size": 14815,
+    "size": 14814,
     "fileName": "Core7DD.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/7DeadlyDragons/Core7DD.cs"
   },
