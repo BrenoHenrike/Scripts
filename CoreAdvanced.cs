@@ -200,28 +200,16 @@ public class CoreAdvanced
 
         matsOnly = mode == 2;
 
-        // Filters a collection of ShopItems to ensure uniqueness based on ID and ShopItemID. Selects items
-        // based on specific criteria including Upgrade requirements and exclusion of items ending with "insignia".
-        // Returns a list of filtered ShopItems.
+        //i stg i keep having to add filters to this..
         List<ShopItem> shopItems = Core.GetShopItems(map, shopID)
-                                .GroupBy(item => new { item.ID, item.ShopItemID })
+                                .GroupBy(item => new { item.Name, item.ID })
                                 .Select(group =>
                                 {
-                                    var firstItem = group.First();
-                                    // Check if the first item has Upgrade requirements and is not a member
-                                    if (firstItem.Requirements.Any(req => req.Upgrade && !Core.IsMember))
-                                    {
-                                        // Select the second item if available, otherwise fallback to the first item
-                                        return group.Skip(1).FirstOrDefault() ?? firstItem;
-                                    }
-                                    else
-                                    {
-                                        return firstItem;
-                                    }
+                                    var orderedGroup = group.OrderBy(item => item.ShopItemID != group.First().ShopItemID);
+                                    return Group == "First" ? orderedGroup.First() : orderedGroup.Last();
                                 })
-                                .Where(x => x != null && !x.Name.ToLower().EndsWith("insignia"))
+                                .Where(x => !x.Name.ToLower().EndsWith("insignia"))
                                 .ToList();
-
 
         List<ShopItem> items = new();
         bool memSkipped = false;
@@ -332,7 +320,12 @@ public class CoreAdvanced
 
                 if (shopItems.Select(x => x.ID).Contains(req.ID) && !AltFarmItems.Contains(req.Name))
                 {
-                    ShopItem selectedItem = shopItems.First(x => x.ID == req.ID && !req.Name.EndsWith("Insignia"));
+                    // ShopItem selectedItem = shopItems.First(x => x.ID == req.ID && !req.Name.EndsWith("Insignia"));
+                    ShopItem selectedItem = shopItems
+                    .Where(x => x.ID == req.ID && !x.Name.EndsWith("Insignia"))
+                    // Add more filtering conditions as needed
+                    .First();
+
 
                     if (selectedItem.Requirements.Any(r => MaxStackOneItems.Contains(r.Name)))
                     {
