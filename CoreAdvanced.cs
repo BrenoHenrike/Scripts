@@ -172,11 +172,18 @@ public class CoreAdvanced
     }
 
     /// <summary>
-    /// Buys all merge from a shop based on the script options selected setting. Will read where to get the ingredients from from the findIngredients param
+    /// Buys merge items from a shop based on specified options. Filters ShopItems to ensure uniqueness by ID and ShopItemID,
+    /// selecting items based on Upgrade requirements and excluding those ending with "insignia".
     /// </summary>
-    /// <param name="map">The map where the shop can be loaded from</param>
-    /// <param name="shopID">The shop ID to load the shopdata</param>
-    /// <param name="findIngredients">A switch nested in a void that will explain this function where to get items</param>
+    /// <param name="map">The map from which the shop is loaded.</param>
+    /// <param name="shopID">The shop ID to load shop data.</param>
+    /// <param name="findIngredients">Action determining where to retrieve items.</param>
+    /// <param name="buyOnlyThis">Optional. Limits purchases to a specific item.</param>
+    /// <param name="itemBlackList">Optional. List of excluded items.</param>
+    /// <param name="buyMode">Optional. Specifies buying mode.</param>
+    /// <param name="Group">Optional. Specifies group selection method.</param>
+    /// <param name="ShopItemID">Optional. Specifies ShopItem ID.</param>
+    /// <param name="Log">Optional. Enables logging.</param>
     public void StartBuyAllMerge(string map, int shopID, Action findIngredients, string? buyOnlyThis = null, string[]? itemBlackList = null, mergeOptionsEnum? buyMode = null, string Group = "First", int ShopItemID = 0, bool Log = true)
     {
         if (buyOnlyThis == null && buyMode == null)
@@ -192,10 +199,29 @@ public class CoreAdvanced
         else Core.Logger("Invalid setup detected for StartBuyAllMerge. Please report", messageBox: true, stopBot: true);
 
         matsOnly = mode == 2;
+
+        // Filters a collection of ShopItems to ensure uniqueness based on ID and ShopItemID. Selects items
+        // based on specific criteria including Upgrade requirements and exclusion of items ending with "insignia".
+        // Returns a list of filtered ShopItems.
         List<ShopItem> shopItems = Core.GetShopItems(map, shopID)
-                                    .GroupBy(item => item.ID)
-                                    .Select(group => Group == "First" ? group.First() : group.Last())
-                                    .ToList();
+                                .GroupBy(item => new { item.ID, item.ShopItemID })
+                                .Select(group =>
+                                {
+                                    var firstItem = group.First();
+                                    // Check if the first item has Upgrade requirements and is not a member
+                                    if (firstItem.Requirements.Any(req => req.Upgrade && !Core.IsMember))
+                                    {
+                                        // Select the second item if available, otherwise fallback to the first item
+                                        return group.Skip(1).FirstOrDefault() ?? firstItem;
+                                    }
+                                    else
+                                    {
+                                        return firstItem;
+                                    }
+                                })
+                                .Where(x => x != null && !x.Name.ToLower().EndsWith("insignia"))
+                                .ToList();
+
 
         List<ShopItem> items = new();
         bool memSkipped = false;
@@ -205,7 +231,7 @@ public class CoreAdvanced
             if (Core.CheckInventory(item.ID, toInv: false) ||
                     miscCatagories.Contains(item.Category) ||
                     (!string.IsNullOrEmpty(buyOnlyThis) && buyOnlyThis != item.Name) ||
-                    (itemBlackList != null && itemBlackList.Any(b => b.ToLower() == item.Name.ToLower())))
+                    (itemBlackList != null && itemBlackList.Any(x => x.ToLower() == item.Name.ToLower())))
                 continue;
 
             if (Core.IsMember || !item.Upgrade)
@@ -306,7 +332,7 @@ public class CoreAdvanced
 
                 if (shopItems.Select(x => x.ID).Contains(req.ID) && !AltFarmItems.Contains(req.Name))
                 {
-                    ShopItem selectedItem = shopItems.First(x => x.ID == req.ID);
+                    ShopItem selectedItem = shopItems.First(x => x.ID == req.ID && !req.Name.EndsWith("Insignia"));
 
                     if (selectedItem.Requirements.Any(r => MaxStackOneItems.Contains(r.Name)))
                     {
