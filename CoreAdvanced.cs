@@ -265,7 +265,7 @@ public class CoreAdvanced
                 if (!matsOnly && !Core.CheckInventory(item.ID, toInv: false))
                 {
                     Core.Logger($"Buying {item.Name} (#{t++}/{items.Count})");
-                    BuyItem(map, shopID, item.ID, shopItemID: ShopItemID, Log: Log);
+                    BuyItem(map, shopID, item.ID, shopItemID: item.ShopItemID, Log: Log);
 
                     if (item.Coins)
                         Core.ToBank(item.ID);
@@ -316,7 +316,7 @@ public class CoreAdvanced
                             Core.Sleep();
 
                             if (!matsOnly)
-                                BuyItem(map, shopID, selectedItem.ID, Bot.Inventory.GetQuantity(selectedItem.ID) + selectedItem.Quantity, Log: Log);
+                                BuyItem(map, shopID, selectedItem.ID, Bot.Inventory.GetQuantity(selectedItem.ID) + selectedItem.Quantity, shopItemID: selectedItem.ShopItemID, Log: Log);
                             else break;
                         }
                     }
@@ -326,7 +326,7 @@ public class CoreAdvanced
                         Core.Sleep();
 
                         if (!matsOnly)
-                            BuyItem(map, shopID, selectedItem.ID, req.Quantity, Log: Log);
+                            BuyItem(map, shopID, selectedItem.ID, req.Quantity, shopItemID: selectedItem.ShopItemID, Log: Log);
                     }
                 }
                 else
