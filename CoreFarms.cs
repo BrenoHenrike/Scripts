@@ -3219,7 +3219,7 @@ public class CoreFarms
     {
         //Ensure Rank 2 > fishing rep
         FishingREP(2, false, false, false);
-        
+
         ItemBase? boostItem = Core.EnsureLoad(quest)?.Rewards.Find(x => x.Name == boostName);
         if (boostItem != null && Core.CheckInventory(boostItem?.Name, BoostQuant) && !doOnce) return;
 
@@ -3235,7 +3235,7 @@ public class CoreFarms
             {
                 Core.EnsureAccept(1614);
                 GetFish(10850, 30, 1614);
-                Core.HuntMonster("swordhaven", "Slime", "Slime Sauce", log: false);
+                Core.HuntMonster("Greenguardwest", "Slime", "Slime Sauce", log: false);
                 Core.EnsureComplete(1614);
             }
 
