@@ -1587,16 +1587,16 @@ public class CoreNation
         // NewWorldsNewOpportunities("Totem of Nulgath", quant);
         // VoidKightSwordQuest("Totem of Nulgath", quant);
         // Core.Logger(Taro ? "Method choosen (if pets not owned): Taro" : "Method choosen (if pets not owned): Voucher Item");
-        Core.RegisterQuests(726);
-        while (!Bot.ShouldExit && !Core.CheckInventory("Totem of Nulgath", quant))
-        {
-            Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("tercessuinotlim", "Taro Blademaster", "Taro's Manslayer", isTemp: false);
-
-            EssenceofNulgath(25);
-        }
+        // Core.RegisterQuests(726);
         // while (!Bot.ShouldExit && !Core.CheckInventory("Totem of Nulgath", quant))
-        // VoucherItemTotemofNulgath(VoucherItemTotem.Totem_of_Nulgath);
+        // {
+        //     Core.EquipClass(ClassType.Solo);
+        //     Core.HuntMonster("tercessuinotlim", "Taro Blademaster", "Taro's Manslayer", isTemp: false);
+
+        //     EssenceofNulgath(25);
+        // }
+        while (!Bot.ShouldExit && !Core.CheckInventory("Totem of Nulgath", quant))
+        VoucherItemTotemofNulgath(VoucherItemTotem.Totem_of_Nulgath);
     }
 
     /// <summary>
