@@ -1687,31 +1687,26 @@ public class CoreBots
     /// </summary>
     /// <param name="questID">ID of the quest to complete</param>
     /// <param name="itemID">ID of the choose-able reward item</param>
-    public bool EnsureComplete(int questID, int itemID = -1, bool RegisterQuest = false)
+    public bool EnsureComplete(int questID, int itemID = -1)
     {
         if (questID <= 0)
             return false;
 
         Quest questData = EnsureLoad(questID);
-        EnsureLoad(questData.ID);
-        Bot.Lite.ReacceptQuest = false;
 
-        Sleep();
+        Bot.Wait.ForTrue(() => Bot.Quests.Tree.Contains(questData), 20);
 
         if (questData != null && questData.Requirements != null
                         && (!questData.Requirements.Any()
                         || questData.Requirements.All(r => r != null && r.ID > 0)
                         && CheckInventory(questData.Requirements.Select(x => x.ID).ToArray())))
         {
-            Bot.Quests.EnsureComplete(questID, itemID);
-            if (RegisterQuest)
-                Bot.Lite.ReacceptQuest = true;
-            return true;
+            if (Bot.Player.InCombat)
+                JumpWait();
+            return Bot.Quests.EnsureComplete(questID, itemID);
         }
         else
         {
-            if (RegisterQuest)
-                Bot.Lite.ReacceptQuest = true;
             return false;
         }
     }
@@ -3911,6 +3906,8 @@ public class CoreBots
     public void SavedState(bool on = true)
     {
         // Method implementation intentionally left blank as it is currently unused.
+        GC.Collect();
+
     }
 
 
@@ -4035,7 +4032,13 @@ public class CoreBots
             return;
 
         Bot.Options.AttackWithoutTarget = false;
+
         HashSet<string> blackListedCells = Bot.Monsters.MapMonsters.Select(monster => monster.Cell).ToHashSet();
+        // Check if there are more than one cell that starts with "Enter"
+        if (Bot.Map.Cells.Count(cell => cell.StartsWith("Enter")) > 1)
+        {
+            blackListedCells.UnionWith(Bot.Map.Cells.Where(cell => cell.StartsWith("Enter")));
+        }
 
         if (!blackListedCells.Contains(Bot.Player.Cell))
             return;
@@ -4047,16 +4050,28 @@ public class CoreBots
 
         if (!blackListedCells.Contains("Enter"))
         {
-            cellPad = ("Enter", "Spawn");
+            cellPad = (Bot.Map.Cells.Any(x => x.StartsWith("Enter")) ? "Enter" : Bot.Player.Cell, "Spawn");
         }
         else
         {
             blackListedCells.UnionWith(new List<string> { "Wait", "Blank", "Out", "moveFrame", "CutMikoOrochi", "innitRoom" });
             blackListedCells.UnionWith(Bot.Map.Cells.Where(x => x.StartsWith("Cut")));
 
-            #region AI is Aggressive (always)
+            #region AI is Aggressive (always)... or other issues
             if (Bot.Map.Name == "pyrewatch")
                 blackListedCells.UnionWith(new[] { "r3", "r4", "r5", "r7", "r12" });
+
+            if (Bot.Map.Name == "shadowfall")
+                blackListedCells.UnionWith(new[] { "New6" });
+
+            if (Bot.Map.Name == "wanders")
+            {
+                Bot.Map.Jump("Boss", "left", false);
+                Bot.Sleep(2500);
+                blackListedCells.UnionWith(Bot.Player.Cell == "Boss" ? new[] { "r25" } : new[] { "Boss" });
+            }
+            if (Bot.Map.Name == "zephyrus")
+                blackListedCells.UnionWith(new[] { "R1", "Enter" });
             #endregion
 
             if (!IsMember)
@@ -4087,6 +4102,7 @@ public class CoreBots
 
             Sleep(ExitCombatDelay < 200 ? ExitCombatDelay : ExitCombatDelay - 200);
         }
+        GC.Collect();
     }
 
     private string lastMapJW = string.Empty;
@@ -4100,8 +4116,17 @@ public class CoreBots
     /// <param name="pad">The pad to jump to</param>
     /// <param name="publicRoom">Whether or not it should be a public room, if PrivateRoom is on in the CanChange section on the top of CoreBots</param>
     /// <param name="ignoreCheck">If set to true, the bot will not check if the player is already in the given room</param>
-    public void Join(string? map, string cell = "Enter", string pad = "Spawn", bool publicRoom = false, bool ignoreCheck = false)
+    public void Join(string? map, string? cell = null, string pad = "Spawn", bool publicRoom = false, bool ignoreCheck = false)
     {
+        // If cell is null, determine its value
+        if (cell == null)
+        {
+            var nonEnterCells = Bot.Map.Cells.Where(x => !x.StartsWith("Enter")).ToList();
+            cell = Bot.Map.Cells.Count(x => x.StartsWith("Enter")) > 1
+                ? nonEnterCells.FirstOrDefault() ?? "Enter"
+                : Bot.Map.Cells.FirstOrDefault(x => x.StartsWith("Enter")) ?? "Enter";
+        }
+
         map = map!.Replace(" ", "").Replace('I', 'i');
         map = map.ToLower() == "tercess" ? "tercessuinotlim" : map.ToLower();
         string strippedMap = map.Contains('-') ? map.Split('-').First() : map;
@@ -4444,6 +4469,19 @@ public class CoreBots
                 SimpleQuestBypass((28, 35));
                 Bot.Map.Join(PrivateRooms ? $"{map}-" + PrivateRoomNumber : map);
                 Bot.Wait.ForMapLoad(strippedMap);
+                break;
+
+
+            case "zephyrus":
+                JumpWait();
+                Join("hyperium");
+                Bot.Send.Packet($"%xt%zm%serverUseItem%{Bot.Map.RoomID}%+%5041%525,275%{(PrivateRooms ? (map + "-" + PrivateRoomNumber) : map)}%");
+                Bot.Wait.ForMapLoad("hyperium");
+                Jump("R10");
+                tryJoin();
+                Bot.Wait.ForCellChange("Enter");
+                Jump("R1", "Up");
+                Jump("R2", "Up");
                 break;
 
             case "icestormarena":
@@ -4847,6 +4885,7 @@ public class CoreBots
         pad = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(pad.ToLower());
 
         Jump(cell, pad);
+        GC.Collect();
     }
 
     /// <summary>
@@ -4862,38 +4901,42 @@ public class CoreBots
 
         JumpWait();
         Sleep();
-        List<ItemBase> tempItems = Bot.TempInv.Items;
+
+        var initialItems = Bot.TempInv.Items.ToList();
         ItemBase? newItem = null;
-        bool found = false;
 
         for (int i = 0; i < quant; i++)
         {
             Bot.Map.GetMapItem(itemID);
             Sleep(1000);
-            if (!found && Bot.TempInv.Items.Except(tempItems).Any())
+
+            // Identify new items
+            var newItems = Bot.TempInv.Items.Except(initialItems).ToList();
+            if (newItem == null && newItems.Any())
             {
-                newItem = Bot.TempInv.Items.Except(tempItems).First();
-                found = true;
+                newItem = newItems.First();
             }
         }
+
         if (quant > 1 && newItem != null)
         {
-            int t = 0;
-            while (Bot.TempInv.GetQuantity(newItem.Name) < quant ||
-                (Bot.TempInv.TryGetItem(newItem.Name, out ItemBase? _item) && _item != null &&
-                (_item.Quantity < _item.MaxStack)))
+            int attempts = 0;
+            while (Bot.TempInv.GetQuantity(newItem.Name) < quant &&
+                   Bot.TempInv.TryGetItem(newItem.Name, out ItemBase? item) &&
+                   (item?.Quantity < item?.MaxStack))
             {
                 Bot.Map.GetMapItem(itemID);
                 Sleep(1000);
-                t++;
+                attempts++;
 
-                if (t > (quant + 10))
+                if (attempts > quant + 10)
                     break;
             }
         }
 
-        Logger($"Map item {itemID}({quant}) acquired");
+        Logger($"Map item {itemID} ({quant}) acquired");
     }
+
 
     /// <summary>
     /// This method is used to move between PvP rooms
