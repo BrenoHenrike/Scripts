@@ -39,7 +39,7 @@ tags: nova, shrine, gifts, merge, novashrine, gold, voucher, k, star, light, des
 //cs_include Scripts/Story/TowerOfDoom.cs
 //cs_include Scripts/ShadowsOfWar/CoreSoWMats.cs
 //cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
-//cs_include Scripts/ShadowsOfWar\MergeShops\StreamwarMerge.cs
+//cs_include Scripts/ShadowsOfWar/MergeShops/StreamwarMerge.cs
 
 
 
