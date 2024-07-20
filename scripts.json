@@ -7281,7 +7281,7 @@
       "null"
     ],
     "path": "Story/AgeOfRuin/CoreAOR.cs",
-    "size": 26746,
+    "size": 28250,
     "fileName": "CoreAOR.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/CoreAOR.cs"
   },
@@ -7315,10 +7315,14 @@
       "lia tara",
       "liatara",
       "hill",
-      "hill of lia tara"
+      "hill of lia tara",
+      "castle gaheris",
+      "castlegaheris",
+      "castle",
+      "gaheris"
     ],
     "path": "Story/AgeOfRuin/00DoAll.cs",
-    "size": 919,
+    "size": 963,
     "fileName": "00DoAll.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/00DoAll.cs"
   },
@@ -7400,6 +7404,26 @@
     "size": 752,
     "fileName": "08DeepWater.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/08DeepWater.cs"
+  },
+  {
+    "name": "Castle Gaheris",
+    "description": "This script completes the st oryline in /castlegaheris.",
+    "tags": [
+      "age",
+      "of",
+      "ruin",
+      "saga",
+      "story",
+      "quest",
+      "castlegaheris",
+      "castle",
+      "gaheris",
+      "queen victoria alteon"
+    ],
+    "path": "Story/AgeOfRuin/15CastleGaheris.cs",
+    "size": 775,
+    "fileName": "15CastleGaheris.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/15CastleGaheris.cs"
   },
   {
     "name": "Twilight Zone",
@@ -17747,6 +17771,34 @@
     "size": 4109,
     "fileName": "ChaosLabMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/ChaosLabMerge.cs"
+  },
+  {
+    "name": "CastleGaheris Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the CastleGaheris Merge [2465] in /castlegaheris",
+    "tags": [
+      "castlegaheris",
+      "merge",
+      "castlegaheris",
+      "courtly",
+      "mana",
+      "scholar",
+      "scholars",
+      "warlocks",
+      "witchs",
+      "golden",
+      "snowflake",
+      "rapier",
+      "rapiers",
+      "hoarfrost",
+      "winter",
+      "solstice",
+      "arcane",
+      "craft"
+    ],
+    "path": "Other/MergeShops/CastleGaherisMerge.cs",
+    "size": 5922,
+    "fileName": "CastleGaherisMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/CastleGaherisMerge.cs"
   },
   {
     "name": "DruidMerge",
