@@ -269,7 +269,7 @@ public class CoreArmyLite
                     PartyAccept(partyID);
                     Core.Logger($"Joined the party");
                     Core.Sleep();
-                    Bot.Map.Jump(Bot.Player.Cell, Bot.Player.Pad);
+                    Bot.Map.Jump(Bot.Player.Cell, Bot.Player.Pad, false);
                     //}
                     break;
                 //When being summoned by someone, accept
