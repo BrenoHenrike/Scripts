@@ -247,7 +247,7 @@ public class EtherStormWastes
         Story.KillQuest(1571, "airstorm", "Living Air");
 
         //Where Air You? 1572
-        Story.MapItemQuest(1572, "airstorm", 827, 4);
+        Story.MapItemQuest(1572, "airstorm", 827);
 
         //Invading Your (Sacred) Space 1573
         Story.MapItemQuest(1573, "airstorm", 823, 10);
