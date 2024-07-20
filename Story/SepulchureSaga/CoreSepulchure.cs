@@ -126,8 +126,16 @@ public class CoreSepulchure
         Story.KillQuest(6348, "scarsgarde", new[] { "Garde Watch", "Garde Watch", "Garde Watch", "Garde Watch", "Garde Watch", "Garde Watch", "Garde Watch" });
 
         // Pass for Real 6349
-        Story.MapItemQuest(6349, "scarsgarde", new[] { 5866, 5867 });
-        Story.KillQuest(6349, "scarsgarde", new[] { "Garde Knight", "Garde Pikeman", "Garde Knight" });
+        if (!Story.QuestProgression(6349))
+        {
+            Core.EnsureAccept(6349);
+            //this cell is required for `Passcode A`, but everything can be goten here.. unlike elsewhere
+            Core.KillMonster("scarsgarde", "r35", "Left", "Garde Knight", "Passcode A");
+            Core.KillMonster("scarsgarde", "r35", "Left", "Garde Knight", "Passcode C");
+            Core.KillMonster("scarsgarde", "r35", "Left", "Garde Pikeman", "Passcode B");
+
+            Story.MapItemQuest(6349, "scarsgarde", new[] { 5866, 5867 });
+        }
 
         // Hidden in Plain Sight 6350
         Story.MapItemQuest(6350, "scarsgarde", 5868, 8);
