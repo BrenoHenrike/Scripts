@@ -183,16 +183,17 @@ public class CoreStory
     /// <param name="AutoCompleteQuest">If the method should turn in the quest for you when the quest can be completed</param>
     public void MapItemQuest(int QuestID, string MapName, int[] MapItemIDs, int[] Amounts, bool GetReward = true, string Reward = "All", bool AutoCompleteQuest = true)
     {
-        if (MapItemIDs.Length != Amounts.Length)
-        {
-            Core.Logger($"MapItemIDs and Amounts must be the same length. MapItemIDs: {MapItemIDs.Length}, Amounts: {Amounts.Length}");
-            return;
-        }
 
         Quest QuestData = Core.EnsureLoad(QuestID);
 
         if (QuestProgression(QuestID, GetReward, Reward))
         {
+            return;
+        }
+
+        if (MapItemIDs.Length != Amounts.Length)
+        {
+            Core.Logger($"MapItemIDs and Amounts must be the same length. MapItemIDs: {MapItemIDs.Length}, Amounts: {Amounts.Length}");
             return;
         }
 
