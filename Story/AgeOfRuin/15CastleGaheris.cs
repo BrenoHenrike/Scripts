@@ -1,7 +1,7 @@
 /*
-name: Age Of Ruin (All)
-description: This script completes the full Age Of Ruin saga.
-tags: age,ruin,saga,story,quest,termina,temple,ashray,village,sunlight,twilight,zone,yulgar,aria,midnight,abyssal,deep_water,trench_observation,balemorale,castle_eblana,loughshine,naoise grave,naoisegrave,lia tara,liatara,hill,hill of lia tara,castle gaheris,castlegaheris,castle,gaheris
+name: Castle Gaheris
+description: This script completes the st oryline in /castlegaheris.
+tags: age,of,ruin,saga,story,quest,castlegaheris,castle,gaheris,queen victoria alteon
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
@@ -11,7 +11,7 @@ tags: age,ruin,saga,story,quest,termina,temple,ashray,village,sunlight,twilight,
 //cs_include Scripts/Story/AgeOfRuin/CoreAOR.cs
 using Skua.Core.Interfaces;
 
-public class AgeOfRuinAll
+public class CastleGaheris
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
@@ -21,7 +21,8 @@ public class AgeOfRuinAll
     {
         Core.SetOptions();
 
-        AOR.DoAll();
+        AOR.CastleGaheris();
+
         Core.SetOptions(false);
     }
 }
