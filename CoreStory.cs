@@ -171,6 +171,9 @@ public class CoreStory
         TryComplete(QuestData, AutoCompleteQuest);
     }
 
+    /// <summary>
+    /// Gets multiple MapItems from different maps for a Quest, and turns in the quest if possible. Automatically checks if the next quest is unlocked. If it is, it will skip this one.
+    /// </summary>
     /// <param name="QuestID">ID of the quest</param>
     /// <param name="MapItems">Array of tuples where each tuple contains the MapItemID, amount, and MapName</param>
     /// <param name="GetReward">Whether or not the <paramref name="Reward"/> should be added with AddDrop</param>
@@ -192,7 +195,6 @@ public class CoreStory
         }
         TryComplete(QuestData, AutoCompleteQuest);
     }
-
 
     /// <summary>
     /// Gets a MapItem X times for a Quest, and turns in the quest if possible. Automatically checks if the next quest is unlocked. If it is, it will skip this one.
