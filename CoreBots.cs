@@ -4505,13 +4505,14 @@ public class CoreBots
 
             #region baconcat.. is annoying
             case "baconcat":
+                Bot.Quests.UpdateQuest(5108);
                 JumpWait();
                 map = strippedMap + "-999999";
-                if (!isCompletedBefore(5087))
-                    cell = "Enter";
-                if (!isCompletedBefore(5089))
-                    cell = "Enter2";
-                else cell = "Enter3";
+                // if (!isCompletedBefore(5087))
+                //     cell = "Enter";
+                // if (!isCompletedBefore(5089))
+                //     cell = "Enter2";
+                // else cell = "Enter3";
                 tryJoin();
                 Bot.Wait.ForCellChange(cell);
                 break;
