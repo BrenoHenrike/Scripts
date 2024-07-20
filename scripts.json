@@ -6,7 +6,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 235671,
+    "size": 237323,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -1398,7 +1398,7 @@
       "etherstorm-wastes"
     ],
     "path": "Story/EtherstormWastes.cs",
-    "size": 15216,
+    "size": 15213,
     "fileName": "EtherstormWastes.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/EtherstormWastes.cs"
   },
@@ -2052,7 +2052,7 @@
       "null"
     ],
     "path": "Army/CoreArmyLite.cs",
-    "size": 44512,
+    "size": 44519,
     "fileName": "CoreArmyLite.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/CoreArmyLite.cs"
   },
