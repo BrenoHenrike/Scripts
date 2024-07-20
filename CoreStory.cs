@@ -172,6 +172,39 @@ public class CoreStory
     }
 
     /// <summary>
+    /// Gets multiple MapItems with specified amounts for a Quest, and turns in the quest if possible. Automatically checks if the next quest is unlocked. If it is, it will skip this one.
+    /// </summary>
+    /// <param name="QuestID">ID of the quest</param>
+    /// <param name="MapName">Map where the monsters are</param>
+    /// <param name="MapItemIDs">IDs of the items</param>
+    /// <param name="Amounts">The amounts for each <paramref name="MapItemIDs"/> it grabs</param>
+    /// <param name="GetReward">Whether or not the reward should be added with AddDrop</param>
+    /// <param name="Reward">What item should be added with AddDrop</param>
+    /// <param name="AutoCompleteQuest">If the method should turn in the quest for you when the quest can be completed</param>
+    public void MapItemQuest(int QuestID, string MapName, int[] MapItemIDs, int[] Amounts, bool GetReward = true, string Reward = "All", bool AutoCompleteQuest = true)
+    {
+        if (MapItemIDs.Length != Amounts.Length)
+        {
+            Core.Logger($"MapItemIDs and Amounts must be the same length. MapItemIDs: {MapItemIDs.Length}, Amounts: {Amounts.Length}");
+            return;
+        }
+
+        Quest QuestData = Core.EnsureLoad(QuestID);
+
+        if (QuestProgression(QuestID, GetReward, Reward))
+        {
+            return;
+        }
+
+        Core.EnsureAccept(QuestID);
+        for (int i = 0; i < MapItemIDs.Length; i++)
+        {
+            Core.GetMapItem(MapItemIDs[i], Amounts[i], MapName);
+        }
+        TryComplete(QuestData, AutoCompleteQuest);
+    }
+
+    /// <summary>
     /// Gets a MapItem X times for a Quest, and turns in the quest if possible. Automatically checks if the next quest is unlocked. If it is, it will skip this one.
     /// </summary>
     /// <param name="QuestID">ID of the quest</param>
