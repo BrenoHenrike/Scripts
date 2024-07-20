@@ -645,6 +645,7 @@ public class CoreAOR
         Story.KillQuest(9772, "naoisegrave", "Bone Dragonling");
 
         // Of The Sorrows (9773)
+        Core.EquipClass(ClassType.Solo);
         Story.KillQuest(9773, "naoisegrave", "Warden Iseul");
         Story.MapItemQuest(9773, "naoisegrave", 13301);
 
@@ -657,9 +658,7 @@ public class CoreAOR
         // Dragon's Seal (9777)
         if (!Story.QuestProgression(9777))
         {
-            Core.EquipClass(ClassType.Solo);
             Story.KillQuest(9777, "naoisegrave", "Volgritian");
-            Core.EquipClass(ClassType.Farm);
         }
     }
 
