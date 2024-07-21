@@ -45,9 +45,13 @@ public class Guru
             Core.Logger("Buggy quest >> this will kill all 3 guru chests until it gets the `Cauldron`");
             while (!Bot.ShouldExit && !Core.CheckInventory(356))
             {
-                Core.KillMonster("guru", "Field2", "Left", "Guru Chest");
-                Core.KillMonster("guru", "Field3", "Left", "Guru Chest");
-                Core.KillMonster("guru", "Field4", "Left", "Guru Chest");
+                foreach (string cell in new[] { "Field2", "Field3", "Field4" })
+                {
+                    Core.Jump(cell);
+                    Bot.Kill.Monster("Guru Chest");
+                    if (Bot.TempInv.Contains(356))
+                        break;
+                }
             }
             Core.EnsureComplete(50);
 
