@@ -63,7 +63,7 @@ public class HuntersMoon
         Story.MapItemQuest(6708, "huntersmoon", 6193);
 
         // Shards of Moonlight 6709
-        Story.MapItemQuest(6709, "huntersmoon", 6192, 6);
+        Story.MapItemQuest(6709, "huntersmoon", 6192, 10);
 
         // Moon-Struck 6710
         Story.KillQuest(6710, "huntersmoon", "Eclipsed One");
