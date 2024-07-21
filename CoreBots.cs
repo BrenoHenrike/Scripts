@@ -1700,8 +1700,8 @@ public class CoreBots
                         && (!questData.Requirements.Any()
                         || questData.Requirements.All(r => r != null && r.ID > 0)
                         && CheckInventory(questData.Requirements.Select(x => x.ID).ToArray())))
-        {            
-            return Bot.Quests.EnsureComplete(questID, itemID);;
+        {
+            return Bot.Quests.EnsureComplete(questID, itemID);
         }
         else
         {
@@ -2071,6 +2071,11 @@ public class CoreBots
                     LogAndJump($"Killing {targetMonster}");
                     if (!Bot.Combat.StopAttacking)
                         Bot.Combat.Attack(monster);
+                    if (targetMonster.MaxHP == 1)
+                    {
+                        ded = true;
+                        continue;
+                    }
                     Sleep();
                 }
                 return;
