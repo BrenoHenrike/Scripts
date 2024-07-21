@@ -4156,7 +4156,7 @@ public class CoreBots
 
             #region Simple Quest Bypasses
             case "marsh2":
-                SimpleQuestBypass((58, 5));
+                SimpleQuestBypass((58, 8));
                 break;
 
             case "nightmare":
