@@ -41,6 +41,7 @@ public class Guru
         //Mixing Pot 50
         if (!Story.QuestProgression(50))
         {
+            Core.Join("guru");
             Core.EnsureAccept(50);
             Core.Logger("Buggy quest >> this will kill all 3 guru chests until it gets the `Cauldron`");
             while (!Bot.ShouldExit && !Core.CheckInventory(356))
