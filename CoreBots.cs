@@ -1700,10 +1700,8 @@ public class CoreBots
                         && (!questData.Requirements.Any()
                         || questData.Requirements.All(r => r != null && r.ID > 0)
                         && CheckInventory(questData.Requirements.Select(x => x.ID).ToArray())))
-        {
-            if (Bot.Player.InCombat)
-                JumpWait();
-            return Bot.Quests.EnsureComplete(questID, itemID);
+        {            
+            return Bot.Quests.EnsureComplete(questID, itemID);;
         }
         else
         {
@@ -4202,7 +4200,7 @@ public class CoreBots
                 break;
 
             case "twilightedge":
-                SimpleQuestBypass((156, 1));
+                SimpleQuestBypass((156, 23));
                 break;
 
             case "dragonkoiz":
