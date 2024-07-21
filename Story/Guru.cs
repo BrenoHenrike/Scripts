@@ -39,7 +39,19 @@ public class Guru
         Story.KillQuest(49, "Guru", "LeatherWing");
 
         //Mixing Pot 50
-        Story.KillQuest(50, "Guru", "Guru Chest");
+        if (!Story.QuestProgression(50))
+        {
+            Core.EnsureAccept(50);
+            Core.Logger("Buggy quest >> this will kill all 3 guru chests until it gets the `Cauldron`");
+            while (!Bot.ShouldExit && !Core.CheckInventory(356))
+            {
+                Core.KillMonster("guru", "Field2", "Left", "Guru Chest");
+                Core.KillMonster("guru", "Field3", "Left", "Guru Chest");
+                Core.KillMonster("guru", "Field4", "Left", "Guru Chest");
+            }
+            Core.EnsureComplete(50);
+
+        }
 
         //Hungry for a Recipe 51
         Story.KillQuest(51, "River", "River Fishman");
