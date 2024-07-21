@@ -1005,6 +1005,7 @@ public class CoreAdvanced
         }
         else if (ReEquippedItems.Count > 0)
         {
+            Core.JumpWait();
             Core.Equip(ReEquippedItems.ToArray());
             if (EnhAfter)
                 EnhanceEquipped(ReEnhanceAfter, ReCEnhanceAfter, ReHEnhanceAfter, ReWEnhanceAfter);
