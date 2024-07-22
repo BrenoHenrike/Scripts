@@ -2344,15 +2344,15 @@ public class CoreAdvanced
                     break;
                 #endregion
 
-                #region Lucky - Vainglory - Dauntless|Mana Vamp - Examen
+                #region Lucky - Vainglory - Dauntless|Mana Vamp - Vim
                 case "arachnomancer":
-                    if (!uVainglory() || !uExamen())
+                    if (!uVainglory() || !uVim())
                         goto default;
 
                     type = EnhancementType.Lucky;
                     cSpecial = CapeSpecial.Vainglory;
                     wSpecial = uDauntless() ? WeaponSpecial.Dauntless : WeaponSpecial.Mana_Vamp;
-                    hSpecial = HelmSpecial.Examen;
+                    hSpecial = HelmSpecial.Vim;
                     break;
                 #endregion
 
