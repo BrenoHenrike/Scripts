@@ -79,34 +79,39 @@ public class CoreBLOD
         Core.AddDrop(40187);
         if (!Core.CheckInventory(40187)) // Get your Blinding Light of Destiny
         {
-            Bot.Drops.Add(BLoDItems);
-
-            UnlockMineCrafting();
-            switch ((int)method)
+            if (Core.isCompletedBefore(7673))
+                Core.ChainComplete(7673);
+            else
             {
-                case 0: // Fewest Dailies
-                    GetBlindingWeapon(WeaponOfDestiny.Blade);
-                    break;
-                case 1: // Optimized
-                    GetBlindingWeapon(WeaponOfDestiny.Daggers);
-                    GetBlindingWeapon(WeaponOfDestiny.Mace);
-                    break;
-                case 2: // Fewest Hours
-                    GetBlindingWeapon(WeaponOfDestiny.Mace);
-                    GetBlindingWeapon(WeaponOfDestiny.Bow);
-                    GetBlindingWeapon(WeaponOfDestiny.Blade);
-                    break;
+                Bot.Drops.Add(BLoDItems);
+
+                UnlockMineCrafting();
+                switch ((int)method)
+                {
+                    case 0: // Fewest Dailies
+                        GetBlindingWeapon(WeaponOfDestiny.Blade);
+                        break;
+                    case 1: // Optimized
+                        GetBlindingWeapon(WeaponOfDestiny.Daggers);
+                        GetBlindingWeapon(WeaponOfDestiny.Mace);
+                        break;
+                    case 2: // Fewest Hours
+                        GetBlindingWeapon(WeaponOfDestiny.Mace);
+                        GetBlindingWeapon(WeaponOfDestiny.Bow);
+                        GetBlindingWeapon(WeaponOfDestiny.Blade);
+                        break;
+                }
+
+                BrilliantAura(75);
+                BrightAura(125);
+                LoyalSpiritOrb(250);
+                SpiritOrb(500);
+                BlindingAura(1);
+
+                UltimateWK();
+
+                Core.ChainComplete(2180);
             }
-
-            BrilliantAura(75);
-            BrightAura(125);
-            LoyalSpiritOrb(250);
-            SpiritOrb(500);
-            BlindingAura(1);
-
-            UltimateWK();
-
-            Core.ChainComplete(2180);
         }
         Core.BuyItem(Bot.Map.Name, 1415, "Blinding Light of Destiny");
         Core.ToBank(40187);
