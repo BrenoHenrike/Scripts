@@ -2540,6 +2540,21 @@ public class CoreBots
         }
     }
 
+    public void HuntMonsterQuest(int questId = 1, string mapName = null, string monsterName = null, string? Item = null, bool log = false)
+    {
+        Quest? quest = Bot.Quests.EnsureLoad(questId);
+        if (quest == null)
+        {
+            Logger($"Quest {questId} not found");
+            return;
+        }
+
+        ItemBase requirement = quest.Requirements.FirstOrDefault(x => x != null && x.Name == Item.FormatForCompare());
+
+        HuntMonster(mapName ?? Bot.Map.Name, monsterName ?? "*", requirement.Name ?? string.Empty, requirement.Quantity, requirement.Temp);
+    }
+
+
 
     /// <summary>
     /// Kill Escherion for the desired item
