@@ -6131,23 +6131,18 @@ public static class UtilExtensionsS
         => source.ToList().Find(match: Match);
     public static bool TryFind<T>(this IEnumerable<T> source, Predicate<T> Match, out T? toReturn)
         => (toReturn = source.Find(Match)) != null;
-    public static string FormatForComparison(this string? input)
+    public static string FormatForCompare(this string? input)
     {
         if (input == null)
             return string.Empty; // Handle null input by returning an empty string
 
-        // Normalize, trim, and remove unnecessary punctuation while preserving spaces between words
-        var result = new string(input
+        return new string(input
             .Trim()
             .ToLowerInvariant()
-            .Normalize(SNormalizationForm.FormKD)
-            .Where(c => !char.IsPunctuation(c) || c == '_' || c == '-' || char.IsWhiteSpace(c))
+            .Normalize(System.Text.NormalizationForm.FormKD)
+            .Where(c => !char.IsWhiteSpace(c) && c != '\'' && (c == '_' || c == '-' || !char.IsPunctuation(c)))
             .ToArray());
-
-        // Replace multiple spaces with a single space
-        return Regex.Replace(result, @"\s+", " ");
     }
-
 
 }
 
