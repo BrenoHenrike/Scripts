@@ -2540,7 +2540,15 @@ public class CoreBots
         }
     }
 
-    public void HuntMonsterQuest(int questId, string mapName = null, string monsterName = null, int req = 1, bool log = false)
+    /// <summary>
+    /// Hunts a monster based on the requirements of a specified quest.
+    /// </summary>
+    /// <param name="questId">The ID of the quest to load requirements from.</param>
+    /// <param name="mapName">The name of the map where the monster is located (optional).</param>
+    /// <param name="monsterName">The name of the monster to hunt (optional).</param>
+    /// <param name="req">The index of the requirement to use from the quest (1-based index).</param>
+    /// <param name="log">Whether to log the hunting process.</param>
+    public void HuntMonsterQuest(int questId, string? mapName = null, string? monsterName = null, int req = 1, bool log = false)
     {
         Quest? quest = Bot.Quests.EnsureLoad(questId);
         if (quest == null)
@@ -2551,7 +2559,7 @@ public class CoreBots
 
         ItemBase requirement = quest.Requirements[req - 1];
 
-        HuntMonster(mapName ?? Bot.Map.Name, monsterName ?? "*", $"{requirement.Name}" ?? string.Empty, requirement.Quantity, requirement.Temp);
+        HuntMonster(mapName ?? Bot.Map.Name, monsterName ?? "*", $"{requirement.Name}" ?? string.Empty, requirement.Quantity, requirement.Temp, log);
     }
 
 

@@ -1,7 +1,7 @@
 /*
-name: CelestialSpoilsMerge
-description: null
-tags: null
+name: Celestial Spoils Merge
+description: This bot will farm the items belonging to the selected mode for the Celestial Spoils Merge [1582] in /djinnguard
+tags: celestial, spoils, merge, djinnguard, djinn, warrior, sack, , fallen, king, dragon, dicers, greatsword, emeralds, sapphires, katana, toxic, wanderer, wanderers, sheathed, khopesh, wyvernslayer, wyvernslayers, horns, toxix, trophy, wings, great, caustic, wyvernfang, reaver, reavers
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -9,10 +9,8 @@ tags: null
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Story/DjinnGate.cs
 //cs_include Scripts/Story/DjinnGuard.cs
-
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
-using Skua.Core.Models.Quests;
 using Skua.Core.Options;
 
 public class CelestialSpoilsMerge
@@ -34,7 +32,7 @@ public class CelestialSpoilsMerge
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Celestial Coin", "Blade of the Fallen Djinn", "Blade of the Djinn King " });
+        Core.BankingBlackList.AddRange(new[] { "Celestial Coin", "Blade of the Fallen Djinn", "Blade of the Djinn King", "Lucky Button" });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -112,8 +110,6 @@ public class CelestialSpoilsMerge
             }
         }
     }
-
-
 
     public List<IOption> Select = new()
     {
