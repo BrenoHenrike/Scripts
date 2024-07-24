@@ -2551,7 +2551,7 @@ public class CoreBots
 
         ItemBase requirement = quest.Requirements[req - 1];
 
-        HuntMonster(mapName ?? Bot.Map.Name, monsterName ?? "*", requirement.Name.FormatForCompare() ?? string.Empty, requirement.Quantity, requirement.Temp);
+        HuntMonster(mapName ?? Bot.Map.Name, monsterName ?? "*", $"{requirement.Name}" ?? string.Empty, requirement.Quantity, requirement.Temp);
     }
 
 
