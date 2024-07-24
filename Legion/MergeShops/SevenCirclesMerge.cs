@@ -9,6 +9,7 @@ tags: null
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Legion/CoreLegion.cs
 //cs_include Scripts/Story/Legion/SevenCircles(War).cs
+//cs_include Scripts/Legion/HeadOfTheLegionBeast.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
@@ -22,6 +23,7 @@ public class SevenCirclesMerge
     public CoreLegion Legion = new();
     public SevenCircles Circles = new();
     private static CoreAdvanced sAdv = new();
+    private HeadoftheLegionBeast HeadoftheLegionBeast = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
     public string[] MultiOptions = { "Generic", "Select" };
@@ -67,17 +69,7 @@ public class SevenCirclesMerge
                 #endregion
 
                 case "Indulgence":
-                    Core.FarmingLogger(req.Name, quant);
-                    Core.EquipClass(ClassType.Farm);
-                    Core.RegisterQuests(7978);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.KillMonster("sevencircles", "r2", "Left", "Limbo Guard", "Souls of Limbo", 25);
-                        Core.KillMonster("sevencircles", "r3", "Left", "Luxuria Guard", "Essence of Luxuria", 1);
-                        Core.KillMonster("sevencircles", "r5", "Left", "Gluttony Guard", "Essence of Gluttony", 1);
-                        Core.KillMonster("sevencircles", "r7", "Left", "Avarice Guard", "Essence of Avarice", 1);
-                    }
-                    Core.CancelRegisteredQuests();
+                    HeadoftheLegionBeast.Indulgence(req.Quantity);
                     break;
 
                 case "Legion Token":
