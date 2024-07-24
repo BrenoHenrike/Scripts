@@ -6136,13 +6136,18 @@ public static class UtilExtensionsS
         if (input == null)
             return string.Empty; // Handle null input by returning an empty string
 
-        return new string(input
+        // Normalize, trim, and remove unnecessary punctuation while preserving spaces between words
+        string result = new(input
             .Trim()
             .ToLowerInvariant()
-            .Normalize(System.Text.NormalizationForm.FormKD)
-            .Where(c => !char.IsWhiteSpace(c) && c != '\'' && (c == '_' || c == '-' || !char.IsPunctuation(c)))
+            .Normalize(NormalizationForm.FormKD)
+            .Where(c => !char.IsPunctuation(c) || c == '_' || c == '-' || char.IsWhiteSpace(c))
             .ToArray());
+
+        // Replace multiple spaces with a single space
+        return Regex.Replace(result, @"\s+", " ");
     }
+
 
 }
 
