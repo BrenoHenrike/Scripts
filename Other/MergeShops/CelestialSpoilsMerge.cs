@@ -12,6 +12,7 @@ tags: null
 
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
+using Skua.Core.Models.Quests;
 using Skua.Core.Options;
 
 public class CelestialSpoilsMerge
@@ -92,16 +93,17 @@ public class CelestialSpoilsMerge
                         Bot.Wait.ForPickup(req.Name);
                     }
                     break;
+
                 case "Lucky Button":
                     Core.FarmingLogger(req.Name, quant);
                     Core.RegisterQuests(9836);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.EquipClass(ClassType.Farm);
-                        Core.HuntMonster("deadmoor", "Toxic Souleater", "Toxic Souleater Venom", 10);
-                        Core.HuntMonster("moonlab", "Infected Scientist", "Scientist's Flask", 10);
+                        Core.HuntMonsterQuest(9836, "deadmoor", "Toxic Souleater", "Toxic Souleater Venom");
+                        Core.HuntMonsterQuest(9836, "moonlab", "Infected Scientist", "Scientist's Flask");
                         Core.EquipClass(ClassType.Solo);
-                        Core.HuntMonster("deerhunt", "Zweinichthirsch", "Zweinichthirsch Antler");
+                        Core.HuntMonsterQuest(9836, "deerhunt", "Zweinichthirsch", "Zweinichthirsch Antler");
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
@@ -110,6 +112,8 @@ public class CelestialSpoilsMerge
             }
         }
     }
+
+
 
     public List<IOption> Select = new()
     {
