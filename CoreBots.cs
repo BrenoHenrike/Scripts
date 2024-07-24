@@ -2541,34 +2541,12 @@ public class CoreBots
     }
 
     /// <summary>
-    /// Hunts a monster based on the requirements of a specified quest.
-    /// </summary>
-    /// <param name="questId">The ID of the quest to load requirements from.</param>
-    /// <param name="mapName">The name of the map where the monster is located (optional).</param>
-    /// <param name="monsterName">The name of the monster to hunt (optional).</param>
-    /// <param name="req">The index of the requirement to use from the quest (1-based index).</param>
-    /// <param name="log">Whether to log the hunting process.</param>
-    public void HuntMonsterQuest(int questId, string? mapName = null, string? monsterName = null, int req = 1, bool log = false)
-    {
-        Quest? quest = Bot.Quests.EnsureLoad(questId);
-        if (quest == null)
-        {
-            Logger($"Quest {questId} not found");
-            return;
-        }
-
-        ItemBase requirement = quest.Requirements[req - 1];
-
-        HuntMonster(mapName ?? Bot.Map.Name, monsterName ?? "*", requirement.Name ?? string.Empty, requirement.Quantity, requirement.Temp, log);
-    }
-
-    /// <summary>
     /// Hunts monsters based on the requirements of a specified quest and an optional array of map and monster names.
     /// </summary>
     /// <param name="questId">The ID of the quest to load requirements from.</param>
     /// <param name="mapMonsterPairs">An optional array of tuples containing map names and monster names. Defaults to null.</param>
     /// <param name="log">Whether to log the hunting process.</param>
-    public void HuntMonsterQuest(int questId, (string? mapName, string? monsterName)[]? mapMonsterPairs = null, bool log = false)
+    public void HuntMonsterQuest(int questId, (string? mapName, string? monsterName, ClassType classType)[]? MapMonsterClassPairs = null, bool log = false)
     {
         Quest? quest = Bot.Quests.EnsureLoad(questId);
         if (quest == null)
@@ -2577,23 +2555,56 @@ public class CoreBots
             return;
         }
 
-        if (mapMonsterPairs == null)
+        if (MapMonsterClassPairs == null)
         {
-            mapMonsterPairs = new (string? mapName, string? monsterName)[quest.Requirements.Count];
+            MapMonsterClassPairs = new (string? mapName, string? monsterName, ClassType classType)[quest.Requirements.Count];
             for (int i = 0; i < quest.Requirements.Count; i++)
             {
-                mapMonsterPairs[i] = (null, null);
+                MapMonsterClassPairs[i] = (null, null, ClassType.Solo); // Use a default class type if needed
             }
         }
 
-        for (int i = 0; i < mapMonsterPairs.Length && i < quest.Requirements.Count; i++)
+        for (int i = 0; i < MapMonsterClassPairs.Length && i < quest.Requirements.Count; i++)
         {
             ItemBase requirement = quest.Requirements[i];
-            (string? mapName, string? monsterName) = mapMonsterPairs[i];
+            (string? mapName, string? monsterName, ClassType classType) = MapMonsterClassPairs[i];
+
+            // Equip the class before hunting
+            EquipClass(classType);
 
             HuntMonster(mapName ?? Bot.Map.Name, monsterName ?? "*", requirement.Name ?? string.Empty, requirement.Quantity, requirement.Temp, log);
         }
     }
+
+
+    /// <summary>
+    /// Hunts monsters based on the requirements of a specified quest and optional map and monster names for each requirement.
+    /// </summary>
+    /// <param name="questId">The ID of the quest to load requirements from.</param>
+    /// <param name="mapName">An optional map name for the hunt.</param>
+    /// <param name="monsterName">An optional monster name for the hunt.</param>
+    /// <param name="log">Whether to log the hunting process.</param>
+    public void HuntMonsterQuest(int questId, string? mapName = null, string? monsterName = null, bool log = false)
+    {
+        Quest? quest = Bot.Quests.EnsureLoad(questId);
+        if (quest == null)
+        {
+            Logger($"Quest {questId} not found");
+            return;
+        }
+
+        for (int i = 0; i < quest.Requirements.Count; i++)
+        {
+            ItemBase requirement = quest.Requirements[i];
+
+            // Use the provided map and monster names, or fall back to default values
+            string huntMapName = mapName ?? Bot.Map.Name;
+            string huntMonsterName = monsterName ?? "*";
+
+            HuntMonster(huntMapName, huntMonsterName, requirement.Name ?? string.Empty, requirement.Quantity, requirement.Temp, log);
+        }
+    }
+
 
     /// <summary>
     /// Kill Escherion for the desired item
