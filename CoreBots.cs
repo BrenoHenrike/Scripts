@@ -2540,7 +2540,7 @@ public class CoreBots
         }
     }
 
-    public void HuntMonsterQuest(int questId = 1, string mapName = null, string monsterName = null, string? Item = null, bool log = false)
+    public void HuntMonsterQuest(int questId, string mapName = null, string monsterName = null, int req = 1, bool log = false)
     {
         Quest? quest = Bot.Quests.EnsureLoad(questId);
         if (quest == null)
@@ -2549,11 +2549,10 @@ public class CoreBots
             return;
         }
 
-        ItemBase requirement = quest.Requirements.FirstOrDefault(x => x != null && x.Name == Item.FormatForCompare());
+        ItemBase requirement = quest.Requirements[req - 1];
 
-        HuntMonster(mapName ?? Bot.Map.Name, monsterName ?? "*", requirement.Name ?? string.Empty, requirement.Quantity, requirement.Temp);
+        HuntMonster(mapName ?? Bot.Map.Name, monsterName ?? "*", requirement.Name.FormatForCompare() ?? string.Empty, requirement.Quantity, requirement.Temp);
     }
-
 
 
     /// <summary>
