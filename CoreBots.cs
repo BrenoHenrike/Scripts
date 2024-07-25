@@ -746,14 +746,15 @@ public class CoreBots
 
         // Whitelist categories and items
         List<ItemCategory> whiteList = new() { ItemCategory.Note, ItemCategory.Item, ItemCategory.Resource, ItemCategory.QuestItem };
-        int?[] Extras = { 18927, 38575 }; // Items that shouldn't be banked
+        int?[] extras = { 18927, 38575 }; // Items that shouldn't be banked
 
         foreach (string? item in items)
         {
             if (item == null || item == SoloClass || item == FarmClass || FarmGear.Contains(item) || SoloGear.Contains(item))
                 continue;
 
-            if (!Bot.Inventory.Items.Any(x => x.Name == item))
+            bool itemExists = Bot.Inventory.Items.Any(x => x.Name == item) || Bot.House.Items.Any(x => x.Name == item);
+            if (!itemExists)
             {
                 Logger($"{item} not found in inventory, skipping it");
                 continue;
@@ -761,8 +762,9 @@ public class CoreBots
 
             var inventoryItem = Bot.Inventory.Items.First(x => x.Name == item);
             bool itemIsForHouse = Bot.Bank.TryGetItem(item, out InventoryItem? x) &&
-                                            x != null &&
-                                            (x.CategoryString == "House" || x.CategoryString == "Wall Item" || x.CategoryString == "Floor Item");
+                                  x != null &&
+                                  (x.CategoryString == "House" || x.CategoryString == "Wall Item" || x.CategoryString == "Floor Item");
+
             // Check if item is equipped
             if (Bot.Inventory.IsEquipped(item) || Bot.House.IsEquipped(item))
             {
@@ -770,10 +772,17 @@ public class CoreBots
                 continue;
             }
 
-            // Check if item is in whitelist and not in blacklist or Extras
-            if ((whiteList.Contains(inventoryItem.Category) || inventoryItem.Coins) && !BankingBlackList.Contains(item) && !Extras.Contains(inventoryItem.ID) || itemIsForHouse && !x.Equipped)
+            // Check if item is in whitelist and not in blacklist or extras
+            if ((whiteList.Contains(inventoryItem.Category) || inventoryItem.Coins) &&
+                !BankingBlackList.Contains(item) &&
+                !extras.Contains(inventoryItem.ID) ||
+                itemIsForHouse && !x.Equipped)
             {
-                if (!Bot.Inventory.EnsureToBank(item) || itemIsForHouse && Bot.House.EnsureToBank(item))
+                bool bankSuccess = itemIsForHouse
+                    ? Bot.House.EnsureToBank(item)
+                    : Bot.Inventory.EnsureToBank(item);
+
+                if (!bankSuccess)
                 {
                     Logger($"Failed to bank {item}, skipping it");
                     continue;
