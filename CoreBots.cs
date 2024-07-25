@@ -626,7 +626,6 @@ public class CoreBots
         if (Bot.Inventory.FreeSlots < requiredSlots)
             Logger($"Not enough free slot{(requiredSlots != 1 ? "s" : "")}, please clear {requiredSlots} slot{(requiredSlots != 1 ? "s" : "")}", messageBox: true, stopBot: true);
     }
-
     /// <summary>
     /// Moves items from the bank to the inventory.
     /// </summary>
@@ -647,18 +646,53 @@ public class CoreBots
             if (Bot.Inventory.Contains(item))
                 continue;
 
-            if (Bot.Bank.Contains(item))
+            bool itemIsForHouse = Bot.Bank.TryGetItem(item, out InventoryItem? x) &&
+                                  x != null &&
+                                  (x.CategoryString == "House" || x.CategoryString == "Wall Item" || x.CategoryString == "Floor Item");
+
+            if (itemIsForHouse)
+                Bot.Options.CustomName = Username();
+
+            bool shouldUnbank = Bot.Bank.Contains(item);
+
+            if (shouldUnbank)
             {
                 Sleep();
+
                 if (Bot.Inventory.FreeSlots == 0 && Bot.Inventory.Slots != 0 && Bot.Inventory.UsedSlots <= Bot.Inventory.Slots)
                 {
                     Logger($"Your inventory is full ({Bot.Inventory.UsedSlots}/{Bot.Inventory.Slots}), please clean it and restart the bot", messageBox: true, stopBot: true);
                     return;
                 }
 
-                if (!Bot.Wait.ForTrue(() => Bot.Bank.EnsureToInventory(item), 20))
+                while (!Bot.ShouldExit && itemIsForHouse && !Bot.House.Contains(item) || !Bot.Inventory.Contains(item))
                 {
-                    Logger($"Failed to unbank {item}, skipping it", messageBox: true);
+                    if (itemIsForHouse)
+                    {
+                        SendPackets($"%xt%zm%bankToInv%{Bot.Map.RoomID}%{x!.ID}%{x.CharItemID}%");
+                        Bot.Wait.ForTrue(() => Bot.House.Contains(item), 20);
+                    }
+                    else
+                    {
+                        Bot.Bank.EnsureToInventory(item);
+                        Bot.Wait.ForTrue(() => Bot.Inventory.Contains(item), 20);
+                    }
+
+                    Sleep();
+
+                    if (itemIsForHouse && Bot.House.Contains(item) || Bot.Inventory.Contains(item))
+                        break;
+                }
+
+                if (!Bot.House.TryGetItem(item, out InventoryItem? z))
+                {
+                    Logger($"Failed to unbank {item} from house bank, skipping it", messageBox: true);
+                    continue;
+                }
+
+                if (!itemIsForHouse && !Bot.Inventory.Contains(item))
+                {
+                    Logger($"Failed to unbank {item} from bank, skipping it", messageBox: true);
                     continue;
                 }
 
@@ -666,6 +700,9 @@ public class CoreBots
             }
         }
     }
+
+
+
 
 
     /// <summary>
