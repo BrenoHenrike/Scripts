@@ -643,7 +643,7 @@ public class CoreBots
 
         foreach (var item in items)
         {
-            if (Bot.Inventory.Contains(item))
+            if (Bot.Inventory.Contains(item) || Bot.House.Contains(item))
                 continue;
 
             bool itemIsForHouse = Bot.Bank.TryGetItem(item, out InventoryItem? x) &&
@@ -655,7 +655,6 @@ public class CoreBots
                 Logger($"Your inventory is full ({Bot.Inventory.UsedSlots}/{Bot.Inventory.Slots}), please clean it and restart the bot", messageBox: true, stopBot: true);
                 return;
             }
-
 
             if (itemIsForHouse)
             {
@@ -670,7 +669,7 @@ public class CoreBots
 
             Sleep();
 
-            if (!Bot.House.TryGetItem(item, out InventoryItem? z))
+            if (itemIsForHouse && !Bot.House.TryGetItem(item, out InventoryItem? z) && z != null)
             {
                 Logger($"Failed to unbank {item} from house bank, skipping it", messageBox: true);
                 continue;
@@ -685,10 +684,6 @@ public class CoreBots
             Logger($"{item} moved from bank");
         }
     }
-
-
-
-
 
     /// <summary>
     /// Moves items from the bank to the inventory.
@@ -729,7 +724,6 @@ public class CoreBots
         }
     }
 
-
     /// <summary>
     /// Move items from inventory to bank
     /// </summary>
@@ -753,16 +747,17 @@ public class CoreBots
             if (item == null || item == SoloClass || item == FarmClass || FarmGear.Contains(item) || SoloGear.Contains(item))
                 continue;
 
-            if (!Bot.Inventory.Items.Any(x => x.Name == item) || !Bot.House.Items.Any(x => x.Name == item))
+            if (!Bot.Inventory.Items.Concat(Bot.House.Items).Any(x => x.Name == item))
             {
                 Logger($"{item} not found in inventory, skipping it");
                 continue;
             }
 
-            var inventoryItem = Bot.Inventory.Items.First(x => x.Name == item);
-            bool itemIsForHouse = Bot.Bank.TryGetItem(item, out InventoryItem? x) &&
-                                            x != null &&
-                                            (x.CategoryString == "House" || x.CategoryString == "Wall Item" || x.CategoryString == "Floor Item");
+            var inventoryItem = Bot.Inventory.Items.Concat(Bot.House.Items).FirstOrDefault(x => x.Name == item);
+            bool itemIsForHouse = Bot.House.TryGetItem(item, out InventoryItem? _item) &&
+                                            _item != null &&
+                                            (_item.CategoryString == "House" || _item.CategoryString == "Wall Item" || _item.CategoryString == "Floor Item");
+
             // Check if item is equipped
             if (Bot.Inventory.IsEquipped(item) || Bot.House.IsEquipped(item))
             {
@@ -771,13 +766,24 @@ public class CoreBots
             }
 
             // Check if item is in whitelist and not in blacklist or Extras
-            if ((whiteList.Contains(inventoryItem.Category) || inventoryItem.Coins) && !BankingBlackList.Contains(item) && !Extras.Contains(inventoryItem.ID) || itemIsForHouse && !x.Equipped)
+            if ((whiteList.Contains(inventoryItem.Category) || inventoryItem.Coins) && !BankingBlackList.Contains(item) && !Extras.Contains(inventoryItem.ID) || itemIsForHouse && !_item.Equipped)
             {
-                if (!Bot.Inventory.EnsureToBank(item) || itemIsForHouse && Bot.House.EnsureToBank(item))
+                if (!itemIsForHouse && !Bot.Inventory.EnsureToBank(item))
                 {
                     Logger($"Failed to bank {item}, skipping it");
                     continue;
                 }
+                else if (itemIsForHouse)
+                {
+                    SendPackets($"%xt%zm%bankFromInv%{Bot.Map.RoomID}%{_item.ID}%{_item.CharItemID}%");
+                    Bot.Wait.ForTrue(() => !Bot.House.Contains(item), 20);
+                    if (Bot.House.Items.Any(x => x.Name == item))
+                    {
+                        Logger($"Failed to bank {item} in house bank, skipping it");
+                        continue;
+                    }
+                }
+
                 Logger($"{item} moved to bank");
             }
         }
