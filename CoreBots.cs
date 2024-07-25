@@ -650,54 +650,39 @@ public class CoreBots
                                   x != null &&
                                   (x.CategoryString == "House" || x.CategoryString == "Wall Item" || x.CategoryString == "Floor Item");
 
-            if (itemIsForHouse)
-                Bot.Options.CustomName = Username();
-
-            bool shouldUnbank = Bot.Bank.Contains(item);
-
-            if (shouldUnbank)
+            if (Bot.Inventory.FreeSlots == 0 && Bot.Inventory.Slots != 0 && Bot.Inventory.UsedSlots <= Bot.Inventory.Slots)
             {
-                Sleep();
-
-                if (Bot.Inventory.FreeSlots == 0 && Bot.Inventory.Slots != 0 && Bot.Inventory.UsedSlots <= Bot.Inventory.Slots)
-                {
-                    Logger($"Your inventory is full ({Bot.Inventory.UsedSlots}/{Bot.Inventory.Slots}), please clean it and restart the bot", messageBox: true, stopBot: true);
-                    return;
-                }
-
-                while (!Bot.ShouldExit && itemIsForHouse && !Bot.House.Contains(item) || !Bot.Inventory.Contains(item))
-                {
-                    if (itemIsForHouse)
-                    {
-                        SendPackets($"%xt%zm%bankToInv%{Bot.Map.RoomID}%{x!.ID}%{x.CharItemID}%");
-                        Bot.Wait.ForTrue(() => Bot.House.Contains(item), 20);
-                    }
-                    else
-                    {
-                        Bot.Bank.EnsureToInventory(item);
-                        Bot.Wait.ForTrue(() => Bot.Inventory.Contains(item), 20);
-                    }
-
-                    Sleep();
-
-                    if (itemIsForHouse && Bot.House.Contains(item) || Bot.Inventory.Contains(item))
-                        break;
-                }
-
-                if (!Bot.House.TryGetItem(item, out InventoryItem? z))
-                {
-                    Logger($"Failed to unbank {item} from house bank, skipping it", messageBox: true);
-                    continue;
-                }
-
-                if (!itemIsForHouse && !Bot.Inventory.Contains(item))
-                {
-                    Logger($"Failed to unbank {item} from bank, skipping it", messageBox: true);
-                    continue;
-                }
-
-                Logger($"{item} moved from bank");
+                Logger($"Your inventory is full ({Bot.Inventory.UsedSlots}/{Bot.Inventory.Slots}), please clean it and restart the bot", messageBox: true, stopBot: true);
+                return;
             }
+
+
+            if (itemIsForHouse)
+            {
+                SendPackets($"%xt%zm%bankToInv%{Bot.Map.RoomID}%{x!.ID}%{x.CharItemID}%");
+                Bot.Wait.ForTrue(() => Bot.House.Contains(item), 20);
+            }
+            else
+            {
+                Bot.Bank.EnsureToInventory(item);
+                Bot.Wait.ForTrue(() => Bot.Inventory.Contains(item), 20);
+            }
+
+            Sleep();
+
+            if (!Bot.House.TryGetItem(item, out InventoryItem? z))
+            {
+                Logger($"Failed to unbank {item} from house bank, skipping it", messageBox: true);
+                continue;
+            }
+
+            if (!itemIsForHouse && !Bot.Inventory.Contains(item))
+            {
+                Logger($"Failed to unbank {item} from bank, skipping it", messageBox: true);
+                continue;
+            }
+
+            Logger($"{item} moved from bank");
         }
     }
 
@@ -775,18 +760,20 @@ public class CoreBots
             }
 
             var inventoryItem = Bot.Inventory.Items.First(x => x.Name == item);
-
+            bool itemIsForHouse = Bot.Bank.TryGetItem(item, out InventoryItem? x) &&
+                                            x != null &&
+                                            (x.CategoryString == "House" || x.CategoryString == "Wall Item" || x.CategoryString == "Floor Item");
             // Check if item is equipped
-            if (Bot.Inventory.IsEquipped(item))
+            if (Bot.Inventory.IsEquipped(item) || Bot.House.IsEquipped(item))
             {
-                Logger("Can't bank an equipped item");
+                Logger($"Can't bank an equipped item: {item}");
                 continue;
             }
 
             // Check if item is in whitelist and not in blacklist or Extras
-            if ((whiteList.Contains(inventoryItem.Category) || inventoryItem.Coins) && !BankingBlackList.Contains(item) && !Extras.Contains(inventoryItem.ID))
+            if ((whiteList.Contains(inventoryItem.Category) || inventoryItem.Coins) && !BankingBlackList.Contains(item) && !Extras.Contains(inventoryItem.ID) || itemIsForHouse && !x.Equipped)
             {
-                if (!Bot.Inventory.EnsureToBank(item))
+                if (!Bot.Inventory.EnsureToBank(item) || itemIsForHouse && Bot.House.EnsureToBank(item))
                 {
                     Logger($"Failed to bank {item}, skipping it");
                     continue;
