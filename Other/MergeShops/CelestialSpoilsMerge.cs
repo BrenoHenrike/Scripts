@@ -97,11 +97,12 @@ public class CelestialSpoilsMerge
                     Core.RegisterQuests(9836);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.EquipClass(ClassType.Farm);
-                        Core.HuntMonsterQuest(9836, "deadmoor", "Toxic Souleater", 1);
-                        Core.HuntMonsterQuest(9836, "moonlab", "Infected Scientist", 2);
-                        Core.EquipClass(ClassType.Solo);
-                        Core.HuntMonsterQuest(9836, "deerhunt", "Zweinichthirsch", 3);
+                        Core.HuntMonsterQuest(9836, new (string? mapName, string? monsterName, ClassType classType)[]
+                        {
+    ("deadmoor", "Toxic Souleater", ClassType.Farm),
+    ("moonlab", "Infected Scientist", ClassType.Farm),
+    ("deerhunt", "Zweinichthirsch", ClassType.Solo)
+                        });
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
