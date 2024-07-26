@@ -1444,7 +1444,6 @@ public class CoreNation
 
         BambloozevsDrudgen("Unidentified 10", quant);
         DirtyDeedsDoneDirtCheap(quant);
-        Supplies("unidentified 10", quant);
     }
 
     /// <summary>
