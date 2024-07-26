@@ -656,10 +656,37 @@ public class CoreBots
                     return;
                 }
 
-                if (!Bot.Wait.ForTrue(() => Bot.Bank.EnsureToInventory(item), 20))
+                bool isHouseItem = Bot.Bank.TryGetItem(item, out InventoryItem? x) &&
+                                  x != null &&
+                                  (x.CategoryString == "House" || x.CategoryString == "Wall Item" || x.CategoryString == "Floor Item");
+
+                if (isHouseItem)
                 {
-                    Logger($"Failed to unbank {item}, skipping it", messageBox: true);
-                    continue;
+                    bool success = false;
+                    for (int i = 0; i < 20; i++) // Retry up to 20 times
+                    {
+                        SendPackets($"%xt%zm%bankToInv%{Bot.Map.RoomID}%{x!.ID}%{x.CharItemID}%");
+                        Sleep(); // Wait for a short period before checking
+                        if (Bot.House.Contains(item))
+                        {
+                            success = true;
+                            break;
+                        }
+                    }
+
+                    if (!success)
+                    {
+                        Logger($"Failed to unbank {item}, skipping it", messageBox: true);
+                        continue;
+                    }
+                }
+                else
+                {
+                    if (!Bot.Wait.ForTrue(() => Bot.Bank.EnsureToInventory(item), 20))
+                    {
+                        Logger($"Failed to unbank {item}, skipping it", messageBox: true);
+                        continue;
+                    }
                 }
 
                 Logger($"{item} moved from bank");
