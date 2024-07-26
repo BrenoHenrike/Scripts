@@ -749,7 +749,10 @@ public class CoreBots
             }
 
             // Check if item is in whitelist and not in blacklist or Extras
-            if ((whiteList.Contains(inventoryItem.Category) || inventoryItem.Coins) && !BankingBlackList.Contains(item) && !Extras.Contains(inventoryItem.ID) || itemIsForHouse && !_item.Equipped)
+            if ((inventoryItem?.Category != null && whiteList.Contains(inventoryItem.Category) || inventoryItem?.Coins == true) &&
+                !BankingBlackList.Contains(item) &&
+                !Extras.Contains(inventoryItem?.ID) ||
+                (itemIsForHouse && _item?.Equipped != true))
             {
                 if (!itemIsForHouse && !Bot.Inventory.EnsureToBank(item))
                 {
@@ -758,12 +761,15 @@ public class CoreBots
                 }
                 else if (itemIsForHouse)
                 {
-                    SendPackets($"%xt%zm%bankFromInv%{Bot.Map.RoomID}%{_item.ID}%{_item.CharItemID}%");
-                    Bot.Wait.ForTrue(() => !Bot.House.Contains(item), 20);
-                    if (Bot.House.Items.Any(x => x.Name == item))
+                    if (_item != null)
                     {
-                        Logger($"Failed to bank {item} in house bank, skipping it");
-                        continue;
+                        SendPackets($"%xt%zm%bankFromInv%{Bot.Map.RoomID}%{_item.ID}%{_item.CharItemID}%");
+                        Bot.Wait.ForTrue(() => !Bot.House.Contains(item), 20);
+                        if (Bot.House.Items.Any(x => x.Name == item))
+                        {
+                            Logger($"Failed to bank {item} in house bank, skipping it");
+                            continue;
+                        }
                     }
                 }
 
