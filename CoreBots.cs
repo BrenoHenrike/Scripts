@@ -663,21 +663,21 @@ public class CoreBots
             }
             else
             {
-                Bot.Bank.EnsureToInventory(item);
-                Bot.Wait.ForTrue(() => Bot.Inventory.Contains(item), 20);
+                
+                Bot.Wait.ForTrue(() => Bot.Bank.EnsureToInventory(item), 20);
             }
 
             Sleep();
 
             if (itemIsForHouse && !Bot.House.TryGetItem(item, out InventoryItem? z) && z != null)
             {
-                Logger($"Failed to unbank {item} from house bank, skipping it", messageBox: true);
+                Logger($"Failed to unbank {item} from house bank, skipping it");
                 continue;
             }
 
             if (!itemIsForHouse && !Bot.Inventory.Contains(item))
             {
-                Logger($"Failed to unbank {item} from bank, skipping it", messageBox: true);
+                Logger($"Failed to unbank {item} from bank, skipping it");
                 continue;
             }
 
@@ -715,7 +715,7 @@ public class CoreBots
 
                 if (!Bot.Wait.ForTrue(() => Bot.Bank.EnsureToInventory(item), 20))
                 {
-                    Logger($"Failed to unbank {Bot.Bank.GetItem(item)?.Name ?? item.ToString()}, skipping it", messageBox: true);
+                    Logger($"Failed to unbank {Bot.Bank.GetItem(item)?.Name ?? item.ToString()}, skipping it");
                     continue;
                 }
 
