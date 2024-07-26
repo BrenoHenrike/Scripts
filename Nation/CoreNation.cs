@@ -1394,7 +1394,7 @@ public class CoreNation
             Core.KillEscherion("Emerald Pickaxe");
 
         if (!Core.CheckInventory("Seraphic Grave Digger Spade"))
-            Core.KillMonster("legioncrypt", "r1", "Top", "Gravedigger", "Seraphic Grave Digger Spade", isTemp: false, log: false);
+            Core.KillMonster("legioncrypt", "r1", "Top", "Gravedigger", "Seraphic Grave Digger Spade", isTemp: false);
         Core.EquipClass(ClassType.Solo);
         int i = 1;
         while (!Bot.ShouldExit && !Core.CheckInventory("Unidentified 10", quant))
@@ -1443,7 +1443,8 @@ public class CoreNation
         Core.AddDrop("Unidentified 10");
 
         BambloozevsDrudgen("Unidentified 10", quant);
-        NulgathLarvae("unidentified 10", quant);
+        DirtyDeedsDoneDirtCheap(quant);
+        Supplies("unidentified 10", quant);
     }
 
     /// <summary>
