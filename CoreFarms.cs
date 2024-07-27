@@ -2098,6 +2098,7 @@ public class CoreFarms
         // Method to kill a monster to obtain a specific item
         void KillMonsterForItem(string itemName, int quantity, string map, string cell, string pad, string monster)
         {
+            Core.AddDrop(itemName);
             Core.RegisterQuests(1682);
             Core.FarmingLogger(itemName, quantity);
             int ItemNameQuant = Bot.Inventory.GetQuantity(itemName);
