@@ -843,22 +843,23 @@ public class CoreAOR
                 switch (A.Name)
                 {
                     case "Oxidize":
-                        while (!Bot.ShouldExit && !Bot.Self.HasActiveAura("Vigil"))
+                        while (!Bot.ShouldExit && !Bot.Self.HasActiveAura(A.Name))
                         {
                             UsePotion();
                             Core.Sleep();
 
                             // Check if targetAura is not null before accessing its SecondsRemaining() method
                             // Assuming `targetAura` is the aura you're referring to
-                            if (Bot.Self.HasActiveAura("Vigil"))
+                            if (Bot.Self.HasActiveAura(A.Name))
                             {
-                                Core.Logger($"Vigil Active!");
+                                Core.Logger($"\"{A.Name}\" Active!");
                                 break;
                             }
                         }
                         break;
 
-                    case null:
+                    default:
+                        Core.Logger($"\"{targetAuraName}\" has not been added yet, please advise su on the aura name and the required item (if applicable)");
                         break;
                 }
             }
