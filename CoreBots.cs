@@ -31,6 +31,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Text;
 using System.Globalization;
+using Skua.Core.Models.Auras;
 
 public class CoreBots
 {
@@ -5326,6 +5327,45 @@ public class CoreBots
             Bot.Combat.Attack("Dark Makai");
             Sleep();
         }
+    }
+
+    public void AuraHandling(string? targetAuraName)
+    {
+        foreach (Aura A in Bot.Target.Auras.Concat(Bot.Self.Auras))
+        {
+            if (targetAuraName == null)
+                continue;
+
+            switch (A.Name)
+            {
+                case "Oxidize":
+                    while (!Bot.ShouldExit && !Bot.Self.HasActiveAura("Vigil"))
+                    {
+                        UsePotion();
+                        Sleep();
+
+                        // Check if targetAura is not null before accessing its SecondsRemaining() method
+                        // Assuming `targetAura` is the aura you're referring to
+                        if (Bot.Self.HasActiveAura("Vigil"))
+                        {
+                            Logger($"Vigil Active!");
+                            break;
+                        }
+                    }
+                    break;
+
+                default:
+                    Logger($"\"{targetAuraName}\" has not been added yet, please advise su on the aura name and the required item (if applicable)");
+                    break;
+            }
+        }
+    }
+
+    public void UsePotion()
+    {
+        var skill = Bot.Flash.GetArrayObject<dynamic>("world.actions.active", 5);
+        if (skill == null) return;
+        Bot.Flash.CallGameFunction("world.testAction", JsonConvert.DeserializeObject<ExpandoObject>(JsonConvert.SerializeObject(skill))!);
     }
 
     #endregion
