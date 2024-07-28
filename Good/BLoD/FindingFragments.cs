@@ -32,14 +32,14 @@ public class FindingFragments_Any
         Core.BankingBlackList.AddRange(new[] { "Blinding Light Fragments", "Spirit Orb", "Loyal Spirit Orb", "Bright Aura", "Brilliant Aura", "Blinding Aura" });
         Core.SetOptions();
 
-        FindingFragments();
+        FindingFragments(Bot.Config!.Get<WeaponOfDestiny>("questID"));
 
         Core.SetOptions(false);
     }
 
-    public void FindingFragments()
+    public void FindingFragments(WeaponOfDestiny weapon = WeaponOfDestiny.Blade)
     {
-        int quest = Bot.Config!.Get<WeaponOfDestiny>("questID") switch
+        int quest = weapon switch
         {
             WeaponOfDestiny.Bow => 2174,
             WeaponOfDestiny.Daggers => 2175,
@@ -50,6 +50,6 @@ public class FindingFragments_Any
             _ => 0,
         };
         foreach (ItemBase item in Core.EnsureLoad(quest).Rewards)
-            BLOD.FindingFragments(Bot.Config.Get<WeaponOfDestiny>("questID"), item.Name, item.MaxStack);
+            BLOD.FindingFragments(weapon, item.Name, item.MaxStack);
     }
 }
