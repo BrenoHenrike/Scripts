@@ -39,7 +39,7 @@ public class FindingFragments_Any
 
     public void FindingFragments()
     {
-        int quest = (Bot.Config!.Get<WeaponOfDestiny>("questID")) switch
+        int quest = Bot.Config!.Get<WeaponOfDestiny>("questID") switch
         {
             WeaponOfDestiny.Bow => 2174,
             WeaponOfDestiny.Daggers => 2175,
