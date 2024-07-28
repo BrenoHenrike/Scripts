@@ -172,11 +172,18 @@ public class CoreAdvanced
     }
 
     /// <summary>
-    /// Buys all merge from a shop based on the script options selected setting. Will read where to get the ingredients from from the findIngredients param
+    /// Buys merge items from a shop based on specified options. Filters ShopItems to ensure uniqueness by ID and ShopItemID,
+    /// selecting items based on Upgrade requirements and excluding those ending with "insignia".
     /// </summary>
-    /// <param name="map">The map where the shop can be loaded from</param>
-    /// <param name="shopID">The shop ID to load the shopdata</param>
-    /// <param name="findIngredients">A switch nested in a void that will explain this function where to get items</param>
+    /// <param name="map">The map from which the shop is loaded.</param>
+    /// <param name="shopID">The shop ID to load shop data.</param>
+    /// <param name="findIngredients">Action determining where to retrieve items.</param>
+    /// <param name="buyOnlyThis">Optional. Limits purchases to a specific item.</param>
+    /// <param name="itemBlackList">Optional. List of excluded items.</param>
+    /// <param name="buyMode">Optional. Specifies buying mode.</param>
+    /// <param name="Group">Optional. Specifies group selection method.</param>
+    /// <param name="ShopItemID">Optional. Specifies ShopItem ID.</param>
+    /// <param name="Log">Optional. Enables logging.</param>
     public void StartBuyAllMerge(string map, int shopID, Action findIngredients, string? buyOnlyThis = null, string[]? itemBlackList = null, mergeOptionsEnum? buyMode = null, string Group = "First", int ShopItemID = 0, bool Log = true)
     {
         if (buyOnlyThis == null && buyMode == null)
@@ -192,10 +199,17 @@ public class CoreAdvanced
         else Core.Logger("Invalid setup detected for StartBuyAllMerge. Please report", messageBox: true, stopBot: true);
 
         matsOnly = mode == 2;
+
+        //i stg i keep having to add filters to this..
         List<ShopItem> shopItems = Core.GetShopItems(map, shopID)
-                                    .GroupBy(item => item.ID)
-                                    .Select(group => Group == "First" ? group.First() : group.Last())
-                                    .ToList();
+                                .GroupBy(item => new { item.Name, item.ID })
+                                .Select(group =>
+                                {
+                                    var orderedGroup = group.OrderBy(item => item.ShopItemID != group.First().ShopItemID);
+                                    return Group == "First" ? orderedGroup.First() : orderedGroup.Last();
+                                })
+                                .Where(x => !x.Name.ToLower().EndsWith("insignia"))
+                                .ToList();
 
         List<ShopItem> items = new();
         bool memSkipped = false;
@@ -205,7 +219,7 @@ public class CoreAdvanced
             if (Core.CheckInventory(item.ID, toInv: false) ||
                     miscCatagories.Contains(item.Category) ||
                     (!string.IsNullOrEmpty(buyOnlyThis) && buyOnlyThis != item.Name) ||
-                    (itemBlackList != null && itemBlackList.Any(b => b.ToLower() == item.Name.ToLower())))
+                    (itemBlackList != null && itemBlackList.Any(x => x.ToLower() == item.Name.ToLower())))
                 continue;
 
             if (Core.IsMember || !item.Upgrade)
@@ -265,7 +279,7 @@ public class CoreAdvanced
                 if (!matsOnly && !Core.CheckInventory(item.ID, toInv: false))
                 {
                     Core.Logger($"Buying {item.Name} (#{t++}/{items.Count})");
-                    BuyItem(map, shopID, item.ID, shopItemID: ShopItemID, Log: Log);
+                    BuyItem(map, shopID, item.ID, shopItemID: item.ShopItemID, Log: Log);
 
                     if (item.Coins)
                         Core.ToBank(item.ID);
@@ -306,7 +320,12 @@ public class CoreAdvanced
 
                 if (shopItems.Select(x => x.ID).Contains(req.ID) && !AltFarmItems.Contains(req.Name))
                 {
-                    ShopItem selectedItem = shopItems.First(x => x.ID == req.ID);
+                    // ShopItem selectedItem = shopItems.First(x => x.ID == req.ID && !req.Name.EndsWith("Insignia"));
+                    ShopItem selectedItem = shopItems
+                    .Where(x => x.ID == req.ID && !x.Name.EndsWith("Insignia"))
+                    // Add more filtering conditions as needed
+                    .First();
+
 
                     if (selectedItem.Requirements.Any(r => MaxStackOneItems.Contains(r.Name)))
                     {
@@ -316,7 +335,7 @@ public class CoreAdvanced
                             Core.Sleep();
 
                             if (!matsOnly)
-                                BuyItem(map, shopID, selectedItem.ID, Bot.Inventory.GetQuantity(selectedItem.ID) + selectedItem.Quantity, Log: Log);
+                                BuyItem(map, shopID, selectedItem.ID, Bot.Inventory.GetQuantity(selectedItem.ID) + selectedItem.Quantity, shopItemID: selectedItem.ShopItemID, Log: Log);
                             else break;
                         }
                     }
@@ -326,7 +345,7 @@ public class CoreAdvanced
                         Core.Sleep();
 
                         if (!matsOnly)
-                            BuyItem(map, shopID, selectedItem.ID, req.Quantity, Log: Log);
+                            BuyItem(map, shopID, selectedItem.ID, req.Quantity, shopItemID: selectedItem.ShopItemID, Log: Log);
                     }
                 }
                 else
@@ -986,6 +1005,7 @@ public class CoreAdvanced
         }
         else if (ReEquippedItems.Count > 0)
         {
+            Core.JumpWait();
             Core.Equip(ReEquippedItems.ToArray());
             if (EnhAfter)
                 EnhanceEquipped(ReEnhanceAfter, ReCEnhanceAfter, ReHEnhanceAfter, ReWEnhanceAfter);
@@ -2324,15 +2344,15 @@ public class CoreAdvanced
                     break;
                 #endregion
 
-                #region Lucky - Vainglory - Dauntless|Mana Vamp - Examen
+                #region Lucky - Vainglory - Dauntless|Mana Vamp - Vim
                 case "arachnomancer":
-                    if (!uVainglory() || !uExamen())
+                    if (!uVainglory() || !uVim())
                         goto default;
 
                     type = EnhancementType.Lucky;
                     cSpecial = CapeSpecial.Vainglory;
                     wSpecial = uDauntless() ? WeaponSpecial.Dauntless : WeaponSpecial.Mana_Vamp;
-                    hSpecial = HelmSpecial.Examen;
+                    hSpecial = HelmSpecial.Vim;
                     break;
                 #endregion
 

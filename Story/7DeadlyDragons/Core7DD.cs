@@ -217,7 +217,7 @@ public class Core7DD
         {
             Core.EnsureAccept(5952);
             Core.BuyItem("Dragonhame", 865, "Airther Vitae");
-            Core.BuyItem("Arcangrove", 211, 1749);
+            Core.BuyItem("embersea", 1100, 1749);
             Core.EnsureComplete(5952);
         }
 

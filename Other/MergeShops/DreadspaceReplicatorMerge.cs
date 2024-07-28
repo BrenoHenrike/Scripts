@@ -69,7 +69,7 @@ public class DreadspaceReplicatorMerge
                     Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("dreadspace", "Red Trobble", req.Name, quant, false);
+                        Core.HuntMonster("dreadspace", "Red Trobble", req.Name, quant, false, log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     break;
@@ -79,7 +79,7 @@ public class DreadspaceReplicatorMerge
                     Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("dreadspace", "Trobble", req.Name, quant, false);
+                        Core.HuntMonster("dreadspace", "Trobble", req.Name, quant, false, log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     break;
@@ -89,7 +89,7 @@ public class DreadspaceReplicatorMerge
                     Core.EquipClass(ClassType.Solo);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("dreadspace", "Troblor", req.Name, quant, false);
+                        Core.HuntMonster("dreadspace", "Troblor", req.Name, quant, false, log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     break;
@@ -99,7 +99,7 @@ public class DreadspaceReplicatorMerge
                     Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("dreadspace", "Undead Space Marine", req.Name, quant, false);
+                        Core.HuntMonster("dreadspace", "Undead Space Marine", req.Name, quant, false, log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     break;
@@ -111,7 +111,7 @@ public class DreadspaceReplicatorMerge
                     Core.RegisterQuests(4289);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("dreadspace", "Undead Space Marine", "Golden Spork of Justice");
+                        Core.HuntMonster("dreadspace", "Undead Space Marine", "Golden Spork of Justice", log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
@@ -137,7 +137,7 @@ public class DreadspaceReplicatorMerge
                     Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("dreadspace", "Dread Space", req.Name, quant);
+                        Core.HuntMonster("dreadspace", "Dread Space", req.Name, quant, log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     break;
@@ -149,7 +149,7 @@ public class DreadspaceReplicatorMerge
                     Core.RegisterQuests(4294);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonster("dreadspace", "Dra'gorn", "Space Dragon Balls", 7, false);
+                        Core.HuntMonster("dreadspace", "Dra'gorn", "Space Dragon Balls", 7, false, false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();

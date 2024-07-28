@@ -40,10 +40,10 @@ Base = Chaos Slayer Berserker = 1 | 3 | 2 = 250
 Base = Chaos Slayer Cleric = 1 | 3 | 2 = 250
 Base = Chaos Slayer Mystic = 1 | 3 | 2 = 250
 Base = Chaos Slayer Thief = 1 | 3 | 2 = 250
-Solo = Corrupted Chronomancer = 5 | 2 | 3 | 1 | 1 | 1 | 3 | 1 | 4 = 250
-Farm = Corrupted Chronomancer = 5 | 3 | 1 | 1 | 3 | 1 | 1 | 3 | 1 | 4 | 2 = 250
+Solo = Corrupted Chronomancer = 4 | 2 | 3 | 1 | 1 | 1 | 3 | 1 | 4 = 250
+Farm = Corrupted Chronomancer = 4 | 3 | 1 | 1 | 3 | 1 | 1 | 3 | 1 | 4 | 2 = 250
 Base = Chrono Assassin = 4 | 1 | 2 | 3 | 1 | 2 | 3 | 1 | 2 | 3 | 1 | 2 | 3 | 1 | 2 | 3 | 3 | 2 | 1 | 2 = 250
-Base = Chrono Chaorruptor = 5 | 2 | 3 | 1 | 1 | 1 | 3 | 1 | 4 | 3 | 1 | 1 | 1 | 3 | 1 | 4 = 250
+Base = Chrono Chaorruptor = 4 | 2 | 3 | 1 | 1 | 1 | 3 | 1 | 4 | 3 | 1 | 1 | 1 | 3 | 1 | 4 = 250
 Base = Chrono Commandant = 4 | 1 | 1 | 1 | 1 | 2 | 3 = 250
 Base = Chrono DataKnight = 1 | 2 | 3 | 1 | 2S | 3S | 1 | 2S | 3S | 1 | 4 = 250
 Base = Chrono DragonKnight = 1 | 1 | 1 | 1 | 1 | 4 | 2 | 3 = 250
@@ -108,12 +108,12 @@ Solo = Enchanted Vampire Lord = 2 | 3 | 1 | 1 | 3 = 250
 Base = Enforcer = 1 | 2 | 3 | 4 = Use if Available
 Base = Eternal Chronomancer = 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 4 | 1 | 2 | 3 = 250
 Farm = Eternal Inversionist = 2 | 4 | 1 | 3 = Use if Available
-Base = Evolved ClawSuit = 3 | 4 | 2 | 5 | 2 | 4 | 2 | 2 = 250
-Base = Evolved Dark Caster = 4 | 5 | 3 | 2 = 250
-Base = Evolved Leprechaun = 5 | 4 | 2 | 3 = 250
+Base = Evolved ClawSuit = 2 | 3 | 1 | 4 | 1 | 3 | 1 | 1 = 250
+Base = Evolved Dark Caster = 3 | 4 | 2 | 1 = 250
+Base = Evolved Leprechaun = 4 | 3 | 1 | 2 = 250
 Base = Evolved Pumpkin Lord = 3 | 4 | 2 | 1 = 250
 Base = Evolved Shaman = 3 | 4 | 2 | 1 = 250
-Base = Exalted Harbinger = 4 | 4 | 2 | 3 | 4 | 2 | 3 | 5 | 2 | 3 | 4 | 4 = 250
+Base = Exalted Harbinger = 3 | 3 | 1 | 2 | 3 | 1 | 2 | 4 | 1 | 2 | 3 | 3 = 250
 Base = Exalted Soul Cleaver = 2 | 3 | 2 | 2 | 3 = 250
 Base = FireLord Summoner = 3 | 2 | 1 | 4 = 250
 Base = Flame Dragon Warrior = 1 | 2 | 1 | 2 | 4 | 3 = 250
@@ -249,15 +249,15 @@ Base = TimeKeeper = 2 | 4 | 1 | 1 | 1 | 4 | 3 | 2 | 1 | 1 | 4 | 1 | 2 | 1 | 1 | 
 Farm = TimeKeeper = 2 | 4 | 1 | 1 | 1 | 3 = 250
 Base = TimeKiller = 2 | 4 | 1 | 1 | 1 | 4 | 3 | 2 | 1 | 1 | 4 | 1 | 2 | 1 | 1 | 3 = 250
 Farm = TimeKiller = 2 | 4 | 1 | 1 | 1 | 3 = 250
-Solo = Timeless Chronomancer = 5 | 2 | 3 | 1 | 1 | 1 | 3 | 1 | 4 = 250
-Farm = Timeless Chronomancer = 5 | 3 | 1 | 1 | 3 | 1 | 1 | 3 | 1 | 4 | 2 = 250
+Solo = Timeless Chronomancer = 4 | 2 | 3 | 1 | 1 | 1 | 3 | 1 | 4 = 250
+Farm = Timeless Chronomancer = 4 | 3 | 1 | 1 | 3 | 1 | 1 | 3 | 1 | 4 | 2 = 250
 Base = Timeless Dark Caster = 1 | 2 | 3 | 4 = Use if Available
 Base = Troll Spellsmith = 1 | 2 | 3 | 4 = Use if Available
 Base = Troubador of Love = 1 | 2 | 3 | 4 = Use if Available
 Atk = Ultra Elemental Warrior = 1 | 3 | 4 | 1 | 2 | 4 | 1 | 3 | 2 | 1 | 4 | 2 = 250
 Def = Ultra Elemental Warrior = 1 | 3 | 2 | 1 | 2 | 3 | 
 Base = Ultra OmniKnight = 1 | 2 | 3 | 4 = Use if Available
-Base = Underworld Chronomancer = 5 | 2 | 3 | 1 | 1 | 1 | 3 | 1 | 4 | 3 | 1 | 1 | 1 | 3 | 1 | 4 = 250
+Base = Underworld Chronomancer = 4 | 2 | 3 | 1 | 1 | 1 | 3 | 1 | 4 | 3 | 1 | 1 | 1 | 3 | 1 | 4 = 250
 Base = Unchained Rocker = 1 | 2 | 3 | 4 = Use if Available
 Base = Unchained Rockstar = 1 | 2 | 3 | 4 = Use if Available
 Base = Undead Goat = 1 | 2 | 3 | 4 = Use if Available

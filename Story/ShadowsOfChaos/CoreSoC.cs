@@ -271,7 +271,7 @@ public class CoreSoC
         Story.MapItemQuest(7736, "BrightShadow", 7701);
 
         //Defeat Gravelyn 7737
-        Story.KillQuest(7737, "BrightShadow", "Gravelyn the Good");
+        Story.KillQuest(7737, "BrightShadow", "Gravelyn the Good", AutoCompleteQuest: false);
 
         //Restoring Order 7738
         Story.KillQuest(7738, "BrightShadow", new[] { "Brightfall light", "Brightfall Guard", "Shadowflame Paladin" });

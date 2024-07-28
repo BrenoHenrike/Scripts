@@ -131,7 +131,7 @@ public class CoreFriday13th
             {
                 Core.EnsureAccept(3117);
                 Core.HuntMonster("Skullpunch", "Shelleton", "Turtle Meat", 10);
-                Core.HuntMonster("Skullpunch", "Fish Oil", "Fishwing", 5);
+                Core.HuntMonster("Skullpunch", "Fishwing", "Fish Oil", 5);
                 Core.EnsureAccept(3117);
             }
 

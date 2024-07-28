@@ -507,7 +507,8 @@ public class CoreQOM
         if (!Story.QuestProgression(5823))
         {
             Core.EnsureAccept(5823);
-            Core.HuntMonster("baconcat", "Litter Elemental", "Absorbent \"Sand\"", 8);
+            while (!Bot.ShouldExit && !Core.CheckInventory(39194, 8))
+                Core.KillMonster("baconcat", "r8", "Left", "Litter Elemental", log: false);
             Core.EnsureComplete(5823);
         }
 
@@ -741,8 +742,7 @@ public class CoreQOM
         if (!Story.QuestProgression(5872))
         {
             Core.EnsureAccept(5872);
-            Core.BuyItem("arcangrove", 211, "Health Potion", 25);
-
+            Core.BuyItem("embersea", 1100, 1749, 25);
             Core.HuntMonster("Arcangrove", "Seed Spitter", "Uncorrupted Spitter Seeds", 3);
             Core.HuntMonster("poisonforest", "Treeant", "Treeant Berries", 4);
             Core.EnsureComplete(5872);

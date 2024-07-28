@@ -37,6 +37,9 @@ tags: nova, shrine, gifts, merge, novashrine, gold, voucher, k, star, light, des
 //cs_include Scripts/Story/Summer2015AdventureMap/CoreSummer.cs
 //cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
 //cs_include Scripts/Story/TowerOfDoom.cs
+//cs_include Scripts/ShadowsOfWar/CoreSoWMats.cs
+//cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
+//cs_include Scripts/ShadowsOfWar/MergeShops/StreamwarMerge.cs
 
 
 
@@ -63,6 +66,7 @@ public class NovaShrineGiftsMerge
     public DragonBladeofNulgath DBoN = new();
     public CoreBLOD BLOD = new();
     public CoreDOY CoreDOY = new();
+    public StreamwarMerge StreamwarMerge = new();
 
 
 
@@ -149,6 +153,10 @@ public class NovaShrineGiftsMerge
 
                 case "DragonBlade of Nulgath":
                     DBoN.GetDragonBlade();
+                    break;
+
+                case "Dark Dragon Slayer's Halberd":
+                    StreamwarMerge.BuyAllMerge(req.Name);
                     break;
 
                 case "Star of the Empyrean":

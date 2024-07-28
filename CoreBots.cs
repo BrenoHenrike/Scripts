@@ -31,6 +31,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Text;
 using System.Globalization;
+using Skua.Core.Models.Auras;
 
 public class CoreBots
 {
@@ -644,7 +645,7 @@ public class CoreBots
 
         foreach (var item in items)
         {
-            if (Bot.Inventory.Contains(item))
+            if (Bot.Inventory.Contains(item) || Bot.House.Contains(item))
                 continue;
 
             if (Bot.Bank.Contains(item))
@@ -656,10 +657,37 @@ public class CoreBots
                     return;
                 }
 
-                if (!Bot.Wait.ForTrue(() => Bot.Bank.EnsureToInventory(item), 20))
+                bool isHouseItem = Bot.Bank.TryGetItem(item, out InventoryItem? x) &&
+                                  x != null &&
+                                  (x.CategoryString == "House" || x.CategoryString == "Wall Item" || x.CategoryString == "Floor Item");
+
+                if (isHouseItem)
                 {
-                    Logger($"Failed to unbank {item}, skipping it", messageBox: true);
-                    continue;
+                    bool success = false;
+                    for (int i = 0; i < 20; i++) // Retry up to 20 times
+                    {
+                        SendPackets($"%xt%zm%bankToInv%{Bot.Map.RoomID}%{x!.ID}%{x.CharItemID}%");
+                        Sleep(); // Wait for a short period before checking
+                        if (Bot.House.Contains(item))
+                        {
+                            success = true;
+                            break;
+                        }
+                    }
+
+                    if (!success)
+                    {
+                        Logger($"Failed to unbank {item}, skipping it", messageBox: true);
+                        continue;
+                    }
+                }
+                else
+                {
+                    if (!Bot.Wait.ForTrue(() => Bot.Bank.EnsureToInventory(item), 20))
+                    {
+                        Logger($"Failed to unbank {item}, skipping it", messageBox: true);
+                        continue;
+                    }
                 }
 
                 Logger($"{item} moved from bank");
@@ -698,7 +726,7 @@ public class CoreBots
 
                 if (!Bot.Wait.ForTrue(() => Bot.Bank.EnsureToInventory(item), 20))
                 {
-                    Logger($"Failed to unbank {Bot.Bank.GetItem(item)?.Name ?? item.ToString()}, skipping it", messageBox: true);
+                    Logger($"Failed to unbank {Bot.Bank.GetItem(item)?.Name ?? item.ToString()}, skipping it");
                     continue;
                 }
 
@@ -706,7 +734,6 @@ public class CoreBots
             }
         }
     }
-
 
     /// <summary>
     /// Move items from inventory to bank
@@ -731,29 +758,49 @@ public class CoreBots
             if (item == null || item == SoloClass || item == FarmClass || FarmGear.Contains(item) || SoloGear.Contains(item))
                 continue;
 
-            if (!Bot.Inventory.Items.Any(x => x.Name == item))
+            if (!Bot.Inventory.Items.Concat(Bot.House.Items).Any(x => x.Name == item))
             {
                 Logger($"{item} not found in inventory, skipping it");
                 continue;
             }
 
-            var inventoryItem = Bot.Inventory.Items.First(x => x.Name == item);
+            var inventoryItem = Bot.Inventory.Items.Concat(Bot.House.Items).FirstOrDefault(x => x.Name == item);
+            bool itemIsForHouse = Bot.House.TryGetItem(item, out InventoryItem? _item) &&
+                                            _item != null &&
+                                            (_item.CategoryString == "House" || _item.CategoryString == "Wall Item" || _item.CategoryString == "Floor Item");
 
             // Check if item is equipped
-            if (Bot.Inventory.IsEquipped(item))
+            if (Bot.Inventory.IsEquipped(item) || Bot.House.IsEquipped(item))
             {
-                Logger("Can't bank an equipped item");
+                Logger($"Can't bank an equipped item: {item}");
                 continue;
             }
 
             // Check if item is in whitelist and not in blacklist or Extras
-            if ((whiteList.Contains(inventoryItem.Category) || inventoryItem.Coins) && !BankingBlackList.Contains(item) && !Extras.Contains(inventoryItem.ID))
+            if ((inventoryItem?.Category != null && whiteList.Contains(inventoryItem.Category) || inventoryItem?.Coins == true) &&
+                !BankingBlackList.Contains(item) &&
+                !Extras.Contains(inventoryItem?.ID) ||
+                (itemIsForHouse && _item?.Equipped != true))
             {
-                if (!Bot.Inventory.EnsureToBank(item))
+                if (!itemIsForHouse && !Bot.Inventory.EnsureToBank(item))
                 {
                     Logger($"Failed to bank {item}, skipping it");
                     continue;
                 }
+                else if (itemIsForHouse)
+                {
+                    if (_item != null)
+                    {
+                        SendPackets($"%xt%zm%bankFromInv%{Bot.Map.RoomID}%{_item.ID}%{_item.CharItemID}%");
+                        Bot.Wait.ForTrue(() => !Bot.House.Contains(item), 20);
+                        if (Bot.House.Items.Any(x => x.Name == item))
+                        {
+                            Logger($"Failed to bank {item} in house bank, skipping it");
+                            continue;
+                        }
+                    }
+                }
+
                 Logger($"{item} moved to bank");
             }
         }
@@ -1687,31 +1734,24 @@ public class CoreBots
     /// </summary>
     /// <param name="questID">ID of the quest to complete</param>
     /// <param name="itemID">ID of the choose-able reward item</param>
-    public bool EnsureComplete(int questID, int itemID = -1, bool RegisterQuest = false)
+    public bool EnsureComplete(int questID, int itemID = -1)
     {
         if (questID <= 0)
             return false;
 
         Quest questData = EnsureLoad(questID);
-        EnsureLoad(questData.ID);
-        Bot.Lite.ReacceptQuest = false;
 
-        Sleep();
+        Bot.Wait.ForTrue(() => Bot.Quests.Tree.Contains(questData), 20);
 
         if (questData != null && questData.Requirements != null
                         && (!questData.Requirements.Any()
                         || questData.Requirements.All(r => r != null && r.ID > 0)
                         && CheckInventory(questData.Requirements.Select(x => x.ID).ToArray())))
         {
-            Bot.Quests.EnsureComplete(questID, itemID);
-            if (RegisterQuest)
-                Bot.Lite.ReacceptQuest = true;
-            return true;
+            return Bot.Quests.EnsureComplete(questID, itemID);
         }
         else
         {
-            if (RegisterQuest)
-                Bot.Lite.ReacceptQuest = true;
             return false;
         }
     }
@@ -2078,6 +2118,11 @@ public class CoreBots
                     LogAndJump($"Killing {targetMonster}");
                     if (!Bot.Combat.StopAttacking)
                         Bot.Combat.Attack(monster);
+                    if (targetMonster.MaxHP == 1)
+                    {
+                        ded = true;
+                        continue;
+                    }
                     Sleep();
                 }
                 return;
@@ -2539,6 +2584,71 @@ public class CoreBots
             }
 
             Rest();
+        }
+    }
+
+    /// <summary>
+    /// Hunts monsters based on the requirements of a specified quest and an optional array of map and monster names.
+    /// </summary>
+    /// <param name="questId">The ID of the quest to load requirements from.</param>
+    /// <param name="mapMonsterPairs">An optional array of tuples containing map names and monster names. Defaults to null.</param>
+    /// <param name="log">Whether to log the hunting process.</param>
+    public void HuntMonsterQuest(int questId, (string? mapName, string? monsterName, ClassType classType)[]? MapMonsterClassPairs = null, bool log = false)
+    {
+        Quest? quest = Bot.Quests.EnsureLoad(questId);
+        if (quest == null)
+        {
+            Logger($"Quest {questId} not found");
+            return;
+        }
+
+        if (MapMonsterClassPairs == null)
+        {
+            MapMonsterClassPairs = new (string? mapName, string? monsterName, ClassType classType)[quest.Requirements.Count];
+            for (int i = 0; i < quest.Requirements.Count; i++)
+            {
+                MapMonsterClassPairs[i] = (null, null, ClassType.Solo); // Use a default class type if needed
+            }
+        }
+
+        for (int i = 0; i < MapMonsterClassPairs.Length && i < quest.Requirements.Count; i++)
+        {
+            ItemBase requirement = quest.Requirements[i];
+            (string? mapName, string? monsterName, ClassType classType) = MapMonsterClassPairs[i];
+
+            // Equip the class before hunting
+            EquipClass(classType);
+
+            HuntMonster(mapName ?? Bot.Map.Name, monsterName ?? "*", requirement.Name ?? string.Empty, requirement.Quantity, requirement.Temp, log);
+        }
+    }
+
+
+    /// <summary>
+    /// Hunts monsters based on the requirements of a specified quest and optional map and monster names for each requirement.
+    /// </summary>
+    /// <param name="questId">The ID of the quest to load requirements from.</param>
+    /// <param name="mapName">An optional map name for the hunt.</param>
+    /// <param name="monsterName">An optional monster name for the hunt.</param>
+    /// <param name="log">Whether to log the hunting process.</param>
+    public void HuntMonsterQuest(int questId, string? mapName = null, string? monsterName = null, bool log = false)
+    {
+        Quest? quest = Bot.Quests.EnsureLoad(questId);
+        if (quest == null)
+        {
+            Logger($"Quest {questId} not found");
+            return;
+        }
+
+        for (int i = 0; i < quest.Requirements.Count; i++)
+        {
+            ItemBase requirement = quest.Requirements[i];
+
+            // Use the provided map and monster names, or fall back to default values
+            string huntMapName = mapName ?? Bot.Map.Name;
+            string huntMonsterName = monsterName ?? "*";
+
+            HuntMonster(huntMapName, huntMonsterName, requirement.Name ?? string.Empty, requirement.Quantity, requirement.Temp, log);
         }
     }
 
@@ -3911,6 +4021,8 @@ public class CoreBots
     public void SavedState(bool on = true)
     {
         // Method implementation intentionally left blank as it is currently unused.
+        GC.Collect();
+
     }
 
 
@@ -4035,7 +4147,13 @@ public class CoreBots
             return;
 
         Bot.Options.AttackWithoutTarget = false;
+
         HashSet<string> blackListedCells = Bot.Monsters.MapMonsters.Select(monster => monster.Cell).ToHashSet();
+        // Check if there are more than one cell that starts with "Enter"
+        if (Bot.Map.Cells.Count(cell => cell.StartsWith("Enter")) > 1)
+        {
+            blackListedCells.UnionWith(Bot.Map.Cells.Where(cell => cell.StartsWith("Enter")));
+        }
 
         if (!blackListedCells.Contains(Bot.Player.Cell))
             return;
@@ -4047,16 +4165,28 @@ public class CoreBots
 
         if (!blackListedCells.Contains("Enter"))
         {
-            cellPad = ("Enter", "Spawn");
+            cellPad = (Bot.Map.Cells.Any(x => x.StartsWith("Enter")) ? "Enter" : Bot.Player.Cell, "Spawn");
         }
         else
         {
             blackListedCells.UnionWith(new List<string> { "Wait", "Blank", "Out", "moveFrame", "CutMikoOrochi", "innitRoom" });
             blackListedCells.UnionWith(Bot.Map.Cells.Where(x => x.StartsWith("Cut")));
 
-            #region AI is Aggressive (always)
+            #region AI is Aggressive (always)... or other issues
             if (Bot.Map.Name == "pyrewatch")
                 blackListedCells.UnionWith(new[] { "r3", "r4", "r5", "r7", "r12" });
+
+            if (Bot.Map.Name == "shadowfall")
+                blackListedCells.UnionWith(new[] { "New6" });
+
+            if (Bot.Map.Name == "wanders")
+            {
+                Bot.Map.Jump("Boss", "left", false);
+                Bot.Sleep(2500);
+                blackListedCells.UnionWith(Bot.Player.Cell == "Boss" ? new[] { "r25" } : new[] { "Boss" });
+            }
+            if (Bot.Map.Name == "zephyrus")
+                blackListedCells.UnionWith(new[] { "R1", "Enter" });
             #endregion
 
             if (!IsMember)
@@ -4087,6 +4217,7 @@ public class CoreBots
 
             Sleep(ExitCombatDelay < 200 ? ExitCombatDelay : ExitCombatDelay - 200);
         }
+        GC.Collect();
     }
 
     private string lastMapJW = string.Empty;
@@ -4100,8 +4231,17 @@ public class CoreBots
     /// <param name="pad">The pad to jump to</param>
     /// <param name="publicRoom">Whether or not it should be a public room, if PrivateRoom is on in the CanChange section on the top of CoreBots</param>
     /// <param name="ignoreCheck">If set to true, the bot will not check if the player is already in the given room</param>
-    public void Join(string? map, string cell = "Enter", string pad = "Spawn", bool publicRoom = false, bool ignoreCheck = false)
+    public void Join(string? map, string? cell = null, string pad = "Spawn", bool publicRoom = false, bool ignoreCheck = false)
     {
+        // If cell is null, determine its value
+        if (cell == null)
+        {
+            var nonEnterCells = Bot.Map.Cells.Where(x => !x.StartsWith("Enter")).ToList();
+            cell = Bot.Map.Cells.Count(x => x.StartsWith("Enter")) > 1
+                ? nonEnterCells.FirstOrDefault() ?? "Enter"
+                : Bot.Map.Cells.FirstOrDefault(x => x.StartsWith("Enter")) ?? "Enter";
+        }
+
         map = map!.Replace(" ", "").Replace('I', 'i');
         map = map.ToLower() == "tercess" ? "tercessuinotlim" : map.ToLower();
         string strippedMap = map.Contains('-') ? map.Split('-').First() : map;
@@ -4131,7 +4271,7 @@ public class CoreBots
 
             #region Simple Quest Bypasses
             case "marsh2":
-                SimpleQuestBypass((58, 5));
+                SimpleQuestBypass((58, 8));
                 break;
 
             case "nightmare":
@@ -4177,7 +4317,7 @@ public class CoreBots
                 break;
 
             case "twilightedge":
-                SimpleQuestBypass((156, 1));
+                SimpleQuestBypass((156, 23));
                 break;
 
             case "dragonkoiz":
@@ -4446,6 +4586,19 @@ public class CoreBots
                 Bot.Wait.ForMapLoad(strippedMap);
                 break;
 
+
+            case "zephyrus":
+                JumpWait();
+                Join("hyperium");
+                Bot.Send.Packet($"%xt%zm%serverUseItem%{Bot.Map.RoomID}%+%5041%525,275%{(PrivateRooms ? (map + "-" + PrivateRoomNumber) : map)}%");
+                Bot.Wait.ForMapLoad("hyperium");
+                Jump("R10");
+                tryJoin();
+                Bot.Wait.ForCellChange("Enter");
+                Jump("R1", "Up");
+                Jump("R2", "Up");
+                break;
+
             case "icestormarena":
                 JumpWait();
                 Bot.Map.Join(PrivateRooms ? $"{map}-" + PrivateRoomNumber : map);
@@ -4505,13 +4658,14 @@ public class CoreBots
 
             #region baconcat.. is annoying
             case "baconcat":
+                Bot.Quests.UpdateQuest(5108);
                 JumpWait();
                 map = strippedMap + "-999999";
-                if (!isCompletedBefore(5087))
-                    cell = "Enter";
-                if (!isCompletedBefore(5089))
-                    cell = "Enter2";
-                else cell = "Enter3";
+                // if (!isCompletedBefore(5087))
+                //     cell = "Enter";
+                // if (!isCompletedBefore(5089))
+                //     cell = "Enter2";
+                // else cell = "Enter3";
                 tryJoin();
                 Bot.Wait.ForCellChange(cell);
                 break;
@@ -4846,6 +5000,7 @@ public class CoreBots
         pad = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(pad.ToLower());
 
         Jump(cell, pad);
+        GC.Collect();
     }
 
     /// <summary>
@@ -4861,38 +5016,42 @@ public class CoreBots
 
         JumpWait();
         Sleep();
-        List<ItemBase> tempItems = Bot.TempInv.Items;
+
+        var initialItems = Bot.TempInv.Items.ToList();
         ItemBase? newItem = null;
-        bool found = false;
 
         for (int i = 0; i < quant; i++)
         {
             Bot.Map.GetMapItem(itemID);
             Sleep(1000);
-            if (!found && Bot.TempInv.Items.Except(tempItems).Any())
+
+            // Identify new items
+            var newItems = Bot.TempInv.Items.Except(initialItems).ToList();
+            if (newItem == null && newItems.Any())
             {
-                newItem = Bot.TempInv.Items.Except(tempItems).First();
-                found = true;
+                newItem = newItems.First();
             }
         }
+
         if (quant > 1 && newItem != null)
         {
-            int t = 0;
-            while (Bot.TempInv.GetQuantity(newItem.Name) < quant ||
-                (Bot.TempInv.TryGetItem(newItem.Name, out ItemBase? _item) && _item != null &&
-                (_item.Quantity < _item.MaxStack)))
+            int attempts = 0;
+            while (Bot.TempInv.GetQuantity(newItem.Name) < quant &&
+                   Bot.TempInv.TryGetItem(newItem.Name, out ItemBase? item) &&
+                   (item?.Quantity < item?.MaxStack))
             {
                 Bot.Map.GetMapItem(itemID);
                 Sleep(1000);
-                t++;
+                attempts++;
 
-                if (t > (quant + 10))
+                if (attempts > quant + 10)
                     break;
             }
         }
 
-        Logger($"Map item {itemID}({quant}) acquired");
+        Logger($"Map item {itemID} ({quant}) acquired");
     }
+
 
     /// <summary>
     /// This method is used to move between PvP rooms
@@ -5168,6 +5327,46 @@ public class CoreBots
             Bot.Combat.Attack("Dark Makai");
             Sleep();
         }
+    }
+
+    public void AuraHandling(string? targetAuraName)
+    {
+        foreach (Aura A in Bot.Target.Auras.Concat(Bot.Self.Auras))
+        {
+            if (targetAuraName == null)
+                continue;
+
+            switch (A.Name)
+            {
+                case "Endless Blizzard":
+                case "Oxidize":
+                    while (!Bot.ShouldExit && !Bot.Self.HasActiveAura(A.Name))
+                    {
+                        UsePotion();
+                        Sleep();
+
+                        // Check if targetAura is not null before accessing its SecondsRemaining() method
+                        // Assuming `targetAura` is the aura you're referring to
+                        if (Bot.Self.HasActiveAura(A.Name))
+                        {
+                            Logger($"\"{A.Name}\" Active!");
+                            break;
+                        }
+                    }
+                    break;
+
+                default:
+                    Logger($"\"{targetAuraName}\" has not been added yet, please advise su on the aura name and the required item (if applicable)");
+                    break;
+            }
+        }
+    }
+
+    public void UsePotion()
+    {
+        var skill = Bot.Flash.GetArrayObject<dynamic>("world.actions.active", 5);
+        if (skill == null) return;
+        Bot.Flash.CallGameFunction("world.testAction", JsonConvert.DeserializeObject<ExpandoObject>(JsonConvert.SerializeObject(skill))!);
     }
 
     #endregion
@@ -6075,13 +6274,18 @@ public static class UtilExtensionsS
         if (input == null)
             return string.Empty; // Handle null input by returning an empty string
 
-        return new string(input
+        // Normalize, trim, and remove unnecessary punctuation while preserving spaces between words
+        string result = new(input
             .Trim()
             .ToLowerInvariant()
-            .Normalize(System.Text.NormalizationForm.FormKD)
-            .Where(c => !char.IsWhiteSpace(c) && c != '\'' && (c == '_' || c == '-' || !char.IsPunctuation(c)))
+            .Normalize(NormalizationForm.FormKD)
+            .Where(c => !char.IsPunctuation(c) || c == '_' || c == '-' || char.IsWhiteSpace(c))
             .ToArray());
+
+        // Replace multiple spaces with a single space
+        return Regex.Replace(result, @"\s+", " ");
     }
+
 
 }
 

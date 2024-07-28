@@ -87,7 +87,7 @@ public class TechfortressWarMerge
 
                 case "Unicorn Essence":
                     Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster("undergroundlabb", "Ultra Brutalcorn", "Unicorn Essence", 5, false);
+                    Core.HuntMonster("undergroundlabb", "Ultra Brutalcorn", "Unicorn Essence", quant, false);
                     break;
 
                 case "Silver":

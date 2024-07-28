@@ -10,6 +10,8 @@ tags: null
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/Legion/SevenCircles(War).cs
 //cs_include Scripts/Legion/MergeShops/SevenCirclesMerge.cs
+//cs_include Scripts/Legion/HeadOfTheLegionBeast.cs
+//cs_include Scripts/Story/Legion/SevenCircles(War).cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
@@ -24,6 +26,7 @@ public class SevenCirclesWarMerge
     public SevenCircles Circles = new();
     public SevenCirclesMerge SevenCirclesMerge = new();
     private static CoreAdvanced sAdv = new();
+    private HeadoftheLegionBeast HeadoftheLegionBeast = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
     public string[] MultiOptions = { "Generic", "Select" };
@@ -31,6 +34,25 @@ public class SevenCirclesWarMerge
     // [Can Change] This should only be changed by the author.
     //              If true, it will not stop the script if the default case triggers and the user chose to only get mats
     private bool dontStopMissingIng = false;
+
+
+    public string[] HeadLegionBeast =
+        {
+        "Penance",
+        "Essence of Wrath",
+        "Essence of Violence",
+        "Essence of Treachery",
+        "Souls of Heresy",
+        "Indulgence",
+        "Beast Soul",
+        "Helms of the Seven Circles",
+        "Faces of Violence",
+        "Crown of Wrath",
+        "Stare of Greed",
+        "Gluttony's Maw",
+        "Aspect of Luxuria",
+        "Face of Treachery"
+    };
 
     public void ScriptMain(IScriptInterface Bot)
     {
@@ -68,17 +90,7 @@ public class SevenCirclesWarMerge
                 #endregion
 
                 case "Indulgence":
-                    Core.FarmingLogger(req.Name, quant);
-                    Core.EquipClass(ClassType.Farm);
-                    Core.RegisterQuests(7978);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.KillMonster("sevencircles", "r2", "Left", "Limbo Guard", "Souls of Limbo", 25);
-                        Core.KillMonster("sevencircles", "r3", "Left", "Luxuria Guard", "Essence of Luxuria", 1);
-                        Core.KillMonster("sevencircles", "r5", "Left", "Gluttony Guard", "Essence of Gluttony", 1);
-                        Core.KillMonster("sevencircles", "r7", "Left", "Avarice Guard", "Essence of Avarice", 1);
-                    }
-                    Core.CancelRegisteredQuests();
+                    HeadoftheLegionBeast.Indulgence(req.Quantity);
                     break;
 
                 case "Legion Token":
@@ -94,39 +106,24 @@ public class SevenCirclesWarMerge
                     break;
 
                 case "Souls of Heresy":
-                    Core.FarmingLogger(req.Name, quant);
-                    Core.EquipClass(ClassType.Farm);
-                    Core.RegisterQuests(7983, 7980, 7981); // Blasphemy? Blasphe-you! ID:7983 | War Medals ID:7980 | Mega War Medals ID:7981
-                    while (!Bot.ShouldExit && !Core.CheckInventory("Souls of Heresy", quant))
-                        Core.KillMonster("sevencircleswar", "r7", "Left", "Heresy Guard", log: false);
-                    Core.CancelRegisteredQuests();
+                    HeadoftheLegionBeast.SoulsHeresy(req.Quantity);
                     break;
 
+                case "Penance":
+                    HeadoftheLegionBeast.Penance(req.Quantity);
+                    break;
+
+
                 case "Essence of Treachery":
-                    Core.FarmingLogger(req.Name, quant);
-                    Core.EquipClass(ClassType.Farm);
-                    Core.RegisterQuests(7988);
-                    while (!Bot.ShouldExit && !Core.CheckInventory("Essence of Treachery", quant))
-                        Core.KillMonster("sevencircleswar", "r13", "Left", "Treachery Guard", log: false);
-                    Core.CancelRegisteredQuests();
+                    HeadoftheLegionBeast.EssenceTreachery(req.Quantity);
                     break;
 
                 case "Essence of Wrath":
-                    Core.FarmingLogger(req.Name, quant);
-                    Core.EquipClass(ClassType.Farm);
-                    Core.RegisterQuests(7979);
-                    while (!Bot.ShouldExit && !Core.CheckInventory("Essence of Wrath", quant))
-                        Core.KillMonster("sevencircleswar", "Enter", "Spawn", "Wrath Guard", "Wrath Guards Defeated", 12);
-                    Core.CancelRegisteredQuests();
+                    HeadoftheLegionBeast.EssenceWrath(req.Quantity);
                     break;
 
                 case "Essence of Violence":
-                    Core.FarmingLogger(req.Name, quant);
-                    Core.EquipClass(ClassType.Farm);
-                    Core.RegisterQuests(7985);
-                    while (!Bot.ShouldExit && !Core.CheckInventory("Essence of Violence", quant))
-                        Core.KillMonster("sevencircleswar", "r9", "Left", "Violence Guard", log: false);
-                    Core.CancelRegisteredQuests();
+                    HeadoftheLegionBeast.EssenceViolence(req.Quantity);
                     break;
 
                 //these come from circles not war:

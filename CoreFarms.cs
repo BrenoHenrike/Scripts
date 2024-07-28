@@ -2098,6 +2098,7 @@ public class CoreFarms
         // Method to kill a monster to obtain a specific item
         void KillMonsterForItem(string itemName, int quantity, string map, string cell, string pad, string monster)
         {
+            Core.AddDrop(itemName);
             Core.RegisterQuests(1682);
             Core.FarmingLogger(itemName, quantity);
             int ItemNameQuant = Bot.Inventory.GetQuantity(itemName);
@@ -3217,25 +3218,17 @@ public class CoreFarms
 
     public void GetBoost(int itemID, string boostName, int BoostQuant, int quest, bool doOnce = false)
     {
+        //Ensure Rank 2 > fishing rep
+        FishingREP(2, false, false, false);
+
         ItemBase? boostItem = Core.EnsureLoad(quest)?.Rewards.Find(x => x.Name == boostName);
-
         if (boostItem != null && Core.CheckInventory(boostItem?.Name, BoostQuant) && !doOnce) return;
-
-        if (FactionRank("Fishing") < 2)
-            FishingREP(2, false, false, false);
-        else
-        {
-            Core.Logger("Pre-Ranking XP(This is Required)");
-            Core.EnsureAccept(1682);
-            Core.KillMonster("greenguardwest", "West4", "Right", "Slime", "Faith's Fi'shtick", 1, log: false);
-            Core.EnsureComplete(1682);
-        }
 
         Core.FarmingLogger(boostName, BoostQuant); // Use boostName directly
         Core.AddDrop("Fishing Dynamite", boostItem?.Name ?? "DefaultItemName");
         Core.EquipClass(ClassType.Farm);
 
-        string itemName = boostItem?.Name ?? (Core.EnsureLoad(quest)?.Rewards.Find(x => x.ID == itemID)?.Name ?? "DefaultItemName");
+        string itemName = boostItem?.Name ?? Core.EnsureLoad(quest)?.Rewards.Find(x => x.ID == itemID)?.Name ?? "DefaultItemName";
         while (!Bot.ShouldExit && (boostItem == null || (boostItem != null && !Core.CheckInventory(boostItem?.Name, BoostQuant)) || doOnce))
         {
             // Unlock the quest if not completed before (only for quest 1615)
@@ -3243,7 +3236,7 @@ public class CoreFarms
             {
                 Core.EnsureAccept(1614);
                 GetFish(10850, 30, 1614);
-                Core.HuntMonster("swordhaven", "Slime", "Slime Sauce", log: false);
+                Core.HuntMonster("Greenguardwest", "Slime", "Slime Sauce", log: false);
                 Core.EnsureComplete(1614);
             }
 
@@ -3285,7 +3278,7 @@ public class CoreFarms
                 Bot.Send.Packet($"%xt%zm%FishCast%1%Dynamite%30%");
                 Core.Sleep(3500);
                 Bot.Wait.ForTrue(() => CurrentDynamiteQuant == CurrentDynamiteQuant - 1, 20);
-                Core.SendPackets("%xt%zm%getFish%1%false");
+                Core.SendPackets($"%xt%zm%getFish%1%false");
                 Core.Logger($"Dynamite: {Bot.Inventory.GetQuantity("Fishing Dynamite")} Fish: {Bot.TempInv.GetQuantity(itemID)}/{quant}");
             }
         }

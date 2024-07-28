@@ -1394,7 +1394,7 @@ public class CoreNation
             Core.KillEscherion("Emerald Pickaxe");
 
         if (!Core.CheckInventory("Seraphic Grave Digger Spade"))
-            Core.KillMonster("legioncrypt", "r1", "Top", "Gravedigger", "Seraphic Grave Digger Spade", isTemp: false, log: false);
+            Core.KillMonster("legioncrypt", "r1", "Top", "Gravedigger", "Seraphic Grave Digger Spade", isTemp: false);
         Core.EquipClass(ClassType.Solo);
         int i = 1;
         while (!Bot.ShouldExit && !Core.CheckInventory("Unidentified 10", quant))
@@ -1443,7 +1443,7 @@ public class CoreNation
         Core.AddDrop("Unidentified 10");
 
         BambloozevsDrudgen("Unidentified 10", quant);
-        NulgathLarvae("unidentified 10", quant);
+        DirtyDeedsDoneDirtCheap(quant);
     }
 
     /// <summary>
@@ -1587,16 +1587,16 @@ public class CoreNation
         // NewWorldsNewOpportunities("Totem of Nulgath", quant);
         // VoidKightSwordQuest("Totem of Nulgath", quant);
         // Core.Logger(Taro ? "Method choosen (if pets not owned): Taro" : "Method choosen (if pets not owned): Voucher Item");
-        Core.RegisterQuests(726);
-        while (!Bot.ShouldExit && !Core.CheckInventory("Totem of Nulgath", quant))
-        {
-            Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("tercessuinotlim", "Taro Blademaster", "Taro's Manslayer", isTemp: false);
-
-            EssenceofNulgath(25);
-        }
+        // Core.RegisterQuests(726);
         // while (!Bot.ShouldExit && !Core.CheckInventory("Totem of Nulgath", quant))
-        // VoucherItemTotemofNulgath(VoucherItemTotem.Totem_of_Nulgath);
+        // {
+        //     Core.EquipClass(ClassType.Solo);
+        //     Core.HuntMonster("tercessuinotlim", "Taro Blademaster", "Taro's Manslayer", isTemp: false);
+
+        //     EssenceofNulgath(25);
+        // }
+        while (!Bot.ShouldExit && !Core.CheckInventory("Totem of Nulgath", quant))
+        VoucherItemTotemofNulgath(VoucherItemTotem.Totem_of_Nulgath);
     }
 
     /// <summary>

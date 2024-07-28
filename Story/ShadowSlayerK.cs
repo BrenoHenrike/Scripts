@@ -88,7 +88,7 @@ public class ShadowSlayerK
         if (!Story.QuestProgression(8833))
         {
             Core.EnsureAccept(8833);
-            Core.BuyItem("arcangrove", 211, "Health Potion", 25);
+            Core.BuyItem("embersea", 1100, 1749, 25);
             Core.BuyItem("embersea", 1100, 5572, 25);
             // Core.BuyItem("arcangrove", 211, "Mana Potion", 25);
             Core.HuntMonster("cleric", "Chaos Dragon", "Medicinal Unguent");

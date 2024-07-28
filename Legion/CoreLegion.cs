@@ -243,6 +243,7 @@ public class CoreLegion
         LTBrightParagon(quant);
         LTArcaneParagon(quant);
         LTShogunParagon(quant);
+        LTParagon(quant);
         LTMountedParagonPet(quant);
         LTThanatosParagon(quant);
         LTAscendedParagon(quant);
@@ -542,7 +543,22 @@ public class CoreLegion
     }
 
 
+    public void LTParagon(int quant = 50000) // Paragon Pet
+    {
+        if (Core.CheckInventory("Legion Token", quant) || !Core.CheckInventory(11260))
+            return;
 
+        JoinLegion();
+
+        Core.FarmingLogger("Legion Token", quant);
+        Core.RegisterQuests(1703);
+        Core.AddDrop("Legion Token");
+        Core.AddDrop(300, 11189, 11190);
+        while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
+            Core.KillMonster("lair", "End", "Right", "Red Dragon", log: false);
+        Core.CancelRegisteredQuests();
+        Core.ToBank(11189, 11190);
+    }
 
 
     public void LTFirstClassEntertainment(int quant = 50000, bool onlyWithParty = false, int partySize = 4, bool ReturnIfNoPeople = false)

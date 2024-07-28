@@ -1,7 +1,7 @@
 /*
-name: CelestialSpoilsMerge
-description: null
-tags: null
+name: Celestial Spoils Merge
+description: This bot will farm the items belonging to the selected mode for the Celestial Spoils Merge [1582] in /djinnguard
+tags: celestial, spoils, merge, djinnguard, djinn, warrior, sack, , fallen, king, dragon, dicers, greatsword, emeralds, sapphires, katana, toxic, wanderer, wanderers, sheathed, khopesh, wyvernslayer, wyvernslayers, horns, toxix, trophy, wings, great, caustic, wyvernfang, reaver, reavers
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -9,7 +9,6 @@ tags: null
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Story/DjinnGate.cs
 //cs_include Scripts/Story/DjinnGuard.cs
-
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
@@ -33,7 +32,7 @@ public class CelestialSpoilsMerge
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Celestial Coin", "Blade of the Fallen Djinn", "Blade of the Djinn King " });
+        Core.BankingBlackList.AddRange(new[] { "Celestial Coin", "Blade of the Fallen Djinn", "Blade of the Djinn King", "Lucky Button" });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -93,6 +92,22 @@ public class CelestialSpoilsMerge
                     }
                     break;
 
+                case "Lucky Button":
+                    Core.FarmingLogger(req.Name, quant);
+                    Core.RegisterQuests(9836);
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
+                    {
+                        Core.HuntMonsterQuest(9836, new (string? mapName, string? monsterName, ClassType classType)[]
+                        {
+    ("deadmoor", "Toxic Souleater", ClassType.Farm),
+    ("moonlab", "Infected Scientist", ClassType.Farm),
+    ("deerhunt", "Zweinichthirsch", ClassType.Solo)
+                        });
+                        Bot.Wait.ForPickup(req.Name);
+                    }
+                    Core.CancelRegisteredQuests();
+                    break;
+
             }
         }
     }
@@ -119,5 +134,13 @@ public class CelestialSpoilsMerge
         new Option<bool>("61900", "Toxic Wanderer's Hood", "Mode: [select] only\nShould the bot buy \"Toxic Wanderer's Hood\" ?", false),
         new Option<bool>("61901", "Toxic Wanderer's Sheathed Blade", "Mode: [select] only\nShould the bot buy \"Toxic Wanderer's Sheathed Blade\" ?", false),
         new Option<bool>("61902", "Toxic Wanderer's Khopesh", "Mode: [select] only\nShould the bot buy \"Toxic Wanderer's Khopesh\" ?", false),
+        new Option<bool>("87274", "Toxic WyvernSlayer", "Mode: [select] only\nShould the bot buy \"Toxic WyvernSlayer\" ?", false),
+        new Option<bool>("87275", "Toxic WyvernSlayer's Horns", "Mode: [select] only\nShould the bot buy \"Toxic WyvernSlayer's Horns\" ?", false),
+        new Option<bool>("87276", "Toxic WyvernSlayer's Hood", "Mode: [select] only\nShould the bot buy \"Toxic WyvernSlayer's Hood\" ?", false),
+        new Option<bool>("87277", "Toxix WyvernSlayer's Trophy Wings", "Mode: [select] only\nShould the bot buy \"Toxix WyvernSlayer's Trophy Wings\" ?", false),
+        new Option<bool>("87278", "Toxic WyvernSlayer's Great Blade", "Mode: [select] only\nShould the bot buy \"Toxic WyvernSlayer's Great Blade\" ?", false),
+        new Option<bool>("87279", "Toxic WyvernSlayer's Great Blades", "Mode: [select] only\nShould the bot buy \"Toxic WyvernSlayer's Great Blades\" ?", false),
+        new Option<bool>("87280", "Caustic WyvernFang Reaver", "Mode: [select] only\nShould the bot buy \"Caustic WyvernFang Reaver\" ?", false),
+        new Option<bool>("87281", "Caustic WyvernFang Reavers", "Mode: [select] only\nShould the bot buy \"Caustic WyvernFang Reavers\" ?", false),
     };
 }

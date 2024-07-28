@@ -172,6 +172,31 @@ public class CoreStory
     }
 
     /// <summary>
+    /// Gets multiple MapItems from different maps for a Quest, and turns in the quest if possible. Automatically checks if the next quest is unlocked. If it is, it will skip this one.
+    /// </summary>
+    /// <param name="QuestID">ID of the quest</param>
+    /// <param name="MapItems">Array of tuples where each tuple contains the MapItemID, amount, and MapName</param>
+    /// <param name="GetReward">Whether or not the <paramref name="Reward"/> should be added with AddDrop</param>
+    /// <param name="Reward">What item should be added with AddDrop</param>
+    /// <param name="AutoCompleteQuest">If the method should turn in the quest for you when the quest can be completed</param>
+    public void MapItemQuest(int QuestID, (int MapItemID, int Amount, string MapName)[] MapItems, bool GetReward = true, string Reward = "All", bool AutoCompleteQuest = true)
+    {
+        Quest QuestData = Core.EnsureLoad(QuestID);
+
+        if (QuestProgression(QuestID, GetReward, Reward))
+        {
+            return;
+        }
+
+        Core.EnsureAccept(QuestID);
+        foreach (var (MapItemID, Amount, MapName) in MapItems)
+        {
+            Core.GetMapItem(MapItemID, Amount, MapName);
+        }
+        TryComplete(QuestData, AutoCompleteQuest);
+    }
+
+    /// <summary>
     /// Gets a MapItem X times for a Quest, and turns in the quest if possible. Automatically checks if the next quest is unlocked. If it is, it will skip this one.
     /// </summary>
     /// <param name="QuestID">ID of the quest</param>
@@ -235,9 +260,9 @@ public class CoreStory
             Core.EnsureComplete(questData.ID);
         }
 
-        Bot.Wait.ForQuestComplete(questData.ID);
+        Bot.Wait.ForTrue(() => QuestProgression(questData.ID), 20);
         Core.Logger($"Completed Quest: [{questData.ID}] - \"{questData.Name}\"", "QuestProgression");
-        Core.Sleep(1500);
+        Core.Sleep();
     }
 
 

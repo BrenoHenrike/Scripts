@@ -44,6 +44,7 @@ public class CoreAOR
         Loughshine();
         NaoiseGrave();
         LiaTaraHill();
+        CastleGaheris();
     }
 
     private bool isSeaVoiceCalled = false;
@@ -644,6 +645,7 @@ public class CoreAOR
         Story.KillQuest(9772, "naoisegrave", "Bone Dragonling");
 
         // Of The Sorrows (9773)
+        Core.EquipClass(ClassType.Solo);
         Story.KillQuest(9773, "naoisegrave", "Warden Iseul");
         Story.MapItemQuest(9773, "naoisegrave", 13301);
 
@@ -656,9 +658,7 @@ public class CoreAOR
         // Dragon's Seal (9777)
         if (!Story.QuestProgression(9777))
         {
-            Core.EquipClass(ClassType.Solo);
             Story.KillQuest(9777, "naoisegrave", "Volgritian");
-            Core.EquipClass(ClassType.Farm);
         }
     }
 
@@ -715,6 +715,53 @@ public class CoreAOR
         }
 
     }
+
+    public void CastleGaheris()
+    {
+        if (Core.isCompletedBefore(9828))
+            return;
+
+        LiaTaraHill();
+
+        Story.PreLoad(this);
+
+        // Needs of the Few (9819)
+        Story.KillQuest(9819, "castlegaheris", "Energy Elemental");
+        Story.MapItemQuest(9819, "castlegaheris", 13378);
+
+        // Lost and Numb (9820)
+        Story.KillQuest(9820, "castlegaheris", "Ice Guardian");
+
+        // Childhood Memories (9821)
+        Story.MapItemQuest(9821, "castlegaheris", new[] { 13379, 13380, 13381 });
+
+        // Strangled Sobs (9822)
+        Story.KillQuest(9822, "castlegaheris", new[] { "Energy Elemental", "Ice Guardian" });
+
+        // Distant Care (9823)
+        Story.KillQuest(9823, "castlegaheris", "Dark Cage");
+
+        // Minus K (9824)
+        Story.KillQuest(9824, "castlegaheris", "Glacial Crystal");
+
+        // Someone Else's Blood and Tears (9825)
+        Story.KillQuest(9825, "castlegaheris", "Elemental Hybrid");
+
+        // Honor Thy Family (9826)
+        Story.MapItemQuest(9826, "castlegaheris", new[] { 13382, 13383 });
+
+        // Life's Latest Lows (9827)
+        Story.KillQuest(9827, "castlegaheris", new[] { "Glacial Crystal", "Elemental Hybrid" });
+
+        // Vow of Misery (9828)
+        if (!Story.QuestProgression(9828))
+        {
+            Core.EquipClass(ClassType.Solo);
+            Story.KillQuest(9828, "castlegaheris", "Thundersnow Storm");
+            Core.EquipClass(ClassType.Farm);
+        }
+    }
+
     public void KillThing(string? map = null, int mobMapID = 1, string? targetAuraName = null, int ItemUsed = 1, string? Class = null, string? item = null, int quant = 1, bool isTemp = false)
     {
         Adv.BuyItem("seavoice", 2320, "Vigil", 1000, 12023);
