@@ -23,6 +23,7 @@ public class FindingFragments_Any
     public string OptionStorage = "Finding_FragmentsV2";
     public List<IOption> Options = new()
     {
+        CoreBots.Instance.SkipOptions,
         new Option<WeaponOfDestiny>("questID", "Weapon Type", "Select which quest variant you want to do", WeaponOfDestiny.Blade)
     };
 
