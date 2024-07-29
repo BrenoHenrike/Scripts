@@ -848,7 +848,7 @@ public class CoreLegion
             }
 
             Core.DebugLogger(this);
-            if (!Bot.Player.Alive)
+            if (!Bot.Player.Alive || Bot.Player.Cell == "Enter0")
             {
                 Core.DebugLogger(this, "He's Dead Jim");
                 Exit("Enter0", exitAttempt: ref exitAttempt);
@@ -863,7 +863,7 @@ public class CoreLegion
             Core.PvPMove(12, "r12", 758, 338);
 
             Core.DebugLogger(this);
-            if (!Bot.Player.Alive)
+            if (!Bot.Player.Alive || Bot.Player.Cell == "Enter0")
             {
                 Core.DebugLogger(this, "He's Dead Jim");
                 Exit("Enter0", exitAttempt: ref exitAttempt);
@@ -873,7 +873,7 @@ public class CoreLegion
             PVPKilling();
 
             Core.DebugLogger(this);
-            if (!Bot.Player.Alive)
+            if (!Bot.Player.Alive || Bot.Player.Cell == "Enter0")
             {
                 Core.DebugLogger(this, "He's Dead Jim");
                 Exit("Enter0", exitAttempt: ref exitAttempt);
@@ -883,7 +883,7 @@ public class CoreLegion
             Core.PvPMove(23, "r13", 933, 394);
 
             Core.DebugLogger(this);
-            if (!Bot.Player.Alive)
+            if (!Bot.Player.Alive || Bot.Player.Cell == "Enter0")
             {
                 Core.DebugLogger(this, "He's Dead Jim");
                 Exit("Enter0", exitAttempt: ref exitAttempt);
@@ -893,7 +893,7 @@ public class CoreLegion
             PVPKilling();
 
             Core.DebugLogger(this);
-            if (!Bot.Player.Alive)
+            if (!Bot.Player.Alive || Bot.Player.Cell == "Enter0")
             {
                 Core.DebugLogger(this, "He's Dead Jim");
                 Exit("Enter0", exitAttempt: ref exitAttempt);
@@ -903,7 +903,7 @@ public class CoreLegion
             Core.PvPMove(25, "r14", 846, 181);
 
             Core.DebugLogger(this);
-            if (!Bot.Player.Alive)
+            if (!Bot.Player.Alive || Bot.Player.Cell == "Enter0")
             {
                 Core.DebugLogger(this, "He's Dead Jim");
                 Exit("Enter0", exitAttempt: ref exitAttempt);
@@ -913,7 +913,7 @@ public class CoreLegion
             PVPKilling();
 
             Core.DebugLogger(this);
-            if (!Bot.Player.Alive)
+            if (!Bot.Player.Alive || Bot.Player.Cell == "Enter0")
             {
                 Core.DebugLogger(this, "He's Dead Jim");
                 Exit("Enter0", exitAttempt: ref exitAttempt);
@@ -923,7 +923,7 @@ public class CoreLegion
             Core.PvPMove(28, "r15", 941, 348);
 
             Core.DebugLogger(this);
-            if (!Bot.Player.Alive)
+            if (!Bot.Player.Alive || Bot.Player.Cell == "Enter0")
             {
                 Core.DebugLogger(this, "He's Dead Jim");
                 Exit("Enter0", exitAttempt: ref exitAttempt);
@@ -933,7 +933,7 @@ public class CoreLegion
             PVPKilling();
 
             Core.DebugLogger(this);
-            if (!Bot.Player.Alive)
+            if (!Bot.Player.Alive || Bot.Player.Cell == "Enter0")
             {
                 Core.DebugLogger(this, "He's Dead Jim");
                 Exit("Enter0", exitAttempt: ref exitAttempt);
@@ -1007,7 +1007,7 @@ public class CoreLegion
             Core.DebugLogger(this);
 
             Core.DebugLogger(this);
-            if (!Bot.Player.Alive)
+            if (!Bot.Player.Alive || Bot.Player.Cell == "Enter0")
             {
                 Core.DebugLogger(this, "He's Dead Jim");
                 Exit("Enter0", exitAttempt: ref exitAttempt);
@@ -1056,21 +1056,70 @@ public class CoreLegion
 
         void PVPKilling()
         {
-            foreach (Monster mob in Bot.Monsters.CurrentAvailableMonsters.Where(x => Core.IsMonsterAlive(x)))
+            if (Bot.Map.Name == "legionpvp")
             {
-                Core.Logger($"Killing {mob}");
-                Bot.Kill.Monster(mob);
-                if (!Bot.Player.Alive)
-                {
-                    Core.DebugLogger(this, "He's Dead Jim");
-                    Exit("Enter0", exitAttempt: ref exitAttempt);
-                }
-                Core.DebugLogger(this);
-                Core.Logger($"Killed {mob}");
-
-                Core.DebugLogger(this);
+                Core.Join("dagepvp-999999", "Enter0", "Spawn");
+                Bot.Wait.ForMapLoad("davepvp");
+                return;
             }
-            Core.DebugLogger(this);
+
+            //attempt to set monster state
+            foreach (Monster target in Bot.Monsters.CurrentAvailableMonsters
+            .Where(x => x != null && x.Cell == Bot.Player.Cell && x.State == 0
+                        ))
+            {
+                Core.Logger($"setting mob State for {target.MapID}");
+                Bot.Combat.Attack(target);
+                Bot.Wait.ForTrue(() => target.State == 1 || target.State == 2, 20);
+            }
+
+            if (!Bot.Monsters.CurrentAvailableMonsters
+            .Any(x => x != null && x.Cell == Bot.Player.Cell && x.State > 0))
+            {
+                Core.Logger("All mobs in room where killed during State setting process onto the next room");
+            }
+            else
+            {      //with state set, we can identifiy if they're dead or not
+                foreach (Monster targetMonster in Bot.Monsters.CurrentAvailableMonsters
+                .Where(x => x != null && x.Cell == Bot.Player.Cell && x.State > 0))
+                {
+                    Monster mob = Bot.Monsters.CurrentAvailableMonsters
+                                       .Find(x => x != null && x.Cell == Bot.Player.Cell && x.State > 0);
+
+                    // Core.Logger($"Killing {targetMonster}");
+                    while (!Bot.ShouldExit && !Bot.Player.Alive)
+                        Core.Sleep();
+                    bool ded = false;
+                    Bot.Events.MonsterKilled += b => ded = true;
+                    while (!Bot.ShouldExit && !ded || mob.State > 0)
+                    {
+                        if (!Bot.Combat.StopAttacking && !ded)
+                            Bot.Combat.Attack(mob);
+                        Core.Sleep();
+
+                        Bot.Wait.ForTrue(() => mob.State == 1 || mob.State == 2, 10);
+
+                        if (mob.State == 0)
+                        {
+                            Core.Logger($"Making sure {mob.MapID} is dead");
+                            Bot.Combat.Attack(mob);
+                            Core.Sleep();
+
+                            if (mob.State == 0)
+                            {
+                                Core.Logger($"{mob.MapID} is dead");
+                                ded = true;
+                                continue;
+                            }
+                        }
+
+                        mob = Bot.Monsters.MapMonsters.FirstOrDefault(x => x != null && x.Cell == Bot.Player.Cell && x.MapID == targetMonster.MapID);
+
+                    }
+                    Core.Logger($"Killed {mob}");
+                    Core.DebugLogger(this);
+                }
+            }
         }
     }
 }
