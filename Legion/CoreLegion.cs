@@ -1068,7 +1068,6 @@ public class CoreLegion
             .Where(x => x != null && x.Cell == Bot.Player.Cell && x.State == 0
                         ))
             {
-                Core.Logger($"setting mob State for {target.MapID}");
                 Bot.Combat.Attack(target);
                 Bot.Wait.ForTrue(() => target.State == 1 || target.State == 2, 20);
             }
