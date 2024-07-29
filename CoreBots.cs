@@ -5338,16 +5338,31 @@ public class CoreBots
 
             switch (A.Name)
             {
-                case "Endless Blizzard":
                 case "Oxidize":
-                    while (!Bot.ShouldExit && !Bot.Self.HasActiveAura(A.Name))
+                    while (!Bot.ShouldExit && Bot.Player.Alive && !Bot.Self.HasActiveAura("Vigil"))
                     {
                         UsePotion();
                         Sleep();
 
                         // Check if targetAura is not null before accessing its SecondsRemaining() method
                         // Assuming `targetAura` is the aura you're referring to
-                        if (Bot.Self.HasActiveAura(A.Name))
+                        if (Bot.Self.HasActiveAura("Vigil"))
+                        {
+                            Logger($"\"{A.Name}\" Active!");
+                            break;
+                        }
+                    }
+                    break;
+
+                case "Endless Blizzard":
+                    while (!Bot.ShouldExit && Bot.Player.Alive && !Bot.Self.HasActiveAura("Bananach's Last Will"))
+                    {
+                        UsePotion();
+                        Sleep();
+
+                        // Check if targetAura is not null before accessing its SecondsRemaining() method
+                        // Assuming `targetAura` is the aura you're referring to
+                        if (Bot.Self.HasActiveAura("Bananach's Last Will"))
                         {
                             Logger($"\"{A.Name}\" Active!");
                             break;
@@ -5356,7 +5371,6 @@ public class CoreBots
                     break;
 
                 default:
-                    Logger($"\"{targetAuraName}\" has not been added yet, please advise su on the aura name and the required item (if applicable)");
                     break;
             }
         }
