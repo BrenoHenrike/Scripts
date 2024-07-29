@@ -1110,7 +1110,7 @@ public class CoreLegion
                 Core.Logger($"Killing {targetMonster}");
                 while (!Bot.ShouldExit && Bot.Monsters.MapMonsters.Any(x => x.State > 0))
                 {
-                    while (!Bot.ShouldExit && !Bot.Player.Alive || Bot.Map.Name == "legionpvp")
+                    while (!Bot.ShouldExit && (!Bot.Player.Alive || Bot.Map.Name == "legionpvp"))
                     {
                         Core.Sleep();
                         Core.DebugLogger(this);
@@ -1123,7 +1123,16 @@ public class CoreLegion
                         return;
                     }
 
-                    Bot.Combat.Attack(Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault(x => x.State != 0).MapID);
+                    Monster? availableMonster = Bot.Monsters.CurrentAvailableMonsters.FirstOrDefault(x => x.State != 0);
+                    if (availableMonster != null)
+                    {
+                        Bot.Combat.Attack(availableMonster.MapID);
+                    }
+                    else
+                    {
+                        Core.Logger("No available monsters to attack");
+                        break;
+                    }
                     Core.Sleep();
                 }
             }
