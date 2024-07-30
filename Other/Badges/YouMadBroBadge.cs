@@ -20,7 +20,7 @@ public class YouMadBroBadge
     public bool DontPreconfigure = true;
     public List<IOption> Options = new()
 {
-    new Option<bool>("Use Gold", "Use Gold?", "Buy farming mats?", true),
+    new Option<bool>("Use Gold", "Use Gold?", "Buy farming mats?", false),
     CoreBots.Instance.SkipOptions,
 };
 
@@ -30,20 +30,21 @@ public class YouMadBroBadge
         Core.SetOptions();
 
         // Pass the "Use Gold" option to Badge method
-        Badge(Bot.Config!.Get<bool>("Use Gold"));
+        Badge();
 
         Core.SetOptions(false);
     }
 
     public void Badge(bool useGold = true)
     {
+        useGold = Bot.Config!.Get<bool>("Use Gold");
         if (Core.HasWebBadge(badge))
         {
             Core.Logger($"Already have the {badge} badge");
             return;
         }
 
-        Farm.AlchemyREP();
+        Farm.AlchemyREP(goldMethod: useGold);
         Core.EquipClass(ClassType.Farm);
         while (!Bot.ShouldExit && !Core.HasWebBadge(badge))
         {

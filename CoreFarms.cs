@@ -1135,7 +1135,7 @@ public class CoreFarms
                 Core.BuyItem("alchemy", 397, 11475, 2, 1232);
                 Core.BuyItem("alchemy", 397, 11478, 1, 1235);
                 Core.Join("alchemy");
-                AlchemyPacket("Dragon Scale", "Ice Vapor", AlchemyRunes.Jera, loop: false, trait: CoreFarms.AlchemyTraits.hOu);
+                AlchemyPacket("Dragon Scale", "Ice Vapor", AlchemyRunes.Jera, loop: false, trait: CoreFarms.AlchemyTraits.hOu, YMB: goldMethod);
             }
         }
 
