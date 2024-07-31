@@ -108,9 +108,13 @@ public class PrimeFiendShard
 
         VHL.GetVHL();
 
-        // Prime Fiend Shard [required to accept]
+        //Check quest and its required elders' blood to pre-farm
+        if (!Story.QuestProgression(9559) && !Core.CheckInventory("Roentgenium of Nulgath", 10))
+            VHL.VHLChallenge(10);
 
+        // Prime Fiend Shard [required to accept]
         VoidChasmMerge.BuyAllMerge("Prime Fiend Shard");
+
         // Ensure requirements are unbanked
         Core.Unbank("Prime Fiend Shard");
 
@@ -230,7 +234,10 @@ public class PrimeFiendShard
             {
                 VHL.VHLChallenge(10);
                 if (!Core.CheckInventory("Elders' Blood"))
+                {
+                    Core.Logger("Not enough \"Elders' BLood\", try again tomarrow");
                     break;
+                }
             }
 
             // Ensure requirements are unbanked
