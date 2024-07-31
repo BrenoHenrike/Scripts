@@ -282,6 +282,7 @@ public class CoreFarmerJoe
             switch (Level)
             {
                 case 30:
+                    Daily.EldersBlood();
                     if (Bot.Player.Level >= Level &&
                     Adv.HasMinimalBoost(GenericGearBoost.exp, 25) &&
                     Core.CheckInventory("Master Ranger") && ClassMasterRanger?.Quantity == 302500)
@@ -316,6 +317,7 @@ public class CoreFarmerJoe
                     continue;
 
                 case 45:
+                    Daily.EldersBlood();
                     if (Bot.Player.Level >= Level &&
                     Core.CheckInventory("Shaman") && ClassShaman?.Quantity == 302500)
                     {
@@ -339,6 +341,7 @@ public class CoreFarmerJoe
                     continue;
 
                 case 50:
+                    Daily.EldersBlood();
                     if (Bot.Player.Level >= Level &&
                     Core.CheckInventory("Burning Blade") &&
                     Core.CheckInventory("Scarlet Sorceress") && ClassScarletSorceress?.Quantity == 302500)
@@ -371,6 +374,7 @@ public class CoreFarmerJoe
                     continue;
 
                 case 55:
+                    Daily.EldersBlood();
                     if (Bot.Player.Level >= Level &&
                     Core.CheckInventory("Blaze Binder") && ClassBlazeBinder?.Quantity == 302500)
                     {
@@ -397,6 +401,7 @@ public class CoreFarmerJoe
                     continue;
 
                 case 60:
+                    Daily.EldersBlood();
                     if (Bot.Player.Level >= Level &&
                     Core.CheckInventory("DragonSoul Shinobi") && ClassDragonSoulShinobi?.Quantity == 302500)
                     {
@@ -420,8 +425,9 @@ public class CoreFarmerJoe
                     continue;
 
                 case 65:
+                    Daily.EldersBlood();
                     if (Bot.Player.Level >= Level &&
-                    (Core.CheckInventory("ArchPaladin") && ClassArchPaladin?.Quantity == 302500) &&
+                    Core.CheckInventory("ArchPaladin") && ClassArchPaladin?.Quantity == 302500 &&
                     Core.CheckInventory("Glacial Berserker") && ClassGlacialBerserker?.Quantity == 302500)
                     {
                         Core.Logger("Items owned: \"ArchPaladin\", continuing");
@@ -451,6 +457,7 @@ public class CoreFarmerJoe
 
                 case 70:
                 case 75:
+                    Daily.EldersBlood();
                     if (Bot.Player.Level >= Level &&
                     Core.CheckInventory("Archfiend DeathLord") &&
                     Core.CheckInventory("Archfiend") && ClassArchFiend?.Quantity == 302500)
@@ -540,17 +547,26 @@ public class CoreFarmerJoe
         UnlockForgeEnhancements.Examen();
         UnlockForgeEnhancements.Anima();
         UnlockForgeEnhancements.Pneuma();
-        
+
         // Weapons Enh
         UnlockForgeEnhancements.ForgeWeaponEnhancement();
         UnlockForgeEnhancements.Lacerate();
         UnlockForgeEnhancements.Smite();
         UnlockForgeEnhancements.Praxis();
 
+
+        /*
+        Lv to 80
+        Celestial Arena QuestLine for BBoA
+        Attemp to get `Void Highlord Class`
+        */
         Farm.Experience(80);
         SetClass(true, false, true);
         CAQ.DoAll();
         BBOA.GetBBoA();
+        
+        SetClass(true, false, true);
+        VHL.GetVHL();
 
         /*
         Lv to 90
@@ -565,6 +581,7 @@ public class CoreFarmerJoe
         UnlockForgeEnhancements.Avarice();
         UnlockForgeEnhancements.Lament();
         UnlockForgeEnhancements.Vainglory();
+
         SetClass(true, false, true);
         YNR.GetYnR();
 
@@ -797,7 +814,7 @@ public class CoreFarmerJoe
         // if (!Core.CheckInventory("ArchPaladin"))
         //     soloClassesToCheck = new[] { "ArchPaladin", "Shaman", "Rogue (Rare)", "Rogue", "Healer (Rare)", "Healer" };
         // else
-        string[] soloClassesToCheck = new[] { "Dragon of Time", "ArchPaladin", "Glacial Berserker", "DragonSoul Shinobi", "Shaman", "Rogue (Rare)", "Rogue", "Healer (Rare)", "Healer" };
+        string[] soloClassesToCheck = new[] { "Void Highlord", "Dragon of Time", "ArchPaladin", "Glacial Berserker", "DragonSoul Shinobi", "Shaman", "Rogue (Rare)", "Rogue", "Healer (Rare)", "Healer" };
 
         string[] farmClassesToCheck = new[] { "Archfiend", "Blaze Binder", "Scarlet Sorceress", "Master Ranger", "Shaman", "Mage (Rare)", "Mage" };
 
