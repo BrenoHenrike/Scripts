@@ -564,9 +564,6 @@ public class CoreFarmerJoe
         SetClass(true, false, true);
         CAQ.DoAll();
         BBOA.GetBBoA();
-        
-        SetClass(true, false, true);
-        VHL.GetVHL();
 
         /*
         Lv to 90
