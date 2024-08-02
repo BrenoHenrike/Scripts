@@ -1003,7 +1003,7 @@ public class CoreFarms
     /// <param name="modifier">Some mistures have specific packet modifiers, default is Moose but you can find Man, mRe and others.</param>
     public void AlchemyPacket(string reagent1, string reagent2, AlchemyRunes rune = AlchemyRunes.Gebo, int rank = 0, bool loop = true, string modifier = "Moose", AlchemyTraits trait = AlchemyTraits.APw, bool YMB = false, string? item = null, int quant = 1)
     {
-        if (rank != 0 && FactionRank("Alchemy") < rank || (item != null && Core.CheckInventory(item)))
+        if (rank != 0 && FactionRank("Alchemy") < rank || (item != null && Core.CheckInventory(item, quant)))
             AlchemyREP(rank);
 
 
