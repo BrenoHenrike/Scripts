@@ -95,35 +95,90 @@ public class CoreAdvanced
         _BuyItem(map, shopID, item, quant, Log);
     }
 
+    //if Adv.buy fucks up revert to this::
+    // private void _BuyItem(string map, int shopID, ShopItem item, int quant = 1, bool Log = true)
+    // {
+    //     int ShopQuant = item.Quantity;
+
+    //     if (item.Requirements != null)
+    //     {
+    //         foreach (ItemBase req in item.Requirements)
+    //         {
+    //             if (Core.CheckInventory(req.ID, req.Quantity * quant))
+    //                 continue;
+
+    //             // Core.Jump(Bot.Player.Cell, Bot.Player.Pad);
+
+    //             switch (req.ID)
+    //             {
+    //                 case 7132:
+    //                     Farm.DragonRunestone(req.Quantity * quant);
+    //                     // Farm.DragonRunestone(req.Quantity);
+    //                     break;
+
+    //                 default:
+    //                     if (Core.GetShopItems(map, shopID).Any(x => req.ID == x.ID))
+    //                         BuyItem(map, shopID, req.ID, req.Quantity * quant, Log: Log);
+    //                     break;
+    //             }
+    //         }
+
+    //         GetItemReq(item, quant);
+    //         Core._BuyItem(map, shopID, item, quant, Log);
+    //     }
+    // }
+
+
     private void _BuyItem(string map, int shopID, ShopItem item, int quant = 1, bool Log = true)
     {
+        int shopQuant = item.Quantity; // Quantity per purchase from the shop
+
         if (item.Requirements != null)
         {
             foreach (ItemBase req in item.Requirements)
             {
-                if (Core.CheckInventory(req.ID, req.Quantity * quant))
-                    continue;
+                // Total required quantity of the required item based on the desired quantity
+                int totalReqNeeded = quant; // Total number of main items desired
 
-                // Core.Jump(Bot.Player.Cell, Bot.Player.Pad);
+                // Calculate the total number of the required item that needs to be bought
+                int totalBundlesNeeded = (int)Math.Ceiling((double)totalReqNeeded / shopQuant);
 
+                // Check the current quantity of the required item in the inventory
+                int currentReqQuantity = Bot.Inventory.GetQuantity(req.ID);
+
+                // Calculate how many more bundles we need to purchase
+                int bundlesToBuy = totalBundlesNeeded - (currentReqQuantity / req.Quantity);
+
+                if (bundlesToBuy <= 0)
+                    continue; // Skip if we already have enough
+
+                // Specific handling for certain requirements
                 switch (req.ID)
                 {
-                    case 7132:
-                        Farm.DragonRunestone(req.Quantity * quant);
-                        // Farm.DragonRunestone(req.Quantity);
+                    case 7132: // Example specific handling
+                        Farm.DragonRunestone(req.Quantity * bundlesToBuy);
                         break;
 
                     default:
+                        // Check if the required item is available in the shop and buy it if necessary
                         if (Core.GetShopItems(map, shopID).Any(x => req.ID == x.ID))
-                            BuyItem(map, shopID, req.ID, req.Quantity * quant, Log: Log);
+                        {
+                            Core.BuyItem(map, shopID, req.Name, req.Quantity * bundlesToBuy, Log: Log);
+                        }
+                        else
+                        {
+                            Core.Logger($"Required item {req.Name} is not available in shop {shopID}");
+                        }
                         break;
                 }
             }
 
-            GetItemReq(item, quant);
+            // Attempt to purchase the main item after ensuring required items are available
             Core._BuyItem(map, shopID, item, quant, Log);
         }
     }
+
+
 
     /// <summary>
     /// Will make sure you have every requierment (XP, Rep and Gold) to buy the item.
