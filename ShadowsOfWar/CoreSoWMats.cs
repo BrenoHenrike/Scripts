@@ -50,8 +50,8 @@ public class CoreSoWMats
         Core.RegisterQuests(8966);
         while (!Bot.ShouldExit && !Core.CheckInventory("Acquiescence", Quantity))
         {
-            Core.HuntMonster("worldscore", "Elemental Attempt", "Cracked Elemental Stone", 8, log: false);
-            Core.HuntMonster("worldscore", "Crystalized Mana", "Crystalized Tooth", 8, log: false);
+            Core.HuntMonster("worldscore", "Elemental Attempt", "Cracked Elemental Stone", 14, log: false);
+            Core.HuntMonster("worldscore", "Crystalized Mana", "Crystalized Tooth", 14, log: false);
             Core.HuntMonster("worldscore", "Mask of Tranquility", "Creator's Favor", 1, log: false);
         }
         Core.CancelRegisteredQuests();
