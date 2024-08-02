@@ -79,7 +79,7 @@ public class CoreSoWMats
         Core.RegisterQuests(9126);
         while (!Bot.ShouldExit && !Core.CheckInventory("Elemental Core", Quantity))
         {
-            Core.HuntMonster("manacradle", "Dark Tainted Mana", "Elemental Tear", 8, log: false);
+            Core.HuntMonster("manacradle", "Dark Tainted Mana", "Elemental Tear", 20, log: false);
             Core.HuntMonster("manacradle", "Malgor", "Weathered Armor Shard", log: false);
             Core.HuntMonster("manacradle", "The Mainyu", "Licorice Scale", log: false);
         }
