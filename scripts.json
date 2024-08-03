@@ -2290,7 +2290,7 @@
       "ravenous"
     ],
     "path": "Enhancement/UnlockForgeEnhancements.cs",
-    "size": 41908,
+    "size": 41944,
     "fileName": "UnlockForgeEnhancements.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Enhancement/UnlockForgeEnhancements.cs"
   },
@@ -3692,7 +3692,7 @@
       "me"
     ],
     "path": "Tools/InsertNameHeresUltraPrep.cs",
-    "size": 21983,
+    "size": 22002,
     "fileName": "InsertNameHeresUltraPrep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/InsertNameHeresUltraPrep.cs"
   },
@@ -15931,7 +15931,7 @@
       "hero-s-valiance"
     ],
     "path": "Other/Armor/FireChampionsArmor.cs",
-    "size": 2985,
+    "size": 3134,
     "fileName": "FireChampionsArmor.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Armor/FireChampionsArmor.cs"
   },
@@ -20596,7 +20596,7 @@
       "null"
     ],
     "path": "Other/FarmJoeKits/CoreFarmerJoe.cs",
-    "size": 43105,
+    "size": 43140,
     "fileName": "CoreFarmerJoe.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/CoreFarmerJoe.cs"
   },
@@ -20610,7 +20610,7 @@
       "legend"
     ],
     "path": "Other/FarmJoeKits/1MemberFarmsKit.cs",
-    "size": 26957,
+    "size": 26992,
     "fileName": "1MemberFarmsKit.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/1MemberFarmsKit.cs"
   },
@@ -20621,7 +20621,7 @@
       "null"
     ],
     "path": "Other/FarmJoeKits/0FarmerJoeDoAll.cs",
-    "size": 7862,
+    "size": 7897,
     "fileName": "0FarmerJoeDoAll.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/0FarmerJoeDoAll.cs"
   },
