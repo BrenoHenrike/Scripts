@@ -762,6 +762,7 @@ public class CoreFarmerJoe
 
         if (Core.CheckInventory(Core.CheckInventory("Rogue (Rare)") ? "Rogue (Rare)" : "Rogue") &&
             Core.CheckInventory(Core.CheckInventory("Mage (Rare)") ? "Mage (Rare)" : "Mage") &&
+			Core.CheckInventory("Oracle") &&
             Bot.Player.Level >= 10)
         {
             Core.Logger("Acc is lvl 10+, skipping beginner items.");
@@ -779,6 +780,9 @@ public class CoreFarmerJoe
 
         if (!Core.CheckInventory(Core.CheckInventory("Rogue (Rare)") ? "Rogue (Rare)" : "Rogue"))
             Core.BuyItem("classhalla", 172, "Rogue");
+	
+		if (!Core.CheckInventory("Oracle"))
+            Core.BuyItem("classhalla", 299, "Oracle");
 
         if (!Core.CheckInventory("Mage") || Core.CheckInventory("Mage (Rare)"))
             Adv.BuyItem("classhalla", 174, 15653, shopItemID: 9845);
@@ -812,7 +816,7 @@ public class CoreFarmerJoe
         // if (!Core.CheckInventory("ArchPaladin"))
         //     soloClassesToCheck = new[] { "ArchPaladin", "Shaman", "Rogue (Rare)", "Rogue", "Healer (Rare)", "Healer" };
         // else
-        string[] soloClassesToCheck = new[] { "Void Highlord", "Dragon of Time", "ArchPaladin", "Glacial Berserker", "DragonSoul Shinobi", "Shaman", "Rogue (Rare)", "Rogue", "Healer (Rare)", "Healer" };
+        string[] soloClassesToCheck = new[] { "Void Highlord", "Dragon of Time", "ArchPaladin", "Glacial Berserker", "DragonSoul Shinobi", "Shaman", "Oracle", "Rogue (Rare)", "Rogue", "Healer (Rare)", "Healer" };
 
         string[] farmClassesToCheck = new[] { "Archfiend", "Blaze Binder", "Scarlet Sorceress", "Master Ranger", "Shaman", "Mage (Rare)", "Mage" };
 
