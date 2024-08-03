@@ -2725,6 +2725,7 @@ public class CoreAdvanced
                 case "ninja":
                 case "ninja warrior":
                 case "not a mod":
+				case "oracle": //Oracle focuses on heavy Crit damage, improves Mana issues.
                 case "overworld chronomancer":
                 case "pinkomancer":
                 case "prismatic clawsuit":
@@ -2945,7 +2946,7 @@ public class CoreAdvanced
                 #endregion
 
                 #region Wizard - Mana Vamp
-                case "oracle":
+              //  case "oracle":
                 case "shaman":
                     type = EnhancementType.Wizard;
                     wSpecial = WeaponSpecial.Mana_Vamp;
