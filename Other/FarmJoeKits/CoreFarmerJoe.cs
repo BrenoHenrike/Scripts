@@ -43,6 +43,7 @@ tags: null
 //cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
 //cs_include Scripts/Story/Tutorial.cs
 //cs_include Scripts/Story/XansLair.cs
+//cs_include Scripts/Story/Lair.cs
 //cs_include Scripts/Story/Yokai.cs
 //cs_include Scripts/Tools/BankAllItems.cs
 //cs_include Scripts/Story/Friendship.cs

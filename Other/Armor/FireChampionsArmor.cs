@@ -10,6 +10,7 @@ tags: fire-champion-s-armor, fire-champions-armor, polished-dragon-slayer, flame
 //cs_include Scripts/Other/Classes/DragonslayerGeneral.cs
 //cs_include Scripts/Other/WarFuryEmblem.cs
 //cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
+//cs_include Scripts/Story\Lair.cs
 using Skua.Core.Interfaces;
 
 public class FireChampionsArmor
@@ -20,6 +21,7 @@ public class FireChampionsArmor
     public CoreAdvanced Adv = new();
     public DragonslayerGeneral DSG = new();
     public WarfuryEmblem WFE = new();
+    public Lair Lair = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -49,6 +51,9 @@ public class FireChampionsArmor
         if (Core.CheckInventory(58462))
             return;
 
+        if (!Core.isCompletedBefore(168))
+            Lair.Galanoth();
+            
         if (!Core.CheckInventory(582))
             Core.BuyItem("lair", 38, "Dragonslayer");
 

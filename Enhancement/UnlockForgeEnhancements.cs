@@ -45,6 +45,7 @@ tags: lacerate, smite, herosvaliance, arcanasconcerto, elysium, acheron, absolut
 //cs_include Scripts/Story/StarSinc.cs
 //cs_include Scripts/Story/TowerOfDoom.cs
 //cs_include Scripts/Story/XansLair.cs
+//cs_include Scripts/Story/Lair.cs
 //cs_include Scripts/Good/GearOfAwe/Awescended.cs
 //cs_include Scripts/Nation/AFDL/NulgathDemandsWork.cs
 //cs_include Scripts/Other/Classes/Necromancer.cs
