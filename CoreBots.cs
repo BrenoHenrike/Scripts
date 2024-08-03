@@ -4497,6 +4497,10 @@ public class CoreBots
 
             #region Ghost Item Bypasses
 
+            case "deaddragon":
+                GhostItemBypass(37377, "deaddragon Map Bypass");
+                break;
+
             case "nostalgiaquest":
                 GhostItemBypass(37378, "NostalgiaQuest Map Bypass");
                 break;
