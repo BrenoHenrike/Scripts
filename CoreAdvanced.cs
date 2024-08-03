@@ -2725,7 +2725,7 @@ public class CoreAdvanced
                 case "ninja":
                 case "ninja warrior":
                 case "not a mod":
-				case "oracle": //Oracle focuses on heavy Crit damage, improves Mana issues.
+				case "oracle":
                 case "overworld chronomancer":
                 case "pinkomancer":
                 case "prismatic clawsuit":
