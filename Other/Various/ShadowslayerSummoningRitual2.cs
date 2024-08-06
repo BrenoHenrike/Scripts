@@ -39,12 +39,16 @@ public class ShadowslayerSummoningRitual2
 
     public void LunateSigil(int quant = 30)
     {
+        if (Core.CheckInventory("Lunate Sigil", quant))
+            return;
+
         //Get "Sparkly Shadowslayer Relic"
         SSR.GetAll(true);
 
         Core.AddDrop("Lunate Sigil");
         Core.FarmingLogger("Lunate Sigil", quant);
-        while (Core.CheckInventory("Lunate Sigil", 30))
+
+        while (!Core.CheckInventory("Lunate Sigil", quant))
         {
             Core.HuntMonsterQuest(9846, new (string? mapName, string? monsterName, ClassType classType)[] {
         ("darkoviaforest", "Lich Of The Stone", ClassType.Solo),
