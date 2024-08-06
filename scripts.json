@@ -21197,21 +21197,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/Various/PrinceDarkonsPoleaxePreReqs.cs"
   },
   {
-    "name": "Quest Progression and Monster Hunt Generator",
-    "description": "Automates the process of generating quest progression checks and corresponding monster hunt commands based on specified quest ID ranges. It handles single and multiple requirements efficiently, and outputs the formatted script to a temporary file for easy integration.",
-    "tags": [
-      "quest automation",
-      "monster hunting",
-      "script generation",
-      "game scripting",
-      "quest progression"
-    ],
-    "path": "Tools/ForDevelopers/GeneratorTest.cs",
-    "size": 4274,
-    "fileName": "GeneratorTest.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/ForDevelopers/GeneratorTest.cs"
-  },
-  {
     "name": "Script Main Cleaner",
     "description": "Checks all scripts we have to see if there are any that break format",
     "tags": [
@@ -21256,6 +21241,21 @@
     "size": 2679,
     "fileName": "GenerateQuestFiles.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/ForDevelopers/GenerateQuestFiles.cs"
+  },
+  {
+    "name": "Weekly Release Generator",
+    "description": "Automates the process of generating quest progression checks and corresponding monster hunt commands based on specified quest ID ranges. It handles single and multiple requirements efficiently, and outputs the formatted script to a temporary file for easy integration.",
+    "tags": [
+      "quest automation",
+      "monster hunting",
+      "script generation",
+      "game scripting",
+      "quest progression"
+    ],
+    "path": "Tools/ForDevelopers/WeeklyReleaseGenerator.cs",
+    "size": 4263,
+    "fileName": "WeeklyReleaseGenerator.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/ForDevelopers/WeeklyReleaseGenerator.cs"
   },
   {
     "name": "Update Script Data",
