@@ -29,9 +29,15 @@ public class ShadowSlayerK
     {
         Core.SetOptions();
 
-        Storyline();
+        DoAll();
 
         Core.SetOptions(false);
+    }
+
+    public void DoAll()
+    {
+        Storyline();
+        Part2();
     }
 
     public void Storyline()
@@ -171,4 +177,43 @@ public class ShadowSlayerK
             Core.EnsureComplete(8835);
         }
     }
+
+    public void Part2()
+    {
+
+        if (Core.isCompletedBefore(9840))
+            return;
+
+        Story.PreLoad(this);
+
+
+        // 9837 | Stalking Prey
+        if (!Story.QuestProgression(9837))
+        {
+            Core.HuntMonsterQuest(9837, new (string? mapName, string? monsterName, ClassType classType)[] {
+        ("greymoor", "Dire Wolf", ClassType.Farm) });
+        }
+
+
+        // 9838 | Super Creeps
+        if (!Story.QuestProgression(9838))
+        {
+            Core.HuntMonsterQuest(9838, new (string? mapName, string? monsterName, ClassType classType)[] {
+        ("badmoon", "Ghoul", ClassType.Solo) });
+        }
+
+
+        // 9839 | Sleepless Villagers
+        Story.MapItemQuest(9839, "badmoon", Core.FromTo(13445, 13447));
+
+        // 9840 | Suspicious Minds
+        if (!Story.QuestProgression(9840))
+        {
+            Core.HuntMonsterQuest(9840, new (string? mapName, string? monsterName, ClassType classType)[] {
+        ("badmoon", "Dire Wolf", ClassType.Farm),
+        ("badmoon", "Ghoul", ClassType.Solo) });
+        }
+
+    }
+
 }
