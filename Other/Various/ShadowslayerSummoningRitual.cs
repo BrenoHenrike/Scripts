@@ -35,10 +35,10 @@ public class ShadowslayerSummoningRitual
         Core.SetOptions(false);
     }
 
-    public void GetAll()
+    public void GetAll(bool MovetoQuest2 = false)
     {
         ShadowStory.Storyline();
-        
+
         List<ItemBase> RewardOptions = Core.EnsureLoad(8835).Rewards;
         List<string> RewardsList = new();
         foreach (Skua.Core.Models.Items.ItemBase Item in RewardOptions)
@@ -56,6 +56,9 @@ public class ShadowslayerSummoningRitual
         Core.RegisterQuests(8835);
         foreach (string item in Rewards)
         {
+            if (Core.CheckInventory("Sparkly Shadowslayer Relic ") && MovetoQuest2)
+                return;
+
             if (!Core.CheckInventory(item, toInv: false))
             {
                 Core.Logger($"Getting {item}. Rewards Left: {Rewards.Length - count} more item" + ((Rewards.Length - count) > 1 ? "s" : ""));
