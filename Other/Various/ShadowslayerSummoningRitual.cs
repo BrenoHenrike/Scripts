@@ -41,7 +41,7 @@ public class ShadowslayerSummoningRitual
 
         List<ItemBase> RewardOptions = Core.EnsureLoad(8835).Rewards;
         List<string> RewardsList = new();
-        foreach (Skua.Core.Models.Items.ItemBase Item in RewardOptions)
+        foreach (ItemBase Item in RewardOptions)
             RewardsList.Add(Item.Name);
 
         string[] Rewards = RewardsList.ToArray();
@@ -53,20 +53,20 @@ public class ShadowslayerSummoningRitual
 
         ShadowSlayersApprentice();
 
-        Core.RegisterQuests(8835);
         foreach (string item in Rewards)
         {
-            if (Core.CheckInventory("Sparkly Shadowslayer Relic ") && MovetoQuest2)
+            if (!MovetoQuest2 && Core.CheckInventory(item) || Core.CheckInventory("Sparkly Shadowslayer Relic") && MovetoQuest2)
                 return;
 
-            if (!Core.CheckInventory(item, toInv: false))
+            while (!Bot.ShouldExit && !Core.CheckInventory(item, toInv: false))
             {
                 Core.Logger($"Getting {item}. Rewards Left: {Rewards.Length - count} more item" + ((Rewards.Length - count) > 1 ? "s" : ""));
-
+                Core.EnsureAccept(8835);
                 Scroll.BuyScroll(Scrolls.SpiritRend, 30);
                 Scroll.BuyScroll(Scrolls.Eclipse, 15);
                 Scroll.BuyScroll(Scrolls.BlessedShard, 30);
-                if (!Core.CheckInventory("Meat Ration"))
+
+                while (!Bot.ShouldExit && !Core.CheckInventory("Meat Ration"))
                 {
                     Core.AddDrop("Meat Ration");
                     Core.EnsureAccept(8263);
@@ -74,7 +74,8 @@ public class ShadowslayerSummoningRitual
                     Core.EnsureComplete(8263);
                     Bot.Wait.ForPickup("Meat Ration");
                 }
-                if (!Core.CheckInventory("Grain Ration", 2))
+
+                while (!Bot.ShouldExit && !Core.CheckInventory("Grain Ration", 2))
                 {
                     Core.AddDrop("Grain Ration");
                     Core.EnsureAccept(8264);
@@ -82,7 +83,8 @@ public class ShadowslayerSummoningRitual
                     Core.EnsureComplete(8264);
                     Bot.Wait.ForPickup("Grain Ration");
                 }
-                if (!Core.CheckInventory("Dairy Ration"))
+
+                while (!Bot.ShouldExit && !Core.CheckInventory("Dairy Ration"))
                 {
                     Core.AddDrop("Dairy Ration");
                     Core.EnsureAccept(8265);
@@ -90,10 +92,11 @@ public class ShadowslayerSummoningRitual
                     Core.EnsureComplete(8265);
                     Bot.Wait.ForPickup("Dairy Ration");
                 }
+
+                Core.EnsureComplete(8835);
                 Core.ToBank(item);
             }
         }
-        Core.CancelRegisteredQuests();
     }
 
     void ShadowSlayersApprentice()
