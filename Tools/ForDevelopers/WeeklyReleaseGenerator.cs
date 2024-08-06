@@ -1,5 +1,5 @@
 /*
-name: Quest Progression and Monster Hunt Generator
+name: Weekly Release Generator
 description: Automates the process of generating quest progression checks and corresponding monster hunt commands based on specified quest ID ranges. It handles single and multiple requirements efficiently, and outputs the formatted script to a temporary file for easy integration.
 tags: quest automation, monster hunting, script generation, game scripting, quest progression
 */
@@ -13,7 +13,7 @@ using Skua.Core.Options;
 using System.Collections.Generic;
 using System.IO;
 
-public class GeneratorTest
+public class WeeklyReleaseGenerator
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
