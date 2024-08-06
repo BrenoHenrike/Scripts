@@ -78,7 +78,8 @@ public class BadmoonMerge
                 case "Darkovian Hunter":
                 case "Iron Dussack":
                     Core.EquipClass(ClassType.Farm);
-                    Core.HuntMonster("badmoon", "hunter", req.Name, req.Quantity, req.Temp);
+                    Core.AddDrop(req.ID);
+                    Core.KillMonster("badmoon", "r5", "left", "hunter", req.Name, req.Quantity, req.Temp);
                     break;
 
             }

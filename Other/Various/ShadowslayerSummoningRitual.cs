@@ -58,7 +58,7 @@ public class ShadowslayerSummoningRitual
             if (!MovetoQuest2 && Core.CheckInventory(item) || Core.CheckInventory("Sparkly Shadowslayer Relic") && MovetoQuest2)
                 return;
 
-            while (!Bot.ShouldExit && !Core.CheckInventory(item, toInv: false))
+            while (!Bot.ShouldExit && !MovetoQuest2 && Core.CheckInventory(item, toInv: false) || Core.CheckInventory("Sparkly Shadowslayer Relic") && MovetoQuest2)
             {
                 Core.Logger($"Getting {item}. Rewards Left: {Rewards.Length - count} more item" + ((Rewards.Length - count) > 1 ? "s" : ""));
                 Core.EnsureAccept(8835);
