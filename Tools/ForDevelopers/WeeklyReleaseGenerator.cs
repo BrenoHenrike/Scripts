@@ -8,6 +8,7 @@ tags: quest automation, monster hunting, script generation, game scripting, ques
 //cs_include Scripts/CoreStory.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
+using Skua.Core.Models.Monsters;
 using Skua.Core.Models.Quests;
 using Skua.Core.Options;
 using System.Collections.Generic;
@@ -25,34 +26,46 @@ public class WeeklyReleaseGenerator
     {
         new Option<int>("QuestIDRangeStart", "QuestIDRangeStart", "First QuestID in the story"),
         new Option<int>("QuestIDRangeEnd", "QuestIDRangeEnd", "Last QuestID in the story"),
+        new Option<string>("MapName", "MapName", "Default map name for the hunt"),
         CoreBots.Instance.SkipOptions
     };
 
     public void ScriptMain(IScriptInterface Bot)
     {
         Core.SetOptions();
-
         Generator();
-
         Core.SetOptions(false);
     }
 
     public void Generator()
     {
-        Core.OneTimeMessage("How to Use", "This Willtake the \"QuestIDRangeStart\" & \"QuestIDRangeEnd\" IDs and genreate your weekly Quests (only uses \"HuntMonsterQuest\"), and output sits to a temporary file[not stored] taht u can copypaste into a core for example.");
+        Core.Logger("Generating script...");
+
         int startID = Bot.Config.Get<int>("QuestIDRangeStart");
         int endID = Bot.Config.Get<int>("QuestIDRangeEnd");
+        string mapName = Bot.Config.Get<string>("MapName");
+
+        // Join the map and wait for it to load
+        Core.Join(mapName);
+        Bot.Wait.ForMapLoad(mapName);
 
         // Initialize a list to store generated lines
         List<string> generatedLines = new()
-    {
-        // Add initial checks and preload to generated lines
-        $"if (Core.isCompletedBefore({endID}))",
-        "    return;",
-        string.Empty, // Add a line break after the initial checks
-        "Story.PreLoad(this);",
-        string.Empty // Add a line break after PreLoad
-    };
+        {
+            $"if (Core.isCompletedBefore({endID}))",
+            "    return;",
+            string.Empty,
+            "Story.PreLoad(this);",
+            string.Empty,
+            $"#region Method Dictionary",
+            $"// Example Method Calls:",
+            $"// Story.KillQuest(000, \"{mapName}\", \"MonsterName\");",
+            $"// Story.KillQuest(000, \"{mapName}\", new[] {{ \"Monstername\", \"Monstername\" }});",
+            $"// Story.MapItemQuest(000, \"{mapName}\", 1, 1);",
+            $"// Story.MapItemQuest(000, \"{mapName}\", new[] {{ 000, 000, 000 }});",
+            $"// Story.ChainQuest(000);",
+            $"#endregion Method Dictionary"
+        };
 
         // Ensure quests are processed in numerical order
         var sortedQuests = Core.EnsureLoad(Core.FromTo(startID, endID))
@@ -61,12 +74,10 @@ public class WeeklyReleaseGenerator
 
         foreach (Quest q in sortedQuests)
         {
-            // Add a blank line for separation
             generatedLines.Add(string.Empty);
 
             // Log the quest ID and name
-            var questLogMessage = $"// {q.ID} | {q.Name}";
-            generatedLines.Add(questLogMessage);
+            generatedLines.Add($"// {q.ID} | {q.Name}");
 
             // Start the QuestProgression check for the current quest
             generatedLines.Add($"if (!Story.QuestProgression({q.ID}))");
@@ -74,18 +85,17 @@ public class WeeklyReleaseGenerator
 
             if (q.Requirements.Count == 0)
             {
-                // Handle case where there are no requirements
                 generatedLines.Add($"    Core.ChainQuest({q.ID});");
             }
             else
             {
                 // Handle cases with requirements
                 var huntLines = new List<string>
-            {
-                $"    Core.HuntMonsterQuest({q.ID}, new (string? mapName, string? monsterName, ClassType classType)[] {{"
-            };
+                {
+                    $"    Core.HuntMonsterQuest({q.ID}, new (string? mapName, string? monsterName, ClassType classType)[] {{"
+                };
 
-                huntLines.AddRange(q.Requirements.Select(r => $"        (\"map\", \"monster\", ClassType.Solo),"));
+                huntLines.AddRange(q.Requirements.Select(r => $"        (\"{mapName}\", \"monster\", ClassType.Solo),"));
 
                 // Remove the last comma and close the array
                 huntLines[^1] = huntLines.Last().TrimEnd(',') + " });";
@@ -96,10 +106,17 @@ public class WeeklyReleaseGenerator
 
             // Close the QuestProgression check block
             generatedLines.Add("}");
-
-            // Add an extra new line for readability between different quests
             generatedLines.Add(string.Empty);
         }
+
+        // Collect and remove duplicate monster names from the map
+        List<Monster> mapMonsters = Bot.Monsters.MapMonsters.Distinct().ToList();
+        List<string> monsterNames = mapMonsters.Select(m => m.Name).Distinct().ToList();
+
+        // Add Useable Monsters section to generated lines
+        generatedLines.Add($"#region Useable Monsters");
+        generatedLines.Add($"string[] UseableMonsters = new[] {{ {string.Join(", ", monsterNames.Select(name => $"\"{name}\""))} }};");
+        generatedLines.Add($"#endregion Useable Monsters");
 
         // Write generated lines to a temporary file
         string tempFilePath = Path.GetTempFileName();
@@ -107,6 +124,7 @@ public class WeeklyReleaseGenerator
 
         // Open the file automatically
         System.Diagnostics.Process.Start("notepad.exe", tempFilePath);
-    }
 
+        Core.Logger("Script generation complete.");
+    }
 }
