@@ -2086,7 +2086,7 @@
       "shadow-slayer"
     ],
     "path": "Story/ShadowSlayerK.cs",
-    "size": 8252,
+    "size": 10119,
     "fileName": "ShadowSlayerK.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowSlayerK.cs"
   },
@@ -20302,6 +20302,30 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/ShadowScytheGeneralMerge.cs"
   },
   {
+    "name": "Badmoon Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Badmoon Merge [2470] in /badmoon",
+    "tags": [
+      "badmoon",
+      "merge",
+      "badmoon",
+      "twisted",
+      "hunter",
+      "darkovian",
+      "captains",
+      "masked",
+      "hunters",
+      "arm",
+      "arms",
+      "sanguine",
+      "dussack",
+      "dussacks"
+    ],
+    "path": "Other/MergeShops/BadmoonMerge.cs",
+    "size": 4345,
+    "fileName": "BadmoonMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/BadmoonMerge.cs"
+  },
+  {
     "name": "Grim Gift Merge",
     "description": "This bot will farm the items belonging to the selected mode for the Grim Gift Merge [655] in /doomvault",
     "tags": [
@@ -20654,7 +20678,7 @@
       "null"
     ],
     "path": "Other/Various/ShadowslayerSummoningRitual.cs",
-    "size": 4471,
+    "size": 4597,
     "fileName": "ShadowslayerSummoningRitual.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Various/ShadowslayerSummoningRitual.cs"
   },
@@ -20729,6 +20753,17 @@
     "size": 1697,
     "fileName": "TwillySupportsYou.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Various/TwillySupportsYou.cs"
+  },
+  {
+    "name": "ShadowslayerSummoningRitual2",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Other/Various/ShadowslayerSummoningRitual2.cs",
+    "size": 1930,
+    "fileName": "ShadowslayerSummoningRitual2.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Various/ShadowslayerSummoningRitual2.cs"
   },
   {
     "name": "Secret Map Quest",
@@ -21253,7 +21288,7 @@
       "quest progression"
     ],
     "path": "Tools/ForDevelopers/WeeklyReleaseGenerator.cs",
-    "size": 5092,
+    "size": 4917,
     "fileName": "WeeklyReleaseGenerator.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/ForDevelopers/WeeklyReleaseGenerator.cs"
   },
