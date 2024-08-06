@@ -2602,6 +2602,9 @@ public class CoreBots
             return;
         }
 
+        if (!Bot.Quests.EnsureAccept(questId))
+            EnsureAccept(questId);
+
         if (MapMonsterClassPairs == null)
         {
             MapMonsterClassPairs = new (string? mapName, string? monsterName, ClassType classType)[quest.Requirements.Count];
@@ -2621,6 +2624,9 @@ public class CoreBots
 
             HuntMonster(mapName ?? Bot.Map.Name, monsterName ?? "*", requirement.Name ?? string.Empty, requirement.Quantity, requirement.Temp, log);
         }
+
+        if (Bot.Quests.CanCompleteFullCheck(questId))
+            EnsureComplete(questId);
     }
 
 
@@ -2640,6 +2646,9 @@ public class CoreBots
             return;
         }
 
+        if (!Bot.Quests.EnsureAccept(questId))
+            EnsureAccept(questId);
+
         for (int i = 0; i < quest.Requirements.Count; i++)
         {
             ItemBase requirement = quest.Requirements[i];
@@ -2650,6 +2659,10 @@ public class CoreBots
 
             HuntMonster(huntMapName, huntMonsterName, requirement.Name ?? string.Empty, requirement.Quantity, requirement.Temp, log);
         }
+
+        if (Bot.Quests.CanCompleteFullCheck(questId))
+            EnsureComplete(questId);
+
     }
 
 
