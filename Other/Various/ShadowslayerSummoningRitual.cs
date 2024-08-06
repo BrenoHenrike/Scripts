@@ -66,9 +66,9 @@ public class ShadowslayerSummoningRitual
                 Scroll.BuyScroll(Scrolls.Eclipse, 15);
                 Scroll.BuyScroll(Scrolls.BlessedShard, 30);
 
+                Core.AddDrop("Meat Ration", "Grain Ration", "Dairy Ration");
                 while (!Bot.ShouldExit && !Core.CheckInventory("Meat Ration"))
                 {
-                    Core.AddDrop("Meat Ration");
                     Core.EnsureAccept(8263);
                     Core.HuntMonster("cellar", "GreenRat", "Green Mystery Meat", 10);
                     Core.EnsureComplete(8263);
@@ -77,7 +77,6 @@ public class ShadowslayerSummoningRitual
 
                 while (!Bot.ShouldExit && !Core.CheckInventory("Grain Ration", 2))
                 {
-                    Core.AddDrop("Grain Ration");
                     Core.EnsureAccept(8264);
                     Core.KillMonster("castletunnels", "r5", "Left", "Blood Maggot", "Bundle of Rice", 3);
                     Core.EnsureComplete(8264);
@@ -86,7 +85,6 @@ public class ShadowslayerSummoningRitual
 
                 while (!Bot.ShouldExit && !Core.CheckInventory("Dairy Ration"))
                 {
-                    Core.AddDrop("Dairy Ration");
                     Core.EnsureAccept(8265);
                     Core.KillMonster("odokuro", "Boss", "Right", "O-dokuro", "Bone Hurt Juice", 5);
                     Core.EnsureComplete(8265);
@@ -96,6 +94,11 @@ public class ShadowslayerSummoningRitual
                 Core.EnsureComplete(8835);
                 Core.ToBank(item);
             }
+
+            //Aandon unneeded quests
+            int[] AbandonThese = new[] { 2309, 2317, 8263, 8264, 8265, 8835 };
+            Bot.Quests.UnregisterQuests(AbandonThese);
+            Core.AbandonQuest(AbandonThese);
         }
     }
 
