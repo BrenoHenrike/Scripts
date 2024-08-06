@@ -39,7 +39,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 244999,
+    "size": 245350,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -2086,7 +2086,7 @@
       "shadow-slayer"
     ],
     "path": "Story/ShadowSlayerK.cs",
-    "size": 7119,
+    "size": 8252,
     "fileName": "ShadowSlayerK.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowSlayerK.cs"
   },
@@ -21195,6 +21195,21 @@
     "size": 2122,
     "fileName": "PrinceDarkonsPoleaxePreReqs.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Darkon/Various/PrinceDarkonsPoleaxePreReqs.cs"
+  },
+  {
+    "name": "Quest Progression and Monster Hunt Generator",
+    "description": "Automates the process of generating quest progression checks and corresponding monster hunt commands based on specified quest ID ranges. It handles single and multiple requirements efficiently, and outputs the formatted script to a temporary file for easy integration.",
+    "tags": [
+      "quest automation",
+      "monster hunting",
+      "script generation",
+      "game scripting",
+      "quest progression"
+    ],
+    "path": "Tools/ForDevelopers/GeneratorTest.cs",
+    "size": 4274,
+    "fileName": "GeneratorTest.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/ForDevelopers/GeneratorTest.cs"
   },
   {
     "name": "Script Main Cleaner",
