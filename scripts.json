@@ -7499,6 +7499,39 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/DeepTrobbleMerge.cs"
   },
   {
+    "name": "Hydra Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Hydra Merge [1597] in /hydrachallenge",
+    "tags": [
+      "hydra",
+      "merge",
+      "hydrachallenge",
+      "chaos",
+      "hydraslayer",
+      "cloak",
+      "backblade",
+      "hammer",
+      "head",
+      "scarf",
+      "visor",
+      "dew",
+      "drops",
+      "dress",
+      "long",
+      "faerie",
+      "escherions",
+      "evolved",
+      "purified",
+      "plate",
+      "morph",
+      "guardian",
+      "trident"
+    ],
+    "path": "Other/MergeShops/HydraMerge.cs",
+    "size": 6174,
+    "fileName": "HydraMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/HydraMerge.cs"
+  },
+  {
     "name": "Djinn Gate Merge",
     "description": "This bot will farm the items belonging to the selected mode for the Djinn Gate Merge [1511] in /djinngate",
     "tags": [
@@ -9964,7 +9997,7 @@
       "null"
     ],
     "path": "Other/Various/ShadowslayerSummoningRitual2.cs",
-    "size": 2012,
+    "size": 2023,
     "fileName": "ShadowslayerSummoningRitual2.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Various/ShadowslayerSummoningRitual2.cs"
   },
