@@ -57,7 +57,7 @@ public class ShadowslayerSummoningRitual2
         ("firewar", "Uriax", ClassType.Solo),
         ("maul", "Creature Creation ", ClassType.Solo),
         ("techdungeon", "Kalron the Cryptborg", ClassType.Solo),
-        });
+        }, log: true);
             Bot.Wait.ForPickup("Lunate Sigil");
         }
 
