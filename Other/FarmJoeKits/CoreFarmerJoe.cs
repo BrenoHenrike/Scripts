@@ -565,15 +565,14 @@ public class CoreFarmerJoe
         SetClass(true, false, true);
         CAQ.DoAll();
         BBOA.GetBBoA();
+        Core.Equip("Burning Blade Of Abezeth");
 
         /*
-        Lv to 90
+        Lv to 90 (via the Enhancements)
         Forge Capes: Forge, Absolution, Vainglory, Avarice, Penitence, Lament
         Dragon of Time
         YnR
         */
-        Farm.Experience(90);
-        SRM.BuyAllMerge("Hollowborn Reaper's Scythe");
         UnlockForgeEnhancements.ForgeCapeEnhancement();
         UnlockForgeEnhancements.Absolution();
         UnlockForgeEnhancements.Avarice();
@@ -586,10 +585,11 @@ public class CoreFarmerJoe
         SetClass(true, false, true);
         DoT.GetDoT();
 
-        // Leveling to 100
+        // Leveling to 100 & HBRS
         Core.Logger("P4 Leveling to 100");
         SetClass(true, false, true);
         Farm.Experience();
+        SRM.BuyAllMerge("Hollowborn Reaper's Scythe");
 
     }
 
