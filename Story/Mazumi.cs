@@ -37,7 +37,7 @@ public class Mazumi
         else
         {
             Core.Logger($"{quest.Name}[{quest.ID}] is currently broke and impossible to complete.. sorry");
-            Bot.Stop();
+            return;
         }
         Story.PreLoad(this);
 
