@@ -7,6 +7,7 @@ tags: story, quest, mazumi
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Quests;
 
 public class Mazumi
 {
@@ -29,6 +30,15 @@ public class Mazumi
         if (Core.isCompletedBefore(92))
             return;
 
+        //Quest requirements is 5/12.. but the max quant for the tempitem is 5/5... literaly impossible ty ae
+        Quest quest = Bot.Quests.EnsureLoad(90);
+        if (quest.Requirements.FirstOrDefault(x => x.Name == "Pirate Peglegs").Quantity > 5)
+            Core.Logger($"{quest.Name}[{quest.ID}] has been fixed, continue.");
+        else
+        {
+            Core.Logger($"{quest.Name}[{quest.ID}] is currently broke and impossible to complete.. sorry");
+            Bot.Stop();
+        }
         Story.PreLoad(this);
 
         // Ninja Grudge 90
