@@ -3219,7 +3219,7 @@
       "null"
     ],
     "path": "Nation/VoucherItemChoose.cs",
-    "size": 1131,
+    "size": 1095,
     "fileName": "VoucherItemChoose.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/VoucherItemChoose.cs"
   },
@@ -3243,7 +3243,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 88199,
+    "size": 87839,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -15444,7 +15444,7 @@
       "🖕"
     ],
     "path": "Nation/Materials/0MaxBags.cs",
-    "size": 1060,
+    "size": 1065,
     "fileName": "0MaxBags.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Materials/0MaxBags.cs"
   },
