@@ -15,7 +15,7 @@ public class MaxItems
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.BankingBlackList.AddRange(Nation.bagDrops);
+        Core.BankingBlackList.AddRange(Nation.bagDrops[..9]);
         Core.SetOptions();
 
         MaxBags();

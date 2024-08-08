@@ -607,22 +607,30 @@ public class CoreNation
     /// Farms Totem of Nulgath/Gem of Nulgath with Voucher Item: Totem of Nulgath quest
     /// </summary>
     /// <param name="reward">Which reward to pick (totem or gem)</param>
-    public void VoucherItemTotemofNulgath(VoucherItemTotem reward = VoucherItemTotem.Totem_of_Nulgath)
+    public void VoucherItemTotemofNulgath(VoucherItemTotem reward = VoucherItemTotem.Totem_of_Nulgath, int quant = 100)
     {
         if (!Core.CheckInventory("Voucher of Nulgath (non-mem)"))
             FarmVoucher(false, true);
 
-        Core.AddDrop("Gem of Nulgath", "Totem of Nulgath");
-        Core.AddDrop(bagDrops);
-        Core.Logger($"Reward selected: {reward}");
-        Core.EnsureAccept(4778);
 
-        EssenceofNulgath();
-        if (!Bot.Quests.CanComplete(4778))
-            EssenceofNulgath(65);
-        Core.EnsureComplete(4778, (int)reward);
-        Bot.Drops.Pickup("Gem of Nulgath");
-        Bot.Drops.Pickup("Totem of Nulgath");
+        Quest quest = Core.EnsureLoad(4778);
+        ItemBase Reward = quest.Rewards.FirstOrDefault(x => x.ID == (int)reward);
+        
+        foreach (ItemBase item in quest.Requirements.Concat(quest.Rewards))
+            Core.AddDrop(item.ID);
+
+        Core.FarmingLogger(Reward.Name, quant);
+        while (!Bot.ShouldExit && !Core.CheckInventory(Reward.ID, quant))
+        {
+            Core.EnsureAccept(4778);
+            EssenceofNulgath();
+            if (!Bot.Quests.EnsureComplete(4778, Reward.ID))
+            {
+                EssenceofNulgath(Bot.Inventory.GetQuantity("Essence of Nulgath") < 100 ? Bot.Inventory.GetQuantity("Essence of Nulgath") + 1 : 60);
+                Core.EnsureComplete(4778, Reward.ID);
+            }
+            Bot.Wait.ForPickup(Reward.ID);
+        }
     }
 
     /// <summary>
@@ -1509,8 +1517,8 @@ public class CoreNation
         FarmContractExchage("Gem of Nulgath", quant);
         Core.AddDrop("Gem of Nulgath");
         VoidKightSwordQuest("Gem of Nulgath", quant);
-        while (!Bot.ShouldExit && !Core.CheckInventory("Gem of Nulgath", quant))
-            VoucherItemTotemofNulgath(VoucherItemTotem.Gem_of_Nulgath);
+
+        VoucherItemTotemofNulgath(VoucherItemTotem.Gem_of_Nulgath, quant);
     }
 
     /// <summary>
@@ -1585,19 +1593,7 @@ public class CoreNation
         if (Core.CheckInventory("Totem of Nulgath", quant))
             return;
 
-        // NewWorldsNewOpportunities("Totem of Nulgath", quant);
-        // VoidKightSwordQuest("Totem of Nulgath", quant);
-        // Core.Logger(Taro ? "Method choosen (if pets not owned): Taro" : "Method choosen (if pets not owned): Voucher Item");
-        // Core.RegisterQuests(726);
-        // while (!Bot.ShouldExit && !Core.CheckInventory("Totem of Nulgath", quant))
-        // {
-        //     Core.EquipClass(ClassType.Solo);
-        //     Core.HuntMonster("tercessuinotlim", "Taro Blademaster", "Taro's Manslayer", isTemp: false);
-
-        //     EssenceofNulgath(25);
-        // }
-        while (!Bot.ShouldExit && !Core.CheckInventory("Totem of Nulgath", quant))
-            VoucherItemTotemofNulgath(VoucherItemTotem.Totem_of_Nulgath);
+        VoucherItemTotemofNulgath(VoucherItemTotem.Totem_of_Nulgath, quant);
     }
 
     /// <summary>
