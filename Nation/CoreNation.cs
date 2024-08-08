@@ -37,20 +37,22 @@ public class CoreNation
     /// </summary>
     public string[] bagDrops =
     {
+        "Blood Gem of the Archfiend",
         "Dark Crystal Shard",
         "Diamond of Nulgath",
         "Gem of Nulgath",
+        "Totem of Nulgath",
         "Tainted Gem",
         "Unidentified 10",
         "Unidentified 13",
-        "Unidentified 24",
         "Voucher of Nulgath",
         "Voucher of Nulgath (non-mem)",
+
+        // extras
+        "Unidentified 24",
         "Essence of Nulgath",
         "Unidentified 25",
-        "Totem of Nulgath",
         "Fiend Token",
-        "Blood Gem of the Archfiend",
         "Emblem of Nulgath",
         "Receipt of Swindle",
         "Bone Dust",
@@ -1596,7 +1598,7 @@ public class CoreNation
         //     EssenceofNulgath(25);
         // }
         while (!Bot.ShouldExit && !Core.CheckInventory("Totem of Nulgath", quant))
-        VoucherItemTotemofNulgath(VoucherItemTotem.Totem_of_Nulgath);
+            VoucherItemTotemofNulgath(VoucherItemTotem.Totem_of_Nulgath);
     }
 
     /// <summary>

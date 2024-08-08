@@ -25,15 +25,16 @@ public class MaxItems
 
     public void MaxBags()
     {
-        Core.AddDrop(Nation.bagDrops);
+        Core.AddDrop(Nation.bagDrops[..9]);
 
         Nation.FarmBloodGem();
         Nation.FarmDarkCrystalShard();
         Nation.FarmDiamondofNulgath();
         Nation.FarmGemofNulgath();
         Nation.FarmTotemofNulgath();
+        Nation.FarmTaintedGem();
         Nation.FarmUni10();
-        Nation.FarmUni13(13);
+        Nation.FarmUni13();
         Nation.FarmVoucher(true);
         Nation.FarmVoucher(false);
     }
