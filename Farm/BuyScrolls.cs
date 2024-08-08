@@ -32,8 +32,12 @@ public class BuyScrolls
         Core.SetOptions(false);
     }
 
-    public void BuyScroll(Scrolls scroll, int quant = -1)
+    public void BuyScroll(Scrolls scroll, int quant = -1, bool UseMysticParchment = false)
     {
+        if (Bot.Config!.Get<bool>("UseMysticParchment") || UseMysticParchment == true)
+            UseMysticParchment = true;
+        else UseMysticParchment = false;
+
         Quest questData = Core.EnsureLoad((int)scroll);
         string _scroll = questData.Rewards.First().Name;
         quant = quant == -1 ? questData.Rewards.First().MaxStack : quant;
@@ -48,7 +52,7 @@ public class BuyScrolls
 
         Farm.SpellCraftingREP(5);
 
-        if (!Bot.Config!.Get<bool>("UseMysticParchment"))
+        if (!UseMysticParchment)
         {
             while (!Bot.ShouldExit && !Core.CheckInventory(_scroll, quant))
             {
