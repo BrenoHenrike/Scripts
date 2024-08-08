@@ -1368,16 +1368,15 @@ public class CoreNation
 
         Core.AddDrop(bagDrops);
         Core.EquipClass(ClassType.Solo);
-        Core.FarmingLogger(reward.ToString().Replace("_", " "), quant);
-        while (!Bot.ShouldExit && !Core.CheckInventory(reward.ToString(), quant))
+        Core.FarmingLogger(reward, quant);
+        while (!Bot.ShouldExit && !Core.CheckInventory(reward, quant))
         {
             if (farmUni13 && !Core.CheckInventory("Unidentified 13"))
                 FarmUni13(3);
             Core.ResetQuest(870);
-            Core.EnsureAccept(870);
-            Core.KillMonster("tercessuinotlim", "m4", "Top,", "Shadow of Nulgath", "Blade Master Rune", log: false);
+            Core.KillMonster("tercessuinotlim", "m4", "Top", "Shadow of Nulgath", "Blade Master Rune", log: false);
             Core.EnsureComplete(870, (int)rewardEnum);
-            Core.Logger($"Exchanged for {reward}");
+            Core.FarmingLogger(reward, quant);
         }
     }
 
@@ -1407,9 +1406,9 @@ public class CoreNation
             Core.HuntMonster("downward", "Crystal Mana Construct", "Crystalized Corporate Digging Secrets", 3, log: false);
             Core.EnsureComplete(7818);
             Core.Logger($"Completed x{i++}");
-            if (Bot.Inventory.IsMaxStack("Unidentified 10"))
+            if (Bot.Inventory.GetQuantity("Unidentified 10") >= 1000)
                 Core.Logger("Max Stack Hit.");
-            else Core.Logger($"Unidentified 10: {Bot.Inventory.GetQuantity("Unidentified 10")}/{quant}");
+            else Core.FarmingLogger("Unidentified 10", quant);
         }
     }
 
