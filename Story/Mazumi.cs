@@ -32,7 +32,7 @@ public class Mazumi
 
         //Quest requirements is 5/12.. but the max quant for the tempitem is 5/5... literaly impossible ty ae
         Quest quest = Bot.Quests.EnsureLoad(90);
-        if (quest.Requirements.FirstOrDefault(x => x.Name == "Pirate Peglegs").Quantity > 5)
+        if (quest.Requirements.FirstOrDefault(x => x.Name == "Pirate Pegleg").Quantity > 5)
             Core.Logger($"{quest.Name}[{quest.ID}] has been fixed, continue.");
         else
         {
