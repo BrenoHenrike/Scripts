@@ -3024,7 +3024,7 @@
       "decay"
     ],
     "path": "Farm/BuyScrolls.cs",
-    "size": 5448,
+    "size": 4614,
     "fileName": "BuyScrolls.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/BuyScrolls.cs"
   },
@@ -16086,7 +16086,7 @@
       "null"
     ],
     "path": "Nation/Various/VoidShogun.cs",
-    "size": 2373,
+    "size": 2357,
     "fileName": "VoidShogun.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/VoidShogun.cs"
   },
