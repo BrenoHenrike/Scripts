@@ -1850,30 +1850,18 @@ public class CoreFarms
     {
         if (FactionRank("Embersea") >= rank)
             return;
+        if (Core.IsMember)
+            MembershipDues(MemberShipsIDS.Embersea, rank);
 
         Core.EquipClass(ClassType.Farm);
         Core.SavedState();
         ToggleBoost(BoostType.Reputation);
         Core.Logger($"Farming rank {rank}");
 
-        if (Core.isCompletedBefore(4135))
-        {
-            // Where There's Smoke...(200rep - faster)
-            while (!Bot.ShouldExit && FactionRank("Embersea") < rank)
-            {
-                Core.EnsureAccept(4135);
-                Core.GetMapItem(3248, 1, "feverfew");
-                Core.EnsureComplete(4135);
-                Bot.Wait.ForQuestComplete(4135);
-            }
-        }
-        else
-        {
-            //  Slay the Blazebinders (500rep - 5 kills)
-            Core.RegisterQuests(4228);
-            while (!Bot.ShouldExit && FactionRank("Embersea") < rank)
-                Core.HuntMonster("fireforge", "Blazebinder", log: false);
-        }
+        //  Slay the Blazebinders (500rep - 5 kills)
+        Core.RegisterQuests(4228);
+        while (!Bot.ShouldExit && FactionRank("Embersea") < rank)
+            Core.HuntMonster("fireforge", "Blazebinder", log: false);
 
         ToggleBoost(BoostType.Reputation, false);
         Core.CancelRegisteredQuests();
