@@ -502,6 +502,9 @@ public class CoreBots
         if (Bot.Inventory.Contains(item, quant))
             return true;
 
+        if (Bot.House.Contains(item))
+            return true;
+
         if (Bot.Bank.Contains(item))
         {
             if (toInv)
@@ -511,8 +514,6 @@ public class CoreBots
                (!toInv && Bot.Bank.TryGetItem(item, out InventoryItem? _item) && _item != null && _item.Quantity >= quant))
                 return true;
         }
-        if (Bot.House.Contains(item))
-            return true;
 
         return false;
     }
