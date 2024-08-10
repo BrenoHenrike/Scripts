@@ -11,6 +11,7 @@ tags: void,warlock,tools,job,corrupted,touch,quest,rewards, tools for the job, c
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/Good/BLOD/CoreBLOD.cs
+//cs_include Scripts/CoreAdvanced.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 
