@@ -33,6 +33,12 @@ public class EnhancedNulgathNationHouse
 
     public void GetENNH()
     {
+        if (Core.CheckInventory("Enchanted Nulgath Nation House"))
+        {
+            Core.Logger("ENNH Owned");
+            return;
+        }
+
         Core.AddDrop(Nation.bagDrops);
         Core.AddDrop("Nulgath Nation House", "Enchanted Nulgath Nation House", "Cemaros' Amethyst", "Aluminum");
 
