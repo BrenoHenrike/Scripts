@@ -750,7 +750,7 @@ public class UnlockForgeEnhancements
         Dictionary<int, int> itemsToCheck = new()
         {
             { 39091, 100 },  // Ascended Paladin
-            { 39093, 50 },   // Ascended Paladin Staff
+            // { 39093, 50 },   // Ascended Paladin Staff
             { 39094, 50 }    // Ascended Paladin Sword
         };
 
@@ -766,7 +766,7 @@ public class UnlockForgeEnhancements
         Core.EquipClass(ClassType.Farm);
         Core.KillMonster("therift", "r9", "Left", "Plague Spreader", "Slimed Sigil", SlimeSigil, isTemp: false);
         Adv.BuyItem("therift", 1399, "Ascended Paladin", shopItemID: 5244);
-        Adv.BuyItem("therift", 1399, "Ascended Paladin Staff", shopItemID: 5246);
+        // Adv.BuyItem("therift", 1399, "Ascended Paladin Staff", shopItemID: 5246);
         Adv.BuyItem("therift", 1399, "Ascended Paladin Sword", shopItemID: 5247);
 
         Core.ChainComplete(8743);
