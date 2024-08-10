@@ -8,7 +8,6 @@ tags: void,warlock,tools,job,corrupted,touch,quest,rewards, tools for the job, c
 //cs_include Scripts/Nation/CoreNation.cs
 //cs_include Scripts/Nation\Various\EnchantedNulgathNationHouse.cs
 //cs_include Scripts/Story/BattleUnder.cs
-//cs_include Scripts/Nation/CoreNation.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/Good/BLOD/CoreBLOD.cs
