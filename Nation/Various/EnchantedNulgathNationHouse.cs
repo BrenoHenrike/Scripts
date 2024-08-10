@@ -10,6 +10,7 @@ tags: enchanted nulgath nation house, ennh, nulgath
 //cs_include Scripts/Story/BattleUnder.cs
 //cs_include Scripts/Nation/CoreNation.cs
 //cs_include Scripts/Good/BLOD/CoreBLOD.cs
+//cs_include Scripts/CoreAdvanced.cs
 using Skua.Core.Interfaces;
 
 public class EnhancedNulgathNationHouse
@@ -21,6 +22,7 @@ public class EnhancedNulgathNationHouse
     public CoreNation Nation = new();
     public CoreBLOD BLOD = new();
     public CoreStory Story = new();
+    private CoreAdvanced Adv = new();
     public void ScriptMain(IScriptInterface bot)
     {
         Core.BankingBlackList.AddRange(Nation.bagDrops);
@@ -46,7 +48,7 @@ public class EnhancedNulgathNationHouse
         {
             Nation.FarmUni10(400);
             Nation.FarmUni13(1);
-            Nation.FarmVoucher(false);
+            Nation.FarmVoucher(false, true);
             Nation.FarmDiamondofNulgath(300);
             Nation.FarmDarkCrystalShard(250);
             Nation.FarmTotemofNulgath(30);
@@ -55,17 +57,14 @@ public class EnhancedNulgathNationHouse
             Nation.FarmBloodGem(100);
             Nation.ApprovalAndFavor(1000, 0);
 
-            Farm.ChaosREP(2);
-            Core.BuyItem("mountdoomskull", 776, "Cemaros' Amethyst");
+            Adv.BuyItem("mountdoomskull", 776, "Cemaros' Amethyst");
 
             BLOD.UnlockMineCrafting();
             Daily.MineCrafting(new[] { "Aluminum" });
 
-            Farm.DoomWoodREP();
-            Farm.Gold(999);
-            Core.BuyItem("lightguard", 277, "NUE Necronomicon");
+            Adv.BuyItem("lightguard", 277, "NUE Necronomicon");
 
-            Core.EnsureAccept(4779);
+            // Core.EnsureAccept(4779);
             if (!Core.EnsureComplete(4779))
             {
                 Core.Logger("Could not complete the quest, stopping bot", messageBox: true);
@@ -76,6 +75,6 @@ public class EnhancedNulgathNationHouse
 
         Core.HuntMonster("guru", "Guru Chest", "Pink Star Diamond of Nulgath", 1, false);
         Core.HuntMonster("timelibrary", "Ancient Chest", "Musgravite of Nulgath", 2, false);
-        Core.BuyItem("archportal", 1211, "Enchanted Nulgath Nation House");
+        Adv.BuyItem("archportal", 1211, "Enchanted Nulgath Nation House");
     }
 }
