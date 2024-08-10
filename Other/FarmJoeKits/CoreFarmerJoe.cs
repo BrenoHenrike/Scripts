@@ -778,7 +778,7 @@ public class CoreFarmerJoe
         Core.Logger("Getting Started: Beginner Levels/Equipment");
 
         Core.Logger("Getting Starter Solo class (Ninja)");
-        if (!Core.CheckInventory(Core.CheckInventory("Ninja (Rare)") ? "Ninja (Rare)" : "Ninja"))
+        if (!Core.CheckInventory(new[ ]{"Assassin", "Ninja Warrior", "Ninja"}))
             Core.BuyItem("classhalla", 178, "Ninja");
 
         Core.Logger("Getting Starter Farm class (Mage)");
@@ -814,7 +814,7 @@ public class CoreFarmerJoe
         // if (!Core.CheckInventory("ArchPaladin"))
         //     soloClassesToCheck = new[] { "ArchPaladin", "Shaman", "Ninja (Rare)", "Ninja", "Healer (Rare)", "Healer" };
         // else
-        string[] soloClassesToCheck = new[] { "Void Highlord", "Dragon of Time", "ArchPaladin", "Glacial Berserker", "DragonSoul Shinobi", "Shaman", "Ninja (Rare)", "Ninja", "Healer (Rare)", "Healer" };
+        string[] soloClassesToCheck = new[] { "Void Highlord", "Dragon of Time", "ArchPaladin", "Glacial Berserker", "DragonSoul Shinobi", "Shaman", "Assassin", "Ninja Warrior", "Ninja", "Healer (Rare)", "Healer" };
 
         string[] farmClassesToCheck = new[] { "Archfiend", "Blaze Binder", "Scarlet Sorceress", "Master Ranger", "Shaman", "Mage (Rare)", "Mage" };
 
