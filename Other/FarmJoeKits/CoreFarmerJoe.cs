@@ -217,7 +217,7 @@ public class CoreFarmerJoe
 
     public static void ScriptMain(IScriptInterface bot) => Core.RunCore();
     #region InvClasses
-    // private readonly InventoryItem? ClassRogue = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == (Core.CheckInventory("Rogue (Rare)") ? "Rogue (Rare)" : "Rogue").ToLower().Trim() && i.Category == ItemCategory.Class);
+    // private readonly InventoryItem? ClassNinja = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == (Core.CheckInventory("Ninja (Rare)") ? "Ninja (Rare)" : "Ninja").ToLower().Trim() && i.Category == ItemCategory.Class);
     // private readonly InventoryItem? ClassMage = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == (Core.CheckInventory("Mage (Rare)") ? "Mage(Rare)" : "Mage").ToLower().Trim() && i.Category == ItemCategory.Class);
     private readonly InventoryItem? ClassMasterRanger = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == "Master Ranger".ToLower().Trim() && i.Category == ItemCategory.Class || Bot.Bank.Contains(i.Name) && i.Name != null);
     private readonly InventoryItem? ClassShaman = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == "Shaman".ToLower().Trim() && i.Category == ItemCategory.Class || Bot.Bank.Contains(i.Name) && i.Name != null);
@@ -307,7 +307,7 @@ public class CoreFarmerJoe
                     }
 
                     if (!Core.CheckInventory("Awethur's Accoutrements"))
-                    { //For BOA lvl 30 rogue *should* be able to kill escherion ..once in awhile :P (tested i got a few kills in an an hr... proabably horrible but w/e)
+                    { //For BOA lvl 30 Ninja *should* be able to kill escherion ..once in awhile :P (tested i got a few kills in an an hr... proabably horrible but w/e)
                         Core.Logger("Doing BoA rep till r6 (for enhancments & sword)");
                         SetClass(true, false, true);
                         Farm.BladeofAweREP(6, false);
@@ -760,16 +760,16 @@ public class CoreFarmerJoe
             }
         }
 
-        if (Core.CheckInventory(Core.CheckInventory("Rogue (Rare)") ? "Rogue (Rare)" : "Rogue") &&
+        if (Core.CheckInventory(Core.CheckInventory("Ninja (Rare)") ? "Ninja (Rare)" : "Ninja") &&
             Core.CheckInventory(Core.CheckInventory("Mage (Rare)") ? "Mage (Rare)" : "Mage") &&
-            Bot.Player.Level >= 10)
+            Bot.Player.Level >= 30)
         {
-            Core.Logger("Acc is lvl 10+, skipping beginner items.");
+            Core.Logger("Acc is lvl 30+, skipping beginner items.");
             return;
         }
 
         Core.Logger("Starting out acc:\n" +
-            "\tGoals: Temp weapon, Rogue class.");
+            "\tGoals: Temp weapon, Ninja class.");
 
         Core.Logger("Getting Badges to look a little\n" +
             "more legit (start may take a minute)");
@@ -777,9 +777,11 @@ public class CoreFarmerJoe
 
         Core.Logger("Getting Started: Beginner Levels/Equipment");
 
-        if (!Core.CheckInventory(Core.CheckInventory("Rogue (Rare)") ? "Rogue (Rare)" : "Rogue"))
-            Core.BuyItem("classhalla", 172, "Rogue");
+        Core.Logger("Getting Starter Solo class (Ninja)");
+        if (!Core.CheckInventory(Core.CheckInventory("Ninja (Rare)") ? "Ninja (Rare)" : "Ninja"))
+            Core.BuyItem("classhalla", 178, "Ninja");
 
+        Core.Logger("Getting Starter Farm class (Mage)");
         if (!Core.CheckInventory("Mage") || Core.CheckInventory("Mage (Rare)"))
             Adv.BuyItem("classhalla", 174, 15653, shopItemID: 9845);
 
@@ -810,9 +812,9 @@ public class CoreFarmerJoe
         string newFarmClass = Core.FarmClass;
 
         // if (!Core.CheckInventory("ArchPaladin"))
-        //     soloClassesToCheck = new[] { "ArchPaladin", "Shaman", "Rogue (Rare)", "Rogue", "Healer (Rare)", "Healer" };
+        //     soloClassesToCheck = new[] { "ArchPaladin", "Shaman", "Ninja (Rare)", "Ninja", "Healer (Rare)", "Healer" };
         // else
-        string[] soloClassesToCheck = new[] { "Void Highlord", "Dragon of Time", "ArchPaladin", "Glacial Berserker", "DragonSoul Shinobi", "Shaman", "Rogue (Rare)", "Rogue", "Healer (Rare)", "Healer" };
+        string[] soloClassesToCheck = new[] { "Void Highlord", "Dragon of Time", "ArchPaladin", "Glacial Berserker", "DragonSoul Shinobi", "Shaman", "Ninja (Rare)", "Ninja", "Healer (Rare)", "Healer" };
 
         string[] farmClassesToCheck = new[] { "Archfiend", "Blaze Binder", "Scarlet Sorceress", "Master Ranger", "Shaman", "Mage (Rare)", "Mage" };
 
