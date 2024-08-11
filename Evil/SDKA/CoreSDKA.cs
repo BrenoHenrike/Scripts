@@ -315,12 +315,15 @@ public class CoreSDKA
         {
             Core.KillMonster("boxes", "Boss", "Left", "Sneeviltron", "Grumpy Warhammer", isTemp: false, log: false);
             Core.KillKitsune("No. 1337 Blade Oil", log: false);
-            Core.KillMonster("sandcastle", "r7", "Left", "Chaos Sphinx", "Gold Brush", log: false);
-            Core.KillMonster("crashsite", "Boss", "Left", "ProtoSartorium", "Non-abrasive Power Powder", log: false);
-            Core.KillMonster("necrocavern", "r13", "Left", "Shadow Dragon", "ShadowDragon Hide", 3, log: false);
-            Core.KillMonster("dragonplane", "r9", "Left", "Moganth", "Moganth's Stone Sharpener", log: false);
-            Core.KillMonster("akiba", "cave4boss", "Left", "Shadow Nukemichi", "Doom Lacquer Finish", log: false);
-            Core.KillMonster("dreamnexus", "r6", "Left", "Dark Wyvern", "Dark Wyvern Hide Travel Case", log: false);
+            Core.HuntMonsterQuest(6594, new (string? mapName, string? monsterName, ClassType classType)[] {
+            ("sandcastle", "Chaos Sphinx", ClassType.Farm),
+            ("crashsite", "ProtoSartorium", ClassType.Farm),
+            ("necrocavern", "Shadow Dragon", ClassType.Farm),
+            ("dragonplane", "Moganth", ClassType.Farm),
+            ("akiba", "Shadow Nukemichi", ClassType.Farm),
+            ("dreamnexus", "Dark Wyvern", ClassType.Farm),
+            });
+
 
             Bot.Wait.ForPickup(item);
         }
