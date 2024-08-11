@@ -2435,6 +2435,33 @@ public class CoreAdvanced
                     break;
                 #endregion
 
+
+                #region Luck - Val/Smite/Mana - Anima - Vg
+                case "dragonslayer":
+                    type = EnhancementType.Lucky;
+
+                    cSpecial = uVainglory()
+                        ? CapeSpecial.Vainglory
+                        : uForgeCape()
+                            ? CapeSpecial.Forge
+                            : CurrentCapeSpecial();
+
+                    wSpecial = uValiance()
+                        ? WeaponSpecial.Valiance
+                        : uSmite()
+                            ? WeaponSpecial.Smite
+                            : WeaponSpecial.Mana_Vamp;
+
+                    hSpecial = uAnima()
+                        ? HelmSpecial.Anima
+                        : uForgeHelm()
+                            ? HelmSpecial.Forge
+                            : CurrentHelmSpecial();
+
+                    break;
+                #endregion
+
+
                 #endregion
 
                 #region Unassigned Region
@@ -2502,7 +2529,6 @@ public class CoreAdvanced
                 case "dragon knight":
                 case "dragon shinobi":
                 case "dragonslayer general":
-                case "dragonslayer":
                 case "dragonsoul shinobi":
                 case "drakel warlord":
                 case "elemental dracomancer":
