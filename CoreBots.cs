@@ -2625,13 +2625,16 @@ public class CoreBots
             ItemBase requirement = quest.Requirements[i];
             (string? mapName, string? monsterName, ClassType classType) = MapMonsterClassPairs[i];
 
+            if (CheckInventory(requirement.Name, requirement.Quantity))
+                continue;
+
             // Equip the class before hunting
             EquipClass(classType);
 
             HuntMonster(mapName ?? Bot.Map.Name, monsterName ?? "*", requirement.Name ?? string.Empty, requirement.Quantity, requirement.Temp, log);
         }
 
-        if (Bot.Quests.CanCompleteFullCheck(questId))
+        if (!EnsureComplete(questId))
             EnsureComplete(questId);
     }
 
