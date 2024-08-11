@@ -888,37 +888,38 @@ public class CoreDoomwood
         Story.PreLoad(this);
 
         //2093    Undead Assault
-        Story.KillQuest(2093, "battleundera", "Skeletal Soldier", AutoCompleteQuest: false);
+        Story.KillQuest(2093, "doomhaven", "Skeletal Soldier", AutoCompleteQuest: false);
+        //insurance
+        if (Bot.Quests.CanComplete(2093))
+            Core.EnsureComplete(2093);
 
         //2094    Skull Crusher Mountain
-        Story.KillQuest(2094, "battleundera", "Skeletal Ice Mage");
+        Story.KillQuest(2094, "doomhaven", "Skeletal Ice Mage");
 
         //2095    The Undead Giant
-        Story.KillQuest(2095, "battleundera", "Angry Undead Giant");
+        Story.KillQuest(2095, "doomhaven", "Angry Undead Giant");
 
         //2096    Talk to the Knights
         Story.MapItemQuest(2096, "doomhaven", 1174, 5);
 
         //2097    Defend the Throne Room
-        Story.KillQuest(2097, "Doomhaven", "Skeletal Viking");
+        Story.KillQuest(2097, "doomhaven", "Skeletal Viking");
 
-        //2117    Rolith Defeated
-        Story.ChainQuest(2117);
 
-        //2120    Lair
-        Story.ChainQuest(2120);
+        foreach (int Quest in new[]
+            {
+            2117, // Rolith Defeated
+            2120, // Lair
+            2121, // Mythsong
+            2122, // Arcangrove
+            2123, // Willowshire
+            2119  // Battleon
+        })
+        {
+            Story.ChainQuest(Quest);
+            Bot.Wait.ForQuestComplete(Quest);
+        }
 
-        //2121    Mythsong
-        Story.ChainQuest(2121);
-
-        //2122    Arcangrove
-        Story.ChainQuest(2122);
-
-        //2123    Willowshire
-        Story.ChainQuest(2123);
-
-        //2119    Battleon
-        Story.ChainQuest(2119);
 
         //2124    Keep the Area Clear
         Story.KillQuest(2124, "doomwar", "Angry Zombie");
