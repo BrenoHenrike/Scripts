@@ -49,17 +49,9 @@ public class FandH
         Story.KillQuest(6593, "stalagbite", "Balboa", GetReward: false);
 
         // Rest for the Not Very Wicked
-        if (!Story.QuestProgression(6594))
-        {
-            Story.MapItemQuest(6594, "tavern", 6114, GetReward: false);
-            Core.HuntMonsterQuest(6594, new (string? mapName, string? monsterName, ClassType classType)[] {
-            ("pines", "Red Shell Turtle", ClassType.Farm),
-            ("pines", "Pine Grizzly", ClassType.Farm),
-            ("pines", "Pine Troll", ClassType.Farm),
+        Story.MapItemQuest(6594, "tavern", 6114, GetReward: false);
+        Story.KillQuest(6594, "pines", new[] { "Red Shell Turtle", "Pine Grizzly", "Pine Troll" });
 
-            });
-            Core.EnsureComplete(6594);
-        }
         // Pisces Pieces
         Story.KillQuest(6595, "river", "Kuro", GetReward: false);
 
