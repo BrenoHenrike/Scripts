@@ -2634,7 +2634,7 @@ public class CoreBots
             HuntMonster(mapName ?? Bot.Map.Name, monsterName ?? "*", requirement.Name ?? string.Empty, requirement.Quantity, requirement.Temp, log);
         }
 
-        if (!EnsureComplete(questId))
+        if (!Bot.Quests.EnsureComplete(questId))
             EnsureComplete(questId);
     }
 
