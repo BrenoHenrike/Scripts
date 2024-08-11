@@ -5763,7 +5763,7 @@
       "null"
     ],
     "path": "Other/Weapons/FortitudeAndHubris.cs",
-    "size": 4156,
+    "size": 4012,
     "fileName": "FortitudeAndHubris.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Weapons/FortitudeAndHubris.cs"
   },
@@ -12065,7 +12065,7 @@
       "null"
     ],
     "path": "Story/Doomwood/CoreDoomwood.cs",
-    "size": 30487,
+    "size": 30566,
     "fileName": "CoreDoomwood.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Doomwood/CoreDoomwood.cs"
   },
