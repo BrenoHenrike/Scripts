@@ -2774,6 +2774,19 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/DoomVaultB.cs"
   },
   {
+    "name": "crulonwedding",
+    "description": "does the 3 story quest for /crulonwed",
+    "tags": [
+      "crulonwed",
+      "weekly",
+      "story"
+    ],
+    "path": "Story/Crulonwed.cs",
+    "size": 2001,
+    "fileName": "Crulonwed.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Crulonwed.cs"
+  },
+  {
     "name": "Ice Plane Story",
     "description": "This will finish the Ice Plane Story.",
     "tags": [
@@ -6709,6 +6722,37 @@
     "size": 6047,
     "fileName": "DwarfholdMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/DwarfholdMerge.cs"
+  },
+  {
+    "name": "Crulons Wedding Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Crulons Wedding Merge [2472] in /crulonwed",
+    "tags": [
+      "crulons",
+      "wedding",
+      "merge",
+      "crulonwed",
+      "sandsea",
+      "ceremonial",
+      "attire",
+      "morph",
+      "amanis",
+      "veil",
+      "emerald",
+      "eons",
+      "royal",
+      "guest",
+      "enchanted",
+      "desert",
+      "bandana",
+      "luxorlight",
+      "wings",
+      "spear",
+      "bow"
+    ],
+    "path": "Other/MergeShops/CrulonsWeddingMerge.cs",
+    "size": 7398,
+    "fileName": "CrulonsWeddingMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/CrulonsWeddingMerge.cs"
   },
   {
     "name": "BonecastleMerge",
