@@ -50,7 +50,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 245690,
+    "size": 245095,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -1327,7 +1327,7 @@
       "khasaanda"
     ],
     "path": "Dailies/LordOfOrder.cs",
-    "size": 10926,
+    "size": 10544,
     "fileName": "LordOfOrder.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/LordOfOrder.cs"
   },
@@ -20857,7 +20857,7 @@
       "seasonal"
     ],
     "path": "Seasonal/Friday13th/TrobbolierPet[mem].cs",
-    "size": 1879,
+    "size": 1678,
     "fileName": "TrobbolierPet[mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Friday13th/TrobbolierPet[mem].cs"
   },
