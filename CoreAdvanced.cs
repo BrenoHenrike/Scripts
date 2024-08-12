@@ -2437,7 +2437,7 @@ public class CoreAdvanced
 
 
                 #region Luck - Val/Smite/Mana - Anima - Vg
-                case "dragonslayer":
+                case "dragonslayer general":
                     type = EnhancementType.Lucky;
 
                     cSpecial = uVainglory()
@@ -2528,7 +2528,7 @@ public class CoreAdvanced
                 case "doomknight":
                 case "dragon knight":
                 case "dragon shinobi":
-                case "dragonslayer general":
+                case "dragonslayer":
                 case "dragonsoul shinobi":
                 case "drakel warlord":
                 case "elemental dracomancer":
