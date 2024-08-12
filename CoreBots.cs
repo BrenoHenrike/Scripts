@@ -1603,55 +1603,36 @@ public class CoreBots
     private int[]? registeredQuests = null;
 
     /// <summary>
-    /// Ensures you are out of combat before accepting the quest
+    /// Ensures the quest is ready for acceptance by handling membership checks,
+    /// unbanking required items, and adding them to the drop pickup list.
     /// </summary>
     /// <param name="questID">ID of the quest to accept</param>
     public bool EnsureAccept(int questID = 0)
     {
-        Quest QuestData = EnsureLoad(questID);
+        Quest questData = EnsureLoad(questID);
 
-        if (QuestData.Upgrade && !IsMember)
-            Logger($"\"{QuestData.Name}\" [{questID}] is member-only, stopping the bot.", stopBot: true);
+        if (questID <= 0 || (questData.Upgrade && !IsMember))
+        {
+            Logger($"\"{questData.Name}\" [{questID}] is member-only or invalid, stopping the bot.", stopBot: true);
+            return false;
+        }
 
         if (Bot.Quests.IsInProgress(questID))
             return true;
 
-        if (questID <= 0)
-            return false;
+        ItemBase[] requiredItems = questData.AcceptRequirements
+            .Concat(questData.Requirements)
+            .Where(item => item != null && !item.Temp && !Bot.Inventory.Items.Any(i => i.ID == item.ID))
+            .ToArray();
 
-        ItemBase[] requiredItems = QuestData.AcceptRequirements.Where(x => !x.Temp)
-                .Concat(QuestData.Requirements.Where(x => !x.Temp))
-                .Where(item => item != null && !string.IsNullOrEmpty(item.Name))
-                .ToArray();
-
-        foreach (ItemBase item in requiredItems.Where(x => !x.Temp))
-        {
-            if (item != null && !Bot.Inventory.Items.Any(i => i.ID == item.ID))
-            {
-                Unbank(item.ID);
-            }
-        }
-
-        foreach (ItemBase item in QuestData.AcceptRequirements.Where(x => !x.Temp))
-        {
-            if (!Bot.Drops.ToPickupIDs.Contains(item.ID))
-            {
-                Bot.Drops.Add(item.ID);
-            }
-        }
-
-        foreach (ItemBase item in QuestData.Requirements.Where(x => !x.Temp))
-        {
-            if (!Bot.Drops.ToPickupIDs.Contains(item.ID))
-            {
-                Bot.Drops.Add(item.ID);
-            }
-        }
+        foreach (ItemBase item in requiredItems)
+            AddDrop(item.ID);
 
         Sleep(ActionDelay * 2);
-        // Bot.Send.Packet($"%xt%zm%acceptQuest%{Bot.Map.RoomID}%{questID}%");
         return Bot.Quests.EnsureAccept(questID);
     }
+
+
 
 
 
