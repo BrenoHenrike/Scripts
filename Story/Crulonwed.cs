@@ -7,7 +7,6 @@ tags: crulonwed, weekly, story
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/CoreDailies.cs
 using Skua.Core.Interfaces;
 
 public class crulonwedding
@@ -21,15 +20,14 @@ public class crulonwedding
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "item1", "Item2", "Etc" });
         Core.SetOptions();
 
-        Example();
+        StoryLine();
 
         Core.SetOptions(false);
     }
 
-    public void Example(bool TestMode = false)
+    public void StoryLine(bool TestMode = false)
     {
 
         if (Core.isCompletedBefore(9850))

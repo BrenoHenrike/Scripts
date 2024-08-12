@@ -6,6 +6,8 @@ tags: crulons, wedding, merge, crulonwed, sandsea, ceremonial, attire, morph, am
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/CoreStory.cs
+//cs_include Scripts/Story/Crulonwed.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
@@ -16,6 +18,7 @@ public class CrulonsWeddingMerge
     private CoreBots Core => CoreBots.Instance;
     private CoreFarms Farm = new();
     private CoreAdvanced Adv = new();
+    private crulonwedding crulonwedding = new();
     private static CoreAdvanced sAdv = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
@@ -45,6 +48,7 @@ public class CrulonsWeddingMerge
         };
         #endregion Useable Monsters
 
+      crulonwedding.StoryLine();
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("crulonwed", 2472, findIngredients, buyOnlyThis, buyMode: buyMode);
 
