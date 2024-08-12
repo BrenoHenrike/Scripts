@@ -56,10 +56,10 @@ public class ShadowslayerSummoningRitual
         foreach (string item in Rewards)
         {
             // Check if we need to move to Quest 2 or if the item is already in the inventory
-            if ((!MovetoQuest2 && Core.CheckInventory(item))
+            if ((!MovetoQuest2 && Core.CheckInventory(item, toInv: false))
                 || (MovetoQuest2 && Core.CheckInventory("Sparkly Shadowslayer Relic")))
             {
-                return;
+                continue;
             }
 
             // Loop to acquire the item or relic
