@@ -27,6 +27,9 @@ public class TrobbolierPet
 
     public void GetAll()
     {
+        if (!Core.IsMember)
+            return;
+
         F13.Wormhole();
 
         List<ItemBase> RewardOptions = Core.EnsureLoad(5067).Rewards;
@@ -36,23 +39,15 @@ public class TrobbolierPet
 
         Core.EquipClass(ClassType.Farm);
 
-        foreach (ItemBase Reward in RewardOptions)
+        while (!Bot.ShouldExit && !Core.CheckInventory(Core.QuestRewards(5067), toInv: false))
         {
-            if (Core.CheckInventory(Reward.Name, toInv: false))
-                continue;
-            Core.FarmingLogger(Reward.Name, 1);
-
-            while (!Bot.ShouldExit && !Core.CheckInventory(Reward.Name))
-            {
-                Core.EnsureAccept(5067);
-                Core.HuntMonster("wormhole", "Blue Trobbolier", "Blue Trobbolier Fluff", 4, false);
-                Core.HuntMonster("wormhole", "Purple Trobbolier", "Purple Trobbolier Fluff", 4, false);
-                Core.HuntMonster("wormhole", "Green Trobbolier", "Green Trobbolier Fluff", 4, false);
-                Core.HuntMonster("wormhole", "Red Trobbolier", "Red Trobbolier Fluff", 4, false);
-                Core.EnsureComplete(5067, Reward.ID);
-                Core.JumpWait();
-                Core.ToBank(Reward.Name);
-            }
+            Core.EnsureAccept(5067);
+            Core.HuntMonster("wormhole", "Blue Trobbolier", "Blue Trobbolier Fluff", 4, false);
+            Core.HuntMonster("wormhole", "Purple Trobbolier", "Purple Trobbolier Fluff", 4, false);
+            Core.HuntMonster("wormhole", "Green Trobbolier", "Green Trobbolier Fluff", 4, false);
+            Core.HuntMonster("wormhole", "Red Trobbolier", "Red Trobbolier Fluff", 4, false);
+            Core.EnsureCompleteChoose(5067);
+            Core.ToBank(Core.QuestRewards(5067));
         }
     }
 }
