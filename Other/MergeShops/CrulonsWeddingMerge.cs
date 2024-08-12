@@ -48,7 +48,7 @@ public class CrulonsWeddingMerge
         };
         #endregion Useable Monsters
 
-      crulonwedding.StoryLine();
+        crulonwedding.StoryLine();
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("crulonwed", 2472, findIngredients, buyOnlyThis, buyMode: buyMode);
 
@@ -74,12 +74,12 @@ public class CrulonsWeddingMerge
 
                 case "Flame Incantation":
                     Core.FarmingLogger(req.Name, quant);
-                    Core.EquipClass(ClassType.Farm);
+                    Core.EquipClass(ClassType.Solo);
                     Core.RegisterQuests(9848);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonsterQuest(9848, new (string? mapName, string? monsterName, ClassType classType)[] {
-        ("djinnguard", UseableMonsters[1], ClassType.Solo) });
+                        Core.HuntMonster("djinnguard", UseableMonsters[1], "Jaan's Flames");
+
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
@@ -91,8 +91,7 @@ public class CrulonsWeddingMerge
                     Core.RegisterQuests(9849);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonsterQuest(9849, new (string? mapName, string? monsterName, ClassType classType)[] {
-        ("towerofmirrors", UseableMonsters[2], ClassType.Farm) });
+                        Core.HuntMonster("towerofmirrors", UseableMonsters[2], "Silver Tincture", 10);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
@@ -100,12 +99,11 @@ public class CrulonsWeddingMerge
 
                 case "Almoravid's Bracer":
                     Core.FarmingLogger(req.Name, quant);
-                    Core.EquipClass(ClassType.Farm);
-                    Core.RegisterQuests(0000);
+                    Core.EquipClass(ClassType.Solo);
+                    Core.RegisterQuests(9850);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonsterQuest(9850, new (string? mapName, string? monsterName, ClassType classType)[] {
-        ("crulonwed", UseableMonsters[0], ClassType.Solo) });
+                        Core.HuntMonster("crulonwed", UseableMonsters[0], "Silver Tincture", 10);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
@@ -117,9 +115,8 @@ public class CrulonsWeddingMerge
                 case "Luminous Soul Blade":
                 case "Desert Bandana":
                 case "Honored Sandsea Guest":
-                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
-                    Core.KillMonster("crulonwed", "r2", "left", UseableMonsters[0], req.Name, req.Quantity, req.Temp);
+                    Core.HuntMonster("crulonwed", UseableMonsters[0], req.Name, req.Quantity, req.Temp);
                     break;
 
             }
