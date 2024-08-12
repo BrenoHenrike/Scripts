@@ -55,18 +55,27 @@ public class ShadowslayerSummoningRitual
 
         foreach (string item in Rewards)
         {
-            if (!MovetoQuest2 && Core.CheckInventory(item) || Core.CheckInventory("Sparkly Shadowslayer Relic") && MovetoQuest2)
+            // Check if we need to move to Quest 2 or if the item is already in the inventory
+            if ((!MovetoQuest2 && Core.CheckInventory(item))
+                || (MovetoQuest2 && Core.CheckInventory("Sparkly Shadowslayer Relic")))
+            {
                 return;
+            }
 
-            while (!Bot.ShouldExit && !MovetoQuest2 && Core.CheckInventory(item, toInv: false) || Core.CheckInventory("Sparkly Shadowslayer Relic") && MovetoQuest2)
+            // Loop to acquire the item or relic
+            while (!Bot.ShouldExit
+                && ((!MovetoQuest2 && !Core.CheckInventory(item, toInv: false))
+                    || (MovetoQuest2 && !Core.CheckInventory("Sparkly Shadowslayer Relic"))))
             {
                 Core.Logger($"Getting {item}. Rewards Left: {Rewards.Length - count} more item" + ((Rewards.Length - count) > 1 ? "s" : ""));
                 Core.EnsureAccept(8835);
+
                 Scroll.BuyScroll(Scrolls.SpiritRend, 30);
                 Scroll.BuyScroll(Scrolls.Eclipse, 15);
                 Scroll.BuyScroll(Scrolls.BlessedShard, 30);
 
                 Core.AddDrop("Meat Ration", "Grain Ration", "Dairy Ration");
+
                 while (!Bot.ShouldExit && !Core.CheckInventory("Meat Ration"))
                 {
                     Core.EnsureAccept(8263);
@@ -95,8 +104,8 @@ public class ShadowslayerSummoningRitual
                 Core.ToBank(item);
             }
 
-            //Aandon unneeded quests
-            int[] AbandonThese = new[] { 2309, 2317, 8263, 8264, 8265, 8835 };
+            // Abandon unnecessary quests
+            int[] AbandonThese = { 2309, 2317, 8263, 8264, 8265, 8835 };
             Bot.Quests.UnregisterQuests(AbandonThese);
             Core.AbandonQuest(AbandonThese);
         }
