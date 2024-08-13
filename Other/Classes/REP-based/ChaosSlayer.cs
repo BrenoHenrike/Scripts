@@ -39,7 +39,7 @@ public class ChaosSlayer
 
     public void GetCS(CSvariant variant = CSvariant.Mystic, bool rankUpClass = true)
     {
-        if (Core.CheckInventory(Variants))
+        if (Core.CheckInventory(Variants, toInv: false))
         {
             if (rankUpClass)
                 Adv.RankUpClass($"Chaos Slayer {variant}");

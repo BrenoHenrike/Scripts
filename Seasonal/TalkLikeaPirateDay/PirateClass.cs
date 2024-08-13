@@ -32,7 +32,14 @@ public class PirateClass
 
     public void GetPirate(bool rankUpClass = true)
     {
-        if (Core.CheckInventory("Classic Pirate") || !Core.isSeasonalMapActive("blazebeard"))
+        if (Core.CheckInventory(new[] { "Classic Pirate", "Pirate" }, any: true))
+        {
+            if (rankUpClass)
+                Adv.RankUpClass(Core.CheckInventory("Classic Pirate") ? "Classic Pirate" : "Pirate");
+            return;
+        }
+
+        if (!Core.isSeasonalMapActive("blazebeard"))
             return;
 
         BBM.BuyAllMerge("Pirate");
