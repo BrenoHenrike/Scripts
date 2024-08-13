@@ -762,11 +762,12 @@ public class CoreFarmerJoe
             }
         }
 
-        if (Core.CheckInventory(Core.CheckInventory("Ninja (Rare)") ? "Ninja (Rare)" : "Ninja") &&
-            Core.CheckInventory(Core.CheckInventory("Mage (Rare)") ? "Mage (Rare)" : "Mage") &&
+        if (Core.CheckInventory(new[] { "Assassin", "Ninja Warrior", "Ninja" }, any: true) &&
+            Core.CheckInventory(new[] { "Mage (Rare)", "Mage" }, any: true) &&
             Bot.Player.Level >= 30)
         {
             Core.Logger("Acc is lvl 30+, skipping beginner items.");
+            SetClass(true, false, false);
             return;
         }
 
@@ -775,16 +776,17 @@ public class CoreFarmerJoe
 
         Core.Logger("Getting Badges to look a little\n" +
             "more legit (start may take a minute)");
+
         Tutorial.Badges();
 
         Core.Logger("Getting Started: Beginner Levels/Equipment");
 
         Core.Logger("Getting Starter Solo class (Ninja)");
-        if (!Core.CheckInventory(new[] { "Assassin", "Ninja Warrior", "Ninja" }))
+        if (!Core.CheckInventory(new[] { "Assassin", "Ninja Warrior", "Ninja" }, any: true))
             Core.BuyItem("classhalla", 178, "Ninja");
 
         Core.Logger("Getting Starter Farm class (Mage)");
-        if (!Core.CheckInventory("Mage") || Core.CheckInventory("Mage (Rare)"))
+        if (!Core.CheckInventory(new[] { "Mage (Rare)", "Mage" }, any: true))
             Adv.BuyItem("classhalla", 174, 15653, shopItemID: 9845);
 
         if (Bot.Player.Level < 5)
