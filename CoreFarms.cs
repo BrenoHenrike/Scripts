@@ -1264,8 +1264,8 @@ public class CoreFarms
         while (!Bot.ShouldExit && FactionRank("BeastMaster") < rank)
         {
             Core.EnsureAccept(3757);
-            Core.HuntMonster("pyramid", "Golden Scarab", "Gleaming Gems of Containment", 9, log: false);
-            Core.HuntMonster("lair", "Golden Draconian", "Bright Binding of Submission", 8, log: false);
+            Core.HuntMonster("pyramid", "Golden Scarab", "Gleaming Gems of Containment", 16, log: false);
+            Core.HuntMonster("dreamnexus", "Solar Phoenix", "Bright Binding of Submission", 16, log: false);
             Core.EnsureComplete(3757);
         }
         // Core.CancelRegisteredQuests();
