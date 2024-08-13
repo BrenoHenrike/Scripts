@@ -469,7 +469,7 @@ public class AllClasses
             .FirstOrDefault(x => x.Name == className);
 
         // Check if the item is found and if it meets the quantity requirement.
-        if (IsitRank10(rankUpClass))
+        if (!IsitRank10(rankUpClass))
         {
             action();
         }
