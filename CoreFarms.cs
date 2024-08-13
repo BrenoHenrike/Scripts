@@ -1256,10 +1256,10 @@ public class CoreFarms
         }
 
         Core.EquipClass(ClassType.Farm);
+        Experience(50);
         Core.SavedState();
         ToggleBoost(BoostType.Reputation);
         Core.Logger($"Farming rank {rank}");
-
         // Core.RegisterQuests(3757);
         while (!Bot.ShouldExit && FactionRank("BeastMaster") < rank)
         {
