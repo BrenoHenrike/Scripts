@@ -331,13 +331,13 @@ public class AllClasses
     {
         Core.Logger("=== Doing Daily Classes ===");
 
-        BB.GetClass(rankUpClass);
-        Daily.CollectorClass();
-        Cryo.DoCryomancer(rankUpClass);
-        Daily.DeathKnightLord();
-        LOO.GetLoO(rankUpClass);
-        Daily.Pyromancer();
-        Daily.ShadowScytheClass();
+        CheckAndExecute("Pyromancer", Daily.Pyromancer);
+        CheckAndExecute("Blaze Binder", () => BB.GetClass(rankUpClass));
+        CheckAndExecute("Collecter", Daily.CollectorClass);
+        CheckAndExecute("Cryomancer", () => Cryo.DoCryomancer(rankUpClass));
+        CheckAndExecute("Death KnightLord", Daily.DeathKnightLord);
+        CheckAndExecute("Lord of Order", () => LOO.GetLoO(rankUpClass));
+        CheckAndExecute("ShadowScythe General", Daily.ShadowScytheClass);
 
         Core.Logger("=== Daily Classes - Completed! ===");
     }
@@ -346,23 +346,23 @@ public class AllClasses
     {
         Core.Logger("=== Doing Reputation Classes ===");
 
-        Arach.GetArach(rankUpClass);
-        CS.GetCS(CSvariant.Mystic, rankUpClass);
-        DBSK.GetDSK(rankUpClass);
-        ED.GetClass(rankUpClass);
-        EI.GetEI(rankUpClass);
-        ES.GetES(rankUpClass);
-        GB.GetGB(rankUpClass);
-        HE.GetHE(rankUpClass);
-        IC.GetIC(rankUpClass);
-        Lycan.GetLycan(rankUpClass);
-        MR.GetMR(rankUpClass);
-        Pal.GetPaladin(rankUpClass);
-        RBM.GetRBM(rankUpClass);
-        Shaman.GetShaman(rankUpClass);
-        SC.GetSC(rankUpClass);
-        TOH.GetToH(rankUpClass);
-        TS.GetTS(rankUpClass);
+        CheckAndExecute("Arachnomancer", () => Arach.GetArach(rankUpClass));
+        CheckAndExecute("Darkblood StormKing", () => CS.GetCS(CSvariant.Mystic, rankUpClass));
+        CheckAndExecute("Elemental Dracomancer", () => DBSK.GetDSK(rankUpClass));
+        CheckAndExecute("Eternal Inversionist", () => ED.GetClass(rankUpClass));
+        CheckAndExecute("Evolved Shaman", () => EI.GetEI(rankUpClass));
+        CheckAndExecute("Glacial Berserker", () => ES.GetES(rankUpClass));
+        CheckAndExecute("Horc Evader", () => GB.GetGB(rankUpClass));
+        CheckAndExecute("Imperial Chunin", () => HE.GetHE(rankUpClass));
+        CheckAndExecute("Lycan", () => IC.GetIC(rankUpClass));
+        CheckAndExecute("Master Ranger", () => Lycan.GetLycan(rankUpClass));
+        CheckAndExecute("Paladin", () => MR.GetMR(rankUpClass));
+        CheckAndExecute("Royal BattleMage", () => Pal.GetPaladin(rankUpClass));
+        CheckAndExecute("Shaman", () => RBM.GetRBM(rankUpClass));
+        CheckAndExecute("StoneCrusher", () => Shaman.GetShaman(rankUpClass));
+        CheckAndExecute("Thief of Hours", () => SC.GetSC(rankUpClass));
+        CheckAndExecute("Troll Spellsmith", () => TOH.GetToH(rankUpClass));
+
 
         Core.Logger("=== Reputation Classes - Completed! ===");
     }
@@ -374,20 +374,20 @@ public class AllClasses
 
         Core.Logger("=== Doing Member Classes ===");
 
-        AO.GetAlphaOmega(rankUpClass);
-        Acolyte.GetAcolyte(rankUpClass);
-        Bard.GetBard(rankUpClass);
-        BM.GetBM(rankUpClass);
-        BA.GetBAnc(rankUpClass);
-        BT.Getclass(rankUpClass);
-        CA.GetChronoAss(rankUpClass);
-        DK.GetDK(rankUpClass);
-        DoomK.GetDoomKnight(rankUpClass);
-        DW.GetClass(rankUpClass);
-        LDK.GetLDK(rankUpClass);
-        LEW.GetLEW(rankUpClass);
-        Ren.Getclass(rankUpClass);
-        US.GetUS(rankUpClass);
+        CheckAndExecute("Alpha Omega", () => AO.GetAlphaOmega(rankUpClass));
+        CheckAndExecute("Acolyte", () => Acolyte.GetAcolyte(rankUpClass));
+        CheckAndExecute("Bard", () => Bard.GetBard(rankUpClass));
+        CheckAndExecute("BeastMaster", () => BM.GetBM(rankUpClass));
+        CheckAndExecute("Blood Ancient", () => BA.GetBAnc(rankUpClass));
+        CheckAndExecute("Blood Titan", () => BT.Getclass(rankUpClass));
+        CheckAndExecute("Chrono Assassin", () => CA.GetChronoAss(rankUpClass));
+        CheckAndExecute("DeathKnight", () => DK.GetDK(rankUpClass));
+        CheckAndExecute("DoomKnight", () => DoomK.GetDoomKnight(rankUpClass));
+        CheckAndExecute("Drakel Warlord", () => DW.GetClass(rankUpClass));
+        CheckAndExecute("Legion DoomKnight", () => LDK.GetLDK(rankUpClass));
+        CheckAndExecute("Legendary Elemental Warrior", () => LEW.GetLEW(rankUpClass));
+        CheckAndExecute("Renegade", () => Ren.Getclass(rankUpClass));
+        CheckAndExecute("UndeadSlayer", () => US.GetUS(rankUpClass));
 
         Core.Logger("=== Member Classes - Completed! ===");
     }
@@ -396,17 +396,17 @@ public class AllClasses
     {
         Core.Logger("=== Doing Seasonal Classes ===");
 
-        APir.GetAlphaPirate(rankUpClass);
-        DL.GetDL(rankUpClass);
-        EL.GetClass(rankUpClass);
-        EH.GetEH(rankUpClass);
-        FB.GetFB(rankUpClass);
-        LSMA.GetClass(rankUpClass);
-        NM.GetNlMonk(rankUpClass);
-        Pirate.GetPirate(rankUpClass);
-        SDS.GetClass(rankUpClass);
-        PL.GetClass(rankUpClass);
-        VL.GetClass(rankUpClass);
+        CheckAndExecute("Alpha Pirate", () => APir.GetAlphaPirate(rankUpClass));
+        CheckAndExecute("Dark Lord", () => DL.GetDL(rankUpClass));
+        CheckAndExecute("Evolved Leprechaun", () => EL.GetClass(rankUpClass));
+        CheckAndExecute("Exalted Harbinger", () => EH.GetEH(rankUpClass));
+        CheckAndExecute("Frostval Barbarian", () => FB.GetFB(rankUpClass));
+        CheckAndExecute("Legion SwordMaster Assassin", () => LSMA.GetClass(rankUpClass));
+        CheckAndExecute("Northlands Monk", () => NM.GetNlMonk(rankUpClass));
+        CheckAndExecute("Pirate", () => Pirate.GetPirate(rankUpClass));
+        CheckAndExecute("Shadow Dragon Shinobi", () => SDS.GetClass(rankUpClass));
+        CheckAndExecute("Pumpkin Lord", () => PL.GetClass(rankUpClass));
+        CheckAndExecute("Vampire Lord", () => VL.GetClass(rankUpClass));
 
         Core.Logger("=== Seasonal Classes - Completed! ===");
     }
@@ -415,28 +415,29 @@ public class AllClasses
     {
         Core.Logger("=== Doing Various Classes ===");
 
-        AAS.GetAbyssal(rankUpClass);
-        AF.GetArchfiend(rankUpClass);
-        BS.GetBSorc(rankUpClass);
-        DMN.GetClass(rankUpClass);
-        DS.GetDragonslayer(rankUpClass);
-        DSG.GetDSGeneral(rankUpClass);
-        DSS.GetDSS(rankUpClass);
-        Enf.GetClass(rankUpClass);
-        ESC.GetClass(rankUpClass);
-        FSR.GetFSR(rankUpClass);
-        GN.GetGN(rankUpClass);
-        HSC.GetHSC(rankUpClass);
-        ILDC.GetILDC(rankUpClass);
-        LM.GetLM(rankUpClass);
-        MJ.GetMJ(rankUpClass);
-        Necro.GetNecromancer(rankUpClass);
-        NMN.GetClass(rankUpClass);
-        PS.GetPS(rankUpClass);
-        RB.GetRustbucket(rankUpClass);
-        SS.GetSSorc(rankUpClass);
-        SCG.GetSCG(rankUpClass);
-        SM.GetSwordMaster(rankUpClass);
+        CheckAndExecute("Abyssal Angel Shadow", () => AAS.GetAbyssal(rankUpClass));
+        CheckAndExecute("Archfiend", () => AF.GetArchfiend(rankUpClass));
+        CheckAndExecute("Blood Sorceress", () => BS.GetBSorc(rankUpClass));
+        CheckAndExecute("Doom Metal Necro", () => DMN.GetClass(rankUpClass));
+        CheckAndExecute("Dragonslayer", () => DS.GetDragonslayer(rankUpClass));
+        CheckAndExecute("Dragonslayer General", () => DSG.GetDSGeneral(rankUpClass));
+        CheckAndExecute("DragonSoul Shinobi", () => DSS.GetDSS(rankUpClass));
+        CheckAndExecute("Enforcer", () => Enf.GetClass(rankUpClass));
+        CheckAndExecute("Exalted Soul Cleaver", () => ESC.GetClass(rankUpClass));
+        CheckAndExecute("Frost SpititReaver", () => FSR.GetFSR(rankUpClass));
+        CheckAndExecute("Grim Necromancer", () => GN.GetGN(rankUpClass));
+        CheckAndExecute("HighSeas Commander", () => HSC.GetHSC(rankUpClass));
+        CheckAndExecute("Infinite Legion Dark Caster", () => ILDC.GetILDC(rankUpClass));
+        CheckAndExecute("LightMage", () => LM.GetLM(rankUpClass));
+        CheckAndExecute("MechaJouster", () => MJ.GetMJ(rankUpClass));
+        CheckAndExecute("Necromancer", () => Necro.GetNecromancer(rankUpClass));
+        CheckAndExecute("Neo Metal Necro", () => NMN.GetClass(rankUpClass));
+        CheckAndExecute("ProtoSartorium", () => PS.GetPS(rankUpClass));
+        CheckAndExecute("Rustbucket", () => RB.GetRustbucket(rankUpClass));
+        CheckAndExecute("Scarlet Sorceress", () => SS.GetSSorc(rankUpClass));
+        CheckAndExecute("SkyCharged Grenadier", () => SCG.GetSCG(rankUpClass));
+        CheckAndExecute("SwordMaster", () => SM.GetSwordMaster(rankUpClass));
+
 
         Core.Logger("=== Various Classes - Completed! ===");
     }
@@ -445,18 +446,35 @@ public class AllClasses
     {
         Core.Logger("=== Doing End Game Classes ===");
 
-        AI.GetAI(rankUpClass);
-        AM.GetAM(rankUpClass);
-        AP.GetAP(rankUpClass);
-        CAV.GetClass(rankUpClass);
-        DOT.GetDoT(rankUpClass, doExtra: false);
-        LC.GetLC(rankUpClass);
-        LR.GetLR(rankUpClass);
-        VDK.GetClass(rankUpClass);
-        VHL.GetVHL(rankUpClass);
-        YNR.GetYnR(rankUpClass);
-
+        CheckAndExecute("Arcana Invoker", () => AI.GetAI(rankUpClass));
+        CheckAndExecute("Archmage", () => AM.GetAM(rankUpClass));
+        CheckAndExecute("ArchPaladin", () => AP.GetAP(rankUpClass));
+        CheckAndExecute("Chaos Avenger", () => CAV.GetClass(rankUpClass));
+        CheckAndExecute("Dragon of Time", () => DOT.GetDoT(rankUpClass, doExtra: false));
+        CheckAndExecute("LightCaster", () => LC.GetLC(rankUpClass));
+        CheckAndExecute("Legion Revenant", () => LR.GetLR(rankUpClass));
+        CheckAndExecute("Verus DoomKnight", () => VDK.GetClass(rankUpClass));
+        CheckAndExecute("Void Highlord", () => VHL.GetVHL(rankUpClass));
+        CheckAndExecute("Yami no Ronin", () => YNR.GetYnR(rankUpClass));
 
         Core.Logger("=== End Game Classes - Completed! ===");
     }
+
+    bool IsitRank10(ItemBase item) => item != null && item.Quantity == 302500;
+
+    void CheckAndExecute(string className, Action action)
+    {
+        // Find the item in both inventory and bank.
+        ItemBase rankUpClass = Bot.Inventory.Items.Concat(Bot.Bank.Items)
+            .FirstOrDefault(x => x.Name == className);
+
+        // Check if the item is found and if it meets the quantity requirement.
+        if (IsitRank10(rankUpClass))
+        {
+            action();
+        }
+        // If item is not found or does not meet the requirement, action() will not be called.
+    }
+
+
 }
