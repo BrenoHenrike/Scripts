@@ -331,9 +331,8 @@ public class AllClasses
     {
         Core.Logger("=== Doing Daily Classes ===");
 
-        CheckAndExecute("Pyromancer", Daily.Pyromancer);
         CheckAndExecute("Blaze Binder", () => BB.GetClass(rankUpClass));
-        CheckAndExecute("Collecter", Daily.CollectorClass);
+        CheckAndExecute("The Collector", Daily.CollectorClass);
         CheckAndExecute("Cryomancer", () => Cryo.DoCryomancer(rankUpClass));
         CheckAndExecute("Death KnightLord", Daily.DeathKnightLord);
         CheckAndExecute("Lord of Order", () => LOO.GetLoO(rankUpClass));
