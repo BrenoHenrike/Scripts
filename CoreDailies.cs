@@ -431,7 +431,7 @@ public class CoreDailies
     {
         Core.Logger("Daily: The Collector Class");
         //30229 is the ac, 30250 is the non-ac
-        if (Core.CheckInventory(new[] { 30250 }, any: true, toInv: false))
+        if (Core.CheckInventory(new[] { 30229, 30250 }, any: true, toInv: false))
         {
             Core.Logger("You already own The Collector. Skipped");
             return;
