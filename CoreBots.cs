@@ -1649,8 +1649,11 @@ public class CoreBots
             }
         }
 
-        Sleep(ActionDelay * 2);
+        // Sleep(ActionDelay * 2);
+        Bot.Wait.ForActionCooldown(GameActions.AcceptQuest);
         // Bot.Send.Packet($"%xt%zm%acceptQuest%{Bot.Map.RoomID}%{questID}%");
+        if (Bot.Quests.Active.Any(x => x.ID == questID))
+            return true;
         return Bot.Quests.EnsureAccept(questID);
     }
 
@@ -1750,7 +1753,7 @@ public class CoreBots
 
         Quest questData = EnsureLoad(questID);
 
-        Bot.Wait.ForTrue(() => Bot.Quests.Tree.Contains(questData), 20);
+        // Bot.Wait.ForTrue(() => questData != null, 20);
 
         if (questData != null && questData.Requirements != null
                         && (!questData.Requirements.Any()
@@ -2079,7 +2082,8 @@ public class CoreBots
         if (item != null && !isTemp)
             AddDrop(item);
 
-        Join(map, cell, pad, publicRoom: publicRoom);
+        if (Bot.Map.Name != map)
+            Join(map, cell, pad, publicRoom: publicRoom);
         Bot.Wait.ForActionCooldown(GameActions.Transfer);
         if (Bot.Player.Cell != cell)
             Jump(cell, pad);
