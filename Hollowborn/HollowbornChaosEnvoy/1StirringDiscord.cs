@@ -30,18 +30,18 @@ public class HBCE1
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
-    private CoreHollowbornChaosEnvoy HBCE = new();
-    private static CoreHollowbornChaosEnvoy sHBCE = new();
+    static private CoreHollowbornChaosEnvoy HBCE = new();
+    static private CoreHollowbornChaosEnvoy sHBCE = new();
 
     public string OptionsStorage = sHBCE.OptionsStorage;
-    public bool DontPreconfigure = false;
+    public bool DontPreconfigure = true;
     public List<IOption> Options = sHBCE.Options;
 
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
 
-        HBCE.StirringDiscord(Bot.Config!.Get<CoreHollowbornChaosEnvoy.StirringDiscordRewards >("Stirring Discord"));
+        HBCE.StirringDiscord(Bot.Config!.Get<CoreHollowbornChaosEnvoy.StirringDiscordRewards>("Stirring Discord"));
 
         Core.SetOptions(false);
     }

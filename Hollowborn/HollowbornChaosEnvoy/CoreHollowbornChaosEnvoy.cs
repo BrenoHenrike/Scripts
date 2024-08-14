@@ -47,21 +47,15 @@ public class CoreHollowbornChaosEnvoy
     public bool DontPreconfigure = true;
     public List<IOption> Options = new()
     {
-        new Option<bool>(
-            "getAll", "Get all items",
-            "Some quests need to be done multiple times in order to get everything, "+
-            "if true the bot will continue until it has everything from that quest before moving on" +
-            "\nRecommended setting: True",
-            true),
-            new Option<bool>("BankAfter", "Bank Rewards", "bank Rewards after", true),
-            CoreBots.Instance.SkipOptions,
-
             new Option<StirringDiscordRewards>("Stirring Discord", "Stirring Discord Reward", "Reward Selection for Stirring Discord", StirringDiscordRewards.None),
             new Option<InTheBeastsShadowRewards>("In The Beasts Shadow", "In The Beasts Shadow Reward", "Reward Selection for Stirring Discord", InTheBeastsShadowRewards.None),
             new Option<UniqueQuarryRewards>("Unique Quarry", "Unique Quarry Reward", "Reward Selection for Stirring Discord", UniqueQuarryRewards.None),
             new Option<WaveringIllusionsRewards>("Wavering Illusions", "Wavering Illusions Reward", "Reward Selection for Stirring Discord", WaveringIllusionsRewards.None),
             new Option<ShadowsOfDisdainRewards>("Shadows Of Disdain", "Shadows Of Disdain Reward", "Reward Selection for Stirring Discord", ShadowsOfDisdainRewards.None),
             new Option<PersistingMayhemRewards>("Persisting Mayhem", "Persisting Mayhem Reward", "Reward Selection for Stirring Discord", PersistingMayhemRewards.None),
+            new Option<bool>("getAll", "Get all items", "Some quests need to be done multiple times in order to get everything, if true the bot will continue until it has everything from that quest before moving on. Recommended setting: True", true),
+            new Option<bool>("BankAfter", "Bank Rewards", "bank Rewards after", true),
+            CoreBots.Instance.SkipOptions,
     };
 
     public void ScriptMain(IScriptInterface Bot)

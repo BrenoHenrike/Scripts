@@ -34,7 +34,7 @@ public class HBCE6
     private static CoreHollowbornChaosEnvoy sHBCE = new();
     
     public string OptionsStorage = sHBCE.OptionsStorage;
-    public bool DontPreconfigure = false;
+    public bool DontPreconfigure = true;
     public List<IOption> Options = sHBCE.Options;
     
 
