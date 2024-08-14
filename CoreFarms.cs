@@ -272,50 +272,12 @@ public class CoreFarms
             Core.CancelRegisteredQuests();
         }
 
+        if (Bot.Player.Level < 30)
+        {UndeadGiantUnlock();
+        Core.RegisterQuests(178);
         while (!Bot.ShouldExit && Bot.Player.Level < 30)
-        {
-            //i swear this is active yearround for a black friday "locked" quest according to the wiki.. keep undead warrior as a backup.. undead giant is slower but will work till we find a fillin - perhaps sluethhouseinn? used to be good years ago
-            //piggydrake quest
-            if (Bot.Quests.IsAvailable(6979))
-            {
-                Core.EquipClass(ClassType.Solo);
-                Core.RegisterQuests(6979);
-                while (!Bot.ShouldExit && Bot.Player.Level < 30)
-                {
-                    Core.Join("prison", "Tax", "Left");
-
-                    if (Bot.Player.Cell != "Tax")
-                    {
-                        Core.Jump("Tax");
-                        Core.Sleep();
-                        Bot.Wait.ForCellChange("Tax");
-                    }
-
-                    while (!Bot.ShouldExit && Bot.Player.Level < 30)
-                    {
-                        Bot.Kill.Monster(7);
-
-                        while (Bot.Player.Cell != "Tax")
-                        {
-                            Core.Jump("Tax");
-                            Core.Sleep();
-                        }
-
-                        if (Bot.Player.Level >= 30)
-                            break;
-                    }
-                }
-                Core.CancelRegisteredQuests();
-            }
-            else
-            {
-                UndeadGiantUnlock();
-                Core.RegisterQuests(178);
-                while (!Bot.ShouldExit && Bot.Player.Level < 30)
-                    Core.HuntMonster("swordhavenundead", "Undead Giant", log: false);
-                Core.CancelRegisteredQuests();
-            }
-        }
+            Core.HuntMonster("swordhavenundead", "Undead Giant", log: false);
+        Core.CancelRegisteredQuests();}
 
         FireWarxp(40);
 
