@@ -286,6 +286,11 @@ public class CoreBots
                     if (AntiLag)
                     {
                         Bot.Options.LagKiller = true;
+                        Bot.Lite.DisableMonsterAnimation = true;
+                        Bot.Lite.DisableSelfAnimation = true;
+                        Bot.Lite.FreezeMonsterPosition = true;
+                        Bot.Lite.DisableWeaponAnimation = true;
+                        Bot.Lite.HidePlayers = true;
                         Bot.Flash.SetGameObject("stage.frameRate", 10);
                         if (!Bot.Flash.GetGameObject<bool>("ui.monsterIcon.redX.visible"))
                             Bot.Flash.CallGameFunction("world.toggleMonsters");
