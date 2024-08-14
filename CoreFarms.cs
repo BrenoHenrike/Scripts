@@ -168,11 +168,10 @@ public class CoreFarms
             QuestIDs.Add(q);
         }
         #endregion
-
         Core.RegisterQuests(QuestIDs.ToArray());
         while (!Bot.ShouldExit && Bot.Player.Gold < goldQuant)
         {
-            Core.KillMonster("sewerpink", "Sewer2", "Left", "Pink Rat", "Love Reagent", 12, log: false);
+            Core.KillMonster("sewerpink", "Sewer2", "Left", "Pink Rat", log: false);
         }
         Core.CancelRegisteredQuests();
         Core.SavedState(false);
