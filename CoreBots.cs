@@ -1758,7 +1758,8 @@ public class CoreBots
         if (questData != null && questData.Requirements != null
                         && (!questData.Requirements.Any()
                         || questData.Requirements.All(r => r != null && r.ID > 0)
-                        && CheckInventory(questData.Requirements.Select(x => x.ID).ToArray())))
+                        && CheckInventory(questData.Requirements.Select(x => x.ID).ToArray())
+                        && CheckInventory(questData.AcceptRequirements.Select(x => x.ID).ToArray())))
         {
             return Bot.Quests.EnsureComplete(questID, itemID);
         }
@@ -1779,7 +1780,8 @@ public class CoreBots
 
         foreach (Quest questID in questData)
         {
-            EnsureLoad(questID.ID);
+            if (questData == null)
+                EnsureLoad(questID.ID);
 
             if (questData != null && questID.Requirements != null
                 && (!questID.Requirements.Any()
@@ -1787,7 +1789,7 @@ public class CoreBots
                 && CheckInventory(questID.Requirements.Select(x => x.ID).ToArray())))
             {
                 Bot.Quests.EnsureComplete(questID.ID);
-                Sleep();
+                Bot.Wait.ForActionCooldown(GameActions.TryQuestComplete);
             }
         }
     }
