@@ -1609,26 +1609,48 @@ public class CoreBots
     /// <param name="questID">ID of the quest to accept</param>
     public bool EnsureAccept(int questID = 0)
     {
-        Quest questData = EnsureLoad(questID);
+        Quest QuestData = EnsureLoad(questID);
 
-        if (questID <= 0 || (questData.Upgrade && !IsMember))
-        {
-            Logger($"\"{questData.Name}\" [{questID}] is member-only or invalid, stopping the bot.", stopBot: true);
-            return false;
-        }
+        if (QuestData.Upgrade && !IsMember)
+            Logger($"\"{QuestData.Name}\" [{questID}] is member-only, stopping the bot.", stopBot: true);
 
         if (Bot.Quests.IsInProgress(questID))
             return true;
 
-        ItemBase[] requiredItems = questData.AcceptRequirements
-            .Concat(questData.Requirements)
-            .Where(item => item != null && !item.Temp && !Bot.Inventory.Items.Any(i => i.ID == item.ID))
-            .ToArray();
+        if (questID <= 0)
+            return false;
 
-        foreach (ItemBase item in requiredItems)
-            AddDrop(item.ID);
+        ItemBase[] requiredItems = QuestData.AcceptRequirements.Where(x => !x.Temp)
+                .Concat(QuestData.Requirements.Where(x => !x.Temp))
+                .Where(item => item != null && !string.IsNullOrEmpty(item.Name))
+                .ToArray();
+
+        foreach (ItemBase item in requiredItems.Where(x => !x.Temp))
+        {
+            if (item != null && !Bot.Inventory.Items.Any(i => i.ID == item.ID))
+            {
+                Unbank(item.ID);
+            }
+        }
+
+        foreach (ItemBase item in QuestData.AcceptRequirements.Where(x => !x.Temp))
+        {
+            if (!Bot.Drops.ToPickupIDs.Contains(item.ID))
+            {
+                Bot.Drops.Add(item.ID);
+            }
+        }
+
+        foreach (ItemBase item in QuestData.Requirements.Where(x => !x.Temp))
+        {
+            if (!Bot.Drops.ToPickupIDs.Contains(item.ID))
+            {
+                Bot.Drops.Add(item.ID);
+            }
+        }
 
         Sleep(ActionDelay * 2);
+        // Bot.Send.Packet($"%xt%zm%acceptQuest%{Bot.Map.RoomID}%{questID}%");
         return Bot.Quests.EnsureAccept(questID);
     }
 
@@ -4665,14 +4687,9 @@ public class CoreBots
 
             #region baconcat.. is annoying
             case "baconcat":
-                Bot.Quests.UpdateQuest(5108);
+                // Bot.Quests.UpdateQuest(5108);
                 JumpWait();
                 map = strippedMap + "-999999";
-                // if (!isCompletedBefore(5087))
-                //     cell = "Enter";
-                // if (!isCompletedBefore(5089))
-                //     cell = "Enter2";
-                // else cell = "Enter3";
                 tryJoin();
                 Bot.Wait.ForCellChange(cell);
                 break;
