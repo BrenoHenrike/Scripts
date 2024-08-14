@@ -78,8 +78,6 @@ public class EnoughDOOMforanArchfiend
         Core.HuntMonster("evilwardage", "Klunk", "Essence of Klunk", isTemp: false);
 
         //Quest Turnin
-        if (!Bot.Quests.CanComplete(5260))
-            Core.Relogin();
         Core.ChainComplete(5260);
         Bot.Wait.ForPickup("ArchFiend DoomLord");
     }
