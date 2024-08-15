@@ -143,6 +143,7 @@ tags: null
 //cs_include Scripts/Story/DjinnGate.cs
 //cs_include Scripts/Other/Weapons/FortitudeAndHubris.cs
 //cs_include Scripts/Other/Weapons/ExaltedApotheosisPreReqs.cs
+//cs_include Scripts/Story/Mazumi.cs
 
 
 using Skua.Core.Interfaces;

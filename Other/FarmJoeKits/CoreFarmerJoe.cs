@@ -142,6 +142,7 @@ tags: null
 //cs_include Scripts/Story/DjinnGate.cs
 //cs_include Scripts/Other/Weapons/FortitudeAndHubris.cs
 //cs_include Scripts/Other/Weapons/ExaltedApotheosisPreReqs.cs
+//cs_include Scripts/Story/Mazumi.cs
 
 
 
@@ -202,6 +203,7 @@ public class CoreFarmerJoe
     public Tutorial Tutorial = new();
     public CelestialArenaQuests CAQ = new();
     public GlaceraStory GS = new();
+    public Mazumi Mazumi = new();
 
 
 
@@ -211,14 +213,17 @@ public class CoreFarmerJoe
     {
         new Option<bool>("OutFit", "Get a Pre-Made Outfit, Curtious of the Community", "We are farmers, bum ba dum bum bum bum bum", false),
         new Option<bool>("EquipOutfit", "Equip outfit at the end?", "Yay or Nay", false),
+        new Option<bool>("SellStarterClasses", "SellStarterClasses", "Yay or Nay", false),
         new Option<PetChoice>("PetChoice", "Choose Your Pet", "Extra stuff to choose, if you have any suggestions -form in disc, and put it under request. or dm Tato(the retarded one on disc)", PetChoice.None),
         CoreBots.Instance.SkipOptions,
     };
 
     public static void ScriptMain(IScriptInterface bot) => Core.RunCore();
     #region InvClasses
-    // private readonly InventoryItem? ClassNinja = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == (Core.CheckInventory("Ninja (Rare)") ? "Ninja (Rare)" : "Ninja").ToLower().Trim() && i.Category == ItemCategory.Class);
-    // private readonly InventoryItem? ClassMage = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == (Core.CheckInventory("Mage (Rare)") ? "Mage(Rare)" : "Mage").ToLower().Trim() && i.Category == ItemCategory.Class);
+
+    private readonly InventoryItem? ClassNinja = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == (Core.CheckInventory("Ninja (Rare)") ? "Ninja (Rare)" : "Ninja").ToLower().Trim() && i.Category == ItemCategory.Class);
+    private readonly InventoryItem? ClassRogue = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == (Core.CheckInventory("Rogue (Rare)") ? "Rogue (Rare)" : "Rogue").ToLower().Trim() && i.Category == ItemCategory.Class);
+    private readonly InventoryItem? ClassMage = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == (Core.CheckInventory("Mage (Rare)") ? "Mage(Rare)" : "Mage").ToLower().Trim() && i.Category == ItemCategory.Class);
     private readonly InventoryItem? ClassMasterRanger = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == "Master Ranger".ToLower().Trim() && i.Category == ItemCategory.Class || Bot.Bank.Contains(i.Name) && i.Name != null);
     private readonly InventoryItem? ClassShaman = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == "Shaman".ToLower().Trim() && i.Category == ItemCategory.Class || Bot.Bank.Contains(i.Name) && i.Name != null);
     private readonly InventoryItem? ClassScarletSorceress = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == "Scarlet Sorceress".ToLower().Trim() && i.Category == ItemCategory.Class || Bot.Bank.Contains(i.Name) && i.Name != null);
@@ -296,6 +301,9 @@ public class CoreFarmerJoe
                     Adv.HasMinimalBoost(GenericGearBoost.exp, 25) &&
                     Core.CheckInventory("Master Ranger") && ClassMasterRanger?.Quantity == 302500)
                     {
+                        if (Bot.Config.Get<bool>("SellStarterClasses"))
+                            Core.SellItem("Mage", all: true);
+
                         Core.Logger("Items owned: \"Awethur's Accoutrements\", \"Master Ranger\" continuing");
                         continue;
                     }
@@ -384,6 +392,9 @@ public class CoreFarmerJoe
                     if (Bot.Player.Level >= Level &&
                     Core.CheckInventory("Blaze Binder") && ClassBlazeBinder?.Quantity == 302500)
                     {
+                        if (Bot.Config.Get<bool>("SellStarterClasses"))
+                            Core.SellItem("Master Ranger", all: true);
+
                         Core.Logger("Items owned:  \"Blaze Binder\", continuing");
                         continue;
                     }
@@ -780,20 +791,39 @@ public class CoreFarmerJoe
         Tutorial.Badges();
 
         Core.Logger("Getting Started: Beginner Levels/Equipment");
+        Core.Logger("Getting rogue.. so we can get ninja (thers a 10k hp \"boss\" to kill during the \"Hit Job\" quest.)");
+        if (!Core.CheckInventory(new[] { "Rogue (Rare)", "Rogue" }, any: true))
+            Core.BuyItem("classhalla", 172, "Rogue");
+
+        Farm.Experience(10);
+        SetClass(true, false, false);
+
+        if (ClassRogue.Quantity < 12500)
+        {
+            Core.Logger($"Ranking \"Rogue\" to rank 5 ({ClassRogue.Quantity}/12500)");
+            Farm.UndeadGiantUnlock();
+            Core.RegisterQuests(178);
+            while (!Bot.ShouldExit && ClassRogue.Quantity < 12500)
+                Core.HuntMonster("swordhavenundead", "Undead Giant", log: false);
+            Core.CancelRegisteredQuests();
+        }
 
         Core.Logger("Getting Starter Solo class (Ninja)");
         if (!Core.CheckInventory(new[] { "Assassin", "Ninja Warrior", "Ninja" }, any: true))
+        {
+            Core.Logger("Lower lvls will die during these  quests, but it will work.");
+            //ninja requires a few quets.. its ok tho
+            SetClass(true, false, false);
+            Mazumi.MazumiQuests();
             Core.BuyItem("classhalla", 178, "Ninja");
+            SetClass(true, false, false);
+        }
 
         Core.Logger("Getting Starter Farm class (Mage)");
         if (!Core.CheckInventory(new[] { "Mage (Rare)", "Mage" }, any: true))
             Adv.BuyItem("classhalla", 174, 15653, shopItemID: 9845);
 
-        if (Bot.Player.Level < 5)
-        {
-            SetClass(true, false, false);
-            Farm.Experience(5);
-        }
+
     }
     #endregion Extra:
 
@@ -812,15 +842,27 @@ public class CoreFarmerJoe
             return;
         }
 
-        string newSoloClass = Core.SoloClass;
-        string newFarmClass = Core.FarmClass;
+        // Arrays of classes to check
+        string[] soloClassesToCheck = new[] {
+            "Void Highlord", "Dragon of Time", "ArchPaladin", "Glacial Berserker", "DragonSoul Shinobi", "Shaman",
+            "Assassin", "Ninja Warrior", "Ninja", "Rogue (Rare)", "Rogue", "Healer (Rare)", "Healer"
+        };
 
-        // if (!Core.CheckInventory("ArchPaladin"))
-        //     soloClassesToCheck = new[] { "ArchPaladin", "Shaman", "Ninja (Rare)", "Ninja", "Healer (Rare)", "Healer" };
-        // else
-        string[] soloClassesToCheck = new[] { "Void Highlord", "Dragon of Time", "ArchPaladin", "Glacial Berserker", "DragonSoul Shinobi", "Shaman", "Assassin", "Ninja Warrior", "Ninja" };
+        string[] farmClassesToCheck = new[] {
+            "Archfiend", "Blaze Binder", "Scarlet Sorceress", "Master Ranger", "Shaman",
+            "Mage (Rare)", "Mage"
+        };
 
-        string[] farmClassesToCheck = new[] { "Archfiend", "Blaze Binder", "Scarlet Sorceress", "Master Ranger", "Shaman", "Mage (Rare)", "Mage" };
+        // Determine new solo class
+        string newSoloClass = Core.SoloClass == "Generic"
+            ? soloClassesToCheck.FirstOrDefault(x => Bot.Inventory.Contains(x)) ?? Core.SoloClass
+            : Core.SoloClass;
+
+        // Determine new farm class
+        string newFarmClass = Core.FarmClass == "Generic"
+            ? farmClassesToCheck.FirstOrDefault(x => Bot.Inventory.Contains(x)) ?? Core.FarmClass
+            : Core.FarmClass;
+
 
         if (swapToSoloClass && (Core.SoloClass == "Generic" || soloClassesToCheck.Contains(Core.SoloClass)))
         {
@@ -834,6 +876,7 @@ public class CoreFarmerJoe
         }
         else
         {
+
             Core.Logger("CBO classes are set, using what you picked.\n" +
             $"Solo: {newSoloClass}, Farm: {newFarmClass}");
             return;
@@ -889,28 +932,38 @@ public class CoreFarmerJoe
     /// <returns>The first valid class found in the inventory, or "Generic" if no valid class is found.</returns>
     private string FindValidClass(string[] classesToCheck, string classType, bool rankUp)
     {
+        ItemBase CurrentClass = Bot.Player.CurrentClass;
         foreach (string className in classesToCheck)
         {
-            if (Core.CheckInventory(className))
+            Core.Logger($"Checking for {classType}: {className}");
+            if (!Core.CheckInventory(className))
+                continue;
+
+            InventoryItem? classItem = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == className.ToLower().Trim() && i.Category == ItemCategory.Class);
+            if (classItem != null)
             {
-                InventoryItem? classItem = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == className.ToLower().Trim() && i.Category == ItemCategory.Class);
-                if (classItem != null && classItem.Quantity != 302500)
+                Core.Logger($"Found {classType}: {className} with quantity: {classItem.Quantity}");
+                if (classItem.Quantity != 302500)
                 {
-                    Core.Logger($"{classType} found: {className}. Quantity: {classItem.Quantity}. {(rankUp ? "Ranking up" : "Not ranking up")} the class...");
+                    Core.Logger($"{classType} is not maxed out. {(rankUp ? "Ranking up" : "No rank up needed")}");
                     if (rankUp)
                         Adv.RankUpClass(classItem.Name);
                     return className;
                 }
                 else
                 {
-                    Core.Logger($"{classType} found: {className}. Quantity: {classItem?.Quantity ?? 0}. No need to rank up.");
+                    Core.Logger($"{classType} is already at maximum rank. Using it without ranking up.");
                     return className;
                 }
             }
+            else
+            {
+                Core.Logger($"Class item for {classType}: {className} is null or not a class.");
+            }
         }
 
-        Core.Logger($"No valid {classType} found. Using default value: Generic");
-        return "Generic"; // Return "Generic" as the default value when no valid class is found.
+        Core.Logger($"No valid {classType} found, Using your current class: \"{Bot.Player.CurrentClass}\"");
+        return CurrentClass.Name; // Return "Player's Current Class" as the default value when no valid class is found.
     }
 
     /// <summary>
