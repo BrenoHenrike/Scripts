@@ -273,11 +273,13 @@ public class CoreFarms
         }
 
         if (Bot.Player.Level < 30)
-        {UndeadGiantUnlock();
-        Core.RegisterQuests(178);
-        while (!Bot.ShouldExit && Bot.Player.Level < 30)
-            Core.HuntMonster("swordhavenundead", "Undead Giant", log: false);
-        Core.CancelRegisteredQuests();}
+        {
+            UndeadGiantUnlock();
+            Core.RegisterQuests(178);
+            while (!Bot.ShouldExit && Bot.Player.Level < 30)
+                Core.HuntMonster("swordhavenundead", "Undead Giant", log: false);
+            Core.CancelRegisteredQuests();
+        }
 
         FireWarxp(40);
 
@@ -3149,17 +3151,19 @@ public class CoreFarms
         Core.SavedState(false);
     }
 
-    private void UndeadGiantUnlock()
+    public void UndeadGiantUnlock()
     {
         Core.Logger("Checking if farming quest is unlocked.");
         if (!Core.isCompletedBefore(178))
         {
             Core.EnsureAccept(183);
-            Core.HuntMonster("portalundead", "Skeletal Fire Mage", "Defeated Fire Mage", 4, log: false);
+            Core.KillMonster("portalundead", "Enter", "Left", "Skeletal Fire Mage", "Defeated Fire Mage", 4, log: false);
             Core.EnsureComplete(183);
+
             Core.EnsureAccept(176);
             Core.HuntMonster("swordhavenundead", "Skeletal Soldier", "Slain Skeletal Soldier", 10, log: false);
             Core.EnsureComplete(176);
+
             Core.EnsureAccept(177);
             Core.HuntMonster("swordhavenundead", "Skeletal Ice Mage", "Frozen Bonehead", 8, log: false);
             Core.EnsureComplete(177);
