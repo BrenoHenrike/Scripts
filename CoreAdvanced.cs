@@ -2573,8 +2573,6 @@ public class CoreAdvanced
                 case "lightmage":
                 case "love caster":
                 case "lycan":
-                case "mage (rare)":
-                case "mage":
                 case "master ranger":
                 case "mechajouster":
                 case "mindbreaker":
@@ -2603,8 +2601,6 @@ public class CoreAdvanced
                 case "pyromancer":
                 case "ranger":
                 case "renegade":
-                case "rogue (rare)":
-                case "rogue":
                 case "rustbucket":
                 case "sakura cryomancer":
                 case "sentinel":
