@@ -17,7 +17,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 119383,
+    "size": 119439,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -50,7 +50,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 246231,
+    "size": 247200,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -1855,7 +1855,7 @@
       "mazumi"
     ],
     "path": "Story/Mazumi.cs",
-    "size": 2046,
+    "size": 1607,
     "fileName": "Mazumi.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Mazumi.cs"
   },
@@ -5666,7 +5666,7 @@
       "gold"
     ],
     "path": "Other/FreeBoosts/FreeBoostsQuest(10mns)[Rng].cs",
-    "size": 3663,
+    "size": 3563,
     "fileName": "FreeBoostsQuest(10mns)[Rng].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FreeBoosts/FreeBoostsQuest(10mns)[Rng].cs"
   },
@@ -9956,7 +9956,7 @@
       "null"
     ],
     "path": "Other/FarmJoeKits/CoreFarmerJoe.cs",
-    "size": 43257,
+    "size": 45523,
     "fileName": "CoreFarmerJoe.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/CoreFarmerJoe.cs"
   },
@@ -9967,7 +9967,7 @@
       "null"
     ],
     "path": "Other/FarmJoeKits/0FarmerJoeDoAll.cs",
-    "size": 7897,
+    "size": 7934,
     "fileName": "0FarmerJoeDoAll.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/0FarmerJoeDoAll.cs"
   },
@@ -9981,7 +9981,7 @@
       "legend"
     ],
     "path": "Other/FarmJoeKits/1MemberFarmsKit.cs",
-    "size": 26992,
+    "size": 27029,
     "fileName": "1MemberFarmsKit.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/1MemberFarmsKit.cs"
   },
