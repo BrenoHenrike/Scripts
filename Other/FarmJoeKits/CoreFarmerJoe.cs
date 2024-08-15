@@ -798,20 +798,16 @@ public class CoreFarmerJoe
         Farm.Experience(10);
         SetClass(true, false, false);
 
-        if (ClassRogue.Quantity < 12500)
+        if (ClassRogue.Quantity < 22500)
         {
-            Core.Logger($"Ranking \"Rogue\" to rank 5 ({ClassRogue.Quantity}/12500)");
-            Farm.UndeadGiantUnlock();
-            Core.RegisterQuests(178);
-            while (!Bot.ShouldExit && ClassRogue.Quantity < 12500)
-                Core.HuntMonster("swordhavenundead", "Undead Giant", log: false);
-            Core.CancelRegisteredQuests();
+            Core.Logger($"Ranking \"Rogue\" to rank 5 ({ClassRogue.Quantity}/22500)");
+            while (!Bot.ShouldExit && ClassRogue.Quantity < 22500)
+                Core.KillMonster("icestormarena", "r4", "right", "*", log: false);
         }
 
         Core.Logger("Getting Starter Solo class (Ninja)");
         if (!Core.CheckInventory(new[] { "Assassin", "Ninja Warrior", "Ninja" }, any: true))
         {
-            Core.Logger("Lower lvls will die during these  quests, but it will work.");
             //ninja requires a few quets.. its ok tho
             SetClass(true, false, false);
             Mazumi.MazumiQuests();
