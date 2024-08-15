@@ -2176,7 +2176,10 @@ public class CoreAdvanced
 
                     type = EnhancementType.Lucky;
                     cSpecial = CapeSpecial.Vainglory;
-                    wSpecial = !uDauntless() ? WeaponSpecial.Valiance : WeaponSpecial.Dauntless;
+                    wSpecial = !uDauntless() ?
+                    (uRavenous() ? WeaponSpecial.Ravenous
+                    : (uValiance() ? WeaponSpecial.Valiance : WeaponSpecial.Forge))
+                    : WeaponSpecial.Dauntless;
                     hSpecial = HelmSpecial.Anima;
                     break;
                 #endregion
