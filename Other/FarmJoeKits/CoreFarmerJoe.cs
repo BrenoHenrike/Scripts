@@ -777,7 +777,7 @@ public class CoreFarmerJoe
             Bot.Player.Level >= 30)
         {
             Core.Logger("Acc is lvl 30+, skipping beginner items.");
-            SetClass(true, false, false);
+            SetClass(true, false, true);
             return;
         }
 
@@ -828,6 +828,7 @@ public class CoreFarmerJoe
         if (!Core.CheckInventory(new[] { "Mage (Rare)", "Mage" }, any: true))
             Adv.BuyItem("classhalla", 174, 15653, shopItemID: 9845);
 
+        SetClass(false, true, true);
 
     }
     #endregion Extra:
