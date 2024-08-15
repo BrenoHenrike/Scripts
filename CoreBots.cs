@@ -2522,7 +2522,12 @@ public class CoreBots
                     Jump(targetMonster.Cell, "Left");
                     Bot.Combat.Attack(targetMonster);
                     Sleep();
+                    if (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant))
+                        break;
                 }
+                if (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant))
+                    break;
+
             }
             JumpWait();
         }
@@ -2599,8 +2604,17 @@ public class CoreBots
                     Jump(targetMonster.Cell, "Left");
                     if (!Bot.Combat.StopAttacking)
                         Bot.Combat.Attack(targetMonster);
+                    if (targetMonster.MaxHP == 1)
+                    {
+                        ded = true;
+                        continue;
+                    }
                     Sleep();
+                    if (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant))
+                        break;
                 }
+                if (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant))
+                    break;
             }
 
             Rest();
@@ -2639,7 +2653,7 @@ public class CoreBots
             ItemBase requirement = quest.Requirements[i];
             (string? mapName, string? monsterName, ClassType classType) = MapMonsterClassPairs[i];
 
-            if (CheckInventory(requirement.Name, requirement.Quantity))
+            if (CheckInventory(requirement.ID, requirement.Quantity))
                 continue;
 
             // Equip the class before hunting
@@ -4185,6 +4199,7 @@ public class CoreBots
         Bot.Options.AttackWithoutTarget = false;
 
         HashSet<string> blackListedCells = Bot.Monsters.MapMonsters.Select(monster => monster.Cell).ToHashSet();
+
         // Check if there are more than one cell that starts with "Enter"
         if (Bot.Map.Cells.Count(cell => cell.StartsWith("Enter")) > 1)
         {
@@ -4208,22 +4223,35 @@ public class CoreBots
             blackListedCells.UnionWith(new List<string> { "Wait", "Blank", "Out", "moveFrame", "CutMikoOrochi", "innitRoom" });
             blackListedCells.UnionWith(Bot.Map.Cells.Where(x => x.StartsWith("Cut")));
 
-            #region AI is Aggressive (always)... or other issues
-            if (Bot.Map.Name == "pyrewatch")
-                blackListedCells.UnionWith(new[] { "r3", "r4", "r5", "r7", "r12" });
-
-            if (Bot.Map.Name == "shadowfall")
-                blackListedCells.UnionWith(new[] { "New6" });
-
-            if (Bot.Map.Name == "wanders")
+            #region Maps with issues
+            switch (Bot.Map.Name)
             {
-                Bot.Map.Jump("Boss", "left", false);
-                Bot.Sleep(2500);
-                blackListedCells.UnionWith(Bot.Player.Cell == "Boss" ? new[] { "r25" } : new[] { "Boss" });
+                case "pyrewatch":
+                    blackListedCells.UnionWith(new[] { "r3", "r4", "r5", "r7", "r12" });
+                    break;
+
+                case "shadowfall":
+                    blackListedCells.UnionWith(new[] { "New6" });
+                    break;
+
+                case "wanders":
+                    Bot.Map.Jump("Boss", "left", false);
+                    Bot.Sleep(2500);
+                    blackListedCells.UnionWith(Bot.Player.Cell == "Boss" ? new[] { "r25" } : new[] { "Boss" });
+                    break;
+
+                case "zephyrus":
+                    blackListedCells.UnionWith(new[] { "R1", "Enter" });
+                    break;
+
+                case "portalundead":
+                    blackListedCells.UnionWith(new[] { "Portal", "Gate" });
+                    break;
+
+                default:
+                    break;
             }
-            if (Bot.Map.Name == "zephyrus")
-                blackListedCells.UnionWith(new[] { "R1", "Enter" });
-            #endregion
+            #endregion Maps with issues
 
             if (!IsMember)
                 blackListedCells.Add("Eggs");
@@ -4581,7 +4609,6 @@ public class CoreBots
                 Jump("m22", "Left");
                 tryJoin();
                 break;
-
 
             case "doomvaultb":
                 SetAchievement(18);
