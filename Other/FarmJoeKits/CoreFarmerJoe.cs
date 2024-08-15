@@ -221,18 +221,18 @@ public class CoreFarmerJoe
     public static void ScriptMain(IScriptInterface bot) => Core.RunCore();
     #region InvClasses
 
-    private readonly InventoryItem? ClassNinja = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == (Core.CheckInventory("Ninja (Rare)") ? "Ninja (Rare)" : "Ninja").ToLower().Trim() && i.Category == ItemCategory.Class);
-    private readonly InventoryItem? ClassRogue = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == (Core.CheckInventory("Rogue (Rare)") ? "Rogue (Rare)" : "Rogue").ToLower().Trim() && i.Category == ItemCategory.Class);
-    private readonly InventoryItem? ClassMage = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == (Core.CheckInventory("Mage (Rare)") ? "Mage(Rare)" : "Mage").ToLower().Trim() && i.Category == ItemCategory.Class);
-    private readonly InventoryItem? ClassMasterRanger = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == "Master Ranger".ToLower().Trim() && i.Category == ItemCategory.Class || Bot.Bank.Contains(i.Name) && i.Name != null);
-    private readonly InventoryItem? ClassShaman = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == "Shaman".ToLower().Trim() && i.Category == ItemCategory.Class || Bot.Bank.Contains(i.Name) && i.Name != null);
-    private readonly InventoryItem? ClassScarletSorceress = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == "Scarlet Sorceress".ToLower().Trim() && i.Category == ItemCategory.Class || Bot.Bank.Contains(i.Name) && i.Name != null);
-    private readonly InventoryItem? ClassBlazeBinder = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == "Blaze Binder".ToLower().Trim() && i.Category == ItemCategory.Class || Bot.Bank.Contains(i.Name) && i.Name != null);
-    private readonly InventoryItem? ClassDragonSoulShinobi = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == "DragonSoul Shinobi".ToLower().Trim() && i.Category == ItemCategory.Class || Bot.Bank.Contains(i.Name) && i.Name != null);
-    private readonly InventoryItem? ClassArchPaladin = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == "ArchPaladin".ToLower().Trim() && i.Category == ItemCategory.Class || Bot.Bank.Contains(i.Name) && i.Name != null);
-    private readonly InventoryItem? ClassArchFiend = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == "ArchFiend".ToLower().Trim() && i.Category == ItemCategory.Class || Bot.Bank.Contains(i.Name) && i.Name != null);
-    private readonly InventoryItem? ClassGlacialBerserker = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == "Glacial Berserker".ToLower().Trim() && i.Category == ItemCategory.Class || Bot.Bank.Contains(i.Name) && i.Name != null);
-    private readonly InventoryItem? ClassDragonofTime = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == "Dragon of Time".ToLower().Trim() && i.Category == ItemCategory.Class || Bot.Bank.Contains(i.Name) && i.Name != null);
+    private readonly InventoryItem? ClassNinja = Bot.Inventory.Items.Concat(Bot.Bank.Items).Find(i => i.Name.ToLower().Trim() == "Ninja".ToLower().Trim() && i.Category == ItemCategory.Class);
+    private readonly InventoryItem? ClassRogue = Bot.Inventory.Items.Concat(Bot.Bank.Items).Find(i => i.Name.ToLower().Trim() == (Core.CheckInventory("Rogue (Rare)", toInv: false) ? "Rogue (Rare)" : "Rogue").ToLower().Trim() && i.Category == ItemCategory.Class);
+    private readonly InventoryItem? ClassMage = Bot.Inventory.Items.Concat(Bot.Bank.Items).Find(i => i.Name.ToLower().Trim() == (Core.CheckInventory("Mage (Rare)", toInv: false) ? "Mage(Rare)" : "Mage").ToLower().Trim() && i.Category == ItemCategory.Class);
+    private readonly InventoryItem? ClassMasterRanger = Bot.Inventory.Items.Concat(Bot.Bank.Items).Find(i => i.Name.ToLower().Trim() == "Master Ranger".ToLower().Trim() && i.Category == ItemCategory.Class && i.Name != null);
+    private readonly InventoryItem? ClassShaman = Bot.Inventory.Items.Concat(Bot.Bank.Items).Find(i => i.Name.ToLower().Trim() == "Shaman".ToLower().Trim() && i.Category == ItemCategory.Class && i.Name != null);
+    private readonly InventoryItem? ClassScarletSorceress = Bot.Inventory.Items.Concat(Bot.Bank.Items).Find(i => i.Name.ToLower().Trim() == "Scarlet Sorceress".ToLower().Trim() && i.Category == ItemCategory.Class && i.Name != null);
+    private readonly InventoryItem? ClassBlazeBinder = Bot.Inventory.Items.Concat(Bot.Bank.Items).Find(i => i.Name.ToLower().Trim() == "Blaze Binder".ToLower().Trim() && i.Category == ItemCategory.Class && i.Name != null);
+    private readonly InventoryItem? ClassDragonSoulShinobi = Bot.Inventory.Items.Concat(Bot.Bank.Items).Find(i => i.Name.ToLower().Trim() == "DragonSoul Shinobi".ToLower().Trim() && i.Category == ItemCategory.Class && i.Name != null);
+    private readonly InventoryItem? ClassArchPaladin = Bot.Inventory.Items.Concat(Bot.Bank.Items).Find(i => i.Name.ToLower().Trim() == "ArchPaladin".ToLower().Trim() && i.Category == ItemCategory.Class && i.Name != null);
+    private readonly InventoryItem? ClassArchFiend = Bot.Inventory.Items.Concat(Bot.Bank.Items).Find(i => i.Name.ToLower().Trim() == "ArchFiend".ToLower().Trim() && i.Category == ItemCategory.Class && i.Name != null);
+    private readonly InventoryItem? ClassGlacialBerserker = Bot.Inventory.Items.Concat(Bot.Bank.Items).Find(i => i.Name.ToLower().Trim() == "Glacial Berserker".ToLower().Trim() && i.Category == ItemCategory.Class && i.Name != null);
+    private readonly InventoryItem? ClassDragonofTime = Bot.Inventory.Items.Concat(Bot.Bank.Items).Find(i => i.Name.ToLower().Trim() == "Dragon of Time".ToLower().Trim() && i.Category == ItemCategory.Class && i.Name != null);
     #endregion InvClasses
     /// <summary>
     /// Executes a sequence of leveling and progression steps including class enhancements, item acquisition, and outfit setup.
@@ -276,8 +276,7 @@ public class CoreFarmerJoe
         }
 
         //safety incase it desyncs.. the relog fuction isnt exactly perfect
-        Core.Logger("Class points may be desynced at Rank 9\n" +
-        "if you are stuck at rank 9, please relog");
+        Core.Logger("Class points may be desynced at Rank 9, if you are stuck at rank 9, please stop the bot & relog if this happens");
     }
 
     /// <summary>
@@ -319,7 +318,7 @@ public class CoreFarmerJoe
                     if (Bot.Player.Level < Level)
                     {
                         SetClass(false, true, true);
-                        Farm.Experience(Level);
+                        Farm.IcestormArena(Level);
                     }
 
                     if (!Core.CheckInventory("Awethur's Accoutrements"))
@@ -344,7 +343,7 @@ public class CoreFarmerJoe
                     if (Bot.Player.Level < Level)
                     {
                         SetClass(false, true, true);
-                        Farm.Experience(Level);
+                        Farm.IcestormArena(Level);
                     }
 
                     if (!Core.CheckInventory("Shaman") || !Core.CheckInventory("ArchPaladin"))
@@ -368,7 +367,7 @@ public class CoreFarmerJoe
                     if (Bot.Player.Level < Level)
                     {
                         SetClass(false, true, true);
-                        Farm.Experience(Level);
+                        Farm.IcestormArena(Level);
                     }
 
                     //check to reduce setclass usage
@@ -412,7 +411,7 @@ public class CoreFarmerJoe
                     if (Bot.Player.Level < Level)
                     {
                         SetClass(false, true, true);
-                        Farm.Experience(Level);
+                        Farm.IcestormArena(Level);
                     }
                     Core.Logger($"Level {Level} done");
                     continue;
@@ -428,7 +427,7 @@ public class CoreFarmerJoe
                     if (Bot.Player.Level < Level)
                     {
                         SetClass(false, true, true);
-                        Farm.Experience(Level);
+                        Farm.IcestormArena(Level);
                     }
 
                     if (!Core.CheckInventory("DragonSoul Shinobi") || !Core.CheckInventory("ArchPaladin"))
@@ -800,9 +799,19 @@ public class CoreFarmerJoe
 
         if (ClassRogue.Quantity < 22500)
         {
+            bool HasEnh = false;
+            Core.RegisterQuests(6628);
             Core.Logger($"Ranking \"Rogue\" to rank 5 ({ClassRogue.Quantity}/22500)");
             while (!Bot.ShouldExit && ClassRogue.Quantity < 22500)
-                Core.KillMonster("icestormarena", "r4", "right", "*", log: false);
+            {
+                if (Bot.Player.Level > 20 && !HasEnh)
+                {
+                    SetClass(true, false, false);
+                    HasEnh = true;
+                }
+                Core.KillMonster("icestormarena", Bot.Player.Level < 20 ? "r4" : "r5", "right", "*", log: false);
+            }
+            Core.CancelRegisteredQuests();
         }
 
         Core.Logger("Getting Starter Solo class (Ninja)");
@@ -812,7 +821,7 @@ public class CoreFarmerJoe
             SetClass(true, false, false);
             Mazumi.MazumiQuests();
             Core.BuyItem("classhalla", 178, "Ninja");
-            SetClass(true, false, false);
+            SetClass(true, false, true);
         }
 
         Core.Logger("Getting Starter Farm class (Mage)");
@@ -935,13 +944,13 @@ public class CoreFarmerJoe
             if (!Core.CheckInventory(className))
                 continue;
 
-            InventoryItem? classItem = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == className.ToLower().Trim() && i.Category == ItemCategory.Class);
+            InventoryItem? classItem = Bot.Inventory.Items.Concat(Bot.Bank.Items).Find(i => i.Name.ToLower().Trim() == className.ToLower().Trim() && i.Category == ItemCategory.Class);
             if (classItem != null)
             {
                 Core.Logger($"Found {classType}: {className} with quantity: {classItem.Quantity}");
                 if (classItem.Quantity != 302500)
                 {
-                    Core.Logger($"{classType} is not maxed out. {(rankUp ? "Ranking up" : "No rank up needed")}");
+                    Core.Logger($"{classType} is not rank 10. {(rankUp ? "Ranking up" : "Rankup disabled")}");
                     if (rankUp)
                         Adv.RankUpClass(classItem.Name);
                     return className;
