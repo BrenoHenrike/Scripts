@@ -3153,9 +3153,9 @@ public class CoreFarms
 
     public void UndeadGiantUnlock()
     {
-        Core.Logger("Checking if farming quest is unlocked.");
         if (!Core.isCompletedBefore(178))
         {
+            Core.Logger("Unlocking farm quest.");
             Core.EnsureAccept(183);
             Core.KillMonster("portalundead", "Enter", "Left", "Skeletal Fire Mage", "Defeated Fire Mage", 4, log: false);
             Core.EnsureComplete(183);
