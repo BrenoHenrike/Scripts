@@ -41,18 +41,17 @@ public class FreeBoosts
         Core.FarmingLogger("CLASS Boost! (10 min)", ClassBoostQuant);
         Core.FarmingLogger("REPUTATION Boost! (10 min)", RepBoostQuant);
         Core.EquipClass(ClassType.Farm);
-        Core.RegisterQuests(6208);
 
-        while (!Bot.ShouldExit)
+        bool allQuantitiesMet = Core.CheckInventory("GOLD Boost! (10 min)", GoldBoostQuant) &&
+                                           Core.CheckInventory("CLASS Boost! (10 min)", ClassBoostQuant) &&
+                                           Core.CheckInventory("REPUTATION Boost! (10 min)", RepBoostQuant);
+
+        while (!Bot.ShouldExit && !allQuantitiesMet)
         {
-            while (!Bot.ShouldExit && !Core.CheckInventory(11476, 2))
-                Core.KillMonster("bloodtusk", "r4", "Left", "Trollola Plant", log: false);
-            Core.KillMonster("nibbleon", "r10", "Left", "*", "Moglinberries", 3, isTemp: false, log: false);
-            Core.KillMonster("cloister", "r2", "Left", "*", "Nimblestem", isTemp: false, log: false);
-
-            bool allQuantitiesMet = Core.CheckInventory("GOLD Boost! (10 min)", GoldBoostQuant) &&
-                                    Core.CheckInventory("CLASS Boost! (10 min)", ClassBoostQuant) &&
-                                    Core.CheckInventory("REPUTATION Boost! (10 min)", RepBoostQuant);
+            Core.HuntMonsterQuest(6208, new (string? mapName, string? monsterName, ClassType classType)[] {
+        ("bloodtusk", "Trollola Plant", ClassType.Solo),
+        ("cloister", "Acornent", ClassType.Solo),
+        ("nibbleon", "Dark Makai", ClassType.Solo) }, true);
 
             if (allQuantitiesMet)
                 break; // Exit the loop when all quantities are met.
