@@ -174,6 +174,7 @@ public class CoreAdvanced
             }
 
             // Attempt to purchase the main item after ensuring required items are available
+            GetItemReq(item, quant);
             Core._BuyItem(map, shopID, item, quant, Log);
         }
     }
