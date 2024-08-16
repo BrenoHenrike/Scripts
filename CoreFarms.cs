@@ -327,7 +327,7 @@ public class CoreFarms
         {
             Core.RegisterQuests(6628);
             while (NotYetLevel(25))
-                Core.KillMonster("icestormarena", "r7", "Left", "*", "Icewing Grunt Defeated", 3, log: false, publicRoom: true);
+                Core.KillMonster("icestormarena", "r7", "Left", "*", log: false, publicRoom: true);
             Core.CancelRegisteredQuests();
         }
 
@@ -340,7 +340,7 @@ public class CoreFarms
         {
             Core.RegisterQuests(6629);
             while (NotYetLevel(35))
-                Core.KillMonster("icestormarena", "r11", "Left", "*", "Icewing Warrior Defeated", 3, log: false, publicRoom: true);
+                Core.KillMonster("icestormarena", "r11", "Left", "*", log: false, publicRoom: true);
             Core.CancelRegisteredQuests();
         }
 
