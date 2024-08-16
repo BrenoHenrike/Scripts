@@ -148,7 +148,9 @@ tags: null
 
 
 using Skua.Core.Interfaces;
+using Skua.Core.Models;
 using Skua.Core.Models.Items;
+using Skua.Core.Models.Monsters;
 using Skua.Core.Options;
 
 public class CoreFarmerJoe
@@ -221,9 +223,9 @@ public class CoreFarmerJoe
     public static void ScriptMain(IScriptInterface bot) => Core.RunCore();
     #region InvClasses
 
-    private readonly InventoryItem? ClassNinja = Bot.Inventory.Items.Concat(Bot.Bank.Items).Find(i => i.Name.ToLower().Trim() == "Ninja".ToLower().Trim() && i.Category == ItemCategory.Class);
-    private readonly InventoryItem? ClassRogue = Bot.Inventory.Items.Concat(Bot.Bank.Items).Find(i => i.Name.ToLower().Trim() == (Core.CheckInventory("Rogue (Rare)", toInv: false) ? "Rogue (Rare)" : "Rogue").ToLower().Trim() && i.Category == ItemCategory.Class);
-    private readonly InventoryItem? ClassMage = Bot.Inventory.Items.Concat(Bot.Bank.Items).Find(i => i.Name.ToLower().Trim() == (Core.CheckInventory("Mage (Rare)", toInv: false) ? "Mage(Rare)" : "Mage").ToLower().Trim() && i.Category == ItemCategory.Class);
+    private readonly InventoryItem? ClassNinja = Bot.Inventory.Items.Concat(Bot.Bank.Items).Find(i => i.Name.ToLower().Trim() == "Ninja".ToLower().Trim() && i.Category == ItemCategory.Class && i.Name != null);
+    private readonly InventoryItem? ClassRogue = Bot.Inventory.Items.Concat(Bot.Bank.Items).Find(i => i.Name.ToLower().Trim() == "Rogue".ToLower().Trim() && i.Category == ItemCategory.Class && i.Name != null);
+    private readonly InventoryItem? ClassMage = Bot.Inventory.Items.Concat(Bot.Bank.Items).Find(i => i.Name.ToLower().Trim() == "Mage".ToLower().Trim() && i.Category == ItemCategory.Class && i.Name != null);
     private readonly InventoryItem? ClassMasterRanger = Bot.Inventory.Items.Concat(Bot.Bank.Items).Find(i => i.Name.ToLower().Trim() == "Master Ranger".ToLower().Trim() && i.Category == ItemCategory.Class && i.Name != null);
     private readonly InventoryItem? ClassShaman = Bot.Inventory.Items.Concat(Bot.Bank.Items).Find(i => i.Name.ToLower().Trim() == "Shaman".ToLower().Trim() && i.Category == ItemCategory.Class && i.Name != null);
     private readonly InventoryItem? ClassScarletSorceress = Bot.Inventory.Items.Concat(Bot.Bank.Items).Find(i => i.Name.ToLower().Trim() == "Scarlet Sorceress".ToLower().Trim() && i.Category == ItemCategory.Class && i.Name != null);
@@ -318,7 +320,7 @@ public class CoreFarmerJoe
                     if (Bot.Player.Level < Level)
                     {
                         SetClass(false, true, true);
-                        Farm.IcestormArena(Level);
+                        Farm.Experience(Level);
                     }
 
                     if (!Core.CheckInventory("Awethur's Accoutrements"))
@@ -343,7 +345,7 @@ public class CoreFarmerJoe
                     if (Bot.Player.Level < Level)
                     {
                         SetClass(false, true, true);
-                        Farm.IcestormArena(Level);
+                        Farm.Experience(Level);
                     }
 
                     if (!Core.CheckInventory("Shaman") || !Core.CheckInventory("ArchPaladin"))
@@ -366,22 +368,22 @@ public class CoreFarmerJoe
 
                     if (Bot.Player.Level < Level)
                     {
-                        SetClass(false, true, true);
-                        Farm.IcestormArena(Level);
+                        SetClass(false, true, false);
+                        Farm.Experience(Level);
                     }
 
                     //check to reduce setclass usage
                     if (!Core.CheckInventory("Scarlet Sorceress") || !Core.CheckInventory(new[] { "Archfiend", "Blaze Binder" }, any: true))
                     {
                         Core.Logger("Getting Scarlet Socrceress");
-                        SetClass(true, false, true);
+                        SetClass(true, false, false);
                         SS.GetSSorc();
                     }
 
                     if (!Core.CheckInventory("Burning Blade"))
                     {
                         Core.Logger("Getting Burning Blade");
-                        SetClass(false, true, true);
+                        SetClass(false, true, false);
                         BB.GetBurningBlade();
                     }
                     Core.Logger($"Level {Level} done");
@@ -410,8 +412,8 @@ public class CoreFarmerJoe
 
                     if (Bot.Player.Level < Level)
                     {
-                        SetClass(false, true, true);
-                        Farm.IcestormArena(Level);
+                        SetClass(false, true, false);
+                        Farm.Experience(Level);
                     }
                     Core.Logger($"Level {Level} done");
                     continue;
@@ -426,14 +428,14 @@ public class CoreFarmerJoe
 
                     if (Bot.Player.Level < Level)
                     {
-                        SetClass(false, true, true);
-                        Farm.IcestormArena(Level);
+                        SetClass(false, true, false);
+                        Farm.Experience(Level);
                     }
 
                     if (!Core.CheckInventory("DragonSoul Shinobi") || !Core.CheckInventory("ArchPaladin"))
                     {
                         Core.Logger("Getting DSS for DoomKittem(ArchPaladin)");
-                        SetClass(true, false, true);
+                        SetClass(true, false, false);
                         DS.GetDSS();
                     }
                     Core.Logger($"Level {Level} done");
@@ -450,20 +452,20 @@ public class CoreFarmerJoe
 
                     if (Bot.Player.Level < Level)
                     {
-                        SetClass(false, true, true);
+                        SetClass(false, true, false);
                         Farm.Experience(Level);
                     }
 
                     if (!Core.CheckInventory("Glacial Berserker") || !Core.CheckInventory("ArchPaladin"))
                     {
-                        SetClass(true, false, true);
+                        SetClass(true, false, false);
                         GB.GetGB();
                     }
 
                     if (!Core.CheckInventory("ArchPaladin"))
                     {
                         Core.Logger("Getting ArchPaladin");
-                        SetClass(true, false, true);
+                        SetClass(true, false, false);
                         AP.GetAP();
                     }
                     Core.Logger($"Level {Level} done");
@@ -482,20 +484,20 @@ public class CoreFarmerJoe
                     if (!Core.CheckInventory("ArchFiend DeathLord") || !Adv.HasMinimalBoost(GenericGearBoost.dmgAll, 30))
                     {
                         Core.Logger("Getting ArchFiend DeathLord");
-                        SetClass(true, false, true);
+                        SetClass(true, false, false);
                         AFDeath.GetArm(true, ArchfiendDeathLord.RewardChoice.Archfiend_DeathLord);
                     }
 
                     if (!Core.CheckInventory("Archfiend"))
                     {
                         Core.Logger("Getting ArchFiend");
-                        SetClass(true, false, true);
+                        SetClass(true, false, false);
                         AF.GetArchfiend();
                     }
 
                     if (Bot.Player.Level < Level)
                     {
-                        SetClass(false, true, true);
+                        SetClass(false, true, false);
                         Farm.Experience(Level);
                     }
                     Core.Logger($"Level {Level} done");
@@ -772,64 +774,51 @@ public class CoreFarmerJoe
             }
         }
 
-        if (Core.CheckInventory(new[] { "Assassin", "Ninja Warrior", "Ninja" }, any: true) &&
-            Core.CheckInventory(new[] { "Mage (Rare)", "Mage" }, any: true) &&
-            Bot.Player.Level >= 30)
-        {
-            Core.Logger("Acc is lvl 30+, skipping beginner items.");
-            SetClass(true, false, true);
-            return;
-        }
+        // if (Core.CheckInventory(new[] { "Assassin", "Ninja Warrior", "Ninja" }, any: true) &&
+        //     Core.CheckInventory(new[] { "Mage (Rare)", "Mage" }, any: true) &&
+        //     Bot.Player.Level >= 30)
+        // {
+        //     Core.Logger("Acc is lvl 30+, skipping beginner items.");
+        //     SetClass(true, false, false);
+        //     return;
+        // }
 
-        Core.Logger("Starting out acc:\n" +
-            "\tGoals: Temp weapon, Ninja class.");
+        // Core.Logger("Starting out acc:\n" +
+        //     "\tGoals: Temp weapon, Ninja class.");
 
-        Core.Logger("Getting Badges to look a little\n" +
-            "more legit (start may take a minute)");
+        // Core.Logger("Getting Badges to look a little\n" +
+        //     "more legit (start may take a minute)");
 
-        Tutorial.Badges();
+        // Tutorial.Badges();
 
         Core.Logger("Getting Started: Beginner Levels/Equipment");
         Core.Logger("Getting rogue.. so we can get ninja (thers a 10k hp \"boss\" to kill during the \"Hit Job\" quest.)");
         if (!Core.CheckInventory(new[] { "Rogue (Rare)", "Rogue" }, any: true))
-            Core.BuyItem("classhalla", 172, "Rogue");
+            Adv.BuyItem("classhalla", 172, "Rogue");
 
         Farm.Experience(10);
         SetClass(true, false, false);
-
-        if (ClassRogue.Quantity < 22500)
+        if (!Core.CheckInventory(new[] { "Assassin", "Ninja Warrior", "Ninja" }, any: true) && !Core.isCompletedBefore(92))
         {
-            bool HasEnh = false;
-            Core.RegisterQuests(6628);
-            Core.Logger($"Ranking \"Rogue\" to rank 5 ({ClassRogue.Quantity}/22500)");
-            while (!Bot.ShouldExit && ClassRogue.Quantity < 22500)
-            {
-                if (Bot.Player.Level > 20 && !HasEnh)
-                {
-                    SetClass(true, false, false);
-                    HasEnh = true;
-                }
-                Core.KillMonster("icestormarena", Bot.Player.Level < 20 ? "r4" : "r5", "right", "*", log: false);
-            }
-            Core.CancelRegisteredQuests();
+            Core.Logger("ignore previous statement, ranking Rogue to 10");
+            Adv.RankUpClass("Rogue");
         }
 
-        Core.Logger("Getting Starter Solo class (Ninja)");
         if (!Core.CheckInventory(new[] { "Assassin", "Ninja Warrior", "Ninja" }, any: true))
         {
+            Core.Logger("Getting starter solo class (Ninja)");
             //ninja requires a few quets.. its ok tho
             SetClass(true, false, false);
             Mazumi.MazumiQuests();
             Core.BuyItem("classhalla", 178, "Ninja");
-            SetClass(true, false, true);
+            SetClass(true, false, false);
         }
 
-        Core.Logger("Getting Starter Farm class (Mage)");
         if (!Core.CheckInventory(new[] { "Mage (Rare)", "Mage" }, any: true))
+        {
+            Core.Logger("Getting Starter Farm class (Mage)");
             Adv.BuyItem("classhalla", 174, 15653, shopItemID: 9845);
-
-        SetClass(false, true, true);
-
+        }
     }
     #endregion Extra:
 
@@ -938,7 +927,9 @@ public class CoreFarmerJoe
     /// <returns>The first valid class found in the inventory, or "Generic" if no valid class is found.</returns>
     private string FindValidClass(string[] classesToCheck, string classType, bool rankUp)
     {
+        while (!Bot.ShouldExit && !Bot.Player.Alive) { }
         ItemBase CurrentClass = Bot.Player.CurrentClass;
+
         foreach (string className in classesToCheck)
         {
             Core.Logger($"Checking for {classType}: {className}");
