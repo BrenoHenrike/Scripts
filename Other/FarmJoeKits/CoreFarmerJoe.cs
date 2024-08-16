@@ -774,22 +774,22 @@ public class CoreFarmerJoe
             }
         }
 
-        // if (Core.CheckInventory(new[] { "Assassin", "Ninja Warrior", "Ninja" }, any: true) &&
-        //     Core.CheckInventory(new[] { "Mage (Rare)", "Mage" }, any: true) &&
-        //     Bot.Player.Level >= 30)
-        // {
-        //     Core.Logger("Acc is lvl 30+, skipping beginner items.");
-        //     SetClass(true, false, false);
-        //     return;
-        // }
+        if (Core.CheckInventory(new[] { "Assassin", "Ninja Warrior", "Ninja" }, any: true) &&
+            Core.CheckInventory(new[] { "Mage (Rare)", "Mage" }, any: true) &&
+            Bot.Player.Level >= 30)
+        {
+            Core.Logger("Acc is lvl 30+, skipping beginner items.");
+            SetClass(true, false, false);
+            return;
+        }
 
-        // Core.Logger("Starting out acc:\n" +
-        //     "\tGoals: Temp weapon, Ninja class.");
+        Core.Logger("Starting out acc:\n" +
+            "\tGoals: Temp weapon, Ninja class.");
 
-        // Core.Logger("Getting Badges to look a little\n" +
-        //     "more legit (start may take a minute)");
+        Core.Logger("Getting Badges to look a little\n" +
+            "more legit (start may take a minute)");
 
-        // Tutorial.Badges();
+        Tutorial.Badges();
 
         Core.Logger("Getting Started: Beginner Levels/Equipment");
         Core.Logger("Getting rogue.. so we can get ninja (thers a 10k hp \"boss\" to kill during the \"Hit Job\" quest.)");
@@ -932,10 +932,10 @@ public class CoreFarmerJoe
 
         foreach (string className in classesToCheck)
         {
-            Core.Logger($"Checking for {classType}: {className}");
             if (!Core.CheckInventory(className))
                 continue;
 
+            Core.Logger($"Checking for {classType}: {className}");
             InventoryItem? classItem = Bot.Inventory.Items.Concat(Bot.Bank.Items).Find(i => i.Name.ToLower().Trim() == className.ToLower().Trim() && i.Category == ItemCategory.Class);
             if (classItem != null)
             {
