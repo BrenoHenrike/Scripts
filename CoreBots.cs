@@ -98,6 +98,7 @@ public class CoreBots
     /// Set common bot options to desired value
     /// </summary>
     /// <param name="changeTo">Value the options will be changed to</param>
+    /// <param name="disableClassSwap"></param>
     public void SetOptions(bool changeTo = true, bool disableClassSwap = false)
     {
         // These things need to be set and checked before anything else
@@ -920,8 +921,8 @@ public class CoreBots
     /// <param name="shopID">ID of the shop</param>
     /// <param name="itemName">Name of the item</param>
     /// <param name="quant">Desired quantity</param>
-    /// <param name="shopQuant">How many items you get for 1 buy</param>
     /// <param name="shopItemID">Use this for Merge shops that has 2 or more of the item with the same name and you need the second/third/etc., be aware that it will re-log you after to prevent ghost buy. To get the ShopItemID use the built in loader of Skua</param>
+    /// <param name="Log"></param>
     public void BuyItem(string map, int shopID, string itemName, int quant = 1, int shopItemID = 0, bool Log = true)
     {
         if (CheckInventory(itemName, quant))
@@ -939,8 +940,8 @@ public class CoreBots
     /// <param name="shopID">ID of the shop</param>
     /// <param name="itemID">ID of the item</param>
     /// <param name="quant">Desired quantity</param>
-    /// <param name="shopQuant">How many items you get for 1 buy</param>
     /// <param name="shopItemID">Use this for Merge shops that has 2 or more of the item with the same name and you need the second/third/etc., be aware that it will relog you after to prevent ghost buy. To get the ShopItemID use the built in loader of Skua</param>
+    /// <param name="Log"></param>
     public void BuyItem(string map, int shopID, int itemID, int quant = 1, int shopItemID = 0, bool Log = true)
     {
         if (CheckInventory(itemID, quant))
@@ -1670,6 +1671,7 @@ public class CoreBots
     /// <summary>
     /// Accepts all the quests given
     /// </summary>
+    /// <param name="RegisterQuest"></param>
     /// <param name="questIDs">IDs of the quests</param>
     public void EnsureAcceptmultiple(bool RegisterQuest = false, params int[]? questIDs)
     {
@@ -1775,10 +1777,10 @@ public class CoreBots
     }
 
 
-    // <summary>
-    /// Completes all the quests given but doesn't support quests with choose-able rewards
+    /// <summary>
+    /// Completes all the quests given but doesn't support quests with choose-able rewards.
     /// </summary>
-    /// <param name="questIDs">IDs of the quests</param>
+    /// <param name="questIDs">IDs of the quests.</param>
     public void EnsureComplete(params int[] questIDs)
     {
         List<Quest> questData = EnsureLoad(questIDs);
@@ -2068,7 +2070,7 @@ public class CoreBots
     #region Kill
 
     /// <summary>
-    /// Joins a map, jump & set the spawn point and kills the specified monster
+    /// Joins a map, jump and set the spawn point and kills the specified monster
     /// </summary>
     /// <param name="map">Map to join</param>
     /// <param name="cell">Cell to jump to</param>
@@ -2078,6 +2080,7 @@ public class CoreBots
     /// <param name="quant">Desired quantity of the item</param>
     /// <param name="isTemp">Whether the item is temporary</param>
     /// <param name="log">Whether it will log that it is killing the monster</param>
+    /// <param name="publicRoom"></param>
     public void KillMonster(string map, string cell, string pad, string monster, string? item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
     {
         cell = Bot.Map.Cells.FirstOrDefault(c => c.Equals(cell, StringComparison.OrdinalIgnoreCase)) ?? cell;
@@ -2181,6 +2184,7 @@ public class CoreBots
     /// <param name="quant">Desired quantity of the item</param>
     /// <param name="isTemp">Whether the item is temporary</param>
     /// <param name="log">Whether it will log that it is killing the monster</param>
+    /// <param name="publicRoom"></param>
     public void KillMonster(string map, string cell, string pad, int MonsterMapID, string? item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
     {
         pad = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(pad.ToLower());
@@ -2293,10 +2297,11 @@ public class CoreBots
     /// <param name="cell">Cell to jump to</param>
     /// <param name="pad">Pad to jump to</param>
     /// <param name="MonsterMapID">MapID of the monster</param>
-    /// <param name="item">Item to kill the monster for, if null will just kill the monster 1 time</param>
+    /// <param name="ItemID"></param>
     /// <param name="quant">Desired quantity of the item</param>
     /// <param name="isTemp">Whether the item is temporary</param>
     /// <param name="log">Whether it will log that it is killing the monster</param>
+    /// <param name="publicRoom"></param>
     public void KillMonster(string map, string cell, string pad, int MonsterMapID, int ItemID = 0, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
     {
         pad = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(pad.ToLower());
@@ -2400,63 +2405,16 @@ public class CoreBots
         Bot.Options.AttackWithoutTarget = false;
     }
 
-    #region Old KillMonster
     /// <summary>
-    /// Attempts to kill a specified monster and optionally collects a specified item.
+    /// Joins a map and hunts for the monster.
     /// </summary>
-    /// <param name="map">The map where the monster is located.</param>
-    /// <param name="cell">The cell within the map to find the monster.</param>
-    /// <param name="pad">The pad within the cell where the monster is located.</param>
-    /// <param name="monsterID">The ID of the monster to kill.</param>
-    /// <param name="itemID">The ID of the item to collect (optional).</param>
-    /// <param name="quant">The quantity of the item to collect (default is 1).</param>
-    /// <param name="isTemp">Whether the item is temporary (default is true).</param>
-    /// <param name="log">Whether to log the action (default is true).</param>
-    /// <param name="publicRoom">Whether to join a public room (default is false).</param>
-    /// <remarks>
-    /// This method checks if the item is already in the inventory or temporary inventory.
-    /// If not, it adds the item to the drop list, joins the specified map, cell, and pad,
-    /// and then proceeds to kill the monster. If an item ID is provided, it will also attempt
-    /// to collect the specified item. The method handles aggro settings and logging.
-    /// </remarks>
-    // public void KillMonster(string map, string cell, string pad, int monsterID, int itemID = 0, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
-    // {
-
-    //     if (itemID != 0 && (isTemp ? Bot.TempInv.Contains(itemID, quant) : CheckInventory(itemID, quant)))
-    //         return;
-
-    //     if (!isTemp && itemID != 0)
-    //         AddDrop(itemID);
-
-    //     Join(map, cell, pad, publicRoom: publicRoom);
-
-    //     Bot.Options.AggroAllMonsters = false;
-    //     Bot.Options.AggroMonsters = false;
-    //     Monster? monster = Bot.Monsters.MapMonsters.FirstOrDefault(m => m != null && m.Cell == cell && m.ID == monsterID);
-
-    //     if (itemID == 0)
-    //     {
-    //         if (log)
-    //             Logger($"Killing {monster}");
-    //         ToggleAggro(true);
-    //         Bot.Kill.Monster(monster!.ID);
-    //         ToggleAggro(false);
-    //         JumpWait();
-    //         Rest();
-    //     }
-    //     else _KillForItem(monster!.Name, itemID, quant, isTemp, log: log, cell: cell);
-    //     Bot.Options.AttackWithoutTarget = false;
-    // }
-    #endregion
-
-    /// <summary>
-    /// Joins a map and hunt for the monster
-    /// </summary>
-    /// <param name="map">Map to join</param>
-    /// <param name="monster">Name of the monster to kill</param>
-    /// <param name="item">Item to hunt the monster for, if null will just hunt & kill the monster 1 time</param>
-    /// <param name="quant">Desired quantity of the item</param>
-    /// <param name="isTemp">Whether the item is temporary</param>
+    /// <param name="map">Map to join.</param>
+    /// <param name="monster">Name of the monster to kill.</param>
+    /// <param name="item">Item to hunt the monster for. If null, will just hunt and kill the monster once.</param>
+    /// <param name="quant">Desired quantity of the item.</param>
+    /// <param name="isTemp">Whether the item is temporary.</param>
+    /// <param name="log">Whether to log the hunt process.</param>
+    /// <param name="publicRoom">Whether to use a public room.</param>
     public void HuntMonster(string map, string monster, string? item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
     {
         if (item != null && (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
@@ -2538,13 +2496,13 @@ public class CoreBots
     /// Kills a monster using it's MapID
     /// </summary>
     /// <param name="map">Map to join</param>
-    /// <param name="cell">Cell to jump to</param>
+    /// <param name="monsterMapID"></param>
     /// <param name="pad">Pad to jump to</param>
-    /// <param name="monsterID">ID of the monster</param>
     /// <param name="item">Item to kill the monster for, if null will just kill the monster 1 time</param>
     /// <param name="quant">Desired quantity of the item</param>
     /// <param name="isTemp">Whether the item is temporary</param>
     /// <param name="log">Whether it will log that it is killing the monster</param>
+    /// <param name="publicRoom"></param>
     public void HuntMonsterMapID(string map, int monsterMapID, string? item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false, string pad = "Left")
     {
         if (item != null && (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
@@ -2625,7 +2583,7 @@ public class CoreBots
     /// Hunts monsters based on the requirements of a specified quest and an optional array of map and monster names.
     /// </summary>
     /// <param name="questId">The ID of the quest to load requirements from.</param>
-    /// <param name="mapMonsterPairs">An optional array of tuples containing map names and monster names. Defaults to null.</param>
+    /// <param name="MapMonsterClassPairs"></param>
     /// <param name="log">Whether to log the hunting process.</param>
     public void HuntMonsterQuest(int questId, (string? mapName, string? monsterName, ClassType classType)[]? MapMonsterClassPairs = null, bool log = false)
     {
@@ -2709,6 +2667,8 @@ public class CoreBots
     /// <param name="item">Item name</param>
     /// <param name="quant">Desired quantity</param>
     /// <param name="isTemp">Whether the item is temporary</param>
+    /// <param name="log"></param>
+    /// <param name="publicRoom"></param>
     public void KillEscherion(string? item = null, int quant = 1, bool isTemp = false, bool log = true, bool publicRoom = false)
     {
         if (item != null && (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
@@ -2800,6 +2760,7 @@ public class CoreBots
     /// <param name="item">Item name</param>
     /// <param name="quant">Desired quantity</param>
     /// <param name="isTemp">Whether the item is temporary</param>
+    /// <param name="log"></param>
     public void KillVath(string? item = null, int quant = 1, bool isTemp = false, bool log = true)
     {
         if (item is not null && (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
@@ -2885,6 +2846,7 @@ public class CoreBots
     /// <param name="item">Item name</param>
     /// <param name="quant">Desired quantity</param>
     /// <param name="isTemp">Whether the item is temporary</param>
+    /// <param name="log"></param>
     public void KillKitsune(string? item = null, int quant = 1, bool isTemp = false, bool log = true)
     {
         if (item != null && (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
@@ -2941,12 +2903,12 @@ public class CoreBots
     }
 
     /// <summary>
-    /// Kill Vath for the desired item
+    /// Kill Vath for the desired item.
     /// </summary>
-    /// <param name="item">Item name</param>
-    /// <param name="quant">Desired quantity</param>
-    /// <param name="isTemp">Whether the item is temporary</param>
-    /// <param name="Phase">Which phase of the boss to kill>
+    /// <param name="item">Item name.</param>
+    /// <param name="quant">Desired quantity.</param>
+    /// <param name="isTemp">Whether the item is temporary.</param>
+    /// <param name="Phase">Which phase of the boss to kill.</param>
     public void KillTrigoras(string item, int quant = 1, int Phase = 1, bool isTemp = false)
     {
         if (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant))
@@ -3068,6 +3030,7 @@ public class CoreBots
     /// <param name="item">The name of the item to obtain.</param>
     /// <param name="quant">The desired quantity of the item.</param>
     /// <param name="isTemp">Specifies whether the item is temporary.</param>
+    /// <param name="log"></param>
     public void KillNulgathFiendShard(string? item = null, int quant = 1, bool isTemp = false, bool log = false)
     {
         if (CheckInventory(item, quant))
@@ -3713,6 +3676,7 @@ public class CoreBots
     /// </summary>
     /// <param name="packet">Packet to send</param>
     /// <param name="times">How many times to send</param>
+    /// <param name="toClient"></param>
     public void SendPackets(string packet, int times = 1, bool toClient = false)
     {
         for (int i = 0; i < times; i++)
@@ -4162,6 +4126,7 @@ public class CoreBots
     /// </summary>
     /// <param name="cell">Cell to jump to</param>
     /// <param name="pad">Pad to jump to</param>
+    /// <param name="ignoreCheck"></param>
     public void Jump(string cell = "Enter", string pad = "Spawn", bool ignoreCheck = false)
     {
         cell = Bot.Map.Cells.FirstOrDefault(c => c.Equals(cell, StringComparison.OrdinalIgnoreCase)) ?? cell;
