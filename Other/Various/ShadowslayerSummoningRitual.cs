@@ -35,7 +35,7 @@ public class ShadowslayerSummoningRitual
         Core.SetOptions(false);
     }
 
-    public void GetAll(bool MovetoQuest2 = false)
+    public void GetAll(bool MovetoQuest2 = false, string? itemFarm = null)
     {
         ShadowStory.Storyline();
 
@@ -52,6 +52,12 @@ public class ShadowslayerSummoningRitual
         Core.CheckSpaces(ref count, Rewards);
 
         ShadowSlayersApprentice();
+
+        // If itemFarm is not null, adjust the Rewards array to contain only the specified item
+        if (!string.IsNullOrEmpty(itemFarm))
+        {
+            Rewards = new string[] { itemFarm };
+        }
 
         foreach (string item in Rewards)
         {

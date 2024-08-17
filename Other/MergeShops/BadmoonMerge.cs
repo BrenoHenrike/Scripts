@@ -1,7 +1,7 @@
 /*
 name: Badmoon Merge
 description: This bot will farm the items belonging to the selected mode for the Badmoon Merge [2470] in /badmoon
-tags: badmoon, merge, badmoon, twisted, hunter, darkovian, captains, masked, hunters, arm, arms, sanguine, dussack, dussacks
+tags: badmoon, merge, badmoon, twisted, hunter, darkovian, captains, masked, hunters, arm, arms, sanguine, dussack, dussacks, shadowslayer, adept, ponytail, chapeau, mendicant, buzzcut, sash, veil, golden, panacea, claymore, claymores, mendicants, last, resort, resorts, sol, intenso
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -13,9 +13,8 @@ tags: badmoon, merge, badmoon, twisted, hunter, darkovian, captains, masked, hun
 //cs_include Scripts/Farm/BuyScrolls.cs
 //cs_include Scripts/Story/ShadowSlayerK.cs
 //cs_include Scripts/Other\Various\ShadowslayerSummoningRitual.cs
-
 //cs_include Scripts/Other\Various\ShadowslayerSummoningRitual2.cs
-
+//cs_include Scripts/Other\MergeShops\ShadowSlayerKMerge.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
@@ -27,7 +26,9 @@ public class BadmoonMerge
     private CoreFarms Farm = new();
     private CoreAdvanced Adv = new();
     private static CoreAdvanced sAdv = new();
+    private ShadowslayerSummoningRitual SSR = new();
     private ShadowslayerSummoningRitual2 ssr2 = new();
+    private ShadowSlayerKMerge SSKM = new();
 
     public List<IOption> Generic = sAdv.MergeOptions;
     public string[] MultiOptions = { "Generic", "Select" };
@@ -38,7 +39,7 @@ public class BadmoonMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Lunate Sigil", "Darkovian Hunter", "Darkovia Hunter's Cowl", "Iron Dussack"});
+        Core.BankingBlackList.AddRange(new[] { "Lunate Sigil", "Darkovian Hunter", "Darkovia Hunter's Cowl", "Iron Dussack", "ShadowSlayer's Apprentice", "Antiquated Shadow Hair", "Antiquated Shadow Locks", "Antiquated Shadow Hat", "Antiquated Shadow Hat + Locks", "Zealous Claymore", "Zealous Censer", "Shadowslayer Relic Sword" });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -81,11 +82,36 @@ public class BadmoonMerge
                     Core.KillMonster("badmoon", "r5", "left", "hunter", req.Name, req.Quantity, req.Temp);
                     break;
 
-                    
+
                 case "Darkovian Hunter":
                     Core.EquipClass(ClassType.Farm);
                     Core.AddDrop(req.ID);
                     Core.HuntMonster("badmoon", "Twisted Hunter", req.Name, req.Quantity, req.Temp);
+                    break;
+
+                case "ShadowSlayer's Apprentice":
+                case "Antiquated Shadow Hair":
+                case "Antiquated Shadow Locks":
+                case "Antiquated Shadow Hat":
+                case "Antiquated Shadow Hat + Locks":
+                    SSKM.BuyAllMerge(req.Name);
+                    break;
+
+                case "Zealous Claymore":
+                    Core.FarmingLogger(req.Name, quant);
+                    Core.EquipClass(ClassType.Solo);
+                    Core.HuntMonster("techdungeon", "Kalron the Cryptborg", req.Name, quant, req.Temp, false);
+                    break;
+
+                case "Zealous Censer":
+                    Core.FarmingLogger(req.Name, quant);
+                    Core.EquipClass(ClassType.Farm);
+                    Core.HuntMonster("stonewood", "BioKnight", req.Name, quant, req.Temp, false);
+                    break;
+
+                case "Shadowslayer Relic Sword":
+                    Core.FarmingLogger(req.Name, quant);
+                    SSR.GetAll(itemFarm: req.Name);
                     break;
 
             }
@@ -101,5 +127,20 @@ public class BadmoonMerge
         new Option<bool>("87591", "Twisted Hunter's Arms", "Mode: [select] only\nShould the bot buy \"Twisted Hunter's Arms\" ?", false),
         new Option<bool>("87588", "Sanguine Dussack", "Mode: [select] only\nShould the bot buy \"Sanguine Dussack\" ?", false),
         new Option<bool>("87589", "Sanguine Dussacks", "Mode: [select] only\nShould the bot buy \"Sanguine Dussacks\" ?", false),
+        new Option<bool>("87783", "ShadowSlayer Adept", "Mode: [select] only\nShould the bot buy \"ShadowSlayer Adept\" ?", false),
+        new Option<bool>("87784", "ShadowSlayer Adept Hair", "Mode: [select] only\nShould the bot buy \"ShadowSlayer Adept Hair\" ?", false),
+        new Option<bool>("87785", "ShadowSlayer Adept Ponytail", "Mode: [select] only\nShould the bot buy \"ShadowSlayer Adept Ponytail\" ?", false),
+        new Option<bool>("87786", "ShadowSlayer Adept Chapeau", "Mode: [select] only\nShould the bot buy \"ShadowSlayer Adept Chapeau\" ?", false),
+        new Option<bool>("87787", "ShadowSlayer Adept Ponytail Chapeau", "Mode: [select] only\nShould the bot buy \"ShadowSlayer Adept Ponytail Chapeau\" ?", false),
+        new Option<bool>("87788", "ShadowSlayer Mendicant", "Mode: [select] only\nShould the bot buy \"ShadowSlayer Mendicant\" ?", false),
+        new Option<bool>("87789", "ShadowSlayer Mendicant Buzzcut", "Mode: [select] only\nShould the bot buy \"ShadowSlayer Mendicant Buzzcut\" ?", false),
+        new Option<bool>("87790", "ShadowSlayer Mendicant Sash", "Mode: [select] only\nShould the bot buy \"ShadowSlayer Mendicant Sash\" ?", false),
+        new Option<bool>("87791", "ShadowSlayer Mendicant Veil", "Mode: [select] only\nShould the bot buy \"ShadowSlayer Mendicant Veil\" ?", false),
+        new Option<bool>("87794", "Golden Panacea Claymore", "Mode: [select] only\nShould the bot buy \"Golden Panacea Claymore\" ?", false),
+        new Option<bool>("87795", "Golden Panacea Claymores", "Mode: [select] only\nShould the bot buy \"Golden Panacea Claymores\" ?", false),
+        new Option<bool>("87796", "Mendicant's Last Resort", "Mode: [select] only\nShould the bot buy \"Mendicant's Last Resort\" ?", false),
+        new Option<bool>("87797", "Mendicant's Last Resorts", "Mode: [select] only\nShould the bot buy \"Mendicant's Last Resorts\" ?", false),
+        new Option<bool>("87602", "Sol Intenso", "Mode: [select] only\nShould the bot buy \"Sol Intenso\" ?", false),
+        new Option<bool>("87603", "Dual Sol Intenso", "Mode: [select] only\nShould the bot buy \"Dual Sol Intenso\" ?", false),
     };
 }
