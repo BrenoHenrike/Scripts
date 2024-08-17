@@ -153,17 +153,13 @@ public class NovaShrineGiftsMerge
                     break;
 
                 case "DragonBlade of Nulgath":
-                    if (!Bot.Player.IsMember)
-                        StreamwarMerge.BuyAllMerge("Dark Dragon Slayer's Halberd");
-                    else DBoN.GetDragonBlade();
-                    Core.BuyItem("novashrine", 2458, buyOnlyThis, 1, !Bot.Player.IsMember ? 13334 : 13333);
-                    break;
-
                 case "Dark Dragon Slayer's Halberd":
                     if (!Bot.Player.IsMember)
                         StreamwarMerge.BuyAllMerge("Dark Dragon Slayer's Halberd");
-                    else DBoN.GetDragonBlade();
-                    Core.BuyItem("novashrine", 2458, buyOnlyThis, 1, !Bot.Player.IsMember ? 13334 : 13333);
+                    else
+                        DBoN.GetDragonBlade();
+
+                    Core.BuyItem("novashrine", 2458, "Star Light of Destiny", 1, !Bot.Player.IsMember ? 13334 : 13333);
                     break;
 
                 case "Star of the Empyrean":

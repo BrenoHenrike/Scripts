@@ -302,7 +302,7 @@ public class CoreFarmerJoe
                     Adv.HasMinimalBoost(GenericGearBoost.exp, 25) &&
                     Core.CheckInventory("Master Ranger") && ClassMasterRanger?.Quantity == 302500)
                     {
-                        if (Bot.Config.Get<bool>("SellStarterClasses"))
+                        if (Bot.Config != null && Bot.Config.Get<bool>("SellStarterClasses"))
                             Core.SellItem("Mage", all: true);
 
                         Core.Logger("Items owned: \"Awethur's Accoutrements\", \"Master Ranger\" continuing");
@@ -393,7 +393,7 @@ public class CoreFarmerJoe
                     if (Bot.Player.Level >= Level &&
                     Core.CheckInventory("Blaze Binder") && ClassBlazeBinder?.Quantity == 302500)
                     {
-                        if (Bot.Config.Get<bool>("SellStarterClasses"))
+                        if (Bot.Config != null && Bot.Config.Get<bool>("SellStarterClasses"))
                             Core.SellItem("Master Ranger", all: true);
 
                         Core.Logger("Items owned:  \"Blaze Binder\", continuing");
@@ -928,7 +928,10 @@ public class CoreFarmerJoe
     private string FindValidClass(string[] classesToCheck, string classType, bool rankUp)
     {
         while (!Bot.ShouldExit && !Bot.Player.Alive) { }
-        ItemBase CurrentClass = Bot.Player.CurrentClass;
+        ItemBase? CurrentClass = Bot.Player.CurrentClass;
+
+        if (CurrentClass == null)
+            Core.Logger("Error getting your current class");
 
         foreach (string className in classesToCheck)
         {
@@ -960,7 +963,9 @@ public class CoreFarmerJoe
         }
 
         Core.Logger($"No valid {classType} found, Using your current class: \"{Bot.Player.CurrentClass}\"");
-        return CurrentClass.Name; // Return "Player's Current Class" as the default value when no valid class is found.
+        if (CurrentClass != null)
+            return CurrentClass.Name; // Return "Player's Current Class" as the default value when no valid class is found.
+        else return string.Empty;
     }
 
     /// <summary>
