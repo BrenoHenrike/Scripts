@@ -39,9 +39,21 @@ public class WeeklyReleaseGenerator
 
     public void Generator()
     {
+        if (Bot.Config == null)
+        {
+            Core.Logger("Config is not set properly.");
+            return;
+        }
+
         int startID = Bot.Config.Get<int>("QuestIDRangeStart");
         int endID = Bot.Config.Get<int>("QuestIDRangeEnd");
-        string mapName = Bot.Config.Get<string>("MapName");
+        string mapName = Bot.Config.Get<string>("MapName") ?? string.Empty;
+
+        if (string.IsNullOrEmpty(mapName))
+        {
+            Core.Logger("MapName is not set properly.");
+            return;
+        }
 
         // Join the map first
         Core.Join(mapName);
