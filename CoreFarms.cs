@@ -1163,8 +1163,6 @@ public class CoreFarms
         if (FactionRank("Arcangrove") >= rank)
             return;
 
-
-        Core.Logger($"Farming rank {rank}");
         MembershipDues(MemberShipsIDS.Arcangrove);
 
         // Core.EquipClass(ClassType.Farm);
