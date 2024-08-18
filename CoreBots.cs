@@ -4576,8 +4576,7 @@ public class CoreBots
                 break;
 
             case "Collection":
-                JumpWait();
-                Bot.Map.Join(PrivateRooms ? $"{map}-" + PrivateRoomNumber : map);
+                tryJoin();
                 Bot.Wait.ForMapLoad(map);
                 //transition from the intro cutscene (happens once per login)
                 if (Bot.Player.Cell != "Begin")
