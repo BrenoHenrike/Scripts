@@ -614,8 +614,14 @@ public class CoreNation
 
 
         Quest quest = Core.EnsureLoad(4778);
-        ItemBase Reward = quest.Rewards.FirstOrDefault(x => x.ID == (int)reward);
-        
+        ItemBase? Reward = quest.Rewards.FirstOrDefault(x => x.ID == (int)reward);
+
+        if (Reward == null)
+        {
+            Core.Logger("Reward not found.");
+            return;
+        }
+
         foreach (ItemBase item in quest.Requirements.Concat(quest.Rewards))
             Core.AddDrop(item.ID);
 
