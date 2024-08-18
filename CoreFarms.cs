@@ -10,6 +10,7 @@ using Skua.Core.Models.Factions;
 using Skua.Core.Models.Items;
 using Skua.Core.Models.Monsters;
 using Skua.Core.Models.Quests;
+using Skua.Core.Models.Shops;
 
 public class CoreFarms
 {
@@ -1808,7 +1809,7 @@ public class CoreFarms
 
 
 
-    public void EmberseaREP(int rank = 10)
+    public void EmberseaREP(int rank = 11)
     {
         if (FactionRank("Embersea") >= rank)
             return;
@@ -3083,8 +3084,8 @@ public class CoreFarms
             return;
 
         Core.AddDrop("Super-Fan Swag Token A", "Super-Fan Swag Token B", "Super-Fan Swag Token C");
-        Core.RegisterQuests(1310, 1312, 1313, 1314);
         Core.EquipClass(ClassType.Farm);
+        Core.RegisterQuests(1310, 1312, 1313, 1314);
         Core.FarmingLogger($"Super-Fan Swag Token A", quant);
 
         Core.Logger("Ensure you are using a multi-target class for optimal efficiency.");
@@ -3099,29 +3100,47 @@ public class CoreFarms
             Core.Logger($"Collected 200 Super-Fan Swag Token C. Converting to B and then A.");
 
             // Convert C to B
-            int cAvailable = Bot.Inventory.GetQuantity("Super-Fan Swag Token C");
-            int bQuantity = cAvailable / 10;
-            int maxStackB = 200;
-            int batchesB = (bQuantity + (maxStackB / 10) - 1) / (maxStackB / 10); // Number of batches needed for B
-
-            for (int i = 0; i < batchesB; i++)
+            int cQuantity = Bot.Inventory.GetQuantity("Super-Fan Swag Token C");
+            if (cQuantity / 10 > 1)
             {
-                int batchQuantityB = Math.Min(maxStackB / 10, bQuantity - (i * (maxStackB / 10)));
-                Core.BuyItem("Collection", 325, "Super-Fan Swag Token B", batchQuantityB);
-                Core.Logger($"Converted {Math.Min(200, cAvailable)} C to {batchQuantityB} B. Remaining B needed: {bQuantity - batchQuantityB}.");
+                int buyB = cQuantity / 10;
+                Core.Logger($"Buying {buyB} Super-Fan Swag Token B.");
+                Core.Join("Collection");
+
+            ReloadShopB:
+                bool ShopCheckB = Bot.Shops.Items.Any(x => x != null && x.Name == "Super-Fan Swag Token B");
+                if (ShopCheckB)
+                {
+                    Bot.Shops.BuyItem("Super-Fan Swag Token B", buyB);
+                    Bot.Wait.ForActionCooldown(GameActions.BuyItem);
+                }
+                else
+                {
+                    Core.Logger("Super-Fan Swag Token B not found in shop, reloading...");
+                    goto ReloadShopB;
+                }
             }
 
             // Convert B to A
-            int bAvailable = Bot.Inventory.GetQuantity("Super-Fan Swag Token B");
-            int aQuantity = bAvailable / 20;
-            int maxStackA = 100;
-            int batchesA = (aQuantity + (maxStackA / 20) - 1) / (maxStackA / 20); // Number of batches needed for A
-
-            for (int i = 0; i < batchesA; i++)
+            int bQuantity = Bot.Inventory.GetQuantity("Super-Fan Swag Token B");
+            if (bQuantity / 20 > 1)
             {
-                int batchQuantityA = Math.Min(maxStackA / 20, aQuantity - (i * (maxStackA / 20)));
-                Core.BuyItem("Collection", 325, "Super-Fan Swag Token A", batchQuantityA);
-                Core.Logger($"Converted {bAvailable} B to {batchQuantityA} A. Remaining A needed: {aQuantity - batchQuantityA}.");
+                int buyA = bQuantity / 20;
+                Core.Logger($"Buying {buyA} Super-Fan Swag Token A.");
+                Core.Join("Collection");
+
+            ReloadShopA:
+                bool ShopCheckA = Bot.Shops.Items.Any(x => x != null && x.Name == "Super-Fan Swag Token A");
+                if (ShopCheckA)
+                {
+                    Bot.Shops.BuyItem("Super-Fan Swag Token A", buyA);
+                    Bot.Wait.ForActionCooldown(GameActions.BuyItem);
+                }
+                else
+                {
+                    Core.Logger("Super-Fan Swag Token A not found in shop, reloading...");
+                    goto ReloadShopA;
+                }
             }
 
             // Log progress
@@ -3140,86 +3159,63 @@ public class CoreFarms
 
         Core.AddDrop("Super-Fan Swag Token A", "Super-Fan Swag Token B", "Super-Fan Swag Token C");
         Core.EquipClass(ClassType.Farm);
-
         Core.RegisterQuests(1304, 1307);
         Core.FarmingLogger($"Super-Fan Swag Token A", quant);
 
         while (!Bot.ShouldExit && !Core.CheckInventory("Super-Fan Swag Token A", quant))
         {
-            // Farm Super-Fan Swag Token D
-            Core.KillMonster("terrarium", "Enter", "Spawn", "Dustbunny of DOOM", "Super-Fan Swag Token D", 500, isTemp: false);
-
-            // Convert D to C
             int dQuantity = Bot.Inventory.GetQuantity("Super-Fan Swag Token D");
-            int cQuantity = dQuantity / 10;
-            if (cQuantity > 0)
+            int cQuantity = Bot.Inventory.GetQuantity("Super-Fan Swag Token C");
+            int bQuantity = Bot.Inventory.GetQuantity("Super-Fan Swag Token B");
+            int aQuantity = Bot.Inventory.GetQuantity("Super-Fan Swag Token A");
+
+            Core.KillMonster("terrarium", "Enter", "Spawn", "*", "Super-Fan Swag Token D", 500, isTemp: false);
+
+            Core.Join("Collection");
+            Bot.Wait.ForCellChange("Begin");
+
+            bool ShopCheck = Bot.Map.Name == "collection" && Bot.Shops.ID == 325;
+            while (!Bot.ShouldExit && !ShopCheck)
             {
-                int batches = (cQuantity + 49) / 50; // Number of batches needed
-                for (int i = 0; i < batches; i++)
-                {
-                    int batchQuantity = Math.Min(50, cQuantity - (i * 50));
-                    int maxStackC = 500;
-                    if (batchQuantity > maxStackC)
-                    {
-                        batchQuantity = maxStackC;
-                    }
-                    Core.BuyItem("Collection", 325, "Super-Fan Swag Token C", batchQuantity);
-                    Core.Logger($"Converted batch of {Math.Min(50, dQuantity - (i * 50))} D to {batchQuantity} C. Remaining C needed: {cQuantity - (i * 50) - batchQuantity}.");
-                }
-            }
-            else
-            {
-                Core.Logger($"Need more Super-Fan Swag Token D. Current D: {dQuantity}.");
+                Bot.Shops.Load(325);
+                Bot.Log($"shop loaded: {ShopCheck}");
+                Bot.Wait.ForTrue(() => Bot.Shops.Name == "Super Fan Token Shop", 20);
+                Bot.Wait.ForActionCooldown(GameActions.LoadShop);
+                if (ShopCheck)
+                    break;
+                Core.Sleep();
             }
 
-            // Convert C to B
-            int cAvailable = Bot.Inventory.GetQuantity("Super-Fan Swag Token C");
-            int bQuantity = cAvailable / 10;
-            if (bQuantity > 0)
+            if (ShopCheck && dQuantity / 10 > 1 && cQuantity < 500 && dQuantity / 10 + cQuantity < 500)
             {
-                int maxStackB = 200;
-                int batchesB = (bQuantity + (maxStackB / 10) - 1) / (maxStackB / 10); // Number of batches needed for B
-                for (int i = 0; i < batchesB; i++)
-                {
-                    int batchQuantity = Math.Min(maxStackB / 10, bQuantity - (i * (maxStackB / 10)));
-                    Core.BuyItem("Collection", 325, "Super-Fan Swag Token B", batchQuantity);
-                    Core.Logger($"Converted {cAvailable} C to {batchQuantity} B. Remaining B needed: {bQuantity - batchQuantity}.");
-                }
+                int buyC = dQuantity / 10;
+                Core.Logger($"Buying {buyC} Super-Fan Swag Token C.");
+                Bot.Shops.BuyItem("Super-Fan Swag Token C", buyC);
+                Bot.Wait.ForActionCooldown(GameActions.BuyItem);
             }
-            else
+            if (ShopCheck && cQuantity / 10 > 1 && bQuantity < 200 && cQuantity / 10 + bQuantity < 200)
             {
-                Core.Logger($"Need more Super-Fan Swag Token C. Current C: {cAvailable}.");
+                int buyB = cQuantity / 10;
+                Core.Logger($"Buying {buyB} Super-Fan Swag Token B.");
+                Bot.Shops.BuyItem("Super-Fan Swag Token B", buyB);
+                Bot.Wait.ForActionCooldown(GameActions.BuyItem);
             }
-
-            // Convert B to A
-            int bAvailable = Bot.Inventory.GetQuantity("Super-Fan Swag Token B");
-            int aQuantity = bAvailable / 20;
-            if (aQuantity > 0)
+            if (ShopCheck && bQuantity / 20 > 1 && aQuantity < 100 && bQuantity / 20 + aQuantity < 100)
             {
-                int maxStackA = 100;
-                int batchesA = (aQuantity + (maxStackA / 20) - 1) / (maxStackA / 20); // Number of batches needed for A
-                for (int i = 0; i < batchesA; i++)
-                {
-                    int batchQuantity = Math.Min(maxStackA / 20, aQuantity - (i * (maxStackA / 20)));
-                    Core.BuyItem("Collection", 325, "Super-Fan Swag Token A", batchQuantity);
-                    Core.Logger($"Converted {bAvailable} B to {batchQuantity} A. Remaining A needed: {aQuantity - batchQuantity}.");
-                }
-            }
-            else
-            {
-                Core.Logger($"Need more Super-Fan Swag Token B. Current B: {bAvailable}.");
+                int buyA = bQuantity / 20;
+                Core.Logger($"Buying {buyA} Super-Fan Swag Token A.");
+                Bot.Shops.BuyItem("Super-Fan Swag Token A", buyA);
+                Bot.Wait.ForActionCooldown(GameActions.BuyItem);
             }
 
-            // Log progress
-            int aInventory = Bot.Inventory.GetQuantity("Super-Fan Swag Token A");
-            Core.Logger($"Current A Tokens: {aInventory}/{quant}. Need {quant - aInventory} more.");
         }
 
         Core.CancelRegisteredQuests();
     }
 
 
-    public void MembershipDues(MemberShipsIDS faction, int rank = 10)
+
+    public void MembershipDues(MemberShipsIDS faction, int rank = 11)
     {
         if (FactionRank(faction.ToString()) >= rank)
             return;
