@@ -2047,7 +2047,7 @@ public class CoreBots
     {
         EnsureAccept(questID);
         Sleep();
-        EnsureComplete(questID, itemID);
+        EnsureCompleteMulti(questID, itemID);
     }
 
     /// <param name="QuestID">ID of the quest</param>
@@ -4575,6 +4575,15 @@ public class CoreBots
                 tryJoin();
                 break;
 
+            case "Collection":
+                JumpWait();
+                Bot.Map.Join(PrivateRooms ? $"{map}-" + PrivateRoomNumber : map);
+                Bot.Wait.ForMapLoad(map);
+                //transition from the intro cutscene (happens once per login)
+                if (Bot.Player.Cell != "Begin")
+                    Jump("Begin");
+                Bot.Wait.ForCellChange("Begin");
+                break;
             case "doomvaultb":
                 SetAchievement(18);
                 SimpleQuestBypass((127, 26), (126, 18)); //3004 + 3008
