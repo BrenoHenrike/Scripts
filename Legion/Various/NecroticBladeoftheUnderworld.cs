@@ -70,7 +70,7 @@ public class NecroticBladeoftheUnderworld
         //Underworld Blade of DOOM
         if (!Core.CheckInventory("Underworld Blade of DOOM"))
         {
-            Core.HuntMonster(("Dage", "Dage the Evil", "Underworld Blade of DOOM", isTemp: false, publicRoom: false);
+            Core.HuntMonster("Dage", "Dage the Evil", "Underworld Blade of DOOM", isTemp: false, publicRoom: false);
             Bot.Wait.ForPickup("Underworld Blade of DOOM");
         }
 

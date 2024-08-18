@@ -4579,8 +4579,6 @@ public class CoreBots
                 tryJoin();
                 Bot.Wait.ForMapLoad(map);
                 //transition from the intro cutscene (happens once per login)
-                if (Bot.Player.Cell != "Begin")
-                    Jump("Begin");
                 Bot.Wait.ForCellChange("Begin");
                 break;
             case "doomvaultb":

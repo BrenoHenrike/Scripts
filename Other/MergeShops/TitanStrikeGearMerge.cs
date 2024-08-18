@@ -68,7 +68,7 @@ public class TitanStrikeGearMerge
 
                 case "Titanic Tincture":
                     Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster(("titandrakath", "Titan Drakath", req.Name, quant, false);
+                    Core.HuntMonster("titandrakath", "Titan Drakath", req.Name, quant, false);
                     break;
 
                 case "Heroic Titan's Greatsword":
@@ -127,7 +127,7 @@ public class TitanStrikeGearMerge
 
                 case "Titan Drakath's Blade":
                     Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster(("titandrakath", "Titan Drakath", req.Name, quant, false);
+                    Core.HuntMonster("titandrakath", "Titan Drakath", req.Name, quant, false);
                     break;
 
 
@@ -151,7 +151,7 @@ public class TitanStrikeGearMerge
 
                 case "Titan Drakath's Morph":
                     Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster(("titandrakath", "Titan Drakath", req.Name, isTemp: false);
+                    Core.HuntMonster("titandrakath", "Titan Drakath", req.Name, isTemp: false);
                     break;
 
                 case "Titan Paladin's Cloak":

@@ -53,7 +53,7 @@ public class CoreAwe
             if (Map.ToLower() == "doomvault" || Map.ToLower() == "doomvaultb")
                 Core.KillMonster(Map, Map.ToLower().EndsWith('b') ? "r26" : "r5", "Left", Monster, $"{Item} Shard", ShardAmount, false);
             else
-                Core.HuntMonster((Map, Monster, $"{Item} Shard", ShardAmount, false);
+                Core.HuntMonster(Map, Monster, $"{Item} Shard", ShardAmount, false);
             Core.EnsureComplete(questID);
             Bot.Wait.ForPickup($"{Item} Fragment");
         }
