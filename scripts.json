@@ -50,7 +50,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 245603,
+    "size": 245520,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -217,7 +217,7 @@
       "null"
     ],
     "path": "Legion/CoreLegion.cs",
-    "size": 41825,
+    "size": 41822,
     "fileName": "CoreLegion.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/CoreLegion.cs"
   },
@@ -2992,7 +2992,7 @@
       "ravenous"
     ],
     "path": "Enhancement/UnlockForgeEnhancements.cs",
-    "size": 41950,
+    "size": 41947,
     "fileName": "UnlockForgeEnhancements.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Enhancement/UnlockForgeEnhancements.cs"
   },
@@ -4395,7 +4395,7 @@
       "null"
     ],
     "path": "Hollowborn/HollowbornDoomKnight/CoreHollowbornDoomKnight.cs",
-    "size": 7767,
+    "size": 7758,
     "fileName": "CoreHollowbornDoomKnight.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/HollowbornDoomKnight/CoreHollowbornDoomKnight.cs"
   },
@@ -5068,7 +5068,7 @@
       "null"
     ],
     "path": "Legion/Various/NecroticBladeoftheUnderworld.cs",
-    "size": 4407,
+    "size": 4404,
     "fileName": "NecroticBladeoftheUnderworld.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Legion/Various/NecroticBladeoftheUnderworld.cs"
   },
@@ -5447,7 +5447,7 @@
       "class"
     ],
     "path": "Other/Classes/VerusDoomKnight.cs",
-    "size": 9148,
+    "size": 9061,
     "fileName": "VerusDoomKnight.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/VerusDoomKnight.cs"
   },
@@ -5543,7 +5543,7 @@
       "timeinn"
     ],
     "path": "Other/Classes/DragonOfTime.cs",
-    "size": 12621,
+    "size": 12585,
     "fileName": "DragonOfTime.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/DragonOfTime.cs"
   },
@@ -7074,7 +7074,7 @@
       "corps"
     ],
     "path": "Other/MergeShops/TitanStrikeGearMerge.cs",
-    "size": 11361,
+    "size": 11352,
     "fileName": "TitanStrikeGearMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/TitanStrikeGearMerge.cs"
   },
@@ -10520,7 +10520,7 @@
       "relic"
     ],
     "path": "Good/GearOfAwe/ArmorOfAwe.cs",
-    "size": 2365,
+    "size": 2362,
     "fileName": "ArmorOfAwe.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/GearOfAwe/ArmorOfAwe.cs"
   },
@@ -10531,7 +10531,7 @@
       "null"
     ],
     "path": "Good/GearOfAwe/CoreAwe.cs",
-    "size": 2102,
+    "size": 2099,
     "fileName": "CoreAwe.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/GearOfAwe/CoreAwe.cs"
   },
@@ -10582,7 +10582,7 @@
       "relic"
     ],
     "path": "Good/GearOfAwe/GearofAllwe.cs",
-    "size": 4725,
+    "size": 4722,
     "fileName": "GearofAllwe.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/GearOfAwe/GearofAllwe.cs"
   },
@@ -15120,7 +15120,7 @@
       "doall"
     ],
     "path": "Army/Various/ArmyLightCasterFull.cs",
-    "size": 4674,
+    "size": 4670,
     "fileName": "ArmyLightCasterFull.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmyLightCasterFull.cs"
   },
