@@ -501,9 +501,9 @@ public class CoreAdvanced
     /// <param name="item">Item to hunt the monster for, if null will just hunt & kill the monster 1 time</param>
     /// <param name="quant">Desired quantity of the item</param>
     /// <param name="isTemp">Whether the item is temporary</param>
-    public void BoostHuntMonster(string map, string monster, string item = "", int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
+    public void BoostHuntMonster(string map, string monster, string item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
     {
-        if (item != "" && Core.CheckInventory(item, quant))
+        if (item != null && Core.CheckInventory(item, quant))
             return;
 
         Core.Join(map, publicRoom: publicRoom);
