@@ -4575,12 +4575,12 @@ public class CoreBots
                 tryJoin();
                 break;
 
-            case "Collection":
-                tryJoin();
-                Bot.Wait.ForMapLoad(map);
-                //transition from the intro cutscene (happens once per login)
-                Bot.Wait.ForCellChange("Begin");
+            case "collection":
+                JumpWait();
+                Bot.Map.Join(PrivateRooms ? $"{map}-" + PrivateRoomNumber : map, "Begin", "Spawn");
+                Bot.Wait.ForMapLoad("collection");
                 break;
+
             case "doomvaultb":
                 SetAchievement(18);
                 SimpleQuestBypass((127, 26), (126, 18)); //3004 + 3008
