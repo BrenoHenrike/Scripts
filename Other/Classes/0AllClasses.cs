@@ -464,11 +464,11 @@ public class AllClasses
     void CheckAndExecute(string className, Action action)
     {
         // Find the item in both inventory and bank.
-        ItemBase rankUpClass = Bot.Inventory.Items.Concat(Bot.Bank.Items)
+        ItemBase? rankUpClass = Bot.Inventory.Items.Concat(Bot.Bank.Items)
             .FirstOrDefault(x => x.Name == className);
 
         // Check if the item is found and if it meets the quantity requirement.
-        if (!IsitRank10(rankUpClass))
+        if (rankUpClass != null && !IsitRank10(rankUpClass))
         {
             action();
         }
