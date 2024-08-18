@@ -1163,25 +1163,23 @@ public class CoreFarms
         if (FactionRank("Arcangrove") >= rank)
             return;
 
-        MembershipDues(MemberShipsIDS.Arcangrove);
-
-        // Core.EquipClass(ClassType.Farm);
-        // Core.SavedState();
-        // ToggleBoost(BoostType.Reputation);
-        // // A Necessary Sacrifice 794, Gorillaphant Poaching 795, Mustard and Pretzel Root 796
-        // // Thyme and a Half 797, Thistle Do Nicely 798, Pleased to Meat You 799, ArcanRobe 800
-        // // Ebony and Ivory Tusks 801
-        // Core.RegisterQuests(794, 795, 796, 797, 798, 799, 800, 801);
-        // while (!Bot.ShouldExit && FactionRank("Arcangrove") < rank)
-        // {
-        //     for (int i = 0; i < 10; i++)
-        //         Core.KillMonster("arcangrove", "Back", "Left", "*", log: false);
-        //     for (int i = 0; i < 10; i++)
-        //         Core.KillMonster("arcangrove", "Right", "Left", "*", log: false);
-        // }
-        // Core.CancelRegisteredQuests();
-        // ToggleBoost(BoostType.Reputation, false);
-        // Core.SavedState(false);
+       Core.EquipClass(ClassType.Farm);
+        Core.SavedState();
+        ToggleBoost(BoostType.Reputation);
+        // A Necessary Sacrifice 794, Gorillaphant Poaching 795, Mustard and Pretzel Root 796
+        // Thyme and a Half 797, Thistle Do Nicely 798, Pleased to Meat You 799, ArcanRobe 800
+        // Ebony and Ivory Tusks 801
+        Core.RegisterQuests(794, 795, 796, 797, 798, 799, 800, 801);
+        while (!Bot.ShouldExit && FactionRank("Arcangrove") < rank)
+        {
+            for (int i = 0; i < 10; i++)
+                Core.KillMonster("arcangrove", "Back", "Left", "*", log: false);
+            for (int i = 0; i < 10; i++)
+                Core.KillMonster("arcangrove", "Right", "Left", "*", log: false);
+        }
+        Core.CancelRegisteredQuests();
+        ToggleBoost(BoostType.Reputation, false);
+        Core.SavedState(false);
     }
 
     public void BaconCatREP(int rank = 10)
