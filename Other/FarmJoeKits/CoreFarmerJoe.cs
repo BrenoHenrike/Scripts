@@ -1,4 +1,4 @@
-/*
+Ze2/*
 name: null
 description: null
 tags: null
@@ -383,7 +383,7 @@ public class CoreFarmerJoe
                     if (!Core.CheckInventory("Burning Blade"))
                     {
                         Core.Logger("Getting Burning Blade");
-                        SetClass(false, true, false);
+                        SetClass(true, false, false);
                         BB.GetBurningBlade();
                     }
                     Core.Logger($"Level {Level} done");
