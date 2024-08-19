@@ -1850,6 +1850,8 @@ public class CoreBots
     public int EnsureCompleteMulti(int questID, int amount = -1, int itemID = -1)
     {
         var quest = EnsureLoad(questID);
+        if (!Bot.Quests.Active.Any(x => x.ID == questID))
+            EnsureAccept(questID);
 
         int turnIns;
         if (quest.Once || !string.IsNullOrEmpty(quest.Field))
