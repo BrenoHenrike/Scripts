@@ -44,7 +44,7 @@ public class TrobbolierPet
             Core.EnsureAccept(5067);
             Core.HuntMonsterMapID("wormhole", 13, "Blue Trobbolier Fluff", 4, false);
             Core.HuntMonsterMapID("wormhole", 27, "Purple Trobbolier Fluff", 4, false);
-            Core.HuntMonsterMapID("wormhole", 13, "Green Trobbolier Fluff", 4, false);
+            Core.HuntMonsterMapID("wormhole", 24, "Green Trobbolier Fluff", 4, false);
             Core.HuntMonsterMapID("wormhole", 11, "Red Trobbolier Fluff", 4, false);
             Core.EnsureCompleteChoose(5067);
             Core.ToBank(Core.QuestRewards(5067));
