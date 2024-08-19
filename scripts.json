@@ -9968,17 +9968,6 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Armor/FiendofLight.cs"
   },
   {
-    "name": "null",
-    "description": "null",
-    "tags": [
-      "null"
-    ],
-    "path": "Other/FarmJoeKits/CoreFarmerJoe.cs",
-    "size": 45578,
-    "fileName": "CoreFarmerJoe.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/CoreFarmerJoe.cs"
-  },
-  {
     "name": "FarmerJoeKit0DoAll",
     "description": "null",
     "tags": [
