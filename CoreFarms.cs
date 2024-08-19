@@ -282,8 +282,6 @@ public class CoreFarms
             Core.CancelRegisteredQuests();
         }
 
-        FireWarxp(40);
-
         IcestormArena(level);
 
         if (rankUpClass)
@@ -297,6 +295,7 @@ public class CoreFarms
     /// Farms level in Ice Storm Arena
     /// </summary>
     /// <param name="level">Desired level</param>
+    /// <param name="rankUpClass"></param>
     public void IcestormArena(int level = 100, bool rankUpClass = false)
     {
         if (Bot.Player.Level >= level && !rankUpClass)
@@ -339,11 +338,17 @@ public class CoreFarms
         //Between level 30 and 35
         if (NotYetLevel(35))
         {
+            if (!rankUpClass)
+                Core.EquipClass(ClassType.Solo);
+
             Core.RegisterQuests(6629);
             while (NotYetLevel(35))
                 Core.KillMonster("icestormarena", "r11", "Left", "*", log: false, publicRoom: true);
             Core.CancelRegisteredQuests();
         }
+
+        if (!rankUpClass)
+            Core.EquipClass(ClassType.Farm);
 
         //Between level 35 and 50
         while (NotYetLevel(50))
