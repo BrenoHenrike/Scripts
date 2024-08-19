@@ -42,10 +42,10 @@ public class TrobbolierPet
         while (!Bot.ShouldExit && !Core.CheckInventory(Core.QuestRewards(5067), toInv: false))
         {
             Core.EnsureAccept(5067);
-            Core.HuntMonster("wormhole", "Blue Trobbolier", "Blue Trobbolier Fluff", 4, false);
-            Core.HuntMonster("wormhole", "Purple Trobbolier", "Purple Trobbolier Fluff", 4, false);
-            Core.HuntMonster("wormhole", "Green Trobbolier", "Green Trobbolier Fluff", 4, false);
-            Core.HuntMonster("wormhole", "Red Trobbolier", "Red Trobbolier Fluff", 4, false);
+            Core.HuntMonsterMapID("wormhole", 13, "Blue Trobbolier Fluff", 4, false);
+            Core.HuntMonsterMapID("wormhole", 27, "Purple Trobbolier Fluff", 4, false);
+            Core.HuntMonsterMapID("wormhole", 13, "Green Trobbolier Fluff", 4, false);
+            Core.HuntMonsterMapID("wormhole", 11, "Red Trobbolier Fluff", 4, false);
             Core.EnsureCompleteChoose(5067);
             Core.ToBank(Core.QuestRewards(5067));
         }
