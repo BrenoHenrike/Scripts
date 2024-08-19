@@ -23,39 +23,41 @@ public class ArmyFreeAcs
     {
         Core.SetOptions();
 
-        FreeAcs();
+        Core.Logger("Quest has been Removed, blame AE");
+        // FreeAcs();
 
         Core.SetOptions(false);
     }
 
-    public void FreeAcs()
-    {
-        List<string> warnings = new();
-        Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
+    // public void FreeAcs()
+    // {
+    //     List<string> warnings = new();
+    //     Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
 
-        while (!Bot.ShouldExit && Army.doForAll())
-        {
-            // Verified Email
-            if (Bot.Flash.CallGameFunction<bool>("world.myAvatar.isEmailVerified"))
-            {
-                if (!Core.isCompletedBefore(9578))
-                {
-                    Core.EnsureAccept(9578);
-                    Bot.Quests.UpdateQuest(7522);
-                    Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster("borgars", "Burglinster", "Cookie Dough");
-                    Core.EnsureComplete(9578);
-                }
-            }
-            else
-            {
-                Core.Logger($"Unverified Email: {Core.Username()} - Skipping");
-                continue;
-            }
+    //     while (!Bot.ShouldExit && Army.doForAll())
+    //     {
+    //         // Verified Email
+    //         if (Bot.Flash.CallGameFunction<bool>("world.myAvatar.isEmailVerified"))
+    //         {
+    //             if (!Core.isCompletedBefore(9578))
+    //             {
+    //                 Core.EnsureAccept(9578);
+    //                 Bot.Quests.UpdateQuest(7522);
+    //                 Core.EquipClass(ClassType.Solo);
+    //                 Core.HuntMonster("borgars", "Burglinster", "Cookie Dough");
+    //                 Core.EnsureComplete(9578);
+    //             }
+    //         }
+    //         else
+    //         {
+    //             Core.Logger($"Unverified Email: {Core.Username()} - Skipping");
+    //             continue;
+    //         }
 
 
-        }
-    }
+    //     }
+    // }
+
 }
 
 

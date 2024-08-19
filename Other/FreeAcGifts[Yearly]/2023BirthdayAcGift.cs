@@ -21,24 +21,24 @@ public class BirthdayAC2023
 
     public void GetFreeAcs()
     {
-        Core.OneTimeMessage("WARNING", "This Quest is a ONE-TIME quest (per account).", true, true);
+        Core.Logger("Quest has been Removed, blame AE");
+        // Core.OneTimeMessage("WARNING", "This Quest is a ONE-TIME quest (per account).", true, true);
 
-        if (!Bot.Flash.CallGameFunction<bool>("world.myAvatar.isEmailVerified") || Bot.Player.Level < 20)
-        {
-            Core.Logger("You need to be level 20 and have a verified email!");
-            return;
-        }
+        // if (!Bot.Flash.CallGameFunction<bool>("world.myAvatar.isEmailVerified") || Bot.Player.Level < 20)
+        // {
+        //     Core.Logger("You need to be level 20 and have a verified email!");
+        //     return;
+        // }
 
-        if (!Bot.Quests.IsAvailable(9444))
-        {
-            Core.Logger("Quest not avaible / is already completed.");
-            return;
-        }
+        // if (!Bot.Quests.IsAvailable(9444))
+        // {
+        //     Core.Logger("Quest not avaible / is already completed.");
+        //     return;
+        // }
 
-        Core.EnsureAccept(9444);
-        Core.HuntMonster("yulgar", "Agitated Orb", "Free ACs... and Yogurt");
-        Core.EnsureComplete(9444);
-
+        // Core.EnsureAccept(9444);
+        // Core.HuntMonster("yulgar", "Agitated Orb", "Free ACs... and Yogurt");
+        // Core.EnsureComplete(9444);
 
     }
 }

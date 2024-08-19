@@ -24,21 +24,23 @@ public class HolidayAC2023
 
     public void FreeAcs()
     {
-        Core.OneTimeMessage("WARNING", "This Quest is a ONE-TIME quest (per account).", true, true);
+        Core.Logger("Quest has been Removed, blame AE");
 
-        if (!Bot.Flash.CallGameFunction<bool>("world.myAvatar.isEmailVerified") || Bot.Player.Level < 20)
-        {
-            Core.Logger("You need to be level 20 and have a verified email!");
-            return;
-        }
+        // Core.OneTimeMessage("WARNING", "This Quest is a ONE-TIME quest (per account).", true, true);
 
-        if (!Core.isCompletedBefore(9578))
-        {
-            Core.EnsureAccept(9578);
-            Bot.Quests.UpdateQuest(7522);
-            Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("borgars", "Burglinster", "Cookie Dough");
-            Core.EnsureComplete(9578);
-        }
+        // if (!Bot.Flash.CallGameFunction<bool>("world.myAvatar.isEmailVerified") || Bot.Player.Level < 20)
+        // {
+        //     Core.Logger("You need to be level 20 and have a verified email!");
+        //     return;
+        // }
+
+        // if (!Core.isCompletedBefore(9578))
+        // {
+        //     Core.EnsureAccept(9578);
+        //     Bot.Quests.UpdateQuest(7522);
+        //     Core.EquipClass(ClassType.Solo);
+        //     Core.HuntMonster("borgars", "Burglinster", "Cookie Dough");
+        //     Core.EnsureComplete(9578);
+        // }
     }
 }
