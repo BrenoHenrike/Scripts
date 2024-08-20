@@ -1655,18 +1655,13 @@ public class CoreBots
             }
         }
 
-        // Sleep(ActionDelay * 2);
-        Bot.Wait.ForActionCooldown(GameActions.AcceptQuest);
+        Sleep(ActionDelay * 2);
+        // Bot.Wait.ForActionCooldown(GameActions.AcceptQuest);
         // Bot.Send.Packet($"%xt%zm%acceptQuest%{Bot.Map.RoomID}%{questID}%");
         if (Bot.Quests.Active.Any(x => x.ID == questID))
             return true;
         return Bot.Quests.EnsureAccept(questID);
     }
-
-
-
-
-
 
     /// <summary>
     /// Accepts all the quests given
@@ -1744,9 +1739,6 @@ public class CoreBots
             DebugLogger(this);
         }
     }
-
-
-
 
     /// <summary>
     /// Completes the quest with a choose-able reward item

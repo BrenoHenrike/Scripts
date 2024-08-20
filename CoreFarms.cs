@@ -1627,12 +1627,6 @@ public class CoreFarms
             return;
         }
 
-        if (!Core.isCompletedBefore(9350))
-        {
-            Core.Logger("Quest \"Frenzy Feast [9350]\" Not complete (you have to do this yourself), cannot continue the rep");
-            return;
-        }
-
         if (FactionRank("Skye") >= rank)
             return;
 
@@ -1640,7 +1634,6 @@ public class CoreFarms
         Core.SavedState();
         ToggleBoost(BoostType.Reputation);
         Core.Logger($"Farming rank {rank}");
-
         Core.RegisterQuests(9709, 9710, 9711, 9717);
         while (!Bot.ShouldExit && FactionRank("Skye") < rank)
             Core.KillMonster("balemorale", "r10", "Bottom", "*", log: false);
