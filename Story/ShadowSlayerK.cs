@@ -235,11 +235,9 @@ public class ShadowSlayerK
         // 9842 | Door Stuck
         if (!Story.QuestProgression(9842))
         {
-            Story.MapItemQuest(9841, "badmoon", 13448, 3);
-            Story.MapItemQuest(9841, "badmoon", 13449);
-
-            Core.HuntMonsterQuest(9842, new (string? mapName, string? monsterName, ClassType classType)[] {
-        ("badmoon", UseableMonsters[1], ClassType.Solo)});
+            Story.MapItemQuest(9842, "badmoon", 13448, 3);
+            Story.KillQuest(9842, "badmoon", UseableMonsters[1]);
+            Story.MapItemQuest(9842, "badmoon", 13449);
         }
 
 
