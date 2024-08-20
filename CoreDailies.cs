@@ -37,6 +37,7 @@ public class CoreDailies
     /// <param name="isTemp">Whether it is temporary</param>
     /// <param name="cell">Cell where the monster is (optional)</param>
     /// <param name="pad">Pad where the monster is</param>
+    /// <param name="publicRoom"></param>
     public void DailyRoutine(int quest, string map, string monster, string item, int quant = 1, bool isTemp = true, string? cell = null, string pad = "Left", bool publicRoom = false)
     {
         if (Bot.Quests.IsDailyComplete(quest))
@@ -59,6 +60,7 @@ public class CoreDailies
     /// Checks if the daily is complete, if not will add the specified drops and unbank if necessary
     /// </summary>
     /// <param name="quest">ID of the quest</param>
+    /// <param name="any"></param>
     /// <param name="items">Items to add to drop grabber and unbank</param>
     /// <returns></returns>
     //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -212,6 +214,7 @@ public class CoreDailies
     /// </summary>
     /// <param name="metals">Metals you want to be collected</param>
     /// <param name="quant">Quantity you want of the metals</param>
+    /// <param name="ToBank"></param>
     public void MineCrafting(string[]? metals = null, int quant = 2, bool ToBank = false)
     {
         metals ??= MineCraftingMetalsArray;
@@ -269,6 +272,7 @@ public class CoreDailies
     /// </summary>
     /// <param name="metals">Metals you want to be collected</param>
     /// <param name="quant">Quantity you want of the metals</param>
+    /// <param name="ToBank"></param>
     public void HardCoreMetals(string[]? metals = null, int quant = 1, bool ToBank = false)
     {
         if (!Core.IsMember || !Core.isCompletedBefore(2090))
@@ -1115,7 +1119,8 @@ public class CoreDailies
                                 Core.EquipClass(ClassType.Farm);
                                 Core.HuntMonster("battleodium", "Widowing", "Roses", 1, false, false);
                                 Core.KillMonster("battleodium", "r6", "Left", "Vileture", "Strawberries", 1, false, false);
-                                while (!Bot.ShouldExit && !Core.CheckInventory(76286)) ///multiple items with name "Rubies"
+                                //multiple items with name "Rubies"
+                                while (!Bot.ShouldExit && !Core.CheckInventory(76286))
                                     Core.KillMonster("battleodium", "r6", "Left", "Diemond", log: false);
                                 Core.ChainComplete(9107);
                                 Bot.Wait.ForPickup((int)gifts[0]);

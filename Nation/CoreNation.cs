@@ -607,6 +607,7 @@ public class CoreNation
     /// Farms Totem of Nulgath/Gem of Nulgath with Voucher Item: Totem of Nulgath quest
     /// </summary>
     /// <param name="reward">Which reward to pick (totem or gem)</param>
+    /// <param name="quant"></param>
     public void VoucherItemTotemofNulgath(VoucherItemTotem reward = VoucherItemTotem.Totem_of_Nulgath, int quant = 100)
     {
         if (!Core.CheckInventory("Voucher of Nulgath (non-mem)"))
@@ -731,6 +732,9 @@ public class CoreNation
     /// </summary>
     /// <param name="item">Desired item name.</param>
     /// <param name="quant">Desired item quantity.</param>
+    /// <param name="UltraAlteon"></param>
+    /// <param name="KeepVoucher"></param>
+    /// <param name="AssistantDuring"></param>
     public void Supplies(string? item = null, int quant = 1, bool UltraAlteon = false, bool KeepVoucher = false, bool AssistantDuring = false)
     {
         bool sellMemVoucher = Core.CBOBool("Nation_SellMemVoucher", out bool _sellMemVoucher) && _sellMemVoucher;
@@ -1106,6 +1110,8 @@ public class CoreNation
     /// </summary>
     /// <param name="item">Desired item name</param>
     /// <param name="quant">Desired item quantity</param>
+    /// <param name="KeepVoucher"></param>
+    /// <param name="AssistantDuring"></param>
     public void BambloozevsDrudgen(string? item = null, int quant = 1, bool KeepVoucher = false, bool AssistantDuring = false)
     {
         if (!Core.CheckInventory(CragName) || Core.CheckInventory(item, quant))
@@ -1365,7 +1371,8 @@ public class CoreNation
     /// <summary>
     /// Do Contract Exchange quest 1 time, if <paramref name="farmUni13"/> is true, will farm Uni 13 before if needed
     /// </summary>
-    /// <param name="reward">Desired reward</param>
+    /// <param name="rewardEnum"></param>
+    /// <param name="quant"></param>
     /// <param name="farmUni13">Whether or not farm Uni 13</param>
     public void ContractExchange(ContractExchangeRewards rewardEnum, int quant, bool farmUni13 = true)
     {
@@ -1635,6 +1642,7 @@ public class CoreNation
     /// Do Kiss the Void quest for Blood Gems.
     /// </summary>
     /// <param name="quant">Desired quantity, 100 = max stack</param>
+    /// <param name="betrayalBlade"></param>
     public void KisstheVoid(int quant = 100, string? betrayalBlade = null)
     {
         if (betrayalBlade == null ? Core.CheckInventory("Blood Gem of the Archfiend", quant) : Core.CheckInventory(betrayalBlade))
@@ -1737,7 +1745,6 @@ public class CoreNation
     /// Farms Dwobo Coins with the specified quest and quantity.
     /// </summary>
     /// <param name="quant">Desired quantity of Dwobo Coins</param>
-    /// <param name="questId">Quest ID for the Dwobo Coin quest</param>
     public void DwoboCoin(int quant)
     {
         if (Core.CheckInventory("Dwobo Coin", quant))
@@ -2068,7 +2075,6 @@ public class CoreNation
     /// Swindles Bilk method
     /// </summary>
     /// <param name="item">Desired item name</param>
-    /// <param name="quantity">Desired item quantity</param>
     public void SwindlesBilk(string item)
     {
         if (string.IsNullOrEmpty(item))
@@ -2087,6 +2093,7 @@ public class CoreNation
     /// Farms Voucher of Nulgath (member or not) with the best method available
     /// </summary>
     /// <param name="member">If true will farm Voucher of Nulgath; false Voucher of Nulgath (nom-mem)</param>
+    /// <param name="KeepVoucher"></param>
     public void FarmVoucher(bool member, bool KeepVoucher = false)
     {
         if ((Core.CheckInventory("Voucher of Nulgath (non-mem)") && !member) || (Core.CheckInventory("Voucher of Nulgath") && member))

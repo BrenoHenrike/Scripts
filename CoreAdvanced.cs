@@ -39,8 +39,8 @@ public class CoreAdvanced
     /// <param name="shopID">ID of the shop</param>
     /// <param name="itemName">Name of the item</param>
     /// <param name="quant">Desired quantity</param>
-    /// <param name="shopQuant">How many items you get for 1 buy</param>
     /// <param name="shopItemID">Use this for Merge shops that has 2 or more of the item with the same name and you need the second/third/etc., be aware that it will re-log you after to prevent ghost buy. To get the ShopItemID use the built in loader of Skua</param>
+    /// <param name="Log"></param>
     public void BuyItem(string map, int shopID, string itemName, int quant = 1, int shopItemID = 0, bool Log = true)
     {
         if (Core.CheckInventory(itemName, quant))
@@ -70,6 +70,7 @@ public class CoreAdvanced
     /// <param name="quant">Desired quantity</param>
     /// <param name="shopQuant">How many items you get for 1 buy</param>
     /// <param name="shopItemID">Use this for Merge shops that has 2 or more of the item with the same name and you need the second/third/etc., be aware that it will relog you after to prevent ghost buy. To get the ShopItemID use the built in loader of Skua</param>
+    /// <param name="Log"></param>
     public void BuyItem(string map, int shopID, int itemID, int quant = 1, int shopQuant = 1, int shopItemID = 0, bool Log = true)
     {
         if (Core.CheckInventory(itemID, quant))
@@ -185,6 +186,7 @@ public class CoreAdvanced
     /// Will make sure you have every requierment (XP, Rep and Gold) to buy the item.
     /// </summary>
     /// <param name="item">The ShopItem object containing all the information</param>
+    /// <param name="quant"></param>
     public void GetItemReq(ShopItem item, int quant = 1)
     {
         if (!string.IsNullOrEmpty(item.Faction) && item.Faction != "None" && item.RequiredReputation > 0)
@@ -444,16 +446,17 @@ public class CoreAdvanced
 #nullable enable
 
     /// <summary>
-    /// Joins a map, jump & set the spawn point and kills the specified monster with the best available race gear
+    /// Joins a map, jumps to a specified cell and pad, sets the spawn point, and kills the specified monster using the best available race gear.
     /// </summary>
-    /// <param name="map">Map to join</param>
-    /// <param name="cell">Cell to jump to</param>
-    /// <param name="pad">Pad to jump to</param>
-    /// <param name="monster">Name of the monster to kill</param>
-    /// <param name="item">Item to kill the monster for, if null will just kill the monster 1 time</param>
-    /// <param name="quant">Desired quantity of the item</param>
-    /// <param name="isTemp">Whether the item is temporary</param>
-    /// <param name="log">Whether it will log that it is killing the monster</param>
+    /// <param name="map">The map to join.</param>
+    /// <param name="cell">The cell to jump to.</param>
+    /// <param name="pad">The pad to jump to.</param>
+    /// <param name="monster">The name of the monster to kill.</param>
+    /// <param name="item">The item to kill the monster for. If null or empty, will just kill the monster once.</param>
+    /// <param name="quant">The desired quantity of the item to collect.</param>
+    /// <param name="isTemp">Whether the item is temporary.</param>
+    /// <param name="log">Whether to log the killing of the monster.</param>
+    /// <param name="publicRoom">Whether the action should take place in a public room.</param>
     public void BoostKillMonster(string map, string cell, string pad, string monster, string item = "", int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
     {
         if (item != "" && Core.CheckInventory(item, quant))
@@ -478,6 +481,7 @@ public class CoreAdvanced
     /// <param name="quant">Desired quantity of the item</param>
     /// <param name="isTemp">Whether the item is temporary</param>
     /// <param name="log">Whether it will log that it is killing the monster</param>
+    /// <param name="publicRoom"></param>
     public void BoostKillMonster(string map, string cell, string pad, int monsterID, string item = "", int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
     {
         if (item != "" && Core.CheckInventory(item, quant))
@@ -493,14 +497,15 @@ public class CoreAdvanced
     }
 
     /// <summary>
-    /// Joins a map and hunt for the monster and kills the specified monster with the best available race gear
+    /// Joins a map, hunts for the monster, and kills the specified monster using the best available race gear.
     /// </summary>
-    /// </summary>
-    /// <param name="map">Map to join</param>
-    /// <param name="monster">Name of the monster to kill</param>
-    /// <param name="item">Item to hunt the monster for, if null will just hunt & kill the monster 1 time</param>
-    /// <param name="quant">Desired quantity of the item</param>
-    /// <param name="isTemp">Whether the item is temporary</param>
+    /// <param name="map">The map to join.</param>
+    /// <param name="monster">The name of the monster to hunt and kill.</param>
+    /// <param name="item">The item to hunt the monster for. If null, it will just hunt and kill the monster once.</param>
+    /// <param name="quant">The desired quantity of the item to collect.</param>
+    /// <param name="isTemp">Whether the item is temporary.</param>
+    /// <param name="log">Whether to log the hunting and killing of the monster.</param>
+    /// <param name="publicRoom">Whether the action should take place in a public room.</param>
     public void BoostHuntMonster(string map, string monster, string? item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
     {
         if (item != null && Core.CheckInventory(item, quant))
@@ -516,16 +521,18 @@ public class CoreAdvanced
     }
 
     /// <summary>
-    /// Joins a map, jump & set the spawn point and kills the specified monster with the best available race gear. But also listens for Counter Attacks
+    /// Joins a map, jumps to a specified cell and pad, sets the spawn point, and kills the specified monster using the best available race gear. Additionally, it listens for counter-attacks.
     /// </summary>
-    /// <param name="map">Map to join</param>
-    /// <param name="cell">Cell to jump to</param>
-    /// <param name="pad">Pad to jump to</param>
-    /// <param name="monster">Name of the monster to kill</param>
-    /// <param name="item">Item to kill the monster for, if null will just kill the monster 1 time</param>
-    /// <param name="quant">Desired quantity of the item</param>
-    /// <param name="isTemp">Whether the item is temporary</param>
-    /// <param name="log">Whether it will log that it is killing the monster</param>
+    /// <param name="map">The map to join.</param>
+    /// <param name="cell">The cell to jump to.</param>
+    /// <param name="pad">The pad to jump to.</param>
+    /// <param name="monster">The name of the monster to kill.</param>
+    /// <param name="item">The item to kill the monster for. If null, it will just kill the monster once.</param>
+    /// <param name="quant">The desired quantity of the item to collect.</param>
+    /// <param name="isTemp">Whether the item is temporary.</param>
+    /// <param name="log">Whether to log the killing of the monster.</param>
+    /// <param name="publicRoom">Whether the action should take place in a public room.</param>
+    /// <param name="forAuto">Whether the method is used for an automated process.</param>
     public void KillUltra(string map, string cell, string pad, string monster, string? item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = true, bool forAuto = false)
     {
         if (item != null && Core.CheckInventory(item, quant))
@@ -571,7 +578,8 @@ public class CoreAdvanced
     /// <summary>
     /// Ranks up your class
     /// </summary>
-    /// <param name="ClassName">Name of the class you want it to rank up</param>
+    /// <param name="className"></param>
+    /// <param name="gearRestore"></param>
     public void RankUpClass(string className, bool gearRestore = true)
     {
         Bot.Wait.ForTrue(() => Bot.Inventory.Contains(className), 20);
@@ -1045,6 +1053,7 @@ public class CoreAdvanced
     /// Stores the gear a player has so that it can later restore these
     /// </summary>
     /// <param name="Restore">Set true to restore previously stored gear</param>
+    /// <param name="EnhAfter"></param>
     public void GearStore(bool Restore = false, bool EnhAfter = false)
     {
         if (!Restore)
@@ -1173,8 +1182,10 @@ public class CoreAdvanced
     /// <summary>
     /// Enhances your currently equipped gear
     /// </summary>
-    /// <param name="Type">Example: EnhancementType.Lucky , replace Lucky with whatever enhancement you want to have it use</param>
-    /// <param name="Special">Example: WeaponSpecial.Spiral_Carve , replace Spiral_Carve with whatever weapon special you want to have it use</param>
+    /// <param name="type"></param>
+    /// <param name="cSpecial"></param>
+    /// <param name="hSpecial"></param>
+    /// <param name="wSpecial"></param>
     public void EnhanceEquipped(EnhancementType type, CapeSpecial cSpecial = CapeSpecial.None, HelmSpecial hSpecial = HelmSpecial.None, WeaponSpecial wSpecial = WeaponSpecial.None)
     {
         if (Core.CBOBool("DisableAutoEnhance", out bool _disableAutoEnhance) && _disableAutoEnhance)
@@ -1194,9 +1205,11 @@ public class CoreAdvanced
     /// <summary>
     /// Enhances a selected item
     /// </summary>
-    /// <param name="ItemName">Name of the item you want to enhance</param>
-    /// <param name="Type">Example: EnhancementType.Lucky , replace Lucky with whatever enhancement you want to have it use</param>
-    /// <param name="Special">Example: WeaponSpecial.Spiral_Carve , replace Spiral_Carve with whatever weapon special you want to have it use</param>
+    /// <param name="item"></param>
+    /// <param name="type"></param>
+    /// <param name="cSpecial"></param>
+    /// <param name="hSpecial"></param>
+    /// <param name="wSpecial"></param>
     public void EnhanceItem(string item, EnhancementType type, CapeSpecial cSpecial = CapeSpecial.None, HelmSpecial hSpecial = HelmSpecial.None, WeaponSpecial wSpecial = WeaponSpecial.None)
     {
         if (string.IsNullOrEmpty(item) || (Core.CBOBool("DisableAutoEnhance", out bool _disableAutoEnhance) && _disableAutoEnhance))
@@ -1239,9 +1252,11 @@ public class CoreAdvanced
     /// <summary>
     /// Enhances multiple selected items
     /// </summary>
-    /// <param name="ItemName">Names of the items you want to enhance (Case-Sensitive)</param>
-    /// <param name="Type">Example: EnhancementType.Lucky , replace Lucky with whatever enhancement you want to have it use</param>
-    /// <param name="Special">Example: WeaponSpecial.Spiral_Carve , replace Spiral_Carve with whatever weapon special you want to have it use</param>
+    /// <param name="items"></param>
+    /// <param name="type"></param>
+    /// <param name="cSpecial"></param>
+    /// <param name="hSpecial"></param>
+    /// <param name="wSpecial"></param>
     public void EnhanceItem(string[] items, EnhancementType type, CapeSpecial cSpecial = CapeSpecial.None, HelmSpecial hSpecial = HelmSpecial.None, WeaponSpecial wSpecial = WeaponSpecial.None)
     {
         if (items.Length == 0 || (Core.CBOBool("DisableAutoEnhance", out bool _disableAutoEnhance) && _disableAutoEnhance))

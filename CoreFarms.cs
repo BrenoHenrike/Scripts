@@ -205,6 +205,7 @@ public class CoreFarms
     /// Farms Gold by selling Berserker Bunny
     /// </summary>
     /// <param name="goldQuant">How much gold to farm</param>
+    /// <param name="sell"></param>
     public void BerserkerBunny(int goldQuant = 100000000, bool sell = true)
     {
         if (Bot.Player.Gold >= goldQuant)
@@ -409,6 +410,7 @@ public class CoreFarms
     /// Farms in Seven Circles War for level and items
     /// </summary>
     /// <param name="level">Desired level</param>
+    /// <param name="gold"></param>
     public void SevenCirclesWar(int level = 100, int gold = 100000000)
     {
         if (Bot.Player.Level >= level && Bot.Player.Gold >= gold)
@@ -533,11 +535,10 @@ public class CoreFarms
     }
 
     /// <summary>
-    /// Kills the Team B Captain in /BludrutBrawl for the desired item (Combat Trophy or Yoshino's Citrine)
+    /// Kills the Team B Captain in /BludrutBrawl for the desired item (Combat Trophy or Yoshino's Citrine).
     /// </summary>
     /// <param name="item">Name of the desired item</param>
     /// <param name="quant">Desired quantity</param>
-    /// <param name="canSoloBoss">Whether you can solo the Boss without killing Restorers and Brawlers</param>
     public void BludrutBrawlBoss(string item = "Combat Trophy", int quant = 5000) //, bool canSoloBoss = true)
     {
         if (Core.CheckInventory(item, quant))
@@ -970,6 +971,10 @@ public class CoreFarms
     /// <param name="rank">The minimum rank to make the misture, use 0 for any rank.</param>
     /// <param name="loop">Whether loop till you run out of reagents</param>
     /// <param name="modifier">Some mistures have specific packet modifiers, default is Moose but you can find Man, mRe and others.</param>
+    /// <param name="trait"></param>
+    /// <param name="YMB"></param>
+    /// <param name="item"></param>
+    /// <param name="quant"></param>
     public void AlchemyPacket(string reagent1, string reagent2, AlchemyRunes rune = AlchemyRunes.Gebo, int rank = 0, bool loop = true, string modifier = "Moose", AlchemyTraits trait = AlchemyTraits.APw, bool YMB = false, string? item = null, int quant = 1)
     {
         if (rank != 0 && FactionRank("Alchemy") < rank || (item != null && Core.CheckInventory(item, quant)))
