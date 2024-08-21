@@ -66,11 +66,11 @@ public class ArmyEmblemofDage
 
         Core.RegisterQuests(4742);
 
-        Bot.Options.AttackWithoutTarget = true;
         Army.AggroMonMIDs(5, 6, 7, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 41, 43, 49, 50, 51, 52);
         Army.AggroMonStart("shadowblast");
         Army.DivideOnCells("r6", "r10", "r11", "r12", "r16", "r18");
 
+        Bot.Options.AttackWithoutTarget = true;
         while (!Bot.ShouldExit && !Core.CheckInventory("Emblem of Dage", quant))
             Bot.Combat.Attack("*");
         Bot.Options.AttackWithoutTarget = false;
