@@ -7586,10 +7586,11 @@
       "plate",
       "morph",
       "guardian",
-      "trident"
+      "trident",
+      "mystical"
     ],
     "path": "Other/MergeShops/HydraMerge.cs",
-    "size": 6174,
+    "size": 7979,
     "fileName": "HydraMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/HydraMerge.cs"
   },
