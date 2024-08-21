@@ -65,13 +65,14 @@ public class ArmyEmblemofDage
         Core.EquipClass(ClassType.Farm);
 
         Core.RegisterQuests(4742);
-        Army.SmartAggroMonStart("shadowblast", "Carnage", "Shadowrise Guard");
-        
-        
-            
+
+        Army.AggroMonMIDs(5, 6, 7, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 41, 43, 49, 50, 51, 52);
+        Army.AggroMonStart("darkwarlegion");
+        Army.DivideOnCells("r6", "r10", "r11", "r12", "r16", "r18" );
+                   
         while (!Bot.ShouldExit && !Core.CheckInventory("Emblem of Dage", quant))
             Bot.Combat.Attack("*");
-        Core.CancelRegisteredQuests();
         Army.AggroMonStop(true);
+        Core.CancelRegisteredQuests();
     }
 }
