@@ -1,7 +1,7 @@
 /*
 name: Hydra Merge
 description: This bot will farm the items belonging to the selected mode for the Hydra Merge [1597] in /hydrachallenge
-tags: hydra, merge, hydrachallenge, chaos, hydraslayer, cloak, backblade, hammer, head, scarf, visor, dew, drops, dress, long, faerie, escherions, evolved, purified, plate, morph, guardian, trident
+tags: hydra, merge, hydrachallenge, chaos, hydraslayer, cloak, backblade, hammer, head, scarf, visor, dew, drops, dress, long, faerie, escherions, evolved, purified, plate, morph, guardian, trident, mystical
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -27,7 +27,7 @@ public class HydraMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Hydra Scale Piece", "Staff of Inversion" });
+        Core.BankingBlackList.AddRange(new[] { "Hydra Scale Piece", "Staff of Inversion", "Enchanted Pearl" });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -68,6 +68,11 @@ public class HydraMerge
                     Core.KillEscherion(req.Name, 1, false, true);
                     break;
 
+                case "Enchanted Pearl":
+                    Core.FarmingLogger(req.Name, quant);
+                    Core.EquipClass(ClassType.Solo);
+                    Core.HuntMonster("hydrachallenge", "Hydra Head 90", req.Name, quant, req.Temp, false);
+                    break;
             }
         }
     }
@@ -97,5 +102,15 @@ public class HydraMerge
         new Option<bool>("83397", "Purified HydraSlayer Polearm", "Mode: [select] only\nShould the bot buy \"Purified HydraSlayer Polearm\" ?", false),
         new Option<bool>("83398", "Purified HydraSlayer Trident", "Mode: [select] only\nShould the bot buy \"Purified HydraSlayer Trident\" ?", false),
         new Option<bool>("83399", "Purified HydraSlayer Staff", "Mode: [select] only\nShould the bot buy \"Purified HydraSlayer Staff\" ?", false),
+        new Option<bool>("83400", "Mystical HydraSlayer Plate", "Mode: [select] only\nShould the bot buy \"Mystical HydraSlayer Plate\" ?", false),
+        new Option<bool>("83401", "Mystical Hydraslayer Helm", "Mode: [select] only\nShould the bot buy \"Mystical Hydraslayer Helm\" ?", false),
+        new Option<bool>("83402", "Mystical HydraSlayer Morph Hood", "Mode: [select] only\nShould the bot buy \"Mystical HydraSlayer Morph Hood\" ?", false),
+        new Option<bool>("83403", "Mystical HydraSlayer Hood", "Mode: [select] only\nShould the bot buy \"Mystical HydraSlayer Hood\" ?", false),
+        new Option<bool>("83404", "Mystical Hydra Head Cape", "Mode: [select] only\nShould the bot buy \"Mystical Hydra Head Cape\" ?", false),
+        new Option<bool>("83405", "Mystical HydraSlayer Blade", "Mode: [select] only\nShould the bot buy \"Mystical HydraSlayer Blade\" ?", false),
+        new Option<bool>("83406", "Mystical HydraSlayer Blades", "Mode: [select] only\nShould the bot buy \"Mystical HydraSlayer Blades\" ?", false),
+        new Option<bool>("83407", "Mystical HydraSlayer Polearm", "Mode: [select] only\nShould the bot buy \"Mystical HydraSlayer Polearm\" ?", false),
+        new Option<bool>("83408", "Mystical HydraSlayer Trident", "Mode: [select] only\nShould the bot buy \"Mystical HydraSlayer Trident\" ?", false),
+        new Option<bool>("83409", "Mystical HydraSlayer Staff", "Mode: [select] only\nShould the bot buy \"Mystical HydraSlayer Staff\" ?", false),
     };
 }
