@@ -1817,21 +1817,21 @@ public class CoreFarms
         if (FactionRank("Embersea") >= rank)
             return;
 
-        MembershipDues(MemberShipsIDS.Embersea, rank);
+        // MembershipDues(MemberShipsIDS.Embersea, rank);
 
-        // Core.EquipClass(ClassType.Farm);
-        // Core.SavedState();
-        // ToggleBoost(BoostType.Reputation);
-        // Core.Logger($"Farming rank {rank}");
+        Core.EquipClass(ClassType.Farm);
+        Core.SavedState();
+        ToggleBoost(BoostType.Reputation);
+        Core.Logger($"Farming rank {rank}");
 
-        // //  Slay the Blazebinders (500rep - 5 kills)
-        // Core.RegisterQuests(4228);
-        // while (!Bot.ShouldExit && FactionRank("Embersea") < rank)
-        //     Core.HuntMonster("fireforge", "Blazebinder", log: false);
+        //  Slay the Blazebinders (500rep - 5 kills)
+        Core.RegisterQuests(4228);
+        while (!Bot.ShouldExit && FactionRank("Embersea") < rank)
+            Core.HuntMonster("fireforge", "Blazebinder", log: false);
 
-        // ToggleBoost(BoostType.Reputation, false);
-        // Core.CancelRegisteredQuests();
-        // Core.SavedState(false);
+        ToggleBoost(BoostType.Reputation, false);
+        Core.CancelRegisteredQuests();
+        Core.SavedState(false);
     }
 
     public void EternalREP(int rank = 10)
