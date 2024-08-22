@@ -19275,17 +19275,18 @@
   },
   {
     "name": "Yokai River",
-    "description": "This script will complete the storyline in /yokairiver.",
+    "description": "This script will complete the storyline in /yokaistarriver.",
     "tags": [
       "star",
       "festival",
       "yokai",
+      "yokaistarriver",
       "river",
       "story",
       "seasonal"
     ],
     "path": "Seasonal/StarFestival/YokaiRiver.cs",
-    "size": 1528,
+    "size": 1575,
     "fileName": "YokaiRiver.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StarFestival/YokaiRiver.cs"
   },
