@@ -107,7 +107,7 @@ public class ArcanaInvokerResourceMerge
         AOR.SunlightZone();
         CoreSS.CompleteSS();
         //prolly more storylines missing, add as found
-        
+
 
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("arcana", 2434, findIngredients, buyOnlyThis, buyMode: buyMode);
@@ -531,7 +531,7 @@ public class ArcanaInvokerResourceMerge
 
                 case "Nevanna's Revelation":
                     Core.FarmingLogger(req.Name, quant);
-                    Core.EquipClass(ClassType.Farm);
+                    Core.EquipClass(ClassType.Solo);
                     Core.HuntMonster("gaiazor", "Nevanna", req.Name, quant, false, false);
                     break;
 
