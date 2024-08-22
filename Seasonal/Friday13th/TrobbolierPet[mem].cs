@@ -7,6 +7,7 @@ tags: trobbolier-pet, member, friday-the-13th, seasonal
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/Seasonal/Friday13th/Story/CoreFriday13th.cs
+using System.Text;
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 
@@ -32,22 +33,41 @@ public class TrobbolierPet
 
         F13.Wormhole();
 
-        List<ItemBase> RewardOptions = Core.EnsureLoad(5067).Rewards;
+        List<ItemBase> rewardOptions = Core.EnsureLoad(5067).Rewards;
 
-        foreach (ItemBase item in RewardOptions)
-            Core.AddDrop(item.Name);
+        var logMessage = new StringBuilder("Inventory Check for Reward Options:\n");
 
+        foreach (ItemBase item in rewardOptions)
+        {
+            string status = Core.CheckInventory(item.Name, toInv: false) ? "✔️" : "❌";
+            logMessage.AppendLine($"- {item.Name}: {status}");
+        }
+
+        Bot.Log(logMessage);
+
+
+        Bot.Drops.Add(rewardOptions.Select(item => item.Name).ToArray());
         Core.EquipClass(ClassType.Farm);
 
-        while (!Bot.ShouldExit && !Core.CheckInventory(Core.QuestRewards(5067), toInv: false))
+        foreach (ItemBase item in rewardOptions)
         {
-            Core.EnsureAccept(5067);
-            Core.HuntMonsterMapID("wormhole", 13, "Blue Trobbolier Fluff", 4, false);
-            Core.HuntMonsterMapID("wormhole", 27, "Purple Trobbolier Fluff", 4, false);
-            Core.HuntMonsterMapID("wormhole", 24, "Green Trobbolier Fluff", 4, false);
-            Core.HuntMonsterMapID("wormhole", 11, "Red Trobbolier Fluff", 4, false);
-            Core.EnsureCompleteChoose(5067);
-            Core.ToBank(Core.QuestRewards(5067));
+            while (!Bot.ShouldExit && !Core.CheckInventory(item.ID, toInv: false))
+            {
+                Core.EnsureAccept(5067);
+                Core.HuntMonsterMapID("wormhole", 13, "Blue Trobbolier Fluff", 4, log: false);
+                Core.HuntMonsterMapID("wormhole", 27, "Purple Trobbolier Fluff", 4, log: false);
+                Core.HuntMonsterMapID("wormhole", 24, "Green Trobbolier Fluff", 4, log: false);
+                Core.HuntMonsterMapID("wormhole", 11, "Red Trobbolier Fluff", 4, log: false);
+                Core.EnsureCompleteChoose(5067, Core.QuestRewards(5067));
+                Bot.Wait.ForPickup("*");
+                Core.ToBank(rewardOptions
+                            .Where(item => Bot.Inventory.Contains(item.Name))
+                            .Select(item => item.Name)
+                            .ToArray());
+                Bot.Drops.Remove(item.ID);
+
+            }
         }
     }
+
 }
