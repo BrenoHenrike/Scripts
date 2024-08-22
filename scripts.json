@@ -6266,9 +6266,6 @@
       "gifts",
       "merge",
       "novashrine",
-      "gold",
-      "voucher",
-      "k",
       "star",
       "light",
       "destiny",
@@ -6283,10 +6280,12 @@
       "wings",
       "tail",
       "empyreans",
-      "claws"
+      "claws",
+      "reaver",
+      "reavers"
     ],
     "path": "Other/MergeShops/NovaShrineGiftsMerge.cs",
-    "size": 9739,
+    "size": 10318,
     "fileName": "NovaShrineGiftsMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/NovaShrineGiftsMerge.cs"
   },
