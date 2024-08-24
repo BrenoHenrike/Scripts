@@ -822,7 +822,7 @@ public class CoreAOR
         //         Bot.Skills.StartAdvanced("Dragon of Time", true, ClassUseMode.Solo);
         // }
 
-        if (!isTemp)
+        if (!isTemp && item != null)
             Core.AddDrop(item);
 
         //get, equip, and use safe pot (potions buggy af ae.. fix this)
