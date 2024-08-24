@@ -11,6 +11,7 @@ tags: null
 using System.Dynamic;
 using Newtonsoft.Json;
 using Skua.Core.Interfaces;
+using Skua.Core.Models;
 using Skua.Core.Models.Auras;
 using Skua.Core.Models.Monsters;
 using Skua.Core.Models.Skills;
@@ -30,7 +31,7 @@ public class CoreAOR
 
     public void DoAll()
     {
-        TerminaTemple(true);
+        TerminaTemple(coldThunder: true);
         AshrayVillage();
         SunlightZone();
         TwilightZone();
@@ -45,12 +46,15 @@ public class CoreAOR
         NaoiseGrave();
         LiaTaraHill();
         CastleGaheris();
+        ColdThunder();
     }
 
     private bool isSeaVoiceCalled = false;
-    public void TerminaTemple(bool seaVoice = false)
+    private bool isColdThunderCalled = false;
+
+    public void TerminaTemple(bool seaVoice = false, bool coldThunder = false)
     {
-        if (Core.isCompletedBefore(seaVoice ? 9351 : 9214))
+        if (Core.isCompletedBefore(coldThunder ? 9851 : seaVoice ? 9351 : 9214))
             return;
 
         SoW.ManaCradle();
@@ -65,19 +69,29 @@ public class CoreAOR
         Story.KillQuest(9214, "terminatemple", "Clandestine Guard");
         Story.MapItemQuest(9214, "terminatemple", new[] { 11628, 11629, 11630 });
 
-        if (!seaVoice)
+        if (!seaVoice && !coldThunder)
             return;
 
-        if (!isSeaVoiceCalled)
+        if (seaVoice && !isSeaVoiceCalled)
         {
             isSeaVoiceCalled = true;
             SeaVoice();
         }
+
         // Mopping Up (9351)
         if (isSeaVoiceCalled)
             Story.MapItemQuest(9351, "terminatemple", new[] { 12050, 12051 });
-    }
 
+        if (coldThunder && !isColdThunderCalled)
+        {
+            isColdThunderCalled = true;
+            ColdThunder();
+        }
+
+        // Tell-Tale Heart (9851)
+        if (isColdThunderCalled)
+            Story.MapItemQuest(9851, "terminatemple", new[] { 13541, 13542 });
+    }
     public void AshrayVillage()
     {
         if (Core.isCompletedBefore(9234))
@@ -759,6 +773,121 @@ public class CoreAOR
             Core.EquipClass(ClassType.Solo);
             Story.KillQuest(9828, "castlegaheris", "Thundersnow Storm");
             Core.EquipClass(ClassType.Farm);
+        }
+    }
+
+    public void ColdThunder()
+    {
+        if (Core.isCompletedBefore(9834))
+            return;
+
+        CastleGaheris();
+
+        Story.PreLoad(this);
+
+        // 9832 | A Friend's Faith
+        Story.MapItemQuest(9832, "coldthunder", 13403);
+
+        // 9833 | The Storm Queen
+        if (!Story.QuestProgression(9834))
+        {
+            Core.EnsureAccept(9833);
+            Core.Logger("About to attack Cold Thunder boss. It's very unstable; recommended to do it with more accounts.");
+            ColdThunderBoss("Cold Thunder Defeated");
+            Core.EnsureComplete(9833);
+        }
+
+        TerminaTemple(coldThunder: true);
+    }
+
+    //mostly for `Skye's Lightning` for the Merge
+    public void ColdThunderBoss(string? item = null, int quant = 1, bool isTemp = true)
+    {
+        if (item != null && (isTemp ? Bot.TempInv.Contains(item, quant) : Core.CheckInventory(item, quant)))
+        {
+            Bot.Events.ExtensionPacketReceived -= Listener;
+            Core.JumpWait();
+            return;
+        }
+
+        Bot.Events.ExtensionPacketReceived += Listener;
+        // if (Core.CheckInventory("Dragon of Time"))
+        // {
+        //     Adv.GearStore();
+        //     Core.Logger("Ohh..? you have DoT :O.. this is appearntly soloable");
+        //     //insurance vv
+        //     Core.Unbank("Dragon of Time");
+        //     Core.Equip("Dragon of Time");
+        //     if (Bot.Player.Alive && Bot.Player.CurrentClass.Name == "Dragon of Time")
+        //         Bot.Skills.StartAdvanced("Dragon of Time", true, ClassUseMode.Solo);
+        // }
+
+        if (!isTemp)
+            Core.AddDrop(item);
+
+        //get, equip, and use safe pot (potions buggy af ae.. fix this)
+        Core.BuyItem("mirrorportal", 774, "Shriekward Potion", 99);
+        Core.Equip("Shriekward Potion");
+        Bot.Wait.ForItemEquip("Shriekward Potion");
+        Bot.Wait.ForActionCooldown(GameActions.EquipItem);
+        Core.Sleep();
+        Core.UsePotion();
+
+        //get & equip useable pot
+        Core.BuyItem("coldthunder", 2467, "Bananach's Last Will", 1000);
+        Core.Equip("Bananach's Last Will");
+        Bot.Wait.ForItemEquip("Bananach's Last Will");
+        Bot.Wait.ForActionCooldown(GameActions.EquipItem);
+        Core.Sleep();
+
+        while (!Bot.ShouldExit && item != null && (isTemp ? !Bot.TempInv.Contains(item, quant) : !Core.CheckInventory(item, quant)))
+        {
+            if (Bot.Map.Name != "coldthunder")
+                Core.Join("coldthunder");
+
+            if (Bot.Player.Cell != "r3")
+                Core.Jump("r3");
+
+            Bot.Combat.Attack("*");
+
+            if (item != null && (isTemp ? Bot.TempInv.Contains(item, quant) : Core.CheckInventory(item, quant)))
+            {
+                Core.JumpWait();
+                break;
+            }
+
+            Core.Sleep();
+        }
+        Bot.Events.ExtensionPacketReceived -= Listener;
+        Core.JumpWait();
+        Adv.GearStore(true);
+
+        void Listener(dynamic packet)
+        {
+            string type = packet["params"].type;
+            dynamic data = packet["params"].dataObj;
+            if (type is not null and "json")
+            {
+                string cmd = data.cmd.ToString();
+                switch (cmd)
+                {
+                    case "ct":
+                        if (data.anims is not null)
+                        {
+                            foreach (var a in data.anims)
+                            {
+                                if (a is null)
+                                    continue;
+
+                                if (a.msg is not null && (string)a.msg is "The skies rumble. Prepare yourself!")
+                                {
+                                    Core.UsePotion();
+                                }
+                            }
+                        }
+                        break;
+                }
+            }
         }
     }
 
