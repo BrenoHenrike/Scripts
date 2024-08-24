@@ -34,13 +34,13 @@ public class SovereignOfStorms
 
     public void GetSOS(bool rankUpClass = true)
     {
-        if (Core.CheckInventory("Sovereign Of Storms"))
+        if (Core.CheckInventory("Sovereign of Storms"))
             return;
 
-        LTM.BuyAllMerge("Sovereign Of Storms");
+        LTM.BuyAllMerge("Sovereign of Storms");
 
         if (rankUpClass)
-            Adv.RankUpClass("Sovereign Of Storms");
+            Adv.RankUpClass("Sovereign of Storms");
     }
 }
 
