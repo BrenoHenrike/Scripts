@@ -180,7 +180,7 @@ tags: all classes,class,farm,complete,all
 //cs_include Scripts/Story/AgeOfRuin/CoreAOR.cs
 //cs_include Scripts/Story/SepulchureSaga/CoreSepulchure.cs
 //cs_include Scripts/Other\MergeShops\FelixsGildedGearMerge.cs
-//cs_iclude Scripts/Other\MergeShops\LoughshineLootMerge.cs
+//cs_include Scripts/Other\MergeShops\LoughshineLootMerge.cs
 //cs_include Scripts/Other\MergeShops\LiaTaraHillLootMerge.cs
 //cs_include Scripts/Other\MergeShops\ColdThunderMerge.cs
 //cs_include Scripts/Other\MergeShops\LothianTreasuryMerge.cs
