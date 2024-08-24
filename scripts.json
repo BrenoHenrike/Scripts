@@ -11215,7 +11215,7 @@
       "null"
     ],
     "path": "Story/AgeOfRuin/CoreAOR.cs",
-    "size": 28201,
+    "size": 32590,
     "fileName": "CoreAOR.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/CoreAOR.cs"
   },
@@ -11238,6 +11238,25 @@
     "size": 760,
     "fileName": "11Castleeblana.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/11Castleeblana.cs"
+  },
+  {
+    "name": "ColdThunder",
+    "description": "This script completes the storyline in /ColdThunder.",
+    "tags": [
+      "age",
+      "of",
+      "ruin",
+      "saga",
+      "story",
+      "quest",
+      "cold thunder",
+      "sovereign of storms",
+      "sos"
+    ],
+    "path": "Story/AgeOfRuin/16ColdThunder.cs",
+    "size": 751,
+    "fileName": "16ColdThunder.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/16ColdThunder.cs"
   },
   {
     "name": "The Hill of Lia Tara",
