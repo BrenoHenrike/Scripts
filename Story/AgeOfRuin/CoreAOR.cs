@@ -792,7 +792,6 @@ public class CoreAOR
         if (!Story.QuestProgression(9834))
         {
             Core.EnsureAccept(9833);
-            Core.Logger("About to attack Cold Thunder boss. It's very unstable; recommended to do it with more accounts.");
             ColdThunderBoss("Cold Thunder Defeated");
             Core.EnsureComplete(9833);
         }
@@ -839,6 +838,8 @@ public class CoreAOR
         Bot.Wait.ForItemEquip("Bananach's Last Will");
         Bot.Wait.ForActionCooldown(GameActions.EquipItem);
         Core.Sleep();
+
+        Core.Logger("About to attack Cold Thunder boss. It's very unstable; recommended to do it with more accounts.");
 
         while (!Bot.ShouldExit && item != null && (isTemp ? !Bot.TempInv.Contains(item, quant) : !Core.CheckInventory(item, quant)))
         {
