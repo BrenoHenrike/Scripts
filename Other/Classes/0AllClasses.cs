@@ -179,6 +179,12 @@ tags: all classes,class,farm,complete,all
 //cs_include Scripts/Story/Nation/VoidRefuge.cs
 //cs_include Scripts/Story/AgeOfRuin/CoreAOR.cs
 //cs_include Scripts/Story/SepulchureSaga/CoreSepulchure.cs
+//cs_include Scripts/Other\MergeShops\FelixsGildedGearMerge.cs
+//cs_iclude Scripts/Other\MergeShops\LoughshineLootMerge.cs
+//cs_include Scripts/Other\MergeShops\LiaTaraHillLootMerge.cs
+//cs_include Scripts/Other\MergeShops\ColdThunderMerge.cs
+//cs_include Scripts/Other\MergeShops\LothianTreasuryMerge.cs
+//cs_include Scripts/Other\Classes\SovereignOfStorms.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
@@ -279,6 +285,7 @@ public class AllClasses
     private DragonOfTime DOT = new();
     private LightCaster LC = new();
     private CoreLR LR = new();
+    private SovereignOfStorms SOS = new();
     private VerusDoomKnightClass VDK = new();
     private CoreVHL VHL = new();
     private CoreYnR YNR = new();
@@ -452,6 +459,7 @@ public class AllClasses
         CheckAndExecute("Dragon of Time", () => DOT.GetDoT(rankUpClass, doExtra: false));
         CheckAndExecute("LightCaster", () => LC.GetLC(rankUpClass));
         CheckAndExecute("Legion Revenant", () => LR.GetLR(rankUpClass));
+        CheckAndExecute("Sovereign of Storms", () => SOS.GetSOS(rankUpClass));
         CheckAndExecute("Verus DoomKnight", () => VDK.GetClass(rankUpClass));
         CheckAndExecute("Void Highlord", () => VHL.GetVHL(rankUpClass));
         CheckAndExecute("Yami no Ronin", () => YNR.GetYnR(rankUpClass));
