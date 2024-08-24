@@ -5463,6 +5463,23 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/LegionDoomKnight[Mem].cs"
   },
   {
+    "name": "Sovereign Of Storms Class",
+    "description": "This script will farm the Sovereign Of Storms class (without the ultras part).",
+    "tags": [
+      "sos",
+      "sovereign",
+      "sovereignofstorms",
+      "lothian treasury",
+      "queen iona",
+      "iona",
+      "class"
+    ],
+    "path": "Other/Classes/SovereignOfStorms.cs",
+    "size": 1416,
+    "fileName": "SovereignOfStorms.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/SovereignOfStorms.cs"
+  },
+  {
     "name": "SkyCharged Grenadier (9years Membership)",
     "description": "This script farms the SkyCharged Grenadier class.",
     "tags": [
