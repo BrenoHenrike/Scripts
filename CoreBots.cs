@@ -1509,9 +1509,15 @@ public class CoreBots
             // Removing quests that you can't accept
             foreach (ItemBase req in q.AcceptRequirements)
             {
-                if (!CheckInventory(req.Name))
+                if (req != null && req.Temp ? Bot.TempInv.Contains(req.ID, req.Quantity) : CheckInventory(req.ID, req.Quantity))
                 {
-                    Logger($"Missing requirement {req.Name} for \"{q.Name}\" [{q.ID}]");
+                    Bot.Wait.ForTrue(() => req.Temp ? Bot.TempInv.Contains(req.ID, req.Quantity) : Bot.Inventory.Contains(req.ID, req.Quantity), 20);
+                    continue;
+                }
+
+                if (req != null && (req.Temp ? !Bot.TempInv.Contains(req.ID, req.Quantity) : !Bot.Inventory.Contains(req.ID, req.Quantity)))
+                {
+                    Logger($"Missing requirement \"{req.Name}\" [{req.ID}] for \"{q.Name}\" [{q.ID}]");
                     shouldBreak = true;
                     break;
                 }
