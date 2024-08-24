@@ -8278,6 +8278,37 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/DragonSoulShinobiMerge.cs"
   },
   {
+    "name": "Lothian Treasury Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Lothian Treasury Merge [2475] in /queeniona",
+    "tags": [
+      "lothian",
+      "treasury",
+      "merge",
+      "queeniona",
+      "dark",
+      "thunder",
+      "master",
+      "long",
+      "lightning",
+      "gloria",
+      "scarf",
+      "crownslayer",
+      "bananach",
+      "galvanic",
+      "tyrant",
+      "tyrants",
+      "stormkings",
+      "storm",
+      "bolt",
+      "sovereign",
+      "storms"
+    ],
+    "path": "Other/MergeShops/LothianTreasuryMerge.cs",
+    "size": 5870,
+    "fileName": "LothianTreasuryMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/LothianTreasuryMerge.cs"
+  },
+  {
     "name": "Yulgar’s Dual Wield Drop Off Merge",
     "description": "This bot will farm the items belonging to the selected mode for the Yulgar’s Dual Wield Drop Off Merge [1312] in /nostalgiaquest",
     "tags": [
