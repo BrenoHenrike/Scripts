@@ -1509,10 +1509,13 @@ public class CoreBots
             // Removing quests that you can't accept
             foreach (ItemBase req in q.AcceptRequirements)
             {
-                if (req != null && req.Temp ? Bot.TempInv.Contains(req.ID, req.Quantity) : CheckInventory(req.ID, req.Quantity))
+                if (req != null)
                 {
-                    Bot.Wait.ForTrue(() => req.Temp ? Bot.TempInv.Contains(req.ID, req.Quantity) : Bot.Inventory.Contains(req.ID, req.Quantity), 20);
-                    continue;
+                    if (req.Temp ? Bot.TempInv.Contains(req.ID, req.Quantity) : CheckInventory(req.ID, req.Quantity))
+                    {
+                        Bot.Wait.ForTrue(() => req.Temp ? Bot.TempInv.Contains(req.ID, req.Quantity) : Bot.Inventory.Contains(req.ID, req.Quantity), 20);
+                        continue;
+                    }
                 }
 
                 if (req != null && (req.Temp ? !Bot.TempInv.Contains(req.ID, req.Quantity) : !Bot.Inventory.Contains(req.ID, req.Quantity)))
