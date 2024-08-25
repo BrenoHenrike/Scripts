@@ -164,11 +164,11 @@ public class CoreBLOD
         if (Core.CheckInventory("Spirit Orb", quant))
             return;
 
-        FarmFindingFrag(WeaponOfDestiny.Blade, "Spirit Orb", quant > 65000 ? 65000 : quant);
-        FarmFindingFrag(WeaponOfDestiny.Broadsword, "Spirit Orb", quant > 65000 ? 65000 : quant);
+        FarmFindingFrag(WeaponOfDestiny.Blade, "Spirit Orb", quant >= 65000 ? 65000 : quant);
+        FarmFindingFrag(WeaponOfDestiny.Broadsword, "Spirit Orb", quant >= 65000 ? 65000 : quant);
 
         // Default
-        SoulSearching("Spirit Orb", quant > 65000 ? 65000 : quant);
+        SoulSearching("Spirit Orb", quant >= 65000 ? 65000 : quant);
     }
 
     public void LoyalSpiritOrb(int quant)
