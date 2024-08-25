@@ -778,7 +778,7 @@ public class CoreAOR
 
     public void ColdThunder()
     {
-        if (Core.isCompletedBefore(9834))
+        if (Core.isCompletedBefore(9851))
             return;
 
         CastleGaheris();
@@ -789,8 +789,9 @@ public class CoreAOR
         Story.MapItemQuest(9832, "coldthunder", 13403);
 
         // 9833 | The Storm Queen
-        if (!Story.QuestProgression(9834))
+        if (!Story.QuestProgression(9833))
         {
+            Core.Logger($"Doing 9833 | The Storm Queen");
             Core.EnsureAccept(9833);
             ColdThunderBoss("Cold Thunder Defeated");
             Core.EnsureComplete(9833);
