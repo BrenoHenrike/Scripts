@@ -604,7 +604,7 @@ public class CoreFarmerJoe
         SetClass(true, false, true);
         Farm.Experience();
         SRM.BuyAllMerge("Hollowborn Reaper's Scythe");
-
+        Core.Equip("Hollowborn Reaper's Scythe");
     }
 
 
