@@ -2632,6 +2632,7 @@ public class CoreAdvanced
                 case "skycharged grenadier":
                 case "skyguard grenadier":
                 case "sorcerer":
+                case "Sovereign of Storms":
                 case "soul cleaver":
                 case "star captain":
                 case "starlord":
