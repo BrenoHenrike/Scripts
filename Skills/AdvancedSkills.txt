@@ -233,7 +233,8 @@ Base = Silver Paladin = 1 | 2 | 3 | 4 = Use if Available
 Base = SkyCharged Grenadier = 1 | 2 | 3 | 4 = Use if Available
 Base = SkyGuard Grenadier = 1 | 2 | 3 | 4 = Use if Available
 Base = Sorcerer = 4 | 4 | 4 | 2 | 1 | 3 = 250
-Base = Sovereign of Storms = 1 | 2 | 3 | 4 = Use if Available
+Atk = Sovereign of Storms = 1 | 2 | 3 | 2 | 1 | 1 | 4 = 250
+Solo = Sovereign of Storms = 3 | 4 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 4 = 250
 Base = Soul Cleaver = 1 | 2 | 3 | 4 = Use if Available
 Def = Star Captain = 2 | 1S | 2S | 3S | 4 | 2 = 300
 Atk = Star Captain = 3 | 1S | 2S | 3S | 4 | 3 = 300
