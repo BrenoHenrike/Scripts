@@ -2377,11 +2377,14 @@ public class CoreAdvanced
                 #endregion
 
 
-                #region Wizard - Vainglory / Forge - Daunt / Elysium / Forge - Pneuma / Forge       
+                #region Wizard - Vainglory / Forge - Daunt / Ravenous / Forge - Pneuma / Forge       
                 case "Sovereign of Storms":
+                    if (!uVainglory() || !uDauntless() || !uRavenous() || !uPneuma())
+                        goto default;
+
                     type = EnhancementType.Wizard;
                     cSpecial = uVainglory() ? CapeSpecial.Vainglory : CapeSpecial.Forge;
-                    wSpecial = uDauntless() ? WeaponSpecial.Dauntless : (uElysium() ? WeaponSpecial.Elysium : WeaponSpecial.Forge);
+                    wSpecial = uDauntless() ? WeaponSpecial.Dauntless : (uRavenous() ? WeaponSpecial.Ravenous : WeaponSpecial.Forge);
                     hSpecial = uPneuma() ? HelmSpecial.Pneuma : HelmSpecial.Forge;
                     break;
                 #endregion
