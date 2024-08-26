@@ -2374,8 +2374,17 @@ public class CoreAdvanced
                     wSpecial = WeaponSpecial.Valiance;
                     hSpecial = HelmSpecial.Pneuma;
                     break;
-                #endregion 
+                #endregion
 
+
+                #region Wizard - Vainglory / Forge - Daunt / Elysium / Forge - Pneuma / Forge       
+                case "Sovereign of Storms":
+                    type = EnhancementType.Wizard;
+                    cSpecial = uVainglory() ? CapeSpecial.Vainglory : CapeSpecial.Forge;
+                    wSpecial = uDauntless() ? WeaponSpecial.Dauntless : (uElysium() ? WeaponSpecial.Elysium : WeaponSpecial.Forge);
+                    hSpecial = uPneuma() ? HelmSpecial.Pneuma : HelmSpecial.Forge;
+                    break;
+                #endregion
                 #endregion
 
                 #region Healer Region
@@ -2632,7 +2641,6 @@ public class CoreAdvanced
                 case "skycharged grenadier":
                 case "skyguard grenadier":
                 case "sorcerer":
-                case "Sovereign of Storms":
                 case "soul cleaver":
                 case "star captain":
                 case "starlord":
