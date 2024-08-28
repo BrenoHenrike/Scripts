@@ -4188,8 +4188,9 @@ public class CoreBots
         }
         else
         {
-            blackListedCells.UnionWith(new List<string> { "Wait", "Blank", "Out", "moveFrame", "CutMikoOrochi", "innitRoom" });
+            blackListedCells.UnionWith(new List<string> { "Wait", "Blank", "Out", "CutMikoOrochi", "innitRoom" });
             blackListedCells.UnionWith(Bot.Map.Cells.Where(x => x.StartsWith("Cut")));
+            blackListedCells.UnionWith(Bot.Map.Cells.Where(x => x.StartsWith("moveFrame")));
 
             #region Maps with issues
             switch (Bot.Map.Name)
@@ -4215,6 +4216,11 @@ public class CoreBots
                 case "portalundead":
                     blackListedCells.UnionWith(new[] { "Portal", "Gate" });
                     break;
+
+                case "icestormarena":
+                    blackListedCells.UnionWith(new[] { "r23" });
+                    break;
+
 
                 default:
                     break;
