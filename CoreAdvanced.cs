@@ -138,6 +138,9 @@ public class CoreAdvanced
         {
             foreach (ItemBase req in item.Requirements)
             {
+                if (Core.CheckInventory(item.ID, quant))
+                    continue;
+
                 // Total required quantity of the required item based on the desired quantity
                 int totalReqNeeded = quant; // Total number of main items desired
 
@@ -160,16 +163,10 @@ public class CoreAdvanced
                         Farm.DragonRunestone(req.Quantity * bundlesToBuy);
                         break;
 
+                    // Check if the required item is available in the shop and buy it if necessary
                     default:
-                        // Check if the required item is available in the shop and buy it if necessary
                         if (Core.GetShopItems(map, shopID).Any(x => req.ID == x.ID))
-                        {
                             Core.BuyItem(map, shopID, req.Name, req.Quantity * bundlesToBuy, Log: Log);
-                        }
-                        else
-                        {
-                            Core.Logger($"Required item {req.Name} is not available in shop {shopID}");
-                        }
                         break;
                 }
             }
@@ -2931,7 +2928,7 @@ public class CoreAdvanced
                     wSpecial = WeaponSpecial.Mana_Vamp;
                     break;
                 #endregion
-                
+
                 #endregion
 
                 #region Wizard Region
