@@ -3917,9 +3917,9 @@ public class CoreBots
 
             default:
                 Bot.Inventory.EquipItem(item.ID);
-                Bot.Wait.ForActionCooldown(GameActions.EquipItem);
                 break;
         }
+        Bot.Wait.ForActionCooldown(GameActions.EquipItem);
         Bot.Wait.ForItemEquip(item.ID);
         Sleep();
         if (logEquip)
