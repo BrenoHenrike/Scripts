@@ -227,7 +227,7 @@ public class CoreFarmerJoe
     private readonly InventoryItem? ClassRogue = Bot.Inventory.Items.Concat(Bot.Bank.Items).Find(i => i.Name.ToLower().Trim() == "Rogue".ToLower().Trim() && i.Category == ItemCategory.Class && i.Name != null);
     private readonly InventoryItem? ClassMage = Bot.Inventory.Items.Concat(Bot.Bank.Items).Find(i => i.Name.ToLower().Trim() == "Mage".ToLower().Trim() && i.Category == ItemCategory.Class && i.Name != null);
     private readonly InventoryItem? ClassMasterRanger = Bot.Inventory.Items.Concat(Bot.Bank.Items).Find(i => i.Name.ToLower().Trim() == "Master Ranger".ToLower().Trim() && i.Category == ItemCategory.Class && i.Name != null);
-    private readonly InventoryItem? ClassShaman = Bot.Inventory.Items.Concat(Bot.Bank.Items).Find(i => i.Name.ToLower().Trim() == "Shaman".ToLower().Trim() && i.Category == ItemCategory.Class && i.Name != null);
+    // private readonly InventoryItem? ClassShaman = Bot.Inventory.Items.Concat(Bot.Bank.Items).Find(i => i.Name.ToLower().Trim() == "Shaman".ToLower().Trim() && i.Category == ItemCategory.Class && i.Name != null);
     private readonly InventoryItem? ClassScarletSorceress = Bot.Inventory.Items.Concat(Bot.Bank.Items).Find(i => i.Name.ToLower().Trim() == "Scarlet Sorceress".ToLower().Trim() && i.Category == ItemCategory.Class && i.Name != null);
     private readonly InventoryItem? ClassBlazeBinder = Bot.Inventory.Items.Concat(Bot.Bank.Items).Find(i => i.Name.ToLower().Trim() == "Blaze Binder".ToLower().Trim() && i.Category == ItemCategory.Class && i.Name != null);
     private readonly InventoryItem? ClassDragonSoulShinobi = Bot.Inventory.Items.Concat(Bot.Bank.Items).Find(i => i.Name.ToLower().Trim() == "DragonSoul Shinobi".ToLower().Trim() && i.Category == ItemCategory.Class && i.Name != null);
@@ -290,10 +290,14 @@ public class CoreFarmerJoe
         // //Adv.BestGear(GenericGearBoost.exp);
         Farm.ToggleBoost(BoostType.Experience);
 
-        foreach (int Level in new int[] { 30, 45, 50, 55, 60, 65, 70, 75 })
+        foreach (int Level in new int[] { 30, 50, 55, 60, 65, 70, 75 })
         {
             Core.Logger($"Level Goal: {Level} ({Level - Bot.Player.Level}) levels to go");
-            Daily.EldersBlood();
+            if (Daily.CheckDaily(802, true, true, "Elders' Blood"))
+                Daily.EldersBlood();
+            //set & enh farm & solo class
+            SetClass(false, true, false);
+            SetClass(true, false, false);
 
             switch (Level)
             {
@@ -331,30 +335,6 @@ public class CoreFarmerJoe
                         Adv.BuyItem("museum", 631, "Awethur's Accoutrements");
                         Core.Equip("Awethur's Accoutrements");
                     }
-                    Core.Logger($"Level {Level} done");
-                    continue;
-
-                case 45:
-                    if (Bot.Player.Level >= Level &&
-                    Core.CheckInventory("Shaman") && ClassShaman?.Quantity == 302500)
-                    {
-                        Core.Logger("Items owned: \"Shaman\" continuing");
-                        continue;
-                    }
-
-                    if (Bot.Player.Level < Level)
-                    {
-                        SetClass(false, true, true);
-                        Farm.Experience(Level);
-                    }
-
-                    if (!Core.CheckInventory("Shaman") || !Core.CheckInventory("ArchPaladin"))
-                    {
-                        Core.Logger("Getting Shaman");
-                        SetClass(true, false, true);
-                        Shaman.GetShaman();
-                    }
-                    Core.Logger($"Level {Level} done");
                     continue;
 
                 case 50:
@@ -386,7 +366,6 @@ public class CoreFarmerJoe
                         SetClass(true, false, false);
                         BB.GetBurningBlade();
                     }
-                    Core.Logger($"Level {Level} done");
                     continue;
 
                 case 55:
@@ -415,7 +394,6 @@ public class CoreFarmerJoe
                         SetClass(false, true, false);
                         Farm.Experience(Level);
                     }
-                    Core.Logger($"Level {Level} done");
                     continue;
 
                 case 60:
@@ -438,7 +416,6 @@ public class CoreFarmerJoe
                         SetClass(true, false, false);
                         DS.GetDSS();
                     }
-                    Core.Logger($"Level {Level} done");
                     continue;
 
                 case 65:
@@ -468,7 +445,6 @@ public class CoreFarmerJoe
                         SetClass(true, false, false);
                         AP.GetAP();
                     }
-                    Core.Logger($"Level {Level} done");
                     continue;
 
                 case 70:
@@ -487,6 +463,7 @@ public class CoreFarmerJoe
                         SetClass(true, false, false);
                         AFDeath.GetArm(true, ArchfiendDeathLord.RewardChoice.Archfiend_DeathLord);
                     }
+                    Core.Equip("Archfiend DeathLord");
 
                     if (!Core.CheckInventory("Archfiend"))
                     {
@@ -500,7 +477,6 @@ public class CoreFarmerJoe
                         SetClass(false, true, false);
                         Farm.Experience(Level);
                     }
-                    Core.Logger($"Level {Level} done");
                     continue;
             }
         }
@@ -780,6 +756,7 @@ public class CoreFarmerJoe
         {
             Core.Logger("Acc is lvl 30+, skipping beginner items.");
             SetClass(true, false, false);
+            SetClass(false, true, false);
             return;
         }
 
@@ -839,12 +816,12 @@ public class CoreFarmerJoe
 
         // Arrays of classes to check
         string[] soloClassesToCheck = new[] {
-            "Void Highlord", "Dragon of Time", "ArchPaladin", "Glacial Berserker", "DragonSoul Shinobi", "Shaman",
+            "Void Highlord", "Dragon of Time", "ArchPaladin", "Glacial Berserker", "DragonSoul Shinobi",
             "Assassin", "Ninja Warrior", "Ninja", "Rogue (Rare)", "Rogue", "Healer (Rare)", "Healer"
         };
 
         string[] farmClassesToCheck = new[] {
-            "Archfiend", "Blaze Binder", "Scarlet Sorceress", "Master Ranger", "Shaman",
+            "Archfiend", "Blaze Binder", "Scarlet Sorceress", "Master Ranger",
             "Mage (Rare)", "Mage"
         };
 
