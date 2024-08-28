@@ -202,7 +202,7 @@ public class Adam1a1Merge
                     break;
 
                 case "Awethur's Accoutrements":
-                    Core.BuyItem("museum", 631, "Awethur's Accoutrements");
+                    Adv.BuyItem("museum", 631, "Awethur's Accoutrements");
                     break;
             }
         }
