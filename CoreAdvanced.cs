@@ -615,11 +615,15 @@ public class CoreAdvanced
             }
             else
             {
+                if (!Bot.Inventory.IsEquipped(classItem?.Name))
+                {
+                    Core.Equip(classItem?.Name);
+                    Bot.Wait.ForTrue(() => Bot.Inventory.IsEquipped(classItem?.Name), 20);
+                }
                 // string cpBoost = BestGear(GenericGearBoost.cp, false);
                 // EnhanceItem(cpBoost, CurrentClassEnh(), CurrentCapeSpecial(), CurrentHelmSpecial(), CurrentWeaponSpecial());
                 // Core.Equip(cpBoost);
                 Farm.ToggleBoost(BoostType.Class);
-
                 Farm.IcestormArena(Bot.Player.Level, true);
                 Core.Logger($"\"{itemInv.Name}\" is now Rank 10");
 
@@ -1154,9 +1158,9 @@ public class CoreAdvanced
     }
 
     public bool HasMinimalBoost(GenericGearBoost boostType, int percentage)
-        => Bot.Inventory.Items.Concat(Bot.Bank.Items).Any(x => GetBoostFloat(x, boostType.ToString()) >= (((float)percentage / (float)100) + 1));
+        => Bot.Inventory.Items.Concat(Bot.Bank.Items).Any(x => GetBoostFloat(x, boostType.ToString()) >= ((percentage / (float)100) + 1));
     public bool HasMinimalBoost(RacialGearBoost boostType, int percentage)
-        => Bot.Inventory.Items.Concat(Bot.Bank.Items).Any(x => GetBoostFloat(x, boostType.ToString()) >= (((float)percentage / (float)100) + 1));
+        => Bot.Inventory.Items.Concat(Bot.Bank.Items).Any(x => GetBoostFloat(x, boostType.ToString()) >= ((percentage / (float)100) + 1));
 
     public float GetBoostFloat(InventoryItem item, string boostType)
     {
@@ -2611,7 +2615,6 @@ public class CoreAdvanced
                 case "naval commander":
                 case "necromancer":
                 case "ninja warrior":
-                case "ninja":
                 case "no class":
                 case "northlands monk":
                 case "not a mod":
@@ -2775,7 +2778,6 @@ public class CoreAdvanced
                 case "master ranger":
                 case "mechajouster":
                 case "necromancer":
-                case "ninja":
                 case "ninja warrior":
                 case "not a mod":
                 case "overworld chronomancer":
@@ -2854,6 +2856,7 @@ public class CoreAdvanced
                 case "warriorscythe general":
                 case "yami no ronin":
                 case "arachnomancer":
+                case "ninja":
                     type = EnhancementType.Lucky;
                     wSpecial = WeaponSpecial.Mana_Vamp;
                     break;
