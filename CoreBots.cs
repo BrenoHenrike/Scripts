@@ -2119,17 +2119,6 @@ public class CoreBots
                 .ToList();
         }
 
-        void LogAndJump(string message)
-        {
-            if (log) Logger(message);
-            while (!Bot.ShouldExit && Bot.Player.Cell != cell)
-            {
-                Jump(cell, pad);
-                Bot.Wait.ForCellChange(cell);
-            }
-            Bot.Player.SetSpawnPoint();
-        }
-
         List<Monster> targetMonsters = FindMonsters();
         if (item == null)
         {
@@ -2141,7 +2130,11 @@ public class CoreBots
                 Bot.Events.MonsterKilled += b => ded = true;
                 while (!Bot.ShouldExit && !ded)
                 {
-                    LogAndJump($"Killing {targetMonster}");
+                    while (!Bot.ShouldExit && Bot.Player.Cell != cell)
+                    {
+                        Jump(cell, pad);
+                        Bot.Wait.ForCellChange(cell);
+                    }
                     if (!Bot.Combat.StopAttacking)
                         Bot.Combat.Attack(monster);
                     if (targetMonster.MaxHP == 1)
