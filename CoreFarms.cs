@@ -362,12 +362,18 @@ public class CoreFarms
         //Between level 61 and 75
         if (NotYetLevel(75))
         {
-            ToggleBoost(BoostType.Gold);
-            Core.RegisterQuests(3991, 3992);
-            while (NotYetLevel(75))
-                Core.KillMonster("battlegrounde", "r2", "Center", "*", log: false, publicRoom: true);
-            Core.CancelRegisteredQuests();
-            ToggleBoost(BoostType.Gold, false);
+            if (rankUpClass)
+                while (NotYetLevel(75))
+                    Core.KillMonster("icestormarena", NotYetLevel(65) ? "17" : NotYetLevel(70) ? "r18" : "r20", "Left", "*", log: false, publicRoom: true);
+            else
+            {
+                ToggleBoost(BoostType.Gold);
+                Core.RegisterQuests(3991, 3992);
+                while (NotYetLevel(75))
+                    Core.KillMonster("battlegrounde", "r2", "Center", "*", log: false, publicRoom: true);
+                Core.CancelRegisteredQuests();
+                ToggleBoost(BoostType.Gold, false);
+            }
         }
 
         //Between level 75 and 100
