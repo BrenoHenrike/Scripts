@@ -2294,7 +2294,7 @@ public class CoreAdvanced
 
                     type = EnhancementType.Wizard;
                     cSpecial = CapeSpecial.Vainglory;
-                    wSpecial = WeaponSpecial.Valiance;
+                    wSpecial = uRavenous() ? WeaponSpecial.Ravenous : WeaponSpecial.Valiance;
                     hSpecial = HelmSpecial.Pneuma;
                     break;
                 #endregion
