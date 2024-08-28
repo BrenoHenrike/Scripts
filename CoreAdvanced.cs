@@ -616,10 +616,10 @@ public class CoreAdvanced
             }
             else
             {
-                if (!Bot.Inventory.IsEquipped(classItem?.Name))
+                if (classItem != null && !Bot.Inventory.IsEquipped(classItem.Name))
                 {
-                    Core.Equip(classItem?.Name);
-                    Bot.Wait.ForTrue(() => Bot.Inventory.IsEquipped(classItem?.Name), 20);
+                    Core.Equip(classItem.Name);
+                    Bot.Wait.ForTrue(() => Bot.Inventory.IsEquipped(classItem.Name), 20);
                 }
                 // string cpBoost = BestGear(GenericGearBoost.cp, false);
                 // EnhanceItem(cpBoost, CurrentClassEnh(), CurrentCapeSpecial(), CurrentHelmSpecial(), CurrentWeaponSpecial());
@@ -2931,7 +2931,7 @@ public class CoreAdvanced
                     wSpecial = WeaponSpecial.Mana_Vamp;
                     break;
                 #endregion
-                
+
                 #endregion
 
                 #region Wizard Region
