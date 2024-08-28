@@ -244,7 +244,7 @@ public class CoreAdvanced
     /// <param name="Log">Optional. Enables logging.</param>
     public void StartBuyAllMerge(string map, int shopID, Action findIngredients, string? buyOnlyThis = null, string[]? itemBlackList = null, mergeOptionsEnum? buyMode = null, string Group = "First", int ShopItemID = 0, bool Log = true)
     {
-        if (buyOnlyThis == null && buyMode == null)
+        if (buyOnlyThis == null && buyMode == null && Bot.Config != null && !Bot.Config.Get<bool>(CoreBots.Instance.SkipOptions))
             Bot.Config!.Configure();
 
         int mode = 0;
@@ -428,6 +428,7 @@ public class CoreAdvanced
     /// </summary>
     public List<IOption> MergeOptions = new()
     {
+        CoreBots.Instance.SkipOptions,
         new Option<mergeOptionsEnum>("mode", "Select the mode to use", "Regardless of the mode you pick, the bot wont (attempt to) buy Legend-only items if you're not a Legend.\n" +
                                                                      "Select the Mode Explanation item to get more information", mergeOptionsEnum.all),
         new Option<string>(" ", "Mode Explanation [all]", "Mode [all]: \t\tYou get all the items from shop, even if non-AC ones if any.", "click here"),
