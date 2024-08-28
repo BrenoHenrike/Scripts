@@ -614,11 +614,11 @@ public class CoreDailies
 
     public void EldersBlood()
     {
-        Core.Logger("Daily: Elders' Blood");
         if (Core.CheckInventory("Elders' Blood", 20)) //AE keeps updating this shit, Laste update: 1/30/23, https://www.aq.com/gamedesignnotes/aqw-30jan23-mondayupdates-9076
             return;
         if (!CheckDaily(802, true, true, "Elders' Blood"))
             return;
+        Core.Logger("Daily: Elders' Blood");
         Core.EquipClass(ClassType.Farm);
         DailyRoutine(802, "arcangrove", "Gorillaphant", "Slain Gorillaphant", 50, cell: "Right", pad: "Left");
     }
