@@ -2856,7 +2856,6 @@ public class CoreAdvanced
                 case "warriorscythe general":
                 case "yami no ronin":
                 case "arachnomancer":
-                case "ninja":
                     type = EnhancementType.Lucky;
                     wSpecial = WeaponSpecial.Mana_Vamp;
                     break;
@@ -2921,6 +2920,17 @@ public class CoreAdvanced
                     break;
                 #endregion
 
+                #endregion
+
+                #region  Theif Region
+
+                #region  Theif - Mana Vamp
+                case "ninja":
+                    type = EnhancementType.Thief;
+                    wSpecial = WeaponSpecial.Mana_Vamp;
+                    break;
+                #endregion
+                
                 #endregion
 
                 #region Wizard Region
