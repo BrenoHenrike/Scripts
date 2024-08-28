@@ -31,6 +31,6 @@ public class DarknessShard
 
         if (!Core.CheckInventory("Crypto Token", 3))
             Dailies.CryptoToken();
-        Core.BuyItem("curio", 1539, "Darkness Shard");
+        Core.BuyItem("curio", 1539, "Darkness Shard", 3);
     }
 }
