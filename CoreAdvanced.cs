@@ -2468,6 +2468,17 @@ public class CoreAdvanced
                     break;
                 #endregion
 
+                #region Lucky - Vainglory - Valiance / Dauntless - Anima
+                case "glacial warlord":
+                    if (!uVainglory() || !uValiance() || !uAnima())
+                        goto default;
+                        
+                    type = EnhancementType.Lucky;
+                    cSpecial = CapeSpecial.Vainglory;
+                    wSpecial = uDauntless() ? WeaponSpecial.Dauntless : WeaponSpecial.Valiance;
+                    hSpecial = HelmSpecial.Anima;
+                    break;
+                #endregion
 
                 #region Luck - Val/Smite/Mana - Anima - Vg
                 case "dragonslayer general":
@@ -2577,7 +2588,6 @@ public class CoreAdvanced
                 case "firelord summoner":
                 case "frost spiritreaver":
                 case "glacial berserker test":
-                case "glacial warlord":
                 case "grim necromancer":
                 case "grunge rocker":
                 case "guardian":
