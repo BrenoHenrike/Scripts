@@ -43,7 +43,7 @@ public class SofAPreFarm
             return;
 
         // Log the MergeSword config value
-        Core.Logger($"MergeSword config: {Bot.Config.Get<bool>("MergeSword")}");
+        Core.Logger($"MergeSword config: {Bot.Config!.Get<bool>("MergeSword")}");
 
         // Perform material farming
         Nation.SwindleBulk(300);
