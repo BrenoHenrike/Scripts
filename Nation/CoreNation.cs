@@ -824,31 +824,38 @@ public class CoreNation
                             {
                                 Core.ResetQuest(7551);
                                 Core.DarkMakaiItem("Dark Makai Rune");
-                                List<ItemBase> ReturnRewards = Core.EnsureLoad(7551).Rewards;
-                                ItemBase? ReturnRewardsItem = rewards.Find(x => x.Name == item);
+                                Quest? quest = Core.EnsureLoad(7551);
 
-                                foreach (ItemBase R in Bot.Quests.EnsureLoad(7551).Rewards)
+                                if (quest != null)
                                 {
-                                    if (Core.CheckInventory(R.ID, R.MaxStack) || !Bot.Quests.CanCompleteFullCheck(7551))
-                                        continue;
+                                    List<ItemBase> ReturnRewards = Core.EnsureLoad(7551).Rewards;
+                                    ItemBase? ReturnRewardsItem = rewards.Find(x => x.Name == item);
 
-                                    if (ReturnItem != null)
+                                    foreach (ItemBase R in quest.Rewards)
                                     {
-                                        Core.EnsureComplete(7551, ReturnItem == "Receipt of Swindle" ? -1 : R.ID);
-                                    }
-                                    else
-                                    {
-                                        ItemBase? itemToComplete = Bot.Quests.EnsureLoad(7551).Rewards
-                                            .FirstOrDefault(x => x.Name == ReturnItem);
+                                        if (Core.CheckInventory(R.ID, R.MaxStack) || !Bot.Quests.CanCompleteFullCheck(7551))
+                                            continue;
 
-                                        if (itemToComplete != null)
+                                        if (ReturnItem != null)
                                         {
-                                            Core.EnsureComplete(7551, itemToComplete.ID);
+                                            Core.EnsureComplete(7551, ReturnItem == "Receipt of Swindle" ? -1 : R.ID);
                                         }
-                                    }
+                                        else
+                                        {
+                                            ItemBase? itemToComplete = quest.Rewards
+                                                .FirstOrDefault(x => x.Name == ReturnItem);
 
-                                    break;
+                                            if (itemToComplete != null)
+                                            {
+                                                Core.EnsureComplete(7551, itemToComplete.ID);
+                                            }
+                                        }
+
+                                        break;
+                                    }
                                 }
+                                else
+                                    Core.Logger("Failed to load quest 7551.");
                             }
                             if (Core.CheckInventory("Voucher of Nulgath (non-mem)") && Core.CheckInventory("Essence of Nulgath", 60))
                                 Core.EnsureCompleteMulti(4778);
