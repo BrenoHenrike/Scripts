@@ -778,7 +778,7 @@ public class CoreNation
                 List<ItemBase> rewards = Core.EnsureLoad(2857).Rewards;
                 ItemBase? Item = rewards.Find(x => x.Name == Thing);
 
-                if (Item == null)
+                if (Item != null)
                 {
                     if (Core.CheckInventory(CragName) && !UltraAlteon)
                         BambloozevsDrudgen(Item!.Name, Item.MaxStack, KeepVoucher, AssistantDuring, ReturnItem, ReturnItemQuant, true);
