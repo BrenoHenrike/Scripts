@@ -50,8 +50,8 @@ public class SuppliesToSpinTheWheelofChance
             };
 
 
-        string SwindlesReturnItem = Bot.Config.Get<SwindlesReturnItem>("SwindlesReturnItem").ToString().Replace('_', ' ');
-        string SuppliesItem = Bot.Config.Get<SuppliesReward>("SuppliesReward").ToString().Replace('_', ' ');
+        string? SwindlesReturnItem = Bot.Config!.Get<SwindlesReturnItem>("SwindlesReturnItem").ToString().Replace('_', ' ');
+        string? SuppliesItem = Bot.Config.Get<SuppliesReward>("SuppliesReward").ToString().Replace('_', ' ');
         int quantity;
 
         if (SwindlesReturnItem == "All")
