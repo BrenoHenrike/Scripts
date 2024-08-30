@@ -918,21 +918,25 @@ public class CoreNation
                         List<ItemBase> ReturnRewards = Core.EnsureLoad(7551).Rewards;
                         ItemBase? ReturnRewardsItem = rewards.Find(x => x.Name == item);
 
-                        if (ReturnRewards.Any(reward => reward.Name == item && reward.Name != "Receipt of Swindle"))
-                        {
-                            Core.EnsureComplete(7551, ReturnRewardsItem!.ID);
-                        }
+                        if (ReturnRewardsItem != null && ReturnRewards.Any(reward => reward.Name == item && reward.Name != "Receipt of Swindle"))
+                            Core.EnsureComplete(7551, ReturnRewardsItem.ID);
                         else
                         {
-                            foreach (ItemBase R in Bot.Quests.EnsureLoad(7551).Rewards)
+                            Quest? quest = Bot.Quests.EnsureLoad(7551);
+                            if (quest != null)
                             {
-                                if (Core.CheckInventory(R.ID, R.MaxStack) || !Bot.Quests.CanCompleteFullCheck(7551))
-                                    continue;
+                                foreach (ItemBase R in quest.Rewards)
+                                {
+                                    if (Core.CheckInventory(R.ID, R.MaxStack) || !Bot.Quests.CanCompleteFullCheck(7551))
+                                        continue;
 
-                                Core.Logger($"Item is Null, Maxing: {R.Name}[{R.ID}] ({Bot.Inventory.GetQuantity(R.Name)}/{R.MaxStack})");
-                                Core.EnsureComplete(7551, R.ID);
-                                break;
+                                    Core.Logger($"Item is Null, Maxing: {R.Name}[{R.ID}] ({Bot.Inventory.GetQuantity(R.Name)}/{R.MaxStack})");
+                                    Core.EnsureComplete(7551, R.ID);
+                                    break;
+                                }
                             }
+                            else
+                                Core.Logger("Failed to load quest 7551.");
                         }
                     }
                     if (Core.CheckInventory("Voucher of Nulgath (non-mem)") && Core.CheckInventory("Essence of Nulgath", 60))
