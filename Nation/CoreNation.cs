@@ -873,12 +873,19 @@ public class CoreNation
                 List<ItemBase> rewards = Core.EnsureLoad(2857).Rewards;
                 ItemBase? Item = rewards.Find(x => x.Name == item);
 
-                if (Core.CheckInventory(Item.ID, quant))
+                if (Item != null && Core.CheckInventory(Item.ID, quant))
                 {
                     Core.Logger($"Item: {item}, {Bot.Inventory.GetQuantity(Item.ID)}/ {Item.MaxStack}");
-                    Core.Logger($"Item: {ReturnItem}, {Bot.Inventory.GetQuantity(ReturnItem)}/ {ReturnItemQuant}");
+
+                    if (ReturnItem != null)
+                        Core.Logger($"Item: {ReturnItem}, {Bot.Inventory.GetQuantity(ReturnItem)}/ {ReturnItemQuant}");
+                    else
+                        Core.Logger("ReturnItem is null.");
+
                     return;
                 }
+                else if (Item == null)
+                    Core.Logger("Item is null.");
 
                 while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
                 {
