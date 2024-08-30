@@ -15187,6 +15187,17 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmyBloodMoonToken.cs"
   },
   {
+    "name": "null",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Army/Various/ArmyStarPiece.cs",
+    "size": 1646,
+    "fileName": "ArmyStarPiece.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmyStarPiece.cs"
+  },
+  {
     "name": "Smart Void Auras (Army)",
     "description": "Farms Void Auras with the best method available using your army.",
     "tags": [
