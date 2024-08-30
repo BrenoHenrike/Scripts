@@ -1242,35 +1242,50 @@ public class CoreNation
             }
 
             //reduce spam
-            if (!HasLogged && _returnSupplies && Bot.Quests.EnsureLoad(7551).Rewards.All(x => Bot.Inventory.GetQuantity(x.ID) >= x.MaxStack))
+            Quest? quest = Bot.Quests.EnsureLoad(7551);
+            if (quest != null)
             {
-                Core.Logger("All Swindles Return Items are maxed stopping Swindles Return");
-                Core.AbandonQuest(7551);
-                HasLogged = true;
-            }
-
-            if (_returnSupplies && Core.CheckInventory(new[] { Uni(1), Uni(6), Uni(9), Uni(16), Uni(20) })
-            && Bot.Quests.EnsureLoad(7551).Rewards.Any(x => Bot.Inventory.GetQuantity(x.ID) < x.MaxStack))
-            {
-                Core.ResetQuest(7551);
-                Core.DarkMakaiItem("Dark Makai Rune");
-                List<ItemBase> returnRewards = Core.EnsureLoad(7551).Rewards;
-                ItemBase? returnRewardsItem = rewards.Find(x => x.Name == item);
-
-                foreach (ItemBase rewardItem in Bot.Quests.EnsureLoad(7551).Rewards)
+                if (quest.Rewards.All(x => Bot.Inventory.GetQuantity(x.ID) >= x.MaxStack))
                 {
-                    if (Core.CheckInventory(rewardItem.ID, rewardItem.MaxStack))
-                        continue;
-
-                    if (ReturnItem != null)
-                        Core.EnsureComplete(7551, ReturnItem == "Receipt of Swindle" ? -1 : rewardItem.ID);
-                    else
-                        Core.EnsureComplete(7551, Bot.Quests.EnsureLoad(7551).Rewards.FirstOrDefault(x => Bot.Inventory.GetQuantity(x.ID) < x.MaxStack).ID);
-                    break;
+                    if (!HasLogged && _returnSupplies)
+                    {
+                        Core.Logger("All Swindles Return Items are maxed stopping Swindles Return");
+                        Core.AbandonQuest(7551);
+                        HasLogged = true;
+                    }
                 }
+                if (_returnSupplies && Core.CheckInventory(new[] { Uni(1), Uni(6), Uni(9), Uni(16), Uni(20) })
+                && quest.Rewards.Any(x => Bot.Inventory.GetQuantity(x.ID) < x.MaxStack))
+                {
+                    Core.ResetQuest(7551);
+                    Core.DarkMakaiItem("Dark Makai Rune");
+                    List<ItemBase> returnRewards = Core.EnsureLoad(7551).Rewards;
+                    ItemBase? returnRewardsItem = rewards.Find(x => x.Name == item);
+
+                    foreach (ItemBase rewardItem in quest.Rewards)
+                    {
+                        if (Core.CheckInventory(rewardItem.ID, rewardItem.MaxStack))
+                            continue;
+
+                        if (ReturnItem != null)
+                            Core.EnsureComplete(7551, ReturnItem == "Receipt of Swindle" ? -1 : rewardItem.ID);
+                        else
+                        {
+                            ItemBase? firstIncompleteReward = quest.Rewards.FirstOrDefault(x => Bot.Inventory.GetQuantity(x.ID) < x.MaxStack);
+
+                            if (firstIncompleteReward != null)
+                                Core.EnsureComplete(7551, firstIncompleteReward.ID);
+                            else
+                                Core.Logger("No incomplete rewards found.");
+                        }
+                        break;
+                    }
+                }
+                if (Core.CheckInventory("Voucher of Nulgath (non-mem)") && Core.CheckInventory("Essence of Nulgath", 60))
+                    Core.EnsureCompleteMulti(4778);
             }
-            if (Core.CheckInventory("Voucher of Nulgath (non-mem)") && Core.CheckInventory("Essence of Nulgath", 60))
-                Core.EnsureCompleteMulti(4778);
+            else
+                Core.Logger("Failed to load quest 7551.");
         }
         HasLogged = false;
 
