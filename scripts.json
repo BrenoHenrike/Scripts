@@ -11590,13 +11590,29 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/08DeepWater.cs"
   },
   {
+    "name": "Neo Tower",
+    "description": "This script will complete the Lae's storyline in /neotower.",
+    "tags": [
+      "hollowborn",
+      "saga",
+      "lae",
+      "neotower",
+      "neo tower",
+      "quest"
+    ],
+    "path": "Story/Hollowborn/04NeoTower.cs",
+    "size": 627,
+    "fileName": "04NeoTower.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Hollowborn/04NeoTower.cs"
+  },
+  {
     "name": "null",
     "description": "null",
     "tags": [
       "null"
     ],
     "path": "Story/Hollowborn/CoreHollowbornStory.cs",
-    "size": 5675,
+    "size": 9066,
     "fileName": "CoreHollowbornStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Hollowborn/CoreHollowbornStory.cs"
   },
@@ -11642,10 +11658,11 @@
       "treasure hunt",
       "lae birthday",
       "shadowrealm",
-      "whispering helmet"
+      "whispering helmet",
+      "neotower"
     ],
     "path": "Story/Hollowborn/00DoAll.cs",
-    "size": 663,
+    "size": 672,
     "fileName": "00DoAll.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Hollowborn/00DoAll.cs"
   },
