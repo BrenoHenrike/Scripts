@@ -80,10 +80,7 @@ public class NeotowerMerge
                         //the preist takes reduced damage till u kill the crystals
                         while (!Bot.ShouldExit && !Core.CheckInventory("Vindicated Scripture"))
                         {
-                            foreach (int M in new[] { 24, 25, 26, 27 })
-                            {
-                                Core.KillMonster("neotower", "r10", "left", M, null, log: false);
-                            }
+                            Core.EquipClass(ClassType.Farm);
                             Core.KillMonster("neotower", "r10", "left", 28, "Vindicated Scripture");
                             Bot.Wait.ForPickup("Vindicated Scripture");
                         }
@@ -105,10 +102,6 @@ public class NeotowerMerge
                     Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        foreach (int M in new[] { 24, 25, 26, 27 })
-                        {
-                            Core.KillMonster("neotower", "r10", "left", M, null, log: false);
-                        }
                         Core.KillMonster("neotower", "r10", "left", 28, "Vindicated Scripture");
                         Bot.Wait.ForPickup(req.Name);
                     }
