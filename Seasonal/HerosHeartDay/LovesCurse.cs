@@ -29,6 +29,9 @@ public class LovesCurse
 
         Story.PreLoad(this);
 
+        // Intro To Love (1665)
+        Story.ChainQuest(1665);
+
         //Find the Rest of J6 (1656)
         Story.KillQuest(1656, "curseshore", new[] { "Escaped Ghostly Zardman", "Escaped Ghostly Zardman", "Escaped Ghostly Zardman" });
 

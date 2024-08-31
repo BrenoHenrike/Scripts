@@ -48,8 +48,9 @@ public class NulgathDemandsWork
     }
 
     /// <summary>
+    /// <param name="itemNames"></param>
     /// Complets "Nulgath Demands Work" until the Desired Items are gotten. 
-    /// <param name="string[] items">The List of items to Get from the Quest</param>
+    /// 
     /// <param name="quant">Amount of the "item" [Mostly the Archfiend Ess and Uni 35]</param>
     /// </summary>
     public void NDWQuest(string[]? itemNames = null, int quant = 1)

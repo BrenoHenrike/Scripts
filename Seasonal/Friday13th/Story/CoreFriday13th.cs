@@ -570,7 +570,12 @@ public class CoreFriday13th
         Story.KillQuest(5060, "Wormhole", "Volatile Current");
 
         // More Trobboliers 5061
-        Story.KillQuest(5061, "Wormhole", "Green Trobbolier");
+        if(!Story.QuestProgression(5061))
+        {
+            Core.EnsureAccept(5061);
+            Core.KillMonster("Wormhole", "r5", "left", "Red Trobbolier", "Trobbolier Punted", 4);
+            Core.EnsureComplete(5061);
+        }
 
         // Maybe These Guys Know Something 5062
         Story.KillQuest(5062, "Wormhole", new[] { "Stormslasher", "Undead Space Marine" });

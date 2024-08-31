@@ -49,8 +49,11 @@ public class FandH
         Story.KillQuest(6593, "stalagbite", "Balboa", GetReward: false);
 
         // Rest for the Not Very Wicked
+        Core.EnsureAccept(6594);
+        Core.HuntMonster("pines", "Red Shell Turtle", "Turtle Shell");
+        Core.HuntMonster("pines", "Pine Grizzly", "Coffee Beans of Awakeness");
+        Core.HuntMonster("pines", "Pine Troll", "String Fibers", 5);
         Story.MapItemQuest(6594, "tavern", 6114, GetReward: false);
-        Story.KillQuest(6594, "pines", new[] { "Red Shell Turtle", "Pine Grizzly", "Pine Troll" });
 
         // Pisces Pieces
         Story.KillQuest(6595, "river", "Kuro", GetReward: false);

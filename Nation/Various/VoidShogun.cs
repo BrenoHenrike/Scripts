@@ -66,11 +66,11 @@ public class VoidShogun
 
             Nation.FarmUni13(1);
             Nation.FarmBloodGem(7);
-            Nation.Supplies("Unidentified 24");
+            Nation.TheAssistant("Unidentified 24");
 
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("hachiko", "Dai Tengu", "DaiTengu Blade of Wind", 1, false);
-            Core.HuntMonster("shogunwar", "Orochi", "Orochi's Shadow", 1, false);
+            Core.HuntMonster("hachiko", "Dai Tengu", "DaiTengu Blade of Wind");
+            Core.HuntMonster("shogunwar", "Orochi", "Orochi's Shadow");
             Core.HuntMonster("necrocavern", "Shadowstone Support", "ShadowStone Rune");
 
             Core.EnsureCompleteChoose(6484, Rewards);

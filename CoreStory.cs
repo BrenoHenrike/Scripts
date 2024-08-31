@@ -78,13 +78,12 @@ public class CoreStory
             CurrentRequirements.Clear();
         }
     }
-
     /// <summary>
     /// Kills an array of monsters for a Quest, and turns in the quest if possible. Automatically checks if the next quest is unlocked. If it is, it will skip this one.
     /// </summary>
     /// <param name="QuestID">ID of the quest</param>
-    /// <param name="MapName">Map where the <paramref name="MonsterName"/> are</param>
-    /// <param name="MonsterName">Monster to kill</param>
+    /// <param name="MapName">Map where the monsters are</param>
+    /// <param name="MonsterNames">Array of monster names to kill</param>
     /// <param name="GetReward">Whether or not the <paramref name="Reward"/> should be added with AddDrop</param>
     /// <param name="Reward">What item should be added with AddDrop</param>
     /// <param name="AutoCompleteQuest">If the method should turn in the quest for you when the quest can be completed</param>
@@ -124,9 +123,9 @@ public class CoreStory
     /// Gets a MapItem X times for a Quest, and turns in the quest if possible. Automatically checks if the next quest is unlocked. If it is, it will skip this one.
     /// </summary>
     /// <param name="QuestID">ID of the quest</param>
-    /// <param name="MapName">Map where the <paramref name="MonsterName"/> are</param>
+    /// <param name="MapName">Map where the items are</param>
     /// <param name="MapItemID">ID of the item</param>
-    /// <param name="Amount">The amount of <paramref name="MapItemID"/> it grabs</param>
+    /// <param name="Amount">The amount of <paramref name="MapItemID"/> to grab</param>
     /// <param name="GetReward">Whether or not the <paramref name="Reward"/> should be added with AddDrop</param>
     /// <param name="Reward">What item should be added with AddDrop</param>
     /// <param name="AutoCompleteQuest">If the method should turn in the quest for you when the quest can be completed</param>
@@ -148,9 +147,9 @@ public class CoreStory
     /// Gets a MapItem X times for a Quest, and turns in the quest if possible. Automatically checks if the next quest is unlocked. If it is, it will skip this one.
     /// </summary>
     /// <param name="QuestID">ID of the quest</param>
-    /// <param name="MapName">Map where the <paramref name="MonsterName"/> are</param>
-    /// <param name="MapItemIDs">ID of the item</param>
-    /// <param name="Amount">The amount of <paramref name="MapItemID"/> it grabs</param>
+    /// <param name="MapName">Map where the items are</param>
+    /// <param name="MapItemIDs">ID of the items</param>
+    /// <param name="Amount">The amount of <paramref name="MapItemIDs"/> to grab</param>
     /// <param name="GetReward">Whether or not the <paramref name="Reward"/> should be added with AddDrop</param>
     /// <param name="Reward">What item should be added with AddDrop</param>
     /// <param name="AutoCompleteQuest">If the method should turn in the quest for you when the quest can be completed</param>
@@ -197,11 +196,12 @@ public class CoreStory
     }
 
     /// <summary>
-    /// Gets a MapItem X times for a Quest, and turns in the quest if possible. Automatically checks if the next quest is unlocked. If it is, it will skip this one.
+    /// Buys an item X times for a Quest, and turns in the quest if possible. Automatically checks if the next quest is unlocked. If it is, it will skip this one.
     /// </summary>
     /// <param name="QuestID">ID of the quest</param>
-    /// <param name="MapName">Map where the <paramref name="MonsterName"/> are</param>
-    /// <param name="ItemName">Name of the item</param>
+    /// <param name="MapName">Map where the shop is located</param>
+    /// <param name="ShopID">ID of the shop</param>
+    /// <param name="ItemName">Name of the item to buy</param>
     /// <param name="Amount">The amount of <paramref name="ItemName"/> to buy</param>
     /// <param name="GetReward">Whether or not the <paramref name="Reward"/> should be added with AddDrop</param>
     /// <param name="Reward">What item should be added with AddDrop</param>

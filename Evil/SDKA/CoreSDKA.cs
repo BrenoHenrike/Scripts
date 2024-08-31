@@ -313,14 +313,14 @@ public class CoreSDKA
         Core.RegisterQuests(2165);
         while (!Bot.ShouldExit && (!Core.CheckInventory(item, quant)))
         {
-            Core.KillMonster("boxes", "Boss", "Left", "Sneeviltron", "Grumpy Warhammer", isTemp: false, log: false);
-            Core.KillKitsune("No. 1337 Blade Oil", log: false);
-            Core.KillMonster("sandcastle", "r7", "Left", "Chaos Sphinx", "Gold Brush", log: false);
-            Core.KillMonster("crashsite", "Boss", "Left", "ProtoSartorium", "Non-abrasive Power Powder", log: false);
-            Core.KillMonster("necrocavern", "r13", "Left", "Shadow Dragon", "ShadowDragon Hide", 3, log: false);
-            Core.KillMonster("dragonplane", "r9", "Left", "Moganth", "Moganth's Stone Sharpener", log: false);
-            Core.KillMonster("akiba", "cave4boss", "Left", "Shadow Nukemichi", "Doom Lacquer Finish", log: false);
-            Core.KillMonster("dreamnexus", "r6", "Left", "Dark Wyvern", "Dark Wyvern Hide Travel Case", log: false);
+            Core.KillMonster("boxes", "Boss", "Left", "Sneeviltron", "Grumpy Warhammer", isTemp: false);
+            Core.KillKitsune("No. 1337 Blade Oil");
+            Core.KillMonster("sandcastle", "r7", "Left", "Chaos Sphinx", "Gold Brush");
+            Core.KillMonster("crashsite", "Boss", "Left", "ProtoSartorium", "Non-abrasive Power Powder");
+            Core.KillMonster("necrocavern", "r13", "Left", "Shadow Dragon", "ShadowDragon Hide", 3);
+            Core.KillMonster("dragonplane", "r9", "Left", "Moganth", "Moganth's Stone Sharpener");
+            Core.KillMonster("akiba", "cave4boss", "Left", "Shadow Nukemichi", "Doom Lacquer Finish");
+            Core.KillMonster("dreamnexus", "r7", "Left", "Dark Wyvern", "Dark Wyvern Hide Travel Case");
 
             Bot.Wait.ForPickup(item);
         }

@@ -120,10 +120,18 @@ public class YokaiQuests
         }
 
         // Summon Otoroshi 6464
-        Story.MapItemQuest(6464, "shinringrove", 5962);
-        Story.KillQuest(6464, "shinringrove", "Otoroshi");
+        if (!Story.QuestProgression(6464))
+        {
+            Core.EnsureAccept(6464);
+            Core.EquipClass(ClassType.Solo);
+            Story.MapItemQuest(6464, "shinringrove", 5962);
+            Core.Sleep();
+            Core.KillMonster("shinringrove", "r4a", "Left", "Otoroshi", "Otoroshi Defeated");
+            Core.EnsureComplete(6464);
+        }
 
         // Put out the Fire 6465
+        Core.EquipClass(ClassType.Farm);
         Story.MapItemQuest(6465, "greenshell", 5964, 5);
         Story.KillQuest(6465, "greenshell", "Tsurubebi");
 

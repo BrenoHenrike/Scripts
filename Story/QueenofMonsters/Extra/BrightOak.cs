@@ -375,6 +375,8 @@ public class BrightOak
         if (Core.isCompletedBefore(4810))
             return;
 
+        LapisPart2();
+
         // Defeat the Traitor
         Story.KillQuest(4809, "Gaiazor", "Nevanna");
 

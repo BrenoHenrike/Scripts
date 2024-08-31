@@ -85,7 +85,7 @@ public class ArmyLightCaster
             Core.EnsureAccept(6495);
             BBOA.GetBBoA();
             Core.Logger("\"Aranx\" is  Solo only boss, cannot part.");
-            Adv.BoostHuntMonster("celestialarenad", "Aranx", "Aranx's Pure Light", isTemp: false);
+            Core.HuntMonster("celestialarenad", "Aranx", "Aranx's Pure Light", isTemp: false);
             Core.EnsureComplete(6495);
             Bot.Wait.ForPickup("LightCaster");
             Adv.RankUpClass("LightCaster");

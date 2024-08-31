@@ -7,6 +7,7 @@ tags: story, quest, mazumi
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreStory.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models.Quests;
 
 public class Mazumi
 {
@@ -28,7 +29,7 @@ public class Mazumi
     {
         if (Core.isCompletedBefore(92))
             return;
-
+            
         Story.PreLoad(this);
 
         // Ninja Grudge 90
@@ -47,6 +48,7 @@ public class Mazumi
         }
 
         // Hit Job 92
+        Core.EquipClass(ClassType.Solo);
         Story.KillQuest(92, "greenguardwest", new[] { "Breken the Vile", "Ogug Stoneaxe" });
 
     }

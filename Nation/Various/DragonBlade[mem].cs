@@ -38,7 +38,7 @@ public class DragonBladeofNulgath
     {
         if (Core.CheckInventory("DragonBlade of Nulgath") || (!Core.IsMember))
         {
-            Core.Logger($"{(Core.CheckInventory("DragonBlade of Nulgath") ? "\"DragonBlade of Nulgath\" owned" : "Not an Member canat get \"DragonBlade of Nulgath\"")}");
+            Core.Logger($"{(Core.CheckInventory("DragonBlade of Nulgath") ? "\"DragonBlade of Nulgath\" owned" : "Not an Member cannot get \"DragonBlade of Nulgath\"")}");
             return;
         }
 

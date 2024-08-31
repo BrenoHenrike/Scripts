@@ -63,6 +63,7 @@ tags: ultra speaker merge, ultra malgor merge, RGoW, goddess of war
 //cs_include Scripts/ShadowsOfWar/MergeShops/ManaCradleMerge.cs
 //cs_include Scripts/Legion/SwordMaster.cs
 //cs_include Scripts/Good/GearOfAwe/Awescended.cs
+//cs_include Scripts/Story/Lair.cs
 
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;

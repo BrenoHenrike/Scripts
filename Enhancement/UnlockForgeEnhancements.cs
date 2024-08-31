@@ -45,6 +45,7 @@ tags: lacerate, smite, herosvaliance, arcanasconcerto, elysium, acheron, absolut
 //cs_include Scripts/Story/StarSinc.cs
 //cs_include Scripts/Story/TowerOfDoom.cs
 //cs_include Scripts/Story/XansLair.cs
+//cs_include Scripts/Story/Lair.cs
 //cs_include Scripts/Good/GearOfAwe/Awescended.cs
 //cs_include Scripts/Nation/AFDL/NulgathDemandsWork.cs
 //cs_include Scripts/Other/Classes/Necromancer.cs
@@ -749,7 +750,7 @@ public class UnlockForgeEnhancements
         Dictionary<int, int> itemsToCheck = new()
         {
             { 39091, 100 },  // Ascended Paladin
-            { 39093, 50 },   // Ascended Paladin Staff
+            // { 39093, 50 },   // Ascended Paladin Staff
             { 39094, 50 }    // Ascended Paladin Sword
         };
 
@@ -765,7 +766,7 @@ public class UnlockForgeEnhancements
         Core.EquipClass(ClassType.Farm);
         Core.KillMonster("therift", "r9", "Left", "Plague Spreader", "Slimed Sigil", SlimeSigil, isTemp: false);
         Adv.BuyItem("therift", 1399, "Ascended Paladin", shopItemID: 5244);
-        Adv.BuyItem("therift", 1399, "Ascended Paladin Staff", shopItemID: 5246);
+        // Adv.BuyItem("therift", 1399, "Ascended Paladin Staff", shopItemID: 5246);
         Adv.BuyItem("therift", 1399, "Ascended Paladin Sword", shopItemID: 5247);
 
         Core.ChainComplete(8743);
@@ -796,7 +797,7 @@ public class UnlockForgeEnhancements
                 Core.RegisterQuests(4162);
                 while (!Bot.ShouldExit && !Core.CheckInventory("Pauldron Fragment", 15))
                 {
-                    Adv.BoostHuntMonster("gravestrike", "Ultra Akriloth", "Pauldron Shard", 15, false);
+                    Core.HuntMonster("gravestrike", "Ultra Akriloth", "Pauldron Shard", 15, false);
                     Bot.Wait.ForPickup("Pauldron Fragment");
                 }
                 Core.CancelRegisteredQuests();

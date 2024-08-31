@@ -32,62 +32,56 @@ public class BuyScrolls
         Core.SetOptions(false);
     }
 
-    public void BuyScroll(Scrolls scroll, int quant = -1)
+    public void BuyScroll(Scrolls scroll, int quant = -1, bool useMysticParchment = false)
     {
-        Quest questData = Core.EnsureLoad((int)scroll);
-        string _scroll = questData.Rewards.First().Name;
-        quant = quant == -1 ? questData.Rewards.First().MaxStack : quant;
+        useMysticParchment = useMysticParchment || Bot.Config!.Get<bool>("UseMysticParchment");
 
-        if (Core.CheckInventory(_scroll, quant))
+        Quest questData = Core.EnsureLoad((int)scroll);
+        string scrollName = questData.Rewards.First().Name;
+        int maxStack = questData.Rewards.First().MaxStack;
+        quant = quant == -1 ? maxStack : quant;
+
+        if (Core.CheckInventory(scrollName, quant))
             return;
 
         string ink = questData.Requirements.First().Name;
 
-        Core.Logger($"Getting you {quant}x {_scroll}");
-        Core.AddDrop(_scroll);
+        Core.Logger($"Getting you {quant}x {scrollName}");
+        Core.AddDrop(scrollName);
 
         Farm.SpellCraftingREP(5);
 
-        if (!Bot.Config!.Get<bool>("UseMysticParchment"))
-        {
-            while (!Bot.ShouldExit && !Core.CheckInventory(_scroll, quant))
+        Action gatherMaterials = !useMysticParchment
+            ? () =>
             {
-                if (!Core.CheckInventory(ink))
+                if (!Core.CheckInventory("Arcane Quill"))
                 {
-                    if (!Core.CheckInventory("Arcane Quill"))
-                    {
-                        if (!Core.CheckInventory("Gold Voucher 500k"))
-                            Farm.Gold(500000);
-                        Core.BuyItem("spellcraft", 693, "Gold Voucher 500k", 2);
-                        Core.BuyItem("spellcraft", 693, "Arcane Quill", 10, shopItemID: 8847);
-                    }
-                    Core.BuyItem("spellcraft", 622, ink, 5);
+                    if (!Core.CheckInventory("Gold Voucher 500k"))
+                        Farm.Gold(500000);
+                    Core.BuyItem("spellcraft", 693, "Gold Voucher 500k", 2);
+                    Core.BuyItem("spellcraft", 693, "Arcane Quill", 10, shopItemID: 8847);
                 }
-                Core.EnsureAccept((int)scroll);
-                Core.EnsureCompleteMulti((int)scroll, Bot.Inventory.GetQuantity(_scroll) - ((int)Math.Ceiling((float)quant / (float)questData.Rewards.First().Quantity)));
-                Bot.Wait.ForPickup(_scroll);
-                Core.Sleep(500);
-                Core.Logger($"You now own {Bot.Inventory.GetQuantity(_scroll)} of the requested {quant} {_scroll}'s");
+                Core.BuyItem("spellcraft", 622, ink, 5);
             }
-            Core.Logger($"Buying complete, you now own {quant} {_scroll}'s");
-        }
-        else
+        : () =>
         {
-            while (!Bot.ShouldExit && !Core.CheckInventory(_scroll, quant))
-            {
-                if (!Core.CheckInventory(ink))
-                {
-                    Core.KillMonster("tercessuinotlim", "m2", "Left", "*", "Mystic Parchment", ((quant / 5) / 2) - (Bot.Inventory.GetQuantity("Mystic Parchment")), isTemp: false);
-                    Core.BuyItem("spellcraft", 549, ink);
-                }
-                Core.EnsureAccept((int)scroll);
-                Core.EnsureCompleteMulti((int)scroll, Bot.Inventory.GetQuantity(_scroll) - ((int)Math.Ceiling((float)quant / (float)questData.Rewards.First().Quantity)));
-                Bot.Wait.ForPickup(_scroll);
-                Core.Logger($"You now own {Bot.Inventory.GetQuantity(_scroll)} of the requested {quant} {_scroll}'s");
-            }
-            Core.Logger($"Buying complete, you now own {quant} {_scroll}'s");
+            Core.KillMonster("tercessuinotlim", "m2", "Left", "*", "Mystic Parchment", (quant / 10) - Bot.Inventory.GetQuantity("Mystic Parchment"), isTemp: false);
+            Core.BuyItem("spellcraft", 549, ink, 5);
+        };
+
+        while (!Bot.ShouldExit && !Core.CheckInventory(scrollName, quant))
+        {
+            gatherMaterials();
+            Core.EnsureAccept((int)scroll);
+            int currentQuantity = Bot.Inventory.GetQuantity(scrollName);
+            Core.EnsureCompleteMulti((int)scroll, currentQuantity - (int)Math.Ceiling(quant / (float)maxStack));
+            Bot.Wait.ForPickup(scrollName);
+            Core.FarmingLogger(scrollName, quant);
         }
+
+        Core.Logger($"Buying complete, you now own {quant} {scrollName}'s");
     }
+
 }
 
 public enum Scrolls

@@ -29,9 +29,15 @@ public class ShadowSlayerK
     {
         Core.SetOptions();
 
-        Storyline();
+        DoAll();
 
         Core.SetOptions(false);
+    }
+
+    public void DoAll()
+    {
+        Storyline();
+        Part2();
     }
 
     public void Storyline()
@@ -171,4 +177,92 @@ public class ShadowSlayerK
             Core.EnsureComplete(8835);
         }
     }
+
+    public void Part2()
+    {
+
+        if (Core.isCompletedBefore(9845))
+            return;
+
+        Story.PreLoad(this);
+
+
+        #region Useable Monsters
+        string[] UseableMonsters = new[]
+        {
+            "Dire Wolf", // UseableMonsters[0],
+            "Ghoul", // UseableMonsters[1],
+            "Hunter", // UseableMonsters[2],
+            "Tindalion Hound", // UseableMonsters[3],
+            "Twisted Hunter", // UseableMonsters[4]
+        };
+        #endregion Useable Monsters
+
+        // 9837 | Stalking Prey
+        if (!Story.QuestProgression(9837))
+        {
+            Core.HuntMonsterQuest(9837, new (string? mapName, string? monsterName, ClassType classType)[] {
+        ("badmoon", UseableMonsters[0], ClassType.Farm) });
+        }
+
+
+        // 9838 | Super Creeps
+        if (!Story.QuestProgression(9838))
+        {
+            Core.HuntMonsterQuest(9838, new (string? mapName, string? monsterName, ClassType classType)[] {
+        ("badmoon", UseableMonsters[1], ClassType.Solo) });
+        }
+
+
+        // 9839 | Sleepless Villagers
+        Story.MapItemQuest(9839, "badmoon", Core.FromTo(13445, 13447));
+
+        // 9840 | Suspicious Minds
+        if (!Story.QuestProgression(9840))
+        {
+            Core.HuntMonsterQuest(9840, new (string? mapName, string? monsterName, ClassType classType)[] {
+        ("badmoon", UseableMonsters[0], ClassType.Farm),
+        ("badmoon", UseableMonsters[1], ClassType.Solo) });
+        }
+
+        // 9841 | Get Out The Way
+        if (!Story.QuestProgression(9841))
+        {
+            Core.HuntMonsterQuest(9841, new (string? mapName, string? monsterName, ClassType classType)[] {
+        ("badmoon", UseableMonsters[2], ClassType.Farm) });
+        }
+
+        // 9842 | Door Stuck
+        if (!Story.QuestProgression(9842))
+        {
+            Story.MapItemQuest(9842, "badmoon", 13448, 3);
+            Story.KillQuest(9842, "badmoon", UseableMonsters[1]);
+            Story.MapItemQuest(9842, "badmoon", 13449);
+        }
+
+
+        // 9843 | Nothing But A Hound Dog
+        if (!Story.QuestProgression(9843))
+        {
+            Core.HuntMonsterQuest(9843, new (string? mapName, string? monsterName, ClassType classType)[] {
+        ("badmoon", UseableMonsters[3], ClassType.Solo) });
+        }
+
+
+        // 9844 | Coldest Regards
+        if (!Story.QuestProgression(9844))
+        {
+            Core.HuntMonsterQuest(9844, new (string? mapName, string? monsterName, ClassType classType)[] {
+        ("badmoon", UseableMonsters[2], ClassType.Solo) });
+        }
+
+
+        // 9845 | No Different From Prey
+        if (!Story.QuestProgression(9845))
+        {
+            Core.HuntMonsterQuest(9845, new (string? mapName, string? monsterName, ClassType classType)[] {
+        ("badmoon", UseableMonsters[4], ClassType.Solo) });
+        }
+    }
+
 }

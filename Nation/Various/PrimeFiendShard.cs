@@ -109,8 +109,8 @@ public class PrimeFiendShard
         VHL.GetVHL();
 
         // Prime Fiend Shard [required to accept]
-
         VoidChasmMerge.BuyAllMerge("Prime Fiend Shard");
+
         // Ensure requirements are unbanked
         Core.Unbank("Prime Fiend Shard");
 
@@ -219,6 +219,10 @@ public class PrimeFiendShard
         if (!Story.QuestProgression(9559))
         {
             Core.EnsureAccept(9559);
+
+            //10x roent
+            VHL.VHLChallenge(10);
+
             Nation.FarmUni13(13);
             Nation.FarmTaintedGem(750);
             Nation.FarmDarkCrystalShard(400);
@@ -226,17 +230,14 @@ public class PrimeFiendShard
             Nation.FarmTotemofNulgath(60);
             Nation.FarmGemofNulgath(300);
             Nation.FarmBloodGem(100);
-            while (!Bot.ShouldExit && !Core.CheckInventory("Roentgenium of Nulgath", 10))
-            {
-                VHL.VHLChallenge(10);
-                if (!Core.CheckInventory("Elders' Blood"))
-                    break;
-            }
 
-            // Ensure requirements are unbanked
-            Quest? Quest = Core.EnsureLoad(9559);
-            Core.Unbank(Core.EnsureLoad(8916).Requirements.Select(x => x.ID).ToArray());
-            Core.EnsureComplete(9559);
+            if (Core.CheckInventory("Roentgenium of Nulgath", 10))
+            { // Ensure requirements are unbanked
+                Quest? Quest = Core.EnsureLoad(9559);
+                Core.Unbank(Core.EnsureLoad(8916).Requirements.Select(x => x.ID).ToArray());
+                Core.EnsureComplete(9559);
+            }
+            else Core.Logger($"Not enough Roents {Bot.Inventory.GetQuantity("Roentgenium of Nulgath")} / 10");
         }
 
         var filteredReceipts = Nation.Receipt.Where(item => !item.StartsWith("Unidentified")).ToArray();

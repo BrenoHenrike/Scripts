@@ -1,7 +1,7 @@
 /*
 name: Extra Credit Merge
 description: This bot will farm the items belonging to the selected mode for the Extra Credit Merge [2158] in /extracredit
-tags: back-to-school, seasonal, extra, credit, merge, extracredit, ultra, fierce, outfit, super, cute, academic, attitude, curls, power, puffs, female, morph, becky, ben, beckys, bens, academy, jacket, jeans, autumn, days, violet, puffed, coat, grape, chill, package, fiercer, chewy, cookie, melty, crunchy, gourmet
+tags: extra, credit, merge, extracredit, ultra, fierce, outfit, super, cute, academic, attitude, curls, power, puffs, female, morph, becky, ben, beckys, bens, academy, jacket, jeans, autumn, days, violet, puffed, coat, grape, chill, package, fiercer, chewy, cookie, melty, crunchy, gourmet, amethyst, akibakei, headset, wings, havoc, hammer, hammers, crystallis, gymwear, trainer
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -27,7 +27,7 @@ public class ExtraCreditMerge
 
     public void ScriptMain(IScriptInterface Bot)
     {
-        Core.BankingBlackList.AddRange(new[] { "Golden Apple", "Silver Ruler", "Plastic Toy", "Bronze Plaque", "Guava Sip", "Purple Paddlepop", "DogEar's Snack Serum", "Raw Cookie Dough Blade" });
+        Core.BankingBlackList.AddRange(new[] { "Golden Apple", "Silver Ruler", "Plastic Toy", "Bronze Plaque", "Guava Sip", "Purple Paddlepop", "DogEar's Snack Serum", "Raw Cookie Dough Blade", "Crystallis Trainer Hair", "Crystallis Trainer Locks" });
         Core.SetOptions();
 
         BuyAllMerge();
@@ -115,6 +115,7 @@ public class ExtraCreditMerge
 
                 case "Guava Sip":
                 case "Purple Paddlepop":
+                case "Crystallis Trainer Locks":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.HuntMonster("extracredit", "Meanest Girl", req.Name, quant, false, false);
@@ -129,6 +130,12 @@ public class ExtraCreditMerge
                 case "Raw Cookie Dough Blade":
                     Core.FarmingLogger(req.Name, quant);
                     Core.GetMapItem(11646, quant, "oaklore");
+                    break;
+
+                case "Crystallis Trainer Hair":
+                    Core.FarmingLogger(req.Name, quant);
+                    Core.EquipClass(ClassType.Farm);
+                    Core.HuntMonster("extracredit", "Grade A Bully", req.Name, quant, false, false);
                     break;
 
             }
@@ -161,5 +168,18 @@ public class ExtraCreditMerge
         new Option<bool>("28002", "Melty Cookie Sword", "Mode: [select] only\nShould the bot buy \"Melty Cookie Sword\" ?", false),
         new Option<bool>("28003", "Crunchy Cookie Sword", "Mode: [select] only\nShould the bot buy \"Crunchy Cookie Sword\" ?", false),
         new Option<bool>("28004", "Gourmet Cookie Sword", "Mode: [select] only\nShould the bot buy \"Gourmet Cookie Sword\" ?", false),
+        new Option<bool>("86980", "Amethyst Akiba-kei Outfit", "Mode: [select] only\nShould the bot buy \"Amethyst Akiba-kei Outfit\" ?", false),
+        new Option<bool>("86985", "Amethyst Akiba-kei Headset Hair", "Mode: [select] only\nShould the bot buy \"Amethyst Akiba-kei Headset Hair\" ?", false),
+        new Option<bool>("86986", "Amethyst Akiba-kei Headset Locks", "Mode: [select] only\nShould the bot buy \"Amethyst Akiba-kei Headset Locks\" ?", false),
+        new Option<bool>("86987", "Amethyst Akiba-kei Morph", "Mode: [select] only\nShould the bot buy \"Amethyst Akiba-kei Morph\" ?", false),
+        new Option<bool>("86988", "Amethyst Akiba-kei Visage", "Mode: [select] only\nShould the bot buy \"Amethyst Akiba-kei Visage\" ?", false),
+        new Option<bool>("86991", "Amethyst Akiba-kei Headset Morph", "Mode: [select] only\nShould the bot buy \"Amethyst Akiba-kei Headset Morph\" ?", false),
+        new Option<bool>("86992", "Amethyst Akiba-kei Headset Visage", "Mode: [select] only\nShould the bot buy \"Amethyst Akiba-kei Headset Visage\" ?", false),
+        new Option<bool>("86994", "Amethyst Akiba-kei Aura Wings", "Mode: [select] only\nShould the bot buy \"Amethyst Akiba-kei Aura Wings\" ?", false),
+        new Option<bool>("87000", "Amethyst Akiba-kei Havoc Hammer", "Mode: [select] only\nShould the bot buy \"Amethyst Akiba-kei Havoc Hammer\" ?", false),
+        new Option<bool>("87001", "Amethyst Akiba-kei Havoc Hammers", "Mode: [select] only\nShould the bot buy \"Amethyst Akiba-kei Havoc Hammers\" ?", false),
+        new Option<bool>("83700", "Crystallis Gymwear", "Mode: [select] only\nShould the bot buy \"Crystallis Gymwear\" ?", false),
+        new Option<bool>("83703", "Crystallis Trainer Morph", "Mode: [select] only\nShould the bot buy \"Crystallis Trainer Morph\" ?", false),
+        new Option<bool>("83704", "Crystallis Trainer Visage", "Mode: [select] only\nShould the bot buy \"Crystallis Trainer Visage\" ?", false),
     };
 }

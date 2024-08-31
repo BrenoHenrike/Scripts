@@ -6,6 +6,12 @@ tags: void,warlock,tools,job,corrupted,touch,quest,rewards, tools for the job, c
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/Nation/CoreNation.cs
+//cs_include Scripts/Nation\Various\EnchantedNulgathNationHouse.cs
+//cs_include Scripts/Story/BattleUnder.cs
+//cs_include Scripts/CoreStory.cs
+//cs_include Scripts/CoreDailies.cs
+//cs_include Scripts/Good/BLOD/CoreBLOD.cs
+//cs_include Scripts/CoreAdvanced.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 
@@ -15,6 +21,8 @@ public class VoidWarlock
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
     public CoreNation Nation = new();
+    public EnhancedNulgathNationHouse ENNH = new();
+
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -27,6 +35,9 @@ public class VoidWarlock
 
     public void GetWarlock(string? singleToolReward = null, string? singleTouchReward = null)
     {
+        // Required to Accept/turnin Quest:
+        ENNH.GetENNH();
+
         List<ItemBase> ToolsRewards;
         List<ItemBase> TouchRewards;
         if (singleToolReward == null)

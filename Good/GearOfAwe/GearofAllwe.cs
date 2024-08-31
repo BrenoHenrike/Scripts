@@ -90,7 +90,7 @@ public class GearofAllwe
                 Core.RegisterQuests(4162);
                 while (!Bot.ShouldExit && !Core.CheckInventory("Pauldron Fragment", 15))
                 {
-                    Adv.BoostHuntMonster("gravestrike", "Ultra Akriloth", "Pauldron Shard", 15, false);
+                    Core.HuntMonster("gravestrike", "Ultra Akriloth", "Pauldron Shard", 15, false);
                     Bot.Wait.ForPickup("Pauldron Fragment");
                 }
                 Core.CancelRegisteredQuests();

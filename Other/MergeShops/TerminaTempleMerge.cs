@@ -122,5 +122,8 @@ public class TerminaTempleMerge
         new Option<bool>("77669", "Battle Cleric's Helm", "Mode: [select] only\nShould the bot buy \"Battle Cleric's Helm\" ?", false),
         new Option<bool>("77670", "Battle Cleric's Bright Cloak", "Mode: [select] only\nShould the bot buy \"Battle Cleric's Bright Cloak\" ?", false),
         new Option<bool>("77673", "Battle Cleric's Bright Accoutrements", "Mode: [select] only\nShould the bot buy \"Battle Cleric's Bright Accoutrements\" ?", false),
+        new Option<bool>("85297", "Chaos Gaze Scythe", "Mode: [select] only\nShould the bot buy \"Chaos Gaze Scythe\" ?", false),
+        new Option<bool>("85298", "Empire's Origin Scythe", "Mode: [select] only\nShould the bot buy \"Empire's Origin Scythe\" ?", false),
+        new Option<bool>("85299", "Justified Victory Scythe", "Mode: [select] only\nShould the bot buy \"Justified Victory Scythe\" ?", false),
     };
 }

@@ -1,7 +1,7 @@
 /*
 name: Royal Wentira Merge
 description: This bot will farm the items belonging to the selected mode for the Royal Wentira Merge [2318] in /wentira
-tags: royal, wentira, merge, wentira, pesugihan, boar, crown, maned, morph, ritual, instruments, kabasaran, master, headdress, adornment, shielded
+tags: royal, wentira, merge, wentira, pesugihan, boar, crown, maned, morph, ritual, instruments, kabasaran, master, headdress, adornment, shielded, beloved, blessing, garb, udeng, golden, bungan, mitir, blessed, beloveds, kris, knives, wiracana, fans
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
@@ -79,6 +79,11 @@ public class RoyalWentiraMerge
 
                 case "Gold Nugget":
                 case "Broken Tusk":
+                case "Beloved Blessing Hair":
+                case "Uncut Ruby":
+                case "Beloved Blessing Locks":
+                case "Blessed Beloved's Kris Knife":
+                case "Wiracana Fan":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.HuntMonster("wentira", "Pesugihan Boar", req.Name, quant, false, false);
@@ -89,7 +94,6 @@ public class RoyalWentiraMerge
                     Core.EquipClass(ClassType.Solo);
                     Core.HuntMonster("wentira", "Kabasaran Waranei", req.Name, quant, false, false);
                     break;
-
             }
         }
     }
@@ -110,5 +114,11 @@ public class RoyalWentiraMerge
         new Option<bool>("79133", "Kabasaran Polearm", "Mode: [select] only\nShould the bot buy \"Kabasaran Polearm\" ?", false),
         new Option<bool>("79136", "Kabasaran Shielded Sword", "Mode: [select] only\nShould the bot buy \"Kabasaran Shielded Sword\" ?", false),
         new Option<bool>("79137", "Kabasaran Shielded Polearm", "Mode: [select] only\nShould the bot buy \"Kabasaran Shielded Polearm\" ?", false),
+        new Option<bool>("87520", "Beloved Blessing Garb", "Mode: [select] only\nShould the bot buy \"Beloved Blessing Garb\" ?", false),
+        new Option<bool>("87523", "Beloved Blessing Udeng", "Mode: [select] only\nShould the bot buy \"Beloved Blessing Udeng\" ?", false),
+        new Option<bool>("87524", "Beloved Blessing Adornment", "Mode: [select] only\nShould the bot buy \"Beloved Blessing Adornment\" ?", false),
+        new Option<bool>("87526", "Golden Bungan Mitir", "Mode: [select] only\nShould the bot buy \"Golden Bungan Mitir\" ?", false),
+        new Option<bool>("87528", "Blessed Beloved's Kris Knives", "Mode: [select] only\nShould the bot buy \"Blessed Beloved's Kris Knives\" ?", false),
+        new Option<bool>("87530", "Wiracana Fans", "Mode: [select] only\nShould the bot buy \"Wiracana Fans\" ?", false),
     };
 }

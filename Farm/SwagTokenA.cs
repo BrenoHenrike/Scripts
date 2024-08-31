@@ -13,6 +13,7 @@ public class SwagTokenA
 
     public void ScriptMain(IScriptInterface bot)
     {
+        Core.BankingBlackList.AddRange(new[ ]{"Super-Fan Swag Token A", "Super-Fan Swag Token B", "Super-Fan Swag Token C", "Super-Fan Swag Token D"});
         Core.SetOptions();
         if (Core.IsMember)
             Farm.SwagTokenA();

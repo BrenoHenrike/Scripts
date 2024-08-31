@@ -66,16 +66,16 @@ public class LordOfOrder
             Core.EnsureAccept(7156);
 
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("watchtower", "Chaorrupted Knight", "Pristine Blades of Order", isTemp: false, log: false);
+            Core.HuntMonster("watchtower", "Chaorrupted Knight", "Pristine Blades of Order", isTemp: false);
             Core.BuyItem("dreadrock", 1221, "Dreadrock Donation Receipt");
-            Core.HuntMonster("deadmoor", "Banshee Mallora", "Deadmoor Spirits Helped", isTemp: false, log: false);
+            Core.HuntMonster("deadmoor", "Banshee Mallora", "Deadmoor Spirits Helped", isTemp: false);
             CR.MurrysQuests();
             CR.PolishsQuestsCitadelRuins();
             if (!Core.CheckInventory("Mage's Gratitude"))
             {
                 Core.AddDrop("Mage's Gratitude");
                 Core.EnsureAccept(6182);
-                Core.HuntMonster("citadelruins", "Enn'tröpy", "Enn'tröpy Defeated", isTemp: true, log: false);
+                Core.HuntMonster("citadelruins", "Enn'tröpy", "Enn'tröpy Defeated", isTemp: true);
                 Core.EnsureComplete(6182);
             }
             Core.BuyItem("ravenscar", 614, "Ravenscar's Truth");
@@ -91,10 +91,10 @@ public class LordOfOrder
             Core.EnsureAccept(7157);
 
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("dwarfprison", "Warden Elfis", "Warden Elfis Detained", isTemp: false, log: false);
-            Core.HuntMonster("prison", "Piggy Drake", "Piggy Drake Punished", isTemp: false, log: false);
-            Core.HuntMonster("mysteriousdungeon", "Mysterious Stranger", "Mysterious Stranger Foiled", isTemp: false, log: false);
-            Core.HuntMonster("dreammaster", "Calico Cobby", "Calico Cobby Crushed", isTemp: false, log: false);
+            Core.HuntMonster("dwarfprison", "Warden Elfis", "Warden Elfis Detained", isTemp: false);
+            Core.HuntMonster("prison", "Piggy Drake", "Piggy Drake Punished", isTemp: false);
+            Core.HuntMonster("mysteriousdungeon", "Mysterious Stranger", "Mysterious Stranger Foiled", isTemp: false);
+            Core.HuntMonster("dreammaster", "Calico Cobby", "Calico Cobby Crushed", isTemp: false);
 
             Core.EnsureComplete(7157);
             Core.ToBank(Core.QuestRewards(7157));
@@ -109,9 +109,9 @@ public class LordOfOrder
             Core.EquipClass(ClassType.Solo);
 
             Adv.BuyItem("tercessuinotlim", 1951, "Chaoroot", 15);
-            Core.HuntMonster("chaosboss", "Ultra Chaos Warlord", "Chaotic War Essence", 15, false, log: false);
-            Core.HuntMonster("shadowgates", "Chaorruption", "Chaorrupting Particles", 15, false, log: false);
-            Core.HuntMonster("stormtemple", "Chaos Lord Lionfang", "Purified Raindrop", 45, false, publicRoom: true, log: false);
+            Core.HuntMonster("chaosboss", "Ultra Chaos Warlord", "Chaotic War Essence", 15, false);
+            Core.HuntMonster("shadowgates", "Chaorruption", "Chaorrupting Particles", 15, false);
+            Core.HuntMonster("stormtemple", "Chaos Lord Lionfang", "Purified Raindrop", 45, false);
 
             Core.EnsureComplete(7158);
             Core.ToBank(Core.QuestRewards(7158));
@@ -124,13 +124,13 @@ public class LordOfOrder
             Core.EnsureAccept(7159);
 
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("gaiazor", "Gaiazor", "Gaiazor's Cornerstone", isTemp: false, publicRoom: true, log: false);
+            Core.HuntMonster("gaiazor", "Gaiazor", "Gaiazor's Cornerstone", isTemp: false, publicRoom: Core.PublicDifficult);
             Bot.Quests.UpdateQuest(4361);
-            Core.HuntMonster("treetitanbattle", "Dakka the Dire Dragon", "Dakka's Crystal", isTemp: false, log: false);
-            Core.HuntMonster("andre", "Giant Necklace", "Andre's Necklace Fragment", isTemp: false, log: false);
+            Core.HuntMonster("treetitanbattle", "Dakka the Dire Dragon", "Dakka's Crystal", isTemp: false);
+            Core.HuntMonster("andre", "Giant Necklace", "Andre's Necklace Fragment", isTemp: false);
             // Perma-Aggroed mob escape.
             Core.JumpWait();
-            Core.HuntMonster("desolich", "Desolich", "Desolich's Skull", isTemp: false, publicRoom: true, log: false);
+            Core.HuntMonster("desolich", "Desolich", "Desolich's Skull", isTemp: false, publicRoom: Core.PublicDifficult);
 
             Core.EnsureComplete(7159);
             Core.ToBank(Core.QuestRewards(7159));
@@ -144,8 +144,8 @@ public class LordOfOrder
 
             Core.EquipClass(ClassType.Solo);
             Core.KillKitsune("Hanzamune Dragon Koi Blade");
-            Core.HuntMonster("ledgermayne", "Ledgermayne", "The Supreme Arcane Staff", isTemp: false, log: false);
-            Core.HuntMonster("mqlesson", "Dragonoid", "Dragonoid of Hours", isTemp: false, log: false);
+            Core.HuntMonster("ledgermayne", "Ledgermayne", "The Supreme Arcane Staff", isTemp: false);
+            Core.HuntMonster("mqlesson", "Dragonoid", "Dragonoid of Hours", isTemp: false);
             if (!Core.CheckInventory("Safiria's Spirit Orb"))
             {
                 Core.AddDrop("Safiria's Spirit Orb");
@@ -172,12 +172,12 @@ public class LordOfOrder
             Core.EnsureAccept(7161);
 
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("elemental", "Tree of Destiny", "Unity of Life", isTemp: false, log: false);
-            Core.HuntMonster("orchestra", "Faust", "Harmony of Solace", isTemp: false, log: false);
+            Core.HuntMonster("elemental", "Tree of Destiny", "Unity of Life", isTemp: false);
+            Core.HuntMonster("orchestra", "Faust", "Harmony of Solace", isTemp: false);
             Core.EquipClass(ClassType.Farm);
-            Core.HuntMonster("cathedral", "Pactagonal Knight", "Teamwork Observed", 100, false, log: false);
+            Core.HuntMonster("cathedral", "Pactagonal Knight", "Teamwork Observed", 100, isTemp: false);
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("goose", "Queen's ArchSage", "Scroll of Enchantment", isTemp: false, log: false);
+            Core.HuntMonster("goose", "Queen's ArchSage", "Scroll of Enchantment", isTemp: false);
 
             Core.EnsureComplete(7161);
             Core.ToBank(Core.QuestRewards(7161));
@@ -190,13 +190,13 @@ public class LordOfOrder
             Core.EnsureAccept(7162);
 
             Core.EquipClass(ClassType.Farm);
-            Core.HuntMonster("newfinale", "Chaos Healer", "Acolyte's Braille", isTemp: false, log: false);
-            Core.HuntMonster("wardwarf", "Drow Assassin", "Suppressed Drows", 50, false, log: false);
-            Core.HuntMonster("warundead", "Skeletal Fire Mage", "Suppressed Undead", 50, false, log: false);
-            Core.HuntMonster("warhorc", "Horc Warrior", "Suppressed Horcs", 50, false, log: false);
-            Core.HuntMonster("weaverwar", "Weaver Queen's Hound", "Suppressed Weavers", 50, false, log: false);
+            Core.HuntMonster("newfinale", "Chaos Healer", "Acolyte's Braille", isTemp: false);
+            Core.HuntMonster("wardwarf", "Drow Assassin", "Suppressed Drows", 50, false);
+            Core.HuntMonster("warundead", "Skeletal Fire Mage", "Suppressed Undead", 50, false);
+            Core.HuntMonster("warhorc", "Horc Warrior", "Suppressed Horcs", 50, false);
+            Core.HuntMonster("weaverwar", "Weaver Queen's Hound", "Suppressed Weavers", 50, false);
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("extriki", "Extriki", "Strength of Resilience", isTemp: false, log: false);
+            Core.HuntMonster("extriki", "Extriki", "Strength of Resilience", isTemp: false);
 
             Core.EnsureComplete(7162);
             Core.ToBank(Core.QuestRewards(7162));
@@ -209,12 +209,12 @@ public class LordOfOrder
             Core.EnsureAccept(7163);
 
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("elfhame", "Guardian Spirit", "Law of Nature", isTemp: false, log: false);
-            Core.HuntMonster("deepchaos", "Kathool", "Law of Time", isTemp: false, log: false);
-            Core.HuntMonster("necrocavern", "ShadowStone Support", "Law of Gravity", isTemp: false, log: false);
-            Core.HuntMonster("blackholesun", "Reflecteract", "Law of Relativity", isTemp: false, log: false);
-            Core.HuntMonster("thunderfang", "Tonitru", "Law of Conservation of Energy", isTemp: false, log: false);
-            Core.HuntMonster("lair", "Red Dragon", "Law of Low Drop Rates", 100, false, log: false);
+            Core.HuntMonster("elfhame", "Guardian Spirit", "Law of Nature", isTemp: false);
+            Core.HuntMonster("deepchaos", "Kathool", "Law of Time", isTemp: false);
+            Core.HuntMonster("necrocavern", "ShadowStone Support", "Law of Gravity", isTemp: false);
+            Core.HuntMonster("blackholesun", "Reflecteract", "Law of Relativity", isTemp: false);
+            Core.HuntMonster("thunderfang", "Tonitru", "Law of Conservation of Energy", isTemp: false);
+            Core.HuntMonster("lair", "Red Dragon", "Law of Low Drop Rates", 100, false);
 
             Core.EnsureComplete(7163);
             Core.ToBank(Core.QuestRewards(7163));
@@ -227,14 +227,14 @@ public class LordOfOrder
             Core.EnsureAccept(7164);
 
             Core.EquipClass(ClassType.Solo);
-            Core.KillMonster("doomvaultb", "r26", "Left", "Undead Raxgore", "Weapon Imprint", 15, false, log: false);
+            Core.KillMonster("doomvaultb", "r26", "Left", "Undead Raxgore", "Weapon Imprint", 15, false);
             Farm.FishingREP(7);
             Core.BuyItem("greenguardwest", 363, "Lure of Order");
             Adv.GearStore();
             Core.KillXiang("Quixotic Mana Essence", 10, true);
             Adv.GearStore(true);
             Core.EquipClass(ClassType.Solo);
-            Core.HuntMonster("yasaris", "Serepthys", "Inversion Infusion", 5, false, log: false);
+            Core.HuntMonster("yasaris", "Serepthys", "Inversion Infusion", 5, false);
 
             Core.EnsureComplete(7164);
             Core.ToBank(Core.QuestRewards(7164));
@@ -247,7 +247,7 @@ public class LordOfOrder
 
         Core.EnsureAccept(7165);
         Core.EquipClass(ClassType.Solo);
-        Core.HuntMonster("ultradrakath", "Champion of Chaos", "Champion of Chaos Confronted", isTemp: false, publicRoom: true, log: false);
+        Core.HuntMonster("ultradrakath", "Champion of Chaos", "Champion of Chaos Confronted", isTemp: false, publicRoom: Core.PublicDifficult);
         if (!Core.CheckInventory(50741, toInv: false) || !getExtras)
         {
             Bot.Drops.Add(50741);

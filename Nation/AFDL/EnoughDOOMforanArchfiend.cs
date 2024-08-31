@@ -52,13 +52,18 @@ public class EnoughDOOMforanArchfiend
         NulgathDemandsWork.NDWQuest(NDWRequiredItems);
 
         //Quest Turnin Items:
+        NulgathDemandsWork.NDWQuest(new[] { "Unidentified 35" });
+        WillpowerExtraction.Unidentified34(4);
+        Nation.FarmBloodGem(10);
         Nation.FarmVoucher(false);
         Nation.EssenceofNulgath(100);
         Farm.BattleUnderB("Undead Essence", 1000);
         Core.EnsureAccept(5260);
         Core.EquipClass(ClassType.Farm);
         Core.KillMonster("orecavern", "r3", "Up", "*", "Chaorruption Essence", 75, false);
+        Core.HuntMonster("starsinc", "Living Star", "Living Star Essence", 100, false);
 
+        Core.BuyItem("yulgar", 16, "Aelita's Emerald");
         Adv.BuyItem("alchemyacademy", 2115, "Essence Potion", 5, 9770); // see if this works
                                                                         // if (!Core.CheckInventory("Essence Potion", 5))
                                                                         // {
@@ -71,16 +76,8 @@ public class EnoughDOOMforanArchfiend
         Nation.ApprovalAndFavor(0, 5000);
         Core.EquipClass(ClassType.Solo);
         Core.HuntMonster("evilwardage", "Klunk", "Essence of Klunk", isTemp: false);
-        Nation.FarmBloodGem(10);
-        Core.EquipClass(ClassType.Farm);
-        Core.HuntMonster("starsinc", "Living Star", "Living Star Essence", 100, false);
-        WillpowerExtraction.Unidentified34(4);
-        NulgathDemandsWork.NDWQuest(new[] { "Unidentified 35" });
-        Core.BuyItem("yulgar", 16, "Aelita's Emerald");
 
         //Quest Turnin
-        if (!Bot.Quests.CanComplete(5260))
-            Core.Relogin();
         Core.ChainComplete(5260);
         Bot.Wait.ForPickup("ArchFiend DoomLord");
     }

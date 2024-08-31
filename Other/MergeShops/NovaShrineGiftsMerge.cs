@@ -1,7 +1,7 @@
 /*
 name: Nova Shrine Gifts Merge
 description: This bot will farm the items belonging to the selected mode for the Nova Shrine Gifts Merge [2458] in /novashrine
-tags: nova, shrine, gifts, merge, novashrine, gold, voucher, k, star, light, destiny, celestial, paladin, winged, nightsky, cloak, lights, stella, empyrean, wings, tail, empyreans, claws
+tags: nova, shrine, gifts, merge, novashrine, star, light, destiny, celestial, paladin, winged, nightsky, cloak, lights, stella, empyrean, wings, tail, empyreans, claws, reaver, reavers
 */
 
 //cs_include Scripts/Chaos/AscendedDrakathGear.cs
@@ -104,6 +104,7 @@ public class NovaShrineGiftsMerge
                 return;
             }
 
+
             switch (req.Name)
             {
                 default:
@@ -152,11 +153,13 @@ public class NovaShrineGiftsMerge
                     break;
 
                 case "DragonBlade of Nulgath":
-                    DBoN.GetDragonBlade();
-                    break;
-
                 case "Dark Dragon Slayer's Halberd":
-                    StreamwarMerge.BuyAllMerge(req.Name);
+                    if (!Bot.Player.IsMember)
+                        StreamwarMerge.BuyAllMerge("Dark Dragon Slayer's Halberd");
+                    else
+                        DBoN.GetDragonBlade();
+
+                    Core.BuyItem("novashrine", 2458, "Star Light of Destiny", 1, !Bot.Player.IsMember ? 13334 : 13333);
                     break;
 
                 case "Star of the Empyrean":
@@ -202,5 +205,9 @@ public class NovaShrineGiftsMerge
         new Option<bool>("86854", "Nova Empyrean Wings", "Mode: [select] only\nShould the bot buy \"Nova Empyrean Wings\" ?", false),
         new Option<bool>("86855", "Nova Empyrean Wings and Tail", "Mode: [select] only\nShould the bot buy \"Nova Empyrean Wings and Tail\" ?", false),
         new Option<bool>("86858", "Nova Empyrean's Claws", "Mode: [select] only\nShould the bot buy \"Nova Empyrean's Claws\" ?", false),
+        new Option<bool>("87394", "Star Light of the Empyrean", "Mode: [select] only\nShould the bot buy \"Star Light of the Empyrean\" ?", false),
+        new Option<bool>("87395", "Star Lights of the Empyrean", "Mode: [select] only\nShould the bot buy \"Star Lights of the Empyrean\" ?", false),
+        new Option<bool>("82861", "Stella Empyrean Reaver", "Mode: [select] only\nShould the bot buy \"Stella Empyrean Reaver\" ?", false),
+        new Option<bool>("82862", "Stella Empyrean Reavers", "Mode: [select] only\nShould the bot buy \"Stella Empyrean Reavers\" ?", false),
     };
 }

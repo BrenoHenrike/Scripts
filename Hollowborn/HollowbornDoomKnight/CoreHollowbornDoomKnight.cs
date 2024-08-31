@@ -217,14 +217,14 @@ public class CoreHollowbornDoomKnight
         Core.EquipClass(ClassType.Farm);
         Core.KillMonster("dwarfhold", "r2", "Left", "Chaos Drow", "Dark Energy", 10000, false);
         Core.EquipClass(ClassType.Solo);
-        Adv.BoostHuntMonster("epicvordred", "Ultra Vordred", "(Necro) Scroll of Dark Arts", 3, false, publicRoom: true);
+        Core.HuntMonster("epicvordred", "Ultra Vordred", "(Necro) Scroll of Dark Arts", 3, false, publicRoom: true);
         NSoD.BonesVoidRealm(1);
-        Adv.BoostHuntMonster("sepulchurebattle", "ULTRA Sepulchure", "Doom Heart", 1, false);
+        Core.HuntMonster("sepulchurebattle", "ULTRA Sepulchure", "Doom Heart", 1, false);
         Bot.Quests.UpdateQuest(3008);
         Core.SetAchievement(18);
         Bot.Quests.UpdateQuest(3004);
         Core.KillMonster("doomvaultb", "r26", "Left", "Undead Raxgore", "Weapon Imprint", 12, false);
-        Adv.BoostHuntMonster("Desolich", "Desolich", "Desolich's Dark Horn", 3, false, publicRoom: true);
+        Core.HuntMonster("Desolich", "Desolich", "Desolich's Dark Horn", 3, false, publicRoom: true);
 
         Core.EnsureComplete(8416);
     }

@@ -39,8 +39,8 @@ public class CoreAdvanced
     /// <param name="shopID">ID of the shop</param>
     /// <param name="itemName">Name of the item</param>
     /// <param name="quant">Desired quantity</param>
-    /// <param name="shopQuant">How many items you get for 1 buy</param>
     /// <param name="shopItemID">Use this for Merge shops that has 2 or more of the item with the same name and you need the second/third/etc., be aware that it will re-log you after to prevent ghost buy. To get the ShopItemID use the built in loader of Skua</param>
+    /// <param name="Log"></param>
     public void BuyItem(string map, int shopID, string itemName, int quant = 1, int shopItemID = 0, bool Log = true)
     {
         if (Core.CheckInventory(itemName, quant))
@@ -70,6 +70,7 @@ public class CoreAdvanced
     /// <param name="quant">Desired quantity</param>
     /// <param name="shopQuant">How many items you get for 1 buy</param>
     /// <param name="shopItemID">Use this for Merge shops that has 2 or more of the item with the same name and you need the second/third/etc., be aware that it will relog you after to prevent ghost buy. To get the ShopItemID use the built in loader of Skua</param>
+    /// <param name="Log"></param>
     public void BuyItem(string map, int shopID, int itemID, int quant = 1, int shopQuant = 1, int shopItemID = 0, bool Log = true)
     {
         if (Core.CheckInventory(itemID, quant))
@@ -95,40 +96,94 @@ public class CoreAdvanced
         _BuyItem(map, shopID, item, quant, Log);
     }
 
+    //if Adv.buy fucks up revert to this::
+    // private void _BuyItem(string map, int shopID, ShopItem item, int quant = 1, bool Log = true)
+    // {
+    //     int ShopQuant = item.Quantity;
+
+    //     if (item.Requirements != null)
+    //     {
+    //         foreach (ItemBase req in item.Requirements)
+    //         {
+    //             if (Core.CheckInventory(req.ID, req.Quantity * quant))
+    //                 continue;
+
+    //             // Core.Jump(Bot.Player.Cell, Bot.Player.Pad);
+
+    //             switch (req.ID)
+    //             {
+    //                 case 7132:
+    //                     Farm.DragonRunestone(req.Quantity * quant);
+    //                     // Farm.DragonRunestone(req.Quantity);
+    //                     break;
+
+    //                 default:
+    //                     if (Core.GetShopItems(map, shopID).Any(x => req.ID == x.ID))
+    //                         BuyItem(map, shopID, req.ID, req.Quantity * quant, Log: Log);
+    //                     break;
+    //             }
+    //         }
+
+    //         GetItemReq(item, quant);
+    //         Core._BuyItem(map, shopID, item, quant, Log);
+    //     }
+    // }
+
+
     private void _BuyItem(string map, int shopID, ShopItem item, int quant = 1, bool Log = true)
     {
+        int shopQuant = item.Quantity; // Quantity per purchase from the shop
+
         if (item.Requirements != null)
         {
             foreach (ItemBase req in item.Requirements)
             {
-                if (Core.CheckInventory(req.ID, req.Quantity * quant))
+                if (Core.CheckInventory(item.ID, quant))
                     continue;
 
-                // Core.Jump(Bot.Player.Cell, Bot.Player.Pad);
+                // Total required quantity of the required item based on the desired quantity
+                int totalReqNeeded = quant; // Total number of main items desired
 
+                // Calculate the total number of the required item that needs to be bought
+                int totalBundlesNeeded = (int)Math.Ceiling((double)totalReqNeeded / shopQuant);
+
+                // Check the current quantity of the required item in the inventory
+                int currentReqQuantity = Bot.Inventory.GetQuantity(req.ID);
+
+                // Calculate how many more bundles we need to purchase
+                int bundlesToBuy = totalBundlesNeeded - (currentReqQuantity / req.Quantity);
+
+                if (bundlesToBuy <= 0)
+                    continue; // Skip if we already have enough
+
+                // Specific handling for certain requirements
                 switch (req.ID)
                 {
-                    case 7132:
-                        Farm.DragonRunestone(req.Quantity * quant);
-                        // Farm.DragonRunestone(req.Quantity);
+                    case 7132: // Example specific handling
+                        Farm.DragonRunestone(req.Quantity * bundlesToBuy);
                         break;
 
+                    // Check if the required item is available in the shop and buy it if necessary
                     default:
                         if (Core.GetShopItems(map, shopID).Any(x => req.ID == x.ID))
-                            BuyItem(map, shopID, req.ID, req.Quantity * quant, Log: Log);
+                            Core.BuyItem(map, shopID, req.Name, req.Quantity * bundlesToBuy, Log: Log);
                         break;
                 }
             }
 
+            // Attempt to purchase the main item after ensuring required items are available
             GetItemReq(item, quant);
             Core._BuyItem(map, shopID, item, quant, Log);
         }
     }
 
+
+
     /// <summary>
     /// Will make sure you have every requierment (XP, Rep and Gold) to buy the item.
     /// </summary>
     /// <param name="item">The ShopItem object containing all the information</param>
+    /// <param name="quant"></param>
     public void GetItemReq(ShopItem item, int quant = 1)
     {
         if (!string.IsNullOrEmpty(item.Faction) && item.Faction != "None" && item.RequiredReputation > 0)
@@ -186,7 +241,7 @@ public class CoreAdvanced
     /// <param name="Log">Optional. Enables logging.</param>
     public void StartBuyAllMerge(string map, int shopID, Action findIngredients, string? buyOnlyThis = null, string[]? itemBlackList = null, mergeOptionsEnum? buyMode = null, string Group = "First", int ShopItemID = 0, bool Log = true)
     {
-        if (buyOnlyThis == null && buyMode == null)
+        if (buyOnlyThis == null && buyMode == null && Bot.Config != null && !Bot.Config.Get<bool>(CoreBots.Instance.SkipOptions))
             Bot.Config!.Configure();
 
         int mode = 0;
@@ -370,6 +425,7 @@ public class CoreAdvanced
     /// </summary>
     public List<IOption> MergeOptions = new()
     {
+        CoreBots.Instance.SkipOptions,
         new Option<mergeOptionsEnum>("mode", "Select the mode to use", "Regardless of the mode you pick, the bot wont (attempt to) buy Legend-only items if you're not a Legend.\n" +
                                                                      "Select the Mode Explanation item to get more information", mergeOptionsEnum.all),
         new Option<string>(" ", "Mode Explanation [all]", "Mode [all]: \t\tYou get all the items from shop, even if non-AC ones if any.", "click here"),
@@ -388,16 +444,17 @@ public class CoreAdvanced
 #nullable enable
 
     /// <summary>
-    /// Joins a map, jump & set the spawn point and kills the specified monster with the best available race gear
+    /// Joins a map, jumps to a specified cell and pad, sets the spawn point, and kills the specified monster using the best available race gear.
     /// </summary>
-    /// <param name="map">Map to join</param>
-    /// <param name="cell">Cell to jump to</param>
-    /// <param name="pad">Pad to jump to</param>
-    /// <param name="monster">Name of the monster to kill</param>
-    /// <param name="item">Item to kill the monster for, if null will just kill the monster 1 time</param>
-    /// <param name="quant">Desired quantity of the item</param>
-    /// <param name="isTemp">Whether the item is temporary</param>
-    /// <param name="log">Whether it will log that it is killing the monster</param>
+    /// <param name="map">The map to join.</param>
+    /// <param name="cell">The cell to jump to.</param>
+    /// <param name="pad">The pad to jump to.</param>
+    /// <param name="monster">The name of the monster to kill.</param>
+    /// <param name="item">The item to kill the monster for. If null or empty, will just kill the monster once.</param>
+    /// <param name="quant">The desired quantity of the item to collect.</param>
+    /// <param name="isTemp">Whether the item is temporary.</param>
+    /// <param name="log">Whether to log the killing of the monster.</param>
+    /// <param name="publicRoom">Whether the action should take place in a public room.</param>
     public void BoostKillMonster(string map, string cell, string pad, string monster, string item = "", int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
     {
         if (item != "" && Core.CheckInventory(item, quant))
@@ -422,6 +479,7 @@ public class CoreAdvanced
     /// <param name="quant">Desired quantity of the item</param>
     /// <param name="isTemp">Whether the item is temporary</param>
     /// <param name="log">Whether it will log that it is killing the monster</param>
+    /// <param name="publicRoom"></param>
     public void BoostKillMonster(string map, string cell, string pad, int monsterID, string item = "", int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
     {
         if (item != "" && Core.CheckInventory(item, quant))
@@ -437,17 +495,18 @@ public class CoreAdvanced
     }
 
     /// <summary>
-    /// Joins a map and hunt for the monster and kills the specified monster with the best available race gear
+    /// Joins a map, hunts for the monster, and kills the specified monster using the best available race gear.
     /// </summary>
-    /// </summary>
-    /// <param name="map">Map to join</param>
-    /// <param name="monster">Name of the monster to kill</param>
-    /// <param name="item">Item to hunt the monster for, if null will just hunt & kill the monster 1 time</param>
-    /// <param name="quant">Desired quantity of the item</param>
-    /// <param name="isTemp">Whether the item is temporary</param>
-    public void BoostHuntMonster(string map, string monster, string item = "", int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
+    /// <param name="map">The map to join.</param>
+    /// <param name="monster">The name of the monster to hunt and kill.</param>
+    /// <param name="item">The item to hunt the monster for. If null, it will just hunt and kill the monster once.</param>
+    /// <param name="quant">The desired quantity of the item to collect.</param>
+    /// <param name="isTemp">Whether the item is temporary.</param>
+    /// <param name="log">Whether to log the hunting and killing of the monster.</param>
+    /// <param name="publicRoom">Whether the action should take place in a public room.</param>
+    public void BoostHuntMonster(string map, string monster, string? item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
     {
-        if (item != "" && Core.CheckInventory(item, quant))
+        if (item != null && Core.CheckInventory(item, quant))
             return;
 
         Core.Join(map, publicRoom: publicRoom);
@@ -460,16 +519,18 @@ public class CoreAdvanced
     }
 
     /// <summary>
-    /// Joins a map, jump & set the spawn point and kills the specified monster with the best available race gear. But also listens for Counter Attacks
+    /// Joins a map, jumps to a specified cell and pad, sets the spawn point, and kills the specified monster using the best available race gear. Additionally, it listens for counter-attacks.
     /// </summary>
-    /// <param name="map">Map to join</param>
-    /// <param name="cell">Cell to jump to</param>
-    /// <param name="pad">Pad to jump to</param>
-    /// <param name="monster">Name of the monster to kill</param>
-    /// <param name="item">Item to kill the monster for, if null will just kill the monster 1 time</param>
-    /// <param name="quant">Desired quantity of the item</param>
-    /// <param name="isTemp">Whether the item is temporary</param>
-    /// <param name="log">Whether it will log that it is killing the monster</param>
+    /// <param name="map">The map to join.</param>
+    /// <param name="cell">The cell to jump to.</param>
+    /// <param name="pad">The pad to jump to.</param>
+    /// <param name="monster">The name of the monster to kill.</param>
+    /// <param name="item">The item to kill the monster for. If null, it will just kill the monster once.</param>
+    /// <param name="quant">The desired quantity of the item to collect.</param>
+    /// <param name="isTemp">Whether the item is temporary.</param>
+    /// <param name="log">Whether to log the killing of the monster.</param>
+    /// <param name="publicRoom">Whether the action should take place in a public room.</param>
+    /// <param name="forAuto">Whether the method is used for an automated process.</param>
     public void KillUltra(string map, string cell, string pad, string monster, string? item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = true, bool forAuto = false)
     {
         if (item != null && Core.CheckInventory(item, quant))
@@ -515,7 +576,8 @@ public class CoreAdvanced
     /// <summary>
     /// Ranks up your class
     /// </summary>
-    /// <param name="ClassName">Name of the class you want it to rank up</param>
+    /// <param name="className"></param>
+    /// <param name="gearRestore"></param>
     public void RankUpClass(string className, bool gearRestore = true)
     {
         Bot.Wait.ForTrue(() => Bot.Inventory.Contains(className), 20);
@@ -551,11 +613,15 @@ public class CoreAdvanced
             }
             else
             {
+                if (classItem != null && !Bot.Inventory.IsEquipped(classItem.Name))
+                {
+                    Core.Equip(classItem.Name);
+                    Bot.Wait.ForTrue(() => Bot.Inventory.IsEquipped(classItem.Name), 20);
+                }
                 // string cpBoost = BestGear(GenericGearBoost.cp, false);
                 // EnhanceItem(cpBoost, CurrentClassEnh(), CurrentCapeSpecial(), CurrentHelmSpecial(), CurrentWeaponSpecial());
                 // Core.Equip(cpBoost);
                 Farm.ToggleBoost(BoostType.Class);
-
                 Farm.IcestormArena(Bot.Player.Level, true);
                 Core.Logger($"\"{itemInv.Name}\" is now Rank 10");
 
@@ -989,6 +1055,7 @@ public class CoreAdvanced
     /// Stores the gear a player has so that it can later restore these
     /// </summary>
     /// <param name="Restore">Set true to restore previously stored gear</param>
+    /// <param name="EnhAfter"></param>
     public void GearStore(bool Restore = false, bool EnhAfter = false)
     {
         if (!Restore)
@@ -1089,9 +1156,9 @@ public class CoreAdvanced
     }
 
     public bool HasMinimalBoost(GenericGearBoost boostType, int percentage)
-        => Bot.Inventory.Items.Concat(Bot.Bank.Items).Any(x => GetBoostFloat(x, boostType.ToString()) >= (((float)percentage / (float)100) + 1));
+        => Bot.Inventory.Items.Concat(Bot.Bank.Items).Any(x => GetBoostFloat(x, boostType.ToString()) >= ((percentage / (float)100) + 1));
     public bool HasMinimalBoost(RacialGearBoost boostType, int percentage)
-        => Bot.Inventory.Items.Concat(Bot.Bank.Items).Any(x => GetBoostFloat(x, boostType.ToString()) >= (((float)percentage / (float)100) + 1));
+        => Bot.Inventory.Items.Concat(Bot.Bank.Items).Any(x => GetBoostFloat(x, boostType.ToString()) >= ((percentage / (float)100) + 1));
 
     public float GetBoostFloat(InventoryItem item, string boostType)
     {
@@ -1117,8 +1184,10 @@ public class CoreAdvanced
     /// <summary>
     /// Enhances your currently equipped gear
     /// </summary>
-    /// <param name="Type">Example: EnhancementType.Lucky , replace Lucky with whatever enhancement you want to have it use</param>
-    /// <param name="Special">Example: WeaponSpecial.Spiral_Carve , replace Spiral_Carve with whatever weapon special you want to have it use</param>
+    /// <param name="type"></param>
+    /// <param name="cSpecial"></param>
+    /// <param name="hSpecial"></param>
+    /// <param name="wSpecial"></param>
     public void EnhanceEquipped(EnhancementType type, CapeSpecial cSpecial = CapeSpecial.None, HelmSpecial hSpecial = HelmSpecial.None, WeaponSpecial wSpecial = WeaponSpecial.None)
     {
         if (Core.CBOBool("DisableAutoEnhance", out bool _disableAutoEnhance) && _disableAutoEnhance)
@@ -1138,9 +1207,11 @@ public class CoreAdvanced
     /// <summary>
     /// Enhances a selected item
     /// </summary>
-    /// <param name="ItemName">Name of the item you want to enhance</param>
-    /// <param name="Type">Example: EnhancementType.Lucky , replace Lucky with whatever enhancement you want to have it use</param>
-    /// <param name="Special">Example: WeaponSpecial.Spiral_Carve , replace Spiral_Carve with whatever weapon special you want to have it use</param>
+    /// <param name="item"></param>
+    /// <param name="type"></param>
+    /// <param name="cSpecial"></param>
+    /// <param name="hSpecial"></param>
+    /// <param name="wSpecial"></param>
     public void EnhanceItem(string item, EnhancementType type, CapeSpecial cSpecial = CapeSpecial.None, HelmSpecial hSpecial = HelmSpecial.None, WeaponSpecial wSpecial = WeaponSpecial.None)
     {
         if (string.IsNullOrEmpty(item) || (Core.CBOBool("DisableAutoEnhance", out bool _disableAutoEnhance) && _disableAutoEnhance))
@@ -1183,9 +1254,11 @@ public class CoreAdvanced
     /// <summary>
     /// Enhances multiple selected items
     /// </summary>
-    /// <param name="ItemName">Names of the items you want to enhance (Case-Sensitive)</param>
-    /// <param name="Type">Example: EnhancementType.Lucky , replace Lucky with whatever enhancement you want to have it use</param>
-    /// <param name="Special">Example: WeaponSpecial.Spiral_Carve , replace Spiral_Carve with whatever weapon special you want to have it use</param>
+    /// <param name="items"></param>
+    /// <param name="type"></param>
+    /// <param name="cSpecial"></param>
+    /// <param name="hSpecial"></param>
+    /// <param name="wSpecial"></param>
     public void EnhanceItem(string[] items, EnhancementType type, CapeSpecial cSpecial = CapeSpecial.None, HelmSpecial hSpecial = HelmSpecial.None, WeaponSpecial wSpecial = WeaponSpecial.None)
     {
         if (items.Length == 0 || (Core.CBOBool("DisableAutoEnhance", out bool _disableAutoEnhance) && _disableAutoEnhance))
@@ -2121,7 +2194,10 @@ public class CoreAdvanced
 
                     type = EnhancementType.Lucky;
                     cSpecial = CapeSpecial.Vainglory;
-                    wSpecial = !uDauntless() ? WeaponSpecial.Valiance : WeaponSpecial.Dauntless;
+                    wSpecial = !uDauntless() ?
+                    (uRavenous() ? WeaponSpecial.Ravenous
+                    : (uValiance() ? WeaponSpecial.Valiance : WeaponSpecial.Forge))
+                    : WeaponSpecial.Dauntless;
                     hSpecial = HelmSpecial.Anima;
                     break;
                 #endregion
@@ -2218,7 +2294,7 @@ public class CoreAdvanced
 
                     type = EnhancementType.Wizard;
                     cSpecial = CapeSpecial.Vainglory;
-                    wSpecial = WeaponSpecial.Valiance;
+                    wSpecial = uRavenous() ? WeaponSpecial.Ravenous : WeaponSpecial.Valiance;
                     hSpecial = HelmSpecial.Pneuma;
                     break;
                 #endregion
@@ -2300,8 +2376,20 @@ public class CoreAdvanced
                     wSpecial = WeaponSpecial.Valiance;
                     hSpecial = HelmSpecial.Pneuma;
                     break;
-                #endregion 
+                #endregion
 
+
+                #region Wizard - Vainglory / Forge - Daunt / Ravenous / Forge - Pneuma / Forge       
+                case "Sovereign of Storms":
+                    if (!uVainglory() || !uDauntless() || !uRavenous() || !uPneuma())
+                        goto default;
+
+                    type = EnhancementType.Wizard;
+                    cSpecial = uVainglory() ? CapeSpecial.Vainglory : CapeSpecial.Forge;
+                    wSpecial = uDauntless() ? WeaponSpecial.Dauntless : (uRavenous() ? WeaponSpecial.Ravenous : WeaponSpecial.Forge);
+                    hSpecial = uPneuma() ? HelmSpecial.Pneuma : HelmSpecial.Forge;
+                    break;
+                #endregion
                 #endregion
 
                 #region Healer Region
@@ -2380,6 +2468,44 @@ public class CoreAdvanced
                     break;
                 #endregion
 
+                #region Lucky - Vainglory - Valiance / Dauntless - Anima
+                case "glacial warlord":
+                    if (!uVainglory() || !uValiance() || !uAnima())
+                        goto default;
+                        
+                    type = EnhancementType.Lucky;
+                    cSpecial = CapeSpecial.Vainglory;
+                    wSpecial = uDauntless() ? WeaponSpecial.Dauntless : WeaponSpecial.Valiance;
+                    hSpecial = HelmSpecial.Anima;
+                    break;
+                #endregion
+
+                #region Luck - Val/Smite/Mana - Anima - Vg
+                case "dragonslayer general":
+                    type = EnhancementType.Lucky;
+
+                    cSpecial = uVainglory()
+                        ? CapeSpecial.Vainglory
+                        : uForgeCape()
+                            ? CapeSpecial.Forge
+                            : CurrentCapeSpecial();
+
+                    wSpecial = uValiance()
+                        ? WeaponSpecial.Valiance
+                        : uSmite()
+                            ? WeaponSpecial.Smite
+                            : WeaponSpecial.Mana_Vamp;
+
+                    hSpecial = uAnima()
+                        ? HelmSpecial.Anima
+                        : uForgeHelm()
+                            ? HelmSpecial.Forge
+                            : CurrentHelmSpecial();
+
+                    break;
+                #endregion
+
+
                 #endregion
 
                 #region Unassigned Region
@@ -2446,7 +2572,6 @@ public class CoreAdvanced
                 case "doomknight":
                 case "dragon knight":
                 case "dragon shinobi":
-                case "dragonslayer general":
                 case "dragonslayer":
                 case "dragonsoul shinobi":
                 case "drakel warlord":
@@ -2463,7 +2588,6 @@ public class CoreAdvanced
                 case "firelord summoner":
                 case "frost spiritreaver":
                 case "glacial berserker test":
-                case "glacial warlord":
                 case "grim necromancer":
                 case "grunge rocker":
                 case "guardian":
@@ -2492,8 +2616,6 @@ public class CoreAdvanced
                 case "lightmage":
                 case "love caster":
                 case "lycan":
-                case "mage (rare)":
-                case "mage":
                 case "master ranger":
                 case "mechajouster":
                 case "mindbreaker":
@@ -2501,7 +2623,6 @@ public class CoreAdvanced
                 case "naval commander":
                 case "necromancer":
                 case "ninja warrior":
-                case "ninja":
                 case "no class":
                 case "northlands monk":
                 case "not a mod":
@@ -2522,8 +2643,6 @@ public class CoreAdvanced
                 case "pyromancer":
                 case "ranger":
                 case "renegade":
-                case "rogue (rare)":
-                case "rogue":
                 case "rustbucket":
                 case "sakura cryomancer":
                 case "sentinel":
@@ -2667,7 +2786,6 @@ public class CoreAdvanced
                 case "master ranger":
                 case "mechajouster":
                 case "necromancer":
-                case "ninja":
                 case "ninja warrior":
                 case "not a mod":
                 case "overworld chronomancer":
@@ -2807,6 +2925,17 @@ public class CoreAdvanced
                 case "royal vampire lord":
                     type = EnhancementType.Lucky;
                     wSpecial = WeaponSpecial.Health_Vamp;
+                    break;
+                #endregion
+
+                #endregion
+
+                #region  Theif Region
+
+                #region  Theif - Mana Vamp
+                case "ninja":
+                    type = EnhancementType.Thief;
+                    wSpecial = WeaponSpecial.Mana_Vamp;
                     break;
                 #endregion
 

@@ -5,6 +5,7 @@ tags: story, quest, tutorial
 */
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models;
 
 public class Tutorial
 {
@@ -25,39 +26,32 @@ public class Tutorial
         if (Core.HasAchievement(31))
             return;
 
-        Core.Logger("Doing Tutorial Badges" +
-            "\tStartup may take a minute.. blame ae");
+        Core.Logger("Doing Tutorial Badges\n\tStartup may take a minute... blame AE");
 
-        string[] Achievements =  {
-            "Combat",
-            "Interact",
-            "Quest",
-            "Skill",
-            "Shop",
-            "Enhance",
-            "Rest",
-            "World",
-            "Emotes",
-            "Travel"
-        };
+        string[] achievements = {
+        "Combat", "Interact", "Quest", "Skill", "Shop",
+        "Enhance", "Rest", "World", "Emotes", "Travel"
+    };
 
-        Core.Logger("need to reset teh map (join > exit > rejoin) for it not to get stuck");
+        Core.Logger("Need to reset the map (join > exit > rejoin) to prevent getting stuck");
         Core.Join("oaklore", "r1", "Left");
         Core.Join("whitemap");
         Core.Join("oaklore", "r1", "Left");
 
-        //insurance
+        // Ensure player is in the correct cell
         while (!Bot.ShouldExit && Bot.Player.Cell != "r1")
         {
             Core.Sleep();
             Core.Jump("r1", "Left");
         }
 
-        for (int i = 0; Achievements.Length > i; i++)
+        // Set achievements
+        for (int i = 0; i < achievements.Length; i++)
         {
-            Core.Logger("Achievement - " + Achievements[i]);
+            Core.Logger($"Achievement - {achievements[i]}");
             Core.SetAchievement(22 + i);
             Core.Sleep();
         }
     }
+
 }

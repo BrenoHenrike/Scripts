@@ -43,6 +43,7 @@ tags: member, kit, expire, legend
 //cs_include Scripts/Story/ThroneofDarkness/CoreToD.cs
 //cs_include Scripts/Story/Tutorial.cs
 //cs_include Scripts/Story/XansLair.cs
+//cs_include Scripts/Story/Lair.cs
 //cs_include Scripts/Story/Yokai.cs
 //cs_include Scripts/Other/FarmJoeKits/CoreFarmerJoe.cs
 //cs_include Scripts/Tools/BankAllItems.cs
@@ -157,6 +158,7 @@ tags: member, kit, expire, legend
 //cs_include Scripts/Nation/Various/TendurrrTheAssistantQuests.cs
 //cs_include Scripts/Nation/Various/TarosPrismaticManslayers.cs
 //cs_include Scripts/Nation/EvolvedOrb/EvolvedShadowOrb[Mem].cs
+//cs_include Scripts/Story/Mazumi.cs
 using Skua.Core.Interfaces;
 
 public class MemberFarm

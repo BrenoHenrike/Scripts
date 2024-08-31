@@ -52,6 +52,7 @@ tags: Do, not, find, me
 //cs_include Scripts/Story/StarSinc.cs
 //cs_include Scripts/Story/TowerOfDoom.cs
 //cs_include Scripts/Story/XansLair.cs
+//cs_include Scripts/Story/Lair.cs
 //cs_include Scripts/Good/GearOfAwe/Awescended.cs
 //cs_include Scripts/Nation/AFDL/NulgathDemandsWork.cs
 //cs_include Scripts/Other/Classes/Necromancer.cs
@@ -219,10 +220,10 @@ public class InsertNameHeresUltraPrep
 
         //prepare inventory
         Core.Logger("Preparing Inventory!! (insignias will be kept in bank, as they will be auto-added by the quest.)");
-        
+
         //bank insigs upto, but not including the required items.
         Core.ToBank(UltraItems[..14]);
-        
+
         // Dictionary to store players and their associated pets
         Dictionary<string, string> PlayersAndPets = new();
 

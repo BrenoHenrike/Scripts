@@ -98,6 +98,7 @@ public class CoreBots
     /// Set common bot options to desired value
     /// </summary>
     /// <param name="changeTo">Value the options will be changed to</param>
+    /// <param name="disableClassSwap"></param>
     public void SetOptions(bool changeTo = true, bool disableClassSwap = false)
     {
         // These things need to be set and checked before anything else
@@ -286,6 +287,11 @@ public class CoreBots
                     if (AntiLag)
                     {
                         Bot.Options.LagKiller = true;
+                        Bot.Lite.DisableMonsterAnimation = true;
+                        Bot.Lite.DisableSelfAnimation = true;
+                        Bot.Lite.FreezeMonsterPosition = true;
+                        Bot.Lite.DisableWeaponAnimation = true;
+                        Bot.Lite.HidePlayers = true;
                         Bot.Flash.SetGameObject("stage.frameRate", 10);
                         if (!Bot.Flash.GetGameObject<bool>("ui.monsterIcon.redX.visible"))
                             Bot.Flash.CallGameFunction("world.toggleMonsters");
@@ -502,6 +508,9 @@ public class CoreBots
         if (Bot.Inventory.Contains(item, quant))
             return true;
 
+        if (Bot.House.Contains(item))
+            return true;
+
         if (Bot.Bank.Contains(item))
         {
             if (toInv)
@@ -511,8 +520,6 @@ public class CoreBots
                (!toInv && Bot.Bank.TryGetItem(item, out InventoryItem? _item) && _item != null && _item.Quantity >= quant))
                 return true;
         }
-        if (Bot.House.Contains(item))
-            return true;
 
         return false;
     }
@@ -914,8 +921,8 @@ public class CoreBots
     /// <param name="shopID">ID of the shop</param>
     /// <param name="itemName">Name of the item</param>
     /// <param name="quant">Desired quantity</param>
-    /// <param name="shopQuant">How many items you get for 1 buy</param>
     /// <param name="shopItemID">Use this for Merge shops that has 2 or more of the item with the same name and you need the second/third/etc., be aware that it will re-log you after to prevent ghost buy. To get the ShopItemID use the built in loader of Skua</param>
+    /// <param name="Log"></param>
     public void BuyItem(string map, int shopID, string itemName, int quant = 1, int shopItemID = 0, bool Log = true)
     {
         if (CheckInventory(itemName, quant))
@@ -933,8 +940,8 @@ public class CoreBots
     /// <param name="shopID">ID of the shop</param>
     /// <param name="itemID">ID of the item</param>
     /// <param name="quant">Desired quantity</param>
-    /// <param name="shopQuant">How many items you get for 1 buy</param>
     /// <param name="shopItemID">Use this for Merge shops that has 2 or more of the item with the same name and you need the second/third/etc., be aware that it will relog you after to prevent ghost buy. To get the ShopItemID use the built in loader of Skua</param>
+    /// <param name="Log"></param>
     public void BuyItem(string map, int shopID, int itemID, int quant = 1, int shopItemID = 0, bool Log = true)
     {
         if (CheckInventory(itemID, quant))
@@ -1023,10 +1030,15 @@ public class CoreBots
                 switch (str)
                 {
                     case "Item is not buyable. Item Inventory full. Re-login to syncronize your real bag slot amount.":
-                        Logger("Inventory de-sync (AE Issue) detected, reloggin so the bot can continue");
+                        Logger("Inventory de-sync (AE Issue) detected, relogging so the bot can continue");
                         Relogin();
                         if (Bot.Inventory.FreeSlots < 1)
                             Logger($"Inventory Slots: {Bot.Inventory.UsedSlots}/{Bot.Inventory.Slots}, Free: {Bot.Inventory.FreeSlots}. Clean your inventory... stopping", stopBot: true);
+                        break;
+
+                    case "Quest Complete Failed: Missing Required Item":
+                        Logger("Quest de-sync (AE Issue) detected, relogging so the bot can continue");
+                        Relogin();
                         break;
                 }
             }
@@ -1497,9 +1509,18 @@ public class CoreBots
             // Removing quests that you can't accept
             foreach (ItemBase req in q.AcceptRequirements)
             {
-                if (!CheckInventory(req.Name))
+                if (req != null)
                 {
-                    Logger($"Missing requirement {req.Name} for \"{q.Name}\" [{q.ID}]");
+                    if (req.Temp ? Bot.TempInv.Contains(req.ID, req.Quantity) : CheckInventory(req.ID, req.Quantity))
+                    {
+                        Bot.Wait.ForTrue(() => req.Temp ? Bot.TempInv.Contains(req.ID, req.Quantity) : Bot.Inventory.Contains(req.ID, req.Quantity), 20);
+                        continue;
+                    }
+                }
+
+                if (req != null && (req.Temp ? !Bot.TempInv.Contains(req.ID, req.Quantity) : !Bot.Inventory.Contains(req.ID, req.Quantity)))
+                {
+                    Logger($"Missing requirement \"{req.Name}\" [{req.ID}] for \"{q.Name}\" [{q.ID}]");
                     shouldBreak = true;
                     break;
                 }
@@ -1597,7 +1618,8 @@ public class CoreBots
     private int[]? registeredQuests = null;
 
     /// <summary>
-    /// Ensures you are out of combat before accepting the quest
+    /// Ensures the quest is ready for acceptance by handling membership checks,
+    /// unbanking required items, and adding them to the drop pickup list.
     /// </summary>
     /// <param name="questID">ID of the quest to accept</param>
     public bool EnsureAccept(int questID = 0)
@@ -1643,16 +1665,17 @@ public class CoreBots
         }
 
         Sleep(ActionDelay * 2);
+        // Bot.Wait.ForActionCooldown(GameActions.AcceptQuest);
         // Bot.Send.Packet($"%xt%zm%acceptQuest%{Bot.Map.RoomID}%{questID}%");
+        if (Bot.Quests.Active.Any(x => x.ID == questID))
+            return true;
         return Bot.Quests.EnsureAccept(questID);
     }
-
-
-
 
     /// <summary>
     /// Accepts all the quests given
     /// </summary>
+    /// <param name="RegisterQuest"></param>
     /// <param name="questIDs">IDs of the quests</param>
     public void EnsureAcceptmultiple(bool RegisterQuest = false, params int[]? questIDs)
     {
@@ -1726,9 +1749,6 @@ public class CoreBots
         }
     }
 
-
-
-
     /// <summary>
     /// Completes the quest with a choose-able reward item
     /// </summary>
@@ -1741,12 +1761,13 @@ public class CoreBots
 
         Quest questData = EnsureLoad(questID);
 
-        Bot.Wait.ForTrue(() => Bot.Quests.Tree.Contains(questData), 20);
+        // Bot.Wait.ForTrue(() => questData != null, 20);
 
         if (questData != null && questData.Requirements != null
                         && (!questData.Requirements.Any()
                         || questData.Requirements.All(r => r != null && r.ID > 0)
-                        && CheckInventory(questData.Requirements.Select(x => x.ID).ToArray())))
+                        && CheckInventory(questData.Requirements.Select(x => x.ID).ToArray())
+                        && CheckInventory(questData.AcceptRequirements.Select(x => x.ID).ToArray())))
         {
             return Bot.Quests.EnsureComplete(questID, itemID);
         }
@@ -1757,17 +1778,18 @@ public class CoreBots
     }
 
 
-    // <summary>
-    /// Completes all the quests given but doesn't support quests with choose-able rewards
+    /// <summary>
+    /// Completes all the quests given but doesn't support quests with choose-able rewards.
     /// </summary>
-    /// <param name="questIDs">IDs of the quests</param>
+    /// <param name="questIDs">IDs of the quests.</param>
     public void EnsureComplete(params int[] questIDs)
     {
         List<Quest> questData = EnsureLoad(questIDs);
 
         foreach (Quest questID in questData)
         {
-            EnsureLoad(questID.ID);
+            if (questData == null)
+                EnsureLoad(questID.ID);
 
             if (questData != null && questID.Requirements != null
                 && (!questID.Requirements.Any()
@@ -1775,7 +1797,7 @@ public class CoreBots
                 && CheckInventory(questID.Requirements.Select(x => x.ID).ToArray())))
             {
                 Bot.Quests.EnsureComplete(questID.ID);
-                Sleep();
+                Bot.Wait.ForActionCooldown(GameActions.TryQuestComplete);
             }
         }
     }
@@ -1829,6 +1851,8 @@ public class CoreBots
     public int EnsureCompleteMulti(int questID, int amount = -1, int itemID = -1)
     {
         var quest = EnsureLoad(questID);
+        if (!Bot.Quests.Active.Any(x => x.ID == questID))
+            EnsureAccept(questID);
 
         int turnIns;
         if (quest.Once || !string.IsNullOrEmpty(quest.Field))
@@ -2026,7 +2050,7 @@ public class CoreBots
     {
         EnsureAccept(questID);
         Sleep();
-        EnsureComplete(questID, itemID);
+        EnsureCompleteMulti(questID, itemID);
     }
 
     /// <param name="QuestID">ID of the quest</param>
@@ -2049,7 +2073,7 @@ public class CoreBots
     #region Kill
 
     /// <summary>
-    /// Joins a map, jump & set the spawn point and kills the specified monster
+    /// Joins a map, jump and set the spawn point and kills the specified monster
     /// </summary>
     /// <param name="map">Map to join</param>
     /// <param name="cell">Cell to jump to</param>
@@ -2059,6 +2083,7 @@ public class CoreBots
     /// <param name="quant">Desired quantity of the item</param>
     /// <param name="isTemp">Whether the item is temporary</param>
     /// <param name="log">Whether it will log that it is killing the monster</param>
+    /// <param name="publicRoom"></param>
     public void KillMonster(string map, string cell, string pad, string monster, string? item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
     {
         cell = Bot.Map.Cells.FirstOrDefault(c => c.Equals(cell, StringComparison.OrdinalIgnoreCase)) ?? cell;
@@ -2070,7 +2095,8 @@ public class CoreBots
         if (item != null && !isTemp)
             AddDrop(item);
 
-        Join(map, cell, pad, publicRoom: publicRoom);
+        if (Bot.Map.Name != map)
+            Join(map, cell, pad, publicRoom: publicRoom);
         Bot.Wait.ForActionCooldown(GameActions.Transfer);
         if (Bot.Player.Cell != cell)
             Jump(cell, pad);
@@ -2093,17 +2119,6 @@ public class CoreBots
                 .ToList();
         }
 
-        void LogAndJump(string message)
-        {
-            if (log) Logger(message);
-            while (!Bot.ShouldExit && Bot.Player.Cell != cell)
-            {
-                Jump(cell, pad);
-                Bot.Wait.ForCellChange(cell);
-            }
-            Bot.Player.SetSpawnPoint();
-        }
-
         List<Monster> targetMonsters = FindMonsters();
         if (item == null)
         {
@@ -2115,7 +2130,11 @@ public class CoreBots
                 Bot.Events.MonsterKilled += b => ded = true;
                 while (!Bot.ShouldExit && !ded)
                 {
-                    LogAndJump($"Killing {targetMonster}");
+                    while (!Bot.ShouldExit && Bot.Player.Cell != cell)
+                    {
+                        Jump(cell, pad);
+                        Bot.Wait.ForCellChange(cell);
+                    }
                     if (!Bot.Combat.StopAttacking)
                         Bot.Combat.Attack(monster);
                     if (targetMonster.MaxHP == 1)
@@ -2161,6 +2180,7 @@ public class CoreBots
     /// <param name="quant">Desired quantity of the item</param>
     /// <param name="isTemp">Whether the item is temporary</param>
     /// <param name="log">Whether it will log that it is killing the monster</param>
+    /// <param name="publicRoom"></param>
     public void KillMonster(string map, string cell, string pad, int MonsterMapID, string? item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
     {
         pad = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(pad.ToLower());
@@ -2273,10 +2293,11 @@ public class CoreBots
     /// <param name="cell">Cell to jump to</param>
     /// <param name="pad">Pad to jump to</param>
     /// <param name="MonsterMapID">MapID of the monster</param>
-    /// <param name="item">Item to kill the monster for, if null will just kill the monster 1 time</param>
+    /// <param name="ItemID"></param>
     /// <param name="quant">Desired quantity of the item</param>
     /// <param name="isTemp">Whether the item is temporary</param>
     /// <param name="log">Whether it will log that it is killing the monster</param>
+    /// <param name="publicRoom"></param>
     public void KillMonster(string map, string cell, string pad, int MonsterMapID, int ItemID = 0, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
     {
         pad = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(pad.ToLower());
@@ -2380,63 +2401,16 @@ public class CoreBots
         Bot.Options.AttackWithoutTarget = false;
     }
 
-    #region Old KillMonster
     /// <summary>
-    /// Attempts to kill a specified monster and optionally collects a specified item.
+    /// Joins a map and hunts for the monster.
     /// </summary>
-    /// <param name="map">The map where the monster is located.</param>
-    /// <param name="cell">The cell within the map to find the monster.</param>
-    /// <param name="pad">The pad within the cell where the monster is located.</param>
-    /// <param name="monsterID">The ID of the monster to kill.</param>
-    /// <param name="itemID">The ID of the item to collect (optional).</param>
-    /// <param name="quant">The quantity of the item to collect (default is 1).</param>
-    /// <param name="isTemp">Whether the item is temporary (default is true).</param>
-    /// <param name="log">Whether to log the action (default is true).</param>
-    /// <param name="publicRoom">Whether to join a public room (default is false).</param>
-    /// <remarks>
-    /// This method checks if the item is already in the inventory or temporary inventory.
-    /// If not, it adds the item to the drop list, joins the specified map, cell, and pad,
-    /// and then proceeds to kill the monster. If an item ID is provided, it will also attempt
-    /// to collect the specified item. The method handles aggro settings and logging.
-    /// </remarks>
-    // public void KillMonster(string map, string cell, string pad, int monsterID, int itemID = 0, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
-    // {
-
-    //     if (itemID != 0 && (isTemp ? Bot.TempInv.Contains(itemID, quant) : CheckInventory(itemID, quant)))
-    //         return;
-
-    //     if (!isTemp && itemID != 0)
-    //         AddDrop(itemID);
-
-    //     Join(map, cell, pad, publicRoom: publicRoom);
-
-    //     Bot.Options.AggroAllMonsters = false;
-    //     Bot.Options.AggroMonsters = false;
-    //     Monster? monster = Bot.Monsters.MapMonsters.FirstOrDefault(m => m != null && m.Cell == cell && m.ID == monsterID);
-
-    //     if (itemID == 0)
-    //     {
-    //         if (log)
-    //             Logger($"Killing {monster}");
-    //         ToggleAggro(true);
-    //         Bot.Kill.Monster(monster!.ID);
-    //         ToggleAggro(false);
-    //         JumpWait();
-    //         Rest();
-    //     }
-    //     else _KillForItem(monster!.Name, itemID, quant, isTemp, log: log, cell: cell);
-    //     Bot.Options.AttackWithoutTarget = false;
-    // }
-    #endregion
-
-    /// <summary>
-    /// Joins a map and hunt for the monster
-    /// </summary>
-    /// <param name="map">Map to join</param>
-    /// <param name="monster">Name of the monster to kill</param>
-    /// <param name="item">Item to hunt the monster for, if null will just hunt & kill the monster 1 time</param>
-    /// <param name="quant">Desired quantity of the item</param>
-    /// <param name="isTemp">Whether the item is temporary</param>
+    /// <param name="map">Map to join.</param>
+    /// <param name="monster">Name of the monster to kill.</param>
+    /// <param name="item">Item to hunt the monster for. If null, will just hunt and kill the monster once.</param>
+    /// <param name="quant">Desired quantity of the item.</param>
+    /// <param name="isTemp">Whether the item is temporary.</param>
+    /// <param name="log">Whether to log the hunt process.</param>
+    /// <param name="publicRoom">Whether to use a public room.</param>
     public void HuntMonster(string map, string monster, string? item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
     {
         if (item != null && (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
@@ -2502,7 +2476,12 @@ public class CoreBots
                     Jump(targetMonster.Cell, "Left");
                     Bot.Combat.Attack(targetMonster);
                     Sleep();
+                    if (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant))
+                        break;
                 }
+                if (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant))
+                    break;
+
             }
             JumpWait();
         }
@@ -2513,13 +2492,13 @@ public class CoreBots
     /// Kills a monster using it's MapID
     /// </summary>
     /// <param name="map">Map to join</param>
-    /// <param name="cell">Cell to jump to</param>
+    /// <param name="monsterMapID"></param>
     /// <param name="pad">Pad to jump to</param>
-    /// <param name="monsterID">ID of the monster</param>
     /// <param name="item">Item to kill the monster for, if null will just kill the monster 1 time</param>
     /// <param name="quant">Desired quantity of the item</param>
     /// <param name="isTemp">Whether the item is temporary</param>
     /// <param name="log">Whether it will log that it is killing the monster</param>
+    /// <param name="publicRoom"></param>
     public void HuntMonsterMapID(string map, int monsterMapID, string? item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false, string pad = "Left")
     {
         if (item != null && (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
@@ -2579,8 +2558,17 @@ public class CoreBots
                     Jump(targetMonster.Cell, "Left");
                     if (!Bot.Combat.StopAttacking)
                         Bot.Combat.Attack(targetMonster);
+                    if (targetMonster.MaxHP == 1)
+                    {
+                        ded = true;
+                        continue;
+                    }
                     Sleep();
+                    if (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant))
+                        break;
                 }
+                if (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant))
+                    break;
             }
 
             Rest();
@@ -2591,7 +2579,7 @@ public class CoreBots
     /// Hunts monsters based on the requirements of a specified quest and an optional array of map and monster names.
     /// </summary>
     /// <param name="questId">The ID of the quest to load requirements from.</param>
-    /// <param name="mapMonsterPairs">An optional array of tuples containing map names and monster names. Defaults to null.</param>
+    /// <param name="MapMonsterClassPairs"></param>
     /// <param name="log">Whether to log the hunting process.</param>
     public void HuntMonsterQuest(int questId, (string? mapName, string? monsterName, ClassType classType)[]? MapMonsterClassPairs = null, bool log = false)
     {
@@ -2601,6 +2589,9 @@ public class CoreBots
             Logger($"Quest {questId} not found");
             return;
         }
+
+        if (!Bot.Quests.EnsureAccept(questId))
+            EnsureAccept(questId);
 
         if (MapMonsterClassPairs == null)
         {
@@ -2616,11 +2607,17 @@ public class CoreBots
             ItemBase requirement = quest.Requirements[i];
             (string? mapName, string? monsterName, ClassType classType) = MapMonsterClassPairs[i];
 
+            if (CheckInventory(requirement.ID, requirement.Quantity))
+                continue;
+
             // Equip the class before hunting
             EquipClass(classType);
 
             HuntMonster(mapName ?? Bot.Map.Name, monsterName ?? "*", requirement.Name ?? string.Empty, requirement.Quantity, requirement.Temp, log);
         }
+
+        if (!Bot.Quests.EnsureComplete(questId))
+            EnsureComplete(questId);
     }
 
 
@@ -2640,6 +2637,9 @@ public class CoreBots
             return;
         }
 
+        if (!Bot.Quests.EnsureAccept(questId))
+            EnsureAccept(questId);
+
         for (int i = 0; i < quest.Requirements.Count; i++)
         {
             ItemBase requirement = quest.Requirements[i];
@@ -2650,6 +2650,10 @@ public class CoreBots
 
             HuntMonster(huntMapName, huntMonsterName, requirement.Name ?? string.Empty, requirement.Quantity, requirement.Temp, log);
         }
+
+        if (Bot.Quests.CanCompleteFullCheck(questId))
+            EnsureComplete(questId);
+
     }
 
 
@@ -2659,6 +2663,8 @@ public class CoreBots
     /// <param name="item">Item name</param>
     /// <param name="quant">Desired quantity</param>
     /// <param name="isTemp">Whether the item is temporary</param>
+    /// <param name="log"></param>
+    /// <param name="publicRoom"></param>
     public void KillEscherion(string? item = null, int quant = 1, bool isTemp = false, bool log = true, bool publicRoom = false)
     {
         if (item != null && (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
@@ -2750,6 +2756,7 @@ public class CoreBots
     /// <param name="item">Item name</param>
     /// <param name="quant">Desired quantity</param>
     /// <param name="isTemp">Whether the item is temporary</param>
+    /// <param name="log"></param>
     public void KillVath(string? item = null, int quant = 1, bool isTemp = false, bool log = true)
     {
         if (item is not null && (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
@@ -2835,6 +2842,7 @@ public class CoreBots
     /// <param name="item">Item name</param>
     /// <param name="quant">Desired quantity</param>
     /// <param name="isTemp">Whether the item is temporary</param>
+    /// <param name="log"></param>
     public void KillKitsune(string? item = null, int quant = 1, bool isTemp = false, bool log = true)
     {
         if (item != null && (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
@@ -2891,12 +2899,12 @@ public class CoreBots
     }
 
     /// <summary>
-    /// Kill Vath for the desired item
+    /// Kill Vath for the desired item.
     /// </summary>
-    /// <param name="item">Item name</param>
-    /// <param name="quant">Desired quantity</param>
-    /// <param name="isTemp">Whether the item is temporary</param>
-    /// <param name="Phase">Which phase of the boss to kill>
+    /// <param name="item">Item name.</param>
+    /// <param name="quant">Desired quantity.</param>
+    /// <param name="isTemp">Whether the item is temporary.</param>
+    /// <param name="Phase">Which phase of the boss to kill.</param>
     public void KillTrigoras(string item, int quant = 1, int Phase = 1, bool isTemp = false)
     {
         if (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant))
@@ -3018,6 +3026,7 @@ public class CoreBots
     /// <param name="item">The name of the item to obtain.</param>
     /// <param name="quant">The desired quantity of the item.</param>
     /// <param name="isTemp">Specifies whether the item is temporary.</param>
+    /// <param name="log"></param>
     public void KillNulgathFiendShard(string? item = null, int quant = 1, bool isTemp = false, bool log = false)
     {
         if (CheckInventory(item, quant))
@@ -3663,6 +3672,7 @@ public class CoreBots
     /// </summary>
     /// <param name="packet">Packet to send</param>
     /// <param name="times">How many times to send</param>
+    /// <param name="toClient"></param>
     public void SendPackets(string packet, int times = 1, bool toClient = false)
     {
         for (int i = 0; i < times; i++)
@@ -4112,6 +4122,7 @@ public class CoreBots
     /// </summary>
     /// <param name="cell">Cell to jump to</param>
     /// <param name="pad">Pad to jump to</param>
+    /// <param name="ignoreCheck"></param>
     public void Jump(string cell = "Enter", string pad = "Spawn", bool ignoreCheck = false)
     {
         cell = Bot.Map.Cells.FirstOrDefault(c => c.Equals(cell, StringComparison.OrdinalIgnoreCase)) ?? cell;
@@ -4149,6 +4160,7 @@ public class CoreBots
         Bot.Options.AttackWithoutTarget = false;
 
         HashSet<string> blackListedCells = Bot.Monsters.MapMonsters.Select(monster => monster.Cell).ToHashSet();
+
         // Check if there are more than one cell that starts with "Enter"
         if (Bot.Map.Cells.Count(cell => cell.StartsWith("Enter")) > 1)
         {
@@ -4169,25 +4181,44 @@ public class CoreBots
         }
         else
         {
-            blackListedCells.UnionWith(new List<string> { "Wait", "Blank", "Out", "moveFrame", "CutMikoOrochi", "innitRoom" });
+            blackListedCells.UnionWith(new List<string> { "Wait", "Blank", "Out", "CutMikoOrochi", "innitRoom" });
             blackListedCells.UnionWith(Bot.Map.Cells.Where(x => x.StartsWith("Cut")));
+            blackListedCells.UnionWith(Bot.Map.Cells.Where(x => x.StartsWith("moveFrame")));
 
-            #region AI is Aggressive (always)... or other issues
-            if (Bot.Map.Name == "pyrewatch")
-                blackListedCells.UnionWith(new[] { "r3", "r4", "r5", "r7", "r12" });
-
-            if (Bot.Map.Name == "shadowfall")
-                blackListedCells.UnionWith(new[] { "New6" });
-
-            if (Bot.Map.Name == "wanders")
+            #region Maps with issues
+            switch (Bot.Map.Name)
             {
-                Bot.Map.Jump("Boss", "left", false);
-                Bot.Sleep(2500);
-                blackListedCells.UnionWith(Bot.Player.Cell == "Boss" ? new[] { "r25" } : new[] { "Boss" });
+                case "pyrewatch":
+                    blackListedCells.UnionWith(new[] { "r3", "r4", "r5", "r7", "r12" });
+                    break;
+
+                case "shadowfall":
+                    blackListedCells.UnionWith(new[] { "New6" });
+                    break;
+
+                case "wanders":
+                    Bot.Map.Jump("Boss", "left", false);
+                    Bot.Sleep(2500);
+                    blackListedCells.UnionWith(Bot.Player.Cell == "Boss" ? new[] { "r25" } : new[] { "Boss" });
+                    break;
+
+                case "zephyrus":
+                    blackListedCells.UnionWith(new[] { "R1", "Enter" });
+                    break;
+
+                case "portalundead":
+                    blackListedCells.UnionWith(new[] { "Portal", "Gate" });
+                    break;
+
+                case "icestormarena":
+                    blackListedCells.UnionWith(new[] { "r23" });
+                    break;
+
+
+                default:
+                    break;
             }
-            if (Bot.Map.Name == "zephyrus")
-                blackListedCells.UnionWith(new[] { "R1", "Enter" });
-            #endregion
+            #endregion Maps with issues
 
             if (!IsMember)
                 blackListedCells.Add("Eggs");
@@ -4497,6 +4528,10 @@ public class CoreBots
 
             #region Ghost Item Bypasses
 
+            case "deaddragon":
+                GhostItemBypass(37377, "deaddragon Map Bypass");
+                break;
+
             case "nostalgiaquest":
                 GhostItemBypass(37378, "NostalgiaQuest Map Bypass");
                 break;
@@ -4542,6 +4577,11 @@ public class CoreBots
                 tryJoin();
                 break;
 
+            case "collection":
+                JumpWait();
+                Bot.Map.Join(PrivateRooms ? $"{map}-" + PrivateRoomNumber : map, "Begin", "Spawn");
+                Bot.Wait.ForMapLoad("collection");
+                break;
 
             case "doomvaultb":
                 SetAchievement(18);
@@ -4658,14 +4698,9 @@ public class CoreBots
 
             #region baconcat.. is annoying
             case "baconcat":
-                Bot.Quests.UpdateQuest(5108);
+                // Bot.Quests.UpdateQuest(5108);
                 JumpWait();
                 map = strippedMap + "-999999";
-                // if (!isCompletedBefore(5087))
-                //     cell = "Enter";
-                // if (!isCompletedBefore(5089))
-                //     cell = "Enter2";
-                // else cell = "Enter3";
                 tryJoin();
                 Bot.Wait.ForCellChange(cell);
                 break;
@@ -5338,16 +5373,31 @@ public class CoreBots
 
             switch (A.Name)
             {
-                case "Endless Blizzard":
                 case "Oxidize":
-                    while (!Bot.ShouldExit && !Bot.Self.HasActiveAura(A.Name))
+                    while (!Bot.ShouldExit && Bot.Player.Alive && !Bot.Self.HasActiveAura("Vigil"))
                     {
                         UsePotion();
                         Sleep();
 
                         // Check if targetAura is not null before accessing its SecondsRemaining() method
                         // Assuming `targetAura` is the aura you're referring to
-                        if (Bot.Self.HasActiveAura(A.Name))
+                        if (Bot.Self.HasActiveAura("Vigil"))
+                        {
+                            Logger($"\"{A.Name}\" Active!");
+                            break;
+                        }
+                    }
+                    break;
+
+                case "Endless Blizzard":
+                    while (!Bot.ShouldExit && Bot.Player.Alive && !Bot.Self.HasActiveAura("Bananach's Last Will"))
+                    {
+                        UsePotion();
+                        Sleep();
+
+                        // Check if targetAura is not null before accessing its SecondsRemaining() method
+                        // Assuming `targetAura` is the aura you're referring to
+                        if (Bot.Self.HasActiveAura("Bananach's Last Will"))
                         {
                             Logger($"\"{A.Name}\" Active!");
                             break;
@@ -5356,7 +5406,6 @@ public class CoreBots
                     break;
 
                 default:
-                    Logger($"\"{targetAuraName}\" has not been added yet, please advise su on the aura name and the required item (if applicable)");
                     break;
             }
         }
