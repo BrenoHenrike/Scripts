@@ -63,34 +63,57 @@ public class NeotowerMerge
                     break;
                 #endregion
 
+                /* MID's & there names:
+                12 - Vindicator Assassin
+                17 - Vindicator BeastTamer
+                28 - Vindicator Priest
+                */
+
                 case "Vindicator Crest":
                     Core.FarmingLogger(req.Name, quant);
+                    Core.EquipClass(ClassType.Solo);
                     Core.RegisterQuests(9865);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonsterQuest(9865, new (string? mapName, string? monsterName, ClassType classType)[] {
-                            ("neotower", "Vindicator Assassin", ClassType.Farm),
-                            ("neotower", "Vindicator Beast Tamer", ClassType.Farm),
-                        ("neotower", "Vindicator Priest", ClassType.Solo)});
+                        Core.HuntMonsterMapID("neotower", 12, "Vindicated Blades");
+                        Core.HuntMonsterMapID("neotower", 17, "Vindicated Chain");
+                        //the preist takes reduced damage till u kill the crystals
+                        while (!Bot.ShouldExit && !Core.CheckInventory("Vindicated Scripture"))
+                        {
+                            foreach (int M in new[] { 24, 25, 26, 27 })
+                            {
+                                Core.KillMonster("neotower", "r10", "left", M, null, log: false);
+                            }
+                            Core.KillMonster("neotower", "r10", "left", 28, "Vindicated Scripture");
+                            Bot.Wait.ForPickup("Vindicated Scripture");
+                        }
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
                     break;
 
                 case "Vindicator Assassin Dirk":
-                    Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster("neotower", "Vindicator Assassin", req.Name, quant, req.Temp, false);
+                    Core.HuntMonsterMapID("neotower", 12, req.Name, 1, req.Temp);
+                    Bot.Wait.ForPickup(req.Name);
                     break;
 
-                case "Dawn Vindication Tome":
                 case "Dawn Vindication Grimoires":
                 case "Dawn Vindication Spellbooks":
+                case "Dawn Vindication Tome":
                     Core.FarmingLogger(req.Name, quant);
-                    Core.EquipClass(ClassType.Solo);
-                    Core.HuntMonster("neotower", "Vindicator Priest", req.Name, quant, req.Temp, false);
+                    Core.EquipClass(ClassType.Farm);
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
+                    {
+                        foreach (int M in new[] { 24, 25, 26, 27 })
+                        {
+                            Core.KillMonster("neotower", "r10", "left", M, null, log: false);
+                        }
+                        Core.KillMonster("neotower", "r10", "left", 28, "Vindicated Scripture");
+                        Bot.Wait.ForPickup(req.Name);
+                    }
+                    Core.CancelRegisteredQuests();
                     break;
-
             }
         }
     }
