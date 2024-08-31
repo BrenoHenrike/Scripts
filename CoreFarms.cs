@@ -1320,34 +1320,40 @@ public class CoreFarms
         Core.SavedState(false);
     }
 
+    /// <summary>
+    /// Farms reputation for the "Blade of Awe" faction and optionally purchases the Blade of Awe.
+    /// </summary>
+    /// <param name="rank">The target faction rank to achieve. Defaults to rank 10.</param>
+    /// <param name="farmBoA">
+    /// If true, the method farms to rank 6 if needed to buy the Blade of Awe from the museum,
+    /// then continues farming to the specified rank.
+    /// </param>
+    /// <remarks>
+    /// The method unlocks the necessary quest, farms to the required rank, and purchases the Blade of Awe 
+    /// if <paramref name="farmBoA"/> is true and the item is not already in the inventory.
+    /// </remarks>
     public void BladeofAweREP(int rank = 10, bool farmBoA = true)
     {
-        if (farmBoA && !Core.CheckInventory(17585))
+        //Quests will now be done regardless of farmboa bool, purely to unlock them.
+        UnlockBoA();
+
+        int targetRank = farmBoA && !Core.CheckInventory(17585) ? 6 : rank;
+
+        if (FactionRank("Blade of Awe") < targetRank || (farmBoA && FactionRank("Blade of Awe") < rank))
         {
-            UnlockBoA();
-            RepFarm(6);
-            Core.BuyItem("museum", 631, 17585);
-        }
-        RepFarm(rank);
-
-        void RepFarm(int rank)
-        {
-            if (FactionRank("Blade of Awe") >= rank)
-                return;
-
-            UnlockBoA();
-
-            Core.EquipClass(ClassType.Farm);
             Core.SavedState();
             Core.EquipClass(ClassType.Farm);
-            Core.Logger($"Farming rank {rank}");
+            Core.Logger($"Farming rank {(FactionRank("Blade of Awe") < targetRank ? targetRank : rank)}");
 
             Core.RegisterQuests(2935);
-            while (!Bot.ShouldExit && FactionRank("Blade of Awe") < rank)
-                Core.KillMonster("castleundead", "Enter", "Left", "Skeletal Viking", "Hilt Found!", 1, false, log: false);
+            while (!Bot.ShouldExit && (FactionRank("Blade of Awe") < targetRank || (farmBoA && FactionRank("Blade of Awe") < rank)))
+                Core.KillMonster("castleundead", "Enter", "Left", "Skeletal Viking", "Hilt Found!", 1, false);
             Core.CancelRegisteredQuests();
             Core.SavedState(false);
         }
+
+        if (farmBoA && !Core.CheckInventory(17585))
+            Core.BuyItem("museum", 631, 17585);
     }
 
     public void UnlockBoA()
