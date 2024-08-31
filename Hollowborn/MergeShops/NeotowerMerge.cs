@@ -71,19 +71,13 @@ public class NeotowerMerge
 
                 case "Vindicator Crest":
                     Core.FarmingLogger(req.Name, quant);
-                    Core.EquipClass(ClassType.Solo);
                     Core.RegisterQuests(9865);
+                    Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.HuntMonsterMapID("neotower", 12, "Vindicated Blades");
                         Core.HuntMonsterMapID("neotower", 17, "Vindicated Chain");
-                        //the preist takes reduced damage till u kill the crystals
-                        while (!Bot.ShouldExit && !Core.CheckInventory("Vindicated Scripture"))
-                        {
-                            Core.EquipClass(ClassType.Farm);
-                            Core.KillMonster("neotower", "r10", "left", 28, "Vindicated Scripture");
-                            Bot.Wait.ForPickup("Vindicated Scripture");
-                        }
+                        Core.HuntMonsterMapID("neotower", 28, "Vindicated Scripture");
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
