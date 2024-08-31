@@ -57,8 +57,12 @@ public class VoidAvengerScythe
 
         Farm.EvilREP();
         // Batwing Scythe - 
-        if (!Bot.Quests.IsUnlocked(498))
-            BatwingScythe();
+        // if (!Bot.Quests.IsUnlocked(498))
+        //     BatwingScythe();
+
+        Bot.Quests.UpdateQuest(498);
+        Core.HuntMonster("darkoviagrave", "Blightfang", "Batwing Scythe", isTemp: false);
+
 
         while (!Bot.ShouldExit && !Core.CheckInventory("Batwing Scythe"))
         {
@@ -117,6 +121,8 @@ public class VoidAvengerScythe
             Core.HuntMonster("darkoviagrave", "Blightfang", "Blightfang's Skull");
             Core.EnsureComplete(498);
         }
+
+        Core.HuntMonster("darkoviagrave", "Blightfang", "Batwing Scythe", isTemp: false);
     }
 
     public void DonnaCharmersQuests()
