@@ -84,7 +84,7 @@ public class NeotowerMerge
                     break;
 
                 case "Vindicator Assassin Dirk":
-                    Core.EquipClass(ClassType.Solo);
+                    Core.EquipClass(ClassType.Farm);
                     Core.HuntMonsterMapID("neotower", 12, req.Name, 1, req.Temp);
                     Bot.Wait.ForPickup(req.Name);
                     break;
@@ -96,7 +96,7 @@ public class NeotowerMerge
                     Core.EquipClass(ClassType.Farm);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.KillMonster("neotower", "r10", "left", 28, "Vindicated Scripture");
+                        Core.KillMonster("neotower", "r10", "left", 28, req.Name, req.Quantity, req.Temp);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
