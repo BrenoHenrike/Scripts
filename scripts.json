@@ -4346,6 +4346,29 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/MergeShops/HollowbornLabMerge.cs"
   },
   {
+    "name": "Neotower Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Neotower Merge [2474] in /neotower",
+    "tags": [
+      "neotower",
+      "merge",
+      "neotower",
+      "vindicator",
+      "assassin",
+      "priest",
+      "dawn",
+      "vindication",
+      "grace",
+      "texts",
+      "beast",
+      "tamer",
+      "claws"
+    ],
+    "path": "Hollowborn/MergeShops/NeotowerMerge.cs",
+    "size": 5759,
+    "fileName": "NeotowerMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/MergeShops/NeotowerMerge.cs"
+  },
+  {
     "name": "HBDK - A Dark Knight Returns",
     "description": "does the 'a dark knight returns' part of hollowborn doomKnight",
     "tags": [
