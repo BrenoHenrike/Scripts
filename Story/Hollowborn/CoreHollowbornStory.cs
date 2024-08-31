@@ -190,7 +190,7 @@ public class CoreHollowbornStory
         if (Core.isCompletedBefore(9864))
             return;
 
-        Shadowrealm();
+        NeoFortress();
 
         Story.PreLoad(this);
 
