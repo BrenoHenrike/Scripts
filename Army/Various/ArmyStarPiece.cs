@@ -58,7 +58,7 @@ public class Generated_ArmyStarPiece
         Army.AggroMonStart("starfield");
         Army.DivideOnCells("r3");
 
-        while (!Bot.ShouldExit && (!Core.CheckInventory("Star Piece", quant)))
+        while (!Bot.ShouldExit && (!Core.CheckInventory("Star Piece", int.MaxValue)))
             Bot.Combat.Attack("*");
 
         Army.AggroMonStop(true);
