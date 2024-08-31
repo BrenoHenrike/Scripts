@@ -1,14 +1,14 @@
 /*
-name: Hollowborn Saga
-description: This script will complete Hollowborn Saga.
-tags: hollowborn,saga,trygve,neofortress,lae,treasure hunt,lae birthday,shadowrealm,whispering helmet,neotower
+name: Neo Tower
+description: This script will complete the Lae's storyline in /neotower.
+tags: hollowborn,saga,lae,neotower,neo tower,quest
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Story/Hollowborn/CoreHollowbornStory.cs
 using Skua.Core.Interfaces;
 
-public class DoAllHB
+public class NeoTower
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
@@ -18,7 +18,7 @@ public class DoAllHB
     {
         Core.SetOptions();
 
-        HB.DoAll();
+        HB.NeoTower();
 
         Core.SetOptions(false);
     }
