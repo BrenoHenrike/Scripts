@@ -97,7 +97,7 @@ public class NeotowerMerge
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.ID, quant))
                     {
                         Core.KillMonster("neotower", "r10", "left", 28, req.ID, req.Quantity, req.Temp);
-                        Bot.Wait.ForPickup(req.Name);
+                        Bot.Wait.ForPickup(req.ID);
                     }
                     Core.CancelRegisteredQuests();
                     break;
