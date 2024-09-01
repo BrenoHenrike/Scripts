@@ -4658,6 +4658,7 @@ public class CoreBots
             case "legionpvp":
             case "deathpitbrawl":
             // Room Limit: 1
+            case "queeniona":
             case "baconcatb":
             case "caroling":
             case "chaosbattle":
