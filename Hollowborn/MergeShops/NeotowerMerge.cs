@@ -94,9 +94,9 @@ public class NeotowerMerge
                 case "Dawn Vindication Tome":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.ID, quant))
                     {
-                        Core.KillMonster("neotower", "r10", "left", 28, req.Name, req.Quantity, req.Temp);
+                        Core.KillMonster("neotower", "r10", "left", 28, req.ID, req.Quantity, req.Temp);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
