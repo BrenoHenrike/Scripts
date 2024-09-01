@@ -1368,7 +1368,7 @@ public class CoreNation
     public void VoidKightSwordQuest(string item = "Any", int quant = 1)
     {
         // Check if the desired item is already in inventory or if the required items are missing
-        if (Core.CheckInventory(item, quant) || (!Core.CheckInventory(38275) && !Core.CheckInventory(38254)))
+        if (Core.CheckInventory(item, quant) || (!Core.CheckInventory(new[] { 38275, 38254 }, any: true)))
             return;
 
         // Add drops based on the provided item or bag drops
@@ -1560,9 +1560,7 @@ public class CoreNation
         Core.AddDrop("Diamond of Nulgath");
 
         VoidKightSwordQuest("Diamond of Nulgath", quant);
-        if (!Core.CheckInventory(new[] { CragName }))
-            DiamondEvilWar(quant);
-        else Supplies("Diamond of Nulgath", quant);
+        Supplies("Diamond of Nulgath", quant);
     }
 
     /// <summary>
