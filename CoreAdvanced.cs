@@ -2502,14 +2502,14 @@ public class CoreAdvanced
                     break;
                 #endregion
 
-                #region Luck - Ravenous - Anima - Vainglory
+                #region Luck - Dauntless | Ravenous - Anima - Vainglory
                 case "chrono chaorruptor":
                     if (!uRavenous() || !uAnima() || !uVainglory())
                         goto default;
 
                     type = EnhancementType.Lucky;
                     cSpecial = CapeSpecial.Vainglory;
-                    wSpecial = WeaponSpecial.Ravenous;
+                    wSpecial = uDauntless() ? WeaponSpecial.Dauntless : WeaponSpecial.Ravenous;
                     hSpecial = HelmSpecial.Anima;
                     break;
                 #endregion
