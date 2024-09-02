@@ -1,3 +1,7 @@
+# AVISO
+- **ESTES LEIAME ESTÃO EXTREMAMENTE DESATUALIZADOS, SE TIVER PROBLEMAS USE O DISCORD**
+ - [DISCORD](https://discord.gg/CKKbk2zr3p)**
+
 # Scripts
 
 Se o ajudamos e você quer doar qualquer quantia:  
