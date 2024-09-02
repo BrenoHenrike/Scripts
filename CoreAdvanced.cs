@@ -2923,6 +2923,7 @@ public class CoreAdvanced
                 case "vampire lord":
                 case "enchanted vampire lord":
                 case "royal vampire lord":
+                case "Chrono ShadowHunter":
                     type = EnhancementType.Lucky;
                     wSpecial = WeaponSpecial.Health_Vamp;
                     break;
@@ -3060,7 +3061,7 @@ public class CoreAdvanced
                 #endregion
 
                 default:
-                    Core.Logger($"SmartEnhance Failed: \"{className}\" is not found in the Smart Enhance Library, please report to Lord Exelot#2728", messageBox: true);
+                    Core.Logger($"SmartEnhance Failed: \"{className}\" is not found in the Smart Enhance Library, please report to @tato2", messageBox: true);
                     return;
             }
         }
