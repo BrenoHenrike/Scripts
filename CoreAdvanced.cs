@@ -2516,6 +2516,7 @@ public class CoreAdvanced
 
                 #region Wizard - Ravenous - Pneuma - Vainglory
                 case "chrono dataknight":
+                case "chrono dragonknight":
                     if (!uRavenous() || !uPneuma() || !uVainglory())
                         goto default;
 
@@ -2568,7 +2569,6 @@ public class CoreAdvanced
                 case "chaos shaper":
                 case "chrono assassin":
                 case "chrono commandant":
-                case "chrono dragonknight":
                 case "chronocommander":
                 case "chronocorrupter":
                 case "chronomancer prime":
@@ -2714,37 +2714,37 @@ public class CoreAdvanced
             }
             return true;
 
-            // Always place this check as the last one in a 'if' + '||' stack.
-            // See EXAMPLE_CLASS as an example. 
-            bool uDauntlessExtra()
-            {
-                // Check if Dauntless is unlocked, and set it as wSpecial if true.
-                if (uDauntless())
-                {
-                    wSpecial = WeaponSpecial.Dauntless;
-                    return true;
-                }
-                // If Dauntless is not unlocked, try Valiance and it's extras
-                // If neither Valiance nor its bonusses are unlocked, this will return false so that it can be used with the 'goto default' lines
-                else return uValianceExtra();
-            }
+            // // Always place this check as the last one in a 'if' + '||' stack.
+            // // See EXAMPLE_CLASS as an example. 
+            // bool uDauntlessExtra()
+            // {
+            //     // Check if Dauntless is unlocked, and set it as wSpecial if true.
+            //     if (uDauntless())
+            //     {
+            //         wSpecial = WeaponSpecial.Dauntless;
+            //         return true;
+            //     }
+            //     // If Dauntless is not unlocked, try Valiance and it's extras
+            //     // If neither Valiance nor its bonusses are unlocked, this will return false so that it can be used with the 'goto default' lines
+            //     else return uValianceExtra();
+            // }
 
-            // Always place this check as the last one in a 'if' + '||' stack.
-            // See ArchPaladin as an example. 
-            bool uValianceExtra()
-            {
-                // Check if Valiance is unlocked, and set it as wSpecial if true.
-                if (uValiance())
-                    wSpecial = WeaponSpecial.Valiance;
-                // Otherwise, check if Praxis is unlocked, and set it as wSpecial if true.
-                else if (uPraxis())
-                    wSpecial = WeaponSpecial.Praxis;
-                // If neither Valiance and Praxis are not unlocked, return false so that it can be used in conjunction with the 'goto default' lines.
-                else return false;
+            // // Always place this check as the last one in a 'if' + '||' stack.
+            // // See ArchPaladin as an example. 
+            // bool uValianceExtra()
+            // {
+            //     // Check if Valiance is unlocked, and set it as wSpecial if true.
+            //     if (uValiance())
+            //         wSpecial = WeaponSpecial.Valiance;
+            //     // Otherwise, check if Praxis is unlocked, and set it as wSpecial if true.
+            //     else if (uPraxis())
+            //         wSpecial = WeaponSpecial.Praxis;
+            //     // If neither Valiance and Praxis are not unlocked, return false so that it can be used in conjunction with the 'goto default' lines.
+            //     else return false;
 
-                // This will only occur if Valiance or Praxis is unlocked.
-                return true;
-            }
+            //     // This will only occur if Valiance or Praxis is unlocked.
+            //     return true;
+            // }
         }
 
         void AweEnhancementLibrary()
