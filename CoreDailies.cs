@@ -621,6 +621,7 @@ public class CoreDailies
         Core.Logger("Daily: Elders' Blood");
         Core.EquipClass(ClassType.Farm);
         DailyRoutine(802, "arcangrove", "Gorillaphant", "Slain Gorillaphant", 50, cell: "Right", pad: "Left");
+        Bot.Wait.ForPickup("Elders' Blood");
     }
 
     public void SparrowsBlood()
@@ -635,6 +636,7 @@ public class CoreDailies
         Core.KillMonster("arcangrove", "Back", "Right", "*", "Snapdrake", 17);
         Core.KillMonster("arcangrove", "Back", "Right", "*", "DOOM Dirt", 12);
         Core.EnsureComplete(803);
+        Bot.Wait.ForPickup("Sparrow's Blood");
     }
 
     public void ShadowShroud()
