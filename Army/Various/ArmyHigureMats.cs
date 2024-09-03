@@ -5,6 +5,7 @@ using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Models.Quests;
 using Skua.Core.Options;
+using System.Collections.Generic; 
 
 public class ArmyPrinceDarkonsPoleaxeMats
 {
@@ -41,23 +42,70 @@ public class ArmyPrinceDarkonsPoleaxeMats
 
     public void ScriptMain(IScriptInterface bot)
     {
-
         Core.SetOptions(disableClassSwap: false);
+        Bot.Options.SetFPS = 30;
+
+        Core.PrivateRooms = true;
+        Core.PrivateRoomNumber = Army.getRoomNr();
 
         Army.initArmy();
         Army.setLogName(OptionsStorage);
-		
-		// Bot.Options.SetFPS = 60;
-		
-		ArmyHunt("arcangrove", new[] { "Right", "LeftBack" }, "Darkon's Receipt", "", 7324, 66);
-        ArmyHunt("astravia", new[] { "r6", "r7", "r8" }, "La's Gratitude", "r8", 8001, 66);
-		ArmyHunt("astraviacastle", new[] { "r3", "r6", "r11" }, "Astravian Medal", "r11", 8257, 66);
-        ArmyHunt("astraviajudge", new[] { "r2", "r3", "r11" }, "A Melody", "r11", 8396, 66);
-		ArmyHunt("astraviapast", new[] { "r6", "r7", "r8", "r4" }, "Suki's Prestige", "", 8602, 66);
-        ArmyHunt("firstobservatory", new[] { "r6", "r7", "r10a" }, "Ancient Remnant", "r10a", 8641, 66);
-		ArmyHunt("genesisgarden", new[] { "r6", "r9", "r11" }, "Mourning Flower", "r11", 8688, 66);
-        ArmyHunt("theworld", new[] { "r9" }, "Unfinished Musical Score", "", 0, 66);
-		ArmyHunt("hbchallenge", new[] { "r6" }, "Bounty Hunter Dubloon", "", 9393, 222);
+
+        Army.ClearLogFile();
+
+        Bot.Send.Packet($"%xt%zm%house%1%{Core.Username()}%");
+        Bot.Wait.ForMapLoad("house");
+        
+        var items = new List<string>
+        {
+            "Darkon's Receipt", "La's Gratitude", "Astravian Medal", "A Melody",
+            "Suki's Prestige", "Ancient Remnant", "Mourning Flower", 
+            "Unfinished Musical Score", "Bounty Hunter Dubloon"
+        };
+
+        var reqQuant = new Dictionary<string, int>();
+        foreach (var item in items)
+        {
+            reqQuant[item] = 66;
+        }
+        reqQuant["Bounty Hunter Dubloon"] = 222;
+
+        Core.BankingBlackList.AddRange(items);
+
+        Core.Logger("checking req item");
+
+        foreach (var kvp in reqQuant)
+        {
+            Core.AddDrop(kvp.Key);
+            Army.registerMessage(kvp.Key, false);
+
+            if (Core.CheckInventory(kvp.Key, kvp.Value))
+            {
+                Army.sendDone(20);
+            }
+        }
+
+        Core.Join("whitemap");
+        Army.waitForPartyCell("Enter", "Spawn");
+        Army.waitForSignal("armyready");
+
+        var huntData = new[]
+        {
+            new {Map = "arcangrove", Cells = new[] {"Right", "LeftBack"}, Item = "Darkon's Receipt", PriorityCell = "", QuestId = 7324, Quantity = 66},
+            new {Map = "astravia", Cells = new[] {"r6", "r7", "r8"}, Item = "La's Gratitude", PriorityCell = "r8", QuestId = 8001, Quantity = 66},
+            new {Map = "astraviacastle", Cells = new[] {"r3", "r6", "r11"}, Item = "Astravian Medal", PriorityCell = "r11", QuestId = 8257, Quantity = 66},
+            new {Map = "astraviajudge", Cells = new[] {"r2", "r3", "r11"}, Item = "A Melody", PriorityCell = "r11", QuestId = 8396, Quantity = 66},
+            new {Map = "astraviapast", Cells = new[] {"r6", "r7", "r8", "r4"}, Item = "Suki's Prestige", PriorityCell = "", QuestId = 8602, Quantity = 66},
+            new {Map = "firstobservatory", Cells = new[] {"r6", "r7", "r10a"}, Item = "Ancient Remnant", PriorityCell = "r10a", QuestId = 8641, Quantity = 66},
+            new {Map = "genesisgarden", Cells = new[] {"r6", "r9", "r11"}, Item = "Mourning Flower", PriorityCell = "r11", QuestId = 8688, Quantity = 66},
+            new {Map = "theworld", Cells = new[] {"r9"}, Item = "Unfinished Musical Score", PriorityCell = "", QuestId = 0, Quantity = 66},
+            new {Map = "hbchallenge", Cells = new[] {"r6"}, Item = "Bounty Hunter Dubloon", PriorityCell = "", QuestId = 9393, Quantity = 222}
+        };
+
+        foreach (var hunt in huntData)
+        {
+            ArmyHunt(hunt.Map, hunt.Cells, hunt.Item, hunt.PriorityCell, hunt.QuestId, hunt.Quantity);
+        }
 
         Core.SetOptions(false);
     }
@@ -65,10 +113,10 @@ public class ArmyPrinceDarkonsPoleaxeMats
 
     void ArmyHunt(string map, string[] cells, string item, string priorityCell, int questId, int quant = 1)
     {
-		Core.Equip(Bot.Config.Get<string>("SafeClass"));
-        Army.registerMessage(item);
-        Core.PrivateRooms = true;
-        Core.PrivateRoomNumber = Army.getRoomNr();
+        Army.registerMessage(item, false);
+        if (Army.isDone(20)) return;
+		// Core.Equip(Bot.Config.Get<string>("SafeClass"));
+        // Army.registerMessage(item);
 
         Core.BankingBlackList.Add(item);
         Core.AddDrop(item);
@@ -78,23 +126,22 @@ public class ArmyPrinceDarkonsPoleaxeMats
         }
 
 		Bot.Sleep(1000);
-		Core.Equip(Bot.Config.Get<string>("ClassToUse"));
+		// Core.Equip(Bot.Config.Get<string>("ClassToUse"));
         //Core.EquipClass(classType);
         Core.Join(map);
 		
         Army.waitForPartyCell("Enter", "Spawn");
         if(questId != 0)
             Core.RegisterQuests(questId);
-        Army.waitForSignal("imready");
+        
 
-        Army.DivideOnCellsPriority(cells, priorityCell: priorityCell, setAggro: true);
-        Army.registerMessage(item, false);
+        Army.DivideOnCellsPriority(cells, priorityCell: priorityCell, setAggro: true, log: true);
 
         Core.FarmingLogger(item, quant);
-
         Core.Logger($"army: starting {quant} {item}");
+        Bot.Skills.StartAdvanced("1 | 2 | 3 | 4");
         Army.AggroMonStart();
-        Army.StartFarm(item, quant, new int[] { 1, 2, 3, 4 } );
+        Army.StartFarm(item, quant);
 
         Core.CancelRegisteredQuests();
         Army.AggroMonStop(true);
