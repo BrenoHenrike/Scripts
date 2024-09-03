@@ -95,6 +95,7 @@ public class CoreArmyLite
             {
                 attempts++;
             }
+            Core.Sleep(100);
         }
         return false;
     }
@@ -111,6 +112,7 @@ public class CoreArmyLite
             }
             catch { }
             attempts++;
+            Core.Sleep(100);
         }
         return false;
     }
@@ -527,12 +529,10 @@ public class CoreArmyLite
 
     }
 
-    public void StartFarm(string item, int quant, params int[] skillList)
+    public void StartFarm(string item, int quant)
     {
         bool needSendDone = true;
         int countCheck = 0;
-        int[] skills =
-            skillList == null || skillList.Length == 0 ? new int[] { 1, 2, 3, 4 } : skillList;
         int skillIndex = 0;
         while (!Bot.ShouldExit)
         {
@@ -553,15 +553,6 @@ public class CoreArmyLite
             if (IsMonsterAlive("*"))
             {
 				Bot.Combat.Attack("*");
-                //if (!Bot.Player.HasTarget)
-                //    Bot.Combat.Attack("*");
-                //else if (Bot.Player.HasTarget)
-                //{
-                //    Bot.Skills.UseSkill(skills[skillIndex]);
-                //    skillIndex++;
-                //    if (skillIndex >= skills.Length)
-                //        skillIndex = 0;
-                //}
             }
 
             Bot.Sleep(100);
@@ -685,10 +676,11 @@ public class CoreArmyLite
         }
     }
 
-    public void DivideOnCellsPriority(string[] cells, string priorityCell, bool setAggro = false)
+    public void DivideOnCellsPriority(string[] cells, string priorityCell, bool setAggro = false, bool log = false)
     {
         // Parsing all the player names from an unspecified amount of player name options
         string[] _players = Players();
+        if (log) Core.Logger($"divide on cells: {string.Join(",", cells)}. priority cell: {priorityCell}");
 
         if (setAggro)
         {
@@ -710,8 +702,11 @@ public class CoreArmyLite
             foreach (string p in _players)
             {
                 string cell = cells[cellCount];
-                if (username == p)
+                if (username == p){
+                    Core.Logger($"i am on cell: {cell}");
+                    Core.EquipClass(ClassType.Farm);
                     Core.Jump(cell, "Left");
+                }
                 cellCount = cellCount == cells.Length - 1 ? 0 : cellCount + 1;
             }
         }
@@ -724,8 +719,15 @@ public class CoreArmyLite
                 string p = _players[i];
                 string cell = (cells.Length > 0 && i < cells.Length) ? cells[i] : priorityCell; // Get the cell for the current player
 
-                if (username == p) // If current player is the one running the code
-                    Core.Jump(cell, "Left"); // Jump to the assigned cell
+                if (username == p){
+                    Core.Logger($"i am on cell: {cell}");
+                    if (cell.Equals(priorityCell)){
+                        Core.EquipClass(ClassType.Solo);
+                    } else{
+                        Core.EquipClass(ClassType.Farm);
+                    }
+                    Core.Jump(cell, "Left");
+                }
             }
         }
     }
@@ -735,14 +737,14 @@ public class CoreArmyLite
         registerMessage(message, delPrevMsg);
         while (!Bot.ShouldExit && Bot.Player.Cell == waitIn)
         {
-            sendDone();
+            sendDone(10);
             if (isAlreadyInLog(new string[] { Bot.Player.Username.ToLower() }))
                 break;
             Bot.Sleep(500);
         }
         while (!Bot.ShouldExit)
         {
-            if (isDone())
+            if (isDone(10))
                 break;
             Bot.Sleep(500);
         }
