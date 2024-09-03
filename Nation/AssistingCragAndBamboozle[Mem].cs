@@ -55,16 +55,21 @@ public class AssistingCragAndBamboozle
         if (!Core.IsMember || !Core.CheckInventory(Nation.CragName) || !Core.CheckInventory("Sparrow's Blood") && !Daily.CheckDaily(803, true, true, "Sparrow's Blood"))
             return;
 
-        ItemBase? Item = Bot.Quests.EnsureLoad(5817)!.Rewards
-        .FirstOrDefault(r => (int)reward == -1
-        ? r.Quantity < r.MaxStack
-        : r.ID == (int)reward);
+        ItemBase? Item = Bot.Quests.EnsureLoad(5817)?.Rewards
+            .FirstOrDefault(r => (int)reward == -1
+            ? r.Quantity < r.MaxStack
+            : r.ID == (int)reward);
 
-        Core.AddDrop("Nulgath Larvae",
-                     "Sword of Nulgath", "Gem of Nulgath", "Tainted Gem", "Dark Crystal Shard", "Diamond of Nulgath",
-                     "Totem of Nulgath", "Blood Gem of the Archfiend", "Unidentified 19", "Elders' Blood", "Voucher of Nulgath", "Voucher of Nulgath (non-mem)");
+        if (Item != null)
+        {
+            Core.AddDrop("Nulgath Larvae",
+                         "Sword of Nulgath", "Gem of Nulgath", "Tainted Gem", "Dark Crystal Shard", "Diamond of Nulgath",
+                         "Totem of Nulgath", "Blood Gem of the Archfiend", "Unidentified 19", "Elders' Blood", "Voucher of Nulgath", "Voucher of Nulgath (non-mem)");
 
-        Core.FarmingLogger(Item.Name, Item.MaxStack);
+            Core.FarmingLogger(Item.Name, Item.MaxStack);
+        }
+        else
+            Core.Logger("Failed to find the item in the quest rewards.");
         bool continueFarming = true;
         while (continueFarming)
         {
@@ -95,33 +100,51 @@ public class AssistingCragAndBamboozle
                     if (rewardEnum == Rewards.Get_whats_not_maxed)
                         continue;
 
-                    string rewardName = rewardEnum.ToString().Replace("_", " ");
-                    ItemBase rewardItem = Bot.Quests.EnsureLoad(5817).Rewards
-                        .FirstOrDefault(x => x.Name == rewardName && x.Quantity < x.MaxStack);
+                    string? rewardName = rewardEnum.ToString().Replace("_", " ");
+                    Quest? quest = Bot.Quests.EnsureLoad(5817);
 
-                    if (rewardItem != null && !Core.CheckInventory(rewardItem.Name, rewardItem.MaxStack))
-                        Core.EnsureComplete(5817, rewardItem.ID);
-
-                    if (!Core.CheckInventory("Sparrow's Blood"))
+                    if (quest != null)
                     {
-                        continueFarming = false;
-                        Core.Logger($"{rewardItem.Name} owned in max quantity: {rewardItem.MaxStack}");
-                        break;
+                        ItemBase? rewardItem = quest.Rewards.FirstOrDefault(x => x.Name == rewardName && x.Quantity < x.MaxStack);
+
+                        if (rewardItem != null)
+                        {
+
+                            if (!Core.CheckInventory(rewardItem.Name, rewardItem.MaxStack))
+                                Core.EnsureComplete(5817, rewardItem.ID);
+
+                            if (!Core.CheckInventory("Sparrow's Blood"))
+                            {
+                                continueFarming = false;
+                                Core.Logger($"{rewardItem.Name} owned in max quantity: {rewardItem.MaxStack}");
+                                break;
+                            }
+                        }
+                        else
+                            Core.Logger("Failed to find the reward item in the quest rewards.");
                     }
+                    else
+                        Core.Logger("Failed to load quest 5817.");
                 }
             }
             else
             {
-                Core.FarmingLogger(Item.Name, Item.MaxStack);
-                Core.ChainComplete(5817, Item.ID);
-
-                if (!Core.CheckInventory("Sparrow's Blood"))
+                if (Item != null)
                 {
-                    continueFarming = false;
+                    Core.FarmingLogger(Item.Name, Item.MaxStack);
+                    Core.ChainComplete(5817, Item.ID);
+
+                    if (!Core.CheckInventory("Sparrow's Blood"))
+                    {
+                        continueFarming = false;
+                    }
+
+                    if (!continueFarming)
+                        Core.Logger($"Not enough \"Sparrow's Blood\", please do the daily 1 more time (not today)");
                 }
+                else
+                    Core.Logger("Failed to find the item in the quest rewards.");
             }
-            if (!continueFarming)
-                Core.Logger($"Not enough \"Sparrow's Blood\", please do the daily 1 more time (not today)");
         }
     }
 
