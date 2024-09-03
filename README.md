@@ -1,3 +1,7 @@
+# WARNING
+- **THESE README'S ARE EXTREMELY OUTDATED, IF YOU HAVE ISSUES USE THE DISCORD**
+ - [DISCORD](https://discord.gg/CKKbk2zr3p)**
+
 # Scripts
 
 If any of the scripts helped you and you want to support the creators:

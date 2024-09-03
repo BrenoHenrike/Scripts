@@ -39,7 +39,7 @@
       "null"
     ],
     "path": "CoreAdvanced.cs",
-    "size": 129618,
+    "size": 131237,
     "fileName": "CoreAdvanced.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreAdvanced.cs"
   },
@@ -50,7 +50,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 246088,
+    "size": 246390,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -3256,7 +3256,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 92515,
+    "size": 92418,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -4364,7 +4364,7 @@
       "claws"
     ],
     "path": "Hollowborn/MergeShops/NeotowerMerge.cs",
-    "size": 6090,
+    "size": 6084,
     "fileName": "NeotowerMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/MergeShops/NeotowerMerge.cs"
   },
