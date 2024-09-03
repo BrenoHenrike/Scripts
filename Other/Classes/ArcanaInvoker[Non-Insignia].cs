@@ -1,7 +1,7 @@
 /*
 name: Arcana Invoker (Class)
 description: This script will get Arcana Invoker class.
-tags: arcana,invoker,class,arcana invoker,darkon,astravia,garden
+tags: arcana, invoker, class, arcana invoker, darkon, astravia, garden
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

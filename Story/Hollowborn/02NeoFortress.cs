@@ -1,7 +1,7 @@
 /*
 name: Neo Fortress
 description: This script will complete the storyline in /neofortress.
-tags: hollowborn,saga,trygve,neofortress,lae
+tags: hollowborn, saga, trygve, neofortress, lae
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

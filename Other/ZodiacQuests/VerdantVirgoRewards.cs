@@ -1,7 +1,7 @@
 /*
 name: Verdant Virgo Rewards
 description: farms quest rewards from Verdant Virgo` in /arcangrove
-tags: quest reward, Kylokos,verdant,virgo,arcangrove,zodiac
+tags: quest reward, kylokos, verdant, virgo, arcangrove, zodiac
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

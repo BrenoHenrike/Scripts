@@ -1,7 +1,7 @@
 /*
 name: Zoda's Quests
 description: This script will complete Zoda's Quests in /zorbaspalace.
-tags: zodas,zorbas,palace,seasonal,story,quests,may4th
+tags: zodas, zorbas, palace, seasonal, story, quests, may4th
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

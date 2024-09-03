@@ -1,7 +1,7 @@
 /*
 name: Infernal Arena
 description: This script will complete the quests in /infernalarena.
-tags: na'al,naal,infernal,arena,story,dungeon
+tags: na'al, naal, infernal, arena, story, dungeon
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

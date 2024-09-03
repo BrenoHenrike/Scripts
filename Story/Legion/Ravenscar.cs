@@ -1,7 +1,7 @@
 /*
 name: Ravenscar Story
 description: This will finish the Ravenscar Story quests.
-tags: story, quest, legion, ravenscar, raven scar,raven,scar,dage
+tags: story, quest, legion, ravenscar, raven scar, raven, scar, dage
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

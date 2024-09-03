@@ -1,7 +1,7 @@
 /*
 name: DeepTrobbleTreasureChest
 description: Does the "Deep Trobble Treasure Chest" quest for the rewards [random drops]
-tags: deep, trobble, treasure, chest, rewards, Grim First Mort on Yer Back, Grim Skull 'n Flag, Marauder's Monkey Mace, Captain ChinchillARRRR on Yer Back, Captain ChinchillARRRR Pet, Beleen's Balloon Cutelass, Beleen's Balloon Cutelasses, Gunpowder Beach, Gunpowder Beach, Pearl Dust Arm Shuriken, Astravian Corsair, Astravian Corsair Hat, Astravian Corsair Hat, Astravian Corsair Hat + Locks, Astravian Corsair's Coat, Astravian Corsair Coat and Blade
+tags: deep, trobble, treasure, chest, rewards, grim first mort on yer back, grim skull 'n flag, marauder's monkey mace, captain chinchillarrrr on yer back, captain chinchillarrrr pet, beleen's balloon cutelass, beleen's balloon cutelasses, gunpowder beach, gunpowder beach, pearl dust arm shuriken, astravian corsair, astravian corsair hat, astravian corsair hat, astravian corsair hat + locks, astravian corsair's coat, astravian corsair coat and blade
 */
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;

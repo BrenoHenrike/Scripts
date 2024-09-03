@@ -1,7 +1,7 @@
 /*
 name: TouchMass
 description: gets u the million kills for the `Touch Mass` badge
-tags: touch, mass, badge, starfield, Badge
+tags: touch, mass, badge, starfield, badge
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

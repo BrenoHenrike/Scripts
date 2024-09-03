@@ -1,7 +1,7 @@
 /*
 name: All Classes
 description: This script will get all of the classes that are currently farmable.
-tags: all classes,class,farm,complete,all
+tags: all classes, class, farm, complete, all
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

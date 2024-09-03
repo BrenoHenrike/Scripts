@@ -1,9 +1,8 @@
 /*
 name: Hollowborn Lich King - Counterblow
-description: does the 'Counterblow' part of hollowborn Lich King 
-tags: hollowborn Lich King, hollowborn, Counterblow
+description: does the 'Counterblow' part of hollowborn Lich King
+tags: hollowborn lich king, hollowborn, counterblow
 */
-
 //cs_include Scripts/Hollowborn/HollowbornLichKing/CoreHollowbornLichKing.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreBots.cs

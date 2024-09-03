@@ -1,7 +1,7 @@
 /*
 name: Trickster's Gifts Merge
 description: This bot will farm the items belonging to the selected mode for the Tricksters Gifts Merge [1910] in /mythperception
-tags: brasil,obrigado,seasonal,trickster, gifts, merge, mythperception, arara, azul, on, your, shoulder, picapau, amarelo, emiglin, cucas, apprentice, shadow, cuca, prismatic, , morph, pastel, privateer, privateers, scarf, eyepatch, bicorne, eyepatched, scarfed, cloak, cloaked, sheath, holster, pistol, pistols, hand, cannon, cutlass, pitiless
+tags: brasil, obrigado, seasonal, trickster, gifts, merge, mythperception, arara, azul, on, your, shoulder, picapau, amarelo, emiglin, cucas, apprentice, shadow, cuca, prismatic, , morph, pastel, privateer, privateers, scarf, eyepatch, bicorne, eyepatched, scarfed, cloak, cloaked, sheath, holster, pistol, pistols, hand, cannon, cutlass, pitiless
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

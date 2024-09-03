@@ -1,7 +1,7 @@
 /*
 name: Dragonslayer Class
 description: This script farms the Dragonslayer Class
-tags: galanoth,class,lair,dsg,general,slayer
+tags: galanoth, class, lair, dsg, general, slayer
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

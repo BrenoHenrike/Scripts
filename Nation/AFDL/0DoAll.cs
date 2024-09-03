@@ -1,6 +1,6 @@
 /*
 name: ADFL Do ALl
-description: Does the entirety of  AFDL
+description: Does the entirety of AFDL
 tags: afdl, archfiend doom lord, doall, 0doall
 */
 //cs_include Scripts/CoreBots.cs

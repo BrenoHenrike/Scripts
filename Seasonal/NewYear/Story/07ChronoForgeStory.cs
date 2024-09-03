@@ -1,7 +1,7 @@
 /*
 name: ChronoForge Story
 description: This script will complete the storyline in /chronogem
-tags: chronogem,chrono forge,gem,new year,seasonal,story,forgemaster
+tags: chronogem, chrono forge, gem, new year, seasonal, story, forgemaster
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

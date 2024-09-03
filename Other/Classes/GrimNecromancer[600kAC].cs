@@ -1,7 +1,7 @@
 /*
 name: Grim Necromancer Class (600k AC)
 description: This script will get Grim Necromancer class which requires 600k ACs badge.
-tags: 600k, grimnecromancer,grim necromancer,grimtea,grim tea,class
+tags: 600k, grimnecromancer, grim necromancer, grimtea, grim tea, class
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

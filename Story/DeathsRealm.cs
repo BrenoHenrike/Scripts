@@ -1,7 +1,7 @@
 /*
 name: Death's Realm Story
 description: This will finish the storyline in /deathsrealm.
-tags: story, quest, death,deaths,realm,deathsrealm,deaths realm
+tags: story, quest, death, deaths, realm, deathsrealm, deaths realm
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

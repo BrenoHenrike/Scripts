@@ -1,7 +1,7 @@
 /*
 name: PockeyMogs Story
 description: Compeletes the PockeyMogs Story
-tags: Lim, Pockeymogs, 
+tags: lim, pockeymogs, 
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

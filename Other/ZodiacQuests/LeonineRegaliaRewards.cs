@@ -1,7 +1,7 @@
 /*
 name: Leonine Regalia Rewards
 description: farms quest rewards from Leonine Regalia in /arcangrove
-tags: quest reward, Kylokos,leonineregalia,leonine,regalia,arcangrove,zodiac
+tags: quest reward, kylokos, leonineregalia, leonine, regalia, arcangrove, zodiac
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

@@ -1,7 +1,7 @@
 /*
 name: Blood Guardian Set
 description: does the 'Blackened Incense' Quest for the blood guardian set.
-tags: blood guardian set, Blackened Incense, set
+tags: blood guardian set, blackened incense, set
 */
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreBots.cs

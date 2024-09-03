@@ -1,7 +1,7 @@
 /*
 name: Yokai Portal
 description: This script will complete "Yokai Portal" storyline.
-tags: story, quest,saga,dragons,dragon,yokai,portal,yokaiportal, complete, all
+tags: story, quest, saga, dragons, dragon, yokai, portal, yokaiportal, complete, all
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

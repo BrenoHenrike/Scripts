@@ -1,7 +1,7 @@
 /*
 name: GrabFiveRandomMerges
 description: This class provides functionality to randomly select up to five filenames from a specified directory within the user's "Documents" folder. It writes the selected filenames to a temporary markdown file and opens the file in the default associated application.
-tags: File Management, Random Selection, Markdown, Temporary File, User Directory
+tags: file management, random selection, markdown, temporary file, user directory
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

@@ -1,7 +1,7 @@
 /*
 name: Shadow Dragon Shinobi (Seasonal) Class
 description: This script farms the Shadow Dragon Shinobi class.
-tags: seasonal,class,shadow,dragon,black friday,shinobi
+tags: seasonal, class, shadow, dragon, black friday, shinobi
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

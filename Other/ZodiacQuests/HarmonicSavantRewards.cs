@@ -1,7 +1,7 @@
 /*
 name: Harmonic Savant Rewards
 description: farms quest rewards from Harmonic Savant` in /arcangrove
-tags: quest reward, Kylokos,harmonic,savant,harmonic libra,libra,arcangrove,zodiac
+tags: quest reward, kylokos, harmonic, savant, harmonic libra, libra, arcangrove, zodiac
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

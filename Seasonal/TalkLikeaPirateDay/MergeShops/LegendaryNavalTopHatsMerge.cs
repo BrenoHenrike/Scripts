@@ -1,7 +1,7 @@
 /*
 name: Legendary Naval Top Hats Merge [Member]
 description: This bot will farm the items belonging to the selected mode for the Legendary Naval Top Hats Merge [1919] in /pirates
-tags: tlapd,talk-like-a-pirate-day,seasonal,legendary, naval, top, hats, merge, pirates, male, galactic, bearded, chronolord, chaos, blazing, icy, platinum, legion, red, rotting, skull, scallywag, sir, miss, mr, chronolady, missy, lady, mrs, lassy, cutie, femme, goggleless, brilliant, tophat, , doom, lass, chaotic, morph, flaming, toxic, beard
+tags: tlapd, talk-like-a-pirate-day, seasonal, legendary, naval, top, hats, merge, pirates, male, galactic, bearded, chronolord, chaos, blazing, icy, platinum, legion, red, rotting, skull, scallywag, sir, miss, mr, chronolady, missy, lady, mrs, lassy, cutie, femme, goggleless, brilliant, tophat, , doom, lass, chaotic, morph, flaming, toxic, beard
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
