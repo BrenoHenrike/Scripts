@@ -115,7 +115,6 @@ tags: do, not, find, me
 //cs_include Scripts/Story/Nation/VoidChasm.cs
 //cs_include Scripts/Nation/MergeShops/NationMerge.cs
 //cs_include Scripts/Nation/NationLoyaltyRewarded.cs
-#endregion
 
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
