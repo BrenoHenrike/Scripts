@@ -232,11 +232,12 @@ public class UpdateTags
         ".md",
         ".file",
         ".json",
+        ".sln",
+        ".gitignore",
+        "gitattributes"
     };
     private string[] Files =
     {
-        ".gitignore",
-        ".gitattributes",
         "Class1.cs",
         "z_CompiledScript.cs",
         "Army/CoreArmy.cs"
@@ -258,6 +259,14 @@ public class UpdateTags
         "WIP",
         "Army/UltraBosses",
         "Army/Generated",
+        "Prototypes",
+        "SkuaScriptsGenerator",
+        "Plugins",
+        "WIP",
+        "Tools/ForDevelopers",
+        "Tools/NooneAskeforThese"
     };
+
+
     #endregion
 }
