@@ -17,15 +17,21 @@ public class CoreSoW
     public CoreStory Story = new();
     public CoreAdvanced Adv = new();
 
-    public string[] MainyuDrops = { "Mainyu Tail", "Mainyu Wings", "ShadowFlame Eviscerator Greatsword", "ShadowFlame Eviscerator Greatswords" };
-    //update this when wiki is updated. vvvv
+    public string[] MainyuDrops = { "Mainyu Rune", "Mainyu Tail", "Mainyu Wings" };
 
-    public string[] MalgorDrops =
-    {
-        "Shadowflame Vanguard Spear", "Shadowflame Vanguard Armet Locks", "Shadowflame Vanguard Armet",
-        "Shadowflame Shroud", "ShadowFlame Dragon Blade", "Shadowflame Devastation", "Shadow Dragonscale Blade",
-        "Shadow DragonMaster's Tail + Blades", "Shadow DragonMaster's Helm", "Shadow DragonMaster"
-    };
+
+    public string[] MalgorDrops = {
+            "Shadow DragonMaster",
+            "Shadow DragonMaster's Helm",
+            "Shadow DragonMaster's Tail + Blades",
+            "Shadow Dragonscale Blade",
+            "Shadowflame Devastation",
+            "ShadowFlame Dragon Blade",
+            "Shadowflame Shroud",
+            "Shadowflame Vanguard Armet",
+            "Shadowflame Vanguard Armet Locks",
+            "Shadowflame Vanguard Spear"
+        };
 
     public void ScriptMain(IScriptInterface bot)
     {
