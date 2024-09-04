@@ -125,7 +125,7 @@ public class ArmyHigureMats
             Core.RegisterQuests(questId);
 
 
-        Army.DivideOnCellsPriority(cells, priorityCell: priorityCell, setAggro: true, log: true);
+        Army.DivideOnCellsPriority(cells, priorityCell: priorityCell, setAggro: true, log: true, equipClass: true);
 
         Core.FarmingLogger(item, quant);
         Core.Logger($"army: starting {quant} {item}");
