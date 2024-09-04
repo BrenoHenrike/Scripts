@@ -70,25 +70,41 @@ public class AutoAttackSubstitute
                         ? "Attacking: **EVERYTHING IN THIS CELL**"
                         : $"Aggro: enabled\nAttacking:\n{string.Join("\n", monstersArray.Select(m => $"\"{m}\""))}");
 
-                    Bot.Player.SetSpawnPoint();
+                    string RespawnCell = Bot.Player.Cell; // Store the initial cell
                     // Continuously attack monsters in the cell until bot should exit
                     while (!Bot.ShouldExit)
                     {
                         // If monstersArray is empty, attack all monsters in the cell
                         if (monstersArray.Length == 0)
                         {
-                            foreach (Monster mob in Bot.Monsters.CurrentAvailableMonsters
+                            foreach (Monster mob in Bot.Monsters.MapMonsters
                                 .Where(m => m.Name != null && m.Cell == Bot.Player.Cell))
                             {
-                                Bot.Kill.Monster(mob.MapID);
+                                if (mob.Name == null)
+                                    continue;
+
+                                while (!Bot.ShouldExit && !Bot.Player.Alive) { }
+
+                                if (Bot.Player.Cell != RespawnCell)
+                                    Core.Jump(RespawnCell);
+
+                                Bot.Kill.Monster(mob);
                             }
                         }
                         else
                         {
                             // If monstersArray is not empty, attack only specified monsters in the cell
-                            foreach (Monster mob in Bot.Monsters.CurrentAvailableMonsters
+                            foreach (Monster mob in Bot.Monsters.MapMonsters
                                 .Where(m => m?.Name != null && m.Cell == Bot.Player.Cell && monstersArray.Contains(m.Name)))
                             {
+                                if (mob.Name == null)
+                                    continue;
+
+                                while (!Bot.ShouldExit && !Bot.Player.Alive) { }
+
+                                if (Bot.Player.Cell != RespawnCell)
+                                    Core.Jump(RespawnCell);
+
                                 Bot.Kill.Monster(mob.MapID);
                             }
                         }
@@ -106,7 +122,6 @@ public class AutoAttackSubstitute
                         Core.Logger("No monsters specified to hunt across the entire map.", stopBot: true);
                     else Core.Logger($"Hunting:\n{string.Join("\n", monstersArray.Select(m => $"\"{m}\""))} across the entire map");
 
-                    Bot.Player.SetSpawnPoint();
                     // Continuously hunt monsters across the entire map until bot should exit
                     while (!Bot.ShouldExit)
                     {
@@ -120,6 +135,10 @@ public class AutoAttackSubstitute
                         {
                             foreach (Monster mob in Bot.Monsters.MapMonsters.Where(m => m?.Name != null && monstersArray.Contains(m.Name)))
                             {
+                                if (mob.Name == null)
+                                    continue;
+
+                                while (!Bot.ShouldExit && !Bot.Player.Alive) { }
                                 Bot.Hunt.Monster(mob.Name);
                             }
                         }
