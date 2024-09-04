@@ -94,7 +94,7 @@ public class AutoAttackSubstitute
                                     while (!Bot.ShouldExit && Bot.Player.Cell != RespawnCell)
                                     {
                                         Core.Jump(RespawnCell);
-                                        Bot.Wait.ForCellChange(mob.Cell);
+                                        Bot.Wait.ForCellChange(RespawnCell);
                                     }
                                     if (!Bot.Combat.StopAttacking)
                                         Bot.Combat.Attack(mob);
@@ -127,7 +127,7 @@ public class AutoAttackSubstitute
                                     while (!Bot.ShouldExit && Bot.Player.Cell != RespawnCell)
                                     {
                                         Core.Jump(RespawnCell);
-                                        Bot.Wait.ForCellChange(mob.Cell);
+                                        Bot.Wait.ForCellChange(RespawnCell);
                                     }
                                     if (!Bot.Combat.StopAttacking)
                                         Bot.Combat.Attack(mob);
