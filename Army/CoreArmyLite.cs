@@ -4,6 +4,12 @@ description: null
 tags: null
 */
 //cs_include Scripts/CoreBots.cs
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Text;
+using System.Xml;
 using CommunityToolkit.Mvvm.DependencyInjection;
 using Newtonsoft.Json;
 using Skua.Core.Interfaces;
@@ -16,15 +22,110 @@ using Skua.Core.Models.Servers;
 using System.Diagnostics;
 using System.Text;
 using System.Xml;
+using Newtonsoft.Json.Linq;
 
 public class CoreArmyLite
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
+    List<string> cellToAggro = new();
 
     public void ScriptMain(IScriptInterface bot)
     {
         Core.RunCore();
+    }
+
+     #region Army Logging
+    public ArmyLogging armyLogging = new ArmyLogging();
+
+    public void setLogName(string name)
+    {
+        armyLogging.setLogName(name);
+    }
+
+    public void registerMessage(string message, bool delPrevMsg = true)
+    {
+        armyLogging.registerMessage(message);
+        if (delPrevMsg)
+        {
+            if (Bot.Config.Get<string>("player1").ToLower() == Bot.Player.Username.ToLower())
+            {
+                Core.Logger("Clearing log");
+                armyLogging.ClearLogFile();
+            }
+        }
+    }
+
+    public void ClearLogFile()
+    {
+        if (Bot.Config.Get<string>("player1").ToLower() == Bot.Player.Username.ToLower())
+        {
+            Core.Logger("Clearing log");
+            armyLogging.ClearLogFile();
+        }
+    }
+
+    public bool isEmpty()
+    {
+        return armyLogging.isEmpty();
+    }
+
+    public bool isAlreadyInLog(string[] playersList)
+    {
+        return armyLogging.isAlreadyInLog(playersList);
+    }
+
+    public bool sendDone(int tryCount = 1)
+    {
+        int attempts = 0;
+        while (attempts < tryCount)
+        {
+            try
+            {
+                if (!armyLogging.isAlreadyInLog(Players()))
+                {
+                    armyLogging.WriteLog(
+                        $"{Bot.Player.Username.ToLower()}:done:{armyLogging.message}"
+                    );
+                    return true;
+                }
+                attempts++;
+            }
+            catch
+            {
+                attempts++;
+            }
+            Core.Sleep(100);
+        }
+        return false;
+    }
+
+    public bool isDone(int tryCount = 1)
+    {
+        int attempts = 0;
+        while (attempts < tryCount)
+        {
+            try
+            {
+                if (armyLogging.isAlreadyInLog(Players()))
+                    return true;
+            }
+            catch { }
+            attempts++;
+            Core.Sleep(100);
+        }
+        return false;
+    }
+    #endregion Army Logging
+
+    public void initArmy()
+    {
+        Bot.Events.ScriptStopping += Events_ScriptStopping;
+
+        bool Events_ScriptStopping(Exception? e)
+        {
+            return true;
+        }
     }
 
     #region Aggro Mon
@@ -35,12 +136,63 @@ public class CoreArmyLite
     /// <summary>
     /// Starts the AggroMon. Jumps to the specified map and starts sending the AggroPacket.
     /// </summary>
-    public void AggroMonStart(string map)
+    public void AggroIfAnyPlayers()
     {
         if (aggroCTS is not null)
             AggroMonStop();
 
-        Core.Join(map);
+        string[] players = Players();
+        int partySize = players.Length;
+        List<int> AggroMonMapIDs = this._AggroMonMIDs;
+        foreach (string player in players)
+        {
+            if (player.ToLower() != Bot.Player.Username.ToLower())
+            {
+                Bot.Map.TryGetPlayer(player, out PlayerInfo? playerObject);
+                if (playerObject != null)
+                {
+                    AddMapIDs(GetMapIDs(Bot.Monsters.GetMonstersByCell(playerObject.Cell)));
+                }
+            }
+        }
+
+        aggroCTS = new();
+        Task.Run(async () =>
+        {
+            while (!Bot.ShouldExit && !aggroCTS.IsCancellationRequested)
+            {
+                try
+                {
+                    if (AggroMonMapIDs.Count > 0)
+                        Bot.Send.Packet(AggroMonPacket(AggroMonMapIDs.ToArray()));
+                    await Task.Delay(AggroMonPacketDelay);
+                }
+                catch { }
+            }
+            aggroCTS = null;
+        });
+        List<int> GetMapIDs(List<Monster> monsterData) => monsterData.Select(m => m.MapID).ToList();
+        void AddMapIDs(List<int> MMIDs)
+        {
+            foreach (int ID in MMIDs)
+                if (!AggroMonMapIDs.Contains(ID))
+                    AggroMonMapIDs.Add(ID);
+        }
+    }
+
+    public void AggroMonStart(string map = null)
+    {
+        if (aggroCTS is not null)
+            AggroMonStop();
+
+        string[] players = Players();
+        int partySize = players.Length;
+
+        if (map != null)
+        {
+            Core.Join(map);
+            waitForPartyCell("Enter");
+        }
 
         List<string> _AggroMonCells = this._AggroMonCells;
         List<string> _AggroMonNames = this._AggroMonNames;
@@ -90,6 +242,7 @@ public class CoreArmyLite
         if (clear)
             AggroMonClear();
         Bot.Wait.ForTrue(() => aggroCTS == null, 30);
+        Core.Jump(Bot.Player.Cell, Bot.Player.Pad);
     }
 
     /// <summary>
@@ -295,6 +448,117 @@ public class CoreArmyLite
     #endregion
     #region Utility
 
+    private bool monsterAvail(string[] monsterList)
+    {
+        for (int i = 0; i < monsterList.Length; i++)
+        {
+            if (IsMonsterAlive(monsterList[i]))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void doPriorityAttack(string[] monsterList)
+    {
+        for (int i = 0; i < monsterList.Length; i++)
+        {
+            if (IsMonsterAlive(monsterList[i]))
+            {
+                int x = 0;
+                if (Int32.TryParse(monsterList[i], out x))
+                {
+                    Bot.Combat.Attack(x);
+                    return;
+                }
+            }
+        }
+    }
+
+     public bool IsMonsterAlive(string monster)
+    {
+        try{
+            string jsonData = Bot.Flash.Call("availableMonsters");
+        var monsters = JArray.Parse(jsonData);
+
+        if (monsters.Count == 0)
+        {
+            return false;
+        }
+
+        if (monster == "*")
+        {
+            foreach (var mon in monsters)
+            {
+                var intState = mon["intState"]?.ToString();
+                if (string.IsNullOrEmpty(intState) || intState == "1" || intState == "2")
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        bool isByMapID = monster.StartsWith("id-");
+        string identifier = isByMapID ? monster.Substring(3) : monster;
+
+        foreach (var mon in monsters)
+        {
+            bool match = isByMapID
+                ? mon["MonMapID"]?.ToString() == identifier
+                : mon["strMonName"]?.ToString() == identifier;
+
+            if (match)
+            {
+                var intState = mon["intState"]?.ToString();
+                if (string.IsNullOrEmpty(intState) || intState == "1" || intState == "2")
+                {
+                    return true;
+                }
+                else if (intState == "0")
+                {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+        }
+        catch{return true;}
+
+    }
+
+    public void StartFarm(string item, int quant)
+    {
+        bool needSendDone = true;
+        int countCheck = 0;
+        int skillIndex = 0;
+        while (!Bot.ShouldExit)
+        {
+            if (Core.CheckInventory(item, quant) && needSendDone)
+            {
+                if (sendDone())
+                    needSendDone = false;
+            }
+            if (!needSendDone && isDone() && countCheck == 10)
+            {
+                break;
+            }
+            countCheck++;
+            if (countCheck > 10)
+                countCheck = 0;
+
+            // killing monster
+            if (IsMonsterAlive("*"))
+            {
+				Bot.Combat.Attack("*");
+            }
+
+            Bot.Sleep(100);
+        }
+    }
+
     //new one that may break shit
     /// <summary>
     /// Generates a random 5-digit Room Number to ensure armies join the same room.
@@ -409,6 +673,134 @@ public class CoreArmyLite
             if (username == p)
                 Core.Jump(cell, "Left");
             cellCount = cellCount == cells.Length - 1 ? 0 : cellCount + 1;
+        }
+    }
+
+    public void DivideOnCellsPriority(string[] cells, string priorityCell, bool setAggro = false, bool log = false)
+    {
+        // Parsing all the player names from an unspecified amount of player name options
+        string[] _players = Players();
+        if (log) Core.Logger($"divide on cells: {string.Join(",", cells)}. priority cell: {priorityCell}");
+
+        if (setAggro)
+        {
+            cellToAggro.Clear();
+            int playerCount = _players.Length;
+            int _cellCount = cells.Length;
+            int aggroCell = playerCount > _cellCount ? _cellCount : playerCount;
+            for (int i = 0; i < aggroCell; i++)
+            {
+                cellToAggro.Add(cells[i]);
+            }
+            AggroMonCells(cellToAggro.ToArray());
+        }
+
+        if (string.IsNullOrEmpty(priorityCell))
+        {
+            int cellCount = 0;
+            string username = Core.Username().ToLower();
+            foreach (string p in _players)
+            {
+                string cell = cells[cellCount];
+                if (username == p){
+                    Core.Logger($"i am on cell: {cell}");
+                    Core.EquipClass(ClassType.Farm);
+                    Core.Jump(cell, "Left");
+                }
+                cellCount = cellCount == cells.Length - 1 ? 0 : cellCount + 1;
+            }
+        }
+        else
+        {
+            int playersCount = _players.Length;
+            string username = Core.Username().ToLower(); // Username of the player running this method
+            for (int i = 0; i < playersCount; i++) // Iterate through each player
+            {
+                string p = _players[i];
+                string cell = (cells.Length > 0 && i < cells.Length) ? cells[i] : priorityCell; // Get the cell for the current player
+
+                if (username == p){
+                    Core.Logger($"i am on cell: {cell}");
+                    if (cell.Equals(priorityCell)){
+                        Core.EquipClass(ClassType.Solo);
+                    } else{
+                        Core.EquipClass(ClassType.Farm);
+                    }
+                    Core.Jump(cell, "Left");
+                }
+            }
+        }
+    }
+
+    public void waitForSignal(string message, string waitIn = "Enter", bool delPrevMsg = false)
+    {
+        registerMessage(message, delPrevMsg);
+        while (!Bot.ShouldExit && Bot.Player.Cell == waitIn)
+        {
+            sendDone(10);
+            if (isAlreadyInLog(new string[] { Bot.Player.Username.ToLower() }))
+                break;
+            Bot.Sleep(500);
+        }
+        while (!Bot.ShouldExit)
+        {
+            if (isDone(10))
+                break;
+            Bot.Sleep(500);
+        }
+    }
+
+     public void waitForPartyCell(string? cell = null, string? pad = null)
+    {
+        int i = 0;
+        if (cell != null)
+            Core.Jump(cell, pad != null ? pad : "Left");
+
+        Bot.Events.PlayerAFK += PlayerAFK;
+        string[] players = Players();
+        int partySize = players.Length;
+
+        while (
+            !Bot.ShouldExit
+            && (
+                cell != null && Bot.Map.CellPlayers != null && Bot.Map.CellPlayers.Count() > 0
+                    ? Bot.Map.CellPlayers.Count()
+                    : Bot.Map.PlayerCount
+            ) != partySize
+        )
+        {
+            Bot.Sleep(500);
+            i++;
+
+            if (i >= 6)
+            {
+                if (cell != null && Bot.Map.PlayerNames != null && Bot.Map.PlayerNames.Count() > 0)
+                {
+                    List<string> missingPlayers = players.Except(Bot.Map.PlayerNames).ToList();
+                    if (missingPlayers.Count() == 1 && missingPlayers[0] == Bot.Player.Username)
+                    {
+                        Core.Logger("Bugged lobby, we were the only one missing?");
+                        break;
+                    }
+                    Core.Logger(
+                        $"[{Bot.Map.CellPlayers.Count()}/{partySize}] Waiting for {String.Join(" & ", missingPlayers)}"
+                    );
+                }
+                else
+                {
+                    Core.Logger(
+                        $"[{Bot.Map.PlayerCount}/{partySize}] Waiting for the rest of the party"
+                    );
+                }
+                i = 0;
+            }
+        }
+
+        void PlayerAFK()
+        {
+            Core.Logger("Anti-AFK engaged");
+            Core.Sleep(1500);
+            Bot.Send.Packet("%xt%zm%afk%1%false%");
         }
     }
 
@@ -1242,4 +1634,101 @@ public class CoreArmyLite
     private string commFile() => Path.Combine(CoreBots.ButlerLogDir, $"{Core.Username().ToLower()}~!{b_playerName}.txt");
     public string? b_breakOnMap = null;
     #endregion
+}
+
+public class ArmyLogging
+{
+    private static readonly object lockObject = new object();
+    private string logFilePath;
+    public string message;
+
+    // public ArmyLogging(string fileName = "ArmyLog.txt")
+    // {
+    //     logFilePath = Path.Combine(ClientFileSources.SkuaOptionsDIR, fileName);
+    //     ClearLogFile();
+    // }
+    public void setLogName(string fileName)
+    {
+        logFilePath = Path.Combine(ClientFileSources.SkuaOptionsDIR, fileName + ".log");
+        //ClearLogFile();
+    }
+
+    public void registerMessage(string msg)
+    {
+        message = msg;
+    }
+
+    public bool isEmpty()
+    {
+        if (new FileInfo(logFilePath).Length == 0)
+        {
+            return true;
+        }
+
+        using (FileStream stream = File.OpenRead(logFilePath))
+        {
+            return stream.Length == 0;
+        }
+    }
+
+    public bool isAlreadyInLog(string[] playersList)
+    {
+        try
+        {
+            List<string> lines = ReadLog();
+            string joinedString = string.Join(Environment.NewLine, lines);
+            string[] players = playersList;
+            foreach (string pl in players)
+            {
+                if (!joinedString.Contains($"{pl.ToLower()}:done:{message}"))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+
+    public void WriteLog(string logMessage)
+    {
+        lock (lockObject)
+        {
+            using (StreamWriter w = File.AppendText(logFilePath))
+            {
+                w.WriteLine($"{logMessage}");
+            }
+        }
+    }
+
+    public List<string> ReadLog()
+    {
+        List<string> lines = new List<string>();
+        lock (lockObject)
+        {
+            using (StreamReader r = File.OpenText(logFilePath))
+            {
+                string line;
+                while ((line = r.ReadLine()) != null)
+                {
+                    lines.Add(line);
+                }
+            }
+        }
+        return lines;
+    }
+
+    public void ClearLogFile()
+    {
+        lock (lockObject)
+        {
+            using (FileStream fs = File.Open(logFilePath, FileMode.Create, FileAccess.Write))
+            {
+                // File is truncated and cleared
+            }
+        }
+    }
 }
