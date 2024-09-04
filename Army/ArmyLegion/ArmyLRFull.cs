@@ -184,7 +184,7 @@ public class ArmyLR
 
     public void ArmyLF1(int quant = 20)
     {
-        if(checkIsDone("Revenant's Spellscroll", quant)) return;
+        if (checkIsDone("Revenant's Spellscroll", quant)) return;
 
         Core.Join("whitemap");
         Army.waitForPartyCell("Enter", "Spawn");
@@ -208,10 +208,10 @@ public class ArmyLR
             // //Army.waitForParty("necrodungeon");
             ArmyHunt("necrodungeon", "Dracolich Contract", ClassType.Farm, 1000);
             // //Army.waitForParty("judgement");
-            if(Bot.Quests.CanComplete(6897)) Bot.Quests.Complete(6897);
+            if (Bot.Quests.CanComplete(6897)) Bot.Quests.Complete(6897);
             Bot.Wait.ForPickup("Revenant's Spellscroll");
-            if(checkIsDone("Revenant's Spellscroll", quant)) break;
-            while(!Bot.ShouldExit && !Army.isEmpty()) Army.ClearLogFile();
+            if (checkIsDone("Revenant's Spellscroll", quant)) break;
+            while (!Bot.ShouldExit && !Army.isEmpty()) Army.ClearLogFile();
         }
         Core.CancelRegisteredQuests();
     }
@@ -219,7 +219,7 @@ public class ArmyLR
     public void ArmyFL2(int quant = 6)
     {
 
-        if(checkIsDone("Conquest Wreath", quant)) return;
+        if (checkIsDone("Conquest Wreath", quant)) return;
 
         Core.Join("whitemap");
         Army.waitForPartyCell("Enter", "Spawn");
@@ -253,11 +253,11 @@ public class ArmyLR
             // //Army.waitForParty("doomwood");
             ArmyHunt("doomwood", "Doomwood Cohort Conquered", ClassType.Farm, 500);
             // //Army.waitForParty("doomvault");
-            if(Bot.Quests.CanComplete(6898)) Bot.Quests.Complete(6898);
+            if (Bot.Quests.CanComplete(6898)) Bot.Quests.Complete(6898);
 
             Bot.Wait.ForPickup("Conquest Wreath");
-            if(checkIsDone("Conquest Wreath", quant)) break;
-            while(!Bot.ShouldExit && !Army.isEmpty()) Army.ClearLogFile();
+            if (checkIsDone("Conquest Wreath", quant)) break;
+            while (!Bot.ShouldExit && !Army.isEmpty()) Army.ClearLogFile();
         }
         Core.CancelRegisteredQuests();
     }
@@ -265,7 +265,7 @@ public class ArmyLR
     public void ArmyLF3(int quant = 10)
     {
 
-        if(checkIsDone("Exalted Crown", quant)) return;
+        if (checkIsDone("Exalted Crown", quant)) return;
 
         Core.Join("whitemap");
         Army.waitForPartyCell("Enter", "Spawn");
@@ -280,10 +280,10 @@ public class ArmyLR
             Adv.BuyItem("underworld", 216, "Hooded Legion Cowl");
             ArmyDarkTokenOfDage(100);
             ArmyLTs(4000);
-            if(Bot.Quests.CanComplete(6899)) Bot.Quests.Complete(6899);
+            if (Bot.Quests.CanComplete(6899)) Bot.Quests.Complete(6899);
             Bot.Wait.ForPickup("Exalted Crown");
-            if(checkIsDone("Exalted Crown", quant)) break;
-            while(!Bot.ShouldExit && !Army.isEmpty()) Army.ClearLogFile();
+            if (checkIsDone("Exalted Crown", quant)) break;
+            while (!Bot.ShouldExit && !Army.isEmpty()) Army.ClearLogFile();
         }
         Core.CancelRegisteredQuests();
     }
@@ -299,14 +299,14 @@ public class ArmyLR
         // Army.registerMessage("ArmyEvilGoodRank4", false);
         // if (Army.isDone(20)) return;
 
-        if(repGoodEvil4()) return;
+        if (repGoodEvil4()) return;
 
         Farm.ToggleBoost(BoostType.Reputation);
 
         Core.Join("swordhavenbridge");
         Army.waitForPartyCell("Enter", "Spawn");
 
-        Army.DivideOnCellsPriority(new[] {"Bridge", "End"}, priorityCell: "", log: true);
+        Army.DivideOnCellsPriority(new[] { "Bridge", "End" }, priorityCell: "", log: true);
         Core.RegisterQuests(364, 369); //Youthanize 364, That Hero Who Chases Slimes 369
         Army.AggroMonMIDs(1, 2, 3, 4, 5);
         Army.AggroMonStart();
@@ -330,7 +330,7 @@ public class ArmyLR
 
             if (Army.IsMonsterAlive("*"))
             {
-				Bot.Combat.Attack("*");
+                Bot.Combat.Attack("*");
             }
 
             Bot.Sleep(100);
@@ -344,7 +344,7 @@ public class ArmyLR
     {
         // Army.registerMessage("ArmyEvilGoodRankMax", false);
         // if (Army.isDone(20)) return;
-        if(repGoodEvilMax()) return;
+        if (repGoodEvilMax()) return;
 
         Farm.ToggleBoost(BoostType.Reputation);
 
@@ -352,7 +352,7 @@ public class ArmyLR
         Army.waitForPartyCell("Enter", "Spawn");
 
         Core.RegisterQuests(367, 372);
-        Army.DivideOnCellsPriority(new[] {"Enter", "Bleft", "Bright", "Tleft"}, priorityCell: "", log: true);
+        Army.DivideOnCellsPriority(new[] { "Enter", "Bleft", "Bright", "Tleft" }, priorityCell: "", log: true);
         Army.AggroMonMIDs(1, 2, 3, 7, 10, 11, 12, 13);
         Army.AggroMonStart();
 
@@ -375,7 +375,7 @@ public class ArmyLR
 
             if (Army.IsMonsterAlive("*"))
             {
-				Bot.Combat.Attack("*");
+                Bot.Combat.Attack("*");
             }
 
             Bot.Sleep(100);
@@ -391,7 +391,7 @@ public class ArmyLR
         // Army.registerMessage("ArmyGoldFarm", false);
         // if (Army.isDone(20)) return;
 
-        if(checkGold(quant)) return;
+        if (checkGold(quant)) return;
 
         Farm.ToggleBoost(BoostType.Gold);
 
@@ -400,7 +400,7 @@ public class ArmyLR
 
         Core.RegisterQuests(8578, 8579, 8580, 8581); //Legion Badges, Mega Legion Badges, Doomed Legion Warriors, Undead Legion Dread       
 
-        Army.DivideOnCellsPriority(new[] {"r2", "r3", "r4"}, priorityCell: "", log: true);
+        Army.DivideOnCellsPriority(new[] { "r2", "r3", "r4" }, priorityCell: "", log: true);
         Army.AggroMonMIDs(3, 4, 5, 7, 8, 9);
         Army.AggroMonStart();
 
@@ -421,7 +421,7 @@ public class ArmyLR
 
     public void ArmyEmblemOfDage(int quant = 500)
     {
-        if(checkIsDone("Emblem of Dage", quant)) return;
+        if (checkIsDone("Emblem of Dage", quant)) return;
 
         Core.AddDrop("Emblem of Dage");
         Core.FarmingLogger("Emblem of Dage", quant);
@@ -444,7 +444,7 @@ public class ArmyLR
         // if (Core.CheckInventory("Diamond Token of Dage", quant))
         //     return;
 
-        if(checkIsDone("Diamond Token of Dage", quant)) return;
+        if (checkIsDone("Diamond Token of Dage", quant)) return;
 
         ArmyLTs(50);
 
@@ -460,8 +460,8 @@ public class ArmyLR
             ArmyHunt("dflesson", "Fluffy's Bones", ClassType.Solo);
             ArmyHunt("lair", "Red Dragon's Fang", ClassType.Solo);
             ArmyHunt("bloodtitan", "Blood Titan's Blade", ClassType.Solo);
-            if(checkIsDone("Diamond Token of Dage", quant)) break;
-            while(!Bot.ShouldExit && !Army.isEmpty()) Army.ClearLogFile();
+            if (checkIsDone("Diamond Token of Dage", quant)) break;
+            while (!Bot.ShouldExit && !Army.isEmpty()) Army.ClearLogFile();
         }
         Core.CancelRegisteredQuests();
     }
@@ -470,14 +470,15 @@ public class ArmyLR
     {
         // if (Core.CheckInventory("Dark Token", quant))
         //     return;
-        if(checkIsDone("Dark Token", quant)) return;
+        if (checkIsDone("Dark Token", quant)) return;
 
         Core.FarmingLogger("Dark Token", quant);
         Core.AddDrop("Dark Token");
         // //Army.waitForParty("seraphicwardage");
-        while (!Bot.ShouldExit){
+        while (!Bot.ShouldExit)
+        {
             ArmyHunt("seraphicwardage", "Seraphic Commanders Slain", ClassType.Farm, 6);
-            if(checkIsDone("Diamond Token of Dage", quant)) break;
+            if (checkIsDone("Diamond Token of Dage", quant)) break;
         }
         Core.CancelRegisteredQuests();
     }
@@ -486,12 +487,13 @@ public class ArmyLR
     {
         // if (Core.CheckInventory("Legion Token", quant))
         //     return;
-        if(checkIsDone("Legion Token", quant)) return;
+        if (checkIsDone("Legion Token", quant)) return;
         Core.FarmingLogger("Legion Token", quant);
         // //Army.waitForParty("dreadrock");
-        while (!Bot.ShouldExit){
+        while (!Bot.ShouldExit)
+        {
             ArmyHunt("dreadrock", "Legion Token", ClassType.Farm, quant);
-            if(checkIsDone("Legion Token", quant)) return;
+            if (checkIsDone("Legion Token", quant)) return;
         }
         Core.CancelRegisteredQuests();
     }
@@ -506,7 +508,7 @@ public class ArmyLR
     private int counter = 0;
     void ArmyHunt(string map, string item, ClassType classType, int quant = 1, bool isTemp = false)
     {
-        if(checkIsDone(item, quant)) return;
+        if (checkIsDone(item, quant)) return;
 
         // Army.registerMessage($"{item}{counter}", false);
         // counter++;
@@ -514,7 +516,8 @@ public class ArmyLR
 
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
-        if (map.Equals("revenant") && Array.IndexOf(Army.Players(), Core.Username()) > 1){
+        if (map.Equals("revenant") && Array.IndexOf(Army.Players(), Core.Username()) > 1)
+        {
             Core.PrivateRoomNumber += 1;
         }
 
@@ -524,29 +527,35 @@ public class ArmyLR
         Core.EquipClass(classType);
 
         string[] players = Army.Players();
-        string[] revenant1 = new string[] {players[0], players[1]};
-        string[] revenant2 = new string[] {players[2], players[3]};
-        
+        string[] revenant1 = new string[] { players[0], players[1] };
+        string[] revenant2 = new string[] { players[2], players[3] };
+
         Core.Join(map);
-        if (map.Equals("revenant")){
-            if (Array.IndexOf(Army.Players(), Core.Username()) > 1){
+        if (map.Equals("revenant"))
+        {
+            if (Array.IndexOf(Army.Players(), Core.Username()) > 1)
+            {
                 Army.waitForSignal($"revenant2{counter}", revenant2);
-            } else Army.waitForSignal($"revenant1{counter}", revenant1);
+            }
+            else Army.waitForSignal($"revenant1{counter}", revenant1);
             counter++;
         }
         else Army.waitForPartyCell("Enter", "Spawn");
 
         Army.registerMessage($"{item}{counter}", false);
         counter++;
-        
+
         Core.FarmingLogger(item, quant);
         Core.Logger($"army: starting {quant} {item}");
-        
+
         HandleMap(map, item, quant);
-        
 
-        Army.StartFarm(item, quant);
 
+        if (!string.IsNullOrEmpty(item))
+            Army.StartFarm(item, quant);
+        else
+            Core.Logger("Item parameter is null or empty.");
+            
         Army.AggroMonStop(true);
         Core.Jump(Bot.Player.Cell, Bot.Player.Pad);
         // Core.ToBank(item);
@@ -563,52 +572,52 @@ public class ArmyLR
         {
             case "evilwarnul":
                 Army.AggroMonMIDs(1, 3, 20, 21, 22, 24, 25);
-                Army.DivideOnCellsPriority(new[] {"r2", "r3", "r9", "r10"}, priorityCell: "", log: true);
+                Army.DivideOnCellsPriority(new[] { "r2", "r3", "r9", "r10" }, priorityCell: "", log: true);
                 Army.AggroMonStart();
                 break;
 
             case "revenant":
                 Army.AggroMonMIDs(1, 2, 3, 4);
-                Army.DivideOnCellsPriority(new[] {"r2"}, priorityCell: "", log: true);
+                Army.DivideOnCellsPriority(new[] { "r2" }, priorityCell: "", log: true);
                 Army.AggroMonStart();
                 break;
 
             case "curseshore":
                 Army.AggroMonMIDs(1, 2, 3, 4, 5, 6);
-                Army.DivideOnCellsPriority(new[] {"Enter", "r2"}, priorityCell: "", log: true);
+                Army.DivideOnCellsPriority(new[] { "Enter", "r2" }, priorityCell: "", log: true);
                 Army.AggroMonStart();
                 break;
 
             case "dragonbone":
                 Army.AggroMonMIDs(4, 6, 7, 9);
-                Army.DivideOnCellsPriority(new[] {"r2", "r3"}, priorityCell: "", log: true);
+                Army.DivideOnCellsPriority(new[] { "r2", "r3" }, priorityCell: "", log: true);
                 Army.AggroMonStart();
                 break;
 
             case "doomwood":
                 Army.AggroMonMIDs(3, 4, 5, 8, 9, 10, 11, 12);
-                Army.DivideOnCellsPriority(new[] {"r3", "r5", "r6"}, priorityCell: "", log: true);
+                Army.DivideOnCellsPriority(new[] { "r3", "r5", "r6" }, priorityCell: "", log: true);
                 Army.AggroMonStart();
                 break;
 
             case "swordhavenbridge":
                 Core.RegisterQuests(364, 369); //Youthanize 364, That Hero Who Chases Slimes 369
                 Army.AggroMonMIDs(1, 2, 3, 4, 5);
-                Army.DivideOnCellsPriority(new[] {"Bridge", "End"}, priorityCell: "", log: true);
+                Army.DivideOnCellsPriority(new[] { "Bridge", "End" }, priorityCell: "", log: true);
                 Army.AggroMonStart();
                 break;
 
             case "castleundead":
                 Core.RegisterQuests(367, 372);
                 Army.AggroMonMIDs(1, 2, 3, 4, 5, 7, 10, 11, 12, 13);
-                Army.DivideOnCellsPriority(new[] {"Enter", "Bleft", "Bright", "Tleft", "Hall"}, priorityCell: "", log: true);
+                Army.DivideOnCellsPriority(new[] { "Enter", "Bleft", "Bright", "Tleft", "Hall" }, priorityCell: "", log: true);
                 Army.AggroMonStart();
                 break;
 
             case "shadowblast":
                 Core.RegisterQuests(4742);
                 Army.AggroMonMIDs(25, 27, 29, 31, 41, 43, 46, 48);
-                Army.DivideOnCellsPriority(new[] {"r12", "r13", "r16", "r17"}, priorityCell: "", log: true);
+                Army.DivideOnCellsPriority(new[] { "r12", "r13", "r16", "r17" }, priorityCell: "", log: true);
                 Army.AggroMonStart();
                 // if (item == "Legion Seal")
                 // {
@@ -626,107 +635,107 @@ public class ArmyLR
 
             case "tercessuinotlim":
                 Army.AggroMonMIDs(1, 3, 4, 5);
-                Army.DivideOnCellsPriority(new[] {"Enter", "m1", "m2"}, priorityCell: "", log: true);
+                Army.DivideOnCellsPriority(new[] { "Enter", "m1", "m2" }, priorityCell: "", log: true);
                 Army.AggroMonStart();
                 break;
 
             case "aqlesson":
                 Army.AggroMonMIDs(17);
-                Army.DivideOnCellsPriority(new[] {"Frame9"}, priorityCell: "", log: true);
+                Army.DivideOnCellsPriority(new[] { "Frame9" }, priorityCell: "", log: true);
                 Army.AggroMonStart();
                 break;
 
             case "deepchaos":
                 Army.AggroMonMIDs(9);
-                Army.DivideOnCellsPriority(new[] {"Frame4"}, priorityCell: "", log: true);
+                Army.DivideOnCellsPriority(new[] { "Frame4" }, priorityCell: "", log: true);
                 Army.AggroMonStart();
                 break;
 
             case "dflesson":
                 Army.AggroMonMIDs(29);
-                Army.DivideOnCellsPriority(new[] {"r12"}, priorityCell: "", log: true);
+                Army.DivideOnCellsPriority(new[] { "r12" }, priorityCell: "", log: true);
                 Army.AggroMonStart();
                 break;
 
             case "lair":
                 Army.AggroMonMIDs(14);
-                Army.DivideOnCellsPriority(new[] {"End"}, priorityCell: "", log: true);
+                Army.DivideOnCellsPriority(new[] { "End" }, priorityCell: "", log: true);
                 Army.AggroMonStart();
                 break;
 
             case "bloodtitan":
                 Army.AggroMonMIDs(1);
-                Army.DivideOnCellsPriority(new[] {"Enter"}, priorityCell: "", log: true);
+                Army.DivideOnCellsPriority(new[] { "Enter" }, priorityCell: "", log: true);
                 Army.AggroMonStart();
                 break;
 
             case "seraphicwardage":
                 Core.RegisterQuests(6248, 6249, 6251);
                 Army.AggroMonMIDs(7, 8, 9, 10, 11, 12);
-                Army.DivideOnCellsPriority(new[] {"r3", "r4"}, priorityCell: "", log: true);
+                Army.DivideOnCellsPriority(new[] { "r3", "r4" }, priorityCell: "", log: true);
                 Army.AggroMonStart();
                 break;
 
             case "dreadrock":
                 Core.RegisterQuests(4849);
                 Army.AggroMonMIDs(12, 14, 15, 22, 23, 24, 25);
-                Army.DivideOnCellsPriority(new[] {"r3", "r8a"}, priorityCell: "", log: true);
+                Army.DivideOnCellsPriority(new[] { "r3", "r8a" }, priorityCell: "", log: true);
                 Army.AggroMonStart();
                 break;
 
             case "judgement":
                 Army.AggroMonMIDs(15);
-                Army.DivideOnCellsPriority(new[] {"r10a"}, priorityCell: "", log: true);
+                Army.DivideOnCellsPriority(new[] { "r10a" }, priorityCell: "", log: true);
                 Army.AggroMonStart();
                 break;
 
             case "shadowrealmpast":
-                Army.AggroMonMIDs(1,2,3,4);
-                Army.DivideOnCellsPriority(new[] {"Enter"}, priorityCell: "", log: true);
+                Army.AggroMonMIDs(1, 2, 3, 4);
+                Army.DivideOnCellsPriority(new[] { "Enter" }, priorityCell: "", log: true);
                 Army.AggroMonStart();
                 break;
-            
+
             case "necrodungeon":
-                Army.AggroMonMIDs(46,47,48,49,50);
-                Army.DivideOnCellsPriority(new[] {"r22"}, priorityCell: "", log: true);
+                Army.AggroMonMIDs(46, 47, 48, 49, 50);
+                Army.DivideOnCellsPriority(new[] { "r22" }, priorityCell: "", log: true);
                 Army.AggroMonStart();
                 break;
-            
+
             case "doomvault":
-                Army.DivideOnCellsPriority(new[] {"r1", "r3", "r7", "r8"}, priorityCell: "",setAggro: true, log: true);
+                Army.DivideOnCellsPriority(new[] { "r1", "r3", "r7", "r8" }, priorityCell: "", setAggro: true, log: true);
                 Army.AggroMonStart();
                 break;
-            
+
             case "mummies":
-                Army.DivideOnCellsPriority(new[] {"Enter", "r2", "r3", "r4"}, priorityCell: "",setAggro: true, log: true);
+                Army.DivideOnCellsPriority(new[] { "Enter", "r2", "r3", "r4" }, priorityCell: "", setAggro: true, log: true);
                 Army.AggroMonStart();
                 break;
-            
+
             case "wrath":
-                Army.DivideOnCellsPriority(new[] {"r2", "r3", "r4", "r5"}, priorityCell: "",setAggro: true, log: true);
+                Army.DivideOnCellsPriority(new[] { "r2", "r3", "r4", "r5" }, priorityCell: "", setAggro: true, log: true);
                 Army.AggroMonStart();
                 break;
-            
+
             case "doomwar":
-                Army.DivideOnCellsPriority(new[] {"r6", "r3", "r4", "r5"}, priorityCell: "",setAggro: true, log: true);
+                Army.DivideOnCellsPriority(new[] { "r6", "r3", "r4", "r5" }, priorityCell: "", setAggro: true, log: true);
                 Army.AggroMonStart();
                 break;
-            
+
             case "overworld":
-                Army.DivideOnCellsPriority(new[] {"Enter", "r3", "r4", "r5"}, priorityCell: "",setAggro: true, log: true);
+                Army.DivideOnCellsPriority(new[] { "Enter", "r3", "r4", "r5" }, priorityCell: "", setAggro: true, log: true);
                 Army.AggroMonStart();
                 break;
-            
+
             case "deathpits":
-                Army.DivideOnCellsPriority(new[] {"r1", "r3", "r4", "r2"}, priorityCell: "",setAggro: true, log: true);
+                Army.DivideOnCellsPriority(new[] { "r1", "r3", "r4", "r2" }, priorityCell: "", setAggro: true, log: true);
                 Army.AggroMonStart();
                 break;
-            
+
             case "maxius":
-                Army.DivideOnCellsPriority(new[] {"r4", "r2"}, priorityCell: "",setAggro: true, log: true);
+                Army.DivideOnCellsPriority(new[] { "r4", "r2" }, priorityCell: "", setAggro: true, log: true);
                 Army.AggroMonStart();
                 break;
-            
+
 
             default:
                 // Handle other maps or cases here if needed
@@ -734,19 +743,23 @@ public class ArmyLR
         }
     }
 
-    private bool checkIsDone(string item, int quant){
+    private bool checkIsDone(string item, int quant)
+    {
         string[] players = Army.Players();
-        string[] revenant1 = new string[] {players[0], players[1]};
-        string[] revenant2 = new string[] {players[2], players[3]};
-        
-        if (Bot.Map.Name.Equals("revenant")){
-            if (Array.IndexOf(Army.Players(), Core.Username()) > 1){
+        string[] revenant1 = new string[] { players[0], players[1] };
+        string[] revenant2 = new string[] { players[2], players[3] };
+
+        if (Bot.Map.Name.Equals("revenant"))
+        {
+            if (Array.IndexOf(Army.Players(), Core.Username()) > 1)
+            {
                 Army.waitForSignal($"revenant2{counter}", revenant2);
-            } else Army.waitForSignal($"revenant1{counter}", revenant1);
+            }
+            else Army.waitForSignal($"revenant1{counter}", revenant1);
             counter++;
         }
         else Army.waitForSignal($"checking{item}{quant}{counter}");
-        
+
         Army.registerMessage($"{item}{counter}", false);
         counter++;
         if (Core.CheckInventory(item, quant)) Army.sendDone(20);
@@ -754,7 +767,8 @@ public class ArmyLR
         return false;
     }
 
-    private bool repGoodEvil4(){
+    private bool repGoodEvil4()
+    {
         Army.waitForPartyCell("Enter", "Spawn");
         Army.waitForSignal($"checkinggoodevil4{counter}");
         Army.registerMessage($"rep4{counter}", false);
@@ -764,17 +778,19 @@ public class ArmyLR
         return false;
     }
 
-    private bool repGoodEvilMax(){
+    private bool repGoodEvilMax()
+    {
         Army.waitForPartyCell("Enter", "Spawn");
         Army.waitForSignal($"checkinggoodevilmax{counter}");
-        Army.registerMessage($"repmax{counter}",false);
+        Army.registerMessage($"repmax{counter}", false);
         counter++;
         if (Farm.FactionRank("Good") >= 10 && Farm.FactionRank("Evil") >= 10) Army.sendDone(20);
         if (Army.isDone(20)) return true;
         return false;
     }
-    
-    private bool checkGold(int quant){
+
+    private bool checkGold(int quant)
+    {
         Army.waitForPartyCell("Enter", "Spawn");
         Army.waitForSignal($"gold{quant}");
         Army.registerMessage($"gold{counter}", false);
