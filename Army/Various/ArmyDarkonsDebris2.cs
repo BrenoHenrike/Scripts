@@ -6,7 +6,7 @@ using Skua.Core.Models.Items;
 using Skua.Core.Models.Quests;
 using Skua.Core.Options;
 
-public class ArmyPrinceDarkonsPoleaxeMats
+public class ArmyDarkonsDebris2
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
@@ -23,13 +23,13 @@ public class ArmyPrinceDarkonsPoleaxeMats
         sArmy.player4,
         sArmy.player5,
         sArmy.player6,
-		new Option<string>(
+        new Option<string>(
             "ClassToUse",
             "your class",
             "class to use",
             "classsss"
         ),
-		new Option<string>(
+        new Option<string>(
             "SafeClass",
             "your safe class",
             "any class that not used in this bot",
@@ -46,8 +46,8 @@ public class ArmyPrinceDarkonsPoleaxeMats
 
         Army.initArmy();
         Army.setLogName(OptionsStorage);
-        ArmyHunt("theworld", new[] { "r9" }, "Unfinished Musical Score","", 0, 22);
-        ArmyHunt("eridanipast", new[] { "r2", "r3", "r10" }, "Bandit's Correspondence","r10", 8531, 22);
+        ArmyHunt("theworld", new[] { "r9" }, "Unfinished Musical Score", "", 0, 22);
+        ArmyHunt("eridanipast", new[] { "r2", "r3", "r10" }, "Bandit's Correspondence", "r10", 8531, 22);
         ArmyHunt("astraviapast", new[] { "r6", "r7", "r8", "r4" }, "Suki's Prestige", "", 8602, 22);
         ArmyHunt("firstobservatory", new[] { "r6", "r7", "r10a" }, "Ancient Remnant", "r10a", 8641, 22);
         ArmyHunt("genesisgarden", new[] { "r6", "r9", "r11" }, "Mourning Flower", "r11", 8688, 22);
@@ -59,24 +59,35 @@ public class ArmyPrinceDarkonsPoleaxeMats
 
     void ArmyHunt(string map, string[] cells, string item, string priorityCell, int questId, int quant = 1)
     {
-		Core.Equip(Bot.Config.Get<string>("SafeClass"));
+        string? safeClass = Bot.Config!.Get<string>("SafeClass");
+
+        if (!string.IsNullOrEmpty(safeClass))
+            Core.Equip(safeClass);
+        else
+            Core.Logger("SafeClass configuration is missing or empty.");
         Army.registerMessage(item);
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
 
         Core.BankingBlackList.Add(item);
         Core.AddDrop(item);
-        if (map.ToLower() == "eridani"){
+        if (map.ToLower() == "eridani")
+        {
             Core.AddDrop("Tooth");
             Core.AddDrop("Wisdom Tooth");
         }
 
-		Bot.Sleep(1000);
-		Core.Equip(Bot.Config.Get<string>("ClassToUse"));
+        Bot.Sleep(1000);
+        string? classToUse = Bot.Config!.Get<string>("ClassToUse");
+
+        if (!string.IsNullOrEmpty(classToUse))
+            Core.Equip(classToUse);
+        else
+            Core.Logger("ClassToUse configuration is missing or empty.");
         //Core.EquipClass(classType);
         Core.Join(map);
         Army.waitForPartyCell("Enter", "Spawn");
-        if(questId != 0)
+        if (questId != 0)
             Core.RegisterQuests(questId);
         Army.waitForSignal("imready");
 
@@ -91,7 +102,7 @@ public class ArmyPrinceDarkonsPoleaxeMats
 
         Core.Logger($"army: starting {quant} {item}");
         Army.AggroMonStart();
-        Army.StartFarm(item, quant, new int[] { 1, 2, 3, 4 } );
+        Army.StartFarm(item, quant);
 
         Core.CancelRegisteredQuests();
         Army.AggroMonStop(true);
