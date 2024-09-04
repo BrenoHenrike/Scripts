@@ -59,7 +59,7 @@ public class ArmyDarkonsDebris2
 
     void ArmyHunt(string map, string[] cells, string item, string priorityCell, int questId, int quant = 1)
     {
-        Core.Equip(Bot.Config.Get<string>("SafeClass"));
+		Core.Equip(Bot.Config.Get<string>("SafeClass"));
         Army.registerMessage(item);
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
@@ -72,8 +72,8 @@ public class ArmyDarkonsDebris2
             Core.AddDrop("Wisdom Tooth");
         }
 
-        Bot.Sleep(1000);
-        Core.Equip(Bot.Config.Get<string>("ClassToUse"));
+		Bot.Sleep(1000);
+		Core.Equip(Bot.Config.Get<string>("ClassToUse"));
         //Core.EquipClass(classType);
         Core.Join(map);
         Army.waitForPartyCell("Enter", "Spawn");
