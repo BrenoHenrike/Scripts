@@ -16222,7 +16222,7 @@
       "null"
     ],
     "path": "Nation/Various/ProofOfRecruitmentQuest.cs",
-    "size": 8417,
+    "size": 13596,
     "fileName": "ProofOfRecruitmentQuest.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/ProofOfRecruitmentQuest.cs"
   },
@@ -22264,7 +22264,7 @@
       "null"
     ],
     "path": "Story/Legion/DageTheEvilIsland/CoreDageTheEvilIsland.cs",
-    "size": 11014,
+    "size": 10914,
     "fileName": "CoreDageTheEvilIsland.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Legion/DageTheEvilIsland/CoreDageTheEvilIsland.cs"
   },
@@ -22604,7 +22604,7 @@
       "brightoak"
     ],
     "path": "Story/QueenofMonsters/Extra/BrightOak.cs",
-    "size": 14736,
+    "size": 13927,
     "fileName": "BrightOak.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/QueenofMonsters/Extra/BrightOak.cs"
   },
