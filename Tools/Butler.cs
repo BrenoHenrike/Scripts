@@ -4,6 +4,7 @@ description: This will follow a player and copy their actions and do attack acti
 tags: butler, follow, player, copy, actions, attack, maidr, auto, goto
 */
 //cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/Army/CoreArmyLite.cs
 using System.IO;
 using Skua.Core.Interfaces;
