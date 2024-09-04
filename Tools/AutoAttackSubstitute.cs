@@ -57,6 +57,7 @@ public class AutoAttackSubstitute
 
         Core.EquipClass(Bot.Config?.Get<ClassType>("classType") == ClassType.Solo ? ClassType.Solo : ClassType.Farm);
         string RespawnCell = Bot.Player.Cell; // Store the initial cell
+        Bot.Player.SetSpawnPoint();
 
         foreach (AttackMode mode in Enum.GetValues(typeof(AttackMode)))
         {
