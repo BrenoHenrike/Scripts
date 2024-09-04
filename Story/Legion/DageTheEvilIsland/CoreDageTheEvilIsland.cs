@@ -22,6 +22,8 @@ public class CoreDageTheEvilIsland
         Core.SetOptions(false);
     }
 
+    public string[] EnvyItems = { "Envy Token V", "Envy Token IV", "Envy Token III", "Envy Token II", "Envy Token I" };
+
     public void CompleteDageTheEvilIslandStory()
     {
         if (Core.isCompletedBefore(5658))
@@ -156,8 +158,6 @@ public class CoreDageTheEvilIsland
         Story.KillQuest(4195, "LegionCrypt", "Brutus");
     }
 
-    public string[] RequiredItems = { "Envy Token V", "Envy Token IV", "Envy Token III", "Envy Token II", "Envy Token I" };
-
     public void EnvyMap()
     {
         if (Core.isCompletedBefore(4893))
@@ -167,42 +167,42 @@ public class CoreDageTheEvilIsland
         }
         Story.PreLoad(this);
 
-        Core.AddDrop(RequiredItems);
-
-        if (!Bot.Quests.IsUnlocked(4891))
+        Core.Unbank(EnvyItems);
+        Core.AddDrop(EnvyItems);
+        Story.LegacyQuestManager(QuestLogic, Core.FromTo(4884, 4890));
+        void QuestLogic()
         {
-            if (!Core.CheckInventory("Envy Token V"))
+            switch (Story.LegacyQuestID)
             {
-                if (!Core.CheckInventory("Envy Token IV"))
-                {
-                    if (!Core.CheckInventory("Envy Token III"))
-                    {
-                        if (!Core.CheckInventory("Envy Token II"))
-                        {
-                            if (!Core.CheckInventory("Envy Token I"))
-                            {
-                                //An Enviable Army 4884
-                                Core.EnsureAccept(4884);
-                                Core.HuntMonster("Envy", "Legion Defector", "Legion Defectors Beaten", 3);
-                                Core.HuntMonster("Envy", "Fawning Sycophant", "Fawning Sycophants Beaten", 4);
-                                Core.EnsureComplete(4884);
-                                Bot.Wait.ForPickup("Envy Token I");
-                            }
-                            //Where’s Darkon? 4885
-                            Core.EnsureAccept(4885);
-                            Core.GetMapItem(4278, 4, "Envy");
-                            Core.EnsureComplete(4885);
-                            Bot.Wait.ForPickup("Envy Token II");
-                        }
-                        //Her Biggest Fans 4886
-                        Core.EnsureAccept(4886);
-                        Core.HuntMonster("Envy", "Fawning Sycophant", "Sycophant Hood");
-                        Core.HuntMonster("Envy", "Fawning Sycophant", "Sycophant Tunic");
-                        Core.HuntMonster("Envy", "Fawning Sycophant", "Sycophant Medallion");
-                        Core.HuntMonster("Envy", "Fawning Sycophant", "Sycophant Boots");
-                        Core.EnsureComplete(4886);
-                        Bot.Wait.ForPickup("Envy Token III");
-                    }
+                case 4884:
+                    //An Enviable Army 4884
+                    Core.EnsureAccept(4884);
+                    Core.HuntMonster("Envy", "Legion Defector", "Legion Defectors Beaten", 3);
+                    Core.HuntMonster("Envy", "Fawning Sycophant", "Fawning Sycophants Beaten", 4);
+                    Core.EnsureComplete(4884);
+                    Bot.Wait.ForPickup("Envy Token I");
+                    break;
+
+                case 4885:
+                    //Where’s Darkon? 4885
+                    Core.EnsureAccept(4885);
+                    Core.GetMapItem(4278, 4, "Envy");
+                    Core.EnsureComplete(4885);
+                    Bot.Wait.ForPickup("Envy Token II");
+                    break;
+
+                case 4886:
+                    //Her Biggest Fans 4886
+                    Core.EnsureAccept(4886);
+                    Core.HuntMonster("Envy", "Fawning Sycophant", "Sycophant Hood");
+                    Core.HuntMonster("Envy", "Fawning Sycophant", "Sycophant Tunic");
+                    Core.HuntMonster("Envy", "Fawning Sycophant", "Sycophant Medallion");
+                    Core.HuntMonster("Envy", "Fawning Sycophant", "Sycophant Boots");
+                    Core.EnsureComplete(4886);
+                    Bot.Wait.ForPickup("Envy Token III");
+                    break;
+
+                case 4887:
                     //Squee for Envy 4887
                     Core.EnsureAccept(4887);
                     Core.HuntMonster("Envy", "Fawning Sycophant", "Clue");
@@ -210,7 +210,9 @@ public class CoreDageTheEvilIsland
                     Core.HuntMonster("Envy", "Fawning Sycophant", "Gossip");
                     Core.HuntMonster("Envy", "Fawning Sycophant", "Sincere but Unhelpful Praise");
                     Core.EnsureComplete(4887);
+                    break;
 
+                case 4888:
                     //Higher Up The Totem Pole 4888
                     Core.EnsureAccept(4888);
                     Core.HuntMonster("Envy", "Disciple of Envy", "Disciple Helm");
@@ -219,22 +221,27 @@ public class CoreDageTheEvilIsland
                     Core.HuntMonster("Envy", "Disciple of Envy", "Disciple Blade");
                     Core.EnsureComplete(4888);
                     Bot.Wait.ForPickup("Envy Token IV");
-                }
+                    break;
 
-                //Fight for Envy 4889
-                Core.EnsureAccept(4889);
-                Core.HuntMonster("Envy", "Legion Spy", "Legion Spies Defeated", 8);
-                Core.EnsureComplete(4889);
-                Bot.Wait.ForPickup("Envy Token V");
+                case 4889:
+                    //Fight for Envy 4889
+                    Core.EnsureAccept(4889);
+                    Core.HuntMonster("Envy", "Legion Spy", "Legion Spies Defeated", 8);
+                    Core.EnsureComplete(4889);
+                    Bot.Wait.ForPickup("Envy Token V");
+                    break;
 
-                //Where’s That Employee Lounge Again? 4890
-                Core.EnsureAccept(4890);
-                Core.HuntMonster("Envy", "Disciple of Envy", "Semi-Useful Information");
-                Core.HuntMonster("Envy", "Disciple of Envy", "Cult Propaganda");
-                Core.HuntMonster("Envy", "Disciple of Envy", "Another Clue");
-                Core.HuntMonster("Envy", "Disciple of Envy", "Bad Puns");
-                Core.EnsureComplete(4890);
-            }
+                case 4890:
+                    //Where’s That Employee Lounge Again? 4890
+                    Core.EnsureAccept(4890);
+                    Core.HuntMonster("Envy", "Disciple of Envy", "Semi-Useful Information");
+                    Core.HuntMonster("Envy", "Disciple of Envy", "Cult Propaganda");
+                    Core.HuntMonster("Envy", "Disciple of Envy", "Another Clue");
+                    Core.HuntMonster("Envy", "Disciple of Envy", "Bad Puns");
+                    Core.EnsureComplete(4890);
+                    break;
+
+            };
         }
         //Group Effort 4891
         Story.KillQuest(4891, "Envy", new[] { "Legion Defector", "Fawning Sycophant", "Disciple of Envy" });

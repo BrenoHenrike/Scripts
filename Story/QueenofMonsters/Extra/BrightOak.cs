@@ -259,67 +259,50 @@ public class BrightOak
 
         // It's Too Bad I'm Poisonous Now
         // Ravinos Token V
-        if (!Core.CheckInventory("Ravinos Token V"))
+        Story.LegacyQuestManager(QuestLogic, Core.FromTo(4799, 4803));
+
+        void QuestLogic()
         {
-            // Like One Of Those Toddler Gates
-            // Ravinos Token VI
-            if (!Core.CheckInventory("Ravinos Token IV"))
+            switch (Story.LegacyQuestID)
             {
-                // But...Our Stuff!
-                // Ravinos Token III
-                if (!Core.CheckInventory("Ravinos Token III"))
-                {
-                    // Too Many Nasties
-                    // Ravinos Token II
-                    if (!Core.CheckInventory("Ravinos Token II"))
-                    {
-                        // We Have Some Stragglers
-                        // Ravinos Token I
-                        if (!Core.CheckInventory("Ravinos Token I"))
-                        {
-                            Core.EnsureAccept(4799);
-                            Core.Join("Gaiazor");
-                            Core.GetMapItem(4204, 6);
-                            Core.EnsureComplete(4799);
-                            Bot.Wait.ForPickup("Ravinos Token I");
-                            Core.Sleep(1000);
-                        }
-                        Core.EnsureAccept(4800);
-                        Core.HuntMonster("Gaiazor", "Wolfwood", "Wolfwood Slain", 4);
-                        Core.HuntMonster("Gaiazor", "Wisterrora", "Wisterrora Slain", 4);
-                        Core.HuntMonster("Gaiazor", "Tree Golem", "Tree Golem Slain", 4);
-                        Core.EnsureComplete(4800);
-                        Bot.Wait.ForPickup("Ravinos Token II");
-                        Core.Sleep(1000);
-                    }
-                    Core.EnsureAccept(4801);
+                case 4799: // We Have Some Stragglers [Ravinos Token I]
+                    Core.Join("Gaiazor");
+                    Core.GetMapItem(4204, 6);
+                    Bot.Wait.ForPickup("Ravinos Token I");
+                    break;
+
+                case 4800: // Too Many Nasties [Ravinos Token II]
+                    Core.HuntMonster("Gaiazor", "Wolfwood", "Wolfwood Slain", 4);
+                    Core.HuntMonster("Gaiazor", "Wisterrora", "Wisterrora Slain", 4);
+                    Core.HuntMonster("Gaiazor", "Tree Golem", "Tree Golem Slain", 4);
+                    Bot.Wait.ForPickup("Ravinos Token II");
+                    break;
+
+                case 4801: // But...Our Stuff! [Ravinos Token III]
                     Core.HuntMonster("Gaiazor", "Tree Golem", "Lapis' Runestones");
                     Core.HuntMonster("Gaiazor", "Wolfwood", "Flix's Fertilizer");
                     Core.HuntMonster("Gaiazor", "Wisterrora", "Zephyr's Toolkit");
-                    Core.EnsureComplete(4801);
                     Bot.Wait.ForPickup("Ravinos Token III");
-                    Core.Sleep(1000);
-                }
-                Core.EnsureAccept(4802);
-                Core.HuntMonster("Gaiazor", "Tree Golem", "Tree Golem Roots", 5);
-                Core.HuntMonster("Gaiazor", "Wisterrora", "Wisterrora Thorns", 5);
-                Core.GetMapItem(4205, 5);
-                Core.EnsureComplete(4802);
-                Bot.Wait.ForPickup("Ravinos Token IV");
-                Core.Sleep(1000);
+                    break;
+
+                case 4802: // Like One Of Those Toddler Gates [Ravinos Token IV]
+                    Core.HuntMonster("Gaiazor", "Tree Golem", "Tree Golem Roots", 5);
+                    Core.HuntMonster("Gaiazor", "Wisterrora", "Wisterrora Thorns", 5);
+                    Core.GetMapItem(4205, 5);
+                    Bot.Wait.ForPickup("Ravinos Token IV");
+                    break;
+
+                case 4803: // Ravinos Token VI [Ravinos Token V]
+                    Core.HuntMonster("Darkheart", "Toxic Grove Spider", "Grove Spider Silk", 6);
+                    Core.HuntMonster("Bloodtusk", "Trollola Plant", "Trollola Nectar", 5);
+                    Core.HuntMonster("Firestorm", "Sulfur Imp", "Searbush", 2);
+                    Bot.Wait.ForPickup("Ravinos Token V");
+                    break;
             }
-            Core.EnsureAccept(4803);
-            Core.HuntMonster("Darkheart", "Toxic Grove Spider", "Grove Spider Silk", 6);
-            Core.HuntMonster("Bloodtusk", "Trollola Plant", "Trollola Nectar", 5);
-            Core.HuntMonster("Firestorm", "Sulfur Imp", "Searbush", 2);
-            Core.EnsureComplete(4803);
-            Bot.Wait.ForPickup("Ravinos Token V");
-            Core.Sleep(1000);
         }
 
         // Talk to Lapis
         Story.MapItemQuest(4804, "Gaiazor", 4206);
-
     }
 
     public void LapisPart2()
@@ -335,99 +318,94 @@ public class BrightOak
 
         // Even a Noob Can Do It
         // Lapis Token III
-        if (!Core.CheckInventory("Lapis Token III"))
+        Story.LegacyQuestManager(QuestLogic, Core.FromTo(4805, 4807));
+
+        void QuestLogic()
         {
-            // Outside Assistance
-            // Lapis Token II
-            if (!Core.CheckInventory("Lapis Token II"))
+            switch (Story.LegacyQuestID)
             {
-                // Better Than A Magic 8-Ball
-                // Lapis Token I
-                if (!Core.CheckInventory("Lapis Token I"))
-                {
-                    Core.EnsureAccept(4805);
+                case 4805: // Better Than A Magic 8-Ball [Lapis Token I]
                     Core.HuntMonster("Gaiazor", "Wolfwood", "Wolfwood Twigs", 7);
                     Core.HuntMonster("Gaiazor", "Wisterrora", "Drop of Wisterrora Ichor");
-                    Core.EnsureComplete(4805);
                     Bot.Wait.ForPickup("Lapis Token I");
-                    Core.Sleep(1000);
-                }
-                Core.EnsureAccept(4806);
-                if (!Core.CheckInventory("Sparrow's Blood"))
-                    Daily.SparrowsBlood();
-                Core.EnsureComplete(4806);
-                Bot.Wait.ForPickup("Lapis Token II");
-                Core.Sleep(1000);
+                    break;
+
+                case 4806: // Outside Assistance [Lapis Token II]
+                    if (!Core.CheckInventory("Sparrow's Blood"))
+                        Daily.SparrowsBlood();
+                    Bot.Wait.ForPickup("Lapis Token II");
+                    break;
+
+                case 4807: // Lapis Token II [Lapis Token III]
+                    Core.GetMapItem(4207, 1, "Gaiazor");
+                    Core.GetMapItem(4208, 1, "Gaiazor");
+                    Core.GetMapItem(4209, 1, "Gaiazor");
+                    Bot.Wait.ForPickup("Lapis Token III");
+                    break;
             }
-            Core.EnsureAccept(4807);
-            Core.GetMapItem(4207, 1, "Gaiazor");
-            Core.GetMapItem(4208, 1, "Gaiazor");
-            Core.GetMapItem(4209, 1, "Gaiazor");
-            Core.EnsureComplete(4807);
-            Bot.Wait.ForPickup("Lapis Token III");
-            Core.Sleep(1000);
         }
+
         Story.MapItemQuest(4808, "Gaiazor", 4210);
-    }
-
-    public void RavinosBrightgladePart3()
-    {
-        if (Core.isCompletedBefore(4810))
-            return;
-
-        LapisPart2();
-
-        // Defeat the Traitor
-        Story.KillQuest(4809, "Gaiazor", "Nevanna");
-
-        // Defeat the Beast
-        Story.KillQuest(4810, "Gaiazor", "Gaiazor");
-    }
-
-    public void ExtraREP(bool Extra = true)
-    {
-        if (!Extra)
-            return;
-
-        if (Core.isCompletedBefore(4472))
-            return;
-
-        // Catering to Craftsmanship
-        if (Daily.CheckDaily(4471))
-        {
-            Core.EnsureAccept(4471);
-            Core.HuntMonster("Brightoak", "Bright Treeant", "Treeant Trunk", 5);
-            Core.KillMonster("Brightoak", "r8", "Spawn", "Wolfwood", "Wolfwood Fur", 7);
-            Core.EnsureComplete(4471);
         }
 
-        // Some Disassembly Required   
-        if (Daily.CheckDaily(4472))
+        public void RavinosBrightgladePart3()
         {
-            Core.EnsureAccept(4472);
-            Core.HuntMonster("Brightoak", "Brightpool Guardian", "Disciplined Guardian", 7);
-            Core.EnsureComplete(4472);
+            if (Core.isCompletedBefore(4810))
+                return;
+
+            LapisPart2();
+
+            // Defeat the Traitor
+            Story.KillQuest(4809, "Gaiazor", "Nevanna");
+
+            // Defeat the Beast
+            Story.KillQuest(4810, "Gaiazor", "Gaiazor");
+        }
+
+        public void ExtraREP(bool Extra = true)
+        {
+            if (!Extra)
+                return;
+
+            if (Core.isCompletedBefore(4472))
+                return;
+
+            // Catering to Craftsmanship
+            if (Daily.CheckDaily(4471))
+            {
+                Core.EnsureAccept(4471);
+                Core.HuntMonster("Brightoak", "Bright Treeant", "Treeant Trunk", 5);
+                Core.KillMonster("Brightoak", "r8", "Spawn", "Wolfwood", "Wolfwood Fur", 7);
+                Core.EnsureComplete(4471);
+            }
+
+            // Some Disassembly Required   
+            if (Daily.CheckDaily(4472))
+            {
+                Core.EnsureAccept(4472);
+                Core.HuntMonster("Brightoak", "Brightpool Guardian", "Disciplined Guardian", 7);
+                Core.EnsureComplete(4472);
+            }
+        }
+
+        void NaturePotion(int quant)
+        {
+            if (Core.CheckInventory("Restoration of Nature Potion", quant))
+                return;
+
+            Core.AddDrop("Restoration of Nature Potion");
+
+            Core.Logger("Resetting so that `Nature potion` drops work ...properly?");
+            Core.Join("Whitemap");
+
+            while (!Bot.ShouldExit && !Core.CheckInventory("Restoration of Nature Potion", quant))
+            {
+                Core.EnsureAccept(4660);
+                Core.BuyItem("sandsea", 245, "Water of Life");
+                Core.KillMonster("brightoak", "r2", "Left", "Bright Treeant", "Bright Ore", 3);
+                Core.KillMonster("brightoak", "r2", "Left", "Wolfwood", "Herbal Remedy", 4);
+                Core.EnsureComplete(4660);
+                Bot.Wait.ForPickup("Restoration of Nature Potion");
+            }
         }
     }
-
-    void NaturePotion(int quant)
-    {
-        if (Core.CheckInventory("Restoration of Nature Potion", quant))
-            return;
-
-        Core.AddDrop("Restoration of Nature Potion");
-
-        Core.Logger("Resetting so that `Nature potion` drops work ...properly?");
-        Core.Join("Whitemap");
-
-        while (!Bot.ShouldExit && !Core.CheckInventory("Restoration of Nature Potion", quant))
-        {
-            Core.EnsureAccept(4660);
-            Core.BuyItem("sandsea", 245, "Water of Life");
-            Core.KillMonster("brightoak", "r2", "Left", "Bright Treeant", "Bright Ore", 3);
-            Core.KillMonster("brightoak", "r2", "Left", "Wolfwood", "Herbal Remedy", 4);
-            Core.EnsureComplete(4660);
-            Bot.Wait.ForPickup("Restoration of Nature Potion");
-        }
-    }
-}
