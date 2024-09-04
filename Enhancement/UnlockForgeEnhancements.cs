@@ -662,9 +662,9 @@ public class UnlockForgeEnhancements
         Core.Logger($"The only items the bot can get are: \"Malgor the ShadowLord\" and \"ShadowLord's Helm\". Unless `UseInsignOnDaunt` is enabled: {Bot.Config.Get<bool>("UseInsignOnDaunt")}");
 
         // Base Quest Req. for dauntless
-        int Malgorinsig = 10;
-        int AvatarTyndInsig = 5;
-
+        int Malgorinsig = 5;
+        int AvatarTyndInsig = 10;
+        
         Core.EnsureAccept(9172);
         if (!Core.CheckInventory(DauntlessItems))
         {
@@ -717,6 +717,11 @@ public class UnlockForgeEnhancements
                 else
                     AvatarTyndInsig += 20;
             }
+
+            // totals:
+            // 25 Malgor Insignia
+            // 30 Avatar Tyndarius Insignia
+
         }
 
         if (Core.CheckInventory(DauntlessItems) && Core.CheckInventory("Malgor Insignia", 5) && Core.CheckInventory("Avatar Tyndarius Insignia", 10))
