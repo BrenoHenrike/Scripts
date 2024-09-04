@@ -6,9 +6,9 @@ using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Models.Quests;
 using Skua.Core.Options;
-using System.Collections.Generic; 
+using System.Collections.Generic;
 
-public class ArmyPrinceDarkonsPoleaxeMats
+public class ArmyHigureMats
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
@@ -44,11 +44,11 @@ public class ArmyPrinceDarkonsPoleaxeMats
 
         Bot.Send.Packet($"%xt%zm%house%1%{Core.Username()}%");
         Bot.Wait.ForMapLoad("house");
-        
+
         var items = new List<string>
         {
             "Darkon's Receipt", "La's Gratitude", "Astravian Medal", "A Melody",
-            "Suki's Prestige", "Ancient Remnant", "Mourning Flower", 
+            "Suki's Prestige", "Ancient Remnant", "Mourning Flower",
             "Unfinished Musical Score", "Bounty Hunter Dubloon"
         };
 
@@ -104,27 +104,28 @@ public class ArmyPrinceDarkonsPoleaxeMats
     {
         Army.registerMessage(item, false);
         if (Army.isDone(20)) return;
-		// Core.Equip(Bot.Config.Get<string>("SafeClass"));
+        // Core.Equip(Bot.Config.Get<string>("SafeClass"));
         // Army.registerMessage(item);
 
         Core.BankingBlackList.Add(item);
         Core.AddDrop(item);
-        if (map.ToLower() == "eridani"){
+        if (map.ToLower() == "eridani")
+        {
             Core.AddDrop("Tooth");
             Core.AddDrop("Wisdom Tooth");
         }
 
-		Bot.Sleep(1000);
-		// Core.Equip(Bot.Config.Get<string>("ClassToUse"));
+        Bot.Sleep(1000);
+        // Core.Equip(Bot.Config.Get<string>("ClassToUse"));
         //Core.EquipClass(classType);
         Core.Join(map);
-		
-        Army.waitForPartyCell("Enter", "Spawn");
-        if(questId != 0)
-            Core.RegisterQuests(questId);
-        
 
-        Army.DivideOnCellsPriority(cells, priorityCell: priorityCell, setAggro: true, log: true, equipClass: true);
+        Army.waitForPartyCell("Enter", "Spawn");
+        if (questId != 0)
+            Core.RegisterQuests(questId);
+
+
+        Army.DivideOnCellsPriority(cells, priorityCell: priorityCell, setAggro: true, log: true);
 
         Core.FarmingLogger(item, quant);
         Core.Logger($"army: starting {quant} {item}");
