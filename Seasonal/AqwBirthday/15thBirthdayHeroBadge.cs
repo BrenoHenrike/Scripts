@@ -1,7 +1,7 @@
 /*
 name: 15th Birthday Hero Character Page Badge
 description: This script will get the "15th Birthday Hero" Character Page Badge.
-tags: birthday, badge, anniversary, gifts, quest, seasonal
+tags: birthday,badge,anniversary,gifts,quest,seasonal
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

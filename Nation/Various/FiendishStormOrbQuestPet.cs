@@ -1,7 +1,7 @@
 /*
 name: Fiendish Storm Orb Quest Pet
 description: This script will complete the "Fiendish Storm Orb Quest Pet" [9507] quest.
-tags: fiendish, cape of lightning, boltstriker, lightninglord, stormbringer, reaver, reavers
+tags: fiendish, cape of lightning, boltstriker,lightninglord,stormbringer,reaver,reavers
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

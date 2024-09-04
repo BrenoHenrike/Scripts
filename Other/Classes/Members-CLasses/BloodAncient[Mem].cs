@@ -1,7 +1,7 @@
 /*
 name: Blood Ancient (Member) Class
 description: This script farms the Blood Ancient class.
-tags: ancient, class, vitae
+tags: ancient,class,vitae
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

@@ -1,7 +1,7 @@
 /*
 name: Lorebowl
 description: Kills the mob in /punt for its drops
-tags: lorebowl, drops, punt, twilly
+tags: LoreBowl, drops, punt, twilly
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

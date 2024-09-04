@@ -1,7 +1,7 @@
 /*
 name: Neo Tower
 description: This script will complete the Lae's storyline in /neotower.
-tags: hollowborn, saga, lae, neotower, neo tower, quest
+tags: hollowborn,saga,lae,neotower,neo tower,quest
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

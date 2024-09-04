@@ -1,7 +1,7 @@
 /*
 name: Barnacle's Bandanas Merge
 description: This bot will farm the items belonging to the selected mode for the Barnacles Bandanas Merge [984] in /pirates
-tags: tlapd, talk-like-a-pirate-day, seasonal, barnacle, bandanas, merge, pirates, chaos, bandana, undead, legion, rotting, naval, icy, galactic, doom, chrono, bright, blazing, toxic
+tags: tlapd,talk-like-a-pirate-day,seasonal,barnacle, bandanas, merge, pirates, chaos, bandana, undead, legion, rotting, naval, icy, galactic, doom, chrono, bright, blazing, toxic
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

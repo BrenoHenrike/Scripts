@@ -1,7 +1,7 @@
 /*
 name: Exalted Harbinger (Class)
 description: This script will get Exalted Harbinger class.
-tags: exalted, harbinger, exaltedharbinger, seasonal, dage, class, dark birthday token, darkbirthday
+tags: exalted,harbinger,exaltedharbinger,seasonal,dage,class,dark birthday token,darkbirthday
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

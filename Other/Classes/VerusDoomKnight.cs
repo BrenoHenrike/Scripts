@@ -1,7 +1,7 @@
 /*
 name: Verus DoomKnight Class
 description: This script will farm Verus DoomKnight Class.
-tags: versus, verus, doomknight, vdk, class
+tags: versus,verus,doomKnight,vdk, class
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

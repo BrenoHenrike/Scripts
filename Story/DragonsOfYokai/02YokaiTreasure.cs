@@ -1,7 +1,7 @@
 /*
 name: Yokai Treasure
 description: This script will complete "Yokai Treasure" storyline.
-tags: story, quest, saga, dragons, dragon, yokai, treasure, complete, all
+tags: story, quest,saga,dragons,dragon,yokai,treasure, complete, all
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

@@ -1,7 +1,7 @@
 /*
 name: ColdThunder
 description: This script completes the storyline in /ColdThunder.
-tags: age, of, ruin, saga, story, quest, cold thunder, sovereign of storms, sos
+tags: age,of,ruin,saga,story,quest,Cold Thunder,sovereign of storms,sos
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

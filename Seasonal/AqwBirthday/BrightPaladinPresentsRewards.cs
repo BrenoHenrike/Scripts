@@ -1,7 +1,7 @@
 /*
 name: Bright Paladin Presents Quest Rewards
 description: This script will farm all the quest rewards from "Bright Paladin Presents" quest in /eventhub
-tags: seasonal, birthday, ascended, paladin, axe, hammer, mace, blade, light, rewards
+tags: seasonal,birthday,ascended,paladin,axe,hammer,mace,blade,light,rewards
 */
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;

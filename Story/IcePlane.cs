@@ -1,7 +1,7 @@
 /*
 name: Ice Plane Story
 description: This will finish the Ice Plane Story.
-tags: story, quest, ice plane, iceplane, ice, plane, glace, quetzal
+tags: story, quest,ice plane,iceplane,ice,plane,glace,quetzal
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

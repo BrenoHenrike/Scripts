@@ -1,7 +1,7 @@
 /*
 name: Hollowborn Saga
 description: This script will complete Hollowborn Saga.
-tags: hollowborn, saga, trygve, neofortress, lae, treasure hunt, lae birthday, shadowrealm, whispering helmet, neotower
+tags: hollowborn,saga,trygve,neofortress,lae,treasure hunt,lae birthday,shadowrealm,whispering helmet,neotower
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

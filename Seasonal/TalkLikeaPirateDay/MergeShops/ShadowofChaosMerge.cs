@@ -1,7 +1,7 @@
 /*
 name: Shadow of Chaos Merge
 description: This bot will farm the items belonging to the selected mode for the Shadow of Chaos Merge [1917] in /laguna
-tags: tlapd, talk-like-a-pirate-day, seasonal, shadow, of, chaos, merge, laguna, chaotic, sorcerer, sorcerers, sorceress, , horns, floating, crystals, energy, claws, gem, khopesh, deepsea, scourge, hunter, tentacled, tentaclewrapped, pistol, pistols
+tags: tlapd,talk-like-a-pirate-day,seasonal, shadow, of, chaos, merge, laguna, chaotic, sorcerer, sorcerers, sorceress, , horns, floating, crystals, energy, claws, gem, khopesh, deepsea, scourge, hunter, tentacled, tentaclewrapped, pistol, pistols
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

@@ -1,7 +1,7 @@
 /*
 name: Corrupted Gem Blade
 description: does 'Drudgen the Salesman' for "Corrupted Gem Blade"
-tags: corrupted gem blade, nation, drudgen the assistant, drudgen the salesman
+tags: Corrupted Gem Blade, nation, Drudgen the Assistant, Drudgen the Salesman
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

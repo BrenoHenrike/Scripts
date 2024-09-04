@@ -1,7 +1,7 @@
 /*
 name: Blazebeard Merge
 description: This bot will farm the items belonging to the selected mode for the Blazebeard Merge [108] in /blazebeard
-tags: tlapd, talk-like-a-pirate-day, seasonal, blazebeard, merge, blazebeard, crimson, pirate, mage, tricorn, weapons, side, cutlass, skull, harpoon, flintlock, spellbook, cutlasses, alpha, ferret, golden, explorer, pistol, great, pistols, platinum
+tags: tlapd,talk-like-a-pirate-day,seasonal,blazebeard, merge, blazebeard, crimson, pirate, mage, tricorn, weapons, side, cutlass, skull, harpoon, flintlock, spellbook, cutlasses, alpha, ferret, golden, explorer, pistol, great, pistols, platinum
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

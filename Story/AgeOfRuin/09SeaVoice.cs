@@ -1,7 +1,7 @@
 /*
 name: Sea Voice
 description: This script completes the storyline in /trenchobserve.
-tags: age, of, ruin, saga, story, quest, deep, water, trenchobserve, observation, deck, sea, voice
+tags: age,of,ruin,saga,story,quest,deep,water,trenchobserve,observation,deck,sea,voice
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

@@ -1,8 +1,9 @@
 /*
 name: Pay Homage to Caladbolg (Again)
 description: farms the requirements, and does the quest "Pay Homage to Caladbolg (Again)"
-tags: pay homage to caladbolg (again), caladbolg, hollowborn, hollowborn, lich, king, hollowborn lich king, hollowborn caladbolg, dual hollowborn caladbolgs, hollowborn caladbolg companion, hollowborn caladbolg battle companion
+tags: Pay Homage to Caladbolg (Again), Caladbolg, hollowborn, hollowborn, lich, king, hollowborn lich king, Hollowborn Caladbolg, Dual Hollowborn Caladbolgs, Hollowborn Caladbolg Companion, Hollowborn Caladbolg Battle Companion
 */
+
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreDailies.cs

@@ -1,7 +1,7 @@
 /*
 name: Abyssal Zone
 description: This script completes the storyline in /abyssalzone.
-tags: age, of, ruin, saga, story, quest, zone, abyssal
+tags: age,of,ruin,saga,story,quest,zone,abyssal
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

@@ -1,7 +1,7 @@
 /*
 name: Rakham's Pirate Merge [Member]
 description: This bot will farm the items belonging to the selected mode for the Rakhams Pirate Merge [350] in /pirates
-tags: talk-like-a-pirate-day, seasonal, tlapd, rakham, pirate, merge, pirates, blunderbuss, boom, renegade, looter, handcannon, high, seas, captains, cutlass, bandana, looting, tricorn, terror, mermaids, hairpoon, calais, looters, raiment, bladed
+tags: talk-like-a-pirate-day,seasonal,tlapd,rakham, pirate, merge, pirates, blunderbuss, boom, renegade, looter, handcannon, high, seas, captains, cutlass, bandana, looting, tricorn, terror, mermaids, hairpoon, calais, looters, raiment, bladed
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

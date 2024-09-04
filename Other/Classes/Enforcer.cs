@@ -1,7 +1,7 @@
 /*
 name: Enforcer Class
 description: This script farms the Enforcer class.
-tags: dwakel, mithril man, crashsite, class
+tags: dwakel,mithril man,crashsite,class
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

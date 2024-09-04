@@ -1,7 +1,7 @@
 /*
 name: Camlan
 description: Does the Shadow of Doom Saga
-tags: shadow of doom, camlan, story, saga, doall, camlan
+tags: shadow of doom, camlan, story, saga, doall, Camlan
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

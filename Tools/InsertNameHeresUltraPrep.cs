@@ -1,8 +1,9 @@
 /*
 name: Дж2सरतϛȠကỊⱣ
 description: Not for everyday use
-tags: do, not, find, me
+tags: Do, not, find, me
 */
+#region includes
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs

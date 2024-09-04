@@ -1,7 +1,7 @@
 /*
 name: Naval Top Hat Merge
 description: This bot will farm the items belonging to the selected mode for the Naval Top Hat Merge [723] in /pirates
-tags: talk-like-a-pirate-day, seasonal, naval, top, hat, merge, pirates, bearded, icy, galactic, platinum, red, rotting, sir, legion, miss, chronolady, missy, scallywag, lady, mrs, lassy, cutie, chaos, femme, blazing, male, mr, brilliant, tophat, doom, lass, explorer, void, classy, , chaotic, toxic, commanders, masked, grim
+tags: talk-like-a-pirate-day,seasonal,naval, top, hat, merge, pirates, bearded, icy, galactic, platinum, red, rotting, sir, legion, miss, chronolady, missy, scallywag, lady, mrs, lassy, cutie, chaos, femme, blazing, male, mr, brilliant, tophat, doom, lass, explorer, void, classy, , chaotic, toxic, commanders, masked, grim
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

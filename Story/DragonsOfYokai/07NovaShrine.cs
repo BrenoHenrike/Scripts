@@ -1,7 +1,7 @@
 /*
 name: Nova Shrine
 description: This script will complete "Nova Shrine" storyline.
-tags: story, quest, saga, dragons, dragon, nova, shrine, yokairealm, complete, all
+tags: story, quest,saga,dragons,dragon,nova,shrine,yokairealm, complete, all
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

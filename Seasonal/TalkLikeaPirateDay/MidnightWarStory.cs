@@ -1,7 +1,7 @@
 /*
 name: Midnight War
 description: This script will complete the storyline in /midnightcrown and /midnightwar
-tags: midnight-war, midnight-crown, flintfang, bonnie blood, rustclaw, tlapd, talk-like-a-pirate-day, seasonal
+tags: midnight-war,midnight-crown,flintfang,bonnie blood,rustclaw,tlapd,talk-like-a-pirate-day,seasonal
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

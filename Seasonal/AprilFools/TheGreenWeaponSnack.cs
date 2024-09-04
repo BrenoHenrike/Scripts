@@ -1,7 +1,7 @@
 /*
 name: The Green WeaponSnack
 description: farms quest rewards from `The Green WeaponSnack` in /gardenquest
-tags: green, weaponsnack, cucumber, salt, sugar, spices, pickle, pickle pullover, pickle face
+tags: Green, WeaponSnack, cucumber, salt, sugar, spices,pickle,pickle pullover,pickle face
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

@@ -1,7 +1,7 @@
 /*
 name: Legion Barracks
 description: This script completes the storyline in \legionbarracks.
-tags: legionbarracks, legion, barracks, seasonal, dage, story
+tags: legionbarracks,legion,barracks, seasonal, dage, story
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

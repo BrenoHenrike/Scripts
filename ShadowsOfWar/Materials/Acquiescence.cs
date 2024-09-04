@@ -1,7 +1,7 @@
 /*
 name: Farms Acquiescence
 description: Farms the Acquiescence from Shadows of War
-tags: acquiescence, shadows of war
+tags: Acquiescence, shadows of war
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

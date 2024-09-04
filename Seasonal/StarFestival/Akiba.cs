@@ -1,7 +1,7 @@
 /*
 name: Akiba
 description: This script will complete the storyline in /akiba.
-tags: star, festival, akiba, story, seasonal
+tags: star,festival,akiba,story,seasonal
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

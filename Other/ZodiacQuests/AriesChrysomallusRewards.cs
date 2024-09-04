@@ -1,7 +1,7 @@
 /*
 name: Aries Chrysomallus Rewards
 description: does the "aries chrysomallus" quest for the rewards.
-tags: aries chrysomallus, quest rewards, darkblood starshard, kolyaban, arcangrove, kylokos, zodiac
+tags: aries chrysomallus, quest rewards, darkblood starshard, kolyaban,arcangrove,kylokos,zodiac
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

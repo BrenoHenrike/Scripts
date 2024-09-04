@@ -1,7 +1,7 @@
 /*
 name: Cavern Celestite
 description: This script farms the desired quantity of Cavern Celestite.
-tags: cavern, celestite, BLOD, blinding, light, destiny, good, soul searching, nsod
+tags: cavern, celestite, BLOD, blinding, light, destiny, good, soul searching,nsod
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

@@ -1,7 +1,7 @@
 /*
 name: Lesser Hollowborn Caladbolg
 description: This script will get Lesser Hollowborn Caladbolg by completing "How Much For One Rib?" quest.
-tags: lesser caladbolg, caladbolg, hollowborn, dark unicorn rib, how much for one rib, quest
+tags: lesser caladbolg, Caladbolg, hollowborn,dark unicorn rib,how much for one rib,quest
 */
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreBots.cs

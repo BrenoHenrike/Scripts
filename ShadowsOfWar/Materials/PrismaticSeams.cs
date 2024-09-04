@@ -1,7 +1,7 @@
 /*
 name: Farms Prismatic Seams
 description: Farms the Prismatic Seams from Shadows of War
-tags: prismatic seams, shadows of war
+tags: Prismatic Seams, shadows of war
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

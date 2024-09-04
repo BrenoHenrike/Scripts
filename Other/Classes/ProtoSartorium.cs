@@ -1,7 +1,7 @@
 /*
 name: ProtoSartorium (Class)
 description: This script will get ProtoSartorium class.
-tags: proto sartorium, protosartorium, mithril man, dwakel, class
+tags: proto sartorium,protosartorium,mithril man,dwakel,class
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

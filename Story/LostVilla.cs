@@ -1,7 +1,7 @@
 /*
 name: Lost Villa
 description: This script will complete the questline in /lostvilla.
-tags: lostvilla, diabolical, story, hikari, ira
+tags: lostvilla,diabolical,story,hikari,ira
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

@@ -1,7 +1,7 @@
 /*
 name: Haku Village
 description: This script will complete "Haku Village" storyline.
-tags: story, quest, saga, dragons, dragon, haku, village, complete, all
+tags: story, quest,saga,dragons,dragon,haku,village, complete, all
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

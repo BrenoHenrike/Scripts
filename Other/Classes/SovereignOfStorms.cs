@@ -1,7 +1,7 @@
 /*
 name: Sovereign Of Storms Class
 description: This script will farm the Sovereign Of Storms class (without the ultras part).
-tags: sos, sovereign, sovereignofstorms, lothian treasury, queen iona, iona, class
+tags: sos,sovereign,sovereignofstorms,lothian treasury,queen iona,iona,class
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

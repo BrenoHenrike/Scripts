@@ -1,7 +1,7 @@
 /*
 name: Sunlight Zone
 description: This script completes the storyline in /sunlightzone.
-tags: age, of, ruin, saga, story, quest, zone, sunlight
+tags: age,of,ruin,saga,story,quest,zone,sunlight
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

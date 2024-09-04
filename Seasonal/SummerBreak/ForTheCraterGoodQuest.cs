@@ -1,7 +1,7 @@
 /*
 name: For The Crater Good Quest
 description: This will finish the For The Crater Good Quest.
-tags: quest, crater, big crater, summer-break, the crater good, rock bottom
+tags: quest, crater,big crater, summer-break,the crater good,rock bottom
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

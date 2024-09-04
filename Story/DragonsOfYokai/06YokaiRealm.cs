@@ -1,7 +1,7 @@
 /*
 name: Yokai Realm
 description: This script will complete "Yokai Realm" storyline.
-tags: story, quest, saga, dragons, dragon, yokai, realm, yokairealm, complete, all
+tags: story, quest,saga,dragons,dragon,yokai,realm,yokairealm, complete, all
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

@@ -1,7 +1,7 @@
 /*
 name: Classic Blade of Awe
 description: This bot will farm Classic Blade of Awe.
-tags: classic, blade, blade of awe, awe, good, weapon, original treasure chest, mysterious chest, unlocking the chest
+tags:classic,blade,blade of awe,awe,good,weapon,original treasure chest,mysterious chest,unlocking the chest
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

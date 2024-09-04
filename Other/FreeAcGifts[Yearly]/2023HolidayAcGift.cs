@@ -1,7 +1,7 @@
 /*
 name: Free Holiday AC Gift 2023
 description: This script will kill Burlingster in /borgars to get free 500 AC.
-tags: free, ac, burlingster, borgars, 500, 2023, holiday
+tags: free, ac, burlingster, borgars,500,2023,holiday
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

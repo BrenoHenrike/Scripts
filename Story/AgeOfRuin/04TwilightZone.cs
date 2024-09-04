@@ -1,7 +1,7 @@
 /*
 name: Twilight Zone
 description: This script completes the storyline in /twilightzone.
-tags: age, of, ruin, saga, story, quest, zone, twilight
+tags: age,of,ruin,saga,story,quest,zone,twilight
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

@@ -1,7 +1,7 @@
 /*
 name: Midnight Zone
 description: This script completes the storyline in /midnightzone.
-tags: age, of, ruin, saga, story, quest, zone, midnight
+tags: age,of,ruin,saga,story,quest,zone,midnight
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

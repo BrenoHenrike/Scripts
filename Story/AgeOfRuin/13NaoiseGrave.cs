@@ -1,7 +1,7 @@
 /*
 name: Naoise Grave
 description: This script completes the st oryline in /naoisegrave.
-tags: age, of, ruin, saga, story, quest, naoisegrave, queen victoria alteon
+tags: age,of,ruin,saga,story,quest,naoisegrave,queen victoria alteon
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

@@ -1,7 +1,7 @@
 /*
 name: Termina Temple
 description: This script completes the storyline in /terminatemple.
-tags: age, of, ruin, saga, story, quest, termina, temple
+tags: age,of,ruin,saga,story,quest,termina,temple
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

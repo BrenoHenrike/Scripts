@@ -1,7 +1,7 @@
 /*
 name: Elemental Dracomancer Class
 description: This script farms the Elemental Dracomancer class.
-tags: dracomancer, class, etherstorm
+tags: dracomancer,class,etherstorm
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

@@ -1,7 +1,7 @@
 /*
 name: Tainted Claymore
 description: This script farms the Tainted Claymore weapon.
-tags: claymore, nulgath, skew, warrior, blade, enchant, poisonous deal
+tags: claymore, nulgath,skew,warrior,blade,enchant,poisonous deal
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

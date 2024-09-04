@@ -1,7 +1,7 @@
 /*
 name: Farms Garish Remnant
 description: Farms the Garish Remnant from Shadows of War
-tags: garish remnant, shadows of war
+tags: Garish Remnant, shadows of war
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

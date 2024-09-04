@@ -1,7 +1,7 @@
 /*
 name: Age Of Ruin (All)
 description: This script completes the full Age Of Ruin saga.
-tags: age, ruin, saga, story, quest, termina, temple, ashray, village, sunlight, twilight, zone, yulgar, aria, midnight, abyssal, deep_water, trench_observation, balemorale, castle_eblana, loughshine, naoise grave, naoisegrave, lia tara, liatara, hill, hill of lia tara, castle gaheris, castlegaheris, castle, gaheris
+tags: age,ruin,saga,story,quest,termina,temple,ashray,village,sunlight,twilight,zone,yulgar,aria,midnight,abyssal,deep_water,trench_observation,balemorale,castle_eblana,loughshine,naoise grave,naoisegrave,lia tara,liatara,hill,hill of lia tara,castle gaheris,castlegaheris,castle,gaheris
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

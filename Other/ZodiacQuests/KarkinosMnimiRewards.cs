@@ -1,7 +1,7 @@
 /*
 name: Karkinos Mnimi Quest Rewards
 description: This script will get the "Karkinos Mnimi" [9195] quest rewards in /arcangrove.
-tags: karkinos, mnimi, quest rewards, arcangrove, zodiac, kylokos
+tags: karkinos,mnimi,quest rewards,arcangrove,zodiac,kylokos
 */
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;

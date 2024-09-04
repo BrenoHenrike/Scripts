@@ -1,7 +1,7 @@
 /*
 name: Empowered Weapons of Nulgath
 description: pick an empowered weapon, if you own teh requirements and 25 insignias, itll farm the empowered ver.
-tags: empowered, nulgath, reavers, bloodletter, overfiend blade, shadow spear, prismatic manslayers, legacy of nulgath, worshipper of nulgath, evovled void armor
+tags: Empowered, nulgath, reavers, bloodletter, overfiend blade, shadow spear, prismatic manslayers, legacy of nulgath, worshipper of nulgath, evovled void armor
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

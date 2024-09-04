@@ -1,7 +1,7 @@
 /*
 name: Friendship Merge
 description: This script will farm materials to buy items from the Friendship Merge shop.
-tags: friendship, merge, battleodium
+tags: friendship,merge,battleodium
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

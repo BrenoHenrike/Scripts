@@ -1,7 +1,7 @@
 /*
 name: ParagonInsanelyInsane
 description: Uses the appropriate pet to farm Legion Tokens
-tags: legion, legion token, thanatos, thanatos helm
+tags: legion, legion token, Thanatos, Thanatos Helm
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

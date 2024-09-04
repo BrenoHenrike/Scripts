@@ -1,7 +1,7 @@
 /*
 name: Wentira
 description: This script will complete the storyline in /wentira.
-tags: royal wentira, agung palakka, seasonal, indonesia
+tags: royal wentira,agung palakka,seasonal,indonesia
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

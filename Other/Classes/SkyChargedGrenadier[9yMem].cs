@@ -1,7 +1,7 @@
 /*
 name: SkyCharged Grenadier (9years Membership)
 description: This script farms the SkyCharged Grenadier class.
-tags: skycharged, grenadier, 9years, member, sky charged, captain stratos
+tags: skycharged,grenadier,9years,member,sky charged,captain stratos
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

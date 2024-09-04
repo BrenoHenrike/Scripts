@@ -1,7 +1,7 @@
 /*
 name: Yokai River
 description: This script will complete the storyline in /yokaistarriver.
-tags: star, festival, yokai, yokaistarriver, river, story, seasonal
+tags: star,festival,yokai,yokaistarriver,river,story,seasonal
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

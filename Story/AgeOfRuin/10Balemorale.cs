@@ -1,7 +1,7 @@
 /*
 name: Balemorale Castle
 description: This script completes the storyline in /balemorale.
-tags: age, of, ruin, saga, story, quest, balemorale, castle, bale morale
+tags: age,of,ruin,saga,story,quest,balemorale,castle,bale morale
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

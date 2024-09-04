@@ -1,7 +1,7 @@
 /*
 name: Diplomat Merge
 description: farms the materials and gets teh items from the diplomat merge in /castle
-tags: diplomate merge, castle, swordhavenrep, 
+tags: diplomate merge, castle, swordhavenrep,
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

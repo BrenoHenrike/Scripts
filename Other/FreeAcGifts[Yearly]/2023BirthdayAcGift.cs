@@ -1,7 +1,7 @@
 /*
 name: Free Birthday AC Gift 2023
 description: This script will kill Agitated Orb for free 500 ACs.
-tags: ac, free, 500, 2023, birthday
+tags: ac, free,500,2023,birthday
 */
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;

@@ -1,7 +1,7 @@
 /*
 name: Rustbucket (Class)
 description: This script will get ProtoSartorium class.
-tags: rustbucket, early game, class
+tags: Rustbucket, Early Game, class
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

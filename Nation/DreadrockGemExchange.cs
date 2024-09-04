@@ -1,7 +1,7 @@
 /*
 name: Dreadrock Gem Exchange (Tainted Gem Quest)
 description: This script will farm Tainted Gems using "Dreadrock Gem Exhange" quest.
-tags: tainted gem, dreadrock, dread rock, tainted, exchange, enntropy, shattered, polished, crystal
+tags: tainted gem,dreadrock,dread rock,tainted,exchange,enntropy,shattered,polished,crystal
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

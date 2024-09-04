@@ -1,7 +1,7 @@
 /*
 name: Haku War
 description: This script will complete "Haku War" storyline.
-tags: story, quest, saga, dragons, dragon, haku, war, hakuwar, complete, all
+tags: story, quest,saga,dragons,dragon,haku,war,hakuwar, complete, all
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

@@ -1,7 +1,7 @@
 /*
 name: Yguasu Falls Story
 description: This will complete the Yguasu Falls story.
-tags: story, quest, hero, heart, yguasu falls, seasonal
+tags: story, quest, hero, heart, Yguasu Falls, seasonal
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

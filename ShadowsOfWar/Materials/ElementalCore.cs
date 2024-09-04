@@ -1,7 +1,7 @@
 /*
 name: Farms Elemental Core
 description: Farms the Elemental Core from Shadows of War
-tags: elemental core, shadows of war
+tags: Elemental Core, shadows of war
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

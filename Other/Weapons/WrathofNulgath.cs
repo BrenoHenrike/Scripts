@@ -1,7 +1,7 @@
 /*
 name: Wrath of Nulgath
 description: This script will get Wrath of Nulgath.
-tags: wrathofnulgath, wrath, ravenous, weapon
+tags: wrathofnulgath,wrath,ravenous,weapon
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

@@ -1,7 +1,7 @@
 /*
 name: Ice Storm
 description: This script completes the questline in /icestorm.
-tags: ice, storm, seasonal, frostvale, july, storyline
+tags: ice,storm,seasonal,frostvale,july,storyline
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

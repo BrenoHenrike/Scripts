@@ -1,7 +1,7 @@
 /*
 name: Treasure Hunt Quest Rewards
 description: This script will get the rewards from the Treasure Hunt Quest.
-tags: treasure, hunt, quest, rewards, draco con, bob macguffin, spiked slayer mace, drakka defender
+tags: treasure, hunt, quest, rewards,draco con,bob macguffin,spiked slayer mace,drakka defender
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

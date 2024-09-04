@@ -1,7 +1,7 @@
 /*
 name: Cursed Wazikashi Pet
 description: gets the pet
-tags: cursed wazikashi, pet
+tags: Cursed Wazikashi, Pet
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreAdvanced.cs

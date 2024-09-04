@@ -1,7 +1,7 @@
 /*
 name: ChaosLab Mergeshop
 description: Gets any item you want in ChaosLab mergeshop
-tags: chaoslab, dage, alina, cysero, artix, beleen, mergeshop, daimyo, moglin, hamster, chaos, necropolis, bots, 
+tags: chaosLab, dage, alina, cysero, artix, beleen, mergeshop, daimyo, moglin, hamster, chaos, necropolis, bots,
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

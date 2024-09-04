@@ -1,7 +1,7 @@
 /*
 name: Approval And Favor
 description: This script will farm Nulgath's Approval and Archfiend's Favor.
-tags: nulgath, approval, favor, archfiend, farm, mats
+tags: nulgath,approval,favor,archfiend,farm,mats
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

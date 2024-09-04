@@ -1,7 +1,7 @@
 /*
 name: Chairman Platinum's Evolving Environmental Art Gallery
 description: This script will finish the storyline in /ebilart.
-tags: ebilart, ebil, art, ebil art, april fools, seasonal, story, ai, art gallery
+tags: ebilart,ebil,art,ebil art,april fools,seasonal,story,ai,art gallery
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

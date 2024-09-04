@@ -1,7 +1,7 @@
 /*
 name: Yokai Ascension Badge
 description: This will get the Yokai Ascension badge.
-tags: badge, yokai, ascension, dragons, dragons of yokai, yokai realm
+tags: badge, yokai,ascension,dragons,dragons of yokai, yokai realm
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

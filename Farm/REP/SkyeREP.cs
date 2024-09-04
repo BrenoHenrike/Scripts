@@ -1,7 +1,7 @@
 /*
 name: Skye REP
 description: This script will farm Skye reputation to rank 10.
-tags: skye, rep, rank, reputation
+tags: Skye, rep, rank, reputation
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

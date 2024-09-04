@@ -1,7 +1,7 @@
 /*
 name: Drakel Warlord (Member) Class
 description: This script farms the Drakel Warlord class.
-tags: warlord, member, class, deathpitarena
+tags: warlord,member,class,deathpitarena
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/Other/MergeShops/DeathPitArenaRepMerge.cs

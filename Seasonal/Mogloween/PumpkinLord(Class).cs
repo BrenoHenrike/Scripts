@@ -1,7 +1,7 @@
 /*
 name: (Class) Pumpkin Lord
 description: This script will get Pumpkin Lord class.
-tags: class, mogloween, seasonal, pumpkin, pumpkin lord, pumpkinlord
+tags: class, mogloween, seasonal, pumpkin,pumpkin lord,pumpkinlord
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
