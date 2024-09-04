@@ -474,8 +474,13 @@ public class CoreArmyLite
     {
         try
         {
-            string jsonData = Bot.Flash.Call("availableMonsters");
-            var monsters = JArray.Parse(jsonData);
+            string? jsonData = Bot.Flash.Call("availableMonsters");
+            if (string.IsNullOrEmpty(jsonData))
+            {
+                Core.Logger("Failed to retrieve available monsters data.");
+                return false;
+            }
+            JArray monsters = JArray.Parse(jsonData);
 
             if (monsters.Count == 0)
             {
@@ -837,9 +842,10 @@ public class CoreArmyLite
                         Core.Logger("Bugged lobby, we were the only one missing?");
                         break;
                     }
-                    Core.Logger(
-                        $"[{Bot.Map.CellPlayers.Count}/{partySize}]"
-                    );
+                    if (Bot.Map.CellPlayers != null)
+                        Core.Logger($"[{Bot.Map.CellPlayers.Count}/{partySize}]");
+                    else
+                        Core.Logger("CellPlayers is null.");
                     // Core.Logger(
                     //     $"[{Bot.Map.CellPlayers.Count()}/{partySize}] Waiting for {String.Join(" & ", missingPlayers)}"
                     // );
@@ -853,13 +859,13 @@ public class CoreArmyLite
                 i = 0;
             }
         }
-
-        void PlayerAFK()
-        {
-            Core.Logger("Anti-AFK engaged");
-            Core.Sleep(1500);
-            Bot.Send.Packet("%xt%zm%afk%1%false%");
-        }
+        // This was never used, so I commented it out
+        // void PlayerAFK()
+        // {
+        //     Core.Logger("Anti-AFK engaged");
+        //     Core.Sleep(1500);
+        //     Bot.Send.Packet("%xt%zm%afk%1%false%");
+        // }
     }
 
     public string[] Players()
