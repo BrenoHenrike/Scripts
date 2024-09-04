@@ -115,6 +115,11 @@ public class ArmyLR
 
         Bot.Options.SetFPS = 30;
 
+        Army.initArmy();
+        Army.setLogName(OptionsStorage);
+
+        Army.ClearLogFile();
+
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
 
@@ -134,11 +139,8 @@ public class ArmyLR
         Core.Logger("Dark War Nation/Legion Story");
         DWLN.DoBoth();
 
-        Army.initArmy();
-        Army.setLogName(OptionsStorage);
-
-        Army.ClearLogFile();
-
+        Core.Join("whitemap");
+        Army.waitForPartyCell("Enter", "Spawn");
         /* PREFARM ZONE */
 
         /* Step 1: Evil Rank 10 */
@@ -565,11 +567,13 @@ public class ArmyLR
         Bot.Send.Packet("%xt%zm%afk%1%false%");
     }
 
+    private int counter = 0;
     void ArmyHunt(string map, string item, ClassType classType, int quant = 1, bool isTemp = false)
     {
         if(checkIsDone(item, quant)) return;
 
-        Army.registerMessage(item);
+        Army.registerMessage($"{item}{counter}", false);
+        counter++;
         if (Army.isDone(20)) return;
 
         Core.PrivateRooms = true;
@@ -722,32 +726,40 @@ public class ArmyLR
     }
 
     private bool checkIsDone(string item, int quant){
-        Army.waitForSignal($"checking{item}{quant}", delPrevMsg: true);
-        Army.registerMessage(item);
+        Army.waitForPartyCell("Enter", "Spawn");
+        Army.waitForSignal($"checking{item}{quant}");
+        Army.registerMessage($"{item}{counter}", false);
+        counter++;
         if (Core.CheckInventory(item, quant)) Army.sendDone(20);
         if (Army.isDone(20)) return true;
         return false;
     }
 
     private bool repGoodEvil4(){
-        Army.waitForSignal($"checkinggoodevil4",delPrevMsg:  true);
-        Army.registerMessage("rep4");
+        Army.waitForPartyCell("Enter", "Spawn");
+        Army.waitForSignal($"checkinggoodevil4");
+        Army.registerMessage($"rep4{counter}", false);
+        counter++;
         if (Farm.FactionRank("Good") >= 4 && Farm.FactionRank("Evil") >= 4) Army.sendDone(20);
         if (Army.isDone(20)) return true;
         return false;
     }
 
     private bool repGoodEvilMax(){
-        Army.waitForSignal($"checkinggoodevilmax", delPrevMsg: true);
-        Army.registerMessage("repmax");
+        Army.waitForPartyCell("Enter", "Spawn");
+        Army.waitForSignal($"checkinggoodevilmax");
+        Army.registerMessage($"repmax{counter}",false);
+        counter++;
         if (Farm.FactionRank("Good") >= 10 && Farm.FactionRank("Evil") >= 10) Army.sendDone(20);
         if (Army.isDone(20)) return true;
         return false;
     }
     
     private bool checkGold(int quant){
-        Army.waitForSignal($"gold{quant}",delPrevMsg:  true);
-        Army.registerMessage("gold");
+        Army.waitForPartyCell("Enter", "Spawn");
+        Army.waitForSignal($"gold{quant}");
+        Army.registerMessage($"gold{counter}", false);
+        counter++;
         if (Bot.Player.Gold >= quant) Army.sendDone(20);
         if (Army.isDone(20)) return true;
         return false;
