@@ -1,7 +1,7 @@
 /*
 name: Farms Willpower
 description: Farms the Willpower from Shadows of War
-tags: Willpower, shadows of war
+tags: willpower, shadows of war
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

@@ -1,7 +1,7 @@
 /*
 name: IconicArtifactQuest
 description: Does the IconicArtifactQuest Quest, for the Krenos Spirit Katana
-tags: IconicArtifactQuest, treasure, hunt, treasure hunt, Krenos Spirit Katana
+tags: iconicartifactquest, treasure, hunt, treasure hunt, krenos spirit katana
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

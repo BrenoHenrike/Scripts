@@ -1,7 +1,7 @@
 /*
 name: The Hill of Lia Tara
 description: This script completes the st oryline in /liatarahill.
-tags: age,of,ruin,saga,story,quest,liatarahill,lia tara,liatara,hill,queen victoria alteon
+tags: age, of, ruin, saga, story, quest, liatarahill, lia tara, liatara, hill, queen victoria alteon
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

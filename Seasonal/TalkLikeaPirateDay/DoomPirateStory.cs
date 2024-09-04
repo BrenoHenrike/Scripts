@@ -1,7 +1,7 @@
 /*
 name: Doom Pirate
 description: This script will complete the storyline in /doompirate
-tags: doom,pirate,story,dusk,doompirate,gallaeon
+tags: doom, pirate, story, dusk, doompirate, gallaeon
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

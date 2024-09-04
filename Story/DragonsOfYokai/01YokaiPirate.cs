@@ -1,7 +1,7 @@
 /*
 name: Yokai Pirate
 description: This script will complete "Yokai Pirate" storyline.
-tags: story, quest,saga,dragons,dragon,yokai,pirate, complete, all
+tags: story, quest, saga, dragons, dragon, yokai, pirate, complete, all
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

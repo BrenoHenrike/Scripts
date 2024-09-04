@@ -1,7 +1,7 @@
 /*
 name: The Conqueror of Glacera
 description: This script will complete "The Conqueror of Glacera" [9492] quest.
-tags: glacera,karok,wings,fallen,runed,glaceran,loyalty,sigil,frigid,scythe,vengeance,conqueror
+tags: glacera, karok, wings, fallen, runed, glaceran, loyalty, sigil, frigid, scythe, vengeance, conqueror
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

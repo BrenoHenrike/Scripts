@@ -1,7 +1,7 @@
 /*
 name: Castle eblana
 description: This script completes the storyline in /castleeblana.
-tags: age,of,ruin,saga,story,quest,Castleeblana,castle,eblana,Castle eblana
+tags: age, of, ruin, saga, story, quest, castleeblana, castle, eblana, castle eblana
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

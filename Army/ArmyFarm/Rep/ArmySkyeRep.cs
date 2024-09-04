@@ -1,9 +1,8 @@
 /*
 name: Army Skye Rep
 description: Farm reputation with your army. Faction: Skye
-tags: army, reputation, Skye
+tags: army, reputation, skye
 */
-
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreFarms.cs

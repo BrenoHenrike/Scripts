@@ -1,7 +1,7 @@
 /*
 name: Mana Cradle
 description: This will finish the Mana Cradle quests.
-tags: story, quest, shadow-war, Mana Cradle
+tags: story, quest, shadow-war, mana cradle
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

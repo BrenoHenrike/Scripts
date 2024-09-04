@@ -1,7 +1,7 @@
 /*
 name: Toxic Blood Blade (Mem)
 description: This script will complete the quest for Toxic Blood Blade.
-tags: nation,bido,birthday,seasonal,another science experiment
+tags: nation, bido, birthday, seasonal, another science experiment
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

@@ -1,7 +1,7 @@
 /*
 name: ShadowReaper of Doom
 description: This bot farms the requiered materials to farm the ShadowReaper of Doom
-tags: BLoD, mirror, realm, token, undead, paladin
+tags: blod, mirror, realm, token, undead, paladin
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

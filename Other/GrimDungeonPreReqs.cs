@@ -1,7 +1,7 @@
 /*
 name: Grimskull Dungeon Pre Reqs
 description: This script will complete the quest prereqs to unlock Grimskull Dungeon.
-tags: grim,dungeon,grimskull,trolling,rep,skullcrusher,gaol,grimgaol,gaolcell
+tags: grim, dungeon, grimskull, trolling, rep, skullcrusher, gaol, grimgaol, gaolcell
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

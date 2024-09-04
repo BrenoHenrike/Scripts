@@ -1,7 +1,7 @@
 /*
 name: Evolved Leprechaun (Seasonal) Class
 description: This script farms the Evolved Leprechaun class.
-tags: seasonal,class,leprechaun,lucky day,shamrock
+tags: seasonal, class, leprechaun, lucky day, shamrock
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

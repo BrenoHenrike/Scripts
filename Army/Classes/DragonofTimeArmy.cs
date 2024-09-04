@@ -199,7 +199,8 @@ public class DoTArmy
         Core.BankingBlackList.AddRange(QuestRewards);
         Core.SetOptions(disableClassSwap: true);
 
-        DoT(Bot.Config!.Get<bool>("sellToSync"));
+        Core.Logger("This script, and any army script that requires more then 1 map is entirely broken, and there is no plan to fix them, for army stuff please use GrimLi");
+        // DoT(Bot.Config!.Get<bool>("sellToSync"));
 
         Core.SetOptions(false);
     }

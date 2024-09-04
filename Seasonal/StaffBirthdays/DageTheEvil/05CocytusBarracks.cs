@@ -1,7 +1,7 @@
 /*
 name: Cocytus Barracks
 description: This script completes the storyline in \cocytusbarracks.
-tags: cocytusbarracks,cocytus,barracks, seasonal, dage, story
+tags: cocytusbarracks, cocytus, barracks, seasonal, dage, story
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

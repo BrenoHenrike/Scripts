@@ -1,7 +1,7 @@
 /*
 name: ShadowBlast Arena
 description: This will finish the ShadowBlast Arena quest.
-tags: story, quest, nation, ShadowBlast Arena
+tags: story, quest, nation, shadowblast arena
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

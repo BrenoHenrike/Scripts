@@ -1,9 +1,8 @@
 /*
 name: Hollowborn Lich King - Heat Treatment
-description: does the 'Heat Treatment' part of hollowborn Lich King 
-tags: hollowborn Lich King, hollowborn, Heat Treatment
+description: does the 'Heat Treatment' part of hollowborn Lich King
+tags: hollowborn lich king, hollowborn, heat treatment
 */
-
 //cs_include Scripts/Hollowborn/HollowbornLichKing/CoreHollowbornLichKing.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreBots.cs

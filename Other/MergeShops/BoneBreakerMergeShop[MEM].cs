@@ -1,7 +1,7 @@
 /*
 name: Bonebreaker Merge
 description: This bot will farm the items belonging to the selected mode for the Bonebreaker Merge [1051] in /bonebreak
-tags: bonebreaker, merge, bonebreak, outcast, boneshattering, brokenbone, skull, bonepiercer, Membership
+tags: bonebreaker, merge, bonebreak, outcast, boneshattering, brokenbone, skull, bonepiercer, membership
 */
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreBots.cs

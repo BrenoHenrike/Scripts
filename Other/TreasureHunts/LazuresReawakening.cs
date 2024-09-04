@@ -1,7 +1,7 @@
 /*
 name: Lazure's Reawakening
 description: This script will complete the Lazure's Reawakening quest.
-tags: hollowborn, lae, lazure, reawakening, lazure's awakened skull,quest
+tags: hollowborn, lae, lazure, reawakening, lazure's awakened skull, quest
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

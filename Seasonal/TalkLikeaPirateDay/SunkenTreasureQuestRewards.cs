@@ -1,7 +1,7 @@
 /*
 name: Sunken Treasure Quest Rewards
 description: Farms "All Drops" From Quest: "Sunken Treasure?".
-tags: sunken treasure, drops, set,pirate,tlapd,talk-like-a-pirate-day,seasonal
+tags: sunken treasure, drops, set, pirate, tlapd, talk-like-a-pirate-day, seasonal
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

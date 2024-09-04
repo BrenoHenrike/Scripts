@@ -85,7 +85,8 @@ public class VHLArmy
         Core.SetOptions();
         Core.BankingBlackList.AddRange(QuestRewards.Concat(ItemsToFarm).ToArray());
 
-        GetVHL();
+        Core.Logger("This script, and any army script that requires more then 1 map is entirely broken, and there is no plan to fix them, for army stuff please use GrimLi");
+        // GetVHL();
 
         Core.SetOptions(false);
     }

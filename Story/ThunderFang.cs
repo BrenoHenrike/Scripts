@@ -1,7 +1,7 @@
 /*
 name: Thunderfang Story
 description: does the quest from dragonmaster stormscythe in /thunderfang
-tags: story, thunderfang, StormCacheMerge
+tags: story, thunderfang, stormcachemerge
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

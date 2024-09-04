@@ -1,7 +1,7 @@
 /*
 name: Draco Con Story
 description: This will finish the Draco Con story.
-tags: story, quest, dracocon,draco,con
+tags: story, quest, dracocon, draco, con
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

@@ -1,7 +1,7 @@
 /*
 name: Void Refuge Story
 description: This script will complete the storyline in /voidrefuge
-tags: voidrefuge,refuge,nation,nulgath,story,ana di carcano,gravelyn
+tags: voidrefuge, refuge, nation, nulgath, story, ana di carcano, gravelyn
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

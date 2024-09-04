@@ -2048,6 +2048,7 @@ public class CoreBots
     /// <param name="itemID">ID of the choose-able reward item</param>
     public void ChainComplete(int questID, int itemID = -1)
     {
+        Bot.Drops.Add(itemID);
         EnsureAccept(questID);
         Sleep();
         EnsureCompleteMulti(questID, itemID);
