@@ -1,6 +1,7 @@
 
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/Army/CoreArmyLite.cs
+//cs_include Scripts/CoreFarms.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Models.Quests;
@@ -24,25 +25,13 @@ public class ArmyPrinceDarkonsPoleaxeMats
         sArmy.player4,
         sArmy.player5,
         sArmy.player6,
-		new Option<string>(
-            "ClassToUse",
-            "your class",
-            "class to use",
-            "classsssss"
-        ),
-		new Option<string>(
-            "SafeClass",
-            "your safe class",
-            "any class that not used in this bot",
-            "classsssss"
-        ),
         sArmy.packetDelay,
         CoreBots.Instance.SkipOptions
     };
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.SetOptions(disableClassSwap: false);
+        Core.SetOptions();
         Bot.Options.SetFPS = 30;
 
         Core.PrivateRooms = true;
@@ -135,7 +124,7 @@ public class ArmyPrinceDarkonsPoleaxeMats
             Core.RegisterQuests(questId);
         
 
-        Army.DivideOnCellsPriority(cells, priorityCell: priorityCell, setAggro: true, log: true);
+        Army.DivideOnCellsPriority(cells, priorityCell: priorityCell, setAggro: true, log: true, equipClass: true);
 
         Core.FarmingLogger(item, quant);
         Core.Logger($"army: starting {quant} {item}");
