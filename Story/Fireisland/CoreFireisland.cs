@@ -147,16 +147,12 @@ public class CoreFireIsland
         Story.PreLoad(this);
 
         //map aggro from pyrewatch
-        while (Bot.ShouldExit && Bot.Map.Name != "feverfew")
+        while (!Bot.ShouldExit && Bot.Player.InCombat)
         {
-            Core.Jump("Enter", "Spawn");
-            Bot.Wait.ForCombatExit();
+            Core.JumpWait();
             Core.Sleep();
             if (!Bot.Player.InCombat)
-            {
-                Core.Join("feverfew");
-                Bot.Wait.ForMapLoad("feverfew");
-            }
+                break;
         }
 
         //Quench the Flames
