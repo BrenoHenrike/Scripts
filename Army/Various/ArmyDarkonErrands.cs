@@ -124,7 +124,7 @@ public class ArmyDarkonErrands
                 break;
         }
 
-        
+
 
         while (!Bot.ShouldExit && isTemp ? !Bot.TempInv.Contains(item, quant) : !Core.CheckInventory(item, quant))
             Bot.Combat.Attack("*");

@@ -29,7 +29,7 @@ public class CoreArmyLite
         Core.RunCore();
     }
 
-     #region Army Logging
+    #region Army Logging
     public ArmyLogging armyLogging = new();
 
     public void setLogName(string name)
@@ -470,56 +470,57 @@ public class CoreArmyLite
         }
     }
 
-     public bool IsMonsterAlive(string monster)
+    public bool IsMonsterAlive(string monster)
     {
-        try{
+        try
+        {
             string jsonData = Bot.Flash.Call("availableMonsters");
-        var monsters = JArray.Parse(jsonData);
+            var monsters = JArray.Parse(jsonData);
 
-        if (monsters.Count == 0)
-        {
-            return false;
-        }
+            if (monsters.Count == 0)
+            {
+                return false;
+            }
 
-        if (monster == "*")
-        {
+            if (monster == "*")
+            {
+                foreach (var mon in monsters)
+                {
+                    var intState = mon["intState"]?.ToString();
+                    if (string.IsNullOrEmpty(intState) || intState == "1" || intState == "2")
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+
+            bool isByMapID = monster.StartsWith("id-");
+            string identifier = isByMapID ? monster.Substring(3) : monster;
+
             foreach (var mon in monsters)
             {
-                var intState = mon["intState"]?.ToString();
-                if (string.IsNullOrEmpty(intState) || intState == "1" || intState == "2")
+                bool match = isByMapID
+                    ? mon["MonMapID"]?.ToString() == identifier
+                    : mon["strMonName"]?.ToString() == identifier;
+
+                if (match)
                 {
-                    return true;
+                    var intState = mon["intState"]?.ToString();
+                    if (string.IsNullOrEmpty(intState) || intState == "1" || intState == "2")
+                    {
+                        return true;
+                    }
+                    else if (intState == "0")
+                    {
+                        return false;
+                    }
                 }
             }
-            return false;
+
+            return true;
         }
-
-        bool isByMapID = monster.StartsWith("id-");
-        string identifier = isByMapID ? monster.Substring(3) : monster;
-
-        foreach (var mon in monsters)
-        {
-            bool match = isByMapID
-                ? mon["MonMapID"]?.ToString() == identifier
-                : mon["strMonName"]?.ToString() == identifier;
-
-            if (match)
-            {
-                var intState = mon["intState"]?.ToString();
-                if (string.IsNullOrEmpty(intState) || intState == "1" || intState == "2")
-                {
-                    return true;
-                }
-                else if (intState == "0")
-                {
-                    return false;
-                }
-            }
-        }
-
-        return true;
-        }
-        catch{return true;}
+        catch { return true; }
 
     }
 
@@ -545,7 +546,7 @@ public class CoreArmyLite
             // killing monster
             if (IsMonsterAlive("*"))
             {
-				Bot.Combat.Attack("*");
+                Bot.Combat.Attack("*");
             }
 
             Bot.Sleep(100);
@@ -573,7 +574,7 @@ public class CoreArmyLite
 
             if (IsMonsterAlive("*"))
             {
-				Bot.Combat.Attack("*");
+                Bot.Combat.Attack("*");
             }
 
             Bot.Sleep(100);
@@ -601,7 +602,7 @@ public class CoreArmyLite
 
             if (IsMonsterAlive("*"))
             {
-				Bot.Combat.Attack("*");
+                Bot.Combat.Attack("*");
             }
 
             Bot.Sleep(100);
@@ -751,7 +752,8 @@ public class CoreArmyLite
             foreach (string p in _players)
             {
                 string cell = cells[cellCount];
-                if (username == p){
+                if (username == p)
+                {
                     Core.Logger($"i am on cell: {cell}");
                     Core.Jump(cell, "Left");
                 }
@@ -767,12 +769,17 @@ public class CoreArmyLite
                 string p = _players[i];
                 string cell = (cells.Length > 0 && i < cells.Length) ? cells[i] : priorityCell; // Get the cell for the current player
 
-                if (username == p){
+                if (username == p)
+                {
                     Core.Logger($"i am on cell: {cell}");
-                    if (equipClass){
-                        if (cell.Equals(priorityCell)){
+                    if (equipClass)
+                    {
+                        if (cell.Equals(priorityCell))
+                        {
                             Core.EquipClass(ClassType.Solo);
-                        } else{
+                        }
+                        else
+                        {
                             Core.EquipClass(ClassType.Farm);
                         }
                     }
@@ -799,7 +806,7 @@ public class CoreArmyLite
         }
     }
 
-     public void waitForPartyCell(string? cell = null, string? pad = null, int? playerCount = null)
+    public void waitForPartyCell(string? cell = null, string? pad = null, int? playerCount = null)
     {
         int i = 0;
         if (cell != null)
