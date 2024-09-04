@@ -77,7 +77,7 @@ public class AutoAttackSubstitute
                         // If monstersArray is empty, attack all monsters in the cell
                         if (monstersArray.Length == 0)
                         {
-                            foreach (Monster mob in Bot.Monsters.MapMonsters
+                            foreach (Monster mob in Bot.Monsters.CurrentAvailableMonsters
                                 .Where(m => m.Name != null && m.Cell == Bot.Player.Cell))
                             {
                                 if (mob.Name == null)
@@ -87,14 +87,30 @@ public class AutoAttackSubstitute
 
                                 if (Bot.Player.Cell != RespawnCell)
                                     Core.Jump(RespawnCell);
-
-                                Bot.Kill.Monster(mob);
+                                bool ded = false;
+                                Bot.Events.MonsterKilled += b => ded = true;
+                                while (!Bot.ShouldExit && !ded)
+                                {
+                                    while (!Bot.ShouldExit && Bot.Player.Cell != mob.Cell)
+                                    {
+                                        Core.Jump(mob.Cell, "Left");
+                                        Bot.Wait.ForCellChange(mob.Cell);
+                                    }
+                                    if (!Bot.Combat.StopAttacking)
+                                        Bot.Combat.Attack(mob);
+                                    if (mob.MaxHP == 1)
+                                    {
+                                        ded = true;
+                                        continue;
+                                    }
+                                    Core.Sleep();
+                                }
                             }
                         }
                         else
                         {
                             // If monstersArray is not empty, attack only specified monsters in the cell
-                            foreach (Monster mob in Bot.Monsters.MapMonsters
+                            foreach (Monster mob in Bot.Monsters.CurrentAvailableMonsters
                                 .Where(m => m?.Name != null && m.Cell == Bot.Player.Cell && monstersArray.Contains(m.Name)))
                             {
                                 if (mob.Name == null)
@@ -104,8 +120,24 @@ public class AutoAttackSubstitute
 
                                 if (Bot.Player.Cell != RespawnCell)
                                     Core.Jump(RespawnCell);
-
-                                Bot.Kill.Monster(mob.MapID);
+                                bool ded = false;
+                                Bot.Events.MonsterKilled += b => ded = true;
+                                while (!Bot.ShouldExit && !ded)
+                                {
+                                    while (!Bot.ShouldExit && Bot.Player.Cell != mob.Cell)
+                                    {
+                                        Core.Jump(mob.Cell, "Left");
+                                        Bot.Wait.ForCellChange(mob.Cell);
+                                    }
+                                    if (!Bot.Combat.StopAttacking)
+                                        Bot.Combat.Attack(mob);
+                                    if (mob.MaxHP == 1)
+                                    {
+                                        ded = true;
+                                        continue;
+                                    }
+                                    Core.Sleep();
+                                }
                             }
                         }
                     }
@@ -139,7 +171,25 @@ public class AutoAttackSubstitute
                                     continue;
 
                                 while (!Bot.ShouldExit && !Bot.Player.Alive) { }
-                                Bot.Hunt.Monster(mob.Name);
+
+                                bool ded = false;
+                                Bot.Events.MonsterKilled += b => ded = true;
+                                while (!Bot.ShouldExit && !ded)
+                                {
+                                    while (!Bot.ShouldExit && Bot.Player.Cell != mob.Cell)
+                                    {
+                                        Core.Jump(mob.Cell, "Left");
+                                        Bot.Wait.ForCellChange(mob.Cell);
+                                    }
+                                    if (!Bot.Combat.StopAttacking)
+                                        Bot.Combat.Attack(mob);
+                                    if (mob.MaxHP == 1)
+                                    {
+                                        ded = true;
+                                        continue;
+                                    }
+                                    Core.Sleep();
+                                }
                             }
                         }
                     }
