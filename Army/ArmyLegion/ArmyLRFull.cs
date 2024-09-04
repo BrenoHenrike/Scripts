@@ -169,12 +169,12 @@ public class ArmyLR
         Core.Logger("Step 7: LF1");
         ArmyLF1(1);
 
-        /* Step 9: LF2, thx tato :TatoGasm: */
-        Core.Logger("Step 9: LF2");
+        /* Step 8: LF2, thx tato :TatoGasm: */
+        Core.Logger("Step 8: LF2");
         ArmyFL2(1);
 
-        /* Step 10: LF3 and Finish */
-        Core.Logger("Step 10: LF3 and Finish");
+        /* Step 9: LF3 and Finish */
+        Core.Logger("Step 9: LF3 and Finish");
         ArmyLF3(2);
 
         Adv.RankUpClass("Legion Revenant");
@@ -184,8 +184,7 @@ public class ArmyLR
 
     public void ArmyLF1(int quant = 20)
     {
-        
-        if(checkIsDone("Revenant's Speelscroll", quant)) return;
+        if(checkIsDone("Revenant's Spellscroll", quant)) return;
 
         Core.Join("whitemap");
         Army.waitForPartyCell("Enter", "Spawn");
@@ -196,10 +195,11 @@ public class ArmyLR
         Core.AddDrop(LF1);
 
         Core.FarmingLogger("Revenant's Spellscroll", quant);
-        Core.RegisterQuests(6897);
+        // Core.RegisterQuests(6897);
         Bot.Quests.UpdateQuest(2060);
         while (!Bot.ShouldExit)
         {
+            Core.EnsureAccept(6897);
             ArmyHunt("judgement", "Aeacus Empowered", ClassType.Solo, 50, false);
             // //Army.waitForParty("revenant");
             ArmyHunt("revenant", "Tethered Soul", ClassType.Farm, 300);
@@ -208,9 +208,9 @@ public class ArmyLR
             // //Army.waitForParty("necrodungeon");
             ArmyHunt("necrodungeon", "Dracolich Contract", ClassType.Farm, 1000);
             // //Army.waitForParty("judgement");
-
+            if(Bot.Quests.CanComplete(6897)) Bot.Quests.Complete(6897);
             Bot.Wait.ForPickup("Revenant's Spellscroll");
-            if(checkIsDone("Revenant's Speelscroll", quant)) break;
+            if(checkIsDone("Revenant's Spellscroll", quant)) break;
             while(!Bot.ShouldExit && !Army.isEmpty()) Army.ClearLogFile();
         }
         Core.CancelRegisteredQuests();
@@ -227,11 +227,12 @@ public class ArmyLR
 
         Core.AddDrop(LF2);
 
-        Core.RegisterQuests(6898);
+        // Core.RegisterQuests(6898);
         Core.FarmingLogger("Conquest Wreath", quant);
 
         while (!Bot.ShouldExit)
         {
+            Core.EnsureAccept(6898);
             ArmyHunt("doomvault", "Grim Cohort Conquered", ClassType.Farm, 500);
             // //Army.waitForParty("mummies");
             ArmyHunt("mummies", "Ancient Cohort Conquered", ClassType.Farm, 500);
@@ -252,6 +253,7 @@ public class ArmyLR
             // //Army.waitForParty("doomwood");
             ArmyHunt("doomwood", "Doomwood Cohort Conquered", ClassType.Farm, 500);
             // //Army.waitForParty("doomvault");
+            if(Bot.Quests.CanComplete(6898)) Bot.Quests.Complete(6898);
 
             Bot.Wait.ForPickup("Conquest Wreath");
             if(checkIsDone("Conquest Wreath", quant)) break;
@@ -270,13 +272,15 @@ public class ArmyLR
         Army.waitForSignal("armyLF3ready");
 
         Core.FarmingLogger("Exalted Crown", quant);
-        Core.RegisterQuests(6899);
+        // Core.RegisterQuests(6899);
         Core.AddDrop(LF3);
         while (!Bot.ShouldExit)
         {
+            Core.EnsureAccept(6899);
             Adv.BuyItem("underworld", 216, "Hooded Legion Cowl");
             ArmyDarkTokenOfDage(100);
             ArmyLTs(4000);
+            if(Bot.Quests.CanComplete(6899)) Bot.Quests.Complete(6899);
             Bot.Wait.ForPickup("Exalted Crown");
             if(checkIsDone("Exalted Crown", quant)) break;
             while(!Bot.ShouldExit && !Army.isEmpty()) Army.ClearLogFile();
@@ -510,7 +514,7 @@ public class ArmyLR
 
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
-        if (Array.IndexOf(Army.Players(), Core.Username()) > 1){
+        if (map.Equals("revenant") && Array.IndexOf(Army.Players(), Core.Username()) > 1){
             Core.PrivateRoomNumber += 1;
         }
 
@@ -730,8 +734,18 @@ public class ArmyLR
     }
 
     private bool checkIsDone(string item, int quant){
-        Army.waitForPartyCell("Enter", "Spawn");
-        Army.waitForSignal($"checking{item}{quant}{counter}");
+        string[] players = Army.Players();
+        string[] revenant1 = new string[] {players[0], players[1]};
+        string[] revenant2 = new string[] {players[2], players[3]};
+        
+        if (Bot.Map.Name.Equals("revenant")){
+            if (Array.IndexOf(Army.Players(), Core.Username()) > 1){
+                Army.waitForSignal($"revenant2{counter}", revenant2);
+            } else Army.waitForSignal($"revenant1{counter}", revenant1);
+            counter++;
+        }
+        else Army.waitForSignal($"checking{item}{quant}{counter}");
+        
         Army.registerMessage($"{item}{counter}", false);
         counter++;
         if (Core.CheckInventory(item, quant)) Army.sendDone(20);
