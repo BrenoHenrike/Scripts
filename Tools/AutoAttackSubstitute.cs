@@ -56,6 +56,7 @@ public class AutoAttackSubstitute
         Core.RegisterQuests(questIdsArray);
 
         Core.EquipClass(Bot.Config?.Get<ClassType>("classType") == ClassType.Solo ? ClassType.Solo : ClassType.Farm);
+        string RespawnCell = Bot.Player.Cell; // Store the initial cell
 
         foreach (AttackMode mode in Enum.GetValues(typeof(AttackMode)))
         {
@@ -70,7 +71,6 @@ public class AutoAttackSubstitute
                         ? "Attacking: **EVERYTHING IN THIS CELL**"
                         : $"Aggro: enabled\nAttacking:\n{string.Join("\n", monstersArray.Select(m => $"\"{m}\""))}");
 
-                    string RespawnCell = Bot.Player.Cell; // Store the initial cell
                     // Continuously attack monsters in the cell until bot should exit
                     while (!Bot.ShouldExit)
                     {
@@ -91,9 +91,9 @@ public class AutoAttackSubstitute
                                 Bot.Events.MonsterKilled += b => ded = true;
                                 while (!Bot.ShouldExit && !ded)
                                 {
-                                    while (!Bot.ShouldExit && Bot.Player.Cell != mob.Cell)
+                                    while (!Bot.ShouldExit && Bot.Player.Cell != RespawnCell)
                                     {
-                                        Core.Jump(mob.Cell, "Left");
+                                        Core.Jump(RespawnCell);
                                         Bot.Wait.ForCellChange(mob.Cell);
                                     }
                                     if (!Bot.Combat.StopAttacking)
@@ -124,9 +124,9 @@ public class AutoAttackSubstitute
                                 Bot.Events.MonsterKilled += b => ded = true;
                                 while (!Bot.ShouldExit && !ded)
                                 {
-                                    while (!Bot.ShouldExit && Bot.Player.Cell != mob.Cell)
+                                    while (!Bot.ShouldExit && Bot.Player.Cell != RespawnCell)
                                     {
-                                        Core.Jump(mob.Cell, "Left");
+                                        Core.Jump(RespawnCell);
                                         Bot.Wait.ForCellChange(mob.Cell);
                                     }
                                     if (!Bot.Combat.StopAttacking)
