@@ -150,32 +150,32 @@ public class ArmyLR
 
         /* Step 3: 3000 Dage Favor */
         Core.Logger("Step 3: 3000 Dage Favor");
-        ArmyDageFavor(200);
+        ArmyDageFavor();
 
         /* Step 4: 10 Emblem of Dage */
         Core.Logger("Step 4: 10 Emblem of Dage");
-        ArmyEmblemOfDage(1);
+        ArmyEmblemOfDage(10);
 
         /* Step 5: 300 Diamond Token of Dage */
         Core.Logger("Step 5: 300 Diamond Token of Dage");
-        ArmyDiamondTokenOfDage(5);
+        ArmyDiamondTokenOfDage();
 
         /* Step 6: 600 Dark Token */
         Core.Logger("Step 6: 600 Dark Token");
-        ArmyDarkTokenOfDage(5);
+        ArmyDarkTokenOfDage();
         /* FINISH */
 
         /* Step 7: LF1 */
         Core.Logger("Step 7: LF1");
-        ArmyLF1(1);
+        ArmyLF1();
 
         /* Step 8: LF2, thx tato :TatoGasm: */
         Core.Logger("Step 8: LF2");
-        ArmyFL2(1);
+        ArmyFL2();
 
         /* Step 9: LF3 and Finish */
         Core.Logger("Step 9: LF3 and Finish");
-        ArmyLF3(2);
+        ArmyLF3();
 
         Adv.RankUpClass("Legion Revenant");
         Bot.Events.PlayerAFK -= PlayerAFK;
