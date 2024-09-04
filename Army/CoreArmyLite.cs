@@ -4,30 +4,24 @@ description: null
 tags: null
 */
 //cs_include Scripts/CoreBots.cs
-using System;
-using System.Collections.Generic;
+//cs_include Scripts/CoreFarms.cs
 using System.Diagnostics;
-using System.IO;
 using System.Text;
 using System.Xml;
-using CommunityToolkit.Mvvm.DependencyInjection;
 using Newtonsoft.Json;
 using Skua.Core.Interfaces;
 using Skua.Core.Models;
 using Skua.Core.Models.Monsters;
 using Skua.Core.Models.Players;
 using Skua.Core.Options;
-using Skua.Core.ViewModels;
 using Skua.Core.Models.Servers;
-using System.Diagnostics;
-using System.Text;
-using System.Xml;
 using Newtonsoft.Json.Linq;
 
 public class CoreArmyLite
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
+    private CoreFarms Farm = new();
     List<string> cellToAggro = new();
 
     public void ScriptMain(IScriptInterface bot)
@@ -36,7 +30,7 @@ public class CoreArmyLite
     }
 
      #region Army Logging
-    public ArmyLogging armyLogging = new ArmyLogging();
+    public ArmyLogging armyLogging = new();
 
     public void setLogName(string name)
     {
@@ -100,14 +94,15 @@ public class CoreArmyLite
         return false;
     }
 
-    public bool isDone(int tryCount = 1)
+    public bool isDone(int tryCount = 1, string[]? players = null)
     {
         int attempts = 0;
         while (attempts < tryCount)
         {
             try
             {
-                if (armyLogging.isAlreadyInLog(Players()))
+                string[] playerArray = players ?? Players();
+                if (armyLogging.isAlreadyInLog(playerArray))
                     return true;
             }
             catch { }
@@ -122,7 +117,7 @@ public class CoreArmyLite
     {
         Bot.Events.ScriptStopping += Events_ScriptStopping;
 
-        bool Events_ScriptStopping(Exception? e)
+        static bool Events_ScriptStopping(Exception? e)
         {
             return true;
         }
@@ -466,8 +461,7 @@ public class CoreArmyLite
         {
             if (IsMonsterAlive(monsterList[i]))
             {
-                int x = 0;
-                if (Int32.TryParse(monsterList[i], out x))
+                if (Int32.TryParse(monsterList[i], out int x))
                 {
                     Bot.Combat.Attack(x);
                     return;
@@ -533,7 +527,6 @@ public class CoreArmyLite
     {
         bool needSendDone = true;
         int countCheck = 0;
-        int skillIndex = 0;
         while (!Bot.ShouldExit)
         {
             if (Core.CheckInventory(item, quant) && needSendDone)
@@ -550,6 +543,62 @@ public class CoreArmyLite
                 countCheck = 0;
 
             // killing monster
+            if (IsMonsterAlive("*"))
+            {
+				Bot.Combat.Attack("*");
+            }
+
+            Bot.Sleep(100);
+        }
+    }
+
+    public void StartFarmRep(string faction, int rank)
+    {
+        bool needSendDone = true;
+        int countCheck = 0;
+        while (!Bot.ShouldExit)
+        {
+            if (Farm.FactionRank(faction) >= rank && needSendDone)
+            {
+                if (sendDone())
+                    needSendDone = false;
+            }
+            if (!needSendDone && isDone() && countCheck == 10)
+            {
+                break;
+            }
+            countCheck++;
+            if (countCheck > 10)
+                countCheck = 0;
+
+            if (IsMonsterAlive("*"))
+            {
+				Bot.Combat.Attack("*");
+            }
+
+            Bot.Sleep(100);
+        }
+    }
+
+    public void StartFarmGold(int quant)
+    {
+        bool needSendDone = true;
+        int countCheck = 0;
+        while (!Bot.ShouldExit)
+        {
+            if (Bot.Player.Gold >= quant && needSendDone)
+            {
+                if (sendDone())
+                    needSendDone = false;
+            }
+            if (!needSendDone && isDone() && countCheck == 10)
+            {
+                break;
+            }
+            countCheck++;
+            if (countCheck > 10)
+                countCheck = 0;
+
             if (IsMonsterAlive("*"))
             {
 				Bot.Combat.Attack("*");
@@ -676,7 +725,7 @@ public class CoreArmyLite
         }
     }
 
-    public void DivideOnCellsPriority(string[] cells, string priorityCell, bool setAggro = false, bool log = false)
+    public void DivideOnCellsPriority(string[] cells, string priorityCell, bool setAggro = false, bool log = false, bool equipClass = false)
     {
         // Parsing all the player names from an unspecified amount of player name options
         string[] _players = Players();
@@ -704,7 +753,6 @@ public class CoreArmyLite
                 string cell = cells[cellCount];
                 if (username == p){
                     Core.Logger($"i am on cell: {cell}");
-                    Core.EquipClass(ClassType.Farm);
                     Core.Jump(cell, "Left");
                 }
                 cellCount = cellCount == cells.Length - 1 ? 0 : cellCount + 1;
@@ -721,10 +769,12 @@ public class CoreArmyLite
 
                 if (username == p){
                     Core.Logger($"i am on cell: {cell}");
-                    if (cell.Equals(priorityCell)){
-                        Core.EquipClass(ClassType.Solo);
-                    } else{
-                        Core.EquipClass(ClassType.Farm);
+                    if (equipClass){
+                        if (cell.Equals(priorityCell)){
+                            Core.EquipClass(ClassType.Solo);
+                        } else{
+                            Core.EquipClass(ClassType.Farm);
+                        }
                     }
                     Core.Jump(cell, "Left");
                 }
@@ -732,10 +782,10 @@ public class CoreArmyLite
         }
     }
 
-    public void waitForSignal(string message, string waitIn = "Enter", bool delPrevMsg = false)
+    public void waitForSignal(string message, string[]? players = null, bool delPrevMsg = false)
     {
         registerMessage(message, delPrevMsg);
-        while (!Bot.ShouldExit && Bot.Player.Cell == waitIn)
+        while (!Bot.ShouldExit)
         {
             sendDone(10);
             if (isAlreadyInLog(new string[] { Bot.Player.Username.ToLower() }))
@@ -744,27 +794,25 @@ public class CoreArmyLite
         }
         while (!Bot.ShouldExit)
         {
-            if (isDone(10))
-                break;
+            if (players == null ? isDone(10) : isDone(10, players)) break;
             Bot.Sleep(500);
         }
     }
 
-     public void waitForPartyCell(string? cell = null, string? pad = null)
+     public void waitForPartyCell(string? cell = null, string? pad = null, int? playerCount = null)
     {
         int i = 0;
         if (cell != null)
-            Core.Jump(cell, pad != null ? pad : "Left");
+            Core.Jump(cell, pad ?? "Left");
 
-        Bot.Events.PlayerAFK += PlayerAFK;
         string[] players = Players();
-        int partySize = players.Length;
+        int partySize = playerCount ?? players.Length;
 
         while (
             !Bot.ShouldExit
             && (
-                cell != null && Bot.Map.CellPlayers != null && Bot.Map.CellPlayers.Count() > 0
-                    ? Bot.Map.CellPlayers.Count()
+                cell != null && Bot.Map.CellPlayers != null && Bot.Map.CellPlayers.Count > 0
+                    ? Bot.Map.CellPlayers.Count
                     : Bot.Map.PlayerCount
             ) != partySize
         )
@@ -774,17 +822,20 @@ public class CoreArmyLite
 
             if (i >= 6)
             {
-                if (cell != null && Bot.Map.PlayerNames != null && Bot.Map.PlayerNames.Count() > 0)
+                if (cell != null && Bot.Map.PlayerNames != null && Bot.Map.PlayerNames.Count > 0)
                 {
                     List<string> missingPlayers = players.Except(Bot.Map.PlayerNames).ToList();
-                    if (missingPlayers.Count() == 1 && missingPlayers[0] == Bot.Player.Username)
+                    if (missingPlayers.Count == 1 && missingPlayers[0] == Bot.Player.Username)
                     {
                         Core.Logger("Bugged lobby, we were the only one missing?");
                         break;
                     }
                     Core.Logger(
-                        $"[{Bot.Map.CellPlayers.Count()}/{partySize}] Waiting for {String.Join(" & ", missingPlayers)}"
+                        $"[{Bot.Map.CellPlayers.Count}/{partySize}]"
                     );
+                    // Core.Logger(
+                    //     $"[{Bot.Map.CellPlayers.Count()}/{partySize}] Waiting for {String.Join(" & ", missingPlayers)}"
+                    // );
                 }
                 else
                 {
@@ -1638,7 +1689,7 @@ public class CoreArmyLite
 
 public class ArmyLogging
 {
-    private static readonly object lockObject = new object();
+    private static readonly object lockObject = new();
     private string logFilePath;
     public string message;
 
@@ -1665,10 +1716,8 @@ public class ArmyLogging
             return true;
         }
 
-        using (FileStream stream = File.OpenRead(logFilePath))
-        {
-            return stream.Length == 0;
-        }
+        using FileStream stream = File.OpenRead(logFilePath);
+        return stream.Length == 0;
     }
 
     public bool isAlreadyInLog(string[] playersList)
@@ -1697,25 +1746,21 @@ public class ArmyLogging
     {
         lock (lockObject)
         {
-            using (StreamWriter w = File.AppendText(logFilePath))
-            {
-                w.WriteLine($"{logMessage}");
-            }
+            using StreamWriter w = File.AppendText(logFilePath);
+            w.WriteLine($"{logMessage}");
         }
     }
 
     public List<string> ReadLog()
     {
-        List<string> lines = new List<string>();
+        List<string> lines = new();
         lock (lockObject)
         {
-            using (StreamReader r = File.OpenText(logFilePath))
+            using StreamReader r = File.OpenText(logFilePath);
+            string line;
+            while ((line = r.ReadLine()) != null)
             {
-                string line;
-                while ((line = r.ReadLine()) != null)
-                {
-                    lines.Add(line);
-                }
+                lines.Add(line);
             }
         }
         return lines;
@@ -1725,10 +1770,8 @@ public class ArmyLogging
     {
         lock (lockObject)
         {
-            using (FileStream fs = File.Open(logFilePath, FileMode.Create, FileAccess.Write))
-            {
-                // File is truncated and cleared
-            }
+            using FileStream fs = File.Open(logFilePath, FileMode.Create, FileAccess.Write);
+            // File is truncated and cleared
         }
     }
 }

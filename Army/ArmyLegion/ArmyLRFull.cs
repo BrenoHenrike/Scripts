@@ -535,6 +535,7 @@ public class ArmyLR
             counter++;
         }
         else Army.waitForPartyCell("Enter", "Spawn");
+
         Army.registerMessage($"{item}{counter}", false);
         counter++;
         

@@ -8,7 +8,7 @@ using Skua.Core.Models.Quests;
 using Skua.Core.Options;
 using System.Collections.Generic; 
 
-public class ArmyPrinceDarkonsPoleaxeMats
+public class ArmyHigureMats
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
