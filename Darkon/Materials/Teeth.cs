@@ -1,7 +1,7 @@
 /*
 name: Teeth (Darkon)
 description: This script will farm Teeth using "Sweet Dreams Are Made of Teeth" quest.
-tags: darkon, teeth, sweet dreams are made of teeth, tooth, wisdom tooth,eridani,re
+tags: darkon, teeth, sweet dreams are made of teeth, tooth, wisdom tooth, eridani, re
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

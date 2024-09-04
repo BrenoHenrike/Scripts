@@ -1,7 +1,7 @@
 /*
 name: GL-24Ks Loot Merge
 description: This bot will farm the items belonging to the selected mode for the GL-24Ks Loot Merge [2437] in /twigguhunt
-tags: gl-24ks,gl 24ks, loot, merge, twigguhunt, gold, voucher, k, glk, cloaked, visor, cloak, pronged, spear, spears, gilded, seraphic, fourth, morph, beard, beacon, glst
+tags: gl-24ks, gl 24ks, loot, merge, twigguhunt, gold, voucher, k, glk, cloaked, visor, cloak, pronged, spear, spears, gilded, seraphic, fourth, morph, beard, beacon, glst
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

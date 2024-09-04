@@ -1,7 +1,7 @@
 /*
 name: Shadowbattleon
 description: Does the Shadow of Doom Saga
-tags: shadow of doom, Shadowbattleon,  story, saga, doall, Camlan
+tags: shadow of doom, shadowbattleon, story, saga, doall, camlan
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

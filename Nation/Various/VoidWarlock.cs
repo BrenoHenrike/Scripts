@@ -1,7 +1,7 @@
 /*
 name: Void Warlock
 description: This script farms the Void Warlock set from the [Tools for the Job] and [Corrupted Touch] quests
-tags: void,warlock,tools,job,corrupted,touch,quest,rewards, tools for the job, corrupted touch,voidwarlock
+tags: void, warlock, tools, job, corrupted, touch, quest, rewards, tools for the job, corrupted touch, voidwarlock
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

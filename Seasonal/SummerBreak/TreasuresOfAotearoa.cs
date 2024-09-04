@@ -1,7 +1,7 @@
 /*
 name: Treasures of Aotearoa
 description: This script will farm all the rewards of "Treasures of Aotearoa" quest.
-tags: treasures,of,aotearoa,seasonal,summer,break,valencia,dandelion,kiwi,cookie
+tags: treasures, of, aotearoa, seasonal, summer, break, valencia, dandelion, kiwi, cookie
 */
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;

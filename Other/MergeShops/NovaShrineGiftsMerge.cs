@@ -3,7 +3,6 @@ name: Nova Shrine Gifts Merge
 description: This bot will farm the items belonging to the selected mode for the Nova Shrine Gifts Merge [2458] in /novashrine
 tags: nova, shrine, gifts, merge, novashrine, star, light, destiny, celestial, paladin, winged, nightsky, cloak, lights, stella, empyrean, wings, tail, empyreans, claws, reaver, reavers
 */
-
 //cs_include Scripts/Chaos/AscendedDrakathGear.cs
 //cs_include Scripts/Chaos/DrakathsArmor.cs
 //cs_include Scripts/CoreAdvanced.cs

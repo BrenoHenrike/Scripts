@@ -1,7 +1,7 @@
 /*
 name: Yokai Hunt
 description: Completes the quests in yokaihunt.
-tags: yokai, seasonal, akiba-new-year, yokaihunt, story,baoyu lin, ai no miko,yue huang
+tags: yokai, seasonal, akiba-new-year, yokaihunt, story, baoyu lin, ai no miko, yue huang
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

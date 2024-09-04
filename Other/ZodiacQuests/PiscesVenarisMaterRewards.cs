@@ -1,7 +1,7 @@
 /*
 name: Pisces Venaris Mater Rewards
 description: farms quest rewards from Pisces Venaris Mater` in /arcangrove
-tags: quest reward, Kylokos,pisces,venaris,mater,arcangrove,zodiac
+tags: quest reward, kylokos, pisces, venaris, mater, arcangrove, zodiac
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

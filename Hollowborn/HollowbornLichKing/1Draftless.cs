@@ -1,9 +1,8 @@
 /*
 name: Hollowborn Lich King - Draftless
-description: does the 'Draftless' part of hollowborn Lich King 
-tags: hollowborn Lich King, hollowborn, Draftless
+description: does the 'Draftless' part of hollowborn Lich King
+tags: hollowborn lich king, hollowborn, draftless
 */
-
 //cs_include Scripts/Hollowborn/HollowbornLichKing/CoreHollowbornLichKing.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreBots.cs

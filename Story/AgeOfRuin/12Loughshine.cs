@@ -1,7 +1,7 @@
 /*
 name: Loughshine
 description: This script completes the storyline in /loughshine.
-tags: age,of,ruin,saga,story,quest,Loughshine,Lough shine,ruins of loughshine,caoimhe
+tags: age, of, ruin, saga, story, quest, loughshine, lough shine, ruins of loughshine, caoimhe
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

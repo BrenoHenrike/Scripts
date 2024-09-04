@@ -1,7 +1,7 @@
 /*
 name: The Poisonous Deal
 description: This script farms Tainted Gems and Dark Crystal Shards using "The Poisonous Deal" Quest.
-tags: poisonous,deal,dark,crystal,shard,tainted,gem,nulgath,nation,crag,bamboozle,quest,claymore
+tags: poisonous, deal, dark, crystal, shard, tainted, gem, nulgath, nation, crag, bamboozle, quest, claymore
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

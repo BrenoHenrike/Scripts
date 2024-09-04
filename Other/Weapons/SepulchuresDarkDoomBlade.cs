@@ -1,7 +1,7 @@
 /*
 name: Sepulchure's Dark DoomBlade
 description: This script will get Sepulchure's Dark DoomBlade.
-tags: sepulchure,doomblade,dark doomblade,doom seal,darkness shard,undead doomblade,doom blade
+tags: sepulchure, doomblade, dark doomblade, doom seal, darkness shard, undead doomblade, doom blade
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

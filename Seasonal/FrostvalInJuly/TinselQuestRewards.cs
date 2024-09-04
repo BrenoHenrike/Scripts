@@ -1,7 +1,7 @@
 /*
 name: Tinsel Quest Rewards
 description: This script will farm "Gift Theft?! NOT COOL." [8177] quest rewards.
-tags: tinsel,quest,rewards,bright lights,festive,ushanka,party,seasonal,frostval,july
+tags: tinsel, quest, rewards, bright lights, festive, ushanka, party, seasonal, frostval, july
 */
 //cs_include Scripts/CoreBots.cs
 using Skua.Core.Interfaces;

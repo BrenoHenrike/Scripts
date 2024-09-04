@@ -1,7 +1,7 @@
 /*
 name: MechaJouster (Class)
 description: This script will get MechaJouster class.
-tags: jouster,mechajouster,treasure potion,class,mecha jouster
+tags: jouster, mechajouster, treasure potion, class, mecha jouster
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

@@ -1,7 +1,7 @@
 /*
 name: Art-ificial Error Badge
 description: This script will get the Art-ificial Error Badge.
-tags: art,artificial,error,ai no miko,ai,ebilart, badge, seasonal, april-fools
+tags: art, artificial, error, ai no miko, ai, ebilart, badge, seasonal, april-fools
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

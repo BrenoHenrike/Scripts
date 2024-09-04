@@ -1,7 +1,7 @@
 /*
 name: Twilly Supports You!
 description: This script does the quest [9779] "Twilly Supports You!" and gets the rewards.
-tags: twilly, supports, you, quest, 9779, rewards,chickencow,take twilly's money,extremely enthusiastic hero
+tags: twilly, supports, you, quest, 9779, rewards, chickencow, take twilly's money, extremely enthusiastic hero
 */
 //cs_include Scripts/CoreBots.cs
 

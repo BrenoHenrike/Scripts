@@ -1,7 +1,7 @@
 /*
 name: Grenstory
 description: This script will complete the questline in grenstory.
-tags: grenstory,seasonal,grenwog,easter
+tags: grenstory, seasonal, grenwog, easter
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreStory.cs

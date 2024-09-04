@@ -1,7 +1,7 @@
 /*
 name: The Refreshing Deal
 description: This script farms Gems and Totems of Nulgath using "The Refreshing Deal" Quest.
-tags: refreshing,deal,gem,totem,nulgath,nation,crag,bamboozle,quest
+tags: refreshing, deal, gem, totem, nulgath, nation, crag, bamboozle, quest
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs

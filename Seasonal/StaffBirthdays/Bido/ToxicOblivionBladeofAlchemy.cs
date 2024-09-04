@@ -1,7 +1,7 @@
 /*
 name: Toxic Oblivion Blade of Alchemy
 description: This script will complete the quest for Toxic Oblivion Blade of Alchemy.
-tags: nation,bido,birthday,seasonal,little science experiment
+tags: nation, bido, birthday, seasonal, little science experiment
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
