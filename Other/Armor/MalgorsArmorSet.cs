@@ -69,7 +69,10 @@ public class MalgorsArmorSet
         string[]? items = useSet ? ArmorSet : item;
 
         if (Core.CheckInventory(items))
+        {
+            Core.ToBank(SoW.MalgorDrops.Concat(SoW.MainyuDrops).ToArray());
             return;
+        }
 
         Adv.GearStore();
         Core.BossClass();
@@ -87,5 +90,6 @@ public class MalgorsArmorSet
             Core.ChainComplete(9127);
         }
         Adv.GearStore(true);
+        Core.ToBank(SoW.MalgorDrops.Concat(SoW.MainyuDrops).ToArray());
     }
 }

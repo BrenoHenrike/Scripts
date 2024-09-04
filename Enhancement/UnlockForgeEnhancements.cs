@@ -168,7 +168,8 @@ public class UnlockForgeEnhancements
         new Option<bool>("UseGold", "Use Gold", "Speed the BlacksmithingREP grind up with Gold?", false),
         new Option<bool>("BulkFarmGold", "Pre-Farm Gold(BlackSmithRep)", "Bulk Turnin after farming 100m Gold. (turns in x10 as long as u have 5m gold)", false),
         new Option<bool>("SellQuestClass", "Sell quest classes", "sell the classes backa after the Anima, Pneuma, Examen, and Vim quests", false),
-        new Option<bool>("CanSolo", "Can solo", "Solo Sluggbutter")
+        new Option<bool>("CanSolo", "Can solo", "Solo Sluggbutter"),
+        new Option<bool>("UseInsignOnDaunt", "Use Insignia for dauntless", "Use your Insignia to buy the `Malgor's ShadowFlame Blade`[Malgor] & `Infernal Flame Pyromancer`[Avatar Tyndarius]", false)
     };
 
     public void ScriptMain(IScriptInterface Bot)
@@ -503,8 +504,8 @@ public class UnlockForgeEnhancements
         if (!Core.CheckInventory("Drakath the Eternal"))
             Core.Logger("Cannot \"Finish\" `Heros Valiance quest. We'll continue farming it though...\n" +
             $"\"Drakath Armor\": x{Bot.Inventory.GetQuantity("Drakath Armor")}\n" +
-            $"\"Dage's Scroll Fragment\" x{Bot.Inventory.GetQuantity("Dage's Scroll Fragment")}\n"+
-            $"\"Drakath the Eternal\" x{Bot.Inventory.GetQuantity("Drakath the Eternal")}");;
+            $"\"Dage's Scroll Fragment\" x{Bot.Inventory.GetQuantity("Dage's Scroll Fragment")}\n" +
+            $"\"Drakath the Eternal\" x{Bot.Inventory.GetQuantity("Drakath the Eternal")}"); ;
         LOO.GetLoO();
 
         if (!Core.CheckInventory(23689))
@@ -658,21 +659,64 @@ public class UnlockForgeEnhancements
         Farm.BlacksmithingREP(10, Bot.Config!.Get<bool>("UseGold"), Bot.Config!.Get<bool>("UseGold"));
 
         string[] DauntlessItems = { "ShadowLord's Helm", "Malgor the ShadowLord", "Malgor's ShadowFlame Blade", "Infernal Flame Pyromancer" };
+        Core.Logger($"The only items the bot can get are: \"Malgor the ShadowLord\" and \"ShadowLord's Helm\". Unless `UseInsignOnDaunt` is enabled: {Bot.Config.Get<bool>("UseInsignOnDaunt")}");
 
+        // Base Quest Req. for dauntless
+        int Malgorinsig = 10;
+        int AvatarTyndInsig = 5;
+
+        Core.EnsureAccept(9172);
         if (!Core.CheckInventory(DauntlessItems))
         {
-            Core.Logger("The only items I can get you are these: \"Malgor the ShadowLord\", and \"ShadowLord's Helm\".");
+
+            //Story
             SoW.CompleteCoreSoW();
+
+            // Items: "ShadowLord's Helm", "Malgor the ShadowLord"
             MAS.GetSet();
-            Core.HuntMonster("shadowgrove", "Titan Shadow Dragonlord", "ShadowFlame Dragon Blade", isTemp: false);
 
-            Core.AddDrop(SoW.MalgorDrops.Concat(SoW.MainyuDrops).ToArray());
-
+            #region  [Prep] Malgor's ShadowFlame Blade
             Adv.GearStore();
             Core.BossClass();
-
             SOWM.ElementalCore(20);
             Adv.GearStore(true);
+            Core.EquipClass(ClassType.Solo);
+            Core.HuntMonster("shadowgrove", "Titan Shadow Dragonlord", "ShadowFlame Dragon Blade", isTemp: false);
+            #endregion
+
+            #region  [Prep] Infernal Flame Pyromancer
+            SoW.Tyndarius();
+
+            Core.AddDrop("Fire Avatar's Favor");
+            Core.EquipClass(ClassType.Farm);
+            Core.FarmingLogger("Fire Avatar's Favor", 75);
+            Core.RegisterQuests(8244);
+            while (!Bot.ShouldExit && !Core.CheckInventory("Fire Avatar's Favor", 75))
+            {
+                Core.KillMonster("fireavatar", "r4", "Right", "*", "Onslaught Defeated", 6);
+                Core.KillMonster("fireavatar", "r6", "Left", "*", "Elemental Defeated", 6);
+
+                Bot.Wait.ForPickup("Fire Avatar's Favor");
+            }
+            Core.CancelRegisteredQuests();
+
+            #endregion
+
+            if (Bot.Config.Get<bool>("UseInsignOnDaunt"))
+            {
+                //ensure in inv
+                Core.Unbank("Malgor Insignia", "Avatar Tyndarius Insignia");
+
+                if (!Core.CheckInventory("Malgor's ShadowFlame Blade") && Core.CheckInventory("Malgor Insignia", 20))
+                    Adv.BuyItem("ultraspeaker", 2248, "Malgor's ShadowFlame Blade");
+                else
+                    Malgorinsig += 20;
+
+                if (!Core.CheckInventory("Infernal Flame Pyromancer") && Core.CheckInventory("Avatar Tyndarius Insignia", 20))
+                    Adv.BuyItem("fireavatar", 2038, "Infernal Flame Pyromancer");
+                else
+                    AvatarTyndInsig += 20;
+            }
         }
 
         if (Core.CheckInventory(DauntlessItems) && Core.CheckInventory("Malgor Insignia", 5) && Core.CheckInventory("Avatar Tyndarius Insignia", 10))
@@ -682,15 +726,15 @@ public class UnlockForgeEnhancements
         }
         else
         {
+
             Core.Logger("Items still needed(the bot cannot farm these):");
             foreach (string item in DauntlessItems.Where(item => !Core.CheckInventory(item)))
                 Core.Logger($"Missing \"{item}\" x1");
-            if (!Core.CheckInventory("Avatar Tyndarius Insignia", 10))
-                Core.Logger("Missing \"Avatar Tyndarius Insignia\" x10");
-            if (!Core.CheckInventory("Malgor Insignia", 5))
-                Core.Logger("Missing \"Malgor Insignia\" x5");
+
+            Core.Logger($"Missing \"Malgor Insignia\" x {Malgorinsig}");
+            Core.Logger($"Missing \"Avatar Tyndarius Insignia\" x {AvatarTyndInsig}");
+            Core.AbandonQuest(9172);
         }
-        Core.ToBank(SoW.MalgorDrops.Concat(SoW.MainyuDrops).ToArray());
     }
 
     public void Ravenous()
