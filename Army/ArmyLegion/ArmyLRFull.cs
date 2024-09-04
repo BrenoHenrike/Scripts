@@ -104,7 +104,8 @@ public class ArmyLR
         Core.BankingBlackList.AddRange(LRMaterials.Concat(LF1).Concat(LF2).Concat(LF3).Concat(legionMedals));
         Core.SetOptions();
 
-        LR();
+        // LR();
+        Core.Logger("This script, and any army script that requires more then 1 map is entirely broken, and there is no plan to fix them, for army stuff please use GrimLi");
 
         Core.SetOptions(false);
     }
