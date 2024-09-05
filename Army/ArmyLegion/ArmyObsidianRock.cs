@@ -5,6 +5,7 @@ tags: obsidian rock, legion, army
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/Army/CoreArmyLite.cs
+//cs_include Scripts/CoreFarms.cs
 using Skua.Core.Interfaces;
 
 public class Generated_ArmyObsidianRock

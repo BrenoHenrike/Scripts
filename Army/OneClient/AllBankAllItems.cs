@@ -7,6 +7,7 @@ tags: bank, army, all
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/Army/CoreArmyLite.cs
+//cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/Tools/BankAllItems.cs
 using Skua.Core.Interfaces;
 

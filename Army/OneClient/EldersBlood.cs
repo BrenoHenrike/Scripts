@@ -6,6 +6,7 @@ tags: daily, dailies, army, elders, blood, vhl, void highlord, oneclient
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/Army/CoreArmyLite.cs
+//cs_include Scripts/CoreFarms.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
 

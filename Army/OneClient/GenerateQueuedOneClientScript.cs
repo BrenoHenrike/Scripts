@@ -26,6 +26,7 @@ public class GenQueuedOneClientScript
         IFileDialogService? _fileDialog;
         List<string[]> scripts = new();
         List<string> csIncludes = new() { "//cs_include Scripts/CoreBots.cs", "//cs_include Scripts/Army/CoreArmyLite.cs" };
+//cs_include Scripts/CoreFarms.cs
         List<string> classes = new() { "    private CoreArmyLite Army = new();" };
         List<string> options = new();
         List<string> optionNames = new();
