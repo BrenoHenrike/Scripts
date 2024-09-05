@@ -2094,7 +2094,7 @@
       "army"
     ],
     "path": "Army/0CustomAggroMon.cs",
-    "size": 11015,
+    "size": 11049,
     "fileName": "0CustomAggroMon.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/0CustomAggroMon.cs"
   },
@@ -2121,7 +2121,7 @@
       "custom"
     ],
     "path": "Army/0AggroMonReader.cs",
-    "size": 5384,
+    "size": 5418,
     "fileName": "0AggroMonReader.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/0AggroMonReader.cs"
   },
@@ -3141,7 +3141,7 @@
       "null"
     ],
     "path": "Templates/CustomAggromonTemplate.cs",
-    "size": 1282,
+    "size": 1316,
     "fileName": "CustomAggromonTemplate.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Templates/CustomAggromonTemplate.cs"
   },
@@ -11515,7 +11515,7 @@
       "oneclient"
     ],
     "path": "Army/OneClient/WheelOfDoom.cs",
-    "size": 1152,
+    "size": 1186,
     "fileName": "WheelOfDoom.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/OneClient/WheelOfDoom.cs"
   },
@@ -11541,7 +11541,7 @@
       "all"
     ],
     "path": "Army/OneClient/AllBankAllItems.cs",
-    "size": 1274,
+    "size": 1308,
     "fileName": "AllBankAllItems.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/OneClient/AllBankAllItems.cs"
   },
@@ -11559,7 +11559,7 @@
       "oneclient"
     ],
     "path": "Army/OneClient/EldersBlood.cs",
-    "size": 1175,
+    "size": 1209,
     "fileName": "EldersBlood.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/OneClient/EldersBlood.cs"
   },
@@ -11576,7 +11576,7 @@
       "oneclient"
     ],
     "path": "Army/OneClient/GenerateQueuedOneClientScript.cs",
-    "size": 11180,
+    "size": 11214,
     "fileName": "GenerateQueuedOneClientScript.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/OneClient/GenerateQueuedOneClientScript.cs"
   },
@@ -11747,7 +11747,7 @@
       "army"
     ],
     "path": "Army/ArmyLegion/ArmyObsidianRock.cs",
-    "size": 1393,
+    "size": 1427,
     "fileName": "ArmyObsidianRock.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyLegion/ArmyObsidianRock.cs"
   },
@@ -11955,7 +11955,7 @@
       "errands"
     ],
     "path": "Army/Various/ArmyDarkonErrands.cs",
-    "size": 4712,
+    "size": 4746,
     "fileName": "ArmyDarkonErrands.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmyDarkonErrands.cs"
   },
@@ -12018,7 +12018,7 @@
       "null"
     ],
     "path": "Army/Various/ArmyStarPiece.cs",
-    "size": 1663,
+    "size": 1697,
     "fileName": "ArmyStarPiece.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmyStarPiece.cs"
   },
@@ -12035,7 +12035,7 @@
       "lord"
     ],
     "path": "Army/Various/ArmyBloodMoonToken.cs",
-    "size": 1823,
+    "size": 1857,
     "fileName": "ArmyBloodMoonToken.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmyBloodMoonToken.cs"
   },
@@ -12065,7 +12065,7 @@
       "realm"
     ],
     "path": "Army/Various/ArmyMirrorRealmToken.cs",
-    "size": 2243,
+    "size": 2277,
     "fileName": "ArmyMirrorRealmToken.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmyMirrorRealmToken.cs"
   },
@@ -24713,7 +24713,7 @@
       "army pet tamer reputation"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyPetTamerRep.cs",
-    "size": 1571,
+    "size": 1605,
     "fileName": "ArmyPetTamerRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyPetTamerRep.cs"
   },
