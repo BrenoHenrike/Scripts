@@ -42,7 +42,8 @@ public class CoreArmyLite
         armyLogging.registerMessage(message);
         if (delPrevMsg)
         {
-            if (Bot.Config.Get<string>("player1").ToLower() == Bot.Player.Username.ToLower())
+            string? player1 = Bot.Config!.Get<string>("player1");
+            if (!string.IsNullOrEmpty(player1) && player1.ToLower() == Bot.Player.Username.ToLower())
             {
                 Core.Logger("Clearing log");
                 armyLogging.ClearLogFile();
@@ -52,7 +53,8 @@ public class CoreArmyLite
 
     public void ClearLogFile()
     {
-        if (Bot.Config.Get<string>("player1").ToLower() == Bot.Player.Username.ToLower())
+        string? player1 = Bot.Config!.Get<string>("player1");
+        if (!string.IsNullOrEmpty(player1) && player1.ToLower() == Bot.Player.Username.ToLower())
         {
             Core.Logger("Clearing log");
             armyLogging.ClearLogFile();
@@ -175,7 +177,7 @@ public class CoreArmyLite
         }
     }
 
-    public void AggroMonStart(string map = null)
+    public void AggroMonStart(string? map = null)
     {
         if (aggroCTS is not null)
             AggroMonStop();
@@ -1703,8 +1705,8 @@ public class CoreArmyLite
 public class ArmyLogging
 {
     private static readonly object lockObject = new();
-    private string logFilePath;
-    public string message;
+    private string logFilePath = string.Empty;
+    public string message = string.Empty;
 
     // public ArmyLogging(string fileName = "ArmyLog.txt")
     // {
@@ -1724,13 +1726,20 @@ public class ArmyLogging
 
     public bool isEmpty()
     {
-        if (new FileInfo(logFilePath).Length == 0)
+        if (!string.IsNullOrEmpty(logFilePath) && new FileInfo(logFilePath).Length == 0)
         {
             return true;
         }
 
-        using FileStream stream = File.OpenRead(logFilePath);
-        return stream.Length == 0;
+        if (!string.IsNullOrEmpty(logFilePath))
+        {
+            using FileStream stream = File.OpenRead(logFilePath);
+            // Your code here
+
+            return stream.Length == 0;
+        }
+
+        return true;
     }
 
     public bool isAlreadyInLog(string[] playersList)
@@ -1770,7 +1779,7 @@ public class ArmyLogging
         lock (lockObject)
         {
             using StreamReader r = File.OpenText(logFilePath);
-            string line;
+            string? line;
             while ((line = r.ReadLine()) != null)
             {
                 lines.Add(line);
