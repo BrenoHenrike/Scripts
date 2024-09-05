@@ -1726,20 +1726,12 @@ public class ArmyLogging
 
     public bool isEmpty()
     {
-        if (!string.IsNullOrEmpty(logFilePath) && new FileInfo(logFilePath).Length == 0)
+        if (new FileInfo(logFilePath).Length == 0)
         {
             return true;
         }
-
-        if (!string.IsNullOrEmpty(logFilePath))
-        {
-            using FileStream stream = File.OpenRead(logFilePath);
-            // Your code here
-
-            return stream.Length == 0;
-        }
-
-        return true;
+        using FileStream stream = File.OpenRead(logFilePath);
+        return stream.Length == 0;
     }
 
     public bool isAlreadyInLog(string[] playersList)
