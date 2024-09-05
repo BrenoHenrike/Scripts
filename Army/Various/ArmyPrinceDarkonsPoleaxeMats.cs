@@ -59,7 +59,13 @@ public class ArmyPrinceDarkonsPoleaxeMats
 
     void ArmyHunt(string map, string[] cells, string item, int questId, int quant = 1)
     {
-        Core.Equip(Bot.Config.Get<string>("SafeClass"));
+        string? safeClass = Bot.Config!.Get<string>("SafeClass");
+
+        if (!string.IsNullOrEmpty(safeClass))
+            Core.Equip(safeClass);
+        else
+            Core.Logger("SafeClass configuration is missing or empty.");
+
         Army.registerMessage(item);
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
@@ -73,7 +79,13 @@ public class ArmyPrinceDarkonsPoleaxeMats
         }
 
         Bot.Sleep(1000);
-        Core.Equip(Bot.Config.Get<string>("ClassToUse"));
+        string? classToUse = Bot.Config.Get<string>("ClassToUse");
+
+        if (!string.IsNullOrEmpty(classToUse))
+            Core.Equip(classToUse);
+        else
+            Core.Logger("ClassToUse configuration is missing or empty.");
+
         //Core.EquipClass(classType);
         Core.Join(map);
         Army.waitForPartyCell("Enter", "Spawn");
