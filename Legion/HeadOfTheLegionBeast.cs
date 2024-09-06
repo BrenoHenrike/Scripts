@@ -102,7 +102,7 @@ public class HeadoftheLegionBeast
             Core.KillMonster("sevencircleswar", "Enter", "Spawn", "Wrath Guard", "Wrath Guards Defeated", 12);
         Core.CancelRegisteredQuests();
     }
-    
+
     public void CircleHelm(string helm, bool war = false)
     {
         if (Core.CheckInventory(helm))
@@ -153,6 +153,10 @@ public class HeadoftheLegionBeast
         Core.CancelRegisteredQuests();
     }
 
+    /// <summary>
+    /// Farms the specified quantity of "Souls of Heresy" items.
+    /// </summary>
+    /// <param name="quant">The target quantity of "Souls of Heresy" items to collect. Default is 300.</param>
     public void SoulsHeresy(int quant = 300)
     {
 
@@ -169,10 +173,13 @@ public class HeadoftheLegionBeast
         Core.CancelRegisteredQuests();
     }
 
+    /// <summary>
+    /// Farms the specified quantity of "Penance" items.
+    /// </summary>
+    /// <param name="quant">The target quantity of "Penance" items to collect. Default is 30.</param>
     public void Penance(int quant = 30)
     {
-        if (Core.CheckInventory(60137, quant))
-            return;
+        if (Core.CheckInventory(60137, quant)) return;
 
         Core.AddDrop(HeadLegionBeast);
         Core.FarmingLogger("Penance", quant);
@@ -184,9 +191,17 @@ public class HeadoftheLegionBeast
             EssenceViolence(5);
             EssenceTreachery(5);
             SoulsHeresy(75);
-            Adv.BuyItem("sevencircleswar", 1984, "Penance", Bot.Inventory.GetQuantity("Penance") + 5);
+
+            int currentQuantity = Bot.Inventory.GetQuantity("Penance");
+
+            // Buy current quantity + the calculated amount:
+            // - Math.Min(5, quant - currentQuantity) ensures the increment is up to 5,
+            //   but doesn't exceed the remaining amount needed to reach the target (quant).
+            Adv.BuyItem("sevencircleswar", 1984, "Penance", currentQuantity + Math.Min(5, quant - currentQuantity));
         }
     }
+
+
 
     public void Indulgence(int quant = 100)
     {
