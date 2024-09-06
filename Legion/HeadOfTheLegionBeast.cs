@@ -88,6 +88,10 @@ public class HeadoftheLegionBeast
 
     }
 
+    /// <summary>
+    /// Farms the specified quantity of "Essence of Wrath" items.
+    /// </summary>
+    /// <param name="quant">The target quantity of "Essence of Wrath" items to collect. Default is 300.</param>
     public void EssenceWrath(int quant = 300)
     {
         if (Core.CheckInventory("Essence of Wrath", quant))
@@ -103,6 +107,11 @@ public class HeadoftheLegionBeast
         Core.CancelRegisteredQuests();
     }
 
+    /// <summary>
+    /// Farms the specified quantity of "Circle Helm" items.
+    /// </summary>
+    /// <param name="helm">The name of the helm to be farmed.</param>
+    /// <param name="war">Whether to farm in the "sevencircleswar" zone. Default is false.</param>
     public void CircleHelm(string helm, bool war = false)
     {
         if (Core.CheckInventory(helm))
@@ -123,6 +132,10 @@ public class HeadoftheLegionBeast
         }
     }
 
+    /// <summary>
+    /// Farms the specified quantity of "Essence of Violence" items.
+    /// </summary>
+    /// <param name="quant">The target quantity of "Essence of Violence" items to collect. Default is 300.</param>
     public void EssenceViolence(int quant = 300)
     {
         if (Core.CheckInventory("Essence of Violence", quant))
@@ -138,6 +151,10 @@ public class HeadoftheLegionBeast
         Core.CancelRegisteredQuests();
     }
 
+    /// <summary>
+    /// Farms the specified quantity of "Essence of Treachery" items.
+    /// </summary>
+    /// <param name="quant">The target quantity of "Essence of Treachery" items to collect. Default is 300.</param>
     public void EssenceTreachery(int quant = 300)
     {
         if (Core.CheckInventory("Essence of Treachery", quant))
@@ -177,7 +194,7 @@ public class HeadoftheLegionBeast
     /// Farms the specified quantity of "Penance" items.
     /// </summary>
     /// <param name="quant">The target quantity of "Penance" items to collect. Default is 30.</param>
-    public void Penance(int quant = 30)
+    public void Penance(int quant = 300)
     {
         if (Core.CheckInventory(60137, quant)) return;
 
@@ -201,8 +218,10 @@ public class HeadoftheLegionBeast
         }
     }
 
-
-
+    /// <summary>
+    /// Farms the specified quantity of "Indulgence" items.
+    /// </summary>
+    /// <param name="quant">The target quantity of "Indulgence" items to collect. Default is 100.</param>
     public void Indulgence(int quant = 100)
     {
         if (Core.CheckInventory("Indulgence", quant))
