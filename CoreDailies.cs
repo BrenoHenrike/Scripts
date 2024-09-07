@@ -620,7 +620,7 @@ public class CoreDailies
             return;
         Core.Logger("Daily: Elders' Blood");
         Core.EquipClass(ClassType.Farm);
-        DailyRoutine(802, "arcangrove", "Gorillaphant", "Slain Gorillaphant", 50, cell: "Right", pad: "Left");
+        DailyRoutine(802, "arcangrove", "Gorillaphant", "Slain Gorillaphant", 50, cell: "LeftBack", pad: "Left");
         Bot.Wait.ForPickup("Elders' Blood");
     }
 
