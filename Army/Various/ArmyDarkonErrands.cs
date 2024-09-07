@@ -65,7 +65,7 @@ public class ArmyDarkonErrands
                 break;
 
             case Method.Third_Errands:
-                ArmyHunt("tercessuinotlim", new[] { "Nulgath" }, "Darkon's Receipt", ClassType.Solo, false, 1, Method.Third_Errands);
+                ArmyHunt("tercessuinotlim", new[] { "Nulgath" }, "Darkon's Receipt", ClassType.Solo, false, 222, Method.Third_Errands);
                 break;
 
             default:
