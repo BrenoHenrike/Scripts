@@ -634,7 +634,7 @@ public class CoreDailies
         Core.EnsureAccept(803);
         Core.KillMonster("arcangrove", "LeftBack", "Left", "*", "Blood Lily", 30);
         Core.KillMonster("arcangrove", "RightBack", "Left", "*", "Snapdrake", 17);
-        Core.KillMonster("arcangrove", "Left", "Left", "*", "DOOM Dirt", 12);
+        Core.KillMonster("arcangrove", "Back", "Left", "*", "DOOM Dirt", 12);
         Core.EnsureComplete(803);
         Bot.Wait.ForPickup("Sparrow's Blood");
     }
