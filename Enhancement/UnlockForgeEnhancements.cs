@@ -664,7 +664,7 @@ public class UnlockForgeEnhancements
         // Base Quest Req. for dauntless
         int Malgorinsig = 5;
         int AvatarTyndInsig = 10;
-        
+
         Core.EnsureAccept(9172);
         if (!Core.CheckInventory(DauntlessItems))
         {
@@ -813,7 +813,7 @@ public class UnlockForgeEnhancements
         }
 
         Core.EquipClass(ClassType.Farm);
-        Core.KillMonster("therift", "r5", "Left", "Plague Spreader", "Slimed Sigil", SlimeSigil, isTemp: false);
+        Core.KillMonster("therift", "r9", "Left", "Plague Spreader", "Slimed Sigil", SlimeSigil, isTemp: false);
         Adv.BuyItem("therift", 1399, "Ascended Paladin", shopItemID: 5244);
         // Adv.BuyItem("therift", 1399, "Ascended Paladin Staff", shopItemID: 5246);
         Adv.BuyItem("therift", 1399, "Ascended Paladin Sword", shopItemID: 5247);
