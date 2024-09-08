@@ -36,7 +36,7 @@ public class BerserkerBunnyArmorEaster
         if (!Core.CheckInventory("Berserker Bunny Armor"))
         {
             Core.EnsureAccept(236);
-            Core.HuntMonster("greenguardwest", "Big Bad Boar", "Were Egg", log: false);
+            Core.KillMonster("greenguardwest", "West12", "Up", "Big Bad Boar", "Were Egg", log: false);
             Core.EnsureComplete(236);
             Bot.Wait.ForPickup("Berserker Bunny Armor");
         }

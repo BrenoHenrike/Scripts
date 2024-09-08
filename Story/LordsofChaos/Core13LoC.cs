@@ -532,7 +532,7 @@ public class Core13LoC
             Core.HuntMonster("greenguardeast", "Wolf", "Wolf Documentation");
             Core.HuntMonster("greenguardwest", "Slime", "Slime Documentation");
             Core.HuntMonster("greenguardwest", "Frogzard", "Frogzard Documentation");
-            Core.HuntMonster("greenguardwest", "Big Bad Boar", "Wereboar Documentation");
+            Core.KillMonster("greenguardwest", "West12", "Up", "Big Bad Boar", "Wereboar Documentation");
             Core.EnsureComplete(515);
             Bot.Wait.ForPickup("Red's Big Wolf Slaying Axe");
             Core.RemoveDrop("Red's Big Wolf Slaying Axe");

@@ -237,9 +237,9 @@ public class CoreNation
                         }
 
                     }
-                    Core.KillMonster("tercessuinotlim", "m2", "Top", "*", "Makai Fang", 5, log: false);
-                    Core.KillMonster("hydra", "Rune2", "Left", "*", "Imp Flame", 3, log: false);
-                    Core.HuntMonster("greenguardwest", "Big Bad Boar", "Wereboar Tusk", 2, log: false);
+                    Core.KillMonster("tercessuinotlim", "m2", "Top", "Dark Makai", "Makai Fang", 5, log: false);
+                    Core.KillMonster("hydra", "Rune2", "Left", "Fire Imp", "Imp Flame", 3, log: false);
+                    Core.KillMonster("greenguardwest", "West12", "Up", "Big Bad Boar", "Wereboar Tusk", 2, log: false);
                 }
             }
             Core.Logger("all items quant maxed");
@@ -276,9 +276,9 @@ public class CoreNation
 
                 }
 
-                Core.KillMonster("tercessuinotlim", "m2", "top", "*", "Makai Fang", 5, log: false);
-                Core.KillMonster("hydra", "Rune2", "Left", "*", "Imp Flame", 3, log: false);
-                Core.HuntMonster("greenguardwest", "Big Bad Boar", "Wereboar Tusk", 2, log: false);
+                Core.KillMonster("tercessuinotlim", "m2", "Top", "Dark Makai", "Makai Fang", 5, log: false);
+                Core.KillMonster("hydra", "Rune2", "Left", "Fire Imp", "Imp Flame", 3, log: false);
+                Core.KillMonster("greenguardwest", "West12", "Up", "Big Bad Boar", "Wereboar Tusk", 2, log: false);
             }
             Core.Logger("items quant maxed");
             Core.CancelRegisteredQuests();

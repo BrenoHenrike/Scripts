@@ -82,7 +82,7 @@ public class ShadowSlayerK
             Core.HuntMonster("dragonchallenge", "Greenguard Dragon", "Greenguard Dragon Ribs", log: false);
             Core.HuntMonster("battlefowl", "ChickenCow", "Chickencow Wings", log: false);
             Core.HuntMonster("pirates", "Shark Bait", "Shark Bait Fillet", log: false);
-            Core.HuntMonster("greenguardwest", "Big Bad Boar", "Big Bad Boar Sausage", log: false);
+            Core.KillMonster("greenguardwest", "West12", "Up", "Big Bad Boar", "Big Bad Boar Sausage", log: false);
             Core.HuntMonster("trunk", "GreenGuard Basilisk", "GreenGuard Basilisk Tail", log: false);
             Core.HuntMonster("Well", "Gell Oh No", "Gell Oh No Jello", log: false);
             Core.HuntMonster("deathgazer", "Deathgazer", "Deathgazer Takoyaki", log: false);

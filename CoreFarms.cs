@@ -219,7 +219,7 @@ public class CoreFarms
         Core.RegisterQuests(236);
         while (!Bot.ShouldExit && Bot.Player.Gold < goldQuant)
         {
-            Core.HuntMonster("greenguardwest", "Big Bad Boar", "Were Egg", log: false);
+            Core.KillMonster("greenguardwest", "West12", "Up", "Big Bad Boar", "Were Egg", log: false);
             Bot.Wait.ForDrop("Berserker Bunny", 40);
             if (!sell)
                 return;

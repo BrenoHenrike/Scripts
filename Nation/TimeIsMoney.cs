@@ -46,7 +46,7 @@ public class TimeIsMoney
                     Core.HuntMonster("Mobius", "Slugfit", "Slugfit Horn", 5);
                     Core.HuntMonster("Mobius", "Fire Imp", "Imp Flame", 3);
                     Core.HuntMonster("bamboo", "Tanuki", "Tanuki Ears", 3);
-                    Core.HuntMonster("greenguardwest", "Big Bad Boar", "Wereboar Tusk", 2);
+                    Core.KillMonster("greenguardwest", "West12", "Up", "Big Bad Boar", "Wereboar Tusk", 2);
                     Core.HuntMonster("junkyard", "Onibaba", "Onibaba Nails", 5);
 
                     Core.EnsureComplete(6185);
