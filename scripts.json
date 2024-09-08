@@ -39,7 +39,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 124782,
+    "size": 124798,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -1369,7 +1369,7 @@
       "shadow-slayer"
     ],
     "path": "Story/ShadowSlayerK.cs",
-    "size": 10017,
+    "size": 10033,
     "fileName": "ShadowSlayerK.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowSlayerK.cs"
   },
@@ -1672,7 +1672,7 @@
       "mazumi"
     ],
     "path": "Story/Mazumi.cs",
-    "size": 1607,
+    "size": 1627,
     "fileName": "Mazumi.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Mazumi.cs"
   },
@@ -3599,7 +3599,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 92418,
+    "size": 92482,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -3654,7 +3654,7 @@
       "null"
     ],
     "path": "Nation/TimeIsMoney.cs",
-    "size": 1826,
+    "size": 1842,
     "fileName": "TimeIsMoney.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/TimeIsMoney.cs"
   },
@@ -5194,7 +5194,7 @@
       "null"
     ],
     "path": "Story/LordsofChaos/Core13LoC.cs",
-    "size": 81223,
+    "size": 81239,
     "fileName": "Core13LoC.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/LordsofChaos/Core13LoC.cs"
   },
@@ -11136,7 +11136,7 @@
       "BBA"
     ],
     "path": "Seasonal/Grenwog(Easter)/BerserkerBunnyArmor.cs",
-    "size": 1222,
+    "size": 1238,
     "fileName": "BerserkerBunnyArmor.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Grenwog(Easter)/BerserkerBunnyArmor.cs"
   },
