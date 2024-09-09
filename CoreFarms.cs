@@ -1240,6 +1240,35 @@ public class CoreFarms
         ToggleBoost(BoostType.Reputation);
         Core.Logger($"Farming rank {rank}");
         // Core.RegisterQuests(3757);
+
+        // 3754 | Beat the Beasts
+        while (!Bot.ShouldExit && FactionRank("BeastMaster") < 3)
+        {
+            Core.EnsureAccept(3754);
+            Core.HuntMonster("boxes", "Sneevil", "Beast Crate", 6, log: false);
+            Core.HuntMonster("pirates", "mob", "Fish Scale", 6, log: false);
+            Core.EnsureComplete(3754);
+        }
+
+        // 3755 | Secrets and Scrolls
+        while (!Bot.ShouldExit && FactionRank("BeastMaster") < 4)
+        {
+            Core.EnsureAccept(3755);
+            Core.HuntMonster("bamboo", "Tanuki", "Secret Scrolls of Beast Commanding", 7, log: false);
+            Core.HuntMonster("pines", "Pine Troll", "Troll's Treatise on Beasts", log: false);
+            Core.EnsureComplete(3755);
+        }
+
+        // 3756 | Taming the Elementals
+        while (!Bot.ShouldExit && FactionRank("BeastMaster") < 6)
+        {
+            Core.EnsureAccept(3756);
+            Core.HuntMonster("mafic", "Living Fire", "Living Flame Core", 6, log: false);
+            Core.HuntMonster("elemental", "Mana Imp", "Mana Manipulation Orb", 5, log: false);
+            Core.EnsureComplete(3756);
+        }
+
+        // 3757 | Dark Creature Demands
         while (!Bot.ShouldExit && FactionRank("BeastMaster") < rank)
         {
             Core.EnsureAccept(3757);
@@ -1247,6 +1276,7 @@ public class CoreFarms
             Core.HuntMonster("dreamnexus", "Solar Phoenix", "Bright Binding of Submission", 16, log: false);
             Core.EnsureComplete(3757);
         }
+
         // Core.CancelRegisteredQuests();
         ToggleBoost(BoostType.Reputation, false);
         Core.SavedState(false);
