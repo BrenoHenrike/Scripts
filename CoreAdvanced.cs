@@ -1156,26 +1156,9 @@ public class CoreAdvanced
     }
 
     public bool HasMinimalBoost(GenericGearBoost boostType, int percentage)
-        => Bot.Inventory.Items.Concat(Bot.Bank.Items).Any(x => GetBoostFloat(x, boostType.ToString()) >= ((percentage / (float)100) + 1));
+        => Bot.Inventory.Items.Concat(Bot.Bank.Items).Any(x => Core.GetBoostFloat(x, boostType.ToString()) >= ((percentage / (float)100) + 1));
     public bool HasMinimalBoost(RacialGearBoost boostType, int percentage)
-        => Bot.Inventory.Items.Concat(Bot.Bank.Items).Any(x => GetBoostFloat(x, boostType.ToString()) >= ((percentage / (float)100) + 1));
-
-    public float GetBoostFloat(InventoryItem item, string boostType)
-    {
-        if (string.IsNullOrEmpty(item.Meta) || !item.Meta.Contains(boostType))
-            return 0F;
-        return _getBoostFloat(item, boostType);
-    }
-    private float _getBoostFloat(InventoryItem item, string boostType)
-    {
-        return float.Parse(
-            item.Meta
-                .Split(',')
-                .First(meta => meta.Contains(boostType))
-                .Split(':')
-                .Last()
-            , CultureInfo.InvariantCulture.NumberFormat);
-    }
+        => Bot.Inventory.Items.Concat(Bot.Bank.Items).Any(x => Core.GetBoostFloat(x, boostType.ToString()) >= ((percentage / (float)100) + 1));
 
     #endregion
 
