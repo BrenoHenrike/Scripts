@@ -1285,6 +1285,12 @@ public class CoreBots
         Logger($"{(all ? string.Empty : quant.ToString())} {itemName} sold");
     }
 
+    /// <summary>
+    /// Retrieves a list of shop items from the specified shop.
+    /// </summary>
+    /// <param name="map">The map to join in order to access the shop.</param>
+    /// <param name="shopID">The identifier of the shop to retrieve items from.</param>
+    /// <returns>A list of <see cref="ShopItem"/> objects from the specified shop, or an empty list if the shop data could not be loaded.</returns>
     public List<ShopItem> GetShopItems(string map, int shopID)
     {
         Bot.Wait.ForTrue(() => Bot.Shops.ID == shopID, () =>
@@ -1302,6 +1308,21 @@ public class CoreBots
         return Bot.Shops.Items;
     }
 
+    /// <summary>
+    /// Parses and retrieves a shop item from a list based on the provided criteria.
+    /// </summary>
+    /// <param name="shopItem">A list of <see cref="ShopItem"/> objects to search through.</param>
+    /// <param name="shopID">The identifier of the shop where the item should be located.</param>
+    /// <param name="itemNameID">The name or identifier of the item to find.</param>
+    /// <param name="shopItemID">The specific identifier of the shop item to retrieve. Defaults to 0, which means it is not used.</param>
+    /// <returns>
+    /// The <see cref="ShopItem"/> that matches the criteria, or <c>null</c> if no item is found or if there are issues with the provided criteria.
+    /// </returns>
+    /// <remarks>
+    /// If no items are found in the list, logs an error message indicating that the item was not found in the specified shop.
+    /// If multiple items are found and a specific ShopItemID is provided, retrieves the item with the matching ShopItemID, logging an error if it is not found.
+    /// If multiple items are found and no ShopItemID is provided, logs an error indicating that the ShopItemID is needed.
+    /// </remarks>
     public ShopItem? parseShopItem(List<ShopItem> shopItem, int shopID, string itemNameID, int shopItemID = 0)
     {
         if (shopItem.Count == 0)
@@ -1327,6 +1348,21 @@ public class CoreBots
         return shopItem.First();
     }
 
+    /// <summary>
+    /// Creates and adds a ghost item to the inventory or temporary inventory based on the specified parameters.
+    /// </summary>
+    /// <param name="ID">The unique identifier for the item.</param>
+    /// <param name="name">The name of the ghost item. Defaults to "Ghost Item".</param>
+    /// <param name="quantity">The quantity of the ghost item. Defaults to 1.</param>
+    /// <param name="temp">If true, adds the item to the temporary inventory; otherwise, adds it to the regular inventory. Defaults to false.</param>
+    /// <param name="category">The category of the ghost item. Defaults to ItemCategory.Unknown.</param>
+    /// <param name="description">The description of the ghost item. Defaults to a description indicating it's a ghost item with the specified ID.</param>
+    /// <param name="level">The level of the ghost item. Defaults to 1.</param>
+    /// <param name="extraInfo">Additional properties to add or modify for the ghost item, specified as a series of key-value pairs.</param>
+    /// <remarks>
+    /// The ghost item created will have a default icon based on its category, and properties for enhancements are added if applicable.
+    /// The method uses dynamic typing to create the item object and calls a game function to add it to the player's inventory or temporary inventory.
+    /// </remarks>
     public void GhostItem(int ID, string name = "Ghost Item", int quantity = 1, bool temp = false, ItemCategory category = ItemCategory.Unknown, string? description = null, int level = 1, params (string, object)[] extraInfo)
     {
         if (temp ? (Bot.TempInv.Contains(ID) && Bot.TempInv.Contains(name)) : (Bot.Inventory.Contains(ID) && Bot.Inventory.Contains(name)))
@@ -1394,6 +1430,64 @@ public class CoreBots
 
         // Yes it needs to call 'item', not '_item', they are linked in memory
         Bot.Flash.CallGameFunction("world.myAvatar.addItem", item);
+    }
+
+    /// <summary>
+    /// Retrieves the best weapon for the specified boost type.
+    /// </summary>
+    /// <param name="boostType">The type of boost to consider when finding the best weapon.</param>
+    /// <returns>
+    /// The name of the weapon with the highest boost value for the specified boost type.
+    /// If no such weapon is found, returns the name of the first equipped item matching the specified categories.
+    /// Returns <c>null</c> if no suitable item is found.
+    /// </returns>
+    public string? GetBestWeapon(GenericGearBoost boostType)
+    {
+        // Convert the boost type to a string
+        string boostTypeString = boostType.ToString();
+
+        // Find the item with the highest boost
+        string? weapon = Bot.Inventory.Items.Concat(Bot.Bank.Items)
+            .Where(x => x != null) // Filter out null items
+            .OrderByDescending(x => GetBoostFloat(x, boostTypeString)) // Sort items by boost value in descending order
+            .FirstOrDefault() // Select the item with the highest boost
+            ?.Name
+            // If no item with a high boost is found, search for items with specified categories and equipped
+            ?? Bot.Inventory.Items
+                .Where(x => x != null && x.Equipped)
+                .FirstOrDefault() // Select the first item that matches the category criteria
+                ?.Name;
+
+        if (!Bot.Inventory.Contains(weapon) && Bot.Bank.Contains(weapon))
+            Unbank(weapon);
+
+        return weapon;
+    }
+
+    /// <summary>
+    /// Retrieves the boost value for the specified boost type from the given item.
+    /// </summary>
+    /// <param name="item">The item from which to retrieve the boost value.</param>
+    /// <param name="boostType">The type of boost to retrieve.</param>
+    /// <returns>
+    /// The boost value for the specified boost type. Returns 0 if the boost type is not present in the item’s metadata.
+    /// </returns>
+    public float GetBoostFloat(InventoryItem item, string boostType)
+    {
+        if (string.IsNullOrEmpty(item.Meta) || !item.Meta.Contains(boostType))
+            return 0F;
+        return _getBoostFloat(item, boostType);
+    }
+
+    private float _getBoostFloat(InventoryItem item, string boostType)
+    {
+        return float.Parse(
+            item.Meta
+                .Split(',')
+                .First(meta => meta.Contains(boostType))
+                .Split(':')
+                .Last()
+            , CultureInfo.InvariantCulture.NumberFormat);
     }
 
     /// <summary>
