@@ -1447,6 +1447,9 @@ public class CoreBots
     /// </returns>
     public string? GetBestItem(GenericGearBoostType boostType, string? categoryString = null)
     {
+        if (CBOBool("DisableBestGear", out bool _DisableBestGear) && _DisableBestGear)
+            return string.Empty;
+
         // Convert the boost type to a string
         string boostTypeString = boostType.ToString();
 
@@ -1488,7 +1491,6 @@ public class CoreBots
         return item;
     }
 
-
     /// <summary>
     /// Retrieves the names of the best items for specific categories.
     /// </summary>
@@ -1498,6 +1500,10 @@ public class CoreBots
     /// </returns>
     public string[] BestGear(GenericGearBoostType boostType)
     {
+
+        if (CBOBool("DisableBestGear", out bool _DisableBestGear) && _DisableBestGear)
+            return Array.Empty<string>();
+
         // Initialize the list to hold the best items for each category
         var bestItems = new List<string>();
 
