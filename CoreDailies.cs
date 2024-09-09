@@ -766,13 +766,10 @@ public class CoreDailies
 
     public void FreeDailyBoost()
     {
-        if (!Core.IsMember)
+        if (!Core.IsMember || !CheckDaily(4069))
             return;
 
         Core.Logger("Daily: Free Boost");
-
-        if (!CheckDaily(4069))
-            return;
 
         Quest quest = Core.EnsureLoad(4069);
         Dictionary<ItemBase, int> CompareDict = new();
@@ -782,18 +779,20 @@ public class CoreDailies
         {
             if (item.ID == 27552 && Bot.Player.Level == 100)
                 continue;
-            if (Core.CheckInventory(item.ID) && Bot.Inventory.TryGetItem(item.ID, out InventoryItem? _item))
-                CompareDict.Add(item, _item!.Quantity);
-            else CompareDict.Add(item, 0);
+
+            CompareDict.Add(item, Bot.Inventory.TryGetItem(item.ID, out InventoryItem? _item)
+                ? _item!.Quantity
+                : 0);
         }
-        // IWLQ = ItemWithLowestQuant
+
         ItemBase IWLQ = CompareDict.FirstOrDefault(x => x.Value == CompareDict.Values.Min()).Key;
 
-        Core.AddDrop(IWLQ.Name);
+        Core.AddDrop(IWLQ.ID);
         Core.ChainComplete(4069, IWLQ.ID);
-        Bot.Wait.ForPickup(IWLQ.Name);
-        Core.ToBank(IWLQ.Name);
+        Bot.Wait.ForPickup(IWLQ.ID);
+        Core.ToBank(IWLQ.ID);
     }
+
 
     public void PowerGem()
     {
