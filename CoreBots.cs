@@ -1445,7 +1445,7 @@ public class CoreBots
     /// If no such item is found, returns the name of the first equipped item matching the specified category.
     /// Returns <c>null</c> if no suitable item is found.
     /// </returns>
-    public string? GetBestItem(GenericGearBoost boostType, string? categoryString = null)
+    public string? GetBestItem(GenericGearBoostType boostType, string? categoryString = null)
     {
         // Convert the boost type to a string
         string boostTypeString = boostType.ToString();
@@ -1493,7 +1493,7 @@ public class CoreBots
     /// An array of strings where each element corresponds to the best item name for a specific category.
     /// If no suitable item is found for a category, the array will contain "None" for that category.
     /// </returns>
-    public string[] BestGear(GenericGearBoost boostType)
+    public string[] BestGear(GenericGearBoostType boostType)
     {
         // Initialize the list to hold the best items for each category
         var bestItems = new List<string>();
@@ -1521,7 +1521,7 @@ public class CoreBots
 
 
         // Add the best weapon item
-        string bestWeapon = GetBestItem(GenericGearBoost.dmgAll, null) ?? "None";
+        string bestWeapon = GetBestItem(GenericGearBoostType.dmgAll, null) ?? "None";
         bestItems.Add(bestWeapon);
 
         // Return the list as an array
@@ -6538,7 +6538,14 @@ public class Badge
         "sSubCategory": "0"
     */
 }
-
+public enum GenericGearBoostType
+{
+    cp,
+    gold,
+    rep,
+    exp,
+    dmgAll,
+}
 public enum Alignment
 {
     Good = 1,
