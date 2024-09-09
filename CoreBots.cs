@@ -1433,35 +1433,99 @@ public class CoreBots
     }
 
     /// <summary>
-    /// Retrieves the best weapon for the specified boost type.
+    /// Retrieves the best item for the specified boost type and category.
     /// </summary>
-    /// <param name="boostType">The type of boost to consider when finding the best weapon.</param>
+    /// <param name="boostType">The type of boost to consider when finding the best item.</param>
+    /// <param name="categoryString">
+    /// The category of the item to find (e.g., Weapon, Armor, Helm, Cape). If <c>null</c>, the method will default to filtering weapon categories.
+    /// Use <see cref="ItemCategory.Unknown"/> to include all categories.
+    /// </param>
     /// <returns>
-    /// The name of the weapon with the highest boost value for the specified boost type.
-    /// If no such weapon is found, returns the name of the first equipped item matching the specified categories.
+    /// The name of the item with the highest boost value for the specified boost type and category.
+    /// If no such item is found, returns the name of the first equipped item matching the specified category.
     /// Returns <c>null</c> if no suitable item is found.
     /// </returns>
-    public string? GetBestWeapon(GenericGearBoost boostType)
+    public string? GetBestItem(GenericGearBoost boostType, string? categoryString = null)
     {
         // Convert the boost type to a string
         string boostTypeString = boostType.ToString();
 
+        // Determine the category filter
+        bool categoryFilter(InventoryItem x) =>
+            categoryString == null
+            ? (x.Category == ItemCategory.Sword
+                || x.Category == ItemCategory.Axe
+                || x.Category == ItemCategory.Dagger
+                || x.Category == ItemCategory.Gun
+                || x.Category == ItemCategory.HandGun
+                || x.Category == ItemCategory.Rifle
+                || x.Category == ItemCategory.Bow
+                || x.Category == ItemCategory.Mace
+                || x.Category == ItemCategory.Gauntlet
+                || x.Category == ItemCategory.Polearm
+                || x.Category == ItemCategory.Staff
+                || x.Category == ItemCategory.Wand
+                || x.Category == ItemCategory.Whip)
+            : x.CategoryString == categoryString;
+
         // Find the item with the highest boost
-        string? weapon = Bot.Inventory.Items.Concat(Bot.Bank.Items)
-            .Where(x => x != null) // Filter out null items
+        string? item = Bot.Inventory.Items.Concat(Bot.Bank.Items)
+            .Where(x => x != null && categoryFilter(x)) // Filter items by category
             .OrderByDescending(x => GetBoostFloat(x, boostTypeString)) // Sort items by boost value in descending order
             .FirstOrDefault() // Select the item with the highest boost
             ?.Name
-            // If no item with a high boost is found, search for items with specified categories and equipped
+            // If no item with a high boost is found, search for items with the specified category and equipped
             ?? Bot.Inventory.Items
-                .Where(x => x != null && x.Equipped)
+                .Where(x => x != null && categoryFilter(x) && x.Equipped)
                 .FirstOrDefault() // Select the first item that matches the category criteria
                 ?.Name;
 
-        if (!Bot.Inventory.Contains(weapon) && Bot.Bank.Contains(weapon))
-            Unbank(weapon);
+        if (!Bot.Inventory.Contains(item) && Bot.Bank.Contains(item))
+            Unbank(item);
 
-        return weapon;
+        return item;
+    }
+
+    /// <summary>
+    /// Retrieves the names of the best items for specific categories.
+    /// </summary>
+    /// <returns>
+    /// An array of strings where each element corresponds to the best item name for a specific category.
+    /// If no suitable item is found for a category, the array will contain "None" for that category.
+    /// </returns>
+    public string[] BestGear(GenericGearBoost boostType)
+    {
+        // Initialize the list to hold the best items for each category
+        var bestItems = new List<string>();
+
+        // Define categories and their corresponding category strings
+        var categories = new Dictionary<string, string?>
+    {
+        { "Armor", ItemCategory.Armor.ToString() },
+        { "Helm", ItemCategory.Helm.ToString() },
+        { "Cape", ItemCategory.Cape.ToString() },
+        { "Pet", ItemCategory.Pet.ToString() },
+        { "FloorItem", ItemCategory.FloorItem.ToString() }
+    };
+
+        // Add the best item for each defined category
+        foreach (var category in categories)
+        {
+            string bestItem = GetBestItem(boostType, category.Value) ?? "None";
+            if (bestItem == "None")
+                continue;
+
+            bestItems.Add(bestItem);
+        }
+        Unbank(bestItems.ToArray());
+
+
+        // Add the best weapon item
+        string bestWeapon = GetBestItem(GenericGearBoost.dmgAll, null) ?? "None";
+        bestItems.Add(bestWeapon);
+
+        // Return the list as an array
+        return bestItems.ToArray();
     }
 
     /// <summary>
