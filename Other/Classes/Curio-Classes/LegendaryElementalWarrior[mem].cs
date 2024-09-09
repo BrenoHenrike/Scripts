@@ -6,6 +6,9 @@ tags: null
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
+//cs_include Scripts/Story/Glacera.cs
+//cs_include Scripts/CoreStory.cs
+//cs_include Scripts/Story/LordsofChaos/Core13LoC.cs
 using Skua.Core.Interfaces;
 
 public class LegendaryElementalWarrior
@@ -14,6 +17,8 @@ public class LegendaryElementalWarrior
     public CoreBots Core => CoreBots.Instance;
     public CoreFarms Farm = new();
     public CoreAdvanced Adv = new();
+    public GlaceraStory GlaceraStory = new();
+    public Core13LoC LOC => new();
 
     public void ScriptMain(IScriptInterface bot)
     {
@@ -33,6 +38,10 @@ public class LegendaryElementalWarrior
             Core.Logger("Class requires member to buy without ACs.");
             return;
         }
+
+        //Required Stories
+        LOC.Lionfang();
+        GlaceraStory.DoAll();
 
         Adv.BuyItem("Curio", 807, 22190);
         Adv.BuyItem("Curio", 807, 22191);
