@@ -1470,7 +1470,9 @@ public class CoreBots
 
         // Find the item with the highest boost
         string? item = Bot.Inventory.Items.Concat(Bot.Bank.Items)
-            .Where(x => x != null && categoryFilter(x)) // Filter items by category
+            .Where(x => x != null
+                        && (!x.Upgrade || Bot.Player.IsMember) // Allow upgrade items if the player is a member
+                        && categoryFilter(x)) // Filter items by category
             .OrderByDescending(x => GetBoostFloat(x, boostTypeString)) // Sort items by boost value in descending order
             .FirstOrDefault() // Select the item with the highest boost
             ?.Name
@@ -1485,6 +1487,7 @@ public class CoreBots
 
         return item;
     }
+
 
     /// <summary>
     /// Retrieves the names of the best items for specific categories.
@@ -1517,8 +1520,9 @@ public class CoreBots
 
             bestItems.Add(bestItem);
         }
-        Unbank(bestItems.ToArray());
 
+        // Add all the best items to the unbanking process
+        Unbank(bestItems.ToArray());
 
         // Add the best weapon item
         string bestWeapon = GetBestItem(GenericGearBoostType.dmgAll, null) ?? "None";
