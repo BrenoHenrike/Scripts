@@ -257,7 +257,7 @@ public class CoreFarmerJoe
             $"Weapon: {Core.GetBestItem(GenericGearBoost.dmgAll) ?? "None"}"
         );
         Core.Equip(Core.BestGear(GenericGearBoost.dmgAll));
-
+        Adv.GearStore();
         Level1to30();
         Level30to75();
         Level75to100();
@@ -265,6 +265,7 @@ public class CoreFarmerJoe
         Outfit();
         Pets(PetChoice.HotMama);
         Pets(PetChoice.Akriloth);
+        Adv.GearStore(true);
     }
 
     /// <summary>
