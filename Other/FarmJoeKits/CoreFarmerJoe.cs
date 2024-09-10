@@ -244,19 +244,6 @@ public class CoreFarmerJoe
     /// </summary>
     public void DoAll()
     {
-        // Bot.Log($"Best Weapon[DmgAll]:{Environment.NewLine}Weapon: {Core.GetBestItem(GenericGearBoostType.dmgAll) ?? "None"}");
-        // Core.Equip(Core.GetBestItem(GenericGearBoostType.dmgAll));
-
-        // // Log all best items with their types on separate lines in a single logger call
-        // Bot.Log($"BestGear:{Environment.NewLine}" +
-        //     $"Armor: {Core.GetBestItem(GenericGearBoostType.dmgAll, "Armor") ?? "None"}{Environment.NewLine}" +
-        //     $"Helm: {Core.GetBestItem(GenericGearBoostType.dmgAll, "Helm") ?? "None"}{Environment.NewLine}" +
-        //     $"Cape: {Core.GetBestItem(GenericGearBoostType.dmgAll, "Cape") ?? "None"}{Environment.NewLine}" +
-        //     $"Pet: {Core.GetBestItem(GenericGearBoostType.dmgAll, "Pet") ?? "None"}{Environment.NewLine}" +
-        //     $"FloorItem: {Core.GetBestItem(GenericGearBoostType.dmgAll, "FloorItem") ?? "None"}{Environment.NewLine}" +
-        //     $"Weapon: {Core.GetBestItem(GenericGearBoostType.dmgAll) ?? "None"}"
-        // );
-        // Core.Equip(Core.BestGear(GenericGearBoostType.dmgAll));
 
         Adv.GearStore();
         Level1to30();
@@ -276,8 +263,8 @@ public class CoreFarmerJoe
     /// </summary>
     public void Level1to30()
     {
-        // Core.Equip(Core.GetBestItem(GenericGearBoostType.dmgAll));
-        // Core.Equip(Core.BestGear(GenericGearBoostType.dmgAll));
+
+
         // Beginner Items
         BeginnerItems();
 
@@ -294,8 +281,8 @@ public class CoreFarmerJoe
     /// </summary>
     public void Level30to75()
     {
-        // Core.Equip(Core.GetBestItem(GenericGearBoostType.dmgAll));
-        // Core.Equip(Core.BestGear(GenericGearBoostType.dmgAll));
+
+
         //Preset Solo & FarmClass (required if additional Classes were pre-aquired before teh script or your restarting it and CBO wasnt saved.
         SetClass(false, true, false);
         SetClass(true, false, false);
@@ -337,7 +324,7 @@ public class CoreFarmerJoe
 
                     Core.Equip(Core.BestGear(GenericGearBoostType.exp));
                     Farm.Experience(Level);
-                    // Core.Equip(Core.GetBestItem(GenericGearBoostType.dmgAll));
+
 
                     if (!Core.CheckInventory("Awethur's Accoutrements"))
                     {
@@ -347,7 +334,7 @@ public class CoreFarmerJoe
                         Farm.BladeofAweREP(6, false);
                         Adv.BuyItem("museum", 631, "Awethur's Accoutrements");
                     }
-                    // Core.Equip(Core.GetBestItem(GenericGearBoostType.dmgAll));
+
                     break;
 
                 case 50:
@@ -361,7 +348,7 @@ public class CoreFarmerJoe
 
                     Core.Equip(Core.BestGear(GenericGearBoostType.exp));
                     Farm.Experience(Level);
-                    // Core.Equip(Core.GetBestItem(GenericGearBoostType.dmgAll));
+
 
                     //check to reduce setclass usage
                     if (!Core.CheckInventory("Scarlet Sorceress") || !Core.CheckInventory(new[] { "Archfiend", "Blaze Binder" }, any: true))
@@ -377,7 +364,7 @@ public class CoreFarmerJoe
                         SetClass(true, false, false);
                         BB.GetBurningBlade();
                     }
-                    // Core.Equip(Core.GetBestItem(GenericGearBoostType.dmgAll));
+
 
                     break;
 
@@ -403,7 +390,7 @@ public class CoreFarmerJoe
 
                     Core.Equip(Core.BestGear(GenericGearBoostType.exp));
                     Farm.Experience(Level);
-                    // Core.Equip(Core.GetBestItem(GenericGearBoostType.dmgAll));
+
                     break;
 
                 case 60:
@@ -416,7 +403,7 @@ public class CoreFarmerJoe
 
                     Core.Equip(Core.BestGear(GenericGearBoostType.exp));
                     Farm.Experience(Level);
-                    // Core.Equip(Core.GetBestItem(GenericGearBoostType.dmgAll));
+
 
                     if (!Core.CheckInventory("DragonSoul Shinobi") || !Core.CheckInventory("ArchPaladin"))
                     {
@@ -440,7 +427,7 @@ public class CoreFarmerJoe
                         SetClass(false, true, false);
                         Core.Equip(Core.BestGear(GenericGearBoostType.exp));
                         Farm.Experience(Level);
-                        // Core.Equip(Core.GetBestItem(GenericGearBoostType.dmgAll));
+
                     }
 
                     if (!Core.CheckInventory("Glacial Berserker") || !Core.CheckInventory("ArchPaladin"))
@@ -486,13 +473,13 @@ public class CoreFarmerJoe
                     SetClass(false, true, false);
                     Core.Equip(Core.BestGear(GenericGearBoostType.exp));
                     Farm.Experience(Level);
-                    // Core.Equip(Core.GetBestItem(GenericGearBoostType.dmgAll));
+
                     break;
 
                 default:
                     Core.Equip(Core.BestGear(GenericGearBoostType.exp));
                     Farm.Experience(Level);
-                    // Core.Equip(Core.GetBestItem(GenericGearBoostType.dmgAll));
+
                     break;
             }
         }
@@ -511,8 +498,8 @@ public class CoreFarmerJoe
     /// </summary>
     public void Level75to100()
     {
-        // Core.Equip(Core.GetBestItem(GenericGearBoostType.dmgAll));
-        // Core.Equip(Core.BestGear(GenericGearBoostType.dmgAll));
+
+
         // Prepare for Lvl100
         Core.Logger("P1: Healer for xiang, Buying & Ranking Healer\n" +
             "class to prep for xiang (Skipped if you have Dragon of Time.");
@@ -576,7 +563,7 @@ public class CoreFarmerJoe
         */
         // Core.Equip(Core.BestGear(GenericGearBoostType.exp));
         Farm.Experience(80);
-        // Core.Equip(Core.GetBestItem(GenericGearBoostType.dmgAll));
+
         SetClass(true, false, true);
         CAQ.DoAll();
         BBOA.GetBBoA();
@@ -605,9 +592,9 @@ public class CoreFarmerJoe
         SetClass(true, false, true);
         // Core.Equip(Core.BestGear(GenericGearBoostType.exp));
         Farm.Experience();
-        // Core.Equip(Core.GetBestItem(GenericGearBoostType.dmgAll));
+
         SRM.BuyAllMerge("Hollowborn Reaper's Scythe");
-        // Core.Equip(Core.GetBestItem(GenericGearBoostType.dmgAll));
+
     }
 
     /// <summary>
@@ -619,8 +606,8 @@ public class CoreFarmerJoe
     /// </summary>
     public void EndGame()
     {
-        // Core.Equip(Core.GetBestItem(GenericGearBoostType.dmgAll));
-        // Core.Equip(Core.BestGear(GenericGearBoostType.dmgAll));
+
+
         #region Ending & Extras 
 
         if (Bot.Config!.Get<bool>("OutFit"))
@@ -638,7 +625,7 @@ public class CoreFarmerJoe
         UnlockForgeEnhancements.DauntLess();
 
         // Apotheosis:
-        // Core.Equip(Core.GetBestItem(GenericGearBoostType.dmgAll));
+
         ExaltedApotheosisPreReqs.PreReqs();
 
 
