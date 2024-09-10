@@ -25,7 +25,7 @@ public class Magicmeadow
     {
         if (Core.isCompletedBefore(9183))
         {
-            Core.Logger("You have already completed this storyline");
+            Core.Logger("StoryLine Complet: Magic magicmeadow");
             return;
         }
 
