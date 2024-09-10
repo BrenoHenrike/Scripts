@@ -3158,28 +3158,31 @@ public class CoreFarms
 
             Core.Join("Collection");
             Bot.Wait.ForMapLoad("Collection");
+            Bot.Wait.ForCellChange("Enter");
             Bot.Wait.ForCellChange("Begin");
             Core.Sleep();
 
-            bool ShopCheck = Bot.Shops.IsLoaded;
+            bool ShopCheck = ShopCheck = Bot.Map.Name == "collection" && Bot.Shops.IsLoaded && Bot.Shops.Name == "Super Fan Token Shop";
 
             while (!Bot.ShouldExit && !ShopCheck)
             {
                 if (Bot.Map.Name != "Collection")
                     Core.Join("Collection");
+
                 if (Bot.Player.Cell != "Begin")
                     Core.Jump("Begin");
 
                 Bot.Shops.Load(325);
                 Bot.Wait.ForActionCooldown(GameActions.LoadShop);
                 Bot.Wait.ForTrue(() => Bot.Shops.IsLoaded, 20);
-                ShopCheck = Bot.Shops.IsLoaded;
+                ShopCheck = ShopCheck = Bot.Map.Name == "collection" && Bot.Shops.IsLoaded && Bot.Shops.Name == "Super Fan Token Shop";
                 if (ShopCheck)
                     break;
             }
             Bot.Wait.ForActionCooldown(GameActions.LoadShop);
-            Core.Sleep();
 
+            Core.Sleep();
+            ShopCheck = ShopCheck = Bot.Map.Name == "collection" && Bot.Shops.IsLoaded && Bot.Shops.Name == "Super Fan Token Shop";
             // Token D > Token C
             if (ShopCheck && dQuantity / 10 > 1 && cQuantity < 500 && dQuantity / 10 + cQuantity < 500)
             {
@@ -3190,6 +3193,7 @@ public class CoreFarms
                 Bot.Wait.ForItemBuy();
             }
             Core.Sleep();
+            ShopCheck = ShopCheck = Bot.Map.Name == "collection" && Bot.Shops.IsLoaded && Bot.Shops.Name == "Super Fan Token Shop";
             // Token C > Token B
             if (ShopCheck && cQuantity / 10 > 1 && bQuantity < 200 && cQuantity / 10 + bQuantity < 200)
             {
@@ -3200,6 +3204,7 @@ public class CoreFarms
                 Bot.Wait.ForItemBuy();
             }
             Core.Sleep();
+            ShopCheck = ShopCheck = Bot.Map.Name == "collection" && Bot.Shops.IsLoaded && Bot.Shops.Name == "Super Fan Token Shop";
 
             // Token B > Token A
             if (ShopCheck && bQuantity / 20 > 1 && aQuantity < 100 && bQuantity / 20 + aQuantity < 100)
@@ -3210,6 +3215,8 @@ public class CoreFarms
                 Bot.Wait.ForActionCooldown(GameActions.BuyItem);
                 Bot.Wait.ForItemBuy();
             }
+            Core.Sleep();
+            ShopCheck = ShopCheck = Bot.Map.Name == "collection" && Bot.Shops.IsLoaded && Bot.Shops.Name == "Super Fan Token Shop";
         }
 
         Core.CancelRegisteredQuests();
@@ -3242,25 +3249,27 @@ public class CoreFarms
             Bot.Wait.ForCellChange("Begin");
             Core.Sleep();
 
-            bool ShopCheck = Bot.Shops.IsLoaded;
+            bool ShopCheck = ShopCheck = Bot.Map.Name == "collection" && Bot.Shops.IsLoaded && Bot.Shops.Name == "Super Fan Token Shop";
 
             while (!Bot.ShouldExit && !ShopCheck)
             {
                 if (Bot.Map.Name != "Collection")
                     Core.Join("Collection");
+
                 if (Bot.Player.Cell != "Begin")
                     Core.Jump("Begin");
 
                 Bot.Shops.Load(325);
                 Bot.Wait.ForActionCooldown(GameActions.LoadShop);
                 Bot.Wait.ForTrue(() => Bot.Shops.IsLoaded, 20);
-                ShopCheck = Bot.Shops.IsLoaded;
+                ShopCheck = ShopCheck = Bot.Map.Name == "collection" && Bot.Shops.IsLoaded && Bot.Shops.Name == "Super Fan Token Shop";
                 if (ShopCheck)
                     break;
             }
             Bot.Wait.ForActionCooldown(GameActions.LoadShop);
-            Core.Sleep();
 
+            Core.Sleep();
+            ShopCheck = ShopCheck = Bot.Map.Name == "collection" && Bot.Shops.IsLoaded && Bot.Shops.Name == "Super Fan Token Shop";
             if (ShopCheck && dQuantity / 10 > 1 && cQuantity < 500 && dQuantity / 10 + cQuantity < 500)
             {
                 int buyC = dQuantity / 10;
@@ -3269,6 +3278,8 @@ public class CoreFarms
                 Bot.Wait.ForActionCooldown(GameActions.BuyItem);
                 Bot.Wait.ForItemBuy();
             }
+            Core.Sleep();
+            ShopCheck = ShopCheck = Bot.Map.Name == "collection" && Bot.Shops.IsLoaded && Bot.Shops.Name == "Super Fan Token Shop";
             if (ShopCheck && cQuantity / 10 > 1 && bQuantity < 200 && cQuantity / 10 + bQuantity < 200)
             {
                 int buyB = cQuantity / 10;
@@ -3277,6 +3288,8 @@ public class CoreFarms
                 Bot.Wait.ForActionCooldown(GameActions.BuyItem);
                 Bot.Wait.ForItemBuy();
             }
+            Core.Sleep();
+            ShopCheck = ShopCheck = Bot.Map.Name == "collection" && Bot.Shops.IsLoaded && Bot.Shops.Name == "Super Fan Token Shop";
             if (ShopCheck && bQuantity / 20 > 1 && aQuantity < 100 && bQuantity / 20 + aQuantity < 100)
             {
                 int buyA = bQuantity / 20;
@@ -3285,6 +3298,8 @@ public class CoreFarms
                 Bot.Wait.ForActionCooldown(GameActions.BuyItem);
                 Bot.Wait.ForItemBuy();
             }
+            Core.Sleep();
+            ShopCheck = ShopCheck = Bot.Map.Name == "collection" && Bot.Shops.IsLoaded && Bot.Shops.Name == "Super Fan Token Shop";
 
         }
 
