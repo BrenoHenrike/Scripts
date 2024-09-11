@@ -663,7 +663,7 @@
       "shadow-void"
     ],
     "path": "Story/ShadowVoid.cs",
-    "size": 1864,
+    "size": 1879,
     "fileName": "ShadowVoid.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowVoid.cs"
   },
@@ -990,7 +990,7 @@
       "j6-saga"
     ],
     "path": "Story/J6Saga.cs",
-    "size": 6986,
+    "size": 6973,
     "fileName": "J6Saga.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/J6Saga.cs"
   },
@@ -4406,7 +4406,7 @@
       "null"
     ],
     "path": "Story/ElegyofMadness(Darkon)/CoreAstravia.cs",
-    "size": 15957,
+    "size": 15903,
     "fileName": "CoreAstravia.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ElegyofMadness(Darkon)/CoreAstravia.cs"
   },
@@ -6999,7 +6999,7 @@
       "null"
     ],
     "path": "Story/ShadowsOfChaos/CoreSoC.cs",
-    "size": 12102,
+    "size": 12185,
     "fileName": "CoreSoC.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfChaos/CoreSoC.cs"
   },
@@ -7732,7 +7732,7 @@
       "seasonal"
     ],
     "path": "Seasonal/IndonesianDay/Kala.cs",
-    "size": 2360,
+    "size": 2332,
     "fileName": "Kala.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/IndonesianDay/Kala.cs"
   },
@@ -8071,7 +8071,7 @@
       "fools"
     ],
     "path": "Seasonal/AprilFools/Magicmeadow.cs",
-    "size": 1487,
+    "size": 1492,
     "fileName": "Magicmeadow.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AprilFools/Magicmeadow.cs"
   },
@@ -8152,7 +8152,7 @@
       "april-fools"
     ],
     "path": "Seasonal/AprilFools/MeateorHunt.cs",
-    "size": 3709,
+    "size": 3719,
     "fileName": "MeateorHunt.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AprilFools/MeateorHunt.cs"
   },
@@ -9044,7 +9044,7 @@
       "member"
     ],
     "path": "Seasonal/TalkLikeaPirateDay/AvastBadge[mem].cs",
-    "size": 6713,
+    "size": 6688,
     "fileName": "AvastBadge[mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/AvastBadge[mem].cs"
   },
@@ -22070,7 +22070,7 @@
       "null"
     ],
     "path": "Story/Legion/DageTheEvilIsland/CoreDageTheEvilIsland.cs",
-    "size": 10870,
+    "size": 10914,
     "fileName": "CoreDageTheEvilIsland.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Legion/DageTheEvilIsland/CoreDageTheEvilIsland.cs"
   },
