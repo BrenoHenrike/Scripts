@@ -15,10 +15,10 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Setup .NET
-      uses: actions/setup-dotnet@v2
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: '6.0.x'
 
@@ -26,13 +26,13 @@ jobs:
       run: dotnet run Program.cs --project SkuaScriptsGenerator/SkuaScriptsGenerator.csproj > scripts.json
 
     - name: Upload artifact
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: scripts.json
         path: scripts.json
 
     - name: Commit and push changes
-      uses: stefanzweifel/git-auto-commit-action@v4
+      uses: stefanzweifel/git-auto-commit-action@v5
       with:
         commit_message: 'Automatic commit by GitHub Actions'
         files: 'scripts.json'
@@ -40,6 +40,6 @@ jobs:
         push_options: '--force'
 
     - name: Delete artifact
-      uses: geekyeggo/delete-artifact@v2
+      uses: geekyeggo/delete-artifact@v5
       with:
         name: scripts.json
