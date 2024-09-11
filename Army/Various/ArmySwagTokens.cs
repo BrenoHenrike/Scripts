@@ -1,6 +1,6 @@
 /*
-name: Swag Token A Army
-description: Farms Super Fan Swag Token A
+name: Super-Fan Swag Token A (Army)
+description: Farms Super-Fan Wwag Token A with f2p method
 tags: super, fan, swag, toke, a, army, f2p, rep
 */
 //cs_include Scripts/CoreBots.cs

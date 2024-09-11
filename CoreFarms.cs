@@ -1317,7 +1317,7 @@ public class CoreFarms
                 else
                 {
                     Core.Logger("Already at max rank.");
-                    return;
+                    return; 
                 }
             }
 

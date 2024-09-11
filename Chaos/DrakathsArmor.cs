@@ -95,6 +95,6 @@ public class DrakathArmorBot
         
         //wait and pickup drop (if not already picked up)
         Bot.Wait.ForDrop("Get Your Original Drakath's Armor");
-        Bot.Wait.ForPickup("Get Your Original Drakath's Armor");
+        Bot.Wait.ForPickup("Get Your Original Drakath's Armor"); 
     }
 }
