@@ -287,7 +287,6 @@ public class CoreFarmerJoe
         SetClass(false, true, false);
         SetClass(true, false, false);
 
-        // //Adv.BestGear(GenericGearBoostType.exp);
         Farm.ToggleBoost(BoostType.Experience);
 
         foreach (int Level in Core.FromTo(0, 75))
@@ -322,7 +321,6 @@ public class CoreFarmerJoe
                         MR.GetMR();
                     }
 
-                    Core.Equip(Core.BestGear(GenericGearBoostType.exp));
                     Farm.Experience(Level);
 
 
@@ -346,7 +344,6 @@ public class CoreFarmerJoe
                         break;
                     }
 
-                    Core.Equip(Core.BestGear(GenericGearBoostType.exp));
                     Farm.Experience(Level);
 
 
@@ -388,7 +385,6 @@ public class CoreFarmerJoe
                         Bb.GetClass();
                     }
 
-                    Core.Equip(Core.BestGear(GenericGearBoostType.exp));
                     Farm.Experience(Level);
 
                     break;
@@ -401,7 +397,6 @@ public class CoreFarmerJoe
                         break;
                     }
 
-                    Core.Equip(Core.BestGear(GenericGearBoostType.exp));
                     Farm.Experience(Level);
 
 
@@ -425,7 +420,6 @@ public class CoreFarmerJoe
                     if (Bot.Player.Level < Level)
                     {
                         SetClass(false, true, false);
-                        Core.Equip(Core.BestGear(GenericGearBoostType.exp));
                         Farm.Experience(Level);
 
                     }
@@ -471,13 +465,11 @@ public class CoreFarmerJoe
 
                     //Set FarmClass to "ArchFiend"
                     SetClass(false, true, false);
-                    Core.Equip(Core.BestGear(GenericGearBoostType.exp));
                     Farm.Experience(Level);
 
                     break;
 
                 default:
-                    Core.Equip(Core.BestGear(GenericGearBoostType.exp));
                     Farm.Experience(Level);
 
                     break;
@@ -561,7 +553,6 @@ public class CoreFarmerJoe
         Celestial Arena QuestLine for BBoA
         Attemp to get `Void Highlord Class`
         */
-        // Core.Equip(Core.BestGear(GenericGearBoostType.exp));
         Farm.Experience(80);
 
         SetClass(true, false, true);
@@ -590,7 +581,6 @@ public class CoreFarmerJoe
         // Leveling to 100 & HBRS
         Core.Logger("P4 Leveling to 100");
         SetClass(true, false, true);
-        // Core.Equip(Core.BestGear(GenericGearBoostType.exp));
         Farm.Experience();
 
         SRM.BuyAllMerge("Hollowborn Reaper's Scythe");
