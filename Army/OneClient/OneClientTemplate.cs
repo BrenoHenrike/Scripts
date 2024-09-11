@@ -10,6 +10,9 @@ tags: null
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Army/CoreArmyLite.cs
 using Skua.Core.Interfaces;
+using Skua.Core.Models;
+using Skua.Core.Models.Auras;
+using Skua.Core.Options;
 
 public class OneClientTemplate
 {
