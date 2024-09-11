@@ -39,7 +39,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 125981,
+    "size": 128309,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -663,7 +663,7 @@
       "shadow-void"
     ],
     "path": "Story/ShadowVoid.cs",
-    "size": 1879,
+    "size": 1864,
     "fileName": "ShadowVoid.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowVoid.cs"
   },
@@ -990,7 +990,7 @@
       "j6-saga"
     ],
     "path": "Story/J6Saga.cs",
-    "size": 6973,
+    "size": 6986,
     "fileName": "J6Saga.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/J6Saga.cs"
   },
@@ -2245,7 +2245,7 @@
       "swag token d"
     ],
     "path": "Farm/SwagTokenA.cs",
-    "size": 719,
+    "size": 782,
     "fileName": "SwagTokenA.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/SwagTokenA.cs"
   },
@@ -3224,7 +3224,7 @@
       "original drakath armor"
     ],
     "path": "Chaos/DrakathsArmor.cs",
-    "size": 3249,
+    "size": 3448,
     "fileName": "DrakathsArmor.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Chaos/DrakathsArmor.cs"
   },
@@ -4406,7 +4406,7 @@
       "null"
     ],
     "path": "Story/ElegyofMadness(Darkon)/CoreAstravia.cs",
-    "size": 15903,
+    "size": 15957,
     "fileName": "CoreAstravia.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ElegyofMadness(Darkon)/CoreAstravia.cs"
   },
@@ -6999,7 +6999,7 @@
       "null"
     ],
     "path": "Story/ShadowsOfChaos/CoreSoC.cs",
-    "size": 12185,
+    "size": 12102,
     "fileName": "CoreSoC.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowsOfChaos/CoreSoC.cs"
   },
@@ -7732,7 +7732,7 @@
       "seasonal"
     ],
     "path": "Seasonal/IndonesianDay/Kala.cs",
-    "size": 2332,
+    "size": 2360,
     "fileName": "Kala.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/IndonesianDay/Kala.cs"
   },
@@ -8071,7 +8071,7 @@
       "fools"
     ],
     "path": "Seasonal/AprilFools/Magicmeadow.cs",
-    "size": 1492,
+    "size": 1487,
     "fileName": "Magicmeadow.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AprilFools/Magicmeadow.cs"
   },
@@ -8152,7 +8152,7 @@
       "april-fools"
     ],
     "path": "Seasonal/AprilFools/MeateorHunt.cs",
-    "size": 3719,
+    "size": 3709,
     "fileName": "MeateorHunt.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AprilFools/MeateorHunt.cs"
   },
@@ -9044,7 +9044,7 @@
       "member"
     ],
     "path": "Seasonal/TalkLikeaPirateDay/AvastBadge[mem].cs",
-    "size": 6688,
+    "size": 6713,
     "fileName": "AvastBadge[mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/TalkLikeaPirateDay/AvastBadge[mem].cs"
   },
@@ -11932,6 +11932,24 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyNulgath/ArmyVoucherItemofNulgath.cs"
   },
   {
+    "name": "Swag Token A Army",
+    "description": "Farms Super Fan Swag Token A",
+    "tags": [
+      "super",
+      "fan",
+      "swag",
+      "toke",
+      "a",
+      "army",
+      "f2p",
+      "rep"
+    ],
+    "path": "Army/Various/ArmySwagTokens.cs",
+    "size": 5915,
+    "fileName": "ArmySwagTokens.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmySwagTokens.cs"
+  },
+  {
     "name": "Elemental Binding (Army)",
     "description": "Farms Prismatic Seams using your army.",
     "tags": [
@@ -12068,24 +12086,6 @@
     "size": 2277,
     "fileName": "ArmyMirrorRealmToken.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmyMirrorRealmToken.cs"
-  },
-  {
-    "name": "Super-Fan Swag Token A (Army)",
-    "description": "Farms Super-Fan Wwag Token A with f2p method",
-    "tags": [
-      "super",
-      "fan",
-      "swag",
-      "toke",
-      "a",
-      "army",
-      "f2p",
-      "rep"
-    ],
-    "path": "Army/Various/ArmySwagTokensF2p.cs",
-    "size": 3276,
-    "fileName": "ArmySwagTokensF2p.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmySwagTokensF2p.cs"
   },
   {
     "name": "Smart Void Auras (Army)",
@@ -19124,7 +19124,7 @@
       "null"
     ],
     "path": "Other/FarmJoeKits/CoreFarmerJoe.cs",
-    "size": 50597,
+    "size": 48065,
     "fileName": "CoreFarmerJoe.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/CoreFarmerJoe.cs"
   },
@@ -22070,7 +22070,7 @@
       "null"
     ],
     "path": "Story/Legion/DageTheEvilIsland/CoreDageTheEvilIsland.cs",
-    "size": 10914,
+    "size": 10870,
     "fileName": "CoreDageTheEvilIsland.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Legion/DageTheEvilIsland/CoreDageTheEvilIsland.cs"
   },
