@@ -36,7 +36,7 @@ public class CoreAstravia
         //Progress Check
         if (Core.isCompletedBefore(7779))
         {
-            Core.Logger("StoryLine Complete:   Eridani");
+            Core.Logger("Story Complete: Eridani");
             return;
         }
 
@@ -128,7 +128,7 @@ public class CoreAstravia
         //Progress Check
         if (Core.isCompletedBefore(8000))
         {
-            Core.Logger("StoryLine Complete:   Astravia");
+            Core.Logger("Story Complete: Astravia");
             return;
         }
 
@@ -177,7 +177,7 @@ public class CoreAstravia
         //Progress Check
         if (Core.isCompletedBefore(8256))
         {
-            Core.Logger("StoryLine Complete:   AstraviaCastle");
+            Core.Logger("Story Complete: AstraviaCastle");
             return;
         }
 
@@ -246,7 +246,7 @@ public class CoreAstravia
         //Progress Check
         if (Core.isCompletedBefore(8395))
         {
-            Core.Logger("StoryLine Complete:   AstraviaJudgement");
+            Core.Logger("Story Complete: AstraviaJudgement");
             return;
         }
 
@@ -304,7 +304,7 @@ public class CoreAstravia
         //Progress Check
         if (Core.isCompletedBefore(8530))
         {
-            Core.Logger("StoryLine Complete:   EridaniPast");
+            Core.Logger("Story Complete: EridaniPast");
             return;
         }
 
@@ -361,7 +361,7 @@ public class CoreAstravia
         //Progress Check
         if (Core.isCompletedBefore(8601))
         {
-            Core.Logger("StoryLine Complete:   AstraviaPast");
+            Core.Logger("Story Complete: AstraviaPast");
             return;
         }
 
@@ -409,7 +409,7 @@ public class CoreAstravia
         //Progress Check
         if (Core.isCompletedBefore(8641))
         {
-            Core.Logger("StoryLine Complete:   FirstObservatory");
+            Core.Logger("Story Complete: FirstObservatory");
             return;
         }
 
@@ -458,7 +458,7 @@ public class CoreAstravia
     {
         if (Core.isCompletedBefore(8687))
         {
-            Core.Logger("StoryLine Complete:   GenesisGarden");
+            Core.Logger("Story Complete: GenesisGarden");
             return;
         }
 
@@ -502,7 +502,7 @@ public class CoreAstravia
     {
         if (Core.isCompletedBefore(8733))
         {
-            Core.Logger("StoryLine Complete:   TheWorld");
+            Core.Logger("Story Complete: TheWorld");
             return;
         }
 

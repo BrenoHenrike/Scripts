@@ -33,7 +33,7 @@ public class AvastBadge
             return;
         if (Core.isCompletedBefore(2394)) //&& Core.HasAchievement()) // cant seem to find the achievmentID
         {
-            Core.Logger("Story Complete & Badge Owned: AvastBadge");
+            Core.Logger("Story Complete.");
             return;
         }
 

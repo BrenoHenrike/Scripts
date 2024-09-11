@@ -28,7 +28,7 @@ public class J6Saga
     {
         if (Core.isCompletedBefore(2858))
         {
-            Core.Logger("StoryLine Complete:  J6 Saga");
+            Core.Logger("Story Complete.");
             return;
         }
 

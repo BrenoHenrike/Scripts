@@ -32,10 +32,7 @@ public class KalaSeasonal
         Ran.StoryLine();
 
         if (Core.isCompletedBefore(8214))
-        {
-            Core.Logger("StoryLine Complete: Kala");
             return;
-        }
 
         Story.PreLoad(this);
 
@@ -81,5 +78,7 @@ public class KalaSeasonal
 
         // 8214 Kala-mity time
         Story.KillQuest(8214, "kala", "Kala");
+
+        Core.Logger("Kala Story Complete");
     }
 }
