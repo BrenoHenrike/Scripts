@@ -11581,6 +11581,17 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/OneClient/GenerateQueuedOneClientScript.cs"
   },
   {
+    "name": "null",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Army/OneClient/OneClientTemplate.cs",
+    "size": 1085,
+    "fileName": "OneClientTemplate.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/OneClient/OneClientTemplate.cs"
+  },
+  {
     "name": "IceWing Leveling Army",
     "description": "Uses your army to kill Warlord Icewing.",
     "tags": [
