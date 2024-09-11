@@ -39,7 +39,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 128309,
+    "size": 128310,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -2245,7 +2245,7 @@
       "swag token d"
     ],
     "path": "Farm/SwagTokenA.cs",
-    "size": 782,
+    "size": 783,
     "fileName": "SwagTokenA.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/SwagTokenA.cs"
   },
@@ -3224,7 +3224,7 @@
       "original drakath armor"
     ],
     "path": "Chaos/DrakathsArmor.cs",
-    "size": 3448,
+    "size": 3449,
     "fileName": "DrakathsArmor.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Chaos/DrakathsArmor.cs"
   },
@@ -11932,8 +11932,8 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyNulgath/ArmyVoucherItemofNulgath.cs"
   },
   {
-    "name": "Swag Token A Army",
-    "description": "Farms Super Fan Swag Token A",
+    "name": "Super-Fan Swag Token A (Army)",
+    "description": "Farms Super-Fan Wwag Token A with f2p method",
     "tags": [
       "super",
       "fan",
@@ -11945,7 +11945,7 @@
       "rep"
     ],
     "path": "Army/Various/ArmySwagTokens.cs",
-    "size": 5915,
+    "size": 5943,
     "fileName": "ArmySwagTokens.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Various/ArmySwagTokens.cs"
   },
@@ -19124,7 +19124,7 @@
       "null"
     ],
     "path": "Other/FarmJoeKits/CoreFarmerJoe.cs",
-    "size": 48065,
+    "size": 48066,
     "fileName": "CoreFarmerJoe.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/CoreFarmerJoe.cs"
   },
