@@ -1319,11 +1319,6 @@ public class CoreFarms
                     Core.Logger("Already at max rank.");
                     return;
                 }
-                //enable debugger
-                Core.DL_Enable();
-
-                //Useage
-                Core.DebugLogger(this, "\"Marker\"", "\"Caller\"");
             }
 
             ToggleBoost(BoostType.Reputation, false);
