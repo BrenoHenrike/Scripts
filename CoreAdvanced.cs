@@ -2288,7 +2288,7 @@ public class CoreAdvanced
                     break;
                 #endregion
 
-                #region Wizard - Vainglory - Arcanas Concerto | Valiance - Pneuma | Wizard
+                #region Wizard - Vainglory - Ravenous | Valiance - Pneuma | Wizard
                 case "legion revenant":
                 case "legion revenant (ioda)":
                     if (!uVainglory() || !uValiance() || !uPneuma())
@@ -2296,7 +2296,7 @@ public class CoreAdvanced
 
                     type = EnhancementType.Wizard;
                     cSpecial = CapeSpecial.Vainglory;
-                    wSpecial = uArcanasConcerto() ? WeaponSpecial.Arcanas_Concerto : WeaponSpecial.Valiance;
+                    wSpecial = uArcanasConcerto() ? WeaponSpecial.Ravenous : WeaponSpecial.Valiance;
                     hSpecial = HelmSpecial.Pneuma;
                     break;
                 #endregion
