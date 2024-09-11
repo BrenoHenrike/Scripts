@@ -419,7 +419,7 @@ public class CoreFarmerJoe
                     Core.CheckInventory("Glacial Berserker") && ClassGlacialBerserker?.Quantity >= 302500)
                     {
                         Core.Logger("Items owned: \"ArchPaladin\", continuing");
-                        break; 
+                        break;
                     }
 
                     if (Bot.Player.Level < Level)
