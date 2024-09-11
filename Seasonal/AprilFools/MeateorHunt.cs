@@ -29,7 +29,7 @@ public class MeateorHunt
             return;
         if (Core.isCompletedBefore(8628))
         {
-            Core.Logger("You have already completed this storyline");
+            Core.Logger("StoryLine Complet: Meateor Hunt");
             return;
         }
 

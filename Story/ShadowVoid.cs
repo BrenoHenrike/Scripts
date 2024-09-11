@@ -32,7 +32,7 @@ public class ShadowVoid
         }
         if (Core.isCompletedBefore(7131))
         {
-            Core.Logger("You have already completed Shadowvoid storyline");
+            Core.Logger("StoryLine Complete:   Shadowvoid");
             return;
         }
 

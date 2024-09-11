@@ -26,7 +26,7 @@ public class CoreSoC
     {
         if (Core.isCompletedBefore(7768))
         {
-            Core.Logger("You have already completed Shadows Of Chaos storyline");
+            Core.Logger("Saga Complet: Shadows Of Chaos");
             return;
         }
 
@@ -47,7 +47,7 @@ public class CoreSoC
     {
         if (Core.isCompletedBefore(7571))
         {
-            Core.Logger("You have already completed Dualplane storyline");
+            Core.Logger("StoryLine Complete:  Dualplane storyline");
             return;
         }
 
@@ -91,7 +91,7 @@ public class CoreSoC
     {
         if (Core.isCompletedBefore(7688))
         {
-            Core.Logger("You have already completed Chaos Amulet storyline");
+            Core.Logger("StoryLine Complete:  Chaos Amulet storyline");
             return;
         }
 
@@ -125,7 +125,7 @@ public class CoreSoC
     {
         if (Core.isCompletedBefore(7700))
         {
-            Core.Logger("You have already completed Laguna Beach storyline");
+            Core.Logger("StoryLine Complete:  Laguna Beach storyline");
             return;
         }
         Story.PreLoad(this);
@@ -173,7 +173,7 @@ public class CoreSoC
     {
         if (Core.isCompletedBefore(7712))
         {
-            Core.Logger("You have already completed Laguna storyline");
+            Core.Logger("StoryLine Complete:  Laguna storyline");
             return;
         }
 
@@ -221,7 +221,7 @@ public class CoreSoC
     {
         if (Core.isCompletedBefore(7732))
         {
-            Core.Logger("You have already completed Shadowoff storyline");
+            Core.Logger("StoryLine Complete:  Shadowoff storyline");
             return;
         }
 
@@ -250,7 +250,7 @@ public class CoreSoC
     {
         if (Core.isCompletedBefore(7738))
         {
-            Core.Logger("You have already completed BrightShadow storyline");
+            Core.Logger("StoryLine Complete:  BrightShadow storyline");
             return;
         }
 
@@ -281,7 +281,7 @@ public class CoreSoC
     {
         if (Core.isCompletedBefore(7750))
         {
-            Core.Logger("You have already completed BrightChaos storyline");
+            Core.Logger("StoryLine Complete:  BrightChaos storyline");
             return;
         }
         BrightShadow();
@@ -327,7 +327,7 @@ public class CoreSoC
     {
         if (Core.isCompletedBefore(7758))
         {
-            Core.Logger("You have already completed BrightForest storyline");
+            Core.Logger("StoryLine Complete:  BrightForest storyline");
             return;
         }
         BrightChaos();
@@ -347,7 +347,7 @@ public class CoreSoC
     {
         if (Core.isCompletedBefore(7766))
         {
-            Core.Logger("You have already completed BrightForestPast storyline");
+            Core.Logger("StoryLine Complete:  BrightForestPast storyline");
             return;
         }
         BrightForest();
@@ -394,7 +394,7 @@ public class CoreSoC
     {
         if (Core.isCompletedBefore(7768))
         {
-            Core.Logger("You have already completed BrightForest Extra storyline");
+            Core.Logger("StoryLine Complete:  BrightForest Extra storyline");
             return;
         }
 

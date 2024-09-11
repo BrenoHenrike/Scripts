@@ -28,7 +28,7 @@ public class CoreDageTheEvilIsland
     {
         if (Core.isCompletedBefore(5658))
         {
-            Core.Logger("You have already completed DageTheEvil island storyline");
+            Core.Logger("Saga Complete: Dage  the Evil Island");
             return;
         }
         DarkFortress();
@@ -42,7 +42,7 @@ public class CoreDageTheEvilIsland
     {
         if (Core.isCompletedBefore(4092))
         {
-            Core.Logger("You have already completed DarkFortress storyline");
+            Core.Logger("StoryLine Complete:   DarkFortress storyline");
             return;
         }
         Story.PreLoad(this);
@@ -85,7 +85,7 @@ public class CoreDageTheEvilIsland
     {
         if (Bot.Quests.IsUnlocked(4186))
         {
-            Core.Logger("You have already completed Seraph storyline");
+            Core.Logger("StoryLine Complete:   Seraph storyline");
             return;
         }
         Story.PreLoad(this);
@@ -121,7 +121,7 @@ public class CoreDageTheEvilIsland
     {
         if (Core.isCompletedBefore(4195))
         {
-            Core.Logger("You have already completed LegionCrypt storyline");
+            Core.Logger("StoryLine Complete:   LegionCrypt storyline");
             return;
         }
         Story.PreLoad(this);
@@ -162,7 +162,7 @@ public class CoreDageTheEvilIsland
     {
         if (Core.isCompletedBefore(4893))
         {
-            Core.Logger("You have already completed Envy storyline");
+            Core.Logger("StoryLine Complete:   Envy storyline");
             return;
         }
         Story.PreLoad(this);
@@ -257,7 +257,7 @@ public class CoreDageTheEvilIsland
     {
         if (Core.isCompletedBefore(5658))
         {
-            Core.Logger("You have already completed Laken storyline");
+            Core.Logger("StoryLine Complete:   Laken storyline");
             return;
         }
         Story.PreLoad(this);
