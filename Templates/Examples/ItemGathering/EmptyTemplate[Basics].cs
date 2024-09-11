@@ -35,6 +35,8 @@ public class DefaultTemplate
 
     public void Example(bool TestMode = false)
     {
+
+        //Test Push
         if (TestMode)
         {
             if (Core.CheckInventory("item", 1))
