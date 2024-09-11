@@ -53,7 +53,7 @@ public class ArmySwagTokens
         Core.AddDrop("Super-Fan Swag Token A", "Super-Fan Swag Token B", "Super-Fan Swag Token C", "Super-Fan Swag Token D");
         Core.FarmingLogger($"Super-Fan Swag Token A", quant);
         Core.EquipClass(ClassType.Farm);
-        Core.RegisterQuests(Bot.Config.Get<bool>("MemOrNonMem") ? new[] { 1310, 1312, 1313, 1314 } : new[] { 1304, 1307 });
+        Core.RegisterQuests(Bot.Config!.Get<bool>("MemOrNonMem") ? new[] { 1310, 1312, 1313, 1314 } : new[] { 1304, 1307 });
         while (!Bot.ShouldExit && !Core.CheckInventory("Super-Fan Swag Token A", quant))
         {
             int dQuantity = Bot.Inventory.GetQuantity("Super-Fan Swag Token D");
