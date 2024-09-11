@@ -4087,7 +4087,7 @@ public class CoreBots
                 Bot.Wait.ForActionCooldown(GameActions.EquipItem);
                 break;
         }
-        Bot.Wait.ForItemEquip(item.ID);
+        Bot.Wait.ForTrue(() => Bot.Inventory.IsEquipped(item.ID), 20);
         Sleep();
         if (logEquip)
             Logger($"Equipping {(Bot.Inventory.IsEquipped(item.ID) ? string.Empty : "failed: ")} {item.Name}", "Equip");
