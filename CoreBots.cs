@@ -1485,8 +1485,13 @@ public class CoreBots
                 .FirstOrDefault() // Select the first item that matches the category criteria
                 ?.Name;
 
-        if (!Bot.Inventory.Contains(item) && Bot.Bank.Contains(item))
-            Unbank(item);
+        if (item != null)
+        {
+            if (!Bot.Inventory.Contains(item) && Bot.Bank.Contains(item))
+                Unbank(item);
+        }
+        else
+            Logger("No suitable item found.");
 
         return item;
     }
