@@ -42,7 +42,10 @@ public class Mazumi
             Core.HuntMonster("greenguardwest", "Kittarian", "Kittarian's Wallet", 2);
             Core.HuntMonster("greenguardwest", "River Fishman", "River Fishman's Wallet", 2);
             Core.HuntMonster("greenguardwest", "Slime", "Slime-Soaked Wallet", 2);
-            Core.KillMonster("greenguardwest", "West12", "Up", "Frogzard", "Frogzard's Lint Hoard", 2);
+
+            // Dont use `West1` for Frogzard, as the cell contains an extra frogzard that isnt there.
+            Core.KillMonster("greenguardwest", "West3", "Up", "Frogzard", "Frogzard's Lint Hoard", 2);
+            
             Core.KillMonster("greenguardwest", "West12", "Up", "Big Bad Boar", "Big Bad Boar's Wallet");
             Core.EnsureComplete(91);
         }
