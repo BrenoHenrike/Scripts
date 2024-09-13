@@ -75,7 +75,7 @@ public class ArmyHigureMats
         }
 
         Core.Join("whitemap");
-        Army.waitForPartyCell("Enter", "Spawn");
+        //Army.waitForPartyCell("Enter", "Spawn");
         Army.waitForSignal("armyready");
 
         var huntData = new[]
@@ -120,7 +120,7 @@ public class ArmyHigureMats
         //Core.EquipClass(classType);
         Core.Join(map);
 
-        Army.waitForPartyCell("Enter", "Spawn");
+        //Army.waitForPartyCell("Enter", "Spawn");
         if (questId != 0)
             Core.RegisterQuests(questId);
 

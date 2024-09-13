@@ -137,7 +137,7 @@ public class ArmyLR
         DWLN.DoBoth();
 
         Core.Join("whitemap");
-        Army.waitForPartyCell("Enter", "Spawn");
+        //Army.waitForPartyCell("Enter", "Spawn");
         /* PREFARM ZONE */
 
         /* Step 1: Evil Rank 10 */
@@ -187,7 +187,7 @@ public class ArmyLR
         if (checkIsDone("Revenant's Spellscroll", quant)) return;
 
         Core.Join("whitemap");
-        Army.waitForPartyCell("Enter", "Spawn");
+        //Army.waitForPartyCell("Enter", "Spawn");
         Army.waitForSignal("armyLF1ready");
 
         Core.AddDrop("Legion Token");
@@ -222,7 +222,7 @@ public class ArmyLR
         if (checkIsDone("Conquest Wreath", quant)) return;
 
         Core.Join("whitemap");
-        Army.waitForPartyCell("Enter", "Spawn");
+        //Army.waitForPartyCell("Enter", "Spawn");
         Army.waitForSignal("armyLF2ready");
 
         Core.AddDrop(LF2);
@@ -268,7 +268,7 @@ public class ArmyLR
         if (checkIsDone("Exalted Crown", quant)) return;
 
         Core.Join("whitemap");
-        Army.waitForPartyCell("Enter", "Spawn");
+        //Army.waitForPartyCell("Enter", "Spawn");
         Army.waitForSignal("armyLF3ready");
 
         Core.FarmingLogger("Exalted Crown", quant);
@@ -304,7 +304,7 @@ public class ArmyLR
         Farm.ToggleBoost(BoostType.Reputation);
 
         Core.Join("swordhavenbridge");
-        Army.waitForPartyCell("Enter", "Spawn");
+        //Army.waitForPartyCell("Enter", "Spawn");
 
         Army.DivideOnCellsPriority(new[] { "Bridge", "End" }, priorityCell: "", log: true);
         Core.RegisterQuests(364, 369); //Youthanize 364, That Hero Who Chases Slimes 369
@@ -349,7 +349,7 @@ public class ArmyLR
         Farm.ToggleBoost(BoostType.Reputation);
 
         Core.Join("castleundead");
-        Army.waitForPartyCell("Enter", "Spawn");
+        //Army.waitForPartyCell("Enter", "Spawn");
 
         Core.RegisterQuests(367, 372);
         Army.DivideOnCellsPriority(new[] { "Enter", "Bleft", "Bright", "Tleft" }, priorityCell: "", log: true);
@@ -396,7 +396,7 @@ public class ArmyLR
         Farm.ToggleBoost(BoostType.Gold);
 
         Core.Join("darkwarnation");
-        Army.waitForPartyCell("Enter", "Spawn");
+        //Army.waitForPartyCell("Enter", "Spawn");
 
         Core.RegisterQuests(8578, 8579, 8580, 8581); //Legion Badges, Mega Legion Badges, Doomed Legion Warriors, Undead Legion Dread       
 
@@ -540,7 +540,7 @@ public class ArmyLR
             else Army.waitForSignal($"revenant1{counter}", revenant1);
             counter++;
         }
-        else Army.waitForPartyCell("Enter", "Spawn");
+        else //Army.waitForPartyCell("Enter", "Spawn");
 
         Army.registerMessage($"{item}{counter}", false);
         counter++;
@@ -769,7 +769,7 @@ public class ArmyLR
 
     private bool repGoodEvil4()
     {
-        Army.waitForPartyCell("Enter", "Spawn");
+        //Army.waitForPartyCell("Enter", "Spawn");
         Army.waitForSignal($"checkinggoodevil4{counter}");
         Army.registerMessage($"rep4{counter}", false);
         counter++;
@@ -780,7 +780,7 @@ public class ArmyLR
 
     private bool repGoodEvilMax()
     {
-        Army.waitForPartyCell("Enter", "Spawn");
+        //Army.waitForPartyCell("Enter", "Spawn");
         Army.waitForSignal($"checkinggoodevilmax{counter}");
         Army.registerMessage($"repmax{counter}", false);
         counter++;
@@ -791,7 +791,7 @@ public class ArmyLR
 
     private bool checkGold(int quant)
     {
-        Army.waitForPartyCell("Enter", "Spawn");
+        //Army.waitForPartyCell("Enter", "Spawn");
         Army.waitForSignal($"gold{quant}");
         Army.registerMessage($"gold{counter}", false);
         counter++;

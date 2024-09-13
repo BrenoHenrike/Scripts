@@ -89,7 +89,7 @@ public class ArmyDarkonsDebris2
 
         //Core.EquipClass(classType);
         Core.Join(map);
-        Army.waitForPartyCell("Enter", "Spawn");
+        //Army.waitForPartyCell("Enter", "Spawn");
         if (questId != 0)
             Core.RegisterQuests(questId);
         Army.waitForSignal("imready");
