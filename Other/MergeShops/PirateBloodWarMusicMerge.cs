@@ -61,15 +61,12 @@ public class PirateBloodWarMusicMerge
 
                 case "Gilded Sheet Music":
                     Core.Logger("Item isnt on a wiki.. or can tato find it.. ping me when ya do...", "Where tf does it drop?", stopBot: true);
-                    // Core.FarmingLogger(req.Name, quant);
-                    // Core.EquipClass(ClassType.Farm);
-                    // Core.RegisterQuests(0000);
-                    // while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    // {
-                    //     Core.Logger("This item is not setup yet");
-                    //     Bot.Wait.ForPickup(req.Name);
-                    // }
-                    // Core.CancelRegisteredQuests();
+                    Core.FarmingLogger(req.Name, quant);
+                    Core.EquipClass(ClassType.Farm);
+                    Core.RegisterQuests(9868, 9869);
+                    Core.KillMonster("piratevampire", "r2", "Left", "*", req.Name, req.Quantity, req.Temp);
+                    Bot.Wait.ForPickup(req.Name);
+                    Core.CancelRegisteredQuests();
                     break;
 
             }
