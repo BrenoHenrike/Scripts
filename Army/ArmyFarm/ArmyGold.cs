@@ -338,7 +338,7 @@ public class ArmyGold
     void PirateBloodWar()
     {
         Quest WarQuest = Bot.Quests.EnsureLoad(9873);
-        if (WarQuest.XP < 6000)
+        if (WarQuest.Gold < 6000 || !Core.isSeasonalMapActive("piratebloodhub"))
             SCW();
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
@@ -356,6 +356,7 @@ public class ArmyGold
         Core.CancelRegisteredQuests();
 
     }
+
     public enum Method
     {
         BattleGroundE = 0,

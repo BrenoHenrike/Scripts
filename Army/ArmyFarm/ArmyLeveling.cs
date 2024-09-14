@@ -80,7 +80,7 @@ public class ArmyLeveling
                 Army.AggroMonStart("icestormarena");
                 Army.DivideOnCells("r22");
                 Core.RegisterQuests();
-                
+
                 while (!Bot.ShouldExit && Bot.Player.Level < level)
                     Bot.Combat.Attack("*");
                 Army.AggroMonStop(true);
@@ -99,7 +99,7 @@ public class ArmyLeveling
                 Army.AggroMonCells("r2");
                 Army.AggroMonStart("icestormunder");
                 Army.DivideOnCells("r2");
-                
+
                 while (!Bot.ShouldExit && Bot.Player.Level < level)
                     Bot.Combat.Attack("Frost Spirit");
                 Army.AggroMonStop(true);
@@ -119,7 +119,7 @@ public class ArmyLeveling
                 Army.AggroMonStart("icewing");
                 Army.DivideOnCells("Enter");
                 Core.RegisterQuests(Core.IsMember ? 6635 : 6632);
-                
+
                 while (!Bot.ShouldExit && Bot.Player.Level < level)
                     Bot.Combat.Attack("*");
                 Army.AggroMonStop(true);
@@ -130,7 +130,7 @@ public class ArmyLeveling
                 break;
 
             case MethodV2.SevenCirclesWar:
-            HakuNerfed:
+            ForWhenWarsGetNerfed:
                 SC.CirclesWar(true);
                 Core.EquipClass(ClassType.Farm);
                 //Army.waitForParty("whitemap");
@@ -138,7 +138,7 @@ public class ArmyLeveling
                 Army.AggroMonStart("sevencircleswar");
                 Army.DivideOnCells("Enter", "r2", "r3");
                 Core.RegisterQuests(7979, 7980, 7981);
-                
+
                 while (!Bot.ShouldExit && Bot.Player.Level < level)
                     Bot.Combat.Attack("*");
                 Army.AggroMonStop(true);
@@ -157,7 +157,7 @@ public class ArmyLeveling
                 Army.AggroMonStart("streamwar");
                 Army.DivideOnCells("r3a");
                 Core.RegisterQuests(8814, 8815);
-                
+
                 while (!Bot.ShouldExit && Bot.Player.Level < level)
                     Bot.Combat.Attack("*");
                 Army.AggroMonStop(true);
@@ -203,7 +203,7 @@ public class ArmyLeveling
 
                 Core.Logger("This method is optimized. If the rate is ever poor, please use SCW.");
 
-                
+
 
                 while (!Bot.ShouldExit && Bot.Player.Level < level)
                     Bot.Combat.Attack("*");
@@ -220,7 +220,7 @@ public class ArmyLeveling
                 if (Quest.XP < 6000)
                 {
                     Core.Logger("XP rates have been nerfed, swapping to method: SCW (its better)");
-                    goto HakuNerfed;
+                    goto ForWhenWarsGetNerfed;
                 }
                 CoreDOY.DoAll();
 
@@ -230,7 +230,7 @@ public class ArmyLeveling
                 Army.AggroMonStart("hakuwar");
                 Army.DivideOnCells("r2", "r4", "r5", "r6", "r7", "r9");
 
-                
+
 
                 while (!Bot.ShouldExit && Bot.Player.Level < level)
                     Bot.Combat.Attack("*");
@@ -238,8 +238,28 @@ public class ArmyLeveling
                 Farm.ToggleBoost(BoostType.Gold, false);
                 Core.CancelRegisteredQuests();
                 break;
-                //add more cases
+            //add more cases
+            case MethodV2.PirateBloodWar:
 
+                Quest WarQuest = Bot.Quests.EnsureLoad(9873);
+                if (WarQuest.XP < 7500 || !Core.isSeasonalMapActive("piratebloodhub"))
+                    goto ForWhenWarsGetNerfed;
+
+                Core.PrivateRooms = true;
+                Core.PrivateRoomNumber = Army.getRoomNr();
+
+                Core.RegisterQuests(9872, 9873);
+
+                Army.AggroMonMIDs(Core.FromTo(1, 6));
+                Army.AggroMonStart("piratebloodhub");
+                Army.DivideOnCells("r2", "r3");
+
+                while (!Bot.ShouldExit && Bot.Player.Gold < 999999999)
+                    Bot.Combat.Attack("*");
+                Army.AggroMonStop(true);
+                Farm.ToggleBoost(BoostType.Gold, false);
+                Core.CancelRegisteredQuests();
+                break;
                 /*
                 case Method.Method:
                 Core.EquipClass(ClassType.ClassType);
@@ -271,7 +291,8 @@ public class ArmyLeveling
         ShadowBattleon_Baby_Mode = 6,
         ShadowBattleon_Lower_Levels = 7,
         ShadowBattleon_High_Levels = 8,
-        HakuWar = 9
+        HakuWar = 9,
+        PirateBloodWar = 10
     }
 
 
