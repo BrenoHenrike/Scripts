@@ -241,9 +241,17 @@ public class ArmyLeveling
             //add more cases
             case MethodV2.PirateBloodWar:
 
-                Quest WarQuest = Bot.Quests.EnsureLoad(9873);
-                if (WarQuest.XP < 7500 || !Core.isSeasonalMapActive("piratebloodhub"))
-                    goto ForWhenWarsGetNerfed;
+                Quest? WarQuest = Bot.Quests.EnsureLoad(9873);
+
+                if (WarQuest != null)
+                {
+                    if (WarQuest.XP < 7500 || !Core.isSeasonalMapActive("piratebloodhub"))
+                        goto ForWhenWarsGetNerfed;
+                }
+                else
+                {
+                    Core.Logger("Failed to load quest 9873.");
+                }
 
                 Core.PrivateRooms = true;
                 Core.PrivateRoomNumber = Army.getRoomNr();
