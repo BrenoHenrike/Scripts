@@ -337,9 +337,17 @@ public class ArmyGold
 
     void PirateBloodWar()
     {
-        Quest WarQuest = Bot.Quests.EnsureLoad(9873);
-        if (WarQuest.Gold < 6000 || !Core.isSeasonalMapActive("piratebloodhub"))
-            SCW();
+        Quest? WarQuest = Bot.Quests.EnsureLoad(9873);
+
+        if (WarQuest != null)
+        {
+            if (WarQuest.Gold < 6000 || !Core.isSeasonalMapActive("piratebloodhub"))
+                SCW();
+        }
+        else
+        {
+            Core.Logger("Failed to load quest 9873.");
+        }
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
 
