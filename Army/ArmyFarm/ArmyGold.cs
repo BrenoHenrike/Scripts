@@ -97,6 +97,10 @@ public class ArmyGold
             case 9:
                 HakuWar();
                 break;
+
+            case 10:
+                PirateBloodWar();
+                break;
         }
 
         Bot.Lite.ReacceptQuest = false;
@@ -117,7 +121,7 @@ public class ArmyGold
         Army.AggroMonStart("battlegrounde");
         Army.DivideOnCells("r4", "r3", "r2", "r1");
 
-        
+
 
         while (!Bot.ShouldExit && Bot.Player.Gold < 999999999)
             Bot.Combat.Attack("*");
@@ -134,12 +138,12 @@ public class ArmyGold
         Army.AggroMonStart("darkwarlegion");
         Army.DivideOnCells("Enter", "r2", "r3");
 
-        
+
 
         Core.RegisterQuests(8584, 8585, 8586, 8587); //Nation Badges 8584, Mega Nation Badges 8585, A Nation Defeated 8586, ManSlayer? More Like ManSLAIN 8587
                                                      // Army.SmartAggroMonStart("darkwarlegion", "Bloodfiend", "Dreadfiend", "Infernal Fiend", "Manslayer Fiend", "Void Fiend");
 
-        
+
 
         while (!Bot.ShouldExit && Bot.Player.Gold < 999999999)
             Bot.Combat.Attack("*");
@@ -158,7 +162,7 @@ public class ArmyGold
         Army.AggroMonStart("darkwarnation");
         Army.DivideOnCells("Enter", "r2", "r3");
 
-        
+
 
         // Army.SmartAggroMonStart("darkwarnation", "High Legion Inquisitor", "Legion Doomknight", "Legion Dread Knight");
         while (!Bot.ShouldExit && Bot.Player.Gold < 999999999)
@@ -178,7 +182,7 @@ public class ArmyGold
         Army.AggroMonStart("sevencircleswar");
         Army.DivideOnCells("Enter", "r2", "r3");
 
-        
+
 
         // Army.SmartAggroMonStart("sevencircleswar", "Wrath Guard", "Heresy Guard", "Violence Guard", "Treachery Guard");
         while (!Bot.ShouldExit && Bot.Player.Gold < 999999999)
@@ -200,7 +204,7 @@ public class ArmyGold
 
         Core.RegisterQuests(8814, 8815);
 
-        
+
 
         while (!Bot.ShouldExit && Bot.Player.Gold < 999999999)
             Bot.Combat.Attack("*");
@@ -248,7 +252,7 @@ public class ArmyGold
 
         Core.Logger("This method is insane atm.. if the rate is ever complete sh*t please use SCW");
 
-        
+
 
         while (!Bot.ShouldExit && Bot.Player.Gold < 999999999)
             Bot.Combat.Attack("*");
@@ -280,7 +284,7 @@ public class ArmyGold
         Army.AggroMonStart("hakuwar");
         Army.DivideOnCells("r2", "r4", "r5", "r6", "r7", "r9");
 
-        
+
 
         while (!Bot.ShouldExit && Bot.Player.Gold < 999999999)
             Bot.Combat.Attack("*");
@@ -331,7 +335,27 @@ public class ArmyGold
         Core.JumpWait();
     }
 
+    void PirateBloodWar()
+    {
+        Quest WarQuest = Bot.Quests.EnsureLoad(9873);
+        if (WarQuest.XP < 6000)
+            SCW();
+        Core.PrivateRooms = true;
+        Core.PrivateRoomNumber = Army.getRoomNr();
 
+        Core.RegisterQuests(9872, 9873);
+
+        Army.AggroMonMIDs(Core.FromTo(1, 6));
+        Army.AggroMonStart("piratebloodhub");
+        Army.DivideOnCells("r2", "r3");
+
+        while (!Bot.ShouldExit && Bot.Player.Gold < 999999999)
+            Bot.Combat.Attack("*");
+        Army.AggroMonStop(true);
+        Farm.ToggleBoost(BoostType.Gold, false);
+        Core.CancelRegisteredQuests();
+
+    }
     public enum Method
     {
         BattleGroundE = 0,
@@ -343,7 +367,8 @@ public class ArmyGold
         ShadowBattleon_Baby_Mode = 6,
         ShadowBattleon_Lower_Levels = 7,
         ShadowBattleon_High_Levels = 8,
-        Haku_War = 9
+        Haku_War = 9,
+        Pirate_Blood_War = 10
 
     }
 }
