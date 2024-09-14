@@ -60,7 +60,6 @@ public class PirateBloodWarMusicMerge
                 #endregion
 
                 case "Gilded Sheet Music":
-                    Core.Logger("Item isnt on a wiki.. or can tato find it.. ping me when ya do...", "Where tf does it drop?", stopBot: true);
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
                     Core.RegisterQuests(9868, 9869);
