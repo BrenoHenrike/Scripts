@@ -742,11 +742,11 @@ public class CoreNation
         //warning for idiots that wont read it
         Core.Logger("if Swindles is enabled, it will only accept the quest when it has the required Unis it needs");
 
-        bool sellMemVoucher = Core.CBOBool("Nation_SellMemVoucher", out bool _sellMemVoucher) && _sellMemVoucher;
-        bool returnPolicyDuringSupplies = Core.CBOBool("Nation_ReturnPolicyDuringSupplies", out bool _returnSupplies) && _returnSupplies;
+        bool sellMemVoucher = Core.CBOBool("Nation_SellMemVoucher", out bool _sellMemVoucher) && _sellMemVoucher == true;
+        bool returnPolicyDuringSupplies = Core.CBOBool("Nation_ReturnPolicyDuringSupplies", out bool _returnSupplies) && _returnSupplies == true;
 
-        Core.Logger($"returnPolicyDuringSupplies: {returnPolicyDuringSupplies}");
-        Core.Logger($"_sellMemVoucher: {_sellMemVoucher}");
+        Core.Logger($"Do Return Policy?: {returnPolicyDuringSupplies}");
+        Core.Logger($"Sell Voucher(Mem)?: {sellMemVoucher}");
 
         Core.RegisterQuests(item != Uni(13) && Core.CheckInventory("Swindle Bilk's To Go Hut")
                             ? (Core.CheckInventory("Drudgen the Assistant")
@@ -760,10 +760,10 @@ public class CoreNation
             .Concat(Core.QuestRewards(9542)) // Add quest rewards
 
             // Concatenate supplies rewards including 'Voucher of Nulgath' if 'sellMemVoucher' is true
-            .Concat(SuppliesRewards.Concat(_sellMemVoucher ? new string[] { "Voucher of Nulgath" } : Enumerable.Empty<string>()).Append("Relic of Chaos"))
+            .Concat(SuppliesRewards.Concat(sellMemVoucher ? new string[] { "Voucher of Nulgath" } : Enumerable.Empty<string>()).Append("Relic of Chaos"))
 
             // Add additional items during supplies if 'returnPolicyDuringSupplies' is true, including 'Receipt of Swindle'
-            .Concat(_returnSupplies
+            .Concat(returnPolicyDuringSupplies
                 ? new string[] { Uni(1), Uni(6), Uni(9), Uni(16), Uni(20), "Receipt of Swindle" }
                 : Enumerable.Empty<string>()
             )
@@ -784,7 +784,7 @@ public class CoreNation
                         BambloozevsDrudgen(Item!.Name, Item.MaxStack, KeepVoucher, AssistantDuring, ReturnItem, ReturnItemQuant, true);
                     else
                     {
-                        while (!Bot.ShouldExit && !Core.CheckInventory(Item.ID, Item.MaxStack) && _returnSupplies && ReturnItem != null && !Core.CheckInventory(ReturnItem, ReturnItemQuant))
+                        while (!Bot.ShouldExit && !Core.CheckInventory(Item.ID, Item.MaxStack) && returnPolicyDuringSupplies && ReturnItem != null && !Core.CheckInventory(ReturnItem, ReturnItemQuant))
                         {
                             if (UltraAlteon)
                                 Core.KillMonster("ultraalteon", "r10", "Left", "Ultra Alteon", log: false);
@@ -792,7 +792,7 @@ public class CoreNation
                                 Core.KillEscherion(log: false);
                             Core.Sleep();
 
-                            if (item != "Voucher of Nulgath" && _sellMemVoucher && Core.CheckInventory("Voucher of Nulgath"))
+                            if (item != "Voucher of Nulgath" && sellMemVoucher && Core.CheckInventory("Voucher of Nulgath"))
                             {
                                 while (!Bot.ShouldExit && (Bot.Player.HasTarget || Bot.Player.InCombat) && Bot.Player.Cell != "Enter")
                                 {
@@ -820,7 +820,7 @@ public class CoreNation
                                     Core.EnsureCompleteMulti(2859);
                                 }
                             }
-                            if (_returnSupplies && Core.CheckInventory(new[] { Uni(1), Uni(6), Uni(9), Uni(16), Uni(20) }))
+                            if (returnPolicyDuringSupplies && Core.CheckInventory(new[] { Uni(1), Uni(6), Uni(9), Uni(16), Uni(20) }))
                             {
                                 Core.ResetQuest(7551);
                                 Core.DarkMakaiItem("Dark Makai Rune");
@@ -895,7 +895,7 @@ public class CoreNation
                         Core.KillEscherion(item, quant, log: false);
 
                     // Sell voucher area
-                    if (item != "Voucher of Nulgath" && _sellMemVoucher && Core.CheckInventory("Voucher of Nulgath"))
+                    if (item != "Voucher of Nulgath" && sellMemVoucher && Core.CheckInventory("Voucher of Nulgath"))
                     {
                         while (!Bot.ShouldExit && (Bot.Player.HasTarget || Bot.Player.InCombat) && Bot.Player.Cell != "Enter")
                         {
@@ -973,7 +973,7 @@ public class CoreNation
 
         // Check if return policy and sell voucher are active
         sellMemVoucher = Core.CBOBool("Nation_SellMemVoucher", out bool _sellMemVoucher) && _sellMemVoucher;
-        returnPolicyDuringSupplies = Core.CBOBool("Nation_ReturnPolicyDuringSupplies", out bool _returnSupplies) && _returnSupplies;
+        returnPolicyDuringSupplies = Core.CBOBool("Nation_ReturnPolicyDuringSupplies", out bool _returnSupplies);
 
         Core.Logger(returnPolicyDuringSupplies ? "Return Policy During Supplies: true" : "Return Policy During Supplies: false");
         Core.Logger($"Sell Voucher of Nulgath: {sellMemVoucher}");
@@ -987,7 +987,7 @@ public class CoreNation
         }
 
         // Register the "Swindles Return Policy" quest if specified
-        if (_returnSupplies && Reward == SwindlesReturnReward.None)
+        if (returnPolicyDuringSupplies && Reward == SwindlesReturnReward.None)
             Core.RegisterQuests(7551);
 
         // Farm all drops if 'item' is null
@@ -1015,7 +1015,7 @@ public class CoreNation
                     Core.EnsureCompleteMulti(2859);
 
                     // Process "Swindles Return Policy" quest if return policy is active
-                    if (Core.CheckInventory(rPDSuni) && _returnSupplies)
+                    if (Core.CheckInventory(rPDSuni) && returnPolicyDuringSupplies)
                     {
                         var rewards2 = Core.EnsureLoad(7551).Rewards;
                         ItemBase? Item2 = rewards2.Find(x => x.ID == Item.ID);
@@ -1052,7 +1052,7 @@ public class CoreNation
                 Core.EnsureCompleteMulti(2859);
 
                 // Process "Swindles Return Policy" quest if return policy is active
-                if (Core.CheckInventory(rPDSuni) && _returnSupplies)
+                if (Core.CheckInventory(rPDSuni) && returnPolicyDuringSupplies)
                 {
                     var rewards2 = Core.EnsureLoad(7551).Rewards;
                     ItemBase? Item2 = rewards2.Find(x => x.ID == (int)Reward);
@@ -1158,20 +1158,20 @@ public class CoreNation
         if (hasOBoNPet || Core.CheckInventory("Oblivion Blade of Nulgath Pet (Rare)"))
             Core.AddDrop("Tainted Soul");
 
-        bool returnPolicyDuringSupplies = Core.CBOBool("Nation_ReturnPolicyDuringSupplies", out bool _returnSupplies);
-        bool sellMemVoucher = Core.CBOBool("Nation_SellMemVoucher", out bool _sellMemVoucher);
+        bool returnPolicyDuringSupplies = Core.CBOBool("Nation_ReturnPolicyDuringSupplies", out bool _returnSupplies) && _returnSupplies == true;
+        bool sellMemVoucher = Core.CBOBool("Nation_SellMemVoucher", out bool _sellMemVoucher) && _sellMemVoucher == true;
         bool HasLogged = false;
         if (!CamefromSupplies)
         {
             Core.Logger($"Keep Voucher set to: {KeepVoucher}");
-            Core.Logger($"Sell Voucher of Nulgath: {_sellMemVoucher}");
+            Core.Logger($"Sell Voucher of Nulgath: {sellMemVoucher}");
         }
 
-        if (_returnSupplies)
+        if (returnPolicyDuringSupplies)
             Core.AddDrop(Uni(1), Uni(6), Uni(9), Uni(16), Uni(20));
 
-        Dictionary<string, int> rewardItemIds = new Dictionary<string, int>
-    {
+        Dictionary<string, int> rewardItemIds = new()
+        {
         { "Dark Crystal Shard", 123 },
         { "Diamond of Nulgath", 456 },
         { "Gem of Nulgath", 789 },
@@ -1197,7 +1197,7 @@ public class CoreNation
         {
             Core.KillMonster("evilmarsh", "End", "Left", "Tainted Elemental", log: false);
 
-            if (item != "Voucher of Nulgath" && _sellMemVoucher && Core.CheckInventory("Voucher of Nulgath"))
+            if (item != "Voucher of Nulgath" && sellMemVoucher && Core.CheckInventory("Voucher of Nulgath"))
             {
                 do
                 {
@@ -1247,14 +1247,14 @@ public class CoreNation
             {
                 if (quest.Rewards.All(x => Bot.Inventory.GetQuantity(x.ID) >= x.MaxStack))
                 {
-                    if (!HasLogged && _returnSupplies)
+                    if (!HasLogged && returnPolicyDuringSupplies)
                     {
                         Core.Logger("All Swindles Return Items are maxed stopping Swindles Return");
                         Core.AbandonQuest(7551);
                         HasLogged = true;
                     }
                 }
-                if (_returnSupplies && Core.CheckInventory(new[] { Uni(1), Uni(6), Uni(9), Uni(16), Uni(20) })
+                if (returnPolicyDuringSupplies && Core.CheckInventory(new[] { Uni(1), Uni(6), Uni(9), Uni(16), Uni(20) })
                 && quest.Rewards.Any(x => Bot.Inventory.GetQuantity(x.ID) < x.MaxStack))
                 {
                     Core.ResetQuest(7551);
@@ -1374,9 +1374,6 @@ public class CoreNation
         // Add drops based on the provided item or bag drops
         Core.AddDrop(bagDrops);
         Core.AddDrop(item);
-
-        // Check if the player should sell the Voucher of Nulgath
-        _ = Core.CBOBool("Nation_SellMemVoucher", out bool _sellMemVoucher) && _sellMemVoucher;
 
         if (item != "Any")
             Core.FarmingLogger(item, quant);
