@@ -354,7 +354,7 @@ public class ArmyGold
         Core.RegisterQuests(9872, 9873);
 
         Army.AggroMonMIDs(Core.FromTo(1, 6));
-        Army.AggroMonStart("piratebloodhub");
+        Army.AggroMonStart("piratevampire");
         Army.DivideOnCells("r2", "r3");
 
         while (!Bot.ShouldExit && Bot.Player.Gold < 999999999)
