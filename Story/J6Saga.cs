@@ -144,7 +144,7 @@ public class J6Saga
         if (!Story.QuestProgression(2832))
         {
             Core.EnsureAccept(2832);
-            Core.KillMonster("arcangrove", "Right", "Left", "*", "Bag of Peanuts", 4);
+            Core.KillMonster("arcangrove", "LeftBack", "Left", "Gorillaphant", "Bag of Peanuts", 4);
             Core.KillMonster("earthstorm", "r9", "Left", "Amethite", "Stick of Rock Candy", 3);
             Core.KillMonster("palooza", "Act1", "Left", "Tune-a-Fish", "Tune-A-Fish Tuna Can", 2);
             Core.KillMonster("giant", "r1", "Left", "*", "Bag of Pretzels", 4);
