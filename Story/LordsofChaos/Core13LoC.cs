@@ -951,7 +951,7 @@ public class Core13LoC
         if (!Story.QuestProgression(975))
         {
             Core.EnsureAccept(975);
-            Core.KillMonster("wanders", "r2", "Right", "Lotus Spider", "Spider Defeated", 6);
+            Core.KillMonster("wanders", "r5", "Right", "Lotus Spider", "Spider Defeated", 6);
             Core.EnsureComplete(975);
         }
 
@@ -967,7 +967,7 @@ public class Core13LoC
         if (!Story.QuestProgression(977))
         {
             Core.EnsureAccept(977);
-            Core.KillMonster("wanders", "r2", "Right", "Lotus Spider", "Dreamsand");
+            Core.KillMonster("wanders", "r5", "Right", "Lotus Spider", "Dreamsand");
             Core.EnsureComplete(977);
         }
 
