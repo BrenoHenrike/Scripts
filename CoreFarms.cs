@@ -1190,9 +1190,9 @@ public class CoreFarms
         while (!Bot.ShouldExit && FactionRank("Arcangrove") < rank)
         {
             for (int i = 0; i < 10; i++)
-                Core.KillMonster("arcangrove", "Back", "Left", "*", log: false);
+                Core.KillMonster("arcangrove", "LeftBack", "Left", "*", log: false); // Gorillaphant
             for (int i = 0; i < 10; i++)
-                Core.KillMonster("arcangrove", "Right", "Left", "*", log: false);
+                Core.KillMonster("arcangrove", "RightBack", "Left", "*", log: false); // Seed Spitter
         }
         Core.CancelRegisteredQuests();
         ToggleBoost(BoostType.Reputation, false);
