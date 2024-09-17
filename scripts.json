@@ -3438,6 +3438,27 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/AutoAttackWithMove.cs"
   },
   {
+    "name": "Check Roles",
+    "description": "This script will give a popup telling you a bunch of information regarding your account.",
+    "tags": [
+      "tool",
+      "evaluate",
+      "account",
+      "chrono",
+      "heromart",
+      "beta",
+      "founder",
+      "badges",
+      "enhancements",
+      "rare",
+      "seasonal"
+    ],
+    "path": "Tools/CheckArmyRoles.cs",
+    "size": 22257,
+    "fileName": "CheckArmyRoles.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/CheckArmyRoles.cs"
+  },
+  {
     "name": "RankUpAllClasses",
     "description": "null",
     "tags": [
