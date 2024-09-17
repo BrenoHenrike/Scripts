@@ -60,7 +60,12 @@ public class Core13LoC
         Story.KillQuest(183, "battleundera", "Skeletal Fire Mage");
 
         //Undead Assault
-        Story.KillQuest(176, "swordhavenundead", "Skeletal Soldier");
+        if (!Story.QuestProgression(176))
+        {
+            Core.EnsureAccept(176);
+            Core.HuntMonster("swordhavenundead", "Skeletal Soldier", "Slain Skeletal Soldier", 5);
+            Core.EnsureComplete(176);
+        }
 
         //Skull Crusher Mountain
         Story.KillQuest(177, "swordhavenundead", "Skeletal Ice Mage");
@@ -1635,7 +1640,7 @@ public class Core13LoC
         }
 
         if (!Story.QuestProgression(2519))
-                Core.HuntMonster("mqlesson", "Dragonoid", "Dragonoid of Hours", isTemp: false);
+            Core.HuntMonster("mqlesson", "Dragonoid", "Dragonoid of Hours", isTemp: false);
 
         //Chaos Lord Iadoa
         Story.KillQuest(2519, "timespace", "Chaos Lord Iadoa");
