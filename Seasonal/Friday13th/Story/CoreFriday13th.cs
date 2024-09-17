@@ -1026,7 +1026,7 @@ public class CoreFriday13th
         Story.KillQuest(9049, "blackmaze", "Screamon");
 
         //9050 | Extreme Exfoliation
-        Story.MapItemQuest(9050, "blackmaze", 11091, 3);
+        Story.MapItemQuest(9050, "blackmaze", 11091, 4);
         Story.KillQuest(9050, "blackmaze", "Possessed Bones");
 
         //9051 | Easy Pickings
