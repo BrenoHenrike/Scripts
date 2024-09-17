@@ -3092,7 +3092,6 @@ public enum GenericGearBoost
 public enum RacialGearBoost
 {
     None,
-
     Chaos,
     Dragonkin,
     Drakath,
