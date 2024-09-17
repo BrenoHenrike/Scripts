@@ -260,7 +260,7 @@ public class CoreStory
             Core.EnsureComplete(questData.ID);
         }
 
-        Bot.Wait.ForTrue(() => QuestProgression(questData.ID), 20);
+        Bot.Wait.ForQuestComplete(questData.ID);
         Core.Logger($"Completed Quest: [{questData.ID}] - \"{questData.Name}\"", "QuestProgression");
         Core.Sleep();
     }
