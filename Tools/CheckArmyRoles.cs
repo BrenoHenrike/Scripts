@@ -511,14 +511,21 @@ public class CheckArmyRoles
 
         foreach (var (Name, ID) in ForgeQuests)
         {
-            var questID = Bot.Quests.EnsureLoad(ID).ID;
-            if (Core.isCompletedBefore(questID))
+            var quest = Bot.Quests.EnsureLoad(ID);
+            if (quest != null)
             {
-                unlockedQuests++;
+                if (Core.isCompletedBefore(quest.ID))
+                {
+                    unlockedQuests++;
+                }
+                else
+                {
+                    incompleteQuests.Add($"'{Name}' (ID: {ID}) is not completed.");
+                }
             }
             else
             {
-                incompleteQuests.Add($"'{Name}' (ID: {ID}) is not completed.");
+                incompleteQuests.Add($"Failed to load quest '{Name}' (ID: {ID}).");
             }
         }
 
