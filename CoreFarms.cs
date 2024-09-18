@@ -450,7 +450,7 @@ public class CoreFarms
                 return;
 
             // Attempt to get the actual value, not the delegate
-            string BypassLevel = Bot.Flash.GetGameObject("world.myAvatar.objData.intLevel");
+            string? BypassLevel = Bot.Flash.GetGameObject("world.myAvatar.objData.intLevel");
 
             // Check if the object is null or if the level is 100 or greater, and exit early if so
             if (string.IsNullOrEmpty(BypassLevel) || (int.TryParse(BypassLevel, out int level) && level >= 100))
