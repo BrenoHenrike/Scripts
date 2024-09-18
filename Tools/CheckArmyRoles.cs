@@ -92,7 +92,8 @@ public class CheckArmyRoles
                         "(Radiant Goddess of War) " + importantItemCheckbox(1, "Radiant Goddess of War") +
 
                         $"Ｃｈｒｏｎｏ Ｃｈｅｃｋ\n" +
-                        OutPutOwnedChrono() +
+                        $"(Time Lord of War) Chronomancer\t\t\t{Checkbox(ChronoOwned())}\n" +
+
 
                         $"Ｅｎｄ Ｃｈｅｃｋｓ\n" +
                         $"Apprentice of War:\t\t\t\t{Checkbox(ApprenticeOfWar())}\n" +
@@ -559,29 +560,24 @@ public class CheckArmyRoles
 
         return unlockedQuests;
     }
-
     /// <summary>
-    /// Checks if the player owns any Chronomancer or Time-related class and returns the name of the owned class if found.
+    /// Checks if the player owns any class related to "Chrono" or "Time" 
+    /// from either their inventory or bank.
     /// </summary>
-    /// <param name="ownedChronoClass">An output parameter that will contain the name of the owned Chronomancer or Time class, or an empty string if none is found.</param>
-    /// <returns>True if a Chronomancer or Time class is owned; otherwise, false.</returns>
-    private bool ChronoOwned(out string ownedChronoClass)
+    /// <returns>
+    /// Returns <c>true</c> if a "Chrono" or "Time" class is found, 
+    /// otherwise returns <c>false</c>.
+    /// </returns>
+    private bool ChronoOwned()
     {
         // Filter for Chrono/Time classes
         string[] ChronoClasses = HeroMartClasses.Where(x => x.Contains("Chrono") || x.Contains("Time")).ToArray();
 
-        // Find the first owned Chrono class from Inventory or Bank
-        var chronoClass = Bot.Inventory.Items
+        // Check if any Chrono class is found in Inventory or Bank
+        return Bot.Inventory.Items
             .Concat(Bot.Bank.Items)
-            .FirstOrDefault(x => ChronoClasses.Contains(x.Name));
-
-        // Set the out parameter to the found class name or an empty string if not found
-        ownedChronoClass = chronoClass?.Name ?? string.Empty;
-
-        // Return true if a Chrono class was found, otherwise false
-        return !string.IsNullOrEmpty(ownedChronoClass);
+            .Any(x => ChronoClasses.Contains(x.Name));
     }
-
     /// <summary>
     /// Generates a unique evaluation ID by combining a random alphanumeric string with a hexadecimal representation of the username, and scrambling the result.
     /// </summary>
@@ -611,7 +607,6 @@ public class CheckArmyRoles
             .OrderBy(_ => random.Next())
             .ToArray());
     }
-
     /// <summary>
     /// Builds and returns a status report summarizing the completion of Forge quests and any additional relevant information.
     /// </summary>
@@ -639,7 +634,6 @@ public class CheckArmyRoles
         }
         return reportBuilder.ToString();
     }
-
     /// <summary>
     /// Gets the list of racial gear boosts excluding specific types.
     /// </summary>
@@ -669,22 +663,6 @@ public class CheckArmyRoles
             && x.Category != ItemCategory.Helm
             && x.Category != ItemCategory.Cape;
     }
-
-    /// <summary>
-    /// Generates a report line indicating whether a Chronomancer or Time-related class is owned by the player.
-    /// </summary>
-    /// <returns>A formatted string indicating whether the player owns a Chronomancer or Time class, with a checkmark if owned, otherwise an unchecked checkbox.</returns>
-    public string OutPutOwnedChrono()
-    {
-        // Variables to store the results
-        bool isChronoOwned = ChronoOwned(out string ownedChronoClass);
-
-        // Format the report line with the checkmark after the owned Chrono class name
-        string reportLine = $"Chronomancer Owned? {(isChronoOwned ? $"[{ownedChronoClass}]\t{Checkbox(true)}" : Checkbox(false))}\n";
-
-        return reportLine;
-    }
-
     public bool MasterofWarMeta()
     {
         // Meta types to exclude
