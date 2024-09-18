@@ -147,9 +147,8 @@ public class CheckArmyRoles
     private bool MasterofWar()
     {
         return ApprenticeOfWar()
-               && Bot.Inventory.Items.Concat(Bot.Bank.Items).Any(item => item != null && Core.GetBoostFloat(item, "dmgAll") > 1.3f && IsNonWeaponOrArmor(item))
+               && Bot.Inventory.Items.Concat(Bot.Bank.Items).Any(item => item != null && Core.GetBoostFloat(item, "dmgAll") > 1.3f && IsNonWeapon(item))
                && MasterofWarMeta();
-        //non-enh item should have 4x or more boosts
     }
 
     private bool Apostleofwar()
@@ -443,14 +442,13 @@ public class CheckArmyRoles
         // Return the item name, tabs, and its checkbox status (🗸 for true, X for false)
         return $"{items[0]}:{_tabs}{Checkbox(check)}\n";
     }
-
     /// <summary>
     /// Returns a checkbox representation based on a boolean value.
     /// </summary>
     /// <param name="check">The boolean value indicating whether the checkbox should be checked.</param>
     /// <returns>A string representation of a checkbox with a checkmark (🗸) or an X (X) depending on the value of <paramref name="check"/>.</returns>
-    string Checkbox(bool check) => $"[ {(check ? "✅" : "❌")} ]";
-
+    string Checkbox(bool check) =>
+     $"[ {(check ? "✅" : "❌")} ]";
     /// <summary>
     /// Filters out items that are neither weapons nor armor from the inventory.
     /// </summary>
@@ -475,59 +473,6 @@ public class CheckArmyRoles
             && x.Category != ItemCategory.Helm
             && x.Category != ItemCategory.Cape;
     }
-
-    /// <summary>
-    /// Determines if there are any items in the inventory or bank with a boost value of at least the specified minimum.
-    /// Optionally filters out items that are neither weapons nor armor, and checks if at least 4 out of 5 racial gear boost types meet the minimum boost if specified.
-    /// </summary>
-    /// <param name="minimumBoost">The minimum boost value required. Default is 1.3 (30%).</param>
-    /// <param name="NoneEnhanceAble">If true, excludes items that are neither weapons nor armor and checks if at least 4 out of 5 specified racial boost types meet the requirement. Default is false.</param>
-    /// <returns>True if at least one item meets the minimum boost requirement, considering the optional filter; otherwise, false.</returns>
-    public bool HasItemWithMinimalBoost(float minimumBoost = 1.3f, bool NoneEnhanceAble = false)
-    {
-        // Calculate the percentage needed for the HasMinimalBoost method
-        int requiredPercentage = (int)((minimumBoost - 1) * 100);
-
-        if (NoneEnhanceAble)
-        {
-            // List of racial gear boosts to check
-            RacialGearBoost[] racialBoosts = new[]
-            {
-            RacialGearBoost.Chaos,
-            RacialGearBoost.Dragonkin,
-            RacialGearBoost.Elemental,
-            RacialGearBoost.Human,
-            RacialGearBoost.Undead
-        };
-
-            // Count how many racial gear boosts meet the minimum boost requirement
-            int boostCount = racialBoosts.Count(boost => Adv.HasMinimalBoost(boost, requiredPercentage));
-
-            // Check if at least 4 out of 5 racial gear boosts meet the minimum boost requirement
-            if (boostCount >= 4)
-            {
-                // Check if there is any item with the required boost, considering the filter
-                return Bot.Inventory.Items.Concat(Bot.Bank.Items)
-                    .Any(item => item != null
-                                && (!IsNonWeaponOrArmor(item)));
-            }
-
-            return false;
-        }
-        else
-        {
-            // Check if there is any item with the required boost, considering the filter
-            return Bot.Inventory.Items.Concat(Bot.Bank.Items)
-                .Any(item => item != null
-                            && (Adv.HasMinimalBoost(RacialGearBoost.Chaos, requiredPercentage)
-                                || Adv.HasMinimalBoost(RacialGearBoost.Dragonkin, requiredPercentage)
-                                || Adv.HasMinimalBoost(RacialGearBoost.Elemental, requiredPercentage)
-                                || Adv.HasMinimalBoost(RacialGearBoost.Human, requiredPercentage)
-                                || Adv.HasMinimalBoost(RacialGearBoost.Undead, requiredPercentage))
-                            && (!NoneEnhanceAble || IsNonWeaponOrArmor(item)));
-        }
-    }
-
     /// <summary>
     /// Checks the completion status of Forge quests and lists any that are incomplete.
     /// </summary>
@@ -645,7 +590,7 @@ public class CheckArmyRoles
     /// </summary>
     /// <param name="x">The inventory item to evaluate.</param>
     /// <returns>True if the item is neither a weapon nor armor; otherwise, false.</returns>
-    bool IsNonWeaponOrArmor(InventoryItem x)
+    bool IsNonWeapon(InventoryItem x)
     {
         return x.Category != ItemCategory.Sword
             && x.Category != ItemCategory.Axe
@@ -659,9 +604,7 @@ public class CheckArmyRoles
             && x.Category != ItemCategory.Polearm
             && x.Category != ItemCategory.Staff
             && x.Category != ItemCategory.Wand
-            && x.Category != ItemCategory.Whip
-            && x.Category != ItemCategory.Helm
-            && x.Category != ItemCategory.Cape;
+            && x.Category != ItemCategory.Whip;
     }
     public bool MasterofWarMeta()
     {
