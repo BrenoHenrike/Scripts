@@ -5,18 +5,18 @@ tags: tool, evaluate, account, chrono, heromart, beta, founder, badges, enhancem
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
-using System.Globalization;
-using Newtonsoft.Json;
-using Skua.Core.Models.Quests;
+using System.Text;
 
 public class CheckArmyRoles
 {
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
     public CoreAdvanced Adv = new();
+    private CoreStory Story = new();
 
     public void ScriptMain(IScriptInterface Bot)
     {
@@ -32,12 +32,12 @@ public class CheckArmyRoles
 
         Bot.Bank.Open();
 
+        // Load Forge Enhancement Quest + some role quests
         Bot.Quests.Load(forgeEnhIDs.Concat(new[] { 793, 2937, 8042 }).ToArray());
         Bot.Wait.ForTrue(() => Bot.Bank.Items.Any(), 20);
 
         int dmgAll51Items = 0;
         (RacialGearBoost, bool)[] racial75Items = racialGears.Select(x => (x, false)).ToArray();
-
 
         Core.Logger("🗂️ Checking Player Inventory Items...");
         processItems("world.myAvatar.items");
@@ -50,12 +50,12 @@ public class CheckArmyRoles
 
         Core.Logger("📝 Compiling and formatting all data for the final output...");
 
-
-
-        #region OutPut
+        #region OutPut Generator
         // The actual output
         Bot.ShowMessageBox(
-                        $"Ｅｎｈａｎｃｅｍｅｎｔｓ\n" + // Added blank line here
+                        $"Evaluation ID: {GenerateEvaluationID()}\n" +
+                        $"Extra Secutity: Account Item Count: {Bot.Inventory.Items.Concat(Bot.Bank.Items).Concat(Bot.House.Items).Count()}\n" +
+                        $"Ｅｎｈａｎｃｅｍｅｎｔｓ\n" +
                         $"(Victor of War) Valiance:\t\t\t\t{Checkbox(Core.isCompletedBefore(8741))}\n" +
                         $"(Conductor of War) Arcana's Concerto:\t\t{Checkbox(Core.isCompletedBefore(8742))}\n" +
                         $"(Deliverance of War) Elysium:\t\t\t{Checkbox(Core.isCompletedBefore(8821))}\n" +
@@ -91,7 +91,7 @@ public class CheckArmyRoles
                         $"(Ascendant of War) Awescended:\t\t\t{Checkbox(Core.isCompletedBefore(8042))}\n" +
                         "(Radiant Goddess of War) " + importantItemCheckbox(1, "Radiant Goddess of War") +
 
-                    $"Ｃｈｒｏｎｏ Ｃｈｅｃｋ\n" +
+                        $"Ｃｈｒｏｎｏ Ｃｈｅｃｋ\n" +
                         OutPutOwnedChrono() +
 
                         $"Ｅｎｄ Ｃｈｅｃｋｓ\n" +
@@ -171,91 +171,76 @@ public class CheckArmyRoles
 
     private bool CardinalofWar()
     {
-        // Count how many of the Bishop classes are owned
+        // IDs for enhancements
+        int[] weaponEnhancements = { 8738, 8739, 8740, 8741, 8742, 8758, 8821, 8820, 9560, 8744 };
+        int[] helmEnhancements = { 8826, 8825, 8758, 8827, 8824 };
+        int[] capeEnhancements = { 8743, 8745, 8758, 8823, 8822, 8744 };
+
+        // Count Bishop classes owned
         int bishopClassesOwned = BishopRequirements
-            .Take(7) // The first 7 items are Bishop classes
+            .Take(7) // First 7 are Bishop classes
             .Count(cls => Core.CheckInventory(new[] { cls }, any: true, toInv: false));
 
-        // Check if at least 4 Bishop classes are owned
-        return BishopofWar() && bishopClassesOwned >= 4;
+        // Check for at least one unlocked enhancement in each category
+        bool hasEnhancements = new[]
+        {
+        weaponEnhancements.Any(Core.isCompletedBefore),
+        helmEnhancements.Any(Core.isCompletedBefore),
+        capeEnhancements.Any(Core.isCompletedBefore)
+        }.All(check => check);
+
+        // Return true if at least 4 Bishop classes are owned and all enhancements are unlocked
+        return BishopofWar() && bishopClassesOwned >= 4 && hasEnhancements;
     }
-
-
-    #region ArmyRoles
-    /*
-   
-   Master of War:
-    Have @Apprentice of War.
-    Have a weapon with +30% damage to All monsters on 4 or more accounts.
-    Have a non-enhance-able item with +30% damage to 4 or more monster types on 4 or more accounts.
-
-    Apostle of War:
-    Have @Master of War.
-    Show Ultra Ezrajal, Ultra Warden, and Ultra Engineer insignias in army inventories, OR a recording of your army killing them.
-
-    Bishop of War:
-    Have @Apostle of War.
-    Have 1 +51% weapon role, i.e. @Legatus of War.
-    Have 1 Class-based role, i.e. @ArchMage of War.
-    Show Ultra Dage/Nulgath insignias in army inventories, OR a recording of your army killing them.
-
-    Cardinal of War:
-    Have @Bishop of War.
-    Have 1 Weapon, Helm, and Cape Forge Enhancement unlocked.
-    Have 4 +51% weapon roles, i.e. @Legatus of War. (@Deacon of War counts as 2).
-    Have 4 Class-based roles, i.e. @ArchMage of War.
-    Show Dark Carnax char page badge, OR a recording of your army killing Dark Carnax.
-    */
-    #endregion
-    #region ignore these
+    #region Variables
     // DPS Classes
     string[] dpsClasses = new[]
     {
-    "Dragon of Time",
-    "Glacial Berserker",
-    "Guardian",
-    "Legion DoomKnight",
-    "Legion Revenant",
-    "LightCaster",
-    "Lycan",
-    "Psionic MindBreaker",
-    "Void HighLord"
+        "Dragon of Time",
+        "Glacial Berserker",
+        "Guardian",
+        "Legion DoomKnight",
+        "Legion Revenant",
+        "LightCaster",
+        "Lycan",
+        "Psionic MindBreaker",
+        "Void HighLord"
 };
     // Farmers
     string[] farmerClasses = new[]
     {
-    "Abyssal Angel",
-    "ArchMage",
-    "Blaze Binder",
-    "Daimon",
-    "Dragon of Time",
-    "Eternal Inversionist",
-    "Firelord Summoner",
-    "Legion Revenant",
-    "Dark Master of Moglins",
-    "Master of Moglins",
-    "NCM",
-    "Scarlet Sorceress",
-    "ShadowScythe General",
-    "Shaman"
-};
+        "Abyssal Angel",
+        "ArchMage",
+        "Blaze Binder",
+        "Daimon",
+        "Dragon of Time",
+        "Eternal Inversionist",
+        "Firelord Summoner",
+        "Legion Revenant",
+        "Dark Master of Moglins",
+        "Master of Moglins",
+        "NCM",
+        "Scarlet Sorceress",
+        "ShadowScythe General",
+        "Shaman"
+    };
     // Support Classes
     string[] supportClasses = new[]
     {
-    "ArchFiend",
-    "ArchPaladin",
-    "Frostval Barbarian",
-    "Infinity Titan",
-    "Dark Legendary Hero",
-    "Legendary Hero",
-    "Legion Revenant",
-    "LightCaster",
-    "Lord of Order",
-    "NorthLands Monk",
-    "Quantum Chronomancer",
-    "Continuum Chronomancer",
-    "StoneCrusher"
-};
+        "ArchFiend",
+        "ArchPaladin",
+        "Frostval Barbarian",
+        "Infinity Titan",
+        "Dark Legendary Hero",
+        "Legendary Hero",
+        "Legion Revenant",
+        "LightCaster",
+        "Lord of Order",
+        "NorthLands Monk",
+        "Quantum Chronomancer",
+        "Continuum Chronomancer",
+        "StoneCrusher"
+    };
     private int[] rareIDs =
     {
         21, // Limited Time Drop
@@ -409,21 +394,39 @@ public class CheckArmyRoles
     "Dage the Evil Insignia",
     "Necrotic Blade of the Underworld"
 };
-
     #endregion
 
     #region Methods
-    string importantItemCheckbox(int tabs, params string[] items)
+    /// <summary>
+    /// Generates a string representation of an item with a checkbox indicating its presence in the inventory.
+    /// </summary>
+    /// <param name="tabs">The number of tabs to include before the item name. Default is 0.</param>
+    /// <param name="items">The item names to check in the inventory. The first item is used for the checkbox label.</param>
+    /// <returns>A string with the item name, tabs, and checkbox status (🗸 for present, X for absent).</returns>
+    string importantItemCheckbox(int tabs = 0, params string[] items)
     {
-        string _tabs = string.Empty;
-        for (int t = 0; t < tabs; t++)
-            _tabs += '\t';
-        return $"{items[0]}:{_tabs}{Checkbox(Core.CheckInventory(items, 1, true, false))}\n";
+        // Generate the required number of tabs
+        string _tabs = new('\t', tabs);
+
+        // Determine if the items exist in the inventory
+        bool check = Core.CheckInventory(items, 1, true, false);
+
+        // Return the item name, tabs, and its checkbox status (🗸 for true, X for false)
+        return $"{items[0]}:{_tabs}{Checkbox(check)}\n";
     }
-    string Checkbox(bool check)
-        => $"[ {(check ? "🗸" : "\u200AX\u200A")} ]";
-    bool isCollectionChest(InventoryItem item)
-        => item.Category == ItemCategory.Pet && (item.Name.Contains("Chest") || item.Name.Contains("Collection"));
+
+    /// <summary>
+    /// Returns a checkbox representation based on a boolean value.
+    /// </summary>
+    /// <param name="check">The boolean value indicating whether the checkbox should be checked.</param>
+    /// <returns>A string representation of a checkbox with a checkmark (🗸) or an X (X) depending on the value of <paramref name="check"/>.</returns>
+    string Checkbox(bool check) => $"[ {(check ? "✅" : "❌")} ]";
+
+    /// <summary>
+    /// Filters out items that are neither weapons nor armor from the inventory.
+    /// </summary>
+    /// <param name="x">The inventory item to evaluate.</param>
+    /// <returns>True if the item is neither a weapon nor armor, otherwise false.</returns>
     bool NoneEnhFilter(InventoryItem x)
     {
         return
@@ -443,59 +446,14 @@ public class CheckArmyRoles
             && x.Category != ItemCategory.Helm
             && x.Category != ItemCategory.Cape;
     }
-    bool IsNonWeaponOrArmor(InventoryItem x)
-    {
-        return x.Category != ItemCategory.Sword
-            && x.Category != ItemCategory.Axe
-            && x.Category != ItemCategory.Dagger
-            && x.Category != ItemCategory.Gun
-            && x.Category != ItemCategory.HandGun
-            && x.Category != ItemCategory.Rifle
-            && x.Category != ItemCategory.Bow
-            && x.Category != ItemCategory.Mace
-            && x.Category != ItemCategory.Gauntlet
-            && x.Category != ItemCategory.Polearm
-            && x.Category != ItemCategory.Staff
-            && x.Category != ItemCategory.Wand
-            && x.Category != ItemCategory.Whip
-            && x.Category != ItemCategory.Helm
-            && x.Category != ItemCategory.Cape;
-    }
-    public string GetStatusReport()
-    {
-        // Call CheckQuests to get the list of incomplete quests
-        int unlockedQuests = CheckForgeQuests(out List<string> incompleteQuests);
 
-        // Build the report string
-        var reportBuilder = new System.Text.StringBuilder();
-        reportBuilder.AppendLine($"Number of unlocked quests: {unlockedQuests}");
-
-        if (incompleteQuests.Count > 0)
-        {
-            reportBuilder.AppendLine("Incomplete quests:");
-            foreach (var quest in incompleteQuests)
-            {
-                reportBuilder.AppendLine(quest);
-            }
-        }
-        else
-        {
-            reportBuilder.AppendLine("All Forge Quests are completed!");
-        }
-
-        return reportBuilder.ToString();
-    }
     /// <summary>
-    /// Checks if there is any item in the inventory or bank with a boost value of at least the specified minimum.
-    /// The item boost is evaluated based on various racial gear boosts, and an optional filter can exclude non-weapon or non-armor items.
-    /// If the <paramref name="NoneEnhanceAble"/> parameter is true, it will additionally check that at least 4 out of 5 specified racial gear boost types have the minimum boost.
+    /// Determines if there are any items in the inventory or bank with a boost value of at least the specified minimum.
+    /// Optionally filters out items that are neither weapons nor armor, and checks if at least 4 out of 5 racial gear boost types meet the minimum boost if specified.
     /// </summary>
     /// <param name="minimumBoost">The minimum boost value required. Default is 1.3 (30%).</param>
-    /// <param name="NoneEnhanceAble">If true, excludes items that are neither weapons nor armor, and checks if at least 4 out of 5 specified racial boost types meet the requirement. Default is false.</param>
-    /// <returns>
-    /// Returns true if at least one item meets the minimum boost requirement and, if specified, is filtered according to the <paramref name="NoneEnhanceAble"/> parameter.
-    /// Returns false otherwise.
-    /// </returns>
+    /// <param name="NoneEnhanceAble">If true, excludes items that are neither weapons nor armor and checks if at least 4 out of 5 specified racial boost types meet the requirement. Default is false.</param>
+    /// <returns>True if at least one item meets the minimum boost requirement, considering the optional filter; otherwise, false.</returns>
     public bool HasItemWithMinimalBoost(float minimumBoost = 1.3f, bool NoneEnhanceAble = false)
     {
         // Calculate the percentage needed for the HasMinimalBoost method
@@ -506,12 +464,12 @@ public class CheckArmyRoles
             // List of racial gear boosts to check
             RacialGearBoost[] racialBoosts = new[]
             {
-                RacialGearBoost.Chaos,
-                RacialGearBoost.Dragonkin,
-                RacialGearBoost.Elemental,
-                RacialGearBoost.Human,
-                RacialGearBoost.Undead
-            };
+            RacialGearBoost.Chaos,
+            RacialGearBoost.Dragonkin,
+            RacialGearBoost.Elemental,
+            RacialGearBoost.Human,
+            RacialGearBoost.Undead
+        };
 
             // Count how many racial gear boosts meet the minimum boost requirement
             int boostCount = racialBoosts.Count(boost => Adv.HasMinimalBoost(boost, requiredPercentage));
@@ -540,6 +498,12 @@ public class CheckArmyRoles
                             && (!NoneEnhanceAble || IsNonWeaponOrArmor(item)));
         }
     }
+
+    /// <summary>
+    /// Checks the completion status of Forge quests and lists any that are incomplete.
+    /// </summary>
+    /// <param name="incompleteQuests">An output parameter that will contain the names and IDs of any incomplete quests.</param>
+    /// <returns>The number of completed Forge quests.</returns>
     private int CheckForgeQuests(out List<string> incompleteQuests)
     {
         incompleteQuests = new List<string>();
@@ -554,12 +518,18 @@ public class CheckArmyRoles
             }
             else
             {
-                incompleteQuests.Add($"Quest '{Name}' (ID: {ID}) is not completed.");
+                incompleteQuests.Add($"'{Name}' (ID: {ID}) is not completed.");
             }
         }
 
         return unlockedQuests;
     }
+
+    /// <summary>
+    /// Checks if the player owns any Chronomancer or Time-related class and returns the name of the owned class if found.
+    /// </summary>
+    /// <param name="ownedChronoClass">An output parameter that will contain the name of the owned Chronomancer or Time class, or an empty string if none is found.</param>
+    /// <returns>True if a Chronomancer or Time class is owned; otherwise, false.</returns>
     private bool ChronoOwned(out string ownedChronoClass)
     {
         // Filter for Chrono/Time classes
@@ -576,6 +546,99 @@ public class CheckArmyRoles
         // Return true if a Chrono class was found, otherwise false
         return !string.IsNullOrEmpty(ownedChronoClass);
     }
+
+    /// <summary>
+    /// Generates a unique evaluation ID by combining a random alphanumeric string with a hexadecimal representation of the username, and scrambling the result.
+    /// </summary>
+    /// <returns>A scrambled evaluation ID string.</returns>
+    private string GenerateEvaluationID()
+    {
+        // Alphanumeric characters
+        const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+        // Create Random object
+        Random random = new();
+
+        // Generate a random alphanumeric string
+        string randomString = new(Enumerable.Range(0, 16)
+            .Select(_ => chars[random.Next(chars.Length)])
+            .ToArray());
+
+        // Convert username to hexadecimal string
+        string usernameHex = BitConverter.ToString(Encoding.UTF8.GetBytes(Core.Username()))
+            .Replace("-", "");
+
+        // Combine the random string with the hexadecimal string
+        string combinedString = randomString + usernameHex;
+
+        // Scramble the combined string
+        return new string(combinedString
+            .OrderBy(_ => random.Next())
+            .ToArray());
+    }
+
+    /// <summary>
+    /// Builds and returns a status report summarizing the completion of Forge quests and any additional relevant information.
+    /// </summary>
+    /// <returns>A formatted status report string.</returns>
+    public string GetStatusReport()
+    {
+        // Call CheckForgeQuests to get the list of incomplete quests
+        int unlockedQuests = CheckForgeQuests(out List<string> incompleteQuests);
+
+        // Build the report string
+        var reportBuilder = new System.Text.StringBuilder();
+        reportBuilder.AppendLine($"Number of unlocked quests: {unlockedQuests}");
+
+        if (incompleteQuests.Count > 0)
+        {
+            reportBuilder.AppendLine("Incomplete quests:");
+            foreach (var quest in incompleteQuests)
+            {
+                reportBuilder.AppendLine(quest);
+            }
+        }
+        else
+        {
+            reportBuilder.AppendLine("All Forge Quests are completed!");
+        }
+        return reportBuilder.ToString();
+    }
+
+    /// <summary>
+    /// Gets the list of racial gear boosts excluding specific types.
+    /// </summary>
+    /// <returns>An array of racial gear boosts, excluding the specified types.</returns>
+    private RacialGearBoost[] racialGears =>
+        Enum.GetValues<RacialGearBoost>().Except(RacialGearBoost.None, RacialGearBoost.Drakath, RacialGearBoost.Orc);
+    /// <summary>
+    /// Determines if an inventory item is neither a weapon nor armor.
+    /// </summary>
+    /// <param name="x">The inventory item to evaluate.</param>
+    /// <returns>True if the item is neither a weapon nor armor; otherwise, false.</returns>
+    bool IsNonWeaponOrArmor(InventoryItem x)
+    {
+        return x.Category != ItemCategory.Sword
+            && x.Category != ItemCategory.Axe
+            && x.Category != ItemCategory.Dagger
+            && x.Category != ItemCategory.Gun
+            && x.Category != ItemCategory.HandGun
+            && x.Category != ItemCategory.Rifle
+            && x.Category != ItemCategory.Bow
+            && x.Category != ItemCategory.Mace
+            && x.Category != ItemCategory.Gauntlet
+            && x.Category != ItemCategory.Polearm
+            && x.Category != ItemCategory.Staff
+            && x.Category != ItemCategory.Wand
+            && x.Category != ItemCategory.Whip
+            && x.Category != ItemCategory.Helm
+            && x.Category != ItemCategory.Cape;
+    }
+
+    /// <summary>
+    /// Generates a report line indicating whether a Chronomancer or Time-related class is owned by the player.
+    /// </summary>
+    /// <returns>A formatted string indicating whether the player owns a Chronomancer or Time class, with a checkmark if owned, otherwise an unchecked checkbox.</returns>
     public string OutPutOwnedChrono()
     {
         // Variables to store the results
@@ -586,9 +649,5 @@ public class CheckArmyRoles
 
         return reportLine;
     }
-    private RacialGearBoost[] racialGears =
-         Enum.GetValues<RacialGearBoost>().Except(RacialGearBoost.None, RacialGearBoost.Drakath, RacialGearBoost.Orc);
-
-
     #endregion
 }
