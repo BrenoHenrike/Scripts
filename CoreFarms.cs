@@ -283,7 +283,7 @@ public class CoreFarms
             Core.CancelRegisteredQuests();
         }
 
-        IcestormArena(level);
+        IcestormArena(level, rankUpClass);
 
         if (rankUpClass)
             ToggleBoost(BoostType.Class, false);
@@ -310,7 +310,7 @@ public class CoreFarms
         Core.SavedState();
         if (NotYetLevel(level) && Bot.Player.Level < 100)
             ToggleBoost(BoostType.Experience, true);
-
+        int BypassSet = 1;
         //Between level 1 and 5
         while (NotYetLevel(5))
         {
@@ -387,11 +387,13 @@ public class CoreFarms
         if (NotYetLevel(75))
         {
             if (rankUpClass)
+            {
                 while (NotYetLevel(75))
                 {
                     ByPassCheck();
                     Core.KillMonster("icestormarena", NotYetLevel(65) ? "17" : NotYetLevel(70) ? "r18" : "r20", "Left", "*", log: false, publicRoom: true);
                 }
+            }
             else
             {
                 ToggleBoost(BoostType.Gold);
@@ -428,7 +430,7 @@ public class CoreFarms
 
                 log: false);
         }
-
+        BypassSet = 0;
         Core.ToggleAggro(false);
         Core.JumpWait();
         Core.Rest();
@@ -444,6 +446,9 @@ public class CoreFarms
         //for when ya die / isa gets reset adn teh bypass doesnt work.
         void ByPassCheck()
         {
+            if (BypassSet <= 1)
+                return;
+
             // Attempt to get the actual value, not the delegate
             string BypassLevel = Bot.Flash.GetGameObject("world.myAvatar.objData.intLevel");
 
@@ -468,6 +473,8 @@ public class CoreFarms
 
             // Sleep after sending the packet to give time for processing
             Core.Sleep();
+
+            BypassSet++;
         }
 
 
