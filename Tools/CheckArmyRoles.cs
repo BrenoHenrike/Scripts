@@ -147,7 +147,8 @@ public class CheckArmyRoles
     {
         return ApprenticeOfWar()
                && Bot.Inventory.Items.Concat(Bot.Bank.Items).Any(item => item != null && Core.GetBoostFloat(item, "dmgAll") > 1.3f && IsNonWeaponOrArmor(item))
-               && Bot.Inventory.Items.Concat(Bot.Bank.Items).Any(item => item != null && Core.GetBoostFloat(item, "dmgAll") > 1.3f && !IsNonWeaponOrArmor(item));
+               && MasterofWarMeta();
+        //non-enh item should have 4x or more boosts
     }
 
     private bool Apostleofwar()
@@ -158,6 +159,16 @@ public class CheckArmyRoles
 
     private bool BishopofWar()
     {
+        int bishopClassesOwned = BishopRequirements
+        .Take(7) // First 7 are Bishop classes
+        .Count(cls => Bot.Inventory.Items
+            .Concat(Bot.Bank.Items)
+            .Any(item => item.Name == cls));
+
+        int FiftyOneWeaponsOwned = Bot.Inventory.Items
+                    .Concat(Bot.Bank.Items)
+                    .Count(item => item != null && FiftyOneWeapons.Contains(item.Name));
+
         return Apostleofwar()
             // Check for 51% damage boost weapon
             && Bot.Inventory.Items.Concat(Bot.Bank.Items).Any(item => item != null && Core.GetBoostFloat(item, "dmgAll") >= 1.5f)
@@ -166,7 +177,9 @@ public class CheckArmyRoles
             // Check for Nulgath insignias or items (index 7 to 9)
             && Core.CheckInventory(BishopRequirements[7..10], any: true, toInv: false)
             // Check for Dage insignias or items (index 10 to end)
-            && Core.CheckInventory(BishopRequirements[10..], any: true, toInv: false);
+            && Core.CheckInventory(BishopRequirements[10..], any: true, toInv: false)
+            // Check for >= 1 of bishopClassesOwned && FiftyOneWeaponsOwned
+            && bishopClassesOwned >= 1 && FiftyOneWeaponsOwned >= 1;
     }
 
     private bool CardinalofWar()
@@ -176,11 +189,6 @@ public class CheckArmyRoles
         int[] helmEnhancements = { 8826, 8825, 8758, 8827, 8824 };
         int[] capeEnhancements = { 8743, 8745, 8758, 8823, 8822, 8744 };
 
-        // Count Bishop classes owned
-        int bishopClassesOwned = BishopRequirements
-            .Take(7) // First 7 are Bishop classes
-            .Count(cls => Core.CheckInventory(new[] { cls }, any: true, toInv: false));
-
         // Check for at least one unlocked enhancement in each category
         bool hasEnhancements = new[]
         {
@@ -189,8 +197,18 @@ public class CheckArmyRoles
         capeEnhancements.Any(Core.isCompletedBefore)
         }.All(check => check);
 
-        // Return true if at least 4 Bishop classes are owned and all enhancements are unlocked
-        return BishopofWar() && bishopClassesOwned >= 4 && hasEnhancements;
+        int FiftyOneWeaponsOwned = Bot.Inventory.Items
+            .Concat(Bot.Bank.Items)
+            .Count(item => item != null && FiftyOneWeapons.Contains(item.Name));
+
+        int bishopClassesOwned = BishopRequirements
+               .Take(7) // First 7 are Bishop classes
+               .Count(cls => Bot.Inventory.Items
+                   .Concat(Bot.Bank.Items)
+                   .Any(item => item.Name == cls));
+
+        // Return true if at least 4 Bishop classes are owned and all enhancements are unlocked *and* has the nightmare Carnax Boss badge
+        return BishopofWar() && bishopClassesOwned >= 4 && hasEnhancements && Core.HasWebBadge("Nightmare Carnax Boss") && FiftyOneWeaponsOwned >= 4;
     }
     #region Variables
     // DPS Classes
@@ -360,10 +378,6 @@ public class CheckArmyRoles
     };
     string[] ApostleWeapons = new[]
     {
-        "Apostate Omega",
-        "Thaumaturgus Omega",
-        "Apostate Ultima",
-        "Thaumaturgus Ultima",
         "Exalted Penultima",
         "Exalted Unity",
         "Exalted Apotheosis"
@@ -375,7 +389,7 @@ public class CheckArmyRoles
         "Engineer Insignia"
     };
     string[] BishopRequirements = new[]
- {
+    {
     // Bishop Classes
     "Chaos Avenger",
     "ArchMage",
@@ -393,7 +407,21 @@ public class CheckArmyRoles
     // Dage Insignias and Items
     "Dage the Evil Insignia",
     "Necrotic Blade of the Underworld"
-};
+    };
+    string[] FiftyOneWeapons = new[]
+    {
+        "Necrotic Sword of Doom",
+        "Hollowborn Sword of Doom",
+        "Necrotic Blade of the Underworld",
+        "Necrotic Sword of the Abyss",
+        "Providence",
+        "Sin of the Abyss",
+        "Exalted Apotheosis",
+        "Dual Exalted Apotheosis",
+        "Greatblade of the Entwined Eclipse",
+        "Star Light of the Empyrean",
+        "Star Lights of the Empyrean"
+    };
     #endregion
 
     #region Methods
@@ -649,5 +677,41 @@ public class CheckArmyRoles
 
         return reportLine;
     }
+
+    public bool MasterofWarMeta()
+    {
+        // Meta types to exclude
+        var excludedMetaTypes = new[] { "Drakath", "AutoAdd" };
+
+        // Process items in inventory and bank, but filter out weapon categories
+        List<ItemBase> items = Bot.Inventory.Items.OfType<InventoryItem>()
+            .Where(NoneEnhFilter)  // Apply the filter for non-weapon categories
+            .Concat(Bot.Bank.Items.OfType<InventoryItem>().Where(NoneEnhFilter))
+            .Cast<ItemBase>()
+            .ToList();
+
+        // Loop through all items and check if they have at least 4 meta types with values >= 1.3
+        foreach (ItemBase item in items)
+        {
+            if (item?.Meta == null)
+                continue;
+
+            int validMetaCount = item.Meta
+                .Split('\n')
+                .SelectMany(line => line.Replace("AutoAdd,", string.Empty).Split(','))
+                .Select(meta => meta.Split(':'))
+                .Count(metaPair => metaPair.Length == 2
+                    && !excludedMetaTypes.Contains(metaPair[0])  // Exclude specific meta types
+                    && double.TryParse(metaPair[1], out double value)
+                    && value >= 1.3);
+
+            if (validMetaCount >= 4)
+                return true;
+        }
+
+        return false;
+    }
+
+
     #endregion
 }
