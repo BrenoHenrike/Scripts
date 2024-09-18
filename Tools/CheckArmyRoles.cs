@@ -96,7 +96,7 @@ public class CheckArmyRoles
 
                         $"Ｅｎｄ Ｃｈｅｃｋｓ\n" +
                         $"Apprentice of War:\t\t\t\t{Checkbox(ApprenticeOfWar())}\n" +
-                        $"Mastere of War:\t\t\t\t\t{Checkbox(MastereofWar())}\n" +
+                        $"Master of War:\t\t\t\t\t{Checkbox(MasterofWar())}\n" +
                         $"Apostle of War:\t\t\t\t\t{Checkbox(Apostleofwar())}\n" +
                         $"Bishop of War:\t\t\t\t\t{Checkbox(BishopofWar())}\n" +
                         $"Cardinal of War:\t\t\t\t\t{Checkbox(CardinalofWar())}\n" +
@@ -143,7 +143,7 @@ public class CheckArmyRoles
                 Bot.Inventory.Items.Concat(Bot.Bank.Items).Any(item => supportClasses.Contains(item.Name));
     }
 
-    private bool MastereofWar()
+    private bool MasterofWar()
     {
         return ApprenticeOfWar()
                && Bot.Inventory.Items.Concat(Bot.Bank.Items).Any(item => item != null && Core.GetBoostFloat(item, "dmgAll") > 1.3f && IsNonWeaponOrArmor(item))
@@ -152,7 +152,7 @@ public class CheckArmyRoles
 
     private bool Apostleofwar()
     {
-        return MastereofWar()
+        return MasterofWar()
        && Core.CheckInventory(ApostleWeapons, any: true, toInv: false) || Core.CheckInventory(Apostleinsignias, toInv: false);
     }
 
