@@ -41,7 +41,7 @@ public class Wubbles
         if (!Story.QuestProgression(6729))
         {
             Core.EnsureAccept(6729);
-            Core.KillMonster("wanders", "r2", "Down", "Lotus Spider", "Lotus Pollen", 8);
+            Core.KillMonster("wanders", "r5", "Left", "Lotus Spider", "Lotus Pollen", 8);
             Core.EnsureComplete(6729);
         }
 

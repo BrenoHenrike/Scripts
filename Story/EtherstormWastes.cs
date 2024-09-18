@@ -369,7 +369,7 @@ public class EtherStormWastes
         if (!Story.QuestProgression(3504))
         {
             Core.EnsureAccept(3504);
-            Core.KillMonster("wanders", "r2", "Down", "Lotus Spider", "Lotus Petal", 5);
+            Core.KillMonster("wanders", "r5", "Left", "Lotus Spider", "Lotus Petal", 5);
             Core.KillMonster("wanders", "r2", "Down", "Kalestri Worshiper", "Talisman of Renewal", 5);
             Core.EnsureComplete(3504);
         }

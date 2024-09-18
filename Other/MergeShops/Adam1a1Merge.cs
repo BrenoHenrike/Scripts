@@ -157,7 +157,7 @@ public class Adam1a1Merge
                             {
                                 //Flowers for the Pink Gal 1489
                                 Core.HuntMonster("Sandsea", "Cactus Creeper", "Fandango Flower", 5);
-                                Core.KillMonster("wanders", "r2", "Down", "Lotus Spider", "Lotus Flower", 4);
+                                Core.KillMonster("wanders", "r5", "Left", "Lotus Spider", "Lotus Flower", 4);
                             }
 
                             Adv.BuyItem("tower", 347, "Pink Rose");

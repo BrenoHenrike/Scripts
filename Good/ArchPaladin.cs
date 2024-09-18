@@ -206,7 +206,7 @@ public class ArchPaladin
             Core.HuntMonster("seraph", "Adventus", "Sacred Tome", isTemp: false);
             Core.EquipClass(ClassType.Farm);
             Core.HuntMonster("marsh", "Marsh Tree", "Paladaffodil", 25, false);
-            Core.KillMonster("wanders", "r2", "Up", "Lotus Spider", "Spirit Lotus", 25, false);
+            Core.KillMonster("wanders", "r5", "Left", "Lotus Spider", "Spirit Lotus", 25, false);
             Core.HuntMonster("bloodtusk", "Trollola Plant", "Radiant Magnolia", 25, false);
             Core.HuntMonster("gaiazor", "Wisterrora", "Cyanoblossom", 25, false);
             Core.EquipClass(ClassType.Solo);
