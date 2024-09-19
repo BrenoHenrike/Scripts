@@ -12,6 +12,7 @@ using Skua.Core.Interfaces;
 using Skua.Core.Options;
 public class TimeforSomeSpringCleaning_AnyPet_
 {
+    private IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
     public CoreLegion Legion = new();
     public CoreAdvanced Adv = new();
@@ -30,8 +31,14 @@ public class TimeforSomeSpringCleaning_AnyPet_
     {
         Core.SetOptions();
 
-        Legion.LTShogunParagon(DoClearaPath: bot.Config!.Get<bool>("DoClearaPath"), Logger: bot.Config!.Get<bool>("Enable Logger?"));
+        DOthething();
 
         Core.SetOptions(false);
     }
+
+    public void DOthething()
+    {
+        Legion.LTShogunParagon(DoClearaPath: Bot.Config!.Get<bool>("DoClearaPath"), Logger: Bot.Config!.Get<bool>("Enable Logger?"));
+    }
+
 }
