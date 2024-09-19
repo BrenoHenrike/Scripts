@@ -101,7 +101,7 @@ public class CheckArmyRoles
                         $"Apostle of War:\t\t\t\t\t{Checkbox(Apostleofwar())}\n" +
                         $"Bishop of War:\t\t\t\t\t{Checkbox(BishopofWar())}\n" +
                         $"Cardinal of War:\t\t\t\t\t{Checkbox(CardinalofWar())}\n" +
-                        $"51% DMG All Weapons:\t\t\t\t{dmgAll51Items} out of 22\n\n" +
+                        $"51% DMG All Weapons:\t\t\t\t{dmgAll51Items} out of 30\n\n" +
 
                         "\n" +
                         "\n" +
