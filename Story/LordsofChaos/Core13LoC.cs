@@ -63,19 +63,7 @@ public class Core13LoC
         if (!Story.QuestProgression(176))
         {
             Core.EnsureAccept(176);
-            while (!Bot.ShouldExit && !Bot.TempInv.Contains(828, 5))
-            {
-                if (Bot.Map.Name != "swordhavenundead")
-                    Core.Join("swordhavenundead");
-                if (Bot.Player.Cell != "Enter")
-                    Core.Jump("Enter");
-
-                Bot.Combat.Attack("*");
-                Core.Sleep();
-                if (Bot.TempInv.Contains(828, 5))
-                    break;
-            }
-            Bot.Wait.ForPickup(828);
+            Core.HuntMonster("swordhavenundead", "Skeletal Soldier", "Slain Skeletal Soldier", 5);
             Core.EnsureComplete(176);
         }
 
