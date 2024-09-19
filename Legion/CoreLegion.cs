@@ -406,98 +406,77 @@ public class CoreLegion
             return;
         }
 
-        List<int> Quests = new(); // Initializes a list to store quest IDs
-        List<(ItemBase, int)> QuestItems = new(); // Initializes a list to store quest items
-        List<string> Rewards = new();
-        bool HasQuestPet = false; // Variable to track if the player has the required pet
+        List<int> Quests = new(); // List to store quest IDs
+        List<(ItemBase, int)> QuestItems = new(); // List to store quest items
+        bool HasQuestPet = false; // Tracks if the player has the required pet
 
-        // Define pairs of quest IDs with their respective accept requirements
+        // Pairs of quest IDs with their respective accept requirements
         (int, int)[] questPairs = new[]
         {
-            (9649, 9648), //hb
-            (9646, 9645), //hb
-            (9663, 9662),
-            (7073, 7072),
-            (6750, 6754),
-            (6756, 6749),
-            (5756, 5754),
-            (5755, 5753)
+            // Quest 1: time for spring cleaning
+            // Quest 2: Clear a Path
+            (9649, 9648), // Hollowborn Paragon Quest Pet [84900]
+            (9646, 9645), // Hollowborn Paragon Quest Pet [84899]
+            (9663, 9662), // Hollowborn Paragon Quest Pet [84965]
+            (7073, 7072), // Paragon Ringbearer [49926]
+            (6750, 6754), // Paragon Fiend Quest Pet [47578]
+            (6756, 6749), // Paragon Fiend Quest Pet [47614]
+            (5756, 5754), // Shogun Dage Pet [38792]
+            (5755, 5753)  // Shogun Paragon Pet [38621]
         };
 
         // Process quest pairs
         foreach ((int firstQuestID, int secondQuestID) in questPairs)
         {
-            // Process the first quest in the pair
-            Quest? firstQID = Bot.Quests.EnsureLoad(firstQuestID);
-            if (firstQID != null)
+            // Load and process the first quest in the pair
+            Quest firstQID = Core.EnsureLoad(firstQuestID);
+            ItemBase? firstAcceptReq = firstQID.AcceptRequirements.FirstOrDefault();
+            int[] QIDS;
+            if (firstAcceptReq?.ID != null && Core.CheckInventory(firstAcceptReq.ID))
             {
-                ItemBase? firstAcceptReq = firstQID.AcceptRequirements.FirstOrDefault();
-                HasQuestPet = Core.CheckInventory(firstAcceptReq?.ID ?? 0);
-                if (HasQuestPet)
-                {
-                    Core.Logger($"Pet Owned: {firstAcceptReq}\n" +
-                                $"Using QID: {firstQuestID} for {firstQID.Name}");
-                    Quests.Add(firstQID.ID);
-                    Core.AddDrop(firstQID.Rewards.Select(item => item.Name).Distinct().ToArray());
-                }
-            }
-            else
-            {
-                Core.Logger($"Failed to load quest with ID: {firstQuestID}");
-                return;
-            }
+                Quests.Add(firstQID.ID);
 
-            if (!DoClearaPath && HasQuestPet)
-            {
-                // If the player has the required pet from the first quest, break the loop and proceed to the next pair
-                break;
-            }
+                // Add first quest's rewards
+                Core.AddDrop(firstQID.Rewards.Select(item => item.Name).Distinct().ToArray());
 
-            // Process the second quest in the pair
-            Quest? secondQID = Bot.Quests.EnsureLoad(secondQuestID);
-            if (secondQID != null)
-            {
-                ItemBase? secondAcceptReq = secondQID.AcceptRequirements.FirstOrDefault();
-                HasQuestPet = Core.CheckInventory(secondAcceptReq?.ID ?? 0);
-                if (HasQuestPet)
+                // If DoClearaPath is true, also add the second quest's rewards
+                if (DoClearaPath)
                 {
-                    Core.Logger($"Pet Owned: {secondAcceptReq}\n" +
-                                $"Using QID: {secondQuestID} for {secondQID.Name}");
+                    Quest secondQID = Core.EnsureLoad(secondQuestID);
                     Quests.Add(secondQID.ID);
+
                     Core.AddDrop(secondQID.Rewards.Select(item => item.Name).Distinct().ToArray());
                 }
-            }
-            else
-            {
-                Core.Logger($"Failed to load quest with ID: {secondQuestID}");
-                return;
-            }
 
-            if (HasQuestPet)
-            {
-                // If the player has the required pet from the second quest, break the loop and proceed to the next pair
-                break;
+                HasQuestPet = true;
+                Bot.Log($"✔️ Pet: {firstAcceptReq.Name}\n PetID: [{firstAcceptReq.ID}]\n PetQuestID(s): [{string.Join(", ", Quests)}]");
             }
+            if (HasQuestPet) break;
         }
 
+        // Exit if no quest pet is owned
         if (!HasQuestPet)
         {
+            Core.Logger("No Pet owned for \"Time for Some Spring Cleaning\" *or* the Pet is missing from our list");
             return;
         }
 
+        // Collect requirements for each quest in the list
         foreach (int questID in Quests)
         {
             Quest quest = Core.EnsureLoad(questID);
+
             foreach (ItemBase requirement in quest.Requirements)
             {
-                ItemBase? reqs = Bot.Quests.EnsureLoad(questID)?.Requirements.FirstOrDefault(i => i.Name == requirement.Name);
+                var reqs = quest.Requirements.FirstOrDefault(i => i.Name == requirement.Name);
+
                 if (reqs != null)
                 {
                     QuestItems.Add((reqs, requirement.Quantity));
                 }
                 else
                 {
-                    Core.Logger($"Missing requirement '{requirement.Name}' for quest '{quest.Name}'.");
+                    Core.Logger($"❗ Missing requirement '{requirement.Name}' for quest '{quest.Name}'.");
                 }
             }
         }
