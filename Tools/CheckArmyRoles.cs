@@ -208,7 +208,7 @@ public class CheckArmyRoles
                    .Any(item => item.Name == cls));
 
         // Return true if at least 4 Bishop classes are owned and all enhancements are unlocked *and* has the nightmare Carnax Boss badge
-        return BishopofWar() && bishopClassesOwned >= 4 && hasEnhancements && Core.HasWebBadge("Nightmare Carnax Boss") && FiftyOneWeaponsOwned >= 4;
+        return BishopofWar() && bishopClassesOwned >= 4 && hasEnhancements && Core.isCompletedBefore(8873) && FiftyOneWeaponsOwned >= 4;
     }
     #region Variables
     // DPS Classes
