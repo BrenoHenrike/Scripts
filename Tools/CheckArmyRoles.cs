@@ -608,37 +608,42 @@ public class CheckArmyRoles
     }
     public bool MasterofWarMeta()
     {
-        // Meta types to exclude
+        // Define meta types to exclude
         var excludedMetaTypes = new[] { "Drakath", "AutoAdd" };
 
-        // Process items in inventory and bank, but filter out weapon categories
+        // Collect all items from inventory and bank, filtering out weapon categories
         List<ItemBase> items = Bot.Inventory.Items.OfType<InventoryItem>()
-            .Where(NoneEnhFilter)  // Apply the filter for non-weapon categories
+            .Where(NoneEnhFilter)  // Apply non-weapon filter
             .Concat(Bot.Bank.Items.OfType<InventoryItem>().Where(NoneEnhFilter))
             .Cast<ItemBase>()
             .ToList();
 
-        // Loop through all items and check if they have at least 4 meta types with values >= 1.3
+        // Iterate through each item
         foreach (ItemBase item in items)
         {
             if (item?.Meta == null)
-                continue;
+                continue;  // Skip items with no meta data
 
+            // Count valid meta types in the item's meta data
             int validMetaCount = item.Meta
-                .Split('\n')
-                .SelectMany(line => line.Replace("AutoAdd,", string.Empty).Split(','))
-                .Select(meta => meta.Split(':'))
+                .Split('\n')  // Split meta data into lines
+                .SelectMany(line => line.Replace("AutoAdd,", string.Empty).Split(','))  // Remove "AutoAdd," and split by commas
+                .Select(meta => meta.Split(':'))  // Split each meta entry into key and value
                 .Count(metaPair => metaPair.Length == 2
-                    && !excludedMetaTypes.Contains(metaPair[0])  // Exclude specific meta types
-                    && double.TryParse(metaPair[1], out double value)
-                    && value >= 1.3);
+                    && !excludedMetaTypes.Contains(metaPair[0])  // Exclude unwanted meta types
+                    && double.TryParse(metaPair[1], out double value)  // Parse value as double
+                    && value >= 1.3);  // Check if value is >= 1.3
 
+            // Return true if at least 4 valid meta types are found
             if (validMetaCount >= 4)
                 return true;
         }
 
+        // Return false if no items meet the criteria
         return false;
     }
+
+
 
 
     #endregion
