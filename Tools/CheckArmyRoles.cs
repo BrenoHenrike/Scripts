@@ -147,7 +147,7 @@ public class CheckArmyRoles
     private bool MasterofWar()
     {
         return ApprenticeOfWar()
-               && Bot.Inventory.Items.Concat(Bot.Bank.Items).Any(item => item != null && Core.GetBoostFloat(item, "dmgAll") > 1.3f && IsNonWeapon(item))
+               && Bot.Inventory.Items.Concat(Bot.Bank.Items).Any(item => item != null && Core.GetBoostFloat(item, "dmgAll") > 1.3f && !IsNonWeapon(item))
                && MasterofWarMeta();
     }
 
