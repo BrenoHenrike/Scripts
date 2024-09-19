@@ -3409,11 +3409,11 @@ public class CoreFarms
             Core.EnsureComplete(183);
 
             Core.EnsureAccept(176);
-            Core.HuntMonster("swordhavenundead", "Skeletal Soldier", "Slain Skeletal Soldier", 10, log: false);
+            Core.HuntMonster("swordhavenundead", "Skeletal Soldier", "Slain Skeletal Soldier", 5, log: false);
             Core.EnsureComplete(176);
 
             Core.EnsureAccept(177);
-            Core.HuntMonster("swordhavenundead", "Skeletal Ice Mage", "Frozen Bonehead", 8, log: false);
+            Core.HuntMonster("swordhavenundead", "Skeletal Ice Mage", "Frozen Bonehead", 6, log: false);
             Core.EnsureComplete(177);
         }
     }
