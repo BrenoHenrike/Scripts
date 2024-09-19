@@ -431,7 +431,6 @@ public class CoreLegion
             // Load and process the first quest in the pair
             Quest firstQID = Core.EnsureLoad(firstQuestID);
             ItemBase? firstAcceptReq = firstQID.AcceptRequirements.FirstOrDefault();
-            int[] QIDS;
             if (firstAcceptReq?.ID != null && Core.CheckInventory(firstAcceptReq.ID))
             {
                 Quests.Add(firstQID.ID);
