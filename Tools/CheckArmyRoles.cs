@@ -477,7 +477,7 @@ public class CheckArmyRoles
     /// </summary>
     /// <param name="x">The inventory item to evaluate.</param>
     /// <returns>True if the item is neither a weapon nor armor, otherwise false.</returns>
-    bool NoneEnhFilter(InventoryItem x)
+    bool NoneEnhancableFilter(InventoryItem x)
     {
         return
          x.Category != ItemCategory.Sword
@@ -629,42 +629,49 @@ public class CheckArmyRoles
             && x.Category != ItemCategory.Wand
             && x.Category != ItemCategory.Whip;
     }
+
     public bool MasterofWarMeta()
     {
-        // Define meta types to exclude
-        var excludedMetaTypes = new[] { "Drakath", "AutoAdd" };
+        // Define unwanted meta types as a HashSet for faster lookups
+        HashSet<string> unwantedMetaTypes = new() { "AutoAdd", "Drakath" };
 
-        // Collect all items from inventory and bank, filtering out weapon categories
-        List<ItemBase> items = Bot.Inventory.Items.OfType<InventoryItem>()
-            .Where(NoneEnhFilter)  // Apply non-weapon filter
-            .Concat(Bot.Bank.Items.OfType<InventoryItem>().Where(NoneEnhFilter))
+        // Collect items from inventory and bank, applying the non-enhancable filter
+        int validMetaCount = Bot.Inventory.Items.Concat(Bot.Bank.Items)
+            .Where(NoneEnhancableFilter) // Apply the non-enhancable filter
             .Cast<ItemBase>()
-            .ToList();
+            .Select(item =>
+            {
+                // Skip items with no meta data by returning 0
+                if (item.Meta == null) return 0;
 
-        // Iterate through each item
-        foreach (ItemBase item in items)
-        {
-            if (item?.Meta == null)
-                continue;  // Skip items with no meta data
+                // Clean unwanted meta types from the item's meta string
+                string cleanedMeta = unwantedMetaTypes
+                    .Aggregate(item.Meta, (currentMeta, unwanted) =>
+                        // Remove unwanted types
+                        currentMeta.Replace(unwanted + ",", string.Empty))
+                    // Remove any trailing commas and extra commas
+                    .TrimEnd(',')
+                    .Replace(",+", ",") // Replace multiple commas with a single one
+                    .Trim(','); // Remove leading/trailing commas
 
-            // Count valid meta types in the item's meta data
-            int validMetaCount = item.Meta
-                .Split('\n')  // Split meta data into lines
-                .SelectMany(line => line.Replace("AutoAdd,", string.Empty).Split(','))  // Remove "AutoAdd," and split by commas
-                .Select(meta => meta.Split(':'))  // Split each meta entry into key and value
-                .Count(metaPair => metaPair.Length == 2
-                    && !excludedMetaTypes.Contains(metaPair[0])  // Exclude unwanted meta types
-                    && double.TryParse(metaPair[1], out double value)  // Parse value as double
-                    && value >= 1.3);  // Check if value is >= 1.3
+                // Count valid meta pairs in the cleaned meta string
+                return cleanedMeta
+                    .Split('\n') // Split the cleaned meta string into lines
+                    .SelectMany(line => line.Split(',')) // Split each line into individual entries
+                    .Select(metaEntry => metaEntry.Split(':')) // Split each entry into key-value pairs
+                    .Count(metaPair => metaPair.Length == 2 // Ensure the pair has exactly two parts
+                                                            // Try to parse the value
+                        && double.TryParse(metaPair[1], out double value)
+                        // Count only if the value is >= 1.3
+                        && value >= 1.3);
+            })
+            .Sum(); // Sum all valid meta counts across items
 
-            // Return true if at least 4 valid meta types are found
-            if (validMetaCount >= 4)
-                return true;
-        }
-
-        // Return false if no items meet the criteria
-        return false;
+        // Return true if at least 4 valid meta pairs are found
+        return validMetaCount >= 4;
     }
+
+
 
 
 
