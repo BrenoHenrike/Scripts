@@ -608,11 +608,14 @@ public class CoreNation
     /// </summary>
     /// <param name="reward">Which reward to pick (totem or gem)</param>
     /// <param name="quant"></param>
-    public void VoucherItemTotemofNulgath(VoucherItemTotem reward = VoucherItemTotem.Totem_of_Nulgath, int quant = 100)
+    public void VoucherItemTotemofNulgath(VoucherItemTotem reward = VoucherItemTotem.Totem_of_Nulgath, int quant = 0)
     {
         if (!Core.CheckInventory("Voucher of Nulgath (non-mem)"))
             FarmVoucher(false, true);
 
+        quant = quant == 0
+       ? (reward == VoucherItemTotem.Totem_of_Nulgath ? 100 : 1000)
+       : quant;
 
         Quest quest = Core.EnsureLoad(4778);
         ItemBase? Reward = quest.Rewards.FirstOrDefault(x => x.ID == (int)reward);
