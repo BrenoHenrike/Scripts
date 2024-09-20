@@ -314,21 +314,21 @@ public class CoreFarms
         //Between level 1 and 5
         while (NotYetLevel(5))
         {
-            ByPassCheck();
+            Core.ByPassCheck();
             Core.KillMonster("icestormarena", "r4", "Bottom", "*", log: false, publicRoom: true);
         }
 
         //Between level 5 and 10
         while (NotYetLevel(10))
         {
-            ByPassCheck();
+            Core.ByPassCheck();
             Core.KillMonster("icestormarena", "r5", "Left", "*", log: false, publicRoom: true);
         }
 
         //Between level 10 and 20
         while (NotYetLevel(20))
         {
-            ByPassCheck();
+            Core.ByPassCheck();
             Core.KillMonster("icestormarena", "r6", "Left", "*", log: false, publicRoom: true);
         }
 
@@ -338,7 +338,7 @@ public class CoreFarms
             Core.RegisterQuests(6628);
             while (NotYetLevel(25))
             {
-                ByPassCheck();
+                Core.ByPassCheck();
                 Core.KillMonster("icestormarena", "r7", "Left", "*", log: false, publicRoom: true);
             }
             Core.CancelRegisteredQuests();
@@ -347,7 +347,7 @@ public class CoreFarms
         //Between level 25 and 30
         while (NotYetLevel(30))
         {
-            ByPassCheck();
+            Core.ByPassCheck();
             Core.KillMonster("icestormarena", "r10", "Left", "*", log: false, publicRoom: true);
         }
 
@@ -360,7 +360,7 @@ public class CoreFarms
             Core.RegisterQuests(6629);
             while (NotYetLevel(35))
             {
-                ByPassCheck();
+                Core.ByPassCheck();
                 Core.KillMonster("icestormarena", "r11", "Left", "*", log: false, publicRoom: true);
             }
             Core.CancelRegisteredQuests();
@@ -372,14 +372,14 @@ public class CoreFarms
         //Between level 35 and 50
         while (NotYetLevel(50))
         {
-            ByPassCheck();
+            Core.ByPassCheck();
             Core.KillMonster("icestormarena", "r14", "Left", "*", log: false, publicRoom: true);
         }
 
         //Between level 50 and 61(for BGE)
         while (NotYetLevel(61))
         {
-            ByPassCheck();
+            Core.ByPassCheck();
             Core.KillMonster("icestormarena", "r16", "Left", "*", log: false, publicRoom: true);
         }
 
@@ -390,7 +390,7 @@ public class CoreFarms
             {
                 while (NotYetLevel(75))
                 {
-                    ByPassCheck();
+                    Core.ByPassCheck();
                     Core.KillMonster("icestormarena", NotYetLevel(65) ? "17" : NotYetLevel(70) ? "r18" : "r20", "Left", "*", log: false, publicRoom: true);
                 }
             }
@@ -409,7 +409,7 @@ public class CoreFarms
         while (NotYetLevel(level))
         {
             if (!Bot.Player.IsMember)
-                ByPassCheck();
+                Core.ByPassCheck();
 
             Core.KillMonster(
                 Core.IsMember
@@ -430,7 +430,7 @@ public class CoreFarms
 
                 log: false);
         }
-        BypassSet = 0;
+        Core.BypassSet = 0;
         Core.ToggleAggro(false);
         Core.JumpWait();
         Core.Rest();
@@ -443,42 +443,6 @@ public class CoreFarms
         {
             return !Bot.ShouldExit && (Bot.Player.Level < _level && Bot.Player.Level < level) || (Bot.Player.Level <= _level && rankUpClass && Bot.Player.CurrentClassRank != 10);
         }
-        //for when ya die / isa gets reset adn teh bypass doesnt work.
-        void ByPassCheck()
-        {
-            if (BypassSet <= 1)
-                return;
-
-            // Attempt to get the actual value, not the delegate
-            string? BypassLevel = Bot.Flash.GetGameObject("world.myAvatar.objData.intLevel");
-
-            // Check if the object is null or if the level is 100 or greater, and exit early if so
-            if (string.IsNullOrEmpty(BypassLevel) || (int.TryParse(BypassLevel, out int level) && level >= 100))
-                return;
-
-            // If we reach here, the level is less than 100
-            // Wait until the player is alive and the bot should not exit
-            while (!Bot.ShouldExit && !Bot.Player.Alive)
-            {
-                Core.Sleep();
-            }
-
-            Core.Logger("Bypass Broke, resetting level");
-
-            // Jump to the "Enter" map and "Spawn" point
-            Core.Jump("Enter", "Spawn");
-
-            // Send a client packet to set the player's level to 100
-            Bot.Send.ClientPacket("{\"t\":\"xt\",\"b\":{\"r\":-1,\"o\":{\"cmd\":\"levelUp\",\"intExpToLevel\":\"0\",\"intLevel\":100}}}", type: "json");
-
-            // Sleep after sending the packet to give time for processing
-            Core.Sleep();
-
-            BypassSet++;
-        }
-
-
-
     }
 
     /// <summary>
