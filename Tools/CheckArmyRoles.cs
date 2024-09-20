@@ -154,61 +154,50 @@ public class CheckArmyRoles
     private bool Apostleofwar()
     {
         return MasterofWar()
-       && Core.CheckInventory(ApostleWeapons, any: true, toInv: false) || Core.CheckInventory(Apostleinsignias, toInv: false);
+       && ApostleWeapons.Concat(Apostleinsignias)
+    .Any(item => Core.CheckInventory(new[] { item }, any: true, toInv: false));
     }
 
     private bool BishopofWar()
     {
-        int bishopClassesOwned = BishopRequirements
-        .Take(7) // First 7 are Bishop classes
-        .Count(cls => Bot.Inventory.Items
-            .Concat(Bot.Bank.Items)
-            .Any(item => item.Name == cls));
-
-        int FiftyOneWeaponsOwned = Bot.Inventory.Items
-                    .Concat(Bot.Bank.Items)
-                    .Count(item => item != null && FiftyOneWeapons.Contains(item.Name));
-
         return Apostleofwar()
             // Check for 51% damage boost weapon
             && Bot.Inventory.Items.Concat(Bot.Bank.Items).Any(item => item != null && Core.GetBoostFloat(item, "dmgAll") >= 1.5f)
             // Check for Bishop Data Classes (index 0 to 6)
-            && Core.CheckInventory(BishopRequirements[0..7], any: true, toInv: false)
+            && Core.CheckInventory(BishopClasses, any: true, toInv: false)
             // Check for Nulgath insignias or items (index 7 to 9)
-            && Core.CheckInventory(BishopRequirements[7..10], any: true, toInv: false)
+            && Core.CheckInventory(NulgathItems, any: true, toInv: false)
             // Check for Dage insignias or items (index 10 to end)
-            && Core.CheckInventory(BishopRequirements[10..], any: true, toInv: false)
+            && Core.CheckInventory(DageItems, any: true, toInv: false)
             // Check for >= 1 of bishopClassesOwned && FiftyOneWeaponsOwned
-            && bishopClassesOwned >= 1 && FiftyOneWeaponsOwned >= 1;
+            && Core.CheckInventory(FiftyOneWeapons, any: true, toInv: false);
     }
 
     private bool CardinalofWar()
     {
-        // IDs for enhancements
-        int[] weaponEnhancements = { 8738, 8739, 8740, 8741, 8742, 8758, 8821, 8820, 9560, 8744 };
-        int[] helmEnhancements = { 8826, 8825, 8758, 8827, 8824 };
-        int[] capeEnhancements = { 8743, 8745, 8758, 8823, 8822, 8744 };
+        bool hasEnhancements =
+        new[] { 8738, 8739, 8740, 8741, 8742, 8758, 8821, 8820, 9560, 8744 }.Any(Core.isCompletedBefore) &&
+        new[] { 8826, 8825, 8758, 8827, 8824 }.Any(Core.isCompletedBefore) &&
+        new[] { 8743, 8745, 8758, 8823, 8822, 8744 }.Any(Core.isCompletedBefore);
 
-        // Check for at least one unlocked enhancement in each category
-        bool hasEnhancements = new[]
-        {
-        weaponEnhancements.Any(Core.isCompletedBefore),
-        helmEnhancements.Any(Core.isCompletedBefore),
-        capeEnhancements.Any(Core.isCompletedBefore)
-        }.All(check => check);
+        int FiftyOneWeaponsOwned = FiftyOneWeapons
+            .Count(weapon => Bot.Inventory.Items
+                .Concat(Bot.Bank.Items)
+                .Any(item => item.Name == weapon));
 
-        int FiftyOneWeaponsOwned = Bot.Inventory.Items
-            .Concat(Bot.Bank.Items)
-            .Count(item => item != null && FiftyOneWeapons.Contains(item.Name));
+        int bishopClassesOwned = BishopClasses
+            .Count(cls => Bot.Inventory.Items
+                .Concat(Bot.Bank.Items)
+                .Any(item => item.Name == cls));
 
-        int bishopClassesOwned = BishopRequirements
-               .Take(7) // First 7 are Bishop classes
-               .Count(cls => Bot.Inventory.Items
-                   .Concat(Bot.Bank.Items)
-                   .Any(item => item.Name == cls));
-
-        // Return true if at least 4 Bishop classes are owned and all enhancements are unlocked *and* has the nightmare Carnax Boss badge
-        return BishopofWar() && bishopClassesOwned >= 4 && hasEnhancements && Core.isCompletedBefore(8873) && FiftyOneWeaponsOwned >= 4;
+        /* Returns in order:
+        1. BishopofWar Status
+        2. >= 4 Class Roles
+        3. >= 4 Weapon 51% dmgAll weapons
+        4. Has *ATLEAST* 1 weapon,  1 helm, 1 cape Forge Ehn 
+        5. Dark Carnax Quest(& Badge) Completed *or* ArchMage Owned.
+        */
+        return BishopofWar() && bishopClassesOwned >= 4 && FiftyOneWeaponsOwned >= 4 && hasEnhancements && (Core.isCompletedBefore(8873) || Core.CheckInventory("ArchMage", toInv: false));
     }
     #region Variables
     // DPS Classes
@@ -388,9 +377,9 @@ public class CheckArmyRoles
         "Warden Insignia",
         "Engineer Insignia"
     };
-    string[] BishopRequirements = new[]
-    {
     // Bishop Classes
+    string[] BishopClasses = new[]
+    {
     "Chaos Avenger",
     "ArchMage",
     "Legion Revenant",
@@ -398,16 +387,51 @@ public class CheckArmyRoles
     "Dragon of Time",
     "Verus DoomKnight",
     "Arcana Invoker",
+    "Sovereign of Storms"
+};
 
     // Nulgath Insignias and Items
-    "Nulgath Insignia",
-    "Sin of the Abyss",
-    "Sin of Revontheus",
+    string[] NulgathItems = new[]
+    {
+        "Nulgath Insignia",
+        "Sin of the Abyss",
+        "Sin of Revontheus",
+        "Empowered Overfiend Blade",
+        "Empowered Ungodly Reavers",
+        "Empowered Shadow Spear",
+        "Empowered Bloodletter",
+        "Empowered Prismatic Manslayers",
+        "Empowered Prismatic Manslayer",
+        "Empowered Legacy of Nulgath",
+        "Empowered Worshipper of Nulgath",
+        "Empowered Evolved Fiend",
+        "Empowered Evolved Void",
+        "Empowered Evolved Blood",
+        "Empowered Evolved Hex",
+        "Empowered Evolved Shadow"
+    };
+
 
     // Dage Insignias and Items
-    "Dage the Evil Insignia",
-    "Necrotic Blade of the Underworld"
+    string[] DageItems = new[]
+    {
+        "Dage the Evil Insignia",
+        "Necrotic Blade of the Underworld",
+        "Empowered Caladbolg",
+        "Empowered Dual Caladbolgs",
+        "Empowered Lich King",
+        "Empowered Undead Champion",
+        "Empowered Bonfire Altar",
+        "Empowered Forge Spawn",
+        "Empowered Paragon Plate",
+        "Empowered BladeMaster",
+        "Empowered BladeMaster's Katana",
+        "Empowered Dual Katanas",
+        "Empowered Dark Caster",
+        "Empowered Prismatic Paragon"
     };
+
+
     string[] FiftyOneWeapons = new[]
     {
         "Necrotic Sword of Doom",
@@ -419,8 +443,7 @@ public class CheckArmyRoles
         "Exalted Apotheosis",
         "Dual Exalted Apotheosis",
         "Greatblade of the Entwined Eclipse",
-        "Star Light of the Empyrean",
-        "Star Lights of the Empyrean"
+        "Star Light of the Empyrean"
     };
     #endregion
 
