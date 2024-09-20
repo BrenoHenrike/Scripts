@@ -310,7 +310,6 @@ public class CoreFarms
         Core.SavedState();
         if (NotYetLevel(level) && Bot.Player.Level < 100)
             ToggleBoost(BoostType.Experience, true);
-        int BypassSet = 1;
         //Between level 1 and 5
         while (NotYetLevel(5))
         {
