@@ -4286,6 +4286,60 @@ public class CoreBots
         Bot.ShowMessageBox("Files that start with the word \"Core\" are not meant to be run, these are for storage. Please select the correct script.", "Core File Info");
         Bot.Stop(true);
     }
+    public int BypassSet = 0;
+    public void ByPassCheck()
+    {
+        if (BypassSet < 1 || Bot.Player.Level >= 100)
+            return;
+
+        // Wait until the player is alive
+        while (!Bot.ShouldExit && !Bot.Player.Alive) { Sleep(); }
+
+        // Attempt to get the level from Flash
+        string? BypassLevel = Bot.Flash.GetGameObject("world.myAvatar.objData.intLevel");
+
+        // Check if the object is null and exit early if so
+        if (string.IsNullOrEmpty(BypassLevel))
+            return;
+
+        // Get the player's level from the Flash object
+        int flashLevel = int.TryParse(BypassLevel, out int level) ? level : 0;
+
+        // Check if the current map is one of the locked maps
+        var levelLockedMaps = new[]
+        {
+            new { Map = "icestormunder", LevelRequired = 75 },
+            new { Map = "icewing", LevelRequired = 75 },
+            new { Map = "battlegrounde", LevelRequired = 61 },
+            new { Map = "voidxyfrag", LevelRequired = 80 },
+            new { Map = "voidnerfkitten", LevelRequired = 80 }
+        };
+
+        // Check if the current map is in the locked maps
+        var currentMap = levelLockedMaps.FirstOrDefault(m => m.Map == Bot.Map.Name);
+        if (currentMap == null || flashLevel >= currentMap.LevelRequired || Bot.Player.Level >= currentMap.LevelRequired)
+            return; // Exit if the current map is not locked or player level meets/exceeds requirement
+
+        Logger("Bypass Broke, resetting level");
+
+        // Store the current map name
+        string previousMap = Bot.Map.Name;
+
+        // Jump to the "whitemap"
+        Join("whitemap");
+
+        // Jump back to the previous map
+        Join(previousMap);
+        Sleep();
+
+        // Send a client packet to set the player's level to 100
+        Bot.Send.ClientPacket("{\"t\":\"xt\",\"b\":{\"r\":-1,\"o\":{\"cmd\":\"levelUp\",\"intExpToLevel\":\"0\",\"intLevel\":100}}}", type: "json");
+
+        // Sleep after sending the packet to give time for processing
+        Sleep();
+
+        BypassSet++;
+    }
 
     #endregion
 
@@ -5400,7 +5454,7 @@ public class CoreBots
         if (Bot.Player.InCombat || Bot.Player.HasTarget)
             JumpWait();
 
-        string[] classesToCheck = new[] { "TimeKeeper", "Chaos Avenger", "Verus DoomKnight", "Void Highlord", "Void HighLord (IoDA)", "Yami no Ronin", "ArchPaladin" };
+        string[] classesToCheck = new[] { "TimeKeeper", "Verus DoomKnight", "Void Highlord", "Void HighLord (IoDA)", "Yami no Ronin", "ArchPaladin" };
         if (!string.IsNullOrEmpty(additionalClass) && CheckInventory(additionalClass))
         {
             Unbank(additionalClass);
@@ -5416,42 +5470,47 @@ public class CoreBots
                 if (!CheckInventory(Class, toInv: Class != "TimeKeeper" || SoloClass == Class))
                     continue;
 
+
+                Unbank(Class);
+                Equip(Class);
+
                 switch (Class)
                 {
                     case "TimeKeeper":
                         if (SoloClass != Class)
                             continue;
                         else
-                            Bot.Skills.StartAdvanced(Class, true, ClassUseMode.Base);
+                            Bot.Skills.StartAdvanced(Class, false, ClassUseMode.Base);
                         break;
 
-                    case "Chaos Avenger":
                     case "ArchPaladin":
-                        Bot.Skills.StartAdvanced(Class, true, ClassUseMode.Base);
+                        Bot.Skills.StartAdvanced(Class, false, ClassUseMode.Base);
                         break;
 
                     case "Void Highlord":
                     case "Void HighLord (IoDA)":
                     case "Verus DoomKnight":
-                        Bot.Skills.StartAdvanced(Class, true, ClassUseMode.Def);
+                        Bot.Skills.StartAdvanced(Class, false, ClassUseMode.Def);
                         break;
 
                     case "Yami no Ronin":
-                        Bot.Skills.StartAdvanced(Class, true, ClassUseMode.Solo);
+                        Bot.Skills.StartAdvanced(Class, false, ClassUseMode.Solo);
                         break;
 
                     default:
-                        Logger($"Equipping {SoloClass}");
                         Unbank(SoloClass);
-                        EquipClass(ClassType.Solo);
+                        Equip(SoloClass);
                         break;
                 }
+
                 Bot.Wait.ForActionCooldown(GameActions.EquipItem);
                 Bot.Wait.ForItemEquip(CheckInventory(Class) ? Class : SoloClass);
-                Logger($"Using {Class}");
+                Logger($"Using {(CheckInventory(Class) ? Class : SoloClass)}");
                 break;
             }
+
         }
+
     }
 
     /// <summary>
