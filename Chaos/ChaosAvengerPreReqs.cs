@@ -136,7 +136,7 @@ public class ChaosAvengerClass
         Core.HuntMonster("wolfwing", "Wolfwing", "Wolfwing Armor", isTemp: false);
 
         //Discordia Armor
-        Core.HuntMonster("palooza", "Chaos Lord Discordia", "Discordia Armor", isTemp: false);
+        Core.HuntMonster("palooza", "Discordia", "Discordia Armor", isTemp: false);
 
         //Ledgermayne (Armor)
         Core.HuntMonster("Ledgermayne", "Ledgermayne", "Ledgermayne", isTemp: !Ledgermayne, publicRoom: Ledgermayne);
