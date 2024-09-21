@@ -472,31 +472,7 @@ public class CheckArmyRoles
     /// <returns>A string representation of a checkbox with a checkmark (🗸) or an X (X) depending on the value of <paramref name="check"/>.</returns>
     string Checkbox(bool check) =>
      $"[ {(check ? "✅" : "❌")} ]";
-    /// <summary>
-    /// Filters out items that are neither weapons nor armor from the inventory.
-    /// </summary>
-    /// <param name="x">The inventory item to evaluate.</param>
-    /// <returns>True if the item is neither a weapon nor armor, otherwise false.</returns>
-    bool NoneEnhancableFilter(InventoryItem x)
-    {
-        return
-         x.Category != ItemCategory.Sword
-            && x.Category != ItemCategory.Axe
-            && x.Category != ItemCategory.Dagger
-            && x.Category != ItemCategory.Gun
-            && x.Category != ItemCategory.HandGun
-            && x.Category != ItemCategory.Rifle
-            && x.Category != ItemCategory.Bow
-            && x.Category != ItemCategory.Mace
-            && x.Category != ItemCategory.Gauntlet
-            && x.Category != ItemCategory.Polearm
-            && x.Category != ItemCategory.Staff
-            && x.Category != ItemCategory.Wand
-            && x.Category != ItemCategory.Whip
-            && x.Category != ItemCategory.Helm
-            && x.Category != ItemCategory.Cape;
-    }
-    /// <summary>
+   /// <summary>
     /// Checks the completion status of Forge quests and lists any that are incomplete.
     /// </summary>
     /// <param name="incompleteQuests">An output parameter that will contain the names and IDs of any incomplete quests.</param>
@@ -637,7 +613,7 @@ public class CheckArmyRoles
 
         // Collect items from inventory and bank, applying the non-enhancable filter
         int validMetaCount = Bot.Inventory.Items.Concat(Bot.Bank.Items)
-            .Where(NoneEnhancableFilter) // Apply the non-enhancable filter
+            .Where(Core.NoneEnhancableFilter) // Apply the non-enhancable filter
             .Cast<ItemBase>()
             .Select(item =>
             {
