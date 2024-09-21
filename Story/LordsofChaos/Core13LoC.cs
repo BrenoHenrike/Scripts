@@ -1311,7 +1311,7 @@ public class Core13LoC
             Core.EnsureAccept(1231);
             Core.HuntMonster("crossroads", "Lemurphant", "Lemurphant Tusks", 5);
             Core.HuntMonster("crossroads", "Koalion", "Koalion Claw", 5);
-            Core.HuntMonster("bloodtusk", "Crystal-Rock", "Singing Crystals", 10);
+            Core.HuntMonster("bloodtusk", "Crystal-Rock", "Singing Crystals", 3);
             Story.MapItemQuest(1231, "crossroads", 522, 5);
             Story.MapItemQuest(1231, "crossroads", 524, 10);
         }
