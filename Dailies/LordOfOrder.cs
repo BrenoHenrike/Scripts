@@ -60,6 +60,7 @@ public class LordOfOrder
         Story.PreLoad(this);
         Core.Logger("Daily: Lord Of Order Class");
 
+        Farm.Experience(50);
         // Heart of Servitude
         if (!Core.isCompletedBefore(7156))
         {
