@@ -1073,8 +1073,8 @@ public class Core13LoC
         if (!Story.QuestProgression(1237))
         {
             Core.EnsureAccept(1237);
+            Core.HuntMonster("bloodtusk", "Rock", "Skin of the Mountain", 3);
             Core.HuntMonster("crossroads", "Koalion", "Koalion Claw", 5);
-            Core.HuntMonster("crossroads", "Rock", "Skin of the Mountain", 3);
             Core.HuntMonster("crossroads", "Lemurphant", "Lemurphant Tusks", 5);
             Story.MapItemQuest(1237, "crossroads", 524, 5);
             Story.MapItemQuest(1237, "crossroads", 522, 5);
