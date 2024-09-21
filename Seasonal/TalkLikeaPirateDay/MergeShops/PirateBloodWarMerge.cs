@@ -67,7 +67,6 @@ public class PirateBloodWarMerge
                     Bot.Wait.ForPickup(req.Name);
                     Core.CancelRegisteredQuests();
                     break;
-
             }
         }
     }
