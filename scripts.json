@@ -17,7 +17,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 257304,
+    "size": 264151,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -301,6 +301,17 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/RankUpAllClasses.cs"
   },
   {
+    "name": "null",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Tools/BestGearAttemptX.cs",
+    "size": 2356,
+    "fileName": "BestGearAttemptX.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/BestGearAttemptX.cs"
+  },
+  {
     "name": "Choose Best Gear",
     "description": "Select a boost type you want to optimize for, and the bot will find and equip the best combination of gear for that boost.",
     "tags": [
@@ -477,7 +488,7 @@
       "seasonal"
     ],
     "path": "Tools/CheckArmyRoles.cs",
-    "size": 25720,
+    "size": 24664,
     "fileName": "CheckArmyRoles.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/CheckArmyRoles.cs"
   },
