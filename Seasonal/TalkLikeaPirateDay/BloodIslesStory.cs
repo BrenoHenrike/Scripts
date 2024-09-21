@@ -88,14 +88,16 @@ public class BloodIsles
         Story.KillQuest(9881, "bloodisles", UseableMonsters[5]);
         Story.MapItemQuest(9881, "bloodisles", 13657);
 
-        // 9882 | Necro-9882
-        Story.KillQuest(9882, "bloodisles", new[] { UseableMonsters[6], UseableMonsters[2] });
+        // 9882 | Necro-Putrefaction
+        Story.KillQuest(9882, "bloodisles", new[] { UseableMonsters[2], UseableMonsters[5] });
 
         Core.EquipClass(ClassType.Solo);
         // 9883 | Counterpirate
         Story.KillQuest(9883, "bloodisles", UseableMonsters[6]);
+
         // 9884 | Abyssal Alpha
         Story.KillQuest(9883, "bloodisles", UseableMonsters[7]);
+
         // 9885 | Nyx Oceana
         Story.KillQuest(9883, "bloodisles", UseableMonsters[8]);
 
