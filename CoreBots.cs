@@ -4001,7 +4001,7 @@ public class CoreBots
                         Logger($"Equipping Failed: \"{item}\" not found in Inventory or Bank");
                     continue;
                 }
-                if (!Bot.Inventory.TryGetItem(item, out var _item))
+                if (!Bot.Inventory.TryGetItem(item, out InventoryItem _item))
                 {
                     if (!Bot.ShouldExit)
                         Logger($"Equipping Failed: Could not parse \"{item}\" from your inventory");
@@ -4049,6 +4049,7 @@ public class CoreBots
     /// <param name="item">Inventory item to equip.</param>
     private void _Equip(InventoryItem? item)
     {
+    Retry:
         if (item == null)
         {
             Logger($"Equipping Failed: Parsed object for \"{item}\" is null");
@@ -4084,10 +4085,12 @@ public class CoreBots
 
             default:
                 Bot.Inventory.EquipItem(item.ID);
-                Bot.Wait.ForActionCooldown(GameActions.EquipItem);
                 break;
         }
-        Bot.Wait.ForTrue(() => Bot.Inventory.IsEquipped(item.ID), 20);
+        // Bot.Wait.ForTrue(() => Bot.Inventory.IsEquipped(item.ID), 20);
+        Bot.Wait.ForItemEquip(item.ID);
+        if (!Bot.Inventory.Items.Any(x => x != null && x.ID == item.ID && x.Equipped))
+            goto Retry;
         Sleep();
         if (logEquip)
             Logger($"Equipping {(Bot.Inventory.IsEquipped(item.ID) ? string.Empty : "failed: ")} {item.Name}", "Equip");
@@ -4339,6 +4342,168 @@ public class CoreBots
         Sleep();
 
         BypassSet++;
+    }
+
+    /// <summary>
+    /// Filters out items that are neither weapons nor armor from the inventory.
+    /// </summary>
+    /// <param name="x">The inventory item to evaluate.</param>
+    /// <returns>True if the item is neither a weapon nor armor, otherwise false.</returns>
+    public bool NoneEnhancableFilter(InventoryItem x)
+    {
+        return
+         x.Category != ItemCategory.Sword
+            && x.Category != ItemCategory.Axe
+            && x.Category != ItemCategory.Dagger
+            && x.Category != ItemCategory.Gun
+            && x.Category != ItemCategory.HandGun
+            && x.Category != ItemCategory.Rifle
+            && x.Category != ItemCategory.Bow
+            && x.Category != ItemCategory.Mace
+            && x.Category != ItemCategory.Gauntlet
+            && x.Category != ItemCategory.Polearm
+            && x.Category != ItemCategory.Staff
+            && x.Category != ItemCategory.Wand
+            && x.Category != ItemCategory.Whip
+            && x.Category != ItemCategory.Helm
+            && x.Category != ItemCategory.Cape;
+    }
+
+    public void EquipBestItemsForMeta(Dictionary<string, string[]> categoryMetaMapping)
+    {
+        // Define unwanted meta types
+        HashSet<string> unwantedMetaTypes = new() { "AutoAdd", "Drakath" };
+
+        // Define weapon categories for matching
+        var weaponCategories = new[]
+        {
+        ItemCategory.Sword,
+        ItemCategory.Axe,
+        ItemCategory.Dagger,
+        ItemCategory.Gun,
+        ItemCategory.HandGun,
+        ItemCategory.Rifle,
+        ItemCategory.Bow,
+        ItemCategory.Mace,
+        ItemCategory.Gauntlet,
+        ItemCategory.Polearm,
+        ItemCategory.Staff,
+        ItemCategory.Wand,
+        ItemCategory.Whip
+    };
+
+        // Function to calculate the score for the desired meta and additional metas
+        double CalculateMetaScore(ItemBase item, string[] metaPriorities, out double mainMetaValue)
+        {
+            mainMetaValue = 0;
+
+            if (item.Meta == null) return 0;
+
+            // Clean unwanted meta types from the item's meta string
+            string cleanedMeta = unwantedMetaTypes
+                .Aggregate(item.Meta, (currentMeta, unwanted) =>
+                    currentMeta.Replace(unwanted + ",", string.Empty))
+                .TrimEnd(',')
+                .Replace(",+", ",")
+                .Trim(',');
+
+            // Split the cleaned meta string into key-value pairs
+            var metaPairs = cleanedMeta
+                .Split('\n')
+                .SelectMany(line => line.Split(','))
+                .Select(metaEntry => metaEntry.Split(':'))
+                .Where(metaPair => metaPair.Length == 2); // Ensure it is a valid meta pair
+
+            // Calculate the main meta value and sum other meta scores
+            double totalScore = 0;
+            foreach (var pair in metaPairs)
+            {
+                string metaKey = pair[0];
+                if (double.TryParse(pair[1], out double metaValue))
+                {
+                    // Check if the current meta is in the desired priorities
+                    if (metaPriorities.Contains(metaKey))
+                    {
+                        mainMetaValue = Math.Max(mainMetaValue, metaValue); // Save the highest main meta value
+                    }
+                    else
+                    {
+                        totalScore += metaValue; // Sum other meta values as secondary score
+                    }
+                }
+            }
+
+            // Return the total score which combines other metas (does not include the mainMetaValue)
+            return totalScore;
+        }
+
+        // Variables to track the best items across categories
+        Dictionary<string, ItemBase?> bestItems = new();
+        Dictionary<string, double> bestMainMetaValues = new();
+        Dictionary<string, double> bestAdditionalMetaScores = new();
+
+        // Iterate through each category and its meta priorities
+        foreach (var categoryMeta in categoryMetaMapping)
+        {
+            string categoryKey = categoryMeta.Key;
+            string[] metaPriorities = categoryMeta.Value;
+
+            // Initialize best item trackers
+            bestItems[categoryKey] = null;
+            bestMainMetaValues[categoryKey] = 0;
+            bestAdditionalMetaScores[categoryKey] = 0;
+
+            var allItems = Bot.Inventory.Items.Concat(Bot.Bank.Items)
+            // Filter out null items
+            .Where(x => x != null &&
+            // Include items that are either non-enhancable (like Armor or Pets)
+            // or items that are enhancable and have an enhancement level greater than 0
+            (NoneEnhancableFilter(x) || (x.EnhancementLevel > 0 && !NoneEnhancableFilter(x))))
+            .Cast<ItemBase>()
+            .ToList();
+
+
+            foreach (ItemBase item in allItems)
+            {
+                // Check if the current item matches the specified category
+                bool isCategoryMatch = categoryKey switch
+                {
+                    "Weapon" => weaponCategories.Contains(item.Category),
+                    "Pet" => item.Category == ItemCategory.Pet, // Check for Pet category
+                    _ => item.Category.ToString() == categoryKey // Match category directly
+                };
+
+                if (!isCategoryMatch) continue;
+
+                // Calculate the score for the item
+                double currentAdditionalMetaScore = CalculateMetaScore(item, metaPriorities, out double currentMainMetaValue);
+
+                // Only consider items with a main meta value greater than zero
+                if (currentMainMetaValue > 0)
+                {
+                    // Check if the current item has a better main meta value
+                    if (currentMainMetaValue > bestMainMetaValues[categoryKey] ||
+                        (currentMainMetaValue == bestMainMetaValues[categoryKey] && currentAdditionalMetaScore > bestAdditionalMetaScores[categoryKey]))
+                    {
+                        bestItems[categoryKey] = item;
+                        bestMainMetaValues[categoryKey] = currentMainMetaValue;
+                        bestAdditionalMetaScores[categoryKey] = currentAdditionalMetaScore;
+                    }
+                }
+            }
+        }
+
+        // Equip the best items found for each category
+        foreach (var category in bestItems.Keys)
+        {
+            if (bestItems[category] != null)
+            {
+                Logger($"Equipping best item: {bestItems[category].Name} in category {category}.");
+                Equip(bestItems[category].ID);
+            }
+            else
+                Logger($"No suitable item found in category {category} for the desired metas.");
+        }
     }
 
     #endregion
