@@ -906,8 +906,8 @@ public class Core13LoC
         if (!Story.QuestProgression(934))
         {
             Core.EnsureAccept(934);
-            Core.KillMonster("sandport", "r6", "Left", 2153, 29373);
-            Core.KillMonster("sandport", "r5", "Left", 536, 6686, 3);
+            Core.KillMonster("sandport", "r6", "Left", "Sell-Sword Leader", "Sell-Sword Leader Defeated");
+            Core.KillMonster("sandport", "r5", "Left", "Horc Sell-Sword", "Horc Sell-Swords Defeated", 3);
             Core.EnsureComplete(934);
         }
 
