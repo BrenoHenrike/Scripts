@@ -81,15 +81,15 @@ public class BloodIsles
         Story.KillQuest(9879, "bloodisles", UseableMonsters[3]);
 
         // 9880 | Aye Eye
-        Story.KillQuest(9879, "bloodisles", UseableMonsters[4]);
-        Story.MapItemQuest(9878, "bloodisles", 13656);
+        Story.KillQuest(9880, "bloodisles", UseableMonsters[4]);
+        Story.MapItemQuest(9880, "bloodisles", 13656);
 
         // 9881 | Fang Profile
         Story.KillQuest(9881, "bloodisles", UseableMonsters[5]);
-        Story.MapItemQuest(9878, "bloodisles", 13657);
+        Story.MapItemQuest(9881, "bloodisles", 13657);
 
         // 9882 | Necro-9882
-        Story.KillQuest(9870, "bloodisles", new[] { UseableMonsters[6], UseableMonsters[2] });
+        Story.KillQuest(9882, "bloodisles", new[] { UseableMonsters[6], UseableMonsters[2] });
 
         Core.EquipClass(ClassType.Solo);
         // 9883 | Counterpirate
