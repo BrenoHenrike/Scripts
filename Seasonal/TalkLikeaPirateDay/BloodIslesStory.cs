@@ -43,7 +43,7 @@ public class BloodIsles
         };
         #endregion Useable Monsters
 
-        if (Core.isCompletedBefore(9883) || !Core.isSeasonalMapActive("piratebloodhub"))
+        if (Core.isCompletedBefore(9885) || !Core.isSeasonalMapActive("piratebloodhub"))
             return;
 
         Story.PreLoad(this);
@@ -93,13 +93,13 @@ public class BloodIsles
 
         Core.EquipClass(ClassType.Solo);
         // 9883 | Counterpirate
-        Story.KillQuest(9883, "bloodisles", UseableMonsters[6]);
+        Story.KillQuest(9883, "bloodisles", UseableMonsters[6], AutoCompleteQuest: false);
 
         // 9884 | Abyssal Alpha
-        Story.KillQuest(9883, "bloodisles", UseableMonsters[7]);
+        Story.KillQuest(9884, "bloodisles", UseableMonsters[7], AutoCompleteQuest: false);
 
         // 9885 | Nyx Oceana
-        Story.KillQuest(9883, "bloodisles", UseableMonsters[8]);
+        Story.KillQuest(9885, "bloodisles", UseableMonsters[8], AutoCompleteQuest: false);
 
         #endregion
     }
