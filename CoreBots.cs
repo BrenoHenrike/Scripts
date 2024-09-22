@@ -4462,6 +4462,8 @@ public class CoreBots
             .Cast<ItemBase>()
             .ToList();
 
+            if (!Bot.Player.IsMember)
+                allItems.RemoveAll(x => x.Upgrade);
 
             foreach (ItemBase item in allItems)
             {
