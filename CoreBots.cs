@@ -4506,11 +4506,21 @@ public class CoreBots
         {
             if (bestItems[category] != null)
             {
-                Logger($"Equipping best item: {bestItems[category].Name} in category {category}.");
-                Equip(bestItems[category].ID);
+                var item = bestItems[category];
+                if (item != null) // Additional null check
+                {
+                    Logger($"Equipping best item: {item.Name} in category {category}.");
+                    Equip(item.ID);
+                }
+                else
+                {
+                    Logger($"No suitable item found in category {category} for the desired metas.");
+                }
             }
             else
+            {
                 Logger($"No suitable item found in category {category} for the desired metas.");
+            }
         }
     }
 
