@@ -813,7 +813,8 @@ public class UnlockForgeEnhancements
         }
 
         Core.EquipClass(ClassType.Farm);
-        Core.KillMonster("therift", "r9", "Left", "Plague Spreader", "Slimed Sigil", SlimeSigil, isTemp: false);
+        Bot.Quests.UpdateQuest(5807);
+        Core.KillMonster("charredpath", "r5", "Left", "Plague Spreader", "Slimed Sigil", SlimeSigil, isTemp: false);
         Adv.BuyItem("therift", 1399, "Ascended Paladin", shopItemID: 5244);
         // Adv.BuyItem("therift", 1399, "Ascended Paladin Staff", shopItemID: 5246);
         Adv.BuyItem("therift", 1399, "Ascended Paladin Sword", shopItemID: 5247);

@@ -108,13 +108,14 @@ public class CyseroItemUpgrade
 
         //Upgrade the Blinding Light of Destiny 7063
 
+        Bot.Quests.UpdateQuest(5807);
         Core.EnsureAccept(7063);
 
         Farm.BattleUnderB("Undead Energy", 3000);
         Adv.BuyItem("alchemyacademy", 2114, "Bright Tonic", 10);
         Core.HuntMonster("doomwood", "Undead Paladin", "Purification Orb", 10, false);
         Core.KillMonster("doomwood", "r7", "Up", "*", "Shoelace of a Fallen Paladin", 3, false);
-        Core.KillMonster("therift", "r9", "Left", "Plague Spreader", "Slimed Sigil", 75, false);
+        Core.KillMonster("charredpath", "r5", "Left", "Plague Spreader", "Slimed Sigil", 75,false);
         Core.HuntMonster("lightguardwar", "Sigrid Sunshield", "Medal of Justice", 150, false);
 
         Core.EnsureComplete(7063);
