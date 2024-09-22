@@ -47,7 +47,7 @@ public class BestGearAttemptX
 
         // 1/100 chance to show the "ad-like" message
         Random rnd = new();
-        if (rnd.Next(1, 11) == 1) // Generates a number between 1 and 100
+        if (rnd.Next(1, 6) == 1) // Generates a number between 1 and 100
         {
             bool userConfirmed = Bot.ShowMessageBox($@"
             Initializing ""Semi"" -Best Gear™ (Unoptimized) Pro®\n
