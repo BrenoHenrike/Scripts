@@ -3999,13 +3999,19 @@ public class CoreBots
                 {
                     if (!Bot.ShouldExit)
                         Logger($"Equipping Failed: \"{item}\" not found in Inventory or Bank");
-                    continue;
+                    return; // Use return instead of continue to exit the method
                 }
-                if (!Bot.Inventory.TryGetItem(item, out InventoryItem _item))
+                if (!Bot.Inventory.TryGetItem(item, out InventoryItem? _item)) // Use nullable type
                 {
                     if (!Bot.ShouldExit)
                         Logger($"Equipping Failed: Could not parse \"{item}\" from your inventory");
-                    continue;
+                    return; // Use return instead of continue to exit the method
+                }
+                if (_item == null) // Additional null check
+                {
+                    if (!Bot.ShouldExit)
+                        Logger($"Equipping Failed: \"{item}\" is null after retrieval");
+                    return; // Use return instead of continue to exit the method
                 }
                 _Equip(_item);
             }
