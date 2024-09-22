@@ -45,7 +45,7 @@ public class BestGearAttemptX
         // Initial "READ ME" message
         Bot.ShowMessageBox("For the moment it's purely manual input from me with it being 90% dmg all with some gold/xp/classpoints MetaTypes (MetaTypes = Boost Type)", "READ ME");
 
-        // 1/100 chance to show the "ad-like" message
+        // 1/5 chance to show the "ad-like" message
         Random rnd = new();
         if (rnd.Next(1, 6) == 1) // Generates a number between 1 and 100
         {
@@ -104,19 +104,23 @@ public class BestGearAttemptX
         if (Bot.Config.Get<bool>("Restore Equipment After"))
             Adv.GearStore();
 
-        Core.Join("battleon-100000");
+        if (Bot.House.Items.Any(h => h.Equipped))
+        {
+            Bot.Send.Packet($"%xt%zm%house%1%{Core.Username()}%");
+            Bot.Wait.ForMapLoad("house");
+        }
 
         // Equip best items based on the meta
         Core.EquipBestItemsForMeta(new Dictionary<string, string[]>
-    {
-        { "Cape", new[] { "dmgAll", "Undead", "Chaos", "Elemental", "Dragonkin", "Human", "gold", "cp", "rep" } },
-        { "Helm", new[] { "dmgAll", "Undead", "Chaos", "Elemental", "Dragonkin", "Human", "gold", "cp", "rep" } },
-        { "Armor", Core.CheckInventory("Polly Roger") ?
-            new[] { "gold", "cp", "rep" } :
-            new[] { "dmgAll", "gold", "cp", "rep" } },
-        { "Weapon", new[] { "dmgAll", "gold", "cp", "rep" } }, // Special case: includes all weapon types
-        { "Pet", new[] { "Undead", "Chaos", "Elemental", "Dragonkin", "Human", "gold", "cp", "rep", "dmgAll" } }
-    });
+        {
+            { "Cape", new[] { "dmgAll", "Undead", "Chaos", "Elemental", "Dragonkin", "Human", "gold", "cp", "rep" } },
+            { "Helm", new[] { "dmgAll", "Undead", "Chaos", "Elemental", "Dragonkin", "Human", "gold", "cp", "rep" } },
+            { "Armor", Core.CheckInventory("Polly Roger") ?
+                new[] { "gold", "cp", "rep" } :
+                new[] { "dmgAll", "gold", "cp", "rep" } },
+            { "Weapon", new[] { "dmgAll", "gold", "cp", "rep" } }, // Special case: includes all weapon types
+            { "Pet", new[] { "Undead", "Chaos", "Elemental", "Dragonkin", "Human", "gold", "cp", "rep", "dmgAll" } }
+        });
 
         // Restore original gear if the config option is enabled
         if (Bot.Config.Get<bool>("Restore Equipment After"))
