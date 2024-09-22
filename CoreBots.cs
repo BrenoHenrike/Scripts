@@ -3999,13 +3999,19 @@ public class CoreBots
                 {
                     if (!Bot.ShouldExit)
                         Logger($"Equipping Failed: \"{item}\" not found in Inventory or Bank");
-                    continue;
+                    continue; // Use continue to move to the next item in the loop
                 }
-                if (!Bot.Inventory.TryGetItem(item, out InventoryItem _item))
+                if (!Bot.Inventory.TryGetItem(item, out InventoryItem? _item)) // Use nullable type
                 {
                     if (!Bot.ShouldExit)
                         Logger($"Equipping Failed: Could not parse \"{item}\" from your inventory");
-                    continue;
+                    continue; // Use continue to move to the next item in the loop
+                }
+                if (_item == null) // Additional null check
+                {
+                    if (!Bot.ShouldExit)
+                        Logger($"Equipping Failed: \"{item}\" is null after retrieval");
+                    continue; // Use continue to move to the next item in the loop
                 }
                 _Equip(_item);
             }
@@ -4500,11 +4506,21 @@ public class CoreBots
         {
             if (bestItems[category] != null)
             {
-                Logger($"Equipping best item: {bestItems[category].Name} in category {category}.");
-                Equip(bestItems[category].ID);
+                var item = bestItems[category];
+                if (item != null) // Additional null check
+                {
+                    Logger($"Equipping best item: {item.Name} in category {category}.");
+                    Equip(item.ID);
+                }
+                else
+                {
+                    Logger($"No suitable item found in category {category} for the desired metas.");
+                }
             }
             else
+            {
                 Logger($"No suitable item found in category {category} for the desired metas.");
+            }
         }
     }
 
