@@ -895,6 +895,19 @@ public class CoreFarmerJoe
 
         Core.Logger($"Setting SoloClass to: {newSoloClass}.");
         Core.Logger($"Setting FarmClass to: {newFarmClass}.");
+
+        Core.EquipBestItemsForMeta(new Dictionary<string, string[]>
+        {
+            { "Cape", new[] { "gold", "cp", "rep", "dmgAll", "Undead", "Chaos", "Elemental", "Dragonkin", "Human" } },
+            { "Helm", new[] { "dmgAll", "Undead", "Chaos", "Elemental", "Dragonkin", "Human", "gold", "cp", "rep" } },
+            { "Armor", Core.CheckInventory("Polly Roger") ?
+                new[] { "gold", "cp", "rep" } :
+                new[] { "dmgAll", "gold", "cp", "rep" } },
+            { "Weapon", new[] { "dmgAll", "gold", "cp", "rep" } }, // Special case: includes all weapon types
+            { "Pet", new[] {
+                "Undead", "Chaos", "Elemental", "Dragonkin", "Human",
+                "gold", "cp", "rep", "dmgAll" } }
+        });
     }
 
     /// <summary>
