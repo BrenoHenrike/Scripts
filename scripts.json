@@ -740,7 +740,7 @@
       "ravenous"
     ],
     "path": "Enhancement/UnlockForgeEnhancements.cs",
-    "size": 43941,
+    "size": 43984,
     "fileName": "UnlockForgeEnhancements.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Enhancement/UnlockForgeEnhancements.cs"
   },
@@ -9938,7 +9938,7 @@
       "null"
     ],
     "path": "Other/Weapons/CyseroItemUpgradeQuests.cs",
-    "size": 10310,
+    "size": 10351,
     "fileName": "CyseroItemUpgradeQuests.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Weapons/CyseroItemUpgradeQuests.cs"
   },
