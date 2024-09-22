@@ -17,7 +17,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 264151,
+    "size": 264241,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -307,7 +307,7 @@
       "null"
     ],
     "path": "Tools/BestGearAttemptX.cs",
-    "size": 2356,
+    "size": 4706,
     "fileName": "BestGearAttemptX.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/BestGearAttemptX.cs"
   },
@@ -14859,7 +14859,7 @@
       "null"
     ],
     "path": "Other/FarmJoeKits/CoreFarmerJoe.cs",
-    "size": 47369,
+    "size": 48124,
     "fileName": "CoreFarmerJoe.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/CoreFarmerJoe.cs"
   },
