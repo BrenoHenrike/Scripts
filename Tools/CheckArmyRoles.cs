@@ -28,7 +28,11 @@ public class CheckArmyRoles
         while (!Bot.ShouldExit && !Bot.Player.Loaded)
             Core.Sleep();
 
-        Core.Join("Battleon-999999");
+        if (Bot.House.Items.Any(h => h.Equipped))
+        {
+            Bot.Send.Packet($"%xt%zm%house%1%{Core.Username()}%");
+            Bot.Wait.ForMapLoad("house");
+        }
 
         Bot.Bank.Open();
 
@@ -472,7 +476,7 @@ public class CheckArmyRoles
     /// <returns>A string representation of a checkbox with a checkmark (🗸) or an X (X) depending on the value of <paramref name="check"/>.</returns>
     string Checkbox(bool check) =>
      $"[ {(check ? "✅" : "❌")} ]";
-   /// <summary>
+    /// <summary>
     /// Checks the completion status of Forge quests and lists any that are incomplete.
     /// </summary>
     /// <param name="incompleteQuests">An output parameter that will contain the names and IDs of any incomplete quests.</param>
