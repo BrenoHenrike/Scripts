@@ -101,7 +101,7 @@ public class BestGearAttemptX
         }
 
         // Store gear if config allows
-        if (Bot.Config.Get<bool>("Restore Equipment After"))
+        if (Bot.Config!.Get<bool>("Restore Equipment After"))
             Adv.GearStore();
 
         Core.Join("battleon-100000");
