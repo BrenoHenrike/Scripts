@@ -611,44 +611,58 @@ public class CheckArmyRoles
             && x.Category != ItemCategory.Wand
             && x.Category != ItemCategory.Whip;
     }
-
+    private bool IsNumeric(string str)
+    {
+        return int.TryParse(str, out _);
+    }
     public bool MasterofWarMeta()
     {
         // Define unwanted meta types as a HashSet for faster lookups
-        HashSet<string> unwantedMetaTypes = new() { "AutoAdd", "Drakath" };
+        HashSet<string> unwantedMetaTypes = new() { "AutoAdd", "Drakath", "anim", "chance", "Necromancer", "NoSell" };
 
-        // Collect items from inventory and bank, applying the filter for armor or pet
-        int validMetaCount = Bot.Inventory.Items.Concat(Bot.Bank.Items)
-            .Where(item => item != null && (item.Category == ItemCategory.Armor || item.Category == ItemCategory.Pet))
-            .Cast<ItemBase>()
-            .Select(item =>
+        // Check for at least one item with 4 or more valid meta types
+        bool hasValidItem = false;
+
+        // Concatenate inventory and bank items, then filter for Armor or Pet categories
+        foreach (ItemBase item in Bot.Inventory.Items.Concat(Bot.Bank.Items)
+                .Where(item => item != null && item.Meta != null &&
+                               (item.Category == ItemCategory.Armor || item.Category == ItemCategory.Pet)))
+        {
+            // Clean unwanted meta types from the item's meta string
+            string cleanedMeta = unwantedMetaTypes
+                .Aggregate(item.Meta, (currentMeta, unwanted) =>
+                    currentMeta.Replace(unwanted + ",", string.Empty))
+                .TrimEnd(',')
+                .Replace(",+", ",") // Replace multiple commas with a single one
+                .Trim(','); // Remove leading/trailing commas
+
+            // Remove purely numeric meta entries
+            cleanedMeta = string.Join(",", cleanedMeta
+                .Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries)
+                .SelectMany(line => line.Split(','))
+                .Where(entry => !string.IsNullOrWhiteSpace(entry) &&
+                                !IsNumeric(entry.Split(':')[0]) && // Check if the key is numeric
+                                entry.Contains(':')) // Ensure it has a key-value structure
+            );
+
+            // Count valid meta pairs
+            int validMetaCount = cleanedMeta
+                .Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+                .Select(metaEntry => metaEntry.Split(':')) // Split each entry into key-value pairs
+                .Count(metaPair => metaPair.Length == 2 // Ensure the pair has exactly two parts
+                    && double.TryParse(metaPair[1], out double value) // Try to parse the value
+                    && value >= 1.3); // Count only if the value is >= 1.3
+
+            // Log the item and its metas if it has 4 or more valid meta types and hasn't been logged yet
+            if (validMetaCount >= 4)
             {
-                // Skip items with no meta data by returning 0
-                if (item.Meta == null) return 0;
+                hasValidItem = true; // Indicate that a valid item has been found
+                break; // Break the loop as soon as a valid item is found
+            }
+        }
 
-                // Clean unwanted meta types from the item's meta string
-                string cleanedMeta = unwantedMetaTypes
-                    .Aggregate(item.Meta, (currentMeta, unwanted) =>
-                        currentMeta.Replace(unwanted + ",", string.Empty))
-                    .TrimEnd(',')
-                    .Replace(",+", ",") // Replace multiple commas with a single one
-                    .Trim(','); // Remove leading/trailing commas
-
-                // Count valid meta pairs
-                return cleanedMeta
-                    .Split('\n') // Split the cleaned meta string into lines
-                    .SelectMany(line => line.Split(',')) // Split each line into individual entries
-                    .Where(entry => !string.IsNullOrWhiteSpace(entry)) // Filter out empty entries
-                    .Select(metaEntry => metaEntry.Split(':')) // Split each entry into key-value pairs
-                    .Count(metaPair => metaPair.Length == 2 // Ensure the pair has exactly two parts
-                        && double.TryParse(metaPair[1], out double value) // Try to parse the value
-                        && value >= 1.3); // Count only if the value is >= 1.3
-            })
-            .Sum(); // Sum all valid meta counts across items
-
-        // Return true if at least 4 valid meta pairs are found
-        return validMetaCount >= 4;
+        // Return true if at least one item with 4 or more valid meta types is found
+        return hasValidItem;
     }
-
     #endregion
 }
