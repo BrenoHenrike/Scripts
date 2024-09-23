@@ -668,7 +668,6 @@ public class CheckArmyRoles
             if (validMetaCount >= 4)
             {
                 hasValidItem = true; // Indicate that a valid item has been found
-                Bot.Log(item);
                 break; // Break the loop as soon as a valid item is found
             }
         }
