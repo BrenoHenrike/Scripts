@@ -151,7 +151,7 @@ public class CheckArmyRoles
     private bool MasterofWar()
     {
         return ApprenticeOfWar()
-                // 30%+ dmgall weapon
+               // 30%+ dmgall weapon
                && Bot.Inventory.Items.Concat(Bot.Bank.Items).Any(item => item != null && Core.GetBoostFloat(item, "dmgAll") > 1.3f && !IsNonWeapon(item))
                // 30%+ dmgall armor
                && MasterofWarMeta();
@@ -617,9 +617,9 @@ public class CheckArmyRoles
         // Define unwanted meta types as a HashSet for faster lookups
         HashSet<string> unwantedMetaTypes = new() { "AutoAdd", "Drakath" };
 
-        // Collect items from inventory and bank, applying the non-enhancable filter
+        // Collect items from inventory and bank, applying the filter for armor or pet
         int validMetaCount = Bot.Inventory.Items.Concat(Bot.Bank.Items)
-            .Where(x => x.Category == ItemCategory.Armor || x.Category == ItemCategory.Pet) // Apply the non-enhancable filter
+            .Where(item => item != null && (item.Category == ItemCategory.Armor || item.Category == ItemCategory.Pet))
             .Cast<ItemBase>()
             .Select(item =>
             {
@@ -629,34 +629,24 @@ public class CheckArmyRoles
                 // Clean unwanted meta types from the item's meta string
                 string cleanedMeta = unwantedMetaTypes
                     .Aggregate(item.Meta, (currentMeta, unwanted) =>
-                        // Remove unwanted types
                         currentMeta.Replace(unwanted + ",", string.Empty))
-                    // Remove any trailing commas and extra commas
                     .TrimEnd(',')
                     .Replace(",+", ",") // Replace multiple commas with a single one
                     .Trim(','); // Remove leading/trailing commas
 
-                // Count valid meta pairs in the cleaned meta string
+                // Count valid meta pairs
                 return cleanedMeta
                     .Split('\n') // Split the cleaned meta string into lines
                     .SelectMany(line => line.Split(',')) // Split each line into individual entries
                     .Select(metaEntry => metaEntry.Split(':')) // Split each entry into key-value pairs
                     .Count(metaPair => metaPair.Length == 2 // Ensure the pair has exactly two parts
-                                                            // Try to parse the value
-                        && double.TryParse(metaPair[1], out double value)
-                        // Count only if the value is >= 1.3
-                        && value >= 1.3);
+                        && double.TryParse(metaPair[1], out double value) // Try to parse the value
+                        && value >= 1.3); // Count only if the value is >= 1.3
             })
             .Sum(); // Sum all valid meta counts across items
 
         // Return true if at least 4 valid meta pairs are found
         return validMetaCount >= 4;
     }
-
-
-
-
-
-
     #endregion
 }
