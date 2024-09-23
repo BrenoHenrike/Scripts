@@ -150,12 +150,22 @@ public class CheckArmyRoles
 
     private bool MasterofWar()
     {
-        return ApprenticeOfWar()
-               // 30%+ dmgall weapon
-               && Bot.Inventory.Items.Concat(Bot.Bank.Items).Any(item => item != null && Core.GetBoostFloat(item, "dmgAll") > 1.3f && !IsNonWeapon(item))
-               // 30%+ dmgall armor or pet
-               && MasterofWarMeta();
+        // Define the types of boosts to check for
+        string[] boostTypes = { "dmgAll", "dmgToDragonkin", "dmgToElemental", "dmgToHuman", "dmgToUndead", "dmgToChaos" };
+
+        // Check for a valid item with a damage boost of 30% or more
+        bool HasThirtyPerceptArmor = Bot.Inventory.Items.Concat(Bot.Bank.Items)
+            .Any(item => item != null &&
+                         item.Meta != null &&
+                         boostTypes.Any(boostType =>
+                             double.TryParse(Core.GetBoostFloat(item, boostType).ToString(), out double value) &&
+                             value >= 1.3) &&
+                         !IsNonWeapon(item));
+
+        return ApprenticeOfWar() && HasThirtyPerceptArmor && MasterofWarMeta();
     }
+
+
 
     private bool Apostleofwar()
     {
@@ -615,6 +625,7 @@ public class CheckArmyRoles
     {
         return int.TryParse(str, out _);
     }
+
     public bool MasterofWarMeta()
     {
         // Define unwanted meta types as a HashSet for faster lookups
@@ -629,12 +640,10 @@ public class CheckArmyRoles
                                (item.Category == ItemCategory.Armor || item.Category == ItemCategory.Pet)))
         {
             // Clean unwanted meta types from the item's meta string
-            string cleanedMeta = unwantedMetaTypes
-                .Aggregate(item.Meta, (currentMeta, unwanted) =>
-                    currentMeta.Replace(unwanted + ",", string.Empty))
-                .TrimEnd(',')
-                .Replace(",+", ",") // Replace multiple commas with a single one
-                .Trim(','); // Remove leading/trailing commas
+            string cleanedMeta = unwantedMetaTypes.Aggregate(item.Meta, (currentMeta, unwanted) =>
+                currentMeta.Replace(unwanted + ",", string.Empty)
+                           .Replace("," + unwanted, string.Empty) // Handle cases where the unwanted type is at the end
+                           .Replace(unwanted, string.Empty)); // Handle cases without a comma
 
             // Remove purely numeric meta entries
             cleanedMeta = string.Join(",", cleanedMeta
@@ -642,8 +651,7 @@ public class CheckArmyRoles
                 .SelectMany(line => line.Split(','))
                 .Where(entry => !string.IsNullOrWhiteSpace(entry) &&
                                 !IsNumeric(entry.Split(':')[0]) && // Check if the key is numeric
-                                entry.Contains(':')) // Ensure it has a key-value structure
-            );
+                                entry.Contains(':'))); // Ensure it has a key-value structure
 
             // Count valid meta pairs
             int validMetaCount = cleanedMeta
@@ -657,6 +665,7 @@ public class CheckArmyRoles
             if (validMetaCount >= 4)
             {
                 hasValidItem = true; // Indicate that a valid item has been found
+                Bot.Log(item);
                 break; // Break the loop as soon as a valid item is found
             }
         }
@@ -664,5 +673,6 @@ public class CheckArmyRoles
         // Return true if at least one item with 4 or more valid meta types is found
         return hasValidItem;
     }
+
     #endregion
 }
