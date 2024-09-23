@@ -153,7 +153,7 @@ public class CheckArmyRoles
         return ApprenticeOfWar()
                // 30%+ dmgall weapon
                && Bot.Inventory.Items.Concat(Bot.Bank.Items).Any(item => item != null && Core.GetBoostFloat(item, "dmgAll") > 1.3f && !IsNonWeapon(item))
-               // 30%+ dmgall armor
+               // 30%+ dmgall armor or pet
                && MasterofWarMeta();
     }
 
@@ -638,6 +638,7 @@ public class CheckArmyRoles
                 return cleanedMeta
                     .Split('\n') // Split the cleaned meta string into lines
                     .SelectMany(line => line.Split(',')) // Split each line into individual entries
+                    .Where(entry => !string.IsNullOrWhiteSpace(entry)) // Filter out empty entries
                     .Select(metaEntry => metaEntry.Split(':')) // Split each entry into key-value pairs
                     .Count(metaPair => metaPair.Length == 2 // Ensure the pair has exactly two parts
                         && double.TryParse(metaPair[1], out double value) // Try to parse the value
@@ -648,5 +649,6 @@ public class CheckArmyRoles
         // Return true if at least 4 valid meta pairs are found
         return validMetaCount >= 4;
     }
+
     #endregion
 }
