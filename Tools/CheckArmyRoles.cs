@@ -151,7 +151,9 @@ public class CheckArmyRoles
     private bool MasterofWar()
     {
         return ApprenticeOfWar()
+                // 30%+ dmgall weapon
                && Bot.Inventory.Items.Concat(Bot.Bank.Items).Any(item => item != null && Core.GetBoostFloat(item, "dmgAll") > 1.3f && !IsNonWeapon(item))
+               // 30%+ dmgall armor
                && MasterofWarMeta();
     }
 
@@ -617,7 +619,7 @@ public class CheckArmyRoles
 
         // Collect items from inventory and bank, applying the non-enhancable filter
         int validMetaCount = Bot.Inventory.Items.Concat(Bot.Bank.Items)
-            .Where(Core.NoneEnhancableFilter) // Apply the non-enhancable filter
+            .Where(x => x.Category == ItemCategory.Armor || x.Category == ItemCategory.Pet) // Apply the non-enhancable filter
             .Cast<ItemBase>()
             .Select(item =>
             {

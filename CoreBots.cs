@@ -4370,9 +4370,7 @@ public class CoreBots
             && x.Category != ItemCategory.Polearm
             && x.Category != ItemCategory.Staff
             && x.Category != ItemCategory.Wand
-            && x.Category != ItemCategory.Whip
-            && x.Category != ItemCategory.Helm
-            && x.Category != ItemCategory.Cape;
+            && x.Category != ItemCategory.Whip;
     }
 
     public void EquipBestItemsForMeta(Dictionary<string, string[]> categoryMetaMapping)
