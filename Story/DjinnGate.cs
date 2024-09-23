@@ -64,7 +64,7 @@ public class DjinnGateStory
             Core.KillMonster("arcangrove", "Left", "Left", "*", "Fragment 6");
             Core.KillMonster("cloister", "r8", "Left", "*", "Fragment 7");
             Core.KillMonster("gilead", "Fail", "Right", "Bubblin", "Fragment 8");
-            Core.KillMonster("natatorium", "r3", "Left", "Merdraconian", "Fragment 9");
+            Core.KillMonster("natatorium", "r5", "Left", "Merdraconian", "Fragment 9");
             Core.KillMonster("mafic", "r2", "Left", "*", "Fragment 10");
             Core.EnsureComplete(6154);
             Core.ToBank(drops);
