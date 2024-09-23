@@ -971,8 +971,8 @@ public class CoreFarms
         VampireREP();
         YokaiREP();
         //Death Pit scripts here because they take alot of time and kill script efficieny
-        DeathPitBrawlREP();
-        DeathPitArenaREP();
+        // DeathPitBrawlREP();
+        // DeathPitArenaREP();
 
         ToggleBoost(BoostType.Reputation, false);
     }
