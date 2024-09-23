@@ -151,19 +151,22 @@ public class CheckArmyRoles
     private bool MasterofWar()
     {
         // Define the types of boosts to check for
-        string[] boostTypes = { "dmgAll", "dmgToDragonkin", "dmgToElemental", "dmgToHuman", "dmgToUndead", "dmgToChaos" };
+        string[] boostTypes = { "dmgAll", "Dragonkin", "Elemental", "Human", "Undead", "Chaos" };
 
         // Check for a valid item with a damage boost of 30% or more
         bool HasThirtyPerceptArmor = Bot.Inventory.Items.Concat(Bot.Bank.Items)
             .Any(item => item != null &&
                          item.Meta != null &&
-                         boostTypes.Any(boostType =>
+                         (double.TryParse(Core.GetBoostFloat(item, "dmgAll").ToString(), out double dmgAllValue) && dmgAllValue >= 1.3 ||
+                         boostTypes.Skip(1).All(boostType =>
                              double.TryParse(Core.GetBoostFloat(item, boostType).ToString(), out double value) &&
-                             value >= 1.3) &&
+                             value >= 1.3)) &&
                          !IsNonWeapon(item));
 
         return ApprenticeOfWar() && HasThirtyPerceptArmor && MasterofWarMeta();
     }
+
+
 
 
 
