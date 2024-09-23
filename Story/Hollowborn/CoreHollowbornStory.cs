@@ -151,11 +151,11 @@ public class CoreHollowbornStory
             Core.KillMonster("shadowrise", "r15", "Left", "Infernal Warrior", "Marred Armor Piece");
             Core.EnsureComplete(9787);
         }
-        // Story.KillQuest(9787, "shadowrise", "Infernal Warrior");
 
         // Knuckle Levity (9788)
         if (!Story.QuestProgression(9788))
         {
+            Bot.Quests.UpdateQuest(8564);
             Core.EquipClass(ClassType.Solo);
             Story.KillQuest(9788, "dagerecruit", "Nuckelavee");
         }
