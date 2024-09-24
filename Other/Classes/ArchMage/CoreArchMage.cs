@@ -151,7 +151,7 @@ public class CoreArchMage
         Core.EnsureAccept(8919);
         Core.Logger("Doing the extra quest for the 51% weapon \"Providence\"");
 
-        UnboundTome(Core.CheckInventory("Book of Arcana") ? 30 : 31);
+        UnboundTome(Core.CheckInventory("Book of Arcana") ? 30 : 31 - Bot.Inventory.GetQuantity("Unbound Tome"));
         BookOfArcana();
 
         BossItemCheck(2500, "Elemental Binding");
@@ -454,10 +454,7 @@ public class CoreArchMage
     public void UnboundTome(int quant = 36)
     {
         if (Core.CheckInventory("Unbound Tome", quant))
-        {
-            Core.FarmingLogger("Unbound Tome", quant);
             return;
-        }
 
         if (!Bot.Quests.IsUnlocked(8912))
             ArcaneLocus(1);
