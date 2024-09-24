@@ -640,7 +640,7 @@ public class CoreLegion
 
         Core.FarmingLogger("Legion Token", quant);
         Core.AddDrop("Legion Token");
-        Core.RegisterQuests(5741);
+        Core.RegisterQuests(5740, 5741);
         while (!Bot.ShouldExit && !Core.CheckInventory("Legion Token", quant))
         {
             Core.HuntMonster("laken", "Augmented Guard", "Stolen Guard", 5);
