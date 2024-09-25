@@ -60,7 +60,12 @@ public class DageRecruitStory
         {
             Core.EquipClass(ClassType.Solo);
             Core.EnsureAccept(8560);
-            Core.HuntMonsterMapID("dagerecruit", 7, "Graython Defeated");
+            while (!Bot.ShouldExit && Bot.Player.Cell != "r3")
+            {
+                Core.Join("dagerecruit", "r3", "Left");
+                Core.Sleep();
+            }
+            Core.KillMonster("dagerecruit", "r3", "Left", "Graython", "Graython Defeated");
             Core.EnsureComplete(8560);
         }
 
