@@ -2739,7 +2739,6 @@ public class CoreAdvanced
                 #region Lucky - Spiral Carve
                 case "abyssal angel":
                 case "abyssal angel's shadow":
-                case "archpaladin":
                 case "artifact hunter":
                 case "assassin":
                 case "archmage":
@@ -2880,6 +2879,7 @@ public class CoreAdvanced
                 #endregion
 
                 #region Lucky - Awe Blast
+                case "archpaladin":
                 case "bard":
                 case "chrono assassin":
                 case "chronomancer":
