@@ -290,18 +290,27 @@ public class CoreDageTheEvilIsland
         Story.MapItemQuest(5655, "Laken", 5126);
 
         //Combat Practice 5656
-        Core.EnsureAccept(5656);
-        Core.KillMonster("Laken", "r10a", "Left", "Ada", "Spar With Ada");
-        Core.EnsureComplete(5656);
+        if (!Story.QuestProgression(5656))
+        {
+            Core.EnsureAccept(5656);
+            Core.KillMonster("Laken", "r10a", "Left", "Ada", "Spar With Ada");
+            Core.EnsureComplete(5656);
+        }
 
         //Round 2 5657
-        Core.EnsureAccept(5657);
-        Core.KillMonster("Laken", "r11", "Left", "Ada", "Spar Again");
-        Core.EnsureComplete(5657);
+        if (!Story.QuestProgression(5657))
+        {
+            Core.EnsureAccept(5657);
+            Core.KillMonster("Laken", "r11", "Left", "Ada", "Spar Again");
+            Core.EnsureComplete(5657);
+        }
 
         //Third Time's A Charm 5658
-        Core.EnsureAccept(5658);
-        Core.KillMonster("Laken", "r12", "Left", "Ada", "Spar One More Time");
-        Core.EnsureComplete(5658);
+        if (!Story.QuestProgression(5658))
+        {
+            Core.EnsureAccept(5658);
+            Core.KillMonster("Laken", "r12", "Left", "Ada", "Spar One More Time");
+            Core.EnsureComplete(5658);
+        }
     }
 }
