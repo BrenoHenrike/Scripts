@@ -12,9 +12,9 @@ tags: badmoon, merge, badmoon, twisted, hunter, darkovian, captains, masked, hun
 //cs_include Scripts/Story/GiantTaleStory.cs
 //cs_include Scripts/Farm/BuyScrolls.cs
 //cs_include Scripts/Story/ShadowSlayerK.cs
-//cs_include Scripts/Other\Various\ShadowslayerSummoningRitual.cs
-//cs_include Scripts/Other\Various\ShadowslayerSummoningRitual2.cs
-//cs_include Scripts/Other\MergeShops\ShadowSlayerKMerge.cs
+//cs_include Scripts/Other/Various/ShadowslayerSummoningRitual.cs
+//cs_include Scripts/Other/Various/ShadowslayerSummoningRitual2.cs
+//cs_include Scripts/Other/MergeShops/ShadowSlayerKMerge.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
