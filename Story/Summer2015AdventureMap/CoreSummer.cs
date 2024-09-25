@@ -200,9 +200,14 @@ public class CoreSummer
         Core.AddDrop("Chaos Fuzzies");
 
         //Drearia on Demand - 4312
-        Story.MapItemQuest(4312, "Drearia", 3485);
-        Story.KillQuest(4312, "Drearia", new[] { "Dark Makai", "Evil Elemental", "Green Rat" });
-
+        if (!Story.QuestProgression(4312))
+        {
+            Story.MapItemQuest(4312, "Drearia", 3485);
+            Core.KillMonster("drearia", "r6", "Left", "Dark Makai", "Dark Makai Notes");
+            Core.KillMonster("drearia", "r6", "Left", "Evil Elemental", "Evil Elemental Notes");
+            Core.KillMonster("drearia", "r6", "Left", "Green Rat", "Green Rat Notes");
+            Core.EnsureComplete(4312);
+        }
         //Plant a Little Seed and Nature Grows - 4313
         Story.KillQuest(4313, "Drearia", "Dark Makai");
 
