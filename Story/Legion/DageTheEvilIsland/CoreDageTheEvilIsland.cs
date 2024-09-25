@@ -53,7 +53,14 @@ public class CoreDageTheEvilIsland
         Story.KillQuest(4084, "DarkFortress", new[] { "Cloaked Fiend", "Dark Makai" });
 
         //Test 2: Nulgath's Disdain 4085
-        Story.KillQuest(4085, "DarkFortress", new[] { "Ninja Spy", "Dark Elemental", "Cloaked Fiend" });
+        if(!Story.QuestProgression(4085))
+        {
+            Core.EnsureAccept(4085);
+            Core.HuntMonster("DarkFortress", "Ninja Spy", "Spy Slain", 6);
+            Core.HuntMonster("DarkFortress", "Cloaked Fiend", "Elemental Slain", 6);
+            Core.HuntMonster("DarkFortress", "Cloaked Fiend", "Cloaked Fiend Slain", 6);
+            Core.EnsureComplete(4085);
+        }
 
         //Test 3: Bonesaw Break 4086
         if (!Story.QuestProgression(4086) || !Core.CheckInventory("Ultra Dark Mystery Stone Of Evil Animosity"))
