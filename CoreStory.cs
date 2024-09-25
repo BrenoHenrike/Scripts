@@ -726,16 +726,6 @@ public class CoreStory
             return Bot.Monsters.MapMonsters.Find(x => x.Name.FormatForCompare() == monster.FormatForCompare());
         }
 
-        // Ensure player is in the correct cell and not in a cutscene or initialization state
-        void EnsurePlayerInCorrectCell(Monster targetMonster)
-        {
-            while (!Bot.ShouldExit && (Bot.Player.Cell != targetMonster.Cell || Bot.Player.Cell.StartsWith("Cut") || Bot.Player.Cell.StartsWith("init")))
-            {
-                Core.Jump(targetMonster.Cell, Bot.Player.Pad);
-                Bot.Wait.ForCellChange(targetMonster.Cell);
-            }
-        }
-
         // Find the target monster
         Monster? targetMonster = FindMonster();
         if (targetMonster == null)
@@ -749,7 +739,11 @@ public class CoreStory
         while (!Bot.ShouldExit && !itemInInventory)
         {
             Core.DebugLogger(this);
-            EnsurePlayerInCorrectCell(targetMonster);
+            if (Bot.Player.Cell != targetMonster.Cell || Bot.Player.Cell.StartsWith("Cut") || Bot.Player.Cell.StartsWith("init"))
+            {
+                Core.Jump(targetMonster.Cell, Bot.Player.Pad);
+                Bot.Wait.ForCellChange(targetMonster.Cell);
+            }
             Bot.Combat.Attack(targetMonster);
             Core.Sleep();
 
