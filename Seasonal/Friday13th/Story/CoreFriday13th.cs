@@ -419,8 +419,16 @@ public class CoreFriday13th
         Story.KillQuest(2225, "Neverworld", "Snackistopheles");
 
         // Guardian of the Lab-rary 2226
-        Story.MapItemQuest(2226, "Neverworld", 1317);
-        Story.KillQuest(2226, "Neverworld", new[] { "Snackistopheles", "Spid-Squider", "Snackistopheles", "Spid-Squider", "Fishizzle" });
+        if (!Story.QuestProgression(2226))
+        {
+            Core.EnsureAccept(2226);
+            Core.HuntMonster("Neverworld", "Fishizzle", "Answer 5");
+            Core.HuntMonster("Neverworld", "Spid-Squider", "Answer 4");
+            Core.HuntMonster("Neverworld", "Spid-Squider", "Answer 2");
+            Core.HuntMonster("Neverworld", "Snackistopheles", "Answer 1");
+            Core.HuntMonster("Neverworld", "Snackistopheles", "Answer 3");
+            Story.MapItemQuest(2226, "Neverworld", 1317);
+        }
 
         // Quick switch! 2227
         Story.MapItemQuest(2227, "Neverworld", 1318, 5);
@@ -570,7 +578,7 @@ public class CoreFriday13th
         Story.KillQuest(5060, "Wormhole", "Volatile Current");
 
         // More Trobboliers 5061
-        if(!Story.QuestProgression(5061))
+        if (!Story.QuestProgression(5061))
         {
             Core.EnsureAccept(5061);
             Core.KillMonster("Wormhole", "r5", "left", "Red Trobbolier", "Trobbolier Punted", 4);
