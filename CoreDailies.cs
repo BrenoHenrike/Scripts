@@ -958,7 +958,7 @@ public class CoreDailies
                     Core.ToBank(item.ID);
     }
 
-    public void NCSGem(bool merge = false, int quant = 15)
+    public void NCSGem(int quant = 15)
     {
         Core.Logger("Daily: NCS Gem");
         if (Core.CheckInventory("NCS Gem", quant))
