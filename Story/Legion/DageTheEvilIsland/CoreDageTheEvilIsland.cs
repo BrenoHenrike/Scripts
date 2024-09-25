@@ -53,7 +53,7 @@ public class CoreDageTheEvilIsland
         Story.KillQuest(4084, "DarkFortress", new[] { "Cloaked Fiend", "Dark Makai" });
 
         //Test 2: Nulgath's Disdain 4085
-        if(!Story.QuestProgression(4085))
+        if (!Story.QuestProgression(4085))
         {
             Core.EnsureAccept(4085);
             Core.HuntMonster("DarkFortress", "Ninja Spy", "Spy Slain", 6);
@@ -174,42 +174,51 @@ public class CoreDageTheEvilIsland
         }
         Story.PreLoad(this);
 
-        Core.Unbank(EnvyItems);
-        Core.AddDrop(EnvyItems);
-        Story.LegacyQuestManager(QuestLogic, Core.FromTo(4884, 4890));
+        Story.LegacyQuestManager(QuestLogic, Core.FromTo(4884, 4886));
+
+        //Squee for Envy 4887
+        if (!Story.QuestProgression(4887))
+        {
+            Core.EnsureAccept(4887);
+            Core.HuntMonster("Envy", "Fawning Sycophant", "Clue");
+            Core.HuntMonster("Envy", "Fawning Sycophant", "Secret");
+            Core.HuntMonster("Envy", "Fawning Sycophant", "Gossip");
+            Core.HuntMonster("Envy", "Fawning Sycophant", "Sincere but Unhelpful Praise");
+            Core.EnsureComplete(4887);
+        }
+
+        Story.LegacyQuestManager(QuestLogic2, Core.FromTo(4888, 4889));
+
         void QuestLogic()
         {
             switch (Story.LegacyQuestID)
             {
                 case 4884:
-                    //An Enviable Army 4884
+                    //An Enviable Army 4884 - Envy Token I
                     Core.HuntMonster("Envy", "Legion Defector", "Legion Defectors Beaten", 3);
                     Core.HuntMonster("Envy", "Fawning Sycophant", "Fawning Sycophants Beaten", 4);
                     break;
 
                 case 4885:
-                    //Where’s Darkon? 4885
+                    //Where’s Darkon? 4885 - Envy Token II
                     Core.GetMapItem(4278, 4, "Envy");
                     break;
 
                 case 4886:
-                    //Her Biggest Fans 4886
+                    //Her Biggest Fans 4886 - Envy Token III
                     Core.HuntMonster("Envy", "Fawning Sycophant", "Sycophant Hood");
                     Core.HuntMonster("Envy", "Fawning Sycophant", "Sycophant Tunic");
                     Core.HuntMonster("Envy", "Fawning Sycophant", "Sycophant Medallion");
                     Core.HuntMonster("Envy", "Fawning Sycophant", "Sycophant Boots");
                     break;
-
-                case 4887:
-                    //Squee for Envy 4887
-                    Core.HuntMonster("Envy", "Fawning Sycophant", "Clue");
-                    Core.HuntMonster("Envy", "Fawning Sycophant", "Secret");
-                    Core.HuntMonster("Envy", "Fawning Sycophant", "Gossip");
-                    Core.HuntMonster("Envy", "Fawning Sycophant", "Sincere but Unhelpful Praise");
-                    break;
-
+            }
+        }
+        void QuestLogic2()
+        {
+            switch (Story.LegacyQuestID)
+            {
                 case 4888:
-                    //Higher Up The Totem Pole 4888
+                    //Higher Up The Totem Pole 4888 - Envy Token IV
                     Core.HuntMonster("Envy", "Disciple of Envy", "Disciple Helm");
                     Core.HuntMonster("Envy", "Disciple of Envy", "Disciple Chestplate");
                     Core.HuntMonster("Envy", "Disciple of Envy", "Disciple Leggings");
@@ -217,20 +226,24 @@ public class CoreDageTheEvilIsland
                     break;
 
                 case 4889:
-                    //Fight for Envy 4889
+                    //Fight for Envy 4889 - Envy Token V
                     Core.HuntMonster("Envy", "Legion Spy", "Legion Spies Defeated", 8);
                     break;
 
-                case 4890:
-                    //Where’s That Employee Lounge Again? 4890
-                    Core.HuntMonster("Envy", "Disciple of Envy", "Semi-Useful Information");
-                    Core.HuntMonster("Envy", "Disciple of Envy", "Cult Propaganda");
-                    Core.HuntMonster("Envy", "Disciple of Envy", "Another Clue");
-                    Core.HuntMonster("Envy", "Disciple of Envy", "Bad Puns");
-                    break;
-
-            };
+            }
         }
+
+        //Where’s That Employee Lounge Again? 4890
+        if (!Story.QuestProgression(4890))
+        {
+            Core.EnsureAccept(4890);
+            Core.HuntMonster("Envy", "Disciple of Envy", "Semi-Useful Information");
+            Core.HuntMonster("Envy", "Disciple of Envy", "Cult Propaganda");
+            Core.HuntMonster("Envy", "Disciple of Envy", "Another Clue");
+            Core.HuntMonster("Envy", "Disciple of Envy", "Bad Puns");
+            Core.EnsureComplete(4890);
+        }
+
         //Group Effort 4891
         Story.KillQuest(4891, "Envy", new[] { "Legion Defector", "Fawning Sycophant", "Disciple of Envy" });
 
