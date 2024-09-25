@@ -10,7 +10,7 @@ tags: fire-champion-s-armor, fire-champions-armor, polished-dragon-slayer, flame
 //cs_include Scripts/Other/Classes/DragonslayerGeneral.cs
 //cs_include Scripts/Other/WarFuryEmblem.cs
 //cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
-//cs_include Scripts/Story\Lair.cs
+//cs_include Scripts/Story/Lair.cs
 using Skua.Core.Interfaces;
 
 public class FireChampionsArmor

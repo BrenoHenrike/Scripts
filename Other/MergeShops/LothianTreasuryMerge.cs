@@ -8,11 +8,11 @@ tags: lothian, treasury, merge, queeniona, dark, thunder, master, long, lightnin
 //cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/Story/ShadowsOfWar/CoreSoW.cs
-//cs_include Scripts/Story\AgeOfRuin\CoreAOR.cs
-//cs_include Scripts/Other\MergeShops\FelixsGildedGearMerge.cs
+//cs_include Scripts/Story/AgeOfRuin/CoreAOR.cs
+//cs_include Scripts/Other/MergeShops/FelixsGildedGearMerge.cs
 //cs_iclude Scripts/Other\MergeShops\LoughshineLootMerge.cs
-//cs_include Scripts/Other\MergeShops\LiaTaraHillLootMerge.cs
-//cs_include Scripts/Other\MergeShops\ColdThunderMerge.cs
+//cs_include Scripts/Other/MergeShops/LiaTaraHillLootMerge.cs
+//cs_include Scripts/Other/MergeShops/ColdThunderMerge.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
