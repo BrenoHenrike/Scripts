@@ -148,7 +148,7 @@ public class UndeadLegionMerge
 
     public List<IOption> Select = new()
     {
-       new Option<bool>("6522", "Frostbite", "Mode: [select] only\nShould the bot buy \"Frostbite\" ?", false),
+        new Option<bool>("6522", "Frostbite", "Mode: [select] only\nShould the bot buy \"Frostbite\" ?", false),
         new Option<bool>("6519", "Undead Legion OverLord", "Mode: [select] only\nShould the bot buy \"Undead Legion OverLord\" ?", false),
         new Option<bool>("2188", "Zealith Reavers", "Mode: [select] only\nShould the bot buy \"Zealith Reavers\" ?", false),
         new Option<bool>("6921", "Blade Master", "Mode: [select] only\nShould the bot buy \"Blade Master\" ?", false),
@@ -245,11 +245,6 @@ public class UndeadLegionMerge
         new Option<bool>("76757", "Underworld Parabellum Armet", "Mode: [select] only\nShould the bot buy \"Underworld Parabellum Armet\" ?", false),
         new Option<bool>("76756", "Underworld Parabellum", "Mode: [select] only\nShould the bot buy \"Underworld Parabellum\" ?", false),
         new Option<bool>("76953", "Dage the Lich King Guard", "Mode: [select] only\nShould the bot buy \"Dage the Lich King Guard\" ?", false),
-        new Option<bool>("81975", "HollowBorn Paragon", "Mode: [select] only\nShould the bot buy \"HollowBorn Paragon\" ?", false),
-        new Option<bool>("81976", "HollowBorn Paragon Helm", "Mode: [select] only\nShould the bot buy \"HollowBorn Paragon Helm\" ?", false),
-        new Option<bool>("81977", "Hollowborn Paragon Helmet", "Mode: [select] only\nShould the bot buy \"Hollowborn Paragon Helmet\" ?", false),
-        new Option<bool>("81978", "HollowBorn Paragon Cape", "Mode: [select] only\nShould the bot buy \"HollowBorn Paragon Cape\" ?", false),
-        new Option<bool>("81979", "HollowBorn Paragon Wrap", "Mode: [select] only\nShould the bot buy \"HollowBorn Paragon Wrap\" ?", false),
         new Option<bool>("84399", "Void Vigilante of the Legion", "Mode: [select] only\nShould the bot buy \"Void Vigilante of the Legion\" ?", false),
         new Option<bool>("84400", "Underworld Void Vigilante", "Mode: [select] only\nShould the bot buy \"Underworld Void Vigilante\" ?", false),
         new Option<bool>("84401", "Void Legion Horned Maw", "Mode: [select] only\nShould the bot buy \"Void Legion Horned Maw\" ?", false),
@@ -272,6 +267,6 @@ public class UndeadLegionMerge
         new Option<bool>("84752", "Dark Ops Cold Steel Kukris", "Mode: [select] only\nShould the bot buy \"Dark Ops Cold Steel Kukris\" ?", false),
         new Option<bool>("84753", "Underworld Dark Ops Rifle", "Mode: [select] only\nShould the bot buy \"Underworld Dark Ops Rifle\" ?", false),
         new Option<bool>("84754", "Underworld Dark Ops Rifles", "Mode: [select] only\nShould the bot buy \"Underworld Dark Ops Rifles\" ?", false),
-        new Option<bool>("84900", "Hollowborn Paragon Quest Pet", "Mode: [select] only\nShould the bot buy \"Hollowborn Paragon Quest Pet\" ?", false),
     };
+
 }
