@@ -41,7 +41,8 @@ public class GetAllRanks
         TOD.FourthDimensionalPyramid();
         TOD.BaconCatFortress();
         TOD.LaserSharkInvasion();
-        TOD.DeathPitPVP();
+        // Commented out do to PvP (with farm class or deaths) is still broke appearnly :thumbsup:
+        // TOD.DeathPitPVP();
         LOC.Wolfwing();
         LOC.Kimberly();
         LOC.Lionfang();
