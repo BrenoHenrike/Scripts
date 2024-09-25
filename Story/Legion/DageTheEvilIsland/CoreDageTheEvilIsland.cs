@@ -276,7 +276,13 @@ public class CoreDageTheEvilIsland
         Story.MapItemQuest(5651, "Laken", 5123);
 
         //Take out Dr. Eisenbacke 5652
-        Story.KillQuest(5652, "Laken", "Dr Eisenbacke");
+        if (!Story.QuestProgression(5652))
+        {
+            Story.KillQuest(5652, "Laken", "Dr Eisenbacke");
+            //Wait and Exit Cut Scene cell
+            Bot.Wait.ForCellChange("Cut2");
+            Core.JumpWait();
+        }
 
         //Find Ada 5653
         Story.MapItemQuest(5653, "Laken", 5124);
@@ -287,30 +293,51 @@ public class CoreDageTheEvilIsland
         Story.KillQuest(5654, "Laken", "Closet Moth");
 
         //Gotcha! 5655
-        Story.MapItemQuest(5655, "Laken", 5126);
+        if (!Story.QuestProgression(5655))
+        {
+            Story.MapItemQuest(5655, "Laken", 5126);
+            //Wait and Exit Cut Scene cell
+            Bot.Wait.ForCellChange("Cut3");
+            Core.JumpWait();
+        }
 
         //Combat Practice 5656
         if (!Story.QuestProgression(5656))
         {
             Core.EnsureAccept(5656);
+            if (Bot.Player.Cell != "r10a")
+                Core.Jump("r10a");
             Core.KillMonster("Laken", "r10a", "Left", "Ada", "Spar With Ada");
-            Core.EnsureComplete(5656);
+            Bot.Wait.ForQuestComplete(5656);
+            // Core.EnsureComplete(5656);
+            //Wait and Exit Cut Scene cell
+            Core.JumpWait();
         }
 
         //Round 2 5657
         if (!Story.QuestProgression(5657))
         {
             Core.EnsureAccept(5657);
+            if (Bot.Player.Cell != "r11")
+                Core.Jump("r11");
             Core.KillMonster("Laken", "r11", "Left", "Ada", "Spar Again");
-            Core.EnsureComplete(5657);
+            Bot.Wait.ForQuestComplete(5657);
+            // Core.EnsureComplete(5657);
+            //Wait and Exit Cut Scene cell
+            Core.JumpWait();
         }
 
         //Third Time's A Charm 5658
         if (!Story.QuestProgression(5658))
         {
             Core.EnsureAccept(5658);
+            if (Bot.Player.Cell != "r12")
+                Core.Jump("r12");
             Core.KillMonster("Laken", "r12", "Left", "Ada", "Spar One More Time");
-            Core.EnsureComplete(5658);
+            Bot.Wait.ForQuestComplete(5658);
+            //Wait and Exit Cut Scene cell
+            Bot.Wait.ForCellChange("Cut4");
+            Core.JumpWait();
         }
     }
 }
