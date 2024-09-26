@@ -350,7 +350,13 @@ public class CoreQOM
         Story.MapItemQuest(5550, "shadowfallinvasion", 5029);
 
         //Go Through That Door
-        Story.KillQuest(5551, "shadowfallinvasion", new[] { "Bone Guardian", "Bone Guardian" });
+        if (!Story.QuestProgression(5551))
+        {
+            Core.EnsureAccept(5551);
+            Core.HuntMonster("shadowfallinvasion", "Bone Guardian", "Bone Guardian Slain");
+            Core.HuntMonster("shadowfallinvasion", "Bone Guardian", "Soul Fragment Retrievement");
+            Core.EnsureComplete(5551);
+        }
 
         //Infernal Attack
         if (!Story.QuestProgression(5552))
