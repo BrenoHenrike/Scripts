@@ -6,7 +6,7 @@
       "null"
     ],
     "path": "CoreDailies.cs",
-    "size": 51170,
+    "size": 52677,
     "fileName": "CoreDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreDailies.cs"
   },
@@ -1445,7 +1445,7 @@
       "all"
     ],
     "path": "Dailies/0AllDailies.cs",
-    "size": 4335,
+    "size": 4367,
     "fileName": "0AllDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/0AllDailies.cs"
   },
@@ -1484,6 +1484,22 @@
     "size": 552,
     "fileName": "DagesScrollFragment.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/DagesScrollFragment.cs"
+  },
+  {
+    "name": "Elden Ruby",
+    "description": "This script will complete the daily quest for Elden Ruby.",
+    "tags": [
+      "daily",
+      "eldenruby",
+      "ruby",
+      "shadowrealm",
+      "blood-dyed stones",
+      "shadow realm"
+    ],
+    "path": "Dailies/EldenRuby.cs",
+    "size": 590,
+    "fileName": "EldenRuby.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/EldenRuby.cs"
   },
   {
     "name": "Moglin Pets Daily",
@@ -12313,6 +12329,32 @@
     "size": 4408,
     "fileName": "ByrodaxMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/ByrodaxMerge.cs"
+  },
+  {
+    "name": "Obsessor Commander Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Obsessor Commander Merge [2486] in /shadowrealm",
+    "tags": [
+      "taka",
+      "obsessor",
+      "commander",
+      "merge",
+      "shadowrealm",
+      "captain",
+      "cap",
+      "skull",
+      "obsessors",
+      "shadow",
+      "compass",
+      "rose",
+      "pet",
+      "cutlass",
+      "cutlasses",
+      "skulls"
+    ],
+    "path": "Other/MergeShops/ObsessorCommanderMerge.cs",
+    "size": 4746,
+    "fileName": "ObsessorCommanderMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/ObsessorCommanderMerge.cs"
   },
   {
     "name": "Yokai Realm Merge",
