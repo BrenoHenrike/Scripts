@@ -101,6 +101,7 @@ public class FarmAllDailies
             Daily.HardCoreMetals(new[] { "Arsenic", "Beryllium", "Chromium", "Palladium", "Rhodium", "Rhodium", "Thorium", "Mercury" }, 10, ToBank: true);
             Daily.GoldenInquisitor();
             Daily.BreakIntotheHoard(false, false);
+            Daily.EldenRuby();
             Daily.NCSGem();
             Daily.MadWeaponSmith();
             Daily.CyserosSuperHammer();

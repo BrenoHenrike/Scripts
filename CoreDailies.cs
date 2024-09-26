@@ -975,6 +975,46 @@ public class CoreDailies
         Core.EnsureComplete(9642);
     }
 
+    public void EldenRuby(int quant = 25)
+    {
+        Core.Logger("Daily: Elden Ruby");
+        if (Core.CheckInventory("Elden Ruby", quant))
+            return;
+        if (!CheckDaily(9896, true, true, "Elden Ruby"))
+            return;
+
+        if (!Core.CheckInventory("Obsessor Captain"))
+        {
+            if (!Core.CheckInventory("Compass Rose Skull"))
+            {
+                Core.Logger("Getting the Compass Rose Skull.");
+                Core.HuntMonsterQuest(9894, new (string? mapName, string? monsterName, ClassType classType)[]
+                {
+                    ("dracocon", "Treasure Pile", ClassType.Farm),
+                    ("battleundere", "Treasure Pile", ClassType.Farm),
+                    ("greed", "Treasure Pile", ClassType.Farm)
+                }, true);
+            }
+
+            Core.Logger("Getting the Obsessor Captain.");
+            Core.HuntMonsterQuest(9895, new (string? mapName, string? monsterName, ClassType classType)[]
+            {
+                ("shadowrealm", "Shadow Lord", ClassType.Solo),
+            }, true);
+        }
+
+        Core.Unbank("Compass Rose Skull", "Obsessor Captain");
+        Core.AddDrop("Elden Ruby");
+
+        Core.HuntMonsterQuest(9896, new (string? mapName, string? monsterName, ClassType classType)[]
+        {
+            ("trygve","Vindicator Recruit",ClassType.Farm),
+            ("greed", "Cursed Treasure", ClassType.Solo)
+        }, true);
+
+        Core.ToBank("Compass Rose Skull", "Obsessor Captain");
+    }
+
 
 #nullable enable
     #region Friendship
