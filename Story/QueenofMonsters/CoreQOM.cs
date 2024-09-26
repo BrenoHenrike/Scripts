@@ -707,7 +707,13 @@ public class CoreQOM
         Story.MapItemQuest(5861, "TwistedCavern", 5295, 6);
 
         //Leading to the Wall
-        Story.KillQuest(5862, "TwistedCavern", new[] { "Urstrix", "Fungal Lord" });
+        if (!Story.QuestProgression(5862))
+        {
+            Core.EnsureAccept(5862);
+            Core.HuntMonster("TwistedCavern", "Urstrix", "Urstrix Slain", 6);
+            Core.HuntMonster("TwistedCavern", "Fungal Lord", "Fungal Lord Slain", 4);
+            Core.EnsureComplete(5862);
+        }
 
         //Get through the Wall
         Story.KillQuest(5863, "TwistedCavern", "Wall of Vines");
