@@ -1287,7 +1287,7 @@ public class CoreFarms
         {
             Core.EnsureAccept(3754);
             Core.HuntMonster("boxes", "Sneevil", "Beast Crate", 6, log: false);
-            Core.HuntMonster("pirates", "mob", "Fish Scale", 6, log: false);
+            Core.HuntMonster("pirates", "Fishwing", "Fish Scale", 6, log: false);
             Core.EnsureComplete(3754);
         }
 
