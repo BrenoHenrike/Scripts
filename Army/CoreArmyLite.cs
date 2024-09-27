@@ -645,7 +645,7 @@ public class CoreArmyLite
     public int getRoomNr()
     {
         // Combine machine name, username, and fixed date for uniqueness
-        string uniqueIdentifier = $"{Environment.MachineName}_{Environment.UserName}_{DateTime.Now.Year}{DateTime.Now.Month}{DateTime.Now.Day}{DateTime.Now.AddHours(5)}";
+        string uniqueIdentifier = $"{Environment.MachineName}_{Environment.UserName}_{DateTime.Now.Year}{DateTime.Now.Month}{DateTime.Now.Day}{DateTime.Now.Hour}";
 
         // Hash the unique identifier
         using SHA256 sha256 = SHA256.Create();
@@ -854,8 +854,7 @@ public class CoreArmyLite
         List<string> players = new();
         int index = 1;
 
-
-        while (!Bot.ShouldExit)
+        while (!Bot.ShouldExit && index <= 10) // Stop when index exceeds 10
         {
             if (Bot.Config == null)
             {
@@ -866,30 +865,22 @@ public class CoreArmyLite
             // Retrieve player names from the configuration
             string? playerName = Bot.Config.Get<string>($"player{index}");
 
-            // Log the retrieved player name or null
-            // Core.Logger($"Retrieved player name for 'player{index}': {playerName ?? "null"}");
-
-            // Check if the player name is valid
+            // If the player name is null or empty, continue to the next index
             if (string.IsNullOrEmpty(playerName))
             {
-                // Core.Logger($"No player found for key 'player{index}'. Stopping retrieval.");
-                break; // Exit if no more players
+                index++; // Skip to the next player index
+                continue; // Continue to the next loop iteration
             }
 
             // Add the player's name to the list and log it
             players.Add(playerName.ToLower().Trim());
-            // Core.Logger($"Added player: {playerName.ToLower().Trim()}");
 
             index++; // Increment the index after processing
-
-            // Log Final player list
-            // Core.Logger($"Final list of players: {string.Join(", ", players)}");
         }
-
-        // Log the final list of players
 
         return players.ToArray();
     }
+
 
     public void waitForParty(string map, string? item = null, int playerMax = -1)
     {
