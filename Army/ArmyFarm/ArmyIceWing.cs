@@ -8,7 +8,7 @@ tags: army, warlord icewing, experience, gold, icestorm arena
 //cs_include Scripts/Army/CoreArmyLite.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Options;
-using Skua.Core.Models.Monsters;
+using Skua.Core.Models;
 
 public class IceWingLevelingArmy
 {
@@ -49,38 +49,71 @@ public class IceWingLevelingArmy
     {
         Core.PrivateRooms = true;
         Core.PrivateRoomNumber = Army.getRoomNr();
-
+        Bot.Events.PlayerAFK += PlayerAFK;
         Core.OneTimeMessage("Only for army", "This is intended for use with an army, not for solo players.");
 
+    Restart:
+        Army.AggroMonIDs(1);
+        Army.AggroMonStart("icewing", "Enter", "Spawn");
+        Army.DivideOnCells("Enter");
+        Bot.Player.SetSpawnPoint();
+        bool AggroReenabled = false;
         Core.RegisterQuests(Core.IsMember ? 6635 : 6632);
         while (!Bot.ShouldExit)
-            ArmyHunt("icewing", new[] { "Warlord Icewing" }, "Warlord Icewing Defeated", ClassType.Solo, true);
+        {
+            if (Bot.Map.PlayerNames.Count < Army.Players().Length)
+                break;
+
+            while (!Bot.ShouldExit && !Bot.Player.Alive)
+            {
+                Army.AggroMonStop(true);
+                Bot.Sleep(100);
+                AggroReenabled = false;
+            }
+
+            if (!AggroReenabled)
+            {
+                Army.AggroMonIDs(1);
+                AggroReenabled = true;
+            }
+
+            if (Bot.Map.Name != "icewing")
+                Core.Join("icewing");
+            if (Bot.Player.Cell != "Enter")
+                Core.Jump("Enter");
+
+            Bot.Combat.Attack("*");
+            Core.Sleep();
+        }
+        if (!Bot.ShouldExit && Bot.Map.PlayerNames.Count < Army.Players().Length)
+        {
+            while (!Bot.ShouldExit && PlayerTakingDmg())
+            {
+                Army.AggroMonStop(true);
+                Core.JumpWait();
+            }
+            goto Restart;
+        }
+
         Core.CancelRegisteredQuests();
+        Army.AggroMonStop(true);
+        while (!Bot.ShouldExit && PlayerTakingDmg())
+        {
+            Army.AggroMonStop(true);
+            Core.JumpWait();
+        }
+        Bot.Events.PlayerAFK -= PlayerAFK;
     }
 
-    void ArmyHunt(string map, string[] monsters, string item, ClassType classType, bool isTemp = false, int quant = 1)
+    public bool PlayerTakingDmg()
     {
-        Core.PrivateRooms = true;
-        Core.PrivateRoomNumber = Army.getRoomNr();
+        int Playerhp = Bot.Player.Health;
+        int PlayerhpUpdated = Playerhp - Bot.Player.Health;
 
-        PlayerAFK();
-        if (!isTemp)
-            Core.AddDrop(item);
-
-        Core.EquipClass(classType);
-        //Army.waitForParty(map, item);
-        Core.FarmingLogger(item, quant);
-        
-        Core.Join(map);
-        Bot.Player.SetSpawnPoint();
-
-        while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
-            Bot.Combat.Attack("Warlord Icewing");
-
-        Core.JumpWait();
+        if (PlayerhpUpdated > 0)
+            return true;
+        return false;
     }
-
-
     public void PlayerAFK()
     {
         Core.Logger("Anti-AFK engaged");
