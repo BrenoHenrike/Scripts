@@ -741,7 +741,7 @@ public class CoreStory
             Core.DebugLogger(this);
             if (Bot.Player.Cell != targetMonster.Cell || Bot.Player.Cell.StartsWith("Cut") || Bot.Player.Cell.StartsWith("init"))
             {
-                Core.Jump(targetMonster.Cell, Bot.Player.Pad);
+                Core.Jump(targetMonster.Cell);
                 Bot.Wait.ForCellChange(targetMonster.Cell);
             }
             Bot.Combat.Attack(targetMonster);
