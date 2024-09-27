@@ -643,7 +643,7 @@ public class CoreArmyLite
     public int getRoomNr()
     {
         // Combine machine name, username, and fixed date for uniqueness
-        string uniqueIdentifier = $"{Environment.MachineName}_{Environment.UserName}_{DateTime.Now.Year}{DateTime.Now.Month}";
+        string uniqueIdentifier = $"{Environment.MachineName}_{Environment.UserName}_{DateTime.Now.Year}{DateTime.Now.Month}{DateTime.Now.Day}{DateTime.Now.AddHours(5)}";
 
         // Hash the unique identifier
         using SHA256 sha256 = SHA256.Create();
