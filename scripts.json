@@ -523,7 +523,7 @@
       "null"
     ],
     "path": "Army/CoreArmyLite.cs",
-    "size": 60303,
+    "size": 61039,
     "fileName": "CoreArmyLite.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/CoreArmyLite.cs"
   },
@@ -8925,7 +8925,7 @@
       "icestorm arena"
     ],
     "path": "Army/ArmyFarm/ArmyIceWing.cs",
-    "size": 2438,
+    "size": 3345,
     "fileName": "ArmyIceWing.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/ArmyIceWing.cs"
   },
