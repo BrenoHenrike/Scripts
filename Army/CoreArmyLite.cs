@@ -16,6 +16,9 @@ using Skua.Core.Models.Players;
 using Skua.Core.Options;
 using Skua.Core.Models.Servers;
 using Newtonsoft.Json.Linq;
+using System.Security.Cryptography;
+using System.IO;
+using System.Linq;
 
 public class CoreArmyLite
 {
@@ -43,7 +46,7 @@ public class CoreArmyLite
         if (delPrevMsg)
         {
             string? player1 = Bot.Config!.Get<string>("player1");
-            if (!string.IsNullOrEmpty(player1) && player1.ToLower() == Bot.Player.Username.ToLower())
+            if (!string.IsNullOrEmpty(player1) && player1.ToLower() == Core.Username().ToLower())
             {
                 Core.Logger("Clearing log");
                 armyLogging.ClearLogFile();
@@ -54,7 +57,7 @@ public class CoreArmyLite
     public void ClearLogFile()
     {
         string? player1 = Bot.Config!.Get<string>("player1");
-        if (!string.IsNullOrEmpty(player1) && player1.ToLower() == Bot.Player.Username.ToLower())
+        if (!string.IsNullOrEmpty(player1) && player1.ToLower() == Core.Username().ToLower())
         {
             Core.Logger("Clearing log");
             armyLogging.ClearLogFile();
@@ -81,7 +84,7 @@ public class CoreArmyLite
                 if (!armyLogging.isAlreadyInLog(Players()))
                 {
                     armyLogging.WriteLog(
-                        $"{Bot.Player.Username.ToLower()}:done:{armyLogging.message}"
+                        $"{Core.Username().ToLower()}:done:{armyLogging.message}"
                     );
                     return true;
                 }
@@ -91,7 +94,7 @@ public class CoreArmyLite
             {
                 attempts++;
             }
-            Core.Sleep(100);
+            Core.Sleep();
         }
         return false;
     }
@@ -109,7 +112,7 @@ public class CoreArmyLite
             }
             catch { }
             attempts++;
-            Core.Sleep(100);
+            Core.Sleep();
         }
         return false;
     }
@@ -143,7 +146,7 @@ public class CoreArmyLite
         List<int> AggroMonMapIDs = this._AggroMonMIDs;
         foreach (string player in players)
         {
-            if (player.ToLower() != Bot.Player.Username.ToLower())
+            if (player.ToLower() != Core.Username().ToLower())
             {
                 Bot.Map.TryGetPlayer(player, out PlayerInfo? playerObject);
                 if (playerObject != null)
@@ -177,18 +180,30 @@ public class CoreArmyLite
         }
     }
 
-    public void AggroMonStart(string? map = null)
+    public void AggroMonStart(string? map = null, string _cell = null, string _pad = null)
     {
         if (aggroCTS is not null)
             AggroMonStop();
 
+        Bot.Config.Get<string>(player1);
+        Bot.Config.Get<string>(player2);
+        Bot.Config.Get<string>(player3);
+        Bot.Config.Get<string>(player4);
+        Bot.Config.Get<string>(player5);
+        Bot.Config.Get<string>(player6);
+        Bot.Config.Get<string>(player7);
+        Bot.Config.Get<string>(player8);
+        Bot.Config.Get<string>(player9);
+        Bot.Config.Get<string>(player10);
+
         string[] players = Players();
         int partySize = players.Length;
+        Core.Logger($"Part Size: {(partySize > 0 ? partySize.ToString() : "0")}");
 
         if (map != null)
         {
             Core.Join(map);
-            waitForPartyCell("Enter");
+            waitForPartyCell(_cell, _pad, partySize);
         }
 
         List<string> _AggroMonCells = this._AggroMonCells;
@@ -234,12 +249,15 @@ public class CoreArmyLite
     /// </summary>
     public void AggroMonStop(bool clear = false)
     {
+    Retry:
         Bot.Options.AttackWithoutTarget = false;
         aggroCTS?.Cancel();
         if (clear)
             AggroMonClear();
         Bot.Wait.ForTrue(() => aggroCTS == null, 30);
         Core.Jump(Bot.Player.Cell, Bot.Player.Pad);
+        if (aggroCTS != null)
+            goto Retry;
     }
 
     /// <summary>
@@ -616,84 +634,49 @@ public class CoreArmyLite
         }
     }
 
-    //new one that may break shit
     /// <summary>
-    /// Generates a random 5-digit Room Number to ensure armies join the same room.
+    /// Generates a unique 5-digit room number based on the machine name,
+    /// username, and a fixed date reference. The output is deterministic
+    /// for a given machine and user, ensuring no leading zeros.
     /// </summary>
+    /// <returns>A unique 5-digit integer room number that does not start with a zero.</returns>
     public int getRoomNr()
     {
-        const string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        string combinedDigits = "";
+        // Combine machine name, username, and fixed date for uniqueness
+        string uniqueIdentifier = $"{Environment.MachineName}_{Environment.UserName}_{DateTime.Now.Year}{DateTime.Now.Month}";
 
-        // Convert machine name to hex and filter to get combinedDigits
-        foreach (char c in Convert.ToHexString(Encoding.Default.GetBytes(Environment.MachineName)))
+        // Hash the unique identifier
+        using SHA256 sha256 = SHA256.Create();
+        byte[] hash = sha256.ComputeHash(Encoding.UTF8.GetBytes(uniqueIdentifier));
+
+        // Generate combinedDigits from the hash while incorporating randomness
+        StringBuilder combinedDigits = new();
+        for (int i = 0; i < hash.Length; i++)
         {
-            if (char.IsDigit(c))
-            {
-                combinedDigits += c;
-            }
-            else if (char.IsLetter(c) && alphabet.Contains(c))
-            {
-                combinedDigits += alphabet.IndexOf(c);
-            }
-
-            if (combinedDigits.Length >= 36)
-            {
-                break;
-            }
+            // Mix in the index to add variability
+            int digit = (hash[i] + i) % 10; // Ensures it's always a digit (0-9)
+            combinedDigits.Append(digit);
         }
 
-        // Ensure combinedDigits has exactly 5 digits
-        while (combinedDigits.Length < 5)
+        // Ensure we have at least 5 digits
+        if (combinedDigits.Length < 5)
         {
-            combinedDigits += new Random().Next(0, 10).ToString();
+            combinedDigits.Append('0', 5 - combinedDigits.Length); // Pad with zeros if needed
         }
 
-        if (combinedDigits.Length > 5)
+        // Take the first 5 characters
+        string roomNumberStr = combinedDigits.ToString().Substring(0, 5);
+
+        // Ensure the first digit isn't '0'
+        if (roomNumberStr[0] == '0')
         {
-            combinedDigits = combinedDigits.Substring(0, 5);
+            roomNumberStr = string.Concat("1", roomNumberStr.AsSpan(1)); // Replace with '1'
         }
 
-        return int.Parse(combinedDigits);
+        // Return the integer
+        return int.Parse(roomNumberStr);
     }
 
-
-
-    // //(old) maybe thisll fix it??
-    // /// <summary>
-    // /// Sets a random Room Number to ensure armies join the same room.
-    // /// </summary>
-    // public int getRoomNr()
-    // {
-    //     string Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    //     string combinedDigits = "";
-
-    //     foreach (char c in Convert.ToHexString(Encoding.Default.GetBytes(Environment.MachineName)))
-    //     {
-    //         if (char.IsDigit(c))
-    //             combinedDigits += c;
-    //         else if (char.IsLetter(c) && Alphabet.Contains(c))
-    //             combinedDigits += Alphabet.IndexOf(c);
-
-    //         if (combinedDigits.Length >= 36)
-    //             break;
-    //     }
-
-    //     while (!Bot.ShouldExit && combinedDigits.Length < 4)
-    //     {
-    //         combinedDigits = (int.Parse(combinedDigits) * (DateTime.Now.Hour - DateTimeOffset.UtcNow.Hour) * DateTime.Today.Day).ToString();
-    //     }
-
-    //     while (!Bot.ShouldExit && combinedDigits.Length >= 6)
-    //     {
-    //         long firstHalf = long.Parse(combinedDigits[..(combinedDigits.Length / 2)]);
-    //         long secondHalf = long.Parse(combinedDigits[(combinedDigits.Length / 2)..]);
-    //         combinedDigits = (firstHalf + secondHalf).ToString();
-    //         if (combinedDigits.Length <= 4)
-    //             combinedDigits = (long.Parse(combinedDigits) * DateTime.Today.Day).ToString();
-    //     }
-    //     return int.Parse(combinedDigits);
-    // }
 
     /// <summary>
     /// Spreads players around the input cells, if no cells are set - will spread to any cell that has a monster in it. 
@@ -802,7 +785,7 @@ public class CoreArmyLite
         while (!Bot.ShouldExit)
         {
             sendDone(10);
-            if (isAlreadyInLog(new string[] { Bot.Player.Username.ToLower() }))
+            if (isAlreadyInLog(new string[] { Core.Username().ToLower() }))
                 break;
             Bot.Sleep(500);
         }
@@ -813,85 +796,90 @@ public class CoreArmyLite
         }
     }
 
+    /// <summary>
+    /// Waits for the party members to join the specified cell in the game.
+    /// If no cell is specified, it checks the current cell for the required player count.
+    /// </summary>
+    /// <param name="cell">The cell to jump to, if specified.</param>
+    /// <param name="pad">The direction to pad when jumping to the cell; defaults to "Left".</param>
+    /// <param name="playerCount">The expected number of players in the party; defaults to the current player count.</param>
     public void waitForPartyCell(string? cell = null, string? pad = null, int? playerCount = null)
     {
-        int i = 0;
         if (cell != null)
-            Core.Jump(cell, pad ?? "Left");
-
-        string[] players = Players();
-        int partySize = playerCount ?? players.Length;
-
-        while (
-            !Bot.ShouldExit
-            && (
-                cell != null && Bot.Map.CellPlayers != null && Bot.Map.CellPlayers.Count > 0
-                    ? Bot.Map.CellPlayers.Count
-                    : Bot.Map.PlayerCount
-            ) != partySize
-        )
         {
-            Bot.Sleep(500);
-            i++;
+            Bot.Map.Jump(cell, pad ?? "Left", false); // Jump to specified cell if provided
+        }
 
-            if (i >= 6)
+        Core.Logger($"Final list of players: {string.Join(", ", Players())}");
+
+        // Wait for party players to be ready
+        while (!Bot.ShouldExit &&
+               cell != null && Bot.Map.CellPlayers != null &&
+               Bot.Map.PlayerNames.Count != Players().Length)
+        {
+            // Sleep briefly before checking again
+           Core.Sleep();
+
+            // Check if we are waiting in a specific cell and if there are players present
+            if (cell != null && Bot.Map.PlayerNames != null && Bot.Map.PlayerNames.Count > 0)
             {
-                if (cell != null && Bot.Map.PlayerNames != null && Bot.Map.PlayerNames.Count > 0)
+                List<string> missingPlayers = Players().Except(Bot.Map.PlayerNames).ToList();
+
+                // Check for bugged lobby condition - Fail safe
+                if (missingPlayers.Count == 1 && missingPlayers[0] == Core.Username())
                 {
-                    List<string> missingPlayers = players.Except(Bot.Map.PlayerNames).ToList();
-                    if (missingPlayers.Count == 1 && missingPlayers[0] == Bot.Player.Username)
-                    {
-                        Core.Logger("Bugged lobby, we were the only one missing?");
-                        break;
-                    }
-                    if (Bot.Map.CellPlayers != null)
-                        Core.Logger($"[{Bot.Map.CellPlayers.Count}/{partySize}]");
-                    else
-                        Core.Logger("CellPlayers is null.");
-                    // Core.Logger(
-                    //     $"[{Bot.Map.CellPlayers.Count()}/{partySize}] Waiting for {String.Join(" & ", missingPlayers)}"
-                    // );
+                    Core.Logger("Bugged lobby: we are the only one missing?");
+                    break;
                 }
-                else
+
+                // Log player status if there are missing players
+                if (missingPlayers.Count > 0)
                 {
-                    Core.Logger(
-                        $"[{Bot.Map.PlayerCount}/{partySize}] Waiting for the rest of the party"
-                    );
+                    Bot.Log($"[Players Ready: {Bot.Map.PlayerNames.Count}/{Players().Length}] Missing: {string.Join(", ", missingPlayers)}");
                 }
-                i = 0;
             }
         }
-        // This was never used, so I commented it out
-        // void PlayerAFK()
-        // {
-        //     Core.Logger("Anti-AFK engaged");
-        //     Core.Sleep(1500);
-        //     Bot.Send.Packet("%xt%zm%afk%1%false%");
-        // }
     }
 
     public string[] Players()
     {
         List<string> players = new();
-        int i = 1;
+        int index = 1;
+
+
         while (!Bot.ShouldExit)
         {
-            try
+            if (Bot.Config == null)
             {
-                if (Bot.Config == null)
-                    break;
-
-                string? player = Bot.Config.Get<string>("player" + i++);
-                if (string.IsNullOrEmpty(player))
-                    break;
-
-                players.Add(player.ToLower().Trim());
-            }
-            catch
-            {
+                Core.Logger("Configuration is null.");
                 break;
             }
+
+            // Retrieve player names from the configuration
+            string? playerName = Bot.Config.Get<string>($"player{index}");
+
+            // Log the retrieved player name or null
+            // Core.Logger($"Retrieved player name for 'player{index}': {playerName ?? "null"}");
+
+            // Check if the player name is valid
+            if (string.IsNullOrEmpty(playerName))
+            {
+                // Core.Logger($"No player found for key 'player{index}'. Stopping retrieval.");
+                break; // Exit if no more players
+            }
+
+            // Add the player's name to the list and log it
+            players.Add(playerName.ToLower().Trim());
+            // Core.Logger($"Added player: {playerName.ToLower().Trim()}");
+
+            index++; // Increment the index after processing
+
+            // Log Final player list
+            // Core.Logger($"Final list of players: {string.Join(", ", players)}");
         }
+
+        // Log the final list of players
+
         return players.ToArray();
     }
 
@@ -900,7 +888,7 @@ public class CoreArmyLite
         Bot.Events.PlayerAFK += PlayerAFK;
         string[] players = Players();
         int partySize = players.Length;
-        List<string> playersWhoHaveBeenHere = new() { Bot.Player.Username };
+        List<string> playersWhoHaveBeenHere = new() { Core.Username() };
         int playerCount = 1;
 
         int logCount = 0;
@@ -1787,5 +1775,14 @@ public class ArmyLogging
             using FileStream fs = File.Open(logFilePath, FileMode.Create, FileAccess.Write);
             // File is truncated and cleared
         }
+    }
+}
+
+// Top-level static class for DateTime extension methods
+public static class DateTimeExtensions
+{
+    public static long ToUnixTimeSeconds(this DateTime dateTime)
+    {
+        return (long)(dateTime - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds;
     }
 }
