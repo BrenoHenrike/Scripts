@@ -2273,7 +2273,10 @@ public class CoreBots
             Join(map, cell, pad, publicRoom: publicRoom);
         Bot.Wait.ForActionCooldown(GameActions.Transfer);
         if (Bot.Player.Cell != cell)
-            Jump(cell, pad);
+        {
+            Bot.Map.Jump(cell, pad, autoCorrect: false);
+            Bot.Wait.ForCellChange(cell);
+        }
 
         Bot.Options.AggroAllMonsters = false;
         Bot.Options.AggroMonsters = false;
@@ -2306,7 +2309,7 @@ public class CoreBots
                 {
                     while (!Bot.ShouldExit && Bot.Player.Cell != cell)
                     {
-                        Jump(cell, pad);
+                        Bot.Map.Jump(cell, pad, autoCorrect: false);
                         Bot.Wait.ForCellChange(cell);
                     }
                     if (!Bot.Combat.StopAttacking)
@@ -2374,7 +2377,10 @@ public class CoreBots
 
         // Ensure the player is in the correct cell
         if (Bot.Player.Cell != cell)
-            Jump(cell, pad);
+        {
+            Bot.Map.Jump(cell, pad, autoCorrect: false);
+            Bot.Wait.ForCellChange(cell);
+        }
 
         // Set bot options for monster aggression
         Bot.Options.AggroAllMonsters = false;
@@ -2394,7 +2400,7 @@ public class CoreBots
             if (log) Logger(message);
             while (!Bot.ShouldExit && Bot.Player.Cell != cell)
             {
-                Jump(cell, pad);
+                Bot.Map.Jump(cell, pad, autoCorrect: false);
                 Bot.Wait.ForCellChange(cell);
             }
             Bot.Player.SetSpawnPoint();
@@ -2491,7 +2497,10 @@ public class CoreBots
 
         // Ensure the player is in the correct cell
         if (Bot.Player.Cell != cell)
-            Jump(cell, pad);
+        {
+            Bot.Map.Jump(cell, pad, autoCorrect: false);
+            Bot.Wait.ForCellChange(cell);
+        }
 
         // Set bot options for monster aggression
         Bot.Options.AggroAllMonsters = false;
@@ -2511,7 +2520,7 @@ public class CoreBots
             if (log) Logger(message);
             while (!Bot.ShouldExit && Bot.Player.Cell != cell)
             {
-                Jump(cell, pad);
+                Bot.Map.Jump(cell, pad, autoCorrect: false);
                 Bot.Wait.ForCellChange(cell);
             }
             Bot.Player.SetSpawnPoint();
@@ -2693,7 +2702,7 @@ public class CoreBots
             if (log) Logger(message);
             while (!Bot.ShouldExit && Bot.Player.Cell != cell)
             {
-                Jump(cell, pad);
+                Bot.Map.Jump(cell, pad, autoCorrect: false);
                 Bot.Wait.ForCellChange(cell);
             }
             Bot.Player.SetSpawnPoint();
@@ -4544,7 +4553,7 @@ public class CoreBots
         {
             // Bot.Send.Packet($"%xt%zm%moveToCell%{Bot.Map.RoomID}%{cell}%{pad}%");
             Bot.Map.Jump(cell, pad, false);
-            Bot.Wait.ForTrue(() => Bot.Player.Cell == cell, 20);
+            Bot.Wait.ForCellChange(cell);
             Sleep();
 
             if (Bot.Player.Cell == cell)
@@ -5184,7 +5193,8 @@ public class CoreBots
                     WriteFile(ButlerLogPath(), Bot.Map.FullName);
             }
 
-            Jump(cell, pad);
+            Bot.Map.Jump(cell, pad, autoCorrect: false);
+            Bot.Wait.ForCellChange(cell);
             Sleep(1500);
         }
 
@@ -5248,6 +5258,7 @@ public class CoreBots
                             else
                                 Bot.Map.Jump(cell, pad, false);
                             Sleep(Bot.Options.ActionDelay);
+                            Bot.Wait.ForCellChange(cell);
                         }
                         break;
                     }
@@ -5420,7 +5431,7 @@ public class CoreBots
             {
                 if (!string.IsNullOrEmpty(cell))
                 {
-                    Jump(cell);
+                    Bot.Map.Jump(cell, pad, false);
                     Bot.Wait.ForCellChange(cell);
                 }
 
@@ -5444,7 +5455,8 @@ public class CoreBots
         cell = Bot.Map.Cells.FirstOrDefault(c => c.Equals(cell, StringComparison.OrdinalIgnoreCase)) ?? cell;
         pad = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(pad.ToLower());
 
-        Jump(cell, pad);
+        Bot.Map.Jump(cell, pad, autoCorrect: false);
+        Bot.Wait.ForCellChange(cell);
         GC.Collect();
     }
 
