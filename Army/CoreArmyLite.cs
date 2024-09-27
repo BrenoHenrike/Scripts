@@ -636,10 +636,12 @@ public class CoreArmyLite
 
     /// <summary>
     /// Generates a unique 5-digit room number based on the machine name,
-    /// username, and a fixed date reference. The output is deterministic
-    /// for a given machine and user, ensuring no leading zeros.
+    /// username, and the current date and time (with a 5-hour offset). The 
+    /// output is deterministic for a given machine and user, ensuring no 
+    /// leading zeros in the returned integer.
     /// </summary>
-    /// <returns>A unique 5-digit integer room number that does not start with a zero.</returns>
+    /// <returns>A unique 5-digit integer room number that does not start 
+    /// with a zero.</returns>
     public int getRoomNr()
     {
         // Combine machine name, username, and fixed date for uniqueness
@@ -798,11 +800,17 @@ public class CoreArmyLite
 
     /// <summary>
     /// Waits for the party members to join the specified cell in the game.
-    /// If no cell is specified, it checks the current cell for the required player count.
+    /// If no cell is specified, it checks the current cell for the required 
+    /// player count. The method logs the final list of players and monitors 
+    /// the player status until the expected number of players is present or 
+    /// a bugged lobby condition is detected.
     /// </summary>
-    /// <param name="cell">The cell to jump to, if specified.</param>
-    /// <param name="pad">The direction to pad when jumping to the cell; defaults to "Left".</param>
-    /// <param name="playerCount">The expected number of players in the party; defaults to the current player count.</param>
+    /// <param name="cell">The cell to jump to, if specified. If null, the 
+    /// current cell is used.</param>
+    /// <param name="pad">The direction to pad when jumping to the cell; 
+    /// defaults to "Left".</param>
+    /// <param name="playerCount">The expected number of players in the 
+    /// party; defaults to the current player count.</param>
     public void waitForPartyCell(string? cell = null, string? pad = null, int? playerCount = null)
     {
         if (cell != null)
@@ -818,7 +826,7 @@ public class CoreArmyLite
                Bot.Map.PlayerNames.Count != Players().Length)
         {
             // Sleep briefly before checking again
-           Core.Sleep();
+            Core.Sleep();
 
             // Check if we are waiting in a specific cell and if there are players present
             if (cell != null && Bot.Map.PlayerNames != null && Bot.Map.PlayerNames.Count > 0)
