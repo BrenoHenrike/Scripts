@@ -1295,7 +1295,7 @@ public class CoreFarms
         while (!Bot.ShouldExit && FactionRank("BeastMaster") < 4)
         {
             Core.EnsureAccept(3755);
-            Core.HuntMonster("bamboo", "Tanuki", "Secret Scrolls of Beast Commanding", 7, log: false);
+            Core.HuntMonster("bamboo", "Tanuki", "Secret Scroll of Beast Commanding", 7, log: false);
             Core.HuntMonster("pines", "Pine Troll", "Troll's Treatise on Beasts", log: false);
             Core.EnsureComplete(3755);
         }
