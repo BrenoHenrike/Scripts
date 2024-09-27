@@ -390,7 +390,7 @@ public class CoreFarms
                 while (NotYetLevel(75))
                 {
                     Core.ByPassCheck();
-                    Core.KillMonster("icestormarena", NotYetLevel(65) ? "17" : NotYetLevel(70) ? "r18" : "r20", "Left", "*", log: false, publicRoom: true);
+                    Core.KillMonster("icestormarena", NotYetLevel(65) ? "r17" : NotYetLevel(70) ? "r18" : "r20", "Left", "*", log: false, publicRoom: true);
                 }
             }
             else
