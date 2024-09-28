@@ -180,12 +180,12 @@ public class CoreArmyLite
         }
     }
 
-    public void AggroMonStart(string? map = null, string _cell = null, string _pad = null)
+    public void AggroMonStart(string? map = null, string? _cell = null, string? _pad = null)
     {
         if (aggroCTS is not null)
             AggroMonStop();
 
-        Bot.Config.Get<string>(player1);
+        Bot.Config!.Get<string>(player1);
         Bot.Config.Get<string>(player2);
         Bot.Config.Get<string>(player3);
         Bot.Config.Get<string>(player4);
@@ -820,8 +820,10 @@ public class CoreArmyLite
 
         // Wait for party players to be ready
         while (!Bot.ShouldExit &&
-               cell != null && Bot.Map.CellPlayers != null &&
-               Bot.Map.PlayerNames.Count != Players().Length)
+       cell != null &&
+       Bot.Map.CellPlayers != null &&
+       Bot.Map.PlayerNames != null && // Add null check for PlayerNames
+       Bot.Map.PlayerNames.Count != Players().Length)
         {
             // Sleep briefly before checking again
             Core.Sleep();
