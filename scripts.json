@@ -539,7 +539,7 @@
       "custom"
     ],
     "path": "Army/0AggroMonReader.cs",
-    "size": 5418,
+    "size": 5413,
     "fileName": "0AggroMonReader.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/0AggroMonReader.cs"
   },
@@ -552,7 +552,7 @@
       "army"
     ],
     "path": "Army/0CustomAggroMon.cs",
-    "size": 11049,
+    "size": 11044,
     "fileName": "0CustomAggroMon.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/0CustomAggroMon.cs"
   },
@@ -3203,7 +3203,7 @@
       "null"
     ],
     "path": "Templates/CustomAggromonTemplate.cs",
-    "size": 1316,
+    "size": 1311,
     "fileName": "CustomAggromonTemplate.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Templates/CustomAggromonTemplate.cs"
   },
@@ -9403,7 +9403,7 @@
       "army"
     ],
     "path": "Army/ArmyLegion/ArmyObsidianRock.cs",
-    "size": 1427,
+    "size": 1469,
     "fileName": "ArmyObsidianRock.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyLegion/ArmyObsidianRock.cs"
   },
@@ -24196,7 +24196,7 @@
       "chaos"
     ],
     "path": "Army/ArmyFarm/Rep/ArmyChaosRep.cs",
-    "size": 1646,
+    "size": 1623,
     "fileName": "ArmyChaosRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/ArmyChaosRep.cs"
   },
