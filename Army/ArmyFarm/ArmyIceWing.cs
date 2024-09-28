@@ -61,7 +61,7 @@ public class IceWingLevelingArmy
         Core.RegisterQuests(Core.IsMember ? 6635 : 6632);
         while (!Bot.ShouldExit)
         {
-            if (Bot.Map.PlayerNames.Count < Army.Players().Length)
+            if (Bot.Map.PlayerNames != null && Bot.Map.PlayerNames.Count < Army.Players().Length)
                 break;
 
             while (!Bot.ShouldExit && !Bot.Player.Alive)
@@ -85,7 +85,7 @@ public class IceWingLevelingArmy
             Bot.Combat.Attack("*");
             Core.Sleep();
         }
-        if (!Bot.ShouldExit && Bot.Map.PlayerNames.Count < Army.Players().Length)
+        if (!Bot.ShouldExit && Bot.Map.PlayerNames != null && Bot.Map.PlayerNames.Count < Army.Players().Length)
         {
             while (!Bot.ShouldExit && PlayerTakingDmg())
             {
