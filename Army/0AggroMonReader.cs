@@ -29,9 +29,8 @@ public class AggroMonReader
         sArmy.player5,
         sArmy.player6,
         sArmy.player7,
-        sArmy.player8,
-        sArmy.player9,
-        sArmy.player10,
+        sArmy.packetDelay,
+        CoreBots.Instance.SkipOptions
     };
 
     public void ScriptMain(IScriptInterface bot)

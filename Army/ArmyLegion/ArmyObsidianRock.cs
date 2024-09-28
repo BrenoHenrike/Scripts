@@ -27,7 +27,8 @@ public class Generated_ArmyObsidianRock
         sArmy.player5,
         sArmy.player6,
         sArmy.player7,
-        sArmy.player8,
+        sArmy.packetDelay,
+        CoreBots.Instance.SkipOptions
     };
 
     public void ScriptMain(IScriptInterface Bot)
