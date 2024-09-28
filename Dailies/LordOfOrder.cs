@@ -33,27 +33,14 @@ public class LordOfOrder
 
     public void GetLoO(bool rankUpClass = true, bool getExtras = false)
     {
-        // Check if the daily quest is complete and the item is not in inventory
-        if (!Core.CheckInventory(50741) && Bot.Quests.IsDailyComplete(7156))
-        {
-            Core.Logger("Daily Quest unavailable right now");
-            return;
-        }
-
         // Check if the item is already in inventory or if extras are needed
         if ((Core.CheckInventory(50741, toInv: false) && !getExtras) ||
             (getExtras && Core.CheckInventory(Core.QuestRewards(7165), toInv: false)))
         {
-            Adv.RankUpClass("Lord Of Order");
-            Core.Logger("All desired rewards owned for LOO.");
-            return;
-        }
-
-        // Rank up class if the item is in inventory and rank up is required
-        if (rankUpClass && Core.CheckInventory(50741))
-        {
-            Core.Logger("LOO owned, Leveling it");
-            Adv.RankUpClass("Lord Of Order");
+            if (rankUpClass)
+                Adv.RankUpClass("Lord Of Order");
+            if (getExtras)
+                Core.Logger("All desired rewards owned for LOO.");
             return;
         }
 
