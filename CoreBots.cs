@@ -4997,7 +4997,7 @@ public class CoreBots
 
             case "collection":
                 JumpWait();
-                Bot.Map.Join(PrivateRooms ? $"{map}-" + PrivateRoomNumber : map, "Begin", "Spawn");
+                Bot.Map.Join(PrivateRooms ? $"{map}-" + PrivateRoomNumber : map, "Begin", "Spawn", autoCorrect: false);
                 Bot.Wait.ForMapLoad("collection");
                 break;
 
@@ -5024,7 +5024,7 @@ public class CoreBots
                 Bot.Send.Packet($"%xt%zm%serverUseItem%{Bot.Map.RoomID}%+%5041%525,275%{(PrivateRooms ? (map + "-" + PrivateRoomNumber) : map)}%");
                 Bot.Wait.ForMapLoad("hyperium");
                 Jump("R10");
-                Bot.Map.Join(PrivateRooms ? $"{map}-" + PrivateRoomNumber : strippedMap);
+                Bot.Map.Join(PrivateRooms ? $"{map}-" + PrivateRoomNumber : strippedMap, autoCorrect: false);
                 Bot.Wait.ForMapLoad(strippedMap);
                 Sleep();
                 Bot.Wait.ForItemEquip(8733);
@@ -5036,11 +5036,11 @@ public class CoreBots
                 Bot.Send.Packet($"%xt%zm%serverUseItem%{Bot.Map.RoomID}%+%5041%525,275%{(PrivateRooms ? ("hyperium-" + PrivateRoomNumber) : "hyperium")}%");
                 Bot.Wait.ForMapLoad("hyperium");
                 Jump("R10");
-                Bot.Map.Join(PrivateRooms ? "moonyard-" + PrivateRoomNumber : "moonyard");
+                Bot.Map.Join(PrivateRooms ? "moonyard-" + PrivateRoomNumber : "moonyard", autoCorrect: false);
                 Bot.Wait.ForMapLoad("moonyard");
                 Bot.Wait.ForItemEquip("j5");
                 SimpleQuestBypass((28, 35));
-                Bot.Map.Join(PrivateRooms ? $"{map}-" + PrivateRoomNumber : map);
+                Bot.Map.Join(PrivateRooms ? $"{map}-" + PrivateRoomNumber : map, autoCorrect: false);
                 Bot.Wait.ForMapLoad(strippedMap);
                 break;
 
@@ -5059,7 +5059,7 @@ public class CoreBots
 
             case "icestormarena":
                 JumpWait();
-                Bot.Map.Join(PrivateRooms ? $"{map}-" + PrivateRoomNumber : map);
+                Bot.Map.Join(PrivateRooms ? $"{map}-" + PrivateRoomNumber : map, autoCorrect: false);
                 Bot.Wait.ForMapLoad("icestormarena");
                 Bot.Send.ClientPacket("{\"t\":\"xt\",\"b\":{\"r\":-1,\"o\":{\"cmd\":\"levelUp\",\"intExpToLevel\":\"0\",\"intLevel\":100}}}", type: "json");
                 Sleep();
@@ -5110,7 +5110,7 @@ public class CoreBots
             case "buyhouse":
                 Logger("This is a public map.. and non-privateable, so blame ae for that.. tho its required for some things so this will be forced public");
                 JumpWait();
-                Bot.Map.Join(map);
+                Bot.Map.Join(map, autoCorrect: false);
                 Bot.Wait.ForMapLoad(map);
                 break;
             #endregion BuyHouse (for a merge)
@@ -5142,7 +5142,7 @@ public class CoreBots
                 {
                     Logger("You've Chosen to bot publicly... good luck in this *public only* map.");
                     JumpWait();
-                    Bot.Map.Join(map);
+                    Bot.Map.Join(map, autoCorrect: false);
                     Bot.Wait.ForMapLoad(map);
                 }
                 break;
@@ -5240,9 +5240,9 @@ public class CoreBots
                     if (Bot.Options.SafeTimings)
                         Bot.Wait.ForActionCooldown(GameActions.Transfer);
                     if (hasMapNumber)
-                        Bot.Map.Join(map, cell, pad, ignoreCheck);
+                        Bot.Map.Join(map, cell, pad, ignoreCheck, autoCorrect: false);
                     else
-                        Bot.Map.Join((publicRoom && PublicDifficult) || !PrivateRooms ? map : $"{map}-{PrivateRoomNumber}", cell, pad, ignoreCheck);
+                        Bot.Map.Join((publicRoom && PublicDifficult) || !PrivateRooms ? map : $"{map}-{PrivateRoomNumber}", cell, pad, ignoreCheck, autoCorrect: false);
                     Bot.Wait.ForMapLoad(strippedMap);
 
                     // Exponential Backoff
@@ -5594,7 +5594,7 @@ public class CoreBots
 
         for (int i = 0; i < 20; i++)
         {
-            Bot.Map.Join(!PrivateRooms ? map : $"{map}-{PrivateRoomNumber}");
+            Bot.Map.Join(!PrivateRooms ? map : $"{map}-{PrivateRoomNumber}", autoCorrect: false);
             Bot.Wait.ForMapLoad(map);
 
             string? currentMap = Bot.Map.Name;
