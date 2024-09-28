@@ -63,8 +63,8 @@ public class SevenCircles
         Circles();
 
         Core.AddDrop("Essence of Treachery", "Essence of Violence", "Souls of Heresy", "Essence of Wrath");
-
         //Guards of Wrath
+        Core.EquipClass(ClassType.Farm);
         Story.KillQuest(7979, "sevencircleswar", "Wrath Guard");
         //War Medals
         Story.KillQuest(7980, "sevencircleswar", "Wrath Guard");
@@ -76,20 +76,25 @@ public class SevenCircles
 
         // Bot.Events.CellChanged += CutSceneFixer;
         //Wrath Against the Machine  
+        Core.EquipClass(ClassType.Solo);
         Story.KillQuest(7982, "sevencircleswar", "Wrath");
         //Blasphemy? Blasphe-you!
+        Core.EquipClass(ClassType.Farm);
         Story.KillQuest(7983, "sevencircleswar", "Heresy Guard");
         //Violence's Gatekeeper
         Story.KillQuest(7984, "sevencircleswar", "Violence's Gatekeeper");
         //Meaningless Violence
         Story.KillQuest(7985, "sevencircleswar", "Violence Guard");
         //Geryon, Not Gary On!
+        Core.EquipClass(ClassType.Solo);
         Story.KillQuest(7986, "sevencircleswar", "Geryon");
         //Violence
         Story.KillQuest(7987, "sevencircleswar", "Violence");
         //Where the Trea-sun Don't Shine
+        Core.EquipClass(ClassType.Farm);
         Story.KillQuest(7988, "sevencircleswar", "Treachery Guard");
         //Hanged for Treason
+        Core.EquipClass(ClassType.Solo);
         Story.KillQuest(7989, "sevencircleswar", "Treachery");
 
         if (excludeBoss)
