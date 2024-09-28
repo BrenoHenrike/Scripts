@@ -1169,8 +1169,10 @@ public class CoreArmyLite
 
         while (!Bot.ShouldExit)
         {
+            // Try to /goto the player
             if (!tryGoto(playerName))
             {
+                // Handle combat disengagement if we are in combat
                 while (!Bot.ShouldExit && (Bot.Player.HasTarget || Bot.Player.InCombat))
                 {
                     Bot.Options.AttackWithoutTarget = false;
@@ -1179,22 +1181,23 @@ public class CoreArmyLite
                     Core.JumpWait();
                 }
 
-                // Do these things if that fails
+                // Join fallback map if /goto fails
                 string stopLocation = Core.CustomStopLocation?.Trim().ToLower() ?? string.Empty;
-                if (!string.IsNullOrWhiteSpace(stopLocation))
-                    Core.Join(stopLocation, "Enter", "Spawn", false, false);
-                else Core.Join("whitemap");
+                Core.Join(!string.IsNullOrWhiteSpace(stopLocation) ? stopLocation : "whitemap");
 
-                Core.Logger($"Could not find {playerName}. Check if \"{playerName}\" is in the same server with you.", "tryGoto");
+                // Log failure and prepare for hibernation
+                Core.Logger($"Could not find {playerName}. Ensure they are on the same server.", "tryGoto");
                 if (b_shouldHibernate)
-                    Core.Logger($"The bot will now hibernate and try to /goto to {playerName} every {hibernateTimer} seconds.", "tryGoto");
+                    Core.Logger($"Bot will hibernate and retry every {hibernateTimer} seconds.", "tryGoto");
 
-                int min = 1;
+                int elapsedMinutes = 0;
+
+                // Enter hibernation retry loop
                 while (!Bot.ShouldExit)
                 {
-                    // Wait {hibernateTimer} seconds
                     if (b_shouldHibernate)
                     {
+                        // Sleep for the hibernate period
                         for (int t = 0; t < hibernateTimer; t++)
                         {
                             Core.Sleep(1000);
@@ -1203,34 +1206,63 @@ public class CoreArmyLite
                         }
                     }
 
-                    // Try again
+                    // Retry /goto after hibernation
                     if (tryGoto(playerName))
                     {
-                        Core.Logger(playerName + " found!");
+                        Core.Logger($"{playerName} found!");
                         break;
                     }
-                    min += hibernateTimer;
 
-                    // Log every 5 minutes
-                    if (min >= 300)
+                    // Increment elapsed minutes and log every 5 minutes
+                    elapsedMinutes += hibernateTimer;
+                    if (elapsedMinutes >= 300)
                     {
-                        Core.Logger($"The bot has been hibernating for {min / 300} minutes");
-                        min = 0;
+                        Core.Logger($"Bot has been hibernating for {elapsedMinutes / 60} minutes.");
+                        elapsedMinutes = 0;
                     }
                 }
             }
+
+            // Check for break on specific map
             if (b_breakOnMap != null && b_breakOnMap == Bot.Map.Name)
             {
                 b_breakOnMap = null;
                 break;
             }
             #region Combat Area
-            if (Bot.Monsters.MapMonsters.Any(x => x != null && x.Cell == Bot.Player.Cell))
-                PriorityAttack();
+            // Check if there are monsters in the same cell
+            // Loop until the bot is instructed to exit
+            while (!Bot.ShouldExit && tryGoto(playerName))
+            {
+                if (tryGoto(playerName))
+                {
+                    // Check for priority attacks or available monsters
+                    if (!string.IsNullOrEmpty(attackPriority))
+                    {
+                        if (!Bot.Combat.StopAttacking)
+                            PriorityAttack();
+                    }
+                    else
+                    {
+                        if (!Bot.Combat.StopAttacking)
+                            Bot.Combat.Attack("*"); // Attack any monster if no priority exists}
+                        Core.Sleep(); // Pause to avoid busy waiting
+                    }
+                }
+                else
+                {
+                    Bot.Combat.StopAttacking = true;
+                    Core.JumpWait();
+                    Core.Logger("Player Moved Cells/maps");
+                    break;
+                }
+
+            }
             #endregion Combat Area
         }
         ButlerStop();
     }
+
     private string? b_playerName = null;
     private bool b_doLockedMaps = true;
     private bool b_doCopyWalk = false;
@@ -1546,33 +1578,28 @@ public class CoreArmyLite
 
     public void PriorityAttack()
     {
-        bool priorityMonsterFound = false; // Flag to indicate if a priority monster has been found and attacked
-
-        if (_attackPriority != null && _attackPriority.Count > 0)
+        // If there's an attack priority list, search for a priority monster to attack
+        if (_attackPriority?.Count > 0)
         {
             foreach (string mon in _attackPriority)
             {
-                if (mon != null)
+                string formattedMonName = mon.FormatForCompare();
+
+                // Find the first matching priority monster in the same cell
+                Monster? priorityMonster = Bot.Monsters.CurrentMonsters
+                    .FirstOrDefault(m => m.Name?.FormatForCompare() == formattedMonName && m.Cell == Bot.Player.Cell);
+
+                if (priorityMonster != null)
                 {
-                    // Attempt to find a monster from the priority list in the same cell as the player
-                    Monster? _mon = Bot.Monsters.CurrentMonsters.Find(m => m.Name != null && m.Name.FormatForCompare() == mon.FormatForCompare() && m.Cell == Bot.Player.Cell);
-                    if (_mon != null)
-                    {
-                        Bot.Combat.Attack(_mon); // Attack the found priority monster
-                        priorityMonsterFound = true; // Set the flag to true
-                        break; // Exit the loop as we've found and attacked a priority monster
-                    }
+                    Bot.Combat.Attack(priorityMonster); // Attack the priority monster
+                    Core.Sleep(); // Pause after attacking
+                    return; // Exit if a priority monster was found and attacked
                 }
             }
         }
 
-        // If no priority monster was found and attacked, attack any monster
-        if (!priorityMonsterFound)
-        {
-            Bot.Combat.Attack("*");
-        }
-
-        Core.Sleep(); // Sleep after the attack actions
+        // If no priority monster was found, attack any available monster
+        Bot.Combat.Attack("*");
     }
 
     private async void MapNumberParses(string map)
