@@ -580,9 +580,11 @@ public class CoreAdvanced
     /// <param name="gearRestore"></param>
     public void RankUpClass(string className, bool gearRestore = true)
     {
-        Bot.Wait.ForTrue(() => Bot.Inventory.Contains(className), 20);
+        InventoryItem? itemInv = Bot.Inventory.Items.Concat(Bot.Bank.Items).Find(i => i.Name.Equals(className, StringComparison.Ordinal) && i.Category == ItemCategory.Class);
 
-        InventoryItem? itemInv = Bot.Inventory.Items.Find(i => i.Name.Equals(className, StringComparison.Ordinal) && i.Category == ItemCategory.Class);
+        if (itemInv != null && itemInv.Quantity < 302500)
+            Bot.Wait.ForBankToInventory(className);
+        else Bot.Wait.ForTrue(() => Bot.Inventory.Contains(className), 20);
 
         if (itemInv == null)
         {
