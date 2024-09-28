@@ -183,6 +183,7 @@ public class CoreIsleOfFotia
         Story.MapItemQuest(3038, "Judgement", 1914);
 
         //Judged on Performance 3039
+        Bot.Lite.DisableMonsterAnimation = true;
         Story.KillQuest(3039, "Judgement", "Rhadamanthys");
 
         //Judged on Undead Legion Standards 3040
@@ -193,6 +194,7 @@ public class CoreIsleOfFotia
 
         //Challenged Allegiance to Dage 3042
         Story.KillQuest(3042, "Judgement", "Ultra Aeacus");
+        Bot.Lite.DisableMonsterAnimation = false;
 
     }
 
