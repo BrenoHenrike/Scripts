@@ -196,9 +196,8 @@ public class CoreArmyLite
         Bot.Config.Get<string>(player9);
         Bot.Config.Get<string>(player10);
 
-        string[] players = Players();
-        int partySize = players.Length;
-        Core.Logger($"Part Size: {(partySize > 0 ? partySize.ToString() : "0")}");
+        int partySize = Players().Length;
+        Core.Logger($"Part Size: {Players().Length}");
 
         if (map != null)
         {
@@ -829,7 +828,7 @@ public class CoreArmyLite
             Core.Sleep();
 
             // Check if we are waiting in a specific cell and if there are players present
-            if (cell != null && Bot.Map.PlayerNames != null && Bot.Map.PlayerNames.Count > 0)
+            if (cell != null && Bot.Map.PlayerNames != null && Bot.Map.PlayerNames.Count() > 0)
             {
                 List<string> missingPlayers = Players().Except(Bot.Map.PlayerNames).ToList();
 
@@ -843,7 +842,7 @@ public class CoreArmyLite
                 // Log player status if there are missing players
                 if (missingPlayers.Count > 0)
                 {
-                    Bot.Log($"[Players Ready: {Bot.Map.PlayerNames.Count}/{Players().Length}] Missing: {string.Join(", ", missingPlayers)}");
+                    Bot.Log($"[Players Ready: {Bot.Map.PlayerNames.Count()}/{Players().Length}] Missing: {string.Join(", ", missingPlayers)}");
                 }
             }
         }
