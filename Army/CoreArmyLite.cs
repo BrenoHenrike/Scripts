@@ -678,7 +678,6 @@ public class CoreArmyLite
         return int.Parse(roomNumberStr);
     }
 
-
     /// <summary>
     /// Spreads players around the input cells, if no cells are set - will spread to any cell that has a monster in it. 
     /// If player count is more than cell count, will add players to the cells listed in order. Example: c1: P1 + P4, c2: P2, c3: P3
@@ -853,7 +852,7 @@ public class CoreArmyLite
         List<string> players = new();
         int index = 1;
 
-        while (!Bot.ShouldExit && index <= 10) // Stop when index exceeds 10
+        while (!Bot.ShouldExit && index <= 20) // Stop when index exceeds 20
         {
             if (Bot.Config == null)
             {
