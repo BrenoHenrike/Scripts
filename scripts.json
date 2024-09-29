@@ -6,7 +6,7 @@
       "null"
     ],
     "path": "CoreDailies.cs",
-    "size": 52677,
+    "size": 52760,
     "fileName": "CoreDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreDailies.cs"
   },
@@ -14483,6 +14483,39 @@
     "size": 4000,
     "fileName": "CommitedMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/CommitedMerge.cs"
+  },
+  {
+    "name": "Aranxs Azalith Rewards Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Aranxs Azalith Rewards Merge [2488] in /apexazalith",
+    "tags": [
+      "aranxs",
+      "azalith",
+      "rewards",
+      "merge",
+      "apexazalith",
+      "akhas",
+      "wings",
+      "akha",
+      "companion",
+      "spear",
+      "shield",
+      "celestial",
+      "wanderer",
+      "annals",
+      "runic",
+      "choir",
+      "wanderers",
+      "sceptre",
+      "scythe",
+      "infernal",
+      "maahnas",
+      "robes",
+      "freed"
+    ],
+    "path": "Other/MergeShops/AranxsAzalithRewardsMerge.cs",
+    "size": 7049,
+    "fileName": "AranxsAzalithRewardsMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/AranxsAzalithRewardsMerge.cs"
   },
   {
     "name": "GooseMerge",
