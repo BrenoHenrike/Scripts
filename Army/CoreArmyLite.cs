@@ -1235,7 +1235,7 @@ public class CoreArmyLite
             #region Combat Area
             // Check if there are monsters in the same cell
             // Loop until the bot is instructed to exit
-            while (!Bot.ShouldExit && tryGoto(playerName))
+            while (!Bot.ShouldExit)
             {
                 // Check for priority attacks or available monsters
                 if (!string.IsNullOrEmpty(attackPriority))
