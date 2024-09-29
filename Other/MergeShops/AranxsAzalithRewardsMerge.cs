@@ -82,9 +82,9 @@ public class AranxsAzalithRewardsMerge
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.HuntMonsterQuest(9888, new (string? mapName, string? monsterName, ClassType classType)[]
-                                                {
-                                                    ("champazalith", "Azalith", ClassType.Solo)
-                                                });
+                        {
+                            ("champazalith", "Azalith", ClassType.Solo)
+                        });
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
