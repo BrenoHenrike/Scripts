@@ -1237,20 +1237,29 @@ public class CoreArmyLite
             // Loop until the bot is instructed to exit
             while (!Bot.ShouldExit && tryGoto(playerName))
             {
-                // Check for priority attacks or available monsters
-                if (!string.IsNullOrEmpty(attackPriority))
+                if (tryGoto(playerName))
                 {
-                    // if (!Bot.Combat.StopAttacking)
-                    PriorityAttack();
+                    // Check for priority attacks or available monsters
+                    if (!string.IsNullOrEmpty(attackPriority))
+                    {
+                        if (!Bot.Combat.StopAttacking)
+                            PriorityAttack();
+                    }
+                    else
+                    {
+                        if (!Bot.Combat.StopAttacking)
+                            Bot.Combat.Attack("*"); // Attack any monster if no priority exists}
+                        Core.Sleep(); // Pause to avoid busy waiting
+                    }
                 }
                 else
                 {
-                    // if (!Bot.Combat.StopAttacking)
-                    Bot.Combat.Attack("*"); // Attack any monster if no priority exists}
-                    Core.Sleep(); // Pause to avoid busy waiting
-                }
-                if (!tryGoto(playerName))
+                    Bot.Combat.StopAttacking = true;
+                    Core.JumpWait();
+                    Core.Logger("Player Moved Cells/maps");
                     break;
+                }
+
             }
             #endregion Combat Area
         }
