@@ -2350,7 +2350,7 @@ public class Core13LoC
             Core.Join("confrontation");
             Core.EnsureComplete(3875);
         }
-
+        Core.EquipClass(ClassType.Solo);
         // Defeat Drakath!
         if (!Story.QuestProgression(3876))
         {
