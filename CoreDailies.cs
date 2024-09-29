@@ -74,53 +74,53 @@ public class CoreDailies
 
         if (items != null)
         {
-            List<InventoryItem> invBank = Bot.Inventory.Items.Concat(Bot.Bank.Items).ToList().FindAll(x => items.ToList().Contains(x.Name));
-            int i = 0;
+            var invBank = Bot.Inventory.Items.Concat(Bot.Bank.Items)
+                .Where(x => items.Contains(x.Name)).ToList();
+            int maxCount = 0;
 
-            if (any)
+            foreach (string item in items)
             {
-                foreach (string item in items)
+                var _item = invBank.FirstOrDefault(x => x.Name == item);
+                if (_item != null && _item.Quantity == _item.MaxStack)
                 {
-                    InventoryItem? _item = invBank.Find(x => x.Name == item);
-                    if (_item == null)
-                        continue;
-
-                    if (_item.Quantity == _item.MaxStack)
+                    if (any)
                     {
-                        Core.Logger("You already own the maximum amount of: " + item);
+                        Core.Logger($"You already own the maximum amount of: {item}");
                         return false;
                     }
+                    maxCount++;
                 }
             }
-            else
+
+            if (!any && maxCount == items.Length)
             {
-                foreach (string item in items)
-                {
-                    InventoryItem? _item = invBank.Find(x => x.Name == item);
-                    if (_item == null)
-                        continue;
-
-                    if (_item.Quantity == _item.MaxStack)
-                        i++;
-                }
-
-                if (items.Length == i)
-                {
-                    Core.Logger("You already own the maximum amount of: " + string.Join(',', items));
-                    return false;
-                }
+                Core.Logger($"You already own the maximum amount of: {string.Join(',', items)}");
+                return false;
             }
+
             Bot.Drops.Add(items);
         }
-        var questIds = Enumerable.Range(7156, 10).Concat(Enumerable.Range(3075, 3)).Distinct();
-        foreach (int questId in questIds)
-            Bot.Drops.Add(Core.QuestRewards(questId));
 
-
+        // Handle LOO dailies if quest is in the range
+        if (quest >= 7156 && quest < 7166) // Adjust based on your LOO quest range
         {
-            Core.AddDrop(Core.EnsureLoad(quest).Rewards.Select(x => x.Name).Where(x => !Core.CheckInventory(x, toInv: false)).ToArray());
-            Core.AddDrop(Core.EnsureLoad(quest).Rewards.Select(x => x.Name).ToArray());
+            foreach (int questId in Enumerable.Range(7156, 10).Distinct())
+                if (!Core.isCompletedBefore(questId))
+                    Bot.Drops.Add(Core.QuestRewards(questId));
         }
+
+        // Handle Doom Spins if quest is in the range
+        if (quest >= 3075 && quest < 3078) // Adjust based on your Doom Spin quest range
+        {
+            foreach (int questId in Enumerable.Range(3075, 3).Distinct())
+                Bot.Drops.Add(Core.EnsureLoad(questId).Rewards
+                    .Select(x => x.Name)
+                    .Where(x => !Bot.Inventory.Items.Any(i => i.Name == x) &&
+                                !Bot.Bank.Items.Any(i => i.Name == x))
+                    .ToArray());
+        }
+
+        // Add required items to complete the quest
         Core.AddDrop(Core.EnsureLoad(quest).Requirements.Select(x => x.Name).ToArray());
 
         return true;
