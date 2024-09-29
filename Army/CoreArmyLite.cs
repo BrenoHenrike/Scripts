@@ -1235,13 +1235,22 @@ public class CoreArmyLite
             #region Combat Area
             // Check if there are monsters in the same cell
             // Loop until the bot is instructed to exit
-            while (!Bot.ShouldExit && tryGoto(playerName))
+            while (!Bot.ShouldExit)
             {
+                // Check for priority attacks or available monsters
                 if (!string.IsNullOrEmpty(attackPriority))
+                {
+                    // if (!Bot.Combat.StopAttacking)
                     PriorityAttack();
+                }
                 else
-                    Bot.Combat.Attack("*");
-                Core.Sleep(); // Pause to avoid busy waiting
+                {
+                    // if (!Bot.Combat.StopAttacking)
+                    Bot.Combat.Attack("*"); // Attack any monster if no priority exists}
+                    Core.Sleep(); // Pause to avoid busy waiting
+                }
+                if (!tryGoto(playerName))
+                    break;
             }
             #endregion Combat Area
         }
@@ -1258,13 +1267,12 @@ public class CoreArmyLite
 
     private bool tryGoto(string userName)
     {
-        // // If you're in the same map and same cell, don't do anything
-        // if (Bot.Map.PlayerExists(userName) && Bot.Map.TryGetPlayer(userName, out PlayerInfo? playerObject) && playerObject != null && playerObject.Cell == Bot.Player.Cell)
-        // {
-        //     Bot.Player.Goto(userName);
-        //     if (playerObject.Cell == Bot.Player.Cell)
-        //         return true;
-        // }
+        // If you're in the same map and same cell, don't do anything
+        if (Bot.Map.PlayerExists(userName) && Bot.Map.TryGetPlayer(userName, out PlayerInfo? playerObject) && playerObject != null && playerObject.Cell != Bot.Player.Cell)
+        {
+            Bot.Player.Goto(userName);
+            return true;
+        }
 
         if (b_doLockedMaps)
             Bot.Events.ExtensionPacketReceived += LockedZoneListener;
@@ -1286,19 +1294,10 @@ public class CoreArmyLite
 
             if (Bot.Map.PlayerExists(userName))
             {
-                if (Bot.Map.TryGetPlayer(userName, out PlayerInfo? playerObject) && playerObject != null)
+                if (Bot.Map.TryGetPlayer(userName, out playerObject) && playerObject != null)
                 {
                     if (playerObject.Cell != Bot.Player.Cell)
-                    {
-                        while (!Bot.ShouldExit && playerObject.Cell.ToLower().Contains("cut") &&
-                        playerObject.Cell.ToLower().Contains("wait") &&
-                        playerObject.Cell.ToLower().Contains("blank") &&
-                        playerObject.Cell.ToLower().Contains("out") &&
-                        playerObject.Cell.ToLower().Contains("cutmikoorochi") &&
-                        playerObject.Cell.ToLower().Contains("innitroom"))
-                        { /*just wait*/}
                         Bot.Player.Goto(userName);
-                    }
                     Bot.Player.SetSpawnPoint();
                 }
                 Core.ToggleAggro(true);
