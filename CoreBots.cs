@@ -2419,8 +2419,16 @@ public class CoreBots
             if (Bot.Player.Cell != cell)
                 Jump(cell, pad);
 
-            Bot.Combat.Attack(targetMonsters.FirstOrDefault(x => x != null));
-            Sleep();
+            Monster? monsterToAttack = targetMonsters.FirstOrDefault(x => x != null);
+            if (monsterToAttack != null)
+            {
+                Bot.Combat.Attack(monsterToAttack);
+                Sleep();
+            }
+            else
+            {
+                Logger($"No monsters with ID {MonsterMapID} found in cell {cell}.");
+            }
 
         }
         else
@@ -2446,8 +2454,16 @@ public class CoreBots
                     if (Bot.Player.Cell != cell)
                         Jump(cell, pad);
 
-                    Bot.Combat.Attack(targetMonsters.FirstOrDefault(x => x != null));
-                    Sleep();
+                    Monster? monsterToAttack = targetMonsters.FirstOrDefault(x => x != null);
+                    if (monsterToAttack != null)
+                    {
+                        Bot.Combat.Attack(monsterToAttack);
+                        Sleep();
+                    }
+                    else
+                    {
+                        Logger($"No monsters with ID {MonsterMapID} found in cell {cell}.");
+                    }
 
 
                     if (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant))
@@ -2534,8 +2550,16 @@ public class CoreBots
             if (Bot.Player.Cell != cell)
                 Jump(cell, pad);
 
-            Bot.Combat.Attack(targetMonsters.FirstOrDefault(x => x != null));
-            Sleep();
+            Monster? monsterToAttack = targetMonsters.FirstOrDefault(x => x != null);
+            if (monsterToAttack != null)
+            {
+                Bot.Combat.Attack(monsterToAttack);
+                Sleep();
+            }
+            else
+            {
+                Logger($"No monsters with ID {MonsterMapID} found in cell {cell}.");
+            }
         }
         else
         {
@@ -2552,8 +2576,17 @@ public class CoreBots
                 if (Bot.Player.Cell != cell)
                     Jump(cell, pad);
 
-                Bot.Combat.Attack(targetMonsters.FirstOrDefault(x => x != null));
-                Sleep();
+                Monster? monsterToAttack = targetMonsters.FirstOrDefault(x => x != null);
+                if (monsterToAttack != null)
+                {
+                    Bot.Combat.Attack(monsterToAttack);
+                    Sleep();
+                }
+                else
+                {
+                    Logger($"No monsters with ID {MonsterMapID} found in cell {cell}.");
+                }
+
                 if (isTemp ? Bot.TempInv.Contains(ItemID, quant) : CheckInventory(ItemID, quant))
                     break;
             }
