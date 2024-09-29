@@ -1147,7 +1147,8 @@ public class CoreArmyLite
             3799,   // shadowattack
             4616,   // mummies
             8107,    // downbelow
-            9126    // manacradle
+            9126,    // manacradle
+            5915,    // gluttony
         };
         Bot.Quests.Load(bypasses);
         foreach (int questId in bypasses)
@@ -1269,16 +1270,7 @@ public class CoreArmyLite
         // If you're in the same map and same cell, don't do anything
         if (Bot.Map.PlayerExists(userName) && Bot.Map.TryGetPlayer(userName, out PlayerInfo? playerObject) && playerObject != null && playerObject.Cell != Bot.Player.Cell)
         {
-
-            if (!playerObject.Cell.ToLower().Contains("cut") &&
-    !playerObject.Cell.ToLower().Contains("wait") &&
-    !playerObject.Cell.ToLower().Contains("blank") &&
-    !playerObject.Cell.ToLower().Contains("out") &&
-    !playerObject.Cell.ToLower().Contains("cutmikoorochi") &&
-    !playerObject.Cell.ToLower().Contains("innitroom"))
-            {
-                Bot.Player.Goto(userName);
-            }
+            Bot.Player.Goto(userName);
             return true;
         }
 
