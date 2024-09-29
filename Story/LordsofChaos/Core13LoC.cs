@@ -2356,24 +2356,8 @@ public class Core13LoC
         {
             Core.EnsureAccept(3876);
 
-            while (Bot.Map.Name != "finalbattle")
-            {
-                Core.Join("finalbattle");
-                Core.Sleep();
-            }
+            Core.KillMonster("finalbattle", "r1", "Left", 1, 26875);
 
-            while (Bot.Player.Cell != "r1")
-            {
-                Core.Jump("r1");
-                Core.Sleep();
-            }
-
-            while (!Bot.ShouldExit)
-            {
-                Bot.Kill.Monster(1);
-                if (Core.CheckInventory(26875))
-                    break;
-            }
             Core.EnsureComplete(3876);
         }
 
@@ -2382,24 +2366,7 @@ public class Core13LoC
         {
             Core.EnsureAccept(3877);
 
-            while (Bot.Map.Name != "finalbattle")
-            {
-                Core.Join("finalbattle");
-                Core.Sleep();
-            }
-
-            while (Bot.Player.Cell != "r4")
-            {
-                Core.Jump("r4");
-                Core.Sleep();
-            }
-
-            while (!Bot.ShouldExit)
-            {
-                Bot.Kill.Monster(14);
-                if (Core.CheckInventory(26876))
-                    break;
-            }
+            Core.KillMonster("finalbattle", "r4", "Left", 14, 26876);
 
             Core.EnsureComplete(3877);
         }
@@ -2409,18 +2376,7 @@ public class Core13LoC
         {
             Core.EnsureAccept(3878);
 
-            if (Bot.Map.Name != "finalbattle")
-                Core.Join("finalbattle");
-
-            if (Bot.Player.Cell != "r9")
-                Core.Jump("r9");
-
-            while (!Bot.ShouldExit)
-            {
-                Bot.Kill.Monster(23);
-                if (Core.CheckInventory(26877))
-                    break;
-            }
+            Core.KillMonster("finalbattle", "r9", "Left", 23, 26877);
 
             Core.EnsureComplete(3878);
             Bot.Wait.ForMapLoad("confrontation");
