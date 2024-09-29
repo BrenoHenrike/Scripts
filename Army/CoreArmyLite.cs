@@ -1254,7 +1254,6 @@ public class CoreArmyLite
                 }
                 else
                 {
-                    Bot.Combat.StopAttacking = true;
                     Core.JumpWait();
                     Core.Logger("Player Moved Cells/maps");
                     break;
