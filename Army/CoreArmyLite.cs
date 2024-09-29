@@ -1236,29 +1236,20 @@ public class CoreArmyLite
             // Loop until the bot is instructed to exit
             while (!Bot.ShouldExit && tryGoto(playerName))
             {
-                if (tryGoto(playerName))
+                // Check for priority attacks or available monsters
+                if (!string.IsNullOrEmpty(attackPriority))
                 {
-                    // Check for priority attacks or available monsters
-                    if (!string.IsNullOrEmpty(attackPriority))
-                    {
-                        if (!Bot.Combat.StopAttacking)
-                            PriorityAttack();
-                    }
-                    else
-                    {
-                        if (!Bot.Combat.StopAttacking)
-                            Bot.Combat.Attack("*"); // Attack any monster if no priority exists}
-                        Core.Sleep(); // Pause to avoid busy waiting
-                    }
+                    // if (!Bot.Combat.StopAttacking)
+                    PriorityAttack();
                 }
                 else
                 {
-                    Bot.Combat.StopAttacking = true;
-                    Core.JumpWait();
-                    Core.Logger("Player Moved Cells/maps");
-                    break;
+                    // if (!Bot.Combat.StopAttacking)
+                    Bot.Combat.Attack("*"); // Attack any monster if no priority exists}
+                    Core.Sleep(); // Pause to avoid busy waiting
                 }
-
+                if (!tryGoto(playerName))
+                    break;
             }
             #endregion Combat Area
         }
@@ -1278,7 +1269,16 @@ public class CoreArmyLite
         // If you're in the same map and same cell, don't do anything
         if (Bot.Map.PlayerExists(userName) && Bot.Map.TryGetPlayer(userName, out PlayerInfo? playerObject) && playerObject != null && playerObject.Cell != Bot.Player.Cell)
         {
-            Bot.Player.Goto(userName);
+
+            if (!playerObject.Cell.ToLower().Contains("cut") &&
+    !playerObject.Cell.ToLower().Contains("wait") &&
+    !playerObject.Cell.ToLower().Contains("blank") &&
+    !playerObject.Cell.ToLower().Contains("out") &&
+    !playerObject.Cell.ToLower().Contains("cutmikoorochi") &&
+    !playerObject.Cell.ToLower().Contains("innitroom"))
+            {
+                Bot.Player.Goto(userName);
+            }
             return true;
         }
 
