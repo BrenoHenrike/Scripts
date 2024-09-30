@@ -6,7 +6,7 @@
       "null"
     ],
     "path": "CoreDailies.cs",
-    "size": 52760,
+    "size": 50836,
     "fileName": "CoreDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreDailies.cs"
   },
@@ -17,7 +17,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 264369,
+    "size": 264371,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -1230,7 +1230,7 @@
       "daily"
     ],
     "path": "Other/VampireofVokun.cs",
-    "size": 1549,
+    "size": 1551,
     "fileName": "VampireofVokun.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/VampireofVokun.cs"
   },
@@ -1646,7 +1646,7 @@
       "BLOD"
     ],
     "path": "Dailies/MineCrafting.cs",
-    "size": 2896,
+    "size": 2907,
     "fileName": "MineCrafting.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/MineCrafting.cs"
   },
@@ -3400,7 +3400,7 @@
       "null"
     ],
     "path": "Nation/AssistingCragAndBamboozle[Mem].cs",
-    "size": 6480,
+    "size": 6482,
     "fileName": "AssistingCragAndBamboozle[Mem].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/AssistingCragAndBamboozle[Mem].cs"
   },
@@ -8455,7 +8455,7 @@
       "bow"
     ],
     "path": "Seasonal/LuckyDay/LuckyDayShamrockFairMerge.cs",
-    "size": 13792,
+    "size": 13794,
     "fileName": "LuckyDayShamrockFairMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/LuckyDay/LuckyDayShamrockFairMerge.cs"
   },
@@ -13198,7 +13198,7 @@
       "katanas"
     ],
     "path": "Other/MergeShops/YulgarsDualWieldMerge.cs",
-    "size": 46055,
+    "size": 46057,
     "fileName": "YulgarsDualWieldMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/YulgarsDualWieldMerge.cs"
   },
@@ -14049,7 +14049,7 @@
       "membership"
     ],
     "path": "Other/MergeShops/BoneBreakerMergeShop[MEM].cs",
-    "size": 3851,
+    "size": 3853,
     "fileName": "BoneBreakerMergeShop[MEM].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/BoneBreakerMergeShop[MEM].cs"
   },
@@ -14934,7 +14934,7 @@
       "null"
     ],
     "path": "Other/FarmJoeKits/CoreFarmerJoe.cs",
-    "size": 48803,
+    "size": 48805,
     "fileName": "CoreFarmerJoe.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/CoreFarmerJoe.cs"
   },
@@ -23052,7 +23052,7 @@
       "death victor"
     ],
     "path": "Seasonal/StaffBirthdays/DageTheEvil/UnderVoidBadgesAll.cs",
-    "size": 4838,
+    "size": 4846,
     "fileName": "UnderVoidBadgesAll.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/StaffBirthdays/DageTheEvil/UnderVoidBadgesAll.cs"
   },
@@ -24268,7 +24268,7 @@
       "aegis"
     ],
     "path": "Army/ArmyFarm/Rep/CoreArmyRep.cs",
-    "size": 11928,
+    "size": 11930,
     "fileName": "CoreArmyRep.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/ArmyFarm/Rep/CoreArmyRep.cs"
   },
@@ -25370,7 +25370,7 @@
       "brightoak"
     ],
     "path": "Story/QueenofMonsters/Extra/BrightOak.cs",
-    "size": 13927,
+    "size": 13931,
     "fileName": "BrightOak.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/QueenofMonsters/Extra/BrightOak.cs"
   },
