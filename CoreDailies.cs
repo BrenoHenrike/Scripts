@@ -444,22 +444,17 @@ public class CoreDailies
             Core.Logger("You already own Pryomancer, Skipped");
             return;
         }
-        if (Core.IsMember && CheckDailyv2(2210, true, true, "Shurpu Blaze Token"))
+        int questID = Core.IsMember && CheckDailyv2(2210, true, false, "Shurpu Blaze Token") ? 2210
+                : CheckDailyv2(2209, true, false, "Shurpu Blaze Token") ? 2209 : 0;
+
+        if (questID != 0)
         {
             Core.EquipClass(ClassType.Solo);
-            DailyRoutine(2210, "xancave", "Shurpu Ring Guardian", "Guardian Shale");
+            DailyRoutine(questID, "xancave", "Shurpu Ring Guardian", "Guardian Shale");
             Core.FarmingLogger("Shurpu Blaze Token", 84, "Shurpu Blaze Token");
             Core.ToBank("Shurpu Blaze Token");
         }
-
-        if (CheckDailyv2(2209, true, true, "Shurpu Blaze Token"))
-        {
-            Core.EquipClass(ClassType.Solo);
-            DailyRoutine(2209, "xancave", "Shurpu Ring Guardian", "Guardian Shale");
-            Core.FarmingLogger("Shurpu Blaze Token", 84, "Shurpu Blaze Token");
-            Core.ToBank("Shurpu Blaze Token");
-        }
-
+        
         if (Core.CheckInventory("Shurpu Blaze Token", 84))
             Core.BuyItem("xancave", 447, 12812, shopItemID: 1278);
         Core.ToBank("Shurpu Blaze Token");
