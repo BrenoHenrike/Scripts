@@ -62,7 +62,6 @@ public class AranxsAzalithRewardsMerge
                 case "Infernalis Penna":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
-                    Core.RegisterQuests(9887);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.HuntMonsterQuest(9887, new (string? mapName, string? monsterName, ClassType classType)[]
@@ -78,7 +77,6 @@ public class AranxsAzalithRewardsMerge
                 case "Infernalis Oculus":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Solo);
-                    Core.RegisterQuests(9888);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.HuntMonsterQuest(9888, new (string? mapName, string? monsterName, ClassType classType)[]
