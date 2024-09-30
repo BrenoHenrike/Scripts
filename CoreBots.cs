@@ -2206,7 +2206,7 @@ public class CoreBots
         if (questIDs.Length == 0)
             return Array.Empty<string>();
         List<string> toReturn = new();
-        foreach (var q in EnsureLoad(questIDs))
+        foreach (Quest q in EnsureLoad(questIDs))
         {
             if (q.Rewards == null || q.Rewards.Count == 0)
                 continue;
