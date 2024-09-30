@@ -171,7 +171,7 @@ public class CoreArmyRep
                 }
 
                 foreach (int Q in new[] { 9713, 9714 })
-                    if (!Dailies.CheckDaily(Q))
+                    if (!Dailies.CheckDailyv2(Q))
                         Core.EnsureAccept(Q);
                 break;
 

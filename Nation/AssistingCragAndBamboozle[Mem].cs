@@ -52,7 +52,7 @@ public class AssistingCragAndBamboozle
 
     public void AssistingCandB(Rewards reward = new())
     {
-        if (!Core.IsMember || !Core.CheckInventory(Nation.CragName) || !Core.CheckInventory("Sparrow's Blood") && !Daily.CheckDaily(803, true, true, "Sparrow's Blood"))
+        if (!Core.IsMember || !Core.CheckInventory(Nation.CragName) || !Core.CheckInventory("Sparrow's Blood") && !Daily.CheckDailyv2(803, true, true, "Sparrow's Blood"))
             return;
 
         ItemBase? Item = Bot.Quests.EnsureLoad(5817)?.Rewards

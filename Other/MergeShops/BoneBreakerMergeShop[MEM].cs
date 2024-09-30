@@ -68,7 +68,7 @@ public class BonebreakerMerge
 
                 case "BoneBreaker Medallion":
                     Core.FarmingLogger(req.Name, quant);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant) && Daily.CheckDaily(3898))
+                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant) && Daily.CheckDailyv2(3898))
                     {
                         Core.EnsureAccept(3898);
                         Core.HuntMonster("bonebreaker", "Undead Berserker", "Warrior Defeated", 5);

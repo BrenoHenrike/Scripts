@@ -33,7 +33,7 @@ public class VampireofVokun
         Core.EnsureAccept(3761);
         if (!Core.CheckInventory("Burn It Down"))
         {
-            if (!Daily.CheckDaily(187, items: "Burn It Down"))
+            if (!Daily.CheckDailyv2(187, items: "Burn It Down"))
             {
                 Core.Logger("Daily unavailable.");
                 return;

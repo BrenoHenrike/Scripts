@@ -580,7 +580,7 @@ public class YulgarsDualWieldMerge
                     break;
 
                 case "Burn it Down":
-                    if (!Daily.CheckDaily(187, true, true, req.Name))
+                    if (!Daily.CheckDailyv2(187, true, true, req.Name))
                     {
                         Core.Logger($"{req.Name} owned, or daily unavailable");
                         return;

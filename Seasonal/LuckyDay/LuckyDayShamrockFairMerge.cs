@@ -78,7 +78,7 @@ public class LuckyDayShamrockFairMerge
                 case "Lucky Clover":
                     Core.FarmingLogger(req.Name, quant);
                     Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit && Daily.CheckDaily(Core.CheckInventory(971) ? 1761 : 1759) && !Core.CheckInventory(req.Name, quant))
+                    while (!Bot.ShouldExit && Daily.CheckDailyv2(Core.CheckInventory(971) ? 1761 : 1759) && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.EnsureAccept(Core.CheckInventory(971) ? 1761 : 1759);
                         Core.HuntMonster("rainbow", "Lucky Harms", "Clover Leaves");

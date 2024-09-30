@@ -371,7 +371,7 @@ public class BrightOak
                 return;
 
             // Catering to Craftsmanship
-            if (Daily.CheckDaily(4471))
+            if (Daily.CheckDailyv2(4471))
             {
                 Core.EnsureAccept(4471);
                 Core.HuntMonster("Brightoak", "Bright Treeant", "Treeant Trunk", 5);
@@ -380,7 +380,7 @@ public class BrightOak
             }
 
             // Some Disassembly Required   
-            if (Daily.CheckDaily(4472))
+            if (Daily.CheckDailyv2(4472))
             {
                 Core.EnsureAccept(4472);
                 Core.HuntMonster("Brightoak", "Brightpool Guardian", "Disciplined Guardian", 7);

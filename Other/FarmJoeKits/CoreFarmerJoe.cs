@@ -293,7 +293,7 @@ public class CoreFarmerJoe
         {
             if (Level % 5 == 0 && Bot.Player.Level < Level)
             {
-                if (Bot.Player.Level >= 30 && Daily.CheckDaily(802, true, true, "Elders' Blood"))
+                if (Bot.Player.Level >= 30 && Daily.CheckDailyv2(802, true, true, "Elders' Blood"))
                     Daily.EldersBlood();
                 SetClass(false, true, false);
                 SetClass(true, false, false);

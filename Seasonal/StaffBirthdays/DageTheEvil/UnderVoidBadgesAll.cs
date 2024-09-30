@@ -49,7 +49,7 @@ public class UnderVoidBadgesAll
             Core.Logger($"Already have the {badge1} badge");
             return;
         }
-        else if (Daily.CheckDaily(3411))
+        else if (Daily.CheckDailyv2(3411))
         {
             Core.Logger($"Doing UnderVoid Quest for {badge1} badge");
             //Adv.BestGear(RacialGearBoost.Undead);
@@ -79,7 +79,7 @@ public class UnderVoidBadgesAll
             Core.Logger($"Already have the {badge2} badge");
             return;
         }
-        else if (Daily.CheckDaily(3412))
+        else if (Daily.CheckDailyv2(3412))
         {
             Core.Logger($"Doing UnderVoid Quest for {badge2} badge");
             Core.EnsureAccept(3412);
@@ -109,7 +109,7 @@ public class UnderVoidBadgesAll
             return;
         }
 
-        else if (Daily.CheckDaily(3413))
+        else if (Daily.CheckDailyv2(3413))
         {
             Core.Logger($"Doing UnderVoid Quest for {badge3} badge");
             Core.EnsureAccept(3413);
@@ -138,7 +138,7 @@ public class UnderVoidBadgesAll
             Core.Logger($"Already have the {badge4} badge");
             return;
         }
-        else if (Daily.CheckDaily(3414))
+        else if (Daily.CheckDailyv2(3414))
         {
             Core.Logger($"Doing UnderVoid Quest for {badge4} badge");
             Core.EnsureAccept(3414);

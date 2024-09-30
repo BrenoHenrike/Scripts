@@ -31,7 +31,7 @@ public class MineCrafting
     {
         BLOD.UnlockMineCrafting();
 
-        if (Daily.CheckDaily(2091))
+        if (Daily.CheckDailyv2(2091))
         {
             if (!Core.CheckInventory("Blinding Light of Destiny", toInv: false))
             {
@@ -50,7 +50,7 @@ public class MineCrafting
             }
         }
         Core.Logger("Finished MineCrafting, Checking HardCore Metals(mem)");
-        if (!Core.IsMember || Daily.CheckDaily(2090))
+        if (!Core.IsMember || Daily.CheckDailyv2(2090))
         {
             Core.Logger(!Core.IsMember ? "Membership required for SDK + HardCoreMetals stopping." : "Daily already complete, try tomarrow.");
             return;
@@ -67,7 +67,7 @@ public class MineCrafting
 
             foreach (var metal in hardcoreMetals) 
             {
-                if (!Daily.CheckDailyv2(2098, false, metal.Key))
+                if (!Daily.CheckDailyv2(2098, false, false, metal.Key))
                     return;
 
                 Daily.HardCoreMetals(new[] { metal.Key }, metal.Value, true); 
