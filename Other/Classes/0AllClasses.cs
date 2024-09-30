@@ -332,6 +332,8 @@ public class AllClasses
         SeasonalClasses(rankUpClass);
         VariousClasses(rankUpClass);
         EndGameClasses(rankUpClass);
+        ACorToHardtoGetClasses(rankUpClass);
+
     }
 
     public void DailyClasses(bool rankUpClass)
@@ -343,7 +345,6 @@ public class AllClasses
         CheckAndExecute("Cryomancer", () => Cryo.DoCryomancer(rankUpClass));
         CheckAndExecute("Death KnightLord", Daily.DeathKnightLord);
         CheckAndExecute("Lord of Order", () => LOO.GetLoO(rankUpClass));
-        CheckAndExecute("ShadowScythe General", Daily.ShadowScytheClass);
 
         Core.Logger("=== Daily Classes - Completed! ===");
     }
@@ -431,19 +432,15 @@ public class AllClasses
         CheckAndExecute("Enforcer", () => Enf.GetClass(rankUpClass));
         CheckAndExecute("Exalted Soul Cleaver", () => ESC.GetClass(rankUpClass));
         CheckAndExecute("Frost SpititReaver", () => FSR.GetFSR(rankUpClass));
-        CheckAndExecute("Grim Necromancer", () => GN.GetGN(rankUpClass));
         CheckAndExecute("HighSeas Commander", () => HSC.GetHSC(rankUpClass));
         CheckAndExecute("Infinite Legion Dark Caster", () => ILDC.GetILDC(rankUpClass));
-        CheckAndExecute("LightMage", () => LM.GetLM(rankUpClass));
         CheckAndExecute("MechaJouster", () => MJ.GetMJ(rankUpClass));
         CheckAndExecute("Necromancer", () => Necro.GetNecromancer(rankUpClass));
         CheckAndExecute("Neo Metal Necro", () => NMN.GetClass(rankUpClass));
         CheckAndExecute("ProtoSartorium", () => PS.GetPS(rankUpClass));
         CheckAndExecute("Rustbucket", () => RB.GetRustbucket(rankUpClass));
         CheckAndExecute("Scarlet Sorceress", () => SS.GetSSorc(rankUpClass));
-        CheckAndExecute("SkyCharged Grenadier", () => SCG.GetSCG(rankUpClass));
         CheckAndExecute("SwordMaster", () => SM.GetSwordMaster(rankUpClass));
-
 
         Core.Logger("=== Various Classes - Completed! ===");
     }
@@ -452,20 +449,42 @@ public class AllClasses
     {
         Core.Logger("=== Doing End Game Classes ===");
 
-        CheckAndExecute("Arcana Invoker", () => AI.GetAI(rankUpClass));
-        CheckAndExecute("Archmage", () => AM.GetAM(rankUpClass));
         CheckAndExecute("ArchPaladin", () => AP.GetAP(rankUpClass));
-        CheckAndExecute("Chaos Avenger", () => CAV.GetClass(rankUpClass));
         CheckAndExecute("Dragon of Time", () => DOT.GetDoT(rankUpClass, doExtra: false));
-        CheckAndExecute("LightCaster", () => LC.GetLC(rankUpClass));
-        CheckAndExecute("Legion Revenant", () => LR.GetLR(rankUpClass));
-        CheckAndExecute("Sovereign of Storms", () => SOS.GetSOS(rankUpClass));
-        CheckAndExecute("Verus DoomKnight", () => VDK.GetClass(rankUpClass));
         CheckAndExecute("Void Highlord", () => VHL.GetVHL(rankUpClass));
         CheckAndExecute("Yami no Ronin", () => YNR.GetYnR(rankUpClass));
 
         Core.Logger("=== End Game Classes - Completed! ===");
     }
+
+    private void ACorToHardtoGetClasses(bool rankUpClass)
+    {
+        Core.Logger("=== AC / Special Requirement / Army Classes ===");
+
+        // Why do you own these classes?
+        CheckAndExecute("Grim Necromancer", () => GN.GetGN(rankUpClass)); // 600k ac purchased
+
+        // Classes that require a certain time played:
+        CheckAndExecute("SkyCharged Grenadier", () => SCG.GetSCG(rankUpClass)); // 9 years membership
+
+        // Classes that Cost ACs / AC badges:
+        CheckAndExecute("LightCaster", () => LC.GetLC(rankUpClass)); // LC gets LM at the same time
+        CheckAndExecute("Legion Revenant", () => LR.GetLR(rankUpClass));
+
+        // Classes that require an army or are just to damn hard to solo,
+        // these scripts will more then likely just return when they cant farm an item:
+        CheckAndExecute("Chaos Avenger", () => CAV.GetClass(rankUpClass));
+        CheckAndExecute("Archmage", () => AM.GetAM(rankUpClass));
+        CheckAndExecute("Verus DoomKnight", () => VDK.GetClass(rankUpClass));
+
+        // Classes that take to long to farm for a bank class:
+        CheckAndExecute("Arcana Invoker", () => AI.GetAI(rankUpClass));
+        CheckAndExecute("ShadowScythe General", Daily.ShadowScytheClass);
+        CheckAndExecute("Sovereign of Storms", () => SOS.GetSOS(rankUpClass));
+
+        Core.Logger("=== AC / Special Requirement / Army Classes - Completed! ===");
+    }
+
 
     bool IsitRank10(ItemBase item) => item != null && item.Quantity == 302500;
 
