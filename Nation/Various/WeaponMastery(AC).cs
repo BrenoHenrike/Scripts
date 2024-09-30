@@ -37,7 +37,7 @@ public class WeaponMasteryAC
             return;
         }
 
-        if (!Core.CheckInventory("Evolved Warlord Orb"))
+        if (!Core.CheckInventory(new[] { 33366, 33199 }, any: true))
         {
             Core.Logger($"Evolved Warlord Orb not found!");
             return;
@@ -50,9 +50,11 @@ public class WeaponMasteryAC
         Core.FarmingLogger("Evolved Warlord Hammer", 1);
         Core.FarmingLogger("Evolved Warlord Axe", 1);
 
-        Core.RegisterQuests(4784, 3188);
+        // 4786 - Members
+        // 4784 - Ac
         while (!Bot.ShouldExit && !Core.CheckInventory(new[] { "Evolved Warlord Hammer", "Evolved Warlord Axe" }))
         {
+            Core.EnsureAccept(Core.CheckInventory(33366, toInv: false) ? 4786 : 4784);
             Nation.FarmUni13(1);
             Nation.SwindleBulk(10);
             Nation.FarmDarkCrystalShard(10);
@@ -67,6 +69,7 @@ public class WeaponMasteryAC
                 Farm.Gold(100000);
                 Core.BuyItem("mirrorportal", 618, "Underfriend Blade of Nulgath");
             }
+            Core.EnsureComplete(Core.CheckInventory(33366, toInv: false) ? 4786 : 4784);
             Bot.Wait.ForPickup("Evolved Warlord Hammer");
             Bot.Wait.ForPickup("Evolved Warlord Axe");
         }
