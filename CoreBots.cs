@@ -787,13 +787,20 @@ public class CoreBots
             // Check if item is in whitelist and not in blacklist or Extras
             if ((inventoryItem?.Category != null && whiteList.Contains(inventoryItem.Category) || inventoryItem?.Coins == true) &&
                 !BankingBlackList.Contains(item) &&
-                !Extras.Contains(inventoryItem?.ID) ||
-                (itemIsForHouse && _item?.Equipped != true))
+                !Extras.Contains(inventoryItem?.ID) &&
+                Bot.Inventory.Contains(item) ||
+                (itemIsForHouse && Bot.House.Contains(item) &&
+                _item?.Equipped != true))
             {
-                if (!itemIsForHouse && !Bot.Inventory.EnsureToBank(item))
+                if (!itemIsForHouse)
                 {
-                    Logger($"Failed to bank {item}, skipping it");
-                    continue;
+                    for (int i = 0; i < 5 && !Bot.Inventory.EnsureToBank(item); i++)
+                        Sleep();
+                    if (!Bot.Inventory.EnsureToBank(item))
+                    {
+                        Logger($"Failed to bank {item}, skipping it");
+                        continue;
+                    }
                 }
                 else if (itemIsForHouse)
                 {
