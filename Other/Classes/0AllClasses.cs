@@ -497,7 +497,7 @@ public class AllClasses
         bool ItemOwned = Bot.Inventory.Items.Concat(Bot.Bank.Items).Contains(Class);
 
         // Check if the item is found and if it meets the quantity requirement.
-        if (!ItemOwned || !IsitRank10(Class))
+        if (!ItemOwned || (Class != null && !IsitRank10(Class)))
         {
             action();
         }
