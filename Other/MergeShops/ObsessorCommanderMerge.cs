@@ -68,7 +68,6 @@ public class ObsessorCommanderMerge
 
                 case "Compass Rose Skull":
                     Core.FarmingLogger(req.Name, quant);
-                    Core.RegisterQuests(9894);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.HuntMonsterQuest(9894, new (string? mapName, string? monsterName, ClassType classType)[]
@@ -79,7 +78,6 @@ public class ObsessorCommanderMerge
                 }, true);
                         Bot.Wait.ForPickup(req.Name);
                     }
-                    Core.CancelRegisteredQuests();
                     break;
 
             }

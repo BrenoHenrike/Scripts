@@ -94,7 +94,6 @@ public class CelestialSpoilsMerge
 
                 case "Lucky Button":
                     Core.FarmingLogger(req.Name, quant);
-                    Core.RegisterQuests(9836);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
                         Core.HuntMonsterQuest(9836, new (string? mapName, string? monsterName, ClassType classType)[]
@@ -105,7 +104,6 @@ public class CelestialSpoilsMerge
                         });
                         Bot.Wait.ForPickup(req.Name);
                     }
-                    Core.CancelRegisteredQuests();
                     break;
 
             }
