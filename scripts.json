@@ -17,7 +17,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 264655,
+    "size": 264634,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -107,7 +107,7 @@
       "prerequisites"
     ],
     "path": "Chaos/ChaosAvengerPreReqs.cs",
-    "size": 6527,
+    "size": 6566,
     "fileName": "ChaosAvengerPreReqs.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Chaos/ChaosAvengerPreReqs.cs"
   },
@@ -590,7 +590,7 @@
       "chaotic lords"
     ],
     "path": "Evil/ADK.cs",
-    "size": 6748,
+    "size": 6787,
     "fileName": "ADK.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Evil/ADK.cs"
   },
@@ -1772,7 +1772,7 @@
       "khasaanda"
     ],
     "path": "Dailies/LordOfOrder.cs",
-    "size": 10106,
+    "size": 10148,
     "fileName": "LordOfOrder.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/LordOfOrder.cs"
   },
@@ -3832,7 +3832,7 @@
       "null"
     ],
     "path": "Hollowborn/HollowbornChaosEnvoy/CoreHollowbornChaosEnvoy.cs",
-    "size": 23985,
+    "size": 24023,
     "fileName": "CoreHollowbornChaosEnvoy.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/HollowbornChaosEnvoy/CoreHollowbornChaosEnvoy.cs"
   },
@@ -7671,7 +7671,7 @@
       "frostvale"
     ],
     "path": "Seasonal/Frostvale/Frostvale.cs",
-    "size": 37572,
+    "size": 37610,
     "fileName": "Frostvale.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Frostvale/Frostvale.cs"
   },
@@ -9334,7 +9334,7 @@
       "rewards"
     ],
     "path": "Army/Quests/ArmyUniqueQuarry.cs",
-    "size": 8012,
+    "size": 8042,
     "fileName": "ArmyUniqueQuarry.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Quests/ArmyUniqueQuarry.cs"
   },
@@ -14030,7 +14030,7 @@
       "shop"
     ],
     "path": "Other/MergeShops/InevitabilisMerge.cs",
-    "size": 6879,
+    "size": 6929,
     "fileName": "InevitabilisMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/InevitabilisMerge.cs"
   },
@@ -16858,7 +16858,7 @@
       "null"
     ],
     "path": "Story/LordsofChaos/Core13LoC.cs",
-    "size": 80585,
+    "size": 80660,
     "fileName": "Core13LoC.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/LordsofChaos/Core13LoC.cs"
   },
