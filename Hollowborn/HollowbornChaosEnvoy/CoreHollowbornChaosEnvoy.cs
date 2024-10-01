@@ -128,7 +128,7 @@ public class CoreHollowbornChaosEnvoy
         Farm.Experience(75);
 
         Core.Logger($"Reward Chosen: {Bot.Config!.Get<StirringDiscordRewards>("Stirring Discord")}");
-        while (!Bot.ShouldExit)
+        while (!Bot.ShouldExit && !shouldReturnEarly)
         {
             Core.EnsureAccept(7158);
             Core.EnsureAccept(8998);
@@ -188,7 +188,7 @@ public class CoreHollowbornChaosEnvoy
         Farm.Experience(75);
 
         Core.Logger($"Reward Chosen: {beastsShadowReward}");
-        while (!Bot.ShouldExit)
+        while (!Bot.ShouldExit && !shouldReturnEarly)
         {
             Core.EnsureAccept(8999);
             Core.EquipClass(ClassType.Solo);
@@ -254,7 +254,7 @@ public class CoreHollowbornChaosEnvoy
 
         Core.Logger($"Reward Chosen: {quarryReward}");
         Bot.Quests.UpdateQuest(2804);
-        while (!Bot.ShouldExit)
+        while (!Bot.ShouldExit && !shouldReturnEarly)
         {
             Core.EnsureAccept(9000);
             Core.EquipClass(ClassType.Farm);
@@ -337,7 +337,7 @@ public class CoreHollowbornChaosEnvoy
 
         CPM.Badge();
 
-        while (!Bot.ShouldExit)
+        while (!Bot.ShouldExit && !shouldReturnEarly)
         {
             Core.EnsureAccept(9001);
             Core.EquipClass(ClassType.Farm);
@@ -407,7 +407,7 @@ public class CoreHollowbornChaosEnvoy
         }
 
         Core.Logger($"Reward Chosen: {disdainReward}");
-        while (!Bot.ShouldExit)
+        while (!Bot.ShouldExit && !shouldReturnEarly)
         {
             Core.EnsureAccept(9002);
             Core.EquipClass(ClassType.Farm);
@@ -471,7 +471,7 @@ public class CoreHollowbornChaosEnvoy
         Core.AddDrop(rewards);
         Farm.Experience(95);
 
-        while (!Bot.ShouldExit)
+        while (!Bot.ShouldExit && !shouldReturnEarly)
         {
             Core.EnsureAccept(9003);
             Core.HuntMonster("ultradrakath", "Champion of Chaos", "Trace of Chaos", 13, isTemp: false, publicRoom: true);
