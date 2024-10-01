@@ -1840,7 +1840,12 @@ public class Core13LoC
         Story.KillQuest(2804, "venomvaults", "Manticore");
 
         //Shocking Footwear
-        Story.MapItemQuest(2805, "stormtemple", 1729, 4);
+        if (!Story.QuestProgression(2805))
+        {
+            Core.EnsureAccept(2805);
+            Core.GetMapItem(1729, 4, "stormtemple");
+            Core.EnsureComplete(2805);
+        }
 
         //New Shoes
         if (!Story.QuestProgression(2806)) //quest was fucky for no reason. hopefully a fix.
