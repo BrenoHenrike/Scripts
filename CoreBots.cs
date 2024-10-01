@@ -140,7 +140,7 @@ public class CoreBots
         Bot.Options.SafeTimings = changeTo;
         Bot.Options.RestPackets = changeTo && ShouldRest;
         Bot.Options.AutoRelogin = true;
-        Bot.Options.DisableFX = true;
+        Bot.Lite.DisableMonsterAnimation = true;
         Bot.Options.InfiniteRange = changeTo;
         Bot.Options.SkipCutscenes = changeTo;
         Bot.Options.QuestAcceptAndCompleteTries = AcceptandCompleteTries;
@@ -154,7 +154,6 @@ public class CoreBots
         //adding sommore
         // Bot.Lite.CustomDropsUI = true;
         // Bot.Lite.DisableDamageStrobe = true;
-        // Bot.Lite.DisableMonsterAnimation = true;
         // Bot.Lite.DisableWeaponAnimation = true;
         // Bot.Lite.DisableSkillAnimations = true;
         // Bot.Lite.SmoothBackground = true;
@@ -4816,9 +4815,13 @@ public class CoreBots
                 SimpleQuestBypass((402, 12));
                 break;
 
-            case "venomvaults":
-                SimpleQuestBypass((117, 7));
-                break;
+            // case "venomvaults":
+            //     SimpleQuestBypass((117, 7));
+            //     break;
+
+            // case "stormtemple":
+            //     SimpleQuestBypass((117, 17));
+            //     break;
 
             case "chaoscave":
             case "lycanwar":
@@ -4845,9 +4848,7 @@ public class CoreBots
                 SimpleQuestBypass((456, 13));
                 break;
 
-            case "stormtemple":
-                SimpleQuestBypass((117, 17));
-                break;
+
 
             case "championdrakath":
                 SimpleQuestBypass((182, 7));

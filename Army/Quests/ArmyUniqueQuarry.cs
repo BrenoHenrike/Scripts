@@ -62,6 +62,7 @@ public class ArmyUniqueQuarry
         foreach (ItemBase item in RequiredItems.Concat(QuestReward))
             Bot.Drops.Add(item.ID);
 
+        Bot.Quests.UpdateQuest(2804);
         Core.EnsureAccept(9000);
 
         Core.EquipClass(ClassType.Farm);
@@ -107,7 +108,7 @@ public class ArmyUniqueQuarry
                     Army.SmartAggroMonStart(map, monster);
         }
 
-        
+
 
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
             Bot.Combat.Attack("*");

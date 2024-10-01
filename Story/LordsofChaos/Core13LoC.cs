@@ -1816,10 +1816,13 @@ public class Core13LoC
         Story.MapItemQuest(2796, "venomvaults", 1726);
 
         //You've Been Noticed
-        Story.KillQuest(2797, "venomvaults", "Chaonslaught Caster");
+        if (!Story.QuestProgression(2798))
+        {
+            Story.KillQuest(2797, "venomvaults", "Chaonslaught Caster");
 
-        //Thorny Situations
-        Story.MapItemQuest(2798, "venomvaults", 1727, 5);
+            //Thorny Situations
+            Story.MapItemQuest(2798, "venomvaults", 1727, 5);
+        }
 
         //Other Ingredients
         Story.KillQuest(2799, "venomvaults", "Chaonslaught Caster");

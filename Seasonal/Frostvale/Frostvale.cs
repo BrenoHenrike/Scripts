@@ -956,6 +956,7 @@ public class Frostvale
         Story.KillQuest(7827, "orecavern", "Naga Baas");
 
         //A Finale to Remember (7828)
+        Bot.Quests.UpdateQuest(2814);
         Story.KillQuest(7828, "stormtemple", "Chaos Lord Lionfang");
     }
 

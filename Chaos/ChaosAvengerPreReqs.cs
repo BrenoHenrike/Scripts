@@ -162,6 +162,7 @@ public class ChaosAvengerClass
         Core.HuntMonster("timespace", "Chaos Lord Iadoa", "Iadoa", isTemp: false);
 
         //Chaos Lionfang Armor
+        Bot.Quests.UpdateQuest(2814);
         Core.HuntMonster("stormtemple", "Chaos Lord Lionfang", "Chaos Lionfang Armor", isTemp: false);
 
         //Chaos Lord Alteon (Armor)

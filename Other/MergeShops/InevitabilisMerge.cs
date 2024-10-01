@@ -61,6 +61,7 @@ public class InevitabilisMerge
 
                 case "Eternal Scale":
                     Core.FarmingLogger(req.Name, quant);
+                    Bot.Quests.UpdateQuest(2804);
                     Core.RegisterQuests(9175);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {

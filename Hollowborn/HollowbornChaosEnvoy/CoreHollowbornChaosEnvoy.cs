@@ -253,6 +253,7 @@ public class CoreHollowbornChaosEnvoy
         ADG.AscendedGear("Ascended Face of Chaos");
 
         Core.Logger($"Reward Chosen: {quarryReward}");
+        Bot.Quests.UpdateQuest(2804);
         while (!Bot.ShouldExit)
         {
             Core.EnsureAccept(9000);

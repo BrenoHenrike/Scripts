@@ -140,6 +140,7 @@ public class ArchDoomKnight
         Core.HuntMonster("Ledgermayne", "Ledgermayne", "Ledgermayne", isTemp: false);
         Core.HuntMonster("djinn", "Tibicenas", "Tibicenas", isTemp: false);
         Core.HuntMonster("dreamnexus", "Khasaanda", "Soul of Chaos Armor", isTemp: false);
+        Bot.Quests.UpdateQuest(2814);
         Core.HuntMonster("stormtemple", "Chaos Lord Lionfang", "Chaos Lionfang Armor", isTemp: false);
         Core.HuntMonster("swordhavenfalls", "Chaos Lord Alteon", "Shorn Chaos King Crown", isTemp: false);
         Core.KillXiang("Xiang Chaos");
