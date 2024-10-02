@@ -185,7 +185,7 @@ tags: all classes, class, farm, complete, all
 //cs_include Scripts/Other/MergeShops/ColdThunderMerge.cs
 //cs_include Scripts/Other/MergeShops/LothianTreasuryMerge.cs
 //cs_include Scripts/Other/Classes/SovereignOfStorms.cs
-//cs_include Scripts/Other/Classes/Sentinel.cs
+//cs_include Scripts/Other/Classes/Sentinal.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
