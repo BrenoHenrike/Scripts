@@ -432,7 +432,6 @@ public class AllClasses
         CheckAndExecute("Dragonslayer General", () => DSG.GetDSGeneral(rankUpClass));
         CheckAndExecute("DragonSoul Shinobi", () => DSS.GetDSS(rankUpClass));
         CheckAndExecute("Enforcer", () => Enf.GetClass(rankUpClass));
-        CheckAndExecute("Exalted Soul Cleaver", () => ESC.GetClass(rankUpClass));
         CheckAndExecute("Frost SpititReaver", () => FSR.GetFSR(rankUpClass));
         CheckAndExecute("HighSeas Commander", () => HSC.GetHSC(rankUpClass));
         CheckAndExecute("Infinite Legion Dark Caster", () => ILDC.GetILDC(rankUpClass));
@@ -473,6 +472,7 @@ public class AllClasses
         // Classes that Cost ACs / AC badges:
         CheckAndExecute("LightCaster", () => LC.GetLC(rankUpClass)); // LC gets LM at the same time
         CheckAndExecute("Legion Revenant", () => LR.GetLR(rankUpClass));
+        CheckAndExecute("Exalted Soul Cleaver", () => ESC.GetClass(rankUpClass));
 
         // Classes that require an army or are just to damn hard to solo,
         // these scripts will more then likely just return when they cant farm an item:
