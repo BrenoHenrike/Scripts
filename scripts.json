@@ -10601,6 +10601,17 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/LegionDoomKnight[Mem].cs"
   },
   {
+    "name": "Sentinel",
+    "description": "null",
+    "tags": [
+      "null"
+    ],
+    "path": "Other/Classes/Sentinal.cs",
+    "size": 1070,
+    "fileName": "Sentinal.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/Sentinal.cs"
+  },
+  {
     "name": "Grim Necromancer Class (600k AC)",
     "description": "This script will get Grim Necromancer class which requires 600k ACs badge.",
     "tags": [
@@ -10819,7 +10830,7 @@
       "all"
     ],
     "path": "Other/Classes/0AllClasses.cs",
-    "size": 23723,
+    "size": 23906,
     "fileName": "0AllClasses.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/0AllClasses.cs"
   },
