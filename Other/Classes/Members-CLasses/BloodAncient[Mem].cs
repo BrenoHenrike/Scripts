@@ -31,6 +31,8 @@ public class BloodAncient
         if (Core.CheckInventory("Blood Ancient") || !Core.IsMember)
         {
             Core.Logger(Core.CheckInventory("Blood Ancient") ? "You already own Blood Ancient class." : "Membership is required for this class.");
+            if (rankUpClass && Core.IsMember)
+                Adv.RankUpClass("Blood Ancient");
             return;
         }
 
