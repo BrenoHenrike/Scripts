@@ -185,6 +185,7 @@ tags: all classes, class, farm, complete, all
 //cs_include Scripts/Other/MergeShops/ColdThunderMerge.cs
 //cs_include Scripts/Other/MergeShops/LothianTreasuryMerge.cs
 //cs_include Scripts/Other/Classes/SovereignOfStorms.cs
+//cs_include Scripts/Other/Classes/Sentinel.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
@@ -275,6 +276,7 @@ public class AllClasses
     private ScarletSorceress SS = new();
     private SkyChargedGrenadier SCG = new();
     private SwordMaster SM = new();
+    private Sentinel Sentinel = new();
     #endregion Various
 
     #region End game
@@ -466,6 +468,7 @@ public class AllClasses
 
         // Classes that require a certain time played:
         CheckAndExecute("SkyCharged Grenadier", () => SCG.GetSCG(rankUpClass)); // 9 years membership
+        CheckAndExecute("Sentinel", () => Sentinel.GetSentinel(rankUpClass)); // 16 years played
 
         // Classes that Cost ACs / AC badges:
         CheckAndExecute("LightCaster", () => LC.GetLC(rankUpClass)); // LC gets LM at the same time
