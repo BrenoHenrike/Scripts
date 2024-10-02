@@ -35,6 +35,8 @@ public class DefaultTemplate
 
     public void Example(bool TestMode = false)
     {
+        foreach (Badge Badge in Core.Badges)
+            Core.Logger($"Name: {Badge.Name}, ID:{Badge.ID}");
 
         //Test Push
         if (TestMode)

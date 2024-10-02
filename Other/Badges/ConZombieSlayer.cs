@@ -25,11 +25,11 @@ public class ConZombieSlayer
 
     public void Badge()
     {
-        if (Core.HasWebBadge(badge))
+        if (Core.HasAchievement(74))
         {
             Core.Logger($"Already have the {badge} badge");
             return;
-        }
+        }       
 
         Core.Logger($"Doing Artix quest for {badge} badge");
 
@@ -51,13 +51,45 @@ public class ConZombieSlayer
             Core.EnsureComplete(3136);
         }
 
+        Core.EquipClass(ClassType.Solo);
         //BrutalCorn Barrier 3137
         Story.KillQuest(3137, "battlecon", "BrutalCorn");
 
+        // Badge Signing 3138
+        Story.MapItemQuest(3138, "battlecon", Core.FromTo(2129, 2138));
+
+        // 3139 does *not* exist
+
+        Core.EquipClass(ClassType.Farm);
+        // Con Rot 3140 - not required?
+        // Story.KillQuest(3140, "vendorbooths", "Con Rot");
+
+        // // Buzz-Killer: Caffeine Overload
+        // Story.KillQuest(3141, "vendorbooths", "Caffeine Imp");
+
+        // Core.Logger("3140 - 3141 appaerntly.. dont need done?");
+
+        // Lights Out for Ravers 3142
+        Story.KillQuest(3141, "artistalley", "Ravin' Skelly");
+
+        if (Core.IsMember)
+            // Silent but Undeadly 3143
+            Story.KillQuest(3143, "artistalley", "Battle Odor");
+
         //Badge Quest - Cosplay Zombies On Parade 3144
         Core.EnsureAccept(3144);
-        Core.HuntMonster("battlecon", "Cosplay Zombie", "Defeat Cosplay Zombie", 100, log: false);
-        Core.EnsureComplete(3144);
+        while (!Bot.ShouldExit && !Core.HasAchievement(74))
+        {
+            if (Bot.Map.Name != "battlecon")
+                Core.Join("battlecon");
+            if (Bot.Player.Cell != "a2")
+                Core.Jump("a2", "left");
+
+            Bot.Combat.Attack("*");
+            Core.Sleep();
+        }
+        Core.AbandonQuest(3144);
+
     }
 
     private string badge = "ConZombie Slayer";

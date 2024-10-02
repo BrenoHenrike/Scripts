@@ -4621,6 +4621,10 @@ public class CoreBots
                     blackListedCells.UnionWith(new[] { "r23" });
                     break;
 
+                    case "battlecon":                    
+                    blackListedCells.UnionWith(new[] { "rFight" });
+                    break;
+
 
                 default:
                     break;
