@@ -164,12 +164,6 @@ public class CoreArmyRep
                     return;
                 }
 
-                if (!Core.isCompletedBefore(9350))
-                {
-                    Core.Logger("Quest \"Frenzy Feast [9350]\" Not complete (you have to do this yourself), cannot continue the rep");
-                    return;
-                }
-
                 foreach (int Q in new[] { 9713, 9714 })
                     if (!Dailies.CheckDailyv2(Q))
                         Core.EnsureAccept(Q);
