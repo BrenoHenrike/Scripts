@@ -95,7 +95,7 @@ public class BloodIslesMerge
                 case "Amira 2.0 Gear":
                     if (!Core.IsMember)
                     {
-                        Core.Logger("Memers only map");
+                        Core.Logger("Members only map");
                         return;
                     }
                     Core.HuntMonster("amira", "Amira 2.0", req.Name, req.Quantity, req.Temp);
