@@ -146,6 +146,7 @@ tags: story, quest, complete, all
 //cs_include Scripts/Story/Mobius.cs
 //cs_include Scripts/Story/MustyCave.cs
 
+//cs_include Scripts/Story/NecroProject.cs
 //cs_include Scripts/Story/Noobshire.cs
 //cs_include Scripts/Story/Nukemichi[mem].cs
 //cs_include Scripts/Story/NytheraSaga.cs
@@ -360,6 +361,7 @@ public class AllStories
     public Mobius Mobius = new();
     public MustyCave MustyCave = new();
 
+    public NecroProject NecroProject = new();
     public Noobshire Noobshire = new();
     public Nukemichi Nukemichi = new();
     public NytheraSaga NytheraSaga = new();
@@ -822,6 +824,9 @@ public class AllStories
         MustyCave.Storyline();
         Core.Logger($"Story: MustyCave - Complete");
 
+
+        NecroProject.StoryLine();
+        Core.Logger($"Story: Necro Project - Complete");
 
         Noobshire.doAll();
         Core.Logger($"Story: Noobshire - Complete");
