@@ -2818,6 +2818,20 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Tutorial.cs"
   },
   {
+    "name": "Necro Project",
+    "description": "This will finish the Necro Project story.",
+    "tags": [
+      "story",
+      "quest",
+      "necroproject",
+      "sally"
+    ],
+    "path": "Story/NecroProject.cs",
+    "size": 2299,
+    "fileName": "NecroProject.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/NecroProject.cs"
+  },
+  {
     "name": "Artix Wedding Story",
     "description": "This will finish the Artix Wedding Story.",
     "tags": [
