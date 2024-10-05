@@ -1,6 +1,6 @@
 /*
-name: 15th Birthday Hero Character Page Badge
-description: This script will get the "15th Birthday Hero" Character Page Badge.
+name: 16th Birthday Hero Character Page Badge
+description: This script will get the "16th Birthday Hero" Character Page Badge.
 tags: birthday, badge, anniversary, gifts, quest, seasonal
 */
 //cs_include Scripts/CoreBots.cs
@@ -31,9 +31,9 @@ public class BirthdayHeroBadge
 
         Core.EquipClass(ClassType.Solo);
 
-        //15th Anniversary Gifts
+        //16th Anniversary Gifts
         Story.KillQuest(6554, "birthday", new[] { "Birthday Cake", "Birthday Cake", "Birthday Cake", "Birthday Cake" });
     }
 
-    private string badge = "15th Birthday Hero";
+    private string badge = "16th Birthday Hero";
 }
