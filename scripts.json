@@ -6317,6 +6317,22 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AqwBirthday/TwillyTreasurePile.cs"
   },
   {
+    "name": "16th Birthday Hero Character Page Badge",
+    "description": "This script will get the \"16th Birthday Hero\" Character Page Badge.",
+    "tags": [
+      "birthday",
+      "badge",
+      "anniversary",
+      "gifts",
+      "quest",
+      "seasonal"
+    ],
+    "path": "Seasonal/AqwBirthday/16thBirthdayHeroBadge.cs",
+    "size": 1031,
+    "fileName": "16thBirthdayHeroBadge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AqwBirthday/16thBirthdayHeroBadge.cs"
+  },
+  {
     "name": "LootTheUndresser Quest Rewards",
     "description": "farms quest rewards from 'Loot the UnDresser` in /cursedshop",
     "tags": [
@@ -6329,22 +6345,6 @@
     "size": 1612,
     "fileName": "LootTheUndresserRewards.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AqwBirthday/LootTheUndresserRewards.cs"
-  },
-  {
-    "name": "15th Birthday Hero Character Page Badge",
-    "description": "This script will get the \"15th Birthday Hero\" Character Page Badge.",
-    "tags": [
-      "birthday",
-      "badge",
-      "anniversary",
-      "gifts",
-      "quest",
-      "seasonal"
-    ],
-    "path": "Seasonal/AqwBirthday/15thBirthdayHeroBadge.cs",
-    "size": 1031,
-    "fileName": "15thBirthdayHeroBadge.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/AqwBirthday/15thBirthdayHeroBadge.cs"
   },
   {
     "name": "Bright Paladin Presents Quest Rewards",
