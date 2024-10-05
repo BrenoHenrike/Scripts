@@ -555,7 +555,9 @@ public class CoreFarmerJoe
         SetClass(true, false, true);
         CAQ.DoAll();
         BBOA.GetBBoA();
-        Core.Equip("Burning Blade Of Abezeth");
+        
+        // F/F/T = bestgear
+        SetClass(false, false, true);
 
         /*
         Lv to 90 (via the Enhancements)
@@ -569,7 +571,6 @@ public class CoreFarmerJoe
         UnlockForgeEnhancements.Lament();
         UnlockForgeEnhancements.Vainglory();
 
-        SetClass(true, false, true);
         YNR.GetYnR();
 
         SetClass(true, false, true);
