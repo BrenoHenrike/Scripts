@@ -35,10 +35,15 @@ public class DefaultTemplate
 
     public void Example(bool TestMode = false)
     {
-        foreach (Badge Badge in Core.Badges)
-            Core.Logger($"Name: {Badge.Name}, ID:{Badge.ID}");
+       //Test Stuff  below  here
 
-        //Test Push
+
+       
+
+       //Test Stuff Above here
+
+
+       //Test Push
         if (TestMode)
         {
             if (Core.CheckInventory("item", 1))
