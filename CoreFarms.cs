@@ -2660,43 +2660,56 @@ public class CoreFarms
         Core.Logger($"Farming rank {rank}");
 
         Core.EquipClass(ClassType.Farm);
-        Core.RegisterQuests(7505); //Studying the Rogue 7505
-        if (Core.IsMember && FactionRank("Loremaster") >= 3)
+        if (Core.IsMember)
         {
-            if (!Core.isCompletedBefore(3032)) //Need boat for this questsline (member only)
-            {
-                Core.Logger("Unlocking farming quest.");
-                Core.EnsureAccept(3029); //Rosetta Stones 3029
-                Core.KillMonster("druids", "r2", "Left", "Void Bear", "Voidstone", 6);
-                Core.EnsureComplete(3029);
+            if (FactionRank("Loremaster") < 3)
+                Core.Logger("Geting r3 Loremaster rep for the member quests");
 
-                Core.EnsureAccept(3030); // Cull the Foot Soldiers 3030
-                Core.KillMonster("druids", "Void Larva", "r6", "Left", "Void Larvae Death Cry", 4);
-                Core.EnsureComplete(3030);
+            while (!Bot.ShouldExit && FactionRank("Loremaster") < 3)
+            {
+                Core.HuntMonster("wardwarf", "Drow Assassin", "Poisoned Dagger", 4, log: false);
+                Core.HuntMonster("wardwarf", "D'wain Jonsen", "Scroll: Opportunity's Strike", log: false);
+                Bot.Wait.ForQuestAccept(7505);
+            }
+
+            if (!Core.isCompletedBefore(3032) && FactionRank("Loremaster") >= 3)
+            {
+                if (!Core.isCompletedBefore(3030))
+                {
+                    Core.Logger("Unlocking farming quest.");
+                    Core.EnsureAccept(3029); //Rosetta Stones 3029
+                    Core.KillMonster("druids", "r2", "Left", "Void Bear", "Voidstone", 6);
+                    Core.EnsureComplete(3029);
+                }
+
+                if (!Core.isCompletedBefore(3031))
+                {
+                    Core.EnsureAccept(3030); // Cull the Foot Soldiers 3030
+                    Core.KillMonster("druids", "Void Larva", "r6", "Left", "Void Larvae Death Cry", 4);
+                    Core.EnsureComplete(3030);
+                }
 
                 Core.EnsureAccept(3031); // Bad Vibes 3031
                 Core.KillMonster("druids", "Void Ghast", "r6", "Left", "Ghast's Death Cry", 4);
                 Core.EnsureComplete(3031);
+
             }
-            Core.Logger("Prequiisit story quests finished.");
-        }
+                Core.Logger("Member perquisite quests finished.");
 
-
-        if (Core.IsMember && FactionRank("Loremaster") >= 3)
-        {
-            Bot.Quests.UnregisterQuests(7505);
+            Core.CancelRegisteredQuests();
             Core.EquipClass(ClassType.Solo);
             Core.RegisterQuests(3032); // Quite the Problem 3032
-
             while (!Bot.ShouldExit && FactionRank("Loremaster") < rank)
                 Core.KillMonster("druids", "r5", "Left", "Young Void Giant", log: false);
         }
         else
         {
+            Core.RegisterQuests(7505); //Studying the Rogue 7505
             while (!Bot.ShouldExit && FactionRank("Loremaster") < rank)
             {
                 Core.HuntMonster("wardwarf", "Drow Assassin", "Poisoned Dagger", 4, log: false);
                 Core.HuntMonster("wardwarf", "D'wain Jonsen", "Scroll: Opportunity's Strike", log: false);
+                Bot.Wait.ForQuestAccept(7505);
             }
         }
 
