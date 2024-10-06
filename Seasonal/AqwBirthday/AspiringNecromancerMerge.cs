@@ -39,11 +39,11 @@ public class AspiringNecromancerMerge
 
     public void BuyAllMerge(string? buyOnlyThis = null, mergeOptionsEnum? buyMode = null)
     {
-        if (!Core.isSeasonalMapActive("birthday"))
+        if (!Core.isSeasonalMapActive("mogloween"))
             return;
 
         //Only edit the map and shopID here
-        Adv.StartBuyAllMerge($"birthday", 1924, findIngredients, buyOnlyThis, buyMode: buyMode);
+        Adv.StartBuyAllMerge("mogloween", 1924, findIngredients, buyOnlyThis, buyMode: buyMode);
 
         #region Dont edit this part
         void findIngredients()
@@ -72,7 +72,7 @@ public class AspiringNecromancerMerge
                     Core.RegisterQuests(7751);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonsterMapID("BattleunderA", 10, "Skeleton Captured", 10, log: false);
+                        Core.HuntMonsterMapID("battleundera", 10, "Skeleton Captured", 10, log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
@@ -85,7 +85,7 @@ public class AspiringNecromancerMerge
                     Core.RegisterQuests(7752);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.KillMonster("DoomWood", "r8", "Left", "*", "Bones Collected", 15, log: false);
+                        Core.KillMonster("doomwood", "r8", "Left", "*", "Bones Collected", 15, log: false);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
