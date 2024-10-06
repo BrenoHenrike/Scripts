@@ -9,7 +9,6 @@ tags: pinpoint, pieces, sdka, dagger, blade, broadsword, scythe, mace, bow
 //cs_include Scripts/CoreDailies.cs
 //cs_include Scripts/Evil/SDKA/CoreSDKA.cs
 //cs_include Scripts/CoreStory.cs
-using System.Collections.Generic;
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
@@ -21,11 +20,13 @@ public class PinpointthePieces_Any
     public CoreSDKA SDKA = new();
 
     public string OptionStorage = "Pinpoint_the_Pieces";
-
+    public bool DontPreconfigure = true;
     public List<IOption> Options = new()
     {
+        CoreBots.Instance.SkipOptions,
         new Option<PinpointIDs>("questID", "Quest ID", "ID of the desired Pinpoint quest to do.", PinpointIDs.Dagger)
     };
+
     public void ScriptMain(IScriptInterface bot)
     {
         Core.SetOptions();
@@ -38,7 +39,6 @@ public class PinpointthePieces_Any
     public void Pinpoint()
     {
         Core.EquipClass(ClassType.Farm);
-
         PinpointIDs questID = Bot.Config?.Get<PinpointIDs>("questID") ?? default;
         ItemBase[] QuestRewards = Core.EnsureLoad((int)questID).Rewards.ToArray();
 
