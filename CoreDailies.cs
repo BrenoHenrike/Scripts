@@ -571,7 +571,7 @@ public class CoreDailies
     public void SparrowsBlood()
     {
         Core.Logger("Daily: Sparrow's Blood");
-        if (!CheckDailyv2(803, true, true, "Sparrow's Blood") || Core.CheckInventory("Sparrow's Blood", 3, false))
+        if (!CheckDailyv2(803, true, true, "Sparrow's Blood") || Core.CheckInventory("Sparrow's Blood", 3))
             return;
         Core.AddDrop("Sparrow's Blood");
         Core.EquipClass(ClassType.Farm);
