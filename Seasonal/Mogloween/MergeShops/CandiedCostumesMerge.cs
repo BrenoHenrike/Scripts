@@ -11,7 +11,7 @@ using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
 
-public class CandiedCostumesMergea
+public class CandiedCostumesMerge
 {
     public IScriptInterface Bot => IScriptInterface.Instance;
     public CoreBots Core => CoreBots.Instance;
@@ -46,7 +46,7 @@ public class CandiedCostumesMergea
     {
         if (!Core.isSeasonalMapActive("mogloween"))
             return;
-            
+
         //Only edit the map and shopID here
         Adv.StartBuyAllMerge("candyshop", 1761, findIngredients, buyOnlyThis, buyMode: buyMode);
 
