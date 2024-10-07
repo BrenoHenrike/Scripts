@@ -1,11 +1,10 @@
 /*
 name: Candied Costumes Merge
-description: This will buy all the Candied Costumes and merge them.
-tags: merge, mogloween, seasonal, candied, costumes
+description: This bot will farm the items belonging to the selected mode for the Candied Costumes Merge [1761] in /candyshop
+tags: candied, costumes, merge, candyshop, fairy, tale, wanderer, flesh, ripper, horned, backblades, force, guardian, , beard, back, light, super, scion, ninja, sidemask, scarf, pigtails, masked, backfan, fan, scroll, lightning, ball, balls, lady, vayle, costume, enchanted, tactical, agent, alpha, bravo, gasmask, morph, ol, reliable, zombie, buster, busters, blaster, blasters
 */
 //cs_include Scripts/CoreBots.cs
 //cs_include Scripts/CoreFarms.cs
-//cs_include Scripts/CoreStory.cs
 //cs_include Scripts/CoreAdvanced.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
@@ -29,12 +28,7 @@ public class CandiedCostumesMerge
 
     public void ScriptMain(IScriptInterface bot)
     {
-        Core.BankingBlackList.AddRange(new[] {
-            "MarshMeowllows",
-            "Horehound Bits",
-            "Kitty Cordials",
-            "Candied Jalapeno",
-            "Spicy Sample "});
+        Core.BankingBlackList.AddRange(new[] { "MarshMeowllows", "Horehound Bits", "Kitty Cordials", "Gummy Brains", "Gold Voucher 25k", "Tactical Agent Alpha", "Tactical Agent Bravo", "Tactical Agent Bravo Beard", "Tactical Agent Bravo Locks", "Tactical Alpha Rifle", "Tactical Alpha Rifles", "Backup Ol Reliable Zombie Buster" });
         Core.SetOptions();
 
         BuyAllMerge();
