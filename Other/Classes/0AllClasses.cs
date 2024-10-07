@@ -385,7 +385,7 @@ public class AllClasses
         Adv.GearStore();
         CheckAndExecute("Arachnomancer", () => Arach.GetArach(rankUpClass));
         CheckAndExecute("Darkblood StormKing", () => DBSK.GetDSK(rankUpClass));
-        CheckAndExecute("Elemental Dracomancer", () => ED.GetClass(rankUpClass));
+        CheckAndExecute("Elemental Dracomancer", () => ED.GetED(rankUpClass));
         CheckAndExecute("Eternal Inversionist", () => EI.GetEI(rankUpClass));
         CheckAndExecute("Evolved Shaman", () => ES.GetES(rankUpClass));
         CheckAndExecute("Glacial Berserker", () => GB.GetGB(rankUpClass));

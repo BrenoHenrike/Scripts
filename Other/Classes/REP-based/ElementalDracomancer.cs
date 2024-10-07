@@ -18,11 +18,11 @@ public class ElementalDracomancer
     {
         Core.SetOptions();
 
-        GetClass();
+        GetED();
         Core.SetOptions(false);
     }
 
-    public void GetClass(bool rankUpClass = true)
+    public void GetED(bool rankUpClass = true)
     {
         if (Core.CheckInventory("Elemental Dracomancer"))
         {
