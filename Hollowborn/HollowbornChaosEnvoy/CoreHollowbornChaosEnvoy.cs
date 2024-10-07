@@ -130,8 +130,7 @@ public class CoreHollowbornChaosEnvoy
         Core.Logger($"Reward Chosen: {Bot.Config!.Get<StirringDiscordRewards>("Stirring Discord")}");
         while (!Bot.ShouldExit && !shouldReturnEarly)
         {
-            Core.EnsureAccept(7158);
-            Core.EnsureAccept(8998);
+            Core.EnsureAcceptmultiple(false, new[] { 7158, 8998 });
             Core.HuntMonster("lagunabeach", "Heart of Chaos", "Chaos Pirate Crew", isTemp: false);
             Core.HuntMonster("backroom", "Book Wyrm", "Maledictus Magum", isTemp: false);
             Core.HuntMonster("wardwarf", "Chaotic Draconian", "Chaotic Draconian Wings", isTemp: false);
