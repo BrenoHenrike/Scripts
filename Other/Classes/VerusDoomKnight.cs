@@ -33,6 +33,9 @@ using Skua.Core.Models.Items;
 using Skua.Core.Models.Skills;
 using Skua.Core.Models.Monsters;
 using Skua.Core.Models.Shops;
+using Newtonsoft.Json;
+using System.Dynamic;
+using Skua.Core.Models.Auras;
 
 public class VerusDoomKnightClass
 {
@@ -142,26 +145,32 @@ public class VerusDoomKnightClass
             Core.EnsureAccept(9418);
             Adv.GearStore();
             Core.KillDoomKitten("Doomkitten's Molar", 20, false);
-            Adv.GearStore(true);
+            Adv.GearStore(true, true);
             if (!Core.CheckInventory("Deadly Duo's Decayed Denture"))
+            {
                 Core.Logger("InfernalArena is a **SOLO ONLY** map!");
-            Adv.GearStore();
-            Core.BossClass(Core.CheckInventory(new[] { "Void Highlord", "Void Highlord (IoDA)" }, any: true)
-            ? (Core.CheckInventory("Void Highlord (IoDA)")
-            ? "Void Highlord (IoDA)" : "Void Highlord")
-            : "ArchPaladin");
-            Core.JumpWait();
-            Core.Sleep();
-            Core.HuntMonster("infernalarena", "Deadly Duo", "Deadly Duo's Decayed Denture", 10, false);
-            Core.JumpWait();
-            Adv.GearStore(true);
+                Adv.GearStore();
+                Core.BossClass(Core.CheckInventory(new[] { "Void Highlord", "Void Highlord (IoDA)" }, any: true)
+                ? (Core.CheckInventory("Void Highlord (IoDA)")
+                ? "Void Highlord (IoDA)" : "Void Highlord")
+                : "ArchPaladin");
+                Core.JumpWait();
+                Core.Sleep();
+                Core.HuntMonster("infernalarena", "Deadly Duo", "Deadly Duo's Decayed Denture", 10, false);
+                Core.JumpWait();
+            Adv.GearStore(true, true);
+            }
 
-            if (!Core.CheckInventory("Xyfrag's Slimy Tooth", 5) || !Core.CheckInventory("Nerfkitten's Fang", 3) || !Core.CheckInventory("Maw of the Sea", 10))
+            if (!Core.CheckInventory("Maw of the Sea", 10))
+            {
+                VoTSSolo();
+            }
+
+            if (!Core.CheckInventory("Xyfrag's Slimy Tooth", 5) || !Core.CheckInventory("Nerfkitten's Fang", 3))
             {
                 Core.Logger("You will need to manually kill the following to proceed with the quest:\n" +
                             "1. Xyfrag - in /join voidxyfrag\n" +
                             "2. Sarah the Nerfkitten - in /join voidnerfkitten\n" +
-                            "3. Voice of the Sea - in /join seavoice\n" +
                             "Once done, you can continue with the quest by running the bot again.", stopBot: true);
             }
             else Core.EnsureComplete(9418);
@@ -200,4 +209,140 @@ public class VerusDoomKnightClass
         if (rankup)
             Adv.RankUpClass("Verus DoomKnight");
     }
+
+
+
+    void VoTSSolo()
+    {
+        // Define the possible solo classes
+        string[] PossibleSoloClasses = new[] { "Chaos Avenger", "Verus Doomknight", "Void Highlord", "ArchPaladin" };
+
+        if (!Core.CheckInventory(PossibleSoloClasses, any: true))
+            Core.Logger("no Soloing classes found stopping (go get AP atleast and rerun)", stopBot: true);
+
+        // Find the first available class in inventory or bank
+        string? selectedClass = PossibleSoloClasses.FirstOrDefault(className =>
+            Bot.Inventory.Items.Any(item => item.Name == className) ||
+            Bot.Bank.Items.Any(item => item.Name == className)
+        );
+
+        Core.Logger($"Soloing \"Voice of the Sea\" with {selectedClass}");
+
+        Adv.GearStore();
+
+        // Adv.SmartEnhance(selectedClass);
+
+        // Call the KillThing method with the specified parameters
+        KillThing(
+            map: "seavoice",
+            mobMapID: 1,
+            targetAuraName: "Oxidize",
+            ItemUsed: 78994,
+            Class: selectedClass,
+            item: "Maw of the Sea",
+            quant: 10,
+            isTemp: true
+        );
+            Adv.GearStore(true, true);
+    }
+
+    public void KillThing(string? map = null, int mobMapID = 1, string? targetAuraName = null, int ItemUsed = 1, string? Class = null, string? item = null, int quant = 1, bool isTemp = false)
+    {
+        Adv.BuyItem("seavoice", 2320, "Vigil", 1000, 12023);
+
+        Core.Join(map);
+        Bot.Wait.ForMapLoad(map!);
+        Bot.Wait.ForTrue(() => Bot.Player.Loaded, 20);
+
+        Core.Logger($"map: {map}");
+        Core.Logger($"mobMapID: {mobMapID}");
+        Core.Logger($"targetAuraName: {targetAuraName}");
+        Core.Logger($"ItemUsed: {ItemUsed} [Vigil]");
+        Core.Logger($"Class: {Class}");
+        Core.Logger($"item: {item}");
+        Core.Logger($"quant: {quant}");
+        Core.Logger($"isTemp: {isTemp}");
+
+        Core.Equip(Class!);
+        if (Class == "Void Highlord")
+            Bot.Skills.StartAdvanced("Void HighLord", true, ClassUseMode.Def);
+        Core.Equip(ItemUsed);
+        Core.Logger($"{ItemUsed} [Vigil] Equiped? {Bot.Inventory.IsEquipped("Vigil")}");
+
+        Monster? mob = Bot.Monsters.MapMonsters.FirstOrDefault(m => m.MapID == mobMapID);
+        if (targetAuraName != null)
+        {
+            Aura? targetAura = Bot.Target.Auras.Concat(Bot.Self.Auras).FirstOrDefault(a => a.Name == targetAuraName);
+        }
+
+        if (Bot.Player.Cell != mob!.Cell)
+            Core.Jump(mob.Cell);
+        Bot.Player.SetSpawnPoint();
+
+        while (!Bot.ShouldExit && item != null && isTemp ? !Bot.TempInv.Contains(item!, quant) : !Core.CheckInventory(item!, quant))
+        {
+            //Check if/move to /in mob cell && Bot.Player.Alive)
+            if (Bot.Player.Cell != mob.Cell)
+                Core.Jump(mob.Cell);
+
+            #region  UltraSpeaker
+            if (map == "ultraspeaker")
+            {
+                while (!Bot.ShouldExit && !Bot.Player.Alive)
+                    Core.Sleep();
+            }
+            #endregion
+
+            if (targetAuraName != null)
+                AuraHandling(targetAuraName);
+
+            if (Bot.Player.Alive && !Bot.Self.HasActiveAura(targetAuraName!) && !Bot.Target.HasActiveAura(targetAuraName!))
+                Bot.Combat.Attack(mob);
+            Core.Sleep();
+
+            if (isTemp ? Bot.TempInv.Contains(item!, quant) : Core.CheckInventory(item, quant))
+            {
+                break;
+            }
+        }
+
+        void AuraHandling(string? targetAuraName)
+        {
+            foreach (Aura A in Bot.Target.Auras.Concat(Bot.Self.Auras))
+            {
+                if (targetAuraName == null)
+                    continue;
+
+                switch (A.Name)
+                {
+                    case "Oxidize":
+                        while (!Bot.ShouldExit && !Bot.Self.HasActiveAura("Vigil"))
+                        {
+                            UsePotion();
+                            Core.Sleep();
+
+                            // Check if targetAura is not null before accessing its SecondsRemaining() method
+                            // Assuming `targetAura` is the aura you're referring to
+                            if (Bot.Self.HasActiveAura("Vigil"))
+                            {
+                                Core.Logger($"Vigil Active!");
+                                break;
+                            }
+                        }
+                        break;
+
+                    case null:
+                        break;
+                }
+            }
+        }
+
+        void UsePotion()
+        {
+            var skill = Bot.Flash.GetArrayObject<dynamic>("world.actions.active", 5);
+            if (skill == null) return;
+            Bot.Flash.CallGameFunction("world.testAction", JsonConvert.DeserializeObject<ExpandoObject>(JsonConvert.SerializeObject(skill))!);
+        }
+    }
+
 }
