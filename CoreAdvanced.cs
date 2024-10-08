@@ -583,7 +583,7 @@ public class CoreAdvanced
         InventoryItem? itemInv = Bot.Inventory.Items.Concat(Bot.Bank.Items).Find(i => i.Name.Equals(className, StringComparison.Ordinal) && i.Category == ItemCategory.Class);
 
         if (itemInv != null && itemInv.Quantity < 302500)
-            Bot.Wait.ForBankToInventory(className);
+            Bot.Wait.ForBankToInventory(itemInv.ID);
         else Bot.Wait.ForTrue(() => Bot.Inventory.Contains(className), 20);
 
         if (itemInv == null)
@@ -615,10 +615,10 @@ public class CoreAdvanced
             }
             else
             {
-                if (classItem != null && !Bot.Inventory.IsEquipped(classItem.Name))
+                if (classItem != null && !Bot.Inventory.IsEquipped(classItem.ID))
                 {
-                    Core.Equip(classItem.Name);
-                    Bot.Wait.ForTrue(() => Bot.Inventory.IsEquipped(classItem.Name), 20);
+                    Core.Equip(classItem.ID);
+                    Bot.Wait.ForTrue(() => Bot.Inventory.IsEquipped(classItem.ID), 20);
                 }
                 // string cpBoost = BestGear(GenericGearBoost.cp, false);
                 // EnhanceItem(cpBoost, CurrentClassEnh(), CurrentCapeSpecial(), CurrentHelmSpecial(), CurrentWeaponSpecial());

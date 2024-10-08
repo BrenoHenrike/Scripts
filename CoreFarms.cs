@@ -440,7 +440,8 @@ public class CoreFarms
 
         bool NotYetLevel(int _level)
         {
-            return !Bot.ShouldExit && (Bot.Player.Level < _level && Bot.Player.Level < level) || (Bot.Player.Level <= _level && rankUpClass && Bot.Player.CurrentClassRank != 10);
+            ItemBase Item = Bot.Inventory.Items.FirstOrDefault(x => x != null && x.Equipped && x.Category == ItemCategory.Class);
+            return !Bot.ShouldExit && !rankUpClass ? Bot.Player.Level < _level && Bot.Player.Level < level : Bot.Player.Level <= _level && Item.Quantity < 302500;
         }
     }
 
