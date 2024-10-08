@@ -1936,13 +1936,13 @@ public class CoreAdvanced
 
                 #region Lucky Region
 
-                #region Luck - Awe_Blast | Ravenous | Valiance - ForgeHelm - Penitence
+                #region Luck - Awe_Blast | Arcanas_Concerto - ForgeHelm - Penitence
                 case "lord of order":
                     if (!uAwe() || !uForgeHelm() || !uPenitence())
                         goto default;
 
                     type = EnhancementType.Lucky;
-                    wSpecial = uRavenous() ? WeaponSpecial.Ravenous : WeaponSpecial.Awe_Blast;
+                    wSpecial = uArcanasConcerto() ? WeaponSpecial.Arcanas_Concerto : WeaponSpecial.Awe_Blast;
                     hSpecial = HelmSpecial.Forge;
                     cSpecial = CapeSpecial.Penitence;
                     break;
@@ -2298,7 +2298,7 @@ public class CoreAdvanced
 
                     type = EnhancementType.Wizard;
                     cSpecial = CapeSpecial.Vainglory;
-                    wSpecial = uArcanasConcerto() ? WeaponSpecial.Ravenous : WeaponSpecial.Valiance;
+                    wSpecial = uRavenous() ? WeaponSpecial.Ravenous : WeaponSpecial.Valiance;
                     hSpecial = HelmSpecial.Pneuma;
                     break;
                 #endregion
