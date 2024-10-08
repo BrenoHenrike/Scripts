@@ -357,7 +357,7 @@ public class AllClasses
         Core.BuyItem(Bot.Map.Name, 222, "Battle Warrior");
         Core.BuyItem(Bot.Map.Name, 222, "Battle Healer");
         Core.BuyItem(Bot.Map.Name, 222, "No Class");
-        Adv.GearStore(true);
+        Adv.GearStore(true, true);
         Core.ToBank(new[] { "Warrior", "Mage", "Healer", "Rogue", "Ninja", "Barber", "Oracle", "Battle Warrior", "Battle Healer", "No Class" });
         Core.Logger("=== `beginner` classes - Bought! ===");
     }
@@ -372,7 +372,7 @@ public class AllClasses
         CheckAndExecute("Cryomancer", () => Cryo.DoCryomancer(rankUpClass));
         CheckAndExecute("Death KnightLord", Daily.DeathKnightLord);
         CheckAndExecute("Lord of Order", () => LOO.GetLoO(rankUpClass));
-        Adv.GearStore(true);
+        Adv.GearStore(true, true);
         Core.ToBank(new[] { "Blaze Binder", "The Collector", "Cryomancer", "Death KnightLord", "Lord of Order" });
 
         Core.Logger("=== Daily Classes - Completed! ===");
@@ -405,7 +405,7 @@ public class AllClasses
         CheckAndExecute("Chaos Slayer Berserker", () => CS.GetCS(CSvariant.Berserker, rankUpClass));
         CheckAndExecute("Chaos Slayer Cleric", () => CS.GetCS(CSvariant.Cleric, rankUpClass));
         CheckAndExecute("Chaos Slayer Thief", () => CS.GetCS(CSvariant.Thief, rankUpClass));
-        Adv.GearStore(true);
+        Adv.GearStore(true, true);
         Core.ToBank(new[] { "Arachnomancer", "Darkblood StormKing", "Elemental Dracomancer", "Eternal Inversionist", "Evolved Shaman", "Glacial Berserker", "Horc Evader", "Imperial Chunin", "Lycan", "Master Ranger", "Paladin", "Royal BattleMage", "Shaman", "StoneCrusher", "Thief of Hours", "Troll Spellsmith", "Chaos Slayer Mystic", "Chaos Slayer Berserker", "Chaos Slayer Cleric", "Chaos Slayer Thief" });
 
 
@@ -434,7 +434,7 @@ public class AllClasses
         CheckAndExecute("Legendary Elemental Warrior", () => LEW.GetLEW(rankUpClass));
         CheckAndExecute("Renegade", () => Ren.Getclass(rankUpClass));
         CheckAndExecute("UndeadSlayer", () => US.GetUS(rankUpClass));
-        Adv.GearStore(true);
+        Adv.GearStore(true, true);
         Core.ToBank(new[] { "Alpha Omega", "Acolyte", "Bard", "BeastMaster", "Blood Ancient", "Blood Titan", "Chrono Assassin", "DeathKnight", "DoomKnight", "Drakel Warlord", "Legion DoomKnight", "Legendary Elemental Warrior", "Renegade", "UndeadSlayer" });
 
         Core.Logger("=== Member Classes - Completed! ===");
@@ -456,7 +456,7 @@ public class AllClasses
         CheckAndExecute("Shadow Dragon Shinobi", () => SDS.GetClass(rankUpClass));
         CheckAndExecute("Pumpkin Lord", () => PL.GetClass(rankUpClass));
         CheckAndExecute("Vampire Lord", () => VL.GetClass(rankUpClass));
-        Adv.GearStore(true);
+        Adv.GearStore(true, true);
         Core.ToBank(new[] { "Alpha Pirate", "Dark Lord", "Evolved Leprechaun", "Exalted Harbinger", "Frostval Barbarian", "Legion SwordMaster Assassin", "Northlands Monk", "Pirate", "Shadow Dragon Shinobi", "Pumpkin Lord", "Vampire Lord" });
 
         Core.Logger("=== Seasonal Classes - Completed! ===");
@@ -485,7 +485,7 @@ public class AllClasses
         CheckAndExecute("Rustbucket", () => RB.GetRustbucket(rankUpClass));
         CheckAndExecute("Scarlet Sorceress", () => SS.GetSSorc(rankUpClass));
         CheckAndExecute("SwordMaster", () => SM.GetSwordMaster(rankUpClass));
-        Adv.GearStore(true);
+        Adv.GearStore(true, true);
         Core.ToBank(new[] { "Abyssal Angel Shadow", "Archfiend", "Blood Sorceress", "Doom Metal Necro", "Dragonslayer", "Dragonslayer General", "DragonSoul Shinobi", "Enforcer", "Frost SpititReaver", "HighSeas Commander", "Infinite Legion Dark Caster", "MechaJouster", "Necromancer", "Neo Metal Necro", "ProtoSartorium", "Rustbucket", "Scarlet Sorceress", "SwordMaster" });
 
         Core.Logger("=== Various Classes - Completed! ===");
@@ -500,7 +500,7 @@ public class AllClasses
         CheckAndExecute("Dragon of Time", () => DOT.GetDoT(rankUpClass, doExtra: false));
         CheckAndExecute("Void Highlord", () => VHL.GetVHL(rankUpClass));
         CheckAndExecute("Yami no Ronin", () => YNR.GetYnR(rankUpClass));
-        Adv.GearStore(true);
+        Adv.GearStore(true, true);
         Core.ToBank(new[] { "ArchPaladin", "Dragon of Time", "Void Highlord", "Yami no Ronin" });
 
         Core.Logger("=== End Game Classes - Completed! ===");
@@ -533,7 +533,7 @@ public class AllClasses
         CheckAndExecute("Arcana Invoker", () => AI.GetAI(rankUpClass));
         CheckAndExecute("ShadowScythe General", Daily.ShadowScytheClass);
         CheckAndExecute("Sovereign of Storms", () => SOS.GetSOS(rankUpClass));
-        Adv.GearStore(true);
+        Adv.GearStore(true, true);
         Core.ToBank(new[] { "Grim Necromancer", "SkyCharged Grenadier", "Sentinel", "LightCaster", "Legion Revenant", "Exalted Soul Cleaver", "Chaos Avenger", "Archmage", "Verus DoomKnight", "Arcana Invoker", "ShadowScythe General", "Sovereign of Storms" });
 
         Core.Logger("=== AC / Special Requirement / Army Classes - Completed! ===");
