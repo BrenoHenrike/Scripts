@@ -79,7 +79,7 @@ public class VoidWarlock
         Core.Logger("All drops acquired from [Tools for the Job] Quest");
 
         Core.Logger("Starting [Corrupted Touch] Quest");
-        foreach (ItemBase reward in ToolsRewards)
+        foreach (ItemBase reward in TouchRewards)
         {
             if (Core.CheckInventory(reward.Name, toInv: false))
                 return;
