@@ -12,6 +12,7 @@ using Skua.Core.Models;
 using Skua.Core.Models.Items;
 using Skua.Core.Models.Monsters;
 using Skua.Core.Models.Quests;
+using System;
 
 public class CoreLegion
 {
@@ -59,22 +60,21 @@ public class CoreLegion
 
     public void DarkToken(int quant = 10000)
     {
-        if (Core.CheckInventory("Dark Token", quant))
+        if (Core.CheckInventory(43205, quant))
             return;
 
         Core.EquipClass(ClassType.Farm);
-        //Adv.BestGear(RacialGearBoost.Human);
 
-        Core.AddDrop("Dark Token");
+        Core.AddDrop(43205);
         Core.FarmingLogger("Dark Token", quant);
-        Core.RegisterQuests(6248, 6249, 6251);
-        while (!Bot.ShouldExit && !Core.CheckInventory("Dark Token", quant))
+        while (!Bot.ShouldExit && !Core.CheckInventory(43205, quant))
         {
+            Core.EnsureAcceptmultiple(false, new[] { 6248, 6249, 6251 });
             Core.HuntMonster("seraphicwardage", "Seraphic Commander", "Seraphic Medals", 5, log: false);
             Core.HuntMonster("seraphicwardage", "Seraphic Commander", "Mega Seraphic Medals", 3, log: false);
             Core.HuntMonster("seraphicwardage", "Seraphic Commander", "Seraphic Commanders Slain", 6, log: false);
+            Core.EnsureComplete(6248, 6249, 6251);
         }
-        Core.CancelRegisteredQuests();
     }
 
     public void DiamondTokenofDage(int quant = 300)
@@ -178,12 +178,19 @@ public class CoreLegion
 
         Core.AddDrop("Dage's Approval", "Dage's Favor");
 
-
         Core.EquipClass(ClassType.Farm);
 
-        foreach ((string, int) pair in new[] { ("Dage's Approval", quantApproval), ("Dage's Favor", quantFavor) })
-            Core.KillMonster("underworld", "r16", "Left", "*", pair.Item1, pair.Item2, false);
+        // Use Dictionary to hold item names and their quantities
+        var items = new Dictionary<string, int>
+        {
+            { "Dage's Approval", quantApproval },
+            { "Dage's Favor", quantFavor }
+        };
+
+        foreach (var item in items)
+            Core.KillMonster("underworld", "r16", "Left", "*", item.Key, item.Value);
     }
+
 
     public void BoneSigil(int quant = 1)
     {
