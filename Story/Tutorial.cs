@@ -33,9 +33,7 @@ public class Tutorial
         "Enhance", "Rest", "World", "Emotes", "Travel"
     };
 
-        Core.Logger("Need to reset the map (join > exit > rejoin) to prevent getting stuck");
-        Core.Join("oaklore", "r1", "Left");
-        Core.Join("whitemap");
+        Core.Join("battleon");
         Core.Join("oaklore", "r1", "Left");
 
         // Ensure player is in the correct cell
