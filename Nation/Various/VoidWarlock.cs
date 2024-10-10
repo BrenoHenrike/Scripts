@@ -35,35 +35,32 @@ public class VoidWarlock
 
     public void GetWarlock(string? singleToolReward = null, string? singleTouchReward = null)
     {
-        // Required to Accept/turnin Quest:
+        // Required to Accept/turn in Quest:
         ENNH.GetENNH();
 
-        List<ItemBase> ToolsRewards;
-        List<ItemBase> TouchRewards;
-        if (singleToolReward == null)
-            ToolsRewards = Core.EnsureLoad(6683).Rewards;
-        else
-            ToolsRewards = Core.EnsureLoad(6683).Rewards.Where(r => r.Name == singleToolReward).ToList();
+        // Load rewards for both quests (6683 - Tools, 6684 - Touch)
+        List<ItemBase> LoadRewards(int questID, string? singleReward)
+        {
+            var rewards = Core.EnsureLoad(questID).Rewards;
+            return singleReward == null ? rewards : rewards.Where(r => r.Name == singleReward).ToList();
+        }
 
-        if (singleTouchReward == null)
-            TouchRewards = Core.EnsureLoad(6684).Rewards;
-        else
-            TouchRewards = Core.EnsureLoad(6684).Rewards.Where(r => r.Name == singleTouchReward).ToList();
+        List<ItemBase> ToolsRewards = LoadRewards(6683, singleToolReward);
+        List<ItemBase> TouchRewards = LoadRewards(6684, singleTouchReward);
 
-        foreach (ItemBase item in ToolsRewards)
-            Core.AddDrop(item.Name);
+        // Add items to drop
+        ToolsRewards.ForEach(item => Bot.Drops.Add(item.Name));
+        TouchRewards.ForEach(item => Bot.Drops.Add(item.Name));
 
-        foreach (ItemBase item in TouchRewards)
-            Core.AddDrop(item.Name);
+        Bot.Drops.Add(Nation.bagDrops);
+        Bot.Drops.Add("Brittney's Winter Diamond");
 
-        Core.AddDrop(Nation.bagDrops);
-        Core.AddDrop("Brittney's Winter Diamond");
-
+        // Handle [Tools for the Job] Quest
         Core.Logger("Starting [Tools for the Job] Quest");
         foreach (ItemBase reward in ToolsRewards)
         {
-            if (Core.CheckInventory(reward.Name, toInv: false))
-                return;
+            if (Core.CheckInventory(reward.ID, toInv: false))
+                continue;
 
             Core.FarmingLogger(reward.Name, 1);
             Core.EnsureAccept(6683);
@@ -73,16 +70,18 @@ public class VoidWarlock
             Nation.FarmBloodGem(90);
             Nation.SwindleBulk(100);
             Core.EnsureComplete(6683, reward.ID);
-            Core.JumpWait();
-            Core.ToBank(reward.Name);
+            Bot.Wait.ForQuestComplete(6683);
+            Core.ToBank(reward.ID);
         }
         Core.Logger("All drops acquired from [Tools for the Job] Quest");
 
+        // Handle [Corrupted Touch] Quest
         Core.Logger("Starting [Corrupted Touch] Quest");
         foreach (ItemBase reward in TouchRewards)
         {
-            if (Core.CheckInventory(reward.Name, toInv: false))
-                return;
+            if (Core.CheckInventory(reward.ID, toInv: false))
+                continue;
+
             Core.FarmingLogger(reward.Name, 1);
             Core.EnsureAccept(6684);
             Nation.FarmUni13(1);
@@ -93,10 +92,11 @@ public class VoidWarlock
             Nation.ApprovalAndFavor(1000, 0);
             Core.HuntMonster("northlands", "Aisha's Drake", "Brittney's Winter Diamond", 1, false);
             Core.EnsureComplete(6684, reward.ID);
-            Core.JumpWait();
-            Core.ToBank(reward.Name);
+            Bot.Wait.ForQuestComplete(6684);
+            Core.ToBank(reward.ID);
         }
         Core.Logger("All drops acquired from [Corrupted Touch] Quest");
     }
+
 }
 
