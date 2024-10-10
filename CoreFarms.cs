@@ -440,8 +440,13 @@ public class CoreFarms
 
         bool NotYetLevel(int _level)
         {
-            ItemBase Item = Bot.Inventory.Items.FirstOrDefault(x => x != null && x.Equipped && x.Category == ItemCategory.Class);
-            return !Bot.ShouldExit && !rankUpClass ? Bot.Player.Level < _level && Bot.Player.Level < level : Bot.Player.Level <= _level && Item.Quantity < 302500;
+            ItemBase? item = Bot.Inventory.Items.FirstOrDefault(x => x != null && x.Equipped && x.Category == ItemCategory.Class);
+            if (item == null)
+            {
+                Core.Logger("No class equipped");
+                return !Bot.ShouldExit && !rankUpClass ? Bot.Player.Level < _level && Bot.Player.Level < level : Bot.Player.Level <= _level;
+            }
+            return !Bot.ShouldExit && !rankUpClass ? Bot.Player.Level < _level && Bot.Player.Level < level : Bot.Player.Level <= _level && item.Quantity < 302500;
         }
     }
 
