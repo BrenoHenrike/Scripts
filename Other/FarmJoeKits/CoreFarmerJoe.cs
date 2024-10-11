@@ -263,8 +263,6 @@ public class CoreFarmerJoe
     /// </summary>
     public void Level1to30()
     {
-
-
         // Beginner Items
         BeginnerItems();
 
@@ -281,8 +279,6 @@ public class CoreFarmerJoe
     /// </summary>
     public void Level30to75()
     {
-
-
         //Preset Solo & FarmClass (required if additional Classes were pre-aquired before teh script or your restarting it and CBO wasnt saved.
         SetClass(false, true, false);
         SetClass(true, false, false);
@@ -555,7 +551,7 @@ public class CoreFarmerJoe
         SetClass(true, false, true);
         CAQ.DoAll();
         BBOA.GetBBoA();
-        
+
         // F/F/T = bestgear
         SetClass(false, false, true);
 
@@ -725,6 +721,11 @@ public class CoreFarmerJoe
     /// </summary>
     void BeginnerItems()
     {
+        Core.Logger("Doing `Tutorial Badges` Required for fresh accounts to leave oaklore (this may take a moment to start.. we dont know why.)\n" +
+        "(by bot i mean.. obviously u can do this manualy)");
+
+        Tutorial.Badges();
+
         foreach (ItemCategory category in Enum.GetValues(typeof(ItemCategory)))
         {
             InventoryItem? equippedItem = Bot.Inventory.Items.Find(i => i.Equipped && i.Category == category);
@@ -782,11 +783,6 @@ public class CoreFarmerJoe
 
         Core.Logger("Starting out acc:\n" +
             "\tGoals: Ninja class & Mage Class");
-
-        Core.Logger("Getting Badges to look a little\n" +
-            "more legit (start may take a minute)");
-
-        Tutorial.Badges();
 
         Farm.Experience(10);
         Core.Logger("Getting Started: Beginner Levels/Equipment");
