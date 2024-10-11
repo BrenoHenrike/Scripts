@@ -24,6 +24,7 @@ public class SuppliesToSpinTheWheelofChance
         new Option<SuppliesReward>("SuppliesReward", "SuppliesReward", "pick the reward for the \"Supplies to spin the wheel\" Quest", SuppliesReward.All),
         new Option<bool>("AssistantDuring", "Do: \"The Assistant\" during?", "Do the quest: [The Assistant], (requires alota gold, that you will get from the vouchers of nulgath (mem)) during this.", false),
         new Option<bool>("UltraAlteon", "Kill \"UltraAlteon\"", "Instead of \"Escherion\" or bamboozle, do \"Ultra Alteon\"?", false),
+        new Option<bool>("KeepVoucher", "Keep Voucher?", "Keep Voucher? (false = gold)", false),
     };
 
     public void ScriptMain(IScriptInterface bot)
@@ -58,16 +59,10 @@ public class SuppliesToSpinTheWheelofChance
         {
             SwindlesReturnItem = null;
             SuppliesItem = null;
-            quantity = 1; // You can set this to a default value if needed
         }
-        else
-        {
-            quantity = itemQuantities[SwindlesReturnItem];
-        }
+
         Bot.Log($"Item Selected:\nSwindlesReturnItem: {SwindlesReturnItem ?? "All"}\nSuppliesItem: {SuppliesItem ?? "All"}\nIf SwindlesReturnItem is \"All,\" the bot will maximize all rewards from Swindles Return.");
-
-
-        Nation.Supplies(SwindlesReturnItem, quantity, Bot.Config!.Get<bool>("UltraAlteon"), true, Bot.Config!.Get<bool>("AssistantDuring"), SwindlesReturnItem);
+        Nation.Supplies(SuppliesItem, Bot.Quests.EnsureLoad(2857).Rewards.FirstOrDefault(x => x != null && x.Name == SuppliesItem).MaxStack, Bot.Config!.Get<bool>("UltraAlteon"), Bot.Config!.Get<bool>("KeepVoucher"), Bot.Config!.Get<bool>("AssistantDuring"), SwindlesReturnItem);
 
     }
 
