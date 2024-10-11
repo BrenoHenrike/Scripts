@@ -46,7 +46,7 @@ public class LetItBurn
         Farm.Experience(65);
         Bon.GetLegionBonfire();
 
-        Core.Logger($"Farming {quant} Soul Essence");
+        Core.FarmingLogger("Soul Essence", quant);
         Core.EquipClass(ClassType.Solo);
         while (!Bot.ShouldExit && !Core.CheckInventory("Soul Essence", quant))
         {
