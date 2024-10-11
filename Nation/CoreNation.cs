@@ -297,7 +297,7 @@ public class CoreNation
 
         Core.AddDrop("Legion Blade", "Dessicated Heart", "Diamond of Nulgath");
         Core.EquipClass(ClassType.Farm);
-        Core.Logger($"Farming {quant} Diamonds");
+        Core.FarmingLogger("Diamond of Nulgath", quant);
         int i = 1;
         Core.Join("evilwarnul");
 

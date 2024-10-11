@@ -183,7 +183,7 @@ public class HeadoftheLegionBeast
         Core.AddDrop(HeadLegionBeast);
         if (!Bot.Quests.IsUnlocked(7983))
             Circles.CirclesWar(true);
-        Core.Logger($"Farming {quant} Souls of Heresy");
+        Core.FarmingLogger("Souls of Heresy", quant);
         Core.RegisterQuests(7983, 7980, 7981); // Blasphemy? Blasphe-you! ID:7983 | War Medals ID:7980 | Mega War Medals ID:7981
         while (!Bot.ShouldExit && !Core.CheckInventory("Souls of Heresy", quant))
             Core.KillMonster("sevencircleswar", "r7", "Left", "Heresy Guard", log: false);

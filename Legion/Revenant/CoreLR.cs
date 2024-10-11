@@ -111,7 +111,7 @@ public class CoreLR
         Farm.EvilREP();
 
         int i = 1;
-        Core.Logger($"Farming {quant} Revenant's Spellscroll");
+        Core.FarmingLogger("Revenant's Spellscroll", quant);
         Bot.Quests.UpdateQuest(2060);
         while (!Bot.ShouldExit && ((forquest && !Story.QuestProgression(6897)) || !Core.CheckInventory("Revenant's Spellscroll", quant)))
         {
@@ -154,7 +154,7 @@ public class CoreLR
 
         int i = 1;
         Core.EquipClass(ClassType.Farm);
-        Core.Logger($"Farming {quant} Conquest Wreath");
+        Core.FarmingLogger("Conquest Wreath", quant);
         Bot.Quests.UpdateQuest(4614);
         while (!Bot.ShouldExit && ((forquest && !Story.QuestProgression(6898)) || !Core.CheckInventory("Conquest Wreath", quant)))
         {
@@ -201,7 +201,7 @@ public class CoreLR
         Core.AddDrop(LF3);
 
         int i = 1;
-        Core.Logger($"Farming {quant} Exalted Crown");
+        Core.FarmingLogger("Exalted Crown", quant);
         while (!Bot.ShouldExit && ((forquest && !Story.QuestProgression(6899)) || !Core.CheckInventory("Exalted Crown", quant)))
         {
             Core.EnsureAccept(6899);
