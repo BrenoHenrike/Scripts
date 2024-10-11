@@ -26,15 +26,16 @@ public class Tutorial
         if (Core.HasAchievement(31))
             return;
 
-        Core.Logger("Doing Tutorial Badges\n\tStartup may take a minute... blame AE");
+        Core.Logger("Doing `Tutorial Badges` Required for fresh accounts to leave oaklore (this may take a moment to start.. we dont know why.)\n" +
+        "(by bot i mean.. obviously u can do this manualy)");
 
-        string[] achievements = {
+        string[] achievements = new[]
+        {
         "Combat", "Interact", "Quest", "Skill", "Shop",
         "Enhance", "Rest", "World", "Emotes", "Travel"
-    };
+        };
 
-        Core.Join("battleon");
-        Core.Join("oaklore", "r1", "Left");
+        Core.Join("oaklore-999999", "r1", "Left");
 
         // Ensure player is in the correct cell
         while (!Bot.ShouldExit && Bot.Player.Cell != "r1")
@@ -43,13 +44,15 @@ public class Tutorial
             Core.Jump("r1", "Left");
         }
 
-        // Set achievements
+        // Iterate through achievements and set them
         for (int i = 0; i < achievements.Length; i++)
         {
-            Core.Logger($"Achievement - {achievements[i]}");
+            string achievement = achievements[i];
+            Core.Logger($"Achievement - {achievement}");
             Core.SetAchievement(22 + i);
             Core.Sleep();
         }
     }
+
 
 }
