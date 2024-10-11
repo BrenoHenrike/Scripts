@@ -1284,7 +1284,7 @@
       "null"
     ],
     "path": "Army/CoreArmyLite.cs",
-    "size": 61975,
+    "size": 62217,
     "fileName": "CoreArmyLite.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/CoreArmyLite.cs"
   },
@@ -2042,7 +2042,7 @@
       "tutorial"
     ],
     "path": "Story/Tutorial.cs",
-    "size": 1303,
+    "size": 1493,
     "fileName": "Tutorial.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Tutorial.cs"
   },
@@ -17965,7 +17965,7 @@
       "null"
     ],
     "path": "Other/FarmJoeKits/CoreFarmerJoe.cs",
-    "size": 48795,
+    "size": 48883,
     "fileName": "CoreFarmerJoe.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/CoreFarmerJoe.cs"
   },
