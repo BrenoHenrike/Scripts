@@ -60,21 +60,48 @@ public class CoreLegion
 
     public void DarkToken(int quant = 10000)
     {
-        if (Core.CheckInventory(43205, quant))
+        if (Core.CheckInventory(43266, quant))
             return;
 
         Core.EquipClass(ClassType.Farm);
 
-        Core.AddDrop(43205);
-        Core.FarmingLogger("Dark Token", quant);
-        while (!Bot.ShouldExit && !Core.CheckInventory(43205, quant))
+        Core.AddDrop(43266);
+        Core.FarmingLogger("Dark Token", 10);
+        Core.RegisterQuests(6248, 6249, 6251);
+        while (!Bot.ShouldExit && !Core.CheckInventory(43266, quant))
         {
-            Core.EnsureAcceptmultiple(false, new[] { 6248, 6249, 6251 });
-            Core.HuntMonster("seraphicwardage", "Seraphic Commander", "Seraphic Medals", 5, log: false);
-            Core.HuntMonster("seraphicwardage", "Seraphic Commander", "Mega Seraphic Medals", 3, log: false);
-            Core.HuntMonster("seraphicwardage", "Seraphic Commander", "Seraphic Commanders Slain", 6, log: false);
-            Core.EnsureComplete(6248, 6249, 6251);
+            if (Bot.Map.Name != "seraphicwardage")
+                Core.Join("seraphicwardage");
+
+            if (Bot.Player.Cell != "r3")
+                Core.Jump("r3", "Left");
+
+            List<Monster> M = Bot.Monsters.CurrentAvailableMonsters
+                .FindAll(x => x != null && x.Cell == Bot.Player.Cell);
+
+            M.ForEach(monster =>
+            {
+                bool ded = false;
+                Bot.Events.MonsterKilled += b => ded = true;
+                while (!Bot.ShouldExit && monster != null && !ded)
+                {
+                    Bot.Combat.Attack(monster); // Attack the specific monster
+                    Bot.Sleep(500); // Wait after attacking}
+                    // Check Inventory for item - quant
+                    if (Bot.Inventory.TryGetItem(43266, out InventoryItem? DarkTokenInvItem)
+                     && DarkTokenInvItem != null && DarkTokenInvItem.Quantity >= quant
+
+                    // Check Bank for item - quant
+                    || Bot.Bank.TryGetItem(43266, out InventoryItem? DarkTokenBankItem)
+                     && DarkTokenBankItem != null && DarkTokenBankItem.Quantity >= quant)
+                    {
+                        Core.JumpWait();
+                        break;
+                    }
+                }
+            });
         }
+        Core.CancelRegisteredQuests();
     }
 
     public void DiamondTokenofDage(int quant = 300)
