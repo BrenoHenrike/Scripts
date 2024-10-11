@@ -188,7 +188,7 @@ public class CoreLegion
         };
 
         foreach (var item in items)
-            Core.KillMonster("underworld", "r16", "Left", "*", item.Key, item.Value);
+            Core.KillMonster("underworld", "r16", "Left", "*", item.Key, item.Value, isTemp: false);
     }
 
 
