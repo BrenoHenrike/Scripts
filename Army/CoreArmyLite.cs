@@ -324,7 +324,9 @@ public class CoreArmyLite
         DivideOnCells(SortedDict);
         _getCellsForSmartAggroMon = false;
 
-        AggroMonCells(Core.ButlerOnMe() ? new[] { Bot.Player.Cell } : _SmartAggroMonCells.ToArray());
+        AggroMonCells(_SmartAggroMonCells.ToArray());
+        //leaving this here incase... somethings broke?
+        // AggroMonCells(Core.ButlerOnMe() ? new[] { Bot.Player.Cell } : _SmartAggroMonCells.ToArray());
         AggroMonStart(map);
     }
     private bool _getCellsForSmartAggroMon = false;
@@ -344,10 +346,14 @@ public class CoreArmyLite
 
         SmartAggroMonStart(map, monNames.ToArray());
 
-
-
         while (!Bot.ShouldExit)
-            Bot.Combat.Attack("*");
+        {
+            monNames.ForEach(monName =>
+            {
+                Bot.Combat.Attack(monName);
+                Core.Sleep(500);
+            });
+        }
         AggroMonStop(true);
 
         if (questIDs.Count > 0)
