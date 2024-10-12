@@ -17206,6 +17206,19 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/DragonShinobi.cs"
   },
   {
+    "name": "Martial Artist (Class)",
+    "description": "This script will get Martial Artist class.",
+    "tags": [
+      "martial artist",
+      "early game",
+      "class"
+    ],
+    "path": "Other/Classes/MartialArtist.cs",
+    "size": 4670,
+    "fileName": "MartialArtist.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/MartialArtist.cs"
+  },
+  {
     "name": "LightCaster",
     "description": "null",
     "tags": [
@@ -17353,7 +17366,7 @@
       "all"
     ],
     "path": "Other/Classes/0AllClasses.cs",
-    "size": 27600,
+    "size": 27773,
     "fileName": "0AllClasses.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/0AllClasses.cs"
   },
