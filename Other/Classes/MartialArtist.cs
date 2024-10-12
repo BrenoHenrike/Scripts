@@ -7,7 +7,6 @@ tags: Martial Artist, early game, class
 //cs_include Scripts/CoreFarms.cs
 //cs_include Scripts/CoreAdvanced.cs
 //cs_include Scripts/CoreStory.cs
-using System.Windows.Forms;
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Quests;
 
