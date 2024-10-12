@@ -87,6 +87,7 @@ public class ArmyMartialArtist
         Army.AggroMonMIDs(1);
         Army.AggroMonStart("dreadfight");
         Army.DivideOnCells("Enter");
+        Bot.Player.SetSpawnPoint();
 
         while (!Bot.ShouldExit && !Core.CheckInventory("Dreadhaven General's Soul Fragment", Core.IsMember ? 200 : 400))
         {
@@ -102,6 +103,7 @@ public class ArmyMartialArtist
         Army.AggroMonMIDs(28);
         Army.AggroMonStart("hakuwar");
         Army.DivideOnCells("r10");
+        Bot.Player.SetSpawnPoint();
 
         while (!Bot.ShouldExit && !Core.CheckInventory("Zakhvatchik's Soul Fragment", Core.IsMember ? 200 : 400))
         {
@@ -117,7 +119,7 @@ public class ArmyMartialArtist
         Army.AggroMonMIDs(28);
         Army.AggroMonStart("towerofdoom5");
         Army.DivideOnCells("r10");
-
+        Bot.Player.SetSpawnPoint();
         while (!Bot.ShouldExit && !Core.CheckInventory("Creel's Soul Fragment", Core.IsMember ? 200 : 400))
         {
             Bot.Combat.Attack("Creel");
@@ -149,6 +151,7 @@ public class ArmyMartialArtist
             Army.AggroMonMIDs(10);
             Army.AggroMonStart("hakuvillage");
             Army.DivideOnCells("r2a");
+            Bot.Player.SetSpawnPoint();
 
             while (!Bot.ShouldExit && !Bot.TempInv.Contains("The Master Fought"))
             {
