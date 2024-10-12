@@ -51,8 +51,10 @@ public class SuppliesToSpinTheWheelofChance
             };
 
 
-        string? SwindlesReturnItem = Bot.Config!.Get<SwindlesReturnItem>("SwindlesReturnItem").ToString().Replace('_', ' ');
-        string? SuppliesItem = Bot.Config.Get<SuppliesReward>("SuppliesReward").ToString().Replace('_', ' ');
+        string? SwindlesReturnItem = Bot.Config!.Get<SwindlesReturnItem>("SwindlesReturnItem")
+     .ToString().Replace('_', ' ');
+        string? SuppliesItem = Bot.Config.Get<SuppliesReward>("SuppliesReward")
+            .ToString().Replace('_', ' ');
         int quantity;
 
         if (SwindlesReturnItem == "All")
@@ -61,7 +63,12 @@ public class SuppliesToSpinTheWheelofChance
             SuppliesItem = null;
         }
 
-        Bot.Log($"Item Selected:\nSwindlesReturnItem: {SwindlesReturnItem ?? "All"}\nSuppliesItem: {SuppliesItem ?? "All"}\nIf SwindlesReturnItem is \"All,\" the bot will maximize all rewards from Swindles Return.");
+        Bot.Log($"Item(s) Selected:\n\tSwindlesReturnItem: [{SwindlesReturnItem ?? "All"}]\n" +
+                $"\tSupplies Item: [{SuppliesItem ?? "All"}]\n" +
+                $"Members method?: [{Bot.Player.IsMember}]\n" +
+                (Bot.Config.Get<SuppliesReward>("SuppliesReward") == SuppliesReward.All ? "SwindlesReturnItem is \"All,\" the bot will maximize all rewards from Swindles Return." : string.Empty));
+
+
         Nation.Supplies(SuppliesItem, Bot.Quests.EnsureLoad(2857).Rewards.FirstOrDefault(x => x != null && x.Name == SuppliesItem).MaxStack, Bot.Config!.Get<bool>("UltraAlteon"), Bot.Config!.Get<bool>("KeepVoucher"), Bot.Config!.Get<bool>("AssistantDuring"), SwindlesReturnItem);
 
     }
