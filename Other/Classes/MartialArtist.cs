@@ -60,12 +60,12 @@ public class MartialArtist
 
             //stack and then turn in to  get all required mats for the rest...
             Core.EquipClass(ClassType.Solo);
-            Core.EnsureAccept(9933);
+            Core.EnsureAccept(Core.IsMember ? 9911 : 9902);
             Core.HuntMonster("dreadfight", "Dreadhaven General", "Dreadhaven General's Soul Fragment", Core.IsMember ? 200 : 400);
             Core.HuntMonster("hakuwar", "Zakhvatchik", "Zakhvatchik's Soul Fragment", Core.IsMember ? 200 : 400);
             Core.HuntMonster("towerofdoom5", "DreaCreeldhaven", "Creel's Soul Fragment", Core.IsMember ? 200 : 400);
 
-            Core.EnsureCompleteMulti(9933);
+            Core.EnsureCompleteMulti(Core.IsMember ? 9911 : 9902);
             Bot.Wait.ForPickup("*");
             foreach (int Q in Core.FromTo(9923, 9927))
             {
