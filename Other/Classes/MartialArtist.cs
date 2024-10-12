@@ -60,6 +60,7 @@ public class MartialArtist
 
             //stack and then turn in to  get all required mats for the rest...
             Core.EquipClass(ClassType.Solo);
+            Core.EnsureAccept(9933);
             Core.HuntMonster("dreadfight", "Dreadhaven General", "Dreadhaven General's Soul Fragment ", Core.IsMember ? 200 : 400);
             Core.HuntMonster("hakuwar", "Zakhvatchik", "Zakhvatchik's Soul Fragment ", Core.IsMember ? 200 : 400);
             Core.HuntMonster("towerofdoom5", "DreaCreeldhaven", "Creel's Soul Fragment", Core.IsMember ? 200 : 400);
