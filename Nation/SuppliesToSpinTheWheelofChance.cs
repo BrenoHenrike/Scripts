@@ -43,17 +43,11 @@ public class SuppliesToSpinTheWheelofChance
     {
         // Set Config Options & Convert Enum into string for display
         string? SwindlesReturnItem = Bot.Config!.Get<SwindlesReturnItem>("SwindlesReturnItem").ToString().Replace('_', ' ');
-        string? SuppliesItem = Bot.Config.Get<SuppliesReward>("SuppliesReward").ToString().Replace('_', ' ');
+        string? SuppliesItem = Bot.Config!.Get<SuppliesReward>("SuppliesReward").ToString().Replace('_', ' ');
 
         // Check to see if we're maxing 1 or all items for reward sets.
         SuppliesItem = SuppliesItem == "All" ? null : SuppliesItem;
         SwindlesReturnItem = SwindlesReturnItem == "All" ? null : SwindlesReturnItem;
-
-        // Log Settings
-        Bot.Log($"Item(s):\n" +
-            $"{(SuppliesItem == "All" ? "SuppliesItem is \"All,\" the bot will maximize all rewards from Supplies." : string.Empty)}\n" +
-            $"{(SwindlesReturnItem == "All" ? "SwindlesReturnItem is \"All,\" the bot will maximize all rewards from Swindles Return." : string.Empty)}\n" +
-            $"Members method?: [{Bot.Player.IsMember}]");
 
         // Load quests
         Quest Supplies = Bot.Quests.EnsureLoad(2857);
@@ -75,24 +69,38 @@ public class SuppliesToSpinTheWheelofChance
         // Remove duplicates from combinedRewards based on item ID
         combinedRewards = combinedRewards.DistinctBy(r => r.ID).ToList();
 
+        // Log selected rewards and member status
+        Core.Logger($"Rewards Selected: \"{string.Join("\", \"", combinedRewards.Select(r => r.Name))}\"\n\n" +
+                     $"Maxing Supplies? {(SuppliesItem == null ? "Yes" : "No")}\n" +
+                     $"Maxing Swindles? {(SwindlesReturnItem == null ? "Yes" : "No")}\n",
+                     "STStW Config");
+
         foreach (ItemBase item in combinedRewards)
         {
             // Skip if the item is already in the inventory and we have the max stack
             if (Core.CheckInventory(item.ID, item.MaxStack))
                 continue;
 
+            Core.FarmingLogger(item.Name, item.MaxStack);
+
             // Determine the SwindlesReturnItem if it's null
             SwindlesReturnItem ??= SwindlesReturn.Rewards
-                .Where(r => r != null && !Bot.Inventory.Items.Concat(Bot.Bank.Items).Any(i => i.ID == r.ID) && r.Quantity < r.MaxStack)
+                .Where(r => r != null && !Bot.Inventory.Items.Concat(Bot.Bank.Items).Any(i => i.ID == r.ID) && r.Quantity < r.MaxStack && Nation.SwindlesReturnRewards.Contains(r.Name))
+                .Select(r => r.Name)
+                .FirstOrDefault();
+
+            // Determine the SuppliesItem if it's null
+            SuppliesItem ??= Supplies.Rewards
+                .Where(r => r != null && !Bot.Inventory.Items.Concat(Bot.Bank.Items).Any(i => i.ID == r.ID) && r.Quantity < r.MaxStack && Nation.SuppliesRewards.Contains(r.Name))
                 .Select(r => r.Name)
                 .FirstOrDefault();
 
             // Determine the max stack values directly without null checks
-            int suppliesMaxStack = SuppliesItem == "All"
+            int suppliesMaxStack = SuppliesItem == null
                 ? Supplies.Rewards.FirstOrDefault(x => x != null && x.Name == item.Name).MaxStack
                 : Supplies.Rewards.FirstOrDefault(x => x != null && x.Name == SuppliesItem).MaxStack;
 
-            int swindlesMaxStack = SwindlesReturnItem == "All"
+            int swindlesMaxStack = SwindlesReturnItem == null
                 ? SwindlesReturn.Rewards.FirstOrDefault(x => x != null && x.Name == item.Name).MaxStack
                 : SwindlesReturn.Rewards.FirstOrDefault(x => x != null && x.Name == SwindlesReturnItem).MaxStack;
 
