@@ -71,6 +71,11 @@ public class MartialArtist
                         GoldFarm(1500000);
                         Core.BuyItem("alchemyacademy", 2115, "Gold Voucher 500k");
                         Core.ChainComplete(9936);
+                        Core.HuntMonsterQuest(Q.ID, new (string? mapName, string? monsterName, ClassType classType)[] {
+                            ("nexus", "Frogzard", ClassType.Farm),         // Frogzards Defeated (500): Join nexus, kill Frogzards
+                            ("arcangrove", "Gorillaphant", ClassType.Farm), // Gorillaphants Defeated (500): Join arcangrove, kill Gorillaphants
+                            ("etherwardes", "Water Dragon", ClassType.Farm),      // Dragons Defeated (500): Join etherwardes, kill dragons
+                        }, log: true);
                     }
                 }
                 else if (!Story.QuestProgression(Q.ID))
