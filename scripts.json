@@ -6672,6 +6672,20 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Classes/DragonofTimeArmy.cs"
   },
   {
+    "name": "Army Martial Artist",
+    "description": "Uses your army to get the Martial Artist class",
+    "tags": [
+      "army",
+      "martial artist",
+      "martial",
+      "artist"
+    ],
+    "path": "Army/Classes/ArmyMartialArtist.cs",
+    "size": 5671,
+    "fileName": "ArmyMartialArtist.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Classes/ArmyMartialArtist.cs"
+  },
+  {
     "name": "Void HighLord Army",
     "description": "uses an army to get the void highlord class",
     "tags": [
