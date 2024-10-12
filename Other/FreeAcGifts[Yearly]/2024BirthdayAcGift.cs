@@ -24,7 +24,7 @@ public class BirthdayAC2024
         if (Bot.Quests.IsAvailable(9937))
         {
             Core.EnsureAccept(9937);
-            Core.HuntMonster("yulgar", "Agitated Orb", "Free ACs... and Yogurt");
+            Core.HuntMonster("yulgar", "Agitated Orb", "Free ACs...");
             Core.EnsureComplete(9937);
         }
 
