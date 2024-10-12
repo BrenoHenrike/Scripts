@@ -48,56 +48,43 @@ public class MartialArtist
             Story.ChainQuest(9922);
 
             // 9923 | 500 Punches and 500 Kicks
-            // 9933 | Deathly Slow Start
-            // 9924 | Discount Diploma
-            // 9925 | One Million Miles Searching
-            // 9926 | Ughhhhhh
-            // 9927 | Work Smarter, Not Harder
-            foreach (Quest Q in Core.EnsureLoad(Core.FromTo(9923, 9927)))
+            if (!Story.QuestProgression(9923))
             {
-                // 9924 | Discount Diploma
-                if (Q.ID == 9924)
-                {
-                    // 9933 Deathly Slow Start
-                    if (!Story.QuestProgression(9924))
-                    {
-                        if (!Core.isCompletedBefore(9933))
-                            Core.HuntMonsterQuest(9933, new (string? mapName, string? monsterName, ClassType classType)[] {
-                        ("dreadfight", "Dreadhaven General", ClassType.Solo), // Dreadhaven General's Soul Fragment (10): Join dreadfight, kill Dreadhaven General
-                        ("hakuwar", "Zakhvatchik", ClassType.Solo),           // Zakhvatchik's Soul Fragment (10): Join hakuwar, kill Zakhvatchik (last room)
-                        ("towerofdoom5", "Creel", ClassType.Solo),            // Creel's Soul Fragment (10): Join towerofdoom5, kill Creel (last room)
-                    }, log: true);
-
-                        GoldFarm(1500000);
-                        Core.BuyItem("alchemyacademy", 2115, "Gold Voucher 500k");
-                        Core.ChainComplete(9936);
-                        Core.HuntMonsterQuest(Q.ID, new (string? mapName, string? monsterName, ClassType classType)[] {
-                            ("nexus", "Frogzard", ClassType.Farm),         // Frogzards Defeated (500): Join nexus, kill Frogzards
-                            ("arcangrove", "Gorillaphant", ClassType.Farm), // Gorillaphants Defeated (500): Join arcangrove, kill Gorillaphants
-                            ("etherwardes", "Water Dragon", ClassType.Farm),      // Dragons Defeated (500): Join etherwardes, kill dragons
-                        }, log: true);
-                    }
-                }
-                else if (!Story.QuestProgression(Q.ID))
-                {
-                    Core.HuntMonsterQuest(Q.ID, new (string? mapName, string? monsterName, ClassType classType)[] {
+                Core.Logger("Quest is required, we'll stack mats via \"Deathly Slow Start [9933]\" After");
+                Core.HuntMonsterQuest(9923, new (string? mapName, string? monsterName, ClassType classType)[] {
                     ("nexus", "Frogzard", ClassType.Farm),         // Frogzards Defeated (500): Join nexus, kill Frogzards
                     ("arcangrove", "Gorillaphant", ClassType.Farm), // Gorillaphants Defeated (500): Join arcangrove, kill Gorillaphants
-                    ("etherwardes", "Water Dragon", ClassType.Farm),      // Dragons Defeated (500): Join etherwardes, kill dragons
+                    ("etherwardes", "Water Dragon Warrior", ClassType.Farm),      // Dragons Defeated (500): Join etherwardes, kill dragons
                 }, log: true);
-                }
             }
 
-            // Ensure quest is complete before buying
-            if (!Story.QuestProgression(9928))
+            //stack and then turn in to  get all required mats for the rest...
+            Core.EquipClass(ClassType.Solo);
+            Core.HuntMonster("dreadfight", "Dreadhaven General", "Dreadhaven General's Soul Fragment ", Core.IsMember ? 200 : 400);
+            Core.HuntMonster("hakuwar", "Zakhvatchik", "Zakhvatchik's Soul Fragment ", Core.IsMember ? 200 : 400);
+            Core.HuntMonster("towerofdoom5", "DreaCreeldhaven", "Creel's Soul Fragment", Core.IsMember ? 200 : 400);
+
+            Core.EnsureCompleteMulti(9933);
+            foreach (int Q in Core.FromTo(9923, 9927))
             {
-                Story.KillQuest(9928, "hakuvillage", "The Master");
-                Bot.Wait.ForQuestComplete(9928);
+                // 9933 | Deathly Slow Start
+                // 9924 | Discount Diploma
+                // 9925 | One Million Miles Searching
+                // 9926 | Ughhhhhh
+                // 9927 | Work Smarter, Not Harder
+                Story.ChainQuest(Q);
             }
-
-            Core.BuyItem("hakuvillage", 2490, "Master Artist");
-            Bot.Wait.ForPickup("Martial Artist");
         }
+
+        // Ensure quest is complete before buying
+        if (!Story.QuestProgression(9928))
+        {
+            Story.KillQuest(9928, "hakuvillage", "The Master");
+            Bot.Wait.ForQuestComplete(9928);
+        }
+
+        Core.BuyItem("hakuvillage", 2490, "Master Artist");
+        Bot.Wait.ForPickup("Martial Artist");
 
         if (rankUpClass)
             Adv.RankUpClass("Martial Artist");
