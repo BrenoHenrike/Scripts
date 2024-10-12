@@ -186,6 +186,7 @@ tags: all classes, class, farm, complete, all
 //cs_include Scripts/Other/MergeShops/LothianTreasuryMerge.cs
 //cs_include Scripts/Other/Classes/SovereignOfStorms.cs
 //cs_include Scripts/Other/Classes/Sentinal.cs
+//cs_include Scripts/Other/Classes/MartialArtist.cs
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Options;
@@ -270,6 +271,7 @@ public class AllClasses
     private InfiniteLegionDC ILDC = new();
     private LightMage LM = new();
     private MechaJouster MJ = new();
+    private MartialArtist MA = new();
     private Necromancer Necro = new();
     private NeoMetalNecro NMN = new();
     private ProtoSartorium PS = new();
@@ -478,6 +480,7 @@ public class AllClasses
         CheckAndExecute("Frost SpititReaver", () => FSR.GetFSR(rankUpClass));
         CheckAndExecute("HighSeas Commander", () => HSC.GetHSC(rankUpClass));
         CheckAndExecute("Infinite Legion Dark Caster", () => ILDC.GetILDC(rankUpClass));
+        CheckAndExecute("Martial Artist", () => MA.GetMartialArtist(rankUpClass));
         CheckAndExecute("MechaJouster", () => MJ.GetMJ(rankUpClass));
         CheckAndExecute("Necromancer", () => Necro.GetNecromancer(rankUpClass));
         CheckAndExecute("Neo Metal Necro", () => NMN.GetClass(rankUpClass));
