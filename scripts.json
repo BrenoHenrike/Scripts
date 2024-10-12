@@ -5406,6 +5406,19 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Hollowborn/MergeShops/HollowbornLoveCasterMerge.cs"
   },
   {
+    "name": "Buy All Gold Vouchers",
+    "description": "as the name says",
+    "tags": [
+      "gold voucher",
+      "gold",
+      "voucher"
+    ],
+    "path": "Tools/NooneAskeforThese/BuyAllGoldVouchers.cs",
+    "size": 4135,
+    "fileName": "BuyAllGoldVouchers.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/NooneAskeforThese/BuyAllGoldVouchers.cs"
+  },
+  {
     "name": "GrabFiveRandomMerges",
     "description": "This class provides functionality to randomly select up to five filenames from a specified directory within the user's \"Documents\" folder. It writes the selected filenames to a temporary markdown file and opens the file in the default associated application.",
     "tags": [
