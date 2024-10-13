@@ -63,7 +63,7 @@ public class MartialArtist
             Core.EnsureAccept(Core.IsMember ? 9911 : 9902);
             Core.HuntMonster("dreadfight", "Dreadhaven General", "Dreadhaven General's Soul Fragment", Core.IsMember ? 200 : 400, isTemp: false);
             Core.HuntMonster("hakuwar", "Zakhvatchik", "Zakhvatchik's Soul Fragment", Core.IsMember ? 200 : 400, isTemp: false);
-            Core.HuntMonster("towerofdoom5", "DreaCreeldhaven", "Creel's Soul Fragment", Core.IsMember ? 200 : 400, isTemp: false);
+            Core.HuntMonster("towerofdoom5", "Creel", "Creel's Soul Fragment", Core.IsMember ? 200 : 400, isTemp: false);
 
             Core.EnsureCompleteMulti(Core.IsMember ? 9911 : 9902);
             Bot.Wait.ForPickup("*");
