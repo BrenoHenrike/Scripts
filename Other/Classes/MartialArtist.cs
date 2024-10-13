@@ -66,15 +66,19 @@ public class MartialArtist
             Core.HuntMonster("towerofdoom5", "Creel", "Creel's Soul Fragment", Core.IsMember ? 200 : 400, isTemp: false);
 
             Core.EnsureCompleteMulti(Core.IsMember ? 9911 : 9902);
-            Bot.Wait.ForPickup("*");
-            foreach (int Q in Core.FromTo(9923, 9927))
+            foreach (int i in new[] { 88662, 88661, 88660 })
+                Bot.Wait.ForPickup(i);
+
+            Core.ChainComplete(9933);
+
+            foreach (int Q in Core.FromTo(9924, 9927))
             {
                 // 9933 | Deathly Slow Start
                 // 9924 | Discount Diploma
                 // 9925 | One Million Miles Searching
                 // 9926 | Ughhhhhh
                 // 9927 | Work Smarter, Not Harder
-                Story.ChainQuest(Q);
+                Core.ChainComplete(Q);
             }
         }
 
