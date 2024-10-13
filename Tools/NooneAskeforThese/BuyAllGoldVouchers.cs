@@ -52,11 +52,18 @@ public class BuyAllGoldVouchers
                         Bot.Wait.ForActionCooldown(Skua.Core.Models.GameActions.LoadShop);
                         Core.Sleep();
                     }
-                    ShopItem Item = Bot.Shops.Items.FirstOrDefault(s => s != null && s.Name == formattedVoucher);
-                    Core.FarmingLogger(Item.Name, Item.MaxStack);
-                    int currentQuantity = Bot.Inventory.GetQuantity(formattedVoucher);
-                    Farm.Gold(Math.Max(0, Math.Min(Item.MaxStack, 300 - currentQuantity) * 500000));
-                    Core.BuyItem("alchemyacademy", 2036, Item.Name, Math.Min(200, Math.Max(0, Math.Min(Item.MaxStack, 300 - currentQuantity))));
+                    ShopItem? Item = Bot.Shops.Items.FirstOrDefault(s => s != null && s.Name == formattedVoucher);
+                    if (Item != null)
+                    {
+                        Core.FarmingLogger(Item.Name, Item.MaxStack);
+                        int currentQuantity = Bot.Inventory.GetQuantity(formattedVoucher);
+                        Farm.Gold(Math.Max(0, Math.Min(Item.MaxStack, 300 - currentQuantity) * 500000));
+                        Core.BuyItem("alchemyacademy", 2036, Item.Name, Math.Min(200, Math.Max(0, Math.Min(Item.MaxStack, 300 - currentQuantity))));
+                    }
+                    else
+                    {
+                        Core.Logger($"Item '{formattedVoucher}' not found in the shop.");
+                    }
                     break;
 
                 case "25":
@@ -68,10 +75,17 @@ public class BuyAllGoldVouchers
                         Bot.Wait.ForActionCooldown(Skua.Core.Models.GameActions.LoadShop);
                         Core.Sleep();
                     }
-                    ShopItem Item2 = Bot.Shops.Items.FirstOrDefault(s => s != null && s.Name == formattedVoucher);
-                    int currentQuantity2 = Bot.Inventory.GetQuantity(formattedVoucher);
-                    Farm.Gold(Math.Max(0, Math.Min(Item2.MaxStack, 300 - currentQuantity2) * 500000));
-                    Core.BuyItem("mobius", 1597, Item2.Name, Math.Min(200, Math.Max(0, Math.Min(Item2.MaxStack, 300 - currentQuantity2))));
+                    ShopItem? Item2 = Bot.Shops.Items.FirstOrDefault(s => s != null && s.Name == formattedVoucher);
+                    if (Item2 != null)
+                    {
+                        int currentQuantity2 = Bot.Inventory.GetQuantity(formattedVoucher);
+                        Farm.Gold(Math.Max(0, Math.Min(Item2.MaxStack, 300 - currentQuantity2) * 500000));
+                        Core.BuyItem("mobius", 1597, Item2.Name, Math.Min(200, Math.Max(0, Math.Min(Item2.MaxStack, 300 - currentQuantity2))));
+                    }
+                    else
+                    {
+                        Core.Logger($"Item '{formattedVoucher}' not found in the shop.");
+                    }
                     break;
 
                 case "7.5":
@@ -83,15 +97,19 @@ public class BuyAllGoldVouchers
                         Bot.Wait.ForActionCooldown(Skua.Core.Models.GameActions.LoadShop);
                         Core.Sleep();
                     }
-                    ShopItem Item3 = Bot.Shops.Items.FirstOrDefault(s => s != null && s.Name == formattedVoucher);
-                    int currentQuantity3 = Bot.Inventory.GetQuantity(formattedVoucher);
-                    Farm.Gold(Math.Max(0, Math.Min(Item3.MaxStack, 300 - currentQuantity3) * 500000));
-                    Core.BuyItem("alchemyacademy", 2116, Item3.Name, Math.Min(200, Math.Max(0, Math.Min(Item3.MaxStack, 300 - currentQuantity3))));
+                    ShopItem? Item3 = Bot.Shops.Items.FirstOrDefault(s => s != null && s.Name == formattedVoucher);
+                    if (Item3 != null)
+                    {
+                        int currentQuantity3 = Bot.Inventory.GetQuantity(formattedVoucher);
+                        Farm.Gold(Math.Max(0, Math.Min(Item3.MaxStack, 300 - currentQuantity3) * 500000));
+                        Core.BuyItem("alchemyacademy", 2116, Item3.Name, Math.Min(200, Math.Max(0, Math.Min(Item3.MaxStack, 300 - currentQuantity3))));
+                    }
+                    else
+                    {
+                        Core.Logger($"Item '{formattedVoucher}' not found in the shop.");
+                    }
                     break;
             }
         }
     }
 }
-
-
-
