@@ -2231,7 +2231,7 @@ public class CoreBots
         Bot.Drops.Add(itemID);
         EnsureAccept(questID);
         Sleep();
-        EnsureCompleteMulti(questID, itemID);
+        EnsureCompleteMulti(questID, itemID: itemID);
     }
 
     /// <param name="QuestID">ID of the quest</param>
