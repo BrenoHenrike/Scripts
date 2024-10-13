@@ -45,7 +45,7 @@ public class MartialArtist
             Farm.Experience(65);
 
             // 9922 | Join My Dojo
-            Story.ChainQuest(9922);
+            Core.ChainComplete(9922);
 
             // 9923 | 500 Punches and 500 Kicks
             if (!Story.QuestProgression(9923))
