@@ -1198,11 +1198,11 @@ public class CoreNation
 
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
         {
-            if (Bot.Player.Cell != "End")
-                Core.Jump("Eend", "Left");
-            Core.KillMonster("evilmarsh", "End", "Left", "Tainted Elemental", log: false);
+            // if (Bot.Player.Cell != "End")
+            //     Core.Jump("Eend", "Left");
+            Core.HuntMonster("evilmarsh", "Tainted Elemental", log: false);
 
-            if (item != "Voucher of Nulgath" && sellMemVoucher && Core.CheckInventory("Voucher of Nulgath"))
+            if (item != "Voucher of Nulgath" && sellMemVoucher == true && Core.CheckInventory("Voucher of Nulgath"))
             {
                 do
                 {
@@ -2112,15 +2112,9 @@ public class CoreNation
             // Hunt the specified monster to exchange Unidentified 13 for gold.
             while (!Bot.ShouldExit && Core.CheckInventory(Uni(13)))
             {
-                // Core.EnsureAccept(554);
-                // // Core.DebugLogger(this);
-                // Core.KillMonster("underworld", "r2", "up", "Undead Legend", "Undead Legend Rune");
-                // // Core.DebugLogger(this);
-                // Core.EnsureComplete(554);
-                Core.HuntMonsterQuest(9923, new (string? mapName, string? monsterName, ClassType classType)[] {
-                    ("underworld", "Undead Legend", ClassType.Solo),
-                }, log: true);
-                // Core.DebugLogger(this);
+                Core.EnsureAccept(554);
+                Core.KillMonster("underworld", "r2", "up", "Undead Legend", "Undead Legend Rune", log: false);
+                Core.EnsureComplete(554);
             }
         }
 

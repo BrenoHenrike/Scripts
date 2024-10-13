@@ -1956,6 +1956,9 @@ public class CoreBots
             if (Bot.Options.SafeTimings)
                 Bot.Wait.ForQuestComplete(questID);
 
+            if (Bot.Lite.ReacceptQuest)
+                Bot.Wait.ForQuestAccept(questID);
+
             return !Bot.Quests.IsInProgress(questID);
         }
         else
@@ -1989,6 +1992,8 @@ public class CoreBots
 
                 if (Bot.Options.SafeTimings)
                     Bot.Wait.ForQuestComplete(questID.ID);
+                if (Bot.Lite.ReacceptQuest)
+                    Bot.Wait.ForQuestAccept(questID.ID);
             }
         }
     }
@@ -2023,6 +2028,9 @@ public class CoreBots
 
                     if (Bot.Options.SafeTimings)
                         Bot.Wait.ForQuestComplete(questID);
+
+                    if (Bot.Lite.ReacceptQuest)
+                        Bot.Wait.ForQuestAccept(questID);
 
                     return completed;
                 }
@@ -2067,6 +2075,8 @@ public class CoreBots
 
         if (Bot.Options.SafeTimings)
             Bot.Wait.ForQuestComplete(questID);
+        if (Bot.Lite.ReacceptQuest)
+            Bot.Wait.ForQuestAccept(questID);
 
         return !Bot.Quests.IsInProgress(questID) ? turnIns : 0;
     }
