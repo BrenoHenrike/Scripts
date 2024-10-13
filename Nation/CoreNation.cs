@@ -1363,19 +1363,6 @@ public class CoreNation
         // Wait for the item to be picked up and cancel any registered quests
         Bot.Wait.ForPickup(item);
         Core.CancelRegisteredQuests();
-
-        Core.RegisterQuest(QuestID);
-        while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, req.Quantity))
-        {
-            // mob 1
-            Core.HuntMonster("Map", "Mob", "Item", quantity);
-            // mob 2
-            Core.HuntMonster("Map", "Mob", "Item", quantity);
-            // mob 3
-            Core.HuntMonster("Map", "Mob", "Item", quantity);
-        }
-        Bot.Wait.ForPickup(item);
-        Core.CancelRegisteredQuests();
     }
 
     /// <summary>
@@ -2098,7 +2085,7 @@ public class CoreNation
     /// Farms gold through Leery Contract exchange.
     /// </summary>
     /// <param name="quant">Desired gold quantity.</param>
-    public void LeeryExchangeGold(int quant = 1000000000)
+    public void LeeryExchangeGold(int quant = 100000000)
     {
         // Check if the player is a member or already has the desired gold quantity.
         if (!Core.IsMember || Bot.Player.Gold >= quant)
