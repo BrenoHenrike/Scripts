@@ -89,7 +89,7 @@ public class MartialArtist
             Bot.Wait.ForQuestComplete(9928);
         }
 
-        Core.BuyItem("hakuvillage", 2490, "Master Artist");
+        Core.BuyItem("hakuvillage", 2490, "Martial Artist");
         Bot.Wait.ForPickup("Martial Artist");
 
         if (rankUpClass)

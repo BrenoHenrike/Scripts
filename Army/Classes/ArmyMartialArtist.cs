@@ -164,7 +164,7 @@ public class ArmyMartialArtist
         }
         Army.waitForParty("party", "Enter");
 
-        Core.BuyItem("hakuvillage", 2490, "Master Artist");
+        Core.BuyItem("hakuvillage", 2490, "Martial Artist");
         Bot.Wait.ForPickup("Martial Artist");
 
         Adv.RankUpClass("Martial Artist");
