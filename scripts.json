@@ -6,7 +6,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 264796,
+    "size": 266002,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -1744,7 +1744,7 @@
       "null"
     ],
     "path": "Nation/CoreNation.cs",
-    "size": 92555,
+    "size": 93978,
     "fileName": "CoreNation.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/CoreNation.cs"
   },
@@ -8678,7 +8678,7 @@
       "null"
     ],
     "path": "Nation/Various/LeeryExchange(gold).cs",
-    "size": 614,
+    "size": 720,
     "fileName": "LeeryExchange(gold).cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/LeeryExchange(gold).cs"
   },
@@ -17241,7 +17241,7 @@
       "class"
     ],
     "path": "Other/Classes/MartialArtist.cs",
-    "size": 4332,
+    "size": 4334,
     "fileName": "MartialArtist.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/MartialArtist.cs"
   },
