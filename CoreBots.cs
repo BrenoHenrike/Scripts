@@ -1925,6 +1925,7 @@ public class CoreBots
             Sleep(ActionDelay * 2);
             // Bot.Send.Packet($"%xt%zm%acceptQuest%{Bot.Map.RoomID}%{quest.ID}%");
             Bot.Quests.EnsureAccept(quest.ID);
+            Bot.Wait.ForActionCooldown(GameActions.AcceptQuest);
             DebugLogger(this);
         }
     }
@@ -1949,7 +1950,13 @@ public class CoreBots
                         && CheckInventory(questData.Requirements.Select(x => x.ID).ToArray())
                         && CheckInventory(questData.AcceptRequirements.Select(x => x.ID).ToArray())))
         {
-            return Bot.Quests.EnsureComplete(questID, itemID);
+            Bot.Flash.CallGameFunction("world.tryQuestComplete", questID, itemID, false, 1);
+            Bot.Wait.ForActionCooldown(GameActions.TryQuestComplete);
+
+            if (Bot.Options.SafeTimings)
+                Bot.Wait.ForQuestComplete(questID);
+
+            return !Bot.Quests.IsInProgress(questID);
         }
         else
         {
@@ -1976,8 +1983,12 @@ public class CoreBots
                 || questID.Requirements.All(r => r != null && r.ID > 0)
                 && CheckInventory(questID.Requirements.Select(x => x.ID).ToArray())))
             {
-                Bot.Quests.EnsureComplete(questID.ID);
+
+                Bot.Flash.CallGameFunction("world.tryQuestComplete", questID.ID, -1, false, 1);
                 Bot.Wait.ForActionCooldown(GameActions.TryQuestComplete);
+
+                if (Bot.Options.SafeTimings)
+                    Bot.Wait.ForQuestComplete(questID.ID);
             }
         }
     }
@@ -2002,11 +2013,17 @@ public class CoreBots
                 if (!CheckInventory(item.Name, toInv: false)
                     && (itemList == null || (itemList != null && itemList.Contains(item.Name))))
                 {
-                    bool completed = Bot.Quests.EnsureComplete(questID, item.ID);
+                    bool completed = !Bot.Quests.IsInProgress(questID);
                     if (Bot.Drops.Exists(item.ID))
                         Bot.Drops.Pickup(item.Name);
                     Bot.Wait.ForPickup(item.Name);
-                    Bot.Wait.ForQuestComplete(questID);
+
+                    Bot.Flash.CallGameFunction("world.tryQuestComplete", questID, item.ID, false, 1);
+                    Bot.Wait.ForActionCooldown(GameActions.TryQuestComplete);
+
+                    if (Bot.Options.SafeTimings)
+                        Bot.Wait.ForQuestComplete(questID);
+
                     return completed;
                 }
             }
@@ -2046,6 +2063,7 @@ public class CoreBots
         }
 
         Bot.Flash.CallGameFunction("world.tryQuestComplete", questID, itemID, false, turnIns);
+        Bot.Wait.ForActionCooldown(GameActions.TryQuestComplete);
 
         if (Bot.Options.SafeTimings)
             Bot.Wait.ForQuestComplete(questID);
@@ -2228,7 +2246,8 @@ public class CoreBots
     /// <param name="itemID">ID of the choose-able reward item</param>
     public void ChainComplete(int questID, int itemID = -1)
     {
-        Bot.Drops.Add(itemID);
+        if (itemID > 0)
+            Bot.Drops.Add(itemID);
         EnsureAccept(questID);
         Sleep();
         EnsureCompleteMulti(questID, itemID: itemID);
@@ -2616,7 +2635,7 @@ public class CoreBots
     /// <param name="publicRoom">Whether to use a public room.</param>
     public void HuntMonster(string map, string monster, string? item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
     {
-        if (item != null && (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
+        if (item != null && (isTemp ? Bot.TempInv.Contains(item, quant) : Bot.Inventory.Contains(item, quant)))
             return;
 
         DebugLogger(this);
@@ -2659,14 +2678,14 @@ public class CoreBots
 
             bool ded = false;
             Bot.Events.MonsterKilled += b => ded = true;
-            while (!Bot.ShouldExit && !ded || isTemp ? !Bot.TempInv.Contains(item, quant) : !CheckInventory(item, quant))
+            while (!Bot.ShouldExit && !ded || isTemp ? !Bot.TempInv.Contains(item, quant) : !Bot.Inventory.Contains(item, quant))
             {
                 while (!Bot.ShouldExit && !Bot.Player.Alive)
                     Sleep();
                 Jump(targetMonster.Cell);
                 Bot.Combat.Attack(targetMonster);
                 Sleep();
-                if (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant))
+                if (isTemp ? Bot.TempInv.Contains(item, quant) : Bot.Inventory.Contains(item, quant))
                     break;
             }
             JumpWait();
@@ -3357,34 +3376,32 @@ public class CoreBots
             if (name != "*")
                 Logger($"Attacking Monster: {name}, for {item}  {dynamicQuant(item, isTemp)}/{quantity}");
 
-        while (!Bot.ShouldExit && item != null && (isTemp ? !Bot.TempInv.Contains(item, quantity) : !CheckInventory(item, quantity)))
+        while (!Bot.ShouldExit && item != null && (isTemp ? !Bot.TempInv.Contains(item, quantity) : !Bot.Inventory.Contains(item, quantity)))
         {
             DebugLogger(this);
             if (name == "*")
             {
                 foreach (Monster monster in Bot.Monsters.MapMonsters.Where(x => x != null && x.Cell == cell))
                 {
-                    if (isTemp ? Bot.TempInv.Contains(item, quantity) : CheckInventory(item, quantity))
+                    if (isTemp ? Bot.TempInv.Contains(item, quantity) : Bot.Inventory.Contains(item, quantity))
                         break;
 
                     bool ded = false;
                     Bot.Events.MonsterKilled += b => ded = true;
-                    while (!Bot.ShouldExit && !ded || isTemp ? !Bot.TempInv.Contains(item, quantity) : !CheckInventory(item, quantity))
+                    while (!Bot.ShouldExit && !ded || isTemp ? !Bot.TempInv.Contains(item, quantity) : !Bot.Inventory.Contains(item, quantity))
                     {
                         if (cell != null && Bot.Player.Cell != cell)
                             Jump(cell);
 
                         if (!Bot.Combat.StopAttacking)
                             Bot.Combat.Attack(monster);
-
                         Sleep();
 
-
-                        if (isTemp ? Bot.TempInv.Contains(item, quantity) : CheckInventory(item, quantity))
+                        if (isTemp ? Bot.TempInv.Contains(item, quantity) : Bot.Inventory.Contains(item, quantity))
                             break;
                     }
 
-                    if (isTemp ? Bot.TempInv.Contains(item, quantity) : CheckInventory(item, quantity))
+                    if (isTemp ? Bot.TempInv.Contains(item, quantity) : Bot.Inventory.Contains(item, quantity))
                         break;
                 }
             }
@@ -3394,12 +3411,12 @@ public class CoreBots
                 {
                     foreach (Monster targetMonster in Bot.Monsters.MapMonsters.Where(x => x != null && x.Cell == cell && x.Name.Equals(name, StringComparison.OrdinalIgnoreCase)))
                     {
-                        if (isTemp ? Bot.TempInv.Contains(item, quantity) : CheckInventory(item, quantity))
+                        if (isTemp ? Bot.TempInv.Contains(item, quantity) : Bot.Inventory.Contains(item, quantity))
                             break;
 
                         bool ded = false;
                         Bot.Events.MonsterKilled += b => ded = true;
-                        while (!Bot.ShouldExit && !ded || isTemp ? !Bot.TempInv.Contains(item, quantity) : !CheckInventory(item, quantity))
+                        while (!Bot.ShouldExit && !ded || isTemp ? !Bot.TempInv.Contains(item, quantity) : !Bot.Inventory.Contains(item, quantity))
                         {
                             if (cell != null && Bot.Player.Cell != cell)
                             {
@@ -3410,11 +3427,11 @@ public class CoreBots
                             if (!Bot.Combat.StopAttacking)
                                 Bot.Combat.Attack(targetMonster);
 
-                            if (isTemp ? Bot.TempInv.Contains(item, quantity) : CheckInventory(item, quantity))
+                            if (isTemp ? Bot.TempInv.Contains(item, quantity) : Bot.Inventory.Contains(item, quantity))
                                 break;
                         }
 
-                        if (isTemp ? Bot.TempInv.Contains(item, quantity) : CheckInventory(item, quantity))
+                        if (isTemp ? Bot.TempInv.Contains(item, quantity) : Bot.Inventory.Contains(item, quantity))
                             break;
                         Sleep();
                     }
@@ -3432,7 +3449,10 @@ public class CoreBots
             }
             DebugLogger(this);
             if (item != null)
+            {
+                Bot.Wait.ForDrop(item);
                 Bot.Wait.ForPickup(item);
+            }
         }
 
     }
@@ -4621,7 +4641,7 @@ public class CoreBots
                     blackListedCells.UnionWith(new[] { "r23" });
                     break;
 
-                    case "battlecon":                    
+                case "battlecon":
                     blackListedCells.UnionWith(new[] { "rFight" });
                     break;
 
@@ -5563,14 +5583,15 @@ public class CoreBots
         {
             // Ensure and wait for quest acceptance
             EnsureAccept(QuestID);
-            Bot.Wait.ForQuestAccept(QuestID, 20);
+            Bot.Wait.ForTrue(() => Bot.Quests.EnsureAccept(QuestID), 20);
 
             // Abandon the quest after acceptance
             AbandonQuest(QuestID);
         }
+        EnsureAccept(QuestID);
 
         // Return whether the quest was accepted
-        return EnsureAccept(QuestID);
+        return Bot.Quests.EnsureAccept(QuestID);
     }
 
 
@@ -5768,23 +5789,30 @@ public class CoreBots
     /// <param name="isTemp">Specifies whether the item is temporary.</param>
     public void DarkMakaiItem(string? item = null, int quantity = 1, bool isTemp = true)
     {
-        if (string.IsNullOrEmpty(item) || (isTemp ? Bot.TempInv.Contains(item, quantity) : CheckInventory(item, quantity)))
+        if (string.IsNullOrEmpty(item) || (isTemp ? Bot.TempInv.Contains(item, quantity) : Bot.Inventory.Contains(item, quantity)))
             return;
 
         var maps = new[] { ("tercessuinotlim", "m1"), (IsMember ? "Nulgath" : "evilmarsh", "Field1") };
         var randomMapIndex = new Random().Next(0, maps.Length);
         var selectedMap = maps[randomMapIndex];
+        DebugLogger(this);
 
         Join(selectedMap.Item1, selectedMap.Item2, "Left");
+        DebugLogger(this);
 
-        while (!Bot.ShouldExit && isTemp ? !Bot.TempInv.Contains(item!, quantity) : !CheckInventory(item, quantity))
+        while (!Bot.ShouldExit && isTemp ? !Bot.TempInv.Contains(item!, quantity) : !Bot.Inventory.Contains(item, quantity))
         {
+            DebugLogger(this);
             if (Bot.Player.Cell != selectedMap.Item2)
                 Jump(selectedMap.Item2);
 
+            DebugLogger(this);
             Bot.Combat.Attack("Dark Makai");
+            DebugLogger(this);
             Sleep();
+            DebugLogger(this);
         }
+        DebugLogger(this);
     }
 
     public void AuraHandling(string? targetAuraName)

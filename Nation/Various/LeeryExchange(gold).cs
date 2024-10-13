@@ -20,6 +20,7 @@ public class leeryExchange
 
     public void ScriptMain(IScriptInterface Bot)
     {
+        Core.BankingBlackList.AddRange(new[] { Nation.Uni(13), "Diamond of Nulgath", "Relic of Chaos" });
         Core.SetOptions();
 
         Nation.LeeryExchangeGold();

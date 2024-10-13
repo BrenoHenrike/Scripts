@@ -1198,6 +1198,8 @@ public class CoreNation
 
         while (!Bot.ShouldExit && !Core.CheckInventory(item, quant))
         {
+            if (Bot.Player.Cell != "End")
+                Core.Jump("Eend", "Left");
             Core.KillMonster("evilmarsh", "End", "Left", "Tainted Elemental", log: false);
 
             if (item != "Voucher of Nulgath" && sellMemVoucher && Core.CheckInventory("Voucher of Nulgath"))
@@ -1361,6 +1363,19 @@ public class CoreNation
         // Wait for the item to be picked up and cancel any registered quests
         Bot.Wait.ForPickup(item);
         Core.CancelRegisteredQuests();
+
+        Core.RegisterQuest(QuestID);
+        while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, req.Quantity))
+        {
+            // mob 1
+            Core.HuntMonster("Map", "Mob", "Item", quantity);
+            // mob 2
+            Core.HuntMonster("Map", "Mob", "Item", quantity);
+            // mob 3
+            Core.HuntMonster("Map", "Mob", "Item", quantity);
+        }
+        Bot.Wait.ForPickup(item);
+        Core.CancelRegisteredQuests();
     }
 
     /// <summary>
@@ -1417,14 +1432,19 @@ public class CoreNation
             return;
 
         Core.AddDrop("Diamond of Nulgath");
+        // Core.DebugLogger(this);
 
         if (farmDiamond)
             BambloozevsDrudgen("Diamond of Nulgath", 15);
+        // Core.DebugLogger(this);
 
         Core.EquipClass(ClassType.Farm);
+        // Core.DebugLogger(this);
         while (!Bot.ShouldExit && Core.CheckInventory("Diamond of Nulgath", 15) && !Core.CheckInventory(Uni(13), 13))
         {
+            // Core.DebugLogger(this);
             Core.ResetQuest(869);
+            // Core.DebugLogger(this);
             Core.DarkMakaiItem("Dark Makai Sigil");
             Core.EnsureCompleteMulti(869);
         }
@@ -1508,6 +1528,7 @@ public class CoreNation
         Core.AddDrop("Unidentified 13");
         quant = quant > 13 ? 13 : quant;
 
+        // Core.DebugLogger(this);
         if (Core.CheckInventory(CragName))
             while (!Bot.ShouldExit && !Core.CheckInventory("Unidentified 13", quant))
                 DiamondExchange();
@@ -2077,28 +2098,43 @@ public class CoreNation
     /// Farms gold through Leery Contract exchange.
     /// </summary>
     /// <param name="quant">Desired gold quantity.</param>
-    public void LeeryExchangeGold(int quant = 100000000)
+    public void LeeryExchangeGold(int quant = 1000000000)
     {
         // Check if the player is a member or already has the desired gold quantity.
         if (!Core.IsMember || Bot.Player.Gold >= quant)
             return;
 
+        // Core.DebugLogger(this);
         // Add Unidentified 13 to the drops list.
         Core.AddDrop("Unidentified 13");
 
+        // Core.DebugLogger(this);
         // Toggle Gold Boost and register the required quest.
         Farm.ToggleBoost(BoostType.Gold);
-        Core.RegisterQuests(554);
+        // Core.DebugLogger(this);
 
+        // Core.DebugLogger(this);
         // Continue farming until the desired gold quantity is reached.
         while (!Bot.ShouldExit && Bot.Player.Gold < quant)
         {
+            // Core.DebugLogger(this);
             // Farm Unidentified 13 for the exchange.
             FarmUni13(13);
+            // Core.DebugLogger(this);
 
             // Hunt the specified monster to exchange Unidentified 13 for gold.
-            while (Core.CheckInventory("Unidentified 13"))
-                Core.HuntMonster("underworld", "Undead Legend", "Undead Legend Rune", log: false);
+            while (!Bot.ShouldExit && Core.CheckInventory(Uni(13)))
+            {
+                // Core.EnsureAccept(554);
+                // // Core.DebugLogger(this);
+                // Core.KillMonster("underworld", "r2", "up", "Undead Legend", "Undead Legend Rune");
+                // // Core.DebugLogger(this);
+                // Core.EnsureComplete(554);
+                Core.HuntMonsterQuest(9923, new (string? mapName, string? monsterName, ClassType classType)[] {
+                    ("underworld", "Undead Legend", ClassType.Solo),
+                }, log: true);
+                // Core.DebugLogger(this);
+            }
         }
 
         // Cancel the registered quest and disable Gold Boost.
