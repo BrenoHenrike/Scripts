@@ -6,7 +6,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 266383,
+    "size": 266319,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -17,7 +17,7 @@
       "null"
     ],
     "path": "CoreDailies.cs",
-    "size": 50624,
+    "size": 50272,
     "fileName": "CoreDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreDailies.cs"
   },
@@ -2014,7 +2014,7 @@
       "story"
     ],
     "path": "Story/Crulonwed.cs",
-    "size": 1894,
+    "size": 1663,
     "fileName": "Crulonwed.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Crulonwed.cs"
   },
@@ -2920,7 +2920,7 @@
       "sally"
     ],
     "path": "Story/NecroProject.cs",
-    "size": 2299,
+    "size": 1914,
     "fileName": "NecroProject.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/NecroProject.cs"
   },
@@ -3108,7 +3108,7 @@
       "shadow-slayer"
     ],
     "path": "Story/ShadowSlayerK.cs",
-    "size": 10033,
+    "size": 9494,
     "fileName": "ShadowSlayerK.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/ShadowSlayerK.cs"
   },
@@ -6681,7 +6681,7 @@
       "artist"
     ],
     "path": "Army/Classes/ArmyMartialArtist.cs",
-    "size": 6042,
+    "size": 5923,
     "fileName": "ArmyMartialArtist.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Army/Classes/ArmyMartialArtist.cs"
   },
@@ -10064,7 +10064,7 @@
       "scepter"
     ],
     "path": "Seasonal/BlackFriday/LotusTombMerge.cs",
-    "size": 5053,
+    "size": 4977,
     "fileName": "LotusTombMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/BlackFriday/LotusTombMerge.cs"
   },
@@ -13882,7 +13882,7 @@
       "null"
     ],
     "path": "Story/Hollowborn/CoreHollowbornStory.cs",
-    "size": 9040,
+    "size": 8341,
     "fileName": "CoreHollowbornStory.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/Hollowborn/CoreHollowbornStory.cs"
   },
@@ -17117,7 +17117,7 @@
       "gold"
     ],
     "path": "Other/FreeBoosts/FreeBoostsQuest(10mns)[Rng].cs",
-    "size": 3563,
+    "size": 3480,
     "fileName": "FreeBoostsQuest(10mns)[Rng].cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FreeBoosts/FreeBoostsQuest(10mns)[Rng].cs"
   },
@@ -17267,7 +17267,7 @@
       "class"
     ],
     "path": "Other/Classes/MartialArtist.cs",
-    "size": 4482,
+    "size": 4237,
     "fileName": "MartialArtist.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/MartialArtist.cs"
   },
@@ -17512,7 +17512,7 @@
       "null"
     ],
     "path": "Other/Various/ShadowslayerSummoningRitual2.cs",
-    "size": 2023,
+    "size": 1926,
     "fileName": "ShadowslayerSummoningRitual2.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Various/ShadowslayerSummoningRitual2.cs"
   },
@@ -18991,7 +18991,7 @@
       "freed"
     ],
     "path": "Other/MergeShops/AranxsAzalithRewardsMerge.cs",
-    "size": 6883,
+    "size": 6593,
     "fileName": "AranxsAzalithRewardsMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/AranxsAzalithRewardsMerge.cs"
   },
@@ -21072,7 +21072,7 @@
       "skulls"
     ],
     "path": "Other/MergeShops/ObsessorCommanderMerge.cs",
-    "size": 4648,
+    "size": 4521,
     "fileName": "ObsessorCommanderMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/ObsessorCommanderMerge.cs"
   },
@@ -21307,7 +21307,7 @@
       "reavers"
     ],
     "path": "Other/MergeShops/CelestialSpoilsMerge.cs",
-    "size": 8924,
+    "size": 8803,
     "fileName": "CelestialSpoilsMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/CelestialSpoilsMerge.cs"
   },
@@ -22682,7 +22682,7 @@
       "null"
     ],
     "path": "Seasonal/BlackFriday/ShadowofDoom/CoreShadowofDoom.cs",
-    "size": 6193,
+    "size": 5732,
     "fileName": "CoreShadowofDoom.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/BlackFriday/ShadowofDoom/CoreShadowofDoom.cs"
   },
