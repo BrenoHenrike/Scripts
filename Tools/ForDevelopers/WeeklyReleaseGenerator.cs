@@ -111,7 +111,7 @@ public class WeeklyReleaseGenerator
             else
             {
                 // Handle cases with requirements
-                generatedLines.Add($"    Core.HuntMonsterQuest({q.ID}, new (string? mapName, string? monsterName, ClassType classType)[] {{");
+                generatedLines.Add($"    Core.HuntMonsterQuest({q.ID},  ");
 
                 foreach (var req in q.Requirements.Select((r, index) => new { r, index }))
                 {
@@ -120,7 +120,7 @@ public class WeeklyReleaseGenerator
                 }
 
                 // Remove the last comma and close the array
-                generatedLines[^1] = generatedLines.Last().TrimEnd(',') + " });";
+                generatedLines[^1] = generatedLines.Last().TrimEnd(',') + " );";
             }
 
             // Close the QuestProgression check block
