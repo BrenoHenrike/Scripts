@@ -105,12 +105,12 @@ public class ArmyMartialArtist
 
 
         #region Zakhvatchik's Soul Fragment
+        Bot.Quests.UpdateQuest(9607);
         Army.waitForParty("hakuwar", "r10");
         Army.AggroMonMIDs(28);
         Army.AggroMonStart("hakuwar");
         Army.DivideOnCells("r10");
         Bot.Player.SetSpawnPoint();
-        Bot.Quests.UpdateQuest(9607);
 
         while (!Bot.ShouldExit && !Core.CheckInventory("Zakhvatchik's Soul Fragment", Core.IsMember ? 200 : 400))
         {
