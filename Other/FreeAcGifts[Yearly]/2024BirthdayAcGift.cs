@@ -21,7 +21,7 @@ public class BirthdayAC2024
 
     public void GetFreeAcs()
     {
-        if (Bot.Quests.IsAvailable(9937))
+        if (Bot.Quests.IsAvailable(9937) && !Core.isCompletedBefore(9937))
         {
             Core.EnsureAccept(9937);
             Core.HuntMonster("yulgar", "Agitated Orb", "Free ACs...");
