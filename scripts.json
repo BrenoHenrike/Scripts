@@ -22656,25 +22656,27 @@
       "null"
     ],
     "path": "Seasonal/BlackFriday/ShadowofDoom/CoreShadowofDoom.cs",
-    "size": 3516,
+    "size": 6174,
     "fileName": "CoreShadowofDoom.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/BlackFriday/ShadowofDoom/CoreShadowofDoom.cs"
   },
   {
-    "name": "Shadowbattleon",
-    "description": "Does the Shadow of Doom Saga",
+    "name": "Lotus Tomb",
+    "description": "Does the /lotustomb storyline",
     "tags": [
       "shadow of doom",
-      "shadowbattleon",
+      "lotustomb",
+      "lotus",
+      "tomb",
       "story",
       "saga",
-      "doall",
-      "camlan"
+      "zhoom",
+      "tomb of the blue lotus"
     ],
-    "path": "Seasonal/BlackFriday/ShadowofDoom/ShadowBattleon.cs",
-    "size": 694,
-    "fileName": "ShadowBattleon.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/BlackFriday/ShadowofDoom/ShadowBattleon.cs"
+    "path": "Seasonal/BlackFriday/ShadowofDoom/03LotusTomb.cs",
+    "size": 701,
+    "fileName": "03LotusTomb.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/BlackFriday/ShadowofDoom/03LotusTomb.cs"
   },
   {
     "name": "Shadow of Doom Do All",
@@ -22684,12 +22686,13 @@
       "camlan",
       "shadowbattleon story",
       "saga",
-      "doall"
+      "doall",
+      "lotustomb"
     ],
-    "path": "Seasonal/BlackFriday/ShadowofDoom/0DoAll.cs",
-    "size": 694,
-    "fileName": "0DoAll.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/BlackFriday/ShadowofDoom/0DoAll.cs"
+    "path": "Seasonal/BlackFriday/ShadowofDoom/00DoAll.cs",
+    "size": 701,
+    "fileName": "00DoAll.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/BlackFriday/ShadowofDoom/00DoAll.cs"
   },
   {
     "name": "Camlan",
@@ -22702,10 +22705,26 @@
       "doall",
       "camlan"
     ],
-    "path": "Seasonal/BlackFriday/ShadowofDoom/Camlan.cs",
+    "path": "Seasonal/BlackFriday/ShadowofDoom/02Camlan.cs",
     "size": 662,
-    "fileName": "Camlan.cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/BlackFriday/ShadowofDoom/Camlan.cs"
+    "fileName": "02Camlan.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/BlackFriday/ShadowofDoom/02Camlan.cs"
+  },
+  {
+    "name": "Shadowbattleon",
+    "description": "Does the Shadow of Doom Saga",
+    "tags": [
+      "shadow of doom",
+      "shadowbattleon",
+      "story",
+      "saga",
+      "doall",
+      "camlan"
+    ],
+    "path": "Seasonal/BlackFriday/ShadowofDoom/01ShadowBattleon.cs",
+    "size": 694,
+    "fileName": "01ShadowBattleon.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/BlackFriday/ShadowofDoom/01ShadowBattleon.cs"
   },
   {
     "name": "Puzzlebox Story",
