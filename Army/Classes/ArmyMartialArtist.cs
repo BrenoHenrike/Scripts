@@ -71,11 +71,11 @@ public class ArmyMartialArtist
         if (!Story.QuestProgression(9923))
         {
             Core.Logger("Quest is required, we'll stack mats via \"Deathly Slow Start [9933]\" After");
-            Core.HuntMonsterQuest(9923, new (string? mapName, string? monsterName, ClassType classType)[] {
-                    ("nexus", "Frogzard", ClassType.Farm),         // Frogzards Defeated (500): Join nexus, kill Frogzards
+            Core.HuntMonsterQuest(9923,
+("nexus", "Frogzard", ClassType.Farm),         // Frogzards Defeated (500): Join nexus, kill Frogzards
                     ("arcangrove", "Gorillaphant", ClassType.Farm), // Gorillaphants Defeated (500): Join arcangrove, kill Gorillaphants
-                    ("etherwardes", "Water Dragon Warrior", ClassType.Farm),      // Dragons Defeated (500): Join etherwardes, kill dragons
-                }, log: true);
+                    ("etherwardes", "Water Dragon Warrior", ClassType.Farm)    // Dragons Defeated (500): Join etherwardes, kill dragons
+);
         }
         Core.EquipClass(ClassType.Solo);
 

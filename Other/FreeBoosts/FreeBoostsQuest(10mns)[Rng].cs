@@ -48,10 +48,11 @@ public class FreeBoosts
 
         while (!Bot.ShouldExit && !allQuantitiesMet)
         {
-            Core.HuntMonsterQuest(6208, new (string? mapName, string? monsterName, ClassType classType)[] {
-        ("bloodtusk", "Trollola Plant", ClassType.Solo),
+            Core.HuntMonsterQuest(6208,
+("bloodtusk", "Trollola Plant", ClassType.Solo),
         ("cloister", "Acornent", ClassType.Solo),
-        ("nibbleon", "Dark Makai", ClassType.Solo) }, true);
+        ("nibbleon", "Dark Makai", ClassType.Solo)
+);
 
             if (allQuantitiesMet)
                 break; // Exit the loop when all quantities are met.

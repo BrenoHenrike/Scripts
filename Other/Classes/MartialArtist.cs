@@ -51,11 +51,11 @@ public class MartialArtist
             if (!Story.QuestProgression(9923))
             {
                 Core.Logger("Quest is required, we'll stack mats via \"Deathly Slow Start [9933]\" After");
-                Core.HuntMonsterQuest(9923, new (string? mapName, string? monsterName, ClassType classType)[] {
-                    ("nexus", "Frogzard", ClassType.Farm),         // Frogzards Defeated (500): Join nexus, kill Frogzards
+                Core.HuntMonsterQuest(9923,
+("nexus", "Frogzard", ClassType.Farm),         // Frogzards Defeated (500): Join nexus, kill Frogzards
                     ("arcangrove", "Gorillaphant", ClassType.Farm), // Gorillaphants Defeated (500): Join arcangrove, kill Gorillaphants
-                    ("etherwardes", "Water Dragon Warrior", ClassType.Farm),      // Dragons Defeated (500): Join etherwardes, kill dragons
-                }, log: true);
+                    ("etherwardes", "Water Dragon Warrior", ClassType.Farm)     // Dragons Defeated (500): Join etherwardes, kill dragons
+);
             }
 
             //stack and then turn in to  get all required mats for the rest...
@@ -104,11 +104,11 @@ public class MartialArtist
 
         while (!Bot.ShouldExit && Bot.Player.Gold <= Gold)
         {
-            Core.HuntMonsterQuest(9933, new (string? mapName, string? monsterName, ClassType classType)[] {
-                        ("dreadfight", "Dreadhaven General", ClassType.Solo), // Dreadhaven General's Soul Fragment (10): Join dreadfight, kill Dreadhaven General
+            Core.HuntMonsterQuest(9933,
+("dreadfight", "Dreadhaven General", ClassType.Solo), // Dreadhaven General's Soul Fragment (10): Join dreadfight, kill Dreadhaven General
                         ("hakuwar", "Zakhvatchik", ClassType.Solo),           // Zakhvatchik's Soul Fragment (10): Join hakuwar, kill Zakhvatchik (last room)
-                        ("towerofdoom5", "Creel", ClassType.Solo),            // Creel's Soul Fragment (10): Join towerofdoom5, kill Creel (last room)
-                    }, log: true);
+                        ("towerofdoom5", "Creel", ClassType.Solo)          // Creel's Soul Fragment (10): Join towerofdoom5, kill Creel (last room)
+);
             Bot.Wait.ForQuestComplete(9933);
         }
     }

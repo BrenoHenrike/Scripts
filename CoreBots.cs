@@ -2776,9 +2776,8 @@ public class CoreBots
     /// Hunts monsters based on the requirements of a specified quest and an optional array of map and monster names.
     /// </summary>
     /// <param name="questId">The ID of the quest to load requirements from.</param>
-    /// <param name="MapMonsterClassPairs"></param>
-    /// <param name="log">Whether to log the hunting process.</param>
-    public void HuntMonsterQuest(int questId, (string? mapName, string? monsterName, ClassType classType)[]? MapMonsterClassPairs = null, bool log = false)
+    /// <param name="MapMonsterClassPairs">Array of map name, monster name, and class type tuples.</param>
+    public void HuntMonsterQuest(int questId, params (string mapName, string monsterName, ClassType classType)[] MapMonsterClassPairs)
     {
         Quest? quest = Bot.Quests.EnsureLoad(questId);
         if (quest == null)
@@ -2790,19 +2789,18 @@ public class CoreBots
         if (!Bot.Quests.EnsureAccept(questId))
             EnsureAccept(questId);
 
-        if (MapMonsterClassPairs == null)
+        // If no MapMonsterClassPairs are provided, auto-generate default values
+        if (MapMonsterClassPairs.Length == 0)
         {
-            MapMonsterClassPairs = new (string? mapName, string? monsterName, ClassType classType)[quest.Requirements.Count];
-            for (int i = 0; i < quest.Requirements.Count; i++)
-            {
-                MapMonsterClassPairs[i] = (null, null, ClassType.Solo); // Use a default class type if needed
-            }
+            MapMonsterClassPairs = quest.Requirements
+                .Select(_ => ("Fill ME", "Fill ME", ClassType.Solo))  // Default values for mapName, monsterName, and classType
+                .ToArray();
         }
 
         for (int i = 0; i < MapMonsterClassPairs.Length && i < quest.Requirements.Count; i++)
         {
             ItemBase requirement = quest.Requirements[i];
-            (string? mapName, string? monsterName, ClassType classType) = MapMonsterClassPairs[i];
+            (string mapName, string monsterName, ClassType classType) = MapMonsterClassPairs[i];
 
             if (CheckInventory(requirement.ID, requirement.Quantity))
                 continue;
@@ -2810,13 +2808,12 @@ public class CoreBots
             // Equip the class before hunting
             EquipClass(classType);
 
-            HuntMonster(mapName ?? Bot.Map.Name, monsterName ?? "*", requirement.Name ?? string.Empty, requirement.Quantity, requirement.Temp, log);
+            HuntMonster(mapName ?? Bot.Map.Name, monsterName ?? "*", requirement.Name ?? string.Empty, requirement.Quantity, requirement.Temp, log: false);
         }
 
         if (!Bot.Quests.EnsureComplete(questId))
             EnsureComplete(questId);
     }
-
 
     /// <summary>
     /// Hunts monsters based on the requirements of a specified quest and optional map and monster names for each requirement.

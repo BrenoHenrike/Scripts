@@ -47,24 +47,27 @@ public class crulonwedding
         // 9848 | The Red Rival
         if (!Story.QuestProgression(9848))
         {
-            Core.HuntMonsterQuest(9848, new (string? mapName, string? monsterName, ClassType classType)[] {
-        ("djinnguard", UseableMonsters[1], ClassType.Solo) });
+            Core.HuntMonsterQuest(9848,
+("djinnguard", UseableMonsters[1], ClassType.Solo)
+);
         }
 
 
         // 9849 | Pale Invocation
         if (!Story.QuestProgression(9849))
         {
-            Core.HuntMonsterQuest(9849, new (string? mapName, string? monsterName, ClassType classType)[] {
-        ("towerofmirrors", UseableMonsters[2], ClassType.Farm) });
+            Core.HuntMonsterQuest(9849,
+("towerofmirrors", UseableMonsters[2], ClassType.Farm)
+);
         }
 
 
         // 9850 | Moon's Self-Reflection
         if (!Story.QuestProgression(9850))
         {
-            Core.HuntMonsterQuest(9850, new (string? mapName, string? monsterName, ClassType classType)[] {
-        ("crulonwed", UseableMonsters[0], ClassType.Solo) });
+            Core.HuntMonsterQuest(9850,
+("crulonwed", UseableMonsters[0], ClassType.Solo)
+);
         }
 
 

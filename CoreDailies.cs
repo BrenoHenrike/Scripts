@@ -454,7 +454,7 @@ public class CoreDailies
             Core.FarmingLogger("Shurpu Blaze Token", 84, "Shurpu Blaze Token");
             Core.ToBank("Shurpu Blaze Token");
         }
-        
+
         if (Core.CheckInventory("Shurpu Blaze Token", 84))
             Core.BuyItem("xancave", 447, 12812, shopItemID: 1278);
         Core.ToBank("Shurpu Blaze Token");
@@ -932,29 +932,26 @@ public class CoreDailies
             if (!Core.CheckInventory("Compass Rose Skull"))
             {
                 Core.Logger("Getting the Compass Rose Skull.");
-                Core.HuntMonsterQuest(9894, new (string? mapName, string? monsterName, ClassType classType)[]
-                {
-                    ("dracocon", "Treasure Pile", ClassType.Farm),
+                Core.HuntMonsterQuest(9894,
+("dracocon", "Treasure Pile", ClassType.Farm),
                     ("battleundere", "Treasure Pile", ClassType.Farm),
                     ("greed", "Treasure Pile", ClassType.Farm)
-                }, true);
+);
             }
 
             Core.Logger("Getting the Obsessor Captain.");
-            Core.HuntMonsterQuest(9895, new (string? mapName, string? monsterName, ClassType classType)[]
-            {
-                ("shadowrealm", "Shadow Lord", ClassType.Solo),
-            }, true);
+            Core.HuntMonsterQuest(9895,
+("shadowrealm", "Shadow Lord", ClassType.Solo)
+);
         }
 
         Core.Unbank("Compass Rose Skull", "Obsessor Captain");
         Core.AddDrop("Elden Ruby");
 
-        Core.HuntMonsterQuest(9896, new (string? mapName, string? monsterName, ClassType classType)[]
-        {
-            ("trygve","Vindicator Recruit",ClassType.Farm),
+        Core.HuntMonsterQuest(9896,
+("trygve", "Vindicator Recruit", ClassType.Farm),
             ("greed", "Cursed Treasure", ClassType.Solo)
-        }, true);
+);
 
         Core.ToBank("Compass Rose Skull", "Obsessor Captain");
     }

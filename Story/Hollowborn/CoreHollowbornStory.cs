@@ -212,25 +212,26 @@ public class CoreHollowbornStory
         // 9855 | 24 Hour Graveyard Shift
         if (!Story.QuestProgression(9855))
         {
-            Core.HuntMonsterQuest(9855
-            , new (string? mapName, string? monsterName, ClassType classType)[] {
-        ("neotower", UseableMonsters[0], ClassType.Solo) });
+            Core.HuntMonsterQuest(9855,
+        ("neotower", UseableMonsters[0], ClassType.Solo));
         }
 
 
         // 9856 | On Unwanted Wings
         if (!Story.QuestProgression(9856))
         {
-            Core.HuntMonsterQuest(9856, new (string? mapName, string? monsterName, ClassType classType)[] {
-        ("neotower", UseableMonsters[1], ClassType.Solo) });
+            Core.HuntMonsterQuest(9856,
+("neotower", UseableMonsters[1], ClassType.Solo)
+);
         }
 
 
         // 9857 | Noble Dragonkin
         if (!Story.QuestProgression(9857))
         {
-            Core.HuntMonsterQuest(9857, new (string? mapName, string? monsterName, ClassType classType)[] {
-        ("neotower", UseableMonsters[2], ClassType.Solo) });
+            Core.HuntMonsterQuest(9857,
+("neotower", UseableMonsters[2], ClassType.Solo)
+);
         }
 
 
@@ -242,49 +243,55 @@ public class CoreHollowbornStory
         // 9859 | Outclassin' the Assassin
         if (!Story.QuestProgression(9859))
         {
-            Core.HuntMonsterQuest(9859, new (string? mapName, string? monsterName, ClassType classType)[] {
-        ("neotower", UseableMonsters[3], ClassType.Solo) });
+            Core.HuntMonsterQuest(9859,
+("neotower", UseableMonsters[3], ClassType.Solo)
+);
         }
 
 
         // 9860 | Mean Dog Walker
         if (!Story.QuestProgression(9860))
         {
-            Core.HuntMonsterQuest(9860, new (string? mapName, string? monsterName, ClassType classType)[] {
-        ("neotower", UseableMonsters[5], ClassType.Solo) });
+            Core.HuntMonsterQuest(9860,
+("neotower", UseableMonsters[5], ClassType.Solo)
+);
         }
 
 
         // 9861 | Safe Keeping
         if (!Story.QuestProgression(9861))
         {
-            Core.HuntMonsterQuest(9861, new (string? mapName, string? monsterName, ClassType classType)[] {
-        ("neotower", UseableMonsters[1], ClassType.Solo) });
+            Core.HuntMonsterQuest(9861,
+("neotower", UseableMonsters[1], ClassType.Solo)
+);
         }
 
 
         // 9862 | Seeds to be Reaped
         if (!Story.QuestProgression(9862))
         {
-            Core.HuntMonsterQuest(9862, new (string? mapName, string? monsterName, ClassType classType)[] {
-        ("neotower", UseableMonsters[0], ClassType.Solo) });
+            Core.HuntMonsterQuest(9862,
+("neotower", UseableMonsters[0], ClassType.Solo)
+);
         }
 
 
         // 9863 | Ceremonies and Rituals
         if (!Story.QuestProgression(9863))
         {
-            Core.HuntMonsterQuest(9863, new (string? mapName, string? monsterName, ClassType classType)[] {
-        ("neotower", UseableMonsters[0], ClassType.Solo),
-        ("neotower", UseableMonsters[1], ClassType.Solo) });
+            Core.HuntMonsterQuest(9863,
+("neotower", UseableMonsters[0], ClassType.Solo),
+        ("neotower", UseableMonsters[1], ClassType.Solo)
+);
         }
 
 
         // 9864 | Selective Acknowledgement
         if (!Story.QuestProgression(9864))
         {
-            Core.HuntMonsterQuest(9864, new (string? mapName, string? monsterName, ClassType classType)[] {
-        ("neotower", UseableMonsters[8], ClassType.Solo) });
+            Core.HuntMonsterQuest(9864,
+("neotower", UseableMonsters[8], ClassType.Solo)
+);
         }
 
 

@@ -201,16 +201,18 @@ public class ShadowSlayerK
         // 9837 | Stalking Prey
         if (!Story.QuestProgression(9837))
         {
-            Core.HuntMonsterQuest(9837, new (string? mapName, string? monsterName, ClassType classType)[] {
-        ("badmoon", UseableMonsters[0], ClassType.Farm) });
+            Core.HuntMonsterQuest(9837,
+("badmoon", UseableMonsters[0], ClassType.Farm)
+);
         }
 
 
         // 9838 | Super Creeps
         if (!Story.QuestProgression(9838))
         {
-            Core.HuntMonsterQuest(9838, new (string? mapName, string? monsterName, ClassType classType)[] {
-        ("badmoon", UseableMonsters[1], ClassType.Solo) });
+            Core.HuntMonsterQuest(9838,
+("badmoon", UseableMonsters[1], ClassType.Solo)
+);
         }
 
 
@@ -220,16 +222,18 @@ public class ShadowSlayerK
         // 9840 | Suspicious Minds
         if (!Story.QuestProgression(9840))
         {
-            Core.HuntMonsterQuest(9840, new (string? mapName, string? monsterName, ClassType classType)[] {
-        ("badmoon", UseableMonsters[0], ClassType.Farm),
-        ("badmoon", UseableMonsters[1], ClassType.Solo) });
+            Core.HuntMonsterQuest(9840,
+("badmoon", UseableMonsters[0], ClassType.Farm),
+        ("badmoon", UseableMonsters[1], ClassType.Solo)
+);
         }
 
         // 9841 | Get Out The Way
         if (!Story.QuestProgression(9841))
         {
-            Core.HuntMonsterQuest(9841, new (string? mapName, string? monsterName, ClassType classType)[] {
-        ("badmoon", UseableMonsters[2], ClassType.Farm) });
+            Core.HuntMonsterQuest(9841,
+("badmoon", UseableMonsters[2], ClassType.Farm)
+);
         }
 
         // 9842 | Door Stuck
@@ -244,24 +248,27 @@ public class ShadowSlayerK
         // 9843 | Nothing But A Hound Dog
         if (!Story.QuestProgression(9843))
         {
-            Core.HuntMonsterQuest(9843, new (string? mapName, string? monsterName, ClassType classType)[] {
-        ("badmoon", UseableMonsters[3], ClassType.Solo) });
+            Core.HuntMonsterQuest(9843,
+("badmoon", UseableMonsters[3], ClassType.Solo)
+);
         }
 
 
         // 9844 | Coldest Regards
         if (!Story.QuestProgression(9844))
         {
-            Core.HuntMonsterQuest(9844, new (string? mapName, string? monsterName, ClassType classType)[] {
-        ("badmoon", UseableMonsters[2], ClassType.Solo) });
+            Core.HuntMonsterQuest(9844,
+("badmoon", UseableMonsters[2], ClassType.Solo)
+);
         }
 
 
         // 9845 | No Different From Prey
         if (!Story.QuestProgression(9845))
         {
-            Core.HuntMonsterQuest(9845, new (string? mapName, string? monsterName, ClassType classType)[] {
-        ("badmoon", UseableMonsters[4], ClassType.Solo) });
+            Core.HuntMonsterQuest(9845,
+("badmoon", UseableMonsters[4], ClassType.Solo)
+);
         }
     }
 

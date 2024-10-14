@@ -42,40 +42,45 @@ public class NecroProject
         // 9897 | In-Field Study
         if (!Story.QuestProgression(9897))
         {
-            Core.HuntMonsterQuest(9897, new (string? mapName, string? monsterName, ClassType classType)[] {
-        ("necrocavern", "Shadowstone Elemental", ClassType.Farm) });
+            Core.HuntMonsterQuest(9897,
+("necrocavern", "Shadowstone Elemental", ClassType.Farm)
+);
         }
 
 
         // 9898 | Technilliterate
         if (!Story.QuestProgression(9898))
         {
-            Core.HuntMonsterQuest(9898, new (string? mapName, string? monsterName, ClassType classType)[] {
-        ("necroproject", UseableMonsters[0], ClassType.Solo) });
+            Core.HuntMonsterQuest(9898,
+("necroproject", UseableMonsters[0], ClassType.Solo)
+);
         }
 
 
         // 9899 | Odd Tastes
         if (!Story.QuestProgression(9899))
         {
-            Core.HuntMonsterQuest(9899, new (string? mapName, string? monsterName, ClassType classType)[] {
-        ("necroproject", UseableMonsters[1], ClassType.Solo) });
+            Core.HuntMonsterQuest(9899,
+("necroproject", UseableMonsters[1], ClassType.Solo)
+);
         }
 
 
         // 9900 | My Toxic Pony
         if (!Story.QuestProgression(9900))
         {
-            Core.HuntMonsterQuest(9900, new (string? mapName, string? monsterName, ClassType classType)[] {
-        ("necroproject", UseableMonsters[2], ClassType.Solo) });
+            Core.HuntMonsterQuest(9900,
+("necroproject", UseableMonsters[2], ClassType.Solo)
+);
         }
 
 
         // 9901 | Hand-Me-Down
         if (!Story.QuestProgression(9901))
         {
-            Core.HuntMonsterQuest(9901, new (string? mapName, string? monsterName, ClassType classType)[] {
-        ("necroproject", UseableMonsters[3], ClassType.Solo) });
+            Core.HuntMonsterQuest(9901,
+("necroproject", UseableMonsters[3], ClassType.Solo)
+);
         }
 
 

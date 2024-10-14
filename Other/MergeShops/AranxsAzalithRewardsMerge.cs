@@ -64,11 +64,10 @@ public class AranxsAzalithRewardsMerge
                     Core.EquipClass(ClassType.Solo);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonsterQuest(9887, new (string? mapName, string? monsterName, ClassType classType)[]
-                        {
-                            ("champazalith", "Maah-na", ClassType.Solo),
+                        Core.HuntMonsterQuest(9887,
+("champazalith", "Maah-na", ClassType.Solo),
                             ("champazalith", "Akh-a", ClassType.Solo)
-                        });
+);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();
@@ -79,10 +78,9 @@ public class AranxsAzalithRewardsMerge
                     Core.EquipClass(ClassType.Solo);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonsterQuest(9888, new (string? mapName, string? monsterName, ClassType classType)[]
-                        {
-                            ("champazalith", "Azalith", ClassType.Solo)
-                        });
+                        Core.HuntMonsterQuest(9888,
+("champazalith", "Azalith", ClassType.Solo)
+);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     Core.CancelRegisteredQuests();

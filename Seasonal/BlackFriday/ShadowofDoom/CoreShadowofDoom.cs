@@ -146,8 +146,9 @@ public class CoreShadowofDoom
         // 9912 | A Herd of Black Sheep
         if (!Story.QuestProgression(9912))
         {
-            Core.HuntMonsterQuest(9912, new (string? mapName, string? monsterName, ClassType classType)[] {
-        ("lotustomb", UMLotusTomb[0], ClassType.Solo) });
+            Core.HuntMonsterQuest(9912,
+("lotustomb", UMLotusTomb[0], ClassType.Solo)
+);
         }
 
 
@@ -159,17 +160,19 @@ public class CoreShadowofDoom
         // 9914 | Primeval Discord
         if (!Story.QuestProgression(9914))
         {
-            Core.HuntMonsterQuest(9914, new (string? mapName, string? monsterName, ClassType classType)[] {
-        ("lotustomb", UMLotusTomb[1], ClassType.Solo),
-        ("lotustomb", UMLotusTomb[0], ClassType.Solo) });
+            Core.HuntMonsterQuest(9914,
+("lotustomb", UMLotusTomb[1], ClassType.Solo),
+        ("lotustomb", UMLotusTomb[0], ClassType.Solo)
+);
         }
 
 
         // 9915 | Hissing Hatchlings
         if (!Story.QuestProgression(9915))
         {
-            Core.HuntMonsterQuest(9915, new (string? mapName, string? monsterName, ClassType classType)[] {
-        ("lotustomb", UMLotusTomb[2], ClassType.Farm) });
+            Core.HuntMonsterQuest(9915,
+("lotustomb", UMLotusTomb[2], ClassType.Farm)
+);
         }
 
 
@@ -180,8 +183,9 @@ public class CoreShadowofDoom
         // 9917 | Dog Water
         if (!Story.QuestProgression(9917))
         {
-            Core.HuntMonsterQuest(9917, new (string? mapName, string? monsterName, ClassType classType)[] {
-        ("lotustomb", UMLotusTomb[3], ClassType.Farm)});
+            Core.HuntMonsterQuest(9917,
+("lotustomb", UMLotusTomb[3], ClassType.Farm)
+);
         }
 
 
@@ -192,17 +196,19 @@ public class CoreShadowofDoom
         // 9919 | Chaotic Little Joys
         if (!Story.QuestProgression(9919))
         {
-            Core.HuntMonsterQuest(9919, new (string? mapName, string? monsterName, ClassType classType)[] {
-        ("lotustomb", UMLotusTomb[2], ClassType.Farm),
-        ("lotustomb", UMLotusTomb[3], ClassType.Farm) });
+            Core.HuntMonsterQuest(9919,
+("lotustomb", UMLotusTomb[2], ClassType.Farm),
+        ("lotustomb", UMLotusTomb[3], ClassType.Farm)
+);
         }
 
 
         // 9920 | Rite of Apophis
         if (!Story.QuestProgression(9920))
         {
-            Core.HuntMonsterQuest(9920, new (string? mapName, string? monsterName, ClassType classType)[] {
-        ("lotustomb", UMLotusTomb[4], ClassType.Solo) });
+            Core.HuntMonsterQuest(9920,
+("lotustomb", UMLotusTomb[4], ClassType.Solo)
+);
         }
 
 

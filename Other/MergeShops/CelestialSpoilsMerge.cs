@@ -96,12 +96,11 @@ public class CelestialSpoilsMerge
                     Core.FarmingLogger(req.Name, quant);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonsterQuest(9836, new (string? mapName, string? monsterName, ClassType classType)[]
-                        {
-    ("deadmoor", "Toxic Souleater", ClassType.Farm),
+                        Core.HuntMonsterQuest(9836,
+("deadmoor", "Toxic Souleater", ClassType.Farm),
     ("moonlab", "Infected Scientist", ClassType.Farm),
     ("deerhunt", "Zweinichthirsch", ClassType.Solo)
-                        });
+);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     break;

@@ -50,14 +50,14 @@ public class ShadowslayerSummoningRitual2
 
         while (!Core.CheckInventory("Lunate Sigil", quant))
         {
-            Core.HuntMonsterQuest(9846, new (string? mapName, string? monsterName, ClassType classType)[] {
-        ("chaoscave", "Dracowerepyre", ClassType.Solo),
+            Core.HuntMonsterQuest(9846,
+("chaoscave", "Dracowerepyre", ClassType.Solo),
         ("darkoviaforest", "Lich Of The Stone", ClassType.Solo),
         ("borgars", "Burglinster", ClassType.Solo),
         ("firewar", "Uriax", ClassType.Solo),
         ("maul", "Creature Creation ", ClassType.Solo),
-        ("techdungeon", "Kalron the Cryptborg", ClassType.Solo),
-        }, log: true);
+        ("techdungeon", "Kalron the Cryptborg", ClassType.Solo)
+);
             Bot.Wait.ForPickup("Lunate Sigil");
         }
 

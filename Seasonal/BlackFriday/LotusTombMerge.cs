@@ -67,10 +67,11 @@ public class LotusTombMerge
                     Core.FarmingLogger(req.Name, quant);
                     while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
                     {
-                        Core.HuntMonsterQuest(9921, new (string? mapName, string? monsterName, ClassType classType)[] {
-        ("lotustomb", SoD.UMLotusTomb[4], ClassType.Solo),
+                        Core.HuntMonsterQuest(9921,
+("lotustomb", SoD.UMLotusTomb[4], ClassType.Solo),
         ("lotustomb", SoD.UMLotusTomb[2], ClassType.Farm),
-        ("lotustomb", SoD.UMLotusTomb[3], ClassType.Farm)});
+        ("lotustomb", SoD.UMLotusTomb[3], ClassType.Farm)
+);
                         Bot.Wait.ForPickup(req.Name);
                     }
                     break;
