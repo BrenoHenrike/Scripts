@@ -22,6 +22,7 @@ public class CoreShadowofDoom
     {
         ShadowBattleon();
         Camlan(ReturnEarly);
+        LotusTomb();
     }
 
     public void ShadowBattleon()
@@ -80,7 +81,7 @@ public class CoreShadowofDoom
         Story.KillQuest(9436, "camlan", "Tainted Wraith");
 
         // Guileless Sneers 9437
-        Story.MapItemQuest(9437, "camlan", new[] { 12252, 12253,  12254});
+        Story.MapItemQuest(9437, "camlan", new[] { 12252, 12253, 12254 });
 
         // Shadows of Aminion 9438
         Story.KillQuest(9438, "camlan", "Doomed Elf");
@@ -117,6 +118,91 @@ public class CoreShadowofDoom
             Core.HuntMonster("camlan", "Metamorphosis Maw", "Alchemic Snake Scale");
             Core.EnsureComplete(9443);
         }
+    }
+
+    public void LotusTomb()
+    {
+        if (Core.isCompletedBefore(9920))
+            return;
+
+        Camlan(true);
+
+        Story.PreLoad(this);
+
+        #region Useable Monsters
+        string[] UseableMonsters = new[]
+        {
+    "Doomed Elf", // UseableMonsters[0],
+	"Umbral Armor", // UseableMonsters[1],
+	"Umbral Serpent", // UseableMonsters[2],
+	"Umbral Tomb Hound", // UseableMonsters[3],
+	"Apophis Chantress", // UseableMonsters[4]
+};
+        #endregion Useable Monsters
+
+        // 9912 | A Herd of Black Sheep
+        if (!Story.QuestProgression(9912))
+        {
+            Core.HuntMonsterQuest(9912, new (string? mapName, string? monsterName, ClassType classType)[] {
+        ("lotustomb", UseableMonsters[0], ClassType.Solo) });
+        }
+
+
+        // 9913 | Apep's Minders
+        Story.MapItemQuest(9913, "lotustomb", 13731);
+        Story.KillQuest(9913, "lotustomb", UseableMonsters[1]);
+
+
+        // 9914 | Primeval Discord
+        if (!Story.QuestProgression(9914))
+        {
+            Core.HuntMonsterQuest(9914, new (string? mapName, string? monsterName, ClassType classType)[] {
+        ("lotustomb", UseableMonsters[1], ClassType.Solo),
+        ("lotustomb", UseableMonsters[0], ClassType.Solo) });
+        }
+
+
+        // 9915 | Hissing Hatchlings
+        if (!Story.QuestProgression(9915))
+        {
+            Core.HuntMonsterQuest(9915, new (string? mapName, string? monsterName, ClassType classType)[] {
+        ("lotustomb", UseableMonsters[2], ClassType.Farm) });
+        }
+
+
+        // 9916 | How the Mighty Have Fallen
+        Story.MapItemQuest(9916, "lotustomb", new[] { 13732, 13733 });
+
+
+        // 9917 | Dog Water
+        if (!Story.QuestProgression(9917))
+        {
+            Core.HuntMonsterQuest(9917, new (string? mapName, string? monsterName, ClassType classType)[] {
+        ("lotustomb", UseableMonsters[3], ClassType.Farm)});
+        }
+
+
+        // 9918 | Poor Costume Choice
+        Story.MapItemQuest(9918, new[] { (13734, 1, "lotustomb"), (13735, 6, "lotustomb") });
+
+
+        // 9919 | Chaotic Little Joys
+        if (!Story.QuestProgression(9919))
+        {
+            Core.HuntMonsterQuest(9919, new (string? mapName, string? monsterName, ClassType classType)[] {
+        ("lotustomb", UseableMonsters[2], ClassType.Farm),
+        ("lotustomb", UseableMonsters[3], ClassType.Farm) });
+        }
+
+
+        // 9920 | Rite of Apophis
+        if (!Story.QuestProgression(9920))
+        {
+            Core.HuntMonsterQuest(9920, new (string? mapName, string? monsterName, ClassType classType)[] {
+        ("lotustomb", UseableMonsters[4], ClassType.Solo) });
+        }
+
+
     }
 }
 
