@@ -10043,6 +10043,32 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/BlackFriday/CreepyUndeadMonkeyQuest.cs"
   },
   {
+    "name": "LotusTomb Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the LotusTomb Merge [2492] in /lotustomb",
+    "tags": [
+      "lotustomb",
+      "merge",
+      "lotustomb",
+      "chaotic",
+      "pathshaper",
+      "scar",
+      "ripper",
+      "morph",
+      "rippers",
+      "edges",
+      "unending",
+      "light",
+      "bow",
+      "arrow",
+      "arrows",
+      "scepter"
+    ],
+    "path": "Seasonal/BlackFriday/LotusTombMerge.cs",
+    "size": 5053,
+    "fileName": "LotusTombMerge.cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/BlackFriday/LotusTombMerge.cs"
+  },
+  {
     "name": "Alpha Hunter And Rogue Set",
     "description": "This will do the quest to obtain the Alpha Hunter and Rogue set.",
     "tags": [
@@ -22656,7 +22682,7 @@
       "null"
     ],
     "path": "Seasonal/BlackFriday/ShadowofDoom/CoreShadowofDoom.cs",
-    "size": 6174,
+    "size": 6193,
     "fileName": "CoreShadowofDoom.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/BlackFriday/ShadowofDoom/CoreShadowofDoom.cs"
   },
