@@ -110,6 +110,7 @@ public class ArmyMartialArtist
         Army.AggroMonStart("hakuwar");
         Army.DivideOnCells("r10");
         Bot.Player.SetSpawnPoint();
+        Bot.Quests.UpdateQuest(9607);
 
         while (!Bot.ShouldExit && !Core.CheckInventory("Zakhvatchik's Soul Fragment", Core.IsMember ? 200 : 400))
         {

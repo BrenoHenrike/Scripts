@@ -62,6 +62,7 @@ public class MartialArtist
             Core.EquipClass(ClassType.Solo);
             Core.EnsureAccept(Core.IsMember ? 9911 : 9902);
             Core.HuntMonster("dreadfight", "Dreadhaven General", "Dreadhaven General's Soul Fragment", Core.IsMember ? 200 : 400, isTemp: false);
+            Bot.Quests.UpdateQuest(9607);
             Core.HuntMonster("hakuwar", "Zakhvatchik", "Zakhvatchik's Soul Fragment", Core.IsMember ? 200 : 400, isTemp: false);
             Core.HuntMonster("towerofdoom5", "Creel", "Creel's Soul Fragment", Core.IsMember ? 200 : 400, isTemp: false);
 
