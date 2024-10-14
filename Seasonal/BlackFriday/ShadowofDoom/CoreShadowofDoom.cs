@@ -12,7 +12,19 @@ public class CoreShadowofDoom
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
     private CoreStory Story = new();
+    public string[] UMLotusTomb { get; private set; }
 
+    public CoreShadowofDoom()
+    {
+        UMLotusTomb = new[]
+        {
+            "Doomed Elf", // UMLotusTomb[0],
+            "Umbral Armor", // UMLotusTomb[1],
+            "Umbral Serpent", // UMLotusTomb[2],
+            "Umbral Tomb Hound", // UMLotusTomb[3],
+            "Apophis Chantress", // UMLotusTomb[4]
+        };
+    }
     public void ScriptMain(IScriptInterface bot)
     {
         Core.RunCore();
@@ -122,6 +134,8 @@ public class CoreShadowofDoom
 
     public void LotusTomb()
     {
+
+
         if (Core.isCompletedBefore(9920))
             return;
 
@@ -129,36 +143,25 @@ public class CoreShadowofDoom
 
         Story.PreLoad(this);
 
-        #region Useable Monsters
-        string[] UseableMonsters = new[]
-        {
-    "Doomed Elf", // UseableMonsters[0],
-	"Umbral Armor", // UseableMonsters[1],
-	"Umbral Serpent", // UseableMonsters[2],
-	"Umbral Tomb Hound", // UseableMonsters[3],
-	"Apophis Chantress", // UseableMonsters[4]
-};
-        #endregion Useable Monsters
-
         // 9912 | A Herd of Black Sheep
         if (!Story.QuestProgression(9912))
         {
             Core.HuntMonsterQuest(9912, new (string? mapName, string? monsterName, ClassType classType)[] {
-        ("lotustomb", UseableMonsters[0], ClassType.Solo) });
+        ("lotustomb", UMLotusTomb[0], ClassType.Solo) });
         }
 
 
         // 9913 | Apep's Minders
         Story.MapItemQuest(9913, "lotustomb", 13731);
-        Story.KillQuest(9913, "lotustomb", UseableMonsters[1]);
+        Story.KillQuest(9913, "lotustomb", UMLotusTomb[1]);
 
 
         // 9914 | Primeval Discord
         if (!Story.QuestProgression(9914))
         {
             Core.HuntMonsterQuest(9914, new (string? mapName, string? monsterName, ClassType classType)[] {
-        ("lotustomb", UseableMonsters[1], ClassType.Solo),
-        ("lotustomb", UseableMonsters[0], ClassType.Solo) });
+        ("lotustomb", UMLotusTomb[1], ClassType.Solo),
+        ("lotustomb", UMLotusTomb[0], ClassType.Solo) });
         }
 
 
@@ -166,7 +169,7 @@ public class CoreShadowofDoom
         if (!Story.QuestProgression(9915))
         {
             Core.HuntMonsterQuest(9915, new (string? mapName, string? monsterName, ClassType classType)[] {
-        ("lotustomb", UseableMonsters[2], ClassType.Farm) });
+        ("lotustomb", UMLotusTomb[2], ClassType.Farm) });
         }
 
 
@@ -178,7 +181,7 @@ public class CoreShadowofDoom
         if (!Story.QuestProgression(9917))
         {
             Core.HuntMonsterQuest(9917, new (string? mapName, string? monsterName, ClassType classType)[] {
-        ("lotustomb", UseableMonsters[3], ClassType.Farm)});
+        ("lotustomb", UMLotusTomb[3], ClassType.Farm)});
         }
 
 
@@ -190,8 +193,8 @@ public class CoreShadowofDoom
         if (!Story.QuestProgression(9919))
         {
             Core.HuntMonsterQuest(9919, new (string? mapName, string? monsterName, ClassType classType)[] {
-        ("lotustomb", UseableMonsters[2], ClassType.Farm),
-        ("lotustomb", UseableMonsters[3], ClassType.Farm) });
+        ("lotustomb", UMLotusTomb[2], ClassType.Farm),
+        ("lotustomb", UMLotusTomb[3], ClassType.Farm) });
         }
 
 
@@ -199,7 +202,7 @@ public class CoreShadowofDoom
         if (!Story.QuestProgression(9920))
         {
             Core.HuntMonsterQuest(9920, new (string? mapName, string? monsterName, ClassType classType)[] {
-        ("lotustomb", UseableMonsters[4], ClassType.Solo) });
+        ("lotustomb", UMLotusTomb[4], ClassType.Solo) });
         }
 
 
