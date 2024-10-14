@@ -78,7 +78,13 @@ public class ArmyMartialArtist
                 }, log: true);
         }
         Core.EquipClass(ClassType.Solo);
-        List<Quest> quests = Core.EnsureLoad(Core.FromTo(9922, 9927).Append(Core.IsMember ? 9911 : 9902)?.Where(q => q > 0).ToArray());
+
+        // Generate the list of quest IDs
+        int[]? questIDs = Core.FromTo(9922, 9927).Append(Core.IsMember ? 9911 : 9902)?.Where(q => q > 0).ToArray();
+
+        // Ensure the quest IDs array is not null before passing it to EnsureLoad
+        List<Quest> quests = Core.EnsureLoad(questIDs ?? Array.Empty<int>());
+
         Core.EnsureAccept(Core.IsMember ? 9911 : 9902);
 
         #region Dreadhaven General's Soul Fragment
