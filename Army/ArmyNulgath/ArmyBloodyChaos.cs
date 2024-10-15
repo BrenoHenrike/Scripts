@@ -61,14 +61,19 @@ public class ArmyBloodyChaos
             ArmyHunt("hydrachallenge", mob == Cell.h85 ? new[] { 29, 30, 31 } : new[] { 32, 33, 34 }, "Hydra Scale Piece", 200);
             ArmyHunt("stalagbite", new[] { 7, 8 }, "Shattered Legendary Sword of Dragon Control");
             ArmyHunt("escherion", new[] { 2, 3 }, "Escherion's Helm");
+            Bot.Wait.ForQuestComplete(7816);
         }
         Core.CancelRegisteredQuests();
     }
 
     void ArmyHunt(string map, int[] monsters, string item, int quant = 1)
     {
-        if (Bot.Config!.Get<bool>("sellToSync"))
-            Army.SellToSync(item, quant);
+        if (Core.CheckInventory(item, quant))
+        {
+            return;
+        }
+
+        Army.waitForParty(map);
 
         Core.AddDrop(item);
 
