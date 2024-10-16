@@ -35,15 +35,15 @@ public class DefaultTemplate
 
     public void Example(bool TestMode = false)
     {
-       //Test Stuff  below  here
+        //Test Stuff  below  here
 
 
-       
+        // Test for new push file
 
-       //Test Stuff Above here
+        //Test Stuff Above here
 
 
-       //Test Push
+        //Test Push
         if (TestMode)
         {
             if (Core.CheckInventory("item", 1))
