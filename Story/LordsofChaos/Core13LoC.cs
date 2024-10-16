@@ -527,7 +527,7 @@ public class Core13LoC
         // Overgrown Spiders    
         Story.KillQuest(311, "greenguardeast", "Spider");
 
-        /// Lil' Red + Can I axe you something?
+        // Lil' Red + Can I axe you something?
         if (!Story.QuestProgression(514) || !Story.QuestProgression(515))
         {
             Core.AddDrop("Red's Big Wolf Slaying Axe");
@@ -1250,7 +1250,7 @@ public class Core13LoC
         Bot.Events.CellChanged -= CutSceneFixer;
 
 
-        ///if more maps get stuck, just fillin the bit below.
+        //if more maps get stuck, just fillin the bit below.
         // if (map == "Map" && cell != "Cell")
         // {
         //     while (!Bot.ShouldExit && Bot.Player.Cell != "InsertCell")
