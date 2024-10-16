@@ -609,9 +609,13 @@ public class CoreAdvanced
 
             SmartEnhance(itemInv.Name);
             InventoryItem? classItem = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == className.ToLower().Trim() && i.Category == ItemCategory.Class);
-            if (classItem.EnhancementLevel == 0)
+            if (classItem == null)
             {
-                Core.Logger($"Can't level up \"{itemInv.Name}\" because it's not enhanced, and AutoEnhance is turned off");
+                Core.Logger($"Class item \"{className}\" not found in inventory.");
+            }
+            else if (classItem.EnhancementLevel == 0)
+            {
+                Core.Logger($"Can't level up \"{classItem.Name}\" because it's not enhanced, and AutoEnhance is turned off");
             }
             else
             {

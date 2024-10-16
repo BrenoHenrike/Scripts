@@ -795,7 +795,7 @@ public class CoreBots
                 {
                     for (int i = 0; i < 5 && !Bot.Inventory.EnsureToBank(item); i++)
                         Sleep();
-                    if (!Bot.Inventory.EnsureToBank(item))
+                    if (!Bot.Inventory.EnsureToBank(item) && !Bot.Bank.Contains(item))
                     {
                         Logger($"Failed to bank {item}, skipping it");
                         continue;
