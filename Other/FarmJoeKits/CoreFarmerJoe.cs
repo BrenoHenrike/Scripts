@@ -949,8 +949,12 @@ public class CoreFarmerJoe
                 continue;
 
             Core.Logger($"Checking for {classType}: {className}");
-            InventoryItem? classItem = Bot.Inventory.Items.Concat(Bot.Bank.Items).Find(i => i.Name.ToLower().Trim() == className.ToLower().Trim() && i.Category == ItemCategory.Class);
-            if (classItem != null)
+            InventoryItem? classItem = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == className.ToLower().Trim() && i.Category == ItemCategory.Class);
+            if (classItem == null)
+            {
+                Core.Logger($"Class item for {classType} is null or not a class.");
+            }
+            else
             {
                 Core.Logger($"Found {classType}: {classItem.Name} with quantity: {classItem.Quantity}");
                 if (classItem.Quantity < 302500)
@@ -965,10 +969,6 @@ public class CoreFarmerJoe
                     Core.Logger($"{classType} is already at maximum rank.");
                     return classItem.Name;
                 }
-            }
-            else
-            {
-                Core.Logger($"Class item for {classType}: {classItem.Name} is null or not a class.");
             }
         }
 
