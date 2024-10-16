@@ -952,23 +952,23 @@ public class CoreFarmerJoe
             InventoryItem? classItem = Bot.Inventory.Items.Concat(Bot.Bank.Items).Find(i => i.Name.ToLower().Trim() == className.ToLower().Trim() && i.Category == ItemCategory.Class);
             if (classItem != null)
             {
-                Core.Logger($"Found {classType}: {className} with quantity: {classItem.Quantity}");
-                if (classItem.Quantity != 302500)
+                Core.Logger($"Found {classType}: {classItem.Name} with quantity: {classItem.Quantity}");
+                if (classItem.Quantity < 302500)
                 {
                     Core.Logger($"{classType} is not rank 10. {(rankUp ? "Rankup enabled" : "Rankup disabled")}");
                     if (rankUp)
                         Adv.RankUpClass(classItem.Name);
-                    return className;
+                    return classItem.Name;
                 }
                 else
                 {
                     Core.Logger($"{classType} is already at maximum rank.");
-                    return className;
+                    return classItem.Name;
                 }
             }
             else
             {
-                Core.Logger($"Class item for {classType}: {className} is null or not a class.");
+                Core.Logger($"Class item for {classType}: {classItem.Name} is null or not a class.");
             }
         }
 

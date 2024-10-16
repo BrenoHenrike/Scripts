@@ -311,21 +311,21 @@ public class CoreFarms
         if (NotYetLevel(level) && Bot.Player.Level < 100)
             ToggleBoost(BoostType.Experience, true);
         //Between level 1 and 5
-        while (NotYetLevel(5))
+        while (!Bot.ShouldExit && NotYetLevel(5))
         {
             Core.ByPassCheck();
             Core.KillMonster("icestormarena", "r4", "Bottom", "*", log: false, publicRoom: true);
         }
 
         //Between level 5 and 10
-        while (NotYetLevel(10))
+        while (!Bot.ShouldExit && NotYetLevel(10))
         {
             Core.ByPassCheck();
             Core.KillMonster("icestormarena", "r5", "Left", "*", log: false, publicRoom: true);
         }
 
         //Between level 10 and 20
-        while (NotYetLevel(20))
+        while (!Bot.ShouldExit && NotYetLevel(20))
         {
             Core.ByPassCheck();
             Core.KillMonster("icestormarena", "r6", "Left", "*", log: false, publicRoom: true);
@@ -335,7 +335,7 @@ public class CoreFarms
         if (NotYetLevel(25))
         {
             Core.RegisterQuests(6628);
-            while (NotYetLevel(25))
+            while (!Bot.ShouldExit && NotYetLevel(25))
             {
                 Core.ByPassCheck();
                 Core.KillMonster("icestormarena", "r7", "Left", "*", log: false, publicRoom: true);
@@ -344,7 +344,7 @@ public class CoreFarms
         }
 
         //Between level 25 and 30
-        while (NotYetLevel(30))
+        while (!Bot.ShouldExit && NotYetLevel(30))
         {
             Core.ByPassCheck();
             Core.KillMonster("icestormarena", "r10", "Left", "*", log: false, publicRoom: true);
@@ -357,7 +357,7 @@ public class CoreFarms
                 Core.EquipClass(ClassType.Solo);
 
             Core.RegisterQuests(6629);
-            while (NotYetLevel(35))
+            while (!Bot.ShouldExit && NotYetLevel(35))
             {
                 Core.ByPassCheck();
                 Core.KillMonster("icestormarena", "r11", "Left", "*", log: false, publicRoom: true);
@@ -369,14 +369,14 @@ public class CoreFarms
             Core.EquipClass(ClassType.Farm);
 
         //Between level 35 and 50
-        while (NotYetLevel(50))
+        while (!Bot.ShouldExit && NotYetLevel(50))
         {
             Core.ByPassCheck();
             Core.KillMonster("icestormarena", "r14", "Left", "*", log: false, publicRoom: true);
         }
 
         //Between level 50 and 61(for BGE)
-        while (NotYetLevel(61))
+        while (!Bot.ShouldExit && NotYetLevel(61))
         {
             Core.ByPassCheck();
             Core.KillMonster("icestormarena", "r16", "Left", "*", log: false, publicRoom: true);
@@ -387,7 +387,7 @@ public class CoreFarms
         {
             if (rankUpClass)
             {
-                while (NotYetLevel(75))
+                while (!Bot.ShouldExit && NotYetLevel(75))
                 {
                     Core.ByPassCheck();
                     Core.KillMonster("icestormarena", NotYetLevel(65) ? "r17" : NotYetLevel(70) ? "r18" : "r20", "Left", "*", log: false, publicRoom: true);
@@ -397,7 +397,7 @@ public class CoreFarms
             {
                 ToggleBoost(BoostType.Gold);
                 Core.RegisterQuests(3991, 3992);
-                while (NotYetLevel(75))
+                while (!Bot.ShouldExit && NotYetLevel(75))
                     Core.KillMonster("battlegrounde", "r2", "Center", "*", log: false, publicRoom: true);
                 Core.CancelRegisteredQuests();
                 ToggleBoost(BoostType.Gold, false);
@@ -405,7 +405,7 @@ public class CoreFarms
         }
 
         //Between level 75 and 100
-        while (NotYetLevel(level))
+        while (!Bot.ShouldExit && NotYetLevel(level))
         {
             if (!Bot.Player.IsMember)
                 Core.ByPassCheck();
@@ -429,7 +429,6 @@ public class CoreFarms
 
                 log: false);
         }
-        Core.BypassSet = 0;
         Core.ToggleAggro(false);
         Core.JumpWait();
         Core.Rest();
@@ -440,14 +439,28 @@ public class CoreFarms
 
         bool NotYetLevel(int _level)
         {
-            ItemBase? item = Bot.Inventory.Items.FirstOrDefault(x => x != null && x.Equipped && x.Category == ItemCategory.Class);
+            // Check for an equipped class item in the inventory.
+            InventoryItem? item = Bot.Inventory.Items
+                .FirstOrDefault(x => x != null && x.Equipped && x.Category == ItemCategory.Class);
+
+            // If no class item is found, log and return level comparison.
             if (item == null)
             {
-                Core.Logger("No class equipped");
-                return !Bot.ShouldExit && !rankUpClass ? Bot.Player.Level < _level && Bot.Player.Level < level : Bot.Player.Level <= _level;
+                Core.Logger("Class not found.");
+                return !rankUpClass
+                    ? Bot.Player.Level < _level && Bot.Player.Level < level
+                    : Bot.Player.Level <= _level;
             }
-            return !Bot.ShouldExit && !rankUpClass ? Bot.Player.Level < _level && Bot.Player.Level < level : Bot.Player.Level <= _level && item.Quantity < 302500;
+
+            // Return level comparison based on class item conditions.
+            return !rankUpClass
+                ? Bot.Player.Level < _level && Bot.Player.Level < level
+                : Bot.Player.Level < _level
+                  && Bot.Player.Level < level
+                  && item.EnhancementLevel != 0
+                  && item.Quantity < 302500;
         }
+
     }
 
     /// <summary>

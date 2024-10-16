@@ -4323,15 +4323,8 @@ public class CoreBots
         Bot.ShowMessageBox("Files that start with the word \"Core\" are not meant to be run, these are for storage. Please select the correct script.", "Core File Info");
         Bot.Stop(true);
     }
-    public int BypassSet = 0;
     public void ByPassCheck()
     {
-        if (BypassSet < 1 || Bot.Player.Level >= 100)
-            return;
-
-        // Wait until the player is alive
-        while (!Bot.ShouldExit && !Bot.Player.Alive) { Sleep(); }
-
         // Attempt to get the level from Flash
         string? BypassLevel = Bot.Flash.GetGameObject("world.myAvatar.objData.intLevel");
 
@@ -4341,6 +4334,12 @@ public class CoreBots
 
         // Get the player's level from the Flash object
         int flashLevel = int.TryParse(BypassLevel, out int level) ? level : 0;
+
+        if (flashLevel >= 100 || Bot.Player.Level >= 100)
+            return;
+
+        // Wait until the player is alive
+        while (!Bot.ShouldExit && !Bot.Player.Alive) { Sleep(); }
 
         // Check if the current map is one of the locked maps
         var levelLockedMaps = new[]
@@ -4357,7 +4356,8 @@ public class CoreBots
         if (currentMap == null || flashLevel >= currentMap.LevelRequired || Bot.Player.Level >= currentMap.LevelRequired)
             return; // Exit if the current map is not locked or player level meets/exceeds requirement
 
-        Logger("Bypass Broke, resetting level");
+        if (flashLevel < currentMap.LevelRequired)
+            Logger("Bypass Broke, resetting level");
 
         // Store the current map name
         string previousMap = Bot.Map.Name;
@@ -4374,8 +4374,6 @@ public class CoreBots
 
         // Sleep after sending the packet to give time for processing
         Sleep();
-
-        BypassSet++;
     }
 
     /// <summary>

@@ -580,7 +580,7 @@ public class CoreAdvanced
     /// <param name="gearRestore"></param>
     public void RankUpClass(string className, bool gearRestore = true)
     {
-        InventoryItem? itemInv = Bot.Inventory.Items.Concat(Bot.Bank.Items).Find(i => i.Name.Equals(className, StringComparison.Ordinal) && i.Category == ItemCategory.Class);
+        InventoryItem? itemInv = Bot.Inventory.Items.Concat(Bot.Bank.Items).Find(i => i.Name.ToLower().Trim() == className.ToLower().Trim() && i.Category == ItemCategory.Class);
 
         if (itemInv != null && itemInv.Quantity < 302500)
             Bot.Wait.ForBankToInventory(itemInv.ID);
@@ -608,8 +608,8 @@ public class CoreAdvanced
             Core.JumpWait();
 
             SmartEnhance(itemInv.Name);
-            var classItem = Bot.Inventory.Items.Find(i => i.Name.Equals(itemInv.Name, StringComparison.Ordinal) && i.Category == ItemCategory.Class);
-            if (classItem?.EnhancementLevel == 0)
+            InventoryItem? classItem = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == className.ToLower().Trim() && i.Category == ItemCategory.Class);
+            if (classItem.EnhancementLevel == 0)
             {
                 Core.Logger($"Can't level up \"{itemInv.Name}\" because it's not enhanced, and AutoEnhance is turned off");
             }
