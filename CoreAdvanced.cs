@@ -2942,7 +2942,7 @@ public class CoreAdvanced
                 case "unchained rockstar":
                 case "doom metal necro":
                 case "neo metal necro":
-                case "aartial artist":
+                case "martial artist":
                 case "antique hunter":
                     type = EnhancementType.Lucky;
                     wSpecial = WeaponSpecial.Awe_Blast;
