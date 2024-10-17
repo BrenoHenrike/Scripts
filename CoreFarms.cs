@@ -455,10 +455,7 @@ public class CoreFarms
             // Return level comparison based on class item conditions.
             return !rankUpClass
                 ? Bot.Player.Level < _level && Bot.Player.Level < level
-                : Bot.Player.Level < _level
-                  && Bot.Player.Level < level
-                  && item.EnhancementLevel != 0
-                  && item.Quantity < 302500;
+                : Bot.Player.Level <= _level && Bot.Player.Level <= level && item.Quantity < 302500;
         }
 
     }
