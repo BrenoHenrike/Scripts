@@ -605,10 +605,8 @@ public class CoreAdvanced
             if (gearRestore)
                 GearStore();
 
-            Core.JumpWait();
-            if (!Bot.Inventory.Items.Contains(itemInv) && Bot.Bank.Contains(itemInv.Name) && itemInv.Category == ItemCategory.Class)
-                Core.Unbank(itemInv.ID);
-
+            Core.JumpWait();            
+            
             SmartEnhance(itemInv.Name);
             InventoryItem? classItem = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == className.ToLower().Trim() && i.Category == ItemCategory.Class);
             if (classItem == null)
@@ -634,7 +632,7 @@ public class CoreAdvanced
                 Core.Jump("Enter");
                 Bot.Options.AggroMonsters = false;
                 classItem = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == className.ToLower().Trim() && i.Category == ItemCategory.Class);
-                if (classItem.Quantity == 30250)
+                if (classItem.Quantity == 302500)
                     Core.Logger($"\"{classItem.Name}\" is now Rank 10");
                 else
                     Core.Logger($"\"{classItem.Name}\" is some how... not rank 10??");
