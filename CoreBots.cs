@@ -2296,7 +2296,15 @@ public class CoreBots
     /// <param name="publicRoom"></param>
     public void KillMonster(string map, string cell, string pad, string monster, string? item = null, int quant = 1, bool isTemp = true, bool log = true, bool publicRoom = false)
     {
-        cell = Bot.Map.Cells.FirstOrDefault(c => c.Equals(cell, StringComparison.OrdinalIgnoreCase)) ?? cell;
+        if (Bot.Map.Name != map)
+        {
+            Join(map, publicRoom: publicRoom);
+            Bot.Wait.ForMapLoad(map);
+        }
+
+        if (!Bot.Map.Cells.Any(c => c.Equals(cell, StringComparison.OrdinalIgnoreCase)))
+            cell = Bot.Map.Cells.FirstOrDefault(c => c.Equals(cell, StringComparison.OrdinalIgnoreCase)) ?? cell;
+
         pad = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(pad.ToLower());
 
         if (item != null && (isTemp ? Bot.TempInv.Contains(item, quant) : CheckInventory(item, quant)))
@@ -2305,9 +2313,7 @@ public class CoreBots
         if (item != null && !isTemp)
             AddDrop(item);
 
-        if (Bot.Map.Name != map)
-            Join(map, cell, pad, publicRoom: publicRoom);
-        Bot.Wait.ForActionCooldown(GameActions.Transfer);
+
         if (Bot.Player.Cell != cell)
         {
             Bot.Map.Jump(cell, pad, autoCorrect: false);
@@ -4616,10 +4622,19 @@ public class CoreBots
             blackListedCells.UnionWith(new List<string> { "Wait", "Blank", "Out", "CutMikoOrochi", "innitRoom" });
             blackListedCells.UnionWith(Bot.Map.Cells.Where(x => x.StartsWith("Cut")));
             blackListedCells.UnionWith(Bot.Map.Cells.Where(x => x.StartsWith("moveFrame")));
+            //Matches: "r12", "r5", "r100"
+            // Does Not Match: "r12A", "r100b", "r200c123", "r45d@", "r300x!@#":
+            blackListedCells.UnionWith(Bot.Map.Cells.Where(x => Regex.IsMatch(x, @"^r\d+$")));
+
 
             #region Maps with issues
             switch (Bot.Map.Name)
             {
+                case "oaklore":
+                    if (HasWebBadge("Travel"))
+                        blackListedCells.UnionWith(HasWebBadge("Travel") ? new[] { "Enter" } : new[] { "r1" });
+                    break;
+
                 case "pyrewatch":
                     blackListedCells.UnionWith(new[] { "r3", "r4", "r5", "r7", "r12" });
                     break;
@@ -5013,6 +5028,18 @@ public class CoreBots
 
                 Jump("m22", "Left");
                 tryJoin();
+                break;
+
+            case "oaklore":
+                if (HasAchievement(32) && cell == "Enter")
+                    cell = "r1";
+                Bot.Map.Join(PrivateRooms ? $"{map}-" + PrivateRoomNumber : map, HasAchievement(32) ? "r1" : "Enter", "Spawn", autoCorrect: false);
+                Bot.Wait.ForMapLoad(map);
+                if (Bot.Player.Cell != cell)
+                {
+                    Bot.Map.Jump(cell, pad, autoCorrect: false);
+                    Bot.Wait.ForCellChange(cell);
+                }
                 break;
 
             case "collection":
