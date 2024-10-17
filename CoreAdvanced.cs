@@ -606,6 +606,8 @@ public class CoreAdvanced
                 GearStore();
 
             Core.JumpWait();
+            if (!Bot.Inventory.Items.Contains(itemInv) && Bot.Bank.Contains(itemInv.Name) && itemInv.Category == ItemCategory.Class)
+                Core.Unbank(itemInv.ID);
 
             SmartEnhance(itemInv.Name);
             InventoryItem? classItem = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == className.ToLower().Trim() && i.Category == ItemCategory.Class);
@@ -629,7 +631,14 @@ public class CoreAdvanced
                 // Core.Equip(cpBoost);
                 Farm.ToggleBoost(BoostType.Class);
                 Farm.IcestormArena(Bot.Player.Level, true);
-                Core.Logger($"\"{itemInv.Name}\" is now Rank 10");
+                Core.Jump("Enter");
+                Bot.Options.AggroMonsters = false;
+                classItem = Bot.Inventory.Items.Find(i => i.Name.ToLower().Trim() == className.ToLower().Trim() && i.Category == ItemCategory.Class);
+                if (classItem.Quantity == 30250)
+                    Core.Logger($"\"{classItem.Name}\" is now Rank 10");
+                else
+                    Core.Logger($"\"{classItem.Name}\" is some how... not rank 10??");
+
 
                 Farm.ToggleBoost(BoostType.Class, false);
                 if (gearRestore)
@@ -2308,7 +2317,6 @@ public class CoreAdvanced
                 #endregion
 
                 #region Wizard - Avarice - Elysium - Pneuma
-                case "shaman":
                 case "vampire lord":
                 case "enchanted vampire lord":
                 case "royal vampire lord":
@@ -2319,6 +2327,18 @@ public class CoreAdvanced
 
                     type = EnhancementType.Wizard;
                     cSpecial = CapeSpecial.Avarice;
+                    wSpecial = WeaponSpecial.Elysium;
+                    hSpecial = HelmSpecial.Pneuma;
+                    break;
+                #endregion
+
+                #region  Wizard - Vainglory - Elysium - Pneuma   
+                case "shaman":
+                    if (!uVainglory() || !uElysium() || !uPneuma())
+                        goto default;
+
+                    type = EnhancementType.Wizard;
+                    cSpecial = CapeSpecial.Vainglory;
                     wSpecial = WeaponSpecial.Elysium;
                     hSpecial = HelmSpecial.Pneuma;
                     break;
@@ -2922,6 +2942,7 @@ public class CoreAdvanced
                 case "unchained rockstar":
                 case "doom metal necro":
                 case "neo metal necro":
+                case "aartial artist":
                 case "antique hunter":
                     type = EnhancementType.Lucky;
                     wSpecial = WeaponSpecial.Awe_Blast;
