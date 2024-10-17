@@ -4127,11 +4127,11 @@ public class CoreBots
                 Bot.Inventory.EquipItem(item.ID);
                 break;
         }
+        Sleep();
         // Bot.Wait.ForTrue(() => Bot.Inventory.IsEquipped(item.ID), 20);
         Bot.Wait.ForItemEquip(item.ID);
         if (!Bot.Inventory.Items.Any(x => x != null && x.ID == item.ID && x.Equipped))
             goto Retry;
-        Sleep();
         if (logEquip)
             Logger($"Equipping {(Bot.Inventory.IsEquipped(item.ID) ? string.Empty : "failed: ")} {item.Name}", "Equip");
     }
